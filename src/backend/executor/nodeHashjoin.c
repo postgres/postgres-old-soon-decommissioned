@@ -417,7 +417,7 @@ ExecInitHashJoin(HashJoin *node, EState *estate)
 	 */
 	hjstate->hj_InnerHashKeys = (List *)
 		ExecInitExpr((Expr *) hashNode->hashkeys,
-					 innerPlanState(hjstate));
+					 (PlanState *) hjstate);
 	((HashState *) innerPlanState(hjstate))->hashkeys =
 		hjstate->hj_InnerHashKeys;
 

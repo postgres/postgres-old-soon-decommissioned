@@ -1093,12 +1093,14 @@ create_hashjoin_plan(Query *root,
 	hashclauses = order_qual_clauses(root, hashclauses);
 
 	/*
-	 * Extract the inner hash keys (right-hand operands of the
-	 * hashclauses) to put in the Hash node.
+	 * Extract the inner hash keys (right-hand operands of the hashclauses)
+	 * to put in the Hash node.  Must do a deep copy in case there are
+	 * subplans in the hash keys.
 	 */
 	innerhashkeys = NIL;
 	foreach(hcl, hashclauses)
-		innerhashkeys = lappend(innerhashkeys, get_rightop(lfirst(hcl)));
+		innerhashkeys = lappend(innerhashkeys,
+								copyObject(get_rightop(lfirst(hcl))));
 
 	/* We don't want any excess columns in the hashed tuples */
 	disuse_physical_tlist(inner_plan, best_path->jpath.innerjoinpath);
