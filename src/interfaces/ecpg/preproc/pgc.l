@@ -372,13 +372,13 @@ cppline			{space}*#(.*\\{space})*.*
 <xq>{xqstop}		{
 						BEGIN(state_before);
 						yylval.str = mm_strdup(literalbuf);
+						printf("MM: %s\n", yylval.str);
 						return SCONST;
 					}
 <xq>{xqdouble}		{ addlitchar('\''); }
 <xq>{xqinside}		{ addlit(yytext, yyleng); }
 <xq>{xqescape}  	{ addlit(yytext, yyleng); }
-<xq>{xqoctesc}		{ unsigned char c = strtoul(yytext+1, NULL, 8);
-                          addlitchar(c); }
+<xq>{xqoctesc}          { addlit(yytext, yyleng); }
 <xq>{xqcat}			{ /* ignore */ }
 
 <xq><<EOF>>			{ mmerror(PARSE_ERROR, ET_ERROR, "Unterminated quoted string"); }
