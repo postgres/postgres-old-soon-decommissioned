@@ -11,8 +11,10 @@
  *
  *-------------------------------------------------------------------------
  */
+
+#include "postgres.h"
+
 #include "utils/builtins.h"	/* where the declarations go */
-#include "utils/elog.h"
 #include "utils/palloc.h"
 
 /***************************************************************************** 

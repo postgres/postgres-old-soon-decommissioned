@@ -11,6 +11,9 @@
  *
  *-------------------------------------------------------------------------
  */
+
+#include "postgres.h"
+
 #include "utils/exc.h"		/* where function declarations go */
 
 void

@@ -11,19 +11,15 @@
  *
  *-------------------------------------------------------------------------
  */
-
-#include "config.h"
-
 #include <ctype.h>
 #include <string.h>
 #include "postgres.h"
-#include "c.h"
 #include "utils/acl.h"
 #include "access/htup.h"
 #include "catalog/pg_user.h"
 #include "utils/syscache.h"
-#include "utils/elog.h"
 #include "utils/palloc.h"
+#include "miscadmin.h"
 
 static char *getid(char *s, char *n);
 static int32 aclitemeq(AclItem *a1, AclItem *a2);

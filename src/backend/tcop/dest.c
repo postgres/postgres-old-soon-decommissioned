@@ -30,7 +30,6 @@
 #include "libpq/libpq-be.h"
 #include "access/printtup.h"
 #include "utils/portal.h"
-#include "utils/elog.h"
 #include "utils/palloc.h"
 
 #include "executor/executor.h"

@@ -15,12 +15,13 @@
  *-------------------------------------------------------------------------
  */
 #include <string.h>
+#include "postgres.h"
+
 #include "utils/acl.h"		/* where declarations for this file goes */
 #include "access/heapam.h"
 #include "access/htup.h"
 #include "access/tupmacs.h"
 #include "utils/builtins.h"
-#include "utils/elog.h"
 #include "utils/palloc.h"
 #include "catalog/indexing.h"
 #include "catalog/catalog.h"

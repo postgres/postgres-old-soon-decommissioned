@@ -19,12 +19,13 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "postgres.h"
+
 #include "access/heapam.h"
 #include "utils/tqual.h"	/* for NowTimeQual */
 #include "fmgr.h"
 #include "utils/builtins.h"	/* for textout() prototype 
 				  and where the declarations go */
-#include "utils/elog.h"
 #include "utils/palloc.h"
 
 #include "catalog/catname.h"

@@ -17,13 +17,12 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "c.h"
+#include "postgres.h"
  
 #include "access/heapam.h"
 #include "access/htup.h"
 #include "catalog/catname.h"
 #include "utils/catcache.h"
-#include "utils/elog.h"
 #include "utils/palloc.h"
 #include "nodes/pg_list.h"
  

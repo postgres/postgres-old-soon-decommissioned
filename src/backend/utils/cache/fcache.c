@@ -11,7 +11,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "c.h"
+#include "postgres.h"
 #include "access/htup.h"
 #include "utils/catcache.h"
 #include "utils/syscache.h"
@@ -22,7 +22,6 @@
 #include "parser/parsetree.h"		/* for getrelname() */
 #include "utils/builtins.h"
 #include "utils/fcache.h"
-#include "utils/elog.h"
 #include "utils/palloc.h"
 #include "nodes/primnodes.h"
 #include "nodes/execnodes.h"

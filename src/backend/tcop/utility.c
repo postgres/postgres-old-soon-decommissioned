@@ -35,7 +35,6 @@
 
 #include "nodes/parsenodes.h"
 #include "parse.h"
-#include "utils/elog.h"
 #include "utils/builtins.h"
 #include "utils/acl.h"
 #include "utils/palloc.h"

@@ -63,7 +63,6 @@
 
 #include "utils/palloc.h"
 #include "fmgr.h"
-#include "utils/elog.h"
 #include "utils/builtins.h"	/* for oideq */
 #include "tcop/fastpath.h"
 #include "libpq/libpq.h"

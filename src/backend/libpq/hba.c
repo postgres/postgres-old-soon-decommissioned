@@ -20,13 +20,14 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #if defined(sparc_solaris)
-#include <port/inet_aton.h>
+#include "port/inet_aton.h"
 #endif
 
-#include <miscadmin.h>
-#include <libpq/libpq.h>
-#include <libpq/pqcomm.h>
-#include <libpq/hba.h>
+#include "postgres.h"
+#include "miscadmin.h"
+#include "libpq/libpq.h"
+#include "libpq/pqcomm.h"
+#include "libpq/hba.h"
 
 
 #define CONF_FILE "pg_hba.conf"             

@@ -17,6 +17,9 @@
  */
 #include <stdio.h>	/* XXX use own I/O routines */
 #include <errno.h>
+
+#include "postgres.h"
+
 #include "utils/exc.h"
 #include "storage/ipc.h"
 

@@ -16,8 +16,9 @@
 #include <stdio.h>	/* for sprintf proto, etc. */
 #include <string.h>
 
+#include "postgres.h"
+
 #include "utils/geo-decls.h"
-#include "utils/elog.h"
 #include "utils/palloc.h"
 
 #define LDELIM		'('

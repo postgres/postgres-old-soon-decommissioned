@@ -15,7 +15,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "c.h"
+#include "postgres.h"
 
 #include "storage/buf.h"
 #include "access/skey.h"

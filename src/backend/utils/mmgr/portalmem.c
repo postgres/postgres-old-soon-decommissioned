@@ -76,12 +76,11 @@
 #include <stdio.h>		/* for sprintf() */
 #include <string.h>	/* for strlen, strncpy */
 
-#include "c.h"
+#include "postgres.h"
 
 #include "lib/hasht.h"
 #include "utils/module.h"
 #include "utils/excid.h"	/* for Unimplemented */
-#include "utils/elog.h"
 #include "utils/mcxt.h"
 #include "utils/hsearch.h"
 

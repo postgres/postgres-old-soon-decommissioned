@@ -22,7 +22,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "c.h"
+#include "postgres.h"
 
 #include "executor/execdebug.h"
 #include "access/heapam.h"
@@ -34,7 +34,6 @@
 #include "storage/buf.h"
 #include "storage/bufmgr.h"	/* for BLCKSZ */
 #include "utils/portal.h"	/* for {Start,End}PortalAllocMode */
-#include "utils/elog.h"
 #include "utils/rel.h"
 
 #include "utils/psort.h"

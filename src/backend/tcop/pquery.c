@@ -15,8 +15,8 @@
 
 #include "tcop/tcopdebug.h"
 
-#include "utils/elog.h"
 #include "utils/palloc.h"
+#include "nodes/nodes.h"
 #include "utils/mcxt.h"
 #include "miscadmin.h"
 #include "utils/portal.h"

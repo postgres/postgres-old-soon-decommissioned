@@ -12,8 +12,6 @@
  *-------------------------------------------------------------------------
  */
 
-#include "config.h"
-
 #include <string.h>
 #include <stdio.h>
 #ifndef WIN32
@@ -21,7 +19,8 @@
 #endif /* WIN32 */
 
 #include <sys/param.h>
-#include "utils/elog.h"
+
+#include "postgres.h"
 #include "utils/palloc.h"
 #include "utils/builtins.h"	/* where function declarations go */
 

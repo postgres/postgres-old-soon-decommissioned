@@ -45,11 +45,9 @@
 # include	"postgres.h"
 # include	"utils/hsearch.h"
 #ifndef FRONTEND
-# include	"nodes/memnodes.h"
 # include	"utils/mcxt.h"
 #endif /* !FRONTEND */
 # include	"utils/palloc.h"
-# include	"utils/elog.h"
 
 /*
  * Fast arithmetic, relying on powers of 2,
