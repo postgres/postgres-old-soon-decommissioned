@@ -32,16 +32,16 @@
 
 #include "postgres_fe.h"
 
+#include <errno.h>
+#include <signal.h>
+#include <time.h>
+
 #ifdef WIN32
 #include "win32.h"
 #else
 #include <unistd.h>
 #include <sys/time.h>
 #endif
-
-#include <errno.h>
-#include <signal.h>
-#include <time.h>
 
 #ifdef HAVE_SYS_SELECT_H
 #include <sys/select.h>

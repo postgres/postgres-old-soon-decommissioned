@@ -223,7 +223,7 @@ pqResultAlloc(PGresult *res, size_t nBytes, bool isBinary)
 	}
 
 	/* If there's enough space in the current block, no problem. */
-	if (nBytes <= res->spaceLeft)
+	if (nBytes <= (size_t)res->spaceLeft)
 	{
 		space = res->curBlock->space + res->curOffset;
 		res->curOffset += nBytes;
@@ -1024,7 +1024,7 @@ getAnotherTuple(PGconn *conn, int binary)
 				vlen = 0;
 			if (tup[i].value == NULL)
 			{
-				tup[i].value = (char *) pqResultAlloc(result, vlen + 1, binary);
+				tup[i].value = (char *) pqResultAlloc(result, vlen + 1, (bool)binary);
 				if (tup[i].value == NULL)
 					goto outOfMemory;
 			}
@@ -2051,7 +2051,11 @@ PQoidValue(const PGresult *res)
 	if (!res || !res->cmdStatus || strncmp(res->cmdStatus, "INSERT ", 7) != 0)
 		return InvalidOid;
 
+#ifdef WIN32
+	WSASetLastError(0);
+#else
 	errno = 0;
+#endif
 	result = strtoul(res->cmdStatus + 7, &endptr, 10);
 
 	if (!endptr || (*endptr != ' ' && *endptr != '\0') || errno == ERANGE)
