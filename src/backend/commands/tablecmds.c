@@ -2909,10 +2909,10 @@ update_ri_trigger_args(Oid relid,
 	if (fk_scan)
 		irel = index_openr(TriggerConstrRelidIndex);
 	else
-		irel = index_openr(TriggerRelidIndex);
+		irel = index_openr(TriggerRelidNameIndex);
 
 	ScanKeyEntryInitialize(&skey[0], 0x0,
-						   1,	/* always column 1 of index */
+						   1,	/* column 1 of index in either case */
 						   F_OIDEQ,
 						   ObjectIdGetDatum(relid));
 	idxtgscan = index_beginscan(irel, false, 1, skey);
