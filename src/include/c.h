@@ -71,8 +71,12 @@ typedef char bool;
 
 #endif	 /* ndef bool */
 #endif	 /* not C++ */
-#define false	((bool) 0)
+#ifndef true
 #define true	((bool) 1)
+#endif
+#ifndef false
+#define false	((bool) 0)
+#endif
 typedef bool *BoolPtr;
 
 #ifndef TRUE
