@@ -847,8 +847,8 @@ AllocateFile()
             FreeFd = 0;
             AssertLruRoom();
         } else {
-            elog(WARN,"Open: %s in %s line %d\n", Nulldev,
-                 __FILE__, __LINE__);
+            elog(WARN,"Open: %s in %s line %d, %s\n", Nulldev,
+                 __FILE__, __LINE__, strerror(errno));
         }
     }
     close(fd);
