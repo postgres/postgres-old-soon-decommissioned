@@ -488,6 +488,7 @@ explain_outNode(StringInfo str,
 			break;
 		case T_SeqScan:
 		case T_TidScan:
+		case T_SubqueryScan:
 		case T_FunctionScan:
 			show_scan_qual(plan->qual, false,
 						   "Filter",
@@ -539,13 +540,6 @@ explain_outNode(StringInfo str,
 							"Filter",
 							"outer", OUTER, outerPlan(plan),
 							"inner", INNER, innerPlan(plan),
-							str, indent, es);
-			break;
-		case T_SubqueryScan:
-			show_upper_qual(plan->qual,
-							"Filter",
-						  "subplan", 1, ((SubqueryScan *) plan)->subplan,
-							"", 0, NULL,
 							str, indent, es);
 			break;
 		case T_Agg:
