@@ -1,16 +1,27 @@
 <!--
 $Header$
+
 Postgres User's Manual.
 Derived from postgres.sgml.
 thomas 1998-02-24
 
 $Log: user.sgml,v $
+Revision 1.5  1998/08/17 16:20:32  thomas
+Move SQL reference pages up into the User's Guide.
+
 Revision 1.4  1998/08/15 06:52:54  thomas
 Include new chapters.
 
 -->
 
 <!doctype book PUBLIC "-//Davenport//DTD DocBook V3.0//EN" [
+
+<!entity about    SYSTEM "about.sgml">
+<!entity history  SYSTEM "history.sgml">
+<!entity info     SYSTEM "info.sgml">
+<!entity legal    SYSTEM "legal.sgml">
+<!entity notation SYSTEM "notation.sgml">
+
 <!entity intro    SYSTEM "intro.sgml">
 <!entity advanced SYSTEM "advanced.sgml">
 <!entity environ  SYSTEM "environ.sgml">
@@ -27,12 +38,13 @@ Include new chapters.
 <!entity psql     SYSTEM "psql.sgml">
 <!entity pgaccess SYSTEM "pgaccess.sgml">
 <!entity biblio   SYSTEM "biblio.sgml">
+<!entity syntax   SYSTEM "syntax.sgml">
 
 <!-- reference pages -->
 <!entity % allfiles SYSTEM "allfiles.sgml">
 %allfiles;
 ]>
-<!-- entity manpages SYSTEM "man/manpages.sgml" subdoc -->
+
 <Book Id="user">
 
 <!-- Title information -->
@@ -104,6 +116,7 @@ It provides SQL92/SQL3 language support,
 &intro;
 &environ;
 &manage;
+&syntax;
 &datatype;
 &oper;
 &func;

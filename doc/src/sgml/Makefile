@@ -67,7 +67,7 @@ install::
 all::
 
 clean::
-	(rm -rf *.html *.htm)
+	(rm -rf HTML.manifest *.html *.htm)
 
 distclean::
 	$(MAKE) clean
