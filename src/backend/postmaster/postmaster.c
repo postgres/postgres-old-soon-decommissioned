@@ -660,8 +660,8 @@ ConnStartup(Port *port, int *status,
             char buffer[200 + sizeof(namebuf)];
             sprintf(buffer, 
                     "Failed to authenticate client as Postgres user '%s' "
-                    "using authentication scheme %d.",
-                    namebuf, msgType);
+                    "using %s: %s",
+                    namebuf, name_of_authentication_type(msgType), PQerrormsg);
             strncpy(errormsg, buffer, errormsg_len);
             *status = STATUS_ERROR;
         } else {

@@ -703,3 +703,29 @@ StreamOpen(char *hostName, short portName, Port *port)
     
     return(STATUS_OK);
 }
+
+static char *authentication_type_name[] = {
+    0, 0, 0, 0, 0, 0, 0, 
+    "the default authentication type", 
+    0, 0,
+    "Kerberos v4",
+    "Kerberos v5",
+    "host-based authentication",
+    "unauthenication",
+    "plaintext password authentication"
+};
+
+char *name_of_authentication_type(int type)
+{
+    char *result = 0;
+
+    if(type >= 1 && type <= LAST_AUTHENTICATION_TYPE) {
+	result = authentication_type_name[type];
+    }
+
+    if(result == 0) {
+	result = "<unknown authentication type>";
+    }
+
+    return result;
+}

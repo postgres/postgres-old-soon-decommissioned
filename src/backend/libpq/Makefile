@@ -24,7 +24,8 @@ LDADD+= $(KRBLIBS)
 endif
 
 OBJS = be-dumpdata.o be-fsstubs.o be-pqexec.o \
-       auth.o hba.o pqcomm.o portal.o util.o portalbuf.o pqpacket.o pqsignal.o
+       auth.o hba.o pqcomm.o portal.o util.o portalbuf.o pqpacket.o pqsignal.o \
+       password.o
 
 all: SUBSYS.o
 

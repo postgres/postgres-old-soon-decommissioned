@@ -125,6 +125,8 @@ typedef struct pg_conn{
   int asyncNotifyWaiting;
   Dllist* notifyList;
   char *pguser;  /* Postgres username of user who is connected */
+  char *pgpass;
+  char *pgauth;
   PGlobjfuncs *lobjfuncs; /* Backend function OID's for large object access */
 } PGconn;
 
