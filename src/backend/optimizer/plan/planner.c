@@ -209,17 +209,6 @@ subquery_planner(Query *parse, double tuple_fraction)
 	}
 
 	/*
-	 * Check for ungrouped variables passed to subplans in targetlist and
-	 * HAVING clause (but not in WHERE or JOIN/ON clauses, since those are
-	 * evaluated before grouping).	We can't do this any earlier because
-	 * we must use the preprocessed targetlist for comparisons of grouped
-	 * expressions.
-	 */
-	if (parse->hasSubLinks &&
-		(parse->groupClause != NIL || parse->hasAggs))
-		check_subplans_for_ungrouped_vars(parse);
-
-	/*
 	 * A HAVING clause without aggregates is equivalent to a WHERE clause
 	 * (except it can only refer to grouped fields).  Transfer any
 	 * agg-free clauses of the HAVING qual into WHERE.	This may seem like

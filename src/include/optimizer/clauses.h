@@ -52,7 +52,6 @@ extern bool expression_returns_set(Node *clause);
 
 extern bool contain_subplans(Node *clause);
 extern List *pull_subplans(Node *clause);
-extern void check_subplans_for_ungrouped_vars(Query *query);
 
 extern bool contain_mutable_functions(Node *clause);
 extern bool contain_volatile_functions(Node *clause);
