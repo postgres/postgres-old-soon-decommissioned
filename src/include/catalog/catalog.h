@@ -30,7 +30,7 @@ extern char *GetDatabasePath(Oid tblNode);
 
 extern bool IsSystemRelationName(const char *relname);
 extern bool IsSharedSystemRelationName(const char *relname);
+
 extern Oid	newoid(void);
-extern void fillatt(TupleDesc att);
 
 #endif	 /* CATALOG_H */

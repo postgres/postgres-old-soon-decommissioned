@@ -584,12 +584,6 @@ AddNewAttributeTuples(Oid new_rel_oid,
 		CatalogOpenIndices(Num_pg_attr_indices, Name_pg_attr_indices, idescs);
 
 	/* ----------------
-	 *	initialize tuple descriptor.
-	 * ----------------
-	 */
-	fillatt(tupdesc);
-
-	/* ----------------
 	 *	first we add the user attributes..
 	 * ----------------
 	 */

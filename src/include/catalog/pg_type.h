@@ -51,13 +51,11 @@ CATALOG(pg_type) BOOTSTRAP
 
 	/*
 	 * typbyval determines whether internal Postgres routines pass a value
-	 * of this type by value or by reference.  Only char, short, and int-
-	 * equivalent items can be passed by value, so if the type is not 1,
-	 * 2, or 4 bytes long, Postgres does not have the option of passing by
-	 * value and so typbyval had better be FALSE.  Variable-length types
-	 * are always passed by reference. Note that typbyval can be false
-	 * even if the length would allow pass-by-value; this is currently
-	 * true for type float4, for example.
+	 * of this type by value or by reference.  typbyval had better be FALSE
+	 * if the length is not 1, 2, or 4 (or 8 on 8-byte-Datum machines).
+	 * Variable-length types are always passed by reference. Note that
+	 * typbyval can be false even if the length would allow pass-by-value;
+	 * this is currently true for type float4, for example.
 	 */
 	bool		typbyval;
 

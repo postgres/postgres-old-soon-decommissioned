@@ -147,6 +147,9 @@ typedef struct xl_heap_update
 #define MaxAttrSize		(10 * 1024 * 1024)
 
 
+/*
+ * Attribute numbers for the system-defined attributes
+ */
 #define SelfItemPointerAttributeNumber			(-1)
 #define ObjectIdAttributeNumber					(-2)
 #define MinTransactionIdAttributeNumber			(-3)
@@ -155,9 +158,6 @@ typedef struct xl_heap_update
 #define MaxCommandIdAttributeNumber				(-6)
 #define TableOidAttributeNumber			        (-7)
 #define FirstLowInvalidHeapAttributeNumber		(-8)
-
-/* If you make any changes above, the order of offsets in this must change */
-extern long heap_sysoffset[];
 
 /*
  * This new HeapTuple for version >= 6.5 and this is why it was changed:

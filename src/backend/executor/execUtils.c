@@ -274,16 +274,10 @@ ExecAssignResultTypeFromTL(Plan *node, CommonState *commonstate)
 {
 	List	   *targetList;
 	TupleDesc	tupDesc;
-	int			len;
 
 	targetList = node->targetlist;
 	tupDesc = ExecTypeFromTL(targetList);
-	len = ExecTargetListLength(targetList);
-
-	if (len > 0)
-		ExecAssignResultType(commonstate, tupDesc);
-	else
-		ExecAssignResultType(commonstate, (TupleDesc) NULL);
+	ExecAssignResultType(commonstate, tupDesc);
 }
 
 /* ----------------
@@ -582,8 +576,8 @@ ExecSetTypeInfo(int index,
 }
 
 /* ----------------
- *		ExecFreeTypeInfo frees the array of attrbutes
- *		created by ExecMakeTypeInfo and returned by ExecTypeFromTL...
+ *		ExecFreeTypeInfo frees the array of attributes
+ *		created by ExecMakeTypeInfo and returned by ExecTypeFromTL
  * ----------------
  */
 void

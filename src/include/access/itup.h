@@ -111,7 +111,7 @@ typedef RetrieveIndexResultData *RetrieveIndexResult;
 	( \
 		(tupleDesc)->attrs[(attnum)-1]->attcacheoff >= 0 ? \
 		( \
-			(Datum) fetchatt(&((tupleDesc)->attrs[(attnum)-1]), \
+			fetchatt((tupleDesc)->attrs[(attnum)-1], \
 			(char *) (tup) + \
 			( \
 				IndexTupleHasMinHeader(tup) ? \

@@ -582,6 +582,11 @@ extern void srandom(unsigned int seed);
 #undef INT64_FORMAT
 
 /*
+ * We need a #define symbol for sizeof(Datum) for use in some #if tests.
+ */
+#undef SIZEOF_DATUM
+
+/*
  * These must be defined as the alignment requirement (NOT the size) of
  * each of the basic C data types (except char, which we assume has align 1).
  * MAXIMUM_ALIGNOF is the largest alignment requirement for any C data type.
