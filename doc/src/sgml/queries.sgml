@@ -44,7 +44,7 @@ SELECT * FROM table1;
   client application.  For example, the
   <application>psql</application> program will display an ASCII-art
   table on the screen, while client libraries will offer functions to
-  retrieve individual rows and columns.)  The select list
+  extract individual values from the query result.)  The select list
   specification <literal>*</literal> means all columns that the table
   expression happens to provide.  A select list can also select a
   subset of the available columns or make calculations using the
