@@ -22,10 +22,10 @@ all: libpgport.a
 
 # libpgport is needed by some contrib
 install-all-headers: 
-	$(INSTALL_STLIB) libpgport.a $(DESTDIR)$(pkglibdir)
+	$(INSTALL_STLIB) libpgport.a $(DESTDIR)$(libdir)
 
 uninstall:
-	$(RM) $(DESTDIR)$(pkglibdir)/libpgport.a
+	$(RM) $(DESTDIR)$(libdir)/libpgport.a
 
 libpgport.a: $(LIBOBJS)
 	$(AR) $(AROPT) $@ $^

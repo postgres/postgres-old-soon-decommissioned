@@ -360,7 +360,7 @@ ifneq (,$(LIBOBJS))
 LIBS := -lpgport $(LIBS)
 ifdef PGXS
 # where libpgport.a is installed
-LDFLAGS := -L$(pkglibdir) $(LDFLAGS)
+LDFLAGS := -L$(libdir) $(LDFLAGS)
 else
 LDFLAGS := -L$(top_builddir)/src/port $(LDFLAGS)
 endif
