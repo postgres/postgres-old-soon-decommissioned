@@ -49,10 +49,13 @@ typedef struct _typeInfo
 	char	   *typdelim;
 	char	   *typdefault;
 	char	   *typrelid;
+	char	   *typalign;
+	char	   *typstorage;
 	char	   *usename;
 	char	   *typedefn;
 	int			passedbyvalue;
 	int			isArray;
+	int			isDefined;
 } TypeInfo;
 
 typedef struct _funcInfo
