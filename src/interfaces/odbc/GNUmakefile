@@ -36,8 +36,9 @@ include $(top_srcdir)/src/Makefile.shlib
 # BSD/OS fails with libc and crt1.o undefined symbols without this.
 # bjm 2001-02-09
 #
-ifneq ($(PORTNAME), bsdi)
 LINK.shared += $(shlib_symbolic)
+ifeq ($(PORTNAME), bsdi)
+SHLIB_LINK += -lc -R /usr/lib/crt1.o
 endif
 
 odbc_headers = isql.h isqlext.h iodbc.h
