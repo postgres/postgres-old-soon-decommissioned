@@ -5356,7 +5356,7 @@ SELECT NULLIF(value, '(none)') ...
     path returned.
    </para>
 
-   <para id=set-search-path xreflabel="SET SEARCH_PATH">
+   <para>
     <indexterm>
      <primary>search path</primary>
      <secondary>changing at runtime</secondary>
