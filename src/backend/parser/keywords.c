@@ -262,7 +262,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"truncate", TRUNCATE},
 	{"trusted", TRUSTED},
 	{"type", TYPE_P},
-	{"under", UNDER},
 	{"union", UNION},
 	{"unique", UNIQUE},
 	{"unlisten", UNLISTEN},

@@ -20,6 +20,7 @@ extern void makeRangeTable(ParseState *pstate, List *frmList);
 extern void lockTargetTable(ParseState *pstate, char *relname);
 extern void setTargetTable(ParseState *pstate, char *relname,
 						   bool inh, bool inJoinSet);
+extern bool interpretInhOption(InhOption inhOpt);
 extern Node *transformWhereClause(ParseState *pstate, Node *where);
 extern List *transformGroupClause(ParseState *pstate, List *grouplist,
 					 List *targetlist);

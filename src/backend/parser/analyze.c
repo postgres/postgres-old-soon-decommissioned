@@ -260,7 +260,8 @@ transformDeleteStmt(ParseState *pstate, DeleteStmt *stmt)
 	/* set up a range table */
 	lockTargetTable(pstate, stmt->relname);
 	makeRangeTable(pstate, NIL);
-	setTargetTable(pstate, stmt->relname, stmt->inh, true);
+	setTargetTable(pstate, stmt->relname,
+				   interpretInhOption(stmt->inhOpt), true);
 
 	qry->distinctClause = NIL;
 
@@ -2213,7 +2214,8 @@ transformUpdateStmt(ParseState *pstate, UpdateStmt *stmt)
 	 */
 	lockTargetTable(pstate, stmt->relname);
 	makeRangeTable(pstate, stmt->fromClause);
-	setTargetTable(pstate, stmt->relname, stmt->inh, true);
+	setTargetTable(pstate, stmt->relname,
+				   interpretInhOption(stmt->inhOpt), true);
 
 	qry->targetList = transformTargetList(pstate, stmt->targetList);
 
