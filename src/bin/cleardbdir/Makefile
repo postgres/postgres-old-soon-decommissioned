@@ -11,6 +11,9 @@
 #
 #-------------------------------------------------------------------------
 
+SRCDIR= ../..
+include ../../Makefile.global
+
 all: cleardbdir
 
 cleardbdir:
