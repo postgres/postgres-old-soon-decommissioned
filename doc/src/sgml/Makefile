@@ -240,4 +240,3 @@ clean distclean maintainer-clean:
 	rm -f HTML.index $(GENERATED_SGML)
 # text
 	rm -f INSTALL HISTORY regress_README
-
