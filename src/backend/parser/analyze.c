@@ -2891,6 +2891,10 @@ transformColumnType(ParseState *pstate, ColumnDef *column)
 				typename->typmod = VARHDRSZ +
 					((NUMERIC_DEFAULT_PRECISION << 16) | NUMERIC_DEFAULT_SCALE);
 				break;
+			case ZPBITOID:
+				/* 'bit' -> 'bit(1)' */
+				typename->typmod = 1;
+				break;
 		}
 	}
 
