@@ -11,8 +11,6 @@
 # because the strdup.c in this directory may conflict with the strdup()
 # prototype from the system library and cause a compile error.
 #
-# getopt.o is likewise built only on request.
-#
 # dllinit.o is only built on Win32 platform.
 #
 #-------------------------------------------------------------------------
@@ -26,7 +24,7 @@ all:
 	# directories as needed.
 
 clean distclean maintainer-clean:
-	rm -f dllinit.o getopt.o strdup.o
+	rm -f dllinit.o strdup.o
 
 depend dep:
 	$(CC) $(CFLAGS) -MM *.c >depend

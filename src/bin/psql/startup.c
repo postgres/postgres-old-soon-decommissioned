@@ -548,6 +548,7 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 				}
 				break;
 #ifndef HAVE_GETOPT_LONG
+			/* FreeBSD has a broken getopt that causes this test to fail. */
 			case '-':
 				fprintf(stderr,
 						gettext("%s was compiled without support for long options.\n"
