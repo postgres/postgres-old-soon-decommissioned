@@ -267,9 +267,6 @@ _freeMergeJoin(MergeJoin *node)
 	 */
 	freeObject(node->mergeclauses);
 
-	pfree(node->mergerightorder);
-	pfree(node->mergeleftorder);
-
 	pfree(node);
 }
 

@@ -780,24 +780,25 @@ CommuteClause(Node *clause)
 	HeapTuple	heapTup;
 
 	if (!is_opclause(clause))
-		return;
+		elog(ERROR, "CommuteClause: applied to non-operator clause");
 
 	heapTup = (HeapTuple)
 		get_operator_tuple(get_commutator(((Oper *) ((Expr *) clause)->oper)->opno));
 
 	if (heapTup == (HeapTuple) NULL)
-		return;
+		elog(ERROR, "CommuteClause: no commutator for operator %d",
+			 ((Oper *) ((Expr *) clause)->oper)->opno);
 
 	commuTup = (Form_pg_operator) GETSTRUCT(heapTup);
 
 	commu = makeOper(heapTup->t_data->t_oid,
-					 InvalidOid,
+					 commuTup->oprcode,
 					 commuTup->oprresult,
 					 ((Oper *) ((Expr *) clause)->oper)->opsize,
 					 NULL);
 
 	/*
-	 * reform the clause -> (operator func/var constant)
+	 * re-form the clause in-place!
 	 */
 	((Expr *) clause)->oper = (Node *) commu;
 	temp = lfirst(((Expr *) clause)->args);

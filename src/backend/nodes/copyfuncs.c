@@ -326,16 +326,6 @@ _copyMergeJoin(MergeJoin *from)
 	 */
 	Node_Copy(from, newnode, mergeclauses);
 
-	newnode->mergejoinop = from->mergejoinop;
-
-	newnode->mergerightorder = (Oid *) palloc(sizeof(Oid) * 2);
-	newnode->mergerightorder[0] = from->mergerightorder[0];
-	newnode->mergerightorder[1] = 0;
-
-	newnode->mergeleftorder = (Oid *) palloc(sizeof(Oid) * 2);
-	newnode->mergeleftorder[0] = from->mergeleftorder[0];
-	newnode->mergeleftorder[1] = 0;
-
 	return newnode;
 }
 

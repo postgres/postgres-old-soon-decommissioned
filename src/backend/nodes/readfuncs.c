@@ -426,10 +426,6 @@ _readMergeJoin()
 	token = lsptok(NULL, &length);		/* eat :mergeclauses */
 	local_node->mergeclauses = nodeRead(true);	/* now read it */
 
-	token = lsptok(NULL, &length);		/* eat :mergejoinop */
-	token = lsptok(NULL, &length);		/* get mergejoinop */
-	local_node->mergejoinop = atol(token);
-
 	return local_node;
 }
 

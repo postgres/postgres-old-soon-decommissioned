@@ -371,12 +371,6 @@ _outMergeJoin(StringInfo str, MergeJoin *node)
 
 	appendStringInfo(str, " :mergeclauses ");
 	_outNode(str, node->mergeclauses);
-
-	appendStringInfo(str, 
-			" :mergejoinop %u :mergerightorder %u :mergeleftorder %u ",
-			node->mergejoinop, 
-			node->mergerightorder,
-			node->mergeleftorder);
 }
 
 /*
