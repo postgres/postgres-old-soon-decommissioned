@@ -35,7 +35,7 @@ extern void S_INIT_LOCK(slock_t *lock);
 #if defined(alpha) || \
     defined(hpux) || \
     defined(irix5) || \
-    defined(next)
+    defined(nextstep)
 extern int S_LOCK_FREE(slock_t *lock);
 #else
 #define S_LOCK_FREE(lock)	((*lock) == 0)

@@ -50,7 +50,7 @@
 
 extern int tas(slock_t *lock);
 
-#if defined (next)
+#if defined (nextstep)
 /*
  * NEXTSTEP (mach)
  * slock_t is defined as a struct mutex.
