@@ -574,10 +574,15 @@ typedef struct InsertStmt
 {
 	NodeTag		type;
 	char	   *relname;		/* relation to insert into */
+	char	   *unique;			/* NULL, '*', or unique attribute name */
 	List	   *cols;			/* names of the columns */
 	List	   *targetList;		/* the target list (of ResTarget) */
 	List	   *fromClause;		/* the from clause */
 	Node	   *whereClause;	/* qualifications */
+	List	   *groupClause;	/* group by clause */
+	Node	   *havingClause;	/* having conditional-expression */
+	List	   *unionClause;	/* union subselect parameters */
+	bool		unionall;		/* union without unique sort */
 } InsertStmt;
 
 /* ----------------------

@@ -11,6 +11,8 @@ insert \(em insert tuples to a relation
 	{\fBvalues\fR (expression1 [,expression-i] ) |
     \fBselect\fR expression1 [,expression-i]
 	[\fBfrom\fR from-list] [\fBwhere\fR qual] 
+    [\fBgroup by\fR attr_name1 {, attr_name-i....}]
+	[\fBunion {all} select\fR ...]
 .fi
 .SH DESCRIPTION
 .BR Insert
