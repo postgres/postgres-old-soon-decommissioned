@@ -245,9 +245,9 @@ endif # enable_shared
 
 all-lib: all-static-lib all-shared-lib
 
-all-static-lib: lib$(NAME).a
+all-static-lib: $(PTHREAD_H_WIN32) $(top_srcdir)/src/port/pg_config_paths.h lib$(NAME).a
 
-all-shared-lib: $(shlib)
+all-shared-lib: $(PTHREAD_H_WIN32) $(top_srcdir)/src/port/pg_config_paths.h $(shlib)
 
 ifneq ($(PORTNAME), cygwin)
 ifneq ($(PORTNAME), win32)
