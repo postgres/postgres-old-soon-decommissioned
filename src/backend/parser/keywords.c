@@ -130,6 +130,7 @@ static ScanKeyword ScanKeywords[] = {
 	{ "to",			TO		},
 	{ "transaction",	TRANSACTION	},
 	{ "type",		P_TYPE		},
+	{ "unique",             UNIQUE          },
 	{ "update",		UPDATE		},
 	{ "using",		USING		},
 	{ "vacuum",		VACUUM		},

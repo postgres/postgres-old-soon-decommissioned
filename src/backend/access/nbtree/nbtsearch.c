@@ -29,7 +29,7 @@
 
 static BTStack _bt_searchr(Relation rel, int keysz, ScanKey scankey, Buffer *bufP, BTStack stack_in);
 static OffsetNumber _bt_firsteq(Relation rel, TupleDesc itupdesc, Page page, Size keysz, ScanKey scankey, OffsetNumber offnum);
-static int _bt_compare(Relation rel, TupleDesc itupdesc, Page page, int keysz, ScanKey scankey, OffsetNumber offnum);
+int _bt_compare(Relation rel, TupleDesc itupdesc, Page page, int keysz, ScanKey scankey, OffsetNumber offnum);
 static bool _bt_twostep(IndexScanDesc scan, Buffer *bufP, ScanDirection dir);
 static RetrieveIndexResult _bt_endpoint(IndexScanDesc scan, ScanDirection dir);
 
@@ -413,7 +413,7 @@ _bt_firsteq(Relation rel,
  *	a new minimal key is inserted, the leftmost entry on the leftmost
  *	page is less than all possible keys, by definition.
  */
-static int
+int
 _bt_compare(Relation rel,
 	    TupleDesc itupdesc,
 	    Page page,

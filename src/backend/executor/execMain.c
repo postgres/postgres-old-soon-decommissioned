@@ -918,7 +918,7 @@ ExecAppend(TupleTableSlot *slot,
      */
     numIndices = resultRelationInfo->ri_NumIndices;
     if (numIndices > 0) {
-	ExecInsertIndexTuples(slot, &(tuple->t_ctid), estate);
+	ExecInsertIndexTuples(slot, &(tuple->t_ctid), estate, false);
     }
 }
 
@@ -1056,8 +1056,9 @@ ExecReplace(TupleTableSlot *slot,
      *  the new tupleid stored there.
      * ----------------
      */
+
     numIndices = resultRelationInfo->ri_NumIndices;
     if (numIndices > 0) {
-	ExecInsertIndexTuples(slot, &(tuple->t_ctid), estate);
+	ExecInsertIndexTuples(slot, &(tuple->t_ctid), estate, true);
     }
 }

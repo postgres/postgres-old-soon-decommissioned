@@ -172,7 +172,7 @@ extern void ExecCloseIndices(RelationInfo *resultRelationInfo);
 extern IndexTuple ExecFormIndexTuple(HeapTuple heapTuple,
 	Relation heapRelation, Relation indexRelation, IndexInfo *indexInfo);
 extern void ExecInsertIndexTuples(TupleTableSlot *slot, ItemPointer tupleid,
-				      EState *estate);
+				      EState *estate, bool is_update);
 
 
 /* ----------------------------------------------------------------

@@ -69,6 +69,7 @@ DefineIndex(char *heapRelationName,
 	    char *accessMethodName,
 	    List *attributeList,
 	    List *parameterList,
+	    bool unique,
 	    Expr *predicate,
 	    List *rangetable)
 {
@@ -176,7 +177,7 @@ DefineIndex(char *heapRelationName,
 		     &fInfo, NULL, accessMethodId, 
 		     numberOfAttributes, attributeNumberA,
 		     classObjectId, parameterCount, parameterA, (Node*)cnfPred,
-		     lossy);
+		     lossy, unique);
     }else {
 	attributeNumberA =
 	    (AttrNumber *)palloc(numberOfAttributes *
@@ -192,7 +193,7 @@ DefineIndex(char *heapRelationName,
 		     ((IndexElem*)lfirst(attributeList))->tname,
 		     accessMethodId, numberOfAttributes, attributeNumberA,
 		     classObjectId, parameterCount, parameterA, (Node*)cnfPred,
-		     lossy);
+		     lossy, unique);
     }
 }
 

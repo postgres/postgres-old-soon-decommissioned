@@ -298,7 +298,9 @@ copy_index(Oid OIDOldIndex, Oid OIDNewHeap)
 		 natts, 
 		 Old_pg_index_Form->indkey,
 		 Old_pg_index_Form->indclass,
-		 (uint16)0, (Datum) NULL, NULL, Old_pg_index_Form->indislossy);
+		 (uint16)0, (Datum) NULL, NULL, 
+		 Old_pg_index_Form->indislossy,
+		 Old_pg_index_Form->indisunique);
 
     heap_close(OldIndex);
     heap_close(NewHeap);

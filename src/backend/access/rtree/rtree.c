@@ -277,7 +277,7 @@ rtbuild(Relation heap,
  *    It doesn't do any work; just locks the relation and passes the buck.
  */
 InsertIndexResult
-rtinsert(Relation r, Datum *datum, char *nulls, ItemPointer ht_ctid)
+rtinsert(Relation r, Datum *datum, char *nulls, ItemPointer ht_ctid, bool is_update)
 {
     InsertIndexResult res;
     IndexTuple itup;

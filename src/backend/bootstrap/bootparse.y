@@ -231,7 +231,7 @@ DeclareIndexStmt:
 		  DefineIndex(LexIDStr($5), 
 			      LexIDStr($3), 
 			      LexIDStr($7),
-			      params, NIL, 0, NIL);
+			      params, NIL, 0, 0, NIL);
 		  DO_END;
 		}
 	;

@@ -901,6 +901,7 @@ SearchSysCache(struct catcache *cache,
 	    sd =  heap_beginscan(relation, 0, NowTimeQual,
 				 cache->cc_nkeys, cache->cc_skey);
 	    
+	    /* should this buffer be ReleaseBuffer'd?  --djm 8/20/96 */
 	    ntp = heap_getnext(sd, 0, &buffer);
 	    
 	    MemoryContextSwitchTo((MemoryContext)CacheCxt);

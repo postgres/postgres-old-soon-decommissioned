@@ -27,7 +27,8 @@ extern Relation index_openr(char *relationName);
 extern void index_close(Relation relation);
 extern InsertIndexResult index_insert(Relation relation,
 				      Datum *datum, char *nulls,
-				      ItemPointer heap_t_ctid);
+				      ItemPointer heap_t_ctid,
+				      bool is_update);
 extern void index_delete(Relation relation, ItemPointer indexItem);
 extern IndexScanDesc index_beginscan(Relation relation, bool scanFromEnd,
      uint16 numberOfKeys, ScanKey key);

@@ -372,6 +372,7 @@ ProcessUtility(Node *parsetree,
 			stmt->accessMethod, /* am name */
 			stmt->indexParams, /* parameters */
 			stmt->withClause,
+			stmt->unique,
 			(Expr*)stmt->whereClause,
 			stmt->rangetable);
 	}

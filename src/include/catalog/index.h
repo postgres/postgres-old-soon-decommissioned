@@ -39,7 +39,8 @@ extern void index_create(char *heapRelationName,
 			 uint16 parameterCount,
 			 Datum *parameter, 
 			 Node *predicate,
-			 bool islossy);
+			 bool islossy,
+			 bool unique);
 
 extern void index_destroy(Oid indexId);
 
@@ -57,5 +58,8 @@ extern void index_build(Relation heapRelation, Relation indexRelation,
 	int numberOfAttributes, AttrNumber attributeNumber[],
 	uint16 parameterCount, Datum *parameter, FuncIndexInfo *funcInfo,
 	PredInfo *predInfo);
+
+extern bool IndexIsUnique(Oid indexId);
+extern bool IndexIsUniqueNoCache(Oid indexId);
 
 #endif /* INDEX_H */

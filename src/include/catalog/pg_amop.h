@@ -229,7 +229,7 @@ DATA(insert OID = 0 (  403 1181 662 5 btreesel btreenpage ));
 
 DATA(insert OID = 0 (  403 430 645 1 btreesel btreenpage ));
 DATA(insert OID = 0 (  403 430 646 2 btreesel btreenpage ));
-DATA(insert OID = 0 (  403 430 99 3 btreesel btreenpage ));
+DATA(insert OID = 0 (  403 430 1267 3 btreesel btreenpage ));
 DATA(insert OID = 0 (  403 430 648 4 btreesel btreenpage ));
 DATA(insert OID = 0 (  403 430 647 5 btreesel btreenpage ));
 
@@ -443,7 +443,7 @@ DATA(insert OID = 0 (  404 408 462 5 btreesel btreenpage ));
 
 DATA(insert OID = 0 (  404 430 645 1 btreesel btreenpage ));
 DATA(insert OID = 0 (  404 430 646 2 btreesel btreenpage ));
-DATA(insert OID = 0 (  404 430 99 3 btreesel btreenpage ));
+DATA(insert OID = 0 (  404 430 1267 3 btreesel btreenpage ));
 DATA(insert OID = 0 (  404 430 648 4 btreesel btreenpage ));
 DATA(insert OID = 0 (  404 430 647 5 btreesel btreenpage ));
 
@@ -520,7 +520,7 @@ DATA(insert OID = 0 (  405 408 414 1 hashsel hashnpage ));
 /*
  *  hash table char16_ops
  */
-DATA(insert OID = 0 (  405 430 99 1 hashsel hashnpage ));
+DATA(insert OID = 0 (  405 430 1267 1 hashsel hashnpage ));
 /*
  *  hash table name_ops
  */

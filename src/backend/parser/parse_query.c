@@ -651,7 +651,9 @@ make_const(Value *value)
 		elog(NOTICE,"unknown type : %d\n", nodeTag(value));
 
 	    /* null const */
-	    con = makeConst(0, 0, (Datum)NULL, TRUE, 0, FALSE);
+	    /* if we don't set a type here, things will break.      */
+	    /* so set it to type 'unknown'.                         */
+	    con = makeConst(UNKNOWNOID, 0, (Datum)NULL, TRUE, 0, FALSE);
 	    return con;
 	}
     }

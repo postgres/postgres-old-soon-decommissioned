@@ -105,9 +105,13 @@ PageGetItem(Page page, ItemId itemId)
     Item	item;
     
     Assert(PageIsValid(page));
-    Assert((*itemId).lp_flags & LP_USED);
+/*    Assert(itemId->lp_flags & LP_USED); */
+    if(!(itemId->lp_flags & LP_USED)) {
+	elog(NOTICE, "LP_USED assertion failed.  dumping core.");
+	abort();
+    }
     
-    item = (Item)(((char *)page) + (*itemId).lp_off);
+    item = (Item)(((char *)page) + itemId->lp_off);
     
     return (item);
 }
