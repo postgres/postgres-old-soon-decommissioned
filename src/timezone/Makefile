@@ -21,7 +21,7 @@ ZICOBJS= zic.o ialloc.o scheck.o localtime.o
 # timezone data files
 TZDATA := africa antarctica asia australasia europe northamerica southamerica \
 	pacificnew etcetera factory backward systemv solar87 solar88 solar89
-TZDATAFILES := $(TZDATA:%=data/%)
+TZDATAFILES := $(TZDATA:%=$(srcdir)/data/%)
 
 all: SUBSYS.o submake-libpgport zic
 
