@@ -236,9 +236,13 @@ plan_union_query(List *relids,
 		new_root->uniqueFlag = NULL;
 		new_root->sortClause = NULL;
 		new_root->groupClause = NULL;
-		new_root->qry_numAgg = 0;
-		new_root->qry_aggs = NULL;
-		del_agg_tlist_references(new_root->targetList);
+		if (new_root->qry_numAgg != 0)
+		{
+			new_root->qry_numAgg = 0;
+			pfree(new_root->qry_aggs);
+			new_root->qry_aggs = NULL;
+			del_agg_tlist_references(new_root->targetList);
+		}
 		fix_parsetree_attnums(rt_index,
 							  rt_entry->relid,
 							  relid,

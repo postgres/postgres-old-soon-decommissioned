@@ -92,7 +92,7 @@ extern List *final_join_rels(List *join_rel_list);
 /*
  * prototypes for path/prune.c
  */
-extern List *prune_joinrels(List *rel_list);
+extern void prune_joinrels(List *rel_list);
 extern void prune_rel_paths(List *rel_list);
 extern Path *prune_rel_path(Rel *rel, Path *unorderedpath);
 extern List *merge_joinrels(List *rel_list1, List *rel_list2);
