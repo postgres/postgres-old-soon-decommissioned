@@ -229,6 +229,7 @@ static PyObject *PLyDict_FromTuple(PLyTypeInfo *, HeapTuple, TupleDesc);
 static PyObject *PLyBool_FromString(const char *);
 static PyObject *PLyFloat_FromString(const char *);
 static PyObject *PLyInt_FromString(const char *);
+static PyObject *PLyLong_FromString(const char *);
 static PyObject *PLyString_FromString(const char *);
 
 
@@ -1378,11 +1379,15 @@ PLy_input_datum_func2(PLyDatumToOb *arg, Form_pg_type typeStruct)
     case 'i':
       {
 	if ((strncasecmp("int", type, 3) == 0) && 
-	    ((type[3] == '4') || (type[3] == '2') || (type[3] == '8')) &&
+	    ((type[3] == '4') || (type[3] == '2')) &&
 	    (type[4] == '\0'))
 	  {
 	    arg->func = PLyInt_FromString;
 	    return;
+	  }
+	else if ( strcasecmp("int8", type) == 0 )
+	  {
+	    arg->func = PLyLong_FromString;
 	  }
 	break;
       }
@@ -1462,6 +1467,12 @@ PLyInt_FromString(const char *src)
   if ((*eptr != '\0') || (errno))
     return NULL;
   return PyInt_FromLong(v);
+}
+
+PyObject *
+PLyLong_FromString(const char *src)
+{
+  return PyLong_FromString((char *)src,NULL,0);
 }
 
 PyObject *
