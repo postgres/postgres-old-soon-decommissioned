@@ -127,6 +127,12 @@ oid8eq(Oid *arg1, Oid *arg2)
 }
 
 bool
+oid8ne(Oid *arg1, Oid *arg2)
+{
+	return (bool) (memcmp(arg1, arg2, 8 * sizeof(Oid)) != 0);
+}
+
+bool
 oid8lt(Oid *arg1, Oid *arg2)
 {
 	int			i;

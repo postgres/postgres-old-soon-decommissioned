@@ -334,6 +334,7 @@ extern char *oidout(Oid o);
 extern bool oideq(Oid arg1, Oid arg2);
 extern bool oidne(Oid arg1, Oid arg2);
 extern bool oid8eq(Oid *arg1, Oid *arg2);
+extern bool oid8ne(Oid *arg1, Oid *arg2);
 extern bool oid8lt(Oid *arg1, Oid *arg2);
 extern bool oid8le(Oid *arg1, Oid *arg2);
 extern bool oid8ge(Oid *arg1, Oid *arg2);
