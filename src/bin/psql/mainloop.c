@@ -567,7 +567,9 @@ MainLoop(FILE *source)
 	 * it will re-enable ^C catching as soon as it gets back to the top
 	 * of its loop and resets main_loop_jmp to point to itself.
 	 */
+#ifndef WIN32
 	pqsignal(SIGINT, SIG_DFL);
+#endif
 
 	destroyPQExpBuffer(query_buf);
 	destroyPQExpBuffer(previous_buf);
