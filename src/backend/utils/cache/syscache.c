@@ -344,9 +344,8 @@ static struct cachedesc cacheinfo[] = {
 			0
 		},
 		sizeof(FormData_pg_shadow),
-NULL,NULL
-/*		ShadowNameIndex,
-	ShadowNameIndexScan*/},
+		ShadowNameIndex,
+	ShadowNameIndexScan},
 	{ShadowRelationName,		/* SHADOWSYSID */
 		1,
 		{
@@ -356,9 +355,8 @@ NULL,NULL
 			0
 		},
 		sizeof(FormData_pg_shadow),
-NULL,NULL
-/*		ShadowSysidIndex,
-	ShadowSysidIndexScan*/},
+		ShadowSysidIndex,
+	ShadowSysidIndexScan},
 	{StatisticRelationName,		/* STATRELID */
 		2,
 		{
