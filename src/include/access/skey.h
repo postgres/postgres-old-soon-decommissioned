@@ -16,8 +16,7 @@
 #ifndef	SKEY_H
 #define SKEY_H
 
-#include "access/attnum.h"
-
+#include <access/attnum.h>
 
 typedef struct ScanKeyData {
     bits16		sk_flags;	/* flags */

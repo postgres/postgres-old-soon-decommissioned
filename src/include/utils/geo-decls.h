@@ -24,7 +24,6 @@
  *	Useful floating point utilities and constants.
  *-------------------------------------------------------------------*/
 
-#include <math.h>
 
 #define	EPSILON			1.0E-06
 

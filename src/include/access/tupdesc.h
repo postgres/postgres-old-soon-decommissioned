@@ -13,9 +13,9 @@
 #ifndef	TUPDESC_H
 #define TUPDESC_H
 
-#include "nodes/pg_list.h"
-#include "catalog/pg_attribute.h"
-#include "access/attnum.h"
+#include <nodes/pg_list.h>
+#include <access/attnum.h>
+#include <catalog/pg_attribute.h>
 
 typedef struct tupleDesc {
 /*------------------------------------------------------------------------ 
