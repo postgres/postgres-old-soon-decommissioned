@@ -860,7 +860,11 @@ XLogFileInit(uint32 log, uint32 seg, bool *usexistent)
 			 log, seg, 0);
 
 	close(fd);
-	link(tpath, path);
+
+	if (link(tpath, path) < 0)
+		elog(STOP, "InitRelink(logfile %u seg %u) failed: %m",
+			 logId, logSeg);
+
 	unlink(tpath);
 
 	fd = BasicOpenFile(path, O_RDWR | PG_BINARY, S_IRUSR | S_IWUSR);
