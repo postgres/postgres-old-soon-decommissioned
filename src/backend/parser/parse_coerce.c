@@ -298,12 +298,15 @@ TypeCategory(Oid inType)
 			result = NUMERIC_TYPE;
 			break;
 
+		case (DATEOID):
+		case (TIMEOID):
 		case (ABSTIMEOID):
 		case (TIMESTAMPOID):
 			result = DATETIME_TYPE;
 			break;
 
 		case (RELTIMEOID):
+		case (TINTERVALOID):
 		case (INTERVALOID):
 			result = TIMESPAN_TYPE;
 			break;

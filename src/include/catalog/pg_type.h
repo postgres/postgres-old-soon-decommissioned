@@ -287,6 +287,7 @@ DESCR("relative, limited-range time interval (Unix delta time)");
 #define RELTIMEOID		703
 DATA(insert OID = 704 (  tinterval PGUID 12  47 f b t \054 0   0 tintervalin tintervalout tintervalin tintervalout i _null_ ));
 DESCR("(abstime,abstime), time interval");
+#define TINTERVALOID	704
 DATA(insert OID = 705 (  unknown   PGUID -1  -1 f b t \054 0   18 textin textout textin textout i _null_ ));
 DESCR("");
 #define UNKNOWNOID		705
