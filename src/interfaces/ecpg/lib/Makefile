@@ -14,7 +14,7 @@ include $(top_builddir)/src/Makefile.global
 
 NAME= ecpg
 SO_MAJOR_VERSION= 3
-SO_MINOR_VERSION= 1.1
+SO_MINOR_VERSION= 2.0
 
 CPPFLAGS += -I$(top_srcdir)/src/interfaces/ecpg/include -I$(libpq_srcdir)
 
