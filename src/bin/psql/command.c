@@ -494,7 +494,7 @@ exec_command(const char *cmd,
 				success = false;
 			}
 			else
-				success = do_lo_import(opt1, opt2);
+			    success = do_lo_import(opt1, opt2);
 		}
 
 		else if (strcmp(cmd + 3, "list") == 0)
@@ -1166,7 +1166,13 @@ unescape(const unsigned char *source, size_t len)
 
 		else
 		{
-			*tmp++ = *p;
+			int	i;
+			const unsigned char	*mp = p;
+
+			for (i = 0;i < PQmblen(p, pset.encoding);i++)
+			{
+			    *tmp++ = *mp++;
+			}
 			esc = false;
 		}
 	}
