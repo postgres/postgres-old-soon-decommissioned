@@ -78,7 +78,12 @@ Postgres documentation
   <para>
    The <filename>postgres</filename> executable is the actual
    <productname>PostgreSQL</productname> server process that processes
-   queries.  The second form above is how
+   queries.  It is normally not called directly; instead a <xref
+   linkend="app-postmaster"> multi-user server is started.
+  </para>
+
+  <para>
+   The second form above is how
    <application>postgres</application> is invoked by the <xref
    linkend="app-postmaster"> (only
    conceptually, since both <filename>postmaster</filename> and
@@ -255,7 +260,7 @@ Postgres documentation
     <variablelist>
 
      <varlistentry>
-      <term>-f [ s | i | m | n | h ]</term>
+      <term>-f { s | i | m | n | h }</term>
       <listitem>
        <para>
 	Forbids the use of particular scan and join methods:
