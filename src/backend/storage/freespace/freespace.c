@@ -161,10 +161,42 @@ FreeSpaceShmemSize(void)
 	return size;
 }
 
+BlockNumber
+GetPageWithFreeSpace(RelFileNode *rel, Size spaceNeeded)
+{
+	return InvalidBlockNumber;	/* stub */
+}
+
+void
+RecordFreeSpace(RelFileNode *rel, BlockNumber page, Size spaceAvail)
+{
+	/* stub */
+}
+
+BlockNumber
+RecordAndGetPageWithFreeSpace(RelFileNode *rel,
+							  BlockNumber oldPage,
+							  Size oldSpaceAvail,
+							  Size spaceNeeded)
+{
+	return InvalidBlockNumber;	/* stub */
+}
+
+void
+MultiRecordFreeSpace(RelFileNode *rel,
+					 BlockNumber minPage,
+					 BlockNumber maxPage,
+					 int nPages,
+					 BlockNumber *pages,
+					 Size *spaceAvail)
+{
+	/* stub */
+}
 
 void
 FreeSpaceMapForgetRel(RelFileNode *rel)
 {
+	/* stub */
 }
 
 
@@ -178,6 +210,7 @@ FreeSpaceMapForgetRel(RelFileNode *rel)
 void
 DumpFreeSpace(void)
 {
+	/* stub */
 }
 
 #endif	 /* FREESPACE_DEBUG */

@@ -27,7 +27,6 @@ extern Relation RelationNodeCacheGetRelation(RelFileNode rnode);
 extern Relation RelationIdCacheGetRelation(Oid relationId);
 
 extern void RelationClose(Relation relation);
-extern void RelationForgetRelation(Oid rid);
 
 /*
  * Routines to compute/retrieve additional cached information
@@ -41,13 +40,22 @@ extern void RelationCacheInitialize(void);
 extern void RelationCacheInitializePhase2(void);
 
 /*
+ * Routine to create a relcache entry for an about-to-be-created relation
+ */
+extern Relation RelationBuildLocalRelation(const char *relname,
+										   TupleDesc tupDesc,
+										   Oid relid, Oid dbid,
+										   bool nailit);
+
+/*
  * Routines for flushing/rebuilding relcache entries in various scenarios
  */
+extern void RelationForgetRelation(Oid rid);
+
 extern void RelationIdInvalidateRelationCacheByRelationId(Oid relationId);
 
 extern void RelationCacheInvalidate(void);
 
-extern void RelationRegisterRelation(Relation relation);
 extern void RelationPurgeLocalRelation(bool xactComitted);
 
 extern void RelationCacheAbort(void);

@@ -155,10 +155,11 @@ extern long *LocalRefCount;
  * prototypes for functions in bufmgr.c
  */
 extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
+extern int	ReleaseBuffer(Buffer buffer);
 extern int	WriteBuffer(Buffer buffer);
 extern int	WriteNoReleaseBuffer(Buffer buffer);
 extern Buffer ReleaseAndReadBuffer(Buffer buffer, Relation relation,
-								   BlockNumber blockNum, bool isExtend);
+								   BlockNumber blockNum);
 extern int	FlushBuffer(Buffer buffer, bool sync, bool release);
 
 extern void InitBufferPool(void);
@@ -176,7 +177,6 @@ extern void DropRelFileNodeBuffers(RelFileNode rnode);
 extern void DropBuffers(Oid dbid);
 extern void PrintPinnedBufs(void);
 extern int	BufferShmemSize(void);
-extern int	ReleaseBuffer(Buffer buffer);
 extern RelFileNode BufferGetFileNode(Buffer buffer);
 
 extern void SetBufferCommitInfoNeedsSave(Buffer buffer);

@@ -171,6 +171,7 @@ XLogOpenLogRelation(void)
 	sprintf(RelationGetPhysicalRelationName(logRelation), "pg_log");
 	logRelation->rd_node.tblNode = InvalidOid;
 	logRelation->rd_node.relNode = RelOid_pg_log;
+	logRelation->rd_targblock = InvalidBlockNumber;
 	logRelation->rd_fd = -1;
 	logRelation->rd_fd = smgropen(DEFAULT_SMGR, logRelation, false);
 	if (logRelation->rd_fd < 0)
@@ -384,6 +385,7 @@ XLogOpenRelation(bool redo, RmgrId rmid, RelFileNode rnode)
 
 		hentry->rdesc = res;
 
+		res->reldata.rd_targblock = InvalidBlockNumber;
 		res->reldata.rd_fd = -1;
 		res->reldata.rd_fd = smgropen(DEFAULT_SMGR, &(res->reldata),
 									  true /* allow failure */ );
