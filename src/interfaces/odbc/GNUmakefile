@@ -19,7 +19,7 @@ endif
 SO_MAJOR_VERSION = 0
 SO_MINOR_VERSION = 27
 
-override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -DODBCINSTDIR='"$(odbcinst_ini_dir)"'
+override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 
 
 OBJS = info.o bind.o columninfo.o connection.o convert.o drvconn.o \
@@ -40,6 +40,7 @@ SHLIB_LINK += -liodbcinst
 endif
 ifeq ($(with_unixodbc)$(with_iodbc),nono)
 OBJS += gpps.o
+override CPPFLAGS += -DODBCINSTDIR='"$(odbcinst_ini_dir)"'
 endif
 
 all: all-lib
@@ -54,16 +55,14 @@ LINK.shared += $(shlib_symbolic)
 
 
 install: all installdirs
-	$(INSTALL_DATA) $(srcdir)/odbcinst.ini $(DESTDIR)$(odbcinst_ini_dir)/odbcinst.ini
 	$(INSTALL_DATA) $(srcdir)/odbc.sql $(DESTDIR)$(datadir)/odbc.sql
 	$(MAKE) install-lib
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(libdir) $(DESTDIR)$(odbcinst_ini_dir) $(DESTDIR)$(datadir)
+	$(mkinstalldirs) $(DESTDIR)$(libdir) $(DESTDIR)$(datadir)
 
 uninstall: uninstall-lib
 	rm -f $(DESTDIR)$(datadir)/odbc.sql
-# XXX Uninstall the .ini file as well?
 
 clean distclean maintainer-clean: clean-lib
 	rm -f $(OBJS)
