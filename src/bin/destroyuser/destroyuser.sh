@@ -182,7 +182,7 @@ then
     done
 fi
 
-QUERY="delete from pg_user where usename = '$DELUSER'"
+QUERY="delete from pg_shadow where usename = '$DELUSER'"
 
 $PSQL -c "$QUERY" template1
 if [ $? -ne 0 ]

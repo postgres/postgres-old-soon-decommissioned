@@ -25,7 +25,7 @@
 #include "utils/elog.h"
 #include "catalog/catname.h"
 #include "catalog/pg_proc.h"
-#include "catalog/pg_user.h"
+#include "catalog/pg_shadow.h"
 #include "catalog/pg_database.h"
 #include "utils/syscache.h"
 #include "commands/dbcommands.h"
@@ -211,9 +211,9 @@ check_permissions(char *command,
 	userName = GetPgUserName();
 	utup = SearchSysCacheTuple(USENAME, PointerGetDatum(userName),
 							   0, 0, 0);
-	*userIdP = ((Form_pg_user) GETSTRUCT(utup))->usesysid;
-	use_super = ((Form_pg_user) GETSTRUCT(utup))->usesuper;
-	use_createdb = ((Form_pg_user) GETSTRUCT(utup))->usecreatedb;
+	*userIdP = ((Form_pg_shadow) GETSTRUCT(utup))->usesysid;
+	use_super = ((Form_pg_shadow) GETSTRUCT(utup))->usesuper;
+	use_createdb = ((Form_pg_shadow) GETSTRUCT(utup))->usecreatedb;
 
 	/* Check to make sure user has permission to use createdb */
 	if (!use_createdb)

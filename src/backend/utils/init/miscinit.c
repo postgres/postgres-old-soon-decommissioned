@@ -32,7 +32,7 @@
 #include "miscadmin.h"			/* where the declarations go */
 
 #include "catalog/catname.h"
-#include "catalog/pg_user.h"
+#include "catalog/pg_shadow.h"
 #include "catalog/pg_proc.h"
 #include "utils/syscache.h"
 
@@ -483,6 +483,6 @@ SetUserId()
 	if (!HeapTupleIsValid(userTup))
 		elog(FATAL, "SetUserId: user \"%s\" is not in \"%s\"",
 			 userName,
-			 UserRelationName);
-	UserId = (Oid) ((Form_pg_user) GETSTRUCT(userTup))->usesysid;
+			 ShadowRelationName);
+	UserId = (Oid) ((Form_pg_shadow) GETSTRUCT(userTup))->usesysid;
 }

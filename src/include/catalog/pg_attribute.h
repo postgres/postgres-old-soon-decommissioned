@@ -275,7 +275,7 @@ DATA(insert OID = 0 ( 1255 xmax				28 0  4  -5 0 -1 -1 f f i f f));
 DATA(insert OID = 0 ( 1255 cmax				29 0  4  -6 0 -1 -1 t f i f f));
 
 /* ----------------
- *		pg_user
+ *		pg_shadow
  * ----------------
  */
 DATA(insert OID = 0 ( 1260 usename		19  0 NAMEDATALEN   1 0 -1 -1 f f i f f));

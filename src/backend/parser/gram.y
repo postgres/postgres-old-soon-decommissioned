@@ -88,7 +88,7 @@ Oid	param_type(int t); /* used in parse_expr.c */
 	char				chr;
 	char				*str;
 	bool				boolean;
-	bool*				pboolean;	/* for pg_user privileges */
+	bool*				pboolean;	/* for pg_shadow privileges */
 	List				*list;
 	Node				*node;
 	Value				*value;

@@ -203,7 +203,7 @@ else
     CANADDUSER=f
 fi
 
-QUERY="insert into pg_user \
+QUERY="insert into pg_shadow \
         (usename, usesysid, usecreatedb, usetrace, usesuper, usecatupd) \
        values \
          ('$NEWUSER', $SYSID, '$CANCREATE', 't', '$CANADDUSER','t')"

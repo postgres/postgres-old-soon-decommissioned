@@ -32,7 +32,7 @@
 #include <access/genam.h>
 #include <catalog/pg_type.h>
 #include <catalog/catname.h>
-#include <catalog/pg_user.h>
+#include <catalog/pg_shadow.h>
 #include <commands/copy.h>
 #include "commands/trigger.h"
 #include <storage/fd.h>

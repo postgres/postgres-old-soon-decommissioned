@@ -17,7 +17,7 @@
 
 #include <postgres.h>
 #include <utils/syscache.h>
-#include <catalog/pg_user.h>
+#include <catalog/pg_shadow.h>
 
 bool
 superuser(void)
@@ -33,5 +33,5 @@ superuser(void)
 	utup = SearchSysCacheTuple(USENAME, PointerGetDatum(UserName),
 							   0, 0, 0);
 	Assert(utup != NULL);
-	return ((Form_pg_user) GETSTRUCT(utup))->usesuper;
+	return ((Form_pg_shadow) GETSTRUCT(utup))->usesuper;
 }

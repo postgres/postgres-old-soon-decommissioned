@@ -110,7 +110,7 @@ char	   *SharedSystemRelationNames[] = {
 	DatabaseRelationName,
 	GroupRelationName,
 	LogRelationName,
-	UserRelationName,
+	ShadowRelationName,
 	VariableRelationName,
 	0
 };

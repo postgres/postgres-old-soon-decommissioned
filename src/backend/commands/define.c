@@ -52,7 +52,7 @@
 #include <commands/defrem.h>
 #include <optimizer/xfunc.h>
 #include <tcop/dest.h>
-#include <catalog/pg_user.h>
+#include <catalog/pg_shadow.h>
 
 static char *defGetString(DefElem *def);
 static int	defGetTypeLength(DefElem *def);

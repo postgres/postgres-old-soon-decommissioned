@@ -605,7 +605,7 @@ static void readPasswordPacket(char *arg, PacketLen len, char *pkt)
 
 /*
  * Use the local flat password file if clear passwords are used and the file is
- * specified.  Otherwise use the password in the pg_user table, encrypted or
+ * specified.  Otherwise use the password in the pg_shadow table, encrypted or
  * not.
  */
 

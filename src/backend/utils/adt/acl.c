@@ -19,7 +19,7 @@
 #include "utils/acl.h"
 #include "utils/syscache.h"
 #include "catalog/catalog.h"
-#include "catalog/pg_user.h"
+#include "catalog/pg_shadow.h"
 #include "miscadmin.h"
 
 static char *getid(char *s, char *n);
@@ -158,7 +158,7 @@ aclparse(char *s, AclItem *aip, unsigned *modechg)
 									  0, 0, 0);
 			if (!HeapTupleIsValid(htp))
 				elog(ERROR, "aclparse: non-existent user \"%s\"", name);
-			aip->ai_id = ((Form_pg_user) GETSTRUCT(htp))->usesysid;
+			aip->ai_id = ((Form_pg_shadow) GETSTRUCT(htp))->usesysid;
 			break;
 		case ACL_IDTYPE_GID:
 			aip->ai_id = get_grosysid(name);
@@ -285,7 +285,7 @@ aclitemout(AclItem *aip)
 				pfree(tmp);
 			}
 			else
-				strncat(p, (char *) &((Form_pg_user)
+				strncat(p, (char *) &((Form_pg_shadow)
 									  GETSTRUCT(htp))->usename,
 						sizeof(NameData));
 			break;
