@@ -612,6 +612,7 @@ print_aligned_vertical(const char *title, const char *const * headers,
 
 #ifdef MULTIBYTE
 	free(cell_w);
+	free(head_w);
 #endif
 }
 
