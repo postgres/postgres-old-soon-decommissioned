@@ -137,7 +137,7 @@ PGconn *PQconnectdb(const char *conninfo);
       that is not the name of the machine at <literal>hostaddr</>.)  Also,
       <literal>host</> rather than <literal>hostaddr</> is used to identify
       the connection in <filename>$HOME/.pgpass</> (or 
-      <filename>%USERPROFILE%/.pgpass</> on Win32).
+      <filename>%USERPROFILE%\.pgpass</> on Win32).
      </para>
      <para>
       Without either a host name or host address,
