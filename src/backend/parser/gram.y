@@ -3280,11 +3280,11 @@ DeleteStmt:  DELETE FROM relation_expr where_clause
 				}
 		;
 
-LockStmt:	LOCK_P opt_table relation_name_list opt_lock
+LockStmt:	LOCK_P opt_table relation_name opt_lock
 				{
 					LockStmt *n = makeNode(LockStmt);
 
-					n->rellist = $3;
+					n->relname = $3;
 					n->mode = $4;
 					$$ = (Node *)n;
 				}

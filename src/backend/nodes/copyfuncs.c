@@ -2425,8 +2425,8 @@ _copyLockStmt(LockStmt *from)
 {
 	LockStmt   *newnode = makeNode(LockStmt);
 
-	Node_Copy(from, newnode, rellist);
-	
+	if (from->relname)
+		newnode->relname = pstrdup(from->relname);
 	newnode->mode = from->mode;
 
 	return newnode;
