@@ -5646,7 +5646,7 @@ doNegateFloat(Value *v)
 	if (*oldval == '+')
 		oldval++;
 	if (*oldval == '-')
-		v->val.str = oldval;	/* just strip the '-' */
+		v->val.str = oldval+1;	/* just strip the '-' */
 	else
 	{
 		char   *newval = (char *) palloc(strlen(oldval) + 2);
