@@ -208,7 +208,7 @@ simple_prompt(const char *prompt, int maxlen, bool echo)
 	if (!echo)
 	{
 		tcsetattr(0, TCSADRAIN, &t_orig);
-		puts("");
+		fputs("\n", stderr);
 	}
 #endif
 
