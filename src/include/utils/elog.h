@@ -153,8 +153,9 @@ extern int	getinternalerrposition(void);
  *		elog(ERROR, "portal \"%s\" not found", stmt->portalname);
  *----------
  */
-#define elog	errstart(ERROR, __FILE__, __LINE__, PG_FUNCNAME_MACRO), elog_finish
+#define elog	elog_start(__FILE__, __LINE__, PG_FUNCNAME_MACRO), elog_finish
 
+extern void elog_start(const char *filename, int lineno, const char *funcname);
 extern void
 elog_finish(int elevel, const char *fmt,...)
 /* This extension allows gcc to check the format string for consistency with
