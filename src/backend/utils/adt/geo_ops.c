@@ -872,7 +872,7 @@ line_out(LINE *line)
 /* line_construct_pm()
  * point-slope
  */
-LINE *
+static LINE *
 line_construct_pm(Point *pt, double m)
 {
 	LINE	   *result = palloc(sizeof(LINE));
@@ -1294,7 +1294,7 @@ path_open(PATH *path)
 }	/* path_open() */
 
 
-PATH *
+static PATH *
 path_copy(PATH *path)
 {
 	PATH	   *result;

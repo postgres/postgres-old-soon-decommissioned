@@ -1556,7 +1556,7 @@ get_tle_expr(QryHier *qh, int rt_index, TargetEntry *tle, bool varprefix)
  *					  with the type cast out of a Const
  * ----------
  */
-char *
+static char *
 get_const_expr(Const *constval)
 {
 	HeapTuple	typetup;

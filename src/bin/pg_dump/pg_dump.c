@@ -2527,7 +2527,7 @@ ParseACL(const char *acls, int *count)
  *	  Called for sequences and tables
  */
 
-void
+static void
 dumpACL(FILE *fout, TableInfo tbinfo)
 {
 	int			k,
