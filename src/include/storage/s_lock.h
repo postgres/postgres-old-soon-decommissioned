@@ -392,8 +392,10 @@ tas(volatile slock_t *lock)
 #define S_UNLOCK(lock) \
 	do { \
 		volatile slock_t *lock_ = (volatile slock_t *) (lock); \
-		lock_->sema[0] = lock_->sema[1] = \
-		lock_->sema[2] = lock_->sema[3] = -1; \
+		lock_->sema[0] = -1; \
+		lock_->sema[1] = -1; \
+		lock_->sema[2] = -1; \
+		lock_->sema[3] = -1; \
 	} while (0)
 
 #define S_LOCK_FREE(lock)	( *(int *) (((long) (lock) + 15) & ~15) != 0)
