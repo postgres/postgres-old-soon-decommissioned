@@ -1,8 +1,9 @@
 /*-------------------------------------------------------------------------
  *
  * libpgtcl.h--
- *	  libpgtcl is a tcl package for front-ends to interface with pglite
- *	 It's the tcl equivalent of the old libpq C interface.
+ *
+ *	libpgtcl is a tcl package for front-ends to interface with PostgreSQL.
+ *	It's a Tcl wrapper for libpq.
  *
  * Copyright (c) 1994, Regents of the University of California
  *
