@@ -1378,11 +1378,9 @@ MainLoop(PsqlSettings * settings, FILE * source)
 						 query);
 		if (slashCmdStatus == 1) {
 		    if (query[0] == '\0')
-		    {
 			paren_level = 0;
-		    	free(line);
-			continue;
-		    }
+		    free(line);
+		    continue;
 		}
 		if (slashCmdStatus == 2) {
 		    free(line);
