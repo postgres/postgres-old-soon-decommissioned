@@ -260,7 +260,7 @@ BootstrapMain(int argc, char *argv[])
 										 * parsing */
 				break;
 			case 'F':
-				enableFsync = false;
+				SetConfigOption("fsync", "false", PGC_POSTMASTER, true);
 				break;
 			case 'x':
 				xlogop = atoi(optarg);
@@ -269,7 +269,7 @@ BootstrapMain(int argc, char *argv[])
 				/* indicates fork from postmaster */
 				break;
 			case 'B':
-				NBuffers = atoi(optarg);
+				SetConfigOption("shared_buffers", optarg, PGC_POSTMASTER, true);
 				break;
 			default:
 				usage();
