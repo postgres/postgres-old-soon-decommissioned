@@ -2166,17 +2166,23 @@ estimate_num_groups(Query *root, List *groupExprs, double input_rows)
 		}
 
 		/*
-		 * Clamp to size of rel, multiply by restriction selectivity.
+		 * Sanity check --- don't divide by zero if empty relation.
 		 */
 		Assert(rel->reloptkind == RELOPT_BASEREL);
-		if (reldistinct > rel->tuples)
-			reldistinct = rel->tuples;
-		reldistinct *= rel->rows / rel->tuples;
+		if (rel->tuples > 0)
+		{
+			/*
+			 * Clamp to size of rel, multiply by restriction selectivity.
+			 */
+			if (reldistinct > rel->tuples)
+				reldistinct = rel->tuples;
+			reldistinct *= rel->rows / rel->tuples;
 
-		/*
-		 * Update estimate of total distinct groups.
-		 */
-		numdistinct *= reldistinct;
+			/*
+			 * Update estimate of total distinct groups.
+			 */
+			numdistinct *= reldistinct;
+		}
 
 		varinfos = newvarinfos;
 	} while (varinfos != NIL);
