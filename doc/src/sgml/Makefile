@@ -29,7 +29,8 @@ PSTYLE=/usr/lib/sgml/stylesheets/jade/docbook/print
 HDSL=$(HSTYLE)/docbook.dsl
 PDSL=$(PSTYLE)/docbook.dsl
 
-#DBOPTS= -V %no-split-output% -V %no-make-index%
+DBOPTS= -D ref
+#DBOPTS+= -V %no-split-output% -V %no-make-index%
 
 TAR= tar
 
@@ -85,7 +86,7 @@ distclean::
 
 %.html:	%.sgml #$(HDSL)
 	(rm -rf *.htm)
-	jade $(DBOPTS) -D sgml $(HTMLOPTS) -t sgml $<
+	jade $(DBOPTS) $(HTMLOPTS) -t sgml $<
 	(ln -sf book01.htm index.html)
 	(ln -sf book01.htm $*.html)
 
