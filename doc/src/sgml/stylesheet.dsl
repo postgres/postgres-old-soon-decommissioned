@@ -22,6 +22,7 @@
 (define pgsql-docs-list "pgsql-docs@postgresql.org")
 
 (define %refentry-xref-manvolnum% #f)
+(define %section-autolabel% #t)
 
 (element lineannotation ($italic-seq$))
 (element structfield ($mono-seq$))
