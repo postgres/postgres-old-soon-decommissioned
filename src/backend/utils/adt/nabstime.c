@@ -393,7 +393,7 @@ abstime_finite(AbsoluteTime abstime)
 {
 	return ((abstime != INVALID_ABSTIME)
 		  && (abstime != NOSTART_ABSTIME) && (abstime != NOEND_ABSTIME));
-}								/* abstime_datetime() */
+} /* abstime_finite() */
 
 
 /*
@@ -535,10 +535,10 @@ datetime_abstime(DateTime *datetime)
 	};
 
 	return (result);
-}								/* datetime_abstime() */
+} /* datetime_abstime() */
 
 /* abstime_datetime()
- * Convert datetime to abstime.
+ * Convert abstime to datetime.
  */
 DateTime   *
 abstime_datetime(AbsoluteTime abstime)
@@ -576,4 +576,4 @@ abstime_datetime(AbsoluteTime abstime)
 	};
 
 	return (result);
-}								/* abstime_datetime() */
+} /* abstime_datetime() */
