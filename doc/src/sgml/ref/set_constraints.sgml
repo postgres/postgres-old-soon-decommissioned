@@ -51,7 +51,7 @@ SET CONSTRAINTS { ALL | <replaceable class="parameter">constraint</replaceable> 
    <title>SQL92, SQL99</title>
 
    <para>
-    <command>SET CONSTRAINT</command> is defined in
+    <command>SET CONSTRAINTS</command> is defined in
     <acronym>SQL92</acronym> and <acronym>SQL99</acronym>.
    </para>
   </refsect2>
