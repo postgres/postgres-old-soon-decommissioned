@@ -134,10 +134,10 @@ btnamecmp(NameData *a, NameData *b)
 int32
 bttextcmp(struct varlena *a, struct varlena *b)
 {
-    unsigned char *ap, *bp;
     int res;
 
 #ifdef USE_LOCALE
+    unsigned char *ap, *bp;
     int la = VARSIZE(a) - VARHDRSZ;
     int lb = VARSIZE(b) - VARHDRSZ;
     
@@ -155,6 +155,7 @@ bttextcmp(struct varlena *a, struct varlena *b)
     pfree (bp);
 
 #else
+    char *ap, *bp;
     int len = VARSIZE(a);
     
     /* len is the length of the shorter of the two strings */

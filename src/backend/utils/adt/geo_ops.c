@@ -986,7 +986,8 @@ path_close(PATH *path)
 {
     PATH *result;
 
-    if (PointerIsValid((char *)(result = path_copy(path))))
+    result = path_copy(path);
+    if (PointerIsValid((char *)result))
 	result->closed = TRUE;
 
     return(result);
@@ -997,7 +998,8 @@ path_open(PATH *path)
 {
     PATH *result;
 
-    if (PointerIsValid((char *)(result = path_copy(path))))
+    result = path_copy(path);
+    if (PointerIsValid((char *)result))
 	result->closed = FALSE;
 
     return(result);
