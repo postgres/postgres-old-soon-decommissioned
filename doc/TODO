@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Tue Oct 21 11:48:51 EDT 2003
+Last updated:		Tue Oct 21 11:51:25 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -235,7 +235,6 @@ Commands
 	o Have COPY return number of rows loaded/unloaded
 
 * CURSOR
-	o Allow BINARY option to SELECT, just like DECLARE
 	o -MOVE 0 should not move to end of cursor (Bruce)
 	o Allow UPDATE/DELETE WHERE CURRENT OF cursor using per-cursor tid
 	  stored in the backend (Gavin)
