@@ -14,8 +14,8 @@
 
 #include "postgres.h"
 
+#include "access/attnum.h"
 #include "access/skey.h"
-
 
 /*
  * ScanKeyEntryIsLegal --

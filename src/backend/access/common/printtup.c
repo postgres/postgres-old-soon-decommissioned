@@ -15,11 +15,33 @@
 
 #include "postgres.h"
 
+#include "storage/block.h"
+#include "storage/off.h"
+#include "storage/itemptr.h"
+#include <time.h>
+#include "utils/nabstime.h"
 #include "access/htup.h"
+
+#include "access/attnum.h"
 #include "utils/syscache.h"
+
+#include "catalog/pg_attribute.h"
+#include "nodes/pg_list.h"
+#include "access/tupdesc.h"
+#include "storage/fd.h"
+#include "catalog/pg_am.h"
+#include "catalog/pg_class.h"
+#include "nodes/nodes.h"
+#include "rewrite/prs2lock.h"
+#include "access/skey.h"
+#include "access/strat.h"
+#include "utils/rel.h"
 #include "catalog/pg_type.h"
+
 #include "storage/buf.h"
 
+#include "access/heaptuple.h" /* Prototypes */
+#include "fmgr.h" /* Prototypes */
 
 /* ----------------------------------------------------------------
  *	printtup / debugtup support
