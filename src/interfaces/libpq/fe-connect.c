@@ -667,6 +667,7 @@ connectDB(PGconn *conn)
 	if (conn->pgpass != NULL)
 	{
 		free(conn->pgpass);
+		conn->pgpass = NULL;
 	}
 
 	return CONNECTION_OK;
