@@ -21,7 +21,7 @@ override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -DHAVE_CONFIG_H -DODBCINSTDIR='"$(o
 OBJS = info.o bind.o columninfo.o connection.o convert.o drvconn.o \
         environ.o execute.o lobj.o misc.o options.o \
         pgtypes.o psqlodbc.o qresult.o results.o socket.o parse.o statement.o \
-        gpps.o tuple.o tuplelist.o dlg_specific.o $(OBJX)
+        gpps.o tuple.o tuplelist.o dlg_specific.o odbcapi.o $(OBJX)
 
 ifdef MULTIBYTE
 OBJS += multibyte.o
