@@ -260,7 +260,7 @@ BACKSLASH_C=
 # This includes your local customizations if Makefile.custom exists
 # in the source directory.  This file doesn't exist in the original
 # distribution so that it doesn't get overwritten when you upgrade.
-ifneq ($(wildcard $(SRCDIR/Makefile.custom), )
+ifneq ($(wildcard $(SRCDIR)/Makefile.custom), )
 include $(SRCDIR)/Makefile.custom
 endif
 
