@@ -1009,6 +1009,8 @@ do_connect(const char *new_dbname,
 {
 	if (!new_dbname)
 		fprintf(stderr, "\\connect must be followed by a database name\n");
+	else if (new_user != NULL && settings.getPassword)
+		fprintf(stderr, "You can't specify a username when using passwords.\n");
 	else
 	{
 		PGconn	   *olddb = settings->db;
