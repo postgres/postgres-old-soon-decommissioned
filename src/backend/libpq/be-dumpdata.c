@@ -213,7 +213,8 @@ be_printtup(HeapTuple tuple, TupleDesc typeinfo)
 	int			i;
 	Datum		attr;
 	bool		isnull;
-	Oid			typoutput;
+	Oid			typoutput,
+				typelem;
 
 	PortalEntry *entry = NULL;
 	PortalBuffer *portal = NULL;
@@ -298,7 +299,8 @@ be_printtup(HeapTuple tuple, TupleDesc typeinfo)
 	for (i = 0; i < tuple->t_data->t_natts; i++)
 	{
 		attr = heap_getattr(tuple, i + 1, typeinfo, &isnull);
-		typoutput = typtoout((Oid) typeinfo->attrs[i]->atttypid);
+		getTypeOutAndElem((Oid) typeinfo->attrs[i]->atttypid,
+						  &typoutput, &typelem);
 
 		lengths[i] = typeinfo->attrs[i]->attlen;
 
@@ -311,11 +313,8 @@ be_printtup(HeapTuple tuple, TupleDesc typeinfo)
 		}
 
 		if (!isnull && OidIsValid(typoutput))
-		{
-			values[i] = fmgr(typoutput, attr,
-							 gettypelem(typeinfo->attrs[i]->atttypid),
+			values[i] = fmgr(typoutput, attr, typelem,
 							 typeinfo->attrs[i]->atttypmod);
-		}
 		else
 			values[i] = NULL;
 
