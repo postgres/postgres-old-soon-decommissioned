@@ -157,7 +157,8 @@ ExecutorStart(QueryDesc *queryDesc, EState *estate)
  *		except to start up/shut down the destination.  Otherwise,
  *		we retrieve up to 'count' tuples in the specified direction.
  *
- *		Note: count = 0 is interpreted as "no limit".
+ *		Note: count = 0 is interpreted as no portal limit, e.g. run to
+ *		completion.
  *
  * ----------------------------------------------------------------
  */
