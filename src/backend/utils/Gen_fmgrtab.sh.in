@@ -16,15 +16,13 @@
 #
 #-------------------------------------------------------------------------
 
-# cpp is usually in one of these places...
-PATH=/usr/lib:/lib:/usr/ccs/lib:$PATH
-
-BKIOPTS=''
 if [ $? != 0 ]
 then
 	echo `basename $0`: Bad option
 	exit 1
 fi
+
+BKIOPTS=''
 
 #
 # Pass on any -D declarations, throwing away any other command
@@ -65,7 +63,7 @@ sed 	-e 's/^.*OID[^=]*=[^0-9]*//' \
 awk '
 /^#/		{ print; next; }
 $4 == "11"	{ print; next; }' | \
-cpp $BKIOPTS | \
+@CPP@ @CPPSTDIN@ $BKIOPTS | \
 egrep '^[0-9]' | \
 sort -n > $RAWFILE
 
