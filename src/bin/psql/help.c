@@ -195,7 +195,7 @@ slashUsage(unsigned short int pager)
 	fprintf(output, _("  \\p             show the contents of the query buffer\n"));
 	fprintf(output, _("  \\r             reset (clear) the query buffer\n"));
 	fprintf(output, _("  \\s [FILE]      display history or save it to file\n"));
-	fprintf(output, _("  \\w [FILE]      write query buffer to file\n"));
+	fprintf(output, _("  \\w FILE        write query buffer to file\n"));
 	fprintf(output, "\n");
 
 	fprintf(output, _("Input/Output\n"));
