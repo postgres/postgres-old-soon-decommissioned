@@ -99,7 +99,7 @@ if (1) CODE; else
 
 /* psort.c */
 extern bool psort_begin(Sort *node, int nkeys, ScanKey key);
-extern HeapTuple psort_grabtuple(Sort *node);
+extern HeapTuple psort_grabtuple(Sort *node, bool *should_free);
 extern void psort_markpos(Sort *node);
 extern void psort_restorepos(Sort *node);
 extern void psort_end(Sort *node);
