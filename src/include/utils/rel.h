@@ -20,7 +20,6 @@
 #include "rewrite/prs2lock.h"
 #include "storage/fd.h"
 
-
 /*
  * LockRelId and LockInfo really belong to lmgr.h, but it's more convenient
  * to declare them here so we can have a LockInfoData field in a Relation.
@@ -176,7 +175,26 @@ typedef Relation *RelationPtr;
  *
  *	  Returns a Relation Name
  */
-#define RelationGetRelationName(relation) (NameStr((relation)->rd_rel->relname))
+/* added to prevent circular dependency.  bjm 1999/11/15 */
+char 	   *get_temp_rel_by_physicalname(char *relname);
+#define RelationGetRelationName(relation) \
+(\
+	(strncmp(RelationGetPhysicalRelationName(relation), \
+	 "pg_temp.", strlen("pg_temp.")) != 0) \
+	? \
+		RelationGetPhysicalRelationName(relation) \
+	: \
+		get_temp_rel_by_physicalname( \
+			RelationGetPhysicalRelationName(relation)) \
+)
+
+
+/*
+ * RelationGetPhysicalRelationName
+ *
+ *	  Returns a Relation Name
+ */
+#define RelationGetPhysicalRelationName(relation) (NameStr((relation)->rd_rel->relname))
 
 /*
  * RelationGetNumberOfAttributes

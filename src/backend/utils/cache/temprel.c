@@ -150,7 +150,6 @@ remove_temp_relation(Oid relid)
 			prev = l;
 			l = lnext(l);
 		}
-
 	}
 
 	MemoryContextSwitchTo(oldcxt);
@@ -203,7 +202,7 @@ invalidate_temp_relations(void)
 }
 
 char *
-get_temp_rel_by_name(char *user_relname)
+get_temp_rel_by_username(char *user_relname)
 {
 	List	   *l;
 
@@ -213,6 +212,25 @@ get_temp_rel_by_name(char *user_relname)
 
 		if (strcmp(temp_rel->user_relname, user_relname) == 0)
 			return temp_rel->relname;
+	}
+	return NULL;
+}
+
+char *
+get_temp_rel_by_physicalname(char *relname)
+{
+	List	   *l;
+
+	/* already physical, needed for bootstrapping temp tables */
+	if (strncmp(relname,"pg_temp.", strlen("pg_temp.")) == 0)
+		return relname;
+		
+	foreach(l, temp_rels)
+	{
+		TempTable  *temp_rel = lfirst(l);
+
+		if (strcmp(temp_rel->relname, relname) == 0)
+			return temp_rel->user_relname;
 	}
 	return NULL;
 }

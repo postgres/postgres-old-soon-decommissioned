@@ -472,7 +472,7 @@ SearchSysCacheTuple(int cacheId,/* cache selection code */
 		char *nontemp_relname;
 
 		if ((nontemp_relname =
-			 get_temp_rel_by_name(DatumGetPointer(key1))) != NULL)
+			 get_temp_rel_by_username(DatumGetPointer(key1))) != NULL)
 			key1 = PointerGetDatum(nontemp_relname);
 	}
 	

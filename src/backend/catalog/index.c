@@ -120,7 +120,7 @@ GetHeapRelationOid(char *heapRelationName, char *indexRelationName, bool istemp)
 	indoid = RelnameFindRelid(indexRelationName);
 
 	if ((!istemp && OidIsValid(indoid)) ||
-		(istemp && get_temp_rel_by_name(indexRelationName) != NULL))
+		(istemp && get_temp_rel_by_username(indexRelationName) != NULL))
 		elog(ERROR, "Cannot create index: '%s' already exists",
 			 indexRelationName);
 
@@ -948,7 +948,7 @@ index_create(char *heapRelationName,
 	Oid			heapoid;
 	Oid			indexoid;
 	PredInfo   *predInfo;
-	bool		istemp = (get_temp_rel_by_name(heapRelationName) != NULL);
+	bool		istemp = (get_temp_rel_by_username(heapRelationName) != NULL);
 	char	   *temp_relname = NULL;
 
 	/* ----------------
@@ -1182,9 +1182,6 @@ index_destroy(Oid indexId)
 	}
 	heap_close(attributeRelation, RowExclusiveLock);
 
-	/* does something only if it is a temp index */
-	remove_temp_relation(indexId);
-
 	/* ----------------
 	 * fix INDEX relation
 	 * ----------------
@@ -1211,6 +1208,9 @@ index_destroy(Oid indexId)
 	index_close(userindexRelation);
 
 	RelationForgetRelation(indexId);
+
+	/* does something only if it is a temp index */
+	remove_temp_relation(indexId);
 }
 
 /* ----------------------------------------------------------------
