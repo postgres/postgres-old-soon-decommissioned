@@ -490,11 +490,9 @@ prompt_for_password(char *username, char *password)
 
 #ifdef HAVE_TERMIOS_H
 	struct termios t_orig,
-				t;
-
 #endif
 
-	printf("Username: ");
+	fprintf(stderr, "Username: ");
 	fgets(username, 100, stdin);
 	length = strlen(username);
 	/* skip rest of the line */
@@ -508,7 +506,7 @@ prompt_for_password(char *username, char *password)
 	if (length > 0 && username[length - 1] == '\n')
 		username[length - 1] = '\0';
 
-	printf("Password: ");
+	fprintf(stderr, "Password: ");
 #ifdef HAVE_TERMIOS_H
 	tcgetattr(0, &t);
 	t_orig = t;
@@ -532,7 +530,7 @@ prompt_for_password(char *username, char *password)
 	if (length > 0 && password[length - 1] == '\n')
 		password[length - 1] = '\0';
 
-	printf("\n\n");
+	fprintf(stderr, "\n\n");
 }
 
 
