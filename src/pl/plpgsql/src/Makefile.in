@@ -24,11 +24,12 @@ LFLAGS+= -i -l
 
 OBJS=	pl_parse.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o
 
-ifeq ($(PORTNAME), win)
 SHLIB_LINK+= -L$(LIBPQDIR) -lpq
-else
-SHLIB_LINK= -L$(LIBPQDIR) -lpq
-endif
+
+# If crypt is a separate library, rather than part of libc, it may need
+# to be referenced separately to keep (broken) linkers happy.  (This is
+# braindead; users of libpq should not need to know what it depends on.)
+SHLIB_LINK+= $(findstring -lcrypt,$(LIBS))
 
 # Shared library stuff, also default 'all' target
 include $(SRCDIR)/Makefile.shlib
