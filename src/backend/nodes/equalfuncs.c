@@ -576,12 +576,14 @@ _equalQuery(Query *a, Query *b)
 	COMPARE_NODE_FIELD(limitCount);
 	COMPARE_NODE_FIELD(setOperations);
 	COMPARE_INTLIST_FIELD(resultRelations);
+	COMPARE_NODE_FIELD(in_info_list);
+	COMPARE_SCALAR_FIELD(hasJoinRTEs);
 
 	/*
-	 * We do not check the internal-to-the-planner fields: base_rel_list,
-	 * other_rel_list, join_rel_list, equi_key_list, in_info_list,
-	 * query_pathkeys, hasJoinRTEs.  They might not be set yet, and in any
-	 * case they should be derivable from the other fields.
+	 * We do not check the other planner internal fields: base_rel_list,
+	 * other_rel_list, join_rel_list, equi_key_list, query_pathkeys.
+	 * They might not be set yet, and in any case they should be derivable
+	 * from the other fields.
 	 */
 	return true;
 }
