@@ -61,6 +61,12 @@ return PQntuples(pgResult);
 }
 
 
+int PgDatabase::CmdTuples()
+{
+return PQcmdTuples (PGresult);
+}
+
+
 int PgDatabase::Fields()
 { 
 return PQnfields(pgResult); 
