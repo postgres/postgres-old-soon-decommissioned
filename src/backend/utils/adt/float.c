@@ -1968,7 +1968,6 @@ float84ge(PG_FUNCTION_ARGS)
 /* ========== PRIVATE ROUTINES ========== */
 
 #ifndef HAVE_CBRT
-/* I doubt this is still needed by any platform.  2003-05-25 */
 static double
 cbrt(double x)
 {
