@@ -508,6 +508,7 @@ extern Datum network_masklen(PG_FUNCTION_ARGS);
 extern Datum network_broadcast(PG_FUNCTION_ARGS);
 extern Datum network_host(PG_FUNCTION_ARGS);
 extern Datum network_show(PG_FUNCTION_ARGS);
+extern Datum network_abbrev(PG_FUNCTION_ARGS);
 
 /* mac.c */
 extern Datum macaddr_in(PG_FUNCTION_ARGS);
