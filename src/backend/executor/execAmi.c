@@ -446,10 +446,8 @@ ExecCreatR(TupleDesc tupType,
 		 * heap_creatr creates a name if the argument to heap_creatr is
 		 * '\0 '
 		 */
-		relDesc = heap_creatr("",
-							  DEFAULT_SMGR,
-							  tupType);
-	}
+		relDesc = heap_creatr("", tupType);
+  	}
 	else
 	{
 		/* ----------------
