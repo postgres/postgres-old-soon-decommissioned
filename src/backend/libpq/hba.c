@@ -74,7 +74,7 @@ static char *tokenize_inc_file(const char *inc_filename);
 static bool
 isblank(const char c)
 {
-	return c == ' ' || c == '\t';
+	return c == ' ' || c == '\t' || c == '\r';
 }
 
 
