@@ -777,7 +777,8 @@ objectDescription(PsqlSettings *pset, char *object, FILE *fout)
 					strcat(descbuf, "WHERE pg_operator.oprname = '");
 					strcat(descbuf, object);
 					strcat(descbuf, "'" );
-					strcat(descbuf, " and pg_operator.oid = pg_description.objoid " );
+					/* operator descriptions are attached to the proc */
+					strcat(descbuf, " and RegprocToOid(pg_operator.oprcode) = pg_description.objoid " );
 					if (!(res = PSQLexec(pset, descbuf)))
 						return -1;
 					else if (PQntuples(res) <= 0)
