@@ -1693,7 +1693,7 @@ float8_numeric(float64 val)
 {
 	Numeric		res;
 	NumericVar	result;
-	char		*tmp;
+	char		buf[512];
 
 	if (val == NULL)
 		return NULL;
@@ -1703,12 +1703,11 @@ float8_numeric(float64 val)
 
 	init_var(&result);
 
-	tmp = float8out(val);
-	set_var_from_str(tmp, &result);
+	sprintf(buf, "%f", *val);
+	set_var_from_str(buf, &result);
 	res = make_result(&result);
 
 	free_var(&result);
-	pfree(tmp);
 
 	return res;
 }
