@@ -10,9 +10,7 @@
  *
  *
  */
-/* can be used in either frontend or backend */
-#include "postgres_fe.h"
-
+#include "postgres.h"
 #include "mb/pg_wchar.h"
 
 #ifdef UNICODE_CONVERSION
