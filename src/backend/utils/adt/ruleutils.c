@@ -1117,7 +1117,7 @@ get_insert_query_def(Query *query, QryHier *qh)
 		strcat(buf, ")");
 	}
 	else
-		strcat(buf, get_query_def(query, qh));
+		strcat(buf, get_select_query_def(query, qh));
 
 	/* ----------
 	 * Copy the query string into allocated space and return it
