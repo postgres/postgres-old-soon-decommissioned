@@ -1083,7 +1083,9 @@ transformIndexConstraints(ParseState *pstate, CreateStmtContext *cxt)
 
 		/*
 		 * Make sure referenced keys exist.  If we are making a PRIMARY
-		 * KEY index, also make sure they are NOT NULL.
+		 * KEY index, also make sure they are NOT NULL, if possible.
+		 * (Although we could leave it to DefineIndex to mark the columns NOT
+		 * NULL, it's more efficient to get it right the first time.)
 		 */
 		foreach(keys, constraint->keys)
 		{
@@ -1142,25 +1144,12 @@ transformIndexConstraints(ParseState *pstate, CreateStmtContext *cxt)
 						if (strcmp(key, inhname) == 0)
 						{
 							found = true;
-
 							/*
-							 * If the column is inherited, we currently
-							 * have no easy way to force it to be NOT
-							 * NULL. Only way I can see to fix this would
-							 * be to convert the inherited-column info to
-							 * ColumnDef nodes before we reach this point,
-							 * and then create the table from those nodes
-							 * rather than referencing the parent tables
-							 * later.  That would likely be cleaner, but
-							 * too much work to contemplate right now.
-							 * Instead, raise an error if the inherited
-							 * column won't be NOT NULL. (Would a WARNING
-							 * be more reasonable?)
+							 * We currently have no easy way to force an
+							 * inherited column to be NOT NULL at creation, if
+							 * its parent wasn't so already.  We leave it to
+							 * DefineIndex to fix things up in this case.
 							 */
-							if (constraint->contype == CONSTR_PRIMARY &&
-								!inhattr->attnotnull)
-								elog(ERROR, "inherited attribute \"%s\" cannot be a PRIMARY KEY because it is not marked NOT NULL",
-									 inhname);
 							break;
 						}
 					}
@@ -1178,15 +1167,10 @@ transformIndexConstraints(ParseState *pstate, CreateStmtContext *cxt)
 				if (HeapTupleIsValid(atttuple))
 				{
 					found = true;
-
 					/*
-					 * We require pre-existing column to be already marked
-					 * NOT NULL.
+					 * If it's not already NOT NULL, leave it to DefineIndex
+					 * to fix later.
 					 */
-					if (constraint->contype == CONSTR_PRIMARY &&
-						!((Form_pg_attribute) GETSTRUCT(atttuple))->attnotnull)
-						elog(ERROR, "Existing attribute \"%s\" cannot be a PRIMARY KEY because it is not marked NOT NULL",
-							 key);
 					ReleaseSysCache(atttuple);
 				}
 			}
