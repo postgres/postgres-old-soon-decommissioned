@@ -177,6 +177,12 @@ ifeq ($(GCC), yes)
   CFLAGS += -Wall -Wmissing-prototypes -Wmissing-declarations
 endif
 
+# Unixware needs threads for everything that uses libpq
+ifeq ($(PORTNAME),unixware)
+  CFLAGS += "$PTHREAD_CFLAGS"
+endif
+
+
 # Kind-of compilers
 
 YACC = @YACC@
