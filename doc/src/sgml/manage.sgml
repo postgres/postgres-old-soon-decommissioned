@@ -29,7 +29,7 @@ $Header$
    The Database Administrator's Guide covers these topics in more detail.
   </Para>
 
-  <Sect1>
+  <Sect1 id="db-creation">
    <Title>Database Creation</Title>
 
    <Para>
@@ -75,7 +75,7 @@ ERROR:  CREATE DATABASE: Permission denied.
 
   </Sect1>
 
-  <Sect1>
+  <Sect1 id="altern-locations">
    <Title>Alternate Database Locations</Title>
 
    <Para>
@@ -164,7 +164,7 @@ ERROR:  The database path '/no/where' is invalid. This may be due to a character
 
   </Sect1>
 
-<Sect1>
+<Sect1 id="db-accessing">
 <Title>Accessing a Database</Title>
 
 <Para>
@@ -274,7 +274,7 @@ TBD
 
 </Sect1>
      
-<Sect1>
+<Sect1 id="db-destroy">
 <Title>Destroying a Database</Title>
 
 <Para>

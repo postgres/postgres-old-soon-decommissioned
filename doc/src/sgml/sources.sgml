@@ -2,10 +2,10 @@
 $Header$
 -->
 
- <chapter>
+ <chapter id="source">
   <title>Postgres Source Code</title>
 
-  <sect1>
+  <sect1 id="source-format">
    <title>Formatting</title>
 
    <para>

@@ -22,7 +22,7 @@ $Header$
    large object data.
   </para>
 
-  <sect1>
+  <sect1 id="lo-history">
    <title>Historical Note</title>
 
    <para>
@@ -42,7 +42,7 @@ $Header$
    </para>
   </sect1>
 
-  <sect1>
+  <sect1 id="lo-implementation">
    <title>Implementation Features</title>
 
    <para>
@@ -54,7 +54,7 @@ $Header$
    </para>
   </sect1>
 
-  <sect1>
+  <sect1 id="lo-interfaces">
    <title>Interfaces</title>
 
    <para>
@@ -255,7 +255,7 @@ Oid lo_unlink(PGconn *<replaceable class="parameter">conn</replaceable>, Oid lob
 
 </sect1>
 
-<sect1>
+<sect1 id="lo-funcs">
 <title>Built in registered functions</title>
 
 <para>
@@ -279,7 +279,7 @@ SELECT lo_export(image.raster, '/tmp/motd') from image
 </para>
 </sect1>
 
-<sect1>
+<sect1 id="lo-libpq">
 <title>Accessing Large Objects from LIBPQ</title>
 
 <para>
@@ -297,7 +297,7 @@ SELECT lo_export(image.raster, '/tmp/motd') from image
 </para>
 </sect1>
 
-<sect1>
+<sect1 id="lo-sample">
 <title>Sample Program</title>
 
 <para>

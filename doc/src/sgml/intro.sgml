@@ -22,7 +22,7 @@ $Header$
    Foundation (<acronym>NSF</acronym>), and ESL, Inc.
   </para>
 
-  <sect1>
+  <sect1 id="intro-whatis">
    <title> What is <productname>Postgres</productname>?</title>
 
    <para>

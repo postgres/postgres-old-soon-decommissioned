@@ -46,7 +46,7 @@ $Header$
    code for the three examples in this chapter.
   </para>
 
-  <sect1>
+  <sect1 id="libpqpp-init">
    <title>Control and Initialization</title>
     
    <sect2>
@@ -178,7 +178,7 @@ $Header$
    </sect2>
   </sect1>
 
-  <sect1>
+  <sect1 id="libpqpp-classes">
    <title>libpq++ Classes</title>
 
    <sect2>
@@ -203,7 +203,7 @@ $Header$
    </sect2>
   </sect1>
 
-  <sect1>
+  <sect1 id="libpqpp-connect">
    <title>Database Connection Functions</title>
    <para>
     <itemizedlist>
@@ -278,7 +278,7 @@ $Header$
    </para>
   </sect1>
 
-  <sect1>
+  <sect1 id="libpqpp-exec">
    <title>Query Execution Functions</title>
    <para>  
     <itemizedlist>
@@ -574,7 +574,7 @@ $Header$
    </para>
   </sect1>
 
-  <sect1>
+  <sect1 id="libpqpp-notify">
    <title>Asynchronous Notification</title>
     
    <para>
@@ -639,7 +639,7 @@ $Header$
    </para>
   </sect1>
 
-  <sect1>
+  <sect1 id="libpqpp-copy">
    <title>Functions Associated with the COPY Command</title>
    
    <para>

@@ -191,7 +191,7 @@ PART:                         4  |  3
    </para>
   </sect1>
 
-  <sect1>
+  <sect1 id="relmodel-formal">
    <title id="formal-notion">Relational Data Model Formalities</title>
 
    <para>
@@ -372,7 +372,7 @@ attributes are taken from. We often write a relation scheme as
    </sect2>
   </sect1>
 
-  <sect1>
+  <sect1 id="relmodel-oper">
    <title id="operations">Operations in the Relational Data Model</title>
 
    <para>

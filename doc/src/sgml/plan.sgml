@@ -2,7 +2,7 @@
 $Header$
 -->
 
- <chapter>
+ <chapter id="understand-performance">
   <title>Understanding Performance</title>
 
   <para>
@@ -19,7 +19,7 @@ $Header$
    performance.
   </para>
 
-  <sect1>
+  <sect1 id="using-explain">
    <title>Using <command>EXPLAIN</command></title>
 
    <note>

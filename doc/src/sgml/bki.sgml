@@ -37,7 +37,7 @@ Related information may be found in documentation for
 and the <acronym>SQL</acronym> command <command>CREATE DATABASE</command>.
 </para>
 
-  <sect1>
+  <sect1 id="bki-format">
    <title><acronym>BKI</acronym> File Format</title>
 
    <para>
@@ -82,7 +82,7 @@ follow.
 </para>
 </sect1>
 
-<sect1>
+<sect1 id="bki-commands">
 <title>General Commands</title>
 
 <variablelist>
@@ -229,7 +229,7 @@ This last sentence doesn't reference anything in the example. Should be changed 
 </note>
 </sect1>
 
-<sect1>
+<sect1 id="bki-macros">
 <title>Macro Commands</title>
 
 <para>
@@ -272,7 +272,7 @@ read from the file called
 </para>
 </sect1>
 
-<sect1>
+<sect1 id="bki-debug">
 <title>Debugging Commands</title>
 
 <para>
@@ -397,7 +397,7 @@ to
 </para>
 </sect1>
 
-<sect1>
+<sect1 id="bki-example">
 <title>Example</title>
 
 <para>

@@ -34,7 +34,7 @@ $Header$
    </itemizedlist>
   </para>
 
-  <sect1>
+  <sect1 id="extend-how">
    <title>How Extensibility Works</title>
 
    <para>
@@ -73,7 +73,7 @@ $Header$
    </para>
   </sect1>
 
-  <sect1>
+  <sect1 id="type-system">
    <title>The <productname>Postgres</productname> Type System</title>
 
    <para>
@@ -107,7 +107,7 @@ $Header$
    </para>
   </sect1>
 
-  <sect1>
+  <sect1 id="system-catalogs">
    <title>About the <productname>Postgres</productname> System Catalogs</title>
 
    <para>

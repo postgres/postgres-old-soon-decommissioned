@@ -2,7 +2,7 @@
 $Header$
 -->
 
- <chapter>
+ <chapter id="indexcost">
   <title>Index Cost Estimation Functions</title>
 
   <note>

@@ -76,7 +76,7 @@ SELECT (a + b) AS c FROM test_complex;
    COMMUTATOR and other optimizer hints appear below.
   </Para>
 
-  <sect1>
+  <sect1 id="xoper-optimization">
    <title>Operator Optimization Information</title>
 
    <note>

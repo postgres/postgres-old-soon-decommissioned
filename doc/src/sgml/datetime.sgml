@@ -6,7 +6,7 @@ Date/time details
 <appendix label="UG1" id="datetime-appendix">
  <title id="datetime-appendix-title">Date/Time Support</title>
 
- <sect1>
+ <sect1 id="timezones">
   <title>Time Zones</title>
 
   <para>
@@ -623,7 +623,7 @@ Date/time details
   </sect2>
  </sect1>
 
- <sect1>
+ <sect1 id="units-history">
   <title>History of Units</title>
 
   <note>

@@ -2,7 +2,7 @@
 $Header$
 -->
 
-<sect1>
+<sect1 id="history">
  <title>A Short History of <productname>Postgres</productname></title>
 
  <para>

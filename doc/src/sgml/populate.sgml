@@ -2,7 +2,7 @@
 $Header$
 -->
 
- <chapter>
+ <chapter id="populate">
   <title>Populating a Database</title>
 
   <note>
@@ -18,7 +18,7 @@ $Header$
    efficient as possible.
   </para>
 
-  <sect1>
+  <sect1 id="disable-autocommit">
    <title>Disable Auto-commit</title>
 
    <para>
@@ -30,7 +30,7 @@ $Header$
    </para>
   </sect1>
 
-  <sect1>
+  <sect1 id="populate-copy-from">
    <title>Use COPY FROM</title>
 
    <para>
@@ -42,7 +42,7 @@ $Header$
    </para>
   </sect1>
 
-  <sect1>
+  <sect1 id="populate-rm-indices">
    <title>Remove Indices</title>
 
    <para>
