@@ -33,7 +33,7 @@ LOCALBKI_SRCS= $(addprefix ../../include/catalog/, \
                  pg_proc.h pg_type.h pg_attribute.h pg_class.h \
                  pg_inherits.h pg_index.h pg_statistic.h \
                  pg_operator.h pg_opclass.h pg_am.h pg_amop.h pg_amproc.h \
-                 pg_language.h pg_parg.h \
+                 pg_language.h \
                  pg_aggregate.h pg_ipl.h pg_inheritproc.h \
                  pg_rewrite.h pg_listener.h pg_description.h indexing.h \
                 )
