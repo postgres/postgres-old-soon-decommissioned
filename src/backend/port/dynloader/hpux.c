@@ -20,6 +20,7 @@
 #include <a.out.h>
 
 #include "postgres.h"
+
 #include "dl.h"
 #include "dynloader.h"
 #include "fmgr.h"
@@ -28,7 +29,12 @@
 void *
 pg_dlopen(char *filename)
 {
-	shl_t		handle = shl_load(filename, BIND_DEFERRED, 0);
+	/*
+	 * Use BIND_IMMEDIATE so that undefined symbols cause a failure return
+	 * from shl_load(), rather than an abort() later on when we attempt to
+	 * call the library!
+	 */
+	shl_t		handle = shl_load(filename, BIND_IMMEDIATE | BIND_VERBOSE, 0);
 
 	return (void *) handle;
 }
@@ -53,6 +59,9 @@ char *
 pg_dlerror()
 {
 	static char errmsg[] = "shl_load failed";
+
+	if (errno)
+		return strerror(errno);
 
 	return errmsg;
 }
