@@ -676,7 +676,7 @@ SetSessionAuthorization(Oid userid)
  * Get user name from user id
  */
 char *
-GetUserName(Oid userid)
+GetUserNameFromId(Oid userid)
 {
 	HeapTuple	tuple;
 	char	   *result;

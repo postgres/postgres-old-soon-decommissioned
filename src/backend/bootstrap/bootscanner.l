@@ -121,7 +121,7 @@ insert			{ return(INSERT_TUPLE); }
 (-)?{D}*"."{D}+({Exp})? |
 (-)?{D}+{Exp}			{
 							yylval.ival = EnterString((char*)yytext);
-							return(CONST);
+							return(CONST_P);
 						}
 
 .				{

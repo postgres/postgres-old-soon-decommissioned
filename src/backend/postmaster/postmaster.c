@@ -14,7 +14,7 @@
  *
  *	  The postmaster process creates the shared memory and semaphore
  *	  pools during startup, but as a rule does not touch them itself.
- *	  In particular, it is not a member of the PROC array of backends
+ *	  In particular, it is not a member of the PGPROC array of backends
  *	  and so it cannot participate in lock-manager operations.	Keeping
  *	  the postmaster away from shared memory operations makes it simpler
  *	  and more reliable.  The postmaster is almost always able to recover

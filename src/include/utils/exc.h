@@ -40,7 +40,7 @@ extern ExcFrame *ExcCurFrameP;
 /* These are not used anywhere 1998/6/15 */
 #define ExcBegin() \
 do { \
-	ExcFrame		exception; \
+	ExcFrame	exception; \
 	\
 	exception.link = ExcCurFrameP; \
 	if (sigsetjmp(exception.context, 1) == 0) \

@@ -95,7 +95,7 @@
 #define TZ		5
 #define DTZ		6
 #define DTZMOD	7
-#define IGNORE	8
+#define IGNORE_DTF	8
 #define AMPM	9
 #define HOUR	10
 #define MINUTE	11
@@ -260,7 +260,7 @@ extern int	day_tab[2][13];
   || (((m) == UTIME_MAXMONTH) && ((d) <= UTIME_MAXDAY))))))
 
 
-extern void GetCurrentTime(struct tm * tm);
+extern void GetCurrentDateTime(struct tm * tm);
 extern void GetCurrentTimeUsec(struct tm * tm, fsec_t *fsec);
 extern void j2date(int jd, int *year, int *month, int *day);
 extern int	date2j(int year, int month, int day);

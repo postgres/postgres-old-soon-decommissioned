@@ -201,7 +201,7 @@ TransactionIdDidAbort(TransactionId transactionId)
 
 /*
  * Now this func in shmem.c and gives quality answer by scanning
- * PROC structures of all running backend. - vadim 11/26/96
+ * PGPROC structures of all running backend. - vadim 11/26/96
  *
  * Old comments:
  * true if given transaction has neither committed nor aborted

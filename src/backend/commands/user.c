@@ -724,7 +724,7 @@ AlterUser(AlterUserStmt *stmt)
 		  createuser < 0 &&
 		  !validUntil &&
 		  password &&
-		  strcmp(GetUserName(GetUserId()), stmt->user) == 0))
+		  strcmp(GetUserNameFromId(GetUserId()), stmt->user) == 0))
 		elog(ERROR, "ALTER USER: permission denied");
 
 	/* changes to the flat password file cannot be rolled back */

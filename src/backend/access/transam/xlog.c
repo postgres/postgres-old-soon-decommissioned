@@ -753,7 +753,7 @@ begin:;
 	/* Compute record's XLOG location */
 	INSERT_RECPTR(RecPtr, Insert, curridx);
 
-	/* If first XLOG record of transaction, save it in PROC array */
+	/* If first XLOG record of transaction, save it in PGPROC array */
 	if (MyLastRecPtr.xrecoff == 0 && !no_tran)
 	{
 		/*
@@ -3026,7 +3026,7 @@ CreateCheckPoint(bool shutdown)
 	}
 
 	/*
-	 * Get UNDO record ptr - this is oldest of PROC->logRec values. We do
+	 * Get UNDO record ptr - this is oldest of PGPROC->logRec values. We do
 	 * this while holding insert lock to ensure that we won't miss any
 	 * about-to-commit transactions (UNDO must include all xacts that have
 	 * commits after REDO point).

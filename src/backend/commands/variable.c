@@ -583,5 +583,5 @@ assign_session_authorization(const char *value, bool doit, bool interactive)
 const char *
 show_session_authorization(void)
 {
-	return GetUserName(GetSessionUserId());
+	return GetUserNameFromId(GetSessionUserId());
 }

@@ -203,7 +203,7 @@ extern char *ExpandDatabasePath(const char *path);
 extern void SetDatabaseName(const char *name);
 extern void SetDatabasePath(const char *path);
 
-extern char *GetUserName(Oid userid);
+extern char *GetUserNameFromId(Oid userid);
 
 extern Oid	GetUserId(void);
 extern void SetUserId(Oid userid);

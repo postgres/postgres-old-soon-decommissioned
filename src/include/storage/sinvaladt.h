@@ -71,7 +71,7 @@ typedef struct ProcState
 	/* nextMsgNum is -1 in an inactive ProcState array entry. */
 	int			nextMsgNum;		/* next message number to read, or -1 */
 	bool		resetState;		/* true, if backend has to reset its state */
-	SHMEM_OFFSET procStruct;	/* location of backend's PROC struct */
+	SHMEM_OFFSET procStruct;	/* location of backend's PGPROC struct */
 } ProcState;
 
 /* Shared cache invalidation memory segment */

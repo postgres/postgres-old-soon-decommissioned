@@ -239,14 +239,14 @@ GetCurrentAbsoluteTimeUsec(int *usec)
 
 
 void
-GetCurrentTime(struct tm * tm)
+GetCurrentDateTime(struct tm * tm)
 {
 	int			tz;
 
 	abstime2tm(GetCurrentTransactionStartTime(), &tz, tm, NULL);
 
 	return;
-}	/* GetCurrentTime() */
+}	/* GetCurrentDateTime() */
 
 
 void

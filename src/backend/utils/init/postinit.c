@@ -286,9 +286,9 @@ InitPostgres(const char *dbname, const char *username)
 	 */
 
 	/*
-	 * Set up my per-backend PROC struct in shared memory.	(We need to
+	 * Set up my per-backend PGPROC struct in shared memory.	(We need to
 	 * know MyDatabaseId before we can do this, since it's entered into
-	 * the PROC struct.)
+	 * the PGPROC struct.)
 	 */
 	InitProcess();
 

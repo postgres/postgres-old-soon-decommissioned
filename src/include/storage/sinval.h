@@ -86,7 +86,7 @@ extern bool TransactionIdIsInProgress(TransactionId xid);
 extern TransactionId GetOldestXmin(bool allDbs);
 extern int	CountActiveBackends(void);
 
-/* Use "struct PROC", not PROC, to avoid including proc.h here */
-extern struct PROC *BackendIdGetProc(BackendId procId);
+/* Use "struct PGPROC", not PGPROC, to avoid including proc.h here */
+extern struct PGPROC *BackendIdGetProc(BackendId procId);
 
 #endif   /* SINVAL_H */

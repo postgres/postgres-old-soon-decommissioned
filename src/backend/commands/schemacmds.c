@@ -50,7 +50,7 @@ CreateSchemaCommand(CreateSchemaStmt *stmt)
 	if (!authId)
 	{
 		owner_userid = saved_userid;
-		owner_name = GetUserName(owner_userid);
+		owner_name = GetUserNameFromId(owner_userid);
 	}
 	else if (superuser())
 	{
@@ -68,7 +68,7 @@ CreateSchemaCommand(CreateSchemaStmt *stmt)
 	else /* not superuser */
 	{
 		owner_userid = saved_userid;
-		owner_name = GetUserName(owner_userid);
+		owner_name = GetUserNameFromId(owner_userid);
 		if (strcmp(authId, owner_name) != 0)
 			elog(ERROR, "CREATE SCHEMA: permission denied"
 				 "\n\t\"%s\" is not a superuser, so cannot create a schema for \"%s\"",
