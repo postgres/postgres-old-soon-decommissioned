@@ -369,6 +369,9 @@ BootstrapMain(int argc, char *argv[])
 
 	BaseInit();
 
+	if (IsUnderPostmaster)
+		InitDummyProcess();		/* needed to get LWLocks */
+
 	/*
 	 * XLOG operations
 	 */
@@ -386,8 +389,6 @@ BootstrapMain(int argc, char *argv[])
 			break;
 
 		case BS_XLOG_CHECKPOINT:
-			if (IsUnderPostmaster)
-				InitDummyProcess();		/* needed to get LWLocks */
 			CreateDummyCaches();
 			CreateCheckPoint(false);
 			SetSavedRedoRecPtr();		/* pass redo ptr back to

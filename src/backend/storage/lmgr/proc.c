@@ -391,8 +391,15 @@ ProcKill(void)
 	/* Release any LW locks I am holding */
 	LWLockReleaseAll();
 
-	/* Abort any buffer I/O in progress */
+	/*
+	 * Make real sure we release any buffer locks and pins we might be
+	 * holding, too.  It is pretty ugly to do this here and not in a
+	 * shutdown callback registered by the bufmgr ... but we must do this
+	 * *after* LWLockReleaseAll and *before* zapping MyProc.
+	 */
 	AbortBufferIO();
+	UnlockBuffers();
+	AtEOXact_Buffers(false);
 
 	/* Get off any wait queue I might be on */
 	LockWaitCancel();
@@ -430,8 +437,10 @@ DummyProcKill(void)
 	/* Release any LW locks I am holding */
 	LWLockReleaseAll();
 
-	/* Abort any buffer I/O in progress */
+	/* Release buffer locks and pins, too */
 	AbortBufferIO();
+	UnlockBuffers();
+	AtEOXact_Buffers(false);
 
 	/* I can't be on regular lock queues, so needn't check */
 

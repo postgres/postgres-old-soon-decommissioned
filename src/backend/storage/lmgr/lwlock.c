@@ -204,6 +204,13 @@ LWLockAcquire(LWLockId lockid, LWLockMode mode)
 	PRINT_LWDEBUG("LWLockAcquire", lockid, lock);
 
 	/*
+	 * We can't wait if we haven't got a PGPROC.  This should only occur
+	 * during bootstrap or shared memory initialization.  Put an Assert
+	 * here to catch unsafe coding practices.
+	 */
+	Assert(!(proc == NULL && IsUnderPostmaster));
+
+	/*
 	 * Lock out cancel/die interrupts until we exit the code section
 	 * protected by the LWLock.  This ensures that interrupts will not
 	 * interfere with manipulations of data structures in shared memory.

@@ -314,6 +314,8 @@ pgstat_start(void)
 
 	IsUnderPostmaster = true;	/* we are a postmaster subprocess now */
 
+	MyProcPid = getpid();		/* reset MyProcPid */
+
 	/* Lose the postmaster's on-exit routines */
 	on_exit_reset();
 
@@ -1189,6 +1191,8 @@ pgstat_main(void)
 	 * to call system() here...)
 	 */
 	pqsignal(SIGCHLD, SIG_DFL);
+
+	MyProcPid = getpid();		/* reset MyProcPid */
 
 	/*
 	 * Identify myself via ps
