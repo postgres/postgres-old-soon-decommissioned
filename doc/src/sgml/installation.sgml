@@ -984,6 +984,19 @@ All of PostgreSQL is successfully made. Ready to install.
    </para>
 
    <para>
+    You can use <literal>gmake install-strip</literal> instead of
+    <literal>gmake install</literal> to strip the executable files and
+    libraries as they are installed.  This will save some space.  If
+    you built with debugging support, stripping will effectively
+    remove the debugging support, so it should only be done if
+    debugging is no longer needed.  <literal>install-strip</literal>
+    tries to do a reasonable job saving space, but it does not have
+    perfect knowledge of how to strip every unneeded byte from an
+    executable file, so if you want to save all the disk space you
+    possibly can, you will have to do manual work.
+   </para>
+
+   <para>
     If you built the Perl or Python interfaces and you were not the
     root user when you executed the above command then that part of
     the installation probably failed. In that case you should become

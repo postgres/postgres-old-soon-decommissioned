@@ -357,7 +357,7 @@ endif # enable_shared
 install-lib: install-lib-static install-lib-shared
 
 install-lib-static: lib$(NAME).a
-	$(INSTALL_DATA) $< $(DESTDIR)$(libdir)/lib$(NAME).a
+	$(INSTALL_STLIB) $< $(DESTDIR)$(libdir)/lib$(NAME).a
 
 ifeq ($(enable_shared), yes)
 install-lib-shared: $(shlib)

@@ -640,6 +640,7 @@ esac
 AC_PROG_RANLIB
 AC_CHECK_PROGS(LORDER, lorder)
 AC_PATH_PROG(TAR, tar)
+PGAC_CHECK_STRIP
 
 AC_CHECK_PROGS(YACC, ['bison -y'])
 if test -z "$YACC"; then
