@@ -912,10 +912,8 @@ ValidatePgVersion(const char *path)
 	}
 
 	ret = fscanf(file, "%ld.%ld", &file_major, &file_minor);
-	if (ret == EOF)
-		elog(FATAL, "cannot read %s: %m", full_path);
-	else if (ret != 2)
-		elog(FATAL, "`%s' does not have a valid format. You need to initdb.", full_path);
+	if (ret != 2)
+		elog(FATAL, "File %s does not contain valid data. You need to initdb.", full_path);
 
 	FreeFile(file);
 

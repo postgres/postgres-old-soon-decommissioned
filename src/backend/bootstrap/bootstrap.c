@@ -303,11 +303,13 @@ BootstrapMain(int argc, char *argv[])
 		}
 		SetDataDir(potential_DataDir);
 	}
+
+	/* Validate we have been given a reasonable-looking DataDir */
 	Assert(DataDir);
+	ValidatePgVersion(DataDir);
 
 	if (IsUnderPostmaster)
 	{
-
 		/*
 		 * Properly accept or ignore signals the postmaster might send us
 		 */

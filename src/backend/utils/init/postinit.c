@@ -221,13 +221,7 @@ InitPostgres(const char *dbname, const char *username)
 		char	   *fullpath,
 					datpath[MAXPGPATH];
 
-		/* Verify if DataDir is ok */
-		if (access(DataDir, F_OK) == -1)
-			elog(FATAL, "Database system not found.\n\t"
-				 "Data directory '%s' does not exist.",
-				 DataDir);
-
-		ValidatePgVersion(DataDir);
+		/* Formerly we validated DataDir here, but now that's done earlier. */
 
 		/*
 		 * Find oid and path of the database we're about to open. Since
