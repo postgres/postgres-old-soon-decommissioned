@@ -282,7 +282,8 @@ fi
 # The data path must be absolute, because the backend doesn't like
 # '.' and '..' stuff. (Should perhaps be fixed there.)
 
-if ! echo "$PGDATA" | grep '^/' > /dev/null 2>&1
+echo "$PGDATA" | grep '^/' > /dev/null 2>&1
+if [ "$?" -ne 0 ]
 then
     echo "$CMDNAME: data path must be specified as an absolute path"
     exit 1
