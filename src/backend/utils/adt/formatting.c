@@ -3786,14 +3786,14 @@ NUM_numpart_from_char(NUMProc *Np, int id, int plen)
 	if (*Np->number == ' ' && Np->read_pre + Np->read_post > 0)
 	{
 		/*
-	   	 * locale sign (NUM_S) is always anchored behind a last number, if:
+		 * locale sign (NUM_S) is always anchored behind a last number, if:
 		 *	- locale sign expected
 		 *	- last read char was NUM_0/9 or NUM_DEC
 		 *	- and next char is not digit
-      		 */		 
+		 */		 
 		if (IS_LSIGN(Np->Num) && isread && 
-				(Np->inout_p+1) <= Np->inout + plen &&
-				isdigit(*(Np->inout_p+1))==0)
+			(Np->inout_p+1) <= Np->inout + plen &&
+			!isdigit((unsigned char) *(Np->inout_p+1)))
 		{
 			int x;
 			char *tmp = Np->inout_p++;
