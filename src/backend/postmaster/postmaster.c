@@ -1092,8 +1092,10 @@ ProcessStartupPacket(Port *port, bool SSLdone)
 	if (len < sizeof(ProtocolVersion) || len > sizeof(StartupPacket))
 		elog(FATAL, "invalid length of startup packet");
 
+	buf = palloc(sizeof(StartupPacket));
+
 	/* Ensure we see zeroes for any bytes not sent */
-	buf = palloc0(sizeof(StartupPacket));
+	MemSet(buf, 0, sizeof(StartupPacket));
 
 	if (pq_getbytes(buf, len) == EOF)
 	{

@@ -1550,8 +1550,9 @@ Int64GetDatum(int64 X)
 	 * with zeroes in the unused bits.	This is needed so that, for
 	 * example, hash join of int8 will behave properly.
 	 */
-	int64	   *retval = (int64 *) palloc0(Max(sizeof(int64), 8));
+	int64	   *retval = (int64 *) palloc(Max(sizeof(int64), 8));
 
+	MemSet(retval, 0, Max(sizeof(int64), 8));
 	*retval = X;
 	return PointerGetDatum(retval);
 #endif   /* INT64_IS_BUSTED */

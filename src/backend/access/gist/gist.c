@@ -1316,8 +1316,10 @@ gistSplit(Relation r,
 	 */
 	if (r->rd_att->natts > 1)
 	{
-		v.spl_idgrp = (int *) palloc0(sizeof(int) * (*len + 1));
-		v.spl_grpflag = (char *) palloc0(sizeof(char) * (*len + 1));
+		v.spl_idgrp = (int *) palloc(sizeof(int) * (*len + 1));
+		MemSet((void *) v.spl_idgrp, 0, sizeof(int) * (*len + 1));
+		v.spl_grpflag = (char *) palloc(sizeof(char) * (*len + 1));
+		MemSet((void *) v.spl_grpflag, 0, sizeof(char) * (*len + 1));
 		v.spl_ngrp = (int *) palloc(sizeof(int) * (*len + 1));
 
 		MaxGrpId = gistfindgroup(giststate, (GISTENTRY *) VARDATA(entryvec), &v);

@@ -586,8 +586,7 @@ typedef NameData *Name;
 		int		_val = (val); \
 		Size	_len = (len); \
 \
-		if ((((long) _start) & INT_ALIGN_MASK) == 0 && \
-			(_len & INT_ALIGN_MASK) == 0 && \
+		if ((( ((long) _start) | _len) & INT_ALIGN_MASK) == 0 && \
 			_val == 0 && \
 			_len <= MEMSET_LOOP_LIMIT) \
 		{ \

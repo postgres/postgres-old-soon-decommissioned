@@ -248,7 +248,8 @@ makeacl(int n)
 	if (n < 0)
 		elog(ERROR, "makeacl: invalid size: %d", n);
 	size = ACL_N_SIZE(n);
-	new_acl = (Acl *) palloc0(size);
+	new_acl = (Acl *) palloc(size);
+	MemSet((char *) new_acl, 0, size);
 	new_acl->size = size;
 	new_acl->ndim = 1;
 	new_acl->flags = 0;

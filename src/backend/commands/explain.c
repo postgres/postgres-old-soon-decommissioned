@@ -164,7 +164,8 @@ ExplainOneQuery(Query *query, ExplainStmt *stmt, TupOutputState *tstate)
 			(double) endtime.tv_usec / 1000000.0;
 	}
 
-	es = (ExplainState *) palloc0(sizeof(ExplainState));
+	es = (ExplainState *) palloc(sizeof(ExplainState));
+	MemSet(es, 0, sizeof(ExplainState));
 
 	es->printCost = true;		/* default */
 

@@ -51,8 +51,9 @@ network_in(char *src, int type)
 	int			bits;
 	inet	   *dst;
 
+	dst = (inet *) palloc(VARHDRSZ + sizeof(inet_struct));
 	/* make sure any unused bits in a CIDR value are zeroed */
-	dst = (inet *) palloc0(VARHDRSZ + sizeof(inet_struct));
+	MemSet(dst, 0, VARHDRSZ + sizeof(inet_struct));
 
 	/* First, try for an IP V4 address: */
 	ip_family(dst) = AF_INET;
@@ -493,8 +494,9 @@ network_broadcast(PG_FUNCTION_ARGS)
 	inet	   *ip = PG_GETARG_INET_P(0);
 	inet	   *dst;
 
+	dst = (inet *) palloc(VARHDRSZ + sizeof(inet_struct));
 	/* make sure any unused bits are zeroed */
-	dst = (inet *) palloc0(VARHDRSZ + sizeof(inet_struct));
+	MemSet(dst, 0, VARHDRSZ + sizeof(inet_struct));
 
 	if (ip_family(ip) == AF_INET)
 	{
@@ -532,8 +534,9 @@ network_network(PG_FUNCTION_ARGS)
 	inet	   *ip = PG_GETARG_INET_P(0);
 	inet	   *dst;
 
+	dst = (inet *) palloc(VARHDRSZ + sizeof(inet_struct));
 	/* make sure any unused bits are zeroed */
-	dst = (inet *) palloc0(VARHDRSZ + sizeof(inet_struct));
+	MemSet(dst, 0, VARHDRSZ + sizeof(inet_struct));
 
 	if (ip_family(ip) == AF_INET)
 	{
@@ -571,8 +574,9 @@ network_netmask(PG_FUNCTION_ARGS)
 	inet	   *ip = PG_GETARG_INET_P(0);
 	inet	   *dst;
 
+	dst = (inet *) palloc(VARHDRSZ + sizeof(inet_struct));
 	/* make sure any unused bits are zeroed */
-	dst = (inet *) palloc0(VARHDRSZ + sizeof(inet_struct));
+	MemSet(dst, 0, VARHDRSZ + sizeof(inet_struct));
 
 	if (ip_family(ip) == AF_INET)
 	{

@@ -804,8 +804,9 @@ CopyFrom(Relation rel, List *attnumlist, bool binary, bool oids,
 	elements = (Oid *) palloc(num_phys_attrs * sizeof(Oid));
 	defmap = (int *) palloc(num_phys_attrs * sizeof(int));
 	defexprs = (Node **) palloc(num_phys_attrs * sizeof(Node *));
-	constraintexprs = (Node **) palloc0(num_phys_attrs * sizeof(Node *));
+	constraintexprs = (Node **) palloc(num_phys_attrs * sizeof(Node *));
 	constraintconsts = (Const **) palloc(num_phys_attrs * sizeof(Const *));
+	MemSet(constraintexprs, 0, num_phys_attrs * sizeof(Node *));
 
 	for (i = 0; i < num_phys_attrs; i++)
 	{

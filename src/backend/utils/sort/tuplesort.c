@@ -414,7 +414,9 @@ tuplesort_begin_common(bool randomAccess)
 {
 	Tuplesortstate *state;
 
-	state = (Tuplesortstate *) palloc0(sizeof(Tuplesortstate));
+	state = (Tuplesortstate *) palloc(sizeof(Tuplesortstate));
+
+	MemSet((char *) state, 0, sizeof(Tuplesortstate));
 
 	state->status = TSS_INITIAL;
 	state->randomAccess = randomAccess;
@@ -457,9 +459,11 @@ tuplesort_begin_heap(TupleDesc tupDesc,
 
 	state->tupDesc = tupDesc;
 	state->nKeys = nkeys;
-	state->scanKeys = (ScanKey) palloc0(nkeys * sizeof(ScanKeyData));
+	state->scanKeys = (ScanKey) palloc(nkeys * sizeof(ScanKeyData));
+	MemSet(state->scanKeys, 0, nkeys * sizeof(ScanKeyData));
 	state->sortFnKinds = (SortFunctionKind *)
-		palloc0(nkeys * sizeof(SortFunctionKind));
+		palloc(nkeys * sizeof(SortFunctionKind));
+	MemSet(state->sortFnKinds, 0, nkeys * sizeof(SortFunctionKind));
 
 	for (i = 0; i < nkeys; i++)
 	{

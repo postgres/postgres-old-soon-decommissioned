@@ -40,7 +40,8 @@ make_parsestate(ParseState *parentParseState)
 {
 	ParseState *pstate;
 
-	pstate = palloc0(sizeof(ParseState));
+	pstate = palloc(sizeof(ParseState));
+	MemSet(pstate, 0, sizeof(ParseState));
 
 	pstate->parentParseState = parentParseState;
 	pstate->p_last_resno = 1;

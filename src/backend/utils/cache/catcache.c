@@ -808,7 +808,8 @@ InitCatCache(int id,
 	 *
 	 * Note: we assume zeroing initializes the Dllist headers correctly
 	 */
-	cp = (CatCache *) palloc0(sizeof(CatCache) + NCCBUCKETS * sizeof(Dllist));
+	cp = (CatCache *) palloc(sizeof(CatCache) + NCCBUCKETS * sizeof(Dllist));
+	MemSet((char *) cp, 0, sizeof(CatCache) + NCCBUCKETS * sizeof(Dllist));
 
 	/*
 	 * initialize the cache's relation information for the relation

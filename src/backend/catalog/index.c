@@ -112,7 +112,8 @@ BuildFuncTupleDesc(Oid funcOid,
 	 * Allocate and zero a tuple descriptor for a one-column tuple.
 	 */
 	funcTupDesc = CreateTemplateTupleDesc(1, false);
-	funcTupDesc->attrs[0] = (Form_pg_attribute) palloc0(ATTRIBUTE_TUPLE_SIZE);
+	funcTupDesc->attrs[0] = (Form_pg_attribute) palloc(ATTRIBUTE_TUPLE_SIZE);
+	MemSet(funcTupDesc->attrs[0], 0, ATTRIBUTE_TUPLE_SIZE);
 
 	/*
 	 * Lookup the function to get its name and return type.

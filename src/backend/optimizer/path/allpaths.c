@@ -460,7 +460,8 @@ make_one_rel_by_joins(Query *root, int levels_needed, List *initial_rels)
 	 * joinitems[j] is a list of all the j-item rels.  Initially we set
 	 * joinitems[1] to represent all the single-jointree-item relations.
 	 */
-	joinitems = (List **) palloc0((levels_needed + 1) * sizeof(List *));
+	joinitems = (List **) palloc((levels_needed + 1) * sizeof(List *));
+	MemSet(joinitems, 0, (levels_needed + 1) * sizeof(List *));
 
 	joinitems[1] = initial_rels;
 
