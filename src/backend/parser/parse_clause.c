@@ -39,15 +39,18 @@ void
 makeRangeTable(ParseState *pstate, char *relname, List *frmList)
 {
 	RangeTblEntry *rte;
+	int	sublevels_up;
 	
 	parseFromClause(pstate, frmList);
 
 	if (relname == NULL)
 		return;
 
-	Assert(pstate->p_rtable == NULL);
-
-	rte = addRangeTableEntry(pstate, relname, relname, FALSE, FALSE);
+	if (refnameRangeTablePosn(pstate, relname, &sublevels_up) == 0 ||
+		sublevels_up != 0)
+    	rte = addRangeTableEntry(pstate, relname, relname, FALSE, FALSE);
+	else
+		rte = refnameRangeTableEntry(pstate, relname);
 
 	pstate->p_target_rangetblentry = rte;
 	Assert(pstate->p_target_relation == NULL);
