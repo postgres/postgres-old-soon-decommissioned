@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH DESTROYDB SQL 01/23/93 PostgreSQL PostgreSQL
+.TH "DROP DATABASE" SQL 01/23/93 PostgreSQL PostgreSQL
 .SH NAME
 drop database \(em destroy an existing database
 .SH SYNOPSIS
