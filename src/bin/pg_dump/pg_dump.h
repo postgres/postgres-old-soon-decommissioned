@@ -15,6 +15,7 @@
  *-------------------------------------------------------------------------
  */
 
+#include <catalog/pg_index.h>
 
 /* The *Info data structures run-time C structures used to store
    system catalog information */

@@ -90,7 +90,7 @@ fi
 
 if [ -z "$DELUSER" ]
 then
-    echo _fUnKy_DASH_N_sTuFf_ "Enter name of user to delete ---> "_fUnKy_BACKSLASH_C_sTuFf_
+    echo _fUnKy_DASH_N_sTuFf_ "Enter name of user to delete ---> _fUnKy_BACKSLASH_C_sTuFf_"
     read DELUSER
 fi
 
@@ -154,7 +154,7 @@ then
     yn=f
     while [ $yn != y -a $yn != n ]
     do
-        echo _fUnKy_DASH_N_sTuFf_ "Deleting user $DELUSER will destroy them. Continue (y/n)? "_fUnKy_BACKSLASH_C_sTuFf_
+        echo _fUnKy_DASH_N_sTuFf_ "Deleting user $DELUSER will destroy them. Continue (y/n)? _fUnKy_BACKSLASH_C_sTuFf_"
         read yn
     done
 
