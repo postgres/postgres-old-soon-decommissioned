@@ -699,6 +699,8 @@ extern int fdatasync(int fildes);
 
 #undef SIZEOF_INT8
 #undef SIZEOF_UINT8
+#undef SIZEOF_INT64
+#undef SIZEOF_UINT64
 
 /*
  *------------------------------------------------------------------------
