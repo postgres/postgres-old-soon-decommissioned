@@ -410,6 +410,7 @@ extern bool texticregexne(struct varlena * s, struct varlena * p);
 /* regproc.c */
 extern int32 regprocin(char *proname);
 extern char *regprocout(RegProcedure proid);
+extern text *oid8types(Oid (*oidArray)[]);
 extern Oid	regproctooid(RegProcedure rp);
 
 /* define macro to replace mixed-case function call - tgl 97/04/27 */

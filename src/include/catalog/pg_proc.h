@@ -1651,6 +1651,8 @@ DATA(insert OID = 1347 (  int4		   PGUID 14 f t f 1 f	23 "25" 100 0 0 100  "sele
 DESCR("");
 DATA(insert OID = 1348 (  obj_description   PGUID 14 f t f 1 f	25 "26" 100 0 0 100  "select description from pg_description where objoid = $1" - ));
 DESCR("");
+DATA(insert OID = 1349 (  oid8types	   PGUID 11 f t f 1 f	25 "30" 100 0 0 100  foo bar ));
+DESCR("");
 
 DATA(insert OID = 1350 (  datetime	   PGUID 14 f t f 1 f 1184 "1184" 100 0 0 100  "select $1" - ));
 DESCR("");
