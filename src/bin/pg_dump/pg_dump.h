@@ -53,6 +53,7 @@ typedef struct _typeInfo
 	char	   *typstorage;
 	char	   *usename;
 	char	   *typedefn;
+	char	   *typtype;
 	int			passedbyvalue;
 	int			isArray;
 	int			isDefined;
