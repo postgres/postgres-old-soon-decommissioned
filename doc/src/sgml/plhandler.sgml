@@ -154,6 +154,12 @@ CREATE LANGUAGE plsample
 </programlisting>
    </para>
 
+   <para>
+    The procedural languages included in the standard distribution
+    are good references when trying to write your own call handler.
+    Look into the <filename>src/pl</> subdirectory of the source tree.
+   </para>
+
  </chapter>
 
 <!-- Keep this comment at the end of the file
