@@ -106,8 +106,8 @@ typedefs (Michael)</para></listitem>
         <productname>PostgreSQL</productname>. A separate installer
         project has been created to ease installation on
         <productname>Windows</> &mdash; see <ulink
-        url="http://pgfoundry.org/projects/pginstaller">
-        http://pgfoundry.org/projects/pginstaller</ulink>.
+        url="http://www.postgresql.org/ftp/win32/">
+        http://www.postgresql.org/ftp/win32/</ulink>.
        </para>
 
        <para>
