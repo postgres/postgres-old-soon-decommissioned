@@ -1,0 +1,5 @@
+/* $Header$ */
+void	   *pg_dlopen(char *filename);
+PGFunction	pg_dlsym(void *handle, char *funcname);
+void		pg_dlclose(void *handle);
+char	   *pg_dlerror();
