@@ -1607,9 +1607,10 @@ _equalRangeVar(RangeVar *a, RangeVar *b)
 		return false;
 	if (!equal(a->alias, b->alias))
 		return false;
+/* FIX ME XXX
 	if (!equal(a->coldeflist, b->coldeflist))
 		return false;
-
+*/
 	return true;
 }
 

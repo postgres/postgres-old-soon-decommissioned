@@ -318,7 +318,7 @@ ProcedureCreate(const char *procedureName,
  * type he claims.
  */
 static void
-checkretval(Oid rettype, List *queryTreeList)
+checkretval(Oid rettype, char fn_typtype /* XXX FIX ME */, List *queryTreeList)
 {
 	Query	   *parse;
 	int			cmd;
