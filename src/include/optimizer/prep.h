@@ -42,8 +42,7 @@ extern Node *flatten_andors(Node *node);
 /*
  * prototypes for preptlist.c
  */
-extern List *preprocess_targetlist(List *tlist, int command_type,
-					  Index result_relation, List *range_table);
+extern List *preprocess_targetlist(Query *parse, List *tlist);
 
 /*
  * prototypes for prepunion.c
