@@ -191,7 +191,7 @@ static char     *values[MAXATTR];       /* cooresponding attribute values */
 int             numattr;                /* number of attributes for cur. rel */
 extern int    fsyncOff;                 /* do not fsync the database */
 
-#ifdef NEED_SIG_JMP
+#ifndef HAVE_SIGSETJMP
 static jmp_buf    Warn_restart;
 #define sigsetjmp(x,y)  setjmp(x)
 #define siglongjmp longjmp
