@@ -909,7 +909,7 @@ $<replaceable>number</replaceable>
 
 <programlisting>
 CREATE FUNCTION dept (text) RETURNS dept
-  AS 'select * from dept where name = $1'
+  AS 'SELECT * FROM dept WHERE name = $1'
   LANGUAGE 'sql';
 </programlisting>
 

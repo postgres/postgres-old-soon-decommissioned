@@ -304,7 +304,7 @@ $Header$
     examine this information is to execute the query
     <informalexample>
 <programlisting>
-select datname, age(datfrozenxid) from pg_database;
+SELECT datname, age(datfrozenxid) FROM pg_database;
 </programlisting>
     </informalexample>
     The <literal>age</> column measures the number of transactions from the
