@@ -157,10 +157,10 @@ USE_TCL= @USE_TCL@
 #
 TCL_INCDIR= /usr/local/include
 TCL_LIBDIR= /usr/local/lib
-TCL_LIB= -ltcl80
+TCL_LIB= -ltcl8.0
 TK_INCDIR= /usr/local/include
 TK_LIBDIR= /usr/local/lib
-TK_LIB= -ltk80
+TK_LIB= -ltk8.0
 
 USE_PERL= @USE_PERL@
 

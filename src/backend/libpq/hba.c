@@ -337,8 +337,15 @@ process_open_config_file(FILE *file, SockAddr *raddr, const char database[],
 		}
 	}
 
-	if (found_entry && !error)
+	if (!error)
+	{
+		/* If no entry was found then force a rejection. */
+
+		if (!found_entry)
+			*userauth_p = uaReject;
+
 		*host_ok_p = true;
+	}
 }
 
 
