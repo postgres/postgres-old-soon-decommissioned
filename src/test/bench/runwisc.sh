@@ -19,4 +19,4 @@ echo =============== vacuuming benchmark database... =================
 echo "vacuum" | postgres -D${1} -Q bench > /dev/null
 
 echo =============== running benchmark... =================
-time postgres -D${1} -B 256 -texecutor -tplanner -Q bench < bench.sql
+time postgres -D${1} -texecutor -tplanner -Q bench < bench.sql
