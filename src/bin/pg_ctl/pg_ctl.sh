@@ -221,8 +221,7 @@ if [ $op = "start" -o $op = "restart" ];then
 	    if [ -f $DEFPOSTOPTS ];then
 		eval "$po_path `cat $DEFPOSTOPTS`" &
 	    else
-		$ECHO "$CMDNAME: Can't find $DEFPOSTOPTS"
-		exit 1
+		$po_path &
 	    fi
 	else
 	    # if we are in restart mode, then look postmaster.opts
