@@ -34,5 +34,8 @@ zic: $(ZICOBJS)
 install: all installdirs
 	./zic -d $(DESTDIR)$(datadir)/timezone $(TZDATAFILES)
 
+installdirs:
+	$(mkinstalldirs) $(DESTDIR)$(datadir)
+
 clean distclean maintainer-clean:
 	rm -f SUBSYS.o zic $(OBJS) $(ZICOBJS)
