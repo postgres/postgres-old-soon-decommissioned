@@ -75,9 +75,9 @@
   ---------------------------------------------------------------------------
 */
 
-/* ----------------
+/*
  *		struct cachedesc: information defining a single syscache
- * ----------------
+ *
  */
 struct cachedesc
 {

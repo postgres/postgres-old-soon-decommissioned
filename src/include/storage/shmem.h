@@ -28,8 +28,8 @@
  */
 typedef unsigned long SHMEM_OFFSET;
 
-#define INVALID_OFFSET (-1)
-#define BAD_LOCATION (-1)
+#define INVALID_OFFSET 	(-1)
+#define BAD_LOCATION 	(-1)
 
 /*
  * Start of the primary shared memory region, in this process' address space.
