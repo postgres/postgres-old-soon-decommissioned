@@ -125,7 +125,7 @@ extern int heap_attisnull(HeapTuple tup, int attnum);
 extern int heap_sysattrlen(AttrNumber attno);
 extern bool heap_sysattrbyval(AttrNumber attno);
 extern char *heap_getsysattr(HeapTuple tup, Buffer b, int attnum);
-extern char *fastgetattr(HeapTuple tup, unsigned attnum,
+extern char *fastgetattr(HeapTuple tup, int attnum,
 			 TupleDesc att, bool *isnull);
 extern char *heap_getattr(HeapTuple tup, Buffer b, int attnum,
 			  TupleDesc att, bool *isnull);
