@@ -19,4 +19,9 @@
  */
 extern void cluster(ClusterStmt *stmt);
 
+extern List *get_indexattr_list(Relation OldHeap, Oid OldIndex);
+extern void rebuild_rel(Oid tableOid, Oid indexOid,
+					    List *indexes, bool dataCopy);
+
+
 #endif   /* CLUSTER_H */
