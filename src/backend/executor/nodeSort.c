@@ -71,9 +71,9 @@ FormSortKeys(Sort *sortnode)
 		if (reskey > 0)			/* ignore TLEs that are not sort keys */
 		{
 			ScanKeyEntryInitialize(&sortkeys[reskey - 1],
-								   0,
+								   0x0,
 								   resno,
-								   (RegProcedure) DatumGetInt32(reskeyop),
+								   (RegProcedure) reskeyop,
 								   (Datum) 0);
 		}
 	}
