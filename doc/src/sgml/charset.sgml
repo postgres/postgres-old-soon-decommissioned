@@ -353,7 +353,7 @@ perl: warning: Falling back to the standard locale ("C").
 	</row>
 	<row>
 	 <entry>KOI8</entry>
-	 <entry>KOI8-R</entry>
+	 <entry>KOI8-R(U)</entry>
 	</row>
 	<row>
 	 <entry>WIN</entry>
