@@ -20,6 +20,5 @@ install: initdb
 	$(INSTALL) $(INSTL_EXE_OPTS) $< $(DESTDIR)$(BINDIR)/$<
 
 clean:
-	rm -f initdb
 
 dep depend:
