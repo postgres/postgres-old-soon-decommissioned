@@ -18,6 +18,7 @@
 
 #include "access/heapam.h"
 #include "catalog/catalog.h"
+#include "catalog/pg_shadow.h"
 #include "commands/async.h"
 #include "commands/cluster.h"
 #include "commands/command.h"
@@ -851,6 +852,8 @@ ProcessUtility(Node *parsetree,
 			{
 				set_ps_display(commandTag = "CHECKPOINT");
 
+				if (!superuser())
+					elog(ERROR, "permission denied");
 				CreateCheckPoint(false);
 			}
 			break;

@@ -40,6 +40,11 @@ CHECKPOINT
    <citetitle>PostgreSQL Administrator's Guide</citetitle> for more
    information about the WAL system.
   </para>
+
+  <para>
+   Only superusers may call <command>CHECKPOINT</command>.  The command is
+   not intended for use during normal operation.
+  </para>
  </refsect1>
 
  <refsect1>
