@@ -114,11 +114,11 @@ extern char *pqStrerror(int errnum, char *strerrbuf, size_t buflen);
 
 #ifndef WIN32
 extern int pqGetpwuid(uid_t uid, struct passwd * resultbuf, char *buffer,
-		   size_t buflen, struct passwd ** result);
+		   size_t buflen, struct passwd **result);
 #endif
 
 extern int pqGethostbyname(const char *name,
-				struct hostent * resbuf,
-				char *buf, size_t buflen,
-				struct hostent ** result,
+				struct hostent *resultbuf,
+				char *buffer, size_t buflen,
+				struct hostent **result,
 				int *herrno);
