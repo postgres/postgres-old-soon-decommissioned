@@ -45,6 +45,8 @@ EXECUTE <replaceable class="PARAMETER">plan_name</replaceable> [ (<replaceable c
   </para>
 
   <para>
+   The command tag returned by <command>EXECUTE</command>
+   is that of the prepared statement, and not <literal>EXECUTE</>.
    For more information on the creation and usage of prepared statements,
    see <xref linkend="sql-prepare" endterm="sql-prepare-title">.
   </para>
