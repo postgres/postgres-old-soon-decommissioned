@@ -112,7 +112,7 @@ typedef void (*PQnoticeProcessor) (void * arg, const char * message);
 	typedef struct _PQconninfoOption
 	{
 		char	   *keyword;	/* The keyword of the option			*/
-		char	   *environ;	/* Fallback environment variable name	*/
+		char	   *envvar;	/* Fallback environment variable name	*/
 		char	   *compiled;	/* Fallback compiled in default value	*/
 		char	   *val;		/* Options value						*/
 		char	   *label;		/* Label for field in connect dialog	*/

@@ -1290,9 +1290,9 @@ conninfo_parse(const char *conninfo, char *errorMessage)
 		 * Try to get the environment variable fallback
 		 * ----------
 		 */
-		if (option->environ != NULL)
+		if (option->envvar != NULL)
 		{
-			if ((tmp = getenv(option->environ)) != NULL)
+			if ((tmp = getenv(option->envvar)) != NULL)
 			{
 				option->val = strdup(tmp);
 				continue;
