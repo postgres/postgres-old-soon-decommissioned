@@ -230,7 +230,7 @@ main(int argc, char *argv[])
 	/*
 	 * process file given by -f
 	 */
-	if (options.action == ACT_FILE)
+	if (options.action == ACT_FILE && strcmp(options.action_string, "-")!=0)
 	{
 		if (!options.no_psqlrc)
 			process_psqlrc();
@@ -290,6 +290,8 @@ main(int argc, char *argv[])
 			process_psqlrc();
 		if (!pset.notty)
 			initializeInput(options.no_readline ? 0 : 1);
+		if (options.action_string) /* -f - was used */
+			pset.inputfile = "<stdin>";
 		successResult = MainLoop(stdin);
 	}
 
