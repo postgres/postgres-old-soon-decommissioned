@@ -55,7 +55,7 @@ include $(SRCDIR)/Makefile.shlib
 
 
 # Pull shared-lib CFLAGS into CXXFLAGS
-CXXFLAGS+= $(CFLAGS) -Wno-unused
+CXXFLAGS+= $(CFLAGS)
 
 
 .PHONY: examples
