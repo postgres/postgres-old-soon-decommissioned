@@ -146,9 +146,6 @@ CREATE DATABASE <replaceable class="PARAMETER">name</replaceable>
 
      <varlistentry>
       <term><computeroutput>ERROR:  Unable to create database directory '<replaceable>path</replaceable>'.</computeroutput></term>
-     </varlistentry>
-
-     <varlistentry>
       <term><computeroutput>ERROR:  Could not initialize database directory.</computeroutput></term>
       <listitem>
        <para>
