@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 
 	printf("\
 Make sure you have added any needed 'THREAD_CPPFLAGS' and 'THREAD_LIBS'\n\
-defines to your template/${port} file before compiling this program.\n\n"
+defines to your template/$port file before compiling this program.\n\n"
 );
 	pthread_create(&thread1, NULL, (void * (*)(void *)) func_call_1, NULL);
 	pthread_create(&thread2, NULL, (void * (*)(void *)) func_call_2, NULL);
@@ -82,20 +82,14 @@ defines to your template/${port} file before compiling this program.\n\n"
 		strerror_p1 != strerror_p2)
 	{
 		printf("All your non-*_r functions are thread-safe.\n");
-		printf("Add this to your template/${port} file:\n\n");
-		printf("\
-SUPPORTS_THREADS=yes\n\
-NEED_REENTRANT_FUNCS=no\n"
-			  );
+		printf("Add this to your template/$port file:\n\n");
+		printf("NEED_REENTRANT_FUNCS=no\n");
 	}
 	else
 	{
 		printf("Not all non-*_r functions are thread-safe.\n");
-		printf("Add this to your template/${port} file:\n\n");
-		printf("\
-SUPPORTS_THREADS=yes\n\
-NEED_REENTRANT_FUNCS=yes\n"
-			  );
+		printf("Add this to your template/$port file:\n\n");
+		printf("NEED_REENTRANT_FUNCS=yes\n");
 	}
 
 	return 0;

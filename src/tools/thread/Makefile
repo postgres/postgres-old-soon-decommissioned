@@ -12,6 +12,13 @@ subdir = tools/thread
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
+ifeq ($(THREAD_SUPPORT), no)
+$(error Your platform does not support threads)
+endif
+ifeq ($(THREAD_SUPPORT), )
+$(error You have not configured your template/$$port file.  See the README)
+endif
+
 override CFLAGS += $(THREAD_CPPFLAGS)
 
 LDFLAGS += $(THREAD_LIBS)
