@@ -15,6 +15,8 @@
 #include <stdio.h>		/* for sprintf() */
 #include <string.h>
 #include <sys/file.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #include "postgres.h"
 #include "miscadmin.h"
