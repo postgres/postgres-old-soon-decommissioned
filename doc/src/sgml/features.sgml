@@ -105,7 +105,7 @@ $Header$
 
    <para>
     The following features defined in <acronym>SQL99</acronym> are not
-    implemented in the current release of
+    implemented in this release of
     <productname>PostgreSQL</productname>. In a few cases, equivalent
     functionality is available.
 

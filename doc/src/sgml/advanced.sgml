@@ -344,14 +344,14 @@ SELECT name, altitude
 
     which returns:
 
-    <screen>
+<screen>
    name    | altitude
 -----------+----------
  Las Vegas |     2174
  Mariposa  |     1953
  Madison   |      845
 (3 rows)
-    </screen>
+</screen>
    </para>
 
    <para>
