@@ -290,7 +290,9 @@ BootstrapMain(int argc, char *argv[])
 #ifdef EXEC_BACKEND
 					char	   *p;
 
-					sscanf(optarg, "%d,%p,", &UsedShmemSegID, &UsedShmemSegAddr);
+					sscanf(optarg, "%lu,%p,",
+						   &UsedShmemSegID,
+						   &UsedShmemSegAddr);
 					p = strchr(optarg, ',');
 					if (p)
 						p = strchr(p + 1, ',');

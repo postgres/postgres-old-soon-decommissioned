@@ -24,8 +24,6 @@
 #ifndef PG_SHMEM_H
 #define PG_SHMEM_H
 
-typedef uint32 IpcMemoryKey;	/* shared memory key passed to shmget(2) */
-
 typedef struct PGShmemHeader	/* standard header for all Postgres shmem */
 {
 	int32		magic;			/* magic # to identify Postgres segments */
@@ -37,7 +35,7 @@ typedef struct PGShmemHeader	/* standard header for all Postgres shmem */
 
 
 #ifdef EXEC_BACKEND
-extern IpcMemoryKey UsedShmemSegID;
+extern unsigned long UsedShmemSegID;
 extern void *UsedShmemSegAddr;
 #endif
 

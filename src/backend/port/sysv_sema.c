@@ -42,7 +42,7 @@ union semun
 };
 #endif
 
-typedef uint32 IpcSemaphoreKey; /* semaphore key passed to semget(2) */
+typedef key_t IpcSemaphoreKey;	/* semaphore key passed to semget(2) */
 typedef int IpcSemaphoreId;		/* semaphore ID returned by semget(2) */
 
 /*
@@ -115,8 +115,8 @@ InternalIpcSemaphoreCreate(IpcSemaphoreKey semKey, int numSems)
 		 */
 		ereport(FATAL,
 				(errmsg("could not create semaphores: %m"),
-				 errdetail("Failed system call was semget(%d, %d, 0%o).",
-						   (int) semKey, numSems,
+				 errdetail("Failed system call was semget(%lu, %d, 0%o).",
+						   (unsigned long) semKey, numSems,
 						   IPC_CREAT | IPC_EXCL | IPCProtection),
 				 (errno == ENOSPC) ?
 				 errhint("This error does *not* mean that you have run out of disk space.\n"
