@@ -159,6 +159,7 @@ main(int argc, char *argv[])
 		fprintf(stderr, "%s: invalid current euid", argv[0]);
 		exit(1);
 	}
+	/* Allocate new memory because later getpwuid() calls can overwrite it */
 	pw_name_persist = strdup(pw->pw_name);
 
 	exit(PostgresMain(argc, argv, argc, argv, pw_name_persist));
