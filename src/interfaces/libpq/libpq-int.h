@@ -249,6 +249,7 @@ struct pg_conn
 	char	   *dbName;			/* database name */
 	char	   *pguser;			/* Postgres username and password, if any */
 	char	   *pgpass;
+	char	   *sslmode;		/* SSL mode (require,prefer,allow,disable) */
 
 	/* Optional file to write trace info to */
 	FILE	   *Pfdebug;
@@ -316,11 +317,10 @@ struct pg_conn
 	PGresult   *result;			/* result being constructed */
 	PGresAttValue *curTuple;	/* tuple currently being read */
 
-	char	   *sslmode;		/* SSL mode option string */
 #ifdef USE_SSL
 	bool		allow_ssl_try;	/* Allowed to try SSL negotiation */
 	bool		wait_ssl_try;	/* Delay SSL negotiation until after
-								   attempting normal connection */
+								 * attempting normal connection */
 	SSL		   *ssl;			/* SSL status, if have SSL connection */
 	X509	   *peer;			/* X509 cert of server */
 	char		peer_dn[256 + 1];		/* peer distinguished name */
