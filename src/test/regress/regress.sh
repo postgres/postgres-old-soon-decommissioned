@@ -43,7 +43,7 @@ fi
 echo "=============== running regression queries...         ================="
 echo "" > regression.diffs
 if [ a$MB != a ];then
-	mbtests=`echo $MB|tr A-Z a-z`
+	mbtests=`echo $MB|tr "[A-Z]" "[a-z]"`
 else
 	mbtests=""
 fi
