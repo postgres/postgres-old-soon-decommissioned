@@ -1385,10 +1385,14 @@ _outConstraint(StringInfo str, Constraint *node)
 static void
 _outCaseExpr(StringInfo str, CaseExpr *node)
 {
-	appendStringInfo(str, "CASE ");
+	appendStringInfo(str, " CASE :casetype %u :arg ",
+					 node->casetype);
+	_outNode(str, node->arg);
+
+	appendStringInfo(str, " :args ");
 	_outNode(str, node->args);
 
-	appendStringInfo(str, " :default ");
+	appendStringInfo(str, " :defresult ");
 	_outNode(str, node->defresult);
 }
 
