@@ -558,7 +558,11 @@ ProcessUtility(Node *parsetree,
 
 				*ps_status = commandTag = "CREATEDB";
 				CHECK_IF_ABORTED();
+#ifdef MB
+				createdb(stmt->dbname, stmt->dbpath, stmt->encoding);
+#else
 				createdb(stmt->dbname, stmt->dbpath);
+#endif
 			}
 			break;
 

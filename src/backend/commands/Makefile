@@ -22,10 +22,6 @@ OBJS = async.o creatinh.o command.o copy.o defind.o define.o \
        recipe.o explain.o sequence.o trigger.o user.o proclang.o \
        dbcommands.o variable.o
 
-ifdef MB
-OBJS += mbutils.o
-endif
-
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)

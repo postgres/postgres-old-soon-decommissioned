@@ -17,6 +17,9 @@
 
 CMDNAME=`basename $0`
 
+MBENABLED=__MB__
+MB=
+
 if [ -z "$USER" ]; then
 	if [ -z "$LOGNAME" ]; then
 		if [ -z "`whoami`" ]; then
@@ -43,6 +46,18 @@ do
 		-p) PGPORT=$2; shift;;
 		-u) PASSWDOPT=$1;;
 		-D) dbpath=$2; shift;;
+		-E)
+			if [ -z "$MBENABLED" ];then
+				echo "$CMDNAME: you need to turn on MB compile time option"
+				exit 1
+			fi
+			MB=$2
+			MBID=`pg_encoding $MB`
+			if [ -z "$MBID" ];then
+				echo "$CMDNAME: $MB is not a valid encoding name"
+				exit 1
+			fi
+			shift;;
 		-*) echo "$CMDNAME: unrecognized parameter $1"; usage=1;;
 		 *) dbname=$1;;
 	esac
@@ -50,8 +65,12 @@ do
 done
 
 if [ "$usage" ]; then
-	echo "Usage: $CMDNAME -a <authtype> -h <server> -p <portnumber> -D <location> [dbname]"
+	if [ -z "$MBENABLED" ];then
+		echo "Usage: $CMDNAME -a <authtype> -h <server> -p <portnumber> -D <location> [dbname]"
+	else
+		echo "Usage: $CMDNAME -a <authtype> -h <server> -p <portnumber> -D <location> -E <encoding> [dbname]"
 	exit 1
+	fi
 fi
 
 if [ -z "$AUTHSYS" ]; then
@@ -82,8 +101,16 @@ else
 #	fi
 	location="with location = '$dbpath'"
 fi
+if [ -z "$MBENABLED" -o -z "$MB" ]; then
+	encoding=""
+else
+	encoding="encoding = '$MB'"
+	if [ -z "$location" ];then
+		encoding="with $encoding"
+	fi
+fi
 
-psql $PASSWDOPT -tq $AUTHOPT $PGHOSTOPT $PGPORTOPT -c "create database $dbname $location" template1
+psql $PASSWDOPT -tq $AUTHOPT $PGHOSTOPT $PGPORTOPT -c "create database $dbname $location $encoding" template1
 
 if [ $? -ne 0 ]; then
 	echo "$CMDNAME: database creation failed on $dbname."

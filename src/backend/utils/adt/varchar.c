@@ -21,7 +21,7 @@ char	   *convertstr(char *, int, int);
 
 #endif
 
-#include "regex/pg_wchar.h"
+#include "mb/pg_wchar.h"
 
 /*
  * CHAR() and VARCHAR() types are part of the ANSI SQL standard. CHAR()

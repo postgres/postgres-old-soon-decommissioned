@@ -602,6 +602,9 @@ struct VariableParsers
 	{
 		"client_encoding", parse_client_encoding, show_client_encoding, reset_client_encoding
 	},
+       {
+		"server_encoding", parse_server_encoding, show_server_encoding, reset_server_encoding
+	},
 #endif
 	{
 		NULL, NULL, NULL, NULL

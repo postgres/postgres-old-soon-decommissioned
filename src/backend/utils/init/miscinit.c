@@ -234,6 +234,18 @@ SetDatabaseName(char *name)
 	strcpy(DatabaseName, name);
 }
 
+#ifndef MB
+/* even if MB is not enabled, this function is neccesary
+ * since pg_proc.h does have.
+ */
+const char *
+getdatabaseencoding()
+{
+  elog(ERROR, "you need to enable MB to use this function");
+  return("");
+}
+#endif
+
 #ifdef CYR_RECODE
 #define MAX_TOKEN	80
 

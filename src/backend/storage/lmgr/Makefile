@@ -12,6 +12,9 @@ SRCDIR = ../../..
 include ../../../Makefile.global
 
 CFLAGS += -I../..
+ifdef MB
+CFLAGS += -DMB=$(MB)
+endif
 
 OBJS = lmgr.o lock.o multi.o proc.o single.o
 

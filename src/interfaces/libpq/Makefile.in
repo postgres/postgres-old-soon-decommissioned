@@ -33,7 +33,7 @@ OBJS= fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
       dllist.o pqsignal.o
 
 ifdef MB
-OBJS+= pqutils.o pqmbutils.o
+OBJS+= common.o wchar.o conv.o
 endif
 
 # Shared library stuff

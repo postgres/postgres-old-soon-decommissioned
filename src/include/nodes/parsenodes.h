@@ -480,6 +480,10 @@ typedef struct CreatedbStmt
 	NodeTag		type;
 	char	   *dbname;			/* database to create */
 	char	   *dbpath;			/* location of database */
+#ifdef MB
+	int	   encoding;			/* default encoding
+						   (see regex/pg_wchar.h) */
+#endif
 } CreatedbStmt;
 
 /* ----------------------

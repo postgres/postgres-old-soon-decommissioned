@@ -16,7 +16,6 @@ CFLAGS += -DPOSIX_MISTAKE
 
 OBJS = regcomp.o regerror.o regexec.o regfree.o
 ifdef MB
-OBJS += utils.o wstrcmp.o wstrncmp.o
 CFLAGS += -DMB=$(MB)
 endif
 

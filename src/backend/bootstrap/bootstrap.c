@@ -41,8 +41,13 @@
 #include "catalog/catname.h"
 #include "catalog/index.h"
 #include "catalog/pg_am.h"
+#ifdef MB
+#include "catalog/pg_attribute_mb.h"
+#include "catalog/pg_class_mb.h"
+#else
 #include "catalog/pg_attribute.h"
 #include "catalog/pg_class.h"
+#endif
 #include "catalog/pg_type.h"
 #include "executor/execdesc.h"
 #include "executor/hashjoin.h"

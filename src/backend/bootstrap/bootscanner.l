@@ -20,7 +20,11 @@
 #include "storage/block.h"
 #include "storage/off.h"
 #include "storage/itemptr.h"
+#ifdef MB
+#include "catalog/pg_attribute_mb.h"
+#else
 #include "catalog/pg_attribute.h"
+#endif
 #include "access/attnum.h"
 #include "nodes/pg_list.h"
 #include "access/tupdesc.h"
@@ -28,7 +32,11 @@
 #include "access/funcindex.h"
 #include "storage/fd.h"
 #include "catalog/pg_am.h"
+#ifdef MB
+#include "catalog/pg_class_mb.h"
+#else
 #include "catalog/pg_class.h"
+#endif
 #include "nodes/nodes.h"
 #include "rewrite/prs2lock.h"
 #include "access/skey.h"

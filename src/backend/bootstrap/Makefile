@@ -22,6 +22,9 @@ SRCDIR= ../..
 include ../../Makefile.global
 
 CFLAGS += -I..
+ifdef MB
+CFLAGS += -DMB=$(MB)
+endif
 
 ifeq ($(CC), gcc)
 CFLAGS+= -Wno-error

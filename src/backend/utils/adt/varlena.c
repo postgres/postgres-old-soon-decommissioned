@@ -18,7 +18,7 @@
 #include "utils/palloc.h"
 #include "utils/builtins.h"		/* where function declarations go */
 
-#include "regex/pg_wchar.h"
+#include "mb/pg_wchar.h"
 
 /*****************************************************************************
  *	 USER I/O ROUTINES														 *

@@ -13,6 +13,10 @@ include ../../../Makefile.global
 
 CFLAGS += -I../..
 
+ifdef MB
+CFLAGS += -DMB=$(MB)
+endif
+
 OBJS = md.o mm.o smgr.o smgrtype.o
 
 all: SUBSYS.o

@@ -43,7 +43,11 @@
 #include <utils/excid.h>
 #include <utils/mcxt.h>
 #include <catalog/pg_proc.h>
+#ifdef MB
+#include <catalog/pg_class_mb.h>
+#else
 #include <catalog/pg_class.h>
+#endif
 #include <optimizer/internal.h>
 #ifndef NO_SECURITY
 #include <utils/acl.h>

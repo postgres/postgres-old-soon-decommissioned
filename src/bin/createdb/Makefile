@@ -17,7 +17,7 @@ include ../../Makefile.global
 all: createdb
 
 createdb: createdb.sh
-	cp createdb.sh createdb
+	sed 's/__MB__/$(MB)/' createdb.sh > createdb
 
 install: createdb
 	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$<

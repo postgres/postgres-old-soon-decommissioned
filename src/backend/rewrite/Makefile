@@ -12,6 +12,9 @@ SRCDIR = ../..
 include ../../Makefile.global
 
 CFLAGS += -I..
+ifdef MB
+CFLAGS += -DMB=$(MB)
+endif
 
 OBJS = rewriteRemove.o rewriteDefine.o \
        rewriteHandler.o rewriteManip.o rewriteSupport.o locks.o

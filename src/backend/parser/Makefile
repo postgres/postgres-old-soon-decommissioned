@@ -17,6 +17,9 @@ ifeq ($(CC), gcc)
 CFLAGS+= -Wno-error
 endif
 
+ifdef MB
+CFLAGS+= -DMB=$(MB)
+endif
 
 OBJS= analyze.o gram.o keywords.o parser.o parse_agg.o parse_clause.o \
       parse_expr.o parse_func.o parse_node.o parse_oper.o parse_relation.o \

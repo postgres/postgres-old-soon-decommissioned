@@ -27,7 +27,11 @@
 #include "catalog/catalog.h"
 #include "catalog/catname.h"
 #include "catalog/index.h"
+#ifdef MB
+#include "catalog/pg_class_mb.h"
+#else
 #include "catalog/pg_class.h"
+#endif
 #include "catalog/pg_index.h"
 #include "catalog/pg_operator.h"
 #include "catalog/pg_statistic.h"

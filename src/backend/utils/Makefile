@@ -23,6 +23,11 @@ OBJS = fmgrtab.o adt/SUBSYS.o cache/SUBSYS.o error/SUBSYS.o \
 
 DIRS = adt cache error fmgr hash init misc mmgr sort time
 
+ifdef MB
+OBJS += mb/SUBSYS.o
+DIRS += mb
+endif
+
 SUBSYS.o: $(OBJS) 
 	$(LD) -r -o SUBSYS.o $(OBJS)
 

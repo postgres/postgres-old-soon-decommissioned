@@ -53,7 +53,11 @@
 #include "catalog/indexing.h"
 #include "catalog/pg_aggregate.h"
 #include "catalog/pg_attrdef.h"
+#ifdef MB
+#include "catalog/pg_attribute_mb.h"
+#else
 #include "catalog/pg_attribute.h"
+#endif
 #include "catalog/pg_index.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_class.h"
