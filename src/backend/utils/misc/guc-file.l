@@ -214,6 +214,7 @@ ProcessConfigFile(GucContext context)
 					{
 						pfree(opt_name);
 						pfree(opt_value);
+						FreeFile(fp);
 						goto cleanup_exit;
 					}
 					pfree(opt_name);
