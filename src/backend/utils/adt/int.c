@@ -786,7 +786,7 @@ int4fac(PG_FUNCTION_ARGS)
 
 	if (arg1 == 0)
 		result = 1;
-	else if (arg1 < 1)
+	else if (arg1 < 0)
 		result = 0;
 	else
 		for (result = 1; arg1 > 0; --arg1)
@@ -802,7 +802,7 @@ int2fac(PG_FUNCTION_ARGS)
 
 	if (arg1 == 0)
 		result = 1;
-	else if (arg1 < 1)
+	else if (arg1 < 0)
 		result = 0;
 	else
 		for (result = 1; arg1 > 0; --arg1)
