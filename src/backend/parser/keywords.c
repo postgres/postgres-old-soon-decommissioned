@@ -38,6 +38,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"after", AFTER},
 	{"aggregate", AGGREGATE},
 	{"all", ALL},
+	{"also", ALSO},
 	{"alter", ALTER},
 	{"analyse", ANALYSE},		/* British spelling */
 	{"analyze", ANALYZE},

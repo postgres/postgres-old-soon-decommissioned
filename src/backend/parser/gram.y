@@ -332,7 +332,7 @@ static void doNegateFloat(Value *v);
 
 /* ordinary key words in alphabetical order */
 %token <keyword> ABORT_P ABSOLUTE_P ACCESS ACTION ADD AFTER
-	AGGREGATE ALL ALTER ANALYSE ANALYZE AND ANY ARRAY AS ASC
+	AGGREGATE ALL ALSO ALTER ANALYSE ANALYZE AND ANY ARRAY AS ASC
 	ASSERTION ASSIGNMENT AT AUTHORIZATION
 
 	BACKWARD BEFORE BEGIN_P BETWEEN BIGINT BINARY BIT
@@ -3610,6 +3610,7 @@ event:		SELECT									{ $$ = CMD_SELECT; }
 
 opt_instead:
 			INSTEAD									{ $$ = TRUE; }
+			| ALSO									{ $$ = FALSE; }
 			| /*EMPTY*/								{ $$ = FALSE; }
 		;
 

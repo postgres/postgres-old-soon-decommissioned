@@ -171,6 +171,12 @@
     <entry>reserved</entry>
    </row>
    <row>
+    <entry><token>ALSO</token></entry>
+    <entry>non-reserved</entry>
+    <entry></entry>
+    <entry></entry>
+   </row>
+   <row>
     <entry><token>ALTER</token></entry>
     <entry>non-reserved</entry>
     <entry>reserved</entry>
