@@ -133,6 +133,8 @@ int px_find_hmac(const char *name, PX_HMAC **res);
 int px_find_cipher(const char *name, PX_Cipher **res);
 int px_find_combo(const char *name, PX_Combo **res);
 
+int px_get_random_bytes(uint8 *dst, unsigned count);
+
 const char *px_resolve_alias(const PX_Alias *aliases, const char *name);
 
 #define px_md_result_size(md)		(md)->result_size(md)

@@ -35,7 +35,6 @@
 
 #include <openssl/evp.h>
 #include <openssl/blowfish.h>
-/*#include <openssl/crypto.h>*/
 
 static uint
 digest_result_size(PX_MD * h)
