@@ -599,9 +599,11 @@ replace_result_clause(Node *clause,
 		 */
 		subplanVar = match_varid((Var *) clause, subplanTargetList);
 
+		if (! subplanVar)
+			elog(ERROR, "replace_result_clause: variable not in target list");
+
 		/*
 		 * Change the varno & varattno fields of the var node.
-		 *
 		 */
 		((Var *) clause)->varno = (Index) OUTER;
 		((Var *) clause)->varattno = subplanVar->resdom->resno;
@@ -754,10 +756,11 @@ replace_agg_clause(Node *clause, List *subplanTargetList)
 		 */
 		subplanVar = match_varid((Var *) clause, subplanTargetList);
 
+		if (! subplanVar)
+			elog(ERROR, "replace_agg_clause: variable not in target list");
+
 		/*
 		 * Change the varno & varattno fields of the var node.
-		 * Note we assume match_varid() will succeed ...
-		 *
 		 */
 		((Var *) clause)->varattno = subplanVar->resdom->resno;
 
