@@ -99,23 +99,27 @@ DATA(insert OID = 0 ( sum   PGUID float4pl      - -  700  700 0  700 _null_ _nul
 DATA(insert OID = 0 ( sum   PGUID float8pl      - -  701  701 0  701 _null_ _null_ ));
 DATA(insert OID = 0 ( sum   PGUID cash_pl       - -  790  790 0  790 _null_ _null_ ));
 
-DATA(insert OID = 0 ( max   PGUID int4larger    - -   23   23 0   23 _null_ _null_ ));
-DATA(insert OID = 0 ( max   PGUID int2larger    - -   21   21 0   21 _null_ _null_ ));
-DATA(insert OID = 0 ( max   PGUID float4larger  - -  700  700 0  700 _null_ _null_ ));
-DATA(insert OID = 0 ( max   PGUID float8larger  - -  701  701 0  701 _null_ _null_ ));
-DATA(insert OID = 0 ( max   PGUID int4larger    - -  702  702 0  702 _null_ _null_ ));
-DATA(insert OID = 0 ( max   PGUID date_larger   - - 1082 1082 0 1082 _null_ _null_ ));
-DATA(insert OID = 0 ( max   PGUID float8larger  - - 1084 1084 0 1084 _null_ _null_ ));
-DATA(insert OID = 0 ( max   PGUID cashlarger    - -  790  790 0  790 _null_ _null_ ));
+DATA(insert OID = 0 ( max   PGUID int4larger      - -   23   23 0   23 _null_ _null_ ));
+DATA(insert OID = 0 ( max   PGUID int2larger      - -   21   21 0   21 _null_ _null_ ));
+DATA(insert OID = 0 ( max   PGUID float4larger    - -  700  700 0  700 _null_ _null_ ));
+DATA(insert OID = 0 ( max   PGUID float8larger    - -  701  701 0  701 _null_ _null_ ));
+DATA(insert OID = 0 ( max   PGUID int4larger      - -  702  702 0  702 _null_ _null_ ));
+DATA(insert OID = 0 ( max   PGUID date_larger     - - 1082 1082 0 1082 _null_ _null_ ));
+DATA(insert OID = 0 ( max   PGUID float8larger    - - 1084 1084 0 1084 _null_ _null_ ));
+DATA(insert OID = 0 ( max   PGUID cashlarger      - -  790  790 0  790 _null_ _null_ ));
+DATA(insert OID = 0 ( max   PGUID datetime_larger - - 1184 1184 0 1184 _null_ _null_ ));
+DATA(insert OID = 0 ( max   PGUID timespan_larger - - 1186 1186 0 1186 _null_ _null_ ));
 
-DATA(insert OID = 0 ( min   PGUID int4smaller   - -   23   23 0   23 _null_ _null_ ));
-DATA(insert OID = 0 ( min   PGUID int2smaller   - -   21   21 0   21 _null_ _null_ ));
-DATA(insert OID = 0 ( min   PGUID float4smaller - -  700  700 0  700 _null_ _null_ ));
-DATA(insert OID = 0 ( min   PGUID float8smaller - -  701  701 0  701 _null_ _null_ ));
-DATA(insert OID = 0 ( min   PGUID int4smaller   - -  702  702 0  702 _null_ _null_ ));
-DATA(insert OID = 0 ( min   PGUID date_smaller  - - 1082 1082 0 1082 _null_ _null_ ));
-DATA(insert OID = 0 ( min   PGUID float8smaller - - 1084 1084 0 1084 _null_ _null_ ));
-DATA(insert OID = 0 ( min   PGUID cashsmaller   - -  790  790 0  790 _null_ _null_ ));
+DATA(insert OID = 0 ( min   PGUID int4smaller      - -   23   23 0   23 _null_ _null_ ));
+DATA(insert OID = 0 ( min   PGUID int2smaller      - -   21   21 0   21 _null_ _null_ ));
+DATA(insert OID = 0 ( min   PGUID float4smaller    - -  700  700 0  700 _null_ _null_ ));
+DATA(insert OID = 0 ( min   PGUID float8smaller    - -  701  701 0  701 _null_ _null_ ));
+DATA(insert OID = 0 ( min   PGUID int4smaller      - -  702  702 0  702 _null_ _null_ ));
+DATA(insert OID = 0 ( min   PGUID date_smaller     - - 1082 1082 0 1082 _null_ _null_ ));
+DATA(insert OID = 0 ( min   PGUID float8smaller    - - 1084 1084 0 1084 _null_ _null_ ));
+DATA(insert OID = 0 ( min   PGUID cashsmaller      - -  790  790 0  790 _null_ _null_ ));
+DATA(insert OID = 0 ( min   PGUID datetime_smaller - - 1184 1184 0 1184 _null_ _null_ ));
+DATA(insert OID = 0 ( min   PGUID timespan_smaller - - 1186 1186 0 1186 _null_ _null_ ));
 
 DATA(insert OID = 0 ( count PGUID - int4inc - 0 0 23 23 _null_ 0 ));
 

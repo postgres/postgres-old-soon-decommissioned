@@ -87,6 +87,8 @@ typedef FormData_pg_operator	*OperatorTupleForm;
  * ----------------
  */
 
+DATA(insert OID = 58 (  "<"        PGUID 0 b t f  16  16  16  85   91  0  0 boollt intltsel intltjoinsel ));
+DATA(insert OID = 59 (  ">"        PGUID 0 b t f  16  16  16  85   91  0  0 boolgt intltsel intltjoinsel ));
 DATA(insert OID = 85 (  "<>"       PGUID 0 b t f  16  16  16  85   91  0  0 boolne neqsel neqjoinsel ));
 DATA(insert OID = 91 (  "="        PGUID 0 b t t  16  16  16  91   85  0  0 booleq eqsel eqjoinsel ));
 #define BooleanEqualOperator   91
