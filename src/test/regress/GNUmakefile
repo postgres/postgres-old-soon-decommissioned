@@ -80,10 +80,10 @@ all-spi:
 ##
 
 check: all
-	./pg_regress --temp-install --top-builddir=$(top_builddir) --schedule=parallel_schedule --multibyte=$(MULTIBYTE)
+	$(SHELL) ./pg_regress --temp-install --top-builddir=$(top_builddir) --schedule=parallel_schedule --multibyte=$(MULTIBYTE)
 
 installcheck: all
-	./pg_regress --schedule=serial_schedule --multibyte=$(MULTIBYTE)
+	$(SHELL) ./pg_regress --schedule=serial_schedule --multibyte=$(MULTIBYTE)
 
 
 # old interfaces follow...
