@@ -960,7 +960,6 @@ heap_getnext(HeapScanDesc scandesc, int backw)
  *		value, and they are required to BufferRelease() it when they
  *		are done.  If they want to make a copy of it before releasing it,
  *		they can call heap_copytyple().
-
  * ----------------
  */
 void
