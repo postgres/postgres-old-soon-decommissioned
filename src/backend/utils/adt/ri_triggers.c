@@ -16,7 +16,6 @@
  *
  *
  * Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group
- * Copyright 1999 Jan Wieck
  *
  * $Header$
  *
