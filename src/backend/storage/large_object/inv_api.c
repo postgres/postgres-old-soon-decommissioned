@@ -669,8 +669,7 @@ inv_fetchtup(LargeObjectDesc *obj_desc, Buffer *buffer)
 		} while (tuple == (HeapTuple) NULL);
 
 		/* remember this tid -- we may need it for later reads/writes */
-		ItemPointerCopy(&(res->heap_iptr), &(obj_desc->htid));
-		pfree(res);
+ 		ItemPointerCopy(&tuple->t_ctid, &obj_desc->htid);
 	}
 	else
 	{
