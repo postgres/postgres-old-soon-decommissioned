@@ -58,7 +58,6 @@ extern void replace_tlist_with_subplan_refs(List *tlist,
 								Index subvarno,
 								List *subplanTargetList);
 extern bool set_agg_tlist_references(Agg *aggNode);
-extern void del_agg_tlist_references(List *tlist);
 extern void check_having_for_ungrouped_vars(Node *clause,
 								List *groupClause,
 								List *targetList);
