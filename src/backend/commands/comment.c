@@ -438,6 +438,10 @@ CommentDatabase(List *qualname, char *comment)
 		elog(ERROR, "CommentDatabase: database name may not be qualified");
 	database = strVal(lfirst(qualname));
 
+	/* Only allow comments on the current database */
+	if (strcmp(database, DatabaseName) != 0)
+		elog(ERROR, "Database comments may only be applied to the current database");
+
 	/* First find the tuple in pg_database for the database */
 
 	pg_database = heap_openr(DatabaseRelationName, AccessShareLock);
