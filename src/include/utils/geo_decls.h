@@ -12,6 +12,7 @@
  *	  These routines do *not* use the float types from adt/.
  *
  *	  XXX These routines were not written by a numerical analyst.
+ *
  *	  XXX I have made some attempt to flesh out the operators
  *		and data types. There are still some more to do. - tgl 97/04/19
  *
@@ -362,8 +363,16 @@ extern double circle_dt(CIRCLE *circle1, CIRCLE *circle2);
 
 /* geo_selfuncs.c */
 extern float64 areasel(Oid opid, Oid relid, AttrNumber attno,
-		char *value, int32 flag);
+					   Datum value, int32 flag);
 extern float64 areajoinsel(Oid opid, Oid relid1, AttrNumber attno1,
-			Oid relid2, AttrNumber attno2);
+						   Oid relid2, AttrNumber attno2);
+extern float64 positionsel(Oid opid, Oid relid, AttrNumber attno,
+						   Datum value, int32 flag);
+extern float64 positionjoinsel(Oid opid, Oid relid1, AttrNumber attno1,
+							   Oid relid2, AttrNumber attno2);
+extern float64 contsel(Oid opid, Oid relid, AttrNumber attno,
+					   Datum value, int32 flag);
+extern float64 contjoinsel(Oid opid, Oid relid1, AttrNumber attno1,
+						   Oid relid2, AttrNumber attno2);
 
 #endif	 /* GEO_DECLS_H */
