@@ -39,8 +39,9 @@
 #include "stdio.h"
 #include "string.h"
 #include "plpgsql.h"
-#include "pl_scan.c"  /* BSD Yacc doesn't like it here.
-						 It wants it after the %% */
+#ifdef YYBISON
+#include "pl_scan.c" /* GNU bison wants it here */
+#endif
 
 
 
@@ -1081,6 +1082,11 @@ lno		:
 		;
 
 %%
+
+#ifndef YYBISON
+#include "pl_scan.c" /* BSD yacc wants it here */
+#endif
+
 
 PLpgSQL_expr *
 plpgsql_read_expression (int until, char *s)
