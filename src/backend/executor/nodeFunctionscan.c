@@ -429,6 +429,12 @@ function_getonetuple(FunctionScanState *scanstate,
 	TupleTableSlot *slot = scanstate->csstate.css_ScanTupleSlot;
 
 	/*
+	 * reset per-tuple memory context before each call of the function.
+	 * This cleans up any local memory the function may leak when called.
+	 */
+	ResetExprContext(econtext);
+
+	/*
 	 * get the next Datum from the function
 	 */
 	retDatum = ExecEvalExprSwitchContext(expr, econtext, isNull, isDone);

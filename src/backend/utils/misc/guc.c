@@ -2421,12 +2421,16 @@ show_all_settings(PG_FUNCTION_ARGS)
 	int					max_calls;
 	TupleTableSlot	   *slot;
 	AttInMetadata	   *attinmeta;
+	MemoryContext		oldcontext;
 
 	/* stuff done only on the first call of the function */
  	if(SRF_IS_FIRSTCALL())
  	{
 		/* create a function context for cross-call persistence */
  		funcctx = SRF_FIRSTCALL_INIT();
+
+		/* switch to memory context appropriate for multiple function calls */
+		oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 		/* need a tuple descriptor representing two TEXT columns */
 		tupdesc = CreateTemplateTupleDesc(2, WITHOUTOID);
@@ -2450,6 +2454,8 @@ show_all_settings(PG_FUNCTION_ARGS)
 
 		/* total number of tuples to be returned */
 		funcctx->max_calls = GetNumConfigOptions();
+
+		MemoryContextSwitchTo(oldcontext);
     }
 
 	/* stuff done on every call of the function */

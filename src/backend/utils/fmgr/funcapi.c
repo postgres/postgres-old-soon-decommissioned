@@ -39,16 +39,12 @@ init_MultiFuncCall(PG_FUNCTION_ARGS)
 	{
 		/*
 		 * First call
+		 *
+		 * Allocate suitably long-lived space and zero it
 		 */
-		MemoryContext oldcontext;
-
-		/* switch to the appropriate memory context */
-		oldcontext = MemoryContextSwitchTo(fcinfo->flinfo->fn_mcxt);
-
-		/*
-		 * allocate space and zero it
-		 */
-		retval = (FuncCallContext *) palloc(sizeof(FuncCallContext));
+		retval = (FuncCallContext *)
+			MemoryContextAlloc(fcinfo->flinfo->fn_mcxt,
+							   sizeof(FuncCallContext));
 		MemSet(retval, 0, sizeof(FuncCallContext));
 
 		/*
@@ -59,15 +55,12 @@ init_MultiFuncCall(PG_FUNCTION_ARGS)
 		retval->slot = NULL;
 		retval->user_fctx = NULL;
 		retval->attinmeta = NULL;
-		retval->fmctx = fcinfo->flinfo->fn_mcxt;
+		retval->multi_call_memory_ctx = fcinfo->flinfo->fn_mcxt;
 
 		/*
 		 * save the pointer for cross-call use
 		 */
 		fcinfo->flinfo->fn_extra = retval;
-
-		/* back to the original memory context */
-		MemoryContextSwitchTo(oldcontext);
 	}
 	else	/* second and subsequent calls */
 	{
