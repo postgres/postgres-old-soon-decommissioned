@@ -431,7 +431,7 @@ TupleDescInitEntry(TupleDesc desc,
 	   */
 	if (attisset)
 	{
-		Type		t = oidtypeidType(OIDOID);
+		Type		t = typeidType(OIDOID);
 
 		att->attlen = typeLen(t);
 		att->attbyval = typeByVal(t);
