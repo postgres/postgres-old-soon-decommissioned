@@ -937,7 +937,7 @@ ECPGexecute(struct statement * stmt)
 				break;
 			case PGRES_COMMAND_OK:
 				status = true;
-				sqlca.sqlerrd[1] = atol(PQoidStatus(results));
+				sqlca.sqlerrd[1] = PQoidValue(results);
 				sqlca.sqlerrd[2] = atol(PQcmdTuples(results));
 				ECPGlog("ECPGexecute line %d Ok: %s\n", stmt->lineno, PQcmdStatus(results));
 				if (!sqlca.sqlerrd[2] && (!strncmp(PQcmdStatus(results), "UPDATE", 6)
@@ -1101,7 +1101,7 @@ execute_descriptor(int lineno, const char *query
 				break;
 			case PGRES_COMMAND_OK:
 				status = true;
-				sqlca.sqlerrd[1] = atol(PQoidStatus(results));
+				sqlca.sqlerrd[1] = PQoidValue(results);
 				sqlca.sqlerrd[2] = atol(PQcmdTuples(results));
 				ECPGlog("ECPGexecute line %d Ok: %s\n", lineno, PQcmdStatus(results));
 				break;

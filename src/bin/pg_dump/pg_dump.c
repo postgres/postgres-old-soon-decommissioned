@@ -4698,7 +4698,7 @@ setMaxOid(Archive *fout)
 		write_msg(NULL, "could not insert into pgdump_oid table: %s", PQerrorMessage(g_conn));
 		exit_nicely();
 	}
-	max_oid = atooid(PQoidStatus(res));
+	max_oid = PQoidValue(res);
 	if (max_oid == 0)
 	{
 		write_msg(NULL, "inserted invalid oid\n");

@@ -574,7 +574,7 @@ Pg_result(ClientData cData, Tcl_Interp *interp, int argc, char *argv[])
 		return PgGetConnByResultId(interp, argv[1]);
 	else if (strcmp(opt, "-oid") == 0)
 	{
-		Tcl_AppendResult(interp, PQoidStatus(result), 0);
+		sprintf(interp->result, "%u", PQoidValue(result));
 		return TCL_OK;
 	}
 	else if (strcmp(opt, "-clear") == 0)
@@ -900,12 +900,15 @@ Pg_execute(ClientData cData, Tcl_Interp *interp, int argc, char *argv[])
 
 	/*
 	 * Set the oid variable to the returned oid of an INSERT statement if
-	 * requested (or an empty string if it wasn't an INSERT)
+	 * requested (or 0 if it wasn't an INSERT)
 	 */
 	if (oid_varname != NULL)
 	{
-		if (Tcl_SetVar(interp, oid_varname,
-					   PQoidStatus(result), TCL_LEAVE_ERR_MSG) != TCL_OK)
+		char		oid_buf[32];
+
+		sprintf(oid_buf, "%u", PQoidValue(result));
+		if (Tcl_SetVar(interp, oid_varname, oid_buf,
+					   TCL_LEAVE_ERR_MSG) != TCL_OK)
 		{
 			PQclear(result);
 			return TCL_ERROR;
