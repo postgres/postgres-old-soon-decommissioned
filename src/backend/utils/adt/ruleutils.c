@@ -2660,8 +2660,16 @@ get_sublink_expr(SubLink *sublink, deparse_context *context)
 			break;
 
 		case ANY_SUBLINK:
-			oper = (OpExpr *) lfirst(sublink->oper);
-			appendStringInfo(buf, "%s ANY ", get_opname(oper->opno));
+			if (sublink->operIsEquals)
+			{
+				/* Represent it as IN */
+				appendStringInfo(buf, "IN ");
+			}
+			else
+			{
+				oper = (OpExpr *) lfirst(sublink->oper);
+				appendStringInfo(buf, "%s ANY ", get_opname(oper->opno));
+			}
 			break;
 
 		case ALL_SUBLINK:

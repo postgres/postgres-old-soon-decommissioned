@@ -658,7 +658,8 @@ _outSubLink(StringInfo str, SubLink *node)
 	WRITE_NODE_TYPE("SUBLINK");
 
 	WRITE_ENUM_FIELD(subLinkType, SubLinkType);
-	WRITE_BOOL_FIELD(useor);
+	WRITE_BOOL_FIELD(operIsEquals);
+	WRITE_BOOL_FIELD(useOr);
 	WRITE_NODE_FIELD(lefthand);
 	WRITE_NODE_FIELD(oper);
 	WRITE_NODE_FIELD(subselect);
@@ -670,7 +671,7 @@ _outSubPlan(StringInfo str, SubPlan *node)
 	WRITE_NODE_TYPE("SUBPLAN");
 
 	WRITE_ENUM_FIELD(subLinkType, SubLinkType);
-	WRITE_BOOL_FIELD(useor);
+	WRITE_BOOL_FIELD(useOr);
 	WRITE_NODE_FIELD(oper);
 	WRITE_NODE_FIELD(plan);
 	WRITE_INT_FIELD(plan_id);

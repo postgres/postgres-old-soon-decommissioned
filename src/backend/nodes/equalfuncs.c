@@ -287,7 +287,8 @@ static bool
 _equalSubLink(SubLink *a, SubLink *b)
 {
 	COMPARE_SCALAR_FIELD(subLinkType);
-	COMPARE_SCALAR_FIELD(useor);
+	COMPARE_SCALAR_FIELD(operIsEquals);
+	COMPARE_SCALAR_FIELD(useOr);
 	COMPARE_NODE_FIELD(lefthand);
 	COMPARE_NODE_FIELD(oper);
 	COMPARE_NODE_FIELD(subselect);
@@ -299,7 +300,7 @@ static bool
 _equalSubPlan(SubPlan *a, SubPlan *b)
 {
 	COMPARE_SCALAR_FIELD(subLinkType);
-	COMPARE_SCALAR_FIELD(useor);
+	COMPARE_SCALAR_FIELD(useOr);
 	COMPARE_NODE_FIELD(oper);
 	/* should compare plans, but have to settle for comparing plan IDs */
 	COMPARE_SCALAR_FIELD(plan_id);

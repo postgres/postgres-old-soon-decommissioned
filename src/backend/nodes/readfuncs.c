@@ -531,7 +531,8 @@ _readSubLink(void)
 	READ_LOCALS(SubLink);
 
 	READ_ENUM_FIELD(subLinkType, SubLinkType);
-	READ_BOOL_FIELD(useor);
+	READ_BOOL_FIELD(operIsEquals);
+	READ_BOOL_FIELD(useOr);
 	READ_NODE_FIELD(lefthand);
 	READ_NODE_FIELD(oper);
 	READ_NODE_FIELD(subselect);

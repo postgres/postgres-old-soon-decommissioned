@@ -809,7 +809,8 @@ _copySubLink(SubLink *from)
 	SubLink    *newnode = makeNode(SubLink);
 
 	COPY_SCALAR_FIELD(subLinkType);
-	COPY_SCALAR_FIELD(useor);
+	COPY_SCALAR_FIELD(operIsEquals);
+	COPY_SCALAR_FIELD(useOr);
 	COPY_NODE_FIELD(lefthand);
 	COPY_NODE_FIELD(oper);
 	COPY_NODE_FIELD(subselect);
@@ -826,7 +827,7 @@ _copySubPlan(SubPlan *from)
 	SubPlan    *newnode = makeNode(SubPlan);
 
 	COPY_SCALAR_FIELD(subLinkType);
-	COPY_SCALAR_FIELD(useor);
+	COPY_SCALAR_FIELD(useOr);
 	COPY_NODE_FIELD(oper);
 	COPY_NODE_FIELD(plan);
 	COPY_SCALAR_FIELD(plan_id);
