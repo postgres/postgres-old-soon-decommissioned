@@ -1045,6 +1045,15 @@ echo "ok"
 $ECHO_N "creating information schema... "$ECHO_C
 "$PGPATH"/postgres $PGSQL_OPT -N template1 > /dev/null < "$datadir"/information_schema.sql || exit_nicely
 (
+  # Format version number to format required by information schema (09.08.0007abc).
+  major_version=`echo $VERSION | sed 's/^\([0-9]*\).*/00\1/;s/.*\(..\)$/\1/'`
+  minor_version=`echo $VERSION | sed 's/^[0-9]*\.\([0-9]*\).*/00\1/;s/.*\(..\)$/\1/'`
+  micro_version=`echo $VERSION | sed 's/^[0-9]*\.[0-9]*\.\([0-9]*\).*/0000\1/;t L;s/.*/0000/;q;: L;s/.*\(....\)$/\1/'`
+  letter_version=`echo $VERSION | sed 's/^.*[0-9]\([^0-9]*\)$/\1/'`
+  combined_version="$major_version.$minor_version.$micro_version$letter_version"
+
+  echo "UPDATE information_schema.sql_implementation_info SET character_value = '$combined_version' WHERE implementation_info_name = 'DBMS VERSION';"
+
   echo "COPY information_schema.sql_features (feature_id, feature_name, sub_feature_id, sub_feature_name, is_supported, comments) FROM STDIN;"
   cat "$datadir"/sql_features.txt
   echo "\."
