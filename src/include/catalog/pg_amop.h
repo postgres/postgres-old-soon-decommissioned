@@ -250,6 +250,16 @@ DATA(insert (  403 1077 1069 4 ));
 DATA(insert (  403 1077 1068 5 ));
 
 /*
+ *	nbtree bytea_ops
+ */
+
+DATA(insert (  403 1961 1957 1 ));
+DATA(insert (  403 1961 1958 2 ));
+DATA(insert (  403 1961 1955 3 ));
+DATA(insert (  403 1961 1960 4 ));
+DATA(insert (  403 1961 1959 5 ));
+
+/*
  *	nbtree date_ops
  */
 

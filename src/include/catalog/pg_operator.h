@@ -809,6 +809,14 @@ DATA(insert OID = 1919 (  "+"	   PGUID 0 l t f   0  700 700	0   0   0   0 float4
 DATA(insert OID = 1920 (  "+"	   PGUID 0 l t f   0  701 701	0   0   0   0 float8up - - ));
 DATA(insert OID = 1921 (  "+"	   PGUID 0 l t f   0 1700 1700  0   0	0	0 numeric_uplus - - ));
 
+/* bytea operators */
+DATA(insert OID = 1955 ( "="	   PGUID 0 b t t 17 17	16 1955 1956 1957 1957 byteaeq eqsel eqjoinsel ));
+DATA(insert OID = 1956 ( "<>"	   PGUID 0 b t f 17 17	16 1956 1955  0 0 byteane neqsel neqjoinsel ));
+DATA(insert OID = 1957 ( "<"	   PGUID 0 b t f 17 17	16 1959 1960  0 0 bytealt scalarltsel scalarltjoinsel ));
+DATA(insert OID = 1958 ( "<="	   PGUID 0 b t f 17 17	16 1960 1959  0 0 byteale scalarltsel scalarltjoinsel ));
+DATA(insert OID = 1959 ( ">"	   PGUID 0 b t f 17 17	16 1957 1958  0 0 byteagt scalargtsel scalargtjoinsel ));
+DATA(insert OID = 1960 ( ">="	   PGUID 0 b t f 17 17	16 1958 1957  0 0 byteage scalargtsel scalargtjoinsel ));
+
 /*
  * function prototypes
  */

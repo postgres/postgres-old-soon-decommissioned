@@ -412,6 +412,13 @@ extern Datum byteaSetByte(PG_FUNCTION_ARGS);
 extern Datum byteaSetBit(PG_FUNCTION_ARGS);
 extern Datum binary_encode(PG_FUNCTION_ARGS);
 extern Datum binary_decode(PG_FUNCTION_ARGS);
+extern Datum byteaeq(PG_FUNCTION_ARGS);
+extern Datum byteane(PG_FUNCTION_ARGS);
+extern Datum bytealt(PG_FUNCTION_ARGS);
+extern Datum byteale(PG_FUNCTION_ARGS);
+extern Datum byteagt(PG_FUNCTION_ARGS);
+extern Datum byteage(PG_FUNCTION_ARGS);
+extern Datum byteacmp(PG_FUNCTION_ARGS);
 
 /* version.c */
 extern Datum pgsql_version(PG_FUNCTION_ARGS);

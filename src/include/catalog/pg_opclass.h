@@ -123,5 +123,7 @@ DATA(insert OID =  424 (	bit_ops		   1560   ));
 DESCR("");
 DATA(insert OID =  425 (	varbit_ops	   1562   ));
 DESCR("");
+DATA(insert OID = 1961 (	bytea_ops	     17   ));
+DESCR("");
 
 #endif	 /* PG_OPCLASS_H */
