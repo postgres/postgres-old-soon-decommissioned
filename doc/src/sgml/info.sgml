@@ -112,7 +112,7 @@ $Header$
    <listitem>
     <para>
      The
-     <ulink url="postgresql.org"><productname>Postgres</productname></ulink>
+     <ulink url="http://postgresql.org"><productname>Postgres</productname></ulink>
      web site might have some information not appearing in the distribution.
      There is a <productname>mhonarc</productname> catalog of mailing list traffic
      which is a rich resource for many topics.
@@ -126,7 +126,7 @@ $Header$
     <para>
      The
      <ulink url="mailto:pgsql-general@postgresql.org">pgsql-general</ulink>
-     (<ulink url="http://www.PostgreSQL.ORG/mhonarc/pgsql-general/">archive</ulink>)
+     (<ulink url="http://www.postgresql.org/mhonarc/pgsql-general/">archive</ulink>)
      mailing list is a good place to have user questions answered.
      Other mailing lists are available; consult the Info Central section of the
      PostgreSQL web site for details.
