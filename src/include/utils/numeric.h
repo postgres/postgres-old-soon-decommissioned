@@ -20,7 +20,7 @@
  * The hardcoded limits and defaults of the numeric data type
  * ----------
  */
-#define NUMERIC_MAX_PRECISION		4000
+#define NUMERIC_MAX_PRECISION		1000
 #define NUMERIC_DEFAULT_PRECISION	30
 #define NUMERIC_DEFAULT_SCALE		6
 
