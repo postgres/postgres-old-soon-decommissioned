@@ -24,9 +24,8 @@
 
 extern List *transformTargetList(ParseState *pstate, List *targetlist);
 extern List *makeTargetNames(ParseState *pstate, List *cols);
-extern void transformTargetId(ParseState *pstate, Ident *ident,
-							  TargetEntry *tent, char *resname,
-							  int16 resjunk);
+extern void transformTargetId(ParseState *pstate, Node *node,
+  	TargetEntry *tent, char *resname, int16 resjunk);
 extern Node *coerce_target_expr(ParseState *pstate, Node *expr,
 								Oid type_id, Oid attrtype);
 
