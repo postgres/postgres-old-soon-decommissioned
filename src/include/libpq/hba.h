@@ -51,8 +51,8 @@ typedef enum UserAuth
 } UserAuth;
 
 int
-hba_getauthmethod(SockAddr *raddr, char *database, char *auth_arg,
-				  UserAuth *auth_method);
+hba_getauthmethod(SockAddr *raddr, char *user, char *database,
+				  char *auth_arg, UserAuth *auth_method);
 int
 authident(struct sockaddr_in * raddr, struct sockaddr_in * laddr,
 		  const char postgres_username[], const char auth_arg[]);

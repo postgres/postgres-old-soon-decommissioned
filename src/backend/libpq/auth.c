@@ -419,8 +419,8 @@ be_recvauth(Port *port)
 	 * combination.
 	 */
 
-	if (hba_getauthmethod(&port->raddr, port->database, port->auth_arg,
-						  &port->auth_method) != STATUS_OK)
+	if (hba_getauthmethod(&port->raddr, port->user, port->database,
+			port->auth_arg, &port->auth_method) != STATUS_OK)
 		PacketSendError(&port->pktInfo, "Missing or mis-configured pg_hba.conf file");
 
 	else if (PG_PROTOCOL_MAJOR(port->proto) == 0)
