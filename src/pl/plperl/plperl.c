@@ -250,17 +250,20 @@ plperl_safe_init(void)
 
 	static char *safe_ok =
 	"use vars qw($PLContainer); $PLContainer = new Safe('PLPerl');"
-	"$PLContainer->permit_only(':default');$PLContainer->permit(':base_math');"
-	"$PLContainer->share(qw[&elog &spi_exec_query &DEBUG &LOG &INFO &NOTICE &WARNING &ERROR %SHARED ]);"
+	"$PLContainer->permit_only(':default');"
+	"$PLContainer->permit(qw[:base_math !:base_io sort time]);"
+	"$PLContainer->share(qw[&elog &spi_exec_query &DEBUG &LOG "
+    "&INFO &NOTICE &WARNING &ERROR %SHARED ]);"
 	"sub ::mksafefunc { return $PLContainer->reval(qq[sub { $_[0] $_[1]}]); }"
 			   ;
 
 	static char *safe_bad =
 	"use vars qw($PLContainer); $PLContainer = new Safe('PLPerl');"
-	"$PLContainer->permit_only(':default');$PLContainer->permit(':base_math');"
-	"$PLContainer->share(qw[&elog &DEBUG &LOG &INFO &NOTICE &WARNING &ERROR %SHARED ]);"
+	"$PLContainer->permit_only(':default');"
+	"$PLContainer->share(qw[&elog &ERROR ]);"
 	"sub ::mksafefunc { return $PLContainer->reval(qq[sub { "
-	"elog(ERROR,'trusted perl functions disabled - please upgrade perl Safe module to at least 2.09');}]); }"
+	"elog(ERROR,'trusted perl functions disabled - "
+    "please upgrade perl Safe module to at least 2.09');}]); }"
 			   ;
 
 	SV		   *res;
