@@ -5414,15 +5414,8 @@ copy_relation_data(Relation rel, SMgrRelation dst)
 	/*
 	 * We need to log the copied data in WAL iff WAL archiving is enabled
 	 * AND it's not a temp rel.
-	 *
-	 * XXX when WAL archiving is actually supported, this test will likely
-	 * need to change; and the hardwired extern is cruddy anyway ...
 	 */
-	{
-		extern char XLOG_archive_dir[];
-
-		use_wal = XLOG_archive_dir[0] && !rel->rd_istemp;
-	}
+	use_wal = XLogArchivingActive() && !rel->rd_istemp;
 
 	nblocks = RelationGetNumberOfBlocks(rel);
 	for (blkno = 0; blkno < nblocks; blkno++)

@@ -1371,6 +1371,15 @@ static struct config_real ConfigureNamesReal[] =
 
 static struct config_string ConfigureNamesString[] =
 {
+ 	{
+ 		{"archive_command", PGC_SIGHUP, WAL_SETTINGS,
+ 			gettext_noop("WAL archiving command."),
+ 			gettext_noop("The shell command that will be called to archive a WAL file.")
+ 		},
+ 		&XLogArchiveCommand,
+ 		"", NULL, NULL
+ 	},
+
 	{
 		{"client_encoding", PGC_USERSET, CLIENT_CONN_LOCALE,
 			gettext_noop("Sets the client's character set encoding."),

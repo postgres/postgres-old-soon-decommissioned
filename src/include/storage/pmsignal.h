@@ -24,6 +24,7 @@ typedef enum
 {
 	PMSIGNAL_PASSWORD_CHANGE,	/* pg_pwd file has changed */
 	PMSIGNAL_WAKEN_CHILDREN,	/* send a SIGUSR1 signal to all backends */
+	PMSIGNAL_WAKEN_ARCHIVER,	/* send a NOTIFY signal to xlog archiver */
 
 	NUM_PMSIGNALS				/* Must be last value of enum! */
 } PMSignalReason;

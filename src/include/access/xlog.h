@@ -208,8 +208,11 @@ extern XLogRecPtr ProcLastRecEnd;
 /* these variables are GUC parameters related to XLOG */
 extern int	CheckPointSegments;
 extern int	XLOGbuffers;
+extern char *XLogArchiveCommand;
 extern char *XLOG_sync_method;
 extern const char XLOG_sync_method_default[];
+
+#define XLogArchivingActive()	(XLogArchiveCommand[0] != '\0')
 
 #ifdef WAL_DEBUG
 extern bool	XLOG_DEBUG;
