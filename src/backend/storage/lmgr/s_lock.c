@@ -15,6 +15,7 @@
  */
 #include "postgres.h"
 
+#include <time.h>
 #include <unistd.h>
 
 #include "storage/s_lock.h"
