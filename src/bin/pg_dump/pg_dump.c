@@ -6818,7 +6818,15 @@ static char *
 myFormatType(const char *typname, int32 typmod)
 {
 	char	   *result;
+	bool	isarray = false;
 	PQExpBuffer buf = createPQExpBuffer();
+
+	/* Handle array types */
+	if (typname[0] == '_')
+	{
+		isarray = true;
+		typname++;
+	}
 
 	/* Show lengths on bpchar and varchar */
 	if (!strcmp(typname, "bpchar"))
@@ -6862,6 +6870,10 @@ myFormatType(const char *typname, int32 typmod)
 		appendPQExpBuffer(buf, "\"char\"");
 	else
 		appendPQExpBuffer(buf, "%s", fmtId(typname));
+
+	/* Append array qualifier for array types */
+	if (isarray)
+		appendPQExpBuffer(buf, "[]");
 
 	result = strdup(buf->data);
 	destroyPQExpBuffer(buf);
