@@ -10,7 +10,7 @@
 #include "mb/pg_wchar.h"
 
 bool
-parse_client_encoding(const char *value)
+parse_client_encoding(char *value)
 {
 	int			encoding;
 
@@ -60,7 +60,7 @@ reset_client_encoding()
 }
 
 bool
-parse_server_encoding(const char *value)
+parse_server_encoding(char *value)
 {
 	elog(NOTICE, "SET SERVER_ENCODING is not supported");
 	return TRUE;
