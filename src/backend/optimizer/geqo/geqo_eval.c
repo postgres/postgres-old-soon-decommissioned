@@ -119,14 +119,12 @@ gimme_tree(Query *root, Gene *tour, int rel_count, int num_gene, RelOptInfo *out
 													   inner_rel->joininfo,
 													   inner_rel->relids)))
 			{
-#ifdef NOT_USED
-				if (BushyPlanFlag)
+				if (!BushyPlanFlag)
+					new_rels = make_rels_by_clauseless_joins(outer_rel,
+												 	lcons(inner_rel,NIL));
+				else
 					new_rels = make_rels_by_clauseless_joins(outer_rel,
 													 lcons(outer_rel,NIL));
-				else
-#endif
-				new_rels = make_rels_by_clauseless_joins(outer_rel,
-												 	lcons(inner_rel,NIL));
 			}
 
 			/* process new_rel->pathlist */
