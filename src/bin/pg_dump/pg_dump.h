@@ -66,7 +66,6 @@ typedef struct _tableInfo
 {
 	char	   *oid;
 	char	   *relname;
-	char	   *viewdef;
 	char	   *relacl;
 	bool		sequence;
 	int			numatts;		/* number of attributes */
@@ -222,6 +221,8 @@ extern InhInfo *getInherits(int *numInherits);
 extern void getTableAttrs(TableInfo *tbinfo, int numTables);
 extern IndInfo *getIndices(int *numIndices);
 extern void dumpTypes(FILE *fout, FuncInfo *finfo, int numFuncs,
+		  TypeInfo *tinfo, int numTypes);
+extern void dumpProcLangs(FILE *fout, FuncInfo *finfo, int numFuncs,
 		  TypeInfo *tinfo, int numTypes);
 extern void dumpFuncs(FILE *fout, FuncInfo *finfo, int numFuncs,
 		  TypeInfo *tinfo, int numTypes);
