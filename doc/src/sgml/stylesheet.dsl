@@ -255,6 +255,14 @@
   (list "eps" "ps" "jpg" "jpeg" "pdf" "png"))
 
 
+;; Don't show links when citing a bibliography entry.  This fouls up
+;; the footnumber counting.  To get the link, one can still look into
+;; the bibliography itself.
+(mode xref-title-mode
+  (element ulink
+    (process-children)))
+
+
 ;; Format legalnotice justified and with space between paragraphs.
 (mode book-titlepage-verso-mode
   (element (legalnotice para)
