@@ -14,7 +14,7 @@ Date/time details
   </indexterm>
 
   <para>
-   <productname>Postgres</productname> must have internal tabular
+   <productname>Postgres</productname> contains internal tabular
    information for time zone decoding, since there is no *nix standard
    system interface to provide access to general, cross-timezone
    information. The underlying OS <emphasis>is</emphasis> used to

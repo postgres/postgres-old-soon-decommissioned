@@ -31,7 +31,7 @@ $Header$
    <Title>Database Creation</Title>
 
    <Para>
-    Databases are created by the <Command>create database</Command> issued from
+    Databases are created by the <Command>CREATE DATABASE</Command> issued from
     within <ProductName>Postgres</ProductName>. <Application>createdb</Application> is a command-line
     utility provided to give the same functionality from outside <ProductName>Postgres</ProductName>.
    </Para>
