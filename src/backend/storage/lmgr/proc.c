@@ -95,11 +95,6 @@ PROC 	*MyProc = NULL;
 static void ProcKill(int exitStatus, int pid);
 static void ProcGetNewSemKeyAndNum(IPCKey *key, int *semNum);
 static void ProcFreeSem(IpcSemaphoreKey semKey, int semNum);
-#if defined(PORTNAME_linux)
-extern void HandleDeadLock(int);
-#else
-extern int HandleDeadLock(void);
-#endif
 /*
  * InitProcGlobal -
  *    initializes the global process table. We put it here so that
@@ -628,13 +623,8 @@ ProcAddLock(SHM_QUEUE *elem)
  * up my semaphore.
  * --------------------
  */
-#if defined(PORTNAME_linux)
-void 
-HandleDeadLock(int i)
-#else
-int 
-HandleDeadLock()
-#endif
+void
+HandleDeadLock(int sig)
 {
     LOCK *lock;
     int size;
@@ -654,7 +644,7 @@ HandleDeadLock()
     if (IpcSemaphoreGetCount(MyProc->sem.semId, MyProc->sem.semNum) == 
 	IpcSemaphoreDefaultStartValue) {
 	UnlockLockTable();
-	return 1;
+	return;
     }
     
     /*
@@ -671,7 +661,7 @@ HandleDeadLock()
     if (MyProc->links.prev == INVALID_OFFSET ||
 	MyProc->links.next == INVALID_OFFSET) {
 	UnlockLockTable();
-	return(1);
+	return;
     }
     
     lock = MyProc->waitLock;
@@ -708,7 +698,7 @@ HandleDeadLock()
     UnlockLockTable();
     
     elog(NOTICE, "Timeout -- possible deadlock");
-    return 0;
+    return;
 }
 
 void

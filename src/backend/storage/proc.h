@@ -116,11 +116,7 @@ extern PROC *ProcWakeup(PROC *proc, int errType);
 extern int ProcGetId(void);
 extern int ProcLockWakeup(PROC_QUEUE *queue, char * ltable, char * lock);
 extern void ProcAddLock(SHM_QUEUE *elem);
-#if defined(PORTNAME_linux)
-extern int HandleDeadLock(int);
-#else
-extern int HandleDeadLock(void);
-#endif
+extern void HandleDeadLock(int sig);
 extern void ProcReleaseSpins(PROC *proc);
 extern void ProcFreeAllSemaphores(void);
 
