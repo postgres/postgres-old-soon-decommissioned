@@ -1960,6 +1960,8 @@ ViewStmt:  CREATE VIEW name AS SelectStmt
 					ViewStmt *n = makeNode(ViewStmt);
 					n->viewname = $3;
 					n->query = (Query *)$5;
+					if (((SelectStmt *)n->query)->sortClause != NULL)
+						elog(ERROR,"Order by and Distinct on views is not implemented.");
 					if (((SelectStmt *)n->query)->unionClause != NULL)
 						elog(ERROR,"Views on unions not implemented.");
 					$$ = (Node *)n;

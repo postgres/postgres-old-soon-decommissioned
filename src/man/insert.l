@@ -9,7 +9,8 @@ insert \(em insert tuples to a relation
 \fBinsert\fR into classname
     [(att.expr-1 [,att_expr.i] )]
     {\fBvalues\fR (expression1 [,expression-i] ) |
-    \fBselect\fR expression1 [,expression-i]
+    \fBselect\fR [distinct]
+    expression1 [,expression-i]
     [\fBfrom\fR from-list] [\fBwhere\fR qual] 
     [\fBgroup by\fR attr_name1 {, attr_name-i....}]
     [\fBunion {all} select\fR ...]
