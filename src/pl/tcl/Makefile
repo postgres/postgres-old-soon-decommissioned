@@ -108,16 +108,8 @@ all install:
 	 echo "*****"
 endif
 
-
 Makefile.tcldefs: mkMakefile.tcldefs.sh
-	$(SHELL) $<
+	$(SHELL) $< '$(TCL_CONFIG_SH)' '$@'
 
-mkMakefile.tcldefs.sh: mkMakefile.tcldefs.sh.in $(top_builddir)/config.status
-	cd $(top_builddir) && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= ./config.status
-
-
-clean:
+clean distclean maintainer-clean:
 	rm -f $(INFILES) *.o Makefile.tcldefs
-
-distclean maintainer-clean: clean
-	rm -f mkMakefile.tcldefs.sh

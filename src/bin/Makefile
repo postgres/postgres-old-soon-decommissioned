@@ -15,8 +15,6 @@ include ../Makefile.global
 DIRS := initdb initlocation ipcclean pg_ctl pg_dump pg_id \
 	pg_passwd pg_version psql scripts
 
-ALLDIRS := $(DIRS) pg_encoding pgaccess pgtclsh
-
 ifdef MULTIBYTE
 DIRS += pg_encoding
 endif
@@ -32,8 +30,5 @@ endif
 all install installdirs uninstall depend:
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit 1; done
 
-clean:
-	@for dir in $(DIRS); do $(MAKE) -C $$dir $@; done
-
-distclean maintainer-clean:
-	@for dir in $(ALLDIRS); do $(MAKE) -C $$dir $@; done
+clean distclean maintainer-clean:
+	-@for dir in $(DIRS); do $(MAKE) -C $$dir $@; done

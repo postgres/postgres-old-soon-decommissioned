@@ -60,20 +60,13 @@ uninstall:
 	rm -f $(bindir)/pgtclsh $(bindir)/pgtksh
 
 Makefile.tcldefs: mkMakefile.tcldefs.sh
-	$(SHELL) $<
+	$(SHELL) $< '$(TCL_CONFIG_SH)' '$@'
 
 Makefile.tkdefs: mkMakefile.tkdefs.sh
-	$(SHELL) $<
+	$(SHELL) $< '$(TK_CONFIG_SH)' '$@'
 
-mkMakefile.tcldefs.sh mkMakefile.tkdefs.sh: $(top_builddir)/config.status
-mkMakefile.tcldefs.sh mkMakefile.tkdefs.sh: % : %.in
-	cd $(top_builddir) && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= ./config.status
-
-clean:
+clean distclean maintainer-clean:
 	rm -f *.o Makefile.tcldefs Makefile.tkdefs pgtclsh pgtksh
-
-distclean maintainer-clean: clean
-	rm -f mkMakefile.tcldefs.sh mkMakefile.tkdefs.sh
 
 dep depend:
 	$(CC) -MM $(CFLAGS) *.c > depend

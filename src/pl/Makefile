@@ -20,17 +20,11 @@ endif
 
 # Disabled because it doesn't work
 #ifeq ($(with_perl), yes)
-#	$(MAKE) -C plperl $@
+#DIRS += plperl
 #endif
-
-ALLDIRS := plpgsql tcl plperl
-
 
 all install installdirs uninstall depend:
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit 1; done
 
-clean:
+clean distclean maintainer-clean:
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@; done
-
-distclean maintainer-clean:
-	@for dir in $(ALLDIRS); do $(MAKE) -C $$dir $@; done

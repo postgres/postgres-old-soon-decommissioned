@@ -129,6 +129,8 @@ python_moduledir = @python_moduledir@
 USE_TCL= @USE_TCL@
 USE_TK= @USE_TK@
 WISH= @WISH@
+TCL_CONFIG_SH = @TCL_CONFIG_SH@
+TK_CONFIG_SH = @TK_CONFIG_SH@
 
 X_CFLAGS= @X_CFLAGS@
 X_LIBS= @X_LIBS@
