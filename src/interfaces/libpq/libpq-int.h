@@ -353,4 +353,16 @@ __attribute__((format_arg(1)));
 #define libpq_gettext(x) (x)
 #endif
 
+/*
+ * These macros are needed to let error-handling code be portable between
+ * Unix and Windows.  (ugh)
+ */
+#ifdef WIN32
+#define SOCK_ERRNO (WSAGetLastError())
+#define SOCK_STRERROR winsock_strerror
+#else
+#define SOCK_ERRNO errno
+#define SOCK_STRERROR strerror
+#endif
+
 #endif	 /* LIBPQ_INT_H */
