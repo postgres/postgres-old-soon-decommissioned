@@ -690,7 +690,7 @@ runPgDump(const char *dbname)
 	const char *p;
 	int			ret;
 
-	appendPQExpBuffer(cmd, "\"%s\" %s -Fp '", pg_dump_bin, pgdumpopts->data);
+	appendPQExpBuffer(cmd, "'%s' %s -Fp '", pg_dump_bin, pgdumpopts->data);
 
 	/* Shell quoting is not quite like SQL quoting, so can't use fmtId */
 	for (p = dbname; *p; p++)
