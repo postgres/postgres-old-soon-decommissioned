@@ -133,7 +133,6 @@ extern void GetNewTransactionId(TransactionId *xid);
 extern void ReadNewTransactionId(TransactionId *xid);
 extern void GetNewObjectId(Oid *oid_return);
 extern void CheckMaxObjectId(Oid assigned_oid);
-extern Oid GetMinStartupOid(void);
 
 /* ----------------
  *		global variable extern declarations

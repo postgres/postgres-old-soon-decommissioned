@@ -50,9 +50,6 @@ struct proc
 								 * were starting our xact: vacuum must not
 								 * remove tuples deleted by xid >= xmin ! */
 
-	Oid			startOid;		/* oid at startup, used by vacuum to find
-								 * orphaned files.
-								 */
 	/*
 	 * XLOG location of first XLOG record written by this backend's
 	 * current transaction.  If backend is not in a transaction or hasn't
