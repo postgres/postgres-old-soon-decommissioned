@@ -502,7 +502,8 @@ _bt_getstackbuf(Relation rel, BTStack stack, int access)
 	{
 		blkno = opaque->btpo_next;
 		if (P_RIGHTMOST(opaque))
-			elog(FATAL, "my bits moved right off the end of the world!\n\tTry recreating the index.");
+			elog(FATAL, "my bits moved right off the end of the world!\
+\n\tRecreate index %s.", RelationGetRelationName(rel));
 
 		_bt_relbuf(rel, buf, access);
 		buf = _bt_getbuf(rel, blkno, access);
