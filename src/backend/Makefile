@@ -83,9 +83,11 @@ endif
 #
 CFLAGS+=  -DPOSTGRESDIR='"$(POSTGRESDIR)"' \
 	-DPGDATADIR='"$(DATADIR)"' \
-	-I$(CURDIR)/. -I$(CURDIR)/$(objdir) \
+	-I$(CURDIR)/. \
+	-I$(CURDIR)/$(objdir) \
 	-I$(CURDIR)/include \
-	-I$(CURDIR)/port/$(PORTNAME)
+	-I$(CURDIR)/port/$(PORTNAME) \
+	-I$(CURDIR)/../include
 
 # turn this on if you prefer European style dates instead of American
 # style dates
