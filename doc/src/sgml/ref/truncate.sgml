@@ -54,6 +54,10 @@ TRUNCATE [ TABLE ] <replaceable class="PARAMETER">name</replaceable> [, ...]
   <title>Notes</title>
 
   <para>
+   Only the owner of a table may <command>TRUNCATE</> it.
+  </para>
+
+  <para>
    <command>TRUNCATE</> cannot be used on a table that has foreign-key
    references from other tables, unless all such tables are also truncated
    in the same command.  Checking validity in such cases would require table
