@@ -316,7 +316,7 @@ fi
 
 BACKENDARGS="-boot -C -F -D$PGDATA $BACKEND_TALK_ARG"
 
-echo "$CMDNAME: creating template database in $PGDATA/base/template1"
+echo "Creating template database in $PGDATA/base/template1"
 [ "$debug" -ne 0 ] && echo "Running: postgres $BACKENDARGS template1"
 
 cat $TEMPLATE \
