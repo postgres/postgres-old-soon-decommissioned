@@ -652,6 +652,7 @@ done | tee "$result_summary_file" 2>&1
 if [ -n "$postmaster_pid" ]; then
     message "shutting down postmaster"
     kill -15 "$postmaster_pid"
+    wait "$postmaster_pid"
     unset postmaster_pid
 fi
 
