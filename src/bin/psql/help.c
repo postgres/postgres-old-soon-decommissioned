@@ -265,13 +265,14 @@ helpSQL(const char *topic)
 
 		for (i = 0; i < items_per_column; i++)
 		{
-			printf("    %-25s%-25s%-25s\n",
-				   VALUE_OR_NULL(QL_HELP[i].cmd),
-				   VALUE_OR_NULL(QL_HELP[i + items_per_column].cmd),
-				   VALUE_OR_NULL(QL_HELP[i + 2 * items_per_column].cmd)
-				);
+			printf("    %-25s%-25s",
+					VALUE_OR_NULL(QL_HELP[i].cmd),
+					VALUE_OR_NULL(QL_HELP[i + items_per_column].cmd));
+			if (i + 2 * items_per_column < QL_HELP_COUNT)
+				printf("%-25s",
+					VALUE_OR_NULL(QL_HELP[i + 2 * items_per_column].cmd));
+			fputc('\n', stdout);
 		}
-		putc('\n', stdout);
 	}
 
 	else
