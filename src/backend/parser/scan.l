@@ -13,14 +13,14 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
+
 #include <ctype.h>
 #include <unistd.h>
 #ifndef __linux__
 #include <math.h>
 #endif
 #include <errno.h>
-
-#include "postgres.h"
 
 #include "miscadmin.h"
 #include "nodes/parsenodes.h"
@@ -347,6 +347,8 @@ other			.
 				}
 <xd>{xdstop}	{
 					BEGIN(INITIAL);
+					if (strlen(literalbuf) == 0)
+						elog(ERROR, "zero-length delimited identifier");
 					if (strlen(literalbuf) >= NAMEDATALEN)
 					{
 #ifdef MULTIBYTE
