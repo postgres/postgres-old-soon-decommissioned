@@ -32,10 +32,10 @@ extern int	DefaultXactIsoLevel;
 extern int	XactIsoLevel;
 
 /*
- * We only implement two distinct levels, so this is a convenience to
- * check which level we're really using internally.
+ * We only implement two isolation levels internally.  This macro should
+ * be used to check which one is selected.
  */
-#define IsXactIsoLevelSerializable ((XactIsoLevel == XACT_REPEATABLE_READ || XactIsoLevel == XACT_SERIALIZABLE))
+#define IsXactIsoLevelSerializable (XactIsoLevel >= XACT_REPEATABLE_READ)
 
 /* Xact read-only state */
 extern bool DefaultXactReadOnly;
