@@ -130,7 +130,7 @@
  * Define this if your operating system supports AF_UNIX family
  * sockets.
  */
-#if !defined(__QNX__) && !defined(__BEOS__)
+#if !defined(__QNX__) && !defined(__BEOS__) && !defined(WIN32)
 # define HAVE_UNIX_SOCKETS 1
 #endif
 

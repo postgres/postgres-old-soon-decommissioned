@@ -13,11 +13,7 @@
 #include "utils/builtins.h"
 #endif
 
-#ifdef WIN32
-#include "win32.h"
-#else
 #include <unistd.h>
-#endif
 
 #include "mb/pg_wchar.h"
 #include <ctype.h>

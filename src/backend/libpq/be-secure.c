@@ -85,16 +85,12 @@
 #include "libpq/libpq.h"
 #include "miscadmin.h"
 
-#ifdef WIN32
-#include "win32.h"
-#else
 #include <sys/socket.h>
 #include <unistd.h>
 #include <netdb.h>
 #include <netinet/in.h>
 #ifdef HAVE_NETINET_TCP_H
 #include <netinet/tcp.h>
-#endif
 #include <arpa/inet.h>
 #endif
 

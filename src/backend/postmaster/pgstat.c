@@ -217,7 +217,7 @@ pgstat_init(void)
 	 * messages will be discarded; backends won't block waiting to send
 	 * messages to the collector.
 	 */
-	if (fcntl(pgStatSock, F_SETFL, O_NONBLOCK) < 0)
+	if (FCNTL_NONBLOCK(pgStatSock) < 0)
 	{
 		elog(LOG, "PGSTAT: fcntl() failed: %m");
 		goto startup_failed;
@@ -1520,7 +1520,7 @@ pgstat_recvbuffer(void)
 	 * Set the write pipe to nonblock mode, so that we cannot block when
 	 * the collector falls behind.
 	 */
-	if (fcntl(writePipe, F_SETFL, O_NONBLOCK) < 0)
+	if (FCNTL_NONBLOCK(writePipe) < 0)
 	{
 		elog(LOG, "PGSTATBUFF: fcntl() failed: %m");
 		exit(1);

@@ -719,17 +719,7 @@ update_db_info(PGconn *conn)
 static int
 connectMakeNonblocking(PGconn *conn)
 {
-#if defined(WIN32) || defined(__BEOS__)
-	int			on = 1;
-#endif
-
-#if defined(WIN32)
-	if (ioctlsocket(conn->sock, FIONBIO, &on) != 0)
-#elif defined(__BEOS__)
-		if (ioctl(conn->sock, FIONBIO, &on) != 0)
-#else
-	if (fcntl(conn->sock, F_SETFL, O_NONBLOCK) < 0)
-#endif
+	if (FCNTL_NONBLOCK(conn->sock) < 0)
 	{
 		printfPQExpBuffer(&conn->errorMessage,
 		libpq_gettext("could not set socket to non-blocking mode: %s\n"),

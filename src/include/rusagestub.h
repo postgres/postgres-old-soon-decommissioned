@@ -15,7 +15,9 @@
 #define RUSAGESTUB_H
 
 #include <sys/time.h>			/* for struct timeval */
+#ifndef WIN32
 #include <sys/times.h>			/* for struct tms */
+#endif
 #include <limits.h>				/* for CLK_TCK */
 
 #define RUSAGE_SELF		0
