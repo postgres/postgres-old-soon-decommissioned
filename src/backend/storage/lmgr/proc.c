@@ -249,7 +249,10 @@ InitProcess(IPCKey key)
 	 */
 	SpinRelease(ProcStructLock);
 
+	MyProc->pid = 0;
+#if 0
 	MyProc->pid = MyProcPid;
+#endif
 	MyProc->xid = InvalidTransactionId;
 
 	/* ----------------
