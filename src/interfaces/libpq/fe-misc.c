@@ -892,7 +892,7 @@ winsock_strerror(DWORD eno)
 WSSE_GOODEXIT:
 
   length = strlen(winsock_strerror_buf);
-  sprintf(winsock_strerror_buf + length<WSSE_MAXLEN?length:WSSE_MAXLEN,
+  sprintf(winsock_strerror_buf + (length<WSSE_MAXLEN?length:WSSE_MAXLEN),
 	  "(0x%08X)",eno);
 
   return winsock_strerror_buf;
