@@ -124,6 +124,7 @@
  * should reduce the need to have large tuples, since fields can now
  * be spread across multiple tuples).
  *
+ * BLCKSZ must be a power of 2.
  * The maximum possible value of BLCKSZ is currently 2^15 (32768).
  * This is determined by the 15-bit widths of the lp_off and lp_len
  * fields in ItemIdData (see include/storage/itemid.h).
