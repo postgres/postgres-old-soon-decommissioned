@@ -333,11 +333,6 @@ PostmasterMain(int argc, char *argv[])
 			case 'D':
 				/* Set PGDATA from the command line. */
 				DataDir = optarg;
-				{
-					char envEntry[2 * ARGV_SIZE];
-					sprintf(envEntry, "PGDATA=%s", DataDir);
-					putenv(envEntry);
-				}
 				break;
 			case 'd':
 
