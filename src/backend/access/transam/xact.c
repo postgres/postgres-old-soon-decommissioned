@@ -653,7 +653,7 @@ void
 RecordTransactionCommit()
 {
 	TransactionId xid;
-	int			leak;
+	bool		leak;
 
 	xid = GetCurrentTransactionId();
 

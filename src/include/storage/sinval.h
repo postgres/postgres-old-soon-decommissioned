@@ -14,6 +14,7 @@
 #ifndef SINVAL_H
 #define SINVAL_H
 
+#include "storage/backendid.h"
 #include "storage/itemptr.h"
 #include "storage/spin.h"
 
@@ -77,5 +78,7 @@ extern bool DatabaseHasActiveBackends(Oid databaseId, bool ignoreMyself);
 extern bool TransactionIdIsInProgress(TransactionId xid);
 extern void GetXmaxRecent(TransactionId *XmaxRecent);
 extern int	CountActiveBackends(void);
+/* Use "struct proc", not PROC, to avoid including proc.h here */
+extern struct proc *BackendIdGetProc(BackendId procId);
 
 #endif	 /* SINVAL_H */

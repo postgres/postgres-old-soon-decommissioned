@@ -167,7 +167,7 @@ extern void InitBufferPoolAccess(void);
 extern void PrintBufferUsage(FILE *statfp);
 extern void ResetBufferUsage(void);
 extern void ResetBufferPool(bool isCommit);
-extern int	BufferPoolCheckLeak(void);
+extern bool BufferPoolCheckLeak(void);
 extern void FlushBufferPool(void);
 extern BlockNumber BufferGetBlockNumber(Buffer buffer);
 extern BlockNumber RelationGetNumberOfBlocks(Relation relation);
@@ -183,10 +183,9 @@ extern void SetBufferCommitInfoNeedsSave(Buffer buffer);
 
 extern void UnlockBuffers(void);
 extern void LockBuffer(Buffer buffer, int mode);
-extern void AbortBufferIO(void);
+extern void LockBufferForCleanup(Buffer buffer);
 
-extern bool BufferIsUpdatable(Buffer buffer);
-extern void MarkBufferForCleanup(Buffer buffer, void (*CleanupFunc) (Buffer));
+extern void AbortBufferIO(void);
 
 extern void BufmgrCommit(void);
 extern void BufferSync(void);

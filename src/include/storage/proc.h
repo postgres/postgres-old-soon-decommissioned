@@ -15,6 +15,7 @@
 #define _PROC_H_
 
 #include "access/xlog.h"
+#include "storage/backendid.h"
 #include "storage/lock.h"
 
 /* configurable option */
@@ -138,5 +139,9 @@ extern void ProcLockWakeup(LOCKMETHODTABLE *lockMethodTable, LOCK *lock);
 extern void ProcReleaseSpins(PROC *proc);
 extern bool LockWaitCancel(void);
 extern void HandleDeadLock(SIGNAL_ARGS);
+
+extern void ProcWaitForSignal(void);
+extern void ProcCancelWaitForSignal(void);
+extern void ProcSendSignal(BackendId procId);
 
 #endif	 /* PROC_H */
