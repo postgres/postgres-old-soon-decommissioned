@@ -2041,6 +2041,7 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 						ExecStoreTuple(&newtup, slot, InvalidBuffer, false);
 						ExecInsertIndexTuples(slot, &(newtup.t_self),
 											  estate, true);
+						ResetPerTupleExprContext(estate);
 					}
 
 					WriteBuffer(cur_buffer);
@@ -2174,6 +2175,7 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 			{
 				ExecStoreTuple(&newtup, slot, InvalidBuffer, false);
 				ExecInsertIndexTuples(slot, &(newtup.t_self), estate, true);
+				ResetPerTupleExprContext(estate);
 			}
 		}						/* walk along page */
 
