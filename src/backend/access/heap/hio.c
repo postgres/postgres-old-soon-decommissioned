@@ -232,7 +232,7 @@ RelationGetBufferForTuple(Relation relation, Size len,
 	 * page.  We can skip locking for new or temp relations, however,
 	 * since no one else could be accessing them.
 	 */
-	needLock = !(relation->rd_isnew || relation->rd_istemp);
+	needLock = !RELATION_IS_LOCAL(relation);
 
 	if (needLock)
 		LockPage(relation, 0, ExclusiveLock);

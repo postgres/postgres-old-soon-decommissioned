@@ -483,7 +483,7 @@ _bt_getbuf(Relation rel, BlockNumber blkno, int access)
 		 * new page.  We can skip locking for new or temp relations,
 		 * however, since no one else could be accessing them.
 		 */
-		needLock = !(rel->rd_isnew || rel->rd_istemp);
+		needLock = !RELATION_IS_LOCAL(rel);
 
 		if (needLock)
 			LockPage(rel, 0, ExclusiveLock);
