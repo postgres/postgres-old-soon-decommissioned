@@ -22,7 +22,7 @@ PostgreSQL documentation
   </refsynopsisdivinfo>
   <synopsis>
 CREATE DATABASE <replaceable class="PARAMETER">name</replaceable>
-    [ WITH [ OWNER [=] <replaceable class="parameter">dbowner</replaceable> ]
+    [ [ WITH ] [ OWNER [=] <replaceable class="parameter">dbowner</replaceable> ]
            [ LOCATION [=] '<replaceable class="parameter">dbpath</replaceable>' ]
            [ TEMPLATE [=] <replaceable class="parameter">template</replaceable> ]
            [ ENCODING [=] <replaceable class="parameter">encoding</replaceable> ] ]
