@@ -1042,6 +1042,7 @@ echo "ok"
 $ECHO_N "vacuuming database template1... "$ECHO_C
 
 "$PGPATH"/postgres $PGSQL_OPT template1 >/dev/null <<EOF
+ANALYZE;
 VACUUM FULL FREEZE;
 EOF
 if [ "$?" -ne 0 ]; then
