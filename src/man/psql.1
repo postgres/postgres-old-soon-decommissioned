@@ -151,10 +151,9 @@ The default is "|".
 .BR "-h" " hostname"
 Specifies the hostname of the machine on which the
 .IR postmaster
-is running.  Defaults to the name of the local host, or the value of
-the
-.SM PGHOST
-environment variable (if set).
+is running.
+Without this option, communication is performed using
+local Unix domain sockets.
 .TP
 .BR "-H"
 Turns on
@@ -171,7 +170,8 @@ Do not use the readline library for input line editing and command history.
 Put all output into filename
 .TP
 .BR "-p" " port"
-Specifies the Internet TCP port on which the
+Specifies the TCP/IP port or local Unix domain socket file
+extension on which the
 .IR postmaster
 is listening for connections.  Defaults to 5432, or the value of the
 .SM PGPORT
@@ -394,6 +394,8 @@ tty:        PGTTY
 options:    PGOPTION
 realm:      PGREALM
 .fi
+Setting PGHOST to a non-zero-length string causes TCP/IP communication
+to be used, rather than the default local Unix domain sockets.
 .PP
 If
 .SM PGOPTION

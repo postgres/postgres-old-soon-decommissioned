@@ -70,13 +70,11 @@ process.  The default is site-specific.
 .BR "-h" " host"
 Specifies the hostname of the machine on which the 
 .IR postmaster
-is running.  Defaults to the name of the local host, or the value of
-the
-.SM PGHOST
-environment variable (if set).
+is running.  Defaults to using local Unix domain sockets.
 .TP
 .BR "-p" " port"
-Specifies the Internet TCP port on which the
+Specifies the TCP/IP port or local Unix domain socket file extension
+on which the
 .IR postmaster
 is listening for connections.  Defaults to 5432, or the value of the
 .SM PGPORT

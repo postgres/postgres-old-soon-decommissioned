@@ -33,6 +33,8 @@ an application program:
 \(bu
 .B PGHOST
 sets the default server name.
+If it is set to a non-zero-length string, it causes TCP/IP
+communication to be used, rather than the default local Unix domain sockets.
 .sp
 \(bu
 .B PGOPTIONS
@@ -40,7 +42,8 @@ sets additional runtime options for the Postgres backend.
 .sp
 \(bu
 .B PGPORT
-sets the default port for communicating with the Postgres backend.
+sets the default port or local Unix domain socket file extension
+for communicating with the Postgres backend.
 .sp
 \(bu
 .B PGTTY
