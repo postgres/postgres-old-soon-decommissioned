@@ -80,6 +80,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"constraint", CONSTRAINT},
 	{"constraints", CONSTRAINTS},
 	{"conversion", CONVERSION_P},
+	{"convert", CONVERT},
 	{"copy", COPY},
 	{"create", CREATE},
 	{"createdb", CREATEDB},

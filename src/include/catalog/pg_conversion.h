@@ -90,7 +90,9 @@ extern Oid	ConversionCreate(const char *conname, Oid connamespace,
 extern void ConversionDrop(const char *conname, Oid connamespace,
 						   int32 conowner, DropBehavior behavior);
 extern void RemoveConversionById(Oid conversionOid);
-extern Oid FindDefaultConversion(Oid name_space, int4 for_encoding, int4 to_encoding);
-extern Oid FindConversionByName(List *conname);
+extern Oid FindConversion(const char *conname, Oid connamespace);
+extern Oid FindDefaultConversion(Oid connamespace, int4 for_encoding, int4 to_encoding);
+
+extern Datum pg_convert3(PG_FUNCTION_ARGS);
 
 #endif   /* PG_CONVERSION_H */

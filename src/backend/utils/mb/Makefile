@@ -24,7 +24,7 @@ clean distclean maintainer-clean:
 
 SUBSYS.o: $(OBJS)
 	@for dir in $(DIRS); do $(MAKE) -C $$dir all || exit; done
-	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
+	$(LD) $(LDREL) $(LDOUT) $@ $^
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
