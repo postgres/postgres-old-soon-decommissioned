@@ -315,6 +315,4 @@ objdir=		obj
 #
 # Customization.
 #
--include $(MKDIR)/../Makefile.custom
-
-
+#-include $(MKDIR)/../Makefile.custom
