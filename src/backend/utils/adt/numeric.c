@@ -43,15 +43,6 @@
 
 
 /* ----------
- * Local definitions
- * ----------
- */
-#ifndef NAN
-#define NAN		(0.0/0.0)
-#endif
-
-
-/* ----------
  * Local data types
  *
  * Numeric values are represented in a base-NBASE floating point format.
@@ -1790,7 +1781,7 @@ numeric_float8(PG_FUNCTION_ARGS)
 	Datum		result;
 
 	if (NUMERIC_IS_NAN(num))
-		PG_RETURN_FLOAT8(NAN);
+		PG_RETURN_FLOAT8(get_float8_nan());
 
 	tmp = DatumGetCString(DirectFunctionCall1(numeric_out,
 											  NumericGetDatum(num)));
@@ -1811,7 +1802,7 @@ numeric_float8_no_overflow(PG_FUNCTION_ARGS)
 	double		val;
 
 	if (NUMERIC_IS_NAN(num))
-		PG_RETURN_FLOAT8(NAN);
+		PG_RETURN_FLOAT8(get_float8_nan());
 
 	val = numeric_to_double_no_overflow(num);
 
@@ -1850,7 +1841,7 @@ numeric_float4(PG_FUNCTION_ARGS)
 	Datum		result;
 
 	if (NUMERIC_IS_NAN(num))
-		PG_RETURN_FLOAT4((float4) NAN);
+		PG_RETURN_FLOAT4(get_float4_nan());
 
 	tmp = DatumGetCString(DirectFunctionCall1(numeric_out,
 											  NumericGetDatum(num)));

@@ -20,10 +20,6 @@
 #include <errno.h>
 #include <float.h>
 #include <limits.h>
-/* for finite() on Solaris */
-#ifdef HAVE_IEEEFP_H
-#include <ieeefp.h>
-#endif
 
 #include "access/hash.h"
 #include "access/xact.h"
