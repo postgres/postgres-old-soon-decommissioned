@@ -216,9 +216,9 @@ LockTypeInit(LOCKTAB *ltable,
  * LockTableInit -- initialize a lock table structure
  *
  * Notes:
- *		(a) a lock table has four separate entries in the binding
+ *		(a) a lock table has four separate entries in the shmem index
  *		table.	This is because every shared hash table and spinlock
- *		has its name stored in the binding table at its creation.  It
+ *		has its name stored in the shmem index at its creation.  It
  *		is wasteful, in this case, but not much space is involved.
  *
  */
@@ -242,7 +242,7 @@ LockTableInit(char *tabName,
 		return (INVALID_TABLEID);
 	}
 
-	/* allocate a string for the binding table lookup */
+	/* allocate a string for the shmem index table lookup */
 	shmemName = (char *) palloc((unsigned) (strlen(tabName) + 32));
 	if (!shmemName)
 	{

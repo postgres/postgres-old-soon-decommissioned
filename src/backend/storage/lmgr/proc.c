@@ -184,7 +184,7 @@ InitProcess(IPCKey key)
 	{
 
 		/*
-		 * have to allocate one.  We can't use the normal binding table
+		 * have to allocate one.  We can't use the normal shmem index table
 		 * mechanism because the proc structure is stored by PID instead
 		 * of by a global name (need to look it up by PID when we cleanup
 		 * dead processes).
@@ -261,7 +261,7 @@ InitProcess(IPCKey key)
 	MemSet(MyProc->sLocks, 0, MAX_SPINS * sizeof(*MyProc->sLocks));
 
 	/* -------------------------
-	 * Install ourselves in the binding table.	The name to
+	 * Install ourselves in the shmem index table.	The name to
 	 * use is determined by the OS-assigned process id.  That
 	 * allows the cleanup process to find us after any untimely
 	 * exit.
