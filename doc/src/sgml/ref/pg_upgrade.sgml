@@ -96,6 +96,18 @@ $ make install
 
    <step performance="required">
     <para>
+     Do:
+     <programlisting>
+$ cd pgsql/contrib/pg_resetxlog
+$ make install
+     </programlisting>
+     to install the /contrib/pg_resetxlog utility 
+     which will be used by pg_upgrade.
+    </para>
+   </step>
+
+   <step performance="required">
+    <para>
      Run <application>initdb</application> to create a new template1 database
      containing the system tables for the new release.
     </para>
