@@ -612,6 +612,7 @@ SendQuery(bool * success_p, PsqlSettings * settings, const char *query,
 		    notify->relname, notify->be_pid);
 	    free(notify);
 	}
+	PQclear(results);
     }
 }
 
