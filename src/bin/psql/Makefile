@@ -46,7 +46,7 @@ else
 	@$(missing) flex $< $@
 endif
 
-distprep: $(srcdir)/sql_help.h
+distprep: $(srcdir)/sql_help.h $(srcdir)/psqlscan.c
 
 install: all installdirs
 	$(INSTALL_PROGRAM) psql$(X) $(DESTDIR)$(bindir)/psql$(X)
