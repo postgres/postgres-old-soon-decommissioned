@@ -1430,7 +1430,6 @@ LockShmemSize(int maxBackends)
 void
 DumpLocks(void)
 {
-	SHMEM_OFFSET location;
 	PROC	   *proc;
 	SHM_QUEUE  *procHolders;
 	HOLDER	   *holder;
@@ -1438,12 +1437,10 @@ DumpLocks(void)
 	int			lockmethod = DEFAULT_LOCKMETHOD;
 	LOCKMETHODTABLE *lockMethodTable;
 
-	ShmemPIDLookup(MyProcPid, &location);
-	if (location == INVALID_OFFSET)
+	proc = MyProc;
+	if (proc == NULL)
 		return;
-	proc = (PROC *) MAKE_PTR(location);
-	if (proc != MyProc)
-		return;
+
 	procHolders = &proc->procHolders;
 
 	Assert(lockmethod < NumLockMethods);
@@ -1477,22 +1474,16 @@ DumpLocks(void)
 void
 DumpAllLocks(void)
 {
-	SHMEM_OFFSET location;
 	PROC	   *proc;
 	HOLDER	   *holder = NULL;
 	LOCK	   *lock;
-	int			pid;
 	int			lockmethod = DEFAULT_LOCKMETHOD;
 	LOCKMETHODTABLE *lockMethodTable;
 	HTAB	   *holderTable;
 	HASH_SEQ_STATUS status;
 
-	pid = getpid();
-	ShmemPIDLookup(pid, &location);
-	if (location == INVALID_OFFSET)
-		return;
-	proc = (PROC *) MAKE_PTR(location);
-	if (proc != MyProc)
+	proc = MyProc;
+	if (proc == NULL)
 		return;
 
 	Assert(lockmethod < NumLockMethods);

@@ -286,7 +286,7 @@ static struct config_int
 	 * constraints here are partially unused.
 	 */
 	{"max_connections", PGC_POSTMASTER, &MaxBackends,
-	DEF_MAXBACKENDS, 1, MAXBACKENDS, NULL, NULL},
+	DEF_MAXBACKENDS, 1, INT_MAX, NULL, NULL},
 
 	{"shared_buffers", PGC_POSTMASTER, &NBuffers,
 	DEF_NBUFFERS, 16, INT_MAX, NULL, NULL},

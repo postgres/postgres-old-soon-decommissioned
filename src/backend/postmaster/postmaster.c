@@ -138,9 +138,9 @@ char	   *UnixSocketDir;
 char	   *VirtualHost;
 
 /*
- * MaxBackends is the actual limit on the number of backends we will
- * start. The default is established by configure, but it can be
- * readjusted from 1..MAXBACKENDS with the postmaster -N switch. Note
+ * MaxBackends is the limit on the number of backends we can start.
+ * The default is established by configure, but it can be altered at
+ * postmaster start with the postmaster's -N switch.  Note
  * that a larger MaxBackends value will increase the size of the shared
  * memory area as well as cause the postmaster to grab more kernel
  * semaphores, even if you never actually use that many backends.
@@ -777,8 +777,8 @@ usage(const char *progname)
 #ifdef USE_SSL
 	printf(gettext("  -l              enable SSL connections\n"));
 #endif
-	printf(gettext("  -N MAX-CONNECT  maximum number of allowed connections (1..%d, default %d)\n"),
-		   MAXBACKENDS, DEF_MAXBACKENDS);
+	printf(gettext("  -N MAX-CONNECT  maximum number of allowed connections (default %d)\n"),
+		   DEF_MAXBACKENDS);
 	printf(gettext("  -o OPTIONS      pass 'OPTIONS' to each backend server\n"));
 	printf(gettext("  -p PORT         port number to listen on (default %d)\n"), DEF_PGPORT);
 	printf(gettext("  -S              silent mode (start in background without logging output)\n"));

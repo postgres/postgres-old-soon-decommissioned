@@ -281,7 +281,7 @@ InitPostgres(const char *dbname, const char *username)
 
 	InitBackendSharedInvalidationState();
 
-	if (MyBackendId > MAXBACKENDS || MyBackendId <= 0)
+	if (MyBackendId > MaxBackends || MyBackendId <= 0)
 		elog(FATAL, "InitPostgres: bad backend id %d", MyBackendId);
 
 	/*

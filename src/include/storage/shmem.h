@@ -71,8 +71,6 @@ extern void *ShmemAlloc(Size size);
 extern bool ShmemIsValid(unsigned long addr);
 extern HTAB *ShmemInitHash(char *name, long init_size, long max_size,
 			  HASHCTL *infoP, int hash_flags);
-extern bool ShmemPIDLookup(int pid, SHMEM_OFFSET *locationPtr);
-extern SHMEM_OFFSET ShmemPIDDestroy(int pid);
 extern void *ShmemInitStruct(char *name, Size size, bool *foundPtr);
 
 

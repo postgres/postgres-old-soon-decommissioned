@@ -107,12 +107,6 @@
  */
 
 /*
- * Hard limit on number of backend server processes per postmaster.
- * Increasing this costs about 32 bytes per process slot as of v 6.5.
- */
-#define MAXBACKENDS	(DEF_MAXBACKENDS > 1024 ? DEF_MAXBACKENDS : 1024)
-
-/*
  * Default number of buffers in shared buffer pool (each of size BLCKSZ).
  * This is just the default setting for the postmaster's -B switch.
  * Perhaps it ought to be configurable from a configure switch.
