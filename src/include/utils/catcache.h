@@ -38,6 +38,8 @@ typedef struct catctup
 #define NCCBUCK 500				/* CatCache buckets */
 #define MAXTUP 300				/* Maximum # of tuples cached per cache */
 
+typedef uint32 (* CCHashFunc) (Datum);
+
 typedef struct catcache
 {
 	Oid			relationId;
@@ -52,8 +54,8 @@ typedef struct catcache
 	short		cc_maxtup;		/* max # of tuples allowed (LRU) */
 	short		cc_nkeys;
 	short		cc_size;
-	short		cc_key[4];
-	short		cc_klen[4];
+	short		cc_key[4];		/* AttrNumber of each key */
+	CCHashFunc	cc_hashfunc[4];	/* hash function to use for each key */
 	ScanKeyData cc_skey[4];
 	struct catcache *cc_next;
 	Dllist	   *cc_lrulist;		/* LRU list, most recent first */

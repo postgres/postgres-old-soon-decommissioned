@@ -146,8 +146,24 @@ hashoidvector(Oid *key)
 	int			i;
 	uint32		result = 0;
 
-	for (i = 0; i < INDEX_MAX_KEYS; i++)
-		result = result ^ (~(uint32) key[i]);
+	for (i = INDEX_MAX_KEYS; --i >= 0; )
+		result = (result << 1) ^ (~(uint32) key[i]);
+	return result;
+}
+
+/*
+ * Note: hashint2vector currently can't be used as a user hash table
+ * hash function, because it has no pg_proc entry.  We only need it
+ * for catcache indexing.
+ */
+uint32
+hashint2vector(int16 *key)
+{
+	int			i;
+	uint32		result = 0;
+
+	for (i = INDEX_MAX_KEYS; --i >= 0; )
+		result = (result << 1) ^ (~(uint32) key[i]);
 	return result;
 }
 
@@ -158,13 +174,10 @@ hashoidvector(Oid *key)
 uint32
 hashchar(char key)
 {
-	int			len;
 	uint32		h;
 
-	h = 0;
-	len = sizeof(char);
 	/* Convert char to integer */
-	h = h * PRIME1 ^ (key - ' ');
+	h = (key - ' ');
 	h %= PRIME2;
 
 	return h;
