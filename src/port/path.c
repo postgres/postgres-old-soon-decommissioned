@@ -175,15 +175,38 @@ canonicalize_path(char *path)
 
 
 /*
- * Extracts the actual name of the program as called.
+ * Extracts the actual name of the program as called - 
+ * stripped of .exe suffix if any
  */
 const char *
 get_progname(const char *argv0)
 {
+	const char *nodir_name;
+
 	if (!last_dir_separator(argv0))
-		return argv0;
+		nodir_name = argv0;
 	else
-		return last_dir_separator(argv0) + 1;
+		nodir_name = last_dir_separator(argv0) + 1;
+
+#if defined(__CYGWIN__) || defined(WIN32)
+	/* strip .exe suffix, regardless of case */
+	if (strlen(nodir_name) > 4 &&
+		stricmp(nodir_name + (strlen(nodir_name) - 4), EXE) == 0)
+	{
+		char *progname;
+
+		progname = strdup(nodir_name);
+		if (progname == NULL)
+		{
+			fprintf(stderr, "%s: out of memory\n", nodir_name);
+			exit(1);
+		}
+		progname[strlen(progname) - 4] = '\0';
+		nodir_name = progname; 
+	}
+#endif
+
+	return nodir_name;
 }
 
 
