@@ -718,7 +718,7 @@ RenameFunction(List *name, List *argtypes, const char *newname)
  *
  * This is presently only used for adjusting legacy functions that return
  * OPAQUE to return whatever we find their correct definition should be.
- * The caller should emit a suitable NOTICE explaining what we did.
+ * The caller should emit a suitable warning explaining what we did.
  */
 void
 SetFunctionReturnType(Oid funcOid, Oid newRetType)

@@ -286,7 +286,7 @@ CreateTrigger(CreateTrigStmt *stmt, bool forConstraint)
 		 */
 		if (funcrettype == OPAQUEOID)
 		{
-			ereport(NOTICE,
+			ereport(WARNING,
 					(errmsg("changing return type of function %s from \"opaque\" to \"trigger\"",
 							NameListToString(stmt->funcname))));
 			SetFunctionReturnType(funcoid, TRIGGEROID);

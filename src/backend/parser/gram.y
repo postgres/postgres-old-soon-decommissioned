@@ -973,7 +973,7 @@ zone_value:
 										$3)));
 					if ($3 > MAX_INTERVAL_PRECISION)
 					{
-						ereport(NOTICE,
+						ereport(WARNING,
 								(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 								 errmsg("INTERVAL(%d) precision reduced to maximum allowed, %d",
 										$3, MAX_INTERVAL_PRECISION)));
@@ -5091,7 +5091,7 @@ SimpleTypename:
 										$3)));
 					if ($3 > MAX_INTERVAL_PRECISION)
 					{
-						ereport(NOTICE,
+						ereport(WARNING,
 								(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 								 errmsg("INTERVAL(%d) precision reduced to maximum allowed, %d",
 										$3, MAX_INTERVAL_PRECISION)));
@@ -5470,7 +5470,7 @@ ConstDatetime:
 										$3, ($5 ? " WITH TIME ZONE": ""))));
 					if ($3 > MAX_TIMESTAMP_PRECISION)
 					{
-						ereport(NOTICE,
+						ereport(WARNING,
 								(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 								 errmsg("TIMESTAMP(%d)%s precision reduced to maximum allowed, %d",
 										$3, ($5 ? " WITH TIME ZONE": ""),
@@ -5511,7 +5511,7 @@ ConstDatetime:
 										$3, ($5 ? " WITH TIME ZONE": ""))));
 					if ($3 > MAX_TIME_PRECISION)
 					{
-						ereport(NOTICE,
+						ereport(WARNING,
 								(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 								 errmsg("TIME(%d)%s precision reduced to maximum allowed, %d",
 										$3, ($5 ? " WITH TIME ZONE": ""),
@@ -6318,7 +6318,7 @@ c_expr:		columnref								{ $$ = (Node *) $1; }
 										$3)));
 					if ($3 > MAX_TIME_PRECISION)
 					{
-						ereport(NOTICE,
+						ereport(WARNING,
 								(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 								 errmsg("CURRENT_TIME(%d) precision reduced to maximum allowed, %d",
 										$3, MAX_TIME_PRECISION)));
@@ -6372,7 +6372,7 @@ c_expr:		columnref								{ $$ = (Node *) $1; }
 										$3)));
 					if ($3 > MAX_TIMESTAMP_PRECISION)
 					{
-						ereport(NOTICE,
+						ereport(WARNING,
 								(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 								 errmsg("CURRENT_TIMESTAMP(%d) precision reduced to maximum allowed, %d",
 										$3, MAX_TIMESTAMP_PRECISION)));
@@ -6425,7 +6425,7 @@ c_expr:		columnref								{ $$ = (Node *) $1; }
 										$3)));
 					if ($3 > MAX_TIME_PRECISION)
 					{
-						ereport(NOTICE,
+						ereport(WARNING,
 								(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 								 errmsg("LOCALTIME(%d) precision reduced to maximum allowed, %d",
 										$3, MAX_TIME_PRECISION)));
@@ -6479,7 +6479,7 @@ c_expr:		columnref								{ $$ = (Node *) $1; }
 										$3)));
 					if ($3 > MAX_TIMESTAMP_PRECISION)
 					{
-						ereport(NOTICE,
+						ereport(WARNING,
 								(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 								 errmsg("LOCALTIMESTAMP(%d) precision reduced to maximum allowed, %d",
 										$3, MAX_TIMESTAMP_PRECISION)));
@@ -7189,7 +7189,7 @@ AexprConst: Iconst
 										$3)));
 					if ($3 > MAX_INTERVAL_PRECISION)
 					{
-						ereport(NOTICE,
+						ereport(WARNING,
 								(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 								 errmsg("INTERVAL(%d) precision reduced to maximum allowed, %d",
 										$3, MAX_INTERVAL_PRECISION)));

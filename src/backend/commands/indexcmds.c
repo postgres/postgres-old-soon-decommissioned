@@ -654,7 +654,7 @@ ReindexTable(RangeVar *relation, bool force /* currently unused */ )
 	ReleaseSysCache(tuple);
 
 	if (!reindex_relation(heapOid))
-		ereport(WARNING,
+		ereport(NOTICE,
 				(errmsg("table \"%s\" has no indexes",
 						relation->relname)));
 }

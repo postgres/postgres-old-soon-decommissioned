@@ -91,7 +91,7 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 		 */
 		if (funcrettype == OPAQUEOID)
 		{
-			ereport(NOTICE,
+			ereport(WARNING,
 					(errcode(ERRCODE_WRONG_OBJECT_TYPE),
 					 errmsg("changing return type of function %s from \"opaque\" to \"language_handler\"",
 							NameListToString(stmt->plhandler))));

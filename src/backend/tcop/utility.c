@@ -1555,7 +1555,7 @@ CreateCommandTag(Node *parsetree)
 			break;
 
 		default:
-			elog(NOTICE, "unrecognized node type: %d",
+			elog(WARNING, "unrecognized node type: %d",
 				 (int) nodeTag(parsetree));
 			tag = "???";
 			break;
