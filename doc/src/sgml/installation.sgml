@@ -1537,10 +1537,10 @@ gunzip -c postgres.ps.gz \
        <row>
 	<entry><systemitem class="osname">BSD/OS</></entry>
 	<entry><systemitem>x86</></entry>
-	<entry>7.3</entry>
+	<entry>7.4</entry>
 	<entry>2002-10-25,
 	 Bruce Momjian (<email>pgman@candle.pha.pa.us</email>)</entry>
-        <entry>4.2</entry>
+        <entry>4.3</entry>
        </row>
        <row>
 	<entry><systemitem class="osname">FreeBSD</></entry>
