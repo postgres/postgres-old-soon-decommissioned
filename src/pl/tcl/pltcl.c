@@ -489,8 +489,12 @@ pltcl_func_handler(PG_FUNCTION_ARGS)
 		{
 			free(prodesc->proname);
 			free(prodesc);
-			elog(ERROR, "pltcl: cache lookup for return type %u failed",
-				 procStruct->prorettype);
+			if (!OidIsValid(procStruct->prorettype))
+				elog(ERROR, "pltcl functions cannot return type \"opaque\""
+					 "\n\texcept when used as triggers");
+			else
+				elog(ERROR, "pltcl: cache lookup for return type %u failed",
+					 procStruct->prorettype);
 		}
 		typeStruct = (Form_pg_type) GETSTRUCT(typeTup);
 
@@ -521,8 +525,11 @@ pltcl_func_handler(PG_FUNCTION_ARGS)
 			{
 				free(prodesc->proname);
 				free(prodesc);
-				elog(ERROR, "pltcl: cache lookup for argument type %u failed",
-					 procStruct->proargtypes[i]);
+				if (!OidIsValid(procStruct->proargtypes[i]))
+					elog(ERROR, "pltcl functions cannot take type \"opaque\"");
+				else
+					elog(ERROR, "pltcl: cache lookup for argument type %u failed",
+						 procStruct->proargtypes[i]);
 			}
 			typeStruct = (Form_pg_type) GETSTRUCT(typeTup);
 
