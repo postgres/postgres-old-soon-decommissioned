@@ -220,7 +220,7 @@ BootstrapMain(int argc, char *argv[])
  */
 {
 	int			i;
-	char	   *dbName;
+	char	   *dbname;
 	int			flag;
 	int			xlogop = BS_XLOG_NOP;
 	char	   *potential_DataDir = NULL;
@@ -244,7 +244,7 @@ BootstrapMain(int argc, char *argv[])
 	 */
 
 	/* Set defaults, to be overriden by explicit options below */
-	dbName = NULL;
+	dbname = NULL;
 	if (!IsUnderPostmaster /* when exec || ExecBackend*/)
 	{
 		InitializeGUCOptions();
@@ -297,9 +297,9 @@ BootstrapMain(int argc, char *argv[])
 	if (argc - optind != 1)
 		usage();
 
-	dbName = argv[optind];
+	dbname = argv[optind];
 
-	Assert(dbName);
+	Assert(dbname);
 
 	if (IsUnderPostmaster && ExecBackend && MyProc /* ordinary backend */)
 	{
@@ -426,7 +426,7 @@ BootstrapMain(int argc, char *argv[])
 	/*
 	 * backend initialization
 	 */
-	InitPostgres(dbName, NULL);
+	InitPostgres(dbname, NULL);
 
 	for (i = 0; i < MAXATTR; i++)
 	{
