@@ -1574,11 +1574,13 @@ do_shell(const char *command)
 			shellName = DEFAULT_SHELL;
 
 		sys = pg_malloc(strlen(shellName) + 16);
+#ifndef WIN32
 		sprintf(sys,
 		/* See EDITOR handling comment for an explaination */
-#ifndef WIN32
 				"exec %s", shellName);
 #else
+		sprintf(sys,
+		/* See EDITOR handling comment for an explaination */
 				"%s\"%s\"%s", SYSTEMQUOTE, shellName, SYSTEMQUOTE);
 #endif
 		result = system(sys);
