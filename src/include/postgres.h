@@ -453,11 +453,11 @@ typedef struct Exception
 	ExcMessage	message;
 } Exception;
 
-extern Exception FailedAssertion;
-extern Exception BadArg;
-extern Exception BadState;
+extern DLLIMPORT Exception FailedAssertion;
+extern DLLIMPORT Exception BadArg;
+extern DLLIMPORT Exception BadState;
 
-extern bool assert_enabled;
+extern DLLIMPORT bool assert_enabled;
 
 /*
  * USE_ASSERT_CHECKING, if defined, turns on all the assertions.

@@ -14,15 +14,15 @@
 #ifndef EXCID_H
 #define EXCID_H
 
+/* note: these first three are also declared in postgres.h */
+extern DLLIMPORT Exception FailedAssertion;
+extern DLLIMPORT Exception BadState;
+extern DLLIMPORT Exception BadArg;
+extern DLLIMPORT Exception Unimplemented;
 
-extern Exception FailedAssertion;
-extern Exception BadState;
-extern Exception BadArg;
-extern Exception Unimplemented;
-
-extern Exception CatalogFailure;/* XXX inconsistent naming style */
-extern Exception InternalError; /* XXX inconsistent naming style */
-extern Exception SemanticError; /* XXX inconsistent naming style */
-extern Exception SystemError;	/* XXX inconsistent naming style */
+extern DLLIMPORT Exception CatalogFailure;/* XXX inconsistent naming style */
+extern DLLIMPORT Exception InternalError; /* XXX inconsistent naming style */
+extern DLLIMPORT Exception SemanticError; /* XXX inconsistent naming style */
+extern DLLIMPORT Exception SystemError;	/* XXX inconsistent naming style */
 
 #endif	 /* EXCID_H */
