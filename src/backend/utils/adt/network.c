@@ -221,7 +221,7 @@ bool
 network_sub(inet *a1, inet *a2)
 {
 	if (!PointerIsValid(a1) || !PointerIsValid(a2))
-		return NULL;
+		return FALSE;
 		
 	if ((ip_family(a1) == AF_INET) && (ip_family(a2) == AF_INET))
 	{
@@ -241,7 +241,7 @@ bool
 network_subeq(inet *a1, inet *a2)
 {
 	if (!PointerIsValid(a1) || !PointerIsValid(a2))
-		return NULL;
+		return FALSE;
 
 	if ((ip_family(a1) == AF_INET) && (ip_family(a2) == AF_INET))
 	{
@@ -261,7 +261,7 @@ bool
 network_sup(inet *a1, inet *a2)
 {
 	if (!PointerIsValid(a1) || !PointerIsValid(a2))
-		return NULL;
+		return FALSE;
 
 	if ((ip_family(a1) == AF_INET) && (ip_family(a2) == AF_INET))
 	{
@@ -281,7 +281,7 @@ bool
 network_supeq(inet *a1, inet *a2)
 {
 	if (!PointerIsValid(a1) || !PointerIsValid(a2))
-		return NULL;
+		return FALSE;
 
 	if ((ip_family(a1) == AF_INET) && (ip_family(a2) == AF_INET))
 	{
