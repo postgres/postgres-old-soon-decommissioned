@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Sat Nov 29 23:44:35 EST 2003
+Last updated:		Sun Nov 30 00:29:26 EST 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -185,6 +185,7 @@ Commands
 * Have psql '\i ~/<tab><tab>' actually load files it displays from home dir
 * Ignore temporary tables from other session when processing inheritance
 * Add GUC setting to make created tables default to WITHOUT OIDS
+* Have pg_ctl look at PGHOST in case it is a socket directory
 
 
 * ALTER
