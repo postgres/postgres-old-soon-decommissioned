@@ -348,7 +348,7 @@ then
     # executables, not dlopen'ed ones)
     # ----------
     case $host_platform in
-        *-*-cygwin*|*-*-mingw)
+        *-*-cygwin*|*-*-mingw32*)
             PATH=$libdir:$PATH
             export PATH
             ;;
@@ -438,6 +438,17 @@ then
     fi
 
 else # not temp-install
+
+    # ----------
+    # Windows needs shared libraries in PATH. (Only those linked into
+    # executables, not dlopen'ed ones)
+    # ----------
+    case $host_platform in
+        *-*-cygwin*|*-*-mingw32*)
+            PATH=$libdir:$PATH
+            export PATH
+            ;;
+    esac
 
     # If Unix sockets are not available, use the local host by default.
     if [ "$unix_sockets" = no ]; then
