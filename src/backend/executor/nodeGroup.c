@@ -180,8 +180,7 @@ ExecInitGroup(Group *node, EState *estate)
 	ExecAssignScanTypeFromOuterPlan(&grpstate->ss);
 
 	/*
-	 * Initialize tuple type for both result and scan. This node does no
-	 * projection
+	 * Initialize result tuple type and projection info.
 	 */
 	ExecAssignResultTypeFromTL(&grpstate->ss.ps);
 	ExecAssignProjectionInfo(&grpstate->ss.ps);

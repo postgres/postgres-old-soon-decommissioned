@@ -189,7 +189,7 @@ ExecInitSubqueryScan(SubqueryScan *node, EState *estate)
 	subquerystate->ss.ps.ps_TupFromTlist = false;
 
 	/*
-	 * initialize tuple type
+	 * Initialize result tuple type and projection info.
 	 */
 	ExecAssignResultTypeFromTL(&subquerystate->ss.ps);
 	ExecAssignProjectionInfo(&subquerystate->ss.ps);

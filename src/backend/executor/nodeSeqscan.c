@@ -229,7 +229,7 @@ ExecInitSeqScan(SeqScan *node, EState *estate)
 	scanstate->ps.ps_TupFromTlist = false;
 
 	/*
-	 * initialize tuple type
+	 * Initialize result tuple type and projection info.
 	 */
 	ExecAssignResultTypeFromTL(&scanstate->ps);
 	ExecAssignProjectionInfo(&scanstate->ps);

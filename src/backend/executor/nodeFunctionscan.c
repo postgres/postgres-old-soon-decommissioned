@@ -247,7 +247,7 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate)
 	scanstate->ss.ps.ps_TupFromTlist = false;
 
 	/*
-	 * initialize tuple type
+	 * Initialize result tuple type and projection info.
 	 */
 	ExecAssignResultTypeFromTL(&scanstate->ss.ps);
 	ExecAssignProjectionInfo(&scanstate->ss.ps);
