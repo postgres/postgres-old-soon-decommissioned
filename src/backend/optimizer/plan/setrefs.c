@@ -23,6 +23,7 @@
 #include "optimizer/planmain.h"
 #include "optimizer/tlist.h"
 #include "optimizer/var.h"
+#include "parser/parsetree.h"
 
 
 typedef struct
@@ -121,8 +122,16 @@ set_plan_references(Query *root, Plan *plan)
 			set_plan_references(root, ((SubqueryScan *) plan)->subplan);
 			break;
 		case T_FunctionScan:
-			fix_expr_references(plan, (Node *) plan->targetlist);
-			fix_expr_references(plan, (Node *) plan->qual);
+			{
+				RangeTblEntry *rte;
+
+				fix_expr_references(plan, (Node *) plan->targetlist);
+				fix_expr_references(plan, (Node *) plan->qual);
+				rte = rt_fetch(((FunctionScan *) plan)->scan.scanrelid,
+							   root->rtable);
+				Assert(rte->rtekind == RTE_FUNCTION);
+				fix_expr_references(plan, rte->funcexpr);
+			}
 			break;
 		case T_NestLoop:
 			set_join_references(root, (Join *) plan);
