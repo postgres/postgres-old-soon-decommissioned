@@ -298,8 +298,6 @@ DATA(insert OID = 616 (  "<->"	   PGUID 0 b t f 601 628 701   0   0  0  0 dist_s
 DATA(insert OID = 617 (  "<->"	   PGUID 0 b t f 601 603 701   0   0  0  0 dist_sb - - ));
 DATA(insert OID = 618 (  "<->"	   PGUID 0 b t f 600 602 701   0   0  0  0 dist_ppath - - ));
 
-DATA(insert OID = 619 (  "<"	   PGUID 0 b t f 704 704  16   0   0  0  0 intervalct - - ));
-
 DATA(insert OID = 620 (  "="	   PGUID 0 b t t  700  700	16 620 621	622 622 float4eq eqsel eqjoinsel ));
 DATA(insert OID = 621 (  "<>"	   PGUID 0 b t f  700  700	16 621 620	0 0 float4ne neqsel neqjoinsel ));
 DATA(insert OID = 622 (  "<"	   PGUID 0 b t f  700  700	16 623 625	0 0 float4lt intltsel intltjoinsel ));
