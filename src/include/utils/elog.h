@@ -47,22 +47,12 @@ extern int	Use_syslog;
 extern bool Log_timestamp;
 extern bool Log_pid;
 
-extern char	   *server_min_messages_str;
-extern char	   *client_min_messages_str;
-extern const char server_min_messages_str_default[];
-extern const char client_min_messages_str_default[];
-
 extern void
 elog(int lev, const char *fmt,...)
 /* This extension allows gcc to check the format string for consistency with
    the supplied arguments. */
 __attribute__((format(printf, 2, 3)));
 
-extern int	DebugFileOpen(void);
-
-extern const char *assign_server_min_messages(const char *newval,
-											  bool doit, bool interactive);
-extern const char *assign_client_min_messages(const char *newval,
-											  bool doit, bool interactive);
+extern int  DebugFileOpen(void);
 
 #endif   /* ELOG_H */

@@ -100,6 +100,13 @@ extern void ProcessGUCArray(ArrayType *array, GucSource source);
 extern ArrayType *GUCArrayAdd(ArrayType *array, const char *name, const char *value);
 extern ArrayType *GUCArrayDelete(ArrayType *array, const char *name);
 
+extern const char *assign_min_error_statement(const char *newval, bool doit,
+			bool interactive);
+
+extern const char *assign_server_min_messages(const char *newval,
+                                              bool doit, bool interactive);
+extern const char *assign_client_min_messages(const char *newval,
+                                              bool doit, bool interactive);
 extern bool Log_statement;
 extern bool Log_duration;
 extern bool Debug_print_plan;
@@ -117,5 +124,20 @@ extern bool Explain_pretty_print;
 
 extern bool SQL_inheritance;
 extern bool Australian_timezones;
+
+extern char *debug_query_string;
+
+extern int	log_min_error_statement;
+extern char *log_min_error_statement_str;
+extern const char log_min_error_statement_str_default[];
+
+extern int	server_min_messages;
+extern char    *server_min_messages_str;
+extern const char server_min_messages_str_default[];
+
+extern int client_min_messages;
+extern char    *client_min_messages_str;
+
+extern const char client_min_messages_str_default[];
 
 #endif   /* GUC_H */

@@ -271,7 +271,7 @@ psql_completion(char *text, int start, int end)
 		"default_transaction_isolation",
 		"search_path",
 		"statement_timeout",
-
+		"log_min_error_statement",
 		NULL
 	};
 
