@@ -118,7 +118,7 @@ _success:			\n\
 
 #endif	 /* __m68k__ */
 
-#if defined(PPC)
+#if defined(__powerpc__)
 /* Note: need a nice gcc constrained asm version so it can be inlined */
 static void
 tas_dummy()
@@ -140,7 +140,7 @@ success:			\n\
 	");
 }
 
-#endif	 /* PPC */
+#endif	 /* __powerpc__ */
 
 #if defined(__mips)
 static void

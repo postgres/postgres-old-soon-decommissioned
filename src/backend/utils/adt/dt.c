@@ -4533,7 +4533,7 @@ EncodeTimeSpan(struct tm * tm, double fsec, int style, char *str)
 }	/* EncodeTimeSpan() */
 
 
-#if defined(linux) && defined(PPC)
+#if defined(linux) && defined(__powerpc__)
 int
 datetime_is_epoch(double j)
 {

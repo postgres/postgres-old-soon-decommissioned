@@ -228,7 +228,7 @@ typedef struct
 #define DATETIME_IS_NOEND(j)	(j == DT_NOEND)
 
 #define DATETIME_CURRENT(j)		{j = DT_CURRENT;}
-#if defined(linux) && defined(PPC)
+#if defined(linux) && defined(__powerpc__)
 extern int	datetime_is_current(double j);
 
 #define DATETIME_IS_CURRENT(j)	datetime_is_current(j)
@@ -237,7 +237,7 @@ extern int	datetime_is_current(double j);
 #endif
 
 #define DATETIME_EPOCH(j)		{j = DT_EPOCH;}
-#if defined(linux) && defined(PPC)
+#if defined(linux) && defined(__powerpc__)
 extern int	datetime_is_epoch(double j);
 
 #define DATETIME_IS_EPOCH(j)	datetime_is_epoch(j)

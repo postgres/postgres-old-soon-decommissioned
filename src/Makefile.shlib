@@ -73,7 +73,11 @@ ifeq ($(PORTNAME), bsd)
   ifdef BSD_SHLIB
     install-shlib-dep	:= install-shlib
     shlib		:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
-    LDFLAGS_SL		:= -x -Bshareable -Bforcearchive
+    ifdef ELF_SYSTEM
+      LDFLAGS_SL	:= -x -Bshareable -soname $(shlib)
+    else
+      LDFLAGS_SL	:= -x -Bshareable -Bforcearchive
+    endif
     CFLAGS		+= $(CFLAGS_SL)
   endif
 endif
