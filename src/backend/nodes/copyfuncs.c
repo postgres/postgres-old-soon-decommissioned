@@ -943,6 +943,47 @@ _copySubLink(SubLink *from)
 	return newnode;
 }
 
+/* ----------------
+ *		_copyCaseExpr
+ * ----------------
+ */
+static CaseExpr *
+_copyCaseExpr(CaseExpr *from)
+{
+	CaseExpr   *newnode = makeNode(CaseExpr);
+
+	/* ----------------
+	 *	copy remainder of node
+	 * ----------------
+	 */
+	newnode->casetype = from->casetype;
+
+	Node_Copy(from, newnode, arg);
+	Node_Copy(from, newnode, args);
+	Node_Copy(from, newnode, defresult);
+
+	return newnode;
+}
+
+/* ----------------
+ *		_copyCaseWhen
+ * ----------------
+ */
+static CaseWhen *
+_copyCaseWhen(CaseWhen *from)
+{
+	CaseWhen   *newnode = makeNode(CaseWhen);
+
+	/* ----------------
+	 *	copy remainder of node
+	 * ----------------
+	 */
+	Node_Copy(from, newnode, expr);
+	Node_Copy(from, newnode, result);
+
+	return newnode;
+}
+
 static Array *
 _copyArray(Array *from)
 {
@@ -1733,6 +1774,12 @@ copyObject(void *from)
 			break;
 		case T_SubLink:
 			retval = _copySubLink(from);
+			break;
+		case T_CaseExpr:
+			retval = _copyCaseExpr(from);
+			break;
+		case T_CaseWhen:
+			retval = _copyCaseWhen(from);
 			break;
 
 			/*

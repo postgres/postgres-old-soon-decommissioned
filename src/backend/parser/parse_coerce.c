@@ -342,7 +342,7 @@ TypeCategory(Oid inType)
 
 
 /* IsPreferredType()
- * Assign a category to the specified OID.
+ * Check if this type is a preferred type.
  */
 bool
 IsPreferredType(CATEGORY category, Oid type)

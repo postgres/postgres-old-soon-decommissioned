@@ -137,6 +137,21 @@ contain_var_clause(Node *clause)
 	else if (is_opclause(clause))
 		return (contain_var_clause((Node *) get_leftop((Expr *) clause)) ||
 			  contain_var_clause((Node *) get_rightop((Expr *) clause)));
+	else if (case_clause(clause))
+	{
+		List	   *args;
+		CaseWhen   *when;
+
+		foreach(args, ((CaseExpr *) clause)->args)
+		{
+			when = lfirst(args);
+			if (contain_var_clause(when->expr))
+				return TRUE;
+			if (contain_var_clause(when->result))
+				return TRUE;
+		}
+		return (contain_var_clause(((CaseExpr *) clause)->defresult));
+	}
 
 	return FALSE;
 }
@@ -199,6 +214,18 @@ pull_var_clause(Node *clause)
 	else if (is_opclause(clause))
 		retval = nconc(pull_var_clause((Node *) get_leftop((Expr *) clause)),
 				 pull_var_clause((Node *) get_rightop((Expr *) clause)));
+	else if (case_clause(clause))
+	{
+		List	   *temp;
+
+		foreach(temp, ((CaseExpr *) clause)->args)
+		{
+			retval = nconc(retval, pull_var_clause(((CaseWhen *) lfirst(temp))->expr));
+			retval = nconc(retval, pull_var_clause(((CaseWhen *) lfirst(temp))->result));
+		}
+
+		retval = nconc(retval, pull_var_clause(((CaseExpr *) clause)->defresult));
+	}
 	else
 		retval = NIL;
 

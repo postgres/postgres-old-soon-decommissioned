@@ -34,6 +34,8 @@ extern Expr *get_notclausearg(Expr *notclause);
 extern bool and_clause(Node *clause);
 extern Expr *make_andclause(List *andclauses);
 
+extern bool case_clause(Node *clause);
+
 extern List *pull_constant_clauses(List *quals, List **constantQual);
 extern void clause_get_relids_vars(Node *clause, List **relids, List **vars);
 extern int	NumRelids(Node *clause);
