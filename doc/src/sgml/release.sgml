@@ -24,6 +24,8 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+EXTRACT(TIMEZONE) and SET/SHOW TIMEZONE now follow SQL sign convention
+  (positive = east of UTC)
 Output of SHOW DATESTYLE is now in the same format accepted by SET DATESTYLE
 PL/Python is now an untrusted language, and is renamed to 'plpythonu'
 Dollar sign ($) is no longer allowed in operator names

@@ -5016,16 +5016,16 @@ SELECT EXTRACT(SECOND FROM TIME '17:12:28.5');
 </screen>
       </listitem>
      </varlistentry>
-<!--
      <varlistentry>
       <term><literal>timezone</literal></term>
       <listitem>
        <para>
-        The time zone offset. XXX But in what units?
+        The time zone offset from UTC, measured in seconds.  Positive values
+	correspond to time zones east of UTC, negative values to
+	zones west of UTC.
        </para>
       </listitem>
      </varlistentry>
--->
 
      <varlistentry>
       <term><literal>timezone_hour</literal></term>

@@ -429,7 +429,8 @@ assign_timezone(const char *value, bool doit, bool interactive)
 		}
 		if (doit)
 		{
-			CTimeZone = interval->time;
+			/* Here we change from SQL to Unix sign convention */
+			CTimeZone = - interval->time;
 			HasCTZSet = true;
 		}
 		pfree(interval);
@@ -444,7 +445,8 @@ assign_timezone(const char *value, bool doit, bool interactive)
 		{
 			if (doit)
 			{
-				CTimeZone = hours * 3600;
+				/* Here we change from SQL to Unix sign convention */
+				CTimeZone = - hours * 3600;
 				HasCTZSet = true;
 			}
 		}
@@ -557,7 +559,8 @@ assign_timezone(const char *value, bool doit, bool interactive)
 		return NULL;
 
 	if (HasCTZSet)
-		snprintf(result, sizeof(tzbuf), "%.5f", (double) CTimeZone / 3600.0);
+		snprintf(result, sizeof(tzbuf), "%.5f",
+				 (double) (-CTimeZone) / 3600.0);
 	else if (tzbuf[0] == 'T')
 		strcpy(result, tzbuf + 3);
 	else
@@ -579,7 +582,7 @@ show_timezone(void)
 		Interval	interval;
 
 		interval.month = 0;
-		interval.time = CTimeZone;
+		interval.time = - CTimeZone;
 
 		tzn = DatumGetCString(DirectFunctionCall1(interval_out,
 										  IntervalPGetDatum(&interval)));

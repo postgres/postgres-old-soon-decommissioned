@@ -2031,17 +2031,18 @@ timetz_part(PG_FUNCTION_ARGS)
 		switch (val)
 		{
 			case DTK_TZ:
-				result = tz;
+				result = -tz;
 				break;
 
 			case DTK_TZ_MINUTE:
-				result = tz / 60;
-				TMODULO(result, dummy, 60e0);
+				result = -tz;
+				result /= 60;
+				FMODULO(result, dummy, 60e0);
 				break;
 
 			case DTK_TZ_HOUR:
-				dummy = tz;
-				TMODULO(dummy, result, 3600e0);
+				dummy = -tz;
+				FMODULO(dummy, result, 3600e0);
 				break;
 
 			case DTK_MICROSEC:

@@ -147,7 +147,9 @@ extern DLLIMPORT Oid MyDatabaseId;
  * EuroDates if client prefers dates interpreted and written w/European conventions.
  *
  * HasCTZSet is true if user has set timezone as a numeric offset from UTC.
- * If so, CTimeZone is the timezone offset in seconds.
+ * If so, CTimeZone is the timezone offset in seconds (using the Unix-ish
+ * sign convention, ie, positive offset is west of UTC, rather than the
+ * SQL-ish convention that positive is east of UTC).
  */
 
 #define MAXTZLEN		10		/* max TZ name len, not counting tr. null */

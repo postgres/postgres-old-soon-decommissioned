@@ -825,12 +825,14 @@ reltimesend(PG_FUNCTION_ARGS)
 static void
 reltime2tm(RelativeTime time, struct tm * tm)
 {
-	TMODULO(time, tm->tm_year, 31557600);
-	TMODULO(time, tm->tm_mon, 2592000);
-	TMODULO(time, tm->tm_mday, 86400);
-	TMODULO(time, tm->tm_hour, 3600);
-	TMODULO(time, tm->tm_min, 60);
-	TMODULO(time, tm->tm_sec, 1);
+	double	dtime = time;
+
+	FMODULO(dtime, tm->tm_year, 31557600);
+	FMODULO(dtime, tm->tm_mon, 2592000);
+	FMODULO(dtime, tm->tm_mday, 86400);
+	FMODULO(dtime, tm->tm_hour, 3600);
+	FMODULO(dtime, tm->tm_min, 60);
+	FMODULO(dtime, tm->tm_sec, 1);
 }
 
 
