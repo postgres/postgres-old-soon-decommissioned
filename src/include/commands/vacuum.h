@@ -106,8 +106,11 @@ typedef struct VacAttrStats
 	 * be looked at by type-specific functions.
 	 */
 	int			tupattnum;		/* attribute number within tuples */
-	HeapTuple  *rows;			/* access info for fetch function */
+	HeapTuple  *rows;			/* access info for std fetch function */
 	TupleDesc	tupDesc;
+	Datum	   *exprvals;		/* access info for index fetch function */
+	bool	   *exprnulls;
+	int			rowstride;
 } VacAttrStats;
 
 

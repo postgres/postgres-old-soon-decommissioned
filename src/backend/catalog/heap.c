@@ -76,7 +76,6 @@ static void StoreAttrDefault(Relation rel, AttrNumber attnum, char *adbin);
 static void StoreRelCheck(Relation rel, char *ccname, char *ccbin);
 static void StoreConstraints(Relation rel, TupleDesc tupdesc);
 static void SetRelationNumChecks(Relation rel, int numchecks);
-static void RemoveStatistics(Relation rel, AttrNumber attnum);
 
 
 /* ----------------------------------------------------------------
@@ -1868,7 +1867,7 @@ RemoveRelConstraints(Relation rel, const char *constrName,
  * If attnum is zero, remove all entries for rel; else remove only the one
  * for that column.
  */
-static void
+void
 RemoveStatistics(Relation rel, AttrNumber attnum)
 {
 	Relation	pgstatistic;
