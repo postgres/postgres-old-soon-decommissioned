@@ -15,7 +15,7 @@ INCLUDE_OPT = -I../..
 
 CFLAGS+=$(INCLUDE_OPT)
 
-OBJS = buf_table.o buf_init.o bufmgr.o freelist.o localbuf.o
+OBJS = buf_table.o buf_init.o bufmgr.o freelist.o localbuf.o s_lock.o
 
 all: SUBSYS.o
 
@@ -31,4 +31,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-
