@@ -47,8 +47,10 @@ typedef int16 AttrNumber;
  *		Assumes the attribute number is for an user defined attribute.
  */
 #define AttrNumberGetAttrOffset(attNum) \
-	 (AssertMacro(AttrNumberIsForUserDefinedAttr(attNum)) ? \
-	  ((attNum - 1)) : 0)
+( \
+	AssertMacro(AttrNumberIsForUserDefinedAttr(attNum)), \
+	((attNum) - 1) \
+)
 
 /*
  * AttributeOffsetGetAttributeNumber --

@@ -118,49 +118,43 @@ typedef struct PredInfo
  */
 #define index_getattr(tup, attnum, tupleDesc, isnull) \
 ( \
-	AssertMacro(PointerIsValid(isnull) && (attnum) > 0) ? \
+	AssertMacro(PointerIsValid(isnull) && (attnum) > 0), \
+	*(isnull) = false, \
+	IndexTupleNoNulls(tup) ? \
 	( \
-		*(isnull) = false, \
-		IndexTupleNoNulls(tup) ? \
+		((tupleDesc)->attrs[(attnum)-1]->attcacheoff != -1 || \
+		 (attnum) == 1) ? \
 		( \
-			((tupleDesc)->attrs[(attnum)-1]->attcacheoff != -1 || \
-			 (attnum) == 1) ? \
+			(Datum)fetchatt(&((tupleDesc)->attrs[(attnum)-1]), \
+			(char *) (tup) + \
 			( \
-				(Datum)fetchatt(&((tupleDesc)->attrs[(attnum)-1]), \
-					(char *) (tup) + \
-					( \
-						IndexTupleHasMinHeader(tup) ? \
-							sizeof (*(tup)) \
-						: \
-							IndexInfoFindDataOffset((tup)->t_info) \
-					) + \
-					( \
-						((attnum) != 1) ? \
-							(tupleDesc)->attrs[(attnum)-1]->attcacheoff \
-						: \
-							0 \
-					) \
+				IndexTupleHasMinHeader(tup) ? \
+						sizeof (*(tup)) \
+					: \
+						IndexInfoFindDataOffset((tup)->t_info) \
+				) + \
+				( \
+					((attnum) != 1) ? \
+						(tupleDesc)->attrs[(attnum)-1]->attcacheoff \
+					: \
+						0 \
 				) \
 			) \
-			: \
-				nocache_index_getattr((tup), (attnum), (tupleDesc), (isnull)) \
 		) \
 		: \
-		( \
-			(att_isnull((attnum)-1, (char *)(tup) + sizeof(*(tup)))) ? \
-			( \
-				*(isnull) = true, \
-				(Datum)NULL \
-			) \
-			: \
-			( \
-				nocache_index_getattr((tup), (attnum), (tupleDesc), (isnull)) \
-			) \
-		) \
+			nocache_index_getattr((tup), (attnum), (tupleDesc), (isnull)) \
 	) \
 	: \
 	( \
-		 (Datum)NULL \
+		(att_isnull((attnum)-1, (char *)(tup) + sizeof(*(tup)))) ? \
+		( \
+			*(isnull) = true, \
+			(Datum)NULL \
+		) \
+		: \
+		( \
+			nocache_index_getattr((tup), (attnum), (tupleDesc), (isnull)) \
+		) \
 	) \
 )
 

@@ -125,41 +125,49 @@ typedef struct portalhashent
 static HTAB *PortalHashTable = NULL;
 
 #define PortalHashTableLookup(NAME, PORTAL) \
-	{	PortalHashEnt *hentry; bool found; char key[MAX_PORTALNAME_LEN]; \
-		MemSet(key, 0, MAX_PORTALNAME_LEN); \
-		sprintf(key, "%s", NAME); \
-		hentry = (PortalHashEnt*)hash_search(PortalHashTable, \
-											 key, HASH_FIND, &found); \
-		if (hentry == NULL) \
-			elog(FATAL, "error in PortalHashTable"); \
-		if (found) \
-			PORTAL = hentry->portal; \
-		else \
-			PORTAL = NULL; \
-	}
+do { \
+	PortalHashEnt *hentry; bool found; char key[MAX_PORTALNAME_LEN]; \
+	\
+	MemSet(key, 0, MAX_PORTALNAME_LEN); \
+	sprintf(key, "%s", NAME); \
+	hentry = (PortalHashEnt*)hash_search(PortalHashTable, \
+										 key, HASH_FIND, &found); \
+	if (hentry == NULL) \
+		elog(FATAL, "error in PortalHashTable"); \
+	if (found) \
+		PORTAL = hentry->portal; \
+	else \
+		PORTAL = NULL; \
+} while(0)
+
 #define PortalHashTableInsert(PORTAL) \
-	{	PortalHashEnt *hentry; bool found; char key[MAX_PORTALNAME_LEN]; \
-		MemSet(key, 0, MAX_PORTALNAME_LEN); \
-		sprintf(key, "%s", PORTAL->name); \
-		hentry = (PortalHashEnt*)hash_search(PortalHashTable, \
-											 key, HASH_ENTER, &found); \
-		if (hentry == NULL) \
-			elog(FATAL, "error in PortalHashTable"); \
-		if (found) \
-			elog(NOTICE, "trying to insert a portal name that exists."); \
-		hentry->portal = PORTAL; \
-	}
+do { \
+	PortalHashEnt *hentry; bool found; char key[MAX_PORTALNAME_LEN]; \
+	\
+	MemSet(key, 0, MAX_PORTALNAME_LEN); \
+	sprintf(key, "%s", PORTAL->name); \
+	hentry = (PortalHashEnt*)hash_search(PortalHashTable, \
+										 key, HASH_ENTER, &found); \
+	if (hentry == NULL) \
+		elog(FATAL, "error in PortalHashTable"); \
+	if (found) \
+		elog(NOTICE, "trying to insert a portal name that exists."); \
+	hentry->portal = PORTAL; \
+} while(0)
+
 #define PortalHashTableDelete(PORTAL) \
-	{	PortalHashEnt *hentry; bool found; char key[MAX_PORTALNAME_LEN]; \
-		MemSet(key, 0, MAX_PORTALNAME_LEN); \
-		sprintf(key, "%s", PORTAL->name); \
-		hentry = (PortalHashEnt*)hash_search(PortalHashTable, \
-											 key, HASH_REMOVE, &found); \
-		if (hentry == NULL) \
-			elog(FATAL, "error in PortalHashTable"); \
-		if (!found) \
-			elog(NOTICE, "trying to delete portal name that does not exist."); \
-	}
+{ \
+	PortalHashEnt *hentry; bool found; char key[MAX_PORTALNAME_LEN]; \
+	\
+	MemSet(key, 0, MAX_PORTALNAME_LEN); \
+	sprintf(key, "%s", PORTAL->name); \
+	hentry = (PortalHashEnt*)hash_search(PortalHashTable, \
+										 key, HASH_REMOVE, &found); \
+	if (hentry == NULL) \
+		elog(FATAL, "error in PortalHashTable"); \
+	if (!found) \
+		elog(NOTICE, "trying to delete portal name that does not exist."); \
+} while(0)
 
 static GlobalMemory PortalMemory = NULL;
 static char PortalMemoryName[] = "Portal";

@@ -161,8 +161,10 @@ typedef enum
  *		Assumes page is valid.
  */
 #define PageIsUsed(page) \
-	(AssertMacro(PageIsValid(page)) ? \
-	 ((bool) (((PageHeader) (page))->pd_lower != 0)) : false)
+( \
+	AssertMacro(PageIsValid(page)), \
+	((bool) (((PageHeader) (page))->pd_lower != 0)) \
+)
 
 /*
  * PageIsEmpty --
@@ -243,9 +245,10 @@ typedef enum
  *		Assumes page is locked.
  */
 #define PageGetSpecialPointer(page) \
-	(AssertMacro(PageIsValid(page)) ? \
-	 (char *) ((char *) (page) + ((PageHeader) (page))->pd_special) \
-	 : (char *)0 )
+( \
+	AssertMacro(PageIsValid(page)), \
+	(char *) ((char *) (page) + ((PageHeader) (page))->pd_special) \
+)
 
 /*
  * PageGetItem --
@@ -256,9 +259,11 @@ typedef enum
  *		The semantics may change in the future.
  */
 #define PageGetItem(page, itemId) \
-	(AssertMacro(PageIsValid(page)) ? \
-	 AssertMacro((itemId)->lp_flags & LP_USED) ? \
-	(Item)(((char *)(page)) + (itemId)->lp_off) : false : false)
+( \
+	AssertMacro(PageIsValid(page)), \
+	AssertMacro((itemId)->lp_flags & LP_USED), \
+	(Item)(((char *)(page)) + (itemId)->lp_off) \
+)
 
 /*
  * BufferGetPageSize --
@@ -272,7 +277,10 @@ typedef enum
  */
 /* XXX dig out of buffer descriptor */
 #define BufferGetPageSize(buffer) \
-	(AssertMacro(BufferIsValid(buffer)) ? (Size)BLCKSZ : false)
+( \
+	AssertMacro(BufferIsValid(buffer)), \
+	(Size)BLCKSZ \
+)
 
 /*
  * BufferGetPage --

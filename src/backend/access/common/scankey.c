@@ -22,8 +22,10 @@
  *		True iff the scan key entry is legal.
  */
 #define ScanKeyEntryIsLegal(entry) \
-	((bool) (AssertMacro(PointerIsValid(entry)) && \
-			 AttributeNumberIsValid(entry->sk_attno)))
+( \
+	AssertMacro(PointerIsValid(entry)), \
+	AttributeNumberIsValid((entry)->sk_attno) \
+)
 
 /*
  * ScanKeyEntrySetIllegal --

@@ -209,19 +209,22 @@ extern void s_lock(slock_t *lock);
 
 #else /* S_LOCK_DEBUG */
 
-#define S_LOCK(lock) if (1) { \
+#define S_LOCK(lock) \
+do { \
 	int spins = 0; \
-	while (TAS(lock)) { \
+	while (TAS(lock)) \
+	{ \
 		struct timeval	delay; \
 		delay.tv_sec = 0; \
 		delay.tv_usec = s_spincycle[spins++ % S_NSPINCYCLE]; \
 		(void) select(0, NULL, NULL, NULL, &delay); \
-		if (spins > S_MAX_BUSY) { \
+		if (spins > S_MAX_BUSY) \
+		{ \
 			/* It's been well over a minute...  */ \
 			s_lock_stuck(lock, __FILE__, __LINE__); \
 		} \
 	} \
-} else
+} while(0)
 
 #endif /* S_LOCK_DEBUG */
 #endif /* S_LOCK */

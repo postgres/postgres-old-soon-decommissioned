@@ -40,14 +40,18 @@ static BufferDesc *SharedFreeList;
 extern SPINLOCK BufMgrLock;
 
 #define IsInQueue(bf) \
-	Assert((bf->freeNext != INVALID_DESCRIPTOR));\
-	Assert((bf->freePrev != INVALID_DESCRIPTOR));\
-	Assert((bf->flags & BM_FREE))
+( \
+	AssertMacro((bf->freeNext != INVALID_DESCRIPTOR)), \
+	AssertMacro((bf->freePrev != INVALID_DESCRIPTOR)), \
+	AssertMacro((bf->flags & BM_FREE)) \
+)
 
 #define NotInQueue(bf) \
-	Assert((bf->freeNext == INVALID_DESCRIPTOR));\
-	Assert((bf->freePrev == INVALID_DESCRIPTOR));\
-	Assert(! (bf->flags & BM_FREE))
+( \
+	AssertMacro((bf->freeNext == INVALID_DESCRIPTOR)), \
+	AssertMacro((bf->freePrev == INVALID_DESCRIPTOR)), \
+	AssertMacro(! (bf->flags & BM_FREE)) \
+)
 
 
 /*

@@ -624,7 +624,7 @@ typedef struct Exception
 		Trap(!(condition), FailedAssertion)
 
 #define AssertMacro(condition) \
-		TrapMacro(!(condition), FailedAssertion)
+		(void)TrapMacro(!(condition), FailedAssertion)
 
 #define AssertArg(condition) \
 		Trap(!(condition), BadArg)

@@ -92,25 +92,35 @@
  * ----------------------------------------------------------------
  */
 #define RELATION_CHECKS \
-Assert(RelationIsValid(relation)); \
-		 Assert(PointerIsValid(relation->rd_am))
+( \
+	AssertMacro(RelationIsValid(relation)), \
+	AssertMacro(PointerIsValid(relation->rd_am)) \
+)
 
 #define SCAN_CHECKS \
-	 Assert(IndexScanIsValid(scan)); \
-		 Assert(RelationIsValid(scan->relation)); \
-		 Assert(PointerIsValid(scan->relation->rd_am))
+( \
+	AssertMacro(IndexScanIsValid(scan)), \
+	AssertMacro(RelationIsValid(scan->relation)), \
+	AssertMacro(PointerIsValid(scan->relation->rd_am)) \
+)
 
 #define GET_REL_PROCEDURE(x,y) \
-		 procedure = relation->rd_am->y; \
-		 if (! RegProcedureIsValid(procedure)) \
-		 elog(ERROR, "index_%s: invalid %s regproc", \
-			  CppAsString(x), CppAsString(y))
-
+( \
+	procedure = relation->rd_am->y, \
+	(!RegProcedureIsValid(procedure)) ? \
+		elog(ERROR, "index_%s: invalid %s regproc", \
+			CppAsString(x), CppAsString(y)) \
+	: (void)NULL \
+)
+	
 #define GET_SCAN_PROCEDURE(x,y) \
-		 procedure = scan->relation->rd_am->y; \
-		 if (! RegProcedureIsValid(procedure)) \
-		 elog(ERROR, "index_%s: invalid %s regproc", \
-			  CppAsString(x), CppAsString(y))
+( \
+	procedure = scan->relation->rd_am->y, \
+	(!RegProcedureIsValid(procedure)) ? \
+		elog(ERROR, "index_%s: invalid %s regproc", \
+			CppAsString(x), CppAsString(y)) \
+	: (void)NULL \
+)
 
 
 /* ----------------------------------------------------------------

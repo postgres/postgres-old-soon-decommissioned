@@ -70,7 +70,9 @@ typedef struct ItemIdData *ItemId;
  *		Assumes disk item identifier is valid.
  */
 #define ItemIdIsUsed(itemId) \
-	(AssertMacro(ItemIdIsValid(itemId)) ? \
-	 (bool) (((itemId)->lp_flags & LP_USED) != 0) : false)
+( \
+	AssertMacro(ItemIdIsValid(itemId)), \
+	(bool) (((itemId)->lp_flags & LP_USED) != 0) \
+)
 
 #endif							/* ITEMID_H */

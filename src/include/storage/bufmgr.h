@@ -117,8 +117,7 @@ extern int	ShowPinTrace;
  */
 #define BufferGetBlock(buffer) \
 ( \
-	(void)AssertMacro(BufferIsValid(buffer)), \
-\
+	AssertMacro(BufferIsValid(buffer)), \
 	BufferIsLocal(buffer) ? \
 		((Block) MAKE_PTR(LocalBufferDescriptors[-(buffer) - 1].data)) \
 	: \

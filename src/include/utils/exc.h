@@ -47,23 +47,28 @@ typedef struct ExcFrame
 
 extern ExcFrame *ExcCurFrameP;
 
-#define ExcBegin()														\
-		{																\
-				ExcFrame		exception;								\
-																		\
-				exception.link = ExcCurFrameP;							\
-				if (sigsetjmp(exception.context, 1) == 0) {				\
-						ExcCurFrameP = &exception;						\
-						{
-#define ExcExcept()														\
-						}												\
-						ExcCurFrameP = exception.link;					\
-				} else {												\
-						{
-#define ExcEnd()														\
-						}												\
-				}														\
-		}
+/* These are not used anywhere 1998/6/15 */
+#define ExcBegin() \
+do { \
+	ExcFrame		exception; \
+	\
+	exception.link = ExcCurFrameP; \
+	if (sigsetjmp(exception.context, 1) == 0) \
+	{ \
+		ExcCurFrameP = &exception;
+
+#define ExcExcept() \
+	} \
+		ExcCurFrameP = exception.link; \
+	} \
+	else \
+	{ \
+		{
+
+#define ExcEnd() \
+			} \
+		} \
+} while(0)
 
 #define raise4(x, t, d, message) \
 		ExcRaise(&(x), (ExcDetail)(t), (ExcData)(d), (ExcMessage)(message))

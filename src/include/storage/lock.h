@@ -191,8 +191,10 @@ typedef struct Lock
 #define LockGetLock_nHolders(l) l->nHolders
 
 #define LockDecrWaitHolders(lock, lockt) \
-  lock->nHolding--; \
-  lock->holders[lockt]--
+( \
+  lock->nHolding--, \
+  lock->holders[lockt]-- \
+)
 
 #define LockLockTable() SpinAcquire(LockMgrLock);
 #define UnlockLockTable() SpinRelease(LockMgrLock);

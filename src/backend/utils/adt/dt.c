@@ -66,8 +66,12 @@ char	   *days[] = {"Sunday", "Monday", "Tuesday", "Wednesday",
 /* TMODULO()
  * Macro to replace modf(), which is broken on some platforms.
  */
-#define TMODULO(t,q,u) {q = ((t < 0)? ceil(t / u): floor(t / u)); \
-						if (q != 0) t -= rint(q * u);}
+#define TMODULO(t,q,u) \
+do { \
+	q = ((t < 0)? ceil(t / u): floor(t / u)); \
+	if (q != 0) \
+		t -= rint(q * u); \
+} while(0)
 
 static void GetEpochTime(struct tm * tm);
 

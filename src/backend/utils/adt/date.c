@@ -187,8 +187,11 @@ reltimeout(int32 time)
 }	/* reltimeout() */
 
 
-#define TMODULO(t,q,u) {q = (t / u); \
-						if (q != 0) t -= (q * u);}
+#define TMODULO(t,q,u) \
+do { \
+	q = (t / u); \
+	if (q != 0) t -= (q * u); \
+} while(0)
 
 static void
 reltime2tm(int32 time, struct tm * tm)

@@ -88,12 +88,12 @@
 static bool MergeCompare(List *eqQual, List *compareQual, ExprContext *econtext);
 
 #define MarkInnerTuple(innerTupleSlot, mergestate) \
-{ \
-	ExecStoreTuple(heap_copytuple(innerTupleSlot->val), \
-				   mergestate->mj_MarkedTupleSlot, \
+( \
+	ExecStoreTuple(heap_copytuple((innerTupleSlot)->val), \
+				   (mergestate)->mj_MarkedTupleSlot, \
 				   InvalidBuffer, \
-				   true); \
-}
+				   true) \
+)
 
 /* ----------------------------------------------------------------
  *		MJFormOSortopI

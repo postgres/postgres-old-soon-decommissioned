@@ -67,13 +67,18 @@ extern const char **ps_status;	/* from postgres.c */
  *		processing within an aborted transaction block.
  * ----------------
  */
+ /* we have to use IF because of the 'break' */
 #define CHECK_IF_ABORTED() \
-	if (IsAbortedTransactionBlockState()) { \
+if (1) \
+{ \
+	if (IsAbortedTransactionBlockState()) \
+	{ \
 		elog(NOTICE, "(transaction aborted): %s", \
 			 "queries ignored until END"); \
 		commandTag = "*ABORT STATE*"; \
 		break; \
 	} \
+} else
 
 /* ----------------
  *		general utility function invoker
