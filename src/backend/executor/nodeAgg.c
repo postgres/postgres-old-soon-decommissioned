@@ -619,6 +619,9 @@ lookup_hash_entry(Agg *node, TupleTableSlot *slot)
 		Datum		attr;
 		bool		isNull;
 
+		/* rotate hashkey left 1 bit at each step */
+		hashkey = (hashkey << 1) | ((hashkey & 0x80000000) ? 1 : 0);
+
 		attr = heap_getattr(tuple, att, tupdesc, &isNull);
 		if (isNull)
 			continue;			/* treat nulls as having hash key 0 */

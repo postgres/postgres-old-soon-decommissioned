@@ -102,6 +102,7 @@ typedef struct Query
 	List	   *equi_key_list;	/* list of lists of equijoined
 								 * PathKeyItems */
 	List	   *query_pathkeys; /* desired pathkeys for query_planner() */
+	bool		hasJoinRTEs;	/* true if any RTEs are RTE_JOIN kind */
 } Query;
 
 

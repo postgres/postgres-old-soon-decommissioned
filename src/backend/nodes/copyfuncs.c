@@ -1865,8 +1865,8 @@ _copyQuery(Query *from)
 
 	/*
 	 * We do not copy the planner internal fields: base_rel_list,
-	 * other_rel_list, join_rel_list, equi_key_list, query_pathkeys. Not
-	 * entirely clear if this is right?
+	 * other_rel_list, join_rel_list, equi_key_list, query_pathkeys,
+	 * hasJoinRTEs.  Not entirely clear if this is right?
 	 */
 
 	return newnode;
