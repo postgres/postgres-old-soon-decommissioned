@@ -2729,7 +2729,7 @@ set_var_from_var(NumericVar *value, NumericVar *dest)
 
 	digitbuf_free(dest->buf);
 
-	memcpy(dest, value, sizeof(NumericVar));
+	memmove(dest, value, sizeof(NumericVar));
 	dest->buf = newbuf;
 	dest->digits = newbuf + 1;
 }
