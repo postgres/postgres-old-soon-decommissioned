@@ -1159,7 +1159,7 @@ build_indices()
 		 * Unfortunately, there are always two indices defined on each
 		 * catalog causing us to update the same pg_class tuple twice for
 		 * each catalog getting an index during bootstrap resulting in the
-		 * ghost tuple problem (see heap_replace).	To get around this we
+		 * ghost tuple problem (see heap_update).	To get around this we
 		 * change the relhasindex field ourselves in this routine keeping
 		 * track of what catalogs we already changed so that we don't
 		 * modify those tuples twice.  The normal mechanism for updating

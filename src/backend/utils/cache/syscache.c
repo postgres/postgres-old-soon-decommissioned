@@ -71,7 +71,7 @@ typedef HeapTuple (*ScanFunc) ();
     function names in the same order as the cache list for clarity.
 
     Finally, any place your relation gets heap_insert() or
-	heap_replace calls, include code to do a CatalogIndexInsert() to update
+	heap_update calls, include code to do a CatalogIndexInsert() to update
 	the system indexes.  The heap_* calls do not update indexes.
 	
     bjm 1999/11/22
