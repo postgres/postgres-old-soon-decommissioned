@@ -828,6 +828,33 @@ typedef struct AlterTableStmt
 } AlterTableStmt;
 
 /* ----------------------
+ *	Alter Domain
+ *
+ * The fields are used in different ways by the different variants of
+ * this command. Subtypes should match AlterTable subtypes
+ * ----------------------
+ */
+typedef struct AlterDomainStmt
+{
+	NodeTag		type;
+	char		subtype;		/*------------
+								 *	T = alter column default
+								 *	N = alter column drop not null
+								 *	O = alter column set not null
+								 *	C = add constraint
+								 *	X = drop constraint
+								 *	U = change owner
+								 *------------
+								 */
+	List	   *typename;		/* table to work on */
+	char	   *name;			/* column or constraint name to act on, or
+								 * new owner */
+	Node	   *def;			/* definition of default or constraint */
+	DropBehavior behavior;		/* RESTRICT or CASCADE for DROP cases */
+} AlterDomainStmt;
+
+
+/* ----------------------
  *		Grant|Revoke Statement
  * ----------------------
  */

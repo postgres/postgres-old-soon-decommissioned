@@ -1781,7 +1781,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.312 $ $Date: 2002/12/06 03:43:13 $\n");
+		puts("$Revision: 1.313 $ $Date: 2002/12/06 05:00:26 $\n");
 	}
 
 	/*
@@ -2317,6 +2317,10 @@ CreateCommandTag(Node *parsetree)
 
 		case T_AlterTableStmt:
 			tag = "ALTER TABLE";
+			break;
+
+		case T_AlterDomainStmt:
+			tag = "ALTER DOMAIN";
 			break;
 
 		case T_GrantStmt:

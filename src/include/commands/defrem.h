@@ -52,14 +52,6 @@ extern void RemoveOperatorById(Oid operOid);
 extern void DefineAggregate(List *names, List *parameters);
 extern void RemoveAggregate(RemoveAggrStmt *stmt);
 
-/* commands/typecmds.c */
-extern void DefineType(List *names, List *parameters);
-extern void RemoveType(List *names, DropBehavior behavior);
-extern void RemoveTypeById(Oid typeOid);
-extern void DefineDomain(CreateDomainStmt *stmt);
-extern void RemoveDomain(List *names, DropBehavior behavior);
-extern Oid	DefineCompositeType(const RangeVar *typevar, List *coldeflist);
-
 /* commands/opclasscmds.c */
 extern void DefineOpClass(CreateOpClassStmt *stmt);
 extern void RemoveOpClass(RemoveOpClassStmt *stmt);

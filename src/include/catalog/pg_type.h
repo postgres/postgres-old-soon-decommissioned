@@ -550,13 +550,25 @@ extern Oid TypeCreate(const char *typeName,
 		   Oid elementType,
 		   Oid baseType,
 		   const char *defaultTypeValue,
-		   const char *defaultTypeBin,
+		   char *defaultTypeBin,
 		   bool passedByValue,
 		   char alignment,
 		   char storage,
 		   int32 typeMod,
 		   int32 typNDims,
 		   bool typeNotNull);
+
+extern void
+GenerateTypeDependencies(Oid typeNamespace,
+						 Oid typeObjectId,
+						 Oid relationOid,		/* only for 'c'atalog typeType */
+						 char relationKind,
+						 Oid inputProcedure,
+						 Oid outputProcedure,
+						 Oid elementType,
+						 Oid baseType,
+						 char *defaultTypeBin,	/* cooked rep */
+						 bool rebuild);
 
 
 extern void TypeRename(const char *oldTypeName, Oid typeNamespace,
