@@ -97,9 +97,7 @@ typedef struct xl_xact_abort
  *		extern definitions
  * ----------------
  */
-extern int	TransactionFlushEnabled(void);
-extern void SetTransactionFlushEnabled(bool state);
-
+extern bool IsTransactionState(void);
 extern bool IsAbortedTransactionBlockState(void);
 extern TransactionId GetCurrentTransactionId(void);
 extern CommandId GetCurrentCommandId(void);

@@ -241,8 +241,10 @@ bool		AMI_OVERRIDE = false;
  * ----------------------------------------------------------------
  */
 
+#ifdef NOT_USED
+
 /* --------------------------------
- *		TranactionFlushEnabled()
+ *		TransactionFlushEnabled()
  *		SetTransactionFlushEnabled()
  *
  *		These are used to test and set the "TransactionFlushState"
@@ -261,12 +263,13 @@ TransactionFlushEnabled(void)
 	return TransactionFlushState;
 }
 
-#ifdef NOT_USED
 void
 SetTransactionFlushEnabled(bool state)
 {
 	TransactionFlushState = (state == true);
 }
+
+#endif
 
 
 /* --------------------------------
@@ -300,7 +303,6 @@ IsTransactionState(void)
 	 */
 	return false;
 }
-#endif
 
 /* --------------------------------
  *		IsAbortedTransactionBlockState

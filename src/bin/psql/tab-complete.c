@@ -267,6 +267,7 @@ psql_completion(char *text, int start, int end)
 		"geqo_selection_bias",
 
 		"default_transaction_isolation",
+		"search_path",
 
 		NULL
 	};

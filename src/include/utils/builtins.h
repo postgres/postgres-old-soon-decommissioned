@@ -411,6 +411,8 @@ extern Datum name_text(PG_FUNCTION_ARGS);
 extern Datum text_name(PG_FUNCTION_ARGS);
 extern int	varstr_cmp(char *arg1, int len1, char *arg2, int len2);
 extern List *textToQualifiedNameList(text *textval, const char *caller);
+extern bool SplitIdentifierString(char *rawstring, char separator,
+								  List **namelist);
 
 extern Datum byteain(PG_FUNCTION_ARGS);
 extern Datum byteaout(PG_FUNCTION_ARGS);

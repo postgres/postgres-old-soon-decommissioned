@@ -21,6 +21,7 @@
 #include "utils/guc.h"
 
 #include "access/xlog.h"
+#include "catalog/namespace.h"
 #include "commands/async.h"
 #include "fmgr.h"
 #include "libpq/auth.h"
@@ -575,6 +576,11 @@ static struct config_string
 	},
 
 	{
+		"search_path", PGC_USERSET, PGC_S_DEFAULT, &namespace_search_path,
+		"$user,public", check_search_path, assign_search_path
+	},
+
+	{
 		"krb_server_keyfile", PGC_POSTMASTER, PGC_S_DEFAULT, &pg_krb_server_keyfile,
 		PG_KRB_SRVTAB, NULL, NULL
 	},
@@ -899,7 +905,7 @@ set_config_option(const char *name, const char *value,
 	int			elevel;
 	bool		makeDefault;
 
-	if (context == PGC_SIGHUP)
+	if (context == PGC_SIGHUP || source == PGC_S_DEFAULT)
 		elevel = DEBUG1;
 	else if (guc_session_init)
 		elevel = INFO;
@@ -1414,7 +1420,7 @@ ProcessGUCArray(ArrayType *array, GucSource source)
 		ParseLongOption(s, &name, &value);
 		if (!value)
 		{
-			elog(WARNING, "cannot to parse setting \"%s\"", name);
+			elog(WARNING, "cannot parse setting \"%s\"", name);
 			continue;
 		}
 
