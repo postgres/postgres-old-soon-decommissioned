@@ -832,6 +832,8 @@ _copyAggref(Aggref *from)
 	newnode->aggtype = from->aggtype;
 	Node_Copy(from, newnode, target);
 	newnode->usenulls = from->usenulls;
+	newnode->aggstar = from->aggstar;
+	newnode->aggdistinct = from->aggdistinct;
 	newnode->aggno = from->aggno; /* probably not needed */
 
 	return newnode;

@@ -219,6 +219,10 @@ _equalAggref(Aggref *a, Aggref *b)
 		return false;
 	if (a->usenulls != b->usenulls)
 		return false;
+	if (a->aggstar != b->aggstar)
+		return false;
+	if (a->aggdistinct != b->aggdistinct)
+		return false;
 	/* ignore aggno, which is only a private field for the executor */
 	return true;
 }

@@ -297,10 +297,12 @@ typedef struct Iter
 /* ----------------
  * Aggref
  *		aggname			- name of the aggregate
- *		basetype		- base type Oid of the aggregate
+ *		basetype		- base type Oid of the aggregate (ie, input type)
  *		aggtype			- type Oid of final result of the aggregate
  *		target			- attribute or expression we are aggregating on
  *		usenulls		- TRUE to accept null values as inputs
+ *		aggstar			- TRUE if argument was really '*'
+ *		aggdistinct		- TRUE if arguments were labeled DISTINCT
  *		aggno			- workspace for nodeAgg.c executor
  * ----------------
  */
@@ -312,6 +314,8 @@ typedef struct Aggref
 	Oid			aggtype;
 	Node	   *target;
 	bool		usenulls;
+	bool		aggstar;
+	bool		aggdistinct;
 	int			aggno;
 } Aggref;
 

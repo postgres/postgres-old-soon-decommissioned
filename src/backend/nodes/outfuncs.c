@@ -680,14 +680,17 @@ static void
 _outAggref(StringInfo str, Aggref *node)
 {
 	appendStringInfo(str,
-				 " AGGREG :aggname %s :basetype %u :aggtype %u :target ",
+					 " AGGREG :aggname %s :basetype %u :aggtype %u :target ",
 					 stringStringInfo(node->aggname),
 					 node->basetype,
 					 node->aggtype);
 	_outNode(str, node->target);
 
-	appendStringInfo(str, " :usenulls %s ",
-					 node->usenulls ? "true" : "false");
+	appendStringInfo(str, " :usenulls %s :aggstar %s :aggdistinct %s ",
+					 node->usenulls ? "true" : "false",
+					 node->aggstar ? "true" : "false",
+					 node->aggdistinct ? "true" : "false");
+	/* aggno is not dumped */
 }
 
 /*

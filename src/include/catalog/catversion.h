@@ -51,6 +51,6 @@
  * catalog changes on the same day...)
  */
 
-#define CATALOG_VERSION_NO	199911241
+#define CATALOG_VERSION_NO	199912121
 
 #endif

@@ -1352,9 +1352,13 @@ get_rule_expr(Node *node, deparse_context *context)
 			{
 				Aggref	   *aggref = (Aggref *) node;
 
-				appendStringInfo(buf, "%s(",
-								 quote_identifier(aggref->aggname));
-				get_rule_expr(aggref->target, context);
+				appendStringInfo(buf, "%s(%s",
+								 quote_identifier(aggref->aggname),
+								 aggref->aggdistinct ? "DISTINCT " : "");
+				if (aggref->aggstar)
+					appendStringInfo(buf, "*");
+				else
+					get_rule_expr(aggref->target, context);
 				appendStringInfo(buf, ")");
 			}
 			break;

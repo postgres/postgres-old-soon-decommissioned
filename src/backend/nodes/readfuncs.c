@@ -1190,6 +1190,14 @@ _readAggref()
 	token = lsptok(NULL, &length);		/* get usenulls */
 	local_node->usenulls = (token[0] == 't') ? true : false;
 
+	token = lsptok(NULL, &length);		/* eat :aggstar */
+	token = lsptok(NULL, &length);		/* get aggstar */
+	local_node->aggstar = (token[0] == 't') ? true : false;
+
+	token = lsptok(NULL, &length);		/* eat :aggdistinct */
+	token = lsptok(NULL, &length);		/* get aggdistinct */
+	local_node->aggdistinct = (token[0] == 't') ? true : false;
+
 	return local_node;
 }
 
