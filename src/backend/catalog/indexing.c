@@ -449,13 +449,14 @@ ClassNameIndexScan(Relation heapRelation, char *relName)
 	Relation	idesc;
 	ScanKeyData skey[1];
 	HeapTuple	tuple;
-
+	char		*hold_rel;
+	
 	/*
 	 * we have to do this before looking in system tables because temp
 	 * table namespace takes precedence
 	 */
-	if ((tuple = get_temp_rel_by_name(relName)) != NULL)
-		return heap_copytuple(tuple);
+	if ((hold_rel = get_temp_rel_by_name(relName)) != NULL)
+		relName = hold_rel;
 
 	ScanKeyEntryInitialize(&skey[0],
 						   (bits16) 0x0,

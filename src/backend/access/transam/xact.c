@@ -151,6 +151,7 @@
 #include "commands/vacuum.h"
 #include "libpq/be-fsstubs.h"
 #include "storage/proc.h"
+#include "utils/temprel.h"
 #include "utils/inval.h"
 #include "utils/portal.h"
 #include "utils/relcache.h"
@@ -1022,6 +1023,7 @@ AbortTransaction()
 	RecordTransactionAbort();
 	RelationPurgeLocalRelation(false);
 	DestroyNoNameRels();
+	invalidate_temp_relations();
 	AtEOXact_nbtree();
 	AtAbort_Cache();
 	AtAbort_Locks();
