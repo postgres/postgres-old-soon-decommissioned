@@ -2365,6 +2365,14 @@ AfterTriggerEndXact(void)
 	Assert(afterTriggers->query_depth == -1);
 
 	/*
+	 * If there are any triggers to fire, make sure we have set a snapshot
+	 * for them to use.  (Since PortalRunUtility doesn't set a snap for
+	 * COMMIT, we can't assume ActiveSnapshot is valid on entry.)
+	 */
+	if (afterTriggers->events.head != NULL)
+		ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
+
+	/*
 	 * Run all the remaining triggers.  Loop until they are all gone,
 	 * just in case some trigger queues more for us to do.
 	 */
