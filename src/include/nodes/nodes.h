@@ -39,7 +39,7 @@ typedef enum NodeTag
 	T_NestLoop,
 	T_MergeJoin,
 	T_HashJoin,
-	T_Noname_XXX,				/* not used anymore; this tag# is available */
+	T_Limit,
 	T_Material,
 	T_Sort,
 	T_Agg,
@@ -122,6 +122,7 @@ typedef enum NodeTag
 	T_TidScanState,
 	T_SubqueryScanState,
 	T_SetOpState,
+	T_LimitState,
 
 	/*---------------------
 	 * TAGS FOR MEMORY NODES (memnodes.h)

@@ -36,6 +36,8 @@ extern Group *make_group(List *tlist, bool tuplePerGroup, int ngrp,
 		   AttrNumber *grpColIdx, Plan *lefttree);
 extern Material *make_material(List *tlist, Plan *lefttree);
 extern Unique *make_unique(List *tlist, Plan *lefttree, List *distinctList);
+extern Limit *make_limit(List *tlist, Plan *lefttree,
+						 Node *limitOffset, Node *limitCount);
 extern SetOp *make_setop(SetOpCmd cmd, List *tlist, Plan *lefttree,
 						 List *distinctList, AttrNumber flagColIdx);
 extern Result *make_result(List *tlist, Node *resconstantqual, Plan *subplan);

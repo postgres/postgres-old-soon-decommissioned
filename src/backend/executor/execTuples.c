@@ -770,6 +770,14 @@ NodeGetResultTupleSlot(Plan *node)
 			}
 			break;
 
+		case T_Limit:
+			{
+				LimitState *limitstate = ((Limit *) node)->limitstate;
+
+				slot = limitstate->cstate.cs_ResultTupleSlot;
+			}
+			break;
+
 		case T_MergeJoin:
 			{
 				MergeJoinState *mergestate = ((MergeJoin *) node)->mergestate;

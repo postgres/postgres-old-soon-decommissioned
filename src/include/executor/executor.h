@@ -54,7 +54,7 @@ extern HeapTuple ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot);
  */
 extern TupleDesc ExecutorStart(QueryDesc *queryDesc, EState *estate);
 extern TupleTableSlot *ExecutorRun(QueryDesc *queryDesc, EState *estate,
-			int feature, Node *limoffset, Node *limcount);
+								   int feature, long count);
 extern void ExecutorEnd(QueryDesc *queryDesc, EState *estate);
 extern void ExecConstraints(char *caller, Relation rel,
 							TupleTableSlot *slot, EState *estate);

@@ -37,6 +37,7 @@
 #include "executor/nodeHashjoin.h"
 #include "executor/nodeIndexscan.h"
 #include "executor/nodeTidscan.h"
+#include "executor/nodeLimit.h"
 #include "executor/nodeMaterial.h"
 #include "executor/nodeMergejoin.h"
 #include "executor/nodeNestloop.h"
@@ -348,6 +349,10 @@ ExecReScan(Plan *node, ExprContext *exprCtxt, Plan *parent)
 
 		case T_SetOp:
 			ExecReScanSetOp((SetOp *) node, exprCtxt, parent);
+			break;
+
+		case T_Limit:
+			ExecReScanLimit((Limit *) node, exprCtxt, parent);
 			break;
 
 		case T_Sort:

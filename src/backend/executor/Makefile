@@ -17,8 +17,8 @@ OBJS = execAmi.o execFlatten.o execJunk.o execMain.o \
        execUtils.o functions.o nodeAppend.o nodeAgg.o nodeHash.o \
        nodeHashjoin.o nodeIndexscan.o nodeMaterial.o nodeMergejoin.o \
        nodeNestloop.o nodeResult.o nodeSeqscan.o nodeSetOp.o nodeSort.o \
-       nodeUnique.o nodeGroup.o spi.o nodeSubplan.o \
-       nodeSubqueryscan.o nodeTidscan.o
+       nodeUnique.o nodeLimit.o nodeGroup.o nodeSubplan.o \
+       nodeSubqueryscan.o nodeTidscan.o spi.o
 
 all: SUBSYS.o
 

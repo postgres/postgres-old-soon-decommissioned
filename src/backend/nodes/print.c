@@ -324,6 +324,8 @@ plannode_type(Plan *p)
 			return "UNIQUE";
 		case T_SetOp:
 			return "SETOP";
+		case T_Limit:
+			return "LIMIT";
 		case T_Hash:
 			return "HASH";
 		case T_Group:

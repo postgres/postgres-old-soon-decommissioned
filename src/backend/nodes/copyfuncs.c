@@ -593,6 +593,31 @@ _copySetOp(SetOp *from)
 }
 
 /* ----------------
+ *		_copyLimit
+ * ----------------
+ */
+static Limit *
+_copyLimit(Limit *from)
+{
+	Limit	   *newnode = makeNode(Limit);
+
+	/* ----------------
+	 *	copy node superclass fields
+	 * ----------------
+	 */
+	CopyPlanFields((Plan *) from, (Plan *) newnode);
+
+	/* ----------------
+	 *	copy remainder of node
+	 * ----------------
+	 */
+	Node_Copy(from, newnode, limitOffset);
+	Node_Copy(from, newnode, limitCount);
+
+	return newnode;
+}
+
+/* ----------------
  *		_copyHash
  * ----------------
  */
@@ -2566,6 +2591,9 @@ copyObject(void *from)
 			break;
 		case T_SetOp:
 			retval = _copySetOp(from);
+			break;
+		case T_Limit:
+			retval = _copyLimit(from);
 			break;
 		case T_Hash:
 			retval = _copyHash(from);

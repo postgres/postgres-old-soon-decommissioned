@@ -83,6 +83,7 @@
 #include "executor/nodeHashjoin.h"
 #include "executor/nodeIndexscan.h"
 #include "executor/nodeTidscan.h"
+#include "executor/nodeLimit.h"
 #include "executor/nodeMaterial.h"
 #include "executor/nodeMergejoin.h"
 #include "executor/nodeNestloop.h"
@@ -202,6 +203,10 @@ ExecInitNode(Plan *node, EState *estate, Plan *parent)
 
 		case T_SetOp:
 			result = ExecInitSetOp((SetOp *) node, estate, parent);
+			break;
+
+		case T_Limit:
+			result = ExecInitLimit((Limit *) node, estate, parent);
 			break;
 
 		case T_Group:
@@ -331,6 +336,10 @@ ExecProcNode(Plan *node, Plan *parent)
 			result = ExecSetOp((SetOp *) node);
 			break;
 
+		case T_Limit:
+			result = ExecLimit((Limit *) node);
+			break;
+
 		case T_Group:
 			result = ExecGroup((Group *) node);
 			break;
@@ -412,6 +421,9 @@ ExecCountSlotsNode(Plan *node)
 
 		case T_SetOp:
 			return ExecCountSlotsSetOp((SetOp *) node);
+
+		case T_Limit:
+			return ExecCountSlotsLimit((Limit *) node);
 
 		case T_Group:
 			return ExecCountSlotsGroup((Group *) node);
@@ -533,6 +545,10 @@ ExecEndNode(Plan *node, Plan *parent)
 
 		case T_SetOp:
 			ExecEndSetOp((SetOp *) node);
+			break;
+
+		case T_Limit:
+			ExecEndLimit((Limit *) node);
 			break;
 
 		case T_Group:

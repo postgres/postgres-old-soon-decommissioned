@@ -217,6 +217,9 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 					break;
 			}
 			break;
+		case T_Limit:
+			pname = "Limit";
+			break;
 		case T_Hash:
 			pname = "Hash";
 			break;

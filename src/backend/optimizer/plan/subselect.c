@@ -657,6 +657,7 @@ SS_finalize_plan(Plan *plan)
 		case T_Sort:
 		case T_Unique:
 		case T_SetOp:
+		case T_Limit:
 		case T_Group:
 			break;
 

@@ -675,6 +675,28 @@ typedef struct SetOpState
 	MemoryContext tempContext;	/* short-term context for comparisons */
 } SetOpState;
 
+/* ----------------
+ *	 LimitState information
+ *
+ *		Limit nodes are used to enforce LIMIT/OFFSET clauses.
+ *		They just select the desired subrange of their subplan's output.
+ *
+ * offset is the number of initial tuples to skip (0 does nothing).
+ * count is the number of tuples to return after skipping the offset tuples.
+ * If no limit count was specified, count is undefined and noCount is true.
+ * ----------------
+ */
+typedef struct LimitState
+{
+	CommonState cstate;			/* its first field is NodeTag */
+	long		offset;			/* current OFFSET value */
+	long		count;			/* current COUNT, if any */
+	long		position;		/* 1-based index of last tuple fetched */
+	bool		parmsSet;		/* have we calculated offset/limit yet? */
+	bool		noCount;		/* if true, ignore count */
+	bool		atEnd;			/* if true, we've reached EOF of subplan */
+} LimitState;
+
 
 /* ----------------
  *	 HashState information

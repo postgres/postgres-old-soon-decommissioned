@@ -623,6 +623,18 @@ _outSetOp(StringInfo str, SetOp *node)
 					 (int) node->flagColIdx);
 }
 
+static void
+_outLimit(StringInfo str, Limit *node)
+{
+	appendStringInfo(str, " LIMIT ");
+	_outPlanInfo(str, (Plan *) node);
+
+	appendStringInfo(str, " :limitOffset ");
+	_outNode(str, node->limitOffset);
+	appendStringInfo(str, " :limitCount ");
+	_outNode(str, node->limitCount);
+}
+
 /*
  *	Hash is a subclass of Plan
  */
@@ -1558,6 +1570,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_SetOp:
 				_outSetOp(str, obj);
+				break;
+			case T_Limit:
+				_outLimit(str, obj);
 				break;
 			case T_Hash:
 				_outHash(str, obj);

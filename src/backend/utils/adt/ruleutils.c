@@ -886,8 +886,8 @@ get_select_query_def(Query *query, deparse_context *context)
 
 	/* ----------
 	 * If the Query node has a setOperations tree, then it's the top
-	 * level of a UNION/INTERSECT/EXCEPT query; only the ORDER BY field
-	 * is interesting in the top query itself.
+	 * level of a UNION/INTERSECT/EXCEPT query; only the ORDER BY and
+	 * LIMIT fields are interesting in the top query itself.
 	 * ----------
 	 */
 	if (query->setOperations)
@@ -930,6 +930,18 @@ get_select_query_def(Query *query, deparse_context *context)
 			}
 			sep = ", ";
 		}
+	}
+
+	/* Add the LIMIT clause if given */
+	if (query->limitOffset != NULL)
+	{
+		appendStringInfo(buf, " OFFSET ");
+		get_rule_expr(query->limitOffset, context);
+	}
+	if (query->limitCount != NULL)
+	{
+		appendStringInfo(buf, " LIMIT ");
+		get_rule_expr(query->limitCount, context);
 	}
 }
 

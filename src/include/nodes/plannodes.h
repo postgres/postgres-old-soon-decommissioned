@@ -47,6 +47,7 @@
  *		Sort					SortState				sortstate;
  *		Unique					UniqueState				uniquestate;
  *		SetOp					SetOpState				setopstate;
+ *		Limit					LimitState				limitstate;
  *		Hash					HashState				hashstate;
  *
  * ----------------------------------------------------------------
@@ -374,6 +375,18 @@ typedef struct SetOp
 	AttrNumber	flagColIdx;
 	SetOpState *setopstate;
 } SetOp;
+
+/* ----------------
+ *		limit node
+ * ----------------
+ */
+typedef struct Limit
+{
+	Plan		plan;
+	Node	   *limitOffset;	/* OFFSET parameter, or NULL if none */
+	Node	   *limitCount;		/* COUNT parameter, or NULL if none */
+	LimitState *limitstate;
+} Limit;
 
 /* ----------------
  *		hash build node

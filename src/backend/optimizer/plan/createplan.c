@@ -1651,6 +1651,27 @@ make_setop(SetOpCmd cmd, List *tlist, Plan *lefttree,
 	return node;
 }
 
+Limit *
+make_limit(List *tlist, Plan *lefttree,
+		   Node *limitOffset, Node *limitCount)
+{
+	Limit	   *node = makeNode(Limit);
+	Plan	   *plan = &node->plan;
+
+	copy_plan_costsize(plan, lefttree);
+
+	plan->state = (EState *) NULL;
+	plan->targetlist = tlist;
+	plan->qual = NIL;
+	plan->lefttree = lefttree;
+	plan->righttree = NULL;
+
+	node->limitOffset = limitOffset;
+	node->limitCount = limitCount;
+
+	return node;
+}
+
 Result *
 make_result(List *tlist,
 			Node *resconstantqual,

@@ -305,12 +305,6 @@ DefineQueryRewrite(RuleStmt *stmt)
 		}
 
 		/*
-		 * LIMIT in view is not supported
-		 */
-		if (query->limitOffset != NULL || query->limitCount != NULL)
-			elog(ERROR, "LIMIT clause not supported in views");
-
-		/*
 		 * ... and finally the rule must be named _RETviewname.
 		 */
 		expected_name = MakeRetrieveViewRuleName(event_obj->relname);

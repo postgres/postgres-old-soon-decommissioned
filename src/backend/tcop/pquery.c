@@ -299,8 +299,7 @@ ProcessQuery(Query *parsetree,
 	 *	 actually run the plan..
 	 * ----------------
 	 */
-	ExecutorRun(queryDesc, state, EXEC_RUN,
-				parsetree->limitOffset, parsetree->limitCount);
+	ExecutorRun(queryDesc, state, EXEC_RUN, 0L);
 
 	/* save infos for EndCommand */
 	UpdateCommandInfo(operation, state->es_lastoid, state->es_processed);
