@@ -295,8 +295,6 @@ __attribute__((format(printf, 1, 2)));
 
 #ifdef EXEC_BACKEND
 
-static char	postgres_exec_path[MAXPGPATH];
-
 #ifdef WIN32
 pid_t win32_forkexec(const char* path, char *argv[]);
 
@@ -690,13 +688,6 @@ PostmasterMain(int argc, char *argv[])
 				(errmsg_internal("-----------------------------------------")));
 	}
 
-	/*
-	 * On some systems our dynloader code needs the executable's pathname.
-	 */
-	if (find_my_exec(argv[0], my_exec_path) < 0)
-		ereport(FATAL,
-				(errmsg("%s: could not locate my own executable path",
-						progname)));
 	if (strlen(pkglib_path) == 0)
 		get_pkglib_path(my_exec_path, pkglib_path);
 
