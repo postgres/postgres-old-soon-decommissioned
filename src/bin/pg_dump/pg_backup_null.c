@@ -91,7 +91,7 @@ _PrintTocData(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt)
 	if (te->dataDumper)
 	{
 		AH->currToc = te;
-		(*te->dataDumper) ((Archive *) AH, te->oid, te->dataDumperArg);
+		(*te->dataDumper) ((Archive *) AH, te->dataDumperArg);
 		AH->currToc = NULL;
 	}
 }
