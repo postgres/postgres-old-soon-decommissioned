@@ -308,7 +308,7 @@ ECPGset_informix_null(enum ECPGttype type, void *ptr)
 
 static bool _check(unsigned char *ptr, int length)
 {
-	for (;ptr[length] == 0xff && length >= 0; length --);
+	for (;ptr[--length] == 0xff && length >= 0; length --);
 	if (length < 0) return true;
 	return false;
 }
