@@ -13,9 +13,13 @@
  * $Header$
  */
 
-#include "postgres.h"
 
+#ifndef MD5_ODBC
+#include "postgres.h"
 #include "libpq/crypt.h"
+#else
+#include "md5.h"
+#endif
 
 #ifdef FRONTEND
 #undef palloc

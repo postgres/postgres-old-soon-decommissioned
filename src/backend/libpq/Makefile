@@ -19,7 +19,12 @@ OBJS = be-fsstubs.o \
 	pqcomm.o pqformat.o pqpacket.o pqsignal.o util.o
 
 
-all: SUBSYS.o
+all: check_md5 SUBSYS.o
+
+check_md5:
+	@cmp -s md5.c ../../interfaces/odbc/md5.c || \
+	(echo "src/interfaces/odbc/md5.c doesn't match src/backend/libpq/md5.c" && \
+	 exit 1)
 
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
