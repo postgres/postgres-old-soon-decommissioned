@@ -184,7 +184,7 @@ CatalogIndexInsert(Relation *idescs,
 			   finfoP);
 	    
 	    indexRes = index_insert(idescs[i], &datum, nulls, 
-				    &(heapTuple->t_ctid), false);
+				    &(heapTuple->t_ctid), heapRelation);
 	    if (indexRes) pfree(indexRes);
 	}
 }

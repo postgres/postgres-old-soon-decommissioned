@@ -1597,7 +1597,7 @@ DefaultBuild(Relation heapRelation,
 	indexTuple->t_tid = heapTuple->t_ctid;
 	
 	insertResult = index_insert(indexRelation, datum, nullv, 
-				    &(heapTuple->t_ctid), false);
+				    &(heapTuple->t_ctid), heapRelation);
 
 	if (insertResult) pfree(insertResult);
 	pfree(indexTuple);
