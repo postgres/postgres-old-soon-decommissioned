@@ -53,6 +53,8 @@ BackendId	MyBackendId;
 char	   *DatabasePath = NULL;
 Oid			MyDatabaseId = InvalidOid;
 
+pid_t PostmasterPid = 0;
+
 /* these are initialized for the bootstrap/standalone case: */
 bool		IsPostmasterEnvironment = false;
 bool		IsUnderPostmaster = false;

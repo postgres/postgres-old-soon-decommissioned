@@ -63,8 +63,8 @@ SendPostmasterSignal(PMSignalReason reason)
 		return;
 	/* Atomically set the proper flag */
 	PMSignalFlags[reason] = true;
-	/* Send signal to postmaster (assume it is our direct parent) */
-	kill(getppid(), SIGUSR1);
+	/* Send signal to postmaster */
+	kill(PostmasterPid, SIGUSR1);
 }
 
 /*
