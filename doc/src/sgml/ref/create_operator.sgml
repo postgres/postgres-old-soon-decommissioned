@@ -309,7 +309,7 @@ MYBOXES.description !== box '((0,0), (1,1))'
    furthermore, equality of the data type must mean bitwise equality
    of the representation of the type.  (For example, a data type that
    contains unused bits that don't matter for equality tests could
-   not be hashjoined.)
+   not be hash-joined.)
    The HASHES flag indicates to the query optimizer that a hash join
    may safely be used with this operator.</para>
   <para>

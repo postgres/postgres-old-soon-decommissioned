@@ -391,7 +391,7 @@ CAST ( '<replaceable>string</replaceable>' AS <replaceable>type</replaceable> )
 
     <para>
      The <literal>::</literal>, <literal>CAST()</literal>, and
-     function-call syntaxes can also be used to specify runtime type
+     function-call syntaxes can also be used to specify run-time type
      conversions of arbitrary expressions, as discussed in <xref
      linkend="sql-syntax-type-casts">.  But the form
      <replaceable>type</replaceable> '<replaceable>string</replaceable>'

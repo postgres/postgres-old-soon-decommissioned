@@ -189,7 +189,7 @@ ALTER USER <replaceable class="PARAMETER">username</replaceable> RESET <replacea
   <para>
    Use <xref linkend="SQL-CREATEUSER" endterm="SQL-CREATEUSER-title">
    to add new users, and <xref linkend="SQL-DROPUSER"
-   endterm="SQL-DROPUSER-title"> to remoe a user.
+   endterm="SQL-DROPUSER-title"> to remove a user.
   </para>
 
   <para>

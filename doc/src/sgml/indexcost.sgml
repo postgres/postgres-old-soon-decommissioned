@@ -201,7 +201,7 @@ amcostestimate (Query *root,
     <para>
      Estimate and return the fraction of main-table tuples that will be visited
      based on the given qual conditions.  In the absence of any index-type-specific
-     knowledge, use the standard optimizer function clauselist_selectivity():
+     knowledge, use the standard optimizer function <function>clauselist_selectivity()</function>:
 
      <programlisting>
 *indexSelectivity = clauselist_selectivity(root, indexQuals,

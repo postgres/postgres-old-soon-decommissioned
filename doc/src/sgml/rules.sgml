@@ -1140,7 +1140,7 @@ INSERT INTO shoelace_log VALUES(
     INSERT ... VALUES ... FROM.  The FROM clause here is just to indicate
     that there are range-table entries in the parse tree for *NEW* and *OLD*.
     These are needed so that they can be referenced by variables in the
-    INSERT command's querytree.
+    INSERT command's query tree.
 </Para>
 
 <Para>

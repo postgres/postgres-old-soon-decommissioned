@@ -139,7 +139,7 @@ $Header$
       </listitem>
       <listitem>
        <para>
-	<envar>PGOPTIONS</envar> sets additional runtime  options  for  
+	<envar>PGOPTIONS</envar> sets additional run-time  options  for  
 	the <productname>PostgreSQL</productname> backend.
        </para>
       </listitem>

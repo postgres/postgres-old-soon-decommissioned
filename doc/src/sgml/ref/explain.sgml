@@ -41,7 +41,7 @@ EXPLAIN [ ANALYZE ] [ VERBOSE ] <replaceable class="PARAMETER">query</replaceabl
       <term>ANALYZE</term>
       <listitem>
        <para>
-	Flag to carry out the query and show actual runtimes.
+	Flag to carry out the query and show actual run times.
        </para>
       </listitem>
      </varlistentry>

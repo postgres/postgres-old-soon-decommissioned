@@ -178,7 +178,7 @@ export LANG=sv_SE
     by recording the values of <envar>LC_COLLATE</> and <envar>LC_CTYPE</>
     that are seen by <application>initdb</>.  The server automatically adopts
     those two values when it is started; only the other <envar>LC_</>
-    categories can be set from the environment at server startup.
+    categories can be set from the environment at server start-up.
     In short, only one collation order can be used in a database cluster,
     and it is chosen at <application>initdb</> time.
    </para>

@@ -366,7 +366,7 @@ hostssl <replaceable>database</replaceable> <replaceable>IP-address</replaceable
     <indexterm>
      <primary>SIGHUP</primary>
     </indexterm>
-   The <filename>pg_hba.conf</filename> file is read on startup
+   The <filename>pg_hba.conf</filename> file is read on start-up
    and when the <application>postmaster</> receives a
    <systemitem>SIGHUP</systemitem> signal. If you edit the file on an
    active system, you will need to signal the <application>postmaster</>
@@ -750,7 +750,7 @@ local        all                                          md5  admins
     <indexterm>
      <primary>SIGHUP</primary>
     </indexterm>
-   The <filename>pg_ident.conf</filename> file is read on startup
+   The <filename>pg_ident.conf</filename> file is read on start-up
    and when the <application>postmaster</> receives a
    <systemitem>SIGHUP</systemitem> signal. If you edit the file on an
    active system, you will need to signal the <application>postmaster</>
