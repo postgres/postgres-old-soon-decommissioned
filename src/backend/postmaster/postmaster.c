@@ -679,7 +679,7 @@ pmdaemonize(int argc, char *argv[])
 	pid_t		pid;
 
 	pid = fork();
-	if (pid == -1)
+	if (pid == (pid_t) -1)
 	{
 		perror("Failed to fork postmaster");
 		ExitPostmaster(1);
@@ -690,6 +690,8 @@ pmdaemonize(int argc, char *argv[])
 		/* Parent should just exit, without doing any atexit cleanup */
 		_exit(0);
 	}
+
+	MyProcPid = getpid();		/* reset MyProcPid to child */
 
 /* GH: If there's no setsid(), we hopefully don't need silent mode.
  * Until there's a better solution.
