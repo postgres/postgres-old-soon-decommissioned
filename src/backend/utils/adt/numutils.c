@@ -137,9 +137,7 @@ ltoa(int32 l, char *a)
 int
 ftoa(double value, char *ascii, int width, int prec1, char format)
 {
-#if defined(__FreeBSD__) || \
-    defined(bsdi) || \
-    defined(bsdi_2_1)
+#ifndef HAVE_FCVT
 	char	out[256];
 	char	fmt[256];
 	int	ret;
