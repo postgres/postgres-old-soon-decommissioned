@@ -25,6 +25,14 @@ extern "C" {
 #include "config.h"
 }
 
+/* We assume that the C++ compiler will have these keywords, even though
+ * config.h may have #define'd them to empty because C compiler doesn't.
+ */
+#undef const
+#undef inline
+#undef signed
+#undef volatile
+
 #ifdef HAVE_CXX_STRING_HEADER
 #include <string>
 #endif
