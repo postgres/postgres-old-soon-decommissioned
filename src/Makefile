@@ -31,6 +31,7 @@ XARGS = xargs
 	       you can build Postgres. ;\
 	  false ;\
 	fi
+	$(MAKE) -C utils $@
 	$(MAKE) -C backend $@
 	$(MAKE) -C libpq $@
 ifeq ($(HAVE_Cplusplus), true)
