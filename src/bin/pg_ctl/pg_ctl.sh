@@ -76,6 +76,7 @@ do
 	-D)
 	    shift
 	    PGDATA="$1"
+	    export PGDATA
 	    ;;
 	-p)
 	    shift
