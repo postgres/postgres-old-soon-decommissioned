@@ -47,6 +47,7 @@ typedef enum NodeTag
 	T_Choose,
 	T_Tee,
 	T_Group,
+	T_SubPlan,
 
 	/*---------------------
 	 * TAGS FOR PRIMITIVE NODES (primnodes.h)

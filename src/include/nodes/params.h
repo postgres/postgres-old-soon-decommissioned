@@ -36,12 +36,16 @@
  *
  * PARAM_OLD:	Same as PARAM_NEW, but in this case we refer to
  *				the "OLD" tuple.
+ *
+ * PARAM_EXEC:	Evaluated by executor. Used for subselect...
+ *
  */
 
 #define PARAM_NAMED		11
 #define PARAM_NUM		12
 #define PARAM_NEW		13
 #define PARAM_OLD		14
+#define	PARAM_EXEC		15
 #define PARAM_INVALID	100
 
 
@@ -86,5 +90,12 @@ typedef struct ParamListInfoData
 } ParamListInfoData;
 
 typedef ParamListInfoData *ParamListInfo;
+
+typedef struct ParamExecData
+{
+	void	   *execPlan;		/* plan must be executed to get param value */
+	Datum		value;
+	bool		isnull;
+} ParamExecData;
 
 #endif							/* PARAMS_H */
