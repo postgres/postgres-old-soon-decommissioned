@@ -4522,7 +4522,7 @@ single_vt_type: common_type
 			else if (strcmp($1, "numeric") == 0)
 			{
 				$$.type_enum = ECPGt_numeric;
-				$$.type_str = make_str("Numeric");
+				$$.type_str = make_str("numeric");
 				$$.type_dimension = make_str("-1");
 				$$.type_index = make_str("-1");
 				$$.type_sizeof = NULL;
