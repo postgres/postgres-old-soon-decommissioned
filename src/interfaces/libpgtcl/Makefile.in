@@ -49,6 +49,16 @@ ifeq ($(PORTNAME), bsd)
   endif
 endif
 
+ifeq ($(PORTNAME), bsdi)
+  ifdef BSD_SHLIB
+    install-shlib-dep	:= install-shlib
+    shlib		:= libpgtcl.o
+    LD			:= shlicc
+    LDFLAGS_SL		+= -O -r
+    CFLAGS		+= $(CFLAGS_SL)
+  endif
+endif
+
 ifeq ($(PORTNAME), solaris_i386)
   install-shlib-dep	:= install-shlib
   shlib			:= libpgtcl.so.1
