@@ -42,7 +42,7 @@ TARGETS= $(MODULES:%=%.html)
 .PHONY: beforeinstall install all clean distclean
 
 beforeinstall::
-	if [ ! -d $(PGDOCS) ]; then mkdir $(PGDOCS); fi
+	-@if [ ! -d $(PGDOCS) ]; then mkdir $(PGDOCS); fi
 
 install::
 	$(MAKE) all
@@ -57,7 +57,7 @@ distclean::
 	$(MAKE) clean
 
 man::
-	if test ! -d $(POSTMANDIR) ; then mkdir $(POSTMANDIR) ; fi
+	-@if test ! -d $(POSTMANDIR) ; then mkdir $(POSTMANDIR) ; fi
 	$(GZCAT) man.tar.gz | (cd $(POSTMANDIR) ; $(TAR) xf - )
 
 #
