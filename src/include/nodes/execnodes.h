@@ -673,6 +673,8 @@ typedef struct AggState
 	CommonScanState csstate;	/* its first field is NodeTag */
 	List	   *aggs;			/* all Aggref nodes in targetlist & quals */
 	int			numaggs;		/* length of list (could be zero!) */
+	FmgrInfo   *eqfunctions;	/* per-grouping-field equality fns */
+	HeapTuple	grp_firstTuple;	/* copy of first tuple of current group */
 	AggStatePerAgg peragg;		/* per-Aggref working state */
 	MemoryContext tup_cxt;		/* context for per-output-tuple
 								 * expressions */
@@ -691,7 +693,7 @@ typedef struct GroupState
 	FmgrInfo   *eqfunctions;	/* per-field lookup data for equality fns */
 	bool		grp_useFirstTuple;		/* first tuple not processed yet */
 	bool		grp_done;
-	HeapTuple	grp_firstTuple;
+	HeapTuple	grp_firstTuple;	/* copy of first tuple of current group */
 } GroupState;
 
 /* ----------------

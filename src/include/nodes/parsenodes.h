@@ -101,7 +101,7 @@ typedef struct Query
 	List	   *join_rel_list;	/* list of join-relation RelOptInfos */
 	List	   *equi_key_list;	/* list of lists of equijoined
 								 * PathKeyItems */
-	List	   *query_pathkeys; /* pathkeys for query_planner()'s result */
+	List	   *query_pathkeys; /* desired pathkeys for query_planner() */
 } Query;
 
 

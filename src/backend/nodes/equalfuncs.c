@@ -464,6 +464,18 @@ _equalAppendPath(AppendPath *a, AppendPath *b)
 }
 
 static bool
+_equalResultPath(ResultPath *a, ResultPath *b)
+{
+	if (!_equalPath((Path *) a, (Path *) b))
+		return false;
+	if (!equal(a->subpath, b->subpath))
+		return false;
+	if (!equal(a->constantqual, b->constantqual))
+		return false;
+	return true;
+}
+
+static bool
 _equalJoinPath(JoinPath *a, JoinPath *b)
 {
 	if (!_equalPath((Path *) a, (Path *) b))
@@ -2102,6 +2114,9 @@ equal(void *a, void *b)
 			break;
 		case T_AppendPath:
 			retval = _equalAppendPath(a, b);
+			break;
+		case T_ResultPath:
+			retval = _equalResultPath(a, b);
 			break;
 		case T_IndexOptInfo:
 			retval = _equalIndexOptInfo(a, b);

@@ -82,6 +82,7 @@ typedef enum NodeTag
 	T_HashPath,
 	T_TidPath,
 	T_AppendPath,
+	T_ResultPath,
 	T_PathKeyItem,
 	T_RestrictInfo,
 	T_JoinInfo,

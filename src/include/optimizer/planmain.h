@@ -20,7 +20,8 @@
 /*
  * prototypes for plan/planmain.c
  */
-extern Plan *query_planner(Query *root, List *tlist, double tuple_fraction);
+extern void query_planner(Query *root, List *tlist, double tuple_fraction,
+						  Path **cheapest_path, Path **sorted_path);
 
 /*
  * prototypes for plan/createplan.c
@@ -33,9 +34,10 @@ extern Sort *make_sort(Query *root, List *tlist,
 		  Plan *lefttree, int keycount);
 extern Sort *make_sort_from_pathkeys(Query *root, List *tlist,
 						Plan *lefttree, List *pathkeys);
-extern Agg *make_agg(List *tlist, List *qual, Plan *lefttree);
-extern Group *make_group(List *tlist, bool tuplePerGroup, int ngrp,
-		   AttrNumber *grpColIdx, Plan *lefttree);
+extern Agg *make_agg(List *tlist, List *qual, AggStrategy aggstrategy,
+					 int ngrp, AttrNumber *grpColIdx, Plan *lefttree);
+extern Group *make_group(List *tlist, int ngrp, AttrNumber *grpColIdx,
+						 Plan *lefttree);
 extern Material *make_material(List *tlist, Plan *lefttree);
 extern Unique *make_unique(List *tlist, Plan *lefttree, List *distinctList);
 extern Limit *make_limit(List *tlist, Plan *lefttree,

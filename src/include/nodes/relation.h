@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * relation.h
- *	  Definitions for internal planner nodes.
+ *	  Definitions for planner's internal data structures.
  *
  *
  * Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group
@@ -401,6 +401,19 @@ typedef struct AppendPath
 	Path		path;
 	List	   *subpaths;		/* list of component Paths */
 } AppendPath;
+
+/*
+ * ResultPath represents use of a Result plan node, either to compute a
+ * variable-free targetlist or to gate execution of a subplan with a
+ * one-time (variable-free) qual condition.  Note that in the former case
+ * path.parent will be NULL; in the latter case it is copied from the subpath.
+ */
+typedef struct ResultPath
+{
+	Path		path;
+	Path	   *subpath;
+	List	   *constantqual;
+} ResultPath;
 
 /*
  * All join-type paths share these fields.

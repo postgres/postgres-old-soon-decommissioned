@@ -742,6 +742,14 @@ print_path(Query *root, Path *path, int indent)
 			ptype = "TidScan";
 			join = false;
 			break;
+		case T_AppendPath:
+			ptype = "Append";
+			join = false;
+			break;
+		case T_ResultPath:
+			ptype = "Result";
+			join = false;
+			break;
 		case T_NestPath:
 			ptype = "Nestloop";
 			join = true;
@@ -762,10 +770,15 @@ print_path(Query *root, Path *path, int indent)
 
 	for (i = 0; i < indent; i++)
 		printf("\t");
-	printf("%s(", ptype);
-	print_relids(path->parent->relids);
-	printf(") rows=%.0f cost=%.2f..%.2f\n",
-		   path->parent->rows, path->startup_cost, path->total_cost);
+	printf("%s", ptype);
+
+	if (path->parent)
+	{
+		printf("(");
+		print_relids(path->parent->relids);
+		printf(") rows=%.0f", path->parent->rows);
+	}
+	printf(" cost=%.2f..%.2f\n", path->startup_cost, path->total_cost);
 
 	if (path->pathkeys)
 	{
@@ -785,7 +798,7 @@ print_path(Query *root, Path *path, int indent)
 		print_restrictclauses(root, jp->joinrestrictinfo);
 		printf("\n");
 
-		if (nodeTag(path) == T_MergePath)
+		if (IsA(path, MergePath))
 		{
 			MergePath  *mp = (MergePath *) path;
 

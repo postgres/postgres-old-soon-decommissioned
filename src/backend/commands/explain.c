@@ -275,7 +275,21 @@ explain_outNode(StringInfo str, Plan *plan, Plan *outer_plan,
 			pname = "Group";
 			break;
 		case T_Agg:
-			pname = "Aggregate";
+			switch (((Agg *) plan)->aggstrategy)
+			{
+				case AGG_PLAIN:
+					pname = "Aggregate";
+					break;
+				case AGG_SORTED:
+					pname = "GroupAggregate";
+					break;
+				case AGG_HASHED:
+					pname = "HashAggregate";
+					break;
+				default:
+					pname = "Aggregate ???";
+					break;
+			}
 			break;
 		case T_Unique:
 			pname = "Unique";
