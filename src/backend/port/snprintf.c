@@ -48,6 +48,9 @@
 # include <sys/ioctl.h>
 # include <sys/param.h>
 
+/* IRIX doesn't do 'long long' in va_arg(), so use a typedef */
+typedef long long long_long;
+
 /*
 **  SNPRINTF, VSNPRINT -- counted versions of printf
 **
@@ -192,7 +195,7 @@ dopr (char *buffer, const char *format, ... )
                        case 'd': case 'D':
                                if( longflag ){
                                  if( longlongflag ) {
-                                       value = va_arg( args, long long );
+                                       value = va_arg( args, long_long );
                                  } else {
                                        value = va_arg( args, long );
                                  }

@@ -261,8 +261,11 @@ tas(slock_t *s_lock)
 #if defined(__sgi)
 /*
  * SGI IRIX 5
- * slock_t is defined as a struct abilock_t, which has a single unsigned long
- * member.
+ * slock_t is defined as a unsigned long. We use the standard SGI
+ * mutex API. 
+ *
+ * The following comment is left for historical reasons, but is probably
+ * not a good idea since the mutex ABI is supported.
  *
  * This stuff may be supplemented in the future with Masato Kataoka's MIPS-II
  * assembly from his NECEWS SVR4 port, but we probably ought to retain this
