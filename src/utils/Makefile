@@ -15,4 +15,4 @@ include $(top_builddir)/src/Makefile.global
 all:
 
 clean distclean maintainer-clean:
-	rm -f dllinit.o getopt.o
+	rm -f dllinit.o
