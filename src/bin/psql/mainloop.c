@@ -61,7 +61,7 @@ MainLoop(FILE *source)
 	bool		prev_cmd_interactive;
 
     unsigned int prev_lineno;
-	bool		die_on_error;
+	volatile bool die_on_error = false;
 
 
 	/* Save old settings */
@@ -395,6 +395,7 @@ MainLoop(FILE *source)
 						appendPQExpBufferChar(query_buf, '\n');
 					/* append the line to the query buffer */
 					appendPQExpBufferStr(query_buf, line + query_start);
+                    appendPQExpBufferChar(query_buf, ';');
 				}
 
 				/* execute query */
@@ -515,8 +516,21 @@ MainLoop(FILE *source)
 			successResult = EXIT_BADCONN;
 			break;
 		}
-	} /* while !endofprogram */
+	} /* while !endoffile/session */
 
+    /*
+     * Process query at the end of file without a semicolon
+     */
+    if (query_buf->len > 0 && !pset.cur_cmd_interactive)
+    {
+        success = SendQuery(query_buf->data);
+
+        if (!success && die_on_error)
+            successResult = EXIT_USER;
+        else if (pset.db == NULL)
+            successResult = EXIT_BADCONN;
+    }
+        
 	destroyPQExpBuffer(query_buf);
 	destroyPQExpBuffer(previous_buf);
 
