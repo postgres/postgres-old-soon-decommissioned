@@ -47,6 +47,7 @@
 #include "optimizer/tlist.h"
 #include "parser/parse_expr.h"
 #include "parser/parse_node.h"
+#include "parser/parse_target.h"
 #include "parser/parse_type.h"
 #include "parser/parse_coerce.h"
 #include "rewrite/rewriteRemove.h"
@@ -1545,11 +1546,11 @@ start:
 		if (atp->atttypid == BPCHAROID &&
 			(type == TEXTOID || type == BPCHAROID || type == UNKNOWNOID))
 		{
-			if (can_coerce_type(1, &(type), &(atp->atttypid)))
-				expr = coerce_type(NULL, (Node *)expr, type, atp->atttypid);
-			else
-				elog(ERROR, "DEFAULT clause const type '%s' can not be converted to char().",
-					 typeidTypeName(type));
+			FuncCall   *n = makeNode(FuncCall);
+
+			n->funcname = typeidTypeName(atp->atttypid);
+			n->args = lcons((Node *)expr, NIL);
+			expr = transformExpr(NULL, (Node *) n, EXPR_COLUMN_FIRST);
 		}
 		else if (IS_BINARY_COMPATIBLE(type, atp->atttypid))
 			; /* use without change */

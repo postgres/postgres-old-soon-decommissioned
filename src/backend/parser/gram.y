@@ -5365,8 +5365,8 @@ static Node *makeIndexable(char *opname, Node *lexpr, Node *rexpr)
 			for (pos = 1; n->val.val.str[pos]; pos++)
 			{
 				if (n->val.val.str[pos] == '|' ||
-				if (n->val.val.str[pos] == '{' ||
-				if (n->val.val.str[pos] == '}')
+				    n->val.val.str[pos] == '{' ||
+				    n->val.val.str[pos] == '}')
 				{
 					found_special = true;
 					break;
