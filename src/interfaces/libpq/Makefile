@@ -23,7 +23,7 @@ OBJS= fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
       pqexpbuffer.o dllist.o pqsignal.o $(SNPRINTF) $(INET_ATON)
 
 ifdef MULTIBYTE
-OBJS+= common.o wchar.o conv.o big5.o mbutils.o
+OBJS+= common.o wchar.o
 endif
 
 # Add libraries that libpq depends (or might depend) on into the
@@ -57,9 +57,7 @@ inet_aton.c: $(backend_src)/port/inet_aton.c
 	rm -f $@ && $(LN_S) $< .
 
 ifdef MULTIBYTE
-maps = iso8859.map UTF_to_EUC_JP.map EUC_JP_to_UTF.map sjis.map
-conv.c: $(maps)
-common.c wchar.c conv.c big5.c mbutils.c $(maps) : % : $(backend_src)/utils/mb/%
+common.c wchar.c : % : $(backend_src)/utils/mb/%
 	rm -f $@ && $(LN_S) $< .
 endif
 
