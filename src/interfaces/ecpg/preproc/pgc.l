@@ -70,6 +70,7 @@ static struct _if_value
 
 %option 8bit
 %option never-interactive
+%option nodefault
 %option noyywrap
 
 %option yylineno

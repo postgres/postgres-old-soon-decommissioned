@@ -47,6 +47,7 @@ char *GUC_scanstr(char *);
 
 %option 8bit
 %option never-interactive
+%option nodefault
 %option nounput
 %option noyywrap
 

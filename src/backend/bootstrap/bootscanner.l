@@ -53,6 +53,7 @@ static int	yyline;  /* keep track of the line number for error reporting */
 
 %option 8bit
 %option never-interactive
+%option nodefault
 %option nounput
 %option noyywrap
 

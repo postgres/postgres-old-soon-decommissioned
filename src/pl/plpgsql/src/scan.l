@@ -63,6 +63,7 @@ int	plpgsql_SpaceScanned = 0;
 
 %option 8bit
 %option never-interactive
+%option nodefault
 %option nounput
 %option noyywrap
 
@@ -272,6 +273,7 @@ dump			{ return O_DUMP;			}
 			  BEGIN IN_STRING;
 			}
 <IN_STRING>\\.		{ }
+<IN_STRING>\\		{ /* can only happen with \ at EOF */ }
 <IN_STRING>''		{ }
 <IN_STRING>'		{
 			  yyleng -= (yytext - start_charpos);
@@ -279,13 +281,13 @@ dump			{ return O_DUMP;			}
 			  BEGIN INITIAL;
 			  return T_STRING;
 			}
+<IN_STRING>[^'\\]+	{ }
 <IN_STRING><<EOF>>	{
 				plpgsql_error_lineno = start_lineno;
 				ereport(ERROR,
 						(errcode(ERRCODE_DATATYPE_MISMATCH),
 						 errmsg("unterminated string")));
 			}
-<IN_STRING>[^'\\]*	{ }
 
     /* ----------
      * Any unmatched character is returned as is
