@@ -1353,7 +1353,7 @@ make_targetlist_expr(ParseState *pstate,
 	  } else
 	       if (attrtype != type_id) {
 		    if ((attrtype == INT2OID) && (type_id == INT4OID))
-			 lfirst(expr) = lispInteger (INT2OID); do CASHOID too
+			 lfirst(expr) = lispInteger (INT2OID); /* handle CASHOID too*/
                     else if ((attrtype == FLOAT4OID) && (type_id == FLOAT8OID))
 			 lfirst(expr) = lispInteger (FLOAT4OID);
                     else

@@ -218,7 +218,7 @@ create_seqscan_path(Rel *rel)
 #if 0
     if (XfuncMode != XFUNC_OFF) {
 	pathnode->path_cost +=
-	    xfunc_get_path_cost(pathnode));
+	    xfunc_get_path_cost(pathnode);
     }
 #endif
     return (pathnode);

@@ -262,7 +262,7 @@ heap_creatr(char *name,
 	    sprintf(tempname, "temp_%d", relid);
 	    relname = tempname;
 	    isTemp = 1;
-	  };
+	  }
       }
 
     /* ----------------
@@ -1403,7 +1403,7 @@ InitTempRelList(void)
     if (tempRels) {
 	free(tempRels->rels);
 	free(tempRels);
-    };
+    }
 
     tempRels = (TempRelList*)malloc(sizeof(TempRelList));
     tempRels->size = TEMP_REL_LIST_SIZE;
