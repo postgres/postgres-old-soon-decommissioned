@@ -572,7 +572,7 @@ DATA(insert OID = 275 (  isfinite		   PGUID 12 f t f t 1 f 16 "702" 100 0 0 100	
 DESCR("");
 
 DATA(insert OID = 276 (  int2fac		   PGUID 12 f t t t 1 f 23 "21" 100 0 0 100  int2fac - ));
-DESCR("");
+DESCR("factorial");
 
 DATA(insert OID = 277 (  inter_sl		   PGUID 12 f t t t 2 f 16 "601 628" 100 0 0 100	inter_sl - ));
 DESCR("");
@@ -917,7 +917,7 @@ DESCR("adjust varchar() to typmod length");
 DATA(insert OID = 676 (  mktinterval	   PGUID 12 f t f t 2 f 704 "702 702" 100 0 0 100 mktinterval - ));
 DESCR("convert to tinterval");
 DATA(insert OID = 619 (  oidvectorne	   PGUID 12 f t t t 2 f 16 "30 30" 100 0 0 100  oidvectorne - ));
-DESCR("less-than");
+DESCR("not equal");
 DATA(insert OID = 677 (  oidvectorlt	   PGUID 12 f t t t 2 f 16 "30 30" 100 0 0 100  oidvectorlt - ));
 DESCR("less-than");
 DATA(insert OID = 678 (  oidvectorle	   PGUID 12 f t t t 2 f 16 "30 30" 100 0 0 100  oidvectorle - ));
