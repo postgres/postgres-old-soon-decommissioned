@@ -23,6 +23,10 @@ OBJS = info.o bind.o columninfo.o connection.o convert.o drvconn.o \
         pgtypes.o psqlodbc.o qresult.o results.o socket.o parse.o statement.o \
         gpps.o tuple.o tuplelist.o dlg_specific.o $(OBJX)
 
+ifdef MULTIBYTE
+OBJS += multibyte.o
+endif
+
 SHLIB_LINK = $(filter -lm, $(LIBS))
 
 all: all-lib
