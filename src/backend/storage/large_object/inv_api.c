@@ -165,7 +165,7 @@ inv_create(int flags)
 	classObjectId[0] = INT4_OPS_OID;
 	index_create(objname, indname, NULL, NULL, BTREE_AM_OID,
 				 1, &attNums[0], &classObjectId[0],
-				 0, (Datum) NULL, NULL, FALSE, FALSE, FALSE);
+				 (Node *) NULL, false, false, false);
 
 	/* make the index visible in this transaction */
 	CommandCounterIncrement();

@@ -33,8 +33,6 @@ extern void index_create(char *heapRelationName,
 			 int numatts,
 			 AttrNumber *attNums,
 			 Oid *classObjectId,
-			 uint16 parameterCount,
-			 Datum *parameter,
 			 Node *predicate,
 			 bool islossy,
 			 bool unique,
@@ -57,12 +55,11 @@ extern void FillDummyExprContext(ExprContext *econtext, TupleTableSlot *slot,
 					 TupleDesc tupdesc, Buffer buffer);
 
 extern void index_build(Relation heapRelation, Relation indexRelation,
-			int numberOfAttributes, AttrNumber *attributeNumber,
-		uint16 parameterCount, Datum *parameter, FuncIndexInfo *funcInfo,
-			PredInfo *predInfo);
+						int numberOfAttributes, AttrNumber *attributeNumber,
+						FuncIndexInfo *funcInfo, PredInfo *predInfo,
+						bool unique);
 
 extern bool IndexIsUnique(Oid indexId);
-extern bool IndexIsUniqueNoCache(Oid indexId);
 
 extern bool reindex_index(Oid indexId, bool force);
 extern bool activate_indexes_of_a_table(Oid relid, bool activate);

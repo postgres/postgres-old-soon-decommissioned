@@ -1112,6 +1112,7 @@ RelationTruncateIndexes(Relation heapRelation)
 	AttrNumber *attributeNumberA;
 	FuncIndexInfo fInfo,
 			   *funcInfo = NULL;
+	bool		unique;
 	int			i,
 				numberOfAttributes;
 	char	   *predString;
@@ -1134,6 +1135,7 @@ RelationTruncateIndexes(Relation heapRelation)
 		index = (Form_pg_index) GETSTRUCT(indexTuple);
 		indexId = index->indexrelid;
 		procId = index->indproc;
+		unique = index->indisunique;
 
 		for (i = 0; i < INDEX_MAX_KEYS; i++)
 		{
@@ -1201,7 +1203,7 @@ RelationTruncateIndexes(Relation heapRelation)
 		/* Initialize the index and rebuild */
 		InitIndexStrategy(numberOfAttributes, currentIndex, accessMethodId);
 		index_build(heapRelation, currentIndex, numberOfAttributes,
-					attributeNumberA, 0, NULL, funcInfo, predInfo);
+					attributeNumberA, funcInfo, predInfo, unique);
 
 		/*
 		 * index_build will close both the heap and index relations (but

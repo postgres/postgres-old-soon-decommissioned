@@ -34,14 +34,11 @@ extern int	numattr;
 extern int	DebugMode;
 
 extern int	BootstrapMain(int ac, char *av[]);
-extern void index_register(char *heap,
-			   char *ind,
-			   int natts,
-			   AttrNumber *attnos,
-			   uint16 nparams,
-			   Datum *params,
-			   FuncIndexInfo *finfo,
-			   PredInfo *predInfo);
+
+extern void index_register(char *heap, char *ind,
+						   int natts, AttrNumber *attnos,
+						   FuncIndexInfo *finfo, PredInfo *predInfo,
+						   bool unique);
 
 extern void err_out(void);
 extern void InsertOneTuple(Oid objectid);
