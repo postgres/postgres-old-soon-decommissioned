@@ -253,7 +253,7 @@ do
                 ;;
 	-*)
 		echo "$CMDNAME: invalid option: $1"
-		echo "Try '$CMDNAME -?' for help."
+		echo "Try '$CMDNAME --help' for more information."
 		exit 1
 		;;
         *)

@@ -107,6 +107,20 @@ main(int argc, char *argv[])
 	else
 		pset.progname = strrchr(argv[0], SEP_CHAR) + 1;
 
+	if (argc > 1)
+	{
+		if (strcmp(argv[1], "--help")==0 || strcmp(argv[1], "-?")==0)
+		{
+			usage();
+			exit(EXIT_SUCCESS);
+		}
+		if (strcmp(argv[1], "--version")==0 || strcmp(argv[1], "-V")==0)
+		{
+			showVersion();
+			exit(EXIT_SUCCESS);
+		}
+	}		
+
 	pset.cur_cmd_source = stdin;
 	pset.cur_cmd_interactive = false;
 	pset.encoding = PQenv2encoding();
@@ -520,19 +534,21 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 				/* unknown option reported by getopt */
 				else
 				{
-					fputs("Try -? for help.\n", stderr);
+					fprintf(stderr, "Try '%s --help' for more information.\n",
+							pset.progname);
 					exit(EXIT_FAILURE);
 				}
 				break;
 #ifndef HAVE_GETOPT_LONG
 			case '-':
 				fprintf(stderr, "%s was compiled without support for long options.\n"
-						"Use -? for help on invocation options.\n", pset.progname);
+						"Use --help for help on invocation options.\n", pset.progname);
 				exit(EXIT_FAILURE);
 				break;
 #endif
 			default:
-				fputs("Try -? for help.\n", stderr);
+				fprintf(stderr, "Try '%s --help' for more information.\n",
+						pset.progname);
 				exit(EXIT_FAILURE);
 				break;
 		}
