@@ -58,8 +58,8 @@ md5_crypt_verify(const Port *port, const char *user, char *client_pass)
 	/* We can't do crypt with pg_shadow MD5 passwords */
 	if (isMD5(shadow_pass) && port->auth_method == uaCrypt)
 	{
-		elog(LOG, "Password is stored MD5 encrypted.  "
-			 "'crypt' auth method cannot be used.");
+		ereport(LOG,
+				(errmsg("cannot use CRYPT auth method because password is MD5-encrypted")));
 		return STATUS_ERROR;
 	}
 

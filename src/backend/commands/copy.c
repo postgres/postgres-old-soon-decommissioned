@@ -1923,7 +1923,7 @@ CopyReadBinaryAttribute(int column_no, FmgrInfo *flinfo, Oid typelem,
 	/* Trouble if it didn't eat the whole buffer */
 	if (attribute_buf.cursor != attribute_buf.len)
 		ereport(ERROR,
-				(errcode(ERRCODE_BAD_COPY_FILE_FORMAT),
+				(errcode(ERRCODE_INVALID_BINARY_REPRESENTATION),
 				 errmsg("incorrect binary data format in field %d",
 						column_no)));
 

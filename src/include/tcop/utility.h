@@ -25,4 +25,6 @@ extern TupleDesc UtilityTupleDescriptor(Node *parsetree);
 
 extern const char *CreateCommandTag(Node *parsetree);
 
+extern void CheckRelationOwnership(RangeVar *rel, bool noCatalogs);
+
 #endif   /* UTILITY_H */

@@ -234,6 +234,13 @@ less -x4
      primary error message text.
     </para>
    </listitem>
+   <listitem>
+    <para>
+     <function>errcode_for_socket_access</>() is a convenience function that
+     selects an appropriate SQLSTATE error identifier for a failure in a
+     socket-related system call.
+    </para>
+   </listitem>
   </itemizedlist>
    </para>
 
