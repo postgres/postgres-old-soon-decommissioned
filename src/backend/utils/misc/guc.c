@@ -898,15 +898,6 @@ static struct config_int ConfigureNamesInt[] =
 		&Geqo_generations,
 		0, 0, INT_MAX, NULL, NULL
 	},
-	{
-		{"geqo_random_seed", PGC_USERSET, QUERY_TUNING_GEQO,
-			gettext_noop("Can be set to get reproducible results from the algorithm"),
-			gettext_noop("If it is set to -1 then the algorithm behaves "
-						 "non-deterministically")
-		},
-		&Geqo_random_seed,
-		-1, INT_MIN, INT_MAX, NULL, NULL
-	},
 
 	{
 		{"deadlock_timeout", PGC_SIGHUP, LOCK_MANAGEMENT,

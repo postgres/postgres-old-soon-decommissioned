@@ -534,7 +534,6 @@ psql_completion(char *text, int start, int end)
 		"geqo_effort",
 		"geqo_generations",
 		"geqo_pool_size",
-		"geqo_random_seed",
 		"geqo_selection_bias",
 		"geqo_threshold",
 		"join_collapse_limit",

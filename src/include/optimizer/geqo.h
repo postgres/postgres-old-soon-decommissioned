@@ -64,8 +64,6 @@ extern double Geqo_selection_bias;
 #define MIN_GEQO_SELECTION_BIAS 1.5
 #define MAX_GEQO_SELECTION_BIAS 2.0
 
-extern int	Geqo_random_seed;	/* or negative to use current time */
-
 
 /* routines in geqo_main.c */
 extern RelOptInfo *geqo(Query *root, int number_of_rels, List *initial_rels);

@@ -41,7 +41,6 @@ int			Geqo_pool_size;
 int			Geqo_effort;
 int			Geqo_generations;
 double		Geqo_selection_bias;
-int			Geqo_random_seed;
 
 
 static int	gimme_pool_size(int nr_rel);
@@ -95,13 +94,6 @@ geqo(Query *root, int number_of_rels, List *initial_rels)
 	pool_size = gimme_pool_size(number_of_rels);
 	number_generations = gimme_number_generations(pool_size, Geqo_effort);
 	status_interval = 10;
-
-/* seed random number generator */
-/* XXX why is this done every time around? */
-	if (Geqo_random_seed >= 0)
-		srandom((unsigned int) Geqo_random_seed);
-	else
-		srandom((unsigned int) time(NULL));
 
 /* allocate genetic pool memory */
 	pool = alloc_pool(pool_size, number_of_rels);
