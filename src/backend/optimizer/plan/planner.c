@@ -184,7 +184,7 @@ subquery_planner(Query *parse, double tuple_fraction)
 		parse->qual = SS_process_sublinks(parse->qual);
 		parse->havingQual = SS_process_sublinks(parse->havingQual);
 
-		if (parse->groupClause != NIL)
+		if (parse->groupClause != NIL || parse->hasAggs)
 		{
 
 			/*
