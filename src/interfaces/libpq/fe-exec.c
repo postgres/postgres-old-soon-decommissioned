@@ -919,7 +919,7 @@ do_field(PQprintOpt *po, PGresult *res,
 
     if (!skipit) {
         for (p=pval, o=buf; *p; *(o++)=*(p++)) {
-            if ((fs_len==1 && (*p==*(po->fieldSep))) || *p=='\\')
+            if ((fs_len==1 && (*p==*(po->fieldSep))) || *p=='\\' || *p=='\n')
               *(o++)='\\';
             if (po->align && (*pval=='E' || *pval=='e' ||
                               !((*p>='0' && *p<='9') || 
