@@ -54,8 +54,13 @@ ifeq ($(PORTNAME), bsdi)
   endif
 endif
 
-ifeq ($(PORTNAME), solaris)
+ifeq ($(PORTNAME), solaris_sparc)
   LDFLAGS_SL		:= -G -z text
+  CFLAGS		+= $(CFLAGS_SL)
+endif
+
+ifeq ($(PORTNAME), solaris_i386)
+  LDFLAGS_SL		:= -G
   CFLAGS		+= $(CFLAGS_SL)
 endif
 

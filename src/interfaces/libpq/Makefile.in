@@ -74,10 +74,17 @@ ifeq ($(PORTNAME), bsdi)
   endif
 endif
 
-ifeq ($(PORTNAME), solaris)
+ifeq ($(PORTNAME), solaris_sparc)
   install-shlib-dep	:= install-shlib
   shlib			:= libpq.so.$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
   LDFLAGS_SL		:= -G -z text
+  CFLAGS		+= $(CFLAGS_SL)
+endif
+
+ifeq ($(PORTNAME), solaris_i386)
+  install-shlib-dep	:= install-shlib
+  shlib			:= libpq.so.$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
+  LDFLAGS_SL		:= -G
   CFLAGS		+= $(CFLAGS_SL)
 endif
 
