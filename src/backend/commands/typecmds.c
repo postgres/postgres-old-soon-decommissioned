@@ -1012,12 +1012,12 @@ AlterDomainDefault(List *names, Node *defaultRaw)
 	GenerateTypeDependencies(typTup->typnamespace,
 							 domainoid,
 							 typTup->typrelid,
-							 InvalidOid,
+							 0,	/* relation kind is n/a */
 							 typTup->typinput,
 							 typTup->typoutput,
 							 typTup->typelem,
 							 typTup->typbasetype,
-							 nodeToString(defaultExpr),
+							 defaultExpr,
 							 true); /* Rebuild is true */
 
 	/* Clean up */

@@ -19,6 +19,8 @@
 #ifndef PG_TYPE_H
 #define PG_TYPE_H
 
+#include "nodes/nodes.h"
+
 /* ----------------
  *		postgres.h contains the system type definitions and the
  *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
@@ -537,7 +539,7 @@ DATA(insert OID = 2282 ( opaque			PGNSP PGUID  4 t p t \054 0 0 opaque_in opaque
  */
 extern Oid	TypeShellMake(const char *typeName, Oid typeNamespace);
 
-extern Oid TypeCreate(const char *typeName,
+extern Oid	TypeCreate(const char *typeName,
 		   Oid typeNamespace,
 		   Oid assignedTypeOid,
 		   Oid relationOid,
@@ -558,21 +560,20 @@ extern Oid TypeCreate(const char *typeName,
 		   int32 typNDims,
 		   bool typeNotNull);
 
-extern void
-GenerateTypeDependencies(Oid typeNamespace,
-						 Oid typeObjectId,
-						 Oid relationOid,		/* only for 'c'atalog typeType */
-						 char relationKind,
-						 Oid inputProcedure,
-						 Oid outputProcedure,
-						 Oid elementType,
-						 Oid baseType,
-						 char *defaultTypeBin,	/* cooked rep */
-						 bool rebuild);
-
+extern void GenerateTypeDependencies(Oid typeNamespace,
+									 Oid typeObjectId,
+									 Oid relationOid,
+									 char relationKind,
+									 Oid inputProcedure,
+									 Oid outputProcedure,
+									 Oid elementType,
+									 Oid baseType,
+									 Node *defaultExpr,
+									 bool rebuild);
 
 extern void TypeRename(const char *oldTypeName, Oid typeNamespace,
 		   const char *newTypeName);
+
 extern char *makeArrayTypeName(const char *typeName);
 
 #endif   /* PG_TYPE_H */
