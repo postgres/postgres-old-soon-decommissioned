@@ -318,8 +318,7 @@ MainLoop(FILE *source)
 			}
 
 			/* single-line comment? truncate line */
-			else if ((line[i] == '-' && line[i + thislen] == '-') ||
-					 (line[i] == '/' && line[i + thislen] == '/'))
+			else if (line[i] == '-' && line[i + thislen] == '-')
 			{
 				line[i] = '\0'; /* remove comment */
 				break;
