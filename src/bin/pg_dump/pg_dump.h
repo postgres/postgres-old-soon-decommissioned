@@ -110,6 +110,9 @@ typedef struct _tableInfo
 	bool		hasoids;		/* does it have OIDs? */
 	int			ncheck;			/* # of CHECK expressions */
 	int			ntrig;			/* # of triggers */
+	/* these two are set only if table is a SERIAL column's sequence: */
+	char	   *owning_tab;		/* OID of table owning sequence */
+	int			owning_col;		/* attr # of column owning sequence */
 
 	bool		interesting;	/* true if need to collect more data */
 	bool		dump;			/* true if we want to dump it */
@@ -123,12 +126,13 @@ typedef struct _tableInfo
 	char	  **atttypnames;	/* attribute type names */
 	int		   *atttypmod;		/* type-specific type modifiers */
 	int		   *attstattarget;	/* attribute statistics targets */
+	bool	   *attisdropped;	/* true if attr is dropped; don't dump it */
+	bool	   *attisserial;	/* true if attr is serial or bigserial */
 	/*
 	 * Note: we need to store per-attribute notnull and default stuff for
 	 * all interesting tables so that we can tell which constraints were
 	 * inherited.
 	 */
-	bool	   *attisdropped;	/* true if attr is dropped; don't dump it */
 	bool	   *notnull;		/* Not null constraints on attributes */
 	char	  **adef_expr;		/* DEFAULT expressions */
 	bool	   *inhAttrs;		/* true if each attribute is inherited */
