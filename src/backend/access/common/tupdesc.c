@@ -16,14 +16,16 @@
  *-------------------------------------------------------------------------
  */
 
+#include <stdio.h>
+
 #include "postgres.h"
 
 #include "parser/catalog_utils.h"
 #include "nodes/parsenodes.h"
 #include "utils/builtins.h"
 #include "utils/fcache.h"
-#include "utils/palloc.h"
 #include "utils/tqual.h"
+#include "utils/syscache.h"
 
 #ifndef HAVE_MEMMOVE
 # include "regex/utils.h"
