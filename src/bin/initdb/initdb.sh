@@ -1048,7 +1048,7 @@ $ECHO_N "creating information schema... "$ECHO_C
   # Format version number to format required by information schema (09.08.0007abc).
   major_version=`echo $VERSION | sed 's/^\([0-9]*\).*/00\1/;s/.*\(..\)$/\1/'`
   minor_version=`echo $VERSION | sed 's/^[0-9]*\.\([0-9]*\).*/00\1/;s/.*\(..\)$/\1/'`
-  micro_version=`echo $VERSION | sed 's/^[0-9]*\.[0-9]*\.\([0-9]*\).*/0000\1/;t L;s/.*/0000/;q;: L;s/.*\(....\)$/\1/'`
+  micro_version=`echo $VERSION | sed -e 's/^[0-9]*\.[0-9]*\.\([0-9]*\).*/0000\1/' -e 't L' -e 's/.*/0000/;q' -e ': L' -e 's/.*\(....\)$/\1/'`
   letter_version=`echo $VERSION | sed 's/^.*[0-9]\([^0-9]*\)$/\1/'`
   combined_version="$major_version.$minor_version.$micro_version$letter_version"
 
