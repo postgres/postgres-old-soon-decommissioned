@@ -711,27 +711,14 @@ mdtruncate(Relation reln, int nblocks)
 	MdfdVec    *v;
 
 #ifndef LET_OS_MANAGE_FILESIZE
-	int			curnblk,
-				i,
-				oldsegno,
-				newsegno;
-	char		fname[NAMEDATALEN];
-	char		tname[NAMEDATALEN + 10];
+	int			curnblk;
 
 	curnblk = mdnblocks(reln);
-	oldsegno = curnblk / RELSEG_SIZE;
-	newsegno = nblocks / RELSEG_SIZE;
-
-	StrNCpy(fname, RelationGetRelationName(reln)->data, NAMEDATALEN);
-
-	if (newsegno < oldsegno)
+	if (curnblk / RELSEG_SIZE > 0)
 	{
-		for (i = (newsegno + 1);; i++)
-		{
-			sprintf(tname, "%s.%d", fname, i);
-			if (FileNameUnlink(tname) < 0)
-				break;
-		}
+		elog(NOTICE, "Can't truncate multi-segments relation %s",
+			reln->rd_rel->relname.data);
+		return curnblk;
 	}
 #endif
 
