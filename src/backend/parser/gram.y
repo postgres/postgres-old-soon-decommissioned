@@ -1924,11 +1924,11 @@ OptSeqElem: CACHE NumericOnly
 				}
 			| CYCLE
 				{
-					$$ = makeDefElem("cycle", (Node *)true);
+					$$ = makeDefElem("cycle", (Node *)makeInteger(TRUE));
 				}
 			| NO CYCLE
 				{
-					$$ = makeDefElem("cycle", (Node *)false);
+					$$ = makeDefElem("cycle", (Node *)makeInteger(FALSE));
 				}
 			| INCREMENT opt_by NumericOnly
 				{
