@@ -711,11 +711,11 @@ typedef struct Exception
 									 */ \
 										(len) <= 64) \
 									{ \
-										int32 *i = (int32 *)(start); \
-										int32 *stop = (int32 *)((char *)(start) + (len)); \
+										int32 *_i = (int32 *)(start); \
+										int32 *_stop = (int32 *)((char *)(start) + (len)); \
 										\
-										while (i < stop) \
-											*i++ = 0; \
+										while (_i < _stop) \
+											*_i++ = 0; \
 									} \
 									else \
 										memset((start), (val), (len)); \
