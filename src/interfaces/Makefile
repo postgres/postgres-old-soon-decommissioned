@@ -30,6 +30,7 @@ ifeq ($(HAVE_Cplusplus), true)
 else
 	echo $(HAVE_Cplusplus): No C++
 endif
+	$(MAKE) -C libpgeasy $@
 ifeq ($(USE_TCL), true)
 	$(MAKE) -C libpgtcl $@
 endif
@@ -44,7 +45,6 @@ endif
 ifeq ($(USE_ODBC), true)
 	$(MAKE) -C odbc $@
 endif
-	$(MAKE) -C pgeasy $@
 
 perl5/Makefile: perl5/Makefile.PL
 	cd perl5 && $(PERL) Makefile.PL
