@@ -207,7 +207,7 @@ inet_net_ntop_ipv4(const u_char *src, int bits, char *dst, size_t size)
 
 	/* Format whole octets plus nonzero trailing octets. */
 	tb = (bits == 32) ? 31 : bits;
-	for (b = 0; b <= (tb / 8) || (b < len && *src != 0); b++)
+	for (b = 0; bits != 0 && (b <= (tb / 8) || (b < len && *src != 0)); b++)
 	{
 		if (size < sizeof "255.")
 			goto emsgsize;
