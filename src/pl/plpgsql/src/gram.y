@@ -1589,17 +1589,15 @@ read_sql_construct(int until,
 				break;
 
 			case T_ROW:
-				/* XXX make this work someday */
-				ereport(ERROR,
-						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-						 errmsg("passing a whole row variable into a SQL command is not implemented")));
+				params[nparams] = yylval.row->rowno;
+				snprintf(buf, sizeof(buf), " $%d ", ++nparams);
+				plpgsql_dstring_append(&ds, buf);
 				break;
 
 			case T_RECORD:
-				/* XXX make this work someday */
-				ereport(ERROR,
-						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-						 errmsg("passing a whole record variable into a SQL command is not implemented")));
+				params[nparams] = yylval.rec->recno;
+				snprintf(buf, sizeof(buf), " $%d ", ++nparams);
+				plpgsql_dstring_append(&ds, buf);
 				break;
 
 			default:
@@ -1810,17 +1808,15 @@ make_select_stmt(void)
 				break;
 
 			case T_ROW:
-				/* XXX make this work someday */
-				ereport(ERROR,
-						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-						 errmsg("passing a whole row variable into a SQL command is not implemented")));
+				params[nparams] = yylval.row->rowno;
+				snprintf(buf, sizeof(buf), " $%d ", ++nparams);
+				plpgsql_dstring_append(&ds, buf);
 				break;
 
 			case T_RECORD:
-				/* XXX make this work someday */
-				ereport(ERROR,
-						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-						 errmsg("passing a whole record variable into a SQL command is not implemented")));
+				params[nparams] = yylval.rec->recno;
+				snprintf(buf, sizeof(buf), " $%d ", ++nparams);
+				plpgsql_dstring_append(&ds, buf);
 				break;
 
 			default:
