@@ -11,12 +11,12 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR= ..
-include ../Makefile.global
+SRCDIR= ../..
+include ../../Makefile.global
 
 INCLUDE_OPT= \
-             -I../backend \
-             -I../include \
+             -I../../backend \
+             -I../../include \
              -I$(LIBPQDIR) \
              -I$(TCL_INCDIR)
 
@@ -35,7 +35,7 @@ ifeq ($(PORTNAME), linux)
     endif
     shlib             := libpgtcl.so.1
     install-shlib-dep := install-shlib
-    LDFLAGS           += -L ../libpq -lpq
+    LDFLAGS           += -L ../../libpq -lpq
   endif
 endif
 
