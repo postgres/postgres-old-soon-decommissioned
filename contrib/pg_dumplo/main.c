@@ -11,9 +11,6 @@
 
 #include <errno.h>
 #include <unistd.h>
-#ifdef HAVE_GETOPT_H
-#include <getopt.h>
-#endif
 
 #include "libpq-fe.h"
 #include "libpq/libpq-fs.h"
@@ -24,8 +21,9 @@
 #include "strdup.h"
 #endif
 
-#ifndef HAVE_GETOPT_LONG
 #include "getopt_long.h"
+
+#ifndef HAVE_OPTRESET
 int			optreset;
 #endif
 

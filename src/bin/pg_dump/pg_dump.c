@@ -29,9 +29,6 @@
 #ifdef ENABLE_NLS
 #include <locale.h>
 #endif
-#ifdef HAVE_GETOPT_H
-#include <getopt.h>
-#endif
 #ifdef HAVE_TERMIOS_H
 #include <termios.h>
 #endif
@@ -40,8 +37,9 @@
 #include "strdup.h"
 #endif
 
-#ifndef HAVE_GETOPT_LONG
 #include "getopt_long.h"
+
+#ifndef HAVE_OPTRESET
 int			optreset;
 #endif
 

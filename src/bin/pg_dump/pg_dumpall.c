@@ -17,16 +17,14 @@
 #ifdef ENABLE_NLS
 #include <locale.h>
 #endif
-#ifdef HAVE_GETOPT_H
-#include <getopt.h>
-#endif
 #ifndef HAVE_STRDUP
 #include "strdup.h"
 #endif
 #include <errno.h>
 
-#ifndef HAVE_GETOPT_LONG
 #include "getopt_long.h"
+
+#ifndef HAVE_OPTRESET
 int			optreset;
 #endif
 

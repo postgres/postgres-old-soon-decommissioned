@@ -17,12 +17,9 @@
 #include <win32.h>
 #endif   /* WIN32 */
 
-#ifdef HAVE_GETOPT_H
-#include <getopt.h>
-#endif
-
-#ifndef HAVE_GETOPT_LONG
 #include "getopt_long.h"
+
+#ifndef HAVE_OPTRESET
 int			optreset;
 #endif
 
