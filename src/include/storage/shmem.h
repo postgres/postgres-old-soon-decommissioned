@@ -100,9 +100,9 @@ typedef struct
 extern void SHMQueueInit(SHM_QUEUE *queue);
 extern void SHMQueueElemInit(SHM_QUEUE *queue);
 extern void SHMQueueDelete(SHM_QUEUE *queue);
-extern void SHMQueueInsertTL(SHM_QUEUE *queue, SHM_QUEUE *elem);
-extern void SHMQueueFirst(SHM_QUEUE *queue, Pointer *nextPtrPtr,
-			  SHM_QUEUE *nextQueue);
+extern void SHMQueueInsertBefore(SHM_QUEUE *queue, SHM_QUEUE *elem);
+extern Pointer SHMQueueNext(SHM_QUEUE *queue, SHM_QUEUE *curElem,
+							Size linkOffset);
 extern bool SHMQueueEmpty(SHM_QUEUE *queue);
 
 #endif	 /* SHMEM_H */
