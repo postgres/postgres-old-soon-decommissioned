@@ -107,7 +107,7 @@ DefaultBuild(Relation heapRelation, Relation indexRelation,
  *		AttrNumber		attnum;
  *		uint32			attnelems;
  *		int32			attcacheoff;
- *		int16			atttypmod;
+ *		int32			atttypmod;
  *		bool			attbyval;
  *		bool			attisset;
  *		char			attalign;

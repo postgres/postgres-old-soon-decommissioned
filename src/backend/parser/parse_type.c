@@ -138,7 +138,7 @@ typeTypeFlag(Type t)
 /* Given a type structure and a string, returns the internal form of
    that string */
 char *
-stringTypeString(Type tp, char *string, int16 atttypmod)
+stringTypeString(Type tp, char *string, int32 atttypmod)
 {
 	Oid			op;
 	Oid			typelem;

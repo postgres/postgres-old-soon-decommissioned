@@ -319,7 +319,7 @@ new_relation_targetlist(Oid relid, Index rt_index, NodeTag node_type)
 
 					temp_list = MakeTLE(makeResdom(attno,
 												   atttype,
-											 get_atttypmod(relid, attno),
+												   get_atttypmod(relid, attno),
 												   attname,
 												   0,
 												   (Oid) 0,

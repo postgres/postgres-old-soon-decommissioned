@@ -70,7 +70,7 @@ TupleDescInitEntry(TupleDesc desc,
 				   AttrNumber attributeNumber,
 				   char *attributeName,
 				   Oid typeid,
-				   int16 typmod,
+				   int32 typmod,
 				   int attdim,
 				   bool attisset);
 

@@ -255,7 +255,7 @@ TupleDescInitEntry(TupleDesc desc,
 				   AttrNumber attributeNumber,
 				   char *attributeName,
 				   Oid typeid,
-				   int16 typmod,
+				   int32 typmod,
 				   int attdim,
 				   bool attisset)
 {
@@ -448,7 +448,7 @@ BuildDescForRelation(List *schema, char *relname)
 	TupleConstr *constr = (TupleConstr *) palloc(sizeof(TupleConstr));
 	char	   *attname;
 	char	   *typename;
-	int16		atttypmod;
+	int32		atttypmod;
 	int			attdim;
 	int			ndef = 0;
 	bool		attisset;

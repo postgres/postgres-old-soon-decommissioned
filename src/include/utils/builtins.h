@@ -395,7 +395,7 @@ DateTime   *timestamp_datetime(time_t timestamp);
 time_t		datetime_timestamp(DateTime *datetime);
 
 /* varchar.c */
-extern char *bpcharin(char *s, int dummy, int16 atttypmod);
+extern char *bpcharin(char *s, int dummy, int32 atttypmod);
 extern char *bpcharout(char *s);
 extern char *bpchar(char *s, int32 slen);
 extern char *char_bpchar(int32 c);
@@ -413,7 +413,7 @@ extern int32 bpcharlen(char *arg);
 extern int32 bpcharoctetlen(char *arg);
 extern uint32 hashbpchar(struct varlena * key);
 
-extern char *varcharin(char *s, int dummy, int16 atttypmod);
+extern char *varcharin(char *s, int dummy, int32 atttypmod);
 extern char *varcharout(char *s);
 extern char *varchar(char *s, int32 slen);
 extern bool varchareq(char *arg1, char *arg2);

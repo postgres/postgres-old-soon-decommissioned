@@ -21,6 +21,6 @@
 extern Node *transformExpr(ParseState *pstate, Node *expr, int precedence);
 extern Node *transformIdent(ParseState *pstate, Node *expr, int precedence);
 extern Oid	exprType(Node *expr);
-extern Node *parser_typecast2(Node *expr, Oid exprType, Type tp, int16 attypmod);
+extern Node *parser_typecast2(Node *expr, Oid exprType, Type tp, int32 attypmod);
 
 #endif							/* PARSE_EXPR_H */

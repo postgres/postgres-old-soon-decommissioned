@@ -26,7 +26,7 @@ extern int16 typeLen(Type t);
 extern bool typeByVal(Type t);
 extern char *typeTypeName(Type t);
 extern char typeTypeFlag(Type t);
-extern char *stringTypeString(Type tp, char *string, int16 atttypmod);
+extern char *stringTypeString(Type tp, char *string, int32 atttypmod);
 extern Oid	typeidOutfunc(Oid type_id);
 extern Oid	typeidTypeRelid(Oid type_id);
 extern Oid	typeTypeRelid(Type typ);
