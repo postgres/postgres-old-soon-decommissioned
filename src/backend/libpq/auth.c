@@ -403,11 +403,8 @@ hba_recvauth(struct sockaddr_in *addr, PacketBuf *pbuf, StartupInfo *sp)
     char *conf_file;
 
     /* put together the full pathname to the config file */
-    conf_file = (char *) malloc((strlen(GetPGData())+strlen(CONF_FILE)+2)*sizeof(char));
-    strcpy(conf_file, GetPGData());
-    strcat(conf_file, "/");
-    strcat(conf_file, CONF_FILE);
-    
+    conf_file = (char *) malloc((strlen(DataDir)+strlen(CONF_FILE)+2)*sizeof(char));
+    sprintf(conf_file, "%s/%s", DataDir, CONF_FILE);
 
     /* Open the config file. */
     file = fopen(conf_file, "r");
@@ -463,7 +460,10 @@ hba_recvauth(struct sockaddr_in *addr, PacketBuf *pbuf, StartupInfo *sp)
     }
     else 
     {  (void) sprintf(PQerrormsg,
-			   "hba_recvauth: config file does not exist or permissions are not setup correctly!\n");
+                      "hba_recvauth: Host-based authentication config file "
+                      "does not exist or permissions are not setup correctly! "
+                      "Unable to open file \"%s\".\n", 
+                      conf_file);
 	    fputs(PQerrormsg, stderr);
 	    pqdebug("%s", PQerrormsg);
 	free(conf_file);
