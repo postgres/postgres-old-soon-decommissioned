@@ -200,6 +200,9 @@ ifeq ($(PORTNAME), beos)
   SHLIB_LINK		+= -ltermcap -lstdc++.r4 -lbind -lsocket -L/boot/develop/lib/x86
 endif
 
+# Pull in any extra -L options that the user might have specified.
+SHLIB_LINK := $(filter -L%, $(LDFLAGS)) $(SHLIB_LINK)
+
 endif # enable_shared
 
 
