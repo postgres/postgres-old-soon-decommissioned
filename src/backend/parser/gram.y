@@ -2459,11 +2459,16 @@ opt_class:  class
 					 *
 					 * Release 7.1 removes lztext_ops, so suppress that too
 					 * for a while.  tgl 2000/07/30
+					 *
+					 * Release 7.2 renames timestamp_ops to timestamptz_ops,
+					 * so suppress that too for awhile.  I'm starting to
+					 * think we need a better approach.  tgl 2000/10/01
 					 */
 					if (strcmp($1, "network_ops") != 0 &&
 						strcmp($1, "timespan_ops") != 0 &&
 						strcmp($1, "datetime_ops") != 0 &&
-						strcmp($1, "lztext_ops") != 0)
+						strcmp($1, "lztext_ops") != 0 &&
+						strcmp($1, "timestamp_ops") != 0)
 						$$ = $1;
 					else
 						$$ = NULL;
