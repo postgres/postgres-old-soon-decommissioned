@@ -68,7 +68,7 @@ extern bool equalTupleDescs(TupleDesc tupdesc1, TupleDesc tupdesc2);
 extern bool TupleDescInitEntry(TupleDesc desc,
 				   AttrNumber attributeNumber,
 				   char *attributeName,
-				   Oid typeid,
+				   Oid oidtypeid,
 				   int32 typmod,
 				   int attdim,
 				   bool attisset);

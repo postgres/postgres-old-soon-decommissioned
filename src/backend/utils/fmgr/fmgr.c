@@ -28,6 +28,7 @@
  *
  * XXX: use of global fmgr_pl_finfo variable is really ugly.  FIXME
  */
+FmgrInfo        *fmgr_pl_finfo;
 
 static char *
 fmgr_pl(char *arg0,...)

@@ -304,7 +304,7 @@ bool
 TupleDescInitEntry(TupleDesc desc,
 				   AttrNumber attributeNumber,
 				   char *attributeName,
-				   Oid typeid,
+				   Oid oidtypeid,
 				   int32 typmod,
 				   int attdim,
 				   bool attisset)
@@ -378,7 +378,7 @@ TupleDescInitEntry(TupleDesc desc,
 	 * ----------------
 	 */
 	tuple = SearchSysCacheTuple(TYPEOID,
-								ObjectIdGetDatum(typeid),
+								ObjectIdGetDatum(oidtypeid),
 								0, 0, 0);
 	if (!HeapTupleIsValid(tuple))
 	{
@@ -431,7 +431,7 @@ TupleDescInitEntry(TupleDesc desc,
 	   */
 	if (attisset)
 	{
-		Type		t = typeidType(OIDOID);
+		Type		t = oidtypeidType(OIDOID);
 
 		att->attlen = typeLen(t);
 		att->attbyval = typeByVal(t);

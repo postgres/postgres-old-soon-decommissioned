@@ -136,7 +136,7 @@ extern void load_file(char *filename);
  */
 
 /* We don't make this static so fmgr_faddr() macros can access it */
-FmgrInfo        *fmgr_pl_finfo;
+extern FmgrInfo        *fmgr_pl_finfo;
 
 #define fmgr_faddr(finfo) \
 ( \
