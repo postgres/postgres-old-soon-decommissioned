@@ -187,6 +187,12 @@ typedef struct CopyStmt
 
 /* ----------------------
  *		Create Table Statement
+ *
+ * NOTE: in the raw gram.y output, ColumnDef, Constraint, and FkConstraint
+ * nodes are intermixed in tableElts, and constraints is NIL.  After parse
+ * analysis, tableElts contains just ColumnDefs, and constraints contains
+ * just Constraint nodes (in fact, only CONSTR_CHECK nodes, in the present
+ * implementation).
  * ----------------------
  */
 typedef struct CreateStmt
@@ -196,8 +202,7 @@ typedef struct CreateStmt
 	List	   *tableElts;		/* column definitions (list of ColumnDef) */
 	List	   *inhRelnames;	/* relations to inherit from (list of
 								 * T_String Values) */
-	List	   *constraints;	/* constraints (list of Constraint and
-								 * FkConstraint nodes) */
+	List	   *constraints;	/* constraints (list of Constraint nodes) */
 	bool		istemp;			/* is this a temp table? */
 	bool		hasoids;		/* should it have OIDs? */
 } CreateStmt;

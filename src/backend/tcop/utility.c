@@ -450,7 +450,7 @@ ProcessUtility(Node *parsetree,
 					case 'C':	/* ADD CONSTRAINT */
 						AlterTableAddConstraint(stmt->relname,
 										interpretInhOption(stmt->inhOpt),
-												stmt->def);
+												(List *) stmt->def);
 						break;
 					case 'X':	/* DROP CONSTRAINT */
 						AlterTableDropConstraint(stmt->relname,
