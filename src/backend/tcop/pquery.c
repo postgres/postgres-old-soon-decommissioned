@@ -728,6 +728,23 @@ PortalRunMulti(Portal portal,
 	List	   *querylist_item;
 
 	/*
+	 * If the destination is RemoteExecute, change to None.  The reason
+	 * is that the client won't be expecting any tuples, and indeed has no
+	 * way to know what they are, since there is no provision for Describe
+	 * to send a RowDescription message when this portal execution strategy
+	 * is in effect.  This presently will only affect SELECT commands added
+	 * to non-SELECT queries by rewrite rules: such commands will be executed,
+	 * but the results will be discarded unless you use "simple Query"
+	 * protocol.
+	 */
+	if (dest->mydest == RemoteExecute ||
+		dest->mydest == RemoteExecuteInternal)
+		dest = None_Receiver;
+	if (altdest->mydest == RemoteExecute ||
+		altdest->mydest == RemoteExecuteInternal)
+		altdest = None_Receiver;
+
+	/*
 	 * Loop to handle the individual queries generated from a
 	 * single parsetree by analysis and rewrite.
 	 */
