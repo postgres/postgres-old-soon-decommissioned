@@ -1311,7 +1311,7 @@ dumpBlobs(Archive *AH, char *junkOid, void *junkVal)
 	int			i;
 	int			loFd;
 	char		buf[loBufSize];
-	size_t		cnt;
+	int			cnt;
 	Oid			blobOid;
 
 	if (g_verbose)
