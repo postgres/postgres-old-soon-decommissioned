@@ -163,6 +163,9 @@ typedef struct StatementOptions_
 	int			bind_size;		/* size of each structure if using Row
 								 * Binding */
 	int			use_bookmarks;
+	UInt4			*rowsFetched;
+	UInt2			*rowStatusArray;
+	void			*bookmark_ptr;
 } StatementOptions;
 
 /*	Used to pass extra query info to send_query */
