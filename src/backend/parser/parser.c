@@ -69,10 +69,8 @@ parser(char *str, Oid *typev, int nargs)
     init_io();
     
     /* Set things up to read from the string, if there is one */
-    if (strlen(str) != 0) {
-	parseString = (char *) palloc(strlen(str) + 1);
-	memmove(parseString,str,strlen(str)+1);
-    }
+    parseString = (char *) palloc(strlen(str) + 1);
+    memmove(parseString,str,strlen(str)+1);
     
     parser_init(typev, nargs);
     yyresult = yyparse();
