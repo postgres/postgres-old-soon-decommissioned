@@ -462,7 +462,7 @@ CommentDatabase(List *qualname, char *comment)
 	/* Only allow comments on the current database */
 	if (oid != MyDatabaseId)
 	{
-		ereport(WARNING,
+		ereport(WARNING,	/* throw just a warning so pg_restore doesn't fail */
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 				 errmsg("database comments may only be applied to the current database")));
 		return;
