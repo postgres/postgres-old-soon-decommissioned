@@ -21,6 +21,12 @@
 #include "postgres_fe.h"
 #endif
 
+/* Don't modify declarations in system headers */
+#if defined(WIN32) || defined(__CYGWIN__)
+#undef rename
+#undef unlink
+#endif
+
 #include <unistd.h>
 #include <dirent.h>
 #include <sys/stat.h>
@@ -32,9 +38,6 @@
 #if defined(WIN32) || defined(__CYGWIN__)
 
 #include "miscadmin.h"
-
-#undef rename
-#undef unlink
 
 #ifndef __CYGWIN__
 #include <winioctl.h>
