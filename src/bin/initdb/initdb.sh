@@ -586,16 +586,12 @@ $ECHO_N "creating configuration files... "$ECHO_C
 cp "$PG_HBA_SAMPLE" "$PGDATA"/pg_hba.conf              || exit_nicely
 cp "$PG_IDENT_SAMPLE" "$PGDATA"/pg_ident.conf          || exit_nicely
 (
-  cat "$POSTGRESQL_CONF_SAMPLE"
-  echo
-  echo
-  echo "#"
-  echo "#	Locale settings"
-  echo "#"
-  echo "# (initialized by initdb -- may be changed)"
+  trigger="# These settings are initialized by initdb -- they may be changed"
+  sed -n "1,/$trigger/p" "$POSTGRESQL_CONF_SAMPLE"
   for cat in MESSAGES MONETARY NUMERIC TIME; do
     echo "LC_$cat = '`pg_getlocale $cat`'"
   done
+  sed -n "1,/$trigger/!p" "$POSTGRESQL_CONF_SAMPLE"
 ) > "$PGDATA"/postgresql.conf || exit_nicely
 
 chmod 0600 "$PGDATA"/pg_hba.conf "$PGDATA"/pg_ident.conf \
