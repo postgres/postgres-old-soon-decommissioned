@@ -28,7 +28,8 @@ extern sigset_t UnBlockSig,
 #define PG_SETMASK(mask)	sigprocmask(SIG_SETMASK, mask, NULL)
 #else
 extern int	UnBlockSig,
-			BlockSig;
+			BlockSig,
+			AuthBlockSig;
 
 #define PG_SETMASK(mask)	sigsetmask(*((int*)(mask)))
 #endif
