@@ -196,7 +196,7 @@ describeTypes(const char *pattern, bool verbose)
 	if (verbose)
 		appendPQExpBuffer(&buf,
 				 "  t.typname AS \"%s\",\n"
-				 "  CASE WHEN t.typlen = -1\n"
+				 "  CASE WHEN t.typlen < 0\n"
 				 "    THEN CAST('var' AS pg_catalog.text)\n"
 				 "    ELSE CAST(t.typlen AS pg_catalog.text)\n"
 				 "  END AS \"%s\",\n",

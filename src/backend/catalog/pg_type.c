@@ -157,14 +157,25 @@ TypeCreate(const char *typeName,
 	int			i;
 
 	/*
-	 * validate size specifications: either positive (fixed-length) or -1
-	 * (variable-length).
+	 * We assume that the caller validated the arguments individually,
+	 * but did not check for bad combinations.
+	 *
+	 * Validate size specifications: either positive (fixed-length) or -1
+	 * (varlena) or -2 (cstring).  Pass-by-value types must have a fixed
+	 * length not more than sizeof(Datum).
 	 */
-	if (!(internalSize > 0 || internalSize == -1))
+	if (!(internalSize > 0 ||
+		  internalSize == -1 ||
+		  internalSize == -2))
+		elog(ERROR, "TypeCreate: invalid type internal size %d",
+			 internalSize);
+	if (passedByValue &&
+		(internalSize <= 0 || internalSize > (int16) sizeof(Datum)))
 		elog(ERROR, "TypeCreate: invalid type internal size %d",
 			 internalSize);
 
-	if (internalSize != -1 && storage != 'p')
+	/* Only varlena types can be toasted */
+	if (storage != 'p' && internalSize != -1)
 		elog(ERROR, "TypeCreate: fixed size types must have storage PLAIN");
 
 	/*

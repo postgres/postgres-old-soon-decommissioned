@@ -92,6 +92,7 @@
 #include "catalog/pg_amproc.h"
 #include "catalog/pg_operator.h"
 #include "miscadmin.h"
+#include "utils/datum.h"
 #include "utils/fmgroids.h"
 #include "utils/logtape.h"
 #include "utils/lsyscache.h"
@@ -607,16 +608,14 @@ tuplesort_putdatum(Tuplesortstate *state, Datum val, bool isNull)
 	}
 	else
 	{
-		int			datalen = state->datumTypeLen;
-		int			tuplelen;
+		Size		datalen;
+		Size		tuplelen;
 		char	   *newVal;
 
-		if (datalen == -1)		/* variable length type? */
-			datalen = VARSIZE((struct varlena *) DatumGetPointer(val));
+		datalen = datumGetSize(val, false, state->datumTypeLen);
 		tuplelen = datalen + MAXALIGN(sizeof(DatumTuple));
-		newVal = (char *) palloc(tuplelen);
-		tuple = (DatumTuple *) newVal;
-		newVal += MAXALIGN(sizeof(DatumTuple));
+		tuple = (DatumTuple *) palloc(tuplelen);
+		newVal = ((char *) tuple) + MAXALIGN(sizeof(DatumTuple));
 		memcpy(newVal, DatumGetPointer(val), datalen);
 		tuple->val = PointerGetDatum(newVal);
 		tuple->isNull = false;
@@ -959,14 +958,7 @@ tuplesort_getdatum(Tuplesortstate *state, bool forward,
 	}
 	else
 	{
-		int			datalen = state->datumTypeLen;
-		char	   *newVal;
-
-		if (datalen == -1)		/* variable length type? */
-			datalen = VARSIZE((struct varlena *) DatumGetPointer(tuple->val));
-		newVal = (char *) palloc(datalen);
-		memcpy(newVal, DatumGetPointer(tuple->val), datalen);
-		*val = PointerGetDatum(newVal);
+		*val = datumCopy(tuple->val, false, state->datumTypeLen);
 		*isNull = false;
 	}
 
@@ -1959,10 +1951,9 @@ writetup_datum(Tuplesortstate *state, int tapenum, void *tup)
 		tuplen = sizeof(DatumTuple);
 	else
 	{
-		int			datalen = state->datumTypeLen;
+		Size		datalen;
 
-		if (datalen == -1)		/* variable length type? */
-			datalen = VARSIZE((struct varlena *) DatumGetPointer(tuple->val));
+		datalen = datumGetSize(tuple->val, false, state->datumTypeLen);
 		tuplen = datalen + MAXALIGN(sizeof(DatumTuple));
 	}
 

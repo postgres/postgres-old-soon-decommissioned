@@ -3504,8 +3504,8 @@ needs_toast_table(Relation rel)
 
 	for (i = 0; i < tupdesc->natts; i++)
 	{
-		data_length = att_align(data_length, att[i]->attlen, att[i]->attalign);
-		if (att[i]->attlen >= 0)
+		data_length = att_align(data_length, att[i]->attalign);
+		if (att[i]->attlen > 0)
 		{
 			/* Fixed-length types are never toastable */
 			data_length += att[i]->attlen;

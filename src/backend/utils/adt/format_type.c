@@ -149,7 +149,7 @@ format_type_internal(Oid type_oid, int32 typemod,
 	array_base_type = typeform->typelem;
 
 	if (array_base_type != InvalidOid &&
-		typeform->typlen < 0 &&
+		typeform->typlen == -1 &&
 		typeform->typtype != 'd')
 	{
 		/* Switch our attention to the array element type */
@@ -411,11 +411,11 @@ format_type_internal(Oid type_oid, int32 typemod,
 
 
 /*
- * type_maximum_size --- determine maximum width of a varlena column
+ * type_maximum_size --- determine maximum width of a variable-width column
  *
  * If the max width is indeterminate, return -1.  In particular, we return
  * -1 for any type not known to this routine.  We assume the caller has
- * already determined that the type is a varlena type, so it's not
+ * already determined that the type is a variable-width type, so it's not
  * necessary to look up the type's pg_type tuple here.
  *
  * This may appear unrelated to format_type(), but in fact the two routines

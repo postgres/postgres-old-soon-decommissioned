@@ -457,9 +457,15 @@ printtup_internal(HeapTuple tuple, TupleDesc typeinfo, DestReceiver *self)
 		}
 		else
 		{
-			/* fixed size */
+			/* fixed size or cstring */
 			attr = origattr;
 			len = typeinfo->attrs[i]->attlen;
+			if (len <= 0)
+			{
+				/* it's a cstring */
+				Assert(len == -2 && !typeinfo->attrs[i]->attbyval);
+				len = strlen(DatumGetCString(attr)) + 1;
+			}
 			pq_sendint(&buf, len, sizeof(int32));
 			if (typeinfo->attrs[i]->attbyval)
 			{
