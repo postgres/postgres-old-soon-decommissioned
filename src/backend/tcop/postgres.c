@@ -945,7 +945,7 @@ PostgresMain(int argc, char *argv[])
 	DataDir = getenv("PGDATA"); /* default */
 	multiplexedBackend = false; /* default */
 
-	while ((flag = getopt(argc, argv, "B:bCD:d:Eef:iK:Lm:MNo:P:pQSst:x:F"))
+	while ((flag = getopt(argc, argv, "B:bCD:d:Eef:iK:Lm:MNo:P:pQS:st:x:F"))
 		   != EOF)
 		switch (flag)
 		{
@@ -1385,7 +1385,7 @@ PostgresMain(int argc, char *argv[])
 	if (IsUnderPostmaster == false)
 	{
 		puts("\nPOSTGRES backend interactive interface");
-		puts("$Revision: 1.45 $ $Date: 1997/09/08 21:47:51 $");
+		puts("$Revision: 1.46 $ $Date: 1997/09/15 14:28:16 $");
 	}
 
 	/* ----------------
