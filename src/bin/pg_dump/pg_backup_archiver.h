@@ -68,7 +68,7 @@ typedef z_stream *z_streamp;
 
 #define K_VERS_MAJOR 1
 #define K_VERS_MINOR 5
-#define K_VERS_REV 2 
+#define K_VERS_REV 3 
 
 /* Data block types */
 #define BLK_DATA 1

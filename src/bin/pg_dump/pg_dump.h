@@ -88,6 +88,11 @@ typedef struct _tableInfo
 	char	   *relname;
 	char	   *relacl;
 	char	   *viewdef;
+	char	   *viewoid;		/* OID of view - should be >= oid of table
+								 * important because views may be constructed 
+								 * manually from rules, and rule may ref things
+								 * created after the base table was created. 
+								 */
 	bool		sequence;
 	int			numatts;		/* number of attributes */
 	int		   *inhAttrs;		/* an array of flags, one for each
