@@ -46,8 +46,11 @@ extern DLLIMPORT MemoryContext CurrentMemoryContext;
  * Fundamental memory-allocation operations (more are in utils/memutils.h)
  */
 extern void *MemoryContextAlloc(MemoryContext context, Size size);
+extern void *MemoryContextAllocZero(MemoryContext context, Size size);
 
 #define palloc(sz)	MemoryContextAlloc(CurrentMemoryContext, (sz))
+
+#define palloc0(sz)	MemoryContextAllocZero(CurrentMemoryContext, (sz))
 
 extern void pfree(void *pointer);
 
