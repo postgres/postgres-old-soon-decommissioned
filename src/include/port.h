@@ -50,6 +50,11 @@ extern int	pgunlink(const char *path);
 #endif
 
 #ifdef WIN32
+
+/* open() replacement to allow delete of held files */
+extern int	win32_open(const char*,int,...);
+#define 	open(a,b,...)	win32_open(a,b,##__VA_ARGS__)
+
 extern int	copydir(char *fromdir, char *todir);
 
 /* Missing rand functions */

@@ -23,7 +23,7 @@ override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) $(THREAD_CPPFLAGS) -DFRONTEND -DSYS
 OBJS= fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
       fe-protocol2.o fe-protocol3.o pqexpbuffer.o pqsignal.o fe-secure.o \
       dllist.o md5.o ip.o wchar.o encnames.o \
-      $(filter crypt.o getaddrinfo.o inet_aton.o noblock.o snprintf.o strerror.o path.o thread.o, $(LIBOBJS))
+      $(filter crypt.o getaddrinfo.o inet_aton.o noblock.o snprintf.o strerror.o open.o path.o thread.o, $(LIBOBJS))
 ifeq ($(PORTNAME), win32)
 OBJS+=win32.o
 endif
@@ -52,7 +52,7 @@ backend_src = $(top_srcdir)/src/backend
 # For port modules, this only happens if configure decides the module
 # is needed (see filter hack in OBJS, above).
 
-crypt.c getaddrinfo.c inet_aton.c noblock.c snprintf.c strerror.c path.c thread.c: % : $(top_srcdir)/src/port/%
+crypt.c getaddrinfo.c inet_aton.c noblock.c snprintf.c strerror.c open.c path.c thread.c: % : $(top_srcdir)/src/port/%
 	rm -f $@ && $(LN_S) $< .
 
 md5.c ip.c: % : $(backend_src)/libpq/%
