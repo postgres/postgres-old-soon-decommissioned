@@ -21,7 +21,7 @@
 #include "postgres.h"
 
 #include <errno.h>
-#ifndef HAS_TEST_AND_SET
+#if !defined(HAS_TEST_AND_SET) && defined(HAVE_SYS_SEM_H)
 #include <sys/sem.h>
 #endif
 

@@ -10,7 +10,7 @@
 #include <mach-o/dyld.h>
 #include "dynloader.h"
 
-void *pg_dlopen(const char *filename)
+void *pg_dlopen(char *filename)
 {
 	NSObjectFileImage image;
 
@@ -26,18 +26,26 @@ void pg_dlclose(void *handle)
 	return;
 }
 
-PGFunction pg_dlsym(void *handle, const char *funcname)
+PGFunction pg_dlsym(void *handle, char *funcname)
 {
 	NSSymbol symbol;
 	char *symname = (char*)malloc(strlen(funcname)+2);
 
 	sprintf(symname, "_%s", funcname);
-	symbol = NSLookupAndBindSymbol(symname);
-	free(symname);
-	return (PGFunction) NSAddressOfSymbol(symbol);
+	if (NSIsSymbolNameDefined(symname))
+	{
+		symbol = NSLookupAndBindSymbol(symname);
+		free(symname);
+		return (PGFunction) NSAddressOfSymbol(symbol);
+	}
+	else
+	{
+		free(symname);
+		return (PGFunction)NULL;
+	}
 }
 
-const char *pg_dlerror(void)
+char *pg_dlerror(void)
 {
 	return "no error message available";
 }

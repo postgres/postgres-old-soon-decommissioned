@@ -61,6 +61,10 @@
 #include <sys/sem.h>
 #endif
 
+#if defined(__darwin__)
+#include "port/darwin/sem.h"
+#endif
+
 #include "miscadmin.h"
 
 
@@ -70,6 +74,7 @@
 #endif
 
 #include "storage/proc.h"
+
 
 void		HandleDeadLock(SIGNAL_ARGS);
 static void ProcFreeAllSemaphores(void);

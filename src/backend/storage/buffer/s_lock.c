@@ -119,6 +119,35 @@ _success:			\n\
 
 #endif	 /* __m68k__ */
 
+#if defined(__APPLE__) && defined(__ppc__)
+/* used in darwin. */
+/* We key off __APPLE__ here because this function differs from
+ * the LinuxPPC implementation only in compiler syntax. 
+ */
+static void
+tas_dummy()
+{
+       __asm__("               \n\
+               .globl  tas     \n\
+               .globl  _tas    \n\
+_tas:                          \n\
+tas:                           \n\
+               lwarx   r5,0,r3 \n\
+               cmpwi   r5,0    \n\
+               bne     fail    \n\
+               addi    r5,r5,1 \n\
+               stwcx.  r5,0,r3 \n\
+               beq     success \n\
+fail:          li      r3,1    \n\
+               blr             \n\
+success:                       \n\
+               li r3,0         \n\
+               blr             \n\
+	");
+}
+
+#endif  /* __APPLE__ && __ppc__ */
+
 #if defined(__powerpc__)
 /* Note: need a nice gcc constrained asm version so it can be inlined */
 static void
