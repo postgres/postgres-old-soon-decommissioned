@@ -831,7 +831,16 @@ cppline			{space}*#(.*\\{space})*.*
 							i > 0 && isspace((unsigned char) yytext[i]);
 							i-- )
 					  		{}
-					  	yytext[i+1] = '\0';
+
+						/* Remove trailing '"' if it exists */
+						if (yytext[i] == '"') 
+							yytext[i] = '\0';
+						else
+						  	yytext[i+1] = '\0';
+
+						/* also remove starting '"' */
+						if (yytext[0] == '"')
+							memmove(yytext, yytext+1, strlen(yytext));
 
 					  	yyin = NULL;
 					  	for (ip = include_paths; yyin == NULL && ip != NULL; ip = ip->next)
