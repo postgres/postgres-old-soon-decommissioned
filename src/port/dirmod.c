@@ -38,6 +38,13 @@
 #undef rename
 #undef unlink
 
+#ifndef FRONTEND
+#define palloc(sz)		pgport_palloc(sz)
+#define pstrdup(str)	pgport_pstrdup(str)
+#define pfree(pointer)	pgport_pfree(pointer)
+#endif
+
+
 /*
  *	pgrename
  */

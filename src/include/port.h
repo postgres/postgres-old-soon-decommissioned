@@ -151,6 +151,7 @@ extern int	pgsymlink(const char *oldpath, const char *newpath);
 #define rename(from, to)		pgrename(from, to)
 #define unlink(path)			pgunlink(path)
 #define symlink(oldpath, newpath)	pgsymlink(oldpath, newpath)
+
 #endif
 
 extern bool rmtree(char *path, bool rmtopdir);
