@@ -229,9 +229,6 @@ do
 	fi
 done
 
-rm -r data/pg_clog
-mv -f $OLDDIR/pg_clog data
-
 echo "You must stop/start the postmaster before doing anything else."
 echo "You may remove the $OLDDIR directory with 'rm -r $OLDDIR'."
 
