@@ -49,12 +49,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/fcntl.h>
 #include <stddef.h>
 #include <stdarg.h>
 
 #ifdef __CYGWIN32__
 #include <errno.h>
+#include <sys/fcntl.h>		/* ensure O_BINARY is available */
 #endif
 
 /* ----------------------------------------------------------------
