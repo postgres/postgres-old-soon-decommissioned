@@ -4785,7 +4785,11 @@ common_type: simple_type
 				$$.type_str = make_str("decimal");
 			}
 			else
+			{
 				mmerror(PARSE_ERROR, ET_ERROR, "Only numeric/decimal have precision/scale argument");
+				$$.type_enum = ECPGt_numeric;
+				$$.type_str = make_str("numeric");
+			}
 			
 			$$.type_dimension = make_str("-1");
 			$$.type_index = make_str("-1");
