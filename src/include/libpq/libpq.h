@@ -262,6 +262,7 @@ extern int      pq_getchar(void);
 extern int      pq_peekchar(void);
 extern int	pq_getnchar(char *s, int off, int maxlen);
 extern int	pq_getint(int b);
+extern int  pq_putchar(char c);
 extern void pq_putstr(char *s);
 extern void pq_putnchar(char *s, int n);
 extern void pq_putint(int i, int b);

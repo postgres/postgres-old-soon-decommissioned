@@ -152,7 +152,7 @@ typedef struct CancelRequestPacket
 }			CancelRequestPacket;
 
 
-/* in pqcompriv.c */
+/* in pqcomprim.c */
 int			pqGetShort(int *, FILE *);
 int			pqGetLong(int *, FILE *);
 int			pqGetNBytes(char *, size_t, FILE *);
