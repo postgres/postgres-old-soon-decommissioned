@@ -133,6 +133,7 @@ extern bool VacuumRunning;
 
 extern void vc_abort(void);
 extern void vacuum(char *vacrel, bool verbose, bool analyze, List *anal_cols);
+extern void analyze_rel(Oid relid, List *anal_cols2, int MESSAGE_LEVEL);
 
 #define ATTNVALS_SCALE	1000000000		/* XXX so it can act as a float4 */
 
