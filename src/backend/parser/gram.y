@@ -563,7 +563,7 @@ VariableSetStmt:  SET ColId TO var_value
 				}
 		| SET NAMES encoding
 				{
-#ifdef MB
+#ifdef MULTIBYTE
 					VariableSetStmt *n = makeNode(VariableSetStmt);
 					n->name  = "client_encoding";
 					n->value = $3;
