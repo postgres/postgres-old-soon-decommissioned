@@ -16,14 +16,12 @@ OBJS = encnames.o conv.o mbutils.o wchar.o wstrcmp.o wstrncmp.o
 DIRS = conversion_procs
 
 all install installdirs uninstal distprep: SUBSYS.o
-	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
 
 clean distclean maintainer-clean:
 	rm -f SUBSYS.o $(OBJS)
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@; done
 
 SUBSYS.o: $(OBJS)
-	@for dir in $(DIRS); do $(MAKE) -C $$dir all || exit; done
 	$(LD) $(LDREL) $(LDOUT) $@ $^
 
 depend dep:
