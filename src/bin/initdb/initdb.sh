@@ -974,7 +974,7 @@ CREATE VIEW pg_stat_database AS \
 
 CREATE VIEW pg_locks AS \
     SELECT * \
-    FROM pg_lock_status() AS L(object oid, class oid, database oid, \
+    FROM pg_lock_status() AS L(relation oid, database oid, \
 	transaction xid, pid int4, mode text, granted boolean);
 
 CREATE VIEW pg_settings AS \

@@ -62,8 +62,4 @@ extern void UnlockPage(Relation relation, BlockNumber blkno, LOCKMODE lockmode);
 extern void XactLockTableInsert(TransactionId xid);
 extern void XactLockTableWait(TransactionId xid);
 
-/* Lock an arbitrary database object in the current database */
-extern void LockObject(Oid objId, Oid classId, LOCKMODE lockmode);
-extern void UnlockObject(Oid objId, Oid classId, LOCKMODE lockmode);
-
 #endif   /* LMGR_H */
