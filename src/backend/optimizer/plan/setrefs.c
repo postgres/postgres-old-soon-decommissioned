@@ -36,11 +36,9 @@
 static void set_join_tlist_references(Join *join);
 static void set_tempscan_tlist_references(SeqScan *tempscan);
 static void set_temp_tlist_references(Temp *temp);
-static List *
-replace_clause_joinvar_refs(Expr *clause,
+static List *replace_clause_joinvar_refs(Expr *clause,
 							List *outer_tlist, List *inner_tlist);
-static List *
-replace_subclause_joinvar_refs(List *clauses,
+static List *replace_subclause_joinvar_refs(List *clauses,
 							   List *outer_tlist, List *inner_tlist);
 static Var *replace_joinvar_refs(Var *var, List *outer_tlist, List *inner_tlist);
 static List *tlist_temp_references(Oid tempid, List *tlist);

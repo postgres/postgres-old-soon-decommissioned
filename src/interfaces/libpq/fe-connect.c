@@ -1331,7 +1331,6 @@ PQuntrace(PGconn *conn)
 	if (conn->Pfdebug)
 	{
 		fflush(conn->Pfdebug);
-		fclose(conn->Pfdebug);
 		conn->Pfdebug = NULL;
 	}
 }
