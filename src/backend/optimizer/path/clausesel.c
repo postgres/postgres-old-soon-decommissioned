@@ -194,9 +194,11 @@ clauselist_selectivity(Query *root,
 			else
 			{
 				/* One or both is probably a default estimate,
-				 * so punt and just merge them in generically.
+				 * so supply a default estimate for the selectivity
+				 * of the range query.  We rather optimistically assume
+				 * that the range is tight...
 				 */
-				s1 *= rqlist->hibound * rqlist->lobound;
+				s1 *= 0.01;
 			}
 		}
 		else
