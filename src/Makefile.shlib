@@ -304,6 +304,10 @@ install-lib: install-lib-static install-lib-shared
 
 install-lib-static: lib$(NAME).a
 	$(INSTALL_STLIB) $< $(DESTDIR)$(libdir)/lib$(NAME).a
+ifeq ($(PORTNAME), darwin)
+	cd $(DESTDIR)$(libdir) && \
+	ranlib lib$(NAME).a
+endif
 
 ifeq ($(enable_shared), yes)
 install-lib-shared: $(shlib)
