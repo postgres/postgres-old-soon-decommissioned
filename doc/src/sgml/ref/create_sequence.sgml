@@ -50,7 +50,6 @@ CREATE [ TEMPORARY | TEMP ] SEQUENCE <replaceable class="parameter">seqname</rep
       </listitem>
      </varlistentry>
 
-    <variablelist>
      <varlistentry>
       <term><replaceable class="parameter">seqname</replaceable></term>
       <listitem>
