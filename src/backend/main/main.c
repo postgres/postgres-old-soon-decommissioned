@@ -15,6 +15,13 @@
 #include <string.h>
 #include <unistd.h>
 
+#ifdef alpha
+#include <sys/sysinfo.h>
+#include <machine/hal_sysinfo.h>
+#define ASSEMBLER
+#include <sys/proc.h>
+#undef ASSEMBLER
+#endif
 #include "postgres.h"
 #ifdef USE_LOCALE
 #include <locale.h>
