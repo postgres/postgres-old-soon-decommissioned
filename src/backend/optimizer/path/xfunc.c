@@ -1423,7 +1423,7 @@ do { \
  **   Just like _copyRel, but doesn't copy the paths
  */
 bool
-xfunc_copyrel(RelOptInfo from, RelOptInfo * to)
+xfunc_copyrel(RelOptInfo from, RelOptInfo *to)
 {
 	RelOptInfo	newnode;
 

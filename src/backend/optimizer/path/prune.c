@@ -24,7 +24,7 @@
 #include "utils/elog.h"
 
 
-static List *prune_joinrel(RelOptInfo * rel, List *other_rels);
+static List *prune_joinrel(RelOptInfo *rel, List *other_rels);
 
 /*
  * prune-joinrels--
@@ -132,7 +132,7 @@ prune_rel_paths(List *rel_list)
  *
  */
 Path *
-prune_rel_path(RelOptInfo * rel, Path *unorderedpath)
+prune_rel_path(RelOptInfo *rel, Path *unorderedpath)
 {
 	Path	   *cheapest = set_cheapest(rel, rel->pathlist);
 

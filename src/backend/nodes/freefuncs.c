@@ -714,7 +714,7 @@ _freeArrayRef(ArrayRef *node)
  * ----------------
  */
 static void
-_freeRelOptInfo(RelOptInfo * node)
+_freeRelOptInfo(RelOptInfo *node)
 {
 	/* ----------------
 	 *	free remainder of node

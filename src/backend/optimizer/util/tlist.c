@@ -93,7 +93,7 @@ matching_tlvar(Var *var, List *targetlist)
  * CREATES:  new var-node iff no matching var-node exists in targetlist
  */
 void
-add_tl_element(RelOptInfo * rel, Var *var)
+add_tl_element(RelOptInfo *rel, Var *var)
 {
 	Expr	   *oldvar = (Expr *) NULL;
 

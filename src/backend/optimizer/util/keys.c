@@ -54,7 +54,7 @@ static bool equal_indexkey_var(int index_key, Var *var);
  *
  */
 bool
-match_indexkey_operand(int indexkey, Var *operand, RelOptInfo * rel)
+match_indexkey_operand(int indexkey, Var *operand, RelOptInfo *rel)
 {
 	if (IsA(operand, Var) &&
 		(lfirsti(rel->relids) == operand->varno) &&
@@ -80,13 +80,13 @@ equal_indexkey_var(int index_key, Var *var)
 }
 
 /*
- * extract-subkey--
+ * extract-join-subkey--
  *	 Returns the subkey in a join key corresponding to the outer or inner
- *	 lelation.
+ *	 relation.
  *
  */
 Var *
-extract_subkey(JoinKey *jk, int which_subkey)
+extract_join_subkey(JoinKey *jk, int which_subkey)
 {
 	Var		   *retval;
 
@@ -99,7 +99,7 @@ extract_subkey(JoinKey *jk, int which_subkey)
 			retval = jk->inner;
 			break;
 		default:				/* do nothing */
-			elog(DEBUG, "extract_subkey with neither INNER or OUTER");
+			elog(DEBUG, "extract_join_subkey with neither INNER or OUTER");
 			retval = NULL;
 	}
 	return retval;

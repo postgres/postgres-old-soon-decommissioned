@@ -62,7 +62,7 @@ joininfo_member(List *join_relids, List *joininfo_list)
  *
  */
 JoinInfo   *
-find_joininfo_node(RelOptInfo * this_rel, List *join_relids)
+find_joininfo_node(RelOptInfo *this_rel, List *join_relids)
 {
 	JoinInfo   *joininfo = joininfo_member(join_relids,
 										   this_rel->joininfo);

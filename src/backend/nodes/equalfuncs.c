@@ -305,7 +305,7 @@ _equalRestrictInfo(RestrictInfo * a, RestrictInfo * b)
  * RelOptInfo is a subclass of Node.
  */
 static bool
-_equalRelOptInfo(RelOptInfo * a, RelOptInfo * b)
+_equalRelOptInfo(RelOptInfo *a, RelOptInfo *b)
 {
 	Assert(IsA(a, RelOptInfo));
 	Assert(IsA(b, RelOptInfo));

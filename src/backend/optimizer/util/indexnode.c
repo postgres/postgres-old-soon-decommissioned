@@ -33,7 +33,7 @@ static List *find_secondary_index(Query *root, Oid relid);
  *
  */
 List *
-find_relation_indices(Query *root, RelOptInfo * rel)
+find_relation_indices(Query *root, RelOptInfo *rel)
 {
 	if (rel->indexed)
 		return find_secondary_index(root, lfirsti(rel->relids));

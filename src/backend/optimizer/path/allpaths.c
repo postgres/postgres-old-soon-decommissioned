@@ -47,7 +47,7 @@ static void find_rel_paths(Query *root, List *rels);
 static List *find_join_paths(Query *root, List *outer_rels, int levels_needed);
 
 #ifdef OPTIMIZER_DEBUG
-static void debug_print_rel(Query *root, RelOptInfo * rel);
+static void debug_print_rel(Query *root, RelOptInfo *rel);
 
 #endif
 
@@ -405,7 +405,7 @@ print_path(Query *root, Path *path, int indent)
 }
 
 static void
-debug_print_rel(Query *root, RelOptInfo * rel)
+debug_print_rel(Query *root, RelOptInfo *rel)
 {
 	List	   *l;
 
