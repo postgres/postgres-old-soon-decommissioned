@@ -156,7 +156,7 @@ fastgetiattr(IndexTuple tup,
 	     bool *isnull)
 {
     register char		*tp;		/* ptr to att in tuple */
-    register char		*bp;		/* ptr to att in tuple */
+    register char		*bp = NULL;	/* ptr to att in tuple */
     int 			slow;		/* do we have to walk nulls? */
     register int		data_off;	/* tuple data offset */
     
