@@ -36,6 +36,10 @@
 /* XXX should be in a header file */
 extern bool Log_connections;
 
+extern int CheckPointTimeout;
+extern int XLOGbuffers;
+extern int XLOG_DEBUG;
+
 /*
  * Debugging options
  */
@@ -256,6 +260,15 @@ ConfigureNamesInt[] =
 
 	{"unix_socket_permissions", PGC_POSTMASTER,         &Unix_socket_permissions,
 	 0777, 0000, 0777},
+
+	{"checkpoint_timeout", PGC_POSTMASTER,         &CheckPointTimeout,
+	 300, 30, 1800},
+
+	{"wal_buffers", PGC_POSTMASTER,         &XLOGbuffers,
+	 4, 4, INT_MAX},
+
+	{"wal_debug", PGC_POSTMASTER,         &XLOG_DEBUG,
+	 0, 0, 16},
 
     {NULL, 0, NULL, 0, 0, 0}
 };

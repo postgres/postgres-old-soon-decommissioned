@@ -440,7 +440,7 @@ else
 fi
 
 BACKENDARGS="-boot -C -F -D$PGDATA $BACKEND_TALK_ARG"
-FIRSTRUN="-boot -x -C -F -D$PGDATA $BACKEND_TALK_ARG"
+FIRSTRUN="-boot -x1 -C -F -D$PGDATA $BACKEND_TALK_ARG"
 
 echo "Creating template database in $PGDATA/base/1"
 [ "$debug" = yes ] && echo "Running: $PGPATH/postgres $FIRSTRUN template1"
