@@ -48,6 +48,7 @@
 #include "lib/stringinfo.h"
 #include "optimizer/clauses.h"
 #include "optimizer/tlist.h"
+#include "parser/keywords.h"
 #include "parser/parsetree.h"
 #include "utils/builtins.h"
 #include "utils/lsyscache.h"
@@ -1764,8 +1765,8 @@ quote_identifier(char *ident)
 {
 	/*
 	 * Can avoid quoting if ident starts with a lowercase letter and
-	 * contains only lowercase letters, digits, and underscores.
-	 * Otherwise, supply quotes.
+	 * contains only lowercase letters, digits, and underscores,
+	 * *and* is not any SQL keyword.  Otherwise, supply quotes.
 	 */
 	bool		safe;
 	char	   *result;
@@ -1789,6 +1790,21 @@ quote_identifier(char *ident)
 			if (! safe)
 				break;
 		}
+	}
+
+	if (safe)
+	{
+		/*
+		 * Check for keyword.  This test is overly strong, since many of
+		 * the "keywords" known to the parser are usable as column names,
+		 * but the parser doesn't provide any easy way to test for whether
+		 * an identifier is safe or not... so be safe not sorry.
+		 *
+		 * Note: ScanKeywordLookup() expects an all-lower-case input, but
+		 * we've already checked we have that.
+		 */
+		if (ScanKeywordLookup(ident) != NULL)
+			safe = false;
 	}
 
 	if (safe)
