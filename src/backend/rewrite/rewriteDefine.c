@@ -318,6 +318,18 @@ DefineQueryRewrite(RuleStmt *stmt)
 			elog(ERROR, "LIMIT clause not supported in views");
 
 		/*
+		 * DISTINCT on view is not supported
+		 */
+		if (query->uniqueFlag != NULL)
+			elog(ERROR, "DISTINCT not supported in views");
+
+		/*
+		 * ORDER BY in view is not supported
+		 */
+		if (query->sortClause != NIL)
+			elog(ERROR, "ORDER BY not supported in views");
+
+		/*
 		 * ... and finally the rule must be named _RETviewname.
 		 */
 		sprintf(expected_name, "_RET%s", event_obj->relname);
