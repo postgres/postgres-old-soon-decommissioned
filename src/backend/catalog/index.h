@@ -16,6 +16,7 @@
 #include "access/funcindex.h"
 #include "access/itup.h"
 #include "nodes/execnodes.h"
+#include "nodes/parsenodes.h"
 
 
 extern Form_pg_am
@@ -31,13 +32,15 @@ extern void InitIndexStrategy(int numatts,
 extern void index_create(char *heapRelationName, 
 			 char* indexRelationName,
 			 FuncIndexInfo *funcInfo, 
+			 TypeName *IndexKeyType,
 			 Oid accessMethodObjectId,
 			 int numatts, 
 			 AttrNumber attNums[],
 			 Oid classObjectId[], 
 			 uint16 parameterCount,
 			 Datum *parameter, 
-			 Node *predicate);
+			 Node *predicate,
+			 bool islossy);
 
 extern void index_destroy(Oid indexId);
 

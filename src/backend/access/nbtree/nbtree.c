@@ -285,11 +285,16 @@ btbuild(Relation heap,
  *	return an InsertIndexResult to the caller.
  */
 InsertIndexResult
-btinsert(Relation rel, IndexTuple itup)
+btinsert(Relation rel, Datum *datum, char *nulls, ItemPointer ht_ctid)
 {
     BTItem btitem;
+    IndexTuple itup;
     InsertIndexResult res;
     
+    /* generate an index tuple */
+    itup = index_formtuple(RelationGetTupleDescriptor(rel), datum, nulls);
+    itup->t_tid = *ht_ctid;
+
     if (itup->t_info & INDEX_NULL_MASK)
 	return ((InsertIndexResult) NULL);
     
@@ -297,6 +302,7 @@ btinsert(Relation rel, IndexTuple itup)
     
     res = _bt_doinsert(rel, btitem);
     pfree(btitem);
+    pfree(itup);
     
     return (res);
 }

@@ -523,6 +523,19 @@ _equalEState(EState *a, EState *b)
     return (true);
 }
 
+static bool
+_equalTargetEntry(TargetEntry *a, TargetEntry *b)
+{
+    if (!equal(a->resdom,b->resdom))
+      return(false);
+    if (!equal(a->fjoin,b->fjoin))
+      return(false);
+    if (!equal(a->expr,b->expr))
+      return(false);
+  
+    return(true);
+}
+
 
 /*
  *  equal -- are two lists equal?
@@ -581,6 +594,9 @@ equal(void *a, void *b)
 	break;
     case T_Expr:
 	retval = _equalExpr(a, b);
+	break;
+    case T_TargetEntry:
+	retval = _equalTargetEntry(a,b);
 	break;
     case T_Iter:
 	retval = _equalIter(a, b);

@@ -193,16 +193,8 @@ CatalogIndexInsert(Relation *idescs,
 			   nulls,
 			   finfoP);
 	    
-	    newIndxTup = (IndexTuple)index_formtuple(indexDescriptor,
-						     &datum,nulls);
-	    Assert(newIndxTup);
-	    /*
-	     * Doing this structure assignment makes me quake in my boots when I 
-	     * think about portability.
-	     */
-	    newIndxTup->t_tid = heapTuple->t_ctid;
-	    
-	    indexRes = index_insert(idescs[i], newIndxTup);
+	    indexRes = index_insert(idescs[i], &datum, nulls, 
+				    &(heapTuple->t_ctid));
 	    if (indexRes) pfree(indexRes);
 	}
 }

@@ -316,8 +316,11 @@ create_indexscan_node(IndexPath *best_path,
      List 	*indxqual = NIL;
      List 	*qpqual = NIL;
      List 	*fixed_indxqual = NIL;
+     List       *ixid;
      IndexScan 	*scan_node = (IndexScan*)NULL;
-
+     bool       lossy = FALSE;
+     HeapTuple	indexTuple;
+     IndexTupleForm	index;
 
      /*
       * If an 'or' clause is to be used with this index, the indxqual
@@ -340,15 +343,42 @@ create_indexscan_node(IndexPath *best_path,
 			 NIL);
      } 
 
+     /* check and see if any indices are lossy */
+     foreach (ixid, best_path->indexid) {
+         indexTuple = SearchSysCacheTuple(INDEXRELID,
+					  ObjectIdGetDatum(lfirsti(ixid)),
+					  0,0,0);
+	 if (!HeapTupleIsValid(indexTuple))
+	   elog(WARN, "create_plan: index %d not found",
+		lfirsti(ixid));
+	 index = (IndexTupleForm)GETSTRUCT(indexTuple);
+	 if (index->indislossy)
+	   lossy = TRUE;
+     }
+
+
      /*
-      * The qpqual field contains all restrictions except the indxqual.
+      * The qpqual field contains all restrictions not automatically handled
+      * by the index.  Note that for non-lossy indices, the predicates
+      * in the indxqual are handled by the index, while for lossy indices
+      * the indxqual predicates need to be double-checked after the
+      * index fetches the best-guess tuples.
       */
-     if(or_clause((Node*)index_clause))
+     if(or_clause((Node*)index_clause)) {
 	 qpqual = set_difference(scan_clauses,
 				 lcons(index_clause,NIL));
-     else 
+
+	 if (lossy) 
+	   qpqual = nconc(qpqual, 
+			  lcons((List *)copyObject(index_clause),NIL));
+     }
+     else {
 	 qpqual = set_difference(scan_clauses, lfirst(indxqual));
-     
+	 if (lossy) 
+	   qpqual = nconc(qpqual, 
+			  (List *)copyObject(lfirst(indxqual)));
+     }
+
      fixed_indxqual =
 	 (List*)fix_indxqual_references((Node*)indxqual,(Path*)best_path);
 

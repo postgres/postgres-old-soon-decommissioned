@@ -316,11 +316,12 @@ copy_index(Oid OIDOldIndex, Oid OIDNewHeap)
     index_create((NewHeap->rd_rel->relname).data,
 		 NewIndexName, 
 		 finfo,
+- 		 NULL, /* type info is in the old index */
 		 Old_pg_index_relation_Form->relam,
 		 natts, 
 		 Old_pg_index_Form->indkey,
 		 Old_pg_index_Form->indclass,
-		 (uint16)0, (Datum) NULL, NULL);
+		 (uint16)0, (Datum) NULL, NULL, Old_pg_index_Form->indislossy);
 
     heap_close(OldIndex);
     heap_close(NewHeap);

@@ -218,6 +218,7 @@ typedef struct IndexStmt {
     Node		*whereClause;	/* qualifications */
     List		*rangetable;	/* range table, filled in
 					   by transformStmt() */
+    bool                *lossy;         /* is index lossy? */
 } IndexStmt;
 
 /* ----------------------
@@ -655,6 +656,7 @@ typedef struct IndexElem {
     char		*name;		/* name of index */
     List		*args;		/* if not NULL, function index */
     char 		*class;
+    TypeName            *tname;         /* type of index's keys (optional) */
 } IndexElem;
 
 /*

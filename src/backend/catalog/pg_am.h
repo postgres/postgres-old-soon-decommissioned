@@ -103,6 +103,7 @@ DATA(insert OID = 405 (  hash PGUID "o"  1 1 hashgettuple hashinsert hashdelete 
 DATA(insert OID = 402 (  rtree PGUID "o" 8 3 rtgettuple rtinsert rtdelete - - - - rtbeginscan rtrescan rtendscan rtmarkpos rtrestrpos - - rtbuild - - ));
 DATA(insert OID = 403 (  btree PGUID "o" 5 1 btgettuple btinsert btdelete - - - - btbeginscan btrescan btendscan btmarkpos btrestrpos - - btbuild - - ));
 #define BTREE_AM_OID 403
+DATA(insert OID = 783 (  gist PGUID "o" 100 7 gistgettuple gistinsert gistdelete - - - - gistbeginscan gistrescan gistendscan gistmarkpos gistrestrpos - - gistbuild - - ));
 
 BKI_BEGIN
 #ifdef NOBTREE

@@ -527,11 +527,9 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim)
 			       &idatum,
 			       index_nulls,
 			       finfoP[i]);
-		ituple = index_formtuple(itupdescArr[i], &idatum, index_nulls);
-		ituple->t_tid = tuple->t_ctid;
-		indexRes = index_insert(index_rels[i], ituple);
+		indexRes = index_insert(index_rels[i], &idatum, index_nulls,
+					&(tuple->t_ctid));
 		if (indexRes) pfree(indexRes);
-		pfree(ituple);
 	    }
 	}
 	    

@@ -273,11 +273,15 @@ rtbuild(Relation heap,
  *    It doesn't do any work; just locks the relation and passes the buck.
  */
 InsertIndexResult
-rtinsert(Relation r, IndexTuple itup)
+rtinsert(Relation r, Datum *datum, char *nulls, ItemPointer ht_ctid)
 {
     InsertIndexResult res;
+    IndexTuple itup;
     RTSTATE rtState;
 
+    /* generate an index tuple */
+    itup = index_formtuple(RelationGetTupleDescriptor(r), datum, nulls);
+    itup->t_tid = *ht_ctid;
     initRtstate(&rtState, r);
     
     RelationSetLockForWrite(r);

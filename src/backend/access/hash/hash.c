@@ -252,11 +252,17 @@ hashbuild(Relation heap,
  *  to the caller. 
  */
 InsertIndexResult
-hashinsert(Relation rel, IndexTuple itup)
+hashinsert(Relation rel, Datum *datum, char *nulls, ItemPointer ht_ctid)
 {
     HashItem hitem;
+    IndexTuple itup;
     InsertIndexResult res;
     
+
+    /* generate an index tuple */
+    itup = index_formtuple(RelationGetTupleDescriptor(rel), datum, nulls);
+    itup->t_tid = *ht_ctid;
+
     if (itup->t_info & INDEX_NULL_MASK)
 	return ((InsertIndexResult) NULL);
     
@@ -265,6 +271,7 @@ hashinsert(Relation rel, IndexTuple itup)
     res = _hash_doinsert(rel, hitem);
     
     pfree(hitem);
+    pfree(itup);
     
     return (res);
 }

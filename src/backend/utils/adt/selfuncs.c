@@ -583,3 +583,29 @@ rtnpage(Oid operatorObjectId,
     return (btreenpage(operatorObjectId, indrelid, attributeNumber,
 		       constValue, constFlag, nIndexKeys, indexrelid));
 }
+
+float64
+gistsel(Oid operatorObjectId,
+      Oid indrelid,
+      AttrNumber attributeNumber,
+      char *constValue,
+      int32 constFlag,
+      int32 nIndexKeys,
+      Oid indexrelid)
+{
+    return (btreesel(operatorObjectId, indrelid, attributeNumber,
+		     constValue, constFlag, nIndexKeys, indexrelid));
+}
+
+float64
+gistnpage(Oid operatorObjectId,
+	  Oid indrelid,
+	  AttrNumber attributeNumber,
+	  char *constValue,
+	  int32 constFlag,
+	  int32 nIndexKeys,
+	  Oid indexrelid)
+{
+    return (btreenpage(operatorObjectId, indrelid, attributeNumber,
+		       constValue, constFlag, nIndexKeys, indexrelid));
+}
