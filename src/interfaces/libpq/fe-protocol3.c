@@ -1113,7 +1113,15 @@ pqEndcopy3(PGconn *conn)
 	 * error status from the PGconn object.
 	 */
 	if (conn->errorMessage.len > 0)
+	{
+		/* We have to strip the trailing newline ... pain in neck... */
+		char	svLast = conn->errorMessage.data[conn->errorMessage.len-1];
+
+		if (svLast == '\n')
+			conn->errorMessage.data[conn->errorMessage.len-1] = '\0';
 		PGDONOTICE(conn, conn->errorMessage.data);
+		conn->errorMessage.data[conn->errorMessage.len-1] = svLast;
+	}
 
 	PQclear(result);
 

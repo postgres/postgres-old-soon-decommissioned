@@ -1183,15 +1183,30 @@ pqEndcopy2(PGconn *conn)
 	}
 
 	/*
-	 * Trouble. The worst case is that we've lost sync with the backend
+	 * Trouble. For backwards-compatibility reasons, we issue the error
+	 * message as if it were a notice (would be nice to get rid of this
+	 * silliness, but too many apps probably don't handle errors from
+	 * PQendcopy reasonably).  Note that the app can still obtain the
+	 * error status from the PGconn object.
+	 */
+	if (conn->errorMessage.len > 0)
+	{
+		/* We have to strip the trailing newline ... pain in neck... */
+		char	svLast = conn->errorMessage.data[conn->errorMessage.len-1];
+
+		if (svLast == '\n')
+			conn->errorMessage.data[conn->errorMessage.len-1] = '\0';
+		PGDONOTICE(conn, conn->errorMessage.data);
+		conn->errorMessage.data[conn->errorMessage.len-1] = svLast;
+	}
+
+	PQclear(result);
+
+	/*
+	 * The worst case is that we've lost sync with the backend
 	 * entirely due to application screwup of the copy in/out protocol. To
 	 * recover, reset the connection (talk about using a sledgehammer...)
 	 */
-	PQclear(result);
-
-	if (conn->errorMessage.len > 0)
-		PGDONOTICE(conn, conn->errorMessage.data);
-
 	PGDONOTICE(conn, libpq_gettext("lost synchronization with server, resetting connection"));
 
 	/*
