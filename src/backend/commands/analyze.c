@@ -811,8 +811,6 @@ acquire_sample_rows(Relation onerel, HeapTuple *rows, int targrows,
 		 * tuples.
 		 */
 		targbuffer = ReadBuffer(onerel, targblock);
-		if (!BufferIsValid(targbuffer))
-			elog(ERROR, "ReadBuffer failed");
 		LockBuffer(targbuffer, BUFFER_LOCK_SHARE);
 		targpage = BufferGetPage(targbuffer);
 		maxoffset = PageGetMaxOffsetNumber(targpage);

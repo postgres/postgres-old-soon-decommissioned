@@ -1625,9 +1625,6 @@ ltrmark:;
 
 		buffer = ReadBuffer(relation, ItemPointerGetBlockNumber(tid));
 
-		if (!BufferIsValid(buffer))
-			elog(ERROR, "ReadBuffer failed");
-
 		dp = (PageHeader) BufferGetPage(buffer);
 		lp = PageGetItemId(dp, ItemPointerGetOffsetNumber(tid));
 
