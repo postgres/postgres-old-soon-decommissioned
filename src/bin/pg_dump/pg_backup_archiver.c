@@ -400,6 +400,8 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 		te = te->next;
 	}
 
+	ahprintf(AH, "--\n-- PostgreSQL database dump complete\n--\n\n");
+
 	/*
 	 * Clean up & we're done.
 	 */
@@ -419,8 +421,6 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 			AH->blobConnection = NULL;
 		}
 	}
-
-	ahprintf(AH, "--\n-- PostgreSQL database dump complete\n--\n\n");
 }
 
 /*
