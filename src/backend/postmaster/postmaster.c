@@ -788,7 +788,15 @@ ServerLoop(void)
 				timeout = &timeout_tv;
 			}
 			else
+			{
 				CheckPointPID = CheckPointDataBase();
+				/*
+				 * Since this code is executed periodically, it's a fine
+				 * place to do other actions that should happen every now
+				 * and then on no particular schedule.  Such as...
+				 */
+				TouchSocketLockFile();
+			}
 		}
 
 #ifdef USE_SSL
