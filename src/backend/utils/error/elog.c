@@ -38,6 +38,10 @@
 #include "commands/copy.h"
 
 extern int	errno;
+
+#ifdef __CYGWIN__
+# define sys_nerr _sys_nerr
+#endif
 extern int	sys_nerr;
 
 extern CommandDest whereToSendOutput;
