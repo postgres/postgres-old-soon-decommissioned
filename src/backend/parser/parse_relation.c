@@ -729,6 +729,27 @@ addRangeTableEntryForFunction(ParseState *pstate,
 	 */
 	functyptype = get_typtype(funcrettype);
 
+	if (coldeflist != NIL)
+	{
+		/*
+		 * we *only* allow a coldeflist for functions returning a
+		 * RECORD pseudo-type
+		 */
+		if (functyptype != 'p' || (functyptype == 'p' && funcrettype != RECORDOID))
+			elog(ERROR, "A column definition list is only allowed for"
+						" functions returning RECORD");
+	}
+	else
+	{
+		/*
+		 * ... and a coldeflist is *required* for functions returning a
+		 * RECORD pseudo-type
+		 */
+		if (functyptype == 'p' && funcrettype == RECORDOID)
+			elog(ERROR, "A column definition list is required for functions"
+						" returning RECORD");
+	}
+
 	if (functyptype == 'c')
 	{
 		/*
