@@ -1,6 +1,6 @@
 /*
- * Routines for handling of 'SET var TO', 'SHOW var' and 'RESET var'
- * statements.
+ * Routines for handling of 'SET var TO',
+ *  'SHOW var' and 'RESET var' statements.
  *
  * $Id$
  *
@@ -136,6 +136,7 @@ get_token(char **tok, char **val, const char *str)
 }
 
 /*-----------------------------------------------------------------------*/
+#if FALSE
 static bool
 parse_null(const char *value)
 {
@@ -153,6 +154,7 @@ reset_null(const char *value)
 {
 	return TRUE;
 }
+#endif
 
 static bool
 parse_geqo(const char *value)
@@ -398,6 +400,46 @@ reset_date()
 	return TRUE;
 }
 
+static bool
+parse_timezone(const char *value)
+{
+	char	   *tok;
+
+	while ((value = get_token(&tok, NULL, value)) != 0)
+	{
+		setenv("TZ", tok, TRUE);
+		tzset();
+		PFREE(tok);
+	}
+
+	return TRUE;
+} /* parse_timezone() */
+
+static bool
+show_timezone()
+{
+	char		buf[64];
+	char	   *tz;
+
+	tz = getenv("TZ");
+
+	strcpy(buf, "Time zone is ");
+	strcat(buf, ((tz != NULL)? tz: "unknown"));
+
+	elog(NOTICE, buf, NULL);
+
+	return TRUE;
+} /* show_timezone() */
+
+static bool
+reset_timezone()
+{
+	unsetenv("TZ");
+	tzset();
+
+	return TRUE;
+} /* reset_timezone() */
+
 /*-----------------------------------------------------------------------*/
 struct VariableParsers
 {
@@ -412,7 +454,7 @@ struct VariableParsers
 		"datestyle", parse_date, show_date, reset_date
 	},
 	{
-		"timezone", parse_null, show_null, reset_null
+		"timezone", parse_timezone, show_timezone, reset_timezone
 	},
 	{
 		"cost_heap", parse_cost_heap,
