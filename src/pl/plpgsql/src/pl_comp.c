@@ -159,8 +159,8 @@ plpgsql_compile(Oid fn_oid, int functype)
 
 	function->fn_functype = functype;
 	function->fn_oid = fn_oid;
-	function->fn_name = DatumGetCString(DirectFunctionCall1(nameout,
-						NameGetDatum(&(procStruct->proname))));
+	function->fn_name = strdup(DatumGetCString(DirectFunctionCall1(nameout,
+						NameGetDatum(&(procStruct->proname)))));
 
 	switch (functype)
 	{

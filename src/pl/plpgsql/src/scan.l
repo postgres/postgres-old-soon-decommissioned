@@ -100,6 +100,7 @@ default			{ return K_DEFAULT;			}
 else			{ return K_ELSE;			}
 end				{ return K_END;				}
 exception		{ return K_EXCEPTION;		}
+execute			{ return K_EXECUTE;			}
 exit			{ return K_EXIT;			}
 for				{ return K_FOR;				}
 from			{ return K_FROM;			}

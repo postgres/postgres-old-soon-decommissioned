@@ -388,6 +388,8 @@ static void dump_exit(PLpgSQL_stmt_exit * stmt);
 static void dump_return(PLpgSQL_stmt_return * stmt);
 static void dump_raise(PLpgSQL_stmt_raise * stmt);
 static void dump_execsql(PLpgSQL_stmt_execsql * stmt);
+static void dump_dynexecute(PLpgSQL_stmt_dynexecute * stmt);
+static void dump_dynfors(PLpgSQL_stmt_dynfors * stmt);
 static void dump_expr(PLpgSQL_expr * expr);
 
 
@@ -441,6 +443,12 @@ dump_stmt(PLpgSQL_stmt * stmt)
 			break;
 		case PLPGSQL_STMT_EXECSQL:
 			dump_execsql((PLpgSQL_stmt_execsql *) stmt);
+			break;
+		case PLPGSQL_STMT_DYNEXECUTE:
+			dump_dynexecute((PLpgSQL_stmt_dynexecute *) stmt);
+			break;
+		case PLPGSQL_STMT_DYNFORS:
+			dump_dynfors((PLpgSQL_stmt_dynfors *) stmt);
 			break;
 		default:
 			elog(ERROR, "plpgsql_dump: unknown cmd_type %d\n", stmt->cmd_type);
@@ -660,6 +668,34 @@ dump_execsql(PLpgSQL_stmt_execsql * stmt)
 	printf("EXECSQL ");
 	dump_expr(stmt->sqlstmt);
 	printf("\n");
+}
+
+static void
+dump_dynexecute(PLpgSQL_stmt_dynexecute * stmt)
+{
+	dump_ind();
+	printf("EXECUTE ");
+	dump_expr(stmt->query);
+	printf("\n");
+}
+
+static void
+dump_dynfors(PLpgSQL_stmt_dynfors * stmt)
+{
+	int			i;
+
+	dump_ind();
+	printf("FORS %s EXECUTE ", (stmt->rec != NULL) ? stmt->rec->refname : stmt->row->refname);
+	dump_expr(stmt->query);
+	printf("\n");
+
+	dump_indent += 2;
+	for (i = 0; i < stmt->body->stmts_used; i++)
+		dump_stmt((PLpgSQL_stmt *) (stmt->body->stmts[i]));
+	dump_indent -= 2;
+
+	dump_ind();
+	printf("    ENDFORS\n");
 }
 
 static void
