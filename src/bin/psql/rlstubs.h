@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * rlstubs.c--
+ * rlstubs.h
  *    stub routines when compiled without readline and history libraries
  *
  * Copyright (c) 1994-5, Regents of the University of California
@@ -11,33 +11,10 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>
+extern char *readline(char *prompt);
 
-#include "rlstubs.h"
+extern int write_history(char *dum);
 
-char *
-readline(char *prompt)
-{
-    static char buf[500];
+extern int using_history(void);
 
-    printf("%s", prompt);
-    return fgets(buf, 500, stdin);
-}
-
-int
-write_history(char *dum)
-{
-    return 0;
-}
-
-int
-using_history(void)
-{
-    return 0;
-}
-
-int
-add_history(char *dum)
-{
-    return 0;
-}
+extern int add_history(char *dum);

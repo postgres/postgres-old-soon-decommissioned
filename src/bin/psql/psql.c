@@ -26,7 +26,7 @@
 #include "psqlHelp.h"
 
 #ifdef NOREADLINE
-extern char *readline(char *);  /* in rlstubs.c */
+#include "rlstubs.h"
 #else
 /* from the GNU readline library */
 #ifdef OLD_READLINE
