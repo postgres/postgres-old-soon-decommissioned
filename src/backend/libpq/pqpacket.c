@@ -125,6 +125,22 @@ PacketReceive(Port *port,	/* receive port */
 	    }
 	} else {
 	    /*
+	     * This is an attempt to shield the Postmaster
+	     * from mallicious attacks by placing tighter
+	     * restrictions on the reported packet length. 
+	     *
+	     * Check for negative packet length
+	     */
+	     if ((buf->len) <= 0) {
+		return(STATUS_INVALID);
+	     }
+	    /*
+	     * Check for oversize packet
+	     */
+	     if ((ntohl(buf->len)) > max_size) {
+		return(STATUS_INVALID);
+	     }
+	    /*
 	     * great. got the header. now get the true length (including
 	     * header size).
 	     */
