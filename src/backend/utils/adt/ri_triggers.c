@@ -15,11 +15,10 @@
 /* ----------
  * Internal TODO:
  *
- *		Finish functions for MATCH FULL:
- *			setdefault_del
- *			setdefault_upd
+ *		Add MATCH <unspecified> logic (in places where not
+ *		equal to MATCH FULL.
  *
- *		Add MATCH PARTIAL logic
+ *		Add MATCH PARTIAL logic.
  * ----------
  */
 
