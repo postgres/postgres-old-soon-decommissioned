@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
+CFLAGS=-I/usr/local/pgsql/include
 TARGET = pginsert pgwordcount pgnulltest
-LDFLAGS = -lpgeasy
+LDFLAGS = -L/usr/local/pgsql/lib -lpgeasy
 
 all : $(TARGET)
 

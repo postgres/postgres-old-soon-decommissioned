@@ -243,7 +243,7 @@ FATAL 1:Feb 17 23:19:55:process userid (2360) != database owner (268)
      the following:
      <programlisting>
 % createdb mydb
-WARN:user "your username" is not allowed to create/destroy databases
+NOTICE:user "your username" is not allowed to create/destroy databases
 createdb: database creation failed on mydb.
      </programlisting>
     </para>

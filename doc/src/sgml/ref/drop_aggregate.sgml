@@ -80,7 +80,7 @@ DROP
      </varlistentry>
      <varlistentry>
       <term><computeroutput>
-WARN RemoveAggregate: aggregate '<replaceable class="parameter">agg</replaceable>' for '<replaceable class="parameter">type</replaceable>' does not exist
+NOTICE RemoveAggregate: aggregate '<replaceable class="parameter">agg</replaceable>' for '<replaceable class="parameter">type</replaceable>' does not exist
        </computeroutput></term>
       <listitem>
        <para>

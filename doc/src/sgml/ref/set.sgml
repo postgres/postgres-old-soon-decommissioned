@@ -919,7 +919,7 @@ SET VARIABLE
      
      <varlistentry>
       <term><computeroutput>
-WARN:  Bad value for <replaceable class="parameter">variable</replaceable> (<replaceable class="parameter">value</replaceable>)
+NOTICE:  Bad value for <replaceable class="parameter">variable</replaceable> (<replaceable class="parameter">value</replaceable>)
        </computeroutput></term>
       <listitem>
        <para>

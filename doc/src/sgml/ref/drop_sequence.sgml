@@ -69,7 +69,7 @@ DROP
      </varlistentry>
      <varlistentry>
       <term><computeroutput>
-WARN: Relation "<replaceable class="parameter">name</replaceable>" does not exist.
+NOTICE: Relation "<replaceable class="parameter">name</replaceable>" does not exist.
        </computeroutput></term>
       <listitem>
        <para>
