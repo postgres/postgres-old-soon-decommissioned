@@ -648,6 +648,8 @@ exec_command(const char *cmd,
 
 		if (success && !quiet && fname)
 			printf(gettext("Wrote history to file \"%s\".\n"), fname);
+		if (!fname)
+			putchar('\n');
 		free(fname);
 	}
 
