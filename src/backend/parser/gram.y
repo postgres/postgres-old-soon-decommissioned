@@ -2597,7 +2597,7 @@ LockStmt:	LOCK_P opt_table relation_name IN opt_lock
 					LockStmt *n = makeNode(LockStmt);
 
 					n->relname = $3;
-					n->mode = $4;
+					n->mode = $5;
 					$$ = (Node *)n;
 				}
 		;
