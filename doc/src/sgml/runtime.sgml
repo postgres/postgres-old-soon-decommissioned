@@ -1911,8 +1911,7 @@ openssl req -new -text -out cert.req
    To remove the passphrase (as you must if you want automatic start-up of
    the postmaster), run the commands
 <programlisting>
-mv privkey.pem cert.pem.pw
-openssl rsa -in cert.pem.pw -out cert.pem 
+openssl rsa -in privkey.pem -out cert.pem
 </programlisting>
    Enter the old passphrase to unlock the existing key. Now do
 <programlisting>
