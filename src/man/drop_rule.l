@@ -21,7 +21,5 @@ drop rule example_1
 .fi
 .SH "SEE ALSO"
 create_rule(l),
-drop_view(l).
-.SH BUGS
-Once a rule is dropped, access to historical information the rule has
-written may disappear.
+drop_view(l),
+drop_trigger(l).
