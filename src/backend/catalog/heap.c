@@ -1592,7 +1592,7 @@ AddRelationRawConstraints(Relation rel,
 		/*
 		 * Make sure it yields a boolean result.
 		 */
-		expr = coerce_to_boolean(expr, "CHECK");
+		expr = coerce_to_boolean(pstate, expr, "CHECK");
 
 		/*
 		 * Make sure no outside relations are referred to.
@@ -1743,7 +1743,7 @@ cookDefault(ParseState *pstate,
 	{
 		Oid			type_id = exprType(expr);
 
-		if (coerce_to_target_type(expr, type_id,
+		if (coerce_to_target_type(pstate, expr, type_id,
 								  atttypid, atttypmod,
 								  COERCION_ASSIGNMENT,
 								  COERCE_IMPLICIT_CAST) == NULL)

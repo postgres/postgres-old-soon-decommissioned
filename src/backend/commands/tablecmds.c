@@ -2852,7 +2852,7 @@ AlterTableAddCheckConstraint(Relation rel, Constraint *constr)
 	/*
 	 * Make sure it yields a boolean result.
 	 */
-	expr = coerce_to_boolean(expr, "CHECK");
+	expr = coerce_to_boolean(pstate, expr, "CHECK");
 
 	/*
 	 * Make sure no outside relations are referred to.

@@ -15,7 +15,8 @@
 #define PARSE_OPER_H
 
 #include "access/htup.h"
-#include "nodes/parsenodes.h"
+#include "parser/parse_node.h"
+
 
 typedef HeapTuple Operator;
 
@@ -50,8 +51,10 @@ extern Oid	oprid(Operator op);
 extern Oid	oprfuncid(Operator op);
 
 /* Build expression tree for an operator invocation */
-extern Expr *make_op(List *opname, Node *ltree, Node *rtree);
-extern Expr *make_op_expr(Operator op, Node *ltree, Node *rtree,
+extern Expr *make_op(ParseState *pstate, List *opname,
+					 Node *ltree, Node *rtree);
+extern Expr *make_op_expr(ParseState *pstate, Operator op,
+						  Node *ltree, Node *rtree,
 						  Oid ltypeId, Oid rtypeId);
 
 #endif   /* PARSE_OPER_H */

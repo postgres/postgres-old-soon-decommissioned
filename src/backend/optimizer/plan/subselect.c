@@ -495,10 +495,13 @@ convert_sublink_opers(List *lefthand, List *operOids,
 		 * Make the expression node.
 		 *
 		 * Note: we use make_op_expr in case runtime type conversion
-		 * function calls must be inserted for this operator!
+		 * function calls must be inserted for this operator!  (But we
+		 * are not expecting to have to resolve unknown Params, so
+		 * it's okay to pass a null pstate.)
 		 */
 		result = lappend(result,
-						 make_op_expr(tup,
+						 make_op_expr(NULL,
+									  tup,
 									  leftop,
 									  rightop,
 									  exprType(leftop),

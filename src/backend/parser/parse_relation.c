@@ -1447,7 +1447,7 @@ expandRelAttrs(ParseState *pstate, RangeTblEntry *rte)
 		Node	   *varnode = (Node *) lfirst(vars);
 		TargetEntry *te = makeNode(TargetEntry);
 
-		te->resdom = makeResdom((AttrNumber) (pstate->p_last_resno)++,
+		te->resdom = makeResdom((AttrNumber) pstate->p_next_resno++,
 								exprType(varnode),
 								exprTypmod(varnode),
 								label,

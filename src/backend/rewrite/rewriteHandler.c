@@ -498,7 +498,8 @@ build_column_default(Relation rel, int attrno)
 	 */
 	exprtype = exprType(expr);
 
-	expr = coerce_to_target_type(expr, exprtype,
+	expr = coerce_to_target_type(NULL, /* no UNKNOWN params here */
+								 expr, exprtype,
 								 atttype, atttypmod,
 								 COERCION_ASSIGNMENT,
 								 COERCE_IMPLICIT_CAST);

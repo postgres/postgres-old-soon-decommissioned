@@ -17,9 +17,8 @@
 
 #include "nodes/parsenodes.h"
 
+
 /* from parser.c */
-extern void parser_param_set(Oid *typev, int nargs);
-extern Oid	param_type(int t);
 extern int	yylex(void);
 
 /* from scan.l */

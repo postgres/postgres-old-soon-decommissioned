@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * parser.h
- *
+ *		Definitions for the "raw" parser (lex and yacc phases only)
  *
  *
  * Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group
@@ -14,8 +14,6 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include "parser/parse_node.h"
-
-extern List *parser(const char *str, Oid *typev, int nargs);
+extern List *raw_parser(const char *str);
 
 #endif   /* PARSER_H */

@@ -16,6 +16,7 @@
 
 #include "parser/parse_node.h"
 
+
 /*
  *	This structure is used to explore the inheritance hierarchy above
  *	nodes in the type tree in order to disambiguate among polymorphic
@@ -49,7 +50,8 @@ extern FuncDetailCode func_get_detail(List *funcname, List *fargs,
 
 extern bool typeInheritsFrom(Oid subclassTypeId, Oid superclassTypeId);
 
-extern void make_fn_arguments(List *fargs,
+extern void make_fn_arguments(ParseState *pstate,
+							  List *fargs,
 							  Oid *actual_arg_types,
 							  Oid *declared_arg_types);
 
