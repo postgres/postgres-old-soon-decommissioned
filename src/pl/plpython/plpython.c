@@ -149,7 +149,7 @@ typedef struct PLyProcedure
  */
 typedef struct PLyPlanObject
 {
-	PyObject_HEAD;
+	PyObject_HEAD
 	void	   *plan;			/* return of an SPI_saveplan */
 	int			nargs;
 	Oid		   *types;
@@ -159,7 +159,7 @@ typedef struct PLyPlanObject
 
 typedef struct PLyResultObject
 {
-	PyObject_HEAD;
+	PyObject_HEAD
 	/* HeapTuple *tuples; */
 	PyObject   *nrows;			/* number of rows returned by query */
 	PyObject   *rows;			/* data rows, or None if no data returned */
