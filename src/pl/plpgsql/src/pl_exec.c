@@ -1588,9 +1588,9 @@ static int
 exec_stmt_return_next(PLpgSQL_execstate *estate,
 					  PLpgSQL_stmt_return_next *stmt)
 {
-	TupleDesc tupdesc;
-	int		 natts;
-	HeapTuple tuple;
+	TupleDesc	tupdesc;
+	int			natts;
+	HeapTuple	tuple;
 	bool		free_tuple = false;
 
 	if (!estate->retisset)

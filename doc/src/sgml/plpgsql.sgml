@@ -538,8 +538,6 @@ END;
 
    <para>
     Note that <literal>RECORD</> is not a true data type, only a placeholder.
-    Thus, for example, one cannot declare a function returning
-    <literal>RECORD</>.
    </para>
   </sect2>
 

@@ -211,11 +211,11 @@ plpgsql_compile(Oid fn_oid, int functype)
 					 procStruct->prorettype);
 			typeStruct = (Form_pg_type) GETSTRUCT(typeTup);
 
-			/* Disallow pseudotype result, except VOID */
-			/* XXX someday allow RECORD? */
+			/* Disallow pseudotype result, except VOID or RECORD */
 			if (typeStruct->typtype == 'p')
 			{
-				if (procStruct->prorettype == VOIDOID)
+				if (procStruct->prorettype == VOIDOID ||
+					procStruct->prorettype == RECORDOID)
 					/* okay */;
 				else if (procStruct->prorettype == TRIGGEROID ||
 						 procStruct->prorettype == OPAQUEOID)
@@ -227,7 +227,8 @@ plpgsql_compile(Oid fn_oid, int functype)
 						 format_type_be(procStruct->prorettype));
 			}
 
-			if (typeStruct->typrelid != InvalidOid)
+			if (typeStruct->typrelid != InvalidOid ||
+				procStruct->prorettype == RECORDOID)
 				function->fn_retistuple = true;
 			else
 			{
@@ -486,8 +487,7 @@ plpgsql_compile(Oid fn_oid, int functype)
 	}
 
 	/*
-	 * Create the magic found variable indicating if the last FOR or
-	 * SELECT statement returned data
+	 * Create the magic FOUND variable.
 	 */
 	var = malloc(sizeof(PLpgSQL_var));
 	memset(var, 0, sizeof(PLpgSQL_var));

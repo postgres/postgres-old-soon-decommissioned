@@ -1159,7 +1159,6 @@ stmt_return		: K_RETURN lno
 					}
 				;
 
-/* FIXME: this syntax needs work, RETURN NEXT breaks stmt_return */
 stmt_return_next: K_RETURN_NEXT lno
 					{
 						PLpgSQL_stmt_return_next *new;
