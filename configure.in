@@ -1236,8 +1236,7 @@ AC_CONFIG_LINKS([
   src/Makefile.port:src/makefiles/Makefile.${template}
 ])
 
-case $host_os in mingw*);;
-*)
+case $host_os in mingw*)
 AC_CONFIG_COMMANDS([check_win32_symlinks],[
 # Links sometimes fail undetected on Mingw - 
 # so here we detect it and warn the user
