@@ -720,8 +720,8 @@ pltcl_trigger_handler(PG_FUNCTION_ARGS)
 								   tupdesc, &tcl_trigtup);
 
 		/*
-		 * Now the command part of the event for TG_op and data for NEW and
-		 * OLD
+		 * Now the command part of the event for TG_op and data for NEW
+		 * and OLD
 		 */
 		if (TRIGGER_FIRED_BY_INSERT(trigdata->tg_event))
 		{

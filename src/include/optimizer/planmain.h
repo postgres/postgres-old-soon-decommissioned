@@ -69,6 +69,6 @@ extern void process_implied_equality(Query *root,
  */
 extern void set_plan_references(Plan *plan, List *rtable);
 extern void fix_opfuncids(Node *node);
-extern void set_opfuncid(OpExpr * opexpr);
+extern void set_opfuncid(OpExpr *opexpr);
 
 #endif   /* PLANMAIN_H */

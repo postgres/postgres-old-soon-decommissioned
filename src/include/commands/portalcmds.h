@@ -17,7 +17,7 @@
 #include "utils/portal.h"
 
 
-extern void PerformCursorOpen(DeclareCursorStmt * stmt);
+extern void PerformCursorOpen(DeclareCursorStmt *stmt);
 
 extern void PerformPortalFetch(FetchStmt *stmt, DestReceiver *dest,
 				   char *completionTag);

@@ -102,7 +102,7 @@ static bool MergeCompare(List *eqQual, List *compareQual, ExprContext *econtext)
  */
 static void
 MJFormSkipQuals(List *qualList, List **ltQuals, List **gtQuals,
-				PlanState * parent)
+				PlanState *parent)
 {
 	List	   *ltexprs,
 			   *gtexprs,

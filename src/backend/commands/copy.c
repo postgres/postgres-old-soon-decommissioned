@@ -61,7 +61,7 @@ typedef enum CopyDest
 	COPY_FILE,					/* to/from file */
 	COPY_OLD_FE,				/* to/from frontend (old protocol) */
 	COPY_NEW_FE					/* to/from frontend (new protocol) */
-}	CopyDest;
+} CopyDest;
 
 /*
  * Represents the type of data returned by CopyReadAttribute()
@@ -82,7 +82,7 @@ typedef enum EolType
 	EOL_NL,
 	EOL_CR,
 	EOL_CRNL
-}	EolType;
+} EolType;
 
 
 /* non-export function prototypes */

@@ -45,7 +45,7 @@ static bool tlist_matches_tupdesc(List *tlist, Index varno, TupleDesc tupdesc);
  * ----------------------------------------------------------------
  */
 TupleTableSlot *
-ExecScan(ScanState * node,
+ExecScan(ScanState *node,
 		 ExecScanAccessMtd accessMtd)	/* function returning a tuple */
 {
 	EState	   *estate;
@@ -176,7 +176,7 @@ ExecScan(ScanState * node,
  * ExecAssignScanType must have been called already.
  */
 void
-ExecAssignScanProjectionInfo(ScanState * node)
+ExecAssignScanProjectionInfo(ScanState *node)
 {
 	Scan	   *scan = (Scan *) node->ps.plan;
 

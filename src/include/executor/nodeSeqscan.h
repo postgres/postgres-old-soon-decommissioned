@@ -18,10 +18,10 @@
 
 extern int	ExecCountSlotsSeqScan(SeqScan *node);
 extern SeqScanState *ExecInitSeqScan(SeqScan *node, EState *estate);
-extern TupleTableSlot *ExecSeqScan(SeqScanState * node);
-extern void ExecEndSeqScan(SeqScanState * node);
-extern void ExecSeqMarkPos(SeqScanState * node);
-extern void ExecSeqRestrPos(SeqScanState * node);
-extern void ExecSeqReScan(SeqScanState * node, ExprContext *exprCtxt);
+extern TupleTableSlot *ExecSeqScan(SeqScanState *node);
+extern void ExecEndSeqScan(SeqScanState *node);
+extern void ExecSeqMarkPos(SeqScanState *node);
+extern void ExecSeqRestrPos(SeqScanState *node);
+extern void ExecSeqReScan(SeqScanState *node, ExprContext *exprCtxt);
 
 #endif   /* NODESEQSCAN_H */

@@ -268,7 +268,7 @@ ExecInitNode(Plan *node, EState *estate)
  * ----------------------------------------------------------------
  */
 TupleTableSlot *
-ExecProcNode(PlanState * node)
+ExecProcNode(PlanState *node)
 {
 	TupleTableSlot *result;
 
@@ -484,7 +484,7 @@ ExecCountSlotsNode(Plan *node)
  * ----------------------------------------------------------------
  */
 void
-ExecEndNode(PlanState * node)
+ExecEndNode(PlanState *node)
 {
 	List	   *subp;
 

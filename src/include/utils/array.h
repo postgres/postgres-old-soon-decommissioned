@@ -47,7 +47,7 @@ typedef struct ArrayBuildState
 	int16		typlen;			/* needed info about datatype */
 	bool		typbyval;
 	char		typalign;
-}	ArrayBuildState;
+} ArrayBuildState;
 
 /*
  * structure to cache type metadata needed for array manipulation
@@ -62,7 +62,7 @@ typedef struct ArrayMetaState
 	Oid			typelem;
 	Oid			typiofunc;
 	FmgrInfo	proc;
-}	ArrayMetaState;
+} ArrayMetaState;
 
 /*
  * fmgr macros for array objects
@@ -160,13 +160,13 @@ extern void deconstruct_array(ArrayType *array,
 				  Oid elmtype,
 				  int elmlen, bool elmbyval, char elmalign,
 				  Datum **elemsp, int *nelemsp);
-extern ArrayBuildState *accumArrayResult(ArrayBuildState * astate,
+extern ArrayBuildState *accumArrayResult(ArrayBuildState *astate,
 				 Datum dvalue, bool disnull,
 				 Oid element_type,
 				 MemoryContext rcontext);
-extern Datum makeArrayResult(ArrayBuildState * astate,
+extern Datum makeArrayResult(ArrayBuildState *astate,
 				MemoryContext rcontext);
-extern Datum makeMdArrayResult(ArrayBuildState * astate, int ndims,
+extern Datum makeMdArrayResult(ArrayBuildState *astate, int ndims,
 				  int *dims, int *lbs, MemoryContext rcontext);
 
 /*

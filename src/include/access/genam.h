@@ -46,7 +46,7 @@ typedef struct IndexVacuumCleanupInfo
 {
 	bool		vacuum_full;	/* VACUUM FULL (we have exclusive lock) */
 	int			message_level;	/* ereport level for progress messages */
-}	IndexVacuumCleanupInfo;
+} IndexVacuumCleanupInfo;
 
 /* Struct for heap-or-index scans of system tables */
 typedef struct SysScanDescData
@@ -89,7 +89,7 @@ extern IndexBulkDeleteResult *index_bulk_delete(Relation indexRelation,
 				  IndexBulkDeleteCallback callback,
 				  void *callback_state);
 extern IndexBulkDeleteResult *index_vacuum_cleanup(Relation indexRelation,
-					 IndexVacuumCleanupInfo * info,
+					 IndexVacuumCleanupInfo *info,
 					 IndexBulkDeleteResult *stats);
 extern RegProcedure index_cost_estimator(Relation indexRelation);
 extern RegProcedure index_getprocid(Relation irel, AttrNumber attnum,

@@ -44,7 +44,7 @@ typedef enum TransState
 	TRANS_INPROGRESS,
 	TRANS_COMMIT,
 	TRANS_ABORT
-}	TransState;
+} TransState;
 
 /*
  *	transaction block states - transaction state of client queries
@@ -57,7 +57,7 @@ typedef enum TBlockState
 	TBLOCK_END,
 	TBLOCK_ABORT,
 	TBLOCK_ENDABORT
-}	TBlockState;
+} TBlockState;
 
 /* ----------------
  *		transaction state structure

@@ -1653,7 +1653,7 @@ typedef struct DeferredTriggersData
 	DeferredTriggerEvent deftrig_events;
 	DeferredTriggerEvent deftrig_events_imm;
 	DeferredTriggerEvent deftrig_event_tail;
-}	DeferredTriggersData;
+} DeferredTriggersData;
 
 /* ----------
  * deftrig_events, deftrig_event_tail:

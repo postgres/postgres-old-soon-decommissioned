@@ -190,7 +190,7 @@ typedef enum AclObjectKind
 	ACL_KIND_OPCLASS,			/* pg_opclass */
 	ACL_KIND_CONVERSION,		/* pg_conversion */
 	MAX_ACL_KIND				/* MUST BE LAST */
-}	AclObjectKind;
+} AclObjectKind;
 
 /*
  * routines used internally

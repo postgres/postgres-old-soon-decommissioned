@@ -24,7 +24,7 @@ typedef struct
 	DestReceiver pub;
 	Tuplestorestate *tstore;
 	MemoryContext cxt;
-}	TStoreState;
+} TStoreState;
 
 
 /*

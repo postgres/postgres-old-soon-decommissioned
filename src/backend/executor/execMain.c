@@ -68,7 +68,7 @@ static void initResultRelInfo(ResultRelInfo *resultRelInfo,
 				  Index resultRelationIndex,
 				  List *rangeTable,
 				  CmdType operation);
-static TupleTableSlot *ExecutePlan(EState *estate, PlanState * planstate,
+static TupleTableSlot *ExecutePlan(EState *estate, PlanState *planstate,
 			CmdType operation,
 			long numberTuples,
 			ScanDirection direction,
@@ -895,7 +895,7 @@ initResultRelInfo(ResultRelInfo *resultRelInfo,
  * ----------------------------------------------------------------
  */
 void
-ExecEndPlan(PlanState * planstate, EState *estate)
+ExecEndPlan(PlanState *planstate, EState *estate)
 {
 	ResultRelInfo *resultRelInfo;
 	int			i;
@@ -965,7 +965,7 @@ ExecEndPlan(PlanState * planstate, EState *estate)
  */
 static TupleTableSlot *
 ExecutePlan(EState *estate,
-			PlanState * planstate,
+			PlanState *planstate,
 			CmdType operation,
 			long numberTuples,
 			ScanDirection direction,

@@ -154,7 +154,7 @@ typedef struct ErrorContextCallback
 	struct ErrorContextCallback *previous;
 	void		(*callback) (void *arg);
 	void	   *arg;
-}	ErrorContextCallback;
+} ErrorContextCallback;
 
 extern DLLIMPORT ErrorContextCallback *error_context_stack;
 
@@ -166,7 +166,7 @@ typedef enum
 	PGERROR_TERSE,				/* single-line error messages */
 	PGERROR_DEFAULT,			/* recommended style */
 	PGERROR_VERBOSE				/* all the facts, ma'am */
-}	PGErrorVerbosity;
+} PGErrorVerbosity;
 
 extern PGErrorVerbosity Log_error_verbosity;
 extern bool Log_timestamp;

@@ -872,7 +872,7 @@ ascii(PG_FUNCTION_ARGS)
  ********************************************************************/
 
 Datum
-chr(PG_FUNCTION_ARGS)
+chr			(PG_FUNCTION_ARGS)
 {
 	int32		cvalue = PG_GETARG_INT32(0);
 	text	   *result;

@@ -487,8 +487,8 @@ PrintQueryTuples(const PGresult *results)
  */
 static bool
 PrintQueryResults(PGresult *results,
-				  const TimevalStruct * before,
-				  const TimevalStruct * after)
+				  const TimevalStruct *before,
+				  const TimevalStruct *after)
 {
 	bool		success = false;
 

@@ -36,7 +36,7 @@
  *		Execute SQL DECLARE CURSOR command.
  */
 void
-PerformCursorOpen(DeclareCursorStmt * stmt)
+PerformCursorOpen(DeclareCursorStmt *stmt)
 {
 	List	   *rewritten;
 	Query	   *query;

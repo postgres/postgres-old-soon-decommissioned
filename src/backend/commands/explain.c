@@ -47,7 +47,7 @@ static void ExplainOneQuery(Query *query, ExplainStmt *stmt,
 				TupOutputState *tstate);
 static double elapsed_time(struct timeval * starttime);
 static void explain_outNode(StringInfo str,
-				Plan *plan, PlanState * planstate,
+				Plan *plan, PlanState *planstate,
 				Plan *outer_plan,
 				int indent, ExplainState *es);
 static void show_scan_qual(List *qual, bool is_or_qual, const char *qlabel,
@@ -313,7 +313,7 @@ elapsed_time(struct timeval * starttime)
  */
 static void
 explain_outNode(StringInfo str,
-				Plan *plan, PlanState * planstate,
+				Plan *plan, PlanState *planstate,
 				Plan *outer_plan,
 				int indent, ExplainState *es)
 {

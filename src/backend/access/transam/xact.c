@@ -954,9 +954,9 @@ CommitTransaction(void)
 	 *
 	 * The ordering of operations is not entirely random.  The idea is:
 	 * release resources visible to other backends (eg, files, buffer
-	 * pins); then release locks; then release backend-local resources.
-	 * We want to release locks at the point where any backend waiting for
-	 * us will see our transaction as being fully cleaned up.
+	 * pins); then release locks; then release backend-local resources. We
+	 * want to release locks at the point where any backend waiting for us
+	 * will see our transaction as being fully cleaned up.
 	 */
 
 	smgrDoPendingDeletes(true);

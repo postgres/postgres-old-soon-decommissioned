@@ -25,7 +25,7 @@ typedef struct SlruLockData
  * doesn't need to be in shared memory.
  */
 	LWLockId	BufferLocks[NUM_CLOG_BUFFERS];	/* Per-buffer I/O locks */
-}	SlruLockData;
+} SlruLockData;
 typedef SlruLockData *SlruLock;
 
 typedef struct SlruCtlData
@@ -47,7 +47,7 @@ typedef struct SlruCtlData
  */
 	bool		(*PagePrecedes) (int, int);
 
-}	SlruCtlData;
+} SlruCtlData;
 typedef SlruCtlData *SlruCtl;
 
 extern int	SimpleLruShmemSize(void);

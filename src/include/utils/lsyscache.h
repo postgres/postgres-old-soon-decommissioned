@@ -22,7 +22,7 @@ typedef enum IOFuncSelector
 	IOFunc_output,
 	IOFunc_receive,
 	IOFunc_send
-}	IOFuncSelector;
+} IOFuncSelector;
 
 extern bool op_in_opclass(Oid opno, Oid opclass);
 extern bool op_requires_recheck(Oid opno, Oid opclass);

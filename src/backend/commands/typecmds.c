@@ -70,7 +70,7 @@ typedef struct
 	int			natts;			/* number of attributes of interest */
 	int		   *atts;			/* attribute numbers */
 	/* atts[] is of allocated length RelationGetNumberOfAttributes(rel) */
-}	RelToCheck;
+} RelToCheck;
 
 
 static Oid	findTypeInputFunction(List *procname, Oid typeOid);

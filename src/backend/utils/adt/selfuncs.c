@@ -2030,7 +2030,7 @@ estimate_num_groups(Query *root, List *groupExprs, double input_rows)
 	{							/* varinfos is a List of these */
 		Var		   *var;
 		double		ndistinct;
-	}			MyVarInfo;
+	} MyVarInfo;
 
 	/* We should not be called unless query has GROUP BY (or DISTINCT) */
 	Assert(groupExprs != NIL);

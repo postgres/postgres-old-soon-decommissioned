@@ -412,7 +412,7 @@ FetchPreparedStatementParams(const char *stmt_name)
  * Note: the result is created or copied into current memory context.
  */
 TupleDesc
-FetchPreparedStatementResultDesc(PreparedStatement * stmt)
+FetchPreparedStatementResultDesc(PreparedStatement *stmt)
 {
 	Query	   *query;
 

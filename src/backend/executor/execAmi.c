@@ -48,7 +48,7 @@
  * ----------------------------------------------------------------
  */
 void
-ExecReScan(PlanState * node, ExprContext *exprCtxt)
+ExecReScan(PlanState *node, ExprContext *exprCtxt)
 {
 	/* If collecting timing stats, update them */
 	if (node->instrument)
@@ -177,7 +177,7 @@ ExecReScan(PlanState * node, ExprContext *exprCtxt)
  * Marks the current scan position.
  */
 void
-ExecMarkPos(PlanState * node)
+ExecMarkPos(PlanState *node)
 {
 	switch (nodeTag(node))
 	{
@@ -218,7 +218,7 @@ ExecMarkPos(PlanState * node)
  * restores the scan position previously saved with ExecMarkPos()
  */
 void
-ExecRestrPos(PlanState * node)
+ExecRestrPos(PlanState *node)
 {
 	switch (nodeTag(node))
 	{

@@ -296,7 +296,7 @@ BuildTupleHashTable(int numCols, AttrNumber *keyColIdx,
 	Assert(entrysize >= sizeof(TupleHashEntryData));
 
 	tabsize = sizeof(TupleHashTableData) +
-		(nbuckets - 1) * sizeof(TupleHashEntry);
+		(nbuckets - 1) *sizeof(TupleHashEntry);
 	hashtable = (TupleHashTable) MemoryContextAllocZero(tablecxt, tabsize);
 
 	hashtable->numCols = numCols;
@@ -411,7 +411,7 @@ LookupTupleHashEntry(TupleHashTable hashtable, TupleTableSlot *slot,
  * Iterator state must be initialized with ResetTupleHashIterator() macro.
  */
 TupleHashEntry
-ScanTupleHashTable(TupleHashTable hashtable, TupleHashIterator * state)
+ScanTupleHashTable(TupleHashTable hashtable, TupleHashIterator *state)
 {
 	TupleHashEntry entry;
 

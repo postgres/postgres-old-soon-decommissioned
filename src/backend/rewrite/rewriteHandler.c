@@ -38,7 +38,7 @@ typedef struct rewrite_event
 {
 	Oid			relation;		/* OID of relation having rules */
 	CmdType		event;			/* type of rule being fired */
-}	rewrite_event;
+} rewrite_event;
 
 static Query *rewriteRuleAction(Query *parsetree,
 				  Query *rule_action,

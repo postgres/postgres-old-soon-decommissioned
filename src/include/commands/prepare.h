@@ -37,7 +37,7 @@ typedef struct
 	List	   *plan_list;		/* list of plans */
 	List	   *argtype_list;	/* list of parameter type OIDs */
 	MemoryContext context;		/* context containing this query */
-}	PreparedStatement;
+} PreparedStatement;
 
 
 /* Utility statements PREPARE, EXECUTE, DEALLOCATE, EXPLAIN EXECUTE */
@@ -57,6 +57,6 @@ extern PreparedStatement *FetchPreparedStatement(const char *stmt_name,
 					   bool throwError);
 extern void DropPreparedStatement(const char *stmt_name, bool showError);
 extern List *FetchPreparedStatementParams(const char *stmt_name);
-extern TupleDesc FetchPreparedStatementResultDesc(PreparedStatement * stmt);
+extern TupleDesc FetchPreparedStatementResultDesc(PreparedStatement *stmt);
 
 #endif   /* PREPARE_H */

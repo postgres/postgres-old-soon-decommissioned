@@ -41,7 +41,6 @@
 #define EAI_SERVICE		-8
 #define EAI_MEMORY		-10
 #define EAI_SYSTEM		-11
-
 #endif
 
 #ifndef AI_PASSIVE
@@ -79,8 +78,7 @@ struct addrinfo
 	char	   *ai_canonname;
 	struct addrinfo *ai_next;
 };
-
-#endif /* HAVE_STRUCT_ADDRINFO */
+#endif   /* HAVE_STRUCT_ADDRINFO */
 
 
 #ifndef HAVE_GETADDRINFO
@@ -113,7 +111,6 @@ extern const char *gai_strerror(int errcode);
 extern int getnameinfo(const struct sockaddr * sa, int salen,
 			char *node, int nodelen,
 			char *service, int servicelen, int flags);
-
 #endif   /* HAVE_GETADDRINFO */
 
 #endif   /* GETADDRINFO_H */

@@ -1307,11 +1307,12 @@ timestamp_cmp_internal(Timestamp dt1, Timestamp dt2)
 #ifdef HAVE_INT64_TIMESTAMP
 	return ((dt1 < dt2) ? -1 : ((dt1 > dt2) ? 1 : 0));
 #else
+
 	/*
 	 * When using float representation, we have to be wary of NaNs.
 	 *
-	 * We consider all NANs to be equal and larger than any non-NAN. This
-	 * is somewhat arbitrary; the important thing is to have a consistent
+	 * We consider all NANs to be equal and larger than any non-NAN. This is
+	 * somewhat arbitrary; the important thing is to have a consistent
 	 * sort order.
 	 */
 	if (isnan(dt1))

@@ -202,7 +202,7 @@ nconc(List *l1, List *l2)
  * since we avoid having to chase down the list again each time.
  */
 void
-FastAppend(FastList * fl, void *datum)
+FastAppend(FastList *fl, void *datum)
 {
 	List	   *cell = makeList1(datum);
 
@@ -223,7 +223,7 @@ FastAppend(FastList * fl, void *datum)
  * FastAppendi - same for integers
  */
 void
-FastAppendi(FastList * fl, int datum)
+FastAppendi(FastList *fl, int datum)
 {
 	List	   *cell = makeListi1(datum);
 
@@ -244,7 +244,7 @@ FastAppendi(FastList * fl, int datum)
  * FastAppendo - same for Oids
  */
 void
-FastAppendo(FastList * fl, Oid datum)
+FastAppendo(FastList *fl, Oid datum)
 {
 	List	   *cell = makeListo1(datum);
 
@@ -267,7 +267,7 @@ FastAppendo(FastList * fl, Oid datum)
  * Note that the cells of the second argument are absorbed into the FastList.
  */
 void
-FastConc(FastList * fl, List *cells)
+FastConc(FastList *fl, List *cells)
 {
 	if (cells == NIL)
 		return;					/* nothing to do */
@@ -290,7 +290,7 @@ FastConc(FastList * fl, List *cells)
  * Note that the cells of the second argument are absorbed into the first.
  */
 void
-FastConcFast(FastList * fl, FastList * fl2)
+FastConcFast(FastList *fl, FastList *fl2)
 {
 	if (fl2->head == NIL)
 		return;					/* nothing to do */

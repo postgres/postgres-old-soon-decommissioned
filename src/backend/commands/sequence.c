@@ -302,7 +302,7 @@ DefineSequence(CreateSeqStmt *seq)
  * Modify the defition of a sequence relation
  */
 void
-AlterSequence(AlterSeqStmt * stmt)
+AlterSequence(AlterSeqStmt *stmt)
 {
 	SeqTable	elm;
 	Relation	seqrel;

@@ -69,7 +69,7 @@ typedef struct OnCommitItem
 	 */
 	bool		created_in_cur_xact;
 	bool		deleted_in_cur_xact;
-}	OnCommitItem;
+} OnCommitItem;
 
 static List *on_commits = NIL;
 

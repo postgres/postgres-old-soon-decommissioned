@@ -32,7 +32,7 @@ typedef struct bt_incomplete_split
 	BlockNumber leftblk;		/* left half of split */
 	BlockNumber rightblk;		/* right half of split */
 	bool		is_root;		/* we split the root */
-}	bt_incomplete_split;
+} bt_incomplete_split;
 
 static List *incomplete_splits;
 

@@ -60,10 +60,10 @@ typedef struct
 {
 	Oid			tableOid;
 	Oid			indexOid;
-}	RelToCluster;
+} RelToCluster;
 
 
-static void cluster_rel(RelToCluster * rv, bool recheck);
+static void cluster_rel(RelToCluster *rv, bool recheck);
 static Oid	make_new_heap(Oid OIDOldHeap, const char *NewName);
 static void copy_heap_data(Oid OIDNewHeap, Oid OIDOldHeap, Oid OIDOldIndex);
 static List *get_indexattr_list(Relation OldHeap, Oid OldIndex);
@@ -248,7 +248,7 @@ cluster(ClusterStmt *stmt)
  * them incrementally while we load the table.
  */
 static void
-cluster_rel(RelToCluster * rvtc, bool recheck)
+cluster_rel(RelToCluster *rvtc, bool recheck)
 {
 	Relation	OldHeap,
 				OldIndex;

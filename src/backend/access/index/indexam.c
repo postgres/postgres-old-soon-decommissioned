@@ -632,7 +632,7 @@ index_bulk_delete(Relation indexRelation,
  */
 IndexBulkDeleteResult *
 index_vacuum_cleanup(Relation indexRelation,
-					 IndexVacuumCleanupInfo * info,
+					 IndexVacuumCleanupInfo *info,
 					 IndexBulkDeleteResult *stats)
 {
 	RegProcedure procedure;

@@ -61,7 +61,7 @@ typedef struct
 	LOCKTAG		locktag;		/* ID of awaited lock object */
 	LOCKMODE	lockmode;		/* type of lock we're waiting for */
 	int			pid;			/* PID of blocked backend */
-}	DEADLOCK_INFO;
+} DEADLOCK_INFO;
 
 
 static bool DeadLockCheckRecurse(PGPROC *proc);

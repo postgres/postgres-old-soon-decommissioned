@@ -614,7 +614,7 @@ extern Datum ltrim1(PG_FUNCTION_ARGS);
 extern Datum rtrim(PG_FUNCTION_ARGS);
 extern Datum rtrim1(PG_FUNCTION_ARGS);
 extern Datum translate(PG_FUNCTION_ARGS);
-extern Datum chr(PG_FUNCTION_ARGS);
+extern Datum chr (PG_FUNCTION_ARGS);
 extern Datum repeat(PG_FUNCTION_ARGS);
 extern Datum ascii(PG_FUNCTION_ARGS);
 

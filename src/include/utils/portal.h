@@ -77,7 +77,7 @@ typedef enum PortalStrategy
 	PORTAL_ONE_SELECT,
 	PORTAL_UTIL_SELECT,
 	PORTAL_MULTI_QUERY
-}	PortalStrategy;
+} PortalStrategy;
 
 /*
  * Note: typedef Portal is declared in tcop/dest.h as

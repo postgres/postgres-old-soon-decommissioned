@@ -149,9 +149,9 @@ vacuumlo(char *database, struct _param * param)
 	 *
 	 * NOTE: we ignore system tables and temp tables by the expedient of
 	 * rejecting tables in schemas named 'pg_*'.  In particular, the temp
-	 * table formed above is ignored, and pg_largeobject will be too.
-	 * If either of these were scanned, obviously we'd end up with nothing
-	 * to delete...
+	 * table formed above is ignored, and pg_largeobject will be too. If
+	 * either of these were scanned, obviously we'd end up with nothing to
+	 * delete...
 	 *
 	 * NOTE: the system oid column is ignored, as it has attnum < 1. This
 	 * shouldn't matter for correctness, but it saves time.

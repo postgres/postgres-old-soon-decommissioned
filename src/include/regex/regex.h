@@ -89,7 +89,7 @@ typedef struct
 typedef struct
 {
 	regmatch_t	rm_extend;		/* see REG_EXPECT */
-}	rm_detail_t;
+} rm_detail_t;
 
 
 
