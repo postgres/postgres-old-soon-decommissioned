@@ -32,8 +32,7 @@
 static double time2t(const int hour, const int min, const double sec);
 static int	EncodeSpecialTimestamp(Timestamp dt, char *str);
 static Timestamp dt2local(Timestamp dt, int timezone);
-static void
-AdjustTimestampForTypmod(Timestamp *time, int32 typmod);
+static void AdjustTimestampForTypmod(Timestamp *time, int32 typmod);
 
 
 /*****************************************************************************
@@ -138,8 +137,7 @@ timestamp_scale(PG_FUNCTION_ARGS)
 
 	result = timestamp;
 
-	if (! TIMESTAMP_NOT_FINITE(result))
-		AdjustTimestampForTypmod(&result, typmod);
+	AdjustTimestampForTypmod(&result, typmod);
 
 	PG_RETURN_TIMESTAMP(result);
 }
@@ -147,7 +145,8 @@ timestamp_scale(PG_FUNCTION_ARGS)
 static void
 AdjustTimestampForTypmod(Timestamp *time, int32 typmod)
 {
-	if ((typmod >= 0) && (typmod <= 13))
+	if (! TIMESTAMP_NOT_FINITE(*time) &&
+		(typmod >= 0) && (typmod <= 13))
 	{
 		static double TimestampScale = 1;
 		static int32 TimestampTypmod = 0;
@@ -157,8 +156,6 @@ AdjustTimestampForTypmod(Timestamp *time, int32 typmod)
 
 		*time = (rint(((double) *time)*TimestampScale)/TimestampScale);
 	}
-
-	return;
 }
 
 
@@ -261,8 +258,7 @@ timestamptz_scale(PG_FUNCTION_ARGS)
 
 	result = timestamp;
 
-	if (! TIMESTAMP_NOT_FINITE(result))
-		AdjustTimestampForTypmod(&result, typmod);
+	AdjustTimestampForTypmod(&result, typmod);
 
 	PG_RETURN_TIMESTAMPTZ(result);
 }
