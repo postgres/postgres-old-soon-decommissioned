@@ -523,7 +523,7 @@ echo "CREATE VIEW pg_user AS \
             usename, \
             usesysid, \
             usecreatedb, \
-            usecreatetable, \            
+            usecreatetable, \
             uselocktable, \
             usetrace, \
             usesuper, \
