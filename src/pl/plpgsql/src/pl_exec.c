@@ -2210,6 +2210,7 @@ exec_assign_value(PLpgSQL_execstate * estate,
 	int			natts;
 	Datum	   *values;
 	char	   *nulls;
+	Datum		newvalue;
 	bool		attisnull;
 	Oid			atttype;
 	int32		atttypmod;
@@ -2225,15 +2226,16 @@ exec_assign_value(PLpgSQL_execstate * estate,
 			 * ----------
 			 */
 			var = (PLpgSQL_var *) target;
-			var->value = exec_cast_value(value, valtype, var->datatype->typoid,
-										 &(var->datatype->typinput),
-										 var->datatype->typelem,
-										 var->datatype->atttypmod,
-										 isNull);
+			newvalue = exec_cast_value(value, valtype, var->datatype->typoid,
+									   &(var->datatype->typinput),
+									   var->datatype->typelem,
+									   var->datatype->atttypmod,
+									   isNull);
 
-			if (isNull && var->notnull)
+			if (*isNull && var->notnull)
 				elog(ERROR, "NULL assignment to variable '%s' declared NOT NULL", var->refname);
 
+			var->value = newvalue;
 			var->isnull = *isNull;
 			break;
 
