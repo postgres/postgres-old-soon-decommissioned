@@ -281,10 +281,10 @@ createdb: database creation failed
      <listitem>
       <para>
        Using an existing graphical frontend tool like
-       <application>PgAccess</application> or
-       <application>ApplixWare</application> (via
-       <acronym>ODBC</acronym>) to create and manipulate a database.
-       These possibilities are not covered in this tutorial.
+       <application>PgAccess</application> or an office suite with
+       <acronym>ODBC</acronym> support to create and manipulate a
+       database.  These possibilities are not covered in this
+       tutorial.
       </para>
      </listitem>
 

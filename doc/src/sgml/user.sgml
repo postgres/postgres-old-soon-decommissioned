@@ -29,7 +29,7 @@ $Header$
     database, and how to query it.  The middle part lists the
     available data types and functions for use in SQL data commands.
     The rest of the book treats several aspects that are important for
-    tuning a database for optimial performance.
+    tuning a database for optimal performance.
    </para>
 
    <para>
