@@ -48,4 +48,8 @@ extern void get_rels_atts(Node *clause, int *relid1,
 			  AttrNumber *attno1, int *relid2, AttrNumber *attno2);
 extern void CommuteClause(Node *clause);
 
+#define	is_subplan(clause)	((Node*) clause != NULL && \
+						nodeTag((Node*) clause) == T_Expr && \
+						((Expr *) clause)->opType == SUBPLAN_EXPR)
+
 #endif							/* CLAUSES_H */
