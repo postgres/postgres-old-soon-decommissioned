@@ -223,6 +223,9 @@ RI_FKey_check(PG_FUNCTION_ARGS)
 	 * We should not even consider checking the row if it is no longer
 	 * valid since it was either deleted (doesn't matter) or updated (in
 	 * which case it'll be checked with its final values).
+	 *
+	 * Note: we need not SetBufferCommitInfoNeedsSave() here since the
+	 * new tuple's commit state can't possibly change.
 	 */
 	if (new_row)
 	{

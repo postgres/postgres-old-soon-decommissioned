@@ -137,6 +137,9 @@ pgstattuple_real(Relation rel)
 	/* scan the relation */
 	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{
+		uint16		sv_infomask;
+
+		sv_infomask = tuple->t_data->t_infomask;
 		if (HeapTupleSatisfiesNow(tuple->t_data))
 		{
 			tuple_len += tuple->t_len;
@@ -147,6 +150,8 @@ pgstattuple_real(Relation rel)
 			dead_tuple_len += tuple->t_len;
 			dead_tuple_count++;
 		}
+		if (sv_infomask != tuple->t_data->t_infomask)
+			SetBufferCommitInfoNeedsSave(scan->rs_cbuf);
 
 		/*
 		 * To avoid physically reading the table twice, try to do the
