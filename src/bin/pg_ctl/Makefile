@@ -21,7 +21,6 @@ pg_ctl: pg_ctl.sh
 
 install: pg_ctl
 	$(INSTALL) $(INSTL_EXE_OPTS) $+ $(BINDIR)
-	$(INSTALL) $(INSTLOPTS) postmaster.opts.default.sample $(TEMPLATEDIR)
 
 clean:
 	rm -f pg_ctl

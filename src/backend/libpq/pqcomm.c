@@ -182,12 +182,11 @@ StreamDoUnlink()
  */
 
 int
-StreamServerPort(char *hostName, unsigned short portName, int *fdP)
+StreamServerPort(int family, unsigned short portName, int *fdP)
 {
 	SockAddr	saddr;
 	int			fd,
-				err,
-				family;
+				err;
 	size_t		len;
 	int			one = 1;
 
@@ -196,7 +195,7 @@ StreamServerPort(char *hostName, unsigned short portName, int *fdP)
 
 #endif
 
-	family = ((hostName != NULL) ? AF_INET : AF_UNIX);
+	Assert(family == AF_INET || family == AF_UNIX);
 
 	if ((fd = socket(family, SOCK_STREAM, 0)) < 0)
 	{

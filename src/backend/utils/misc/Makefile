@@ -11,7 +11,7 @@
 SRCDIR = ../../..
 include $(SRCDIR)/Makefile.global
 
-OBJS = database.o superuser.o guc.o guc-file.o
+OBJS = database.o superuser.o guc.o guc-file.o ps_status.o
 
 all: SUBSYS.o
 

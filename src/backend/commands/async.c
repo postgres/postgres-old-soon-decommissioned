@@ -771,7 +771,7 @@ ProcessIncomingNotify(void)
 	if (Trace_notify)
 		elog(DEBUG, "ProcessIncomingNotify");
 
-	PS_SET_STATUS("async_notify");
+	set_ps_display("async_notify");
 
 	notifyInterruptOccurred = 0;
 
@@ -841,7 +841,7 @@ ProcessIncomingNotify(void)
 	 */
 	pq_flush();
 
-	PS_SET_STATUS("idle");
+	set_ps_display("idle");
 
 	if (Trace_notify)
 		elog(DEBUG, "ProcessIncomingNotify: done");
