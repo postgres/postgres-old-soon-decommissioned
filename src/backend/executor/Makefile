@@ -22,7 +22,7 @@ OBJS = execAmi.o execFlatten.o execJunk.o execMain.o \
        execUtils.o functions.o nodeAppend.o nodeAgg.o nodeHash.o \
        nodeHashjoin.o nodeIndexscan.o nodeMaterial.o nodeMergejoin.o \
        nodeNestloop.o nodeResult.o nodeSeqscan.o nodeSort.o \
-       nodeUnique.o nodeTee.o nodeGroup.o
+       nodeUnique.o nodeTee.o nodeGroup.o spi.o
 
 all: SUBSYS.o
 
