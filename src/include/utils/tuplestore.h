@@ -14,7 +14,7 @@
  * A temporary file is used to handle the data if it exceeds the
  * space limit specified by the caller.
  *
- * Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2003, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * $Id$

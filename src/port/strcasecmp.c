@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /*
- * Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2003, PostgreSQL Global Development Group
  * Portions Copyright (c) 1987 Regents of the University of California.
  * All rights reserved.
  *

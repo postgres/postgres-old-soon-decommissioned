@@ -4,7 +4,7 @@
  *	  definitions for using Inversion file system routines (ie, large objects)
  *
  *
- * Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2003, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * $Id$

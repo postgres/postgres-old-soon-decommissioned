@@ -10,7 +10,7 @@
  * looked up again.  Now we use specialized access code so that the commit
  * log can be broken into relatively small, independent segments.
  *
- * Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2003, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * $Header$
