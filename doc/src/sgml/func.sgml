@@ -5763,7 +5763,7 @@ SELECT timeofday();
 <programlisting>
 SELECT CURRENT_TIMESTAMP;
 SELECT now();
-SELECT TIMESTAMP 'now';
+SELECT TIMESTAMP 'now';  -- incorrect for use with DEFAULT
 </programlisting>
    </para>
 
