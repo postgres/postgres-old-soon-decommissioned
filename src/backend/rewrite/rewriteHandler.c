@@ -1789,11 +1789,11 @@ apply_RIR_view(Node **nodePtr, int rt_index, RangeTblEntry *rte, List *tlist, in
 						return;
 					}
 
+					exp = copyObject(exp);
 					if (var->varlevelsup > 0 &&
 							nodeTag(exp) == T_Var) {
-						exp = copyObject(exp);
 						((Var *)exp)->varlevelsup = var->varlevelsup;
-					}
+					} 
 					*nodePtr = exp;
 					*modified = TRUE;
 				}
