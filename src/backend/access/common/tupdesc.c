@@ -119,8 +119,8 @@ CreateTupleDescCopy(TupleDesc tupdesc)
 		ATTRIBUTE_TUPLE_SIZE);
     }
     if (tupdesc->constr) {
-      desc->constr = (AttrConstr *) palloc(sizeof(struct attrConstr));
-      memmove(desc->constr, tupdesc->constr, sizeof(struct attrConstr));
+      desc->constr = (TupleConstr *) palloc(sizeof(TupleConstr));
+      memmove(desc->constr, tupdesc->constr, sizeof(TupleConstr));
     } else
       desc->constr = NULL;
     return desc;
@@ -179,7 +179,7 @@ TupleDescInitEntry(TupleDesc desc,
 	memset(att->attname.data,0,NAMEDATALEN);
 
     
-    att->attdisbursion  = 0;			/* dummy value */
+    att->attnvals  = 0;			/* dummy value */
     att->attcacheoff = 	-1;
     
     att->attnum = attributeNumber;
@@ -387,7 +387,7 @@ BuildDescForRelation(List *schema, char *relname)
 	/* This is for constraints */
 	if (entry->is_not_null) {
            if (!desc->constr)
-               desc->constr = (AttrConstr *) palloc(sizeof(struct attrConstr));
+               desc->constr = (TupleConstr *) palloc(sizeof(TupleConstr));
            desc->constr->has_not_null = true;
         } 
         desc->attrs[attnum-1]->attnotnull = entry->is_not_null;

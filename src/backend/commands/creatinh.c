@@ -276,7 +276,7 @@ MergeAttributes(List *schema, List *supers)
 	    AttributeTupleForm	attribute = tupleDesc->attrs[attrno];
 	    char *attributeName;
 	    char *attributeType;
-	    AttrConstr  constraints;
+	    TupleConstr  constraints;
 	    HeapTuple	tuple;
 	    ColumnDef	*def;
 	    TypeName	*typename;
