@@ -506,6 +506,12 @@ ALTER TABLE distributors ADD PRIMARY KEY (dist_id);
     The clauses to rename tables, columns, indexes, and sequences are
     <productname>PostgreSQL</productname> extensions from SQL92.
    </para>
+
+   <para>
+    <command>ALTER TABLE DROP COLUMN</> can be used to drop the only column
+    of a table, leaving a zero-column table.  This is an extension from SQL92,
+    which disallows zero-column tables.
+   </para>
  
   </refsect2>
  </refsect1>
