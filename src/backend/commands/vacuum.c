@@ -12,6 +12,7 @@
  *-------------------------------------------------------------------------
  */
 #include <sys/file.h>
+#include <string.h>
 
 #include "postgres.h"
 #include "utils/portal.h"
@@ -22,25 +23,21 @@
 #include "storage/bufmgr.h"
 #include "access/transam.h"
 #include "utils/tqual.h"
-#include "access/htup.h"
 
 #include "catalog/pg_index.h"
 #include "catalog/catname.h"
 #include "catalog/pg_class.h"
 #include "catalog/pg_proc.h"
 
-#include "storage/fd.h"		/* for O_ */
-#include "storage/itemid.h"
-#include "storage/bufmgr.h"
-#include "storage/bufpage.h"
 #include "storage/smgr.h"
 #include "storage/lmgr.h"
 
-#include "utils/elog.h"
 #include "utils/mcxt.h"
 #include "utils/palloc.h"
 
 #include "commands/vacuum.h"
+
+#include "storage/bufpage.h"
 
 #ifdef NEED_RUSAGE
 #include "rusagestub.h"

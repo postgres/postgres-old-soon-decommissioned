@@ -38,24 +38,23 @@
 #include <postgres.h>
 
 #include <access/heapam.h>
-#include <utils/tqual.h>
 #include <catalog/catname.h>
 #include <catalog/pg_aggregate.h>
 #include <catalog/pg_operator.h>
 #include <catalog/pg_proc.h>
 #include <catalog/pg_type.h>
 #include <utils/syscache.h>
-#include <nodes/pg_list.h>
 #include <nodes/parsenodes.h>
 #include <fmgr.h>               /* for fmgr */
 
 #include <utils/builtins.h>     /* prototype for textin() */
 
-#include <utils/elog.h>
 #include <utils/palloc.h>
 #include <commands/defrem.h>
 #include <optimizer/xfunc.h>
 #include <tcop/dest.h>
+
+#include "catalog/pg_user.h"
 
 static char *defGetString(DefElem *def);
 static int  defGetTypeLength(DefElem *def);
