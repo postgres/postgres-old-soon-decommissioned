@@ -12,7 +12,7 @@
 #-------------------------------------------------------------------------
 
 CMDNAME=`basename "$0"`
-PATHNAME=`echo $0 | sed "s,$CMDNAME\$,,"`
+PATHNAME=`echo "$0" | sed "s,$CMDNAME\$,,"`
 
 PSQLOPT=
 dbname=
@@ -55,7 +55,7 @@ do
                 PSQLOPT="$PSQLOPT $1"
                 ;;
         --host=*)
-                PSQLOPT="$PSQLOPT -h "`echo $1 | sed 's/^--host=//'`
+                PSQLOPT="$PSQLOPT -h `echo \"$1\" | sed 's/^--host=//'`"
                 ;;
 	--port|-p)
 		PSQLOPT="$PSQLOPT -p $2"
@@ -64,7 +64,7 @@ do
                 PSQLOPT="$PSQLOPT $1"
                 ;;
         --port=*)
-                PSQLOPT="$PSQLOPT -p "`echo $1 | sed 's/^--port=//'`
+                PSQLOPT="$PSQLOPT -p `echo \"$1\" | sed 's/^--port=//'`"
                 ;;
 	--username|-U)
 		PSQLOPT="$PSQLOPT -U $2"
@@ -73,7 +73,7 @@ do
                 PSQLOPT="$PSQLOPT $1"
                 ;;
         --username=*)
-                PSQLOPT="$PSQLOPT -U "`echo $1 | sed 's/^--username=//'`
+                PSQLOPT="$PSQLOPT -U `echo \"$1\" | sed 's/^--username=//'`"
                 ;;
 	--password|-W)
 		PSQLOPT="$PSQLOPT -W"
