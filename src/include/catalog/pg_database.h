@@ -41,7 +41,7 @@ CATALOG(pg_database) BOOTSTRAP BKI_SHARED_RELATION
 	Oid			datlastsysoid;	/* highest OID to consider a system OID */
 	TransactionId datvacuumxid; /* all XIDs before this are vacuumed */
 	TransactionId datfrozenxid; /* all XIDs before this are frozen */
-	text		datpath;		/* VARIABLE LENGTH FIELD */
+	text		datpath;		/* default database location (VAR LENGTH) */
 	text		datconfig[1];	/* database-specific GUC (VAR LENGTH) */
 	aclitem		datacl[1];		/* access permissions (VAR LENGTH) */
 } FormData_pg_database;
