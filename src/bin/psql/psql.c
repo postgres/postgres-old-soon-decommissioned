@@ -30,17 +30,16 @@
 #include "strdup.h"
 #endif
 
-#ifdef NOREADLINE
-#include "rlstubs.h"
+#ifndef HAVE_LIBREADLINE
+# include "rlstubs.h"
 #else
-/* from the GNU readline library */
-#ifdef OLD_READLINE
-#include "readline.h"
-#include "history.h"
-#else
-#include <readline/readline.h>
-#include <readline/history.h>
-#endif
+# ifdef HAVE_READLINE_H
+#  include <readline.h>
+#  include <history.h>
+# else
+#  include <readline/readline.h>
+#  include <readline/history.h>
+# endif
 #endif
 
 #define PROMPT "=> "
