@@ -449,7 +449,7 @@ connectOptions2(PGconn *conn)
 		{
 			conn->status = CONNECTION_BAD;
 			printfPQExpBuffer(&conn->errorMessage,
-						 libpq_gettext("unrecognized sslmode: \"%s\"\n"),
+						 libpq_gettext("invalid sslmode value: \"%s\"\n"),
 							  conn->sslmode);
 			return false;
 		}
@@ -469,7 +469,7 @@ connectOptions2(PGconn *conn)
 			case 'r':			/* "require" */
 				conn->status = CONNECTION_BAD;
 				printfPQExpBuffer(&conn->errorMessage,
-								  libpq_gettext("sslmode \"%s\" invalid when SSL support is not compiled in\n"),
+								  libpq_gettext("sslmode value \"%s\" invalid when SSL support is not compiled in\n"),
 								  conn->sslmode);
 				return false;
 		}
@@ -934,12 +934,12 @@ connectDBStart(PGconn *conn)
 	{
 		if (node)
 			printfPQExpBuffer(&conn->errorMessage,
-							  libpq_gettext("could not translate hostname \"%s\" to address: %s\n"),
+							  libpq_gettext("could not translate host name \"%s\" to address: %s\n"),
 							  node, gai_strerror(ret));
 		else
 			printfPQExpBuffer(&conn->errorMessage,
-							  libpq_gettext("could not translate local service to address: %s\n"),
-							  gai_strerror(ret));
+							  libpq_gettext("could not translate Unix-domain socket path \"%s\" to address: %s\n"),
+							  portstr, gai_strerror(ret));
 		freeaddrinfo_all(hint.ai_family, addrs);
 		goto connect_errReturn;
 	}

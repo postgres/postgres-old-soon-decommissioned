@@ -2481,7 +2481,7 @@ getTableAttrs(TableInfo *tblinfo, int numTables)
 		{
 			if (j + 1 != atoi(PQgetvalue(res, j, i_attnum)))
 			{
-				write_msg(NULL, "invalid attribute numbering in table \"%s\"\n",
+				write_msg(NULL, "invalid column numbering in table \"%s\"\n",
 						  tbinfo->relname);
 				exit_nicely();
 			}
