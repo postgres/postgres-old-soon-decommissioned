@@ -109,7 +109,7 @@ ERROR:  RemoveType: type '<replaceable class="parameter">typename</replaceable>'
    </para>
    <para>
     Refer to <command>CREATE TYPE</command> for
-    inforamation on how to create types.
+    information on how to create types.
    </para>
    <para>
     It is the user's responsibility to remove any operators,

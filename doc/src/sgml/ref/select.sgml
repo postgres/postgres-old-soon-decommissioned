@@ -306,7 +306,7 @@ WHERE <replaceable class="PARAMETER">boolean_expr</replaceable>
     
     <replaceable class="PARAMETER">boolean_expr</replaceable>
     can consist of any expression which evaluates to a boolean value.
-    In many cases, this expression will be
+    In many cases, this expression will be:
 
     <synopsis>
      <replaceable class="PARAMETER">expr</replaceable> <replaceable class="PARAMETER">cond_op</replaceable> <replaceable class="PARAMETER">expr</replaceable>

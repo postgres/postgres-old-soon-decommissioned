@@ -76,7 +76,7 @@ CREATE CONSTRAINT TRIGGER <replaceable class="parameter">name</replaceable>
       <term><replaceable class="PARAMETER">attributes</replaceable></term>
       <listitem>
        <para>
-	Contraint attributes.
+	Constraint attributes.
        </para>
       </listitem>
      </varlistentry>

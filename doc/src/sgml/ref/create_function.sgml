@@ -301,7 +301,7 @@ CREATE FUNCTION point(complex) RETURNS point
     LANGUAGE 'c';
   </programlisting>
   <para>
-  The C decalaration of the function is:
+  The C declaration of the function is:
   </para>
   <programlisting>
 Point * complex_to_point (Complex *z)

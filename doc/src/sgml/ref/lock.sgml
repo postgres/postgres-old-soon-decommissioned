@@ -284,7 +284,7 @@ ERROR <replaceable class="PARAMETER">name</replaceable>: Table does not exist.
 
   <para>
    For example, an application runs a transaction at READ COMMITTED isolation
-   level and needs to ensure the existance of data in a table for the
+   level and needs to ensure the existence of data in a table for the
    duration of the
    transaction. To achieve this you could use SHARE lock mode over the
    table before querying. This will protect data from concurrent changes 
