@@ -16,12 +16,14 @@
  *-------------------------------------------------------------------------
  */
 #include <stdio.h>
+#include <string.h>
+
 #include "postgres.h"
+
 #include "access/printtup.h"
 #include "nodes/pg_list.h"
 #include "nodes/execnodes.h"
 #include "nodes/parsenodes.h"
-
 #include "parser/parsetree.h"
 #include "parser/catalog_utils.h"
 #include "access/heapam.h"
