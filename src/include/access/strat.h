@@ -74,11 +74,7 @@ typedef StrategyEvaluationData *StrategyEvaluation;
 #define StrategyTransformMapIsValid(transform) PointerIsValid(transform)
 
 
-#ifndef CorrectStrategies		/* XXX this should be removable */
-#define AMStrategies(foo)		12
-#else							/* !defined(CorrectStrategies) */
 #define AMStrategies(foo)		(foo)
-#endif							/* !defined(CorrectStrategies) */
 
 typedef struct StrategyMapData
 {
