@@ -144,7 +144,7 @@ $(addsuffix .tex-pdf, $(ALLBOOKS)): %.tex-pdf: %.sgml $(ALLSGML) stylesheet.dsl
 programmer.tex-pdf: catalogs.pdf connections.pdf
 
 %.dvi: %.tex-ps
-	@rm $*.aux $*.log
+	@rm -f $*.aux $*.log
 	jadetex $<
 	jadetex $<
 	jadetex $<
@@ -154,7 +154,7 @@ programmer.tex-pdf: catalogs.pdf connections.pdf
 	dvips -o $@ $<
 
 %.pdf: %.tex-pdf
-	@rm $*.aux $*.log $*.out
+	@rm -f $*.aux $*.log $*.out
 	pdfjadetex $<
 	pdfjadetex $<
 	pdfjadetex $<
