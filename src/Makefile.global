@@ -145,6 +145,7 @@ OIDNAMELEN = 36
 #HAVE_Cplusplus= true
 
 # Set COPT to -O for optimization, or -g for debuggable binaries
+# Many people prefer -O2, and -m486 if you are using a i486 or better
 COPT= -O
 
 # Commenting out CASSERT will make things go a LOT faster, but you will
