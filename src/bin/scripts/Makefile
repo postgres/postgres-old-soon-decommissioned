@@ -18,9 +18,7 @@ SCRIPTS := createdb dropdb createuser dropuser createlang droplang vacuumdb
 all: $(SCRIPTS)
 
 createlang: createlang.sh
-	sed -e 's/@DLSUFFIX@/$(DLSUFFIX)/g' \
-	    -e 's,@libdir@,$(libdir),g' \
-	  $< >$@
+	cp $< $@
 	chmod a+x $@
 
 install: all installdirs
