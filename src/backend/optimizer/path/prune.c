@@ -92,17 +92,17 @@ rels_set_cheapest(List *rel_list)
 {
 	List	   *x = NIL;
 	RelOptInfo *rel = (RelOptInfo *) NULL;
-	JoinPath	*cheapest;
+	NestPath	*cheapest;
 
 	foreach(x, rel_list)
 	{
 		rel = (RelOptInfo *) lfirst(x);
 
-		cheapest = (JoinPath *) set_cheapest(rel, rel->pathlist);
+		cheapest = (NestPath *) set_cheapest(rel, rel->pathlist);
 		if (IsA_JoinPath(cheapest))
 			rel->size = compute_joinrel_size(cheapest);
 		else
-			elog(ERROR, "non JoinPath called");
+			elog(ERROR, "non NestPath called");
 	}
 }
 

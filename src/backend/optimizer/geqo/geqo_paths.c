@@ -98,7 +98,7 @@ geqo_prune_rel(RelOptInfo *rel, List *other_rels)
 void
 geqo_set_cheapest(RelOptInfo *rel)
 {
-	JoinPath *cheapest = (JoinPath *)set_cheapest(rel, rel->pathlist);
+	NestPath *cheapest = (NestPath *)set_cheapest(rel, rel->pathlist);
 
 	if (IsA_JoinPath(cheapest))
 		rel->size = compute_joinrel_size(cheapest);

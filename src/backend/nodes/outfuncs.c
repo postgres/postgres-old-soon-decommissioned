@@ -990,13 +990,13 @@ _outIndexPath(StringInfo str, IndexPath *node)
 }
 
 /*
- *	JoinPath is a subclass of Path
+ *	NestPath is a subclass of Path
  */
 static void
-_outJoinPath(StringInfo str, JoinPath *node)
+_outNestPath(StringInfo str, NestPath *node)
 {
 	appendStringInfo(str, 
-			" JOINPATH :pathtype %d :cost %f :pathkeys ",
+			" NESTPATH :pathtype %d :cost %f :pathkeys ",
 			node->path.pathtype,
 			node->path.path_cost);
 	_outNode(str, node->path.pathkeys);
@@ -1021,7 +1021,7 @@ _outJoinPath(StringInfo str, JoinPath *node)
 }
 
 /*
- *	MergePath is a subclass of JoinPath.
+ *	MergePath is a subclass of NestPath.
  */
 static void
 _outMergePath(StringInfo str, MergePath *node)
@@ -1061,7 +1061,7 @@ _outMergePath(StringInfo str, MergePath *node)
 }
 
 /*
- *	HashPath is a subclass of JoinPath.
+ *	HashPath is a subclass of NestPath.
  */
 static void
 _outHashPath(StringInfo str, HashPath *node)
@@ -1600,8 +1600,8 @@ _outNode(StringInfo str, void *obj)
 			case T_IndexPath:
 				_outIndexPath(str, obj);
 				break;
-			case T_JoinPath:
-				_outJoinPath(str, obj);
+			case T_NestPath:
+				_outNestPath(str, obj);
 				break;
 			case T_MergePath:
 				_outMergePath(str, obj);

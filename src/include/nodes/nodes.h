@@ -74,7 +74,7 @@ typedef enum NodeTag
 	T_PathOrder,
 	T_Path,
 	T_IndexPath,
-	T_JoinPath,
+	T_NestPath,
 	T_MergePath,
 	T_HashPath,
 	T_OrderKey,
@@ -244,7 +244,7 @@ typedef struct Node
  * ----------------------------------------------------------------
  */
 #define IsA_JoinPath(jp) \
-	(nodeTag(jp)==T_JoinPath || nodeTag(jp)==T_MergePath || \
+	(nodeTag(jp)==T_NestPath || nodeTag(jp)==T_MergePath || \
 	 nodeTag(jp)==T_HashPath)
 
 #define IsA_Join(j) \
