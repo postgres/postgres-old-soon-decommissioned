@@ -82,6 +82,8 @@ typedef struct
  */
 extern Datum array_in(PG_FUNCTION_ARGS);
 extern Datum array_out(PG_FUNCTION_ARGS);
+extern Datum array_recv(PG_FUNCTION_ARGS);
+extern Datum array_send(PG_FUNCTION_ARGS);
 extern Datum array_length_coerce(PG_FUNCTION_ARGS);
 extern Datum array_eq(PG_FUNCTION_ARGS);
 extern Datum array_dims(PG_FUNCTION_ARGS);

@@ -346,6 +346,8 @@ extern Datum oidvectorgt(PG_FUNCTION_ARGS);
 /* pseudotypes.c */
 extern Datum record_in(PG_FUNCTION_ARGS);
 extern Datum record_out(PG_FUNCTION_ARGS);
+extern Datum record_recv(PG_FUNCTION_ARGS);
+extern Datum record_send(PG_FUNCTION_ARGS);
 extern Datum cstring_in(PG_FUNCTION_ARGS);
 extern Datum cstring_out(PG_FUNCTION_ARGS);
 extern Datum any_in(PG_FUNCTION_ARGS);

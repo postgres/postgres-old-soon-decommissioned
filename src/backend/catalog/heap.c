@@ -675,6 +675,8 @@ AddNewRelationType(const char *typeName,
 			   ',',				/* default array delimiter */
 			   F_RECORD_IN,		/* input procedure */
 			   F_RECORD_OUT,	/* output procedure */
+			   F_RECORD_RECV,	/* receive procedure */
+			   F_RECORD_SEND,	/* send procedure */
 			   InvalidOid,		/* array element type - irrelevant */
 			   InvalidOid,		/* domain base type - irrelevant */
 			   NULL,			/* default type value - none */

@@ -48,6 +48,28 @@ record_out(PG_FUNCTION_ARGS)
 	PG_RETURN_VOID();			/* keep compiler quiet */
 }
 
+/*
+ * record_recv		- binary input routine for pseudo-type RECORD.
+ */
+Datum
+record_recv(PG_FUNCTION_ARGS)
+{
+	elog(ERROR, "Cannot accept a constant of type %s", "RECORD");
+
+	PG_RETURN_VOID();			/* keep compiler quiet */
+}
+
+/*
+ * record_send		- binary output routine for pseudo-type RECORD.
+ */
+Datum
+record_send(PG_FUNCTION_ARGS)
+{
+	elog(ERROR, "Cannot display a value of type %s", "RECORD");
+
+	PG_RETURN_VOID();			/* keep compiler quiet */
+}
+
 
 /*
  * cstring_in		- input routine for pseudo-type CSTRING.

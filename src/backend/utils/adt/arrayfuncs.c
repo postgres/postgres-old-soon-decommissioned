@@ -752,6 +752,34 @@ array_out(PG_FUNCTION_ARGS)
 	PG_RETURN_CSTRING(retval);
 }
 
+/*---------------------------------------------------------------------
+ * array_recv :
+ *		  converts an array from the external binary format to
+ *		  its internal format.
+ * return value :
+ *		  the internal representation of the input array
+ *--------------------------------------------------------------------
+ */
+Datum
+array_recv(PG_FUNCTION_ARGS)
+{
+	elog(ERROR, "array_recv: not implemented yet");
+	return 0;
+}
+
+/*-------------------------------------------------------------------------
+ * array_send :
+ *		   takes the internal representation of an array and returns a bytea
+ *		  containing the array in its external binary format.
+ *-------------------------------------------------------------------------
+ */
+Datum
+array_send(PG_FUNCTION_ARGS)
+{
+	elog(ERROR, "array_send: not implemented yet");
+	return 0;
+}
+
 /*-------------------------------------------------------------------------
  * array_length_coerce :
  *		  Apply the element type's length-coercion routine to each element
