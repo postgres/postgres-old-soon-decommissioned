@@ -207,6 +207,11 @@ initialize_readline(void)
 "          WHERE substr(nspname,1,%d)='%s' "\
 "         HAVING COUNT(nspname)=1))"
 
+#define Query_for_list_of_encodings \
+" SELECT DISTINCT pg_catalog.pg_encoding_to_char(conforencoding) "\
+"   FROM pg_catalog.pg_conversion "\
+"  WHERE substr(pg_catalog.pg_encoding_to_char(conforencoding),1,%d)=UPPER('%s')"
+
 #define Query_for_list_of_functions \
 " SELECT DISTINCT proname || '()' "\
 "   FROM pg_catalog.pg_proc p, pg_catalog.pg_namespace n "\
@@ -1273,6 +1278,8 @@ psql_completion(char *text, int start, int end)
 		COMPLETE_WITH_QUERY(Query_for_list_of_users);
 	else if (strcmp(prev_wd, "\\dv") == 0 || strcmp(prev_wd, "\\dv+") == 0)
 		COMPLETE_WITH_SCHEMA_QUERY(Query_for_list_of_views);
+	else if (strcmp(prev_wd, "\\encoding") == 0)
+		COMPLETE_WITH_QUERY(Query_for_list_of_encodings);
 	else if (strcmp(prev_wd, "\\h") == 0 || strcmp(prev_wd, "\\help") == 0)
 		COMPLETE_WITH_LIST(sql_commands);
 	else if (strcmp(prev_wd, "\\pset") == 0)
