@@ -349,6 +349,12 @@ DATA(insert (	2039 1082 2 f 2372 ));
 DATA(insert (	2039 1082 3 f 2373 ));
 DATA(insert (	2039 1082 4 f 2374 ));
 DATA(insert (	2039 1082 5 f 2375 ));
+/* crosstype operators vs timestamptz */
+DATA(insert (	2039 1184 1 f 2534 ));
+DATA(insert (	2039 1184 2 f 2535 ));
+DATA(insert (	2039 1184 3 f 2536 ));
+DATA(insert (	2039 1184 4 f 2537 ));
+DATA(insert (	2039 1184 5 f 2538 ));
 
 /*
  *	btree timestamptz_ops
@@ -365,6 +371,12 @@ DATA(insert (	1998 1082 2 f 2385 ));
 DATA(insert (	1998 1082 3 f 2386 ));
 DATA(insert (	1998 1082 4 f 2387 ));
 DATA(insert (	1998 1082 5 f 2388 ));
+/* crosstype operators vs timestamp */
+DATA(insert (	1998 1114 1 f 2540 ));
+DATA(insert (	1998 1114 2 f 2541 ));
+DATA(insert (	1998 1114 3 f 2542 ));
+DATA(insert (	1998 1114 4 f 2543 ));
+DATA(insert (	1998 1114 5 f 2544 ));
 
 /*
  *	btree interval_ops

@@ -169,6 +169,22 @@ extern Datum timestamp_cmp(PG_FUNCTION_ARGS);
 extern Datum timestamp_smaller(PG_FUNCTION_ARGS);
 extern Datum timestamp_larger(PG_FUNCTION_ARGS);
 
+extern Datum timestamp_eq_timestamptz(PG_FUNCTION_ARGS);
+extern Datum timestamp_ne_timestamptz(PG_FUNCTION_ARGS);
+extern Datum timestamp_lt_timestamptz(PG_FUNCTION_ARGS);
+extern Datum timestamp_le_timestamptz(PG_FUNCTION_ARGS);
+extern Datum timestamp_gt_timestamptz(PG_FUNCTION_ARGS);
+extern Datum timestamp_ge_timestamptz(PG_FUNCTION_ARGS);
+extern Datum timestamp_cmp_timestamptz(PG_FUNCTION_ARGS);
+
+extern Datum timestamptz_eq_timestamp(PG_FUNCTION_ARGS);
+extern Datum timestamptz_ne_timestamp(PG_FUNCTION_ARGS);
+extern Datum timestamptz_lt_timestamp(PG_FUNCTION_ARGS);
+extern Datum timestamptz_le_timestamp(PG_FUNCTION_ARGS);
+extern Datum timestamptz_gt_timestamp(PG_FUNCTION_ARGS);
+extern Datum timestamptz_ge_timestamp(PG_FUNCTION_ARGS);
+extern Datum timestamptz_cmp_timestamp(PG_FUNCTION_ARGS);
+
 extern Datum interval_in(PG_FUNCTION_ARGS);
 extern Datum interval_out(PG_FUNCTION_ARGS);
 extern Datum interval_recv(PG_FUNCTION_ARGS);
