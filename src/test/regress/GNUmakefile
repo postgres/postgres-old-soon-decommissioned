@@ -14,7 +14,7 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
-CFLAGS+= -I$(LIBPQDIR) -I../../include
+CFLAGS+= -I$(LIBPQDIR) -I../../include $(CFLAGS_SL)
 
 LDADD+= -L$(LIBPQDIR) -lpq
         

@@ -34,6 +34,7 @@ ifeq ($(PORTNAME), linux)
     install-shlib-dep := install-shlib
     shlib := libpq.so.1
     LDFLAGS_SL = -shared
+    CFLAGS += $(CFLAGS_SL)
   endif
 endif
 ifeq ($(PORTNAME), BSD44_derived)
