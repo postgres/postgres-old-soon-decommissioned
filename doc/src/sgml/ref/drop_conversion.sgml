@@ -90,7 +90,7 @@ DROP CONVERSION myname;
   <para>
     <command>DROP CONVERSION</command>
     is a <productname>PostgreSQL</productname> extension.
-    There is no <command>DROP OPERATOR</command>
+    There is no <command>DROP CONVERSION</command>
     statement in <acronym>SQL99</acronym>.
   </para>
  </refsect1>
