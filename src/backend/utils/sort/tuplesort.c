@@ -1804,13 +1804,12 @@ myFunctionCall2(FmgrInfo *flinfo, Datum arg1, Datum arg2)
 	FunctionCallInfoData fcinfo;
 	Datum		result;
 
-	/* MemSet(&fcinfo, 0, sizeof(fcinfo)); */
+	fcinfo.flinfo = flinfo;
 	fcinfo.context = NULL;
 	fcinfo.resultinfo = NULL;
 	fcinfo.isnull = false;
-
-	fcinfo.flinfo = flinfo;
 	fcinfo.nargs = 2;
+
 	fcinfo.arg[0] = arg1;
 	fcinfo.arg[1] = arg2;
 	fcinfo.argnull[0] = false;
