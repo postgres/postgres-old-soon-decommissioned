@@ -38,7 +38,7 @@
 #ifdef _WIN32_IE
 #undef _WIN32_IE
 #endif
-#define _WIN32_IE 0x0400
+#define _WIN32_IE 0x0500
 #ifdef near
 #undef near
 #endif
@@ -3296,7 +3296,7 @@ pqGetHomeDirectory(char *buf, int bufsize)
 	char		tmppath[MAX_PATH];
 
 	ZeroMemory(tmppath, sizeof(tmppath));
-	if (!SHGetSpecialFolderPath(NULL, tmppath, CSIDL_APPDATA, FALSE))
+	if (SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, 0, tmppath) != S_OK)
 		return false;
 	snprintf(buf, bufsize, "%s/postgresql", tmppath);
 	return true;

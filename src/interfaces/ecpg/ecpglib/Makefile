@@ -30,6 +30,11 @@ OBJS= execute.o typename.o descriptor.o data.o error.o prepare.o memory.o \
 SHLIB_LINK = -L../pgtypeslib -lpgtypes $(libpq) \
 	$(filter -lintl -lssl -lcrypto -lkrb5 -lcrypt -lm, $(LIBS)) $(PTHREAD_LIBS)
 
+ifeq ($(PORTNAME), win32)
+# Link to shfolder.dll instead of shell32.dll
+SHLIB_LINK += -lshfolder
+endif
+
 all: all-lib
 
 # Shared library stuff
