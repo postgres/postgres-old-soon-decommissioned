@@ -1962,7 +1962,7 @@ got_record:;
 			{
 				ereport(emode,
 						(errcode_for_file_access(),
-						 errmsg("could not from read log file %u, segment %u, offset %u: %m",
+						 errmsg("could not read from log file %u, segment %u, offset %u: %m",
 								readId, readSeg, readOff)));
 				goto next_record_is_invalid;
 			}
