@@ -119,8 +119,8 @@ TransBlockGetLastTransactionIdStatus(Block tblock,
      * ----------------
      */
     maxIndex = TP_NumXidStatusPerBlock;
-    for (index = maxIndex-1; index>=0; index--) {
-	offset =  BitIndexOf(index);
+    for (index = maxIndex; index > 0; index--) {
+	offset =  BitIndexOf(index-1);
 	bit1 =    ((bits8) BitArrayBitIsSet((BitArray) tblock, offset++)) << 1;
 	bit2 =    (bits8)  BitArrayBitIsSet((BitArray) tblock, offset);
 	
@@ -135,7 +135,7 @@ TransBlockGetLastTransactionIdStatus(Block tblock,
 	if (xstatus != XID_INPROGRESS) {
 	    if (returnXidP != NULL) {
 		TransactionIdStore(baseXid, returnXidP);
-		TransactionIdAdd(returnXidP, index);
+		TransactionIdAdd(returnXidP, index - 1);
 	    }
 	    break;
 	}
