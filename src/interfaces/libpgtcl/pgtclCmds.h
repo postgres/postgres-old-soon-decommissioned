@@ -21,6 +21,7 @@
 typedef struct Pg_clientData_s {
     Tcl_HashTable	dbh_hash;
     Tcl_HashTable	res_hash;
+    Tcl_HashTable	notify_hash;
     long		dbh_count;
     long		res_count;
 } Pg_clientData;
