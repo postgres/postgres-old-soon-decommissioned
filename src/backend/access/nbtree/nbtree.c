@@ -143,7 +143,7 @@ btbuild(Relation heap,
     nhtups = nitups = 0;
     
     if (usefast) {
-	spool = _bt_spoolinit(index, 7);
+	spool = _bt_spoolinit(index, 7, isunique);
 	res = (InsertIndexResult) NULL;
     }
 
