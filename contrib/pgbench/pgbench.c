@@ -512,8 +512,8 @@ main(int argc, char **argv)
 				opterr,
 				optopt;
 	int			c;
-	char	   *pghost = "";
-	char	   *pgport = "";
+	char	   *pghost = NULL;
+	char	   *pgport = NULL;
 	char	   *dbName;
 	int			is_init_mode = 0;		/* initialize mode? */
 	int			is_no_vacuum = 0;		/* no vacuum at all before
