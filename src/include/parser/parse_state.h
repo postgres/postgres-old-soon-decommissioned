@@ -16,7 +16,7 @@
 typedef struct ParseState {
     int 	p_last_resno; 
     List 	*p_target_resnos;
-    Relation 	p_parser_current_rel;
+    Relation 	p_current_rel;
     List 	*p_rtable;
     int 	p_query_is_rule;
     int		p_numAgg;
