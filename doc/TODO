@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Mon Dec 22 11:30:17 EST 2003
+Last updated:		Tue Jan  6 14:48:41 EST 2004
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -181,7 +181,7 @@ Commands
 * Allow CREATE TABLE foo (f1 INT CHECK (f1 > 0) CHECK (f1 < 10)) to work
   by searching for non-conflicting constraint names, and prefix with table name
 * Use more reliable method for CREATE DATABASE to get a consistent copy of db
-* Have psql \dn show only visible temp schemas using current_schemas()
+* -Have psql \dn show only visible temp schemas using current_schemas()
 * Have psql '\i ~/<tab><tab>' actually load files it displays from home dir
 * Ignore temporary tables from other session when processing inheritance
 * Add GUC setting to make created tables default to WITHOUT OIDS
