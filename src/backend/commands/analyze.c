@@ -690,8 +690,10 @@ pageloop:;
 	/*
 	 * Emit some interesting relation info 
 	 */
-	elog(elevel, "  pages = %d rows/page = %d rows = %.0f", 
-		onerel->rd_nblocks, (int)tuplesperpage, *totalrows);
+	ereport(elevel,
+			(errmsg("\"%s\": %u pages, %.1f average rows/page in sample, %.0f estimated rows",
+					RelationGetRelationName(onerel),
+					onerel->rd_nblocks, tuplesperpage, *totalrows)));
 
 	return numrows;
 }
