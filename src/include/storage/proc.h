@@ -88,8 +88,7 @@ typedef struct PROC_HDR
 
 #define	DUMMY_PROC_DEFAULT	0
 #define	DUMMY_PROC_BGWRITER	1
-#define	DUMMY_PROC_AUTOVAC	2
-#define	NUM_DUMMY_PROCS		3
+#define	NUM_DUMMY_PROCS		2
 
 
 /* configurable options */
