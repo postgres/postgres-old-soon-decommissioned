@@ -139,6 +139,8 @@ ALTER GROUP <replaceable>name</replaceable> DROP USER <replaceable>uname1</repla
  <sect1 id="privileges">
   <title>Privileges</title>
 
+  <comment>Being moved to User's Guide.  Will eventually disappear here.</comment>
+
   <para>
    When a database object is created, it is assigned an owner. The
    owner is the user that executed the creation statement. To change
