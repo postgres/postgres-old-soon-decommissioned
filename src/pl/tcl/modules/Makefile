@@ -16,7 +16,7 @@ install: all installdirs
 	$(INSTALL_SCRIPT) pltcl_loadmod $(DESTDIR)$(bindir)/pltcl_loadmod
 	$(INSTALL_SCRIPT) pltcl_delmod 	$(DESTDIR)$(bindir)/pltcl_delmod
 	$(INSTALL_SCRIPT) pltcl_listmod $(DESTDIR)$(bindir)/pltcl_listmod
-	$(INSTALL_DATA) unknown.pltcl $(DESTDIR)$(datadir)/unknown.pltcl
+	$(INSTALL_DATA) $(srcdir)/unknown.pltcl $(DESTDIR)$(datadir)/unknown.pltcl
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(bindir) $(DESTDIR)$(datadir)
