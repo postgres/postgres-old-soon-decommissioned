@@ -44,6 +44,10 @@ $Header$
     <para>
      <programlisting>
 Fix PL/PgSQL SELECTs when returning no rows
+Fix for psql backslash core dump
+Referential integrity permission fix
+Optimizer fixes
+pg_dump cleanups 
      </programlisting>
     </para>
    </sect2>
