@@ -176,7 +176,7 @@ typedef struct XLogRecData
 } XLogRecData;
 
 /* XLOG directory name */
-extern char XLogDir[];
+extern char *XLogDir;
 
 extern StartUpID ThisStartUpID; /* current SUI */
 extern bool InRecovery;

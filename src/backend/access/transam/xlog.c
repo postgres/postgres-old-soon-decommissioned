@@ -389,7 +389,8 @@ static ControlFileData *ControlFile = NULL;
 
 
 /* File path names */
-static char XLogDir[MAXPGPATH] = "";
+char *XLogDir = NULL;
+
 static char ControlFilePath[MAXPGPATH];
 
 /*
@@ -2068,16 +2069,17 @@ ValidXLOGHeader(XLogPageHeader hdr, int emode, bool checkSUI)
 void
 SetXLogDir(char *path)
 {
+	char *xsubdir = "/pg_xlog";
+
 	if (path != NULL)
 	{
-		if (strlen(path) >= MAXPGPATH)
-			elog(FATAL, "XLOG path '%s' is too long"
-				 "; maximum length is %d characters", path, MAXPGPATH-1);
+		XLogDir = malloc(strlen(path)+1);
 		strcpy(XLogDir, path);
 	}
 	else
 	{
-		snprintf(XLogDir, MAXPGPATH, "%s/pg_xlog", DataDir);
+		XLogDir = malloc(strlen(DataDir)+strlen(xsubdir)+1);
+		snprintf(XLogDir, MAXPGPATH, "%s%s", DataDir, xsubdir);
 	}
 }
 
@@ -2085,7 +2087,7 @@ void
 XLOGPathInit(void)
 {
 	/* Init XLOG file paths */
-	if (strlen(XLogDir) <= 0)
+	if (XLogDir == NULL)
 		SetXLogDir(NULL);
 	snprintf(ControlFilePath, MAXPGPATH, "%s/global/pg_control", DataDir);
 }
