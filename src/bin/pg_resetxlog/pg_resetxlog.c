@@ -67,7 +67,7 @@
 
 
 static char *DataDir;			/* locations of important stuff */
-static char *XLogDir;
+static char XLogDir[MAXPGPATH];
 static char ControlFilePath[MAXPGPATH];
 
 static ControlFileData ControlFile;		/* pg_control values */
@@ -527,7 +527,6 @@ main(int argc, char **argv)
 
 	DataDir = argv[argn++];
 
-	XLogDir=malloc(MAXPGPATH);
 	snprintf(XLogDir, MAXPGPATH, "%s/pg_xlog", DataDir);
 
 	snprintf(ControlFilePath, MAXPGPATH, "%s/global/pg_control", DataDir);
