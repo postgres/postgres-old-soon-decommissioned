@@ -31,7 +31,6 @@
 #include "miscadmin.h"
 #include "storage/ipc.h"
 #include "storage/pg_sema.h"
-#include "libpq/pqsignal.h"
 
 
 #ifndef HAVE_UNION_SEMUN
@@ -233,8 +232,7 @@ IpcSemaphoreCreate(int numSems)
 			continue;			/* oops, GETPID failed */
 		if (creatorPID != getpid())
 		{
-			if (pqkill(creatorPID, 0) == 0 ||
-				errno != ESRCH)
+			if (kill(creatorPID, 0) == 0 || errno != ESRCH)
 				continue;		/* sema belongs to a live process */
 		}
 

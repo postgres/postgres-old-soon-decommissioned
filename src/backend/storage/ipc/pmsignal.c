@@ -20,7 +20,6 @@
 #include "miscadmin.h"
 #include "storage/pmsignal.h"
 #include "storage/shmem.h"
-#include "libpq/pqsignal.h"
 
 
 /*
@@ -65,7 +64,7 @@ SendPostmasterSignal(PMSignalReason reason)
 	/* Atomically set the proper flag */
 	PMSignalFlags[reason] = true;
 	/* Send signal to postmaster */
-	pqkill(PostmasterPid, SIGUSR1);
+	kill(PostmasterPid, SIGUSR1);
 }
 
 /*

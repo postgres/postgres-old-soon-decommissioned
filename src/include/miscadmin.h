@@ -74,11 +74,21 @@ extern volatile uint32 CritSectionCount;
 /* in postgres.c */
 extern void ProcessInterrupts(void);
 
+#ifndef WIN32
 #define CHECK_FOR_INTERRUPTS() \
 do { \
 	if (InterruptPending) \
 		ProcessInterrupts(); \
 } while(0)
+#else
+#define CHECK_FOR_INTERRUPTS() \
+do { \
+	WaitForSingleObjectEx(GetCurrentThread(),0,TRUE);	\
+	if (InterruptPending) \
+		ProcessInterrupts(); \
+} while (0)
+#endif
+
 
 #define HOLD_INTERRUPTS()  (InterruptHoldoffCount++)
 
