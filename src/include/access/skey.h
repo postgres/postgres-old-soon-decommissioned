@@ -16,7 +16,6 @@
 #ifndef	SKEY_H
 #define SKEY_H
 
-#include "postgres.h"
 #include "access/attnum.h"
 
 
