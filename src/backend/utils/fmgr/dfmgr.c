@@ -53,9 +53,9 @@ fmgr_dynamic(Oid procedureId, int *pronargs)
 {
 	HeapTuple	procedureTuple;
 	Form_pg_proc procedureStruct;
-	char	   *proname;
-	char	   *probinattr,
+	char	   *proname,
 			   *probinstring;
+	Datum		probinattr;
 	func_ptr	user_fn;
 	Relation	rdesc;
 	bool		isnull;

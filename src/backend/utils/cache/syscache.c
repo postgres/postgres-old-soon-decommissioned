@@ -494,7 +494,7 @@ SearchSysCacheGetAttribute(int cacheId,
 	int32		attributeLength,
 				attributeByValue;
 	bool		isNull;
-	char	   *attributeValue;
+	Datum		attributeValue;
 	void	   *returnValue;
 
 	tp = SearchSysCacheTuple(cacheId, key1, key2, key3, key4);
@@ -562,7 +562,7 @@ SearchSysCacheGetAttribute(int cacheId,
 		: attributeLength;		/* fixed length */
 
 		tmp = (char *) palloc(size);
-		memmove(tmp, attributeValue, size);
+		memmove(tmp, (void *)attributeValue, size);
 		returnValue = (void *) tmp;
 	}
 

@@ -197,8 +197,8 @@ puttuple(struct leftist ** treep,
 int
 tuplecmp(HeapTuple ltup, HeapTuple rtup, LeftistContext context)
 {
-	register char *lattr,
-			   *rattr;
+	register Datum lattr,
+				rattr;
 	int			nkey = 0;
 	int			result = 0;
 	bool		isnull;

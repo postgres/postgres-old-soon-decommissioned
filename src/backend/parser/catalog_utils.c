@@ -1378,8 +1378,8 @@ findsupers(Oid relid, Oid **supervec)
 		{
 			qentry = (SuperQE *) palloc(sizeof(SuperQE));
 
-			d = (Datum) fastgetattr(inhtup, Anum_pg_inherits_inhparent,
-									inhtupdesc, &isNull);
+			d = fastgetattr(inhtup, Anum_pg_inherits_inhparent,
+							inhtupdesc, &isNull);
 			qentry->sqe_relid = DatumGetObjectId(d);
 
 			/* put this one on the queue */

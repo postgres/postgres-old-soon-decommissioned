@@ -58,14 +58,14 @@ RuleIdGetActionInfo(Oid ruleoid, bool *instead_flag, Query **parseTrees)
 	if (ruletuple == NULL)
 		elog(WARN, "rule %u isn't in rewrite system relation", ruleoid);
 
-	ruleaction = heap_getattr(ruletuple,
-							  InvalidBuffer,
-							  Anum_pg_rewrite_action,
-							  ruleTupdesc,
-							  &action_is_null);
-	rule_evqual_string = heap_getattr(ruletuple, InvalidBuffer,
-									  Anum_pg_rewrite_ev_qual,
-									  ruleTupdesc, &action_is_null);
+	ruleaction = (char *)heap_getattr(ruletuple,
+									  InvalidBuffer,
+									  Anum_pg_rewrite_action,
+									  ruleTupdesc,
+									  &action_is_null);
+	rule_evqual_string = (char *)heap_getattr(ruletuple, InvalidBuffer,
+											  Anum_pg_rewrite_ev_qual,
+											  ruleTupdesc, &action_is_null);
 	*instead_flag = !!heap_getattr(ruletuple, InvalidBuffer,
 								   Anum_pg_rewrite_is_instead,
 								   ruleTupdesc, &instead_is_null);

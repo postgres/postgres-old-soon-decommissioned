@@ -42,10 +42,10 @@ heap_keytest(HeapTuple t,
 
 	for (; nkeys--; keys++)
 	{
-		atp = (Datum) heap_getattr(t, InvalidBuffer,
-								   keys->sk_attno,
-								   tupdesc,
-								   &isnull);
+		atp = heap_getattr(t, InvalidBuffer,
+						   keys->sk_attno,
+						   tupdesc,
+						   &isnull);
 
 		if (isnull)
 			/* XXX eventually should check if SK_ISNULL */

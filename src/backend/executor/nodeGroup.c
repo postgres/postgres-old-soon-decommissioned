@@ -388,8 +388,8 @@ sameGroup(TupleTableSlot *oldslot,
 {
 	bool		isNull1,
 				isNull2;
-	char	   *attr1,
-			   *attr2;
+	Datum		attr1,
+			    attr2;
 	char	   *val1,
 			   *val2;
 	int			i;

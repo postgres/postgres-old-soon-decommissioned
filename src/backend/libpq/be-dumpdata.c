@@ -213,7 +213,7 @@ void
 be_printtup(HeapTuple tuple, TupleDesc typeinfo)
 {
 	int			i;
-	char	   *attr;
+	Datum		attr;
 	bool		isnull;
 	Oid			typoutput;
 

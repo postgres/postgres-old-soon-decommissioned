@@ -216,8 +216,8 @@ Async_Notify(char *relname)
 
 	while (HeapTupleIsValid(lTuple = heap_getnext(sRel, 0, &b)))
 	{
-		d = (Datum) heap_getattr(lTuple, b, Anum_pg_listener_notify,
-								 tdesc, &isnull);
+		d = heap_getattr(lTuple, b, Anum_pg_listener_notify,
+						 tdesc, &isnull);
 		if (!DatumGetInt32(d))
 		{
 			rTuple = heap_modifytuple(lTuple, b, lRel, value, nulls, repl);
@@ -293,13 +293,13 @@ Async_NotifyAtCommit()
 
 			while (HeapTupleIsValid(lTuple = heap_getnext(sRel, 0, &b)))
 			{
-				d = (Datum) heap_getattr(lTuple, b, Anum_pg_listener_relname,
-										 tdesc, &isnull);
+				d = heap_getattr(lTuple, b, Anum_pg_listener_relname,
+								 tdesc, &isnull);
 
 				if (AsyncExistsPendingNotify((char *) DatumGetPointer(d)))
 				{
-					d = (Datum) heap_getattr(lTuple, b, Anum_pg_listener_pid,
-											 tdesc, &isnull);
+					d = heap_getattr(lTuple, b, Anum_pg_listener_pid,
+									 tdesc, &isnull);
 
 					if (ourpid == DatumGetInt32(d))
 					{
@@ -444,12 +444,12 @@ Async_Listen(char *relname, int pid)
 	s = heap_beginscan(lDesc, 0, NowTimeQual, 0, (ScanKey) NULL);
 	while (HeapTupleIsValid(htup = heap_getnext(s, 0, &b)))
 	{
-		d = (Datum) heap_getattr(htup, b, Anum_pg_listener_relname, tdesc,
-								 &isnull);
+		d = heap_getattr(htup, b, Anum_pg_listener_relname, tdesc,
+						 &isnull);
 		relnamei = DatumGetPointer(d);
 		if (!strncmp(relnamei, relname, NAMEDATALEN))
 		{
-			d = (Datum) heap_getattr(htup, b, Anum_pg_listener_pid, tdesc, &isnull);
+			d = heap_getattr(htup, b, Anum_pg_listener_pid, tdesc, &isnull);
 			pid = DatumGetInt32(d);
 			if (pid == ourPid)
 			{
@@ -609,8 +609,8 @@ Async_NotifyFrontEnd()
 
 	while (HeapTupleIsValid(lTuple = heap_getnext(sRel, 0, &b)))
 	{
-		d = (Datum) heap_getattr(lTuple, b, Anum_pg_listener_relname,
-								 tdesc, &isnull);
+		d = heap_getattr(lTuple, b, Anum_pg_listener_relname,
+						 tdesc, &isnull);
 		rTuple = heap_modifytuple(lTuple, b, lRel, value, nulls, repl);
 		heap_replace(lRel, &lTuple->t_ctid, rTuple);
 

@@ -385,11 +385,11 @@ GetIndexValue(HeapTuple tuple,
 
 		for (i = 0; i < FIgetnArgs(fInfo); i++)
 		{
-			attData[i] = (Datum) heap_getattr(tuple,
-											  buffer,
-											  attrNums[i],
-											  hTupDesc,
-											  attNull);
+			attData[i] = heap_getattr(tuple,
+									  buffer,
+									  attrNums[i],
+									  hTupDesc,
+									  attNull);
 		}
 		returnVal = (Datum) fmgr_array_args(FIgetProcOid(fInfo),
 											FIgetnArgs(fInfo),
@@ -400,8 +400,8 @@ GetIndexValue(HeapTuple tuple,
 	}
 	else
 	{
-		returnVal = (Datum) heap_getattr(tuple, buffer, attrNums[attOff],
-										 hTupDesc, attNull);
+		returnVal = heap_getattr(tuple, buffer, attrNums[attOff],
+								 hTupDesc, attNull);
 	}
 	return returnVal;
 }

@@ -83,11 +83,7 @@ ProjectAttribute(TupleDesc TD,
 	AttrNumber	attrno = attrVar->varattno;
 
 
-	val = PointerGetDatum(heap_getattr(tup,
-									   InvalidBuffer,
-									   attrno,
-									   TD,
-									   isnullP));
+	val = heap_getattr(tup, InvalidBuffer, attrno, TD, isnullP);
 	if (*isnullP)
 		return (Datum) NULL;
 

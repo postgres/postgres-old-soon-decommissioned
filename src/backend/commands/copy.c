@@ -270,8 +270,7 @@ CopyTo(Relation rel, bool binary, bool oids, FILE *fp, char *delim)
 
 		for (i = 0; i < attr_count; i++)
 		{
-			value = (Datum)
-				heap_getattr(tuple, InvalidBuffer, i + 1, tupDesc, &isnull);
+			value = heap_getattr(tuple, InvalidBuffer, i + 1, tupDesc, &isnull);
 			if (!binary)
 			{
 				if (!isnull)

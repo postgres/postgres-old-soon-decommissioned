@@ -182,8 +182,8 @@ ExecUnique(Unique *node)
 			 */
 			bool		isNull1,
 						isNull2;
-			char	   *attr1,
-					   *attr2;
+			Datum		attr1,
+						attr2;
 			char	   *val1,
 					   *val2;
 
