@@ -64,7 +64,9 @@ CREATE SCHEMA AUTHORIZATION <replaceable class="parameter">username</replaceable
       <listitem>
        <para>
         The name of a schema to be created.  If this is omitted, the user name
-        is used as the schema name.
+        is used as the schema name.  The name cannot
+        begin with <literal>pg_</literal>, as such names
+        are reserved for system schemas.
        </para>
       </listitem>
      </varlistentry>

@@ -95,6 +95,7 @@ DROP TYPE box;
 
   <simplelist type="inline">
    <member><xref linkend="sql-createtype" endterm="sql-createtype-title"></member>
+   <member><xref linkend="sql-altertype" endterm="sql-altertype-title"></member>
   </simplelist>
  </refsect1>
 

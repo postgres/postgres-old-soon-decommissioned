@@ -80,6 +80,7 @@ DROP TABLESPACE mystuff;
 
   <simplelist type="inline">
    <member><xref linkend="sql-createtablespace" endterm="sql-createtablespace-title"></member>
+   <member><xref linkend="sql-altertablespace" endterm="sql-altertablespace-title"></member>
   </simplelist>
  </refsect1>
 

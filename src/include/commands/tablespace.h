@@ -26,4 +26,7 @@ extern Oid	get_tablespace_oid(const char *tablespacename);
 
 extern char *get_tablespace_name(Oid spc_oid);
 
+extern void RenameTableSpace(const char *oldname, const char *newname);
+extern void AlterTableSpaceOwner(const char *name, AclId newOwnerSysId);
+
 #endif   /* TABLESPACE_H */

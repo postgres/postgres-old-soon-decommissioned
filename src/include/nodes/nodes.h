@@ -270,7 +270,7 @@ typedef enum NodeTag
 	T_DeclareCursorStmt,
 	T_CreateTableSpaceStmt,
 	T_DropTableSpaceStmt,
-	T_AlterDbOwnerStmt,
+	T_AlterOwnerStmt,
 
 	T_A_Expr = 800,
 	T_ColumnRef,

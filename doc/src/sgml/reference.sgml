@@ -45,11 +45,14 @@ PostgreSQL Reference Manual
    &alterFunction;
    &alterGroup;
    &alterLanguage;
+   &alterOperator;
    &alterOperatorClass;
    &alterSchema;
    &alterSequence;
    &alterTable;
+   &alterTableSpace;
    &alterTrigger;
+   &alterType;
    &alterUser;
    &analyze;
    &begin;
