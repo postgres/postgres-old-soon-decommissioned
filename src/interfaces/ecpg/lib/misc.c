@@ -137,6 +137,6 @@ ECPGlog(const char *format,...)
 		vfprintf(debugstream, f, ap);
 		va_end(ap);
 
-		free(f);
+		ECPGfree(f);
 	}
 }

@@ -374,9 +374,9 @@ ECPGdeallocate_desc(int line, const char *name)
 		if (!strcmp(name, i->name))
 		{
 			*lastptr = i->next;
-			free(i->name);
+			ECPGfree(i->name);
 			PQclear(i->result);
-			free(i);
+			ECPGfree(i);
 			return true;
 		}
 	}

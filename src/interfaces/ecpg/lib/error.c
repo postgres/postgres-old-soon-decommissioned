@@ -82,6 +82,11 @@ ECPGraise(int line, int code, const char *str)
 			 "Data read from backend is not an array in line %d.", line);
 			break;
 
+		case ECPG_ARRAY_INSERT:
+			snprintf(sqlca.sqlerrm.sqlerrmc, sizeof(sqlca.sqlerrm.sqlerrmc),
+					 "Trying to insert an array of variables in line %d.", line);
+			break;
+
 		case ECPG_NO_CONN:
 			snprintf(sqlca.sqlerrm.sqlerrmc, sizeof(sqlca.sqlerrm.sqlerrmc),
 					 "No such connection %s in line %d.", str, line);

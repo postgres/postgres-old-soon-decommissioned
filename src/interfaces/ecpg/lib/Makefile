@@ -12,6 +12,8 @@ subdir = src/interfaces/ecpg/lib
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
+CFLAGS=-g
+
 NAME= ecpg
 SO_MAJOR_VERSION= 3
 SO_MINOR_VERSION= 3.0

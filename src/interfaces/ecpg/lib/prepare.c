@@ -76,7 +76,7 @@ ECPGprepare(int lineno, char *name, char *variable)
 	stmt = (struct statement *) ECPGalloc(sizeof(struct statement), lineno);
 	if (!stmt)
 	{
-		free(this);
+		ECPGfree(this);
 		return false;
 	}
 
@@ -114,15 +114,15 @@ ECPGdeallocate(int lineno, char *name)
 	if (this)
 	{
 		/* okay, free all the resources */
-		free(this->name);
-		free(this->stmt->command);
-		free(this->stmt);
+		ECPGfree(this->name);
+		ECPGfree(this->stmt->command);
+		ECPGfree(this->stmt);
 		if (prev != NULL)
 			prev->next = this->next;
 		else
 			prep_stmts = this->next;
 
-		free(this);
+		ECPGfree(this);
 		return true;
 	}
 	ECPGraise(lineno, ECPG_INVALID_STMT, name);

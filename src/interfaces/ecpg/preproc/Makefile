@@ -4,6 +4,8 @@ subdir = src/interfaces/ecpg/preproc
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
+CFLAGS+=-g
+
 MAJOR_VERSION=2
 MINOR_VERSION=9
 PATCHLEVEL=0
