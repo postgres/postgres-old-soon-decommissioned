@@ -384,5 +384,6 @@ TIMEZONE|XACTISOLEVEL|CLIENT_ENCODING|SERVER_ENCODING"},
 \tVACUUM [VERBOSE] [ANALYZE] [table]\n\
 \tor\n\
 \tVACUUM [VERBOSE]  ANALYZE  [table [(column_name1, ...column_nameN)]];"},
-	{NULL, NULL, NULL}			/* important to keep a NULL terminator here!*/
+	{NULL, NULL, NULL}			/* important to keep a NULL terminator
+								 * here! */
 };
