@@ -561,26 +561,6 @@ int8mod(PG_FUNCTION_ARGS)
 	PG_RETURN_INT64(result);
 }
 
-/* int8fac()
- * Factorial
- */
-Datum
-int8fac(PG_FUNCTION_ARGS)
-{
-	int64		arg1 = PG_GETARG_INT64(0);
-	int64		result;
-	int64		i;
-
-	if (arg1 == 0)
-		result = 1;
-	else if (arg1 < 1)
-		result = 0;
-	else
-		for (i = arg1, result = 1; i > 0; --i)
-			result *= i;
-
-	PG_RETURN_INT64(result);
-}
 
 Datum
 int8inc(PG_FUNCTION_ARGS)

@@ -72,7 +72,6 @@ extern Datum int8mi(PG_FUNCTION_ARGS);
 extern Datum int8mul(PG_FUNCTION_ARGS);
 extern Datum int8div(PG_FUNCTION_ARGS);
 extern Datum int8abs(PG_FUNCTION_ARGS);
-extern Datum int8fac(PG_FUNCTION_ARGS);
 extern Datum int8mod(PG_FUNCTION_ARGS);
 extern Datum int8inc(PG_FUNCTION_ARGS);
 extern Datum int8larger(PG_FUNCTION_ARGS);
