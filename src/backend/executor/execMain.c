@@ -132,7 +132,7 @@ ExecutorStart(QueryDesc *queryDesc, EState *estate)
 	 * Make our own private copy of the current queries snapshot data
 	 */
 	if (QuerySnapshot == NULL)
-		estate->es_snapshot = NULL
+		estate->es_snapshot = NULL;
 	else
 	{
 		estate->es_snapshot = (Snapshot)palloc(sizeof(SnapshotData));
