@@ -815,6 +815,7 @@ line_in(PG_FUNCTION_ARGS)
 	LINE	   *line;
 
 #ifdef ENABLE_LINE_TYPE
+	/* when fixed, modify "not implemented", catalog/pg_type.h and SGML */
 	LSEG		lseg;
 	int			isopen;
 	char	   *s;
@@ -843,6 +844,7 @@ line_out(PG_FUNCTION_ARGS)
 	char	   *result;
 
 #ifdef ENABLE_LINE_TYPE
+	/* when fixed, modify "not implemented", catalog/pg_type.h and SGML */
 	LSEG		lseg;
 
 	if (FPzero(line->B))
