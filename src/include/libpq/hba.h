@@ -11,7 +11,9 @@
 #ifndef HBA_H
 #define HBA_H
 
+#ifndef WIN32
 #include <netinet/in.h>
+#endif
 
 #define CONF_FILE "pg_hba.conf"
  /* Name of the config file  */

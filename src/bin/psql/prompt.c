@@ -129,6 +129,7 @@ get_prompt(promptStatus_t status)
 							if (*p == 'm')
 								buf[strcspn(buf, ".")] = '\0';
 						}
+#ifndef HAVE_UNIX_SOCKETS
 						/* UNIX socket */
 						else
 						{
@@ -139,6 +140,7 @@ get_prompt(promptStatus_t status)
 							else
 								snprintf(buf, MAX_PROMPT_SIZE, "[local:%s]", host);
 						}
+#endif
 					}
 					break;
 					/* DB server port number */
