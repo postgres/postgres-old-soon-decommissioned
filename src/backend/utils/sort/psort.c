@@ -1090,7 +1090,7 @@ static int
 _psort_cmp (HeapTuple *ltup, HeapTuple *rtup)
 {
     register Datum	lattr, rattr;
-    int		nkey = 0;
+    int		nkey;
     int		result = 0;
     bool	isnull1, isnull2;
     
@@ -1119,7 +1119,6 @@ _psort_cmp (HeapTuple *ltup, HeapTuple *rtup)
 		}
 		else if (!(result = -(long) (*fmgr_faddr(&PsortKeys[nkey].sk_func)) (lattr, rattr)))
 		    result = (long) (*fmgr_faddr(&PsortKeys[nkey].sk_func)) (rattr, lattr);
-		nkey++;
     }
     return (result);
 }
