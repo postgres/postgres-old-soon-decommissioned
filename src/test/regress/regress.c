@@ -298,3 +298,116 @@ char	   *string;
 		new_string[len - i] = string[i];
 	return (new_string);
 }
+
+#include "executor/spi.h"		/* this is what you need to work with SPI */
+#include "commands/trigger.h"	/* -"- and triggers */
+
+static TransactionId fd17b_xid = InvalidTransactionId;
+static TransactionId fd17a_xid = InvalidTransactionId;
+static int	fd17b_level = 0;
+static int	fd17a_level = 0;
+static bool fd17b_recursion = true;
+static bool fd17a_recursion = true;
+HeapTuple	funny_dup17(void);
+
+HeapTuple						/* have to return HeapTuple to Executor */
+funny_dup17()
+{
+	TransactionId *xid;
+	int		   *level;
+	bool	   *recursion;
+	Relation	rel;
+	TupleDesc	tupdesc;
+	HeapTuple	tuple;
+	char		sql[8192];
+	char	   *when;
+	int			inserted;
+	int			selected = 0;
+	int			ret;
+
+	tuple = CurrentTriggerData->tg_trigtuple;
+	rel = CurrentTriggerData->tg_relation;
+	tupdesc = rel->rd_att;
+	if (TRIGGER_FIRED_BEFORE(CurrentTriggerData->tg_event))
+	{
+		xid = &fd17b_xid;
+		level = &fd17b_level;
+		recursion = &fd17b_recursion;
+		when = "BEFORE";
+	}
+	else
+	{
+		xid = &fd17a_xid;
+		level = &fd17a_level;
+		recursion = &fd17a_recursion;
+		when = "AFTER ";
+	}
+
+	CurrentTriggerData = NULL;
+
+	if (!TransactionIdIsCurrentTransactionId(*xid))
+	{
+		*xid = GetCurrentTransactionId();
+		*level = 0;
+		*recursion = true;
+	}
+
+	if (*level == 17)
+	{
+		*recursion = false;
+		return (tuple);
+	}
+
+	if (!(*recursion))
+		return (tuple);
+
+	(*level)++;
+
+	SPI_connect();
+
+	sprintf(sql, "insert into %s select * from %s where %s = '%s'::%s",
+			SPI_getrelname(rel), SPI_getrelname(rel),
+			SPI_fname(tupdesc, 1),
+			SPI_getvalue(tuple, tupdesc, 1),
+			SPI_gettype(tupdesc, 1));
+
+	if ((ret = SPI_exec(sql, 0)) < 0)
+		elog(WARN, "funny_dup17 (fired %s) on level %3d: SPI_exec (insert ...) returned %d",
+			 when, *level, ret);
+
+	inserted = SPI_processed;
+
+	sprintf(sql, "select count (*) from %s where %s = '%s'::%s",
+			SPI_getrelname(rel),
+			SPI_fname(tupdesc, 1),
+			SPI_getvalue(tuple, tupdesc, 1),
+			SPI_gettype(tupdesc, 1));
+
+	if ((ret = SPI_exec(sql, 0)) < 0)
+		elog(WARN, "funny_dup17 (fired %s) on level %3d: SPI_exec (select ...) returned %d",
+			 when, *level, ret);
+
+	if (SPI_processed > 0)
+	{
+		selected =
+			int4in(
+				   SPI_getvalue(
+								SPI_tuptable->vals[0],
+								SPI_tuptable->tupdesc,
+								1
+								)
+			);
+	}
+
+	elog(NOTICE, "funny_dup17 (fired %s) on level %3d: %d/%d tuples inserted/selected",
+		 when, *level, inserted, selected);
+
+	SPI_finish();
+
+	(*level)--;
+
+	if (*level == 0)
+		*xid = InvalidTransactionId;
+
+	return (tuple);
+}

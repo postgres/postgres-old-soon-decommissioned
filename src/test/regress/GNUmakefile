@@ -43,6 +43,7 @@ endif
 all: $(INFILES)
 	cd input; $(MAKE) all; cd ..
 	cd output; $(MAKE) all; cd ..
+	$(MAKE) -C ../../../contrib/spi REFINT_VERBOSE=1
 
 #
 # run the test
