@@ -603,9 +603,11 @@ timestamp2tm(Timestamp dt, int *tzp, struct tm * tm, double *fsec, char **tzn)
 		if (HasCTZSet)
 		{
 			*tzp = CTimeZone;
-			tm->tm_gmtoff = CTimeZone;
 			tm->tm_isdst = 0;
+#if defined(HAVE_TM_ZONE)
+			tm->tm_gmtoff = CTimeZone;
 			tm->tm_zone = NULL;
+#endif
 			if (tzn != NULL)
 				*tzn = NULL;
 		}
