@@ -137,6 +137,7 @@ do
         --host=*)
                 PGHOST=`expr "x$1" : "x--host=\(.*\)"`
                 export PGHOST
+                unset PGHOSTADDR
                 shift;;
         --port=*)
                 PGPORT=`expr "x$1" : "x--port=\(.*\)"`
@@ -279,8 +280,10 @@ then
     if [ "$unix_sockets" = no ]; then
         PGHOST=$hostname
         export PGHOST
+        unset PGHOSTADDR
     else
         unset PGHOST
+        unset PGHOSTADDR
     fi
     PGPORT=65432
     export PGPORT
@@ -397,6 +400,7 @@ else # not temp-install
     if [ "$unix_sockets" = no ]; then
         PGHOST=$hostname
         export PGHOST
+        unset PGHOSTADDR
     fi
 
     if [ -n "$PGPORT" ]; then
