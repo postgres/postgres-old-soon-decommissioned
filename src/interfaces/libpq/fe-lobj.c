@@ -30,7 +30,7 @@
 #include "libpq/libpq-fs.h"		/* must come after sys/stat.h */
 
 
-#define LO_BUFSIZE		  1024
+#define LO_BUFSIZE		  8192
 
 static int	lo_initialize(PGconn *conn);
 
