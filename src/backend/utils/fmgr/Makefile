@@ -12,7 +12,7 @@ subdir = src/backend/utils/fmgr
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = dfmgr.o fmgr.o
+OBJS = dfmgr.o fmgr.o funcapi.o
 
 override CPPFLAGS += -DPKGLIBDIR=\"$(pkglibdir)\" -DDLSUFFIX=\"$(DLSUFFIX)\"
 
