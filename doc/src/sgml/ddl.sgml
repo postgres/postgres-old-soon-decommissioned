@@ -1537,7 +1537,7 @@ SELECT 3 OPERATOR(pg_catalog.+) 4;
     connect to a given database to create objects there.  If you do
     not want to allow that, you can revoke that privilege:
 <programlisting>
-REVOKE CREATE ON public FROM PUBLIC;
+REVOKE CREATE ON SCHEMA public FROM PUBLIC;
 </programlisting>
     (The first <quote>public</quote> is the schema, the second
     <quote>public</quote> means <quote>every user</quote>.  In the
