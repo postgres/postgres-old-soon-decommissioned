@@ -274,7 +274,7 @@ bool
 listAllDbs(bool desc)
 {
 	PGresult   *res;
-	char		buf[512];
+	char		buf[1024];
 	printQueryOpt myopt = pset.popt;
 
 	strcpy(buf,
