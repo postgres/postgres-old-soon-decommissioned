@@ -14,10 +14,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+
+#include "postgres.h"
 #ifdef USE_LOCALE  
   #include <locale.h>
 #endif
-#include "postgres.h"
 #include "miscadmin.h"
 #include "bootstrap/bootstrap.h"	/* for BootstrapMain() */
 #include "tcop/tcopprot.h"		/* for PostgresMain() */
