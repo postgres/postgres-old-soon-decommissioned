@@ -227,7 +227,7 @@ main(int argc, char *argv[])
 	 * the arguments passed on to GucInfoMain.
 	 */
 	if (argc > 1 && strcmp(new_argv[1], "--help-config") == 0)
-		exit(GucInfoMain(argc - 1, new_argv + 1));
+		exit(GucInfoMain(argc, new_argv));
 
 	/*
 	 * Otherwise we're a standalone backend.  Invoke PostgresMain,
