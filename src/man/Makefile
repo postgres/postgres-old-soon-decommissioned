@@ -27,3 +27,6 @@ install:: install-man
 
 clean:
 	# do nothing
+
+all:
+	# do nothing
