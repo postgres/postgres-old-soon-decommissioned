@@ -963,9 +963,25 @@ plperl_func_handler(PG_FUNCTION_ARGS)
 
 	if (prodesc->fn_retistuple && fcinfo->resultinfo)	/* set of tuples */
 	{
+		/*
+		 *  This branch will be taken when the function call
+		 *  appears in a context that can return a set of tuples,
+		 *  even if it only actually returns a single tuple
+		 *  (e.g. select a from foo() where foo returns a singleton
+		 *  of some composite type with member a). In this case, the
+		 *  return value will be a hashref. If a rowset is returned
+		 *  it will be an arrayref whose members will be hashrefs.
+		 *
+		 *  Care is taken in the code only to refer to the appropriate
+		 *  one of ret_hv and ret_av, only one of which is therefore
+		 *  valid for any given call.
+		 *
+		 *  XXX This code is in dire need of cleanup.
+		 */
+	
 		/* SRF support */
-		HV		   *ret_hv;
-		AV		   *ret_av;
+		HV		   *ret_hv = NULL;
+		AV		   *ret_av = NULL;
 		FuncCallContext *funcctx;
 		int			call_cntr;
 		int			max_calls;
