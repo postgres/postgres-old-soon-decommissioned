@@ -13,6 +13,10 @@
 #ifndef NODETEE_H
 #define NODETEE_H
 
+#include "executor/tuptable.h"
+#include "nodes/execnodes.h"
+#include "nodes/plannodes.h"
+
 extern TupleTableSlot *ExecTee(Tee *node, Plan *parent);
 extern bool ExecInitTee(Tee *node, EState *estate, Plan *parent);
 extern void ExecTeeReScan(Tee *node, ExprContext *exprCtxt, Plan *parent);

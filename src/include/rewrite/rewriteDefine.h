@@ -13,6 +13,8 @@
 #ifndef REWRITEDEFINE_H
 #define REWRITEDEFINE_H
 
+#include "nodes/parsenodes.h"
+
 extern void DefineQueryRewrite(RuleStmt *args);
 
 #endif							/* REWRITEDEFINE_H */

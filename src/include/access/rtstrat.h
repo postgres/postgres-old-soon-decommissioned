@@ -11,6 +11,10 @@
  *-------------------------------------------------------------------------
  */
 #ifndef RTSTRAT_H
+#define RTSTRAT_H
+
+#include <utils/rel.h>
+#include <access/attnum.h>
 
 extern RegProcedure
 RTMapOperator(Relation r, AttrNumber attnum,

@@ -13,6 +13,10 @@
 #ifndef PATHNODE_H
 #define PATHNODE_H
 
+#include "nodes/nodes.h"
+#include "nodes/relation.h"
+#include "nodes/parsenodes.h"
+
 /*
  * prototypes for pathnode.c
  */

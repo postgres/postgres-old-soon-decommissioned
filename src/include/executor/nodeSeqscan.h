@@ -13,6 +13,10 @@
 #ifndef NODESEQSCAN_H
 #define NODESEQSCAN_H
 
+#include "executor/tuptable.h"
+#include "nodes/execnodes.h"
+#include "nodes/plannodes.h"
+
 extern TupleTableSlot *ExecSeqScan(SeqScan *node);
 extern bool ExecInitSeqScan(SeqScan *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsSeqScan(SeqScan *node);

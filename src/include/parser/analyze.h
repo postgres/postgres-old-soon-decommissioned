@@ -14,6 +14,6 @@
 
 #include <parser/parse_node.h>
 
-QueryTreeList *parse_analyze(List *pl);
+extern QueryTreeList *parse_analyze(List *pl);
 
 #endif							/* ANALYZE_H */

@@ -13,6 +13,10 @@
 #ifndef NODEAGG_H
 #define NODEAGG_H
 
+#include "executor/tuptable.h"
+#include "nodes/execnodes.h"
+#include "nodes/plannodes.h"
+
 extern TupleTableSlot *ExecAgg(Agg *node);
 extern bool ExecInitAgg(Agg *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsAgg(Agg *node);

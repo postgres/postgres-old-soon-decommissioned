@@ -22,6 +22,7 @@
 #ifndef GEQO_SELECTION_H
 #define GEQO_SELECTION_H
 
+#include "optimizer/geqo_gene.h"
 
 extern void geqo_selection(Chromosome *momma, Chromosome *daddy, Pool *pool, double bias);
 

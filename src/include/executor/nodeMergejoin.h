@@ -13,12 +13,13 @@
 #ifndef NODEMERGEJOIN_H
 #define NODEMERGEJOIN_H
 
+#include "executor/tuptable.h"
+#include "nodes/execnodes.h"
+#include "nodes/plannodes.h"
+
 extern TupleTableSlot *ExecMergeJoin(MergeJoin *node);
-
 extern bool ExecInitMergeJoin(MergeJoin *node, EState *estate, Plan *parent);
-
 extern int	ExecCountSlotsMergeJoin(MergeJoin *node);
-
 extern void ExecEndMergeJoin(MergeJoin *node);
 
 #endif							/* NODEMERGEJOIN_H; */

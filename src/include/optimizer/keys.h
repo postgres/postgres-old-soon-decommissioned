@@ -13,6 +13,9 @@
 #ifndef KEYS_H
 #define KEYS_H
 
+#include "nodes/nodes.h"
+#include "nodes/relation.h"
+
 extern bool match_indexkey_operand(int indexkey, Var *operand, Rel *rel);
 extern Var *extract_subkey(JoinKey *jk, int which_subkey);
 extern bool samekeys(List *keys1, List *keys2);

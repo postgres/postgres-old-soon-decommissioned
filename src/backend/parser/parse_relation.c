@@ -16,28 +16,13 @@
 
 #include "postgres.h"
 #include "access/heapam.h"
-#include <access/htup.h>
-#include <catalog/pg_type.h>
+#include "access/htup.h"
+#include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
-#include <parser/parse_relation.h>
-#include <utils/acl.h>
+#include "parser/parse_relation.h"
+#include "utils/acl.h"
 #include "utils/builtins.h"
-#include <utils/lsyscache.h>
-
-#ifdef 0
-#include "fmgr.h"
-#include "access/tupmacs.h"
-#include "utils/elog.h"
-#include "utils/palloc.h"
-#include "utils/acl.h"			/* for ACL_NO_PRIV_WARNING */
-
-#include "utils/syscache.h"
-#include "catalog/pg_operator.h"
-
-#include "nodes/pg_list.h"
-#include "nodes/primnodes.h"
-#include "nodes/parsenodes.h"
-#endif
+#include "utils/lsyscache.h"
 
 struct
 {

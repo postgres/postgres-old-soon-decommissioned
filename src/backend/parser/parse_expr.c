@@ -21,33 +21,13 @@
 #include "nodes/nodes.h"
 #include "nodes/params.h"
 #include "nodes/relation.h"
+#include "parse.h"
 #include "parser/parse_expr.h"
 #include "parser/parse_func.h"
 #include "parser/parse_node.h"
 #include "parser/parse_relation.h"
 #include "parser/parse_target.h"
-#include "parse.h"
 #include "utils/builtins.h"
-
-#ifdef 0
-#include "nodes/primnodes.h"
-#include "nodes/parsenodes.h"
-#include "catalog/pg_aggregate.h"
-#include "catalog/pg_proc.h"
-#include "utils/elog.h"
-#include "utils/lsyscache.h"
-#include "utils/palloc.h"
-#include "utils/mcxt.h"
-#include "utils/syscache.h"
-#include "utils/acl.h"
-#include "nodes/nodeFuncs.h"
-#include "commands/sequence.h"
-
-#include "optimizer/clauses.h"
-#include "access/heapam.h"
-
-#include "miscadmin.h"
-#endif
 
 Oid param_type(int t); /* from gram.y */
 

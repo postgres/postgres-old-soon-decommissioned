@@ -13,6 +13,10 @@
 #ifndef REWRITEMANIP_H
 #define REWRITEMANIP_H
 
+#include "nodes/nodes.h"
+#include "nodes/parsenodes.h"
+#include "rewrite/rewriteHandler.h"
+
 /* RewriteManip.c */
 void		OffsetVarNodes(Node *node, int offset);
 void		ChangeVarNodes(Node *node, int old_varno, int new_varno);

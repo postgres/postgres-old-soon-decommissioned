@@ -13,6 +13,8 @@
 #ifndef CREATINH_H
 #define CREATINH_H
 
+#include "nodes/parsenodes.h"
+
 extern void DefineRelation(CreateStmt *stmt);
 extern void RemoveRelation(char *name);
 

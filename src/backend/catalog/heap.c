@@ -1528,7 +1528,7 @@ start:;
 		{
 			if (*cast != 0)
 				elog(WARN, "DEFAULT: const type mismatched");
-			sprintf(cast, ":: %s", get_id_typname(atp->atttypid));
+			sprintf(cast, ":: %s", typeidTypeName(atp->atttypid));
 			goto start;
 		}
 	}

@@ -21,6 +21,7 @@
 #ifndef GEQO_MUTATION_H
 #define GEQO_MUTATION_H
 
+#include "optimizer/geqo_gene.h"
 
 extern void geqo_mutation(Gene *tour, int num_gene);
 

@@ -13,6 +13,8 @@
 #ifndef READFUNCS_H
 #define READFUNCS_H
 
+#include "nodes/nodes.h"
+
 /*
  * prototypes for functions in read.c (the lisp token parser)
  */

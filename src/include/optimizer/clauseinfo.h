@@ -13,6 +13,9 @@
 #ifndef CLAUSEINFO_H
 #define CLAUSEINFO_H
 
+#include "nodes/pg_list.h"
+#include "nodes/relation.h"
+
 extern bool valid_or_clause(CInfo *clauseinfo);
 extern List *get_actual_clauses(List *clauseinfo_list);
 extern void

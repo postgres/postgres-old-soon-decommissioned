@@ -13,6 +13,10 @@
 #ifndef TLIST_H
 #define TLIST_H
 
+#include "nodes/nodes.h"
+#include "nodes/parsenodes.h"
+#include "nodes/relation.h"
+
 extern int	exec_tlist_length(List *targelist);
 extern TargetEntry *tlistentry_member(Var *var, List *targetlist);
 extern Expr *matching_tlvar(Var *var, List *targetlist);

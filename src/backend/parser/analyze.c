@@ -15,18 +15,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "postgres.h"
 
+#include "postgres.h"
 #include "access/heapam.h"
 #include "nodes/makefuncs.h"
 #include "nodes/memnodes.h"
 #include "nodes/pg_list.h"
 #include "parser/analyze.h"
 #include "parser/parse_agg.h"
+#include "parser/parse_clause.h"
 #include "parser/parse_node.h"
 #include "parser/parse_relation.h"
 #include "parser/parse_target.h"
-#include "parser/parse_clause.h"
 #include "utils/builtins.h"
 #include "utils/mcxt.h"
 

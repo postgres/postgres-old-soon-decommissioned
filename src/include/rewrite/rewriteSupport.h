@@ -13,6 +13,8 @@
 #ifndef REWRITESUPPORT_H
 #define REWRITESUPPORT_H
 
+#include "access/attnum.h"
+#include "nodes/pg_list.h"
 
 extern int	IsDefinedRewriteRule(char *ruleName);
 

@@ -13,6 +13,10 @@
 #ifndef EXECFLATTEN_H
 #define EXECFLATTEN_H
 
+#include "nodes/relation.h"
+#include "nodes/execnodes.h"
+#include "nodes/parsenodes.h"
+
 extern Datum ExecEvalIter(Iter *iterNode, ExprContext *econtext, bool *resultIsNull, bool *iterIsDone);
 
 extern void ExecEvalFjoin(TargetEntry *tlist, ExprContext *econtext, bool *isNullVect, bool *fj_isDone);

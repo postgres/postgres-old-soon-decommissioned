@@ -11,4 +11,9 @@
  *-------------------------------------------------------------------------
  */
 
+#ifndef SCANSUP_H
+#define SCANSUP_H
+
 extern char *scanstr(char *s);
+
+#endif							/* SCANSUP_H */

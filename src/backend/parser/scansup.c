@@ -17,10 +17,11 @@
 
 #include <ctype.h>
 #include <string.h>
+
 #include "postgres.h"
 #include "miscadmin.h"
-#include "utils/elog.h"
 #include "parser/scansup.h"
+#include "utils/elog.h"
 
 /* ----------------
  *		scanstr

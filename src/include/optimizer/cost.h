@@ -13,6 +13,11 @@
 #ifndef COST_H
 #define COST_H
 
+#include "nodes/nodes.h"
+#include "nodes/parsenodes.h"
+#include "nodes/pg_list.h"
+#include "nodes/relation.h"
+
 /*
  * prototypes for costsize.c--
  *	  routines to compute costs and sizes

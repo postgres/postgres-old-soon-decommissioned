@@ -22,6 +22,7 @@
 #ifndef GEQO_POOL_H
 #define GEQO_POOL_H
 
+#include "optimizer/geqo_gene.h"
 
 extern Pool *alloc_pool(int pool_size, int string_length);
 extern void free_pool(Pool *pool);

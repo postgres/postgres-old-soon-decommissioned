@@ -13,10 +13,10 @@
  */
 #include <ctype.h>
 #include <string.h>
-#include "postgres.h"
 
-#include "nodes/pg_list.h"
+#include "postgres.h"
 #include "nodes/parsenodes.h"
+#include "nodes/pg_list.h"
 #include "parse.h"
 #include "parser/keywords.h"
 #include "utils/elog.h"

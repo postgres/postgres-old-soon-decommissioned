@@ -23,6 +23,7 @@
 #ifndef GEQO_RECOMBINATION_H
 #define GEQO_RECOMBINATION_H
 
+#include "optimizer/geqo_gene.h"
 
 extern void init_tour(Gene *tour, int num_gene);
 

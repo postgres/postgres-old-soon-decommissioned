@@ -15,19 +15,10 @@
 
 #include "postgres.h"
 #include "nodes/pg_list.h"
-#include "parser/parser.h"
 #include "parser/analyze.h"
-#include "parser/parse_node.h"
-
-void	init_io();		/* from scan.l */
-void	parser_init(Oid *typev, int nargs); /* from gram.y */
-int 	yyparse();		/* from gram.c */
-
-#ifdef 0
-#include "parser/parse.h"
 #include "parser/gramparse.h"
-#include "utils/palloc.h"
-#endif
+#include "parser/parse_node.h"
+#include "parser/parser.h"
 
 char	   *parseString;		/* the char* which holds the string to be
 								 * parsed */

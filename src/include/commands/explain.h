@@ -12,6 +12,9 @@
 #ifndef EXPLAIN_H
 #define EXPLAIN_H
 
+#include "tcop/dest.h"
+#include "nodes/parsenodes.h"
+
 extern void ExplainQuery(Query *query, bool verbose, CommandDest dest);
 
 #endif							/* EXPLAIN_H */

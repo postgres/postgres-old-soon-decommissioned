@@ -17,21 +17,21 @@
 
 typedef HeapTuple Type;
 
-bool typeidIsValid(Oid id);
-Type typeidType(Oid id);
-Type typenameType(char *s);
-char *typeidTypeName(Oid id);
-Oid typeTypeId(Type tp);
-int16 typeLen(Type t);
-bool typeByVal(Type t);
-char *typeTypeName(Type t);
-char typeTypeFlag(Type t);
-char *stringTypeString(Type tp, char *string, int typlen);
-Oid typeidRetoutfunc(Oid type_id);
-Oid typeidTypeRelid(Oid type_id);
-Oid typeTypeRelid(Type typ);
-Oid typeidTypElem(Oid type_id);
-Oid GetArrayElementType(Oid typearray);
-Oid typeidRetinfunc(Oid type_id);
+extern bool typeidIsValid(Oid id);
+extern Type typeidType(Oid id);
+extern Type typenameType(char *s);
+extern char *typeidTypeName(Oid id);
+extern Oid typeTypeId(Type tp);
+extern int16 typeLen(Type t);
+extern bool typeByVal(Type t);
+extern char *typeTypeName(Type t);
+extern char typeTypeFlag(Type t);
+extern char *stringTypeString(Type tp, char *string, int typlen);
+extern Oid typeidRetoutfunc(Oid type_id);
+extern Oid typeidTypeRelid(Oid type_id);
+extern Oid typeTypeRelid(Type typ);
+extern Oid typeidTypElem(Oid type_id);
+extern Oid GetArrayElementType(Oid typearray);
+extern Oid typeidRetinfunc(Oid type_id);
 
 #endif							/* PARSE_TYPE_H */

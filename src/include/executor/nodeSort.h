@@ -13,6 +13,10 @@
 #ifndef NODESORT_H
 #define NODESORT_H
 
+#include "executor/tuptable.h"
+#include "nodes/execnodes.h"
+#include "nodes/plannodes.h"
+
 extern TupleTableSlot *ExecSort(Sort *node);
 extern bool ExecInitSort(Sort *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsSort(Sort *node);
