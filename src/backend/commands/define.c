@@ -94,7 +94,7 @@ compute_return_type(const Node *returnType,
 		TypeName   *setType = (TypeName *) returnType;
 
 		*prorettype_p = setType->name;
-		*returnsSet_p = true;
+		*returnsSet_p = setType->setof;
 	}
 	else
 	{
