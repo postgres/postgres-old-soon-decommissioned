@@ -397,7 +397,7 @@ static char ControlFilePath[MAXPGPATH];
  * Private, possibly out-of-date copy of shared LogwrtResult.
  * See discussion above.
  */
-NON_EXEC_STATIC XLogwrtResult LogwrtResult = {{0, 0}, {0, 0}};
+static XLogwrtResult LogwrtResult = {{0, 0}, {0, 0}};
 
 /*
  * openLogFile is -1 or a kernel FD for an open log file segment.

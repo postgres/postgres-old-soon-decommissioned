@@ -46,8 +46,6 @@ volatile bool ImmediateInterruptOK = false;
 volatile uint32 InterruptHoldoffCount = 0;
 volatile uint32 CritSectionCount = 0;
 
-const bool	ExecBackend = false;
-
 bool		IsUnderPostmaster = false;
 
 int			MaxBackends = 32;

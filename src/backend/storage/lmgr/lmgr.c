@@ -75,6 +75,13 @@ InitLockTable(int maxBackends)
 {
 	LOCKMETHODID	LongTermTableId;
 
+	/* there's no zero-th table */
+	NumLockMethods = 1;
+
+	/*
+	 * Create the default lock method table
+	 */
+
 	/* number of lock modes is lengthof()-1 because of dummy zero */
 	LockTableId = LockMethodTableInit("LockTable",
 									  LockConflicts,

@@ -164,10 +164,9 @@ static bool SlruScanDirectory(SlruCtl ctl, int cutoffPage, bool doDeletions);
 int
 SimpleLruShmemSize(void)
 {
-	return MAXALIGN(sizeof(SlruSharedData)) + BLCKSZ * NUM_CLOG_BUFFERS
-#ifdef EXEC_BACKEND
+	return MAXALIGN(sizeof(SlruSharedData))
+		+ BLCKSZ * NUM_CLOG_BUFFERS
 		+ MAXALIGN(sizeof(SlruLockData))
-#endif
 		;
 }
 
@@ -181,21 +180,8 @@ SimpleLruInit(SlruCtl ctl, const char *name, const char *subdir)
 
 	ptr = ShmemInitStruct(name, SimpleLruShmemSize(), &found);
 	shared = (SlruShared) ptr;
-
-#ifdef EXEC_BACKEND
-	/*
-	 * Locks are in shared memory
-	 */
 	locks = (SlruLock) (ptr + MAXALIGN(sizeof(SlruSharedData)) +
 						BLCKSZ * NUM_CLOG_BUFFERS);
-#else
-	/*
-	 * Locks are in private memory
-	 */
-	Assert(!IsUnderPostmaster);
-	locks = malloc(sizeof(SlruLockData));
-	Assert(locks);
-#endif
 
 	if (!IsUnderPostmaster)
 	{
@@ -225,6 +211,7 @@ SimpleLruInit(SlruCtl ctl, const char *name, const char *subdir)
 	else
 		Assert(found);
 
+	/* Initialize the unshared control struct */
 	ctl->locks = locks;
 	ctl->shared = shared;
 

@@ -43,11 +43,15 @@ char	   *DataDir = NULL;
   * variable.  NULL if no option given and no environment variable set
   */
 
-char		OutputFileName[MAXPGPATH];
+char		OutputFileName[MAXPGPATH];	/* debugging output file */
 
-char		my_exec_path[MAXPGPATH];	/* full path to postgres executable */
-char		postgres_exec_path[MAXPGPATH];	/* full path to backend executable */
-char		pkglib_path[MAXPGPATH];	/* full path to lib directory */
+char		my_exec_path[MAXPGPATH];	/* full path to my executable */
+char		pkglib_path[MAXPGPATH];		/* full path to lib directory */
+
+#ifdef EXEC_BACKEND
+char		postgres_exec_path[MAXPGPATH];	/* full path to backend */
+/* note: currently this is not valid in backend processes */
+#endif
 
 BackendId	MyBackendId;
 

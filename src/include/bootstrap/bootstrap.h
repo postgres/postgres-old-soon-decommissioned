@@ -34,7 +34,7 @@ typedef struct hashnode
 extern Relation boot_reldesc;
 extern Form_pg_attribute attrtypes[MAXATTR];
 extern int	numattr;
-extern int	BootstrapMain(int ac, char *av[]);
+extern int	BootstrapMain(int argc, char *argv[]);
 
 extern void index_register(Oid heap, Oid ind, IndexInfo *indexInfo);
 

@@ -223,13 +223,16 @@ typedef struct
 	LOCK	   *locks;
 } LockData;
 
+extern int NumLockMethods;
+
 /*
  * function prototypes
  */
 extern void InitLocks(void);
 extern LockMethod GetLocksMethodTable(LOCK *lock);
-extern LOCKMETHODID LockMethodTableInit(char *tabName, LOCKMASK *conflictsP,
-					int numModes, int maxBackends);
+extern LOCKMETHODID LockMethodTableInit(const char *tabName,
+										const LOCKMASK *conflictsP,
+										int numModes, int maxBackends);
 extern LOCKMETHODID LockMethodTableRename(LOCKMETHODID lockmethodid);
 extern bool LockAcquire(LOCKMETHODID lockmethodid, LOCKTAG *locktag,
 			TransactionId xid, LOCKMODE lockmode, bool dontWait);
