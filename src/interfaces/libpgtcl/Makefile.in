@@ -20,6 +20,8 @@ INCLUDE_OPT= \
              -I$(LIBPQDIR) \
              -I$(TCL_INCDIR)
 
+PORTNAME=@PORTNAME@
+
 CFLAGS+= $(INCLUDE_OPT)
 ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)
@@ -39,7 +41,7 @@ ifeq ($(PORTNAME), linux)
   endif
 endif
 
-ifeq ($(PORTNAME), BSD44_derived)
+ifeq ($(PORTNAME), bsd)
   install-shlib-dep	:= install-shlib
   shlib			:= libpgtcl.so.1.0
   LDFLAGS_SL		= -x -Bshareable -Bforcearchive
