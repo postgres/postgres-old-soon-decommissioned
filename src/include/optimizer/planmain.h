@@ -45,10 +45,10 @@ extern Unique *make_unique(List *tlist, Plan *lefttree, char *uniqueAttr);
 /*
  * prototypes for plan/initsplan.c
  */
-extern void initialize_base_rels_list(Query *root, List *tlist);
-extern void initialize_base_rels_jinfo(Query *root, List *clauses);
-extern void initialize_join_clause_info(List *rel_list);
-extern void add_missing_vars_to_base_rels(Query *root, List *tlist);
+extern void init_base_rels_tlist(Query *root, List *tlist);
+extern void init_base_rels_qual(Query *root, List *clauses);
+extern void init_join_info(List *rel_list);
+extern void add_missing_vars_to_tlist(Query *root, List *tlist);
 
 /*
  * prototypes for plan/setrefs.c

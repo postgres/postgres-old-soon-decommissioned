@@ -97,7 +97,7 @@ other_join_clause_var(Var *var, Expr *clause)
 
 	retval = (Var *) NULL;
 
-	if (var != NULL && join_clause_p((Node *) clause))
+	if (var != NULL && is_joinable((Node *) clause))
 	{
 		l = (Var *) get_leftop(clause);
 		r = (Var *) get_rightop(clause);

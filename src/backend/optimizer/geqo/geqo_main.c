@@ -104,7 +104,7 @@ geqo(Query *root)
 
 
 /* set tour size */
-	number_of_rels = length(root->base_relation_list_);
+	number_of_rels = length(root->base_rel_list);
 
 /* set GA parameters */
 	geqo_params(number_of_rels);/* out of "$PGDATA/pg_geqo" file */

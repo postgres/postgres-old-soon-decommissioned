@@ -62,8 +62,8 @@ typedef struct Query
 								 * query */
 
 	/* internal to planner */
-	List	   *base_relation_list_;	/* base relation list */
-	List	   *join_relation_list_;	/* list of relations */
+	List	   *base_rel_list;	/* base relation list */
+	List	   *join_rel_list;	/* list of relation involved in joins */
 } Query;
 
 

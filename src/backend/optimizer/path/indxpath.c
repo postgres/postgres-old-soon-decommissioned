@@ -662,7 +662,7 @@ match_clause_to_indexkey(RelOptInfo *rel,
 			join_op = ((Oper *) ((Expr *) clause)->oper)->opno;
 
 		if (join_op && op_class(join_op, xclass, index->relam) &&
-			join_clause_p((Node *) clause))
+			is_joinable((Node *) clause))
 		{
 			isIndexable = true;
 
@@ -1153,7 +1153,7 @@ extract_restrict_clauses(List *clausegroup)
 	{
 		CInfo	   *cinfo = lfirst(l);
 
-		if (!join_clause_p((Node *) cinfo->clause))
+		if (!is_joinable((Node *) cinfo->clause))
 			restrict_cls = lappend(restrict_cls, cinfo);
 	}
 	return restrict_cls;
@@ -1282,7 +1282,7 @@ create_index_paths(Query *root,
 		foreach(j, clausegroup)
 		{
 			clauseinfo = (CInfo *) lfirst(j);
-			if (!(join_clause_p((Node *) clauseinfo->clause) &&
+			if (!(is_joinable((Node *) clauseinfo->clause) &&
 				  equal_path_merge_ordering(index->ordering,
 											clauseinfo->mergejoinorder)))
 				temp = false;

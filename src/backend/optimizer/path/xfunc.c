@@ -734,7 +734,7 @@ xfunc_card_unreferenced(Query *queryInfo,
 	LispValue	temp;
 
 	/* find all relids of base relations referenced in query */
-	foreach(temp, queryInfo->base_relation_list_)
+	foreach(temp, queryInfo->base_rel_list)
 	{
 		Assert(lnext(get_relids((RelOptInfo) lfirst(temp))) == LispNil);
 		allrelids = lappend(allrelids,
