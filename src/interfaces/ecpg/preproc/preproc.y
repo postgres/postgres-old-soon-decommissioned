@@ -2056,7 +2056,7 @@ access_method_clause:  USING access_method
 		;
 
 index_params:  index_elem			{ $$ = $1; }
-		| index_params ',' index_elem	{ $$ = $1; }
+		| index_params ',' index_elem	{ $$ = cat_str(3, $1, make_str(","), $3); }
 		;
 
 index_elem:  attr_name opt_class
