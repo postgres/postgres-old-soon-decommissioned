@@ -469,7 +469,7 @@ ProcSleep(PROC_QUEUE *queue,
 		break;
 	}
     
-    MyProc->proc = proc;
+    MyProc->prio = prio;
     MyProc->token = token;
     MyProc->waitLock = lock;
     
