@@ -191,6 +191,7 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 	 * initially connected to, not the one we will create, which is very
 	 * bad...
 	 */
+
 	if (ropt->create && ropt->noReconnect)
 		die_horribly(AH, modulename, "-C and -R are incompatible options\n");
 
