@@ -157,7 +157,9 @@ slashUsage(PsqlSettings * ps)
     char *pagerenv;
     FILE *fout;
 
-    if ((pagerenv = getenv("PAGER")) && (pagerenv[0] != '\0') && \
+    if 	(settings.notty == 0 &&
+	(pagerenv = getenv("PAGER")) &&
+	(pagerenv[0] != '\0') &&
 	(fout = popen(pagerenv, "w")))
     {
 	usePipe = 1;
@@ -1047,6 +1049,7 @@ do_help(const char *topic)
 	FILE *fout;
 
 	if (strcmp(topic, "*") == 0 &&
+	    (settings.notty == 0) &&
 	    (pagerenv = getenv("PAGER")) &&
 	    (pagerenv[0] != '\0') &&
 	    (fout = popen(pagerenv, "w")))
