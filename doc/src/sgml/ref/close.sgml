@@ -18,6 +18,11 @@ PostgreSQL documentation
   <primary>CLOSE</primary>
  </indexterm>
 
+ <indexterm zone="sql-close">
+  <primary>cursor</primary>
+  <secondary>CLOSE</secondary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CLOSE <replaceable class="PARAMETER">name</replaceable>

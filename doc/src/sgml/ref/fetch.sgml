@@ -18,6 +18,11 @@ PostgreSQL documentation
   <primary>FETCH</primary>
  </indexterm>
 
+ <indexterm zone="sql-fetch">
+  <primary>cursor</primary>
+  <secondary>FETCH</secondary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 FETCH [ <replaceable class="PARAMETER">direction</replaceable> { FROM | IN } ] <replaceable class="PARAMETER">cursorname</replaceable>

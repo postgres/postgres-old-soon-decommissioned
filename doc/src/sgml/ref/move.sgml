@@ -18,6 +18,11 @@ PostgreSQL documentation
   <primary>MOVE</primary>
  </indexterm>
 
+ <indexterm zone="sql-move">
+  <primary>cursor</primary>
+  <secondary>MOVE</secondary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 MOVE [ <replaceable class="PARAMETER">direction</replaceable> { FROM | IN } ] <replaceable class="PARAMETER">cursorname</replaceable>
