@@ -1278,7 +1278,6 @@ key_match:  MATCH FULL
 			}
 		| /*EMPTY*/
 			{
-				elog(ERROR, "FOREIGN KEY match type UNSPECIFIED not implemented yet");
 				$$ = "UNSPECIFIED";
 			}
 		;
