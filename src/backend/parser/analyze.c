@@ -1786,6 +1786,7 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 {
 	Query	   *qry = makeNode(Query);
 	SelectStmt *leftmostSelect;
+	int			leftmostRTI;
 	Query	   *leftmostQuery;
 	SetOperationStmt *sostmt;
 	char	   *into;
@@ -1856,8 +1857,8 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 	while (node && IsA(node, SetOperationStmt))
 		node = ((SetOperationStmt *) node)->larg;
 	Assert(node && IsA(node, RangeTblRef));
-	leftmostQuery = rt_fetch(((RangeTblRef *) node)->rtindex,
-							 pstate->p_rtable)->subquery;
+	leftmostRTI = ((RangeTblRef *) node)->rtindex;
+	leftmostQuery = rt_fetch(leftmostRTI, pstate->p_rtable)->subquery;
 	Assert(leftmostQuery != NULL);
 	/*
 	 * Generate dummy targetlist for outer query using column names of
@@ -1868,7 +1869,8 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 	foreach(dtlist, sostmt->colTypes)
 	{
 		Oid		colType = (Oid) lfirsti(dtlist);
-		char   *colName = ((TargetEntry *) lfirst(lefttl))->resdom->resname;
+		Resdom *leftResdom = ((TargetEntry *) lfirst(lefttl))->resdom;
+		char   *colName = leftResdom->resname;
 		Resdom *resdom;
 		Node   *expr;
 
@@ -1877,8 +1879,8 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 							-1,
 							pstrdup(colName),
 							false);
-		expr = (Node *) makeVar(1,
-								resdom->resno,
+		expr = (Node *) makeVar(leftmostRTI,
+								leftResdom->resno,
 								colType,
 								-1,
 								0);
