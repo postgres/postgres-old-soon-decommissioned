@@ -198,13 +198,22 @@ ReadBufferInternal(Relation reln, BlockNumber blockNum,
 	/* if it's already in the buffer pool, we're done */
 	if (found)
 	{
-		/*
-		 * Could have found && isExtend if a buffer was already created for
-		 * the next page position, but then smgrextend failed to write
-		 * the page.  Must fall through and try to extend file again.
-		 */
+		/* That is, we're done if we expected to be able to find it ... */
 		if (!isExtend)
 			return BufferDescriptorGetBuffer(bufHdr);
+		/*
+		 * If we found a buffer when we were expecting to extend the relation,
+		 * the implication is that a buffer was already created for the next
+		 * page position, but then smgrextend failed to write the page.
+		 * We'd better try the smgrextend again.  But since BufferAlloc
+		 * won't have done StartBufferIO, we must do that first.
+		 */
+		if (!isLocalBuf)
+		{
+			SpinAcquire(BufMgrLock);
+			StartBufferIO(bufHdr, false);
+			SpinRelease(BufMgrLock);
+		}
 	}
 
 	/*
