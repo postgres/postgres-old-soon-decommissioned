@@ -27,6 +27,9 @@ backend_pathname]
 .BR "-d"
 [debug_level]]
 [\c
+.BR "-i" \c
+]
+[\c
 .BR "-n" \c
 ]
 .br
@@ -139,6 +142,11 @@ send their debugging output then this output will appear on the
 controlling tty of their parent 
 .IR postmaster .
 .TP
+.BR "-i"
+This enables TCP/IP or Internet domain socket communication.
+Without this option, only local Unix domain socket communication is
+possible.
+.TP
 .BR "-n" ", " "-s"
 The
 .IR "-s" " and " "-n"
@@ -191,6 +199,8 @@ default port then all frontend application users must specify the same
 port (using command-line options or
 .SM PGPORT\c
 ) when starting any libpq application, including psql.
+Local Unix domain sockets also use this port number as an identifier
+to allow unix domain communication with multiple postmasters.
 .SH "WARNINGS"
 If at all possible,
 .BR "do not"
