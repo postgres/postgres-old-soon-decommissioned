@@ -777,11 +777,6 @@ DATA(insert OID =  875 (  LTRIM             PGUID 11 f t f 2 f 25 "25 25" 100 0 
 DATA(insert OID =  876 (  RTRIM             PGUID 11 f t f 2 f 25 "25 25" 100 0 0 100  foo bar ));
 DATA(insert OID =  877 (  SUBSTR            PGUID 11 f t f 3 f 25 "25 23 23" 100 0 0 100  foo bar ));
 DATA(insert OID =  878 (  TRANSLATE         PGUID 11 f t f 3 f 25 "25 18 18" 100 0 0 100  foo bar ));
-DATA(insert OID =  879 (  lpad              PGUID 11 f t f 2 f 25 "25 23" 100 0 0 100  foo bar ));
-DATA(insert OID =  880 (  rpad              PGUID 11 f t f 2 f 25 "25 23" 100 0 0 100  foo bar ));
-DATA(insert OID =  881 (  ltrim             PGUID 11 f t f 1 f 25 "25" 100 0 0 100  foo bar ));
-DATA(insert OID =  882 (  rtrim             PGUID 11 f t f 1 f 25 "25" 100 0 0 100  foo bar ));
-DATA(insert OID =  883 (  substr            PGUID 11 f t f 2 f 25 "25 23" 100 0 0 100  foo bar ));
 
 /* 
  * prototypes for functions pg_proc.c 
