@@ -570,7 +570,7 @@ typedef struct VariableResetStmt
  *		Insert Statement
  * ----------------------
  */
-typedef struct AppendStmt
+typedef struct InsertStmt
 {
 	NodeTag		type;
 	char	   *relname;		/* relation to insert into */
@@ -578,7 +578,7 @@ typedef struct AppendStmt
 	List	   *targetList;		/* the target list (of ResTarget) */
 	List	   *fromClause;		/* the from clause */
 	Node	   *whereClause;	/* qualifications */
-} AppendStmt;
+} InsertStmt;
 
 /* ----------------------
  *		Delete Statement
@@ -595,14 +595,14 @@ typedef struct DeleteStmt
  *		Update Statement
  * ----------------------
  */
-typedef struct ReplaceStmt
+typedef struct UpdateStmt
 {
 	NodeTag		type;
 	char	   *relname;		/* relation to update */
 	List	   *targetList;		/* the target list (of ResTarget) */
 	Node	   *whereClause;	/* qualifications */
 	List	   *fromClause;		/* the from clause */
-} ReplaceStmt;
+} UpdateStmt;
 
 /* ----------------------
  *		Create Cursor Statement
@@ -625,7 +625,7 @@ typedef struct CursorStmt
  *		Select Statement
  * ----------------------
  */
-typedef struct RetrieveStmt
+typedef struct SelectStmt
 {
 	NodeTag		type;
 	char	   *unique;			/* NULL, '*', or unique attribute name */
@@ -638,7 +638,7 @@ typedef struct RetrieveStmt
 	List	   *unionClause;	/* union subselect parameters */
 	List	   *sortClause;		/* sort clause (a list of SortGroupBy's) */
 	bool		unionall;		/* union without unique sort */
-} RetrieveStmt;
+} SelectStmt;
 
 
 /****************************************************************************
