@@ -393,7 +393,7 @@ SET DATESTYLE TO PostgreSQL,European;
    that the date/time format is ISO here):
 
 <screen> 
-SET TIME ZONE "PST8PDT";
+SET TIME ZONE 'PST8PDT';
 SELECT CURRENT_TIMESTAMP AS today;
    
          today
