@@ -32,8 +32,8 @@ $Header$
    This describes an embedded <acronym>SQL</acronym> in <acronym>C</acronym> 
    package for <productname>Postgres</productname>.
 
-   It is written by <ulink url="linus@epact.se">Linus Tolke</ulink>
-   and <ulink url="meskes@debian.org">Michael Meskes</ulink>.
+   It is written by <ulink url="mailto:linus@epact.se">Linus Tolke</ulink>
+   and <ulink url="mailto:meskes@debian.org">Michael Meskes</ulink>.
 
    <note>
     <para>
