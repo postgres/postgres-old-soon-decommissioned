@@ -46,7 +46,9 @@ NamespaceCreate(const char *nspName, int32 ownerSysId)
 	if (SearchSysCacheExists(NAMESPACENAME,
 							 PointerGetDatum(nspName),
 							 0, 0, 0))
-		elog(ERROR, "namespace \"%s\" already exists", nspName);
+		ereport(ERROR,
+				(errcode(ERRCODE_DUPLICATE_SCHEMA),
+				 errmsg("schema \"%s\" already exists", nspName)));
 
 	/* initialize nulls and values */
 	for (i = 0; i < Natts_pg_namespace; i++)

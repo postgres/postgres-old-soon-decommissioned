@@ -105,7 +105,9 @@ LargeObjectDrop(Oid loid)
 	heap_close(pg_largeobject, RowShareLock);
 
 	if (!found)
-		elog(ERROR, "LargeObjectDrop: large object %u not found", loid);
+		ereport(ERROR,
+				(errcode(ERRCODE_UNDEFINED_OBJECT),
+				 errmsg("large object %u does not exist", loid)));
 }
 
 bool

@@ -207,7 +207,7 @@ extern AclResult pg_proc_aclcheck(Oid proc_oid, AclId userid, AclMode mode);
 extern AclResult pg_language_aclcheck(Oid lang_oid, AclId userid, AclMode mode);
 extern AclResult pg_namespace_aclcheck(Oid nsp_oid, AclId userid, AclMode mode);
 
-extern void aclcheck_error(AclResult errcode, const char *objectname);
+extern void aclcheck_error(AclResult aclerr, const char *objectname);
 
 /* ownercheck routines just return true (owner) or false (not) */
 extern bool pg_class_ownercheck(Oid class_oid, AclId userid);

@@ -108,7 +108,8 @@ ProcedureCreate(const char *procedureName,
 		if (!genericParam)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
-					 errmsg("functions returning ANYARRAY or ANYELEMENT must have at least one argument of either type")));
+					 errmsg("cannot determine result datatype"),
+					 errdetail("A function returning ANYARRAY or ANYELEMENT must have at least one argument of either type.")));
 	}
 
 	/* Make sure we have a zero-padded param type array */
@@ -532,7 +533,8 @@ check_sql_fn_retval(Oid rettype, char fn_typtype, List *queryTreeList)
 		/* This should already have been caught ... */
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
-				 errmsg("functions returning ANYARRAY or ANYELEMENT must have at least one argument of either type")));
+				 errmsg("cannot determine result datatype"),
+				 errdetail("A function returning ANYARRAY or ANYELEMENT must have at least one argument of either type.")));
 	}
 	else
 		ereport(ERROR,
