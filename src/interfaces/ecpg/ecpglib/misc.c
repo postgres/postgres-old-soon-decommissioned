@@ -18,10 +18,11 @@
 #include "pgtypes_timestamp.h"
 #include "pgtypes_interval.h"
 
+#ifdef HAVE_LONG_LONG_INT_64
 #ifndef LONG_LONG_MIN
 #define LONG_LONG_MIN LLONG_MIN
 #endif
-
+#endif
                                                  
 static struct sqlca_t sqlca_init =
 {
