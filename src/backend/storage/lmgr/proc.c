@@ -864,7 +864,9 @@ HandleDeadLock(SIGNAL_ARGS)
 {
 	int			save_errno = errno;
 	LOCK	   *mywaitlock;
+	bool	isWaitingForLock = lockWaiting; /* save waiting status */
 
+	SetWaitingForLock(false); /* disable query cancel during this fuction */
 	LockLockTable();
 
 	/* ---------------------
@@ -884,6 +886,7 @@ HandleDeadLock(SIGNAL_ARGS)
 	{
 		UnlockLockTable();
 		errno = save_errno;
+		SetWaitingForLock(isWaitingForLock); /* restore waiting status */
 		return;
 	}
 
@@ -897,6 +900,7 @@ HandleDeadLock(SIGNAL_ARGS)
 		/* No deadlock, so keep waiting */
 		UnlockLockTable();
 		errno = save_errno;
+		SetWaitingForLock(isWaitingForLock); /* restore waiting status */
 		return;
 	}
 
@@ -911,7 +915,7 @@ HandleDeadLock(SIGNAL_ARGS)
 	SHMQueueElemInit(&(MyProc->links));
 	MyProc->waitLock = NULL;
 	MyProc->waitHolder = NULL;
-	lockWaiting = false;
+	isWaitingForLock = false; /* wait for lock no longer */
 
 	/* ------------------
 	 * Unlock my semaphore so that the interrupted ProcSleep() call can finish.
