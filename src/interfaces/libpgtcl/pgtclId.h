@@ -13,6 +13,10 @@
  *-------------------------------------------------------------------------
  */
 
-extern void PgSetId(char *id, void *ptr);
-extern void* PgGetId(char *id);
-extern int PgValidId(char* id);
+extern void PgSetConnectionId(Pg_clientData *cd, char *id, PGconn *conn);
+extern PGconn *PgGetConnectionId(Pg_clientData *cd, char *id);
+extern void PgDelConnectionId(Pg_clientData *cd, char *id);
+extern void PgSetResultId(Pg_clientData *cd, char *id, char *connid, PGresult *res);
+extern PGresult *PgGetResultId(Pg_clientData *cd, char *id);
+extern void PgDelResultId(Pg_clientData *cd, char *id);
+extern void PgGetConnByResultId(Pg_clientData *cd, char *id, char *resid);

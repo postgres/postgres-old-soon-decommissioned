@@ -16,6 +16,7 @@
 
 #include "tcl.h"
 
-extern int Pg_Init (Tcl_Interp *interp);
+extern int Pgtcl_Init (Tcl_Interp *interp);
+extern int Pgtcl_SafeInit (Tcl_Interp *interp);
 
 #endif /* LIBPGTCL_H */

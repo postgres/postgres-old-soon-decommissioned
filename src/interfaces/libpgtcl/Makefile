@@ -23,6 +23,8 @@ CFLAGS+= -I$(HEADERDIR) \
 	 -I$(TCL_INCDIR) \
 	 -I$(srcdir)/libpq
 
+LIBLDLIBS+= -L$(LIBDIR) -lpq
+
 ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)
 endif
