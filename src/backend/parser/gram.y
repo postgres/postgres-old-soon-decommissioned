@@ -126,7 +126,7 @@ static Node *makeA_Expr(int oper, char *opname, Node *lexpr, Node *rexpr);
 %type <list>	stmtblock, stmtmulti,
 	relation_name_list, OptTableElementList,
 	tableElementList, OptInherit, definition,
-	opt_with, def_args, def_name_list, func_argtypes
+	opt_with, def_args, def_name_list, func_argtypes,
 	oper_argtypes, OptStmtList, OptStmtBlock, OptStmtMulti,
 	opt_column_list, columnList, opt_va_list, va_list,
 	sort_clause, sortby_list, index_params, index_list,
