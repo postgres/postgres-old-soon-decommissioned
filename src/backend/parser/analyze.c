@@ -1788,6 +1788,15 @@ transformRuleStmt(ParseState *pstate, RuleStmt *stmt,
 			sub_qry = getInsertSelectQuery(top_subqry, NULL);
 
 			/*
+			 * If the sub_qry is a setop, we cannot attach any qualifications
+			 * to it, because the planner won't notice them.  This could
+			 * perhaps be relaxed someday, but for now, we may as well reject
+			 * such a rule immediately.
+			 */
+			if (sub_qry->setOperations != NULL && stmt->whereClause != NULL)
+				elog(ERROR, "Conditional UNION/INTERSECT/EXCEPT statements are not implemented");
+
+			/*
 			 * Validate action's use of OLD/NEW, qual too
 			 */
 			has_old =
@@ -1841,6 +1850,13 @@ transformRuleStmt(ParseState *pstate, RuleStmt *stmt,
 			 */
 			if (has_old || (has_new && stmt->event == CMD_UPDATE))
 			{
+				/*
+				 * If sub_qry is a setop, manipulating its jointree will do
+				 * no good at all, because the jointree is dummy.  (This
+				 * should be a can't-happen case because of prior tests.)
+				 */
+				if (sub_qry->setOperations != NULL)
+					elog(ERROR, "Conditional UNION/INTERSECT/EXCEPT statements are not implemented");
 				/* hack so we can use addRTEtoQuery() */
 				sub_pstate->p_rtable = sub_qry->rtable;
 				sub_pstate->p_joinlist = sub_qry->jointree->fromlist;

@@ -733,6 +733,16 @@ AddQual(Query *parsetree, Node *qual)
 			elog(ERROR, "Conditional utility statements are not implemented");
 	}
 
+	if (parsetree->setOperations != NULL)
+	{
+		/*
+		 * There's noplace to put the qual on a setop statement, either.
+		 * (This could be fixed, but right now the planner simply ignores
+		 * any qual condition on a setop query.)
+		 */
+		elog(ERROR, "Conditional UNION/INTERSECT/EXCEPT statements are not implemented");
+	}
+
 	/* INTERSECT want's the original, but we need to copy - Jan */
 	copy = copyObject(qual);
 
@@ -771,6 +781,16 @@ AddHavingQual(Query *parsetree, Node *havingQual)
 			return;
 		else
 			elog(ERROR, "Conditional utility statements are not implemented");
+	}
+
+	if (parsetree->setOperations != NULL)
+	{
+		/*
+		 * There's noplace to put the qual on a setop statement, either.
+		 * (This could be fixed, but right now the planner simply ignores
+		 * any qual condition on a setop query.)
+		 */
+		elog(ERROR, "Conditional UNION/INTERSECT/EXCEPT statements are not implemented");
 	}
 
 	/* INTERSECT want's the original, but we need to copy - Jan */

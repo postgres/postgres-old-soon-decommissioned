@@ -85,6 +85,14 @@ plan_set_operations(Query *parse)
 
 	Assert(topop && IsA(topop, SetOperationStmt));
 
+	/* check for unsupported stuff */
+	Assert(parse->utilityStmt == NULL);
+	Assert(parse->jointree->fromlist == NIL);
+	Assert(parse->jointree->quals == NULL);
+	Assert(parse->groupClause == NIL);
+	Assert(parse->havingQual == NULL);
+	Assert(parse->distinctClause == NIL);
+
 	/*
 	 * Find the leftmost component Query.  We need to use its column names
 	 * for all generated tlists (else SELECT INTO won't work right).
