@@ -69,6 +69,9 @@
 #include <SupportDefs.h>
 #endif
 
+/* Must be before gettext() games below */
+#include <locale.h>
+
 #ifdef ENABLE_NLS
 #include <libintl.h>
 #else
