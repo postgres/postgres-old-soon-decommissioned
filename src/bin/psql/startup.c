@@ -231,6 +231,8 @@ main(int argc, char *argv[])
 	SetVariable(pset.vars, "PORT", PQport(pset.db));
 	SetVariable(pset.vars, "ENCODING", pg_encoding_to_char(pset.encoding));
 
+	pset.popt.topt.encoding = pset.encoding;
+
 	/*
 	 * Now find something to do
 	 */

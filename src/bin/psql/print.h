@@ -10,6 +10,10 @@
 
 #include "libpq-fe.h"
 
+
+extern FILE *PageOutput(int lines, unsigned short int pager);
+
+
 enum printFormat
 {
 	PRINT_NOTHING = 0,			/* to make sure someone initializes this */
@@ -36,6 +40,7 @@ typedef struct _printTableOpt
 	char	   *recordSep;		/* record separator for unaligned text
 								 * mode */
 	char	   *tableAttr;		/* attributes for HTML <table ...> */
+	int			encoding;		/* character encoding */
 } printTableOpt;
 
 

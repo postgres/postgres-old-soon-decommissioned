@@ -262,7 +262,7 @@ slashUsage(unsigned short int pager)
  *
  */
 void
-helpSQL(const char *topic, bool pager)
+helpSQL(const char *topic, unsigned short int pager)
 {
 #define VALUE_OR_NULL(a) ((a) ? (a) : "")
 

@@ -471,6 +471,7 @@ exec_command(const char *cmd,
 			{
 				/* save encoding info into psql internal data */
 				pset.encoding = PQclientEncoding(pset.db);
+				pset.popt.topt.encoding = PQclientEncoding(pset.db);
 				SetVariable(pset.vars, "ENCODING", pg_encoding_to_char(pset.encoding));
 			}
 			free(encoding);
@@ -1445,6 +1446,7 @@ do_connect(const char *new_dbname, const char *new_user)
 
 	PQsetNoticeProcessor(pset.db, NoticeProcessor, NULL);
 	pset.encoding = PQclientEncoding(pset.db);
+	pset.popt.topt.encoding = PQclientEncoding(pset.db);
 
 	/* Update variables */
 	SetVariable(pset.vars, "DBNAME", PQdb(pset.db));

@@ -10,7 +10,6 @@
 #include "mbprint.h"
 
 #include "mb/pg_wchar.h"
-#include "settings.h"
 
 /*
  * This is an implementation of wcwidth() and wcswidth() as defined in
@@ -310,9 +309,9 @@ mb_utf_validate(unsigned char *pwcs)
  */
 
 int
-pg_wcswidth(unsigned char *pwcs, size_t len)
+pg_wcswidth(unsigned char *pwcs, size_t len, int encoding)
 {
-	if (pset.encoding == PG_UTF8)
+	if (encoding == PG_UTF8)
 		return mb_utf_wcswidth(pwcs, len);
 	else
 	{
@@ -325,9 +324,9 @@ pg_wcswidth(unsigned char *pwcs, size_t len)
 }
 
 unsigned char *
-mbvalidate(unsigned char *pwcs)
+mbvalidate(unsigned char *pwcs, int encoding)
 {
-	if (pset.encoding == PG_UTF8)
+	if (encoding == PG_UTF8)
 		return mb_utf_validate(pwcs);
 	else
 	{

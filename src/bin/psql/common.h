@@ -37,8 +37,6 @@ extern PGresult *PSQLexec(const char *query, bool ignore_command_ok);
 
 extern bool SendQuery(const char *query);
 
-extern FILE *PageOutput(int lines, bool pager);
-
 /* sprompt.h */
 extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
 
