@@ -99,7 +99,7 @@ typedef struct VTupleLinkData
 {
 	ItemPointerData new_tid;
 	ItemPointerData this_tid;
-}			VTupleLinkData;
+} VTupleLinkData;
 
 typedef VTupleLinkData *VTupleLink;
 
@@ -108,7 +108,7 @@ typedef struct VTupleMoveData
 	ItemPointerData tid;		/* tuple ID */
 	VPageDescr	vpd;			/* where to move */
 	bool		cleanVpd;		/* clean vpd before using */
-}			VTupleMoveData;
+} VTupleMoveData;
 
 typedef VTupleMoveData *VTupleMove;
 

@@ -60,17 +60,17 @@ static char CommandInfo[32] = {0};
  * ----------------
  */
 static void
-donothingReceive(HeapTuple tuple, TupleDesc typeinfo, DestReceiver * self)
+donothingReceive(HeapTuple tuple, TupleDesc typeinfo, DestReceiver *self)
 {
 }
 
 static void
-donothingSetup(DestReceiver * self, TupleDesc typeinfo)
+donothingSetup(DestReceiver *self, TupleDesc typeinfo)
 {
 }
 
 static void
-donothingCleanup(DestReceiver * self)
+donothingCleanup(DestReceiver *self)
 {
 }
 

@@ -519,7 +519,7 @@ PerformAddAttribute(char *relationName,
 }
 
 void
-LockTableCommand(LockStmt * lockstmt)
+LockTableCommand(LockStmt *lockstmt)
 {
 	Relation	rel;
 	int			aclresult;

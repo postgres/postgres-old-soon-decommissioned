@@ -27,7 +27,7 @@ typedef struct
 		unsigned int ipv4_addr; /* network byte order */
 		/* add IPV6 address type here */
 	}			addr;
-}			inet_struct;
+} inet_struct;
 
 typedef struct varlena inet;
 
@@ -51,7 +51,7 @@ typedef struct manufacturer
 	unsigned char b;
 	unsigned char c;
 	char	   *name;
-}			manufacturer;
+} manufacturer;
 
 extern manufacturer manufacturers[];
 

@@ -100,7 +100,7 @@ typedef struct LOCKMETHODCTL
 	int			conflictTab[MAX_LOCKMODES];
 	int			prio[MAX_LOCKMODES];
 	SPINLOCK	masterLock;
-}			LOCKMETHODCTL;
+} LOCKMETHODCTL;
 
 /*
  * lockHash -- hash table on lock Ids,
@@ -113,7 +113,7 @@ typedef struct LOCKMETHODTABLE
 	HTAB	   *lockHash;
 	HTAB	   *xidHash;
 	LOCKMETHODCTL *ctl;
-}			LOCKMETHODTABLE;
+} LOCKMETHODTABLE;
 
 /* -----------------------
  * A transaction never conflicts with its own locks.  Hence, if

@@ -40,7 +40,7 @@ btint4cmp(int32 a, int32 b)
 }
 
 int32
-btint8cmp(int64 * a, int64 * b)
+btint8cmp(int64 *a, int64 *b)
 {
 	if (*a > *b)
 		return 1;

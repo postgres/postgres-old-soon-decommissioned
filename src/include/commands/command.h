@@ -44,6 +44,6 @@ extern void PortalCleanup(Portal portal);
 extern void PerformAddAttribute(char *relationName, char *userName,
 					bool inh, ColumnDef *colDef);
 
-extern void LockTableCommand(LockStmt * lockstmt);
+extern void LockTableCommand(LockStmt *lockstmt);
 
 #endif	 /* COMMAND_H */

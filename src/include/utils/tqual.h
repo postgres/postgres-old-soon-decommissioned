@@ -23,7 +23,7 @@ typedef struct SnapshotData
 	uint32		xcnt;			/* # of xact below */
 	TransactionId *xip;			/* array of xacts in progress */
 	ItemPointerData tid;		/* required for Dirty snapshot -:( */
-}			SnapshotData;
+} SnapshotData;
 
 typedef SnapshotData *Snapshot;
 

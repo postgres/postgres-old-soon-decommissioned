@@ -44,7 +44,7 @@ typedef struct HashJoinTupleData
 	struct HashJoinTupleData *next;		/* link to next tuple in same
 										 * bucket */
 	HeapTupleData htup;			/* tuple header */
-}			HashJoinTupleData;
+} HashJoinTupleData;
 
 typedef HashJoinTupleData *HashJoinTuple;
 

@@ -60,7 +60,7 @@ typedef struct MemoryContextData
 {
 	NodeTag		type;
 	MemoryContextMethods method;
-}			MemoryContextData;
+} MemoryContextData;
 
 /* utils/mcxt.h contains typedef struct MemoryContextData *MemoryContext */
 
@@ -73,7 +73,7 @@ typedef struct GlobalMemoryData
 	AllocSetData setData;
 	char	   *name;
 	OrderedElemData elemData;
-}			GlobalMemoryData;
+} GlobalMemoryData;
 
 /* utils/mcxt.h contains typedef struct GlobalMemoryData *GlobalMemory */
 

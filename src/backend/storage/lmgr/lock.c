@@ -231,7 +231,7 @@ LockDisable(int status)
  * Notes: just copying.  Should only be called once.
  */
 static void
-LockMethodInit(LOCKMETHODTABLE * lockMethodTable,
+LockMethodInit(LOCKMETHODTABLE *lockMethodTable,
 			   MASK *conflictsP,
 			   int *prioP,
 			   int numModes)
@@ -1843,7 +1843,7 @@ LockOwners(LOCKMETHOD lockmethod, LOCKTAG *locktag)
 	if (is_user_lock)
 	{
 		TPRINTF(TRACE_USERLOCKS, "LockOwners: user lock tag [%u]",
-				locktag->objId.blkno;
+				locktag->objId.blkno);
 	}
 #endif
 

@@ -168,7 +168,7 @@ typedef struct AllocBlockData
 	struct AllocBlockData *next;
 	char	   *freeptr;
 	char	   *endptr;
-}			AllocBlockData;
+} AllocBlockData;
 
 typedef AllocBlockData *AllocBlock;
 
@@ -182,7 +182,7 @@ typedef struct AllocChunkData
 	void	   *aset;
 	/* size is always the chunk size */
 	Size		size;
-}			AllocChunkData;
+} AllocChunkData;
 
 typedef AllocChunkData *AllocChunk;
 

@@ -14,7 +14,7 @@
  *-------------------------------------------------------------------------
  */
 
-extern void PgSetConnectionId(Tcl_Interp * interp, PGconn *conn);
+extern void PgSetConnectionId(Tcl_Interp *interp, PGconn *conn);
 
 #if TCL_MAJOR_VERSION == 7 && TCL_MINOR_VERSION == 5
 /* Only Tcl 7.5 had drivers with this signature */
@@ -33,19 +33,19 @@ extern void PgSetConnectionId(Tcl_Interp * interp, PGconn *conn);
 #define DRIVER_DEL_PROTO ClientData cData, Tcl_Interp *interp
 #endif
 
-extern PGconn *PgGetConnectionId(Tcl_Interp * interp, char *id,
+extern PGconn *PgGetConnectionId(Tcl_Interp *interp, char *id,
 				  Pg_ConnectionId **);
 extern		PgDelConnectionId(DRIVER_DEL_PROTO);
 extern int	PgOutputProc(DRIVER_OUTPUT_PROTO);
 extern		PgInputProc(DRIVER_INPUT_PROTO);
-extern int	PgSetResultId(Tcl_Interp * interp, char *connid, PGresult *res);
-extern PGresult *PgGetResultId(Tcl_Interp * interp, char *id);
-extern void PgDelResultId(Tcl_Interp * interp, char *id);
-extern int	PgGetConnByResultId(Tcl_Interp * interp, char *resid);
-extern void PgStartNotifyEventSource(Pg_ConnectionId * connid);
-extern void PgStopNotifyEventSource(Pg_ConnectionId * connid);
-extern void PgNotifyTransferEvents(Pg_ConnectionId * connid);
-extern void PgNotifyInterpDelete(ClientData clientData, Tcl_Interp * interp);
+extern int	PgSetResultId(Tcl_Interp *interp, char *connid, PGresult *res);
+extern PGresult *PgGetResultId(Tcl_Interp *interp, char *id);
+extern void PgDelResultId(Tcl_Interp *interp, char *id);
+extern int	PgGetConnByResultId(Tcl_Interp *interp, char *resid);
+extern void PgStartNotifyEventSource(Pg_ConnectionId *connid);
+extern void PgStopNotifyEventSource(Pg_ConnectionId *connid);
+extern void PgNotifyTransferEvents(Pg_ConnectionId *connid);
+extern void PgNotifyInterpDelete(ClientData clientData, Tcl_Interp *interp);
 
 /* GetFileProc is needed in Tcl 7.6 *only* ... it went away again in 8.0 */
 #if TCL_MAJOR_VERSION == 7 && TCL_MINOR_VERSION >= 6

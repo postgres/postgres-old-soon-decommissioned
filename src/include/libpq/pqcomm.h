@@ -156,6 +156,6 @@ typedef struct CancelRequestPacket
 										 * request */
 	uint32		backendPID;		/* PID of client's backend */
 	uint32		cancelAuthCode; /* secret key to authorize cancel */
-}			CancelRequestPacket;
+} CancelRequestPacket;
 
 #endif	 /* PQCOMM_H */

@@ -75,7 +75,7 @@ CreateTemplateTupleDesc(int natts)
  * ----------------------------------------------------------------
  */
 TupleDesc
-CreateTupleDesc(int natts, Form_pg_attribute * attrs)
+CreateTupleDesc(int natts, Form_pg_attribute *attrs)
 {
 	TupleDesc	desc;
 

@@ -54,7 +54,7 @@ static bool equal_indexkey_var(int index_key, Var *var);
  *
  */
 bool
-match_indexkey_operand(int indexkey, Var *operand, RelOptInfo * rel)
+match_indexkey_operand(int indexkey, Var *operand, RelOptInfo *rel)
 {
 	if (IsA(operand, Var) &&
 		(lfirsti(rel->relids) == operand->varno) &&

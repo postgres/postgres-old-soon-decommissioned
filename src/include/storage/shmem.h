@@ -90,7 +90,7 @@ typedef struct
 	char		key[SHMEM_INDEX_KEYSIZE];		/* string name */
 	unsigned long location;		/* location in shared mem */
 	unsigned long size;			/* numbytes allocated for the structure */
-}			ShmemIndexEnt;
+} ShmemIndexEnt;
 
 /*
  * prototypes for functions in shmqueue.c

@@ -28,7 +28,7 @@
  */
 
 int
-Pgtcl_Init(Tcl_Interp * interp)
+Pgtcl_Init(Tcl_Interp *interp)
 {
 
 	/*
@@ -133,7 +133,7 @@ Pgtcl_Init(Tcl_Interp * interp)
 
 
 int
-Pgtcl_SafeInit(Tcl_Interp * interp)
+Pgtcl_SafeInit(Tcl_Interp *interp)
 {
 	return Pgtcl_Init(interp);
 }

@@ -208,7 +208,7 @@ be_typeinit(PortalEntry *entry,
  * ----------------
  */
 void
-be_printtup(HeapTuple tuple, TupleDesc typeinfo, DestReceiver * self)
+be_printtup(HeapTuple tuple, TupleDesc typeinfo, DestReceiver *self)
 {
 	int			i;
 	Datum		attr;

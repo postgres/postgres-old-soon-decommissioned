@@ -492,7 +492,7 @@ ProcQueueInit(PROC_QUEUE *queue)
  */
 int
 ProcSleep(PROC_QUEUE *waitQueue,/* lock->waitProcs */
-		  LOCKMETHODCTL * lockctl,
+		  LOCKMETHODCTL *lockctl,
 		  int token,			/* lockmode */
 		  LOCK *lock)
 {

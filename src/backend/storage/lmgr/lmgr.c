@@ -92,7 +92,7 @@ static int	LockPrios[] = {
 	7
 };
 
-LOCKMETHOD LockTableId = (LOCKMETHOD) NULL;
+LOCKMETHOD	LockTableId = (LOCKMETHOD) NULL;
 LOCKMETHOD	LongTermTableId = (LOCKMETHOD) NULL;
 
 /*

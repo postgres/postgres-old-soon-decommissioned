@@ -144,7 +144,7 @@ xfunc_shouldpull(Query *queryInfo,
 				 Path childpath,
 				 JoinPath parentpath,
 				 int whichchild,
-				 RestrictInfo * maxcinfopt)		/* Out: pointer to clause
+				 RestrictInfo *maxcinfopt)		/* Out: pointer to clause
 												 * to pullup */
 {
 	LispValue	clauselist,
@@ -225,7 +225,7 @@ xfunc_shouldpull(Query *queryInfo,
 			  || (!is_join(childpath)
 				  && (whichchild == INNER)
 				  && IsA(parentpath, NestPath)
-				  && !IsA(parentpath, HashPath)
+				  &&!IsA(parentpath, HashPath)
 				  &&!IsA(parentpath, MergePath)))))
 		{
 
@@ -1423,7 +1423,7 @@ do { \
  **   Just like _copyRel, but doesn't copy the paths
  */
 bool
-xfunc_copyrel(RelOptInfo from, RelOptInfo * to)
+xfunc_copyrel(RelOptInfo from, RelOptInfo *to)
 {
 	RelOptInfo	newnode;
 

@@ -58,7 +58,7 @@ typedef struct NumericData
 	uint16		n_rscale;		/* Result scale			*/
 	uint16		n_sign_dscale;	/* Sign + display scale */
 	unsigned char n_data[1];	/* Digit data			*/
-}			NumericData;
+} NumericData;
 typedef NumericData *Numeric;
 
 #define NUMERIC_HDRSZ	(sizeof(int32) + sizeof(uint16) * 3)

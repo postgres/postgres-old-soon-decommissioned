@@ -273,7 +273,7 @@ typedef struct Aggref
 	Node	   *target;
 	int			aggno;
 	bool		usenulls;
-}			Aggref;
+} Aggref;
 
 /* ----------------
  * SubLink

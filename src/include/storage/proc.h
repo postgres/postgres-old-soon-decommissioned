@@ -119,7 +119,7 @@ extern bool ProcRemove(int pid);
 /* make static in storage/lmgr/proc.c -- jolly */
 
 extern void ProcQueueInit(PROC_QUEUE *queue);
-extern int ProcSleep(PROC_QUEUE *queue, LOCKMETHODCTL * lockctl, int token,
+extern int ProcSleep(PROC_QUEUE *queue, LOCKMETHODCTL *lockctl, int token,
 		  LOCK *lock);
 extern PROC *ProcWakeup(PROC *proc, int errType);
 extern int ProcLockWakeup(PROC_QUEUE *queue, LOCKMETHOD lockmethod,

@@ -220,7 +220,7 @@ extern PortalEntry *be_newportal(void);
 extern void be_typeinit(PortalEntry *entry, TupleDesc attrs,
 			int natts);
 extern void be_printtup(HeapTuple tuple, TupleDesc typeinfo,
-			DestReceiver * self);
+			DestReceiver *self);
 
 
 /* in be-pqexec.c */

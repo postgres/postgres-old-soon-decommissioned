@@ -41,7 +41,7 @@
 */
 
 void
-minspantree(Query *root, List *join_rels, RelOptInfo * garel)
+minspantree(Query *root, List *join_rels, RelOptInfo *garel)
 {
 	int			number_of_rels = length(root->base_rel_list);
 	int			number_of_joins = length(join_rels);
@@ -111,9 +111,9 @@ minspantree(Query *root, List *join_rels, RelOptInfo * garel)
 
 	else if (number_of_joins == 3)
 	{
-		RelOptInfo *rel12 = (RelOptInfo *) & tmprel_array[1][2];
-		RelOptInfo *rel13 = (RelOptInfo *) & tmprel_array[1][3];
-		RelOptInfo *rel23 = (RelOptInfo *) & tmprel_array[2][3];
+		RelOptInfo *rel12 = (RelOptInfo *) &tmprel_array[1][2];
+		RelOptInfo *rel13 = (RelOptInfo *) &tmprel_array[1][3];
+		RelOptInfo *rel23 = (RelOptInfo *) &tmprel_array[2][3];
 
 		if (rel12->cheapestpath->path_cost > rel13->cheapestpath->path_cost)
 		{
@@ -159,9 +159,9 @@ minspantree(Query *root, List *join_rels, RelOptInfo * garel)
 				if (connectto[tempn] != 0)
 				{
 					if (n > tempn)
-						joinrel = (RelOptInfo *) & tmprel_array[tempn][n];
+						joinrel = (RelOptInfo *) &tmprel_array[tempn][n];
 					else
-						joinrel = (RelOptInfo *) & tmprel_array[n][tempn];
+						joinrel = (RelOptInfo *) &tmprel_array[n][tempn];
 					dist = joinrel->cheapestpath->path_cost;
 
 					if (dist < disttoconnect[tempn])

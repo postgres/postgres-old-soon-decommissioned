@@ -27,7 +27,7 @@
  *
  */
 bool
-valid_or_clause(RestrictInfo * restrictinfo)
+valid_or_clause(RestrictInfo *restrictinfo)
 {
 	if (restrictinfo != NULL &&
 		!single_node((Node *) restrictinfo->clause) &&

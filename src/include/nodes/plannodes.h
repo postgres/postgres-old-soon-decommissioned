@@ -264,7 +264,7 @@ typedef struct Noname
 	Plan		plan;
 	Oid			nonameid;
 	int			keycount;
-}			Noname;
+} Noname;
 
 /* ----------------
  *		materialization node
@@ -338,7 +338,7 @@ typedef struct Tee
 	List	   *rtentries;		/* the range table for the plan below the
 								 * Tee may be different than the parent
 								 * plans */
-} Tee;
+}			Tee;
 
 #endif
 

@@ -164,7 +164,7 @@ extern void ltoa(int32 l, char *a);
  */
 extern int32 btint2cmp(int16 a, int16 b);
 extern int32 btint4cmp(int32 a, int32 b);
-extern int32 btint8cmp(int64 * a, int64 * b);
+extern int32 btint8cmp(int64 *a, int64 *b);
 extern int32 btint24cmp(int16 a, int32 b);
 extern int32 btint42cmp(int32 a, int16 b);
 extern int32 btfloat4cmp(float32 a, float32 b);

@@ -32,7 +32,7 @@ typedef struct LockRelId
 {
 	Oid			relId;			/* a relation identifier */
 	Oid			dbId;			/* a database identifier */
-}			LockRelId;
+} LockRelId;
 
 typedef struct LockInfoData
 {

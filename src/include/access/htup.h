@@ -48,7 +48,7 @@ typedef struct HeapTupleHeaderData
 	/* bit map of domains */
 
 	/* MORE DATA FOLLOWS AT END OF STRUCT */
-}			HeapTupleHeaderData;
+} HeapTupleHeaderData;
 
 typedef HeapTupleHeaderData *HeapTupleHeader;
 

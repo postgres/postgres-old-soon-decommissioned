@@ -555,7 +555,7 @@ SPI_pfree(void *pointer)
  *
  */
 void
-spi_printtup(HeapTuple tuple, TupleDesc tupdesc, DestReceiver * self)
+spi_printtup(HeapTuple tuple, TupleDesc tupdesc, DestReceiver *self)
 {
 	SPITupleTable *tuptable;
 	MemoryContext oldcxt;

@@ -33,6 +33,7 @@ typedef struct StrategyTransformMapData
 								 *
 								 *
 								 *
+								 *
 								 * STRUCTURE */
 
 typedef StrategyTransformMapData *StrategyTransformMap;

@@ -66,7 +66,7 @@ bool		execConstByVal;
 int			execConstLen;
 
 /* static functions decls */
-static Datum ExecEvalAggref(Aggref * aggref, ExprContext *econtext, bool *isNull);
+static Datum ExecEvalAggref(Aggref *aggref, ExprContext *econtext, bool *isNull);
 static Datum ExecEvalArrayRef(ArrayRef *arrayRef, ExprContext *econtext,
 				 bool *isNull, bool *isDone);
 static Datum ExecEvalAnd(Expr *andExpr, ExprContext *econtext, bool *isNull);
@@ -190,7 +190,7 @@ ExecEvalArrayRef(ArrayRef *arrayRef,
  * ----------------------------------------------------------------
  */
 static Datum
-ExecEvalAggref(Aggref * aggref, ExprContext *econtext, bool *isNull)
+ExecEvalAggref(Aggref *aggref, ExprContext *econtext, bool *isNull)
 {
 	*isNull = econtext->ecxt_nulls[aggref->aggno];
 	return econtext->ecxt_values[aggref->aggno];
@@ -1097,7 +1097,7 @@ ExecEvalAnd(Expr *andExpr, ExprContext *econtext, bool *isNull)
  * ----------------------------------------------------------------
  */
 static Datum
-ExecEvalCase(CaseExpr * caseExpr, ExprContext *econtext, bool *isNull)
+ExecEvalCase(CaseExpr *caseExpr, ExprContext *econtext, bool *isNull)
 {
 	List	   *clauses;
 	List	   *clause;

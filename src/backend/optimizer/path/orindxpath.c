@@ -31,9 +31,9 @@
 #include "parser/parsetree.h"
 
 
-static void best_or_subclause_indices(Query *root, RelOptInfo * rel, List *subclauses,
+static void best_or_subclause_indices(Query *root, RelOptInfo *rel, List *subclauses,
 				List *indices, List **indexids, Cost *cost, Cost *selec);
-static void best_or_subclause_index(Query *root, RelOptInfo * rel, Expr *subclause,
+static void best_or_subclause_index(Query *root, RelOptInfo *rel, Expr *subclause,
 				   List *indices, int *indexid, Cost *cost, Cost *selec);
 
 
@@ -49,7 +49,7 @@ static void best_or_subclause_index(Query *root, RelOptInfo * rel, Expr *subclau
  */
 List *
 create_or_index_paths(Query *root,
-					  RelOptInfo * rel, List *clauses)
+					  RelOptInfo *rel, List *clauses)
 {
 	List	   *t_list = NIL;
 	List	   *clist;
@@ -156,7 +156,7 @@ create_or_index_paths(Query *root,
  */
 static void
 best_or_subclause_indices(Query *root,
-						  RelOptInfo * rel,
+						  RelOptInfo *rel,
 						  List *subclauses,
 						  List *indices,
 						  List **indexids,		/* return value */
@@ -205,7 +205,7 @@ best_or_subclause_indices(Query *root,
  */
 static void
 best_or_subclause_index(Query *root,
-						RelOptInfo * rel,
+						RelOptInfo *rel,
 						Expr *subclause,
 						List *indices,
 						int *retIndexid,		/* return value */

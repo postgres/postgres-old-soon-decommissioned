@@ -72,6 +72,6 @@ extern void geqo_params(int string_length);
 extern void geqo_eval_startup(void);
 extern Cost geqo_eval(Query *root, Gene *tour, int num_gene);
 extern RelOptInfo *gimme_tree(Query *root, Gene *tour, int rel_count,
-		   int num_gene, RelOptInfo * old_rel);
+		   int num_gene, RelOptInfo *old_rel);
 
 #endif	 /* GEQO_H */

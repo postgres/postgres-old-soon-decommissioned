@@ -93,7 +93,7 @@ matching_tlist_var(Var *var, List *targetlist)
  * CREATES:  new var_node iff no matching var_node exists in targetlist
  */
 void
-add_var_to_tlist(RelOptInfo * rel, Var *var)
+add_var_to_tlist(RelOptInfo *rel, Var *var)
 {
 	Expr	   *oldvar;
 

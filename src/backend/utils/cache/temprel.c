@@ -49,7 +49,7 @@ typedef struct TempTable
 {
 	char	   *user_relname;
 	HeapTuple	pg_class_tuple;
-}			TempTable;
+} TempTable;
 
 
 void

@@ -205,7 +205,7 @@ static struct cachedesc cacheinfo[] = {
 			0,
 			0
 		},
-		offsetof(FormData_pg_type, typalign) + sizeof(char),
+		offsetof(FormData_pg_type, typalign) +sizeof(char),
 		TypeNameIndex,
 	TypeNameIndexScan},
 	{TypeRelationName,			/* TYPOID */

@@ -128,7 +128,7 @@ typedef struct VariableCacheData
 	TransactionId nextXid;
 	uint32		oid_count;		/* not implemented, yet */
 	Oid			nextOid;
-}			VariableCacheData;
+} VariableCacheData;
 
 typedef VariableCacheData *VariableCache;
 

@@ -25,7 +25,7 @@
 static TupleTableSlot *ExecHashJoinOuterGetTuple(Plan *node, Plan *parent,
 						  HashJoinState *hjstate);
 static TupleTableSlot *ExecHashJoinGetSavedTuple(HashJoinState *hjstate,
-						  BufFile * file,
+						  BufFile *file,
 						  TupleTableSlot *tupleSlot);
 static int	ExecHashJoinGetBatch(int bucketno, HashJoinTable hashtable);
 static int	ExecHashJoinNewBatch(HashJoinState *hjstate);
@@ -478,7 +478,7 @@ ExecHashJoinOuterGetTuple(Plan *node, Plan *parent, HashJoinState *hjstate)
 
 static TupleTableSlot *
 ExecHashJoinGetSavedTuple(HashJoinState *hjstate,
-						  BufFile * file,
+						  BufFile *file,
 						  TupleTableSlot *tupleSlot)
 {
 	HeapTupleData htup;
@@ -625,7 +625,7 @@ ExecHashJoinGetBatch(int bucketno, HashJoinTable hashtable)
 
 void
 ExecHashJoinSaveTuple(HeapTuple heapTuple,
-					  BufFile * file)
+					  BufFile *file)
 {
 	size_t		written;
 

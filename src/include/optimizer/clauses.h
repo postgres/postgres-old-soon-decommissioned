@@ -38,7 +38,7 @@ extern Expr *make_andclause(List *andclauses);
 extern bool case_clause(Node *clause);
 
 extern List *pull_constant_clauses(List *quals, List **constantQual);
-extern void clause_get_relids_vars(Node *clause, Relids * relids, List **vars);
+extern void clause_get_relids_vars(Node *clause, Relids *relids, List **vars);
 extern int	NumRelids(Node *clause);
 extern bool contains_not(Node *clause);
 extern bool is_joinable(Node *clause);
