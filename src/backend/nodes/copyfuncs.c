@@ -162,11 +162,11 @@ _copyAppend(Append *from)
 	 *	copy remainder of node
 	 * ----------------
 	 */
-	Node_Copy(from, newnode, unionplans);
-	Node_Copy(from, newnode, unionrts);
-	newnode->unionrelid = from->unionrelid;
-	Node_Copy(from, newnode, unionrtentries);
-	Node_Copy(from, newnode, unionstate);
+	Node_Copy(from, newnode, appendplans);
+	Node_Copy(from, newnode, unionrtables);
+	newnode->inheritrelid = from->inheritrelid;
+	Node_Copy(from, newnode, inheritrtable);
+	Node_Copy(from, newnode, appendstate);
 
 	return newnode;
 }

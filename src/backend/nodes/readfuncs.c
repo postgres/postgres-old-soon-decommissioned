@@ -322,18 +322,18 @@ _readAppend()
 
 	_getPlan((Plan *) local_node);
 
-	token = lsptok(NULL, &length);		/* eat :unionplans */
-	local_node->unionplans = nodeRead(true);	/* now read it */
+	token = lsptok(NULL, &length);		/* eat :appendplans */
+	local_node->appendplans = nodeRead(true);	/* now read it */
 
-	token = lsptok(NULL, &length);		/* eat :unionrts */
-	local_node->unionrts = nodeRead(true);		/* now read it */
+	token = lsptok(NULL, &length);		/* eat :unionrtables */
+	local_node->unionrtables = nodeRead(true);		/* now read it */
 
-	token = lsptok(NULL, &length);		/* eat :unionrelid */
-	token = lsptok(NULL, &length);		/* get unionrelid */
-	local_node->unionrelid = strtoul(token, NULL, 10);
+	token = lsptok(NULL, &length);		/* eat :inheritrelid */
+	token = lsptok(NULL, &length);		/* get inheritrelid */
+	local_node->inheritrelid = strtoul(token, NULL, 10);
 
-	token = lsptok(NULL, &length);		/* eat :unionrtentries */
-	local_node->unionrtentries = nodeRead(true);		/* now read it */
+	token = lsptok(NULL, &length);		/* eat :inheritrtable */
+	local_node->inheritrtable = nodeRead(true);		/* now read it */
 
 	return (local_node);
 }

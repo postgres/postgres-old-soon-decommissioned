@@ -354,17 +354,17 @@ _outAppend(StringInfo str, Append *node)
 	appendStringInfo(str, " APPEND ");
 	_outPlanInfo(str, (Plan *) node);
 
-	appendStringInfo(str, " :unionplans ");
-	_outNode(str, node->unionplans);
+	appendStringInfo(str, " :appendplans ");
+	_outNode(str, node->appendplans);
 
-	appendStringInfo(str, " :unionrts ");
-	_outNode(str, node->unionrts);
+	appendStringInfo(str, " :unionrtables ");
+	_outNode(str, node->unionrtables);
 
-	sprintf(buf, " :unionrelid %d ", node->unionrelid);
+	sprintf(buf, " :inheritrelid %d ", node->inheritrelid);
 	appendStringInfo(str, buf);
 
-	appendStringInfo(str, " :unionrtentries ");
-	_outNode(str, node->unionrtentries);
+	appendStringInfo(str, " :inheritrtable ");
+	_outNode(str, node->inheritrtable);
 
 }
 

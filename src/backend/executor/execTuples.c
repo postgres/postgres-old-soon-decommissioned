@@ -712,16 +712,16 @@ NodeGetResultTupleSlot(Plan *node)
 		case T_Append:
 			{
 				Append	   *n = (Append *) node;
-				AppendState *unionstate;
-				List	   *unionplans;
+				AppendState *appendstate;
+				List	   *appendplans;
 				int			whichplan;
 				Plan	   *subplan;
 
-				unionstate = n->unionstate;
-				unionplans = n->unionplans;
-				whichplan = unionstate->as_whichplan;
+				appendstate = n->appendstate;
+				appendplans = n->appendplans;
+				whichplan = appendstate->as_whichplan;
 
-				subplan = (Plan *) nth(whichplan, unionplans);
+				subplan = (Plan *) nth(whichplan, appendplans);
 				slot = NodeGetResultTupleSlot(subplan);
 				break;
 			}

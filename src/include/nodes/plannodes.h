@@ -24,7 +24,7 @@
  * control nodes
  *
  *		Result					ResultState				resstate;
- *		Append					AppendState				unionstate;
+ *		Append					AppendState				appendstate;
  *
  * scan nodes
  *
@@ -138,11 +138,17 @@ typedef struct Result
 typedef struct Append
 {
 	Plan		plan;
-	List	   *unionplans;
-	List	   *unionrts;
-	Index		unionrelid;
-	List	   *unionrtentries;
-	AppendState *unionstate;
+	List	   *appendplans;
+	List	   *unionrtables;	/*
+								 *	List of range tables, one for each
+								 *	union query.
+								 */
+	Index		inheritrelid;	/*
+								 *	The range table has to be changed for
+								 *	inheritance.
+								 */
+	List	   *inheritrtable;
+	AppendState *appendstate;
 } Append;
 
 /*
