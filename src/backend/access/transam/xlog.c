@@ -1015,7 +1015,6 @@ XLogFileOpen(uint32 log, uint32 seg, bool econt)
 				 logId, logSeg);
 			return (fd);
 		}
-		abort();
 		elog(STOP, "open(logfile %u seg %u) failed: %m",
 			 logId, logSeg);
 	}
