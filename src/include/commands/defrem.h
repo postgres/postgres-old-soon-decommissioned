@@ -42,7 +42,7 @@ extern void CreateFunction(ProcedureStmt *stmt);
 extern void RemoveFunction(List *functionName, List *argTypes);
 
 extern void DefineOperator(List *names, List *parameters);
-extern void RemoveOperator(char *operatorName,
+extern void RemoveOperator(List *operatorName,
 						   TypeName *typeName1, TypeName *typeName2);
 
 extern void DefineAggregate(List *names, List *parameters);

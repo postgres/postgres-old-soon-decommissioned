@@ -46,7 +46,7 @@
 #define LANGOID			15
 #define NAMESPACENAME	16
 #define NAMESPACEOID	17
-#define OPERNAME		18
+#define OPERNAMENSP		18
 #define OPEROID			19
 #define PROCNAMENSP		20
 #define PROCOID			21

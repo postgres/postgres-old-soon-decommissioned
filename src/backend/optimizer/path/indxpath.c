@@ -21,6 +21,7 @@
 #include "access/nbtree.h"
 #include "catalog/catname.h"
 #include "catalog/pg_amop.h"
+#include "catalog/pg_namespace.h"
 #include "catalog/pg_operator.h"
 #include "executor/executor.h"
 #include "nodes/makefuncs.h"
@@ -911,7 +912,8 @@ indexable_operator(Expr *clause, Oid opclass, bool indexkey_on_left)
 	 * operator, but in practice that seems pretty unlikely for
 	 * binary-compatible types.)
 	 */
-	new_op = compatible_oper_opid(opname, indexkeytype, indexkeytype, true);
+	new_op = compatible_oper_opid(makeList1(makeString(opname)),
+								  indexkeytype, indexkeytype, true);
 
 	if (OidIsValid(new_op))
 	{
@@ -2143,14 +2145,15 @@ network_prefix_quals(Var *leftop, Oid expr_op, Datum rightop)
  */
 
 /* See if there is a binary op of the given name for the given datatype */
+/* NB: we assume that only built-in system operators are searched for */
 static Oid
 find_operator(const char *opname, Oid datatype)
 {
-	return GetSysCacheOid(OPERNAME,
+	return GetSysCacheOid(OPERNAMENSP,
 						  PointerGetDatum(opname),
 						  ObjectIdGetDatum(datatype),
 						  ObjectIdGetDatum(datatype),
-						  CharGetDatum('b'));
+						  ObjectIdGetDatum(PG_CATALOG_NAMESPACE));
 }
 
 /*

@@ -1460,11 +1460,13 @@ transformFKConstraints(ParseState *pstate, CreateStmtContext *cxt)
 		{
 			/*
 			 * fktypoid[i] is the foreign key table's i'th element's type
-			 * oid pktypoid[i] is the primary key table's i'th element's
-			 * type oid We let oper() do our work for us, including
-			 * elog(ERROR) if the types don't compare with =
+			 * pktypoid[i] is the primary key table's i'th element's type
+			 *
+			 * We let oper() do our work for us, including elog(ERROR) if
+			 * the types don't compare with =
 			 */
-			Operator	o = oper("=", fktypoid[i], pktypoid[i], false);
+			Operator	o = oper(makeList1(makeString("=")),
+								 fktypoid[i], pktypoid[i], false);
 
 			ReleaseSysCache(o);
 		}

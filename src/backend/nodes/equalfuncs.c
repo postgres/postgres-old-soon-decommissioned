@@ -969,7 +969,7 @@ _equalRemoveFuncStmt(RemoveFuncStmt *a, RemoveFuncStmt *b)
 static bool
 _equalRemoveOperStmt(RemoveOperStmt *a, RemoveOperStmt *b)
 {
-	if (!equalstr(a->opname, b->opname))
+	if (!equal(a->opname, b->opname))
 		return false;
 	if (!equal(a->args, b->args))
 		return false;
@@ -1400,7 +1400,7 @@ _equalAExpr(A_Expr *a, A_Expr *b)
 {
 	if (a->oper != b->oper)
 		return false;
-	if (!equalstr(a->opname, b->opname))
+	if (!equal(a->name, b->name))
 		return false;
 	if (!equal(a->lexpr, b->lexpr))
 		return false;
@@ -1520,7 +1520,7 @@ _equalTypeCast(TypeCast *a, TypeCast *b)
 static bool
 _equalSortGroupBy(SortGroupBy *a, SortGroupBy *b)
 {
-	if (!equalstr(a->useOp, b->useOp))
+	if (!equal(a->useOp, b->useOp))
 		return false;
 	if (!equal(a->node, b->node))
 		return false;

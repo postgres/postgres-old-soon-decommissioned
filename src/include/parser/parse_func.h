@@ -28,16 +28,6 @@ typedef struct _InhPaths
 	Oid		   *supervec;		/* vector of superclasses */
 } InhPaths;
 
-/*
- *	This structure holds a list of possible functions or operators that
- *	agree with the known name and argument types of the function/operator.
- */
-typedef struct _CandidateList
-{
-	Oid		   *args;
-	struct _CandidateList *next;
-}	*CandidateList;
-
 /* Result codes for func_get_detail */
 typedef enum
 {

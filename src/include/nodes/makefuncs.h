@@ -16,6 +16,11 @@
 
 #include "nodes/parsenodes.h"
 
+extern A_Expr *makeA_Expr(int oper, List *name, Node *lexpr, Node *rexpr);
+
+extern A_Expr *makeSimpleA_Expr(int oper, const char *name,
+								Node *lexpr, Node *rexpr);
+
 extern Oper *makeOper(Oid opno,
 		 Oid opid,
 		 Oid opresulttype);

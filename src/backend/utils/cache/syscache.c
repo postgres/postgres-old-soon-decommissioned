@@ -273,15 +273,15 @@ static const struct cachedesc cacheinfo[] = {
 			0,
 			0
 	}},
-	{OperatorRelationName,		/* OPERNAME */
-		OperatorNameIndex,
+	{OperatorRelationName,		/* OPERNAMENSP */
+		OperatorNameNspIndex,
 		0,
 		4,
 		{
 			Anum_pg_operator_oprname,
 			Anum_pg_operator_oprleft,
 			Anum_pg_operator_oprright,
-			Anum_pg_operator_oprkind
+			Anum_pg_operator_oprnamespace
 	}},
 	{OperatorRelationName,		/* OPEROID */
 		OperatorOidIndex,

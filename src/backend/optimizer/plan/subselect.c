@@ -284,9 +284,9 @@ make_subplan(SubLink *slink)
 			 * Note: we use make_operand in case runtime type conversion
 			 * function calls must be inserted for this operator!
 			 */
-			left = make_operand("", lefthand,
+			left = make_operand(lefthand,
 								exprType(lefthand), opform->oprleft);
-			right = make_operand("", (Node *) prm,
+			right = make_operand((Node *) prm,
 								 prm->paramtype, opform->oprright);
 			ReleaseSysCache(tup);
 
@@ -433,9 +433,9 @@ make_subplan(SubLink *slink)
 			 * Note: we use make_operand in case runtime type conversion
 			 * function calls must be inserted for this operator!
 			 */
-			left = make_operand("", lefthand,
+			left = make_operand(lefthand,
 								exprType(lefthand), opform->oprleft);
-			right = make_operand("", (Node *) con,
+			right = make_operand((Node *) con,
 								 con->consttype, opform->oprright);
 			ReleaseSysCache(tup);
 

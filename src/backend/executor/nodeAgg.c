@@ -925,7 +925,8 @@ ExecInitAgg(Agg *node, EState *estate, Plan *parent)
 							&peraggstate->inputtypeLen,
 							&peraggstate->inputtypeByVal);
 
-			eq_function = compatible_oper_funcid("=", inputType, inputType,
+			eq_function = compatible_oper_funcid(makeList1(makeString("=")),
+												 inputType, inputType,
 												 true);
 			if (!OidIsValid(eq_function))
 				elog(ERROR, "Unable to identify an equality operator for type '%s'",

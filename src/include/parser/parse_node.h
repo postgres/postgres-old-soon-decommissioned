@@ -51,9 +51,8 @@ typedef struct ParseState
 } ParseState;
 
 extern ParseState *make_parsestate(ParseState *parentParseState);
-extern Expr *make_op(char *opname, Node *ltree, Node *rtree);
-extern Node *make_operand(char *opname, Node *tree,
-			 Oid orig_typeId, Oid target_typeId);
+extern Expr *make_op(List *opname, Node *ltree, Node *rtree);
+extern Node *make_operand(Node *tree, Oid orig_typeId, Oid target_typeId);
 extern Var *make_var(ParseState *pstate, RangeTblEntry *rte, int attrno);
 extern ArrayRef *transformArraySubscripts(ParseState *pstate,
 						 Node *arrayBase,

@@ -43,6 +43,8 @@ extern Oid	TypenameGetTypid(const char *typname);
 
 extern FuncCandidateList FuncnameGetCandidates(List *names, int nargs);
 
+extern FuncCandidateList OpernameGetCandidates(List *names, char oprkind);
+
 extern Oid	QualifiedNameGetCreationNamespace(List *names, char **objname_p);
 
 extern RangeVar *makeRangeVarFromNameList(List *names);

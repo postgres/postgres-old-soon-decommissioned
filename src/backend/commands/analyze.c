@@ -398,7 +398,7 @@ examine_attribute(Relation onerel, int attnum)
 		return NULL;
 
 	/* If column has no "=" operator, we can't do much of anything */
-	func_operator = compatible_oper("=",
+	func_operator = compatible_oper(makeList1(makeString("=")),
 									attr->atttypid,
 									attr->atttypid,
 									true);
@@ -436,7 +436,7 @@ examine_attribute(Relation onerel, int attnum)
 	stats->eqfunc = eqfunc;
 
 	/* Is there a "<" operator with suitable semantics? */
-	func_operator = compatible_oper("<",
+	func_operator = compatible_oper(makeList1(makeString("<")),
 									attr->atttypid,
 									attr->atttypid,
 									true);

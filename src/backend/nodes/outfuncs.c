@@ -1285,7 +1285,7 @@ _outAExpr(StringInfo str, A_Expr *node)
 			appendStringInfo(str, "NOT ");
 			break;
 		case OP:
-			_outToken(str, node->opname);
+			_outNode(str, node->name);
 			appendStringInfo(str, " ");
 			break;
 		default:

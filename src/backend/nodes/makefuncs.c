@@ -17,6 +17,39 @@
 
 
 /*
+ * makeA_Expr -
+ *		makes an A_Expr node
+ */
+A_Expr *
+makeA_Expr(int oper, List *name, Node *lexpr, Node *rexpr)
+{
+	A_Expr	   *a = makeNode(A_Expr);
+
+	a->oper = oper;
+	a->name = name;
+	a->lexpr = lexpr;
+	a->rexpr = rexpr;
+	return a;
+}
+
+/*
+ * makeSimpleA_Expr -
+ *		As above, given a simple (unqualified) operator name
+ */
+A_Expr *
+makeSimpleA_Expr(int oper, const char *name,
+				 Node *lexpr, Node *rexpr)
+{
+	A_Expr	   *a = makeNode(A_Expr);
+
+	a->oper = oper;
+	a->name = makeList1(makeString((char *) name));
+	a->lexpr = lexpr;
+	a->rexpr = rexpr;
+	return a;
+}
+
+/*
  * makeOper -
  *	  creates an Oper node
  */
