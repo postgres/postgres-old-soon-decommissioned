@@ -57,8 +57,8 @@ int main(int argc, char *argv[])
 			return 1;
 	}
 
-	pthread_create(&thread1, NULL, (void *) func_call_1, NULL);
-	pthread_create(&thread2, NULL, (void *) func_call_2, NULL);
+	pthread_create(&thread1, NULL, (void * (*)(void *)) func_call_1, NULL);
+	pthread_create(&thread2, NULL, (void * (*)(void *)) func_call_2, NULL);
 	pthread_join(thread1, NULL);
 	pthread_join(thread2, NULL);
 
