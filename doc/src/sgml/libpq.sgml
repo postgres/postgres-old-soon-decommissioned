@@ -387,12 +387,6 @@ PostgresPollingStatusType PQconnectPoll(PGconn *conn)
    defined. This restriction may be removed in the future.
   </para>
   <para>
-   PQconnectPoll will currently block under Windows, unless libpq is compiled
-   with WIN32_NON_BLOCKING_CONNECTIONS defined. This code has not yet been
-   tested under Windows, and so it is currently off by default. This may be
-   changed in the future.
-  </para>
-  <para>
    These functions leave the socket in a non-blocking state as if 
    <function>PQsetnonblocking</function> had been called.
   </para>
