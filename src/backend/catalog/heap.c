@@ -47,6 +47,7 @@
 #include "parser/parse_expr.h"
 #include "parser/parse_node.h"
 #include "parser/parse_type.h"
+#include "parser/parse_coerce.h"
 #include "rewrite/rewriteRemove.h"
 #include "storage/bufmgr.h"
 #include "storage/lmgr.h"
@@ -1519,7 +1520,8 @@ start:;
 			goto start;
 		}
 	}
-	else if (exprType(expr) != atp->atttypid)
+	else if ((exprType(expr) != atp->atttypid)
+	 && !IS_BINARY_COMPATIBLE(exprType(expr), atp->atttypid))
 		elog(ERROR, "DEFAULT: type mismatched");
 
 	adbin = nodeToString(expr);
