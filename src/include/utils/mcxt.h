@@ -54,6 +54,7 @@ extern void MemoryContextFree(MemoryContext context, Pointer pointer);
 extern MemoryContext MemoryContextSwitchTo(MemoryContext context);
 extern GlobalMemory CreateGlobalMemory(char *name);
 extern void GlobalMemoryDestroy(GlobalMemory context);
+extern void GlobalMemoryStats(void);
 
 
 #endif	 /* MCXT_H */

@@ -224,6 +224,7 @@ extern AllocPointer AllocSetRealloc(AllocSet set, AllocPointer pointer,
 				Size size);
 
 extern void AllocSetDump(AllocSet set);
+extern void AllocSetStats(AllocSet set, const char *ident);
 
 
 #endif	 /* MEMUTILS_H */

@@ -489,7 +489,7 @@ GlobalMemoryDump(GlobalMemory this)
 	if (PointerIsValid(context))
 		printf("\tsucessor=%s\n", GlobalMemoryGetName(context));
 
-	AllocSetDump(&this->setData);		/* XXX is this right interface */
+	AllocSetDump(&this->setData);
 }
 
 /*
@@ -511,9 +511,26 @@ DumpGlobalMemories()
 	{
 		GlobalMemoryDump(context);
 
-		context = (GlobalMemory) OrderedElemGetSuccessor(
-													 &context->elemData);
+		context = (GlobalMemory) OrderedElemGetSuccessor(&context->elemData);
 	}
 }
 
 #endif
+
+/*
+ * GlobalMemoryStats
+ *		Displays stats about memory consumption of all global contexts.
+ */
+void
+GlobalMemoryStats(void)
+{
+	GlobalMemory context;
+
+	context = (GlobalMemory) OrderedSetGetHead(&ActiveGlobalMemorySetData);
+
+	while (PointerIsValid(context))
+	{
+		AllocSetStats(&context->setData, GlobalMemoryGetName(context));
+		context = (GlobalMemory) OrderedElemGetSuccessor(&context->elemData);
+	}
+}
