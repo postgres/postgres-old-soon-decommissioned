@@ -86,6 +86,11 @@ typedef struct PROC_HDR
 } PROC_HDR;
 
 
+#define	DUMMY_PROC_DEFAULT	0
+#define	DUMMY_PROC_BGWRITER	1
+#define	NUM_DUMMY_PROCS		2
+
+
 /* configurable options */
 extern int	DeadlockTimeout;
 extern int	StatementTimeout;
@@ -97,7 +102,7 @@ extern int	StatementTimeout;
 extern int	ProcGlobalSemas(int maxBackends);
 extern void InitProcGlobal(int maxBackends);
 extern void InitProcess(void);
-extern void InitDummyProcess(void);
+extern void InitDummyProcess(int proctype);
 extern void ProcReleaseLocks(bool isCommit);
 
 extern void ProcQueueInit(PROC_QUEUE *queue);
