@@ -51,7 +51,7 @@ typedef long **BufferBlock;
 
 struct buftag
 {
-	LRelId		relId;
+	LockRelId		relId;
 	BlockNumber blockNum;		/* blknum relative to begin of reln */
 };
 
@@ -65,14 +65,14 @@ struct buftag
 #define INIT_BUFFERTAG(a,xx_reln,xx_blockNum) \
 ( \
 	(a)->blockNum = xx_blockNum, \
-	(a)->relId = RelationGetLRelId(xx_reln) \
+	(a)->relId = RelationGetLockRelId(xx_reln) \
 )
 
 #ifdef NOT_USED
 #define COPY_BUFFERTAG(a,b) \
 ( \
 	(a)->blockNum = (b)->blockNum, \
-	LRelIdAssign(*(a),*(b)) \
+	LockRelIdAssign(*(a),*(b)) \
 )
 
 #define EQUAL_BUFFERTAG(a,b) \

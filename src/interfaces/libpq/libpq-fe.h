@@ -76,8 +76,8 @@ extern		"C"
 	typedef struct pgresAttDesc
 	{
 		char	   *name;		/* type name */
-		Oid			adtid;		/* type id */
-		short		adtsize;	/* type size */
+		Oid			typid;		/* type id */
+		short		typlen;	/* type size */
 		int			atttypmod;	/* type-specific modifier info */
 	} PGresAttDesc;
 

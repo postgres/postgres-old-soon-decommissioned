@@ -85,7 +85,7 @@ SISetActiveProcess(SISeg *segInOutP, BackendId backendId)
 int
 SIBackendInit(SISeg *segInOutP)
 {
-	LRelId		LtCreateRelId();
+	LockRelId		LtCreateRelId();
 	TransactionId LMITransactionIdCopy();
 
 	Assert(MyBackendTag > 0);

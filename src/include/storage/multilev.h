@@ -52,9 +52,9 @@ extern LOCKMETHOD ShortTermTableId;
  * function prototypes
  */
 extern LOCKMETHOD InitMultiLevelLocks(void);
-extern bool MultiLockReln(LockInfo linfo, LOCKMODE lockmode);
-extern bool MultiLockTuple(LockInfo linfo, ItemPointer tidPtr, LOCKMODE lockmode);
-extern bool MultiLockPage(LockInfo linfo, ItemPointer tidPtr, LOCKMODE lockmode);
-extern bool MultiReleaseReln(LockInfo linfo, LOCKMODE lockmode);
+extern bool MultiLockReln(LockInfo lockinfo, LOCKMODE lockmode);
+extern bool MultiLockTuple(LockInfo lockinfo, ItemPointer tidPtr, LOCKMODE lockmode);
+extern bool MultiLockPage(LockInfo lockinfo, ItemPointer tidPtr, LOCKMODE lockmode);
+extern bool MultiReleaseReln(LockInfo lockinfo, LOCKMODE lockmode);
 
 #endif							/* MULTILEV_H */

@@ -49,8 +49,8 @@ typedef struct
 typedef struct TypeBlock
 {
 	char		name[NAMEDATALEN];		/* name of the attribute */
-	int			adtid;			/* adtid of the type */
-	int			adtsize;		/* adtsize of the type */
+	int			typid;			/* typid of the type */
+	int			typlen;		/* typlen of the type */
 } TypeBlock;
 
 /* ----------------

@@ -497,12 +497,12 @@ getRowDescriptions(PGconn *conn)
 	for (i = 0; i < nfields; i++)
 	{
 		char		typName[MAX_MESSAGE_LEN];
-		int			adtid;
+		int			typid;
 		int			typlen;
 		int			atttypmod = -1;
 
 		if (pqGets(typName, MAX_MESSAGE_LEN, conn) ||
-			pqGetInt(&adtid, 4, conn) ||
+			pqGetInt(&typid, 4, conn) ||
 			pqGetInt(&typlen, 2, conn) ||
 			pqGetInt(&atttypmod, 4, conn))
 		{
@@ -510,7 +510,7 @@ getRowDescriptions(PGconn *conn)
 			return EOF;
 		}
 		result->attDescs[i].name = strdup(typName);
-		result->attDescs[i].adtid = adtid;
+		result->attDescs[i].typid = typid;
 		result->attDescs[i].typlen = (short) typlen;
 		result->attDescs[i].atttypmod = atttypmod;
 	}
@@ -1272,7 +1272,7 @@ PQftype(PGresult *res, int field_num)
 		return InvalidOid;
 	}
 	if (res->attDescs)
-		return res->attDescs[field_num].adtid;
+		return res->attDescs[field_num].typid;
 	else
 		return InvalidOid;
 }
