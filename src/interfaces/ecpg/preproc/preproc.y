@@ -4437,7 +4437,7 @@ single_vt_type: common_type
 			/* this is for named structs/unions */
 			char *name;
 			struct typedefs *this;
-			bool forward = (strcmp($1.symbol, forward_name) == 0 && strcmp($1.su, "struct") == 0);
+			bool forward = (forward_name != NULL && strcmp($1.symbol, forward_name) == 0 && strcmp($1.su, "struct") == 0);
 
 			name = cat2_str($1.su, $1.symbol);
 			/* Do we have a forward definition? */
@@ -4791,7 +4791,7 @@ var_type:	common_type
 			/* this is for named structs/unions */
 			char *name;
 			struct typedefs *this;
-			bool forward = (strcmp($1.symbol, forward_name) == 0 && strcmp($1.su, "struct") == 0);
+			bool forward = (forward_name != NULL && strcmp($1.symbol, forward_name) == 0 && strcmp($1.su, "struct") == 0);
 
 			name = cat2_str($1.su, $1.symbol);
 			/* Do we have a forward definition? */
