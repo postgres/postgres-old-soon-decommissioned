@@ -556,10 +556,10 @@ host         all        192.168.0.0    255.255.0.0        ident     omicron
      <attribution>RFC 1413</attribution>
      <para>
       The Identification Protocol is not intended as an authorization
-      or access control protocol.  You must trust the machine running the
-      ident server.
+      or access control protocol.
      </para>
     </blockquote>
+    You must trust the machine running the ident server.
    </para>
 
    <para>
