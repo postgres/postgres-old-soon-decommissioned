@@ -26,6 +26,7 @@
 #include <sys/time.h>
 #endif
 
+
 #if defined(WIN32) && (!defined(ssize_t))
 typedef int ssize_t;			/* ssize_t doesn't exist in VC (atleast
 								 * not VC6) */
@@ -448,7 +449,7 @@ __attribute__((format_arg(1)));
 #define SOCK_STRERROR winsock_strerror
 #else
 #define SOCK_ERRNO errno
-#define SOCK_STRERROR strerror
+#define SOCK_STRERROR pqStrerror
 #endif
 
 #endif   /* LIBPQ_INT_H */
