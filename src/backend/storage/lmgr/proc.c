@@ -322,18 +322,20 @@ GetOffWaitqueue(PROC *proc)
 	if (proc->links.next != INVALID_OFFSET)
 	{
 		int			lockmode = proc->token;
+		LOCK	*waitLock = proc->waitLock;
 
-		Assert(proc->waitLock->waitProcs.size > 0);
+		Assert(waitLock);
+		Assert(waitLock->waitProcs.size > 0);
 		SHMQueueDelete(&(proc->links));
-		--proc->waitLock->waitProcs.size;
-		Assert(proc->waitLock->nHolding > 0);
-		Assert(proc->waitLock->nHolding > proc->waitLock->nActive);
-		--proc->waitLock->nHolding;
-		Assert(proc->waitLock->holders[lockmode] > 0);
-		--proc->waitLock->holders[lockmode];
-		if (proc->waitLock->activeHolders[lockmode] ==
-			proc->waitLock->holders[lockmode])
-			proc->waitLock->waitMask &= ~(1 << lockmode);
+		--waitLock->waitProcs.size;
+		Assert(waitLock->nHolding > 0);
+		Assert(waitLock->nHolding > proc->waitLock->nActive);
+		--waitLock->nHolding;
+		Assert(waitLock->holders[lockmode] > 0);
+		--waitLock->holders[lockmode];
+		if (waitLock->activeHolders[lockmode] == waitLock->holders[lockmode])
+			waitLock->waitMask &= ~(1 << lockmode);
+		ProcLockWakeup(&(waitLock->waitProcs), LOCK_LOCKMETHOD(*waitLock), waitLock);
 		getoffed = true;
 	}
 	SHMQueueElemInit(&(proc->links));
