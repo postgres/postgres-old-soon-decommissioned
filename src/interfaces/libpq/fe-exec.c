@@ -21,7 +21,7 @@
 #include "libpq-fe.h"
 #include <signal.h>
 #include <sys/ioctl.h>
-#include <sys/termios.h>
+#include TERMIOS_H_LOCATION
 
 #ifdef TIOCGWINSZ
 struct winsize screen_size;
