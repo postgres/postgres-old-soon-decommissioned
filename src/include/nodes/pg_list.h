@@ -106,7 +106,10 @@ extern List *set_difference(List *list1, List *list2);
 extern List *set_differencei(List *list1, List *list2);
 extern List *LispUnion(List *list1, List *list2);
 extern List *LispUnioni(List *list1, List *list2);
-extern bool same(List *list1, List *list2);
+
+extern bool sameseti(List *list1, List *list2);
+extern bool nonoverlap_setsi(List *list1, List *list2);
+extern bool is_subseti(List *list1, List *list2);
 
 extern void freeList(List *list);
 

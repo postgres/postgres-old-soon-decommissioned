@@ -100,8 +100,6 @@ extern List *make_rels_by_clause_joins(Query *root, RelOptInfo *old_rel,
 extern List *make_rels_by_clauseless_joins(RelOptInfo *old_rel,
 							  List *inner_rels);
 extern RelOptInfo *get_cheapest_complete_rel(List *join_rel_list);
-extern bool nonoverlap_sets(List *s1, List *s2);
-extern bool is_subset(List *s1, List *s2);
 
 /*
  * prune.c

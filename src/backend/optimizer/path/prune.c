@@ -67,7 +67,7 @@ merge_rel_with_same_relids(RelOptInfo *rel, List *unmerged_rels)
 	{
 		RelOptInfo *unmerged_rel = (RelOptInfo *) lfirst(i);
 
-		if (same(rel->relids, unmerged_rel->relids))
+		if (sameseti(rel->relids, unmerged_rel->relids))
 		{
 			/*
 			 * These rels are for the same set of base relations,

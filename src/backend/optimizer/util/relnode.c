@@ -14,7 +14,6 @@
  */
 #include "postgres.h"
 
-
 #include "optimizer/internal.h"
 #include "optimizer/pathnode.h"
 #include "optimizer/plancat.h"
@@ -97,17 +96,14 @@ get_join_rel(Query *root, Relids relid)
 RelOptInfo *
 rel_member(Relids relids, List *rels)
 {
-	if (relids != NIL && rels != NIL)
+	List	   *temp;
+
+	foreach(temp, rels)
 	{
-		List	   *temp;
+		RelOptInfo *rel = (RelOptInfo *) lfirst(temp);
 
-		foreach(temp, rels)
-		{
-			RelOptInfo *rel = (RelOptInfo *) lfirst(temp);
-
-			if (same(rel->relids, relids))
-				return rel;
-		}
+		if (sameseti(rel->relids, relids))
+			return rel;
 	}
 	return NULL;
 }

@@ -41,7 +41,7 @@ joininfo_member(List *join_relids, List *joininfo_list)
 	{
 		JoinInfo   *joininfo = (JoinInfo *) lfirst(i);
 
-		if (same(join_relids, joininfo->unjoined_relids))
+		if (sameseti(join_relids, joininfo->unjoined_relids))
 			return joininfo;
 	}
 	return NULL;
