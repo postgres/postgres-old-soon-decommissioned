@@ -127,11 +127,10 @@
 #define BITS_PER_BYTE		8
 
 /*
- * Define this if your operating system supports AF_UNIX family
- * sockets.
+ * Disable UNIX sockets for those operating system.
  */
-#if !defined(__QNX__) && !defined(__BEOS__) && !defined(WIN32)
-# define HAVE_UNIX_SOCKETS 1
+#if defined(__QNX__) || defined(__BEOS__) || defined(WIN32)
+# undef HAVE_UNIX_SOCKETS
 #endif
 
 /*

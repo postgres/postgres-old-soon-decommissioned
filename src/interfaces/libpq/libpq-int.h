@@ -263,7 +263,6 @@ struct pg_conn
 	int			sock;			/* Unix FD for socket, -1 if not connected */
 	SockAddr	laddr;			/* Local address */
 	SockAddr	raddr;			/* Remote address */
-	int			raddr_len;		/* Length of remote address */
 	ProtocolVersion pversion;	/* FE/BE protocol version in use */
 	char		sversion[8];	/* The first few bytes of server version */
 
