@@ -2,7 +2,7 @@
 LDFLAGS+= -g
 DLLTOOL= dlltool
 DLLWRAP= dllwrap
-DLLLIBS=-L/usr/local/lib -L$(libdir) -L$(top_builddir)/src/backend -lpostgres -lcygipc -lcygwin -lcrypt -lkernel32
+DLLLIBS=-L/usr/local/lib -L$(top_builddir)/src/backend -lpostgres -lcygipc -lcygwin -lcrypt -lkernel32
 MK_NO_LORDER=true
 MAKE_DLL=true
 #MAKE_DLL=false
