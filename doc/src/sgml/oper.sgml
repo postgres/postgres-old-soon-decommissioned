@@ -382,6 +382,16 @@ logical union
 	<ENTRY>'bruce' !~~ '%al%'</ENTRY>
        </ROW>
        <ROW>
+	<ENTRY> ~~* </ENTRY>
+	<ENTRY>ILIKE</ENTRY>
+	<ENTRY>'scrappy,marc,hermit' ~~* '%Scrappy%'</ENTRY>
+       </ROW>
+       <ROW>
+	<ENTRY> !~~* </ENTRY>
+	<ENTRY>NOT ILIKE</ENTRY>
+	<ENTRY>'Bruce' !~~* '%al%'</ENTRY>
+       </ROW>
+       <ROW>
 	<ENTRY> ~ </ENTRY>
 	<ENTRY>Match (regex), case sensitive</ENTRY>
 	<ENTRY>'thomas' ~ '.*thomas.*'</ENTRY>
