@@ -1408,10 +1408,14 @@ SIGHUP_handler(SIGNAL_ARGS)
 {
 	int			save_errno = errno;
 
-	if (Shutdown > SmartShutdown)
-		return;
-	got_SIGHUP = true;
-	SignalChildren(SIGHUP);
+	PG_SETMASK(&BlockSig);
+
+	if (Shutdown <= SmartShutdown)
+	{
+		got_SIGHUP = true;
+		SignalChildren(SIGHUP);
+	}
+
 	errno = save_errno;
 }
 
@@ -1567,13 +1571,10 @@ static void
 reaper(SIGNAL_ARGS)
 {
 	int			save_errno = errno;
-
 #ifdef HAVE_WAITPID
 	int			status;			/* backend exit status */
-
 #else
 	union wait	status;			/* backend exit status */
-
 #endif
 	int			exitstatus;
 	int			pid;			/* process id of dead backend */
