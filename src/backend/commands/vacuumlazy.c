@@ -523,6 +523,8 @@ lazy_vacuum_page(Relation onerel, BlockNumber blkno, Buffer buffer,
 
 	uncnt = PageRepairFragmentation(page, unused);
 
+	/* XLOG stuff */
+	if (!onerel->rd_istemp)
 	{
 		XLogRecPtr	recptr;
 
@@ -531,6 +533,12 @@ lazy_vacuum_page(Relation onerel, BlockNumber blkno, Buffer buffer,
 		PageSetLSN(page, recptr);
 		PageSetSUI(page, ThisStartUpID);
 	}
+	else
+	{
+		/* No XLOG record, but still need to flag that XID exists on disk */
+		MyXactMadeTempRelUpdate = true;
+	}
+
 	END_CRIT_SECTION();
 
 	return tupindex;

@@ -915,7 +915,7 @@ toast_save_datum(Relation rel, Datum value)
 		 */
 		idxres = index_insert(toastidx, t_values, t_nulls,
 							  &(toasttup->t_self),
-							  toastrel, toastidx->rd_uniqueindex);
+							  toastrel, toastidx->rd_index->indisunique);
 		if (idxres == NULL)
 			elog(ERROR, "Failed to insert index entry for TOAST tuple");
 

@@ -691,7 +691,7 @@ ExecInsertIndexTuples(TupleTableSlot *slot,
 							  nullv,	/* info on nulls */
 							  &(heapTuple->t_self),		/* tid of heap tuple */
 							  heapRelation,
-							  relationDescs[i]->rd_uniqueindex && !is_vacuum);
+							  relationDescs[i]->rd_index->indisunique && !is_vacuum);
 
 		/*
 		 * keep track of index inserts for debugging

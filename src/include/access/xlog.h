@@ -182,6 +182,7 @@ extern StartUpID ThisStartUpID; /* current SUI */
 extern bool InRecovery;
 extern XLogRecPtr MyLastRecPtr;
 extern bool MyXactMadeXLogEntry;
+extern bool MyXactMadeTempRelUpdate;
 extern XLogRecPtr ProcLastRecEnd;
 
 /* these variables are GUC parameters related to XLOG */

@@ -149,6 +149,15 @@ typedef struct _bmtrace
 #endif   /* BMTRACE */
 
 
+/* counters in buf_init.c */
+extern long int	ReadBufferCount;
+extern long int	ReadLocalBufferCount;
+extern long int	BufferHitCount;
+extern long int	LocalBufferHitCount;
+extern long int	BufferFlushCount;
+extern long int	LocalBufferFlushCount;
+
+
 /*
  * Bufmgr Interface:
  */
@@ -177,8 +186,6 @@ extern BufferDesc *LocalBufferDescriptors;
 extern BufferDesc *LocalBufferAlloc(Relation reln, BlockNumber blockNum,
 				 bool *foundPtr);
 extern void	WriteLocalBuffer(Buffer buffer, bool release);
-extern int	FlushLocalBuffer(Buffer buffer, bool sync, bool release);
-extern void LocalBufferSync(void);
-extern void ResetLocalBufferPool(void);
+extern void AtEOXact_LocalBuffers(bool isCommit);
 
 #endif   /* BUFMGR_INTERNALS_H */

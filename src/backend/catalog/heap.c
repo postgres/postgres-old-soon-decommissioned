@@ -1919,7 +1919,7 @@ heap_truncate(Oid rid)
 	 * a rel created in the current xact (which would be deleted on abort,
 	 * anyway).
 	 */
-	if (IsTransactionBlock() && !rel->rd_myxactonly)
+	if (IsTransactionBlock() && !rel->rd_isnew)
 		elog(ERROR, "TRUNCATE TABLE cannot run inside a transaction block");
 
 	/*

@@ -152,20 +152,18 @@ extern void	WriteBuffer(Buffer buffer);
 extern void	WriteNoReleaseBuffer(Buffer buffer);
 extern Buffer ReleaseAndReadBuffer(Buffer buffer, Relation relation,
 					 BlockNumber blockNum);
-extern int	FlushBuffer(Buffer buffer, bool sync, bool release);
 
 extern void InitBufferPool(void);
 extern void InitBufferPoolAccess(void);
 extern char *ShowBufferUsage(void);
 extern void ResetBufferUsage(void);
-extern void ResetBufferPool(bool isCommit);
-extern bool BufferPoolCheckLeak(void);
+extern void AtEOXact_Buffers(bool isCommit);
 extern void FlushBufferPool(void);
 extern BlockNumber BufferGetBlockNumber(Buffer buffer);
 extern BlockNumber RelationGetNumberOfBlocks(Relation relation);
 extern int	FlushRelationBuffers(Relation rel, BlockNumber firstDelBlock);
 extern void DropRelationBuffers(Relation rel);
-extern void DropRelFileNodeBuffers(RelFileNode rnode);
+extern void DropRelFileNodeBuffers(RelFileNode rnode, bool istemp);
 extern void DropBuffers(Oid dbid);
 #ifdef NOT_USED
 extern void PrintPinnedBufs(void);

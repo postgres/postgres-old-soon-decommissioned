@@ -61,9 +61,7 @@ extern void RelationIdInvalidateRelationCacheByRelationId(Oid relationId);
 
 extern void RelationCacheInvalidate(void);
 
-extern void RelationPurgeLocalRelation(bool xactComitted);
-
-extern void AtEOXactRelationCache(bool commit);
+extern void AtEOXact_RelationCache(bool commit);
 
 /*
  * Routines to help manage rebuilding of relcache init file

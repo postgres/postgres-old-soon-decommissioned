@@ -121,7 +121,7 @@ CatalogIndexInsert(CatalogIndexState indstate, HeapTuple heapTuple)
 							  nullv,	/* info on nulls */
 							  &(heapTuple->t_self),		/* tid of heap tuple */
 							  heapRelation,
-							  relationDescs[i]->rd_uniqueindex);
+							  relationDescs[i]->rd_index->indisunique);
 
 		if (result)
 			pfree(result);

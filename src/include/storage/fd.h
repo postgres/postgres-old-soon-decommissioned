@@ -62,8 +62,6 @@ extern int	FileRead(File file, char *buffer, int amount);
 extern int	FileWrite(File file, char *buffer, int amount);
 extern long FileSeek(File file, long offset, int whence);
 extern int	FileTruncate(File file, long offset);
-extern int	FileSync(File file);
-extern void FileMarkDirty(File file);
 
 /* Operations that allow use of regular stdio --- USE WITH CAUTION */
 extern FILE *AllocateFile(char *name, char *mode);

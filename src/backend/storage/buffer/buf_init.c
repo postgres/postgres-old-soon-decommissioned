@@ -258,7 +258,7 @@ ShutdownBufferPoolAccess(void)
 	/* Release any buffer context locks we are holding */
 	UnlockBuffers();
 	/* Release any buffer reference counts we are holding */
-	ResetBufferPool(false);
+	AtEOXact_Buffers(false);
 }
 
 /* -----------------------------------------------------
