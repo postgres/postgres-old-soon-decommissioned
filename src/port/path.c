@@ -106,6 +106,7 @@ canonicalize_path(char *path)
 		if (*p == '\\')
 			*p = '/';
 	}
+
 	/*	In Win32, if you do:
 	 *		prog.exe "a b" "\c\d\"
 	 *	the system will pass \c\d" as argv[2].
