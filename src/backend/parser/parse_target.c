@@ -575,28 +575,30 @@ printf("transformTargetList: decode T_Ident\n");
 							lnext(tail_p_target) = ExpandAllTables(pstate);
 						expand_star = true;
 					}
-
-					/*
-					 * Target item is relation.*, expand the table (eg.
-					 * SELECT emp.*, dname FROM emp, dept)
-					 */
-					attrname = strVal(lfirst(att->attrs));
-					if (att->attrs != NIL && !strcmp(attrname, "*"))
+					else
 					{
-
 						/*
-						 * tail_p_target is the target list we're building
-						 * in the while loop. Make sure we fix it after
-						 * appending more nodes.
+						 * Target item is relation.*, expand the table (eg.
+						 * SELECT emp.*, dname FROM emp, dept)
 						 */
-						if (tail_p_target == NIL)
-							p_target = tail_p_target = expandAll(pstate, att->relname,
-									att->relname, &pstate->p_last_resno);
-						else
-							lnext(tail_p_target) =
-								expandAll(pstate, att->relname, att->relname,
-										  &pstate->p_last_resno);
-						expand_star = true;
+						attrname = strVal(lfirst(att->attrs));
+						if (att->attrs != NIL && !strcmp(attrname, "*"))
+						{
+	
+							/*
+							 * tail_p_target is the target list we're building
+							 * in the while loop. Make sure we fix it after
+							 * appending more nodes.
+							 */
+							if (tail_p_target == NIL)
+								p_target = tail_p_target = expandAll(pstate, att->relname,
+										att->relname, &pstate->p_last_resno);
+							else
+								lnext(tail_p_target) =
+									expandAll(pstate, att->relname, att->relname,
+											  &pstate->p_last_resno);
+							expand_star = true;
+						}
 					}
 					if (expand_star)
 					{
