@@ -35,10 +35,12 @@ BINDIR=$CHKDIR/bin
 LOGDIR=$CHKDIR/log
 TIMDIR=$CHKDIR/timestamp
 PGPORT=65432
+PGLIB=$LIBDIR
 PMPID=
 
 export CHKDIR
 export PGDATA
+export PGLIB
 export LOGDIR
 export TIMDIR
 export PGPORT
