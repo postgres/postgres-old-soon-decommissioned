@@ -169,6 +169,7 @@ main(int argc, char *const argv[])
 					/* system_includes = true; */
 					add_preprocessor_define("dec_t=Numeric");
 					add_preprocessor_define("intrvl_t=Interval");
+					add_preprocessor_define("dtime_t=Timestamp");
 				}
 				else
 				{
