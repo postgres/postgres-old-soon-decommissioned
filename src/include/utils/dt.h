@@ -258,8 +258,8 @@ extern int	datetime_is_epoch(double j);
 #endif
 #define TIMESPAN_NOT_FINITE(j)	TIMESPAN_IS_INVALID(j)
 
-#define TIME_PREC 1e-6
-#define JROUND(j) (rint(((double) (j))/TIME_PREC)*TIME_PREC)
+#define TIME_PREC_INV 1000000.0
+#define JROUND(j) (rint(((double) (j))*TIME_PREC_INV)/TIME_PREC_INV)
 
 /*
  * dt.c prototypes
