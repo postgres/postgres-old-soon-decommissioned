@@ -51,6 +51,8 @@ bool		IsUnderPostmaster = false;
 int			MaxBackends = 32;
 int			NBuffers = 64;
 
+char	   *DataDir = ".";
+
 #ifndef assert_enabled
 bool		assert_enabled = true;
 #endif
@@ -129,6 +131,11 @@ ExceptionalCondition(char *conditionName,
 }
 
 
+int
+errcode_for_file_access(void)
+{
+	return 0;
+}
 
 bool
 errstart(int elevel, const char *filename, int lineno,
@@ -141,6 +148,11 @@ void
 errfinish(int dummy,...)
 {
 	proc_exit(1);
+}
+
+void
+elog_start(const char *filename, int lineno, const char *funcname)
+{
 }
 
 void
