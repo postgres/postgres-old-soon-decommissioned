@@ -2468,7 +2468,7 @@ _copyAlterUserSetStmt(AlterUserSetStmt *from)
 	if (from->user)
 		newnode->user = pstrdup(from->user);
 	if (from->variable)
-		newnode->user = pstrdup(from->variable);
+		newnode->variable = pstrdup(from->variable);
 	Node_Copy(from, newnode, value);
 
 	return newnode;
