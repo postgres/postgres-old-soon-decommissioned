@@ -232,7 +232,7 @@ success:						\n\
 static void
 tas_dummy()
 {
-	__asm__		_volatile__(
+	__asm__		__volatile__(
 										"\
 .global	tas						\n\
 tas:							\n\
