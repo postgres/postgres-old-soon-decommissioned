@@ -764,6 +764,7 @@ struct encoding_match encoding_match_list[] = {
 	{PG_LATIN10, "ISO8859-16"},
 	{PG_LATIN10, "iso885916"},
 
+	{PG_WIN1252, "CP1252"},
 	{PG_WIN1256, "CP1256"},
 	{PG_WIN1258, "CP1258"},
 #ifdef NOT_VERIFIED

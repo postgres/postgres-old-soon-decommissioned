@@ -738,6 +738,7 @@ pg_wchar_tbl pg_wchar_table[] = {
 	{pg_latin12wchar_with_len, pg_latin1_mblen, pg_latin1_dsplen, 1},	/* 20; PG_WIN874 */
 	{pg_latin12wchar_with_len, pg_latin1_mblen, pg_latin1_dsplen, 1},	/* 21; PG_KOI8 */
 	{pg_latin12wchar_with_len, pg_latin1_mblen, pg_latin1_dsplen, 1},	/* 22; PG_WIN1251 */
+	{pg_latin12wchar_with_len, pg_latin1_mblen, pg_latin1_dsplen, 1},	/* 22; PG_WIN1252 */
 	{pg_latin12wchar_with_len, pg_latin1_mblen, pg_latin1_dsplen, 1},	/* 23; PG_WIN866 */
 	{pg_latin12wchar_with_len, pg_latin1_mblen, pg_latin1_dsplen, 1},	/* 24; ISO-8859-5 */
 	{pg_latin12wchar_with_len, pg_latin1_mblen, pg_latin1_dsplen, 1},	/* 25; ISO-8859-6 */

@@ -17,11 +17,11 @@
 #include "../../Unicode/utf8_to_win874.map"
 #include "../../Unicode/win874_to_utf8.map"
 
-PG_FUNCTION_INFO_V1(utf_to_win874);
-PG_FUNCTION_INFO_V1(win874_to_utf);
+PG_FUNCTION_INFO_V1(utf8_to_win874);
+PG_FUNCTION_INFO_V1(win874_to_utf8);
 
-extern Datum utf_to_win874(PG_FUNCTION_ARGS);
-extern Datum win874_to_utf(PG_FUNCTION_ARGS);
+extern Datum utf8_to_win874(PG_FUNCTION_ARGS);
+extern Datum win874_to_utf8(PG_FUNCTION_ARGS);
 
 /* ----------
  * conv_proc(
@@ -35,7 +35,7 @@ extern Datum win874_to_utf(PG_FUNCTION_ARGS);
  */
 
 Datum
-utf_to_win874(PG_FUNCTION_ARGS)
+utf8_to_win874(PG_FUNCTION_ARGS)
 {
 	unsigned char *src = PG_GETARG_CSTRING(2);
 	unsigned char *dest = PG_GETARG_CSTRING(3);
@@ -52,7 +52,7 @@ utf_to_win874(PG_FUNCTION_ARGS)
 }
 
 Datum
-win874_to_utf(PG_FUNCTION_ARGS)
+win874_to_utf8(PG_FUNCTION_ARGS)
 {
 	unsigned char *src = PG_GETARG_CSTRING(2);
 	unsigned char *dest = PG_GETARG_CSTRING(3);
