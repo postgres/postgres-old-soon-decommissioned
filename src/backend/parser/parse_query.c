@@ -771,6 +771,8 @@ checkTargetTypes(ParseState *pstate, char *target_colname,
     	rte = refnameRangeTableEntry(pstate->p_rtable, refname);
     else {
 	rte = colnameRangeTableEntry(pstate, colname);
+	if ( rte == (RangeTblEntry *) NULL )
+	    elog (WARN, "attribute %s not found", colname);
 	refname = rte->refname;
     }
 
