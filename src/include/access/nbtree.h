@@ -416,7 +416,7 @@ extern Datum btvacuumcleanup(PG_FUNCTION_ARGS);
 /*
  * prototypes for functions in nbtinsert.c
  */
-extern InsertIndexResult _bt_doinsert(Relation rel, BTItem btitem,
+extern void _bt_doinsert(Relation rel, BTItem btitem,
 			 bool index_is_unique, Relation heapRel);
 extern Buffer _bt_getstackbuf(Relation rel, BTStack stack, int access);
 extern void _bt_insert_parent(Relation rel, Buffer buf, Buffer rbuf,

@@ -41,7 +41,7 @@
 /*
  * If an index value is larger than TOAST_INDEX_TARGET, we will try to
  * compress it (we can't move it out-of-line, however).  Note that this
- * number is per-datum, not per-tuple, for simplicity in index_formtuple().
+ * number is per-datum, not per-tuple, for simplicity in index_form_tuple().
  */
 #define TOAST_INDEX_TARGET		(MaxTupleSize / 16)
 

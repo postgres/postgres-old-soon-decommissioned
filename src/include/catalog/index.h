@@ -23,11 +23,11 @@
 
 /* Typedef for callback function for IndexBuildHeapScan */
 typedef void (*IndexBuildCallback) (Relation index,
-												HeapTuple htup,
-												Datum *attdata,
-												char *nulls,
-												bool tupleIsAlive,
-												void *state);
+									HeapTuple htup,
+									Datum *values,
+									bool *isnull,
+									bool tupleIsAlive,
+									void *state);
 
 
 extern Oid index_create(Oid heapRelationId,
@@ -48,8 +48,8 @@ extern IndexInfo *BuildIndexInfo(Relation index);
 extern void FormIndexDatum(IndexInfo *indexInfo,
 			   TupleTableSlot *slot,
 			   EState *estate,
-			   Datum *datum,
-			   char *nullv);
+			   Datum *values,
+			   bool *isnull);
 
 extern void UpdateStats(Oid relid, double reltuples);
 

@@ -68,7 +68,7 @@ heap_compute_data_size(TupleDesc tupleDesc,
  * OLD API with char 'n'/' ' convention for indicating nulls
  * ----------------
  */
-Size
+static Size
 ComputeDataSize(TupleDesc tupleDesc,
 				Datum *values,
 				char *nulls)
@@ -193,7 +193,7 @@ heap_fill_tuple(TupleDesc tupleDesc,
  * OLD API with char 'n'/' ' convention for indicating nulls
  * ----------------
  */
-void
+static void
 DataFill(char *data,
 		 TupleDesc tupleDesc,
 		 Datum *values,

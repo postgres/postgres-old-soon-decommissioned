@@ -266,7 +266,7 @@ extern Datum hash_any(register const unsigned char *k, register int keylen);
 /* private routines */
 
 /* hashinsert.c */
-extern InsertIndexResult _hash_doinsert(Relation rel, HashItem hitem);
+extern void _hash_doinsert(Relation rel, HashItem hitem);
 
 /* hashovfl.c */
 extern Buffer _hash_addovflpage(Relation rel, Buffer metabuf, Buffer buf);

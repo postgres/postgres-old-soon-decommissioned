@@ -180,13 +180,9 @@ extern XLogRecPtr log_heap_move(Relation reln, Buffer oldbuf,
 /* in common/heaptuple.c */
 extern Size heap_compute_data_size(TupleDesc tupleDesc,
 								   Datum *values, bool *isnull);
-extern Size ComputeDataSize(TupleDesc tupleDesc, Datum *values, char *nulls);
 extern void heap_fill_tuple(TupleDesc tupleDesc,
 							Datum *values, bool *isnull,
 							char *data, uint16 *infomask, bits8 *bit);
-extern void DataFill(char *data, TupleDesc tupleDesc,
-		 Datum *values, char *nulls, uint16 *infomask,
-		 bits8 *bit);
 extern bool heap_attisnull(HeapTuple tup, int attnum);
 extern Datum nocachegetattr(HeapTuple tup, int attnum,
 			   TupleDesc att, bool *isnull);
