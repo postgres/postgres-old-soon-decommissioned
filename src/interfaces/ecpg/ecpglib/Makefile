@@ -16,7 +16,7 @@ NAME= ecpg
 SO_MAJOR_VERSION= 4
 SO_MINOR_VERSION= 2
 
-override CPPFLAGS := -I$(top_srcdir)/src/interfaces/ecpg/include \
+override CPPFLAGS := -DFRONTEND -I$(top_srcdir)/src/interfaces/ecpg/include \
 	-I$(libpq_srcdir) -I$(top_builddir)/src/port $(CPPFLAGS)
 override CFLAGS += $(PTHREAD_CFLAGS)
 
