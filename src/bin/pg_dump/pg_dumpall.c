@@ -21,6 +21,7 @@
 #include "strdup.h"
 #endif
 #include <errno.h>
+#include <time.h>
 
 #include "getopt_long.h"
 
