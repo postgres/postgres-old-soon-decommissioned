@@ -1175,13 +1175,13 @@ do_edit(const char *filename_arg, PQExpBuffer query_buf)
 		 *	supplied path unless we use only backslashes, so we do that.
 		 */
 #endif
-		snprintf(fnametmp, sizeof(fnametmp), "%s%spsql.edit.%d", tmpdir,
 #ifndef WIN32
-				"/",
+		snprintf(fnametmp, sizeof(fnametmp), "%s%spsql.edit.%d", tmpdir,
+				"/", (int)getpid());
 #else
-				"",	/* trailing separator already present */
+		snprintf(fnametmp, sizeof(fnametmp), "%s%spsql.edit.%d", tmpdir,
+				"" /* trailing separator already present */, (int)getpid());
 #endif
-				(int)getpid());
 
 		fname = (const char *) fnametmp;
 

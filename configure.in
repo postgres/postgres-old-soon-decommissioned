@@ -1143,6 +1143,7 @@ AC_DEFINE_UNQUOTED(UINT64_FORMAT, $UINT64_FORMAT,
 
 # Now we have checked all the reasons to replace snprintf
 if test $pgac_need_repl_snprintf = yes; then
+  AC_DEFINE(USE_SNPRINTF, 1, [Use replacement snprintf() functions.])
   AC_LIBOBJ(snprintf)
 fi
 

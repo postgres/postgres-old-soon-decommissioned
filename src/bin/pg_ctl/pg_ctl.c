@@ -337,19 +337,23 @@ start_postmaster(void)
 	if (log_file != NULL)
 #ifndef WIN32	/* Cygwin doesn't have START */
 		snprintf(cmd, MAXPGPATH, "%s\"%s\" %s%s < \"%s\" >> \"%s\" 2>&1 &%s",
-#else
-		snprintf(cmd, MAXPGPATH, "%sSTART /B \"\" \"%s\" %s%s < \"%s\" >> \"%s\" 2>&1%s",
-#endif
 				 SYSTEMQUOTE, postgres_path, pgdata_opt, post_opts,
 				 DEVNULL, log_file, SYSTEMQUOTE);
+#else
+		snprintf(cmd, MAXPGPATH, "%sSTART /B \"\" \"%s\" %s%s < \"%s\" >> \"%s\" 2>&1%s",
+				 SYSTEMQUOTE, postgres_path, pgdata_opt, post_opts,
+				 DEVNULL, log_file, SYSTEMQUOTE);
+#endif
 	else
 #ifndef WIN32	/* Cygwin doesn't have START */
 		snprintf(cmd, MAXPGPATH, "%s\"%s\" %s%s < \"%s\" 2>&1 &%s",
-#else
-		snprintf(cmd, MAXPGPATH, "%sSTART /B \"\" \"%s\" %s%s < \"%s\" 2>&1%s",
-#endif
 				 SYSTEMQUOTE, postgres_path, pgdata_opt, post_opts,
 				 DEVNULL, SYSTEMQUOTE);
+#else
+		snprintf(cmd, MAXPGPATH, "%sSTART /B \"\" \"%s\" %s%s < \"%s\" 2>&1%s",
+				 SYSTEMQUOTE, postgres_path, pgdata_opt, post_opts,
+				 DEVNULL, SYSTEMQUOTE);
+#endif
 
 	return system(cmd);
 }

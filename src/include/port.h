@@ -107,6 +107,26 @@ extern int	pg_strncasecmp(const char *s1, const char *s2, size_t n);
 extern unsigned char pg_toupper(unsigned char ch);
 extern unsigned char pg_tolower(unsigned char ch);
 
+#ifdef USE_SNPRINTF
+extern int pg_vsnprintf(char *str, size_t count, const char *fmt, va_list args);
+extern int pg_snprintf(char *str, size_t count, const char *fmt,...)
+/* This extension allows gcc to check the format string */
+__attribute__((format(printf, 3, 4)));
+extern int pg_printf(const char *fmt,...)
+/* This extension allows gcc to check the format string */
+__attribute__((format(printf, 1, 2)));
+
+#ifdef __GNUC__
+#define vsnprintf(...)	pg_vsnprintf(__VA_ARGS__)
+#define snprintf(...)	pg_snprintf(__VA_ARGS__)
+#define printf(...)		pg_printf(__VA_ARGS__)
+#else
+#define vsnprintf		pg_vsnprintf
+#define snprintf		pg_snprintf
+#define printf			pg_printf
+#endif
+#endif
+
 /* Portable prompt handling */
 extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
 
