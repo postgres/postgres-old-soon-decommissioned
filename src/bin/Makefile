@@ -14,7 +14,7 @@
 SRCDIR= ..
 include ../Makefile.global
 
-DIRS = pg_version psql pg_dump pg_passwd \
+DIRS = pg_id pg_version psql pg_dump pg_passwd \
  	scripts initdb initlocation ipcclean \
 	pg_ctl
 

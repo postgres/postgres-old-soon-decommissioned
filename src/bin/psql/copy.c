@@ -423,7 +423,10 @@ handleCopyIn(PGconn *conn, FILE *copystream, const char *prompt)
 			if (firstload)
 			{
 				if (!strcmp(copybuf, "\\."))
+                                {
 					copydone = true;
+                                        break;
+                                }
 				firstload = false;
 			}
 		}
