@@ -766,6 +766,9 @@ heap_endscan(HeapScanDesc scan)
 	 */
 	RelationDecrementReferenceCount(scan->rs_rd);
 
+	if (scan->rs_key)
+		pfree(scan->rs_key);
+
 	pfree(scan);
 }
 
