@@ -411,6 +411,7 @@ static const pgsql_thing_t words_after_create[] = {
 	{"AGGREGATE", NULL, &Query_for_list_of_aggregates},
 	{"CAST", NULL, NULL},		/* Casts have complex structures for
 								 * names, so skip it */
+	/* CREATE CONSTRAINT TRIGGER is not supported here because it is designed to be used only by pg_dump. */
 	{"CONVERSION", "SELECT pg_catalog.quote_ident(conname) FROM pg_catalog.pg_conversion WHERE substring(pg_catalog.quote_ident(conname),1,%d)='%s'"},
 	{"DATABASE", Query_for_list_of_databases},
 	{"DOMAIN", NULL, &Query_for_list_of_domains},
