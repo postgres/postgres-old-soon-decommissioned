@@ -966,9 +966,9 @@ DropGroupStmt: DROP GROUP_P UserId
  *****************************************************************************/
 
 CreateSchemaStmt:  CREATE SCHEMA UserId OptSchemaName AUTHORIZATION UserId OptSchemaEltList
-			{ $$ = cat_str(6, make_str("create scheme"), $3, $4, make_str("authorization"), $6, $7); }
+			{ $$ = cat_str(6, make_str("create schema"), $3, $4, make_str("authorization"), $6, $7); }
 		| CREATE SCHEMA ColId OptSchemaEltList
-			{ $$ = cat_str(3, make_str("create scheme"), $3, $4); }
+			{ $$ = cat_str(3, make_str("create schema"), $3, $4); }
 		;
 
 OptSchemaName: ColId		{ $$ = $1; }
