@@ -41,6 +41,7 @@ extern Const *makeConst(Oid consttype,
 			Datum constvalue,
 			bool constisnull,
 			bool constbyval,
-			bool constisset);
+			bool constisset,
+			bool constiscast);
 
 #endif	/* MAKEFUNC_H */

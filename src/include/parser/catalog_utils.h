@@ -46,6 +46,7 @@ extern Oid funcid_get_rettype(Oid funcid);
 extern bool func_get_detail(char *funcname, int nargs, Oid *oid_array,
 	    Oid *funcid, Oid *rettype, bool *retset, Oid **true_typeids);
 extern Oid typeid_get_retinfunc(Oid type_id);
+extern Oid typeid_get_retoutfunc(Oid type_id);
 extern Oid typeid_get_relid(Oid type_id);
 extern Oid get_typrelid(Type typ);
 extern Oid get_typelem(Oid type_id);

@@ -102,7 +102,8 @@ makeConst(Oid consttype,
 	  Datum constvalue,
 	  bool constisnull,
 	  bool constbyval,
-	  bool constisset)
+	  bool constisset,
+	  bool constiscast)
 {
     Const *cnst = makeNode(Const);
 
@@ -112,6 +113,7 @@ makeConst(Oid consttype,
     cnst->constisnull = constisnull;
     cnst->constbyval = constbyval;
     cnst->constisset = constisset;
+    cnst->constiscast = constiscast;
     return cnst;
 }
 

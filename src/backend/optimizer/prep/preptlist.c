@@ -279,7 +279,8 @@ new_relation_targetlist(Oid relid, Index rt_index, NodeTag node_type)
 				   (typedefault == (struct varlena *)NULL),
 				   /* XXX this is bullshit */
 				   false,
-				   false /* not a set */);
+				   false, /* not a set */
+				   false);
 		 
 		temp3 = MakeTLE (makeResdom(attno,
 					    atttype,

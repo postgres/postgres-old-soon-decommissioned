@@ -175,6 +175,7 @@ typedef struct Const {
     bool		constisnull;
     bool		constbyval;
     bool        	constisset;
+    bool        	constiscast;
 } Const;
 
 /* ----------------

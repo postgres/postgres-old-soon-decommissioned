@@ -1405,6 +1405,26 @@ typeid_get_retinfunc(Oid type_id)
     return(infunc);
 }
 
+/* Given a type id, returns the out-conversion function of the type */
+Oid
+typeid_get_retoutfunc(Oid type_id)
+{
+    HeapTuple       typeTuple;
+    TypeTupleForm   type;
+    Oid             outfunc;
+    typeTuple = SearchSysCacheTuple(TYPOID,
+				    ObjectIdGetDatum(type_id),
+				    0,0,0);
+    if ( !HeapTupleIsValid ( typeTuple ))
+	elog(WARN,
+	     "typeid_get_retoutfunc: Invalid type - oid = %u",
+	     type_id);
+    
+    type = (TypeTupleForm) GETSTRUCT(typeTuple);
+    outfunc = type->typoutput;
+    return(outfunc);
+}
+
 Oid
 typeid_get_relid(Oid type_id)
 {
