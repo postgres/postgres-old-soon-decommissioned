@@ -33,10 +33,10 @@ LOAD '<replaceable class="PARAMETER">filename</replaceable>'
   </para>
 
   <para>
-   The filename is specified in the same way as for shared library
+   The file name is specified in the same way as for shared library
    names in <xref linkend="sql-createfunction" endterm="sql-createfunction-title">; in particular, one
    may rely on a search path and automatic addition of the system's standard
-   shared library filename extension.  See the
+   shared library file name extension.  See the
    <citetitle>Programmer's Guide</citetitle> for more detail.
   </para>
  </refsect1>

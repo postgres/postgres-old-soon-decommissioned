@@ -26,7 +26,7 @@ $Header$
 
  <para>
   <indexterm><primary>PIC</></>
-  Creating shared libraries is generally analoguous to linking
+  Creating shared libraries is generally analogous to linking
   executables:  first the source files are compiled into object files,
   then the object files are linked together.  The object files need to
   be created as <firstterm>position-independent code</firstterm>

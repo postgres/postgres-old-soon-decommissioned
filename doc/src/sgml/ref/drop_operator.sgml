@@ -176,7 +176,7 @@ DROP OPERATOR ^ (int4, int4);
    </programlisting>
   </para>
   <para>
-   Remove left unary negation operator (<literal>! b</literal>) for booleans:
+   Remove left unary negation operator (<literal>! b</literal>) for <type>boolean</type>:
    <programlisting>
 DROP OPERATOR ! (none, bool);
    </programlisting>

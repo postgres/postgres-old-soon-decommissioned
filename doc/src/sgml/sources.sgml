@@ -14,7 +14,7 @@ $Header$
    </para>
 
    <para>
-    For emacs, add the following (or something similar)
+    For Emacs, add the following (or something similar)
     to your <filename>~/.emacs</filename> 
     initialization file:
 

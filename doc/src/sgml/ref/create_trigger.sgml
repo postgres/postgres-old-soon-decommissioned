@@ -232,7 +232,7 @@ CREATE TABLE distributors (
        <listitem>
         <para>
          SQL99 allows you to define aliases for the <quote>old</quote>
-         and <quote>new</quote> rows or tables for use in the definiton
+         and <quote>new</quote> rows or tables for use in the definition
          of the triggered action (e.g., <literal>CREATE TRIGGER ... ON
          tablename REFERENCING OLD ROW AS somename NEW ROW AS
          othername ...</literal>).  Since

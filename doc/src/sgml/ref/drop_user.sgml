@@ -72,7 +72,7 @@ ERROR:  DROP USER: user "<replaceable class="parameter">name</replaceable>" does
        </computeroutput></term>
       <listitem>
        <para>
-	This message occurs if the username is not found.
+	This message occurs if the user name is not found.
        </para>
       </listitem>
      </varlistentry>

@@ -125,7 +125,7 @@ NOTICE PerformPortalClose: portal "<replaceable class="PARAMETER">cursor</replac
    Usage
   </title>
   <para>
-   Close the cursor liahona:
+   Close the cursor <literal>liahona</literal>:
   </para>
   <programlisting>
 CLOSE liahona;

@@ -397,7 +397,7 @@ struct sqlca
        <term><computeroutput>-240 (ECPG_UNKNOWN_DESCRIPTOR): Descriptor %s not found in line %d.</computeroutput></term>
        <listitem>
         <para>
-         The descriptor specified was not foundstatement you are trying to use has not been prepared.
+         The descriptor specified was not found. The statement you are trying to use has not been prepared.
         </para>
        </listitem>
       </varlistentry>
@@ -415,7 +415,7 @@ struct sqlca
        <term><computeroutput>-242 (ECPG_UNKNOWN_DESCRIPTOR_ITEM): Descriptor %s not found in line %d.</computeroutput></term>
        <listitem>
         <para>
-         The descriptor specified was not foundstatement you are trying to use has not been prepared.
+         The descriptor specified was not found. The statement you are trying to use has not been prepared.
         </para>
        </listitem>
       </varlistentry>

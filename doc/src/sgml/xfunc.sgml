@@ -215,7 +215,7 @@ SELECT one();
     <para>
      Notice that we defined a column alias within the function body for the result of the function
      (with  the  name <literal>RESULT</>),  but this column alias is not visible
-     outside the function.  Hence,  the  result  is labelled <literal>one</>
+     outside the function.  Hence,  the  result  is labeled <literal>one</>
      instead of <literal>RESULT</>.
     </para>
 

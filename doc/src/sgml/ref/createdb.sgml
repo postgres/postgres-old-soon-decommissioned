@@ -238,7 +238,7 @@ PostgreSQL documentation
   <informalexample>
    <para>
     To create the database <literal>demo</literal> using the
-    server on host eden, port 5000, using the
+    server on host <literal>eden</>, port 5000, using the
     <literal>LATIN1</literal> encoding scheme with a look at the
     underlying query:
 <screen>

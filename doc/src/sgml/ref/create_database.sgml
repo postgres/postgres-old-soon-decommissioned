@@ -51,7 +51,7 @@ CREATE DATABASE <replaceable class="PARAMETER">name</replaceable>
       <term><replaceable class="parameter">dbpath</replaceable></term>
       <listitem>
        <para>
-	An alternate filesystem location in which to store the new database,
+	An alternate file-system location in which to store the new database,
 	specified as a string literal;
 	or <literal>DEFAULT</literal> to use the default location.
        </para>

@@ -67,7 +67,7 @@ CREATE CONSTRAINT TRIGGER <replaceable class="parameter">name</replaceable>
       <term><replaceable class="PARAMETER">constraint</replaceable></term>
       <listitem>
        <para>
-	Actual onstraint specification.
+	Actual constraint specification.
        </para>
       </listitem>
      </varlistentry>

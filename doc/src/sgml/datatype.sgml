@@ -978,7 +978,7 @@ SELECT b, char_length(b) FROM test2;
      </thead>
      <tbody>
       <row>
-       <entry>bytea</entry>
+       <entry><type>bytea</type></entry>
        <entry>4 bytes plus the actual binary string</entry>
        <entry>Variable (not specifically limited)
               length binary string</entry>

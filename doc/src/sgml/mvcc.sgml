@@ -3,7 +3,7 @@ $Header$
 -->
 
  <chapter id="mvcc">
-  <title>Multi-Version Concurrency Control</title>
+  <title>Multiversion Concurrency Control</title>
 
   <indexterm>
    <primary>concurrency</primary>
@@ -11,10 +11,10 @@ $Header$
 
   <abstract>
    <para>
-    Multi-Version Concurrency Control
+    Multiversion Concurrency Control
     (MVCC)
     is an advanced technique for improving database performance in a
-    multi-user environment. 
+    multiuser environment. 
     Vadim Mikheev (<email>vadim@krs.ru</email>) provided
     the implementation for <productname>PostgreSQL</productname>.
    </para>

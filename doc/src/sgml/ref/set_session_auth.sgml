@@ -25,7 +25,7 @@ SET SESSION AUTHORIZATION '<parameter>username</parameter>'
 
   <para>
    This command sets the session user identifier and the current user
-   identifer of the current SQL-session context to be
+   identifier of the current SQL-session context to be
    <parameter>username</parameter>.
   </para>
 
@@ -34,7 +34,7 @@ SET SESSION AUTHORIZATION '<parameter>username</parameter>'
    authenticated) user name provided by the client.  The current user
    identifier is normally equal to the session user identifier, but
    may change temporarily in the context of <quote>setuid</quote>
-   functions and similar mechanisms.  The current user identifer is
+   functions and similar mechanisms.  The current user identifier is
    relevant for permission checking.
   </para>
 

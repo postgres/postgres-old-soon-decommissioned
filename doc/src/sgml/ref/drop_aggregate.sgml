@@ -47,7 +47,7 @@ DROP AGGREGATE <replaceable class="PARAMETER">name</replaceable> ( <replaceable 
       <term><replaceable class="parameter">type</replaceable></term>
       <listitem>
        <para>
-	The input datatype of an existing aggregate function,
+	The input data type of an existing aggregate function,
 	or <literal>*</literal> if the function accepts any input type.
 	(Refer to the <citetitle>PostgreSQL User's Guide</citetitle> for
 	further information about data types.)
