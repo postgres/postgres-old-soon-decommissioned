@@ -42,6 +42,23 @@ DROP SEQUENCE <replaceable class="PARAMETER">name</replaceable> [, ...] [ CASCAD
        </para>
       </listitem>
      </varlistentry>
+     <varlistentry>
+      <term>CASCADE</term>
+      <listitem>
+       <para>
+        Automatically drop objects that depend on the sequence.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>RESTRICT</term>
+      <listitem>
+       <para>
+        Refuse to drop the sequence if there are any dependent objects.
+	This is the default.
+       </para>
+      </listitem>
+     </varlistentry>
     </variablelist>
    </para>
   </refsect2>
@@ -73,23 +90,6 @@ ERROR: sequence "<replaceable class="parameter">name</replaceable>" does not exi
       <listitem>
        <para>
 	This message occurs if the specified sequence does not exist.
-       </para>
-      </listitem>
-     </varlistentry>
-     <varlistentry>
-      <term>CASCADE</term>
-      <listitem>
-       <para>
-        Automatically drop objects that depend on the sequence.
-       </para>
-      </listitem>
-     </varlistentry>
-     <varlistentry>
-      <term>RESTRICT</term>
-      <listitem>
-       <para>
-        Refuse to drop the sequence if there are any dependent objects.
-	This is the default.
        </para>
       </listitem>
      </varlistentry>
