@@ -88,12 +88,12 @@ typedef FormData_pg_aggregate *Form_pg_aggregate;
  * ---------------
  */
 
-DATA(insert OID = 0 ( avg	PGUID int4pl   int4inc	 int4div	 23   23   23	23 _null_ 0 ));
-DATA(insert OID = 0 ( avg	PGUID int2pl   int2inc	 int2div	 21   21   21	21 _null_ 0 ));
-DATA(insert OID = 0 ( avg	PGUID float4pl float4inc float4div	700  700  700  700 _null_ 0.0 ));
-DATA(insert OID = 0 ( avg	PGUID float8pl float8inc float8div	701  701  701  701 _null_ 0.0 ));
-DATA(insert OID = 0 ( avg	PGUID cash_pl  float8inc cash_div	790  790  701  790 _null_ 0.0 ));
-DATA(insert OID = 0 ( avg	PGUID timespan_pl  float8inc timespan_div	1186  1186	701  1186 _null_ 0.0 ));
+DATA(insert OID = 0 ( avg	PGUID int4pl      int4inc   int4div         23   23   23   23 _null_ 0 ));
+DATA(insert OID = 0 ( avg	PGUID int2pl      int2inc   int2div         21   21   21   21 _null_ 0 ));
+DATA(insert OID = 0 ( avg	PGUID float4pl    float4inc float4div      700  700  700  700 _null_ 0.0 ));
+DATA(insert OID = 0 ( avg	PGUID float8pl    float8inc float8div      701  701  701  701 _null_ 0.0 ));
+DATA(insert OID = 0 ( avg	PGUID cash_pl     float8inc cash_div_flt8  790  790  701  790 _null_ 0.0 ));
+DATA(insert OID = 0 ( avg	PGUID timespan_pl float8inc timespan_div  1186 1186  701 1186 _null_ 0.0 ));
 
 DATA(insert OID = 0 ( sum	PGUID int4pl		- -   23   23 0   23 _null_ _null_ ));
 DATA(insert OID = 0 ( sum	PGUID int2pl		- -   21   21 0   21 _null_ _null_ ));
