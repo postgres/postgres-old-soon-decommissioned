@@ -15,8 +15,17 @@
  */
 
 #include <postgres.h>
-
 #include <lib/dllist.h>
+
+/* When this file is compiled for inclusion in libpq,
+ * it can't use assert checking.  Probably this fix ought to be
+ * in c.h or somewhere like that...
+ */
+#ifdef FRONTEND
+#undef Assert
+#define Assert(condition)
+#endif
+
 
 Dllist *
 DLNewList(void)
