@@ -143,6 +143,7 @@ main(int argc, char *argv[])
 	/* Default values for variables that are used in noninteractive cases */
 	SetVariableBool(pset.vars, "AUTOCOMMIT");
 	SetVariable(pset.vars, "VERBOSITY", "default");
+	pset.verbosity = PQERRORS_DEFAULT;
 
 	pset.notty = (!isatty(fileno(stdin)) || !isatty(fileno(stdout)));
 

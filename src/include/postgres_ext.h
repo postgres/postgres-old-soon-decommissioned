@@ -59,6 +59,8 @@ typedef unsigned int Oid;
 #define PG_DIAG_MESSAGE_DETAIL	'D'
 #define PG_DIAG_MESSAGE_HINT	'H'
 #define PG_DIAG_STATEMENT_POSITION 'P'
+#define PG_DIAG_INTERNAL_POSITION 'p'
+#define PG_DIAG_INTERNAL_QUERY	'q'
 #define PG_DIAG_CONTEXT			'W'
 #define PG_DIAG_SOURCE_FILE		'F'
 #define PG_DIAG_SOURCE_LINE		'L'

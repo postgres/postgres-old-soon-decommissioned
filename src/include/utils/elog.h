@@ -132,6 +132,12 @@ __attribute__((format(printf, 1, 2)));
 extern int	errfunction(const char *funcname);
 extern int	errposition(int cursorpos);
 
+extern int	internalerrposition(int cursorpos);
+extern int	internalerrquery(const char *query);
+
+extern int	geterrposition(void);
+extern int	getinternalerrposition(void);
+
 
 /*----------
  * Old-style error reporting API: to be used in this way:

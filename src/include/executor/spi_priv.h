@@ -27,11 +27,10 @@ typedef struct
 
 typedef struct
 {
-	/*
-	 * context containing _SPI_plan itself as well as subsidiary
-	 * structures
-	 */
+	/* Context containing _SPI_plan itself as well as subsidiary data */
 	MemoryContext plancxt;
+	/* Original query string (used for error reporting) */
+	const char *query;
 	/* List of List of querytrees; one sublist per original parsetree */
 	List	   *qtlist;
 	/* List of plan trees --- length == # of querytrees, but flat list */

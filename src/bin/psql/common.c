@@ -364,18 +364,19 @@ ReportSyntaxErrorPosition(const PGresult *result, const char *query)
 	bool beg_trunc, end_trunc;
 	PQExpBufferData msg;
 
-	if (query == NULL)
-		return;					/* nothing to do */
+	if (pset.verbosity == PQERRORS_TERSE)
+		return;
+
 	sp = PQresultErrorField(result, PG_DIAG_STATEMENT_POSITION);
 	if (sp == NULL)
-		return;					/* no syntax error location */
-	/*
-	 * We punt if the report contains any CONTEXT.  This typically means that
-	 * the syntax error is from inside a function, and the cursor position
-	 * is not relevant to the original query string.
-	 */
-	if (PQresultErrorField(result, PG_DIAG_CONTEXT) != NULL)
-		return;
+	{
+		sp = PQresultErrorField(result, PG_DIAG_INTERNAL_POSITION);
+		if (sp == NULL)
+			return;				/* no syntax error */
+		query = PQresultErrorField(result, PG_DIAG_INTERNAL_QUERY);
+	}
+	if (query == NULL)
+		return;					/* nothing to reference location to */
 
 	if (sscanf(sp, "%d", &loc) != 1)
 	{

@@ -17,6 +17,9 @@
 #include "utils/portal.h"
 
 
+extern DLLIMPORT Portal ActivePortal;
+
+
 extern void ProcessQuery(Query *parsetree,
 			 Plan *plan,
 			 ParamListInfo params,

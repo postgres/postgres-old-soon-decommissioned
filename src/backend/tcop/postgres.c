@@ -2710,6 +2710,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 		 */
 		MemoryContextSwitchTo(TopMemoryContext);
 		MemoryContextResetAndDeleteChildren(ErrorContext);
+		ActivePortal = NULL;
 		PortalContext = NULL;
 		QueryContext = NULL;
 

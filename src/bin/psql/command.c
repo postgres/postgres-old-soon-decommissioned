@@ -1042,18 +1042,20 @@ SyncVerbosityVariable(void)
 						   "default", "terse", "verbose", NULL))
 	{
 		case 1:			/* default */
-			PQsetErrorVerbosity(pset.db, PQERRORS_DEFAULT);
+			pset.verbosity = PQERRORS_DEFAULT;
 			break;
 		case 2:			/* terse */
-			PQsetErrorVerbosity(pset.db, PQERRORS_TERSE);
+			pset.verbosity = PQERRORS_TERSE;
 			break;
 		case 3:			/* verbose */
-			PQsetErrorVerbosity(pset.db, PQERRORS_VERBOSE);
+			pset.verbosity = PQERRORS_VERBOSE;
 			break;
 		default:				/* not set or unrecognized value */
-			PQsetErrorVerbosity(pset.db, PQERRORS_DEFAULT);
+			pset.verbosity = PQERRORS_DEFAULT;
 			break;
 	}
+
+	PQsetErrorVerbosity(pset.db, pset.verbosity);
 }
 
 

@@ -640,6 +640,16 @@ pqGetErrorNotice3(PGconn *conn, bool isError)
 		/* translator: %s represents a digit string */
 		appendPQExpBuffer(&workBuf, libpq_gettext(" at character %s"), val);
 	}
+	else
+	{
+		val = PQresultErrorField(res, PG_DIAG_INTERNAL_POSITION);
+		if (val)
+		{
+			/* translator: %s represents a digit string */
+			appendPQExpBuffer(&workBuf, libpq_gettext(" at character %s"),
+							  val);
+		}
+	}
 	appendPQExpBufferChar(&workBuf, '\n');
 	if (conn->verbosity != PQERRORS_TERSE)
 	{
@@ -649,6 +659,9 @@ pqGetErrorNotice3(PGconn *conn, bool isError)
 		val = PQresultErrorField(res, PG_DIAG_MESSAGE_HINT);
 		if (val)
 			appendPQExpBuffer(&workBuf, libpq_gettext("HINT:  %s\n"), val);
+		val = PQresultErrorField(res, PG_DIAG_INTERNAL_QUERY);
+		if (val)
+			appendPQExpBuffer(&workBuf, libpq_gettext("QUERY:  %s\n"), val);
 		val = PQresultErrorField(res, PG_DIAG_CONTEXT);
 		if (val)
 			appendPQExpBuffer(&workBuf, libpq_gettext("CONTEXT:  %s\n"), val);

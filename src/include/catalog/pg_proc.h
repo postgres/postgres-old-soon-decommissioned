@@ -3533,4 +3533,6 @@ extern Oid ProcedureCreate(const char *procedureName,
 extern void check_sql_fn_retval(Oid rettype, char fn_typtype,
 					List *queryTreeList);
 
+extern bool function_parse_error_transpose(const char *prosrc);
+
 #endif   /* PG_PROC_H */

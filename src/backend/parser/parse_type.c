@@ -439,6 +439,12 @@ pts_error_callback(void *arg)
 	const char *str = (const char *) arg;
 
 	errcontext("invalid type name \"%s\"", str);
+	/*
+	 * Currently we just suppress any syntax error position report,
+	 * rather than transforming to an "internal query" error.  It's
+	 * unlikely that a type name is complex enough to need positioning.
+	 */
+	errposition(0);
 }
 
 /*

@@ -270,6 +270,7 @@ void
 PersistHoldablePortal(Portal portal)
 {
 	QueryDesc  *queryDesc = PortalGetQueryDesc(portal);
+	Portal		saveActivePortal;
 	MemoryContext savePortalContext;
 	MemoryContext saveQueryContext;
 	MemoryContext oldcxt;
@@ -311,6 +312,8 @@ PersistHoldablePortal(Portal portal)
 	/*
 	 * Set global portal context pointers.
 	 */
+	saveActivePortal = ActivePortal;
+	ActivePortal = portal;
 	savePortalContext = PortalContext;
 	PortalContext = PortalGetHeapMemory(portal);
 	saveQueryContext = QueryContext;
@@ -342,6 +345,7 @@ PersistHoldablePortal(Portal portal)
 	/* Mark portal not active */
 	portal->portalActive = false;
 
+	ActivePortal = saveActivePortal;
 	PortalContext = savePortalContext;
 	QueryContext = saveQueryContext;
 
