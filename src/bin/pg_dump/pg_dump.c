@@ -59,6 +59,7 @@
 #include "postgres.h"
 #include "access/htup.h"
 #include "catalog/pg_type.h"
+#include "catalog/pg_language.h"
 #include "catalog/pg_index.h"
 #include "libpq-fe.h"
 #ifndef HAVE_STRDUP
@@ -1238,7 +1239,7 @@ getFuncs(int *numFuncs)
 		finfo[i].prorettype = strdup(PQgetvalue(res, i, i_prorettype));
 		finfo[i].retset = (strcmp(PQgetvalue(res, i, i_proretset), "t") == 0);
 		finfo[i].nargs = atoi(PQgetvalue(res, i, i_pronargs));
-		finfo[i].lang = (atoi(PQgetvalue(res, i, i_prolang)) == C_PROLANG_OID);
+		finfo[i].lang = atoi(PQgetvalue(res, i, i_prolang));
 
 		finfo[i].usename = strdup(PQgetvalue(res, i, i_usename));
 
@@ -1717,8 +1718,12 @@ dumpOneFunc(FILE *fout, FuncInfo *finfo, int i,
 			q,
 			(finfo[i].retset) ? " SETOF " : "",
 			findTypeByOid(tinfo, numTypes, finfo[i].prorettype),
-			(finfo[i].lang) ? finfo[i].probin : finfo[i].prosrc,
-			(finfo[i].lang) ? "C" : "SQL");
+			(finfo[i].lang == INTERNALlanguageId) ? finfo[i].prosrc :
+				(finfo[i].lang == ClanguageId) ? finfo[i].probin :
+					(finfo[i].lang == SQLlanguageId) ? finfo[i].prosrc : "unknown");
+			(finfo[i].lang == INTERNALlanguageId) ? "INTERNAL" :
+				(finfo[i].lang == ClanguageId) ? "C" :
+					(finfo[i].lang == SQLlanguageId) ? "SQL" : "unknown");
 
 	fputs(q, fout);
 
