@@ -227,7 +227,11 @@ _hash_first(IndexScanDesc scan, ScanDirection dir)
 	     * tuples from all buckets.	- vadim 04/29/97
 	     */
 	    if ( scan->numberOfKeys >= 1 )
+	    {
+	    	_hash_relbuf(rel, buf, HASH_READ);
+	    	_hash_relbuf(rel, metabuf, HASH_READ);
 	    	return ((RetrieveIndexResult) NULL);
+	    }
 	}
     }
     if (ScanDirectionIsBackward(dir)) {
