@@ -40,9 +40,6 @@
  * ----------------
  */
 
-extern Datum nocachegetattr(HeapTuple tup, int attnum,
-			   TupleDesc att, bool *isnull);
-
 #if !defined(DISABLE_COMPLEX_MACRO)
 
 #define fastgetattr(tup, attnum, tupleDesc, isnull)					\
@@ -114,9 +111,6 @@ extern Datum fastgetattr(HeapTuple tup, int attnum, TupleDesc tupleDesc,
 			heap_getsysattr((tup), (attnum), (tupleDesc), (isnull)) \
 	) \
 )
-
-extern Datum heap_getsysattr(HeapTuple tup, int attnum, TupleDesc tupleDesc,
-				bool *isnull);
 
 
 /* ----------------
@@ -191,6 +185,8 @@ extern void DataFill(char *data, TupleDesc tupleDesc,
 extern int	heap_attisnull(HeapTuple tup, int attnum);
 extern Datum nocachegetattr(HeapTuple tup, int attnum,
 			   TupleDesc att, bool *isnull);
+extern Datum heap_getsysattr(HeapTuple tup, int attnum, TupleDesc tupleDesc,
+				bool *isnull);
 extern HeapTuple heap_copytuple(HeapTuple tuple);
 extern void heap_copytuple_with_tuple(HeapTuple src, HeapTuple dest);
 extern HeapTuple heap_formtuple(TupleDesc tupleDescriptor,
