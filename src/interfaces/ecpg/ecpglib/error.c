@@ -164,10 +164,10 @@ ECPGraise_backend(int line, PGresult *result, PGconn *conn, int compat)
 
 	if (result)
 	{
-		sqlstate = PQresultErrorField(result, 'C');
+		sqlstate = PQresultErrorField(result, PG_DIAG_SQLSTATE);
 		if (sqlstate == NULL)
 			sqlstate = ECPG_SQLSTATE_ECPG_INTERNAL_ERROR;
-		message = PQresultErrorField(result, 'M');
+		message = PQresultErrorField(result, PG_DIAG_MESSAGE_PRIMARY);
 	}
 	else
 	{
