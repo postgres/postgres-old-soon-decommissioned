@@ -47,6 +47,11 @@ typedef char bool;
 #include <fcntl.h>
 #include <errno.h>
 
+/* Test for POSIX.1c 2-arg sigwait() and fail on single-arg version */
+#include <signal.h>
+int sigwait(const sigset_t *set, int *sig);
+
+
 #if !defined(ENABLE_THREAD_SAFETY) && !defined(IN_CONFIGURE)
 int
 main(int argc, char *argv[])
