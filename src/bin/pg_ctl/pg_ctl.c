@@ -262,7 +262,7 @@ start_postmaster(void)
 #ifndef WIN32
 		snprintf(cmd, MAXPGPATH, "%s\"%s\" %s < \"%s\" >> \"%s\" 2>&1 &%s",
 #else
-		snprintf(cmd, MAXPGPATH, "%sSTART /B \"%s\" %s < \"%s\" >> \"%s\" 2>&1%s",
+		snprintf(cmd, MAXPGPATH, "%sSTART /B %s %s < \"%s\" >> \"%s\" 2>&1%s",
 #endif
 				 SYSTEMQUOTE, pgexec, post_opts, DEVNULL, log_file,
 				 SYSTEMQUOTE);
@@ -270,7 +270,7 @@ start_postmaster(void)
 #ifndef WIN32
 		snprintf(cmd, MAXPGPATH, "%s\"%s\" %s < \"%s\" 2>&1 &%s",
 #else
-		snprintf(cmd, MAXPGPATH, "%sSTART /B \"%s\" %s < \"%s\" 2>&1%s",
+		snprintf(cmd, MAXPGPATH, "%sSTART /B %s %s < \"%s\" 2>&1%s",
 #endif
 				 SYSTEMQUOTE, pgexec, post_opts, DEVNULL, SYSTEMQUOTE);
 
