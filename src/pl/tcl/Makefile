@@ -94,6 +94,8 @@ ifeq ($(TCL_SHARED_BUILD), 1)
 
 all: $(INFILES)
 
+pltcl$(DLSUFFIX): pltcl.o
+
 install: all installdirs
 	$(INSTALL_SHLIB) $(DLOBJS) $(DESTDIR)$(libdir)/$(DLOBJS)
 
