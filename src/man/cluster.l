@@ -51,9 +51,10 @@ of a big table will not fit in the cache.
 Another way is to use SELECT ... INTO TABLE temp FROM ...ORDER BY ...
 This uses the PostgreSQL sorting code in ORDER BY to match the index,
 and is much faster for unordered data.  You then drop the old table, use
-ALTER TABLE RENAME to rename 'temp' to the old name, and recreate the
-indexes.  From then on, CLUSTER should be fast because most of the heap
-data has been already ordered.
+ALTER TABLE RENAME to rename 'temp' to the old name, and recreate the b
+bindexes.  The only problem is that oids will not be preserved.  From
+then on, CLUSTER should be fast because most of the heap data has
+already been ordered, and the existing index is used.
 .SH EXAMPLE
 .nf
 /*
