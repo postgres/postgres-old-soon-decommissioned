@@ -1,12 +1,17 @@
 
-/*------
+/* -----------------------------------------------------------------------
  * pg_locale.c
  *
- *	The PostgreSQL locale utils.
+ * $Header$
  *
- *	2000 Karel Zak - Zakkr
  *
- *------
+ *   Portions Copyright (c) 1999-2000, PostgreSQL, Inc
+ *
+ *   The PostgreSQL locale utils.
+ *
+ *	Karel Zak - Zakkr
+ *
+ * -----------------------------------------------------------------------
  */
  
 #include <stdio.h>
