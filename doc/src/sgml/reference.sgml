@@ -69,6 +69,7 @@ PostgreSQL Reference Manual
    &createLanguage;
    &createOperator;
    &createRule;
+   &createSchema;
    &createSequence;
    &createTable;
    &createTableAs;
