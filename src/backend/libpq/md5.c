@@ -19,6 +19,14 @@
 
 #include "libpq/crypt.h"
 
+#ifdef FRONTEND
+#undef palloc
+#define palloc malloc
+#undef pfree
+#define pfree free
+#endif
+
+
 /*
  *	PRIVATE FUNCTIONS
  */
@@ -289,15 +297,19 @@ md5_hash(const void *buff, size_t len, char *hexsum)
 bool EncryptMD5(const char *passwd, const char *salt, size_t salt_len,
 				char *buf)
 {
-	char crypt_buf[128];
-
-	if (salt_len + strlen(passwd) > 127)
-		return false;
-
+	char *crypt_buf = palloc(strlen(passwd) + salt_len);
+	bool ret;
+	
 	strcpy(buf, "md5");
-	memset(crypt_buf, 0, 128);
-	memcpy(crypt_buf, salt, salt_len);
-	memcpy(crypt_buf+salt_len, passwd, strlen(passwd));
+	/*
+	 *	Place salt at the end because it may be known by users
+	 *	trying to crack the MD5 output.
+	 */	
+	strcpy(crypt_buf, passwd);
+	memcpy(crypt_buf+strlen(passwd), salt, salt_len);
 
-	return md5_hash(crypt_buf, salt_len + strlen(passwd), buf + 3);
+	ret = md5_hash(crypt_buf, strlen(passwd) + salt_len, buf + 3);
+	pfree(crypt_buf);
+
+	return ret;
 }
