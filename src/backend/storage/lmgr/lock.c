@@ -241,7 +241,7 @@ LockMethodTableInit(const char *tabName,
 
 	/* Compute init/max size to request for lock hashtables */
 	max_table_size = NLOCKENTS(maxBackends);
-	init_table_size = max_table_size / 10;
+	init_table_size = max_table_size / 2;
 
 	/* Allocate a string for the shmem index table lookups. */
 	/* This is just temp space in this routine, so palloc is OK. */

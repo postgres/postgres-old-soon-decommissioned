@@ -135,7 +135,7 @@ typedef struct HASHCTL
 #define HASH_FFACTOR	0x008	/* Set fill factor */
 #define HASH_FUNCTION	0x010	/* Set user defined hash function */
 #define HASH_ELEM		0x020	/* Set key/entry size */
-#define HASH_SHARED_MEM 0x040	/* Set shared mem const */
+#define HASH_SHARED_MEM 0x040	/* Hashtable is in shared memory */
 #define HASH_ATTACH		0x080	/* Do not initialize hctl */
 #define HASH_ALLOC		0x100	/* Set memory allocator */
 #define HASH_CONTEXT	0x200	/* Set explicit memory context */

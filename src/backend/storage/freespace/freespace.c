@@ -283,8 +283,8 @@ InitFreeSpaceMap(void)
 	info.hash = tag_hash;
 
 	FreeSpaceMapRelHash = ShmemInitHash("Free Space Map Hash",
-										MaxFSMRelations / 10,
-										MaxFSMRelations,
+										MaxFSMRelations + 1,
+										MaxFSMRelations + 1,
 										&info,
 										(HASH_ELEM | HASH_FUNCTION));
 

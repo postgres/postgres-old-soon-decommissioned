@@ -73,8 +73,8 @@ extern void *ShmemInitStruct(const char *name, Size size, bool *foundPtr);
 /* size constants for the shmem index table */
  /* max size of data structure string name */
 #define SHMEM_INDEX_KEYSIZE		 (48)
- /* maximum size of the shmem index table */
-#define SHMEM_INDEX_SIZE		 (100)
+ /* max size of the shmem index table (not a hard limit) */
+#define SHMEM_INDEX_SIZE		 (32)
 
 /* this is a hash bucket in the shmem index table */
 typedef struct
