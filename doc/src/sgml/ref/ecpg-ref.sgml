@@ -224,7 +224,7 @@ EXEC SQL END DECLARE SECTION;
       on a separate line.  As of version 2.1.0 multiple variables may
       be declared on a single line:
       <programlisting>
-char  foo(16), bar(16);
+char  foo[16], bar[16];
       </programlisting>
      </para>
     </note>
