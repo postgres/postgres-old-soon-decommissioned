@@ -667,7 +667,7 @@ IndexStmt:  CREATE INDEX index_name ON relation_name
 		    n->relname = $5;
 		    n->accessMethod = $6;
 		    n->indexParams = $8;
-		    n->withClause = $11;
+		    n->withClause = $10;
 		    n->whereClause = NULL;
 		    $$ = (Node *)n;
 		}
