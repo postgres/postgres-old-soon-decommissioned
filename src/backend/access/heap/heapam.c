@@ -483,7 +483,7 @@ conditional_relation_open(Oid relationId, LOCKMODE lockmode, bool nowait)
 		if (nowait)
 		{
 			if (!ConditionalLockRelation(r, lockmode))
-				elog(ERROR, "could not aquire relation lock");
+				elog(ERROR, "could not acquire relation lock");
 		}
 		else
 			LockRelation(r, lockmode);
