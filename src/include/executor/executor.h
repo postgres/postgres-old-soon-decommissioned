@@ -74,9 +74,9 @@ extern void ExecEndNode(Plan *node, Plan *parent);
  */
 extern Datum ExecEvalParam(Param *expression, ExprContext *econtext,
 			  bool *isNull);
-extern char *GetAttributeByNum(TupleTableSlot *slot, AttrNumber attrno,
-				  bool *isNull);
-extern char *GetAttributeByName(TupleTableSlot *slot, char *attname,
+extern Datum GetAttributeByNum(TupleTableSlot *slot, AttrNumber attrno,
+							   bool *isNull);
+extern Datum GetAttributeByName(TupleTableSlot *slot, char *attname,
 								bool *isNull);
 extern Datum ExecMakeFunctionResult(FunctionCachePtr fcache,
 									List *arguments,

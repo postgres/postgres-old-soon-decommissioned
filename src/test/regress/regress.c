@@ -187,9 +187,9 @@ overpaid(PG_FUNCTION_ARGS)
 {
 	TUPLE		tuple = (TUPLE) PG_GETARG_POINTER(0);
 	bool		isnull;
-	long		salary;
+	int32		salary;
 
-	salary = (long) GetAttributeByName(tuple, "salary", &isnull);
+	salary = DatumGetInt32(GetAttributeByName(tuple, "salary", &isnull));
 	if (isnull)
 		PG_RETURN_NULL();
 	PG_RETURN_BOOL(salary > 699);
