@@ -223,7 +223,7 @@ help(const char *progname)
 	printf(_("  --help                    show this help, then exit\n"));
 	printf(_("  --version                 output version information, then exit\n"));
 	printf(_("\nConnection options:\n"));
-	printf(_("  -h, --host=HOSTNAME       database server host\n"));
+	printf(_("  -h, --host=HOSTNAME       database server host or socket directory\n"));
 	printf(_("  -p, --port=PORT           database server port\n"));
 	printf(_("  -U, --username=USERNAME   user name to connect as\n"));
 	printf(_("  -W, --password            prompt for password\n"));

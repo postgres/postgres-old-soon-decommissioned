@@ -123,7 +123,7 @@ if [ "$usage" ]; then
 	echo "  --help                    show this help, then exit"
 	echo
 	echo "Connection options:"
-	echo "  -h, --host=HOSTNAME       database server host"
+	echo "  -h, --host=HOSTNAME       database server host or socket directory"
 	echo "  -p, --port=PORT           database server port"
 	echo "  -U, --username=USERNAME   user name to connect as"
 	echo "  -W, --password            prompt for password"

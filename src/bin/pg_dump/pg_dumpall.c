@@ -253,7 +253,7 @@ help(void)
 	printf(_("  --version                output version information, then exit\n"));
 
 	printf(_("\nConnection options:\n"));
-	printf(_("  -h, --host=HOSTNAME      database server host name\n"));
+	printf(_("  -h, --host=HOSTNAME      database server host or socket directory\n"));
 	printf(_("  -p, --port=PORT          database server port number\n"));
 	printf(_("  -U, --username=NAME      connect as specified database user\n"));
 	printf(_("  -W, --password           force password prompt (should happen automatically)\n"));

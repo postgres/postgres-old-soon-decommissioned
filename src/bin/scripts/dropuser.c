@@ -143,10 +143,10 @@ help(const char *progname)
 	printf(_("Usage:\n"));
 	printf(_("  %s [OPTION]... [USERNAME]\n"), progname);
 	printf(_("\nOptions:\n"));
-    printf(_("  -e, --echo                show the commands being sent to the server\n"));
+	printf(_("  -e, --echo                show the commands being sent to the server\n"));
 	printf(_("  -i, --interactive         prompt before deleting anything\n"));
-    printf(_("  -q, --quiet               don't write any messages\n"));
-	printf(_("  -h, --host=HOSTNAME       database server host\n"));
+	printf(_("  -q, --quiet               don't write any messages\n"));
+	printf(_("  -h, --host=HOSTNAME       database server host or socket directory\n"));
 	printf(_("  -p, --port=PORT           database server port\n"));
 	printf(_("  -U, --username=USERNAME   user name to connect as (not the one to drop)\n"));
 	printf(_("  -W, --password            prompt for password to connect\n"));

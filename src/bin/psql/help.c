@@ -123,7 +123,7 @@ usage(void)
 	puts(_("\nConnection options:"));
 	/* Display default host */
 	env = getenv("PGHOST");
-	printf(_("  -h HOSTNAME     specify database server host (default: %s)\n"),
+	printf(_("  -h HOSTNAME     specify database server host or socket directory (default: %s)\n"),
 		   env ? env : _("local socket"));
 	/* Display default port */
 	env = getenv("PGPORT");
