@@ -375,7 +375,7 @@ REVOKE GRANT OPTION FOR <replaceable class="parameter">privilege</replaceable> [
 
    <para>
     If user1 gives a privilege WITH GRANT OPTION to user2,
-    and user2 gives it to user3, then if user1 tries revoke
+    and user2 gives it to user3, then if user1 tries to revoke
     this privilege it fails if he specify the RESTRICT
     keyword.
    </para>
