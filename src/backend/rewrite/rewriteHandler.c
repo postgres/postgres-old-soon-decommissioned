@@ -367,7 +367,8 @@ rewriteTargetList(Query *parsetree, Relation target_relation)
 					new_expr = coerce_to_domain(new_expr,
 												InvalidOid,
 												att_tup->atttypid,
-												COERCE_IMPLICIT_CAST);
+												COERCE_IMPLICIT_CAST,
+												false);
 				}
 			}
 

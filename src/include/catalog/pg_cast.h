@@ -4,6 +4,9 @@
  *	  definition of the system "type casts" relation (pg_cast)
  *	  along with the relation's initial contents.
  *
+ * As of Postgres 7.5, pg_cast describes not only type coercion functions
+ * but also length coercion functions.
+ *
  *
  * Copyright (c) 2002-2003, PostgreSQL Global Development Group
  *
@@ -43,7 +46,7 @@ typedef enum CoercionCodes
 										 * expression */
 	COERCION_CODE_ASSIGNMENT = 'a',		/* coercion in context of
 										 * assignment */
-	COERCION_CODE_EXPLICIT = 'e'	/* explicit cast operation */
+	COERCION_CODE_EXPLICIT = 'e'		/* explicit cast operation */
 } CoercionCodes;
 
 
@@ -360,5 +363,19 @@ DATA(insert ( 1266 1042  939 a ));
 DATA(insert ( 1042 1266  938 e ));
 DATA(insert ( 1700 1042 1688 a ));
 DATA(insert ( 1042 1700 1686 e ));
+
+/*
+ * Length-coercion functions
+ */
+DATA(insert ( 1042 1042  668 i ));
+DATA(insert ( 1043 1043  669 i ));
+DATA(insert ( 1083 1083 1968 i ));
+DATA(insert ( 1114 1114 1961 i ));
+DATA(insert ( 1184 1184 1967 i ));
+DATA(insert ( 1186 1186 1200 i ));
+DATA(insert ( 1266 1266 1969 i ));
+DATA(insert ( 1560 1560 1685 i ));
+DATA(insert ( 1562 1562 1687 i ));
+DATA(insert ( 1700 1700 1703 i ));
 
 #endif   /* PG_CAST_H */

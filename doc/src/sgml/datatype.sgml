@@ -2851,7 +2851,7 @@ SELECT * FROM test1 WHERE a;
     linkend="sql-syntax-bit-strings"> for information about the syntax
     of bit string constants.  Bit-logical operators and string
     manipulation functions are available; see <xref
-    linkend="functions">.
+    linkend="functions-bitstring">.
    </para>
 
    <example>

@@ -47,10 +47,10 @@ extern Node *coerce_to_target_type(ParseState *pstate,
 extern bool can_coerce_type(int nargs, Oid *input_typeids, Oid *target_typeids,
 				CoercionContext ccontext);
 extern Node *coerce_type(ParseState *pstate, Node *node,
-			Oid inputTypeId, Oid targetTypeId,
+			Oid inputTypeId, Oid targetTypeId, int32 targetTypeMod,
 			CoercionContext ccontext, CoercionForm cformat);
 extern Node *coerce_to_domain(Node *arg, Oid baseTypeId, Oid typeId,
-				 CoercionForm cformat);
+				 CoercionForm cformat, bool hideInputCoercion);
 
 extern Node *coerce_to_boolean(ParseState *pstate, Node *node,
 				  const char *constructName);
@@ -76,6 +76,6 @@ extern Oid resolve_generic_type(Oid declared_type,
 extern bool find_coercion_pathway(Oid targetTypeId, Oid sourceTypeId,
 					  CoercionContext ccontext,
 					  Oid *funcid);
-extern Oid	find_typmod_coercion_function(Oid typeId, int *nargs);
+extern Oid	find_typmod_coercion_function(Oid typeId);
 
 #endif   /* PARSE_COERCE_H */

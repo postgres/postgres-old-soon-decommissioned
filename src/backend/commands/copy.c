@@ -1565,7 +1565,7 @@ CopyFrom(Relation rel, List *attnumlist, bool binary, bool oids,
 			node = coerce_to_domain((Node *) prm,
 									prm->paramtype,
 									attr[attnum - 1]->atttypid,
-									COERCE_IMPLICIT_CAST);
+									COERCE_IMPLICIT_CAST, false);
 
 			constraintexprs[attnum - 1] = ExecPrepareExpr((Expr *) node,
 												 estate);

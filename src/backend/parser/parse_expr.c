@@ -1578,6 +1578,9 @@ exprTypmod(Node *expr)
  *
  * If coercedTypmod is not NULL, the typmod is stored there if the expression
  * is a length-coercion function, else -1 is stored there.
+ *
+ * Note that a combined type-and-length coercion will be treated as a
+ * length coercion by this routine.
  */
 bool
 exprIsLengthCoercion(Node *expr, int32 *coercedTypmod)

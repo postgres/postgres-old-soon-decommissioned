@@ -199,7 +199,8 @@ expand_targetlist(List *tlist, int command_type,
 						new_expr = coerce_to_domain(new_expr,
 													InvalidOid,
 													atttype,
-													COERCE_IMPLICIT_CAST);
+													COERCE_IMPLICIT_CAST,
+													false);
 					}
 					else
 					{
