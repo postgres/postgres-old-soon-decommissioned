@@ -173,17 +173,17 @@ pg_server_to_client(unsigned char *s, int len)
 }
 
 /* convert a multi-byte string to a wchar */
-void
+int
 pg_mb2wchar(const unsigned char *from, pg_wchar * to)
 {
-	(*pg_wchar_table[GetDatabaseEncoding()].mb2wchar_with_len) (from, to, strlen(from));
+	return (*pg_wchar_table[GetDatabaseEncoding()].mb2wchar_with_len) (from, to, strlen(from));
 }
 
 /* convert a multi-byte string to a wchar with a limited length */
-void
+int
 pg_mb2wchar_with_len(const unsigned char *from, pg_wchar * to, int len)
 {
-	(*pg_wchar_table[GetDatabaseEncoding()].mb2wchar_with_len) (from, to, len);
+	return (*pg_wchar_table[GetDatabaseEncoding()].mb2wchar_with_len) (from, to, len);
 }
 
 /* returns the byte length of a multi-byte word */
