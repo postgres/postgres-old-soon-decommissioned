@@ -633,6 +633,7 @@ void
 ReindexIndex(const char *name, bool force /* currently unused */ )
 {
 	HeapTuple	tuple;
+	bool		overwrite = false;
 
 	/* ----------------
 	 *	REINDEX within a transaction block is dangerous, because
@@ -656,7 +657,9 @@ ReindexIndex(const char *name, bool force /* currently unused */ )
 #ifdef	OLD_FILE_NAMING
 	if (!reindex_index(tuple->t_data->t_oid, force, false))
 #else
-	if (!reindex_index(tuple->t_data->t_oid, force, false))
+	if (IsIgnoringSystemIndexes())
+		overwrite = true;
+	if (!reindex_index(tuple->t_data->t_oid, force, overwrite))
 #endif /* OLD_FILE_NAMING */
 		elog(NOTICE, "index \"%s\" wasn't reindexed", name);
 
