@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Thu Sep  4 22:51:54 EDT 2003
+Last updated:		Fri Sep  5 15:52:01 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -278,7 +278,7 @@ Clients
 * -Allow psql to show transaction status if backend protocol changes made
 * -Add schema, cast, and conversion backslash commands to psql (Christopher)
 * -Allow pg_dump to dump a specific schema (Neil Conway)
-* Allow psql to do table completion for SELECT * FROM schema_part and
+* -Allow psql to do table completion for SELECT * FROM schema_part and
   table completion for SELECT * FROM schema_name.
 * Add XML capability to pg_dump and COPY, when backend XML capability
 * -Allow SSL-enabled clients to turn off SSL transfers
