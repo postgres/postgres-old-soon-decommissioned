@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Thu Feb 12 13:05:37 EST 2004
+Last updated:		Thu Feb 12 13:09:32 EST 2004
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -364,11 +364,11 @@ Cache
 Vacuum
 ======
 
-* Improve speed with indexes (perhaps recreate index instead) [vacuum]
+* Improve speed with indexes (perhaps recreate index instead)
 * Reduce lock time by moving tuples with read lock, then write
-  lock and truncate table [vacuum]
+  lock and truncate table
 * Provide automatic running of vacuum in the background in backend
-  rather than in /contrib [vacuum]
+  rather than in /contrib
 * Allow free space map to be auto-sized or warn when it is too small
 * Maintain a map of recently-expired of pages so vacuum can reclaim
   free space without a sequential scan
