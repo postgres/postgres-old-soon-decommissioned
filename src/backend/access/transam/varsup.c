@@ -88,7 +88,6 @@ VariableRelationPutNextXid(TransactionId xid)
 {
 	Buffer		buf;
 	VariableRelationContents var;
-	int			flushmode;
 
 	/* ----------------
 	 * We assume that a spinlock has been acquire to guarantee
@@ -105,7 +104,7 @@ VariableRelationPutNextXid(TransactionId xid)
 
 	/* ----------------
 	 *	read the variable page, update the nextXid field and
-	 *	write the page back out to disk.
+	 *	write the page back out to disk (with immediate write).
 	 * ----------------
 	 */
 	buf = ReadBuffer(VariableRelation, 0);
@@ -120,9 +119,7 @@ VariableRelationPutNextXid(TransactionId xid)
 
 	TransactionIdStore(xid, &(var->nextXidData));
 
-	flushmode = SetBufferWriteMode(BUFFER_FLUSH_WRITE);
-	WriteBuffer(buf);
-	SetBufferWriteMode(flushmode);
+	FlushBuffer(buf, TRUE);
 }
 
 /* --------------------------------

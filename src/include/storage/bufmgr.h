@@ -57,12 +57,6 @@ typedef bits16 BufferLock;
 extern int	ShowPinTrace;
 
 /*
- * BufferWriteModes (settable via SetBufferWriteMode)
- */
-#define BUFFER_FLUSH_WRITE		0		/* immediate write */
-#define BUFFER_LATE_WRITE		1		/* delayed write: mark as DIRTY */
-
-/*
  * Buffer context lock modes
  */
 #define BUFFER_LOCK_UNLOCK		0
@@ -165,6 +159,7 @@ extern int	WriteBuffer(Buffer buffer);
 extern int	WriteNoReleaseBuffer(Buffer buffer);
 extern Buffer ReleaseAndReadBuffer(Buffer buffer, Relation relation,
 					 BlockNumber blockNum);
+extern int	FlushBuffer(Buffer buffer, bool release);
 
 extern void InitBufferPool(IPCKey key);
 extern void PrintBufferUsage(FILE *statfp);
@@ -182,7 +177,6 @@ extern void PrintPinnedBufs(void);
 extern int	BufferShmemSize(void);
 extern int	ReleaseBuffer(Buffer buffer);
 
-extern int	SetBufferWriteMode(int mode);
 extern void SetBufferCommitInfoNeedsSave(Buffer buffer);
 
 extern void UnlockBuffers(void);
