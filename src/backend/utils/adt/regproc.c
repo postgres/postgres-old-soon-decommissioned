@@ -228,7 +228,7 @@ oid8types(Oid *oidArray)
 	result = (text *) palloc(NAMEDATALEN * 8 + 8 + VARHDRSZ);
 	*VARDATA(result) = '\0';
 
-	sp = *oidArray;
+	sp = oidArray;
 	for (num = 8; num != 0; num--, sp++)
 	{
 		if (*sp != InvalidOid)
