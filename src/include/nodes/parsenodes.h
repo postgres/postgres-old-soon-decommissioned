@@ -185,7 +185,7 @@ typedef struct BetweenExpr
 	Node	   *rexpr;			/* Second bound */
 	bool		not;			/* Do we want inverse? */
 	bool		symmetric;		/* True if SYMMETRIC, false if ASYMMETRIC */
-	Oid			typeId;			/* Information abotu common type */
+	Oid			typeId;			/* Information about common type */
 	int16		typeLen;
 	bool		typeByVal;
 	Expr	   *gthan;
