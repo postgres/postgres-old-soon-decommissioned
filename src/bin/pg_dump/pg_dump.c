@@ -3075,11 +3075,16 @@ findLastBuiltinOid(void)
 		exit_nicely(g_conn);
 	}
 	ntups = PQntuples(res);
-	if (ntups != 1)
+	if (ntups < 1)
 	{
 		fprintf(stderr,"pg_dump: couldn't find the template1 database.\n");
-		fprintf(stderr,"Check the table pg_database for a problem.\n");
-		fprintf(stderr,"There should be exactly one 'template1' entry\n");
+		fprintf(stderr,"There is no 'template1' entry in the 'pg_database' table.\n");
+		exit_nicely(g_conn);
+	}
+	if (ntups > 1)
+	{
+		fprintf(stderr,"pg_dump: found more than one template1 database.\n");
+		fprintf(stderr,"There is more than one 'template1' entry in the 'pg_database' table\n");
 		exit_nicely(g_conn);
 	}
 	last_oid = atoi(PQgetvalue(res, 0, PQfnumber(res, "oid")));
