@@ -242,7 +242,6 @@ typedef struct RestrictInfo
 
 	/* hashjoin only */
 	Oid			hashjoinoperator;
-	Relids		restrictinfojoinid;
 } RestrictInfo;
 
 typedef struct JoinMethod

@@ -929,7 +929,6 @@ _freeRestrictInfo(RestrictInfo *node)
 	freeObject(node->clause);
 	freeObject(node->indexids);
 	freeObject(node->mergejoinorder);
-	freeList(node->restrictinfojoinid);
 
 	pfree(node);
 }
