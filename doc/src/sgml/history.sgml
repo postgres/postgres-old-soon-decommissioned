@@ -128,10 +128,11 @@ $PostgreSQL$
 
     <listitem>
      <para>
-      In addition to the monitor program, a new program
+      A new program
       (<application>psql</application>) was provided for interactive
       SQL queries, which used <acronym>GNU</acronym>
-      <application>Readline</application>.
+      <application>Readline</application>.  This largely superseded
+      the old <application>monitor</> program.
      </para>
     </listitem>
 
