@@ -132,21 +132,23 @@ ShmemAlloc(Size size)
 {
 	uint32		newFree;
 	void	   *newSpace;
+	/* use volatile pointer to prevent code rearrangement */
+	volatile PGShmemHeader *shmemseghdr = ShmemSegHdr;
 
 	/*
 	 * ensure all space is adequately aligned.
 	 */
 	size = MAXALIGN(size);
 
-	Assert(ShmemSegHdr != NULL);
+	Assert(shmemseghdr != NULL);
 
 	SpinLockAcquire(ShmemLock);
 
-	newFree = ShmemSegHdr->freeoffset + size;
-	if (newFree <= ShmemSegHdr->totalsize)
+	newFree = shmemseghdr->freeoffset + size;
+	if (newFree <= shmemseghdr->totalsize)
 	{
-		newSpace = (void *) MAKE_PTR(ShmemSegHdr->freeoffset);
-		ShmemSegHdr->freeoffset = newFree;
+		newSpace = (void *) MAKE_PTR(shmemseghdr->freeoffset);
+		shmemseghdr->freeoffset = newFree;
 	}
 	else
 		newSpace = NULL;
