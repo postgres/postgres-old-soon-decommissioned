@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Mon Sep  8 18:48:19 EDT 2003
+Last updated:		Tue Sep  9 20:03:20 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -347,6 +347,7 @@ Dependency Checking
 
 * Flush cached query plans when their underlying catalog data changes
 * Use dependency information to dump data in proper order
+* Have pg_dump -c clear the database using dependency information
 
 
 Exotic Features
