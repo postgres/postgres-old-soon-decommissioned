@@ -63,12 +63,12 @@ typedef struct StandardChunkHeader
  * Only TopMemoryContext and ErrorContext are initialized by
  * MemoryContextInit() itself.
  */
-extern MemoryContext TopMemoryContext;
-extern MemoryContext ErrorContext;
-extern MemoryContext PostmasterContext;
-extern MemoryContext CacheMemoryContext;
-extern MemoryContext QueryContext;
-extern MemoryContext TopTransactionContext;
+extern DLLIMPORT MemoryContext TopMemoryContext;
+extern DLLIMPORT MemoryContext ErrorContext;
+extern DLLIMPORT MemoryContext PostmasterContext;
+extern DLLIMPORT MemoryContext CacheMemoryContext;
+extern DLLIMPORT MemoryContext QueryContext;
+extern DLLIMPORT MemoryContext TopTransactionContext;
 extern DLLIMPORT MemoryContext TransactionCommandContext;
 
 
