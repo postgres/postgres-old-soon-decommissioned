@@ -687,6 +687,12 @@ pageloop:;
 	 */
 	*totalrows = floor((double) onerel->rd_nblocks * tuplesperpage + 0.5);
 
+	/*
+	 * Emit some interesting relation info 
+	 */
+	elog(elevel, "  pages = %d rows/page = %d rows = %.0f", 
+		onerel->rd_nblocks, (int)tuplesperpage, *totalrows);
+
 	return numrows;
 }
 
