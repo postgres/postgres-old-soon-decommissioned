@@ -244,8 +244,6 @@ typedef struct HOLDER
  * function prototypes
  */
 extern void InitLocks(void);
-extern void LockDisable(bool status);
-extern bool LockingDisabled(void);
 extern LOCKMETHODTABLE *GetLocksMethodTable(LOCK *lock);
 extern LOCKMETHOD LockMethodTableInit(char *tabName, LOCKMASK *conflictsP,
 					int *prioP, int numModes, int maxBackends);

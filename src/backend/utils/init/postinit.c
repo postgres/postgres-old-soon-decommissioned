@@ -46,8 +46,6 @@ static void InitCommunication(void);
 static void ShutdownPostgres(void);
 static bool ThereIsAtLeastOneUser(void);
 
-int			lockingOff = 0;		/* backend -L switch */
-
 
 /*** InitPostgres support ***/
 
@@ -326,9 +324,6 @@ InitPostgres(const char *dbname, const char *username)
 
 	/* replace faked-up relcache entries with the real info */
 	RelationCacheInitializePhase2();
-
-	if (lockingOff)
-		LockDisable(true);
 
 	/*
 	 * Figure out our postgres user id.  In standalone mode we use a

@@ -389,7 +389,6 @@ BootstrapMain(int argc, char *argv[])
 	 * backend initialization
 	 */
 	InitPostgres(dbName, NULL);
-	LockDisable(true);
 
 	for (i = 0; i < MAXATTR; i++)
 	{

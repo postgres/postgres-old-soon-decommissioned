@@ -236,6 +236,7 @@ extern bool is_dbadmin(Oid dbid); /* current user is owner of database */
  *	  pmod.h --																 *
  *			POSTGRES processing mode definitions.							 *
  *****************************************************************************/
+
 /*
  * Description:
  *		There are three processing modes in POSTGRES.  They are
@@ -262,19 +263,6 @@ typedef enum ProcessingMode
 	NormalProcessing			/* normal processing */
 } ProcessingMode;
 
-
-/*****************************************************************************
- *	  pinit.h --															 *
- *			POSTGRES initialization and cleanup definitions.				 *
- *****************************************************************************/
-
-/* in utils/init/postinit.c */
-extern int	lockingOff;
-
-extern void InitPostgres(const char *dbname, const char *username);
-extern void BaseInit(void);
-
-/* processing mode support stuff */
 extern ProcessingMode Mode;
 
 #define IsBootstrapProcessingMode() ((bool)(Mode == BootstrapProcessing))
@@ -291,6 +279,17 @@ extern ProcessingMode Mode;
 
 #define GetProcessingMode() Mode
 
+
+/*****************************************************************************
+ *	  pinit.h --															 *
+ *			POSTGRES initialization and cleanup definitions.				 *
+ *****************************************************************************/
+
+/* in utils/init/postinit.c */
+extern void InitPostgres(const char *dbname, const char *username);
+extern void BaseInit(void);
+
+/* in utils/init/miscinit.c */
 extern bool CreateDataDirLockFile(const char *datadir, bool amPostmaster);
 extern bool CreateSocketLockFile(const char *socketfile, bool amPostmaster);
 extern void TouchSocketLockFile(void);
