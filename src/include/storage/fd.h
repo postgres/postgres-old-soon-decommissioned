@@ -53,8 +53,6 @@
 #endif /* SEEK_SET */
 #endif /* WIN32 */
 
-#include "storage/block.h"
-
 typedef char   *FileName;
 
 typedef int	File;

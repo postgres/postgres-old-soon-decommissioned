@@ -17,9 +17,8 @@
 #ifndef TRANSAM_H
 #define TRANSAM_H
 
-#include "utils/nabstime.h"
-#include "utils/rel.h"
 #include "storage/bufmgr.h"
+#include "utils/nabstime.h"
 
 /* ----------------
  *	transaction system version id
