@@ -111,6 +111,7 @@ typedef uint32 PacketLen;
  */
 
 #define SM_DATABASE		64
+/* SM_USER should be the same size as the others.  bjm 2002-06-02 */
 #define SM_USER			32
 #define SM_OPTIONS		64
 #define SM_UNUSED		64
