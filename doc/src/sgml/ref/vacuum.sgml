@@ -186,7 +186,8 @@ INFO:  Index <replaceable class="PARAMETER">index</replaceable>: Pages 28;
    Plain <command>VACUUM</command> (without <literal>FULL</>) simply reclaims
    space and makes it
    available for re-use.  This form of the command can operate in parallel
-   with normal reading and writing of the table.  <command>VACUUM
+   with normal reading and writing of the table, as an exclusive lock
+   is not obtained. <command>VACUUM
    FULL</command> does more extensive processing, including moving of tuples
    across blocks to try to compact the table to the minimum number of disk
    blocks.  This form is much slower and requires an exclusive lock on each
