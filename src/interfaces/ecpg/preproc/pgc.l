@@ -824,6 +824,11 @@ cppline			{space}*#(.*\\{space})*.*
 			  {}
 			  yytext[i+1] = '\0';
 
+			  /* since version 2.9.0 sqlca.h is included
+			     automatically */
+			  if (strcmp(yytext, "sqlca") == 0)
+				mmerror(PARSE_ERROR, ET_NOTICE, "sqlca.h is included automatically.");
+
 			  yyin = NULL;
 			  for (ip = include_paths; yyin == NULL && ip != NULL; ip = ip->next)
 			  {
@@ -846,8 +851,8 @@ cppline			{space}*#(.*\\{space})*.*
 			  }
 			  if (!yyin)
 			  {
-				fprintf(stderr, "Error: Cannot open include file %s in line %d\n", yytext, yylineno);
-				exit(NO_INCLUDE_FILE); 
+				sprintf(errortext, "Cannot open include file %s in line %d\n", yytext, yylineno);
+				mmerror(NO_INCLUDE_FILE, ET_FATAL, errortext);
 			  }
 
 			  input_filename = mm_strdup(inc_file);
