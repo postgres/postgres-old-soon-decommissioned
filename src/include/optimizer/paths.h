@@ -78,7 +78,7 @@ extern MergeInfo *match_order_mergeinfo(PathOrder *ordering,
  *	  routines to determine which relations to join
  */
 extern List *make_rels_by_joins(Query *root, List *outer_rels);
-extern void add_new_joininfos(Query *root, List *joinrels, List *outerrels);
+extern void add_rel_to_rel_joininfos(Query *root, List *joinrels, List *outerrels);
 extern List *make_rels_by_clause_joins(Query *root, RelOptInfo *outer_rel,
 								List *joininfo_list, List *only_relids);
 extern List *make_rels_by_clauseless_joins(RelOptInfo *outer_rel,

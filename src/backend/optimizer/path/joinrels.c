@@ -373,7 +373,7 @@ new_joininfo_list(List *joininfo_list, List *join_relids)
 }
 
 /*
- * add_new_joininfos
+ * add_rel_to_rel_joininfos
  *	  For each new join relation, create new joininfos that
  *	  use the join relation as inner relation, and add
  *	  the new joininfos to those rel nodes that still
@@ -384,7 +384,7 @@ new_joininfo_list(List *joininfo_list, List *join_relids)
  * Modifies the joininfo field of appropriate rel nodes.
  */
 void
-add_new_joininfos(Query *root, List *joinrels, List *outerrels)
+add_rel_to_rel_joininfos(Query *root, List *joinrels, List *outerrels)
 {
 	List	   *xjoinrel = NIL;
 	List	   *xrelid = NIL;
@@ -462,6 +462,7 @@ add_new_joininfos(Query *root, List *joinrels, List *outerrels)
 			}
 		}
 	}
+
 	foreach(xrel, outerrels)
 	{
 		RelOptInfo *rel = (RelOptInfo *) lfirst(xrel);
