@@ -2811,6 +2811,9 @@ PostgresMain(int argc, char *argv[], const char *username)
 		DisableNotifyInterrupt();
 		DisableCatchupInterrupt();
 
+		/* Make sure libpq is in a good state */
+		pq_comm_reset();
+
 		/* Report the error to the client and/or server log */
 		EmitErrorReport();
 
