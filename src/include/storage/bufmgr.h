@@ -89,7 +89,7 @@ extern BlockNumber BufferGetBlockNumber(Buffer buffer);
 extern Relation BufferGetRelation(Buffer buffer);
 extern BlockNumber RelationGetNumberOfBlocks(Relation relation);
 extern Block BufferGetBlock(Buffer buffer);
-extern void ReleaseTmpRelBuffers(Relation tempreldesc);
+extern void ReleaseRelationBuffers(Relation rdesc);
 extern void DropBuffers(Oid dbid);
 extern void PrintBufferDescs(void);
 extern void PrintPinnedBufs(void);
