@@ -4986,8 +4986,13 @@ extract_list:  extract_arg FROM a_expr
 				{	$$ = NIL; }
 		;
 
+/* Allow delimited string SCONST in extract_arg as an SQL extension.
+ * - thomas 2001-04-12
+ */
+
 extract_arg:  datetime						{ $$ = $1; }
-		| IDENT						{ $$ = $1; }
+		| SCONST							{ $$ = $1; }
+		| IDENT								{ $$ = $1; }
 		| TIMEZONE_HOUR						{ $$ = "tz_hour"; }
 		| TIMEZONE_MINUTE					{ $$ = "tz_minute"; }
 		;
