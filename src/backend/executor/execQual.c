@@ -1598,8 +1598,11 @@ ExecTargetList(List *targetlist,
 	 *	free the nulls array if we allocated one..
 	 */
 	if (nodomains > 64)
+	{
 		pfree(null_head);
-
+		pfree(fjIsNull);
+	}
+	
 	return newTuple;
 }
 
