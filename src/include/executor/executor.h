@@ -80,8 +80,9 @@ ExecEvalParam(Param *expression, ExprContext *econtext,
 
 /* stop here */
 extern char *
-GetAttributeByName(TupleTableSlot *slot, char *attname,
-				   bool *isNull);
+GetAttributeByNum(TupleTableSlot *slot, AttrNumber attrno, bool *isNull);
+extern char *
+GetAttributeByName(TupleTableSlot *slot, char *attname, bool *isNull);
 extern Datum
 ExecEvalExpr(Node *expression, ExprContext *econtext, bool *isNull,
 			 bool *isDone);
