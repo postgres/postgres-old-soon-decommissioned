@@ -409,7 +409,7 @@ _equalArrayExpr(ArrayExpr *a, ArrayExpr *b)
 	COMPARE_SCALAR_FIELD(array_typeid);
 	COMPARE_SCALAR_FIELD(element_typeid);
 	COMPARE_NODE_FIELD(elements);
-	COMPARE_SCALAR_FIELD(ndims);
+	COMPARE_SCALAR_FIELD(multidims);
 
 	return true;
 }

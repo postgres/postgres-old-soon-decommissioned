@@ -659,7 +659,7 @@ _readArrayExpr(void)
 	READ_OID_FIELD(array_typeid);
 	READ_OID_FIELD(element_typeid);
 	READ_NODE_FIELD(elements);
-	READ_INT_FIELD(ndims);
+	READ_BOOL_FIELD(multidims);
 
 	READ_DONE();
 }

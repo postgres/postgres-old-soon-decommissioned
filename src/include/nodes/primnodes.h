@@ -587,16 +587,18 @@ typedef struct CaseWhen
 /*
  * ArrayExpr - an ARRAY[] expression
  *
- * Note: if ndims > 1, then the array elements are all ArrayExprs of the
- * same type and ndims one less.
+ * Note: if multidims is false, the constituent expressions all yield the
+ * scalar type identified by element_typeid.  If multidims is true, the
+ * constituent expressions all yield arrays of element_typeid (ie, the same
+ * type as array_typeid); at runtime we must check for compatible subscripts.
  */
 typedef struct ArrayExpr
 {
 	Expr		xpr;
 	Oid			array_typeid;	/* type of expression result */
-	Oid			element_typeid; /* common type of expression elements */
-	List	   *elements;		/* the array elements */
-	int			ndims;			/* number of array dimensions */
+	Oid			element_typeid; /* common type of array elements */
+	List	   *elements;		/* the array elements or sub-arrays */
+	bool		multidims;		/* true if elements are sub-arrays */
 } ArrayExpr;
 
 /*

@@ -785,7 +785,7 @@ _outArrayExpr(StringInfo str, ArrayExpr *node)
 	WRITE_OID_FIELD(array_typeid);
 	WRITE_OID_FIELD(element_typeid);
 	WRITE_NODE_FIELD(elements);
-	WRITE_INT_FIELD(ndims);
+	WRITE_BOOL_FIELD(multidims);
 }
 
 static void
