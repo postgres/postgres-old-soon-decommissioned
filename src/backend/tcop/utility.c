@@ -369,7 +369,7 @@ ProcessUtility(Node *parsetree,
 						DefineOperator(stmt->defname,	/* operator name */
 									   stmt->definition);		/* rest */
 						break;
-					case P_TYPE:
+					case TYPE_P:
 						{
 							DefineType(stmt->defname, stmt->definition);
 						}
@@ -490,7 +490,7 @@ ProcessUtility(Node *parsetree,
 							RemoveRewriteRule(rulename);
 						}
 						break;
-					case P_TYPE:
+					case TYPE_P:
 #ifndef NO_SECURITY
 						/* XXX moved to remove.c */
 #endif
