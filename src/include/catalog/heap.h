@@ -61,6 +61,9 @@ extern Node *cookDefault(ParseState *pstate,
 extern int	RemoveRelConstraints(Relation rel, const char *constrName,
 								 DropBehavior behavior);
 
+extern void DeleteRelationTuple(Oid relid);
+extern void DeleteAttributeTuples(Oid relid);
+
 extern Form_pg_attribute SystemAttributeDefinition(AttrNumber attno,
 						  bool relhasoids);
 
