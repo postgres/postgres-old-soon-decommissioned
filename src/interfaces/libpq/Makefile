@@ -50,7 +50,7 @@ else
 endif
 	$(RANLIB) libpq.a
 
-fe-lobj.o:: ../backend/fmgr.h
+fe-lobj.o: ../backend/fmgr.h
 
 # The following rules cause dependencies in the backend directory to 
 # get made if they don't exist, but don't cause them to get remade if they
