@@ -892,7 +892,7 @@ ident_unix(int sock, char *ident_user)
 	if (pass == NULL)
 	{
 		snprintf(PQerrormsg, PQERRORMSG_LENGTH,
-			 "ident_unix: unknown local user with uid %d\n",
+			 "ident_unix: unknown local user with uid %d\n", peercred.uid);
 		fputs(PQerrormsg, stderr);
 		pqdebug("%s", PQerrormsg);
 		return false;
