@@ -309,9 +309,11 @@ ApplyRetrieveRule(Query *parsetree,
 	Assert(subrte->relid == relation->rd_id);
 	subrte->checkForRead = rte->checkForRead;
 	subrte->checkForWrite = rte->checkForWrite;
+	subrte->checkAsUser = rte->checkAsUser;
 
 	rte->checkForRead = false;	/* no permission check on subquery itself */
 	rte->checkForWrite = false;
+	rte->checkAsUser = InvalidOid;
 
 	/*
 	 * FOR UPDATE of view?
