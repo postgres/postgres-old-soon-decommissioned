@@ -19,15 +19,6 @@
  * IDENTIFICATION
  *		$Header$
  *
- * Modifications - 09-Jul-2000 - pjw@rhyme.com.au
- *
- *	Initial version.
- *
- * Modifications - 04-Jan-2001 - pjw@rhyme.com.au
- *
- *	  - Check results of IO routines more carefully.
- *
- *
  *-------------------------------------------------------------------------
  */
 
@@ -38,10 +29,10 @@
 #include <string.h>
 #include <unistd.h>				/* for dup */
 
-static int	_WriteData(ArchiveHandle *AH, const void *data, int dLen);
+static size_t	_WriteData(ArchiveHandle *AH, const void *data, size_t dLen);
 static void _EndData(ArchiveHandle *AH, TocEntry *te);
 static int	_WriteByte(ArchiveHandle *AH, const int i);
-static int	_WriteBuf(ArchiveHandle *AH, const void *buf, int len);
+static size_t	_WriteBuf(ArchiveHandle *AH, const void *buf, size_t len);
 static void _CloseArchive(ArchiveHandle *AH);
 static void _PrintTocData(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt);
 
@@ -75,8 +66,8 @@ InitArchiveFmt_Null(ArchiveHandle *AH)
  * As at V1.3, this is only called for COPY FROM dfata, and BLOB data
  *------
  */
-static int
-_WriteData(ArchiveHandle *AH, const void *data, int dLen)
+static size_t
+_WriteData(ArchiveHandle *AH, const void *data, size_t dLen)
 {
 	/* Just send it to output */
 	ahwrite(data, 1, dLen, AH);
@@ -112,8 +103,8 @@ _WriteByte(ArchiveHandle *AH, const int i)
 	return 0;
 }
 
-static int
-_WriteBuf(ArchiveHandle *AH, const void *buf, int len)
+static size_t
+_WriteBuf(ArchiveHandle *AH, const void *buf, size_t len)
 {
 	/* Don't do anything */
 	return len;

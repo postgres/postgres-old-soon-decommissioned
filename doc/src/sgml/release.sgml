@@ -24,6 +24,7 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+Files larger than 2 GB are now supported (if supported by the operating system)
 SERIAL no longer implies UNIQUE; specify explicitly if index is wanted
 pg_dump -n and -N options have been removed.  The new behavior is like -n but knows about key words.
 CLUSTER is no longer hazardous to your schema

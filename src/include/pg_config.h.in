@@ -720,6 +720,23 @@ extern int fdatasync(int fildes);
 /* Define exactly one of these symbols to select shared-mem implementation */
 #undef USE_SYSV_SHARED_MEMORY
 
+/* Define to 1 to make fseeko visible on some hosts. */
+#undef _LARGEFILE_SOURCE
+
+/* Define to 1 if fseeko (and presumably ftello) exists and is declared. */
+#undef HAVE_FSEEKO
+
+#ifndef HAVE_FSEEKO
+#define fseeko(a, b, c) fseek((a), (b), (c))
+#define ftello(a) ftell((a))
+#endif
+
+/* Number of bits in a file offset, on hosts where this is settable. */
+#undef _FILE_OFFSET_BITS
+
+/* Define for large files, on AIX-style hosts. */
+#undef _LARGE_FILES
+
 
 /*
  *------------------------------------------------------------------------

@@ -971,6 +971,8 @@ AC_CHECK_FUNCS(atexit, [],
                [AC_CHECK_FUNCS(on_exit, [],
                                [AC_MSG_ERROR([neither atexit() nor on_exit() found])])])
 
+AC_FUNC_FSEEKO
+
 
 # This test makes sure that run tests work at all.  Sometimes a shared
 # library is found by the linker, but the runtime linker can't find it.
@@ -1159,6 +1161,9 @@ AC_CHECK_TYPES([sig_atomic_t], [], [], [#include <signal.h>])
 
 
 PGAC_FUNC_POSIX_SIGNALS
+if test $ac_cv_func_fseeko = yes; then
+AC_SYS_LARGEFILE
+fi
 
 
 # Select semaphore implementation type.

@@ -144,7 +144,7 @@ extern void ArchiveEntry(Archive *AHX, const char *oid, const char *tag,
 						 DataDumperPtr dumpFn, void *dumpArg);
 
 /* Called to write *data* to the archive */
-extern int	WriteData(Archive *AH, const void *data, int dLen);
+extern size_t	WriteData(Archive *AH, const void *data, size_t dLen);
 
 /*
 extern int	StartBlobs(Archive* AH);

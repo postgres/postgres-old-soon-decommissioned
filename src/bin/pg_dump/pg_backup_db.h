@@ -9,7 +9,7 @@
 
 extern void FixupBlobRefs(ArchiveHandle *AH, TocEntry *te);
 extern int	ExecuteSqlCommand(ArchiveHandle *AH, PQExpBuffer qry, char *desc, bool use_blob);
-extern int	ExecuteSqlCommandBuf(ArchiveHandle *AH, void *qry, int bufLen);
+extern int	ExecuteSqlCommandBuf(ArchiveHandle *AH, void *qry, size_t bufLen);
 
 extern void CreateBlobXrefTable(ArchiveHandle *AH);
 extern void InsertBlobXref(ArchiveHandle *AH, Oid old, Oid new);
