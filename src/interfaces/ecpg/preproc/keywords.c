@@ -213,6 +213,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"substring", SUBSTRING},
 	{"table", TABLE},
 	{"temp", TEMP},
+	{"temporary", TEMPORARY},
 	{"then", THEN},
 	{"time", TIME},
 	{"timestamp", TIMESTAMP},
