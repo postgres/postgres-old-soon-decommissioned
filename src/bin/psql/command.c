@@ -149,11 +149,13 @@ HandleSlashCmds(const char *line,
 	if (continue_parse && *continue_parse && *(continue_parse + 1) == '\\')
 		continue_parse += 2;
 
-
-    if (continue_parse)
-        *end_of_cmd = line + (continue_parse - my_line);
-    else
-        *end_of_cmd = line + strlen(line);
+    if (end_of_cmd)
+    {
+        if (continue_parse)
+            *end_of_cmd = line + (continue_parse - my_line);
+        else
+            *end_of_cmd = line + strlen(line);
+    }
 
 	free(my_line);
 

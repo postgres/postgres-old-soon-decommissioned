@@ -357,7 +357,10 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 			case 'c':
 				options->action_string = optarg;
 				if (optarg[0] == '\\')
+				{
 					options->action = ACT_SINGLE_SLASH;
+					options->action_string++;
+				}
 				else
 					options->action = ACT_SINGLE_QUERY;
 				break;
