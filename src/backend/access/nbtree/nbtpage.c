@@ -399,14 +399,6 @@ _bt_wrtnorelbuf(Relation rel, Buffer buf)
 void
 _bt_pageinit(Page page, Size size)
 {
-	/*
-	 * Cargo_cult programming -- don't really need this to be zero, but
-	 * creating new pages is an infrequent occurrence and it makes me feel
-	 * good when I know they're empty.
-	 */
-
-	MemSet(page, 0, size);
-
 	PageInit(page, size, sizeof(BTPageOpaqueData));
 	((BTPageOpaque) PageGetSpecialPointer(page))->btpo_parent =
 		InvalidBlockNumber;

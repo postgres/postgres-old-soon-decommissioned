@@ -1107,7 +1107,7 @@ RTInitBuffer(Buffer b, uint32 f)
 	pageSize = BufferGetPageSize(b);
 
 	page = BufferGetPage(b);
-	MemSet(page, 0, (int) pageSize);
+
 	PageInit(page, pageSize, sizeof(RTreePageOpaqueData));
 
 	opaque = (RTreePageOpaque) PageGetSpecialPointer(page);

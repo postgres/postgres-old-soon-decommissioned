@@ -2094,10 +2094,7 @@ heap_xlog_insert(bool redo, XLogRecPtr lsn, XLogRecord *record)
 		uint32		newlen;
 
 		if (record->xl_info & XLOG_HEAP_INIT_PAGE)
-		{
 			PageInit(page, BufferGetPageSize(buffer), 0);
-			PageZero(page);
-		}
 
 		if (XLByteLE(lsn, PageGetLSN(page)))	/* changes are applied */
 		{
@@ -2262,10 +2259,7 @@ newsame:;
 		uint32		newlen;
 
 		if (record->xl_info & XLOG_HEAP_INIT_PAGE)
-		{
 			PageInit(page, BufferGetPageSize(buffer), 0);
-			PageZero(page);
-		}
 
 		if (XLByteLE(lsn, PageGetLSN(page)))	/* changes are applied */
 		{
