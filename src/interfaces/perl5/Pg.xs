@@ -752,7 +752,8 @@ setdbLogin(pghost, pgport, pgoptions, pgtty, dbname, login, pwd)
 	char *	login
 	char *	pwd
 	CODE:
-		RETVAL = PQsetdb(pghost, pgport, pgoptions, pgtty, dbname);
+		RETVAL = PQsetdbLogin(pghost, pgport, pgoptions, pgtty, dbname,
+							  login, pwd);
 	OUTPUT:
 		RETVAL
 
