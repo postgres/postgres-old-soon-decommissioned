@@ -94,9 +94,9 @@ RELEASE [ SAVEPOINT ] <replaceable>savepoint_name</replaceable>
    To establish and later destroy a savepoint:
 <programlisting>
 BEGIN;
-    INSERT INTO table VALUES (3);
+    INSERT INTO table1 VALUES (3);
     SAVEPOINT my_savepoint;
-    INSERT INTO table VALUES (4);
+    INSERT INTO table1 VALUES (4);
     RELEASE SAVEPOINT my_savepoint;
 COMMIT;
 </programlisting>
