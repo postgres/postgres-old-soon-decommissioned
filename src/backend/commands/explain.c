@@ -54,7 +54,7 @@ ExplainQuery(Query *query, bool verbose, CommandDest dest)
 		return;
 	}
 
-	/* rewriter and planner will not cope with utility statements */
+	/* rewriter will not cope with utility statements */
 	if (query->commandType == CMD_UTILITY)
 	{
 		elog(NOTICE, "Utility statements have no plan structure");
@@ -87,6 +87,16 @@ ExplainOneQuery(Query *query, bool verbose, CommandDest dest)
 	char	   *s;
 	Plan	   *plan;
 	ExplainState *es;
+
+	/* planner will not cope with utility statements */
+	if (query->commandType == CMD_UTILITY)
+	{
+		if (query->utilityStmt && IsA(query->utilityStmt, NotifyStmt))
+			elog(NOTICE, "QUERY PLAN:\n\nNOTIFY\n");
+		else
+			elog(NOTICE, "QUERY PLAN:\n\nUTILITY\n");
+		return;
+	}
 
 	/* plan the query */
 	plan = planner(query);
