@@ -92,6 +92,8 @@ extern bool Show_executor_stats;
 extern bool Show_query_stats;
 extern bool Show_btree_build_stats;
 
+extern bool Explain_pretty_print;
+
 extern bool SQL_inheritance;
 extern bool Australian_timezones;
 

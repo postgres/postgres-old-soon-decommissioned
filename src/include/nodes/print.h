@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
- * execnodes.h
- *	  definitions for executor state nodes
+ * print.h
+ *	  definitions for nodes/print.c
  *
  *
  * Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group
@@ -17,13 +17,15 @@
 #include "nodes/parsenodes.h"
 #include "nodes/plannodes.h"
 
-/*
- * nodes/{outfuncs.c,print.c}
- */
+
 #define nodeDisplay		pprint
 
 extern void print(void *obj);
 extern void pprint(void *obj);
+extern void elog_node_display(int lev, const char *title,
+							  void *obj, bool pretty);
+extern char *format_node_dump(const char *dump);
+extern char *pretty_format_node_dump(const char *dump);
 extern void print_rt(List *rtable);
 extern void print_expr(Node *expr, List *rtable);
 extern void print_pathkeys(List *pathkeys, List *rtable);

@@ -24,6 +24,7 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+EXPLAIN output comes out as a query result, not a NOTICE message
 DOMAINs (types that are constrained versions of base types)
 Access privileges on functions
 Access privileges on procedural languages

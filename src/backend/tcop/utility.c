@@ -650,11 +650,7 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_ExplainStmt:
-			{
-				ExplainStmt *stmt = (ExplainStmt *) parsetree;
-
-				ExplainQuery(stmt->query, stmt->verbose, stmt->analyze, dest);
-			}
+			ExplainQuery((ExplainStmt *) parsetree, dest);
 			break;
 
 #ifdef NOT_USED

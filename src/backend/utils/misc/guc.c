@@ -82,6 +82,8 @@ bool		Show_query_stats = false;	/* this is sort of all three above
 										 * together */
 bool		Show_btree_build_stats = false;
 
+bool		Explain_pretty_print = true;
+
 bool		SQL_inheritance = true;
 
 bool		Australian_timezones = false;
@@ -292,6 +294,10 @@ static struct config_bool
 		"show_btree_build_stats", PGC_SUSET, PGC_S_DEFAULT, &Show_btree_build_stats, false, NULL
 	},
 #endif
+
+	{
+		"explain_pretty_print", PGC_USERSET, PGC_S_DEFAULT, &Explain_pretty_print, true, NULL
+	},
 
 	{
 		"stats_start_collector", PGC_POSTMASTER, PGC_S_DEFAULT, &pgstat_collect_startcollector, true, NULL

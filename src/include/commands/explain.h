@@ -16,6 +16,6 @@
 #include "nodes/parsenodes.h"
 #include "tcop/dest.h"
 
-extern void ExplainQuery(Query *query, bool verbose, bool analyze, CommandDest dest);
+extern void ExplainQuery(ExplainStmt *stmt, CommandDest dest);
 
 #endif   /* EXPLAIN_H */

@@ -242,6 +242,7 @@ psql_completion(char *text, int start, int end)
 		"show_executor_stats",
 		"show_query_stats",
 		"trace_notify",
+		"explain_pretty_print",
 		"sql_inheritance",
 		"australian_timezones",
 		"password_encryption",

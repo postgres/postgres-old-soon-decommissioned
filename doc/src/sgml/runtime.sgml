@@ -871,6 +871,16 @@ env PGOPTIONS='-c geqo=off' psql
      </varlistentry>
 
      <varlistentry>
+      <term><varname>EXPLAIN_PRETTY_PRINT</varname> (<type>boolean</type>)</term>
+      <listitem>
+       <para>
+        Determines whether <command>EXPLAIN VERBOSE</> uses the indented
+	or non-indented format for displaying detailed querytree dumps.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term><varname>HOSTNAME_LOOKUP</varname> (<type>boolean</type>)</term>
       <listitem>
        <para>
