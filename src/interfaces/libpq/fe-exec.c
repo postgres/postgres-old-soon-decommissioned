@@ -111,14 +111,9 @@ static PGresult *PQexecFinish(PGconn *conn);
  * ----------------
  */
 
-#ifdef MAX
-#undef MAX
-#endif
-#define MAX(a,b)  ((a) > (b) ? (a) : (b))
-
 #define PGRESULT_DATA_BLOCKSIZE		2048
 #define PGRESULT_ALIGN_BOUNDARY		MAXIMUM_ALIGNOF		/* from configure */
-#define PGRESULT_BLOCK_OVERHEAD		MAX(sizeof(PGresult_data), PGRESULT_ALIGN_BOUNDARY)
+#define PGRESULT_BLOCK_OVERHEAD		Max(sizeof(PGresult_data), PGRESULT_ALIGN_BOUNDARY)
 #define PGRESULT_SEP_ALLOC_THRESHOLD	(PGRESULT_DATA_BLOCKSIZE / 2)
 
 
