@@ -30,5 +30,8 @@ records, it may be a good idea to issue a
 query.  This will update the system catalogs with the results of all
 recent changes, and allow the Postgres query optimizer to make better
 choices in planning user queries.
+.PP
+The purge(l) command can be used to control the archive retention
+characteristics of a given table.
 .SH "SEE ALSO"
-vacuum(1).
+purge(l).
