@@ -67,7 +67,7 @@ static OrderedSetData ActiveGlobalMemorySetData;		/* uninitialized */
  * CurrentMemoryContext 
  *		Memory context for general global allocations.
  */
-MemoryContext CurrentMemoryContext = NULL;
+DLLIMPORT MemoryContext CurrentMemoryContext = NULL;
 
 /*****************************************************************************
  *	  PRIVATE DEFINITIONS													 *

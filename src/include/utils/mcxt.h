@@ -22,7 +22,7 @@ typedef struct MemoryContextData *MemoryContext;
 typedef struct GlobalMemoryData *GlobalMemory;
 
 
-extern MemoryContext CurrentMemoryContext;
+extern DLLIMPORT MemoryContext CurrentMemoryContext;
 extern MemoryContext TopMemoryContext;
 
 

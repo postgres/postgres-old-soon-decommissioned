@@ -142,7 +142,7 @@ jmp_buf		Warn_restart;
 #define sigsetjmp(x,y)	setjmp(x)
 #define siglongjmp longjmp
 #else
-sigjmp_buf	Warn_restart;
+DLLIMPORT sigjmp_buf	Warn_restart;
 
 #endif	 /* defined(nextstep) */
 bool		InError;
@@ -1531,7 +1531,7 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[])
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.105 $ $Date: 1999/03/17 22:53:18 $\n");
+		puts("$Revision: 1.106 $ $Date: 1999/03/22 16:45:27 $\n");
 	}
 
 	/* ----------------

@@ -75,7 +75,7 @@
 #define siglongjmp		longjmp
 #endif
 
-extern sigjmp_buf Warn_restart; /* in tcop/postgres.c */
+extern DLLIMPORT sigjmp_buf Warn_restart; /* in tcop/postgres.c */
 
 static PLpgSQL_function *error_info_func = NULL;
 static PLpgSQL_stmt *error_info_stmt = NULL;
