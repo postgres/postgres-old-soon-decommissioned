@@ -44,6 +44,7 @@
 #include "executor/nodeAgg.h"
 #include "executor/nodeResult.h"
 #include "executor/nodeUnique.h"
+#include "executor/nodeMergejoin.h"
 #include "executor/nodeSubplan.h"
 #include "executor/execdebug.h"
 #include "optimizer/internal.h" /* for _TEMP_RELATION_ID_ */
@@ -364,6 +365,10 @@ ExecReScan(Plan *node, ExprContext *exprCtxt, Plan *parent)
 
 		case T_Sort:
 			ExecReScanSort((Sort *) node, exprCtxt, parent);
+			break;
+
+		case T_MergeJoin:
+			ExecReScanMergeJoin((MergeJoin *) node, exprCtxt, parent);
 			break;
 
 /*
