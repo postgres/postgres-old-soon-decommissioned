@@ -1006,7 +1006,7 @@ failed to add item with len = %u to page %u (free space %u, nusd %u, noff %u)",
 				idatum,
 				inulls,
 				&(newtup->t_ctid),
-				true);
+				onerel);
 		    if (iresult) pfree(iresult);
 		}
 	    }

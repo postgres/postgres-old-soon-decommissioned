@@ -1008,7 +1008,8 @@ inv_indextup(LargeObjectDesc *obj_desc, HeapTuple htup)
 
     n[0] = ' ';
     v[0] = Int32GetDatum(obj_desc->highbyte);
-    res = index_insert(obj_desc->index_r, &v[0], &n[0], &(htup->t_ctid), false);
+    res = index_insert(obj_desc->index_r, &v[0], &n[0], 
+    				&(htup->t_ctid), obj_desc->heap_r);
 
     if (res)
 	pfree(res);
