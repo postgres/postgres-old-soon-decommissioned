@@ -941,7 +941,11 @@ get_select_query_def(Query *query, deparse_context *context)
 	if (query->limitCount != NULL)
 	{
 		appendStringInfo(buf, " LIMIT ");
-		get_rule_expr(query->limitCount, context);
+		if (IsA(query->limitCount, Const) &&
+			((Const *) query->limitCount)->constisnull)
+			appendStringInfo(buf, "ALL");
+		else
+			get_rule_expr(query->limitCount, context);
 	}
 }
 

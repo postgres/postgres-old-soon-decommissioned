@@ -809,25 +809,26 @@ union_planner(Query *parse,
 				if (IsA(parse->limitCount, Const))
 				{
 					Const	   *limitc = (Const *) parse->limitCount;
-					int			count = (int) (limitc->constvalue);
+					int32		count = DatumGetInt32(limitc->constvalue);
 
 					/*
-					 * The constant can legally be either 0 ("ALL") or a
-					 * positive integer.  If it is not ALL, we also need
-					 * to consider the OFFSET part of LIMIT.
+					 * A NULL-constant LIMIT represents "LIMIT ALL",
+					 * which we treat the same as no limit (ie,
+					 * expect to retrieve all the tuples).
 					 */
-					if (count > 0)
+					if (!limitc->constisnull && count > 0)
 					{
 						tuple_fraction = (double) count;
+						/* We must also consider the OFFSET, if present */
 						if (parse->limitOffset != NULL)
 						{
 							if (IsA(parse->limitOffset, Const))
 							{
-								int			offset;
+								int32		offset;
 
 								limitc = (Const *) parse->limitOffset;
-								offset = (int) (limitc->constvalue);
-								if (offset > 0)
+								offset = DatumGetInt32(limitc->constvalue);
+								if (!limitc->constisnull && offset > 0)
 									tuple_fraction += (double) offset;
 							}
 							else
@@ -850,14 +851,14 @@ union_planner(Query *parse,
 			}
 
 			/*
-			 * Check for a retrieve-into-portal, ie DECLARE CURSOR.
+			 * If no LIMIT, check for retrieve-into-portal, ie DECLARE CURSOR.
 			 *
 			 * We have no real idea how many tuples the user will ultimately
 			 * FETCH from a cursor, but it seems a good bet that he
 			 * doesn't want 'em all.  Optimize for 10% retrieval (you
 			 * gotta better number?)
 			 */
-			if (parse->isPortal)
+			else if (parse->isPortal)
 				tuple_fraction = 0.10;
 		}
 

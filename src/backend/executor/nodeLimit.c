@@ -188,17 +188,11 @@ recompute_limits(Limit *node)
 														econtext,
 														&isNull,
 														NULL));
-		/* Interpret NULL count as no count */
+		/* Interpret NULL count as no count (LIMIT ALL) */
 		if (isNull)
 			limitstate->noCount = true;
-		else
-		{
-			/* Currently, LIMIT 0 is specified as meaning no limit.
-			 * I think this is pretty bogus, but ...
-			 */
-			if (limitstate->count <= 0)
-				limitstate->noCount = true;
-		}
+		else if (limitstate->count < 0)
+			limitstate->count = 0;
 	}
 	else
 	{
