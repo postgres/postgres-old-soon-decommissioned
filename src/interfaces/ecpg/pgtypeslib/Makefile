@@ -18,7 +18,7 @@ SO_MINOR_VERSION= 0.0
 
 override CPPFLAGS := -g -I$(top_srcdir)/src/interfaces/ecpg/include -I$(top_srcdir)/src/include/utils $(CPPFLAGS)
 
-OBJS= numeric.o
+OBJS= numeric.o datetime.o common.o dt_common.o timestamp.o
 
 all: all-lib
 
