@@ -263,6 +263,13 @@ extern		"C"
 	extern int	PQputnbytes(PGconn *conn, const char *buffer, int nbytes);
 	extern int	PQendcopy(PGconn *conn);
 
+	/* Set blocking/nonblocking connection to the backend */
+	extern int	PQsetnonblocking(PGconn *conn, int arg);
+	extern int	PQisnonblocking(const PGconn *conn);
+
+	/* Force the write buffer to be written (or at least try) */
+	extern int	PQflush(PGconn *conn);
+
 	/*
 	 * "Fast path" interface --- not really recommended for application
 	 * use

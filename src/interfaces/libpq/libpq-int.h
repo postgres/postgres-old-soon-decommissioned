@@ -214,6 +214,9 @@ struct pg_conn
 	int			inEnd;			/* offset to first position after avail
 								 * data */
 
+	int			nonblocking;	/* whether this connection is using a blocking
+								 * socket to the backend or not */
+
 	/* Buffer for data not yet sent to backend */
 	char	   *outBuffer;		/* currently allocated buffer */
 	int			outBufSize;		/* allocated size of buffer */
@@ -299,5 +302,11 @@ extern char *sys_errlist[];
 #define strerror(A) (sys_errlist[(A)])
 #endif	 /* sunos4 */
 #endif	 /* !strerror */
+
+/* 
+ * this is so that we can check is a connection is non-blocking internally
+ * without the overhead of a function call
+ */
+#define pqIsnonblocking(conn)	(conn->nonblocking)
 
 #endif	 /* LIBPQ_INT_H */
