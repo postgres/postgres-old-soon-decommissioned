@@ -17,6 +17,7 @@ WANTED_DIRS = \
 		mac			\
 		miscutil	\
 		noupdate	\
+		oid2name	\
 		pg_dumplo	\
 		pgbench		\
 		pgcrypto	\
