@@ -34,6 +34,8 @@
 #include "postgres_fe.h"
 #include "pg_dump.h"
 #include "pg_backup_archiver.h"
+#include "postgres.h"
+#include "catalog/pg_class.h"
 
 #include <ctype.h>
 
@@ -234,6 +236,7 @@ parseNumericArray(const char *str, char **array, int arraysize)
 			temp[j++] = s;
 		}
 	}
+
 	while (argNum < arraysize)
 		array[argNum++] = strdup("0");
 }
@@ -344,8 +347,8 @@ dumpSchema(Archive *fout,
 	if (g_verbose)
 		write_msg(NULL, "dumping out tables\n");
 
-	dumpTables(fout, tblinfo, numTables, indinfo, numIndexes, inhinfo, numInherits,
-	   tinfo, numTypes, tablename, aclsSkip, oids, schemaOnly, dataOnly);
+	dumpTables(fout, tblinfo, numTables, tablename,
+			   aclsSkip, schemaOnly, dataOnly);
 
 	if (fout && !dataOnly)
 	{
@@ -425,9 +428,8 @@ flagInhAttrs(TableInfo *tblinfo, int numTables,
 	 */
 	for (i = numTables - 1; i >= 0; i--)
 	{
-
 		/* Sequences can never have parents, and attr info is undefined */
-		if (tblinfo[i].sequence)
+		if (tblinfo[i].relkind == RELKIND_SEQUENCE)
 			continue;
 
 		/* Get all the parents and their indexes. */
