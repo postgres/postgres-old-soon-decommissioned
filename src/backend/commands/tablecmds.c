@@ -115,11 +115,11 @@ DefineRelation(CreateStmt *stmt, char relkind)
 	 * Look up the namespace in which we are supposed to create the
 	 * relation.  Check we have permission to create there.
 	 * Skip check if bootstrapping, since permissions machinery may not
-	 * be working yet; also, always allow if it's a temp table.
+	 * be working yet.
 	 */
 	namespaceId = RangeVarGetCreationNamespace(stmt->relation);
 
-	if (!IsBootstrapProcessingMode() && !isTempNamespace(namespaceId))
+	if (!IsBootstrapProcessingMode())
 	{
 		AclResult	aclresult;
 

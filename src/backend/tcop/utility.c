@@ -399,22 +399,17 @@ ProcessUtility(Node *parsetree,
 						/*
 						 * RENAME TABLE requires that we (still) hold CREATE
 						 * rights on the containing namespace, as well as
-						 * ownership of the table.  But skip check for
-						 * temp tables.
+						 * ownership of the table.
 						 */
 						Oid			namespaceId = get_rel_namespace(relid);
+						AclResult	aclresult;
 
-						if (!isTempNamespace(namespaceId))
-						{
-							AclResult	aclresult;
-
-							aclresult = pg_namespace_aclcheck(namespaceId,
-															  GetUserId(),
-															  ACL_CREATE);
-							if (aclresult != ACLCHECK_OK)
-								aclcheck_error(aclresult,
-											get_namespace_name(namespaceId));
-						}
+						aclresult = pg_namespace_aclcheck(namespaceId,
+														  GetUserId(),
+														  ACL_CREATE);
+						if (aclresult != ACLCHECK_OK)
+							aclcheck_error(aclresult,
+										   get_namespace_name(namespaceId));
 
 						renamerel(relid, stmt->newname);
 						break;

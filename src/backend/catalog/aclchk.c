@@ -1163,6 +1163,13 @@ pg_namespace_aclcheck(Oid nsp_oid, Oid userid, AclMode mode)
 	bool		isNull;
 	Acl		   *acl;
 
+	/*
+	 * If we have been assigned this namespace as a temp namespace,
+	 * assume we have all grantable privileges on it.
+	 */
+	if (isTempNamespace(nsp_oid))
+		return ACLCHECK_OK;
+
 	/* Superusers bypass all permission checking. */
 	if (superuser_arg(userid))
 		return ACLCHECK_OK;

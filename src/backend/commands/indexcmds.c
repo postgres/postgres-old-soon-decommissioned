@@ -119,9 +119,9 @@ DefineIndex(RangeVar *heapRelation,
 	 * Verify we (still) have CREATE rights in the rel's namespace.
 	 * (Presumably we did when the rel was created, but maybe not anymore.)
 	 * Skip check if bootstrapping, since permissions machinery may not
-	 * be working yet; also, always allow if it's a temp table.
+	 * be working yet.
 	 */
-	if (!IsBootstrapProcessingMode() && !isTempNamespace(namespaceId))
+	if (!IsBootstrapProcessingMode())
 	{
 		AclResult	aclresult;
 
