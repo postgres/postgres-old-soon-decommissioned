@@ -170,6 +170,9 @@ _bt_scandel(IndexScanDesc scan, int op, BlockNumber blkno, OffsetNumber offno)
 		tmp = *current;
 		*current = scan->currentItemData;
 		scan->currentItemData = tmp;
+		so->btso_curbuf = so->btso_mrkbuf;
+		so->btso_mrkbuf = buf;
+		buf = so->btso_curbuf;
 		switch (op)
 		{
 			case BT_INSERT:
@@ -182,6 +185,7 @@ _bt_scandel(IndexScanDesc scan, int op, BlockNumber blkno, OffsetNumber offno)
 				elog(ERROR, "_bt_scandel: bad operation '%d'", op);
 				/* NOTREACHED */
 		}
+		so->btso_curbuf = so->btso_mrkbuf;
 		so->btso_mrkbuf = buf;
 		tmp = *current;
 		*current = scan->currentItemData;
