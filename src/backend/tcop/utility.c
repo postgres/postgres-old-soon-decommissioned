@@ -612,22 +612,12 @@ ProcessUtility(Node *parsetree,
 		case T_LoadStmt:
 			{
 				LoadStmt   *stmt = (LoadStmt *) parsetree;
-				FILE	   *fp;
-				char	   *filename;
 
 				PS_SET_STATUS(commandTag = "LOAD");
 				CHECK_IF_ABORTED();
 
-				filename = stmt->filename;
-				closeAllVfds();
-#ifndef __CYGWIN32__
-				if ((fp = AllocateFile(filename, "r")) == NULL)
-#else
-				if ((fp = AllocateFile(filename, "rb")) == NULL)
-#endif
-					elog(ERROR, "LOAD: could not open file '%s'", filename);
-				FreeFile(fp);
-				load_file(filename);
+				closeAllVfds();	/* probably not necessary... */
+				load_file(stmt->filename);
 			}
 			break;
 
