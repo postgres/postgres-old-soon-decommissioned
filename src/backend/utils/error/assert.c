@@ -46,7 +46,7 @@ ExceptionalCondition(char* conditionName,
     } else {
 	fprintf(stderr,
 		"%s(\"%s:%s\", File: \"%s\", Line: %d)\n",
-		exceptionP->message, conditionName, detail,
+		exceptionP->message, conditionName, detail == NULL ? "" : detail,
 		fileName, lineNumber);
     }
 

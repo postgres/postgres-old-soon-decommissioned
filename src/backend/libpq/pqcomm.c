@@ -303,10 +303,10 @@ pq_getint(int b)
     	    status = ((n = fgetc(Pfin)) == EOF);
     	    break;
     	case 2:
-    	    pqGetShort(&n, Pfin);
+	    status = pqGetShort(&n, Pfin);
     	    break;
     	case 4:
-    	    pqGetLong(&n, Pfin);
+    	    status = pqGetLong(&n, Pfin);
     	    break;
     	default:
     	    fprintf(stderr, "** Unsupported size %d\n", b);
