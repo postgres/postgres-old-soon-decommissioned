@@ -41,9 +41,8 @@ SYSTEM=`../../config.guess | awk -F\- '{ split($3,a,/[0-9]/); printf"%s-%s", $1,
 
 echo "=============== Notes...                              ================="
 echo "postmaster must already be running for the regression tests to succeed."
-echo "The time zone is now set to PST8PDT explicitly by this regression test"
-echo " client frontend. Please report any apparent problems to"
-echo "   ports@postgresql.org"
+echo "The time zone is set to PST8PDT for these tests by the client frontend."
+echo "Please report any apparent problems to ports@postgresql.org"
 echo "See regress/README for more information."
 echo ""
 
