@@ -46,7 +46,7 @@ install: all installdirs remove-old-headers
 	done
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(includedir)/libpq $(DESTDIR)$(includedir_internal)/libpq $(DESTDIR)$(includedir_internal)/lib
+	$(mkinstalldirs) $(DESTDIR)$(includedir)/libpq $(DESTDIR)$(includedir_internal)/libpq
 	$(mkinstalldirs) $(addprefix $(DESTDIR)$(includedir_server)/, $(SUBDIRS))
 
 
