@@ -38,6 +38,7 @@ extern bool Log_connections;
 
 extern int CheckPointTimeout;
 extern int XLOGbuffers;
+extern int XLOGfiles;
 extern int XLOG_DEBUG;
 extern int CommitDelay;
 
@@ -273,6 +274,9 @@ ConfigureNamesInt[] =
 
 	{"wal_buffers",			PGC_POSTMASTER,			&XLOGbuffers,
 	 8, 4, INT_MAX},
+
+	{"wal_files",			PGC_POSTMASTER,			&XLOGfiles,
+	 0, 0, 64},
 
 	{"wal_debug",			PGC_SUSET,				&XLOG_DEBUG,
 	 0, 0, 16},
