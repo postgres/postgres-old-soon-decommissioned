@@ -271,6 +271,33 @@ typedef struct Aggreg
 } Aggreg;
 
 /* ----------------
+ * SubLink
+ *		subLinkType		- EXISTS, ALL, ANY, EXPR
+ *		useor			- TRUE for <>
+ *		lefthand		- list of Var/Const nodes on the left
+ *		oper			- list of Oper nodes
+ *		subselect		- subselect as Query* or parsetree
+ * ----------------
+ */
+typedef enum SubLinkType
+{
+	EXISTS_SUBLINK, ALL_SUBLINK, ANY_SUBLINK, EXPR_SUBLINK,
+	IN_SUBLINK, NOTIN_SUBLINK, OPER_SUBLINK
+} SubLinkType;
+
+
+typedef struct SubLink
+{
+struct Query;
+	NodeTag		type;
+	SubLinkType	subLinkType;
+	bool		useor;
+	List		*lefthand;
+	List		*oper;
+	Node		*subselect;
+} SubLink;
+
+/* ----------------
  * Array
  *		arrayelemtype	- base type of the array's elements (homogenous!)
  *		arrayelemlength - length of that type

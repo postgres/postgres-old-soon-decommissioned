@@ -45,6 +45,7 @@ typedef struct Query
 	bool		isBinary;		/* binary portal? */
 	bool		unionall;		/* union without unique sort */
 	bool		hasAggs;		/* has aggregates in target list */
+	bool		hasSubLinks;	/* has subquery SubLink */
 	
 	char	   *uniqueFlag;		/* NULL, '*', or Unique attribute name */
 	List	   *sortClause;		/* a list of SortClause's */

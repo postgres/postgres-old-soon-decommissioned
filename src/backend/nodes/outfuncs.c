@@ -230,6 +230,8 @@ _outQuery(StringInfo str, Query *node)
  	_outNode(str, node->havingQual);
 	appendStringInfo(str, " :hasAggs ");
 	appendStringInfo(str, (node->hasAggs ? "true" : "false"));
+	appendStringInfo(str, " :hasSubLinks ");
+	appendStringInfo(str, (node->hasSubLinks ? "true" : "false"));
 	appendStringInfo(str, " :unionClause ");
  	_outNode(str, node->unionClause);
 }
@@ -751,6 +753,27 @@ _outAggreg(StringInfo str, Aggreg *node)
 	appendStringInfo(str, buf);
 	appendStringInfo(str, " :usenulls ");
 	appendStringInfo(str, node->usenulls ? "true" : "false");
+}
+
+/*
+ *	SubLink
+ */
+static void
+_outSubLink(StringInfo str, SubLink *node)
+{
+	char		buf[500];
+
+	appendStringInfo(str, "SUBLINK");
+	sprintf(buf, " :subLinkType %d ", node->subLinkType);
+	appendStringInfo(str, buf);
+	appendStringInfo(str, " :useor ");
+	appendStringInfo(str, node->useor ? "true" : "false");
+	appendStringInfo(str, " :lefthand ");
+	_outNode(str, node->lefthand);
+	appendStringInfo(str, " :oper ");
+	_outNode(str, node->oper);
+	appendStringInfo(str, " :subselect ");
+	_outNode(str, node->subselect);
 }
 
 /*
@@ -1647,6 +1670,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_Aggreg:
 				_outAggreg(str, obj);
+				break;
+			case T_SubLink:
+				_outSubLink(str, obj);
 				break;
 			case T_Array:
 				_outArray(str, obj);

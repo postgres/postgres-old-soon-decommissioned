@@ -892,6 +892,28 @@ _copyAggreg(Aggreg *from)
 	return newnode;
 }
 
+/* ----------------
+ *		_copySubLink
+ * ----------------
+ */
+static SubLink *
+_copySubLink(SubLink *from)
+{
+	SubLink	   *newnode = makeNode(SubLink);
+
+	/* ----------------
+	 *	copy remainder of node
+	 * ----------------
+	 */
+	newnode->subLinkType = from->subLinkType;
+	newnode->useor = from->useor;
+	Node_Copy(from, newnode, lefthand);
+	Node_Copy(from, newnode, oper);
+	Node_Copy(from, newnode, subselect);
+
+	return newnode;
+}
+
 static Array *
 _copyArray(Array *from)
 {
@@ -1517,6 +1539,7 @@ _copyQuery(Query *from)
 	Node_Copy(from, newnode, havingQual);
 
 	newnode->hasAggs = from->hasAggs;
+	newnode->hasSubLinks = from->hasSubLinks;
 
 	if (from->unionClause)
 	{
@@ -1672,6 +1695,9 @@ copyObject(void *from)
 			break;
 		case T_Aggreg:
 			retval = _copyAggreg(from);
+			break;
+		case T_SubLink:
+			retval = _copySubLink(from);
 			break;
 
 			/*

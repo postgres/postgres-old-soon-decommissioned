@@ -32,6 +32,7 @@ typedef struct ParseState
 	List	   *p_rtable;
 	List	   *p_insert_columns;
 	bool		p_hasAggs;
+	bool		p_hasSubLinks;
 	bool		p_is_insert;
 	bool		p_is_update;
 	bool		p_is_rule;
