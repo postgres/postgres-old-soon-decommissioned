@@ -954,6 +954,15 @@ _equalFunctionParameter(FunctionParameter *a, FunctionParameter *b)
 }
 
 static bool
+_equalAlterFunctionStmt(AlterFunctionStmt *a, AlterFunctionStmt *b)
+{
+	COMPARE_NODE_FIELD(func);
+	COMPARE_NODE_FIELD(actions);
+
+	return true;
+}
+
+static bool
 _equalRemoveAggrStmt(RemoveAggrStmt *a, RemoveAggrStmt *b)
 {
 	COMPARE_NODE_FIELD(aggname);
@@ -2013,6 +2022,9 @@ equal(void *a, void *b)
 			break;
 		case T_FunctionParameter:
 			retval = _equalFunctionParameter(a, b);
+			break;
+		case T_AlterFunctionStmt:
+			retval = _equalAlterFunctionStmt(a, b);
 			break;
 		case T_RemoveAggrStmt:
 			retval = _equalRemoveAggrStmt(a, b);

@@ -1397,6 +1397,13 @@ typedef struct FunctionParameter
 	/* someday add IN/OUT/INOUT indicator here */
 } FunctionParameter;
 
+typedef struct AlterFunctionStmt
+{
+	NodeTag		type;
+	FuncWithArgs *func;			/* name and args of function */
+	List	   *actions;		/* list of DefElem */
+} AlterFunctionStmt;
+
 /* ----------------------
  *		Drop Aggregate Statement
  * ----------------------

@@ -277,6 +277,7 @@ check_xact_readonly(Node *parsetree)
 	{
 		case T_AlterDatabaseSetStmt:
 		case T_AlterDomainStmt:
+		case T_AlterFunctionStmt:
 		case T_AlterGroupStmt:
 		case T_AlterOwnerStmt:
 		case T_AlterSeqStmt:
@@ -709,6 +710,10 @@ ProcessUtility(Node *parsetree,
 
 		case T_CreateFunctionStmt:		/* CREATE FUNCTION */
 			CreateFunction((CreateFunctionStmt *) parsetree);
+			break;
+
+		case T_AlterFunctionStmt: /* ALTER FUNCTION */
+			AlterFunction((AlterFunctionStmt *) parsetree);
 			break;
 
 		case T_IndexStmt:		/* CREATE INDEX */
@@ -1394,8 +1399,13 @@ CreateCommandTag(Node *parsetree)
 					tag = "ALTER TABLE";
 			}
 			break;
+
 		case T_AlterDomainStmt:
 			tag = "ALTER DOMAIN";
+			break;
+
+		case T_AlterFunctionStmt:
+			tag = "ALTER FUNCTION";
 			break;
 
 		case T_GrantStmt:

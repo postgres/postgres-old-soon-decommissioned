@@ -49,6 +49,7 @@ extern void SetFunctionReturnType(Oid funcOid, Oid newRetType);
 extern void SetFunctionArgType(Oid funcOid, int argIndex, Oid newArgType);
 extern void RenameFunction(List *name, List *argtypes, const char *newname);
 extern void AlterFunctionOwner(List *name, List *argtypes, AclId newOwnerSysId);
+extern void AlterFunction(AlterFunctionStmt *stmt);
 extern void CreateCast(CreateCastStmt *stmt);
 extern void DropCast(DropCastStmt *stmt);
 extern void DropCastById(Oid castOid);
