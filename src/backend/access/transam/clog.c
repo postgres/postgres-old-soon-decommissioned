@@ -22,6 +22,8 @@
 #include <fcntl.h>
 #include <dirent.h>
 #include <errno.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 #include "access/clog.h"
@@ -882,6 +884,7 @@ ScanCLOGDirectory(int cutoffPage, bool doDeletions)
 				found = true;
 				if (doDeletions)
 				{
+					elog(LOG, "removing commit log file %s", clde->d_name);
 					snprintf(path, MAXPGPATH, "%s/%s", ClogDir, clde->d_name);
 					unlink(path);
 				}
