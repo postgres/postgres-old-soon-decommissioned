@@ -234,6 +234,31 @@ typedef Relation *RelationPtr;
 	((relation)->rd_rel->relnamespace)
 
 /*
+ * RelationOpenSmgr
+ *		Open the relation at the smgr level, if not already done.
+ */
+#define RelationOpenSmgr(relation) \
+	do { \
+		if ((relation)->rd_smgr == NULL) \
+			smgrsetowner(&((relation)->rd_smgr), smgropen((relation)->rd_node)); \
+	} while (0)
+
+/*
+ * RelationCloseSmgr
+ *		Close the relation at the smgr level, if not already done.
+ *
+ * Note: smgrclose should unhook from owner pointer, hence the Assert.
+ */
+#define RelationCloseSmgr(relation) \
+	do { \
+		if ((relation)->rd_smgr != NULL) \
+		{ \
+			smgrclose((relation)->rd_smgr); \
+			Assert((relation)->rd_smgr == NULL); \
+		} \
+	} while (0)
+
+/*
  * RELATION_IS_LOCAL
  *		If a rel is either temp or newly created in the current transaction,
  *		it can be assumed to be visible only to the current backend.

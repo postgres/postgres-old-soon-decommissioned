@@ -61,7 +61,7 @@ extern Relation RelationBuildLocalRelation(const char *relname,
  */
 extern void RelationForgetRelation(Oid rid);
 
-extern void RelationCacheInvalidateEntry(Oid relationId, RelFileNode *rnode);
+extern void RelationCacheInvalidateEntry(Oid relationId);
 
 extern void RelationCacheInvalidate(void);
 

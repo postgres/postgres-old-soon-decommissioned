@@ -349,9 +349,7 @@ BackgroundWriterMain(void)
 			/*
 			 * After any checkpoint, close all smgr files.	This is so we
 			 * won't hang onto smgr references to deleted files
-			 * indefinitely. (It is safe to do this because this process
-			 * does not have a relcache, and so no dangling references
-			 * could remain.)
+			 * indefinitely.
 			 */
 			smgrcloseall();
 

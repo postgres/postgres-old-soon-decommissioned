@@ -5521,10 +5521,8 @@ ATExecSetTableSpace(Oid tableOid, Oid newTableSpace)
 	copy_relation_data(rel, dstrel);
 
 	/* schedule unlinking old physical file */
-	if (rel->rd_smgr == NULL)
-		rel->rd_smgr = smgropen(rel->rd_node);
+	RelationOpenSmgr(rel);
 	smgrscheduleunlink(rel->rd_smgr, rel->rd_istemp);
-	rel->rd_smgr = NULL;
 
 	/*
 	 * Now drop smgr references.  The source was already dropped by

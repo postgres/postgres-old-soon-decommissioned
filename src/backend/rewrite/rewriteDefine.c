@@ -484,10 +484,8 @@ DefineQueryRewrite(RuleStmt *stmt)
 	 */
 	if (RelisBecomingView)
 	{
-		if (event_relation->rd_smgr == NULL)
-			event_relation->rd_smgr = smgropen(event_relation->rd_node);
+		RelationOpenSmgr(event_relation);
 		smgrscheduleunlink(event_relation->rd_smgr, event_relation->rd_istemp);
-		event_relation->rd_smgr = NULL;
 	}
 
 	/* Close rel, but keep lock till commit... */

@@ -108,13 +108,13 @@ LocalBufferAlloc(Relation reln, BlockNumber blockNum, bool *foundPtr)
 	 */
 	if (bufHdr->flags & BM_DIRTY || bufHdr->cntxDirty)
 	{
-		SMgrRelation reln;
+		SMgrRelation oreln;
 
 		/* Find smgr relation for buffer */
-		reln = smgropen(bufHdr->tag.rnode);
+		oreln = smgropen(bufHdr->tag.rnode);
 
 		/* And write... */
-		smgrwrite(reln,
+		smgrwrite(oreln,
 				  bufHdr->tag.blockNum,
 				  (char *) MAKE_PTR(bufHdr->data),
 				  true);
