@@ -64,16 +64,18 @@ prune_joinrel(RelOptInfo *rel, List *other_rels)
 	List	   *i = NIL;
 	List	   *result = NIL;
 
-	foreach(i, other_rels)
+	foreach(r1, other_rels)
 	{
-		RelOptInfo *other_rel = (RelOptInfo *) lfirst(i);
+		RelOptInfo *other_rel = (RelOptInfo *) lfirst(r1);
 
 		if (same(rel->relids, other_rel->relids))
-		{
+			/*
+			 *	This are on the same relations,
+			 *	so get the best of their pathlists.
+			 */
 			rel->pathlist = add_pathlist(rel,
 										 rel->pathlist,
 										 other_rel->pathlist);
-		}
 		else
 			result = nconc(result, lcons(other_rel, NIL));
 	}
