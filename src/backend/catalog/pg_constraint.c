@@ -52,6 +52,7 @@ CreateConstraintEntry(const char *constraintName,
 					  char foreignUpdateType,
 					  char foreignDeleteType,
 					  char foreignMatchType,
+					  Node *conExpr,
 					  const char *conBin,
 					  const char *conSrc)
 {
@@ -225,6 +226,24 @@ CreateConstraintEntry(const char *constraintName,
 
 			recordDependencyOn(&conobject, &relobject, deptype);
 		}
+	}
+
+	if (conExpr != NULL)
+	{
+		/*
+		 * Register dependencies from constraint to objects mentioned
+		 * in CHECK expression.  We gin up a rather bogus rangetable
+		 * list to handle any Vars in the constraint.
+		 */
+		RangeTblEntry	rte;
+
+		MemSet(&rte, 0, sizeof(rte));
+		rte.type = T_RangeTblEntry;
+		rte.rtekind = RTE_RELATION;
+		rte.relid = relId;
+
+		recordDependencyOnExpr(&conobject, conExpr, makeList1(&rte),
+							   DEPENDENCY_NORMAL);
 	}
 
 	return conOid;

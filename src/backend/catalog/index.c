@@ -712,7 +712,8 @@ index_create(Oid heapRelationId,
 										   ' ',
 										   ' ',
 										   ' ',
-										   NULL, /* Constraint Bin & Src */
+										   NULL, /* no check constraint */
+										   NULL,
 										   NULL);
 
 			referenced.classId = get_system_catalog_relid(ConstraintRelationName);

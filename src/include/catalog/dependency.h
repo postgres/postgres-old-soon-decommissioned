@@ -83,10 +83,19 @@ typedef struct ObjectAddress
 extern void performDeletion(const ObjectAddress *object,
 							DropBehavior behavior);
 
+extern void recordDependencyOnExpr(const ObjectAddress *depender,
+								   Node *expr, List *rtable,
+								   DependencyType behavior);
+
 /* in pg_depend.c */
 
 extern void recordDependencyOn(const ObjectAddress *depender,
 							   const ObjectAddress *referenced,
 							   DependencyType behavior);
+
+extern void recordMultipleDependencies(const ObjectAddress *depender,
+									   const ObjectAddress *referenced,
+									   int nreferenced,
+									   DependencyType behavior);
 
 #endif   /* DEPENDENCY_H */

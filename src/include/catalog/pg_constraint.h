@@ -158,6 +158,7 @@ extern Oid	CreateConstraintEntry(const char *constraintName,
 								  char foreignUpdateType,
 								  char foreignDeleteType,
 								  char foreignMatchType,
+								  Node *conExpr,
 								  const char *conBin,
 								  const char *conSrc);
 

@@ -2708,6 +2708,7 @@ createForeignKeyConstraint(Relation rel, Relation pkrel,
 								 fkconstraint->fk_upd_action,
 								 fkconstraint->fk_del_action,
 								 fkconstraint->fk_matchtype,
+								 NULL, /* no check constraint */
 								 NULL,
 								 NULL);
 }
