@@ -2088,7 +2088,7 @@ heap_xlog_delete(bool redo, XLogRecPtr lsn, XLogRecord *record)
 	Buffer			buffer;
 	Page			page;
 	OffsetNumber	offnum;
-	ItemId			lp;
+	ItemId			lp = NULL;
 	HeapTupleHeader	htup;
 
 	if (!RelationIsValid(reln))
@@ -2288,7 +2288,7 @@ heap_xlog_update(bool redo, XLogRecPtr lsn, XLogRecord *record, bool move)
 		ItemPointerGetBlockNumber(&(xlrec->target.tid)));
 	Page			page;
 	OffsetNumber	offnum;
-	ItemId			lp;
+	ItemId			lp = NULL;
 	HeapTupleHeader	htup;
 
 	if (!RelationIsValid(reln))
