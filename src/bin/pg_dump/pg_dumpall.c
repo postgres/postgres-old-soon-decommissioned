@@ -870,9 +870,10 @@ runPgDump(const char *dbname)
 	appendPQExpBufferChar(cmd, '\'');
 #else
 	appendPQExpBufferChar(cmd, '"');
-	appendPQExpBuffer(cmd, SYSTEMQUOTE);
 #endif
 	
+	appendPQExpBuffer(cmd, "%s", SYSTEMQUOTE);
+
 	if (verbose)
 		fprintf(stderr, _("%s: running \"%s\"\n"), progname, cmd->data);
 
