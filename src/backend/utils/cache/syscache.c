@@ -336,17 +336,6 @@ static struct cachedesc cacheinfo[] = {
 		offsetof(FormData_pg_rewrite, ev_qual),
 		NULL,
 	(ScanFunc) NULL},
-	{ProcedureRelationName,		/* PROSRC */
-		1,
-		{
-			Anum_pg_proc_prosrc,
-			0,
-			0,
-			0
-		},
-		offsetof(FormData_pg_proc, prosrc),
-		ProcedureSrcIndex,
-	(ScanFunc) ProcedureSrcIndexScan},
 	{OperatorClassRelationName, /* CLADEFTYPE */
 		1,
 		{
