@@ -1440,7 +1440,7 @@ op_error(char *op, int arg1, int arg2)
 	 op, tname(tp1),tname(tp2));
     elog(NOTICE, "You will either have to retype this query using an");
     elog(NOTICE, "explicit cast, or you will have to define the operator");
-    elog(WARN, "%s for %s and %s using DEFINE OPERATOR", 
+    elog(WARN, "%s for %s and %s using CREATE OPERATOR", 
 	 op, tname(tp1),tname(tp2));
 }
 
