@@ -265,10 +265,10 @@ _bt_getroot(Relation rel, int access)
 	}
 	else
 	{
-		rootbuf = _bt_getbuf(rel, metad->btm_root, access);
+		rootblkno = metad->btm_root;
+		_bt_relbuf(rel, metabuf, BT_READ);	/* done with the meta page */
 
-		/* done with the meta page */
-		_bt_relbuf(rel, metabuf, BT_READ);
+		rootbuf = _bt_getbuf(rel, rootblkno, access);
 	}
 
 	/*
