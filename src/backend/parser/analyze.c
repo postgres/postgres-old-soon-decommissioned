@@ -779,6 +779,7 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 
 					sequence = makeNode(CreateSeqStmt);
 					sequence->seqname = pstrdup(sname);
+					sequence->istemp = stmt->istemp;
 					sequence->options = NIL;
 
 					elog(NOTICE, "CREATE TABLE will create implicit sequence '%s' for SERIAL column '%s.%s'",
@@ -2716,7 +2717,7 @@ transformAlterTableStmt(ParseState *pstate, AlterTableStmt *stmt)
 	return qry;
 }
 
-/* 
+/*
  * Transform uses of %TYPE in a statement.
  */
 static Node *

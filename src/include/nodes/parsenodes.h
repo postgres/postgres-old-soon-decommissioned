@@ -402,6 +402,7 @@ typedef struct CreateSeqStmt
 {
 	NodeTag		type;
 	char	   *seqname;		/* the relation to create */
+  	bool		istemp;			/* is this a temp sequence? */
 	List	   *options;
 } CreateSeqStmt;
 

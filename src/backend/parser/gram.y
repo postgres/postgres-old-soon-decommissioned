@@ -1574,11 +1574,12 @@ CreateAsElement:  ColId
  *
  *****************************************************************************/
 
-CreateSeqStmt:  CREATE SEQUENCE relation_name OptSeqList
+CreateSeqStmt:  CREATE OptTemp SEQUENCE relation_name OptSeqList
 				{
 					CreateSeqStmt *n = makeNode(CreateSeqStmt);
-					n->seqname = $3;
-					n->options = $4;
+					n->istemp = $2;
+					n->seqname = $4;
+					n->options = $5;
 					$$ = (Node *)n;
 				}
 		;
