@@ -30,7 +30,7 @@ extern int	fseeko(FILE *stream, off_t offset, int whence);
 extern off_t ftello(FILE *stream);
 #endif
 
-#if !defined(FRONTEND) && (defined(WIN32) || defined(CYGWIN))
+#if defined(WIN32) || defined(CYGWIN)
 /*
  * Win32 doesn't have reliable rename/unlink during concurrent access
  */

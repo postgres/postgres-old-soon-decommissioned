@@ -17,7 +17,13 @@
 
 #ifndef TEST_VERSION
 
+#if defined(WIN32) || defined(CYGWIN)
+
+#ifndef FRONTEND
 #include "postgres.h"
+#else
+#include "postgres_fe.h"
+#endif
 
 #undef rename
 #undef unlink
@@ -95,6 +101,7 @@ pgunlink(const char *path)
 	return 0;
 }
 
+#endif
 
 #else
 

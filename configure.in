@@ -906,10 +906,13 @@ esac
 # Win32 can't to rename or unlink on an open file
 case $host_os in mingw*)
 AC_LIBOBJ(copydir)
-AC_LIBOBJ(dirmod)
 AC_LIBOBJ(gettimeofday)
 AC_LIBOBJ(pipe)
 AC_LIBOBJ(rand) ;;
+esac
+
+case $host_os in mingw*|cygwin*)
+AC_LIBOBJ(dirmod) ;;
 esac
 
 if test "$with_readline" = yes; then
