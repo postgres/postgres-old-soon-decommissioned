@@ -1448,7 +1448,7 @@ start:;
 	sprintf(str, "select %s%s from %.*s", attrdef->adsrc, cast,
 			NAMEDATALEN, rel->rd_rel->relname.data);
 	setheapoverride(true);
-	planTree_list = (List *) pg_parse_and_plan(str, NULL, 0, &queryTree_list, None);
+	planTree_list = (List *) pg_parse_and_plan(str, NULL, 0, &queryTree_list, None, FALSE);
 	setheapoverride(false);
 	query = (Query *) (queryTree_list->qtrees[0]);
 
@@ -1519,7 +1519,7 @@ StoreRelCheck(Relation rel, ConstrCheck *check)
 	sprintf(str, "select 1 from %.*s where %s",
 			NAMEDATALEN, rel->rd_rel->relname.data, check->ccsrc);
 	setheapoverride(true);
-	planTree_list = (List *) pg_parse_and_plan(str, NULL, 0, &queryTree_list, None);
+	planTree_list = (List *) pg_parse_and_plan(str, NULL, 0, &queryTree_list, None, FALSE);
 	setheapoverride(false);
 	query = (Query *) (queryTree_list->qtrees[0]);
 

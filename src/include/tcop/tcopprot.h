@@ -24,10 +24,12 @@
 #ifndef BOOTSTRAP_INCLUDE
 extern List *
 pg_parse_and_plan(char *query_string, Oid *typev, int nargs,
-				  QueryTreeList **queryListP, CommandDest dest);
+				  QueryTreeList **queryListP, CommandDest dest,
+				  bool aclOverride);
 extern void pg_exec_query(char *query_string);
+extern void pg_exec_query_acl_override(char *query_string);
 extern void
-pg_exec_query_dest(char *query_string, CommandDest dest);
+pg_exec_query_dest(char *query_string, CommandDest dest, bool aclOverride);
 
 #endif							/* BOOTSTRAP_HEADER */
 

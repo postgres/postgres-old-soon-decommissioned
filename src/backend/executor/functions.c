@@ -113,7 +113,7 @@ init_execution_state(FunctionCachePtr fcache,
 
 
 	planTree_list = (List *)
-		pg_parse_and_plan(fcache->src, fcache->argOidVect, nargs, &queryTree_list, None);
+		pg_parse_and_plan(fcache->src, fcache->argOidVect, nargs, &queryTree_list, None, FALSE);
 
 	for (i = 0; i < queryTree_list->len; i++)
 	{

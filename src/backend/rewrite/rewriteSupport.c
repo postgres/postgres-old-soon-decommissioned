@@ -158,6 +158,10 @@ prs2_addToRelation(Oid relid,
 	 */
 	oldcxt = MemoryContextSwitchTo((MemoryContext) CacheCxt);
 	thisRule = (RewriteRule *) palloc(sizeof(RewriteRule));
+	if (qual != NULL)
+		qual = copyObject(qual);
+	if (actions != NIL)
+		actions = copyObject(actions);
 	MemoryContextSwitchTo(oldcxt);
 
 	thisRule->ruleId = ruleId;

@@ -137,7 +137,7 @@ PQexec(char *query)
 	 *	end up on the top of the portal stack.
 	 * ----------------
 	 */
-	pg_exec_query_dest(query, Local);
+	pg_exec_query_dest(query, Local, FALSE);
 
 	/* ----------------
 	 *	pop the portal off the portal stack and return the

@@ -2033,6 +2033,12 @@ DESCR("sequence current value");
 /* for multi-byte support */
 DATA(insert OID = 1039 (  getdatabaseencoding	   PGUID 11 f t f 0 f 19 "0" 100 0 0 100  foo bar ));
 
+/* System-view support functions */
+DATA(insert OID = 1640 (  pg_get_ruledef	   PGUID 11 f t f 1 f 25 "19" 100 0 0 100  foo bar ));
+DESCR("source text of a rule");
+DATA(insert OID = 1641 (  pg_get_viewdef	   PGUID 11 f t f 1 f 25 "19" 100 0 0 100  foo bar ));
+DESCR("select statement of a view");
+
 /*
  * prototypes for functions pg_proc.c
  */

@@ -528,7 +528,7 @@ xfunc_func_expense(LispValue node, LispValue args)
 			if (nargs > 0)
 				argOidVect = proc->proargtypes;
 			planlist = (List) pg_parse_and_plan(pq_src, argOidVect, nargs,
-												&parseTree_list, None);
+												&parseTree_list, None, FALSE);
 			if (IsA(node, Func))
 				set_func_planlist((Func) node, planlist);
 
