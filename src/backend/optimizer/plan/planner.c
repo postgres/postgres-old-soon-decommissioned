@@ -60,8 +60,6 @@ make_groupPlan(List **tlist, bool tuplePerGroup,
  *****************************************************************************/
 
 
-/***S*H***/ /* Anfang */
-
 static List *
 check_having_qual_for_aggs(Node *clause, List *subplanTargetList)
 {
@@ -84,7 +82,6 @@ check_having_qual_for_aggs(Node *clause, List *subplanTargetList)
 	  ((Var *) clause)->varattno = subplanVar->resdom->resno;
 	  return NIL;
 	}
-        /***S*H***/
 	else if (is_funcclause(clause) || not_clause(clause) || 
 		 or_clause(clause) || and_clause(clause))
 	{
@@ -165,7 +162,6 @@ check_having_qual_for_aggs(Node *clause, List *subplanTargetList)
 		return NIL;
 	}
 }
-/***S*H***/ /* Ende */
 
 
 Plan *
