@@ -8,6 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
+SRCDIR = ../..
+include ../../Makefile.global
+
 INCLUDE_OPT = -I.. \
               -I../include \
               -I../../include
