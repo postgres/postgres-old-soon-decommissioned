@@ -13,11 +13,10 @@
 #ifndef	SYSCACHE_H
 #define SYSCACHE_H
 
+#include "access/attnum.h"
+
 /*#define CACHEDEBUG*/ 	/* turns DEBUG elogs on */
 
-#include "postgres.h"
-#include "access/htup.h"
-#include "nodes/pg_list.h"
 
 /*
  *	Declarations for util/syscache.c.
