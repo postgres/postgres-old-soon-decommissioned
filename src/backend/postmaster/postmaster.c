@@ -2268,7 +2268,7 @@ static int SetPidFile(pid_t pid, char *progname, int port, char *datadir,
 			 * Another postmaster is running
 			 */
 			fprintf(stderr, "Can't create pidfile: %s\n", PidFile);
-			fprintf(stderr, "Is another postmaser (pid: %s) running?\n", pidstr);
+			fprintf(stderr, "Is another postmaster (pid: %s) running?\n", pidstr);
 			return(-1);
 		}
 	}
