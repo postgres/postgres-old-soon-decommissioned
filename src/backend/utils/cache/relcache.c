@@ -1418,7 +1418,14 @@ RelationPurgeLocalRelation(bool xactCommitted)
 	     * remove the file if we abort. This is so that files for 
 	     * tables created inside a transaction block get removed.
 	     */
-	    smgrunlink(reln->rd_rel->relsmgr, reln);
+	    if(reln->rd_istemp) {
+	        if(!(reln->rd_tmpunlinked)) {
+		    smgrunlink(reln->rd_rel->relsmgr, reln);
+		    reln->rd_tmpunlinked = TRUE;
+		} 
+	    } else {
+		smgrunlink(reln->rd_rel->relsmgr, reln);
+	    }
 	}
 	
 	reln->rd_islocal = FALSE;

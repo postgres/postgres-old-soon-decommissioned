@@ -876,7 +876,7 @@ BackendStartup(StartupInfo *packet, /* client's startup packet */
     static char	envEntry[4][2 * ARGV_SIZE];
     
     for (i = 0; i < 4; ++i) {
-	memset(envEntry[i], 2*ARGV_SIZE,0);
+	memset(envEntry[i], 0, 2*ARGV_SIZE);
     }
     /*
      * Set up the necessary environment variables for the backend

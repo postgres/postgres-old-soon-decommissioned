@@ -316,6 +316,13 @@ heap_creatr(char *name,
      }
 
     /* ----------------
+     *  remember if this is a temp relation
+     * ----------------
+     */
+
+    rdesc->rd_istemp = isTemp;
+
+    /* ----------------
      *	have the storage manager create the relation.
      * ----------------
      */
@@ -1306,6 +1313,9 @@ heap_destroy(char *relname)
      * ----------------
      */
     (void) smgrunlink(rdesc->rd_rel->relsmgr, rdesc);
+    if(rdesc->rd_istemp) {
+        rdesc->rd_tmpunlinked = TRUE;
+    }
     heap_close(rdesc);
 }
 
@@ -1320,6 +1330,9 @@ heap_destroyr(Relation rdesc)
 {
     ReleaseTmpRelBuffers(rdesc);
     (void) smgrunlink(rdesc->rd_rel->relsmgr, rdesc);
+    if(rdesc->rd_istemp) {
+        rdesc->rd_tmpunlinked = TRUE;
+    }
     heap_close(rdesc);
     RemoveFromTempRelList(rdesc);
 }
@@ -1357,7 +1370,7 @@ InitTempRelList()
     tempRels = (TempRelList*)malloc(sizeof(TempRelList));
     tempRels->size = TEMP_REL_LIST_SIZE;
     tempRels->rels = (Relation*)malloc(sizeof(Relation) * tempRels->size);
-    memset(tempRels->rels, sizeof(Relation) * tempRels->size , 0);
+    memset(tempRels->rels, 0, sizeof(Relation) * tempRels->size);
     tempRels->num = 0;
 }
 
@@ -1418,7 +1431,7 @@ DestroyTempRels()
     for (i=0;i<tempRels->num;i++) {
 	rdesc = tempRels->rels[i];
 	/* rdesc may be NULL if it has been removed from the list already */
-	if (rdesc) 
+	if (rdesc)
 	    heap_destroyr(rdesc);
     }
     free(tempRels->rels);
