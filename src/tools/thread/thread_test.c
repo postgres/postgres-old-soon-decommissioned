@@ -64,8 +64,8 @@ main(int argc, char *argv[])
 void		func_call_1(void);
 void		func_call_2(void);
 
-#define		TEMP_FILENAME_1	"/tmp/thread_test.1.XXXXX"
-#define		TEMP_FILENAME_2	"/tmp/thread_test.2.XXXXX"
+#define		TEMP_FILENAME_1	"/tmp/thread_test.1.XXXXXX"
+#define		TEMP_FILENAME_2	"/tmp/thread_test.2.XXXXXX"
 
 char	   *temp_filename_1;
 char	   *temp_filename_2;
