@@ -586,7 +586,7 @@ tryAgain:
 
 	if (fileName == NULL)
 	{
-		elog(WARN, "fileNameOpenFile: NULL fname");
+		elog(ABORT, "fileNameOpenFile: NULL fname");
 	}
 	vfdP->fileName = malloc(strlen(fileName) + 1);
 	strcpy(vfdP->fileName, fileName);
@@ -763,7 +763,7 @@ FileSeek(File file, long offset, int whence)
 					lseek(VfdCache[file].fd, offset, whence);
 				return returnCode;
 			default:
-				elog(WARN, "FileSeek: invalid whence: %d", whence);
+				elog(ABORT, "FileSeek: invalid whence: %d", whence);
 				break;
 		}
 	}

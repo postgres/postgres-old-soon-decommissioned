@@ -243,7 +243,7 @@ _equalParam(Param *a, Param *b)
 			return (true);
 			break;
 		default:
-			elog(WARN, "_equalParam: Invalid paramkind value: %d",
+			elog(ABORT, "_equalParam: Invalid paramkind value: %d",
 				 a->paramkind);
 	}
 

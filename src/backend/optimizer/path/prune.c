@@ -133,7 +133,7 @@ prune_rel_paths(List *rel_list)
 			rel->size = compute_joinrel_size(cheapest);
 		}
 		else
-			elog(WARN, "non JoinPath called");
+			elog(ABORT, "non JoinPath called");
 	}
 }
 

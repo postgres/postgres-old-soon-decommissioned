@@ -123,7 +123,7 @@ _bt_doinsert(Relation rel, BTItem btitem, bool index_is_unique, Relation heapRel
 				htup = heap_fetch(heapRel, true, &(itup->t_tid), NULL);
 				if (htup != (HeapTuple) NULL)
 				{				/* it is a duplicate */
-					elog(WARN, "Cannot insert a duplicate key into a unique index");
+					elog(ABORT, "Cannot insert a duplicate key into a unique index");
 				}
 				/* get next offnum */
 				if (offset < maxoff)
@@ -1442,7 +1442,7 @@ _bt_updateitem(Relation rel,
 	 * if(IndexTupleDSize(newItem->bti_itup) >
 	 * IndexTupleDSize(item->bti_itup)) { elog(NOTICE, "trying to
 	 * overwrite a smaller value with a bigger one in _bt_updateitem");
-	 * elog(WARN, "this is not good."); }
+	 * elog(ABORT, "this is not good."); }
 	 */
 
 	oldIndexTuple = &(item->bti_itup);

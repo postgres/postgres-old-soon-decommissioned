@@ -82,7 +82,7 @@ PQfn(int fnid,
 		}
 		else if (args[i].len > sizeof(int4))
 		{
-			elog(WARN, "arg_length of argument %d too long", i);
+			elog(ABORT, "arg_length of argument %d too long", i);
 		}
 		else
 		{
@@ -125,7 +125,7 @@ PQfn(int fnid,
  *		If a query is does not return tuples, return "C query-command".
  *		If there is an error: return "E error-message".
  *
- *		Note: if we get a serious error or an elog(WARN), then PQexec never
+ *		Note: if we get a serious error or an elog(ABORT), then PQexec never
  *		returns because the system longjmp's back to the main loop.
  * ----------------
  */
@@ -211,7 +211,7 @@ pqtest_PQexec(char *q)
 		case 'P':
 			a = PQparray(&res[1]);
 			if (a == NULL)
-				elog(WARN, "pqtest_PQexec: PQparray could not find portal %s",
+				elog(ABORT, "pqtest_PQexec: PQparray could not find portal %s",
 					 res);
 
 			t = PQntuples(a);

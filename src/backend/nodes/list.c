@@ -237,7 +237,7 @@ nconc(List *l1, List *l2)
 	if (l2 == NIL)
 		return l1;
 	if (l1 == l2)
-		elog(WARN, "tryout to nconc a list to itself");
+		elog(ABORT, "tryout to nconc a list to itself");
 
 	for (temp = l1; lnext(temp) != NULL; temp = lnext(temp))
 		;

@@ -155,10 +155,10 @@ InitBufferPool(IPCKey key)
 	 */
 	if (sizeof(struct sbufdesc) != PADDED_SBUFDESC_SIZE ||
 		sizeof(struct sbufdesc_unpadded) > PADDED_SBUFDESC_SIZE)
-		elog(WARN, "Internal error:  sbufdesc does not have the proper size, "
+		elog(ABORT, "Internal error:  sbufdesc does not have the proper size, "
 			 "contact the Postgres developers");
 	if (sizeof(struct sbufdesc_unpadded) <= PADDED_SBUFDESC_SIZE / 2)
-		elog(WARN, "Internal error:  sbufdesc is greatly over-sized, "
+		elog(ABORT, "Internal error:  sbufdesc is greatly over-sized, "
 			 "contact the Postgres developers");
 
 	Data_Descriptors = NBuffers;

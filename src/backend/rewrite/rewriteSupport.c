@@ -56,7 +56,7 @@ RuleIdGetActionInfo(Oid ruleoid, bool *instead_flag, Query **parseTrees)
 									ObjectIdGetDatum(ruleoid),
 									0, 0, 0);
 	if (ruletuple == NULL)
-		elog(WARN, "rule %u isn't in rewrite system relation", ruleoid);
+		elog(ABORT, "rule %u isn't in rewrite system relation", ruleoid);
 
 	ruleaction = (char *)heap_getattr(ruletuple,
 									  InvalidBuffer,
@@ -72,7 +72,7 @@ RuleIdGetActionInfo(Oid ruleoid, bool *instead_flag, Query **parseTrees)
 
 	if (action_is_null || instead_is_null)
 	{
-		elog(WARN, "internal error: rewrite rule not properly set up");
+		elog(ABORT, "internal error: rewrite rule not properly set up");
 	}
 
 	ruleaction = textout((struct varlena *) ruleaction);

@@ -275,7 +275,7 @@ nodeRead(bool read_car_only)
 			make_dotted_pair_cell = true;
 			break;
 		default:
-			elog(WARN, "nodeRead: Bad type %d", type);
+			elog(ABORT, "nodeRead: Bad type %d", type);
 			break;
 	}
 	if (make_dotted_pair_cell)

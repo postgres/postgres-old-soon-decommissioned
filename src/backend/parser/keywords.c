@@ -248,7 +248,7 @@ AtomValueGetString(int atomval)
 		if (ScanKeywords[i].value == atomval)
 			return (ScanKeywords[i].name);
 
-	elog(WARN, "AtomGetString called with bogus atom # : %d", atomval);
+	elog(ERROR, "AtomGetString called with bogus atom # : %d", atomval);
 	return (NULL);
 }
 

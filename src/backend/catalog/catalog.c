@@ -132,7 +132,7 @@ newoid()
 
 	GetNewObjectId(&lastoid);
 	if (!OidIsValid(lastoid))
-		elog(WARN, "newoid: GetNewObjectId returns invalid oid");
+		elog(ABORT, "newoid: GetNewObjectId returns invalid oid");
 	return lastoid;
 }
 
@@ -162,7 +162,7 @@ fillatt(TupleDesc tupleDesc)
 	AttributeTupleForm *att = tupleDesc->attrs;
 
 	if (natts < 0 || natts > MaxHeapAttributeNumber)
-		elog(WARN, "fillatt: %d attributes is too large", natts);
+		elog(ABORT, "fillatt: %d attributes is too large", natts);
 	if (natts == 0)
 	{
 		elog(DEBUG, "fillatt: called with natts == 0");
@@ -178,7 +178,7 @@ fillatt(TupleDesc tupleDesc)
 									0, 0, 0);
 		if (!HeapTupleIsValid(tuple))
 		{
-			elog(WARN, "fillatt: unknown atttypid %ld",
+			elog(ABORT, "fillatt: unknown atttypid %ld",
 				 (*attributeP)->atttypid);
 		}
 		else

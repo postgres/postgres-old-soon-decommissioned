@@ -110,7 +110,7 @@ LocalBufferAlloc(Relation reln, BlockNumber blockNum, bool *foundPtr)
 		}
 	}
 	if (bufHdr == NULL)
-		elog(WARN, "no empty local buffer.");
+		elog(ABORT, "no empty local buffer.");
 
 	/*
 	 * this buffer is not referenced but it might still be dirty (the last

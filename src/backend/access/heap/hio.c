@@ -60,7 +60,7 @@ RelationPutHeapTuple(Relation relation,
 #ifndef NO_BUFFERISVALID
 	if (!BufferIsValid(buffer))
 	{
-		elog(WARN, "RelationPutHeapTuple: no buffer for %ld in %s",
+		elog(ABORT, "RelationPutHeapTuple: no buffer for %ld in %s",
 			 blockIndex, &relation->rd_rel->relname);
 	}
 #endif
@@ -157,7 +157,7 @@ RelationPutHeapTupleAtEnd(Relation relation, HeapTuple tuple)
 		PageInit(pageHeader, BufferGetPageSize(buffer), 0);
 
 		if (len > PageGetFreeSpace(pageHeader))
-			elog(WARN, "Tuple is too big: size %d", len);
+			elog(ABORT, "Tuple is too big: size %d", len);
 	}
 
 	offnum = PageAddItem((Page) pageHeader, (Item) tuple,

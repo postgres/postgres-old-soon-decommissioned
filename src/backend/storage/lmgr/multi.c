@@ -100,14 +100,14 @@ InitMultiLevelLockm()
 	MultiTableId = tableId;
 	if (!(MultiTableId))
 	{
-		elog(WARN, "InitMultiLockm: couldnt initialize lock table");
+		elog(ABORT, "InitMultiLockm: couldnt initialize lock table");
 	}
 	/* -----------------------
 	 * No short term lock table for now.  -Jeff 15 July 1991
 	 *
 	 * ShortTermTableId = LockTabRename(tableId);
 	 * if (! (ShortTermTableId)) {
-	 *	 elog(WARN,"InitMultiLockm: couldnt rename lock table");
+	 *	 elog(ABORT,"InitMultiLockm: couldnt rename lock table");
 	 * }
 	 * -----------------------
 	 */
@@ -237,7 +237,7 @@ MultiAcquire(LockTableId tableId,
 			locks[2] = lockt;
 			break;
 		default:
-			elog(WARN, "MultiAcquire: bad lock level");
+			elog(ABORT, "MultiAcquire: bad lock level");
 			return (FALSE);
 	}
 
@@ -390,7 +390,7 @@ MultiRelease(LockTableId tableId,
 			locks[2] = lockt;
 			break;
 		default:
-			elog(WARN, "MultiRelease: bad lockt");
+			elog(ABORT, "MultiRelease: bad lockt");
 	}
 
 	/*
@@ -435,7 +435,7 @@ MultiRelease(LockTableId tableId,
 			status = LockRelease(tableId, tmpTag, locks[i]);
 			if (!status)
 			{
-				elog(WARN, "MultiRelease: couldn't release after error");
+				elog(ABORT, "MultiRelease: couldn't release after error");
 			}
 		}
 	}

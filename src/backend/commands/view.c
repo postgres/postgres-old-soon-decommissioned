@@ -89,7 +89,7 @@ DefineVirtualRelation(char *relname, List *tlist)
 	}
 	else
 	{
-		elog(WARN, "attempted to define virtual relation with no attrs");
+		elog(ABORT, "attempted to define virtual relation with no attrs");
 	}
 
 	/*

@@ -72,7 +72,7 @@ boolin(char *b)
 			break;
 	}
 
-	elog(WARN,"Bad boolean external representation '%s'", b);
+	elog(ABORT,"Bad boolean external representation '%s'", b);
 	/* not reached */
 	return (FALSE);
 } /* boolin() */

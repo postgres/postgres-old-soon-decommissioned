@@ -134,7 +134,7 @@ PageAddItem(Page page,
 			if (((*itemId).lp_flags & LP_USED) ||
 				((*itemId).lp_len != 0))
 			{
-				elog(WARN, "PageAddItem: tried overwrite of used ItemId");
+				elog(ABORT, "PageAddItem: tried overwrite of used ItemId");
 				return (InvalidOffsetNumber);
 			}
 		}

@@ -89,7 +89,7 @@ PrivateMemoryCreate(IpcMemoryKey memKey,
 	IpcPrivateMem[memid].id = memid;
 	IpcPrivateMem[memid].memptr = malloc(size);
 	if (IpcPrivateMem[memid].memptr == NULL)
-		elog(WARN, "PrivateMemoryCreate: not enough memory to malloc");
+		elog(ABORT, "PrivateMemoryCreate: not enough memory to malloc");
 	MemSet(IpcPrivateMem[memid].memptr, 0, size);		/* XXX PURIFY */
 
 	return (memid++);

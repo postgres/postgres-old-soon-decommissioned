@@ -2034,7 +2034,7 @@ parsePlanString(void)
 	}
 	else
 	{
-		elog(WARN, "badly formatted planstring \"%.10s\"...\n", token);
+		elog(ABORT, "badly formatted planstring \"%.10s\"...\n", token);
 	}
 
 	return ((Node *) return_value);
@@ -2073,7 +2073,7 @@ readDatum(Oid type)
 	{
 		if (length > sizeof(Datum))
 		{
-			elog(WARN, "readValue: byval & length = %d", length);
+			elog(ABORT, "readValue: byval & length = %d", length);
 		}
 		s = (char *) (&res);
 		for (i = 0; i < sizeof(Datum); i++)
@@ -2101,7 +2101,7 @@ readDatum(Oid type)
 	token = lsptok(NULL, &tokenLength); /* skip the ']' */
 	if (token[0] != ']')
 	{
-		elog(WARN, "readValue: ']' expected, length =%d", length);
+		elog(ABORT, "readValue: ']' expected, length =%d", length);
 	}
 
 	return (res);

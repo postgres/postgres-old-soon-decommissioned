@@ -203,10 +203,10 @@ InsertStmt:
 		  LPAREN  tuplelist RPAREN
 				{
 					if (num_tuples_read != numattr)
-						elog(WARN,"incorrect number of values for tuple");
+						elog(ABORT,"incorrect number of values for tuple");
 					if (reldesc == (Relation)NULL)
 					{
-						elog(WARN,"must OPEN RELATION before INSERT\n");
+						elog(ABORT,"must OPEN RELATION before INSERT\n");
 						err_out();
 					}
 					if (DebugMode)

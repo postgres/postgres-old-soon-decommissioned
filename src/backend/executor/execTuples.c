@@ -315,7 +315,7 @@ ExecAllocTableSlot(TupleTable table)
 		 * table->size =  newsize;
 		 */
 		elog(NOTICE, "Plan requires more slots than are available");
-		elog(WARN, "send mail to your local executor guru to fix this");
+		elog(ABORT, "send mail to your local executor guru to fix this");
 	}
 
 	/* ----------------
@@ -859,7 +859,7 @@ NodeGetResultTupleSlot(Plan *node)
 			 *	  should never get here
 			 * ----------------
 			 */
-			elog(WARN, "NodeGetResultTupleSlot: node not yet supported: %d ",
+			elog(ABORT, "NodeGetResultTupleSlot: node not yet supported: %d ",
 				 nodeTag(node));
 
 			return NULL;

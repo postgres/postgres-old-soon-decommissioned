@@ -166,7 +166,7 @@ ProcessPortal(char *portalName,
 	 */
 
 	if (PortalNameIsSpecial(portalName))
-		elog(WARN,
+		elog(ABORT,
 			 "The portal name %s is reserved for internal use",
 			 portalName);
 

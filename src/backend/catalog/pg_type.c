@@ -334,7 +334,7 @@ TypeCreate(char *typeName,
 	typeObjectId = TypeGet(typeName, &defined);
 	if (OidIsValid(typeObjectId) && defined)
 	{
-		elog(WARN, "TypeCreate: type %s already defined", typeName);
+		elog(ABORT, "TypeCreate: type %s already defined", typeName);
 	}
 
 	/* ----------------
@@ -347,7 +347,7 @@ TypeCreate(char *typeName,
 		elementObjectId = TypeGet(elementTypeName, &defined);
 		if (!defined)
 		{
-			elog(WARN, "TypeCreate: type %s is not defined", elementTypeName);
+			elog(ABORT, "TypeCreate: type %s is not defined", elementTypeName);
 		}
 	}
 
@@ -558,7 +558,7 @@ TypeRename(char *oldTypeName, char *newTypeName)
 	type_oid = TypeGet(newTypeName, &defined);
 	if (OidIsValid(type_oid) && defined)
 	{
-		elog(WARN, "TypeRename: type %s already defined", newTypeName);
+		elog(ABORT, "TypeRename: type %s already defined", newTypeName);
 	}
 
 	/* get the type tuple from the catalog index scan manager */
@@ -591,7 +591,7 @@ TypeRename(char *oldTypeName, char *newTypeName)
 	}
 	else
 	{
-		elog(WARN, "TypeRename: type %s not defined", oldTypeName);
+		elog(ABORT, "TypeRename: type %s not defined", oldTypeName);
 	}
 
 	/* finish up */

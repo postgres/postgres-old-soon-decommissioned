@@ -56,7 +56,7 @@ FormSortKeys(Sort *sortnode)
 	 * ----------------
 	 */
 	if (keycount <= 0)
-		elog(WARN, "FormSortKeys: keycount <= 0");
+		elog(ABORT, "FormSortKeys: keycount <= 0");
 	sortkeys = (ScanKey) palloc(keycount * sizeof(ScanKeyData));
 
 	/* ----------------

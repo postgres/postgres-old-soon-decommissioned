@@ -90,7 +90,7 @@ SetDefine(char *querystr, char *typename)
 							  ObjectIdGetDatum(setoid),
 							  0, 0, 0);
 	if (!HeapTupleIsValid(tup))
-		elog(WARN, "setin: unable to define set %s", querystr);
+		elog(ABORT, "setin: unable to define set %s", querystr);
 
 	/*
 	 * We can tell whether the set was already defined by checking the
@@ -145,7 +145,7 @@ SetDefine(char *querystr, char *typename)
 			setoid = newtup->t_oid;
 		}
 		else
-			elog(WARN, "setin: could not find new set oid tuple");
+			elog(ABORT, "setin: could not find new set oid tuple");
 		heap_endscan(pg_proc_scan);
 
 		if (RelationGetRelationTupleForm(procrel)->relhasindex)
