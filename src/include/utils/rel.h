@@ -149,7 +149,9 @@ typedef Relation *RelationPtr;
  * RelationDecrementReferenceCount
  *		Decrements relation reference count.
  */
-#define RelationDecrementReferenceCount(relation) ((relation)->rd_refcnt -= 1)
+#define RelationDecrementReferenceCount(relation) \
+	(AssertMacro((relation)->rd_refcnt > 0), \
+	 (relation)->rd_refcnt -= 1)
 
 /*
  * RelationGetForm
