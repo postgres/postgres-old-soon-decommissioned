@@ -493,25 +493,25 @@ bf_load(int mode)
 /* ciphers */
 
 static PX_Cipher *
-rj_128_ecb()
+rj_128_ecb(void)
 {
 	return rj_load(MODE_ECB);
 }
 
 static PX_Cipher *
-rj_128_cbc()
+rj_128_cbc(void)
 {
 	return rj_load(MODE_CBC);
 }
 
 static PX_Cipher *
-bf_ecb_load()
+bf_ecb_load(void)
 {
 	return bf_load(MODE_ECB);
 }
 
 static PX_Cipher *
-bf_cbc_load()
+bf_cbc_load(void)
 {
 	return bf_load(MODE_CBC);
 }

@@ -264,7 +264,7 @@ parse_lolist(LODumpMaster * pgLO)
 
 
 static void
-usage()
+usage(void)
 {
 	printf("\npg_dumplo %s - PostgreSQL large objects dump\n", PG_VERSION);
 	puts("pg_dumplo [option]\n\n"

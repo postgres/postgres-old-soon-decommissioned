@@ -107,7 +107,7 @@ typedef struct
 }	CState;
 
 static void
-usage()
+usage(void)
 {
 	fprintf(stderr, "usage: pgbench [-h hostname][-p port][-c nclients][-t ntransactions][-s scaling_factor][-n][-C][-v][-S][-N][-l][-U login][-P password][-d][dbname]\n");
 	fprintf(stderr, "(initialize mode): pgbench -i [-h hostname][-p port][-s scaling_factor][-U login][-P password][-d][dbname]\n");
@@ -122,7 +122,7 @@ getrand(int min, int max)
 
 /* set up a connection to the backend */
 static PGconn *
-doConnect()
+doConnect(void)
 {
 	PGconn	   *con;
 	PGresult   *res;
