@@ -4546,6 +4546,19 @@ c_expr:  attr
 					n->agg_distinct = false;
 					$$ = (Node *)n;
 				}
+		| func_name '(' ALL expr_list ')'
+				{
+					FuncCall *n = makeNode(FuncCall);
+					n->funcname = $1;
+					n->args = $4;
+					n->agg_star = false;
+					n->agg_distinct = false;
+					/* Ideally we'd mark the FuncCall node to indicate
+					 * "must be an aggregate", but there's no provision
+					 * for that in FuncCall at the moment.
+					 */
+					$$ = (Node *)n;
+				}
 		| func_name '(' DISTINCT expr_list ')'
 				{
 					FuncCall *n = makeNode(FuncCall);
