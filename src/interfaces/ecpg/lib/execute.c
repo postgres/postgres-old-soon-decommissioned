@@ -12,6 +12,8 @@
 /* Taken over as part of PostgreSQL by Michael Meskes <meskes@postgresql.org>
    on Feb. 5th, 1998 */
 
+#include "config.h"
+
 #include <stdio.h>
 #include <locale.h>
 
@@ -414,11 +416,13 @@ ECPGexecute(struct statement * stmt)
 				if (*(long *) var->ind_value < 0L)
 					strcpy(buff, "null");
 				break;
+#ifdef HAVE_LONG_LONG_INT_64
 			case ECPGt_long_long:
 			case ECPGt_unsigned_long_long:
 	                        if (*(long long int*) var->ind_value < 0LL)
 					strcpy(buff, "null");
 	                        break;
+#endif /* HAVE_LONG_LONG_INT_64 */
 			default:
 				break;
 		}
@@ -542,7 +546,7 @@ ECPGexecute(struct statement * stmt)
 
 					tobeinserted = mallocedval;
 					break;
-					
+#ifdef HAVE_LONG_LONG_INT_64
 				case ECPGt_long_long:
 					if (!(mallocedval = ecpg_alloc(var->arrsize * 25, stmt->lineno)))
 						return false;
@@ -580,7 +584,7 @@ ECPGexecute(struct statement * stmt)
 
 					tobeinserted = mallocedval;
 					break;
-
+#endif /* HAVE_LONG_LONG_INT_64 */
 				case ECPGt_float:
 					if (!(mallocedval = ecpg_alloc(var->arrsize * 20, stmt->lineno)))
 						return false;
