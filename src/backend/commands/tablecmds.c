@@ -3397,7 +3397,6 @@ validateForeignKeyConstraint(FkConstraint *fkconstraint,
 							 Relation pkrel)
 {
 	HeapScanDesc scan;
-	TriggerData *trigdata = makeNode(TriggerData); /* must be Node aligned */
 	HeapTuple	tuple;
 	Trigger		trig;
 	List	   *list;
@@ -3455,6 +3454,7 @@ validateForeignKeyConstraint(FkConstraint *fkconstraint,
 	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{
 		FunctionCallInfoData fcinfo;
+		TriggerData trigdata;
 
 		/*
 		 * Make a call to the trigger function
@@ -3466,21 +3466,20 @@ validateForeignKeyConstraint(FkConstraint *fkconstraint,
 		/*
 		 * We assume RI_FKey_check_ins won't look at flinfo...
 		 */
-		trigdata->type = T_TriggerData;
-		trigdata->tg_event = TRIGGER_EVENT_INSERT | TRIGGER_EVENT_ROW;
-		trigdata->tg_relation = rel;
-		trigdata->tg_trigtuple = tuple;
-		trigdata->tg_newtuple = NULL;
-		trigdata->tg_trigger = &trig;
+		trigdata.type = T_TriggerData;
+		trigdata.tg_event = TRIGGER_EVENT_INSERT | TRIGGER_EVENT_ROW;
+		trigdata.tg_relation = rel;
+		trigdata.tg_trigtuple = tuple;
+		trigdata.tg_newtuple = NULL;
+		trigdata.tg_trigger = &trig;
 
-		fcinfo.context = (Node *) trigdata;
+		fcinfo.context = (Node *) &trigdata;
 
 		RI_FKey_check_ins(&fcinfo);
 	}
 
 	heap_endscan(scan);
 
-	pfree(trigdata);
 	pfree(trig.tgargs);
 }
 
