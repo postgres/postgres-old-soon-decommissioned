@@ -222,6 +222,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"setof", SETOF},
 	{"share", SHARE},
 	{"show", SHOW},
+	{"some", SOME},
 	{"start", START},
 	{"statement", STATEMENT},
 	{"stdin", STDIN},
