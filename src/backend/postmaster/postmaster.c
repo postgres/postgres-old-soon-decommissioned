@@ -380,6 +380,7 @@ PostmasterMain(int argc, char *argv[])
 
 	*original_extraoptions = '\0';
 
+#ifndef HAVE_SETPROCTITLE
 	/*
 	 * We need four params so we can display status.  If we don't get
 	 * them from the user, let's make them ourselves.
@@ -410,6 +411,7 @@ PostmasterMain(int argc, char *argv[])
 		fprintf(stderr, "PostmasterMain execv failed on %s\n", argv[0]);
 		exit(1);
 	}
+#endif
 
 	progname = argv[0];
 	real_argv = argv;
