@@ -817,7 +817,7 @@ PostmasterMain(int argc, char *argv[])
 	 */
 	if (ListenSocket[0] == -1)
 		ereport(FATAL,
-				(errmsg("no socket configured to listen on")));
+				(errmsg("no socket configured for listening")));
 
 	XLOGPathInit();
 
