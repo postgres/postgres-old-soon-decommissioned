@@ -30,16 +30,19 @@
 
 #include "postgres_fe.h"
 
-#include "getopt_long.h"
 #include <dirent.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <locale.h>
-
 #include <signal.h>
 
 #include "libpq/pqsignal.h"
 #include "mb/pg_wchar.h"
+#include "getopt_long.h"
+
+#ifndef HAVE_OPTRESET
+int			optreset;
+#endif
 
 
 /* version string we expect back from postgres */
