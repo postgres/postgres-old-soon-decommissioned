@@ -26,7 +26,7 @@
 #include <string.h>
 #endif
 
-static OverflowPageAddress _hash_getovfladdr(Relation rel, Buffer * metabufp);
+static OverflowPageAddress _hash_getovfladdr(Relation rel, Buffer *metabufp);
 static uint32 _hash_firstfreebit(uint32 map);
 
 /*
@@ -40,7 +40,7 @@ static uint32 _hash_firstfreebit(uint32 map);
  *
  */
 Buffer
-_hash_addovflpage(Relation rel, Buffer * metabufp, Buffer buf)
+_hash_addovflpage(Relation rel, Buffer *metabufp, Buffer buf)
 {
 
 	OverflowPageAddress oaddr;
@@ -100,7 +100,7 @@ _hash_addovflpage(Relation rel, Buffer * metabufp, Buffer buf)
  *
  */
 static OverflowPageAddress
-_hash_getovfladdr(Relation rel, Buffer * metabufp)
+_hash_getovfladdr(Relation rel, Buffer *metabufp)
 {
 	HashMetaPage metap;
 	Buffer		mapbuf = 0;

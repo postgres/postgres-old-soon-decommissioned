@@ -23,7 +23,7 @@ typedef struct attrDefault
 	AttrNumber	adnum;
 	char	   *adbin;
 	char	   *adsrc;
-}			AttrDefault;
+} AttrDefault;
 
 typedef struct constrCheck
 {
@@ -57,7 +57,7 @@ typedef struct tupleDesc
 
 extern TupleDesc CreateTemplateTupleDesc(int natts);
 
-extern TupleDesc CreateTupleDesc(int natts, AttributeTupleForm * attrs);
+extern TupleDesc CreateTupleDesc(int natts, AttributeTupleForm *attrs);
 
 extern TupleDesc CreateTupleDescCopy(TupleDesc tupdesc);
 

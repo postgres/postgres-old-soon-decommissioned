@@ -36,7 +36,7 @@ typedef struct BTScanListData
 {
 	IndexScanDesc btsl_scan;
 	struct BTScanListData *btsl_next;
-}			BTScanListData;
+} BTScanListData;
 
 typedef BTScanListData *BTScanList;
 

@@ -112,7 +112,7 @@
 typedef struct bkend
 {
 	int			pid;			/* process id of backend */
-}			Backend;
+} Backend;
 
 /* list of active backends.  For garbage collection only now. */
 

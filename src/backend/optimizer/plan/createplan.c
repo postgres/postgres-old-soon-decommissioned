@@ -1113,7 +1113,7 @@ make_material(List * tlist,
 }
 
 Agg		   *
-make_agg(List * tlist, int nagg, Aggreg ** aggs)
+make_agg(List * tlist, int nagg, Aggreg **aggs)
 {
 	Agg		   *node = makeNode(Agg);
 
@@ -1133,7 +1133,7 @@ Group	   *
 make_group(List * tlist,
 		   bool tuplePerGroup,
 		   int ngrp,
-		   AttrNumber * grpColIdx,
+		   AttrNumber *grpColIdx,
 		   Sort * lefttree)
 {
 	Group	   *node = makeNode(Group);

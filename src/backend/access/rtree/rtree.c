@@ -78,7 +78,7 @@ void
 rtbuild(Relation heap,
 		Relation index,
 		int natts,
-		AttrNumber * attnum,
+		AttrNumber *attnum,
 		IndexStrategy istrat,
 		uint16 pcount,
 		Datum * params,

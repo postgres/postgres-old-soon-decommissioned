@@ -214,7 +214,7 @@ static HeapTuple
 heapgettup(Relation relation,
 		   ItemPointer tid,
 		   int dir,
-		   Buffer * b,
+		   Buffer *b,
 		   TimeQual timeQual,
 		   int nkeys,
 		   ScanKey key)
@@ -805,7 +805,7 @@ elog(DEBUG, "heap_getnext([%s,nkeys=%d],backw=%d,0x%x) called", \
 HeapTuple
 heap_getnext(HeapScanDesc scandesc,
 			 int backw,
-			 Buffer * b)
+			 Buffer *b)
 {
 	register HeapScanDesc sdesc = scandesc;
 	Buffer		localb;
@@ -1033,7 +1033,7 @@ HeapTuple
 heap_fetch(Relation relation,
 		   TimeQual timeQual,
 		   ItemPointer tid,
-		   Buffer * b)
+		   Buffer *b)
 {
 	ItemId		lp;
 	Buffer		buffer;

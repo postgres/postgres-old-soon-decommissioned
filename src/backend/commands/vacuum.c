@@ -1224,7 +1224,7 @@ failed to add item with len = %u to page %u (free space %u, nusd %u, noff %u)",
 				{
 					FormIndexDatum(
 								   idcur->natts,
-							  (AttrNumber *) & (idcur->tform->indkey[0]),
+							   (AttrNumber *) &(idcur->tform->indkey[0]),
 								   newtup,
 								   tupdesc,
 								   InvalidBuffer,
@@ -1949,7 +1949,7 @@ vc_updstats(Oid relid, int npages, int ntups, bool hasindex, VRelStats * vacrels
 				if (VacAttrStatsLtGtValid(stats) && stats->initialized	/* &&
 																		 * !IsSystemRelationName(
 																		 *
-						pgcform->relname.data) */ )
+					 pgcform->relname.data) */ )
 				{
 					func_ptr	out_function;
 					char	   *out_string;

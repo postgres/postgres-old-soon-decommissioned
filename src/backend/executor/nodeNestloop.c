@@ -86,7 +86,7 @@ ExecNestLoop(NestLoop * node, Plan * parent)
 	 */
 	econtext = nlstate->jstate.cs_ExprContext;
 
-	/* ----------------		* get the current outer tuple
+	/* ----------------		  * get the current outer tuple
 	 * ----------------
 	 */
 	outerTupleSlot = nlstate->jstate.cs_OuterTupleSlot;

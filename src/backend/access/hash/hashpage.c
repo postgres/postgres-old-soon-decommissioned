@@ -270,7 +270,7 @@ _hash_wrtnorelbuf(Relation rel, Buffer buf)
 
 Page
 _hash_chgbufaccess(Relation rel,
-				   Buffer * bufp,
+				   Buffer *bufp,
 				   int from_access,
 				   int to_access)
 {

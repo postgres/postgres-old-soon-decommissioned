@@ -26,6 +26,7 @@ typedef struct StrategyTransformMapData
 }			StrategyTransformMapData;	/* VARIABLE LENGTH
 
 										 *
+										 *
 										 * STRUCTURE */
 
 typedef StrategyTransformMapData *StrategyTransformMap;

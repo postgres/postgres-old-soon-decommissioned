@@ -61,7 +61,7 @@ void
 TransComputeBlockNumber(Relation relation,		/* relation to test */
 						TransactionId transactionId,	/* transaction id to
 														 * test */
-						BlockNumber * blockNumberOutP)
+						BlockNumber *blockNumberOutP)
 {
 	long		itemsPerBlock = 0;
 

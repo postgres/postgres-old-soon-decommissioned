@@ -775,7 +775,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE * fp, char *delim)
 #endif							/* OMIT_PARTIAL_INDEX */
 					}
 					FormIndexDatum(indexNatts[i],
-							   (AttrNumber *) & (pgIndexP[i]->indkey[0]),
+								(AttrNumber *) &(pgIndexP[i]->indkey[0]),
 								   tuple,
 								   tupDesc,
 								   InvalidBuffer,

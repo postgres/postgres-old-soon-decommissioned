@@ -56,7 +56,7 @@ typedef struct BTMetaPageData
 #ifdef BTREE_VERSION_1
 	int32		btm_level;
 #endif
-}			BTMetaPageData;
+} BTMetaPageData;
 
 #define BTPageGetMeta(p) \
 	((BTMetaPageData *) &((PageHeader) p)->pd_linp[0])

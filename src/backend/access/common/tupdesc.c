@@ -75,7 +75,7 @@ CreateTemplateTupleDesc(int natts)
  * ----------------------------------------------------------------
  */
 TupleDesc
-CreateTupleDesc(int natts, AttributeTupleForm * attrs)
+CreateTupleDesc(int natts, AttributeTupleForm *attrs)
 {
 	TupleDesc	desc;
 

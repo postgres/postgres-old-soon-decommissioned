@@ -203,18 +203,18 @@ typedef struct _bmtrace
 /* Internal routines: only called by buf.c */
 
 /*freelist.c*/
-extern void AddBufferToFreelist(BufferDesc * bf);
-extern void PinBuffer(BufferDesc * buf);
-extern void PinBuffer_Debug(char *file, int line, BufferDesc * buf);
-extern void UnpinBuffer(BufferDesc * buf);
+extern void AddBufferToFreelist(BufferDesc *bf);
+extern void PinBuffer(BufferDesc *buf);
+extern void PinBuffer_Debug(char *file, int line, BufferDesc *buf);
+extern void UnpinBuffer(BufferDesc *buf);
 extern BufferDesc *GetFreeBuffer(void);
 extern void InitFreeList(bool init);
 
 /* buf_table.c */
 extern void InitBufTable(void);
 extern BufferDesc *BufTableLookup(BufferTag * tagPtr);
-extern bool BufTableDelete(BufferDesc * buf);
-extern bool BufTableInsert(BufferDesc * buf);
+extern bool BufTableDelete(BufferDesc *buf);
+extern bool BufTableInsert(BufferDesc *buf);
 
 /* bufmgr.c */
 extern BufferDesc *BufferDescriptors;

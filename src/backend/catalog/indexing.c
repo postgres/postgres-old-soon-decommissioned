@@ -154,7 +154,7 @@ CatalogIndexInsert(Relation * idescs,
 			finfoP = (FuncIndexInfo *) NULL;
 
 		FormIndexDatum(natts,
-					   (AttrNumber *) & pgIndexP->indkey[0],
+					   (AttrNumber *) &pgIndexP->indkey[0],
 					   heapTuple,
 					   heapDescriptor,
 					   InvalidBuffer,

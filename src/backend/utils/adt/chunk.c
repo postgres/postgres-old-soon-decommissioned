@@ -439,7 +439,7 @@ _ReadChunkArray(int st[],
 				int bsize,
 				int fp,
 				char *destfp,
-				ArrayType * array,
+				ArrayType *array,
 				int isDestLO,
 				bool * isNull)
 {
@@ -637,7 +637,7 @@ struct varlena *
 _ReadChunkArray1El(int st[],
 				   int bsize,
 				   int fp,
-				   ArrayType * array,
+				   ArrayType *array,
 				   bool * isNull)
 {
 	int			i,

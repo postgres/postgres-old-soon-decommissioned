@@ -686,7 +686,7 @@ OperandIsInner(Node * opnd, int inner_relid)
  *
  */
 void
-set_agg_tlist_references(Agg * aggNode)
+set_agg_tlist_references(Agg *aggNode)
 {
 	List	   *aggTargetList;
 	List	   *subplanTargetList;
@@ -704,7 +704,7 @@ set_agg_tlist_references(Agg * aggNode)
 }
 
 void
-set_agg_agglist_references(Agg * aggNode)
+set_agg_agglist_references(Agg *aggNode)
 {
 	List	   *subplanTargetList;
 	Aggreg	  **aggs;

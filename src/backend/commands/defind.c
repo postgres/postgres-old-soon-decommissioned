@@ -46,10 +46,10 @@ CheckPredExpr(Node * predicate, List * rangeTable,
 static void
 			CheckPredClause(Expr * predicate, List * rangeTable, Oid baseRelOid);
 static void
-FuncIndexArgs(IndexElem * funcIndex, AttrNumber * attNumP,
+FuncIndexArgs(IndexElem * funcIndex, AttrNumber *attNumP,
 			  Oid * argTypes, Oid * opOidP, Oid relId);
 static void
-NormIndexAttrs(List * attList, AttrNumber * attNumP,
+NormIndexAttrs(List * attList, AttrNumber *attNumP,
 			   Oid * opOidP, Oid relId);
 static char *GetDefaultOpClass(Oid atttypid);
 
@@ -422,7 +422,7 @@ CheckPredClause(Expr * predicate, List * rangeTable, Oid baseRelOid)
 
 static void
 FuncIndexArgs(IndexElem * funcIndex,
-			  AttrNumber * attNumP,
+			  AttrNumber *attNumP,
 			  Oid * argTypes,
 			  Oid * opOidP,
 			  Oid relId)
@@ -471,7 +471,7 @@ FuncIndexArgs(IndexElem * funcIndex,
 
 static void
 NormIndexAttrs(List * attList,	/* list of IndexElem's */
-			   AttrNumber * attNumP,
+			   AttrNumber *attNumP,
 			   Oid * opOidP,
 			   Oid relId)
 {

@@ -273,8 +273,8 @@ TransactionLogUpdate(TransactionId transactionId,		/* trans id to update */
  */
 
 AbsoluteTime					/* commit time of transaction id */
-TransactionIdGetCommitTime(TransactionId transactionId)			/* transaction id to
-																 * test */
+TransactionIdGetCommitTime(TransactionId transactionId) /* transaction id to
+														 * test */
 {
 	BlockNumber blockNumber;
 	AbsoluteTime commitTime;	/* commit time */

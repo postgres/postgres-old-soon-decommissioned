@@ -398,7 +398,7 @@ RemoveFunction(char *functionName,		/* function name to be removed */
 			ReleaseBuffer(buffer);
 			bufferUsed = FALSE;
 		}
-		tup = heap_getnext(scan, 0, (Buffer *) & buffer);
+		tup = heap_getnext(scan, 0, (Buffer *) &buffer);
 		if (!HeapTupleIsValid(tup))
 			break;
 		bufferUsed = TRUE;

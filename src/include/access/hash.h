@@ -250,7 +250,7 @@ typedef HashItemData *HashItem;
 
 extern void
 hashbuild(Relation heap, Relation index, int natts,
-		  AttrNumber * attnum, IndexStrategy istrat, uint16 pcount,
+		  AttrNumber *attnum, IndexStrategy istrat, uint16 pcount,
 		  Datum * params, FuncIndexInfo * finfo, PredInfo * predInfo);
 extern		InsertIndexResult
 hashinsert(Relation rel, Datum * datum, char *nulls,
@@ -286,7 +286,7 @@ extern InsertIndexResult _hash_doinsert(Relation rel, HashItem hitem);
 
 
 /* hashovfl.c */
-extern Buffer _hash_addovflpage(Relation rel, Buffer * metabufp, Buffer buf);
+extern Buffer _hash_addovflpage(Relation rel, Buffer *metabufp, Buffer buf);
 extern Buffer _hash_freeovflpage(Relation rel, Buffer ovflbuf);
 extern		int32
 _hash_initbitmap(Relation rel, HashMetaPage metap, int32 pnum,
@@ -303,7 +303,7 @@ extern void _hash_relbuf(Relation rel, Buffer buf, int access);
 extern void _hash_wrtbuf(Relation rel, Buffer buf);
 extern void _hash_wrtnorelbuf(Relation rel, Buffer buf);
 extern		Page
-_hash_chgbufaccess(Relation rel, Buffer * bufp, int from_access,
+_hash_chgbufaccess(Relation rel, Buffer *bufp, int from_access,
 				   int to_access);
 extern void _hash_pageinit(Page page, Size size);
 extern void _hash_pagedel(Relation rel, ItemPointer tid);
@@ -319,11 +319,11 @@ extern void _hash_adjscans(Relation rel, ItemPointer tid);
 /* hashsearch.c */
 extern void
 _hash_search(Relation rel, int keysz, ScanKey scankey,
-			 Buffer * bufP, HashMetaPage metap);
+			 Buffer *bufP, HashMetaPage metap);
 extern RetrieveIndexResult _hash_next(IndexScanDesc scan, ScanDirection dir);
 extern RetrieveIndexResult _hash_first(IndexScanDesc scan, ScanDirection dir);
 extern		bool
-_hash_step(IndexScanDesc scan, Buffer * bufP, ScanDirection dir,
+_hash_step(IndexScanDesc scan, Buffer *bufP, ScanDirection dir,
 		   Buffer metabuf);
 
 

@@ -104,8 +104,8 @@ static int	correct_dir(char direction[], int *signptr);
 
 static int
 istinterval(char *i_string,
-			AbsoluteTime * i_start,
-			AbsoluteTime * i_end);
+			AbsoluteTime *i_start,
+			AbsoluteTime *i_end);
 
 /*****************************************************************************
  *	 USER I/O ROUTINES														 *
@@ -952,8 +952,8 @@ correct_dir(char direction[], int *signptr)
  */
 static int
 istinterval(char *i_string,
-			AbsoluteTime * i_start,
-			AbsoluteTime * i_end)
+			AbsoluteTime *i_start,
+			AbsoluteTime *i_end)
 {
 	register char *p,
 			   *p1;

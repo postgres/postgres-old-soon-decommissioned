@@ -46,7 +46,7 @@ typedef struct AllocElemData
 {
 	OrderedElemData elemData;	/* elem in AllocSet */
 	Size		size;
-}			AllocElemData;
+} AllocElemData;
 
 typedef AllocElemData *AllocElem;
 

@@ -32,7 +32,7 @@ static TupleTableSlot *ExecGroupEveryTuple(Group * node);
 static TupleTableSlot *ExecGroupOneTuple(Group * node);
 static bool
 sameGroup(TupleTableSlot * oldslot, TupleTableSlot * newslot,
-		  int numCols, AttrNumber * grpColIdx, TupleDesc tupdesc);
+		  int numCols, AttrNumber *grpColIdx, TupleDesc tupdesc);
 
 /* ---------------------------------------
  *	 ExecGroup -
@@ -383,7 +383,7 @@ static bool
 sameGroup(TupleTableSlot * oldslot,
 		  TupleTableSlot * newslot,
 		  int numCols,
-		  AttrNumber * grpColIdx,
+		  AttrNumber *grpColIdx,
 		  TupleDesc tupdesc)
 {
 	bool		isNull1,

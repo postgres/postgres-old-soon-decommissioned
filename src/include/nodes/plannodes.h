@@ -129,7 +129,7 @@ typedef struct Append
 	Index		unionrelid;
 	List	   *unionrtentries;
 	AppendState *unionstate;
-}			Append;
+} Append;
 
 /*
  * ==========
@@ -223,7 +223,7 @@ typedef struct Agg
 	int			numAgg;
 	Aggreg	  **aggs;
 	AggState   *aggstate;
-}			Agg;
+} Agg;
 
 /* ---------------
  *	 group node -

@@ -597,7 +597,7 @@ fix_opids(List * clauses)
 void
 get_relattval(Node * clause,
 			  int *relid,
-			  AttrNumber * attno,
+			  AttrNumber *attno,
 			  Datum * constval,
 			  int *flag)
 {
@@ -728,9 +728,9 @@ get_relattval(Node * clause,
 void
 get_rels_atts(Node * clause,
 			  int *relid1,
-			  AttrNumber * attno1,
+			  AttrNumber *attno1,
 			  int *relid2,
-			  AttrNumber * attno2)
+			  AttrNumber *attno2)
 {
 	Var		   *left = get_leftop((Expr *) clause);
 	Var		   *right = get_rightop((Expr *) clause);

@@ -24,7 +24,7 @@ extern PATH *poly2path(POLYGON * poly);
 extern Point *interpt_pp(PATH * p1, PATH * p2);
 extern void regress_lseg_construct(LSEG * lseg, Point * pt1, Point * pt2);
 extern char overpaid(TUPLE tuple);
-extern int	boxarea(BOX * box);
+extern int	boxarea(BOX *box);
 extern char *reverse_c16(char *string);
 
 /*

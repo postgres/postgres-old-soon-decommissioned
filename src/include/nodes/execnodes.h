@@ -328,7 +328,7 @@ typedef struct AppendState
 	List	   *as_rtentries;
 	List	   *as_result_relation_info_list;
 	List	   *as_junkFilter_list;
-}			AppendState;
+} AppendState;
 
 /* ----------------------------------------------------------------
  *				 Scan State Information
@@ -574,7 +574,7 @@ typedef struct AggState
 {
 	CommonScanState csstate;	/* its first field is NodeTag */
 	bool		agg_done;
-}			AggState;
+} AggState;
 
 /* ---------------------
  *	GroupState information

@@ -111,7 +111,7 @@ typedef struct Port
 
 	/*
 	 * PacketBufId				id;
-	 *//* id of packet buf currently in use */
+*//* id of packet buf currently in use */
 	PacketBuf	buf;			/* stream implementation (curr pack buf) */
 }			Port;
 

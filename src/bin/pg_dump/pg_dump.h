@@ -124,7 +124,7 @@ typedef struct _aggInfo
 	char	   *agginitval1;
 	char	   *agginitval2;
 	char	   *usename;
-}			AggInfo;
+} AggInfo;
 
 typedef struct _oprInfo
 {
@@ -216,7 +216,7 @@ extern void
 dumpFuncs(FILE * fout, FuncInfo * finfo, int numFuncs,
 		  TypeInfo * tinfo, int numTypes);
 extern void
-dumpAggs(FILE * fout, AggInfo * agginfo, int numAggregates,
+dumpAggs(FILE * fout, AggInfo *agginfo, int numAggregates,
 		 TypeInfo * tinfo, int numTypes);
 extern void
 dumpOprs(FILE * fout, OprInfo * agginfo, int numOperators,

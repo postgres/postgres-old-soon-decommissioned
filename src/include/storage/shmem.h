@@ -91,7 +91,7 @@ typedef struct
 	char		key[BTABLE_KEYSIZE];	/* string name */
 	unsigned long location;		/* location in shared mem */
 	unsigned long size;			/* numbytes allocated for the structure */
-}			BindingEnt;
+} BindingEnt;
 
 /*
  * prototypes for functions in shmqueue.c

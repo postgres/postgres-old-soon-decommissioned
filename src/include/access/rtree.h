@@ -130,7 +130,7 @@ extern void rtrestrpos(IndexScanDesc s);
 extern void rtrescan(IndexScanDesc s, bool fromEnd, ScanKey key);
 extern void
 rtbuild(Relation heap, Relation index, int natts,
-		AttrNumber * attnum, IndexStrategy istrat, uint16 pcount,
+		AttrNumber *attnum, IndexStrategy istrat, uint16 pcount,
 		Datum * params, FuncIndexInfo * finfo, PredInfo * predInfo);
 extern void _rtdump(Relation r);
 

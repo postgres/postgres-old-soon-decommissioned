@@ -31,7 +31,7 @@ void
 _hash_search(Relation rel,
 			 int keysz,
 			 ScanKey scankey,
-			 Buffer * bufP,
+			 Buffer *bufP,
 			 HashMetaPage metap)
 {
 	BlockNumber blkno;
@@ -127,7 +127,7 @@ _hash_next(IndexScanDesc scan, ScanDirection dir)
 
 static void
 _hash_readnext(Relation rel,
-			   Buffer * bufp, Page * pagep, HashPageOpaque * opaquep)
+			   Buffer *bufp, Page * pagep, HashPageOpaque * opaquep)
 {
 	BlockNumber blkno;
 
@@ -146,7 +146,7 @@ _hash_readnext(Relation rel,
 
 static void
 _hash_readprev(Relation rel,
-			   Buffer * bufp, Page * pagep, HashPageOpaque * opaquep)
+			   Buffer *bufp, Page * pagep, HashPageOpaque * opaquep)
 {
 	BlockNumber blkno;
 
@@ -284,7 +284,7 @@ _hash_first(IndexScanDesc scan, ScanDirection dir)
  *		'metabuf' is released when this returns.
  */
 bool
-_hash_step(IndexScanDesc scan, Buffer * bufP, ScanDirection dir, Buffer metabuf)
+_hash_step(IndexScanDesc scan, Buffer *bufP, ScanDirection dir, Buffer metabuf)
 {
 	Relation	rel;
 	ItemPointer current;

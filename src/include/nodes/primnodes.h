@@ -267,7 +267,7 @@ typedef struct Aggreg
 	Oid			aggtype;		/* type of final result */
 	Node	   *target;			/* attribute to aggreg on */
 	int			aggno;			/* index to ecxt_values */
-}			Aggreg;
+} Aggreg;
 
 /* ----------------
  * Array
@@ -294,7 +294,7 @@ typedef struct Array
 	IntArray	arraylow;
 	IntArray	arrayhigh;
 	int			arraylen;
-}			Array;
+} Array;
 
 /* ----------------
  *	ArrayRef:
@@ -319,6 +319,6 @@ typedef struct ArrayRef
 	List	   *reflowerindexpr;
 	Node	   *refexpr;
 	Node	   *refassgnexpr;
-}			ArrayRef;
+} ArrayRef;
 
 #endif							/* PRIMNODES_H */

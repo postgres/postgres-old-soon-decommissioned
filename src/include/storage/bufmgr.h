@@ -71,13 +71,13 @@ extern int	ShowPinTrace;
 /*
  * prototypes for functions in bufmgr.c
  */
-extern		Buffer
+extern Buffer
 RelationGetBufferWithBuffer(Relation relation,
 							BlockNumber blockNumber, Buffer buffer);
 extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
 extern int	WriteBuffer(Buffer buffer);
 extern int	WriteNoReleaseBuffer(Buffer buffer);
-extern		Buffer
+extern Buffer
 ReleaseAndReadBuffer(Buffer buffer, Relation relation,
 					 BlockNumber blockNum);
 

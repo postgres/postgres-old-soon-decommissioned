@@ -1111,7 +1111,7 @@ void
 index_register(char *heap,
 			   char *ind,
 			   int natts,
-			   AttrNumber * attnos,
+			   AttrNumber *attnos,
 			   uint16 nparams,
 			   Datum * params,
 			   FuncIndexInfo * finfo,

@@ -154,7 +154,7 @@ extern void TransactionIdAbort(TransactionId transactionId);
 extern void AmiTransactionOverride(bool flag);
 extern void
 TransComputeBlockNumber(Relation relation,
-			 TransactionId transactionId, BlockNumber * blockNumberOutP);
+			  TransactionId transactionId, BlockNumber *blockNumberOutP);
 extern		XidStatus
 TransBlockNumberGetXidStatus(Relation relation,
 			   BlockNumber blockNumber, TransactionId xid, bool * failP);
@@ -162,7 +162,7 @@ extern void
 TransBlockNumberSetXidStatus(Relation relation,
 		   BlockNumber blockNumber, TransactionId xid, XidStatus xstatus,
 							 bool * failP);
-extern		AbsoluteTime
+extern AbsoluteTime
 TransBlockNumberGetCommitTime(Relation relation,
 			   BlockNumber blockNumber, TransactionId xid, bool * failP);
 extern void

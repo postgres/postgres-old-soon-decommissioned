@@ -1027,7 +1027,7 @@ clearIndInfo(IndInfo * ind, int numIndices)
 }
 
 void
-clearAggInfo(AggInfo * agginfo, int numArgs)
+clearAggInfo(AggInfo *agginfo, int numArgs)
 {
 	int			i;
 
@@ -1837,7 +1837,7 @@ dumpOprs(FILE * fout, OprInfo * oprinfo, int numOperators,
  *
  */
 void
-dumpAggs(FILE * fout, AggInfo * agginfo, int numAggs,
+dumpAggs(FILE * fout, AggInfo *agginfo, int numAggs,
 		 TypeInfo * tinfo, int numTypes)
 {
 	int			i;

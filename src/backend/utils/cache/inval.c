@@ -60,7 +60,7 @@ typedef union AnyInvalidation
 {
 	CatalogInvalidationData catalog;
 	RelationInvalidationData relation;
-}			AnyInvalidation;
+} AnyInvalidation;
 
 typedef struct InvalidationMessageData
 {

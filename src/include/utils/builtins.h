@@ -199,10 +199,10 @@ extern int32 btnamecmp(NameData * a, NameData * b);
 extern int32 bttextcmp(struct varlena * a, struct varlena * b);
 
 /* support routines for the rtree access method, by opclass */
-extern BOX *rt_box_union(BOX * a, BOX * b);
-extern BOX *rt_box_inter(BOX * a, BOX * b);
-extern void rt_box_size(BOX * a, float *size);
-extern void rt_bigbox_size(BOX * a, float *size);
+extern BOX *rt_box_union(BOX *a, BOX *b);
+extern BOX *rt_box_inter(BOX *a, BOX *b);
+extern void rt_box_size(BOX *a, float *size);
+extern void rt_bigbox_size(BOX *a, float *size);
 extern void rt_poly_size(POLYGON * a, float *size);
 extern POLYGON *rt_poly_union(POLYGON * a, POLYGON * b);
 extern POLYGON *rt_poly_inter(POLYGON * a, POLYGON * b);
@@ -338,7 +338,7 @@ extern bool float84gt(float64 arg1, float32 arg2);
 extern bool float84ge(float64 arg1, float32 arg2);
 
 /* geo_ops.c, geo_selfuncs.c */
-extern double *box_area(BOX * box);
+extern double *box_area(BOX *box);
 
 /* misc.c */
 extern bool nullvalue(Datum value, bool * isNull);

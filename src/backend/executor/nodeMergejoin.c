@@ -734,8 +734,7 @@ ExecMergeJoin(MergeJoin * node)
 				 * This is the case when
 				 *
 				 * outer inner 4	 5	- marked tuple outer tuple -  5		5
-				 * new outer tuple -  5		5 6		8  - inner tuple 7
-				 * 12
+				 * new outer tuple -  5		5 6		8  - inner tuple 7 12
 				 *
 				 * new outer tuple = marked tuple
 				 *
@@ -750,7 +749,8 @@ ExecMergeJoin(MergeJoin * node)
 				 *
 				 * new outer tuple > marked tuple
 				 *
-				*******************************
+				******************************
+				 *
 				 *
 				 *
 				 */
@@ -830,7 +830,8 @@ ExecMergeJoin(MergeJoin * node)
 				 * we have to advance the outer scan until we find the outer
 				 * 8.
 				 *
-				*******************************
+				******************************
+				 *
 				 *
 				 *
 				 */
@@ -932,7 +933,8 @@ ExecMergeJoin(MergeJoin * node)
 				 * we have to advance the inner scan until we find the inner
 				 * 12.
 				 *
-				*******************************
+				******************************
+				 *
 				 *
 				 *
 				 */

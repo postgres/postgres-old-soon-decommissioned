@@ -101,7 +101,7 @@ BufTableLookup(BufferTag * tagPtr)
  * BufTableDelete
  */
 bool
-BufTableDelete(BufferDesc * buf)
+BufTableDelete(BufferDesc *buf)
 {
 	LookupEnt  *result;
 	bool		found;
@@ -130,7 +130,7 @@ BufTableDelete(BufferDesc * buf)
 }
 
 bool
-BufTableInsert(BufferDesc * buf)
+BufTableInsert(BufferDesc *buf)
 {
 	LookupEnt  *result;
 	bool		found;
