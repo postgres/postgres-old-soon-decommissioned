@@ -1103,9 +1103,12 @@ index_create(char *heapRelationName,
 	/* ----------------
 	 * write lock heap to guarantee exclusive access
 	 * ----------------
+	RelationSetLockForWrite(heapRelation);
+	 *                ^^^^^
+	 * Does it have any sense ?		- vadim 10/27/97
 	 */
 
-	RelationSetLockForWrite(heapRelation);
+	RelationSetLockForRead(heapRelation);
 
 	/* ----------------
 	 *	  construct new tuple descriptor
