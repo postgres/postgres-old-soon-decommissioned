@@ -131,11 +131,22 @@ locale_messages_assign(const char *value, bool doit, GucSource source)
 	if (doit)
 	{
 		if (!setlocale(LC_MESSAGES, value))
+		{
+#ifdef WIN32
+			/*
+			 * Win32 returns NULL when you set LC_MESSAGES to "".  So don't
+			 * complain unless we're trying to set it to something else.
+			 */
+			if (value[0])
+				return NULL;
+#else
 			return NULL;
+#endif
+		}
 	}
 	else
 		value = locale_xxx_assign(LC_MESSAGES, value, false, source);
-#endif
+#endif /* LC_MESSAGES */
 	return value;
 }
 
