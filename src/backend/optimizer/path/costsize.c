@@ -13,19 +13,17 @@
  */
 #include <math.h>
 #ifdef WIN32
-#include <float.h>
-#include <limits.h>
-#define MAXINT        INT_MAX
+# include <float.h>
+# include <limits.h>
+# define MAXINT        INT_MAX
 #else
-# if defined(BSD44_derived) || \
-     defined(bsdi) || \
-     defined(bsdi_2_1)
-# include <machine/limits.h>
-# define MAXINT	INT_MAX
+# if defined(USE_LIMITS_H)
+#  include <machine/limits.h>
+#  define MAXINT	INT_MAX
 # else
-# include <values.h>
-# endif /* !BSD44_derived */
-#endif /* WIN32 */
+#  include <values.h>
+# endif 
+#endif 
 
 #include "postgres.h"
 
