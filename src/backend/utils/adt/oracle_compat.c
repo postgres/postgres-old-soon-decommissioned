@@ -512,7 +512,7 @@ substr(text *string, int4 m, int4 n)
 
 	if ((string == (text *) NULL) ||
 		(m <= 0) || (n <= 0) ||
-		((len = VARSIZE(string) - VARHDRSZ - m) <= 0))
+		((len = VARSIZE(string) - VARHDRSZ - m + 1) <= 0))
 		return string;
 
 	len = len + 1 < n ? len + 1 : n;
