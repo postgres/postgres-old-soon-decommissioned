@@ -13,8 +13,8 @@
 #ifndef PREP_H
 #define	PREP_H
 
-#include "nodes/primnodes.h"
-#include "nodes/plannodes.h"
+#include <nodes/plannodes.h>
+#include <nodes/parsenodes.h>
 
 /*
  * prototypes for archive.h
