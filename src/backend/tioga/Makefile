@@ -13,7 +13,7 @@ top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 OBJS = tgRecipe.o Varray.o
-CPPFLAGS += -I$(srcdir)
+override CPPFLAGS += -I$(srcdir)
 
 all: SUBSYS.o
 

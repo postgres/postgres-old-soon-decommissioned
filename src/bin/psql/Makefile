@@ -14,7 +14,7 @@ include $(top_builddir)/src/Makefile.global
 
 REFDOCDIR= $(top_srcdir)/doc/src/sgml/ref
 
-CPPFLAGS+= -I$(libpq_srcdir)
+override CPPFLAGS+= -I$(libpq_srcdir)
 
 OBJS=command.o common.o help.o input.o stringutils.o mainloop.o \
 	copy.o startup.o prompt.o variables.o large_obj.o print.o describe.o \
@@ -83,7 +83,7 @@ clean distclean:
 	rm -f psql$(X) $(OBJS)
 
 maintainer-clean: distclean
-	rm -f sql_help.h
+	rm -f $(srcdir)/sql_help.h
 
 ifeq (depend,$(wildcard depend))
 include depend

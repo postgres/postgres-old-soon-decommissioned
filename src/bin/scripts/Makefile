@@ -23,7 +23,10 @@ createlang: createlang.sh
 	chmod a+x $@
 
 install: all installdirs
-	for i in $(SCRIPTS); do $(INSTALL_SCRIPT) $$i $(DESTDIR)$(bindir)/$$i || exit; done
+	for i in $(filter-out createlang, $(SCRIPTS)); do \
+	  $(INSTALL_SCRIPT) $(srcdir)/$$i $(DESTDIR)$(bindir)/$$i || exit; \
+	done
+	$(INSTALL_SCRIPT) createlang $(DESTDIR)$(bindir)/createlang
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)

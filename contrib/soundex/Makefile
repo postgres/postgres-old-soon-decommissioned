@@ -9,7 +9,8 @@ include $(top_builddir)/src/Makefile.global
 NAME	:= soundex
 SONAME	:= $(NAME)$(DLSUFFIX)
 
-CFLAGS += -I. $(CFLAGS_SL)
+override CPPFLAGS += -I$(srcdir)
+override CFLAGS += $(CFLAGS_SL)
 
 all: $(SONAME) $(NAME).sql
 

@@ -10,9 +10,6 @@ DIRS = koi8-r ISO8859-7 koi8-to-win1251
 
 all: $(PROGS)
 
-$(PROGS): % : %.c 
-	$(CC) $(CFLAGS) -o $@ $@.c $(LDFLAGS)
-
 clean: 
 	rm -f $(PROGS) *.out
 	for d in $(DIRS); do \

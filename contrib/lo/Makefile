@@ -4,7 +4,7 @@
 
 subdir = contrib/lo
 top_builddir = ../..
-include ../../src/Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 NAME	:= lo
 SONAME	:= $(NAME)$(DLSUFFIX)
@@ -12,10 +12,11 @@ SONAME	:= $(NAME)$(DLSUFFIX)
 SQLS	= $(NAME).sql lo_drop.sql lo_test.sql
 MODS	= $(NAME)$(DLSUFFIX)
 
-CFLAGS += -I. $(CFLAGS_SL)
+override CPPFLAGS += -I$(srcdir)
+override CFLAGS += $(CFLAGS_SL)
 
 ifdef REFINT_VERBOSE
-CFLAGS+= -DREFINT_VERBOSE
+override CPPFLAGS+= -DREFINT_VERBOSE
 endif
 
 all: $(SONAME) $(NAME).sql

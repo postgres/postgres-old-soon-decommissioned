@@ -18,5 +18,5 @@ LIBS:=$(filter-out -lm -lc, $(LIBS))
 
 curdir:=$(shell pwd)
 ifeq ($(findstring backend,$(curdir)), backend)
-CPPFLAGS+= -DBUILDING_DLL=1
+override CPPFLAGS+= -DBUILDING_DLL=1
 endif

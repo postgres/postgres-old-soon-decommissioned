@@ -17,9 +17,8 @@ include $(top_builddir)/src/Makefile.global
 
 contribdir := $(top_builddir)/contrib
 
-CFLAGS+= -I$(libpq_srcdir) $(CFLAGS_SL)
-
-LDADD+= $(libpq)
+override CPPFLAGS += -I$(libpq_srcdir)
+override CFLAGS += $(CFLAGS_SL)
 
 
 ##

@@ -12,7 +12,7 @@ subdir = src/backend/regex
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-CPPFLAGS += -DPOSIX_MISTAKE 
+override CPPFLAGS += -DPOSIX_MISTAKE 
 
 DEBUGOBJ =
 
@@ -28,7 +28,7 @@ SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
 retest: retest.o SUBSYS.o $(DEBUGOBJ)
-	$(CC) $(CFLAGS) -o retest retest.o SUBSYS.o $(DEBUGOBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend

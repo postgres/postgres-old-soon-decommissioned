@@ -25,7 +25,7 @@ libpgtcl_srcdir = $(top_srcdir)/src/interfaces/libpgtcl
 libpgtcl_builddir = $(top_builddir)/src/interfaces/libpgtcl
 libpgtcl = -L$(libpgtcl_builddir) -lpgtcl
 
-CPPFLAGS += -I$(libpgtcl_srcdir) $(TK_XINCLUDES)
+override CPPFLAGS += -I$(libpgtcl_srcdir) $(TK_XINCLUDES)
 
 
 # If we are here then Tcl is available

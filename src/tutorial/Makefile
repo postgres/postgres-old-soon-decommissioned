@@ -12,7 +12,7 @@ subdir = src/tutorial
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
-CFLAGS+= $(CFLAGS_SL)
+override CFLAGS+= $(CFLAGS_SL)
 
 #
 # DLOBJS is the dynamically-loaded object files.  The "funcs" queries

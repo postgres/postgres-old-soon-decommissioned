@@ -4,12 +4,13 @@
 
 subdir = contrib/noupdate
 top_builddir = ../..
-include ../../src/Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 NAME	:= noup
 SONAME	:= $(NAME)$(DLSUFFIX)
 
-CFLAGS += -I. $(CFLAGS_SL)
+override CPPFLAGS += -I$(srcdir)
+override CFLAGS += $(CFLAGS_SL)
 
 all: $(SONAME) $(NAME).sql
 

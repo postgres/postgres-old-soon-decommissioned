@@ -9,7 +9,7 @@ OBJS = database.o superuser.o guc.o guc-file.o ps_status.o
 # This location might depend on the installation directories. Therefore
 # we can't subsitute it into config.h.
 ifdef krb_srvtab
-CPPFLAGS += -DPG_KRB_SRVTAB='"$(krb_srvtab)"'
+override CPPFLAGS += -DPG_KRB_SRVTAB='"$(krb_srvtab)"'
 endif
 
 
@@ -18,7 +18,7 @@ all: SUBSYS.o
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
-guc-file.c: guc-file.l
+$(srcdir)/guc-file.c: guc-file.l
 ifdef FLEX
 	$(FLEX) $(FLEXFLAGS) $<
 	sed -e 's/^yy/GUC_yy/g' -e 's/\([^a-zA-Z0-9_]\)yy/\1GUC_yy/g' lex.yy.c > $@

@@ -9,7 +9,8 @@ include ../../src/Makefile.global
 NAME	:= earthdistance
 SONAME	:= $(NAME)$(DLSUFFIX)
 
-CFLAGS += -I. $(CFLAGS_SL)
+override CPPFLAGS += -I$(srcdir)
+override CFLAGS += $(CFLAGS_SL)
 
 all: $(SONAME) $(NAME).sql
 

@@ -16,7 +16,7 @@ NAME= pgeasy
 SO_MAJOR_VERSION= 2
 SO_MINOR_VERSION= 1
 
-CPPFLAGS += -I$(libpq_srcdir)
+override CPPFLAGS += -I$(libpq_srcdir)
 
 OBJS= libpgeasy.o halt.o
 

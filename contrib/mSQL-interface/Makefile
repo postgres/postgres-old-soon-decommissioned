@@ -11,7 +11,7 @@ SO_MAJOR_VERSION := 0
 SO_MINOR_VERSION := 0
 OBJS	:= mpgsql.o
 
-CFLAGS	+= -I$(libpq_srcdir)
+override CPPFLAGS += -I$(libpq_srcdir)
 
 include $(top_srcdir)/src/Makefile.shlib
 

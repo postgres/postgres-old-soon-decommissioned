@@ -11,7 +11,7 @@ top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 ifeq ($(GCC), yes)
-CFLAGS+= -Wno-error
+override CFLAGS+= -Wno-error
 endif
 
 OBJS= analyze.o gram.o keywords.o parser.o parse_agg.o parse_clause.o \

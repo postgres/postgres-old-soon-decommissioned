@@ -11,7 +11,7 @@ top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 ifeq ($(GCC), yes)
-CFLAGS+= -Wno-error
+override CFLAGS+= -Wno-error
 endif
 
 # qnx4's wlink currently crashes with bootstrap.o

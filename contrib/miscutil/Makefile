@@ -4,12 +4,13 @@
 
 subdir = contrib/miscutil
 top_builddir = ../..
-include ../../src/Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 NAME	:= misc_utils
 SONAME	:= $(NAME)$(DLSUFFIX)
 
-CFLAGS += -I. $(CFLAGS_SL)
+override CPPFLAGS += -I$(srcdir)
+override CFLAGS += $(CFLAGS_SL)
 
 all: $(SONAME) $(NAME).sql
 

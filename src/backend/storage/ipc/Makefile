@@ -11,7 +11,7 @@ include $(top_builddir)/src/Makefile.global
 # seems to be required 1999/07/22 bjm
 ifeq "$(findstring alpha,$(host_cpu))" "alpha"
 ifeq "$(GCC)" "yes"
-CFLAGS+= -fno-inline
+override CFLAGS+= -fno-inline
 endif
 endif
 

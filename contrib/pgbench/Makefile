@@ -4,10 +4,10 @@
 
 subdir = contrib/pgbench
 top_builddir = ../..
-include ../../src/Makefile.global
+include $(top_builddir)/src/Makefile.global
 
-CFLAGS	+= -I$(libpq_srcdir)
-LIBS	+= $(libpq)
+override CPPFLAGS += -I$(libpq_srcdir)
+override LIBS += $(libpq)
 
 all: pgbench
 

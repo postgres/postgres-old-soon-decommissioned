@@ -46,7 +46,7 @@ beos.dir:
 	$(MAKE) -C beos all
 
 tas.o: tas.s
-	$(CC) $(CFLAGS) -c tas.s
+	$(CC) $(CFLAGS) -c $<
 
 distclean clean:
 	rm -f SUBSYS.o $(OBJS)

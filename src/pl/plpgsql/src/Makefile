@@ -15,7 +15,7 @@ NAME= plpgsql
 SO_MAJOR_VERSION= 1
 SO_MINOR_VERSION= 0
 
-CPPFLAGS += -I$(srcdir)
+override CPPFLAGS += -I$(srcdir)
 
 OBJS = pl_parse.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o
 
