@@ -118,6 +118,8 @@ _bt_getstrat(Relation rel,
 	return strat;
 }
 
+#ifdef NOT_USED
+
 bool
 _bt_invokestrat(Relation rel,
 				AttrNumber attno,
@@ -128,3 +130,5 @@ _bt_invokestrat(Relation rel,
 	return (RelationInvokeStrategy(rel, &BTEvaluationData, attno, strat,
 								   left, right));
 }
+
+#endif
