@@ -342,8 +342,7 @@ extern		"C"
 	extern int PQenv2encoding(void);
 
 #ifdef __cplusplus
-};
-
+}
 #endif
 
 #endif	 /* LIBPQ_FE_H */
