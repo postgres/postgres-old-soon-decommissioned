@@ -72,7 +72,12 @@ typedef struct _printQueryOpt
  *
  * It calls the printTable above with all the things set straight.
  */
-void
-			printQuery(const PGresult *result, const printQueryOpt *opt, FILE *fout);
+void printQuery(const PGresult *result, const printQueryOpt *opt, FILE *fout);
+
+#ifndef __CYGWIN__
+#define DEFAULT_PAGER "more"
+#else
+#define DEFAULT_PAGER "less"
+#endif
 
 #endif   /* PRINT_H */

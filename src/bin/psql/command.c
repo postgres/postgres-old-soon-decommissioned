@@ -846,7 +846,7 @@ exec_command(const char *cmd,
 
 	/* \? -- slash command help */
 	else if (strcmp(cmd, "?") == 0)
-		slashUsage();
+		slashUsage(pset.popt.topt.pager);
 
 #if 0
 

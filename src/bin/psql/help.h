@@ -10,7 +10,7 @@
 
 void		usage(void);
 
-void		slashUsage(void);
+void		slashUsage(bool pager);
 
 void		helpSQL(const char *topic);
 
