@@ -1395,7 +1395,7 @@ static bool
 do_edit(const char *filename_arg, PQExpBuffer query_buf)
 {
 	char		fnametmp[MAXPGPATH];
-	FILE	   *stream;
+	FILE	   *stream = NULL;
 	const char *fname;
 	bool		error = false;
 	int			fd;
