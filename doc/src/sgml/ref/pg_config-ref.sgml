@@ -1,8 +1,8 @@
-<!-- $Header -->
+<!-- $Header$ -->
 
-<refentry id="app-pg_config">
+<refentry id="app-pgconfig">
  <refmeta>
-  <refentrytitle id="app-pg_config-title">pg_config</>
+  <refentrytitle id="app-pgconfig-title">pg_config</>
   <refmiscinfo>Application</>
  </refmeta>
 
