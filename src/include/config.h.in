@@ -302,6 +302,9 @@
 /* default path for the location of the odbcinst.ini file */
 #undef ODBCINST
 
+/* Define if you have the setproctitle function.  */
+#undef HAVE_SETPROCTITLE
+
 /* Define if you have the stricmp function.  */
 #undef HAVE_STRICMP
 
