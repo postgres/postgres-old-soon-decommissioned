@@ -1430,6 +1430,32 @@ get_rule_expr(Node *node, deparse_context *context)
 			}
 			break;
 
+		case T_FieldSelect:
+			{
+				FieldSelect *fselect = (FieldSelect *) node;
+				HeapTuple	typetup;
+				Form_pg_type typeStruct;
+				Oid			typrelid;
+				char	   *fieldname;
+
+				/* we do NOT parenthesize the arg expression, for now */
+				get_rule_expr(fselect->arg, context);
+				typetup = SearchSysCacheTuple(TYPEOID,
+								   ObjectIdGetDatum(exprType(fselect->arg)),
+											  0, 0, 0);
+				if (!HeapTupleIsValid(typetup))
+					elog(ERROR, "cache lookup of type %u failed",
+						 exprType(fselect->arg));
+				typeStruct = (Form_pg_type) GETSTRUCT(typetup);
+				typrelid = typeStruct->typrelid;
+				if (!OidIsValid(typrelid))
+					elog(ERROR, "Argument type %s of FieldSelect is not a tuple type",
+						 NameStr(typeStruct->typname));
+				fieldname = get_attribute_name(typrelid, fselect->fieldnum);
+				appendStringInfo(buf, ".%s", quote_identifier(fieldname));
+			}
+			break;
+
 		case T_RelabelType:
 			{
 				RelabelType *relabel = (RelabelType *) node;

@@ -412,8 +412,6 @@ expandAll(ParseState *pstate, char *relname, Attr *ref, int *this_resno)
 								varnode->vartype,
 								varnode->vartypmod,
 								label,
-								(Index) 0,
-								(Oid) 0,
 								false);
 		te->expr = (Node *) varnode;
 		te_list = lappend(te_list, te);

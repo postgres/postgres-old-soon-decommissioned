@@ -64,7 +64,7 @@ typedef enum NodeTag
 	T_Aggref,
 	T_SubLink,
 	T_Func,
-	T_ArrayXXX,					/* not used anymore; this tag# is available */
+	T_FieldSelect,
 	T_ArrayRef,
 	T_Iter,
 	T_RelabelType,

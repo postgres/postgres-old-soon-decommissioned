@@ -1882,9 +1882,7 @@ Except_Intersect_Rewrite(Query *parsetree)
 
 				newop = makeOper(oprid(optup),	/* opno */
 								 InvalidOid,	/* opid */
-								 opform->oprresult,
-								 0,
-								 NULL);
+								 opform->oprresult);
 
 				n->oper = lappend(n->oper, newop);
 

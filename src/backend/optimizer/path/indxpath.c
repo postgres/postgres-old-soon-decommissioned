@@ -1339,9 +1339,7 @@ clause_pred_clause_test(Expr *predicate, Node *clause)
 	 */
 	test_oper = makeOper(test_op,		/* opno */
 						 InvalidOid,	/* opid */
-						 BOOLOID,		/* opresulttype */
-						 0,		/* opsize */
-						 NULL); /* op_fcache */
+						 BOOLOID);		/* opresulttype */
 	replace_opid(test_oper);
 
 	test_expr = make_opclause(test_oper,
@@ -1934,7 +1932,7 @@ prefix_quals(Var *leftop, Oid expr_op,
 		if (oproid == InvalidOid)
 			elog(ERROR, "prefix_quals: no = operator for type %u", datatype);
 		con = string_to_const(prefix, datatype);
-		op = makeOper(oproid, InvalidOid, BOOLOID, 0, NULL);
+		op = makeOper(oproid, InvalidOid, BOOLOID);
 		expr = make_opclause(op, leftop, (Var *) con);
 		result = lcons(expr, NIL);
 		return result;
@@ -1949,7 +1947,7 @@ prefix_quals(Var *leftop, Oid expr_op,
 	if (oproid == InvalidOid)
 		elog(ERROR, "prefix_quals: no >= operator for type %u", datatype);
 	con = string_to_const(prefix, datatype);
-	op = makeOper(oproid, InvalidOid, BOOLOID, 0, NULL);
+	op = makeOper(oproid, InvalidOid, BOOLOID);
 	expr = make_opclause(op, leftop, (Var *) con);
 	result = lcons(expr, NIL);
 
@@ -1964,7 +1962,7 @@ prefix_quals(Var *leftop, Oid expr_op,
 		if (oproid == InvalidOid)
 			elog(ERROR, "prefix_quals: no < operator for type %u", datatype);
 		con = string_to_const(greaterstr, datatype);
-		op = makeOper(oproid, InvalidOid, BOOLOID, 0, NULL);
+		op = makeOper(oproid, InvalidOid, BOOLOID);
 		expr = make_opclause(op, leftop, (Var *) con);
 		result = lappend(result, expr);
 		pfree(greaterstr);

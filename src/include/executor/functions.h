@@ -17,12 +17,8 @@
 #include "nodes/parsenodes.h"
 #include "utils/syscache.h"
 
-extern Datum ProjectAttribute(TupleDesc TD, TargetEntry *tlist,
-							  HeapTuple tup, bool *isnullP);
-
 extern Datum postquel_function(FunctionCallInfo fcinfo,
 							   FunctionCachePtr fcache,
-							   List *func_tlist,
 							   bool *isDone);
 
 #endif	 /* FUNCTIONS_H */

@@ -436,12 +436,7 @@ build_index_pathkeys(Query *root,
 
 		funcnode->funcid = index->indproc;
 		funcnode->functype = get_func_rettype(index->indproc);
-		funcnode->funcisindex = false;
-		funcnode->funcsize = 0;
 		funcnode->func_fcache = NULL;
-		/* we assume here that the function returns a base type... */
-		funcnode->func_tlist = setup_base_tlist(funcnode->functype);
-		funcnode->func_planlist = NIL;
 
 		while (*indexkeys != 0)
 		{

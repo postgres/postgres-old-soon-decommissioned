@@ -75,8 +75,6 @@ preprocess_targetlist(List *tlist,
 							TIDOID,
 							-1,
 							pstrdup("ctid"),
-							0,
-							0,
 							true);
 
 		var = makeVar(result_relation, SelfItemPointerAttributeNumber,
@@ -219,8 +217,6 @@ expand_targetlist(List *tlist, int command_type,
 															 atttype,
 															 -1,
 													   pstrdup(attrname),
-															 0,
-															 (Oid) 0,
 															 false),
 												  (Node *) temp_const);
 						break;
@@ -251,8 +247,6 @@ expand_targetlist(List *tlist, int command_type,
 															 atttype,
 															 atttypmod,
 															 pstrdup(attrname),
-															 0,
-															 (Oid) 0,
 															 false),
 												  (Node *) temp_var);
 						break;

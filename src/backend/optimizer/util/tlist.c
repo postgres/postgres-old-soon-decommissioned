@@ -110,8 +110,6 @@ create_tl_element(Var *var, int resdomno)
 									  var->vartype,
 									  var->vartypmod,
 									  NULL,
-									  (Index) 0,
-									  (Oid) 0,
 									  false),
 						   (Node *) var);
 }
@@ -199,8 +197,6 @@ add_to_flat_tlist(List *tlist, List *vars)
 						   var->vartype,
 						   var->vartypmod,
 						   NULL,
-						   (Index) 0,
-						   (Oid) 0,
 						   false);
 			tlist = lappend(tlist,
 							makeTargetEntry(r, copyObject(var)));

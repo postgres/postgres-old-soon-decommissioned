@@ -382,9 +382,7 @@ process_implied_equality(Query *root, Node *item1, Node *item2,
 	clause->opType = OP_EXPR;
 	clause->oper = (Node *) makeOper(oprid(eq_operator), /* opno */
 									 InvalidOid, /* opid */
-									 BOOLOID, /* operator result type */
-									 0,
-									 NULL);
+									 BOOLOID); /* operator result type */
 	clause->args = lcons(item1, lcons(item2, NIL));
 
 	add_restrict_and_join_to_rel(root, (Node *) clause);

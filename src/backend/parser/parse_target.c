@@ -71,8 +71,6 @@ transformTargetEntry(ParseState *pstate,
 						 type_id,
 						 type_mod,
 						 colname,
-						 (Index) 0,
-						 (Oid) InvalidOid,
 						 resjunk);
 
 	return makeTargetEntry(resnode, expr);

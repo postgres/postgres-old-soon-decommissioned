@@ -29,17 +29,14 @@
 Oper *
 makeOper(Oid opno,
 		 Oid opid,
-		 Oid opresulttype,
-		 int opsize,
-		 FunctionCachePtr op_fcache)
+		 Oid opresulttype)
 {
 	Oper	   *oper = makeNode(Oper);
 
 	oper->opno = opno;
 	oper->opid = opid;
 	oper->opresulttype = opresulttype;
-	oper->opsize = opsize;
-	oper->op_fcache = op_fcache;
+	oper->op_fcache = NULL;
 	return oper;
 }
 
@@ -99,8 +96,6 @@ makeResdom(AttrNumber resno,
 		   Oid restype,
 		   int32 restypmod,
 		   char *resname,
-		   Index reskey,
-		   Oid reskeyop,
 		   bool resjunk)
 {
 	Resdom	   *resdom = makeNode(Resdom);
@@ -111,12 +106,14 @@ makeResdom(AttrNumber resno,
 	resdom->resname = resname;
 
 	/*
-	 * For historical reasons, ressortgroupref defaults to 0 while
-	 * reskey/reskeyop are passed in explicitly.  This is pretty silly.
+	 * We always set the sorting/grouping fields to 0.  If the caller wants
+	 * to change them he must do so explicitly.  Few if any callers should
+	 * be doing that, so omitting these arguments reduces the chance of error.
 	 */
 	resdom->ressortgroupref = 0;
-	resdom->reskey = reskey;
-	resdom->reskeyop = reskeyop;
+	resdom->reskey = 0;
+	resdom->reskeyop = InvalidOid;
+
 	resdom->resjunk = resjunk;
 	return resdom;
 }

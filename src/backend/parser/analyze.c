@@ -470,7 +470,7 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
 											thisatt->atttypid,
 											thisatt->atttypmod,
 									  pstrdup(NameStr(thisatt->attname)),
-											0, 0, false),
+											false),
 								 stringToNode(defval[ndef].adbin));
 			qry->targetList = lappend(qry->targetList, te);
 

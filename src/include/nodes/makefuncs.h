@@ -18,9 +18,7 @@
 
 extern Oper *makeOper(Oid opno,
 		 Oid opid,
-		 Oid opresulttype,
-		 int opsize,
-		 FunctionCachePtr op_fcache);
+		 Oid opresulttype);
 
 extern Var *makeVar(Index varno,
 		AttrNumber varattno,
@@ -34,8 +32,6 @@ extern Resdom *makeResdom(AttrNumber resno,
 		   Oid restype,
 		   int32 restypmod,
 		   char *resname,
-		   Index reskey,
-		   Oid reskeyop,
 		   bool resjunk);
 
 extern Const *makeConst(Oid consttype,

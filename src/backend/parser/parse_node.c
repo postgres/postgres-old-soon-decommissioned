@@ -161,9 +161,7 @@ make_op(char *opname, Node *ltree, Node *rtree)
 
 	newop = makeOper(oprid(tup),/* opno */
 					 InvalidOid,/* opid */
-					 opform->oprresult, /* operator result type */
-					 0,
-					 NULL);
+					 opform->oprresult); /* operator result type */
 
 	result = makeNode(Expr);
 	result->typeOid = opform->oprresult;

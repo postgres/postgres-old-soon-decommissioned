@@ -45,8 +45,6 @@ extern Node *ParseFuncOrColumn(ParseState *pstate,
 				  bool agg_star, bool agg_distinct,
 				  int *curr_resno, int precedence);
 
-extern List *setup_base_tlist(Oid typeid);
-
 extern bool typeInheritsFrom(Oid subclassTypeId, Oid superclassTypeId);
 
 extern void func_error(char *caller, char *funcname,

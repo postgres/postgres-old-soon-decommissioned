@@ -29,8 +29,9 @@ typedef struct
 	int			typlen;			/* length of the return type */
 	bool		typbyval;		/* true if return type is pass by value */
 
-	bool		oneResult;		/* true we only want 1 result from the
-								 * function */
+	bool		returnsTuple;	/* true if return type is a tuple */
+	bool		returnsSet;		/* true if func returns a set (multi rows) */
+
 	bool		hasSetArg;		/* true if func is part of a nested dot
 								 * expr whose argument is func returning a
 								 * set ugh! */

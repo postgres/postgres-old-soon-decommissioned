@@ -910,9 +910,7 @@ CommuteClause(Expr *clause)
 
 	commu = makeOper(heapTup->t_data->t_oid,
 					 commuTup->oprcode,
-					 commuTup->oprresult,
-					 ((Oper *) clause->oper)->opsize,
-					 NULL);
+					 commuTup->oprresult);
 
 	/*
 	 * re-form the clause in-place!
@@ -1596,6 +1594,8 @@ bool
 					return true;
 			}
 			break;
+		case T_FieldSelect:
+			return walker(((FieldSelect *) node)->arg, context);
 		case T_RelabelType:
 			return walker(((RelabelType *) node)->arg, context);
 		case T_CaseExpr:
@@ -1821,6 +1821,16 @@ Node *
 					   Node *);
 				MUTATE(newnode->refassgnexpr, arrayref->refassgnexpr,
 					   Node *);
+				return (Node *) newnode;
+			}
+			break;
+		case T_FieldSelect:
+			{
+				FieldSelect *fselect = (FieldSelect *) node;
+				FieldSelect *newnode;
+
+				FLATCOPY(newnode, fselect, FieldSelect);
+				MUTATE(newnode->arg, fselect->arg, Node *);
 				return (Node *) newnode;
 			}
 			break;

@@ -758,6 +758,19 @@ _outSubLink(StringInfo str, SubLink *node)
 }
 
 /*
+ *	FieldSelect
+ */
+static void
+_outFieldSelect(StringInfo str, FieldSelect *node)
+{
+	appendStringInfo(str, " FIELDSELECT :arg ");
+	_outNode(str, node->arg);
+
+	appendStringInfo(str, " :fieldnum %d :resulttype %u :resulttypmod %d ",
+					 node->fieldnum, node->resulttype, node->resulttypmod);
+}
+
+/*
  *	RelabelType
  */
 static void
@@ -802,19 +815,9 @@ _outArrayRef(StringInfo str, ArrayRef *node)
 static void
 _outFunc(StringInfo str, Func *node)
 {
-	appendStringInfo(str,
-		   " FUNC :funcid %u :functype %u :funcisindex %s :funcsize %d ",
+	appendStringInfo(str, " FUNC :funcid %u :functype %u ",
 					 node->funcid,
-					 node->functype,
-					 node->funcisindex ? "true" : "false",
-					 node->funcsize);
-
-	appendStringInfo(str, " :func_fcache @ 0x%x :func_tlist ",
-					 (int) node->func_fcache);
-	_outNode(str, node->func_tlist);
-
-	appendStringInfo(str, " :func_planlist ");
-	_outNode(str, node->func_planlist);
+					 node->functype);
 }
 
 /*
@@ -840,9 +843,7 @@ _outParam(StringInfo str, Param *node)
 					 node->paramkind,
 					 node->paramid);
 	_outToken(str, node->paramname);
-	appendStringInfo(str, " :paramtype %u :param_tlist ",
-					 node->paramtype);
-	_outNode(str, node->param_tlist);
+	appendStringInfo(str, " :paramtype %u ", node->paramtype);
 }
 
 /*
@@ -1481,6 +1482,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_SubLink:
 				_outSubLink(str, obj);
+				break;
+			case T_FieldSelect:
+				_outFieldSelect(str, obj);
 				break;
 			case T_RelabelType:
 				_outRelabelType(str, obj);
