@@ -696,7 +696,17 @@ AllocSetRealloc(MemoryContext context, void *pointer, Size size)
 	 */
 	oldsize = AllocPointerGetSize(pointer);
 	if (oldsize >= size)
+	{
+#ifdef MEMORY_CONTEXT_CHECKING		
+		AllocChunk	chunk = AllocPointerGetChunk(pointer);
+
+		/* mark memory for memory leak searching */
+		memset(((char *) chunk) + (ALLOC_CHUNKHDRSZ + size), 
+				0x7F, chunk->size - size);
+		chunk->data_size = size;
+#endif
 		return pointer;
+	}
 
 	if (oldsize >= ALLOC_BIGCHUNK_LIMIT)
 	{
@@ -711,7 +721,6 @@ AllocSetRealloc(MemoryContext context, void *pointer, Size size)
 		AllocBlock	block = set->blocks;
 		AllocBlock	prevblock = NULL;
 		Size		blksize;
-
 #ifdef MEMORY_CONTEXT_CHECKING		
 		Size		data_size = size;
 #endif
