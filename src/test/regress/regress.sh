@@ -66,7 +66,7 @@ if [ -d ./obj ]; then
 	cd ./obj
 fi
 
-mkdir results
+[ -d results ] || mkdir results
 
 echo "=============== Notes...                              ================="
 echo "postmaster must already be running for the regression tests to succeed."
