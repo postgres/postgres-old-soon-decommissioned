@@ -19,6 +19,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <ctype.h>
 #include "postgres.h"
 #include "libpq-fe.h"
 #include "stringutils.h"
