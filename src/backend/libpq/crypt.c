@@ -78,11 +78,10 @@ crypt_openpwdfile(void)
 	FILE	   *pwdfile;
 
 	filename = crypt_getpwdfilename();
-	pwdfile = AllocateFile(filename, PG_BINARY_R);
+	pwdfile = AllocateFile(filename, "r");
 
-	if (pwdfile == NULL)
-		fprintf(stderr, "Couldn't read %s: %s\n",
-				filename, strerror(errno));
+	if (pwdfile == NULL && errno != ENOENT)
+		elog(DEBUG, "could not open %s: %s", filename, strerror(errno));
 
 	pfree(filename);
 
