@@ -32,21 +32,18 @@
 #ifndef _PG_CRYPTO_H
 #define _PG_CRYPTO_H
 
-typedef struct _pg_digest pg_digest;
-struct _pg_digest
-{
-	char	   *name;
-	uint		(*length) (pg_digest * h);
-	uint8	   *(*digest) (pg_digest * h, uint8 *data,
-									   uint dlen, uint8 *buf);
-	/* private */
-	union
-	{
-		uint		code;
-		const void *ptr;
-	}			misc;
-};
-
-extern pg_digest *pg_find_digest(pg_digest * hbuf, char *name);
+/* exported functions */
+Datum		pg_digest(PG_FUNCTION_ARGS);
+Datum		pg_digest_exists(PG_FUNCTION_ARGS);
+Datum		pg_hmac(PG_FUNCTION_ARGS);
+Datum		pg_hmac_exists(PG_FUNCTION_ARGS);
+Datum		pg_gen_salt(PG_FUNCTION_ARGS);
+Datum		pg_crypt(PG_FUNCTION_ARGS);
+Datum		pg_encrypt(PG_FUNCTION_ARGS);
+Datum		pg_decrypt(PG_FUNCTION_ARGS);
+Datum		pg_encrypt_iv(PG_FUNCTION_ARGS);
+Datum		pg_decrypt_iv(PG_FUNCTION_ARGS);
+Datum		pg_cipher_exists(PG_FUNCTION_ARGS);
 
 #endif
+

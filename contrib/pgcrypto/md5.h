@@ -62,7 +62,7 @@ typedef struct
 }			md5_ctxt;
 
 extern void md5_init(md5_ctxt *);
-extern void md5_loop(md5_ctxt *, uint8 *, unsigned int);
+extern void md5_loop(md5_ctxt *, const uint8 *, unsigned int);
 extern void md5_pad(md5_ctxt *);
 extern void md5_result(uint8 *, md5_ctxt *);
 
@@ -75,5 +75,4 @@ do {				\
 	md5_pad((y));		\
 	md5_result((x), (y));	\
 } while (0)
-
 #endif	 /* ! _NETINET6_MD5_H_ */
