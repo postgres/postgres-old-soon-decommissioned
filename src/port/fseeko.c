@@ -15,6 +15,8 @@
 
 #if defined(bsdi) || defined(netbsd)
 
+#include "c.h"
+
 #include <pthread.h>
 #include <stdio.h>
 #include <sys/types.h>
