@@ -2872,6 +2872,16 @@ PQprotocolVersion(const PGconn *conn)
 	return PG_PROTOCOL_MAJOR(conn->pversion);
 }
 
+int
+PQserverVersion(const PGconn *conn)
+{
+	if (!conn)
+		return 0;
+	if (conn->status == CONNECTION_BAD)
+		return 0;
+	return conn->sversion;
+}
+
 char *
 PQerrorMessage(const PGconn *conn)
 {
