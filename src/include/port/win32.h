@@ -138,6 +138,10 @@ int pgwin32_recv(SOCKET s, char* buf, int len, int flags);
 int pgwin32_send(SOCKET s, char* buf, int len, int flags);
 
 const char *pgwin32_socket_strerror(int err);
+
+/* in backend/port/win32/security.c */
+extern int pgwin32_is_admin(void);
+extern int pgwin32_is_service(void);
 #endif
 
 

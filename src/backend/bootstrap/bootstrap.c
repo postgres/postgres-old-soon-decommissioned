@@ -328,12 +328,11 @@ BootstrapMain(int argc, char *argv[])
 	{
 		if (!potential_DataDir)
 		{
-			fprintf(stderr,
-					gettext("%s does not know where to find the database system data.\n"
-							"You must specify the directory that contains the database system\n"
-							"either by specifying the -D invocation option or by setting the\n"
-							"PGDATA environment variable.\n"),
-					argv[0]);
+			write_stderr("%s does not know where to find the database system data.\n"
+						 "You must specify the directory that contains the database system\n"
+						 "either by specifying the -D invocation option or by setting the\n"
+						 "PGDATA environment variable.\n",
+						 argv[0]);
 			proc_exit(1);
 		}
 		SetDataDir(potential_DataDir);
@@ -503,15 +502,14 @@ BootstrapMain(int argc, char *argv[])
 static void
 usage(void)
 {
-	fprintf(stderr,
-			gettext("Usage:\n"
+	write_stderr("Usage:\n"
 					"  postgres -boot [OPTION]... DBNAME\n"
 					"  -c NAME=VALUE    set run-time parameter\n"
 					"  -d 1-5           debug level\n"
 					"  -D datadir       data directory\n"
 					"  -F               turn off fsync\n"
 					"  -o file          send debug output to file\n"
-					"  -x num           internal use\n"));
+					"  -x num           internal use\n");
 
 	proc_exit(1);
 }

@@ -122,7 +122,7 @@ printMixedStruct(mixedStruct *structToPrint)
 			break;
 
 		default:
-			fprintf(stderr, "internal error: unrecognized run-time parameter type\n");
+			write_stderr("internal error: unrecognized run-time parameter type\n");
 			break;
 	}
 

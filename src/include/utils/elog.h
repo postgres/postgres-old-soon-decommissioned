@@ -186,4 +186,14 @@ extern unsigned int Log_destination;
 /* Other exported functions */
 extern void DebugFileOpen(void);
 
+/*
+ * Write errors to stderr (or by equal means when stderr is
+ * not available). Used before ereport/elog can be used
+ * safely (memory context, GUC load etc)
+ */
+extern void write_stderr(const char *fmt,...)
+/* This extension allows gcc to check the format string for consistency with
+   the supplied arguments. */
+__attribute__((format(printf, 1, 2)));
+
 #endif   /* ELOG_H */

@@ -2578,12 +2578,11 @@ PostgresMain(int argc, char *argv[], const char *username)
 	{
 		if (!potential_DataDir)
 		{
-			fprintf(stderr,
-					gettext("%s does not know where to find the database system data.\n"
-							"You must specify the directory that contains the database system\n"
-							"either by specifying the -D invocation option or by setting the\n"
-							"PGDATA environment variable.\n"),
-					argv[0]);
+			write_stderr("%s does not know where to find the database system data.\n"
+						 "You must specify the directory that contains the database system\n"
+						 "either by specifying the -D invocation option or by setting the\n"
+						 "PGDATA environment variable.\n",
+						 argv[0]);
 			proc_exit(1);
 		}
 		SetDataDir(potential_DataDir);
