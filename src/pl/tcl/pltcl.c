@@ -309,7 +309,7 @@ pltcl_init_load_unknown(Tcl_Interp *interp)
 	/************************************************************
 	 * Check if table pltcl_modules exists
 	 ************************************************************/
-	spi_rc = SPI_exec("select 1 from pg_class "
+	spi_rc = SPI_exec("select 1 from pg_catalog.pg_class "
 					  "where relname = 'pltcl_modules'", 1);
 	SPI_freetuptable(SPI_tuptable);
 	if (spi_rc != SPI_OK_SELECT)
