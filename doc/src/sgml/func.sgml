@@ -5900,6 +5900,13 @@ SELECT TIMESTAMP 'now';
 	<entry><literal>255.255.255.0</literal></entry>
        </row>
        <row>
+	<entry><function>hostmask</function>(<type>inet</type>)</entry>
+	<entry><type>inet</type></entry>
+	<entry>construct hostmask for network</entry>
+	<entry><literal>hostmask('192.168.23.20/30')</literal></entry>
+	<entry><literal>0.0.0.3</literal></entry>
+       </row>
+       <row>
 	<entry><literal><function>network</function>(<type>inet</type>)</literal></entry>
 	<entry><type>cidr</type></entry>
 	<entry>extract network part of address</entry>
