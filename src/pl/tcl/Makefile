@@ -70,7 +70,7 @@ override CFLAGS = $(TCL_CFLAGS_OPTIMIZE) $(TCL_SHLIB_CFLAGS)
 # first of all calls to the call handler. See the doc in the modules
 # directory about details.
 
-ifeq ($(with_pltcl_unknown), yes)
+ifeq ($(enable_pltcl_unknown), yes)
 override CPPFLAGS+= -DPLTCL_UNKNOWN_SUPPORT
 endif
 
@@ -99,7 +99,7 @@ pltcl$(DLSUFFIX): pltcl.o
 
 install: all installdirs
 	$(INSTALL_SHLIB) $(DLOBJS) $(DESTDIR)$(libdir)/$(DLOBJS)
-ifeq ($(with_pltcl_unknown), yes)
+ifeq ($(enable_pltcl_unknown), yes)
 	$(INSTALL_SCRIPT) modules/pltcl_loadmod \
 		$(DESTDIR)$(bindir)/pltcl_loadmod
 	$(INSTALL_SCRIPT) modules/pltcl_delmod \
