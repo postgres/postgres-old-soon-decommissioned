@@ -1199,13 +1199,17 @@ gistdentryinit(GISTSTATE *giststate, GISTENTRY *e, char *pr, Relation r,
 	gistentryinit(*e, pr, r, pg, o, b, l);
 	if (giststate->haskeytype)
 	{
-		dep = (GISTENTRY *)
-			DatumGetPointer(FunctionCall1(&giststate->decompressFn,
+		if ( b ) {
+			dep = (GISTENTRY *)
+				DatumGetPointer(FunctionCall1(&giststate->decompressFn,
 										  PointerGetDatum(e)));
-		gistentryinit(*e, dep->pred, dep->rel, dep->page, dep->offset, dep->bytes,
+			gistentryinit(*e, dep->pred, dep->rel, dep->page, dep->offset, dep->bytes,
 					  dep->leafkey);
-		if (dep != e)
-			pfree(dep);
+			if (dep != e)
+				pfree(dep);
+		} else {
+			gistentryinit(*e, (char*)NULL, r, pg, o, 0, l);
+		}
 	}
 }
 
