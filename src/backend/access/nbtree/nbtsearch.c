@@ -12,24 +12,20 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
 
-#include "utils/rel.h"
-#include "access/genam.h"
-
-#include "storage/bufpage.h"
-#include "storage/bufmgr.h"
-#include "access/htup.h"
-#include "utils/palloc.h"
-#include "access/nbtree.h"
+#include <access/genam.h>
+#include <fmgr.h>
+#include <storage/bufpage.h>
+#include <storage/bufmgr.h>
+#include <access/nbtree.h>
 
 #ifndef HAVE_MEMMOVE
-# include "regex/utils.h"
+# include <regex/utils.h>
 #else
 # include <string.h>
 #endif
 
-#include "fmgr.h"
 
 static BTStack _bt_searchr(Relation rel, int keysz, ScanKey scankey, Buffer *bufP, BTStack stack_in);
 static OffsetNumber _bt_firsteq(Relation rel, TupleDesc itupdesc, Page page, Size keysz, ScanKey scankey, OffsetNumber offnum);

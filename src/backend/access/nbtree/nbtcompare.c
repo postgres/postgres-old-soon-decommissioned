@@ -22,8 +22,9 @@
 
 #include <string.h>
 
-#include "postgres.h"
-#include "utils/nabstime.h"
+#include <postgres.h>
+
+#include <utils/nabstime.h>
 
 int32
 btint2cmp(int16 a, int16 b)

@@ -12,17 +12,11 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
 
-#include "utils/rel.h"
-
-#include "access/itup.h"
-#include "access/funcindex.h"
-#include "storage/bufpage.h"
-#include "access/htup.h"
-#include "access/relscan.h"
-#include "access/sdir.h"
-#include "access/nbtree.h"
+#include <access/istrat.h>
+#include <storage/bufpage.h>
+#include <access/nbtree.h>
 
 /*
  * Note:

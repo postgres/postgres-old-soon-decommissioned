@@ -47,29 +47,21 @@
  *-------------------------------------------------------------------------
  */
 
-#include <stdio.h>
 #include <fcntl.h>
 
-#include "postgres.h"
+#include <postgres.h>
 
-#include "utils/rel.h"
+#include <utils/memutils.h>
+#include <storage/bufpage.h>
+#include <access/nbtree.h>
+#include <storage/bufmgr.h>
 
-#include "access/itup.h"
-#include "access/funcindex.h"
-#include "storage/bufpage.h"
-#include "access/htup.h"
-#include "utils/palloc.h"
-#include "access/relscan.h"
-#include "access/sdir.h"
-#include "access/nbtree.h"
 
 #ifndef HAVE_MEMMOVE
-# include "regex/utils.h"
+# include <regex/utils.h>
 #else
 # include <string.h>
 #endif
-
-#include "storage/bufmgr.h"
 
 #ifdef FASTBUILD
 
