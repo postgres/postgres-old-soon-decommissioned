@@ -10,7 +10,11 @@ AC_DEFUN([PGAC_VAR_INT_TIMEZONE],
 [AC_CACHE_CHECK(for int timezone, pgac_cv_var_int_timezone,
 [AC_TRY_LINK([#include <time.h>
 int res;],
-  [res = timezone / 60;],
+  [#ifndef __CYGWIN__
+res = timezone / 60;
+#else
+res = _timezone / 60;
+#endif],
   [pgac_cv_var_int_timezone=yes],
   [pgac_cv_var_int_timezone=no])])
 if test x"$pgac_cv_var_int_timezone" = xyes ; then

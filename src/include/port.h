@@ -180,6 +180,14 @@ extern int	win32_open(const char *, int,...);
 #define pclose(a) _pclose(a)
 #endif
 
+/* Global variable holding time zone information. */
+#if !defined(__CYGWIN__)
+#define TIMEZONE_GLOBAL timezone
+#else
+#define TIMEZONE_GLOBAL _timezone
+#define tzname _tzname			/* should be in time.h? */
+#endif
+
 extern int	copydir(char *fromdir, char *todir);
 
 /* Missing rand functions */
