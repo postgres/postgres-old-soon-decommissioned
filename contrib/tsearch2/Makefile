@@ -29,12 +29,10 @@ DATA_built = tsearch2.sql untsearch2.sql
 DOCS = README.tsearch2
 REGRESS = tsearch2
 
-EXTRA_CLEAN = tsearch2.sql.in
-
 SHLIB_LINK := -lm
 
 tsearch2.sql: tsearch.sql.in
-	sed -e 's,MODULE_PATHNAME,$$libdir/$*,g' \
+	sed -e 's,MODULE_PATHNAME,$$libdir/$(MODULE_big),g' \
 	    -e 's,DATA_PATH,$(datadir)/contrib,g' $< >$@
 
 untsearch2.sql: untsearch.sql.in
