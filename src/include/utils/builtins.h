@@ -367,10 +367,14 @@ extern Datum record_recv(PG_FUNCTION_ARGS);
 extern Datum record_send(PG_FUNCTION_ARGS);
 extern Datum cstring_in(PG_FUNCTION_ARGS);
 extern Datum cstring_out(PG_FUNCTION_ARGS);
+extern Datum cstring_recv(PG_FUNCTION_ARGS);
+extern Datum cstring_send(PG_FUNCTION_ARGS);
 extern Datum any_in(PG_FUNCTION_ARGS);
 extern Datum any_out(PG_FUNCTION_ARGS);
 extern Datum anyarray_in(PG_FUNCTION_ARGS);
 extern Datum anyarray_out(PG_FUNCTION_ARGS);
+extern Datum anyarray_recv(PG_FUNCTION_ARGS);
+extern Datum anyarray_send(PG_FUNCTION_ARGS);
 extern Datum void_in(PG_FUNCTION_ARGS);
 extern Datum void_out(PG_FUNCTION_ARGS);
 extern Datum trigger_in(PG_FUNCTION_ARGS);
@@ -611,8 +615,12 @@ extern int inet_net_pton(int af, const char *src,
 /* network.c */
 extern Datum inet_in(PG_FUNCTION_ARGS);
 extern Datum inet_out(PG_FUNCTION_ARGS);
+extern Datum inet_recv(PG_FUNCTION_ARGS);
+extern Datum inet_send(PG_FUNCTION_ARGS);
 extern Datum cidr_in(PG_FUNCTION_ARGS);
 extern Datum cidr_out(PG_FUNCTION_ARGS);
+extern Datum cidr_recv(PG_FUNCTION_ARGS);
+extern Datum cidr_send(PG_FUNCTION_ARGS);
 extern Datum network_cmp(PG_FUNCTION_ARGS);
 extern Datum network_lt(PG_FUNCTION_ARGS);
 extern Datum network_le(PG_FUNCTION_ARGS);
@@ -642,6 +650,8 @@ extern Datum network_scan_last(Datum in);
 /* mac.c */
 extern Datum macaddr_in(PG_FUNCTION_ARGS);
 extern Datum macaddr_out(PG_FUNCTION_ARGS);
+extern Datum macaddr_recv(PG_FUNCTION_ARGS);
+extern Datum macaddr_send(PG_FUNCTION_ARGS);
 extern Datum macaddr_cmp(PG_FUNCTION_ARGS);
 extern Datum macaddr_lt(PG_FUNCTION_ARGS);
 extern Datum macaddr_le(PG_FUNCTION_ARGS);

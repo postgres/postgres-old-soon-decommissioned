@@ -19,6 +19,7 @@
 #include <math.h>
 #include <locale.h>
 
+#include "libpq/pqformat.h"
 #include "miscadmin.h"
 #include "utils/builtins.h"
 #include "utils/cash.h"
@@ -308,6 +309,31 @@ cash_out(PG_FUNCTION_ARGS)
 	}
 
 	PG_RETURN_CSTRING(result);
+}
+
+/*
+ *		cash_recv			- converts external binary format to cash
+ */
+Datum
+cash_recv(PG_FUNCTION_ARGS)
+{
+	StringInfo	buf = (StringInfo) PG_GETARG_POINTER(0);
+
+	PG_RETURN_CASH((Cash) pq_getmsgint(buf, sizeof(Cash)));
+}
+
+/*
+ *		cash_send			- converts cash to binary format
+ */
+Datum
+cash_send(PG_FUNCTION_ARGS)
+{
+	Cash		arg1 = PG_GETARG_CASH(0);
+	StringInfoData buf;
+
+	pq_begintypsend(&buf);
+	pq_sendint(&buf, arg1, sizeof(Cash));
+	PG_RETURN_BYTEA_P(pq_endtypsend(&buf));
 }
 
 
