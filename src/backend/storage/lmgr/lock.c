@@ -1743,6 +1743,7 @@ DeadLockCheck(void *proc, LOCK *findlock)
 													 MyProc->xid,
 													 NULL) == STATUS_OK)
 							{
+								SetWaitingForLock(false);
 								GrantLock(MyProc->waitLock, MyProc->token);
 								(MyProc->waitLock->waitProcs.size)--;
 								ProcWakeup(MyProc, NO_ERROR);
