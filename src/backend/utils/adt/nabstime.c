@@ -432,14 +432,11 @@ nabstimeout(PG_FUNCTION_ARGS)
 
 /*
  *	AbsoluteTimeIsBefore -- true iff time1 is before time2.
- *	AbsoluteTimeIsBefore -- true iff time1 is after time2.
+ *	AbsoluteTimeIsAfter -- true iff time1 is after time2.
  */
 bool
 AbsoluteTimeIsBefore(AbsoluteTime time1, AbsoluteTime time2)
 {
-	Assert(AbsoluteTimeIsValid(time1));
-	Assert(AbsoluteTimeIsValid(time2));
-
 	if (time1 == CURRENT_ABSTIME)
 		time1 = GetCurrentTransactionStartTime();
 
@@ -453,9 +450,6 @@ AbsoluteTimeIsBefore(AbsoluteTime time1, AbsoluteTime time2)
 bool
 AbsoluteTimeIsAfter(AbsoluteTime time1, AbsoluteTime time2)
 {
-	Assert(AbsoluteTimeIsValid(time1));
-	Assert(AbsoluteTimeIsValid(time2));
-
 	if (time1 == CURRENT_ABSTIME)
 		time1 = GetCurrentTransactionStartTime();
 
