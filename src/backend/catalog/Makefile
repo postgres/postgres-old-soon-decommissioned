@@ -41,17 +41,18 @@ postgres.bki postgres.description: genbki.sh $(POSTGRES_BKI_SRCS) \
     $(top_srcdir)/src/include/postgres_ext.h $(top_builddir)/src/include/pg_config.h
 	CPP='$(CPP)' AWK='$(AWK)' $(SHELL) $< $(BKIOPTS) -o postgres $(pg_includes) $(POSTGRES_BKI_SRCS) --set-version=$(VERSION)
 
-.PHONY: install-bki
-install-bki: $(BKIFILES) installdirs
+.PHONY: install-data
+install-data: $(BKIFILES) installdirs
 	$(INSTALL_DATA) postgres.bki         $(DESTDIR)$(datadir)/postgres.bki
 	$(INSTALL_DATA) postgres.description $(DESTDIR)$(datadir)/postgres.description
+	$(INSTALL_DATA) information_schema.sql $(DESTDIR)$(datadir)/information_schema.sql
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(datadir)
 
-.PHONY: uninstall-bki
-uninstall-bki:
-	rm -f $(addprefix $(DESTDIR)$(datadir)/, $(BKIFILES))
+.PHONY: uninstall-data
+uninstall-data:
+	rm -f $(addprefix $(DESTDIR)$(datadir)/, $(BKIFILES) information_schema.sql)
 
 
 clean: 
