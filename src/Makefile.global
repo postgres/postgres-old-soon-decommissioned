@@ -130,7 +130,7 @@ CFLAGS+= -DNAMEDATALEN=$(NAMEDATALEN) -DOIDNAMELEN=$(OIDNAMELEN)
 # Comment out CDEBUG to turn off debugging and sanity-checking.
 #
 #	XXX on MIPS, use -g3 if you want to compile with -O
-CDEBUG= #-g
+#CDEBUG= -g
 
 # Comment out ENFORCE_ALIGNMENT if you do NOT want unaligned access to
 # multi-byte types to generate a bus error.
