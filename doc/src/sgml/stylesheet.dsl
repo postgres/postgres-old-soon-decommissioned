@@ -68,6 +68,42 @@
 
 (define html-index #t)
 
+;; Block elements are allowed in PARA in DocBook, but not in P in
+;; HTML.  With %fix-para-wrappers% turned on, the stylesheets attempt
+;; to avoid putting block elements in HTML P tags by outputting
+;; additional end/begin P pairs around them.
+(define %fix-para-wrappers% #t)
+
+;; ...but we need to do some extra work to make the above apply to PRE
+;; as well.  (mostly pasted from dbverb.dsl)
+(define ($verbatim-display$ indent line-numbers?)
+  (let ((content (make element gi: "PRE"
+                       attributes: (list
+                                    (list "CLASS" (gi)))
+                       (if (or indent line-numbers?)
+                           ($verbatim-line-by-line$ indent line-numbers?)
+                           (process-children)))))
+    (if %shade-verbatim%
+        (make element gi: "TABLE"
+              attributes: ($shade-verbatim-attr$)
+              (make element gi: "TR"
+                    (make element gi: "TD"
+                          content)))
+	(make sequence
+	  (para-check)
+	  content
+	  (para-check 'restart)))))
+
+;; ...and for notes.
+(element note
+  (make sequence
+    (para-check)
+    ($admonition$)
+    (para-check 'restart)))
+
+;;; XXX The above is very ugly.  It might be better to run 'tidy' on
+;;; the resulting *.html files.
+
 ]]> <!-- %output-html -->
 
 <![ %output-print; [

@@ -38,6 +38,7 @@ DIV.example {
 	border-width: 0px;
 	border-left-width: 2px;
 	border-color: black;
+	margin: 0.5ex;
 }
 
 /* less dense spacing of TOC */
