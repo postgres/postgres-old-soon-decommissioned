@@ -45,7 +45,7 @@ char	   *Name_pg_class_indices[Num_pg_class_indices] =
 char	   *Name_pg_group_indices[Num_pg_group_indices] =
 {GroupNameIndex, GroupSysidIndex};
 char	   *Name_pg_index_indices[Num_pg_index_indices] =
-{IndexRelidIndex};
+{IndexRelidIndex, IndexIndrelidIndex};
 char	   *Name_pg_inherits_indices[Num_pg_inherits_indices] =
 {InheritsRelidSeqnoIndex};
 char	   *Name_pg_language_indices[Num_pg_language_indices] =

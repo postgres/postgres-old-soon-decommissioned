@@ -71,7 +71,7 @@ typedef HeapTuple (*ScanFunc) ();
 	In backend/catalog/indexing.c, initialize the relation array with
 	the index names for the relation, fixed size of relation (or marking
 	first non-fixed length field), and create the index lookup function.
-	Pick one that takes similar arguments and use that one, but keep the
+	Pick one that has similar arguments and use that one, but keep the
 	function names in the same order as the cache list for clarity.
 
 	Finally, any place your relation gets heap_insert() or
