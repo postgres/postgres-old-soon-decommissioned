@@ -42,10 +42,11 @@ typedef struct MemoryContextMethods
 	void		(*init) (MemoryContext context);
 	void		(*reset) (MemoryContext context);
 	void		(*delete) (MemoryContext context);
+	Size		(*get_chunk_space) (MemoryContext context, void *pointer);
+	void		(*stats) (MemoryContext context);
 #ifdef MEMORY_CONTEXT_CHECKING
 	void		(*check) (MemoryContext context);
 #endif
-	void		(*stats) (MemoryContext context);
 } MemoryContextMethods;
 
 

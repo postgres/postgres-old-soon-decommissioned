@@ -556,7 +556,7 @@ static struct config_int
 
 	{
 		{ "sort_mem", PGC_USERSET }, &SortMem,
-		512, 4 * BLCKSZ / 1024, INT_MAX, NULL, NULL
+		1024, 8 * BLCKSZ / 1024, INT_MAX, NULL, NULL
 	},
 
 	{

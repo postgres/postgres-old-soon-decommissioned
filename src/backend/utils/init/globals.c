@@ -71,6 +71,6 @@ char		FloatFormat[20] = "%f";
 
 bool		enableFsync = true;
 bool		allowSystemTableMods = false;
-int			SortMem = 512;
+int			SortMem = 1024;
 int			VacuumMem = 8192;
 int			NBuffers = DEF_NBUFFERS;
