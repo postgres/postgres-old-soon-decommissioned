@@ -46,12 +46,11 @@ extern List *make_ands_implicit(Expr *clause);
 
 extern bool contain_agg_clause(Node *clause);
 extern bool contain_distinct_agg_clause(Node *clause);
-extern List *pull_agg_clause(Node *clause);
+extern int	count_agg_clause(Node *clause);
 
 extern bool expression_returns_set(Node *clause);
 
 extern bool contain_subplans(Node *clause);
-extern List *pull_subplans(Node *clause);
 
 extern bool contain_mutable_functions(Node *clause);
 extern bool contain_volatile_functions(Node *clause);
