@@ -41,17 +41,27 @@ FRONTEND="psql $HOSTLOC -a -q -X"
 #		testname/hostnamepattern=substitutefile
 # where the hostnamepattern is evaluated per the rules of expr(1) --- namely,
 # it is a standard regular expression with an implicit ^ at the start.
+#
+# The tempfile hackery is needed because some shells will run the loop
+# inside a subshell, whereupon shell variables set therein aren't seen
+# outside the loop :-(
 # ----------
-SUBSTLIST=""
-RESULTMAP=`cat resultmap`
-for LINE in $RESULTMAP
+TMPFILE="matches.$$"
+cat /dev/null > $TMPFILE
+while read LINE
 do
 	HOSTPAT=`expr "$LINE" : '.*/\(.*\)='`
 	if [ `expr "$hostname" : "$HOSTPAT"` -ne 0 ]
 	then
-		SUBSTLIST="$SUBSTLIST $LINE"
+		# remove hostnamepattern from line so that there are no shell
+		# wildcards in SUBSTLIST; else later 'for' could expand them!
+		TESTNAME=`expr "$LINE" : '\(.*\)/'`
+		SUBST=`echo "$LINE" | sed 's/^.*=//'`
+		echo "$TESTNAME=$SUBST" >> $TMPFILE
 	fi
-done
+done <resultmap
+SUBSTLIST=`cat $TMPFILE`
+rm -f $TMPFILE
 
 if [ -d ./obj ]; then
 	cd ./obj
@@ -97,7 +107,7 @@ fi
 fi
 
 echo "=============== running regression queries...         ================="
-echo "" > regression.diffs
+cat /dev/null > regression.diffs
 
 if [ "x$hostname" = "xi386-pc-qnx" ]; then
 	DIFFOPT="-b"
@@ -123,7 +133,7 @@ do
 	EXPECTED="expected/${tst}.out"
 	for LINE in $SUBSTLIST
 	do
-		if [ `expr "$LINE" : "$tst/"` -ne 0 ]
+		if [ `expr "$LINE" : "$tst="` -ne 0 ]
 		then
 			SUBST=`echo "$LINE" | sed 's/^.*=//'`
 			EXPECTED="expected/${SUBST}.out"
