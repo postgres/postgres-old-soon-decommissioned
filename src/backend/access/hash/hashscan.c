@@ -45,6 +45,31 @@ typedef HashScanListData *HashScanList;
 
 static HashScanList HashScans = (HashScanList) NULL;
 
+
+/*
+ * AtEOXact_hash() --- clean up hash subsystem at xact abort or commit.
+ *
+ * This is here because it needs to touch this module's static var HashScans.
+ */
+void
+AtEOXact_hash(void)
+{
+	/*
+	 * Note: these actions should only be necessary during xact abort; but
+	 * they can't hurt during a commit.
+	 */
+
+	/*
+	 * Reset the active-scans list to empty. We do not need to free the
+	 * list elements, because they're all palloc()'d, so they'll go away
+	 * at end of transaction anyway.
+	 */
+	HashScans = NULL;
+
+	/* If we were building a hash, we ain't anymore. */
+	BuildingHash = false;
+}
+
 /*
  *	_Hash_regscan() -- register a new scan.
  */

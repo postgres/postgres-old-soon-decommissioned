@@ -58,7 +58,9 @@ CATALOG(pg_index)
 	bool		indisprimary;	/* is this index for primary key */
 	Oid			indreference;	/* oid of index of referenced relation (ie
 								 * - this index for foreign key */
-	text		indpred;		/* query plan for partial index predicate */
+	/* VARIABLE LENGTH FIELD: */
+	text		indpred;		/* expression tree for predicate,
+								 * if a partial index */
 } FormData_pg_index;
 
 /* ----------------

@@ -118,7 +118,7 @@ datumCopy(Datum value, bool typByVal, int typLen)
  *
  * Free the space occupied by a datum CREATED BY "datumCopy"
  *
- * NOTE: DO NOT USE THIS ROUTINE with datums returned by amgetattr() etc.
+ * NOTE: DO NOT USE THIS ROUTINE with datums returned by heap_getattr() etc.
  * ONLY datums created by "datumCopy" can be freed!
  *-------------------------------------------------------------------------
  */

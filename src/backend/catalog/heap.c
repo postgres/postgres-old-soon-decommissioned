@@ -1031,7 +1031,7 @@ RelationTruncateIndexes(Oid heapId)
 		/* Initialize the index and rebuild */
 		InitIndexStrategy(indexInfo->ii_NumIndexAttrs,
 						  currentIndex, accessMethodId);
-		index_build(heapRelation, currentIndex, indexInfo, NULL);
+		index_build(heapRelation, currentIndex, indexInfo);
 
 		/*
 		 * index_build will close both the heap and index relations (but

@@ -1045,7 +1045,8 @@
       <entry>indpred</entry>
       <entry><type>text</type></entry>
       <entry></entry>
-      <entry>Query plan for partial index predicate (not functional)</entry>
+      <entry>Expression tree (in the form of a nodeToString representation)
+      for partial index predicate</entry>
      </row>
     </tbody>
    </tgroup>

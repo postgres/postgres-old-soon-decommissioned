@@ -126,7 +126,7 @@ find_secondary_indexes(Oid relationObjectId)
 		/* Extract info from the pg_index tuple */
 		info->indexoid = index->indexrelid;
 		info->indproc = index->indproc; /* functional index ?? */
-		if (VARSIZE(&index->indpred) != 0)		/* partial index ?? */
+		if (VARSIZE(&index->indpred) > VARHDRSZ) /* partial index ?? */
 		{
 			char	   *predString;
 

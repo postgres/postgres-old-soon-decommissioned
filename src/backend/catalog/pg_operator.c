@@ -402,7 +402,7 @@ OperatorShellMake(char *operatorName,
  *	 rightSortObjectId -- same as for commutatorObjectId
  *	 operatorProcedure -- must access the pg_procedure catalog to get the
  *				   ObjectId of the procedure that actually does the operator
- *				   actions this is required.  Do an amgetattr to find out the
+ *				   actions this is required.  Do a lookup to find out the
  *				   return type of the procedure
  *	 restrictionProcedure -- must access the pg_procedure catalog to get
  *				   the ObjectId but this is optional

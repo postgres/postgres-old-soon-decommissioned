@@ -166,7 +166,7 @@ InitScanRelation(SeqScan *node, EState *estate,
 	ExecOpenScanR(reloid,		/* relation */
 				  0,			/* nkeys */
 				  NULL,			/* scan key */
-				  0,			/* is index */
+				  false,		/* is index */
 				  direction,	/* scan direction */
 				  estate->es_snapshot,
 				  &currentRelation,		/* return: rel desc */

@@ -1119,7 +1119,7 @@ build_indices()
 
 		heap = heap_openr(ILHead->il_heap, NoLock);
 		ind = index_openr(ILHead->il_ind);
-		index_build(heap, ind, ILHead->il_info, NULL);
+		index_build(heap, ind, ILHead->il_info);
 
 		/*
 		 * In normal processing mode, index_build would close the heap and

@@ -17,6 +17,16 @@
 #include "access/itup.h"
 #include "nodes/execnodes.h"
 
+
+/* Typedef for callback function for IndexBuildHeapScan */
+typedef void (*IndexBuildCallback) (Relation index,
+									HeapTuple htup,
+									Datum *attdata,
+									char *nulls,
+									bool tupleIsAlive,
+									void *state);
+
+
 extern Form_pg_am AccessMethodObjectIdGetForm(Oid accessMethodObjectId,
 							MemoryContext resultCxt);
 
@@ -56,7 +66,13 @@ extern bool SetReindexProcessing(bool processing);
 extern bool IsReindexProcessing(void);
 
 extern void index_build(Relation heapRelation, Relation indexRelation,
-			IndexInfo *indexInfo, Node *oldPred);
+						IndexInfo *indexInfo);
+
+extern double IndexBuildHeapScan(Relation heapRelation,
+								 Relation indexRelation,
+								 IndexInfo *indexInfo,
+								 IndexBuildCallback callback,
+								 void *callback_state);
 
 extern bool reindex_index(Oid indexId, bool force, bool inplace);
 extern bool activate_indexes_of_a_table(Oid relid, bool activate);

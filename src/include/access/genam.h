@@ -18,8 +18,21 @@
 #include "access/relscan.h"
 #include "access/sdir.h"
 
+
+/* Struct for statistics returned by bulk-delete operation */
+typedef struct IndexBulkDeleteResult
+{
+	BlockNumber	num_pages;		/* pages remaining in index */
+	double		tuples_removed;	/* # removed by bulk-delete operation */
+	double		num_index_tuples; /* # remaining */
+} IndexBulkDeleteResult;
+
+/* Typedef for callback function to determine if a tuple is bulk-deletable */
+typedef bool (*IndexBulkDeleteCallback) (ItemPointer itemptr, void *state);
+
+
 /* ----------------
- *		generalized index_ interface routines
+ *		generalized index_ interface routines (in indexam.c)
  * ----------------
  */
 extern Relation index_open(Oid relationId);
@@ -29,7 +42,6 @@ extern InsertIndexResult index_insert(Relation relation,
 			 Datum *datum, char *nulls,
 			 ItemPointer heap_t_ctid,
 			 Relation heapRel);
-extern void index_delete(Relation relation, ItemPointer indexItem);
 extern IndexScanDesc index_beginscan(Relation relation, bool scanFromEnd,
 				uint16 numberOfKeys, ScanKey key);
 extern void index_rescan(IndexScanDesc scan, bool scanFromEnd, ScanKey key);
@@ -38,6 +50,9 @@ extern void index_markpos(IndexScanDesc scan);
 extern void index_restrpos(IndexScanDesc scan);
 extern RetrieveIndexResult index_getnext(IndexScanDesc scan,
 			  ScanDirection direction);
+extern IndexBulkDeleteResult *index_bulk_delete(Relation relation,
+				IndexBulkDeleteCallback callback,
+				void *callback_state);
 extern RegProcedure index_cost_estimator(Relation relation);
 extern RegProcedure index_getprocid(Relation irel, AttrNumber attnum,
 				uint16 procnum);

@@ -993,7 +993,7 @@ ExecInitIndexScan(IndexScan *node, EState *estate, Plan *parent)
 	ExecOpenScanR(reloid,		/* relation */
 				  0,			/* nkeys */
 				  (ScanKey) NULL,		/* scan key */
-				  0,			/* is index */
+				  false,		/* is index */
 				  direction,	/* scan direction */
 				  estate->es_snapshot,	/* */
 				  &currentRelation,		/* return: rel desc */
@@ -1023,7 +1023,7 @@ ExecInitIndexScan(IndexScan *node, EState *estate, Plan *parent)
 			ExecOpenScanR(indexOid,		/* relation */
 						  numScanKeys[i],		/* nkeys */
 						  scanKeys[i],	/* scan key */
-						  true, /* is index */
+						  true,			/* is index */
 						  direction,	/* scan direction */
 						  estate->es_snapshot,
 						  &(relationDescs[i]),	/* return: rel desc */

@@ -162,7 +162,7 @@ typedef struct GISTENTRY
 /* gist.c */
 extern Datum gistbuild(PG_FUNCTION_ARGS);
 extern Datum gistinsert(PG_FUNCTION_ARGS);
-extern Datum gistdelete(PG_FUNCTION_ARGS);
+extern Datum gistbulkdelete(PG_FUNCTION_ARGS);
 extern void _gistdump(Relation r);
 extern void gistfreestack(GISTSTACK *s);
 extern void initGISTstate(GISTSTATE *giststate, Relation index);

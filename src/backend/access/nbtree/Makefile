@@ -12,7 +12,7 @@ subdir = src/backend/access/nbtree
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = nbtcompare.o nbtinsert.o nbtpage.o nbtree.o nbtscan.o nbtsearch.o \
+OBJS = nbtcompare.o nbtinsert.o nbtpage.o nbtree.o nbtsearch.o \
        nbtstrat.o nbtutils.o nbtsort.o
 
 all: SUBSYS.o

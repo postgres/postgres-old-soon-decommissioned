@@ -813,7 +813,7 @@ echo "UPDATE pg_database SET \
 		| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
 
 echo "Vacuuming database."
-echo "VACUUM ANALYZE" \
+echo "VACUUM FULL ANALYZE" \
 	| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
 
 echo "Copying template1 to template0."
@@ -824,7 +824,7 @@ echo "UPDATE pg_database SET \
 	datallowconn = 'f' \
         WHERE datname = 'template0'" \
 		| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
-echo "VACUUM pg_database" \
+echo "VACUUM FULL pg_database" \
 	| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
 
 

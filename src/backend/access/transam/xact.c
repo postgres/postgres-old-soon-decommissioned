@@ -156,7 +156,10 @@
 
 #include <sys/time.h>
 
+#include "access/gistscan.h"
+#include "access/hash.h"
 #include "access/nbtree.h"
+#include "access/rtree.h"
 #include "access/xact.h"
 #include "catalog/heap.h"
 #include "catalog/index.h"
@@ -1040,7 +1043,10 @@ CommitTransaction(void)
 	smgrDoPendingDeletes(true);
 
 	AtEOXact_SPI();
+	AtEOXact_gist();
+	AtEOXact_hash();
 	AtEOXact_nbtree();
+	AtEOXact_rtree();
 	AtCommit_Cache();
 	AtCommit_Locks();
 	AtEOXact_CatCache(true);
@@ -1147,7 +1153,10 @@ AbortTransaction(void)
 	smgrDoPendingDeletes(false);
 
 	AtEOXact_SPI();
+	AtEOXact_gist();
+	AtEOXact_hash();
 	AtEOXact_nbtree();
+	AtEOXact_rtree();
 	AtAbort_Cache();
 	AtEOXact_CatCache(false);
 	AtAbort_Memory();
