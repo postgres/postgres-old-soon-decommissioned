@@ -66,7 +66,7 @@ TypeGetWithOpenRelation(Relation pg_type_desc,
 
 	scan = heap_beginscan(pg_type_desc,
 						  0,
-						  SelfTimeQual,
+						  true,
 						  1,
 						  typeKey);
 
@@ -472,7 +472,7 @@ TypeCreate(char *typeName,
 	typeKey[0].sk_argument = PointerGetDatum(typeName);
 	pg_type_scan = heap_beginscan(pg_type_desc,
 								  0,
-								  SelfTimeQual,
+								  true,
 								  1,
 								  typeKey);
 

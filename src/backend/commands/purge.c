@@ -110,7 +110,7 @@ RelationPurge(char *relationName,
 	key[0].sk_argument = PointerGetDatum(relationName);
 	fmgr_info(key[0].sk_procedure, &key[0].sk_func, &key[0].sk_nargs);
 
-	scan = heap_beginscan(relation, 0, NowTimeQual, 1, key);
+	scan = heap_beginscan(relation, 0, false, 1, key);
 	oldTuple = heap_getnext(scan, 0, &buffer);
 	if (!HeapTupleIsValid(oldTuple))
 	{

@@ -23,7 +23,7 @@ endif
 
 
 OBJS= analyze.o catalog_utils.o dbcommands.o gram.o \
-      keywords.o parser.o parse_query.o scan.o scansup.o sysfunc.o
+      keywords.o parser.o parse_query.o scan.o scansup.o
 
 all: SUBSYS.o
 

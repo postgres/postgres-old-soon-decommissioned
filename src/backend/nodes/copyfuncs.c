@@ -1470,8 +1470,6 @@ _copyRangeTblEntry(RangeTblEntry *from)
 		newnode->relname = pstrdup(from->relname);
 	if (from->refname)
 		newnode->refname = pstrdup(from->refname);
-	newnode->timeRange = NULL;
-	newnode->timeQual = NULL;
 
 	return newnode;
 }

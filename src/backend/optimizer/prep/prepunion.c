@@ -178,10 +178,6 @@ plan_union_queries(Index rt_index,
 			union_relids = VersionGetParents(rt_entry->relid);
 			break;
 
-		case ARCHIVE_FLAG:
-			union_relids = find_archive_rels(rt_entry->relid);
-			break;
-
 		default:
 			/* do nothing */
 			break;

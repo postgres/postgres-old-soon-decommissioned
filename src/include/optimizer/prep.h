@@ -17,12 +17,6 @@
 #include <nodes/parsenodes.h>
 
 /*
- * prototypes for archive.h
- */
-extern void plan_archive(List *rt);
-extern List *find_archive_rels(Oid relid);
-
-/*
  * prototypes for prepqual.h
  */
 extern List *

@@ -252,7 +252,7 @@ initTeeScanDescs(Tee *node)
 	{
 		teeState->tee_leftScanDesc = heap_beginscan(bufferRel,
 											ScanDirectionIsBackward(dir),
-													NowTimeQual,		/* time qual */
+													false, /* seeself */
 													0,	/* num scan keys */
 													NULL		/* scan keys */
 			);
@@ -261,7 +261,7 @@ initTeeScanDescs(Tee *node)
 	{
 		teeState->tee_rightScanDesc = heap_beginscan(bufferRel,
 											ScanDirectionIsBackward(dir),
-													 NowTimeQual,		/* time qual */
+													 false, /* seeself */
 													 0, /* num scan keys */
 													 NULL		/* scan keys */
 			);

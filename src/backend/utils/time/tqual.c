@@ -25,9 +25,6 @@
 
 #include "utils/tqual.h"
 
-static int4	SelfTimeQualData;
-TimeQual	SelfTimeQual = (TimeQual) &SelfTimeQualData;
-
 extern bool PostgresIsInitialized;
 
 /*
@@ -82,33 +79,23 @@ static bool HeapTupleSatisfiesItself(HeapTuple tuple);
 static bool HeapTupleSatisfiesNow(HeapTuple tuple);
 
 /*
- * HeapTupleSatisfiesTimeQual --
+ * HeapTupleSatisfiesScope --
  *		True iff heap tuple satsifies a time qual.
  *
  * Note:
  *		Assumes heap tuple is valid.
- *		Assumes time qual is valid.
  */
 bool
-HeapTupleSatisfiesTimeQual(HeapTuple tuple, TimeQual qual)
+HeapTupleSatisfiesVisibility(HeapTuple tuple, bool seeself)
 {
 
 	if (TransactionIdEquals(tuple->t_xmax, AmiTransactionId))
 		return (false);
 
-	if (qual == SelfTimeQual || heapisoverride())
-	{
+	if (seeself == true || heapisoverride())
 		return (HeapTupleSatisfiesItself(tuple));
-	}
-
-	if (qual == NowTimeQual)
-	{
+	else
 		return (HeapTupleSatisfiesNow(tuple));
-	}
-
-	elog(WARN, "HeapTupleSatisfiesTimeQual: illegal time qual");
-
-	return (false);
 }
 
 /*

@@ -55,7 +55,7 @@ regprocin(char *proname)
 						   (RegProcedure) F_CHAR16EQ,
 						   (Datum) proname);
 
-	procscan = heap_beginscan(proc, 0, NowTimeQual, 1, &key);
+	procscan = heap_beginscan(proc, 0, false, 1, &key);
 	if (!HeapScanIsValid(procscan))
 	{
 		heap_close(proc);
@@ -114,7 +114,7 @@ regprocout(RegProcedure proid)
 						   (RegProcedure) F_INT4EQ,
 						   (Datum) proid);
 
-	procscan = heap_beginscan(proc, 0, NowTimeQual, 1, &key);
+	procscan = heap_beginscan(proc, 0, false, 1, &key);
 	if (!HeapScanIsValid(procscan))
 	{
 		heap_close(proc);
@@ -192,7 +192,7 @@ oid8types(Oid (*oidArray)[])
 								   (RegProcedure) F_INT4EQ,
 								   (Datum) *sp);
 		
-			typescan = heap_beginscan(type, 0, NowTimeQual, 1, &key);
+			typescan = heap_beginscan(type, 0, false, 1, &key);
 			if (!HeapScanIsValid(typescan))
 			{
 				heap_close(type);

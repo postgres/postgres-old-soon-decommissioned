@@ -113,7 +113,7 @@ do \
 						   relation, \
 						   buffer, \
 						   disk_page, \
-						   qual, \
+						   seeself, \
 						   nKeys, \
 						   key, \
 						   result) \
@@ -144,7 +144,7 @@ do \
 			{ \
 				uint16	_infomask = _tuple->t_infomask; \
 				\
-				_res = HeapTupleSatisfiesTimeQual(_tuple, (qual)); \
+				_res = HeapTupleSatisfiesVisibility(_tuple, (seeself)); \
 				if (_tuple->t_infomask != _infomask) \
 					SetBufferCommitInfoNeedsSave(buffer); \
 				if (_res) \

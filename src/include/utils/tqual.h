@@ -15,18 +15,12 @@
 
 #include <access/htup.h>
 
-typedef Pointer TimeQual;
-
-/* Tuples valid as of StartTransactionCommand */
-#define NowTimeQual		((TimeQual) NULL)
-
 /* As above, plus updates in this command */
-extern TimeQual SelfTimeQual;
 
 extern void setheapoverride(bool on);
 extern bool heapisoverride(void);
 
-extern bool HeapTupleSatisfiesTimeQual(HeapTuple tuple, TimeQual qual);
+extern bool HeapTupleSatisfiesVisibility(HeapTuple tuple, bool seeself);
 
 
 #endif							/* TQUAL_H */

@@ -804,8 +804,7 @@ tg_parseTeeNode(TgRecipe * r,
 												  tt,
 												  tt,
 												  FALSE,
-												  FALSE,
-												  NULL));
+												  FALSE));
 		rt_ind = length(orig->rtable);
 	}
 

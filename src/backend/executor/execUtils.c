@@ -756,7 +756,7 @@ ExecOpenIndices(Oid resultRelationOid,
 	 */
 	indexSd = heap_beginscan(indexRd,	/* scan desc */
 							 false,		/* scan backward flag */
-							 NowTimeQual,		/* time qual */
+							 false,		/* see self */
 							 1, /* number scan keys */
 							 &key);		/* scan keys */
 

@@ -72,7 +72,7 @@ int4notin(int16 not_in_arg, char *relation_and_attr)
 	/* the last argument should be a ScanKey, not an integer! - jolly */
 	/* it looks like the arguments are out of order, too */
 	/* but skeyData is never initialized! does this work?? - ay 2/95 */
-	scan_descriptor = heap_beginscan(relation_to_scan, false, NULL, 0,
+	scan_descriptor = heap_beginscan(relation_to_scan, false, false, 0,
 									 &skeyData);
 
 	retval = true;

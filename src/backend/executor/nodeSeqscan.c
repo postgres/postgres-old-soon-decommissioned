@@ -158,7 +158,6 @@ InitScanRelation(SeqScan *node, EState *estate,
 	List	   *rangeTable;
 	RangeTblEntry *rtentry;
 	Oid			reloid;
-	TimeQual	timeQual;
 	ScanDirection direction;
 	Relation	currentRelation;
 	HeapScanDesc currentScanDesc;
@@ -179,7 +178,6 @@ InitScanRelation(SeqScan *node, EState *estate,
 		rangeTable = estate->es_range_table;
 		rtentry = rt_fetch(relid, rangeTable);
 		reloid = rtentry->relid;
-		timeQual = rtentry->timeQual;
 		direction = estate->es_direction;
 		resultRelationInfo = estate->es_result_relation_info;
 
@@ -188,7 +186,6 @@ InitScanRelation(SeqScan *node, EState *estate,
 					  NULL,		/* scan key */
 					  0,		/* is index */
 					  direction,/* scan direction */
-					  timeQual, /* time qual */
 					  &currentRelation, /* return: rel desc */
 					  (Pointer *) &currentScanDesc);	/* return: scan desc */
 

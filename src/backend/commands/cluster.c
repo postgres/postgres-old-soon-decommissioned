@@ -355,7 +355,7 @@ rebuildheap(Oid OIDNewHeap, Oid OIDOldHeap, Oid OIDOldIndex)
 	{
 
 		HeapTid = &ScanResult->heap_iptr;
-		LocalHeapTuple = heap_fetch(LocalOldHeap, 0, HeapTid, &LocalBuffer);
+		LocalHeapTuple = heap_fetch(LocalOldHeap, false, HeapTid, &LocalBuffer);
 		OIDNewHeapInsert =
 			heap_insert(LocalNewHeap, LocalHeapTuple);
 		pfree(ScanResult);

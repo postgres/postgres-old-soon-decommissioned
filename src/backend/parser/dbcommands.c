@@ -159,7 +159,7 @@ get_pg_dbtup(char *command, char *dbname, Relation dbrel)
 	ScanKeyEntryInitialize(&scanKey, 0, Anum_pg_database_datname,
 						   NameEqualRegProcedure, NameGetDatum(dbname));
 
-	scan = heap_beginscan(dbrel, 0, NowTimeQual, 1, &scanKey);
+	scan = heap_beginscan(dbrel, 0, false, 1, &scanKey);
 	if (!HeapScanIsValid(scan))
 		elog(WARN, "%s: cannot begin scan of pg_database.", command);
 

@@ -148,7 +148,7 @@ index_info(Query *root, bool first, int relid, IdxInfoRetval *info)
 							   ObjectIdGetDatum(indrelid));
 
 		relation = heap_openr(IndexRelationName);
-		scan = heap_beginscan(relation, 0, NowTimeQual,
+		scan = heap_beginscan(relation, 0, false,
 							  1, &indexKey);
 	}
 	if (!HeapScanIsValid(scan))
@@ -420,7 +420,7 @@ find_inheritance_children(Oid inhparent)
 
 	key[0].sk_argument = ObjectIdGetDatum((Oid) inhparent);
 	relation = heap_openr(InheritsRelationName);
-	scan = heap_beginscan(relation, 0, NowTimeQual, 1, key);
+	scan = heap_beginscan(relation, 0, false, 1, key);
 	while (HeapTupleIsValid(inheritsTuple =
 							heap_getnext(scan, 0,
 										 (Buffer *) NULL)))
@@ -455,7 +455,7 @@ VersionGetParents(Oid verrelid)
 	fmgr_info(F_OIDEQ, &key[0].sk_func, &key[0].sk_nargs);
 	relation = heap_openr(VersionRelationName);
 	key[0].sk_argument = ObjectIdGetDatum(verrelid);
-	scan = heap_beginscan(relation, 0, NowTimeQual, 1, key);
+	scan = heap_beginscan(relation, 0, false, 1, key);
 	for (;;)
 	{
 		versionTuple = heap_getnext(scan, 0,

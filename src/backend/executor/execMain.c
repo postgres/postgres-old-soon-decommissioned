@@ -1331,13 +1331,11 @@ ExecRelCheck(Relation rel, HeapTuple tuple)
 	slot->ttc_buffer = InvalidBuffer;
 	slot->ttc_whichplan = -1;
 	rte->relname = nameout(&(rel->rd_rel->relname));
-	rte->timeRange = NULL;
 	rte->refname = rte->relname;
 	rte->relid = rel->rd_id;
 	rte->inh = false;
 	rte->archive = false;
 	rte->inFromCl = true;
-	rte->timeQual = NULL;
 	rtlist = lcons(rte, NIL);
 	econtext->ecxt_scantuple = slot;	/* scan tuple slot */
 	econtext->ecxt_innertuple = NULL;	/* inner tuple slot */

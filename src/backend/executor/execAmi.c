@@ -45,7 +45,7 @@
 
 static Pointer
 ExecBeginScan(Relation relation, int nkeys, ScanKey skeys,
-			  bool isindex, ScanDirection dir, TimeQual time_range);
+			  bool isindex, ScanDirection dir);
 static Relation ExecOpenR(Oid relationOid, bool isindex);
 
 /* ----------------------------------------------------------------
@@ -70,7 +70,6 @@ ExecOpenScanR(Oid relOid,
 			  ScanKey skeys,
 			  bool isindex,
 			  ScanDirection dir,
-			  TimeQual timeRange,
 			  Relation *returnRelation, /* return */
 			  Pointer *returnScanDesc)	/* return */
 {
@@ -89,8 +88,7 @@ ExecOpenScanR(Oid relOid,
 							 nkeys,
 							 skeys,
 							 isindex,
-							 dir,
-							 timeRange);
+							 dir);
 
 	if (returnRelation != NULL)
 		*returnRelation = relation;
@@ -146,8 +144,7 @@ ExecBeginScan(Relation relation,
 			  int nkeys,
 			  ScanKey skeys,
 			  bool isindex,
-			  ScanDirection dir,
-			  TimeQual time_range)
+			  ScanDirection dir)
 {
 	Pointer		scanDesc;
 
@@ -172,7 +169,7 @@ ExecBeginScan(Relation relation,
 	{
 		scanDesc = (Pointer) heap_beginscan(relation,
 											ScanDirectionIsBackward(dir),
-											time_range,
+											false,
 											nkeys,
 											skeys);
 	}

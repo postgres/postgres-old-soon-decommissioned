@@ -998,7 +998,7 @@ clause_pred_clause_test(Expr *predicate, Node *clause)
 	 * will be used to find the associated strategy numbers for the test.
 	 * --Nels, Jan '93
 	 */
-	scan = heap_beginscan(relation, false, NowTimeQual, 2, entry);
+	scan = heap_beginscan(relation, false, false, 2, entry);
 	tuple = heap_getnext(scan, false, (Buffer *) NULL);
 	if (!HeapTupleIsValid(tuple))
 	{
@@ -1029,7 +1029,7 @@ clause_pred_clause_test(Expr *predicate, Node *clause)
 						   ObjectIdEqualRegProcedure,
 						   ObjectIdGetDatum(clause_op));
 
-	scan = heap_beginscan(relation, false, NowTimeQual, 3, entry);
+	scan = heap_beginscan(relation, false, false, 3, entry);
 	tuple = heap_getnext(scan, false, (Buffer *) NULL);
 	if (!HeapTupleIsValid(tuple))
 	{
@@ -1061,7 +1061,7 @@ clause_pred_clause_test(Expr *predicate, Node *clause)
 						   Integer16EqualRegProcedure,
 						   Int16GetDatum(test_strategy));
 
-	scan = heap_beginscan(relation, false, NowTimeQual, 3, entry);
+	scan = heap_beginscan(relation, false, false, 3, entry);
 	tuple = heap_getnext(scan, false, (Buffer *) NULL);
 	if (!HeapTupleIsValid(tuple))
 	{

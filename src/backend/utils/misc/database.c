@@ -59,7 +59,7 @@ GetDatabaseInfo(char *name, Oid *owner, char *path)
 	ScanKeyEntryInitialize(&scanKey, 0, Anum_pg_database_datname,
 		NameEqualRegProcedure, NameGetDatum(name));
 
-	scan = heap_beginscan(dbrel, 0, NowTimeQual, 1, &scanKey);
+	scan = heap_beginscan(dbrel, 0, false, 1, &scanKey);
 	if (!HeapScanIsValid(scan))
 		elog(WARN, "GetDatabaseInfo: cannot begin scan of %s", DatabaseRelationName);
 

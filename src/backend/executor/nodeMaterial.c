@@ -140,7 +140,7 @@ ExecMaterial(Material *node)
 		currentScanDesc = heap_beginscan(currentRelation,		/* relation */
 										 ScanDirectionIsBackward(dir),
 		/* bkwd flag */
-										 NowTimeQual,	/* time qual */
+										 false, /* seeself */
 										 0,		/* num scan keys */
 										 NULL); /* scan keys */
 		matstate->csstate.css_currentRelation = currentRelation;

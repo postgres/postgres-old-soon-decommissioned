@@ -109,7 +109,7 @@ IsDefinedRewriteRule(char *ruleName)
 	ScanKeyEntryInitialize(&scanKey, 0, Anum_pg_rewrite_rulename,
 					   NameEqualRegProcedure, PointerGetDatum(ruleName));
 	scanDesc = heap_beginscan(RewriteRelation,
-							  0, NowTimeQual, 1, &scanKey);
+							  0, false, 1, &scanKey);
 
 	tuple = heap_getnext(scanDesc, 0, (Buffer *) NULL);
 

@@ -121,7 +121,7 @@ hashbuild(Relation heap,
 #endif							/* OMIT_PARTIAL_INDEX */
 
 	/* start a heap scan */
-	hscan = heap_beginscan(heap, 0, NowTimeQual, 0, (ScanKey) NULL);
+	hscan = heap_beginscan(heap, 0, false, 0, (ScanKey) NULL);
 	htup = heap_getnext(hscan, 0, &buffer);
 
 	/* build the index */
