@@ -423,14 +423,14 @@ connectDB(PGconn *conn)
     int         portno;
 
     /*
-    //
-    // Initialize the startup packet. 
-    //
-    // This data structure is used for the seq-packet protocol.  It
-    // describes the frontend-backend connection.
-    //
-    //
-    */
+     *
+     * Initialize the startup packet. 
+     *
+     * This data structure is used for the seq-packet protocol.  It
+     * describes the frontend-backend connection.
+     *
+     *
+     */
     strncpy(startup.user,conn->pguser,sizeof(startup.user));
     strncpy(startup.database,conn->dbName,sizeof(startup.database));
     strncpy(startup.tty,conn->pgtty,sizeof(startup.tty));
@@ -442,10 +442,10 @@ connectDB(PGconn *conn)
     startup.execFile[0]='\0';  /* not used */
 
     /*
-    //
-    // Open a connection to postmaster/backend.
-    //
-    */
+     *
+     * Open a connection to postmaster/backend.
+     *
+     */
     port = (Port *) malloc(sizeof(Port));
     memset((char *) port, 0, sizeof(Port));
 

@@ -120,6 +120,7 @@ real		-?{digit}+\.{digit}+([Ee][-+]?{digit}+)?
 param		\${integer}
 
 comment		"--".*\n
+comment2	"//".*\n
 
 space		[ \t\n\f]
 other		.
@@ -131,6 +132,7 @@ other		.
 		}
 
 {comment}	{ /* ignore */	}
+{comment2}	{ /* ignore */	}
 
 {xcline}	{ /* ignore */ }
 
