@@ -53,7 +53,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"by", BY},
 	{"cascade", CASCADE},
 	{"cast", CAST},
-	{"change", CHANGE},
 	{"char", CHAR},
 	{"character", CHARACTER},
 	{"check", CHECK},
