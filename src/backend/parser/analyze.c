@@ -2078,7 +2078,8 @@ transformFkeyGetPrimaryKey(FkConstraint *fkconstraint)
 		int			pkattno = indexStruct->indkey[i];
 		Ident	   *pkattr = makeNode(Ident);
 
-		pkattr->name = nameout(&(pkrel_attrs[pkattno - 1]->attname));
+		pkattr->name = DatumGetCString(DirectFunctionCall1(nameout,
+						NameGetDatum(&(pkrel_attrs[pkattno - 1]->attname))));
 		pkattr->indirection = NIL;
 		pkattr->isRel = false;
 

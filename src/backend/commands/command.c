@@ -565,7 +565,7 @@ AlterTableAlterColumn(const char *relationName,
 	 */
 	tuple = SearchSysCacheTuple(ATTNAME,
 								ObjectIdGetDatum(myrelid),
-								NameGetDatum(namein((char *) colName)),
+								PointerGetDatum(colName),
 								0, 0);
 
 	if (!HeapTupleIsValid(tuple))

@@ -785,12 +785,14 @@ toast_save_datum(Relation rel, Oid mainoid, int16 attno, Datum value)
 	toastrel = heap_open(rel->rd_rel->reltoastrelid, RowExclusiveLock);
 	if (toastrel == NULL)
 		elog(ERROR, "Failed to open secondary relation of %s",
-					nameout(&(rel->rd_rel->relname)));
+					DatumGetCString(DirectFunctionCall1(nameout,
+					NameGetDatum(&(rel->rd_rel->relname)))));
 	toasttupDesc = toastrel->rd_att;
 	toastidx = index_open(rel->rd_rel->reltoastidxid);
 	if (toastidx == NULL)
 		elog(ERROR, "Failed to open index for secondary relation of %s",
-					nameout(&(rel->rd_rel->relname)));
+					DatumGetCString(DirectFunctionCall1(nameout,
+					NameGetDatum(&(rel->rd_rel->relname)))));
 	
 	/* ----------
 	 * Split up the item into chunks 

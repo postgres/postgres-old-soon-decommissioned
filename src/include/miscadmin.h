@@ -129,15 +129,12 @@ extern char *ExpandDatabasePath(const char *path);
 extern void SetDatabaseName(const char *name);
 extern void SetDatabasePath(const char *path);
 
-extern char *getpgusername(void);
+extern char *GetPgUserName(void);
 extern void SetPgUserName(void);
 extern int	GetUserId(void);
 extern void SetUserId(void);
 extern int	FindExec(char *full_path, const char *argv0, const char *binary_name);
 extern int	CheckPathAccess(char *path, char *name, int open_mode);
-
-/* lower case version for case-insensitive SQL referenced in pg_proc.h */
-#define GetPgUserName() getpgusername()
 
 /*****************************************************************************
  *	  pmod.h --																 *

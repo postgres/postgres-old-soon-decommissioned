@@ -2006,7 +2006,7 @@ string_to_datum(const char *str, Oid datatype)
 	 * varchar constants too...
 	 */
 	if (datatype == NAMEOID)
-		return PointerGetDatum(namein((char *) str));
+		return DirectFunctionCall1(namein, CStringGetDatum(str));
 	else
 		return DirectFunctionCall1(textin, CStringGetDatum(str));
 }

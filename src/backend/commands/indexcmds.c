@@ -576,7 +576,8 @@ GetDefaultOpClass(Oid atttypid)
 	if (!HeapTupleIsValid(tuple))
 		return NULL;
 
-	return nameout(&((Form_pg_opclass) GETSTRUCT(tuple))->opcname);
+	return DatumGetCString(DirectFunctionCall1(nameout,
+			NameGetDatum(&((Form_pg_opclass) GETSTRUCT(tuple))->opcname)));
 }
 
 /*
