@@ -865,7 +865,14 @@ FileWrite(File file, char *buffer, int amount)
 			   VfdCache[file].seekPos, amount, buffer));
 
 	FileAccess(file);
+
+	errno = 0;
 	returnCode = write(VfdCache[file].fd, buffer, amount);
+
+	/* if write didn't set errno, assume problem is no disk space */
+	if (returnCode != amount && errno == 0)
+		errno = ENOSPC;
+
 	if (returnCode > 0)
 		VfdCache[file].seekPos += returnCode;
 	else

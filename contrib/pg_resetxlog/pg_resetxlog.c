@@ -772,8 +772,12 @@ RewriteControlFile(void)
 		exit(1);
 	}
 
+	errno = 0;
 	if (write(fd, buffer, BLCKSZ) != BLCKSZ)
 	{
+		/* if write didn't set errno, assume problem is no disk space */
+		if (errno == 0)
+			errno = ENOSPC;
 		perror("RewriteControlFile failed to write pg_control file");
 		exit(1);
 	}
@@ -884,8 +888,12 @@ WriteEmptyXLOG(void)
 		exit(1);
 	}
 
+	errno = 0;
 	if (write(fd, buffer, BLCKSZ) != BLCKSZ)
 	{
+		/* if write didn't set errno, assume problem is no disk space */
+		if (errno == 0)
+			errno = ENOSPC;
 		perror("WriteEmptyXLOG: failed to write xlog file");
 		exit(1);
 	}
@@ -894,8 +902,11 @@ WriteEmptyXLOG(void)
 	memset(buffer, 0, BLCKSZ);
 	for (nbytes = BLCKSZ; nbytes < XLogSegSize; nbytes += BLCKSZ)
 	{
+		errno = 0;
 		if (write(fd, buffer, BLCKSZ) != BLCKSZ)
 		{
+			if (errno == 0)
+				errno = ENOSPC;
 			perror("WriteEmptyXLOG: failed to write xlog file");
 			exit(1);
 		}

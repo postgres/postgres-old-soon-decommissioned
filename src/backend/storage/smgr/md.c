@@ -582,8 +582,12 @@ mdblindwrt(RelFileNode rnode,
 	status = SM_SUCCESS;
 
 	/* write and optionally sync the block */
+	errno = 0;
 	if (write(fd, buffer, BLCKSZ) != BLCKSZ)
 	{
+		/* if write didn't set errno, assume problem is no disk space */
+		if (errno == 0)
+			errno = ENOSPC;
 		elog(DEBUG, "mdblindwrt: write() failed: %m");
 		status = SM_FAIL;
 	}
