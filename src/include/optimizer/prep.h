@@ -28,7 +28,8 @@ extern int	join_collapse_limit;
 extern Node *pull_up_IN_clauses(Query *parse, Node *node);
 extern Node *pull_up_subqueries(Query *parse, Node *jtnode,
 				   bool below_outer_join);
-extern Node *preprocess_jointree(Query *parse, Node *jtnode);
+extern void reduce_outer_joins(Query *parse);
+extern Node *simplify_jointree(Query *parse, Node *jtnode);
 extern Relids get_relids_in_jointree(Node *jtnode);
 extern Relids get_relids_for_join(Query *parse, int joinrelid);
 
