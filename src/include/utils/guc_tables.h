@@ -58,6 +58,8 @@ enum config_group
 
 /*
  * GUC supports these types of variables:
+ *
+ * Keep in sync with config_type_name in guc.c
  */
 enum config_type
 {

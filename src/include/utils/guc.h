@@ -52,6 +52,8 @@
  * non-super users.
  *
  * USERSET options can be set by anyone any time.
+ *
+ * Keep in sync with GucContextName in guc.c
  */
 typedef enum
 {

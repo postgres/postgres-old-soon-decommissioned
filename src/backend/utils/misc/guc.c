@@ -156,7 +156,7 @@ static char *XactIsoLevel_string;
 
 
 /*
- * Used for pg_settings. Keep in sync with config_type enum above
+ * Used for pg_settings. Keep in sync with config_type enum in guc_tables.h
  */
 static char *config_type_name[] = 
 {
@@ -176,6 +176,7 @@ static char *GucContextName[] =
 	"sighup",
 	"backend",
 	"super-user",
+	"userlimit",
 	"user"
 };
 
@@ -188,6 +189,7 @@ static char *GucSourceName[] =
 	"environment variable",
 	"configuration file",
 	"command line",
+	"userstart",
 	"database",
 	"user",
 	"client",
