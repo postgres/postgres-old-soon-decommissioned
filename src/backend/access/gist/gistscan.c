@@ -117,7 +117,7 @@ gistrescan(PG_FUNCTION_ARGS)
 			s->keyData[i].sk_procedure
 				= RelationGetGISTStrategy(s->relation, s->keyData[i].sk_attno,
 										  s->keyData[i].sk_procedure);
-			s->keyData[i].sk_func = p->giststate->consistentFn[i];
+			s->keyData[i].sk_func = p->giststate->consistentFn[s->keyData[i].sk_attno-1];
 		}
 	}
 	else
@@ -148,7 +148,7 @@ gistrescan(PG_FUNCTION_ARGS)
 				s->keyData[i].sk_procedure
 					= RelationGetGISTStrategy(s->relation, s->keyData[i].sk_attno,
 											  s->keyData[i].sk_procedure);
-				s->keyData[i].sk_func = p->giststate->consistentFn[i];
+				s->keyData[i].sk_func = p->giststate->consistentFn[s->keyData[i].sk_attno-1];
 			}
 	}
 
