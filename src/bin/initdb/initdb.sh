@@ -358,7 +358,11 @@ echo "COPY pg_user TO '$PGDATA/pg_pwd' USING DELIMITERS '\\t'" |\
 echo "GRANT SELECT ON pg_class TO PUBLIC" |\
 	 postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
 
-echo "create view db_user as select usename,usesysid from pg_user;" |\
+echo "CREATE RULE pg_user_hide_pw as on SELECT to pg_user.passwd DO INSTEAD SELECT '********' as passwd;" | \
+	postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
+	grep -v "'DEBUG:"
+
+echo "create view db_user as select * from pg_user;" |\
 	postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
 	grep -v "'DEBUG:"
 echo "grant select on db_user to public" |\
