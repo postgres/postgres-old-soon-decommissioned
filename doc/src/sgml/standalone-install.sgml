@@ -19,7 +19,7 @@ Running 'make INSTALL' in the doc/src/sgml directory will do 1 through
 3 for you.
 -->
 
-<!doctype chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V4.2//EN" [
 
 <!entity % version SYSTEM "version.sgml">
 %version;

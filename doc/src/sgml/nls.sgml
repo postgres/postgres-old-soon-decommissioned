@@ -3,12 +3,12 @@ $Header$
 -->
 
 <chapter id="nls">
- <docinfo>
+ <chapterinfo>
   <author>
    <firstname>Peter</firstname>
    <surname>Eisentraut</surname>
   </author>
- </docinfo>
+ </chapterinfo>
 
  <title>Native Language Support</title>
 

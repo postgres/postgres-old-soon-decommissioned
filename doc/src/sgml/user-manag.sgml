@@ -224,7 +224,7 @@ ALTER GROUP <replaceable>name</replaceable> DROP USER <replaceable>uname1</repla
    <primary>REVOKE</primary>
   </indexterm>
 
-  <comment>Being moved to the DDL chapter.  Will eventually disappear here.</comment>
+  <remark>Being moved to the DDL chapter.  Will eventually disappear here.</remark>
 
   <para>
    When a database object is created, it is assigned an owner. The

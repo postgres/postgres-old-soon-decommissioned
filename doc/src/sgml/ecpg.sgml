@@ -668,7 +668,7 @@ EXEC SQL DEALLOCATE PREPARE <replaceable>name</replaceable>;
 EXEC SQL ALLOCATE DESCRIPTOR <replaceable>identifier</replaceable>;
 </programlisting>
    The identifier serves as the <quote>variable name</quote> of the
-   descriptor area.  <comment>The scope of the allocated descriptor is WHAT?.</comment>
+   descriptor area.  <remark>The scope of the allocated descriptor is WHAT?.</remark>
    When you don't need the descriptor anymore, you should deallocate
    it:
 <programlisting>

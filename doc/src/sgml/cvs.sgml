@@ -1,11 +1,9 @@
 <!--
 $Header$
-CVS code repository
-Thomas Lockhart
 -->
 
 <appendix id="cvs">
- <docinfo>
+ <appendixinfo>
   <authorgroup>
    <author>
     <firstname>Marc</firstname>
@@ -21,7 +19,7 @@ Thomas Lockhart
    </author>
   </authorgroup>
   <date>1999-05-20</date>
- </docinfo>
+ </appendixinfo>
 
  <title>The <productname>CVS</productname> Repository</title>
 

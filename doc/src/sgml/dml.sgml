@@ -3,9 +3,9 @@
 <chapter id="dml">
  <title>Data Manipulation</title>
 
- <comment>
+ <remark>
   This chapter is still quite incomplete.
- </comment>
+ </remark>
 
  <para>
   The previous chapter discussed how to create tables and other

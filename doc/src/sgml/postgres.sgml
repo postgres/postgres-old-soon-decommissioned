@@ -2,7 +2,7 @@
 $Header$
 -->
 
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.2//EN" [
 
 <!entity % version SYSTEM "version.sgml">
 %version;
