@@ -425,4 +425,8 @@ ExecReScanGroup(Group *node, ExprContext *exprCtxt, Plan *parent)
 
 	grpstate->grp_useFirstTuple = FALSE;
 	grpstate->grp_done = FALSE;
+
+	if (((Plan *) node)->lefttree &&
+		((Plan *) node)->lefttree->chgParam == NULL)
+		ExecReScan(((Plan *) node)->lefttree, exprCtxt, (Plan *) node);
 }
