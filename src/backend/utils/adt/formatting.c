@@ -4,7 +4,7 @@
  * $Header$
  *
  *
- *	 Portions Copyright (c) 1999-2002, PostgreSQL Global Development Group
+ *	 Portions Copyright (c) 1999-2003, PostgreSQL Global Development Group
  *
  *
  *	 TO_CHAR(); TO_TIMESTAMP(); TO_DATE(); TO_NUMBER();

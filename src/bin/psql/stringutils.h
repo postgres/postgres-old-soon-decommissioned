@@ -1,7 +1,7 @@
 /*
  * psql - the PostgreSQL interactive terminal
  *
- * Copyright 2000-2002 by PostgreSQL Global Development Group
+ * Copyright (c) 2000-2003, PostgreSQL Global Development Group
  *
  * $Id$
  */

@@ -3,7 +3,7 @@
  * pg_encoding.c
  *
  *
- * Copyright (c) 1998, PostgreSQL development group
+ * Copyright (c) 1998-2003, PostgreSQL Global Development Group
  *
  *
  * IDENTIFICATION

@@ -3,7 +3,7 @@
 #################################################################
 # create_help.pl -- converts SGML docs to internal psql help
 #
-# Copyright 2000 by PostgreSQL Global Development Group
+# Copyright (c) 2000-2003, PostgreSQL Global Development Group
 #
 # $Header$
 #################################################################

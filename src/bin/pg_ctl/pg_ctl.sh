@@ -4,7 +4,7 @@
 # pg_ctl.sh--
 #    Start/Stop/Restart/HUP/Report status of postmaster
 #
-# Copyright (c) 2001  PostgreSQL Global Development Group
+# Copyright (c) 2001-2003, PostgreSQL Global Development Group
 #
 #
 # IDENTIFICATION

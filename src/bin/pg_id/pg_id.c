@@ -4,7 +4,7 @@
  * A crippled id utility for use in various shell scripts in use by PostgreSQL
  * (in particular initdb)
  *
- * Copyright (C) 2000 by PostgreSQL Global Development Group
+ * Copyright (c) 2000-2003, PostgreSQL Global Development Group
  *
  * $Header$
  */
