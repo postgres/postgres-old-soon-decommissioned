@@ -655,7 +655,7 @@ $ which cvsup
       </programlisting>
 
       and if you want to build a static binary to move to systems
-      which may not have Modula-3 installed, try:
+      that may not have Modula-3 installed, try:
 
       <programlisting>
 # make M3FLAGS="-DNOGUI -DSTATIC"

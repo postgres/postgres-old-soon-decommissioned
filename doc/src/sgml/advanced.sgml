@@ -23,7 +23,7 @@ $Header$
 
    <para>
     Let's create two classes. The capitals  class  contains
-    state  capitals  which  are also cities. Naturally, the
+    state  capitals  that  are also cities. Naturally, the
     capitals class should inherit from cities.
 
     <programlisting>

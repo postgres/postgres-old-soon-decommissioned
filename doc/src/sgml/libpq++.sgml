@@ -8,7 +8,7 @@ $Header$
   <para>
    <filename>libpq++</filename> is the C++ API to 
    <productname>Postgres</productname>.
-   <filename>libpq++</filename>  is a set of classes which allow
+   <filename>libpq++</filename>  is a set of classes that allow
    client programs to connect to the 
    <productname>Postgres</productname> backend server. These connections
    come in two forms: a Database Class and a Large Object class.

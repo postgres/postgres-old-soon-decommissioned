@@ -414,7 +414,7 @@ DELETE FROM classname;
 SELECT max(temp_lo) FROM weather;
     </programlisting>
 
-    If we want to know which city (or cities) that reading occurred in,
+    If we want to know what city (or cities) that reading occurred in,
     we might try
 
     <programlisting>

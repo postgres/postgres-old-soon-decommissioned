@@ -1299,7 +1299,7 @@ java.lang.Object
    public class PGpath extends PGobject implements Serializable, 
 Cloneable
                
-   This implements a path (a multiple segmented line, which may be 
+   This implements a path (a multiply segmented line, which may be 
 closed)
            
 Variables

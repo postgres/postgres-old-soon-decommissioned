@@ -53,7 +53,7 @@ and the <acronym>SQL</acronym> command <command>CREATE DATABASE</command>.
 
 <para>
 Commands are composed of a command name followed by space separated
-arguments.  Arguments to a command which begin with a "$" are
+arguments.  Arguments to a command that begin with a "$" are
 treated specially.  If "$$" are the first two characters, then
 the first "$" is ignored and the argument is then processed
 normally.  If the "$" is followed by space, then it is treated

@@ -29,11 +29,11 @@ $Header$
   <para>
    <acronym>ODBC</acronym> (Open Database Connectivity) is an abstract 
    <acronym>API</acronym> 
-   which allows you to write applications which can interoperate
+   that allows you to write applications that can interoperate
    with various <acronym>RDBMS</acronym> servers.
    <acronym>ODBC</acronym> provides a product-neutral interface 
    between frontend applications and database servers,
-   allowing a user or developer to write applications which are 
+   allowing a user or developer to write applications that are 
    transportable between servers from different manufacturers..
   </para>
 
@@ -64,7 +64,7 @@ $Header$
 
    <para>
     For example. you could have <productname>MS SQL Server</productname>
-    and <productname>Postgres</productname> servers which have
+    and <productname>Postgres</productname> servers that have
     exactly the same data.  Using <acronym>ODBC</acronym>, 
     your Windows application would make exactly the
     same calls and the back end data source would look the same (to the Windows
