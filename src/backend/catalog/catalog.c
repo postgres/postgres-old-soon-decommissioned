@@ -22,6 +22,7 @@
 #include "miscadmin.h"
 #include "utils/syscache.h"
 
+#ifdef OLD_FILE_NAMING
 /*
  * relpath				- construct path to a relation's file
  *
@@ -104,6 +105,60 @@ relpath_blind(const char *dbname, const char *relname,
 	return path;
 }
 
+#else	/* ! OLD_FILE_NAMING */
+
+/*
+ * relpath			- construct path to a relation's file
+ *
+ * Result is a palloc'd string.
+ */
+
+char *
+relpath(RelFileNode rnode)
+{
+	char	   *path;
+
+	if (rnode.tblNode == (Oid) 0)	/* "global tablespace" */
+	{
+		/* Shared system relations live in {datadir}/global */
+		path = (char *) palloc(strlen(DataDir) + 8 + sizeof(NameData) + 1);
+		sprintf(path, "%s%cglobal%c%u", DataDir, SEP_CHAR, SEP_CHAR, rnode.relNode);
+	}
+	else
+	{
+		path = (char *) palloc(strlen(DataDir) + 6 + 2 * sizeof(NameData) + 3);
+		sprintf(path, "%s%cbase%c%u%c%u", DataDir, SEP_CHAR, SEP_CHAR, 
+			rnode.tblNode, SEP_CHAR, rnode.relNode);
+	}
+	return path;
+}
+
+/*
+ * GetDatabasePath			- construct path to a database dir
+ *
+ * Result is a palloc'd string.
+ */
+
+char *
+GetDatabasePath(Oid tblNode)
+{
+	char	   *path;
+
+	if (tblNode == (Oid) 0)	/* "global tablespace" */
+	{
+		/* Shared system relations live in {datadir}/global */
+		path = (char *) palloc(strlen(DataDir) + 8);
+		sprintf(path, "%s%cglobal", DataDir, SEP_CHAR);
+	}
+	else
+	{
+		path = (char *) palloc(strlen(DataDir) + 6 + sizeof(NameData) + 1);
+		sprintf(path, "%s%cbase%c%u", DataDir, SEP_CHAR, SEP_CHAR, tblNode);
+	}
+	return path;
+}
+
+#endif	/* OLD_FILE_NAMING */
 
 /*
  * IsSystemRelationName

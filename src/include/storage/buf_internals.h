@@ -61,6 +61,7 @@ typedef struct buftag
 	(a)->relId = (xx_reln)->rd_lockInfo.lockRelId \
 )
 
+#ifdef OLD_FILE_NAMING
 /* If we have to write a buffer "blind" (without a relcache entry),
  * the BufferTag is not enough information.  BufferBlindId carries the
  * additional information needed.
@@ -70,6 +71,17 @@ typedef struct bufblindid
 	char		dbname[NAMEDATALEN];	/* name of db in which buf belongs */
 	char		relname[NAMEDATALEN];	/* name of reln */
 }			BufferBlindId;
+
+#else
+
+typedef struct bufblindid
+{
+	char		dbname[NAMEDATALEN];	/* name of db in which buf belongs */
+	char		relname[NAMEDATALEN];	/* name of reln */
+	RelFileNode	rnode;
+} BufferBlindId;
+
+#endif
 
 #define BAD_BUFFER_ID(bid) ((bid) < 1 || (bid) > NBuffers)
 #define INVALID_DESCRIPTOR (-3)

@@ -55,4 +55,10 @@ typedef FormData_pg_database *Form_pg_database;
 #define Anum_pg_database_datdba			2
 #define Anum_pg_database_encoding		3
 #define Anum_pg_database_datpath		4
+
+DATA(insert OID = 1 (  template1 PGUID ENCODING template1 ));
+DESCR("");
+
+#define TemplateDbOid			1
+
 #endif	 /* PG_DATABASE_H */
