@@ -58,7 +58,7 @@ typedef FormData_pg_database *Form_pg_database;
 #define Anum_pg_database_datlastsysoid  4
 #define Anum_pg_database_datpath		5
 
-DATA(insert OID = 1 (  template1 PGUID ENCODING 0 template1 ));
+DATA(insert OID = 1 (  template1 PGUID ENCODING 0 "" ));
 DESCR("");
 
 #define TemplateDbOid			1
