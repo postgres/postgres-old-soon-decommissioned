@@ -12,6 +12,7 @@ pg_config: pg_config.sh $(top_builddir)/config.status $(top_builddir)/src/Makefi
 	    -e 's,@includedir@,$(includedir),g' \
 	    -e 's,@includedir_server@,$(includedir_server),g' \
 	    -e 's,@libdir@,$(libdir),g' \
+	    -e 's,@pkglibdir@,$(pkglibdir),g' \
 	    -e "s,@configure@,$$configure,g" \
 	    -e 's,@version@,$(VERSION),g' \
 	  $< >$@

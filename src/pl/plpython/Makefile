@@ -17,8 +17,8 @@ endif
 ifneq (,$(findstring yes, $(shared_libpython)$(allow_nonpic_in_shlib)))
 
 override CPPFLAGS := -I$(srcdir) $(python_includespec) $(CPPFLAGS)
-
 override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
+rpath :=
 
 NAME = plpython
 SO_MAJOR_VERSION = 0
@@ -33,13 +33,13 @@ include $(top_srcdir)/src/Makefile.shlib
 all: all-lib
 
 install: all installdirs
-	$(INSTALL_SHLIB) $(shlib) $(DESTDIR)$(libdir)/plpython$(DLSUFFIX)
+	$(INSTALL_SHLIB) $(shlib) $(DESTDIR)$(pkglibdir)/plpython$(DLSUFFIX)
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(libdir)
+	$(mkinstalldirs) $(DESTDIR)$(pkglibdir)
 
 uninstall:
-	rm -f $(DESTDIR)$(libdir)/plpython$(DLSUFFIX)
+	rm -f $(DESTDIR)$(pkglibdir)/plpython$(DLSUFFIX)
 
 clean distclean maintainer-clean: clean-lib
 	rm -f $(OBJS)

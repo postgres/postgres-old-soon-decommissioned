@@ -224,8 +224,8 @@ file_exists(const char *name)
 #endif
 
 /* Example format: "/usr/local/pgsql/lib" */
-#ifndef LIBDIR
-#error "LIBDIR needs to be defined to compile this file."
+#ifndef PKGLIBDIR
+#error "PKGLIBDIR needs to be defined to compile this file."
 #endif
 
 
@@ -297,7 +297,7 @@ substitute_libpath_macro(const char * name)
 	macroname_len = strcspn(name + 1, "/") + 1;
 
 	if (strncmp(name, "$libdir", macroname_len)==0)
-		replacement = LIBDIR;
+		replacement = PKGLIBDIR;
 	else
 		elog(ERROR, "invalid macro name in dynamic library path");
 

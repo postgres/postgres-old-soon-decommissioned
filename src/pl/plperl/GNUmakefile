@@ -13,17 +13,17 @@ all: Makefile
 	$(MAKE) -f $< all VPATH=$(VPATH)
 
 Makefile: Makefile.PL
-	plperl_installdir='$$(DESTDIR)$(libdir)' \
+	plperl_installdir='$$(DESTDIR)$(pkglibdir)' \
 	$(PERL) $< $(makefile_pl_flags) INC='-I$(srcdir) $(filter -I%, $(CPPFLAGS))'
 
 install: all installdirs
 	$(MAKE) -f Makefile install DESTDIR='$(DESTDIR)'
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(libdir)
+	$(mkinstalldirs) $(DESTDIR)$(pkglibdir)
 
 uninstall:
-	rm -f $(DESTDIR)$(libdir)/plperl$(DLSUFFIX)
+	rm -f $(DESTDIR)$(pkglibdir)/plperl$(DLSUFFIX)
 
 clean distclean maintainer-clean:
 	-[ -f Makefile ] && $(MAKE) -f Makefile clean

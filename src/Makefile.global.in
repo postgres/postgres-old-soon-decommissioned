@@ -80,10 +80,20 @@ endif
 endif
 
 libdir := @libdir@
-pkglibdir = $(libdir)/postgresql
+pkglibdir = $(libdir)
+ifeq "$(findstring pgsql, $(pkglibdir))" ""
+ifeq "$(findstring postgres, $(pkglibdir))" ""
+override pkglibdir := $(pkglibdir)/postgresql
+endif
+endif
 
 includedir := @includedir@
-pkgincludedir = $(includedir)/postgresql
+pkgincludedir = $(includedir)
+ifeq "$(findstring pgsql, $(pkgincludedir))" ""
+ifeq "$(findstring postgres, $(pkgincludedir))" ""
+override pkgincludedir := $(pkgincludedir)/postgresql
+endif
+endif
 includedir_server = $(pkgincludedir)/server
 includedir_internal = $(pkgincludedir)/internal
 

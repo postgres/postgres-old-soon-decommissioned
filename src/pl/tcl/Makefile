@@ -93,19 +93,19 @@ endif
 pltcl$(DLSUFFIX): pltcl.o
 
 install: all installdirs
-	$(INSTALL_SHLIB) $(DLOBJS) $(DESTDIR)$(libdir)/$(DLOBJS)
+	$(INSTALL_SHLIB) $(DLOBJS) $(DESTDIR)$(pkglibdir)/$(DLOBJS)
 ifeq ($(enable_pltcl_unknown), yes)
 	$(MAKE) -C modules $@
 endif
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(libdir)
+	$(mkinstalldirs) $(DESTDIR)$(pkglibdir)
 ifeq ($(enable_pltcl_unknown), yes)
 	$(MAKE) -C modules $@
 endif
 
 uninstall:
-	rm -f $(DESTDIR)$(libdir)/$(DLOBJS)
+	rm -f $(DESTDIR)$(pkglibdir)/$(DLOBJS)
 ifeq ($(enable_pltcl_unknown), yes)
 	$(MAKE) -C modules $@
 endif
