@@ -81,7 +81,9 @@ extern void initStringInfo(StringInfo str);
  * to str if necessary.  This is sort of like a combination of sprintf and
  * strcat.
  */
-extern void appendStringInfo(StringInfo str, const char *fmt,...);
+extern void appendStringInfo(StringInfo str, const char *fmt, ...)
+/* This extension allows gcc to check the format string */
+__attribute__((format(printf, 2, 3)));
 
 /*------------------------
  * appendStringInfoChar

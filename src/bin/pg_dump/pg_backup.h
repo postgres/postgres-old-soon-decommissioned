@@ -130,7 +130,8 @@ typedef struct _restoreOptions
  * Main archiver interface.
  */
 
-extern void exit_horribly(Archive *AH, const char *modulename, const char *fmt, ...) __attribute__((format(printf,3,4)));
+extern void exit_horribly(Archive *AH, const char *modulename, const char *fmt, ...)
+__attribute__((format(printf,3,4)));
 
 extern char *
 simple_prompt(const char *prompt, int maxlen, bool echo);
@@ -188,6 +189,8 @@ extern void SortTocFromFile(Archive *AH, RestoreOptions *ropt);
 /* Convenience functions used only when writing DATA */
 extern int	archputs(const char *s, Archive *AH);
 extern int	archputc(const char c, Archive *AH);
-extern int	archprintf(Archive *AH, const char *fmt,...);
+extern int	archprintf(Archive *AH, const char *fmt, ...)
+/* This extension allows gcc to check the format string */
+__attribute__((format(printf, 2, 3)));
 
 #endif

@@ -346,10 +346,7 @@ extern int	pqWriteReady(PGconn *conn);
 
 #ifdef ENABLE_NLS
 extern char * libpq_gettext(const char *msgid)
-#ifdef __GNUC__
-__attribute__((format_arg(1)))
-#endif
-;
+__attribute__((format_arg(1)));
 #else
 #define libpq_gettext(x) (x)
 #endif

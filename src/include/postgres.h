@@ -562,7 +562,10 @@ extern DLLIMPORT bool assert_enabled;
 extern int ExceptionalCondition(char *conditionName,
 					 Exception *exceptionP, char *details,
 					 char *fileName, int lineNumber);
-extern char *vararg_format(const char *fmt,...);
+
+extern char *vararg_format(const char *fmt, ...)
+/* This lets gcc check the format string for consistency. */
+__attribute__((format(printf, 1, 2)));
 
 #ifndef USE_ASSERT_CHECKING
 #define LogAssert(condition, printArgs)
