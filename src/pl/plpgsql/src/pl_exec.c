@@ -806,7 +806,7 @@ exception_matches_conditions(ErrorData *edata, PLpgSQL_condition *cond)
 		 * OTHERS matches everything *except* query-canceled;
 		 * if you're foolish enough, you can match that explicitly.
 		 */
-		if (pg_strcasecmp(condname, "OTHERS") == 0)
+		if (strcmp(condname, "others") == 0)
 		{
 			if (edata->sqlerrcode == ERRCODE_QUERY_CANCELED)
 				return false;
@@ -815,7 +815,7 @@ exception_matches_conditions(ErrorData *edata, PLpgSQL_condition *cond)
 		}
 		for (i = 0; exception_label_map[i].label != NULL; i++)
 		{
-			if (pg_strcasecmp(condname, exception_label_map[i].label) == 0)
+			if (strcmp(condname, exception_label_map[i].label) == 0)
 			{
 				int labelerrcode = exception_label_map[i].sqlerrstate;
 
