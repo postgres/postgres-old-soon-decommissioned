@@ -89,13 +89,6 @@ InitMultiLevelLockm()
 {
 	int			tableId;
 
-	/* -----------------------
-	 * If we're already initialized just return the table id.
-	 * -----------------------
-	 */
-	if (MultiTableId)
-		return MultiTableId;
-
 	tableId = LockTabInit("LockTable", MultiConflicts, MultiPrios, 5);
 	MultiTableId = tableId;
 	if (!(MultiTableId))

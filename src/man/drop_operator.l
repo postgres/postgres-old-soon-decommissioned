@@ -41,4 +41,4 @@ drop operator ! (none, bool)
 drop operator ! (int4, none)
 .fi
 .SH "SEE ALSO"
-create operator(l).
+create_operator(l).

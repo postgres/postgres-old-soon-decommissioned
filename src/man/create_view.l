@@ -41,5 +41,5 @@ create rule example1 as
 	where emp.oid = current.oid
 .fi
 .SH "SEE ALSO"
-create table(l), 
-create rule(l),
+create_table(l), 
+create_rule(l),

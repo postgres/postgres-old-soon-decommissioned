@@ -19,4 +19,4 @@ execute this command you must be the owner of the index.
 drop index emp_index
 .fi
 .SH "SEE ALSO"
-create index(l).
+create_index(l).

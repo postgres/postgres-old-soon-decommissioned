@@ -110,7 +110,7 @@ insert into tictactoe (game, board)
     values (3,'{{,,},{,,},{,,}}')
 .fi
 .SH "SEE ALSO"
-create table(l),
-create type(l),
+create_table(l),
+create_type(l),
 update(l),
 select(l)

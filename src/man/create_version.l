@@ -62,7 +62,7 @@ in [ONG90].
 create version foobar from barfoo [ "Jan 17 1990" ]
 .fi
 .SH "SEE ALSO"
-create view(l), merge(l). 
+create_view(l), merge(l). 
 .SH "BUGS"
 Snapshots (i.e., the optional 
 .IR abstime 

@@ -109,4 +109,4 @@ select nextval ('seq');
 insert into table _table_ values (nextval ('seq'),...);
 .fi
 .SH "SEE ALSO"
-drop sequence(l).
+drop_sequence(l).

@@ -19,7 +19,7 @@ location must be pre-configured by
 
 .SH "SEE ALSO"
 createdb(1),
-drop database(l),
+drop_database(l),
 destroydb(1),
 initarea(1),
 initdb(1).

@@ -47,4 +47,4 @@ Refer to the SPI and trigger programming guides for more information.
 .SH EXAMPLES
 Examples are included in the contrib area of the source distribution.
 .SH "SEE ALSO"
-drop trigger(l).
+drop_trigger(l).

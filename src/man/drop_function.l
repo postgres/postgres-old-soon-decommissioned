@@ -22,7 +22,7 @@ function with the given name and argument types will be removed.
 drop function sqrt(int4)
 .fi
 .SH "SEE ALSO"
-create function(l).
+create_function(l).
 .SH BUGS
 No checks are made to ensure that types, operators or access methods
 that rely on the function have been removed first.

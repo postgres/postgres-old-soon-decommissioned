@@ -38,13 +38,13 @@ drop table emp, parts
 .fi
 .SH "SEE ALSO"
 delete(l),
-drop aggregate(l),
-drop database(l),
-drop function(l),
-drop index(l),
-drop operator(l),
-drop rule(l),
-drop sequence(l),
-drop trigger(l),
-drop type(l),
-drop view(l).
+drop_aggregate(l),
+drop_database(l),
+drop_function(l),
+drop_index(l),
+drop_operator(l),
+drop_rule(l),
+drop_sequence(l),
+drop_trigger(l),
+drop_type(l),
+drop_view(l).

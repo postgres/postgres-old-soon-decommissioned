@@ -146,4 +146,4 @@ create table component
 The \fBforeign key\fP and \fBreferences\fP keywords are parsed but not yet
 implemented in PostgreSQL 6.3.1.
 .SH "SEE ALSO"
-drop table(l).
+drop_table(l).

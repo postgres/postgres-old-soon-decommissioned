@@ -20,8 +20,8 @@ its definition from the system catalogs.
 drop rule example_1
 .fi
 .SH "SEE ALSO"
-create rule(l),
-drop view(l).
+create_rule(l),
+drop_view(l).
 .SH BUGS
 Once a rule is dropped, access to historical information the rule has
 written may disappear.

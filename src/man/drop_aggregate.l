@@ -21,4 +21,4 @@ aggregate.
 drop aggregate avg int4
 .fi
 .SH "SEE ALSO"
-create aggregate(l).
+create_aggregate(l).

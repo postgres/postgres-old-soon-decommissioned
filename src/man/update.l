@@ -39,5 +39,5 @@ update emp
    where mgr = 'Smith'
 .fi
 .SH "SEE ALSO"
-create table(l),
+create_table(l),
 select(l).

@@ -30,7 +30,7 @@ notification corresponds.  If this code is not included in
 the application, the event notification will be queued and 
 never be processed.
 .SH "SEE ALSO"
-create rule(l),
+create_rule(l),
 notify(l),
 select(l),
 libpq.

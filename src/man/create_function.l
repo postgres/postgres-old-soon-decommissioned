@@ -34,7 +34,7 @@ or
 (The
 .IR "plname"
 is the language name of a created procedural language. See
-create language(l) for details.)
+create_language(l) for details.)
 (The
 .IR "arg is"
 clause may be left out if the function has no arguments, or
@@ -389,7 +389,7 @@ select function hobbies (EMP) returns set of HOBBIES
 	language 'sql'
 .SH "SEE ALSO"
 .PP
-information(1), load(l), drop function(l), create language(l).
+information(1), load(l), drop_function(l), create_language(l).
 .SH "NOTES"
 .SH "Name Space Conflicts"
 More than one function may be defined with the same name, as long as

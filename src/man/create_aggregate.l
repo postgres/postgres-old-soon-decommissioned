@@ -90,5 +90,5 @@ create aggregate avg (sfunc1 = int4add, basetype = int4,
      finalfunc = int4div, initcond1 = "0", initcond2 = "0")
 .fi
 .SH "SEE ALSO"
-create function(l),
-remove aggregate(l).
+create_function(l),
+drop_aggregate(l).

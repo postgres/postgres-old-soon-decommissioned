@@ -199,8 +199,8 @@ create rule example_5 is
 	do update newset salary = 5000
 .fi
 .SH "SEE ALSO"
-drop rule(l),
-create view(l).
+drop_rule(l),
+create_view(l).
 .SH BUGS
 .PP
 .BR "instead"

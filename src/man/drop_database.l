@@ -16,7 +16,7 @@ database administrator (see
 .IR createdb (l)
 for details).
 .SH "SEE ALSO"
-create database(l),
+create_database(l),
 destroydb(1).
 .SH BUGS
 This query should 

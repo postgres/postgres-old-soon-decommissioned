@@ -66,7 +66,7 @@ The name of the operator,
 can be composed of symbols only.  Also, the
 .IR func_name
 procedure must have been previously defined using
-.IR "create function" (l)
+.IR "create_function" (l)
 and must have one or two arguments.
 .PP
 .\" that multiple instances of the 
@@ -242,8 +242,8 @@ create operator === (
 .\"	arg is (box, box)
 .fi
 .SH "SEE ALSO"
-create function(l),
-drop operator(l).
+create_function(l),
+drop_operator(l).
 .SH BUGS
 Operator names cannot be composed of alphabetic characters in 
 Postgres.

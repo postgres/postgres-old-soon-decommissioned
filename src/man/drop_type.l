@@ -24,7 +24,7 @@ drop type box
 .fi
 .SH "SEE ALSO"
 pgintro(1),
-create type(l),
-drop operator(l).
+create_type(l),
+drop_operator(l).
 .SH "BUGS"
 If a built-in type is removed, the behavior of the backend is unpredictable.

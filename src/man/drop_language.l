@@ -21,7 +21,7 @@ name
 drop procedural language 'plsample';
 .fi
 .SH "SEE ALSO"
-create language(l).
+create_language(l).
 .SH BUGS
 No checks are made if functions or trigger procedures registered
 in this language still exist. To reenable them without having to

@@ -19,5 +19,5 @@ execute this command you must be the owner of the view.
 drop view myview
 .fi
 .SH "SEE ALSO"
-create view(l),
-drop rule(l),
+create_view(l),
+drop_rule(l),

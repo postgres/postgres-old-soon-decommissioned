@@ -20,4 +20,4 @@ trigger.
 drop trigger empverify on emp
 .fi
 .SH "SEE ALSO"
-create trigger(l).
+create_trigger(l).

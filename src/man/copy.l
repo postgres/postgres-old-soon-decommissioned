@@ -139,7 +139,7 @@ Note that variable length attributes are preceded by the attribute's
 length; arrays are simply contiguous streams of the array element
 type.
 .SH "SEE ALSO"
-insert(l), create table(l), vacuum(l), libpq.
+insert(l), create_table(l), vacuum(l), libpq.
 .SH BUGS
 Files used as arguments to the
 .BR copy

@@ -119,7 +119,7 @@ select 1.1 * emp.salary as salary
 .SH "SEE ALSO"
 insert(l),
 close(l),
-create table(l),
+create_table(l),
 fetch(l),
 update(l).
 .SH BUGS
