@@ -1650,7 +1650,7 @@ PQfnumber(PGresult *res, const char *field_name)
 
 	for (i = 0; i < res->numAttributes; i++)
 	{
-		if (strcmp(field_name, res->attDescs[i].name) == 0)
+		if (strcmp(field_case, res->attDescs[i].name) == 0)
 		{
 			free(field_case);
 			return i;
