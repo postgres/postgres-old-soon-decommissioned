@@ -93,10 +93,12 @@ extern PROC *MyProc;
  * in each set for identification purposes.)
  *
  * PROC_SEM_MAP_ENTRIES is the number of semaphore sets we need to allocate
- * to keep track of up to maxBackends backends.
+ * to keep track of up to maxBackends backends.  Note that we need one extra
+ * semaphore (see storage/lmgr/proc.c), so the computation may look wrong,
+ * but it's right.
  */
 #define  PROC_NSEMS_PER_SET		16
-#define  PROC_SEM_MAP_ENTRIES(maxBackends)	(((maxBackends)-1)/PROC_NSEMS_PER_SET+1)
+#define  PROC_SEM_MAP_ENTRIES(maxBackends)	((maxBackends)/PROC_NSEMS_PER_SET+1)
 
 typedef struct
 {
