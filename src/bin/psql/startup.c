@@ -82,7 +82,8 @@ static void
 static void
 			showVersion(void);
 
-
+static void
+			explain_help_and_exit(void);
 
 /*
  *
@@ -513,8 +514,7 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 				/* unknown option reported by getopt */
 				else
 				{
-					fputs("Try -? for help.\n", stderr);
-					exit(EXIT_FAILURE);
+					explain_help_and_exit();
 				}
 				break;
 #ifndef HAVE_GETOPT_LONG
@@ -525,8 +525,7 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 				break;
 #endif
 			default:
-				fputs("Try -? for help.\n", stderr);
-				exit(EXIT_FAILURE);
+				explain_help_and_exit();
 				break;
 		}
 	}
@@ -640,3 +639,17 @@ showVersion(void)
 	puts("Read the file COPYRIGHT or use the command \\copyright to see the");
 	puts("usage and distribution terms.");
 }
+
+static void
+explain_help_and_exit(void)
+{
+
+#ifdef WIN32
+	fputs("Try -? for help.\n", stderr);
+#else /* !WIN32 */
+	fputs("Try -\\? for help.\n", stderr);
+#endif /* WIN32 */
+
+	exit(EXIT_FAILURE);
+}
+
