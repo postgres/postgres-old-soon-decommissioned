@@ -166,6 +166,6 @@ static struct _helpStruct QL_HELP[] = {
       "update <class_name> set <attr1>=<expr1>,...<attrN>=<exprN> [from <from_clause>] [where <qual>];"},
   { "vacuum",
       "vacuum the database, i.e. cleans out deleted records, updates statistics",
-      "vacuum [table];"},
+      "vacuum [verbose] [analyze]\n\tor\nvacuum [verbose] table [analyze [(attr1, ... attrN)] ];"},
   { NULL, NULL, NULL}  /* important to keep a NULL terminator here! */
 };
