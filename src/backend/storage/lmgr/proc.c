@@ -95,8 +95,8 @@ static bool CheckStatementTimeout(void);
 int
 ProcGlobalSemas(int maxBackends)
 {
-	/* We need a sema per backend, plus one for the dummy process. */
-	return maxBackends + 1;
+	/* We need a sema per backend, plus one for each dummy process. */
+	return maxBackends + NUM_DUMMY_PROCS;
 }
 
 /*
