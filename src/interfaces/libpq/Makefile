@@ -91,6 +91,7 @@ install-headers: beforeinstall-headers
 	@echo "#define OIDNAMELEN $(OIDNAMELEN)" >> $(TEMPDIR)/postgres.h
 	@cat $(srcdir)/backend/include/postgres.h >> $(TEMPDIR)/postgres.h
 	$(INSTALL) $(INSTLOPTS) $(TEMPDIR)/postgres.h $(HEADERDIR)/postgres.h
+	@rm -f $(TEMPDIR)/c.h $(TEMPDIR)/postgres.h
 
 install:: install-headers
 
