@@ -2675,7 +2675,7 @@ $ <userinput>postmaster -o '-S 1024 -s'</userinput>
 
        <row>
         <entry><option>-s</option><footnoteref linkend="fn.runtime-config-short"></entry>
-        <entry><literal>show_statement_stats = on</></entry>
+        <entry><literal>log_statement_stats = on</></entry>
        </row>
 
        <row>

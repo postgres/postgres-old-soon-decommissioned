@@ -6668,7 +6668,7 @@ SELECT current_setting('datestyle');
     <literal>false</literal> instead. The function corresponds to the
     SQL command <command>SET</command>. An example:
 <programlisting>
-SELECT set_config('show_statement_stats', 'off', false);
+SELECT set_config('log_statement_stats', 'off', false);
 
  set_config
 ------------
