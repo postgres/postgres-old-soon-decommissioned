@@ -1726,7 +1726,7 @@ gunzip -c postgres.ps.gz \
 	<entry><systemitem>x86</></entry>
 	<entry>7.4</entry>
 	<entry>2003-10-26,
-	 Kurt Roeckx Christopher Browne (<email>Q@ping.be</email>)</entry>
+	 Kurt Roeckx (<email>Q@ping.be</email>)</entry>
 	<entry>2.6 see also <filename>doc/FAQ_Solaris</filename></entry>
        </row>
        <row>
