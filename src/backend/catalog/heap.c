@@ -1392,7 +1392,8 @@ AddToTempRelList(Relation r)
 
     if (tempRels->num == tempRels->size) {
 	tempRels->size += TEMP_REL_LIST_SIZE;
-	tempRels->rels = realloc(tempRels->rels, tempRels->size);
+	tempRels->rels = realloc(tempRels->rels, 
+					sizeof(Relation) * tempRels->size);
     }
     tempRels->rels[tempRels->num] = r;
     tempRels->num++;
