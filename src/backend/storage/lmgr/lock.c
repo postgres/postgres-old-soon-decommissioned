@@ -337,6 +337,9 @@ LockMethodTableRename(LOCKMETHODID lockmethodid)
 	NumLockMethods++;
 
 	LockMethods[newLockMethodId] = LockMethods[lockmethodid];
+	LockMethodLockHash[newLockMethodId] = LockMethodLockHash[lockmethodid];
+	LockMethodProcLockHash[newLockMethodId] = LockMethodProcLockHash[lockmethodid];
+
 	return newLockMethodId;
 }
 
