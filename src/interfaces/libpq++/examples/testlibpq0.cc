@@ -15,12 +15,12 @@
  */
 
 #include <iostream.h>
-#include <libpq++.h>
+#include <libpq++.H>
 
 int main()
 {
   // Open the connection to the database and make sure it's OK
-  PgDatabase data("template1");
+  PgDatabase data("dbname=template1");
   if ( data.ConnectionBad() ) {
       cout << "Connection was unsuccessful..." << endl
            << "Error message returned: " << data.ErrorMessage() << endl;

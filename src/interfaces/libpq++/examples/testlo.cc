@@ -12,7 +12,7 @@
  *-------------------------------------------------------------------------
  */
 #include <iostream.h>
-#include <libpq++.h>
+#include <libpq++.H>
 #include <stdlib.h>
 
 int main(int argc, char **argv)

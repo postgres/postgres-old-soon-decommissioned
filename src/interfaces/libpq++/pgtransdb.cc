@@ -9,14 +9,13 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
- * IDENTIFICATION
- *    $Header$
  *
  *-------------------------------------------------------------------------
  */
  
  #include "pgtransdb.h"
  
+static char rcsid[] = "$Id$";
  
 // ****************************************************************
 //
@@ -24,24 +23,9 @@
 //
 // ****************************************************************
 // Make a connection to the specified database with default environment
-PgTransaction::PgTransaction(const char* dbName)
-   : PgDatabase(dbName)
-{
-	BeginTransaction();
-}
-
-// Make a connection to the specified database with the given environment
-PgTransaction::PgTransaction(const PgEnv& env, const char* dbName)
-   : PgDatabase(env, dbName)
-{
-	BeginTransaction();
-}
-
-// Do not make a connection to the backend -- just query
-// Connection should not be closed after the object destructs since some
-// other object is using the connection
-PgTransaction::PgTransaction(const PgConnection& conn) 
-   : PgDatabase(conn) 
+// See PQconnectdb() for conninfo usage. 
+PgTransaction::PgTransaction(const char* conninfo)
+   : PgDatabase(conninfo)
 {
 	BeginTransaction();
 }
