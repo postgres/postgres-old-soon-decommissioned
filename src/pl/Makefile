@@ -21,7 +21,7 @@ ifeq ($(USE_TCL), true)
 	$(MAKE) -C tcl $@
 endif
 ifeq ($(USE_PERL), true)
-	if [ "$@" = "install" ]; then \
+	-@if [ "$@" = "install" ]; then \
 		$(MAKE) $(MFLAGS) install-plperl; \
 	else \
 		$(MAKE) $(MFLAGS) plperl/Makefile; \
