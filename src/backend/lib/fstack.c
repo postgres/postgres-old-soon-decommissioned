@@ -39,20 +39,11 @@
 #define FixedStackGetItem(stack, pointer) \
 	((FixedItem)((char *)(pointer) + (stack)->offset))
 
+#define	FixedStackIsValid(stack) ((bool)PointerIsValid(stack))
+
 /*
  * External functions
  */
-
-/*
- * FixedStackIsValid --
- *	True iff stack is valid.
- */
-static bool
-FixedStackIsValid(FixedStack stack)
-{
-    return ((bool)PointerIsValid(stack));
-}
-
 
 void
 FixedStackInit(FixedStack stack, Offset offset)
@@ -92,7 +83,7 @@ FixedStackPush(FixedStack stack, Pointer pointer)
     stack->top = item;
 }
 
-
+#ifndef	NO_ASSERT_CHECKING
 /*
  * FixedStackContains --
  *	True iff ordered stack contains given element.
@@ -122,6 +113,7 @@ FixedStackContains(FixedStack stack, Pointer pointer)
     }
     return (false);
 }
+#endif
 
 Pointer
 FixedStackGetTop(FixedStack stack)
