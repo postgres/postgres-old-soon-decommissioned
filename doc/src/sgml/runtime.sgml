@@ -1859,16 +1859,6 @@ dynamic_library_path = '/usr/local/lib/postgresql:/home/my_project/lib:$libdir'
      </varlistentry>
 
      <varlistentry>
-      <term><varname>STATEMENT_TIMEOUT</varname> (<type>integer</type>)</term>
-      <listitem>
-       <para>
-        Aborts any statement that takes over the specified number of
-        milliseconds.  A value of zero turns off the timer.
-       </para>
-      </listitem>
-     </varlistentry>
-
-     <varlistentry>
       <term><varname>SHARED_BUFFERS</varname> (<type>integer</type>)</term>
       <listitem>
        <para>
@@ -1954,6 +1944,16 @@ dynamic_library_path = '/usr/local/lib/postgresql:/home/my_project/lib:$libdir'
         Enables <acronym>SSL</> connections. Please read
         <xref linkend="ssl-tcp"> before using this. The default
         is off.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term><varname>STATEMENT_TIMEOUT</varname> (<type>integer</type>)</term>
+      <listitem>
+       <para>
+        Aborts any statement that takes over the specified number of
+        milliseconds.  A value of zero turns off the timer.
        </para>
       </listitem>
      </varlistentry>
