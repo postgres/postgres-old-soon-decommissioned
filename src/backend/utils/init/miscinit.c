@@ -229,20 +229,20 @@ GetProcessingMode()
  *		Returns path to database.
  *
  */
-char *
+const char *
 GetDatabasePath()
 {
-	return strdup(DatabasePath);
+	return DatabasePath;
 }
 
 /*
  * GetDatabaseName --
  *		Returns name of database.
  */
-char *
+const char *
 GetDatabaseName()
 {
-	return strdup(DatabaseName);
+	return DatabaseName;
 }
 
 void

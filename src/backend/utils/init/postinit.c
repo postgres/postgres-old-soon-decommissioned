@@ -195,8 +195,8 @@ VerifySystemDatabase()
 static void
 VerifyMyDatabase()
 {
-	char	   *name;
-	char	   *myPath;
+	const char	   *name;
+	const char	   *myPath;
 
 	/* Failure reason returned by some function.  NULL if no failure */
 	char	   *reason;

@@ -116,8 +116,8 @@ extern int	GetDatabaseInfo(char *name, Oid *owner, char *path);
 extern char *ExpandDatabasePath(char *path);
 
 /* now in utils/init/miscinit.c */
-extern char *GetDatabasePath(void);
-extern char *GetDatabaseName(void);
+extern const char *GetDatabasePath(void);
+extern const char *GetDatabaseName(void);
 extern void SetDatabaseName(char *name);
 extern void SetDatabasePath(char *path);
 extern char *getpgusername(void);
