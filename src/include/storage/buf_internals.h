@@ -115,12 +115,13 @@ struct sbufdesc_unpadded {
     BufFlags		flags;
     int16		bufsmgr;
     unsigned		refcount;
-    char sb_dbname[NAMEDATALEN+1];
-    char sb_relname[NAMEDATALEN+1];
 #ifdef HAS_TEST_AND_SET
     slock_t	io_in_progress_lock;
 #endif /* HAS_TEST_AND_SET */
-    /* NOTE NO sb_pad HERE */
+    char sb_dbname[NAMEDATALEN+1];
+
+    /* NOTE NO PADDING OF THE MEMBER HERE */
+    char sb_relname[NAMEDATALEN+1];
 };
 
 /* THE REAL STRUCTURE - the structure above must match it, minus sb_pad */
@@ -137,12 +138,12 @@ struct sbufdesc {
     int16		bufsmgr;	/* storage manager id for buffer */
     unsigned		refcount;	/* # of times buffer is pinned */
 
-    char sb_dbname[NAMEDATALEN+1];	/* name of db in which buf belongs */
-    char sb_relname[NAMEDATALEN+1];	/* name of reln */
 #ifdef HAS_TEST_AND_SET
     /* can afford a dedicated lock if test-and-set locks are available */
     slock_t	io_in_progress_lock;
 #endif /* HAS_TEST_AND_SET */
+
+    char sb_dbname[NAMEDATALEN+1];	/* name of db in which buf belongs */
 
     /*
      * I padded this structure to a power of 2 (PADDED_SBUFDESC_SIZE) because
@@ -155,7 +156,11 @@ struct sbufdesc {
      * going to make some of these types bigger soon anyway... -pma 1/2/93
      */
 
-    char	sb_pad[PADDED_SBUFDESC_SIZE-sizeof(struct sbufdesc_unpadded)];
+    /* please, don't take the sizeof() this member and use it for
+	something important */
+	
+    char sb_relname[NAMEDATALEN+1+	/* name of reln */
+		PADDED_SBUFDESC_SIZE-sizeof(struct sbufdesc_unpadded)];
 };
 
 /*
