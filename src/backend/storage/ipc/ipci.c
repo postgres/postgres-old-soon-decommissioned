@@ -60,7 +60,8 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 		 * moderately-accurate estimates for the big hogs, plus 100K for the
 		 * stuff that's too small to bother with estimating.
 		 */
-		size = BufferShmemSize();
+		size = hash_estimate_size(SHMEM_INDEX_SIZE, sizeof(ShmemIndexEnt));
+		size += BufferShmemSize();
 		size += LockShmemSize(maxBackends);
 		size += XLOGShmemSize();
 		size += CLOGShmemSize();
