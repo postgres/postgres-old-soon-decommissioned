@@ -89,6 +89,11 @@ main(int argc, char *argv[])
 	else if (nameflag)
 		puts(pw->pw_name);
 	else
+#ifdef __BEOS__
+ 		if (pw->pw_uid==0)
+ 			printf("1\n");
+ 		else
+#endif
 		printf("%d\n", (int) pw->pw_uid);
 
 	return 0;

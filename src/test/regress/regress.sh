@@ -11,7 +11,7 @@ shift
 extratests="$*"
 
 case $hostname in
-	i*86-pc-cygwin* | i386-*-qnx*)
+	i*86-pc-cygwin* | i386-*-qnx* | beos)
  		HOSTLOC="-h localhost"
 		;;
  	*)

@@ -27,6 +27,9 @@ OBJS+= @STRTOL@ @STRTOUL@ @SNPRINTF@
 ifeq ($(PORTNAME), qnx4)
 OBJS += getrusage.o qnx4/SUBSYS.o
 endif
+ifeq ($(PORTNAME), beos)
+OBJS += beos/SUBSYS.o
+endif
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
@@ -36,6 +39,9 @@ qnx4/SUBSYS.o: qnx4.dir
 
 qnx4.dir:
 	$(MAKE) -C qnx4 all
+
+beos/SUBSYS.o:
+	$(MAKE) -C beos all
 
 tas.o: tas.s
 	$(CC) $(CFLAGS) -c tas.s

@@ -14,20 +14,5 @@
 #ifndef PORT_PROTOS_H
 #define PORT_PROTOS_H
 
-#include "postgres.h"
-
-#include "fmgr.h"
-#include "utils/dynamic_loader.h"
-
-char	   *beos_dlerror(void);
-void	   *beos_dlopen(const char *filename);
-void	   *beos_dlsym(void *handle, const char *name);
-void		beos_dlclose(void *handle);
-
-#define		   pg_dlopen(f)    beos_dlopen(f)
-#define		   pg_dlsym		   beos_dlsym
-#define		   pg_dlclose	   beos_dlclose
-#define		   pg_dlerror	   beos_dlerror
-
 
 #endif	 /* PORT_PROTOS_H */

@@ -98,6 +98,12 @@ if (!geteuid())
 	}
 #endif /* __BEOS__ */
 
+#ifdef __BEOS__
+ 	/* Specific beos actions on startup */
+ 	beos_startup(argc,argv);
+#endif
+
+
 	if (len >= 10 && !strcmp(argv[0] + len - 10, "postmaster"))
 		exit(PostmasterMain(argc, argv));
 

@@ -266,10 +266,8 @@ InitProcess(IPCKey key)
 		 * we might be reusing a semaphore that belongs to a dead backend.
 		 * So be careful and reinitialize its value here.
 		 */
-#ifndef __BEOS__
 		semun.val = IpcSemaphoreDefaultStartValue;
 		semctl(semId, semNum, SETVAL, semun);
-#endif
 
 		IpcSemaphoreLock(semId, semNum, IpcExclusiveLock);
 		MyProc->sem.semId = semId;
