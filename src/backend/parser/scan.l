@@ -582,8 +582,12 @@ other			.
 void
 yyerror(const char *message)
 {
-	elog(ERROR, "parser: %s at or near \"%s\"", message,
-		 token_start ? token_start : yytext);
+      if(yyleng == 1 && *yytext == YY_END_OF_BUFFER_CHAR)
+              elog(ERROR, "parser: %s at end of input",message);
+      else
+              elog(ERROR, "parser: %s at or near \"%s\" at character %i",
+                      message,token_start ? token_start : yytext,
+                      (unsigned int)(yytext - scanbuf + 1));
 }
 
 
