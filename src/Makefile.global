@@ -141,7 +141,7 @@ ENFORCE_ALIGNMENT= true
 
 # turn this on if you prefer European style dates instead of American
 # style dates
-EUROPEAN_DATES = 0
+#EUROPEAN_DATES = true
 
 # Comment out PROFILE to disable profiling.
 #
