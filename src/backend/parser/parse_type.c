@@ -453,6 +453,8 @@ parseTypeString(const char *str, Oid *type_id, int32 *typmod)
 	if (typename == NULL ||
 		!IsA(typename, TypeName))
 		goto fail;
+	if (typename->setof)
+		goto fail;
 
 	*type_id = typenameTypeId(typename);
 	*typmod = typename->typmod;
