@@ -25,7 +25,7 @@
 #include <locale.h>
 #endif
 
-#if defined(__alpha) && !defined(linux) && !defined(__FreeBSD__) && !defined(__NetBSD__)
+#if defined(__alpha) && defined(__osf__)
 #include <sys/sysinfo.h>
 #include "machine/hal_sysinfo.h"
 #define ASSEMBLER
