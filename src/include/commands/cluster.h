@@ -13,9 +13,10 @@
 #ifndef CLUSTER_H
 #define CLUSTER_H
 
+#include <nodes/parsenodes.h>
 /*
  * functions
  */
-extern void cluster(RangeVar *oldrelation, char *oldindexname);
+extern void cluster(ClusterStmt *stmt);
 
 #endif   /* CLUSTER_H */

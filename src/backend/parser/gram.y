@@ -3761,6 +3761,8 @@ CreateConversionStmt:
  *
  *		QUERY:
  *				cluster <index_name> on <qualified_name>
+ *				cluster <qualified_name>
+ *				cluster ALL
  *
  *****************************************************************************/
 
@@ -3770,6 +3772,20 @@ ClusterStmt:
 				   ClusterStmt *n = makeNode(ClusterStmt);
 				   n->relation = $4;
 				   n->indexname = $2;
+				   $$ = (Node*)n;
+				}
+			| CLUSTER qualified_name
+				{
+			       ClusterStmt *n = makeNode(ClusterStmt);
+				   n->relation = $2;
+				   n->indexname = NULL;
+				   $$ = (Node*)n;
+				}
+			| CLUSTER ALL
+			    {
+				   ClusterStmt *n = makeNode(ClusterStmt);
+				   n->relation = NULL;
+				   n->indexname = NULL;
 				   $$ = (Node*)n;
 				}
 		;

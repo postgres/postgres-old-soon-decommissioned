@@ -1533,7 +1533,7 @@ typedef struct DropdbStmt
 typedef struct ClusterStmt
 {
 	NodeTag		type;
-	RangeVar   *relation;		/* relation being indexed */
+	RangeVar   *relation;		/* relation being indexed, or NULL if all */
 	char	   *indexname;		/* original index defined */
 } ClusterStmt;
 
