@@ -2017,7 +2017,7 @@ main(int argc, char *argv[])
 				ret;
 	int			option_index;
 	char	   *short_version;
-	char	   *pgdenv;			/* PGDATA value got from sent to
+	char	   *pgdenv;			/* PGDATA value gotten from and sent to
 								 * environment */
 	static const char *subdirs[] = {
 		"global",
