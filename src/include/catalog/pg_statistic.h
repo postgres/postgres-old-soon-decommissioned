@@ -84,7 +84,7 @@ CATALOG(pg_statistic) BKI_WITHOUT_OIDS
 	 *		kind			integer code identifying kind of data
 	 *		op				OID of associated operator, if needed
 	 *		numbers			float4 array (for statistical values)
-	 *		values			text array (for representations of data values)
+	 *		values			anyarray (for representations of data values)
 	 * The ID and operator fields are never NULL; they are zeroes in an
 	 * unused slot.  The numbers and values fields are NULL in an unused
 	 * slot, and might also be NULL in a used slot if the slot kind has
