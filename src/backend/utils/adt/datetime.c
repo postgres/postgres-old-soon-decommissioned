@@ -551,7 +551,7 @@ time_ge(TimeADT *time1, TimeADT *time2)
 int
 time_cmp(TimeADT *time1, TimeADT *time2)
 {
-    return((*time1 < *time2)? -1: (((*time1 < *time2)? 1: 0)));
+    return((*time1 < *time2)? -1: (((*time1 > *time2)? 1: 0)));
 } /* time_cmp() */
 
 
