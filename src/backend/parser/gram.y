@@ -2444,6 +2444,7 @@ select_list:  select_list UNION opt_union SubSelect
 SubSelect:	SELECT opt_unique res_target_list2
 			 from_clause where_clause
 			 group_clause having_clause
+			 union_clause
 				{
 					SelectStmt *n = makeNode(SelectStmt);
 					n->unique = $2;
@@ -2453,6 +2454,7 @@ SubSelect:	SELECT opt_unique res_target_list2
 					n->whereClause = $5;
 					n->groupClause = $6;
 					n->havingClause = $7;
+					n->unionClause = $8;
 					$$ = (Node *)n;
 				}
 		;
