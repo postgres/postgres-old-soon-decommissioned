@@ -6,7 +6,7 @@
 vacuum \(em vacuum a database
 .SH SYNOPSIS
 .nf
-\fBvacuum [table]\fP
+\fBvacuum [verbose] [\fPtable\fB]\fP
 .fi
 .SH DESCRIPTION
 .BR Vacuum
@@ -17,6 +17,8 @@ system catalogs.  The statistics maintained include the number of
 tuples and number of pages stored in all classes.  Running
 .BR vacuum
 periodically will increase Postgres's speed in processing user queries.
+.PP
+\fBverbose\fP prints a detailed vacuum activity report for each table.
 .PP
 The open database is the one that is vacuumed.  
 .PP

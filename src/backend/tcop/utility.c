@@ -580,7 +580,8 @@ ProcessUtility(Node *parsetree,
     case T_VacuumStmt:
 	commandTag = "VACUUM";
 	CHECK_IF_ABORTED();
-	vacuum(((VacuumStmt *) parsetree)->vacrel);
+	vacuum( ((VacuumStmt *) parsetree)->vacrel,
+		((VacuumStmt *) parsetree)->verbose);
 	break;
 
     case T_ExplainStmt:

@@ -397,6 +397,7 @@ typedef struct ClusterStmt {
  */
 typedef struct VacuumStmt {
     NodeTag		type;
+    bool		verbose;	/* print status info */
     char		*vacrel;	/* table to vacuum */
 } VacuumStmt;
 

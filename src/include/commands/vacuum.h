@@ -54,7 +54,7 @@ typedef VRelListData	*VRelList;
 extern bool VacuumRunning;
 
 extern void vc_abort(void);
-extern void vacuum(char *vacrel);
+extern void vacuum(char *vacrel, bool verbose);
 
 
 #endif	/* VACUUM_H */

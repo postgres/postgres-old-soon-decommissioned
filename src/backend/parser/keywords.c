@@ -136,6 +136,7 @@ static ScanKeyword ScanKeywords[] = {
 	{ "using",		USING		},
 	{ "vacuum",		VACUUM		},
 	{ "values",		VALUES		},
+	{ "verbose",		VERBOSE		},
 	{ "version",		VERSION		},
 	{ "view",		VIEW		},
 	{ "where",		WHERE		},
