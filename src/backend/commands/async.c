@@ -283,6 +283,9 @@ Async_NotifyAtCommit()
 		}
 		ReleaseBuffer(b);
 	    }
+	    heap_endscan(sRel);
+	    heap_close(lRel);
+
 	    CommitTransactionCommand();
 	    ClearPendingNotify();
 	}
