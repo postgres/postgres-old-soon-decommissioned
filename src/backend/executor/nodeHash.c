@@ -221,7 +221,6 @@ ExecEndHash(Hash *node)
  *		create a hashtable in shared memory for hashjoin.
  * ----------------------------------------------------------------
  */
-#define NTUP_PER_BUCKET			10
 #define FUDGE_FAC				2.0
 
 HashJoinTable

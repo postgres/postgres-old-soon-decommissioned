@@ -16,6 +16,9 @@
 
 #include "nodes/plannodes.h"
 
+/* NTUP_PER_BUCKET is exported because planner wants to see it */
+#define NTUP_PER_BUCKET			10
+
 extern TupleTableSlot *ExecHash(Hash *node);
 extern bool ExecInitHash(Hash *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsHash(Hash *node);
