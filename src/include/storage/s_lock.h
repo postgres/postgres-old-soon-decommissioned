@@ -345,7 +345,7 @@ tas(volatile slock_t *lock)
  * All non-gcc inlines
  */
 
-#if defined(NEED_I386_TAS_ASM) && defined(USE_UNIVEL_CC)
+#if defined(USE_UNIVEL_CC)
 #define TAS(lock)	tas(lock)
 
 asm int
@@ -361,7 +361,7 @@ tas(volatile slock_t *s_lock)
 	popl %ebx
 }
 
-#endif	 /* defined(NEED_I386_TAS_ASM) && defined(USE_UNIVEL_CC) */
+#endif	 /* defined(USE_UNIVEL_CC) */
 
 #endif	 /* defined(__GNUC__) */
 

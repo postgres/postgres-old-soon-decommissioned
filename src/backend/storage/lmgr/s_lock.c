@@ -232,9 +232,6 @@ tas_dummy()						/* really means: extern int tas(slock_t
 
 
 
-#if defined(NEED_I386_TAS_ASM)
-/* non gcc i386 based things */
-#endif   /* NEED_I386_TAS_ASM */
 #endif   /* not __GNUC__ */
 
 
