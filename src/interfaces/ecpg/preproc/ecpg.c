@@ -41,18 +41,18 @@ help(const char *progname)
 	printf("Options:\n");
 	printf("  -c             automatically generate C code from embedded SQL code;\n"
 		   "                 currently this works for EXEC SQL TYPE\n");
+	printf("  -C MODE        set compatibility mode;\n"
+		   "                 MODE may be one of \"INFORMIX\", \"INFORMIX_SE\"\n");
 #ifdef YYDEBUG
 	printf("  -d             generate parser debug output\n");
 #endif
-	printf("  -C MODE        set compatibility mode;\n"
-		   "                 MODE may be one of \"INFORMIX\", \"INFORMIX_SE\"\n");
-	printf("  -r OPTION      specify runtime behaviour;\n"
-		   "                 OPTION may only be \"no_indicator\"\n");
 	printf("  -D SYMBOL      define SYMBOL\n");
+	printf("  -i             parse system include files as well\n");
 	printf("  -I DIRECTORY   search DIRECTORY for include files\n");
 	printf("  -o OUTFILE     write result to OUTFILE\n");
+	printf("  -r OPTION      specify runtime behaviour;\n"
+		   "                 OPTION may only be \"no_indicator\"\n");
 	printf("  -t             turn on autocommit of transactions\n");
-	printf("  -i             parse system include files as well\n");
 	printf("  --help         show this help, then exit\n");
 	printf("  --version      output version information, then exit\n");
 	printf("\nIf no output file is specified, the name is formed by adding .c to the\n"
