@@ -148,6 +148,8 @@ initializeInput(int flags)
 		}
 	}
 #endif
+
+    atexit(finishInput);
 }
 
 

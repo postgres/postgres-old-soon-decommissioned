@@ -8,6 +8,9 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#include "postgres.h"
+#include <signal.h>
+#include "pqsignal.h"
 #include "libpq-fe.h"
 
 char *		xstrdup(const char *string);
@@ -24,6 +27,9 @@ void        psql_error(const char *fmt, ...) __attribute__ ((format (printf, 1, 
 void        NoticeProcessor(void * arg, const char * message);
 
 char *		simple_prompt(const char *prompt, int maxlen, bool echo);
+
+extern volatile bool cancel_pressed;
+void        handle_sigint(SIGNAL_ARGS);
 
 PGresult *	PSQLexec(const char *query);
 

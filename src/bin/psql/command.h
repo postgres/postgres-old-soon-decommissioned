@@ -31,7 +31,7 @@ HandleSlashCmds(const char *line,
 				PQExpBuffer query_buf,
 				const char **end_of_cmd);
 
-bool
+int
 process_file(char *filename);
 
 bool

@@ -23,20 +23,6 @@
 #include "executor/execdesc.h"
 #include "parser/parse_node.h"
 
-/*	Autoconf's test for HAVE_SIGSETJMP fails on Linux 2.0.x because the test
- *	explicitly disallows sigsetjmp being a #define, which is how it
- *	is declared in Linux. So, to avoid compiler warnings about
- *	sigsetjmp() being redefined, let's not redefine unless necessary.
- * - thomas 1997-12-27
- * Autoconf really ought to be brighter about macro-ized system functions...
- * and this code really ought to be in config.h ...
- */
-
-#if !defined(HAVE_SIGSETJMP) && !defined(sigsetjmp)
-#define sigjmp_buf jmp_buf
-#define sigsetjmp(x,y)	setjmp(x)
-#define siglongjmp longjmp
-#endif
 extern DLLIMPORT sigjmp_buf Warn_restart;
 extern bool Warn_restart_ready;
 extern bool InError;
