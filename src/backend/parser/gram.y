@@ -3136,6 +3136,7 @@ CreateCastStmt: CREATE CAST '(' ConstTypename AS ConstTypename ')'
 					n->implicit = $10;
 					$$ = (Node *)n;
 				}
+		;
 
 opt_assignment:  AS ASSIGNMENT					{ $$ = TRUE; }
 		| /*EMPTY*/								{ $$ = FALSE; }
@@ -3150,6 +3151,7 @@ DropCastStmt: DROP CAST '(' ConstTypename AS ConstTypename ')' opt_drop_behavior
 					n->behavior = $8;
 					$$ = (Node *)n;
 				}
+		;
 
 
 
