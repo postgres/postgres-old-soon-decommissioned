@@ -45,6 +45,12 @@ extern void AlterTableAddColumn(Oid myrelid, bool inherits, ColumnDef *colDef);
 extern void AlterTableAlterColumnDefault(Oid myrelid, bool inh,
 										 const char *colName, Node *newDefault);
 
+extern void AlterTableAlterColumnDropNotNull(Oid myrelid,
+							 bool inh, const char *colName);
+
+extern void AlterTableAlterColumnSetNotNull(Oid myrelid,
+							 bool inh, const char *colName);
+
 extern void AlterTableAlterColumnFlags(Oid myrelid,
 									   bool inh, const char *colName,
 									   Node *flagValue, const char *flagType);

@@ -1122,6 +1122,24 @@ AlterTableStmt:
 					n->def = $7;
 					$$ = (Node *)n;
 				}
+/* ALTER TABLE <relation> ALTER [COLUMN] <colname> DROP NOT NULL */
+                | ALTER TABLE relation_expr ALTER opt_column ColId DROP NOT NULL_P
+                                {
+                                        AlterTableStmt *n = makeNode(AlterTableStmt);
+                                        n->subtype = 'N';
+                                        n->relation = $3;
+                                        n->name = $6;
+                                        $$ = (Node *)n;
+                                }
+/* ALTER TABLE <relation> ALTER [COLUMN] <colname> SET NOT NULL */
+                | ALTER TABLE relation_expr ALTER opt_column ColId SET NOT NULL_P
+                                {
+                                        AlterTableStmt *n = makeNode(AlterTableStmt);
+                                        n->subtype = 'O';
+                                        n->relation = $3;
+                                        n->name = $6;
+                                        $$ = (Node *)n;
+                                }
 /* ALTER TABLE <relation> ALTER [COLUMN] <colname> SET STATISTICS <Iconst> */
 		| ALTER TABLE relation_expr ALTER opt_column ColId SET STATISTICS Iconst
 				{

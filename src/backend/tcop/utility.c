@@ -437,6 +437,16 @@ ProcessUtility(Node *parsetree,
 													 stmt->name,
 													 stmt->def);
 						break;
+					case 'N':	/* ALTER COLUMN DROP NOT NULL */
+						AlterTableAlterColumnDropNotNull(RangeVarGetRelid(stmt->relation, false),
+										interpretInhOption(stmt->relation->inhOpt),
+													stmt->name);
+						break;
+					case 'O':	/* ALTER COLUMN SET NOT NULL */
+						AlterTableAlterColumnSetNotNull(RangeVarGetRelid(stmt->relation, false),
+										interpretInhOption(stmt->relation->inhOpt),
+													stmt->name);
+						break;
 					case 'S':	/* ALTER COLUMN STATISTICS */
 					case 'M':   /* ALTER COLUMN STORAGE */
 						/*
