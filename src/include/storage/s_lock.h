@@ -162,7 +162,7 @@ tas(volatile slock_t *lock)
 
 #endif	 /* __arm__ */
 
-#if defined(__s390__)
+#if defined(__s390__) || defined(__s390x__)
 /*
  * S/390 Linux
  */
