@@ -240,10 +240,7 @@ geqo_params(int string_length)
 	/**************** Effort: essential ****************/
 	if (!(effort))
 	{
-		if (PoolSize == MAX_POOL)
-			effort = HIGH_EFFORT;
-		else
-			effort = MEDIUM_EFFORT;
+		effort = MEDIUM_EFFORT;
 
 		elog(DEBUG, "geqo_params: no optimization effort specified;\nusing value of %d", effort);
 
