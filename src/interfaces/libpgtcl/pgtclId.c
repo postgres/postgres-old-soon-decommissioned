@@ -343,7 +343,10 @@ PgSetResultId(Tcl_Interp *interp, char *connid_c, PGresult *res)
 	for (resid = connid->res_last + 1; resid != connid->res_last; resid++)
 	{
 		if (resid == connid->res_max)
+		{
 			resid = 0;
+			break;
+		}
 		if (!connid->results[resid])
 		{
 			connid->res_last = resid;
