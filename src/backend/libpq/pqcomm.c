@@ -526,7 +526,9 @@ StreamServerPort(char *hostName, short portName, int *fdP)
 				family;
 	size_t		len;
 	int			one = 1;
+#ifdef HAVE_FCNTL_SETLK
 	int			lock_fd;
+#endif
 
 	family = ((hostName != NULL) ? AF_INET : AF_UNIX);
 
