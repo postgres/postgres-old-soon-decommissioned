@@ -88,6 +88,8 @@ combo_init(PX_Combo * cx, const uint8 *key, uint klen,
 			memcpy(ivbuf, iv, ivlen);
 	}
 
+	if (klen > ks)
+		klen = ks;
 	keybuf = px_alloc(ks);
 	memset(keybuf, 0, ks);
 	memcpy(keybuf, key, klen);
@@ -96,6 +98,7 @@ combo_init(PX_Combo * cx, const uint8 *key, uint klen,
 
 	if (ivbuf)
 		px_free(ivbuf);
+	px_free(keybuf);
 
 	return err;
 }
