@@ -260,8 +260,8 @@ CREATE VIEW pg_locks AS
 CREATE VIEW pg_settings AS 
     SELECT * 
     FROM pg_show_all_settings() AS A 
-    (name text, setting text, context text, vartype text, 
-     source text, min_val text, max_val text);
+    (name text, setting text, category text, short_desc text, extra_desc text,
+     context text, vartype text, source text, min_val text, max_val text);
 
 CREATE RULE pg_settings_u AS 
     ON UPDATE TO pg_settings 
