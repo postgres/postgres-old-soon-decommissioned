@@ -144,6 +144,7 @@ declare			{ return K_DECLARE;			}
 default			{ return K_DEFAULT;			}
 diagnostics		{ return K_DIAGNOSTICS;		}
 else			{ return K_ELSE;			}
+elseif          { return K_ELSIF;           }
 elsif           { return K_ELSIF;           }
 end				{ return K_END;				}
 exception		{ return K_EXCEPTION;		}
