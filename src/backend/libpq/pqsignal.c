@@ -119,11 +119,13 @@ pqinitmask(void)
 	sigdelset(&BlockSig, SIGCONT);
 	sigdelset(&AuthBlockSig, SIGCONT);
 #endif
-#ifdef SIGTERM
-	sigdelset(&AuthBlockSig, SIGTERM);
-#endif
+
+/* Signals unique to Auth */
 #ifdef SIGQUIT
 	sigdelset(&AuthBlockSig, SIGQUIT);
+#endif
+#ifdef SIGTERM
+	sigdelset(&AuthBlockSig, SIGTERM);
 #endif
 #ifdef SIGALRM
 	sigdelset(&AuthBlockSig, SIGALRM);
@@ -131,8 +133,10 @@ pqinitmask(void)
 #else
 	/* Set the signals we want. */
 	UnBlockSig = 0;
-	BlockSig = sigmask(SIGHUP) | sigmask(SIGQUIT) |
+	BlockSig = sigmask(SIGQUIT) |
 		sigmask(SIGTERM) | sigmask(SIGALRM) |
+		/* common signals between two */
+		sigmask(SIGHUP) |
 		sigmask(SIGINT) | sigmask(SIGUSR1) |
 		sigmask(SIGUSR2) | sigmask(SIGCHLD) |
 		sigmask(SIGWINCH) | sigmask(SIGFPE);
