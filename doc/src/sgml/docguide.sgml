@@ -4,6 +4,11 @@ Documentation Guide
 Thomas Lockhart
 
 $Log: docguide.sgml,v $
+Revision 1.8  1998/08/17 16:17:07  thomas
+Bring document list closer to up to day.
+Add a note on sgml-tools that they are now working with jade and so
+ may become the toolset of choice in the future.
+
 Revision 1.7  1998/08/15 06:53:52  thomas
 Include working list of all documentation sources, with current status
  and plans for some of them.
@@ -459,6 +464,7 @@ Status
 <row><entry> ./src/man/page.5	</entry><entry>	Removed. Converted to page.sgml for Dev Guide	</entry></row>
 <row><entry> ./src/man/pg_dump.1	</entry><entry>	Assimilate into Admin Guide	</entry></row>
 <row><entry> ./src/man/pg_dumpall.1	</entry><entry>	Assimilate into Admin Guide	</entry></row>
+<row><entry> ./src/man/pg_upgrade.1	</entry><entry>	Assimilate into Admin Guide	</entry></row>
 <row><entry> ./src/man/pg_hba.conf.5	</entry><entry>	Assimilate into Admin Guide	</entry></row>
 <row><entry> ./src/man/pg_passwd.1	</entry><entry>	Assimilate into Admin Guide	</entry></row>
 <row><entry> ./src/man/pgbuiltin.3	</entry><entry>	Obsolete. Superceded by datatype.sgml	</entry></row>
