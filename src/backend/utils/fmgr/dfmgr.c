@@ -46,6 +46,8 @@ static int pronargs_save;
 static func_ptr user_fn_save = (func_ptr) NULL;
 static func_ptr handle_load(char *filename, char *funcname);
 
+func_ptr trigger_dynamic (char *filename, char *funcname);
+
 func_ptr
 fmgr_dynamic(Oid procedureId, int *pronargs)
 {
@@ -260,4 +262,14 @@ load_file(char *filename)
         }
     }
     handle_load(filename, (char *) NULL);
+}
+
+func_ptr
+trigger_dynamic (char *filename, char *funcname)
+{
+    func_ptr trigger_fn;
+    
+    trigger_fn = handle_load (filename, funcname);
+    
+    return (trigger_fn);
 }
