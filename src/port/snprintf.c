@@ -252,6 +252,7 @@ dopr(char *buffer, const char *format, va_list args, char *end)
 					case '8':
 					case '9':
 						if (pointflag)
+							/* could also be precision */
 							maxwidth = maxwidth * 10 + ch - '0';
 						else
 						{ 
@@ -455,6 +456,7 @@ dopr(char *buffer, const char *format, va_list args, char *end)
 						fmtpar[fmtpos].ljust = ljust;
 						fmtpar[fmtpos].len = len;
 						fmtpar[fmtpos].maxwidth = maxwidth;
+						fmtpar[fmtpos].precision = position;
 						fmtpar[fmtpos].pointflag = pointflag;
 						fmtpar[fmtpos].func = FMTFLOAT;
 						fmtpar[fmtpos].realpos = realpos?realpos:fmtpos;
