@@ -10,6 +10,7 @@ WANTED_DIRS = \
 		earthdistance	\
 		findoidjoins	\
 		fulltextindex	\
+		intarray	\
 		isbn_issn	\
 		linux		\
 		lo			\
