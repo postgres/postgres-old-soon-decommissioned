@@ -31,10 +31,10 @@
 
 static bool
 MultiAcquire(LockTableId tableId, LOCKTAG *tag, LOCKT lockt,
-			 LOCK_LEVEL level);
+			 PG_LOCK_LEVEL level);
 static bool
 MultiRelease(LockTableId tableId, LOCKTAG *tag, LOCKT lockt,
-			 LOCK_LEVEL level);
+			 PG_LOCK_LEVEL level);
 
 /*
  * INTENT indicates to higher level that a lower level lock has been
@@ -201,7 +201,7 @@ static bool
 MultiAcquire(LockTableId tableId,
 			 LOCKTAG *tag,
 			 LOCKT lockt,
-			 LOCK_LEVEL level)
+			 PG_LOCK_LEVEL level)
 {
 	LOCKT		locks[N_LEVELS];
 	int			i,
@@ -361,7 +361,7 @@ static bool
 MultiRelease(LockTableId tableId,
 			 LOCKTAG *tag,
 			 LOCKT lockt,
-			 LOCK_LEVEL level)
+			 PG_LOCK_LEVEL level)
 {
 	LOCKT		locks[N_LEVELS];
 	int			i,
