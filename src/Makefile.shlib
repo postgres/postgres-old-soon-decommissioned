@@ -139,7 +139,7 @@ ifeq ($(PORTNAME), hpux)
   endif
 endif
 
-ifeq ($(PORTNAME), irix5)
+ifeq ($(PORTNAME), irix)
   shlib			:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION)
   LINK.shared		= $(COMPILER) -shared -Wl,-set_version,sgi$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
 endif

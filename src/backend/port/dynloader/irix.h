@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
- * irix5.h
- *	  port-specific prototypes for Irix 5
+ * irix.h
+ *	  port-specific prototypes for Irix
  *
  *
  * Portions Copyright (c) 1996-2003, PostgreSQL Global Development Group
