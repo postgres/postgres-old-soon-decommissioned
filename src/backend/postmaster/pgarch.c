@@ -172,7 +172,7 @@ pgarch_start(void)
 			beos_backend_startup();
 #endif
 			/* Close the postmaster's sockets */
-			ClosePostmasterPorts();
+			ClosePostmasterPorts(false);
 
 			/* Drop our connection to postmaster's shared memory, as well */
 			PGSharedMemoryDetach();
