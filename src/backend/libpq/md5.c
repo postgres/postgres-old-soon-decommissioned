@@ -22,7 +22,8 @@
  *	NOTE:
  *
  *	There are two copies of this file, one in backend/libpq and another
- *	in interfaces/odbc.  They should be identical.
+ *	in interfaces/odbc.  They should be identical.  This is done so ODBC
+ *	can be compiled stand-alone.
  */
  
 #ifndef MD5_ODBC
