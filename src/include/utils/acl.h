@@ -22,10 +22,11 @@
 #ifndef ACL_H
 #define ACL_H
 
-#include "miscadmin.h"
 #include "nodes/parsenodes.h"
 #include "utils/array.h"
 
+
+/* typedef AclId is declared in c.h */
 
 #define ACL_ID_WORLD	0		/* placeholder for id in a WORLD acl item */
 

@@ -176,7 +176,7 @@ extern bool EnableSSL;
 extern bool SilentMode;
 extern int	MaxBackends;
 extern int	ReservedBackends;
-extern int	NBuffers;
+extern DLLIMPORT int	NBuffers;
 extern int	PostPortNumber;
 extern int	Unix_socket_permissions;
 extern char *Unix_socket_group;
@@ -200,13 +200,7 @@ extern char *ExpandDatabasePath(const char *path);
 extern void SetDatabaseName(const char *name);
 extern void SetDatabasePath(const char *path);
 
-/*
- * AclId		system identifier for the user, group, etc.
- */
-typedef int32 AclId;
-
 extern char *GetUserNameFromId(AclId userid);
-
 extern AclId GetUserId(void);
 extern void SetUserId(AclId userid);
 extern AclId GetSessionUserId(void);

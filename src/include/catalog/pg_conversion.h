@@ -19,8 +19,6 @@
 #ifndef PG_CONVERSION_H
 #define PG_CONVERSION_H
 
-#include "miscadmin.h"
-
 /* ----------------
  *		postgres.h contains the system type definitions and the
  *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file

@@ -11,8 +11,6 @@
 #ifndef PGSTAT_H
 #define PGSTAT_H
 
-#include "miscadmin.h"
-
 /* ----------
  * Paths for the statistics files. The %s is replaced with the
  * installations $PGDATA.

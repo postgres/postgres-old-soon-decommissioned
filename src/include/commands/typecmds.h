@@ -14,7 +14,6 @@
 #ifndef TYPECMDS_H
 #define TYPECMDS_H
 
-#include "miscadmin.h"
 #include "nodes/parsenodes.h"
 
 

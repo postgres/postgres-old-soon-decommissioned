@@ -358,7 +358,7 @@ typedef float float4;
 typedef double float8;
 
 /*
- * Oid, RegProcedure, TransactionId, CommandId
+ * Oid, RegProcedure, TransactionId, CommandId, AclId
  */
 
 /* typedef Oid is in postgres_ext.h */
@@ -375,6 +375,8 @@ typedef uint32 TransactionId;
 typedef uint32 CommandId;
 
 #define FirstCommandId	((CommandId) 0)
+
+typedef int32 AclId;			/* user and group identifiers */
 
 /*
  * Array indexing support

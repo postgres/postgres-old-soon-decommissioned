@@ -64,6 +64,7 @@
 #include "catalog/pg_proc.h"
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
+#include "miscadmin.h"
 #include "tcop/fastpath.h"
 #include "utils/acl.h"
 #include "utils/lsyscache.h"
