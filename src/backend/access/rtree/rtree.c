@@ -594,6 +594,8 @@ rtdosplit(Relation r,
 	rtup = (IndexTuple) index_formtuple(tupDesc,
 										&(v.spl_rdatum), isnull);
 	pfree(isnull);
+	pfree(DatumGetPointer(v.spl_ldatum));
+	pfree(DatumGetPointer(v.spl_rdatum));
 
 	/* set pointers to new child pages in the internal index tuples */
 	ItemPointerSet(&(ltup->t_tid), lbknum, 1);
