@@ -4,6 +4,8 @@
  *	statistical aggregates for average, variance and standard
  *	deviation.
  *
+ * $Header$
+ *
  *	Jan Wieck
  * ----------
  */
