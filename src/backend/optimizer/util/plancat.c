@@ -545,7 +545,6 @@ IndexSelectivity(Oid indexrelid,
 	select = 1.0;
 	for (n = 0; n < nIndexKeys; ++n)
 	{
-
 		/*
 		 * Find the AM class for this key.
 		 *
