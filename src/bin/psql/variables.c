@@ -51,12 +51,12 @@ GetVariableBool(VariableSpace space, const char *name)
 	val = GetVariable(space, name);
 	if (val == NULL)
 		return false;			/* not set -> assume "off" */
-	if (strcmp(val, "off") == 0)
-		return false;
+	if (strcasecmp(val, "off") == 0)
+		return false;			/* accept "off" or "OFF" as true */
 
 	/*
-	 * for backwards compatibility, anything except "off" is taken as
-	 * "true"
+	 * for backwards compatibility, anything except "off" or "OFF" is
+	 * taken as "true"
 	 */
 	return true;
 }
