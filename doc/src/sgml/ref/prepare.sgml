@@ -156,7 +156,9 @@ PostgreSQL documentation
 	constant values in a query to make guesses about the likely
 	result of executing the query. Since this data is unavailable when
 	planning prepared queries with parameters, the chosen plan may be
-	sub-optimal.
+	sub-optimal. To examine the query plan
+	<productname>PostgreSQL</productname> has chosen for a prepared
+	query, use <command>EXPLAIN EXECUTE</command>.
    </para>
 
    <para>

@@ -99,9 +99,9 @@ PostgreSQL documentation
 
   <para>
    Like <command>SELECT INTO</command>, <command>EXECUTE</command> can
-   be used to store the results of executing the query in a table by
-   specifying an INTO clause. For more information on this behabior,
-   consult the reference for <xref linkend="sql-selectinto">.
+   store the results of executing the query into a newly-created
+   table, by specifying an INTO clause. For more information on this behavior,
+   see <xref linkend="sql-selectinto" endterm="sql-selectinto-title">.
   </para>
 
   <para>
