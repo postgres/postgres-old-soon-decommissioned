@@ -205,11 +205,8 @@ StreamServerPort(char *hostName, unsigned short portName, int *fdP)
 		return STATUS_ERROR;
 	}
 
-#ifdef ONLY_REUSE_INET_SOCKETS
 	if (family == AF_INET)
 	{
-#endif
-
 		if ((setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (char *) &one,
 						sizeof(one))) == -1)
 		{
@@ -220,10 +217,7 @@ StreamServerPort(char *hostName, unsigned short portName, int *fdP)
 			pqdebug("%s", PQerrormsg);
 			return STATUS_ERROR;
 		}
-
-#ifdef ONLY_REUSE_INET_SOCKETS
 	}
-#endif
 
 	MemSet((char *) &saddr, 0, sizeof(saddr));
 	saddr.sa.sa_family = family;
