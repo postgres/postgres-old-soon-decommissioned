@@ -1,4 +1,4 @@
-#! /bin/sh
+#!@SHELL@
 #-------------------------------------------------------------------------
 #
 # initdb creates (initializes) a PostgreSQL database cluster (site,
