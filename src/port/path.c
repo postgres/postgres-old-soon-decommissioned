@@ -335,7 +335,7 @@ set_pglocale_pgservice(const char *argv0, const char *app)
 {
 	char path[MAXPGPATH];
 	char my_exec_path[MAXPGPATH];
-	char env_path[MAXPGPATH + sizeof("PGLOCALEDIR=")]; /* longer than PGSYSCONFDIR */
+	char env_path[MAXPGPATH + sizeof("PGSYSCONFDIR=")]; /* longer than PGLOCALEDIR */
 
 	/* don't set LC_ALL in the backend */
 	if (strcmp(app, "postgres") != 0)
@@ -353,7 +353,7 @@ set_pglocale_pgservice(const char *argv0, const char *app)
 	{
 		/* set for libpq to use */
 		snprintf(env_path, sizeof(env_path), "PGLOCALEDIR=%s", path);
-		canonicalize_path(env_path);
+		canonicalize_path(env_path + 12);
 		putenv(strdup(env_path));
 	}
 #endif
@@ -364,7 +364,7 @@ set_pglocale_pgservice(const char *argv0, const char *app)
 	
 		/* set for libpq to use */
 		snprintf(env_path, sizeof(env_path), "PGSYSCONFDIR=%s", path);
-		canonicalize_path(env_path);
+		canonicalize_path(env_path + 13);
 		putenv(strdup(env_path));
 	}
 }

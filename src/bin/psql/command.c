@@ -375,7 +375,8 @@ exec_command(const char *cmd,
 			fname = psql_scan_slash_option(scan_state,
 										   OT_NORMAL, NULL, true);
 			expand_tilde(&fname);
-			canonicalize_path(fname);
+			if (fname)
+				canonicalize_path(fname);
 			status = do_edit(fname, query_buf) ? CMD_NEWEDIT : CMD_ERROR;
 			free(fname);
 		}

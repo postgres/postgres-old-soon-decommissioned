@@ -405,9 +405,10 @@ find_in_dynamic_libpath(const char *basename)
 		strncpy(piece, p, len);
 		piece[len] = '\0';
 
-		canonicalize_path(piece);
 		mangled = substitute_libpath_macro(piece);
 		pfree(piece);
+
+		canonicalize_path(mangled);
 
 		/* only absolute paths */
 		if (!is_absolute_path(mangled))

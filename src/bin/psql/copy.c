@@ -513,7 +513,8 @@ do_copy(const char *args)
 		appendPQExpBuffer(&query, " FORCE NOT NULL %s", options->force_notnull_list);
 	}
 
-	canonicalize_path(options->file);
+	if (options->file)
+		canonicalize_path(options->file);
 
 	if (options->from)
 	{
