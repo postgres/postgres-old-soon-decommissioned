@@ -29,6 +29,11 @@ ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)
 endif
 
+ifdef LINUX_ELF
+CFLAGS += -fPIC
+CC += -L $(POSTGRESDIR)/lib -lpq
+endif
+
 LIBSRCS= pgtcl.c pgtclCmds.c pgtclId.c
 
 install-headers:
