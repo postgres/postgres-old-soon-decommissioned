@@ -12,8 +12,6 @@
  *-------------------------------------------------------------------------
  */
 
-#include <string.h>
-#include <stdio.h>
 #include <pwd.h>
 
 #include <sys/param.h>

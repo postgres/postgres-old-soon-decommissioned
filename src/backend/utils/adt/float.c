@@ -45,10 +45,7 @@
  *		 for calls to pow(), exp() since on some machines (my Linux box
  *		 included) these routines do not set errno. - tgl 97/05/10
  */
-#include <stdio.h>
-#include <string.h>
 #include <ctype.h>
-#include <stdlib.h>
 #include <errno.h>
 
 #include <float.h>				/* faked on sunos4 */

@@ -17,7 +17,6 @@
 #include "fe-auth.h"
 #include "postgres.h"
 
-#include <stdlib.h>
 #ifdef WIN32
 #include "win32.h"
 #else
@@ -28,7 +27,6 @@
 #include <netinet/tcp.h>
 #endif
 #include <fcntl.h>
-#include <string.h>
 #include <errno.h>
 #include <ctype.h>				/* for isspace() */
 

@@ -58,7 +58,6 @@
  *
  *------------------------
  */
-#include <stdio.h>
 #include <signal.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -73,12 +72,6 @@
 #include <sys/file.h>
 
 #include "postgres.h"
-
-#if defined(HAVE_STRING_H)
-#include <string.h>
-#else
-#include <strings.h>
-#endif
 
 #include "libpq/libpq.h"
 #include "utils/trace.h" /* needed for HAVE_FCNTL_SETLK */

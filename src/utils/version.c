@@ -22,8 +22,6 @@
 #include <fcntl.h>				/* For open() flags */
 #include <sys/stat.h>
 #include <ctype.h>
-#include <string.h>
-#include <stdio.h>
 #include <unistd.h>
 #include <errno.h>
 

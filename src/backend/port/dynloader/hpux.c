@@ -16,7 +16,6 @@
  *-------------------------------------------------------------------------
  */
 /* System includes */
-#include <stdio.h>
 #include <a.out.h>
 
 #include "postgres.h"

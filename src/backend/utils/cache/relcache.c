@@ -30,11 +30,9 @@
  *
  */
 #include <sys/types.h>
-#include <stdio.h>
 #include <errno.h>
 #include <sys/file.h>
 #include <fcntl.h>
-#include <string.h>
 
 #include "postgres.h"
 

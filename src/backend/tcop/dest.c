@@ -32,8 +32,6 @@
  *		versa --- so I think I'll just leave 'em alone for now.  tgl 1/99.
  *
  */
-#include <stdio.h>
-#include <string.h>
 
 #include "postgres.h"
 

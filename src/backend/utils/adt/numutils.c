@@ -14,18 +14,12 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>
 #include <errno.h>
 #include <math.h>
 
 #include "postgres.h"
 #ifdef HAVE_LIMITS_H
 #include <limits.h>
-#endif
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#else
-#include <string.h>
 #endif
 #include "utils/builtins.h"
 

@@ -16,11 +16,8 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>
-#include <string.h>
 
 #include "postgres.h"
-
 
 #include "access/heapam.h"
 #include "catalog/catname.h"

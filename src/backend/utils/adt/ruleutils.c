@@ -35,13 +35,10 @@
  *
  **********************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <string.h>
 
+#include "postgres.h"
 #include "executor/spi.h"
 #include "optimizer/clauses.h"
 #include "utils/lsyscache.h"

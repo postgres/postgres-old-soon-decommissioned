@@ -24,11 +24,9 @@
  *-------------------------------------------------------------------------
  */
 #include <ctype.h>
-#include <stdio.h>
 #include <time.h>
 #include <sys/time.h>
 #include <sys/types.h>
-#include <string.h>
 
 #include "postgres.h"
 #ifdef HAVE_FLOAT_H

@@ -4,8 +4,6 @@
  * $Header$
  */
 
-#include <stdio.h>
-#include <string.h>
 #include "postgres.h"
 #include "regex/regex.h"
 

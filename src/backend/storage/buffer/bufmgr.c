@@ -42,8 +42,6 @@
  */
 #include <sys/types.h>
 #include <sys/file.h>
-#include <stdio.h>
-#include <string.h>
 #include <math.h>
 #include <signal.h>
 

@@ -16,11 +16,6 @@
 
 #include "access/hash.h"
 
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#else
-#include <string.h>
-#endif
 
 /*
  *	_hash_search() -- Finds the page/bucket that the contains the

@@ -19,15 +19,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>
 #include <time.h>
 
 #include "postgres.h"
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#else
-#include <string.h>
-#endif
 
 #include "access/nbtree.h"
 #include "miscadmin.h"

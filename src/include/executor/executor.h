@@ -13,7 +13,6 @@
 #ifndef EXECUTOR_H
 #define EXECUTOR_H
 
-#include <stdio.h>
 #include "executor/execdesc.h"
 
 /* ----------------

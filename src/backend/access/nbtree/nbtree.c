@@ -17,11 +17,6 @@
  */
 
 #include "postgres.h"
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#else
-#include <string.h>
-#endif
 
 #include "access/genam.h"
 #include "access/heapam.h"

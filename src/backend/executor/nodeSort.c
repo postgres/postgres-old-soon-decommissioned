@@ -11,7 +11,6 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <string.h>
 
 #include "postgres.h"
 #include "executor/executor.h"

@@ -17,11 +17,6 @@
 #include "access/genam.h"
 #include "access/rtree.h"
 
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#else
-#include <string.h>
-#endif
 
 
 /* routines defined and used here */

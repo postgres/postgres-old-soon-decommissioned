@@ -11,8 +11,6 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>
-#include <stdarg.h>
 #include "postgres.h"
 
 #define FormMaxSize		1024

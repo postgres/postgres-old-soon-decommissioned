@@ -26,11 +26,6 @@
 #include "tcop/fastpath.h"
 #include "tcop/tcopprot.h"
 #include "utils/builtins.h"
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#else
-#include <string.h>
-#endif
 
 static char *strmake(char *str, int len);
 

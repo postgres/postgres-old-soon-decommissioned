@@ -49,8 +49,6 @@
 #endif	 /* !NO_UNISTD_H */
 
 #include <signal.h>
-#include <string.h>
-#include <stdlib.h>
 #include <time.h>
 
 
@@ -68,7 +66,6 @@
 
 #include <errno.h>
 #include <fcntl.h>
-#include <stdio.h>
 
 #ifdef HAVE_SYS_SELECT_H
 #include <sys/select.h>

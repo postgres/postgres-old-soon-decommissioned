@@ -12,10 +12,8 @@
  *-------------------------------------------------------------------------
  */
 
-#include <string.h>
 
 #include "postgres.h"
-
 
 #include "nodes/memnodes.h"
 

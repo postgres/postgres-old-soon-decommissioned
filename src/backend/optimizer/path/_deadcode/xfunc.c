@@ -16,7 +16,6 @@
 #include <math.h>
 
 #include <values.h>
-#include <string.h>
 
 #include "postgres.h"
 

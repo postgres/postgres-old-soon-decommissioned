@@ -30,9 +30,7 @@
  *				MAXMERGE, MAXTAPES
  *
  */
-#include <stdio.h>
 #include <math.h>
-#include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
 

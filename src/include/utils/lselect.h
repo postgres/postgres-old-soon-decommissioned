@@ -13,8 +13,6 @@
 #ifndef LSELECT_H
 #define LSELECT_H
 
-#include <stdio.h>
-
 #include "utils/syscache.h"
 
 struct leftist

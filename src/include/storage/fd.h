@@ -38,8 +38,6 @@
 #ifndef FD_H
 #define FD_H
 
-#include <stdio.h>
-
 /*
  * FileSeek uses the standard UNIX lseek(2) flags.
  */

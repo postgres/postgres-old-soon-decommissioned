@@ -19,11 +19,6 @@
 #include "access/itup.h"
 #include "catalog/pg_type.h"
 
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#else
-#include <string.h>
-#endif
 
 /* ----------------------------------------------------------------
  *				  index_ tuple interface routines

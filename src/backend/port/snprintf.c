@@ -32,14 +32,11 @@
  * SUCH DAMAGE.
  */
 
-#include "postgres.h"
-
-
-#include <stdio.h>
-#include <stdarg.h>
-
 #include <sys/ioctl.h>
 #include <sys/param.h>
+
+#include "postgres.h"
+
 
 /*
  * We do all internal arithmetic in the widest available integer type,

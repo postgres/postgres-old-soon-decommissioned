@@ -11,12 +11,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <string.h>
 #include "postgres.h"
-
-
-
-
 
 #include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"

@@ -39,9 +39,8 @@
  * Modified by sullivan@postgres.berkeley.edu April 1990
  *		changed ctl structure for shared memory
  */
-#include <stdio.h>
 #include <sys/types.h>
-#include <string.h>
+
 #include "postgres.h"
 #include "utils/dynahash.h"
 #include "utils/hsearch.h"

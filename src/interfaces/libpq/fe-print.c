@@ -31,9 +31,7 @@
 #include <termios.h>
 #endif
 #endif	 /* WIN32 */
-#include <stdlib.h>
 #include <signal.h>
-#include <string.h>
 
 #ifdef MULTIBYTE
 #include "mb/pg_wchar.h"

@@ -11,13 +11,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <string.h>
 #include <sys/types.h>
 
 #include "postgres.h"
-
-
-
 
 #include "optimizer/plancat.h"
 #include "optimizer/planmain.h"

@@ -13,12 +13,8 @@
  *-------------------------------------------------------------------------
  */
 #include <time.h>
-#include <string.h>
 
 #include "postgres.h"
-
-
-
 
 #include "access/attnum.h"
 #include "access/funcindex.h"

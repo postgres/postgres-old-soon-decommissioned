@@ -15,11 +15,6 @@
 #include <fcntl.h>
 
 #include "postgres.h"
-#ifndef HAVE_MEMMOVE
-#include "regex/utils.h"
-#else
-#include <string.h>
-#endif
 
 #include "catalog/pg_type.h"
 #include "fmgr.h"

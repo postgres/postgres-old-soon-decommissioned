@@ -14,8 +14,6 @@
  *-------------------------------------------------------------------------
  */
 
-#include <stdlib.h>
-
 #include "postgres.h"
 #include "libpgtcl.h"
 #include "pgtclCmds.h"

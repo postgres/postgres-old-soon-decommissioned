@@ -11,8 +11,6 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>
-#include <string.h>
 #include <unistd.h>
 
 #if defined(__alpha__) && !defined(linux)
@@ -22,6 +20,7 @@
 #include <sys/proc.h>
 #undef ASSEMBLER
 #endif
+
 #include "postgres.h"
 #ifdef USE_LOCALE
 #include <locale.h>

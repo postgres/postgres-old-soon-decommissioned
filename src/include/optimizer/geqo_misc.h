@@ -21,8 +21,6 @@
 #ifndef GEQO_MISC_H
 #define GEQO_MISC_H
 
-#include <stdio.h>
-
 #include "optimizer/geqo_recombination.h"
 #include "nodes/relation.h"
 

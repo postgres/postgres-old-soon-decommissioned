@@ -10,12 +10,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <string.h>
 #include "postgres.h"
-
-
-
-
 
 #include "access/heapam.h"
 #include "catalog/pg_type.h"

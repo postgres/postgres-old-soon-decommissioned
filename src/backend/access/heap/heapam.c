@@ -85,11 +85,6 @@
 #include "utils/inval.h"
 #include "utils/relcache.h"
 
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#else
-#include <string.h>
-#endif
 
 /* ----------------------------------------------------------------
  *						 heap support routines

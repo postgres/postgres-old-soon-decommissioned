@@ -10,7 +10,6 @@
  *-------------------------------------------------------------------------
  */
 
-#include <string.h>
 
 #include "postgres.h"
 #include "version.h"

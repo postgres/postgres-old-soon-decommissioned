@@ -19,9 +19,6 @@
  */
 
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include <ctype.h>
 #include <sys/param.h>			/* for MAXHOSTNAMELEN on most */
 #ifdef solaris_sparc

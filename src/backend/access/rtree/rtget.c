@@ -17,11 +17,6 @@
 #include "access/iqual.h"
 #include "access/rtree.h"
 
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#else
-#include <string.h>
-#endif
 
 
 static OffsetNumber findnext(IndexScanDesc s, Page p, OffsetNumber n,

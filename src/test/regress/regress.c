@@ -3,10 +3,8 @@
  */
 
 #include <float.h>				/* faked on sunos */
-#include <stdio.h>
-#include <string.h>				/* for MemSet() */
 
-#include <postgres.h>
+#include "postgres.h"
 
 #include "utils/geo_decls.h"	/* includes <math.h> */
 #include "executor/executor.h"	/* For GetAttributeByName */

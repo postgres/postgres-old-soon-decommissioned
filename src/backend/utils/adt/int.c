@@ -28,8 +28,6 @@
  * XXX makes massive and possibly unwarranted type promotion assumptions.
  * fix me when we figure out what we want to do about ANSIfication...
  */
-#include <stdio.h>
-#include <string.h>
 
 #include "postgres.h"
 #ifdef HAVE_LIMITS_H

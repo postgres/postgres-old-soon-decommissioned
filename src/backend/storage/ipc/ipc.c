@@ -26,8 +26,6 @@
  */
 #include <sys/types.h>
 #include <sys/file.h>
-#include <stdio.h>
-#include <string.h>
 #include <errno.h>
 
 
@@ -42,7 +40,6 @@
 #include "utils/trace.h"
 
 #if defined(solaris_sparc)
-#include <string.h>
 #include <sys/ipc.h>
 #endif
 

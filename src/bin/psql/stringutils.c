@@ -11,10 +11,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>
-#include <string.h>
 #include <ctype.h>
-#include <stdlib.h>
 
 #include "postgres.h"
 #ifndef HAVE_STRDUP

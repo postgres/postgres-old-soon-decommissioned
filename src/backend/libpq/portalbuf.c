@@ -47,7 +47,6 @@
  *		see utils/mmgr/portalmem.c for why. -cim 2/22/91
  *
  */
-#include <string.h>
 #include <sys/types.h>
 
 #include "postgres.h"

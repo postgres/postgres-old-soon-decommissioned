@@ -37,8 +37,6 @@
 #ifndef PLPGSQL_H
 #define PLPGSQL_H
 
-#include <stdio.h>
-#include <stdarg.h>
 #include "postgres.h"
 #include "executor/spi.h"
 #include "commands/trigger.h"

@@ -11,8 +11,6 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdlib.h>
-#include <stdio.h>
 #include "postgres.h"
 #include "mb/pg_wchar.h"
 

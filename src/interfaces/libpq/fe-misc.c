@@ -31,11 +31,10 @@
 
 #include "libpq-fe.h"
 #include "libpq-int.h"
+
 #include "postgres.h"
 #include "pqsignal.h"
 
-#include <stdlib.h>
-#include <string.h>
 #include <errno.h>
 #include <signal.h>
 #include <time.h>

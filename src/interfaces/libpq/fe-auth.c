@@ -33,7 +33,6 @@
 #ifdef WIN32
 #include "win32.h"
 #else
-#include <string.h>
 #include <sys/param.h>			/* for MAXHOSTNAMELEN on most */
 #ifndef  MAXHOSTNAMELEN
 #include <netdb.h>				/* for MAXHOSTNAMELEN on some */

@@ -24,7 +24,6 @@
 #include <unistd.h>
 #endif
 #endif
-#include <string.h>
 #include <fcntl.h>
 #include <sys/stat.h>
 

@@ -13,7 +13,6 @@
 #ifndef BUFMGR_H
 #define BUFMGR_H
 
-#include <stdio.h>
 
 #include "storage/ipc.h"
 #include "storage/block.h"

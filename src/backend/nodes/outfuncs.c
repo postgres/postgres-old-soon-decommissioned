@@ -19,9 +19,8 @@
  *	  representation plus some other information (string length, etc.)
  *
  */
-#include <stdio.h>
-#include "postgres.h"
 
+#include "postgres.h"
 #include "access/heapam.h"
 #include "access/htup.h"
 #include "catalog/pg_type.h"

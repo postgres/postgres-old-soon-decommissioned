@@ -23,7 +23,6 @@
  * Sync: all routines in this file assume that the buffer
  *		semaphore has been acquired by the caller.
  */
-#include <stdio.h>
 
 #include "postgres.h"
 #include "storage/bufmgr.h"

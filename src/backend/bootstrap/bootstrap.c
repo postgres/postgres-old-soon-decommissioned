@@ -13,10 +13,8 @@
  */
 #include <unistd.h>
 #include <time.h>
-#include <stdio.h>
 #include <signal.h>
 #include <setjmp.h>
-#include <string.h>
 #ifdef __CYGWIN32__
 #include <getopt.h>
 #endif
@@ -38,10 +36,6 @@
 #include "utils/builtins.h"
 #include "utils/lsyscache.h"
 #include "utils/portal.h"
-
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#endif
 
 #define ALLOC(t, c)		(t *)calloc((unsigned)(c), sizeof(t))
 #define FIRST_TYPE_OID 16		/* OID of the first type */

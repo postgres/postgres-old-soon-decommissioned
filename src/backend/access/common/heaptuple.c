@@ -22,12 +22,6 @@
 #include "access/heapam.h"
 #include "catalog/pg_type.h"
 
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#else
-#include <string.h>
-#endif
-
 /* Used by heap_getattr() macro, for speed */
 long		heap_sysoffset[] = {
 /* Only the first one is pass-by-ref, and is handled specially in the macro */

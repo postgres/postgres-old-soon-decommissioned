@@ -15,7 +15,6 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <string.h>
 #include "postgres.h"
 #include "utils/builtins.h"
 

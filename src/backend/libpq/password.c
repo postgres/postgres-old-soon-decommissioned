@@ -5,8 +5,8 @@
  *
  */
 
-#include <string.h>
 #include <unistd.h>
+
 #include "postgres.h"
 #ifdef HAVE_CRYPT_H
 #include "crypt.h"

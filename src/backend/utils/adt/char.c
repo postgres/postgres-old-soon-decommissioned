@@ -12,8 +12,6 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>				/* for sprintf() */
-#include <string.h>
 #include "postgres.h"
 #include "utils/builtins.h"
 

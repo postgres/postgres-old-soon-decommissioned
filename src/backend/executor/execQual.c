@@ -29,7 +29,6 @@
  *		instead of doing needless copying.	-cim 5/31/91
  *
  */
-#include <string.h>
 
 #include "postgres.h"
 

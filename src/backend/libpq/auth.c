@@ -17,8 +17,6 @@
  *	   backend (postmaster) routines:
  *		be_recvauth				receive authentication information
  */
-#include <stdio.h>
-#include <string.h>
 #include <sys/param.h>			/* for MAXHOSTNAMELEN on most */
 #ifndef  MAXHOSTNAMELEN
 #include <netdb.h>				/* for MAXHOSTNAMELEN on some */

@@ -11,9 +11,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <string.h>
 #include "postgres.h"
-
 
 #include "catalog/pg_type.h"
 #include "parser/parse_type.h"

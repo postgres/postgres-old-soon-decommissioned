@@ -17,7 +17,6 @@
 
 #include "postgres.h"
 
-#include <stdio.h>
 #include <sys/types.h>
 #ifdef WIN32
 #include "winsock.h"

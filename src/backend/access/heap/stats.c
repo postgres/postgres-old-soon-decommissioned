@@ -15,18 +15,12 @@
  *-------------------------------------------------------------------------
  */
 
-#include <stdio.h>
 #include <time.h>
 
 #include "postgres.h"
 
 #include "access/heapam.h"
 
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#else
-#include <string.h>
-#endif
 
 static void InitHeapAccessStatistics(void);
 

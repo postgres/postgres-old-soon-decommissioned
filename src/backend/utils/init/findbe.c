@@ -10,10 +10,8 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>
 #include <grp.h>
 #include <pwd.h>
-#include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>

@@ -16,10 +16,7 @@
 #include <unistd.h>
 #ifndef __linux__
 #include <math.h>
-#else
-#include <stdlib.h>
-#endif /* __linux__ */
-#include <string.h>
+#endif
 #include <errno.h>
 
 #include "postgres.h"

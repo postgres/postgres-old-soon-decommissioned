@@ -50,8 +50,6 @@
  *		see utils/mmgr/portalmem.c for why. -cim 2/22/91
  *
  */
-#include <stdio.h>
-#include <string.h>
 
 #include "postgres.h"
 

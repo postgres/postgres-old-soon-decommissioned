@@ -16,7 +16,6 @@
  *-------------------------------------------------------------------------
  */
 
-#include <stdlib.h>
 #include "postgres.h"
 
 #include "catalog/catalog.h"

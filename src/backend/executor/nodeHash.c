@@ -19,9 +19,7 @@
  */
 
 #include <sys/types.h>
-#include <stdio.h>
 #include <math.h>
-#include <string.h>
 
 #include "postgres.h"
 #include "executor/execdebug.h"

@@ -11,15 +11,12 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>
-#include <string.h>
 #include <time.h>
 #include <fcntl.h>
 #ifndef O_RDONLY
 #include <sys/file.h>
 #endif	 /* O_RDONLY */
 #include <sys/types.h>
-#include <stdarg.h>
 #include <errno.h>
 #include <unistd.h>
 #include <signal.h>

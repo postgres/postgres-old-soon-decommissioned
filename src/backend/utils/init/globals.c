@@ -16,8 +16,6 @@
  *-------------------------------------------------------------------------
  */
 #include <fcntl.h>
-#include <stdio.h>
-#include <string.h>
 #include <sys/file.h>
 #include <sys/types.h>
 #include <math.h>

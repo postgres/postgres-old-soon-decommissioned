@@ -14,7 +14,6 @@
 #ifndef LIBPQ_BE_H
 #define LIBPQ_BE_H
 
-#include <stdio.h>
 #include <sys/types.h>
 
 #include "libpq/hba.h"

@@ -28,9 +28,6 @@ static const char rcsid[] = "$Id$";
 #include <assert.h>
 #include <ctype.h>
 #include <errno.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
 #include "postgres.h"
 #include "utils/builtins.h"

@@ -18,14 +18,8 @@
 #define LOCKDEBUG		1
 #endif	 /* LOCKDEBUGALL */
 
-#include <string.h>
 
 #include "postgres.h"
-
-
-
-
-
 #include "access/transam.h"
 #include "catalog/catalog.h"
 

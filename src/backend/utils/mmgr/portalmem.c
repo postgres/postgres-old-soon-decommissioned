@@ -73,12 +73,8 @@
  * PortalHeapMemory				y				y				y *
  *
  */
-#include <stdio.h>
-#include <string.h>
 
 #include "postgres.h"
-
-
 
 #include "lib/hasht.h"
 #include "utils/module.h"

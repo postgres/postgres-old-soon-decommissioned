@@ -12,11 +12,6 @@
  *-------------------------------------------------------------------------
  */
 #include "postgres.h"
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#else
-#include <string.h>
-#endif
 
 #include "catalog/pg_language.h"
 #include "catalog/pg_proc.h"

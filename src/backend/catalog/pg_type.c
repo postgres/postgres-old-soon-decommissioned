@@ -22,11 +22,6 @@
 #include "utils/builtins.h"
 #include "utils/syscache.h"
 
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#else
-#include <string.h>
-#endif
 
 static Oid TypeShellMakeWithOpenRelation(Relation pg_type_desc,
 							  char *typeName);

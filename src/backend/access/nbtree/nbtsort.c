@@ -53,11 +53,6 @@
 
 #include "access/nbtree.h"
 
-#ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
-#else
-#include <string.h>
-#endif
 
 #ifdef BTREE_BUILD_STATS
 #define ShowExecutorStats pg_options[TRACE_EXECUTORSTATS]

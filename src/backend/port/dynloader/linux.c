@@ -14,8 +14,6 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>
-#include <string.h>
 
 #include "postgres.h"
 #ifdef HAVE_DLD_H

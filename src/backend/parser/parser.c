@@ -10,8 +10,6 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <string.h>
-#include <stdio.h>
 
 #include "postgres.h"
 #include "parser/analyze.h"

@@ -27,7 +27,6 @@
  *		puts portals on the stack and the PQ functions remove them.
  *
  */
-#include <string.h>
 
 #include "postgres.h"
 
