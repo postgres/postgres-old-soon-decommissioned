@@ -15,7 +15,6 @@
 
 #ifdef TUPLE_TOASTER_ACTIVE
 
-#include "postgres.h"
 #include "access/heapam.h"
 #include "access/htup.h"
 #include "access/tupmacs.h"
