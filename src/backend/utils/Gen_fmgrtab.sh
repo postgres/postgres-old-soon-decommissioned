@@ -190,6 +190,9 @@ cat > $TABCFILE <<FuNkYfMgRtAbStUfF
  *
  *-------------------------------------------------------------------------
  */
+
+#include <postgres.h>
+
 #ifdef WIN32
 # include <limits.h>
 #else
@@ -201,7 +204,6 @@ cat > $TABCFILE <<FuNkYfMgRtAbStUfF
 # endif 
 #endif 
 
-#include <postgres.h>
 #include "utils/fmgrtab.h"
 
 FuNkYfMgRtAbStUfF
