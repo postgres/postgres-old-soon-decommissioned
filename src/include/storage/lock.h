@@ -100,13 +100,14 @@ typedef struct LOCKMETHODTABLE
  */
 typedef struct LOCKTAG
 {
-	Oid			relId;
+	Oid			objId;
+	Oid			classId;
 	Oid			dbId;
 	union
 	{
 		BlockNumber blkno;
 		TransactionId xid;
-	}			objId;
+	}			objsubId;
 
 	/*
 	 * offnum should be part of objId.tupleId above, but would increase
