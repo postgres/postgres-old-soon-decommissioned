@@ -1145,7 +1145,8 @@ IsPreferredType(CATEGORY category, Oid type)
  * invokable, no-function-needed pg_cast entry.  Also, a domain is always
  * binary-coercible to its base type, though *not* vice versa (in the other
  * direction, one must apply domain constraint checks before accepting the
- * value as legitimate).
+ * value as legitimate).  We also need to special-case the polymorphic
+ * ANYARRAY type.
  *
  * This function replaces IsBinaryCompatible(), which was an inherently
  * symmetric test.  Since the pg_cast entries aren't necessarily symmetric,
@@ -1169,6 +1170,11 @@ IsBinaryCoercible(Oid srctype, Oid targettype)
 	/* Somewhat-fast path for domain -> base type case */
 	if (srctype == targettype)
 		return true;
+
+	/* Also accept any array type as coercible to ANYARRAY */
+	if (targettype == ANYARRAYOID)
+		if (get_element_type(srctype) != InvalidOid)
+			return true;
 
 	/* Else look in pg_cast */
 	tuple = SearchSysCache(CASTSOURCETARGET,

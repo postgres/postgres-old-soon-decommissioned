@@ -530,6 +530,8 @@ extern bool SplitIdentifierString(char *rawstring, char separator,
 					  List **namelist);
 extern Datum replace_text(PG_FUNCTION_ARGS);
 extern Datum split_text(PG_FUNCTION_ARGS);
+extern Datum text_to_array(PG_FUNCTION_ARGS);
+extern Datum array_to_text(PG_FUNCTION_ARGS);
 extern Datum to_hex32(PG_FUNCTION_ARGS);
 extern Datum to_hex64(PG_FUNCTION_ARGS);
 extern Datum md5_text(PG_FUNCTION_ARGS);

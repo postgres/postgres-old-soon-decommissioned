@@ -743,7 +743,7 @@ transformExpr(ParseState *pstate, Node *expr)
 						ArrayExpr  *e = (ArrayExpr *) lfirst(element);
 
 						if (!IsA(e, ArrayExpr))
-							elog(ERROR, "Multi-dimensional ARRAY[] must be built from nested array expressions");
+							elog(ERROR, "Multidimensional ARRAY[] must be built from nested array expressions");
 						if (ndims == 0)
 							ndims = e->ndims;
 						else if (e->ndims != ndims)

@@ -1090,6 +1090,56 @@ get_typlenbyvalalign(Oid typid, int16 *typlen, bool *typbyval,
 	ReleaseSysCache(tp);
 }
 
+/*
+ * get_type_io_data
+ *
+ *		A six-fer:	given the type OID, return typlen, typbyval, typalign,
+ *					typdelim, typelem, and IO function OID. The IO function
+ *					returned is controlled by IOFuncSelector
+ */
+void
+get_type_io_data(Oid typid,
+				 IOFuncSelector which_func,
+				 int16 *typlen,
+				 bool *typbyval,
+				 char *typalign,
+				 char *typdelim,
+				 Oid *typelem,
+				 Oid *func)
+{
+	HeapTuple	typeTuple;
+	Form_pg_type typeStruct;
+
+	typeTuple = SearchSysCache(TYPEOID,
+							   ObjectIdGetDatum(typid),
+							   0, 0, 0);
+	if (!HeapTupleIsValid(typeTuple))
+		elog(ERROR, "cache lookup failed for type %u", typid);
+	typeStruct = (Form_pg_type) GETSTRUCT(typeTuple);
+
+	*typlen = typeStruct->typlen;
+	*typbyval = typeStruct->typbyval;
+	*typalign = typeStruct->typalign;
+	*typdelim = typeStruct->typdelim;
+	*typelem = typeStruct->typelem;
+	switch (which_func)
+	{
+		case IOFunc_input:
+			*func = typeStruct->typinput;
+			break;
+		case IOFunc_output:
+			*func = typeStruct->typoutput;
+			break;
+		case IOFunc_receive:
+			*func = typeStruct->typreceive;
+			break;
+		case IOFunc_send:
+			*func = typeStruct->typsend;
+			break;
+	}
+	ReleaseSysCache(typeTuple);
+}
+
 #ifdef NOT_USED
 char
 get_typalign(Oid typid)
