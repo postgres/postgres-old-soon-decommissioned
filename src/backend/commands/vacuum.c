@@ -1602,6 +1602,7 @@ vc_attrstats(Relation onerel, VacAttrStats *vacattrstats, HeapTuple htup)
 	    }
 	    if (stats->guess1_cnt > stats->best_cnt) {
 		swapDatum(stats->best,stats->guess1);
+		swapInt(stats->best_len,stats->guess1_len);
 		swapLong(stats->best_cnt,stats->guess1_cnt);
 		stats->guess1_hits = 1;
 		stats->	guess2_hits = 1;
