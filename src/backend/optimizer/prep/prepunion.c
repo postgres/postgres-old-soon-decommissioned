@@ -239,7 +239,7 @@ generate_union_plan(SetOperationStmt *op, Query *parse,
 		List	   *sortList;
 
 		tlist = copyObject(tlist);
-		sortList = addAllTargetsToSortList(NIL, tlist);
+		sortList = addAllTargetsToSortList(NULL, NIL, tlist, false);
 		plan = (Plan *) make_sort_from_sortclauses(parse, tlist,
 												   plan, sortList);
 		plan = (Plan *) make_unique(tlist, plan, sortList);
@@ -293,7 +293,7 @@ generate_nonunion_plan(SetOperationStmt *op, Query *parse,
 	 * correct output.
 	 */
 	tlist = copyObject(tlist);
-	sortList = addAllTargetsToSortList(NIL, tlist);
+	sortList = addAllTargetsToSortList(NULL, NIL, tlist, false);
 	plan = (Plan *) make_sort_from_sortclauses(parse, tlist, plan, sortList);
 	switch (op->op)
 	{

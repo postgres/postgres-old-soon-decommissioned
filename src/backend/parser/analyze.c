@@ -1793,7 +1793,8 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 	 */
 	qry->sortClause = transformSortClause(pstate,
 										  stmt->sortClause,
-										  qry->targetList);
+										  qry->targetList,
+										  true /* fix unknowns */);
 
 	qry->groupClause = transformGroupClause(pstate,
 											stmt->groupClause,
@@ -2002,7 +2003,8 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 
 	qry->sortClause = transformSortClause(pstate,
 										  sortClause,
-										  qry->targetList);
+										  qry->targetList,
+										  false /* no unknowns expected */);
 
 	pstate->p_namespace = sv_namespace;
 	pstate->p_rtable = sv_rtable;

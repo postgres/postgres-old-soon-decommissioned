@@ -583,7 +583,7 @@ create_unique_plan(Query *root, UniquePath *best_path)
 	{
 		List	   *sortList;
 
-		sortList = addAllTargetsToSortList(NIL, my_tlist);
+		sortList = addAllTargetsToSortList(NULL, NIL, my_tlist, false);
 		plan = (Plan *) make_sort_from_sortclauses(root, my_tlist,
 												   subplan, sortList);
 		plan = (Plan *) make_unique(my_tlist, plan, sortList);
