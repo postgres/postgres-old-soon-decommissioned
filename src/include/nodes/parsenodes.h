@@ -441,6 +441,16 @@ typedef struct ListenStmt
 } ListenStmt;
 
 /* ----------------------
+ *		Unlisten Statement
+ * ----------------------
+ */
+typedef struct UnlistenStmt
+{
+	NodeTag		type;
+	char	   *relname;		/* relation to unlisten on */
+} UnlistenStmt;
+
+/* ----------------------
  *		{Begin|Abort|End} Transaction Statement
  * ----------------------
  */

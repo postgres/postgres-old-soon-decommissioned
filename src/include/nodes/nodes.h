@@ -171,6 +171,7 @@ typedef enum NodeTag
 	T_RuleStmt,
 	T_NotifyStmt,
 	T_ListenStmt,
+	T_UnlistenStmt,
 	T_TransactionStmt,
 	T_ViewStmt,
 	T_LoadStmt,

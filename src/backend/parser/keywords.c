@@ -209,6 +209,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"type", TYPE_P},
 	{"union", UNION},
 	{"unique", UNIQUE},
+	{"unlisten", UNLISTEN},
 	{"until", UNTIL},
 	{"update", UPDATE},
 	{"user", USER},

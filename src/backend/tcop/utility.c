@@ -594,6 +594,17 @@ ProcessUtility(Node *parsetree,
 			}
 			break;
 
+		case T_UnlistenStmt:
+			{
+				UnlistenStmt *stmt = (UnlistenStmt *) parsetree;
+
+				PS_SET_STATUS( commandTag = "UNLISTEN" );
+				CHECK_IF_ABORTED();
+
+				Async_Unlisten(stmt->relname, MyProcPid);
+			}
+			break;
+
 			/*
 			 * ******************************** dynamic loader ********************************
 			 *
