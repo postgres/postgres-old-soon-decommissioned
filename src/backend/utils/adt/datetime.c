@@ -1120,6 +1120,8 @@ DecodeTimeOnly(char **field, int *ftype, int nf,
 		tmp->tm_sec = tm->tm_sec;
 
 #if defined(HAVE_TM_ZONE) || defined(HAVE_INT_TIMEZONE)
+		tmp->tm_year -= 1900;
+		tmp->tm_mon -= 1;
 		tmp->tm_isdst = -1;
 		mktime(tmp);
 		tm->tm_isdst = tmp->tm_isdst;
