@@ -117,7 +117,7 @@ inet_net_pton_ipv4(const char *src, u_char *dst, size_t size)
 			*dst |= n;
 			if (!dirty++)
 				*dst <<= 4;
-			else if (size-- > 0)
+			else if (--size > 0)
 				*++dst = 0, dirty = 0;
 			else
 				goto emsgsize;
