@@ -23,6 +23,10 @@ ifndef DOCBOOKSTYLE
 DOCBOOKSTYLE = /home/projects/pgsql/developers/thomas/db162.d/docbook
 endif
 
+ifndef DOCBOOKINDEX
+  DOCBOOKINDEX = $(DOCBOOKSTYLE)/bin/collateindex.pl
+endif
+
 ifndef JADE
 JADE = jade
 endif
@@ -96,7 +100,7 @@ programmer.html: catalogs.gif connections.gif
 postgres.html: catalogs.gif connections.gif
 
 
-COLLATEINDEX = $(PERL) $(DOCBOOKSTYLE)/bin/collateindex.pl -f -g -t 'Index'
+COLLATEINDEX = $(PERL) $(DOCBOOKINDEX) -f -g -t 'Index'
 
 ifeq (,$(wildcard HTML.index))
 bookindex.sgml:
