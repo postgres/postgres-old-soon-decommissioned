@@ -28,6 +28,7 @@
 
 (define %refentry-xref-manvolnum% #f)
 (define %callout-graphics% #f)
+(define %show-comments% #f)
 
 (define %content-title-end-punct% 
   '(#\. #\! #\? #\:))
@@ -45,6 +46,7 @@
 (define %html-ext%              ".html")
 (define %link-mailto-url%       (string-append "mailto:" pgsql-docs-list))
 (define %use-id-as-filename%    #t)
+(define %stylesheet%            "stylesheet.css")
 
 ;; Returns the depth of auto TOC that should be made at the nd-level
 (define (toc-depth nd)
@@ -53,6 +55,12 @@
 	((string=? (gi nd) (normalize "part")) 2)
 	((string=? (gi nd) (normalize "chapter")) 2)
 	(else 1)))
+
+;; Put a horizontal line in the set TOC
+(define (set-titlepage-separator side)
+  (if (equal? side 'recto)
+      (make empty-element gi: "HR")
+      (empty-sosofo)))
 
 ;; Put date of creation into header
 (define %html-header-tags% 
