@@ -96,7 +96,6 @@ extern void AttachSLockMemory(IPCKey key);
 
 #ifdef HAS_TEST_AND_SET
 
-#define NSLOCKS			2048
 #define NOLOCK			0
 #define SHAREDLOCK		1
 #define EXCLUSIVELOCK	2

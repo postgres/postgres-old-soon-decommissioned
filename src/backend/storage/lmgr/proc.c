@@ -154,23 +154,28 @@ InitProcGlobal(IPCKey key, int maxBackends)
 		 */
 		on_shmem_exit(ProcFreeAllSemaphores, NULL);
 
-		/* Pre-create the semaphores for the first maxBackends processes */
-		for (i = 0;
-			 i < (maxBackends+PROC_NSEMS_PER_SET-1) / PROC_NSEMS_PER_SET;
-			 i++)
+		/* Pre-create the semaphores for the first maxBackends processes,
+		 * unless we are running as a standalone backend.
+		 */
+		if (key != PrivateIPCKey)
 		{
-			IPCKey		semKey = ProcGlobal->currKey + i;
-			int			semId;
-			int			semstat;
+			for (i = 0;
+				 i < (maxBackends+PROC_NSEMS_PER_SET-1) / PROC_NSEMS_PER_SET;
+				 i++)
+			{
+				IPCKey		semKey = ProcGlobal->currKey + i;
+				int			semId;
+				int			semstat;
 
-			semId = IpcSemaphoreCreate(semKey,
-									   PROC_NSEMS_PER_SET,
-									   IPCProtection,
-									   IpcSemaphoreDefaultStartValue,
-									   0,
-									   &semstat);
-			/* mark this sema set allocated */
-			ProcGlobal->freeSemMap[i] = (1 << PROC_NSEMS_PER_SET);
+				semId = IpcSemaphoreCreate(semKey,
+										   PROC_NSEMS_PER_SET,
+										   IPCProtection,
+										   IpcSemaphoreDefaultStartValue,
+										   0,
+										   &semstat);
+				/* mark this sema set allocated */
+				ProcGlobal->freeSemMap[i] = (1 << PROC_NSEMS_PER_SET);
+			}
 		}
 	}
 }
