@@ -99,7 +99,7 @@ typedef struct {
 #define MONTH	1
 #define YEAR	2
 #define DAY	3
-#define TIME	4
+#define TIMES	4	/* not used - thomas 1997-07-14 */
 #define TZ	5
 #define DTZ	6
 #define DTZMOD	7
