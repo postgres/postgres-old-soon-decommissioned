@@ -88,7 +88,7 @@ Complete list of usable sgml source files in this directory.
 <!entity notify             system "notify.sgml">
 <!entity prepare            system "prepare.sgml">
 <!entity reindex            system "reindex.sgml">
-<!entity releaseSavepoint   system "release.sgml">
+<!entity releaseSavepoint   system "release_savepoint.sgml">
 <!entity reset              system "reset.sgml">
 <!entity revoke             system "revoke.sgml">
 <!entity rollback           system "rollback.sgml">
