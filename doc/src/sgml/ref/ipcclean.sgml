@@ -15,6 +15,10 @@ PostgreSQL documentation
   <refpurpose>remove shared memory and semaphores from an aborted <productname>PostgreSQL</productname> server</refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-ipcclean">
+  <primary>ipcclean</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>ipcclean</command>

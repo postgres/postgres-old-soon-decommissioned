@@ -15,6 +15,10 @@
   </refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-pgrestore">
+  <primary>pg_restore</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>pg_restore</command>

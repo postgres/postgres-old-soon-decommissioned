@@ -5,6 +5,10 @@ $Header$
  <chapter id="xplang">
   <title id="xplang-title">Procedural Languages</title>
 
+  <indexterm zone="xplang">
+   <primary>procedural language</primary>
+  </indexterm>
+
   <para>
    <productname>PostgreSQL</productname> allows users to add new
    programming languages to be available for writing functions and

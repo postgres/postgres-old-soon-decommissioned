@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>define a cursor</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-declare">
+  <primary>DECLARE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DECLARE <replaceable class="parameter">cursorname</replaceable> [ BINARY ] [ INSENSITIVE ] [ [ NO ] SCROLL ]

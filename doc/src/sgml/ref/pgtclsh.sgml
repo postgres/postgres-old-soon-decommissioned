@@ -17,6 +17,10 @@ PostgreSQL documentation
   </refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-pgtclsh">
+  <primary>pgtclsh</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>pgtclsh</command>

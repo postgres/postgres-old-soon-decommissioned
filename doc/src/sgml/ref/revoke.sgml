@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>remove access privileges</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-revoke">
+  <primary>REVOKE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 REVOKE [ GRANT OPTION FOR ]

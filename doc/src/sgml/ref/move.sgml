@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>reposition a cursor</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-move">
+  <primary>MOVE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 MOVE [ <replaceable class="PARAMETER">direction</replaceable> { FROM | IN } ] <replaceable class="PARAMETER">cursor</replaceable>

@@ -10,6 +10,10 @@
   <refpurpose>set the characteristics of the current transaction</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-set-transaction">
+  <primary>SET TRANSACTION</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 SET TRANSACTION

@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>close a cursor</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-close">
+  <primary>CLOSE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CLOSE <replaceable class="PARAMETER">cursor</replaceable>

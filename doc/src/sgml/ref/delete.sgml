@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>delete rows of a table</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-delete">
+  <primary>DELETE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DELETE FROM [ ONLY ] <replaceable class="PARAMETER">table</replaceable> [ WHERE <replaceable class="PARAMETER">condition</replaceable> ]

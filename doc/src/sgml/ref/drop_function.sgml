@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>remove a user-defined function</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-dropfunction">
+  <primary>DROP FUNCTION</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DROP FUNCTION <replaceable class="parameter">name</replaceable> ( [ <replaceable class="parameter">type</replaceable> [, ...] ] ) [ CASCADE | RESTRICT ]

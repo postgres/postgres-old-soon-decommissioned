@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>cluster a table according to an index</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-cluster">
+  <primary>CLUSTER</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CLUSTER <replaceable class="PARAMETER">indexname</replaceable> ON <replaceable class="PARAMETER">tablename</replaceable>

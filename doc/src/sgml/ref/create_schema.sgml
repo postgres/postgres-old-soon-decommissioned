@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>define a new schema</refpurpose>
  </refnamediv> 
 
+ <indexterm zone="sql-createschema">
+  <primary>CREATE SCHEMA</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CREATE SCHEMA <replaceable class="parameter">schemaname</replaceable> [ AUTHORIZATION <replaceable class="parameter">username</replaceable> ] [ <replaceable class="parameter">schema_element</replaceable> [ ... ] ]

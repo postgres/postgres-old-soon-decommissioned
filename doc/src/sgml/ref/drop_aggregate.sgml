@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>remove a user-defined aggregate function</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-dropaggregate">
+  <primary>DROP AGGREGATE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DROP AGGREGATE <replaceable class="PARAMETER">name</replaceable> ( <replaceable class="PARAMETER">type</replaceable> ) [ CASCADE | RESTRICT ]

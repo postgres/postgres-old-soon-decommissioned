@@ -12,6 +12,10 @@
   <refpurpose>retrieve information about the installed version of <productname>PostgreSQL</></refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-pgconfig">
+  <primary>pg_config</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>pg_config</command>

@@ -15,6 +15,10 @@ PostgreSQL documentation
   <refpurpose>define a new <productname>PostgreSQL</productname> user account</refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-createuser">
+  <primary>createuser</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>createuser</command>

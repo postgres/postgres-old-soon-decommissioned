@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>define a new domain</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-createdomain">
+  <primary>CREATE DOMAIN</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CREATE DOMAIN <replaceable class="parameter">domainname</replaceable> [AS] <replaceable class="parameter">data_type</replaceable>

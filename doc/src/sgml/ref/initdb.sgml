@@ -15,6 +15,10 @@ PostgreSQL documentation
   <refpurpose>create a new <productname>PostgreSQL</productname> database cluster</refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-initdb">
+  <primary>initdb</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>initdb</command>

@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>define access privileges</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-grant">
+  <primary>GRANT</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 GRANT { { SELECT | INSERT | UPDATE | DELETE | RULE | REFERENCES | TRIGGER }

@@ -11,6 +11,10 @@
   <refpurpose>define a user-defined cast</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-createcast">
+  <primary>CREATE CAST</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CREATE CAST (<replaceable>sourcetype</replaceable> AS <replaceable>targettype</replaceable>)

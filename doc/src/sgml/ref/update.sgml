@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>update rows of a table</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-update">
+  <primary>UPDATE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 UPDATE [ ONLY ] <replaceable class="PARAMETER">table</replaceable> SET <replaceable class="PARAMETER">column</replaceable> = { <replaceable class="PARAMETER">expression</replaceable> | DEFAULT } [, ...]

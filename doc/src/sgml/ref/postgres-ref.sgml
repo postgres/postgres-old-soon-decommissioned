@@ -15,6 +15,10 @@ PostgreSQL documentation
   <refpurpose>run a <productname>PostgreSQL</productname> server in single-user mode</refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-postgres">
+  <primary>postgres (the program)</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <!-- standalone call -->

@@ -142,7 +142,7 @@ ERROR:  &lt;unnamed&gt; referential integrity violation - key referenced from we
    <title>Transactions</title>
 
    <indexterm zone="tutorial-transactions">
-    <primary>transactions</primary>
+    <primary>transaction</primary>
    </indexterm>
 
    <para>

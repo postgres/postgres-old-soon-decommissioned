@@ -5,6 +5,11 @@ $Header$
 <sect1 id="xindex">
  <title>Interfacing Extensions To Indexes</title>
 
+ <indexterm zone="xindex">
+  <primary>index</primary>
+  <secondary>for user-defined data type</secondary>
+ </indexterm>
+
   <para>
    The procedures described thus far let you define new types, new
    functions, and new operators. However, we cannot yet define an
@@ -43,15 +48,18 @@ $Header$
 
   <para>
    The routines for an index method do not directly know anything
-   about the data types that the index method will operate on.  Instead, an
-   <firstterm>operator class</> identifies the set of operations that the
-   index method needs to use to work with a particular data type.
-   Operator classes are so called because one thing they specify is the set
-   of <literal>WHERE</>-clause operators that can be used with an index (i.e., can be
-   converted into an index-scan qualification).  An operator class may also
-   specify some <firstterm>support procedures</> that are needed by the
-   internal operations of the index method, but do not directly
-   correspond to any <literal>WHERE</>-clause operator that can be used with the index.
+   about the data types that the index method will operate on.
+   Instead, an <firstterm>operator
+   class</><indexterm><primary>operator class</></indexterm>
+   identifies the set of operations that the index method needs to use
+   to work with a particular data type.  Operator classes are so
+   called because one thing they specify is the set of
+   <literal>WHERE</>-clause operators that can be used with an index
+   (i.e., can be converted into an index-scan qualification).  An
+   operator class may also specify some <firstterm>support
+   procedures</> that are needed by the internal operations of the
+   index method, but do not directly correspond to any
+   <literal>WHERE</>-clause operator that can be used with the index.
   </para>
 
   <para>

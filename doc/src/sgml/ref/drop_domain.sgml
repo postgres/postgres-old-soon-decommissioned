@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>remove a domain</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-dropdomain">
+  <primary>DROP DOMAIN</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DROP DOMAIN <replaceable class="PARAMETER">domainname</replaceable> [, ...]  [ CASCADE | RESTRICT ]

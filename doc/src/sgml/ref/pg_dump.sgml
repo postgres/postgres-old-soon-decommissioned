@@ -18,6 +18,10 @@ PostgreSQL documentation
   </refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-pgdump">
+  <primary>pg_dump</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>pg_dump</command>

@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>change a database</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-alterdatabase">
+  <primary>ALTER DATABASE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 ALTER DATABASE <replaceable class="PARAMETER">name</replaceable> SET <replaceable>variable</replaceable> { TO | = } { <replaceable>value</replaceable> | DEFAULT }

@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>remove a user-defined operator</refpurpose>
  </refnamediv>
   
+ <indexterm zone="sql-dropoperator">
+  <primary>DROP OPERATOR</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DROP OPERATOR <replaceable class="PARAMETER">name</replaceable> ( <replaceable class="PARAMETER">lefttype</replaceable> | NONE , <replaceable class="PARAMETER">righttype</replaceable> | NONE ) [ CASCADE | RESTRICT ]

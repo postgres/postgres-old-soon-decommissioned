@@ -15,6 +15,10 @@ PostgreSQL documentation
   <refpurpose>start, stop, or restart a <productname>PostgreSQL</productname> server</refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-pg-ctl">
+  <primary>pg_ctl</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>pg_ctl</command>

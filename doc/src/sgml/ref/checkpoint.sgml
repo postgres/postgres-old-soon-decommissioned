@@ -11,6 +11,10 @@
   <refpurpose>force a transaction log checkpoint</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-checkpoint">
+  <primary>CHECKPOINT</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CHECKPOINT

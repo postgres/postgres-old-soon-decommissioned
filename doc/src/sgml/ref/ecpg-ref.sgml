@@ -15,6 +15,10 @@ PostgreSQL documentation
   <refpurpose>embedded SQL C preprocessor</refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-ecpg">
+  <primary>ecpg</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>ecpg</command>

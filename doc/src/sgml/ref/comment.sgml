@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>define or change the comment of an object</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-comment">
+  <primary>COMMENT</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 COMMENT ON

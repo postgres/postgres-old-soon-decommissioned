@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>change the definition of a trigger</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-altertrigger">
+  <primary>ALTER TRIGGER</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 ALTER TRIGGER <replaceable class="PARAMETER">trigger</replaceable> ON <replaceable class="PARAMETER">table</replaceable>

@@ -15,6 +15,10 @@ PostgreSQL documentation
   <refpurpose>define a new <productname>PostgreSQL</productname> procedural language</refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-createlang">
+  <primary>createlang</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>createlang</command>

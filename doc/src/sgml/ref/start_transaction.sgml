@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>start a transaction block</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-start-transaction">
+  <primary>START TRANSACTION</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 START TRANSACTION [ ISOLATION LEVEL { READ COMMITTED | SERIALIZABLE } ] [ READ WRITE | READ ONLY ]

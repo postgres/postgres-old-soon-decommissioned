@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>define a new view</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-createview">
+  <primary>CREATE VIEW</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CREATE [ OR REPLACE ] VIEW <replaceable class="PARAMETER">name</replaceable> [ ( <replaceable

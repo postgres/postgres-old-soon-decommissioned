@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>define a new rewrite rule</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-createrule">
+  <primary>CREATE RULE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CREATE [ OR REPLACE ] RULE <replaceable class="parameter">name</replaceable> AS ON <replaceable class="parameter">event</replaceable>

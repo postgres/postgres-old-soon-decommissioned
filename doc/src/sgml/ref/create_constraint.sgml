@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>define a new constraint trigger</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-createconstraint">
+  <primary>CREATE CONSTRAINT</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CREATE CONSTRAINT TRIGGER <replaceable class="parameter">name</replaceable>

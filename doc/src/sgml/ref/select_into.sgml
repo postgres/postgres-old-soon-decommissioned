@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>create a new table from the results of a query</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-selectinto">
+  <primary>SELECT INTO</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 SELECT [ ALL | DISTINCT [ ON ( <replaceable class="PARAMETER">expression</replaceable> [, ...] ) ] ]

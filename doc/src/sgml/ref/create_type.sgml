@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>define a new data type</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-createtype">
+  <primary>CREATE TYPE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CREATE TYPE <replaceable class="parameter">typename</replaceable> AS

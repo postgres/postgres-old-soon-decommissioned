@@ -15,6 +15,10 @@ PostgreSQL documentation
   <refpurpose>remove a <productname>PostgreSQL</productname> user account</refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-dropuser">
+  <primary>dropuser</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>dropuser</command>

@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>remove a schema</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-dropschema">
+  <primary>DROP SCHEMA</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DROP SCHEMA <replaceable class="PARAMETER">name</replaceable> [, ...] [ CASCADE | RESTRICT ]

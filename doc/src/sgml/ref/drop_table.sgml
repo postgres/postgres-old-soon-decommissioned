@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>remove a table</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-droptable">
+  <primary>DROP TABLE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DROP TABLE <replaceable class="PARAMETER">name</replaceable> [, ...] [ CASCADE | RESTRICT ]

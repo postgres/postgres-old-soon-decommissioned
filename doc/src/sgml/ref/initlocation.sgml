@@ -15,6 +15,10 @@ PostgreSQL documentation
   <refpurpose>create a secondary <productname>PostgreSQL</productname> database storage area</refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-initlocation">
+  <primary>initlocation</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>initlocation</command>

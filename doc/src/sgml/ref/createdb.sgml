@@ -15,6 +15,10 @@ PostgreSQL documentation
   <refpurpose>create a new <productname>PostgreSQL</productname> database</refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-createdb">
+  <primary>createdb</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>createdb</command>

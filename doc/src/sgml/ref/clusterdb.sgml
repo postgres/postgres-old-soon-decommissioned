@@ -15,6 +15,10 @@ PostgreSQL documentation
   <refpurpose>cluster a <productname>PostgreSQL</productname> database</refpurpose>
  </refnamediv>
 
+ <indexterm zone="app-clusterdb">
+  <primary>clusterdb</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>clusterdb</command>

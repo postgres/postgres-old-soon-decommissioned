@@ -10,6 +10,10 @@
   <refpurpose>set the session user identifier and the current user identifier of the current session</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-set-session-authorization">
+  <primary>SET SESSION AUTHORIZATION</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 SET [ SESSION | LOCAL ] SESSION AUTHORIZATION <replaceable class="parameter">username</replaceable>

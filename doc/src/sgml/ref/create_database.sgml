@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>create a new database</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-createdatabase">
+  <primary>CREATE DATABASE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CREATE DATABASE <replaceable class="PARAMETER">name</replaceable>

@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>change a user group</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-altergroup">
+  <primary>ALTER GROUP</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 ALTER GROUP <replaceable class="PARAMETER">groupname</replaceable> ADD USER <replaceable class="PARAMETER">username</replaceable> [, ... ]

@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>retrieve rows from a table or view</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-select">
+  <primary>SELECT</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 SELECT [ ALL | DISTINCT [ ON ( <replaceable class="parameter">expression</replaceable> [, ...] ) ] ]

@@ -8,6 +8,7 @@ PostgreSQL documentation
   <refentrytitle id="sql-alterdomain-title">ALTER DOMAIN</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
+
  <refnamediv>
   <refname>
    ALTER DOMAIN
@@ -16,6 +17,11 @@ PostgreSQL documentation
    change the definition of a domain
   </refpurpose>
  </refnamediv>
+
+ <indexterm zone="sql-alterdomain">
+  <primary>ALTER DOMAIN</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <refsynopsisdivinfo>
    <date>2002-11-27</date>

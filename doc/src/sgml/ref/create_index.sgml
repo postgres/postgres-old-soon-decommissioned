@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>define a new index</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-createindex">
+  <primary>CREATE INDEX</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CREATE [ UNIQUE ] INDEX <replaceable class="parameter">index_name</replaceable> ON <replaceable class="parameter">table</replaceable> [ USING <replaceable class="parameter">method</replaceable> ]

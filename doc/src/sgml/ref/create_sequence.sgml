@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>define a new sequence generator</refpurpose>
  </refnamediv> 
 
+ <indexterm zone="sql-createsequence">
+  <primary>CREATE SEQUENCE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CREATE [ TEMPORARY | TEMP ] SEQUENCE <replaceable class="parameter">seqname</replaceable> [ INCREMENT [ BY ] <replaceable class="parameter">increment</replaceable> ]

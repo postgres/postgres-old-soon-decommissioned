@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>garbage-collect and optionally analyze a database</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-vacuum">
+  <primary>VACUUM</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 VACUUM [ FULL ] [ FREEZE ] [ VERBOSE ] [ <replaceable class="PARAMETER">table</replaceable> ]

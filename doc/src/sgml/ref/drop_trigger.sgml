@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>remove a trigger</refpurpose> 
  </refnamediv>            
 
+ <indexterm zone="sql-droptrigger">
+  <primary>DROP TRIGGER</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DROP TRIGGER <replaceable class="PARAMETER">name</replaceable> ON <replaceable class="PARAMETER">table</replaceable> [ CASCADE | RESTRICT ]

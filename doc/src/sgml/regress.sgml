@@ -3,6 +3,14 @@
  <chapter id="regress">
   <title id="regress-title">Regression Tests</title>
 
+  <indexterm zone="regress">
+   <primary>regression tests</primary>
+  </indexterm>
+
+  <indexterm zone="regress">
+   <primary>test</primary>
+  </indexterm>
+
   <para>
    The regression tests are a comprehensive set of tests for the SQL
    implementation in <productname>PostgreSQL</productname>.  They test

@@ -13,6 +13,10 @@ $Header$
   <refpurpose>load or reload a shared library file</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-load">
+  <primary>LOAD</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 LOAD '<replaceable class="PARAMETER">filename</replaceable>'

@@ -17,6 +17,10 @@ PostgreSQL documentation
     </refpurpose>
   </refnamediv>
 
+ <indexterm zone="app-psql">
+  <primary>psql</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>psql</command>

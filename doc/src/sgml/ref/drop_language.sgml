@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>remove a user-defined procedural language</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-droplanguage">
+  <primary>DROP LANGUAGE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DROP [ PROCEDURAL ] LANGUAGE <replaceable class="PARAMETER">name</replaceable> [ CASCADE | RESTRICT ]

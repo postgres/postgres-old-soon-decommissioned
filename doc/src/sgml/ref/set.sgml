@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>change a run-time parameter</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-set">
+  <primary>SET</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 SET [ SESSION | LOCAL ] <replaceable class="PARAMETER">variable</replaceable> { TO | = } { <replaceable class="PARAMETER">value</replaceable> | '<replaceable class="PARAMETER">value</replaceable>' | DEFAULT }

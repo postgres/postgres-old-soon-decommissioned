@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>prepare a statement for execution</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-prepare">
+  <primary>PREPARE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 PREPARE <replaceable class="PARAMETER">plan_name</replaceable> [ (<replaceable class="PARAMETER">datatype</replaceable> [, ...] ) ] AS <replaceable class="PARAMETER">statement</replaceable>

@@ -8,6 +8,7 @@ PostgreSQL documentation
   <refentrytitle id="SQL-ALTERSEQUENCE-TITLE">ALTER SEQUENCE</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
+
  <refnamediv>
   <refname>
    ALTER SEQUENCE
@@ -16,6 +17,11 @@ PostgreSQL documentation
    alter the definition of a sequence generator
   </refpurpose>
  </refnamediv> 
+
+ <indexterm zone="sql-altersequence">
+  <primary>ALTER SEQUENCE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
   <refsynopsisdivinfo>
    <date>1999-07-20</date>

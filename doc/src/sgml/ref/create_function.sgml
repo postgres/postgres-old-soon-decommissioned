@@ -13,6 +13,10 @@ $Header$
   <refpurpose>define a new function</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-createfunction">
+  <primary>CREATE FUNCTION</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CREATE [ OR REPLACE ] FUNCTION <replaceable class="parameter">name</replaceable> ( [ <replaceable class="parameter">argtype</replaceable> [, ...] ] )

@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>define a new aggregate function</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-createaggregate">
+  <primary>CREATE AGGREGATE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CREATE AGGREGATE <replaceable class="PARAMETER">name</replaceable> (

@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>remove a database</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-dropdatabase">
+  <primary>DROP DATABASE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DROP DATABASE <replaceable class="PARAMETER">name</replaceable>

@@ -11,6 +11,10 @@
   <refpurpose>remove a user-defined cast</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-dropcast">
+  <primary>DROP CAST</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DROP CAST (<replaceable>sourcetype</replaceable> AS <replaceable>targettype</replaceable>) [ CASCADE | RESTRICT ]

@@ -10,6 +10,10 @@
   <refpurpose>set the constraint mode of the current transaction</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-set-constraints">
+  <primary>SET CONSTRAINTS</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 SET CONSTRAINTS { ALL | <replaceable class="parameter">constraint</replaceable> [, ...] } { DEFERRED | IMMEDIATE }

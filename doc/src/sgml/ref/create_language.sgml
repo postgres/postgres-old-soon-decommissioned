@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>define a new procedural language</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-createlanguage">
+  <primary>CREATE LANGUAGE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CREATE [ TRUSTED ] [ PROCEDURAL ] LANGUAGE <replaceable class="parameter">langname</replaceable>

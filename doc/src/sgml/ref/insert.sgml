@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>create new rows in a table</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-insert">
+  <primary>INSERT</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 INSERT INTO <replaceable class="PARAMETER">table</replaceable> [ ( <replaceable class="PARAMETER">column</replaceable> [, ...] ) ]

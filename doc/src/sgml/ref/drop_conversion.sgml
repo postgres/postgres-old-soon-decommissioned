@@ -11,6 +11,10 @@
   <refpurpose>remove a user-defined conversion</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-dropconversion">
+  <primary>DROP CONVERSION</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DROP CONVERSION <replaceable>conversion_name</replaceable> [ CASCADE | RESTRICT ]

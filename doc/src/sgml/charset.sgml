@@ -197,7 +197,7 @@ initdb --locale=sv_SE
      <listitem>
       <para>
        Sort order in queries using <command>ORDER BY</>
-       <indexterm><primary>ORDER BY</></>
+       <indexterm><primary>ORDER BY</><secondary>and locales</></indexterm>
       </para>
      </listitem>
 

@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>remove a user-defined data type</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-droptype">
+  <primary>DROP TYPE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DROP TYPE <replaceable class="PARAMETER">typename</replaceable> [, ...] [ CASCADE | RESTRICT ]

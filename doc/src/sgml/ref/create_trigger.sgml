@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>define a new trigger</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-createtrigger">
+  <primary>CREATE TRIGGER</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 CREATE TRIGGER <replaceable class="PARAMETER">name</replaceable> { BEFORE | AFTER } { <replaceable class="PARAMETER">event</replaceable> [ OR ... ] }

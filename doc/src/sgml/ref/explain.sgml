@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>show the execution plan of a statement</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-explain">
+  <primary>EXPLAIN</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 EXPLAIN [ ANALYZE ] [ VERBOSE ] <replaceable class="parameter">statement</replaceable>

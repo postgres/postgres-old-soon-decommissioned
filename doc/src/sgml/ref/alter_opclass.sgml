@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>change the definition of an operator class</refpurpose>
  </refnamediv>  
   
+ <indexterm zone="sql-alteropclass">
+  <primary>ALTER OPERATOR CLASS</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 ALTER OPERATOR CLASS <replaceable>name</replaceable> USING <replaceable class="parameter">index_method</replaceable> RENAME TO <replaceable>newname</replaceable>

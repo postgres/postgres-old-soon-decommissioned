@@ -14,6 +14,10 @@ PostgreSQL documentation
   <refpurpose>change the definition of a table</refpurpose>
  </refnamediv>
 
+ <indexterm zone="sql-altertable">
+  <primary>ALTER TABLE</primary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 ALTER TABLE [ ONLY ] <replaceable class="PARAMETER">table</replaceable> [ * ]
