@@ -71,7 +71,9 @@ $Header$
 
     A before trigger that does not intend to cause either of these
     behaviors must be careful to return as its result the same row that was
-    passed in.
+    passed in (that is, the NEW row for <command>INSERT</command> and
+    <command>UPDATE</command> triggers, the OLD row for
+    <command>DELETE</command> triggers).
    </para>
 
    <para>
