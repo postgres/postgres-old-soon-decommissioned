@@ -574,7 +574,7 @@ SetDatabaseEncoding(int encoding)
 }
 
 void
-SetDefaultClientEncoding()
+SetDefaultClientEncoding(void)
 {
 	ClientEncoding = &pg_enc2name_tbl[GetDatabaseEncoding()];
 }

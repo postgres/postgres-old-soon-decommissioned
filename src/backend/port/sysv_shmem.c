@@ -143,7 +143,7 @@ InternalIpcMemoryCreate(IpcMemoryKey memKey, uint32 size)
 #ifdef EXEC_BACKEND
 	memAddress = shmat(shmid, UsedShmemSegAddr, 0);
 #else
-	memAddress = shmat(shmid, 0, 0);
+	memAddress = shmat(shmid, NULL, 0);
 #endif
 #endif
 

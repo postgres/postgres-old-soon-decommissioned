@@ -129,23 +129,25 @@ typedef struct
 				type;			/* prefix / postfix			*/
 } KeySuffix;
 
+typedef struct FormatNode FormatNode;
+
 typedef struct
 {
 	char	   *name;			/* keyword			*/
 	/* action for keyword		*/
 	int			len,			/* keyword length		*/
-				(*action) (),
+				(*action) (int arg, char *inout, int suf, int flag, FormatNode *node, void *data),
 				id;				/* keyword id			*/
 	bool		isitdigit;		/* is expected output/input digit */
 } KeyWord;
 
-typedef struct
+struct FormatNode
 {
 	int			type;			/* node type			*/
 	KeyWord    *key;			/* if node type is KEYWORD	*/
 	int			character,		/* if node type is CHAR		*/
 				suffix;			/* keyword suffix		*/
-} FormatNode;
+};
 
 #define NODE_TYPE_END		1
 #define NODE_TYPE_ACTION	2
