@@ -354,8 +354,7 @@ PortalDrop(Portal portal, bool isTopCommit)
 		ResourceOwnerRelease(portal->resowner,
 							 RESOURCE_RELEASE_AFTER_LOCKS,
 							 isCommit, false);
-		if (!isCommit)
-			ResourceOwnerDelete(portal->resowner);
+		ResourceOwnerDelete(portal->resowner);
 	}
 	portal->resowner = NULL;
 
