@@ -4,6 +4,8 @@
 #include <math.h>
 #include <errno.h>
 
+#include "config.h"
+
 long
 random()
 {
