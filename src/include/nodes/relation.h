@@ -142,8 +142,7 @@ typedef struct Path
 
 	PathOrder	*pathorder;
 
-	List	    *pathkeys;	/*
-							 * This is a List of List of Var nodes.
+	List	    *pathkeys;	/* This is a List of List of Var nodes.
 							 * See the top of optimizer/path/pathkeys.c
 							 * for more information.
 							 */							   
