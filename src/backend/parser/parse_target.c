@@ -56,7 +56,7 @@ transformTargetEntry(ParseState *pstate,
 		expr = transformExpr(pstate, node, EXPR_COLUMN_FIRST);
 
 	if (IsA(expr, Ident) && ((Ident *)expr)->isRel)
-		elog(ERROR,"You can't use relation names alone in the target list, try relation.*.");
+		elog(ERROR,"You can't use relation names alone in the target list, try relation.*.");	
 
 	type_id = exprType(expr);
 	type_mod = exprTypmod(expr);
@@ -311,9 +311,7 @@ CoerceTargetExpr(ParseState *pstate,
 	 * string hacks to get transparent conversions w/o explicit
 	 * conversions
 	 */
-	else if (attrtype == BPCHAROID ||
-			 attrtype == VARCHAROID ||
-			 attrtype == BYTEAOID)
+	else if ((attrtype == BPCHAROID) || (attrtype == VARCHAROID))
 	{
 		Oid			text_id = TEXTOID;
 

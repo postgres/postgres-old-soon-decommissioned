@@ -470,7 +470,6 @@ TypeCategory(Oid inType)
 
 		case (CHAROID):
 		case (NAMEOID):
-		case (BYTEAOID):
 		case (BPCHAROID):
 		case (VARCHAROID):
 		case (TEXTOID):
@@ -615,7 +614,6 @@ PromoteTypeToNext(Oid inType)
 			result = VARCHAROID;
 			break;
 
-		case (BYTEAOID):
 		case (VARCHAROID):
 			result = TEXTOID;
 			break;
@@ -710,7 +708,6 @@ PromoteLesserType(Oid inType1, Oid inType2, Oid *newType1, Oid *newType2)
 			case (CHAROID):
 				switch (*arg2)
 				{
-					case (BYTEAOID):
 					case (BPCHAROID):
 					case (VARCHAROID):
 					case (TEXTOID):
@@ -775,7 +772,6 @@ PromoteLesserType(Oid inType1, Oid inType2, Oid *newType1, Oid *newType2)
 		case (CHAROID):
 			switch (*arg2)
 			{
-				case (BYTEAOID):
 				case (BPCHAROID):
 				case (VARCHAROID):
 				case (TEXTOID):
