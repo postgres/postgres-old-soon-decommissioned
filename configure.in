@@ -669,7 +669,7 @@ if test "$with_python" = yes; then
 fi
 
 
-v##
+##
 ## Libraries
 ##
 
