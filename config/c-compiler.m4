@@ -54,9 +54,11 @@ main() {
 }],
 [Ac_cachevar=yes],
 [Ac_cachevar=no],
-[Ac_cachevar=no
-dnl We will do better here with Autoconf 2.50
-AC_MSG_WARN([64 bit arithmetic disabled when cross-compiling])])])
+[# If cross-compiling, check the size reported by the compiler and
+# trust that the arithmetic works.
+AC_COMPILE_IFELSE([AC_LANG_BOOL_COMPILE_TRY([], [sizeof($1) == 8])],
+                  Ac_cachevar=yes,
+                  Ac_cachevar=no)])])
 
 Ac_define=$Ac_cachevar
 if test x"$Ac_cachevar" = xyes ; then
