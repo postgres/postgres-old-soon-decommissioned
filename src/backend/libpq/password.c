@@ -34,7 +34,7 @@ verify_password(char *auth_arg, char *user, char *password)
 #endif
 	if (!pw_file)
 	{
-		snprintf(PQerrormsg, ERROR_MSG_LENGTH,
+		snprintf(PQerrormsg, PQERRORMSG_LENGTH,
 				 "verify_password: couldn't open password file '%s'\n",
 				 pw_file_fullname);
 		fputs(PQerrormsg, stderr);
@@ -79,7 +79,7 @@ verify_password(char *auth_arg, char *user, char *password)
 				return STATUS_OK;
 			}
 
-			snprintf(PQerrormsg, ERROR_MSG_LENGTH,
+			snprintf(PQerrormsg, PQERRORMSG_LENGTH,
 					 "verify_password: password mismatch for '%s'.\n",
 					 user);
 			fputs(PQerrormsg, stderr);
@@ -91,7 +91,7 @@ verify_password(char *auth_arg, char *user, char *password)
 		}
 	}
 
-	snprintf(PQerrormsg, ERROR_MSG_LENGTH,
+	snprintf(PQerrormsg, PQERRORMSG_LENGTH,
 			 "verify_password: user '%s' not found in password file.\n",
 			 user);
 	fputs(PQerrormsg, stderr);

@@ -135,15 +135,15 @@ extern Exception MemoryError,
 			ProtocolError;
 
 /*
- * POSTGRES backend dependent Constants.
+ * PQerrormsg[] is used only for error messages generated within backend
+ * libpq, none of which are remarkably long.  Note that this length should
+ * NOT be taken as any indication of the maximum error message length that
+ * the backend can create!  elog() can in fact produce extremely long messages.
  */
 
-/* ERROR_MSG_LENGTH should really be the same as ELOG_MAXLEN in utils/elog.h*/
-#define ERROR_MSG_LENGTH 4096
-#define COMMAND_LENGTH 20
-#define REMARK_LENGTH 80
+#define PQERRORMSG_LENGTH 1024
 
-extern char PQerrormsg[ERROR_MSG_LENGTH];		/* in portal.c */
+extern char PQerrormsg[PQERRORMSG_LENGTH];		/* in libpq/util.c */
 
 /*
  * External functions.

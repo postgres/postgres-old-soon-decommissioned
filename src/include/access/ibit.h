@@ -13,12 +13,11 @@
 #ifndef IBIT_H
 #define IBIT_H
 
-#include "utils/memutils.h"
+#include "catalog/pg_index.h"
 
 typedef struct IndexAttributeBitMapData
 {
-	char		bits[(MaxIndexAttributeNumber + MaxBitsPerByte - 1)
-					 /			 MaxBitsPerByte];
+	bits8		bits[(INDEX_MAX_KEYS + 8 - 1)/8];
 } IndexAttributeBitMapData;
 
 typedef IndexAttributeBitMapData *IndexAttributeBitMap;

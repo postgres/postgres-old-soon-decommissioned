@@ -20,12 +20,9 @@
 
 
 #include <ctype.h>
-#include <sys/param.h>			/* for MAXHOSTNAMELEN on most */
-#ifdef solaris_sparc
-#include <netdb.h>				/* for MAXHOSTNAMELEN on some */
-#endif
 
 #include "postgres.h"
+
 #include "libpq-fe.h"
 #ifndef HAVE_STRDUP
 #include "strdup.h"

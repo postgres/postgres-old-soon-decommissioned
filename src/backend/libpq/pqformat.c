@@ -213,7 +213,7 @@ pq_endmessage(StringInfo buf)
 {
 	if (pq_putmessage('\0', buf->data, buf->len))
 	{
-		snprintf(PQerrormsg, ERROR_MSG_LENGTH,
+		snprintf(PQerrormsg, PQERRORMSG_LENGTH,
 				 "FATAL: pq_endmessage failed: errno=%d\n", errno);
 		fputs(PQerrormsg, stderr);
 		pqdebug("%s", PQerrormsg);

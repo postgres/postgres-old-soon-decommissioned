@@ -44,10 +44,10 @@ index_formtuple(TupleDesc tupleDescriptor,
 	uint16		tupmask = 0;
 	int			numberOfAttributes = tupleDescriptor->natts;
 
-	if (numberOfAttributes > MaxIndexAttributeNumber)
-		elog(ERROR, "index_formtuple: numberOfAttributes of %d > %d",
-			 numberOfAttributes, MaxIndexAttributeNumber);
-
+	/* XXX shouldn't this test be '>' ? */
+	if (numberOfAttributes >= INDEX_MAX_KEYS)
+		elog(ERROR, "index_formtuple: numberOfAttributes %d >= %d",
+			 numberOfAttributes, INDEX_MAX_KEYS);
 
 	for (i = 0; i < numberOfAttributes && !hasnull; i++)
 	{

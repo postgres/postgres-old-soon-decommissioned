@@ -544,7 +544,7 @@ IndexSupportInitialize(IndexStrategy indexStrategy,
 	StrategyMap map;
 	AttrNumber	attributeNumber;
 	int			attributeIndex;
-	Oid			operatorClassObjectId[MaxIndexAttributeNumber];
+	Oid			operatorClassObjectId[INDEX_MAX_KEYS];
 
 	if (!IsBootstrapProcessingMode())
 	{

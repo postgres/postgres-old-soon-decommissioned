@@ -35,7 +35,7 @@ pstrdup(char *string)
 	int			len;
 
 	nstr = palloc(len = strlen(string) + 1);
-	MemoryCopy(nstr, string, len);
+	memcpy(nstr, string, len);
 
 	return nstr;
 }

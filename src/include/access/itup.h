@@ -18,7 +18,6 @@
 #include "access/tupmacs.h"
 #include "storage/itemptr.h"
 
-#define MaxIndexAttributeNumber 7
 
 typedef struct IndexTupleData
 {
