@@ -164,6 +164,7 @@ struct sbufdesc {
 
 #if defined(PORTNAME_BSD44_derived) || \
     defined(PORTNAME_bsdi) || \
+    defined(PORTNAME_bsdi_2_1) || \
     defined(PORTNAME_i386_solaris) || \
     defined(PORTNAME_linux) || \
     defined(PORTNAME_sparc) || \
