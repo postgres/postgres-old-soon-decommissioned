@@ -43,7 +43,7 @@ pg_dlopen(char *filename)
 	 */
 	if (!dl_initialized)
 	{
-		if (dld_init(dld_find_executable(pg_pathname)))
+		if (dld_init(dld_find_executable(my_exec_path)))
 			return NULL;
 
 		/*

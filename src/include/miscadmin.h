@@ -124,6 +124,8 @@ extern void SubPostmasterMain(int argc, char* argv[]);
 #endif
 extern void ClosePostmasterPorts(bool pgstat_too);
 
+#define PG_VERSIONSTR "postgres (PostgreSQL) " PG_VERSION "\n"
+
 /*
  * from utils/init/globals.c
  */
@@ -140,7 +142,7 @@ extern struct Port *MyProcPort;
 extern long MyCancelKey;
 
 extern char OutputFileName[];
-extern char pg_pathname[];
+extern char my_exec_path[];
 
 /*
  * done in storage/backendid.h for now.
