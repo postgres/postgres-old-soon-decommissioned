@@ -76,7 +76,7 @@ pg_dump <replaceable class="parameter">dbname</replaceable> &gt; <replaceable cl
    running will not be in the dump. <application>pg_dump</> does not
    block other operations on the database while it is working.
    (Exceptions are those operations that need to operate with an
-   exclusive lock, such as <command>VACUUM</command>.)
+   exclusive lock, such as <command>VACUUM FULL</command>.)
   </para>
 
   <important>
