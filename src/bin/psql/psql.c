@@ -2420,6 +2420,9 @@ MainLoop(PsqlSettings *pset, char *query, FILE *source)
 		{
 			SendQuery(&success, pset, query, false, false, 0);
 			successResult &= success;
+			xcomment = NULL;
+			in_quote = false;
+			paren_level = 0;
 			querySent = true;
 		}
 	}							/* while */
