@@ -4922,9 +4922,11 @@ CreateCheckPoint(bool shutdown, bool force)
 	 * Truncate pg_subtrans if possible.  We can throw away all data before
 	 * the oldest XMIN of any running transaction.  No future transaction will
 	 * attempt to reference any pg_subtrans entry older than that (see Asserts
-	 * in subtrans.c).
+	 * in subtrans.c).  During recovery, though, we mustn't do this because
+	 * StartupSUBTRANS hasn't been called yet.
 	 */
-	TruncateSUBTRANS(GetOldestXmin(true));
+	if (!InRecovery)
+		TruncateSUBTRANS(GetOldestXmin(true));
 
 	LWLockRelease(CheckpointLock);
 }
