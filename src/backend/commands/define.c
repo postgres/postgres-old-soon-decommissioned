@@ -178,23 +178,45 @@ compute_full_attributes(const List *parameters, int32 *byte_pct_p,
 }
 
 
+/*
+ * For a dynamically linked C language object, the form of the clause is
+ *
+ *	   AS <object file name> [, <link symbol name> ]
+ *
+ * In all other cases
+ *
+ *	   AS <object reference, or sql code>
+ *
+ */
 
 static void
-interpret_AS_clause(const char *languageName, const char *as,
+interpret_AS_clause(const char *languageName, const List *as,
 					char **prosrc_str_p, char **probin_str_p)
 {
+	Assert(as != NIL);
 
 	if (strcmp(languageName, "C") == 0)
 	{
-		/* For "C" language, store the given string in probin */
-		*prosrc_str_p = "-";
-		*probin_str_p = (char *) as;
+
+		/*
+		 * For "C" language, store the file name in probin and, when
+		 * given, the link symbol name in prosrc.
+		 */
+		*probin_str_p = strVal(lfirst(as));
+		if (lnext(as) == NULL)
+			*prosrc_str_p = "-";
+		else
+			*prosrc_str_p = strVal(lsecond(as));
 	}
 	else
 	{
-		/* Everything else wants the given string in prosrc */
-		*prosrc_str_p = (char *) as;
+		/* Everything else wants the given string in prosrc. */
+		*prosrc_str_p = strVal(lfirst(as));
 		*probin_str_p = "-";
+
+		if (lnext(as) != NULL)
+			elog(ERROR, "CREATE FUNCTION: parse error in 'AS %s, %s'.",
+				 strVal(lfirst(as)), strVal(lsecond(as)));
 	}
 }
 
