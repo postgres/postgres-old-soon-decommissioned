@@ -11,6 +11,10 @@
  *-------------------------------------------------------------------------
  */
 
+/* for thread.c */
+#include <pwd.h>
+#include <netdb.h>
+
 /* Portable path handling for Unix/Win32 */
 bool is_absolute_path(const char *filename);
 char *first_path_separator(const char *filename);
@@ -98,3 +102,15 @@ extern long random(void);
 #ifndef HAVE_SRANDOM
 extern void srandom(unsigned int seed);
 #endif
+
+/* thread.h */
+extern char *pqStrerror(int errnum, char *strerrbuf, size_t buflen);
+
+extern int pqGetpwuid(uid_t uid, struct passwd *resultbuf, char *buffer,
+		      size_t buflen, struct passwd **result);
+
+extern int pqGethostbyname(const char *name,
+			   struct hostent *resbuf,
+			   char *buf, size_t buflen,
+			   struct hostent **result,
+			   int *herrno);

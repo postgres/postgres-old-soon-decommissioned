@@ -22,5 +22,8 @@ endif
 libpgport.a: $(LIBOBJS)
 	$(AR) crs $@ $^
 
+thread.o: thread.c
+	$(CC) $(CFLAGS) $(THREAD_CFLAGS) -c thread.c
+
 clean distclean maintainer-clean:
 	rm -f libpgport.a $(LIBOBJS)
