@@ -587,11 +587,17 @@ op_error(char *op, Oid arg1, Oid arg2)
 		elog(WARN, "right hand side of operator %s has an unknown type, probably a bad attribute name", op);
 	}
 
+#if FALSE
 	elog(NOTICE, "there is no operator %s for types %s and %s",
 		 op, typeTypeName(tp1), typeTypeName(tp2));
 	elog(NOTICE, "You will either have to retype this query using an");
 	elog(NOTICE, "explicit cast, or you will have to define the operator");
 	elog(WARN, "%s for %s and %s using CREATE OPERATOR",
 		 op, typeTypeName(tp1), typeTypeName(tp2));
+#endif
+	elog(WARN, "There is no operator '%s' for types '%s' and '%s'"
+		"\n\tYou will either have to retype this query using an explicit cast,"
+		"\n\tor you will have to define the operator using CREATE OPERATOR",
+		op, typeTypeName(tp1), typeTypeName(tp2));
 }
 

@@ -306,10 +306,11 @@ Oid	param_type(int t); /* used in parse_expr.c */
 %left		AND
 %right		NOT
 %right		'='
+%nonassoc	'<' '>'
 %nonassoc	LIKE
 %nonassoc	BETWEEN
 %nonassoc	IN
-%nonassoc	Op
+%nonassoc	Op				/* multi-character ops and user-defined operators */
 %nonassoc	NOTNULL
 %nonassoc	ISNULL
 %nonassoc	IS
@@ -319,7 +320,6 @@ Oid	param_type(int t); /* used in parse_expr.c */
 /* Unary Operators */
 %right		':'
 %left		';'				/* end of statement or natural log */
-%nonassoc	'<' '>'
 %right		UMINUS
 %left		'.'
 %left		'[' ']'
