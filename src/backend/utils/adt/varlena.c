@@ -166,7 +166,7 @@ textin(char *inputText)
     
     if (inputText == NULL)
 	return(NULL);
-    len = strlen(inputText) + VARHDRSZ;		
+    len = strlen(inputText) + VARHDRSZ + 1;		
     result = (struct varlena *) palloc(len);
     VARSIZE(result) = len;
     memmove(VARDATA(result), inputText, len - VARHDRSZ);	
