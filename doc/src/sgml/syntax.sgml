@@ -502,7 +502,7 @@ float4 '1.23'  -- string style
      <synopsis>
 <replaceable>type</replaceable> '<replaceable>string</replaceable>'
 '<replaceable>string</replaceable>'::<replaceable>type</replaceable>
-CAST '<replaceable>string</replaceable>' AS <replaceable>type</replaceable>
+CAST ( '<replaceable>string</replaceable>' AS <replaceable>type</replaceable> )
      </synopsis>
 
      The value inside the string is passed to the input
