@@ -585,7 +585,7 @@ msgstr ""
 
 #: help.c:213
 msgid " \\h NAME        help on syntax of SQL commands, * for all commands\n"
-msgstr " \\h NOM         aide-mémoire pour les commandes SQL, * pour toutes less commandes\n"
+msgstr " \\h NOM         aide-mémoire pour les commandes SQL, * pour toutes les commandes\n"
 
 #: help.c:214
 #, c-format
