@@ -945,7 +945,10 @@ CREATE TABLE <replaceable class="parameter">tablename</replaceable> (
    <para>
     Refer to <xref linkend="sql-syntax-strings"> for information about
     the syntax of string literals, and to <xref linkend="functions">
-    for information about available operators and functions.
+    for information about available operators and functions. The
+    database character set determines the character set used to store
+    textual values; for more information on character set support,
+    refer to <xref linkend="multibyte">.
    </para>
 
    <example>
