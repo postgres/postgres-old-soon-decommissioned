@@ -17,4 +17,6 @@
 
 extern List *parse_analyze(Node *parseTree, ParseState *parentParseState);
 
+extern void CheckSelectForUpdate(Query *qry);
+
 #endif	 /* ANALYZE_H */

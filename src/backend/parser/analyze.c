@@ -37,8 +37,6 @@
 #include "mb/pg_wchar.h"
 #endif
 
-void		CheckSelectForUpdate(Query *qry);	/* no points for style... */
-
 static Query *transformStmt(ParseState *pstate, Node *stmt);
 static Query *transformDeleteStmt(ParseState *pstate, DeleteStmt *stmt);
 static Query *transformInsertStmt(ParseState *pstate, InsertStmt *stmt);

@@ -31,9 +31,6 @@
 #include "utils/lsyscache.h"
 
 
-extern void CheckSelectForUpdate(Query *rule_action);	/* in analyze.c */
-
-
 static RewriteInfo *gatherRewriteMeta(Query *parsetree,
 				  Query *rule_action,
 				  Node *rule_qual,
@@ -99,29 +96,6 @@ gatherRewriteMeta(Query *parsetree,
 				   PRS2_OLD_VARNO + rt_length, rt_index, 0);
 	ChangeVarNodes(info->rule_qual,
 				   PRS2_OLD_VARNO + rt_length, rt_index, 0);
-
-	/*
-	 * Update resultRelation too ... perhaps this should be done by
-	 * Offset/ChangeVarNodes?
-	 */
-	if (sub_action->resultRelation)
-	{
-		int			result_reln;
-		int			new_result_reln;
-
-		result_reln = sub_action->resultRelation;
-		switch (result_reln)
-		{
-			case PRS2_OLD_VARNO:
-				new_result_reln = rt_index;
-				break;
-			case PRS2_NEW_VARNO:
-			default:
-				new_result_reln = result_reln + rt_length;
-				break;
-		}
-		sub_action->resultRelation = new_result_reln;
-	}
 
 	/*
 	 * We want the main parsetree's rtable to end up as the concatenation
@@ -335,8 +309,6 @@ ApplyRetrieveRule(Query *parsetree,
 	if (intMember(rt_index, parsetree->rowMarks))
 	{
 		Index		innerrti = 1;
-
-		CheckSelectForUpdate(rule_action);
 
 		/*
 		 * Remove the view from the list of rels that will actually be
