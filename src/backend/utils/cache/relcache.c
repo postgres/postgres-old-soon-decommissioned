@@ -845,7 +845,7 @@ RelationBuildDesc(RelationBuildDescInfo buildinfo,
 	Assert(fd >= -1);
 	if (fd == -1)
 		elog(NOTICE, "RelationIdBuildRelation: smgropen(%s): %m",
-			 &relp->relname);
+			 NameStr(relp->relname));
 
 	relation->rd_fd = fd;
 

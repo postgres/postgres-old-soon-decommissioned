@@ -411,10 +411,10 @@ pg_get_indexdef(Oid indexrelid)
 	spirc = SPI_execp(plan_getam, spi_args, spi_nulls, 1);
 	if (spirc != SPI_OK_SELECT)
 		elog(ERROR, "failed to get pg_am tuple for index %s",
-			 idxrelrec->relname);
+			 NameStr(idxrelrec->relname));
 	if (SPI_processed != 1)
 		elog(ERROR, "failed to get pg_am tuple for index %s",
-			 idxrelrec->relname);
+			 NameStr(idxrelrec->relname));
 	spi_tup = SPI_tuptable->vals[0];
 	spi_ttc = SPI_tuptable->tupdesc;
 	spi_fno = SPI_fnumber(spi_ttc, "amname");

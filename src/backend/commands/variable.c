@@ -523,7 +523,7 @@ reset_timezone()
 	{
 		strcpy(tzbuf, "=");
 		if (putenv(tzbuf) != 0)
-			elog(ERROR, "Unable to clear TZ environment variable", NULL);
+			elog(ERROR, "Unable to clear TZ environment variable");
 		tzset();
 	}
 

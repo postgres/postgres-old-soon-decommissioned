@@ -275,7 +275,7 @@ _bt_insertonpg(Relation rel,
 	 * Note that at this point, itemsz doesn't include the ItemId.
 	 */
 	if (itemsz > (PageGetPageSize(page)-sizeof(PageHeaderData)-MAXALIGN(sizeof(BTPageOpaqueData)))/3 - sizeof(ItemIdData))
-		elog(ERROR, "btree: index item size %d exceeds maximum %d",
+		elog(ERROR, "btree: index item size %d exceeds maximum %ld",
 			 itemsz,
 			 (PageGetPageSize(page)-sizeof(PageHeaderData)-MAXALIGN(sizeof(BTPageOpaqueData)))/3 - sizeof(ItemIdData));
 

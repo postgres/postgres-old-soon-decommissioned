@@ -732,7 +732,7 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 							break;
 
 						default:
-							elog(ERROR, "parser: unrecognized constraint (internal error)", NULL);
+							elog(ERROR, "parser: unrecognized constraint (internal error)");
 							break;
 					}
 				}
@@ -1598,7 +1598,7 @@ transformForUpdate(Query *qry, List *forUpdate)
 			i++;
 		}
 		if (l2 == NULL)
-			elog(ERROR, "FOR UPDATE: relation %s not found in FROM clause", lfirst(l));
+			elog(ERROR, "FOR UPDATE: relation %s not found in FROM clause", strVal(lfirst(l)));
 	}
 
 	qry->rowMark = rowMark;

@@ -1362,7 +1362,7 @@ LockReleaseAll(LOCKMETHOD lockmethod, SHM_QUEUE *lockQueue)
 			{
 				/* Should never happen */
 				elog(NOTICE,
-					 "LockReleaseAll: INVALID PID: [%u] [%d,%d,%d]",
+					 "LockReleaseAll: INVALID PID: [%u] [%ld,%d,%d]",
 					 lock->tag.objId.blkno,
 				  xidLook->tag.lock, xidLook->tag.pid, xidLook->tag.xid);
 				nleft++;

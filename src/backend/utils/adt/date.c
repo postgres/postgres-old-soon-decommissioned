@@ -133,7 +133,7 @@ reltimein(char *str)
 	char		lowstr[MAXDATELEN + 1];
 
 	if (!PointerIsValid(str))
-		elog(ERROR, "Bad (null) date external representation", NULL);
+		elog(ERROR, "Bad (null) date external representation");
 
 	if (strlen(str) > MAXDATELEN)
 		elog(ERROR, "Bad (length) reltime external representation '%s'", str);
@@ -362,7 +362,7 @@ reltime_timespan(RelativeTime reltime)
 				month;
 
 	if (!PointerIsValid(result = palloc(sizeof(TimeSpan))))
-		elog(ERROR, "Memory allocation failed, can't convert reltime to timespan", NULL);
+		elog(ERROR, "Memory allocation failed, can't convert reltime to timespan");
 
 	switch (reltime)
 	{

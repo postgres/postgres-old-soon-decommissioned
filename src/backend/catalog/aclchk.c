@@ -264,7 +264,7 @@ aclcheck(char *relname, Acl *acl, AclId id, AclIdType idtype, AclMode mode)
 	 */
 	if (num < 1)
 	{
-#if ACLDEBUG_TRACE || 1
+#if defined(ACLDEBUG_TRACE) || 1
 		elog(DEBUG, "aclcheck: zero-length ACL, returning 1");
 #endif
 		return ACLCHECK_OK;

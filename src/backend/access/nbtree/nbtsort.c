@@ -314,7 +314,7 @@ _bt_buildadd(Relation index, BTPageState *state, BTItem bti, int flags)
 	 * But during creation of an index, we don't go through there.
 	 */
 	if (btisz > (PageGetPageSize(npage)-sizeof(PageHeaderData)-MAXALIGN(sizeof(BTPageOpaqueData)))/3 - sizeof(ItemIdData))
-		elog(ERROR, "btree: index item size %d exceeds maximum %d",
+		elog(ERROR, "btree: index item size %d exceeds maximum %ld",
 			 btisz,
 			 (PageGetPageSize(npage)-sizeof(PageHeaderData)-MAXALIGN(sizeof(BTPageOpaqueData)))/3 - sizeof(ItemIdData));
 

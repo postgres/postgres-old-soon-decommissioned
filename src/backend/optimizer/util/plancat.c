@@ -410,7 +410,7 @@ restriction_selectivity(Oid functionObjectId,
 		elog(ERROR, "restriction_selectivity: bad pointer");
 
 	if (*result < 0.0 || *result > 1.0)
-		elog(ERROR, "restriction_selectivity: bad value %lf", *result);
+		elog(ERROR, "restriction_selectivity: bad value %f", *result);
 
 	return (Selectivity) *result;
 }
@@ -446,7 +446,7 @@ join_selectivity(Oid functionObjectId,
 		elog(ERROR, "join_selectivity: bad pointer");
 
 	if (*result < 0.0 || *result > 1.0)
-		elog(ERROR, "join_selectivity: bad value %lf", *result);
+		elog(ERROR, "join_selectivity: bad value %f", *result);
 
 	return (Selectivity) *result;
 }

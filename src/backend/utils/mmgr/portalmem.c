@@ -269,7 +269,7 @@ PortalHeapMemoryFree(PortalHeapMemory this,
 	else
 	{
 		elog(NOTICE,
-			 "PortalHeapMemoryFree: 0x%x not in alloc set!",
+			 "PortalHeapMemoryFree: 0x%p not in alloc set!",
 			 pointer);
 #ifdef ALLOCFREE_ERROR_ABORT
 		Assert(AllocSetContains(&block->setData, pointer));

@@ -172,6 +172,7 @@ textin(char *inputText)
  *		textout			- converts internal representation to "..."
  */
 char *
+
 textout(text *vlena)
 {
 	int			len;

@@ -760,7 +760,7 @@ btreesel(Oid operatorObjectId,
 	if (!PointerIsValid(result))
 		elog(ERROR, "Btree Selectivity: bad pointer");
 	if (*result < 0.0 || *result > 1.0)
-		elog(ERROR, "Btree Selectivity: bad value %lf", *result);
+		elog(ERROR, "Btree Selectivity: bad value %f", *result);
 
 	return result;
 }
@@ -911,7 +911,7 @@ hashsel(Oid operatorObjectId,
 	if (!PointerIsValid(result))
 		elog(ERROR, "Hash Table Selectivity: bad pointer");
 	if (*result < 0.0 || *result > 1.0)
-		elog(ERROR, "Hash Table Selectivity: bad value %lf", *result);
+		elog(ERROR, "Hash Table Selectivity: bad value %f", *result);
 
 	return result;
 

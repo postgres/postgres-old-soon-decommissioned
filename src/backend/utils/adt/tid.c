@@ -200,7 +200,7 @@ currtid_byrelname(const text *relname, ItemPointer tid)
 		heap_close(rel, AccessShareLock);
 	}
 	else
-		elog(ERROR, "Relation %s not found", relname);
+		elog(ERROR, "Relation %s not found", textout((text *)relname));
 	pfree(str);
 
 	return result;

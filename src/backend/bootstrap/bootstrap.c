@@ -771,7 +771,7 @@ cleanup()
 		beenhere = 1;
 	else
 	{
-		elog(FATAL, "Memory manager fault: cleanup called twice.\n", stderr);
+		elog(FATAL, "Memory manager fault: cleanup called twice.\n");
 		proc_exit(1);
 	}
 	if (reldesc != (Relation) NULL)

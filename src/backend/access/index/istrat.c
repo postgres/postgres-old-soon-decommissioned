@@ -502,8 +502,8 @@ OperatorRelationFillScanKeyEntry(Relation operatorRelation,
 	{
 		if (IsBootstrapProcessingMode())
 			heap_endscan(scan);
-		elog(ERROR, "OperatorObjectIdFillScanKeyEntry: unknown operator %lu",
-			 (uint32) operatorObjectId);
+		elog(ERROR, "OperatorObjectIdFillScanKeyEntry: unknown operator %u",
+			 operatorObjectId);
 	}
 
 	entry->sk_flags = 0;
@@ -517,8 +517,8 @@ OperatorRelationFillScanKeyEntry(Relation operatorRelation,
 	if (!RegProcedureIsValid(entry->sk_procedure))
 	{
 		elog(ERROR,
-		"OperatorObjectIdFillScanKeyEntry: no procedure for operator %lu",
-			 (uint32) operatorObjectId);
+		"OperatorObjectIdFillScanKeyEntry: no procedure for operator %u",
+			 operatorObjectId);
 	}
 }
 

@@ -554,7 +554,7 @@ static void
 IpcMemoryDetach(int status, char *shmaddr)
 {
 	if (shmdt(shmaddr) < 0)
-		elog(NOTICE, "IpcMemoryDetach: shmdt(0x%x): %m", shmaddr);
+		elog(NOTICE, "IpcMemoryDetach: shmdt(0x%p): %m", shmaddr);
 }
 
 /****************************************************************************/

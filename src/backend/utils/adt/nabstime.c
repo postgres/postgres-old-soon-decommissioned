@@ -265,7 +265,7 @@ nabstimein(char *str)
 				ftype[MAXDATEFIELDS];
 
 	if (!PointerIsValid(str))
-		elog(ERROR, "Bad (null) abstime external representation", NULL);
+		elog(ERROR, "Bad (null) abstime external representation");
 
 	if (strlen(str) > MAXDATELEN)
 		elog(ERROR, "Bad (length) abstime external representation '%s'", str);
@@ -552,7 +552,7 @@ abstime_datetime(AbsoluteTime abstime)
 	DateTime   *result;
 
 	if (!PointerIsValid(result = palloc(sizeof(DateTime))))
-		elog(ERROR, "Unable to allocate space to convert abstime to datetime", NULL);
+		elog(ERROR, "Unable to allocate space to convert abstime to datetime");
 
 	switch (abstime)
 	{

@@ -114,7 +114,7 @@ RelationPutHeapTupleAtEnd(Relation relation, HeapTuple tuple)
 	 * this code should go away eventually.
 	 */
 	if (len > MaxTupleSize)
-		elog(ERROR, "Tuple is too big: size %d, max size %d",
+		elog(ERROR, "Tuple is too big: size %d, max size %ld",
 			 len, MaxTupleSize);
 
 	/*

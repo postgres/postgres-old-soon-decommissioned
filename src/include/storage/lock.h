@@ -234,7 +234,6 @@ typedef struct LOCK
 #define LockLockTable() SpinAcquire(LockMgrLock);
 #define UnlockLockTable() SpinRelease(LockMgrLock);
 
-extern SPINLOCK LockMgrLock;
 
 /*
  * function prototypes

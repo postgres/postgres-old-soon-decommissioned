@@ -261,7 +261,7 @@ transformArraySubscripts(ParseState *pstate,
 	typeelement = type_struct_array->typelem;
 	if (typeelement == InvalidOid)
 		elog(ERROR, "transformArraySubscripts: type %s is not an array",
-			 type_struct_array->typname);
+			 NameStr(type_struct_array->typname));
 
 	/* Get the type tuple for the array element type */
 	type_tuple = SearchSysCacheTuple(TYPEOID,

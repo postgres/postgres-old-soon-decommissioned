@@ -210,6 +210,7 @@ typedef uint32 CommandId;
 #define CATALOG(x) \
 	typedef struct CppConcat(FormData_,x)
 
+/* Huh? */
 #define DATA(x) extern int errno
 #define DESCR(x) extern int errno
 #define DECLARE_INDEX(x) extern int errno
