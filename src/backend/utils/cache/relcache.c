@@ -1685,10 +1685,14 @@ RelationClearRelation(Relation relation, bool rebuild)
 
 	/*
 	 * Never, never ever blow away a nailed-in system relation, because
-	 * we'd be unable to recover.
+	 * we'd be unable to recover.  However, we must update rd_nblocks
+	 * and reset rd_targblock, in case we got called because of a relation
+	 * cache flush that was triggered by VACUUM.
 	 */
 	if (relation->rd_isnailed)
 	{
+		relation->rd_targblock = InvalidBlockNumber;
+		RelationUpdateNumberOfBlocks(relation);
 #ifdef	ENABLE_REINDEX_NAILED_RELATIONS
 		RelationReloadClassinfo(relation);
 #endif   /* ENABLE_REINDEX_NAILED_RELATIONS */
