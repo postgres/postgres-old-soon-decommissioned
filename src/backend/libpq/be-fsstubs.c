@@ -249,16 +249,19 @@ lo_import(text *filename)
     int nbytes, tmp;
 #define BUFSIZE        1024
     char buf[BUFSIZE];
+    char fnamebuf[8192];
     LargeObjectDesc *lobj;
     Oid lobjOid;
 
     /*
      * open the file to be read in
      */
-    fd = open(VARDATA(filename), O_RDONLY, 0666);
+    strncpy(fnamebuf, VARDATA(filename), VARSIZE(filename));
+    fnamebuf[VARSIZE(filename)] = '\0';
+    fd = open(fnamebuf, O_RDONLY, 0666);
     if (fd < 0)  {   /* error */
 	elog(WARN, "lo_import: can't open unix file\"%s\"\n", 
-             VARDATA(filename));
+             fnamebuf);
     }
 
     /*
@@ -267,7 +270,7 @@ lo_import(text *filename)
     lobj = inv_create(INV_READ|INV_WRITE);
     if (lobj == NULL) {
 	elog(WARN, "lo_import: can't create inv object for \"%s\"",
-	     VARDATA(filename));
+	     fnamebuf);
     }
 
     /*
@@ -283,7 +286,7 @@ lo_import(text *filename)
 	tmp = inv_write(lobj, buf, nbytes);
         if (tmp < nbytes) {
 	    elog(WARN, "lo_import: error while reading \"%s\"",
-		 VARDATA(filename));
+		 fnamebuf);
 	}
     }
 
@@ -304,6 +307,7 @@ lo_export(Oid lobjId, text *filename)
     int nbytes, tmp;
 #define BUFSIZE        1024
     char buf[BUFSIZE];
+    char fnamebuf[8192];
     LargeObjectDesc *lobj;
     mode_t oumask;
 
@@ -320,11 +324,13 @@ lo_export(Oid lobjId, text *filename)
      * open the file to be written to
      */
     oumask = umask((mode_t) 0);
-    fd = open(VARDATA(filename), O_CREAT|O_WRONLY, 0666);
+    strncpy(fnamebuf, VARDATA(filename), VARSIZE(filename));
+    fnamebuf[VARSIZE(filename)] = '\0';
+    fd = open(fnamebuf, O_CREAT|O_WRONLY, 0666);
     (void) umask(oumask);
     if (fd < 0)  {   /* error */
 	elog(WARN, "lo_export: can't open unix file\"%s\"",
-	     VARDATA(filename));
+	     fnamebuf);
     }
 
     /*
@@ -334,7 +340,7 @@ lo_export(Oid lobjId, text *filename)
 	tmp = write(fd, buf, nbytes);
         if (tmp < nbytes) {
 	    elog(WARN, "lo_export: error while writing \"%s\"",
-		 VARDATA(filename));
+		 fnamebuf);
 	}
     }
 

@@ -196,6 +196,7 @@ PQconnectdb(const char *conninfo)
      * Setup the conn structure
      * ----------
      */
+    conn->lobjfuncs = (PGlobjfuncs *) NULL;
     conn->Pfout = NULL;
     conn->Pfin = NULL;
     conn->Pfdebug = NULL;
