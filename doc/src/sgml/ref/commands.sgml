@@ -67,6 +67,7 @@ Postgres documentation
    &selectInto;
    &set;
    &show;
+   &truncate;
    &unlisten;
    &update;
    &vacuum;

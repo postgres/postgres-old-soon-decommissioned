@@ -93,6 +93,7 @@ Complete list of usable sgml source files in this directory.
 <!entity selectInto         system "select_into.sgml">
 <!entity set                system "set.sgml">
 <!entity show               system "show.sgml">
+<!entity truncate           system "truncate.sgml">
 <!entity unlisten           system "unlisten.sgml">
 <!entity update             system "update.sgml">
 <!entity vacuum             system "vacuum.sgml">
