@@ -2142,6 +2142,7 @@ CreatedbStmt:  CREATE DATABASE database_name WITH opt_database1 opt_database2
 #else
 					if ($6 != NULL)
 						elog(ERROR, "WITH ENCODING is not supported");
+					n->encoding = 0;
 #endif
 					$$ = (Node *)n;
 				}
@@ -2152,6 +2153,8 @@ CreatedbStmt:  CREATE DATABASE database_name WITH opt_database1 opt_database2
 					n->dbpath = NULL;
 #ifdef MULTIBYTE
 					n->encoding = GetTemplateEncoding();
+#else
+					n->encoding = 0;
 #endif
 					$$ = (Node *)n;
 				}

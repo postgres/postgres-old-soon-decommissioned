@@ -116,11 +116,7 @@ extern char *DatabaseName;
 extern char *DatabasePath;
 
 /* in utils/misc/database.c */
-#ifdef MULTIBYTE
 extern void GetRawDatabaseInfo(char *name, int4 *owner, Oid *db_id, char *path, int *encoding);
-#else
-extern void GetRawDatabaseInfo(char *name, int4 *owner, Oid *db_id, char *path);
-#endif
 extern int	GetDatabaseInfo(char *name, int4 *owner, char *path);
 extern char *ExpandDatabasePath(char *path);
 

@@ -316,6 +316,7 @@ static int pg_sjis_mblen(const unsigned char *s)
 }
 
 pg_wchar_tbl pg_wchar_table[] = {
+  {0, 0},
   {pg_eucjp2wchar_with_len, pg_eucjp_mblen},
   {pg_euccn2wchar_with_len, pg_euccn_mblen},
   {pg_euckr2wchar_with_len, pg_euckr_mblen},
@@ -327,7 +328,6 @@ pg_wchar_tbl pg_wchar_table[] = {
   {pg_latin12wchar_with_len, pg_latin1_mblen},
   {pg_latin12wchar_with_len, pg_latin1_mblen},
   {pg_latin12wchar_with_len, pg_latin1_mblen},
-  {0, 0},
   {0, 0},
   {0, 0},
   {0, 0},

@@ -568,15 +568,9 @@ mdblindwrt(char *dbstr,
 		int4		owner;
 		Oid			id;
 		char	   *tmpPath;
-#ifdef MULTIBYTE
 		int	   tmpEncoding;
-#endif
 
-#ifdef MULTIBYTE
 		GetRawDatabaseInfo(dbstr, &owner, &id, dbpath, &tmpEncoding);
-#else
-		GetRawDatabaseInfo(dbstr, &owner, &id, dbpath);
-#endif
 
 		if (id != dbid)
 			elog(FATAL, "mdblindwrt: oid of db %s is not %u", dbstr, dbid);
@@ -613,16 +607,9 @@ mdblindwrt(char *dbstr,
 		int4		owner;
 		Oid			id;
 		char	   *tmpPath;
-
-#ifdef MULTIBYTE
 		int	   tmpEncoding;
-#endif
 
-#ifdef MULTIBYTE
 		GetRawDatabaseInfo(dbstr, &owner, &id, dbpath, &tmpEncoding);
-#else
-		GetRawDatabaseInfo(dbstr, &owner, &id, dbpath);
-#endif
 
 		if (id != dbid)
 			elog(FATAL, "mdblindwrt: oid of db %s is not %u", dbstr, dbid);

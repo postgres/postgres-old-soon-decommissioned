@@ -19,11 +19,7 @@
  */
 #define SIGKILLDAEMON1	SIGTERM
 
-#ifdef MULTIBYTE
 extern void createdb(char *dbname, char *dbpath, int encoding);
-#else
-extern void createdb(char *dbname, char *dbpath);
-#endif
 extern void destroydb(char *dbname);
 
 #endif							/* DBCOMMANDS_H */

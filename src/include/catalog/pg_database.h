@@ -34,9 +34,9 @@ CATALOG(pg_database) BOOTSTRAP
 {
 	NameData	datname;
 	int4		datdba;
+	int4		encoding;
 	text		datpath;		/* VARIABLE LENGTH FIELD */
 } FormData_pg_database;
-
 /* ----------------
  *		Form_pg_database corresponds to a pointer to a tuple with
  *		the format of pg_database relation.
@@ -48,10 +48,9 @@ typedef FormData_pg_database *Form_pg_database;
  *		compiler constants for pg_database
  * ----------------
  */
-#define Natts_pg_database				3
+#define Natts_pg_database				4
 #define Anum_pg_database_datname		1
 #define Anum_pg_database_datdba			2
-#define Anum_pg_database_datpath		3
-
-
+#define Anum_pg_database_encoding		3
+#define Anum_pg_database_datpath		4
 #endif							/* PG_DATABASE_H */

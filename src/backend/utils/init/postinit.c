@@ -67,10 +67,7 @@
 
 #include "catalog/catname.h"
 #ifdef MULTIBYTE
-#include "catalog/pg_database_mb.h"
 #include "mb/pg_wchar.h"
-#else
-#include "catalog/pg_database.h"
 #endif
 
 #include "libpq/libpq.h"
@@ -83,11 +80,7 @@ static void InitStdio(void);
 static void InitUserid(void);
 
 extern char *ExpandDatabasePath(char *name);
-#ifdef MULTIBYTE
 extern void GetRawDatabaseInfo(char *name, int4 *owner, Oid *db_id, char *path, int *encoding);
-#else
-extern void GetRawDatabaseInfo(char *name, int4 *owner, Oid *db_id, char *path);
-#endif
 
 static IPCKey PostgresIpcKey;
 
@@ -128,16 +121,10 @@ InitMyDatabaseInfo(char *name)
 	int4		owner;
 	char	   *path,
 				myPath[MAXPGPATH + 1];
-#ifdef MULTIBYTE
 	int encoding;
-#endif
 
 	SetDatabaseName(name);
-#ifdef MULTIBYTE
 	GetRawDatabaseInfo(name, &owner, &MyDatabaseId, myPath, &encoding);
-#else
-	GetRawDatabaseInfo(name, &owner, &MyDatabaseId, myPath);
-#endif
 
 	if (!OidIsValid(MyDatabaseId))
 		elog(FATAL,

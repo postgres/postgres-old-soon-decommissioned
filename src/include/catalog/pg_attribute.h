@@ -224,7 +224,8 @@ DATA(insert OID = 0 ( 1247 cmax				29 0  4  -6 0 -1 -1 t f i f f));
  */
 DATA(insert OID = 0 ( 1262 datname			19 0 NAMEDATALEN   1 0 -1 -1 f f i f f));
 DATA(insert OID = 0 ( 1262 datdba			23 0  4   2 0 -1 -1 t f s f f));
-DATA(insert OID = 0 ( 1262 datpath			25 0 -1   3 0 -1 -1 f f i f f));
+DATA(insert OID = 0 ( 1262 encoding			23 0  4   3 0 -1 -1 t f s f f));
+DATA(insert OID = 0 ( 1262 datpath			25 0 -1   4 0 -1 -1 f f i f f));
 DATA(insert OID = 0 ( 1262 ctid				27 0  6  -1 0 -1 -1 f f i f f));
 DATA(insert OID = 0 ( 1262 oid				26 0  4  -2 0 -1 -1 t f i f f));
 DATA(insert OID = 0 ( 1262 xmin				28 0  4  -3 0 -1 -1 f f i f f));

@@ -37,6 +37,7 @@
 # ----------------
 
 CMDNAME=`basename $0`
+MULTIBYTEID=0
 
 MULTIBYTE=__MULTIBYTE__
 if [  -n "$MULTIBYTE" ];then
@@ -374,11 +375,7 @@ if [ $template_only -eq 0 ]; then
     echo "Adding template1 database to pg_database..."
 
     echo "open pg_database" > /tmp/create.$$
-    if [ -z "$MULTIBYTE" ];then
-	echo "insert (template1 $POSTGRES_SUPERUID template1)" >> /tmp/create.$$
-    else
-	echo "insert (template1 $POSTGRES_SUPERUID $MULTIBYTEID template1)" >> /tmp/create.$$
-    fi
+    echo "insert (template1 $POSTGRES_SUPERUID $MULTIBYTEID template1)" >> /tmp/create.$$
     #echo "show" >> /tmp/create.$$
     echo "close pg_database" >> /tmp/create.$$
 
