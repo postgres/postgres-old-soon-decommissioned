@@ -856,8 +856,7 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 		 * Create an expression tree representing the function call
 		 * nextval('"sequencename"')
 		 */
-		qstring = palloc(strlen(snamespace) + strlen(sname) + 5 + 1);
-		sprintf(qstring, "\"%s\".\"%s\"", snamespace, sname);
+		qstring = quote_qualified_identifier(snamespace, sname);
 		snamenode = makeNode(A_Const);
 		snamenode->val.type = T_String;
 		snamenode->val.val.str = qstring;
