@@ -107,13 +107,13 @@ pull_varnos_walker(Node *node, pull_varnos_context *context)
 	{
 		/*
 		 * Already-planned subquery.  Examine the args list (parameters to
-		 * be passed to subquery), as well as the "oper" list which is
+		 * be passed to subquery), as well as the exprs list which is
 		 * executed by the outer query.  But short-circuit recursion into
 		 * the subquery itself, which would be a waste of effort.
 		 */
 		SubPlan *subplan = (SubPlan *) node;
 
-		if (pull_varnos_walker((Node *) subplan->oper,
+		if (pull_varnos_walker((Node *) subplan->exprs,
 							   context))
 			return true;
 		if (pull_varnos_walker((Node *) subplan->args,
@@ -190,13 +190,13 @@ contain_var_reference_walker(Node *node,
 	{
 		/*
 		 * Already-planned subquery.  Examine the args list (parameters to
-		 * be passed to subquery), as well as the "oper" list which is
+		 * be passed to subquery), as well as the exprs list which is
 		 * executed by the outer query.  But short-circuit recursion into
 		 * the subquery itself, which would be a waste of effort.
 		 */
 		SubPlan *subplan = (SubPlan *) node;
 
-		if (contain_var_reference_walker((Node *) subplan->oper,
+		if (contain_var_reference_walker((Node *) subplan->exprs,
 										 context))
 			return true;
 		if (contain_var_reference_walker((Node *) subplan->args,

@@ -2023,8 +2023,8 @@ ExecInitExpr(Expr *node, PlanState *parent)
 				sstate->sub_estate = NULL;
 				sstate->planstate = NULL;
 
-				sstate->oper = (List *)
-					ExecInitExpr((Expr *) subplan->oper, parent);
+				sstate->exprs = (List *)
+					ExecInitExpr((Expr *) subplan->exprs, parent);
 				sstate->args = (List *)
 					ExecInitExpr((Expr *) subplan->args, parent);
 
@@ -2156,7 +2156,7 @@ ExecInitExprInitPlan(SubPlan *node, PlanState *parent)
 	sstate->sub_estate = NULL;
 	sstate->planstate = NULL;
 
-	sstate->oper = (List *) ExecInitExpr((Expr *) node->oper, parent);
+	sstate->exprs = (List *) ExecInitExpr((Expr *) node->exprs, parent);
 	sstate->args = (List *) ExecInitExpr((Expr *) node->args, parent);
 
 	sstate->xprstate.expr = (Expr *) node;

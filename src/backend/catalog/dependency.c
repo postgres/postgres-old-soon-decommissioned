@@ -838,6 +838,18 @@ find_expr_references_walker(Node *node,
 						   &context->addrs);
 		/* fall through to examine arguments */
 	}
+	if (IsA(node, SubLink))
+	{
+		SubLink	   *sublink = (SubLink *) node;
+		List	   *opid;
+
+		foreach(opid, sublink->operOids)
+		{
+			add_object_address(OCLASS_OPERATOR, (Oid) lfirsti(opid), 0,
+							   &context->addrs);
+		}
+		/* fall through to examine arguments */
+	}
 	if (is_subplan(node))
 	{
 		/* Extra work needed here if we ever need this case */
