@@ -233,7 +233,7 @@ makeRelabelType(Node *arg, Oid rtype, int32 rtypmod)
 RangeVar *
 makeRangeVar(char *schemaname, char *relname)
 {
-	RangeVar *r = makeNode(RangeVar);
+	RangeVar   *r = makeNode(RangeVar);
 
 	r->catalogname = NULL;
 	r->schemaname = schemaname;

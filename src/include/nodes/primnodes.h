@@ -127,8 +127,8 @@ typedef struct RangeVar
 	char	   *catalogname;	/* the catalog (database) name, or NULL */
 	char	   *schemaname;		/* the schema name, or NULL */
 	char	   *relname;		/* the relation/sequence name */
-	InhOption	inhOpt;			/* expand rel by inheritance? 
-								 * recursively act on children? */
+	InhOption	inhOpt;			/* expand rel by inheritance? recursively
+								 * act on children? */
 	bool		istemp;			/* is this a temp relation/sequence? */
 	Alias	   *alias;			/* table alias & optional column aliases */
 } RangeVar;
@@ -182,7 +182,7 @@ typedef struct Oper
 	Oid			opid;			/* PG_PROC OID of underlying function */
 	Oid			opresulttype;	/* PG_TYPE OID of result value */
 	bool		opretset;		/* true if operator returns set */
-	FunctionCachePtr op_fcache;	/* runtime state, else NULL */
+	FunctionCachePtr op_fcache; /* runtime state, else NULL */
 } Oper;
 
 /*
@@ -192,9 +192,9 @@ typedef struct Func
 {
 	NodeTag		type;
 	Oid			funcid;			/* PG_PROC OID of the function */
-	Oid			funcresulttype;	/* PG_TYPE OID of result value */
+	Oid			funcresulttype; /* PG_TYPE OID of result value */
 	bool		funcretset;		/* true if function returns set */
-	FunctionCachePtr func_fcache; /* runtime state, or NULL */
+	FunctionCachePtr func_fcache;		/* runtime state, or NULL */
 } Func;
 
 /*
@@ -528,7 +528,7 @@ typedef struct RangeTblRef
  * restricts visibility of the tables/columns inside it.
  *
  * During parse analysis, an RTE is created for the Join, and its index
- * is filled into rtindex.  This RTE is present mainly so that Vars can
+ * is filled into rtindex.	This RTE is present mainly so that Vars can
  * be created that refer to the outputs of the join.
  *----------
  */

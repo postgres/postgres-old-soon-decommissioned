@@ -877,8 +877,8 @@ ExecInitAgg(Agg *node, EState *estate, Plan *parent)
 						&peraggstate->transtypeByVal);
 
 		/*
-		 * initval is potentially null, so don't try to access it as a struct
-		 * field. Must do it the hard way with SysCacheGetAttr.
+		 * initval is potentially null, so don't try to access it as a
+		 * struct field. Must do it the hard way with SysCacheGetAttr.
 		 */
 		textInitVal = SysCacheGetAttr(AGGFNOID, aggTuple,
 									  Anum_pg_aggregate_agginitval,
@@ -907,8 +907,8 @@ ExecInitAgg(Agg *node, EState *estate, Plan *parent)
 		if (peraggstate->transfn.fn_strict && peraggstate->initValueIsNull)
 		{
 			/*
-			 * Note: use the type from the input expression here, not
-			 * from pg_proc.proargtypes, because the latter might be 0.
+			 * Note: use the type from the input expression here, not from
+			 * pg_proc.proargtypes, because the latter might be 0.
 			 * (Consider COUNT(*).)
 			 */
 			Oid			inputType = exprType(aggref->target);
@@ -921,8 +921,8 @@ ExecInitAgg(Agg *node, EState *estate, Plan *parent)
 		if (aggref->aggdistinct)
 		{
 			/*
-			 * Note: use the type from the input expression here, not
-			 * from pg_proc.proargtypes, because the latter might be 0.
+			 * Note: use the type from the input expression here, not from
+			 * pg_proc.proargtypes, because the latter might be 0.
 			 * (Consider COUNT(*).)
 			 */
 			Oid			inputType = exprType(aggref->target);

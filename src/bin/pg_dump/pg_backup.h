@@ -68,7 +68,8 @@ typedef struct _restoreOptions
 								 * cirsumstances */
 	int			use_setsessauth;/* use SET SESSSION AUTHORIZATION instead
 								 * of \connect */
-	int			disable_triggers;/* disable triggers during data-only restore */
+	int			disable_triggers;		/* disable triggers during
+										 * data-only restore */
 	char	   *superuser;		/* Username to use as superuser */
 	int			dataOnly;
 	int			dropSchema;
@@ -132,14 +133,14 @@ PGconn *ConnectDatabase(Archive *AH,
 
 /* Called to add a TOC entry */
 extern void ArchiveEntry(Archive *AHX, const char *oid, const char *tag,
-						 const char *namespace, const char *owner,
-						 const char *desc, const char *((*deps)[]),
-						 const char *defn, const char *dropStmt,
-						 const char *copyStmt,
-						 DataDumperPtr dumpFn, void *dumpArg);
+			 const char *namespace, const char *owner,
+			 const char *desc, const char *((*deps)[]),
+			 const char *defn, const char *dropStmt,
+			 const char *copyStmt,
+			 DataDumperPtr dumpFn, void *dumpArg);
 
 /* Called to write *data* to the archive */
-extern size_t	WriteData(Archive *AH, const void *data, size_t dLen);
+extern size_t WriteData(Archive *AH, const void *data, size_t dLen);
 
 /*
 extern int	StartBlobs(Archive* AH);

@@ -46,7 +46,6 @@ do { \
 	dld_unlink_by_file(handle, 1); \
 	free(handle); \
 } while (0)
-
 #endif   /* not HAVE_DLOPEN */
 
 #endif   /* PORT_PROTOS_H */

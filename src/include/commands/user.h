@@ -15,7 +15,7 @@
 
 #define PWD_FILE	"pg_pwd"
 
-#define USER_GROUP_FILE	"pg_group"
+#define USER_GROUP_FILE "pg_group"
 
 
 extern char *group_getfilename(void);

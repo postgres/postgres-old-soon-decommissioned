@@ -50,7 +50,7 @@ extern HeapTuple ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot);
  */
 extern TupleDesc ExecutorStart(QueryDesc *queryDesc, EState *estate);
 extern TupleTableSlot *ExecutorRun(QueryDesc *queryDesc, EState *estate,
-								   ScanDirection direction, long count);
+			ScanDirection direction, long count);
 extern void ExecutorEnd(QueryDesc *queryDesc, EState *estate);
 extern void ExecConstraints(const char *caller, ResultRelInfo *resultRelInfo,
 				TupleTableSlot *slot, EState *estate);
@@ -81,9 +81,9 @@ extern Datum ExecMakeFunctionResult(FunctionCachePtr fcache,
 					   bool *isNull,
 					   ExprDoneCond *isDone);
 extern Tuplestorestate *ExecMakeTableFunctionResult(Expr *funcexpr,
-													ExprContext *econtext,
-													TupleDesc expectedDesc,
-													TupleDesc *returnDesc);
+							ExprContext *econtext,
+							TupleDesc expectedDesc,
+							TupleDesc *returnDesc);
 extern Datum ExecEvalExpr(Node *expression, ExprContext *econtext,
 			 bool *isNull, ExprDoneCond *isDone);
 extern Datum ExecEvalExprSwitchContext(Node *expression, ExprContext *econtext,
@@ -201,10 +201,10 @@ extern void ExecInsertIndexTuples(TupleTableSlot *slot, ItemPointer tupleid,
 					  EState *estate, bool is_vacuum);
 
 extern void RegisterExprContextCallback(ExprContext *econtext,
-										ExprContextCallbackFunction function,
-										Datum arg);
+							ExprContextCallbackFunction function,
+							Datum arg);
 extern void UnregisterExprContextCallback(ExprContext *econtext,
-										  ExprContextCallbackFunction function,
-										  Datum arg);
+							  ExprContextCallbackFunction function,
+							  Datum arg);
 
 #endif   /* EXECUTOR_H  */

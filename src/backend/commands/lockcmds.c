@@ -43,8 +43,8 @@ LockTableCommand(LockStmt *lockstmt)
 		Relation	rel;
 
 		/*
-		 * We don't want to open the relation until we've checked privilege.
-		 * So, manually get the relation OID.
+		 * We don't want to open the relation until we've checked
+		 * privilege. So, manually get the relation OID.
 		 */
 		reloid = RangeVarGetRelid(relation, false);
 

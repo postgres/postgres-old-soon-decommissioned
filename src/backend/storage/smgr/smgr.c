@@ -66,7 +66,7 @@ static f_smgr smgrsw[] = {
 	/* main memory */
 	{mminit, mmshutdown, mmcreate, mmunlink, mmextend, mmopen, mmclose,
 		mmread, mmwrite, mmblindwrt,
-		mmnblocks, NULL, mmcommit, mmabort, NULL},
+	mmnblocks, NULL, mmcommit, mmabort, NULL},
 #endif
 };
 

@@ -38,14 +38,14 @@ euc_cn_to_utf8(PG_FUNCTION_ARGS)
 {
 	unsigned char *src = PG_GETARG_CSTRING(2);
 	unsigned char *dest = PG_GETARG_CSTRING(3);
-	int len = PG_GETARG_INT32(4);
+	int			len = PG_GETARG_INT32(4);
 
 	Assert(PG_GETARG_INT32(0) == PG_EUC_CN);
 	Assert(PG_GETARG_INT32(1) == PG_UTF8);
 	Assert(len > 0);
 
 	LocalToUtf(src, dest, LUmapEUC_CN,
-			   sizeof(LUmapEUC_CN) / sizeof(pg_local_to_utf), PG_EUC_CN, len);
+		  sizeof(LUmapEUC_CN) / sizeof(pg_local_to_utf), PG_EUC_CN, len);
 
 	PG_RETURN_INT32(0);
 }
@@ -55,7 +55,7 @@ utf8_to_euc_cn(PG_FUNCTION_ARGS)
 {
 	unsigned char *src = PG_GETARG_CSTRING(2);
 	unsigned char *dest = PG_GETARG_CSTRING(3);
-	int len = PG_GETARG_INT32(4);
+	int			len = PG_GETARG_INT32(4);
 
 	Assert(PG_GETARG_INT32(0) == PG_UTF8);
 	Assert(PG_GETARG_INT32(1) == PG_EUC_CN);

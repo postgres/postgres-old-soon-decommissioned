@@ -284,8 +284,9 @@ ExecEndSeqScan(SeqScan *node)
 	 * close the heap relation.
 	 *
 	 * Currently, we do not release the AccessShareLock acquired by
-	 * InitScanRelation.  This lock should be held till end of transaction.
-	 * (There is a faction that considers this too much locking, however.)
+	 * InitScanRelation.  This lock should be held till end of
+	 * transaction. (There is a faction that considers this too much
+	 * locking, however.)
 	 */
 	heap_close(relation, NoLock);
 

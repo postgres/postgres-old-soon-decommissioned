@@ -19,6 +19,6 @@
 
 extern int	copy_lineno;
 
-void DoCopy(const CopyStmt *stmt);
+void		DoCopy(const CopyStmt *stmt);
 
 #endif   /* COPY_H */

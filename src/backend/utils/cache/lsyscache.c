@@ -349,7 +349,7 @@ op_mergejoinable(Oid opno, Oid ltype, Oid rtype, Oid *leftOp, Oid *rightOp)
  *
  *		Returns the cross-type comparison operators (ltype "<" rtype and
  *		ltype ">" rtype) for an operator previously determined to be
- *		mergejoinable.  Optionally, fetches the regproc ids of these
+ *		mergejoinable.	Optionally, fetches the regproc ids of these
  *		operators, as well as their operator OIDs.
  */
 void
@@ -651,7 +651,7 @@ get_relname_relid(const char *relname, Oid relnamespace)
 Oid
 get_system_catalog_relid(const char *catname)
 {
-	Oid		relid;
+	Oid			relid;
 
 	relid = GetSysCacheOid(RELNAMENSP,
 						   PointerGetDatum(catname),
@@ -737,7 +737,7 @@ get_rel_namespace(Oid relid)
 	if (HeapTupleIsValid(tp))
 	{
 		Form_pg_class reltup = (Form_pg_class) GETSTRUCT(tp);
-		Oid		result;
+		Oid			result;
 
 		result = reltup->relnamespace;
 		ReleaseSysCache(tp);
@@ -766,7 +766,7 @@ get_rel_type_id(Oid relid)
 	if (HeapTupleIsValid(tp))
 	{
 		Form_pg_class reltup = (Form_pg_class) GETSTRUCT(tp);
-		Oid		result;
+		Oid			result;
 
 		result = reltup->reltype;
 		ReleaseSysCache(tp);
@@ -1105,8 +1105,8 @@ getBaseTypeMod(Oid typid, int32 typmod)
 		/*
 		 * The typmod applied to a domain should always be -1.
 		 *
-		 * We substitute the domain's typmod as we switch attention to
-		 * the base type.
+		 * We substitute the domain's typmod as we switch attention to the
+		 * base type.
 		 */
 		Assert(typmod < 0);
 

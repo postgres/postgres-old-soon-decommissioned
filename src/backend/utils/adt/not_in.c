@@ -60,8 +60,8 @@ int4notin(PG_FUNCTION_ARGS)
 	nnames = length(names);
 	if (nnames < 2)
 		elog(ERROR, "int4notin: must provide relationname.attributename");
-	attribute = strVal(nth(nnames-1, names));
-	names = ltruncate(nnames-1, names);
+	attribute = strVal(nth(nnames - 1, names));
+	names = ltruncate(nnames - 1, names);
 	relrv = makeRangeVarFromNameList(names);
 
 	/* Open the relation and get a relation descriptor */

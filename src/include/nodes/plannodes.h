@@ -249,7 +249,7 @@ typedef struct SubqueryScan
  */
 typedef struct FunctionScan
 {
-	Scan				scan;
+	Scan		scan;
 	/* no other fields needed at present */
 	/* scan.scanstate actually points at a FunctionScanState node */
 } FunctionScan;

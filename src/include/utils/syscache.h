@@ -87,7 +87,8 @@ extern Datum SysCacheGetAttr(int cacheId, HeapTuple tup,
 
 /* list-search interface.  Users of this must import catcache.h too */
 extern struct catclist *SearchSysCacheList(int cacheId, int nkeys,
-			   Datum key1, Datum key2, Datum key3, Datum key4);
-#define ReleaseSysCacheList(x)  ReleaseCatCacheList(x)
+				   Datum key1, Datum key2, Datum key3, Datum key4);
+
+#define ReleaseSysCacheList(x)	ReleaseCatCacheList(x)
 
 #endif   /* SYSCACHE_H */

@@ -662,8 +662,8 @@ cash_words(PG_FUNCTION_ARGS)
 
 	m0 = val % 100;				/* cents */
 	m1 = (val / 100) % 1000;	/* hundreds */
-	m2 = (val / 100000) % 1000;	/* thousands */
-	m3 = val / 100000000 % 1000; /* millions */
+	m2 = (val / 100000) % 1000; /* thousands */
+	m3 = val / 100000000 % 1000;	/* millions */
 
 	if (m3)
 	{

@@ -85,8 +85,8 @@ void
 RemoveRewriteRuleById(Oid ruleOid)
 {
 	Relation	RewriteRelation;
-	ScanKeyData		skey[1];
-	SysScanDesc		rcscan;
+	ScanKeyData skey[1];
+	SysScanDesc rcscan;
 	Relation	event_relation;
 	HeapTuple	tuple;
 	Oid			eventRelationOid;

@@ -111,7 +111,7 @@ typedef struct ControlFileData
 	uint32		funcMaxArgs;	/* maximum number of function arguments */
 
 	/* flag indicating internal format of timestamp, interval, time */
-	uint32		enableIntTimes;	/* int64 storage enabled? */
+	uint32		enableIntTimes; /* int64 storage enabled? */
 
 	/* active locales */
 	uint32		localeBuflen;

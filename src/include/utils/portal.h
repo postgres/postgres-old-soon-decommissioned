@@ -49,7 +49,7 @@ typedef struct PortalData
 #define PortalGetQueryDesc(portal)	((portal)->queryDesc)
 #define PortalGetTupleDesc(portal)	((portal)->attinfo)
 #define PortalGetState(portal)		((portal)->state)
-#define PortalGetHeapMemory(portal)	((portal)->heap)
+#define PortalGetHeapMemory(portal) ((portal)->heap)
 
 /*
  * estimate of the maximum number of open portals a user would have,

@@ -19,9 +19,9 @@
 extern DestReceiver *printtup_create_DR(bool isBinary);
 
 extern void debugSetup(DestReceiver *self, int operation,
-					   const char *portalName, TupleDesc typeinfo);
+		   const char *portalName, TupleDesc typeinfo);
 extern void debugtup(HeapTuple tuple, TupleDesc typeinfo,
-					 DestReceiver *self);
+		 DestReceiver *self);
 
 /* XXX this one is really in executor/spi.c */
 extern void spi_printtup(HeapTuple tuple, TupleDesc tupdesc,

@@ -36,6 +36,7 @@ CATALOG(pg_shadow) BOOTSTRAP BKI_SHARED_RELATION BKI_WITHOUT_OIDS
 	bool		usecreatedb;
 	bool		usesuper;		/* read this field via superuser() only */
 	bool		usecatupd;
+
 	/* remaining fields may be null; use heap_getattr to read them! */
 	text		passwd;
 	int4		valuntil;		/* actually abstime */

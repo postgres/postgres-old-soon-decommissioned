@@ -127,11 +127,11 @@ main(int argc, char *argv[])
 	if (!EQ_CRC64(crc, ControlFile.crc))
 		printf(_("WARNING: Calculated CRC checksum does not match value stored in file.\n"
 				 "Either the file is corrupt, or it has a different layout than this program\n"
-				 "is expecting.  The results below are untrustworthy.\n\n"));
+			 "is expecting.  The results below are untrustworthy.\n\n"));
 
 	/*
-	 * Use variable for format to suppress overly-anal-retentive gcc warning
-	 * about %c
+	 * Use variable for format to suppress overly-anal-retentive gcc
+	 * warning about %c
 	 */
 	strftime(pgctime_str, sizeof(pgctime_str), strftime_fmt,
 			 localtime(&(ControlFile.time)));

@@ -54,7 +54,7 @@ extern void cost_index(Path *path, Query *root,
 extern void cost_tidscan(Path *path, Query *root,
 			 RelOptInfo *baserel, List *tideval);
 extern void cost_functionscan(Path *path, Query *root,
-							  RelOptInfo *baserel);
+				  RelOptInfo *baserel);
 extern void cost_sort(Path *path, Query *root,
 		  List *pathkeys, double tuples, int width);
 extern void cost_nestloop(Path *path, Query *root,

@@ -82,7 +82,7 @@ pglo_import(LODumpMaster * pgLO)
 		 * UPDATE oid in tab
 		 */
 		snprintf(Qbuff, QUERY_BUFSIZ,
-			"UPDATE \"%s\" SET \"%s\"=%u WHERE \"%s\"=%u",
+				 "UPDATE \"%s\" SET \"%s\"=%u WHERE \"%s\"=%u",
 			loa.lo_table, loa.lo_attr, new_oid, loa.lo_attr, loa.lo_oid);
 
 		/* fprintf(stderr, Qbuff); */

@@ -90,8 +90,10 @@ ECPGtrans(int lineno, const char *connection_name, const char *transaction)
 	/* if we have no connection we just simulate the command */
 	if (con && con->connection)
 	{
-		/* if we are not in autocommit mode, already have committed 
-		 * the transaction and get another commit, just ignore it */
+		/*
+		 * if we are not in autocommit mode, already have committed the
+		 * transaction and get another commit, just ignore it
+		 */
 		if (!con->committed || con->autocommit)
 		{
 			if ((res = PQexec(con->connection, transaction)) == NULL)

@@ -58,7 +58,7 @@ typedef struct tupleDesc
 extern TupleDesc CreateTemplateTupleDesc(int natts, bool hasoid);
 
 extern TupleDesc CreateTupleDesc(int natts, bool hasoid,
-								 Form_pg_attribute *attrs);
+				Form_pg_attribute *attrs);
 
 extern TupleDesc CreateTupleDescCopy(TupleDesc tupdesc);
 

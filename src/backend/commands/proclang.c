@@ -41,7 +41,8 @@ void
 CreateProceduralLanguage(CreatePLangStmt *stmt)
 {
 	char		languageName[NAMEDATALEN];
-	Oid			procOid, valProcOid;
+	Oid			procOid,
+				valProcOid;
 	Oid			typev[FUNC_MAX_ARGS];
 	char		nulls[Natts_pg_language];
 	Datum		values[Natts_pg_language];
@@ -49,8 +50,8 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 	HeapTuple	tup;
 	TupleDesc	tupDesc;
 	int			i;
-	ObjectAddress	myself,
-					referenced;
+	ObjectAddress myself,
+				referenced;
 
 	/*
 	 * Check permission

@@ -39,13 +39,13 @@ extern bool IsPreferredType(CATEGORY category, Oid type);
 extern CATEGORY TypeCategory(Oid type);
 
 extern bool can_coerce_type(int nargs, Oid *input_typeids, Oid *func_typeids,
-							bool isExplicit);
+				bool isExplicit);
 extern Node *coerce_type(ParseState *pstate, Node *node, Oid inputTypeId,
 			Oid targetTypeId, int32 atttypmod, bool isExplicit);
 extern Node *coerce_type_typmod(ParseState *pstate, Node *node,
 				   Oid targetTypeId, int32 atttypmod);
 extern Node *coerce_type_constraints(ParseState *pstate, Node *arg,
-									 Oid typeId, bool applyTypmod);
+						Oid typeId, bool applyTypmod);
 
 extern Node *coerce_to_boolean(Node *node, const char *constructName);
 

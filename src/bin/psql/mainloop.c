@@ -396,15 +396,15 @@ MainLoop(FILE *source)
 
 					if (i < len)
 					{
-						thislen = PQmblen(line+i, pset.encoding);
+						thislen = PQmblen(line + i, pset.encoding);
 						goto rescan;	/* reparse the just substituted */
 					}
 				}
 				else
 				{
 					/*
-					 * if the variable doesn't exist we'll leave the string as
-					 * is ... move on ...
+					 * if the variable doesn't exist we'll leave the
+					 * string as is ... move on ...
 					 */
 				}
 			}

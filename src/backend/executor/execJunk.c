@@ -383,8 +383,8 @@ ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot)
 	 * information for the new "clean" tuple.
 	 *
 	 * Note: we use memory on the stack to optimize things when we are
-	 * dealing with a small number of attributes. for large tuples we
-	 * just use palloc.
+	 * dealing with a small number of attributes. for large tuples we just
+	 * use palloc.
 	 */
 	if (cleanLength > 64)
 	{

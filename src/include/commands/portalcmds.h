@@ -26,7 +26,7 @@
  *		"ERROR" if portal not found.
  */
 extern void PerformPortalFetch(char *name, bool forward, int count,
-							   CommandDest dest, char *completionTag);
+				   CommandDest dest, char *completionTag);
 
 /*
  * PerformPortalClose
@@ -36,4 +36,4 @@ extern void PerformPortalClose(char *name, CommandDest dest);
 
 extern void PortalCleanup(Portal portal);
 
-#endif  /* PORTALCMDS_H */
+#endif   /* PORTALCMDS_H */

@@ -850,8 +850,8 @@ repeat(PG_FUNCTION_ARGS)
 	/* Check for integer overflow */
 	if (slen != 0 && count != 0)
 	{
-		int check = count * slen;
-		int check2 = check + VARHDRSZ;
+		int			check = count * slen;
+		int			check2 = check + VARHDRSZ;
 
 		if ((check / slen) != count || check2 <= check)
 			elog(ERROR, "Requested buffer is too large.");

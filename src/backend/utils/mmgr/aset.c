@@ -206,6 +206,7 @@ static void AllocSetReset(MemoryContext context);
 static void AllocSetDelete(MemoryContext context);
 static Size AllocSetGetChunkSpace(MemoryContext context, void *pointer);
 static void AllocSetStats(MemoryContext context);
+
 #ifdef MEMORY_CONTEXT_CHECKING
 static void AllocSetCheck(MemoryContext context);
 #endif
@@ -223,7 +224,7 @@ static MemoryContextMethods AllocSetMethods = {
 	AllocSetGetChunkSpace,
 	AllocSetStats
 #ifdef MEMORY_CONTEXT_CHECKING
-	, AllocSetCheck
+	,AllocSetCheck
 #endif
 };
 

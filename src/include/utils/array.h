@@ -105,12 +105,12 @@ extern ArrayType *array_set_slice(ArrayType *array, int nSubscripts,
 extern Datum array_map(FunctionCallInfo fcinfo, Oid inpType, Oid retType);
 
 extern ArrayType *construct_array(Datum *elems, int nelems,
-								  Oid elmtype,
-								  int elmlen, bool elmbyval, char elmalign);
+				Oid elmtype,
+				int elmlen, bool elmbyval, char elmalign);
 extern void deconstruct_array(ArrayType *array,
-							  Oid elmtype,
-							  int elmlen, bool elmbyval, char elmalign,
-							  Datum **elemsp, int *nelemsp);
+				  Oid elmtype,
+				  int elmlen, bool elmbyval, char elmalign,
+				  Datum **elemsp, int *nelemsp);
 
 
 /*

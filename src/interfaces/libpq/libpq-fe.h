@@ -105,7 +105,7 @@ typedef struct pg_result PGresult;
  */
 typedef struct pgNotify
 {
-	char		*relname;		/* name of relation containing data */
+	char	   *relname;		/* name of relation containing data */
 	int			be_pid;			/* process id of backend */
 } PGnotify;
 
@@ -252,7 +252,7 @@ extern size_t PQescapeString(char *to, const char *from, size_t length);
 extern unsigned char *PQescapeBytea(unsigned char *bintext, size_t binlen,
 			  size_t *bytealen);
 extern unsigned char *PQunescapeBytea(unsigned char *strtext,
-			  size_t *retbuflen);
+				size_t *retbuflen);
 
 
 /* Simple synchronous query */

@@ -48,7 +48,7 @@
 #define IndexStrategyIsValid(s) PointerIsValid(s)
 
 extern ScanKey StrategyMapGetScanKeyEntry(StrategyMap map,
-										  StrategyNumber strategyNumber);
+						   StrategyNumber strategyNumber);
 extern StrategyMap IndexStrategyGetStrategyMap(IndexStrategy indexStrategy,
 					  StrategyNumber maxStrategyNum, AttrNumber attrNum);
 

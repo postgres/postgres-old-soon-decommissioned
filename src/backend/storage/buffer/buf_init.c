@@ -231,6 +231,7 @@ InitBufferPoolAccess(void)
 	BufferBlockPointers = (Block *) calloc(NBuffers, sizeof(Block));
 	PrivateRefCount = (long *) calloc(NBuffers, sizeof(long));
 	BufferLocks = (bits8 *) calloc(NBuffers, sizeof(bits8));
+
 	/*
 	 * Convert shmem offsets into addresses as seen by this process. This
 	 * is just to speed up the BufferGetBlock() macro.

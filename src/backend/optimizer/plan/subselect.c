@@ -369,7 +369,7 @@ make_subplan(SubLink *slink)
 			}
 			if (use_material)
 			{
-				Plan   *matplan;
+				Plan	   *matplan;
 
 				matplan = (Plan *) make_material(plan->targetlist, plan);
 				/* kluge --- see comments above */
@@ -663,8 +663,8 @@ SS_finalize_plan(Plan *plan, List *rtable)
 		case T_Append:
 			foreach(lst, ((Append *) plan)->appendplans)
 				results.paramids = set_unioni(results.paramids,
-								 SS_finalize_plan((Plan *) lfirst(lst),
-												  rtable));
+								   SS_finalize_plan((Plan *) lfirst(lst),
+													rtable));
 			break;
 
 		case T_NestLoop:

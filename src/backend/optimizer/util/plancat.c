@@ -163,7 +163,7 @@ find_secondary_indexes(Oid relationObjectId)
 		MemSet(info->ordering, 0, sizeof(Oid) * (INDEX_MAX_KEYS + 1));
 		if (amorderstrategy != 0)
 		{
-			int		oprindex = amorderstrategy - 1;
+			int			oprindex = amorderstrategy - 1;
 
 			for (i = 0; i < info->ncolumns; i++)
 			{

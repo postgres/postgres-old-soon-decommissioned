@@ -19,6 +19,6 @@
 extern void DefineQueryRewrite(RuleStmt *args);
 
 extern void RenameRewriteRule(Oid owningRel, const char *oldName,
-							  const char *newName);
+				  const char *newName);
 
 #endif   /* REWRITEDEFINE_H */

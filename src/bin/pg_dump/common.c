@@ -30,11 +30,11 @@
 #endif
 
 static void findParentsByOid(TableInfo *tblinfo, int numTables,
-							 InhInfo *inhinfo, int numInherits,
-							 const char *oid,
-							 int *numParentsPtr, int **parentIndexes);
+				 InhInfo *inhinfo, int numInherits,
+				 const char *oid,
+				 int *numParentsPtr, int **parentIndexes);
 static void flagInhTables(TableInfo *tbinfo, int numTables,
-			 InhInfo *inhinfo, int numInherits);
+			  InhInfo *inhinfo, int numInherits);
 static void flagInhAttrs(TableInfo *tbinfo, int numTables,
 			 InhInfo *inhinfo, int numInherits);
 static int	strInArray(const char *pattern, char **arr, int arr_size);

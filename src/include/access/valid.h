@@ -78,7 +78,7 @@ do \
  *		HeapTupleSatisfies
  *
  *	res is set TRUE if the HeapTuple satisfies the timequal and keytest,
- *	otherwise it is set FALSE.  Note that the hint bits in the HeapTuple's
+ *	otherwise it is set FALSE.	Note that the hint bits in the HeapTuple's
  *	t_infomask may be updated as a side effect.
  *
  *	on 8/21/92 mao says:  i rearranged the tests here to do keytest before

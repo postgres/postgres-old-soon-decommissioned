@@ -29,10 +29,10 @@
 #include <string.h>
 #include <unistd.h>				/* for dup */
 
-static size_t	_WriteData(ArchiveHandle *AH, const void *data, size_t dLen);
+static size_t _WriteData(ArchiveHandle *AH, const void *data, size_t dLen);
 static void _EndData(ArchiveHandle *AH, TocEntry *te);
 static int	_WriteByte(ArchiveHandle *AH, const int i);
-static size_t	_WriteBuf(ArchiveHandle *AH, const void *buf, size_t len);
+static size_t _WriteBuf(ArchiveHandle *AH, const void *buf, size_t len);
 static void _CloseArchive(ArchiveHandle *AH);
 static void _PrintTocData(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt);
 

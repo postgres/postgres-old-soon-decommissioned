@@ -9,7 +9,7 @@
 
 /* This file is shared by psql and pg_dump. */
 
- 
+
 /*
  * simple_prompt
  *
@@ -28,7 +28,7 @@
 #include <termios.h>
 #endif
 
-bool prompt_state = false;
+bool		prompt_state = false;
 extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
 
 char *

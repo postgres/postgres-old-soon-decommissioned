@@ -31,9 +31,7 @@ ExceptionalCondition(char *conditionName,
 	if (!PointerIsValid(conditionName)
 		|| !PointerIsValid(fileName)
 		|| !PointerIsValid(errorType))
-	{
 		fprintf(stderr, "TRAP: ExceptionalCondition: bad arguments\n");
-	}
 	else
 	{
 		fprintf(stderr, "TRAP: %s(\"%s\", File: \"%s\", Line: %d)\n",

@@ -134,16 +134,16 @@ extern void fmgr_info_copy(FmgrInfo *dstinfo, FmgrInfo *srcinfo,
  */
 extern struct varlena *pg_detoast_datum(struct varlena * datum);
 extern struct varlena *pg_detoast_datum_copy(struct varlena * datum);
-extern struct varlena *pg_detoast_datum_slice(struct varlena * datum, 
-											  int32 first, int32 count); 
+extern struct varlena *pg_detoast_datum_slice(struct varlena * datum,
+					   int32 first, int32 count);
 
 #define PG_DETOAST_DATUM(datum) \
 	pg_detoast_datum((struct varlena *) DatumGetPointer(datum))
 #define PG_DETOAST_DATUM_COPY(datum) \
 	pg_detoast_datum_copy((struct varlena *) DatumGetPointer(datum))
 #define PG_DETOAST_DATUM_SLICE(datum,f,c) \
-        pg_detoast_datum_slice((struct varlena *) DatumGetPointer(datum), \
-        (int32) f, (int32) c)
+		pg_detoast_datum_slice((struct varlena *) DatumGetPointer(datum), \
+		(int32) f, (int32) c)
 
 /*
  * Support for cleaning up detoasted copies of inputs.	This must only
@@ -192,8 +192,8 @@ extern struct varlena *pg_detoast_datum_slice(struct varlena * datum,
 #define DatumGetBpCharPCopy(X)		((BpChar *) PG_DETOAST_DATUM_COPY(X))
 #define DatumGetVarCharPCopy(X)		((VarChar *) PG_DETOAST_DATUM_COPY(X))
 /* Variants which return n bytes starting at pos. m */
-#define DatumGetByteaPSlice(X,m,n)  ((bytea *) PG_DETOAST_DATUM_SLICE(X,m,n))
-#define DatumGetTextPSlice(X,m,n)   ((text *) PG_DETOAST_DATUM_SLICE(X,m,n))
+#define DatumGetByteaPSlice(X,m,n)	((bytea *) PG_DETOAST_DATUM_SLICE(X,m,n))
+#define DatumGetTextPSlice(X,m,n)	((text *) PG_DETOAST_DATUM_SLICE(X,m,n))
 #define DatumGetBpCharPSlice(X,m,n) ((BpChar *) PG_DETOAST_DATUM_SLICE(X,m,n))
 #define DatumGetVarCharPSlice(X,m,n) ((VarChar *) PG_DETOAST_DATUM_SLICE(X,m,n))
 /* GETARG macros for varlena types will typically look like this: */

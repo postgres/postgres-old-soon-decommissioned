@@ -34,6 +34,6 @@ extern void parser_init(void);
 extern int	yyparse(void);
 extern List *SystemFuncName(char *name);
 extern TypeName *SystemTypeName(char *name);
-extern bool	exprIsNullConstant(Node *arg);
+extern bool exprIsNullConstant(Node *arg);
 
 #endif   /* GRAMPARSE_H */

@@ -171,7 +171,7 @@ sort_inner_and_outer(Query *root,
 		default:
 			elog(ERROR, "sort_inner_and_outer: unexpected join type %d",
 				 (int) jointype);
-			useallclauses = false;	/* keep compiler quiet */
+			useallclauses = false;		/* keep compiler quiet */
 			break;
 	}
 

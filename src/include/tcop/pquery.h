@@ -19,7 +19,7 @@
 
 
 extern void ProcessQuery(Query *parsetree, Plan *plan, CommandDest dest,
-						 char *completionTag);
+			 char *completionTag);
 
 extern EState *CreateExecutorState(void);
 

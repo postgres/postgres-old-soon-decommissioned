@@ -976,7 +976,7 @@ compile_pltcl_function(Oid fn_oid, bool is_trigger)
 		prodesc = (pltcl_proc_desc *) Tcl_GetHashValue(hashent);
 
 		uptodate = (prodesc->fn_xmin == HeapTupleHeaderGetXmin(procTup->t_data) &&
-					prodesc->fn_cmin == HeapTupleHeaderGetCmin(procTup->t_data));
+			prodesc->fn_cmin == HeapTupleHeaderGetCmin(procTup->t_data));
 
 		if (!uptodate)
 		{
@@ -1060,7 +1060,7 @@ compile_pltcl_function(Oid fn_oid, bool is_trigger)
 			if (typeStruct->typtype == 'p')
 			{
 				if (procStruct->prorettype == VOIDOID)
-					/* okay */;
+					 /* okay */ ;
 				else if (procStruct->prorettype == TRIGGEROID ||
 						 procStruct->prorettype == OPAQUEOID)
 				{

@@ -40,7 +40,7 @@ euc_kr_to_mic(PG_FUNCTION_ARGS)
 {
 	unsigned char *src = PG_GETARG_CSTRING(2);
 	unsigned char *dest = PG_GETARG_CSTRING(3);
-	int len = PG_GETARG_INT32(4);
+	int			len = PG_GETARG_INT32(4);
 
 	Assert(PG_GETARG_INT32(0) == PG_EUC_KR);
 	Assert(PG_GETARG_INT32(1) == PG_MULE_INTERNAL);
@@ -56,7 +56,7 @@ mic_to_euc_kr(PG_FUNCTION_ARGS)
 {
 	unsigned char *src = PG_GETARG_CSTRING(2);
 	unsigned char *dest = PG_GETARG_CSTRING(3);
-	int len = PG_GETARG_INT32(4);
+	int			len = PG_GETARG_INT32(4);
 
 	Assert(PG_GETARG_INT32(0) == PG_MULE_INTERNAL);
 	Assert(PG_GETARG_INT32(1) == PG_EUC_KR);
@@ -122,4 +122,3 @@ mic2euc_kr(unsigned char *mic, unsigned char *p, int len)
 	}
 	*p = '\0';
 }
-

@@ -63,8 +63,8 @@ pg_atoi(char *s, int size, int c)
 	errno = 0;
 
 	/*
-	 * Some versions of strtol treat the empty string as an error, but some
-	 * seem not to.  Make an explicit test to be sure we catch it.
+	 * Some versions of strtol treat the empty string as an error, but
+	 * some seem not to.  Make an explicit test to be sure we catch it.
 	 */
 
 	if (s == (char *) NULL)

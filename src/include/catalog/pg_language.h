@@ -38,7 +38,7 @@ CATALOG(pg_language)
 	bool		lanpltrusted;	/* PL is trusted */
 	Oid			lanplcallfoid;	/* Call handler for PL */
 	Oid			lanvalidator;	/* optional validation function */
-    aclitem		lanacl[1];		/* Access privileges */
+	aclitem		lanacl[1];		/* Access privileges */
 } FormData_pg_language;
 
 /* ----------------

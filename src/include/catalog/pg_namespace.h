@@ -40,7 +40,7 @@ CATALOG(pg_namespace)
 {
 	NameData	nspname;
 	int4		nspowner;
-    aclitem		nspacl[1];		/* VARIABLE LENGTH FIELD */
+	aclitem		nspacl[1];		/* VARIABLE LENGTH FIELD */
 } FormData_pg_namespace;
 
 /* ----------------

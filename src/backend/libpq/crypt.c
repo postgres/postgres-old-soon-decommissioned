@@ -35,9 +35,9 @@ md5_crypt_verify(const Port *port, const char *user, const char *pgpass)
 			   *valuntil = NULL,
 			   *crypt_pwd;
 	int			retval = STATUS_ERROR;
-	List	   **line;
-	List		*token;
-	
+	List	  **line;
+	List	   *token;
+
 	if ((line = get_user_line(user)) == NULL)
 		return STATUS_ERROR;
 
@@ -50,7 +50,7 @@ md5_crypt_verify(const Port *port, const char *user, const char *pgpass)
 		if (token)
 			valuntil = lfirst(token);
 	}
-	
+
 	if (passwd == NULL || *passwd == '\0')
 		return STATUS_ERROR;
 

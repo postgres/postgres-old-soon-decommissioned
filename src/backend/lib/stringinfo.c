@@ -120,7 +120,7 @@ appendStringInfo(StringInfo str, const char *fmt,...)
 			 * an example of a platform with such a bug.
 			 */
 #ifdef USE_ASSERT_CHECKING
-			str->data[str->maxlen-1] = '\0';
+			str->data[str->maxlen - 1] = '\0';
 #endif
 
 			va_start(args, fmt);
@@ -128,7 +128,7 @@ appendStringInfo(StringInfo str, const char *fmt,...)
 								 fmt, args);
 			va_end(args);
 
-			Assert(str->data[str->maxlen-1] == '\0');
+			Assert(str->data[str->maxlen - 1] == '\0');
 
 			/*
 			 * Note: some versions of vsnprintf return the number of chars

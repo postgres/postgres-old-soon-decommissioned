@@ -23,4 +23,4 @@ extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
 extern const char *fmtId(const char *identifier);
 extern void appendStringLiteral(PQExpBuffer buf, const char *str, bool escapeAll);
 
-#endif /* DUMPUTILS_H */
+#endif   /* DUMPUTILS_H */

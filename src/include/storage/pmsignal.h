@@ -27,7 +27,7 @@ typedef enum
 	PMSIGNAL_WAKEN_CHILDREN,	/* send a NOTIFY signal to all backends */
 
 	NUM_PMSIGNALS				/* Must be last value of enum! */
-}	PMSignalReason;
+} PMSignalReason;
 
 /*
  * prototypes for functions in pmsignal.c

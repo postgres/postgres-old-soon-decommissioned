@@ -10,7 +10,7 @@
  *
  * To simplify life for the SysV implementation, the ID is assumed to
  * consist of two unsigned long values (these are key and ID in SysV
- * terms).  Other platforms may ignore the second value if they need
+ * terms).	Other platforms may ignore the second value if they need
  * only one ID number.
  *
  *
@@ -35,7 +35,7 @@ typedef struct PGShmemHeader	/* standard header for all Postgres shmem */
 
 
 extern PGShmemHeader *PGSharedMemoryCreate(uint32 size, bool makePrivate,
-										   int port);
+					 int port);
 extern bool PGSharedMemoryIsInUse(unsigned long id1, unsigned long id2);
 
 #endif   /* PG_SHMEM_H */

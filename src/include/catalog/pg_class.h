@@ -146,9 +146,9 @@ DATA(insert OID = 1260 (  pg_shadow		PGNSP 86 PGUID 0 1260 0 0 0 0 f t r 8  0 0 
 DESCR("");
 DATA(insert OID = 1261 (  pg_group		PGNSP 87 PGUID 0 1261 0 0 0 0 f t r 3  0 0 0 0 0 f f f f _null_ ));
 DESCR("");
-DATA(insert OID = 1262 (  pg_database	PGNSP 88 PGUID 0 1262 0 0 0 0 f t r 11  0 0 0 0 0 t f f f _null_ ));
+DATA(insert OID = 1262 (  pg_database	PGNSP 88 PGUID 0 1262 0 0 0 0 f t r 11	0 0 0 0 0 t f f f _null_ ));
 DESCR("");
-DATA(insert OID = 376  (  pg_xactlock	PGNSP  0 PGUID 0    0 0 0 0 0 f t s 1  0 0 0 0 0 f f f f _null_ ));
+DATA(insert OID = 376  (  pg_xactlock	PGNSP  0 PGUID 0	0 0 0 0 0 f t s 1  0 0 0 0 0 f f f f _null_ ));
 DESCR("");
 
 #define RelOid_pg_type			1247

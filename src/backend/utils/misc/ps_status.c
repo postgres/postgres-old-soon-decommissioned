@@ -265,7 +265,7 @@ set_ps_display(const char *activity)
 
 #ifdef PS_USE_CLOBBER_ARGV
 	{
-		int		buflen;
+		int			buflen;
 
 		/* pad unused memory */
 		buflen = strlen(ps_buffer);

@@ -39,7 +39,7 @@ typedef struct QueryDesc
 
 /* in pquery.c */
 extern QueryDesc *CreateQueryDesc(Query *parsetree, Plan *plantree,
-								  CommandDest dest, const char *portalName);
+				CommandDest dest, const char *portalName);
 
 
 #endif   /* EXECDESC_H  */

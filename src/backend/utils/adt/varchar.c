@@ -182,6 +182,7 @@ bpchar(PG_FUNCTION_ARGS)
 
 	int			charlen;		/* number of charcters in the input string
 								 * + VARHDRSZ */
+
 	len = VARSIZE(source);
 
 	charlen = pg_mbstrlen_with_len(VARDATA(source), len - VARHDRSZ) + VARHDRSZ;

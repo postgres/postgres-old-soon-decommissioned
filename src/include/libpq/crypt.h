@@ -26,6 +26,7 @@ extern int md5_crypt_verify(const Port *port, const char *user,
 				 const char *pgpass);
 extern bool md5_hash(const void *buff, size_t len, char *hexsum);
 extern bool CheckMD5Pwd(char *passwd, char *storedpwd, char *seed);
+
 /* Also defined in interfaces/odbc/md5.h */
 extern bool EncryptMD5(const char *passwd, const char *salt,
 		   size_t salt_len, char *buf);

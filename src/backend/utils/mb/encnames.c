@@ -55,12 +55,12 @@ pg_encname	pg_encname_tbl[] =
 								 * for Japanese, stdandard OSF */
 	{
 		"euckr", PG_EUC_KR
-	},							/* EUC-KR; Extended Unix Code for
-                                                                 * Korean , KS X 1001 standard */
+	},							/* EUC-KR; Extended Unix Code for Korean ,
+								 * KS X 1001 standard */
 	{
 		"euctw", PG_EUC_TW
 	},							/* EUC-TW; Extended Unix Code for
-
+								 *
 								 * traditional Chinese */
 	{
 		"gb18030", PG_GB18030
@@ -171,7 +171,7 @@ pg_encname	pg_encname_tbl[] =
 		"tcvn", PG_TCVN
 	},							/* TCVN; Vietnamese TCVN-5712 */
 	{
-		"tcvn5712",PG_TCVN
+		"tcvn5712", PG_TCVN
 	},							/* alias for TCVN */
 	{
 		"uhc", PG_UHC

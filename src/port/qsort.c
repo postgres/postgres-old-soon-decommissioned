@@ -1,9 +1,9 @@
 /*
- *  Copied from NetBSD CVS, 2002-07-19, bjm
- *  Add do ... while() macro fix
- *  Remove __inline, _DIAGASSERTs, __P
+ *	Copied from NetBSD CVS, 2002-07-19, bjm
+ *	Add do ... while() macro fix
+ *	Remove __inline, _DIAGASSERTs, __P
  *
- *  $Header$
+ *	$Header$
  */
 
 /*	$NetBSD$ */
@@ -46,9 +46,9 @@
 #include <sys/types.h>
 
 
-static char *med3 (char *, char *, char *,
-				   int (*) (const void *, const void *));
-static void swapfunc (char *, char *, size_t, int);
+static char *med3(char *, char *, char *,
+	 int (*) (const void *, const void *));
+static void swapfunc(char *, char *, size_t, int);
 
 #define min(a, b)	((a) < (b) ? (a) : (b))
 

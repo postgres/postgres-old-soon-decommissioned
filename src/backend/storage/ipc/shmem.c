@@ -133,6 +133,7 @@ ShmemAlloc(Size size)
 {
 	uint32		newFree;
 	void	   *newSpace;
+
 	/* use volatile pointer to prevent code rearrangement */
 	volatile PGShmemHeader *shmemseghdr = ShmemSegHdr;
 

@@ -250,4 +250,4 @@ geqo_print_rel(Query *root, RelOptInfo *rel)
 	geqo_print_path(root, rel->cheapest_total_path, 1);
 }
 
-#endif	/* GEQO_DEBUG */
+#endif   /* GEQO_DEBUG */

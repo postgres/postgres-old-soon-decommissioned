@@ -30,7 +30,7 @@
 
 List	   *parsetree;			/* result of parsing is left here */
 
-static Oid	*param_type_info;	/* state for param_type() */
+static Oid *param_type_info;	/* state for param_type() */
 static int	param_count;
 
 static int	lookahead_token;	/* one-token lookahead */

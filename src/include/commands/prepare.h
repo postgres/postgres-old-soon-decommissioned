@@ -26,4 +26,4 @@ extern void DeallocateQuery(DeallocateStmt *stmt);
 
 extern List *FetchQueryParams(const char *plan_name);
 
-#endif /* PREPARE_H */
+#endif   /* PREPARE_H */

@@ -514,7 +514,7 @@ typedef struct
 	char	   *exitlabel;
 
 	Tuplestorestate *tuple_store;		/* SRFs accumulate results here */
-	MemoryContext	tuple_store_cxt;
+	MemoryContext tuple_store_cxt;
 	ReturnSetInfo *rsi;
 
 	int			trig_nargs;

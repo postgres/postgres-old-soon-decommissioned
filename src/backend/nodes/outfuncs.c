@@ -232,10 +232,10 @@ _outQuery(StringInfo str, Query *node)
 
 	/*
 	 * Hack to work around missing outfuncs routines for a lot of the
-	 * utility-statement node types.  (The only one we actually *need*
-	 * for rules support is NotifyStmt.)  Someday we ought to support
-	 * 'em all, but for the meantime do this to avoid getting lots of
-	 * warnings when running with debug_print_parse on.
+	 * utility-statement node types.  (The only one we actually *need* for
+	 * rules support is NotifyStmt.)  Someday we ought to support 'em all,
+	 * but for the meantime do this to avoid getting lots of warnings when
+	 * running with debug_print_parse on.
 	 */
 	if (node->utilityStmt)
 	{
@@ -832,13 +832,13 @@ static void
 _outArrayRef(StringInfo str, ArrayRef *node)
 {
 	appendStringInfo(str,
-		" ARRAYREF :refrestype %u :refattrlength %d :refelemlength %d ",
+		 " ARRAYREF :refrestype %u :refattrlength %d :refelemlength %d ",
 					 node->refrestype,
 					 node->refattrlength,
 					 node->refelemlength);
 
 	appendStringInfo(str,
-					 ":refelembyval %s :refelemalign %c :refupperindexpr ",
+				   ":refelembyval %s :refelemalign %c :refupperindexpr ",
 					 booltostr(node->refelembyval),
 					 node->refelemalign);
 	_outNode(str, node->refupperindexpr);
@@ -860,7 +860,7 @@ static void
 _outFunc(StringInfo str, Func *node)
 {
 	appendStringInfo(str,
-					 " FUNC :funcid %u :funcresulttype %u :funcretset %s ",
+				   " FUNC :funcid %u :funcresulttype %u :funcretset %s ",
 					 node->funcid,
 					 node->funcresulttype,
 					 booltostr(node->funcretset));
@@ -873,7 +873,7 @@ static void
 _outOper(StringInfo str, Oper *node)
 {
 	appendStringInfo(str,
-					 " OPER :opno %u :opid %u :opresulttype %u :opretset %s ",
+				" OPER :opno %u :opid %u :opresulttype %u :opretset %s ",
 					 node->opno,
 					 node->opid,
 					 node->opresulttype,
@@ -1324,6 +1324,7 @@ static void
 _outRangeVar(StringInfo str, RangeVar *node)
 {
 	appendStringInfo(str, " RANGEVAR :relation ");
+
 	/*
 	 * we deliberately ignore catalogname here, since it is presently not
 	 * semantically meaningful
@@ -1332,8 +1333,8 @@ _outRangeVar(StringInfo str, RangeVar *node)
 	appendStringInfo(str, " . ");
 	_outToken(str, node->relname);
 	appendStringInfo(str, " :inhopt %d :istemp %s",
-					(int) node->inhOpt,
-					booltostr(node->istemp));
+					 (int) node->inhOpt,
+					 booltostr(node->istemp));
 	appendStringInfo(str, " :alias ");
 	_outNode(str, node->alias);
 }

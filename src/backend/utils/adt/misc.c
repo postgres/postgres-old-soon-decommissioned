@@ -119,7 +119,7 @@ userfntest(PG_FUNCTION_ARGS)
 Datum
 current_database(PG_FUNCTION_ARGS)
 {
-	Name   db;
+	Name		db;
 
 	db = (Name) palloc(NAMEDATALEN);
 

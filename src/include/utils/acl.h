@@ -177,7 +177,7 @@ typedef enum
  */
 extern Acl *acldefault(GrantObjectType objtype, AclId ownerid);
 extern Acl *aclinsert3(const Acl *old_acl, const AclItem *mod_aip,
-					   unsigned modechg);
+		   unsigned modechg);
 
 /*
  * SQL functions (from acl.c)

@@ -148,8 +148,8 @@ extern long *LocalRefCount;
  */
 extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
 extern int	ReleaseBuffer(Buffer buffer);
-extern void	WriteBuffer(Buffer buffer);
-extern void	WriteNoReleaseBuffer(Buffer buffer);
+extern void WriteBuffer(Buffer buffer);
+extern void WriteNoReleaseBuffer(Buffer buffer);
 extern Buffer ReleaseAndReadBuffer(Buffer buffer, Relation relation,
 					 BlockNumber blockNum);
 
@@ -166,6 +166,7 @@ extern int	FlushRelationBuffers(Relation rel, BlockNumber firstDelBlock);
 extern void DropRelationBuffers(Relation rel);
 extern void DropRelFileNodeBuffers(RelFileNode rnode, bool istemp);
 extern void DropBuffers(Oid dbid);
+
 #ifdef NOT_USED
 extern void PrintPinnedBufs(void);
 #endif

@@ -102,13 +102,13 @@ extern varattrib *heap_tuple_untoast_attr(varattrib *attr);
 /* ----------
  * heap_tuple_untoast_attr_slice() -
  *
- *      Fetches only the specified portion of an attribute.
- *      (Handles all cases for attribute storage)
+ *		Fetches only the specified portion of an attribute.
+ *		(Handles all cases for attribute storage)
  * ----------
  */
-extern varattrib *heap_tuple_untoast_attr_slice(varattrib *attr, 
-												int32 sliceoffset,
-												int32 slicelength);
+extern varattrib *heap_tuple_untoast_attr_slice(varattrib *attr,
+							  int32 sliceoffset,
+							  int32 slicelength);
 
 /* ----------
  * toast_compress_datum -

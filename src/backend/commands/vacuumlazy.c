@@ -93,7 +93,7 @@ typedef struct LVRelStats
 } LVRelStats;
 
 
-static int elevel = -1;
+static int	elevel = -1;
 
 static TransactionId OldestXmin;
 static TransactionId FreezeLimit;
@@ -756,7 +756,7 @@ lazy_truncate_heap(Relation onerel, LVRelStats *vacrelstats)
 	 */
 
 	elog(elevel, "Truncated %u --> %u pages.\n\t%s", old_rel_pages,
-		new_rel_pages, vac_show_rusage(&ru0));
+		 new_rel_pages, vac_show_rusage(&ru0));
 }
 
 /*

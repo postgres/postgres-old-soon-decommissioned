@@ -52,19 +52,19 @@ extern void AddRelationRawConstraints(Relation rel,
 						  List *rawConstraints);
 
 extern Node *cookDefault(ParseState *pstate,
-						 Node *raw_default,
-						 Oid atttypid,
-						 int32 atttypmod,
-						 char *attname);
+			Node *raw_default,
+			Oid atttypid,
+			int32 atttypmod,
+			char *attname);
 
-extern int	RemoveRelConstraints(Relation rel, const char *constrName,
-								 DropBehavior behavior);
+extern int RemoveRelConstraints(Relation rel, const char *constrName,
+					 DropBehavior behavior);
 
 extern void DeleteRelationTuple(Oid relid);
 extern void DeleteAttributeTuples(Oid relid);
 extern void RemoveAttributeById(Oid relid, AttrNumber attnum);
 extern void RemoveAttrDefault(Oid relid, AttrNumber attnum,
-							  DropBehavior behavior, bool complain);
+				  DropBehavior behavior, bool complain);
 extern void RemoveAttrDefaultById(Oid attrdefId);
 
 extern Form_pg_attribute SystemAttributeDefinition(AttrNumber attno,

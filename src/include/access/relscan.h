@@ -58,11 +58,11 @@ typedef struct IndexScanDescData
 	void	   *opaque;			/* access-method-specific info */
 	ItemPointerData currentItemData;	/* current index pointer */
 	ItemPointerData currentMarkData;	/* marked position, if any */
+
 	/*
-	 * xs_ctup/xs_cbuf are valid after a successful index_getnext.
-	 * After index_getnext_indexitem, xs_ctup.t_self contains the
-	 * heap tuple TID from the index entry, but its other fields are
-	 * not valid.
+	 * xs_ctup/xs_cbuf are valid after a successful index_getnext. After
+	 * index_getnext_indexitem, xs_ctup.t_self contains the heap tuple TID
+	 * from the index entry, but its other fields are not valid.
 	 */
 	HeapTupleData xs_ctup;		/* current heap tuple, if any */
 	Buffer		xs_cbuf;		/* current heap buffer in scan, if any */

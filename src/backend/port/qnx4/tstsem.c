@@ -26,7 +26,7 @@
 #define SEMMAX	16
 #define OPSMAX	1
 
-int MaxBackends = SEMMAX;
+int			MaxBackends = SEMMAX;
 
 static int	semid;
 

@@ -45,7 +45,7 @@ static HashScanList HashScans = (HashScanList) NULL;
 
 
 static void _hash_scandel(IndexScanDesc scan,
-						  BlockNumber blkno, OffsetNumber offno);
+			  BlockNumber blkno, OffsetNumber offno);
 
 
 /*
@@ -158,7 +158,7 @@ _hash_scandel(IndexScanDesc scan, BlockNumber blkno, OffsetNumber offno)
 		 * then step backwards (affecting current), then exchange again.
 		 */
 		ItemPointerData tmpitem;
-		Buffer tmpbuf;
+		Buffer		tmpbuf;
 
 		tmpitem = *mark;
 		*mark = *current;

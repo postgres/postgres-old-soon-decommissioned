@@ -18,7 +18,7 @@
 
 
 extern void RemoveRewriteRule(Oid owningRel, const char *ruleName,
-							  DropBehavior behavior);
+				  DropBehavior behavior);
 extern void RemoveRewriteRuleById(Oid ruleOid);
 
 #endif   /* REWRITEREMOVE_H */

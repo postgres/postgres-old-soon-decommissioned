@@ -113,6 +113,7 @@ typedef struct RelationData
 								 * InvalidBlockNumber */
 	int			rd_refcnt;		/* reference count */
 	bool		rd_isnew;		/* rel was created in current xact */
+
 	/*
 	 * NOTE: rd_isnew should be relied on only for optimization purposes;
 	 * it is possible for new-ness to be "forgotten" (eg, after CLUSTER).

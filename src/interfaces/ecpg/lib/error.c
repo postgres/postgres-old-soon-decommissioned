@@ -84,7 +84,7 @@ ECPGraise(int line, int code, const char *str)
 
 		case ECPG_ARRAY_INSERT:
 			snprintf(sqlca.sqlerrm.sqlerrmc, sizeof(sqlca.sqlerrm.sqlerrmc),
-					 "Trying to insert an array of variables in line %d.", line);
+			 "Trying to insert an array of variables in line %d.", line);
 			break;
 
 		case ECPG_NO_CONN:

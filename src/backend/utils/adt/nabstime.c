@@ -980,8 +980,10 @@ interval_reltime(PG_FUNCTION_ARGS)
 	RelativeTime time;
 	int			year,
 				month;
+
 #ifdef HAVE_INT64_TIMESTAMP
 	int64		span;
+
 #else
 	double		span;
 #endif

@@ -38,14 +38,14 @@ gb18030_to_utf8(PG_FUNCTION_ARGS)
 {
 	unsigned char *src = PG_GETARG_CSTRING(2);
 	unsigned char *dest = PG_GETARG_CSTRING(3);
-	int len = PG_GETARG_INT32(4);
+	int			len = PG_GETARG_INT32(4);
 
 	Assert(PG_GETARG_INT32(0) == PG_GB18030);
 	Assert(PG_GETARG_INT32(1) == PG_UTF8);
 	Assert(len > 0);
 
 	LocalToUtf(src, dest, LUmapGB18030,
-			   sizeof(LUmapGB18030) / sizeof(pg_local_to_utf), PG_GB18030, len);
+		sizeof(LUmapGB18030) / sizeof(pg_local_to_utf), PG_GB18030, len);
 
 	PG_RETURN_INT32(0);
 }
@@ -55,7 +55,7 @@ utf8_to_gb18030(PG_FUNCTION_ARGS)
 {
 	unsigned char *src = PG_GETARG_CSTRING(2);
 	unsigned char *dest = PG_GETARG_CSTRING(3);
-	int len = PG_GETARG_INT32(4);
+	int			len = PG_GETARG_INT32(4);
 
 	Assert(PG_GETARG_INT32(0) == PG_UTF8);
 	Assert(PG_GETARG_INT32(1) == PG_GB18030);

@@ -53,6 +53,7 @@ void
 ECPGadd_mem(void *ptr, int lineno)
 {
 	struct auto_mem *am = (struct auto_mem *) ECPGalloc(sizeof(struct auto_mem), lineno);
+
 	am->pointer = ptr;
 	am->next = auto_allocs;
 	auto_allocs = am;

@@ -269,7 +269,7 @@ postquel_start(execution_state *es)
 static TupleTableSlot *
 postquel_getnext(execution_state *es)
 {
-	long	count;
+	long		count;
 
 	if (es->qd->operation == CMD_UTILITY)
 	{
@@ -566,8 +566,8 @@ fmgr_sql(PG_FUNCTION_ARGS)
 			elog(ERROR, "Set-valued function called in context that cannot accept a set");
 
 		/*
-		 * Ensure we will get shut down cleanly if the exprcontext is
-		 * not run to completion.
+		 * Ensure we will get shut down cleanly if the exprcontext is not
+		 * run to completion.
 		 */
 		if (!fcache->shutdown_reg)
 		{

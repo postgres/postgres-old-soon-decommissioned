@@ -91,8 +91,8 @@ GetDatabasePath(Oid tblNode)
 bool
 IsSystemRelation(Relation relation)
 {
-	return	IsSystemNamespace(RelationGetNamespace(relation)) ||
-			IsToastNamespace(RelationGetNamespace(relation));
+	return IsSystemNamespace(RelationGetNamespace(relation)) ||
+		IsToastNamespace(RelationGetNamespace(relation));
 }
 
 /*
@@ -104,10 +104,10 @@ IsSystemRelation(Relation relation)
 bool
 IsSystemClass(Form_pg_class reltuple)
 {
-	Oid		relnamespace = reltuple->relnamespace;
+	Oid			relnamespace = reltuple->relnamespace;
 
-	return	IsSystemNamespace(relnamespace) ||
-			IsToastNamespace(relnamespace);
+	return IsSystemNamespace(relnamespace) ||
+		IsToastNamespace(relnamespace);
 }
 
 /*
@@ -129,9 +129,9 @@ IsToastRelation(Relation relation)
 bool
 IsToastClass(Form_pg_class reltuple)
 {
-	Oid		relnamespace = reltuple->relnamespace;
+	Oid			relnamespace = reltuple->relnamespace;
 
-	return	IsToastNamespace(relnamespace);
+	return IsToastNamespace(relnamespace);
 }
 
 /*

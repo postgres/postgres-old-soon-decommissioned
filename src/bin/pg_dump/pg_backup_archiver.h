@@ -229,7 +229,7 @@ typedef struct _archiveHandle
 
 	RestoreOptions *ropt;		/* Used to check restore options in
 								 * ahwrite etc */
-	void                    *lo_buf;
+	void	   *lo_buf;
 	size_t		lo_buf_used;
 	size_t		lo_buf_size;
 } ArchiveHandle;
@@ -241,7 +241,7 @@ typedef struct _tocEntry
 	int			id;
 	int			hadDumper;		/* Archiver was passed a dumper routine
 								 * (used in restore) */
-	char	   *tag;				/* index tag */
+	char	   *tag;			/* index tag */
 	char	   *namespace;		/* null or empty string if not in a schema */
 	char	   *owner;
 	char	   *desc;
@@ -282,10 +282,10 @@ extern int	TocIDRequired(ArchiveHandle *AH, int id, RestoreOptions *ropt);
  * Mandatory routines for each supported format
  */
 
-extern size_t	WriteInt(ArchiveHandle *AH, int i);
+extern size_t WriteInt(ArchiveHandle *AH, int i);
 extern int	ReadInt(ArchiveHandle *AH);
 extern char *ReadStr(ArchiveHandle *AH);
-extern size_t	WriteStr(ArchiveHandle *AH, const char *s);
+extern size_t WriteStr(ArchiveHandle *AH, const char *s);
 
 extern void StartRestoreBlobs(ArchiveHandle *AH);
 extern void StartRestoreBlob(ArchiveHandle *AH, Oid oid);

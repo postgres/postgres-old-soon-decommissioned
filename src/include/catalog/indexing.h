@@ -90,7 +90,7 @@ typedef struct ResultRelInfo *CatalogIndexState;
 extern CatalogIndexState CatalogOpenIndexes(Relation heapRel);
 extern void CatalogCloseIndexes(CatalogIndexState indstate);
 extern void CatalogIndexInsert(CatalogIndexState indstate,
-							   HeapTuple heapTuple);
+				   HeapTuple heapTuple);
 extern void CatalogUpdateIndexes(Relation heapRel, HeapTuple heapTuple);
 
 

@@ -116,11 +116,11 @@ typedef uint32 PacketLen;
  * actual limits on database & user name will then be NAMEDATALEN, which
  * can be changed without changing the FE/BE protocol. -neilc,2002/08/27
  */
- 
+
 #define SM_DATABASE		64
 #define SM_USER			32
 /* We append database name if db_user_namespace true. */
-#define SM_DATABASE_USER (SM_DATABASE+SM_USER+1) /* +1 for @ */
+#define SM_DATABASE_USER (SM_DATABASE+SM_USER+1)		/* +1 for @ */
 #define SM_OPTIONS		64
 #define SM_UNUSED		64
 #define SM_TTY			64
@@ -134,7 +134,7 @@ typedef struct StartupPacket
 {
 	ProtocolVersion protoVersion;		/* Protocol version */
 	char		database[SM_DATABASE];	/* Database name */
-				/* Db_user_namespace appends dbname */
+	/* Db_user_namespace appends dbname */
 	char		user[SM_USER];	/* User name */
 	char		options[SM_OPTIONS];	/* Optional additional args */
 	char		unused[SM_UNUSED];		/* Unused */

@@ -58,8 +58,8 @@ extern void process_implied_equality(Query *root, Node *item1, Node *item2,
  */
 extern void set_plan_references(Plan *plan, List *rtable);
 extern List *join_references(List *clauses, List *rtable,
-							 List *outer_tlist, List *inner_tlist,
-							 Index acceptable_rel);
+				List *outer_tlist, List *inner_tlist,
+				Index acceptable_rel);
 extern void fix_opids(Node *node);
 
 #endif   /* PLANMAIN_H */

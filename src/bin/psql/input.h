@@ -15,17 +15,17 @@
  * USE_READLINE is the definite pointers regarding existence or not.
  */
 #ifdef HAVE_LIBREADLINE
-# define USE_READLINE 1
-# if defined(HAVE_READLINE_READLINE_H)
-#  include <readline/readline.h>
-# elif defined(HAVE_READLINE_H)
-#  include <readline.h>
-# endif
-# if defined(HAVE_READLINE_HISTORY_H)
-#  include <readline/history.h>
-# elif defined(HAVE_HISTORY_H)
-#  include <history.h>
-# endif
+#define USE_READLINE 1
+#if defined(HAVE_READLINE_READLINE_H)
+#include <readline/readline.h>
+#elif defined(HAVE_READLINE_H)
+#include <readline.h>
+#endif
+#if defined(HAVE_READLINE_HISTORY_H)
+#include <readline/history.h>
+#elif defined(HAVE_HISTORY_H)
+#include <history.h>
+#endif
 #endif
 
 char	   *gets_interactive(char *prompt);

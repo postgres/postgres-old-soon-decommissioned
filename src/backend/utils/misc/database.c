@@ -223,7 +223,7 @@ GetRawDatabaseInfo(const char *name, Oid *db_id, char *path)
 				*db_id = HeapTupleGetOid(&tup);
 				pathlen = VARSIZE(&(tup_db->datpath)) - VARHDRSZ;
 				if (pathlen < 0)
-					pathlen = 0;				/* pure paranoia */
+					pathlen = 0;	/* pure paranoia */
 				if (pathlen >= MAXPGPATH)
 					pathlen = MAXPGPATH - 1;	/* more paranoia */
 				strncpy(path, VARDATA(&(tup_db->datpath)), pathlen);

@@ -31,10 +31,10 @@ extern void CacheInvalidateHeapTuple(Relation relation, HeapTuple tuple);
 extern void CacheInvalidateRelcache(Oid relationId);
 
 extern void CacheRegisterSyscacheCallback(int cacheid,
-										  CacheCallbackFunction func,
-										  Datum arg);
+							  CacheCallbackFunction func,
+							  Datum arg);
 
 extern void CacheRegisterRelcacheCallback(CacheCallbackFunction func,
-										  Datum arg);
+							  Datum arg);
 
 #endif   /* INVAL_H */

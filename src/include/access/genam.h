@@ -58,16 +58,16 @@ extern InsertIndexResult index_insert(Relation indexRelation,
 			 bool check_uniqueness);
 
 extern IndexScanDesc index_beginscan(Relation heapRelation,
-									 Relation indexRelation,
-									 Snapshot snapshot,
-									 int nkeys, ScanKey key);
+				Relation indexRelation,
+				Snapshot snapshot,
+				int nkeys, ScanKey key);
 extern void index_rescan(IndexScanDesc scan, ScanKey key);
 extern void index_endscan(IndexScanDesc scan);
 extern void index_markpos(IndexScanDesc scan);
 extern void index_restrpos(IndexScanDesc scan);
 extern HeapTuple index_getnext(IndexScanDesc scan, ScanDirection direction);
 extern bool index_getnext_indexitem(IndexScanDesc scan,
-									ScanDirection direction);
+						ScanDirection direction);
 
 extern IndexBulkDeleteResult *index_bulk_delete(Relation indexRelation,
 				  IndexBulkDeleteCallback callback,
@@ -82,17 +82,17 @@ extern struct FmgrInfo *index_getprocinfo(Relation irel, AttrNumber attnum,
  * index access method support routines (in genam.c)
  */
 extern IndexScanDesc RelationGetIndexScan(Relation indexRelation,
-										  int nkeys, ScanKey key);
+					 int nkeys, ScanKey key);
 extern void IndexScanEnd(IndexScanDesc scan);
 
 /*
  * heap-or-index access to system catalogs (in genam.c)
  */
 extern SysScanDesc systable_beginscan(Relation heapRelation,
-									  const char *indexRelname,
-									  bool indexOK,
-									  Snapshot snapshot,
-									  int nkeys, ScanKey key);
+				   const char *indexRelname,
+				   bool indexOK,
+				   Snapshot snapshot,
+				   int nkeys, ScanKey key);
 extern HeapTuple systable_getnext(SysScanDesc sysscan);
 extern void systable_endscan(SysScanDesc sysscan);
 
