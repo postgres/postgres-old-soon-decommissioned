@@ -17,8 +17,8 @@
 #include "../../Unicode/tcvn_to_utf8.map"
 #include "../../Unicode/utf8_to_tcvn.map"
 
-PG_FUNCTION_INFO_V1(tcvn_to_utf8)
-PG_FUNCTION_INFO_V1(utf8_to_tcvn)
+PG_FUNCTION_INFO_V1(tcvn_to_utf8);
+PG_FUNCTION_INFO_V1(utf8_to_tcvn);
 
 extern Datum tcvn_to_utf8(PG_FUNCTION_ARGS);
 extern Datum utf8_to_tcvn(PG_FUNCTION_ARGS);

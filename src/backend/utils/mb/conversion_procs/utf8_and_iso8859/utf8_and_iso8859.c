@@ -41,8 +41,8 @@
 #include "../../Unicode/iso8859_15_to_utf8.map"
 #include "../../Unicode/iso8859_16_to_utf8.map"
 
-PG_FUNCTION_INFO_V1(iso8859_to_utf8)
-PG_FUNCTION_INFO_V1(utf8_to_iso8859)
+PG_FUNCTION_INFO_V1(iso8859_to_utf8);
+PG_FUNCTION_INFO_V1(utf8_to_iso8859);
 
 extern Datum iso8859_to_utf8(PG_FUNCTION_ARGS);
 extern Datum utf8_to_iso8859(PG_FUNCTION_ARGS);

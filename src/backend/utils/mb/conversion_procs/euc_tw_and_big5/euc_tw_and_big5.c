@@ -17,12 +17,12 @@
 
 #define ENCODING_GROWTH_RATE 4
 
-PG_FUNCTION_INFO_V1(euc_tw_to_big5)
-PG_FUNCTION_INFO_V1(big5_to_euc_tw)
-PG_FUNCTION_INFO_V1(euc_tw_to_mic)
-PG_FUNCTION_INFO_V1(mic_to_euc_tw)
-PG_FUNCTION_INFO_V1(big5_to_mic)
-PG_FUNCTION_INFO_V1(mic_to_big5)
+PG_FUNCTION_INFO_V1(euc_tw_to_big5);
+PG_FUNCTION_INFO_V1(big5_to_euc_tw);
+PG_FUNCTION_INFO_V1(euc_tw_to_mic);
+PG_FUNCTION_INFO_V1(mic_to_euc_tw);
+PG_FUNCTION_INFO_V1(big5_to_mic);
+PG_FUNCTION_INFO_V1(mic_to_big5);
 
 extern Datum euc_tw_to_big5(PG_FUNCTION_ARGS);
 extern Datum big5_to_euc_tw(PG_FUNCTION_ARGS);

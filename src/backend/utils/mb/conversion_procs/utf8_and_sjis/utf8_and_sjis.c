@@ -17,8 +17,8 @@
 #include "../../Unicode/sjis_to_utf8.map"
 #include "../../Unicode/utf8_to_sjis.map"
 
-PG_FUNCTION_INFO_V1(sjis_to_utf8)
-PG_FUNCTION_INFO_V1(utf8_to_sjis)
+PG_FUNCTION_INFO_V1(sjis_to_utf8);
+PG_FUNCTION_INFO_V1(utf8_to_sjis);
 
 extern Datum sjis_to_utf8(PG_FUNCTION_ARGS);
 extern Datum utf8_to_sjis(PG_FUNCTION_ARGS);

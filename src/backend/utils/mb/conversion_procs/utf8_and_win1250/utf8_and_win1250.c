@@ -17,8 +17,8 @@
 #include "../../Unicode/utf8_to_win1250.map"
 #include "../../Unicode/win1250_to_utf8.map"
 
-PG_FUNCTION_INFO_V1(utf_to_win1250)
-PG_FUNCTION_INFO_V1(win1250_to_utf)
+PG_FUNCTION_INFO_V1(utf_to_win1250);
+PG_FUNCTION_INFO_V1(win1250_to_utf);
 
 extern Datum utf_to_win1250(PG_FUNCTION_ARGS);
 extern Datum win1250_to_utf(PG_FUNCTION_ARGS);

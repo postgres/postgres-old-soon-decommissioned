@@ -17,8 +17,8 @@
 #include "../../Unicode/big5_to_utf8.map"
 #include "../../Unicode/utf8_to_big5.map"
 
-PG_FUNCTION_INFO_V1(big5_to_utf8)
-PG_FUNCTION_INFO_V1(utf8_to_big5)
+PG_FUNCTION_INFO_V1(big5_to_utf8);
+PG_FUNCTION_INFO_V1(utf8_to_big5);
 
 extern Datum big5_to_utf8(PG_FUNCTION_ARGS);
 extern Datum utf8_to_big5(PG_FUNCTION_ARGS);

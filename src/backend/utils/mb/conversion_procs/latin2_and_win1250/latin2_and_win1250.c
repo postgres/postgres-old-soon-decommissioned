@@ -17,12 +17,12 @@
 
 #define ENCODING_GROWTH_RATE 4
 
-PG_FUNCTION_INFO_V1(latin2_to_mic)
-PG_FUNCTION_INFO_V1(mic_to_latin2)
-PG_FUNCTION_INFO_V1(win1250_to_mic)
-PG_FUNCTION_INFO_V1(mic_to_win1250)
-PG_FUNCTION_INFO_V1(latin2_to_win1250)
-PG_FUNCTION_INFO_V1(win1250_to_latin2)
+PG_FUNCTION_INFO_V1(latin2_to_mic);
+PG_FUNCTION_INFO_V1(mic_to_latin2);
+PG_FUNCTION_INFO_V1(win1250_to_mic);
+PG_FUNCTION_INFO_V1(mic_to_win1250);
+PG_FUNCTION_INFO_V1(latin2_to_win1250);
+PG_FUNCTION_INFO_V1(win1250_to_latin2);
 
 extern Datum latin2_to_mic(PG_FUNCTION_ARGS);
 extern Datum mic_to_latin2(PG_FUNCTION_ARGS);

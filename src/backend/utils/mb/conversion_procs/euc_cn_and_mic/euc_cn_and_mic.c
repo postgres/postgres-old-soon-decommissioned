@@ -15,8 +15,8 @@
 #include "fmgr.h"
 #include "mb/pg_wchar.h"
 
-PG_FUNCTION_INFO_V1(euc_cn_to_mic)
-PG_FUNCTION_INFO_V1(mic_to_euc_cn)
+PG_FUNCTION_INFO_V1(euc_cn_to_mic);
+PG_FUNCTION_INFO_V1(mic_to_euc_cn);
 
 extern Datum euc_cn_to_mic(PG_FUNCTION_ARGS);
 extern Datum mic_to_euc_cn(PG_FUNCTION_ARGS);

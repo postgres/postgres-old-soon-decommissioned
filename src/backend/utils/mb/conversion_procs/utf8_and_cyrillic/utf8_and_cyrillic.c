@@ -21,12 +21,12 @@
 #include "../../Unicode/utf8_to_alt.map"
 #include "../../Unicode/alt_to_utf8.map"
 
-PG_FUNCTION_INFO_V1(utf8_to_koi8r)
-PG_FUNCTION_INFO_V1(koi8r_to_utf8)
-PG_FUNCTION_INFO_V1(utf8_to_win1251)
-PG_FUNCTION_INFO_V1(win1251_to_utf8)
-PG_FUNCTION_INFO_V1(utf8_to_alt)
-PG_FUNCTION_INFO_V1(alt_to_utf8)
+PG_FUNCTION_INFO_V1(utf8_to_koi8r);
+PG_FUNCTION_INFO_V1(koi8r_to_utf8);
+PG_FUNCTION_INFO_V1(utf8_to_win1251);
+PG_FUNCTION_INFO_V1(win1251_to_utf8);
+PG_FUNCTION_INFO_V1(utf8_to_alt);
+PG_FUNCTION_INFO_V1(alt_to_utf8);
 
 extern Datum utf8_to_koi8r(PG_FUNCTION_ARGS);
 extern Datum koi8r_to_utf8(PG_FUNCTION_ARGS);

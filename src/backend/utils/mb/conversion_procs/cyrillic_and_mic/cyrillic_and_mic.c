@@ -17,26 +17,26 @@
 
 #define ENCODING_GROWTH_RATE 4
 
-PG_FUNCTION_INFO_V1(koi8r_to_mic)
-PG_FUNCTION_INFO_V1(mic_to_koi8r)
-PG_FUNCTION_INFO_V1(iso_to_mic)
-PG_FUNCTION_INFO_V1(mic_to_iso)
-PG_FUNCTION_INFO_V1(win1251_to_mic)
-PG_FUNCTION_INFO_V1(mic_to_win1251)
-PG_FUNCTION_INFO_V1(alt_to_mic)
-PG_FUNCTION_INFO_V1(mic_to_alt)
-PG_FUNCTION_INFO_V1(koi8r_to_win1251)
-PG_FUNCTION_INFO_V1(win1251_to_koi8r)
-PG_FUNCTION_INFO_V1(koi8r_to_alt)
-PG_FUNCTION_INFO_V1(alt_to_koi8r)
-PG_FUNCTION_INFO_V1(alt_to_win1251)
-PG_FUNCTION_INFO_V1(win1251_to_alt)
-PG_FUNCTION_INFO_V1(iso_to_koi8r)
-PG_FUNCTION_INFO_V1(koi8r_to_iso)
-PG_FUNCTION_INFO_V1(iso_to_win1251)
-PG_FUNCTION_INFO_V1(win1251_to_iso)
-PG_FUNCTION_INFO_V1(iso_to_alt)
-PG_FUNCTION_INFO_V1(alt_to_iso)
+PG_FUNCTION_INFO_V1(koi8r_to_mic);
+PG_FUNCTION_INFO_V1(mic_to_koi8r);
+PG_FUNCTION_INFO_V1(iso_to_mic);
+PG_FUNCTION_INFO_V1(mic_to_iso);
+PG_FUNCTION_INFO_V1(win1251_to_mic);
+PG_FUNCTION_INFO_V1(mic_to_win1251);
+PG_FUNCTION_INFO_V1(alt_to_mic);
+PG_FUNCTION_INFO_V1(mic_to_alt);
+PG_FUNCTION_INFO_V1(koi8r_to_win1251);
+PG_FUNCTION_INFO_V1(win1251_to_koi8r);
+PG_FUNCTION_INFO_V1(koi8r_to_alt);
+PG_FUNCTION_INFO_V1(alt_to_koi8r);
+PG_FUNCTION_INFO_V1(alt_to_win1251);
+PG_FUNCTION_INFO_V1(win1251_to_alt);
+PG_FUNCTION_INFO_V1(iso_to_koi8r);
+PG_FUNCTION_INFO_V1(koi8r_to_iso);
+PG_FUNCTION_INFO_V1(iso_to_win1251);
+PG_FUNCTION_INFO_V1(win1251_to_iso);
+PG_FUNCTION_INFO_V1(iso_to_alt);
+PG_FUNCTION_INFO_V1(alt_to_iso);
 
 extern Datum koi8r_to_mic(PG_FUNCTION_ARGS);
 extern Datum mic_to_koi8r(PG_FUNCTION_ARGS);

@@ -17,8 +17,8 @@
 #include "../../Unicode/euc_kr_to_utf8.map"
 #include "../../Unicode/utf8_to_euc_kr.map"
 
-PG_FUNCTION_INFO_V1(euc_kr_to_utf8)
-PG_FUNCTION_INFO_V1(utf8_to_euc_kr)
+PG_FUNCTION_INFO_V1(euc_kr_to_utf8);
+PG_FUNCTION_INFO_V1(utf8_to_euc_kr);
 
 extern Datum euc_kr_to_utf8(PG_FUNCTION_ARGS);
 extern Datum utf8_to_euc_kr(PG_FUNCTION_ARGS);

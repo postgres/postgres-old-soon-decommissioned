@@ -17,8 +17,8 @@
 #include "../../Unicode/uhc_to_utf8.map"
 #include "../../Unicode/utf8_to_uhc.map"
 
-PG_FUNCTION_INFO_V1(uhc_to_utf8)
-PG_FUNCTION_INFO_V1(utf8_to_uhc)
+PG_FUNCTION_INFO_V1(uhc_to_utf8);
+PG_FUNCTION_INFO_V1(utf8_to_uhc);
 
 extern Datum uhc_to_utf8(PG_FUNCTION_ARGS);
 extern Datum utf8_to_uhc(PG_FUNCTION_ARGS);

@@ -17,8 +17,8 @@
 #include "../../Unicode/johab_to_utf8.map"
 #include "../../Unicode/utf8_to_johab.map"
 
-PG_FUNCTION_INFO_V1(johab_to_utf8)
-PG_FUNCTION_INFO_V1(utf8_to_johab)
+PG_FUNCTION_INFO_V1(johab_to_utf8);
+PG_FUNCTION_INFO_V1(utf8_to_johab);
 
 extern Datum johab_to_utf8(PG_FUNCTION_ARGS);
 extern Datum utf8_to_johab(PG_FUNCTION_ARGS);

@@ -29,12 +29,12 @@
 
 #define ENCODING_GROWTH_RATE 4
 
-PG_FUNCTION_INFO_V1(euc_jp_to_sjis)
-PG_FUNCTION_INFO_V1(sjis_to_euc_jp)
-PG_FUNCTION_INFO_V1(euc_jp_to_mic)
-PG_FUNCTION_INFO_V1(mic_to_euc_jp)
-PG_FUNCTION_INFO_V1(sjis_to_mic)
-PG_FUNCTION_INFO_V1(mic_to_sjis)
+PG_FUNCTION_INFO_V1(euc_jp_to_sjis);
+PG_FUNCTION_INFO_V1(sjis_to_euc_jp);
+PG_FUNCTION_INFO_V1(euc_jp_to_mic);
+PG_FUNCTION_INFO_V1(mic_to_euc_jp);
+PG_FUNCTION_INFO_V1(sjis_to_mic);
+PG_FUNCTION_INFO_V1(mic_to_sjis);
 
 extern Datum euc_jp_to_sjis(PG_FUNCTION_ARGS);
 extern Datum sjis_to_euc_jp(PG_FUNCTION_ARGS);

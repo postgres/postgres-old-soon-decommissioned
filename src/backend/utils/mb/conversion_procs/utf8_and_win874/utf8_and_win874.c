@@ -17,8 +17,8 @@
 #include "../../Unicode/utf8_to_win874.map"
 #include "../../Unicode/win874_to_utf8.map"
 
-PG_FUNCTION_INFO_V1(utf_to_win874)
-PG_FUNCTION_INFO_V1(win874_to_utf)
+PG_FUNCTION_INFO_V1(utf_to_win874);
+PG_FUNCTION_INFO_V1(win874_to_utf);
 
 extern Datum utf_to_win874(PG_FUNCTION_ARGS);
 extern Datum win874_to_utf(PG_FUNCTION_ARGS);

@@ -17,8 +17,8 @@
 #include "../../Unicode/euc_cn_to_utf8.map"
 #include "../../Unicode/utf8_to_euc_cn.map"
 
-PG_FUNCTION_INFO_V1(euc_cn_to_utf8)
-PG_FUNCTION_INFO_V1(utf8_to_euc_cn)
+PG_FUNCTION_INFO_V1(euc_cn_to_utf8);
+PG_FUNCTION_INFO_V1(utf8_to_euc_cn);
 
 extern Datum euc_cn_to_utf8(PG_FUNCTION_ARGS);
 extern Datum utf8_to_euc_cn(PG_FUNCTION_ARGS);
