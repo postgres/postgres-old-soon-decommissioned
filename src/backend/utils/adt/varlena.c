@@ -610,9 +610,11 @@ byteaGetByte(text *v, int32 n)
 		elog(ERROR, "byteaGetByte: index (=%d) out of range [0..%d]",
 			 n, len - 1);
 	}
-
+#ifdef USE_LOCALE
 	byte = (unsigned char) (v->vl_dat[n]);
-
+#else
+	byte = v->vl_dat[n];
+#endif
 	return (int32) byte;
 }
 
