@@ -29,11 +29,11 @@ $PostgreSQL$
        <para>
         This is the first PostgreSQL release to natively run on Microsoft
         Windows as a server. It can run as a Windows service. This release
-	supports NT-based Windows releases like NT4, Win2k, XP, Win2003.
+	supports NT-based Windows releases like Win2000, XP, Win2003.
         Older releases like Windows 95, 98, and ME are not supported because
 	these operating systems do not have the infrastructure to
 	support PostgreSQL.  A separate installer project has been created 
-        to ease installation on Windows (except NT4): 
+        to ease installation on Windows: 
         <ulink url="http://pgfoundry.org/projects/pginstaller">
 	http://pgfoundry.org/projects/pginstaller</ulink>.
        </para>
