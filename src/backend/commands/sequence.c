@@ -569,7 +569,7 @@ get_seq_name(text *seqin)
 #ifdef MULTIBYTE
 		int len;
 
-		len = pg_mbcliplen(seqname, i, NAMEDATALEN-1);
+		len = pg_mbcliplen(seqname, rawlen, NAMEDATALEN-1);
 		seqname[len] = '\0';
 #else
 		seqname[NAMEDATALEN-1] = '\0';
