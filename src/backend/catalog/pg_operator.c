@@ -237,7 +237,7 @@ OperatorShellMakeWithOpenRelation(Relation pg_operator_desc,
      */
     i = 0;
     values[i++] =  PointerGetDatum(operatorName);
-    values[i++] =  ObjectIdGetDatum(InvalidOid);
+    values[i++] =  Int32GetDatum(GetUserId());
     values[i++] =  (Datum) (uint16) 0;
     
     values[i++] = (Datum)'b';	/* fill oprkind with a bogus value */

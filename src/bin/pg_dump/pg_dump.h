@@ -85,7 +85,6 @@ typedef struct _tableInfo {
 } TableInfo;
 
 typedef struct _inhInfo {
-    char *oid;
     char *inhrel;
     char *inhparent;
 } InhInfo;
