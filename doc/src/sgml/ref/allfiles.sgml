@@ -41,6 +41,7 @@ Complete list of usable sgml source files in this directory.
 <!entity alterTable         system "alter_table.sgml">
 <!entity alterUser          system "alter_user.sgml">
 <!entity begin              system "begin.sgml">
+<!entity checkpoint         system "checkpoint.sgml">
 <!entity close              system "close.sgml">
 <!entity cluster            system "cluster.sgml">
 <!entity commentOn          system "comment.sgml">

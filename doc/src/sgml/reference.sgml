@@ -33,6 +33,7 @@ PostgreSQL Reference Manual
    &alterTable;
    &alterUser;
    &begin;
+   &checkpoint;
    &close;
    &cluster;
    &commentOn;
