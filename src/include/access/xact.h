@@ -17,6 +17,7 @@
 #include "access/transam.h"
 #include "access/xlog.h"
 #include "utils/nabstime.h"
+#include "utils/timestamp.h"
 
 /*
  * Xact isolation levels
@@ -39,6 +40,7 @@ typedef struct TransactionStateData
 	CommandId	commandId;
 	CommandId	scanCommandId;
 	AbsoluteTime startTime;
+	int			startTimeMsec;
 	int			state;
 	int			blockState;
 } TransactionStateData;
@@ -104,6 +106,7 @@ extern CommandId GetCurrentCommandId(void);
 extern CommandId GetScanCommandId(void);
 extern void SetScanCommandId(CommandId);
 extern AbsoluteTime GetCurrentTransactionStartTime(void);
+extern AbsoluteTime GetCurrentTransactionStartTimeUsec(int *usec);
 extern bool TransactionIdIsCurrentTransactionId(TransactionId xid);
 extern bool CommandIdIsCurrentCommandId(CommandId cid);
 extern bool CommandIdGEScanCommandId(CommandId cid);

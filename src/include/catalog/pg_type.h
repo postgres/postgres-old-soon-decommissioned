@@ -395,12 +395,16 @@ DESCR("hh:mm:ss, ANSI SQL time");
 #define TIMEOID			1083
 
 /* OIDS 1100 - 1199 */
+DATA(insert OID = 1114 ( timestamp	 PGUID	8  47 f b t \054 0	0 timestamp_in timestamp_out timestamp_in timestamp_out d p _null_ ));
+DESCR("date and time");
+#define TIMESTAMPOID	1114
+DATA(insert OID = 1115 ( _timestamp  PGUID	-1 -1 f b t \054 0	1184 array_in array_out array_in array_out d x _null_ ));
 DATA(insert OID = 1182 ( _date		 PGUID	-1 -1 f b t \054 0	1082 array_in array_out array_in array_out i x _null_ ));
 DATA(insert OID = 1183 ( _time		 PGUID	-1 -1 f b t \054 0	1083 array_in array_out array_in array_out d x _null_ ));
-DATA(insert OID = 1184 ( timestamp	 PGUID	8  47 f b t \054 0	0 timestamp_in timestamp_out timestamp_in timestamp_out d p _null_ ));
-DESCR("date and time");
-#define TIMESTAMPOID	1184
-DATA(insert OID = 1185 ( _timestamp  PGUID	-1 -1 f b t \054 0	1184 array_in array_out array_in array_out d x _null_ ));
+DATA(insert OID = 1184 ( timestamptz PGUID	8  47 f b t \054 0	0 timestamptz_in timestamptz_out timestamptz_in timestamptz_out d p _null_ ));
+DESCR("date and time with time zone");
+#define TIMESTAMPTZOID	1184
+DATA(insert OID = 1185 ( _timestamptz PGUID	-1 -1 f b t \054 0	1184 array_in array_out array_in array_out d x _null_ ));
 DATA(insert OID = 1186 ( interval	 PGUID 12  47 f b t \054 0	0 interval_in interval_out interval_in interval_out d p _null_ ));
 DESCR("@ <number> <units>, time interval");
 #define INTERVALOID		1186

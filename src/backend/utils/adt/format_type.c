@@ -205,6 +205,10 @@ format_type_internal(Oid type_oid, int32 typemod, bool allow_invalid)
 			break;
 
 		case TIMESTAMPOID:
+			buf = pstrdup("timestamp without time zone");
+			break;
+
+		case TIMESTAMPTZOID:
 			buf = pstrdup("timestamp with time zone");
 			break;
 

@@ -104,6 +104,7 @@ DATA(insert (	1998 1 1314 ));
 DATA(insert (	2000 1 1358 ));
 DATA(insert (	2002 1 1672 ));
 DATA(insert (	2003 1 1079 ));
+DATA(insert (	2039 1 1314 ));
 
 
 /* hash */
@@ -127,5 +128,6 @@ DATA(insert (	1997 1  452 ));
 DATA(insert (	1999 1  452 ));
 DATA(insert (	2001 1 1696 ));
 DATA(insert (	2004 1  456 ));
+DATA(insert (	2040 1  452 ));
 
 #endif	 /* PG_AMPROC_H */

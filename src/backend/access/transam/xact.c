@@ -370,6 +370,21 @@ GetCurrentTransactionStartTime(void)
 
 
 /* --------------------------------
+ *		GetCurrentTransactionStartTimeUsec
+ * --------------------------------
+ */
+AbsoluteTime
+GetCurrentTransactionStartTimeUsec(int *msec)
+{
+	TransactionState s = CurrentTransactionState;
+
+	*msec = s->startTimeMsec;
+
+	return s->startTime;
+}
+
+
+/* --------------------------------
  *		TransactionIdIsCurrentTransactionId
  * --------------------------------
  */
@@ -859,7 +874,10 @@ StartTransaction(void)
 	 */
 	s->commandId = FirstCommandId;
 	s->scanCommandId = FirstCommandId;
+#if NOT_USED
 	s->startTime = GetCurrentAbsoluteTime();
+#endif
+	s->startTime = GetCurrentAbsoluteTimeUsec(&(s->startTimeMsec));
 
 	/*
 	 * initialize the various transaction subsystems

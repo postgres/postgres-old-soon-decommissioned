@@ -40,11 +40,11 @@ bool		Transform_null_equals = false;
 
 static Node *parser_typecast_constant(Value *expr, TypeName *typename);
 static Node *parser_typecast_expression(ParseState *pstate,
-						   Node *expr, TypeName *typename);
+										Node *expr, TypeName *typename);
 static Node *transformAttr(ParseState *pstate, Attr *att, int precedence);
 static Node *transformIdent(ParseState *pstate, Ident *ident, int precedence);
 static Node *transformIndirection(ParseState *pstate, Node *basenode,
-					 List *indirection);
+								  List *indirection);
 
 
 /*

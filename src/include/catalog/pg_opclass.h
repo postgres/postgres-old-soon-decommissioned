@@ -127,12 +127,14 @@ DATA(insert OID = 1994 (	403		text_ops		  25	t	0 ));
 DATA(insert OID = 1995 (	405		text_ops		  25	t	0 ));
 DATA(insert OID = 1996 (	403		time_ops		1083	t	0 ));
 DATA(insert OID = 1997 (	405		time_ops		1083	t	0 ));
-DATA(insert OID = 1998 (	403		timestamp_ops	1184	t	0 ));
-DATA(insert OID = 1999 (	405		timestamp_ops	1184	t	0 ));
+DATA(insert OID = 1998 (	403		timestamptz_ops	1184	t	0 ));
+DATA(insert OID = 1999 (	405		timestamptz_ops	1184	t	0 ));
 DATA(insert OID = 2000 (	403		timetz_ops		1266	t	0 ));
 DATA(insert OID = 2001 (	405		timetz_ops		1266	t	0 ));
 DATA(insert OID = 2002 (	403		varbit_ops		1562	t	0 ));
 DATA(insert OID = 2003 (	403		varchar_ops		1043	t	0 ));
 DATA(insert OID = 2004 (	405		varchar_ops		1043	t	0 ));
+DATA(insert OID = 2039 (	403		timestamp_ops	1114	t	0 ));
+DATA(insert OID = 2040 (	405		timestamp_ops	1114	t	0 ));
 
 #endif	 /* PG_OPCLASS_H */

@@ -22,6 +22,7 @@
 
 
 extern Datum timestamp_to_char(PG_FUNCTION_ARGS);
+extern Datum timestamptz_to_char(PG_FUNCTION_ARGS);
 extern Datum interval_to_char(PG_FUNCTION_ARGS);
 extern Datum to_timestamp(PG_FUNCTION_ARGS);
 extern Datum to_date(PG_FUNCTION_ARGS);
