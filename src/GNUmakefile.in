@@ -80,7 +80,8 @@ distclean: clean
 		bin/pg_dump/Makefile \
 		include/config.h \
 		backend/utils/Gen_fmgrtab.sh \
-		include/os.h
+		include/os.h \
+		Makefile.port
 
 
 .DEFAULT:

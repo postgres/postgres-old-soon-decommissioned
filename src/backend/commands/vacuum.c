@@ -53,6 +53,8 @@
 # include <sys/resource.h>
 #endif 
 
+#include <port-protos.h>
+
 bool VacuumRunning =	false;
 static int MESSAGE_LEVEL;	/* message level */
 

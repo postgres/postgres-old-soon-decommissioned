@@ -45,5 +45,8 @@ extern int inet_aton(const char *cp, struct in_addr *addr);
 /* In system library, but can't find prototype in system library .h files */
 extern int gethostname(char *name, int namelen);
 
+/* In system library, but can't find prototype in system library .h files */
+#include <sys/resource.h>
+extern int getrusage(int who, struct rusage *rusage);
 
 #endif /* PORT_PROTOS_H */
