@@ -663,6 +663,7 @@ ServerLoop(void)
 				 * the connection id out of the packet so we know who the
 				 * packet is from.
 				 */
+receive_again:
 				status = PacketReceive(port, &port->buf, NON_BLOCKING);
 				switch (status)
 				{
@@ -686,7 +687,7 @@ ServerLoop(void)
 						    break;
 
 						  /* port->nBytes = 0; */
-						    continue;
+						  	goto receive_again;
 						} else {
 							int			CSstatus;		/* Completion status of
 														 * ConnStartup */
