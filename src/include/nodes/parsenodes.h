@@ -797,6 +797,7 @@ typedef struct AlterTableStmt
 	NodeTag		type;
 	RangeVar   *relation;		/* table to work on */
 	List	   *cmds;			/* list of subcommands */
+	ObjectType	relkind;		/* type of object */
 } AlterTableStmt;
 
 typedef enum AlterTableType

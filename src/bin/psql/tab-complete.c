@@ -632,7 +632,8 @@ psql_completion(char *text, int start, int end)
 			 pg_strcasecmp(prev3_wd, "TABLE") != 0)
 	{
 		static const char *const list_ALTER[] =
-		{"DATABASE", "GROUP", "SCHEMA", "TABLE", "TRIGGER", "USER", NULL};
+		{"DATABASE", "GROUP", "SCHEMA", "TABLE", "TRIGGER", "USER", "INDEX",
+			 NULL};
 
 		COMPLETE_WITH_LIST(list_ALTER);
 	}
@@ -646,6 +647,16 @@ psql_completion(char *text, int start, int end)
 
 		COMPLETE_WITH_LIST(list_ALTERDATABASE);
 	}
+	/* ALTER INDEX <name> */
+	else if (pg_strcasecmp(prev3_wd, "ALTER") == 0 &&
+             pg_strcasecmp(prev2_wd, "INDEX") == 0)
+    {
+        static const char *const list_ALTERINDEX[] =
+        {"SET TABLESPACE", "OWNER TO", "RENAME TO", NULL};
+                                                                                
+        COMPLETE_WITH_LIST(list_ALTERINDEX);
+    }
+
 	/* ALTER TRIGGER <name>, add ON */
 	else if (pg_strcasecmp(prev3_wd, "ALTER") == 0 &&
 			 pg_strcasecmp(prev2_wd, "TRIGGER") == 0)
