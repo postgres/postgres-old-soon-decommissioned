@@ -35,6 +35,9 @@ endif
 ifeq ($(USE_PERL), true)
 	$(MAKE) -C perl5 $@
 endif
+ifeq ($(USE_ODBC), true)
+	$(MAKE) -C odbc $@
+endif
 
 perl5/Makefile: perl5/Makefile.PL
 	cd perl5 && perl Makefile.PL
