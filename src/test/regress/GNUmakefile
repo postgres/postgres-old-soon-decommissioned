@@ -20,6 +20,8 @@ contribdir := $(top_builddir)/contrib
 override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
 override CFLAGS += $(CFLAGS_SL)
 
+override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
+
 
 ##
 ## Prepare for tests

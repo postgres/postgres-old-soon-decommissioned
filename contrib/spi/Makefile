@@ -19,6 +19,9 @@ ifdef REFINT_VERBOSE
 override CPPFLAGS+= -DREFINT_VERBOSE
 endif
 
+override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
+
+
 all: $(MODS) $(SQLS)
 
 %.sql: %.sql.in

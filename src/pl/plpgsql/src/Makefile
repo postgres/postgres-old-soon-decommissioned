@@ -17,6 +17,8 @@ SO_MINOR_VERSION= 0
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 
+override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
+
 OBJS = pl_parse.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o
 
 all: all-lib
