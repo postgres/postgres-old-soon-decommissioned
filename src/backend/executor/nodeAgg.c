@@ -771,7 +771,7 @@ ExecInitAgg(Agg *node, EState *estate, Plan *parent)
 		 * So, just make a debug note, and force numaggs positive so that
 		 * palloc()s below don't choke.
 		 */
-		elog(LOG, "ExecInitAgg: could not find any aggregate functions");
+		elog(DEBUG1, "ExecInitAgg: could not find any aggregate functions");
 		numaggs = 1;
 	}
 

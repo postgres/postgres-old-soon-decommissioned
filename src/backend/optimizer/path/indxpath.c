@@ -1226,7 +1226,7 @@ pred_test_simple_clause(Expr *predicate, Node *clause)
 	if (!HeapTupleIsValid(tuple))
 	{
 		/* this probably shouldn't fail? */
-		elog(LOG, "pred_test_simple_clause: unknown test_op");
+		elog(DEBUG1, "pred_test_simple_clause: unknown test_op");
 		return false;
 	}
 	aform = (Form_pg_amop) GETSTRUCT(tuple);
@@ -1255,7 +1255,7 @@ pred_test_simple_clause(Expr *predicate, Node *clause)
 
 	if (isNull)
 	{
-		elog(LOG, "pred_test_simple_clause: null test result");
+		elog(DEBUG1, "pred_test_simple_clause: null test result");
 		return false;
 	}
 	return DatumGetBool(test_result);

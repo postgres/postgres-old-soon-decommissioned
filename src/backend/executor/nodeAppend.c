@@ -292,7 +292,7 @@ ExecProcAppend(Append *node)
 	subnode = (Plan *) nth(whichplan, appendplans);
 
 	if (subnode == NULL)
-		elog(LOG, "ExecProcAppend: subnode is NULL");
+		elog(DEBUG1, "ExecProcAppend: subnode is NULL");
 
 	/*
 	 * get a tuple from the subplan
