@@ -598,8 +598,9 @@ extern void plpgsql_ns_rename(char *oldname, char *newname);
  * Other functions in pl_funcs.c
  * ----------
  */
-extern void plpgsql_dumptree(PLpgSQL_function * func);
 extern char *plpgsql_tolower(char *s);
+extern const char *plpgsql_stmt_typename(PLpgSQL_stmt * stmt);
+extern void plpgsql_dumptree(PLpgSQL_function * func);
 
 /* ----------
  * Externs in gram.y and scan.l
