@@ -131,7 +131,10 @@ main(int argc, char *argv[])
 
 	PQfinish(conn);
 	if (!quiet)
+	{
 		puts("DROP DATABASE");
+		fflush(stdout);
+	}
 	exit(0);
 }
 

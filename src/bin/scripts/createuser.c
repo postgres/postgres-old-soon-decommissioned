@@ -224,7 +224,10 @@ main(int argc, char *argv[])
 
 	PQfinish(conn);
 	if (!quiet)
+	{
 		puts("CREATE USER");
+		fflush(stdout);
+	}
 	exit(0);
 }
 
