@@ -48,8 +48,11 @@
 static char sccsid[] = "@(#)qsort.c	5.9 (Berkeley) 2/23/91";
 #endif /* LIBC_SCCS and not lint */
 
-#include "postgres.h"
-#include "lib/qsort.h"
+#include <sys/types.h>
+
+#include <postgres.h>
+
+#include <lib/qsort.h>
 
 /*
  * MTHRESH is the smallest partition for which we compare for a median

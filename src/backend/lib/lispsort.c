@@ -13,15 +13,14 @@
 
 #include <sys/types.h>
 
-#include "postgres.h"
+#include <postgres.h>
 
-#include "nodes/pg_list.h"
-#include "nodes/primnodes.h"
-#include "nodes/plannodes.h"
-#include "nodes/relation.h"
-#include "lib/lispsort.h"
-#include "utils/palloc.h"
-#include "lib/qsort.h"
+#include <nodes/pg_list.h>
+#include <nodes/primnodes.h>
+#include <nodes/plannodes.h>
+#include <nodes/relation.h>
+#include <lib/lispsort.h>
+#include <lib/qsort.h>
 
 /*
 ** lisp_qsort: Takes a lisp list as input, copies it into an array of lisp 

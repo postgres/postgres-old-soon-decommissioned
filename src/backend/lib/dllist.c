@@ -14,9 +14,9 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
 
-#include "lib/dllist.h"
+#include <lib/dllist.h>
 
 Dllist*
 DLNewList()
