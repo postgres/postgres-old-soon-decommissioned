@@ -48,11 +48,6 @@
 #include "pgstat.h"
 
 
-XLogRecPtr log_heap_move(Relation reln, Buffer oldbuf, ItemPointerData from,
-			  Buffer newbuf, HeapTuple newtup);
-XLogRecPtr log_heap_clean(Relation reln, Buffer buffer,
-			   char *unused, int unlen);
-
 /* comments are in heap_update */
 static xl_heaptid _locked_tuple_;
 static void _heap_unlock_tuple(void *data);

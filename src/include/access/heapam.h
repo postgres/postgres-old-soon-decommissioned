@@ -15,6 +15,7 @@
 #define HEAPAM_H
 
 #include <time.h>
+
 #include "access/htup.h"
 #include "access/relscan.h"
 #include "access/tupmacs.h"
@@ -218,6 +219,11 @@ extern void heap_restrpos(HeapScanDesc scan);
 extern void heap_redo(XLogRecPtr lsn, XLogRecord *rptr);
 extern void heap_undo(XLogRecPtr lsn, XLogRecord *rptr);
 extern void heap_desc(char *buf, uint8 xl_info, char *rec);
+extern XLogRecPtr log_heap_clean(Relation reln, Buffer buffer,
+								 char *unused, int unlen);
+extern XLogRecPtr log_heap_move(Relation reln, Buffer oldbuf,
+								ItemPointerData from,
+								Buffer newbuf, HeapTuple newtup);
 
 /* in common/heaptuple.c */
 extern Size ComputeDataSize(TupleDesc tupleDesc, Datum *value, char *nulls);

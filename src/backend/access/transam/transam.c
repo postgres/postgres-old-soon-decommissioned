@@ -24,6 +24,7 @@
 #include "catalog/catname.h"
 #include "miscadmin.h"
 
+
 static int	RecoveryCheckingEnabled(void);
 static void TransRecover(Relation logRelation);
 static bool TransactionLogTest(TransactionId transactionId, XidStatus status);
@@ -40,29 +41,11 @@ static void TransactionLogUpdate(TransactionId transactionId,
 Relation	LogRelation = (Relation) NULL;
 
 /* ----------------
- *		global variables holding cached transaction id's and statuses.
+ *		Single-item cache for results of TransactionLogTest.
  * ----------------
  */
-TransactionId cachedTestXid;
-XidStatus	cachedTestXidStatus;
-
-/* ----------------
- *		transaction system constants
- * ----------------
- */
-/* ----------------------------------------------------------------
- *		transaction system constants
- *
- *		read the comments for GetNewTransactionId in order to
- *		understand the initial values for AmiTransactionId and
- *		FirstTransactionId. -cim 3/23/90
- * ----------------------------------------------------------------
- */
-TransactionId NullTransactionId = (TransactionId) 0;
-
-TransactionId AmiTransactionId = (TransactionId) 512;
-
-TransactionId FirstTransactionId = (TransactionId) 514;
+static TransactionId cachedTestXid = NullTransactionId;
+static XidStatus	cachedTestXidStatus;
 
 /* ----------------
  *		transaction recovery state variables
@@ -76,7 +59,7 @@ TransactionId FirstTransactionId = (TransactionId) 514;
  *		goes from zero to one. -cim 3/21/90
  * ----------------
  */
-int			RecoveryCheckingEnableState = 0;
+static int		RecoveryCheckingEnableState = 0;
 
 /* ----------------
  *		recovery checking accessors
@@ -203,14 +186,9 @@ TransactionLogUpdate(TransactionId transactionId,		/* trans id to update */
 
 	/*
 	 * update (invalidate) our single item TransactionLogTest cache.
-	 *
-	 * if (status != XID_COMMIT)
-	 *
-	 * What's the hell ?! Why != XID_COMMIT ?!
 	 */
 	TransactionIdStore(transactionId, &cachedTestXid);
 	cachedTestXidStatus = status;
-
 }
 
 /* ----------------------------------------------------------------
@@ -355,17 +333,15 @@ InitializeTransactionLog(void)
 
 	/*
 	 * if we have a virgin database, we initialize the log relation by
-	 * committing the AmiTransactionId (id 512) and we initialize the
+	 * committing the AmiTransactionId and we initialize the
 	 * variable relation by setting the next available transaction id to
-	 * FirstTransactionId (id 514).  OID initialization happens as a side
+	 * FirstTransactionId.  OID initialization happens as a side
 	 * effect of bootstrapping in varsup.c.
 	 */
 	SpinAcquire(OidGenLockId);
 	if (!TransactionIdDidCommit(AmiTransactionId))
 	{
 		TransactionLogUpdate(AmiTransactionId, XID_COMMIT);
-		TransactionIdStore(AmiTransactionId, &cachedTestXid);
-		cachedTestXidStatus = XID_COMMIT;
 		Assert(!IsUnderPostmaster &&
 			   ShmemVariableCache->nextXid <= FirstTransactionId);
 		ShmemVariableCache->nextXid = FirstTransactionId;
