@@ -426,7 +426,8 @@ create_index_path(Query *root,
 		/* each clause gets an equal selectivity */
 		clausesel = pow(selec, 1.0 / (double) length(restriction_clauses));
 
-		pathnode->indexqual = restriction_clauses;
+		pathnode->indexqual = lcons(get_actual_clauses(restriction_clauses),
+									NIL);
 		pathnode->path.path_cost = cost_index(lfirsti(index->relids),
 											  (int) npages,
 											  selec,

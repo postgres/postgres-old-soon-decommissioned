@@ -1317,7 +1317,6 @@ _copyRestrictInfo(RestrictInfo *from)
 	Node_Copy(from, newnode, clause);
 
 	newnode->selectivity = from->selectivity;
-	newnode->notclause = from->notclause;
 
 	Node_Copy(from, newnode, indexids);
 	Node_Copy(from, newnode, mergejoinorder);

@@ -305,8 +305,6 @@ _equalRestrictInfo(RestrictInfo *a, RestrictInfo *b)
 		return false;
 	if (a->selectivity != b->selectivity)
 		return false;
-	if (a->notclause != b->notclause)
-		return false;
 #ifdef EqualMergeOrderExists
 	if (!EqualMergeOrder(a->mergejoinorder, b->mergejoinorder))
 		return false;

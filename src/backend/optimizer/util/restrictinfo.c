@@ -20,17 +20,15 @@
 #include "optimizer/restrictinfo.h"
 
 /*
- * valid_or_clause
+ * restriction_is_or_clause
  *
- * Returns t iff the restrictinfo node contains a 'normal' 'or' clause.
+ * Returns t iff the restrictinfo node contains an 'or' clause.
  *
  */
 bool
-valid_or_clause(RestrictInfo *restrictinfo)
+restriction_is_or_clause(RestrictInfo *restrictinfo)
 {
 	if (restrictinfo != NULL &&
-		!single_node((Node *) restrictinfo->clause) &&
-		!restrictinfo->notclause &&
 		or_clause((Node *) restrictinfo->clause))
 		return true;
 	else

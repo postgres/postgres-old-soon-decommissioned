@@ -1110,9 +1110,8 @@ _outRestrictInfo(StringInfo str, RestrictInfo *node)
 	_outNode(str, node->clause);
 
 	appendStringInfo(str,
-					 " :selectivity %f :notclause %s :indexids ",
-					 node->selectivity,
-					 node->notclause ? "true" : "false");
+					 " :selectivity %f :indexids ",
+					 node->selectivity);
 	_outNode(str, node->indexids);
 
 	appendStringInfo(str, " :mergejoinorder ");

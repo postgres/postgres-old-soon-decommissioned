@@ -1856,14 +1856,6 @@ _readRestrictInfo()
 
 	local_node->selectivity = atof(token);
 
-	token = lsptok(NULL, &length);		/* get :notclause */
-	token = lsptok(NULL, &length);		/* now read it */
-
-	if (!strncmp(token, "true", 4))
-		local_node->notclause = true;
-	else
-		local_node->notclause = false;
-
 	token = lsptok(NULL, &length);		/* get :indexids */
 	local_node->indexids = nodeRead(true);		/* now read it */
 

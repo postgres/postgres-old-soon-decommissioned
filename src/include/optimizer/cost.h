@@ -59,7 +59,6 @@ extern void set_clause_selectivities(List *restrictinfo_list, Cost new_selectivi
 extern Cost product_selec(List *restrictinfo_list);
 extern void set_rest_relselec(Query *root, List *rel_list);
 extern void set_rest_selec(Query *root, List *restrictinfo_list);
-extern Cost compute_clause_selec(Query *root,
-					 Node *clause, List *or_selectivities);
+extern Cost compute_clause_selec(Query *root, Node *clause);
 
 #endif	 /* COST_H */
