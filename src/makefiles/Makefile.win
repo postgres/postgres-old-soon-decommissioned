@@ -23,3 +23,7 @@ CFLAGS_SL =
 ifeq ($(findstring backend,$(subdir)), backend)
 override CPPFLAGS+= -DBUILDING_DLL=1
 endif
+
+ifeq ($(findstring ecpg/lib,$(subdir)), ecpg/lib)
+override CPPFLAGS+= -DBUILDING_DLL=1
+endif
