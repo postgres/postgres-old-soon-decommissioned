@@ -919,7 +919,7 @@ gettape()
 	 * now, copy template with final null into palloc'd space
 	 */
 
-	memmove(tp->tl_name, uniqueName, strlen(uniqueName));
+	strNcpy(tp->tl_name, uniqueName, MAXPGPATH-1);
 
 
 	file = AllocateFile(tp->tl_name, "w+");
