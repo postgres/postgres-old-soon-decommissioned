@@ -135,7 +135,7 @@ fi
 
 
 PSQL="${PGPATH}/psql $connectopts"
-PGDUMP="${PGPATH}/pg_dump $connectopts $pgdumpextraopts"
+PGDUMP="${PGPATH}/pg_dump $connectopts $pgdumpextraopts -Fp"
 
 
 echo "--"
