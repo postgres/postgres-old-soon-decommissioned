@@ -481,10 +481,28 @@ ProcQueueInit(PROC_QUEUE *queue)
 }
 
 
+/*
+ *	Handling cancel request while waiting for lock
+ *
+ */
 static bool	lockWaiting = false;
 void	SetWaitingForLock(bool waiting)
 {
+	if (waiting == lockWaiting)
+		return;
 	lockWaiting = waiting;
+	if (lockWaiting)
+	{
+		Assert(MyProc->links.next != INVALID_OFFSET);
+		if (QueryCancel) /* cancel request pending */
+		{
+			if (GetOffWaitqueue(MyProc))
+			{
+				lockWaiting = false;
+				elog(ERROR, "Query cancel requested while waiting lock");
+			}
+		}
+	}
 }
 void	LockWaitCancel(void)
 {
@@ -610,7 +628,7 @@ ins:;
 	timeval.it_value.tv_sec = \
 		(DeadlockCheckTimer ? DeadlockCheckTimer : DEADLOCK_CHECK_TIMER);
 
-	lockWaiting = true;
+	SetWaitingForLock(true);
 	do
 	{
 		MyProc->errType = NO_ERROR;		/* reset flag after deadlock check */
