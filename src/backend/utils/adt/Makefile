@@ -15,7 +15,12 @@ CFLAGS += -I../..
 
 # seems to be required for some date/time stuff 07/19/1999 bjm
 ifeq ($(CPU),alpha)
+ifeq ($(CC), gcc)
 CFLAGS+= -mieee
+endif
+ifeq ($(CC), egcs)
+CFLAGS+= -mieee
+endif
 endif
 
 ifdef MULTIBYTE
