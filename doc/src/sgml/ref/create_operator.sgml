@@ -303,8 +303,8 @@ MYBOXES.description !== box '((0,0),(1,1))'
    the lines of [SHAP86]; however, it must know whether  this
    strategy  is  applicable.   The current hash-join algorithm
    is only correct for operators that represent equality tests;
-   furthermore, equality of the datatype must mean bitwise equality
-   of the representation of the type.  (For example, a datatype that
+   furthermore, equality of the data type must mean bitwise equality
+   of the representation of the type.  (For example, a data type that
    contains unused bits that don't matter for equality tests could
    not be hashjoined.)
    The HASHES flag indicates to the query optimizer that a hash join
