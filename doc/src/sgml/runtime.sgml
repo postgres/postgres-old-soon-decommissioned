@@ -921,9 +921,11 @@ env PGOPTIONS='-c geqo=off' psql
       <term><varname>LOG_PID</varname> (<type>boolean</type>)</term>
       <listitem>
        <para>
-        Prefixes each server log message with the process ID of the
-        backend process. This is useful to sort out which messages
-        pertain to which connection. The default is off.
+        Prefixes each server message in the logfile with the process ID of
+        the backend process. This is useful to sort out which messages
+        pertain to which connection. The default is off.  This parameter
+        does not affect messages logged via syslog(), which always contain
+        the process ID.
        </para>
       </listitem>
      </varlistentry>
