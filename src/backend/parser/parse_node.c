@@ -216,8 +216,7 @@ make_var(ParseState *pstate, Oid relid, char *refname,
 	vartypeid = get_atttype(relid, attid);
 	type_mod = get_atttypmod(relid, attid);
 
-	varnode = makeVar(vnum, attid, vartypeid, type_mod,
-					  sublevels_up, vnum, attid);
+	varnode = makeVar(vnum, attid, vartypeid, type_mod, sublevels_up);
 
 	return varnode;
 }

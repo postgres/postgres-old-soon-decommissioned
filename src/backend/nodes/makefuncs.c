@@ -52,9 +52,7 @@ makeVar(Index varno,
 		AttrNumber varattno,
 		Oid vartype,
 		int32 vartypmod,
-		Index varlevelsup,
-		Index varnoold,
-		AttrNumber varoattno)
+		Index varlevelsup)
 {
 	Var		   *var = makeNode(Var);
 
@@ -63,8 +61,14 @@ makeVar(Index varno,
 	var->vartype = vartype;
 	var->vartypmod = vartypmod;
 	var->varlevelsup = varlevelsup;
-	var->varnoold = varnoold;
-	var->varoattno = varoattno;
+	/*
+	 * Since few if any routines ever create Var nodes with varnoold/varoattno
+	 * different from varno/varattno, we don't provide separate arguments
+	 * for them, but just initialize them to the given varno/varattno.
+	 * This reduces code clutter and chance of error for most callers.
+	 */
+	var->varnoold = varno;
+	var->varoattno = varattno;
 
 	return var;
 }

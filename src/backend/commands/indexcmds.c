@@ -24,6 +24,7 @@
 #include "catalog/pg_type.h"
 #include "commands/defrem.h"
 #include "optimizer/clauses.h"
+#include "optimizer/planmain.h"
 #include "optimizer/prep.h"
 #include "parser/parsetree.h"
 #include "utils/builtins.h"
@@ -142,7 +143,7 @@ DefineIndex(char *heapRelationName,
 	if (predicate != NULL && rangetable != NIL)
 	{
 		cnfPred = cnfify((Expr *) copyObject(predicate), true);
-		fix_opids(cnfPred);
+		fix_opids((Node *) cnfPred);
 		CheckPredicate(cnfPred, rangetable, relationId);
 	}
 
@@ -285,7 +286,7 @@ ExtendIndex(char *indexRelationName, Expr *predicate, List *rangetable)
 	if (rangetable != NIL)
 	{
 		cnfPred = cnfify((Expr *) copyObject(predicate), true);
-		fix_opids(cnfPred);
+		fix_opids((Node *) cnfPred);
 		CheckPredicate(cnfPred, rangetable, relationId);
 	}
 

@@ -25,9 +25,7 @@ extern Var *makeVar(Index varno,
 		AttrNumber varattno,
 		Oid vartype,
 		int32 vartypmod,
-		Index varlevelsup,
-		Index varnoold,
-		AttrNumber varoattno);
+		Index varlevelsup);
 
 extern TargetEntry *makeTargetEntry(Resdom *resdom, Node *expr);
 

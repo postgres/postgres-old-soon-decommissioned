@@ -431,7 +431,7 @@ compute_rel_size(RelOptInfo *rel)
 int
 compute_rel_width(RelOptInfo *rel)
 {
-	return compute_targetlist_width(get_actual_tlist(rel->targetlist));
+	return compute_targetlist_width(rel->targetlist);
 }
 
 /*
@@ -448,8 +448,7 @@ compute_targetlist_width(List *targetlist)
 
 	foreach(temp_tl, targetlist)
 	{
-		tuple_width = tuple_width +
-			compute_attribute_width(lfirst(temp_tl));
+		tuple_width += compute_attribute_width(lfirst(temp_tl));
 	}
 	return tuple_width;
 }

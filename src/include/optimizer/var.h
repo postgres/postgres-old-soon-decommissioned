@@ -18,6 +18,5 @@
 extern List *pull_varnos(Node *me);
 extern bool contain_var_clause(Node *clause);
 extern List *pull_var_clause(Node *clause);
-extern bool var_equal(Var *var1, Var *var2);
 
 #endif	 /* VAR_H */
