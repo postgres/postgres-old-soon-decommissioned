@@ -66,7 +66,7 @@ int PgDatabase::CmdTuples()
 char *a;
 
   a = (char *)PQcmdTuples(pgResult);
-  if(NULL == a) return -1;
+  if(!a[0]) return -1;
 
 return atoi(a);
 }
