@@ -55,6 +55,7 @@ clean:
 		false ;\
 	else true;\
 	fi
+	$(MAKE) -C lextest clean
 	$(MAKE) -C utils clean
 	$(MAKE) -C backend clean
 	$(MAKE) -C libpq clean
@@ -92,6 +93,7 @@ distclean: clean
 	  false ;\
         else true;\
 	fi
+	$(MAKE) -C lextest $@
 	$(MAKE) -C utils $@
 	$(MAKE) -C backend $@
 	$(MAKE) -C libpq $@
