@@ -329,7 +329,7 @@ SELECT city, (temp_hi+temp_lo)/2 AS temp_avg, date FROM weather;
 (3 rows)
 </screen>
     Notice how the <literal>AS</literal> clause is used to relabel the
-    output column.  (It is optional.)
+    output column.  (The <literal>AS</literal> clause is optional.)
    </para>
 
    <para>
