@@ -28,10 +28,6 @@ all:
 # started to update the file.
 .DELETE_ON_ERROR:
 
-# Do not let 'make' delete intermediate files.  This might have been
-# a sensible idea, but it's too buggy.
-.SECONDARY:
-
 # PostgreSQL version number
 VERSION = @VERSION@
 
