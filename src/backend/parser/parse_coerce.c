@@ -284,10 +284,9 @@ coerce_type_typmod(ParseState *pstate, Node *node,
 	Oid			oid_array[FUNC_MAX_ARGS];
 
 	/*
-	 * We assume that only typmod values greater than 0 indicate a forced
-	 * conversion is necessary.
+	 * A negative typmod is assumed to mean that no coercion is wanted.
 	 */
-	if ((atttypmod <= 0) || (atttypmod == exprTypmod(node)))
+	if (atttypmod < 0 || atttypmod == exprTypmod(node))
 		return node;
 
 	funcname = typeidTypeName(targetTypeId);

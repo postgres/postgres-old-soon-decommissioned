@@ -201,7 +201,7 @@ format_type_internal(Oid type_oid, int32 typemod, bool allow_invalid)
 			break;
 
 		case TIMEOID:
-			if (with_typemod && typemod > 0)
+			if (with_typemod)
 				buf = psnprintf(50, "time(%d) without time zone",
 								typemod);
 			else
@@ -209,7 +209,7 @@ format_type_internal(Oid type_oid, int32 typemod, bool allow_invalid)
 			break;
 
 		case TIMETZOID:
-			if (with_typemod && typemod > 0)
+			if (with_typemod)
 				buf = psnprintf(50, "time(%d) with time zone",
 								typemod);
 			else
@@ -217,7 +217,7 @@ format_type_internal(Oid type_oid, int32 typemod, bool allow_invalid)
 			break;
 
 		case TIMESTAMPOID:
-			if (with_typemod && typemod > 0)
+			if (with_typemod)
 				buf = psnprintf(50, "timestamp(%d) without time zone",
 								typemod);
 			else
@@ -225,7 +225,7 @@ format_type_internal(Oid type_oid, int32 typemod, bool allow_invalid)
 			break;
 
 		case TIMESTAMPTZOID:
-			if (with_typemod && typemod > 0)
+			if (with_typemod)
 				buf = psnprintf(50, "timestamp(%d) with time zone",
 								typemod);
 			else
