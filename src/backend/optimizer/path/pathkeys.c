@@ -860,13 +860,13 @@ make_pathkeys_for_mergeclauses(Query *root,
 
 		/*
 		 * When we are given multiple merge clauses, it's possible that
-		 * some clauses refer to the same vars as earlier clauses.
-		 * There's no reason for us to specify sort keys like (A,B,A) when
-		 * (A,B) will do --- and adding redundant sort keys makes add_path
-		 * think that this sort order is different from ones that are
-		 * really the same, so don't do it.  Since we now have a
-		 * canonicalized pathkey, a simple ptrMember test is sufficient to
-		 * detect redundant keys.
+		 * some clauses refer to the same vars as earlier clauses. There's
+		 * no reason for us to specify sort keys like (A,B,A) when (A,B)
+		 * will do --- and adding redundant sort keys makes add_path think
+		 * that this sort order is different from ones that are really the
+		 * same, so don't do it.  Since we now have a canonicalized
+		 * pathkey, a simple ptrMember test is sufficient to detect
+		 * redundant keys.
 		 */
 		if (!ptrMember(pathkey, pathkeys))
 			pathkeys = lappend(pathkeys, pathkey);

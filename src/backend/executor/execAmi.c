@@ -78,23 +78,20 @@ ExecOpenScanR(Oid relOid,
 	Relation	relation;
 	Pointer		scanDesc;
 
-	/* ----------------
-	 *	note: scanDesc returned by ExecBeginScan can be either
-	 *		  a HeapScanDesc or an IndexScanDesc so for now we
-	 *		  make it a Pointer.  There should be a better scan
-	 *		  abstraction someday -cim 9/9/89
-	 * ----------------
+	/*
+	 * note: scanDesc returned by ExecBeginScan can be either a
+	 * HeapScanDesc or an IndexScanDesc so for now we make it a Pointer.
+	 * There should be a better scan abstraction someday -cim 9/9/89
 	 */
 
-	/* ----------------
-	 *	Open the relation with the correct call depending
-	 *	on whether this is a heap relation or an index relation.
+	/*
+	 * Open the relation with the correct call depending on whether this
+	 * is a heap relation or an index relation.
 	 *
-	 *	For a table, acquire AccessShareLock for the duration of the query
-	 *	execution.	For indexes, acquire no lock here; the index machinery
-	 *	does its own locks and unlocks.  (We rely on having some kind of
-	 *	lock on the parent table to ensure the index won't go away!)
-	 * ----------------
+	 * For a table, acquire AccessShareLock for the duration of the query
+	 * execution.  For indexes, acquire no lock here; the index machinery
+	 * does its own locks and unlocks.	(We rely on having some kind of
+	 * lock on the parent table to ensure the index won't go away!)
 	 */
 	if (isindex)
 		relation = index_open(relOid);
@@ -136,13 +133,12 @@ ExecBeginScan(Relation relation,
 {
 	Pointer		scanDesc;
 
-	/* ----------------
-	 *	open the appropriate type of scan.
+	/*
+	 * open the appropriate type of scan.
 	 *
-	 *	Note: ambeginscan()'s second arg is a boolean indicating
-	 *		  that the scan should be done in reverse..  That is,
-	 *		  if you pass it true, then the scan is backward.
-	 * ----------------
+	 * Note: ambeginscan()'s second arg is a boolean indicating that the scan
+	 * should be done in reverse..	That is, if you pass it true, then the
+	 * scan is backward.
 	 */
 	if (isindex)
 	{
@@ -180,9 +176,8 @@ ExecCloseR(Plan *node)
 	Relation	relation;
 	HeapScanDesc scanDesc;
 
-	/* ----------------
-	 *	get state for node and shut down the heap scan, if any
-	 * ----------------
+	/*
+	 * get state for node and shut down the heap scan, if any
 	 */
 	switch (nodeTag(node))
 	{
@@ -209,10 +204,9 @@ ExecCloseR(Plan *node)
 	if (scanDesc != NULL)
 		heap_endscan(scanDesc);
 
-	/* ----------------
-	 *	if this is an index scan then we have to take care
-	 *	of the index relations as well.
-	 * ----------------
+	/*
+	 * if this is an index scan then we have to take care of the index
+	 * relations as well.
 	 */
 	if (IsA(node, IndexScan))
 	{
@@ -229,10 +223,10 @@ ExecCloseR(Plan *node)
 
 		for (i = 0; i < numIndices; i++)
 		{
-			/* ----------------
-			 *	shut down each of the index scans and
-			 *	close each of the index relations
-			 * ----------------
+
+			/*
+			 * shut down each of the index scans and close each of the
+			 * index relations
 			 */
 			if (indexScanDescs[i] != NULL)
 				index_endscan(indexScanDescs[i]);

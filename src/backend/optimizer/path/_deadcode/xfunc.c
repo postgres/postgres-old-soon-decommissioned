@@ -1447,15 +1447,13 @@ xfunc_copyrel(RelOptInfo from, RelOptInfo *to)
 	if (newnode == NULL)
 		return false;
 
-	/* ----------------
-	 *	copy node superclass fields
-	 * ----------------
+	/*
+	 * copy node superclass fields
 	 */
 	CopyNodeFields((Node) from, (Node) newnode, alloc);
 
-	/* ----------------
-	 *	copy remainder of node
-	 * ----------------
+	/*
+	 * copy remainder of node
 	 */
 	Node_Copy(from, newnode, alloc, relids);
 

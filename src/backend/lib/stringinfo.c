@@ -106,11 +106,11 @@ appendStringInfo(StringInfo str, const char *fmt,...)
 
 	for (;;)
 	{
-		/*----------
-		 * Try to format the given string into the available space;
-		 * but if there's hardly any space, don't bother trying,
-		 * just fall through to enlarge the buffer first.
-		 *----------
+
+		/*
+		 * Try to format the given string into the available space; but if
+		 * there's hardly any space, don't bother trying, just fall
+		 * through to enlarge the buffer first.
 		 */
 		avail = str->maxlen - str->len - 1;
 		if (avail > 16)

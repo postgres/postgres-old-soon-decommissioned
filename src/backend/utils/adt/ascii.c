@@ -80,27 +80,27 @@ pg_to_ascii(unsigned char *src, unsigned char *src_end, unsigned char *desc, int
 
 	if (enc == LATIN1)
 	{
-		/* ----------
+
+		/*
 		 * ISO-8859-1 <range: 160 -- 255>
-		 * ----------
 		 */
 		ascii = "  cL Y  \"Ca  -R     'u .,      ?AAAAAAACEEEEIIII NOOOOOxOUUUUYTBaaaaaaaceeeeiiii nooooo/ouuuuyty";
 		range = RANGE_160;
 	}
 	else if (enc == LATIN2)
 	{
-		/* ----------
+
+		/*
 		 * ISO-8859-2 <range: 160 -- 255>
-		 * ----------
 		 */
 		ascii = " A L LS \"SSTZ-ZZ a,l'ls ,sstz\"zzRAAAALCCCEEEEIIDDNNOOOOxRUUUUYTBraaaalccceeeeiiddnnoooo/ruuuuyt.";
 		range = RANGE_160;
 	}
 	else if (enc == WIN1250)
 	{
-		/* ----------
+
+		/*
 		 * Window CP1250 <range: 128 -- 255>
-		 * ----------
 		 */
 		ascii = "  ' \"    %S<STZZ `'\"\".--  s>stzz   L A  \"CS  -RZ  ,l'u .,as L\"lzRAAAALCCCEEEEIIDDNNOOOOxRUUUUYTBraaaalccceeeeiiddnnoooo/ruuuuyt ";
 		range = RANGE_128;
@@ -111,9 +111,8 @@ pg_to_ascii(unsigned char *src, unsigned char *src_end, unsigned char *desc, int
 			 pg_encoding_to_char(enc));
 	}
 
-	/* ----------
+	/*
 	 * Encode
-	 * ----------
 	 */
 	for (x = src; x <= src_end; x++)
 	{

@@ -582,9 +582,8 @@ update_attstats(Oid relid, int natts, VacAttrStats *vacattrstats)
 				for (i = 0; i < Natts_pg_statistic; ++i)
 					nulls[i] = ' ';
 
-				/* ----------------
-				 *	initialize values[]
-				 * ----------------
+				/*
+				 * initialize values[]
 				 */
 				i = 0;
 				values[i++] = ObjectIdGetDatum(relid);	/* starelid */

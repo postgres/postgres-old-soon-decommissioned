@@ -65,9 +65,8 @@ main(int argc, char **argv)
 
 	progname = argv[0];
 
-	/* ----------
+	/*
 	 * Parse ARGV
-	 * ----------
 	 */
 	if (argc > 1)
 	{
@@ -153,9 +152,8 @@ main(int argc, char **argv)
 		exit(RE_ERROR);
 	}
 
-	/* ----------
+	/* 
 	 * Check space
-	 * ----------
 	 */
 	if (!pgLO->space && !pgLO->action == ACTION_SHOW)
 	{
@@ -172,9 +170,8 @@ main(int argc, char **argv)
 		exit(RE_ERROR);
 	}
 
-	/* ----------
+	/* 
 	 * Make connection
-	 * ----------
 	 */
 	pgLO->conn = PQsetdbLogin(pgLO->host, NULL, NULL, NULL, pgLO->db,
 							  pgLO->user, pwd);
@@ -189,9 +186,8 @@ main(int argc, char **argv)
 	pgLO->user = PQuser(pgLO->conn);
 
 
-	/* ----------
+	/* 
 	 * Init index file
-	 * ----------
 	 */
 	if (pgLO->action != ACTION_SHOW)
 		index_file(pgLO);

@@ -519,9 +519,9 @@ transformFromClauseItem(ParseState *pstate, Node *n, List **containedRels)
 		*containedRels = nconc(l_containedRels, r_containedRels);
 
 		/*
-		 * Check for conflicting refnames in left and right subtrees.
-		 * Must do this because higher levels will assume I hand back a
-		 * self- consistent namespace subtree.
+		 * Check for conflicting refnames in left and right subtrees. Must
+		 * do this because higher levels will assume I hand back a self-
+		 * consistent namespace subtree.
 		 */
 		checkNameSpaceConflicts(pstate, j->larg, j->rarg);
 

@@ -165,9 +165,8 @@ index_formtuple(TupleDesc tupleDescriptor,
 
 	infomask |= size;
 
-	/* ----------------
+	/*
 	 * initialize metadata
-	 * ----------------
 	 */
 	tuple->t_info = infomask;
 	return tuple;
@@ -205,9 +204,9 @@ nocache_index_getattr(IndexTuple tup,
 	int			data_off;		/* tuple data offset */
 
 	(void) isnull;				/* not used */
-	/* ----------------
-	 *	sanity checks
-	 * ----------------
+
+	/*
+	 * sanity checks
 	 */
 
 	/* ----------------
@@ -246,9 +245,9 @@ nocache_index_getattr(IndexTuple tup,
 	}
 	else
 	{							/* there's a null somewhere in the tuple */
-		/* ----------------
-		 *		check to see if desired att is null
-		 * ----------------
+
+		/*
+		 * check to see if desired att is null
 		 */
 
 		/* XXX "knows" t_bits are just after fixed tuple header! */
@@ -264,9 +263,8 @@ nocache_index_getattr(IndexTuple tup,
 		}
 #endif
 
-		/* ----------------
-		 *		Now check to see if any preceding bits are null...
-		 * ----------------
+		/*
+		 * Now check to see if any preceding bits are null...
 		 */
 		{
 			int			byte = attnum >> 3;

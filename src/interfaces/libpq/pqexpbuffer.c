@@ -173,11 +173,11 @@ printfPQExpBuffer(PQExpBuffer str, const char *fmt,...)
 
 	for (;;)
 	{
-		/*----------
-		 * Try to format the given string into the available space;
-		 * but if there's hardly any space, don't bother trying,
-		 * just fall through to enlarge the buffer first.
-		 *----------
+
+		/*
+		 * Try to format the given string into the available space; but if
+		 * there's hardly any space, don't bother trying, just fall
+		 * through to enlarge the buffer first.
 		 */
 		if (str->maxlen > str->len + 16)
 		{
@@ -222,11 +222,11 @@ appendPQExpBuffer(PQExpBuffer str, const char *fmt,...)
 
 	for (;;)
 	{
-		/*----------
-		 * Try to format the given string into the available space;
-		 * but if there's hardly any space, don't bother trying,
-		 * just fall through to enlarge the buffer first.
-		 *----------
+
+		/*
+		 * Try to format the given string into the available space; but if
+		 * there's hardly any space, don't bother trying, just fall
+		 * through to enlarge the buffer first.
 		 */
 		if (str->maxlen > str->len + 16)
 		{

@@ -50,9 +50,8 @@ pglo_import(LODumpMaster * pgLO)
 
 		sprintf(lo_path, "%s/%s", pgLO->space, path);
 
-		/* ----------
+		/* 
 		 * Import LO
-		 * ----------
 		 */
 		if ((new_oid = lo_import(pgLO->conn, lo_path)) == 0)
 		{
@@ -79,9 +78,8 @@ pglo_import(LODumpMaster * pgLO)
 
 		pgLO->counter++;
 
-		/* ----------
+		/* 
 		 * UPDATE oid in tab
-		 * ----------
 		 */
 		sprintf(Qbuff, "UPDATE \"%s\" SET \"%s\"=%u WHERE \"%s\"=%u",
 			loa.lo_table, loa.lo_attr, new_oid, loa.lo_attr, loa.lo_oid);

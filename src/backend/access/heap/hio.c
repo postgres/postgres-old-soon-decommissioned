@@ -37,9 +37,8 @@ RelationPutHeapTuple(Relation relation,
 	ItemId		itemId;
 	Item		item;
 
-	/* ----------------
-	 *	increment access statistics
-	 * ----------------
+	/*
+	 * increment access statistics
 	 */
 	IncrHeapAccessStat(local_RelationPutHeapTuple);
 	IncrHeapAccessStat(global_RelationPutHeapTuple);

@@ -888,16 +888,14 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp,
 		{
 			ExecStoreTuple(tuple, slot, InvalidBuffer, false);
 
-			/* ----------------
+			/*
 			 * Check the constraints of the tuple
-			 * ----------------
 			 */
 			if (rel->rd_att->constr)
 				ExecConstraints("CopyFrom", resultRelInfo, slot, estate);
 
-			/* ----------------
+			/*
 			 * OK, store the tuple and create index entries for it
-			 * ----------------
 			 */
 			heap_insert(rel, tuple);
 

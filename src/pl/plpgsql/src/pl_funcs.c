@@ -224,9 +224,8 @@ plpgsql_ns_lookup(char *name, char *label)
 	PLpgSQL_ns *ns;
 	int			i;
 
-	/* ----------
+	/*
 	 * If a label is specified, lookup only in that
-	 * ----------
 	 */
 	if (label != NULL)
 	{
@@ -245,9 +244,8 @@ plpgsql_ns_lookup(char *name, char *label)
 		return NULL;			/* label not found */
 	}
 
-	/* ----------
+	/*
 	 * No label given, lookup for visible labels ignoring localmode
-	 * ----------
 	 */
 	for (ns = ns_current; ns != NULL; ns = ns->upper)
 	{
@@ -255,9 +253,8 @@ plpgsql_ns_lookup(char *name, char *label)
 			return ns->items[0];
 	}
 
-	/* ----------
+	/*
 	 * Finally lookup name in the namestack
-	 * ----------
 	 */
 	for (ns = ns_current; ns != NULL; ns = ns->upper)
 	{
@@ -287,13 +284,12 @@ plpgsql_ns_rename(char *oldname, char *newname)
 	PLpgSQL_nsitem *newitem;
 	int			i;
 
-	/* ----------
+	/*
 	 * Lookup in the current namespace only
-	 * ----------
 	 */
-	/* ----------
+
+	/*
 	 * Lookup name in the namestack
-	 * ----------
 	 */
 	for (ns = ns_current; ns != NULL; ns = ns->upper)
 	{
