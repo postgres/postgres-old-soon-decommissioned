@@ -76,15 +76,19 @@ case $1 in
 	;;
   restart)
 	echo -n "Restarting PostgreSQL: "
-	su - $PGUSER -c "$DAEMON restart -D '$PGDATA' -s -m fast"
+	su - $PGUSER -c "$DAEMON restart -D '$PGDATA' -s -m fast -l $PGLOG"
 	echo "ok"
 	;;
+  reload)
+        echo -n "Reload PostgreSQL: "
+        su - $PGUSER -c "$DAEMON reload -D '$PGDATA' -s"
+        echo "ok"
   status)
 	su - $PGUSER -c "$DAEMON status -D '$PGDATA'"
 	;;
   *)
 	# Print help
-	echo "Usage: $0 {start|stop|restart|status}" 1>&2
+	echo "Usage: $0 {start|stop|restart|reload|status}" 1>&2
 	exit 1
 	;;
 esac
