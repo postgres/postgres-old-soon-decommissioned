@@ -367,18 +367,14 @@ ShmemInitHash(char *name,		/* table string name for binding */
 	 * message since they have more information
 	 */
 	if (location == NULL)
-	{
 		return (0);
-	}
 
 	/*
 	 * it already exists, attach to it rather than allocate and initialize
 	 * new space
 	 */
 	if (found)
-	{
 		hash_flags |= HASH_ATTACH;
-	}
 
 	/* these structures were allocated or bound in ShmemInitStruct */
 	/* control information and parameters */
