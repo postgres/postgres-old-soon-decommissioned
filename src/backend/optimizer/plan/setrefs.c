@@ -125,6 +125,9 @@ set_plan_references(Plan *plan)
 				set_plan_references((Plan *) lfirst(pl));
 			}
 			break;
+		case T_TidScan:
+			/* nothing special */
+			break;
 		default:
 			elog(ERROR, "set_plan_references: unknown plan type %d",
 				 nodeTag(plan));

@@ -179,7 +179,19 @@ typedef struct IndexScan
 	IndexScanState *indxstate;
 } IndexScan;
 
-/*
+/* ----------------
+ *              tid scan node
+ * ----------------
+ */
+typedef struct TidScan
+{
+        Scan            scan;
+	bool		needRescan;
+        List            *tideval;
+        TidScanState    *tidstate;
+} TidScan;
+
+/* 
  * ==========
  * Join nodes
  * ==========

@@ -1062,7 +1062,13 @@ heap_fetch(Relation relation,
 	 * ----------------
 	 */
 
-	Assert(ItemIdIsUsed(lp));
+	if (!ItemIdIsUsed(lp))
+	{
+		ReleaseBuffer(buffer);
+		*userbuf = InvalidBuffer;
+		tuple->t_data = NULL;
+		return;
+	}
 
 	tuple->t_data = (HeapTupleHeader) PageGetItem((Page) dp, lp);
 	tuple->t_len = ItemIdGetLength(lp);

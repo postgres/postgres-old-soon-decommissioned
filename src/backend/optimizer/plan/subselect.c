@@ -534,6 +534,11 @@ SS_finalize_plan(Plan *plan)
 							  &results);
 			break;
 
+		case T_TidScan:
+			finalize_primnode((Node *) ((TidScan *) plan)->tideval,
+							&results);
+			break;
+
 		case T_Agg:
 		case T_SeqScan:
 		case T_NestLoop:

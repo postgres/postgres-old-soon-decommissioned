@@ -193,6 +193,13 @@ typedef struct IndexPath
 	Relids		joinrelids;			/* other rels mentioned in indexqual */
 } IndexPath;
 
+typedef struct TidPath
+{
+	Path	path;
+	List	*tideval;
+	Relids	unjoined_relids; /* some rels not yet part of my Path */
+} TidPath;  
+
 /*
  * All join-type paths share these fields.
  */

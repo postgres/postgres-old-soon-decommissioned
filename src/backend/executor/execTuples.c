@@ -771,6 +771,13 @@ NodeGetResultTupleSlot(Plan *node)
 			}
 			break;
 
+		case T_TidScan:
+			{
+				CommonScanState *scanstate = ((IndexScan *) node)->scan.scanstate;
+				slot = scanstate->cstate.cs_ResultTupleSlot;
+			}
+			break;
+
 		default:
 			/* ----------------
 			 *	  should never get here

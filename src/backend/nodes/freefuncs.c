@@ -184,6 +184,29 @@ _freeIndexScan(IndexScan *node)
 }
 
 /* ----------------
+ *		_freeTidScan
+ * ----------------
+ */
+static void
+_freeTidScan(TidScan *node)
+{
+	/* ----------------
+	 *	free node superclass fields
+	 * ----------------
+	 */
+	FreePlanFields((Plan *) node);
+	FreeScanFields((Scan *) node);
+
+	/* ----------------
+	 *	free remainder of node
+	 * ----------------
+	 */
+	freeObject(node->tideval);
+
+	pfree(node);
+}
+
+/* ----------------
  *		FreeJoinFields
  *
  *		This function frees the fields of the Join node.  It is used by
@@ -782,6 +805,29 @@ _freeIndexPath(IndexPath *node)
 }
 
 /* ----------------
+ *		_freeTidPath
+ * ----------------
+ */
+static void
+_freeTidPath(TidPath *node)
+{
+	/* ----------------
+	 *	free the node superclass fields
+	 * ----------------
+	 */
+	FreePathFields((Path *) node);
+
+	/* ----------------
+	 *	free remainder of node
+	 * ----------------
+	 */
+	freeObject(node->tideval);
+	freeList(node->unjoined_relids);
+
+	pfree(node);
+}
+
+/* ----------------
  *		FreeJoinPathFields
  *
  *		This function frees the fields of the JoinPath node.  It is used by
@@ -1079,6 +1125,9 @@ freeObject(void *node)
 		case T_IndexScan:
 			_freeIndexScan(node);
 			break;
+		case T_TidScan:
+			_freeTidScan(node);
+			break;
 		case T_Join:
 			_freeJoin(node);
 			break;
@@ -1176,6 +1225,9 @@ freeObject(void *node)
 			break;
 		case T_IndexPath:
 			_freeIndexPath(node);
+			break;
+		case T_TidPath:
+			_freeTidPath(node);
 			break;
 		case T_NestPath:
 			_freeNestPath(node);

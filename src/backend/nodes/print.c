@@ -338,6 +338,9 @@ plannode_type(Plan *p)
 		case T_Group:
 			return "GROUP";
 			break;
+		case T_TidScan:
+			return "TIDSCAN";
+			break;
 		default:
 			return "UNKNOWN";
 			break;

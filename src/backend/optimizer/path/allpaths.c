@@ -108,9 +108,14 @@ set_base_rel_pathlist(Query *root, List *rels)
 		List	   *sequential_scan_list;
 		List	   *rel_index_scan_list;
 		List	   *or_index_scan_list;
+		List	   *tidscan_pathlist;
 
 		sequential_scan_list = lcons(create_seqscan_path(rel), NIL);
-
+		/* Tid Scan Pathlist add */
+		tidscan_pathlist = create_tidscan_paths(root, rel);
+		if (tidscan_pathlist)
+			sequential_scan_list = nconc(sequential_scan_list,
+				tidscan_pathlist);
 		rel_index_scan_list = create_index_paths(root,
 												 rel,
 												 indices,

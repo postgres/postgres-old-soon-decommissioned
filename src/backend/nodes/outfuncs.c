@@ -452,6 +452,23 @@ _outIndexScan(StringInfo str, IndexScan *node)
 }
 
 /*
+ *	TidScan is a subclass of Scan
+ */
+static void
+_outTidScan(StringInfo str, TidScan *node)
+{
+	appendStringInfo(str, " TIDSCAN ");
+	_outPlanInfo(str, (Plan *) node);
+
+	appendStringInfo(str, " :scanrelid %u ", node->scan.scanrelid);
+	appendStringInfo(str, " :needrescan %d ", node->needRescan);
+
+	appendStringInfo(str, " :tideval ");
+	_outNode(str, node->tideval);
+
+}
+
+/*
  *	Noname is a subclass of Plan
  */
 static void
@@ -915,6 +932,25 @@ _outIndexPath(StringInfo str, IndexPath *node)
 }
 
 /*
+ *	TidPath is a subclass of Path.
+ */
+static void
+_outTidPath(StringInfo str, TidPath *node)
+{
+	appendStringInfo(str,
+					 " TIDPATH :pathtype %d :cost %f :pathkeys ",
+					 node->path.pathtype,
+					 node->path.path_cost);
+	_outNode(str, node->path.pathkeys);
+
+	appendStringInfo(str, " :tideval ");
+	_outNode(str, node->tideval);
+
+	appendStringInfo(str, " :un joined_relids ");
+	_outIntList(str, node->unjoined_relids);
+}
+
+/*
  *	NestPath is a subclass of Path
  */
 static void
@@ -1357,6 +1393,9 @@ _outNode(StringInfo str, void *obj)
 			case T_IndexScan:
 				_outIndexScan(str, obj);
 				break;
+			case T_TidScan:
+				_outTidScan(str, obj);
+				break;
 			case T_Noname:
 				_outNoname(str, obj);
 				break;
@@ -1434,6 +1473,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_IndexPath:
 				_outIndexPath(str, obj);
+				break;
+			case T_TidPath:
+				_outTidPath(str, obj);
 				break;
 			case T_NestPath:
 				_outNestPath(str, obj);

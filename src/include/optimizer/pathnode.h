@@ -27,6 +27,7 @@ extern Path *create_seqscan_path(RelOptInfo *rel);
 
 extern IndexPath *create_index_path(Query *root, RelOptInfo *rel,
 		RelOptInfo *index, List *restriction_clauses);
+extern TidPath *create_tidscan_path(RelOptInfo *rel, List *tideval);
 
 extern NestPath *create_nestloop_path(RelOptInfo *joinrel,
 		RelOptInfo *outer_rel, Path *outer_path, Path *inner_path,

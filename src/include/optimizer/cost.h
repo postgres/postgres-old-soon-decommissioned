@@ -31,11 +31,13 @@ extern bool _enable_sort_;
 extern bool _enable_nestloop_;
 extern bool _enable_mergejoin_;
 extern bool _enable_hashjoin_;
+extern bool _enable_tidscan_;
 
 extern Cost cost_seqscan(int relid, int relpages, int reltuples);
 extern Cost cost_index(Oid indexid, int expected_indexpages, Cost selec,
 		   int relpages, int reltuples, int indexpages,
 		   int indextuples, bool is_injoin);
+extern Cost cost_tidscan(List *evallist);
 extern Cost cost_sort(List *pathkeys, int tuples, int width);
 extern Cost cost_nestloop(Cost outercost, Cost innercost, int outertuples,
 			  int innertuples, int outerpages, bool is_indexjoin);

@@ -31,6 +31,12 @@ extern List *create_index_paths(Query *root, RelOptInfo *rel, List *indices,
 extern List *expand_indexqual_conditions(List *indexquals);
 
 /*
+ * tidpath.h
+ *	  routines to generate tid paths
+ */
+extern List *create_tidscan_paths(Query *root, RelOptInfo *rel);
+
+/*
  * joinpath.c
  *	   routines to create join paths
  */

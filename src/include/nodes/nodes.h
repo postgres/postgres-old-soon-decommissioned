@@ -47,6 +47,7 @@ typedef enum NodeTag
 	T_Choose,
 	T_Group,
 	T_SubPlan,
+	T_TidScan,
 
 	/*---------------------
 	 * TAGS FOR PRIMITIVE NODES (primnodes.h)
@@ -80,6 +81,7 @@ typedef enum NodeTag
 	T_RestrictInfo,
 	T_JoinInfo,
 	T_Stream,
+	T_TidPath,
 
 	/*---------------------
 	 * TAGS FOR EXECUTOR NODES (execnodes.h)
@@ -110,6 +112,7 @@ typedef enum NodeTag
 	T_SortState,
 	T_UniqueState,
 	T_HashState,
+	T_TidScanState,
 
 	/*---------------------
 	 * TAGS FOR MEMORY NODES (memnodes.h)
