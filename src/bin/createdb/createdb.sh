@@ -111,7 +111,7 @@ else
 	fi
 fi
 
-psql $PASSWDOPT -tq $AUTHOPT $PGHOSTOPT $PGPORTOPT -c "create database $dbname $location $encoding" template1
+psql $PASSWDOPT -tq $AUTHOPT $PGHOSTOPT $PGPORTOPT -c "create database \"$dbname\" $location $encoding" template1
 
 if [ $? -ne 0 ]; then
 	echo "$CMDNAME: database creation failed on $dbname."

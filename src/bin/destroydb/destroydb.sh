@@ -75,7 +75,7 @@ fi
 
 if [ "$answer" = y ]
 then
-  psql -tq $AUTHOPT $PGHOSTOPT $PGPORTOPT -c "drop database $dbname" template1
+  psql -tq $AUTHOPT $PGHOSTOPT $PGPORTOPT -c "drop database \"$dbname\"" template1
     if [ $? -ne 0 ]
        then echo "$CMDNAME: database destroy failed on $dbname."
        exit 1
