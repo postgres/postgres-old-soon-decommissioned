@@ -32,7 +32,6 @@
 #define PGSTD
 #endif
 
-
 // ****************************************************************
 //
 // PgCursor - a class for querying databases using a cursor
@@ -50,7 +49,7 @@ public:
   ~PgCursor();	// close connection and clean up
   
   // Commands associated with cursor interface
-  int Declare(PGSTD string query, bool binary=false);	// Declare a cursor with given name
+  int Declare(PGSTD string query, bool binary = false);	// Declare a cursor with given name
   int Fetch(const char* dir = "FORWARD");		// Fetch ALL tuples in given direction
   int Fetch(unsigned num, const char* dir = "FORWARD");	// Fetch specified amount of tuples
   int Close();	// Close the cursor

@@ -1,18 +1,22 @@
+#-------------------------------------------------------------------------
 #
-# Makefile for example programs
+# Makefile for libpq++ examples
 #
+# Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group
+# Portions Copyright (c) 1994, Regents of the University of California
+#
+# $Header$
+#
+#-------------------------------------------------------------------------
 
+subdir = src/interfaces/libpq++/examples
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 LIBNAME= libpq++
-HEADERDIR= /usr/local/pgsql/include
-LIBPQDIR= /usr/local/pgsql/lib
+HEADERDIR= $(includedir)
+LIBPQDIR= $(libdir)
 
-
-# We have to override -Werror, which makes warnings, fatal, because we
-# inevitably get the warning, "abstract declarator used as declaration"
-# because of our inclusion of c.h and we don't know how to stop that.
-
-#CXXFLAGS= $(CFLAGS) -Wno-error -Wno-unused -Wl,-Bdynamic
 CXXFLAGS= $(CFLAGS)
 
 CXXFLAGS+= -I$(HEADERDIR)

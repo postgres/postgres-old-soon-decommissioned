@@ -21,8 +21,11 @@
  *-------------------------------------------------------------------------
  */
 
+
 #ifndef LIBPQXX_H
 #define LIBPQXX_H
+
+#include <string.h>
 
 #include "libpq++/pgconnection.h"
 #include "libpq++/pgdatabase.h"
