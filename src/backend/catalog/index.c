@@ -369,9 +369,13 @@ ConstructTupleDescriptor(Oid heapoid,
 	if (atnum > natts)
 	    elog(WARN, "Cannot create index: attribute %d does not exist",
 		 atnum);
-	IndexKey = (IndexElem*) lfirst(attributeList);
-	attributeList = lnext(attributeList);
-	IndexKeyType = IndexKey->tname;
+	if (attributeList) {
+	  IndexKey = (IndexElem*) lfirst(attributeList);
+	  attributeList = lnext(attributeList);
+	  IndexKeyType = IndexKey->tname;
+	} else {
+	  IndexKeyType = NULL;
+	}
 	
 	indexTupDesc->attrs[i] = (AttributeTupleForm) palloc(ATTRIBUTE_TUPLE_SIZE);
 	
