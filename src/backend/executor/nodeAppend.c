@@ -493,27 +493,32 @@ ExecEndAppend(Append *node)
 
 	/* ----------------
 	 *	close out the different result relations
+	 *
+	 *	NB: this must agree with what EndPlan() does to close a result rel
 	 * ----------------
 	 */
 	resultRelationInfoList = appendstate->as_result_relation_info_list;
 	while (resultRelationInfoList != NIL)
 	{
 		RelationInfo *resultRelationInfo;
-		Relation	resultRelationDesc;
 
 		resultRelationInfo = (RelationInfo *) lfirst(resultRelationInfoList);
-		resultRelationDesc = resultRelationInfo->ri_RelationDesc;
-		heap_close(resultRelationDesc, NoLock);
+
+		heap_close(resultRelationInfo->ri_RelationDesc, NoLock);
+		/* close indices on the result relation, too */
+		ExecCloseIndices(resultRelationInfo);
+
+		/*
+		 * estate may (or may not) be pointing at one of my result relations.
+		 * If so, make sure EndPlan() doesn't try to close it again!
+		 */
+		if (estate->es_result_relation_info == resultRelationInfo)
+			estate->es_result_relation_info = NULL;
+
 		pfree(resultRelationInfo);
 		resultRelationInfoList = lnext(resultRelationInfoList);
 	}
 	appendstate->as_result_relation_info_list = NIL;
-	/*
-	 * This next step is critical to prevent EndPlan() from trying to close
-	 * an already-closed-and-deleted RelationInfo --- es_result_relation_info
-	 * is pointing at one of the nodes we just zapped above.
-	 */
-	estate->es_result_relation_info = NULL;
 
 	/*
 	 * XXX should free appendstate->as_junkfilter_list here
