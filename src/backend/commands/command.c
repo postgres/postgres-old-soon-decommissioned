@@ -699,7 +699,7 @@ AlterTableAddConstraint(const char *relationName,
 		case T_FkConstraint:
 			{
 				FkConstraint *fkconstraint=(FkConstraint *)newConstraint;
-				Relation rel, classrel;
+				Relation rel;
 				HeapScanDesc scan;
 				HeapTuple tuple;
 				Trigger trig;
