@@ -539,7 +539,7 @@ EOF
     if [ "$?" -ne 0 ]; then
 	exit_nicely
     fi
-    if [ ! -f $PGDATA/global/pg_pwd ]; then
+    if [ ! -f "$PGDATA"/global/pg_pwd ]; then
         echo
         echo "The password file wasn't generated. Please report this problem." 1>&2
         exit_nicely

@@ -37,7 +37,7 @@ fi
 # ----------
 # Get options, language name and dbname
 # ----------
-while [ $# -gt 0 ]
+while [ "$#" -gt 0 ]
 do
     case "$1" in 
 	--help|-\?)
@@ -237,7 +237,7 @@ if [ "$showsql" = yes ]; then
 	echo "$sqlcmd"
 fi
 res=`$PSQL "$sqlcmd"`
-if [ $? -ne 0 ]; then
+if [ "$?" -ne 0 ]; then
 	echo "$CMDNAME: external error" 1>&2
 	exit 1
 fi
@@ -270,7 +270,7 @@ if [ "$handlerexists" = no ]; then
 		echo "$sqlcmd"
 	fi
 	$PSQL "$sqlcmd"
-	if [ $? -ne 0 ]; then
+	if [ "$?" -ne 0 ]; then
 		echo "$CMDNAME: language installation failed" 1>&2
 		exit 1
 	fi
@@ -281,7 +281,7 @@ if [ "$showsql" = yes ]; then
 	echo "$sqlcmd"
 fi
 $PSQL "$sqlcmd"
-if [ $? -ne 0 ]; then
+if [ "$?" -ne 0 ]; then
 	echo "$CMDNAME: language installation failed" 1>&2
 	exit 1
 fi

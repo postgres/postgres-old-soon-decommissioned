@@ -41,7 +41,7 @@ Report bugs to <pgsql-bugs@postgresql.org>."
 advice="\
 Try '$me --help' for more information."
 
-if test $# -eq 0 ; then
+if test "$#" -eq 0 ; then
     echo "$me: argument required" 1>&2
     echo "$advice" 1>&2
     exit 1
@@ -51,7 +51,7 @@ show=
 
 for opt
 do
-    case $opt in
+    case "$opt" in
         --bindir)       show="$show \$val_bindir";;
         --includedir)   show="$show \$val_includedir";;
         --includedir-server)
