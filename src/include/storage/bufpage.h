@@ -54,9 +54,9 @@
  * obviously, a page is not formatted before it is initialized with by
  * a call to PageInit.
  *
- * the contents of the special pg_variable/pg_time/pg_log tables are
- * raw disk blocks with special formats.  these are the only "access
- * methods" that need not write disk pages.
+ * The contents of the special pg_log tables are raw disk blocks with
+ * special formats.  these are the only "access methods" that need not
+ * write disk pages.
  *
  * NOTES:
  *

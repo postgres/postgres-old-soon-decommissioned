@@ -49,7 +49,6 @@
 #include "catalog/pg_relcheck.h"
 #include "catalog/pg_rewrite.h"
 #include "catalog/pg_type.h"
-#include "catalog/pg_variable.h"
 #include "commands/trigger.h"
 #include "lib/hasht.h"
 #include "miscadmin.h"
@@ -2166,8 +2165,7 @@ RelationCacheInitializePhase2(void)
 		fixrdesc(TypeRelationName);
 
 		/*
-		 * We don't bother to update the entries for pg_variable or
-		 * pg_log.
+		 * We don't bother to update the entries for pg_log.
 		 */
 	}
 }
