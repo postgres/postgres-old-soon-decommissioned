@@ -387,7 +387,7 @@ get_user_info(Oid use_sysid, bool *use_super, bool *use_createdb)
 static char *
 resolve_alt_dbpath(const char * dbpath, Oid dboid)
 {
-	char * prefix;
+	const char * prefix;
 	char * ret;
 	size_t len;
 
@@ -396,11 +396,10 @@ resolve_alt_dbpath(const char * dbpath, Oid dboid)
 
 	if (strchr(dbpath, '/'))
 	{
-#ifdef ALLOW_ABSOLUTE_DBPATHS
-		prefix = dbpath;
-#else
+#ifndef ALLOW_ABSOLUTE_DBPATHS
 		elog(ERROR, "Absolute paths are not allowed as database locations");
 #endif
+		prefix = dbpath;
 	}
 	else
 	{
