@@ -1024,7 +1024,7 @@ _freeJoinInfo(JoinInfo *node)
 	 *	free remainder of node
 	 * ----------------
 	 */
-	freeList(node->otherrels);
+	freeList(node->unjoined_rels);
 	freeObject(node->jinfo_restrictinfo);
 
 	pfree(node);

@@ -44,7 +44,7 @@ joininfo_member(List *join_relids, List *joininfo_list)
 	foreach(i, joininfo_list)
 	{
 		other_rels = lfirst(i);
-		if (same(join_relids, ((JoinInfo *) other_rels)->otherrels))
+		if (same(join_relids, ((JoinInfo *) other_rels)->unjoined_rels))
 			return (JoinInfo *) other_rels;
 	}
 	return (JoinInfo *) NULL;
@@ -70,7 +70,7 @@ find_joininfo_node(RelOptInfo *this_rel, List *join_relids)
 	if (joininfo == NULL)
 	{
 		joininfo = makeNode(JoinInfo);
-		joininfo->otherrels = join_relids;
+		joininfo->unjoined_rels = join_relids;
 		joininfo->jinfo_restrictinfo = NIL;
 		joininfo->mergejoinable = false;
 		joininfo->hashjoinable = false;

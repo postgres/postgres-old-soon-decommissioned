@@ -246,7 +246,7 @@ typedef struct MergeInfo
 typedef struct JoinInfo
 {
 	NodeTag		type;
-	List	   *otherrels;
+	List	   *unjoined_rels;
 	List	   *jinfo_restrictinfo;
 	bool		mergejoinable;
 	bool		hashjoinable;

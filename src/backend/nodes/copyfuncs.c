@@ -1428,7 +1428,7 @@ _copyJoinInfo(JoinInfo *from)
 	 *	copy remainder of node
 	 * ----------------
 	 */
-	newnode->otherrels = listCopy(from->otherrels);
+	newnode->unjoined_rels = listCopy(from->unjoined_rels);
 	Node_Copy(from, newnode, jinfo_restrictinfo);
 
 	newnode->mergejoinable = from->mergejoinable;

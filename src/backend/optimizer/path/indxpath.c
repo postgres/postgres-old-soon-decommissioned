@@ -1208,7 +1208,7 @@ indexable_joinclauses(RelOptInfo *rel, RelOptInfo *index,
 		{
 			List	   *clauses = lfirst(clausegroups);
 
-			((RestrictInfo *) lfirst(clauses))->restrictinfojoinid = joininfo->otherrels;
+			((RestrictInfo *) lfirst(clauses))->restrictinfojoinid = joininfo->unjoined_rels;
 		}
 		cg_list = nconc(cg_list, clausegroups);
 	}

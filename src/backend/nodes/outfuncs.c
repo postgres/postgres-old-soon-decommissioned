@@ -1198,8 +1198,8 @@ _outHashInfo(StringInfo str, HashInfo *node)
 static void
 _outJoinInfo(StringInfo str, JoinInfo *node)
 {
-	appendStringInfo(str, " JINFO :otherrels ");
-	_outIntList(str, node->otherrels);
+	appendStringInfo(str, " JINFO :unjoined_rels ");
+	_outIntList(str, node->unjoined_rels);
 
 	appendStringInfo(str, " :jinfo_restrictinfo ");
 	_outNode(str, node->jinfo_restrictinfo);
