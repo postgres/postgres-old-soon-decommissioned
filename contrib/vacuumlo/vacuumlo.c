@@ -207,6 +207,28 @@ vacuumlo(char *database, struct _param * param)
 			fprintf(stdout, "Test run: no large objects will be removed!\n");
 	}
 
+	res = PQexec(conn, "SET search_path = public");
+	if (PQresultStatus(res) != PGRES_COMMAND_OK)
+	{
+		fprintf(stderr, "Failed to set search_path on:\n");
+		fprintf(stderr, "%s", PQerrorMessage(conn));
+		PQclear(res);
+		PQfinish(conn);
+		return -1;
+	}
+	PQclear(res);
+
+	res = PQexec(conn, "SET autocommit TO 'on'");
+	if (PQresultStatus(res) != PGRES_COMMAND_OK)
+	{
+		fprintf(stderr, "Failed to set autocommit on:\n");
+		fprintf(stderr, "%s", PQerrorMessage(conn));
+		PQclear(res);
+		PQfinish(conn);
+		return -1;
+	}
+	PQclear(res);
+
 	/*
 	 * First we create and populate the LO temp table
 	 */

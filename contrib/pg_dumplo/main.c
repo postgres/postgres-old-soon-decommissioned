@@ -191,6 +191,10 @@ main(int argc, char **argv)
 	if (pgLO->action != ACTION_SHOW)
 		index_file(pgLO);
 
+	PQexec(pgLO->conn, "SET search_path = public");
+
+	PQexec(pgLO->conn, "SET autocommit TO 'on'");
+
 	PQexec(pgLO->conn, "BEGIN");
 
 	switch (pgLO->action)
