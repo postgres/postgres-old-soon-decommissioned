@@ -543,6 +543,7 @@ mic2latin4(unsigned char *mic, unsigned char *p, int len)
 {
 	mic2latin(mic, p, len, LC_ISO8859_4);
 }
+#ifdef NOT_USED
 static void
 latin52mic(unsigned char *l, unsigned char *p, int len)
 {
@@ -553,6 +554,7 @@ mic2latin5(unsigned char *mic, unsigned char *p, int len)
 {
 	mic2latin(mic, p, len, LC_ISO8859_5);
 }
+#endif
 
 /*
  * ASCII ---> MIC
