@@ -44,6 +44,7 @@ extern void vac_update_relstats(Oid relid,
 								BlockNumber num_pages,
 								double num_tuples,
 								bool hasindex);
+extern bool vac_is_partial_index(Relation indrel);
 extern void vac_init_rusage(VacRUsage *ru0);
 extern const char *vac_show_rusage(VacRUsage *ru0);
 
