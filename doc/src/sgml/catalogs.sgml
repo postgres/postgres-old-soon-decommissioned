@@ -1359,6 +1359,15 @@
 
   <note>
    <para>
+    <structfield>consrc</structfield> is not updated when referenced objects
+    change; for example, it won't track renaming of columns.  Rather than
+    relying on this field, it's best to use <function>pg_get_constraintdef()</>
+    to extract the definition of a check constraint.
+   </para>
+  </note>
+
+  <note>
+   <para>
     <literal>pg_class.relchecks</literal> needs to agree with the
     number of check-constraint entries found in this table for the
     given relation.
