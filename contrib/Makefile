@@ -17,6 +17,7 @@ WANTED_DIRS =	array		\
 		noupdate	\
 		pg_dumplo	\
 		pgbench		\
+		pgcrypto	\
 		soundex		\
 		spi		\
 		string		\
