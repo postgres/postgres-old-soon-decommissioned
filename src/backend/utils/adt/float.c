@@ -1131,7 +1131,7 @@ dpow(float64 arg1, float64 arg2)
 #endif
 	*result = (float64data) pow(tmp1, tmp2);
 #ifndef finite
-	if (errno == ERANGE)
+	if (errno != 0)			/* on some machines both EDOM & ERANGE can occur */
 #else
 	if (!finite(*result))
 #endif
@@ -1164,7 +1164,8 @@ dexp(float64 arg1)
 #ifndef finite
 	if (errno == ERANGE)
 #else
-	if (!finite(*result))
+	/* infinity implies overflow, zero implies underflow */
+	if (!finite(*result) || *result == 0.0)
 #endif
 		elog(ERROR, "exp() result is out of range");
 
