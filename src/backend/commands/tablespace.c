@@ -75,7 +75,6 @@
 
 static bool remove_tablespace_directories(Oid tablespaceoid, bool redo);
 static void set_short_version(const char *path);
-static bool directory_is_empty(const char *path);
 
 
 /*
@@ -680,8 +679,10 @@ set_short_version(const char *path)
 
 /*
  * Check if a directory is empty.
+ *
+ * This probably belongs somewhere else, but not sure where...
  */
-static bool
+bool
 directory_is_empty(const char *path)
 {
 	DIR		   *dirdesc;

@@ -42,6 +42,8 @@ extern void TablespaceCreateDbspace(Oid spcNode, Oid dbNode, bool isRedo);
 extern Oid	get_tablespace_oid(const char *tablespacename);
 extern char *get_tablespace_name(Oid spc_oid);
 
+extern bool directory_is_empty(const char *path);
+
 extern void tblspc_redo(XLogRecPtr lsn, XLogRecord *rptr);
 extern void tblspc_undo(XLogRecPtr lsn, XLogRecord *rptr);
 extern void tblspc_desc(char *buf, uint8 xl_info, char *rec);
