@@ -210,7 +210,7 @@ endif
 # location of Tcl/Tk headers and libraries
 #
 # Uncomment this to build the tcl utilities.
-USE_TCL= true
+# USE_TCL= true
 # customize these to your site's needs
 #
 TCL_INCDIR= /home/tools/include
