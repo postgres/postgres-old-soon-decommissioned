@@ -65,6 +65,7 @@
 #include "utils/relcache.h"
 #include "utils/hsearch.h"
 #include "utils/relcache.h"
+#include "utils/catcache.h"
 
 #include "catalog/catname.h"
 #include "catalog/catalog.h"
@@ -1344,6 +1345,7 @@ RelationFlushRelation(Relation *relationPtr,
 		RelationCacheDelete(relation);
 
 		FreeTupleDesc(relation->rd_att);
+		SystemCacheRelationFlushed(relation->rd_id);
 
 		FreeTriggerDesc(relation);
 

@@ -621,6 +621,29 @@ ResetSystemCache()
 }
 
 /* --------------------------------
+ *		SystemCacheRelationFlushed
+ *
+ *	RelationFlushRelation() frees some information referenced in the
+ *	cache structures. So we get informed when this is done and arrange
+ *	for the next SearchSysCache() call that this information is setup
+ *	again.
+ * --------------------------------
+ */
+void
+SystemCacheRelationFlushed(Oid relId)
+{
+	struct catcache *cache;
+
+	for (cache = Caches; PointerIsValid(cache); cache = cache->cc_next)
+	{
+		if (cache->relationId == relId)
+		{
+			cache->relationId = InvalidOid;
+		}
+	}
+}
+
+/* --------------------------------
  *		InitIndexedSysCache
  *
  *	This allocates and initializes a cache for a system catalog relation.

@@ -16,6 +16,8 @@
 #include <access/htup.h>
 #include <utils/rel.h>
 
+extern void InitLocalInvalidateData(void);
+
 extern void DiscardInvalid(void);
 
 extern void RegisterInvalid(bool send);

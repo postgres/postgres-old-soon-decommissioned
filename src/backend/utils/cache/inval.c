@@ -512,6 +512,20 @@ RelationInvalidateRelationCache(Relation relation,
 	(*function) (relationId, objectId);
 }
 
+
+/*
+ *	InitLocalInvalidateData
+ *
+ *	Setup this before anything could ever get invalid!
+ *	Called by InitPostgres();
+ */
+void
+InitLocalInvalidateData()
+{
+	ValidateHacks();
+}
+
+
 /*
  * DiscardInvalid --
  *		Causes the invalidated cache state to be discarded.

@@ -62,6 +62,7 @@
 #include "utils/elog.h"
 #include "utils/palloc.h"
 #include "utils/mcxt.h"			/* for EnableMemoryContext, etc. */
+#include "utils/inval.h"
 
 #include "catalog/catname.h"
 #include "catalog/pg_database.h"
@@ -585,6 +586,12 @@ InitPostgres(char *name)		/* database name */
 	 * ----------------
 	 */
 	InitUserid();
+
+	/* ----------------
+	 *	 initialize local data in cache invalidation stuff
+	 * ----------------
+	 */
+	InitLocalInvalidateData();
 
 	/* ----------------
 	 *	ok, all done, now let's make sure we don't do it again.
