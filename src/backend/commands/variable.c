@@ -500,22 +500,6 @@ assign_client_encoding(const char *value, bool doit, bool interactive)
 }
 
 
-const char *
-assign_server_encoding(const char *value, bool doit, bool interactive)
-{
-	if (interactive)
-		elog(ERROR, "SET SERVER_ENCODING is not supported");
-	/* Pretend never to fail in noninteractive case */
-	return value;
-}
-
-const char *
-show_server_encoding(void)
-{
-	return GetDatabaseEncodingName();
-}
-
-
 /*
  * SET SESSION AUTHORIZATION
  *

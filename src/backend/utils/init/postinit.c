@@ -128,6 +128,9 @@ ReverifyMyDatabase(const char *name)
 	 * info out of the pg_database tuple.
 	 */
 	SetDatabaseEncoding(dbform->encoding);
+	/* Record it as a GUC internal option, too */
+	SetConfigOption("server_encoding", GetDatabaseEncodingName(),
+					PGC_INTERNAL, PGC_S_OVERRIDE);
 	/* If we have no other source of client_encoding, use server encoding */
 	SetConfigOption("client_encoding", GetDatabaseEncodingName(),
 					PGC_BACKEND, PGC_S_DEFAULT);
@@ -399,6 +402,12 @@ InitPostgres(const char *dbname, const char *username)
 
 	/* initialize client encoding */
 	InitializeClientEncoding();
+
+	/*
+	 * Now all default states are fully set up.  Report them to client
+	 * if appropriate.
+	 */
+	BeginReportingGUCOptions();
 
 	/*
 	 * Set up process-exit callback to do pre-shutdown cleanup.  This

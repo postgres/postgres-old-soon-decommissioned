@@ -36,6 +36,7 @@
 #include "storage/sinval.h"
 #include "storage/spin.h"
 #include "utils/builtins.h"
+#include "utils/guc.h"
 #include "utils/relcache.h"
 #include "miscadmin.h"
 
@@ -2260,6 +2261,12 @@ ReadControlFile(void)
 			 "\twhich is not recognized by setlocale().\n"
 			 "\tIt looks like you need to initdb.",
 			 ControlFile->lc_ctype);
+
+	/* Make the fixed locale settings visible as GUC variables, too */
+	SetConfigOption("lc_collate", ControlFile->lc_collate,
+					PGC_INTERNAL, PGC_S_OVERRIDE);
+	SetConfigOption("lc_ctype", ControlFile->lc_ctype,
+					PGC_INTERNAL, PGC_S_OVERRIDE);
 }
 
 void
