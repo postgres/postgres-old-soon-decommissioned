@@ -595,7 +595,7 @@ elif [ $count_ignored -eq 0 ]; then
     msg="$count_failed of $count_total tests failed."
     result=1
 else
-    msg="$count_failed of $count_total tests failed, $count_ignored failed test(s) ignored."
+    msg="`expr $count_failed + $count_ignored` of $count_total tests failed, $count_ignored of these failures ignored."
     result=1
 fi
 
