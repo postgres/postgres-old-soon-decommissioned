@@ -17,9 +17,3 @@ createdb(1),
 drop database(l),
 destroydb(1),
 initdb(1).
-.SH BUGS
-This command should 
-.BR NOT
-be executed interactively.  The 
-.IR createdb (1)
-script should be used instead.
