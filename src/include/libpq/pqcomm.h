@@ -18,12 +18,7 @@
 
 #include <stdio.h>
 #include <sys/types.h>
-
-#ifdef WIN32
-#include <winsock.h>
-#else
 #include <netinet/in.h>
-#endif /* WIN32 */
 
 
 /*
