@@ -69,7 +69,7 @@ extern MemoryContext PostmasterContext;
 extern MemoryContext CacheMemoryContext;
 extern MemoryContext QueryContext;
 extern MemoryContext TopTransactionContext;
-extern MemoryContext TransactionCommandContext;
+extern DLLIMPORT MemoryContext TransactionCommandContext;
 
 
 /*
