@@ -107,8 +107,9 @@ endif
 ifeq ($(PORTNAME), linux)
   install-shlib-dep	:= install-shlib
   shlib				:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
-  LDFLAGS_SL		:= -shared -soname $(shlib)
+  LDFLAGS_SL		:= -Bdynamic -shared -soname $(shlib)
   LDFLAGS_ODBC		:= -Bsymbolic -lc -lm
+  SHLIB_LINK		+= -lc
   CFLAGS			+= $(CFLAGS_SL)
 endif
 

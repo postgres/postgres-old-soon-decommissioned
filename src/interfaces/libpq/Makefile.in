@@ -34,6 +34,10 @@ ifdef MULTIBYTE
 OBJS+= common.o wchar.o conv.o
 endif
 
+# If crypt is a separate library, rather than part of libc,
+# make sure it gets included in shared libpq.
+SHLIB_LINK= $(findstring -lcrypt,$(LIBS))
+
 # Shared library stuff, also default 'all' target
 include $(SRCDIR)/Makefile.shlib
 
