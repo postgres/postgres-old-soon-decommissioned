@@ -360,7 +360,7 @@ PGAC_ARG_REQ(with, tkconfig,  [  --with-tkconfig=DIR     tkConfig.sh is in DIR])
 # Optionally build Perl modules (Pg.pm and PL/Perl)
 #
 AC_MSG_CHECKING([whether to build Perl modules])
-PGAC_ARG_BOOL(with, perl, no, [  --with-perl             build Perl interface and PL/Perl])
+PGAC_ARG_BOOL(with, perl, no, [  --with-perl             build PL/Perl])
 AC_MSG_RESULT([$with_perl])
 AC_SUBST(with_perl)
 
