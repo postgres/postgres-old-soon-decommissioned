@@ -2344,7 +2344,7 @@ exec_move_row(PLpgSQL_execstate * estate,
 	{
 		if (HeapTupleIsValid(tup))
 		{
-			if (row->nfields != tupdesc->natts)
+			if (row->nfields != tup->t_data->t_natts)
 			{
 				elog(ERROR, "query didn't return correct # of attributes for %s",
 					 row->refname);
