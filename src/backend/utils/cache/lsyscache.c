@@ -776,6 +776,33 @@ get_rel_type_id(Oid relid)
 		return InvalidOid;
 }
 
+/*
+ * get_rel_relkind
+ *
+ *		Returns the relkind associated with a given relation.
+ */
+char
+get_rel_relkind(Oid relid)
+{
+	HeapTuple	tp;
+
+	tp = SearchSysCache(RELOID,
+						ObjectIdGetDatum(relid),
+						0, 0, 0);
+	if (HeapTupleIsValid(tp))
+	{
+		Form_pg_class reltup = (Form_pg_class) GETSTRUCT(tp);
+		char		result;
+
+		result = reltup->relkind;
+		ReleaseSysCache(tp);
+		return result;
+	}
+	else
+		return '\0';
+}
+
+
 /*				---------- TYPE CACHE ----------						 */
 
 /*
@@ -1151,6 +1178,33 @@ get_typtype(Oid typid)
 	}
 	else
 		return '\0';
+}
+
+/*
+ * get_typ_typrelid
+ *
+ *		Given the type OID, get the typrelid (InvalidOid if not a complex
+ *		type).
+ */
+Oid
+get_typ_typrelid(Oid typid)
+{
+	HeapTuple	tp;
+
+	tp = SearchSysCache(TYPEOID,
+						ObjectIdGetDatum(typid),
+						0, 0, 0);
+	if (HeapTupleIsValid(tp))
+	{
+		Form_pg_type typtup = (Form_pg_type) GETSTRUCT(tp);
+		Oid			result;
+
+		result = typtup->typrelid;
+		ReleaseSysCache(tp);
+		return result;
+	}
+	else
+		return InvalidOid;
 }
 
 /*
