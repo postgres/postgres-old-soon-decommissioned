@@ -39,6 +39,7 @@
 #include "storage/proc.h"
 #include "tcop/tcopprot.h"
 #include "utils/builtins.h"
+#include "utils/flatfiles.h"
 #include "utils/fmgroids.h"
 #include "utils/guc.h"
 #include "utils/lsyscache.h"
@@ -407,6 +408,7 @@ BootstrapMain(int argc, char *argv[])
 			bootstrap_signals();
 			StartupXLOG();
 			LoadFreeSpaceMap();
+			BuildFlatFiles(false);
 			proc_exit(0);		/* startup done */
 
 		case BS_XLOG_BGWRITER:

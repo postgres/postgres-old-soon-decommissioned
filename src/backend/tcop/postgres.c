@@ -55,6 +55,7 @@
 #include "tcop/pquery.h"
 #include "tcop/tcopprot.h"
 #include "tcop/utility.h"
+#include "utils/flatfiles.h"
 #include "utils/guc.h"
 #include "utils/lsyscache.h"
 #include "utils/memutils.h"
@@ -2706,6 +2707,12 @@ PostgresMain(int argc, char *argv[], const char *username)
 		 */
 		LoadFreeSpaceMap();
 		on_shmem_exit(DumpFreeSpaceMap, 0);
+
+		/*
+		 * We have to build the flat file for pg_database, but not for
+		 * the user and group tables, since we won't try to do authentication.
+		 */
+		BuildFlatFiles(true);
 	}
 
 	/*

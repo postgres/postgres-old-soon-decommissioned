@@ -75,13 +75,21 @@
 
 /*
  * VariableCache is placed in shmem and used by
- * backends to get next available XID & OID.
+ * backends to get next available OID & XID.
+ *
+ * Note: xidWrapLimit and limit_datname are not "active" values, but are
+ * used just to generate useful messages when xidWarnLimit or xidStopLimit
+ * are exceeded.
  */
 typedef struct VariableCacheData
 {
-	TransactionId nextXid;		/* next XID to assign */
 	Oid			nextOid;		/* next OID to assign */
 	uint32		oidCount;		/* OIDs available before must do XLOG work */
+	TransactionId nextXid;		/* next XID to assign */
+	TransactionId xidWarnLimit;	/* start complaining here */
+	TransactionId xidStopLimit;	/* refuse to advance nextXid beyond here */
+	TransactionId xidWrapLimit;	/* where the world ends */
+	NameData	limit_datname;	/* database that needs vacuumed first */
 } VariableCacheData;
 
 typedef VariableCacheData *VariableCache;
@@ -118,6 +126,8 @@ extern bool TransactionIdFollowsOrEquals(TransactionId id1, TransactionId id2);
 /* in transam/varsup.c */
 extern TransactionId GetNewTransactionId(bool isSubXact);
 extern TransactionId ReadNewTransactionId(void);
+extern void SetTransactionIdLimit(TransactionId oldest_datfrozenxid,
+								  Name oldest_datname);
 extern Oid	GetNewObjectId(void);
 extern void CheckMaxObjectId(Oid assigned_oid);
 
