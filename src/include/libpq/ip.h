@@ -30,7 +30,7 @@ extern int rangeSockAddr(const struct sockaddr_storage * addr,
 			  const struct sockaddr_storage * netaddr,
 			  const struct sockaddr_storage * netmask);
 
-extern int SockAddr_cidr_mask(struct sockaddr_storage ** mask,
+extern int SockAddr_cidr_mask(struct sockaddr_storage * mask,
 				   char *numbits, int family);
 
 #ifdef HAVE_IPV6
