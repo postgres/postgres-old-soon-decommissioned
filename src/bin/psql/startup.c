@@ -267,8 +267,8 @@ main(int argc, char *argv[])
 			printf(gettext("Welcome to %s %s, the PostgreSQL interactive terminal.\n\n"
 						   "Type:  \\copyright for distribution terms\n"
 						   "       \\h for help with SQL commands\n"
-					   "       \\? for help on internal slash commands\n"
-			  "       \\g or terminate with semicolon to execute query\n"
+						   "       \\? for help with psql commands\n"
+						   "       \\g or terminate with semicolon to execute query\n"
 						   "       \\q to quit\n\n"),
 				   pset.progname, PG_VERSION);
 #ifdef USE_SSL

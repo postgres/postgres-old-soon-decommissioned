@@ -524,7 +524,7 @@ Welcome to psql &version;, the PostgreSQL interactive terminal.
 
 Type:  \copyright for distribution terms
        \h for help with SQL commands
-       \? for help on internal slash commands
+       \? for help with psql commands
        \g or terminate with semicolon to execute query
        \q to quit
 
