@@ -15,11 +15,12 @@
  */
 #include "postgres.h"
 
+#include <ctype.h>
+#include <limits.h>
 /*
  * towlower() and friends should be in <wctype.h>, but some pre-C99 systems
  * declare them in <wchar.h>.
  */
-#include <ctype.h>
 #ifdef HAVE_WCHAR_H
 #include <wchar.h>
 #endif
