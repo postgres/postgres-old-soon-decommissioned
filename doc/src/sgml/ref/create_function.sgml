@@ -18,12 +18,12 @@ $Header$
 CREATE [ OR REPLACE ] FUNCTION <replaceable class="parameter">name</replaceable> ( [ <replaceable class="parameter">argtype</replaceable> [, ...] ] )
     RETURNS <replaceable class="parameter">rettype</replaceable>
     AS '<replaceable class="parameter">definition</replaceable>'
-    LANGUAGE '<replaceable class="parameter">langname</replaceable>'
+    LANGUAGE <replaceable class="parameter">langname</replaceable>
     [ WITH ( <replaceable class="parameter">attribute</replaceable> [, ...] ) ]
 CREATE [ OR REPLACE ] FUNCTION <replaceable class="parameter">name</replaceable> ( [ <replaceable class="parameter">argtype</replaceable> [, ...] ] )
     RETURNS <replaceable class="parameter">rettype</replaceable>
     AS '<replaceable class="parameter">obj_file</replaceable>', '<replaceable class="parameter">link_symbol</replaceable>'
-    LANGUAGE '<replaceable class="parameter">langname</replaceable>'
+    LANGUAGE <replaceable class="parameter">langname</replaceable>
     [ WITH ( <replaceable class="parameter">attribute</replaceable> [, ...] ) ]
 </synopsis>
  </refsynopsisdiv>
