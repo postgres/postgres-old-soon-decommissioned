@@ -31,10 +31,11 @@ typedef int MASK;
  * See LockShmemSize() in lock.c.
  *
  * NLOCKS_PER_XACT - The number of unique locks acquired in a transaction
+ *                   (should be configurable!)
  * NLOCKENTS - The maximum number of lock entries in the lock table.
  * ----------------------
  */
-#define NLOCKS_PER_XACT			40
+#define NLOCKS_PER_XACT			64
 #define NLOCKENTS(maxBackends)	(NLOCKS_PER_XACT*(maxBackends))
 
 typedef int LOCKMODE;

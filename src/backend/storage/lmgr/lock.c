@@ -1532,7 +1532,7 @@ LockShmemSize(int maxBackends)
 							   SHMEM_LOCKTAB_DATASIZE);
 
 	/* xidHash table */
-	size += hash_estimate_size(maxBackends,
+	size += hash_estimate_size(NLOCKENTS(maxBackends),
 							   SHMEM_XIDTAB_KEYSIZE,
 							   SHMEM_XIDTAB_DATASIZE);
 
