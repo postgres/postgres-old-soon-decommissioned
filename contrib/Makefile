@@ -13,6 +13,7 @@ WANTED_DIRS = \
 		dblink		\
 		dbmirror	\
 		dbsize		\
+		earthdistance	\
 		findoidjoins	\
 		fulltextindex	\
 		fuzzystrmatch	\
