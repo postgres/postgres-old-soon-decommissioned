@@ -312,11 +312,6 @@ static struct config_bool
 		{ "enable_hashjoin", PGC_USERSET }, &enable_hashjoin,
 		true, NULL, NULL
 	},
-
-	{
-		{ "ksqo", PGC_USERSET }, &_use_keyset_query_optimizer,
-		false, NULL, NULL
-	},
 	{
 		{ "geqo", PGC_USERSET }, &enable_geqo,
 		true, NULL, NULL

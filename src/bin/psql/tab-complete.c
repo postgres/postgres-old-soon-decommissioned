@@ -226,7 +226,6 @@ psql_completion(char *text, int start, int end)
 		"enable_nestloop",
 		"enable_mergejoin",
 		"enable_hashjoin",
-		"ksqo",
 		"geqo",
 		"fsync",
 		"server_min_messages",
@@ -695,7 +694,7 @@ psql_completion(char *text, int start, int end)
 
 			COMPLETE_WITH_LIST(my_list);
 		}
-		else if (strcasecmp(prev2_wd, "GEQO") == 0 || strcasecmp(prev2_wd, "KSQO") == 0)
+		else if (strcasecmp(prev2_wd, "GEQO") == 0)
 		{
 			char	   *my_list[] = {"ON", "OFF", "DEFAULT", NULL};
 

@@ -145,11 +145,6 @@ subquery_planner(Query *parse, double tuple_fraction)
 	PlannerQueryLevel++;
 	PlannerInitPlan = NIL;
 
-#ifdef ENABLE_KEY_SET_QUERY
-	/* this should go away sometime soon */
-	transformKeySetQuery(parse);
-#endif
-
 	/*
 	 * Check to see if any subqueries in the rangetable can be merged into
 	 * this query.

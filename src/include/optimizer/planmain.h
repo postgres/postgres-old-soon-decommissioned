@@ -62,11 +62,4 @@ extern List *join_references(List *clauses, List *rtable,
 							 Index acceptable_rel);
 extern void fix_opids(Node *node);
 
-/*
- * prep/prepkeyset.c
- */
-extern bool _use_keyset_query_optimizer;
-
-extern void transformKeySetQuery(Query *origNode);
-
 #endif   /* PLANMAIN_H */
