@@ -612,7 +612,7 @@ PQgetAttr(PortalBuffer *portal,
 	if (tbp)
 	{
 		len = tbp->lengths[tuple_offset][field_number];
-		result = malloc(len + 1);
+		result = palloc(len + 1);
 		memcpy(result,
 			   tbp->values[tuple_offset][field_number],
 			   len);

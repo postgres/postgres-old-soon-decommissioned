@@ -397,10 +397,10 @@ pg_krb5_recvauth(int sock,
 				username, kusername);
 		fputs(PQerrormsg, stderr);
 		pqdebug("%s", PQerrormsg);
-		free(kusername);
+		pfree(kusername);
 		return (STATUS_ERROR);
 	}
-	free(kusername);
+	pfree(kusername);
 	return (STATUS_OK);
 }
 

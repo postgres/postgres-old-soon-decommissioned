@@ -1212,7 +1212,7 @@ YY_RULE_SETUP
 					int i;
 					ScanKeyword		*keyword;
 
-					for(i = strlen(yytext); i >= 0; i--)
+					for(i = 0; yytext[i]; i++)
 						if (isupper(yytext[i]))
 							yytext[i] = tolower(yytext[i]);
 

@@ -253,7 +253,7 @@ StartupInfo2PacketBuf(StartupInfo* s)
   PacketBuf* res;
   char* tmp;
 
-  res = (PacketBuf*)malloc(sizeof(PacketBuf));
+  res = (PacketBuf*)palloc(sizeof(PacketBuf));
   res->len = htonl(sizeof(PacketBuf));
   res->data[0] = '\0';
 
@@ -285,7 +285,7 @@ PacketBuf2StartupInfo(PacketBuf* p)
   StartupInfo* res;
   char* tmp;
 
-  res = (StartupInfo*)malloc(sizeof(StartupInfo));
+  res = (StartupInfo*)palloc(sizeof(StartupInfo));
 
   res->database[0]='\0';
   res->user[0]='\0';

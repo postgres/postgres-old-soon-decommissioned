@@ -65,7 +65,7 @@ typedef FormData_pg_user *Form_pg_user;
  *		initial contents of pg_user
  * ----------------
  */
-DATA(insert OID = 0 ( postgres PGUID t t t t postgres 2116994400 ));
+DATA(insert OID = 0 ( postgres PGUID t t t t "" 2116994400 ));
 
 BKI_BEGIN
 #ifdef ALLOW_PG_GROUP

@@ -35,11 +35,11 @@ do
 	shift
 done
 
-if [ ! -z "$badparm" ]; then
+if [ -n "$badparm" ]; then
 	echo "$CMDNAME: Unrecognized parameter '$badparm'"
 fi
 
-if [ ! -z "$usage" ]; then
+if [ -n "$usage" ]; then
 	echo "Usage: $CMDNAME [-u SUPERUSER] DATADIR"
 	exit 1
 fi
