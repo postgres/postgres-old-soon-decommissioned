@@ -21,6 +21,9 @@ override CPPFLAGS := -DFRONTEND -I$(top_srcdir)/src/interfaces/ecpg/include \
 	-I$(libpq_srcdir) -I$(top_builddir)/src/port $(CPPFLAGS)
 override CFLAGS += $(PTHREAD_CFLAGS)
 
+# Need to recomple any libpgport object files
+LIBS := $(patsubst -lpgport,, $(LIBS))
+
 OBJS= execute.o typename.o descriptor.o data.o error.o prepare.o memory.o \
 	connect.o misc.o path.o exec.o
 

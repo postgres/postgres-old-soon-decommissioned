@@ -19,8 +19,11 @@ SO_MAJOR_VERSION= 3
 SO_MINOR_VERSION= 2
 DLTYPE= library
 
-override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -I$(top_builddir)/src/port -DFRONTEND
+override CPPFLAGS :=  -DFRONTEND -I$(srcdir) $(CPPFLAGS) -I$(top_builddir)/src/port
 override CFLAGS += $(PTHREAD_CFLAGS)
+
+# Need to recomple any libpgport object files
+LIBS := $(patsubst -lpgport,, $(LIBS))
 
 OBJS=	fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
 	fe-protocol2.o fe-protocol3.o pqexpbuffer.o pqsignal.o fe-secure.o \

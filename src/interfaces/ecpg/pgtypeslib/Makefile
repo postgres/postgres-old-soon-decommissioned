@@ -21,6 +21,9 @@ override CPPFLAGS := -I$(top_srcdir)/src/interfaces/ecpg/include \
 	-I$(top_srcdir)/src/include/utils -I$(libpq_srcdir) $(CPPFLAGS) \
 	$(PTHREAD_CFLAGS) -DFRONTEND
 
+# Need to recomple any libpgport object files
+LIBS := $(patsubst -lpgport,, $(LIBS))
+
 SHLIB_LINK += -lm
 
 OBJS= numeric.o datetime.o common.o dt_common.o timestamp.o interval.o \
