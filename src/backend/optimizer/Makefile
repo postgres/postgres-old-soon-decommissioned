@@ -8,15 +8,19 @@
 #
 #-------------------------------------------------------------------------
 
-all: SUBSYS.o
+all: submake SUBSYS.o
 
-SUBSYS.o: 
+OBJS = path/SUBSYS.o plan/SUBSYS.o prep/SUBSYS.o util/SUBSYS.o 
+
+SUBSYS.o: $(OBJS)
+	$(LD) -r -o SUBSYS.o $(OBJS)
+
+.PHONY: submake clean
+submake:
 	$(MAKE) -C path SUBSYS.o
 	$(MAKE) -C plan SUBSYS.o
 	$(MAKE) -C prep SUBSYS.o
 	$(MAKE) -C util SUBSYS.o
-	$(LD) -r -o SUBSYS.o \
-	     path/SUBSYS.o plan/SUBSYS.o prep/SUBSYS.o util/SUBSYS.o 
 
 clean:
 	rm -f SUBSYS.o

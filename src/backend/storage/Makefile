@@ -8,9 +8,17 @@
 #
 #-------------------------------------------------------------------------
 
-all: SUBSYS.o
+all: submake SUBSYS.o
 
-SUBSYS.o: 
+OBJS = buffer/SUBSYS.o file/SUBSYS.o ipc/SUBSYS.o large_object/SUBSYS.o \
+       lmgr/SUBSYS.o page/SUBSYS.o smgr/SUBSYS.o
+
+SUBSYS.o: $(OBJS)
+	$(LD) -r -o SUBSYS.o $(OBJS)
+
+.PHONY: submake clean dep
+
+submake:
 	$(MAKE) -C buffer  SUBSYS.o
 	$(MAKE) -C file    SUBSYS.o
 	$(MAKE) -C ipc     SUBSYS.o
@@ -18,9 +26,6 @@ SUBSYS.o:
 	$(MAKE) -C lmgr    SUBSYS.o
 	$(MAKE) -C page    SUBSYS.o
 	$(MAKE) -C smgr    SUBSYS.o
-	$(LD) -r -o SUBSYS.o \
-	    buffer/SUBSYS.o file/SUBSYS.o ipc/SUBSYS.o large_object/SUBSYS.o \
-	    lmgr/SUBSYS.o page/SUBSYS.o smgr/SUBSYS.o
 
 clean:
 	rm -f SUBSYS.o

@@ -29,23 +29,25 @@ ifndef PORTNAME
 	@false
 else
 
-OBJS = 
+OBJS = $(PORTNAME)/SUBSYS.o
 
 ifeq ($(PORTNAME), sparc_solaris)
 # Other ports get the inet_aton() function from their standard C libraries.
 OBJS += inet_aton.o
 endif
 
-all: SUBSYS.o
+all: submake SUBSYS.o
 
-SUBSYS.o: $(PORTNAME)/SUBSYS.o $(OBJS)
-	$(LD) -r -o SUBSYS.o $(PORTNAME)/SUBSYS.o $(OBJS)
+SUBSYS.o: $(OBJS)
+	$(LD) -r -o SUBSYS.o $(OBJS)
 
-$(PORTNAME)/SUBSYS.o:
+.PHONY: submake clean dep
+
+submake:
 	$(MAKE) -C $(PORTNAME) SUBSYS.o
 
 clean:
-	rm -f SUBSYS.o $(OBJS) 
+	rm -f $(OBJS)
 	$(MAKE) -C $(PORTNAME) clean
 
 depend dep:

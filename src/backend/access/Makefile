@@ -8,9 +8,17 @@
 #
 #-------------------------------------------------------------------------
 
-all: SUBSYS.o
+OBJS = common/SUBSYS.o gist/SUBSYS.o hash/SUBSYS.o heap/SUBSYS.o \
+       index/SUBSYS.o rtree/SUBSYS.o nbtree/SUBSYS.o transam/SUBSYS.o
 
-SUBSYS.o: 
+
+all: submake SUBSYS.o
+
+SUBSYS.o: $(OBJS)
+	$(LD) -r -o SUBSYS.o $(OBJS)
+
+.PHONY: submake
+submake:
 	$(MAKE) -C common  SUBSYS.o
 	$(MAKE) -C gist    SUBSYS.o
 	$(MAKE) -C hash    SUBSYS.o
@@ -19,9 +27,6 @@ SUBSYS.o:
 	$(MAKE) -C rtree   SUBSYS.o
 	$(MAKE) -C nbtree  SUBSYS.o
 	$(MAKE) -C transam SUBSYS.o
-	$(LD) -r -o SUBSYS.o \
-	    common/SUBSYS.o gist/SUBSYS.o hash/SUBSYS.o heap/SUBSYS.o \
-	    index/SUBSYS.o rtree/SUBSYS.o nbtree/SUBSYS.o transam/SUBSYS.o
 
 clean:
 	rm -f SUBSYS.o
