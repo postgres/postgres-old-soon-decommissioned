@@ -1642,6 +1642,7 @@ pgstat_mainChild(PGSTAT_FORK_ARGS)
 			 */
 			int			nread = 0;
 			int			targetlen = sizeof(PgStat_MsgHdr);		/* initial */
+			bool		pipeEOF = false;
 
 			while (nread < targetlen)
 			{
@@ -1652,13 +1653,23 @@ pgstat_mainChild(PGSTAT_FORK_ARGS)
 				{
 					if (errno == EINTR)
 						continue;
+#ifdef WIN32
+					if (WSAGetLastError() == WSAECONNRESET) /* EOF on the pipe! (win32 socket based implementation) */
+					{
+						pipeEOF = true;
+						break;
+					}
+#endif
 					ereport(LOG,
 							(errcode_for_socket_access(),
-					 errmsg("could not read from statistics collector pipe: %m")));
+							 errmsg("could not read from statistics collector pipe: %m")));
 					exit(1);
 				}
 				if (len == 0)	/* EOF on the pipe! */
+				{
+					pipeEOF = true;
 					break;
+				}
 				nread += len;
 				if (nread == sizeof(PgStat_MsgHdr))
 				{
@@ -1683,7 +1694,7 @@ pgstat_mainChild(PGSTAT_FORK_ARGS)
 			 * EOF on the pipe implies that the buffer process exited.
 			 * Fall out of outer loop.
 			 */
-			if (len == 0)
+			if (pipeEOF)
 				break;
 
 			/*
