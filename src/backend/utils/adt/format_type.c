@@ -254,7 +254,7 @@ type_maximum_size(Oid type_oid, int32 typemod)
 		case VARBITOID:
 		case ZPBITOID:
 			/* typemod is the (max) number of bits */
-			return (typemod + (BITSPERBYTE-1)) / BITSPERBYTE
+			return (typemod + (BITS_PER_BYTE-1)) / BITS_PER_BYTE
 				+ 2 * sizeof(int32);
 	}
 

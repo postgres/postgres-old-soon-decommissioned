@@ -221,7 +221,7 @@
  * You can try changing this if you have a machine with bytes of another
  * size, but no guarantee...
  */
-#define BITSPERBYTE		8
+#define BITS_PER_BYTE		8
 
 /*
  * Define this is your operating system kernel supports AF_UNIX family

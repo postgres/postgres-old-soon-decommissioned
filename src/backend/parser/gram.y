@@ -4163,9 +4163,9 @@ Bit:  bit '(' Iconst ')'
 					if ($3 < 1)
 						elog(ERROR,"length for type '%s' must be at least 1",
 							 $1);
-					else if ($3 > (MaxAttrSize * BITSPERBYTE))
+					else if ($3 > (MaxAttrSize * BITS_PER_BYTE))
 						elog(ERROR,"length for type '%s' cannot exceed %d",
-							 $1, (MaxAttrSize * BITSPERBYTE));
+							 $1, (MaxAttrSize * BITS_PER_BYTE));
 					$$->typmod = $3;
 				}
 		| bit
