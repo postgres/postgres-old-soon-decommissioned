@@ -60,10 +60,10 @@ InitSpinLocks(int init, IPCKey key)
 	extern SPINLOCK SInvalLock;
 	extern SPINLOCK OidGenLockId;
 
-#ifdef MAIN_MEMORY
+#ifdef STABLE_MEMORY_STORAGE
 	extern SPINLOCK MMCacheLock;
 
-#endif							/* SONY_JUKEBOX */
+#endif
 
 	/* These six spinlocks have fixed location is shmem */
 	ShmemLock = (SPINLOCK) SHMEMLOCKID;
@@ -74,9 +74,9 @@ InitSpinLocks(int init, IPCKey key)
 	SInvalLock = (SPINLOCK) SINVALLOCKID;
 	OidGenLockId = (SPINLOCK) OIDGENLOCKID;
 
-#ifdef MAIN_MEMORY
+#ifdef STABLE_MEMORY_STORAGE
 	MMCacheLock = (SPINLOCK) MMCACHELOCKID;
-#endif							/* MAIN_MEMORY */
+#endif
 
 	return (TRUE);
 }
@@ -285,10 +285,10 @@ InitSpinLocks(int init, IPCKey key)
 	extern SPINLOCK SInvalLock;
 	extern SPINLOCK OidGenLockId;
 
-#ifdef MAIN_MEMORY
+#ifdef STABLE_MEMORY_STORAGE
 	extern SPINLOCK MMCacheLock;
 
-#endif							/* MAIN_MEMORY */
+#endif
 
 	if (!init || key != IPC_PRIVATE)
 	{
@@ -313,9 +313,9 @@ InitSpinLocks(int init, IPCKey key)
 	SInvalLock = (SPINLOCK) SINVALLOCKID;
 	OidGenLockId = (SPINLOCK) OIDGENLOCKID;
 
-#ifdef MAIN_MEMORY
+#ifdef STABLE_MEMORY_STORAGE
 	MMCacheLock = (SPINLOCK) MMCACHELOCKID;
-#endif							/* MAIN_MEMORY */
+#endif
 
 	return (TRUE);
 }

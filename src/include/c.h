@@ -779,8 +779,8 @@ extern char *form(const char *fmt,...);
  *		we distribute to other sites.
  * ----------------
  */
-#ifdef SEQUOIA
-#define MAIN_MEMORY
+#ifdef NOT_USED
+#define STABLE_MEMORY_STORAGE
 #endif
 
 

@@ -32,9 +32,9 @@ typedef struct smgrid
 
 static smgrid StorageManager[] = {
 	{"magnetic disk"},
-#ifdef MAIN_MEMORY
+#ifdef STABLE_MEMORY_STORAGE
 	{"main memory"}
-#endif							/* MAIN_MEMORY */
+#endif
 };
 
 static int	NStorageManagers = lengthof(StorageManager);

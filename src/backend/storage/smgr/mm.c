@@ -16,7 +16,7 @@
  */
 #include "postgres.h"
 
-#ifdef MAIN_MEMORY
+#ifdef STABLE_MEMORY_STORAGE
 
 #include <math.h>
 #include "storage/ipc.h"
@@ -608,4 +608,4 @@ MMShmemSize()
 	return (size);
 }
 
-#endif							/* MAIN_MEMORY */
+#endif							/* STABLE_MEMORY_STORAGE */

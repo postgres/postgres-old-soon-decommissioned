@@ -73,9 +73,9 @@ CreateSharedMemoryAndSemaphores(IPCKey key)
 	CreateSpinlocks(IPCKeyGetSpinLockSemaphoreKey(key));
 	size = BufferShmemSize() + LockShmemSize();
 
-#ifdef MAIN_MEMORY
+#ifdef STABLE_MEMORY_STORAGE
 	size += MMShmemSize();
-#endif							/* MAIN_MEMORY */
+#endif
 
 	if (DebugLvl > 1)
 	{
