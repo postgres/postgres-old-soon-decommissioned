@@ -345,7 +345,7 @@ nabstimeout(AbsoluteTime time)
 			break;
 	}
 
-	result = PALLOC(strlen(buf) + 1);
+	result = palloc(strlen(buf) + 1);
 	strcpy(result, buf);
 
 	return (result);
@@ -546,7 +546,7 @@ abstime_datetime(AbsoluteTime abstime)
 {
 	DateTime   *result;
 
-	if (!PointerIsValid(result = PALLOCTYPE(DateTime)))
+	if (!PointerIsValid(result = palloc(sizeof(DateTime))))
 		elog(ERROR, "Unable to allocate space to convert abstime to datetime", NULL);
 
 	switch (abstime)

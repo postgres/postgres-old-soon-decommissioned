@@ -180,7 +180,7 @@ reltimeout(int32 time)
 		EncodeTimeSpan(tm, 0, DateStyle, buf);
 	}
 
-	result = PALLOC(strlen(buf) + 1);
+	result = palloc(strlen(buf) + 1);
 	strcpy(result, buf);
 
 	return (result);
@@ -360,7 +360,7 @@ reltime_timespan(RelativeTime reltime)
 	int			year,
 				month;
 
-	if (!PointerIsValid(result = PALLOCTYPE(TimeSpan)))
+	if (!PointerIsValid(result = palloc(sizeof(TimeSpan))))
 		elog(ERROR, "Memory allocation failed, can't convert reltime to timespan", NULL);
 
 	switch (reltime)

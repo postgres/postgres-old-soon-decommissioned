@@ -21,8 +21,6 @@
 
 #include "access/attnum.h"
 
-/*#ifndef FmgrIncluded -- seems like always included. (it's FMgrIncluded) AY */
-
 /*--------------------------------------------------------------------
  * Useful floating point utilities and constants.
  *-------------------------------------------------------------------*/
@@ -49,16 +47,6 @@
 #endif
 
 #define HYPOT(A, B)				sqrt((A) * (A) + (B) * (B))
-
-/*--------------------------------------------------------------------
- * Memory management.
- *-------------------------------------------------------------------*/
-
-#define PALLOC(SIZE)			palloc(SIZE)
-#define PFREE(P)				pfree(P)
-#define PALLOCTYPE(TYPE)		(TYPE *) PALLOC(sizeof(TYPE))
-
-/*#endif !FmgrIncluded */
 
 /*---------------------------------------------------------------------
  * Point - (x,y)

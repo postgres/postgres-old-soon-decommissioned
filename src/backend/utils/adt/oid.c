@@ -150,11 +150,11 @@ oid_text(Oid oid)
 	str = oidout(oid);
 	len = (strlen(str) + VARHDRSZ);
 
-	result = PALLOC(len);
+	result = palloc(len);
 
 	VARSIZE(result) = len;
 	memmove(VARDATA(result), str, (len-VARHDRSZ));
-	PFREE(str);
+	pfree(str);
 
 	return(result);
 } /* oid_text() */
@@ -169,12 +169,12 @@ text_oid(text *string)
 
     len = (VARSIZE(string) - VARHDRSZ);
 
-	str = PALLOC(len+1);
+	str = palloc(len+1);
 	memmove(str, VARDATA(string), len);
 	*(str+len) = '\0';
 
 	result = oidin(str);
-	PFREE(str);
+	pfree(str);
 
 	return(result);
 } /* oid_text() */
