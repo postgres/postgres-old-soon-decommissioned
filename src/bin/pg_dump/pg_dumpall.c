@@ -123,8 +123,8 @@ main(int argc, char *argv[])
 		}
 	}
 
-	if ((ret = find_other_exec(pg_dump_bin, argv[0], "pg_dump",
-						   PG_VERSIONSTR)) < 0)
+	if ((ret = find_other_exec(argv[0], "pg_dump", PG_VERSIONSTR,
+							   pg_dump_bin)) < 0)
 	{
 		if (ret == -1)
 			fprintf(stderr,

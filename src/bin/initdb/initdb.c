@@ -1932,8 +1932,8 @@ main(int argc, char *argv[])
 	sprintf(pgdenv, "PGDATA=%s", pg_data);
 	putenv(pgdenv);
 
-	if ((ret = find_other_exec(backendbin, argv[0], "postgres",
-						   PG_VERSIONSTR)) < 0)
+	if ((ret = find_other_exec(argv[0], "postgres", PG_VERSIONSTR,
+							   backendbin)) < 0)
 	{
 		if (ret == -1)
 			fprintf(stderr,

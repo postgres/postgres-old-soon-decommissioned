@@ -2648,7 +2648,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 		/*
 		 * On some systems our dynloader code needs the executable's pathname.
 		 */
-		if (strlen(my_exec_path) == 0 && find_my_exec(my_exec_path, argv[0]) < 0)
+		if (strlen(my_exec_path) == 0 && find_my_exec(argv[0], my_exec_path) < 0)
 			ereport(FATAL,
 					(errmsg("%s: could not locate postgres executable",
 							argv[0])));

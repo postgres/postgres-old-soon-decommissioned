@@ -28,9 +28,9 @@ extern void canonicalize_path(char *path);
 extern const char *get_progname(const char *argv0);
 
 /* Portable way to find binaries */
-extern int find_my_exec(char *full_path, const char *argv0);
-extern int find_other_exec(char *retpath, const char *argv0,
-					   char const *target, const char *versionstr);
+extern int find_my_exec(const char *argv0, char *full_path);
+extern int find_other_exec(const char *argv0, char const *target,
+						   const char *versionstr, char *retpath);
 
 #if defined(__CYGWIN__) || defined(WIN32)
 #define EXE ".exe"
