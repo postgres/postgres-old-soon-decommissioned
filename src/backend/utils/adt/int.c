@@ -361,6 +361,25 @@ text_int4(PG_FUNCTION_ARGS)
 	return result;
 }
 
+/* Cast int4 -> bool */
+Datum
+int4_bool(PG_FUNCTION_ARGS)
+{
+	if (PG_GETARG_INT32(0) == 0)
+		PG_RETURN_BOOL(false);
+	else
+		PG_RETURN_BOOL(true);
+}
+
+/* Cast bool -> int4 */
+Datum
+bool_int4(PG_FUNCTION_ARGS)
+{
+	if (PG_GETARG_BOOL(0) == false)
+		PG_RETURN_INT32(0);
+	else
+		PG_RETURN_INT32(1);
+}
 
 /*
  *		============================

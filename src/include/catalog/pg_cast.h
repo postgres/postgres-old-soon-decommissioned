@@ -101,6 +101,10 @@ DATA(insert ( 1700	 23 1744 a ));
 DATA(insert ( 1700	700 1745 i ));
 DATA(insert ( 1700	701 1746 i ));
 
+/* Allow explicit coercions between int4 and bool */
+DATA(insert (	23	16  2557 e ));
+DATA(insert (	16	23  2558 e ));
+
 /*
  * OID category: allow implicit conversion from any integral type (including
  * int8, to support OID literals > 2G) to OID, as well as assignment coercion

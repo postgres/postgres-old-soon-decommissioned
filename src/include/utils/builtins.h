@@ -111,6 +111,8 @@ extern Datum i2toi4(PG_FUNCTION_ARGS);
 extern Datum i4toi2(PG_FUNCTION_ARGS);
 extern Datum int2_text(PG_FUNCTION_ARGS);
 extern Datum text_int2(PG_FUNCTION_ARGS);
+extern Datum int4_bool(PG_FUNCTION_ARGS);
+extern Datum bool_int4(PG_FUNCTION_ARGS);
 extern Datum int4_text(PG_FUNCTION_ARGS);
 extern Datum text_int4(PG_FUNCTION_ARGS);
 extern Datum int4eq(PG_FUNCTION_ARGS);
