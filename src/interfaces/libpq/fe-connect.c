@@ -853,7 +853,7 @@ connectDBStart(PGconn *conn)
 	if (connect(conn->sock, &conn->raddr.sa, conn->raddr_len) < 0)
 	{
 #ifndef WIN32
-		if (errno == EINPROGRESS)
+		if (errno == EINPROGRESS || errno == 0)
 #else
 		if (WSAGetLastError() == WSAEINPROGRESS)
 #endif
