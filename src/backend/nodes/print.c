@@ -88,7 +88,7 @@ pprint(void *obj)
 					if (indentLev > 0)
 					{
 						indentLev--;
-						indentDist = MIN(indentLev * INDENTSTOP, MAXINDENT);
+						indentDist = Min(indentLev * INDENTSTOP, MAXINDENT);
 					}
 					j = indentDist - 1;
 					/* j will equal indentDist on next loop iteration */
@@ -108,7 +108,7 @@ pprint(void *obj)
 					}
 					/* indent */
 					indentLev++;
-					indentDist = MIN(indentLev * INDENTSTOP, MAXINDENT);
+					indentDist = Min(indentLev * INDENTSTOP, MAXINDENT);
 					for (j = 0; j < indentDist; j++)
 						line[j] = ' ';
 					line[j] = s[i];
