@@ -34,6 +34,7 @@
 #include "commands/vacuum.h"
 #include "commands/recipe.h"
 #include "commands/explain.h"
+#include "commands/trigger.h"
 
 #include "nodes/parsenodes.h"
 #include "../backend/parser/parse.h"
@@ -668,6 +669,23 @@ ProcessUtility(Node *parsetree,
 	    commandTag = "RESET VARIABLE";
 	}
 	break;
+    
+	/* ********************************
+	 * TRIGGER statements
+	 *********************************/
+    case T_CreateTrigStmt:
+        commandTag = "CREATE";
+        CHECK_IF_ABORTED();
+      
+        CreateTrigger((CreateTrigStmt *)parsetree);
+        break;
+      
+    case T_DropTrigStmt:
+        commandTag = "DROP";
+        CHECK_IF_ABORTED();
+      
+        DropTrigger((DropTrigStmt *)parsetree);
+        break;
       
 	/* ********************************
 	 *	default
