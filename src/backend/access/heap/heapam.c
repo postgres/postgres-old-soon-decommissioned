@@ -2427,6 +2427,8 @@ newsame:;
 		if (move)
 		{
 			htup->t_xmin = (TransactionId) xlrec->target.cid;
+			TransactionIdStore(record->xl_xid, (TransactionId *) &(h
+tup->t_cmin));
 			memcpy(&(htup->t_xmax), 
 					(char*)xlrec + SizeOfHeapUpdate, sizeof(TransactionId));
 			htup->t_infomask = xlrec->mask;
