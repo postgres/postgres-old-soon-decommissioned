@@ -71,8 +71,6 @@ int arg; {
 	return 1;
 	if (strEQ(name, "PGRES_INV_SMGRMASK"))
 	return 0x0000ffff;
-	if (strEQ(name, "PGRES_INV_ARCHIVE"))
-	return 0x00010000;
 	if (strEQ(name, "PGRES_INV_WRITE"))
 	return 0x00020000;
 	if (strEQ(name, "PGRES_INV_READ"))

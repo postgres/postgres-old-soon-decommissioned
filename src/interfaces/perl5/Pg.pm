@@ -93,7 +93,6 @@ require 5.002;
 	PGRES_NONFATAL_ERROR
 	PGRES_FATAL_ERROR
 	PGRES_INV_SMGRMASK
-	PGRES_INV_ARCHIVE
 	PGRES_INV_WRITE
 	PGRES_INV_READ
 	PGRES_InvalidOid
@@ -621,7 +620,6 @@ Creates a new large object. $mode is a bit-mask describing
 different attributes of the new object. Use the following constants: 
 
   - PGRES_INV_SMGRMASK
-  - PGRES_INV_ARCHIVE
   - PGRES_INV_WRITE
   - PGRES_INV_READ
 
