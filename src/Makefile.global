@@ -289,8 +289,6 @@ LDFLAGS+= $(LDFLAGS_BE)
 CFLAGS += -DARRAY_PATCH
 # enable patches to null insert/update code
 CFLAGS += -DNULL_PATCH
-# enable patches to array escape conversion code 
-CFLAGS += -DESCAPE_PATCH
 # enable patches for varchar and fsync
 CFLAGS += -DOPENLINK_PATCHES
 
