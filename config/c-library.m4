@@ -72,7 +72,8 @@ AC_DEFUN([PGAC_STRUCT_SOCKADDR_UN],
 # If `struct addrinfo' exists, define HAVE_STRUCT_ADDRINFO.
 AC_DEFUN([PGAC_STRUCT_ADDRINFO],
 [AC_CHECK_TYPES([struct addrinfo], [], [],
-[#include <sys/socket.h>
+[#include <sys/types.h>
+#include <sys/socket.h>
 #include <netdb.h>
 ])])# PGAC_STRUCT_ADDRINFO
 
