@@ -3587,8 +3587,8 @@ OptUseOp:  USING all_Op							{ $$ = $2; }
 		;
 
 
-select_limit:	LIMIT select_limit_value ',' select_offset_value
-			{ $$ = makeList2($4, $2); }
+select_limit:	LIMIT select_offset_value ',' select_limit_value
+			{ $$ = makeList2($2, $4); }
 		| LIMIT select_limit_value OFFSET select_offset_value
 			{ $$ = makeList2($4, $2); }
 		| LIMIT select_limit_value
