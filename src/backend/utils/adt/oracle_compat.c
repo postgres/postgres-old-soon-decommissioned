@@ -96,7 +96,8 @@ texttowcs(const text *txt)
 		pg_verifymbstr(workstr, nbytes, false);
 		ereport(ERROR,
 				(errcode(ERRCODE_CHARACTER_NOT_IN_REPERTOIRE),
-				 errmsg("invalid multibyte character for locale")));
+				 errmsg("invalid multibyte character for locale"),
+				 errhint("The server's LC_CTYPE locale is probably incompatible with the database encoding.")));
 	}
 
 	Assert(ncodes <= (size_t) nbytes);
