@@ -566,7 +566,6 @@ InternalIpcMemoryCreate(IpcMemoryKey memKey, uint32 size, int permission)
 
 	if (shmid < 0)
 	{
-
 		/*
 		 * Fail quietly if error indicates a collision with existing
 		 * segment. One would expect EEXIST, given that we said IPC_EXCL,
