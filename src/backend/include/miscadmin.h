@@ -54,7 +54,7 @@ extern int Quiet;
 extern char *DataDir;   
 
 extern char	  OutputFileName[];
-extern void 	  InitGlobals();
+extern void 	  InitGlobals(void);
 
 /*
  * done in storage/backendid.h for now.
