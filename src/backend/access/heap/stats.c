@@ -47,6 +47,16 @@
 
 #include "utils/mcxt.h"
 
+#include "utils/palloc.h"
+
+#ifndef HAVE_MEMMOVE
+# include "regex/utils.h"
+#else
+# include <string.h>
+#endif
+
+#include <stdio.h>
+
 /* ----------------
  *      InitHeapAccessStatistics
  * ----------------

@@ -113,6 +113,38 @@
 #include "access/valid.h"
 #include "utils/relcache.h"
 
+#ifndef HAVE_MEMMOVE
+# include "regex/utils.h"
+#else
+# include <string.h>
+#endif
+
+#include <stdio.h>
+#include "storage/ipc.h" 
+#include "storage/bufmgr.h"
+
+#include "utils/palloc.h"
+
+#include "access/hio.h"
+
+#include "storage/spin.h"
+#include "utils/hsearch.h"
+#include "storage/shmem.h"
+#include "storage/lock.h"  
+#include "storage/lmgr.h"
+
+#include "storage/smgr.h"
+
+#include "catalog/catalog.h"
+
+#include "access/transam.h"
+
+#include "access/xact.h"
+
+#include "utils/inval.h"
+
+#include "utils/memutils.h"
+
 static bool	ImmediateInvalidation;
 
 /* ----------------------------------------------------------------

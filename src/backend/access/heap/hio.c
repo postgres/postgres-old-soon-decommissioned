@@ -38,7 +38,6 @@
 
 #include "storage/itemid.h"
 #include "storage/item.h"
-#include "storage/buf.h"
 #include "storage/off.h"
 #include "storage/bufpage.h"
 
@@ -47,7 +46,11 @@
 
 #include "access/heapam.h"
 
+#include <stdio.h>
+#include "storage/ipc.h"
 #include "storage/bufmgr.h"
+
+#include "utils/memutils.h"
 
 /*
  * amputunique	- place tuple at tid
