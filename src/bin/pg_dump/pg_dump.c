@@ -5047,7 +5047,7 @@ dumpACL(Archive *fout, const char *type, const char *name,
 	 */
 	if (!found_owner_privs && owner)
 	{
-		appendPQExpBuffer(sql, "REVOKE ALL ON %s %s FROM %s;\n",
+		printfPQExpBuffer(sql, "REVOKE ALL ON %s %s FROM %s;\n",
 						  type, name, fmtId(owner));
 		MKENTRY(owner, sql->data);
 	}
