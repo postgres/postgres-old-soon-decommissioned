@@ -25,10 +25,10 @@ CREATE USER <replaceable class="PARAMETER">name</replaceable> [ [ WITH ] <replac
 where <replaceable class="PARAMETER">option</replaceable> can be:
     
       SYSID <replaceable class="PARAMETER">uid</replaceable> 
+    | [ ENCRYPTED | UNENCRYPTED ] PASSWORD '<replaceable class="PARAMETER">password</replaceable>'
     | CREATEDB | NOCREATEDB
     | CREATEUSER | NOCREATEUSER
     | IN GROUP <replaceable class="PARAMETER">groupname</replaceable> [, ...]
-    | [ ENCRYPTED | UNENCRYPTED ] PASSWORD '<replaceable class="PARAMETER">password</replaceable>'
     | VALID UNTIL '<replaceable class="PARAMETER">abstime</replaceable>' 
 </synopsis>
  </refsynopsisdiv>

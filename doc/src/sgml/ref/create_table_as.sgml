@@ -20,8 +20,7 @@ PostgreSQL documentation
 
  <refsynopsisdiv>
 <synopsis>
-CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } ] TABLE <replaceable>table_name</replaceable>
-    [ (<replaceable>column_name</replaceable> [, ...] ) ] [ [ WITH | WITHOUT ] OIDS ]
+CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } ] TABLE <replaceable>table_name</replaceable> [ (<replaceable>column_name</replaceable> [, ...] ) ] [ [ WITH | WITHOUT ] OIDS ]
     AS <replaceable>query</replaceable>
 </synopsis>
  </refsynopsisdiv>
