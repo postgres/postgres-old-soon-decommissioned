@@ -105,7 +105,7 @@ UPDATE <replaceable class="parameter">#</replaceable>
 	The <replaceable class="parameter">#</replaceable>
 	means the number of rows updated.
 	If <replaceable class="parameter">#</replaceable>
-	is equal 0 no rows are updated.
+	is 0 no rows are updated.
        </para>
       </listitem>
      </varlistentry>
