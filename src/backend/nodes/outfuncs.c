@@ -879,8 +879,7 @@ _outRelOptInfo(StringInfo str, RelOptInfo *node)
 	 */
 
 	appendStringInfo(str, 
-			" :unorderedpath @ 0x%x :cheapestpath @ 0x%x :pruneable %s :restrictinfo ",
-			(int) node->unorderedpath,
+			" :cheapestpath @ 0x%x :pruneable %s :restrictinfo ",
 			(int) node->cheapestpath,
 			node->pruneable ? "true" : "false");
 	_outNode(str, node->restrictinfo);

@@ -1026,7 +1026,6 @@ _copyRelOptInfo(RelOptInfo * from)
 	newnode->width = from->width;
 	Node_Copy(from, newnode, targetlist);
 	Node_Copy(from, newnode, pathlist);
-	Node_Copy(from, newnode, unorderedpath);
 	Node_Copy(from, newnode, cheapestpath);
 	newnode->pruneable = from->pruneable;
 

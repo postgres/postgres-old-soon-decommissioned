@@ -724,7 +724,6 @@ _freeRelOptInfo(RelOptInfo *node)
 
 	freeObject(node->targetlist);
 	freeObject(node->pathlist);
-	freeObject(node->unorderedpath);
 	freeObject(node->cheapestpath);
 
 	if (node->classlist)

@@ -216,7 +216,6 @@ init_join_rel(RelOptInfo *outer_rel, RelOptInfo *inner_rel, JoinInfo * joininfo)
 	joinrel->width = 0;
 /*	  joinrel->targetlist = NIL;*/
 	joinrel->pathlist = NIL;
-	joinrel->unorderedpath = (Path *) NULL;
 	joinrel->cheapestpath = (Path *) NULL;
 	joinrel->pruneable = true;
 	joinrel->classlist = NULL;

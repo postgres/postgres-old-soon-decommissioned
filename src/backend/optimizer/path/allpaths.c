@@ -139,7 +139,7 @@ find_rel_paths(Query *root, List *rels)
 		lastpath = rel->pathlist;
 		while (lnext(lastpath) != NIL)
 			lastpath = lnext(lastpath);
-		prune_rel_path(rel, (Path *) lfirst(lastpath));
+		set_cheapest(rel, rel->pathlist);
 
 		/*
 		 * if there is a qualification of sequential scan the selec. value
@@ -223,7 +223,7 @@ find_join_paths(Query *root, List *outer_rels, int levels_needed)
 				xfunc_trypullup((RelOptInfo *) lfirst(x));
 #endif
 
-		prune_rel_paths(new_rels);
+		rels_set_cheapest(new_rels);
 
 		if (BushyPlanFlag)
 		{

@@ -85,8 +85,7 @@ extern List *final_join_rels(List *join_rel_list);
  * prototypes for path/prune.c
  */
 extern void prune_joinrels(List *rel_list);
-extern void prune_rel_paths(List *rel_list);
-extern Path *prune_rel_path(RelOptInfo *rel, Path *unorderedpath);
+extern void rels_set_cheapest(List *rel_list);
 extern List *merge_joinrels(List *rel_list1, List *rel_list2);
 extern List *prune_oldrels(List *old_rels);
 

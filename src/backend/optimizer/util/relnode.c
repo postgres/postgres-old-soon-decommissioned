@@ -45,7 +45,6 @@ get_base_rel(Query *root, int relid)
 		rel->width = 0;
 		rel->targetlist = NIL;
 		rel->pathlist = NIL;
-		rel->unorderedpath = (Path *) NULL;
 		rel->cheapestpath = (Path *) NULL;
 		rel->pruneable = true;
 		rel->classlist = NULL;

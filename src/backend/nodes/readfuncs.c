@@ -1334,12 +1334,6 @@ _readRelOptInfo()
 	 * This can be changed later, if necessary.
 	 */
 
-	token = lsptok(NULL, &length);		/* get :unorderpath */
-	token = lsptok(NULL, &length);		/* get @ */
-	token = lsptok(NULL, &length);		/* now read it */
-
-	sscanf(token, "%x", (unsigned int *) &local_node->unorderedpath);
-
 	token = lsptok(NULL, &length);		/* get :cheapestpath */
 	token = lsptok(NULL, &length);		/* get @ */
 	token = lsptok(NULL, &length);		/* now read it */
