@@ -265,13 +265,11 @@ set_ps_display(const char *activity)
 
 #ifdef PS_USE_CLOBBER_ARGV
 	{
-		char	   *cp;
+		int		buflen;
 
 		/* pad unused memory */
-		for (cp = ps_buffer + strlen(ps_buffer);
-			 cp < ps_buffer + ps_buffer_size;
-			 cp++)
-			*cp = PS_PADDING;
+		buflen = strlen(ps_buffer);
+		MemSet(ps_buffer + buflen, PS_PADDING, ps_buffer_size - buflen);
 	}
 #endif   /* PS_USE_CLOBBER_ARGV */
 #endif   /* not PS_USE_NONE */
