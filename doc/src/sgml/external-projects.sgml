@@ -44,16 +44,6 @@ $PostgreSQL$
 
    <variablelist>
     <varlistentry>
-     <term>ODBC</term>
-     <listitem>
-      <para>
-       This is the most common interface for <application>Windows</>
-       applications.
-      </para>
-     </listitem>
-    </varlistentry>
-
-    <varlistentry>
      <term>psqlODBC</term>
      <listitem>
       <para>
@@ -155,7 +145,7 @@ $PostgreSQL$
    separate projects. <application>pgFoundry</> at <ulink
    url="http://pgfoundry.org">http://pgfoundry.org</ulink> contains
    even more projects. Other projects are not even hosted on these
-   servers and you will have to do an internet search to find them.
+   servers and you will have to do an Internet search to find them.
   </para>
 
  </sect1>
@@ -171,21 +161,21 @@ $PostgreSQL$
    <productname>PostgreSQL</> was designed from the start to be
    extensible. For this reason, extensions loaded into the database can
    function just like features that are packaged with the database. The
-   <filename>/contrib</> directory shipped with the source code
+   <filename>contrib/</> directory shipped with the source code
    contains a large number of extensions. The <filename>README</> file
    in that directory contains a summary. They include conversion tools,
    full-text indexing, <acronym>XML</> tools, and additional data types
    and indexing methods. Other extensions are developed independently,
    like <application>PostGIS</>. Even <application>PostgreSQL</>
    replication solutions are developed externally. For example,
-   <application>Slony</> is a popular master/slave replication solution
+   <application>Slony-I</> is a popular master/slave replication solution
    that is developed independently from the main projects.
   </para>
 
   <para>
    There are several administration tools available for
    <productname>PostgreSQL</>. The most popular is
-   <application>pgadmin</>, and there are several commercially
+   <application>pgAdmin</>, and there are several commercially
    available ones.
   </para> 
 

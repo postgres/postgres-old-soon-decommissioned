@@ -1203,7 +1203,7 @@ about such errors.
 </para>
 
 <para>
-At present, there is no way to determine the actual datatype inferred for
+At present, there is no way to determine the actual data type inferred for
 any parameters whose types are not specified in <parameter>paramTypes[]</>.
 This is a <application>libpq</> omission that will probably be rectified
 in a future release.

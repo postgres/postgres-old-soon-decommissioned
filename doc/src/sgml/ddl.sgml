@@ -1148,7 +1148,7 @@ WHERE c.altitude &gt; 500 and c.tableoid = p.oid;
       <literal>UNIQUE</> or a <literal>PRIMARY KEY</>, this would not stop the
       <structname>capitals</> table from having rows with names duplicating
       rows in <structname>cities</>.  And those duplicate rows would by
-      default show up in SELECTs from <structname>cities</>.  In fact, by
+      default show up in queries from <structname>cities</>.  In fact, by
       default <structname>capitals</> would have no unique constraint at all,
       and so could contain multiple rows with the same name.
       You could add a unique constraint to <structname>capitals</>, but this

@@ -173,8 +173,8 @@ su - postgres
      <para>
       To build the <application>PL/Python</> server programming
       language, you need a <productname>Python</productname>
-      installation with the header files and the distutils module.
-      The distutils module is included by default with
+      installation with the header files and the <application>distutils</application> module.
+      The <application>distutils</application> module is included by default with
       <productname>Python</productname> 1.6 and later; users of
       earlier versions of <productname>Python</productname> will need
       to install it.

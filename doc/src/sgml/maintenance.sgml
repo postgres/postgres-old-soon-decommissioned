@@ -183,7 +183,7 @@ $PostgreSQL$
     basis, consider doing it with <command>TRUNCATE</command> rather
     than using <command>DELETE</command> followed by
     <command>VACUUM</command>. <command>TRUNCATE</command> removes the
-    entire content of the table immediately, without recquiring a
+    entire content of the table immediately, without requiring a
     subsequent <command>VACUUM</command> or <command>VACUUM
     FULL</command> to reclaim the now-unused disk space.
    </para>
@@ -502,7 +502,7 @@ pg_ctl start | rotatelogs /var/log/pgsql_log 86400
    just when you need them the most.  Also, on <productname>linux</>,
    <application>syslog</> will sync each message to disk, yielding poor
    performance.  (You can use a <literal>-</> at the start of the file name
-   in the <application>syslog</> config file to disable this behavior.)
+   in the <application>syslog</> configuration file to disable this behavior.)
   </para>
 
   <para>

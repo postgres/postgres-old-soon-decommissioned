@@ -974,11 +974,12 @@ CREATE TABLE cinemas (
   </refsect2>
 
   <refsect2>
-   <title>TABLESPACE and USING INDEX TABLESPACE</title>
+   <title>Tablespaces</title>
 
    <para>
     The <productname>PostgreSQL</productname> concept of tablespaces is not
-    standard.
+    part of the standard.  Hence, the clauses <literal>TABLESPACE</literal>
+    and <literal>USING INDEX TABLESPACE</literal> are extensions.
    </para>
   </refsect2>
  </refsect1>
