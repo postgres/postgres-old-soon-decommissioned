@@ -74,10 +74,6 @@ enables or disables a workaround for memory exhaustion in queries with many
 clauses.
 The default is disabled.
 .PP
-.IR QUERY_LIMIT
-restricts the number of rows returned by a query.
-The default is unlimited.
-.PP
 .IR TIMEZONE
 sets your timezone.
 .PP

@@ -140,9 +140,6 @@ static struct EnvironmentOptions
 		"PGGEQO", "geqo"
 	},
 	{
-		"PGQUERY_LIMIT", "query_limit"
-	},
-	{
 		NULL
 	}
 };

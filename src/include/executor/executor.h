@@ -89,12 +89,6 @@ extern void ExecutorEnd(QueryDesc *queryDesc, EState *estate);
 extern void ExecConstraints(char *caller, Relation rel, HeapTuple tuple,
 				EState *estate);
 
-#ifdef QUERY_LIMIT
-extern int	ExecutorLimit(int limit);
-extern int	ExecutorGetLimit(void);
-
-#endif
-
 /*
  * prototypes from functions in execProcnode.c
  */

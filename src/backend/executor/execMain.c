@@ -88,26 +88,6 @@ static TupleTableSlot *EvalPlanQualNext(EState *estate);
 
 /* end of local decls */
 
-#ifdef QUERY_LIMIT
-static int	queryLimit = ALL_TUPLES;
-
-#undef ALL_TUPLES
-#define ALL_TUPLES queryLimit
-
-int
-ExecutorLimit(int limit)
-{
-	return queryLimit = limit;
-}
-
-int
-ExecutorGetLimit()
-{
-	return queryLimit;
-}
-
-#endif
-
 /* ----------------------------------------------------------------
  *		ExecutorStart
  *
