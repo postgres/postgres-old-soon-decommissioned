@@ -157,7 +157,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"null", NULL_P},
 	{"numeric", NUMERIC},
 	{"oids", OIDS},
-	{"old", OLD},
+	{"old", CURRENT},
 	{"on", ON},
 	{"operator", OPERATOR},
 	{"option", OPTION},
