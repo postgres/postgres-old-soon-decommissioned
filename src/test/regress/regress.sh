@@ -33,7 +33,7 @@ PGDATESTYLE="Postgres,US"; export PGDATESTYLE
 #FRONTEND=monitor
 FRONTEND="psql $HOST -n -e -q"
 
-SYSTEM=`../../config.guess awk -F\- '{ split($3,a,/[0-9]/); printf"%s-%s", $1, a[1] }'`
+SYSTEM=`../../config.guess | awk -F\- '{ split($3,a,/[0-9]/); printf"%s-%s", $1, a[1] }'`
 
 echo "=============== Notes...                              ================="
 echo "postmaster must already be running for the regression tests to succeed."
