@@ -1243,6 +1243,24 @@ ReleaseTmpRelBuffers(Relation tempreldesc)
     int holding = 0;
     BufferDesc *buf;
     
+    /*
+     * Is tempreldesc->rd_islocal == FALSE possible at all ?
+     * But I don't want to mess something now. - vadim 12/31/96
+     */
+    if ( tempreldesc->rd_islocal )
+    {
+    	for (i = 0; i < NLocBuffer; i++)
+    	{
+	    buf = &LocalBufferDescriptors[i];
+	    if ((buf->flags & BM_DIRTY) &&
+		(buf->tag.relId.relId == tempreldesc->rd_id))
+	    {
+		buf->flags &= ~BM_DIRTY;
+	    }
+    	}
+    	return;
+    }
+
     for (i=1; i<=NBuffers; i++) {
 	buf = &BufferDescriptors[i-1];
 	if (!holding) {
