@@ -4,7 +4,7 @@ PROGRAM = pg_dumplo
 OBJS	= main.o lo_export.o lo_import.o utils.o
 
 PG_CPPFLAGS = -I$(libpq_srcdir)
-PG_LIBS = $(libpq)
+PG_LIBS = $(libpq_pgport)
 
 DOCS = README.pg_dumplo
 

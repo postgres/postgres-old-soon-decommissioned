@@ -4,7 +4,7 @@ PROGRAM = pgbench
 OBJS	= pgbench.o
 
 PG_CPPFLAGS = -I$(libpq_srcdir)
-PG_LIBS = $(libpq)
+PG_LIBS = $(libpq_pgport)
 
 DOCS = README.pgbench README.pgbench_jis
 

@@ -4,7 +4,7 @@ PROGRAM = oid2name
 OBJS	= oid2name.o
 
 PG_CPPFLAGS = -I$(libpq_srcdir)
-PG_LIBS = $(libpq)
+PG_LIBS = $(libpq_pgport)
 
 DOCS = README.oid2name
 

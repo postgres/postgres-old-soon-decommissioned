@@ -4,7 +4,7 @@ PROGRAM = vacuumlo
 OBJS	= vacuumlo.o
 
 PG_CPPFLAGS = -I$(libpq_srcdir)
-PG_LIBS = $(libpq)
+PG_LIBS = $(libpq_pgport)
 
 DOCS = README.vacuumlo
 

@@ -4,7 +4,7 @@ PROGRAM = findoidjoins
 OBJS	= findoidjoins.o
 
 PG_CPPFLAGS = -I$(libpq_srcdir)
-PG_LIBS = $(libpq)
+PG_LIBS = $(libpq_pgport)
 
 SCRIPTS = make_oidjoins_check
 DOCS = README.findoidjoins

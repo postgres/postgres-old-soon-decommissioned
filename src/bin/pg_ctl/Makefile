@@ -21,7 +21,7 @@ OBJS=	pg_ctl.o $(WIN32RES)
 all: submake-libpq submake-libpgport pg_ctl
 
 pg_ctl: $(OBJS) $(libpq_builddir)/libpq.a
-	$(CC) $(CFLAGS) $(OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@$(X)
+	$(CC) $(CFLAGS) $(OBJS) $(libpq_pgport) $(LDFLAGS) $(LIBS) -o $@$(X)
 
 install: all installdirs
 	$(INSTALL_PROGRAM) pg_ctl$(X) $(DESTDIR)$(bindir)/pg_ctl$(X)

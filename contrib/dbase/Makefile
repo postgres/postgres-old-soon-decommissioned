@@ -3,7 +3,7 @@
 PROGRAM = dbf2pg
 OBJS	= dbf.o dbf2pg.o endian.o
 PG_CPPFLAGS = -I$(libpq_srcdir)
-PG_LIBS = $(libpq)
+PG_LIBS = $(libpq_pgport)
 
 # Uncomment this to provide charset translation
 #PG_CPPFLAGS += -DHAVE_ICONV_H
