@@ -127,6 +127,7 @@ static double phony_random_seed;
 static char *client_encoding_string;
 static char *datestyle_string;
 static char *default_iso_level_string;
+static char *regex_flavor_string;
 static char *server_encoding_string;
 static char *session_authorization_string;
 static char *timezone_string;
@@ -568,7 +569,7 @@ static struct config_int
 	},
 
 	{
-		{"deadlock_timeout", PGC_POSTMASTER}, &DeadlockTimeout,
+		{"deadlock_timeout", PGC_SIGHUP}, &DeadlockTimeout,
 		1000, 0, INT_MAX, NULL, NULL
 	},
 
@@ -816,6 +817,11 @@ static struct config_string
 	{
 		{"lc_time", PGC_USERSET}, &locale_time,
 		"C", locale_time_assign, NULL
+	},
+
+	{
+		{"regex_flavor", PGC_USERSET}, &regex_flavor_string,
+		"advanced", assign_regex_flavor, NULL
 	},
 
 	{
