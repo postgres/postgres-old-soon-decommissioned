@@ -33,6 +33,6 @@
 /* uncomment the following if you want your elog's to be timestamped */
 /* #define ELOG_TIMESTAMPS */
 
-extern void elog(int lev, char *fmt, ...);
+extern void elog(int lev, const char *fmt, ...);
 
 #endif	/* ELOG_H */
