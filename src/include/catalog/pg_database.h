@@ -61,4 +61,12 @@ DESCR("");
 
 #define TemplateDbOid			1
 
+/* Just to mark OID as used for unused_oid script -:) */
+#define DATAMARKOID(x)
+
+DATAMARKOID( = 2)
+#define RecoveryDb	2
+
+#undef DATAMARKOID
+
 #endif	 /* PG_DATABASE_H */

@@ -2481,3 +2481,56 @@ AbortBufferIO(void)
 		SpinRelease(BufMgrLock);
 	}
 }
+
+/*
+ * Cleanup buffer or mark it for cleanup. Buffer may be cleaned
+ * up if it's pinned only once.
+ *
+ * NOTE: buffer must be excl locked.
+ */
+void
+MarkBufferForCleanup(Buffer buffer, void (*CleanupFunc)(Buffer))
+{
+	BufferDesc *bufHdr = &BufferDescriptors[buffer - 1];
+
+	Assert(PrivateRefCount[buffer - 1] > 0);
+
+	if (PrivateRefCount[buffer - 1] > 1)
+	{
+		LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
+		PrivateRefCount[buffer - 1]--;
+		SpinAcquire(BufMgrLock);
+		Assert(bufHdr->refcount > 0);
+		bufHdr->flags |= (BM_DIRTY | BM_JUST_DIRTIED);
+		bufHdr->CleanupFunc = CleanupFunc;
+		SpinRelease(BufMgrLock);
+		return;
+	}
+
+	SpinAcquire(BufMgrLock);
+	Assert(bufHdr->refcount > 0);
+	if (bufHdr->refcount == 1)
+	{
+		SpinRelease(BufMgrLock);
+		CleanupFunc(buffer);
+		CleanupFunc = NULL;
+	}
+	else
+		SpinRelease(BufMgrLock);
+
+	LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
+	PrivateRefCount[buffer - 1]--;
+
+	SpinAcquire(BufMgrLock);
+	Assert(bufHdr->refcount > 0);
+	bufHdr->flags |= (BM_DIRTY | BM_JUST_DIRTIED);
+	bufHdr->CleanupFunc = CleanupFunc;
+	bufHdr->refcount--;
+	if (bufHdr->refcount == 0)
+	{
+		AddBufferToFreelist(bufHdr);
+		bufHdr->flags |= BM_FREE;
+	}
+	SpinRelease(BufMgrLock);
+	return;
+}

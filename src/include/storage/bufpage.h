@@ -20,6 +20,7 @@
 #include "storage/itemid.h"
 #include "storage/off.h"
 #include "storage/page.h"
+#include "access/xlog.h"
 
 /*
  * a postgres disk page is an abstraction layered on top of a postgres

@@ -40,6 +40,7 @@ char		ControlFilePath[MAXPGPATH];
 uint32		XLOGbuffers = 0;
 XLogRecPtr	MyLastRecPtr = {0, 0};
 bool		StopIfError = false;
+bool		InRecovery = false;
 
 SPINLOCK	ControlFileLockId;
 SPINLOCK	XidGenLockId;
@@ -162,17 +163,6 @@ typedef struct CheckPoint
 
 #define NextBufIdx(curridx)		\
 		((curridx == XLogCtl->XLogCacheBlck) ? 0 : (curridx + 1))
-
-#define XLByteLT(left, right)		\
-			(right.xlogid > left.xlogid || \
-			(right.xlogid == left.xlogid && right.xrecoff > left.xrecoff))
-
-#define XLByteLE(left, right)		\
-			(right.xlogid > left.xlogid || \
-			(right.xlogid == left.xlogid && right.xrecoff >=  left.xrecoff))
-
-#define XLByteEQ(left, right)		\
-			(right.xlogid == left.xlogid && right.xrecoff ==  left.xrecoff)
 
 #define InitXLBuffer(curridx)	(\
 				XLogCtl->xlblocks[curridx].xrecoff = \

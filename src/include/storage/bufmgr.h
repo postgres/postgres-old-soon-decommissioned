@@ -44,6 +44,17 @@ extern int	ShowPinTrace;
 #define BUFFER_LOCK_SHARE		1
 #define BUFFER_LOCK_EXCLUSIVE	2
 
+#define UnlockAndReleaseBuffer(buffer)	\
+( \
+	LockBuffer(buffer, BUFFER_LOCK_UNLOCK), \
+	ReleaseBuffer(buffer) \
+)
+
+#define UnlockAndWriteBuffer(buffer)	\
+( \
+	LockBuffer(buffer, BUFFER_LOCK_UNLOCK), \
+	WriteBuffer(buffer) \
+)
 
 /*
  * BufferIsValid
@@ -162,5 +173,8 @@ extern void SetBufferCommitInfoNeedsSave(Buffer buffer);
 extern void UnlockBuffers(void);
 extern void LockBuffer(Buffer buffer, int mode);
 extern void AbortBufferIO(void);
+
+extern bool BufferIsUpdatable(Buffer buffer);
+extern void MarkBufferForCleanup(Buffer buffer, void (*CleanupFunc)(Buffer));
 
 #endif

@@ -121,10 +121,19 @@ typedef struct sbufdesc
 	 *
 	 * Why we keep relId here? To re-use file descriptors. On rollback
 	 * WAL uses dummy relId - bad (more blind writes - open/close calls),
-	 * but allowable. Obviously we should have another cache in file manager.
+	 * but allowable. Obviously we should have another cache in file manager
+	 * - fd is not relcache deal.
 	 */
 	LockRelId	relId;
 	BufferBlindId blind;		/* was used to support blind write */
+
+	/*
+	 * When we can't delete item from page (someone else has buffer pinned)
+	 * we mark buffer for cleanup by specifying appropriate for buffer
+	 * content cleanup function. Buffer will be cleaned up from release
+	 * buffer functions.
+	 */
+	void		(*CleanupFunc)(Buffer);
 } BufferDesc;
 
 /*
