@@ -23,6 +23,10 @@
 
 (define %refentry-xref-manvolnum% #f)
 (define %section-autolabel% #t)
+(define %callout-graphics% #f)
+
+(define %content-title-end-punct% 
+  '(#\. #\! #\? #\:))
 
 (element lineannotation ($italic-seq$))
 (element structfield ($mono-seq$))
@@ -41,6 +45,8 @@
 (define (toc-depth nd)
   (cond ((string=? (gi nd) (normalize "book")) 3)
 	((string=? (gi nd) (normalize "set")) 2)
+	((string=? (gi nd) (normalize "part")) 2)
+	((string=? (gi nd) (normalize "chapter")) 2)
 	(else 1)))
 
 ;; Put date of creation into header
