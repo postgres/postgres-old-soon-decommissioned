@@ -19,6 +19,14 @@ extern void DiscardInvalid(void);
 
 extern void RegisterInvalid(bool send);
 
+extern void ImmediateLocalInvalidation(bool send);
+
 extern void RelationInvalidateHeapTuple(Relation relation, HeapTuple tuple);
+
+extern void RelationMark4RollbackHeapTuple(Relation relation, HeapTuple tuple);
+
+extern void ImmediateInvalidateSharedHeapTuple(Relation relation, HeapTuple tuple);
+
+extern void ImmediateSharedRelationCacheInvalidate(Relation relation);
 
 #endif	 /* INVAL_H */
