@@ -9,6 +9,9 @@ notify - signal all frontends and backends listening on a class
 \fBnotify\fR class_name
 .fi
 .SH DESCRIPTION
+This man page is obsolete.  More complete and reliable info is
+available in the User's Guide reference page for NOTIFY.
+.PP
 .BR notify
 is used to awaken all backends and consequently all frontends
 that have executed 

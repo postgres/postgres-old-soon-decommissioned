@@ -9,6 +9,9 @@ listen - listen for notification on a relation
 \fBlisten\fR class_name
 .fi
 .SH DESCRIPTION
+This man page is obsolete.  More complete and reliable info is
+available in the User's Guide reference page for LISTEN.
+.PP
 .BR listen
 is used to register the current backend as a listener on the relation
 .IR class_name .
