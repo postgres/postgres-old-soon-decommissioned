@@ -11,6 +11,9 @@
  *
  *-------------------------------------------------------------------------
  */
+
+#include "postgres.h"
+
 #include <math.h>
 #ifdef WIN32
 # include <float.h>
@@ -24,8 +27,6 @@
 #  include <values.h>
 # endif 
 #endif 
-
-#include "postgres.h"
 
 #include <utils/lsyscache.h>
 #include "nodes/relation.h"
