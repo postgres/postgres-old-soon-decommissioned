@@ -13,6 +13,9 @@ n_buffers]
 .BR "-E"
 ]
 [\c
+.BR "-F"
+]
+[\c
 .BR "-P"
 filedes]
 [\c
@@ -62,6 +65,11 @@ allocate.  This value defaults to 64.
 .TP
 .BR "-E"
 Echo all queries.
+.TP
+.BR "-F"
+Disbable automatic fsync() call after each transaction.
+This option improves performance, but an operating system crash
+while a transaction is in progress will probably cause data loss.
 .TP
 .BR "-P" " filedes"
 .IR "filedes"
