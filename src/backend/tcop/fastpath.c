@@ -349,7 +349,7 @@ HandleFunctionRequest()
 				p = palloc(argsize + VARHDRSZ + 1);	/* Added +1 to solve
 													 * memory leak - Peter
 													 * 98 Jan 6 */
-				VARSIZE(p) = argsize + VARHDRSZ;
+				VARATT_SIZEP(p) = argsize + VARHDRSZ;
 				if (pq_getbytes(VARDATA(p), argsize))
 					return EOF;
 			}

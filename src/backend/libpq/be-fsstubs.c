@@ -331,7 +331,7 @@ loread(PG_FUNCTION_ARGS)
 
 	retval = (struct varlena *) palloc(VARHDRSZ + len);
 	totalread = lo_read(fd, VARDATA(retval), len);
-	VARSIZE(retval) = totalread + VARHDRSZ;
+	VARATT_SIZEP(retval) = totalread + VARHDRSZ;
 
 	PG_RETURN_POINTER(retval);
 }

@@ -263,7 +263,7 @@ int2_text(PG_FUNCTION_ARGS)
 	text	   *result = (text *) palloc(7+VARHDRSZ); /* sign,5 digits, '\0' */
 
 	itoa((int) arg1, VARDATA(result));
-	VARSIZE(result) = strlen(VARDATA(result)) + VARHDRSZ;
+	VARATT_SIZEP(result) = strlen(VARDATA(result)) + VARHDRSZ;
 	PG_RETURN_TEXT_P(result);
 }
 
@@ -294,7 +294,7 @@ int4_text(PG_FUNCTION_ARGS)
 	text	   *result = (text *) palloc(12+VARHDRSZ); /* sign,10 digits,'\0' */
 
 	ltoa(arg1, VARDATA(result));
-	VARSIZE(result) = strlen(VARDATA(result)) + VARHDRSZ;
+	VARATT_SIZEP(result) = strlen(VARDATA(result)) + VARHDRSZ;
 	PG_RETURN_TEXT_P(result);
 }
 

@@ -10,13 +10,10 @@
 #ifndef _LZTEXT_H_
 #define _LZTEXT_H_
 
-#include "utils/pg_lzcompress.h"
-
-
 /* ----------
- * The internal storage format of an LZ compressed text field
+ * The internal storage format of an LZ compressed text field is varattrib
  * ----------
  */
-typedef PGLZ_Header lztext;
+typedef varattrib lztext;
 
 #endif	 /* _LZTEXT_H_ */

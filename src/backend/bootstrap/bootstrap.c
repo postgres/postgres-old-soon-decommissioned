@@ -571,7 +571,7 @@ DefineAttr(char *name, char *type, int attnum)
 		attrtypes[attnum]->attnum = 1 + attnum; /* fillatt */
 		attlen = attrtypes[attnum]->attlen = Ap->am_typ.typlen;
 		attrtypes[attnum]->attbyval = Ap->am_typ.typbyval;
-		attrtypes[attnum]->attstorage = 'p';
+		attrtypes[attnum]->attstorage = Ap->am_typ.typstorage;;
 		attrtypes[attnum]->attalign = Ap->am_typ.typalign;
 	}
 	else

@@ -282,7 +282,7 @@ oidvectortypes(PG_FUNCTION_ARGS)
 		else
 			strcat(VARDATA(result), "- ");
 	}
-	VARSIZE(result) = strlen(VARDATA(result)) + VARHDRSZ;
+	VARATT_SIZEP(result) = strlen(VARDATA(result)) + VARHDRSZ;
 	PG_RETURN_TEXT_P(result);
 }
 

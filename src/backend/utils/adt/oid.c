@@ -231,7 +231,7 @@ oid_text(PG_FUNCTION_ARGS)
 
 	result = (text *) palloc(len);
 
-	VARSIZE(result) = len;
+	VARATT_SIZEP(result) = len;
 	memcpy(VARDATA(result), str, (len - VARHDRSZ));
 	pfree(str);
 

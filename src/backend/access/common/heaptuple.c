@@ -119,7 +119,11 @@ DataFill(char *data,
 		{
 			case -1:
 				*infomask |= HEAP_HASVARLENA;
-				data_length = VARSIZE(DatumGetPointer(value[i]));
+				if (VARATT_IS_EXTERNAL(value[i]))
+					*infomask |= HEAP_HASEXTERNAL;
+				if (VARATT_IS_COMPRESSED(value[i]))
+					*infomask |= HEAP_HASCOMPRESSED;
+				data_length = VARATT_SIZE(DatumGetPointer(value[i]));
 				memmove(data, DatumGetPointer(value[i]), data_length);
 				break;
 			case sizeof(char):
@@ -816,7 +820,7 @@ heap_freetuple(HeapTuple htup)
 	if (htup->t_data != NULL)
 		if (htup->t_datamcxt != NULL && (char *) (htup->t_data) !=
 			((char *) htup + HEAPTUPLESIZE))
-			elog(NOTICE, "TELL Jan Wieck: heap_freetuple() found separate t_data");
+			pfree(htup->t_data);
 
 	pfree(htup);
 }

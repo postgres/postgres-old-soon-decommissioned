@@ -1375,7 +1375,7 @@ timestamp_text(PG_FUNCTION_ARGS)
 
 	result = palloc(len);
 
-	VARSIZE(result) = len;
+	VARATT_SIZEP(result) = len;
 	memmove(VARDATA(result), str, (len - VARHDRSZ));
 
 	pfree(str);
@@ -1430,7 +1430,7 @@ interval_text(PG_FUNCTION_ARGS)
 
 	result = palloc(len);
 
-	VARSIZE(result) = len;
+	VARATT_SIZEP(result) = len;
 	memmove(VARDATA(result), str, (len - VARHDRSZ));
 
 	pfree(str);
@@ -2101,7 +2101,7 @@ timestamp_zone(PG_FUNCTION_ARGS)
 
 		result = palloc(len);
 
-		VARSIZE(result) = len;
+		VARATT_SIZEP(result) = len;
 		memmove(VARDATA(result), buf, (len - VARHDRSZ));
 	}
 	else

@@ -2526,7 +2526,7 @@ timestamp_to_char(PG_FUNCTION_ARGS)
 	result = (text *) palloc(len + 1 + VARHDRSZ);
 
 	strcpy(VARDATA(result), VARDATA(result_tmp));
-	VARSIZE(result) = len + VARHDRSZ;
+	VARATT_SIZEP(result) = len + VARHDRSZ;
 	pfree(result_tmp);
 
 	PG_RETURN_TEXT_P(result);
@@ -3987,7 +3987,7 @@ do { \
 	result		= (text *) palloc( len + 1 + VARHDRSZ);		\
 									\
 	strcpy( VARDATA(result), VARDATA(result_tmp));			\
-	VARSIZE(result) = len + VARHDRSZ;				\
+	VARATT_SIZEP(result) = len + VARHDRSZ;				\
 	pfree(result_tmp);						\
 } while(0)
 

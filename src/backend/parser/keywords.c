@@ -245,6 +245,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"timezone_hour", TIMEZONE_HOUR},
 	{"timezone_minute", TIMEZONE_MINUTE},
 	{"to", TO},
+	{"toast", TOAST},
 	{"trailing", TRAILING},
 	{"transaction", TRANSACTION},
 	{"trigger", TRIGGER},

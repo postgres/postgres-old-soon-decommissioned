@@ -22,7 +22,7 @@ version(void)
 	int			n = strlen(PG_VERSION_STR) + VARHDRSZ;
 	text	   *ret = (text *) palloc(n);
 
-	VARSIZE(ret) = n;
+	VARATT_SIZEP(ret) = n;
 	memcpy(VARDATA(ret), PG_VERSION_STR, strlen(PG_VERSION_STR));
 
 	return ret;

@@ -360,6 +360,9 @@ ProcessUtility(Node *parsetree,
 					case 'X':	/* DROP CONSTRAINT */
 						AlterTableDropConstraint(stmt->relname, stmt->inh, stmt->name, stmt->behavior);
 						break;
+					case 'E':	/* CREATE TOAST TABLE */
+						AlterTableCreateToastTable(stmt->relname);
+						break;
 					default:	/* oops */
 						elog(ERROR, "T_AlterTableStmt: unknown subtype");
 						break;

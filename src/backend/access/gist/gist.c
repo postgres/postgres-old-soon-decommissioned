@@ -546,7 +546,7 @@ gistAdjustKeys(Relation r,
 	oldud += sizeof(IndexTupleData);
 
 	evec = (bytea *) palloc(2 * sizeof(GISTENTRY) + VARHDRSZ);
-	VARSIZE(evec) = 2 * sizeof(GISTENTRY) + VARHDRSZ;
+	VARATT_SIZEP(evec) = 2 * sizeof(GISTENTRY) + VARHDRSZ;
 
 	/* insert decompressed oldud into entry vector */
 	gistdentryinit(giststate, &((GISTENTRY *) VARDATA(evec))[0],
@@ -741,7 +741,7 @@ gistSplit(Relation r,
 	else
 		decompvec[maxoff + 1] = FALSE;
 
-	VARSIZE(entryvec) = (maxoff + 2) * sizeof(GISTENTRY) + VARHDRSZ;
+	VARATT_SIZEP(entryvec) = (maxoff + 2) * sizeof(GISTENTRY) + VARHDRSZ;
 
 	/* now let the user-defined picksplit function set up the split vector */
 	FunctionCall2(&giststate->picksplitFn,

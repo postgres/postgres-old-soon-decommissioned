@@ -581,7 +581,7 @@ int8_text(PG_FUNCTION_ARGS)
 
 	result = (text *) palloc(VARHDRSZ + len);
 
-	VARSIZE(result) = len + VARHDRSZ;
+	VARATT_SIZEP(result) = len + VARHDRSZ;
 	memcpy(VARDATA(result), s, len);
 
 	pfree(s);

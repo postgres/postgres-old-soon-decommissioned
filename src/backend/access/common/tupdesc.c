@@ -434,23 +434,16 @@ TupleDescInitEntry(TupleDesc desc,
 
 		att->attlen = typeLen(t);
 		att->attbyval = typeByVal(t);
-		att->attstorage = 'p';
 	}
 	else
 	{
 		att->attlen = typeForm->typlen;
 		att->attbyval = typeForm->typbyval;
 /*
- * This will enable ALL variable size attributes of user
- * relations for automatic move off into "secondary" relation.
- * Jan
+ * Default to the types storage
  */
 #ifdef TUPLE_TOASTER_ACTIVE
-#ifdef TUPLE_TOASTER_ALL_TYPES
-		att->attstorage = (att->attlen == -1) ? 'e' : 'p';
-#else
-		att->attstorage = 'p';
-#endif
+		att->attstorage = typeForm->typstorage;
 #else
 		att->attstorage = 'p';
 #endif

@@ -953,7 +953,7 @@ float8_text(float64 num)
 
 	result = palloc(len);
 
-	VARSIZE(result) = len;
+	VARATT_SIZEP(result) = len;
 	memmove(VARDATA(result), str, (len - VARHDRSZ));
 
 	pfree(str);
@@ -998,7 +998,7 @@ float4_text(float32 num)
 
 	result = palloc(len);
 
-	VARSIZE(result) = len;
+	VARATT_SIZEP(result) = len;
 	memmove(VARDATA(result), str, (len - VARHDRSZ));
 
 	pfree(str);

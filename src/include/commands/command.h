@@ -58,6 +58,8 @@ extern void AlterTableDropConstraint(const char *relationName,
 						 bool inh, const char *constrName,
 						 int behavior);
 
+extern void AlterTableCreateToastTable(const char *relationName);
+
 /*
  * LOCK
  */

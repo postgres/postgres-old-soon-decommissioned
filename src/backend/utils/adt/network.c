@@ -61,7 +61,7 @@ network_in(char *src, int type)
 		/* Go for an IPV6 address here, before faulting out: */
 		elog(ERROR, "could not parse \"%s\"", src);
 
-	VARSIZE(dst) = VARHDRSZ
+	VARATT_SIZEP(dst) = VARHDRSZ
 		+ ((char *) &ip_v4addr(dst) - (char *) VARDATA(dst))
 		+ ip_addrsize(dst);
 	ip_bits(dst) = bits;
@@ -346,7 +346,7 @@ network_host(inet *ip)
 	if (ret == NULL)
 		elog(ERROR, "unable to allocate memory in network_host()");
 
-	VARSIZE(ret) = len;
+	VARATT_SIZEP(ret) = len;
 	strcpy(VARDATA(ret), tmp);
 	return (ret);
 }
@@ -396,7 +396,7 @@ network_broadcast(inet *ip)
 	if (ret == NULL)
 		elog(ERROR, "unable to allocate memory in network_broadcast()");
 
-	VARSIZE(ret) = len;
+	VARATT_SIZEP(ret) = len;
 	strcpy(VARDATA(ret), tmp);
 	return (ret);
 }
@@ -429,7 +429,7 @@ network_network(inet *ip)
 	if (ret == NULL)
 		elog(ERROR, "unable to allocate memory in network_network()");
 
-	VARSIZE(ret) = len;
+	VARATT_SIZEP(ret) = len;
 	strcpy(VARDATA(ret), tmp);
 	return (ret);
 }
@@ -466,7 +466,7 @@ network_netmask(inet *ip)
 	if (ret == NULL)
 		elog(ERROR, "unable to allocate memory in network_netmask()");
 
-	VARSIZE(ret) = len;
+	VARATT_SIZEP(ret) = len;
 	strcpy(VARDATA(ret), tmp);
 	return (ret);
 }

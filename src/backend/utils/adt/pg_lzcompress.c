@@ -582,11 +582,15 @@ pglz_compress(char *source, int slen, PGLZ_Header *dest, PGLZ_Strategy *strategy
 	 * ----------
 	 */
 	if (do_compress)
-		return (dest->varsize = result_size + sizeof(PGLZ_Header));
+	{
+		dest->varsize = result_size + sizeof(PGLZ_Header);
+		return VARATT_SIZE(dest);
+	}
 	else
 	{
 		memcpy(((char *) dest) + sizeof(PGLZ_Header), source, slen);
-		return (dest->varsize = slen + sizeof(PGLZ_Header));
+		dest->varsize = slen + sizeof(PGLZ_Header);
+		return VARATT_SIZE(dest);
 	}
 }
 
@@ -609,10 +613,10 @@ pglz_decompress(PGLZ_Header *source, char *dest)
 	int32		off;
 
 	dp = ((unsigned char *) source) + sizeof(PGLZ_Header);
-	dend = ((unsigned char *) source) + source->varsize;
+	dend = ((unsigned char *) source) + VARATT_SIZE(source);
 	bp = (unsigned char *) dest;
 
-	if (source->varsize == source->rawsize + sizeof(PGLZ_Header))
+	if (VARATT_SIZE(source) == source->rawsize + sizeof(PGLZ_Header))
 	{
 		memcpy(dest, dp, source->rawsize);
 		return source->rawsize;

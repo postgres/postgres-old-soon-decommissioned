@@ -162,7 +162,7 @@ char_text(PG_FUNCTION_ARGS)
 	char		arg1 = PG_GETARG_CHAR(0);
 	text	   *result = palloc(VARHDRSZ + 1);
 
-	VARSIZE(result) = VARHDRSZ + 1;
+	VARATT_SIZEP(result) = VARHDRSZ + 1;
 	*(VARDATA(result)) = arg1;
 
 	PG_RETURN_TEXT_P(result);

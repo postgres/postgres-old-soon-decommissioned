@@ -730,7 +730,7 @@ cash_words_out(Cash *value)
 
 	/* make a text type for output */
 	result = (text *) palloc(strlen(buf) + VARHDRSZ);
-	VARSIZE(result) = strlen(buf) + VARHDRSZ;
+	VARATT_SIZEP(result) = strlen(buf) + VARHDRSZ;
 	memcpy(VARDATA(result), buf, strlen(buf));
 
 	return result;

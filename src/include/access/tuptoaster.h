@@ -22,10 +22,22 @@
 #include "utils/rel.h"
 
 
+#define	TOAST_MAX_CHUNK_SIZE	((MaxTupleSize -							\
+				MAXALIGN(												\
+					MAXALIGN(offsetof(HeapTupleHeaderData, t_bits)) +	\
+					MAXALIGN(sizeof(Oid)) +								\
+					MAXALIGN(sizeof(int32)) +							\
+					MAXALIGN(VARHDRSZ))) / 4)
+
+
 extern void heap_tuple_toast_attrs(Relation rel,
-					   HeapTuple newtup, HeapTuple oldtup);
+				HeapTuple newtup, HeapTuple oldtup);
 
 extern varattrib *heap_tuple_untoast_attr(varattrib * attr);
+
+extern void heap_create_toast_table(Oid new_reloid,
+				TupleDesc new_tupdesc, bool istemp);
+				
 
 #endif	 /* TUPLE_TOASTER_ACTIVE */
 
