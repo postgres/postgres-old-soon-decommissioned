@@ -226,6 +226,7 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate, Plan *parent)
 		List *coldeflist = rte->coldeflist;
 
 		tupdesc = BuildDescForRelation(coldeflist);
+		tupdesc->tdhasoid = WITHOUTOID;
 	}
 	else
 		elog(ERROR, "Unknown kind of return type specified for function");
