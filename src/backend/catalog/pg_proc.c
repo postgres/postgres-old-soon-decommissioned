@@ -61,7 +61,6 @@ ProcedureCreate(char *procedureName,
 	Oid			typeObjectId;
 	List	   *x;
 	List	   *querytree_list;
-	List	   *plan_list;
 	Oid			typev[FUNC_MAX_ARGS];
 	Oid			relid;
 	Oid			toid;
@@ -222,9 +221,8 @@ ProcedureCreate(char *procedureName,
 
 	if (strcmp(languageName, "sql") == 0)
 	{
-		plan_list = pg_parse_and_plan(prosrc, typev, parameterCount,
-									  &querytree_list, dest, FALSE);
-
+		querytree_list = pg_parse_and_rewrite(prosrc, typev, parameterCount,
+											  FALSE);
 		/* typecheck return value */
 		pg_checkretval(typeObjectId, querytree_list);
 	}

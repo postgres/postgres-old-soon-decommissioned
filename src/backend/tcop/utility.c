@@ -136,6 +136,8 @@ ProcessUtility(Node *parsetree,
 				PS_SET_STATUS(commandTag = (stmt->ismove) ? "MOVE" : "FETCH");
 				CHECK_IF_ABORTED();
 
+				SetQuerySnapshot();
+
 				forward = (bool) (stmt->direction == FORWARD);
 
 				/*
@@ -254,6 +256,9 @@ ProcessUtility(Node *parsetree,
 
 				PS_SET_STATUS(commandTag = "COPY");
 				CHECK_IF_ABORTED();
+
+				if (stmt->direction != FROM)
+					SetQuerySnapshot();
 
 				DoCopy(stmt->relname,
 					   stmt->binary,

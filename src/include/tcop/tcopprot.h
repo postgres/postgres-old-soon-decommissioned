@@ -29,12 +29,15 @@ extern bool InError;
 extern bool	ExitAfterAbort;
 
 #ifndef BOOTSTRAP_INCLUDE
-extern List *pg_parse_and_plan(char *query_string, Oid *typev, int nargs,
-				  List **queryListP, CommandDest dest,
-				  bool aclOverride);
+
+extern List *pg_parse_and_rewrite(char *query_string,
+								  Oid *typev, int nargs,
+								  bool aclOverride);
+extern Plan *pg_plan_query(Query *querytree);
 extern void pg_exec_query_acl_override(char *query_string);
-extern void
-			pg_exec_query_dest(char *query_string, CommandDest dest, bool aclOverride);
+extern void pg_exec_query_dest(char *query_string,
+							   CommandDest dest,
+							   bool aclOverride);
 
 #endif	 /* BOOTSTRAP_INCLUDE */
 
