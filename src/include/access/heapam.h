@@ -95,12 +95,13 @@ typedef HeapAccessStatisticsData *HeapAccessStatistics;
  *		pointer to the structure describing the row and all its fields.
  * ---------------- */
 #define heap_getattr(tup, b, attnum, tupleDesc, isnull) \
-	(AssertMacro((tup) != NULL) && \
-	((attnum) > (int) (tup)->t_natts) ? \
-		((isnull && (*(isnull) = true)), (Datum)NULL) : \
-	((attnum) > 0) ? \
-		fastgetattr((tup), (attnum), (tupleDesc), (isnull)) : \
-	((isnull && (*(isnull) = false)), heap_getsysattr((tup), (b), (attnum))))
+	(AssertMacro((tup) != NULL) ? \
+		((attnum) > (int) (tup)->t_natts) ? \
+			(((isnull) ? (*(isnull) = true) : (char)NULL), (Datum)NULL) : \
+		((attnum) > 0) ? \
+			fastgetattr((tup), (attnum), (tupleDesc), (isnull)) : \
+		(((isnull) ? (*(isnull) = false) : (char)NULL), heap_getsysattr((tup), (b), (attnum))) : \
+	(Datum)NULL)
 
 extern HeapAccessStatistics heap_access_stats;	/* in stats.c */
 
