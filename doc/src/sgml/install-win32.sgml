@@ -109,7 +109,7 @@ $Header$
 
  <para>
   <application>psql</application> is compiled as a <quote>console
-  application</>. As the Win32 console windows use a different
+  application</>. As the Windows console windows use a different
   encoding than the rest of the system, you must take special care
   when using 8-bit characters at the <application>psql</application>
   prompt. When <application>psql</application> detects a problematic

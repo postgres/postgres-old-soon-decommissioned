@@ -299,7 +299,7 @@ int lo_unlink(PGconn *conn, Oid lobjId);
 </sect1>
 
 <sect1 id="lo-funcs">
-<title>Server-side Functions</title>
+<title>Server-Side Functions</title>
 
 <para>
      There are two built-in server-side functions,

@@ -140,16 +140,20 @@ CREATE AGGREGATE array_accum (
 
 <programlisting>
 SELECT attrelid::regclass, array_accum(attname)
-FROM pg_attribute WHERE attnum > 0
-AND attrelid = 'pg_user'::regclass GROUP BY attrelid;
+    FROM pg_attribute
+    WHERE attnum > 0 AND attrelid = 'pg_user'::regclass
+    GROUP BY attrelid;
+
  attrelid |                                 array_accum
 ----------+-----------------------------------------------------------------------------
  pg_user  | {usename,usesysid,usecreatedb,usesuper,usecatupd,passwd,valuntil,useconfig}
 (1 row)
 
 SELECT attrelid::regclass, array_accum(atttypid)
-FROM pg_attribute WHERE attnum > 0
-AND attrelid = 'pg_user'::regclass GROUP BY attrelid;
+    FROM pg_attribute
+    WHERE attnum > 0 AND attrelid = 'pg_user'::regclass
+    GROUP BY attrelid;
+
  attrelid |         array_accum
 ----------+------------------------------
  pg_user  | {19,23,16,16,16,25,702,1009}
