@@ -3751,6 +3751,10 @@ from_list:  from_list ',' table_ref				{ $$ = lappend($1, $3); }
  * between table_ref := '(' joined_table ')' alias_clause
  * and joined_table := '(' joined_table ')'.  So, we must have the
  * redundant-looking productions here instead.
+ *
+ * Note that the SQL spec does not permit a subselect (<derived_table>)
+ * without an alias clause, so we don't either.  This avoids the problem
+ * of needing to invent a refname for an unlabeled subselect.
  */
 table_ref:  relation_expr
 				{
@@ -3760,13 +3764,6 @@ table_ref:  relation_expr
 				{
 					$1->name = $2;
 					$$ = (Node *) $1;
-				}
-		| '(' select_clause ')'
-				{
-					RangeSubselect *n = makeNode(RangeSubselect);
-					n->subquery = $2;
-					n->name = NULL;
-					$$ = (Node *) n;
 				}
 		| '(' select_clause ')' alias_clause
 				{
