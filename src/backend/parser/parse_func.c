@@ -728,7 +728,7 @@ func_get_detail(char *funcname,
 							 funcname);
 						elog(NOTICE, "that satisfies the given argument types. you will have to");
 						elog(NOTICE, "retype your query using explicit typecasts.");
-						func_error("", funcname, nargs, oid_array);
+						func_error("func_get_detail", funcname, nargs, oid_array);
 					}
 					else
 					{
@@ -758,7 +758,7 @@ func_get_detail(char *funcname,
 				elog(ERROR, "no such attribute or function \"%s\"",
 					 funcname);
 		}
-		func_error("", funcname, nargs, oid_array);
+		func_error("func_get_detail", funcname, nargs, oid_array);
 	}
 	else
 	{
