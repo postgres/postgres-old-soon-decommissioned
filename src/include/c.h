@@ -420,7 +420,9 @@ typedef Oid oidvector[INDEX_MAX_KEYS];
 /*
  * We want NameData to have length NAMEDATALEN and int alignment,
  * because that's how the data type 'name' is defined in pg_type.
- * Use a union to make sure the compiler agrees.
+ * Use a union to make sure the compiler agrees.  Note that NAMEDATALEN
+ * must be a multiple of sizeof(int), else sizeof(NameData) will probably
+ * not come out equal to NAMEDATALEN.
  */
 typedef union nameData
 {
