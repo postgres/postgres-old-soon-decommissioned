@@ -3606,7 +3606,7 @@ exec_eval_simple_expr(PLpgSQL_execstate *estate,
 	 * have more than one active param list.
 	 */
 	paramLI = (ParamListInfo)
-		MemoryContextAllocZero(econtext->ecxt_per_tuple_memory,
+		MemoryContextAlloc(econtext->ecxt_per_tuple_memory,
 						(expr->nparams + 1) * sizeof(ParamListInfoData));
 
 	/*
