@@ -347,7 +347,7 @@ check_index_is_clusterable(Relation OldHeap, Oid indexOid)
 		 * at the first column; multicolumn-capable AMs are *required* to
 		 * index nulls in columns after the first.
 		 */
-		colno = OldIndex->rd_index->indkey[0];
+		colno = OldIndex->rd_index->indkey.values[0];
 		if (colno > 0)
 		{
 			/* ordinary user attribute */

@@ -344,7 +344,7 @@ fmgr_info_C_lang(Oid functionId, FmgrInfo *finfo, HeapTuple procedureTuple)
 			for (i = 0; i < procedureStruct->pronargs; i++)
 			{
 				fnextra->arg_toastable[i] =
-					TypeIsToastable(procedureStruct->proargtypes[i]);
+					TypeIsToastable(procedureStruct->proargtypes.values[i]);
 			}
 			break;
 		case 1:

@@ -349,8 +349,8 @@ getPrimaryKey(Oid tblOid)
 	resDatum = SPI_getbinval(resTuple, SPI_tuptable->tupdesc, 1, &isNull);
 
 	tpResultKey = (int2vector *) DatumGetPointer(resDatum);
-	resultKey = SPI_palloc(sizeof(int2vector));
-	memcpy(resultKey, tpResultKey, sizeof(int2vector));
+	resultKey = SPI_palloc(VARSIZE(tpResultKey));
+	memcpy(resultKey, tpResultKey, VARSIZE(tpResultKey));
 
 	return resultKey;
 }
@@ -438,10 +438,7 @@ packageData(HeapTuple tTupleData, TupleDesc tTupleDesc, Oid tableOid,
 	}
 
 	if (tpPKeys != NULL)
-	{
 		debug_msg("dbmirror:packageData have primary keys");
-
-	}
 
 	cpDataBlock = SPI_palloc(BUFFER_SIZE);
 	iDataBlockSize = BUFFER_SIZE;
@@ -462,11 +459,10 @@ packageData(HeapTuple tTupleData, TupleDesc tTupleDesc, Oid tableOid,
 			/* Determine if this is a primary key or not. */
 			iIsPrimaryKey = 0;
 			for (iPrimaryKeyIndex = 0;
-				 (*tpPKeys)[iPrimaryKeyIndex] != 0;
+				 iPrimaryKeyIndex < tpPKeys->dim1;
 				 iPrimaryKeyIndex++)
 			{
-				if ((*tpPKeys)[iPrimaryKeyIndex]
-					== iColumnCounter)
+				if (tpPKeys->values[iPrimaryKeyIndex] == iColumnCounter)
 				{
 					iIsPrimaryKey = 1;
 					break;

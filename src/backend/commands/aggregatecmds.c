@@ -246,11 +246,11 @@ RenameAggregate(List *name, TypeName *basetype, const char *newname)
 	namespaceOid = procForm->pronamespace;
 
 	/* make sure the new name doesn't exist */
-	if (SearchSysCacheExists(PROCNAMENSP,
+	if (SearchSysCacheExists(PROCNAMEARGSNSP,
 							 CStringGetDatum(newname),
-							 Int16GetDatum(procForm->pronargs),
-							 PointerGetDatum(procForm->proargtypes),
-							 ObjectIdGetDatum(namespaceOid)))
+							 PointerGetDatum(&procForm->proargtypes),
+							 ObjectIdGetDatum(namespaceOid),
+							 0))
 	{
 		if (basetypeOid == ANYOID)
 			ereport(ERROR,
@@ -264,7 +264,7 @@ RenameAggregate(List *name, TypeName *basetype, const char *newname)
 					 errmsg("function %s already exists in schema \"%s\"",
 							funcname_signature_string(newname,
 													  procForm->pronargs,
-												  procForm->proargtypes),
+												  procForm->proargtypes.values),
 							get_namespace_name(namespaceOid))));
 	}
 

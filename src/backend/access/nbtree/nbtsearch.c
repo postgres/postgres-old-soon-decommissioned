@@ -684,7 +684,7 @@ _bt_first(IndexScanDesc scan, ScanDirection dir)
 		{
 			RegProcedure cmp_proc;
 
-			cmp_proc = get_opclass_proc(rel->rd_index->indclass[i],
+			cmp_proc = get_opclass_proc(rel->rd_indclass->values[i],
 										cur->sk_subtype,
 										BTORDER_PROC);
 			ScanKeyEntryInitialize(scankeys + i,

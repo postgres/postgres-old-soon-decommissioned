@@ -63,7 +63,7 @@
 #define OpclassOidIndex				"pg_opclass_oid_index"
 #define OperatorNameNspIndex		"pg_operator_oprname_l_r_n_index"
 #define OperatorOidIndex			"pg_operator_oid_index"
-#define ProcedureNameNspIndex		"pg_proc_proname_args_nsp_index"
+#define ProcedureNameArgsNspIndex	"pg_proc_proname_args_nsp_index"
 #define ProcedureOidIndex			"pg_proc_oid_index"
 #define RewriteOidIndex				"pg_rewrite_oid_index"
 #define RewriteRelRulenameIndex		"pg_rewrite_rel_rulename_index"
@@ -161,7 +161,7 @@ DECLARE_UNIQUE_INDEX(pg_opclass_oid_index on pg_opclass using btree(oid oid_ops)
 DECLARE_UNIQUE_INDEX(pg_operator_oid_index on pg_operator using btree(oid oid_ops));
 DECLARE_UNIQUE_INDEX(pg_operator_oprname_l_r_n_index on pg_operator using btree(oprname name_ops, oprleft oid_ops, oprright oid_ops, oprnamespace oid_ops));
 DECLARE_UNIQUE_INDEX(pg_proc_oid_index on pg_proc using btree(oid oid_ops));
-DECLARE_UNIQUE_INDEX(pg_proc_proname_args_nsp_index on pg_proc using btree(proname name_ops, pronargs int2_ops, proargtypes oidvector_ops, pronamespace oid_ops));
+DECLARE_UNIQUE_INDEX(pg_proc_proname_args_nsp_index on pg_proc using btree(proname name_ops, proargtypes oidvector_ops, pronamespace oid_ops));
 /* This following index is not used for a cache and is not unique */
 DECLARE_UNIQUE_INDEX(pg_rewrite_oid_index on pg_rewrite using btree(oid oid_ops));
 DECLARE_UNIQUE_INDEX(pg_rewrite_rel_rulename_index on pg_rewrite using btree(ev_class oid_ops, rulename name_ops));

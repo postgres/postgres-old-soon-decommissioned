@@ -189,16 +189,16 @@ plpgsql_validator(PG_FUNCTION_ARGS)
 	haspolyarg = false;
 	for (i = 0; i < proc->pronargs; i++)
 	{
-		if (get_typtype(proc->proargtypes[i]) == 'p')
+		if (get_typtype(proc->proargtypes.values[i]) == 'p')
 		{
-			if (proc->proargtypes[i] == ANYARRAYOID ||
-				proc->proargtypes[i] == ANYELEMENTOID)
+			if (proc->proargtypes.values[i] == ANYARRAYOID ||
+				proc->proargtypes.values[i] == ANYELEMENTOID)
 				haspolyarg = true;
 			else
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 						 errmsg("plpgsql functions cannot take type %s",
-								format_type_be(proc->proargtypes[i]))));
+								format_type_be(proc->proargtypes.values[i]))));
 		}
 	}
 

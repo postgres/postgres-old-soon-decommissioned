@@ -1300,15 +1300,16 @@ ExecInitAgg(Agg *node, EState *estate)
 		if (aggtranstype == ANYARRAYOID || aggtranstype == ANYELEMENTOID)
 		{
 			/* have to fetch the agg's declared input type... */
-			Oid			agg_arg_types[FUNC_MAX_ARGS];
+			Oid		   *agg_arg_types;
 			int			agg_nargs;
 
 			(void) get_func_signature(aggref->aggfnoid,
-									  agg_arg_types, &agg_nargs);
+									  &agg_arg_types, &agg_nargs);
 			Assert(agg_nargs == 1);
 			aggtranstype = resolve_generic_type(aggtranstype,
 												inputType,
 												agg_arg_types[0]);
+			pfree(agg_arg_types);
 		}
 
 		/* build expression trees using actual argument & result types */

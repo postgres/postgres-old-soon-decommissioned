@@ -334,15 +334,15 @@ static const struct cachedesc cacheinfo[] = {
 			0,
 			0
 	}},
-	{ProcedureRelationName,		/* PROCNAMENSP */
-		ProcedureNameNspIndex,
+	{ProcedureRelationName,		/* PROCNAMEARGSNSP */
+		ProcedureNameArgsNspIndex,
 		0,
-		4,
+		3,
 		{
 			Anum_pg_proc_proname,
-			Anum_pg_proc_pronargs,
 			Anum_pg_proc_proargtypes,
-			Anum_pg_proc_pronamespace
+			Anum_pg_proc_pronamespace,
+			0
 	}},
 	{ProcedureRelationName,		/* PROCOID */
 		ProcedureOidIndex,

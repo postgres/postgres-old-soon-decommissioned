@@ -137,8 +137,8 @@ get_relation_info(Oid relationObjectId, RelOptInfo *rel)
 
 			for (i = 0; i < ncolumns; i++)
 			{
-				info->classlist[i] = index->indclass[i];
-				info->indexkeys[i] = index->indkey[i];
+				info->classlist[i] = indexRelation->rd_indclass->values[i];
+				info->indexkeys[i] = index->indkey.values[i];
 			}
 
 			info->relam = indexRelation->rd_rel->relam;

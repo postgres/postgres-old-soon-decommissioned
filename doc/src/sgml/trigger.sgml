@@ -453,7 +453,8 @@ typedef struct Trigger
     bool        tgdeferrable;
     bool        tginitdeferred;
     int16       tgnargs;
-    int16       tgattr[FUNC_MAX_ARGS];
+    int16       tgnattr;
+    int16      *tgattr;
     char      **tgargs;
 } Trigger;
 </programlisting>

@@ -219,7 +219,7 @@ systable_beginscan(Relation heapRelation,
 		 */
 		for (i = 0; i < nkeys; i++)
 		{
-			Assert(key[i].sk_attno == irel->rd_index->indkey[i]);
+			Assert(key[i].sk_attno == irel->rd_index->indkey.values[i]);
 			key[i].sk_attno = i + 1;
 		}
 

@@ -228,7 +228,7 @@ init_sql_fcache(FmgrInfo *finfo)
 
 		argOidVect = (Oid *) palloc(nargs * sizeof(Oid));
 		memcpy(argOidVect,
-			   procedureStruct->proargtypes,
+			   procedureStruct->proargtypes.values,
 			   nargs * sizeof(Oid));
 		/* Resolve any polymorphic argument types */
 		for (argnum = 0; argnum < nargs; argnum++)

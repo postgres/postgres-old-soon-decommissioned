@@ -230,9 +230,14 @@ fetch_fp_info(Oid func_id, struct fp_info * fip)
 				 errmsg("function with OID %u does not exist", func_id)));
 	pp = (Form_pg_proc) GETSTRUCT(func_htp);
 
+	/* watch out for catalog entries with more than FUNC_MAX_ARGS args */
+	if (pp->pronargs > FUNC_MAX_ARGS)
+		elog(ERROR, "function %s has more than %d arguments",
+			 NameStr(pp->proname), FUNC_MAX_ARGS);
+
 	fip->namespace = pp->pronamespace;
 	fip->rettype = pp->prorettype;
-	memcpy(fip->argtypes, pp->proargtypes, FUNC_MAX_ARGS * sizeof(Oid));
+	memcpy(fip->argtypes, pp->proargtypes.values, pp->pronargs * sizeof(Oid));
 
 	ReleaseSysCache(func_htp);
 

@@ -48,7 +48,7 @@ CATALOG(pg_proc) BOOTSTRAP
 	char		provolatile;	/* see PROVOLATILE_ categories below */
 	int2		pronargs;		/* number of arguments */
 	Oid			prorettype;		/* OID of result type */
-	oidvector	proargtypes;	/* OIDs of argument types */
+	oidvector	proargtypes;	/* VARIABLE LENGTH FIELD */
 	text		proargnames[1]; /* VARIABLE LENGTH FIELD */
 	text		prosrc;			/* VARIABLE LENGTH FIELD */
 	bytea		probin;			/* VARIABLE LENGTH FIELD */

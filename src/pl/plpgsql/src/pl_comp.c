@@ -1843,7 +1843,7 @@ compute_function_hashkey(FunctionCallInfo fcinfo,
 	/* get the argument types */
 	for (i = 0; i < procStruct->pronargs; i++)
 	{
-		Oid			argtypeid = procStruct->proargtypes[i];
+		Oid			argtypeid = procStruct->proargtypes.values[i];
 
 		/*
 		 * Check for polymorphic arguments. If found, use the actual

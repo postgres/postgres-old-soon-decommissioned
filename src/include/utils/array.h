@@ -22,6 +22,9 @@
 /*
  * Arrays are varlena objects, so must meet the varlena convention that
  * the first int32 of the object contains the total object size in bytes.
+ *
+ * CAUTION: if you change the header for ordinary arrays you will also
+ * need to change the headers for oidvector and int2vector!
  */
 typedef struct
 {

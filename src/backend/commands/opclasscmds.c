@@ -486,7 +486,7 @@ assignProcSubtype(Oid amoid, Oid typeoid, Oid procOid)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),
 				 errmsg("btree procedures must return integer")));
-	if (procform->proargtypes[0] != typeoid)
+	if (procform->proargtypes.values[0] != typeoid)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),
 		errmsg("btree procedures must have index type as first input")));
@@ -495,10 +495,10 @@ assignProcSubtype(Oid amoid, Oid typeoid, Oid procOid)
 	 * The subtype is "default" (0) if second input type matches the
 	 * operator class, otherwise it is the second input type.
 	 */
-	if (procform->proargtypes[1] == typeoid)
+	if (procform->proargtypes.values[1] == typeoid)
 		subtype = InvalidOid;
 	else
-		subtype = procform->proargtypes[1];
+		subtype = procform->proargtypes.values[1];
 	ReleaseSysCache(proctup);
 	return subtype;
 }
