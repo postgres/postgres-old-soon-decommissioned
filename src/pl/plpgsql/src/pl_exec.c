@@ -3631,7 +3631,7 @@ exec_eval_simple_expr(PLpgSQL_execstate *estate,
 
 	/*
 	 * We have to do some of the things SPI_execute_plan would do,
-	 * in particular adjust ActiveSnapshot if we are in a non-read-only
+	 * in particular advance the snapshot if we are in a non-read-only
 	 * function.  Without this, stable functions within the expression
 	 * would fail to see updates made so far by our own function.
 	 */
@@ -3644,7 +3644,11 @@ exec_eval_simple_expr(PLpgSQL_execstate *estate,
 
 		oldcontext = MemoryContextSwitchTo(econtext->ecxt_per_tuple_memory);
 		if (!estate->readonly_func)
+		{
+			CommandCounterIncrement();
 			ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
+		}
+
 		/*
 		 * Finally we can call the executor to evaluate the expression
 		 */
