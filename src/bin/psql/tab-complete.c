@@ -576,15 +576,15 @@ psql_completion(char *text, int start, int end)
 	/* Complete INSERT INTO with table names */
 	else if (strcasecmp(prev2_wd, "INSERT") == 0 && strcasecmp(prev_wd, "INTO") == 0)
 		COMPLETE_WITH_QUERY(Query_for_list_of_tables);
-	/* Complete INSERT INTO <table> with "VALUES" or "SELECT" */
+	/* Complete INSERT INTO <table> with "VALUES" or "SELECT" or "DEFAULT VALUES" */
 	else if (strcasecmp(prev3_wd, "INSERT") == 0 && strcasecmp(prev2_wd, "INTO") == 0)
 	{
-		char	   *list_INSERT[] = {"SELECT", "VALUES", NULL};
+		char	   *list_INSERT[] = {"DEFAULT VALUES", "SELECT", "VALUES", NULL};
 
 		COMPLETE_WITH_LIST(list_INSERT);
 	}
 	/* Insert an open parenthesis after "VALUES" */
-	else if (strcasecmp(prev_wd, "VALUES") == 0)
+	else if (strcasecmp(prev_wd, "VALUES") == 0 && strcasecmp(prev2_wd, "DEFAULT") != 0)
 		COMPLETE_WITH_CONST("(");
 
 /* LOCK */
