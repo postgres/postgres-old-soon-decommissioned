@@ -7187,7 +7187,7 @@ SELECT col FROM sometable ORDER BY col ASC LIMIT 1;
 </programlisting>
     A similar query (obtained by substituting <literal>DESC</literal>
     for <literal>ASC</literal> in the query above) can be used in the
-    place of <function>max()</function>).
+    place of <function>max()</function>.
    </para>
 
    <para>
