@@ -487,7 +487,7 @@ interpret_ident_response(char *ident_response,
 				cursor++;		/* skip blanks */
 			i = 0;
 			while (*cursor != ':' && *cursor != '\r' && !isblank(*cursor)
-				   && i < sizeof(response_type) - 1)
+				   && i < (int) (sizeof(response_type) - 1))
 				response_type[i++] = *cursor++;
 			response_type[i] = '\0';
 			while (isblank(*cursor))

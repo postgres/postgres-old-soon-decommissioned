@@ -106,7 +106,7 @@ PQnportals(int rule_p)
 	int			i,
 				n = 0;
 
-	for (i = 0; i < portals_array_size; ++i)
+	for (i = 0; i < (int) portals_array_size; ++i)
 	{
 		if (portals[i] && portals[i]->portal)
 		{
@@ -138,7 +138,7 @@ PQpnames(char **pnames, int rule_p)
 	if (!valid_pointer("PQpnames: invalid name buffer", pnames))
 		return;
 
-	for (i = 0; i < portals_array_size; ++i)
+	for (i = 0; i < (int) portals_array_size; ++i)
 	{
 		if (portals[i] && portals[i]->portal)
 		{

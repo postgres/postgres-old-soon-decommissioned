@@ -351,7 +351,7 @@ _hash_step(IndexScanDesc scan, Buffer *bufP, ScanDirection dir, Buffer metabuf)
 							opaque = (HashPageOpaque) PageGetSpecialPointer(page);
 							Assert(opaque->hasho_bucket == bucket);
 							while (PageIsEmpty(page) &&
-							 BlockNumberIsValid(opaque->hasho_nextblkno))
+								   BlockNumberIsValid(opaque->hasho_nextblkno))
 								_hash_readnext(rel, &buf, &page, &opaque);
 							maxoff = PageGetMaxOffsetNumber(page);
 							offnum = FirstOffsetNumber;

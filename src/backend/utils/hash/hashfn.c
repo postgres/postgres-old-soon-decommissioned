@@ -84,7 +84,7 @@ tag_hash(int *key, int keysize)
 			break;
 
 		default:
-			for (; keysize > (sizeof(int) - 1); keysize -= sizeof(int), key++)
+			for (; keysize >= (int) sizeof(int); keysize -= sizeof(int), key++)
 				h = h * PRIME1 ^ (*key);
 
 			/*

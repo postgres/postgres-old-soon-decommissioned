@@ -78,7 +78,7 @@
  * Block indexes are "long"s, so we can fit this many per indirect block.
  * NB: we assume this is an exact fit!
  */
-#define BLOCKS_PER_INDIR_BLOCK  (BLCKSZ / sizeof(long))
+#define BLOCKS_PER_INDIR_BLOCK  ((int) (BLCKSZ / sizeof(long)))
 
 /*
  * We use a struct like this for each active indirection level of each

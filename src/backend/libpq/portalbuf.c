@@ -90,7 +90,7 @@ portals_realloc(size_t size)
 		libpq_raise(&PortalError,
 					vararg_format("Cannot alloc more memory in portals_realloc"));
 
-	for (i = oldsize; i < portals_array_size; i++)
+	for (i = oldsize; i < (int) portals_array_size; i++)
 		portals[i] = (PortalEntry *) NULL;
 
 }
@@ -365,7 +365,7 @@ pbuf_getIndex(char *pname)
 
 	if (portals)
 	{
-		for (i = 0; i < portals_array_size; i++)
+		for (i = 0; i < (int) portals_array_size; i++)
 			if (portals[i] != NULL &&
 				strncmp(portals[i]->name, pname, PortalNameLength) == 0)
 				return i;
@@ -407,12 +407,12 @@ pbuf_setup(char *pname)
 		pbuf_freePortal(portals[i]->portal);
 	else
 	{
-		for (i = 0; i < portals_array_size; i++)
+		for (i = 0; i < (int) portals_array_size; i++)
 			if (portals[i] == NULL)
 				break;
 
 		/* If the portal table is full, enlarge it */
-		if (i >= portals_array_size)
+		if (i >= (int) portals_array_size)
 			portals_realloc(PORTALS_GROW_BY);
 
 		portals[i] = pbuf_addEntry();

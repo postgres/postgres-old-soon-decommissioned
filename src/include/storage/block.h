@@ -66,7 +66,7 @@ typedef BlockIdData *BlockId;	/* block identifier */
  *		True iff blockNumber is valid.
  */
 #define BlockNumberIsValid(blockNumber) \
-	((bool) ((int32) (blockNumber) != InvalidBlockNumber))
+	((bool) ((BlockNumber) (blockNumber) != InvalidBlockNumber))
 
 /*
  * BlockIdIsValid

@@ -340,7 +340,7 @@ clause_selectivity(Query *root,
 		 */
 		Index	varno = ((Var *) clause)->varno;
 
-		if (varRelid == 0 || varRelid == varno)
+		if (varRelid == 0 || varRelid == (int) varno)
 			s1 = restriction_selectivity(F_EQSEL,
 										 BooleanEqualOperator,
 										 getrelid(varno, root->rtable),

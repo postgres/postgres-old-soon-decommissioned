@@ -143,8 +143,8 @@ SISegInit(SISeg *segP, int maxBackends)
 int
 SIBackendInit(SISeg *segP)
 {
-	Index		index;
-	ProcState  *stateP = NULL;
+	int		index;
+	ProcState      *stateP = NULL;
 
 	Assert(MyBackendTag > 0);
 

@@ -464,7 +464,7 @@ _hash_splitpage(Relation rel,
 	HashPageOpaque nopaque;
 	HashMetaPage metap;
 	IndexTuple	itup;
-	int			itemsz;
+	Size		itemsz;
 	OffsetNumber ooffnum;
 	OffsetNumber noffnum;
 	OffsetNumber omaxoffnum;

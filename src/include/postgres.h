@@ -97,7 +97,7 @@ struct varlena
 
 #define VARSIZE(PTR)	(((struct varlena *)(PTR))->vl_len)
 #define VARDATA(PTR)	(((struct varlena *)(PTR))->vl_dat)
-#define VARHDRSZ		sizeof(int32)
+#define VARHDRSZ		((int32) sizeof(int32))
 
 typedef struct varlena bytea;
 typedef struct varlena text;

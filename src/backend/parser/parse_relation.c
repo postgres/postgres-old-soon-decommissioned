@@ -54,7 +54,7 @@ static struct
 	},
 };
 
-#define SPECIALS (sizeof(special_attr)/sizeof(*special_attr))
+#define SPECIALS ((int) (sizeof(special_attr)/sizeof(*special_attr)))
 
 static char *attnum_type[SPECIALS] = {
 	"tid",

@@ -1751,7 +1751,7 @@ comparetup_index(Tuplesortstate *state, const void *a, const void *b)
 	IndexTuple	tuple1 = (IndexTuple) a;
 	IndexTuple	tuple2 = (IndexTuple) b;
 	Relation	rel = state->indexRel;
-	Size		keysz = RelationGetNumberOfAttributes(rel);
+	int			keysz = RelationGetNumberOfAttributes(rel);
 	ScanKey		scankey = state->indexScanKey;
 	TupleDesc	tupDes;
 	int			i;

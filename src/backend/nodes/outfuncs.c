@@ -1179,7 +1179,7 @@ _outDatum(StringInfo str, Datum value, Oid type)
 	{
 		s = (char *) (&value);
 		appendStringInfo(str, " %d [ ", length);
-		for (i = 0; i < sizeof(Datum); i++)
+		for (i = 0; i < (int) sizeof(Datum); i++)
 			appendStringInfo(str, "%d ", (int) (s[i]));
 		appendStringInfo(str, "] ");
 	}
@@ -1198,7 +1198,7 @@ _outDatum(StringInfo str, Datum value, Oid type)
 			if (((int) length) <= -1)
 				length = VARSIZE(s);
 			appendStringInfo(str, " %d [ ", length);
-			for (i = 0; i < length; i++)
+			for (i = 0; i < (int) length; i++)
 				appendStringInfo(str, "%d ", (int) (s[i]));
 			appendStringInfo(str, "] ");
 		}

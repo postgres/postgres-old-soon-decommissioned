@@ -112,7 +112,7 @@ _hash_insertonpg(Relation rel,
 	Page		page;
 	BlockNumber itup_blkno;
 	OffsetNumber itup_off;
-	int			itemsz;
+	Size		itemsz;
 	HashPageOpaque pageopaque;
 	bool		do_expand = false;
 	Buffer		ovflbuf;

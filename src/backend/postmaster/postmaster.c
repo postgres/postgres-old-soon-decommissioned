@@ -1262,7 +1262,7 @@ ConnCreate(int serverFd)
 /*
  * ConnFree -- cree a local connection data structure
  */
-void
+static void
 ConnFree(Port *conn) 
 {
 #ifdef USE_SSL

@@ -1952,11 +1952,11 @@ readDatum(Oid type)
 
 	if (byValue)
 	{
-		if (length > sizeof(Datum))
+		if ((Size) length > sizeof(Datum))
 			elog(ERROR, "readValue: byval & length = %d", length);
 		res = (Datum) 0;
 		s = (char *) (&res);
-		for (i = 0; i < sizeof(Datum); i++)
+		for (i = 0; i < (int) sizeof(Datum); i++)
 		{
 			token = lsptok(NULL, &tokenLength);
 			s[i] = (char) atoi(token);

@@ -190,6 +190,7 @@ static void StartTransaction(void);
 TransactionStateData CurrentTransactionStateData = {
 	0,							/* transaction id */
 	FirstCommandId,				/* command id */
+	0,							/* scan command id */
 	0x0,						/* start time */
 	TRANS_DEFAULT,				/* transaction state */
 	TBLOCK_DEFAULT				/* transaction block state */

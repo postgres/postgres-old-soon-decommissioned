@@ -145,7 +145,7 @@ do { \
 } while(0)
 
 #define PortalHashTableDelete(PORTAL) \
-{ \
+do { \
 	PortalHashEnt *hentry; bool found; char key[MAX_PORTALNAME_LEN]; \
 	\
 	MemSet(key, 0, MAX_PORTALNAME_LEN); \

@@ -50,13 +50,13 @@
 ( \
 	(*(A))->attbyval && (*(A))->attlen != -1 ? \
 	( \
-		(*(A))->attlen > sizeof(int16) ? \
+		(*(A))->attlen > (int) sizeof(int16) ? \
 		( \
 			(char *) (long) *((int32 *)(T)) \
 		) \
 		: \
 		( \
-			(*(A))->attlen < sizeof(int16) ? \
+			(*(A))->attlen < (int) sizeof(int16) ? \
 				(char *) (long) *((char *)(T)) \
 			: \
 				(char *) (long) *((int16 *)(T))) \

@@ -73,7 +73,7 @@ PQfn(int fnid,
 	{
 		if (args[i].len == VAR_LENGTH_ARG)
 			arg[i] = (char *) args[i].u.ptr;
-		else if (args[i].len > sizeof(int4))
+		else if ((Size) args[i].len > sizeof(int4))
 			elog(ERROR, "arg_length of argument %d too long", i);
 		else
 			arg[i] = (char *) args[i].u.integer;

@@ -1555,21 +1555,21 @@ get_func_expr(Expr *expr, deparse_context *context)
 		 */
 		if (strcmp(proname, "bpchar") == 0)
 		{
-			if (coercedTypmod > VARHDRSZ)
+			if (coercedTypmod > (int32) VARHDRSZ)
 				appendStringInfo(buf, "char(%d)", coercedTypmod - VARHDRSZ);
 			else
 				appendStringInfo(buf, "char");
 		}
 		else if (strcmp(proname, "varchar") == 0)
 		{
-			if (coercedTypmod > VARHDRSZ)
+			if (coercedTypmod > (int32) VARHDRSZ)
 				appendStringInfo(buf, "varchar(%d)", coercedTypmod - VARHDRSZ);
 			else
 				appendStringInfo(buf, "varchar");
 		}
 		else if (strcmp(proname, "numeric") == 0)
 		{
-			if (coercedTypmod >= VARHDRSZ)
+			if (coercedTypmod >= (int32) VARHDRSZ)
 				appendStringInfo(buf, "numeric(%d,%d)",
 								 ((coercedTypmod - VARHDRSZ) >> 16) & 0xffff,
 								 (coercedTypmod - VARHDRSZ) & 0xffff);

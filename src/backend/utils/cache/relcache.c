@@ -1046,7 +1046,7 @@ formrdesc(char *relationName,
 {
 	Relation	relation;
 	Size		len;
-	int			i;
+	u_int		i;
 
 	/* ----------------
 	 *	allocate new relation desc
