@@ -127,6 +127,14 @@
 #define BITS_PER_BYTE		8
 
 /*
+ * Preferred alignment for disk I/O buffers.  On some CPUs, copies between
+ * user space and kernel space are significantly faster if the user buffer
+ * is aligned on a larger-than-MAXALIGN boundary.  Ideally this should be
+ * a platform-dependent value, but for now we just hard-wire it.
+ */
+#define ALIGNOF_BUFFER	32
+
+/*
  * Disable UNIX sockets for those operating system.
  */
 #if defined(__QNX__) || defined(__BEOS__) || defined(WIN32)

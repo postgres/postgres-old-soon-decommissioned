@@ -131,6 +131,7 @@ InitShmemAllocation(void *seghdr)
 void *
 ShmemAlloc(Size size)
 {
+	uint32		newStart;
 	uint32		newFree;
 	void	   *newSpace;
 
@@ -146,10 +147,16 @@ ShmemAlloc(Size size)
 
 	SpinLockAcquire(ShmemLock);
 
-	newFree = shmemseghdr->freeoffset + size;
+	newStart = shmemseghdr->freeoffset;
+
+	/* extra alignment for large requests, since they are probably buffers */
+	if (size >= BLCKSZ)
+		newStart = BUFFERALIGN(newStart);
+
+	newFree = newStart + size;
 	if (newFree <= shmemseghdr->totalsize)
 	{
-		newSpace = (void *) MAKE_PTR(shmemseghdr->freeoffset);
+		newSpace = (void *) MAKE_PTR(newStart);
 		shmemseghdr->freeoffset = newFree;
 	}
 	else

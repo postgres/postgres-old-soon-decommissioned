@@ -522,13 +522,16 @@ typedef NameData *Name;
  * ----------------
  */
 
-#define TYPEALIGN(ALIGNVAL,LEN) (((long)(LEN) + (ALIGNVAL-1)) & ~(ALIGNVAL-1))
+#define TYPEALIGN(ALIGNVAL,LEN)  \
+	(((long) (LEN) + (ALIGNVAL-1)) & ~((long) (ALIGNVAL-1)))
 
 #define SHORTALIGN(LEN)			TYPEALIGN(ALIGNOF_SHORT, (LEN))
 #define INTALIGN(LEN)			TYPEALIGN(ALIGNOF_INT, (LEN))
 #define LONGALIGN(LEN)			TYPEALIGN(ALIGNOF_LONG, (LEN))
 #define DOUBLEALIGN(LEN)		TYPEALIGN(ALIGNOF_DOUBLE, (LEN))
 #define MAXALIGN(LEN)			TYPEALIGN(MAXIMUM_ALIGNOF, (LEN))
+/* MAXALIGN covers only built-in types, not buffers */
+#define BUFFERALIGN(LEN)		TYPEALIGN(ALIGNOF_BUFFER, (LEN))
 
 
 /* ----------------------------------------------------------------
