@@ -2018,7 +2018,7 @@ opt_grant_grant_option:  WITH GRANT OPTION
 opt_revoke_grant_option: GRANT OPTION FOR
 		{
 			mmerror(PARSE_ERROR, ET_WARNING, "Currently unsupported REVOKE/GRANT OPTION FOR will be passed to backend");
-			$$ = make_str("with grant option");
+			$$ = make_str("grant option for");
 		}
 		| /*EMPTY*/ 	{ $$ = EMPTY; }
 		;
