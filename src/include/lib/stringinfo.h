@@ -98,7 +98,7 @@ extern void appendStringInfoChar(StringInfo str, char ch);
 #define appendStringInfoCharMacro(str,ch) \
 	(((str)->len + 1 >= (str)->maxlen) ? \
 	 appendStringInfoChar(str, ch) : \
-	 ((str)->data[(str)->len] = (ch), (str)->data[++(str)->len] = '\0'))
+	 (void)((str)->data[(str)->len] = (ch), (str)->data[++(str)->len] = '\0'))
 
 /*------------------------
  * appendBinaryStringInfo

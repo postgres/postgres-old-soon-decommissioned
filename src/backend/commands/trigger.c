@@ -1201,8 +1201,6 @@ deferredTriggerExecute(DeferredTriggerEvent event, int itemno)
 			SaveTriggerData.tg_trigger   =
 					rel->trigdesc->tg_after_row[TRIGGER_EVENT_DELETE][itemno];
 			break;
-
-		default:
 	}
 
 	/* ----------
