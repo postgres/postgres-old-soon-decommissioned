@@ -42,9 +42,9 @@ START TRANSACTION
   <title>Parameters</title>
 
   <para>
-   See under <xref linkend="sql-set-transaction"
-   endterm="sql-set-transaction-title"> about the meaning of the
-   parameters.
+   Refer to <xref linkend="sql-set-transaction"
+   endterm="sql-set-transaction-title"> for information on the meaning
+   of the parameters to this statement.
   </para>
  </refsect1>
 
