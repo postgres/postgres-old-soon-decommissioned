@@ -172,10 +172,6 @@ ERROR: RemoveOperator: right unary operator '<replaceable class="PARAMETER">oper
     <xref linkend="sql-createoperator" endterm="sql-createoperator-title">
     for information on how to create operators.
    </para>
-   <para>
-    It is the user's responsibility to remove any access method
-    operator classes that rely on the deleted operator.
-   </para>
   </refsect2>
  </refsect1>
 

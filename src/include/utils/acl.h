@@ -209,5 +209,6 @@ extern bool pg_type_ownercheck(Oid type_oid, Oid userid);
 extern bool pg_oper_ownercheck(Oid oper_oid, Oid userid);
 extern bool pg_proc_ownercheck(Oid proc_oid, Oid userid);
 extern bool pg_namespace_ownercheck(Oid nsp_oid, Oid userid);
+extern bool pg_opclass_ownercheck(Oid opc_oid, Oid userid);
 
 #endif   /* ACL_H */

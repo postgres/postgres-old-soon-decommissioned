@@ -1693,7 +1693,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.272 $ $Date: 2002/07/18 23:11:28 $\n");
+		puts("$Revision: 1.273 $ $Date: 2002/07/29 22:14:11 $\n");
 	}
 
 	/*
@@ -2450,6 +2450,14 @@ CreateCommandTag(Node *parsetree)
 
 		case T_DropCastStmt:
 			tag = "DROP CAST";
+			break;
+
+		case T_CreateOpClassStmt:
+			tag = "CREATE OPERATOR CLASS";
+			break;
+
+		case T_RemoveOpClassStmt:
+			tag = "DROP OPERATOR CLASS";
 			break;
 
 		default:

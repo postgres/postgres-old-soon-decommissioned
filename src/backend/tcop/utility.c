@@ -836,6 +836,14 @@ ProcessUtility(Node *parsetree,
 			DropCast((DropCastStmt *) parsetree);
 			break;
 
+		case T_CreateOpClassStmt:
+			DefineOpClass((CreateOpClassStmt *) parsetree);
+			break;
+
+		case T_RemoveOpClassStmt:
+			RemoveOpClass((RemoveOpClassStmt *) parsetree);
+			break;
+
 		default:
 			elog(ERROR, "ProcessUtility: command #%d unsupported",
 				 nodeTag(parsetree));

@@ -70,6 +70,7 @@ PostgreSQL Reference Manual
    &createIndex;
    &createLanguage;
    &createOperator;
+   &createOperatorClass;
    &createRule;
    &createSchema;
    &createSequence;
@@ -91,6 +92,7 @@ PostgreSQL Reference Manual
    &dropIndex;
    &dropLanguage;
    &dropOperator;
+   &dropOperatorClass;
    &dropRule;
    &dropSchema;
    &dropSequence;

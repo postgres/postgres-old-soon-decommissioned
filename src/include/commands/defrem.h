@@ -59,6 +59,10 @@ extern void RemoveTypeById(Oid typeOid);
 extern void DefineDomain(CreateDomainStmt *stmt);
 extern void RemoveDomain(List *names, DropBehavior behavior);
 
+extern void DefineOpClass(CreateOpClassStmt *stmt);
+extern void RemoveOpClass(RemoveOpClassStmt *stmt);
+extern void RemoveOpClassById(Oid opclassOid);
+
 
 /* support routines in commands/define.c */
 

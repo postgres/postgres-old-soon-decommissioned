@@ -201,6 +201,8 @@ typedef enum NodeTag
 	T_CreateConversionStmt,
 	T_CreateCastStmt,
 	T_DropCastStmt,
+	T_CreateOpClassStmt,
+	T_RemoveOpClassStmt,
 
 	T_A_Expr = 700,
 	T_ColumnRef,
@@ -235,6 +237,7 @@ typedef enum NodeTag
 	T_FuncWithArgs,
 	T_PrivTarget,
 	T_InsertDefault,
+	T_CreateOpClassItem,
 
 	/*
 	 * TAGS FOR FUNCTION-CALL CONTEXT AND RESULTINFO NODES (see fmgr.h)

@@ -343,6 +343,8 @@ extern Datum regclassout(PG_FUNCTION_ARGS);
 extern Datum regtypein(PG_FUNCTION_ARGS);
 extern Datum regtypeout(PG_FUNCTION_ARGS);
 extern List *stringToQualifiedNameList(const char *string, const char *caller);
+extern char *format_procedure(Oid procedure_oid);
+extern char *format_operator(Oid operator_oid);
 
 /* ruleutils.c */
 extern Datum pg_get_ruledef(PG_FUNCTION_ARGS);
