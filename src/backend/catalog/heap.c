@@ -303,7 +303,8 @@ heap_creatr(char *name,
      */
 
     rdesc->rd_istemp = isTemp;
-
+    rdesc->rd_tmpunlinked = TRUE;	/* change once table is opened */
+    
     /* ----------------
      *	have the storage manager create the relation.
      * ----------------
