@@ -1960,7 +1960,7 @@ ViewStmt:  CREATE VIEW name AS SelectStmt
 					ViewStmt *n = makeNode(ViewStmt);
 					n->viewname = $3;
 					n->query = (Query *)$5;
-					if (n->query->unionClause != NULL)
+					if (((SelectStmt *)n->query)->unionClause != NULL)
 						elog(ERROR,"Views on unions not implemented.");
 					$$ = (Node *)n;
 				}
