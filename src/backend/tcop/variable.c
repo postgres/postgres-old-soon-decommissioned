@@ -439,6 +439,11 @@ static char *defaultTZ = NULL;
 static char TZvalue[64];
 static char tzbuf[64];
 
+/* parse_timezone()
+ * Handle SET TIME ZONE...
+ * Try to save existing TZ environment variable for later use in RESET TIME ZONE.
+ * - thomas 1997-11-10
+ */
 bool
 parse_timezone(const char *value)
 {
