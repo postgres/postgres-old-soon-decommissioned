@@ -410,7 +410,9 @@ typedef struct ClusterStmt {
 typedef struct VacuumStmt {
     NodeTag		type;
     bool		verbose;	/* print status info */
+    bool		analyze;	/* analyze data */
     char		*vacrel;	/* table to vacuum */
+    List		*va_spec;	/* columns to analyse */
 } VacuumStmt;
 
 /* ----------------------
@@ -432,7 +434,27 @@ typedef struct VariableSetStmt {
 	NodeTag	type;
 	char	*name;
 	char	*value;
-	} VariableSetStmt;
+} VariableSetStmt;
+
+/* ----------------------
+ * Show Statement
+ * ----------------------
+ */
+
+typedef struct VariableShowStmt {
+	NodeTag	type;
+	char	*name;
+} VariableShowStmt;
+
+/* ----------------------
+ * Reset Statement
+ * ----------------------
+ */
+
+typedef struct VariableResetStmt {
+	NodeTag	type;
+	char	*name;
+} VariableResetStmt;
 
 
 /*****************************************************************************
