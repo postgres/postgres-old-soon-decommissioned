@@ -104,18 +104,6 @@ typedef enum
 	PQERRORS_VERBOSE			/* all the facts, ma'am */
 } PGVerbosity;
 
-/* for PQresultErrorField() */
-#define PG_DIAG_SEVERITY		'S'
-#define PG_DIAG_SQLSTATE		'C'
-#define PG_DIAG_MESSAGE_PRIMARY	'M'
-#define PG_DIAG_MESSAGE_DETAIL	'D'
-#define PG_DIAG_MESSAGE_HINT	'H'
-#define PG_DIAG_STATEMENT_POSITION 'P'
-#define PG_DIAG_CONTEXT			'W'
-#define PG_DIAG_SOURCE_FILE		'F'
-#define PG_DIAG_SOURCE_LINE		'L'
-#define PG_DIAG_SOURCE_FUNCTION	'R'
-
 /* PGconn encapsulates a connection to the backend.
  * The contents of this struct are not supposed to be known to applications.
  */
