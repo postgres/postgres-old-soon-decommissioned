@@ -525,7 +525,7 @@ TypeCreate(char *typeName,
  * ----------------------------------------------------------------
  */
 void
-TypeRename(char *oldTypeName, char *newTypeName)
+TypeRename(const char *oldTypeName, const char *newTypeName)
 {
 	Relation	pg_type_desc;
 	Relation	idescs[Num_pg_type_indices];

@@ -20,7 +20,7 @@
  */
 extern Relation RelationIdCacheGetRelation(Oid relationId);
 extern Relation RelationIdGetRelation(Oid relationId);
-extern Relation RelationNameGetRelation(char *relationName);
+extern Relation RelationNameGetRelation(const char *relationName);
 
 extern void RelationClose(Relation relation);
 extern void RelationForgetRelation(Oid rid);

@@ -480,7 +480,7 @@ CheckAttributeNames(TupleDesc tupdesc)
  * --------------------------------
  */
 Oid
-RelnameFindRelid(char *relname)
+RelnameFindRelid(const char *relname)
 {
 	HeapTuple	tuple;
 	Oid			relid;
@@ -1441,7 +1441,7 @@ DeleteTypeTuple(Relation rel)
  * --------------------------------
  */
 void
-heap_drop_with_catalog(char *relname)
+heap_drop_with_catalog(const char *relname)
 {
 	Relation	rel;
 	Oid			rid;

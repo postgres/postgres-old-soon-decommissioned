@@ -830,14 +830,14 @@ AlterTableStmt:
                 $$ = (Node *)n;
         }
 /* ALTER TABLE <name> DROP [COLUMN] <name> {RESTRICT|CASCADE} */
-      | ALTER TABLE relation_name opt_inh_star DROP opt_column ColId drop_behavior
+      | ALTER TABLE relation_name opt_inh_star DROP opt_column ColId /* drop_behavior */
         {
                 AlterTableStmt *n = makeNode(AlterTableStmt);
                 n->subtype = 'D';
                 n->relname = $3;
                 n->inh = $4;
                 n->name = $7;
-                n->behavior = $8;
+                /* n->behavior = $8; */
                 $$ = (Node *)n;
         }
 /* ALTER TABLE <name> ADD CONSTRAINT ... */

@@ -38,7 +38,7 @@ relpath(const char *relname)
 		snprintf(path, bufsize, "%s/%s", DataDir, relname);
 		return path;
 	}
-	return relname;
+	return pstrdup(relname);
 }
 
 /*

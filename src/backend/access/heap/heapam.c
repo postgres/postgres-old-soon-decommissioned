@@ -562,7 +562,7 @@ heap_open(Oid relationId, LOCKMODE lockmode)
  * ----------------
  */
 Relation
-heap_openr(char *relationName, LOCKMODE lockmode)
+heap_openr(const char *relationName, LOCKMODE lockmode)
 {
 	Relation	r;
 

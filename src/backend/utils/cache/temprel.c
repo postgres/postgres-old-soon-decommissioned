@@ -49,7 +49,7 @@ typedef struct TempTable
 
 
 void
-create_temp_relation(char *relname, HeapTuple pg_class_tuple)
+create_temp_relation(const char *relname, HeapTuple pg_class_tuple)
 {
 	MemoryContext oldcxt;
 	TempTable  *temp_rel;
@@ -202,7 +202,7 @@ invalidate_temp_relations(void)
 }
 
 char *
-get_temp_rel_by_username(char *user_relname)
+get_temp_rel_by_username(const char *user_relname)
 {
 	List	   *l;
 
@@ -217,7 +217,7 @@ get_temp_rel_by_username(char *user_relname)
 }
 
 char *
-get_temp_rel_by_physicalname(char *relname)
+get_temp_rel_by_physicalname(const char *relname)
 {
 	List	   *l;
 
@@ -229,5 +229,5 @@ get_temp_rel_by_physicalname(char *relname)
 			return temp_rel->user_relname;
 	}
 	/* needed for bootstrapping temp tables */
-	return relname;
+	return pstrdup(relname);
 }

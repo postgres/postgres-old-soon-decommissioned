@@ -1217,6 +1217,7 @@ process_file(char *filename)
     pset.inputfile = filename;
 	result = MainLoop(fd);
 	fclose(fd);
+	pset.inputfile = NULL;
 	return (result == EXIT_SUCCESS);
 }
 

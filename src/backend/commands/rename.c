@@ -172,7 +172,7 @@ renameatt(char *relname,
  *		renamerel		- change the name of a relation
  */
 void
-renamerel(char *oldrelname, char *newrelname)
+renamerel(const char *oldrelname, const char *newrelname)
 {
 	int			i;
 	Relation	targetrelation;

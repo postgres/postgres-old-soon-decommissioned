@@ -176,7 +176,7 @@ typedef Relation *RelationPtr;
  *	  Returns a Relation Name
  */
 /* added to prevent circular dependency.  bjm 1999/11/15 */
-char 	   *get_temp_rel_by_physicalname(char *relname);
+char 	   *get_temp_rel_by_physicalname(const char *relname);
 #define RelationGetRelationName(relation) \
 (\
 	(strncmp(RelationGetPhysicalRelationName(relation), \

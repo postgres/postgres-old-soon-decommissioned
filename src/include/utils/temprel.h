@@ -15,11 +15,11 @@
 
 #include "access/htup.h"
 
-void		create_temp_relation(char *relname, HeapTuple pg_class_tuple);
+void		create_temp_relation(const char *relname, HeapTuple pg_class_tuple);
 void		remove_all_temp_relations(void);
 void		invalidate_temp_relations(void);
 void		remove_temp_relation(Oid relid);
-char 	   *get_temp_rel_by_username(char *user_relname);
-char 	   *get_temp_rel_by_physicalname(char *relname);
+char 	   *get_temp_rel_by_username(const char *user_relname);
+char 	   *get_temp_rel_by_physicalname(const char *relname);
 
 #endif	 /* TEMPREL_H */

@@ -410,7 +410,7 @@ extern Oid TypeCreate(char *typeName,
 		   char *elementTypeName,
 		   char *defaultTypeValue,
 		   bool passedByValue, char alignment);
-extern void TypeRename(char *oldTypeName, char *newTypeName);
+extern void TypeRename(const char *oldTypeName, const char *newTypeName);
 extern char *makeArrayTypeName(char *typeName);
 
 
