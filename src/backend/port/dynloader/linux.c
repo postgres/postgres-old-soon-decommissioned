@@ -19,7 +19,7 @@
 #include <dld.h>
 #endif
 #include "postgres.h"
-#include "port-protos.h"
+#include "dynloader.h"
 #include "utils/elog.h"
 #include "fmgr.h"
 
