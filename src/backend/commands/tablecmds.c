@@ -3835,6 +3835,7 @@ AlterTableClusterOn(Oid relOid, const char *indexName)
 	{
 		elog(NOTICE, "ALTER TABLE: table \"%s\" is already being clustered on index \"%s\"",
 				NameStr(rel->rd_rel->relname), indexName);
+		ReleaseSysCache(indexTuple);
 		heap_close(rel, AccessExclusiveLock);
 		return;
 	}
