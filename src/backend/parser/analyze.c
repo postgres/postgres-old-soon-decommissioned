@@ -831,6 +831,8 @@ makeRangeTable(ParseState *pstate, char *relname, List *frmList)
 	pstate->p_rtable = lappend(pstate->p_rtable, ent);
     }
     x = RangeTablePosn(pstate->p_rtable, relname);
+    if (pstate->p_current_rel != NULL)
+        heap_close(pstate->p_current_rel);
     pstate->p_current_rel = heap_openr(VarnoGetRelname(pstate,x));
     if (pstate->p_current_rel == NULL)
 	elog(WARN,"invalid relation name");
