@@ -46,7 +46,7 @@ quote_ident(PG_FUNCTION_ARGS)
 
 	PG_FREE_IF_COPY(t, 0);
 
-	return result;
+	PG_RETURN_TEXT_P(result);
 }
 
 /*
@@ -63,7 +63,7 @@ quote_literal(PG_FUNCTION_ARGS)
 
 	PG_FREE_IF_COPY(t, 0);
 
-	return result;
+	PG_RETURN_TEXT_P(result);
 }
 
 
