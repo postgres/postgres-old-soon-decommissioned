@@ -93,12 +93,6 @@ extern AbsoluteTime GetCurrentAbsoluteTime(void);
 #define getSystemTime() \
     ((time_t) (time(0l)))
 
-#define SECS(n)		((time_t)(n))
-#define MINS(n)		((time_t)(n) * SECS(60))
-#define HOURS(n)	((time_t)(n) * MINS(60))	/* 3600 secs */
-#define DAYS(n)		((time_t)(n) * HOURS(24))	/* 86400 secs */
-/* months and years are not constant length, must be specially dealt with */
-
 
 /*
  * nabstime.c prototypes 
@@ -121,9 +115,6 @@ extern bool AbsoluteTimeIsBefore(AbsoluteTime time1, AbsoluteTime time2);
 extern bool AbsoluteTimeIsAfter(AbsoluteTime time1, AbsoluteTime time2);
 
 extern AbsoluteTime tm2abstime(struct tm *tm, int tz);
-extern void abstime2tm(AbsoluteTime time, int *tzp, struct tm *tm);
-
-extern AbsoluteTime dateconv(struct tm *tm, int zone);
-extern time_t qmktime(struct tm *tp);
+extern void abstime2tm(AbsoluteTime time, int *tzp, struct tm *tm, char *tzn);
 
 #endif /* NABSTIME_H */
