@@ -18,7 +18,7 @@ PostgreSQL documentation
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>pg_resetxlog</command>
-   <arg><replaceable choice="plain">datadir</replaceable></arg>
+   <arg><replaceable class="parameter">datadir</replaceable></arg>
   </cmdsynopsis>
  </refsynopsisdiv>
 
