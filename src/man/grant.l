@@ -17,8 +17,7 @@ grant - grant access control to a user or group
 .B Grant
 allows you to give specified permissions to all users or
 a certain user or group.
-By default, a table grants read-only (\fBSELECT\fR) to all Postgres users.
-You must specifically revoke this privilege if this is not desired.
+By default, only the table owner has rights.
 .SH EXAMPLES
 .nf
 --
@@ -30,4 +29,3 @@ grant insert
 .fi
 .SH "SEE ALSO"
 revoke(l)
-

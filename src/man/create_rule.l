@@ -13,7 +13,6 @@ create rule - define a new rule
     [action | nothing | \fB[\fPactions...\fB]\fP]
 .fi
 .SH DESCRIPTION
-.IR "The current rule system implementation is very brittle and is unstable.  Users are discouraged from using rules at this time."
 .PP
 .BR "Create rule"
 is used to define a new rule.
