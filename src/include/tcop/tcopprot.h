@@ -34,6 +34,7 @@ pg_exec_query_dest(char *query_string, char **argv, Oid *typev,
 
 extern void handle_warn(SIGNAL_ARGS);
 extern void die(SIGNAL_ARGS);
+extern void CancelQuery(void);
 extern int	PostgresMain(int argc, char *argv[]);
 extern void ResetUsage(void);
 extern void ShowUsage(void);

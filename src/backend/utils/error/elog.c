@@ -175,7 +175,7 @@ elog(int lev, const char *fmt,...)
 
 	if (lev == ERROR)
 	{
-		extern int	InError;
+		extern bool	InError;
 
 		ProcReleaseSpins(NULL); /* get rid of spinlocks we hold */
 		if (!InError)

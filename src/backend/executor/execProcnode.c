@@ -74,6 +74,8 @@
  */
 #include "postgres.h"
 
+#include "miscadmin.h"
+#include "tcop/tcopprot.h"
 #include "executor/executor.h"
 #include "executor/nodeResult.h"
 #include "executor/nodeAppend.h"
@@ -233,6 +235,10 @@ ExecProcNode(Plan *node, Plan *parent)
 	 *	deal with NULL nodes..
 	 * ----------------
 	 */
+
+	if (QueryCancel)
+		CancelQuery();
+
 	if (node == NULL)
 		return NULL;
 

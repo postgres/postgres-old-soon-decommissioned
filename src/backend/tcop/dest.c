@@ -288,7 +288,8 @@ BeginCommand(char *pname,
 														 * oops.. */
 					pq_putint((int) attrs[i]->atttypid, sizeof(attrs[i]->atttypid));
 					pq_putint(attrs[i]->attlen, sizeof(attrs[i]->attlen));
-					pq_putint(attrs[i]->atttypmod, sizeof(attrs[i]->atttypmod));
+					if (PG_PROTOCOL_MAJOR(FrontendProtocol) >= 2)
+						pq_putint(attrs[i]->atttypmod, sizeof(attrs[i]->atttypmod));
 				}
 			}
 			break;

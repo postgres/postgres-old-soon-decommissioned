@@ -409,18 +409,15 @@ pq_sendoob(char *msg, int len)
 {
 	int			fd = fileno(Pfout);
 
-	return (send(fd, msg, len, MSG_OOB));
+	return send(fd, msg, len, MSG_OOB);
 }
 
 int
-pq_recvoob(char *msgPtr, int *lenPtr)
+pq_recvoob(char *msgPtr, int len)
 {
 	int			fd = fileno(Pfout);
-	int			len = 0;
 
-	len = recv(fd, msgPtr + len, *lenPtr, MSG_OOB);
-	*lenPtr = len;
-	return (len);
+	return recv(fd, msgPtr, len, MSG_OOB);
 }
 
 /* --------------------------------
@@ -523,7 +520,7 @@ pq_async_notify()
 	/* int len = sizeof(msg); */
 	int			len = 20;
 
-	if (pq_recvoob(msg, &len) >= 0)
+	if (pq_recvoob(msg, len) >= 0)
 	{
 		/* debugging */
 		printf("received notification: %s\n", msg);

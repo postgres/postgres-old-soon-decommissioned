@@ -37,8 +37,10 @@
 
 ProtocolVersion FrontendProtocol = PG_PROTOCOL_LATEST;
 int			Portfd = -1;
-int			Noversion = 0;
-int			Quiet = 1;
+
+bool		Noversion = false;
+bool		Quiet = false;
+bool		QueryCancel = false;
 
 int			MyProcPid;
 
