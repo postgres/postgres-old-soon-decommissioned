@@ -331,7 +331,7 @@ LockMethodTableInit(const char *tabName,
 
 	sprintf(shmemName, "%s (locallock hash)", tabName);
 	LockMethodLocalHash[lockmethodid] = hash_create(shmemName,
-													init_table_size,
+													128,
 													&info,
 													hash_flags);
 
