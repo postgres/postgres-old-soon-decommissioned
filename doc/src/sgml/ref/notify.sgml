@@ -209,8 +209,8 @@ NOTIFY
    <application>psql</application>:
 
 <programlisting>
-=> LISTEN virtual;
-=> NOTIFY virtual;
+LISTEN virtual;
+NOTIFY virtual;
 Asynchronous NOTIFY 'virtual' from backend with pid '8448' received. 
 </programlisting>
   </para>
