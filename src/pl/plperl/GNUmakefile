@@ -16,11 +16,6 @@ endif
 # to work without, we have to skip it.
 ifneq (,$(findstring yes, $(shared_libperl)$(allow_nonpic_in_shlib)))
 
-# The code isn't clean with regard to these warnings.
-ifeq ($(GCC),yes)
-override CFLAGS := $(filter-out -Wall -Wmissing-declarations -Wmissing-prototypes, $(CFLAGS))
-endif
-
 ifeq ($(PORTNAME), win32)
 perl_archlibexp := $(subst \,/,$(perl_archlibexp))
 perl_privlibexp := $(subst \,/,$(perl_privlibexp))
