@@ -2677,7 +2677,7 @@ CREATE OR REPLACE FUNCTION process_emp_audit() RETURNS TRIGGER AS $emp_audit$
         END IF;
         RETURN NULL; -- result is ignored since this is an AFTER trigger
     END;
-$emp_audit$ language plpgsql;
+$emp_audit$ LANGUAGE plpgsql;
 
 CREATE TRIGGER emp_audit
 AFTER INSERT OR UPDATE OR DELETE ON emp
