@@ -35,6 +35,7 @@ typedef struct ExplainState
 	/* options */
 	bool		printCost;		/* print cost */
 	bool		printNodes;		/* do nodeToString() instead */
+	bool		printAnalyze;		/* print actual times */
 	/* other states */
 	List	   *rtable;			/* range table */
 } ExplainState;
@@ -405,6 +406,11 @@ explain_outNode(StringInfo str, Plan *plan, Plan *outer_plan,
 							 1000.0 * plan->instrument->total / nloops,
 							 plan->instrument->ntuples / nloops,
 							 plan->instrument->nloops);
+			es->printAnalyze = true;
+		}
+		else if( es->printAnalyze )
+		{
+			appendStringInfo(str, " (never executed)");
 		}
 	}
 	appendStringInfo(str, "\n");
