@@ -50,6 +50,23 @@ endif
 	echo All of PostgreSQL is successfully made.  Ready to install. ;\
         fi
 
+install:
+	@if test $(PORTNAME) = UNDEFINED; then \
+		echo You must set the PORTNAME value in Makefile.global before \
+			you can build Postgres. ;\
+		false ;\
+	else true;\
+	fi
+	$(MAKE) -C lextest install
+	$(MAKE) -C utils install
+	$(MAKE) -C backend install
+	$(MAKE) -C interfaces install
+	$(MAKE) -C bin install
+ifneq ($(wildcard man), )
+	$(MAKE) -C man install
+endif
+	more -e ../register.txt
+
 clean:
 	@if test $(PORTNAME) = UNDEFINED; then \
 		echo You must set the PORTNAME value in Makefile.global before \
