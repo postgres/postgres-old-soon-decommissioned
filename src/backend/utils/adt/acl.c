@@ -108,7 +108,7 @@ aclparse(char *s, AclItem *aip, unsigned *modechg)
 
 #ifdef ACLDEBUG_TRACE
 	printf("aclparse: input = '%s'\n", s);
-#endif ACLDEBUG_TRACE
+#endif
 	aip->ai_idtype = ACL_IDTYPE_UID;
 	s = getid(s, name);
 	if (*s != ACL_MODECHG_ADD_CHR &&
