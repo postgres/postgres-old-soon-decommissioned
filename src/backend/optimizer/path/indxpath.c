@@ -602,7 +602,6 @@ match_clause_to_indexkey(RelOptInfo *rel,
 	 */
 	if (!join)
 	{
-
 		/*
 		 * Check for standard s-argable clause
 		 */
@@ -610,12 +609,11 @@ match_clause_to_indexkey(RelOptInfo *rel,
 			(rightop && IsA(rightop, Param)))
 		{
 			restrict_op = ((Oper *) ((Expr *) clause)->oper)->opno;
-			isIndexable =
-				(op_class(restrict_op, xclass, index->relam) &&
-				 IndexScanableOperand(leftop,
-									  indexkey,
-									  rel,
-									  index));
+			isIndexable = (op_class(restrict_op, xclass, index->relam) &&
+				 			IndexScanableOperand(leftop,
+												  indexkey,
+												  rel,
+												  index));
 		}
 
 		/*

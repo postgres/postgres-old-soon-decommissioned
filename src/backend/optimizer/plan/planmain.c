@@ -276,6 +276,7 @@ subplanner(Query *root,
 	 * the exhaustive path search.
 	 */
 	init_join_info(root->base_rel_list);
+
 	final_rel_list = find_paths(root, root->base_rel_list);
 
 	if (final_rel_list)

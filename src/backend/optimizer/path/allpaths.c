@@ -117,12 +117,11 @@ find_rel_paths(Query *root, List *rels)
 
 		sequential_scan_list = lcons(create_seqscan_path(rel), NIL);
 
-		rel_index_scan_list =
-			find_index_paths(root,
-							 rel,
-							 find_relation_indices(root, rel),
-							 rel->clauseinfo,
-							 rel->joininfo);
+		rel_index_scan_list = find_index_paths(root,
+											 rel,
+											 find_relation_indices(root, rel),
+											 rel->clauseinfo,
+											 rel->joininfo);
 
 		or_index_scan_list = create_or_index_paths(root, rel, rel->clauseinfo);
 
