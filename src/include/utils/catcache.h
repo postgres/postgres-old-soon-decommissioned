@@ -15,12 +15,10 @@
 
 /* #define	CACHEDEBUG 	 turns DEBUG elogs on */
 
-    
-#include "access/skey.h"
-#include "access/htup.h"
-#include "utils/rel.h"
-#include "nodes/memnodes.h"
-#include "lib/dllist.h"
+#include <utils/rel.h>
+#include <nodes/memnodes.h>
+#include <lib/dllist.h>
+#include <access/htup.h>
 
 /*
  *	struct catctup:		tuples in the cache.
