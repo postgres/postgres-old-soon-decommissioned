@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Fri Jan 23 00:05:33 EST 2004
+Last updated:		Fri Jan 23 10:13:31 EST 2004
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -471,6 +471,7 @@ Source Code
 * Allow creation of a libpq-only tarball
 * Promote debug_query_string into a server-side function current_query()
 * Allow the identifier length to be increased via a configure option
+* Improve CREATE SCHEMA regression test
 
 
 * Wire Protocol Changes
