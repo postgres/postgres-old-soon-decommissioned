@@ -340,7 +340,7 @@ tableDesc (PsqlSettings *ps, char *table)
         printf ("%6s |",  "var" );
       }
       else if (strcmp(rtype, "bpchar") == 0) {
-        printf ("%-32.32s |", "char");
+        printf ("%-32.32s |", "(bp)char");
         printf ("%6i |", rsize > 0 ? rsize - 4 : 0 );
       }
       else if (strcmp(rtype, "varchar") == 0) {
