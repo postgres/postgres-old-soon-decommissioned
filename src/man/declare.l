@@ -6,7 +6,7 @@
 declare - declare a cursor
 .SH SYNOPSIS
 .nf
-\fBdeclare\fR [ \fBbinary\fR ] \fBcursor for\fR select statement
+\fBdeclare\fR cursor_name [ \fBbinary\fR ] \fBcursor for\fR select statement
 .fi
 .SH DESCRIPTION
 .BR Declare
