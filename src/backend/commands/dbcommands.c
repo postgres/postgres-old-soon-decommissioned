@@ -305,7 +305,11 @@ stop_vacuum(char *dbpath, char *dbname)
 	else
 		snprintf(filename, 256, "%s%c%s.vacuum", dbpath, SEP_CHAR, dbname);
 
+#ifndef __CYGWIN32__
 	if ((fp = AllocateFile(filename, "r")) != NULL)
+#else
+	if ((fp = AllocateFile(filename, "rb")) != NULL)
+#endif
 	{
 		fscanf(fp, "%d", &pid);
 		FreeFile(fp);

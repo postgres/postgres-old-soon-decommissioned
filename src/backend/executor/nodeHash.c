@@ -100,8 +100,13 @@ ExecHash(Hash *node)
 		batches = (File *) palloc(nbatch * sizeof(File));
 		for (i = 0; i < nbatch; i++)
 		{
+#ifndef __CYGWIN32__
 			batches[i] = FileNameOpenFile(ABSADDR(innerbatchNames[i]),
 										  O_CREAT | O_RDWR, 0600);
+#else
+			batches[i] = FileNameOpenFile(ABSADDR(innerbatchNames[i]),
+										  O_CREAT | O_RDWR | O_BINARY, 0600);
+#endif
 		}
 		hashstate->hashBatches = batches;
 		batchPos = (RelativeAddr *) ABSADDR(hashtable->innerbatchPos);

@@ -36,7 +36,11 @@ endif
 
 # If crypt is a separate library, rather than part of libc,
 # make sure it gets included in shared libpq.
+ifeq ($(PORTNAME), win)
+SHLIB_LINK+= $(findstring -lcrypt,$(LIBS))
+else
 SHLIB_LINK= $(findstring -lcrypt,$(LIBS))
+endif
 
 # Shared library stuff, also default 'all' target
 include $(SRCDIR)/Makefile.shlib
@@ -139,6 +143,9 @@ beforeinstall-headers:
 clean:
 	rm -f libpq.a $(shlib) $(OBJS)
 	rm -f dllist.c common.c wchar.c conv.c
+ifeq ($(PORTNAME), win)
+	rm -f pq.def
+endif
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend

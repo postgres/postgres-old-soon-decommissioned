@@ -1033,8 +1033,11 @@ gettape()
 
 	StrNCpy(tp->tl_name, uniqueName, MAXPGPATH);
 
-
+#ifndef __CYGWIN32__
 	file = AllocateFile(tp->tl_name, "w+");
+#else
+	file = AllocateFile(tp->tl_name, "w+b");
+#endif
 	if (file == NULL)
 		elog(ERROR, "Open: %s in %s line %d, %s", tp->tl_name,
 			 __FILE__, __LINE__, strerror(errno));

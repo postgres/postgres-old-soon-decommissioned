@@ -198,7 +198,11 @@ GetRawDatabaseInfo(char *name, int4 *owner, Oid *db_id, char *path, int *encodin
 	sprintf(dbfname, "%s%cpg_database", DataDir, SEP_CHAR);
 	fileflags = O_RDONLY;
 
+#ifndef __CYGWIN32__
 	if ((dbfd = open(dbfname, O_RDONLY, 0)) < 0)
+#else
+	if ((dbfd = open(dbfname, O_RDONLY | O_BINARY, 0)) < 0)
+#endif
 		elog(FATAL, "Cannot open %s", dbfname);
 
 	pfree(dbfname);

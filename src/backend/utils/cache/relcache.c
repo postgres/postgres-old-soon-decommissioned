@@ -1861,7 +1861,11 @@ init_irels(void)
 	int			i;
 	int			relno;
 
+#ifndef __CYGWIN32__
 	if ((fd = FileNameOpenFile(INIT_FILENAME, O_RDONLY, 0600)) < 0)
+#else
+	if ((fd = FileNameOpenFile(INIT_FILENAME, O_RDONLY | O_BINARY, 0600)) < 0)
+#endif
 	{
 		write_irels();
 		return;
@@ -2022,7 +2026,11 @@ write_irels(void)
 	int			relno;
 	RelationBuildDescInfo bi;
 
+#ifndef __CYGWIN32__
 	fd = FileNameOpenFile(INIT_FILENAME, O_WRONLY | O_CREAT | O_TRUNC, 0600);
+#else
+	fd = FileNameOpenFile(INIT_FILENAME, O_WRONLY | O_CREAT | O_TRUNC | O_BINARY, 0600);
+#endif
 	if (fd < 0)
 		elog(FATAL, "cannot create init file %s", INIT_FILENAME);
 

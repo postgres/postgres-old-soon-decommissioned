@@ -39,17 +39,26 @@ LOCALBKI_SRCS= $(addprefix ../../include/catalog/, \
                 )
 
 global1.bki.source: $(GENBKI) $(GLOBALBKI_SRCS)
+ifneq ($(PORTNAME), win)
 	sh $(SHOPTS) $(GENBKI) $(BKIOPTS) $(GLOBALBKI_SRCS) > $@ 2>global1.description
+else
+	$(GENBKI) $(BKIOPTS) $(GLOBALBKI_SRCS) > $@ 2>global1.description
+endif
 
 local1_template1.bki.source: $(GENBKI) $(LOCALBKI_SRCS)
+ifneq ($(PORTNAME), win)
 	sh $(SHOPTS) $(GENBKI) $(BKIOPTS) $(LOCALBKI_SRCS) > $@ 2>local1_template1.description
+else
+	$(GENBKI) $(BKIOPTS) $(LOCALBKI_SRCS) > $@ 2>local1_template1.description
+endif
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 
 	rm -f SUBSYS.o $(OBJS) global1.bki.source local1_template1.bki.source \
-				global1.description local1_template1.description
+				global1.description local1_template1.description \
+				$(GENBKI)
 
 ifeq (depend,$(wildcard depend))
 include depend

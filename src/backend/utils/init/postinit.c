@@ -176,7 +176,11 @@ VerifySystemDatabase()
 
 	errormsg[0] = '\0';
 
+#ifndef __CYGWIN32__
 	if ((fd = open(DataDir, O_RDONLY, 0)) == -1)
+#else
+	if ((fd = open(DataDir, O_RDONLY | O_DIROPEN, 0)) == -1)
+#endif
 		sprintf(errormsg, "Database system does not exist.  "
 				"PGDATA directory '%s' not found.\n\tNormally, you "
 				"create a database system by running initdb.",
@@ -212,7 +216,11 @@ VerifyMyDatabase()
 	name = DatabaseName;
 	myPath = DatabasePath;
 
+#ifndef __CYGWIN32__
 	if ((fd = open(myPath, O_RDONLY, 0)) == -1)
+#else
+	if ((fd = open(myPath, O_RDONLY | O_DIROPEN, 0)) == -1)
+#endif
 		sprintf(errormsg,
 				"Database '%s' does not exist."
 			"\n\tWe know this because the directory '%s' does not exist."

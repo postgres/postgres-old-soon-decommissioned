@@ -18,7 +18,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
+#ifdef __CYGWIN32__
+#include <getopt.h>
+#endif
 
 int
 main(int argc, char **argv)

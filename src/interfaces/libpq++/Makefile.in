@@ -44,7 +44,11 @@ endif
 
 OBJS = pgenv.o pgconnection.o pgtransdb.o pgcursordb.o pglobject.o
 
+ifeq ($(PORTNAME), win)
+SHLIB_LINK+= -L../libpq -lpq -lstdc++
+else
 SHLIB_LINK= -L../libpq -lpq
+endif
 
 # Shared library stuff, also default 'all' target
 include $(SRCDIR)/Makefile.shlib
@@ -87,6 +91,9 @@ beforeinstall-headers:
 clean:
 	rm -f libpq++.a $(shlib) $(OBJS)
 	$(MAKE) -C examples clean
+ifeq ($(PORTNAME), win)
+	rm -f pq++.def
+endif
 
 dep depend:
 	$(CXX) -MM $(CXXFLAGS) *.cc >depend

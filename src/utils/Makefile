@@ -27,6 +27,9 @@ depend dep:
 
 clean: 
 	rm -f version.o
+ifeq ($(PORTNAME), win)
+	rm -f dllinit.o
+endif
 
 ifeq (depend,$(wildcard depend))
 include depend

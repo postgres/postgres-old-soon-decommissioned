@@ -43,6 +43,9 @@ typename.o : typename.c ../include/ecpgtype.h
 .PHONY: clean
 clean:
 	rm -f lib$(NAME).a $(shlib) $(OBJS)
+ifeq ($(PORTNAME), win)
+	rm -f $(NAME).def
+endif
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend

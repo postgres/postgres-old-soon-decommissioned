@@ -91,7 +91,11 @@ geqo_params(int string_length)
 	sprintf(conf_file, "%s/%s", DataDir, GEQO_FILE);
 
 	/* open the config file */
+#ifndef __CYGWIN32__
 	file = AllocateFile(conf_file, "r");
+#else
+	file = AllocateFile(conf_file, "rb");
+#endif
 	if (file)
 	{
 

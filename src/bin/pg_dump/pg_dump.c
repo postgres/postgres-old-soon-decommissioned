@@ -76,6 +76,10 @@
 #include <termios.h>
 #endif
 
+#ifdef __CYGWIN32__
+#include <getopt.h>
+#endif
+
 #include "pg_dump.h"
 
 static void dumpSequence(FILE *fout, TableInfo tbinfo);
@@ -629,7 +633,11 @@ main(int argc, char **argv)
 		g_fout = stdout;
 	else
 	{
+#ifndef __CYGWIN32__
 		g_fout = fopen(filename, "w");
+#else
+		g_fout = fopen(filename, "wb");
+#endif
 		if (g_fout == NULL)
 		{
 			fprintf(stderr,

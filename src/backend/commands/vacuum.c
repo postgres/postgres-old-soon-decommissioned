@@ -187,7 +187,11 @@ vc_init()
 {
 	int			fd;
 
+#ifndef __CYGWIN32__
 	if ((fd = open("pg_vlock", O_CREAT | O_EXCL, 0600)) < 0)
+#else
+	if ((fd = open("pg_vlock", O_CREAT | O_EXCL | O_BINARY, 0600)) < 0)
+#endif
 	{
 		elog(ERROR, "Can't create lock file.  Is another vacuum cleaner running?\n\
 \tIf not, you may remove the pg_vlock file in the %s\n\

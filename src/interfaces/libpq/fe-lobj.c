@@ -392,7 +392,11 @@ lo_import(PGconn *conn, char *filename)
 	/*
 	 * open the file to be read in
 	 */
+#ifndef __CYGWIN32__
 	fd = open(filename, O_RDONLY, 0666);
+#else
+	fd = open(filename, O_RDONLY | O_BINARY, 0666);
+#endif
 	if (fd < 0)
 	{							/* error */
 		sprintf(conn->errorMessage,
@@ -467,7 +471,11 @@ lo_export(PGconn *conn, Oid lobjId, char *filename)
 	/*
 	 * open the file to be written to
 	 */
+#ifndef __CYGWIN32__
 	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0666);
+#else
+	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC | O_BINARY, 0666);
+#endif
 	if (fd < 0)
 	{							/* error */
 		sprintf(conn->errorMessage,

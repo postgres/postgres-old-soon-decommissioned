@@ -24,7 +24,11 @@ LFLAGS+= -i -l
 
 OBJS=	pl_parse.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o
 
+ifeq ($(PORTNAME), win)
+SHLIB_LINK+= -L$(LIBPQDIR) -lpq
+else
 SHLIB_LINK= -L$(LIBPQDIR) -lpq
+endif
 
 # Shared library stuff, also default 'all' target
 include $(SRCDIR)/Makefile.shlib
@@ -74,3 +78,6 @@ pl.tab.h:	pl_gram.c
 clean:
 	rm -f lib$(NAME).a $(shlib)
 	rm -f *.o pl.tab.h pl_gram.c pl_scan.c
+ifeq ($(PORTNAME), win)
+	rm -f $(NAME).def
+endif

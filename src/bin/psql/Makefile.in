@@ -43,13 +43,13 @@ submake:
 	$(MAKE) -C $(LIBPQDIR) libpq.a
 
 install: psql
-	$(INSTALL) $(INSTL_EXE_OPTS) psql $(BINDIR)/psql
+	$(INSTALL) $(INSTL_EXE_OPTS) psql$(X) $(BINDIR)/psql$(X)
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 
-	rm -f psql $(OBJS) 
+	rm -f psql$(X) $(OBJS) 
 
 ifeq (depend,$(wildcard depend))
 include depend

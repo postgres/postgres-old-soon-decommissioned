@@ -76,7 +76,11 @@ crypt_openpwdfile()
 	FILE	   *pwdfile;
 
 	filename = crypt_getpwdfilename();
+#ifndef __CYGWIN32__
 	pwdfile = AllocateFile(filename, "r");
+#else
+	pwdfile = AllocateFile(filename, "rb");
+#endif
 
 	return pwdfile;
 }

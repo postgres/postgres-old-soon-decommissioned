@@ -172,9 +172,15 @@ ExecHashJoin(HashJoin *node)
 			palloc(nbatch * sizeof(File));
 		for (i = 0; i < nbatch; i++)
 		{
+#ifndef __CYGWIN32__
 			outerbatches[i] = FileNameOpenFile(
-											 ABSADDR(outerbatchNames[i]),
-											   O_CREAT | O_RDWR, 0600);
+							ABSADDR(outerbatchNames[i]),
+							O_CREAT | O_RDWR, 0600);
+#else
+			outerbatches[i] = FileNameOpenFile(
+							ABSADDR(outerbatchNames[i]),
+							O_CREAT | O_RDWR | O_BINARY, 0600);
+#endif
 		}
 		hjstate->hj_OuterBatches = outerbatches;
 

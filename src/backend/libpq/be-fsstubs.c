@@ -267,7 +267,11 @@ lo_import(text *filename)
 	 * open the file to be read in
 	 */
 	StrNCpy(fnamebuf, VARDATA(filename), VARSIZE(filename) - VARHDRSZ + 1);
+#ifndef __CYGWIN32__
 	fd = open(fnamebuf, O_RDONLY, 0666);
+#else
+	fd = open(fnamebuf, O_RDONLY | O_BINARY, 0666);
+#endif
 	if (fd < 0)
 	{							/* error */
 		elog(ERROR, "be_lo_import: can't open unix file\"%s\"\n",
@@ -341,7 +345,11 @@ lo_export(Oid lobjId, text *filename)
 	 */
 	oumask = umask((mode_t) 0);
 	StrNCpy(fnamebuf, VARDATA(filename), VARSIZE(filename) - VARHDRSZ + 1);
+#ifndef __CYGWIN32__
 	fd = open(fnamebuf, O_CREAT | O_WRONLY | O_TRUNC, 0666);
+#else
+	fd = open(fnamebuf, O_CREAT | O_WRONLY | O_TRUNC | O_BINARY, 0666);
+#endif
 	umask(oumask);
 	if (fd < 0)
 	{							/* error */

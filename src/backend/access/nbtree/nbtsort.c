@@ -420,7 +420,11 @@ _bt_tapecreate(char *fname)
 
 	tape->bttb_magic = BTTAPEMAGIC;
 
+#ifndef __CYGWIN32__
 	tape->bttb_fd = FileNameOpenFile(fname, O_RDWR | O_CREAT | O_TRUNC, 0600);
+#else
+	tape->bttb_fd = FileNameOpenFile(fname, O_RDWR | O_CREAT | O_TRUNC | O_BINARY, 0600);
+#endif
 	Assert(tape->bttb_fd >= 0);
 
 	/* initialize the buffer */

@@ -390,7 +390,11 @@ find_hba_entry(SockAddr *raddr, const char *user, const char *database,
 	old_conf_file = (char *) palloc(bufsize);
 	snprintf(old_conf_file, bufsize, "%s/%s", DataDir, OLD_CONF_FILE);
 
+#ifndef __CYGWIN32__
 	if ((fd = open(old_conf_file, O_RDONLY, 0)) != -1)
+#else
+	if ((fd = open(old_conf_file, O_RDONLY | O_BINARY, 0)) != -1)
+#endif
 	{
 		/* Old config file exists.	Tell this guy he needs to upgrade. */
 		close(fd);
@@ -801,7 +805,11 @@ verify_against_usermap(const char *pguser,
 		map_file = (char *) palloc(bufsize);
 		snprintf(map_file, bufsize, "%s/%s", DataDir, MAP_FILE);
 
+#ifndef __CYGWIN32__
 		file = AllocateFile(map_file, "r");
+#else
+		file = AllocateFile(map_file, "rb");
+#endif
 		if (file == NULL)
 		{
 			/* The open of the map file failed.  */
@@ -973,7 +981,11 @@ GetCharSetByHost(char *TableName, int host, const char *DataDir)
 	bufsize = (strlen(DataDir) + strlen(CHARSET_FILE) + 2) * sizeof(char);
 	map_file = (char *) palloc(bufsize);
 	snprintf(map_file, bufsize, "%s/%s", DataDir, CHARSET_FILE);
+#ifndef __CYGWIN32__
 	file = fopen(map_file, "r");
+#else
+	file = fopen(map_file, "rb");
+#endif
 	if (file == NULL)
 	{
 		return;

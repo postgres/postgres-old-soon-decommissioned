@@ -620,7 +620,11 @@ ProcessUtility(Node *parsetree,
 
 				filename = stmt->filename;
 				closeAllVfds();
+#ifndef __CYGWIN32__
 				if ((fp = AllocateFile(filename, "r")) == NULL)
+#else
+				if ((fp = AllocateFile(filename, "rb")) == NULL)
+#endif
 					elog(ERROR, "LOAD: could not open file '%s'", filename);
 				FreeFile(fp);
 				load_file(filename);

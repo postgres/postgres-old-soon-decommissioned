@@ -17,6 +17,9 @@
 #include <signal.h>
 #include <setjmp.h>
 #include <string.h>
+#ifdef __CYGWIN32__
+#include <getopt.h>
+#endif
 
 #define BOOTSTRAP_INCLUDE		/* mask out stuff in tcop/tcopprot.h */
 

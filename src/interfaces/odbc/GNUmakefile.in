@@ -73,7 +73,11 @@ clean:
 distclean: clean
 	-rm -f config.h GNUmakefile Makefile.global
 	-rm -f config.cache config.log config.status
+ifeq ($(PORTNAME), win)
+	@if [ $SRCDIR != $ODBCSRCDIR ]; then rm -f template makefiles port; fi
+else
 	@if [ $SRCDIR ne $ODBCSRCDIR ]; then rm -f template makefiles port
+endif
 
 .PHONY: standalone
 
