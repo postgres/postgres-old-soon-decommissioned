@@ -1592,8 +1592,7 @@ ExecTargetList(List *targetlist,
 	/*
 	 *	form the new result tuple (in the "normal" context)
 	 */
-	newTuple = (HeapTuple)
-		heap_formtuple(targettype, values, null_head);
+	newTuple = (HeapTuple) heap_formtuple(targettype, values, null_head);
 
 	/*
 	 *	free the nulls array if we allocated one..
