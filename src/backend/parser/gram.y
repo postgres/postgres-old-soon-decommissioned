@@ -6999,15 +6999,14 @@ update_target_el:
 					$$ = makeNode(ResTarget);
 					$$->name = $1;
 					$$->indirection = $2;
-					$$->val = (Node *)$4;
+					$$->val = (Node *) $4;
 				}
 			| ColId opt_indirection '=' DEFAULT
 				{
-					SetToDefault *def = makeNode(SetToDefault);
 					$$ = makeNode(ResTarget);
 					$$->name = $1;
-					$$->indirection = NULL;
-					$$->val = (Node *)def;
+					$$->indirection = $2;
+					$$->val = (Node *) makeNode(SetToDefault);
 				}
 
 		;
@@ -7021,11 +7020,10 @@ insert_target_el:
 			target_el								{ $$ = $1; }
 			| DEFAULT
 				{
-					SetToDefault *def = makeNode(SetToDefault);
 					$$ = makeNode(ResTarget);
 					$$->name = NULL;
-					$$->indirection = NULL;
-					$$->val = (Node *)def;
+					$$->indirection = NIL;
+					$$->val = (Node *) makeNode(SetToDefault);
 				}
 		;
 

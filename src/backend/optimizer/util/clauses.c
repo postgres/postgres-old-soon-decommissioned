@@ -2157,6 +2157,7 @@ expression_tree_walker(Node *node,
 		case T_Const:
 		case T_Param:
 		case T_CoerceToDomainValue:
+		case T_SetToDefault:
 		case T_RangeTblRef:
 			/* primitive node types with no subnodes */
 			break;
@@ -2514,6 +2515,7 @@ expression_tree_mutator(Node *node,
 		case T_Const:
 		case T_Param:
 		case T_CoerceToDomainValue:
+		case T_SetToDefault:
 		case T_RangeTblRef:
 			/* primitive node types with no subnodes */
 			return (Node *) copyObject(node);

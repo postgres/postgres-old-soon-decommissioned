@@ -279,14 +279,6 @@ typedef struct ResTarget
 } ResTarget;
 
 /*
- * Empty node used as a marker for Default Columns
- */
-typedef struct SetToDefault
-{
-	NodeTag		type;
-} SetToDefault;
-
-/*
  * SortGroupBy - for ORDER BY clause
  */
 typedef struct SortGroupBy

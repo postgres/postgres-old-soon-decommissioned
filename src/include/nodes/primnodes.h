@@ -674,6 +674,19 @@ typedef struct CoerceToDomainValue
 	int32		typeMod;		/* typemod for substituted value */
 } CoerceToDomainValue;
 
+/*
+ * Placeholder node for a DEFAULT marker in an INSERT or UPDATE command.
+ *
+ * This is not an executable expression: it must be replaced by the actual
+ * column default expression during rewriting.  But it is convenient to
+ * treat it as an expression node during parsing and rewriting.
+ */
+typedef struct SetToDefault
+{
+	Expr		xpr;
+	Oid			typeId;			/* type for substituted value */
+	int32		typeMod;		/* typemod for substituted value */
+} SetToDefault;
 
 /*
  * TargetEntry -

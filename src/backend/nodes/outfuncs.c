@@ -850,6 +850,15 @@ _outCoerceToDomainValue(StringInfo str, CoerceToDomainValue *node)
 }
 
 static void
+_outSetToDefault(StringInfo str, SetToDefault *node)
+{
+	WRITE_NODE_TYPE("SETTODEFAULT");
+
+	WRITE_OID_FIELD(typeId);
+	WRITE_INT_FIELD(typeMod);
+}
+
+static void
 _outTargetEntry(StringInfo str, TargetEntry *node)
 {
 	WRITE_NODE_TYPE("TARGETENTRY");
@@ -1684,6 +1693,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_CoerceToDomainValue:
 				_outCoerceToDomainValue(str, obj);
+				break;
+			case T_SetToDefault:
+				_outSetToDefault(str, obj);
 				break;
 			case T_TargetEntry:
 				_outTargetEntry(str, obj);

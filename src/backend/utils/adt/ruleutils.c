@@ -2606,6 +2606,10 @@ get_rule_expr(Node *node, deparse_context *context,
 			appendStringInfo(buf, "VALUE");
 			break;
 
+		case T_SetToDefault:
+			appendStringInfo(buf, "DEFAULT");
+			break;
+
 		default:
 			elog(ERROR, "get_rule_expr: unknown node type %d", nodeTag(node));
 			break;
