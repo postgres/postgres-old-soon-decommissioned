@@ -566,10 +566,10 @@ float4_cmp_internal(float4 a, float4 b)
 	{
 		if (a > b)
 			return 1;
-		else if (a == b)
-			return 0;
-		else
+		else if (a < b)
 			return -1;
+		else
+			return 0;
 	}
 }
 
@@ -662,10 +662,10 @@ float8_cmp_internal(float8 a, float8 b)
 	{
 		if (a > b)
 			return 1;
-		else if (a == b)
-			return 0;
-		else
+		else if (a < b)
 			return -1;
+		else
+			return 0;
 	}
 }
 
