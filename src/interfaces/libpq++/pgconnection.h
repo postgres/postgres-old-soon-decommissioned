@@ -80,6 +80,9 @@ public:
    int ExecTuplesOk(const char* query);     // send a command and check if tuples are returned
    PGnotify* Notifies();
     
+	// set the notice processor
+	PQnoticeProcessor SetNoticeProcessor(PQnoticeProcessor proc, void *arg);
+
 protected:
    ConnStatusType Connect(const char* conninfo);
    void CloseConnection();

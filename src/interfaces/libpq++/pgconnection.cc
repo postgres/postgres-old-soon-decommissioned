@@ -159,4 +159,8 @@ const char* PgConnection::DBName() const
 return (const char *)PQdb(pgConn); 
 }
 
+PQnoticeProcessor PgConnection::SetNoticeProcessor(PQnoticeProcessor proc, void *arg)
+{
+return PQsetNoticeProcessor(pgConn, proc, arg);
+}
 
