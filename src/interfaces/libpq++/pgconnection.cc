@@ -17,6 +17,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <strstream>
 #include "pgconnection.h"
 
 extern "C" {
@@ -88,21 +89,18 @@ ConnStatusType PgConnection::Connect(const char* dbName)
 	PQtrace(pgConn, debug);
     #endif
 
-    // Set Host Authentication service
-    char errorMessage[ERROR_MSG_LENGTH];
-    memset(errorMessage, 0, sizeof(errorMessage));
-    fe_setauthsvc(pgEnv.Auth(), errorMessage);
-    
     // Connect to the database
-    pgConn = PQsetdb(pgEnv.Host(), pgEnv.Port(), pgEnv.Option(), pgEnv.TTY(), dbName);
+    ostrstream conninfo;
+    conninfo << "dbname="<<dbName;
+    conninfo << pgEnv;
+    pgConn=PQconnectdb(conninfo.str());
+    conninfo.freeze(0);
     
-    // Return the connection status
-    if (errorMessage) {
-    	SetErrorMessage( errorMessage );
-        return CONNECTION_BAD;
+    if(ConnectionBad()) {
+    	SetErrorMessage( PQerrorMessage(pgConn) );
     }
-    else
-        return Status();
+
+    return Status();
 }
 
 // PgConnection::status -- return connection or result status

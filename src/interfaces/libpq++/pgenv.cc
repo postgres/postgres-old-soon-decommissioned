@@ -66,3 +66,19 @@ string PgEnv::getenv(const char* name)
   char* env = ::getenv(name);
   return (env ? env : "");
 }
+
+
+// Extract the PgEnv contents into a form suitable for PQconnectdb
+// which happens to be readable, hence choice of <<
+ostream& operator << (ostream &s, const PgEnv& a)
+{
+  s<<' '; // surround with whitespace, just in case
+  if(a.pgHost.length()  !=0)s<<" host="   <<a.pgHost;
+  if(a.pgPort.length()  !=0)s<<" port="   <<a.pgPort;
+  // deprecated: if(a.pgAuth.length()!=0)s<<" authtype="<<a.pgAuth;
+  if(a.pgOption.length()!=0)s<<" options="<<a.pgOption;
+  if(a.pgTty.length()   !=0)s<<" tty="    <<a.pgTty;
+  s<<' ';
+
+  return s;
+}
