@@ -9,7 +9,7 @@
 #-------------------------------------------------------------------------
 
 subdir = src/backend/libpq
-top_builddir = ../..
+top_builddir = ../../..
 include ../../Makefile.global
 
 # be-fsstubs is here for historical reasons, probably belongs elsewhere
