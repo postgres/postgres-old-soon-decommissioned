@@ -83,11 +83,9 @@ libdir := @libdir@
 pkglibdir = $(libdir)/postgresql
 
 includedir := @includedir@
-ifeq "$(findstring pgsql, $(includedir))" ""
-ifeq "$(findstring postgres, $(includedir))" ""
-override includedir := $(includedir)/postgresql
-endif
-endif
+pkgincludedir = $(includedir)/postgresql
+includedir_server = $(pkgincludedir)/server
+includedir_internal = $(pkgincludedir)/internal
 
 mandir := @mandir@
 
