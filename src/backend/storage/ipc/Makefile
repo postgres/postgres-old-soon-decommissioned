@@ -13,6 +13,16 @@ include ../../../Makefile.global
 
 CFLAGS += -I../..
 
+# seems to be required 1999/07/22 bjm
+ifeq ($(CPU),alpha)
+ifeq ($(CC), gcc)
+CFLAGS+= -fno-inline
+endif
+ifeq ($(CC), egcs)
+CFLAGS+= -fno-inline
+endif
+endif
+
 OBJS = ipc.o ipci.o shmem.o shmqueue.o sinval.o \
        sinvaladt.o spin.o
 
