@@ -51,10 +51,10 @@ CMDNAME=`basename $0`
 # The 2>/dev/null is to swallow the "postconfig: not found" message if there
 # is no postconfig.
 
-postconfig_result=`sh -c postconfig 2>/dev/null`
-if [ ! -z $postconfig_result ]; then
+postconfig_result="`sh -c postconfig 2>/dev/null`"
+if [ ! -z "$postconfig_result" ]; then
   set -a   # Make the following variable assignment exported to environment
-  eval $postconfig_result
+  eval "$postconfig_result"
   set +a   # back to normal
 fi
 
