@@ -183,7 +183,6 @@ typedef struct
 	char		value;			/* this may be unsigned, alas */
 } datetkn;
 
-extern datetkn datetktbl[];
 
 /* TMODULO()
  * Macro to replace modf(), which is broken on some platforms.
