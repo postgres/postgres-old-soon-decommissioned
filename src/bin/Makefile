@@ -15,7 +15,7 @@ SRCDIR= ..
 include ../Makefile.global
 
 DIRS = pg_id pg_version psql pg_dump pg_passwd cleardbdir createdb \
-	createuser destroydb destroyuser initdb initlocation ipcclean
+	createuser destroydb destroyuser initdb vacuumdb initlocation ipcclean
 
 ifdef MULTIBYTE
 DIRS += pg_encoding
