@@ -4500,7 +4500,7 @@ option         SEMMAP=256
 <prompt>$</prompt> <userinput>sysctl -w kernel.shmall=2097152</userinput>
 </screen>
         In addition these settings can be saved between reboots in 
-        <filename>/etc/sysctl.conf.
+        <filename>/etc/sysctl.conf</filename>.
        </para>
 
        <para>
