@@ -129,7 +129,8 @@ PREPARE <replaceable class="PARAMETER">plan_name</replaceable> [ (<replaceable c
    when planning prepared statements with parameters, the chosen plan
    may be suboptimal. To examine the query plan
    <productname>PostgreSQL</productname> has chosen for a prepared
-   statement, use <command>EXPLAIN EXECUTE</command>.
+   statement, use <xref linkend="sql-explain"
+   endterm="sql-explain-title">.
   </para>
 
   <para>
@@ -172,6 +173,15 @@ EXECUTE usrrptplan(1, current_date);
    <command>PREPARE</command> statement also uses a somewhat different
    syntax.
   </para>
+ </refsect1>
+
+ <refsect1>
+  <title>See Also</title>
+
+  <simplelist type="inline">
+   <member><xref linkend="sql-deallocate" endterm="sql-deallocate-title"></member>
+   <member><xref linkend="sql-execute" endterm="sql-execute-title"></member>
+  </simplelist>
  </refsect1>
 </refentry>
 

@@ -51,8 +51,8 @@ DROP TRIGGER <replaceable class="PARAMETER">name</replaceable> ON <replaceable c
     <term><replaceable class="PARAMETER">table</replaceable></term>
     <listitem>
      <para>
-      The name (optionally schema-qualified) of a table for which the
-      trigger is defined.
+      The name (optionally schema-qualified) of the table for which
+      the trigger is defined.
      </para>
     </listitem>
    </varlistentry>

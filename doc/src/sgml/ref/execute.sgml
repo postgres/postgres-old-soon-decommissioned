@@ -105,6 +105,15 @@ EXECUTE <replaceable class="PARAMETER">plan_name</replaceable> [ (<replaceable c
    syntax.
   </para>
  </refsect1>
+
+ <refsect1>
+  <title>See Also</title>
+
+  <simplelist type="inline">
+   <member><xref linkend="sql-deallocate" endterm="sql-deallocate-title"></member>
+   <member><xref linkend="sql-prepare" endterm="sql-prepare-title"></member>
+  </simplelist>
+ </refsect1>
 </refentry>
 
 <!-- Keep this comment at the end of the file

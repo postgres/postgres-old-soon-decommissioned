@@ -146,9 +146,9 @@ COMMIT;
   <simplelist type="inline">
    <member><xref linkend="sql-begin" endterm="sql-begin-title"></member>
    <member><xref linkend="sql-commit" endterm="sql-commit-title"></member>
-   <member><xref linkend="sql-savepoint" endterm="sql-savepoint-title"></member>
    <member><xref linkend="sql-release-savepoint" endterm="sql-release-savepoint-title"></member>
    <member><xref linkend="sql-rollback" endterm="sql-rollback-title"></member>
+   <member><xref linkend="sql-savepoint" endterm="sql-savepoint-title"></member>
   </simplelist>
  </refsect1>
 </refentry>

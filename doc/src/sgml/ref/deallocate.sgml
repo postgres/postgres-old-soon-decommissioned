@@ -71,6 +71,15 @@ DEALLOCATE [ PREPARE ] <replaceable class="parameter">plan_name</replaceable>
    statement, but it is only for use in embedded SQL.
   </para>
  </refsect1>
+
+ <refsect1>
+  <title>See Also</title>
+
+  <simplelist type="inline">
+   <member><xref linkend="sql-execute" endterm="sql-execute-title"></member>
+   <member><xref linkend="sql-prepare" endterm="sql-prepare-title"></member>
+  </simplelist>
+ </refsect1>
 </refentry>
 
 <!-- Keep this comment at the end of the file
