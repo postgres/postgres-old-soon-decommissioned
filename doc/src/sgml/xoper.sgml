@@ -38,8 +38,8 @@ $Header$
    <ProgramListing>
 CREATE FUNCTION complex_add(complex, complex)
     RETURNS complex
-    AS '$PWD/obj/complex.so'
-    LANGUAGE 'c';
+    AS '<replaceable>PGROOT</replaceable>/tutorial/complex'
+    LANGUAGE C;
 
 CREATE OPERATOR + (
     leftarg = complex,

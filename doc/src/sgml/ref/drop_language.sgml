@@ -5,9 +5,7 @@ Postgres documentation
 
 <refentry id="SQL-DROPLANGUAGE">
  <refmeta>
-  <refentrytitle id="SQL-DROPLANGUAGE-TITLE">
-   DROP LANGUAGE
-  </refentrytitle>
+  <refentrytitle id="SQL-DROPLANGUAGE-TITLE">DROP LANGUAGE</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>
