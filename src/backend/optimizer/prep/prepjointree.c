@@ -720,10 +720,6 @@ find_jointree_node_for_rel(Node *jtnode, int relid)
 		FromExpr   *f = (FromExpr *) jtnode;
 		List	   *l;
 
-		/*
-		 * Note: we assume it's impossible to see same RT index from more
-		 * than one subtree, so nconc() is OK rather than set_unioni().
-		 */
 		foreach(l, f->fromlist)
 		{
 			jtnode = find_jointree_node_for_rel(lfirst(l), relid);
