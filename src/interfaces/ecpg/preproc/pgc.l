@@ -16,13 +16,12 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "postgres.h"
-
 #include <ctype.h>
 #include <sys/types.h>
 #include <limits.h>
 #include <errno.h>
 
+#include "postgres.h"
 #include "miscadmin.h"
 #include "nodes/parsenodes.h"
 #include "nodes/pg_list.h"
