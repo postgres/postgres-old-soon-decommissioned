@@ -356,7 +356,6 @@ DECLARE liahona CURSOR
     SQL92
    </title>
    <para>
-   <para>
     <acronym>SQL92</acronym> allows cursors only in embedded
     <acronym>SQL</acronym> and in modules. <productname>PostgreSQL</>
     permits cursors to be used interactively.
