@@ -1523,8 +1523,6 @@ double		x;
 #undef class
 #endif							/* CLASS_CONFICT */
 
-#include <float.h>
-
 static int
 isinf(x)
 double		x;
