@@ -15,12 +15,12 @@ $Header$
   <surname>Momjian</surname>
   </author>
   </authorgroup>
-  <date>2000-12-16</date>
+  <date>2001-??-??</date>
   </docinfo>
    -->
 
    <para>
-	Release date 2001-1-??.
+	Release date 2001-??-??.
 	This release focuses on removing limitations that have existed in the
 	PostgreSQL code for many years.
    </para>
