@@ -582,7 +582,10 @@ do_start(void)
 		print_msg(_("waiting for postmaster to start..."));
 
 		if (test_postmaster_connection() == false)
+		{
 			printf(_("could not start postmaster\n"));
+			exit(1);
+		}
 		else
 		{
 			print_msg(_(" done\n"));
