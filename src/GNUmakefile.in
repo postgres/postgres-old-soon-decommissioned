@@ -67,6 +67,8 @@ endif
 ifneq ($(wildcard man), )
 	$(MAKE) -C man clean
 endif
+
+distclean: clean
 	rm -f Makefile.global include/config.h GNUmakefile
 
 .DEFAULT:
