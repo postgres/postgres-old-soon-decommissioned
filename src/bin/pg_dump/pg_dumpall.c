@@ -237,7 +237,7 @@ help(void)
     printf(_("  -h HOSTNAME              database server host name\n"));
 	printf(_("  -i                       proceed even when server version mismatches\n"
 			 "                           pg_dumpall version\n"));
-	printf(_("  -o                       include oids in dump\n"));
+	printf(_("  -o                       include OIDs in dump\n"));
     printf(_("  -p PORT                  database server port number\n"));
     printf(_("  -U NAME                  connect as specified database user\n"));
 	printf(_("  -v                       verbose mode\n"));
