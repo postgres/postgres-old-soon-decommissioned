@@ -13,7 +13,7 @@
 
  <refsynopsisdiv>
 <synopsis>
-CREATE [DEFAULT] CONVERSION <replaceable>conversion_name</replaceable>
+CREATE [DEFAULT] CONVERSION <replaceable>name</replaceable>
     FOR <replaceable>source_encoding</replaceable> TO <replaceable>dest_encoding</replaceable> FROM <replaceable>funcname</replaceable>
 </synopsis>
  </refsynopsisdiv>
@@ -55,7 +55,7 @@ CREATE [DEFAULT] CONVERSION <replaceable>conversion_name</replaceable>
     </varlistentry>
 
     <varlistentry>
-     <term><replaceable>conversion_name</replaceable></term>
+     <term><replaceable>name</replaceable></term>
 
      <listitem>
       <para>
