@@ -27,22 +27,18 @@
 #include "utils/syscache.h"
 
 
+/*
+ * Translate the input language name to lower case.
+ */
 static void
 case_translate_language_name(const char *input, char *output)
 {
-/*-------------------------------------------------------------------------
-  Translate the input language name to lower case, except if it's C,
-  translate to upper case.
---------------------------------------------------------------------------*/
 	int			i;
 
 	for (i = 0; i < NAMEDATALEN && input[i]; ++i)
 		output[i] = tolower((unsigned char) input[i]);
 
 	output[i] = '\0';
-
-	if (strcmp(output, "c") == 0)
-		output[0] = 'C';
 }
 
 
@@ -116,6 +112,7 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 	values[i++] = ObjectIdGetDatum(procTup->t_data->t_oid);
 	values[i++] = DirectFunctionCall1(textin,
 									  CStringGetDatum(stmt->plcompiler));
+	nulls[i] = 'n';				/* lanacl */
 
 	ReleaseSysCache(procTup);
 

@@ -164,7 +164,7 @@ FuNkYfMgRsTuFf
 tr 'abcdefghijklmnopqrstuvwxyz' 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' < $RAWFILE | \
 $AWK '
 BEGIN	{ OFS = ""; }
-	{ if (seenit[$(NF-1)]++ == 0) print "#define F_", $(NF-1), " ", $1; }' >> "$$-$OIDSFILE"
+	{ if (seenit[$(NF-2)]++ == 0) print "#define F_", $(NF-2), " ", $1; }' >> "$$-$OIDSFILE"
 
 if [ $? -ne 0 ]; then
     cleanup
@@ -209,7 +209,7 @@ cat > "$$-$TABLEFILE" <<FuNkYfMgRtAbStUfF
 
 FuNkYfMgRtAbStUfF
 
-$AWK '{ print "extern Datum", $(NF-1), "(PG_FUNCTION_ARGS);"; }' $RAWFILE >> "$$-$TABLEFILE"
+$AWK '{ print "extern Datum", $(NF-2), "(PG_FUNCTION_ARGS);"; }' $RAWFILE >> "$$-$TABLEFILE"
 
 if [ $? -ne 0 ]; then
     cleanup
@@ -232,7 +232,7 @@ $AWK 'BEGIN {
     Bool["f"] = "false"
 }
 { printf ("  { %d, \"%s\", %d, %s, %s, %s },\n"), \
-	$1, $(NF-1), $9, Bool[$8], Bool[$10], $(NF-1)
+	$1, $(NF-2), $9, Bool[$8], Bool[$10], $(NF-2)
 }' $RAWFILE >> "$$-$TABLEFILE"
 
 if [ $? -ne 0 ]; then

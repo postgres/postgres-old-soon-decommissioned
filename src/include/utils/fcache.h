@@ -41,6 +41,8 @@ typedef struct FunctionCache
 	 */
 	FmgrInfo	func;
 
+	bool permission_ok;
+
 	/*
 	 * setArgsValid is true when we are evaluating a set-valued function
 	 * and we are in the middle of a call series; we want to pass the same

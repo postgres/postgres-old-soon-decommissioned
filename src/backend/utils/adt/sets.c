@@ -20,6 +20,7 @@
 #include "access/heapam.h"
 #include "catalog/catname.h"
 #include "catalog/indexing.h"
+#include "catalog/pg_language.h"
 #include "catalog/pg_proc.h"
 #include "executor/executor.h"
 #include "utils/fcache.h"
@@ -54,7 +55,7 @@ SetDefine(char *querystr, char *typename)
 							 false,		/* don't replace */
 							 true,		/* returnsSet */
 							 typename,	/* returnTypeName */
-							 "sql",		/* languageName */
+							 SQLlanguageId,	/* language */
 							 querystr,	/* sourceCode */
 							 fileName,	/* fileName */
 							 true,		/* trusted */

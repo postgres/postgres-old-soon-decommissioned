@@ -833,6 +833,24 @@ EOF
 	| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
 echo "ok"
 
+# Set most system catalogs and built-in functions as world-accessible.
+# Some objects may require different permissions by default, so we
+# make sure we don't overwrite privilege sets that have already been
+# set (NOT NULL).
+$ECHO_N "setting privileges on built-in objects... "$ECHO_C
+(
+  cat <<EOF
+    UPDATE pg_class SET relacl = '{"=r"}' \
+        WHERE relkind IN ('r', 'v', 'S') AND relacl IS NULL;
+    UPDATE pg_proc SET proacl = '{"=r"}' \
+        WHERE proacl IS NULL;
+    UPDATE pg_language SET lanacl = '{"=r"}' \
+        WHERE lanpltrusted;
+EOF
+) \
+	| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
+echo "ok"
+
 $ECHO_N "vacuuming database template1... "$ECHO_C
 
 "$PGPATH"/postgres $PGSQL_OPT template1 >/dev/null <<EOF

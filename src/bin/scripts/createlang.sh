@@ -289,4 +289,15 @@ if [ "$?" -ne 0 ]; then
 	exit 1
 fi
 
+if test -n "$trusted"; then
+    sqlcmd="GRANT USAGE ON LANGUAGE \"$langname\" TO PUBLIC;"
+    if [ "$showsql" = yes ]; then
+        echo "$sqlcmd"
+    fi
+    $PSQL "$sqlcmd"
+    if [ "$?" -ne 0 ]; then
+        echo "$CMDNAME: language installation failed" 1>&2
+        exit 1
+    fi
+fi
 exit 0

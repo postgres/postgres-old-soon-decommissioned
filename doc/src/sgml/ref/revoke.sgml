@@ -19,6 +19,14 @@ PostgreSQL documentation
 REVOKE { { SELECT | INSERT | UPDATE | DELETE | RULE | REFERENCES | TRIGGER } [,...] | ALL [ PRIVILEGES ] }
     ON [ TABLE ] <replaceable class="PARAMETER">object</replaceable> [, ...]
     FROM { <replaceable class="PARAMETER">username</replaceable> | GROUP <replaceable class="PARAMETER">groupname</replaceable> | PUBLIC } [, ...]
+
+REVOKE { EXECUTE | ALL [ PRIVILEGES ] }
+    ON FUNCTION <replaceable>funcname</replaceable> ([<replaceable>type</replaceable>, ...]) [, ...]
+    FROM { <replaceable class="PARAMETER">username</replaceable> | GROUP <replaceable class="PARAMETER">groupname</replaceable> | PUBLIC } [, ...]
+
+REVOKE { USAGE | ALL [ PRIVILEGES ] }
+    ON LANGUAGE <replaceable>langname</replaceable> [, ...]
+    FROM { <replaceable class="PARAMETER">username</replaceable> | GROUP <replaceable class="PARAMETER">groupname</replaceable> | PUBLIC } [, ...]
 </synopsis>
  </refsynopsisdiv>
 

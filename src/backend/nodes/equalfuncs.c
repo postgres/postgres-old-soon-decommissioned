@@ -758,9 +758,11 @@ _equalGrantStmt(GrantStmt *a, GrantStmt *b)
 {
 	if (a->is_grant != b->is_grant)
 		return false;
-	if (!equal(a->relnames, b->relnames))
+	if (a->objtype != b->objtype)
 		return false;
-	if (!equalstr(a->privileges, b->privileges))
+	if (!equal(a->objects, b->objects))
+		return false;
+	if (!equal(a->privileges, b->privileges))
 		return false;
 	if (!equal(a->grantees, b->grantees))
 		return false;
@@ -773,6 +775,13 @@ _equalPrivGrantee(PrivGrantee *a, PrivGrantee *b)
 {
 	return equalstr(a->username, b->username)
 		&& equalstr(a->groupname, b->groupname);
+}
+
+static bool
+_equalFuncWithArgs(FuncWithArgs *a, FuncWithArgs *b)
+{
+	return equalstr(a->funcname, b->funcname)
+		&& equal(a->funcargs, b->funcargs);
 }
 
 static bool
@@ -2121,6 +2130,9 @@ equal(void *a, void *b)
 			break;
 		case T_PrivGrantee:
 			retval = _equalPrivGrantee(a, b);
+			break;
+		case T_FuncWithArgs:
+			retval = _equalFuncWithArgs(a, b);
 			break;
 
 		default:

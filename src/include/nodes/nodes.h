@@ -222,6 +222,8 @@ typedef enum NodeTag
 	T_CaseWhen,
 	T_FkConstraint,
 	T_PrivGrantee,
+	T_FuncWithArgs,
+	T_PrivTarget,
 
 	/*
 	 * TAGS FOR FUNCTION-CALL CONTEXT AND RESULTINFO NODES (see fmgr.h)

@@ -227,6 +227,7 @@ extern char *convertstr(unsigned char *buff, int len, int dest);
 
 /* in utils/misc/superuser.c */
 extern bool superuser(void);	/* current user is superuser */
+extern bool superuser_arg(Oid userid);	/* given user is superuser */
 extern bool is_dbadmin(Oid dbid);		/* current user is owner of
 										 * database */
 

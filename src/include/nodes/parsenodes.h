@@ -145,8 +145,9 @@ typedef struct GrantStmt
 {
 	NodeTag		type;
 	bool		is_grant;		/* not revoke */
-	List	   *relnames;
-	char	   *privileges;
+	int			objtype;
+	List	   *objects;
+	List	   *privileges;
 	List	   *grantees;
 } GrantStmt;
 
@@ -157,6 +158,23 @@ typedef struct PrivGrantee
 	char	   *username;		/* if both are NULL then PUBLIC */
 	char	   *groupname;
 } PrivGrantee;
+
+
+typedef struct FuncWithArgs
+{
+	NodeTag		type;
+	char	   *funcname;
+	List	   *funcargs;
+} FuncWithArgs;
+
+
+/* This is only used internally in gram.y. */
+typedef struct PrivTarget
+{
+	NodeTag		type;
+	int			objtype;
+	List	   *objs;
+} PrivTarget;
 
 
 /* ----------------------

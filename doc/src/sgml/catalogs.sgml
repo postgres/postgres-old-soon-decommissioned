@@ -1261,6 +1261,13 @@
       <entry></entry>
       <entry>not currently used</entry>
      </row>
+
+     <row>
+      <entry>lanacl</entry>
+      <entry><type>aclitem[]</type></entry>
+      <entry></entry>
+      <entry>Access permissions</entry>
+     </row>
     </tbody>
    </tgroup>
   </table>
@@ -1698,6 +1705,13 @@
       <entry>Additional information about how to invoke the function.
       Again, the interpretation is language-specific.
       </entry>
+     </row>
+
+     <row>
+      <entry>proacl</entry>
+      <entry><type>aclitem[]</type></entry>
+      <entry></entry>
+      <entry>Access permissions</entry>
      </row>
     </tbody>
    </tgroup>

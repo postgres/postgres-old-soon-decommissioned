@@ -1893,9 +1893,9 @@ _copyGrantStmt(GrantStmt *from)
 	GrantStmt  *newnode = makeNode(GrantStmt);
 
 	newnode->is_grant = from->is_grant;
-	Node_Copy(from, newnode, relnames);
-	if (from->privileges)
-		newnode->privileges = pstrdup(from->privileges);
+	newnode->objtype = from->objtype;
+	Node_Copy(from, newnode, objects);
+	Node_Copy(from, newnode, privileges);
 	Node_Copy(from, newnode, grantees);
 
 	return newnode;
@@ -1910,6 +1910,20 @@ _copyPrivGrantee(PrivGrantee *from)
 		newnode->username = pstrdup(from->username);
 	if (from->groupname)
 		newnode->groupname = pstrdup(from->groupname);
+
+	return newnode;
+}
+
+static FuncWithArgs *
+_copyFuncWithArgs(FuncWithArgs *from)
+{
+	FuncWithArgs *newnode = makeNode(FuncWithArgs);
+
+	if (from->funcname)
+		newnode->funcname = pstrdup(from->funcname);
+	else
+		newnode->funcname = NULL;
+	Node_Copy(from, newnode, funcargs);
 
 	return newnode;
 }
@@ -2970,6 +2984,9 @@ copyObject(void *from)
 			break;
 		case T_PrivGrantee:
 			retval = _copyPrivGrantee(from);
+			break;
+		case T_FuncWithArgs:
+			retval = _copyFuncWithArgs(from);
 			break;
 
 		default:
