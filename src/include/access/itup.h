@@ -123,7 +123,7 @@ typedef struct PredInfo
 		*(isnull) = false, \
 		IndexTupleNoNulls(tup) ? \
 		( \
-			((tupleDesc)->attrs[(attnum)-1]->attcacheoff > 0 || \
+			((tupleDesc)->attrs[(attnum)-1]->attcacheoff != -1 || \
 			 (attnum) == 1) ? \
 			( \
 				(Datum)fetchatt(&((tupleDesc)->attrs[(attnum)-1]), \
