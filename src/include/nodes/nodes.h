@@ -142,11 +142,11 @@ typedef enum NodeTag
 	 *---------------------
 	 */
 	T_Query = 600,
-	T_AppendStmt,
+	T_InsertStmt,
 	T_DeleteStmt,
-	T_ReplaceStmt,
+	T_UpdateStmt,
 	T_CursorStmt,
-	T_RetrieveStmt,
+	T_SelectStmt,
 	T_AddAttrStmt,
 	T_AggregateStmt,
 	T_ChangeACLStmt,
