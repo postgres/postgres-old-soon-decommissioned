@@ -22,7 +22,9 @@ Another example of deadlock is where one user locks one table, and
 another user locks a second table.  While both keep their existing
 locks, the first user tries to lock the second user's table, and the
 second user tries to lock the first user's table. Both users deadlock
-waiting for the tables to become available.
+waiting for the tables to become available.  The only solution to this
+is for both users to lock tables in the same order, so user's lock
+aquisitions and requests to not form a deadlock.
 .SH EXAMPLES
 .nf
 --
