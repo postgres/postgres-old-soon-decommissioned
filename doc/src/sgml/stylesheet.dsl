@@ -23,6 +23,10 @@
 
 (define %refentry-xref-manvolnum% #f)
 
+(element structfield ($mono-seq$))
+(element structname ($mono-seq$))
+(element type ($mono-seq$))
+
 <![ %output-html; [
 ;; customize the html stylesheet
 
