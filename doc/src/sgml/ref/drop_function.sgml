@@ -117,7 +117,7 @@ NOTICE RemoveFunction: Function "<replaceable class="parameter">name</replaceabl
    <para>
     Refer to
     <xref linkend="sql-createfunction" endterm="sql-createfunction-title">
-    for information on creating aggregate functions.
+    for information on creating functions.
    </para>
 
    <para>
