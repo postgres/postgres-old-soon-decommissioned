@@ -271,12 +271,6 @@ ExecProcNode(PlanState *node)
 
 	CHECK_FOR_INTERRUPTS();
 
-	/*
-	 * deal with NULL nodes..
-	 */
-	if (node == NULL)
-		return NULL;
-
 	if (node->chgParam != NULL) /* something changed */
 		ExecReScan(node, NULL); /* let ReScan handle this */
 
