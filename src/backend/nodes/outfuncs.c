@@ -179,8 +179,8 @@ _outIndexElem(StringInfo str, IndexElem *node)
 	_outNode(str, node->args);
 	appendStringInfo(str, " :class ");
 	appendStringInfo(str, node->class);
-	appendStringInfo(str, " :tname ");
-	_outNode(str, node->tname);
+	appendStringInfo(str, " :typename ");
+	_outNode(str, node->typename);
 }
 
 static void

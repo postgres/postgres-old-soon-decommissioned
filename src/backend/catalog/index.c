@@ -344,8 +344,8 @@ ConstructTupleDescriptor(Oid heapoid,
 		if (attributeList)
 		{
 			IndexKey = (IndexElem *) lfirst(attributeList);
+			IndexKeyType = IndexKey->typename;
 			attributeList = lnext(attributeList);
-			IndexKeyType = IndexKey->tname;
 		}
 		else
 			IndexKeyType = NULL;
@@ -782,7 +782,7 @@ UpdateIndexRelation(Oid indexoid,
 	while (attributeList != NIL)
 	{
 		IndexKey = (IndexElem *) lfirst(attributeList);
-		if (IndexKey->tname != NULL)
+		if (IndexKey->typename != NULL)
 		{
 			indexForm->indhaskeytype = 1;
 			break;
