@@ -1267,6 +1267,8 @@ RewriteQuery(Query *parsetree, List *rewrite_events)
 					newstuff = RewriteQuery(pt, rewrite_events);
 					rewritten = list_concat(rewritten, newstuff);
 				}
+
+				rewrite_events = list_delete_first(rewrite_events);
 			}
 		}
 
