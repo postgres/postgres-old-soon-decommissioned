@@ -1252,7 +1252,7 @@ dumpDatabase(Archive *AH)
 		appendPQExpBuffer(creaQry, " ENCODING = ");
 		appendStringLiteral(creaQry, encoding, true);
 	}
-	if (strlen(tablespace) > 0 && strcmp(tablespace, "default") != 0)
+	if (strlen(tablespace) > 0 && strcmp(tablespace, "pg_default") != 0)
 	{
 		appendPQExpBuffer(creaQry, " TABLESPACE = %s", fmtId(tablespace));
 	}
