@@ -619,7 +619,7 @@ toast_insert_or_update(Relation rel, HeapTuple newtup, HeapTuple oldtup)
 				toast_values,
 				toast_nulls,
 				&(newtup->t_data->t_infomask),
-				HeapTupleNoNulls(newtup) ? NULL : new_data);
+				has_nulls ? newtup->t_data->t_bits : NULL);
 
 		/* ----------
 		 * In the case we modified a previously modified tuple again,
