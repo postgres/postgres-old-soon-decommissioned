@@ -4,7 +4,11 @@ AROPT = crs
 
 ifeq ($(with_gnu_ld), yes)
 export_dynamic = -Wl,-E
+rpath = -Wl,-rpath,$(libdir)
+else
+rpath = -Wl,-R$(libdir)
 endif
+
 
 DLSUFFIX = .so
 ifeq ($(GCC), yes)
