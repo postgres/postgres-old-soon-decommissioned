@@ -1000,9 +1000,9 @@ create_mergejoin_plan(Query *root,
 						 best_path->jpath.outerjoinpath->parent->relids);
 
 	/* Sort clauses into best execution order */
+	/* NB: do NOT reorder the mergeclauses */
 	joinclauses = order_qual_clauses(root, joinclauses);
 	otherclauses = order_qual_clauses(root, otherclauses);
-	mergeclauses = order_qual_clauses(root, mergeclauses);
 
 	/*
 	 * Create explicit sort nodes for the outer and inner join paths if
