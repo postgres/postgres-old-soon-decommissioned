@@ -428,10 +428,10 @@ PostmasterMain(int argc, char *argv[])
 		switch (opt)
 		{
 			case 'A':
-#ifndef USE_ASSERT_CHECKING
-				postmaster_error("Assert checking is not compiled in.");
-#else
+#ifdef USE_ASSERT_CHECKING
 				SetConfigOption("debug_assertions", optarg, PGC_POSTMASTER, true);
+#else
+				postmaster_error("Assert checking is not compiled in.");
 #endif
 				break;
 			case 'a':
@@ -454,7 +454,7 @@ PostmasterMain(int argc, char *argv[])
 				SetConfigOption("debug_level", optarg, PGC_POSTMASTER, true);
 				break;
 			case 'F':
-				SetConfigOption("enable_fsync", "false", PGC_POSTMASTER, true);
+				SetConfigOption("fsync", "false", PGC_POSTMASTER, true);
 				break;
 			case 'h':
 				SetConfigOption("virtual_host", optarg, PGC_POSTMASTER, true);

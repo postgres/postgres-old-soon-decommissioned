@@ -1398,7 +1398,7 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[], const cha
 							errs++;
 						break;
 					case 'e':
-						tmp = "show_parser_stats";
+						tmp = "show_executor_stats";
 						break;
 					default:
 						errs++;
@@ -1714,7 +1714,7 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[], const cha
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.226 $ $Date: 2001/06/25 22:56:04 $\n");
+		puts("$Revision: 1.227 $ $Date: 2001/06/29 16:05:56 $\n");
 	}
 
 	/*
