@@ -252,7 +252,7 @@ extern Datum now(PG_FUNCTION_ARGS);
 /* Internal routines (not fmgr-callable) */
 
 extern int	tm2timestamp(struct tm * tm, fsec_t fsec, int *tzp, Timestamp *dt);
-extern int timestamp2tm(Timestamp dt, int *tzp, struct tm * tm,
+extern int	timestamp2tm(Timestamp dt, int *tzp, struct tm * tm,
 			 fsec_t *fsec, char **tzn);
 extern void dt2time(Timestamp dt, int *hour, int *min, int *sec, fsec_t *fsec);
 
