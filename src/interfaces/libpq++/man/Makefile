@@ -14,5 +14,5 @@ include ../../Makefile.global
 install: 
 	-mkdir -p $(POSTMANDIR)
 	-mkdir $(POSTMANDIR)/man3
-	cp man/*.3* $(POSTMANDIR)/man3
+	cp *.3* $(POSTMANDIR)/man3
 
