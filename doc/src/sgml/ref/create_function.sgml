@@ -83,7 +83,7 @@ CREATE [ OR REPLACE ] FUNCTION <replaceable class="parameter">name</replaceable>
 
      <listitem>
       <para>
-       The name of a function to create.
+       The name (optionally schema-qualified) of the function to create.
       </para>
      </listitem>
     </varlistentry>
