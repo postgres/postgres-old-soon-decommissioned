@@ -76,6 +76,7 @@ extern RangeVar *makeRangeVarFromNameList(List *names);
 extern char *NameListToString(List *names);
 
 extern bool isTempNamespace(Oid namespaceId);
+extern bool isOtherTempNamespace(Oid namespaceId);
 
 extern void PushSpecialNamespace(Oid namespaceId);
 extern void PopSpecialNamespace(Oid namespaceId);

@@ -1218,6 +1218,28 @@ isTempNamespace(Oid namespaceId)
 }
 
 /*
+ * isOtherTempNamespace - is the given namespace some other backend's
+ * temporary-table namespace?
+ */
+bool
+isOtherTempNamespace(Oid namespaceId)
+{
+	bool		result;
+	char	   *nspname;
+
+	/* If it's my own temp namespace, say "false" */
+	if (isTempNamespace(namespaceId))
+		return false;
+	/* Else, if the namespace name starts with "pg_temp_", say "true" */
+	nspname = get_namespace_name(namespaceId);
+	if (!nspname)
+		return false;			/* no such namespace? */
+	result = (strncmp(nspname, "pg_temp_", 8) == 0);
+	pfree(nspname);
+	return result;
+}
+
+/*
  * PushSpecialNamespace - push a "special" namespace onto the front of the
  * search path.
  *
