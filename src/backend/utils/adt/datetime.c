@@ -3005,7 +3005,7 @@ DecodeInterval(char **field, int *ftype, int nf, int *dtype, struct tm * tm, fse
 					if (*cp != '\0')
 						return DTERR_BAD_FORMAT;
 
-					if (val < 0)
+					if (*field[i] == '-')
 						fval = -(fval);
 				}
 				else if (*cp == '\0')
