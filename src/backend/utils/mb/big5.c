@@ -322,7 +322,7 @@ BIG5toCNS(unsigned short big5, unsigned char *lc)
 			if (b2c3[i][0] == big5)
 			{
 				*lc = LC_CNS11643_3;
-				return (b2c3[i][1]);
+				return (b2c3[i][1] | 0x8080U);
 			}
 		}
 
