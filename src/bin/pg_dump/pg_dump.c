@@ -5496,12 +5496,7 @@ dumpOneTable(Archive *fout, TableInfo *tbinfo, TableInfo *g_tblinfo)
 	/* Dump Table Comments */
 	dumpTableComment(fout, tbinfo, reltypename, commentDeps);
 
-	if (commentDeps)
-	{
-		for (j = 0; (*commentDeps)[j] != NULL; j++)
-			free((void *) (*commentDeps)[j]);
-		free(commentDeps);
-	}
+	/* commentDeps now belongs to the archive entry ... don't free it! */
 
 	destroyPQExpBuffer(query);
 	destroyPQExpBuffer(q);
