@@ -1,7 +1,7 @@
 /*
  * psql - the PostgreSQL interactive terminal
  *
- * Copyright 2000 by PostgreSQL Global Development Group
+ * Copyright 2000-2003 by PostgreSQL Global Development Group
  *
  * $Header$
  */
@@ -1004,7 +1004,9 @@ PageOutput(int lines, unsigned short int pager)
 		struct winsize screen_size;
 
 		result = ioctl(fileno(stdout), TIOCGWINSZ, &screen_size);
-		if (result == -1 || lines > screen_size.ws_row || pager > 1)
+
+		/* >= accounts for a one-line prompt */
+		if (result == -1 || lines >= screen_size.ws_row || pager > 1)
 		{
 #endif
 			pagerprog = getenv("PAGER");

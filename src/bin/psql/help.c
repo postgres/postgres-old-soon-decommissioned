@@ -1,7 +1,7 @@
 /*
  * psql - the PostgreSQL interactive terminal
  *
- * Copyright 2000 by PostgreSQL Global Development Group
+ * Copyright 2000-2003 by PostgreSQL Global Development Group
  *
  * $Header$
  */
@@ -163,7 +163,7 @@ slashUsage(unsigned short int pager)
 {
 	FILE	   *output;
 
-	output = PageOutput(50, pager);
+	output = PageOutput(64, pager);
 
 	/* if you add/remove a line here, change the row count above */
 
@@ -276,7 +276,7 @@ helpSQL(const char *topic, unsigned short int pager)
 		int			items_per_column = (QL_HELP_COUNT + 2) / 3;
 		FILE		*output;
 
-		output = PageOutput(items_per_column, pager);
+		output = PageOutput(items_per_column + 1, pager);
 
 		fputs(_("Available help:\n"), output);
 
@@ -338,10 +338,10 @@ print_copyright(void)
 {
 	puts(
 		 "PostgreSQL Data Base Management System\n\n"
-		 "Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group\n\n"
+		 "Portions Copyright (c) 1996-2003, PostgreSQL Global Development Group\n\n"
 		 "This software is based on Postgres95, formerly known as Postgres, which\n"
 		 "contains the following notice:\n\n"
-		 "Portions Copyright(c) 1994 - 7 Regents of the University of California\n\n"
+		 "Portions Copyright(c) 1994, Regents of the University of California\n\n"
 		 "Permission to use, copy, modify, and distribute this software and its\n"
 		 "documentation for any purpose, without fee, and without a written agreement\n"
 		 "is hereby granted, provided that the above copyright notice and this paragraph\n"
