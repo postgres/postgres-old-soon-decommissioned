@@ -480,8 +480,8 @@ boot_openrel(char *relname)
 	HeapScanDesc sdesc;
 	HeapTuple	tup;
 
-	if (strlen(relname) > 15)
-		relname[15] = '\000';
+	if (strlen(relname) >= NAMEDATALEN-1)
+		relname[NAMEDATALEN-1] = '\0';
 
 	if (Typ == (struct typmap **) NULL)
 	{

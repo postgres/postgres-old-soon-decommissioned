@@ -148,7 +148,7 @@ get_attisset(Oid relid, char *attname)
 							   PointerGetDatum(attname),
 							   0, 0);
 	if (!HeapTupleIsValid(htup))
-		elog(WARN, "get_attisset: no attribute %.16s in relation %d",
+		elog(WARN, "get_attisset: no attribute %s in relation %d",
 			 attname, relid);
 	if (heap_attisnull(htup, attno))
 		return (false);

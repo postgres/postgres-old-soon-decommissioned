@@ -591,7 +591,7 @@ SetRefreshWhenInvalidate(bool on)
  */
 #ifdef	INVALIDDEBUG
 #define RelationInvalidateHeapTuple_DEBUG1 \
-elog(DEBUG, "RelationInvalidateHeapTuple(%.16s, [%d,%d])", \
+elog(DEBUG, "RelationInvalidateHeapTuple(%s, [%d,%d])", \
 	 RelationGetRelationName(relation), \
 	 ItemPointerGetBlockNumber(&tuple->t_ctid), \
 	 ItemPointerGetOffsetNumber(&tuple->t_ctid))

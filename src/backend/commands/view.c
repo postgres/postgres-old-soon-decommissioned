@@ -117,28 +117,16 @@ DefineVirtualRelation(char *relname, List *tlist)
  * Given a view name, returns the name for the 'on retrieve to "view"'
  * rule.
  * This routine is called when defining/removing a view.
- *
- * NOTE: it quarantees that the name is at most 15 chars long
- *
- * XXX it also means viewName cannot be 16 chars long! - ay 11/94
  *------------------------------------------------------------------
  */
 char	   *
 MakeRetrieveViewRuleName(char *viewName)
 {
-/*
-	char buf[100];
-
-	MemSet(buf, 0, sizeof(buf));
-	sprintf(buf, "_RET%.*s", NAMEDATALEN, viewName->data);
-	buf[15] = '\0';
-	namestrcpy(rule_name, buf);
-*/
-
 	char	   *buf;
 
 	buf = palloc(strlen(viewName) + 5);
 	sprintf(buf, "_RET%s", viewName);
+
 	return buf;
 }
 

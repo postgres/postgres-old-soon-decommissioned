@@ -366,7 +366,7 @@ scan_pg_rel_seq(RelationBuildDescInfo buildinfo)
 		case INFO_RELNAME:
 			ScanKeyEntryInitialize(&key, 0,
 								   Anum_pg_class_relname,
-								   Character16EqualRegProcedure,
+								   NameEqualRegProcedure,
 								   NameGetDatum(buildinfo.i.info_name));
 			break;
 

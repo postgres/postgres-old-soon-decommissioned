@@ -216,7 +216,7 @@ parser_typecast(Value *expr, TypeName *typename, int typlen)
 	Const	   *adt;
 	Datum		lcp;
 	Type		tp;
-	char		type_string[16];
+	char		type_string[NAMEDATALEN];
 	int32		len;
 	char	   *cp = NULL;
 	char	   *const_string = NULL;
