@@ -1344,7 +1344,7 @@ static struct config_real ConfigureNamesReal[] =
 						 "pages, which are normally 8 kB each.")
 		},
 		&effective_cache_size,
-		DEFAULT_EFFECTIVE_CACHE_SIZE, 0, DBL_MAX, NULL, NULL
+		DEFAULT_EFFECTIVE_CACHE_SIZE, 1, DBL_MAX, NULL, NULL
 	},
 	{
 		{"random_page_cost", PGC_USERSET, QUERY_TUNING_COST,
