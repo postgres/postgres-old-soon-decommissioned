@@ -47,12 +47,6 @@ typedef struct
 
 bool		FastBuild = true;	/* use SORT instead of insertion build */
 
-/*
- * TEMPORARY FLAG FOR TESTING NEW FIX TREE
- * CODE WITHOUT AFFECTING ANYONE ELSE
- */
-bool		FixBTree = true;
-
 static void _bt_restscan(IndexScanDesc scan);
 static void btbuildCallback(Relation index,
 				HeapTuple htup,
