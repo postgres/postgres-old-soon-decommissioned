@@ -692,7 +692,7 @@ PostmasterMain(int argc, char *argv[])
 	/*
 	 * On some systems our dynloader code needs the executable's pathname.
 	 */
-	if (find_my_binary(pg_pathname, progname, "postgres") < 0)
+	if (find_my_binary(pg_pathname, argv[0], "postgres") < 0)
 		ereport(FATAL,
 				(errmsg("%s: could not locate postgres executable",
 						progname)));
