@@ -5434,7 +5434,7 @@ ATExecSetTableSpace(Oid tableOid, Oid newTableSpace)
 static void
 copy_relation_data(Relation rel, SMgrRelation dst)
 {
-	SMgrRelation src = rel->rd_smgr;
+	SMgrRelation src;
 	bool		use_wal;
 	BlockNumber nblocks;
 	BlockNumber blkno;
@@ -5457,6 +5457,9 @@ copy_relation_data(Relation rel, SMgrRelation dst)
 	use_wal = XLogArchivingActive() && !rel->rd_istemp;
 
 	nblocks = RelationGetNumberOfBlocks(rel);
+	/* RelationGetNumberOfBlocks will certainly have opened rd_smgr */
+	src = rel->rd_smgr;
+
 	for (blkno = 0; blkno < nblocks; blkno++)
 	{
 		smgrread(src, blkno, buf);
