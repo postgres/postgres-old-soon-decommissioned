@@ -92,6 +92,7 @@ CreateSharedMemoryAndSemaphores(IPCKey key)
 	 * ----------------
 	 */
 	InitLocks();
+	InitMultiLevelLockm();
 	if (InitMultiLevelLockm() == INVALID_TABLEID)
 		elog(FATAL, "Couldn't create the lock table");
 
@@ -145,7 +146,7 @@ AttachSharedMemoryAndSemaphores(IPCKey key)
 	 * ----------------
 	 */
 	InitLocks();
-	if (!MultiTableId && InitMultiLevelLockm() == INVALID_TABLEID)
+	if (InitMultiLevelLockm() == INVALID_TABLEID)
 		elog(FATAL, "Couldn't attach to the lock table");
 
 	AttachSharedInvalidationState(key);
