@@ -135,14 +135,13 @@ AggregateCreate(char *aggName,
 
 	/*
 	 * If the transfn is strict and the initval is NULL, make sure input
-	 * type and transtype are the same (or at least binary- compatible),
+	 * type and transtype are the same (or at least binary-compatible),
 	 * so that it's OK to use the first input value as the initial
 	 * transValue.
 	 */
 	if (proc->proisstrict && agginitval == NULL)
 	{
-		if (basetype != transtype &&
-			!IS_BINARY_COMPATIBLE(basetype, transtype))
+		if (!IsBinaryCompatible(basetype, transtype))
 			elog(ERROR, "must not omit initval when transfn is strict and transtype is not compatible with input type");
 	}
 	ReleaseSysCache(tup);

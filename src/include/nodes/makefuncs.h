@@ -46,4 +46,6 @@ extern Const *makeNullConst(Oid consttype);
 
 extern Attr *makeAttr(char *relname, char *attname);
 
+extern RelabelType *makeRelabelType(Node *arg, Oid rtype, int32 rtypmod);
+
 #endif   /* MAKEFUNC_H */

@@ -575,8 +575,7 @@ agg_select_candidate(Oid typeid, CandidateList candidates)
 	{
 		current_typeid = current_candidate->args[0];
 
-		if (current_typeid == typeid
-			|| IS_BINARY_COMPATIBLE(current_typeid, typeid))
+		if (IsBinaryCompatible(current_typeid, typeid))
 		{
 			last_candidate = current_candidate;
 			ncandidates++;
@@ -815,9 +814,7 @@ func_select_candidate(int nargs,
 		{
 			if (input_typeids[i] != UNKNOWNOID)
 			{
-				if (current_typeids[i] == input_typeids[i] ||
-					IS_BINARY_COMPATIBLE(current_typeids[i],
-										 input_typeids[i]))
+				if (IsBinaryCompatible(current_typeids[i], input_typeids[i]))
 					nmatch++;
 			}
 		}
@@ -1115,8 +1112,7 @@ func_get_detail(char *funcname,
 				Node	   *arg1 = lfirst(fargs);
 
 				if ((sourceType == UNKNOWNOID && IsA(arg1, Const)) ||
-					sourceType == targetType ||
-					IS_BINARY_COMPATIBLE(sourceType, targetType))
+					IsBinaryCompatible(sourceType, targetType))
 				{
 					/* Yup, it's a type coercion */
 					*funcid = InvalidOid;

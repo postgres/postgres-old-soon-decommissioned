@@ -282,23 +282,18 @@ RemoveType(char *typeName)		/* type name to be removed */
  *		use it.
  */
 void
-RemoveDomain(char *domainName, int behavior)		/* domain name to be removed */
+RemoveDomain(char *domainName, int behavior)
 {
 	Relation	relation;
 	HeapTuple	tup;
-	TupleDesc	description;
 	char		typtype;
-	bool		isnull;
-
 
 	/* Domains are stored as types.  Check for permissions on the type */
 	if (!pg_ownercheck(GetUserId(), domainName, TYPENAME))
 		elog(ERROR, "RemoveDomain: type '%s': permission denied",
 			 domainName);
 
-
 	relation = heap_openr(TypeRelationName, RowExclusiveLock);
-	description = RelationGetDescr(relation);
 
 	tup = SearchSysCache(TYPENAME,
 						 PointerGetDatum(domainName),
@@ -306,14 +301,11 @@ RemoveDomain(char *domainName, int behavior)		/* domain name to be removed */
 	if (!HeapTupleIsValid(tup))
 		elog(ERROR, "RemoveType: type '%s' does not exist", domainName);
 
-
 	/* Check that this is actually a domain */
-	typtype = DatumGetChar(heap_getattr(tup, Anum_pg_type_typtype, description, &isnull));
-	Assert(!isnull);
+	typtype = ((Form_pg_type) GETSTRUCT(tup))->typtype;
 
-	if (typtype != 'd') {
+	if (typtype != 'd')
 		elog(ERROR, "%s is not a domain", domainName);
-	}
 
 	/* CASCADE unsupported */
 	if (behavior == CASCADE) {

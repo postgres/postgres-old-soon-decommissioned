@@ -354,9 +354,7 @@ oper_select_candidate(int nargs,
 		{
 			if (input_typeids[i] != UNKNOWNOID)
 			{
-				if (current_typeids[i] == input_typeids[i] ||
-					IS_BINARY_COMPATIBLE(current_typeids[i],
-										 input_typeids[i]))
+				if (IsBinaryCompatible(current_typeids[i], input_typeids[i]))
 					nmatch++;
 			}
 		}
@@ -736,10 +734,8 @@ compatible_oper(char *op, Oid arg1, Oid arg2, bool noError)
 
 	/* but is it good enough? */
 	opform = (Form_pg_operator) GETSTRUCT(optup);
-	if ((opform->oprleft == arg1 ||
-		 IS_BINARY_COMPATIBLE(opform->oprleft, arg1)) &&
-		(opform->oprright == arg2 ||
-		 IS_BINARY_COMPATIBLE(opform->oprright, arg2)))
+	if (IsBinaryCompatible(opform->oprleft, arg1) &&
+		IsBinaryCompatible(opform->oprright, arg2))
 		return optup;
 
 	/* nope... */

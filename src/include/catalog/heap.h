@@ -47,11 +47,11 @@ extern void AddRelationRawConstraints(Relation rel,
 						  List *rawColDefaults,
 						  List *rawConstraints);
 
-extern Node *cookDefault(ParseState *pstate
-						, Node *raw_default
-						, Oid atttypid
-						, int32 atttypmod
-						, char *attname);
+extern Node *cookDefault(ParseState *pstate,
+						 Node *raw_default,
+						 Oid atttypid,
+						 int32 atttypmod,
+						 char *attname);
 
 extern int	RemoveCheckConstraint(Relation rel, const char *constrName, bool inh);
 

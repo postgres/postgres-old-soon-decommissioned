@@ -241,8 +241,8 @@ typedef FormData_pg_attribute *Form_pg_attribute;
 { 1247, {"typalign"},	   18, 0,	1, 15, 0, -1, -1, true, 'p', false, 'c', false, false }, \
 { 1247, {"typstorage"},    18, 0,	1, 16, 0, -1, -1, true, 'p', false, 'c', false, false }, \
 { 1247, {"typnotnull"},    16, 0,   1, 17, 0, -1, -1, true, 'p', false, 'c', false, false }, \
-{ 1247, {"typmod"},        23, 0,	4, 18, 0, -1, -1, true, 'p', false, 'i', false, false }, \
-{ 1247, {"typbasetype"},   26, 0,	4, 19, 0, -1, -1, true, 'p', false, 'i', false, false }, \
+{ 1247, {"typbasetype"},   26, 0,	4, 18, 0, -1, -1, true, 'p', false, 'i', false, false }, \
+{ 1247, {"typtypmod"},     23, 0,	4, 19, 0, -1, -1, true, 'p', false, 'i', false, false }, \
 { 1247, {"typndims"},      23, 0,	4, 20, 0, -1, -1, true, 'p', false, 'i', false, false }, \
 { 1247, {"typdefaultbin"}, 25, 0,  -1, 21, 0, -1, -1, false, 'x', false, 'i', false, false }, \
 { 1247, {"typdefault"},    25, 0,  -1, 22, 0, -1, -1, false, 'x', false, 'i', false, false }
@@ -265,8 +265,8 @@ DATA(insert ( 1247 typsend			24 0  4  14 0 -1 -1 t p f i f f));
 DATA(insert ( 1247 typalign			18 0  1  15 0 -1 -1 t p f c f f));
 DATA(insert ( 1247 typstorage		18 0  1  16 0 -1 -1 t p f c f f));
 DATA(insert ( 1247 typnotnull		16 0  1  17 0 -1 -1 t p f c f f));
-DATA(insert ( 1247 typmod			23 0  4  18 0 -1 -1 t p f i f f));
-DATA(insert ( 1247 typbasetype		26 0  4  19 0 -1 -1 t p f i f f));
+DATA(insert ( 1247 typbasetype		26 0  4  18 0 -1 -1 t p f i f f));
+DATA(insert ( 1247 typtypmod		23 0  4  19 0 -1 -1 t p f i f f));
 DATA(insert ( 1247 typndims			23 0  4  20 0 -1 -1 t p f i f f));
 DATA(insert ( 1247 typdefaultbin	25 0 -1  21 0 -1 -1 f x f i f f));
 DATA(insert ( 1247 typdefault		25 0 -1  22 0 -1 -1 f x f i f f));

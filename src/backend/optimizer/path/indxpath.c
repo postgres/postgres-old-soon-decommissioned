@@ -900,9 +900,9 @@ indexable_operator(Expr *clause, Oid opclass, bool indexkey_on_left)
 	 */
 	if (ltype == indexkeytype && rtype == indexkeytype)
 		return InvalidOid;		/* no chance for a different operator */
-	if (ltype != indexkeytype && !IS_BINARY_COMPATIBLE(ltype, indexkeytype))
+	if (!IsBinaryCompatible(ltype, indexkeytype))
 		return InvalidOid;
-	if (rtype != indexkeytype && !IS_BINARY_COMPATIBLE(rtype, indexkeytype))
+	if (!IsBinaryCompatible(rtype, indexkeytype))
 		return InvalidOid;
 
 	/*

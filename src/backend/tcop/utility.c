@@ -276,12 +276,12 @@ ProcessUtility(Node *parsetree,
 							}
 							break;
 
-						case DROP_TYPE_P:
+						case DROP_TYPE:
 							/* RemoveType does its own permissions checks */
 							RemoveType(relname);
 							break;
 
-						case DROP_DOMAIN_P:
+						case DROP_DOMAIN:
 							/* RemoveDomain does its own permissions checks */
 							RemoveDomain(relname, stmt->behavior);
 							break;

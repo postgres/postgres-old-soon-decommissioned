@@ -1053,7 +1053,7 @@ listDomains(const char *name)
 
 	snprintf(buf, sizeof(buf),
 		 "SELECT t.typname as \"%s\",\n"
-		 "       format_type( t.typbasetype, t.typmod) as \"%s\",\n"
+		 "       format_type( t.typbasetype, t.typtypmod) as \"%s\",\n"
 		 "       CASE WHEN t.typnotnull AND t.typdefault IS NOT NULL THEN 'not null default '||t.typdefault\n"
 		 "            WHEN t.typnotnull AND t.typdefault IS NULL THEN 'not null'\n"
 		 "            WHEN NOT t.typnotnull AND t.typdefault IS NOT NULL THEN 'default '||t.typdefault\n"

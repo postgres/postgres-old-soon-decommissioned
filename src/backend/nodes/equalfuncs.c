@@ -878,6 +878,8 @@ _equalDropStmt(DropStmt *a, DropStmt *b)
 		return false;
 	if (a->removeType != b->removeType)
 		return false;
+	if (a->behavior != b->behavior)
+		return false;
 
 	return true;
 }

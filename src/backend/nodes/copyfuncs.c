@@ -2026,6 +2026,7 @@ _copyDropStmt(DropStmt *from)
 
 	Node_Copy(from, newnode, names);
 	newnode->removeType = from->removeType;
+	newnode->behavior = from->behavior;
 
 	return newnode;
 }
@@ -2238,7 +2239,6 @@ _copyCreateDomainStmt(CreateDomainStmt *from)
 
 	if (from->domainname)
 		newnode->domainname = pstrdup(from->domainname);
-
 	Node_Copy(from, newnode, typename);
 	Node_Copy(from, newnode, constraints);
 
