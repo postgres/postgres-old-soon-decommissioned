@@ -994,7 +994,6 @@ END IF;
 
        <para>
         Here is an example:
-       </para>
 
 <programlisting>
 IF number = 0 THEN
