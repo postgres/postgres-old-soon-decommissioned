@@ -1273,7 +1273,7 @@ parseNameAndArgTypes(const char *string, const char *caller,
 		if (*nargs >= FUNC_MAX_ARGS)
 			ereport(ERROR,
 					(errcode(ERRCODE_TOO_MANY_ARGUMENTS),
-					 errmsg("too many argument datatypes")));
+					 errmsg("too many arguments")));
 
 		argtypes[*nargs] = typeid;
 		(*nargs)++;

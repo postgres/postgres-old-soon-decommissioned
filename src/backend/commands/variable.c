@@ -242,7 +242,7 @@ set_tz(const char *tz)
 	strcpy(tzbuf, "TZ=");
 	strncpy(tzbuf + 3, tz, sizeof(tzbuf) - 4);
 	if (putenv(tzbuf) != 0)		/* shouldn't happen? */
-		elog(LOG, "unable to set TZ environment variable");
+		elog(LOG, "could not set TZ environment variable");
 	tzset();
 }
 
@@ -268,7 +268,7 @@ clear_tz(void)
 	{
 		strcpy(tzbuf, "=");
 		if (putenv(tzbuf) != 0)
-			elog(LOG, "unable to clear TZ environment variable");
+			elog(LOG, "could not clear TZ environment variable");
 		tzset();
 	}
 }
@@ -695,7 +695,7 @@ assign_client_encoding(const char *value, bool doit, bool interactive)
 		if (interactive)
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("conversion between \"%s\" and \"%s\" is not supported",
+					 errmsg("conversion between %s and %s is not supported",
 							value, GetDatabaseEncodingName())));
 		return NULL;
 	}

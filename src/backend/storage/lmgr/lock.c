@@ -1197,7 +1197,7 @@ LockReleaseAll(LOCKMETHOD lockmethod, PGPROC *proc,
 	lockMethodTable = LockMethodTable[lockmethod];
 	if (!lockMethodTable)
 	{
-		elog(WARNING, "bad lockmethod %d", lockmethod);
+		elog(WARNING, "bad lock method: %d", lockmethod);
 		return FALSE;
 	}
 

@@ -312,7 +312,7 @@ generate_nonunion_plan(SetOperationStmt *op, Query *parse,
 			cmd = op->all ? SETOPCMD_EXCEPT_ALL : SETOPCMD_EXCEPT;
 			break;
 		default:
-			elog(ERROR, "unrecognized set operation code: %d",
+			elog(ERROR, "unrecognized set op: %d",
 				 (int) op->op);
 			cmd = SETOPCMD_INTERSECT;	/* keep compiler quiet */
 			break;

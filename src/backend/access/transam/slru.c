@@ -811,7 +811,7 @@ restart:;
 	{
 		LWLockRelease(ctl->locks->ControlLock);
 		ereport(LOG,
-				(errmsg("unable to truncate \"%s\": apparent wraparound",
+				(errmsg("could not truncate \"%s\": apparent wraparound",
 						ctl->Dir)));
 		return;
 	}

@@ -703,7 +703,7 @@ TypeGetTupleDesc(Oid typeoid, List *colaliases)
 	else if (functyptype == 'p' && typeoid == RECORDOID)
 		ereport(ERROR,
 				(errcode(ERRCODE_DATATYPE_MISMATCH),
-				 errmsg("unable to determine tuple description for function returning record")));
+				 errmsg("could not determine tuple description for function returning record")));
 	else
 	{
 		/* crummy error message, but parser should have caught this */

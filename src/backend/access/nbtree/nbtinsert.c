@@ -1064,7 +1064,7 @@ _bt_findsplitloc(Relation rel,
 	 * just in case ...
 	 */
 	if (!state.have_split)
-		elog(ERROR, "cannot find a feasible split point for \"%s\"",
+		elog(ERROR, "could not find a feasible split point for \"%s\"",
 			 RelationGetRelationName(rel));
 
 	*newitemonleft = state.newitemonleft;

@@ -243,7 +243,8 @@ gistdropscan(IndexScanDesc s)
 		prev = l;
 
 	if (l == (GISTScanList) NULL)
-		elog(ERROR, "GiST scan list corrupted -- cannot find 0x%p", (void *) s);
+		elog(ERROR, "GiST scan list corrupted -- could not find 0x%p",
+			 (void *) s);
 
 	if (prev == (GISTScanList) NULL)
 		GISTScans = l->gsl_next;

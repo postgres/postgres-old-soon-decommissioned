@@ -264,7 +264,7 @@ InitQueryHashTable(void)
 								   HASH_ELEM);
 
 	if (!prepared_queries)
-		elog(ERROR, "unable to create hash table");
+		elog(ERROR, "could not create hash table");
 }
 
 /*
@@ -336,7 +336,7 @@ StorePreparedStatement(const char *stmt_name,
 
 	/* Shouldn't get a failure, nor a duplicate entry */
 	if (!entry || found)
-		elog(ERROR, "unable to store prepared statement \"%s\"",
+		elog(ERROR, "could not store prepared statement \"%s\"",
 			 stmt_name);
 
 	/* Fill in the hash table entry with copied data */

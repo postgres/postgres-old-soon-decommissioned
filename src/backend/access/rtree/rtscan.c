@@ -248,7 +248,8 @@ rtdropscan(IndexScanDesc s)
 		prev = l;
 
 	if (l == (RTScanList) NULL)
-		elog(ERROR, "rtree scan list corrupted -- cannot find 0x%p", (void *) s);
+		elog(ERROR, "rtree scan list corrupted -- could not find 0x%p",
+			 (void *) s);
 
 	if (prev == (RTScanList) NULL)
 		RTScans = l->rtsl_next;

@@ -189,7 +189,7 @@ _equalParam(Param *a, Param *b)
 			COMPARE_SCALAR_FIELD(paramid);
 			break;
 		default:
-			elog(ERROR, "unrecognized paramkind value: %d",
+			elog(ERROR, "unrecognized paramkind: %d",
 				 a->paramkind);
 	}
 

@@ -1151,7 +1151,7 @@ transformTableConstraint(ParseState *pstate, CreateStmtContext *cxt,
 		case CONSTR_ATTR_NOT_DEFERRABLE:
 		case CONSTR_ATTR_DEFERRED:
 		case CONSTR_ATTR_IMMEDIATE:
-			elog(ERROR, "illegal context for constraint type %d",
+			elog(ERROR, "invalid context for constraint type %d",
 				 constraint->contype);
 			break;
 
@@ -2756,11 +2756,11 @@ transformExecuteStmt(ParseState *pstate, ExecuteStmt *stmt)
 			if (pstate->p_hasSubLinks)
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-						 errmsg("cannot use sub-selects in EXECUTE parameters")));
+						 errmsg("cannot use sub-select in EXECUTE parameter")));
 			if (pstate->p_hasAggs)
 				ereport(ERROR,
 						(errcode(ERRCODE_GROUPING_ERROR),
-						 errmsg("cannot use aggregates in EXECUTE parameters")));
+						 errmsg("cannot use aggregate in EXECUTE parameter")));
 
 			given_type_id = exprType(expr);
 			expected_type_id = lfirsto(paramtypes);

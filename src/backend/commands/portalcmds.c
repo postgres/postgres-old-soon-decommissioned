@@ -365,7 +365,7 @@ PersistHoldablePortal(Portal portal)
 		if (portal->posOverflow)		/* oops, cannot trust portalPos */
 			ereport(ERROR,
 					(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
-					 errmsg("unable to reposition held cursor")));
+					 errmsg("could not reposition held cursor")));
 
 		tuplestore_rescan(portal->holdStore);
 

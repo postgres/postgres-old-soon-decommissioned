@@ -2642,7 +2642,7 @@ StartupXLOG(void)
 		}
 		else
 			ereport(PANIC,
-					(errmsg("unable to locate a valid checkpoint record")));
+					(errmsg("could not locate a valid checkpoint record")));
 	}
 	LastRec = RecPtr = checkPointLoc;
 	memcpy(&checkPoint, XLogRecGetData(record), sizeof(CheckPoint));

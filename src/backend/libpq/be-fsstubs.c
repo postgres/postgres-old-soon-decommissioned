@@ -99,7 +99,7 @@ lo_open(PG_FUNCTION_ARGS)
 	{							/* lookup failed */
 		MemoryContextSwitchTo(currentContext);
 #if FSDB
-		elog(DEBUG4, "cannot open large object %u", lobjId);
+		elog(DEBUG4, "could not open large object %u", lobjId);
 #endif
 		PG_RETURN_INT32(-1);
 	}

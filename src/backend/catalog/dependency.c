@@ -1725,7 +1725,7 @@ getObjectDescription(const ObjectAddress *object)
 			}
 
 		default:
-			appendStringInfo(&buffer, "unknown object %u %u %d",
+			appendStringInfo(&buffer, "unrecognized object %u %u %d",
 							 object->classId,
 							 object->objectId,
 							 object->objectSubId);

@@ -752,7 +752,7 @@ process_implied_equality(Query *root,
 		 */
 		ereport(ERROR,
 				(errcode(ERRCODE_UNDEFINED_FUNCTION),
-				 errmsg("unable to identify an equality operator for types %s and %s",
+				 errmsg("could not identify an equality operator for types %s and %s",
 						format_type_be(ltype), format_type_be(rtype))));
 	}
 	pgopform = (Form_pg_operator) GETSTRUCT(eq_operator);

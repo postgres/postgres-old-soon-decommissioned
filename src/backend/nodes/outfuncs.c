@@ -1322,7 +1322,7 @@ _outRangeTblEntry(StringInfo str, RangeTblEntry *node)
 			WRITE_NODE_FIELD(joinaliasvars);
 			break;
 		default:
-			elog(ERROR, "unrecognized rte kind: %d", (int) node->rtekind);
+			elog(ERROR, "unrecognized RTE kind: %d", (int) node->rtekind);
 			break;
 	}
 

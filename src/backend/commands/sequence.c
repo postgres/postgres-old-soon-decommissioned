@@ -856,8 +856,8 @@ read_info(SeqTable elm, Relation rel, Buffer *buf)
 	sm = (sequence_magic *) PageGetSpecialPointer(page);
 
 	if (sm->magic != SEQ_MAGIC)
-		elog(ERROR, "bad magic number (%08X) in sequence \"%s\"",
-			 sm->magic, RelationGetRelationName(rel));
+		elog(ERROR, "bad magic number in sequence \"%s\": %08X",
+			 RelationGetRelationName(rel), sm->magic);
 
 	lp = PageGetItemId(page, FirstOffsetNumber);
 	Assert(ItemIdIsUsed(lp));
@@ -954,7 +954,7 @@ init_params(List *options, Form_pg_sequence new)
 		if (new->increment_by == 0)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-					 errmsg("can't INCREMENT by zero")));
+					 errmsg("cannot increment by zero")));
 	}
 
 	/* MAXVALUE */

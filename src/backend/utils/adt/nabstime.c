@@ -727,7 +727,7 @@ abstime_timestamptz(PG_FUNCTION_ARGS)
 		case INVALID_ABSTIME:
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("cannot convert \"invalid\" abstime to timestamptz")));
+					 errmsg("cannot convert \"invalid\" abstime to timestamp")));
 			TIMESTAMP_NOBEGIN(result);
 			break;
 

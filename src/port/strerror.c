@@ -23,7 +23,7 @@ strerror(int errnum)
 
 	if (errnum < 0 || errnum > sys_nerr)
 	{
-		sprintf(buf, "unknown error %d", errnum);
+		sprintf(buf, "unrecognized error %d", errnum);
 		return buf;
 	}
 

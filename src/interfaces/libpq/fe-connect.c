@@ -448,7 +448,7 @@ connectOptions2(PGconn *conn)
 		{
 			conn->status = CONNECTION_BAD;
 			printfPQExpBuffer(&conn->errorMessage,
-							  libpq_gettext("unknown sslmode \"%s\" requested\n"),
+							  libpq_gettext("unrecognized sslmode: \"%s\"\n"),
 							  conn->sslmode);
 			return false;
 		}

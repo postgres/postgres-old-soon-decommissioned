@@ -2022,7 +2022,7 @@ pgstat_write_statsfile(void)
 	{
 		ereport(LOG,
 				(errcode_for_file_access(),
-				 errmsg("cannot write temp statistics file \"%s\": %m",
+				 errmsg("could not write temp statistics file \"%s\": %m",
 						pgStat_tmpfname)));
 		return;
 	}

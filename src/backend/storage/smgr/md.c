@@ -608,7 +608,7 @@ mdnblocks(Relation reln)
 			 */
 			v->mdfd_chain = _mdfd_openseg(reln, segno, O_CREAT);
 			if (v->mdfd_chain == (MdfdVec *) NULL)
-				elog(ERROR, "could not count blocks for \"%s\": %m",
+				elog(ERROR, "could not count blocks of \"%s\": %m",
 					 RelationGetRelationName(reln));
 		}
 

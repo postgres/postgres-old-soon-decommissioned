@@ -312,8 +312,8 @@ get_atttypetypmod(Oid relid, AttrNumber attnum,
 						Int16GetDatum(attnum),
 						0, 0);
 	if (!HeapTupleIsValid(tp))
-		elog(ERROR, "cache lookup failed for relation %u attribute %d",
-			 relid, attnum);
+		elog(ERROR, "cache lookup failed for attribute %d of relation %u",
+			 attnum, relid);
 	att_tup = (Form_pg_attribute) GETSTRUCT(tp);
 
 	*typid = att_tup->atttypid;

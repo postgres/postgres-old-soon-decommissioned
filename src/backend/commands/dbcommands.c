@@ -334,12 +334,12 @@ createdb(const CreatedbStmt *stmt)
 	if (mkdir(target_dir, S_IRWXU) != 0)
 		ereport(ERROR,
 				(errcode_for_file_access(),
-				 errmsg("unable to create database directory \"%s\": %m",
+				 errmsg("could not create database directory \"%s\": %m",
 						target_dir)));
 	if (rmdir(target_dir) != 0)
 		ereport(ERROR,
 				(errcode_for_file_access(),
-				 errmsg("unable to remove temp directory \"%s\": %m",
+				 errmsg("could not remove temp directory \"%s\": %m",
 						target_dir)));
 
 	/* Make the symlink, if needed */

@@ -1015,7 +1015,7 @@ _bt_walk_left(Relation rel, Buffer buf)
 			 * if there's anything wrong.
 			 */
 			if (opaque->btpo_prev == lblkno)
-				elog(ERROR, "cannot find left sibling in \"%s\"",
+				elog(ERROR, "could not find left sibling in \"%s\"",
 					 RelationGetRelationName(rel));
 			/* Okay to try again with new lblkno value */
 		}

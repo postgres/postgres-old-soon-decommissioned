@@ -303,7 +303,7 @@ if [ "$op" = "stop" -o "$op" = "restart" -o "$op" = "reload" ];then
 	fi
 
     else # ! -f $PIDFILE
-	echo "$CMDNAME: cannot find $PIDFILE" 1>&2
+	echo "$CMDNAME: could not find $PIDFILE" 1>&2
 	echo "Is postmaster running?" 1>&2
 	if [ "$op" = "restart" ];then
 	    echo "starting postmaster anyway" 1>&2

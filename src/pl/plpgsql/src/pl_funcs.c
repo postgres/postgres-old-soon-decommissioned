@@ -593,7 +593,7 @@ dump_stmt(PLpgSQL_stmt * stmt)
 			dump_perform((PLpgSQL_stmt_perform *) stmt);
 			break;
 		default:
-			elog(ERROR, "unknown cmd_type: %d", stmt->cmd_type);
+			elog(ERROR, "unrecognized cmd_type: %d", stmt->cmd_type);
 			break;
 	}
 }

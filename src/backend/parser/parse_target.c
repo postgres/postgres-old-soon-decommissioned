@@ -496,7 +496,7 @@ checkInsertTargets(ParseState *pstate, List *cols, List **attrnos)
 			if (intMember(attrno, *attrnos))
 				ereport(ERROR,
 						(errcode(ERRCODE_DUPLICATE_COLUMN),
-						 errmsg("attribute \"%s\" specified more than once in INSERT list",
+						 errmsg("attribute \"%s\" specified more than once",
 								name)));
 			*attrnos = lappendi(*attrnos, attrno);
 		}

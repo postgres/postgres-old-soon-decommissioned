@@ -311,7 +311,7 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 					 errmsg("function %s is not unique",
 							func_signature_string(funcname, nargs,
 												  actual_arg_types)),
-					 errhint("Unable to choose a best candidate function. "
+					 errhint("Could not choose a best candidate function. "
 							 "You may need to add explicit typecasts.")));
 		else
 			ereport(ERROR,

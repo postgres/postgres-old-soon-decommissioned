@@ -170,7 +170,7 @@ ExecSetOp(SetOpState *node)
 						0 : (node->numLeft - node->numRight);
 					break;
 				default:
-					elog(ERROR, "unrecognized setop code: %d",
+					elog(ERROR, "unrecognized set op: %d",
 						 (int) plannode->cmd);
 					break;
 			}

@@ -146,7 +146,7 @@ write_group_file(Relation grel)
 	if (fp == NULL)
 		ereport(ERROR,
 				(errcode_for_file_access(),
-				 errmsg("unable to write temp file \"%s\": %m", tempname)));
+				 errmsg("could not write temp file \"%s\": %m", tempname)));
 
 	/*
 	 * Read pg_group and write the file.  Note we use SnapshotSelf to ensure
@@ -245,7 +245,7 @@ write_group_file(Relation grel)
 	if (ferror(fp))
 		ereport(ERROR,
 				(errcode_for_file_access(),
-				 errmsg("unable to write temp file \"%s\": %m", tempname)));
+				 errmsg("could not write temp file \"%s\": %m", tempname)));
 	FreeFile(fp);
 
 	/*
@@ -294,7 +294,7 @@ write_user_file(Relation urel)
 	if (fp == NULL)
 		ereport(ERROR,
 				(errcode_for_file_access(),
-				 errmsg("unable to write temp file \"%s\": %m", tempname)));
+				 errmsg("could not write temp file \"%s\": %m", tempname)));
 
 	/*
 	 * Read pg_shadow and write the file.  Note we use SnapshotSelf to ensure
@@ -376,7 +376,7 @@ write_user_file(Relation urel)
 	if (ferror(fp))
 		ereport(ERROR,
 				(errcode_for_file_access(),
-				 errmsg("unable to write temp file \"%s\": %m", tempname)));
+				 errmsg("could not write temp file \"%s\": %m", tempname)));
 	FreeFile(fp);
 
 	/*

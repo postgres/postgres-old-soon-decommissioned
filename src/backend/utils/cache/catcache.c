@@ -766,7 +766,7 @@ CatalogCacheFlushRelation(Oid relId)
 #ifdef CACHEDEBUG
 #define InitCatCache_DEBUG2 \
 do { \
-	elog(DEBUG2, "InitCatCache: rel=%s id=%d nkeys=%d size=%d\n", \
+	elog(DEBUG2, "InitCatCache: rel=%s id=%d nkeys=%d size=%d", \
 		cp->cc_relname, cp->id, cp->cc_nkeys, cp->cc_nbuckets); \
 } while(0)
 

@@ -76,7 +76,7 @@ ConversionCreate(const char *conname, Oid connamespace,
 								  contoencoding))
 			ereport(ERROR,
 					(errcode(ERRCODE_DUPLICATE_OBJECT),
-					 errmsg("default conversion for \"%s\" to \"%s\" already exists",
+					 errmsg("default conversion for %s to %s already exists",
 							pg_encoding_to_char(conforencoding),
 							pg_encoding_to_char(contoencoding))));
 	}

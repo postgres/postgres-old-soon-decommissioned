@@ -278,10 +278,10 @@ DefineOpClass(CreateOpClassStmt *stmt)
 			if (opclass->opcintype == typeoid && opclass->opcdefault)
 				ereport(ERROR,
 						(errcode(ERRCODE_DUPLICATE_OBJECT),
-						 errmsg("cannot make class \"%s\" be default for type %s",
+						 errmsg("could not make class \"%s\" be default for type %s",
 								opcname,
 								TypeNameToString(stmt->datatype)),
-						 errdetail("class \"%s\" already is the default",
+						 errdetail("Class \"%s\" already is the default.",
 								   NameStr(opclass->opcname))));
 		}
 

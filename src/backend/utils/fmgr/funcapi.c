@@ -35,7 +35,7 @@ init_MultiFuncCall(PG_FUNCTION_ARGS)
 	if (fcinfo->resultinfo == NULL || !IsA(fcinfo->resultinfo, ReturnSetInfo))
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("set function called in context that does not accept a set result")));
+				 errmsg("set-valued function called in context that cannot accept a set")));
 
 	if (fcinfo->flinfo->fn_extra == NULL)
 	{
