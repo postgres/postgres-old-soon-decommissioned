@@ -595,7 +595,7 @@ ProcessUtility(Node *parsetree,
 			{
 				ViewStmt   *stmt = (ViewStmt *) parsetree;
 
-				DefineView(stmt->view, stmt->query);
+				DefineView(stmt->view, stmt->query, stmt->replace);
 			}
 			break;
 

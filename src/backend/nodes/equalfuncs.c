@@ -1003,6 +1003,8 @@ _equalRuleStmt(RuleStmt *a, RuleStmt *b)
 		return false;
 	if (a->instead != b->instead)
 		return false;
+	if (a->replace != b->replace)
+		return false;
 	if (!equal(a->actions, b->actions))
 		return false;
 
@@ -1066,6 +1068,8 @@ _equalViewStmt(ViewStmt *a, ViewStmt *b)
 	if (!equal(a->aliases, b->aliases))
 		return false;
 	if (!equal(a->query, b->query))
+		return false;
+	if (a->replace != b->replace)
 		return false;
 
 	return true;

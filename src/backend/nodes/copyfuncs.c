@@ -2173,6 +2173,7 @@ _copyRuleStmt(RuleStmt *from)
 	Node_Copy(from, newnode, whereClause);
 	newnode->event = from->event;
 	newnode->instead = from->instead;
+	newnode->replace = from->replace;
 	Node_Copy(from, newnode, actions);
 
 	return newnode;
@@ -2238,6 +2239,7 @@ _copyViewStmt(ViewStmt *from)
 	Node_Copy(from, newnode, view);
 	Node_Copy(from, newnode, aliases);
 	Node_Copy(from, newnode, query);
+	newnode->replace = from->replace;
 
 	return newnode;
 }

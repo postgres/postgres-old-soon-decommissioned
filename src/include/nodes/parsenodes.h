@@ -1371,6 +1371,7 @@ typedef struct RuleStmt
 	CmdType		event;			/* SELECT, INSERT, etc */
 	bool		instead;		/* is a 'do instead'? */
 	List	   *actions;		/* the action statements */
+	bool		replace;		/* OR REPLACE */
 } RuleStmt;
 
 /* ----------------------
@@ -1436,6 +1437,7 @@ typedef struct ViewStmt
 	RangeVar   *view;			/* the view to be created */
 	List	   *aliases;		/* target column names */
 	Query	   *query;			/* the SQL statement */
+	bool		replace;		/* replace an existing view? */
 } ViewStmt;
 
 /* ----------------------
