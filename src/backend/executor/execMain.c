@@ -101,7 +101,6 @@ TupleDesc
 ExecutorStart(QueryDesc *queryDesc, EState *estate)
 {
 	TupleDesc	result;
-	Snapshot	es_snapshot;
 
 	/* sanity checks */
 	Assert(queryDesc != NULL);
@@ -121,22 +120,7 @@ ExecutorStart(QueryDesc *queryDesc, EState *estate)
 	 * for the life of this query, even if it outlives the current command
 	 * and current snapshot.
 	 */
-	if (QuerySnapshot == NULL)	/* should be set already, but... */
-		SetQuerySnapshot();
-
-	es_snapshot = (Snapshot) palloc(sizeof(SnapshotData));
-	memcpy(es_snapshot, QuerySnapshot, sizeof(SnapshotData));
-	if (es_snapshot->xcnt > 0)
-	{
-		es_snapshot->xip = (TransactionId *)
-			palloc(es_snapshot->xcnt * sizeof(TransactionId));
-		memcpy(es_snapshot->xip, QuerySnapshot->xip,
-			   es_snapshot->xcnt * sizeof(TransactionId));
-	}
-	else
-		es_snapshot->xip = NULL;
-
-	estate->es_snapshot = es_snapshot;
+	estate->es_snapshot = CopyQuerySnapshot();
 
 	/*
 	 * Initialize the plan

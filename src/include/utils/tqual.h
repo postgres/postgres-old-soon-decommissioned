@@ -112,6 +112,7 @@ extern HTSV_Result HeapTupleSatisfiesVacuum(HeapTupleHeader tuple,
 
 extern Snapshot GetSnapshotData(bool serializable);
 extern void SetQuerySnapshot(void);
+extern Snapshot CopyQuerySnapshot(void);
 extern void FreeXactSnapshot(void);
 
 #endif   /* TQUAL_H */
