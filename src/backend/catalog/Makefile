@@ -45,7 +45,7 @@ postgres.bki postgres.description: genbki.sh $(POSTGRES_BKI_SRCS) \
 install-data: $(BKIFILES) installdirs
 	$(INSTALL_DATA) postgres.bki         $(DESTDIR)$(datadir)/postgres.bki
 	$(INSTALL_DATA) postgres.description $(DESTDIR)$(datadir)/postgres.description
-	$(INSTALL_DATA) information_schema.sql $(DESTDIR)$(datadir)/information_schema.sql
+	$(INSTALL_DATA) $(srcdir)/information_schema.sql $(DESTDIR)$(datadir)/information_schema.sql
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(datadir)
