@@ -794,7 +794,7 @@ fmgr_security_definer(PG_FUNCTION_ARGS)
 {
 	Datum		result;
 	FmgrInfo   *save_flinfo;
-	struct fmgr_security_definer_cache *fcache;
+	struct fmgr_security_definer_cache * volatile fcache;
 	AclId		save_userid;
 	HeapTuple	tuple;
 
@@ -821,14 +821,25 @@ fmgr_security_definer(PG_FUNCTION_ARGS)
 		fcache = fcinfo->flinfo->fn_extra;
 
 	save_flinfo = fcinfo->flinfo;
-	fcinfo->flinfo = &fcache->flinfo;
-
 	save_userid = GetUserId();
-	SetUserId(fcache->userid);
-	result = FunctionCallInvoke(fcinfo);
-	SetUserId(save_userid);
+
+	PG_TRY();
+	{
+		fcinfo->flinfo = &fcache->flinfo;
+		SetUserId(fcache->userid);
+
+		result = FunctionCallInvoke(fcinfo);
+	}
+	PG_CATCH();
+	{
+		fcinfo->flinfo = save_flinfo;
+		SetUserId(save_userid);
+		PG_RE_THROW();
+	}
+	PG_END_TRY();
 
 	fcinfo->flinfo = save_flinfo;
+	SetUserId(save_userid);
 
 	return result;
 }
