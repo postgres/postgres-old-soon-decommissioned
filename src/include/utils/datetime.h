@@ -239,7 +239,7 @@ extern int	day_tab[2][13];
 
 #define JULIAN_MINYEAR (-4713)
 #define JULIAN_MINMONTH (11)
-#define JULIAN_MINDAY (23)
+#define JULIAN_MINDAY (24)
 
 #define IS_VALID_JULIAN(y,m,d) (((y) > JULIAN_MINYEAR) \
  || (((y) == JULIAN_MINYEAR) && (((m) > JULIAN_MINMONTH) \
