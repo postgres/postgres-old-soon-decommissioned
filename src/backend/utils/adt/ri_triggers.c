@@ -114,7 +114,7 @@ typedef struct RI_QueryHashEntry
  * Local data
  * ----------
  */
-static HTAB *ri_query_cache = (HTAB *) NULL;
+static HTAB *ri_query_cache = NULL;
 
 
 /* ----------

@@ -84,7 +84,7 @@ PLpgSQL_function *plpgsql_curr_compile;
  * Hash table for compiled functions
  * ----------
  */
-static HTAB *plpgsql_HashTable = (HTAB *) NULL;
+static HTAB *plpgsql_HashTable = NULL;
 
 typedef struct plpgsql_hashent
 {
@@ -1856,7 +1856,7 @@ plpgsql_HashTableLookup(PLpgSQL_func_hashkey *func_key)
 	if (hentry)
 		return hentry->function;
 	else
-		return (PLpgSQL_function *) NULL;
+		return NULL;
 }
 
 static void

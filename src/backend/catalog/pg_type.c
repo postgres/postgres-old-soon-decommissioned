@@ -336,7 +336,7 @@ TypeCreate(const char *typeName,
 								 baseType,
 								 (defaultTypeBin ?
 								  stringToNode(defaultTypeBin) :
-								  (void *) NULL),
+								  NULL),
 								 rebuildDeps);
 
 	/*

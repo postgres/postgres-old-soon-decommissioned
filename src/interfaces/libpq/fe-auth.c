@@ -173,7 +173,7 @@ pg_krb4_authname(char *PQerrormsg)
 		snprintf(PQerrormsg, PQERRORMSG_LENGTH,
 				 "pg_krb4_authname: krb_get_tf_fullname: %s\n",
 				 krb_err_txt[status]);
-		return (char *) NULL;
+		return NULL;
 	}
 	return name;
 }
@@ -220,8 +220,8 @@ pg_krb4_sendauth(char *PQerrormsg, int sock,
 						  hostname,
 						  realm,
 						  (u_long) 0,
-						  (MSG_DAT *) NULL,
-						  (CREDENTIALS *) NULL,
+						  NULL,
+						  NULL,
 						  NULL,
 						  laddr,
 						  raddr,
@@ -712,8 +712,8 @@ fe_getauthsvc(char *PQerrormsg)
 char *
 fe_getauthname(char *PQerrormsg)
 {
-	const char *name = (char *) NULL;
-	char	   *authn = (char *) NULL;
+	const char *name = NULL;
+	char	   *authn = NULL;
 	MsgType		authsvc;
 
 	authsvc = fe_getauthsvc(PQerrormsg);

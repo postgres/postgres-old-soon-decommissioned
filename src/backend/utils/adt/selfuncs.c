@@ -3822,7 +3822,7 @@ make_greater_string(const Const *str_const)
 	if (workstr != NULL)
 		pfree(workstr);
 
-	return (Const *) NULL;
+	return NULL;
 }
 
 /*

@@ -64,7 +64,7 @@ pg_atoi(char *s, int size, int c)
 	 * Some versions of strtol treat the empty string as an error, but
 	 * some seem not to.  Make an explicit test to be sure we catch it.
 	 */
-	if (s == (char *) NULL)
+	if (s == NULL)
 		elog(ERROR, "NULL pointer");
 	if (*s == 0)
 		ereport(ERROR,

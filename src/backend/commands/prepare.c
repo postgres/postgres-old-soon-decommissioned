@@ -323,7 +323,7 @@ StorePreparedStatement(const char *stmt_name,
 	 * out-of-memory failure only wastes memory and doesn't leave us with
 	 * an incomplete (ie corrupt) hashtable entry.
 	 */
-	qstring = query_string ? pstrdup(query_string) : (char *) NULL;
+	qstring = query_string ? pstrdup(query_string) : NULL;
 	query_list = (List *) copyObject(query_list);
 	plan_list = (List *) copyObject(plan_list);
 	argtype_list = listCopy(argtype_list);

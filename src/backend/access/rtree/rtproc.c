@@ -74,7 +74,7 @@ rt_box_size(PG_FUNCTION_ARGS)
 	/* NB: size is an output argument */
 	float	   *size = (float *) PG_GETARG_POINTER(1);
 
-	if (a == (BOX *) NULL || a->high.x <= a->low.x || a->high.y <= a->low.y)
+	if (a == NULL || a->high.x <= a->low.x || a->high.y <= a->low.y)
 		*size = 0.0;
 	else
 		*size = (float) ((a->high.x - a->low.x) * (a->high.y - a->low.y));

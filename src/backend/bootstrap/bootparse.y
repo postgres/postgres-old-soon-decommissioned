@@ -220,7 +220,7 @@ Boot_InsertStmt:
 					if (num_columns_read != numattr)
 						elog(ERROR, "incorrect number of columns in row (expected %d, got %d)",
 							 numattr, num_columns_read);
-					if (boot_reldesc == (Relation) NULL)
+					if (boot_reldesc == NULL)
 					{
 						elog(ERROR, "relation not open");
 						err_out();

@@ -76,7 +76,7 @@ gistfirst(IndexScanDesc s, ScanDirection dir)
 		while (n < FirstOffsetNumber || n > maxoff)
 		{
 			ReleaseBuffer(b);
-			if (so->s_stack == (GISTSTACK *) NULL)
+			if (so->s_stack == NULL)
 				return false;
 
 			stk = so->s_stack;
@@ -158,7 +158,7 @@ gistnext(IndexScanDesc s, ScanDirection dir)
 		while (n < FirstOffsetNumber || n > maxoff)
 		{
 			ReleaseBuffer(b);
-			if (so->s_stack == (GISTSTACK *) NULL)
+			if (so->s_stack == NULL)
 				return false;
 
 			stk = so->s_stack;

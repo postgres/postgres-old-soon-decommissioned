@@ -749,7 +749,7 @@ AlterDatabaseSet(AlterDatabaseSetStmt *stmt)
 		datum = heap_getattr(tuple, Anum_pg_database_datconfig,
 							 RelationGetDescr(rel), &isnull);
 
-		a = isnull ? ((ArrayType *) NULL) : DatumGetArrayTypeP(datum);
+		a = isnull ? NULL : DatumGetArrayTypeP(datum);
 
 		if (valuestr)
 			a = GUCArrayAdd(a, stmt->variable, valuestr);

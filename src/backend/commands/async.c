@@ -199,7 +199,7 @@ Async_Listen(char *relname, int pid)
 	lRel = heap_openr(ListenerRelationName, AccessExclusiveLock);
 
 	/* Detect whether we are already listening on this relname */
-	scan = heap_beginscan(lRel, SnapshotNow, 0, (ScanKey) NULL);
+	scan = heap_beginscan(lRel, SnapshotNow, 0, NULL);
 	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{
 		Form_pg_listener listener = (Form_pg_listener) GETSTRUCT(tuple);
@@ -292,7 +292,7 @@ Async_Unlisten(char *relname, int pid)
 
 	lRel = heap_openr(ListenerRelationName, AccessExclusiveLock);
 
-	scan = heap_beginscan(lRel, SnapshotNow, 0, (ScanKey) NULL);
+	scan = heap_beginscan(lRel, SnapshotNow, 0, NULL);
 	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{
 		Form_pg_listener listener = (Form_pg_listener) GETSTRUCT(tuple);
@@ -459,7 +459,7 @@ AtCommit_Notify(void)
 
 	lRel = heap_openr(ListenerRelationName, AccessExclusiveLock);
 	tdesc = RelationGetDescr(lRel);
-	scan = heap_beginscan(lRel, SnapshotNow, 0, (ScanKey) NULL);
+	scan = heap_beginscan(lRel, SnapshotNow, 0, NULL);
 
 	while ((lTuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{

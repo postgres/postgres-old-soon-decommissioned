@@ -2177,7 +2177,7 @@ make_agg(Query *root, List *tlist, List *qual,
 	plan->qual = qual;
 	plan->targetlist = tlist;
 	plan->lefttree = lefttree;
-	plan->righttree = (Plan *) NULL;
+	plan->righttree = NULL;
 
 	return node;
 }
@@ -2229,7 +2229,7 @@ make_group(Query *root,
 	plan->qual = NIL;
 	plan->targetlist = tlist;
 	plan->lefttree = lefttree;
-	plan->righttree = (Plan *) NULL;
+	plan->righttree = NULL;
 
 	return node;
 }

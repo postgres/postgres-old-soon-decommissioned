@@ -995,7 +995,7 @@ btree_xlog_cleanup(void)
 		/* if the two pages are all of their level, it's a only-page split */
 		is_only = P_LEFTMOST(lpageop) && P_RIGHTMOST(rpageop);
 
-		_bt_insert_parent(reln, lbuf, rbuf, (BTStack) NULL,
+		_bt_insert_parent(reln, lbuf, rbuf, NULL,
 						  split->is_root, is_only);
 	}
 	incomplete_splits = NIL;

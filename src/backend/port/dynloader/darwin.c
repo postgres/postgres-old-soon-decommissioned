@@ -50,7 +50,7 @@ pg_dlsym(void *handle, char *funcname)
 	else
 	{
 		free(symname);
-		return (PGFunction) NULL;
+		return NULL;
 	}
 }
 

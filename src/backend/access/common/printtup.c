@@ -509,7 +509,7 @@ debugStartup(DestReceiver *self, int operation, TupleDesc typeinfo)
 	 * show the return type of the tuples
 	 */
 	for (i = 0; i < natts; ++i)
-		printatt((unsigned) i + 1, attinfo[i], (char *) NULL);
+		printatt((unsigned) i + 1, attinfo[i], NULL);
 	printf("\t----\n");
 }
 

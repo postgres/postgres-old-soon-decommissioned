@@ -720,7 +720,7 @@ PLy_trigger_build_args(FunctionCallInfo fcinfo, PLyProcedure * proc, HeapTuple *
 
 		PyDict_SetItemString(pltdata, "old", Py_None);
 		PyDict_SetItemString(pltdata, "new", Py_None);
-		*rv = (HeapTuple) NULL;
+		*rv = NULL;
 
 		if (TRIGGER_FIRED_BY_INSERT(tdata->tg_event))
 			pltevent = PyString_FromString("INSERT");

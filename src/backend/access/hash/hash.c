@@ -180,7 +180,7 @@ hashinsert(PG_FUNCTION_ARGS)
 	if (IndexTupleHasNulls(itup))
 	{
 		pfree(itup);
-		PG_RETURN_POINTER((InsertIndexResult) NULL);
+		PG_RETURN_POINTER(NULL);
 	}
 
 	hitem = _hash_formitem(itup);

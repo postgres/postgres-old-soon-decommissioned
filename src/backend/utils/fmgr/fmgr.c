@@ -93,7 +93,7 @@ fmgr_isbuiltin(Oid id)
 		else
 			high = i - 1;
 	}
-	return (const FmgrBuiltin *) NULL;
+	return NULL;
 }
 
 /*
@@ -111,7 +111,7 @@ fmgr_lookupByName(const char *name)
 		if (strcmp(name, fmgr_builtins[i].funcName) == 0)
 			return fmgr_builtins + i;
 	}
-	return (const FmgrBuiltin *) NULL;
+	return NULL;
 }
 
 /*
@@ -384,7 +384,7 @@ fetch_finfo_record(void *filehandle, char *funcname)
 	/* Try to look up the info function */
 	infofunc = (PGFInfoFunction) lookup_external_function(filehandle,
 														  infofuncname);
-	if (infofunc == (PGFInfoFunction) NULL)
+	if (infofunc == NULL)
 	{
 		/* Not found --- assume version 0 */
 		pfree(infofuncname);

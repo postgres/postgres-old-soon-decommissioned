@@ -190,7 +190,7 @@ free_variable(struct variable * var)
 {
 	struct variable *var_next;
 
-	if (var == (struct variable *) NULL)
+	if (var == NULL)
 		return;
 	var_next = var->next;
 	ECPGfree(var);
@@ -206,7 +206,7 @@ free_variable(struct variable * var)
 static void
 free_statement(struct statement * stmt)
 {
-	if (stmt == (struct statement *) NULL)
+	if (stmt == NULL)
 		return;
 	free_variable(stmt->inlist);
 	free_variable(stmt->outlist);

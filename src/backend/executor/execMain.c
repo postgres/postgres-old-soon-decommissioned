@@ -782,7 +782,7 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 	 *
 	 * If EXPLAIN, skip creating the "into" relation.
 	 */
-	intoRelationDesc = (Relation) NULL;
+	intoRelationDesc = NULL;
 
 	if (do_select_into && !explainOnly)
 	{
@@ -1076,7 +1076,7 @@ lnext:	;
 		 *
 		 * Also, extract all the junk information we need.
 		 */
-		if ((junkfilter = estate->es_junkFilter) != (JunkFilter *) NULL)
+		if ((junkfilter = estate->es_junkFilter) != NULL)
 		{
 			Datum		datum;
 			HeapTuple	newTuple;

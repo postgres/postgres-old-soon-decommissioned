@@ -745,7 +745,7 @@ ProcWakeup(PGPROC *proc, int errType)
 	/* Proc should be sleeping ... */
 	if (proc->links.prev == INVALID_OFFSET ||
 		proc->links.next == INVALID_OFFSET)
-		return (PGPROC *) NULL;
+		return NULL;
 
 	/* Save next process before we zap the list link */
 	retProc = (PGPROC *) MAKE_PTR(proc->links.next);

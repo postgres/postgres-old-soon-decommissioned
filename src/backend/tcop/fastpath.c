@@ -206,7 +206,7 @@ fetch_fp_info(Oid func_id, struct fp_info * fip)
 	Form_pg_proc pp;
 
 	Assert(OidIsValid(func_id));
-	Assert(fip != (struct fp_info *) NULL);
+	Assert(fip != NULL);
 
 	/*
 	 * Since the validity of this structure is determined by whether the

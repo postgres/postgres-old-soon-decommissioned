@@ -126,7 +126,7 @@ _bt_freestack(BTStack stack)
 {
 	BTStack		ostack;
 
-	while (stack != (BTStack) NULL)
+	while (stack != NULL)
 	{
 		ostack = stack;
 		stack = stack->bts_parent;

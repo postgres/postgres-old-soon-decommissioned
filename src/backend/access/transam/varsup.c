@@ -77,7 +77,7 @@ GetNewTransactionId(void)
 	 * (SInvalLock would then mean primarily that PROCs couldn't be added/
 	 * removed while holding the lock.)
 	 */
-	if (MyProc != (PGPROC *) NULL)
+	if (MyProc != NULL)
 		MyProc->xid = xid;
 
 	LWLockRelease(XidGenLock);

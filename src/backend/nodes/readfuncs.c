@@ -129,7 +129,7 @@
 #define strtobool(x)  ((*(x) == 't') ? true : false)
 
 #define nullable_string(token,length)  \
-	((length) == 0 ? (char *) NULL : debackslash(token, length))
+	((length) == 0 ? NULL : debackslash(token, length))
 
 
 static Datum readDatum(bool typbyval);

@@ -267,7 +267,7 @@ ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot)
 	 * Handle the trivial case first.
 	 */
 	if (cleanLength == 0)
-		return (HeapTuple) NULL;
+		return NULL;
 
 	/*
 	 * Create the arrays that will hold the attribute values and the null

@@ -174,7 +174,7 @@ IpcMemoryDetach(int status, Datum shmaddr)
 static void
 IpcMemoryDelete(int status, Datum shmId)
 {
-	if (shmctl(DatumGetInt32(shmId), IPC_RMID, (struct shmid_ds *) NULL) < 0)
+	if (shmctl(DatumGetInt32(shmId), IPC_RMID, NULL) < 0)
 		elog(LOG, "shmctl(%d, %d, 0) failed: %m",
 			 DatumGetInt32(shmId), IPC_RMID);
 }
@@ -299,7 +299,7 @@ PGSharedMemoryCreate(uint32 size, bool makePrivate, int port)
 		 * quietly.
 		 */
 		shmdt(memAddress);
-		if (shmctl(shmid, IPC_RMID, (struct shmid_ds *) NULL) < 0)
+		if (shmctl(shmid, IPC_RMID, NULL) < 0)
 			continue;
 
 		/*

@@ -396,7 +396,7 @@ btrescan(PG_FUNCTION_ARGS)
 		if (scan->numberOfKeys > 0)
 			so->keyData = (ScanKey) palloc(scan->numberOfKeys * sizeof(ScanKeyData));
 		else
-			so->keyData = (ScanKey) NULL;
+			so->keyData = NULL;
 		scan->opaque = so;
 	}
 
@@ -459,7 +459,7 @@ btendscan(PG_FUNCTION_ARGS)
 		ItemPointerSetInvalid(iptr);
 	}
 
-	if (so->keyData != (ScanKey) NULL)
+	if (so->keyData != NULL)
 		pfree(so->keyData);
 	pfree(so);
 

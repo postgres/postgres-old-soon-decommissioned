@@ -58,7 +58,7 @@ matching_tlist_expr(Node *node, List *targetlist)
 	if (tlentry)
 		return tlentry->expr;
 
-	return (Node *) NULL;
+	return NULL;
 }
 #endif
 
@@ -76,7 +76,7 @@ tlist_member(Node *node, List *targetlist)
 	if (tlentry)
 		return tlentry->resdom;
 
-	return (Resdom *) NULL;
+	return NULL;
 }
 
 /*

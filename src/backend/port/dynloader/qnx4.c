@@ -28,7 +28,7 @@
 void *
 pg_dlopen(char *filename)
 {
-	return (void *) NULL;
+	return NULL;
 }
 
 PGFunction

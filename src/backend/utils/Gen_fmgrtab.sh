@@ -223,7 +223,7 @@ cat >> "$$-$TABLEFILE" <<FuNkYfMgRtAbStUfF
   /* dummy entry is easier than getting rid of comma after last real one */
   /* (not that there has ever been anything wrong with *having* a
      comma after the last field in an array initializer) */
-  { 0, NULL, 0, false, false, (PGFunction) NULL }
+  { 0, NULL, 0, false, false, NULL }
 };
 
 /* Note fmgr_nbuiltins excludes the dummy entry */
