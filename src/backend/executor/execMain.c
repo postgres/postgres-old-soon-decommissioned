@@ -522,18 +522,38 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 	 *        SELECT added by daveh@insightdist.com  5/20/98 to allow 
 	 *        ORDER/GROUP BY have an identifier missing from the target.
 	 */
-	if (operation == CMD_UPDATE || operation == CMD_DELETE ||
-		operation == CMD_INSERT || operation == CMD_SELECT)
 	{
-		JunkFilter *j = (JunkFilter *) ExecInitJunkFilter(targetList);
-		estate->es_junkFilter = j;
-
+		bool	junk_filter_needed = false;
+		List	*tlist;
+		
 		if (operation == CMD_SELECT)
-			tupType = j->jf_cleanTupType;
-	}
-	else
-		estate->es_junkFilter = NULL;
+		{
+			foreach(tlist, targetList)
+			{
+				TargetEntry	*tle = lfirst(tlist);
+	
+				if (tle->resdom->resjunk)
+				{
+					junk_filter_needed = true;
+					break;
+				}
+			}
+		}
 
+		if (operation == CMD_UPDATE || operation == CMD_DELETE ||
+			operation == CMD_INSERT ||
+			(operation == CMD_SELECT && junk_filter_needed))
+		{
+			JunkFilter *j = (JunkFilter *) ExecInitJunkFilter(targetList);
+			estate->es_junkFilter = j;
+
+			if (operation == CMD_SELECT)
+				tupType = j->jf_cleanTupType;
+		}
+		else
+			estate->es_junkFilter = NULL;
+	}
+	
 	/* ----------------
 	 *	initialize the "into" relation
 	 * ----------------
