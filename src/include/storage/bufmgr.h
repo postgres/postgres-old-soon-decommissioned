@@ -44,13 +44,6 @@ extern long *LocalRefCount;
 #define BUFFER_LOCK_SHARE		1
 #define BUFFER_LOCK_EXCLUSIVE	2
 
-
-/**********************************************************************
-
-  the rest is function defns in the bufmgr that are externally callable
-
- **********************************************************************/
-
 /*
  * These routines are beaten on quite heavily, hence the macroization.
  */
@@ -149,7 +142,6 @@ extern long *LocalRefCount;
 	: \
 		BufferBlockPointers[(buffer) - 1] \
 )
-
 
 /*
  * prototypes for functions in bufmgr.c

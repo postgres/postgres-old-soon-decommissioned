@@ -1026,7 +1026,7 @@ BufmgrCommit(void)
 BlockNumber
 BufferGetBlockNumber(Buffer buffer)
 {
-	Assert(BufferIsValid(buffer));
+	Assert(BufferIsPinned(buffer));
 
 	if (BufferIsLocal(buffer))
 		return LocalBufferDescriptors[-buffer - 1].tag.blockNum;
