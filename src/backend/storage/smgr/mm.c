@@ -19,7 +19,6 @@
 #ifdef MAIN_MEMORY
 
 #include <math.h>
-#include "machine.h"
 #include "storage/ipc.h"
 #include "storage/smgr.h"	/* where the declarations go */
 #include "storage/block.h"

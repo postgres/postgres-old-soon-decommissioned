@@ -17,7 +17,6 @@
 #include "postgres.h"
 #include "miscadmin.h"  /* for DataDir */
 
-#include "machine.h"
 #include "storage/smgr.h"	/* where the declarations go */
 #include "storage/block.h"
 #include "storage/fd.h"

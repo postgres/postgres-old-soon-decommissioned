@@ -17,7 +17,6 @@
 #include <string.h>
 #include "postgres.h"
 
-#include "machine.h"
 #include "storage/ipc.h"
 #include "storage/smgr.h"
 #include "storage/block.h"
