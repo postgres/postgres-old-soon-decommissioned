@@ -170,6 +170,7 @@ extern char DateFormat[];
 extern bool enableFsync;
 extern bool allowSystemTableMods;
 extern int	SortMem;
+extern int	VacuumMem;
 
 /*
  *	A few postmaster startup options are exported here so the
