@@ -1602,6 +1602,10 @@ IndexBuildHeapScan(Relation heapRelation,
 
 		MemoryContextReset(econtext->ecxt_per_tuple_memory);
 
+		/* Set up for predicate or expression evaluation */
+		if (slot)
+			ExecStoreTuple(heapTuple, slot, InvalidBuffer, false);
+
 		/*
 		 * In a partial index, discard tuples that don't satisfy the
 		 * predicate.  We can also discard recently-dead tuples, since
@@ -1612,7 +1616,6 @@ IndexBuildHeapScan(Relation heapRelation,
 		{
 			if (!tupleIsAlive)
 				continue;
-			ExecStoreTuple(heapTuple, slot, InvalidBuffer, false);
 			if (!ExecQual(predicate, econtext, false))
 				continue;
 		}
