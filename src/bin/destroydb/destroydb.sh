@@ -42,22 +42,22 @@ do
 	shift;
 done
 
-if [-z "$AUTHSYS" ]; then
-  AUTHOPT = ""
+if [ -z "$AUTHSYS" ]; then
+  AUTHOPT=""
 else
-  AUTHOPT = "-a $AUTHSYS"
+  AUTHOPT="-a $AUTHSYS"
 fi
 
-if [-z "$PGHOST" ]; then
-  PGHOSTOPT = ""
+if [ -z "$PGHOST" ]; then
+  PGHOSTOPT=""
 else
-  PGHOSTOPT = "-h $PGHOST"
+  PGHOSTOPT="-h $PGHOST"
 fi
 
-if [-z "$PGPORT" ]; then
-  PGPORTOPT = ""
+if [ -z "$PGPORT" ]; then
+  PGPORTOPT=""
 else
-  PGPORTOPT = "-p $PGPORT"
+  PGPORTOPT="-p $PGPORT"
 fi
 
 psql -tq $AUTHOPT $PGHOSTOPT $PGPORTOPT -c "drop database $dbname" template1
