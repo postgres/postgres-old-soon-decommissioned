@@ -125,6 +125,7 @@ krb_srvtab = @krb_srvtab@
 
 TCL_CONFIG_SH = @TCL_CONFIG_SH@
 TK_CONFIG_SH = @TK_CONFIG_SH@
+TCLSH		= @TCLSH@
 
 have_docbook	= @have_docbook@
 DOCBOOKSTYLE	= @DOCBOOKSTYLE@
