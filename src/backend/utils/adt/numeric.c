@@ -1663,6 +1663,35 @@ numeric_float8(PG_FUNCTION_ARGS)
 }
 
 
+/* Convert numeric to float8; if out of range, return +/- HUGE_VAL */
+Datum
+numeric_float8_no_overflow(PG_FUNCTION_ARGS)
+{
+	Numeric		num = PG_GETARG_NUMERIC(0);
+	char	   *tmp;
+	double		val;
+	char	   *endptr;
+
+	if (NUMERIC_IS_NAN(num))
+		PG_RETURN_FLOAT8(NAN);
+
+	tmp = DatumGetCString(DirectFunctionCall1(numeric_out,
+											  NumericGetDatum(num)));
+
+	/* unlike float8in, we ignore ERANGE from strtod */
+	val = strtod(tmp, &endptr);
+	if (*endptr != '\0')
+	{
+		/* shouldn't happen ... */
+		elog(ERROR, "Bad float8 input format '%s'", tmp);
+	}
+
+	pfree(tmp);
+
+	PG_RETURN_FLOAT8(val);
+}
+
+
 Datum
 float4_numeric(PG_FUNCTION_ARGS)
 {

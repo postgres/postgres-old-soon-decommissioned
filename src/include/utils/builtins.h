@@ -553,6 +553,7 @@ extern Datum int2_numeric(PG_FUNCTION_ARGS);
 extern Datum numeric_int2(PG_FUNCTION_ARGS);
 extern Datum float8_numeric(PG_FUNCTION_ARGS);
 extern Datum numeric_float8(PG_FUNCTION_ARGS);
+extern Datum numeric_float8_no_overflow(PG_FUNCTION_ARGS);
 extern Datum float4_numeric(PG_FUNCTION_ARGS);
 extern Datum numeric_float4(PG_FUNCTION_ARGS);
 extern Datum numeric_accum(PG_FUNCTION_ARGS);
