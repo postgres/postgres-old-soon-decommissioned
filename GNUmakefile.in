@@ -110,7 +110,7 @@ distcheck: $(distdir).tar.gz
 	$(MAKE) -C $(distdir) install
 	$(MAKE) -C $(distdir) uninstall
 	@echo "checking whether \`$(MAKE) uninstall' works"
-	test `find $(dummy) -not -type d | wc -l` -eq 0
+	test `find $(dummy) ! -type d | wc -l` -eq 0
 	$(MAKE) -C $(distdir) dist
 # Room for improvement: Check here whether this distribution tarball
 # is sufficiently similar to the original one.
