@@ -135,6 +135,10 @@ install-headers: beforeinstall-headers c.h \
           $(HEADERDIR)/utils/palloc.h
 	$(INSTALL) $(INSTLOPTS) $(SRCDIR)/include/access/attnum.h \
           $(HEADERDIR)/access/attnum.h
+	$(INSTALL) $(INSTLOPTS) $(SRCDIR)/include/executor/spi.h \
+          $(HEADERDIR)/executor/spi.h
+	$(INSTALL) $(INSTLOPTS) $(SRCDIR)/include/commands/trigger.h \
+          $(HEADERDIR)/commands/trigger.h
 	$(INSTALL) $(INSTLOPTS) libpq-fe.h $(HEADERDIR)/libpq-fe.h
 ifeq ($(PORTNAME), hpux)
 	$(INSTALL) $(INSTLOPTS) $(SRCDIR)/backend/port/hpux/fixade.h \
@@ -157,6 +161,10 @@ beforeinstall-headers:
 		then mkdir $(HEADERDIR)/utils; fi
 	@if [ ! -d $(HEADERDIR)/access ]; \
 		then mkdir $(HEADERDIR)/access; fi
+	@if [ ! -d $(HEADERDIR)/executor ]; \
+		then mkdir $(HEADERDIR)/executor; fi
+	@if [ ! -d $(HEADERDIR)/commands ]; \
+		then mkdir $(HEADERDIR)/commands; fi
 
 install-libpq: libpq.a
 	$(INSTALL) $(INSTL_LIB_OPTS) libpq.a $(DESTDIR)$(LIBDIR)/libpq.a
