@@ -306,7 +306,10 @@ vacuum(VacuumStmt *vacstmt)
 			 * multiple tables).
 			 */
 			if (vacstmt->vacuum)
+			{
 				StartTransactionCommand(true);
+				SetQuerySnapshot();	/* might be needed for functional index */
+			}
 			else
 				old_context = MemoryContextSwitchTo(anl_context);
 
@@ -724,6 +727,7 @@ vacuum_rel(Oid relid, VacuumStmt *vacstmt, char expected_relkind)
 
 	/* Begin a transaction for vacuuming this relation */
 	StartTransactionCommand(true);
+	SetQuerySnapshot();			/* might be needed for functional index */
 
 	/*
 	 * Check for user-requested abort.	Note we want this to be inside a
