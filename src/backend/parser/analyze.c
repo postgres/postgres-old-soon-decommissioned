@@ -828,6 +828,7 @@ transformSelectStmt(ParseState *pstate, RetrieveStmt *stmt)
 	/* fix order clause */
 	qry->sortClause = transformSortClause(pstate,
 										  stmt->sortClause,
+										  NIL,
 										  qry->targetList,
 										  qry->uniqueFlag);
 
@@ -841,9 +842,6 @@ transformSelectStmt(ParseState *pstate, RetrieveStmt *stmt)
 
 	qry->unionall = stmt->unionall;	/* in child, so unionClause may be false */
 	qry->unionClause = transformUnionClause(stmt->unionClause, qry->targetList);
-
-	if (qry->unionClause && stmt->sortClause)
-		elog(WARN, "You can not use ORDER BY with UNION", NULL);
 
 	return (Query *) qry;
 }
@@ -918,6 +916,7 @@ transformCursorStmt(ParseState *pstate, CursorStmt *stmt)
 	/* fix order clause */
 	qry->sortClause = transformSortClause(pstate,
 										  stmt->sortClause,
+										  NIL,
 										  qry->targetList,
 										  qry->uniqueFlag);
 	/* fix group by clause */
