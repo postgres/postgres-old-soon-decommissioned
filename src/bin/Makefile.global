@@ -11,7 +11,7 @@
 #
 #-------------------------------------------------------------------------
 
-CFLAGS+= -I$(srcdir)/backend -I$(srcdir)/backend/include -I$(srcdir)/libpq -I$(HEADERDIR) 
+CFLAGS+= -I$(srcdir)/backend -I$(srcdir)/backend/include -I$(srcdir)/libpq 
 
 #
 # try locating libpq.a in the following places
