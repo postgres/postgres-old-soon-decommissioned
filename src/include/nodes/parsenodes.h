@@ -339,23 +339,15 @@ typedef struct DropPLangStmt
 typedef struct CreateUserStmt
 {
 	NodeTag		type;
-	char	   *user;			/* PostgreSQL user login			  */
-	char	   *password;		/* PostgreSQL user password			  */
-	int			sysid;			/* PgSQL system id (-1 if don't care) */
-	bool		createdb;		/* Can the user create databases?	  */
-	bool		createuser;		/* Can this user create users?		  */
-	List	   *groupElts;		/* The groups the user is a member of */
-	char	   *validUntil;		/* The time the login is valid until  */
+	char	   *user;			/* PostgreSQL user login name */
+	List	   *options;		/* List of DefElem nodes */
 } CreateUserStmt;
 
 typedef struct AlterUserStmt
 {
 	NodeTag		type;
-	char	   *user;			/* PostgreSQL user login			  */
-	char	   *password;		/* PostgreSQL user password			  */
-	int			createdb;		/* Can the user create databases?	  */
-	int			createuser;		/* Can this user create users?		  */
-	char	   *validUntil;		/* The time the login is valid until  */
+	char	   *user;			/* PostgreSQL user login name */
+	List	   *options;		/* List of DefElem nodes */
 } AlterUserStmt;
 
 typedef struct DropUserStmt
@@ -715,6 +707,7 @@ typedef struct VacuumStmt
 {
 	NodeTag		type;
 	bool		vacuum;			/* do VACUUM step */
+	bool		full;			/* do FULL (non-concurrent) vacuum */
 	bool		analyze;		/* do ANALYZE step */
 	bool		verbose;		/* print progress info */
 	char	   *vacrel;			/* name of single table to process, or NULL */
