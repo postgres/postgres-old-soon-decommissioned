@@ -160,7 +160,7 @@ endif
 ifeq ($(PORTNAME), hpux)
 # HPUX doesn't believe in version numbers for shlibs
   shlib			:= lib$(NAME)$(DLSUFFIX)
-  LINK.shared		= $(LD) -b +b $(libdir) -Bsymbolic
+  LINK.shared		= $(LD) -b +b $(libdir)
 endif
 
 ifeq ($(PORTNAME), irix5)
