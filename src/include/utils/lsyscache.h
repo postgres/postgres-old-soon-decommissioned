@@ -52,6 +52,7 @@ extern void get_typlenbyval(Oid typid, int16 *typlen, bool *typbyval);
 extern char get_typstorage(Oid typid);
 extern Node *get_typdefault(Oid typid);
 extern Oid getBaseType(Oid typid);
+extern Oid getBaseTypeTypeMod(Oid typid, int32 *typmod);
 extern int32 get_typavgwidth(Oid typid, int32 typmod);
 extern int32 get_attavgwidth(Oid relid, AttrNumber attnum);
 extern bool get_attstatsslot(HeapTuple statstuple,

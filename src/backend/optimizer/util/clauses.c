@@ -1882,6 +1882,8 @@ expression_tree_walker(Node *node,
 					return true;
 			}
 			break;
+		case T_Constraint:
+			return walker(((Constraint *) node)->raw_expr, context);
 		case T_NullTest:
 			return walker(((NullTest *) node)->arg, context);
 		case T_BooleanTest:
@@ -2236,6 +2238,20 @@ expression_tree_mutator(Node *node,
 				return (Node *) newnode;
 			}
 			break;
+		case T_Constraint:
+			{
+				/*
+				 * Used for confirming domains.  Only needed fields
+				 * within the executor are the name, raw expression
+				 * and constraint type.
+				 */
+				Constraint *con = (Constraint *) node;
+				Constraint *newnode;
+
+				FLATCOPY(newnode, con, Constraint);
+				MUTATE(newnode->raw_expr, con->raw_expr, Node *);
+				return (Node *) newnode;
+			}
 		case T_NullTest:
 			{
 				NullTest   *ntest = (NullTest *) node;

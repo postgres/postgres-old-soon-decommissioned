@@ -1058,6 +1058,43 @@ getBaseType(Oid typid)
 }
 
 /*
+ * getBaseTypeTypeMod
+ *		If the given type is a domain, return its base type;
+ *		otherwise return the type's own OID.
+ */
+Oid
+getBaseTypeTypeMod(Oid typid, int32 *typmod)
+{
+	/*
+	 * We loop to find the bottom base type in a stack of domains.
+	 */
+	for (;;)
+	{
+		HeapTuple	tup;
+		Form_pg_type typTup;
+
+		tup = SearchSysCache(TYPEOID,
+							 ObjectIdGetDatum(typid),
+							 0, 0, 0);
+		if (!HeapTupleIsValid(tup))
+			elog(ERROR, "getBaseType: failed to lookup type %u", typid);
+		typTup = (Form_pg_type) GETSTRUCT(tup);
+		if (typTup->typtype != 'd')
+		{
+			/* Not a domain, so done */
+			ReleaseSysCache(tup);
+			break;
+		}
+
+		typid = typTup->typbasetype;
+		*typmod = typTup->typtypmod;
+		ReleaseSysCache(tup);
+	}
+
+	return typid;
+}
+
+/*
  * get_typavgwidth
  *
  *	  Given a type OID and a typmod value (pass -1 if typmod is unknown),
