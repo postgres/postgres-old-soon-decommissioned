@@ -3405,6 +3405,20 @@ DESCR("I/O");
 DATA(insert OID = 2503 (  anyarray_send		   PGNSP PGUID 12 f f t f s 1 17 "2277"  anyarray_send - _null_ ));
 DESCR("I/O");
 
+/* System-view support functions with pretty-print option */
+DATA(insert OID = 2504 (  pg_get_ruledef	   PGNSP PGUID 12 f f t f s 2 25 "26 16"  pg_get_ruledef_ext - _null_ ));
+DESCR("source text of a rule with pretty-print option");
+DATA(insert OID = 2505 (  pg_get_viewdef	   PGNSP PGUID 12 f f t f s 2 25 "25 16"  pg_get_viewdef_name_ext - _null_ ));
+DESCR("select statement of a view with pretty-print option");
+DATA(insert OID = 2506 (  pg_get_viewdef	   PGNSP PGUID 12 f f t f s 2 25 "26 16"  pg_get_viewdef_ext - _null_ ));
+DESCR("select statement of a view with pretty-print option");
+DATA(insert OID = 2507 (  pg_get_indexdef	   PGNSP PGUID 12 f f t f s 3 25 "26 23 16"  pg_get_indexdef_ext - _null_ ));
+DESCR("index description (full create statement or single expression) with pretty-print option");
+DATA(insert OID = 2508 (  pg_get_constraintdef PGNSP PGUID 12 f f t f s 2 25 "26 16"  pg_get_constraintdef_ext - _null_ ));
+DESCR("constraint description with pretty-print option");
+DATA(insert OID = 2509 (  pg_get_expr		   PGNSP PGUID 12 f f t f s 3 25 "25 26 16"	pg_get_expr_ext - _null_ ));
+DESCR("deparse an encoded expression with pretty-print option");
+
 
 /*
  * Symbolic values for provolatile column: these indicate whether the result
