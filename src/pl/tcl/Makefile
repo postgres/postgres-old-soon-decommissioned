@@ -66,11 +66,11 @@ CC = $(TCL_CC)
 # Instead use TCL's CFLAGS plus necessary -I directives.
 
 # Can choose either TCL_CFLAGS_OPTIMIZE or TCL_CFLAGS_DEBUG here, as needed
-CFLAGS+= $(TCL_CFLAGS_OPTIMIZE)
+CFLAGS= $(TCL_CFLAGS_OPTIMIZE)
 
 CFLAGS+= $(TCL_SHLIB_CFLAGS) $(TCL_DEFS)
 
-CFLAGS+= -I$(SRCDIR)/include -I$(SRCDIR)/backend
+CFLAGS+= -I$(SRCDIR)/include -I$(SRCDIR)/backend $(PGSQL_INCLUDES)
         
 #
 # Uncomment the following to enable the unknown command lookup
