@@ -299,6 +299,26 @@ DATA(insert OID = 0 (  403 1313 1335 4 btreesel btreenpage ));
 DATA(insert OID = 0 (  403 1313 1334 5 btreesel btreenpage ));
 
 /*
+ *	nbtree macaddr
+ */
+
+DATA(insert OID = 0 (  403 810 1222 1 btreesel btreenpage ));
+DATA(insert OID = 0 (  403 810 1223 2 btreesel btreenpage ));
+DATA(insert OID = 0 (  403 810 1220 3 btreesel btreenpage ));
+DATA(insert OID = 0 (  403 810 1225 4 btreesel btreenpage ));
+DATA(insert OID = 0 (  403 810 1224 5 btreesel btreenpage ));
+
+/*
+ *	nbtree ip
+ */
+
+DATA(insert OID = 0 (  403 935 1203 1 btreesel btreenpage ));
+DATA(insert OID = 0 (  403 935 1204 2 btreesel btreenpage ));
+DATA(insert OID = 0 (  403 935 1201 3 btreesel btreenpage ));
+DATA(insert OID = 0 (  403 935 1206 4 btreesel btreenpage ));
+DATA(insert OID = 0 (  403 935 1205 5 btreesel btreenpage ));
+
+/*
  *	hash table _ops
  */
 
