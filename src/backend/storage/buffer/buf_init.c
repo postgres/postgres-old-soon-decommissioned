@@ -120,9 +120,12 @@ long    *CommitInfoNeedsSave;  /* to write buffers where we have filled in */
 
 SPINLOCK BufMgrLock;
 
-int ReadBufferCount;
-int BufferHitCount;
-int BufferFlushCount;
+long int ReadBufferCount;
+long int ReadLocalBufferCount;
+long int BufferHitCount;
+long int LocalBufferHitCount;
+long int BufferFlushCount;
+long int LocalBufferFlushCount;
 
 
 /*

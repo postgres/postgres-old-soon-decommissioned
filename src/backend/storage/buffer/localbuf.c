@@ -47,6 +47,8 @@
 #include "executor/execdebug.h"	/* for NDirectFileRead */
 #include "catalog/catalog.h"
 
+extern long int LocalBufferFlushCount;
+
 int NLocBuffer = 64;
 BufferDesc *LocalBufferDescriptors = NULL;
 long *LocalRefCount = NULL;
@@ -118,6 +120,7 @@ LocalBufferAlloc(Relation reln, BlockNumber blockNum, bool *foundPtr)
 	/* flush this page */
 	smgrwrite(bufrel->rd_rel->relsmgr, bufrel, bufHdr->tag.blockNum,
 		  (char *) MAKE_PTR(bufHdr->data));
+	LocalBufferFlushCount++;
     }
 
     /*
@@ -192,6 +195,7 @@ FlushLocalBuffer(Buffer buffer, bool release)
     Assert(bufrel != NULL);
     smgrflush(bufrel->rd_rel->relsmgr, bufrel, bufHdr->tag.blockNum,
 	      (char *) MAKE_PTR(bufHdr->data));
+    LocalBufferFlushCount++;
 
     Assert(LocalRefCount[bufid] > 0);
     if ( release )
@@ -261,6 +265,7 @@ LocalBufferSync(void)
 	    
 	    smgrwrite(bufrel->rd_rel->relsmgr, bufrel, buf->tag.blockNum,
 		      (char *) MAKE_PTR(buf->data));
+    	    LocalBufferFlushCount++;
 
 	    buf->tag.relId.relId = InvalidOid;
 	    buf->flags &= ~BM_DIRTY;
