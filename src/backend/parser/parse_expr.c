@@ -282,6 +282,41 @@ transformExpr(ParseState *pstate, Node *expr)
 													  rexpr);
 							((Expr *)result)->opType = DISTINCT_EXPR;
 						}
+						break;
+					case OF:
+						{
+							List *telem;
+							A_Const *n;
+							Oid ltype, rtype;
+							bool matched = FALSE;
+
+							/* Checking an expression for match to type.
+							 * Will result in a boolean constant node.
+							 */
+							Node	   *lexpr = transformExpr(pstate,
+															  a->lexpr);
+							ltype = exprType(lexpr);
+							foreach(telem, (List *) a->rexpr)
+							{
+								rtype = LookupTypeName(lfirst(telem));
+								matched = (rtype == ltype);
+								if (matched) break;
+							}
+
+							/* Expect two forms: equals or not equals.
+							 * Flip the sense of the result for not equals.
+							 */
+							if (strcmp(strVal(lfirst(a->name)), "!=") == 0)
+								matched = (! matched);
+
+							n = makeNode(A_Const);
+							n->val.type = T_String;
+							n->val.val.str = (matched? "t": "f");
+							n->typename = SystemTypeName("bool");
+
+							result = transformExpr(pstate, (Node *) n);
+						}
+						break;
 				}
 				break;
 			}
@@ -589,14 +624,14 @@ transformExpr(ParseState *pstate, Node *expr)
 				break;
 			}
 
-			/*
-			 * Quietly accept node types that may be presented when we are
-			 * called on an already-transformed tree.
-			 *
-			 * Do any other node types need to be accepted?  For now we are
-			 * taking a conservative approach, and only accepting node
-			 * types that are demonstrably necessary to accept.
-			 */
+		/*********************************************
+		 * Quietly accept node types that may be presented when we are
+		 * called on an already-transformed tree.
+		 *
+		 * Do any other node types need to be accepted?  For now we are
+		 * taking a conservative approach, and only accepting node
+		 * types that are demonstrably necessary to accept.
+		 *********************************************/
 		case T_Expr:
 		case T_Var:
 		case T_Const:
