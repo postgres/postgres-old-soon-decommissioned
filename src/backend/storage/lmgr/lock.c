@@ -136,18 +136,11 @@ static int WaitOnLock(LOCKMETHOD lockmethod, LOCK *lock, LOCKMODE lockmode,
 		 xidentP->holders[5], \
 		 xidentP->nHolding)
 
-#define LOCK_TPRINTF(lock, args...) \
-	if (((LOCKDEBUG(LOCK_LOCKMETHOD(*(lock))) >= 1) \
-		 && (lock->tag.relId >= lockDebugOidMin)) \
-		|| (lock->tag.relId == lockDebugRelation)) \
-		TPRINTF(TRACE_ALL, args)
-
 #else							/* !LOCK_MGR_DEBUG */
 #define LOCK_PRINT(where,lock,type)
 #define LOCK_PRINT_AUX(where,lock,type)
 #define XID_PRINT(where,xidentP)
 #define XID_PRINT_AUX(where,xidentP)
-#define LOCK_TPRINTF(lock, args...)
 #endif	 /* !LOCK_MGR_DEBUG */
 
 static char *lock_types[] = {
@@ -1217,7 +1210,12 @@ LockRelease(LOCKMETHOD lockmethod, LOCKTAG *locktag, LOCKMODE lockmode)
 		ProcLockWakeup(&(lock->waitProcs), lockmethod, lock);
 	}
 	else
-		LOCK_TPRINTF(lock, "LockRelease: no wakeup needed");
+	{
+		if (((LOCKDEBUG(LOCK_LOCKMETHOD(*(lock))) >= 1) \
+			 && (lock->tag.relId >= lockDebugOidMin)) \
+			|| (lock->tag.relId == lockDebugRelation))
+			TPRINTF(TRACE_ALL, "LockRelease: no wakeup needed");
+	}
 
 	SpinRelease(masterLock);
 	return TRUE;
