@@ -642,7 +642,7 @@ describeTableDetails(const char *name, bool desc)
 	{
 		PGresult   *result;
 
-		sprintf(buf, "SELECT i.indisunique, i.indisprimary, a.amname\n"
+		sprintf(buf, "SELECT i.indisunique, i.indisprimary, i.indislossy, a.amname\n"
 				"FROM pg_index i, pg_class c, pg_am a\n"
 				"WHERE i.indexrelid = c.oid AND c.relname = '%s' AND c.relam = a.oid",
 				name);
@@ -652,14 +652,18 @@ describeTableDetails(const char *name, bool desc)
 			error = true;
 		else
 		{
+			/* XXX This construction is poorly internationalized. */
 			footers = xmalloc(2 * sizeof(*footers));
-			footers[0] = xmalloc(NAMEDATALEN + 32);
-			sprintf(footers[0], "%s%s",
-			 strcmp(PQgetvalue(result, 0, 0), "t") == 0 ? "unique " : "",
-					PQgetvalue(result, 0, 2)
+			footers[0] = xmalloc(NAMEDATALEN + 128);
+			snprintf(footers[0], NAMEDATALEN + 128, "%s%s%s",
+					 strcmp(PQgetvalue(result, 0, 0), "t") == 0 ? _("unique ") : "",
+					 PQgetvalue(result, 0, 3),
+					 strcmp(PQgetvalue(result, 0, 2), "t") == 0 ? _(" (lossy)") : ""
 				);
 			if (strcmp(PQgetvalue(result, 0, 1), "t") == 0)
-				strcat(footers[0], " (primary key)");
+				snprintf(footers[0] + strlen(footers[0]),
+						 NAMEDATALEN + 128 - strlen(footers[0]),
+						 _(" (primary key)"));
 			footers[1] = NULL;
 		}
 	}
