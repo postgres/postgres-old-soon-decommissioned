@@ -108,13 +108,14 @@ xhcat			{quote}{space}*\n{space}*{quote}
 /* Extended quote
  * xqdouble implements SQL92 embedded quote
  * xqcat allows strings to cross input lines
+ * Note: reduction of '' and \ sequences to output text is done in scanstr(),
+ * not by rules here.
  */
 quote			'
 xqstart			{quote}
 xqstop			{quote}
 xqdouble		{quote}{quote}
 xqinside		[^\\']*
-xqembedded		"\\'"
 xqliteral		[\\](.|\n)
 xqcat			{quote}{space}*\n{space}*{quote}
 
@@ -241,22 +242,9 @@ other			.
 					return SCONST;
 				}
 <xq>{xqdouble}	|
-<xq>{xqinside}	{
-					if ((llen+yyleng) > (MAX_PARSE_BUFFER - 1))
-						elog(ERROR,"quoted string parse buffer of %d chars exceeded",MAX_PARSE_BUFFER);
-					memcpy(literal+llen, yytext, yyleng+1);
-					llen += yyleng;
-				}
-<xq>{xqembedded} {
-					if ((llen+yyleng-1) > (MAX_PARSE_BUFFER - 1))
-						elog(ERROR,"quoted string parse buffer of %d chars exceeded",MAX_PARSE_BUFFER);
-					memcpy(literal+llen, yytext, yyleng+1);
-					*(literal+llen) = '\'';
-					llen += yyleng;
-				}
-
+<xq>{xqinside}	|
 <xq>{xqliteral} {
-					if ((llen+yyleng-1) > (MAX_PARSE_BUFFER - 1))
+					if ((llen+yyleng) > (MAX_PARSE_BUFFER - 1))
 						elog(ERROR,"quoted string parse buffer of %d chars exceeded",MAX_PARSE_BUFFER);
 					memcpy(literal+llen, yytext, yyleng+1);
 					llen += yyleng;
