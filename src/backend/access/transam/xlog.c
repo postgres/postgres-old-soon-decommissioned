@@ -1962,7 +1962,17 @@ RestoreArchivedFile(char *path, const char *xlogfname,
 					/* %p: full path of target file */
 					sp++;
 					StrNCpy(dp, xlogpath, endp-dp);
+#ifndef WIN32
 					dp += strlen(dp);
+#else
+					/* On Windows, change / to \ in the substituted path */
+					while (*dp)
+					{
+						if (*dp == '/')
+							*dp = '\\';
+						dp++;
+					}
+#endif
 					break;
 				case 'f':
 					/* %f: filename of desired file */
