@@ -74,7 +74,9 @@ ValidateBinary(char *path)
 					path);
 		return -1;
 	}
-	if (!(buf.st_mode & S_IFREG))
+
+	
+	if ((buf.st_mode & S_IFMT) != S_IFREG)
 	{
 		if (DebugLvl > 1)
 			fprintf(stderr, "ValidateBinary: \"%s\" is not a regular file\n",
