@@ -844,7 +844,7 @@ AlterTableStmt:
       | ALTER TABLE relation_name opt_inh_star ADD TableConstraint
         {
                 AlterTableStmt *n = makeNode(AlterTableStmt);
-                n->subtype = 'A';
+                n->subtype = 'C';
                 n->relname = $3;
                 n->inh = $4;
                 n->def = $6;
