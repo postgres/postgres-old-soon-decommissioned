@@ -67,9 +67,10 @@ identifier	{letter}{letter_or_digit}*
 
 self		[,()\[\].;$\:\+\-\*\/\<\>\=\|]
 op_and_self	[\~\!\@\#\%\^\&\|\`\?\$\:\+\-\*\/\<\>\=]
+op_and_self2	[\~\!\@\#\%\^\&\|\`\?\$\:\*\/\<\>\=]
 op_only		[\~\!\@\#\%\^\&\`\?]
 
-operator	({op_and_self}{op_and_self}+)|{op_only}+
+operator	({op_and_self}{op_and_self2}+)|{op_only}+
     /* we used to allow double-quoted strings, but SQL doesn't */
     /* so we won't either*/
 quote           '
