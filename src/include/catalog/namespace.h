@@ -74,6 +74,7 @@ extern Oid	LookupExplicitNamespace(const char *nspname);
 extern Oid	QualifiedNameGetCreationNamespace(List *names, char **objname_p);
 extern RangeVar *makeRangeVarFromNameList(List *names);
 extern char *NameListToString(List *names);
+extern char *NameListToQuotedString(List *names);
 
 extern bool isTempNamespace(Oid namespaceId);
 extern bool isOtherTempNamespace(Oid namespaceId);

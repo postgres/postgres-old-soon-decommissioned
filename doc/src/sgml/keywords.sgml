@@ -682,7 +682,7 @@
    </row>
    <row>
     <entry><token>CONVERT</token></entry>
-    <entry></entry>
+    <entry>non-reserved (cannot be function or type)</entry>
     <entry>non-reserved</entry>
     <entry>reserved</entry>
    </row>
