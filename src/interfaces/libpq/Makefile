@@ -60,8 +60,8 @@ fe-lobj.o: ../backend/fmgr.h
 ../backend/lib/dllist.o:
 	$(MAKE) -C ../backend/lib dllist.o
 
-$(shlib): $(OBJS)
-	$(LD) $(LDFLAGS) -shared $(OBJS) -o $(shlib)
+libpq.so.1: $(OBJS)
+	gcc $(LDFLAGS) -shared -o $@ $(OBJS)
 
 c.h: ../include/c.h
 	rm -f c.h
