@@ -262,9 +262,8 @@ ProcessUtility(Node *parsetree,
 				forward = (bool) (stmt->direction == FORWARD);
 
 				/*
-				 * parser ensures that count is >= 0 and 'fetch ALL' -> 0
+				 * parser ensures that count is >= 0
 				 */
-
 				count = stmt->howMany;
 				PerformPortalFetch(portalName, forward, count,
 								   (stmt->ismove) ? None : dest,

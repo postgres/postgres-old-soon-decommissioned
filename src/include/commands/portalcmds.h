@@ -18,7 +18,7 @@
 
 /*
  * PerformPortalFetch
- *		Performs the POSTQUEL function FETCH.  Fetches count (or all if 0)
+ *		Performs the POSTQUEL function FETCH.  Fetches count
  * tuples in portal with name in the forward direction iff goForward.
  *
  * Exceptions:

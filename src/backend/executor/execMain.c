@@ -1116,7 +1116,8 @@ lnext:	;
 
 		/*
 		 * check our tuple count.. if we've processed the proper number
-		 * then quit, else loop again and process more tuples..
+		 * then quit, else loop again and process more tuples.  Zero
+		 * number_tuples means no limit.
 		 */
 		current_tuple_count++;
 		if (numberTuples == current_tuple_count)

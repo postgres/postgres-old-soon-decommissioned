@@ -1277,7 +1277,7 @@ typedef struct FetchStmt
 {
 	NodeTag		type;
 	int			direction;		/* FORWARD or BACKWARD */
-	int			howMany;		/* amount to fetch ("ALL" --> 0) */
+	int			howMany;		/* amount to fetch */
 	char	   *portalname;		/* name of portal (cursor) */
 	bool		ismove;			/* TRUE if MOVE */
 } FetchStmt;
