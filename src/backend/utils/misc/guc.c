@@ -22,6 +22,7 @@
 
 #include "commands/async.h"
 #include "libpq/auth.h"
+#include "libpq/pqcomm.h"
 #include "miscadmin.h"
 #include "optimizer/cost.h"
 #include "optimizer/geqo.h"
@@ -253,6 +254,9 @@ ConfigureNamesInt[] =
 	{"max_expr_depth",          PGC_USERSET,            &max_expr_depth,
 	 DEFAULT_MAX_EXPR_DEPTH, 10, INT_MAX},
 
+	{"unix_socket_permissions", PGC_POSTMASTER,         &Unix_socket_permissions,
+	 0777, 0000, 0777},
+
     {NULL, 0, NULL, 0, 0, 0}
 };
 
@@ -281,8 +285,11 @@ ConfigureNamesReal[] =
 static struct config_string
 ConfigureNamesString[] =
 {
-	{"krb_server_keyfile",        PGC_USERSET,       &pg_krb_server_keyfile,
+	{"krb_server_keyfile",        PGC_POSTMASTER,       &pg_krb_server_keyfile,
 	 PG_KRB_SRVTAB, NULL},
+
+	{"unix_socket_group",         PGC_POSTMASTER,       &Unix_socket_group,
+	 "", NULL},
 
 	{NULL, 0, NULL, NULL, NULL}
 };

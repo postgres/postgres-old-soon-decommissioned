@@ -588,7 +588,7 @@ PostmasterMain(int argc, char *argv[])
 		{
 			fprintf(stderr, "%s: cannot create INET stream port\n",
 					progname);
-			exit(1);
+			ExitPostmaster(1);
 		}
 	}
 
@@ -598,7 +598,7 @@ PostmasterMain(int argc, char *argv[])
 	{
 		fprintf(stderr, "%s: cannot create UNIX stream port\n",
 				progname);
-		exit(1);
+		ExitPostmaster(1);
 	}
 #endif
 	/* set up shared memory and semaphores */

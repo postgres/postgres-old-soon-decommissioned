@@ -169,4 +169,12 @@ typedef struct CancelRequestPacket
  */
 #define NEGOTIATE_SSL_CODE PG_PROTOCOL(1234,5679)
 
+
+/*
+ * Configuration options
+ */
+extern int Unix_socket_permissions;
+
+extern char * Unix_socket_group;
+
 #endif	 /* PQCOMM_H */
