@@ -1153,7 +1153,7 @@ one_pred_clause_test(Expr *predicate, Node *clause)
  * this test should always be considered false.
  */
 
-static StrategyNumber
+static const StrategyNumber
 			BT_implic_table[BTMaxStrategyNumber][BTMaxStrategyNumber] = {
 	{2, 2, 0, 0, 0},
 	{1, 2, 0, 0, 0},
