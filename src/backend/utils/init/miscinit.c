@@ -37,6 +37,7 @@
 #include "utils/syscache.h"
 
 #include "storage/fd.h"			/* for O_ */
+#include "storage/ipc.h"		/* for proc_exit */
 
 /*
  * EnableAbortEnvVarName 
