@@ -82,7 +82,7 @@ ReleaseAndReadBuffer(Buffer buffer, Relation relation,
 					 BlockNumber blockNum);
 
 extern void InitBufferPool(IPCKey key);
-extern void PrintBufferUsage(FILE * statfp);
+extern void PrintBufferUsage(FILE *statfp);
 extern void ResetBufferUsage(void);
 extern void ResetBufferPool(void);
 extern int	BufferPoolCheckLeak(void);

@@ -51,7 +51,7 @@
  *
  */
 void
-init_tour(Gene * tour, int num_gene)
+init_tour(Gene *tour, int num_gene)
 {
 	Gene	   *tmp;
 	int			remainder;
@@ -105,7 +105,7 @@ alloc_city_table(int num_gene)
  *
  */
 void
-free_city_table(City * city_table)
+free_city_table(City *city_table)
 {
 	pfree(city_table);
 }

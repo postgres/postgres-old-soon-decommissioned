@@ -64,7 +64,7 @@ typedef struct Psortstate
 	bool		using_tape_files;
 
 	HeapTuple  *memtuples;
-}			Psortstate;
+} Psortstate;
 
 #ifdef	EBUG
 #include <stdio.h>
@@ -98,10 +98,10 @@ if (1) CODE; else
 #endif
 
 /* psort.c */
-extern bool psort_begin(Sort * node, int nkeys, ScanKey key);
-extern HeapTuple psort_grabtuple(Sort * node);
-extern void psort_markpos(Sort * node);
-extern void psort_restorepos(Sort * node);
-extern void psort_end(Sort * node);
+extern bool psort_begin(Sort *node, int nkeys, ScanKey key);
+extern HeapTuple psort_grabtuple(Sort *node);
+extern void psort_markpos(Sort *node);
+extern void psort_restorepos(Sort *node);
+extern void psort_end(Sort *node);
 
 #endif							/* PSORT_H */

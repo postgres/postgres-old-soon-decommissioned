@@ -64,7 +64,7 @@
  */
 
 Rel		   *
-geqo(Query * root)
+geqo(Query *root)
 {
 	int			generation;
 	Chromosome *momma;

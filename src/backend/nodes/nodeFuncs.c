@@ -23,16 +23,16 @@
 #include "nodes/nodeFuncs.h"
 #include "utils/lsyscache.h"
 
-static bool var_is_inner(Var * var);
+static bool var_is_inner(Var *var);
 
 /*
  * single_node -
  *	  Returns t if node corresponds to a single-noded expression
  */
 bool
-single_node(Node * node)
+single_node(Node *node)
 {
-	if (IsA(node, Ident) || IsA(node, Const) || IsA(node, Var) || IsA(node, Param))
+	if (IsA(node, Ident) ||IsA(node, Const) ||IsA(node, Var) ||IsA(node, Param))
 		return (true);
 	else
 		return (false);
@@ -58,22 +58,22 @@ single_node(Node * node)
  *
  */
 bool
-var_is_outer(Var * var)
+var_is_outer(Var *var)
 {
 	return ((bool) (var->varno == OUTER));
 }
 
 static bool
-var_is_inner(Var * var)
+var_is_inner(Var *var)
 {
 	return ((bool) (var->varno == INNER));
 }
 
 bool
-var_is_rel(Var * var)
+var_is_rel(Var *var)
 {
 	return (bool)
-		! (var_is_inner(var) || var_is_outer(var));
+	!(var_is_inner(var) || var_is_outer(var));
 }
 
 /*****************************************************************************
@@ -90,7 +90,7 @@ var_is_rel(Var * var)
  *
  */
 Oper	   *
-replace_opid(Oper * oper)
+replace_opid(Oper *oper)
 {
 	oper->opid = get_opcode(oper->opno);
 	oper->op_fcache = NULL;
@@ -108,10 +108,10 @@ replace_opid(Oper * oper)
  *
  */
 bool
-non_null(Expr * c)
+non_null(Expr *c)
 {
 
-	if (IsA(c, Const) && !((Const *) c)->constisnull)
+	if (IsA(c, Const) &&!((Const *) c)->constisnull)
 		return (true);
 	else
 		return (false);

@@ -43,8 +43,8 @@
  * ----------------------------------------------------------------
  */
 TupleTableSlot *
-ExecScan(Scan * node,
-		 TupleTableSlot * (*accessMtd) ())		/* function returning a
+ExecScan(Scan *node,
+		 TupleTableSlot *(*accessMtd) ())		/* function returning a
 												 * tuple */
 {
 	CommonScanState *scanstate;

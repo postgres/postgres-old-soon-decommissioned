@@ -51,7 +51,7 @@
  * ----------------------------------------------------------------
  */
 TupleTableSlot *
-ExecResult(Result * node)
+ExecResult(Result *node)
 {
 	ResultState *resstate;
 	TupleTableSlot *outerTupleSlot;
@@ -189,7 +189,7 @@ ExecResult(Result * node)
  * ----------------------------------------------------------------
  */
 bool
-ExecInitResult(Result * node, EState * estate, Plan * parent)
+ExecInitResult(Result *node, EState *estate, Plan *parent)
 {
 	ResultState *resstate;
 
@@ -253,7 +253,7 @@ ExecInitResult(Result * node, EState * estate, Plan * parent)
 }
 
 int
-ExecCountSlotsResult(Result * node)
+ExecCountSlotsResult(Result *node)
 {
 	return ExecCountSlotsNode(outerPlan(node)) + RESULT_NSLOTS;
 }
@@ -265,7 +265,7 @@ ExecCountSlotsResult(Result * node)
  * ----------------------------------------------------------------
  */
 void
-ExecEndResult(Result * node)
+ExecEndResult(Result *node)
 {
 	ResultState *resstate;
 

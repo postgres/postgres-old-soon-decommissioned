@@ -326,9 +326,9 @@ DATA(insert OID = 1296 ( timestamp	 PGUID	4  19 t b t \054 0	0 timestamp_in time
 /*
  * prototypes for functions in pg_type.c
  */
-extern Oid	TypeGet(char *typeName, bool * defined);
+extern Oid	TypeGet(char *typeName, bool *defined);
 extern Oid	TypeShellMake(char *typeName);
-extern		Oid
+extern Oid
 TypeCreate(char *typeName,
 		   Oid relationOid,
 		   int16 internalSize,

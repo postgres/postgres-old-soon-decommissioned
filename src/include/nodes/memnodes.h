@@ -48,10 +48,10 @@
 
 typedef struct MemoryContextMethodsData
 {
-	Pointer(*alloc) ();
+	Pointer		(*alloc) ();
 	void		(*free_p) ();	/* need to use free as a #define, so can't
 								 * use free */
-				Pointer(*realloc) ();
+	Pointer		(*realloc) ();
 	char	   *(*getName) ();
 	void		(*dump) ();
 }		   *MemoryContextMethods;

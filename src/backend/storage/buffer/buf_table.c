@@ -40,7 +40,7 @@ typedef struct lookup
 {
 	BufferTag	key;
 	Buffer		id;
-}			LookupEnt;
+} LookupEnt;
 
 /*
  * Initialize shmem hash table for mapping buffers
@@ -74,7 +74,7 @@ InitBufTable()
 }
 
 BufferDesc *
-BufTableLookup(BufferTag * tagPtr)
+BufTableLookup(BufferTag *tagPtr)
 {
 	LookupEnt  *result;
 	bool		found;

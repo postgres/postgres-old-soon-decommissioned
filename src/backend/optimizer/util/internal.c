@@ -39,7 +39,7 @@
 /* the following should probably be moved elsewhere -ay */
 
 TargetEntry *
-MakeTLE(Resdom * resdom, Node * expr)
+MakeTLE(Resdom *resdom, Node *expr)
 {
 	TargetEntry *rt = makeNode(TargetEntry);
 
@@ -49,7 +49,7 @@ MakeTLE(Resdom * resdom, Node * expr)
 }
 
 Var		   *
-get_expr(TargetEntry * tle)
+get_expr(TargetEntry *tle)
 {
 	Assert(tle != NULL);
 	Assert(tle->expr != NULL);

@@ -63,7 +63,7 @@ static int	nextFreeLocalBuf = 0;
  *	  allocate a local buffer. We do round robin allocation for now.
  */
 BufferDesc *
-LocalBufferAlloc(Relation reln, BlockNumber blockNum, bool * foundPtr)
+LocalBufferAlloc(Relation reln, BlockNumber blockNum, bool *foundPtr)
 {
 	int			i;
 	BufferDesc *bufHdr = (BufferDesc *) NULL;

@@ -270,7 +270,7 @@ geqo_params(int string_length)
  * other cases return 0.
  */
 static int
-next_token(FILE * fp, char *buf, int bufsz)
+next_token(FILE *fp, char *buf, int bufsz)
 {
 	int			c;
 	char	   *eb = buf + (bufsz - 1);

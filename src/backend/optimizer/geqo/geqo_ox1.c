@@ -59,7 +59,7 @@
  *	 position crossover
  */
 void
-ox1(Gene * tour1, Gene * tour2, Gene * offspring, int num_gene, City * city_table)
+ox1(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene, City *city_table)
 {
 	int			left,
 				right,

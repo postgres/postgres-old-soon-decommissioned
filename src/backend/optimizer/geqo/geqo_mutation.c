@@ -51,7 +51,7 @@
 #include "optimizer/geqo_mutation.h"
 
 void
-geqo_mutation(Gene * tour, int num_gene)
+geqo_mutation(Gene *tour, int num_gene)
 {
 	int			swap1;
 	int			swap2;

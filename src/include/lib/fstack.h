@@ -51,7 +51,7 @@ typedef struct FixedStackData
 	FixedItem	top;			/* Top item on the stack or NULL */
 	Offset		offset;			/* Offset from struct base to item */
 	/* this could be signed short int! */
-}			FixedStackData;
+} FixedStackData;
 
 typedef FixedStackData *FixedStack;
 

@@ -255,7 +255,7 @@ void
 PerformAddAttribute(char *relationName,
 					char *userName,
 					bool inherits,
-					ColumnDef * colDef)
+					ColumnDef *colDef)
 {
 	Relation	relrdesc,
 				attrdesc;

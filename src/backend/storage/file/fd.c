@@ -111,7 +111,7 @@ typedef struct vfd
 	char	   *fileName;
 	int			fileFlags;
 	int			fileMode;
-}			Vfd;
+} Vfd;
 
 /*
  * Virtual File Descriptor array pointer and size.	This grows as
@@ -883,7 +883,7 @@ TryAgain:
  * AllocateFile()?
  */
 void
-FreeFile(FILE * file)
+FreeFile(FILE *file)
 {
 	DO_DB(elog(DEBUG, "FreeFile: Allocated %d.", allocatedFiles));
 

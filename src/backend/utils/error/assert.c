@@ -23,7 +23,7 @@
 
 int
 ExceptionalCondition(char *conditionName,
-					 Exception * exceptionP,
+					 Exception *exceptionP,
 					 char *detail,
 					 char *fileName,
 					 int lineNumber)

@@ -27,7 +27,7 @@
  * otherwise, we return false
  */
 static bool
-nodeThisLockWasTriggered(Node * node, int varno, AttrNumber attnum)
+nodeThisLockWasTriggered(Node *node, int varno, AttrNumber attnum)
 {
 	if (node == NULL)
 		return FALSE;
@@ -85,7 +85,7 @@ nodeThisLockWasTriggered(Node * node, int varno, AttrNumber attnum)
 static bool
 thisLockWasTriggered(int varno,
 					 AttrNumber attnum,
-					 Query * parsetree)
+					 Query *parsetree)
 {
 	return
 	(nodeThisLockWasTriggered(parsetree->qual, varno, attnum) ||
@@ -99,9 +99,9 @@ thisLockWasTriggered(int varno,
  */
 List	   *
 matchLocks(CmdType event,
-		   RuleLock * rulelocks,
+		   RuleLock *rulelocks,
 		   int varno,
-		   Query * parsetree)
+		   Query *parsetree)
 {
 	List	   *real_locks = NIL;
 	int			nlocks;

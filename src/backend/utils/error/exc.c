@@ -25,10 +25,10 @@
 #include "storage/ipc.h"
 
 static void
-ExcUnCaught(Exception * excP, ExcDetail detail, ExcData data,
+ExcUnCaught(Exception *excP, ExcDetail detail, ExcData data,
 			ExcMessage message);
 static void
-ExcPrint(Exception * excP, ExcDetail detail, ExcData data,
+ExcPrint(Exception *excP, ExcDetail detail, ExcData data,
 		 ExcMessage message);
 
 /*
@@ -98,7 +98,7 @@ EnableExceptionHandling(bool on)
 }
 
 static void
-ExcPrint(Exception * excP,
+ExcPrint(Exception *excP,
 		 ExcDetail detail,
 		 ExcData data,
 		 ExcMessage message)
@@ -151,7 +151,7 @@ ExcGetUnCaught(void)
 
 #ifdef NOT_USED
 ExcProc    *
-ExcSetUnCaught(ExcProc * newP)
+ExcSetUnCaught(ExcProc *newP)
 {
 	ExcProc    *oldP = ExcUnCaughtP;
 
@@ -163,7 +163,7 @@ ExcSetUnCaught(ExcProc * newP)
 #endif
 
 static void
-ExcUnCaught(Exception * excP,
+ExcUnCaught(Exception *excP,
 			ExcDetail detail,
 			ExcData data,
 			ExcMessage message)
@@ -174,7 +174,7 @@ ExcUnCaught(Exception * excP,
 }
 
 void
-ExcRaise(Exception * excP,
+ExcRaise(Exception *excP,
 		 ExcDetail detail,
 		 ExcData data,
 		 ExcMessage message)

@@ -23,7 +23,7 @@
 uint32
 hashint2(int16 key)
 {
-	return ((uint32) ~ key);
+	return ((uint32) ~key);
 }
 
 uint32
@@ -130,7 +130,7 @@ hashfloat8(float64 keyp)
 uint32
 hashoid(Oid key)
 {
-	return ((uint32) ~ key);
+	return ((uint32) ~key);
 }
 
 
@@ -204,7 +204,7 @@ hashchar8(char *key)
 }
 
 uint32
-hashname(NameData * n)
+hashname(NameData *n)
 {
 	uint32		h;
 	int			len;

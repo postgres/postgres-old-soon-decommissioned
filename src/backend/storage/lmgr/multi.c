@@ -30,10 +30,10 @@
 #include "miscadmin.h"			/* MyDatabaseId */
 
 static bool
-MultiAcquire(LockTableId tableId, LOCKTAG * tag, LOCKT lockt,
+MultiAcquire(LockTableId tableId, LOCKTAG *tag, LOCKT lockt,
 			 LOCK_LEVEL level);
 static bool
-MultiRelease(LockTableId tableId, LOCKTAG * tag, LOCKT lockt,
+MultiRelease(LockTableId tableId, LOCKTAG *tag, LOCKT lockt,
 			 LOCK_LEVEL level);
 
 /*
@@ -199,7 +199,7 @@ MultiLockPage(LockInfo linfo, ItemPointer tidPtr, LOCKT lockt)
  */
 static bool
 MultiAcquire(LockTableId tableId,
-			 LOCKTAG * tag,
+			 LOCKTAG *tag,
 			 LOCKT lockt,
 			 LOCK_LEVEL level)
 {
@@ -359,7 +359,7 @@ MultiReleaseReln(LockInfo linfo, LOCKT lockt)
  */
 static bool
 MultiRelease(LockTableId tableId,
-			 LOCKTAG * tag,
+			 LOCKTAG *tag,
 			 LOCKT lockt,
 			 LOCK_LEVEL level)
 {

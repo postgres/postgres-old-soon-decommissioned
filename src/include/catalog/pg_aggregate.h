@@ -141,6 +141,6 @@ AggregateCreate(char *aggName,
 				char *agginitval2);
 extern char *
 AggNameGetInitVal(char *aggName, Oid basetype,
-				  int xfuncno, bool * isNull);
+				  int xfuncno, bool *isNull);
 
 #endif							/* PG_AGGREGATE_H */

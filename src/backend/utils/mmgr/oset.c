@@ -42,9 +42,9 @@ OrderedElemGetBase(OrderedElem elem)
 void
 OrderedSetInit(OrderedSet set, Offset offset)
 {
-	set->head = (OrderedElem) & set->dummy;
+	set->head = (OrderedElem) &set->dummy;
 	set->dummy = NULL;
-	set->tail = (OrderedElem) & set->head;
+	set->tail = (OrderedElem) &set->head;
 	set->offset = offset;
 }
 
@@ -163,7 +163,7 @@ static void
 OrderedElemPushHead(OrderedElem elem)
 {
 	elem->next = elem->set->head;
-	elem->prev = (OrderedElem) & elem->set->head;
+	elem->prev = (OrderedElem) &elem->set->head;
 	elem->next->prev = elem;
 	elem->prev->next = elem;
 }

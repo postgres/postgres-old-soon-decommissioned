@@ -37,7 +37,7 @@
 /* non-export function prototypes */
 static void
 check_permissions(char *command, char *dbname,
-				  Oid * dbIdP, Oid * userIdP);
+				  Oid *dbIdP, Oid *userIdP);
 static HeapTuple get_pg_dbtup(char *command, char *dbname, Relation dbrel);
 static void stop_vacuum(char *dbname);
 
@@ -161,8 +161,8 @@ get_pg_dbtup(char *command, char *dbname, Relation dbrel)
 static void
 check_permissions(char *command,
 				  char *dbname,
-				  Oid * dbIdP,
-				  Oid * userIdP)
+				  Oid *dbIdP,
+				  Oid *userIdP)
 {
 	Relation	dbrel;
 	HeapTuple	dbtup,

@@ -23,7 +23,7 @@ typedef struct hashnode
 {
 	int			strnum;			/* Index into string table */
 	struct hashnode *next;
-}			hashnode;
+} hashnode;
 
 #define EMITPROMPT printf("> ")
 
@@ -39,9 +39,9 @@ index_register(char *heap,
 			   int natts,
 			   AttrNumber *attnos,
 			   uint16 nparams,
-			   Datum * params,
-			   FuncIndexInfo * finfo,
-			   PredInfo * predInfo);
+			   Datum *params,
+			   FuncIndexInfo *finfo,
+			   PredInfo *predInfo);
 
 extern void err_out(void);
 extern void InsertOneTuple(Oid objectid);

@@ -47,24 +47,24 @@
  */
 #define IndexStrategyIsValid(s) PointerIsValid(s)
 
-extern		StrategyMap
+extern StrategyMap
 IndexStrategyGetStrategyMap(IndexStrategy indexStrategy,
 					  StrategyNumber maxStrategyNum, AttrNumber attrNum);
 
-extern		Size
+extern Size
 AttributeNumberGetIndexStrategySize(AttrNumber maxAttributeNumber,
 									StrategyNumber maxStrategyNumber);
-extern		StrategyNumber
+extern StrategyNumber
 RelationGetStrategy(Relation relation,
 			   AttrNumber attributeNumber, StrategyEvaluation evaluation,
 					RegProcedure procedure);
-extern		bool
+extern bool
 RelationInvokeStrategy(Relation relation,
 			   StrategyEvaluation evaluation, AttrNumber attributeNumber,
 					   StrategyNumber strategy, Datum left, Datum right);
 extern void
 IndexSupportInitialize(IndexStrategy indexStrategy,
-					   RegProcedure * indexSupport, Oid indexObjectId,
+					   RegProcedure *indexSupport, Oid indexObjectId,
 			  Oid accessMethodObjectId, StrategyNumber maxStrategyNumber,
 		 StrategyNumber maxSupportNumber, AttrNumber maxAttributeNumber);
 

@@ -132,11 +132,11 @@ abstime2tm(AbsoluteTime time, int *tzp, struct tm * tm, char *tzn)
 #ifdef USE_POSIX_TIME
 	if (tzp != NULL)
 	{
-		tx = localtime((time_t *) & time);
+		tx = localtime((time_t *) &time);
 	}
 	else
 	{
-		tx = gmtime((time_t *) & time);
+		tx = gmtime((time_t *) &time);
 	};
 #else
 #endif
@@ -487,7 +487,7 @@ abstimege(AbsoluteTime t1, AbsoluteTime t2)
  * Convert datetime to abstime.
  */
 AbsoluteTime
-datetime_abstime(DateTime * datetime)
+datetime_abstime(DateTime *datetime)
 {
 	AbsoluteTime result;
 

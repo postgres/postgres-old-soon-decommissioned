@@ -134,7 +134,7 @@ SetRecoveryCheckingEnabled(bool state)
  * --------------------------------
  */
 
-static bool				/* true/false: does transaction id have
+static bool						/* true/false: does transaction id have
 								 * specified status? */
 TransactionLogTest(TransactionId transactionId, /* transaction id to test */
 				   XidStatus status)	/* transaction status */

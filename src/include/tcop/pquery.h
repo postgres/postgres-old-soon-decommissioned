@@ -24,12 +24,12 @@ extern EState *CreateExecutorState(void);
 
 
 extern void
-ProcessPortal(char *portalName, Query * parseTree,
-			  Plan * plan, EState * state, TupleDesc attinfo,
+ProcessPortal(char *portalName, Query *parseTree,
+			  Plan *plan, EState *state, TupleDesc attinfo,
 			  CommandDest dest);
 
 extern void
-ProcessQuery(Query * parsetree, Plan * plan, char *argv[],
-			 Oid * typev, int nargs, CommandDest dest);
+ProcessQuery(Query *parsetree, Plan *plan, char *argv[],
+			 Oid *typev, int nargs, CommandDest dest);
 
 #endif							/* pqueryIncluded */

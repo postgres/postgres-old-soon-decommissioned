@@ -116,7 +116,7 @@ DataFill(char *data,
 		 Datum value[],
 		 char nulls[],
 		 char *infomask,
-		 bits8 * bit)
+		 bits8 *bit)
 {
 	bits8	   *bitP = 0;
 	int			bitmask = 0;
@@ -448,7 +448,7 @@ char	   *
 fastgetattr(HeapTuple tup,
 			int attnum,
 			TupleDesc tupleDesc,
-			bool * isnull)
+			bool *isnull)
 {
 	char	   *tp;				/* ptr to att in tuple */
 	bits8	   *bp = NULL;		/* ptr to att in tuple */

@@ -59,7 +59,7 @@
  *	 position crossover
  */
 void
-px(Gene * tour1, Gene * tour2, Gene * offspring, int num_gene, City * city_table)
+px(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene, City *city_table)
 {
 
 	int			num_positions;

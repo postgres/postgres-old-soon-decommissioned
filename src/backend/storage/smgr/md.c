@@ -48,7 +48,7 @@ typedef struct _MdfdVec
 	int			mdfd_lstbcnt;	/* most recent block count */
 	int			mdfd_nextFree;	/* next free vector */
 	struct _MdfdVec *mdfd_chain;/* for large relations */
-}			MdfdVec;
+} MdfdVec;
 
 static int	Nfds = 100;
 static MdfdVec *Md_fdvec = (MdfdVec *) NULL;

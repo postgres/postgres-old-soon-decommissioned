@@ -582,7 +582,7 @@ int32
 pg_func_ownercheck(char *usename,
 				   char *funcname,
 				   int nargs,
-				   Oid * arglist)
+				   Oid *arglist)
 {
 	HeapTuple	htp;
 	AclId		user_id,

@@ -48,7 +48,7 @@
  * ----------------------------------------------------------------
  */
 TupleTableSlot *				/* result tuple from subplan */
-ExecMaterial(Material * node)
+ExecMaterial(Material *node)
 {
 	EState	   *estate;
 	MaterialState *matstate;
@@ -188,7 +188,7 @@ ExecMaterial(Material * node)
  * ----------------------------------------------------------------
  */
 bool							/* initialization status */
-ExecInitMaterial(Material * node, EState * estate, Plan * parent)
+ExecInitMaterial(Material *node, EState *estate, Plan *parent)
 {
 	MaterialState *matstate;
 	Plan	   *outerPlan;
@@ -291,7 +291,7 @@ ExecInitMaterial(Material * node, EState * estate, Plan * parent)
 }
 
 int
-ExecCountSlotsMaterial(Material * node)
+ExecCountSlotsMaterial(Material *node)
 {
 	return ExecCountSlotsNode(outerPlan((Plan *) node)) +
 	ExecCountSlotsNode(innerPlan((Plan *) node)) +
@@ -306,7 +306,7 @@ ExecCountSlotsMaterial(Material * node)
  * ----------------------------------------------------------------
  */
 void
-ExecEndMaterial(Material * node)
+ExecEndMaterial(Material *node)
 {
 	MaterialState *matstate;
 	Relation	tempRelation;

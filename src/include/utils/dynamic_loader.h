@@ -34,7 +34,7 @@ typedef struct df_files
 	ino_t		inode;			/* Inode number of file */
 	void	   *handle;			/* a handle for pg_dl* functions */
 	struct df_files *next;
-}			DynamicFileList;
+} DynamicFileList;
 
 extern void *pg_dlopen(char *filename);
 extern func_ptr pg_dlsym(void *handle, char *funcname);

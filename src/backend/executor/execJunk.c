@@ -61,7 +61,7 @@
  *-------------------------------------------------------------------------
  */
 JunkFilter *
-ExecInitJunkFilter(List * targetList)
+ExecInitJunkFilter(List *targetList)
 {
 	JunkFilter *junkfilter;
 	List	   *cleanTargetList;
@@ -264,11 +264,11 @@ ExecInitJunkFilter(List * targetList)
  *-------------------------------------------------------------------------
  */
 bool
-ExecGetJunkAttribute(JunkFilter * junkfilter,
-					 TupleTableSlot * slot,
+ExecGetJunkAttribute(JunkFilter *junkfilter,
+					 TupleTableSlot *slot,
 					 char *attrName,
-					 Datum * value,
-					 bool * isNull)
+					 Datum *value,
+					 bool *isNull)
 {
 	List	   *targetList;
 	List	   *t;
@@ -328,7 +328,7 @@ ExecGetJunkAttribute(JunkFilter * junkfilter,
  *-------------------------------------------------------------------------
  */
 HeapTuple
-ExecRemoveJunk(JunkFilter * junkfilter, TupleTableSlot * slot)
+ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot)
 {
 	HeapTuple	tuple;
 	HeapTuple	cleanTuple;

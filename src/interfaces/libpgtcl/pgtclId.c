@@ -29,7 +29,7 @@
  * Create the Id for a new connection and hash it
  */
 void
-PgSetConnectionId(Pg_clientData * cd, char *id, PGconn * conn)
+PgSetConnectionId(Pg_clientData * cd, char *id, PGconn *conn)
 {
 	Tcl_HashEntry *hent;
 	Pg_ConnectionId *connid;
@@ -111,7 +111,7 @@ PgDelConnectionId(Pg_clientData * cd, char *id)
  * Create a new result Id and hash it
  */
 void
-PgSetResultId(Pg_clientData * cd, char *id, char *connid_c, PGresult * res)
+PgSetResultId(Pg_clientData * cd, char *id, char *connid_c, PGresult *res)
 {
 	Tcl_HashEntry *hent;
 	Pg_ConnectionId *connid;

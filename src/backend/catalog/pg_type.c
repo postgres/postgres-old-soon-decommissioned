@@ -47,7 +47,7 @@ TypeShellMakeWithOpenRelation(Relation pg_type_desc,
 static Oid
 TypeGetWithOpenRelation(Relation pg_type_desc,
 						char *typeName,
-						bool * defined)
+						bool *defined)
 {
 	HeapScanDesc scan;
 	HeapTuple	tup;
@@ -116,7 +116,7 @@ TypeGetWithOpenRelation(Relation pg_type_desc,
  */
 Oid
 TypeGet(char *typeName,			/* name of type to be fetched */
-		bool * defined)			/* has the type been defined? */
+		bool *defined)			/* has the type been defined? */
 {
 	Relation	pg_type_desc;
 	Oid			typeoid;

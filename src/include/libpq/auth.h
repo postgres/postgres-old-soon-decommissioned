@@ -30,11 +30,11 @@
 #define DEFAULT_CLIENT_AUTHSVC	"kerberos"
 #endif							/* KRB4 || KRB5 */
 
-extern int	fe_sendauth(MsgType msgtype, Port * port, char *hostname);
+extern int	fe_sendauth(MsgType msgtype, Port *port, char *hostname);
 extern void fe_setauthsvc(char *name);
 extern MsgType fe_getauthsvc();
 extern char *fe_getauthname(void);
-extern int	be_recvauth(MsgType msgtype, Port * port, char *username, StartupInfo * sp);
+extern int	be_recvauth(MsgType msgtype, Port *port, char *username, StartupInfo *sp);
 extern void be_setauthsvc(char *name);
 
 /* the value that matches any dbName value when doing

@@ -13,12 +13,12 @@
 #ifndef NODEMERGEJOIN_H
 #define NODEMERGEJOIN_H
 
-extern TupleTableSlot *ExecMergeJoin(MergeJoin * node);
+extern TupleTableSlot *ExecMergeJoin(MergeJoin *node);
 
-extern bool ExecInitMergeJoin(MergeJoin * node, EState * estate, Plan * parent);
+extern bool ExecInitMergeJoin(MergeJoin *node, EState *estate, Plan *parent);
 
-extern int	ExecCountSlotsMergeJoin(MergeJoin * node);
+extern int	ExecCountSlotsMergeJoin(MergeJoin *node);
 
-extern void ExecEndMergeJoin(MergeJoin * node);
+extern void ExecEndMergeJoin(MergeJoin *node);
 
 #endif							/* NODEMERGEJOIN_H; */

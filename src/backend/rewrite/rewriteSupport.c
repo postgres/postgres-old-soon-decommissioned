@@ -38,7 +38,7 @@
  */
 #ifdef NOT_USED
 static Node *
-RuleIdGetActionInfo(Oid ruleoid, bool * instead_flag, Query ** parseTrees)
+RuleIdGetActionInfo(Oid ruleoid, bool *instead_flag, Query **parseTrees)
 {
 	HeapTuple	ruletuple;
 	char	   *ruleaction = NULL;
@@ -169,8 +169,8 @@ prs2_addToRelation(Oid relid,
 				   CmdType event_type,
 				   AttrNumber attno,
 				   bool isInstead,
-				   Node * qual,
-				   List * actions)
+				   Node *qual,
+				   List *actions)
 {
 	Relation	relation;
 	RewriteRule *thisRule;

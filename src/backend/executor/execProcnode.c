@@ -103,7 +103,7 @@
  * ------------------------------------------------------------------------
  */
 bool
-ExecInitNode(Plan * node, EState * estate, Plan * parent)
+ExecInitNode(Plan *node, EState *estate, Plan *parent)
 {
 	bool		result;
 
@@ -207,7 +207,7 @@ ExecInitNode(Plan * node, EState * estate, Plan * parent)
  * ----------------------------------------------------------------
  */
 TupleTableSlot *
-ExecProcNode(Plan * node, Plan * parent)
+ExecProcNode(Plan *node, Plan *parent)
 {
 	TupleTableSlot *result;
 
@@ -302,7 +302,7 @@ ExecProcNode(Plan * node, Plan * parent)
 }
 
 int
-ExecCountSlotsNode(Plan * node)
+ExecCountSlotsNode(Plan *node)
 {
 	if (node == (Plan *) NULL)
 		return 0;
@@ -387,7 +387,7 @@ ExecCountSlotsNode(Plan * node)
  * ----------------------------------------------------------------
  */
 void
-ExecEndNode(Plan * node, Plan * parent)
+ExecEndNode(Plan *node, Plan *parent)
 {
 	/* ----------------
 	 *	do nothing when we get to the end

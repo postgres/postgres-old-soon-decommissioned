@@ -25,7 +25,7 @@
  * Check if data is Null
  */
 bool
-nullvalue(Datum value, bool * isNull)
+nullvalue(Datum value, bool *isNull)
 {
 	if (*isNull)
 	{
@@ -40,7 +40,7 @@ nullvalue(Datum value, bool * isNull)
  *	   check if data is not Null										*
  *--------------------------------------------------------------------- */
 bool
-nonnullvalue(Datum value, bool * isNull)
+nonnullvalue(Datum value, bool *isNull)
 {
 	if (*isNull)
 	{

@@ -34,7 +34,7 @@
  *
  */
 List	   *
-group_clauses_by_order(List * clauseinfo_list,
+group_clauses_by_order(List *clauseinfo_list,
 					   int inner_relid)
 {
 	List	   *mergeinfo_list = NIL;
@@ -106,7 +106,7 @@ group_clauses_by_order(List * clauseinfo_list,
  *
  */
 MInfo	   *
-match_order_mergeinfo(PathOrder * ordering, List * mergeinfo_list)
+match_order_mergeinfo(PathOrder *ordering, List *mergeinfo_list)
 {
 	MergeOrder *xmergeorder;
 	List	   *xmergeinfo = NIL;

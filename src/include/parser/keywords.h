@@ -18,7 +18,7 @@ typedef struct ScanKeyword
 {
 	char	   *name;
 	int			value;
-}			ScanKeyword;
+} ScanKeyword;
 
 extern ScanKeyword *ScanKeywordLookup(char *text);
 extern char *AtomValueGetString(int atomval);

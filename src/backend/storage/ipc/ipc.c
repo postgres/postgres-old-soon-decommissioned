@@ -73,7 +73,7 @@ typedef struct _PrivateMemStruct
 {
 	int			id;
 	char	   *memptr;
-}			PrivateMem;
+} PrivateMem;
 
 PrivateMem	IpcPrivateMem[16];
 
@@ -668,11 +668,11 @@ AttachSLockMemory(IPCKey key)
 	slockM = (struct ipcdummy *) IpcMemoryAttach(SLockMemoryId);
 	if (slockM == IpcMemAttachFailed)
 		elog(FATAL, "AttachSLockMemory: could not attach segment");
-	FreeSLockPP = (SLock **) & (slockM->free);
+	FreeSLockPP = (SLock **) &(slockM->free);
 	UnusedSLockIP = (int *) &(slockM->unused);
-	SLockMemoryLock = (slock_t *) & (slockM->memlock);
+	SLockMemoryLock = (slock_t *) &(slockM->memlock);
 	S_INIT_LOCK(SLockMemoryLock);
-	SLockArray = (SLock *) & (slockM->slocks[0]);
+	SLockArray = (SLock *) &(slockM->slocks[0]);
 	return;
 }
 

@@ -28,7 +28,7 @@ typedef struct StringInfoData
 	char	   *data;
 	int			maxlen;
 	int			len;
-}			StringInfoData;
+} StringInfoData;
 
 typedef StringInfoData *StringInfo;
 

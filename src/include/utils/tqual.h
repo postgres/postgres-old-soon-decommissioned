@@ -22,7 +22,7 @@
 typedef struct TimeQualSpace
 {
 	char		data[12];
-}			TimeQualSpace;
+} TimeQualSpace;
 
 typedef Pointer TimeQual;
 
@@ -36,7 +36,7 @@ extern void setheapoverride(bool on);
 extern bool heapisoverride(void);
 
 extern TimeQual TimeFormSnapshotTimeQual(AbsoluteTime time);
-extern		TimeQual
+extern TimeQual
 TimeFormRangedTimeQual(AbsoluteTime startTime,
 					   AbsoluteTime endTime);
 extern bool HeapTupleSatisfiesTimeQual(HeapTuple tuple, TimeQual qual);

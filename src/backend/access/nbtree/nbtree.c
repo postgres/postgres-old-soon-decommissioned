@@ -59,9 +59,9 @@ btbuild(Relation heap,
 		AttrNumber *attnum,
 		IndexStrategy istrat,
 		uint16 pcount,
-		Datum * params,
-		FuncIndexInfo * finfo,
-		PredInfo * predInfo)
+		Datum *params,
+		FuncIndexInfo *finfo,
+		PredInfo *predInfo)
 {
 	HeapScanDesc hscan;
 	Buffer		buffer;
@@ -356,7 +356,7 @@ btbuild(Relation heap,
  *		return an InsertIndexResult to the caller.
  */
 InsertIndexResult
-btinsert(Relation rel, Datum * datum, char *nulls, ItemPointer ht_ctid, Relation heapRel)
+btinsert(Relation rel, Datum *datum, char *nulls, ItemPointer ht_ctid, Relation heapRel)
 {
 	BTItem		btitem;
 	IndexTuple	itup;

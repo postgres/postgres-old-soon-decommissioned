@@ -154,7 +154,7 @@ typedef enum ProcessingMode
 	BootstrapProcessing,		/* bootstrap creation of template database */
 	InitProcessing,				/* initializing system */
 	NormalProcessing			/* normal processing */
-}			ProcessingMode;
+} ProcessingMode;
 
 
 /*****************************************************************************

@@ -26,7 +26,7 @@
 #include "commands/creatinh.h"
 
 void
-plan_archive(List * rt)
+plan_archive(List *rt)
 {
 	List	   *rtitem;
 	RangeTblEntry *rte;

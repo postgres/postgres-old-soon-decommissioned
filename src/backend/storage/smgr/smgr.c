@@ -42,7 +42,7 @@ typedef struct f_smgr
 	int			(*smgr_truncate) ();
 	int			(*smgr_commit) ();		/* may be NULL */
 	int			(*smgr_abort) ();		/* may be NULL */
-}			f_smgr;
+} f_smgr;
 
 /*
  *	The weird placement of commas in this init block is to keep the compiler

@@ -34,7 +34,7 @@ typedef struct PortalBlockData
 {
 	AllocSetData setData;
 	FixedItemData itemData;
-}			PortalBlockData;
+} PortalBlockData;
 
 typedef PortalBlockData *PortalBlock;
 
@@ -69,13 +69,13 @@ extern void EnablePortalManager(bool on);
 extern Portal GetPortalByName(char *name);
 extern Portal BlankPortalAssignName(char *name);
 extern void
-PortalSetQuery(Portal portal, QueryDesc * queryDesc,
-			   TupleDesc attinfo, EState * state,
+PortalSetQuery(Portal portal, QueryDesc *queryDesc,
+			   TupleDesc attinfo, EState *state,
 			   void (*cleanup) (Portal portal));
 extern QueryDesc *PortalGetQueryDesc(Portal portal);
 extern EState *PortalGetState(Portal portal);
 extern Portal CreatePortal(char *name);
-extern void PortalDestroy(Portal * portalP);
+extern void PortalDestroy(Portal *portalP);
 extern void StartPortalAllocMode(AllocMode mode, Size limit);
 extern void EndPortalAllocMode(void);
 extern PortalVariableMemory PortalGetVariableMemory(Portal portal);

@@ -12,6 +12,6 @@
 #ifndef EXPLAIN_H
 #define EXPLAIN_H
 
-extern void ExplainQuery(Query * query, bool verbose, CommandDest dest);
+extern void ExplainQuery(Query *query, bool verbose, CommandDest dest);
 
 #endif							/* EXPLAIN_H */

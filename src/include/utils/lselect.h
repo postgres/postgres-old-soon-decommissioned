@@ -32,13 +32,13 @@ typedef struct
 	int			nKeys;
 	ScanKey		scanKeys;
 	int			sortMem;		/* needed for psort */
-}			LeftistContextData;
+} LeftistContextData;
 typedef LeftistContextData *LeftistContext;
 
 extern struct leftist *
 lmerge(struct leftist * pt, struct leftist * qt,
 	   LeftistContext context);
-extern		HeapTuple
+extern HeapTuple
 gettuple(struct leftist ** treep, short *devnum,
 		 LeftistContext context);
 extern void

@@ -60,7 +60,7 @@
  *	 cycle crossover
  */
 int
-cx(Gene * tour1, Gene * tour2, Gene * offspring, int num_gene, City * city_table)
+cx(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene, City *city_table)
 {
 
 	int			i,

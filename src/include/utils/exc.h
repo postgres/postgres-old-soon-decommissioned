@@ -43,7 +43,7 @@ typedef struct ExcFrame
 	ExcDetail	detail;
 	ExcData		data;
 	ExcMessage	message;
-}			ExcFrame;
+} ExcFrame;
 
 extern ExcFrame *ExcCurFrameP;
 
@@ -71,7 +71,7 @@ extern ExcFrame *ExcCurFrameP;
 #define reraise() \
 		raise4(*exception.id,exception.detail,exception.data,exception.message)
 
-typedef void ExcProc(Exception *, ExcDetail, ExcData, ExcMessage);
+typedef void ExcProc (Exception *, ExcDetail, ExcData, ExcMessage);
 
 
 /*
@@ -79,7 +79,7 @@ typedef void ExcProc(Exception *, ExcDetail, ExcData, ExcMessage);
  */
 extern void EnableExceptionHandling(bool on);
 extern void
-ExcRaise(Exception * excP,
+ExcRaise(Exception *excP,
 		 ExcDetail detail,
 		 ExcData data,
 		 ExcMessage message);
@@ -89,7 +89,7 @@ ExcRaise(Exception * excP,
  * prototypes for functions in excabort.c
  */
 extern void
-ExcAbort(const Exception * excP, ExcDetail detail, ExcData data,
+ExcAbort(const Exception *excP, ExcDetail detail, ExcData data,
 		 ExcMessage message);
 
 #endif							/* EXC_H */

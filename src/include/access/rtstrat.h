@@ -12,7 +12,7 @@
  */
 #ifndef RTSTRAT_H
 
-extern		RegProcedure
+extern RegProcedure
 RTMapOperator(Relation r, AttrNumber attnum,
 			  RegProcedure proc);
 

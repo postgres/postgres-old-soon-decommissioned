@@ -75,7 +75,7 @@
  * ----------------
  */
 void
-ProcessUtility(Node * parsetree,
+ProcessUtility(Node *parsetree,
 			   CommandDest dest)
 {
 	char	   *commandTag = NULL;
@@ -330,6 +330,7 @@ ProcessUtility(Node * parsetree,
 				CHECK_IF_ABORTED();
 
 				aip = stmt->aclitem;
+
 				modechg = stmt->modechg;
 #ifndef NO_SECURITY
 				foreach(i, stmt->relNames)

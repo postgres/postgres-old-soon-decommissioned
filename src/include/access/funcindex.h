@@ -19,7 +19,7 @@ typedef struct
 	Oid			arglist[8];
 	Oid			procOid;
 	NameData	funcName;
-}			FuncIndexInfo;
+} FuncIndexInfo;
 
 typedef FuncIndexInfo *FuncIndexInfoPtr;
 

@@ -800,7 +800,7 @@ _bt_spool(Relation index, BTItem btitem, void *spool)
  * allocate a new, clean btree page, not linked to any siblings.
  */
 static void
-_bt_blnewpage(Relation index, Buffer *buf, Page * page, int flags)
+_bt_blnewpage(Relation index, Buffer *buf, Page *page, int flags)
 {
 	BTPageOpaque opaque;
 

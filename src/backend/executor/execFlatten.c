@@ -34,16 +34,16 @@
 
 #ifdef SETS_FIXED
 static bool
-FjoinBumpOuterNodes(TargetEntry * tlist, ExprContext * econtext,
+FjoinBumpOuterNodes(TargetEntry *tlist, ExprContext *econtext,
 					DatumPtr results, char *nulls);
 
 #endif
 
 Datum
-ExecEvalIter(Iter * iterNode,
-			 ExprContext * econtext,
-			 bool * resultIsNull,
-			 bool * iterIsDone)
+ExecEvalIter(Iter *iterNode,
+			 ExprContext *econtext,
+			 bool *resultIsNull,
+			 bool *iterIsDone)
 {
 	Node	   *expression;
 
@@ -59,10 +59,10 @@ ExecEvalIter(Iter * iterNode,
 }
 
 void
-ExecEvalFjoin(TargetEntry * tlist,
-			  ExprContext * econtext,
-			  bool * isNullVect,
-			  bool * fj_isDone)
+ExecEvalFjoin(TargetEntry *tlist,
+			  ExprContext *econtext,
+			  bool *isNullVect,
+			  bool *fj_isDone)
 {
 
 #ifdef SETS_FIXED
@@ -182,8 +182,8 @@ ExecEvalFjoin(TargetEntry * tlist,
 
 #ifdef SETS_FIXED
 static bool
-FjoinBumpOuterNodes(TargetEntry * tlist,
-					ExprContext * econtext,
+FjoinBumpOuterNodes(TargetEntry *tlist,
+					ExprContext *econtext,
 					DatumPtr results,
 					char *nulls)
 {

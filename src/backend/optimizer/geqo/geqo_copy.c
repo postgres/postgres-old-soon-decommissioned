@@ -56,7 +56,7 @@
  *
  */
 void
-geqo_copy(Chromosome * chromo1, Chromosome * chromo2, int string_length)
+geqo_copy(Chromosome *chromo1, Chromosome *chromo2, int string_length)
 {
 	int			i;
 

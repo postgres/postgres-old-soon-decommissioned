@@ -21,8 +21,8 @@
 #define LOread(f,l) loread(f,l)
 #define LOwrite(f,b) lowrite(f,b)
 
-extern Oid	lo_import(text * filename);
-extern int4 lo_export(Oid lobjId, text * filename);
+extern Oid	lo_import(text *filename);
+extern int4 lo_export(Oid lobjId, text *filename);
 
 extern Oid	lo_creat(int mode);
 

@@ -44,6 +44,6 @@ extern void PortalCleanup(Portal portal);
  */
 extern void
 PerformAddAttribute(char *relationName, char *userName,
-					bool inh, ColumnDef * colDef);
+					bool inh, ColumnDef *colDef);
 
 #endif							/* COMMAND_H */

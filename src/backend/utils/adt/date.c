@@ -304,7 +304,7 @@ tintervalout(TimeInterval interval)
  *****************************************************************************/
 
 RelativeTime
-timespan_reltime(TimeSpan * timespan)
+timespan_reltime(TimeSpan *timespan)
 {
 	RelativeTime time;
 	int			year,
@@ -1071,7 +1071,7 @@ timeofday(void)
 
 	gettimeofday(&tp, &tpz);
 	strftime(templ, sizeof(templ), "%a %b %d %H:%M:%S.%%d %Y %Z",
-			 localtime((time_t *) & tp.tv_sec));
+			 localtime((time_t *) &tp.tv_sec));
 	sprintf(buf, templ, tp.tv_usec);
 
 	len = VARHDRSZ + strlen(buf);

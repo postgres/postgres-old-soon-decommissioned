@@ -33,17 +33,17 @@
 #include "utils/palloc.h"
 
 static TupleTableSlot *
-			ExecHashJoinOuterGetTuple(Plan * node, Plan * parent, HashJoinState * hjstate);
+			ExecHashJoinOuterGetTuple(Plan *node, Plan *parent, HashJoinState *hjstate);
 
 static TupleTableSlot *
-ExecHashJoinGetSavedTuple(HashJoinState * hjstate, char *buffer,
-	 File file, TupleTableSlot * tupleSlot, int *block, char **position);
+ExecHashJoinGetSavedTuple(HashJoinState *hjstate, char *buffer,
+	  File file, TupleTableSlot *tupleSlot, int *block, char **position);
 
 static int
 ExecHashJoinGetBatch(int bucketno, HashJoinTable hashtable,
 					 int nbatch);
 
-static int	ExecHashJoinNewBatch(HashJoinState * hjstate);
+static int	ExecHashJoinNewBatch(HashJoinState *hjstate);
 
 
 
@@ -57,7 +57,7 @@ static int	ExecHashJoinNewBatch(HashJoinState * hjstate);
  * ----------------------------------------------------------------
  */
 TupleTableSlot *				/* return: a tuple or NULL */
-ExecHashJoin(HashJoin * node)
+ExecHashJoin(HashJoin *node)
 {
 	HashJoinState *hjstate;
 	EState	   *estate;
@@ -392,7 +392,7 @@ ExecHashJoin(HashJoin * node)
  * ----------------------------------------------------------------
  */
 bool							/* return: initialization status */
-ExecInitHashJoin(HashJoin * node, EState * estate, Plan * parent)
+ExecInitHashJoin(HashJoin *node, EState *estate, Plan *parent)
 {
 	HashJoinState *hjstate;
 	Plan	   *outerNode;
@@ -497,7 +497,7 @@ ExecInitHashJoin(HashJoin * node, EState * estate, Plan * parent)
 }
 
 int
-ExecCountSlotsHashJoin(HashJoin * node)
+ExecCountSlotsHashJoin(HashJoin *node)
 {
 	return ExecCountSlotsNode(outerPlan(node)) +
 	ExecCountSlotsNode(innerPlan(node)) +
@@ -511,7 +511,7 @@ ExecCountSlotsHashJoin(HashJoin * node)
  * ----------------------------------------------------------------
  */
 void
-ExecEndHashJoin(HashJoin * node)
+ExecEndHashJoin(HashJoin *node)
 {
 	HashJoinState *hjstate;
 
@@ -569,7 +569,7 @@ ExecEndHashJoin(HashJoin * node)
  */
 
 static TupleTableSlot *
-ExecHashJoinOuterGetTuple(Plan * node, Plan * parent, HashJoinState * hjstate)
+ExecHashJoinOuterGetTuple(Plan *node, Plan *parent, HashJoinState *hjstate)
 {
 	TupleTableSlot *slot;
 	HashJoinTable hashtable;
@@ -619,10 +619,10 @@ ExecHashJoinOuterGetTuple(Plan * node, Plan * parent, HashJoinState * hjstate)
  */
 
 static TupleTableSlot *
-ExecHashJoinGetSavedTuple(HashJoinState * hjstate,
+ExecHashJoinGetSavedTuple(HashJoinState *hjstate,
 						  char *buffer,
 						  File file,
-						  TupleTableSlot * tupleSlot,
+						  TupleTableSlot *tupleSlot,
 						  int *block,	/* return parameter */
 						  char **position)		/* return parameter */
 {
@@ -664,7 +664,7 @@ ExecHashJoinGetSavedTuple(HashJoinState * hjstate,
  * ----------------------------------------------------------------
  */
 static int
-ExecHashJoinNewBatch(HashJoinState * hjstate)
+ExecHashJoinNewBatch(HashJoinState *hjstate)
 {
 	File	   *innerBatches;
 	File	   *outerBatches;

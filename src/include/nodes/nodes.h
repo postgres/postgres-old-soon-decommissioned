@@ -209,7 +209,7 @@ typedef enum NodeTag
 	T_SortClause,
 	T_GroupClause,
 	T_SubSelect
-}			NodeTag;
+} NodeTag;
 
 /*
  * The first field of a node of any type is gauranteed to be the NodeTag.
@@ -220,7 +220,7 @@ typedef enum NodeTag
 typedef struct Node
 {
 	NodeTag		type;
-}			Node;
+} Node;
 
 #define nodeTag(_node_)			((Node*)_node_)->type
 
@@ -303,7 +303,7 @@ typedef enum CmdType
 	CMD_NOTIFY,
 	CMD_UTILITY					/* cmds like create, destroy, copy,
 								 * vacuum, etc. */
-}			CmdType;
+} CmdType;
 
 
 #endif							/* NODES_H */

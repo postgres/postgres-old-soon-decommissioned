@@ -28,7 +28,7 @@ typedef struct ParseState
 	bool		p_is_rule;
 	Relation	p_target_relation;
 	RangeTblEntry *p_target_rangetblentry;
-}			ParseState;
+} ParseState;
 
 
 #endif							/* PARSE_QUERY_H */

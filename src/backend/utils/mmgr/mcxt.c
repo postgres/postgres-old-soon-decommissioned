@@ -121,7 +121,7 @@ static struct GlobalMemory TopGlobalMemoryData = {
  *		allocate something here, you are expected to clean it up when
  *		appropriate.
  */
-MemoryContext TopMemoryContext = (MemoryContext) & TopGlobalMemoryData;
+MemoryContext TopMemoryContext = (MemoryContext) &TopGlobalMemoryData;
 
 
 
@@ -367,7 +367,7 @@ MemoryContextSwitchTo(MemoryContext context)
  *		BadArg if name is invalid.
  */
 GlobalMemory
-CreateGlobalMemory(char *name)			/* XXX MemoryContextName */
+CreateGlobalMemory(char *name)	/* XXX MemoryContextName */
 {
 	GlobalMemory context;
 	MemoryContext savecxt;

@@ -162,7 +162,7 @@ index_close(Relation relation)
  */
 InsertIndexResult
 index_insert(Relation relation,
-			 Datum * datum,
+			 Datum *datum,
 			 char *nulls,
 			 ItemPointer heap_t_ctid,
 			 Relation heapRel)
@@ -371,8 +371,8 @@ GetIndexValue(HeapTuple tuple,
 			  TupleDesc hTupDesc,
 			  int attOff,
 			  AttrNumber attrNums[],
-			  FuncIndexInfo * fInfo,
-			  bool * attNull,
+			  FuncIndexInfo *fInfo,
+			  bool *attNull,
 			  Buffer buffer)
 {
 	Datum		returnVal;

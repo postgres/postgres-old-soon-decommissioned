@@ -31,12 +31,12 @@
 
 /* in be-dumpdata.c */
 extern void be_portalinit(void);
-extern void be_portalpush(PortalEntry * entry);
+extern void be_portalpush(PortalEntry *entry);
 extern PortalEntry *be_portalpop(void);
 extern PortalEntry *be_currentportal(void);
 extern PortalEntry *be_newportal(void);
 extern void
-be_typeinit(PortalEntry * entry, TupleDesc attrs,
+be_typeinit(PortalEntry *entry, TupleDesc attrs,
 			int natts);
 extern void be_printtup(HeapTuple tuple, TupleDesc typeinfo);
 
@@ -44,7 +44,7 @@ extern void be_printtup(HeapTuple tuple, TupleDesc typeinfo);
 /* in be-pqexec.c */
 extern char *
 PQfn(int fnid, int *result_buf, int result_len, int result_is_int,
-	 PQArgBlock * args, int nargs);
+	 PQArgBlock *args, int nargs);
 extern char *PQexec(char *query);
 extern int	pqtest_PQexec(char *q);
 extern int	pqtest_PQfn(char *q);

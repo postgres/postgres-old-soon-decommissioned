@@ -73,7 +73,7 @@ be_portalinit(void)
  * ----------------
  */
 void
-be_portalpush(PortalEntry * entry)
+be_portalpush(PortalEntry *entry)
 {
 	DLAddTail(be_portalstack, DLNewElem(entry));
 }
@@ -166,7 +166,7 @@ be_newportal(void)
  * ----------------
  */
 void
-be_typeinit(PortalEntry * entry,
+be_typeinit(PortalEntry *entry,
 			TupleDesc tupDesc,
 			int natts)
 {

@@ -20,7 +20,7 @@
 #include "optimizer/clauses.h"
 
 
-static HInfo *match_hashop_hashinfo(Oid hashop, List * hashinfo_list);
+static HInfo *match_hashop_hashinfo(Oid hashop, List *hashinfo_list);
 
 /*
  * group-clauses-by-hashop--
@@ -35,7 +35,7 @@ static HInfo *match_hashop_hashinfo(Oid hashop, List * hashinfo_list);
  *
  */
 List	   *
-group_clauses_by_hashop(List * clauseinfo_list,
+group_clauses_by_hashop(List *clauseinfo_list,
 						int inner_relid)
 {
 	List	   *hashinfo_list = NIL;
@@ -109,7 +109,7 @@ group_clauses_by_hashop(List * clauseinfo_list,
  *
  */
 static HInfo *
-match_hashop_hashinfo(Oid hashop, List * hashinfo_list)
+match_hashop_hashinfo(Oid hashop, List *hashinfo_list)
 {
 	Oid			key = 0;
 	HInfo	   *xhashinfo = (HInfo *) NULL;

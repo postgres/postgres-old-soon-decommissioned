@@ -126,7 +126,7 @@ btchar16cmp(char *a, char *b)
 }
 
 int32
-btnamecmp(NameData * a, NameData * b)
+btnamecmp(NameData *a, NameData *b)
 {
 	return (strncmp(a->data, b->data, NAMEDATALEN));
 }

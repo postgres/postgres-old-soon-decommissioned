@@ -57,8 +57,8 @@
  *
  */
 int
-PacketReceive(Port * port,		/* receive port */
-			  PacketBuf * buf,	/* MAX_PACKET_SIZE-worth of buffer space */
+PacketReceive(Port *port,		/* receive port */
+			  PacketBuf *buf,	/* MAX_PACKET_SIZE-worth of buffer space */
 			  bool nonBlocking) /* NON_BLOCKING or BLOCKING i/o */
 {
 	PacketLen	max_size = sizeof(PacketBuf);
@@ -219,8 +219,8 @@ PacketReceive(Port * port,		/* receive port */
  *
  */
 int
-PacketSend(Port * port,
-		   PacketBuf * buf,
+PacketSend(Port *port,
+		   PacketBuf *buf,
 		   PacketLen len,
 		   bool nonBlocking)
 {

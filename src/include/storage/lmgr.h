@@ -24,7 +24,7 @@ typedef struct LRelId
 {
 	Oid			relId;			/* a relation identifier */
 	Oid			dbId;			/* a database identifier */
-}			LRelId;
+} LRelId;
 
 typedef struct LockInfoData
 {
@@ -32,7 +32,7 @@ typedef struct LockInfoData
 	LRelId		lRelId;
 	TransactionId transactionIdData;
 	uint16		flags;
-}			LockInfoData;
+} LockInfoData;
 typedef LockInfoData *LockInfo;
 
 #define LockInfoIsValid(linfo) \
@@ -73,7 +73,7 @@ extern void RelationUnsetWIntentLock(Relation relation);
 
 /* single.c */
 extern bool SingleLockReln(LockInfo linfo, LOCKT lockt, int action);
-extern		bool
+extern bool
 SingleLockPage(LockInfo linfo, ItemPointer tidPtr,
 			   LOCKT lockt, int action);
 

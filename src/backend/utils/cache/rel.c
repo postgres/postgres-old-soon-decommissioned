@@ -66,7 +66,7 @@ RelationGetIndexStrategy(Relation relation)
 void
 RelationSetIndexSupport(Relation relation,
 						IndexStrategy strategy,
-						RegProcedure * support)
+						RegProcedure *support)
 {
 	Assert(PointerIsValid(relation));
 	Assert(IndexStrategyIsValid(strategy));

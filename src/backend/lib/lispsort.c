@@ -30,7 +30,7 @@
 **			   the nodes sorted.  The old list is *not* freed or modified (?)
 */
 List	   *
-lisp_qsort(List * the_list,		/* the list to be sorted */
+lisp_qsort(List *the_list,		/* the list to be sorted */
 		   int (*compare) ())	/* function to compare two nodes */
 {
 	int			i;

@@ -540,7 +540,7 @@ OperatorRelationFillScanKeyEntry(Relation operatorRelation,
  */
 void
 IndexSupportInitialize(IndexStrategy indexStrategy,
-					   RegProcedure * indexSupport,
+					   RegProcedure *indexSupport,
 					   Oid indexObjectId,
 					   Oid accessMethodObjectId,
 					   StrategyNumber maxStrategyNumber,

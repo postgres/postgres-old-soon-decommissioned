@@ -216,7 +216,7 @@ get_opname(Oid opno)
  *
  */
 bool
-op_mergesortable(Oid opno, Oid ltype, Oid rtype, Oid * leftOp, Oid * rightOp)
+op_mergesortable(Oid opno, Oid ltype, Oid rtype, Oid *leftOp, Oid *rightOp)
 {
 	FormData_pg_operator optup;
 

@@ -653,13 +653,14 @@ aclmakeuser(char *user_type, char *user)
  */
 
 ChangeACLStmt *
-makeAclStmt(char *privileges, List * rel_list, char *grantee,
+makeAclStmt(char *privileges, List *rel_list, char *grantee,
 			char grant_or_revoke)
 {
 	ChangeACLStmt *n = makeNode(ChangeACLStmt);
 	char		str[MAX_PARSE_BUFFER];
 
 	n->aclitem = (AclItem *) palloc(sizeof(AclItem));
+
 	/* the grantee string is "G <group_name>", "U  <user_name>", or "ALL" */
 	if (grantee[0] == 'G')		/* group permissions */
 	{

@@ -63,7 +63,7 @@ static int	linear(int max, double bias);
  *	 second genes are selected from the pool
  */
 void
-geqo_selection(Chromosome * momma, Chromosome * daddy, Pool * pool, double bias)
+geqo_selection(Chromosome *momma, Chromosome *daddy, Pool *pool, double bias)
 {
 	int			first,
 				second;

@@ -182,7 +182,7 @@ exec_append_initialize_next(Append *node)
  * ----------------------------------------------------------------
  */
 bool
-ExecInitAppend(Append *node, EState * estate, Plan * parent)
+ExecInitAppend(Append *node, EState *estate, Plan *parent)
 {
 	AppendState *unionstate;
 	int			nplans;

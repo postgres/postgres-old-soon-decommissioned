@@ -212,7 +212,7 @@ extern void InitFreeList(bool init);
 
 /* buf_table.c */
 extern void InitBufTable(void);
-extern BufferDesc *BufTableLookup(BufferTag * tagPtr);
+extern BufferDesc *BufTableLookup(BufferTag *tagPtr);
 extern bool BufTableDelete(BufferDesc *buf);
 extern bool BufTableInsert(BufferDesc *buf);
 
@@ -231,7 +231,7 @@ extern int	NLocBuffer;
 
 extern BufferDesc *
 LocalBufferAlloc(Relation reln, BlockNumber blockNum,
-				 bool * foundPtr);
+				 bool *foundPtr);
 extern int	WriteLocalBuffer(Buffer buffer, bool release);
 extern int	FlushLocalBuffer(Buffer buffer, bool release);
 extern void InitLocalBuffer(void);

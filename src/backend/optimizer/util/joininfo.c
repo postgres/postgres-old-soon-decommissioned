@@ -36,7 +36,7 @@
  *
  */
 JInfo	   *
-joininfo_member(List * join_relids, List * joininfo_list)
+joininfo_member(List *join_relids, List *joininfo_list)
 {
 	List	   *i = NIL;
 	List	   *other_rels = NIL;
@@ -62,7 +62,7 @@ joininfo_member(List * join_relids, List * joininfo_list)
  *
  */
 JInfo	   *
-find_joininfo_node(Rel * this_rel, List * join_relids)
+find_joininfo_node(Rel *this_rel, List *join_relids)
 {
 	JInfo	   *joininfo = joininfo_member(join_relids,
 										   this_rel->joininfo);
@@ -89,7 +89,7 @@ find_joininfo_node(Rel * this_rel, List * join_relids)
  *
  */
 Var		   *
-other_join_clause_var(Var * var, Expr * clause)
+other_join_clause_var(Var *var, Expr *clause)
 {
 	Var		   *retval;
 	Var		   *l,

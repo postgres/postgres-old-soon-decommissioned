@@ -49,6 +49,7 @@ typedef struct
 								 * of tuples */
 
 	bool		istrusted;		/* trusted fn? */
-}			FunctionCache, *FunctionCachePtr;
+} FunctionCache,
+		   *FunctionCachePtr;
 
 #endif							/* FCACHE_H */

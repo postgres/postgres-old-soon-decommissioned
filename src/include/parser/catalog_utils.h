@@ -40,15 +40,15 @@ extern char *getAttrName(Relation rd, int attrno);
 extern char *instr2(Type tp, char *string, int typlen);
 extern Oid	GetArrayElementType(Oid typearray);
 extern Oid	funcid_get_rettype(Oid funcid);
-extern		bool
-func_get_detail(char *funcname, int nargs, Oid * oid_array,
-		Oid * funcid, Oid * rettype, bool * retset, Oid ** true_typeids);
+extern bool
+func_get_detail(char *funcname, int nargs, Oid *oid_array,
+			Oid *funcid, Oid *rettype, bool *retset, Oid **true_typeids);
 extern Oid	typeid_get_retinfunc(Oid type_id);
 extern Oid	typeid_get_retoutfunc(Oid type_id);
 extern Oid	typeid_get_relid(Oid type_id);
 extern Oid	get_typrelid(Type typ);
 extern Oid	get_typelem(Oid type_id);
-extern void func_error(char *caller, char *funcname, int nargs, Oid * argtypes);
+extern void func_error(char *caller, char *funcname, int nargs, Oid *argtypes);
 extern void agg_error(char *caller, char *aggname, Oid basetypeID);
 
 #endif							/* CATALOG_UTILS_H */

@@ -981,7 +981,7 @@ dtrunc(float64 arg1)
 	if (*arg1 >= 0)
 		*result = (float64data) floor(tmp);
 	else
-		*result = (float64data) - (floor(-tmp));
+		*result = (float64data) -(floor(-tmp));
 	return (result);
 }
 

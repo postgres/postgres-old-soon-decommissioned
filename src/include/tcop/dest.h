@@ -53,7 +53,7 @@ typedef enum
 	RemoteInternal,				/* results sent to frontend process in
 								 * internal (binary) form */
 	SPI							/* results sent to SPI manager */
-}			CommandDest;
+} CommandDest;
 
 
 /* AttrInfo* replaced with TupleDesc, now that TupleDesc also has within it

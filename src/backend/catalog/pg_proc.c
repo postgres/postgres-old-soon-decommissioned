@@ -52,7 +52,7 @@ ProcedureCreate(char *procedureName,
 				int32 perbyte_cpu,
 				int32 percall_cpu,
 				int32 outin_ratio,
-				List * argList,
+				List *argList,
 				CommandDest dest)
 {
 	register	i;

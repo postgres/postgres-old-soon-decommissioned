@@ -18,7 +18,7 @@
 extern void init_io(void);
 
 /* from gram.y */
-extern void parser_init(Oid * typev, int nargs);
+extern void parser_init(Oid *typev, int nargs);
 extern int	yyparse(void);
 
 #endif							/* GRAMPARSE_H */

@@ -34,7 +34,7 @@ charin(char *ch)
 {
 	if (ch == NULL)
 		return ((int32) NULL);
-	return ((int32) * ch);
+	return ((int32) *ch);
 }
 
 /*

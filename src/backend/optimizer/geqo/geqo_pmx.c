@@ -59,7 +59,7 @@
  *	 partially matched crossover
  */
 void
-pmx(Gene * tour1, Gene * tour2, Gene * offspring, int num_gene)
+pmx(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene)
 {
 	int		   *failed = (int *) palloc((num_gene + 1) * sizeof(int));
 	int		   *from = (int *) palloc((num_gene + 1) * sizeof(int));

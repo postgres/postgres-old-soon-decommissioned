@@ -26,7 +26,7 @@
  * -----------------------------------
  */
 void
-HashTableWalk(HTAB * hashtable, HashtFunc function, int arg)
+HashTableWalk(HTAB *hashtable, HashtFunc function, int arg)
 {
 	long	   *hashent;
 	long	   *data;

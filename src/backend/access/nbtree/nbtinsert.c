@@ -435,7 +435,7 @@ _bt_insertonpg(Relation rel,
 			maxoff = PageGetMaxOffsetNumber(page);
 			llimit = PageGetPageSize(page) - sizeof(PageHeaderData) -
 				DOUBLEALIGN(sizeof(BTPageOpaqueData))
-				+ sizeof(ItemIdData);
+				+sizeof(ItemIdData);
 			llimit /= 2;
 			firstright = _bt_findsplitloc(rel, page, start, maxoff, llimit);
 

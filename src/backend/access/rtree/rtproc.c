@@ -87,7 +87,7 @@ rt_bigbox_size(BOX *a, float *size)
 }
 
 POLYGON    *
-rt_poly_union(POLYGON * a, POLYGON * b)
+rt_poly_union(POLYGON *a, POLYGON *b)
 {
 	POLYGON    *p;
 
@@ -107,7 +107,7 @@ rt_poly_union(POLYGON * a, POLYGON * b)
 }
 
 void
-rt_poly_size(POLYGON * a, float *size)
+rt_poly_size(POLYGON *a, float *size)
 {
 	double		xdim,
 				ydim;
@@ -129,7 +129,7 @@ rt_poly_size(POLYGON * a, float *size)
 }
 
 POLYGON    *
-rt_poly_inter(POLYGON * a, POLYGON * b)
+rt_poly_inter(POLYGON *a, POLYGON *b)
 {
 	POLYGON    *p;
 

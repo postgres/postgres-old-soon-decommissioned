@@ -21,7 +21,7 @@
 typedef struct smgrid
 {
 	char	   *smgr_name;
-}			smgrid;
+} smgrid;
 
 /*
  *	StorageManager[] -- List of defined storage managers.

@@ -17,7 +17,7 @@
 
 extern Relation heap_creatr(char *relname, unsigned smgr, TupleDesc att);
 
-extern		Oid
+extern Oid
 heap_create(char relname[],
 			char *typename,
 			int arch,

@@ -127,7 +127,7 @@ _hash_next(IndexScanDesc scan, ScanDirection dir)
 
 static void
 _hash_readnext(Relation rel,
-			   Buffer *bufp, Page * pagep, HashPageOpaque * opaquep)
+			   Buffer *bufp, Page *pagep, HashPageOpaque *opaquep)
 {
 	BlockNumber blkno;
 
@@ -146,7 +146,7 @@ _hash_readnext(Relation rel,
 
 static void
 _hash_readprev(Relation rel,
-			   Buffer *bufp, Page * pagep, HashPageOpaque * opaquep)
+			   Buffer *bufp, Page *pagep, HashPageOpaque *opaquep)
 {
 	BlockNumber blkno;
 

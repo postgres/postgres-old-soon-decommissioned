@@ -17,7 +17,7 @@
 #include "utils/exc.h"			/* where function declarations go */
 
 void
-ExcAbort(const Exception * excP,
+ExcAbort(const Exception *excP,
 		 ExcDetail detail,
 		 ExcData data,
 		 ExcMessage message)

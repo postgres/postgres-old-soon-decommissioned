@@ -13,13 +13,13 @@
 #ifndef NODEHASHJOIN_H
 #define NODEHASHJOIN_H
 
-extern TupleTableSlot *ExecHashJoin(HashJoin * node);
+extern TupleTableSlot *ExecHashJoin(HashJoin *node);
 
-extern bool ExecInitHashJoin(HashJoin * node, EState * estate, Plan * parent);
+extern bool ExecInitHashJoin(HashJoin *node, EState *estate, Plan *parent);
 
-extern int	ExecCountSlotsHashJoin(HashJoin * node);
+extern int	ExecCountSlotsHashJoin(HashJoin *node);
 
-extern void ExecEndHashJoin(HashJoin * node);
+extern void ExecEndHashJoin(HashJoin *node);
 
 extern char *
 ExecHashJoinSaveTuple(HeapTuple heapTuple, char *buffer,

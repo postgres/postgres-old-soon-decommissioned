@@ -30,13 +30,13 @@ extern void RelationInvalidateHeapTuple(Relation relation, HeapTuple tuple);
 typedef struct InvalidationUserData
 {
 	struct InvalidationUserData *dataP[1];		/* VARIABLE LENGTH */
-}			InvalidationUserData;		/* VARIABLE LENGTH STRUCTURE */
+} InvalidationUserData;			/* VARIABLE LENGTH STRUCTURE */
 
 typedef struct InvalidationEntryData
 {
 	InvalidationUserData *nextP;
 	InvalidationUserData userData;		/* VARIABLE LENGTH ARRAY */
-}			InvalidationEntryData;		/* VARIABLE LENGTH STRUCTURE */
+} InvalidationEntryData;		/* VARIABLE LENGTH STRUCTURE */
 
 typedef Pointer InvalidationEntry;
 

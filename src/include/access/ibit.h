@@ -19,7 +19,7 @@ typedef struct IndexAttributeBitMapData
 {
 	char		bits[(MaxIndexAttributeNumber + MaxBitsPerByte - 1)
 					 /			 MaxBitsPerByte];
-}			IndexAttributeBitMapData;
+} IndexAttributeBitMapData;
 
 typedef IndexAttributeBitMapData *IndexAttributeBitMap;
 

@@ -27,7 +27,7 @@ typedef struct ItemPointerData
 {
 	BlockIdData ip_blkid;
 	OffsetNumber ip_posid;
-}			ItemPointerData;
+} ItemPointerData;
 
 typedef ItemPointerData *ItemPointer;
 

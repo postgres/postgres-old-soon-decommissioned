@@ -38,7 +38,7 @@ typedef struct HashScanListData
 {
 	IndexScanDesc hashsl_scan;
 	struct HashScanListData *hashsl_next;
-}			HashScanListData;
+} HashScanListData;
 
 typedef HashScanListData *HashScanList;
 

@@ -57,7 +57,7 @@ typedef struct HashTableData
 	int			curbatch;
 	int			nprocess;
 	int			pcount;
-}			HashTableData;		/* real hash table follows here */
+} HashTableData;				/* real hash table follows here */
 
 typedef HashTableData *HashJoinTable;
 
@@ -65,7 +65,7 @@ typedef struct OverflowTupleData
 {
 	RelativeAddr tuple;			/* HeapTuple */
 	RelativeAddr next;			/* struct OverflowTupleData * */
-}			OverflowTupleData;	/* real tuple follows here */
+} OverflowTupleData;			/* real tuple follows here */
 
 typedef OverflowTupleData *OverflowTuple;
 
@@ -75,7 +75,7 @@ typedef struct HashBucketData
 	RelativeAddr bottom;		/* HeapTuple */
 	RelativeAddr firstotuple;	/* OverflowTuple */
 	RelativeAddr lastotuple;	/* OverflowTuple */
-}			HashBucketData;		/* real bucket follows here */
+} HashBucketData;				/* real bucket follows here */
 
 typedef HashBucketData *HashBucket;
 

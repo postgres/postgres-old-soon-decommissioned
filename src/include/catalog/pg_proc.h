@@ -1103,7 +1103,7 @@ DATA(insert OID =  1319 (  currval	   PGUID 11 f t f 1 f 23 "25" 100 0 0 100  fo
 /*
  * prototypes for functions pg_proc.c
  */
-extern		Oid
+extern Oid
 ProcedureCreate(char *procedureName,
 				bool returnsSet,
 				char *returnTypeName,
@@ -1116,7 +1116,7 @@ ProcedureCreate(char *procedureName,
 				int32 perbyte_cpu,
 				int32 percall_cpu,
 				int32 outin_ratio,
-				List * argList,
+				List *argList,
 				CommandDest dest);
 
 

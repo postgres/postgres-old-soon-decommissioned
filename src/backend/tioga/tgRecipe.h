@@ -27,8 +27,9 @@ typedef struct
 {
 	double		x,
 				y;
-}			Point;				/* this should match whatever is in
+} Point;						/* this should match whatever is in
 
+								 *
 								 *
 								 *
 								 * geo-decls.h */

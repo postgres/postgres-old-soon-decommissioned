@@ -147,8 +147,8 @@ static void
 ValidateRule(int event_type,
 			 char *eobj_string,
 			 char *eslot_string,
-			 Node * event_qual,
-			 List ** action,
+			 Node *event_qual,
+			 List **action,
 			 int is_instead,
 			 Oid event_attype)
 {
@@ -186,7 +186,7 @@ ValidateRule(int event_type,
 }
 
 void
-DefineQueryRewrite(RuleStmt * stmt)
+DefineQueryRewrite(RuleStmt *stmt)
 {
 	CmdType		event_type = stmt->event;
 	Attr	   *event_obj = stmt->object;

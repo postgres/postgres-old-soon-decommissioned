@@ -28,7 +28,7 @@
  *
  */
 Rel		   *
-get_base_rel(Query * root, int relid)
+get_base_rel(Query *root, int relid)
 {
 	List	   *relids;
 	Rel		   *rel;
@@ -101,7 +101,7 @@ get_base_rel(Query * root, int relid)
  *
  */
 Rel		   *
-get_join_rel(Query * root, List * relid)
+get_join_rel(Query *root, List *relid)
 {
 	return rel_member(relid, root->join_relation_list_);
 }
@@ -115,7 +115,7 @@ get_join_rel(Query * root, List * relid)
  *
  */
 Rel		   *
-rel_member(List * relid, List * rels)
+rel_member(List *relid, List *rels)
 {
 	List	   *temp = NIL;
 	List	   *temprelid = NIL;

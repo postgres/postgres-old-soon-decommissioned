@@ -330,7 +330,7 @@ RemoveType(char *typeName)		/* type name to be removed */
 void
 RemoveFunction(char *functionName,		/* function name to be removed */
 			   int nargs,
-			   List * argNameList /* list of TypeNames */ )
+			   List *argNameList /* list of TypeNames */ )
 {
 	Relation	relation;
 	HeapScanDesc scan;

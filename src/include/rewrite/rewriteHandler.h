@@ -31,6 +31,6 @@ struct _rewrite_meta_knowledge
 typedef struct _rewrite_meta_knowledge RewriteInfo;
 
 
-extern List *QueryRewrite(Query * parsetree);
+extern List *QueryRewrite(Query *parsetree);
 
 #endif							/* REWRITEHANDLER_H */

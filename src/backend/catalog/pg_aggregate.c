@@ -268,7 +268,7 @@ AggregateCreate(char *aggName,
 }
 
 char	   *
-AggNameGetInitVal(char *aggName, Oid basetype, int xfuncno, bool * isNull)
+AggNameGetInitVal(char *aggName, Oid basetype, int xfuncno, bool *isNull)
 {
 	HeapTuple	tup;
 	Relation	aggRel;

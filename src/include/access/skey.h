@@ -26,7 +26,7 @@ typedef struct ScanKeyData
 	func_ptr	sk_func;
 	int32		sk_nargs;
 	Datum		sk_argument;	/* data to compare */
-}			ScanKeyData;
+} ScanKeyData;
 
 typedef ScanKeyData *ScanKey;
 

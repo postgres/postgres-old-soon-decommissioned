@@ -183,7 +183,7 @@ fillatt(TupleDesc tupleDesc)
 		}
 		else
 		{
-			(*attributeP)->attnum = (int16)++ i;
+			(*attributeP)->attnum = (int16) ++i;
 
 			/*
 			 * Check if the attr is a set before messing with the length

@@ -347,7 +347,7 @@ _bt_checkforkeys(IndexScanDesc scan, IndexTuple itup, Size keysz)
 #endif
 
 bool
-_bt_checkkeys(IndexScanDesc scan, IndexTuple tuple, Size * keysok)
+_bt_checkkeys(IndexScanDesc scan, IndexTuple tuple, Size *keysok)
 {
 	BTScanOpaque so = (BTScanOpaque) scan->opaque;
 	Size		keysz = so->numberOfKeys;

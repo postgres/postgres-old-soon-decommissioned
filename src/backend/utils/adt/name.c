@@ -49,7 +49,7 @@ namein(char *s)
  *		nameout - converts internal reprsentation to "..."
  */
 char	   *
-nameout(NameData * s)
+nameout(NameData *s)
 {
 	if (s == NULL)
 		return "-";
@@ -77,7 +77,7 @@ nameout(NameData * s)
  *
  */
 bool
-nameeq(NameData * arg1, NameData * arg2)
+nameeq(NameData *arg1, NameData *arg2)
 {
 	if (!arg1 || !arg2)
 		return 0;
@@ -86,7 +86,7 @@ nameeq(NameData * arg1, NameData * arg2)
 }
 
 bool
-namene(NameData * arg1, NameData * arg2)
+namene(NameData *arg1, NameData *arg2)
 {
 	if (arg1 == NULL || arg2 == NULL)
 		return ((bool) 0);
@@ -94,7 +94,7 @@ namene(NameData * arg1, NameData * arg2)
 }
 
 bool
-namelt(NameData * arg1, NameData * arg2)
+namelt(NameData *arg1, NameData *arg2)
 {
 	if (arg1 == NULL || arg2 == NULL)
 		return ((bool) 0);
@@ -102,7 +102,7 @@ namelt(NameData * arg1, NameData * arg2)
 }
 
 bool
-namele(NameData * arg1, NameData * arg2)
+namele(NameData *arg1, NameData *arg2)
 {
 	if (arg1 == NULL || arg2 == NULL)
 		return ((bool) 0);
@@ -110,7 +110,7 @@ namele(NameData * arg1, NameData * arg2)
 }
 
 bool
-namegt(NameData * arg1, NameData * arg2)
+namegt(NameData *arg1, NameData *arg2)
 {
 	if (arg1 == NULL || arg2 == NULL)
 		return ((bool) 0);
@@ -119,7 +119,7 @@ namegt(NameData * arg1, NameData * arg2)
 }
 
 bool
-namege(NameData * arg1, NameData * arg2)
+namege(NameData *arg1, NameData *arg2)
 {
 	if (arg1 == NULL || arg2 == NULL)
 		return ((bool) 0);

@@ -20,7 +20,7 @@ typedef struct
 	uint16		nargs;
 	func_ptr	func;
 	char	   *funcName;
-}			FmgrCall;
+} FmgrCall;
 
 extern FmgrCall *fmgr_isbuiltin(Oid id);
 extern func_ptr fmgr_lookupByName(char *name);

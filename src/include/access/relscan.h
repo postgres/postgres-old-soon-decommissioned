@@ -37,7 +37,7 @@ typedef struct HeapScanDescData
 	uint16		rs_cdelta;		/* current delta in chain */
 	uint16		rs_nkeys;		/* number of attributes in keys */
 	ScanKey		rs_key;			/* key descriptors */
-}			HeapScanDescData;
+} HeapScanDescData;
 
 typedef HeapScanDescData *HeapScanDesc;
 
@@ -55,7 +55,7 @@ typedef struct IndexScanDescData
 	bool		scanFromEnd;	/* restart scan at end? */
 	uint16		numberOfKeys;	/* number of key attributes */
 	ScanKey		keyData;		/* key descriptor */
-}			IndexScanDescData;
+} IndexScanDescData;
 
 typedef IndexScanDescData *IndexScanDesc;
 

@@ -83,7 +83,7 @@ typedef struct ParamListInfoData
 	bool		isnull;
 	bool		byval;
 	Datum		value;
-}			ParamListInfoData;
+} ParamListInfoData;
 
 typedef ParamListInfoData *ParamListInfo;
 

@@ -29,7 +29,7 @@
 #endif							/* KRB4 || KRB5 */
 
 extern int
-fe_sendauth(MsgType msgtype, Port * port, const char *hostname,
+fe_sendauth(MsgType msgtype, Port *port, const char *hostname,
 			const char *user, const char *password,
 			const char *PQerromsg);
 extern void fe_setauthsvc(const char *name, char *PQerrormsg);

@@ -437,7 +437,7 @@ TupleDescMakeSelfReference(TupleDesc desc,
  * ----------------------------------------------------------------
  */
 TupleDesc
-BuildDescForRelation(List * schema, char *relname)
+BuildDescForRelation(List *schema, char *relname)
 {
 	int			natts;
 	AttrNumber	attnum;

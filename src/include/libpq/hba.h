@@ -38,16 +38,17 @@
 
 enum Userauth
 {
-	Trust, Ident, Password
+	Trust, Ident,
+				Password
 };
 
 extern int
-hba_recvauth(const Port * port, const char database[], const char user[],
+hba_recvauth(const Port *port, const char database[], const char user[],
 			 const char DataDir[]);
 void
 find_hba_entry(const char DataDir[], const struct in_addr ip_addr,
 			   const char database[],
-			   bool * host_ok_p, enum Userauth * userauth_p,
+			   bool *host_ok_p, enum Userauth * userauth_p,
 			   char usermap_name[], bool find_password_entries);
 
 #endif

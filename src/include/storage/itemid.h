@@ -26,7 +26,7 @@ typedef struct ItemIdData
 	/* can be reduced by 2 if necc. */
 				lp_flags:6,		/* flags on tuple */
 				lp_len:13;		/* length of tuple */
-}			ItemIdData;
+} ItemIdData;
 
 typedef struct ItemIdData *ItemId;
 

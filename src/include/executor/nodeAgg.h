@@ -14,7 +14,7 @@
 #define NODEAGG_H
 
 extern TupleTableSlot *ExecAgg(Agg *node);
-extern bool ExecInitAgg(Agg *node, EState * estate, Plan * parent);
+extern bool ExecInitAgg(Agg *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsAgg(Agg *node);
 extern void ExecEndAgg(Agg *node);
 

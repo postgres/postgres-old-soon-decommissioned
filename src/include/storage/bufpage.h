@@ -102,7 +102,7 @@ typedef uint16 LocationIndex;
 typedef struct OpaqueData
 {
 	uint16		od_pagesize;
-}			OpaqueData;
+} OpaqueData;
 
 typedef OpaqueData *Opaque;
 
@@ -117,7 +117,7 @@ typedef struct PageHeaderData
 	LocationIndex pd_special;	/* offset to start of special space */
 	OpaqueData	pd_opaque;		/* AM-generic information */
 	ItemIdData	pd_linp[1];		/* line pointers */
-}			PageHeaderData;
+} PageHeaderData;
 
 typedef PageHeaderData *PageHeader;
 
@@ -125,7 +125,7 @@ typedef enum
 {
 	ShufflePageManagerMode,
 	OverwritePageManagerMode
-}			PageManagerMode;
+} PageManagerMode;
 
 /* ----------------
  *		misc support macros
@@ -280,7 +280,7 @@ typedef enum
  */
 
 extern void PageInit(Page page, Size pageSize, Size specialSize);
-extern		OffsetNumber
+extern OffsetNumber
 PageAddItem(Page page, Item item, Size size,
 			OffsetNumber offsetNumber, ItemIdFlags flags);
 extern Page PageGetTempPage(Page page, Size specialSize);

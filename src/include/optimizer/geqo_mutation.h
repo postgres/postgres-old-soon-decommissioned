@@ -22,6 +22,6 @@
 #define GEQO_MUTATION_H
 
 
-extern void geqo_mutation(Gene * tour, int num_gene);
+extern void geqo_mutation(Gene *tour, int num_gene);
 
 #endif							/* GEQO_MUTATION_H */
