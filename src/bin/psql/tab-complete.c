@@ -195,7 +195,7 @@ psql_completion(char *text, int start, int end)
 			   *prev4_wd;
 
 	static char *sql_commands[] = {
-		"ABORT", "ALTER", "BEGIN", "CLOSE", "CLUSTER", "COMMENT", "COMMIT", "COPY",
+		"ABORT", "ALTER", "ANALYZE", "BEGIN", "CLOSE", "CLUSTER", "COMMENT", "COMMIT", "COPY",
 		"CREATE", "DECLARE", "DELETE", "DROP", "EXPLAIN", "FETCH", "GRANT",
 		"INSERT", "LISTEN", "LOAD", "LOCK", "MOVE", "NOTIFY", "RESET",
 		"REVOKE", "ROLLBACK", "SELECT", "SET", "SHOW", "TRUNCATE", "UNLISTEN", "UPDATE",
