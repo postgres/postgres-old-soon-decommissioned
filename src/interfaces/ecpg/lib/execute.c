@@ -812,6 +812,9 @@ ECPGexecute(struct statement * stmt)
 		ECPGraise(stmt->lineno, ECPG_PGSQL, PQerrorMessage(stmt->connection->connection));
 	}
 	else
+	/* note: since some of the following code is duplicated in descriptor.c 
+	 * 		 it should go into a separate function
+	 */
 	{
 		var = stmt->outlist;
 		switch (PQresultStatus(results))
