@@ -119,5 +119,9 @@ DATA(insert OID = 1690 (	bool_ops		 16   ));
 DESCR("");
 DATA(insert OID = 1399 (	timetz_ops	   1266   ));
 DESCR("");
+DATA(insert OID =  424 (	bit_ops		   1560   ));
+DESCR("");
+DATA(insert OID =  425 (	varbit_ops	   1562   ));
+DESCR("");
 
 #endif	 /* PG_OPCLASS_H */

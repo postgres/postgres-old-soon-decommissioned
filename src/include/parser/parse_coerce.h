@@ -67,13 +67,16 @@ typedef enum CATEGORY
 		|| ((t) == POLYGONOID) \
 		|| ((t) == CIRCLEOID) \
 		|| ((t) == INETOID) \
-		|| ((t) == CIDROID) )
+		|| ((t) == CIDROID) \
+		|| ((t) == ZPBITOID) \
+		|| ((t) == VARBITOID) )
 
 
 /* IS_BINARY_COMPATIBLE()
  * Check for types with the same underlying binary representation.
  * This allows us to cheat and directly exchange values without
  *	going through the trouble of calling a conversion function.
+ *
  * Remove equivalencing of FLOAT8 and TIMESTAMP. They really are not
  *	close enough in behavior, with the TIMESTAMP reserved values
  *	and special formatting. - thomas 1999-01-24
@@ -96,7 +99,9 @@ typedef enum CATEGORY
 		|| ((a) == RELTIMEOID && (b) == INT4OID) \
 		|| ((a) == INT4OID && (b) == RELTIMEOID) \
 		|| ((a) == INETOID && (b) == CIDROID) \
-		|| ((a) == CIDROID && (b) == INETOID))
+		|| ((a) == CIDROID && (b) == INETOID) \
+		|| ((a) == ZPBITOID && (b) == VARBITOID) \
+		|| ((a) == VARBITOID && (b) == ZPBITOID))
 
 /* IS_HIGHER_TYPE()
  * These types are the most general in each of the type categories.
