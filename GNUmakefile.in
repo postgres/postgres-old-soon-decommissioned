@@ -29,7 +29,9 @@ distclean maintainer-clean:
 	-$(MAKE) -C src $@
 	-rm -f config.cache config.log config.status GNUmakefile
 
-check installcheck: all
+check: all
+
+check installcheck:
 	$(MAKE) -C src/test $@
 
 GNUmakefile: GNUmakefile.in $(top_builddir)/config.status
