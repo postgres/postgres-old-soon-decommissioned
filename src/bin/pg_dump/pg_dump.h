@@ -87,8 +87,8 @@ typedef struct _indInfo {
     char *indrelname;    /* name of the indexed heap class */
     char *indamname;     /* name of the access method (e.g. btree, rtree, etc.) */
     char *indproc;       /* oid of the function to compute the index, 0 if none*/
-    char *indkey;        /* attribute number of the key attribute */
-    char *indclassname;  /* name of the opclass of the key */
+    char *indkey[INDEX_MAX_KEYS];	/* attribute numbers of the key attributes */
+    char *indclass[INDEX_MAX_KEYS];	/* opclass of the keys */
     char *indisunique;   /* is this index unique? */
 } IndInfo;
 
