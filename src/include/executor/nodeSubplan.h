@@ -19,7 +19,8 @@
 extern void ExecInitSubPlan(SubPlanState *node, EState *estate);
 extern Datum ExecSubPlan(SubPlanState *node,
 			ExprContext *econtext,
-			bool *isNull);
+			bool *isNull,
+			ExprDoneCond *isDone);
 extern void ExecEndSubPlan(SubPlanState *node);
 extern void ExecReScanSetParamPlan(SubPlanState *node, PlanState *parent);
 

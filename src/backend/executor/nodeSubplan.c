@@ -47,9 +47,15 @@ static bool tupleAllNulls(HeapTuple tuple);
 Datum
 ExecSubPlan(SubPlanState *node,
 			ExprContext *econtext,
-			bool *isNull)
+			bool *isNull,
+			ExprDoneCond *isDone)
 {
 	SubPlan    *subplan = (SubPlan *) node->xprstate.expr;
+
+	/* Set default values for result flags: non-null, not a set result */
+	*isNull = false;
+	if (isDone)
+		*isDone = ExprSingleResult;
 
 	if (subplan->setParam != NIL)
 		elog(ERROR, "cannot set parent params from subquery");
@@ -819,6 +825,7 @@ ExecInitSubPlan(SubPlanState *node, EState *estate)
 								  expr);
 			tlestate = makeNode(GenericExprState);
 			tlestate->xprstate.expr = (Expr *) tle;
+			tlestate->xprstate.evalfunc = NULL;
 			tlestate->arg = exstate;
 			lefttlist = lappend(lefttlist, tlestate);
 			leftptlist = lappend(leftptlist, tle);
@@ -834,6 +841,7 @@ ExecInitSubPlan(SubPlanState *node, EState *estate)
 								  expr);
 			tlestate = makeNode(GenericExprState);
 			tlestate->xprstate.expr = (Expr *) tle;
+			tlestate->xprstate.evalfunc = NULL;
 			tlestate->arg = exstate;
 			righttlist = lappend(righttlist, tlestate);
 			rightptlist = lappend(rightptlist, tle);

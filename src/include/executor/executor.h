@@ -17,16 +17,25 @@
 #include "executor/execdesc.h"
 
 
-/* ----------------
- *		TupIsNull
+/*
+ * TupIsNull
  *
  *		This is used mainly to detect when there are no more
  *		tuples to process.
- * ----------------
  */
 /* return: true if tuple in slot is NULL, slot is slot to test */
 #define TupIsNull(slot) \
 	((slot) == NULL || (slot)->val == NULL)
+
+
+/*
+ * ExecEvalExpr was formerly a function containing a switch statement;
+ * now it's just a macro invoking the function pointed to by an ExprState
+ * node.  Beware of double evaluation of the ExprState argument!
+ */
+#define ExecEvalExpr(expr, econtext, isNull, isDone) \
+	((*(expr)->evalfunc) (expr, econtext, isNull, isDone))
+
 
 /*
  * prototypes from functions in execAmi.c
@@ -125,8 +134,6 @@ extern Tuplestorestate *ExecMakeTableFunctionResult(ExprState *funcexpr,
 							ExprContext *econtext,
 							TupleDesc expectedDesc,
 							TupleDesc *returnDesc);
-extern Datum ExecEvalExpr(ExprState *expression, ExprContext *econtext,
-			 bool *isNull, ExprDoneCond *isDone);
 extern Datum ExecEvalExprSwitchContext(ExprState *expression, ExprContext *econtext,
 						  bool *isNull, ExprDoneCond *isDone);
 extern ExprState *ExecInitExpr(Expr *node, PlanState *parent);

@@ -390,13 +390,25 @@ typedef HASH_SEQ_STATUS TupleHashIterator;
  *
  * It can also be instantiated directly for leaf Expr nodes that need no
  * local run-time state (such as Var, Const, or Param).
+ *
+ * To save on dispatch overhead, each ExprState node contains a function
+ * pointer to the routine to execute to evaluate the node.
  * ----------------
  */
-typedef struct ExprState
+
+typedef struct ExprState ExprState;
+
+typedef Datum (*ExprStateEvalFunc) (ExprState *expression,
+									ExprContext *econtext,
+									bool *isNull,
+									ExprDoneCond *isDone);
+
+struct ExprState
 {
 	NodeTag		type;
 	Expr	   *expr;			/* associated Expr node */
-} ExprState;
+	ExprStateEvalFunc evalfunc;	/* routine to run to execute node */
+};
 
 /* ----------------
  *		GenericExprState node

@@ -532,6 +532,7 @@ ExecHashGetBucket(HashJoinTable hashtable,
 
 	foreach(hk, hashkeys)
 	{
+		ExprState  *keyexpr = (ExprState *) lfirst(hk);
 		Datum		keyval;
 		bool		isNull;
 
@@ -541,8 +542,7 @@ ExecHashGetBucket(HashJoinTable hashtable,
 		/*
 		 * Get the join attribute value of the tuple
 		 */
-		keyval = ExecEvalExpr((ExprState *) lfirst(hk),
-							  econtext, &isNull, NULL);
+		keyval = ExecEvalExpr(keyexpr, econtext, &isNull, NULL);
 
 		/*
 		 * Compute the hash function
