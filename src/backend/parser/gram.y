@@ -62,7 +62,7 @@
 #ifdef MULTIBYTE
 #include "mb/pg_wchar.h"
 #else
-#define GetStandardEncoding()	0		/* SQL_ASCII */
+#define GetStandardEncoding()	0		/* PG_SQL_ASCII */
 #define GetStandardEncodingName()	"SQL_ASCII"
 #endif
 
@@ -3027,7 +3027,7 @@ createdb_opt_item:  LOCATION '=' Sconst
 		| ENCODING '=' Iconst
 				{
 #ifdef MULTIBYTE
-					if (!pg_get_encent_by_encoding($3))
+					if (!pg_get_enconv_by_encoding($3))
 						elog(ERROR, "%d is not a valid encoding code", $3);
 #else
 					if ($3 != GetStandardEncoding())

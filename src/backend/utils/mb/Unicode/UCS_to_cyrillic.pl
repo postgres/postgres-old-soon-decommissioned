@@ -15,10 +15,10 @@
 #		 # and Unicode name (not used in this script)
 
 require "ucs2utf.pl";
-%filename = ('KOI8'=>'koi8-r.txt',
-             'WIN'=>'cp1251.txt',
+%filename = ('KOI8R'=>'koi8-r.txt',
+             'WIN1251'=>'cp1251.txt',
              'ALT'=>'cp866.txt');
-@charsets = ('KOI8','ALT','WIN');
+@charsets = ('KOI8R','ALT','WIN1251');
 foreach $charset (@charsets) {
 
 #

@@ -809,7 +809,7 @@ int
 PQenv2encoding(void)
 {
 	char	   *str;
-	int			encoding = SQL_ASCII;
+	int			encoding = PG_SQL_ASCII;
 
 	str = getenv("PGCLIENTENCODING");
 	if (str && *str != '\0')

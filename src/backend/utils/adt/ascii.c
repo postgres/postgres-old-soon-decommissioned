@@ -78,7 +78,7 @@ pg_to_ascii(unsigned char *src, unsigned char *src_end, unsigned char *desc, int
 #define RANGE_160	160
 
 
-	if (enc == LATIN1)
+	if (enc == PG_LATIN1)
 	{
 
 		/*
@@ -87,7 +87,7 @@ pg_to_ascii(unsigned char *src, unsigned char *src_end, unsigned char *desc, int
 		ascii = "  cL Y  \"Ca  -R     'u .,      ?AAAAAAACEEEEIIII NOOOOOxOUUUUYTBaaaaaaaceeeeiiii nooooo/ouuuuyty";
 		range = RANGE_160;
 	}
-	else if (enc == LATIN2)
+	else if (enc == PG_LATIN2)
 	{
 
 		/*
@@ -96,7 +96,7 @@ pg_to_ascii(unsigned char *src, unsigned char *src_end, unsigned char *desc, int
 		ascii = " A L LS \"SSTZ-ZZ a,l'ls ,sstz\"zzRAAAALCCCEEEEIIDDNNOOOOxRUUUUYTBraaaalccceeeeiiddnnoooo/ruuuuyt.";
 		range = RANGE_160;
 	}
-	else if (enc == WIN1250)
+	else if (enc == PG_WIN1250)
 	{
 
 		/*

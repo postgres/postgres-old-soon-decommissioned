@@ -127,7 +127,7 @@ ReverifyMyDatabase(const char *name)
 #ifdef MULTIBYTE
 	SetDatabaseEncoding(dbform->encoding);
 #else
-	if (dbform->encoding != SQL_ASCII)
+	if (dbform->encoding != PG_SQL_ASCII)
 		elog(FATAL, "database was initialized with MULTIBYTE encoding %d,\n\tbut the backend was compiled without multibyte support.\n\tlooks like you need to initdb or recompile.",
 			 dbform->encoding);
 #endif

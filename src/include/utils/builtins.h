@@ -579,8 +579,11 @@ extern Datum RI_FKey_setdefault_upd(PG_FUNCTION_ARGS);
  * since pg_proc.h has references to them.
  */
 extern Datum getdatabaseencoding(PG_FUNCTION_ARGS);
+extern Datum database_character_set(PG_FUNCTION_ARGS);
 extern Datum PG_encoding_to_char(PG_FUNCTION_ARGS);
 extern Datum PG_char_to_encoding(PG_FUNCTION_ARGS);
+extern Datum PG_character_set_name(PG_FUNCTION_ARGS);
+extern Datum PG_character_set_id(PG_FUNCTION_ARGS);
 extern Datum pg_convert(PG_FUNCTION_ARGS);
 extern Datum pg_convert2(PG_FUNCTION_ARGS);
 
