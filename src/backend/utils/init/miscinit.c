@@ -47,9 +47,7 @@
 extern char *getenv(const char *name);	/* XXX STDLIB */
 
 /*	from globals.c */
-extern char *DatabaseName;
 extern char *UserName;
-extern char *DatabasePath;
 
 #ifdef CYR_RECODE
 unsigned char RecodeForwTable[128];
@@ -223,27 +221,6 @@ GetProcessingMode()
  *				database path / name support stuff
  * ----------------------------------------------------------------
  */
-
-/*
- * GetDatabasePath --
- *		Returns path to database.
- *
- */
-const char *
-GetDatabasePath()
-{
-	return DatabasePath;
-}
-
-/*
- * GetDatabaseName --
- *		Returns name of database.
- */
-const char *
-GetDatabaseName()
-{
-	return DatabaseName;
-}
 
 void
 SetDatabasePath(char *path)

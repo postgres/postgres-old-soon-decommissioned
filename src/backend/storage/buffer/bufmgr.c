@@ -643,7 +643,7 @@ BufferAlloc(Relation reln,
 
 	/* record the database name and relation name for this buffer */
 	strcpy(buf->sb_relname, reln->rd_rel->relname.data);
-	strcpy(buf->sb_dbname, GetDatabaseName());
+	strcpy(buf->sb_dbname, DatabaseName);
 
 	INIT_BUFFERTAG(&(buf->tag), reln, blockNum);
 	if (!BufTableInsert(buf))

@@ -229,7 +229,7 @@ check_permissions(char *command,
 	}
 
 	/* Check to make sure database is not the currently open database */
-	if (!strcmp(dbname, GetDatabaseName()))
+	if (!strcmp(dbname, DatabaseName))
 	{
 		elog(ERROR, "%s cannot be executed on an open database", command);
 	}

@@ -126,7 +126,7 @@ InitMyDatabaseInfo(char *name)
 	if (!OidIsValid(MyDatabaseId))
 		elog(FATAL,
 			 "Database %s does not exist in %s",
-			 GetDatabaseName(),
+			 DatabaseName,
 			 DatabaseRelationName);
 
 	path = ExpandDatabasePath(myPath);
@@ -203,8 +203,8 @@ VerifyMyDatabase()
 	int			fd;
 	char		errormsg[1000];
 
-	name = GetDatabaseName();
-	myPath = GetDatabasePath();
+	name = DatabaseName;
+	myPath = DatabasePath;
 
 	if ((fd = open(myPath, O_RDONLY, 0)) == -1)
 		sprintf(errormsg,
