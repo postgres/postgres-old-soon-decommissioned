@@ -1509,7 +1509,8 @@ do_connect(const char *new_dbname,
 		   PGCLIENTENCODING value. -- 1998/12/12 Tatsuo Ishii */
 		   
 		if (!has_client_encoding) {
-			unsetenv("PGCLIENTENCODING");
+		        static const char ev[] = "PGCLIENTENCODING=";
+			putenv(ev);
 		}
 #endif
 

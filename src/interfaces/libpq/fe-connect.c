@@ -816,7 +816,7 @@ PQsetenv(PGconn *conn)
 #ifdef MULTIBYTE
 	/* query server encoding */
 	env = getenv(envname);
-	if (!env)
+	if (!env || *env == NULL)
 	{
 		rtn = PQexec(conn, "select getdatabaseencoding()");
 		if (rtn && PQresultStatus(rtn) == PGRES_TUPLES_OK)

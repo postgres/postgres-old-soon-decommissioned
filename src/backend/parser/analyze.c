@@ -714,6 +714,7 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 		index = makeNode(IndexStmt);
 
 		index->unique = TRUE;
+		index->primary = (constraint->contype == CONSTR_PRIMARY ? TRUE:FALSE);
 		if (constraint->name != NULL)
 			index->idxname = constraint->name;
 		else if (constraint->contype == CONSTR_PRIMARY)
@@ -722,14 +723,10 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 				elog(ERROR, "CREATE TABLE/PRIMARY KEY multiple keys for table %s are not legal", stmt->relname);
 
 			have_pkey = TRUE;
-			index->primary = TRUE;
 			index->idxname = makeTableName(stmt->relname, "pkey", NULL);
 		}
 		else
-		{
-			index->primary = FALSE;
 			index->idxname = NULL;
-		}
 
 		index->relname = stmt->relname;
 		index->accessMethod = "btree";
