@@ -16,11 +16,9 @@
 #ifndef PQCOMM_H
 #define PQCOMM_H
 
-#include "postgres.h"
-
 #include <sys/types.h>
 #ifdef WIN32
-# include "winsock.h"
+# include <winsock.h>
 #else /* not WIN32 */
 # include <sys/socket.h>
 # ifdef HAVE_SYS_UN_H

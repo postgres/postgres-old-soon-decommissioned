@@ -35,7 +35,7 @@
  * implemented by Jun-ichiro itojun Itoh <itojun@itojun.org>
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
 #include "sha1.h"
 

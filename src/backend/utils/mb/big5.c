@@ -10,6 +10,9 @@
  * $Id$
  */
 
+/* can be used in either frontend or backend */
+#include "postgres_fe.h"
+
 #include "mb/pg_wchar.h"
 
 typedef struct

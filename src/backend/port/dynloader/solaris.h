@@ -3,9 +3,7 @@
 #ifndef DYNLOADER_SOLARIS_H
 #define DYNLOADER_SOLARIS_H
 
-#include "config.h"
 #include <dlfcn.h>
-#include "fmgr.h"
 #include "utils/dynamic_loader.h"
 
 #define pg_dlopen(f)	dlopen(f,1)

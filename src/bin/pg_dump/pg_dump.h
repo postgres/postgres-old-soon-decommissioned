@@ -29,9 +29,8 @@
 #ifndef PG_DUMP_H
 #define PG_DUMP_H
 
-#include "pqexpbuffer.h"
-#include "catalog/pg_index.h"
 #include "pg_backup.h"
+#include "pqexpbuffer.h"
 
 /* The data structures used to store system catalog information */
 

@@ -12,11 +12,12 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <ctype.h>
-
 #include "postgres.h"
 
+#include <ctype.h>
+
 #include "mb/pg_wchar.h"
+#include "miscadmin.h"
 #include "utils/builtins.h"
 
 static int	text_cmp(text *arg1, text *arg2);

@@ -5,7 +5,7 @@
  *
  * $Header$
  */
-#include "postgres.h"
+#include "postgres_fe.h"
 #include "print.h"
 
 #include <math.h>

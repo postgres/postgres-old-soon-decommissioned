@@ -30,7 +30,7 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include "postgres_fe.h"
 
 #ifdef WIN32
 #include "win32.h"
@@ -52,7 +52,6 @@
 #include "pqsignal.h"
 
 #ifdef MULTIBYTE
-#include "miscadmin.h"
 #include "mb/pg_wchar.h"
 #endif
 

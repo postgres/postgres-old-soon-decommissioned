@@ -7,10 +7,6 @@
 
 #include "postgres.h"
 
-#include <stdio.h>
-
-#include "utils/palloc.h"
-
 /* Required for largeobjects */
 #include "libpq/libpq-fs.h"
 #include "libpq/be-fsstubs.h"

@@ -9,8 +9,6 @@
 #ifndef GUC_H
 #define GUC_H
 
-#include "postgres.h"
-
 /*
  * Certain options can only be set at certain times. The rules are
  * like this:

@@ -5,7 +5,7 @@
  *
  * $Header$
  */
-#include "postgres.h"
+#include "postgres_fe.h"
 
 #include <sys/types.h>
 
@@ -34,7 +34,6 @@
 #include "variables.h"
 
 #ifdef MULTIBYTE
-#include "miscadmin.h"
 #include "mb/pg_wchar.h"
 #else
 /* XXX Grand unified hard-coded badness; this should go into libpq */

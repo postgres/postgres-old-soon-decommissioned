@@ -3,9 +3,8 @@
  * client encoding and server internal encoding.
  * (currently mule internal code (mic) is used)
  * Tatsuo Ishii
- * $Id$ */
-
-
+ * $Id$
+ */
 #include "postgres.h"
 
 #include "miscadmin.h"

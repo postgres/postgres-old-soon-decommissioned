@@ -21,7 +21,6 @@
 #ifndef GEO_DECLS_H
 #define GEO_DECLS_H
 
-#include "access/attnum.h"
 #include "fmgr.h"
 
 /*--------------------------------------------------------------------

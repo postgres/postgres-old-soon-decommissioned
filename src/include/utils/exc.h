@@ -14,8 +14,6 @@
 #ifndef EXC_H
 #define EXC_H
 
-#include "config.h"
-
 #include <setjmp.h>
 
 extern char *ExcFileName;

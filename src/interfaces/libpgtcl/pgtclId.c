@@ -17,10 +17,10 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres_fe.h"
 
 #include <errno.h>
 
-#include "postgres.h"
 #include "pgtclCmds.h"
 #include "pgtclId.h"
 

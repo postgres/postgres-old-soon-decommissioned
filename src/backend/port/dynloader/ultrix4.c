@@ -2,8 +2,6 @@
  *
  * dynloader.c
  *	  This dynamic loader uses Andrew Yu's libdl-1.0 package for Ultrix 4.x.
- *	  (Note that pg_dlsym and pg_dlclose are actually macros defined in
- *	  "port-protos.h".)
  *
  * Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
@@ -15,9 +13,8 @@
  *-------------------------------------------------------------------------
  */
 #include "postgres.h"
+
 #include "dl.h"
-#include "fmgr.h"
-#include "port-protos.h"
 #include "utils/dynamic_loader.h"
 
 extern char pg_pathname[];

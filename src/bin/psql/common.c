@@ -5,7 +5,8 @@
  *
  * $Header$
  */
-#include "postgres.h"
+#include "postgres_fe.h"
+
 #include "common.h"
 
 #include <errno.h>
@@ -26,7 +27,6 @@
 #endif
 
 #include "libpq-fe.h"
-#include "postgres_ext.h"
 #include "pqsignal.h"
 
 #include "settings.h"

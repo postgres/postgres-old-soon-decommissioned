@@ -8,7 +8,7 @@
 #ifndef MAINLOOP_H
 #define MAINLOOP_H
 
-#include "postgres.h"
+#include "postgres_fe.h"
 #include <stdio.h>
 #ifndef WIN32
 #include <setjmp.h>

@@ -1,10 +1,10 @@
 /* $Header$ */
 #include "postgres.h"
+
+#include <ctype.h>
+
 #include "fmgr.h"
 #include "utils/builtins.h"
-#include <ctype.h>
-#include <string.h>
-#include <stdio.h>
 
 
 Datum text_soundex(PG_FUNCTION_ARGS);

@@ -882,7 +882,7 @@ struct CharsetItem
 	char		Table[MAX_TOKEN];
 };
 
-int
+static bool
 InRange(char *buf, int host)
 {
 	int			valid,

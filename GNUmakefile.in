@@ -22,6 +22,9 @@ installdirs uninstall distprep:
 	$(MAKE) -C doc $@
 	$(MAKE) -C src $@
 
+install-all-headers:
+	$(MAKE) -C src $@
+
 # clean, distclean, etc should apply to contrib too, even though
 # it's not built by default
 clean:

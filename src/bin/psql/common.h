@@ -8,7 +8,7 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-#include "postgres.h"
+#include "postgres_fe.h"
 #include <signal.h>
 #include "pqsignal.h"
 #include "libpq-fe.h"

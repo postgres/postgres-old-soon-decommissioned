@@ -235,11 +235,6 @@ static void InitSSL(void);
 
 #endif
 
-#ifdef CYR_RECODE
-extern void GetCharSetByHost(char *, int, char *);
-
-#endif
-
 
 static void
 checkDataDir(const char *checkdir)

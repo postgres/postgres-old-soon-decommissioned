@@ -12,14 +12,12 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres_fe.h"
+
 #include <ctype.h>
 
-#include "postgres.h"
-#include "nodes/parsenodes.h"
-#include "nodes/pg_list.h"
-#include "type.h"
+#include "extern.h"
 #include "preproc.h"
-#include "parser/keywords.h"
 
 /*
  * List of (keyword-name, keyword-token-value) pairs.

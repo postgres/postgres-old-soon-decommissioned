@@ -29,8 +29,9 @@
  * $Id$
  */
 
-#include <postgres.h>
-#include <utils/builtins.h>
+#include "postgres.h"
+
+#include "utils/builtins.h"
 
 #include "pgcrypto.h"
 

@@ -14,8 +14,8 @@
  */
 
 #include "postgres.h"
+
 #include "utils/dynamic_loader.h"
-#include "utils/elog.h"
 
 
 void	   *

@@ -8,7 +8,7 @@
 #ifndef TAB_COMPLETE_H
 #define TAB_COMPLETE_H
 
-#include "postgres.h"
+#include "postgres_fe.h"
 
 void		initialize_readline(void);
 

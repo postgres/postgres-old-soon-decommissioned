@@ -21,6 +21,7 @@
 #define LIBPQ_INT_H
 
 /* We assume libpq-fe.h has already been included. */
+#include "postgres_fe.h"
 
 /* include stuff common to fe and be */
 #include "libpq/pqcomm.h"

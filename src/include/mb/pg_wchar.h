@@ -3,7 +3,6 @@
 #ifndef PG_WCHAR_H
 #define PG_WCHAR_H
 
-#include "postgres.h"
 #include <sys/types.h>
 
 #ifdef FRONTEND

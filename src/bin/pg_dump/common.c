@@ -27,17 +27,14 @@
  *-------------------------------------------------------------------------
  */
 
+#include "pg_dump.h"
 
 #include <ctype.h>
-
-#include "postgres.h"
 
 #include "libpq-fe.h"
 #ifndef HAVE_STRDUP
 #include "strdup.h"
 #endif
-
-#include "pg_dump.h"
 
 static char **findParentsByOid(TableInfo *tbinfo, int numTables,
 				 InhInfo *inhinfo, int numInherits,

@@ -56,7 +56,6 @@ extern		"C"
 
 #endif /* HAVE_DLOPEN */
 
-#include "fmgr.h"
 #include "utils/dynamic_loader.h"
 
 #define  pg_dlopen(f)	dlopen(f, RTLD_LAZY)

@@ -12,11 +12,11 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres_fe.h"
 
 #include <fcntl.h>
 #include <sys/stat.h>
 
-#include "postgres.h"
 #include "libpq-fe.h"
 #include "libpq-int.h"
 

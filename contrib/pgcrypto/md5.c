@@ -30,7 +30,7 @@
  * SUCH DAMAGE.
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
 #include "md5.h"
 

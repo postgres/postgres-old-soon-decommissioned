@@ -29,7 +29,7 @@
  * $Id$
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
 #include "pgcrypto.h"
 

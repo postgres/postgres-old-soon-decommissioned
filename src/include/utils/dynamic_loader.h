@@ -14,12 +14,6 @@
 #ifndef DYNAMIC_LOADER_H
 #define DYNAMIC_LOADER_H
 
-#include <sys/types.h>
-
-/* we need this include because port files use them */
-#include "postgres.h"
-
-/* and this one for typedef PGFunction */
 #include "fmgr.h"
 
 

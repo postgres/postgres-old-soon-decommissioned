@@ -2,18 +2,15 @@
  * This file contains some public functions
  * usable for both the backend and the frontend.
  * Tatsuo Ishii
- * $Id$ */
-
-#include <stdlib.h>
-#include <string.h>
+ * $Id$
+ */
+#include "postgres.h"
 
 #ifdef WIN32
 #include "win32.h"
 #else
 #include <unistd.h>
 #endif
-
-#include "postgres.h"
 
 #include "miscadmin.h"
 #include "mb/pg_wchar.h"

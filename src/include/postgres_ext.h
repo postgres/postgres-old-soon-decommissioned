@@ -2,10 +2,9 @@
  *
  * postgres_ext.h
  *
- *	   This file contains declarations of things that are visible
- *	external to Postgres.  For example, the Oid type is part of a
- *	structure that is passed to the front end via libpq, and is
- *	accordingly referenced in libpq-fe.h.
+ *	   This file contains declarations of things that are visible everywhere
+ *  in PostgreSQL *and* are visible to clients of frontend interface libraries.
+ *	For example, the Oid type is part of the API of libpq and other libraries.
  *
  *	   Declarations which are specific to a particular interface should
  *	go in the header file for that interface (such as libpq-fe.h).	This
@@ -28,6 +27,8 @@
  * Object ID is a fundamental type in Postgres.
  */
 typedef unsigned int Oid;
+
+#define InvalidOid		((Oid) 0)
 
 #define OID_MAX  UINT_MAX
 /* you will need to include <limits.h> to use the above #define */

@@ -12,10 +12,10 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres_fe.h"
 
 #include <ctype.h>
 
-#include "postgres.h"
 #include "pgtclCmds.h"
 #include "pgtclId.h"
 #include "libpq/libpq-fs.h"		/* large-object interface */

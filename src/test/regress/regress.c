@@ -2,9 +2,9 @@
  * $Header$
  */
 
-#include <float.h>				/* faked on sunos */
-
 #include "postgres.h"
+
+#include <float.h>				/* faked on sunos */
 
 #include "utils/geo_decls.h"	/* includes <math.h> */
 #include "executor/executor.h"	/* For GetAttributeByName */

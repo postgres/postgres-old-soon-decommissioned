@@ -23,7 +23,6 @@
 
 #include "dl.h"
 #include "dynloader.h"
-#include "fmgr.h"
 #include "utils/dynamic_loader.h"
 
 void *

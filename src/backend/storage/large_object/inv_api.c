@@ -22,8 +22,9 @@
 
 #include "access/genam.h"
 #include "access/heapam.h"
-#include "access/nbtree.h"
 #include "access/htup.h"
+#include "access/nbtree.h"
+#include "access/tuptoaster.h"
 #include "catalog/catalog.h"
 #include "catalog/catname.h"
 #include "catalog/heap.h"

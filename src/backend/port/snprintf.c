@@ -32,10 +32,11 @@
  * SUCH DAMAGE.
  */
 
+/* might be in either frontend or backend */
+#include "postgres_fe.h"
+
 #include <sys/ioctl.h>
 #include <sys/param.h>
-
-#include "postgres.h"
 
 
 /*

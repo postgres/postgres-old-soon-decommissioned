@@ -4,10 +4,8 @@
  *	$Id$
  */
 
-#include <stdio.h>
+#include "postgres.h"
 
-#include <postgres.h>
-#include <utils/palloc.h>
 
 /*
  *	This is the internal storage format for ISBNs.

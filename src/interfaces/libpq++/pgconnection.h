@@ -38,7 +38,7 @@ extern "C" {
 #endif
 
 extern "C" {
-#include "postgres.h"
+#include "postgres_fe.h"
 #include "libpq-fe.h"
 }
 

@@ -5,7 +5,7 @@
  *
  * $Header$
  */
-#include "postgres.h"
+#include "postgres_fe.h"
 #include "command.h"
 
 #include <errno.h>
@@ -37,7 +37,6 @@
 #include "variables.h"
 
 #ifdef MULTIBYTE
-#include "miscadmin.h"
 #include "mb/pg_wchar.h"
 #else
 /* Grand unified hard-coded badness */

@@ -216,6 +216,8 @@ extern int	FindExec(char *full_path, const char *argv0,
 extern int	CheckPathAccess(char *path, char *name, int open_mode);
 
 #ifdef CYR_RECODE
+extern void GetCharSetByHost(char *TableName, int host, const char *DataDir);
+extern void SetCharSet(void);
 extern char *convertstr(unsigned char *buff, int len, int dest);
 #endif
 

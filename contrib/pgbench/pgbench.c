@@ -17,11 +17,8 @@
  * suitability of this software for any purpose.  It is provided "as
  * is" without express or implied warranty.
  */
+#include "postgres_fe.h"
 
-#include "config.h"
-
-#include <stdio.h>
-#include "postgres.h"
 #include "libpq-fe.h"
 
 #include <errno.h>

@@ -13,7 +13,6 @@
 #define PORT_PROTOS_H
 
 #include <dlfcn.h>
-#include "fmgr.h"
 #include "utils/dynamic_loader.h"
 
 /*

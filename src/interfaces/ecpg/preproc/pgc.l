@@ -16,19 +16,15 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres_fe.h"
+
 #include <ctype.h>
 #include <sys/types.h>
 #include <limits.h>
 #include <errno.h>
 
-#include "postgres.h"
-#include "miscadmin.h"
-#include "nodes/parsenodes.h"
-#include "nodes/pg_list.h"
-#include "parser/scansup.h"
 #include "extern.h"
 #include "preproc.h"
-#include "utils/builtins.h"
 
 /* some versions of lex define this as a macro */
 #if defined(yywrap)

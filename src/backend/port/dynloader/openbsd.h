@@ -18,9 +18,6 @@
 #include <nlist.h>
 #include "link.h"
 
-#include "postgres.h"
-
-#include "fmgr.h"
 #include "utils/dynamic_loader.h"
 
 /* dynloader.c */
