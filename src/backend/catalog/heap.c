@@ -1370,7 +1370,6 @@ heap_destroy(Relation rdesc)
 	rdesc->rd_tmpunlinked = TRUE;
 	heap_close(rdesc);
 	RemoveFromTempRelList(rdesc);
-	RelationForgetRelation(rdesc->rd_id);
 }
 
 
