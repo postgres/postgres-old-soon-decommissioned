@@ -166,7 +166,7 @@ plpgsql_ns_push(char *label)
  * ----------
  */
 void
-plpgsql_ns_pop()
+plpgsql_ns_pop(void)
 {
 	int			i;
 	PLpgSQL_ns *old;
@@ -503,7 +503,7 @@ static void dump_expr(PLpgSQL_expr *expr);
 
 
 static void
-dump_ind()
+dump_ind(void)
 {
 	int			i;
 

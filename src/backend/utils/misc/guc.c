@@ -4378,7 +4378,7 @@ DefineCustomStringVariable(
 	define_custom_variable(&var->gen);
 }
 
-extern void
+void
 EmitWarningsOnPlaceholders(const char *className)
 {
 	struct config_generic **vars = guc_variables;

@@ -52,7 +52,7 @@
 
 
 static void
-do_start()
+do_start(void)
 {
 	StartTransactionCommand();
 	elog(DEBUG4, "start transaction");
@@ -60,7 +60,7 @@ do_start()
 
 
 static void
-do_end()
+do_end(void)
 {
 	CommitTransactionCommand();
 	elog(DEBUG4, "commit transaction");

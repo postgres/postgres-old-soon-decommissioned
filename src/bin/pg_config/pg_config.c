@@ -31,7 +31,7 @@
 static char *progname;
 
 static void
-help()
+help(void)
 {
 	printf(_("\n%s provides information about the installed version of PostgreSQL.\n\n"), progname);
 	printf(_("Usage:\n"));
@@ -52,7 +52,7 @@ help()
 }
 
 static void
-advice()
+advice(void)
 {
 	fprintf(stderr, _("\nTry \"%s --help\" for more information\n"), progname);
 }

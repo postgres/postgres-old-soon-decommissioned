@@ -268,7 +268,7 @@ handle_sigint(SIGNAL_ARGS)
  * Returns whether our backend connection is still there.
  */
 static bool
-ConnectionUp()
+ConnectionUp(void)
 {
 	return PQstatus(pset.db) != CONNECTION_BAD;
 }

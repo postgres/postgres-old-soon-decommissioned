@@ -1012,7 +1012,7 @@ EnterString(char *str)
 
 	len = strlen(str);
 
-	node = FindStr(str, len, 0);
+	node = FindStr(str, len, NULL);
 	if (node)
 		return node->strnum;
 	else

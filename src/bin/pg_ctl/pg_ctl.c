@@ -1190,7 +1190,7 @@ main(int argc, char **argv)
 		{"mode", required_argument, NULL, 'm'},
 		{"pgdata", required_argument, NULL, 'D'},
 		{"silent", no_argument, NULL, 's'},
-		{0, 0, 0, 0}
+		{NULL, 0, NULL, 0}
 	};
 
 	int			option_index;
