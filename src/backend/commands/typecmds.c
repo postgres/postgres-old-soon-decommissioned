@@ -1685,7 +1685,7 @@ get_rels_with_domain(Oid domainOid, LOCKMODE lockmode)
 		Form_pg_attribute pg_att;
 		int			ptr;
 
-		/* Ignore dependees that aren't user columns of tables */
+		/* Ignore dependees that aren't user columns of relations */
 		/* (we assume system columns are never of domain types) */
 		if (pg_depend->classid != RelOid_pg_class ||
 			pg_depend->objsubid <= 0)
@@ -1709,7 +1709,14 @@ get_rels_with_domain(Oid domainOid, LOCKMODE lockmode)
 			Relation	rel;
 
 			/* Acquire requested lock on relation */
-			rel = heap_open(pg_depend->objid, lockmode);
+			rel = relation_open(pg_depend->objid, lockmode);
+
+			/* It could be a view or composite type; if so ignore it */
+			if (rel->rd_rel->relkind != RELKIND_RELATION)
+			{
+				relation_close(rel, lockmode);
+				continue;
+			}
 
 			/* Build the RelToCheck entry with enough space for all atts */
 			rtc = (RelToCheck *) palloc(sizeof(RelToCheck));
