@@ -39,6 +39,8 @@ extern bool Log_connections;
 extern int CheckPointTimeout;
 extern int XLOGbuffers;
 extern int XLOG_DEBUG;
+extern int CommitDelay;
+
 #ifdef ENABLE_SYSLOG
 extern char *Syslog_facility;
 extern char *Syslog_ident;
@@ -266,14 +268,17 @@ ConfigureNamesInt[] =
 	{"unix_socket_permissions", PGC_POSTMASTER,         &Unix_socket_permissions,
 	 0777, 0000, 0777},
 
-	{"checkpoint_timeout", PGC_POSTMASTER,         &CheckPointTimeout,
+	{"checkpoint_timeout",	PGC_POSTMASTER,			&CheckPointTimeout,
 	 300, 30, 1800},
 
-	{"wal_buffers", PGC_POSTMASTER,         &XLOGbuffers,
+	{"wal_buffers",			PGC_POSTMASTER,			&XLOGbuffers,
 	 8, 4, INT_MAX},
 
-	{"wal_debug", PGC_POSTMASTER,         &XLOG_DEBUG,
+	{"wal_debug",			PGC_SUSET,				&XLOG_DEBUG,
 	 0, 0, 16},
+
+	{"commit_delay",		PGC_USERSET,			&CommitDelay,
+	 5, 0, 1000},
 
     {NULL, 0, NULL, 0, 0, 0}
 };

@@ -222,7 +222,7 @@ int			XactIsoLevel;
 #ifdef XLOG
 #include "access/xlogutils.h"
 
-int			CommitDelay = 5;	/* 1/200 sec */
+int			CommitDelay = 5;	/* 1/200000 sec */
 
 static void (*_RollbackFunc)(void*) = NULL;
 static void *_RollbackData = NULL;
