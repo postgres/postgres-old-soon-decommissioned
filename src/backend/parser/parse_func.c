@@ -1278,21 +1278,8 @@ make_arguments(ParseState *pstate,
 		 i < nargs;
 		 i++, current_fargs = lnext(current_fargs))
 	{
-
-		/*
-		 * unspecified type for string constant? then use heuristics for
-		 * conversion...
-		 */
-		if (input_typeids[i] == UNKNOWNOID && function_typeids[i] != InvalidOid)
-		{
-			lfirst(current_fargs) = parser_typecast2(lfirst(current_fargs),
-													 input_typeids[i],
-										 typeidType(function_typeids[i]),
-													 -1);
-		}
-
 		/* types don't match? then force coersion using a function call... */
-		else if (input_typeids[i] != function_typeids[i])
+		if (input_typeids[i] != function_typeids[i])
 		{
 			lfirst(current_fargs) = coerce_type(pstate,
 												lfirst(current_fargs),

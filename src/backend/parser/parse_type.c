@@ -133,8 +133,8 @@ typeTypeFlag(Type t)
 
 /* Given a type structure and a string, returns the internal form of
    that string */
-char *
-stringTypeString(Type tp, char *string, int32 atttypmod)
+Datum
+stringTypeDatum(Type tp, char *string, int32 atttypmod)
 {
 	Oid			op;
 	Oid			typelem;
@@ -142,7 +142,7 @@ stringTypeString(Type tp, char *string, int32 atttypmod)
 	op = ((Form_pg_type) GETSTRUCT(tp))->typinput;
 	typelem = ((Form_pg_type) GETSTRUCT(tp))->typelem;	/* XXX - used for
 														 * array_in */
-	return (char *) fmgr(op, string, typelem, atttypmod);
+	return (Datum) fmgr(op, string, typelem, atttypmod);
 }
 
 /* Given a type id, returns the out-conversion function of the type */
@@ -241,4 +241,15 @@ typeInfunc(Type typ)
 	typtup = (Form_pg_type) GETSTRUCT(typ);
 
 	return typtup->typinput;
+}
+
+/* Given a type structure, return the out-conversion function of the type */
+Oid
+typeOutfunc(Type typ)
+{
+	Form_pg_type typtup;
+
+	typtup = (Form_pg_type) GETSTRUCT(typ);
+
+	return typtup->typoutput;
 }
