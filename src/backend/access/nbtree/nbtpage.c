@@ -27,23 +27,6 @@
 #include "access/nbtree.h"
 #include "miscadmin.h"
 
-#define BTREE_METAPAGE	0
-#define BTREE_MAGIC		0x053162
-
-#define BTREE_VERSION	1
-
-typedef struct BTMetaPageData
-{
-	uint32		btm_magic;
-	uint32		btm_version;
-	BlockNumber btm_root;
-	int32		btm_level;
-} BTMetaPageData;
-
-#define BTPageGetMeta(p) \
-	((BTMetaPageData *) &((PageHeader) p)->pd_linp[0])
-
-
 /*
  *	We use high-concurrency locking on btrees.	There are two cases in
  *	which we don't do locking.  One is when we're building the btree.
@@ -188,14 +171,18 @@ _bt_getroot(Relation rel, int access)
 #ifdef XLOG
 			/* XLOG stuff */
 			{
-				xl_btree_insert	   xlrec;
+				xl_btree_newroot	   xlrec;
+
 				xlrec.node = rel->rd_node;
+				BlockIdSet(&(xlrec.rootblk), rootblkno);
 
 				XLogRecPtr recptr = XLogInsert(RM_BTREE_ID, XLOG_BTREE_NEWROOT,
 					&xlrec, SizeOfBtreeNewroot, NULL, 0);
 
 				PageSetLSN(rootpage, recptr);
 				PageSetSUI(rootpage, ThisStartUpID);
+				PageSetLSN(metapg, recptr);
+				PageSetSUI(metapg, ThisStartUpID);
 			}
 #endif
 
