@@ -861,7 +861,7 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 					}
 					else
 					{
-						*str = PGTYPESnumeric_ntoa((NumericVar *)(var->value));
+						str = PGTYPESnumeric_ntoa((NumericVar *)(var->value));
 						slen = strlen (str);
 					
 						if (!(mallocedval = ECPGalloc(slen + 1, stmt->lineno)))
