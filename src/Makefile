@@ -53,7 +53,7 @@ clean:
 	$(MAKE) -C pl $@
 	$(MAKE) -C makefiles $@
 	$(MAKE) -C test $@
-	$(MAKE) -C tutorial $@
+	$(MAKE) -C tutorial NO_PGXS=1 $@
 	$(MAKE) -C utils $@
 	$(MAKE) -C tools/thread $@
 
@@ -67,7 +67,7 @@ distclean maintainer-clean:
 	-$(MAKE) -C pl $@
 	-$(MAKE) -C makefiles $@
 	-$(MAKE) -C test $@
-	-$(MAKE) -C tutorial $@
+	-$(MAKE) -C tutorial NO_PGXS=1 $@
 	-$(MAKE) -C utils $@
 	-$(MAKE) -C tools/thread $@
 	rm -f Makefile.port Makefile.global
