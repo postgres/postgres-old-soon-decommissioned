@@ -2069,11 +2069,12 @@ _reconnectAsOwner(ArchiveHandle *AH, const char *dbname, TocEntry *te)
 /*
  * fmtId
  *
- *	checks input string for non-lowercase characters
- *	returns pointer to input string or string surrounded by double quotes
+ *	Quotes input string if it's not a legitimate SQL identifier as-is,
+ *	or all the time if force_quotes is true.
  *
- *	Note that the returned string should be used immediately since it
- *	uses a static buffer to hold the string. Non-reentrant but faster?
+ *	Note that the returned string must be used before calling fmtId again,
+ *	since we re-use the same return buffer each time.  Non-reentrant but
+ *	avoids memory leakage.
  */
 const char *
 fmtId(const char *rawid, bool force_quotes)
@@ -2081,13 +2082,19 @@ fmtId(const char *rawid, bool force_quotes)
 	static PQExpBuffer id_return = NULL;
 	const char *cp;
 
+	if (id_return)				/* first time through? */
+		resetPQExpBuffer(id_return);
+	else
+		id_return = createPQExpBuffer();
+
 	if (!force_quotes)
 	{
 		/* do a quick check on the first character... */
-		if (!islower((unsigned char) *rawid))
+		if (!islower((unsigned char) *rawid) && *rawid != '_')
 			force_quotes = true;
-		/* otherwise check the entire string */
 		else
+		{
+			/* otherwise check the entire string */
 			for (cp = rawid; *cp; cp++)
 			{
 				if (!(islower((unsigned char) *cp) ||
@@ -2098,32 +2105,30 @@ fmtId(const char *rawid, bool force_quotes)
 					break;
 				}
 			}
+		}
 	}
 
 	if (!force_quotes)
-		return rawid;			/* no quoting needed */
-
-	if (id_return)
-		resetPQExpBuffer(id_return);
-	else
-		id_return = createPQExpBuffer();
-
-	appendPQExpBufferChar(id_return, '\"');
-	for (cp = rawid; *cp; cp++)
 	{
-		/*
-		 * Did we find a double-quote in the string? Then make this a
-		 * double double-quote per SQL99. Before, we put in a
-		 * backslash/double-quote pair. - thomas 2000-08-05
-		 */
-		if (*cp == '\"')
-		{
-			appendPQExpBufferChar(id_return, '\"');
-			appendPQExpBufferChar(id_return, '\"');
-		}
-		appendPQExpBufferChar(id_return, *cp);
+		/* no quoting needed */
+		appendPQExpBufferStr(id_return, rawid);
 	}
-	appendPQExpBufferChar(id_return, '\"');
+	else
+	{
+		appendPQExpBufferChar(id_return, '\"');
+		for (cp = rawid; *cp; cp++)
+		{
+			/*
+			 * Did we find a double-quote in the string? Then make this a
+			 * double double-quote per SQL99. Before, we put in a
+			 * backslash/double-quote pair. - thomas 2000-08-05
+			 */
+			if (*cp == '\"')
+				appendPQExpBufferChar(id_return, '\"');
+			appendPQExpBufferChar(id_return, *cp);
+		}
+		appendPQExpBufferChar(id_return, '\"');
+	}
 
 	return id_return->data;
 }
