@@ -215,7 +215,7 @@ char	   *rendezvous_name;
 
 /* For FNCTL_NONBLOCK */
 #if defined(WIN32) || defined(__BEOS__)
-long		ioctlsocket_ret;
+long		ioctlsocket_ret=1;
 #endif
 
 /* list of library:init-function to be preloaded */
