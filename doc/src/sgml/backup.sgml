@@ -407,7 +407,7 @@ pg_dumpall -p 5432 | psql -d template1 -p 6543
 <informalexample>
 <programlisting>
 pg_dumpall > backup
-kill -INT `cat /usr/local/pgsql/postmaster.pid`
+pg_ctl stop
 mv /usr/local/pgsql /usr/local/pgsql.old
 cd /usr/src/postgresql-7.1
 gmake install
