@@ -46,6 +46,7 @@
 #include "utils/acl.h"
 #include "utils/ps_status.h"
 #include "utils/syscache.h"
+#include "utils/temprel.h"
 #include "access/xlog.h"
 
 /*
@@ -120,7 +121,8 @@ CheckDropPermissions(char *name, char rightkind)
 		elog(ERROR, "you do not own %s \"%s\"",
 			 rentry->name, name);
 
-	if (!allowSystemTableMods && IsSystemRelationName(name))
+	if (!allowSystemTableMods && IsSystemRelationName(name) &&
+		!is_temp_relname(name))
 		elog(ERROR, "%s \"%s\" is a system %s",
 			 rentry->name, name, rentry->name);
 

@@ -54,8 +54,8 @@
 
 
 /* Filename components for OpenTemporaryFile */
-#define PG_TEMP_FILES_DIR "pg_tempfiles"
-#define PG_TEMP_FILE_PREFIX "pg_temp"
+#define PG_TEMP_FILES_DIR "pgsql_tmp"
+#define PG_TEMP_FILE_PREFIX "pgsql_tmp"
 
 
 /*
