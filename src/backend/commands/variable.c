@@ -395,9 +395,9 @@ parse_timezone(List *args)
 				Interval   *interval;
 
 				interval = DatumGetIntervalP(DirectFunctionCall3(interval_in,
-										 CStringGetDatum(p->val.val.str),
-											ObjectIdGetDatum(InvalidOid),
-													 Int32GetDatum(-1)));
+																 CStringGetDatum(p->val.val.str),
+																 ObjectIdGetDatum(InvalidOid),
+																 Int32GetDatum(type->typmod)));
 				if (interval->month != 0)
 					elog(ERROR, "SET TIME ZONE illegal INTERVAL; month not allowed");
 				CTimeZone = interval->time;
