@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Wed Oct 22 13:14:35 EDT 2003
+Last updated:		Thu Oct 23 23:20:29 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -21,7 +21,7 @@ Urgent
 	o Master/slave replication
 	o Multi-master replication
 	o Partition data across servers
-	o Queries across databases or servers (two-phase commit)
+	o Queries across databases or servers (two-phase commit) [2phase]
 	o Allow replication over unreliable or non-persistent links
 	o http://gborg.postgresql.org/project/pgreplication/projdisplay.php
 * Point-in-time data recovery using backup and write-ahead log
