@@ -453,6 +453,29 @@ MemoryContextAlloc(MemoryContext context, Size size)
 }
 
 /*
+ * MemoryContextAllocZero
+ *		Like MemoryContextAlloc, but clears allocated memory
+ *
+ *	We could just call MemoryContextAlloc then clear the memory, but this
+ *	function is called too many times, so we have a separate version.
+ */
+void *
+MemoryContextAllocZero(MemoryContext context, Size size)
+{
+	void *ret;
+
+	AssertArg(MemoryContextIsValid(context));
+
+	if (!AllocSizeIsValid(size))
+		elog(ERROR, "MemoryContextAllocZero: invalid request size %lu",
+			 (unsigned long) size);
+
+	ret = (*context->methods->alloc) (context, size);
+	MemSet(ret, 0, size);
+	return ret;
+}
+
+/*
  * pfree
  *		Release an allocated chunk.
  */

@@ -1131,7 +1131,10 @@ connectDBComplete(PGconn *conn)
 				return 0;
 			}
 
-			remains.tv_sec = finish_time - current_time;
+			if (finish_time > current_time)
+				remains.tv_sec = finish_time - current_time;
+			else
+				remains.tv_sec = 0;
 			remains.tv_usec = 0;
 		}
 	}
