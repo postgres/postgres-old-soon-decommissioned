@@ -487,7 +487,8 @@ PostgreSQL documentation
    all clients to terminate before quitting, the second will
    forcefully disconnect all clients, and the third will quit
    immediately without proper shutdown, resulting in a recovery run
-   during restart.
+   during restart.   The <literal>SIGHUP</literal> signal will 
+   reload the server configuration files.
   </para>
 
   <para>
