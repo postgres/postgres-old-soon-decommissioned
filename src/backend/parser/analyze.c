@@ -1357,8 +1357,7 @@ make_targetlist_expr(ParseState *pstate,
                     else if ((attrtype == FLOAT4OID) && (type_id == FLOAT8OID))
 			 lfirst(expr) = lispInteger (FLOAT4OID);
                     else
-			 elog(WARN, "unequal type in tlist : %s \n",
-			      colname));
+			 elog(WARN, "unequal type in tlist : %s \n", colname);
 	       }
 	  
 	  Input_is_string = false;

@@ -1909,6 +1909,7 @@ Point *close_pl(Point *pt, LINE *line)
     result = PALLOCTYPE(Point);
 #if FALSE
     if (FPeq(line->A, -1.0) && FPzero(line->B)) {	/* vertical */
+    }
 #endif
     if (line_vertical(line)) {
 	result->x = line->C;
