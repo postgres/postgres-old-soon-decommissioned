@@ -307,7 +307,7 @@ SELECT one() AS answer;
    is correct. It is intended for use in a CHECK contraint.
   </para>
   <programlisting>
-CREATE FUNCTION ean_checkdigit(bpchar, bpchar) RETURNS bool
+CREATE FUNCTION ean_checkdigit(bpchar, bpchar) RETURNS boolean
     AS '/usr1/proj/bray/sql/funcs.so' LANGUAGE 'c';
     
 CREATE TABLE product (
