@@ -28,7 +28,7 @@ These catalogs form the core of the extensibility system:
 	pg_amproc	local	procedures used with specific access methods
 	pg_attribute	local	class attributes
 	pg_class	local	classes
-	pg_index	local	secondary indices
+	pg_index	local	indices
 	pg_inherits	local	class inheritance hierarchy
 	pg_language	local	procedure implementation languages
 	pg_opclass	local	operator classes
