@@ -2447,11 +2447,7 @@ BackendInit(Port *port)
 	status = ProcessStartupPacket(port, false);
 
 	if (status != STATUS_OK)
-	{
-		ereport(LOG,
-				(errmsg("connection startup failed")));
 		proc_exit(0);
-	}
 
 	/*
 	 * Now that we have the user and database name, we can set the process
