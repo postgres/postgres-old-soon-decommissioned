@@ -2344,6 +2344,17 @@ insert_rest:  VALUES '(' res_target_list2 ')'
 					$$->havingClause = NULL;
 					$$->unionClause = NIL;
 				}
+		| DEFAULT VALUES
+				{
+					$$ = makeNode(InsertStmt);
+					$$->unique = NULL;
+					$$->targetList = NIL;
+					$$->fromClause = NIL;
+					$$->whereClause = NULL;
+					$$->groupClause = NIL;
+					$$->havingClause = NULL;
+					$$->unionClause = NIL;
+				}
 		| SELECT opt_unique res_target_list2
 			 from_clause where_clause
 			 group_clause having_clause
