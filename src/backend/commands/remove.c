@@ -350,7 +350,7 @@ RemoveFunction(char *functionName, /* function name to be removed */
 			      Int32GetDatum(nargs),
 			      PointerGetDatum(argList),0);
     if (!HeapTupleIsValid(tup))
-	func_error("RemoveFunction", functionName, nargs, (int*)argList);
+	func_error("RemoveFunction", functionName, nargs, argList);
     
 #ifndef NO_SECURITY
     userName = GetPgUserName();
@@ -387,7 +387,7 @@ RemoveFunction(char *functionName, /* function name to be removed */
 	{	
 	    heap_endscan(scan);
 	    heap_close(relation);
-	    func_error("RemoveFunction", functionName,nargs, (int*)argList);
+	    func_error("RemoveFunction", functionName,nargs, argList);
 	}
     
     /* ok, function has been found */

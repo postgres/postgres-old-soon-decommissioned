@@ -288,7 +288,7 @@ BuildFuncTupleDesc(FuncIndexInfo *funcInfo)
 				0);
     
     if (!HeapTupleIsValid(tuple))
-	func_error("BuildFuncTupleDesc", funcname, nargs, (int*)argtypes);
+	func_error("BuildFuncTupleDesc", funcname, nargs, argtypes);
     
     retType = ((Form_pg_proc)GETSTRUCT(tuple))->prorettype;
     
@@ -1097,7 +1097,7 @@ index_create(char *heapRelationName,
 	    if (!HeapTupleIsValid(proc_tup)) {
 		func_error("index_create", FIgetname(funcInfo),
 			   FIgetnArgs(funcInfo), 
-			   (int*) FIgetArglist(funcInfo));
+			   FIgetArglist(funcInfo));
 	    }
 	    FIgetProcOid(funcInfo) = proc_tup->t_oid;
 	}

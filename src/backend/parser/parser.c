@@ -294,7 +294,7 @@ parser_typecast(Value *expr, TypeName *typename, int typlen)
 }
 
 Node *
-parser_typecast2(Node *expr, int exprType, Type tp, int typlen)
+parser_typecast2(Node *expr, Oid exprType, Type tp, int typlen)
 {
     /* check for passing non-ints */
     Const *adt;
@@ -357,11 +357,11 @@ parser_typecast2(Node *expr, int exprType, Type tp, int typlen)
 	const_string = (char *) textout((struct varlena *)const_string);
         break;
     default:
-	elog(WARN,"unknown type%d ",exprType);
+	elog(WARN,"unknown type %ud ",exprType);
     }
     
     if (!exprType) {
-	adt = makeConst((Oid)typeid(tp),
+	adt = makeConst(typeid(tp),
 			(Size) 0,
 			(Datum) NULL,
 			true, 	/* isnull */
@@ -398,14 +398,14 @@ parser_typecast2(Node *expr, int exprType, Type tp, int typlen)
 	}
     }
     
-    adt = makeConst((Oid)typeid(tp),
+    adt = makeConst(typeid(tp),
 		    (Size)len,
 		    (Datum)lcp,
 		    0, 
 		    0 /*was omitted*/,
 		    0 /* not a set */);
     /*
-      printf("adt %s : %d %d %d\n",CString(expr),typeid(tp) ,
+      printf("adt %s : %ud %d %d\n",CString(expr),typeid(tp) ,
       len,cp);
       */
     if (string_palloced) pfree(const_string);
@@ -466,5 +466,3 @@ ParseAgg(char *aggname, Oid basetype, Node *target)
     return aggreg;
 }
 
-
-    

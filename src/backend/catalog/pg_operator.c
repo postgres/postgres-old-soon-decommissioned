@@ -530,7 +530,7 @@ OperatorDef(char *operatorName,
 			      0);
     
     if (!PointerIsValid(tup))
-	func_error("OperatorDef", procedureName, nargs, (int*)typeId);
+	func_error("OperatorDef", procedureName, nargs, typeId);
     
     values[ Anum_pg_operator_oprcode-1 ] =  ObjectIdGetDatum(tup->t_oid);
     values[ Anum_pg_operator_oprresult-1 ] =
@@ -554,7 +554,7 @@ OperatorDef(char *operatorName,
 				  ObjectIdGetDatum(typeId),
 				  0);
 	if (!HeapTupleIsValid(tup))
-	    func_error("OperatorDef", restrictionName, 5, (int*)typeId);
+	    func_error("OperatorDef", restrictionName, 5, typeId);
 	
 	values[ Anum_pg_operator_oprrest-1 ] = ObjectIdGetDatum(tup->t_oid);
     } else
@@ -578,7 +578,7 @@ OperatorDef(char *operatorName,
 				  Int32GetDatum(typeId),
 				  0);
 	if (!HeapTupleIsValid(tup))
-	    func_error("OperatorDef", joinName, 5, (int*)typeId);
+	    func_error("OperatorDef", joinName, 5, typeId);
 	
 	values[Anum_pg_operator_oprjoin-1] = ObjectIdGetDatum(tup->t_oid);
     } else

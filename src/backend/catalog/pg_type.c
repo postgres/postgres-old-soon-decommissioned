@@ -417,7 +417,7 @@ TypeCreate(char *typeName,
 					  0);
 	    }
 	    if (!HeapTupleIsValid(tup)) {
-		func_error("TypeCreate", procname, 1, (int*)argList);
+		func_error("TypeCreate", procname, 1, argList);
 	    }
 	}
 	
