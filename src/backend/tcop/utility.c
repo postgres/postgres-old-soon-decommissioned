@@ -831,11 +831,9 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_CheckPointStmt:
-			{
-				if (!superuser())
-					elog(ERROR, "permission denied");
-				CreateCheckPoint(false);
-			}
+			if (!superuser())
+				elog(ERROR, "permission denied");
+			CreateCheckPoint(false, false);
 			break;
 
 		case T_ReindexStmt:

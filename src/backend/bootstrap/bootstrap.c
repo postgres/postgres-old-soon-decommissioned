@@ -390,7 +390,7 @@ BootstrapMain(int argc, char *argv[])
 
 		case BS_XLOG_CHECKPOINT:
 			CreateDummyCaches();
-			CreateCheckPoint(false);
+			CreateCheckPoint(false, false);
 			SetSavedRedoRecPtr();		/* pass redo ptr back to
 										 * postmaster */
 			proc_exit(0);		/* done */
@@ -445,7 +445,7 @@ BootstrapMain(int argc, char *argv[])
 	Int_yyparse();
 
 	SetProcessingMode(NormalProcessing);
-	CreateCheckPoint(true);
+	CreateCheckPoint(true, true);
 	SetProcessingMode(BootstrapProcessing);
 
 	/* clean up processing */

@@ -809,8 +809,8 @@ TruncateCLOG(TransactionId oldestXact)
 	if (!ScanCLOGDirectory(cutoffPage, false))
 		return;					/* nothing to remove */
 
-	/* Perform a CHECKPOINT */
-	CreateCheckPoint(false);
+	/* Perform a forced CHECKPOINT */
+	CreateCheckPoint(false, true);
 
 	/*
 	 * Scan CLOG shared memory and remove any pages preceding the cutoff
