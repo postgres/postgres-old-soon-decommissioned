@@ -32,6 +32,12 @@ hashint4(uint32 key)
 	return ~key;
 }
 
+uint32
+hashint8(uint64 *key)
+{
+	return ~((uint32)key);
+}
+
 /* Hash function from Chris Torek. */
 uint32
 hashfloat4(float32 keyp)
