@@ -482,6 +482,13 @@ typedef struct FuncExprState
 	bool		setHasSetArg;	/* some argument returns a set */
 
 	/*
+	 * Flag to remember whether we have registered a shutdown callback for
+	 * this FuncExprState.  We do so only if setArgsValid has been true at
+	 * least once (since all the callback is for is to clear setArgsValid).
+	 */
+	bool		shutdown_reg;	/* a shutdown callback is registered */
+
+	/*
 	 * Current argument data for a set-valued function; contains valid
 	 * data only if setArgsValid is true.
 	 */
