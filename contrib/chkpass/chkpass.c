@@ -150,7 +150,7 @@ chkpass_rout(PG_FUNCTION_ARGS)
 		memcpy(result->vl_dat, password->password, strlen(password->password));
 	}
 
-	PG_RETURN_CSTRING(result);
+	PG_RETURN_TEXT_P(result);
 }
 
 
