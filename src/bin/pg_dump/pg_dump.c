@@ -3192,7 +3192,7 @@ dumpSequence(FILE *fout, TableInfo tbinfo)
 	if (called == 'f')
 		return;					/* nothing to do more */
 
-	sprintf(query, "SELECT nextval ('%s');\n", tbinfo.relname);
+	sprintf(query, "SELECT nextval ('%s');\n", fmtId(tbinfo.relname, force_quotes));
 	fputs(query, fout);
 
 }
