@@ -255,6 +255,8 @@ extern int DecodeDateDelta(char **field, int *ftype,
 				int nf, int *dtype,
 				struct tm * tm, double *fsec);
 
+extern int	DetermineLocalTimeZone(struct tm * tm);
+
 extern int	EncodeDateOnly(struct tm * tm, int style, char *str);
 extern int	EncodeTimeOnly(struct tm * tm, double fsec, int *tzp, int style, char *str);
 extern int	EncodeDateTime(struct tm * tm, double fsec, int *tzp, char **tzn, int style, char *str);
