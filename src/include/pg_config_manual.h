@@ -176,12 +176,6 @@
 #define DEFAULT_PGSOCKET_DIR  "/tmp"
 
 /*
- * Defining this will make float4 and float8 operations faster by
- * suppressing overflow/underflow checks.
- */
-/* #define UNSAFE_FLOATS */
-
-/*
  * The random() function is expected to yield values between 0 and
  * MAX_RANDOM_VALUE.  Currently, all known implementations yield
  * 0..2^31-1, so we just hardwire this constant.  We could do a

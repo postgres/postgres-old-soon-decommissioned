@@ -360,6 +360,23 @@ SELECT 'foo'      'bar';
     </para>
 
     <para>
+     In addition, there are several special constant values that are
+     accepted as numeric constants. The <type>float4</type> and
+     <type>float8</type> types allow the following special constants:
+<literallayout>
+Infinity
+-Infinity
+NaN
+</literallayout>
+     These represent the IEEE 754 special values
+     <quote>infinity</quote>, <quote>negative infinity</quote>, and
+     <quote>not-a-number</quote>, respectively. The
+     <type>numeric</type> type only allows <literal>NaN</>, whereas
+     the integral types do not allow any of these constants. Note that
+     these constants are recognized in a case-insensitive manner.
+    </para>
+
+    <para>
      <indexterm><primary>integer</primary></indexterm>
      <indexterm><primary>bigint</primary></indexterm>
      <indexterm><primary>numeric</primary></indexterm>
