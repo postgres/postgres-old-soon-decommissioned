@@ -1091,8 +1091,9 @@ $ECHO_N "creating information schema... "$ECHO_C
   echo "COPY information_schema.sql_features (feature_id, feature_name, sub_feature_id, sub_feature_name, is_supported, comments) FROM STDIN;"
   cat "$datadir"/sql_features.txt
   echo "\."
-) \
-	| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
+) |
+tr -d '\r' | # make newlines consistent for Win32
+"$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
 echo "ok"
 
 $ECHO_N "vacuuming database template1... "$ECHO_C
