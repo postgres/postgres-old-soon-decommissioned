@@ -165,7 +165,7 @@ msgstr "lade pg_description ... "
 
 #: initdb.c:1609
 msgid "creating conversions ... "
-msgstr "erzeugen Konversionen ... "
+msgstr "erzeuge Konversionen ... "
 
 #: initdb.c:1665
 msgid "setting privileges on built-in objects ... "
@@ -369,7 +369,7 @@ msgid ""
 "\n"
 msgstr ""
 "Die Dateien, die zu diesem Datenbanksystem gehören, werden dem Benutzer\n"
-"»%s« gehören. Diesem Benutzer muss auch der Serverprozess gehören.\n"
+"»%s« gehören. Diesem Benutzer muss auch der Serverprozess gehören.\n\n"
 
 #: initdb.c:2320
 #, c-format
