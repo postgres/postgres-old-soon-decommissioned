@@ -33,6 +33,11 @@ extern int rangeSockAddr(const struct sockaddr_storage * addr,
 extern int SockAddr_cidr_mask(struct sockaddr_storage ** mask,
 				   char *numbits, int family);
 
+#ifdef HAVE_IPV6
+extern void promote_v4_to_v6_addr(struct sockaddr_storage * addr);
+extern void promote_v4_to_v6_mask(struct sockaddr_storage * addr);
+#endif
+
 #ifdef	HAVE_UNIX_SOCKETS
 #define IS_AF_UNIX(fam) ((fam) == AF_UNIX)
 #else
