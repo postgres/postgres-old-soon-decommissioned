@@ -44,6 +44,9 @@ Access privileges on procedural languages
 CREATE DATABASE has OWNER option so superuser can create DB for someone else
 Kerberos 5 support now works with Heimdal
 Database and user-specific session defaults for run-time configuration variables (ALTER DATABASE ... SET and ALTER USER ... SET)
+String function OVERLAY() implemented per SQL99
+Regular expression operator SIMILAR TO implemented per SQL99
+Regular expression function SUBSTRING() implemented per SQL99
 ]]></literallayout>
 
  </sect1>
