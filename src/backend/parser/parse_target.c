@@ -55,6 +55,9 @@ transformTargetEntry(ParseState *pstate,
 	if (expr == NULL)
 		expr = transformExpr(pstate, node, EXPR_COLUMN_FIRST);
 
+	if (IsA(expr, Ident) && ((Ident *)expr)->isRel)
+		elog(ERROR,"You can't use relation names alone in the target list, try relation.*.");	
+
 	type_id = exprType(expr);
 	type_mod = exprTypmod(expr);
 

@@ -1081,8 +1081,7 @@ typedef struct Ident
 	NodeTag		type;
 	char	   *name;			/* its name */
 	List	   *indirection;	/* array references */
-	bool		isRel;			/* is a relation - filled in by
-								 * transformExpr() */
+	bool		isRel;			/* is this a relation or a column? */
 } Ident;
 
 /*

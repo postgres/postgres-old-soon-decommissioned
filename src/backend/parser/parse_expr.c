@@ -585,7 +585,10 @@ transformIdent(ParseState *pstate, Ident *ident, int precedence)
 		Node	   *var = colnameToVar(pstate, ident->name);
 
 		if (var != NULL)
+		{
+			ident->isRel = FALSE;
 			result = transformIndirection(pstate, var, ident->indirection);
+		}
 	}
 
 	if (result == NULL)
