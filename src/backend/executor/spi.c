@@ -360,6 +360,40 @@ SPI_copytupledesc(TupleDesc tupdesc)
 	return ctupdesc;
 }
 
+TupleTableSlot *
+SPI_copytupleintoslot(HeapTuple tuple, TupleDesc tupdesc)
+{
+	MemoryContext oldcxt = NULL;
+	TupleTableSlot *cslot;
+	HeapTuple	ctuple;
+	TupleDesc	ctupdesc;
+
+	if (tuple == NULL || tupdesc == NULL)
+	{
+		SPI_result = SPI_ERROR_ARGUMENT;
+		return NULL;
+	}
+
+	if (_SPI_curid + 1 == _SPI_connected)		/* connected */
+	{
+		if (_SPI_current != &(_SPI_stack[_SPI_curid + 1]))
+			elog(FATAL, "SPI: stack corrupted");
+		oldcxt = MemoryContextSwitchTo(_SPI_current->savedcxt);
+	}
+
+	ctuple = heap_copytuple(tuple);
+	ctupdesc = CreateTupleDescCopy(tupdesc);
+
+	cslot = MakeTupleTableSlot();
+	ExecSetSlotDescriptor(cslot, ctupdesc, true);
+	cslot = ExecStoreTuple(ctuple, cslot, InvalidBuffer, true);
+
+	if (oldcxt)
+		MemoryContextSwitchTo(oldcxt);
+
+	return cslot;
+}
+
 HeapTuple
 SPI_modifytuple(Relation rel, HeapTuple tuple, int natts, int *attnum,
 				Datum *Values, char *Nulls)
