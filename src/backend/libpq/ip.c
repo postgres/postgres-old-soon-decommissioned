@@ -365,7 +365,11 @@ convSockAddr6to4(const SockAddr *src, SockAddr *dst)
 	dst->in.sin_family = AF_INET;
 	dst->in.sin_port = src->in6.sin6_port;
 
-	dst->in.sin_addr.s_addr = src->in6.sin6_addr.s6_addr32[3];
+	dst->in.sin_addr.s_addr =
+		(src->in6.sin6_addr.s6_addr[15])
+		+ (src->in6.sin6_addr.s6_addr[14] << 8)
+		+ (src->in6.sin6_addr.s6_addr[13] << 16)
+		+ (src->in6.sin6_addr.s6_addr[12] << 24);
 	SockAddr_ntop(src, addr_str, INET6_ADDRSTRLEN, 0);
 }
 #endif

@@ -788,11 +788,11 @@ AC_CHECK_DECLS(fdatasync, [], [], [#include <unistd.h>])
 
 # This exports HAVE_IPV6 to both C files and Makefiles
 AC_CHECK_FUNC(getaddrinfo,
-             [AC_CHECK_MEMBERS(struct sockaddr_in6.sin6_len,
-             [HAVE_IPV6="yes"; AC_DEFINE(HAVE_IPV6, 1, [])], [],
-[#include <sys/socket.h>
-#include <netdb.h>])],
-	     [])
+             [AC_CHECK_TYPE(struct sockaddr_in6,
+                            [HAVE_IPV6="yes"; AC_DEFINE(HAVE_IPV6, 1)],
+                            [],
+[$ac_includes_default
+#include <netinet/in.h>])])
 AC_SUBST(HAVE_IPV6)
 
 AC_CACHE_CHECK([for PS_STRINGS], [pgac_cv_var_PS_STRINGS],
