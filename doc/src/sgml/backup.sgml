@@ -419,7 +419,7 @@ cd /usr/src/postgresql-&version;
 gmake install
 initdb -D /usr/local/pgsql/data
 postmaster -D /usr/local/pgsql/data
-psql < backup
+psql template1 < backup
 </programlisting>
 </informalexample>
    See <xref linkend="runtime"> about ways to start and stop the
