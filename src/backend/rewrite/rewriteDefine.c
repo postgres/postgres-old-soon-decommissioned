@@ -115,7 +115,7 @@ InsertRule(char *rulname,
 		is_instead = "t";
 
 	if (evqual == NULL)
-		evqual = "\"\"";
+		evqual = "<>";
 
 	if (IsDefinedRewriteRule(rulname))
 		elog(ABORT, "Attempt to insert rule '%s' failed: already exists",
@@ -245,7 +245,7 @@ DefineQueryRewrite(RuleStmt *stmt)
 							eslot_string,
 							event_qualP,
 							true,
-							"\"\"");
+							"<>");
 		prs2_addToRelation(ev_relid, ruleId, event_type, event_attno, TRUE,
 						   event_qual, NIL);
 

@@ -164,7 +164,7 @@ print_expr(Node *expr, List *rtable)
 {
 	if (expr == NULL)
 	{
-		printf("nil");
+		printf("<>");
 		return;
 	}
 

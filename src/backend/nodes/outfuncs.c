@@ -282,7 +282,7 @@ _outPlanInfo(StringInfo str, Plan *node)
 	sprintf(buf, " :width %d ", node->plan_width);
 	appendStringInfo(str, buf);
 	appendStringInfo(str, " :state ");
-	appendStringInfo(str,  node->state ? "not-NULL" : "\"\"");
+	appendStringInfo(str,  node->state ? "not-NULL" : "<>");
 	appendStringInfo(str, " :qptargetlist ");
 	_outNode(str, node->targetlist);
 	appendStringInfo(str, " :qpqual ");
@@ -727,7 +727,7 @@ _outConst(StringInfo str, Const *node)
 	appendStringInfo(str, " :constvalue ");
 	if (node->constisnull)
 	{
-		appendStringInfo(str, "\"\"");
+		appendStringInfo(str, "<>");
 	}
 	else
 	{
@@ -1538,7 +1538,7 @@ _outNode(StringInfo str, void *obj)
 {
 	if (obj == NULL)
 	{
-		appendStringInfo(str, "\"\"");
+		appendStringInfo(str, "<>");
 		return;
 	}
 

@@ -94,9 +94,8 @@ nodeTokenType(char *token, int length)
 
 		retval = (*token != '.') ? T_Integer : T_Float;
 	}
-		/* make "" == NULL, not T_String.  Is this a problem? 1998/1/7 bjm */
 	else if (isalpha(*token) || *token == '_' || 
-			 (token[0] == '\"' && token[1] == '\"'))
+			 (token[0] == '<' && token[1] == '>'))
 		retval = ATOM_TOKEN;
 	else if (*token == '(')
 		retval = LEFT_PAREN;
@@ -145,15 +144,18 @@ lsptok(char *string, int *length)
 		return (NULL);
 	*length = 1;
 
-	if (*local_str == '\"')
+	if (*local_str == '"')
 	{
-		for (local_str++; *local_str != '\"'; (*length)++, local_str++)
+		for (local_str++; *local_str != '"'; (*length)++, local_str++)
 			;
-		if (*length == 1)
-			*length = 0;	/* if "", return zero length */
-		else
-			(*length)++;
+		(*length)++;
 		local_str++;
+	}
+			/* NULL */
+	else if (local_str[0] == '<' && local_str[1] == '>' )
+	{
+		*length = 0;
+		local_str += 2;
 	}
 	else if (*local_str == ')' || *local_str == '(' ||
 			 *local_str == '}' || *local_str == '{')
@@ -231,7 +233,7 @@ nodeRead(bool read_car_only)
 		case AT_SYMBOL:
 			break;
 		case ATOM_TOKEN:
-			if (!strncmp(token, "\"\"", 2))
+			if (!strncmp(token, "<>", 2))
 			{
 				this_value = NULL;
 
