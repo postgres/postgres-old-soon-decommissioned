@@ -241,7 +241,7 @@ connectDB(PGconn *conn)
 
 /*    pacBuf = startup2PacketBuf(&startup);*/
     startup2PacketBuf(&startup, &pacBuf);
-    pacBuf.msgtype = htonl(msgtype);
+    pacBuf.msgtype = (MsgType) htonl(msgtype);
     status = packetSend(port, &pacBuf, sizeof(PacketBuf), BLOCKING);
     
     if (status == STATUS_ERROR)
