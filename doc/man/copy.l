@@ -7,8 +7,8 @@ copy \(em copy data to or from a class from or to a Unix file.
 .SH SYNOPSIS
 .nf
 \fBcopy\fP [\fBbinary\fP] classname [\fBwith oids\fP]
-	\fBto\fP|\fBfrom\fP "filename"|\fBstdin\fR|\fBstdout\fR
-	[\fBusing delimiters\fP delim]
+	\fBto\fP|\fBfrom '\fPfilename\fB'\fP|\fBstdin\fR|\fBstdout\fR
+	[\fBusing delimiters '\fPdelim\fB'\fP]
 .fi
 .SH DESCRIPTION
 .BR Copy
@@ -24,7 +24,7 @@ copies the internal unique object id (OID) for each row.
 .IR Classname
 is the name of an existing class.
 .IR Filename
-is the Unix pathname of the file.  In place of a filename, the
+is the absolute Unix pathname of the file.  In place of a filename, the
 keywords
 .BR "stdin" " and " "stdout"
 can be used so that input to
