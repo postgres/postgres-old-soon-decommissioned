@@ -88,6 +88,10 @@ s_lock(volatile slock_t *lock, const char *file, int line)
 
 	while (TAS(lock))
 	{
+		/* CPU-specific delay each time through the loop */
+		SPIN_DELAY();
+
+		/* Block the process every SPINS_PER_DELAY tries */
 		if (++spins > SPINS_PER_DELAY)
 		{
 			if (++delays > NUM_DELAYS)
