@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * xlog_bufmgr.c
+ * bufmgr.c
  *	  buffer manager interface routines
  *
  * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
