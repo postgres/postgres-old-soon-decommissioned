@@ -114,10 +114,13 @@ extern int S_LOCK_FREE(slock_t *lock);
  * cannot do so), we use System V semaphores.  We also use them for 
  * long locks.  For some reason union semun is never defined in the 
  * System V header files so we must do it ourselves.
+ *
+ * bsdi_2_1 does not need this
  */
 #if defined(sequent) || \
     defined(PORTNAME_aix) || \
     defined(PORTNAME_alpha) || \
+    defined(PORTNAME_bsdi) || \
     defined(PORTNAME_hpux) || \
     defined(PORTNAME_i386_solaris) || \
     defined(PORTNAME_sparc_solaris) || \
