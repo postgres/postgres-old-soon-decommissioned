@@ -447,6 +447,8 @@ extern bool text_lt(text *arg1, text *arg2);
 extern bool text_le(text *arg1, text *arg2);
 extern bool text_gt(text *arg1, text *arg2);
 extern bool text_ge(text *arg1, text *arg2);
+extern text *text_larger(text *arg1, text *arg2);
+extern text *text_smaller(text *arg1, text *arg2);
 extern int32 textlen(text *arg);
 extern int32 textoctetlen(text *arg);
 extern int32 textpos(text *arg1, text *arg2);
