@@ -324,6 +324,8 @@ GUC_scanstr(char *s)
 	len = strlen(s);
 
 	newStr = malloc(len + 1);	/* string cannot get longer */
+	if (newStr == NULL)
+		elog(FATAL, "out of memory");
 
 	for (i = 0, j = 0; i < len; i++)
 	{
