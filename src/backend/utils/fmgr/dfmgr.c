@@ -350,7 +350,7 @@ substitute_libpath_macro(const char *name)
 		strncmp(name, "$libdir", strlen("$libdir")) != 0)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_NAME),
-				 errmsg("invalid macro name in dynamic library path")));
+				 errmsg("invalid macro name in dynamic library path: %s", name)));
 
 	ret = palloc(strlen(pkglib_path) + strlen(sep_ptr) + 1);
 

@@ -251,7 +251,8 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 			ereport(LOG,
 			 (errmsg("could not translate service \"%s\" to address: %s",
 					 service, gai_strerror(ret))));
-		freeaddrinfo_all(hint.ai_family, addrs);
+		if (addrs)
+			freeaddrinfo_all(hint.ai_family, addrs);
 		return STATUS_ERROR;
 	}
 

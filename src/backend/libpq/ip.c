@@ -73,11 +73,11 @@ getaddrinfo_all(const char *hostname, const char *servname,
 	*result = NULL;
 
 #ifdef HAVE_UNIX_SOCKETS
-	if (hintp != NULL && hintp->ai_family == AF_UNIX)
+	if (hintp->ai_family == AF_UNIX)
 		return getaddrinfo_unix(servname, hintp, result);
 #endif
 
-	/* NULL has special meaning to getaddrinfo */
+	/* NULL has special meaning to getaddrinfo(). */
 	return getaddrinfo((!hostname || hostname[0] == '\0') ? NULL : hostname,
 					   servname, hintp, result);
 }

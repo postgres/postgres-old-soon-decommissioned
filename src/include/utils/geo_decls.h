@@ -305,6 +305,7 @@ extern Datum box_mul(PG_FUNCTION_ARGS);
 extern Datum box_div(PG_FUNCTION_ARGS);
 
 /* public path routines */
+extern Datum path_area(PG_FUNCTION_ARGS);
 extern Datum path_in(PG_FUNCTION_ARGS);
 extern Datum path_out(PG_FUNCTION_ARGS);
 extern Datum path_recv(PG_FUNCTION_ARGS);

@@ -2469,10 +2469,14 @@ BackendInit(Port *port)
 						remote_port, sizeof(remote_port),
 				   (log_hostname ? 0 : NI_NUMERICHOST) | NI_NUMERICSERV))
 	{
-		getnameinfo_all(&port->raddr.addr, port->raddr.salen,
+		int ret = getnameinfo_all(&port->raddr.addr, port->raddr.salen,
 						remote_host, sizeof(remote_host),
 						remote_port, sizeof(remote_port),
 						NI_NUMERICHOST | NI_NUMERICSERV);
+		if (ret)
+			ereport(WARNING,
+				(errmsg("getnameinfo_all() failed: %s",
+					gai_strerror(ret))));
 	}
 	snprintf(remote_ps_data, sizeof(remote_ps_data),
 			 remote_port[0] == '\0' ? "%s" : "%s(%s)",

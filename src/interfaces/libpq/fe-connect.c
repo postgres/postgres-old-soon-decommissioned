@@ -946,7 +946,8 @@ connectDBStart(PGconn *conn)
 			printfPQExpBuffer(&conn->errorMessage,
 							  libpq_gettext("could not translate Unix-domain socket path \"%s\" to address: %s\n"),
 							  portstr, gai_strerror(ret));
-		freeaddrinfo_all(hint.ai_family, addrs);
+		if (addrs)
+			freeaddrinfo_all(hint.ai_family, addrs);
 		goto connect_errReturn;
 	}
 

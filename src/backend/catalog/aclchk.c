@@ -1342,16 +1342,26 @@ pg_namespace_aclmask(Oid nsp_oid, AclId userid,
 	bool		isNull;
 	Acl		   *acl;
 
-	/*
-	 * If we have been assigned this namespace as a temp namespace, assume
-	 * we have all grantable privileges on it.
-	 */
-	if (isTempNamespace(nsp_oid))
-		return mask;
-
 	/* Superusers bypass all permission checking. */
 	if (superuser_arg(userid))
 		return mask;
+
+	/*
+	 * If we have been assigned this namespace as a temp
+	 * namespace, check to make sure we have CREATE permissions on
+	 * the database.
+	 *
+	 * Instead of returning ACLCHECK_NO_PRIV, should we return via
+	 * ereport() with a message about trying to create an object
+	 * in a TEMP namespace when GetUserId() doesn't have perms?
+	 */
+	if (isTempNamespace(nsp_oid)) {
+	  if (pg_database_aclcheck(MyDatabaseId, GetUserId(),
+				   ACL_CREATE_TEMP) == ACLCHECK_OK)
+	    return ACLCHECK_OK;
+	  else
+	    return ACLCHECK_NO_PRIV;
+	}
 
 	/*
 	 * Get the schema's ACL from pg_namespace

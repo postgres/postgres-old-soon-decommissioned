@@ -14,7 +14,10 @@
 #include <arpa/inet.h>
 
 #include "catalog/pg_type.h"
+#include "libpq/ip.h"
+#include "libpq/libpq-be.h"
 #include "libpq/pqformat.h"
+#include "miscadmin.h"
 #include "utils/builtins.h"
 #include "utils/inet.h"
 
@@ -129,6 +132,110 @@ cidr_in(PG_FUNCTION_ARGS)
 
 	PG_RETURN_INET_P(network_in(src, 1));
 }
+
+/* INET that the client is connecting from */
+Datum
+inet_client_addr(PG_FUNCTION_ARGS)
+{
+	Port *port = MyProcPort;
+
+	if (port == NULL)
+		PG_RETURN_NULL();
+
+	switch (port->raddr.addr.ss_family) {
+	case AF_INET:
+#ifdef HAVE_IPV6
+	case AF_INET6:
+#endif
+		break;
+	default:
+		PG_RETURN_NULL();
+	}
+
+	PG_RETURN_INET_P(network_in(port->remote_host, 0));
+}
+
+
+/* port that the client is connecting from */
+Datum
+inet_client_port(PG_FUNCTION_ARGS)
+{
+	Port *port = MyProcPort;
+
+	if (port == NULL)
+		PG_RETURN_NULL();
+
+	PG_RETURN_INT32(DirectFunctionCall1(int4in, CStringGetDatum(port->remote_port)));
+}
+
+
+/* server INET that the client connected to */
+Datum
+inet_server_addr(PG_FUNCTION_ARGS)
+{
+	Port *port = MyProcPort;
+	char	local_host[NI_MAXHOST];
+	int	ret;
+
+	if (port == NULL)
+		PG_RETURN_NULL();
+
+	switch (port->laddr.addr.ss_family) {
+	case AF_INET:
+#ifdef HAVE_IPV6
+	case AF_INET6:
+#endif
+	  break;
+	default:
+		PG_RETURN_NULL();
+	}
+
+	local_host[0] = '\0';
+
+	ret = getnameinfo_all(&port->laddr.addr, port->laddr.salen,
+			      local_host, sizeof(local_host),
+			      NULL, 0,
+			      NI_NUMERICHOST | NI_NUMERICSERV);
+	if (ret)
+		PG_RETURN_NULL();
+
+	PG_RETURN_INET_P(network_in(local_host, 0));
+}
+
+
+/* port that the server accepted the connection on */
+Datum
+inet_server_port(PG_FUNCTION_ARGS)
+{
+	Port *port = MyProcPort;
+	char	local_port[NI_MAXSERV];
+	int	ret;
+
+	if (port == NULL)
+		PG_RETURN_NULL();
+
+	switch (port->laddr.addr.ss_family) {
+	case AF_INET:
+#ifdef HAVE_IPV6
+	case AF_INET6:
+#endif
+	  break;
+	default:
+		PG_RETURN_NULL();
+	}
+
+	local_port[0] = '\0';
+
+	ret = getnameinfo_all(&port->laddr.addr, port->laddr.salen,
+			      NULL, 0,
+			      local_port, sizeof(local_port),
+			      NI_NUMERICHOST | NI_NUMERICSERV);
+	if (ret)
+		PG_RETURN_NULL();
+
+	PG_RETURN_INT32(DirectFunctionCall1(int4in, CStringGetDatum(local_port)));
+}
+
 
 /*
  *	INET address output function.

@@ -647,6 +647,10 @@ extern int inet_net_pton(int af, const char *src,
 			  void *dst, size_t size);
 
 /* network.c */
+extern Datum inet_client_addr(PG_FUNCTION_ARGS);
+extern Datum inet_client_port(PG_FUNCTION_ARGS);
+extern Datum inet_server_addr(PG_FUNCTION_ARGS);
+extern Datum inet_server_port(PG_FUNCTION_ARGS);
 extern Datum inet_in(PG_FUNCTION_ARGS);
 extern Datum inet_out(PG_FUNCTION_ARGS);
 extern Datum inet_recv(PG_FUNCTION_ARGS);
