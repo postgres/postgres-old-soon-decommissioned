@@ -250,7 +250,7 @@ slashUsage(unsigned short int pager)
 	fprintf(output, _("Copy, Large Object\n"));
 	fprintf(output, _("  \\copy ...      perform SQL COPY with data stream to the client host\n"));
 	fprintf(output, _("  \\lo_export LOBOID FILE\n"
-					  "  \\lo_import FILE [COMMENT] \n"
+					  "  \\lo_import FILE [COMMENT]\n"
 					  "  \\lo_list\n"
 				   "  \\lo_unlink LOBOID    large object operations\n"));
 
