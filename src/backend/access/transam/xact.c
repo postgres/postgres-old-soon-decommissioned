@@ -561,13 +561,7 @@ RecordTransactionCommit(void)
 			 */
 			if (CommitDelay > 0 && enableFsync &&
 				CountActiveBackends() >= CommitSiblings)
-			{
-				struct timeval delay;
-
-				delay.tv_sec = 0;
-				delay.tv_usec = CommitDelay;
-				(void) select(0, NULL, NULL, NULL, &delay);
-			}
+				PG_USLEEP(CommitDelay);
 
 			XLogFlush(recptr);
 		}

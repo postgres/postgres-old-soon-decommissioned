@@ -19,7 +19,7 @@
 #include <unistd.h>
 
 #include "storage/s_lock.h"
-
+#include "miscadmin.h"
 
 /*
  * s_lock_stuck() - complain about a stuck spinlock
@@ -84,7 +84,6 @@ s_lock(volatile slock_t *lock, const char *file, int line)
 	int			spins = 0;
 	int			delays = 0;
 	int			cur_delay = MIN_DELAY_CSEC;
-	struct timeval delay;
 
 	while (TAS(lock))
 	{
@@ -97,9 +96,7 @@ s_lock(volatile slock_t *lock, const char *file, int line)
 			if (++delays > NUM_DELAYS)
 				s_lock_stuck(lock, file, line);
 
-			delay.tv_sec = cur_delay / 100;
-			delay.tv_usec = (cur_delay % 100) * 10000;
-			(void) select(0, NULL, NULL, NULL, &delay);
+			PG_USLEEP(cur_delay * 10000);
 
 #if defined(S_LOCK_TEST)
 			fprintf(stdout, "*");

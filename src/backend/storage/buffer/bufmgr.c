@@ -1031,9 +1031,7 @@ BufferBackgroundWriter(void)
 		 * there was nothing to do at all.
 		 */
 		if (n > 0)
-		{
-			PG_DELAY(BgWriterDelay);
-		}
+			PG_USLEEP(BgWriterDelay * 1000);
 		else
 			sleep(10);
 	}
