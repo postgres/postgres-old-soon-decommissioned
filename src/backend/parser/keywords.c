@@ -30,7 +30,6 @@
 static ScanKeyword ScanKeywords[] = {
 	/* name					value			*/
 	{"abort", ABORT_TRANS},
-	{"acl", ACL},
 	{"action", ACTION},
 	{"add", ADD},
 	{"after", AFTER},
@@ -40,7 +39,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"analyze", ANALYZE},
 	{"and", AND},
 	{"any", ANY},
-	{"append", APPEND},
 	{"archive", ARCHIVE},
 	{"as", AS},
 	{"asc", ASC},
@@ -128,7 +126,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"location", LOCATION},
 	{"lock", LOCK_P},
 	{"match", MATCH},
-	{"merge", MERGE},
 	{"minute", MINUTE_P},
 	{"month", MONTH_P},
 	{"move", MOVE},
@@ -165,7 +162,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"recipe", RECIPE},
 	{"references", REFERENCES},
 	{"rename", RENAME},
-	{"replace", REPLACE},
 	{"reset", RESET},
 	{"returns", RETURNS},
 	{"revoke", REVOKE},
