@@ -22,6 +22,7 @@
 
 #include "access/htup.h"
 #include "access/itup.h"
+#include "fmgr.h"
 
 /* Tuplesortstate is an opaque type whose details are not known outside tuplesort.c. */
 
@@ -83,6 +84,7 @@ extern void tuplesort_restorepos(Tuplesortstate *state);
 typedef enum
 {
 	SORTFUNC_LT,				/* raw "<" operator */
+	SORTFUNC_REVLT,				/* raw "<" operator, but reverse NULLs */
 	SORTFUNC_CMP,				/* -1 / 0 / 1 three-way comparator */
 	SORTFUNC_REVCMP				/* 1 / 0 / -1 (reversed) 3-way comparator */
 } SortFunctionKind;
@@ -90,5 +92,14 @@ typedef enum
 extern void SelectSortFunction(Oid sortOperator,
 							   RegProcedure *sortFunction,
 							   SortFunctionKind *kind);
+
+/*
+ * Apply a sort function (by now converted to fmgr lookup form)
+ * and return a 3-way comparison result.  This takes care of handling
+ * NULLs and sort ordering direction properly.
+ */
+extern int32 ApplySortFunction(FmgrInfo *sortFunction, SortFunctionKind kind,
+							   Datum datum1, bool isNull1,
+							   Datum datum2, bool isNull2);
 
 #endif	 /* TUPLESORT_H */
