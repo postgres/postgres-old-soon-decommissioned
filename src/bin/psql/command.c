@@ -141,6 +141,9 @@ HandleSlashCmds(const char *line,
 
 		status = exec_command(new_cmd, line + 1, &continue_parse, query_buf);
 
+		/* continue_parse must be relative to my_line for calculation below */
+		continue_parse += my_line - line;
+
 #if 0							/* turned out to be too annoying */
 		if (status != CMD_UNKNOWN && isalpha((unsigned char) new_cmd[0]))
 			psql_error("Warning: this syntax is deprecated\n");
