@@ -19,6 +19,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <unistd.h>
 #if defined(sparc_solaris)
 #include "port/inet_aton.h"
 #endif
@@ -750,6 +751,7 @@ hba_recvauth(const Port *port, const char database[], const char user[],
     }
       break;
     default:
+      retvalue = STATUS_ERROR;
       Assert(false);
     }
   }
