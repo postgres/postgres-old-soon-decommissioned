@@ -334,7 +334,7 @@ static void doNegateFloat(Value *v);
  * when some sort of pg_privileges relation is introduced.
  * - Todd A. Brandys 1998-01-01?
  */
-%token	ABORT_TRANS, ACCESS, AFTER, AGGREGATE, ANALYZE,
+%token	ABORT_TRANS, ACCESS, AFTER, AGGREGATE, ANALYZE, ANALYSE /* British */
 		BACKWARD, BEFORE, BINARY, BIT,
 		CACHE, CHECKPOINT, CLUSTER, COMMENT, COPY, CREATEDB, CREATEUSER, CYCLE,
 		DATABASE, DELIMITERS, DO,
@@ -3058,6 +3058,7 @@ opt_verbose:  VERBOSE							{ $$ = TRUE; }
 		;
 
 opt_analyze:  ANALYZE							{ $$ = TRUE; }
+		|	  ANALYSE /* British */				{ $$ = TRUE; }
 		| /*EMPTY*/								{ $$ = FALSE; }
 		;
 
@@ -5535,6 +5536,7 @@ TokenId:  ABSOLUTE						{ $$ = "absolute"; }
 ColLabel:  ColId						{ $$ = $1; }
 		| ABORT_TRANS					{ $$ = "abort"; }
 		| ALL							{ $$ = "all"; }
+		| ANALYSE						{ $$ = "analyse"; } /* British */
 		| ANALYZE						{ $$ = "analyze"; }
 		| ANY							{ $$ = "any"; }
 		| ASC							{ $$ = "asc"; }

@@ -38,6 +38,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"aggregate", AGGREGATE},
 	{"all", ALL},
 	{"alter", ALTER},
+	{"analyse", ANALYSE}, /* British spelling */
 	{"analyze", ANALYZE},
 	{"and", AND},
 	{"any", ANY},
