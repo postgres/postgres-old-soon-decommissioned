@@ -59,7 +59,7 @@ extern void get_rte_attribute_type(RangeTblEntry *rte, AttrNumber attnum,
  * Check whether an attribute of an RTE has been dropped (note that
  * get_rte_attribute_type will fail on such an attr)
  */
-extern bool get_rte_attribute_is_dropped(RangeTblEntry *rte,
+extern bool get_rte_attribute_is_dropped(List *rtable, int rtindex,
 										 AttrNumber attnum);
 
 

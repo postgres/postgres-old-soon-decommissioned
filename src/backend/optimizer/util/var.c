@@ -515,11 +515,19 @@ flatten_join_alias_vars_mutator(Node *node,
 			/* Must expand whole-row reference */
 			RowExpr		*rowexpr;
 			List		*fields = NIL;
+			AttrNumber	attnum;
 			ListCell	*l;
 
+			attnum = 0;
 			foreach(l, rte->joinaliasvars)
 			{
 				newvar = (Node *) lfirst(l);
+				attnum++;
+				/* Ignore dropped columns */
+				if (get_rte_attribute_is_dropped(context->root->rtable,
+												 var->varno,
+												 attnum))
+					continue;
 				/*
 				 * If we are expanding an alias carried down from an upper
 				 * query, must adjust its varlevelsup fields.

@@ -447,6 +447,22 @@ typedef struct DefElem
  *	  eref->aliasname is required to be present, and should generally be used
  *	  to identify the RTE for error messages etc.
  *
+ *	  In RELATION RTEs, the colnames in both alias and eref are indexed by
+ *	  physical attribute number; this means there must be colname entries for
+ *	  dropped columns.  When building an RTE we insert empty strings ("") for
+ *	  dropped columns.  Note however that a stored rule may have nonempty
+ *	  colnames for columns dropped since the rule was created (and for that
+ *	  matter the colnames might be out of date due to column renamings).
+ *	  The same comments apply to FUNCTION RTEs when the function's return type
+ *	  is a named composite type.
+ *
+ *	  In JOIN RTEs, the colnames in both alias and eref are one-to-one with
+ *	  joinaliasvars entries.  A JOIN RTE will omit columns of its inputs when
+ *	  those columns are known to be dropped at parse time.  Again, however,
+ *	  a stored rule might contain entries for columns dropped since the rule
+ *	  was created.  (This is only possible for columns not actually referenced
+ *	  in the rule.)
+ *
  *	  inh is TRUE for relation references that should be expanded to include
  *	  inheritance children, if the rel has any.  This *must* be FALSE for
  *	  RTEs other than RTE_RELATION entries.
