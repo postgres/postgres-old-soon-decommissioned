@@ -1309,7 +1309,7 @@ main(int argc, char **argv)
 	pg_data = getenv("PGDATA");
 	if (pg_data)
 	{
-		/* XXX modifies environment var in-place ... ugly ... */
+		pg_data = xstrdup(pg_data);
 		canonicalize_path(pg_data);
 	}
 
