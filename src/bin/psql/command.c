@@ -241,8 +241,8 @@ exec_command(const char *cmd,
 		char		opt1q,
 					opt2q;
 
-		opt1 = scan_option(&string, OT_NORMAL, &opt1q);
-		opt2 = scan_option(&string, OT_NORMAL, &opt2q);
+		opt1 = scan_option(&string, OT_SQLID, &opt1q);
+		opt2 = scan_option(&string, OT_SQLID, &opt2q);
 
 		if (opt2)
 			/* gave username */
