@@ -1427,7 +1427,7 @@ LANGUAGE 'c';
     in the <literal>prosrc</literal> attribute of the
     <classname>pg_proc</classname> table entry. This may be the source
     text in the procedural language itself (like for PL/Tcl), a
-    pathname to a file, or anything else that tells the call handler
+    path name to a file, or anything else that tells the call handler
     what to do in detail.
    </para>
 

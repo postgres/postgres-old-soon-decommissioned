@@ -154,7 +154,7 @@ amcostestimate (Query *root,
 
   <para>
    The index access costs should be computed in the units used by
-   src/backend/optimizer/path/costsize.c: a sequential disk block fetch
+   <filename>src/backend/optimizer/path/costsize.c</filename>: a sequential disk block fetch
    has cost 1.0, a nonsequential fetch has cost random_page_cost, and
    the cost of processing one index tuple should usually be taken as
    cpu_index_tuple_cost (which is a user-adjustable optimizer parameter).
