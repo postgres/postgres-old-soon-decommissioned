@@ -61,6 +61,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"coalesce", COALESCE},
 	{"collate", COLLATE},
 	{"column", COLUMN},
+	{"comment", COMMENT},
 	{"commit", COMMIT},
 	{"committed", COMMITTED},
 	{"constraint", CONSTRAINT},
