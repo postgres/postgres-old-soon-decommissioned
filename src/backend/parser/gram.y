@@ -286,7 +286,6 @@ static void doNegateFloat(Value *v);
 				ConstraintTimeSpec
 
 %type <list>	constraints_set_list
-%type <list>	constraints_set_namelist
 %type <boolean>	constraints_set_mode
 
 /*
@@ -1034,37 +1033,12 @@ ConstraintsSetStmt:	SET CONSTRAINTS constraints_set_list constraints_set_mode
 				}
 		;
 
-
-constraints_set_list:	ALL
-				{
-					$$ = NIL;
-				}
-		| constraints_set_namelist
-				{
-					$$ = $1;
-				}
+constraints_set_list:	ALL					{ $$ = NIL; }
+		| name_list							{ $$ = $1; }
 		;
 
-
-constraints_set_namelist:	ColId
-				{
-					$$ = makeList1($1);
-				}
-		| constraints_set_namelist ',' ColId
-				{
-					$$ = lappend($1, $3);
-				}
-		;
-
-
-constraints_set_mode:	DEFERRED
-				{
-					$$ = TRUE;
-				}
-		| IMMEDIATE
-				{
-					$$ = FALSE;
-				}
+constraints_set_mode:	DEFERRED			{ $$ = TRUE; }
+		| IMMEDIATE							{ $$ = FALSE; }
 		;
 
 

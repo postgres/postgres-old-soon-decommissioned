@@ -1898,7 +1898,7 @@ _copyGrantStmt(GrantStmt *from)
 	newnode->is_grant = from->is_grant;
 	newnode->objtype = from->objtype;
 	Node_Copy(from, newnode, objects);
-	Node_Copy(from, newnode, privileges);
+	newnode->privileges = listCopy(from->privileges);
 	Node_Copy(from, newnode, grantees);
 
 	return newnode;
@@ -1924,8 +1924,6 @@ _copyFuncWithArgs(FuncWithArgs *from)
 
 	if (from->funcname)
 		newnode->funcname = pstrdup(from->funcname);
-	else
-		newnode->funcname = NULL;
 	Node_Copy(from, newnode, funcargs);
 
 	return newnode;

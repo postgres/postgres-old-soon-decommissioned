@@ -763,7 +763,7 @@ _equalGrantStmt(GrantStmt *a, GrantStmt *b)
 		return false;
 	if (!equal(a->objects, b->objects))
 		return false;
-	if (!equal(a->privileges, b->privileges))
+	if (!equali(a->privileges, b->privileges))
 		return false;
 	if (!equal(a->grantees, b->grantees))
 		return false;
