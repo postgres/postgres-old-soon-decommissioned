@@ -29,18 +29,12 @@ SUBSYS.o: $(OBJS)
 # dependencies (because they don't even exist until you make them),
 # they are hardcoded here.
 
-utility.o: ../parse.h ../fmgr.h
-aclchk.o: ../fmgr.h
-fastpath.o: ../fmgr.h
-postgres.o: ../fmgr.h
+utility.o: ../parse.h
 
 ../parse.h: 
 	$(MAKE) -C .. parse.h
 
-../fmgr.h: 
-	$(MAKE) -C .. fmgr.h
-
-dep depend: ../parse.h ../fmgr.h
+dep depend: ../parse.h
 	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 

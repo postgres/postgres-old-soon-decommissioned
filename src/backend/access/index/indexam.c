@@ -418,28 +418,43 @@ GetIndexValue(HeapTuple tuple,
 			  bool *attNull)
 {
 	Datum		returnVal;
-	bool		isNull = FALSE;
 
 	if (PointerIsValid(fInfo) && FIgetProcOid(fInfo) != InvalidOid)
 	{
-		int			i;
-		Datum	   *attData = (Datum *) palloc(FIgetnArgs(fInfo) * sizeof(Datum));
+		FmgrInfo				flinfo;
+		FunctionCallInfoData	fcinfo;
+		int						i;
+		bool					anynull = false;
+
+		/*
+		 * XXX ought to store lookup info in FuncIndexInfo so it need not
+		 * be repeated on each call?
+		 */
+		fmgr_info(FIgetProcOid(fInfo), &flinfo);
+
+		MemSet(&fcinfo, 0, sizeof(fcinfo));
+		fcinfo.flinfo = &flinfo;
+		fcinfo.nargs = FIgetnArgs(fInfo);
 
 		for (i = 0; i < FIgetnArgs(fInfo); i++)
 		{
-			attData[i] = heap_getattr(tuple,
-									  attrNums[i],
-									  hTupDesc,
-									  attNull);
-			if (*attNull)
-				isNull = TRUE;
+			fcinfo.arg[i] = heap_getattr(tuple,
+										 attrNums[i],
+										 hTupDesc,
+										 &fcinfo.argnull[i]);
+			anynull |= fcinfo.argnull[i];
 		}
-		returnVal = (Datum) fmgr_array_args(FIgetProcOid(fInfo),
-											FIgetnArgs(fInfo),
-											(char **) attData,
-											&isNull);
-		pfree(attData);
-		*attNull = isNull;
+		if (flinfo.fn_strict && anynull)
+		{
+			/* force a null result for strict function */
+			returnVal = (Datum) 0;
+			*attNull = true;
+		}
+		else
+		{
+			returnVal = FunctionCallInvoke(&fcinfo);
+			*attNull = fcinfo.isnull;
+		}
 	}
 	else
 		returnVal = heap_getattr(tuple, attrNums[attOff], hTupDesc, attNull);

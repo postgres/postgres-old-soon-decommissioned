@@ -21,12 +21,7 @@ all: SUBSYS.o
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
-heaptuple.o heapvalid.o tupdesc.o: ../../fmgr.h
-
-../../fmgr.h:
-	$(MAKE) -C ../.. fmgr.h
-
-dep depend: ../../fmgr.h
+dep depend:
 	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 

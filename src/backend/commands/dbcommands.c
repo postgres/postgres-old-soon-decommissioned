@@ -37,6 +37,7 @@
 #include "storage/fd.h"			/* for closeAllVfds */
 #include "storage/sinval.h"		/* for DatabaseHasActiveBackends */
 #include "utils/builtins.h"
+#include "utils/fmgroids.h"
 #include "utils/elog.h"
 #include "utils/palloc.h"
 #include "utils/rel.h"

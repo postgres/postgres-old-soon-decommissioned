@@ -24,6 +24,7 @@
 #include "catalog/pg_index.h"
 #include "catalog/pg_operator.h"
 #include "miscadmin.h"
+#include "utils/fmgroids.h"
 #include "utils/syscache.h"
 
 #ifdef USE_ASSERT_CHECKING

@@ -24,6 +24,7 @@
 #include "catalog/indexing.h"
 #include "miscadmin.h"
 #include "utils/builtins.h"
+#include "utils/fmgroids.h"
 #include "utils/catcache.h"
 #include "utils/syscache.h"
 

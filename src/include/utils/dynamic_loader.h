@@ -19,26 +19,12 @@
 /* we need this include because port files use them */
 #include "postgres.h"
 
-#ifdef MIN
-#undef MIN
-#undef MAX
-#endif	 /* MIN */
+/* and this one for typedef PGFunction */
+#include "fmgr.h"
 
-/*
- * List of dynamically loaded files.
- */
-
-typedef struct df_files
-{
-	char		filename[MAXPGPATH];	/* Full pathname of file */
-	dev_t		device;			/* Device file is on */
-	ino_t		inode;			/* Inode number of file */
-	void	   *handle;			/* a handle for pg_dl* functions */
-	struct df_files *next;
-} DynamicFileList;
 
 extern void *pg_dlopen(char *filename);
-extern func_ptr pg_dlsym(void *handle, char *funcname);
+extern PGFunction pg_dlsym(void *handle, char *funcname);
 extern void pg_dlclose(void *handle);
 extern char *pg_dlerror(void);
 

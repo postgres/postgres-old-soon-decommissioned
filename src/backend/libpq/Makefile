@@ -29,11 +29,6 @@ all: SUBSYS.o
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
-be-dumpdata.o be-pqexec.o: ../fmgr.h
-
-../fmgr.h: 
-	$(MAKE) -C .. fmgr.h
-
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
 

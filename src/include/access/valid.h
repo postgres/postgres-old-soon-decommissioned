@@ -58,7 +58,7 @@ do \
 			break; \
 		} \
  \
-		if (__cur_keys->sk_func.fn_addr == (func_ptr) oideq)	/* optimization */ \
+		if (__cur_keys->sk_func.fn_addr == (PGFunction) oideq)	/* optimization */ \
 			__test = (__cur_keys->sk_argument == __atp); \
 		else if (__cur_keys->sk_flags & SK_COMMUTE) \
 			__test = (long) FMGR_PTR2(&__cur_keys->sk_func, \

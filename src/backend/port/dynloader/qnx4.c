@@ -30,7 +30,7 @@ pg_dlopen(char *filename)
 	return (void *) NULL;
 }
 
-func_ptr
+PGFunction
 pg_dlsym(void *handle, char *funcname)
 {
 	return NULL;

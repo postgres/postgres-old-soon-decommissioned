@@ -27,7 +27,7 @@
 #define pg_dlsym(handle, funcname)		(NULL)
 #define pg_dlclose(handle)			   ({})
 #else
-#define pg_dlsym(handle, funcname)		((func_ptr) dld_get_func((funcname)))
+#define pg_dlsym(handle, funcname)		((PGFunction) dld_get_func((funcname)))
 #define pg_dlclose(handle)			   ({ dld_unlink_by_file(handle, 1); free(handle); })
 #endif
 #else

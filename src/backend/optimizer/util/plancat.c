@@ -28,6 +28,8 @@
 #include "optimizer/paths.h"
 #include "optimizer/plancat.h"
 #include "parser/parsetree.h"
+#include "utils/builtins.h"
+#include "utils/fmgroids.h"
 #include "utils/syscache.h"
 #include "catalog/catalog.h"
 #include "miscadmin.h"
@@ -117,7 +119,7 @@ find_secondary_indexes(Query *root, Index relid)
 		info->indproc = index->indproc; /* functional index ?? */
 		if (VARSIZE(&index->indpred) != 0)		/* partial index ?? */
 		{
-			char	   *predString = fmgr(F_TEXTOUT, &index->indpred);
+			char	   *predString = textout(&index->indpred);
 
 			info->indpred = (List *) stringToNode(predString);
 			pfree(predString);

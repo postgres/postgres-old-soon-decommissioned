@@ -530,16 +530,12 @@ _freeFcache(FunctionCachePtr ptr)
 {
 	if (ptr->argOidVect)
 		pfree(ptr->argOidVect);
-	if (ptr->nullVect)
-		pfree(ptr->nullVect);
 	if (ptr->src)
 		pfree(ptr->src);
 	if (ptr->bin)
 		pfree(ptr->bin);
 	if (ptr->func_state)
 		pfree(ptr->func_state);
-	if (ptr->setArg)
-		pfree(ptr->setArg);
 
 	pfree(ptr);
 }

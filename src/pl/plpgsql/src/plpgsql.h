@@ -38,9 +38,10 @@
 #define PLPGSQL_H
 
 #include "postgres.h"
+
+#include "fmgr.h"
 #include "executor/spi.h"
 #include "commands/trigger.h"
-#include "fmgr.h"
 
 /**********************************************************************
  * Definitions
@@ -451,15 +452,20 @@ extern void plpgsql_adddatum(PLpgSQL_datum * new);
 extern int	plpgsql_add_initdatums(int **varnos);
 extern void plpgsql_comperrinfo(void);
 
+/* ----------
+ * Functions in pl_handler.c
+ * ----------
+ */
+extern Datum plpgsql_call_handler(PG_FUNCTION_ARGS);
 
 /* ----------
  * Functions in pl_exec.c
  * ----------
  */
 extern Datum plpgsql_exec_function(PLpgSQL_function * func,
-					  FmgrValues *args, bool *isNull);
+								   FunctionCallInfo fcinfo);
 extern HeapTuple plpgsql_exec_trigger(PLpgSQL_function * func,
-					 TriggerData *trigdata);
+									  TriggerData *trigdata);
 
 
 /* ----------

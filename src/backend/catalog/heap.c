@@ -63,6 +63,7 @@
 #include "tcop/tcopprot.h"
 #include "utils/builtins.h"
 #include "utils/catcache.h"
+#include "utils/fmgroids.h"
 #include "utils/portal.h"
 #include "utils/relcache.h"
 #include "utils/syscache.h"
@@ -1148,7 +1149,7 @@ RelationTruncateIndexes(Relation heapRelation)
 		/* If a valid where predicate, compute predicate Node */
 		if (VARSIZE(&index->indpred) != 0)
 		{
-			predString = fmgr(F_TEXTOUT, &index->indpred);
+			predString = textout(&index->indpred);
 			oldPred = stringToNode(predString);
 			pfree(predString);
 		}

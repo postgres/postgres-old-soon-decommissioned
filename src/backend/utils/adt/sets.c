@@ -56,8 +56,9 @@ SetDefine(char *querystr, char *typename)
 							 "sql",		/* languageName */
 							 querystr,	/* sourceCode */
 							 fileName,	/* fileName */
-							 false,		/* canCache */
 							 true,		/* trusted */
+							 false,		/* canCache XXX appropriate? */
+							 false,		/* isStrict XXX appropriate? */
 							 100,		/* byte_pct */
 							 0, /* perbyte_cpu */
 							 0, /* percall_cpu */

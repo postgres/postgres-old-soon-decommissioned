@@ -23,6 +23,7 @@
 #include "commands/comment.h"
 #include "rewrite/rewriteRemove.h"
 #include "rewrite/rewriteSupport.h"
+#include "utils/fmgroids.h"
 #include "utils/syscache.h"
 
 /*-----------------------------------------------------------------------

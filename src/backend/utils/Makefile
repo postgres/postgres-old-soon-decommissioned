@@ -9,7 +9,7 @@
 #-------------------------------------------------------------------------
 
 SRCDIR = ../..
-include ../../Makefile.global
+include $(SRCDIR)/Makefile.global
 
 INCLUDE_OPT = -I.. 
 
@@ -35,19 +35,14 @@ SUBSYS.o: $(OBJS)
 submake:
 	for i in $(DIRS); do $(MAKE) -C $$i SUBSYS.o; done
 
-fmgrtab.o: ../fmgr.h
-
-../fmgr.h: 
-	$(MAKE) -C .. fmgr.h
-
-fmgr.h fmgrtab.c: ./Gen_fmgrtab.sh ../../include/catalog/pg_proc.h
-	sh $(SHOPTS) Gen_fmgrtab.sh ../../include/catalog/pg_proc.h
+fmgroids.h fmgrtab.c: Gen_fmgrtab.sh $(SRCDIR)/include/catalog/pg_proc.h
+	$(SHELL) $(SHOPTS) Gen_fmgrtab.sh $(SRCDIR)/include/catalog/pg_proc.h
 
 clean:
-	rm -f SUBSYS.o fmgr.h fmgrtab.o fmgrtab.c
+	rm -f SUBSYS.o fmgroids.h fmgrtab.o fmgrtab.c
 	for i in $(DIRS); do $(MAKE) -C $$i clean; done
 
-dep depend: fmgr.h fmgrtab.c
+dep depend: fmgroids.h fmgrtab.c
 	for i in $(DIRS); do $(MAKE) -C $$i depend; done
 
 ifeq (depend,$(wildcard depend))

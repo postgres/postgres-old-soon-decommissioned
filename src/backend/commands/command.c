@@ -40,6 +40,7 @@
 #include "optimizer/prep.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
+#include "utils/fmgroids.h"
 #include "utils/syscache.h"
 #include "utils/temprel.h"
 #include "commands/trigger.h"
@@ -614,12 +615,15 @@ AlterTableAlterColumn(const char *relationName,
 		HeapTuple	tuple;
 
 		attr_rel = heap_openr(AttributeRelationName, AccessExclusiveLock);
-		ScanKeyEntryInitialize(&scankeys[0], 0x0, Anum_pg_attribute_attrelid, F_OIDEQ,
+		ScanKeyEntryInitialize(&scankeys[0], 0x0,
+							   Anum_pg_attribute_attrelid, F_OIDEQ,
 							   ObjectIdGetDatum(myrelid));
-		ScanKeyEntryInitialize(&scankeys[1], 0x0, Anum_pg_attribute_attnum, F_INT2EQ,
+		ScanKeyEntryInitialize(&scankeys[1], 0x0,
+							   Anum_pg_attribute_attnum, F_INT2EQ,
 							   Int16GetDatum(attnum));
-		ScanKeyEntryInitialize(&scankeys[2], 0x0, Anum_pg_attribute_atthasdef, F_BOOLEQ,
-							   TRUE);
+		ScanKeyEntryInitialize(&scankeys[2], 0x0,
+							   Anum_pg_attribute_atthasdef, F_BOOLEQ,
+							   Int32GetDatum(TRUE));
 
 		scan = heap_beginscan(attr_rel, false, SnapshotNow, 3, scankeys);
 		AssertState(scan != NULL);
@@ -661,9 +665,11 @@ drop_default(Oid relid, int16 attnum)
 	HeapTuple	tuple;
 
 	attrdef_rel = heap_openr(AttrDefaultRelationName, AccessExclusiveLock);
-	ScanKeyEntryInitialize(&scankeys[0], 0x0, Anum_pg_attrdef_adrelid, F_OIDEQ,
+	ScanKeyEntryInitialize(&scankeys[0], 0x0,
+						   Anum_pg_attrdef_adrelid, F_OIDEQ,
 						   ObjectIdGetDatum(relid));
-	ScanKeyEntryInitialize(&scankeys[1], 0x0, Anum_pg_attrdef_adnum, F_INT2EQ,
+	ScanKeyEntryInitialize(&scankeys[1], 0x0,
+						   Anum_pg_attrdef_adnum, F_INT2EQ,
 						   Int16GetDatum(attnum));
 
 	scan = heap_beginscan(attrdef_rel, false, SnapshotNow, 2, scankeys);

@@ -889,17 +889,17 @@ convert_numeric_to_scalar(Datum value, Oid typid)
 	switch (typid)
 	{
 		case BOOLOID:
-			return (double) DatumGetUInt8(value);
+			return (double) DatumGetBool(value);
 		case INT2OID:
 			return (double) DatumGetInt16(value);
 		case INT4OID:
 			return (double) DatumGetInt32(value);
 		case INT8OID:
-			return (double) (*i8tod((int64 *) DatumGetPointer(value)));
+			return (double) DatumGetInt64(value);
 		case FLOAT4OID:
-			return (double) (*DatumGetFloat32(value));
+			return (double) DatumGetFloat4(value);
 		case FLOAT8OID:
-			return (double) (*DatumGetFloat64(value));
+			return (double) DatumGetFloat8(value);
 		case NUMERICOID:
 			return (double) (*numeric_float8((Numeric) DatumGetPointer(value)));
 		case OIDOID:

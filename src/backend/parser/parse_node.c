@@ -442,14 +442,11 @@ make_const(Value *value)
 		case T_Float:
 			if (fitsInFloat(value))
 			{
-				float64		fltval = (float64) palloc(sizeof(float64data));
-
-				*fltval = floatVal(value);
-				val = Float64GetDatum(fltval);
+				val = Float8GetDatum(floatVal(value));
 
 				typeid = FLOAT8OID;
-				typelen = sizeof(float64data);
-				typebyval = false;
+				typelen = sizeof(float8);
+				typebyval = false; /* XXX might change someday */
 			}
 			else
 			{

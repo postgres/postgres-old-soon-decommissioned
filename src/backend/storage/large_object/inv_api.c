@@ -31,6 +31,7 @@
 #include "miscadmin.h"
 #include "storage/large_object.h"
 #include "storage/smgr.h"
+#include "utils/fmgroids.h"
 #include "utils/relcache.h"
 
 /*

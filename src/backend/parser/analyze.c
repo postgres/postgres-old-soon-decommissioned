@@ -26,6 +26,7 @@
 #include "parser/parse_target.h"
 #include "parser/parse_type.h"
 #include "utils/builtins.h"
+#include "utils/fmgroids.h"
 #include "utils/numeric.h"
 
 void		CheckSelectForUpdate(Query *qry);	/* no points for style... */

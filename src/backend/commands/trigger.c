@@ -27,6 +27,7 @@
 #include "miscadmin.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
+#include "utils/fmgroids.h"
 #include "utils/inval.h"
 #include "utils/syscache.h"
 #include "utils/tqual.h"
@@ -757,15 +758,8 @@ equalTriggerDescs(TriggerDesc *trigdesc1, TriggerDesc *trigdesc2)
 static HeapTuple
 ExecCallTriggerFunc(Trigger *trigger)
 {
-
 	if (trigger->tgfunc.fn_addr == NULL)
 		fmgr_info(trigger->tgfoid, &trigger->tgfunc);
-
-	if (trigger->tgfunc.fn_plhandler != NULL)
-	{
-		return (HeapTuple) (*(trigger->tgfunc.fn_plhandler))
-			(&trigger->tgfunc);
-	}
 
 	return (HeapTuple) ((*fmgr_faddr(&trigger->tgfunc)) ());
 }

@@ -680,7 +680,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim, char *null
 				indexNatts[i] = natts;
 				if (VARSIZE(&pgIndexP[i]->indpred) != 0)
 				{
-					predString = fmgr(F_TEXTOUT, &pgIndexP[i]->indpred);
+					predString = textout(&pgIndexP[i]->indpred);
 					indexPred[i] = stringToNode(predString);
 					pfree(predString);
 					/* make dummy ExprContext for use by ExecQual */

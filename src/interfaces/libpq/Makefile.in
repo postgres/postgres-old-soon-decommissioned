@@ -70,15 +70,6 @@ big5.c: $(SRCDIR)/backend/utils/mb/big5.c
 endif
 
 
-# The following rules cause dependencies in the backend directory to 
-# get made if they don't exist, but don't cause them to get remade if they
-# are out of date.
-fe-lobj.o: $(SRCDIR)/backend/fmgr.h
-
-$(SRCDIR)/backend/fmgr.h:
-	$(MAKE) -C $(SRCDIR)/backend fmgr.h
-
-
 .PHONY: install install-headers
 
 install: install-headers install-lib $(install-shlib-dep)

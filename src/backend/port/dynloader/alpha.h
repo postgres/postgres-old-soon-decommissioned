@@ -29,7 +29,7 @@
  *
  */
 #define  pg_dlopen(f)	dlopen(f, RTLD_LAZY)
-#define  pg_dlsym(h, f) ((func_ptr)dlsym(h, f))
+#define  pg_dlsym(h, f) ((PGFunction) dlsym(h, f))
 #define  pg_dlclose(h)	dlclose(h)
 #define  pg_dlerror()	dlerror()
 

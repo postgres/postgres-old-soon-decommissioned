@@ -58,6 +58,7 @@
 #include "storage/bufmgr.h"
 #include "storage/smgr.h"
 #include "utils/catcache.h"
+#include "utils/fmgroids.h"
 #include "utils/relcache.h"
 #include "utils/temprel.h"
 

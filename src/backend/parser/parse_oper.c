@@ -22,6 +22,7 @@
 #include "parser/parse_func.h"
 #include "parser/parse_oper.h"
 #include "parser/parse_type.h"
+#include "utils/fmgroids.h"
 #include "utils/syscache.h"
 
 static Oid *oper_select_candidate(int nargs, Oid *input_typeids,

@@ -39,13 +39,13 @@ pg_dlopen(char *filename)
 	return (void *) handle;
 }
 
-func_ptr
+PGFunction
 pg_dlsym(void *handle, char *funcname)
 {
-	func_ptr	f;
+	PGFunction	f;
 
 	if (shl_findsym((shl_t *) & handle, funcname, TYPE_PROCEDURE, &f) == -1)
-		f = (func_ptr) NULL;
+		f = (PGFunction) NULL;
 	return f;
 }
 
