@@ -40,6 +40,9 @@
 #include "utils/help_config.h"
 #include "utils/ps_status.h"
 #include "pgstat.h"
+#ifdef WIN32
+#include "libpq/pqsignal.h"
+#endif
 
 
 
@@ -97,6 +100,8 @@ main(int argc, char *argv[])
 					argv[0], err);
 			exit(1);
 		}
+
+		pgwin32_signal_initialize();
 	}
 #endif
 

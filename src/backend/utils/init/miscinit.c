@@ -32,6 +32,7 @@
 #include "catalog/catname.h"
 #include "catalog/pg_shadow.h"
 #include "libpq/libpq-be.h"
+#include "libpq/pqsignal.h"
 #include "miscadmin.h"
 #include "storage/ipc.h"
 #include "storage/pg_shmem.h"
@@ -531,7 +532,7 @@ CreateLockFile(const char *filename, bool amPostmaster,
 		 */
 		if (other_pid != my_pid)
 		{
-			if (kill(other_pid, 0) == 0 ||
+			if (pqkill(other_pid, 0) == 0 ||
 				(errno != ESRCH
 #ifdef __BEOS__
 				 && errno != EINVAL

@@ -33,6 +33,7 @@
 #include "miscadmin.h"
 #include "storage/ipc.h"
 #include "storage/pg_shmem.h"
+#include "libpq/pqsignal.h"
 
 
 typedef key_t IpcMemoryKey;		/* shared memory key passed to shmget(2) */
@@ -284,7 +285,7 @@ PGSharedMemoryCreate(uint32 size, bool makePrivate, int port)
 		hdr = (PGShmemHeader *) memAddress;
 		if (hdr->creatorPID != getpid())
 		{
-			if (kill(hdr->creatorPID, 0) == 0 || errno != ESRCH)
+			if (pqkill(hdr->creatorPID, 0) == 0 || errno != ESRCH)
 			{
 				shmdt(memAddress);
 				continue;		/* segment belongs to a live process */

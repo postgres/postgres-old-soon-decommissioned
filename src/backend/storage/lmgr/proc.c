@@ -51,6 +51,7 @@
 #include "storage/proc.h"
 #include "storage/sinval.h"
 #include "storage/spin.h"
+#include "libpq/pqsignal.h"
 
 /* GUC variables */
 int			DeadlockTimeout = 1000;
@@ -1130,7 +1131,7 @@ CheckStatementTimeout(void)
 	{
 		/* Time to die */
 		statement_timeout_active = false;
-		kill(MyProcPid, SIGINT);
+		pqkill(MyProcPid, SIGINT);
 	}
 	else
 	{
