@@ -60,7 +60,7 @@ endif
 all: postgres $(EXP) global1.bki.source local1_template1.bki.source
 
 postgres: $(OBJS) ../utils/version.o
-	gcc -o postgres $(LDFLAGS) $(OBJS) ../utils/version.o $(LDADD) -lm -ldl
+	gcc -o postgres $(LDFLAGS) $(OBJS) ../utils/version.o $(LD_ADD) 
 
 $(OBJS): $(DIRS:%=%.dir)
 
