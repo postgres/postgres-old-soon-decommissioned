@@ -19,7 +19,7 @@
 #include <win32.h>
 #endif
 
-
+#include <sys/utsname.h>
 
 /*--------------------------
  * get_prompt
@@ -121,8 +121,17 @@ get_prompt(promptStatus_t status)
 							if (*p == 'm')
 								buf[strcspn(buf, ".")] = '\0';
 						}
-						else
+						else if (*p == 'M') 
 							buf[0] = '.';
+						else 
+						{
+							struct utsname ubuf;
+						
+							if (uname(&ubuf) < 0)
+								buf[0] = '.';
+							else 
+								strncpy(buf, ubuf.nodename, MAX_PROMPT_SIZE);	
+						}	
 					}
 					break;
 					/* DB server port number */
