@@ -1099,7 +1099,12 @@ HandleSlashCmds(PsqlSettings * settings,
 	    break;
 	}
     case 'g':			/* \g means send query */
-	settings->gfname = strdup(optarg);
+	if (!optarg)
+	    settings->gfname = NULL;
+	else if (!(settings->gfname = strdup(optarg))) {
+	    perror("malloc");
+	    exit(1);
+	}
 	status = 0;
 	break;
     case 'h':			/* help */
