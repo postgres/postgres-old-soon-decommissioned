@@ -189,6 +189,9 @@ LIBS = @LIBS@
 LD = @LD@
 with_gnu_ld = @with_gnu_ld@
 ld_R_works = @ld_R_works@
+# Set trpath to a list of library paths included in LDFLAGS
+# These paths can be added to rpath in the port specific makefiles if needed.
+trpath = $(filter -L%,@LDFLAGS@)
 LDFLAGS = @LDFLAGS@
 LDREL = -r
 LDOUT = -o
