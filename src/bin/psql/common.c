@@ -548,7 +548,7 @@ PageOutput(int lines, bool pager)
 		struct winsize screen_size;
 
 		result = ioctl(fileno(stdout), TIOCGWINSZ, &screen_size);
-		if (result == -1 || lines > screen_size.ws_row)
+		if (result == -1 || lines > screen_size.ws_row || pager > 1)
 		{
 #endif
 			pagerprog = getenv("PAGER");

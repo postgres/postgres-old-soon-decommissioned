@@ -159,7 +159,7 @@ struct winsize
 #endif
 
 void
-slashUsage(bool pager)
+slashUsage(unsigned short int pager)
 {
 	FILE	   *output;
 

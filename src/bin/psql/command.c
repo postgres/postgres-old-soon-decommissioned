@@ -1873,11 +1873,18 @@ do_pset(const char *param, const char *value, printQueryOpt *popt, bool quiet)
 	/* toggle use of pager */
 	else if (strcmp(param, "pager") == 0)
 	{
-		popt->topt.pager = !popt->topt.pager;
+		if (value && strcasecmp(value, "always") == 0)
+				popt->topt.pager = 2;
+		else if (popt->topt.pager == 1)
+				popt->topt.pager = 0;
+		else
+				popt->topt.pager = 1;
 		if (!quiet)
 		{
-			if (popt->topt.pager)
+			if (popt->topt.pager == 1)
 				puts(gettext("Using pager is on."));
+			else if (popt->topt.pager == 2)
+				puts(gettext("Using pager is always."));
 			else
 				puts(gettext("Using pager is off."));
 		}

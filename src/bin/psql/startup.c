@@ -137,7 +137,7 @@ main(int argc, char *argv[])
 	pset.popt.topt.format = PRINT_ALIGNED;
 	pset.queryFout = stdout;
 	pset.popt.topt.border = 1;
-	pset.popt.topt.pager = true;
+	pset.popt.topt.pager = 1;
 	pset.popt.default_footer = true;
 
 	SetVariable(pset.vars, "VERSION", PG_VERSION_STR);
