@@ -51,6 +51,8 @@ extern bool contain_noncachable_functions(Node *clause);
 extern bool is_pseudo_constant_clause(Node *clause);
 extern List *pull_constant_clauses(List *quals, List **constantQual);
 
+extern bool has_distinct_on_clause(Query *query);
+
 extern void clause_get_relids_vars(Node *clause, Relids *relids, List **vars);
 extern int	NumRelids(Node *clause);
 extern void CommuteClause(Expr *clause);
