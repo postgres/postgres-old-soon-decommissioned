@@ -1,5 +1,5 @@
 /* -------------------------------------------------------------------------
- * pg_dumplo
+ * pg_dumplo.h
  *
  * $Header$
  *
@@ -11,8 +11,6 @@
 #define PG_DUMPLO_H
 
 #include "postgres_ext.h"
-
-#define VERSION "7.1.0"
 
 /* ----------
  * Define
