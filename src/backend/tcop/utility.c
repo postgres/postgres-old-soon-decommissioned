@@ -578,10 +578,6 @@ ProcessUtility(Node *parsetree,
 			}
 			break;
 
-		case T_VersionStmt:
-			elog(ERROR, "CREATE VERSION is not currently implemented");
-			break;
-
 		case T_CreatedbStmt:
 			{
 				CreatedbStmt *stmt = (CreatedbStmt *) parsetree;

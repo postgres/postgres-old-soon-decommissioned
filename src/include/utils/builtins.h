@@ -342,9 +342,10 @@ extern Datum pg_get_userbyid(PG_FUNCTION_ARGS);
 extern Datum pg_get_expr(PG_FUNCTION_ARGS);
 extern char *deparse_expression(Node *expr, List *dpcontext,
 				   bool forceprefix);
-extern List *deparse_context_for(char *relname, Oid relid);
+extern List *deparse_context_for(const char *aliasname, Oid relid);
 extern List *deparse_context_for_plan(int outer_varno, Node *outercontext,
 									  int inner_varno, Node *innercontext);
+extern Node *deparse_context_for_relation(const char *aliasname, Oid relid);
 extern Node *deparse_context_for_subplan(const char *name, List *tlist,
 										 List *rtable);
 

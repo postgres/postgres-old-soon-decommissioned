@@ -87,6 +87,7 @@ DefineSequence(CreateSeqStmt *seq)
 	CreateStmt *stmt = makeNode(CreateStmt);
 	ColumnDef  *coldef;
 	TypeName   *typnam;
+	Oid			seqoid;
 	Relation	rel;
 	Buffer		buf;
 	PageHeader	page;
@@ -175,9 +176,9 @@ DefineSequence(CreateSeqStmt *seq)
 	stmt->constraints = NIL;
 	stmt->hasoids = false;
 
-	DefineRelation(stmt, RELKIND_SEQUENCE);
+	seqoid = DefineRelation(stmt, RELKIND_SEQUENCE);
 
-	rel = heap_openr(seq->sequence->relname, AccessExclusiveLock);
+	rel = heap_open(seqoid, AccessExclusiveLock);
 	tupDesc = RelationGetDescr(rel);
 
 	/* Initialize first page of relation with special magic number */

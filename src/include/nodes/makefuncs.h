@@ -48,4 +48,6 @@ extern Alias *makeAlias(const char *aliasname, List *colnames);
 
 extern RelabelType *makeRelabelType(Node *arg, Oid rtype, int32 rtypmod);
 
+extern RangeVar *makeRangeVar(char *schemaname, char *relname);
+
 #endif   /* MAKEFUNC_H */

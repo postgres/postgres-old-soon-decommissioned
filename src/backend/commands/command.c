@@ -37,6 +37,7 @@
 #include "executor/execdefs.h"
 #include "executor/executor.h"
 #include "miscadmin.h"
+#include "nodes/makefuncs.h"
 #include "optimizer/clauses.h"
 #include "optimizer/planmain.h"
 #include "optimizer/prep.h"
@@ -1262,8 +1263,11 @@ AlterTableAddConstraint(char *relationName,
 								 * expression we can pass to ExecQual
 								 */
 								pstate = make_parsestate(NULL);
-								rte = addRangeTableEntry(pstate, relationName, NULL,
-														 false, true);
+								rte = addRangeTableEntryForRelation(pstate,
+																	myrelid,
+																	makeAlias(relationName, NIL),
+																	false,
+																	true);
 								addRTEtoQuery(pstate, rte, true, true);
 
 								/*

@@ -17,7 +17,7 @@
 #include "parser/parse_node.h"
 
 extern void transformFromClause(ParseState *pstate, List *frmList);
-extern int setTargetTable(ParseState *pstate, char *relname,
+extern int setTargetTable(ParseState *pstate, RangeVar *relation,
 			   bool inh, bool alsoSource);
 extern bool interpretInhOption(InhOption inhOpt);
 extern Node *transformWhereClause(ParseState *pstate, Node *where);

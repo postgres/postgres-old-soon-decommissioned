@@ -1476,8 +1476,6 @@ _copyRangeTblEntry(RangeTblEntry *from)
 	RangeTblEntry *newnode = makeNode(RangeTblEntry);
 
 	newnode->rtekind = from->rtekind;
-	if (from->relname)
-		newnode->relname = pstrdup(from->relname);
 	newnode->relid = from->relid;
 	Node_Copy(from, newnode, subquery);
 	newnode->jointype = from->jointype;
@@ -2000,19 +1998,6 @@ _copyCreateStmt(CreateStmt *from)
 	Node_Copy(from, newnode, inhRelations);
 	Node_Copy(from, newnode, constraints);
 	newnode->hasoids = from->hasoids;
-
-	return newnode;
-}
-
-static VersionStmt *
-_copyVersionStmt(VersionStmt *from)
-{
-	VersionStmt *newnode = makeNode(VersionStmt);
-
-	newnode->relname = pstrdup(from->relname);
-	newnode->direction = from->direction;
-	newnode->fromRelname = pstrdup(from->fromRelname);
-	newnode->date = pstrdup(from->date);
 
 	return newnode;
 }
@@ -2846,9 +2831,6 @@ copyObject(void *from)
 			break;
 		case T_CreateStmt:
 			retval = _copyCreateStmt(from);
-			break;
-		case T_VersionStmt:
-			retval = _copyVersionStmt(from);
 			break;
 		case T_DefineStmt:
 			retval = _copyDefineStmt(from);

@@ -690,6 +690,35 @@ get_rel_name(Oid relid)
 		return NULL;
 }
 
+/*
+ * get_rel_type_id
+ *
+ *		Returns the pg_type OID associated with a given relation.
+ *
+ * Note: not all pg_class entries have associated pg_type OIDs; so be
+ * careful to check for InvalidOid result.
+ */
+Oid
+get_rel_type_id(Oid relid)
+{
+	HeapTuple	tp;
+
+	tp = SearchSysCache(RELOID,
+						ObjectIdGetDatum(relid),
+						0, 0, 0);
+	if (HeapTupleIsValid(tp))
+	{
+		Form_pg_class reltup = (Form_pg_class) GETSTRUCT(tp);
+		Oid		result;
+
+		result = reltup->reltype;
+		ReleaseSysCache(tp);
+		return result;
+	}
+	else
+		return InvalidOid;
+}
+
 /*				---------- TYPE CACHE ----------						 */
 
 /*

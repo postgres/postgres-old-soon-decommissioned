@@ -721,7 +721,6 @@ expand_inherted_rtentry(Query *parse, Index rti, bool dup_parent)
 		 * this point.
 		 */
 		childrte = copyObject(rte);
-		childrte->relname = get_rel_name(childOID);
 		childrte->relid = childOID;
 		parse->rtable = lappend(parse->rtable, childrte);
 		childRTindex = length(parse->rtable);

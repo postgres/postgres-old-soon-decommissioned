@@ -832,21 +832,6 @@ _equalCreateStmt(CreateStmt *a, CreateStmt *b)
 }
 
 static bool
-_equalVersionStmt(VersionStmt *a, VersionStmt *b)
-{
-	if (!equalstr(a->relname, b->relname))
-		return false;
-	if (a->direction != b->direction)
-		return false;
-	if (!equalstr(a->fromRelname, b->fromRelname))
-		return false;
-	if (!equalstr(a->date, b->date))
-		return false;
-
-	return true;
-}
-
-static bool
 _equalDefineStmt(DefineStmt *a, DefineStmt *b)
 {
 	if (a->defType != b->defType)
@@ -1679,8 +1664,6 @@ _equalRangeTblEntry(RangeTblEntry *a, RangeTblEntry *b)
 {
 	if (a->rtekind != b->rtekind)
 		return false;
-	if (!equalstr(a->relname, b->relname))
-		return false;
 	if (a->relid != b->relid)
 		return false;
 	if (!equal(a->subquery, b->subquery))
@@ -2003,9 +1986,6 @@ equal(void *a, void *b)
 			break;
 		case T_CreateStmt:
 			retval = _equalCreateStmt(a, b);
-			break;
-		case T_VersionStmt:
-			retval = _equalVersionStmt(a, b);
 			break;
 		case T_DefineStmt:
 			retval = _equalDefineStmt(a, b);

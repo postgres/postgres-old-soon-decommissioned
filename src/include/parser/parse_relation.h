@@ -28,7 +28,12 @@ extern Node *colnameToVar(ParseState *pstate, char *colname);
 extern Node *qualifiedNameToVar(ParseState *pstate, char *refname,
 				   char *colname, bool implicitRTEOK);
 extern RangeTblEntry *addRangeTableEntry(ParseState *pstate,
-				   char *relname,
+				   RangeVar *relation,
+				   Alias *alias,
+				   bool inh,
+				   bool inFromCl);
+extern RangeTblEntry *addRangeTableEntryForRelation(ParseState *pstate,
+				   Oid relid,
 				   Alias *alias,
 				   bool inh,
 				   bool inFromCl);
@@ -47,7 +52,7 @@ extern RangeTblEntry *addRangeTableEntryForJoin(ParseState *pstate,
 						  bool inFromCl);
 extern void addRTEtoQuery(ParseState *pstate, RangeTblEntry *rte,
 			  bool addToJoinList, bool addToNameSpace);
-extern RangeTblEntry *addImplicitRTE(ParseState *pstate, char *relname);
+extern RangeTblEntry *addImplicitRTE(ParseState *pstate, RangeVar *relation);
 extern void expandRTE(ParseState *pstate, RangeTblEntry *rte,
 		  List **colnames, List **colvars);
 extern List *expandRelAttrs(ParseState *pstate, RangeTblEntry *rte);

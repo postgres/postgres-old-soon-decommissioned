@@ -159,7 +159,7 @@ transformTargetList(ParseState *pstate, List *targetlist)
 				rte = refnameRangeTblEntry(pstate, relname,
 										   &sublevels_up);
 				if (rte == NULL)
-					rte = addImplicitRTE(pstate, relname);
+					rte = addImplicitRTE(pstate, makeRangeVar(NULL, relname));
 
 				p_target = nconc(p_target,
 								 expandRelAttrs(pstate, rte));

@@ -122,7 +122,6 @@ static void doNegateFloat(Value *v);
 	ResTarget			*target;
 	PrivTarget			*privtarget;
 
-	VersionStmt			*vstmt;
 	DefineStmt			*dstmt;
 	RuleStmt			*rstmt;
 	InsertStmt			*istmt;
