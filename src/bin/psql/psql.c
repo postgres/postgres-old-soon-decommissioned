@@ -1111,10 +1111,10 @@ main(int argc, char** argv)
   extern char* optarg;
   extern int optind;
   
-  char* dbname = NULL;
-  char* host = NULL;
-  char* port = NULL;
-  char* qfilename = NULL;
+  char* dbname = (char *)NULL;
+  char* host = (char *)NULL;
+  char* port = (char *)NULL;
+  char* qfilename = (char *)NULL;
   char errbuf[ERROR_MSG_LENGTH];
 
   PsqlSettings settings;
