@@ -145,6 +145,12 @@ dump			{ return O_DUMP;			}
 {WS}{WC}*%ROWTYPE	{ return plpgsql_parse_wordrowtype(yytext);	}
 
 \$[0-9]+		{ return plpgsql_parse_word(yytext);	}
+\$[0-9]+\.{WS}{WC}*	{ return plpgsql_parse_dblword(yytext);	}
+\$[0-9]+\.{WS}{WC}*\.{WS}{WC}*	{ return plpgsql_parse_tripword(yytext); }
+\$[0-9]+%TYPE		{ return plpgsql_parse_wordtype(yytext);	}
+\$[0-9]+\.{WS}{WC}*%TYPE	{ return plpgsql_parse_dblwordtype(yytext); }
+\$[0-9]+%ROWTYPE	{ return plpgsql_parse_wordrowtype(yytext);	}
+
 [0-9]+			{ return T_NUMBER;			}
 
     /* ----------

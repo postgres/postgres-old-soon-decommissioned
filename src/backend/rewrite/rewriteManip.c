@@ -765,8 +765,13 @@ ResolveNew_mutator(Node *node, ResolveNew_context *context)
 		if (this_varno == context->target_varno &&
 			this_varlevelsup == context->sublevels_up)
 		{
-			Node	   *n = FindMatchingNew(context->targetlist,
-											var->varattno);
+			Node	   *n;
+
+			/* band-aid: don't do the wrong thing with a whole-tuple Var */
+			if (var->varattno == InvalidAttrNumber)
+				elog(ERROR, "ResolveNew: can't handle whole-tuple reference");
+
+			n = FindMatchingNew(context->targetlist, var->varattno);
 
 			if (n == NULL)
 			{

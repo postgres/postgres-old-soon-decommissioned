@@ -271,8 +271,12 @@ pull_up_subqueries(Query *parse, Node *jtnode)
 		/*
 		 * Is this a subquery RTE, and if so, is the subquery simple
 		 * enough to pull up?  (If not, do nothing at this node.)
+		 *
+		 * Note: even if the subquery itself is simple enough, we can't
+		 * pull it up if there is a reference to its whole tuple result.
 		 */
-		if (subquery && is_simple_subquery(subquery))
+		if (subquery && is_simple_subquery(subquery) &&
+			!contain_whole_tuple_var((Node *) parse, varno, 0))
 		{
 			int			rtoffset;
 			Node	   *subjointree;
