@@ -22,8 +22,8 @@ CFLAGS+= $(KRBFLAGS)
 endif
 
 # try to find libpgtcl.a in either directory
-LIBPGTCL= -L$(SRCDIR)/interfaces/libpgtcl -L$(LIBDIR) -lpgtcl
-LIBPQ= -L$(LIBPQDIR) -L$(LIBDIR) -lpq
+LIBPGTCL= -L$(SRCDIR)/interfaces/libpgtcl -lpgtcl
+LIBPQ= -L$(LIBPQDIR) -lpq
 
 all: pgtclsh pgtksh
 

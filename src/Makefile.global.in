@@ -257,6 +257,7 @@ endif
 
 ifdef COPT
    CFLAGS+= $(COPT)
+   LDFLAGS+= $(COPT)
 endif
 
 ifdef PROFILE

@@ -34,6 +34,7 @@
 #include <string.h>
 #include <errno.h>
 #include <time.h>
+#include <sys/time.h>
 #if !defined(NO_UNISTD_H)
 #include <unistd.h>
 #endif
