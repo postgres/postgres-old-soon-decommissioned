@@ -1937,6 +1937,37 @@ LockBuffer(Buffer buffer, int mode)
 }
 
 /*
+ * Acquire the cntx_lock for the buffer, but only if we don't have to wait.
+ *
+ * This assumes the caller wants BUFFER_LOCK_EXCLUSIVE mode.
+ */
+bool
+ConditionalLockBuffer(Buffer buffer)
+{
+	BufferDesc *buf;
+
+	Assert(BufferIsValid(buffer));
+	if (BufferIsLocal(buffer))
+		return true;			/* act as though we got it */
+
+	buf = &(BufferDescriptors[buffer - 1]);
+
+	if (LWLockConditionalAcquire(buf->cntx_lock, LW_EXCLUSIVE))
+	{
+		/*
+		 * This is not the best place to set cntxDirty flag (eg indices do
+		 * not always change buffer they lock in excl mode). But please
+		 * remember that it's critical to set cntxDirty *before* logging
+		 * changes with XLogInsert() - see comments in BufferSync().
+		 */
+		buf->cntxDirty = true;
+
+		return true;
+	}
+	return false;
+}
+
+/*
  * LockBufferForCleanup - lock a buffer in preparation for deleting items
  *
  * Items may be deleted from a disk page only when the caller (a) holds an
