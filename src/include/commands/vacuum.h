@@ -125,8 +125,6 @@ typedef struct VRelStats
 	Size		min_tlen;
 	Size		max_tlen;
 	bool		hasindex;
-	int			va_natts;		/* number of attrs being analyzed */
-	VacAttrStats *vacattrstats;
 	int			num_vtlinks;
 	VTupleLink	vtlinks;
 } VRelStats;
