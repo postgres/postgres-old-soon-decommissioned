@@ -802,7 +802,8 @@ PrintQueryResults(PGresult *results)
 				char		buf[10];
 
 				success = true;
-				sprintf(buf, "%u", (unsigned int) PQoidValue(results));
+				snprintf(buf, sizeof(buf),
+						 "%u", (unsigned int) PQoidValue(results));
 				if (!QUIET())
 				{
 					if (pset.popt.topt.format == PRINT_HTML)
