@@ -16,8 +16,8 @@ NAME= ecpg_compat
 SO_MAJOR_VERSION= 1
 SO_MINOR_VERSION= 0
 
-override CPPFLAGS := -I$(top_srcdir)/src/interfaces/ecpg/include -I$(libpq_srcdir) -I$(top_srcdir)/src/include/utils $(CPPFLAGS)
-SHLIB_LINK = -L../pgtypeslib -lpgtypes -L../ecpglib -lecpg
+override CPPFLAGS := -I$(top_srcdir)/src/interfaces/ecpg/include -I$(libpq_srcdir) -I$(top_srcdir)/src/include/utils $(CPPFLAGS) $(THREAD_CFLAGS)
+SHLIB_LINK = -L../pgtypeslib -lpgtypes -L../ecpglib -lecpg $(THREAD_LIBS)
 
 OBJS= informix.o
 
