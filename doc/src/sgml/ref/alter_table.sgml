@@ -183,7 +183,7 @@ ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
    substring operations on a column faster, at the penalty of
    increased storage space.
    The <literal>RENAME</literal> clause causes the name of a table,
-   column, index, or sequence to change without changing any of the
+   column, index, sequence or view to change without changing any of the
    data. The data will remain of the same type and size after the
    command is executed.
    The ADD <replaceable class="PARAMETER">table_constraint_definition</replaceable> clause 
@@ -191,8 +191,8 @@ ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
    linkend="SQL-CREATETABLE" endterm="SQL-CREATETABLE-TITLE">. 
    The DROP CONSTRAINT <replaceable class="PARAMETER">constraint</replaceable> clause 
    drops all constraints on the table (and its children) that match <replaceable class="PARAMETER">constraint</replaceable>.
-   The OWNER clause changes the owner of the table to the user <replaceable class="PARAMETER">
-   new user</replaceable>.
+   The OWNER clause changes the owner of the table, index, sequence or view to the
+   user <replaceable class="PARAMETER">new user</replaceable>.
   </para>
 
   <para>
