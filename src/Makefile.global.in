@@ -277,7 +277,6 @@ ifeq ($(enable_rpath), yes)
 LDFLAGS += $(rpath)
 endif
 
-HAVE_IPV6 = @HAVE_IPV6@
 
 ##########################################################################
 #

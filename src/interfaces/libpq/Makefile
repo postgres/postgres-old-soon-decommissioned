@@ -23,7 +23,7 @@ override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -DFRONTEND -DSYSCONFDIR='"$(sysconf
 OBJS= fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
       pqexpbuffer.o dllist.o pqsignal.o fe-secure.o wchar.o encnames.o ip.o \
       md5.o \
-      $(filter inet_aton.o snprintf.o strerror.o, $(LIBOBJS))
+      $(filter getaddrinfo.o inet_aton.o snprintf.o strerror.o, $(LIBOBJS))
 
 
 # Add libraries that libpq depends (or might depend) on into the
@@ -54,7 +54,7 @@ ip.c: $(backend_src)/libpq/ip.c
 # symlink the source files in here and build our own object file.
 # this only gets done if configure finds system doesn't have inet_aton()
 
-inet_aton.c snprintf.c strerror.c: %.c : $(top_srcdir)/src/port/%.c
+getaddrinfo.c inet_aton.c snprintf.c strerror.c: %.c : $(top_srcdir)/src/port/%.c
 	rm -f $@ && $(LN_S) $< .
 
 encnames.c wchar.c : % : $(backend_src)/utils/mb/%
@@ -75,4 +75,4 @@ uninstall: uninstall-lib
 
 clean distclean maintainer-clean: clean-lib
 	rm -f $(OBJS) dllist.c md5.c ip.c wchar.c encnames.c
-	rm -f $(OBJS) inet_aton.c snprintf.c strerror.c
+	rm -f $(OBJS) getaddrinfo.c inet_aton.c snprintf.c strerror.c
