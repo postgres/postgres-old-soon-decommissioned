@@ -19,6 +19,8 @@
 #ifndef PG_CONVERSION_H
 #define PG_CONVERSION_H
 
+#include "miscadmin.h"
+
 /* ----------------
  *		postgres.h contains the system type definitions and the
  *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
@@ -84,7 +86,7 @@ typedef FormData_pg_conversion *Form_pg_conversion;
 #include "nodes/parsenodes.h"
 
 extern Oid ConversionCreate(const char *conname, Oid connamespace,
-				 int32 conowner,
+				 AclId conowner,
 				 int32 conforencoding, int32 contoencoding,
 				 Oid conproc, bool def);
 extern void ConversionDrop(Oid conversionOid, DropBehavior behavior);

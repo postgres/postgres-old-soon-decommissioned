@@ -37,7 +37,7 @@
  */
 Oid
 ConversionCreate(const char *conname, Oid connamespace,
-				 int32 conowner,
+				 AclId conowner,
 				 int32 conforencoding, int32 contoencoding,
 				 Oid conproc, bool def)
 {

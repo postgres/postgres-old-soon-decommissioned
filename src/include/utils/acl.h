@@ -22,15 +22,10 @@
 #ifndef ACL_H
 #define ACL_H
 
+#include "miscadmin.h"
 #include "nodes/parsenodes.h"
 #include "utils/array.h"
 
-
-/*
- * AclId		system identifier for the user, group, etc.
- *				XXX Perhaps replace this type by OID?
- */
-typedef uint32 AclId;
 
 #define ACL_ID_WORLD	0		/* placeholder for id in a WORLD acl item */
 
@@ -204,11 +199,11 @@ extern AclResult pg_namespace_aclcheck(Oid nsp_oid, Oid userid, AclMode mode);
 extern void aclcheck_error(AclResult errcode, const char *objectname);
 
 /* ownercheck routines just return true (owner) or false (not) */
-extern bool pg_class_ownercheck(Oid class_oid, Oid userid);
-extern bool pg_type_ownercheck(Oid type_oid, Oid userid);
-extern bool pg_oper_ownercheck(Oid oper_oid, Oid userid);
-extern bool pg_proc_ownercheck(Oid proc_oid, Oid userid);
-extern bool pg_namespace_ownercheck(Oid nsp_oid, Oid userid);
-extern bool pg_opclass_ownercheck(Oid opc_oid, Oid userid);
+extern bool pg_class_ownercheck(Oid class_oid, AclId userid);
+extern bool pg_type_ownercheck(Oid type_oid, AclId userid);
+extern bool pg_oper_ownercheck(Oid oper_oid, AclId userid);
+extern bool pg_proc_ownercheck(Oid proc_oid, AclId userid);
+extern bool pg_namespace_ownercheck(Oid nsp_oid, AclId userid);
+extern bool pg_opclass_ownercheck(Oid opc_oid, AclId userid);
 
 #endif   /* ACL_H */

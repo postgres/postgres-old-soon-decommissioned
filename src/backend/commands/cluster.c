@@ -804,11 +804,11 @@ check_cluster_ownership(Oid relOid)
 
 /* Get a list of tables that the current user owns and
  * have indisclustered set.  Return the list in a List * of rvsToCluster
- * with the tableOid and the indexOid on which the table is already 
+ * with the tableOid and the indexOid on which the table is already
  * clustered.
  */
 List *
-get_tables_to_cluster(Oid owner)
+get_tables_to_cluster(AclId owner)
 {
 	Relation		indRelation;
 	HeapScanDesc	scan;

@@ -1365,7 +1365,7 @@ FindDefaultConversionProc(int4 for_encoding, int4 to_encoding)
 static void
 recomputeNamespacePath(void)
 {
-	Oid			userId = GetUserId();
+	AclId		userId = GetUserId();
 	char	   *rawname;
 	List	   *namelist;
 	List	   *oidlist;

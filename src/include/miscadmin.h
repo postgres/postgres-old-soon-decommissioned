@@ -202,7 +202,13 @@ extern void SetDatabasePath(const char *path);
 
 extern char *GetUserNameFromId(Oid userid);
 
-extern Oid	GetUserId(void);
+/*
+ * AclId		system identifier for the user, group, etc.
+ *				XXX Perhaps replace this type by OID?
+ */
+typedef uint32 AclId;
+
+extern AclId GetUserId(void);
 extern void SetUserId(Oid userid);
 extern Oid	GetSessionUserId(void);
 extern void SetSessionUserId(Oid userid);

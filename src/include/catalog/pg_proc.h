@@ -2738,7 +2738,7 @@ DATA(insert OID = 1937 (  pg_stat_get_backend_pid		PGNSP PGUID 12 f f t f s 1 23
 DESCR("Statistics: PID of backend");
 DATA(insert OID = 1938 (  pg_stat_get_backend_dbid		PGNSP PGUID 12 f f t f s 1 26 "23"	pg_stat_get_backend_dbid - _null_ ));
 DESCR("Statistics: Database ID of backend");
-DATA(insert OID = 1939 (  pg_stat_get_backend_userid	PGNSP PGUID 12 f f t f s 1 26 "23"	pg_stat_get_backend_userid - _null_ ));
+DATA(insert OID = 1939 (  pg_stat_get_backend_userid	PGNSP PGUID 12 f f t f s 1 23 "23"	pg_stat_get_backend_userid - _null_ ));
 DESCR("Statistics: User ID of backend");
 DATA(insert OID = 1940 (  pg_stat_get_backend_activity	PGNSP PGUID 12 f f t f s 1 25 "23"	pg_stat_get_backend_activity - _null_ ));
 DESCR("Statistics: Current query of backend");
