@@ -46,7 +46,7 @@ pg_dump <replaceable class="parameter">dbname</replaceable> &gt; <replaceable cl
   </para>
 
   <para>
-   To specify which databaser server <application>pg_dump</> should
+   To specify which database server <application>pg_dump</> should
    contact, use the command line options <option>-h
    <replaceable>host</></> and <option>-p <replaceable>port</></>. The
    default host is the local host or whatever your
