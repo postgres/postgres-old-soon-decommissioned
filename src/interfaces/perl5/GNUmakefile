@@ -21,6 +21,9 @@ Makefile: Makefile.PL
 libpq-all:
 	$(MAKE) -C $(libpq_builddir) all
 
+test: Makefile
+	$(MAKE) -f $< test
+
 # The klugery here is to ensure that the perl5 shared library gets
 # built with the correct path to the installed location of libpq
 # during `make install', but is built against the local tree during
