@@ -1728,7 +1728,8 @@ static struct config_string ConfigureNamesString[] =
 	{
 		{"TimeZone", PGC_USERSET, CLIENT_CONN_LOCALE,
 			gettext_noop("Sets the time zone for displaying and interpreting time stamps."),
-			NULL
+			NULL,
+			GUC_REPORT
 		},
 		&timezone_string,
 		"UNKNOWN", assign_timezone, show_timezone
