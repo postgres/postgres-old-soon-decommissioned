@@ -104,9 +104,6 @@ vsnprintf(char *str, size_t count, const char *fmt, va_list args)
 	dopr(str, fmt, args);
 	if (count > 0)
 		end[0] = '\0';
-	if (SnprfOverflow)
-		elog(DEBUG, "vsnprintf overflow, len = %d, str = %s",
-			 count, str);
 	return strlen(str);
 }
 
