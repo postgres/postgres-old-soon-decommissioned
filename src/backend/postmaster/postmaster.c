@@ -102,7 +102,6 @@
 #include "storage/proc.h"
 #include "access/xlog.h"
 #include "tcop/tcopprot.h"
-#include "utils/exc.h"
 #include "utils/guc.h"
 #include "utils/memutils.h"
 #include "utils/ps_status.h"
@@ -380,9 +379,8 @@ PostmasterMain(int argc, char *argv[])
 	MyProcPid = getpid();
 
 	/*
-	 * Fire up essential subsystems: error and memory management
+	 * Fire up essential subsystems: memory management
 	 */
-	EnableExceptionHandling(true);
 	MemoryContextInit();
 
 	/*

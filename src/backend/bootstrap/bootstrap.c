@@ -37,7 +37,6 @@
 #include "storage/proc.h"
 #include "tcop/tcopprot.h"
 #include "utils/builtins.h"
-#include "utils/exc.h"
 #include "utils/fmgroids.h"
 #include "utils/guc.h"
 #include "utils/lsyscache.h"
@@ -238,7 +237,6 @@ BootstrapMain(int argc, char *argv[])
 	 */
 	if (!IsUnderPostmaster)
 	{
-		EnableExceptionHandling(true);
 		MemoryContextInit();
 	}
 

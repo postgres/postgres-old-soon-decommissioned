@@ -34,7 +34,6 @@
 #include "storage/ipc.h"
 #include "storage/pg_sema.h"
 #include "storage/pg_shmem.h"
-#include "utils/exc.h"
 
 
 /********* stuff needed to satisfy references in shmem/sema code *********/
@@ -55,8 +54,6 @@ int			NBuffers = DEF_NBUFFERS;
 #ifndef assert_enabled
 bool         assert_enabled = true;
 #endif
-
-Exception	FailedAssertion = {"Failed Assertion"};
 
 
 #define MAX_ON_EXITS 20
@@ -120,14 +117,12 @@ ProcessInterrupts(void)
 
 int
 ExceptionalCondition(char *conditionName,
-					 Exception *exceptionP,
-					 char *detail,
+					 char *errorType,
 					 char *fileName,
 					 int lineNumber)
 {
-	fprintf(stderr, "TRAP: %s(\"%s:%s\", File: \"%s\", Line: %d)\n",
-			exceptionP->message, conditionName,
-			(detail == NULL ? "" : detail),
+	fprintf(stderr, "TRAP: %s(\"%s\", File: \"%s\", Line: %d)\n",
+			errorType, conditionName,
 			fileName, lineNumber);
 	abort();
 	return 0;
