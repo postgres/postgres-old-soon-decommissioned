@@ -617,7 +617,7 @@ $PostgreSQL$
        <row>
 	<entry>BDST</entry>
 	<entry>+02:00</entry>
-	<entry>British Double Standard Time</entry>
+	<entry>British Double Summer Time</entry>
        </row>
        <row>
 	<entry>CEST</entry>
