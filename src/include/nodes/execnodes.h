@@ -586,10 +586,10 @@ typedef struct AggState
  */
 typedef struct GroupState
 {
-	CommonScanState csstate;	/* its first field is NodeTag */
-	bool		grp_useLastTuple;		/* last tuple not processed yet */
+	CommonScanState csstate;		/* its first field is NodeTag */
+	bool		grp_useFirstTuple;	/* first tuple not processed yet */
 	bool		grp_done;
-	TupleTableSlot *grp_lastSlot;
+	HeapTuple	grp_firstTuple;
 } GroupState;
 
 /* ----------------
