@@ -1129,7 +1129,7 @@ DropRelFileNodeBuffers(RelFileNode rnode, bool istemp,
 				bufHdr->tag.blockNum >= firstDelBlock)
 			{
 				if (LocalRefCount[i] != 0)
-					elog(FATAL, "block %u of %u/%u/%u is still referenced (local %u)",
+					elog(ERROR, "block %u of %u/%u/%u is still referenced (local %u)",
 						 bufHdr->tag.blockNum,
 						 bufHdr->tag.rnode.spcNode,
 						 bufHdr->tag.rnode.dbNode,
@@ -1172,7 +1172,7 @@ recheck:
 			 * There should be no pin on the buffer.
 			 */
 			if (bufHdr->refcount != 0)
-				elog(FATAL, "block %u of %u/%u/%u is still referenced (private %d, global %u)",
+				elog(ERROR, "block %u of %u/%u/%u is still referenced (private %d, global %u)",
 					 bufHdr->tag.blockNum,
 					 bufHdr->tag.rnode.spcNode,
 					 bufHdr->tag.rnode.dbNode,
