@@ -2065,7 +2065,7 @@ RestoreArchivedFile(char *path, const char *xlogfname,
 	 * restore, or because the administrator has specified the restore
 	 * program incorrectly.  We have to assume the former.
 	 */
-	ereport(DEBUG1,
+	ereport(DEBUG2,
 		 (errmsg("could not restore file \"%s\" from archive: return code %d",
 				 xlogfname, rc)));
 
@@ -4893,7 +4893,7 @@ CreateCheckPoint(bool shutdown, bool force)
 	END_CRIT_SECTION();
 
 	if (!shutdown)
-		ereport(DEBUG1,
+		ereport(DEBUG2,
 				(errmsg("checkpoint starting")));
 
 	CheckPointCLOG();
@@ -4994,7 +4994,7 @@ CreateCheckPoint(bool shutdown, bool force)
 		TruncateSUBTRANS(GetOldestXmin(true));
 
 	if (!shutdown)
-		ereport(DEBUG1,
+		ereport(DEBUG2,
 				(errmsg("checkpoint complete; %d transaction log file(s) added, %d removed, %d recycled",
 						nsegsadded, nsegsremoved, nsegsrecycled)));
 

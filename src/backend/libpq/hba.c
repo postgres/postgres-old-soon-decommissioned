@@ -1640,7 +1640,7 @@ authident(hbaPort *port)
 			return STATUS_ERROR;
 	}
 
-	ereport(DEBUG1,
+	ereport(DEBUG2,
 			(errmsg("Ident protocol identifies remote user as \"%s\"",
 					ident_user)));
 
