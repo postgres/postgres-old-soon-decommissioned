@@ -1477,7 +1477,7 @@ _outNode(StringInfo str, void *obj)
 		}
 		appendStringInfoChar(str, ')');
 	}
-	else if (IsA_Value(obj))
+	else if (IsA(obj, Integer) || IsA(obj, Float) || IsA(obj, String) || IsA(obj, BitString))
 	{
 		/* nodeRead does not want to see { } around these! */
 		_outValue(str, obj);

@@ -270,9 +270,6 @@ typedef struct Node
 	(IsA(jp, Join) || IsA(jp, NestLoop) || \
 	 IsA(jp, MergeJoin) || IsA(jp, HashJoin))
 
-#define IsA_Value(t) \
-	(IsA(t, Integer) || IsA(t, Float) || IsA(t, String))
-
 /* ----------------------------------------------------------------
  *					  extern declarations follow
  * ----------------------------------------------------------------
