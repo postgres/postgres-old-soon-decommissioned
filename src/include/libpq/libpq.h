@@ -240,7 +240,6 @@ extern int	StreamServerPort(int family, unsigned short portName, int *fdP);
 extern int	StreamConnection(int server_fd, Port *port);
 extern void StreamClose(int sock);
 extern void pq_init(void);
-extern int	pq_getport(void);
 extern void pq_close(void);
 extern int	pq_getbytes(char *s, size_t len);
 extern int	pq_getstring(StringInfo s);

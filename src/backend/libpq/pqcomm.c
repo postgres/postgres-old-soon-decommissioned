@@ -118,19 +118,6 @@ pq_init(void)
 		debug_port = stderr;
 }
 
-/* --------------------------------
- *		pq_getport - return the PGPORT setting
- * --------------------------------
- */
-int
-pq_getport(void)
-{
-	char	   *envport = getenv("PGPORT");
-
-	if (envport)
-		return atoi(envport);
-	return DEF_PGPORT;
-}
 
 /* --------------------------------
  *		pq_close - shutdown libpq at backend exit
