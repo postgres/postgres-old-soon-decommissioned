@@ -429,34 +429,35 @@ SendQuery(const char *query)
 					FILE	   *queryFout_copy = pset.queryFout;
 					bool		queryFoutPipe_copy = pset.queryFoutPipe;
 
-					pset.queryFout = NULL;		/* so it doesn't get
+					pset.queryFout = stdout;	/* so it doesn't get
 												 * closed */
 
 					/* open file/pipe */
 					if (!setQFout(pset.gfname))
 					{
+						pset.queryFout = queryFout_copy;
+						pset.queryFoutPipe = queryFoutPipe_copy;
 						success = false;
 						break;
 					}
 
 					printQuery(results, &pset.popt, pset.queryFout);
 
-					/* close file/pipe */
+					/* close file/pipe, restore old setting */
 					setQFout(NULL);
-
-					free(pset.gfname);
-					pset.gfname = NULL;
 
 					pset.queryFout = queryFout_copy;
 					pset.queryFoutPipe = queryFoutPipe_copy;
 
+					free(pset.gfname);
+					pset.gfname = NULL;
+
 					success = true;
-					break;
 				}
 				else
 				{
-					success = true;
 					printQuery(results, &pset.popt, pset.queryFout);
+					success = true;
 				}
 				break;
 			case PGRES_EMPTY_QUERY:
