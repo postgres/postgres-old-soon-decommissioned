@@ -378,13 +378,15 @@ decl_rowtype	: T_ROW
 
 decl_varname	: T_WORD
 		    {
-		        $$.name = plpgsql_tolower(strdup(yytext));
-			$$.lineno  = yylineno;
+				/* name should be malloc'd for use as varname */
+				$$.name = strdup(plpgsql_tolower(yytext));
+				$$.lineno  = yylineno;
 		    }
 		;
 
 decl_renname	: T_WORD
 		    {
+				/* the result must be palloc'd, see plpgsql_ns_rename */
 		        $$ = plpgsql_tolower(yytext);
 		    }
 		;
