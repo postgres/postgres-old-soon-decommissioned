@@ -102,12 +102,6 @@ extern Oid	LastOidProcessed;	/* for query rewrite */
 /* #define MAX_QUERY_SIZE	 (BLCKSZ*2) */
 #define MAX_PARSE_BUFFER MAX_QUERY_SIZE
 
-/*
- *		default number of buffers in buffer pool
- *
- */
-#define NDBUFS 64
-
 /*****************************************************************************
  *	  pdir.h --																 *
  *			POSTGRES directory path definitions.							 *

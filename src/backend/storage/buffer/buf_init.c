@@ -50,7 +50,7 @@ long	   *CurTraceBuf;
 #endif	 /* BMTRACE */
 int			ShowPinTrace = 0;
 
-int			NBuffers = NDBUFS;	/* NDBUFS defined in miscadmin.h */
+int			NBuffers = DEF_NBUFFERS;	/* default is set in config.h */
 int			Data_Descriptors;
 int			Free_List_Descriptor;
 int			Lookup_List_Descriptor;
