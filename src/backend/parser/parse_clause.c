@@ -767,8 +767,17 @@ transformUnionClause(List *unionClause, List *targetlist)
 			Query	   *query = (Query *) lfirst(qlist_item);
 			List	   *prev_target = targetlist;
 			List	   *next_target;
+			int			prev_len = 0, next_len = 0;
 
-			if (length(targetlist) != length(query->targetList))
+			foreach(prev_target, targetlist)
+				if (!((TargetEntry *) lfirst(prev_target))->resdom->resjunk)
+					prev_len++;
+
+			foreach(next_target, query->targetList)
+				if (!((TargetEntry *) lfirst(next_target))->resdom->resjunk)
+					next_len++;
+						
+			if (prev_len != next_len)
 				elog(ERROR, "Each UNION clause must have the same number of columns");
 
 			foreach(next_target, query->targetList)

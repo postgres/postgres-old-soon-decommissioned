@@ -2762,11 +2762,20 @@ QueryRewrite(Query *parsetree)
  * attributes and the types are compatible */
 void check_targetlists_are_compatible(List *prev_target, List *current_target)
 {
-  List *next_target;
+  List  *tl, *next_target;
+  int	prev_len = 0, next_len = 0;
+
+  foreach(tl, prev_target)
+	if (!((TargetEntry *) lfirst(tl))->resdom->resjunk)
+		prev_len++;
+
+  foreach(next_target, current_target)
+	if (!((TargetEntry *) lfirst(next_target))->resdom->resjunk)
+		next_len++;
   
-  if (length(prev_target) != 
-      length(current_target))
-    elog(ERROR,"Each UNION | EXCEPT | INTERSECT query must have the same number of columns.");		      
+  if (prev_len != next_len)
+    elog(ERROR,"Each UNION | EXCEPT | INTERSECT query must have the same number of columns.");
+
   foreach(next_target, current_target)
     {
       Oid			itype;
