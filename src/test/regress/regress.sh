@@ -47,8 +47,8 @@ echo "   ports@postgresql.org"
 echo "See regress/README for more information."
 echo ""
 
-echo "=============== destroying old regression database... ================="
-destroydb $HOST regression
+echo "=============== dropping old regression database... ================="
+dropdb $HOST regression
 
 echo "=============== creating new regression database...   ================="
 if [ -n "$MULTIBYTE" ];then
@@ -119,17 +119,17 @@ then
 echo Skipping clearing and deletion of the regression database
 else
 echo "=============== clearing regression database...       ================="
-$FRONTEND regression < destroy.sql
+$FRONTEND regression < drop.sql
 if [ $? -ne 0 ]; then
-     echo the destroy script has an error
+     echo the drop script has an error
      exit 1
 fi
 
 exit 0
-echo "=============== destroying regression database...     ================="
-destroydb regression
+echo "=============== dropping regression database...     ================="
+dropdb regression
 if [ $? -ne 0 ]; then
-     echo destroydb failed
+     echo dropdb failed
      exit 1
 fi
 
