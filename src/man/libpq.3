@@ -201,11 +201,18 @@ be used to retrieve the tuples returned by the query.
 .IP
 
 .B PQntuples
-returns the number of tuples (instances) in the query result, or the
-number of rows affected for queries that do not return any tuples.
+returns the number of tuples (instances) in the query result.
 
 .nf
 int PQntuples(PGresult *res);
+.fi
+
+.B PQcmdTuples
+returns the number of tuples (instances) affected by INSERT, UPDATE, and
+DELETE queries.
+
+.nf
+char *PQcmdTuples(PGresult *res);
 .fi
 
 .B PQnfields
