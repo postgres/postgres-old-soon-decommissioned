@@ -30,7 +30,6 @@
 (define %html-ext%              ".html")
 (define %link-mailto-url%       (string-append "mailto:" pgsql-docs-list))
 (define %use-id-as-filename%    #t)
-(define %stylesheet%            "stylesheet.css")
 
 ;; Returns the depth of auto TOC that should be made at the nd-level
 (define (toc-depth nd)
