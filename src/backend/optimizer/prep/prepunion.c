@@ -652,7 +652,7 @@ adjust_inherited_attrs_mutator(Node *node,
 	/*
 	 * We have to process RestrictInfo nodes specially: we do NOT want to
 	 * copy the original subclauseindices list, since the new rel may have
-	 * different indices.  The list will be rebuilt during planning anyway.
+	 * different indices.  The list will be rebuilt during later planning.
 	 */
 	if (IsA(node, RestrictInfo))
 	{
@@ -666,6 +666,7 @@ adjust_inherited_attrs_mutator(Node *node,
 			adjust_inherited_attrs_mutator((Node *) oldinfo->clause, context);
 
 		newinfo->subclauseindices = NIL;
+		newinfo->eval_cost = -1; /* reset this too */
 
 		return (Node *) newinfo;
 	}

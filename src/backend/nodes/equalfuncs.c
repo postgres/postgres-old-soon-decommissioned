@@ -514,6 +514,10 @@ _equalRestrictInfo(RestrictInfo *a, RestrictInfo *b)
 {
 	if (!equal(a->clause, b->clause))
 		return false;
+	/*
+	 * ignore eval_cost, since it may not be set yet, and should be
+	 * derivable from the clause anyway
+	 */
 	if (a->ispusheddown != b->ispusheddown)
 		return false;
 	if (!equal(a->subclauseindices, b->subclauseindices))

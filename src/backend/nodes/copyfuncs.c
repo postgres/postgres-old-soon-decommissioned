@@ -1418,6 +1418,7 @@ _copyRestrictInfo(RestrictInfo *from)
 	 * ----------------
 	 */
 	Node_Copy(from, newnode, clause);
+	newnode->eval_cost = from->eval_cost;
 	newnode->ispusheddown = from->ispusheddown;
 	Node_Copy(from, newnode, subclauseindices);
 	newnode->mergejoinoperator = from->mergejoinoperator;

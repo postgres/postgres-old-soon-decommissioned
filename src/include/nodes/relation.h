@@ -373,9 +373,9 @@ typedef JoinPath NestPath;
  * A mergejoin path has these fields.
  *
  * path_mergeclauses lists the clauses (in the form of RestrictInfos)
- * that will be used in the merge.	(Before 7.0, this was a list of
- * bare clause expressions, but we can save on list memory by leaving
- * it in the form of a RestrictInfo list.)
+ * that will be used in the merge.	(Before 7.0, this was a list of bare
+ * clause expressions, but we can save on list memory and cost_qual_eval
+ * work by leaving it in the form of a RestrictInfo list.)
  *
  * Note that the mergeclauses are a subset of the parent relation's
  * restriction-clause list.  Any join clauses that are not mergejoinable
@@ -490,6 +490,8 @@ typedef struct RestrictInfo
 	NodeTag		type;
 
 	Expr	   *clause;			/* the represented clause of WHERE or JOIN */
+
+	Cost		eval_cost;		/* eval cost of clause; -1 if not yet set */
 
 	bool		ispusheddown;	/* TRUE if clause was pushed down in level */
 

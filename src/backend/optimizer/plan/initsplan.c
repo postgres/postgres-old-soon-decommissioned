@@ -338,6 +338,7 @@ distribute_qual_to_rels(Query *root, Node *clause,
 	bool		can_be_equijoin;
 
 	restrictinfo->clause = (Expr *) clause;
+	restrictinfo->eval_cost = -1; /* not computed until needed */
 	restrictinfo->subclauseindices = NIL;
 	restrictinfo->mergejoinoperator = InvalidOid;
 	restrictinfo->left_sortop = InvalidOid;

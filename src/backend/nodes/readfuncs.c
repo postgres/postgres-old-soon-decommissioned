@@ -1846,6 +1846,9 @@ _readRestrictInfo(void)
 	token = lsptok(NULL, &length);		/* now read it */
 	local_node->hashjoinoperator = (Oid) atol(token);
 
+	/* eval_cost is not part of saved representation; compute on first use */
+	local_node->eval_cost = -1;
+
 	return local_node;
 }
 
