@@ -784,7 +784,7 @@ smgrcommit(void)
 }
 
 /*
- *	smgrabort() -- Abort changes made during the current transaction.
+ *	smgrabort() -- Clean up after transaction abort.
  */
 void
 smgrabort(void)
