@@ -119,7 +119,6 @@ SHOW ALL;
     .
     .
  wal_debug                     | 0
- wal_files                     | 0
  wal_sync_method               | fdatasync
 (94 rows)
 </programlisting>
