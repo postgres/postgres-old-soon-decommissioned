@@ -158,4 +158,4 @@ base type's name prepended with an underscore.
 create function(l),
 create operator(l),
 drop type(l),
-introduction(large objects).
+large_objects(3).

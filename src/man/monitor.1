@@ -107,7 +107,7 @@ option in shell scripts.
 Specifies an authentication system
 .IR "system"
 (see 
-.IR introduction (1))
+.IR pgintro (1))
 to use in connecting to the 
 .IR postmaster
 process.  The default is site-specific.
@@ -239,12 +239,12 @@ only applies if
 authentication is in use.  If this environment variable is set, Postgres
 will attempt authentication with servers for this realm and use
 separate ticket files to avoid conflicts with local ticket files.  See
-.IR introduction (1)
+.IR pgintro (1)
 for additional information on 
 .IR Kerberos .
 .PP
 See 
-.IR introduction (libpq)
+.IR pgintro (libpq)
 for additional details.
 .SH "RETURN VALUE"
 When executed with the
@@ -253,7 +253,7 @@ option,
 .IR monitor
 returns 0 to the shell on successful query completion, 1 otherwise.
 .SH "SEE ALSO"
-introduction(libpq),
+libpq(3),
 createdb(1),
 createuser(1),
 postgres(1),
