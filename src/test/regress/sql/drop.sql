@@ -1,8 +1,6 @@
 --
 -- drop.source
 --
--- $Header$
---
 
 --
 -- this will fail if the user is not the postgres superuser.
