@@ -35,6 +35,11 @@
 /* might be in either frontend or backend */
 #include "postgres_fe.h"
 
+#ifdef ENABLE_THREAD_SAFETY
+#error	The replacement snprintf() is not thread-safe.  \
+Your platform must have a thread-safe snprintf() to compile with threads.
+#endif
+
 #include <sys/ioctl.h>
 #include <sys/param.h>
 
