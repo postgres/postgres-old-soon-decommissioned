@@ -1006,7 +1006,7 @@ gettape()
 	 * now, copy template with final null into palloc'd space
 	 */
 
-	strNcpy(tp->tl_name, uniqueName, MAXPGPATH-1);
+	StrNCpy(tp->tl_name, uniqueName, MAXPGPATH);
 
 
 	file = AllocateFile(tp->tl_name, "w+");

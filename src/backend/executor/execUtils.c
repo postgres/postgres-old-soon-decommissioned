@@ -514,7 +514,7 @@ ExecSetTypeInfo(int index,
 	att->attrelid = 0;			/* dummy value */
 
 	if (attName != (char *) NULL)
-		strNcpy(att->attname.data, attName, NAMEDATALEN - 1);
+		StrNCpy(att->attname.data, attName, NAMEDATALEN);
 	else
 		MemSet(att->attname.data, 0, NAMEDATALEN);
 

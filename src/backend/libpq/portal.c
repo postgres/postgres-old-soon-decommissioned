@@ -154,7 +154,7 @@ PQpnames(char **pnames, int rule_p)
 		{
 			if (!rule_p || portals[i]->portal->rule_p)
 			{
-				strncpy(pnames[cur_pname], portals[i]->name, PortalNameLength);
+				strncpy(pnames[cur_pname], portals[i]->name, PortalNameLength+1);
 				++cur_pname;
 			}
 		}
@@ -730,7 +730,7 @@ PQappendNotify(char *relname, int pid)
 		pqNotifyList = DLNewList();
 
 	p = (PQNotifyList *) pbuf_alloc(sizeof(PQNotifyList));
-	strNcpy(p->relname, relname, NAMEDATALEN - 1);
+	StrNCpy(p->relname, relname, NAMEDATALEN);
 	p->be_pid = pid;
 	p->valid = 1;
 	DLAddTail(pqNotifyList, DLNewElem(p));

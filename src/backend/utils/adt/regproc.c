@@ -133,7 +133,7 @@ regprocout(RegProcedure proid)
 							  RelationGetTupleDescriptor(proc), &isnull);
 			if (!isnull)
 			{
-				strNcpy(result, s, 16);
+				StrNCpy(result, s, 16);
 				break;
 			}
 			elog(FATAL, "regprocout: null procedure %d", proid);

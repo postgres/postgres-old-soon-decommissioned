@@ -3117,7 +3117,7 @@ opt_id:  Id										{ $$ = $1; }
 relation_name:	SpecialRuleRelation
 				{
 					$$ = $1;
-					strNcpy(saved_relname, $1, NAMEDATALEN-1);
+					StrNCpy(saved_relname, $1, NAMEDATALEN);
 				}
 		| ColId
 				{
@@ -3129,7 +3129,7 @@ relation_name:	SpecialRuleRelation
 						elog(WARN,"%s cannot be accessed by users",$1);
 					else
 						$$ = $1;
-					strNcpy(saved_relname, $1, NAMEDATALEN-1);
+					StrNCpy(saved_relname, $1, NAMEDATALEN);
 				}
 		;
 

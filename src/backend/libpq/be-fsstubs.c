@@ -269,7 +269,7 @@ lo_import(text *filename)
 	/*
 	 * open the file to be read in
 	 */
-	strNcpy(fnamebuf, VARDATA(filename), VARSIZE(filename) - VARHDRSZ);
+	StrNCpy(fnamebuf, VARDATA(filename), VARSIZE(filename) - VARHDRSZ + 1);
 	fd = open(fnamebuf, O_RDONLY, 0666);
 	if (fd < 0)
 	{							/* error */
@@ -343,7 +343,7 @@ lo_export(Oid lobjId, text *filename)
 	 * open the file to be written to
 	 */
 	oumask = umask((mode_t) 0);
-	strNcpy(fnamebuf, VARDATA(filename), VARSIZE(filename) - VARHDRSZ);
+	StrNCpy(fnamebuf, VARDATA(filename), VARSIZE(filename) - VARHDRSZ + 1);
 	fd = open(fnamebuf, O_CREAT | O_WRONLY, 0666);
 	umask(oumask);
 	if (fd < 0)

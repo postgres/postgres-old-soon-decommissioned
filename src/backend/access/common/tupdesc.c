@@ -489,7 +489,7 @@ BuildDescForRelation(List *schema, char *relname)
 		}
 		else
 		{
-			strNcpy(typename, entry->typename->name, NAMEDATALEN - 1);
+			StrNCpy(typename, entry->typename->name, NAMEDATALEN);
 			attdim = 0;
 		}
 

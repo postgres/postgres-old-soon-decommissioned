@@ -172,7 +172,7 @@ mdunlink(Relation reln)
 	 * do this.
 	 */
 
-	strNcpy(fname, RelationGetRelationName(reln)->data, NAMEDATALEN - 1);
+	StrNCpy(fname, RelationGetRelationName(reln)->data, NAMEDATALEN);
 
 	if (FileNameUnlink(fname) < 0)
 		return (SM_FAIL);

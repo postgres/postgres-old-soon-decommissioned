@@ -65,7 +65,7 @@ DefineRelation(CreateStmt *stmt)
 	if (strlen(stmt->relname) >= NAMEDATALEN)
 		elog(WARN, "the relation name %s is >= %d characters long", stmt->relname,
 			 NAMEDATALEN);
-	strNcpy(relname, stmt->relname, NAMEDATALEN - 1);	/* make full length for
+	StrNCpy(relname, stmt->relname, NAMEDATALEN);	/* make full length for
 														 * copy */
 
 	/* ----------------

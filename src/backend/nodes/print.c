@@ -391,14 +391,14 @@ print_plan_recursive(Plan *p, Query *parsetree, int indentLevel, char *label)
 		RangeTblEntry *rte;
 
 		rte = rt_fetch(((Scan *) p)->scanrelid, parsetree->rtable);
-		strNcpy(extraInfo, rte->relname, NAMEDATALEN - 1);
+		StrNCpy(extraInfo, rte->relname, NAMEDATALEN);
 	}
 	else if (IsA(p, IndexScan))
 	{
-		strNcpy(extraInfo,
+		StrNCpy(extraInfo,
 		   ((RangeTblEntry *) (nth(((IndexScan *) p)->scan.scanrelid - 1,
 								   parsetree->rtable)))->relname,
-				NAMEDATALEN - 1);
+				NAMEDATALEN);
 	}
 	else
 		extraInfo[0] = '\0';

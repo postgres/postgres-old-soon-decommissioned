@@ -1150,7 +1150,7 @@ makeTargetNames(ParseState *pstate, List *cols)
 			Ident	   *id = makeNode(Ident);
 
 			id->name = palloc(NAMEDATALEN);
-			strNcpy(id->name, attr[i]->attname.data, NAMEDATALEN - 1);
+			StrNCpy(id->name, attr[i]->attname.data, NAMEDATALEN);
 			id->indirection = NIL;
 			id->isRel = false;
 			if (tl == NIL)

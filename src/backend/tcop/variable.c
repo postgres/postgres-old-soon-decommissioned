@@ -73,7 +73,7 @@ get_token(char **tok, char **val, const char *str)
 	}
 
 	*tok = (char *) PALLOC(len + 1);
-	strNcpy(*tok, start, len);
+	StrNCpy(*tok, start, len+1);
 
 	/* skip white spaces */
 	while (isspace(*str))
@@ -119,7 +119,7 @@ get_token(char **tok, char **val, const char *str)
 	}
 
 	*val = (char *) PALLOC(len + 1);
-	strNcpy(*val, start, len);
+	StrNCpy(*val, start, len+1);
 
 	/* skip white spaces */
 	while (isspace(*str))

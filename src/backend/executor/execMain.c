@@ -330,9 +330,9 @@ ExecCheckPerms(CmdType operation,
 		if (!HeapTupleIsValid(htp))
 			elog(WARN, "ExecCheckPerms: bogus RT relid: %d",
 				 relid);
-		strNcpy(rname.data,
+		StrNCpy(rname.data,
 				((Form_pg_class) GETSTRUCT(htp))->relname.data,
-				NAMEDATALEN - 1);
+				NAMEDATALEN);
 		if (i == resultRelation)
 		{						/* this is the result relation */
 			qvars = pull_varnos(parseTree->qual);
