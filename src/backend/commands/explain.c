@@ -216,7 +216,7 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 				if (++i > 1)
 					appendStringInfo(str, ", ");
 				appendStringInfo(str,
-								 stringStringInfo((RelationGetRelationName(relation))->data));
+								 stringStringInfo(RelationGetRelationName(relation)));
 				/* drop relcache refcount from RelationIdGetRelation */
 				RelationDecrementReferenceCount(relation);
 			}

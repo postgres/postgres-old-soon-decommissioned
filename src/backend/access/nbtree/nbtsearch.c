@@ -206,7 +206,7 @@ _bt_moveright(Relation rel,
 										PageGetItemId(page, P_FIRSTKEY),
 										BTEqualStrategyNumber))
 							elog(FATAL, "btree: BTP_CHAIN flag was expected in %s (access = %s)",
-								 rel->rd_rel->relname.data, access ? "bt_write" : "bt_read");
+								 RelationGetRelationName(rel), access ? "bt_write" : "bt_read");
 						if (_bt_skeycmp(rel, keysz, scankey, page,
 										PageGetItemId(page, offmax),
 										BTEqualStrategyNumber))

@@ -192,7 +192,7 @@ get_groname(AclId grosysid)
 								ObjectIdGetDatum(grosysid),
 								0, 0, 0);
 	if (HeapTupleIsValid(tuple))
-		name = (((Form_pg_group) GETSTRUCT(tuple))->groname).data;
+		name = NameStr(((Form_pg_group) GETSTRUCT(tuple))->groname);
 	else
 		elog(NOTICE, "get_groname: group %d not found", grosysid);
 	return name;

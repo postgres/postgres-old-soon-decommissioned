@@ -121,7 +121,7 @@ mdcreate(Relation reln)
 	char	   *path;
 
 	Assert(reln->rd_unlinked && reln->rd_fd < 0);
-	path = relpath(reln->rd_rel->relname.data);
+	path = relpath(RelationGetRelationName(reln));
 #ifndef __CYGWIN32__
 	fd = FileNameOpenFile(path, O_RDWR | O_CREAT | O_EXCL, 0600);
 #else
@@ -319,7 +319,7 @@ mdopen(Relation reln)
 	int			vfd;
 
 	Assert(reln->rd_fd < 0);
-	path = relpath(reln->rd_rel->relname.data);
+	path = relpath(RelationGetRelationName(reln));
 
 #ifndef __CYGWIN32__
 	fd = FileNameOpenFile(path, O_RDWR, 0600);
@@ -1011,7 +1011,7 @@ _mdfd_openseg(Relation reln, int segno, int oflags)
 			   *fullpath;
 
 	/* be sure we have enough space for the '.segno', if any */
-	path = relpath(RelationGetRelationName(reln)->data);
+	path = relpath(RelationGetRelationName(reln));
 
 	dofree = false;
 	if (segno > 0)

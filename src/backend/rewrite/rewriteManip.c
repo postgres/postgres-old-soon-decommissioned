@@ -564,12 +564,12 @@ HandleRIRAttributeRule_mutator(Node *node,
 			{
 				NameData	name_to_look_for;
 
-				name_to_look_for.data[0] = '\0';
+				NameStr(name_to_look_for)[0] = '\0';
 				namestrcpy(&name_to_look_for,
 						   (char *) get_attname(getrelid(this_varno,
 														 context->rtable),
 												this_varattno));
-				if (name_to_look_for.data[0])
+				if (NameStr(name_to_look_for)[0])
 				{
 					Node	   *n;
 

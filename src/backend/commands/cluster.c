@@ -127,7 +127,7 @@ cluster(char *oldrelname, char *oldindexname)
 	 */
 	NewHeap = copy_heap(OIDOldHeap);
 	OIDNewHeap = RelationGetRelid(NewHeap);
-	strcpy(NewHeapName, NewHeap->rd_rel->relname.data);
+	strcpy(NewHeapName, RelationGetRelationName(NewHeap));
 
 
 	/* To make the new heap visible (which is until now empty). */
@@ -284,7 +284,7 @@ copy_index(Oid OIDOldIndex, Oid OIDNewHeap)
 		natts = 1;
 	}
 
-	index_create((NewHeap->rd_rel->relname).data,
+	index_create(RelationGetRelationName(NewHeap),
 				 NewIndexName,
 				 finfo,
 				 NULL,			/* type info is in the old index */

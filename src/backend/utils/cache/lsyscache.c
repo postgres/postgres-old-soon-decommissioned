@@ -62,7 +62,7 @@ get_attname(Oid relid, AttrNumber attnum)
 	if (HeapTupleIsValid(tp))
 	{
 		Form_pg_attribute att_tup = (Form_pg_attribute) GETSTRUCT(tp);
-		return pstrdup(att_tup->attname.data);
+		return pstrdup(NameStr(att_tup->attname));
 	}
 	else
 		return NULL;
@@ -292,7 +292,7 @@ get_opname(Oid opno)
 	if (HeapTupleIsValid(tp))
 	{
 		Form_pg_operator optup = (Form_pg_operator) GETSTRUCT(tp);
-		return pstrdup(optup->oprname.data);
+		return pstrdup(NameStr(optup->oprname));
 	}
 	else
 		return NULL;
@@ -529,7 +529,7 @@ get_rel_name(Oid relid)
 	if (HeapTupleIsValid(tp))
 	{
 		Form_pg_class reltup = (Form_pg_class) GETSTRUCT(tp);
-		return pstrdup(reltup->relname.data);
+		return pstrdup(NameStr(reltup->relname));
 	}
 	else
 		return NULL;

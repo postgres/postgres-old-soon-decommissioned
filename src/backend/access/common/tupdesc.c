@@ -278,7 +278,7 @@ TupleDescInitEntry(TupleDesc desc,
 	if (attributeName != NULL)
 		namestrcpy(&(att->attname), attributeName);
 	else
-		MemSet(att->attname.data, 0, NAMEDATALEN);
+		MemSet(NameStr(att->attname), 0, NAMEDATALEN);
 
 
 	att->attdisbursion = 0;		/* dummy value */

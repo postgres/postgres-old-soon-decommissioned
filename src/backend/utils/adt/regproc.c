@@ -173,7 +173,7 @@ regprocout(RegProcedure proid)
 		{
 			char	   *s;
 
-			s = ((Form_pg_proc) GETSTRUCT(proctup))->proname.data;
+			s = NameStr(((Form_pg_proc) GETSTRUCT(proctup))->proname);
 			StrNCpy(result, s, NAMEDATALEN);
 		}
 		else
@@ -261,7 +261,7 @@ oid8types(Oid *oidArray)
 			{
 				char	   *s;
 
-				s = ((Form_pg_type) GETSTRUCT(typetup))->typname.data;
+				s = NameStr(((Form_pg_type) GETSTRUCT(typetup))->typname);
 				StrNCpy(VARDATA(result) + strlen(VARDATA(result)), s,
 						NAMEDATALEN);
 				strcat(VARDATA(result), " ");

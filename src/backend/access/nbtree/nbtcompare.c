@@ -131,7 +131,7 @@ btcharcmp(char a, char b)
 int32
 btnamecmp(NameData *a, NameData *b)
 {
-	return strncmp(a->data, b->data, NAMEDATALEN);
+	return strncmp(NameStr(*a), NameStr(*b), NAMEDATALEN);
 }
 
 int32

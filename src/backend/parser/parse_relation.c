@@ -265,7 +265,7 @@ expandAll(ParseState *pstate, char *relname, char *refname, int *this_resno)
 		Var		   *varnode;
 		TargetEntry *te = makeNode(TargetEntry);
 
-		attrname = pstrdup(rel->rd_att->attrs[varattno]->attname.data);
+		attrname = pstrdup(NameStr(rel->rd_att->attrs[varattno]->attname));
 		varnode = make_var(pstate, rte->relid, refname, attrname);
 
 		/*

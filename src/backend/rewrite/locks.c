@@ -179,7 +179,7 @@ checkLockPerms(List *locks, Query *parsetree, int rt_index)
 			 ev_rel->rd_rel->relowner);
 	}
 	heap_close(ev_rel, AccessShareLock);
-	evowner = nameout(&(((Form_pg_shadow) GETSTRUCT(usertup))->usename));
+	evowner = pstrdup(NameStr(((Form_pg_shadow) GETSTRUCT(usertup))->usename));
 
 	/*
 	 * Check all the locks, that should get fired on this query

@@ -115,6 +115,8 @@ typedef union nameData
 } NameData;
 typedef NameData *Name;
 
+#define NameStr(name)	((name).data)
+
 /* ----------------------------------------------------------------
  *				Section 3: TransactionId and CommandId
  * ----------------------------------------------------------------

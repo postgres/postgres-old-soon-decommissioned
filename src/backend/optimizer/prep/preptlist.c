@@ -133,7 +133,7 @@ expand_targetlist(List *tlist, int command_type,
 	for (attrno = 1; attrno <= numattrs; attrno++)
 	{
 		Form_pg_attribute att_tup = rel->rd_att->attrs[attrno-1];
-		char		   *attrname = att_tup->attname.data;
+		char		   *attrname = NameStr(att_tup->attname);
 		TargetEntry	   *new_tle = NULL;
 
 		/*

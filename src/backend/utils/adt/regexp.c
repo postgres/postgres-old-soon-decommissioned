@@ -200,7 +200,7 @@ nameregexeq(NameData *n, struct varlena * p)
 {
 	if (!n)
 		return FALSE;
-	return fixedlen_regexeq(n->data, p, NAMEDATALEN, REG_EXTENDED);
+	return fixedlen_regexeq(NameStr(*n), p, NAMEDATALEN, REG_EXTENDED);
 }
 
 bool
@@ -248,7 +248,7 @@ nameicregexeq(NameData *n, struct varlena * p)
 {
 	if (!n)
 		return FALSE;
-	return (fixedlen_regexeq(n->data, p, NAMEDATALEN,
+	return (fixedlen_regexeq(NameStr(*n), p, NAMEDATALEN,
 							 REG_ICASE | REG_EXTENDED));
 }
 

@@ -176,7 +176,7 @@ typedef Relation *RelationPtr;
  *
  *	  Returns a Relation Name
  */
-#define RelationGetRelationName(relation) (&(relation)->rd_rel->relname)
+#define RelationGetRelationName(relation) (NameStr((relation)->rd_rel->relname))
 
 /*
  * RelationGetNumberOfAttributes

@@ -190,7 +190,7 @@ setAttrList(char *bname)
 
 	for (i = maxattrs - 1; i > -1; --i)
 	{
-		attrname = (rel->rd_att->attrs[i]->attname).data;
+		attrname = NameStr(rel->rd_att->attrs[i]->attname);
 
 		if (notfirst == 1)
 			sprintf(temp_buf, ", %s = new.%s", attrname, attrname);

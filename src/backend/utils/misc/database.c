@@ -254,7 +254,7 @@ GetRawDatabaseInfo(char *name, Oid *db_id, char *path)
 			 */
 			tup_db = (Form_pg_database) GETSTRUCT(&tup);
 
-			if (strcmp(name, tup_db->datname.data) == 0)
+			if (strcmp(name, NameStr(tup_db->datname)) == 0)
 			{
 				/* Found it; extract the OID and the database path. */
 				*db_id = tup.t_data->t_oid;

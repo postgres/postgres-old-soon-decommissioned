@@ -358,7 +358,7 @@ PerformAddAttribute(char *relationName,
 				if (childrelid == myrelid)
 					continue;
 				rel = heap_open(childrelid, AccessExclusiveLock);
-				PerformAddAttribute((rel->rd_rel->relname).data,
+				PerformAddAttribute(RelationGetRelationName(rel),
 									userName, false, colDef);
 				heap_close(rel, AccessExclusiveLock);
 			}

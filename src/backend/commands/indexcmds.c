@@ -533,7 +533,7 @@ GetDefaultOpClass(Oid atttypid)
 	if (!HeapTupleIsValid(tuple))
 		return 0;
 
-	return nameout(&(((Form_pg_opclass) GETSTRUCT(tuple))->opcname));
+	return nameout(&((Form_pg_opclass) GETSTRUCT(tuple))->opcname);
 }
 
 /*

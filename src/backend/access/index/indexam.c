@@ -147,7 +147,7 @@ index_open(Oid relationId)
 		elog(ERROR, "Index %u does not exist", relationId);
 
 	if (r->rd_rel->relkind != RELKIND_INDEX)
-		elog(ERROR, "%s is not an index relation", r->rd_rel->relname.data);
+		elog(ERROR, "%s is not an index relation", RelationGetRelationName(r));
 
 	return r;
 }
@@ -169,7 +169,7 @@ index_openr(char *relationName)
 		elog(ERROR, "Index '%s' does not exist", relationName);
 
 	if (r->rd_rel->relkind != RELKIND_INDEX)
-		elog(ERROR, "%s is not an index relation", r->rd_rel->relname.data);
+		elog(ERROR, "%s is not an index relation", RelationGetRelationName(r));
 
 	return r;
 }

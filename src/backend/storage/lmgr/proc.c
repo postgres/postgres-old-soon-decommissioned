@@ -155,7 +155,6 @@ InitProcGlobal(IPCKey key, int maxBackends)
 			{
 				IPCKey		semKey = ProcGlobal->currKey + i;
 				int			semId;
-				int			semstat;
 
 				semId = IpcSemaphoreCreate(semKey,
 										   PROC_NSEMS_PER_SET,
@@ -180,7 +179,6 @@ void
 InitProcess(IPCKey key)
 {
 	bool		found = false;
-	int			semstat;
 	unsigned long location,
 				myOffset;
 

@@ -82,7 +82,7 @@ namelike(NameData *n, struct varlena * p)
 {
 	if (!n)
 		return FALSE;
-	return fixedlen_like(n->data, p, NAMEDATALEN);
+	return fixedlen_like(NameStr(*n), p, NAMEDATALEN);
 }
 
 bool

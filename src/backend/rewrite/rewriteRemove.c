@@ -46,7 +46,7 @@ RewriteGetRuleEventRel(char *rulename)
 	if (!HeapTupleIsValid(htup))
 		elog(ERROR, "Class '%u' not found", eventrel);
 
-	return ((Form_pg_class) GETSTRUCT(htup))->relname.data;
+	return NameStr(((Form_pg_class) GETSTRUCT(htup))->relname);
 }
 
 /* ----------------------------------------------------------------

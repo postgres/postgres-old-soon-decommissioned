@@ -245,7 +245,7 @@ printatt(unsigned attributeId,
 {
 	printf("\t%2d: %s%s%s%s\t(typeid = %u, len = %d, typmod = %d, byval = %c)\n",
 		   attributeId,
-		   attributeP->attname.data,
+		   NameStr(attributeP->attname),
 		   value != NULL ? " = \"" : "",
 		   value != NULL ? value : "",
 		   value != NULL ? "\"" : "",

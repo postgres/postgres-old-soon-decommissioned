@@ -407,7 +407,7 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
 				makeResdom(attrno,
 						   thisatt->atttypid,
 						   thisatt->atttypmod,
-						   pstrdup(nameout(&(thisatt->attname))),
+						   pstrdup(NameStr(thisatt->attname)),
 						   0, 0, false),
 				stringToNode(defval[ndef].adbin));
 			qry->targetList = lappend(qry->targetList, te);

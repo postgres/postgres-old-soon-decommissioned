@@ -210,7 +210,7 @@ inv_open(Oid lobjId, int flags)
 
 	r = heap_open(lobjId, AccessShareLock);
 
-	indname = pstrdup((r->rd_rel->relname).data);
+	indname = pstrdup(RelationGetRelationName(r));
 
 	/*
 	 * hack hack hack...  we know that the fourth character of the
@@ -282,7 +282,7 @@ inv_destroy(Oid lobjId)
 	if (!RelationIsValid(r) || r->rd_rel->relkind != RELKIND_LOBJECT)
 		return -1;
 
-	heap_destroy_with_catalog(r->rd_rel->relname.data);
+	heap_destroy_with_catalog(RelationGetRelationName(r));
 	return 1;
 }
 

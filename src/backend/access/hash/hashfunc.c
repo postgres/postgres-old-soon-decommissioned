@@ -177,7 +177,7 @@ hashname(NameData *n)
 	int			len;
 	char	   *key;
 
-	key = n->data;
+	key = NameStr(*n);
 
 	h = 0;
 	len = NAMEDATALEN;

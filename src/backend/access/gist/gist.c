@@ -111,7 +111,7 @@ gistbuild(Relation heap,
 	 */
 
 	if (oldPred == NULL && (nb = RelationGetNumberOfBlocks(index)) != 0)
-		elog(ERROR, "%s already contains data", index->rd_rel->relname.data);
+		elog(ERROR, "%s already contains data", RelationGetRelationName(index));
 
 	/* initialize the root page (if this is a new index) */
 	if (oldPred == NULL)

@@ -78,7 +78,7 @@ fmgr_dynamic(Oid procedureId, int *pronargs)
 	}
 
 	procedureStruct = (Form_pg_proc) GETSTRUCT(procedureTuple);
-	proname = procedureStruct->proname.data;
+	proname = NameStr(procedureStruct->proname);
 	pronargs_save = *pronargs = procedureStruct->pronargs;
 	probinattr = heap_getattr(procedureTuple,
 							  Anum_pg_proc_probin,

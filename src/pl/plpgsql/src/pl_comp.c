@@ -1212,7 +1212,7 @@ plpgsql_parse_wordrowtype(char *string)
 		strcat(var->refname, ".");
 		strcat(var->refname, cp);
 		var->datatype = malloc(sizeof(PLpgSQL_type));
-		var->datatype->typname = strdup(nameout(&(typeStruct->typname)));
+		var->datatype->typname = strdup(NameStr(typeStruct->typname));
 		var->datatype->typoid = typetup->t_data->t_oid;
 		fmgr_info(typeStruct->typinput, &(var->datatype->typinput));
 		var->datatype->typbyval = typeStruct->typbyval;

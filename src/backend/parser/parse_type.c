@@ -47,7 +47,7 @@ typeidTypeName(Oid id)
 		return NULL;
 	}
 	typetuple = (Form_pg_type) GETSTRUCT(tup);
-	return (typetuple->typname).data;
+	return NameStr(typetuple->typname);
 }
 
 /* return a Type structure, given a type id */
@@ -118,7 +118,7 @@ typeTypeName(Type t)
 	Form_pg_type typ;
 
 	typ = (Form_pg_type) GETSTRUCT(t);
-	return (typ->typname).data;
+	return NameStr(typ->typname);
 }
 
 /* given a type, return its typetype ('c' for 'c'atalog types) */

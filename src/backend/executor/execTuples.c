@@ -913,7 +913,7 @@ ExecTypeFromTL(List *targetList)
 							(Oid) restype,
 							resdom->resno,
 							resdom->reslen,
-							resdom->resname->data,
+							NameStr(*resdom->resname),
 							get_typbyval(restype),
 							get_typalign(restype));
 */

@@ -584,7 +584,7 @@ RelationInvalidateHeapTuple(Relation relation, HeapTuple tuple)
 	 *	this only works for system relations now
 	 * ----------------
 	 */
-	if (!IsSystemRelationName(RelationGetForm(relation)->relname.data))
+	if (!IsSystemRelationName(NameStr(RelationGetForm(relation)->relname)))
 		return;
 
 	/* ----------------

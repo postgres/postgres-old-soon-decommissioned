@@ -197,7 +197,7 @@ updateTargetListEntry(ParseState *pstate,
 		Node	   *arrayBase;
 		ArrayRef   *aref;
 
-		att->relname = pstrdup(RelationGetRelationName(rd)->data);
+		att->relname = pstrdup(RelationGetRelationName(rd));
 		att->attrs = lcons(makeString(colname), NIL);
 		arrayBase = ParseNestedFuncOrColumn(pstate, att,
 											&pstate->p_last_resno,
@@ -381,7 +381,7 @@ checkInsertTargets(ParseState *pstate, List *cols, List **attrnos)
 			Ident	   *id = makeNode(Ident);
 
 			id->name = palloc(NAMEDATALEN);
-			StrNCpy(id->name, attr[i]->attname.data, NAMEDATALEN);
+			StrNCpy(id->name, NameStr(attr[i]->attname), NAMEDATALEN);
 			id->indirection = NIL;
 			id->isRel = false;
 			cols = lappend(cols, id);

@@ -659,7 +659,7 @@ plpgsql_exec_trigger(PLpgSQL_function * func,
 
 	var = (PLpgSQL_var *) (estate.datums[func->tg_relname_varno]);
 	var->isnull = false;
-	var->value = (Datum) namein(nameout(&(trigdata->tg_relation->rd_rel->relname)));
+	var->value = (Datum) namein(RelationGetRelationName(trigdata->tg_relation));
 
 	var = (PLpgSQL_var *) (estate.datums[func->tg_nargs_varno]);
 	var->isnull = false;
