@@ -420,10 +420,12 @@ fi
 
 # ----------
 # Create the regression database
+# We use template0 so that any installation-local cruft in template1
+# will not mess up the tests.
 # ----------
 
 message "creating database \"$dbname\""
-"$bindir/createdb" $encoding_opt $psql_options "$dbname"
+"$bindir/createdb" $encoding_opt $psql_options --template template0 "$dbname"
 if [ $? -ne 0 ]; then
     echo "$me: createdb failed"
     (exit 2); exit
