@@ -605,10 +605,14 @@ create_unique_plan(Query *root, UniquePath *best_path)
 			subplan->targetlist = newtlist;
 	}
 
+	/* Done if we don't need to do any actual unique-ifying */
+	if (best_path->umethod == UNIQUE_PATH_NOOP)
+		return subplan;
+
 	/* Copy tlist again to make one we can put sorting labels on */
 	my_tlist = copyObject(subplan->targetlist);
 
-	if (best_path->use_hash)
+	if (best_path->umethod == UNIQUE_PATH_HASH)
 	{
 		long		numGroups;
 

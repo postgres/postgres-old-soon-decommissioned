@@ -1023,7 +1023,7 @@ _outUniquePath(StringInfo str, UniquePath *node)
 	_outPathInfo(str, (Path *) node);
 
 	WRITE_NODE_FIELD(subpath);
-	WRITE_BOOL_FIELD(use_hash);
+	WRITE_ENUM_FIELD(umethod, UniquePathMethod);
 	WRITE_FLOAT_FIELD(rows, "%.0f");
 }
 

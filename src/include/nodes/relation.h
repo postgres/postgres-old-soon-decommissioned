@@ -442,15 +442,26 @@ typedef struct MaterialPath
  * its subpath.
  *
  * This is unlike the other Path nodes in that it can actually generate
- * two different plans: either hash-based or sort-based implementation.
- * The decision is sufficiently localized that it's not worth having two
- * separate Path node types.
+ * different plans: either hash-based or sort-based implementation, or a
+ * no-op if the input path can be proven distinct already.  The decision
+ * is sufficiently localized that it's not worth having separate Path node
+ * types.  (Note: in the no-op case, we could eliminate the UniquePath node
+ * entirely and just return the subpath; but it's convenient to have a
+ * UniquePath in the path tree to signal upper-level routines that the input
+ * is known distinct.)
  */
+typedef enum
+{
+	UNIQUE_PATH_NOOP,			/* input is known unique already */
+	UNIQUE_PATH_HASH,			/* use hashing */
+	UNIQUE_PATH_SORT			/* use sorting */
+} UniquePathMethod;
+
 typedef struct UniquePath
 {
 	Path		path;
 	Path	   *subpath;
-	bool		use_hash;
+	UniquePathMethod umethod;
 	double		rows;			/* estimated number of result tuples */
 } UniquePath;
 

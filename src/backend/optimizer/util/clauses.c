@@ -921,6 +921,21 @@ has_distinct_on_clause(Query *query)
 	return false;
 }
 
+/*
+ * Test whether a query uses simple DISTINCT, ie, has a distinct-list that
+ * is the same as the set of output columns.
+ */
+bool
+has_distinct_clause(Query *query)
+{
+	/* Is there a DISTINCT clause at all? */
+	if (query->distinctClause == NIL)
+		return false;
+
+	/* It's DISTINCT if it's not DISTINCT ON */
+	return !has_distinct_on_clause(query);
+}
+
 
 /*****************************************************************************
  *																			 *
