@@ -1642,7 +1642,8 @@ END IF;
 
       <para>
        <literal>ELSEIF</> is an alias for <literal>ELSIF</>.
-     </para>
+      </para>
+     </sect3>
    </sect2>
 
    <sect2 id="plpgsql-control-structures-loops">
