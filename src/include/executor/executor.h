@@ -79,8 +79,8 @@ ExecEvalParam(Param *expression, ExprContext *econtext,
 			  bool *isNull);
 
 /* stop here */
-extern char *
-GetAttributeByNum(TupleTableSlot *slot, AttrNumber attrno, bool *isNull);
+extern char *GetAttributeByNum(TupleTableSlot *slot, AttrNumber attrno,
+			 bool *isNull);
 extern char *
 GetAttributeByName(TupleTableSlot *slot, char *attname, bool *isNull);
 extern Datum

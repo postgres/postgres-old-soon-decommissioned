@@ -24,8 +24,6 @@
 #include "utils/palloc.h"
 #include "utils/tqual.h"
 
-static bool heapisoverride(void);
-
 extern bool PostgresIsInitialized;
 
 /*
@@ -51,7 +49,8 @@ setheapoverride(bool on)
 	}
 }
 
-static bool
+/* static, but called in debug macro */
+bool
 heapisoverride()
 {
 	if (!TransactionIdIsValid(HeapSpecialTransactionId))
