@@ -104,11 +104,23 @@ ExecScan(Scan *node,
 		/* ----------------
 		 *	if the slot returned by the accessMtd contains
 		 *	NULL, then it means there is nothing more to scan
-		 *	so we just return the empty slot.
+		 *	so we just return the empty slot...
+		 *
+		 *  ... with invalid TupleDesc (not the same as in 
+		 *  projInfo->pi_slot) and break upper MergeJoin node.
+		 *  New code below do what ExecProject() does.	- vadim 02/26/98
 		 * ----------------
 		 */
 		if (TupIsNull(slot))
-			return slot;
+		{
+			scanstate->cstate.cs_TupFromTlist = false;
+			resultSlot = scanstate->cstate.cs_ProjInfo->pi_slot;
+			return (TupleTableSlot *)
+				ExecStoreTuple (NULL,
+								resultSlot,
+								InvalidBuffer,
+								true);
+		}
 
 		/* ----------------
 		 *	 place the current tuple into the expr context
