@@ -43,7 +43,7 @@ extern int S_LOCK_FREE(slock_t *lock);
 
 #endif /* HAS_TEST_AND_SET */
 
-#ifdef NEED_UNION_SEMUN
+#ifndef HAVE_UNION_SEMUN
 union semun {
     int val;
     struct semid_ds *buf;
