@@ -1922,6 +1922,10 @@ DESCR("sequence next value");
 DATA(insert OID =  1319 (  currval	   PGUID 11 f t f 1 f 23 "25" 100 0 0 100  foo bar ));
 DESCR("sequence current value");
 
+DATA(insert OID = 1600 ( version       PGUID 11 f t t 0 f 25 "" 100 0 0 100 foo bar ));
+DESCR("PostgreSQL version string");
+
+
 /*
  * prototypes for functions pg_proc.c
  */

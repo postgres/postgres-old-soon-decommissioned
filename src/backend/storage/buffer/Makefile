@@ -24,7 +24,11 @@ depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 
-	rm -f SUBSYS.o $(OBJS)
+	rm -f SUBSYS.o $(OBJS) tas_test
+
+tas_test: s_lock.c
+	$(CC) $(CFLAGS) -DTAS_TEST=1 -g s_lock.c -o tas_test
+	./tas_test
 
 ifeq (depend,$(wildcard depend))
 include depend
