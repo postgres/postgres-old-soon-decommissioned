@@ -1212,7 +1212,7 @@ bitposition(PG_FUNCTION_ARGS)
 				is_match = ((cmp ^ *p) & mask1) == 0;
 				if (!is_match)
 					break;
-				// Move on to the next byte
+				/* Move on to the next byte */
 				p++;
 				if (p == VARBITEND(arg)) {
 					mask2 = end_mask << (BITS_PER_BYTE - is);
