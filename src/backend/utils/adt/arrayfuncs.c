@@ -1832,7 +1832,9 @@ _LOtransfer(char **destfd,
 			int isDestLO)
 {
 #define MAX_READ (512 * 1024)
+#if !defined(min)
 #define min(a, b) (a < b ? a : b)
+#endif
 	struct varlena *v = NULL;
 	int			tmp,
 				inc,

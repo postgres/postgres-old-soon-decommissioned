@@ -28,8 +28,12 @@
 #define MANY  10000
 #define MAXPAT 20
 #define quot_ceil(x,y)	(((x)+(y)-1)/(y))
+#if !defined(min)
 #define min(x,y)		(((x) < (y))? (x) : (y))
+#endif
+#if !defined(max)
 #define max(x,y)		(((x) > (y))? (x) : (y))
+#endif
 
 static CHUNK_INFO cInfo;
 
