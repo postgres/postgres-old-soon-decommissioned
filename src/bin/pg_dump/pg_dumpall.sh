@@ -201,7 +201,7 @@ while read DATABASE DBOWNER ENCODING ; do
     fi
 
     echo "${BS}connect $DATABASE $DBOWNER"
-    $PGDUMP -d "$DATABASE"
+    $PGDUMP "$DATABASE"
     if [ "$?" -ne 0 ] ; then
         echo "pg_dump failed on $DATABASE, exiting" 1>&2
         exit 1
