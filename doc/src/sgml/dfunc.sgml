@@ -233,8 +233,8 @@ ld -shared -expect_unresolved '*' -o foo.so foo.o
    </varlistentry>
 
    <varlistentry>
-    <term><productname>Unixware</productname></term>
-    <indexterm><primary>Unixware</></>
+    <term><productname>UnixWare</productname></term>
+    <indexterm><primary>UnixWare</></>
     <listitem>
      <para>
       The compiler flag to create <acronym>PIC</acronym> is <option>-K

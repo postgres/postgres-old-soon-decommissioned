@@ -2212,7 +2212,7 @@ set semsys:seminfo_semmsl=32
 
      <varlistentry>
       <term><systemitem class="osname">UnixWare</></term>
-      <indexterm><primary>Unixware</></>
+      <indexterm><primary>UnixWare</></>
       <listitem>
        <para>
         On <productname>UnixWare</> 7, the maximum size for shared

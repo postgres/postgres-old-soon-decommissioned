@@ -497,7 +497,7 @@ pgsql
     <para>
      At the time of writing, binaries are available for
      Alpha/Tru64, ix86/xBSD,
-     HPPA/HPUX-10.20, MIPS/irix,
+     HPPA/HP-UX 10.20, MIPS/IRIX,
      ix86/linux-libc5, ix86/linux-glibc,
      Sparc/Solaris, and Sparc/SunOS.
     </para>
