@@ -31,6 +31,7 @@
 #include "optimizer/paths.h"
 #include "optimizer/planmain.h"
 #include "parser/parse_expr.h"
+#include "storage/fd.h"
 #include "storage/freespace.h"
 #include "storage/lock.h"
 #include "storage/proc.h"
@@ -301,6 +302,9 @@ static struct config_int
 
 	{"vacuum_mem", PGC_USERSET, &VacuumMem,
 	8192, 1024, INT_MAX, NULL, NULL},
+
+	{"max_files_per_process", PGC_BACKEND, &max_files_per_process,
+	1000, 25, INT_MAX, NULL, NULL},
 
 	{"debug_level", PGC_USERSET, &DebugLvl,
 	0, 0, 16, NULL, NULL},

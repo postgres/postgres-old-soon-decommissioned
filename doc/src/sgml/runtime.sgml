@@ -1219,6 +1219,26 @@ dynamic_library_path = '/usr/local/lib/postgresql:/home/my_project/lib:$libdir'
      </varlistentry>
 
      <varlistentry>
+      <term><varname>MAX_FILES_PER_PROCESS</varname> (<type>integer</type>)</term>
+      <listitem>
+       <para>
+        Sets the maximum number of simultaneously open files in each server
+	process.  The default is 1000.  The limit actually used by the code
+	is the smaller of this setting and the result of
+	<literal>sysconf(_SC_OPEN_MAX)</literal>.
+	Therefore, on systems where sysconf returns a reasonable limit,
+	you don't need to worry about this setting.  But on some platforms
+	(notably, most BSD systems), sysconf returns a value that is much
+	larger than the system can really support when a large number of
+	processes all try to open that many files.  If you find yourself
+	seeing <quote>Too many open files</> failures, try reducing this
+	setting.
+        This option can only be set at server start.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term><varname>MAX_FSM_RELATIONS</varname> (<type>integer</type>)</term>
       <listitem>
        <para>

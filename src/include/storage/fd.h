@@ -43,6 +43,11 @@ typedef char *FileName;
 
 typedef int File;
 
+
+/* GUC parameter */
+extern int max_files_per_process;
+
+
 /*
  * prototypes for functions in fd.c
  */
