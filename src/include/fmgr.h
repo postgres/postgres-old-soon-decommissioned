@@ -45,8 +45,7 @@ typedef struct FmgrInfo
 								 * count */
 	bool		fn_strict;		/* function is "strict" (NULL in => NULL
 								 * out) */
-	bool		fn_retset;		/* function returns a set (over multiple
-								 * calls) */
+	bool		fn_retset;		/* function returns a set */
 	void	   *fn_extra;		/* extra space for use by handler */
 	MemoryContext fn_mcxt;		/* memory context to store fn_extra in */
 } FmgrInfo;

@@ -78,7 +78,7 @@ endif
 
 $(srcdir)/pl_scan.c: scan.l
 ifdef FLEX
-	$(FLEX) -i $(FLEXFLAGS) -Pplpgsql_base_yy -o'$@' $<
+	$(FLEX) $(FLEXFLAGS) -Pplpgsql_base_yy -o'$@' $<
 else
 	@$(missing) flex $< $@
 endif

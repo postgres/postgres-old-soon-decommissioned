@@ -315,9 +315,7 @@ ERROR:  function declared to return emp returns varchar instead of text at colum
      function, as described below.  It can also be called in the context
      of an SQL expression, but only when you
      extract a single attribute out of the row or pass the entire row into
-     another function that accepts the same composite type.  (Trying to
-     display the entire row value will yield 
-     a meaningless number.)  For example,
+     another function that accepts the same composite type.  For example,
 
 <programlisting>
 SELECT (new_emp()).name;

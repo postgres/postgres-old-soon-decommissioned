@@ -921,7 +921,8 @@ env PGOPTIONS='-c geqo=off' psql
         built (see the configure option
         <literal>--enable-cassert</literal>). Note that
         <literal>DEBUG_ASSERTIONS</literal> defaults to on if
-        <productname>PostgreSQL</productname> has been built this way.
+        <productname>PostgreSQL</productname> has been built with
+	assertions enabled.
        </para>
       </listitem>
      </varlistentry>
