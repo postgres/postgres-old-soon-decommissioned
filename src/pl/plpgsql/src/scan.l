@@ -51,8 +51,8 @@ static void plpgsql_input(char *buf, int *result, int max);
 #define YY_NO_UNPUT
 %}
 
-WS	[[:alpha:]_"]
-WC	[[:alnum:]_"]
+WS    [\200-\377_A-Za-z"]
+WC    [\200-\377_A-Za-z0-9"]
 
 %x	IN_STRING IN_COMMENT
 
