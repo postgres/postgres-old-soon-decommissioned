@@ -1247,18 +1247,26 @@ pgstat_main(void)
 		 */
 		if (need_statwrite)
 		{
-			gettimeofday(&timeout, NULL);
-			timeout.tv_usec = next_statwrite.tv_usec - timeout.tv_usec;
-			timeout.tv_sec = next_statwrite.tv_sec - timeout.tv_sec;
-			if (timeout.tv_usec < 0)
-			{
-				timeout.tv_sec -= 1;
-				timeout.tv_usec += 1000000;
-			}
-			if (timeout.tv_sec < 0)
+			struct timeval now;
+
+			gettimeofday(&now, NULL);
+			/* avoid assuming that tv_sec is signed */
+			if (now.tv_sec > next_statwrite.tv_sec ||
+				(now.tv_sec == next_statwrite.tv_sec &&
+				 now.tv_usec >= next_statwrite.tv_usec))
 			{
 				timeout.tv_sec = 0;
 				timeout.tv_usec = 0;
+			}
+			else
+			{
+				timeout.tv_sec = next_statwrite.tv_sec - now.tv_sec;
+				timeout.tv_usec = next_statwrite.tv_usec - now.tv_usec;
+				if (timeout.tv_usec < 0)
+				{
+					timeout.tv_sec--;
+					timeout.tv_usec += 1000000;
+				}
 			}
 		}
 
