@@ -361,6 +361,7 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 		{"expanded", no_argument, NULL, 'x'},
 		{"no-psqlrc", no_argument, NULL, 'X'},
 		{"help", no_argument, NULL, '?'},
+		{NULL, 0, NULL, 0}
 	};
 
 	int			optindex;
