@@ -1749,6 +1749,7 @@ _copyColumnDef(ColumnDef *from)
 	if (from->cooked_default)
 		newnode->cooked_default = pstrdup(from->cooked_default);
 	Node_Copy(from, newnode, constraints);
+	Node_Copy(from, newnode, support);
 
 	return newnode;
 }

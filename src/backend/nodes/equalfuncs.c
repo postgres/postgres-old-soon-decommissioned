@@ -1636,6 +1636,8 @@ _equalColumnDef(ColumnDef *a, ColumnDef *b)
 		return false;
 	if (!equal(a->constraints, b->constraints))
 		return false;
+	if (!equal(a->support, b->support))
+		return false;
 
 	return true;
 }

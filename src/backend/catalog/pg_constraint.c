@@ -198,17 +198,11 @@ CreateConstraintEntry(const char *constraintName,
 	if (OidIsValid(foreignRelId))
 	{
 		/*
-		 * Register dependency from constraint to foreign relation,
+		 * Register normal dependency from constraint to foreign relation,
 		 * or to specific column(s) if any are mentioned.
-		 *
-		 * In normal case of two separate relations, make this a NORMAL
-		 * dependency (so dropping the FK table would require CASCADE).
-		 * However, for a self-reference just make it AUTO.
 		 */
-		DependencyType	deptype;
 		ObjectAddress	relobject;
 
-		deptype = (foreignRelId == relId) ? DEPENDENCY_AUTO : DEPENDENCY_NORMAL;
 		relobject.classId = RelOid_pg_class;
 		relobject.objectId = foreignRelId;
 		if (foreignNKeys > 0)
@@ -217,14 +211,14 @@ CreateConstraintEntry(const char *constraintName,
 			{
 				relobject.objectSubId = foreignKey[i];
 
-				recordDependencyOn(&conobject, &relobject, deptype);
+				recordDependencyOn(&conobject, &relobject, DEPENDENCY_NORMAL);
 			}
 		}
 		else
 		{
 			relobject.objectSubId = 0;
 
-			recordDependencyOn(&conobject, &relobject, deptype);
+			recordDependencyOn(&conobject, &relobject, DEPENDENCY_NORMAL);
 		}
 	}
 

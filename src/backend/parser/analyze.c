@@ -848,6 +848,12 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 		cxt->blist = lappend(cxt->blist, seqstmt);
 
 		/*
+		 * Mark the ColumnDef so that during execution, an appropriate
+		 * dependency will be added from the sequence to the column.
+		 */
+		column->support = makeRangeVar(snamespace, sname);
+
+		/*
 		 * Create appropriate constraints for SERIAL.  We do this in full,
 		 * rather than shortcutting, so that we will detect any
 		 * conflicting constraints the user wrote (like a different

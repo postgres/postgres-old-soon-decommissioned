@@ -1852,10 +1852,11 @@ CreateAsElement:
 					ColumnDef *n = makeNode(ColumnDef);
 					n->colname = $1;
 					n->typename = NULL;
+					n->is_not_null = false;
 					n->raw_default = NULL;
 					n->cooked_default = NULL;
-					n->is_not_null = FALSE;
-					n->constraints = NULL;
+					n->constraints = NIL;
+					n->support = NULL;
 					$$ = (Node *)n;
 				}
 		;

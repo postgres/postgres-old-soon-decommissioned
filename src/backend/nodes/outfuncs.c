@@ -183,6 +183,8 @@ _outColumnDef(StringInfo str, ColumnDef *node)
 	_outToken(str, node->cooked_default);
 	appendStringInfo(str, " :constraints ");
 	_outNode(str, node->constraints);
+	appendStringInfo(str, " :support ");
+	_outNode(str, node->support);
 }
 
 static void

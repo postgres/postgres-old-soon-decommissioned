@@ -124,11 +124,15 @@ DefineSequence(CreateSeqStmt *seq)
 		typnam->setof = FALSE;
 		typnam->arrayBounds = NIL;
 		typnam->typmod = -1;
+
 		coldef = makeNode(ColumnDef);
 		coldef->typename = typnam;
+		coldef->is_not_null = true;
 		coldef->raw_default = NULL;
 		coldef->cooked_default = NULL;
-		coldef->is_not_null = false;
+		coldef->constraints = NIL;
+		coldef->support = NULL;
+
 		null[i - 1] = ' ';
 
 		switch (i)

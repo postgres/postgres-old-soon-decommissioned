@@ -98,4 +98,6 @@ extern void recordMultipleDependencies(const ObjectAddress *depender,
 									   int nreferenced,
 									   DependencyType behavior);
 
+extern void deleteDependencyRecordsFor(Oid classId, Oid objectId);
+
 #endif   /* DEPENDENCY_H */
