@@ -132,7 +132,7 @@ void        unset_result(PGresult *oldres);
   </para>
 
   <para>
-   There are a variety of demonstration programs in the
+   There are several demonstration programs in the
    source directory.
   </para>
  </chapter>
