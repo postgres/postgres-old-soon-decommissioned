@@ -36,15 +36,6 @@ typedef struct {
 } TimeSpan;
 
 
-/*
- * USE_NEW_DATE enables a more efficient Julian day-based date type.
- * USE_NEW_TIME enables a more efficient double-based time type.
- */
-
-#define USE_NEW_DATE	1
-#define USE_NEW_TIME	1
-
-
 /* ----------------------------------------------------------------
  *		time types + support macros
  *

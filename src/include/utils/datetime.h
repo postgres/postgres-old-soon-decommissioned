@@ -15,34 +15,8 @@
 
 #include "utils/dt.h"
 
-#if USE_NEW_DATE
-
 typedef int32	DateADT;
 
-#else
-
-/* these things look like structs, but we pass them by value so be careful
-   For example, passing an int -> DateADT is not portable! */
-typedef struct DateADT {
-    char	day;
-    char	month;
-    short	year;
-} DateADT;
-
-#endif
-
-#if USE_NEW_TIME
-
 typedef float8	TimeADT;
-
-#else
-
-typedef struct TimeADT {
-    short	hr;
-    short	min;
-    float	sec;
-} TimeADT;
-
-#endif
 
 #endif /* DATETIME_H */
