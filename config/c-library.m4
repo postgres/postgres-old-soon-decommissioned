@@ -8,8 +8,9 @@
 # HAVE_INT_TIMEZONE.
 AC_DEFUN([PGAC_VAR_INT_TIMEZONE],
 [AC_CACHE_CHECK(for int timezone, pgac_cv_var_int_timezone,
-[AC_TRY_LINK([#include <time.h>],
-  [int res = timezone / 60;],
+[AC_TRY_LINK([#include <time.h>
+int res;],
+  [res = timezone / 60;],
   [pgac_cv_var_int_timezone=yes],
   [pgac_cv_var_int_timezone=no])])
 if test x"$pgac_cv_var_int_timezone" = xyes ; then
@@ -131,8 +132,9 @@ fi])
 # HAVE_SYS_NERR.
 AC_DEFUN([PGAC_VAR_SYS_NERR],
 [AC_CACHE_CHECK([for sys_nerr], pgac_cv_var_sys_nerr,
-[AC_TRY_LINK([extern int sys_nerr;],
-  [int x = sys_nerr;],
+[AC_TRY_LINK([extern int sys_nerr;
+int x;],
+  [x = sys_nerr;],
   [pgac_cv_var_sys_nerr=yes],
   [pgac_cv_var_sys_nerr=no])])
 if test x"$pgac_cv_var_sys_nerr" = xyes ; then
