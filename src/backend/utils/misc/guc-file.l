@@ -38,17 +38,18 @@ enum {
 	GUC_ERROR = 100
 };
 
-#if defined(yywrap)
-#undef yywrap
-#endif /* yywrap */
-
 #define YY_USER_INIT (ConfigFileLineno = 1)
-#define YY_NO_UNPUT
 
 /* prototype, so compiler is happy with our high warnings setting */
 int GUC_yylex(void);
 char *GUC_scanstr(char *);
 %}
+
+%option 8bit
+%option never-interactive
+%option nounput
+%option noyywrap
+
 
 SIGN            ("-"|"+")
 DIGIT           [0-9]
@@ -270,12 +271,6 @@ ProcessConfigFile(GucContext context)
 }
 
 
-
-int
-yywrap(void)
-{
-	return 1;
-}
 
 /* ----------------
  *		scanstr

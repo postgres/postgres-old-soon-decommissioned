@@ -52,8 +52,12 @@ int	plpgsql_SpaceScanned = 0;
 static void plpgsql_input(char *buf, int *result, int max);
 
 #define YY_INPUT(buf,res,max)	plpgsql_input(buf, &res, max)
-#define YY_NO_UNPUT
 %}
+
+%option 8bit
+%option never-interactive
+%option nounput
+%option noyywrap
 
 %option yylineno
 
@@ -214,12 +218,6 @@ dump			{ return O_DUMP;			}
 .			{ return yytext[0];			}
 
 %%
-
-int
-yywrap()
-{
-    return 1;
-}
 
 
 static void
