@@ -486,15 +486,17 @@ transformAssignmentIndirection(ParseState *pstate,
 			if (!typrelid)
 				ereport(ERROR,
 						(errcode(ERRCODE_DATATYPE_MISMATCH),
-						 errmsg("cannot assign to a column of type %s because it is not a composite type",
+						 errmsg("cannot assign to field \"%s\" of column \"%s\" because its type %s is not a composite type",
+								strVal(n), targetName,
 								format_type_be(targetTypeId))));
 
 			attnum = get_attnum(typrelid, strVal(n));
 			if (attnum == InvalidAttrNumber)
 				ereport(ERROR,
 						(errcode(ERRCODE_UNDEFINED_COLUMN),
-						 errmsg("column \"%s\" not found in data type %s",
-							  strVal(n), format_type_be(targetTypeId))));
+						 errmsg("cannot assign to field \"%s\" of column \"%s\" because there is no such column in data type %s",
+								strVal(n), targetName,
+								format_type_be(targetTypeId))));
 			if (attnum < 0)
 				ereport(ERROR,
 						(errcode(ERRCODE_UNDEFINED_COLUMN),
