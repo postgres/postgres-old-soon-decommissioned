@@ -25,11 +25,6 @@ ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)
 endif
 
-ifeq ($(CC), gcc)
-  CFLAGS+= -Wno-error
-endif
-
-
 shlib             := 
 install-shlib-dep :=
 

@@ -17,13 +17,6 @@ INCLUDE_OPT= -I.. \
 
 CFLAGS+= $(INCLUDE_OPT)
 
-ifeq ($(CC), gcc)
-# Until we figure out how to get rid of the warnings in this directory,
-# we must turn off any -Werror that is in CFLAGS now.  These options only
-# exist for the gcc compiler.
-CFLAGS+= -Wno-error
-endif
-
 OBJS= aclchk.o dest.o fastpath.o postgres.o pquery.o utility.o variable.o
 
 all: SUBSYS.o

@@ -311,7 +311,11 @@ text_lt(struct varlena *arg1, struct varlena *arg2)
 	    len--;
 	}
     if (len)
+#ifdef USE_LOCALE
+        return (bool) (strcoll(a2p,a1p));
+#else
 	return (bool) (*a1p < *a2p);
+#endif
     else
 	return (bool) (arg1->vl_len < arg2->vl_len);
 }
@@ -342,7 +346,11 @@ text_le(struct varlena *arg1, struct varlena *arg2)
 	    len--;
 	}
     if (len)
+#ifdef USE_LOCALE
+        return (bool) (strcoll(a2p,a1p));
+#else
 	return (bool) (*a1p < *a2p);
+#endif
     else
 	return ((bool) VARSIZE(arg1) <= VARSIZE(arg2));
 }

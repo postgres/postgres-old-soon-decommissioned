@@ -14,6 +14,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#ifdef USE_LOCALE  
+  #include <locale.h>
+#endif
 #include "postgres.h"
 #include "miscadmin.h"
 #include "bootstrap/bootstrap.h"	/* for BootstrapMain() */
@@ -31,6 +34,10 @@ int
 main(int argc, char *argv[])
 {
     int len;
+#ifdef USE_LOCALE
+    setlocale(LC_CTYPE,""); /* take locale information from an environment */
+    setlocale(LC_COLLATE,"");
+#endif
 #if defined(NOFIXADE) || defined(NOPRINTADE)
     /*
      * Must be first so that the bootstrap code calls it, too.

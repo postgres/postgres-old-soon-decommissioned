@@ -17,17 +17,6 @@ INCLUDE_OPT = -I.. \
 
 CFLAGS+=$(INCLUDE_OPT)
 
-ifeq ($(PORTNAME), sparc_solaris)
-
-ifeq ($(CC), gcc)
-# Until we figure out how to get rid of the warnings in this directory,
-# we must turn off any -Werror that is in CFLAGS now.  These options only
-# exist for the gcc compiler.
-CFLAGS+= -Wno-error
-endif
-
-endif
-
 OBJS = postmaster.o
 
 all: SUBSYS.o
