@@ -15,6 +15,7 @@ SO_MAJOR_VERSION= 1
 SO_MINOR_VERSION= 0
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
+override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
 
 OBJS= seg.o segparse.o segscan.o buffer.o
 

@@ -11,6 +11,7 @@ SONAME	:= $(NAME)$(DLSUFFIX)
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 override CFLAGS += $(CFLAGS_SL)
+override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
 
 all: $(SONAME) $(NAME).sql
 

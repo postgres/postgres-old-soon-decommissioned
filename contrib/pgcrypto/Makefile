@@ -43,6 +43,7 @@ SO_MAJOR_VERSION = 0
 SO_MINOR_VERSION = 1
 
 override CPPFLAGS	+= $(CRYPTO_CFLAGS) -I$(srcdir) 
+override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
 
 all: all-lib $(NAME).sql
 

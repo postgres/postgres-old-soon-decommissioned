@@ -115,7 +115,7 @@ extern int	PostmasterMain(int argc, char *argv[]);
 extern bool Noversion;
 extern char *DataDir;
 
-extern int	MyProcPid;
+extern DLLIMPORT int	MyProcPid;
 extern struct Port *MyProcPort;
 extern long MyCancelKey;
 
@@ -126,7 +126,7 @@ extern char OutputFileName[];
  *
  * extern BackendId    MyBackendId;
  */
-extern Oid	MyDatabaseId;
+extern DLLIMPORT Oid	MyDatabaseId;
 
 extern bool IsUnderPostmaster;
 

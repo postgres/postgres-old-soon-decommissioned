@@ -14,6 +14,7 @@ MODS	= $(NAME)$(DLSUFFIX)
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 override CFLAGS += $(CFLAGS_SL)
+override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
 
 ifdef REFINT_VERBOSE
 override CPPFLAGS+= -DREFINT_VERBOSE

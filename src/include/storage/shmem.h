@@ -36,7 +36,7 @@ typedef unsigned long SHMEM_OFFSET;
  * The macros in this header file can only cope with offsets into this
  * shared memory region!
  */
-extern SHMEM_OFFSET ShmemBase;
+extern DLLIMPORT SHMEM_OFFSET ShmemBase;
 
 
 /* coerce an offset into a pointer in this process's address space */

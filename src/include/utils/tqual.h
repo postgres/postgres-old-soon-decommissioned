@@ -36,7 +36,7 @@ typedef SnapshotData *Snapshot;
 
 extern Snapshot SnapshotDirty;
 extern Snapshot QuerySnapshot;
-extern Snapshot SerializableSnapshot;
+extern DLLIMPORT Snapshot SerializableSnapshot;
 
 extern bool ReferentialIntegritySnapshotOverride;
 
