@@ -545,7 +545,7 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 			erm = (execRowMark *) palloc(sizeof(execRowMark));
 			erm->relation = relation;
 			erm->rti = rti;
-			sprintf(erm->resname, "ctid%u", rti);
+			snprintf(erm->resname, 32, "ctid%u", rti);
 			estate->es_rowMark = lappend(estate->es_rowMark, erm);
 		}
 	}

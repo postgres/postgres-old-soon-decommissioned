@@ -961,7 +961,7 @@ grouping_planner(Query *parse, double tuple_fraction)
 				TargetEntry *ctid;
 
 				resname = (char *) palloc(32);
-				sprintf(resname, "ctid%u", rti);
+				snprintf(resname, 32, "ctid%u", rti);
 				resdom = makeResdom(length(tlist) + 1,
 									TIDOID,
 									-1,

@@ -2096,7 +2096,7 @@ TriggerFuncArg:
 			ICONST
 				{
 					char buf[64];
-					sprintf (buf, "%d", $1);
+					snprintf (buf, sizeof(buf), "%d", $1);
 					$$ = makeString(pstrdup(buf));
 				}
 			| FCONST								{ $$ = makeString($1); }

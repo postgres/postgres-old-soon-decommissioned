@@ -1189,12 +1189,10 @@ static void
 _tarWriteHeader(TAR_MEMBER *th)
 {
 	char		h[512];
-	int			i;
 	int			lastSum = 0;
 	int			sum;
 
-	for (i = 0; i < 512; i++)
-		h[i] = '\0';
+	memset(h, 0, sizeof(h));
 
 	/* Name 100 */
 	sprintf(&h[0], "%.99s", th->targetFile);

@@ -1594,7 +1594,7 @@ read_sql_construct(int until,
 		{
 			case T_VARIABLE:
 				params[nparams] = yylval.variable->dno;
-				sprintf(buf, " $%d ", ++nparams);
+				snprintf(buf, sizeof(buf), " $%d ", ++nparams);
 				plpgsql_dstring_append(&ds, buf);
 				break;
 
@@ -1791,7 +1791,7 @@ make_select_stmt(void)
 		{
 			case T_VARIABLE:
 				params[nparams] = yylval.variable->dno;
-				sprintf(buf, " $%d ", ++nparams);
+				snprintf(buf, sizeof(buf), " $%d ", ++nparams);
 				plpgsql_dstring_append(&ds, buf);
 				break;
 

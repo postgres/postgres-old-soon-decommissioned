@@ -1787,12 +1787,11 @@ to_hex32(PG_FUNCTION_ARGS)
 {
 	static char		digits[] = "0123456789abcdef";
 	char			buf[32];	/* bigger than needed, but reasonable */
-	char		   *ptr,
-				   *end;
+	char		   *ptr;
 	text		   *result_text;
 	int32			value = PG_GETARG_INT32(0);
 
-	end = ptr = buf + sizeof(buf) - 1;
+	ptr = buf + sizeof(buf) - 1;
 	*ptr = '\0';
 
 	do
@@ -1814,12 +1813,11 @@ to_hex64(PG_FUNCTION_ARGS)
 {
 	static char		digits[] = "0123456789abcdef";
 	char			buf[32];	/* bigger than needed, but reasonable */
-	char			*ptr,
-					*end;
+	char			*ptr;
 	text			*result_text;
 	int64			value = PG_GETARG_INT64(0);
 
-	end = ptr = buf + sizeof(buf) - 1;
+	ptr = buf + sizeof(buf) - 1;
 	*ptr = '\0';
 
 	do

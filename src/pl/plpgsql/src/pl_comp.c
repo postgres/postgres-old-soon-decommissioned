@@ -249,7 +249,7 @@ plpgsql_compile(Oid fn_oid, int functype)
 			{
 				char		buf[32];
 
-				sprintf(buf, "$%d", i + 1);	/* name for variable */
+				snprintf(buf, sizeof(buf), "$%d", i + 1);	/* name for variable */
 
 				/*
 				 * Get the parameters type

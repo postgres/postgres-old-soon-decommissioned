@@ -494,9 +494,9 @@ print_aligned_vertical(const char *title, const char *const * headers,
 				}
 
 				if (opt_border == 0)
-					sprintf(record_str, "* Record %d", record++);
+					snprintf(record_str, 32, "* Record %d", record++);
 				else
-					sprintf(record_str, "[ RECORD %d ]", record++);
+					snprintf(record_str, 32, "[ RECORD %d ]", record++);
 				record_str_len = strlen(record_str);
 
 				if (record_str_len + opt_border > strlen(divider))

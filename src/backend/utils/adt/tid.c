@@ -101,7 +101,7 @@ tidout(PG_FUNCTION_ARGS)
 	blockNumber = BlockIdGetBlockNumber(blockId);
 	offsetNumber = itemPtr->ip_posid;
 
-	sprintf(buf, "(%u,%u)", blockNumber, offsetNumber);
+	snprintf(buf, sizeof(buf), "(%u,%u)", blockNumber, offsetNumber);
 
 	PG_RETURN_CSTRING(pstrdup(buf));
 }
