@@ -416,6 +416,38 @@ cost_tidscan(Path *path, Query *root,
 }
 
 /*
+ * cost_subqueryscan
+ *	  Determines and returns the cost of scanning a subquery RTE.
+ */
+void
+cost_subqueryscan(Path *path, RelOptInfo *baserel)
+{
+	Cost		startup_cost;
+	Cost		run_cost;
+	Cost		cpu_per_tuple;
+
+	/* Should only be applied to base relations that are subqueries */
+	Assert(baserel->relid > 0);
+	Assert(baserel->rtekind == RTE_SUBQUERY);
+
+	/*
+	 * Cost of path is cost of evaluating the subplan, plus cost of
+	 * evaluating any restriction clauses that will be attached to the
+	 * SubqueryScan node, plus cpu_tuple_cost to account for selection
+	 * and projection overhead.
+	 */
+	path->startup_cost = baserel->subplan->startup_cost;
+	path->total_cost = baserel->subplan->total_cost;
+
+	startup_cost = baserel->baserestrictcost.startup;
+	cpu_per_tuple = cpu_tuple_cost + baserel->baserestrictcost.per_tuple;
+	run_cost = cpu_per_tuple * baserel->tuples;
+
+	path->startup_cost += startup_cost;
+	path->total_cost += startup_cost + run_cost;
+}
+
+/*
  * cost_functionscan
  *	  Determines and returns the cost of scanning a function RTE.
  */

@@ -56,6 +56,7 @@ extern void cost_index(Path *path, Query *root,
 		   List *indexQuals, bool is_injoin);
 extern void cost_tidscan(Path *path, Query *root,
 			 RelOptInfo *baserel, List *tideval);
+extern void cost_subqueryscan(Path *path, RelOptInfo *baserel);
 extern void cost_functionscan(Path *path, Query *root,
 				  RelOptInfo *baserel);
 extern void cost_sort(Path *path, Query *root,

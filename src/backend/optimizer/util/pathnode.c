@@ -686,9 +686,7 @@ create_subqueryscan_path(RelOptInfo *rel, List *pathkeys)
 	pathnode->parent = rel;
 	pathnode->pathkeys = pathkeys;
 
-	/* just copy the subplan's cost estimates */
-	pathnode->startup_cost = rel->subplan->startup_cost;
-	pathnode->total_cost = rel->subplan->total_cost;
+	cost_subqueryscan(pathnode, rel);
 
 	return pathnode;
 }
