@@ -105,7 +105,7 @@ def __plpython_procedure_myfunc_23456():
    If the <literal>TD["when"]</literal> is <literal>BEFORE</>, you may
    return <literal>None</literal> or <literal>"OK"</literal> from the
    Python function to indicate the row is unmodified,
-   <literal>"SKIP"</> to abort the event, or <literal>"MODIFIED"</> to
+   <literal>"SKIP"</> to abort the event, or <literal>"MODIFY"</> to
    indicate you've modified the row.
   </para>
  </sect1>
