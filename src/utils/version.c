@@ -18,6 +18,7 @@
  *-------------------------------------------------------------------------
  */
 #include <sys/file.h>
+#include <fcntl.h>      /* For open() flags */
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <ctype.h>
