@@ -497,12 +497,6 @@ extern int	PQenv2encoding(void);
 
 /* === in fe-secure.c === */
 
-/*
- *	Indicates whether the libpq thread is in send().
- *	Used to ignore SIGPIPE if thread is in send().
- */
-extern pqbool PQinSend(void);
-
 #ifdef __cplusplus
 }
 #endif

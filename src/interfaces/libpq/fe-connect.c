@@ -866,15 +866,6 @@ connectDBStart(PGconn *conn)
 	const char *node = NULL;
 	int			ret;
 
-#ifdef ENABLE_THREAD_SAFETY
-#ifndef WIN32
-	static pthread_once_t check_sigpipe_once = PTHREAD_ONCE_INIT;
-
-	/* Check only on first connection request */
-	pthread_once(&check_sigpipe_once, pq_check_sigpipe_handler);
-#endif
-#endif
-
 	if (!conn)
 		return 0;
 

@@ -3,6 +3,7 @@ $PostgreSQL$
 PostgreSQL documentation
 -->
 
+
 <refentry id="SQL-COPY">
  <refmeta>
   <refentrytitle id="sql-copy-title">COPY</refentrytitle>

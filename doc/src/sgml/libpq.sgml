@@ -3955,24 +3955,6 @@ which is thread-safe on all platforms.
 </para>
 
 <para>
-<application>libpq</application> must ignore <literal>SIGPIPE</> signals
-generated internally by <function>send()</> calls to backend processes.
-When <productname>PostgreSQL</> is configured without
-<literal>--enable-thread-safety</>, <application>libpq</> sets
-<literal>SIGPIPE</> to <literal>SIG_IGN</> before each
-<function>send()</> call and restores the original signal handler after
-completion. When <literal>--enable-thread-safety</> is used,
-<application>libpq</> installs its own <literal>SIGPIPE</> handler
-before the first database connection.  This handler uses thread-local
-storage to determine if a <literal>SIGPIPE</> signal has been generated
-by a libpq <function>send()</>. If an application wants to install
-its own <literal>SIGPIPE</> signal handler, it should call
-<function>PQinSend()</> to determine if it should ignore the
-<literal>SIGPIPE</> signal. This function is available in both
-thread-safe and non-thread-safe versions of <application>libpq</>.
-</para>
-
-<para>
 If you experience problems with threaded applications, run
 the program in <filename>src/tools/thread</> to see if your
 platform has thread-unsafe functions.  This program is run 
