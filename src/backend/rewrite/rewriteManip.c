@@ -690,34 +690,26 @@ AddHavingQual(Query *parsetree, Node *havingQual)
 	parsetree->hasSubLinks |= checkExprHasSubLink(copy);
 }
 
-#ifdef NOT_USED
+
+/*
+ * Invert the given clause and add it to the WHERE qualifications of the
+ * given querytree.  Inversion means "x IS NOT TRUE", not just "NOT x",
+ * else we will do the wrong thing when x evaluates to NULL.
+ */
 void
-AddNotHavingQual(Query *parsetree, Node *havingQual)
+AddInvertedQual(Query *parsetree, Node *qual)
 {
-	Node	   *notqual;
-
-	if (havingQual == NULL)
-		return;
-
-	/* Need not copy input qual, because AddHavingQual will... */
-	notqual = (Node *) make_notclause((Expr *) havingQual);
-
-	AddHavingQual(parsetree, notqual);
-}
-#endif
-
-void
-AddNotQual(Query *parsetree, Node *qual)
-{
-	Node	   *notqual;
+	BooleanTest *invqual;
 
 	if (qual == NULL)
 		return;
 
 	/* Need not copy input qual, because AddQual will... */
-	notqual = (Node *) make_notclause((Expr *) qual);
+	invqual = makeNode(BooleanTest);
+	invqual->arg = qual;
+	invqual->booltesttype = IS_NOT_TRUE;
 
-	AddQual(parsetree, notqual);
+	AddQual(parsetree, (Node *) invqual);
 }
 
 

@@ -32,7 +32,7 @@ extern Query *getInsertSelectQuery(Query *parsetree, Query ***subquery_ptr);
 
 extern void AddQual(Query *parsetree, Node *qual);
 extern void AddHavingQual(Query *parsetree, Node *havingQual);
-extern void AddNotQual(Query *parsetree, Node *qual);
+extern void AddInvertedQual(Query *parsetree, Node *qual);
 
 extern bool checkExprHasAggs(Node *node);
 extern bool checkExprHasSubLink(Node *node);
