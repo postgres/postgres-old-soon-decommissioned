@@ -128,7 +128,8 @@ do
 	-D)
 	    shift
 	    # pass environment into new postmaster
-	    export PGDATA="$1"
+	    PGDATA="$1"
+	    export PGDATA
 	    ;;
 	-l)
 	    logfile="$2"
