@@ -88,7 +88,7 @@ encnames.c wchar.c : % : $(backend_src)/utils/mb/%
 # Since we can't assume that Windows boxes will have sed, the .DEF files are
 # always built and included in distribution tarballs.
 
-distprep: def-files
+distprep: def-files $(srcdir)/libpq.rc
 
 .PHONY: def-files
 
@@ -148,4 +148,4 @@ clean distclean: clean-lib
 	rm -f $(OBJS) crypt.c getaddrinfo.c inet_aton.c noblock.c pgstrcasecmp.c snprintf.c strerror.c open.c thread.c md5.c ip.c encnames.c wchar.c pthread.h
 
 maintainer-clean: distclean
-	rm -f $(srcdir)/libpqdll.def $(srcdir)/libpqddll.def $(srcdir)/blibpqdll.def
+	rm -f $(srcdir)/libpqdll.def $(srcdir)/libpqddll.def $(srcdir)/blibpqdll.def $(srcdir)/libpq.rc
