@@ -110,8 +110,13 @@ set_plan_references(Plan *plan)
 			set_uppernode_references(plan, (Index) 0);
 			break;
 		case T_Result:
-			/* XXX why does Result use a different subvarno? */
-			set_uppernode_references(plan, (Index) OUTER);
+			/* Result may or may not have a subplan; no need to fix up
+			 * subplan references if it hasn't got one...
+			 *
+			 * XXX why does Result use a different subvarno from Agg/Group?
+			 */
+			if (plan->lefttree != NULL)
+				set_uppernode_references(plan, (Index) OUTER);
 			fix_opids(((Result *) plan)->resconstantqual);
 			break;
 		case T_Append:
