@@ -31,28 +31,28 @@ typedef enum ScanDirection
  *		True iff scan direction is valid.
  */
 #define ScanDirectionIsValid(direction) \
-	((bool) (BackwardScanDirection <= direction && \
-			 direction <= ForwardScanDirection))
+	((bool) (BackwardScanDirection <= (direction) && \
+			 (direction) <= ForwardScanDirection))
 
 /*
  * ScanDirectionIsBackward
  *		True iff scan direction is backward.
  */
 #define ScanDirectionIsBackward(direction) \
-	((bool) (direction == BackwardScanDirection))
+	((bool) ((direction) == BackwardScanDirection))
 
 /*
  * ScanDirectionIsNoMovement
  *		True iff scan direction indicates no movement.
  */
 #define ScanDirectionIsNoMovement(direction) \
-	((bool) (direction == NoMovementScanDirection))
+	((bool) ((direction) == NoMovementScanDirection))
 
 /*
  * ScanDirectionIsForward
  *		True iff scan direction is forward.
  */
 #define ScanDirectionIsForward(direction) \
-	((bool) (direction == ForwardScanDirection))
+	((bool) ((direction) == ForwardScanDirection))
 
 #endif	 /* SDIR_H */
