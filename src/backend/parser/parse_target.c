@@ -155,11 +155,11 @@ transformTargetList(ParseState *pstate, List *targetlist)
 						break;
 				}
 
-				/* XXX do something with schema name */
-				rte = refnameRangeTblEntry(pstate, relname,
+				rte = refnameRangeTblEntry(pstate, schemaname, relname,
 										   &sublevels_up);
 				if (rte == NULL)
-					rte = addImplicitRTE(pstate, makeRangeVar(NULL, relname));
+					rte = addImplicitRTE(pstate, makeRangeVar(schemaname,
+															  relname));
 
 				p_target = nconc(p_target,
 								 expandRelAttrs(pstate, rte));

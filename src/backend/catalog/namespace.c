@@ -1080,7 +1080,7 @@ DeconstructQualifiedName(List *names,
  * Returns the namespace OID.  Raises elog if any problem.
  */
 Oid
-LookupExplicitNamespace(char *nspname)
+LookupExplicitNamespace(const char *nspname)
 {
 	Oid			namespaceId;
 	AclResult	aclresult;

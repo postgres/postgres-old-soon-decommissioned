@@ -69,7 +69,7 @@ extern bool OpclassIsVisible(Oid opcid);
 extern void DeconstructQualifiedName(List *names,
 									 char **nspname_p,
 									 char **objname_p);
-extern Oid	LookupExplicitNamespace(char *nspname);
+extern Oid	LookupExplicitNamespace(const char *nspname);
 
 extern Oid	QualifiedNameGetCreationNamespace(List *names, char **objname_p);
 extern RangeVar *makeRangeVarFromNameList(List *names);
