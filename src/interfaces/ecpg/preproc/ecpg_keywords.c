@@ -57,7 +57,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"open", SQL_OPEN},
 	{"output", SQL_OUTPUT},
 	{"reference", SQL_REFERENCE},
-	{"release", SQL_RELEASE},
 	{"returned_length", SQL_RETURNED_LENGTH},
 	{"returned_octet_length", SQL_RETURNED_OCTET_LENGTH},
 	{"scale", SQL_SCALE},
