@@ -231,13 +231,19 @@ BufferShmemSize(void)
 	size += hash_estimate_size(SHMEM_INDEX_SIZE, sizeof(ShmemIndexEnt));
 
 	/* size of buffer descriptors */
-	size += MAXALIGN((NBuffers + 1) * sizeof(BufferDesc));
+	size += MAXALIGN(NBuffers * sizeof(BufferDesc));
+
+	/* size of the shared replacement strategy control block */
+	size += MAXALIGN(sizeof(BufferStrategyControl));
+
+	/* size of the ARC directory blocks */
+	size += MAXALIGN(NBuffers * 2 * sizeof(BufferStrategyCDB));
 
 	/* size of data pages */
 	size += NBuffers * MAXALIGN(BLCKSZ);
 
 	/* size of buffer hash table */
-	size += hash_estimate_size(NBuffers, sizeof(BufferLookupEnt));
+	size += hash_estimate_size(NBuffers * 2, sizeof(BufferLookupEnt));
 
 	return size;
 }
