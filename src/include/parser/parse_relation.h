@@ -32,7 +32,7 @@ extern RangeTblEntry *GetRTEByRangeTablePosn(ParseState *pstate,
 											 int sublevels_up);
 extern Node *scanRTEForColumn(ParseState *pstate, RangeTblEntry *rte,
 							  char *colname);
-extern Node *colnameToVar(ParseState *pstate, char *colname);
+extern Node *colNameToVar(ParseState *pstate, char *colname, bool localonly);
 extern Node *qualifiedNameToVar(ParseState *pstate,
 				   char *schemaname,
 				   char *refname,

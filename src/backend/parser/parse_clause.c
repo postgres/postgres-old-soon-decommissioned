@@ -1140,10 +1140,18 @@ findTargetlistEntry(ParseState *pstate, Node *node, List *tlist, int clause)
 			 * is a matching column.  If so, fall through to let
 			 * transformExpr() do the rest.  NOTE: if name could refer
 			 * ambiguously to more than one column name exposed by FROM,
-			 * colnameToVar will ereport(ERROR).  That's just what we want
+			 * colNameToVar will ereport(ERROR).  That's just what we want
 			 * here.
+			 *
+			 * Small tweak for 7.4.3: ignore matches in upper query levels.
+			 * This effectively changes the search order for bare names to
+			 * (1) local FROM variables, (2) local targetlist aliases,
+			 * (3) outer FROM variables, whereas before it was (1) (3) (2).
+			 * SQL92 and SQL99 do not allow GROUPing BY an outer reference,
+			 * so this breaks no cases that are legal per spec, and it
+			 * seems a more self-consistent behavior.
 			 */
-			if (colnameToVar(pstate, name) != NULL)
+			if (colNameToVar(pstate, name, true) != NULL)
 				name = NULL;
 		}
 

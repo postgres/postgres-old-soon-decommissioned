@@ -966,7 +966,7 @@ transformColumnRef(ParseState *pstate, ColumnRef *cref)
 				char	   *name = strVal(lfirst(cref->fields));
 
 				/* Try to identify as an unqualified column */
-				node = colnameToVar(pstate, name);
+				node = colNameToVar(pstate, name, false);
 
 				if (node == NULL)
 				{
