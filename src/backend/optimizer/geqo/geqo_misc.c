@@ -58,7 +58,7 @@ avg_pool(Pool *pool)
 	for (i = 0; i < pool->size; i++)
 		cumulative = cumulative + pool->data[i].worth;
 
-	return ((float) cumulative / pool->size);
+	return (float) cumulative / pool->size;
 }
 
 /* print_pool--
@@ -146,7 +146,7 @@ geqo_print_joinclauses(Query *root, List *clauses)
 
 	foreach(l, clauses)
 	{
-		CInfo	   *c = lfirst(l);
+		ClauseInfo	   *c = lfirst(l);
 
 		print_expr((Node *) c->clause, root->rtable);
 		if (lnext(l))

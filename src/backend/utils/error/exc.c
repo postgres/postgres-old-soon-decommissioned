@@ -144,7 +144,7 @@ ExcPrint(Exception *excP,
 ExcProc    *
 ExcGetUnCaught(void)
 {
-	return (ExcUnCaughtP);
+	return ExcUnCaughtP;
 }
 
 #endif
@@ -157,7 +157,7 @@ ExcSetUnCaught(ExcProc *newP)
 
 	ExcUnCaughtP = newP;
 
-	return (oldP);
+	return oldP;
 }
 
 #endif

@@ -24,8 +24,8 @@ strerror(int errnum)
 	if (errnum < 0 || errnum > sys_nerr)
 	{
 		sprintf(buf, "unknown error %d", errnum);
-		return (buf);
+		return buf;
 	}
 
-	return (sys_errlist[errnum]);
+	return sys_errlist[errnum];
 }

@@ -34,7 +34,7 @@ SystemPortAddressCreateIPCKey(SystemPortAddress address)
 {
 	Assert(address < 32768);	/* XXX */
 
-	return (SystemPortAddressGetIPCKey(address));
+	return SystemPortAddressGetIPCKey(address);
 }
 
 /*

@@ -47,9 +47,9 @@ SingleLockReln(LockInfo lockinfo, LOCKMODE lockmode, int action)
 	tag.tupleId.ip_posid = InvalidOffsetNumber;
 
 	if (action == UNLOCK)
-		return (LockRelease(MultiTableId, &tag, lockmode));
+		return LockRelease(MultiTableId, &tag, lockmode);
 	else
-		return (LockAcquire(MultiTableId, &tag, lockmode));
+		return LockAcquire(MultiTableId, &tag, lockmode);
 }
 
 /*
@@ -80,7 +80,7 @@ SingleLockPage(LockInfo lockinfo,
 
 
 	if (action == UNLOCK)
-		return (LockRelease(MultiTableId, &tag, lockmode));
+		return LockRelease(MultiTableId, &tag, lockmode);
 	else
-		return (LockAcquire(MultiTableId, &tag, lockmode));
+		return LockAcquire(MultiTableId, &tag, lockmode);
 }

@@ -85,13 +85,13 @@ GetDatabaseInfo(char *name, int4 *owner, char *path)
 
 	dbowner = (Oid) heap_getattr(dbtup,
 								 Anum_pg_database_datdba,
-								 RelationGetTupleDescriptor(dbrel),
+								 RelationGetDescr(dbrel),
 								 (char *) NULL);
 	dbid = dbtup->t_oid;
 
 	dbtext = (text *) heap_getattr(dbtup,
 								   Anum_pg_database_datpath,
-								   RelationGetTupleDescriptor(dbrel),
+								   RelationGetDescr(dbrel),
 								   (char *) NULL);
 
 	memcpy(dbpath, VARDATA(dbtext), (VARSIZE(dbtext) - VARHDRSZ));

@@ -50,14 +50,14 @@ typedef struct tupleDesc
 {
 	int			natts;
 	/* Number of attributes in the tuple */
-	AttributeTupleForm *attrs;
+	Form_pg_attribute *attrs;
 	/* attrs[N] is a pointer to the description of Attribute Number N+1.  */
 	TupleConstr *constr;
 } *TupleDesc;
 
 extern TupleDesc CreateTemplateTupleDesc(int natts);
 
-extern TupleDesc CreateTupleDesc(int natts, AttributeTupleForm *attrs);
+extern TupleDesc CreateTupleDesc(int natts, Form_pg_attribute *attrs);
 
 extern TupleDesc CreateTupleDescCopy(TupleDesc tupdesc);
 

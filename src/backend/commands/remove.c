@@ -201,7 +201,7 @@ AttributeAndRelationRemove(Oid typeOid)
 	scan = heap_beginscan(rel, 0, SnapshotNow, 1, key);
 	while (HeapTupleIsValid(tup = heap_getnext(scan, 0)))
 	{
-		optr->reloid = ((AttributeTupleForm) GETSTRUCT(tup))->attrelid;
+		optr->reloid = ((Form_pg_attribute) GETSTRUCT(tup))->attrelid;
 		optr->next = (struct oidlist *) palloc(sizeof(*oidptr));
 		optr = optr->next;
 	}

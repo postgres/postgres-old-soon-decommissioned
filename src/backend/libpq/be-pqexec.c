@@ -412,5 +412,5 @@ pqtest(struct varlena * vlena)
 			return pqtest_PQexec(q);
 			break;
 	}
-	return (0);
+	return 0;
 }

@@ -276,7 +276,7 @@ copy_function_result(FunctionCachePtr fcache,
 		while (i < oldTuple->t_natts)
 		{
 			funcTd->attrs[i] =
-				(AttributeTupleForm) palloc(ATTRIBUTE_TUPLE_SIZE);
+				(Form_pg_attribute) palloc(ATTRIBUTE_TUPLE_SIZE);
 			memmove(funcTd->attrs[i],
 					resultTd->attrs[i],
 					ATTRIBUTE_TUPLE_SIZE);

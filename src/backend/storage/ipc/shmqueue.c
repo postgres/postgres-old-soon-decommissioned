@@ -54,7 +54,7 @@ bool
 SHMQueueIsDetached(SHM_QUEUE *queue)
 {
 	Assert(SHM_PTR_VALID(queue));
-	return ((queue)->prev == INVALID_OFFSET);
+	return (queue)->prev == INVALID_OFFSET;
 }
 
 #endif
@@ -250,7 +250,7 @@ SHMQueueEmpty(SHM_QUEUE *queue)
 	if (queue->prev == MAKE_OFFSET(queue))
 	{
 		Assert(queue->next = MAKE_OFFSET(queue));
-		return (TRUE);
+		return TRUE;
 	}
-	return (FALSE);
+	return FALSE;
 }

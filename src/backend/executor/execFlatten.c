@@ -222,7 +222,7 @@ FjoinBumpOuterNodes(TargetEntry *tlist,
 	if (funcIsDone)
 	{
 		set_fj_initialized(fjNode, false);
-		return (true);
+		return true;
 	}
 
 	/*

@@ -192,7 +192,7 @@ GetFreeBuffer()
 
 		/* queue is empty. All buffers in the buffer pool are pinned. */
 		elog(ERROR, "out of free buffers: time to abort !\n");
-		return (NULL);
+		return NULL;
 	}
 	buf = &(BufferDescriptors[SharedFreeList->freeNext]);
 
@@ -203,7 +203,7 @@ GetFreeBuffer()
 
 	buf->flags &= ~(BM_FREE);
 
-	return (buf);
+	return buf;
 }
 
 /*

@@ -52,8 +52,6 @@ static int	Debugfile = -1;
 static int	Err_file = -1;
 static int	ElogDebugIndentLevel = 0;
 
-extern char OutputFileName[];
-
 /*
  * elog --
  *		Old error logging function.
@@ -287,7 +285,7 @@ DebugFileOpen(void)
 			elog(FATAL, "DebugFileOpen: %s reopen as stderr: %m",
 				 OutputFileName);
 		Err_file = Debugfile = fileno(stderr);
-		return (Debugfile);
+		return Debugfile;
 	}
 
 	/*
@@ -305,7 +303,7 @@ DebugFileOpen(void)
 		elog(FATAL, "DebugFileOpen: could not open debugging file");
 
 	Err_file = Debugfile = fd;
-	return (Debugfile);
+	return Debugfile;
 }
 
 #endif

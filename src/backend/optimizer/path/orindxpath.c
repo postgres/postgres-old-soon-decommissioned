@@ -59,7 +59,7 @@ create_or_index_paths(Query *root,
 
 	foreach(clist, clauses)
 	{
-		CInfo	   *clausenode = (CInfo *) (lfirst(clist));
+		ClauseInfo	   *clausenode = (ClauseInfo *) (lfirst(clist));
 
 		/*
 		 * Check to see if this clause is an 'or' clause, and, if so,
@@ -131,7 +131,7 @@ create_or_index_paths(Query *root,
 		}
 	}
 
-	return (t_list);
+	return t_list;
 }
 
 /*

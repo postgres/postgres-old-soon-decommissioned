@@ -153,13 +153,13 @@ _hash_scantouched(IndexScanDesc scan,
 	if (ItemPointerIsValid(current)
 		&& ItemPointerGetBlockNumber(current) == blkno
 		&& ItemPointerGetOffsetNumber(current) >= offno)
-		return (true);
+		return true;
 
 	current = &(scan->currentMarkData);
 	if (ItemPointerIsValid(current)
 		&& ItemPointerGetBlockNumber(current) == blkno
 		&& ItemPointerGetOffsetNumber(current) >= offno)
-		return (true);
+		return true;
 
-	return (false);
+	return false;
 }

@@ -57,7 +57,7 @@ typedef enum
 
 typedef struct AttrInfo {
 	int					numAttr;
-	AttributeTupleForm	*attrs;
+	Form_pg_attribute	*attrs;
 } AttrInfo;
 */
 

@@ -646,7 +646,7 @@ ServerLoop(void)
 				continue;
 			fprintf(stderr, "%s: ServerLoop: select failed\n",
 					progname);
-			return (STATUS_ERROR);
+			return STATUS_ERROR;
 		}
 
 		/*
@@ -811,7 +811,7 @@ initMasks(fd_set *rmask, fd_set *wmask)
 			nsocks = ServerSock_INET;
 	}
 
-	return (nsocks + 1);
+	return nsocks + 1;
 }
 
 
@@ -1303,7 +1303,7 @@ BackendStartup(Port *port)
 	{
 		fprintf(stderr, "%s: BackendStartup: fork failed\n",
 				progname);
-		return (STATUS_ERROR);
+		return STATUS_ERROR;
 	}
 
 	if (DebugLvl)
@@ -1332,7 +1332,7 @@ BackendStartup(Port *port)
 
 	ActiveBackends = TRUE;
 
-	return (STATUS_OK);
+	return STATUS_OK;
 }
 
 /*
@@ -1565,14 +1565,14 @@ CharRemap(long int ch)
 
 	ch = ch % 62;
 	if (ch < 26)
-		return ('A' + ch);
+		return 'A' + ch;
 
 	ch -= 26;
 	if (ch < 26)
-		return ('a' + ch);
+		return 'a' + ch;
 
 	ch -= 26;
-	return ('0' + ch);
+	return '0' + ch;
 }
 
 /*

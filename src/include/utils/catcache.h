@@ -70,7 +70,7 @@ extern void ResetSystemCache(void);
 extern void SystemCacheRelationFlushed(Oid relId);
 extern CatCache *
 InitSysCache(char *relname, char *indname, int id, int nkeys,
-			 int key[], HeapTuple (*iScanfuncP) ());
+			 int *key, HeapTuple (*iScanfuncP) ());
 extern HeapTuple
 SearchSysCache(struct catcache * cache, Datum v1, Datum v2,
 			   Datum v3, Datum v4);

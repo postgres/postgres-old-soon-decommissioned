@@ -131,7 +131,7 @@ SetDefine(char *querystr, char *typename)
 		else
 			elog(ERROR, "setin: could not find new set oid tuple");
 
-		if (RelationGetRelationTupleForm(procrel)->relhasindex)
+		if (RelationGetForm(procrel)->relhasindex)
 		{
 			Relation	idescs[Num_pg_proc_indices];
 

@@ -36,9 +36,9 @@ List *
 find_relation_indices(Query *root, RelOptInfo *rel)
 {
 	if (rel->indexed)
-		return (find_secondary_index(root, lfirsti(rel->relids)));
+		return find_secondary_index(root, lfirsti(rel->relids));
 	else
-		return (NIL);
+		return NIL;
 }
 
 /*

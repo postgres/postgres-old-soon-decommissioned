@@ -15,7 +15,7 @@
 
 #include <access/tupdesc.h>
 
-extern char *relpath(char relname[]);
+extern char *relpath(char *relname);
 extern bool IsSystemRelationName(char *relname);
 extern bool IsSharedSystemRelationName(char *relname);
 extern Oid	newoid(void);

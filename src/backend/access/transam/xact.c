@@ -295,7 +295,7 @@ IsTransactionState(void)
 	/*
 	 * Shouldn't get here, but lint is not happy with this...
 	 */
-	return (false);
+	return false;
 }
 
 /* --------------------------------
@@ -863,7 +863,7 @@ StartTransaction()
 bool
 CurrentXactInProgress()
 {
-	return (CurrentTransactionState->state == TRANS_INPROGRESS);
+	return CurrentTransactionState->state == TRANS_INPROGRESS;
 }
 
 /* --------------------------------
@@ -1462,7 +1462,7 @@ IsTransactionBlock()
 
 	if (s->blockState == TBLOCK_INPROGRESS
 		|| s->blockState == TBLOCK_ENDABORT)
-		return (true);
+		return true;
 
-	return (false);
+	return false;
 }

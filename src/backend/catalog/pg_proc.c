@@ -266,7 +266,7 @@ ProcedureCreate(char *procedureName,
 
 	heap_insert(rel, tup);
 
-	if (RelationGetRelationTupleForm(rel)->relhasindex)
+	if (RelationGetForm(rel)->relhasindex)
 	{
 		Relation	idescs[Num_pg_proc_indices];
 

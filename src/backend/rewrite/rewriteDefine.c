@@ -133,7 +133,7 @@ InsertRule(char *rulname,
 
 	pg_exec_query_acl_override(rulebuf);
 
-	return (LastOidProcessed);
+	return LastOidProcessed;
 }
 
 /*

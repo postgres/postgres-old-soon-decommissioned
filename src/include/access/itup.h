@@ -162,7 +162,7 @@ typedef struct PredInfo
 /* indextuple.h */
 extern IndexTuple
 index_formtuple(TupleDesc tupleDescriptor,
-				Datum value[], char null[]);
+				Datum *value, char *null);
 extern Datum
 nocache_index_getattr(IndexTuple tup, int attnum,
 					  TupleDesc tupleDesc, bool *isnull);

@@ -73,13 +73,13 @@ get_token(char **tok, char **val, const char *str)
 	/* end of string? */
 	if (!(*str))
 	{
-		return (str);
+		return str;
 
 		/* delimiter? */
 	}
 	else if (*str == ',')
 	{
-		return (++str);
+		return ++str;
 
 	}
 	else if ((val == NULL) || (*str != '='))
@@ -117,9 +117,9 @@ get_token(char **tok, char **val, const char *str)
 		str++;
 
 	if (!(*str))
-		return (NULL);
+		return NULL;
 	if (*str == ',')
-		return (++str);
+		return ++str;
 
 	elog(ERROR, "Syntax error near (%s)", str);
 

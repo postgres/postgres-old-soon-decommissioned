@@ -73,7 +73,7 @@ rtbeginscan(Relation r,
 	s = RelationGetIndexScan(r, fromEnd, nkeys, key);
 	rtregscan(s);
 
-	return (s);
+	return s;
 }
 
 void

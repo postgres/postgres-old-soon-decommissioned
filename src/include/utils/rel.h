@@ -127,22 +127,13 @@ typedef Relation *RelationPtr;
 #define RelationDecrementReferenceCount(relation) ((relation)->rd_refcnt -= 1)
 
 /*
- * RelationGetAccessMethodTupleForm --
- *		Returns access method attribute values for a relation.
- *
- * Note:
- *		Assumes relation descriptor is valid.
- */
-#define RelationGetAccessMethodTupleForm(relation) ((relation)->rd_am)
-
-/*
- * RelationGetRelationTupleForm --
+ * RelationGetForm --
  *		Returns relation attribute values for a relation.
  *
  * Note:
  *		Assumes relation descriptor is valid.
  */
-#define RelationGetRelationTupleForm(relation) ((relation)->rd_rel)
+#define RelationGetForm(relation) ((relation)->rd_rel)
 
 
 /*
@@ -176,13 +167,13 @@ typedef Relation *RelationPtr;
 #define RelationGetNumberOfAttributes(relation) ((relation)->rd_rel->relnatts)
 
 /*
- * RelationGetTupleDescriptor --
+ * RelationGetDescr --
  *		Returns tuple descriptor for a relation.
  *
  * Note:
  *		Assumes relation descriptor is valid.
  */
-#define RelationGetTupleDescriptor(relation) ((relation)->rd_att)
+#define RelationGetDescr(relation) ((relation)->rd_att)
 
 extern IndexStrategy RelationGetIndexStrategy(Relation relation);
 

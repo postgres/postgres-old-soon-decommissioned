@@ -262,10 +262,10 @@ extern void heap_markpos(HeapScanDesc scan);
 extern void heap_restrpos(HeapScanDesc scan);
 
 /* in common/heaptuple.c */
-extern Size ComputeDataSize(TupleDesc tupleDesc, Datum value[], char nulls[]);
+extern Size ComputeDataSize(TupleDesc tupleDesc, Datum *value, char *nulls);
 extern void
 DataFill(char *data, TupleDesc tupleDesc,
-		 Datum value[], char nulls[], uint16 *infomask,
+		 Datum *value, char *nulls, uint16 *infomask,
 		 bits8 *bit);
 extern int	heap_attisnull(HeapTuple tup, int attnum);
 extern int	heap_sysattrlen(AttrNumber attno);
@@ -277,10 +277,10 @@ nocachegetattr(HeapTuple tup, int attnum,
 extern HeapTuple heap_copytuple(HeapTuple tuple);
 extern HeapTuple
 heap_formtuple(TupleDesc tupleDescriptor,
-			   Datum value[], char nulls[]);
+			   Datum *value, char *nulls);
 extern HeapTuple
 heap_modifytuple(HeapTuple tuple,
-		Relation relation, Datum replValue[], char replNull[], char repl[]);
+		Relation relation, Datum *replValue, char *replNull, char *repl);
 HeapTuple	heap_addheader(uint32 natts, int structlen, char *structure);
 
 /* in common/heap/stats.c */

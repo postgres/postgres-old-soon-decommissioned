@@ -100,7 +100,7 @@ nodeThisLockWasTriggered(Node *node, int varno, AttrNumber attnum,
 		default:
 			break;
 	}
-	return (FALSE);
+	return FALSE;
 }
 
 /*
@@ -145,7 +145,7 @@ matchLocks(CmdType event,
 	if (parsetree->commandType != CMD_SELECT)
 	{
 		if (parsetree->resultRelation != varno)
-			return (NULL);
+			return NULL;
 	}
 
 	nlocks = rulelocks->numLocks;
@@ -166,7 +166,7 @@ matchLocks(CmdType event,
 
 	checkLockPerms(real_locks, parsetree, varno);
 
-	return (real_locks);
+	return real_locks;
 }
 
 

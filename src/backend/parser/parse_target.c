@@ -94,7 +94,7 @@ MakeTargetEntryIdent(ParseState *pstate,
 
 		/* this looks strange to me, returning an empty TargetEntry bjm 1998/08/24 */
 		if (target_colname == NULL || colname == NULL)
-			return (tent);
+			return tent;
 
 		if (refname != NULL)
 			rte = refnameRangeTableEntry(pstate, refname);
@@ -183,7 +183,7 @@ printf("MakeTargetEntryIdent- attrtype_target = %d; type_mod = %d\n", attrtype_t
 		tent->expr = expr;
 	}
 
-	return (tent);
+	return tent;
 } /* MakeTargetEntryIdent() */
 
 
@@ -759,7 +759,7 @@ makeTargetNames(ParseState *pstate, List *cols)
 	{
 		int			numcol;
 		int			i;
-		AttributeTupleForm *attr = pstate->p_target_relation->rd_att->attrs;
+		Form_pg_attribute *attr = pstate->p_target_relation->rd_att->attrs;
 
 		numcol = pstate->p_target_relation->rd_rel->relnatts;
 		for (i = 0; i < numcol; i++)

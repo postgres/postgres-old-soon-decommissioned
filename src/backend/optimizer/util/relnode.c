@@ -124,8 +124,8 @@ rel_member(List *relid, List *rels)
 		{
 			temprelid = ((RelOptInfo *) lfirst(temp))->relids;
 			if (same(temprelid, relid))
-				return ((RelOptInfo *) (lfirst(temp)));
+				return (RelOptInfo *) (lfirst(temp));
 		}
 	}
-	return (NULL);
+	return NULL;
 }

@@ -68,7 +68,7 @@ alloc_pool(int pool_size, int string_length)
 	for (i = 0; i < pool_size; i++)
 		chromo[i].string = palloc((string_length + 1) * sizeof(Gene));
 
-	return (new_pool);
+	return new_pool;
 }
 
 /*
@@ -140,11 +140,11 @@ compare(const void *arg1, const void *arg2)
 	Chromosome	chromo2 = *(Chromosome *) arg2;
 
 	if (chromo1.worth == chromo2.worth)
-		return (0);
+		return 0;
 	else if (chromo1.worth > chromo2.worth)
-		return (1);
+		return 1;
 	else
-		return (-1);
+		return -1;
 }
 
 /* alloc_chromo--
@@ -158,7 +158,7 @@ alloc_chromo(int string_length)
 	chromo = (Chromosome *) palloc(sizeof(Chromosome));
 	chromo->string = (Gene *) palloc((string_length + 1) * sizeof(Gene));
 
-	return (chromo);
+	return chromo;
 }
 
 /* free_chromo--

@@ -185,7 +185,7 @@ InitScanRelation(SeqScan *node, EState *estate,
 		scanstate->css_currentScanDesc = currentScanDesc;
 
 		ExecAssignScanType(scanstate,
-						   RelationGetTupleDescriptor(currentRelation));
+						   RelationGetDescr(currentRelation));
 	}
 	else
 	{

@@ -188,7 +188,7 @@ TransactionLogTest(TransactionId transactionId, /* transaction id to test */
 	/*
 	 * so lint is happy...
 	 */
-	return (false);
+	return false;
 }
 
 /* --------------------------------

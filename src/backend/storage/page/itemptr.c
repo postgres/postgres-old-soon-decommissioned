@@ -33,7 +33,7 @@ ItemPointerEquals(ItemPointer pointer1, ItemPointer pointer2)
 		ItemPointerGetBlockNumber(pointer2) &&
 		ItemPointerGetOffsetNumber(pointer1) ==
 		ItemPointerGetOffsetNumber(pointer2))
-		return (true);
+		return true;
 	else
-		return (false);
+		return false;
 }

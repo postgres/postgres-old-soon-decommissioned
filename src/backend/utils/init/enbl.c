@@ -35,12 +35,12 @@ BypassEnable(int *enableCountInOutP, bool on)
 	if (on)
 	{
 		*enableCountInOutP += 1;
-		return ((bool) (*enableCountInOutP >= 2));
+		return (bool) (*enableCountInOutP >= 2);
 	}
 
 	AssertState(*enableCountInOutP >= 1);
 
 	*enableCountInOutP -= 1;
 
-	return ((bool) (*enableCountInOutP >= 1));
+	return (bool) (*enableCountInOutP >= 1);
 }

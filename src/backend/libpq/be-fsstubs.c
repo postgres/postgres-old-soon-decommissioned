@@ -211,7 +211,7 @@ lo_tell(int fd)
 int
 lo_unlink(Oid lobjId)
 {
-	return (inv_destroy(lobjId));
+	return inv_destroy(lobjId);
 }
 
 /*****************************************************************************

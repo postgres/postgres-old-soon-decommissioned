@@ -207,7 +207,7 @@ index_insert(Relation relation,
 	 * ----------------
 	 */
 
-	return (specificResult);
+	return specificResult;
 }
 
 /* ----------------
@@ -366,14 +366,14 @@ index_getprocid(Relation irel,
 
 	Assert(loc != NULL);
 
-	return (loc[(natts * (procnum - 1)) + (attnum - 1)]);
+	return loc[(natts * (procnum - 1)) + (attnum - 1)];
 }
 
 Datum
 GetIndexValue(HeapTuple tuple,
 			  TupleDesc hTupDesc,
 			  int attOff,
-			  AttrNumber attrNums[],
+			  AttrNumber *attrNums,
 			  FuncIndexInfo *fInfo,
 			  bool *attNull)
 {

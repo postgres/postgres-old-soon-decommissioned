@@ -36,5 +36,5 @@ form(const char *fmt,...)
 
 	va_end(args);
 
-	return (FormBuf);
+	return FormBuf;
 }

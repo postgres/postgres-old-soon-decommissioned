@@ -490,5 +490,5 @@ fmtId(const char *rawid)
 	}
 	else
 		cp = rawid;
-	return (cp);
+	return cp;
 }	/* fmtId() */

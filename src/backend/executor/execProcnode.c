@@ -123,7 +123,7 @@ ExecInitNode(Plan *node, EState *estate, Plan *parent)
 	{
 		result = ExecInitSubPlan((SubPlan *) lfirst(subp), estate, node);
 		if (result == FALSE)
-			return (FALSE);
+			return FALSE;
 	}
 
 	switch (nodeTag(node))
@@ -211,7 +211,7 @@ ExecInitNode(Plan *node, EState *estate, Plan *parent)
 		{
 			result = ExecInitSubPlan((SubPlan *) lfirst(subp), estate, node);
 			if (result == FALSE)
-				return (FALSE);
+				return FALSE;
 		}
 	}
 

@@ -88,8 +88,8 @@ hashbuild(Relation heap,
 		_hash_metapinit(index);
 
 	/* get tuple descriptors for heap and index relations */
-	htupdesc = RelationGetTupleDescriptor(heap);
-	itupdesc = RelationGetTupleDescriptor(index);
+	htupdesc = RelationGetDescr(heap);
+	itupdesc = RelationGetDescr(index);
 
 	/* get space for data items that'll appear in the index tuple */
 	attdata = (Datum *) palloc(natts * sizeof(Datum));
@@ -284,11 +284,11 @@ hashinsert(Relation rel, Datum *datum, char *nulls, ItemPointer ht_ctid, Relatio
 
 
 	/* generate an index tuple */
-	itup = index_formtuple(RelationGetTupleDescriptor(rel), datum, nulls);
+	itup = index_formtuple(RelationGetDescr(rel), datum, nulls);
 	itup->t_tid = *ht_ctid;
 
 	if (itup->t_info & INDEX_NULL_MASK)
-		return ((InsertIndexResult) NULL);
+		return (InsertIndexResult) NULL;
 
 	hitem = _hash_formitem(itup);
 
@@ -297,7 +297,7 @@ hashinsert(Relation rel, Datum *datum, char *nulls, ItemPointer ht_ctid, Relatio
 	pfree(hitem);
 	pfree(itup);
 
-	return (res);
+	return res;
 }
 
 
@@ -320,7 +320,7 @@ hashgettuple(IndexScanDesc scan, ScanDirection dir)
 	else
 		res = _hash_first(scan, dir);
 
-	return ((char *) res);
+	return (char *) res;
 }
 
 
@@ -345,7 +345,7 @@ hashbeginscan(Relation rel,
 	/* register scan in case we change pages it's using */
 	_hash_regscan(scan);
 
-	return ((char *) scan);
+	return (char *) scan;
 }
 
 /*

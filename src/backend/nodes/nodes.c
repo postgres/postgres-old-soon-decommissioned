@@ -41,5 +41,5 @@ newNode(Size size, NodeTag tag)
 	newNode = (Node *) palloc(size);
 	MemSet((char *) newNode, 0, size);
 	newNode->type = tag;
-	return (newNode);
+	return newNode;
 }

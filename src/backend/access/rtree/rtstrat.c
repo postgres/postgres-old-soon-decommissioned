@@ -209,7 +209,7 @@ RelationGetRTStrategy(Relation r,
 					  AttrNumber attnum,
 					  RegProcedure proc)
 {
-	return (RelationGetStrategy(r, attnum, &RTEvaluationData, proc));
+	return RelationGetStrategy(r, attnum, &RTEvaluationData, proc);
 }
 
 #ifdef NOT_USED
@@ -239,5 +239,5 @@ RTMapOperator(Relation r,
 											  RTNStrategies,
 											  attnum);
 
-	return (strategyMap->entry[RTOperMap[procstrat - 1] - 1].sk_procedure);
+	return strategyMap->entry[RTOperMap[procstrat - 1] - 1].sk_procedure;
 }

@@ -51,7 +51,7 @@ RuleIdGetActionInfo(Oid ruleoid, bool *instead_flag, Query **parseTrees)
 	Node	   *rule_evqual = NULL;
 
 	ruleRelation = heap_openr(RewriteRelationName);
-	ruleTupdesc = RelationGetTupleDescriptor(ruleRelation);
+	ruleTupdesc = RelationGetDescr(ruleRelation);
 	ruletuple = SearchSysCacheTuple(RULOID,
 									ObjectIdGetDatum(ruleoid),
 									0, 0, 0);
@@ -105,7 +105,7 @@ IsDefinedRewriteRule(char *ruleName)
 	 * return whether or not the rewrite rule existed
 	 */
 	heap_close(RewriteRelation);
-	return (HeapTupleIsValid(tuple));
+	return HeapTupleIsValid(tuple);
 }
 
 static void

@@ -85,7 +85,7 @@ btoidcmp(Oid a, Oid b)
 }
 
 int32
-btoid8cmp(Oid a[], Oid b[])
+btoid8cmp(Oid *a, Oid *b)
 {
 	int i;
 	for (i=0; i < 8; i++)

@@ -280,7 +280,7 @@ print_joinclauses(Query *root, List *clauses)
 
 	foreach(l, clauses)
 	{
-		CInfo	   *c = lfirst(l);
+		ClauseInfo	   *c = lfirst(l);
 
 		print_expr((Node *) c->clause, root->rtable);
 		if (lnext(l))

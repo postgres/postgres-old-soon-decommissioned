@@ -8,5 +8,5 @@
 long
 random()
 {
-	return (lrand48());
+	return lrand48();
 }

@@ -650,7 +650,7 @@ PQisBusy(PGconn *conn)
 	parseInput(conn);
 
 	/* PQgetResult will return immediately in all states except BUSY. */
-	return (conn->asyncStatus == PGASYNC_BUSY);
+	return conn->asyncStatus == PGASYNC_BUSY;
 }
 
 
@@ -1410,7 +1410,7 @@ PQcmdTuples(PGresult *res)
 		}
 		p++;
 		if (*(res->cmdStatus) != 'I')	/* UPDATE/DELETE */
-			return (p);
+			return p;
 		while (*p != ' ' && *p)
 			p++;				/* INSERT: skip oid */
 		if (*p == 0)
@@ -1421,7 +1421,7 @@ PQcmdTuples(PGresult *res)
 			return "";
 		}
 		p++;
-		return (p);
+		return p;
 	}
 	return "";
 }

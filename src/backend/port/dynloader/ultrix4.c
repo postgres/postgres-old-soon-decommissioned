@@ -22,7 +22,7 @@
 #include "port-protos.h"
 #include "utils/elog.h"
 
-extern char pg_pathname[];
+extern char *pg_pathname;
 
 void *
 pg_dlopen(char *filename)

@@ -59,7 +59,7 @@ parser(char *str, Oid *typev, int nargs)
 	clearerr(stdin);
 
 	if (yyresult)				/* error */
-		return ((QueryTreeList *) NULL);
+		return (QueryTreeList *) NULL;
 
 	queryList = parse_analyze(parsetree, NULL);
 

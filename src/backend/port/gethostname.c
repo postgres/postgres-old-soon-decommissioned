@@ -20,5 +20,5 @@ gethostname(char *name, int namelen)
 	}
 	strncpy(name, mname.nodename, (SYS_NMLN < namelen ? SYS_NMLN : namelen));
 
-	return (0);
+	return 0;
 }

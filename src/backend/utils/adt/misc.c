@@ -28,9 +28,9 @@ nullvalue(Datum value, bool *isNull)
 	if (*isNull)
 	{
 		*isNull = false;
-		return (true);
+		return true;
 	}
-	return (false);
+	return false;
 
 }
 
@@ -43,9 +43,9 @@ nonnullvalue(Datum value, bool *isNull)
 	if (*isNull)
 	{
 		*isNull = false;
-		return (false);
+		return false;
 	}
-	return (true);
+	return true;
 
 }
 
@@ -105,5 +105,5 @@ oidsrand(int32 X)
 int32
 userfntest(int i)
 {
-	return (i);
+	return i;
 }

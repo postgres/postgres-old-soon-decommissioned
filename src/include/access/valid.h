@@ -130,7 +130,7 @@ do \
 		_tuple = (HeapTuple) PageGetItem((Page) (disk_page), (itemId)); \
 	 \
 		if ((key) != NULL) \
-			HeapKeyTest(_tuple, RelationGetTupleDescriptor(relation), \
+			HeapKeyTest(_tuple, RelationGetDescr(relation), \
 							   (nKeys), (key), _res); \
 		else \
 			_res = TRUE; \

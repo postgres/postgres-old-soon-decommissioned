@@ -145,7 +145,7 @@ ExecMaterial(Material *node)
 		matstate->csstate.css_currentScanDesc = currentScanDesc;
 
 		ExecAssignScanType(&matstate->csstate,
-						   RelationGetTupleDescriptor(currentRelation));
+						   RelationGetDescr(currentRelation));
 
 		/* ----------------
 		 *	finally set the sorted flag to true

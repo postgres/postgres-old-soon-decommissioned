@@ -42,7 +42,7 @@ group_clauses_by_order(List *clauseinfo_list,
 
 	foreach(xclauseinfo, clauseinfo_list)
 	{
-		CInfo	   *clauseinfo = (CInfo *) lfirst(xclauseinfo);
+		ClauseInfo	   *clauseinfo = (ClauseInfo *) lfirst(xclauseinfo);
 		MergeOrder *merge_ordering = clauseinfo->mergejoinorder;
 
 		if (merge_ordering)
@@ -92,7 +92,7 @@ group_clauses_by_order(List *clauseinfo_list,
 					  ((JoinMethod *) xmergeinfo)->jmkeys);
 		}
 	}
-	return (mergeinfo_list);
+	return mergeinfo_list;
 }
 
 
@@ -122,8 +122,8 @@ match_order_mergeinfo(PathOrder *ordering, List *mergeinfo_list)
 		   equal_path_merge_ordering(ordering->ord.sortop, xmergeorder)))
 		{
 
-			return (mergeinfo);
+			return mergeinfo;
 		}
 	}
-	return ((MInfo *) NIL);
+	return (MInfo *) NIL;
 }

@@ -238,7 +238,7 @@ BeginCommand(char *pname,
 			 CommandDest dest)
 {
 	PortalEntry *entry;
-	AttributeTupleForm *attrs = tupdesc->attrs;
+	Form_pg_attribute *attrs = tupdesc->attrs;
 	int			natts = tupdesc->natts;
 	int			i;
 	char	   *p;

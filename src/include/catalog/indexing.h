@@ -64,7 +64,7 @@ extern char *IndexedCatalogNames[];
  *
  * Functions for each index to perform the necessary scan on a cache miss.
  */
-extern void CatalogOpenIndices(int nIndices, char *names[], Relation idescs[]);
+extern void CatalogOpenIndices(int nIndices, char **names, Relation *idescs);
 extern void CatalogCloseIndices(int nIndices, Relation *idescs);
 extern void
 CatalogIndexInsert(Relation *idescs,

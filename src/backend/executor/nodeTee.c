@@ -402,7 +402,7 @@ ExecTee(Tee *node, Plan *parent)
 			IncrBufferRefCount(scanDesc->rs_cbuf);
 
 		slot = teeState->cstate.cs_ResultTupleSlot;
-		slot->ttc_tupleDescriptor = RelationGetTupleDescriptor(bufferRel);
+		slot->ttc_tupleDescriptor = RelationGetDescr(bufferRel);
 
 		result = ExecStoreTuple(heapTuple,		/* tuple to store */
 								slot,	/* slot to store in */

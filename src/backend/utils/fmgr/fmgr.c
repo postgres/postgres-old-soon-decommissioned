@@ -152,7 +152,7 @@ fmgr_c(FmgrInfo *finfo,
 				 finfo->fn_oid, n_arguments, MAXFMGRARGS);
 			break;
 	}
-	return (returnValue);
+	return returnValue;
 }
 
 void
@@ -283,7 +283,7 @@ fmgr(Oid procedureId,...)
 	va_end(pvar);
 
 	/* XXX see WAY_COOL_ORTHOGONAL_FUNCTIONS */
-	return (fmgr_c(&finfo, &values, &isNull));
+	return fmgr_c(&finfo, &values, &isNull);
 }
 
 /*
@@ -323,7 +323,7 @@ fmgr_ptr(FmgrInfo *finfo,...)
 	va_end(pvar);
 
 	/* XXX see WAY_COOL_ORTHOGONAL_FUNCTIONS */
-	return (fmgr_c(&local_finfo, &values, &isNull));
+	return fmgr_c(&local_finfo, &values, &isNull);
 }
 
 #endif

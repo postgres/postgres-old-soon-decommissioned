@@ -284,5 +284,5 @@ print_plan(best_plan, root);
 
 	free_pool(pool);
 
-	return (best_rel);
+	return best_rel;
 }

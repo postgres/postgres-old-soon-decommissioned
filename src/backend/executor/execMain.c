@@ -839,7 +839,7 @@ ExecutePlan(EState *estate,
 
 				/*
 				 * Total hack. I'm ignoring any accessor functions for
-				 * Relation, RelationTupleForm, NameData. Assuming that
+				 * Relation, RelationForm, NameData. Assuming that
 				 * NameData.data has offset 0.
 				 */
 			case CMD_NOTIFY:
@@ -1288,7 +1288,7 @@ ExecAttrDefault(Relation rel, HeapTuple tuple)
 	pfree(econtext);
 
 	if (repl == NULL)
-		return (tuple);
+		return tuple;
 
 	newtuple = heap_modifytuple(tuple, rel, replValue, replNull, repl);
 
@@ -1297,7 +1297,7 @@ ExecAttrDefault(Relation rel, HeapTuple tuple)
 	pfree(replNull);
 	pfree(replValue);
 
-	return (newtuple);
+	return newtuple;
 
 }
 
@@ -1346,7 +1346,7 @@ ExecRelCheck(Relation rel, HeapTuple tuple)
 		pfree(qual);
 
 		if (!res)
-			return (check[i].ccname);
+			return check[i].ccname;
 	}
 
 	pfree(slot);
@@ -1355,7 +1355,7 @@ ExecRelCheck(Relation rel, HeapTuple tuple)
 	pfree(rtlist);
 	pfree(econtext);
 
-	return ((char *) NULL);
+	return (char *) NULL;
 
 }
 
@@ -1391,5 +1391,5 @@ ExecConstraints(char *caller, Relation rel, HeapTuple tuple)
 			elog(ERROR, "%s: rejected due to CHECK constraint %s", caller, failed);
 	}
 
-	return (newtuple);
+	return newtuple;
 }

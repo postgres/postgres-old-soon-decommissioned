@@ -118,7 +118,7 @@ preprocess_targetlist(List *tlist,
 		t_list = lappend(t_list, ctid);
 	}
 
-	return (t_list);
+	return t_list;
 }
 
 /*****************************************************************************
@@ -164,10 +164,10 @@ expand_targetlist(List *tlist,
 													 result_relation,
 													 node_type);
 
-		return (replace_matching_resname(ntlist, tlist));
+		return replace_matching_resname(ntlist, tlist);
 	}
 	else
-		return (tlist);
+		return tlist;
 
 }
 
@@ -236,7 +236,7 @@ replace_matching_resname(List *new_tlist, List *old_tlist)
 		}
 	}
 
-	return (t_list);
+	return t_list;
 }
 
 /*
@@ -331,5 +331,5 @@ new_relation_targetlist(Oid relid, Index rt_index, NodeTag node_type)
 		}
 	}
 
-	return (t_list);
+	return t_list;
 }

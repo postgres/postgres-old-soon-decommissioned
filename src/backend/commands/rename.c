@@ -164,7 +164,7 @@ renameatt(char *relname,
 	if (!HeapTupleIsValid(oldatttup))
 		elog(ERROR, "renameatt: attribute \"%s\" nonexistent", oldattname);
 
-	if (((AttributeTupleForm) GETSTRUCT(oldatttup))->attnum < 0)
+	if (((Form_pg_attribute) GETSTRUCT(oldatttup))->attnum < 0)
 		elog(ERROR, "renameatt: system attribute \"%s\" not renamed", oldattname);
 
 	newatttup = SearchSysCacheTuple(ATTNAME,
@@ -178,7 +178,7 @@ renameatt(char *relname,
 		elog(ERROR, "renameatt: attribute \"%s\" exists", newattname);
 	}
 
-	StrNCpy((((AttributeTupleForm) (GETSTRUCT(oldatttup)))->attname.data),
+	StrNCpy((((Form_pg_attribute) (GETSTRUCT(oldatttup)))->attname.data),
 			   newattname, NAMEDATALEN);
 
 	attrelation = heap_openr(AttributeRelationName);

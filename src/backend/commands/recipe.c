@@ -692,7 +692,7 @@ tg_rewriteParamsInExpr(Node *expression, QueryTreeList *inputQlist)
    this code is very similar to ProcedureDefine() in pg_proc.c
 */
 static int
-getParamTypes(TgElement * elem, Oid typev[])
+getParamTypes(TgElement * elem, Oid *typev)
 {
 	/* this code is similar to ProcedureDefine() */
 	int16		parameterCount;

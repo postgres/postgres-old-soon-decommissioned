@@ -954,7 +954,7 @@ ExecInitIndexScan(IndexScan *node, EState *estate, Plan *parent)
 	 *	get the scan type from the relation descriptor.
 	 * ----------------
 	 */
-	ExecAssignScanType(scanstate, RelationGetTupleDescriptor(currentRelation));
+	ExecAssignScanType(scanstate, RelationGetDescr(currentRelation));
 	ExecAssignResultTypeFromTL((Plan *) node, &scanstate->cstate);
 
 	/* ----------------

@@ -133,5 +133,5 @@ cx(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene, City *city_table)
 
 	}
 
-	return (num_diffs);
+	return num_diffs;
 }

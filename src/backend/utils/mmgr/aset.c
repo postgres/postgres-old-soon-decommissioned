@@ -193,7 +193,7 @@ AllocSetAlloc(AllocSet set, Size size)
 	/* set size */
 	alloc->size = size;
 
-	return (AllocElemGetAllocPointer(alloc));
+	return AllocElemGetAllocPointer(alloc);
 }
 
 /*
@@ -262,7 +262,7 @@ AllocSetRealloc(AllocSet set, AllocPointer pointer, Size size)
 	/* free old pointer */
 	AllocSetFree(set, pointer);
 
-	return (newPointer);
+	return newPointer;
 }
 
 /*
@@ -296,7 +296,7 @@ AllocSetIterate(AllocSet set,
 		count += 1;
 	}
 
-	return (count);
+	return count;
 }
 
 #ifdef NOT_USED
@@ -336,9 +336,9 @@ AllocSetGetFirst(AllocSet set)
 	alloc = (AllocElem) OrderedSetGetHead(&set->setData);
 
 	if (!AllocElemIsValid(alloc))
-		return (NULL);
+		return NULL;
 
-	return (AllocElemGetAllocPointer(alloc));
+	return AllocElemGetAllocPointer(alloc);
 }
 
 /*
@@ -357,9 +357,9 @@ AllocPointerGetNext(AllocPointer pointer)
 		OrderedElemGetSuccessor(&AllocPointerGetAllocElem(pointer)->elemData);
 
 	if (!AllocElemIsValid(alloc))
-		return (NULL);
+		return NULL;
 
-	return (AllocElemGetAllocPointer(alloc));
+	return AllocElemGetAllocPointer(alloc);
 }
 
 

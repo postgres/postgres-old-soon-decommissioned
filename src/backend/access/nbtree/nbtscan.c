@@ -231,13 +231,13 @@ _bt_scantouched(IndexScanDesc scan, BlockNumber blkno, OffsetNumber offno)
 	if (ItemPointerIsValid(current)
 		&& ItemPointerGetBlockNumber(current) == blkno
 		&& ItemPointerGetOffsetNumber(current) >= offno)
-		return (true);
+		return true;
 
 	current = &(scan->currentMarkData);
 	if (ItemPointerIsValid(current)
 		&& ItemPointerGetBlockNumber(current) == blkno
 		&& ItemPointerGetOffsetNumber(current) >= offno)
-		return (true);
+		return true;
 
-	return (false);
+	return false;
 }

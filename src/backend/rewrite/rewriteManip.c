@@ -288,7 +288,7 @@ FindMatchingNew(List *tlist, int attno)
 		TargetEntry *tle = lfirst(i);
 
 		if (tle->resdom->resno == attno)
-			return (tle->expr);
+			return tle->expr;
 	}
 	return NULL;
 }
@@ -305,7 +305,7 @@ FindMatchingTLEntry(List *tlist, char *e_attname)
 
 		resname = tle->resdom->resname;
 		if (!strcmp(e_attname, resname))
-			return (tle->expr);
+			return tle->expr;
 	}
 	return NULL;
 }

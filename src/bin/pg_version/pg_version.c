@@ -41,5 +41,5 @@ main(int argc, char **argv)
 	}
 	else
 		retcode = 0;
-	return (retcode);
+	return retcode;
 }

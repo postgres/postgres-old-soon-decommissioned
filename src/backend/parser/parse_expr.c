@@ -597,7 +597,7 @@ parser_typecast2(Node *expr, Oid exprType, Type tp, int32 atttypmod)
 						false,	/* was omitted */
 						false,	/* not a set */
 						true /* is cast */ );
-		return ((Node *) adt);
+		return (Node *) adt;
 	}
 
 	cp = stringTypeString(tp, const_string, atttypmod);
@@ -638,5 +638,5 @@ parser_typecast2(Node *expr, Oid exprType, Type tp, int32 atttypmod)
 	if (string_palloced)
 		pfree(const_string);
 
-	return ((Node *) adt);
+	return (Node *) adt;
 }

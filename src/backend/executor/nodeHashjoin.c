@@ -155,7 +155,7 @@ ExecHashJoin(HashJoin *node)
 		node->hashdone = true;
 	}
 	else if (hashtable == NULL)
-		return (NULL);
+		return NULL;
 
 	nbatch = hashtable->nbatch;
 	outerbatches = hjstate->hj_OuterBatches;

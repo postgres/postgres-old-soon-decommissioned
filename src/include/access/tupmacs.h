@@ -19,7 +19,7 @@
 #define att_isnull(ATT, BITS) (!((BITS)[(ATT) >> 3] & (1 << ((ATT) & 0x07))))
 
 /*
- * given a AttributeTupleForm and a pointer into a tuple's data
+ * given a Form_pg_attribute and a pointer into a tuple's data
  * area, return the correct value or pointer.
  *
  * We return a 4 byte (char *) value in all cases.	If the attribute has

@@ -181,7 +181,7 @@ ExecAssignScanType(CommonScanState *csstate,
 extern void
 ExecAssignScanTypeFromOuterPlan(Plan *node,
 								CommonScanState *csstate);
-extern AttributeTupleForm ExecGetTypeInfo(Relation relDesc);
+extern Form_pg_attribute ExecGetTypeInfo(Relation relDesc);
 
 extern void
 ExecOpenIndices(Oid resultRelationOid,

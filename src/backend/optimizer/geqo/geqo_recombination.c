@@ -96,7 +96,7 @@ alloc_city_table(int num_gene)
 
 	city_table = (City *) palloc((num_gene + 1) * sizeof(City));
 
-	return (city_table);
+	return city_table;
 }
 
 /* free_city_table--

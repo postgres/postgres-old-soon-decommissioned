@@ -42,7 +42,7 @@ lisp_qsort(List *the_list,		/* the list to be sorted */
 	/* find size of list */
 	num = length(the_list);
 	if (num < 2)
-		return (copyObject(the_list));
+		return copyObject(the_list);
 
 	/* copy elements of the list into an array */
 	nodearray = (List **) palloc(num * sizeof(List *));
@@ -58,7 +58,7 @@ lisp_qsort(List *the_list,		/* the list to be sorted */
 	for (i = num - 1; i >= 0; i--)
 		output = lcons(nodearray[i], output);
 
-	return (output);
+	return output;
 }
 
 #endif

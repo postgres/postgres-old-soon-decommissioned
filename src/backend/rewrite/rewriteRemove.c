@@ -103,7 +103,7 @@ RemoveRewriteRule(char *ruleName)
 	ruleId = tuple->t_oid;
 	eventRelationOidDatum =	heap_getattr(tuple,
 								 Anum_pg_rewrite_ev_class,
-								 RelationGetTupleDescriptor(RewriteRelation),
+								 RelationGetDescr(RewriteRelation),
 								 &isNull);
 	if (isNull)
 	{

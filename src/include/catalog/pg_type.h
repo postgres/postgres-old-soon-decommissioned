@@ -106,14 +106,14 @@ CATALOG(pg_type) BOOTSTRAP
 	 * but I doubt it - BRYANH 96.08).
 	 */
 	text		typdefault;		/* VARIABLE LENGTH FIELD */
-} TypeTupleFormData;
+} FormData_pg_type;
 
 /* ----------------
  *		Form_pg_type corresponds to a pointer to a row with
  *		the format of pg_type relation.
  * ----------------
  */
-typedef TypeTupleFormData *TypeTupleForm;
+typedef FormData_pg_type *Form_pg_type;
 
 /* ----------------
  *		compiler constants for pg_type

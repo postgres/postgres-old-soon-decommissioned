@@ -36,7 +36,7 @@ pqsignal(int signo, pqsigfunc func)
 	if (signo != SIGALRM)
 		act.sa_flags |= SA_RESTART;
 	if (sigaction(signo, &act, &oact) < 0)
-		return (SIG_ERR);
-	return (oact.sa_handler);
+		return SIG_ERR;
+	return oact.sa_handler;
 #endif							/* !USE_POSIX_SIGNALS */
 }

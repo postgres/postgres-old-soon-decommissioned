@@ -72,5 +72,5 @@ ExceptionalCondition(char *conditionName,
 
 	/* XXX FIXME: detail is lost */
 	ExcRaise(exceptionP, (ExcDetail) 0, (ExcData) NULL, conditionName);
-	return (0);
+	return 0;
 }

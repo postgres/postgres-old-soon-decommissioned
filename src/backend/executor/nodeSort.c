@@ -192,7 +192,7 @@ ExecSort(Sort *node)
 	 */
 	heapTuple = psort_grabtuple(node, &should_free);
 
-	return (ExecStoreTuple(heapTuple, slot, InvalidBuffer, should_free));
+	return ExecStoreTuple(heapTuple, slot, InvalidBuffer, should_free);
 }
 
 /* ----------------------------------------------------------------

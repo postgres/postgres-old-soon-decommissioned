@@ -4915,7 +4915,7 @@ FlattenStringList(List *list)
 	elog(DEBUG, "flattened string is \"%s\"\n", s);
 #endif
 
-	return (s);
+	return s;
 } /* FlattenStringList() */
 
 
@@ -4966,7 +4966,7 @@ makeConstantList( A_Const *n)
 	elog(DEBUG, "AexprConst argument is \"%s\"\n", defval);
 #endif
 
-	return (result);
+	return result;
 } /* makeConstantList() */
 
 
@@ -4996,7 +4996,7 @@ fmtId(char *rawid)
 	 ((cp == rawid)? "do not ": ""), rawid, cp);
 #endif
 
-	return (cp);
+	return cp;
 }
 
 /*

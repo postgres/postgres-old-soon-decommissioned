@@ -28,7 +28,7 @@ typedef struct hashnode
 #define EMITPROMPT printf("> ")
 
 extern Relation reldesc;
-extern AttributeTupleForm attrtypes[MAXATTR];
+extern Form_pg_attribute attrtypes[MAXATTR];
 extern int	numattr;
 extern int	DebugMode;
 

@@ -26,14 +26,14 @@
 #include "fmgr.h"
 
 #if FALSE
-extern char pg_pathname[];
+extern char *pg_pathname;
 
 void *
 pg_dlopen(char *filename)
 {
 #ifndef HAVE_DLD_H
 	elog(ERROR, "dynamic load not supported");
-	return (NULL);
+	return NULL;
 #else
 	static int	dl_initialized = 0;
 
@@ -106,7 +106,7 @@ char *
 pg_dlerror()
 {
 #ifndef HAVE_DLD_H
-	return ("dynaloader unspported");
+	return "dynaloader unspported";
 #else
 	return dld_strerror(dld_errno);
 #endif

@@ -116,7 +116,7 @@ filename_in(char *file)
 	else
 		ind = 0;
 	strcat(str, file + ind);
-	return (str);
+	return str;
 }
 
 char *
@@ -125,9 +125,9 @@ filename_out(char *s)
 	char	   *ret;
 
 	if (!s)
-		return ((char *) NULL);
+		return (char *) NULL;
 	ret = (char *) palloc(strlen(s) + 1);
 	if (!ret)
 		elog(ERROR, "filename_out: palloc failed");
-	return (strcpy(ret, s));
+	return strcpy(ret, s);
 }

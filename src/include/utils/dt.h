@@ -325,17 +325,17 @@ extern double time2t(const int hour, const int min, const double sec);
 
 extern int
 ParseDateTime(char *timestr, char *lowstr,
-			  char *field[], int ftype[], int maxfields, int *numfields);
+			  char **field, int *ftype, int maxfields, int *numfields);
 extern int
-DecodeDateTime(char *field[], int ftype[],
+DecodeDateTime(char **field, int *ftype,
 			 int nf, int *dtype, struct tm * tm, double *fsec, int *tzp);
 
 extern int
-DecodeTimeOnly(char *field[], int ftype[], int nf,
+DecodeTimeOnly(char **field, int *ftype, int nf,
 			   int *dtype, struct tm * tm, double *fsec);
 
 extern int
-DecodeDateDelta(char *field[], int ftype[],
+DecodeDateDelta(char **field, int *ftype,
 				int nf, int *dtype, struct tm * tm, double *fsec);
 
 extern int	EncodeDateOnly(struct tm * tm, int style, char *str);

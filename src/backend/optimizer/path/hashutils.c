@@ -39,13 +39,13 @@ group_clauses_by_hashop(List *clauseinfo_list,
 						int inner_relid)
 {
 	List	   *hashinfo_list = NIL;
-	CInfo	   *clauseinfo = (CInfo *) NULL;
+	ClauseInfo	   *clauseinfo = (ClauseInfo *) NULL;
 	List	   *i = NIL;
 	Oid			hashjoinop = 0;
 
 	foreach(i, clauseinfo_list)
 	{
-		clauseinfo = (CInfo *) lfirst(i);
+		clauseinfo = (ClauseInfo *) lfirst(i);
 		hashjoinop = clauseinfo->hashjoinoperator;
 
 		/*
@@ -96,7 +96,7 @@ group_clauses_by_hashop(List *clauseinfo_list,
 				lcons(keys, xhashinfo->jmethod.jmkeys);
 		}
 	}
-	return (hashinfo_list);
+	return hashinfo_list;
 }
 
 
@@ -121,8 +121,8 @@ match_hashop_hashinfo(Oid hashop, List *hashinfo_list)
 		key = xhashinfo->hashop;
 		if (hashop == key)
 		{						/* found */
-			return (xhashinfo); /* should be a hashinfo node ! */
+			return xhashinfo; /* should be a hashinfo node ! */
 		}
 	}
-	return ((HInfo *) NIL);
+	return (HInfo *) NIL;
 }

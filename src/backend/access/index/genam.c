@@ -123,7 +123,7 @@ RelationGetIndexScan(Relation relation,
 
 	index_rescan(scan, scanFromEnd, key);
 
-	return (scan);
+	return scan;
 }
 
 #ifdef NOT_USED

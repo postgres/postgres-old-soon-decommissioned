@@ -63,7 +63,7 @@ _hash_getstrat(Relation rel,
 
 	Assert(StrategyNumberIsValid(strat));
 
-	return (strat);
+	return strat;
 }
 
 #endif

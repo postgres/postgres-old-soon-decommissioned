@@ -63,7 +63,7 @@ CATALOG(pg_index)
  *		the format of pg_index relation.
  * ----------------
  */
-typedef FormData_pg_index *IndexTupleForm;
+typedef FormData_pg_index *Form_pg_index;
 
 /* ----------------
  *		compiler constants for pg_index

@@ -66,7 +66,7 @@ palloc(Size size)
 #ifdef PALLOC_IS_MALLOC
 	return malloc(size);
 #else
-	return (MemoryContextAlloc(CurrentMemoryContext, size));
+	return MemoryContextAlloc(CurrentMemoryContext, size);
 #endif							/* PALLOC_IS_MALLOC */
 }
 
@@ -100,7 +100,7 @@ repalloc(void *pointer, Size size)
 #ifdef PALLOC_IS_MALLOC
 	return realloc(pointer, size);
 #else
-	return (MemoryContextRealloc(CurrentMemoryContext, pointer, size));
+	return MemoryContextRealloc(CurrentMemoryContext, pointer, size);
 #endif
 }
 

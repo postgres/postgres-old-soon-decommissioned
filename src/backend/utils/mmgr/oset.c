@@ -33,7 +33,7 @@ OrderedElemGetBase(OrderedElem elem)
 	if (elem == (OrderedElem) NULL)
 		return (Pointer) NULL;
 
-	return ((Pointer) ((char *) (elem) - (elem)->set->offset));
+	return (Pointer) ((char *) (elem) - (elem)->set->offset);
 }
 
 /*
@@ -55,7 +55,7 @@ OrderedSetInit(OrderedSet set, Offset offset)
 bool
 OrderedSetContains(OrderedSet set, OrderedElem elem)
 {
-	return ((bool) (elem->set == set && (elem->next || elem->prev)));
+	return (bool) (elem->set == set && (elem->next || elem->prev));
 }
 
 /*
@@ -68,8 +68,8 @@ OrderedSetGetHead(OrderedSet set)
 
 	elem = set->head;
 	if (elem->next)
-		return (OrderedElemGetBase(elem));
-	return (NULL);
+		return OrderedElemGetBase(elem);
+	return NULL;
 }
 
 /*
@@ -83,8 +83,8 @@ OrderedSetGetTail(OrderedSet set)
 
 	elem = set->tail;
 	if (elem->prev)
-		return (OrderedElemGetBase(elem));
-	return (NULL);
+		return OrderedElemGetBase(elem);
+	return NULL;
 }
 
 #endif
@@ -97,8 +97,8 @@ OrderedElemGetPredecessor(OrderedElem elem)
 {
 	elem = elem->prev;
 	if (elem->prev)
-		return (OrderedElemGetBase(elem));
-	return (NULL);
+		return OrderedElemGetBase(elem);
+	return NULL;
 }
 
 /*
@@ -109,8 +109,8 @@ OrderedElemGetSuccessor(OrderedElem elem)
 {
 	elem = elem->next;
 	if (elem->next)
-		return (OrderedElemGetBase(elem));
-	return (NULL);
+		return OrderedElemGetBase(elem);
+	return NULL;
 }
 
 /*

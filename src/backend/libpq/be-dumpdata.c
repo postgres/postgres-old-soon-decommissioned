@@ -111,7 +111,7 @@ be_currentportal(void)
 	Dlelem	   *elt;
 
 	elt = DLGetTail(be_portalstack);
-	return (elt ? (PortalEntry *) DLE_VAL(elt) : NULL);
+	return elt ? (PortalEntry *) DLE_VAL(elt) : NULL;
 }
 
 /* ----------------
@@ -173,7 +173,7 @@ be_typeinit(PortalEntry *entry,
 	PortalBuffer *portal;
 	GroupBuffer *group;
 	int			i;
-	AttributeTupleForm *attrs = tupDesc->attrs;
+	Form_pg_attribute *attrs = tupDesc->attrs;
 
 	/* ----------------
 	 *	add a new portal group to the portal

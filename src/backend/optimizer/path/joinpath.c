@@ -221,7 +221,7 @@ best_innerjoin(List *join_paths, List *outer_relids)
 			cheapest = (Path *) lfirst(join_path);
 		}
 	}
-	return (cheapest);
+	return cheapest;
 }
 
 /*
@@ -285,7 +285,7 @@ sort_inner_and_outer(RelOptInfo *joinrel,
 
 		ms_list = lappend(ms_list, temp_node);
 	}
-	return (ms_list);
+	return ms_list;
 }
 
 /*
@@ -442,7 +442,7 @@ match_unsorted_outer(RelOptInfo *joinrel,
 			temp_node = paths;
 		jp_list = nconc(jp_list, temp_node);
 	}
-	return (jp_list);
+	return jp_list;
 }
 
 /*
@@ -560,7 +560,7 @@ match_unsorted_inner(RelOptInfo *joinrel,
 			}
 		}
 	}
-	return (mp_list);
+	return mp_list;
 
 }
 
@@ -645,5 +645,5 @@ hash_inner_and_outer(RelOptInfo *joinrel,
 			hjoin_list = lappend(hjoin_list, temp_node);
 		}
 	}
-	return (hjoin_list);
+	return hjoin_list;
 }

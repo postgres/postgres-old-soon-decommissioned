@@ -42,7 +42,7 @@ CATALOG(pg_version)
  *		the format of pg_version relation.
  * ----------------
  */
-typedef FormData_pg_version *VersionTupleForm;
+typedef FormData_pg_version *Form_pg_version;
 
 /* ----------------
  *		compiler constants for pg_version

@@ -53,13 +53,13 @@ typedef struct
 {
 	FuncIndexInfo finfo;
 	FuncIndexInfo *finfoP;
-	IndexTupleForm tform;
+	Form_pg_index tform;
 	int			natts;
 } IndDesc;
 
 typedef struct
 {
-	AttributeTupleForm attr;
+	Form_pg_attribute attr;
 	Datum		best,
 				guess1,
 				guess2,

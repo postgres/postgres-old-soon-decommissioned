@@ -101,5 +101,5 @@ linear(int pool_size, double bias)		/* bias is y-intercept of linear
 		max * (bias - sqrt((bias * bias) - 4.0 * (bias - 1.0) * geqo_rand()))
 		/ 2.0 / (bias - 1.0);
 
-	return ((int) index);
+	return (int) index;
 }

@@ -85,5 +85,5 @@ snprintf(str, n, fmt, va_alist)
 	if (on > 0)
 		*f._p = '\0';
 	va_end(ap);
-	return (ret);
+	return ret;
 }

@@ -182,7 +182,7 @@ compute_full_attributes(const List *parameters, int32 *byte_pct_p,
 
 
 static void
-interpret_AS_clause(const char languageName[], const char as[],
+interpret_AS_clause(const char *languageName, const char *as,
 					char **prosrc_str_p, char **probin_str_p)
 {
 
@@ -710,14 +710,14 @@ defGetString(DefElem *def)
 {
 	if (nodeTag(def->arg) != T_String)
 		elog(ERROR, "Define: \"%s\" = what?", def->defname);
-	return (strVal(def->arg));
+	return strVal(def->arg);
 }
 
 static int
 defGetTypeLength(DefElem *def)
 {
 	if (nodeTag(def->arg) == T_Integer)
-		return (intVal(def->arg));
+		return intVal(def->arg);
 	else if (nodeTag(def->arg) == T_String &&
 			 !strcasecmp(strVal(def->arg), "variable"))
 		return -1;				/* variable length */

@@ -104,7 +104,7 @@ inet_aton(const char *cp, struct in_addr * addr)
 			 * 16-bits) a.b		(with b treated as 24 bits)
 			 */
 			if (pp >= parts + 3 || val > 0xff)
-				return (0);
+				return 0;
 			*pp++ = val, cp++;
 		}
 		else
@@ -115,7 +115,7 @@ inet_aton(const char *cp, struct in_addr * addr)
 	 * Check for trailing characters.
 	 */
 	if (*cp && (!isascii(*cp) || !isspace(*cp)))
-		return (0);
+		return 0;
 
 	/*
 	 * Concoct the address according to the number of parts specified.
@@ -129,23 +129,23 @@ inet_aton(const char *cp, struct in_addr * addr)
 
 		case 2:			/* a.b -- 8.24 bits */
 			if (val > 0xffffff)
-				return (0);
+				return 0;
 			val |= parts[0] << 24;
 			break;
 
 		case 3:			/* a.b.c -- 8.8.16 bits */
 			if (val > 0xffff)
-				return (0);
+				return 0;
 			val |= (parts[0] << 24) | (parts[1] << 16);
 			break;
 
 		case 4:			/* a.b.c.d -- 8.8.8.8 bits */
 			if (val > 0xff)
-				return (0);
+				return 0;
 			val |= (parts[0] << 24) | (parts[1] << 16) | (parts[2] << 8);
 			break;
 	}
 	if (addr)
 		addr->s_addr = htonl(val);
-	return (1);
+	return 1;
 }
