@@ -174,7 +174,7 @@ install-libpq: libpq.a
 	$(INSTALL) $(INSTL_LIB_OPTS) libpq.a $(LIBDIR)/libpq.a
 
 install-shlib: $(shlib)
-	$(INSTALL) $(INSTL_LIB_OPTS) $(shlib) $(LIBDIR)/$(shlib)
+	$(INSTALL) $(INSTL_SHLIB_OPTS) $(shlib) $(LIBDIR)/$(shlib)
 	rm -f $(LIBDIR)/libpq.so
 	ln -s $(shlib) $(LIBDIR)/libpq.so
 

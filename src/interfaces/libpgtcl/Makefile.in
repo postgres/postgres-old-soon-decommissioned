@@ -66,6 +66,13 @@ ifeq ($(PORTNAME), univel)
   CFLAGS		+= $(CFLAGS_SL)
 endif
 
+ifeq ($(PORTNAME), hpux)
+  install-shlib-dep := install-shlib
+  shlib := libpq.sl
+  LDFLAGS_SL = -b
+  CFLAGS += $(CFLAGS_SL)
+endif
+
 OBJS= pgtcl.o pgtclCmds.o pgtclId.o
 
 
@@ -98,7 +105,7 @@ install-libpgtcl: libpgtcl.a
 	$(INSTALL) $(INSTL_LIB_OPTS) libpgtcl.a $(LIBDIR)/libpgtcl.a
 
 install-shlib: $(shlib)
-	$(INSTALL) $(INSTL_LIB_OPTS) $(shlib) \
+	$(INSTALL) $(INSTL_SHLIB_OPTS) $(shlib) \
 		$(LIBDIR)/$(shlib)
 	ln -sf $(shlib) $(LIBDIR)/libpgtcl.so
 
