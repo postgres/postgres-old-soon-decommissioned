@@ -87,9 +87,9 @@ for pgac_lib in "" " -ltermcap" " -lncurses" " -lcurses" ; do
     pgac_save_LIBS=$LIBS
     LIBS="${pgac_rllib}${pgac_lib} $LIBS"
     AC_TRY_LINK_FUNC([readline], [[
-      # NetBSD and OpenBSD have a broken linker that does not
+      # NetBSD, OpenBSD, and Irix have a broken linker that does not
       # recognize dependent libraries
-      case $host_os in netbsd* | openbsd* )
+      case $host_os in netbsd* | openbsd* | irix*)
         case $pgac_lib in
           *curses*) ;;
           *) pgac_lib=" -lcurses" ;;
