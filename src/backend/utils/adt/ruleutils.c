@@ -3903,7 +3903,8 @@ get_from_clause_item(Node *jtnode, Query *query, deparse_context *context)
 		bool		need_paren_on_right;
 
 		need_paren_on_right = PRETTY_PAREN(context) &&
-			!IsA(j->rarg, RangeTblRef);
+			!IsA(j->rarg, RangeTblRef) && 
+			!(IsA(j->rarg, JoinExpr) && ((JoinExpr*) j->rarg)->alias != NULL);
 
 		if (!PRETTY_PAREN(context) || j->alias != NULL)
 			appendStringInfoChar(buf, '(');
