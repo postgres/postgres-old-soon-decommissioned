@@ -876,16 +876,18 @@ SearchSysCache(struct catcache * cache,
 
 	/* ----------------
 	 *	if we found a tuple in the cache, move it to the top of the
-	 *	lru list, and return it.
+	 *	lru list, and return it.  We also move it to the front of the
+	 *	list for its hashbucket, in order to speed subsequent searches.
+	 *	(The most frequently accessed elements in any hashbucket will
+	 *	tend to be near the front of the hashbucket's list.)
 	 * ----------------
 	 */
 	if (elt)
 	{
-		Dlelem	   *old_lru_elt;
+		Dlelem	   *old_lru_elt = ((CatCTup *) DLE_VAL(elt))->ct_node;
 
-		old_lru_elt = ((CatCTup *) DLE_VAL(elt))->ct_node;
-		DLRemove(old_lru_elt);
-		DLAddHead(cache->cc_lrulist, old_lru_elt);
+		DLMoveToFront(old_lru_elt);
+		DLMoveToFront(elt);
 
 #ifdef CACHEDEBUG
 		relation = heap_open(cache->relationId);
