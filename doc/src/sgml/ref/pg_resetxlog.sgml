@@ -73,7 +73,7 @@ PostgreSQL documentation
 
   <para>
    The <literal>-x</> and <literal>-l</> switches are intended for use by
-   <application>pg_upgrade</>.  In most case they should not be used in
+   <application>pg_upgrade</>.  In most cases they should not be used in
    manual recovery operations.
   </para>
  </refsect1>
