@@ -1,3 +1,6 @@
+#ifndef _ECPG_SQL3TYPES_H
+#define _ECPG_SQL3TYPES_H
+
 /* SQL3 dynamic type codes
  *
  * Copyright (c) 2000, Christof Petig <christof.petig@wtal.de>
@@ -41,3 +44,5 @@ enum
 	SQL3_DDT_ILLEGAL			/* not a datetime data type (not part of
 								 * standard) */
 };
+
+#endif /* !_ECPG_SQL3TYPES_H */

@@ -393,10 +393,12 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 					/* did we get an error? */
 					if (errno != 0)
 					{
+						ECPGlog("ECPGget_data line %d: RESULT: %s errno %d\n", lineno, pval ? pval : "", errno);
+
 						if (INFORMIX_MODE(compat))
 						{
 							/* Informix wants its own NULL value here instead of an error */
-							ECPGset_informix_null(ECPGt_numeric, &nres);
+							ECPGset_informix_null(ECPGt_numeric, nres);
 						}
 						else
 						{
@@ -440,7 +442,7 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 						if (INFORMIX_MODE(compat))
 						{
 							/* Informix wants its own NULL value here instead of an error */
-							ECPGset_informix_null(ECPGt_interval, &ires);
+							ECPGset_informix_null(ECPGt_interval, ires);
 						}
 						else
 						{
