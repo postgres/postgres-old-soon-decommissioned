@@ -902,17 +902,9 @@ restore_command = 'cp /mnt/server/archivedir/%f %p'
 
    <para>
     At this writing, there are several limitations of the on-line backup
-    technique.  These will probably be fixed in future releases.
+    technique.  These will probably be fixed in future releases:
 
   <itemizedlist>
-   <listitem>
-    <para>
-     The effects of <command>CREATE DATABASE</>, <command>DROP DATABASE</>,
-     <command>CREATE TABLESPACE</>, and <command>DROP TABLESPACE</> are
-     not fully reflected in the WAL log.  It is recommended that you take
-     a new base backup after performing one of these operations.
-    </para>
-   </listitem>
    <listitem>
     <para>
      Operations on non-btree indexes (hash, R-tree, and GiST indexes) are
@@ -932,7 +924,7 @@ restore_command = 'cp /mnt/server/archivedir/%f %p'
     since we may need to fix partially-written disk pages.  It is not
     necessary to store so many page copies for PITR operations, however.
     An area for future development is to compress archived WAL data by
-    removing unnecesssary page copies.
+    removing unnecessary page copies.
    </para>
   </sect2>
  </sect1>
