@@ -3212,11 +3212,7 @@ log_disconnections(int code, Datum arg)
 	snprintf(dbname, sizeof(dbname)," database=%s",port->database_name);
 	snprintf(remote_host,sizeof(remote_host)," host=%s",
 			 port->remote_host);
-	/* prevent redundant or empty reporting of port */
-	if (!LogSourcePort && strlen(port->remote_port))
-		snprintf(remote_port,sizeof(remote_port)," port=%s",port->remote_port);
-	else
-		remote_port[0] = '\0';
+	snprintf(remote_port,sizeof(remote_port)," port=%s",port->remote_port);
 
 
 	gettimeofday(&end,NULL);

@@ -169,8 +169,6 @@ typedef enum
 } PGErrorVerbosity;
 
 extern PGErrorVerbosity Log_error_verbosity;
-extern bool Log_timestamp;
-extern bool Log_pid;
 extern char *Log_line_prefix;
 
 #ifdef HAVE_SYSLOG
