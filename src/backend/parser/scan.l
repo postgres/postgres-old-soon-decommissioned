@@ -433,7 +433,7 @@ other			.
 						 * that the "self" rule would have.
 						 */
 						if (nchars == 1 &&
-							strchr(",()[].;$:+-*/%^<>=|", yytext[0]))
+							strchr(",()[].;$:+-*/%^<>=", yytext[0]))
 							return yytext[0];
 					}
 
