@@ -96,10 +96,6 @@ EnableExceptionHandling(bool on)
 
 
 extern int	errno;
-#ifdef __CYGWIN__
-# define sys_nerr _sys_nerr
-#endif
-extern int	sys_nerr;
 
 static void
 ExcPrint(Exception *excP,
@@ -131,7 +127,7 @@ ExcPrint(Exception *excP,
 
 	fprintf(stderr, " (%ld)", detail);
 
-#ifndef __BEOS__
+#ifdef HAVE_SYS_NERR
 	if (errno > 0 && errno < sys_nerr)
 #else
     if (errno > 0)
