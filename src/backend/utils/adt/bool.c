@@ -116,3 +116,15 @@ boolgt(bool arg1, bool arg2)
 {
 	return (arg1 > arg2);
 }
+
+bool
+istrue(bool arg1)
+{
+	return(arg1 == TRUE);
+} /* istrue() */
+
+bool
+isfalse(bool arg1)
+{
+	return(arg1 != TRUE);
+} /* istrue() */

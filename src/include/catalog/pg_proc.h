@@ -729,6 +729,9 @@ DATA(insert OID = 947 (  oidnamene		   PGUID 11 f t f 2 f 16 "911 911" 100 0 0 1
 DATA(insert OID = 948 (  oidnamecmp		   PGUID 11 f t f 2 f 23 "911 911" 100 0 0 100	foo bar));
 DATA(insert OID = 949 (  mkoidname		   PGUID 11 f t f 2 f 911 "26 19" 100 0 0 100  foo bar));
 
+DATA(insert OID = 950 (  istrue			   PGUID 11 f t f 1 f 16 "16" 100 0 0 100	foo bar ));
+DATA(insert OID = 951 (  isfalse		   PGUID 11 f t f 1 f 16 "16" 100 0 0 100	foo bar ));
+
 DATA(insert OID = 952 (  lo_open		   PGUID 11 f t f 2 f 23 "26 23" 100 0 0 100  foo bar ));
 DATA(insert OID = 953 (  lo_close		   PGUID 11 f t f 1 f 23 "23" 100 0 0 100  foo bar ));
 DATA(insert OID = 954 (  loread			   PGUID 11 f t f 2 f 17 "23 23" 100 0 0 100  foo bar ));

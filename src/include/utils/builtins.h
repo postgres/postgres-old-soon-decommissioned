@@ -35,6 +35,8 @@ extern bool booleq(bool arg1, bool arg2);
 extern bool boolne(bool arg1, bool arg2);
 extern bool boollt(bool arg1, bool arg2);
 extern bool boolgt(bool arg1, bool arg2);
+extern bool istrue(bool arg1);
+extern bool isfalse(bool arg1);
 
 /* char.c */
 extern int32 charin(char *ch);
