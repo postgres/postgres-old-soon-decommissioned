@@ -147,6 +147,7 @@
 /* BeOS defines bool already, but the compiler chokes on the
  * #ifndef unless we wrap it in this check.
  */
+/* Also defined in interfaces/odbc/md5.h */
 #ifndef __BEOS__
 
 #ifndef __cplusplus
@@ -216,6 +217,7 @@ typedef signed int int32;		/* == 32 bits */
  *		used for numerical computations and the
  *		frontend/backend protocol.
  */
+/* Also defined in interfaces/odbc/md5.h */
 #ifndef __BEOS__				/* this shouldn't be required, but is is! */
 typedef unsigned char uint8;	/* == 8 bits */
 typedef unsigned short uint16;	/* == 16 bits */
