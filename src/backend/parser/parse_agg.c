@@ -104,7 +104,7 @@ parseCheckAggregates(ParseState *pstate, Query *qry)
 	Node	   *clause;
 
 	/* This should only be called if we found aggregates or grouping */
-	Assert(pstate->p_hasAggs || qry->groupClause);
+	Assert(pstate->p_hasAggs || qry->groupClause || qry->havingQual);
 
 	/*
 	 * Aggregates must never appear in WHERE or JOIN/ON clauses.

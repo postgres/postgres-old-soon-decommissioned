@@ -783,8 +783,9 @@ SELECT city, max(temp_lo)
     will be inputs to the aggregates.  On the other hand, the
     <literal>HAVING</literal> clause always contains aggregate functions.
     (Strictly speaking, you are allowed to write a <literal>HAVING</literal>
-    clause that doesn't use aggregates, but it's wasteful. The same condition
-    could be used more efficiently at the <literal>WHERE</literal> stage.)
+    clause that doesn't use aggregates, but it's seldom useful. The same
+    condition could be used more efficiently at the <literal>WHERE</literal>
+    stage.)
    </para>
 
    <para>

@@ -39,7 +39,7 @@ extern Agg *make_agg(Query *root, List *tlist, List *qual,
 		 int numGroupCols, AttrNumber *grpColIdx,
 		 long numGroups, int numAggs,
 		 Plan *lefttree);
-extern Group *make_group(Query *root, List *tlist,
+extern Group *make_group(Query *root, List *tlist, List *qual,
 		   int numGroupCols, AttrNumber *grpColIdx,
 		   double numGroups,
 		   Plan *lefttree);

@@ -128,6 +128,7 @@ typedef struct Query
 	List	   *in_info_list;	/* list of InClauseInfos */
 	List	   *query_pathkeys; /* desired pathkeys for query_planner() */
 	bool		hasJoinRTEs;	/* true if any RTEs are RTE_JOIN kind */
+	bool		hasHavingQual;	/* true if havingQual was non-null */
 } Query;
 
 

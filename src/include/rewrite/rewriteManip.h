@@ -31,7 +31,6 @@ extern bool attribute_used(Node *node, int rt_index, int attno,
 extern Query *getInsertSelectQuery(Query *parsetree, Query ***subquery_ptr);
 
 extern void AddQual(Query *parsetree, Node *qual);
-extern void AddHavingQual(Query *parsetree, Node *havingQual);
 extern void AddInvertedQual(Query *parsetree, Node *qual);
 
 extern bool checkExprHasAggs(Node *node);

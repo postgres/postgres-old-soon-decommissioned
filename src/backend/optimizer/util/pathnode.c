@@ -797,6 +797,15 @@ is_distinct_query(Query *query)
 		if (!gl)				/* got to the end? */
 			return true;
 	}
+	else
+	{
+		/*
+		 * If we have no GROUP BY, but do have aggregates or HAVING, then
+		 * the result is at most one row so it's surely unique.
+		 */
+		if (query->hasAggs || query->havingQual)
+			return true;
+	}
 
 	/*
 	 * XXX Are there any other cases in which we can easily see the result
