@@ -79,6 +79,7 @@ distclean: clean
 		bin/psql/Makefile \
 		bin/pg_dump/Makefile \
 		include/config.h \
+		backend/utils/Gen_fmgrtab.sh \
 		include/os.h
 
 
