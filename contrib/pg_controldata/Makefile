@@ -12,8 +12,8 @@ OBJS	= pg_controldata.o
 
 all: pg_controldata
 
-pg_controldata: $(OBJS) $(libpq_builddir)/libpq.a
-	$(CC) $(CFLAGS) $(OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@
+pg_controldata: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) -o $@
 
 install: all installdirs
 	$(INSTALL_PROGRAM) pg_controldata$(X)	$(bindir)
