@@ -2035,7 +2035,7 @@ PQoidStatus(const PGresult *res)
 	if (len > 23)
 		len = 23;
 	strncpy(buf, res->cmdStatus + 7, len);
-	buf[23] = '\0';
+	buf[len] = '\0';
 
 	return buf;
 }
