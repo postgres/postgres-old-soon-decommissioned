@@ -62,13 +62,13 @@ GetCurrentAbsoluteTime(void)
 	CTimeZone = - tmnow->tm_gmtoff;	/* tm_gmtoff is Sun/DEC-ism */
 	CDayLight = (tmnow->tm_isdst > 0);
 	/* XXX is there a better way to get local timezone string in V7? - tgl 97/03/18 */
-	strftime( CTZName, "%Z", localtime(&now));
+	strftime( CTZName, 8, "%Z", localtime(&now));
 #endif
 #else /* ! USE_POSIX_TIME */
 	CTimeZone = tbnow.timezone * 60;
 	CDayLight = (tbnow.dstflag != 0);
 	/* XXX does this work to get the local timezone string in V7? - tgl 97/03/18 */
-	strftime( CTZName, "%Z", localtime(&now));
+	strftime( CTZName, 8, "%Z", localtime(&now));
 #endif 
     };
 
