@@ -706,9 +706,13 @@ pq_eof(void)
 
 	res = recv(MyProcPort->sock, &x, 1, MSG_PEEK);
 
-	if (res == -1)
+	if (res < 0)
+	{
+		/* don't try to elog here... */
 		fprintf(stderr, "pq_eof: recv() failed: %s\n", strerror(errno));
-	else if (res == 0)
+		return EOF;
+	}
+	if (res == 0)
 		return EOF;
 	else
 		return 0;
