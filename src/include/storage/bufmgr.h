@@ -170,7 +170,7 @@ extern void PrintBufferUsage(FILE *statfp);
 extern void ResetBufferUsage(void);
 extern void ResetBufferPool(void);
 extern int	BufferPoolCheckLeak(void);
-extern void FlushBufferPool(int StableMainMemoryFlag);
+extern void FlushBufferPool(void);
 extern BlockNumber BufferGetBlockNumber(Buffer buffer);
 extern BlockNumber RelationGetNumberOfBlocks(Relation relation);
 extern int	FlushRelationBuffers(Relation rel, BlockNumber block,

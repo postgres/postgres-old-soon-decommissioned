@@ -815,6 +815,12 @@ mdtruncate(Relation reln, int nblocks)
 int
 mdcommit()
 {
+#ifdef XLOG
+	sync();
+	sleep(1);
+	sync();
+	return SM_SUCCESS;
+#else
 	int			i;
 	MdfdVec    *v;
 
@@ -838,6 +844,7 @@ mdcommit()
 	}
 
 	return SM_SUCCESS;
+#endif	/* XLOG */
 }
 
 /*

@@ -541,8 +541,10 @@ InitPostgres(char *name)		/* database name */
 	 */
 	InitLocalBuffer();
 
+#ifndef XLOG
 	if (!TransactionFlushEnabled())
 		on_shmem_exit(FlushBufferPool, (caddr_t) NULL);
+#endif
 
 	/* ----------------
 	 *	initialize the database id used for system caches and lock tables

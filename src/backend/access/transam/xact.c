@@ -632,7 +632,7 @@ RecordTransactionCommit()
 	 */
 	if (SharedBufferChanged)
 	{
-		FlushBufferPool(!TransactionFlushEnabled());
+		FlushBufferPool();
 		if (leak)
 			ResetBufferPool();
 
@@ -646,7 +646,7 @@ RecordTransactionCommit()
 		 *	Now write the log info to the disk too.
 		 */
 		leak = BufferPoolCheckLeak();
-		FlushBufferPool(!TransactionFlushEnabled());
+		FlushBufferPool();
 	}
 
 	if (leak)

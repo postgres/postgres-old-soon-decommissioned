@@ -1240,13 +1240,10 @@ relname=%s, blockNum=%d, flags=0x%x, refcount=%d %d)",
  * ------------------------------------------------
  */
 void
-FlushBufferPool(int StableMainMemoryFlag)
+FlushBufferPool(void)
 {
-	if (!StableMainMemoryFlag)
-	{
-		BufferSync();
-		smgrcommit();
-	}
+	BufferSync();
+	smgrcommit();
 }
 
 /*
