@@ -17,6 +17,8 @@ CFLAGS+=$(INCLUDE_OPT)
 
 all: version.o
 
+install:
+
 depend dep:
 	$(CC) -MM $(INCLUDE_OPT) *.c >depend
 
