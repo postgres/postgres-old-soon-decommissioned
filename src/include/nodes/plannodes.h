@@ -85,7 +85,7 @@ typedef struct Plan
 	 */
 	int			nParamExec;		/* Number of them in entire query. This is
 								 * to get Executor know about how many
-								 * param_exec there are in query plan. */
+								 * PARAM_EXEC there are in query plan. */
 } Plan;
 
 /* ----------------
