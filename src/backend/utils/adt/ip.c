@@ -266,7 +266,7 @@ ipaddr_cmp(ipaddr *a1, ipaddr *a2)
  */
 
 int
-v4bitncmp(u_int32_t a1, u_int32_t a2, int bits)
+v4bitncmp(unsigned int a1, unsigned int a2, int bits)
 {
 	unsigned long mask = 0;
 	int			i;

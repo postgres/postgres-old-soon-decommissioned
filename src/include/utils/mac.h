@@ -23,7 +23,7 @@ typedef struct
 	unsigned char bits;
 	union
 	{
-		u_int32_t	ipv4_addr;	/* network byte order */
+		unsigned int	ipv4_addr;	/* network byte order */
 		/* add IPV6 address type here */
 	}			addr;
 }			ipaddr_struct;

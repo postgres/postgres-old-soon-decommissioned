@@ -532,7 +532,7 @@ bool		ipaddr_subeq(ipaddr * a1, ipaddr * a2);
 bool		ipaddr_sup(ipaddr * a1, ipaddr * a2);
 bool		ipaddr_supeq(ipaddr * a1, ipaddr * a2);
 int4		ipaddr_cmp(ipaddr * a1, ipaddr * a2);
-int			v4bitncmp(u_int32_t a1, u_int32_t a2, int bits);
+int			v4bitncmp(unsigned int a1, unsigned int a2, int bits);
 
 
 /* mac.c */
