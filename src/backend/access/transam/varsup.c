@@ -93,13 +93,6 @@ ReadNewTransactionId(void)
 {
 	TransactionId xid;
 
-	/*
-	 * During bootstrap initialization, we return the special bootstrap
-	 * transaction id.
-	 */
-	if (AMI_OVERRIDE)
-		return BootstrapTransactionId;
-
 	LWLockAcquire(XidGenLock, LW_SHARED);
 	xid = ShmemVariableCache->nextXid;
 	LWLockRelease(XidGenLock);

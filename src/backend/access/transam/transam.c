@@ -23,6 +23,18 @@
 #include "access/transam.h"
 
 
+/* ----------------
+ *		Flag indicating that we are bootstrapping.
+ *
+ * Transaction ID generation is disabled during bootstrap; we just use
+ * BootstrapTransactionId.  Also, the transaction ID status-check routines
+ * are short-circuited; they claim that BootstrapTransactionId has already
+ * committed, allowing tuples already inserted to be seen immediately.
+ * ----------------
+ */
+bool		AMI_OVERRIDE = false;
+
+
 static bool TransactionLogTest(TransactionId transactionId, XidStatus status);
 static void TransactionLogUpdate(TransactionId transactionId,
 					 XidStatus status);
@@ -160,7 +172,10 @@ bool							/* true if given transaction committed */
 TransactionIdDidCommit(TransactionId transactionId)
 {
 	if (AMI_OVERRIDE)
+	{
+		Assert(transactionId == BootstrapTransactionId);
 		return true;
+	}
 
 	return TransactionLogTest(transactionId, TRANSACTION_STATUS_COMMITTED);
 }
@@ -176,7 +191,10 @@ bool							/* true if given transaction aborted */
 TransactionIdDidAbort(TransactionId transactionId)
 {
 	if (AMI_OVERRIDE)
+	{
+		Assert(transactionId == BootstrapTransactionId);
 		return false;
+	}
 
 	return TransactionLogTest(transactionId, TRANSACTION_STATUS_ABORTED);
 }
@@ -193,7 +211,10 @@ bool
 TransactionIdIsInProgress(TransactionId transactionId)
 {
 	if (AMI_OVERRIDE)
+	{
+		Assert(transactionId == BootstrapTransactionId);
 		return false;
+	}
 
 	return TransactionLogTest(transactionId, TRANSACTION_STATUS_IN_PROGRESS);
 }
@@ -215,9 +236,6 @@ TransactionIdIsInProgress(TransactionId transactionId)
 void
 TransactionIdCommit(TransactionId transactionId)
 {
-	if (AMI_OVERRIDE)
-		return;
-
 	TransactionLogUpdate(transactionId, TRANSACTION_STATUS_COMMITTED);
 }
 
@@ -231,9 +249,6 @@ TransactionIdCommit(TransactionId transactionId)
 void
 TransactionIdAbort(TransactionId transactionId)
 {
-	if (AMI_OVERRIDE)
-		return;
-
 	TransactionLogUpdate(transactionId, TRANSACTION_STATUS_ABORTED);
 }
 

@@ -92,6 +92,13 @@ typedef VariableCacheData *VariableCache;
  * ----------------
  */
 
+/* in transam/transam.c */
+extern bool AMI_OVERRIDE;
+
+/* in transam/varsup.c */
+extern VariableCache ShmemVariableCache;
+
+
 /*
  * prototypes for functions in transam/transam.c
  */
@@ -110,16 +117,5 @@ extern TransactionId GetNewTransactionId(void);
 extern TransactionId ReadNewTransactionId(void);
 extern Oid	GetNewObjectId(void);
 extern void CheckMaxObjectId(Oid assigned_oid);
-
-/* ----------------
- *		global variable extern declarations
- * ----------------
- */
-
-/* in xact.c */
-extern bool AMI_OVERRIDE;
-
-/* in varsup.c */
-extern VariableCache ShmemVariableCache;
 
 #endif   /* TRAMSAM_H */
