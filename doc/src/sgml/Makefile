@@ -67,11 +67,10 @@ vpath %.sgml ./ref
 
 MANSOURCES= $(wildcard ref/*.sgml)
 
-APPLICATIONS= \
-	createdb.sgml
-	createuser.sgml \
-	dropdb.sgml
-	dropuser.sgml \
+APPLICATIONS= createdb.sgml createuser.sgml \
+	createlang.sgml \
+	dropdb.sgml dropuser.sgml \
+	droplang.sgml \
 	initdb.sgml initlocation.sgml \
 	ipcclean.sgml \
 	pg_dump.sgml \
