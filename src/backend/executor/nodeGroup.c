@@ -271,6 +271,7 @@ ExecInitGroup(Group *node, EState *estate, Plan *parent)
 	node->grpstate = grpstate;
 	grpstate->grp_useFirstTuple = FALSE;
 	grpstate->grp_done = FALSE;
+	grpstate->grp_firstTuple = NULL;
 
 	/*
 	 * assign node's base id and create expression context
@@ -423,6 +424,11 @@ ExecReScanGroup(Group *node, ExprContext *exprCtxt, Plan *parent)
 
 	grpstate->grp_useFirstTuple = FALSE;
 	grpstate->grp_done = FALSE;
+	if (grpstate->grp_firstTuple != NULL)
+	{
+		pfree(grpstate->grp_firstTuple);
+		grpstate->grp_firstTuple = NULL;
+	}
 
 	if (((Plan *) node)->lefttree &&
 		((Plan *) node)->lefttree->chgParam == NULL)
