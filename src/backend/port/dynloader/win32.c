@@ -10,7 +10,7 @@ void *dlopen(const char *path, int mode);
 char *
 dlerror(void)
 {
-	return "error";
+	return "dynamic load error";
 }
 
 int
