@@ -323,5 +323,6 @@ extern void PageRestoreTempPage(Page tempPage, Page oldPage);
 extern int	PageRepairFragmentation(Page page, OffsetNumber *unused);
 extern Size PageGetFreeSpace(Page page);
 extern void PageIndexTupleDelete(Page page, OffsetNumber offset);
+extern void PageIndexMultiDelete(Page page, OffsetNumber *itemnos, int nitems);
 
 #endif   /* BUFPAGE_H */

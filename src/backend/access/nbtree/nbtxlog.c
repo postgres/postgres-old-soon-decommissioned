@@ -411,12 +411,7 @@ btree_xlog_delete(bool redo, XLogRecPtr lsn, XLogRecord *record)
 		unused = (OffsetNumber *) ((char *) xlrec + SizeOfBtreeDelete);
 		unend = (OffsetNumber *) ((char *) xlrec + record->xl_len);
 
-		/* be careful to delete from back to front */
-		while (unused < unend)
-		{
-			unend--;
-			PageIndexTupleDelete(page, *unend);
-		}
+		PageIndexMultiDelete(page, unused, unend - unused);
 	}
 
 	PageSetLSN(page, lsn);

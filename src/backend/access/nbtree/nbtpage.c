@@ -639,17 +639,12 @@ _bt_delitems(Relation rel, Buffer buf,
 			 OffsetNumber *itemnos, int nitems)
 {
 	Page		page = BufferGetPage(buf);
-	int			i;
 
 	/* No ereport(ERROR) until changes are logged */
 	START_CRIT_SECTION();
 
-	/*
-	 * Delete the items in reverse order so we don't have to think about
-	 * adjusting item numbers for previous deletions.
-	 */
-	for (i = nitems - 1; i >= 0; i--)
-		PageIndexTupleDelete(page, itemnos[i]);
+	/* Fix the page */
+	PageIndexMultiDelete(page, itemnos, nitems);
 
 	/* XLOG stuff */
 	if (!rel->rd_istemp)
