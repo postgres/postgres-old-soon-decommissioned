@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------
 #
 # Makefile.inc--
-#    Makefile for bin/createdb
+#    Makefile for bin/scripts
 #
 # Copyright (c) 1994, Regents of the University of California
 #
@@ -11,18 +11,23 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR= ../..
+.SUFFIXES:
+
+SRCDIR=../..
 include ../../Makefile.global
 
-all: createdb
+SCRIPTS=createdb dropdb createuser dropuser vacuumdb
 
-createdb: createdb.sh
-	sed 's/__MULTIBYTE__/$(MULTIBYTE)/' createdb.sh > createdb
+all: $(SCRIPTS)
 
-install: createdb
-	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$<
+createdb:
+dropdb:
+createuser:
+dropuser:
+vacuumdb:
+
+install: $(SCRIPTS)
+	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$(X)$<
 
 clean:
-	rm -f createdb
-
 dep depend:
