@@ -25,6 +25,7 @@
 #include "optimizer/pathnode.h"
 #include "optimizer/paths.h"
 #include "optimizer/restrictinfo.h"
+#include "optimizer/tlist.h"
 #include "parser/parse_expr.h"
 #include "parser/parse_oper.h"
 #include "parser/parsetree.h"
@@ -685,6 +686,28 @@ is_distinct_query(Query *query)
 		Assert(topop->op != SETOP_NONE);
 
 		if (!topop->all)
+			return true;
+	}
+
+	/*
+	 * GROUP BY guarantees uniqueness if all the grouped columns appear in
+	 * the output.  In our implementation this means checking they are non
+	 * resjunk columns.
+	 */
+	if (query->groupClause)
+	{
+		List   *gl;
+
+		foreach(gl, query->groupClause)
+		{
+			GroupClause *grpcl = (GroupClause *) lfirst(gl);
+			TargetEntry *tle = get_sortgroupclause_tle(grpcl,
+													   query->targetList);
+
+			if (tle->resdom->resjunk)
+				break;
+		}
+		if (!gl)				/* got to the end? */
 			return true;
 	}
 
