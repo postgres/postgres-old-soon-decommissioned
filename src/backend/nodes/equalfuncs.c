@@ -374,6 +374,8 @@ _equalJoinPath(JoinPath *a, JoinPath *b)
 		return false;
 	if (!equal(a->innerjoinpath, b->innerjoinpath))
 		return false;
+	if (!equal(a->joinrestrictinfo, b->joinrestrictinfo))
+		return false;
 	return true;
 }
 

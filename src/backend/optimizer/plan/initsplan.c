@@ -179,7 +179,8 @@ add_restrict_and_join_to_rel(Query *root, Node *clause)
 		 */
 		RelOptInfo *rel = get_base_rel(root, lfirsti(relids));
 
-		rel->restrictinfo = lcons(restrictinfo, rel->restrictinfo);
+		rel->baserestrictinfo = lcons(restrictinfo,
+									  rel->baserestrictinfo);
 	}
 	else
 	{

@@ -735,7 +735,7 @@ _freeRelOptInfo(RelOptInfo *node)
 	 */
 	freeObject(node->cheapestpath);
 
-	freeObject(node->restrictinfo);
+	freeObject(node->baserestrictinfo);
 	freeObject(node->joininfo);
 	freeObject(node->innerjoin);
 
@@ -853,6 +853,10 @@ FreeJoinPathFields(JoinPath *node)
 {
 	freeObject(node->outerjoinpath);
 	freeObject(node->innerjoinpath);
+	/* XXX probably wrong, since ordinarily a JoinPath would share its
+	 * restrictinfo list with other paths made for the same join?
+	 */
+	freeObject(node->joinrestrictinfo);
 }
 
 /* ----------------

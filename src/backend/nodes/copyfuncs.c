@@ -977,7 +977,7 @@ _copyRelOptInfo(RelOptInfo *from)
 	newnode->pages = from->pages;
 	newnode->tuples = from->tuples;
 
-	Node_Copy(from, newnode, restrictinfo);
+	Node_Copy(from, newnode, baserestrictinfo);
 	Node_Copy(from, newnode, joininfo);
 	Node_Copy(from, newnode, innerjoin);
 
@@ -1137,6 +1137,7 @@ CopyJoinPathFields(JoinPath *from, JoinPath *newnode)
 {
 	Node_Copy(from, newnode, outerjoinpath);
 	Node_Copy(from, newnode, innerjoinpath);
+	Node_Copy(from, newnode, joinrestrictinfo);
 }
 
 /* ----------------

@@ -219,7 +219,7 @@ subplanner(Query *root,
 	add_restrict_and_join_to_rels(root, qual);
 	add_missing_rels_to_query(root);
 
-	final_rel = make_one_rel(root, root->base_rel_list);
+	final_rel = make_one_rel(root);
 
 	if (! final_rel)
 	{

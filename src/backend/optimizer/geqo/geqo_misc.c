@@ -188,7 +188,7 @@ geqo_print_path(Query *root, Path *path, int indent)
 				for (i = 0; i < indent + 1; i++)
 					printf("\t");
 				printf("   clauses=(");
-				geqo_print_joinclauses(root, path->parent->restrictinfo);
+				geqo_print_joinclauses(root, jp->joinrestrictinfo);
 				printf(")\n");
 
 				if (nodeTag(path) == T_MergePath)

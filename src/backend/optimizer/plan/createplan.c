@@ -147,7 +147,7 @@ create_scan_node(Query *root, Path *best_path, List *tlist)
 	 * Extract the relevant restriction clauses from the parent relation;
 	 * the executor must apply all these restrictions during the scan.
 	 */
-	scan_clauses = get_actual_clauses(best_path->parent->restrictinfo);
+	scan_clauses = get_actual_clauses(best_path->parent->baserestrictinfo);
 
 	switch (best_path->pathtype)
 	{
@@ -203,7 +203,7 @@ create_join_node(Query *root, JoinPath *best_path, List *tlist)
 	inner_node = create_plan(root, best_path->innerjoinpath);
 	inner_tlist = inner_node->targetlist;
 
-	clauses = get_actual_clauses(best_path->path.parent->restrictinfo);
+	clauses = get_actual_clauses(best_path->joinrestrictinfo);
 
 	switch (best_path->path.pathtype)
 	{
