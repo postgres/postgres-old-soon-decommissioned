@@ -7,6 +7,8 @@ destroydb \(em destroy an existing database
 .SH SYNOPSIS
 .BR destroydb
 [\c
+.BR "-i"]
+[\c
 .BR -a
 system]
 [\c
@@ -53,6 +55,9 @@ environment variable.
 .IR Destroydb
 understands the following command-line options:
 .TP 5n
+.BR "-i"
+Prompts before destroying a database (interactive).
+.TP
 .BR "-a" " system"
 Specifies an authentication system
 .IR "system"
