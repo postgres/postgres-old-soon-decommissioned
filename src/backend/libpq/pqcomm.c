@@ -1,4 +1,4 @@
- /*-------------------------------------------------------------------------
+/*-------------------------------------------------------------------------
  *
  * pqcomm.c--
  *	  Communication functions between the Frontend and the Backend
@@ -562,7 +562,11 @@ StreamServerPort(char *hostName, short portName, int *fdP)
 		 */
 		if ((lock_fd = open(sock_path, O_RDONLY | O_NONBLOCK, 0666)) >= 0)
 		{
-			if (flock(lock_fd, LOCK_EX | LOCK_NB) == 0)
+			struct flock	lck;
+			
+			lck.l_whence = SEEK_SET; lck.l_start = lck.l_len = 0;
+			lck.l_type = F_WRLCK;
+			if (fcntl(lock_fd, F_SETLK, &lck) == 0)
 			{
 				TPRINTF(TRACE_VERBOSE, "flock on %s, deleting", sock_path);
 				unlink(sock_path);
@@ -607,7 +611,11 @@ StreamServerPort(char *hostName, short portName, int *fdP)
 		 */
 		if ((lock_fd = open(sock_path, O_RDONLY | O_NONBLOCK, 0666)) >= 0)
 		{
-			if (flock(lock_fd, LOCK_EX | LOCK_NB) != 0)
+			struct flock	lck;
+			
+			lck.l_whence = SEEK_SET; lck.l_start = lck.l_len = 0;
+			lck.l_type = F_WRLCK;
+			if (fcntl(lock_fd, F_SETLK, &lck) != 0)
 				TPRINTF(TRACE_VERBOSE, "flock error for %s", sock_path);
 		}
 	}
@@ -790,3 +798,5 @@ pq_putncharlen(char *s, int n)
 }
 
 #endif
+
+
