@@ -8,10 +8,10 @@
 # NOTE: we must be sure to update the version-checking code a few dozen lines
 # below for each new PostgreSQL release.
 
-set -x
+#set -x
 
 # Set this to "Y" to enable this program
-ENABLE="Y"
+ENABLE="N"
 
 # UPGRADE_VERSION is the expected old database version
 UPGRADE_VERSION="7.1"
