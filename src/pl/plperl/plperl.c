@@ -227,7 +227,7 @@ plperl_init_safe_interp(void)
 		/* no commas between the next 4 please. They are supposed to be one string
 		 */
 		"require Safe; SPI::bootstrap();"
-		"sub ::mksafefunc { my $x = new Safe; $x->permit_only(':default');"
+		"sub ::mksafefunc { my $x = new Safe; $x->permit_only(':default');$x->permit(':base_math');"
 		"$x->share(qw[&elog &DEBUG &NOTICE &NOIND &ERROR]);"
 		" return $x->reval(qq[sub { $_[0] }]); }"
 		};
