@@ -332,8 +332,7 @@ MergeAttributes(List *schema, List *supers, List **supconstr)
 
 			for (i = 0; i < constr->num_check; i++)
 			{
-				Constraint *cdef = (Constraint *) makeNode(Constraint); /* palloc(sizeof(Constrai
-																		 * nt)); */
+				Constraint *cdef = (Constraint *) makeNode(Constraint);
 
 				cdef->contype = CONSTR_CHECK;
 				if (check[i].ccname[0] == '$')

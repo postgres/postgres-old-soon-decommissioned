@@ -79,7 +79,6 @@ make_operand(char *opname,
 			result = coerce_type(NULL, tree, orig_typeId, true_typeId);
 		}
 	}
-
 	/* otherwise, this is a NULL value */
 	else
 	{
