@@ -22,8 +22,6 @@ extern void DiscardInvalid(void);
 
 extern void RegisterInvalid(bool send);
 
-extern void SetRefreshWhenInvalidate(bool on);
-
 extern void RelationInvalidateHeapTuple(Relation relation, HeapTuple tuple);
 
 /*

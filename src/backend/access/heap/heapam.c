@@ -98,8 +98,6 @@
 
 static void doinsert(Relation relation, HeapTuple tup);
 
-static bool ImmediateInvalidation;
-
 /* ----------------------------------------------------------------
  *						 heap support routines
  * ----------------------------------------------------------------
@@ -484,22 +482,6 @@ doinsert(Relation relation, HeapTuple tup)
 	return;
 }
 
-/*
- *		HeapScanIsValid is now a macro in relscan.h -cim 4/27/91
- */
-
-#ifdef NOT_USED
-/* ----------------
- *		SetHeapAccessMethodImmediateInvalidation
- * ----------------
- */
-void
-SetHeapAccessMethodImmediateInvalidation(bool on)
-{
-	ImmediateInvalidation = on;
-}
-
-#endif
 
 /* ----------------------------------------------------------------
  *					 heap access method interface
@@ -1149,9 +1131,7 @@ heap_insert(Relation relation, HeapTuple tup)
 		 *		invalidate caches (only works for system relations)
 		 * ----------------
 		 */
-		SetRefreshWhenInvalidate(ImmediateInvalidation);
 		RelationInvalidateHeapTuple(relation, tup);
-		SetRefreshWhenInvalidate((bool) !ImmediateInvalidation);
 	}
 
 	return tup->t_oid;
@@ -1253,9 +1233,7 @@ heap_delete(Relation relation, ItemPointer tid)
 	 *	invalidate caches
 	 * ----------------
 	 */
-	SetRefreshWhenInvalidate(ImmediateInvalidation);
 	RelationInvalidateHeapTuple(relation, tp);
-	SetRefreshWhenInvalidate((bool) !ImmediateInvalidation);
 
 	WriteBuffer(buf);
 	if (IsSystemRelationName(RelationGetRelationName(relation)->data))
@@ -1407,9 +1385,7 @@ heap_replace(Relation relation, ItemPointer otid, HeapTuple replace_tuple)
 	 *	invalidate caches
 	 * ----------------
 	 */
-	SetRefreshWhenInvalidate(ImmediateInvalidation);
 	RelationInvalidateHeapTuple(relation, old_tuple);
-	SetRefreshWhenInvalidate((bool) !ImmediateInvalidation);
 
 	WriteBuffer(buffer);
 
