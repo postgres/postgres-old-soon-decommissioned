@@ -385,8 +385,7 @@ create_indexscan_node(IndexPath *best_path,
 								lcons(index_clause, NIL));
 
 		if (lossy)
-			qpqual = nconc(qpqual,
-						   lcons((List *) copyObject(index_clause), NIL));
+			qpqual = lappend(qpqual, (List *) copyObject(index_clause));
 	}
 	else
 	{
@@ -1200,8 +1199,7 @@ generate_fjoin(List *tlist)
 									  inner,
 									  results,
 									  alwaysDone);
-		tempList = lcons(fjoinNode, NIL);
-		tempList = nconc(tempList, fjoinList);
+		tempList = lcons(fjoinNode, fjoinList);
 		newTlist = lappend(newTlist, tempList);
 	}
 	return newTlist;
