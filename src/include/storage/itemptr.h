@@ -13,7 +13,7 @@
 #ifndef	ITEMPTR_H
 #define ITEMPTR_H
 
-#include "storage/block.h" 
+#include "storage/block.h"
 #include "storage/off.h"
 
 /*

@@ -13,12 +13,7 @@
 #ifndef NABSTIME_H
 #define NABSTIME_H
 
-#include <sys/types.h>
 #include <time.h>
-#if !defined(PORTNAME_irix5)
-#include <sys/timeb.h>
-#endif
-#include "miscadmin.h"	/* for SystemTime */
 
 /* ----------------------------------------------------------------
  *		time types + support macros
