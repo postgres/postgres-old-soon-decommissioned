@@ -92,18 +92,8 @@
      </row>
 
      <row>
-      <entry>pg_inheritproc</entry>
-      <entry>(not used)</entry>
-     </row>
-
-     <row>
       <entry>pg_inherits</entry>
       <entry>table inheritance hierarchy</entry>
-     </row>
-
-     <row>
-      <entry>pg_ipl</entry>
-      <entry>(not used)</entry>
      </row>
 
      <row>

@@ -5301,8 +5301,7 @@ relation_name:	SpecialRuleRelation
 		| ColId
 				{
 					/* disallow refs to variable system tables */
-					if (strcmp(LogRelationName, $1) == 0
-						|| strcmp(VariableRelationName, $1) == 0)
+					if (strcmp(LogRelationName, $1) == 0)
 						elog(ERROR,"%s cannot be accessed by users",$1);
 					else
 						$$ = $1;

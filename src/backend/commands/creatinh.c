@@ -20,7 +20,6 @@
 #include "catalog/indexing.h"
 #include "catalog/heap.h"
 #include "catalog/pg_inherits.h"
-#include "catalog/pg_ipl.h"
 #include "catalog/pg_type.h"
 #include "commands/creatinh.h"
 #include "miscadmin.h"
@@ -786,38 +785,6 @@ again:
 			goto again;
 		}
 	}
-
-	/*
-	 * Catalog IPL information using expanded list.
-	 */
-	relation = heap_openr(InheritancePrecidenceListRelationName, RowExclusiveLock);
-	desc = RelationGetDescr(relation);
-
-	seqNumber = 1;
-
-	foreach(entry, supers)
-	{
-		Datum		datum[Natts_pg_ipl];
-		char		nullarr[Natts_pg_ipl];
-
-		datum[0] = ObjectIdGetDatum(relationId);		/* iplrel */
-		datum[1] = ObjectIdGetDatum(lfirsti(entry));
-		/* iplinherits */
-		datum[2] = Int16GetDatum(seqNumber);	/* iplseqno */
-
-		nullarr[0] = ' ';
-		nullarr[1] = ' ';
-		nullarr[2] = ' ';
-
-		tuple = heap_formtuple(desc, datum, nullarr);
-
-		heap_insert(relation, tuple);
-		heap_freetuple(tuple);
-
-		seqNumber += 1;
-	}
-
-	heap_close(relation, RowExclusiveLock);
 }
 
 /*

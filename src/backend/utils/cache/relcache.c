@@ -2117,7 +2117,6 @@ RelationCacheInitialize(void)
 	formrdesc(AttributeRelationName, Natts_pg_attribute, Desc_pg_attribute);
 	formrdesc(ProcedureRelationName, Natts_pg_proc, Desc_pg_proc);
 	formrdesc(TypeRelationName, Natts_pg_type, Desc_pg_type);
-	formrdesc(VariableRelationName, Natts_pg_variable, Desc_pg_variable);
 	formrdesc(LogRelationName, Natts_pg_log, Desc_pg_log);
 
 	/*

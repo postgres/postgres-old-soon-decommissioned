@@ -146,8 +146,6 @@ DATA(insert OID = 1261 (  pg_group 87		  PGUID 0 1261 0 0 0 0 f t r 3	0 0 0 0 0 
 DESCR("");
 DATA(insert OID = 1262 (  pg_database 88	  PGUID 0 1262 0 0 0 0 f t r 7	0 0 0 0 0 f f f _null_ ));
 DESCR("");
-DATA(insert OID = 1264 (  pg_variable 90	  PGUID 0 1264 0 0 0 0 f t s 1	0 0 0 0 0 f f f _null_ ));
-DESCR("");
 DATA(insert OID = 1269 (  pg_log  99		  PGUID 0 1269 0 0 0 0 f t s 1	0 0 0 0 0 f f f _null_ ));
 DESCR("");
 DATA(insert OID = 376  (  pg_xactlock  0	  PGUID 0	 0 0 0 0 0 f t s 1	0 0 0 0 0 f f f _null_ ));
@@ -166,7 +164,6 @@ DESCR("");
 #define RelOid_pg_shadow		1260
 #define RelOid_pg_group			1261
 #define RelOid_pg_database		1262
-#define RelOid_pg_variable		1264
 #define RelOid_pg_log			1269
 #define RelOid_pg_attrdef		1215
 #define RelOid_pg_relcheck		1216
