@@ -2671,6 +2671,10 @@ dumpTables(FILE *fout, TableInfo *tblinfo, int numTables,
 	char			**parentRels;			/* list of names of parent relations */
 	int			numParents;
 	int			actual_atts;			/* number of attrs in this CREATE statment */
+	int32			tmp_typmod;
+	int			precision;
+	int			scale;
+
 
 	/* First - dump SEQUENCEs */
 	if (tablename)
@@ -2747,6 +2751,18 @@ dumpTables(FILE *fout, TableInfo *tblinfo, int numTables,
 						{
 							sprintf(q + strlen(q), "(%d)",
 									tblinfo[i].atttypmod[j] - VARHDRSZ);
+						}
+					}
+					else if (!strcmp(tblinfo[i].typnames[j], "numeric"))
+					{
+						sprintf(q + strlen(q), "numeric");
+						if (tblinfo[i].atttypmod[j] != -1)
+						{
+							tmp_typmod = tblinfo[i].atttypmod[j] - VARHDRSZ;
+							precision = (tmp_typmod >> 16) & 0xffff;
+							scale     = tmp_typmod & 0xffff;
+							sprintf(q + strlen(q), "(%d,%d)",
+										precision, scale);
 						}
 					}
 					/* char is an internal single-byte data type;
