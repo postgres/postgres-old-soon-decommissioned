@@ -97,6 +97,7 @@ static void get_select_query_def(Query *query, deparse_context *context);
 static void get_insert_query_def(Query *query, deparse_context *context);
 static void get_update_query_def(Query *query, deparse_context *context);
 static void get_delete_query_def(Query *query, deparse_context *context);
+static void get_utility_query_def(Query *query, deparse_context *context);
 static void get_basic_select_query(Query *query, deparse_context *context);
 static void get_setop_query(Node *setOp, Query *query,
 							deparse_context *context, bool toplevel);
@@ -874,6 +875,10 @@ get_query_def(Query *query, StringInfo buf, List *parentrtables)
 			appendStringInfo(buf, "NOTHING");
 			break;
 
+		case CMD_UTILITY:
+			get_utility_query_def(query, &context);
+			break;
+
 		default:
 			elog(ERROR, "get_ruledef of %s: query command type %d not implemented yet",
 				 rulename, query->commandType);
@@ -1309,6 +1314,26 @@ get_delete_query_def(Query *query, deparse_context *context)
 		get_rule_expr(query->jointree->quals, context);
 	}
 }
+
+
+/* ----------
+ * get_utility_query_def			- Parse back a UTILITY parsetree
+ * ----------
+ */
+static void
+get_utility_query_def(Query *query, deparse_context *context)
+{
+	StringInfo	buf = context->buf;
+
+	if (query->utilityStmt && IsA(query->utilityStmt, NotifyStmt))
+	{
+		NotifyStmt *stmt = (NotifyStmt *) query->utilityStmt;
+		appendStringInfo(buf, "NOTIFY %s", quote_identifier(stmt->relname));
+	}
+	else
+		elog(ERROR, "get_utility_query_def: unexpected statement type");
+}
+
 
 /*
  * Find the RTE referenced by a (possibly nonlocal) Var.

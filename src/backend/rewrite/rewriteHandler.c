@@ -124,6 +124,7 @@ gatherRewriteMeta(Query *parsetree,
 	 * Note that if the rule refers to OLD, its jointree will add back
 	 * a reference to rt_index.
 	 */
+	if (sub_action->jointree != NULL)
 	{
 		bool	found;
 		List   *newjointree = adjustJoinTreeList(parsetree,
