@@ -208,7 +208,8 @@ extern Oid	GetUserId(void);
 extern void SetUserId(Oid userid);
 extern Oid	GetSessionUserId(void);
 extern void SetSessionUserId(Oid userid);
-extern void SetSessionUserIdFromUserName(const char *username);
+extern void InitializeSessionUserId(const char *username);
+extern void SetSessionAuthorization(const char *username);
 
 extern void SetDataDir(const char *dir);
 

@@ -341,7 +341,7 @@ InitPostgres(const char *dbname, const char *username)
 	if (bootstrap)
 		SetSessionUserId(geteuid());
 	else
-		SetSessionUserIdFromUserName(username);
+		InitializeSessionUserId(username);
 
 	/*
 	 * Unless we are bootstrapping, double-check that InitMyDatabaseInfo()

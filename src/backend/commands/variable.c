@@ -721,6 +721,8 @@ SetPGVariable(const char *name, const char *value)
 		parse_server_encoding(mvalue);
 	else if (strcasecmp(name, "seed") == 0)
 		parse_random_seed(mvalue);
+	else if (strcasecmp(name, "session_authorization") == 0)
+		SetSessionAuthorization(value);
 	else
 		SetConfigOption(name, value, superuser() ? PGC_SUSET : PGC_USERSET);
 

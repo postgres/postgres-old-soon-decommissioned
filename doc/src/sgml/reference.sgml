@@ -84,6 +84,7 @@ PostgreSQL Reference Manual
    &selectInto;
    &set;
    &setConstraints;
+   &setSessionAuth;
    &setTransaction;
    &show;
    &truncate;
@@ -131,7 +132,6 @@ Disable this chapter until we have more functions documented.
    &dropuser;
    &ecpgRef;
    &pgAccess;
-   &pgAdmin;
    &pgConfig;
    &pgDump;
    &pgDumpall;
