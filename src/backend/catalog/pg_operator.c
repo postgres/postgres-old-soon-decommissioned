@@ -138,7 +138,7 @@ OperatorGet(const char *operatorName,
 						 ObjectIdGetDatum(operatorNamespace));
 	if (HeapTupleIsValid(tup))
 	{
-		regproc		oprcode = ((Form_pg_operator) GETSTRUCT(tup))->oprcode;
+		RegProcedure oprcode = ((Form_pg_operator) GETSTRUCT(tup))->oprcode;
 
 		operatorObjectId = tup->t_data->t_oid;
 		*defined = RegProcedureIsValid(oprcode);
@@ -168,7 +168,7 @@ OperatorLookup(List *operatorName,
 			   bool *defined)
 {
 	Oid			operatorObjectId;
-	regproc		oprcode;
+	RegProcedure oprcode;
 
 	operatorObjectId = LookupOperName(operatorName, leftObjectId,
 									  rightObjectId);

@@ -361,7 +361,7 @@ objectDescription(const char *object)
 
 	/* Operator descriptions (must get comment via associated function) */
 			 "UNION ALL\n"
-			 "  SELECT RegprocToOid(o.oprcode) as oid,\n"
+			 "  SELECT CAST(o.oprcode AS oid) as oid,\n"
 			 "  (SELECT oid FROM pg_class WHERE relname = 'pg_proc') as tableoid,\n"
 	  "  CAST(o.oprname AS text) as name, CAST('%s' AS text) as object\n"
 			 "  FROM pg_operator o\n"

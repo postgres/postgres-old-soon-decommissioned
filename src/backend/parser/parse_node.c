@@ -424,7 +424,8 @@ make_const(Value *value)
 			break;
 
 		case T_String:
-			val = DirectFunctionCall1(textin, CStringGetDatum(strVal(value)));
+			val = DirectFunctionCall1(unknownin,
+									  CStringGetDatum(strVal(value)));
 
 			typeid = UNKNOWNOID;	/* will be coerced later */
 			typelen = -1;		/* variable len */

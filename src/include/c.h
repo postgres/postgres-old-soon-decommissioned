@@ -361,9 +361,12 @@ typedef double float8;
 
 /* typedef Oid is in postgres_ext.h */
 
-/* unfortunately, both regproc and RegProcedure are used */
+/*
+ * regproc is the type name used in the include/catalog headers, but
+ * RegProcedure is the preferred name in C code.
+ */
 typedef Oid regproc;
-typedef Oid RegProcedure;
+typedef regproc RegProcedure;
 
 typedef uint32 TransactionId;
 
@@ -404,7 +407,6 @@ struct varlena
  */
 typedef struct varlena bytea;
 typedef struct varlena text;
-typedef struct varlena unknown;
 typedef struct varlena BpChar;	/* blank-padded char, ie SQL char(n) */
 typedef struct varlena VarChar; /* var-length char, ie SQL varchar(n) */
 

@@ -72,9 +72,9 @@ DESCR("System catalog namespace");
 DATA(insert OID = 99 ( "pg_toast" PGUID "{=}" ));
 DESCR("Reserved namespace for TOAST tables");
 #define PG_TOAST_NAMESPACE 99
-DATA(insert OID = 2071 ( "public" PGUID "{=UC}" ));
+DATA(insert OID = 2200 ( "public" PGUID "{=UC}" ));
 DESCR("Standard public namespace");
-#define PG_PUBLIC_NAMESPACE 2071
+#define PG_PUBLIC_NAMESPACE 2200
 
 
 /*

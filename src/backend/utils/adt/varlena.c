@@ -21,6 +21,13 @@
 #include "utils/builtins.h"
 #include "utils/pg_locale.h"
 
+
+typedef struct varlena unknown;
+
+#define DatumGetUnknownP(X)			((unknown *) PG_DETOAST_DATUM(X))
+#define PG_GETARG_UNKNOWN_P(n)		DatumGetUnknownP(PG_GETARG_DATUM(n))
+#define PG_RETURN_UNKNOWN_P(x)		PG_RETURN_POINTER(x)
+
 static int	text_cmp(text *arg1, text *arg2);
 
 

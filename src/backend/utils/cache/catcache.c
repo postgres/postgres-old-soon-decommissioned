@@ -136,8 +136,13 @@ GetCCHashFunc(Oid keytype)
 			return hashint4;
 		case TEXTOID:
 			return hashvarlena;
-		case REGPROCOID:
 		case OIDOID:
+		case REGPROCOID:
+		case REGPROCEDUREOID:
+		case REGOPEROID:
+		case REGOPERATOROID:
+		case REGCLASSOID:
+		case REGTYPEOID:
 			return hashoid;
 		case OIDVECTOROID:
 			return hashoidvector;

@@ -22,13 +22,13 @@
  *	found by namespace lookup.  Each function/operator is identified
  *	by OID and by argument types; the list must be pruned by type
  *	resolution rules that are embodied in the parser, not here.
- *	The number of arguments is assumed to be known a priori.
  */
 typedef struct _FuncCandidateList
 {
 	struct _FuncCandidateList *next;
 	int			pathpos;		/* for internal use of namespace lookup */
 	Oid			oid;			/* the function or operator's OID */
+	int			nargs;			/* number of arg types returned */
 	Oid			args[1];		/* arg types --- VARIABLE LENGTH ARRAY */
 } *FuncCandidateList;			/* VARIABLE LENGTH STRUCT */
 
