@@ -38,6 +38,7 @@ typedef struct PGShmemHeader	/* standard header for all Postgres shmem */
 
 #ifdef EXEC_BACKEND
 extern IpcMemoryKey UsedShmemSegID;
+extern void *UsedShmemSegAddr;
 #endif
 
 extern PGShmemHeader *PGSharedMemoryCreate(uint32 size, bool makePrivate,

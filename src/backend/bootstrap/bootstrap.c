@@ -286,10 +286,13 @@ BootstrapMain(int argc, char *argv[])
 			case 'p':
 			{
 				/* indicates fork from postmaster */
-				char *p;
 #ifdef EXEC_BACKEND
-				sscanf(optarg, "%d,", &UsedShmemSegID);
+				char *p;
+
+				sscanf(optarg, "%d,%p,", &UsedShmemSegID, &UsedShmemSegAddr);
 				p = strchr(optarg, ',');
+				if (p)
+					p = strchr(p+1, ',');
 				if (p)
 					dbname = strdup(p+1);
 #else
