@@ -24,10 +24,8 @@ WANTED_DIRS = \
 		miscutil	\
 		noupdate	\
 		oid2name	\
-		pg_controldata	\
 		pg_dumplo	\
 		pg_logger	\
-		pg_resetxlog	\
 		pgbench		\
 		pgcrypto	\
 		pgstattuple	\
