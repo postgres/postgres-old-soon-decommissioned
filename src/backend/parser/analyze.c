@@ -742,10 +742,32 @@ static Query *
 transformRuleStmt(ParseState *pstate, RuleStmt *stmt)
 {
 	Query	   *qry;
+	Query	   *action;
 	List	   *actions;
 
 	qry = makeNode(Query);
 	qry->commandType = CMD_UTILITY;
+
+	/*
+	 * 'instead nothing' rules with a qualification need a
+	 * query a rangetable so the rewrite handler can add the
+	 * negated rule qualification to the original query. We
+	 * create a query with the new command type CMD_NOTHING
+	 * here that is treated special by the rewrite system.
+	 */
+	if (stmt->actions == NIL) {
+		Query		*nothing_qry = makeNode(Query);
+		nothing_qry->commandType = CMD_NOTHING;
+
+		addRangeTableEntry(pstate, stmt->object->relname, "*CURRENT*",
+						   FALSE, FALSE);
+		addRangeTableEntry(pstate, stmt->object->relname, "*NEW*",
+						   FALSE, FALSE);
+
+		nothing_qry->rtable = pstate->p_rtable;
+
+		stmt->actions = lappend(NIL, nothing_qry);
+	}
 
 	actions = stmt->actions;
 
@@ -768,7 +790,9 @@ transformRuleStmt(ParseState *pstate, RuleStmt *stmt)
 		pstate->p_is_rule = true;		/* for expand all */
 		pstate->p_hasAggs = false;
 
-		lfirst(actions) = transformStmt(pstate, lfirst(actions));
+		action = (Query *)lfirst(actions);
+		if (action->commandType != CMD_NOTHING)
+			lfirst(actions) = transformStmt(pstate, lfirst(actions));
 		actions = lnext(actions);
 	}
 

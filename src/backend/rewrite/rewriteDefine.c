@@ -155,12 +155,7 @@ ValidateRule(int event_type,
 		"rules not allowed for insert or delete events to an attribute");
 	}
 
-	if (event_qual && !*action && is_instead)
-		elog(ERROR,
-		"event_quals on 'instead nothing' rules not currently supported");
-
 #if 0
-
 	/*
 	 * on retrieve to class.attribute do instead nothing is converted to
 	 * 'on retrieve to class.attribute do instead retrieve (attribute =

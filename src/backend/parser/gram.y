@@ -1955,6 +1955,7 @@ RuleStmt:  CREATE RULE name AS
 OptStmtList:  NOTHING					{ $$ = NIL; }
 		| OptimizableStmt				{ $$ = lcons($1, NIL); }
 		| '[' OptStmtBlock ']'			{ $$ = $2; }
+		| '(' OptStmtBlock ')'			{ $$ = $2; }
 		;
 
 OptStmtBlock:  OptStmtMulti
