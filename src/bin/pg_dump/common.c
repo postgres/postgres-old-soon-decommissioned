@@ -502,7 +502,7 @@ const char *
 fmtId(const char *rawid, bool force_quotes)
 {
 	const char *cp;
-	static char id[MAXQUERYLEN];
+	static char id[MAX_QUERY_SIZE];
 
 	if (!force_quotes)
 		for (cp = rawid; *cp != '\0'; cp++)

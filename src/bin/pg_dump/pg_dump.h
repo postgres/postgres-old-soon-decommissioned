@@ -224,9 +224,4 @@ extern void dumpTables(FILE *fout, TableInfo *tbinfo, int numTables,
 		   const bool acls);
 extern void dumpIndices(FILE *fout, IndInfo *indinfo, int numIndices,
 			TableInfo *tbinfo, int numTables, const char *tablename);
-
-extern const char *
-			fmtId(const char *identifier, bool force_quotes);
-
-/* largest query string size */
-#define MAXQUERYLEN  5000
+extern const char *fmtId(const char *identifier, bool force_quotes);
