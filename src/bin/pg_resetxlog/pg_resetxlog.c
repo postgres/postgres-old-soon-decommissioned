@@ -36,6 +36,9 @@
 #include <sys/time.h>
 #include <time.h>
 #include <unistd.h>
+#ifdef HAVE_GETOPT_H
+#include <getopt.h>
+#endif
 
 #include "access/xlog.h"
 #include "access/xlog_internal.h"
