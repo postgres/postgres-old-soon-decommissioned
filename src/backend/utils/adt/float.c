@@ -127,7 +127,7 @@ static void CheckFloat4Val(double val)
    
    raise an elog warning if it is
 */
-static void CheckFloat8Val(double val)
+void CheckFloat8Val(double val)
 {
   /* defining unsafe floats's will make float4 and float8 ops faster
      at the cost of safety, of course! */

@@ -260,6 +260,7 @@ extern char *filename_in(char *file);
 extern char *filename_out(char *s);
 
 /* float.c */
+extern void CheckFloat8Val(double val);	/* used by lex */
 extern float32 float4in(char *num);
 extern char *float4out(float32 num);
 extern float64 float8in(char *num);

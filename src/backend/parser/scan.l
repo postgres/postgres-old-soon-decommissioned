@@ -20,6 +20,7 @@
 #include <stdlib.h>
 #endif /* __linux__ */
 #include <string.h>
+#include <errno.h>
 
 #include "postgres.h"
 #include "miscadmin.h"
@@ -30,6 +31,7 @@
 #include "parser/scansup.h"
 #include "parser/sysfunc.h"
 #include "parse.h"
+#include "utils/builtins.h"
 
 extern char *parseString;
 extern char *parseCh;
@@ -109,8 +111,13 @@ other		.
 			return (ICONST);
 		}
 {real}		{
-			yylval.dval = atof((char*)yytext);
-			return (FCONST);
+		char* endptr;
+		errno = 0;
+		yylval.dval = strtod(((char *)yytext),&endptr);
+		if (*endptr != '\0' || errno == ERANGE)
+		    elog(WARN,"\tBad float8 input format\n");
+		CheckFloat8Val(yylval.dval);
+		return (FCONST);
 		}
 {quote}	        {       
                         char literal[MAX_PARSE_BUFFER];
