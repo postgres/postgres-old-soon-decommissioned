@@ -301,6 +301,9 @@ int lo_export(PGconn *conn, Oid lobjId, char *filename);
 #define DefaultHost	"localhost"
 #define DefaultTty	""
 #define DefaultOption	""
+#define DefaultAuthtype       ""
+#define DefaultPassword       ""
+
 
 typedef void *TUPLE;
 #define palloc malloc

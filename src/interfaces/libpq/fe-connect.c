@@ -73,13 +73,13 @@ static PQconninfoOption PQconninfoOptions[] = {
 /*    Option-name	Environment-Var	Compiled-in	Current value	*/
 /*			Label				Disp-Char	*/
 /*    ----------------- --------------- --------------- --------------- */
-    { "authtype",       "PGAUTHTYPE",   NULL,           NULL,
+    { "authtype",       "PGAUTHTYPE",  DefaultAuthtype, NULL,
                         "Database-Authtype",            "", 20  },
 
     { "user",		"PGUSER",	NULL,		NULL,
     			"Database-User",		"", 20	},
 
-    { "password",       "PGPASSWORD",   NULL,           NULL,
+    { "password",       "PGPASSWORD",  DefaultPassword, NULL,
                         "Database-Password",            "", 20  },
 
     { "dbname",		"PGDATABASE",	NULL,		NULL,
