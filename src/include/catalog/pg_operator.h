@@ -136,6 +136,9 @@ DATA(insert OID = 399 (  "="	   PGUID 0 b t f  1026	1026  16  399 0  0	0 array_e
 DATA(insert OID = 400 (  "="	   PGUID 0 b t f  1027	1027  16  400 0  0	0 array_eq eqsel eqjoinsel ));
 DATA(insert OID = 401 (  "="	   PGUID 0 b t f  1034	1034  16  401 0  0	0 array_eq eqsel eqjoinsel ));
 
+DATA(insert OID = 387 ( "="	   PGUID 0 b t t  27  27  16 387  0  0  0 tideq eqsel eqjoinsel ));
+#define TIDEqualOperator   387
+
 DATA(insert OID = 410 ( "="		   PGUID 0 b t t  20  20  16 410 411 412 412 int8eq eqsel eqjoinsel ));
 DATA(insert OID = 411 ( "<>"	   PGUID 0 b t f  20  20  16 411 410 0 0 int8ne neqsel neqjoinsel ));
 DATA(insert OID = 412 ( "<"		   PGUID 0 b t f  20  20  16 413 415 0 0 int8lt intltsel intltjoinsel ));

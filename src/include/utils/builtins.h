@@ -399,8 +399,14 @@ extern float64 gistsel(Oid operatorObjectId, Oid indrelid, AttrNumber attributeN
 extern float64 gistnpage(Oid operatorObjectId, Oid indrelid, AttrNumber attributeNumber, char *constValue, int32 constFlag, int32 nIndexKeys, Oid indexrelid);
 
 /* tid.c */
-extern ItemPointer tidin(char *str);
+extern ItemPointer tidin(const char *str);
 extern char *tidout(ItemPointer itemPtr);
+extern bool tideq(ItemPointer,ItemPointer);
+extern bool tidne(ItemPointer,ItemPointer);
+extern text *tid_text(ItemPointer);
+extern ItemPointer text_tid(const text *); 
+extern ItemPointer currtid_byreloid(Oid relOid, ItemPointer); 
+extern ItemPointer currtid_byrelname(const text* relName, ItemPointer); 
 
 /* timestamp.c */
 extern time_t timestamp_in(const char *timestamp_str);

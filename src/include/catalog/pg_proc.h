@@ -1560,6 +1560,13 @@ DESCR("truncate _char()");
 DATA(insert OID = 1291 (  _varchar		   PGUID 11 f t t 2 f 1015 "1015 23" 100 0 0 100  _varchar - ));
 DESCR("truncate _varchar()");
 
+DATA(insert OID = 1292 ( tideq			   PGUID 11 f t f 2 f 16 "27 27" 100 0 0 100  tideq - ));
+DESCR("equal");
+DATA(insert OID = 1293 ( currtid		   PGUID 11 f t f 2 f 27 "26 27" 100 0 0 100  currtid_byreloid - ));
+DESCR("latest tid of a tuple");
+DATA(insert OID = 1294 ( currtid2		   PGUID 11 f t f 2 f 27 "25 27" 100 0 0 100  currtid_byrelname - ));
+DESCR("latest tid of a tuple");
+
 DATA(insert OID = 1297 (  timestamp_in	   PGUID 11 f t f 1 f 1296 "0" 100 0 0 100	timestamp_in - ));
 DESCR("(internal)");
 DATA(insert OID = 1298 (  timestamp_out    PGUID 11 f t f 1 f	23 "0" 100 0 0 100	timestamp_out - ));
