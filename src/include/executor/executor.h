@@ -153,6 +153,24 @@ extern void FreeExprContext(ExprContext *econtext);
 #define ResetExprContext(econtext) \
 	MemoryContextReset((econtext)->ecxt_per_tuple_memory)
 
+extern ExprContext *MakePerTupleExprContext(EState *estate);
+
+/* Get an EState's per-output-tuple exprcontext, making it if first use */
+#define GetPerTupleExprContext(estate) \
+	((estate)->es_per_tuple_exprcontext ? \
+	 (estate)->es_per_tuple_exprcontext : \
+	 MakePerTupleExprContext(estate))
+
+#define GetPerTupleMemoryContext(estate) \
+	(GetPerTupleExprContext(estate)->ecxt_per_tuple_memory)
+
+/* Reset an EState's per-output-tuple exprcontext, if one's been created */
+#define ResetPerTupleExprContext(estate) \
+	do { \
+		if ((estate)->es_per_tuple_exprcontext) \
+			ResetExprContext((estate)->es_per_tuple_exprcontext); \
+	} while (0)
+
 extern void ExecOpenIndices(ResultRelInfo *resultRelInfo);
 extern void ExecCloseIndices(ResultRelInfo *resultRelInfo);
 extern void ExecInsertIndexTuples(TupleTableSlot *slot, ItemPointer tupleid,

@@ -89,13 +89,16 @@ extern void FreeTriggerDesc(TriggerDesc *trigdesc);
 
 extern bool equalTriggerDescs(TriggerDesc *trigdesc1, TriggerDesc *trigdesc2);
 
-extern HeapTuple ExecBRInsertTriggers(Relation rel, HeapTuple tuple);
-extern void ExecARInsertTriggers(Relation rel, HeapTuple tuple);
+extern HeapTuple ExecBRInsertTriggers(EState *estate,
+									  Relation rel, HeapTuple tuple);
+extern void ExecARInsertTriggers(EState *estate,
+								 Relation rel, HeapTuple tuple);
 extern bool ExecBRDeleteTriggers(EState *estate, ItemPointer tupleid);
 extern void ExecARDeleteTriggers(EState *estate, ItemPointer tupleid);
-extern HeapTuple ExecBRUpdateTriggers(EState *estate, ItemPointer tupleid, HeapTuple tuple);
-extern void ExecARUpdateTriggers(EState *estate, ItemPointer tupleid, HeapTuple tuple);
-
+extern HeapTuple ExecBRUpdateTriggers(EState *estate, ItemPointer tupleid,
+									  HeapTuple tuple);
+extern void ExecARUpdateTriggers(EState *estate, ItemPointer tupleid,
+								 HeapTuple tuple);
 
 
 /* ----------

@@ -251,7 +251,7 @@ typedef struct EState
 	MemoryContext es_query_cxt;	/* per-query context in which EState lives */
 	/*
 	 * this ExprContext is for per-output-tuple operations, such as
-	 * constraint checks and index-value computations.  It can be reset
+	 * constraint checks and index-value computations.  It will be reset
 	 * for each output tuple.  Note that it will be created only if needed.
 	 */
 	ExprContext *es_per_tuple_exprcontext;

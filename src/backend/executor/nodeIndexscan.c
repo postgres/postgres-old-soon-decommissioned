@@ -14,8 +14,6 @@
  */
 /*
  * INTERFACE ROUTINES
- *		ExecInsertIndexTuples	inserts tuples into indices on result relation
- *
  *		ExecIndexScan			scans a relation using indices
  *		ExecIndexNext			using index to retrieve next tuple
  *		ExecInitIndexScan		creates and initializes state info.
@@ -23,15 +21,8 @@
  *		ExecEndIndexScan		releases all storage.
  *		ExecIndexMarkPos		marks scan position.
  *		ExecIndexRestrPos		restores scan position.
- *
- *	 NOTES
- *		the code supporting ExecInsertIndexTuples should be
- *		collected and merged with the genam stuff.
- *
  */
 #include "postgres.h"
-
-
 
 #include "access/genam.h"
 #include "access/heapam.h"
