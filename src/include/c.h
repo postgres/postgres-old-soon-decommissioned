@@ -639,6 +639,11 @@ typedef NameData *Name;
 #include <unistd.h>
 #endif
 
+#if defined(bsdi)
+int fseeko(FILE *stream, off_t offset, int whence);
+off_t ftello(FILE *stream);
+#endif
+
 /* These are for things that are one way on Unix and another on NT */
 #define NULL_DEV		"/dev/null"
 
