@@ -437,7 +437,7 @@ $Header$
    <para>
     The <firstterm>executor</firstterm> takes the plan handed back by the
     planner/optimizer and recursively processes it to extract the required set
-    of rows.  This is essentially a demand-driven pipeline mechanism.
+    of rows.  This is essentially a demand-pull pipeline mechanism.
     Each time a plan node is called, it must deliver one more tuple, or
     report that it is done delivering tuples.
    </para>
