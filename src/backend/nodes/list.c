@@ -57,10 +57,10 @@ makeList(void *elem, ...)
 }
 
 List *
-lcons(void *datum, List *list)
+lcons(void *obj, List *list)
 {
     List *l = makeNode(List);
-    lfirst(l) = datum;
+    lfirst(l) = obj;
     lnext(l) = list;
     return l;
 }
