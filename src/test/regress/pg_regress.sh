@@ -328,8 +328,9 @@ then
 
     # ----------
     # Set up shared library paths, needed by psql and pg_encoding
-    # (if you run multibyte).  LD_LIBRARY_PATH covers many platforms,
-    # feel free to account for others as well.
+    # (if you run multibyte).  LD_LIBRARY_PATH covers many platforms.
+    # DYLD_LIBRARY_PATH works on Darwin, and maybe other Mach-based systems.
+    # Feel free to account for others as well.
     # ----------
 
     if [ -n "$LD_LIBRARY_PATH" ]; then
@@ -338,6 +339,13 @@ then
         LD_LIBRARY_PATH=$libdir
     fi
     export LD_LIBRARY_PATH
+
+    if [ -n "$DYLD_LIBRARY_PATH" ]; then
+        DYLD_LIBRARY_PATH="$libdir:$DYLD_LIBRARY_PATH"
+    else
+        DYLD_LIBRARY_PATH=$libdir
+    fi
+    export DYLD_LIBRARY_PATH
 
     # ----------
     # Windows needs shared libraries in PATH. (Only those linked into
