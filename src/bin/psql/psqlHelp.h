@@ -125,9 +125,9 @@ static struct _helpStruct QL_HELP[] = {
 		"create a new table",
 	"\
 \tCREATE [TEMP] TABLE class_name\n\
-\t(attr1 type1 [DEFAULT expression] [NOT NULL], ...attrN)\n\
+\t(attr1 type1 [DEFAULT expression] [NOT NULL], ...attrN\n\
 \t[INHERITS (class_name1, ...class_nameN)\n\
-\t[[CONSTRAINT name] CHECK condition1, ...conditionN] ]\n\
+\t[[CONSTRAINT name] CHECK condition1, ...conditionN] ])\n\
 ;"},
 	{"create trigger",
 		"create a new trigger",
