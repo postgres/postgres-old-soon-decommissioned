@@ -1632,20 +1632,16 @@ comparetup_heap(Tuplesortstate *state, const void *a, const void *b)
 	for (nkey = 0; nkey < state->nKeys; nkey++)
 	{
 		ScanKey		scanKey = state->scanKeys + nkey;
+		AttrNumber	attno = scanKey->sk_attno;
 		Datum		lattr,
 					rattr;
 		bool		isnull1,
 					isnull2;
 		int			result;
 
-		lattr = heap_getattr(ltup,
-							 scanKey->sk_attno,
-							 tupDesc,
-							 &isnull1);
-		rattr = heap_getattr(rtup,
-							 scanKey->sk_attno,
-							 tupDesc,
-							 &isnull2);
+		lattr = heap_getattr(ltup, attno, tupDesc, &isnull1);
+		rattr = heap_getattr(rtup, attno, tupDesc, &isnull2);
+
 		if (isnull1)
 		{
 			if (!isnull2)
