@@ -714,7 +714,8 @@ ReindexIndex(const char *name, bool force /* currently unused */ )
 			 ((Form_pg_class) GETSTRUCT(tuple))->relkind);
 	}
 
-	reindex_index(tuple->t_data->t_oid, force);
+	if (!reindex_index(tuple->t_data->t_oid, force))
+		elog(NOTICE, "index '%s' wasn't reindexed", name);
 }
 
 /*
@@ -744,7 +745,8 @@ ReindexTable(const char *name, bool force)
 			 ((Form_pg_class) GETSTRUCT(tuple))->relkind);
 	}
 
-	reindex_relation(tuple->t_data->t_oid, force);
+	if (!reindex_relation(tuple->t_data->t_oid, force))
+		elog(NOTICE, "table '%s' wasn't reindexed", name);
 }
 
 /*
@@ -806,7 +808,6 @@ ReindexDatabase(const char *dbname, bool force, bool all)
 		elog(ERROR, "REINDEX DATABASE: Can be executed only on the currently open database.");
 
 	heap_close(relation, NoLock);
-	/** reindex_database(db_id, force, !all); **/
 
 	CommonSpecialPortalOpen();
 	pmem = CommonSpecialPortalGetMemory();
@@ -847,7 +848,8 @@ ReindexDatabase(const char *dbname, bool force, bool all)
 	for (i = 0; i < relcnt; i++)
 	{
 		StartTransactionCommand();
-		reindex_relation(relids[i], force);
+		if (reindex_relation(relids[i], force))
+			elog(NOTICE, "relation %d was reindexed", relids[i]);
 		CommitTransactionCommand();
 	}
 	CommonSpecialPortalClose();
