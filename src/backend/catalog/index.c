@@ -1267,6 +1267,7 @@ FormIndexDatum(int numberOfAttributes,
 			   FuncIndexInfoPtr fInfo)
 {
 	AttrNumber	i;
+	int			offset;
 	bool		isNull;
 
 	/* ----------------
@@ -1276,16 +1277,19 @@ FormIndexDatum(int numberOfAttributes,
 	 * ----------------
 	 */
 
-	for (i = 0; i < numberOfAttributes; i++)
+	for (i = 1; i <= numberOfAttributes; i++)
 	{
-		datum[i] =	PointerGetDatum(GetIndexValue(heapTuple,
-									  heapDescriptor,
-									  i,
-									  attributeNumber,
-									  fInfo,
-									  &isNull));
+		offset = AttrNumberGetAttrOffset(i);
 
-		nullv[i] = (isNull) ? 'n' : ' ';
+		datum[offset] =
+			PointerGetDatum(GetIndexValue(heapTuple,
+										  heapDescriptor,
+										  offset,
+										  attributeNumber,
+										  fInfo,
+										  &isNull));
+
+		nullv[offset] = (isNull) ? 'n' : ' ';
 	}
 }
 
