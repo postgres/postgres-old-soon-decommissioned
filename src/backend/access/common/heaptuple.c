@@ -35,9 +35,9 @@
 
 /* this is so the sparcstation debugger works */
 
-#if !defined(NO_ASSERT_CHECKING) && defined(sparc)
+#if !defined(NO_ASSERT_CHECKING) && defined(sparc) && defined(sunos4)
 #define register
-#endif /* !NO_ASSERT_CHECKING && sparc */
+#endif /* !NO_ASSERT_CHECKING && sparc && sunos4 */
 
 /* ----------------------------------------------------------------
  *			misc support routines

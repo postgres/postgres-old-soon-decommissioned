@@ -32,7 +32,7 @@ ifeq ($(USE_READLINE), true)
    ifeq ($(PORTNAME), ultrix4)
    LD_ADD+= -ltermcap
    else
-   ifeq ($(PORTNAME), sparc)
+   ifeq ($(PORTNAME), sunos4)
    LD_ADD+= -ltermcap
    else
    ifeq ($(PORTNAME), linux)

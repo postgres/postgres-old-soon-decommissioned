@@ -740,7 +740,7 @@ SearchSysCache(struct catcache *cache,
 	       Datum v4)
 {
     unsigned	hash;
-    CatCTup	*ct; 
+    CatCTup	*ct = NULL; 
     CatCTup	*nct; 
     CatCTup	*nct2; 
     Dlelem      *elt;

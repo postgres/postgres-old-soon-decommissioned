@@ -298,10 +298,10 @@ typedef void *TUPLE;
 #define palloc malloc
 #define pfree free
 
-#if defined(sparc)
+#if defined(sunos4)
 extern char *sys_errlist[];
 #define strerror(A) (sys_errlist[(A)])
-#endif /* sparc */
+#endif /* sunos4 */
 
 #ifdef __cplusplus
 };
