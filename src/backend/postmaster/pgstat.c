@@ -44,6 +44,7 @@
 #include "utils/memutils.h"
 #include "storage/backendid.h"
 #include "storage/ipc.h"
+#include "storage/pg_shmem.h"
 #include "utils/rel.h"
 #include "utils/hsearch.h"
 #include "utils/ps_status.h"
@@ -399,6 +400,9 @@ pgstat_start(void)
 
 	/* Close the postmaster's sockets, except for pgstat link */
 	ClosePostmasterPorts(false);
+
+	/* Drop our connection to postmaster's shared memory, as well */
+	PGSharedMemoryDetach();
 
 	pgstat_main();
 
