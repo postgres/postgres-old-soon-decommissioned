@@ -670,7 +670,14 @@ ProcessUtility(Node *parsetree,
 
 				set_ps_display(commandTag = "CLUSTER");
 
-				cluster(stmt->relname, stmt->indexname);
+				relname = stmt->relname;
+				if (IsSystemRelationName(relname))
+					elog(ERROR, "CLUSTER: relation \"%s\" is a system catalog",
+						 relname);
+				if (!pg_ownercheck(GetUserId(), relname, RELNAME))
+					elog(ERROR, "permission denied");
+
+				cluster(relname, stmt->indexname);
 			}
 			break;
 
