@@ -249,6 +249,8 @@ sub Main() {
       if($::slaveInfo->{'status'} eq 'FileOpen')
       {
 	  close ($::slaveInfo->{'TransactionFile'});
+	   $::slaveInfo->{"status"} = 'FileClosed';
+
       }
       elsif($::slaveInfo->{'status'} eq 'DBOpen')
       {
