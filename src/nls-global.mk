@@ -35,7 +35,9 @@ endif
 PO_FILES = $(addsuffix .po, $(LANGUAGES))
 MO_FILES = $(addsuffix .mo, $(LANGUAGES))
 
-XGETTEXT += --foreign-user
+ifdef XGETTEXT
+XGETTEXT += --foreign-user -ctranslator
+endif
 
 
 all-po: $(MO_FILES)
@@ -48,10 +50,10 @@ distprep: $(srcdir)/$(CATALOG_NAME).pot
 ifdef XGETTEXT
 ifeq ($(word 1,$(GETTEXT_FILES)),+)
 $(srcdir)/$(CATALOG_NAME).pot: $(word 2, $(GETTEXT_FILES))
-	$(XGETTEXT) -D $(srcdir) -ctranslator -n $(addprefix -k, $(GETTEXT_TRIGGERS)) -f $<
+	$(XGETTEXT) -D $(srcdir) -n $(addprefix -k, $(GETTEXT_TRIGGERS)) -f $<
 else
 $(srcdir)/$(CATALOG_NAME).pot: $(GETTEXT_FILES)
-	$(XGETTEXT) -ctranslator -n $(addprefix -k, $(GETTEXT_TRIGGERS)) $^
+	$(XGETTEXT) -n $(addprefix -k, $(GETTEXT_TRIGGERS)) $^
 endif
 	mv messages.po $@
 else # not XGETTEXT
@@ -75,7 +77,7 @@ clean-po:
 	rm -f $(MO_FILES)
 	@rm -f $(addsuffix .po.old, $(AVAIL_LANGUAGES))
 
-maintainer-clean-po:
+maintainer-clean-po: clean-po
 	rm -f $(srcdir)/$(CATALOG_NAME).pot
 
 
