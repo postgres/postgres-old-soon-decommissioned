@@ -204,7 +204,7 @@ int lo_write(PGconn *conn, int fd, const char *buf, size_t len)
 <programlisting>
 int lo_read(PGconn *conn, int fd, char *buf, size_t len)
 </programlisting>
-     reads len bytes from large object fd into byf. The  fd
+     reads len bytes from large object fd into buf. The  fd
      argument must have been returned by a previous <function>lo_open</function>.
      The number of bytes actually read is returned. In
      the event of an error, the return value is negative.
