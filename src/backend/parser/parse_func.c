@@ -1479,11 +1479,6 @@ setup_field_select(Node *input, char *attname, Oid relid)
 
 	attno = get_attnum(relid, attname);
 
-	/* XXX Is there still a reason for this restriction? */
-	if (attno < 0)
-		elog(ERROR, "Cannot reference attribute '%s'"
-			 " of tuple params/return values for functions", attname);
-
 	fselect->arg = input;
 	fselect->fieldnum = attno;
 	fselect->resulttype = get_atttype(relid, attno);
