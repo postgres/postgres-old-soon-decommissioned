@@ -107,7 +107,7 @@ zpbit_in(char *s, int dummy, int32 atttypmod)
 
 	if (len > MaxAttrSize)
 		elog(ERROR, "zpbit_in: length of bit() must be less than %ld",
-			 (MaxAttrSize - VARHDRSZ - VARBITHDRSZ) * BITSPERBYTE);
+			 (long) ((MaxAttrSize - VARHDRSZ - VARBITHDRSZ) * BITSPERBYTE));
 
 	result = (bits8 *) palloc(len);
 	/* set to 0 so that *r is always initialised and strin is zero-padded */
@@ -338,7 +338,7 @@ varbit_in(char *s, int dummy, int32 atttypmod)
 
 	if (len > MaxAttrSize)
 		elog(ERROR, "varbit_in: length of bit() must be less than %ld",
-			 (MaxAttrSize - VARHDRSZ - VARBITHDRSZ) * BITSPERBYTE);
+			 (long) ((MaxAttrSize - VARHDRSZ - VARBITHDRSZ) * BITSPERBYTE));
 
 	result = (bits8 *) palloc(len);
 	/* set to 0 so that *r is always initialised and strin is zero-padded */
