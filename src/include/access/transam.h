@@ -150,7 +150,6 @@ extern void TransRecover(Relation logRelation);
 extern void InitializeTransactionLog(void);
 extern bool TransactionIdDidCommit(TransactionId transactionId);
 extern bool TransactionIdDidAbort(TransactionId transactionId);
-extern bool TransactionIdIsInProgress(TransactionId transactionId);
 extern void TransactionIdCommit(TransactionId transactionId);
 extern void TransactionIdAbort(TransactionId transactionId);
 extern void TransactionIdSetInProgress(TransactionId transactionId);
