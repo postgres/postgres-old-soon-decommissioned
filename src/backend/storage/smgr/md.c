@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include <stdio.h>		/* for sprintf() */
 #include <string.h>
+#include <fcntl.h>      /* for open() flags */
 #include <sys/file.h>
 
 #include "postgres.h"
