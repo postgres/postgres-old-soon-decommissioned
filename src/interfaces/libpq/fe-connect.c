@@ -1080,8 +1080,9 @@ keep_going:						/* We will come back to here until there
 					struct addrinfo *addr_cur = conn->addr_cur;
 
 					/* Remember current address for possible error msg */
-					memcpy(&conn->raddr, addr_cur->ai_addr,
+					memcpy(&conn->raddr.addr, addr_cur->ai_addr,
 						   addr_cur->ai_addrlen);
+					conn->raddr.salen = addr_cur->ai_addrlen;
 
 					/* Open a socket */
 					conn->sock = socket(addr_cur->ai_family,
