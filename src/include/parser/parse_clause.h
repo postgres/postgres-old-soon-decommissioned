@@ -16,10 +16,9 @@
 
 #include "parser/parse_node.h"
 
-extern void makeRangeTable(ParseState *pstate, List *frmList);
-extern void lockTargetTable(ParseState *pstate, char *relname);
-extern void setTargetTable(ParseState *pstate, char *relname,
-						   bool inh, bool inJoinSet);
+extern void transformFromClause(ParseState *pstate, List *frmList);
+extern int setTargetTable(ParseState *pstate, char *relname,
+						  bool inh, bool alsoSource);
 extern bool interpretInhOption(InhOption inhOpt);
 extern Node *transformWhereClause(ParseState *pstate, Node *where);
 extern List *transformGroupClause(ParseState *pstate, List *grouplist,

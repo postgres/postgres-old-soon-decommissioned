@@ -1136,10 +1136,9 @@ AlterTableAddConstraint(char *relationName,
 					 * the expression we can pass to ExecQual
 					 */
 					pstate = make_parsestate(NULL);
-					makeRangeTable(pstate, NULL);
 					rte = addRangeTableEntry(pstate, relationName, NULL,
 											 false, true);
-					addRTEtoJoinList(pstate, rte);
+					addRTEtoQuery(pstate, rte, true, true);
 
 					/* Convert the A_EXPR in raw_expr into an EXPR */
 					expr = transformExpr(pstate, constr->raw_expr,

@@ -427,6 +427,7 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 		{
 			RangeTblEntry *rte;
 			int			vnum;
+			Node	   *rteorjoin;
 			int			sublevels_up;
 
 			/*
@@ -434,9 +435,29 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 			 */
 			refname = ((Ident *) arg)->name;
 
-			rte = refnameRangeTableEntry(pstate, refname);
-			if (rte == NULL)
+			rteorjoin = refnameRangeOrJoinEntry(pstate, refname,
+												&sublevels_up);
+
+			if (rteorjoin == NULL)
+			{
 				rte = addImplicitRTE(pstate, refname);
+			}
+			else if (IsA(rteorjoin, RangeTblEntry))
+			{
+				rte = (RangeTblEntry *) rteorjoin;
+			}
+			else if (IsA(rteorjoin, JoinExpr))
+			{
+				elog(ERROR,
+					 "function applied to tuple is not supported for joins");
+				rte = NULL;		/* keep compiler quiet */
+			}
+			else
+			{
+				elog(ERROR, "ParseFuncOrColumn: unexpected node type %d",
+					 nodeTag(rteorjoin));
+				rte = NULL;		/* keep compiler quiet */
+			}
 
 			vnum = RTERangeTablePosn(pstate, rte, &sublevels_up);
 

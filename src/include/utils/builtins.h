@@ -325,8 +325,9 @@ extern Datum pg_get_ruledef(PG_FUNCTION_ARGS);
 extern Datum pg_get_viewdef(PG_FUNCTION_ARGS);
 extern Datum pg_get_indexdef(PG_FUNCTION_ARGS);
 extern Datum pg_get_userbyid(PG_FUNCTION_ARGS);
-extern char *deparse_expression(Node *expr, List *rangetables,
+extern char *deparse_expression(Node *expr, List *dpcontext,
 				   bool forceprefix);
+extern List *deparse_context_for(char *relname, Oid relid);
 
 /* selfuncs.c */
 extern Datum eqsel(PG_FUNCTION_ARGS);
