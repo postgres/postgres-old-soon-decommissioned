@@ -137,7 +137,7 @@ transformWhereClause(ParseState *pstate, Node *a_expr, Node *o_expr)
 	return qual;
 }
 
-#ifdef NOT_USED
+#ifdef ENABLE_OUTER_JOINS
 static Attr *
 makeAttr(char *relname, char *attname)
 {
