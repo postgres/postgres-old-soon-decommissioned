@@ -44,9 +44,7 @@
  * given backend once it's started, but they can vary across backends.
  *
  * SUSET options can be set at postmaster startup, with the SIGHUP
- * mechanism, or from SQL if you're a superuser. These options cannot
- * be set in the connection startup packet, because when it is processed
- * we don't yet know if the user is a superuser.
+ * mechanism, or from SQL if you're a superuser.
  *
  * USERSET options can be set by anyone any time.
  */
@@ -177,6 +175,7 @@ extern void EmitWarningsOnPlaceholders(const char *className);
 
 extern const char *GetConfigOption(const char *name);
 extern const char *GetConfigOptionResetString(const char *name);
+extern bool IsSuperuserConfigOption(const char *name);
 extern void ProcessConfigFile(GucContext context);
 extern void InitializeGUCOptions(void);
 extern bool SelectConfigFiles(const char *userDoption, const char *progname);

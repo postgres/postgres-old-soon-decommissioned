@@ -3864,6 +3864,21 @@ GetConfigOptionResetString(const char *name)
 	return NULL;
 }
 
+/*
+ * Detect whether the given configuration option can only be set by
+ * a superuser.
+ */
+bool
+IsSuperuserConfigOption(const char *name)
+{
+	struct config_generic *record;
+
+	record = find_option(name, ERROR);
+	/* On an unrecognized name, don't error, just return false. */
+	if (record == NULL)
+		return false;
+	return (record->context == PGC_SUSET);
+}
 
 
 /*
