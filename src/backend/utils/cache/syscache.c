@@ -436,7 +436,7 @@ InitCatalogCache()
 /*
  * SearchSysCacheTupleCopy
  *
- *	THis is like SearchSysCacheTuple, except it returns a copy of the tuple
+ *	This is like SearchSysCacheTuple, except it returns a copy of the tuple
  *	that the user is required to pfree().
  */
 HeapTuple

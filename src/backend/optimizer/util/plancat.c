@@ -13,6 +13,7 @@
  *-------------------------------------------------------------------------
  */
 #include <stdio.h>
+#include <math.h>
 #include "postgres.h"
 
 #include "access/heapam.h"
