@@ -84,15 +84,11 @@ char *oid8out(Oid	(*oidArray)[])
 
 Oid oidin(char *s)
 {
-    extern int32 int4in();
-    
     return(int4in(s));
 }
 
 char *oidout(Oid o)
 {
-    extern char *int4out();
-    
     return(int4out(o));
 }
 

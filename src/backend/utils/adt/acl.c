@@ -86,7 +86,6 @@ aclparse(char *s, AclItem *aip, unsigned *modechg)
 {
     HeapTuple htp;
     char name[NAMEDATALEN+1];
-    extern AclId get_grosysid();
     
     Assert(s && aip && modechg);
     

@@ -476,7 +476,6 @@ ProcessUtility(Node *parsetree,
 		{
 		    char *viewName = stmt->name;
 		    char *ruleName;
-		    extern char *RewriteGetRuleEventRel();
 
 #ifndef NO_SECURITY
 		
@@ -587,7 +586,7 @@ ProcessUtility(Node *parsetree,
     case T_LoadStmt:
 	{
 	    LoadStmt *stmt = (LoadStmt *)parsetree;
-	    FILE *fp, *fopen();
+	    FILE *fp;
 	    char *filename;
 
 	    commandTag = "LOAD";

@@ -447,7 +447,7 @@ ParseAgg(char *aggname, Oid basetype, Node *target)
 	    vartype = ((Expr*)target)->typeOid;
 
 	if (basetype != vartype) {
-	    Type tp1, tp2, get_id_type();
+	    Type tp1, tp2;
 	    
 	    tp1 = get_id_type(basetype);
 	    tp2 = get_id_type(vartype);

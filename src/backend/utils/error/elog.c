@@ -50,7 +50,6 @@ elog(int lev, const char *fmt, ... )
 #ifndef PG_STANDALONE
     extern	FILE	*Pfout;
 #endif /* !PG_STANDALONE */
-    time_t	time();
 #ifdef ELOG_TIMESTAMPS
     time_t	tim;
 #endif

@@ -481,12 +481,6 @@ SISetDataEntry(SISeg *segP, SharedInvalidData  *data)
 {
     Offset  	    offsetToNewData;
     SISegEntry 	    *eP, *lastP;
-    bool    	    SISegFull();
-    Offset  	    SIEntryOffset();
-    Offset  	    SIGetStartFreeSpace();
-    SISegEntry 	    *SIGetFirstDataEntry();
-    SISegEntry 	    *SIGetNextDataEntry();
-    SISegEntry 	    *SIGetLastDataEntry();
     
     if (!SIIncNumEntries(segP, 1)) 
 	return(false);  /* no space */
@@ -542,7 +536,6 @@ bool
 SIDelDataEntry(SISeg *segP)
 {
     SISegEntry 	    *e1P;
-    SISegEntry 	    *SIGetFirstDataEntry();
     
     if (!SIDecNumEntries(segP, 1))  {
     	/* no entries in buffer */

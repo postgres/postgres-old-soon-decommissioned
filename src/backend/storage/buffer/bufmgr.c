@@ -1131,7 +1131,6 @@ BufferPoolCheckLeak()
 {
     register int i;
     int error = 0;
-    void PrintBufferDescs();
     
     for (i = 1; i <= NBuffers; i++) {
 	if (BufferIsValid(i)) {

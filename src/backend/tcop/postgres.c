@@ -54,6 +54,7 @@
 #include "executor/execdebug.h"
 #include "executor/executor.h"
 #include "nodes/relation.h"
+#include "nodes/print.h"
 
 #include "optimizer/cost.h"
 #include "optimizer/planner.h"
@@ -1270,7 +1271,7 @@ PostgresMain(int argc, char *argv[])
      */
     if (IsUnderPostmaster == false) {
         puts("\nPOSTGRES backend interactive interface");
-        puts("$Revision: 1.33 $ $Date: 1997/04/24 03:39:09 $");
+        puts("$Revision: 1.34 $ $Date: 1997/07/24 20:15:03 $");
     }
     
     /* ----------------

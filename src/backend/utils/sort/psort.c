@@ -525,7 +525,6 @@ gettape()
     register struct	tapelst	*tp;
     FILE		*file;
     static	int	tapeinit = 0;
-    char		*mktemp();
     
     tp = (struct tapelst *)palloc((unsigned)sizeof (struct tapelst));
     if (!tapeinit) {

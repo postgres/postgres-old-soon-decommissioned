@@ -25,7 +25,7 @@
 char *
 filename_in(char *file)
 {
-    char *str, *getenv();
+    char *str;
     int ind = 0;
     
     /*

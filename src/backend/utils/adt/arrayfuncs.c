@@ -1203,7 +1203,7 @@ _ArrayRange(int st[],
     int n, *dim, *lb, st_pos, prod[MAXDIM];
     int span[MAXDIM], dist[MAXDIM], indx[MAXDIM];
     int i, j, inc;
-    char *srcPtr, *array_seek();
+    char *srcPtr;
     
     n = ARR_NDIM(array); dim = ARR_DIMS(array);
     lb = ARR_LBOUND(array); srcPtr = ARR_DATA_PTR(array);
@@ -1232,7 +1232,7 @@ _ArrayClipCount(int stI[], int endpI[], ArrayType *array)
     int span[MAXDIM], dist[MAXDIM], indx[MAXDIM];
     int i, j, inc, st[MAXDIM], endp[MAXDIM];
     int count = 0;
-    char *ptr, *array_seek();
+    char *ptr;
     
     n = ARR_NDIM(array); dim = ARR_DIMS(array);
     lb = ARR_LBOUND(array); ptr = ARR_DATA_PTR(array);

@@ -114,7 +114,6 @@ mdcreate(Relation reln)
 {
     int fd, vfd;
     char *path;
-    extern bool IsBootstrapProcessingMode();
 
     path = relpath(&(reln->rd_rel->relname.data[0]));
     fd = FileNameOpenFile(path, O_RDWR|O_CREAT|O_EXCL, 0600);

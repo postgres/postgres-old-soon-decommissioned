@@ -354,7 +354,6 @@ InitUserid()
 void
 InitCommunication()
 {
-    char *getenv();     /* XXX style */
     char *postid;
     char *postport;
     IPCKey      key = 0;

@@ -1477,7 +1477,6 @@ op_error(char *op, Oid arg1, Oid arg2)
 void
 func_error(char *caller, char *funcname, int nargs, Oid *argtypes)
 {
-    Type get_id_type();
     char p[(NAMEDATALEN+2)*MAXFMGRARGS], *ptr;
     int i;
 	

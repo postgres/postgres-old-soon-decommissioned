@@ -269,7 +269,6 @@ AggNameGetInitVal(char *aggName, Oid basetype, int xfuncno, bool *isNull)
     Oid	transtype;
     text	*textInitVal;
     char	*strInitVal, *initVal;
-    extern char	*textout();
     
     Assert(PointerIsValid(aggName));
     Assert(PointerIsValid(isNull));

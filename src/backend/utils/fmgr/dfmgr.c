@@ -53,7 +53,7 @@ fmgr_dynamic(Oid procedureId, int *pronargs)
     Form_pg_proc procedureStruct;
     char        *proname;
     char        *probinattr, *probinstring;
-    func_ptr    user_fn, handle_load();
+    func_ptr    user_fn;
     Relation    rdesc;
     bool     isnull;
     

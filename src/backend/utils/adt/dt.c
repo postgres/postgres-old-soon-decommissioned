@@ -1703,8 +1703,8 @@ printf( "datetime_zone- zone %s type=%d value=%d\n", lowzone, type, val);
  *****************************************************************************/
 
 /* definitions for squeezing values into "value" */
-#define ABS_SIGNBIT	0200
-#define VALMASK		0177
+#define ABS_SIGNBIT	(char) 0200
+#define VALMASK		(char) 0177
 #define NEG(n)		((n)|ABS_SIGNBIT)
 #define SIGNEDCHAR(c)	((c)&ABS_SIGNBIT? -((c)&VALMASK): (c))
 #define FROMVAL(tp)	(-SIGNEDCHAR((tp)->value) * 10)	/* uncompress */

@@ -192,8 +192,6 @@ DefineQueryRewrite(RuleStmt *stmt)
     Oid event_attype	= 0;
     char *actionP, *event_qualP;
     
-    extern Oid att_typeid();
-    
     if (event_obj->attrs)
 	eslot_string = strVal(lfirst(event_obj->attrs));
     else
