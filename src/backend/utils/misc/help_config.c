@@ -143,6 +143,7 @@ static const char *const GucContext_names[] = {
 	"SIGHUP",
 	"BACKEND",
 	"SUSET",
+	"USERLIMIT",
 	"USERSET"
 };
 
