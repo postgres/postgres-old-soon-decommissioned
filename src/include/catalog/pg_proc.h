@@ -237,6 +237,11 @@ DESCR("join selectivity of < and related operators on scalar datatypes");
 DATA(insert OID = 108 (  scalargtjoinsel   PGNSP PGUID 12 f t f t f s 3 701 "0 26 0" 100 0 0 100  scalargtjoinsel - _null_ ));
 DESCR("join selectivity of > and related operators on scalar datatypes");
 
+DATA(insert OID =  109 (  unknownin			   PGNSP PGUID 12 f t t i 1 f 705 "0" 100 0 0 100	unknownin - _null_ ));
+DESCR("(internal)");
+DATA(insert OID =  110 (  unknownout		   PGNSP PGUID 12 f t t i 1 f 23  "0" 100 0 0 100	unknownout - _null_ ));
+DESCR("(internal)");
+
 DATA(insert OID = 112 (  text			   PGNSP PGUID 12 f t t t f i 1  25 "23" 100 0 0 100  int4_text - _null_ ));
 DESCR("convert int4 to text");
 DATA(insert OID = 113 (  text			   PGNSP PGUID 12 f t t t f i 1  25 "21" 100 0 0 100  int2_text - _null_ ));

@@ -228,6 +228,46 @@ textout(PG_FUNCTION_ARGS)
 }
 
 
+/*
+ *		unknownin			- converts "..." to internal representation
+ */
+Datum
+unknownin(PG_FUNCTION_ARGS)
+{
+	char	   *inputStr = PG_GETARG_CSTRING(0);
+	unknown	   *result;
+	int			len;
+
+	len = strlen(inputStr) + VARHDRSZ;
+
+	result = (unknown *) palloc(len);
+	VARATT_SIZEP(result) = len;
+
+	memcpy(VARDATA(result), inputStr, len - VARHDRSZ);
+
+	PG_RETURN_UNKNOWN_P(result);
+}
+
+
+/*
+ *		unknownout			- converts internal representation to "..."
+ */
+Datum
+unknownout(PG_FUNCTION_ARGS)
+{
+	unknown	   *t = PG_GETARG_UNKNOWN_P(0);
+	int			len;
+	char	   *result;
+
+	len = VARSIZE(t) - VARHDRSZ;
+	result = (char *) palloc(len + 1);
+	memcpy(result, VARDATA(t), len);
+	result[len] = '\0';
+
+	PG_RETURN_CSTRING(result);
+}
+
+
 /* ========== PUBLIC ROUTINES ========== */
 
 /*

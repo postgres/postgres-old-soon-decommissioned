@@ -404,6 +404,7 @@ struct varlena
  */
 typedef struct varlena bytea;
 typedef struct varlena text;
+typedef struct varlena unknown;
 typedef struct varlena BpChar;	/* blank-padded char, ie SQL char(n) */
 typedef struct varlena VarChar; /* var-length char, ie SQL varchar(n) */
 

@@ -414,6 +414,9 @@ extern List *textToQualifiedNameList(text *textval, const char *caller);
 extern bool SplitIdentifierString(char *rawstring, char separator,
 								  List **namelist);
 
+extern Datum unknownin(PG_FUNCTION_ARGS);
+extern Datum unknownout(PG_FUNCTION_ARGS);
+
 extern Datum byteain(PG_FUNCTION_ARGS);
 extern Datum byteaout(PG_FUNCTION_ARGS);
 extern Datum byteaoctetlen(PG_FUNCTION_ARGS);
