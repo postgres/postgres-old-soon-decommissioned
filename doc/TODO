@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Sat Jul 19 23:12:45 EDT 2003
+Last updated:		Sun Jul 20 15:22:00 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -163,7 +163,7 @@ Commands
 ========
 
 * Add BETWEEN ASYMMETRIC/SYMMETRIC (Christopher)
-* Allow LIMIT/OFFSET to use expressions
+* -Allow LIMIT/OFFSET to use expressions (Tom)
 * CREATE TABLE AS can not determine column lengths from expressions [atttypmod]
 * Allow UPDATE to handle complex aggregates [update]
 * Allow command blocks to ignore certain types of errors
