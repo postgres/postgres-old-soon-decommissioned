@@ -58,7 +58,7 @@ extern		"C"
 
 #include "utils/dynamic_loader.h"
 
-#define  pg_dlopen(f)	dlopen(f, RTLD_LAZY)
+#define  pg_dlopen(f)	dlopen((f), RTLD_LAZY | RTLD_GLOBAL)
 #define  pg_dlsym	dlsym
 #define  pg_dlclose dlclose
 #define  pg_dlerror dlerror

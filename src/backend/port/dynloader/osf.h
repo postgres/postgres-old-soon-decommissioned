@@ -28,7 +28,7 @@
  * library as the file to be dynamically loaded.
  *
  */
-#define  pg_dlopen(f)	dlopen(f, RTLD_LAZY)
+#define  pg_dlopen(f)	dlopen((f), RTLD_LAZY | RTLD_GLOBAL)
 #define  pg_dlsym(h, f) ((PGFunction) dlsym(h, f))
 #define  pg_dlclose(h)	dlclose(h)
 #define  pg_dlerror()	dlerror()
