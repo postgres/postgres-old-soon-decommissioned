@@ -30,9 +30,7 @@ PostgreSQL Programmer's Guide.
   &libpq;
   &lobj;
   &libpgtcl;
-  &libpgeasy;
   &ecpg;
-  &odbc;
   &jdbc;
   &pygresql;
  </part>
