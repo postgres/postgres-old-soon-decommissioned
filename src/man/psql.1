@@ -33,9 +33,6 @@ hostname]
 .BR "-H"
 ]
 [\c
-.BR "-T"
-table-options]
-[\c
 .BR "-l"
 port]
 [\c
@@ -59,6 +56,10 @@ port]
 ]
 [\c
 .BR "-t"
+]
+[\c
+.BR "-T"
+table-options
 ]
 [\c
 .BR "-x"
@@ -148,19 +149,14 @@ Turns on
 .SM HTML3.0
 tabular output.
 .TP
-.BR "-T" " table-options"
-Allows you to specify options to be placed within the <table ...> tag
-for
-.SM HTML3.0
-tabular output. For example
-.BR border
-will give you tables with borders.
-.TP
 .BR "-l"
 Lists all available databases
 .TP
 .BR "-n"
 Do not use the readline library for input line editing and command history.
+.TP
+.BR "-o" " filename"
+Put all output into filename
 .TP
 .BR "-p" " port"
 Specifies the Internet TCP port on which the
@@ -192,6 +188,14 @@ Turn off printing of column names.
 This is useful with the
 .BR -c
 option in shell scripts.
+.TP
+.BR "-T" " table-options"
+Allows you to specify options to be placed within the <table ...> tag
+for
+.SM HTML3.0
+tabular output. For example
+.BR border
+will give you tables with borders.
 .TP
 .BR "-x"
 Turns on extended row format mode. When enabled each row will have its column
