@@ -34,5 +34,8 @@
 /* #define ELOG_TIMESTAMPS */
 
 extern void elog(int lev, const char *fmt, ...);
+#ifndef PG_STANDALONE
+int DebugFileOpen();
+#endif
 
 #endif	/* ELOG_H */
