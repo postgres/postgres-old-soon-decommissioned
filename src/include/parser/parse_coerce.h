@@ -78,12 +78,15 @@ typedef enum CATEGORY
 		|| ((a) == TEXTOID && (b) == BPCHAROID) \
 		|| ((a) == TEXTOID && (b) == VARCHAROID) \
 		|| ((a) == OIDOID && (b) == INT4OID) \
-		|| ((a) == INT4OID && (b) == TIMESTAMPOID) \
+		|| ((a) == OIDOID && (b) == REGPROCOID) \
+		|| ((a) == INT4OID && (b) == OIDOID) \
+		|| ((a) == INT4OID && (b) == REGPROCOID) \
+		|| ((a) == REGPROCOID && (b) == OIDOID) \
+		|| ((a) == REGPROCOID && (b) == INT4OID) \
 		|| ((a) == ABSTIMEOID && (b) == TIMESTAMPOID) \
 		|| ((a) == ABSTIMEOID && (b) == INT4OID) \
 		|| ((a) == TIMESTAMPOID && (b) == ABSTIMEOID) \
 		|| ((a) == TIMESTAMPOID && (b) == INT4OID) \
-		|| ((a) == INT4OID && (b) == OIDOID) \
 		|| ((a) == INT4OID && (b) == ABSTIMEOID) \
 		|| ((a) == INT4OID && (b) == TIMESTAMPOID) \
 		|| ((a) == RELTIMEOID && (b) == INT4OID) \
