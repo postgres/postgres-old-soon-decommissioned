@@ -203,6 +203,7 @@ cat > $TABCFILE <<FuNkYfMgRtAbStUfF
 # endif /* bsd descendents */
 #endif /* WIN32 */
 
+#include <postgres.h>
 #include "utils/fmgrtab.h"
 
 FuNkYfMgRtAbStUfF
