@@ -183,6 +183,10 @@ ExcRaise(Exception *excP,
 	
 	ExcCurFrameP = efp->link;
 	
+#if defined (JMP_BUF)
 	longjmp(efp->context, 1);
+#else
+	siglongjmp(efp->context, 1);
+#endif
     }
 }
