@@ -180,6 +180,8 @@ typedef enum NodeTag {
     T_ExplainStmt,
     T_CreateSeqStmt,
     T_VariableSetStmt,
+    T_VariableShowStmt,
+    T_VariableResetStmt,
 
     T_A_Expr = 700,
     T_Attr,

@@ -643,7 +643,23 @@ ProcessUtility(Node *parsetree,
 	{
 	    VariableSetStmt *n = (VariableSetStmt *) parsetree;
 	    SetPGVariable(n->name, n->value);
-	    commandTag = "SET_VARIABLE";
+	    commandTag = "SET VARIABLE";
+	}
+	break;
+      
+    case T_VariableShowStmt:
+	{
+	    VariableSetStmt *n = (VariableSetStmt *) parsetree;
+	    GetPGVariable(n->name);
+	    commandTag = "SHOW VARIABLE";
+	}
+	break;
+      
+    case T_VariableResetStmt:
+	{
+	    VariableSetStmt *n = (VariableSetStmt *) parsetree;
+	    ResetPGVariable(n->name);
+	    commandTag = "RESET VARIABLE";
 	}
 	break;
       
