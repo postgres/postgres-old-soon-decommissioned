@@ -269,10 +269,11 @@ then
         temp_install="`pwd`/$temp_install"
     fi
 
-    bindir=$temp_install/$bindir
-    libdir=$temp_install/$libdir
-    datadir=$temp_install/$datadir
+    bindir=$temp_install/install/$bindir
+    libdir=$temp_install/install/$libdir
+    datadir=$temp_install/install/$datadir
     PGDATA=$temp_install/data
+
     if [ "$unix_sockets" = no ]; then
         PGHOST=$hostname
         export PGHOST
@@ -305,7 +306,7 @@ then
     if [ ! -d "$LOGDIR" ]; then
         mkdir -p "$LOGDIR" || { (exit 2); exit; }
     fi
-    $GMAKE -C "$top_builddir" DESTDIR="$temp_install" install with_perl=no with_python=no >"$LOGDIR/install.log" 2>&1
+    $GMAKE -C "$top_builddir" DESTDIR="$temp_install/install" install with_perl=no with_python=no >"$LOGDIR/install.log" 2>&1
 
     if [ $? -ne 0 ]
     then
