@@ -150,7 +150,7 @@ cidr_out(PG_FUNCTION_ARGS)
 }
 
 
-Datum
+static Datum
 text_network(text *src, int type)
 {
         int 	len = VARSIZE(src) - VARHDRSZ;
