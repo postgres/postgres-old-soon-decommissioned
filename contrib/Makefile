@@ -17,6 +17,7 @@ WANTED_DIRS = \
 		findoidjoins	\
 		fulltextindex	\
 		fuzzystrmatch	\
+		intagg		\
 		intarray	\
 		isbn_issn	\
 		lo		\
