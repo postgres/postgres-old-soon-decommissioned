@@ -680,11 +680,10 @@ InsertOneValue(Oid objectid, char *value, int i)
 		values[i] = fmgr(ap->am_typ.typinput,
 						 value,
 						 ap->am_typ.typelem,
-						 -1);	/* shouldn't have char() or varchar()
-								 * types during boostrapping but just to
-								 * be safe */
+						 -1);
 		prt = fmgr(ap->am_typ.typoutput, values[i],
-				   ap->am_typ.typelem);
+				   ap->am_typ.typelem,
+				   -1);
 		if (!Quiet)
 			printf("%s ", prt);
 		pfree(prt);

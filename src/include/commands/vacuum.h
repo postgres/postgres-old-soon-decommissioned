@@ -86,6 +86,7 @@ typedef struct
 				f_cmpgt;
 	Oid			op_cmplt;
 	regproc		outfunc;
+	Oid			typelem;
 	bool		initialized;
 } VacAttrStats;
 

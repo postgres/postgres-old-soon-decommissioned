@@ -123,8 +123,9 @@ typedef struct
 	char	   *typname;
 	Oid			typoid;
 	FmgrInfo	typinput;
+	Oid			typelem;
 	bool		typbyval;
-	int16		atttypmod;
+	int32		atttypmod;
 }			PLpgSQL_type;
 
 
@@ -373,6 +374,7 @@ typedef struct PLpgSQL_function
 	int			fn_rettyplen;
 	bool		fn_retbyval;
 	FmgrInfo	fn_retinput;
+	Oid			fn_rettypelem;
 	bool		fn_retistuple;
 	bool		fn_retset;
 

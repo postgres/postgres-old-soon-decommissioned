@@ -669,21 +669,21 @@ array_out(ArrayType *v, Oid element_type)
 			switch (typlen)
 			{
 				case 1:
-					values[i] = (*fmgr_faddr(&outputproc)) (*p, typelem);
+					values[i] = (*fmgr_faddr(&outputproc)) (*p, typelem, -1);
 					break;
 				case 2:
-					values[i] = (*fmgr_faddr(&outputproc)) (*(int16 *) p, typelem);
+					values[i] = (*fmgr_faddr(&outputproc)) (*(int16 *) p, typelem, -1);
 					break;
 				case 3:
 				case 4:
-					values[i] = (*fmgr_faddr(&outputproc)) (*(int32 *) p, typelem);
+					values[i] = (*fmgr_faddr(&outputproc)) (*(int32 *) p, typelem, -1);
 					break;
 			}
 			p += typlen;
 		}
 		else
 		{
-			values[i] = (*fmgr_faddr(&outputproc)) (p, typelem);
+			values[i] = (*fmgr_faddr(&outputproc)) (p, typelem, -1);
 			if (typlen > 0)
 				p += typlen;
 			else

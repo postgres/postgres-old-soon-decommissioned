@@ -1604,7 +1604,6 @@ get_const_expr(Const *constval, deparse_context *context)
 	FmgrInfo	finfo_output;
 	char	   *extval;
 	char	   *valptr;
-	bool		isnull = FALSE;
 
 	typetup = SearchSysCacheTuple(TYPEOID,
 								  ObjectIdGetDatum(constval->consttype),
@@ -1629,7 +1628,8 @@ get_const_expr(Const *constval, deparse_context *context)
 
 	fmgr_info(typeStruct->typoutput, &finfo_output);
 	extval = (char *) (*fmgr_faddr(&finfo_output)) (constval->constvalue,
-													&isnull, -1);
+													typeStruct->typelem,
+													-1);
 
 	switch (constval->consttype)
 	{
