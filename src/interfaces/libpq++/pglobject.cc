@@ -18,6 +18,8 @@
 #include "libpq++.H"
 
 extern "C" {
+#include <unistd.h>
+#include <fcntl.h>
 #include "libpq/libpq-fs.h"
 }
 

@@ -11,10 +11,11 @@
 #
 #-------------------------------------------------------------------------
 
-SHPROG=mkldexport
+all: mkldexport
 
-MKDIR=	../../mk
-include ../../Makefile.global
-include $(MKDIR)/postgres.mk
+mkldexport: mkldexport.sh
+	cp mkldexport.sh mkldexport
+	chmod a+x mkldexport
 
-include $(MKDIR)/postgres.shell.mk
+clean:
+	rm -f mkldexport

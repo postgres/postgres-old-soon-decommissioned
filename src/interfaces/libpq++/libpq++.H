@@ -26,6 +26,8 @@
 #include <strings.h>
 
 extern "C" {
+#include "config.h"
+#include "postgres.h"
 #include "libpq-fe.h"
 #include "fe-auth.h"
 }

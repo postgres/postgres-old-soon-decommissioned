@@ -11,8 +11,6 @@
 #
 #-------------------------------------------------------------------------
 
-SUBDIR= bench regress
-
-include ../mk/postgres.subdir.mk
-
-
+.DEFAULT all:
+	$(MAKE) -C bench $@
+	$(MAKE) -C regress $@
