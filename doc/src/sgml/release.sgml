@@ -488,7 +488,7 @@ required for those wishing to migrate data from any previous release.</para>
    </sect3>
    </listitem>
 <listitem><para>Add ability to print only slow statements using log_min_duration_statement
-  (Christopher)  </par
+  (Christopher)</para>
      <sect3>
      <para>
       This is an often requested debugging feature that allows administrators to
