@@ -664,7 +664,7 @@ del_stats(Oid relid, int attcnt, int *attnums)
 			if (i >= attcnt)
 				continue;		/* don't delete it */
 		}
-		heap_delete(pgstatistic, &tuple->t_self, NULL);
+		simple_heap_delete(pgstatistic, &tuple->t_self);
 	}
 
 	heap_endscan(scan);

@@ -118,7 +118,7 @@ LargeObjectDrop(Oid loid)
 		pfree(indexRes);
 		if (tuple.t_data != NULL)
 		{
-			heap_delete(pg_largeobject, &tuple.t_self, NULL);
+			simple_heap_delete(pg_largeobject, &tuple.t_self);
 			ReleaseBuffer(buffer);
 			found = true;
 		}

@@ -801,7 +801,7 @@ OperatorDef(char *operatorName,
 								   nulls,
 								   replaces);
 
-			heap_update(pg_operator_desc, &tup->t_self, tup, NULL);
+			simple_heap_update(pg_operator_desc, &tup->t_self, tup);
 		}
 		else
 			elog(ERROR, "OperatorDef: no operator %u", operatorObjectId);
@@ -935,7 +935,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 									   nulls,
 									   replaces);
 
-				heap_update(pg_operator_desc, &tup->t_self, tup, NULL);
+				simple_heap_update(pg_operator_desc, &tup->t_self, tup);
 
 				if (RelationGetForm(pg_operator_desc)->relhasindex)
 				{
@@ -967,7 +967,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 							   nulls,
 							   replaces);
 
-		heap_update(pg_operator_desc, &tup->t_self, tup, NULL);
+		simple_heap_update(pg_operator_desc, &tup->t_self, tup);
 
 		if (RelationGetForm(pg_operator_desc)->relhasindex)
 		{
@@ -1005,7 +1005,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 							   nulls,
 							   replaces);
 
-		heap_update(pg_operator_desc, &tup->t_self, tup, NULL);
+		simple_heap_update(pg_operator_desc, &tup->t_self, tup);
 
 		if (RelationGetForm(pg_operator_desc)->relhasindex)
 		{

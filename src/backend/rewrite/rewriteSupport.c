@@ -66,7 +66,7 @@ SetRelationRuleStatus(Oid relationId, bool relHasRules,
 	if (relIsBecomingView)
 		((Form_pg_class) GETSTRUCT(tuple))->relkind = RELKIND_VIEW;
 
-	heap_update(relationRelation, &tuple->t_self, tuple, NULL);
+	simple_heap_update(relationRelation, &tuple->t_self, tuple);
 
 	/* Keep the catalog indices up to date */
 	CatalogOpenIndices(Num_pg_class_indices, Name_pg_class_indices, idescs);

@@ -139,7 +139,7 @@ ChangeAcl(char *relname,
 
 	ReleaseSysCache(tuple);
 
-	heap_update(relation, &newtuple->t_self, newtuple, NULL);
+	simple_heap_update(relation, &newtuple->t_self, newtuple);
 
 	/* keep the catalog indices up to date */
 	CatalogOpenIndices(Num_pg_class_indices, Name_pg_class_indices,

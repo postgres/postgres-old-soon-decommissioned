@@ -937,7 +937,7 @@ toast_delete_datum(Relation rel, Datum value)
 		 * Have a chunk, delete it
 		 * ----------
 		 */
-		heap_delete(toastrel, &toasttup.t_self, NULL);
+		simple_heap_delete(toastrel, &toasttup.t_self);
 
 		ReleaseBuffer(buffer);
 	}

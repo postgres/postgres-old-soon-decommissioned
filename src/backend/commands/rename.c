@@ -152,7 +152,7 @@ renameatt(char *relname,
 	StrNCpy(NameStr(((Form_pg_attribute) GETSTRUCT(atttup))->attname),
 			newattname, NAMEDATALEN);
 
-	heap_update(attrelation, &atttup->t_self, atttup, NULL);
+	simple_heap_update(attrelation, &atttup->t_self, atttup);
 
 	/* keep system catalog indices current */
 	{
@@ -250,7 +250,7 @@ renamerel(const char *oldrelname, const char *newrelname)
 	StrNCpy(NameStr(((Form_pg_class) GETSTRUCT(reltup))->relname),
 			newrelname, NAMEDATALEN);
 
-	heap_update(relrelation, &reltup->t_self, reltup, NULL);
+	simple_heap_update(relrelation, &reltup->t_self, reltup);
 
 	/* keep the system catalog indices current */
 	CatalogOpenIndices(Num_pg_class_indices, Name_pg_class_indices, irelations);

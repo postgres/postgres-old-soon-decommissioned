@@ -6,6 +6,9 @@
  *
  * Copyright (c) 1999, PostgreSQL Global Development Group
  *
+ * IDENTIFICATION
+ *	  $Header$
+ *
  *-------------------------------------------------------------------------
  */
 
@@ -169,15 +172,15 @@ CreateComments(Oid oid, char *comment)
 	if (HeapTupleIsValid(searchtuple))
 	{
 
-		/*** If the comment is blank, call heap_delete, else heap_update ***/
+		/*** If the comment is blank, delete old entry, else update it ***/
 
 		if ((comment == NULL) || (strlen(comment) == 0))
-			heap_delete(description, &searchtuple->t_self, NULL);
+			simple_heap_delete(description, &searchtuple->t_self);
 		else
 		{
 			desctuple = heap_modifytuple(searchtuple, description, values,
 										 nulls, replaces);
-			heap_update(description, &searchtuple->t_self, desctuple, NULL);
+			simple_heap_update(description, &searchtuple->t_self, desctuple);
 			modified = TRUE;
 		}
 
@@ -253,7 +256,7 @@ DeleteComments(Oid oid)
 	/*** If a previous tuple exists, delete it ***/
 
 	if (HeapTupleIsValid(searchtuple))
-		heap_delete(description, &searchtuple->t_self, NULL);
+		simple_heap_delete(description, &searchtuple->t_self);
 
 	/*** Complete the scan, update indices, if necessary ***/
 
@@ -395,7 +398,7 @@ CommentDatabase(char *database, char *comment)
 	Oid			oid;
 	bool		superuser;
 	int32		dba;
-	Oid		userid;
+	Oid			userid;
 
 	/*** First find the tuple in pg_database for the database ***/
 

@@ -347,7 +347,7 @@ dropdb(const char *dbname)
 	}
 
 	/* Remove the database's tuple from pg_database */
-	heap_delete(pgdbrel, &tup->t_self, NULL);
+	simple_heap_delete(pgdbrel, &tup->t_self);
 
 	heap_endscan(pgdbscan);
 
