@@ -2241,7 +2241,13 @@ array_map(FunctionCallInfo fcinfo, Oid inpType, Oid retType)
 
 	/* Check for empty array */
 	if (nitems <= 0)
-		PG_RETURN_ARRAYTYPE_P(v);
+	{
+		/* Return empty array */
+		result = (ArrayType *) palloc0(sizeof(ArrayType));
+		result->size = sizeof(ArrayType);
+		result->elemtype = retType;
+		PG_RETURN_ARRAYTYPE_P(result);
+	}
 
 	/*
 	 * We arrange to look up info about input and return element types
@@ -2425,14 +2431,9 @@ construct_md_array(Datum *elems,
 	if (ndims == 0)
 	{
 		/* Allocate and initialize 0-D result array */
-		nbytes = ARR_OVERHEAD(ndims);
-		result = (ArrayType *) palloc(nbytes);
-
-		result->size = nbytes;
-		result->ndim = ndims;
-		result->flags = 0;
+		result = (ArrayType *) palloc0(sizeof(ArrayType));
+		result->size = sizeof(ArrayType);
 		result->elemtype = elmtype;
-
 		return result;
 	}
 
