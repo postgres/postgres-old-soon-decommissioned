@@ -589,7 +589,7 @@ IndexSupportInitialize(IndexStrategy indexStrategy,
 
 		relation = heap_openr(AccessMethodProcedureRelationName);
 
-		for (attributeNumer = 1; attributeNumber <= maxAttributeNumber;
+		for (attributeNumber = 1; attributeNumber <= maxAttributeNumber;
 			attributeNumber++)
 		{
 			int16		support;
