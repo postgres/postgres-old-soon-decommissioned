@@ -1675,7 +1675,7 @@ AlterTableAddColumn(Oid myrelid,
 			tform = (Form_pg_type) GETSTRUCT(typeTuple);
 
 			if (HeapTupleGetOid(typeTuple) != childatt->atttypid ||
-					colDef->typename->typemod != childatt->atttypmod)
+					colDef->typename->typmod != childatt->atttypmod)
 				elog(ERROR, "ALTER TABLE: child table %u has different "
 						"type for column \"%s\"",
 						childrelid, colDef->colname);
