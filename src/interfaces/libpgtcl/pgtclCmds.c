@@ -442,7 +442,7 @@ Pg_exec(ClientData cData, Tcl_Interp *interp, int argc, char* argv[])
     else {
 	/* error occurred during the query */
 	Tcl_SetResult(interp, conn->errorMessage, TCL_STATIC);
-	if (connStatus == CONNECTION_OK) {
+	if (connStatus != CONNECTION_OK) {
 	    /* Is this REALLY a good idea?  I don't think so! */
 	    PQreset(conn);
 	    if (conn->status == CONNECTION_OK) {
