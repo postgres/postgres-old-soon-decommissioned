@@ -19,6 +19,7 @@
 #include "postgres.h"
 
 #include "access/hash.h"
+#include "utils/int8.h"
 
 uint32
 hashint2(int16 key)
@@ -35,7 +36,7 @@ hashint4(uint32 key)
 uint32
 hashint8(int64 *key)
 {
-	return ~((uint32)key);
+	return ~((uint32)*key);
 }
 
 /* Hash function from Chris Torek. */
