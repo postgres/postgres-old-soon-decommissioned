@@ -330,7 +330,7 @@ do_copy(const char *args)
 }
 
 
-#define COPYBUFSIZ BLCKSZ
+#define COPYBUFSIZ 8192			/* size doesn't matter */
 
 
 /*
