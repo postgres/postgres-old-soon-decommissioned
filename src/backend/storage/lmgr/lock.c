@@ -905,6 +905,13 @@ WaitOnLock(LOCKMETHOD lockmethod, LOCKMODE lockmode,
 		 */
 		LOCK_PRINT("WaitOnLock: aborting on lock", lock, lockmode);
 		LWLockRelease(lockMethodTable->masterLock);
+		/*
+		 * Now that we aren't holding the LockMgrLock, print details about
+		 * the detected deadlock.  We didn't want to do this before because
+		 * sending elog messages to the client while holding the shared lock
+		 * is bad for concurrency.
+		 */
+		DeadLockReport();
 		elog(ERROR, "deadlock detected");
 		/* not reached */
 	}

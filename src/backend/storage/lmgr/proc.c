@@ -566,8 +566,9 @@ ProcSleep(LOCKMETHODTABLE *lockMethodTable,
 					 * up correctly is to call RemoveFromWaitQueue(), but
 					 * we can't do that until we are *on* the wait queue.
 					 * So, set a flag to check below, and break out of
-					 * loop.
+					 * loop.  Also, record deadlock info for later message.
 					 */
+					RememberSimpleDeadLock(MyProc, lockmode, lock, proc);
 					early_deadlock = true;
 					break;
 				}

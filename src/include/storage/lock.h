@@ -243,6 +243,11 @@ extern void GrantLock(LOCK *lock, PROCLOCK *holder, LOCKMODE lockmode);
 extern void RemoveFromWaitQueue(PGPROC *proc);
 extern int	LockShmemSize(int maxBackends);
 extern bool DeadLockCheck(PGPROC *proc);
+extern void DeadLockReport(void);
+extern void RememberSimpleDeadLock(PGPROC *proc1,
+								   LOCKMODE lockmode,
+								   LOCK *lock,
+								   PGPROC *proc2);
 extern void InitDeadLockChecking(void);
 extern LockData *GetLockStatusData(void);
 extern const char *GetLockmodeName(LOCKMODE mode);
