@@ -126,7 +126,7 @@
 #endif
 
 #ifndef __GNUC__
-#define __attribute__(x)
+#define __attribute__(_arg_)
 #endif
 
 /* ----------------------------------------------------------------
