@@ -150,7 +150,7 @@ static struct _helpStruct QL_HELP[] = {
 	{"create view",
 		"create a view",
 	"create view <view_name> as\n\
-\tselect\n\
+\tselect [distinct [on attrN]]\n\
 \t<expr1>[as <attr1>][,... <exprN>[as <attrN>]]\n\
 \t[from <from_list>]\n\
 \t[where <qual>]\n\
@@ -158,7 +158,7 @@ static struct _helpStruct QL_HELP[] = {
 	{"declare",
 		"set up a cursor",
 	"declare <cursorname> [binary] cursor for\n\
-\tselect [distinct]\n\
+\tselect [distinct [on attrN]]\n\
 \t<expr1> [as <attr1>],...<exprN> [as <attrN>]\n\
 \t[from <from_list>]\n\
 \t[where <qual>]\n\
@@ -239,7 +239,7 @@ static struct _helpStruct QL_HELP[] = {
 		"insert tuples",
 	"insert into <class_name> [(<attr1>...<attrN>)]\n\
 \tvalues (<expr1>...<exprN>) |\n\
-\tselect [distinct]\n\
+\tselect [distinct [on attrN]]\n\
 \t<expr1>,...<exprN>\n\
 \t[from <from_clause>]\n\
 \t[where <qual>]\n\
@@ -278,7 +278,7 @@ static struct _helpStruct QL_HELP[] = {
 	"rollback [transaction|work]"},
 	{"select",
 		"retrieve tuples",
-	"select [distinct on <attr>] <expr1> [as <attr1>], ... <exprN> [as <attrN>]\n\
+	"select [distinct [on <attrN>]] <expr1> [as <attr1>], ... <exprN> [as <attrN>]\n\
 \t[into [table] <class_name>]\n\
 \t[from <from_list>]\n\
 \t[where <qual>]\n\

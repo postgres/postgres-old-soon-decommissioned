@@ -6,7 +6,7 @@
 select - retrieve instances from a class
 .SH SYNOPSIS
 .nf
-\fBselect\fR [distinct]
+\fBselect\fR [distinct [on attr_name]]
     expression1 [\fBas\fR attr_name-1]
     {, expression-1 [\fBas\fR attr_name-i]}
     [\fBinto\fR [\fBtable\fR] classname]
