@@ -152,9 +152,9 @@ main(int argc, char **argv)
 	}
 
 #ifdef HAVE_GETOPT_LONG
-	while ((c = getopt_long(argc, argv, "acCd:f:F:h:i:lL:NoOp:P:rRsS:t:T:uU:vWxX:", cmdopts, NULL)) != -1)
+	while ((c = getopt_long(argc, argv, "acCd:f:F:h:iI:lL:NoOp:P:rRsS:t:T:uU:vWxX:", cmdopts, NULL)) != -1)
 #else
-	while ((c = getopt(argc, argv, "acCd:f:F:h:i:lL:NoOp:P:rRsS:t:T:uU:vWxX:")) != -1)
+	while ((c = getopt(argc, argv, "acCd:f:F:h:iI:lL:NoOp:P:rRsS:t:T:uU:vWxX:")) != -1)
 #endif
 	{
 		switch (c)
