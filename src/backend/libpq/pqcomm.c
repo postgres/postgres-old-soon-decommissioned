@@ -88,7 +88,7 @@
 #include "storage/ipc.h"
 
 
-static void pq_close(void);
+static void pq_close(int code, Datum arg);
 
 #ifdef HAVE_UNIX_SOCKETS
 static int	Lock_AF_UNIX(unsigned short portNumber, char *unixSocketName);
@@ -145,7 +145,7 @@ pq_init(void)
  * --------------------------------
  */
 static void
-pq_close(void)
+pq_close(int code, Datum arg)
 {
 	if (MyProcPort != NULL)
 	{
@@ -183,7 +183,7 @@ static char sock_path[MAXPGPATH];
  */
 #ifdef HAVE_UNIX_SOCKETS
 static void
-StreamDoUnlink(void)
+StreamDoUnlink(int code, Datum arg)
 {
 	Assert(sock_path[0]);
 	unlink(sock_path);

@@ -717,7 +717,7 @@ PrintFreeSpaceMapStatistics(int elevel)
  * forma --- if anyone else is still accessing FSM, there's a problem.
  */
 void
-DumpFreeSpaceMap(void)
+DumpFreeSpaceMap(int code, Datum arg)
 {
 	FILE	   *fp;
 	char		cachefilename[MAXPGPATH];

@@ -207,7 +207,7 @@ extern void XLOGShmemInit(void);
 extern void XLOGPathInit(void);
 extern void BootStrapXLOG(void);
 extern void StartupXLOG(void);
-extern void ShutdownXLOG(void);
+extern void ShutdownXLOG(int code, Datum arg);
 extern void CreateCheckPoint(bool shutdown, bool force);
 extern void SetThisStartUpID(void);
 extern void XLogPutNextOid(Oid nextOid);

@@ -24,7 +24,7 @@
 #include "utils/memutils.h"
 
 
-static void smgrshutdown(void);
+static void smgrshutdown(int code, Datum arg);
 
 typedef struct f_smgr
 {
@@ -142,7 +142,7 @@ smgrinit(void)
 }
 
 static void
-smgrshutdown(void)
+smgrshutdown(int code, Datum arg)
 {
 	int			i;
 

@@ -3086,7 +3086,7 @@ GetRedoRecPtr(void)
  * This must be called ONCE during postmaster or standalone-backend shutdown
  */
 void
-ShutdownXLOG(void)
+ShutdownXLOG(int code, Datum arg)
 {
 	ereport(LOG,
 			(errmsg("shutting down")));

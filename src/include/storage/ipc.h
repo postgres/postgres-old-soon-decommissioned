@@ -24,8 +24,8 @@ extern bool proc_exit_inprogress;
 
 extern void proc_exit(int code);
 extern void shmem_exit(int code);
-extern void on_proc_exit(void (*function) (), Datum arg);
-extern void on_shmem_exit(void (*function) (), Datum arg);
+extern void on_proc_exit(void (*function) (int code, Datum arg), Datum arg);
+extern void on_shmem_exit(void (*function) (int code, Datum arg), Datum arg);
 extern void on_exit_reset(void);
 
 /* ipci.c */

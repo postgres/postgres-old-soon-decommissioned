@@ -205,7 +205,7 @@ static int	FileAccess(File file);
 static File fileNameOpenFile(FileName fileName, int fileFlags, int fileMode);
 static char *filepath(const char *filename);
 static long pg_nofile(void);
-static void AtProcExit_Files(void);
+static void AtProcExit_Files(int code, Datum arg);
 static void CleanupTempFiles(bool isProcExit);
 
 
@@ -1141,7 +1141,7 @@ AtEOXact_Files(void)
  * Here, we want to clean up *all* temp files including interXact ones.
  */
 static void
-AtProcExit_Files(void)
+AtProcExit_Files(int code, Datum arg)
 {
 	CleanupTempFiles(true);
 }

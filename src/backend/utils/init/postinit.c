@@ -43,7 +43,7 @@
 
 static void ReverifyMyDatabase(const char *name);
 static void InitCommunication(void);
-static void ShutdownPostgres(void);
+static void ShutdownPostgres(int code, Datum arg);
 static bool ThereIsAtLeastOneUser(void);
 
 
@@ -453,7 +453,7 @@ InitPostgres(const char *dbname, const char *username)
  * cleanup fails.
  */
 static void
-ShutdownPostgres(void)
+ShutdownPostgres(int code, Datum arg)
 {
 	/*
 	 * These operations are really just a minimal subset of
