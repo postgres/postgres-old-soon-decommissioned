@@ -17,9 +17,7 @@
 
 #include <limits.h>
 #include <time.h>
-#ifdef HAVE_FLOAT_H
 #include <float.h>
-#endif
 
 #include "access/hash.h"
 #include "miscadmin.h"

@@ -9,28 +9,22 @@
  *-------------------------------------------------------------------------
  */
 
+#include "postgres.h"
+
 /* Include file list stolen from float.c.
  * Can probably get rid of some of these.
  * - thomas 2000-04-07
  */
 #include <ctype.h>
 #include <errno.h>
-
 #include <float.h>				/* faked on sunos4 */
-
 #include <math.h>
-
-#include "postgres.h"
-#ifdef HAVE_LIMITS_H
 #include <limits.h>
-#ifndef MAXINT
-#define MAXINT		  INT_MAX
-#endif
-#else
+
 #ifdef HAVE_VALUES_H
 #include <values.h>
 #endif
-#endif
+
 #include "fmgr.h"
 #include "utils/builtins.h"
 #include "utils/varbit.h"

@@ -30,9 +30,7 @@
 #include "win32.h"
 #else
 #include <sys/time.h>
-#if HAVE_UNISTD_H
 #include <unistd.h>
-#endif
 
 #ifdef HAVE_GETOPT_H
 #include <getopt.h>

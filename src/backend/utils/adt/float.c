@@ -53,15 +53,9 @@
 
 #include "postgres.h"
 
-#ifdef HAVE_LIMITS_H
 #include <limits.h>
-#ifndef MAXINT
-#define MAXINT		  INT_MAX
-#endif
-#else
 #ifdef HAVE_VALUES_H
 #include <values.h>
-#endif
 #endif
 
 /* for finite() on Solaris */

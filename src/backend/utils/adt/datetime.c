@@ -12,18 +12,16 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
+
 #include <ctype.h>
 #include <math.h>
 #include <sys/types.h>
 #include <errno.h>
-
-#include "postgres.h"
-#ifdef HAVE_FLOAT_H
 #include <float.h>
-#endif
-#ifdef HAVE_LIMITS_H
+
 #include <limits.h>
-#endif
+
 #ifndef USE_POSIX_TIME
 #include <sys/timeb.h>
 #endif

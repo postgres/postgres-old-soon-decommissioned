@@ -11,16 +11,13 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
+
 #include <ctype.h>
 #include <time.h>
 #include <math.h>
 #include <float.h>
-
-#include "postgres.h"
-
-#ifdef HAVE_LIMITS_H
 #include <limits.h>
-#endif
 
 #include "utils/int8.h"
 

@@ -46,15 +46,12 @@
 
 #include "config.h"
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/fcntl.h>
-#ifdef STDC_HEADERS
 #include <stddef.h>
 #include <stdarg.h>
-#endif
 
 #ifdef __CYGWIN32__
 #include <errno.h>

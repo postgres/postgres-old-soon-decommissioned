@@ -23,7 +23,7 @@
 #include "utils/nabstime.h"
 
 #ifdef HAVE_CRYPT_H
-#include "crypt.h"
+#include <crypt.h>
 #endif
 
 char	  **pwd_cache = NULL;

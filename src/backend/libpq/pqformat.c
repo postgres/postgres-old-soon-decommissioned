@@ -48,9 +48,7 @@
 #include "postgres.h"
 
 #include <errno.h>
-#ifdef HAVE_SYS_PARAM_H
 #include <sys/param.h>
-#endif
 
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
@@ -58,7 +56,7 @@
 #include "mb/pg_wchar.h"
 #endif
 #ifdef HAVE_ENDIAN_H
-#include "endian.h"
+#include <endian.h>
 #endif
 
 #ifndef BYTE_ORDER

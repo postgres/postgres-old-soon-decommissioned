@@ -15,25 +15,17 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
+
 #include <ctype.h>
 #include <time.h>
 #include <sys/time.h>
 #include <sys/types.h>
-
-#include "postgres.h"
-#ifdef HAVE_FLOAT_H
 #include <float.h>
-#endif
-
-#ifdef HAVE_LIMITS_H
 #include <limits.h>
-#ifndef MAXINT
-#define MAXINT INT_MAX
-#endif
-#else
+
 #ifdef HAVE_VALUES_H
 #include <values.h>
-#endif
 #endif
 
 #ifndef USE_POSIX_TIME

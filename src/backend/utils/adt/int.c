@@ -27,13 +27,10 @@
  *		 intmod, int4fac
  */
 
-#include <ctype.h>
-
 #include "postgres.h"
 
-#ifdef HAVE_LIMITS_H
+#include <ctype.h>
 #include <limits.h>
-#endif
 
 #include "utils/builtins.h"
 
