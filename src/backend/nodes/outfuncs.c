@@ -193,7 +193,7 @@ _outTypeName(StringInfo str, TypeName *node)
 	appendStringInfo(str, " TYPENAME :names ");
 	_outNode(str, node->names);
 	appendStringInfo(str, " :typeid %u :timezone %s :setof %s"
-					 " :pct_type %s typmod %d :arrayBounds ",
+					 " :pct_type %s :typmod %d :arrayBounds ",
 					 node->typeid,
 					 booltostr(node->timezone),
 					 booltostr(node->setof),
