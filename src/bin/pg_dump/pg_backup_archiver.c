@@ -1916,7 +1916,7 @@ ReadToc(ArchiveHandle *AH)
 			depIdx = 0;
 			do
 			{
-				if (depIdx > depSize)
+				if (depIdx >= depSize)
 				{
 					depSize *= 2;
 					deps = realloc(deps, sizeof(char *) * depSize);
@@ -1932,7 +1932,10 @@ ReadToc(ArchiveHandle *AH)
 			if (depIdx > 1)		/* We have a non-null entry */
 				te->depOid = realloc(deps, sizeof(char *) * depIdx);	/* trim it */
 			else
+			{
+				free(deps);
 				te->depOid = NULL;		/* no deps */
+			}
 		}
 		else
 			te->depOid = NULL;

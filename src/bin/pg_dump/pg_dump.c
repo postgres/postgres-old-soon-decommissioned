@@ -3591,7 +3591,7 @@ dumpProcLangs(Archive *fout, FuncInfo finfo[], int numFuncs)
 		resetPQExpBuffer(delqry);
 
 		/* Make a dependency to ensure function is dumped first */
-		deps = malloc(sizeof(char *) * (2 + (strcmp(lanvalidator, "0") != 0) ? 1 : 0));
+		deps = malloc(sizeof(char *) * 10);
 		depIdx = 0;
 
 		(*deps)[depIdx++] = strdup(lanplcallfoid);
