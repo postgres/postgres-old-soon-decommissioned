@@ -34,7 +34,7 @@ extern Cost cost_seqscan(int relid, int relpages, int reltuples);
 extern Cost cost_index(Oid indexid, int expected_indexpages, Cost selec,
 		   int relpages, int reltuples, int indexpages,
 		   int indextuples, bool is_injoin);
-extern Cost cost_sort(List *pathkeys, int tuples, int width, bool noread);
+extern Cost cost_sort(List *pathkeys, int tuples, int width);
 extern Cost cost_nestloop(Cost outercost, Cost innercost, int outertuples,
 			  int innertuples, int outerpages, bool is_indexjoin);
 extern Cost cost_mergejoin(Cost outercost, Cost innercost,

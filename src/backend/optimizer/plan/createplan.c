@@ -1106,7 +1106,7 @@ make_sort(List *tlist, Oid nonameid, Plan *lefttree, int keycount)
 	Plan	   *plan = &node->plan;
 
 	copy_costsize(plan, lefttree);
-	plan->cost += cost_sort(NULL, plan->plan_size, plan->plan_width, true);
+	plan->cost += cost_sort(NULL, plan->plan_size, plan->plan_width);
 	plan->state = (EState *) NULL;
 	plan->targetlist = tlist;
 	plan->qual = NIL;
