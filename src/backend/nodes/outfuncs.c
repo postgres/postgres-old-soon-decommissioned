@@ -1358,9 +1358,8 @@ _outRangeTblEntry(StringInfo str, RangeTblEntry *node)
 
 	WRITE_BOOL_FIELD(inh);
 	WRITE_BOOL_FIELD(inFromCl);
-	WRITE_BOOL_FIELD(checkForRead);
-	WRITE_BOOL_FIELD(checkForWrite);
-	WRITE_OID_FIELD(checkAsUser);
+	WRITE_UINT_FIELD(requiredPerms);
+	WRITE_UINT_FIELD(checkAsUser);
 }
 
 static void

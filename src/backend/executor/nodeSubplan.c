@@ -670,10 +670,9 @@ ExecInitSubPlan(SubPlanState *node, EState *estate)
 	MemoryContext oldcontext;
 
 	/*
-	 * Do access checking on the rangetable entries in the subquery. Here,
-	 * we assume the subquery is a SELECT.
+	 * Do access checking on the rangetable entries in the subquery.
 	 */
-	ExecCheckRTPerms(subplan->rtable, CMD_SELECT);
+	ExecCheckRTPerms(subplan->rtable);
 
 	/*
 	 * initialize my state

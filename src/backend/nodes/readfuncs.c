@@ -939,9 +939,8 @@ _readRangeTblEntry(void)
 
 	READ_BOOL_FIELD(inh);
 	READ_BOOL_FIELD(inFromCl);
-	READ_BOOL_FIELD(checkForRead);
-	READ_BOOL_FIELD(checkForWrite);
-	READ_OID_FIELD(checkAsUser);
+	READ_UINT_FIELD(requiredPerms);
+	READ_UINT_FIELD(checkAsUser);
 
 	READ_DONE();
 }

@@ -18,7 +18,7 @@
 
 extern void transformFromClause(ParseState *pstate, List *frmList);
 extern int setTargetTable(ParseState *pstate, RangeVar *relation,
-			   bool inh, bool alsoSource);
+			   bool inh, bool alsoSource, AclMode requiredPerms);
 extern bool interpretInhOption(InhOption inhOpt);
 
 extern Node *transformWhereClause(ParseState *pstate, Node *clause,

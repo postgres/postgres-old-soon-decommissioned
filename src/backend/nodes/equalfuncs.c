@@ -1574,8 +1574,7 @@ _equalRangeTblEntry(RangeTblEntry *a, RangeTblEntry *b)
 	COMPARE_NODE_FIELD(eref);
 	COMPARE_SCALAR_FIELD(inh);
 	COMPARE_SCALAR_FIELD(inFromCl);
-	COMPARE_SCALAR_FIELD(checkForRead);
-	COMPARE_SCALAR_FIELD(checkForWrite);
+	COMPARE_SCALAR_FIELD(requiredPerms);
 	COMPARE_SCALAR_FIELD(checkAsUser);
 
 	return true;

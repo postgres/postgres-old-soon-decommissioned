@@ -227,8 +227,7 @@ set_inherited_rel_pathlist(Query *root, RelOptInfo *rel,
 	 * it examines the parent's inheritlist entry.  There's no need to
 	 * check twice, so turn off access check bits in the original RTE.
 	 */
-	rte->checkForRead = false;
-	rte->checkForWrite = false;
+	rte->requiredPerms = 0;
 
 	/*
 	 * Initialize to compute size estimates for whole inheritance tree

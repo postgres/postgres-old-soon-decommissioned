@@ -1258,8 +1258,7 @@ _copyRangeTblEntry(RangeTblEntry *from)
 	COPY_NODE_FIELD(eref);
 	COPY_SCALAR_FIELD(inh);
 	COPY_SCALAR_FIELD(inFromCl);
-	COPY_SCALAR_FIELD(checkForRead);
-	COPY_SCALAR_FIELD(checkForWrite);
+	COPY_SCALAR_FIELD(requiredPerms);
 	COPY_SCALAR_FIELD(checkAsUser);
 
 	return newnode;
