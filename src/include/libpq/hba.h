@@ -38,9 +38,9 @@ typedef enum UserAuth
 	uaIdent,
 	uaPassword,
 	uaCrypt,
-	uaMD5,
+	uaMD5
 #ifdef USE_PAM
-	uaPAM
+	,uaPAM
 #endif /* USE_PAM */
 } UserAuth;
 
