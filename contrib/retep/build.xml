@@ -43,6 +43,7 @@
   <target name="compile" depends="checks,prepare,warning" if="jdk1.2+">
     <javac srcdir="${src}" destdir="${dest}">
       <include name="${package}/**" />
+      <exclude name="${package}/**" unless="jdk1.2+" />
     </javac>
   </target>
 
