@@ -28,7 +28,6 @@
  *    
  */
 #define _CPU_PAGE_WEIGHT_  0.065      /* CPU-to-page cost weighting factor */
-#define _PAGE_SIZE_    8192           /* BLCKSZ (from ../h/bufmgr.h) */
 #define _MAX_KEYS_     INDEX_MAX_KEYS /* maximum number of keys in an index */
 #define _TID_SIZE_     6              /* sizeof(itemid) (from ../h/itemid.h) */
 
