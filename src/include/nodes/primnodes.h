@@ -287,7 +287,6 @@ typedef enum SubLinkType
 
 typedef struct SubLink
 {
-struct Query;
 	NodeTag		type;
 	SubLinkType	subLinkType;
 	bool		useor;
