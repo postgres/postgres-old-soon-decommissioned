@@ -77,7 +77,7 @@ endif
 all: $(INFILES)
 
 Makefile.tcldefs:
-	./mkMakefile.tcldefs
+	/bin/sh mkMakefile.tcldefs.sh
 
 #
 # Clean 
