@@ -1446,7 +1446,7 @@ AlterTableOwner(const char *relationName, const char *newOwnerName)
 {
 	Relation 	class_rel;
 	HeapTuple 	tuple;
-	int4 		newOwnerSysid;
+	int32		newOwnerSysid;
 	Relation	idescs[Num_pg_class_indices];
 
 	/*
