@@ -260,6 +260,8 @@ elif	[eE][lL][iI][fF]
 endif	[eE][nN][dD][iI][fF]
 
 exec_sql		{exec}{space_or_nl}*{sql}{space_or_nl}*
+ipdigit			({digit}|{digit}{digit}|{digit}{digit}{digit})
+ip			{ipdigit}\.{ipdigit}\.{ipdigit}\.{ipdigit}
 
 /* Take care of cpp continuation lines */
 cppline			{space}*#(.*\\{line_end})*.*
@@ -515,6 +517,10 @@ cppline			{space}*#(.*\\{line_end})*.*
 						return FCONST;
 					}
 					return ICONST;
+				}
+<SQL>{ip}			{
+					yylval.str = mm_strdup((char*)yytext);
+					return IP;
 				}
 {decimal}		{
 					yylval.str = mm_strdup((char*)yytext);

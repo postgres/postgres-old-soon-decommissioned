@@ -262,7 +262,7 @@ static void
 ECPGtypeinfocache_push(struct ECPGtype_information_cache **cache, int oid, bool isarray, int lineno)
 {
 	struct ECPGtype_information_cache	*new_entry 
-						= ecpg_alloc(sizeof(struct ECPGtype_information_cache), lineno);
+						= (struct ECPGtype_information_cache *) ecpg_alloc(sizeof(struct ECPGtype_information_cache), lineno);
 	new_entry->oid = oid;
 	new_entry->isarray = isarray;
 	new_entry->next = *cache;
