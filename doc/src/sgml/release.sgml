@@ -321,6 +321,13 @@ $PostgreSQL$
        ignored as well as leading whitespace (which has always been ignored).
       </para>
      </listitem>
+
+     <listitem>
+      <para>
+       The 8.1 release will remove the function <literal>to_char(interval)
+       </literal>.
+      </para>
+     </listitem>
     </itemizedlist>
    </para>
   </sect2>
