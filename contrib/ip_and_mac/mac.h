@@ -1,5 +1,7 @@
 /*
  *	PostgreSQL type definitions for MAC addresses.
+ *
+ *	$Id$
  */
 
 typedef struct manufacturer {

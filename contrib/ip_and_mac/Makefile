@@ -1,4 +1,7 @@
-#	PostgreSQL type definitions for IP and MAC addresses.
+#
+#	PostgreSQL types for IP and MAC addresses
+#
+#	$Id$
 
 all: ip.so mac.so
 
@@ -17,4 +20,6 @@ mac.o: mac.c mac.h
 install: ip.so mac.so
 	install -c ip.so mac.so /usr/local/pgsql/modules
 
+#
 #	eof
+#
