@@ -532,7 +532,7 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 		case ECPGt_NO_INDICATOR:
 			if (stmt->force_indicator == false)
 			{
-				if (ECPGis_informix_null(var->type, var->value))
+				if (ECPGis_noind_null(var->type, var->value))
 					*tobeinserted_p = "null";
 			}
 			break;
