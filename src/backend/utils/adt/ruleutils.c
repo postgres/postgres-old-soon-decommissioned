@@ -1841,7 +1841,7 @@ get_const_expr(Const *constval, deparse_context *context)
 					appendStringInfoChar(buf, '\\');
 					appendStringInfoChar(buf, ch);
 				}
-				else if (ch >= 0 && ch < ' ')
+				else if (((unsigned char) ch) < ((unsigned char) ' '))
 					appendStringInfo(buf, "\\%03o", (int) ch);
 				else
 					appendStringInfoChar(buf, ch);
