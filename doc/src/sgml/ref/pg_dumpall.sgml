@@ -71,7 +71,8 @@ PostgreSQL documentation
   times to the <productname>PostgreSQL</productname> server (once per
   database).  If you use password authentication it is likely to ask for
   a password each time. It is convenient to have a
-  <filename>$HOME/.pgpass</> file in such cases.
+  <filename>~/.pgpass</> file in such cases. See <xref
+  linkend="libpq-pgpass"> for more information.
   </para>
 
  </refsect1>
