@@ -261,11 +261,15 @@ inv_close(LargeObjectDesc *obj_desc)
 {
 	Assert(PointerIsValid(obj_desc));
 
-	if (obj_desc->flags & IFS_WRLOCK)
-		heap_close(obj_desc->heap_r, RowExclusiveLock);
-	else if (obj_desc->flags & IFS_RDLOCK)
-		heap_close(obj_desc->heap_r, AccessShareLock);
+	if (obj_desc->iscan != (IndexScanDesc) NULL)
+	{
+		index_endscan(obj_desc->iscan);
+		obj_desc->iscan = NULL;
+	}
+
 	index_close(obj_desc->index_r);
+	heap_close(obj_desc->heap_r, AccessShareLock);
+
 	pfree(obj_desc);
 }
 

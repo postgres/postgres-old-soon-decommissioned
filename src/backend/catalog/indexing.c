@@ -51,8 +51,6 @@ char	   *Name_pg_inherits_indices[Num_pg_inherits_indices] =
 {InheritsRelidSeqnoIndex};
 char	   *Name_pg_language_indices[Num_pg_language_indices] =
 {LanguageOidIndex, LanguageNameIndex};
-char	   *Name_pg_largeobject_indices[Num_pg_largeobject_indices] =
-{LargeobjectLOIdIndex, LargeobjectLOIdPNIndex};
 char	   *Name_pg_listener_indices[Num_pg_listener_indices] =
 {ListenerPidRelnameIndex};
 char	   *Name_pg_opclass_indices[Num_pg_opclass_indices] =

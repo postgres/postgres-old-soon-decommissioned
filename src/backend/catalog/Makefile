@@ -11,8 +11,7 @@ top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 OBJS = catalog.o heap.o index.o indexing.o aclchk.o \
-       pg_aggregate.o pg_largeobject.o pg_operator.o pg_proc.o \
-       pg_type.o
+       pg_aggregate.o pg_operator.o pg_proc.o pg_type.o
 
 BKIFILES = global.bki template1.bki global.description template1.description
 

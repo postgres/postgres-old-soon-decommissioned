@@ -267,7 +267,7 @@ lo_creat(PG_FUNCTION_ARGS)
 		PG_RETURN_OID(InvalidOid);
 	}
 
-	lobjId = lobjDesc->id;
+	lobjId = RelationGetRelid(lobjDesc->heap_r);
 
 	inv_close(lobjDesc);
 
@@ -512,10 +512,8 @@ lo_commit(bool isCommit)
 	{
 		if (cookies[i] != NULL)
 		{
-/*
 			if (isCommit)
 				inv_cleanindex(cookies[i]);
-*/
 			cookies[i] = NULL;
 		}
 	}
