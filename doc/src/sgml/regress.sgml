@@ -30,9 +30,8 @@
    of tests in parallel.  Parallel testing gives confidence that
    interprocess communication and locking are working correctly.  For
    historical reasons, the sequential test is usually run against an
-   existing installation and the parallel method
-   <quote>stand-alone</quote>, but there are technical reasons for
-   this.
+   existing installation and the parallel method against a temporary
+   installation, but there are no technical reasons for this.
   </para>
 
   <para>
