@@ -103,7 +103,7 @@ fmgr_dynamic(Oid procedureId, int *pronargs)
 	}
 	else if (!PointerIsValid(prosrcattr))
 	{							/* pg_proc must be messed up! */
-		heap_close(rel);
+		heap_close(rel, AccessShareLock);
 		elog(ERROR, "fmgr: Could not extract prosrc for %u from %s",
 			 procedureId, ProcedureRelationName);
 		return (func_ptr) NULL;
