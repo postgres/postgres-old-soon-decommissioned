@@ -1341,7 +1341,10 @@ AbortCurrentTransaction(void)
 			 */
 		case TBLOCK_DEFAULT:
 			AbortTransaction();
-			CleanupTransaction();
+			if (autocommit || suppressChain)
+				CleanupTransaction();
+			else
+				s->blockState = TBLOCK_ABORT;
 			break;
 
 			/*
