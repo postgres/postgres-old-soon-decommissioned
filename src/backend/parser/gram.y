@@ -3384,7 +3384,7 @@ opt_float:  '(' Iconst ')'
 opt_numeric:  '(' Iconst ',' Iconst ')'
 				{
 					if ($2 < 1 || $2 > NUMERIC_MAX_PRECISION)
-						elog(ERROR,"NUMERIC precision %d must be beween 1 and %d",
+						elog(ERROR,"NUMERIC precision %d must be between 1 and %d",
 									$2, NUMERIC_MAX_PRECISION);
 					if ($4 < 0 || $4 > $2)
 						elog(ERROR,"NUMERIC scale %d must be between 0 and precision %d",
@@ -3395,7 +3395,7 @@ opt_numeric:  '(' Iconst ',' Iconst ')'
 		| '(' Iconst ')'
 				{
 					if ($2 < 1 || $2 > NUMERIC_MAX_PRECISION)
-						elog(ERROR,"NUMERIC precision %d must be beween 1 and %d",
+						elog(ERROR,"NUMERIC precision %d must be between 1 and %d",
 									$2, NUMERIC_MAX_PRECISION);
 
 					$$ = ($2 << 16) + VARHDRSZ;
@@ -3409,7 +3409,7 @@ opt_numeric:  '(' Iconst ',' Iconst ')'
 opt_decimal:  '(' Iconst ',' Iconst ')'
 				{
 					if ($2 < 1 || $2 > NUMERIC_MAX_PRECISION)
-						elog(ERROR,"DECIMAL precision %d must be beween 1 and %d",
+						elog(ERROR,"DECIMAL precision %d must be between 1 and %d",
 									$2, NUMERIC_MAX_PRECISION);
 					if ($4 < 0 || $4 > $2)
 						elog(ERROR,"DECIMAL scale %d must be between 0 and precision %d",
@@ -3420,7 +3420,7 @@ opt_decimal:  '(' Iconst ',' Iconst ')'
 		| '(' Iconst ')'
 				{
 					if ($2 < 1 || $2 > NUMERIC_MAX_PRECISION)
-						elog(ERROR,"DECIMAL precision %d must be beween 1 and %d",
+						elog(ERROR,"DECIMAL precision %d must be between 1 and %d",
 									$2, NUMERIC_MAX_PRECISION);
 
 					$$ = ($2 << 16) + VARHDRSZ;
