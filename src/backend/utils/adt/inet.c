@@ -57,7 +57,9 @@ inet_in(char *src)
 	}
 	/* First, try for an IP V4 address: */
 	ip_family(dst) = AF_INET;
+#ifdef BAD
 	bits = inet_net_pton(ip_family(dst), src, &ip_v4addr(dst), ip_addrsize(dst), NULL);
+#endif
 	if ((bits < 0) || (bits > 32))
 	{
 		/* Go for an IPV6 address here, before faulting out: */
@@ -85,12 +87,14 @@ inet_out(inet *src)
 	if (ip_family(src) == AF_INET)
 	{
 		/* It's an IP V4 address: */
+#ifdef BAD
 		if (inet_net_ntop(AF_INET, &ip_v4addr(src), 4, ip_bits(src),
 						  tmp, sizeof(tmp)) < 0)
 		{
 			elog(ERROR, "unable to print address (%s)", strerror(errno));
 			return (NULL);
 		}
+#endif
 	}
 	else
 	{
