@@ -17,6 +17,7 @@
  */
 #include "postgres.h"
 
+#include "commands/tablespace.h"
 #include "storage/bufmgr.h"
 #include "storage/freespace.h"
 #include "storage/ipc.h"
@@ -308,6 +309,19 @@ smgrcreate(SMgrRelation reln, bool isTemp, bool isRedo)
 	xl_smgr_create	xlrec;
 	PendingRelDelete *pending;
 	MemoryContext	old_cxt;
+
+	/*
+	 * We may be using the target table space for the first time in this
+	 * database, so create a per-database subdirectory if needed.
+	 *
+	 * XXX this is a fairly ugly violation of module layering, but this seems
+	 * to be the best place to put the check.  Maybe TablespaceCreateDbspace
+	 * should be here and not in commands/tablespace.c?  But that would imply
+	 * importing a lot of stuff that smgr.c oughtn't know, either.
+	 */
+	TablespaceCreateDbspace(reln->smgr_rnode.spcNode,
+							reln->smgr_rnode.dbNode,
+							isRedo);
 
 	if (! (*(smgrsw[reln->smgr_which].smgr_create)) (reln, isRedo))
 		ereport(ERROR,

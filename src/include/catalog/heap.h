@@ -40,10 +40,8 @@ extern Relation heap_create(const char *relname,
 			Oid reltablespace,
 			TupleDesc tupDesc,
 			bool shared_relation,
-			bool storage_create,
+			bool create_storage,
 			bool allow_system_table_mods);
-
-extern void heap_storage_create(Relation rel);
 
 extern Oid heap_create_with_catalog(const char *relname,
 						 Oid relnamespace,

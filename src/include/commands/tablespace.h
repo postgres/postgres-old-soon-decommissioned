@@ -20,7 +20,7 @@ extern void CreateTableSpace(CreateTableSpaceStmt *stmt);
 
 extern void DropTableSpace(DropTableSpaceStmt *stmt);
 
-extern void TablespaceCreateDbspace(Oid spcNode, Oid dbNode);
+extern void TablespaceCreateDbspace(Oid spcNode, Oid dbNode, bool isRedo);
 
 extern Oid	get_tablespace_oid(const char *tablespacename);
 
