@@ -140,7 +140,7 @@ RE_compile_and_execute(text *text_re, char *text, int cflags)
 		/* re didn't compile */
 		pg95_regerror(regcomp_result, &rev[oldest].cre_re, errMsg,
 					  sizeof(errMsg));
-		elog(ERROR, "regcomp failed with error %s", errMsg);
+		elog(ERROR, "Invalid regular expression: %s", errMsg);
 	}
 
 	/* not reached */
