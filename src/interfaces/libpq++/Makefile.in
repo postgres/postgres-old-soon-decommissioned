@@ -20,6 +20,8 @@ LIBNAME= libpq++
 
 CXX=@CXX@
 
+PORTNAME=@PORTNAME@
+
 # We have to override -Werror, which makes warnings, fatal, because we
 # inevitably get the warning, "abstract declarator used as declaration"
 # because of our inclusion of c.h and we don't know how to stop that.
@@ -67,6 +69,10 @@ ifeq ($(PORTNAME), unixware)
   shlib := libpq.so.1
   LDFLAGS_SL = -G -z text
   CFLAGS += $(CFLAGS_SL)
+  ifeq ($(CXX), CC)
+    CXXFLAGS += -Xw
+    COMPILE.cc = $(CXX) $(CXXFLAGS:ll,alloca=ll) $(CPPFLAGS) $(TARGET_ARCH) -c
+  endif
 endif
 
 ifeq ($(PORTNAME), univel)
@@ -74,6 +80,10 @@ ifeq ($(PORTNAME), univel)
   shlib := libpq.so.1
   LDFLAGS_SL = -G -z text
   CFLAGS += $(CFLAGS_SL)
+  ifeq ($(CXX), CC)
+    CXXFLAGS += -Xw
+    COMPILE.cc = $(CXX) $(CXXFLAGS:ll,alloca=ll) $(CPPFLAGS) $(TARGET_ARCH) -c
+  endif
 endif
 
 ifeq ($(PORTNAME), hpux)
