@@ -1702,7 +1702,7 @@ _outCaseWhen(StringInfo str, CaseWhen *node)
 {
 	char		buf[500];
 
-	sprintf(buf, " :when ");
+	sprintf(buf, " WHEN ");
 	appendStringInfo(str, buf);
 	_outNode(str, node->expr);
 	sprintf(buf, " :then ");

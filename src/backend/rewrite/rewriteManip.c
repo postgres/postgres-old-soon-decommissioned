@@ -191,6 +191,38 @@ OffsetVarNodes(Node *node, int offset, int sublevels_up)
 			}
 			break;
 
+		case T_CaseExpr:
+			{
+				CaseExpr	*exp = (CaseExpr *)node;
+
+				OffsetVarNodes(
+						(Node *)(exp->args),
+						offset,
+						sublevels_up);
+
+				OffsetVarNodes(
+						(Node *)(exp->defresult),
+						offset,
+						sublevels_up);
+			}
+			break;
+
+		case T_CaseWhen:
+			{
+				CaseWhen	*exp = (CaseWhen *)node;
+
+				OffsetVarNodes(
+						(Node *)(exp->expr),
+						offset,
+						sublevels_up);
+
+				OffsetVarNodes(
+						(Node *)(exp->result),
+						offset,
+						sublevels_up);
+			}
+			break;
+
 		default:
 			elog(NOTICE, "unknown node tag %d in OffsetVarNodes()", nodeTag(node));
 			elog(NOTICE, "Node is: %s", nodeToString(node));
@@ -371,6 +403,42 @@ ChangeVarNodes(Node *node, int rt_index, int new_index, int sublevels_up)
 
 				ChangeVarNodes(
 						(Node *)(qry->groupClause),
+						rt_index,
+						new_index,
+						sublevels_up);
+			}
+			break;
+
+		case T_CaseExpr:
+			{
+				CaseExpr	*exp = (CaseExpr *)node;
+
+				ChangeVarNodes(
+						(Node *)(exp->args),
+						rt_index,
+						new_index,
+						sublevels_up);
+
+				ChangeVarNodes(
+						(Node *)(exp->defresult),
+						rt_index,
+						new_index,
+						sublevels_up);
+			}
+			break;
+
+		case T_CaseWhen:
+			{
+				CaseWhen	*exp = (CaseWhen *)node;
+
+				ChangeVarNodes(
+						(Node *)(exp->expr),
+						rt_index,
+						new_index,
+						sublevels_up);
+
+				ChangeVarNodes(
+						(Node *)(exp->result),
 						rt_index,
 						new_index,
 						sublevels_up);
