@@ -30,11 +30,10 @@ extern int	fseeko(FILE *stream, off_t offset, int whence);
 extern off_t ftello(FILE *stream);
 #endif
 
-#ifdef WIN32
+#if !defined(FRONTEND) && (defined(WIN32) || defined(CYGWIN))
 /*
  * Win32 doesn't have reliable rename/unlink during concurrent access
  */
-#ifndef FRONTEND
 extern int	pgrename(const char *from, const char *to);
 extern int	pgunlink(const char *path);
 
@@ -42,6 +41,7 @@ extern int	pgunlink(const char *path);
 #define unlink(path)		pgunlink(path)
 #endif
 
+#ifdef WIN32
 extern int	copydir(char *fromdir, char *todir);
 
 /* Missing rand functions */

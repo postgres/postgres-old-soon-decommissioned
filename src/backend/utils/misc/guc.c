@@ -3981,7 +3981,10 @@ write_nondefault_variables(GucContext context)
 		return;
 	}
 
-	/* Put new file in place, this could delay on Win32 */
+	/*
+	 *	Put new file in place.  This could delay on Win32, but we don't hold
+	 *	any exclusive locks.
+	 */
 	rename(new_filename, filename);
 	free(new_filename);
 	free(filename);
