@@ -470,7 +470,7 @@ AtEOXact_UpdatePasswordFile(bool isCommit)
 			/* Rename active file while not holding an exclusive lock */
 			char *filename = user_getfilename(), *filename_new;
 
-			filename_new = palloc(strlen(filename) + 1 + strlen(".new")));
+			filename_new = palloc(strlen(filename) + 1 + strlen(".new"));
 			sprintf(filename_new, "%s.new", filename);
 			rename(filename_new, filename);
 			pfree(filename);
@@ -489,7 +489,7 @@ AtEOXact_UpdatePasswordFile(bool isCommit)
 			/* Rename active file while not holding an exclusive lock */
 			char *filename = group_getfilename(), *filename_new;
 
-			filename_new = palloc(strlen(filename) + 1 + strlen(".new")));
+			filename_new = palloc(strlen(filename) + 1 + strlen(".new"));
 			sprintf(filename_new, "%s.new", filename);
 			rename(filename_new, filename);
 			pfree(filename);
