@@ -343,9 +343,9 @@ For the example, we need a little <literal>min</literal> function that
 returns the lower of 2 integer values. We create that as
 
 <ProgramListing>
-CREATE FUNCTION min(integer, integer) RETURNS integer AS '
+CREATE FUNCTION min(integer, integer) RETURNS integer AS $$
     SELECT CASE WHEN $1 < $2 THEN $1 ELSE $2 END
-' LANGUAGE SQL STRICT;
+$$ LANGUAGE SQL STRICT;
 </ProgramListing>
 </Para>
 
