@@ -18,7 +18,6 @@
 
 #include "access/heapam.h"
 #include "catalog/catalog.h"
-#include "catalog/pg_type.h"
 #include "commands/async.h"
 #include "commands/cluster.h"
 #include "commands/command.h"
@@ -315,8 +314,6 @@ ProcessUtility(Node *parsetree,
 					 */
 					renamerel(relname,	/* old name */
 							  stmt->newname);	/* new name */
-					TypeRename(relname, /* old name */
-							   stmt->newname);	/* new name */
 				}
 				else
 				{
