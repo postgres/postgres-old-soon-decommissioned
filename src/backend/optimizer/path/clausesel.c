@@ -254,6 +254,11 @@ compute_selec(Query *root, List *clauses, List *or_selectivities)
 		 */
 		s1 = 0.1;
 	}
+	else if (not_clause((Node *) clause))
+	{
+		/* negate this baby */
+		return 1 - compute_selec(root, ((Expr *)clause)->args, or_selectivities);
+	}
 	else if (is_subplan((Node *) clause))
 	{
 
