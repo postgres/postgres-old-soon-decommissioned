@@ -806,8 +806,9 @@ FileRead(File file, char *buffer, int amount)
 
 	Assert(FileIsValid(file));
 
-	DO_DB(elog(DEBUG, "FileRead: %d (%s) %d %p",
-			   file, VfdCache[file].fileName, amount, buffer));
+	DO_DB(elog(DEBUG, "FileRead: %d (%s) %ld %d %p",
+			   file, VfdCache[file].fileName,
+			   VfdCache[file].seekPos, amount, buffer));
 
 	FileAccess(file);
 	returnCode = read(VfdCache[file].fd, buffer, amount);
@@ -826,8 +827,9 @@ FileWrite(File file, char *buffer, int amount)
 
 	Assert(FileIsValid(file));
 
-	DO_DB(elog(DEBUG, "FileWrite: %d (%s) %d %p",
-			   file, VfdCache[file].fileName, amount, buffer));
+	DO_DB(elog(DEBUG, "FileWrite: %d (%s) %ld %d %p",
+			   file, VfdCache[file].fileName,
+			   VfdCache[file].seekPos, amount, buffer));
 
 	FileAccess(file);
 	returnCode = write(VfdCache[file].fd, buffer, amount);
@@ -844,8 +846,9 @@ FileSeek(File file, long offset, int whence)
 {
 	Assert(FileIsValid(file));
 
-	DO_DB(elog(DEBUG, "FileSeek: %d (%s) %ld %d",
-			   file, VfdCache[file].fileName, offset, whence));
+	DO_DB(elog(DEBUG, "FileSeek: %d (%s) %ld %ld %d",
+			   file, VfdCache[file].fileName,
+			   VfdCache[file].seekPos, offset, whence));
 
 	if (FileIsNotOpen(file))
 	{
