@@ -33,7 +33,7 @@ enum {
 	GUC_REAL = 4,
 	GUC_EQUALS = 5,
 	GUC_EOL = 99,
-	GUC_ERROR = 100,
+	GUC_ERROR = 100
 };
 
 #if defined(yywrap)

@@ -43,7 +43,7 @@ typedef enum {
 	PGC_SIGHUP,
 	PGC_BACKEND,
 	PGC_SUSET,
-	PGC_USERSET,
+	PGC_USERSET
 } GucContext;
 
 
