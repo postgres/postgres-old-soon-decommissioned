@@ -278,7 +278,6 @@ struct pg_conn
 	PQExpBufferData workBuffer; /* expansible string */
 
 	int			client_encoding;/* encoding id */
-	int			startup_complete;
 };
 
 /* String descriptions of the ExecStatusTypes.

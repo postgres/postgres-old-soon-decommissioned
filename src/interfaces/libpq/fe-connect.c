@@ -1409,7 +1409,6 @@ keep_going:						/* We will come back to here until there
 				if (areq == AUTH_REQ_OK)
 				{
 					/* We are done with authentication exchange */
-					conn->startup_complete = TRUE;
 					conn->status = CONNECTION_AUTH_OK;
 
 					/*
@@ -1910,7 +1909,6 @@ makeEmptyPGconn(void)
 		freePGconn(conn);
 		conn = NULL;
 	}
-	conn->startup_complete = FALSE;
 	return conn;
 }
 
@@ -1976,7 +1974,7 @@ closePGconn(PGconn *conn)
 {
 	/* Note that the protocol doesn't allow us to send Terminate
        messages during the startup phase. */
-	if (conn->sock >= 0 && conn->startup_complete)
+	if (conn->sock >= 0 && conn->status == CONNECTION_OK)
 	{
 
 		/*
