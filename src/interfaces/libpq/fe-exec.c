@@ -21,9 +21,17 @@
 #include "libpq-fe.h"
 #include <signal.h>
 #include <sys/ioctl.h>
+#ifdef PORTNAME_sparc_solaris
+#include <sys/termios.h>
+#endif
 
 #ifdef TIOCGWINSZ
 struct winsize screen_size;
+#else
+struct winsize {
+  int ws_row;
+  int ws_col;
+} screen_size;
 #endif
 
 /* the tuples array in a PGresGroup  has to grow to accommodate the tuples */
