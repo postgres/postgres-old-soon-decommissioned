@@ -216,6 +216,8 @@ MakeTargetEntryExpr(ParseState *pstate,
 		rd = pstate->p_target_relation;
 		Assert(rd != NULL);
 		resdomno = attnameAttNum(rd, colname);
+		if (resdomno <= 0)
+			elog(ERROR, "Cannot assign to system attribute '%s'", colname);
 		attrisset = attnameIsSet(rd, colname);
 		attrtype = attnumTypeId(rd, resdomno);
 		if ((arrayRef != NIL) && (lfirst(arrayRef) == NIL))
