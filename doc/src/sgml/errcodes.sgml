@@ -46,7 +46,9 @@
   same as the phrase shown in the table, with underscores substituted
   for spaces.  For example, code <literal>22012</>, DIVISION BY ZERO,
   has condition name <literal>DIVISION_BY_ZERO</>.  Condition names can
-  be written in either upper or lower case.
+  be written in either upper or lower case.  (Note that
+  <application>PL/pgSQL</> does not recognize warning, as opposed to error,
+  condition names; those are classes 00, 01, and 02.)
  </para>
 
 
