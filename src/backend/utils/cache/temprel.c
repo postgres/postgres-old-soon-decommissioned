@@ -30,6 +30,7 @@
 #include "nodes/pg_list.h"
 #include "utils/mcxt.h"
 #include "utils/temprel.h"
+#include "access/xact.h"
 #include "access/htup.h"
 #include "access/heapam.h"
 #include "catalog/heap.h"
@@ -79,6 +80,8 @@ remove_all_temp_relations(void)
 	List	   *l,
 			   *next;
 
+	StartTransactionCommand();
+
 	l = temp_rels;
 	while (l != NIL)
 	{
@@ -102,6 +105,7 @@ remove_all_temp_relations(void)
 
 		l = next;
 	}
+	CommitTransactionCommand();
 }
 
 /* we don't have the relname for indexes, so we just pass the oid */

@@ -1483,8 +1483,8 @@ DoBackend(Port *port)
 	 * Let's clean up ourselves as the postmaster child
 	 */
 
-	on_exit_reset();			/* we don't want the postmaster's
-								 * proc_exit() handlers */
+	/* We don't want the postmaster's proc_exit() handlers */
+	on_exit_reset();	
 
 	/* ----------------
 	 *	register signal handlers.
