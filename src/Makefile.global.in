@@ -409,7 +409,7 @@ ifeq ($(PORTNAME), hpux)
 # -W l,-E	export symbols for linking with the shared libraries 
 #		dynamic loader
 
-ifeq $(CC), cc)
+ifeq ($(CC), cc)
   CFLAGS_BE= -W l,-E
   LDFLAGS_BE= -W l,-E
 endif

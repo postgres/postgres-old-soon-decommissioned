@@ -734,7 +734,7 @@ extern char *form(char *fmt, ...);
  */
 
 #if defined(hpux) 
-#include "port/hpux/fixade.h"		/* for 8.07 unaligned access fixup */
+#include "port/hpux/fixade.h"		/* for unaligned access fixup */
 #endif /* hpux */
 
 #if defined(sunos4)
