@@ -303,6 +303,11 @@ postquel_getnext(execution_state *es)
 
 	if (es->qd->operation == CMD_UTILITY)
 	{
+		/* Can't handle starting or committing a transaction */
+		if (IsA(es->qd->parsetree->utilityStmt, TransactionStmt))
+			ereport(ERROR,
+					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+					 errmsg("cannot begin/end transactions in SQL functions")));
 		ProcessUtility(es->qd->parsetree->utilityStmt, es->qd->dest, NULL);
 		return (TupleTableSlot *) NULL;
 	}
