@@ -613,6 +613,7 @@ extern PLpgSQL_row *plpgsql_build_rowtype(Oid classOid);
 extern void plpgsql_adddatum(PLpgSQL_datum * new);
 extern int	plpgsql_add_initdatums(int **varnos);
 extern void plpgsql_yyerror(const char *s);
+extern void plpgsql_HashTableInit(void);
 
 /* ----------
  * Functions in pl_handler.c

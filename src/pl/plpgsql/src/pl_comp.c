@@ -106,7 +106,6 @@ static PLpgSQL_type *build_datatype(HeapTuple typeTup, int32 typmod);
 static void compute_function_hashkey(FmgrInfo *flinfo,
 									 Form_pg_proc procStruct,
 									 PLpgSQL_func_hashkey *hashkey);
-static void plpgsql_HashTableInit(void);
 static PLpgSQL_function *plpgsql_HashTableLookup(PLpgSQL_func_hashkey *func_key);
 static void plpgsql_HashTableInsert(PLpgSQL_function *function,
 									PLpgSQL_func_hashkey *func_key);
@@ -1743,7 +1742,8 @@ compute_function_hashkey(FmgrInfo *flinfo,
 	}
 }
 
-static void
+/* exported so we can call it from plpgsql_init() */
+void
 plpgsql_HashTableInit(void)
 {
 	HASHCTL		ctl;

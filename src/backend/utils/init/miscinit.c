@@ -1165,7 +1165,7 @@ process_preload_libraries(char *preload_libraries_string)
 		}
 
 		initfunc = (func_ptr) load_external_function(filename, funcname,
-													 false, NULL);
+													 true, NULL);
 		if (initfunc)
 			(*initfunc)();
 

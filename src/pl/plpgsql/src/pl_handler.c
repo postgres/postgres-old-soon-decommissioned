@@ -44,6 +44,45 @@
 #include "utils/builtins.h"
 #include "utils/syscache.h"
 
+static int	plpgsql_firstcall = 1;
+
+void plpgsql_init(void);
+static void plpgsql_init_all(void);
+
+
+/*
+ * plpgsql_init()			- postmaster-startup safe initialization
+ *
+ * DO NOT make this static --- it has to be callable by preload
+ */
+void
+plpgsql_init(void)
+{
+	/* Do initialization only once */
+	if (!plpgsql_firstcall)
+		return;
+
+	plpgsql_HashTableInit();
+
+	plpgsql_firstcall = 0;
+}
+
+/*
+ * plpgsql_init_all()		- Initialize all
+ */
+static void
+plpgsql_init_all(void)
+{
+	/* Execute any postmaster-startup safe initialization */
+	if (plpgsql_firstcall)
+		plpgsql_init();
+
+	/*
+	 * Any other initialization that must be done each time a new
+	 * backend starts -- currently none
+	 */
+
+}
 
 /* ----------
  * plpgsql_call_handler
@@ -60,6 +99,9 @@ plpgsql_call_handler(PG_FUNCTION_ARGS)
 {
 	PLpgSQL_function *func;
 	Datum		retval;
+
+	/* perform initialization */
+	plpgsql_init_all();
 
 	/*
 	 * Connect to SPI manager
