@@ -208,9 +208,14 @@ ExecUnique(Unique *node)
 				 * use strcmp for comparison
 				 */
 				if (strcmp(val1, val2) == 0)	/* they are equal */
+				{
+					pfree (val1);
+					pfree (val2);
 					continue;
-				else
-					break;
+				}
+				pfree (val1);
+				pfree (val2);
+				break;
 			}
 			else
 /* one is null and the other isn't, they aren't equal */
