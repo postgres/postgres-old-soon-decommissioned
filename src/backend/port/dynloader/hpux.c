@@ -20,8 +20,8 @@
 
 /* System includes */
 #include <a.out.h>
+#include <dl.h>
 
-#include "dl.h"
 #include "dynloader.h"
 #include "utils/dynamic_loader.h"
 
