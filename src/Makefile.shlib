@@ -149,10 +149,10 @@ endif
 ifeq ($(PORTNAME), hpux)
   shlib			= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION)
   ifeq ($(GCC), yes)
-    SHLIB_LINK		+= `$(CC) -print-libgcc-file-name`
+    SHLIB_LINK		+= `$(CC) $(LDFLAGS) -print-libgcc-file-name`
   endif
   ifeq ($(with_gnu_ld), yes)
-    LINK.shared		= $(CC) $(LDFLAGS) -shared -Wl,-h -Wl,$(soname)
+    LINK.shared		= $(CC) $(LDFLAGS) -shared -Wl,-h -Wl,$(soname) -Wl,+b -Wl,$(libdir)
   else
     LINK.shared		= $(LD) +h $(soname) -b +b $(libdir)
   endif
