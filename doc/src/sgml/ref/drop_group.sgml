@@ -29,7 +29,7 @@ DROP GROUP <replaceable class="PARAMETER">name</replaceable>
 
   <para>
    <command>DROP GROUP</command> removes the specified group.  The
-   users in the group are not deleted.
+   users in the group are not removed.
   </para>
  </refsect1>
   

@@ -158,6 +158,20 @@ CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } ] TABLE <replaceable>table_name
  </refsect1>
 
  <refsect1>
+  <title>Examples</title>
+
+  <para>
+   Create a new table <literal>films_recent</literal> consisting of only
+   recent entries from the table <literal>films</literal>:
+
+<programlisting>
+CREATE TABLE films_recent AS
+  SELECT * FROM films WHERE date_prod &gt;= '2002-01-01';
+</programlisting>
+  </para>
+ </refsect1>
+
+ <refsect1>
   <title>Compatibility</title>
 
   <para>
