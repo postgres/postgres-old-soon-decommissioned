@@ -3288,15 +3288,19 @@ Unused/uninialized variables corrected
 </author>
 </authorgroup>
 <date>
-Unknown
+1996-11-04
 </date>
 </docinfo>
 -->
 
 <para>
 
-Unknown
-Sorry, we stopped keeping track of changes from 1.02 to 1.09.  Some of
+   <note>
+   <title>Release date</title>
+   <simpara>1996-11-04</simpara>
+   </note>
+
+Sorry, we didn't keep track of changes from 1.02 to 1.09.  Some of
 the changes listed in 6.0 were actually included in the 1.02.1 to 1.09
 releases.
 </para>
