@@ -336,7 +336,6 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 		aggref->target = lfirst(fargs);
 		aggref->aggstar = agg_star;
 		aggref->aggdistinct = agg_distinct;
-		aggref->args = fargs;
 
 		/* parse_agg.c does additional aggregate-specific processing */
 		transformAggregateCall(pstate, aggref);

@@ -78,7 +78,6 @@ DATA(insert (	1993 3	199 ));
 
 
 /* btree */
-DATA(insert (	 397 1  382 ));
 DATA(insert (	 421 1	357 ));
 DATA(insert (	 423 1 1596 ));
 DATA(insert (	 424 1 1693 ));

@@ -133,28 +133,6 @@ get_rightop(Expr *clause)
 }
 
 /*****************************************************************************
- *              FUNCTION clause functions
- *****************************************************************************/
-
-/*
- * make_funcclause
- *		Creates a function clause given its function info and argument list.
- */
-Expr *
-make_funcclause(Oid funcid, Oid funcresulttype, bool funcretset,
-							CoercionForm funcformat, List *funcargs)
-{
-	FuncExpr   *expr = makeNode(FuncExpr);
-
-	expr->funcid = funcid;
-	expr->funcresulttype = funcresulttype;
-	expr->funcretset = funcretset;
-	expr->funcformat = funcformat;
-	expr->args = funcargs;
-	return (Expr *) expr;
-}
-
-/*****************************************************************************
  *		NOT clause functions
  *****************************************************************************/
 
