@@ -367,6 +367,62 @@ GetUserName(Oid userid)
 
 
 /*-------------------------------------------------------------------------
+ * Set data directory, but make sure it's an absolute path.  Use this,
+ * never set DataDir directly.
+ *-------------------------------------------------------------------------
+ */
+void
+SetDataDir(const char *dir)
+{
+	char *new;
+
+	AssertArg(dir);
+	if (DataDir)
+		free(DataDir);
+
+	if (dir[0] != '/')
+	{
+		char *buf;
+		size_t buflen;
+
+		buflen = MAXPGPATH;
+		for (;;)
+		{
+			buf = malloc(buflen);
+			if (!buf)
+				elog(FATAL, "out of memory");
+
+			if (getcwd(buf, buflen))
+				break;
+			else if (errno == ERANGE)
+			{
+				free(buf);
+				buflen *= 2;
+				continue;
+			}
+			else
+			{
+				free(buf);
+				elog(FATAL, "cannot get current working directory: %m");
+			}
+		}
+
+		new = malloc(strlen(buf) + 1 + strlen(dir) + 1);
+		sprintf(new, "%s/%s", buf, dir);
+	}
+	else
+	{
+		new = strdup(dir);
+	}
+
+	if (!new)
+		elog(FATAL, "out of memory");
+	DataDir = new;		
+}
+
+
+
+/*-------------------------------------------------------------------------
  *
  * postmaster pid file stuffs. $DATADIR/postmaster.pid is created when:
  *

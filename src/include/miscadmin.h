@@ -137,6 +137,8 @@ extern Oid GetSessionUserId(void);
 extern void SetSessionUserId(Oid userid);
 extern void SetSessionUserIdFromUserName(const char *username);
 
+extern void SetDataDir(const char *dir);
+
 extern int	FindExec(char *full_path, const char *argv0, const char *binary_name);
 extern int	CheckPathAccess(char *path, char *name, int open_mode);
 
