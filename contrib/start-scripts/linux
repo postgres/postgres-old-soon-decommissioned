@@ -38,8 +38,6 @@ PGLOG="$PGDATA/serverlog"
 
 ## STOP EDITING HERE
 
-export PGDATA
-
 # Check for echo -n vs echo \c
 if echo '\c' | grep -s c >/dev/null 2>&1 ; then
     ECHO_N="echo -n"
@@ -64,21 +62,21 @@ test -f $DAEMON || exit 0
 case $1 in
   start)
 	$ECHO_N "Starting PostgreSQL: "$ECHO_C
-	su - $PGUSER -c "$DAEMON start -s -l $PGLOG" 
+	su - $PGUSER -c "$DAEMON start -D '$PGDATA' -s -l $PGLOG" 
 	echo "ok"
 	;;
   stop)
 	echo -n "Stopping PostgreSQL: "
-	su - $PGUSER -c "$DAEMON stop -s -m fast"
+	su - $PGUSER -c "$DAEMON stop -D '$PGDATA' -s -m fast"
 	echo "ok"
 	;;
   restart)
 	echo -n "Restarting PostgreSQL: "
-	su - $PGUSER -c "$DAEMON restart -s -m fast"
+	su - $PGUSER -c "$DAEMON restart -D '$PGDATA' -s -m fast"
 	echo "ok"
 	;;
   status)
-	su - $PGUSER -c "$DAEMON status"
+	su - $PGUSER -c "$DAEMON status -D '$PGDATA'"
 	;;
   *)
 	# Print help
