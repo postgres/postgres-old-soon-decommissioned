@@ -555,7 +555,6 @@ numeric_round(Numeric num, int32 scale)
 	 * ----------
 	 */
 	precision = MAX(0, num->n_weight) + scale;
-	precision = MIN(precision, NUMERIC_MAX_PRECISION);
 	typmod = (((precision + 2) << 16) | scale) + VARHDRSZ;
 	return numeric(num, typmod);
 }
