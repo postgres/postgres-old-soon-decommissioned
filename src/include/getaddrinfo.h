@@ -28,6 +28,44 @@
 #endif
 
 
+/* Various macros that ought to be in <netdb.h>, but might not be */
+
+#ifndef EAI_FAIL
+
+#define EAI_BADFLAGS	-1
+#define EAI_NONAME		-2
+#define EAI_AGAIN		-3
+#define EAI_FAIL		-4
+#define EAI_FAMILY		-6
+#define EAI_SOCKTYPE	-7
+#define EAI_SERVICE		-8
+#define EAI_MEMORY		-10
+#define EAI_SYSTEM		-11
+
+#endif
+
+#ifndef AI_PASSIVE
+#define AI_PASSIVE		0x0001
+#endif
+#ifndef AI_NUMERICHOST
+#define AI_NUMERICHOST	0x0004
+#endif
+
+#ifndef NI_NUMERICHOST
+#define NI_NUMERICHOST	1
+#endif
+#ifndef NI_NUMERICSERV
+#define NI_NUMERICSERV	2
+#endif
+
+#ifndef NI_MAXHOST
+#define NI_MAXHOST	1025
+#endif
+#ifndef NI_MAXSERV
+#define NI_MAXSERV	32
+#endif
+
+
 #ifndef HAVE_STRUCT_ADDRINFO
 
 struct addrinfo
@@ -42,28 +80,7 @@ struct addrinfo
 	struct addrinfo *ai_next;
 };
 
-#define EAI_BADFLAGS		-1
-#define EAI_NONAME		-2
-#define EAI_AGAIN		-3
-#define EAI_FAIL		-4
-#define EAI_FAMILY		-6
-#define EAI_SOCKTYPE		-7
-#define EAI_SERVICE		-8
-#define EAI_MEMORY		-10
-#define EAI_SYSTEM		-11
-
-#define AI_PASSIVE		0x0001
-#define AI_NUMERICHOST	0x0004
-
-#define NI_NUMERICHOST	1
-#define NI_NUMERICSERV	2
-#endif   /* HAVE_STRUCT_ADDRINFO */
-
-#ifndef NI_MAXHOST
-#define NI_MAXHOST	1025
-#define NI_MAXSERV	32
-#endif
-
+#endif /* HAVE_STRUCT_ADDRINFO */
 
 
 #ifndef HAVE_GETADDRINFO
@@ -96,6 +113,7 @@ extern const char *gai_strerror(int errcode);
 extern int getnameinfo(const struct sockaddr * sa, int salen,
 			char *node, int nodelen,
 			char *service, int servicelen, int flags);
+
 #endif   /* HAVE_GETADDRINFO */
 
 #endif   /* GETADDRINFO_H */
