@@ -13,6 +13,8 @@
 #include <unistd.h>
 #endif
 
+#include "postgres.h"
+#include "miscadmin.h"
 #include "mb/pg_wchar.h"
 
 /*
