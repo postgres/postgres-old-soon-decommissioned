@@ -127,7 +127,7 @@ char		g_comment_end[10];
 static void
 help(const char *progname)
 {
-	printf("%s dumps a database to a text file.\n\n", progname);
+	printf("%s dumps a database as a text file.\n\n", progname);
     puts(  "Usage:");
     printf("  %s [options] dbname\n\n", progname);
     puts(  "Options:");
@@ -589,13 +589,6 @@ main(int argc, char **argv)
     else
         progname = strrchr(argv[0], SEP_CHAR) + 1;
 
-    /*
-     * A note on options:
-     *
-     * The -f option was yanked because in the rest of the world (and
-     * PostgreSQL) it specifies an *input* file. You can use the shell's
-     * output redirection to achieve the same.
-     */
 
 #ifdef HAVE_GETOPT_LONG
 	while ((c = getopt_long(argc, argv, "acdDf:h:nNop:st:uvxzV?", long_options, &optindex)) != -1)
@@ -621,9 +614,8 @@ main(int argc, char **argv)
 				attrNames = true;
 				break;
             case 'f':
-                fprintf(stderr, "%s: The -f option is obsolete. You can achieve the same by writing %s > %s.\n",
-                        progname, progname, optarg);
-                exit(1);
+		filename = optarg;
+		break;
 			case 'h':			/* server host */
 				pghost = optarg;
 				break;
