@@ -228,7 +228,7 @@ success:						\n\
 
 #endif	 /* __powerpc__ */
 
-#if defined(__mips__) || !defined(__sgi)
+#if defined(__mips__) && !defined(__sgi)
 static void
 tas_dummy()
 {
