@@ -326,8 +326,7 @@ ProcessUtility(Node *parsetree,
 				{
 					/*
 					 * START TRANSACTION, as defined by SQL99:
-					 * Identical to BEGIN, except that it takes a few
-					 * additional options.  Same code for both.
+					 * Identical to BEGIN.  Same code for both.
 					 */
 					case TRANS_STMT_BEGIN:
 					case TRANS_STMT_START:

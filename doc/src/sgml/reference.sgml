@@ -120,9 +120,12 @@ PostgreSQL Reference Manual
    &notify;
    &prepare;
    &reindex;
+   &releaseSavepoint;
    &reset;
    &revoke;
    &rollback;
+   &rollbackTo;
+   &savepoint;
    &select;
    &selectInto;
    &set;

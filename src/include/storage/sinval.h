@@ -104,6 +104,9 @@ extern int	CountEmptyBackendSlots(void);
 /* Use "struct PGPROC", not PGPROC, to avoid including proc.h here */
 extern struct PGPROC *BackendIdGetProc(BackendId procId);
 
+extern void XidCacheRemoveRunningXids(TransactionId xid,
+									  int nxids, TransactionId *xids);
+
 /* signal handler for catchup events (SIGUSR1) */
 extern void CatchupInterruptHandler(SIGNAL_ARGS);
 

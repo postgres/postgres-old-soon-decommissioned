@@ -115,17 +115,27 @@ ReindexIsProcessingIndex(Oid indexOid)
 /*
  * SetReindexProcessing
  *		Set flag that specified heap/index are being reindexed.
- *		Pass InvalidOid to indicate that reindexing is not active.
  */
 void
 SetReindexProcessing(Oid heapOid, Oid indexOid)
 {
-	/* Args should be both, or neither, InvalidOid */
-	Assert((heapOid == InvalidOid) == (indexOid == InvalidOid));
+	Assert(OidIsValid(heapOid) && OidIsValid(indexOid));
 	/* Reindexing is not re-entrant. */
-	Assert(indexOid == InvalidOid || currentlyReindexedIndex == InvalidOid);
+	if (OidIsValid(currentlyReindexedIndex))
+		elog(ERROR, "cannot reindex while reindexing");
 	currentlyReindexedHeap = heapOid;
 	currentlyReindexedIndex = indexOid;
+}
+
+/*
+ * ResetReindexProcessing
+ * 		Unset reindexing status.
+ */
+void
+ResetReindexProcessing(void)
+{
+	currentlyReindexedHeap = InvalidOid;
+	currentlyReindexedIndex = InvalidOid;
 }
 
 /* ----------------------------------------------------------------

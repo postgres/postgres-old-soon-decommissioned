@@ -66,6 +66,7 @@ START TRANSACTION
    <member><xref linkend="sql-commit" endterm="sql-commit-title"></member>
    <member><xref linkend="sql-rollback" endterm="sql-rollback-title"></member>
    <member><xref linkend="sql-set-transaction" endterm="sql-set-transaction-title"></member>
+   <member><xref linkend="sql-savepoint" endterm="sql-savepoint-title"></member>
   </simplelist>
  </refsect1>
 </refentry>

@@ -308,6 +308,7 @@ extern void BaseInit(void);
 extern void IgnoreSystemIndexes(bool mode);
 extern bool IsIgnoringSystemIndexes(void);
 extern void SetReindexProcessing(Oid heapOid, Oid indexOid);
+extern void ResetReindexProcessing(void);
 extern bool ReindexIsProcessingHeap(Oid heapOid);
 extern bool ReindexIsProcessingIndex(Oid indexOid);
 extern void CreateDataDirLockFile(const char *datadir, bool amPostmaster);
