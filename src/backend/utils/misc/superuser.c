@@ -15,13 +15,9 @@
  *-------------------------------------------------------------------------
  */
 
-#include <c.h>
 #include <postgres.h>
-#include <access/htup.h>
 #include <utils/syscache.h>
 #include <catalog/pg_user.h>
-
-
 
 bool
 superuser(void) {
