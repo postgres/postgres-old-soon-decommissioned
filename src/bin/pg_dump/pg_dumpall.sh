@@ -204,8 +204,8 @@ fi
 # For each database, run pg_dump to dump the contents of that database.
 
 $PSQL -d template1 -At -F ' ' \
-  -c "SELECT d.datname, u.usename, pg_encoding_to_char(d.encoding) FROM pg_database d, pg_shadow u WHERE d.datdba = u.usesysid AND datname <> 'template1';" | \
-while read DATABASE DBOWNER ENCODING ; do
+  -c "SELECT d.datname, u.usename, pg_encoding_to_char(d.encoding), d.datpath FROM pg_database d, pg_shadow u WHERE d.datdba = u.usesysid AND datname <> 'template1';" | \
+while read DATABASE DBOWNER ENCODING DBPATH; do
     echo
     echo "--"
     echo "-- Database $DATABASE"
@@ -216,11 +216,17 @@ while read DATABASE DBOWNER ENCODING ; do
         echo "DROP DATABASE \"$DATABASE\";"
     fi
 
-    if [ x"$MULTIBYTE" != x"" ] ; then
-        echo "CREATE DATABASE \"$DATABASE\" WITH ENCODING = '$ENCODING';"
-    else
-        echo "CREATE DATABASE \"$DATABASE\";"
+    createdbcmd="CREATE DATABASE \"$DATABASE\""
+    if [ x"$DBPATH" != x"" ] || [ x"$MULTIBYTE" != x"" ]; then
+        createdbcmd="$createdbcmd WITH"
     fi
+    if [ x"$DBPATH" != x"" ] ; then
+        createdbcmd="$createdbcmd LOCATION = '$DBPATH'"
+    fi
+    if [ x"$MULTIBYTE" != x"" ] ; then
+        createdbcmd="$createdbcmd ENCODING = '$ENCODING'"
+    fi
+    echo "$createdbcmd;"
 
     echo "${BS}connect $DATABASE $DBOWNER"
     $PGDUMP "$DATABASE"
