@@ -3,7 +3,7 @@ $Header$
 Postgres documentation
 -->
 
-<refentry id="SQL-DROPDATABASE" xreflabel="drop_database">
+<refentry id="SQL-DROPDATABASE">
  <refmeta>
   <refentrytitle id="SQL-DROPDATABASE-TITLE">
    DROP DATABASE
