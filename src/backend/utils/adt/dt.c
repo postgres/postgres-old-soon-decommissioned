@@ -2466,6 +2466,9 @@ int EncodeDateTime(struct tm *tm, double fsec, int style, char *str)
     char mabbrev[4], dabbrev[4];
     int day, hour, min;
     double sec;
+#ifdef DATEDEBUG
+    char buf[MAXDATELEN];
+#endif
 
     sec = (tm->tm_sec + fsec);
 

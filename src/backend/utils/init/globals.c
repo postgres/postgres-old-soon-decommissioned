@@ -65,7 +65,7 @@ bool		IsPostmaster = false;
 
 short		DebugLvl = 0;
 
-int		DateStyle = USE_ISO_DATES;
+int		DateStyle = USE_POSTGRES_DATES;
 bool		EuroDates = false;
 bool		HasCTZSet = false;
 bool		CDayLight = false;
