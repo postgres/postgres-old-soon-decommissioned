@@ -381,7 +381,7 @@ plpython_call_handler(PG_FUNCTION_ARGS)
 {
 	DECLARE_EXC();
 	Datum		retval;
-	bool		is_trigger;
+	volatile bool is_trigger;
 	PLyProcedure *volatile proc = NULL;
 
 	enter();

@@ -67,7 +67,7 @@ recordchange(PG_FUNCTION_ARGS)
 	HeapTuple	afterTuple = NULL;
 	HeapTuple	retTuple = NULL;
 	char	   *tblname;
-	char		op;
+	char		op = 0;
 
 	if (fcinfo->context != NULL)
 	{
