@@ -213,15 +213,14 @@ describeOperators(const char *name)
 			 "SELECT o.oprname AS \"%s\",\n"
 			 "  CASE WHEN o.oprkind='l' THEN NULL ELSE format_type(o.oprleft, NULL) END AS \"%s\",\n"
 			 "  CASE WHEN o.oprkind='r' THEN NULL ELSE format_type(o.oprright, NULL) END AS \"%s\",\n"
-			 "  format_type(p.prorettype, NULL) AS \"%s\",\n"
-			 "  obj_description(p.oid, 'pg_proc') as \"%s\"\n"
-			 "FROM pg_proc p, pg_operator o\n"
-			 "WHERE RegprocToOid(o.oprcode) = p.oid\n",
+			 "  format_type(o.oprresult, NULL) AS \"%s\",\n"
+			 "  obj_description(o.oprcode, 'pg_proc') AS \"%s\"\n"
+			 "FROM pg_operator o\n",
 			 _("Name"), _("Left arg type"), _("Right arg type"),
 			 _("Result type"), _("Description"));
 	if (name)
 	{
-		strcat(buf, "  AND o.oprname = '");
+		strcat(buf, "WHERE o.oprname = '");
 		strncat(buf, name, REGEXP_CUTOFF);
 		strcat(buf, "'\n");
 	}
