@@ -28,6 +28,7 @@
 #include "storage/item.h"
 #include "storage/itemid.h"
 #include "storage/off.h"
+#include "storage/page.h"
 #include "utils/nabstime.h"
 
 #include "access/skey.h"

@@ -35,6 +35,7 @@
 #include "storage/item.h"
 #include "storage/itemid.h"
 #include "storage/off.h"
+#include "storage/page.h"
 #include "utils/memutils.h"
 #include "utils/nabstime.h"
 #include "utils/palloc.h"

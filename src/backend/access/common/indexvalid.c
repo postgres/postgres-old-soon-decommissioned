@@ -18,6 +18,7 @@
 #include "access/attnum.h"
 #include "catalog/pg_attribute.h"
 #include "executor/execdebug.h"
+#include "nodes/nodes.h"
 #include "nodes/pg_list.h"
 #include "storage/off.h"
 #include "storage/block.h"

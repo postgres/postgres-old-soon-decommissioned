@@ -21,6 +21,7 @@
 #include <time.h>
 
 #include "postgres.h"
+#include "utils/fcache.h"
 #include "access/attnum.h"
 #include "catalog/pg_am.h"
 #include "catalog/pg_attribute.h"
