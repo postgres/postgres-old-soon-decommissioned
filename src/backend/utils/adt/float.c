@@ -81,6 +81,12 @@
 #define SHRT_MIN (-32768)
 #endif
 
+/* Recent HPUXen have isfinite() macro in place of more standard finite() */
+#if !defined(HAVE_FINITE) && defined(isfinite)
+#define finite(x) isfinite(x)
+#define HAVE_FINITE 1
+#endif
+
 /* not sure what the following should be, but better to make it over-sufficient */
 #define MAXFLOATWIDTH	64
 #define MAXDOUBLEWIDTH	128
