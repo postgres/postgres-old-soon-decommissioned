@@ -109,9 +109,11 @@ ECPGtrans(int lineno, const char *connection_name, const char *transaction)
 	{
 		con->committed = true;
 
+#if 0
 		/* deallocate all prepared statements */
 		if (!ECPGdeallocate_all(lineno))
 			return false;
+#endif
 	}
 
 	return true;
