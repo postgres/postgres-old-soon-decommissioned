@@ -187,11 +187,11 @@ typedef struct
 /* keep this struct small; it gets used a lot */
 typedef struct
 {
-#if defined(__AIX)
+#if defined(_AIX)
 	char	   *token;
 #else
 	char		token[TOKMAXLEN];
-#endif							/* __AIX */
+#endif							/* _AIX */
 	char		type;
 	char		value;			/* this may be unsigned, alas */
 } datetkn;

@@ -53,7 +53,7 @@ typedef TimeIntervalData *TimeInterval;
 #define BIG_ABSTIME		((AbsoluteTime) 0x7FFFFFFB)		/* 2147483644 == 2^31 -
 														 * 4 */
 
-#if defined(__AIX)
+#if defined(_AIX)
 /*
  * AIX considers 2147483648 == -2147483648 (since they have the same bit
  * representation) but uses a different sign sense in a comparison to
@@ -63,7 +63,7 @@ typedef TimeIntervalData *TimeInterval;
 #define NOSTART_ABSTIME		 ((AbsoluteTime) INT_MIN)
 #else
 #define NOSTART_ABSTIME ((AbsoluteTime) 0x80000001)		/* -2147483647 == - 2^31 */
-#endif							/* __AIX */
+#endif							/* _AIX */
 
 #define INVALID_RELTIME ((RelativeTime) 0x7FFFFFFE)		/* 2147483647 == 2^31 -
 														 * 1 */
