@@ -32,7 +32,7 @@ droplang:
 vacuumdb:
 
 install: $(SCRIPTS)
-	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$(X)$<
+	$(INSTALL) $(INSTL_EXE_OPTS) $+ $(BINDIR)
 
 clean:
 	rm -f createlang

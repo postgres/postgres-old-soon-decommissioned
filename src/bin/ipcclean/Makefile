@@ -23,7 +23,7 @@ ipcclean:
 	sed $(SEDSCRIPT) <ipcclean.sh >ipcclean
 
 install: ipcclean
-	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$<
+	$(INSTALL) $(INSTL_EXE_OPTS) $+ $(BINDIR)
 
 clean:
 	rm -f ipcclean

@@ -112,9 +112,12 @@ if [ "$usage" ]; then
 fi
 
 
-if [ "$MB" -a -z "`pg_encoding '$MB'`" ]; then
-	echo "$CMDNAME: \"$MB\" is not a valid encoding name."
-	exit 1
+if [ "$MB" ]
+then	if [ -z "`pg_encoding '$MB'`" ]
+	then
+		echo "$CMDNAME: \"$MB\" is not a valid encoding name."
+		exit 1
+	fi
 fi
 
 if [ -z "$dbname" ]; then

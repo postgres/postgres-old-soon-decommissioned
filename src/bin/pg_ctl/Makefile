@@ -20,7 +20,7 @@ pg_ctl: pg_ctl.sh
 	sed -e 's@__BINDIR__@$(BINDIR)@' pg_ctl.sh > pg_ctl
 
 install: pg_ctl
-	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$<
+	$(INSTALL) $(INSTL_EXE_OPTS) $+ $(BINDIR)
 
 clean:
 	rm -f pg_ctl
