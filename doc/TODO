@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Sat Nov  8 19:40:44 EST 2003
+Last updated:		Sat Nov  8 22:41:28 EST 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -209,6 +209,7 @@ Commands
 * Allow CREATE TABLE foo (f1 INT CHECK (f1 > 0) CHECK (f1 < 10)) to work
   by searching for non-conflicting constraint names, and prefix with table name
 * Use more reliable method for CREATE DATABASE to get a consistent copy of db
+* Have psql \dn show only visible schemas using current_schemas()
 
 
 * ALTER
