@@ -2720,6 +2720,7 @@ RuleStmt:  CREATE RULE name AS
 					n->instead = $12;
 					n->actions = $13;
 					$$ = (Node *)n;
+					QueryIsRule=FALSE;
 				}
 		;
 
