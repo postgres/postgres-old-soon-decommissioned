@@ -29,6 +29,7 @@
 #include "executor/nodeSeqscan.h"
 #include "access/heapam.h"
 #include "parser/parsetree.h"
+#include "nodes/print.h"
 
 static Oid InitScanRelation(SeqScan *node, EState *estate,
 				 CommonScanState *scanstate, Plan *outerPlan);
