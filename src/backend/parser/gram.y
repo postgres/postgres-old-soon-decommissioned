@@ -361,7 +361,7 @@ static void doNegateFloat(Value *v);
 
 	KEY
 
-	LANCOMPILER LANGUAGE LAST LEADING LEFT LEVEL LIKE LIMIT
+	LANCOMPILER LANGUAGE LEADING LEFT LEVEL LIKE LIMIT
 	LISTEN LOAD LOCAL LOCALTIME LOCALTIMESTAMP LOCATION
 	LOCK_P
 
@@ -2713,7 +2713,6 @@ fetch_how_many:
 			Iconst									{ $$ = $1; }
 			| '-' Iconst							{ $$ = - $2; }
 			| ALL									{ $$ = INT_MAX; }
-			| LAST									{ $$ = INT_MAX; }
 			| NEXT									{ $$ = 1; }
 			| PRIOR									{ $$ = -1; }
 		;
@@ -7131,7 +7130,6 @@ unreserved_keyword:
 			| KEY
 			| LANCOMPILER
 			| LANGUAGE
-			| LAST
 			| LEVEL
 			| LISTEN
 			| LOAD

@@ -172,7 +172,6 @@ static const ScanKeyword ScanKeywords[] = {
 	{"key", KEY},
 	{"lancompiler", LANCOMPILER},
 	{"language", LANGUAGE},
-	{"last", LAST},
 	{"leading", LEADING},
 	{"left", LEFT},
 	{"level", LEVEL},

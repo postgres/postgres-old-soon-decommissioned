@@ -34,7 +34,8 @@ MOVE [ <replaceable class="PARAMETER">direction</replaceable> ] [ <replaceable c
   </title>
   <para>
    <command>MOVE</command> allows the user to move the cursor position a 
-   specified number of rows, or all the way to the end or start of the query.
+   specified number of rows, or to the beginning or end of the cursor.
+   <command>MOVE ALL</command> moves to the last row of the cursor.
    <command>MOVE</command> works exactly like the <command>FETCH</command>
    command, except it only repositions the cursor and does not return rows.
   </para>
