@@ -27,7 +27,7 @@ ifdef MULTIBYTE
 OBJS += multibyte.o
 endif
 
-SHLIB_LINK = $(filter -lm, $(LIBS))
+SHLIB_LINK = $(filter -lm -lnsl -lsocket, $(LIBS))
 
 all: all-lib
 
