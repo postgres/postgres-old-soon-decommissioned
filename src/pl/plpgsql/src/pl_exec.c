@@ -2018,6 +2018,7 @@ exec_prepare_plan(PLpgSQL_execstate * estate,
 	expr->plan_simple_expr = NULL;
 	exec_simple_check_plan(expr);
 
+	SPI_freeplan(plan);
 	pfree(argtypes);
 }
 
@@ -2544,10 +2545,14 @@ exec_stmt_open(PLpgSQL_execstate * estate, PLpgSQL_stmt_open * stmt)
 		 * ----------
 		 */
 		curplan = SPI_prepare(querystr, 0, NULL);
+		if (curplan == NULL)
+			elog(ERROR, "SPI_prepare() failed for dynamic query \"%s\"",
+				 querystr);
 		portal = SPI_cursor_open(curname, curplan, NULL, NULL);
 		if (portal == NULL)
 			elog(ERROR, "Failed to open cursor");
 		pfree(querystr);
+		SPI_freeplan(curplan);
 
 		/* ----------
 		 * Store the eventually assigned cursor name in the cursor variable
