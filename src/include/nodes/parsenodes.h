@@ -162,9 +162,10 @@ typedef struct CreateTrigStmt {
     List		*args;		/* list of (T_String) Values or NULL */
     bool		before;		/* BEFORE/AFTER */
     bool		row;		/* ROW/STATEMENT */
+    char		actions[4];	/* Insert, Update, Delete */
     char		*lang;		/* NULL (which means Clanguage) */
     char		*text;		/* AS 'text' */
-    List		*upattr;	/* UPDATE OF a, b,... (NI) or NULL */
+    List		*attr;		/* UPDATE OF a, b,... (NI) or NULL */
     char		*when;		/* WHEN 'a > 10 ...' (NI) or NULL */
 } CreateTrigStmt;
 
