@@ -48,9 +48,7 @@ typedef struct _psqlSettings
 	char	   *inputfile;		/* for error reporting */
 	unsigned	lineno;			/* also for error reporting */
 
-	bool		issuper;		/* is the current user a superuser? (used
-								 * to form the prompt) */
-	bool		timing;			/* timing of all queries */
+	bool		timing;			/* enable timing of all queries */
 } PsqlSettings;
 
 extern PsqlSettings pset;

@@ -32,8 +32,6 @@
 #define	S_ISDIR(mode)	 __S_ISTYPE((mode), S_IFDIR)
 #endif
 
-bool		copy_in_state;
-
 /*
  * parse_slash_copy
  * -- parses \copy command line
@@ -395,7 +393,7 @@ do_copy(const char *args)
 		return false;
 	}
 
-	result = PSQLexec(query.data, false);
+	result = PSQLexec(query.data, true);
 	termPQExpBuffer(&query);
 
 	switch (PQresultStatus(result))
@@ -506,10 +504,6 @@ handleCopyIn(PGconn *conn, FILE *copystream, const char *prompt)
 	int			ret;
 	unsigned int linecount = 0;
 
-#ifdef USE_ASSERT_CHECKING
-	assert(copy_in_state);
-#endif
-
 	if (prompt)					/* disable prompt if not interactive */
 	{
 		if (!isatty(fileno(copystream)))
@@ -563,7 +557,6 @@ handleCopyIn(PGconn *conn, FILE *copystream, const char *prompt)
 		linecount++;
 	}
 	ret = !PQendcopy(conn);
-	copy_in_state = false;
 	pset.lineno += linecount;
 	return ret;
 }

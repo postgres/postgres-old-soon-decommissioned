@@ -34,9 +34,11 @@ extern void ResetCancelConn(void);
 extern void handle_sigint(SIGNAL_ARGS);
 #endif   /* not WIN32 */
 
-extern PGresult *PSQLexec(const char *query, bool ignore_command_ok);
+extern PGresult *PSQLexec(const char *query, bool start_xact);
 
 extern bool SendQuery(const char *query);
+
+extern bool is_superuser(void);
 
 /* sprompt.h */
 extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
