@@ -12,6 +12,6 @@ SRCDIR= ../../..
 include ../../../Makefile.global
 
 install: 
-	-mkdir $(DESTDIR)$(POSTMANDIR)
-	-mkdir $(DESTDIR)$(POSTMANDIR)/man3
-	cp *.3* $(DESTDIR)$(POSTMANDIR)/man3
+	-mkdir $(POSTMANDIR)
+	-mkdir $(POSTMANDIR)/man3
+	cp *.3* $(POSTMANDIR)/man3

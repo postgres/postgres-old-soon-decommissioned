@@ -17,7 +17,7 @@ include ../../Makefile.global
 all: initdb
 
 install: initdb
-	$(INSTALL) $(INSTL_EXE_OPTS) $< $(DESTDIR)$(BINDIR)/$<
+	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$<
 
 clean:
 

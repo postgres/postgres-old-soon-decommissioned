@@ -20,7 +20,7 @@ createdb: createdb.sh
 	cp createdb.sh createdb
 
 install: createdb
-	$(INSTALL) $(INSTL_EXE_OPTS) $< $(DESTDIR)$(BINDIR)/$<
+	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$<
 
 clean:
 	rm -f createdb
