@@ -2,7 +2,7 @@
 $PostgreSQL$
 -->
 
-<chapter id="planner-stats">
+<chapter id="planner-stats-details">
  <title>How the Planner Uses Statistics</title>
 
   <para>
