@@ -4924,7 +4924,7 @@ ATExecAlterColumnType(AlteredTableInfo *tab, Relation rel,
 	add_column_datatype_dependency(RelationGetRelid(rel), attnum, targettype);
 
 	/* Drop any pg_statistic entry for the column, since it's now wrong type */
-	RemoveStatistics(rel, attnum);
+	RemoveStatistics(RelationGetRelid(rel), attnum);
 
 	/*
 	 * Update the default, if present, by brute force --- remove and re-add
