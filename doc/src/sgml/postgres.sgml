@@ -179,6 +179,7 @@ $PostgreSQL$
   &lobj;
   &ecpg;
   &infoschema;
+  &external_projects;
 
  </part>
 
