@@ -49,6 +49,7 @@ main(int argc, char *argv[])
 	crc64		crc;
 	char		pgctime_str[32];
 	char		ckpttime_str[32];
+	char	   *strftime_fmt = "%c";
 
 	if (argc > 1)
 		DataDir = argv[1];
@@ -87,9 +88,13 @@ main(int argc, char *argv[])
 			   "Either the file is corrupt, or it has a different layout than this program\n"
 			   "is expecting.  The results below are untrustworthy.\n\n");
 
-	strftime(pgctime_str, 32, "%c",
+	/*
+	 * Use variable for format to suppress overly-anal-retentive gcc warning
+	 * about %c
+	 */
+	strftime(pgctime_str, sizeof(pgctime_str), strftime_fmt,
 			 localtime(&(ControlFile.time)));
-	strftime(ckpttime_str, 32, "%c",
+	strftime(ckpttime_str, sizeof(ckpttime_str), strftime_fmt,
 			 localtime(&(ControlFile.checkPointCopy.time)));
 
 	printf("pg_control version number:            %u\n"
