@@ -31,7 +31,7 @@ cursor updates back to base classes is impossible in general as with
 view updates.  Consequently, users must issue explicit replace
 commands to update data.
 .PP
-Portals may only be used inside of transaction blocks marked by 
+Cursors may only be used inside of transaction blocks marked by 
 .IR begin (l)
 and
 .IR end (l)
@@ -42,19 +42,19 @@ because the data that they store spans multiple user queries.
 --set up and use a cursor 
 --
 begin 
-   declare myportal cursor for 
+   declare mycursor cursor for 
    select * from pg-user
 end 
 .fi
 .nf
 --
---Fetch all the instances available in the portal FOO
+--Fetch all the instances available in the cursor FOO
 --
 fetch all in FOO
 .fi
 .nf
 --
---Fetch 5 instances backward in the portal FOO
+--Fetch 5 instances backward in the cursor FOO
 --
 fetch backward 5 in FOO
 .fi

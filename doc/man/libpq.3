@@ -665,7 +665,7 @@ main()
   PQclear(res); 
 
   /* fetch instances from the pg_database, the system catalog of databases*/
-  res = PQexec(conn,"DECLARE myportal CURSOR FOR select * from pg_database");
+  res = PQexec(conn,"DECLARE mycursor CURSOR FOR select * from pg_database");
   if (PQresultStatus(res) != PGRES_COMMAND_OK) {
     fprintf(stderr,"DECLARE CURSOR command failed\n");
     PQclear(res);
@@ -673,7 +673,7 @@ main()
   }
   PQclear(res);
 
-  res = PQexec(conn,"FETCH ALL in myportal");
+  res = PQexec(conn,"FETCH ALL in mycursor");
   if (PQresultStatus(res) != PGRES_TUPLES_OK) {
     fprintf(stderr,"FETCH ALL command didn't return tuples properly\n");
     PQclear(res);
@@ -697,8 +697,8 @@ main()
 
   PQclear(res);
   
-  /* close the portal */
-  res = PQexec(conn, "CLOSE myportal");
+  /* close the cursor */
+  res = PQexec(conn, "CLOSE mycursor");
   PQclear(res);
 
   /* end the transaction */
@@ -947,7 +947,7 @@ main()
 
   PQclear(res);
   
-  /* close the portal */
+  /* close the cursor */
   res = PQexec(conn, "CLOSE mycursor");
   PQclear(res);
 
