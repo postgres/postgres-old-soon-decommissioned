@@ -711,10 +711,7 @@ describeOneTableDetails(const char *schemaname,
 	headers[cols] = NULL;
 
 	/* Get column info (index requires additional checks) */
-	if (tableinfo.relkind == 'i')
-		printfPQExpBuffer(&buf, "SELECT\n  CASE i.indproc WHEN ('-'::pg_catalog.regproc) THEN a.attname\n  ELSE SUBSTR(pg_catalog.pg_get_indexdef(attrelid),\n  POSITION('(' in pg_catalog.pg_get_indexdef(attrelid)))\n  END,");
-	else
-		printfPQExpBuffer(&buf, "SELECT a.attname,");
+	printfPQExpBuffer(&buf, "SELECT a.attname,");
 	appendPQExpBuffer(&buf, "\n  pg_catalog.format_type(a.atttypid, a.atttypmod),"
 					  "\n  (SELECT substring(d.adsrc for 128) FROM pg_catalog.pg_attrdef d"
 					  "\n   WHERE d.adrelid = a.attrelid AND d.adnum = a.attnum AND a.atthasdef),"

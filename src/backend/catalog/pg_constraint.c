@@ -250,18 +250,11 @@ CreateConstraintEntry(const char *constraintName,
 	{
 		/*
 		 * Register dependencies from constraint to objects mentioned in
-		 * CHECK expression.  We gin up a rather bogus rangetable list to
-		 * handle any Vars in the constraint.
+		 * CHECK expression.
 		 */
-		RangeTblEntry rte;
-
-		MemSet(&rte, 0, sizeof(rte));
-		rte.type = T_RangeTblEntry;
-		rte.rtekind = RTE_RELATION;
-		rte.relid = relId;
-
-		recordDependencyOnExpr(&conobject, conExpr, makeList1(&rte),
-							   DEPENDENCY_NORMAL);
+		recordDependencyOnSingleRelExpr(&conobject, conExpr, relId,
+										DEPENDENCY_NORMAL,
+										DEPENDENCY_NORMAL);
 	}
 
 	return conOid;

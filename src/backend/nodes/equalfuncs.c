@@ -1466,8 +1466,7 @@ static bool
 _equalIndexElem(IndexElem *a, IndexElem *b)
 {
 	COMPARE_STRING_FIELD(name);
-	COMPARE_NODE_FIELD(funcname);
-	COMPARE_NODE_FIELD(args);
+	COMPARE_NODE_FIELD(expr);
 	COMPARE_NODE_FIELD(opclass);
 
 	return true;

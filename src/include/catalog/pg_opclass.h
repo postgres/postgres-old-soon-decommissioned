@@ -8,7 +8,7 @@
  * <opcamid, opcname> --- that is, there is a row for each valid combination
  * of opclass name and index access method type.  This row specifies the
  * expected input data type for the opclass (the type of the heap column,
- * or the function output type in the case of a functional index).	Note
+ * or the expression output type in the case of an index expression).  Note
  * that types binary-coercible to the specified type will be accepted too.
  *
  * For a given <opcamid, opcintype> pair, there can be at most one row that

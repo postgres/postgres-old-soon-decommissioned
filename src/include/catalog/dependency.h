@@ -91,6 +91,11 @@ extern void recordDependencyOnExpr(const ObjectAddress *depender,
 					   Node *expr, List *rtable,
 					   DependencyType behavior);
 
+extern void recordDependencyOnSingleRelExpr(const ObjectAddress *depender,
+					   Node *expr, Oid relId,
+					   DependencyType behavior,
+					   DependencyType self_behavior);
+
 /* in pg_depend.c */
 
 extern void recordDependencyOn(const ObjectAddress *depender,

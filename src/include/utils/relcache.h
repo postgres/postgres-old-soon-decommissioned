@@ -32,6 +32,8 @@ extern void RelationClose(Relation relation);
  * Routines to compute/retrieve additional cached information
  */
 extern List *RelationGetIndexList(Relation relation);
+extern List *RelationGetIndexExpressions(Relation relation);
+extern List *RelationGetIndexPredicate(Relation relation);
 
 extern void RelationInitIndexAccessInfo(Relation relation);
 

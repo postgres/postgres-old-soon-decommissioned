@@ -18,6 +18,7 @@
 #include "catalog/pg_index.h"
 #include "nodes/execnodes.h"
 
+
 #define DEFAULT_INDEX_TYPE	"btree"
 
 /* Typedef for callback function for IndexBuildHeapScan */
@@ -40,12 +41,12 @@ extern Oid index_create(Oid heapRelationId,
 
 extern void index_drop(Oid indexId);
 
-extern IndexInfo *BuildIndexInfo(Form_pg_index indexStruct);
+extern IndexInfo *BuildIndexInfo(Relation index);
 
 extern void FormIndexDatum(IndexInfo *indexInfo,
 			   HeapTuple heapTuple,
 			   TupleDesc heapDescriptor,
-			   MemoryContext resultCxt,
+			   EState *estate,
 			   Datum *datum,
 			   char *nullv);
 

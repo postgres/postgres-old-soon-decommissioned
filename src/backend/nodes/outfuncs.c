@@ -1181,8 +1181,7 @@ _outIndexElem(StringInfo str, IndexElem *node)
 	WRITE_NODE_TYPE("INDEXELEM");
 
 	WRITE_STRING_FIELD(name);
-	WRITE_NODE_FIELD(funcname);
-	WRITE_NODE_FIELD(args);
+	WRITE_NODE_FIELD(expr);
 	WRITE_NODE_FIELD(opclass);
 }
 

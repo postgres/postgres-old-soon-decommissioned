@@ -31,8 +31,8 @@ SELECT relname
 
 
 --
--- lists all simple indices (ie. those that are not defined over a function
--- of several attributes)
+-- lists all simple indices (ie. those that are defined over one simple
+-- column reference)
 --
 SELECT bc.relname AS class_name, 
        ic.relname AS index_name, 
@@ -44,8 +44,8 @@ SELECT bc.relname AS class_name,
   WHERE i.indrelid = bc.oid
      and i.indexrelid = ic.oid
      and i.indkey[0] = a.attnum
+     and i.indnatts = 1
      and a.attrelid = bc.oid
-     and i.indproc = '0'::oid   -- no functional indices
   ORDER BY class_name, index_name, attname;
 
 

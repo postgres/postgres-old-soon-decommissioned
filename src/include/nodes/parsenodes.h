@@ -353,17 +353,15 @@ typedef struct ColumnDef
 /*
  * IndexElem - index parameters (used in CREATE INDEX)
  *
- * For a plain index, each 'name' is an attribute name in the heap relation;
- * 'funcname' and 'args' are NIL.  For a functional index, only one IndexElem
- * is allowed.	It has name = NULL, funcname = name of function and args =
- * list of attribute names that are the function's arguments.
+ * For a plain index attribute, 'name' is the name of the table column to
+ * index, and 'expr' is NULL.  For an index expression, 'name' is NULL and
+ * 'expr' is the expression tree.
  */
 typedef struct IndexElem
 {
 	NodeTag		type;
 	char	   *name;			/* name of attribute to index, or NULL */
-	List	   *funcname;		/* qualified name of function */
-	List	   *args;			/* list of names of function arguments */
+	Node	   *expr;			/* expression to index, or NULL */
 	List	   *opclass;		/* name of desired opclass; NIL = default */
 } IndexElem;
 
@@ -1271,8 +1269,8 @@ typedef struct IndexStmt
 	char	   *accessMethod;	/* name of access method (eg. btree) */
 	List	   *indexParams;	/* a list of IndexElem */
 	Node	   *whereClause;	/* qualification (partial-index predicate) */
-	List	   *rangetable;		/* range table for qual, filled in by
-								 * transformStmt() */
+	List	   *rangetable;		/* range table for qual and/or expressions,
+								 * filled in by transformStmt() */
 	bool		unique;			/* is index unique? */
 	bool		primary;		/* is index on primary key? */
 	bool		isconstraint;	/* is it from a CONSTRAINT clause? */

@@ -1421,8 +1421,7 @@ _copyIndexElem(IndexElem *from)
 	IndexElem  *newnode = makeNode(IndexElem);
 
 	COPY_STRING_FIELD(name);
-	COPY_NODE_FIELD(funcname);
-	COPY_NODE_FIELD(args);
+	COPY_NODE_FIELD(expr);
 	COPY_NODE_FIELD(opclass);
 
 	return newnode;
