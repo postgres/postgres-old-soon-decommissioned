@@ -177,7 +177,10 @@ main(int argc, char *argv[])
 	PQfinish(conn);
 
 	if (!quiet)
+	{
 		puts("CREATE DATABASE");
+		fflush(stdout);
+	}
 
 	if (comment)
 	{
@@ -200,7 +203,10 @@ main(int argc, char *argv[])
 
 		PQfinish(conn);
 		if (!quiet)
+		{
 			puts("COMMENT");
+			fflush(stdout);
+		}
 	}
 
 	exit(0);
