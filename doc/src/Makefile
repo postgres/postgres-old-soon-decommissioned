@@ -18,11 +18,8 @@ install:
 	$(MAKE) all
 	(mv -f *.$(ZIPSUFFIX) ..)
 
-clean:
-	$(MAKE) -C sgml clean
-
-distclean:
-	$(MAKE) -C sgml distclean
+clean distclean maintainer-clean:
+	$(MAKE) -C sgml $@
 
 all: $(TARGETS)
 

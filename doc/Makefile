@@ -97,7 +97,6 @@ ifdef found_man
 endif
 
 
-clean:
+clean distclean maintainer-clean:
 	rm -rf man1/ man$(sqlmansectnum)/ man$(sqlmansect_dummy)/
-
-distclean maintainer-clean: clean
+	$(MAKE) -C src $@
