@@ -201,7 +201,9 @@ be used to retrieve the tuples returned by the query.
 .IP
 
 .B PQntuples
-returns the number of tuples (instances) in the query result.
+returns the number of tuples (instances) in the query result, or the
+number of rows affected for queries that do not return a tuples.
+
 .nf
 int PQntuples(PGresult *res);
 .fi
