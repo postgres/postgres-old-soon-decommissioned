@@ -2278,6 +2278,7 @@ CommentStmt:	COMMENT ON comment_type any_name IS comment_text
 
 comment_type:	COLUMN { $$ = COLUMN; }
 		| DATABASE { $$ = DATABASE; }
+		| SCHEMA { $$ = SCHEMA; }
 		| INDEX { $$ = INDEX; }
 		| SEQUENCE { $$ = SEQUENCE; }
 		| TABLE { $$ = TABLE; }
