@@ -367,6 +367,25 @@ VACUUM
  </sect1>
 
 
+ <sect1 id="routine-reindex">
+  <title>Routine Reindexing</title>
+
+  <indexterm zone="routine-reindex">
+   <primary>reindex</primary>
+  </indexterm>
+
+  <para>
+   <productname>PostgreSQL</productname> is unable to reuse index pages
+   in some cases. The problem is that if indexed rows are deleted, those
+   indexes pages can only be reused by rows with similar values. In
+   cases where low indexed rows are deleted and newly inserted rows have
+   high values, disk space used by the index will grow indefinately, even
+   if <command>VACUUM</> is run frequently.
+   TO BE COMPLETED 2002-06-22 bjm
+  </para>
+ </sect1>
+
+
  <sect1 id="logfile-maintenance">
   <title>Log File Maintenance</title>
 
