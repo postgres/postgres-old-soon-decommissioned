@@ -1636,7 +1636,6 @@ DeadLockCheck(PROC *thisProc, LOCK *findlock)
 												 MyProc,
 												 NULL) == STATUS_OK)
 						{
-							SetWaitingForLock(false);
 							GrantLock(MyProc->waitLock,
 									  MyProc->waitHolder,
 									  MyProc->waitLockMode);
