@@ -62,6 +62,11 @@ and then comparing it to the value on the other side of the operator.
 Obviously, the decision to build a functional index represents a
 tradeoff between space (for the index) and execution time.
 .PP
+The \fBunique\fR keyword causes the system to check for duplicate
+values when the index is created (if data already exist) and each
+time data is added.
+Attempts to insert or update non-duplicate data will generate an error.
+.PP
 Postgres provides btree, rtree and hash access methods for
 secondary indices.  The btree access method is an implementation of
 the Lehman-Yao high-concurrency btrees.  The rtree access method
