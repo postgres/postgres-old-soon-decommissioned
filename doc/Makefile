@@ -45,15 +45,17 @@ sqlmansectnum = $(shell expr X'$(sqlmansect)' : X'\([0-9]\)')
 
 all: man1/.timestamp man$(sqlmansectnum)/.timestamp
 
-man1/.timestamp man$(sqlmansect_dummy)/.timestamp: man.tar.gz
+man1/.timestamp: man$(sqlmansect_dummy)/.timestamp
+	@echo timestamp >$@
+
+man$(sqlmansect_dummy)/.timestamp: man.tar.gz
 	gzip -d -c $< | $(TAR) xf -
 	for file in man1/*.1; do \
 	  mv $$file $$file.bak && \
 	  sed -e 's/\\fR($(sqlmansect_dummy))/\\fR($(sqlmansectnum))/' $$file.bak >$$file && \
 	  rm $$file.bak || exit; \
 	done
-	@echo timestamp >man1/.timestamp
-	@echo timestamp >man$(sqlmansect_dummy)/.timestamp
+	@echo timestamp >$@
 
 man$(sqlmansectnum)/.timestamp: man$(sqlmansect_dummy)/.timestamp
 	$(mkinstalldirs) man$(sqlmansectnum)
