@@ -24,9 +24,17 @@
 #ifndef POSTGRES_EXT_H
 #define POSTGRES_EXT_H
 
+/*
+ * Object ID is a fundamental type in Postgres.
+ */
 typedef unsigned int Oid;
 
-/* NAMEDATALEN is the max length for system identifiers (e.g. table names,
+#define OID_MAX  UINT_MAX
+/* you will need to include <limits.h> to use the above #define */
+
+
+/*
+ * NAMEDATALEN is the max length for system identifiers (e.g. table names,
  * attribute names, function names, etc.)
  *
  * NOTE that databases with different NAMEDATALEN's cannot interoperate!
