@@ -5224,7 +5224,7 @@ fmtId(char *rawid)
 		if (! (islower(*cp) || isdigit(*cp) || (*cp == '_'))) break;
 
 	if (*cp != '\0') {
-		cp = palloc(strlen(rawid)+1);
+		cp = palloc(strlen(rawid)+3);
 		strcpy(cp,"\"");
 		strcat(cp,rawid);
 		strcat(cp,"\"");
