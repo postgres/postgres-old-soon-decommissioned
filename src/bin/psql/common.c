@@ -595,8 +595,11 @@ SendQuery(const char *query)
 				return false;
 	}
 	else if (VariableEquals(pset.vars, "ECHO", "queries"))
+	{
 		puts(query);
-
+		fflush(stdout);
+	}
+	
 	SetCancelConn();
 
 	if (PQtransactionStatus(pset.db) == PQTRANS_IDLE &&
