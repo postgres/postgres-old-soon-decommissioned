@@ -66,6 +66,7 @@ typedef struct _tableInfo
 {
 	char	   *oid;
 	char	   *relname;
+	char	   *viewdef;
 	char	   *relacl;
 	bool		sequence;
 	int			numatts;		/* number of attributes */
