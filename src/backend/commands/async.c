@@ -83,10 +83,6 @@
 #include <commands/async.h>
 #include <libpq/libpq.h>
 
-#ifndef HAVE_STRDUP
-#include <port-protos.h>		/* for strdup() */
-#endif
-
 #include <storage/lmgr.h>
 
 static int	notifyFrontEndPending = 0;
