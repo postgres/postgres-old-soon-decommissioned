@@ -66,6 +66,12 @@
  *	    $HOME/.postgresql/postgresql.key
  *	  respectively.
  *
+ *	  ...
+ *
+ *	  We don't provide informational callbacks here (like
+ *	  info_cb() in be-secure.c), since there's mechanism to
+ *	  display that information to the client.
+ *
  * OS DEPENDENCIES
  *	  The code currently assumes a POSIX password entry.  How should
  *	  Windows and Mac users be handled?
@@ -88,7 +94,7 @@
  *	  [*] server verifies client certificates
  *
  *	  milestone 5: provide informational callbacks
- *	  [ ] provide informational callbacks
+ *	  [*] provide informational callbacks
  *
  *	  other changes
  *	  [ ] tcp-wrappers
@@ -720,6 +726,17 @@ client_cert_cb (SSL *ssl, X509 **x509, EVP_PKEY **pkey)
 		return -1;
 	}
 	fclose(fp);
+
+	/* verify that the cert and key go together */
+	if (!X509_check_private_key(*x509, *pkey))
+	{
+		printfPQExpBuffer(&conn->errorMessage, 
+			libpq_gettext("certificate/private key mismatch (%s): %s\n"),
+			fnbuf, SSLerrmessage());
+		X509_free(*x509);
+		EVP_PKEY_free(*pkey);
+		return -1;
+	}
 
 	return 1;
 }
