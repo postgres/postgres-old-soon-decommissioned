@@ -175,7 +175,7 @@ static __inline__ int
 tas(volatile slock_t *lock)
 {
   register _res;
-  __asm__("sbitb 0, %0 \
+  __asm__("sbitb 0, %0 \n\
 	sfsd %1"
 	: "=m"(*lock), "=r"(_res));
   return (int) _res; 
