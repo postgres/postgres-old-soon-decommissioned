@@ -2304,7 +2304,7 @@ PQunescapeBytea(const unsigned char *strtext, size_t *retbuflen)
 	if (buffer == NULL)
 		return NULL;
 
-	for (i = j = buflen = 0; i < strtextlen;)
+	for (i = j = buflen = 0; i < (int)strtextlen;)
 	{
 		switch (strtext[i])
 		{

@@ -465,9 +465,11 @@ __attribute__((format_arg(1)));
 #ifdef WIN32
 #define SOCK_ERRNO (WSAGetLastError())
 #define SOCK_STRERROR winsock_strerror
+#define SOCK_ERRNO_SET(e) WSASetLastError(e)
 #else
 #define SOCK_ERRNO errno
 #define SOCK_STRERROR pqStrerror
+#define SOCK_ERRNO_SET(e) errno=e
 #endif
 
 #endif   /* LIBPQ_INT_H */
