@@ -307,7 +307,7 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 
 			if (appendplan->inheritrelid > 0)
 			{
-				ResTarget  *rtentry;
+				RangeTblEntry *rtentry;
 
 				rtentry = nth(whichplan, appendplan->inheritrtable);
 				Assert(rtentry != NULL);

@@ -85,7 +85,7 @@ exec_append_initialize_next(Append *node)
 	int			nplans;
 	List	   *rtables;
 	List	   *rtable;
-	ResTarget  *rtentry;
+	RangeTblEntry *rtentry;
 
 	/* ----------------
 	 *	get information from the append node
