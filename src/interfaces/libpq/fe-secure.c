@@ -308,9 +308,13 @@ rloop:
 								libpq_gettext("SSL SYSCALL error: %s\n"),
 						SOCK_STRERROR(SOCK_ERRNO, sebuf, sizeof(sebuf)));
 					else
+					{
 						printfPQExpBuffer(&conn->errorMessage,
 										  libpq_gettext("SSL SYSCALL error: EOF detected\n"));
 
+						SOCK_ERRNO = ECONNRESET;
+						n = -1;
+					}
 					break;
 				}
 			case SSL_ERROR_SSL:
@@ -318,13 +322,13 @@ rloop:
 					  libpq_gettext("SSL error: %s\n"), SSLerrmessage());
 				/* fall through */
 			case SSL_ERROR_ZERO_RETURN:
-				pqsecure_close(conn);
 				SOCK_ERRNO = ECONNRESET;
 				n = -1;
 				break;
 			default:
 				printfPQExpBuffer(&conn->errorMessage,
 							  libpq_gettext("Unknown SSL error code\n"));
+				n = -1;
 				break;
 		}
 	}
@@ -376,8 +380,12 @@ pqsecure_write(PGconn *conn, const void *ptr, size_t len)
 								libpq_gettext("SSL SYSCALL error: %s\n"),
 						SOCK_STRERROR(SOCK_ERRNO, sebuf, sizeof(sebuf)));
 					else
+					{
 						printfPQExpBuffer(&conn->errorMessage,
 										  libpq_gettext("SSL SYSCALL error: EOF detected\n"));
+						SOCK_ERRNO = ECONNRESET;
+						n = -1;
+					}
 					break;
 				}
 			case SSL_ERROR_SSL:
@@ -385,13 +393,13 @@ pqsecure_write(PGconn *conn, const void *ptr, size_t len)
 					  libpq_gettext("SSL error: %s\n"), SSLerrmessage());
 				/* fall through */
 			case SSL_ERROR_ZERO_RETURN:
-				pqsecure_close(conn);
 				SOCK_ERRNO = ECONNRESET;
 				n = -1;
 				break;
 			default:
 				printfPQExpBuffer(&conn->errorMessage,
 							  libpq_gettext("Unknown SSL error code\n"));
+				n = -1;
 				break;
 		}
 	}
