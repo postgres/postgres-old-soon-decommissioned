@@ -515,6 +515,7 @@ ShutdownPostgres(int code, Datum arg)
 	 */
 	LWLockReleaseAll();
 	AtProcExit_Buffers();
+	AtProcExit_LocalBuffers();
 
 	/*
 	 * In case a transaction is open, delete any files it created.	This

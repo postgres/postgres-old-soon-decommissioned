@@ -259,3 +259,17 @@ AtEOXact_LocalBuffers(bool isCommit)
 	}
 #endif
 }
+
+/*
+ * AtProcExit_LocalBuffers - ensure we have dropped pins during backend exit.
+ *
+ * This is just like AtProcExit_Buffers, but for local buffers.  We have
+ * to drop pins to ensure that any attempt to drop temp files doesn't
+ * fail in DropRelFileNodeBuffers.
+ */
+void
+AtProcExit_LocalBuffers(void)
+{
+	/* just zero the refcounts ... */
+	MemSet(LocalRefCount, 0, NLocBuffer * sizeof(*LocalRefCount));
+}

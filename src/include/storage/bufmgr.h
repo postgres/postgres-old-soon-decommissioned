@@ -158,6 +158,7 @@ extern void	BufferSync(void);
 extern void BgBufferSync(void);
 
 extern void InitLocalBuffer(void);
+extern void AtProcExit_LocalBuffers(void);
 
 /* in freelist.c */
 extern void StrategyHintVacuum(bool vacuum_active);
