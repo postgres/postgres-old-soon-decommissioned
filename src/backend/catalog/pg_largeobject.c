@@ -114,7 +114,6 @@ LargeObjectExists(Oid loid)
 	Relation	pg_largeobject;
 	ScanKeyData skey[1];
 	SysScanDesc sd;
-	HeapTuple	tuple;
 
 	/*
 	 * See if we can find any tuples belonging to the specified LO
@@ -129,7 +128,7 @@ LargeObjectExists(Oid loid)
 	sd = systable_beginscan(pg_largeobject, LargeObjectLOidPNIndex, true,
 							SnapshotNow, 1, skey);
 
-	if ((tuple = systable_getnext(sd)) != NULL)
+	if (systable_getnext(sd) != NULL)
 		retval = true;
 
 	systable_endscan(sd);
