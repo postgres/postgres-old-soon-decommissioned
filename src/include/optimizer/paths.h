@@ -28,6 +28,7 @@ extern bool enable_geqo;
 extern int	geqo_rels;
 
 extern RelOptInfo *make_one_rel(Query *root);
+extern RelOptInfo *make_fromexpr_rel(Query *root, FromExpr *from);
 
 /*
  * indxpath.c
@@ -77,7 +78,7 @@ extern List *make_rels_by_clause_joins(Query *root,
 extern List *make_rels_by_clauseless_joins(Query *root,
 										   RelOptInfo *old_rel,
 										   List *other_rels);
-extern RelOptInfo *make_rel_from_jointree(Query *root, Node *jtnode);
+extern RelOptInfo *make_jointree_rel(Query *root, Node *jtnode);
 
 /*
  * pathkeys.c

@@ -16,6 +16,7 @@
 
 extern int	IsDefinedRewriteRule(char *ruleName);
 
-extern void setRelhasrulesInRelation(Oid relationId, bool relhasrules);
+extern void SetRelationRuleStatus(Oid relationId, bool relHasRules,
+								  bool relIsBecomingView);
 
 #endif	 /* REWRITESUPPORT_H */

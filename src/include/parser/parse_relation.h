@@ -27,7 +27,7 @@ extern int refnameRangeTablePosn(ParseState *pstate,
 extern int RTERangeTablePosn(ParseState *pstate,
 							 RangeTblEntry *rte,
 							 int *sublevels_up);
-extern JoinExpr *scanJoinTreeForRefname(Node *jtnode, char *refname);
+extern JoinExpr *scanJoinListForRefname(Node *jtnode, char *refname);
 extern Node *colnameToVar(ParseState *pstate, char *colname);
 extern Node *qualifiedNameToVar(ParseState *pstate, char *refname,
 								char *colname, bool implicitRTEOK);
@@ -36,7 +36,11 @@ extern RangeTblEntry *addRangeTableEntry(ParseState *pstate,
 										 Attr *alias,
 										 bool inh,
 										 bool inFromCl);
-extern void addRTEtoJoinTree(ParseState *pstate, RangeTblEntry *rte);
+extern RangeTblEntry *addRangeTableEntryForSubquery(ParseState *pstate,
+													Query *subquery,
+													Attr *alias,
+													bool inFromCl);
+extern void addRTEtoJoinList(ParseState *pstate, RangeTblEntry *rte);
 extern RangeTblEntry *addImplicitRTE(ParseState *pstate, char *relname);
 extern void expandRTE(ParseState *pstate, RangeTblEntry *rte,
 					  List **colnames, List **colvars);

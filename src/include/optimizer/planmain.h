@@ -40,8 +40,7 @@ extern Result *make_result(List *tlist, Node *resconstantqual, Plan *subplan);
  * prototypes for plan/initsplan.c
  */
 extern void build_base_rel_tlists(Query *root, List *tlist);
-extern Relids add_join_quals_to_rels(Query *root, Node *jtnode);
-extern void add_restrict_and_join_to_rels(Query *root, List *clauses);
+extern Relids distribute_quals_to_rels(Query *root, Node *jtnode);
 extern List *add_missing_rels_to_query(Query *root, Node *jtnode);
 extern void process_implied_equality(Query *root, Node *item1, Node *item2,
 									 Oid sortop1, Oid sortop2);

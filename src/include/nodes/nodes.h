@@ -49,6 +49,7 @@ typedef enum NodeTag
 	T_Group,
 	T_SubPlan,
 	T_TidScan,
+	T_SubqueryScan,
 
 	/*---------------------
 	 * TAGS FOR PRIMITIVE NODES (primnodes.h)
@@ -69,6 +70,7 @@ typedef enum NodeTag
 	T_Iter,
 	T_RelabelType,
 	T_RangeTblRef,
+	T_FromExpr,
 	T_JoinExpr,
 
 	/*---------------------
@@ -118,6 +120,7 @@ typedef enum NodeTag
 	T_UniqueState,
 	T_HashState,
 	T_TidScanState,
+	T_SubqueryScanState,
 
 	/*---------------------
 	 * TAGS FOR MEMORY NODES (memnodes.h)
@@ -222,7 +225,7 @@ typedef enum NodeTag
 	T_oldJoinExprXXX,			/* not used anymore; this tag# is available */
 	T_CaseExpr,
 	T_CaseWhen,
-	T_RowMark,
+	T_RowMarkXXX,				/* not used anymore; this tag# is available */
 	T_FkConstraint,
 
 	/*---------------------

@@ -23,7 +23,8 @@ typedef struct ParseState
 {
 	struct ParseState *parentParseState; /* stack link */
 	List	   *p_rtable;		/* range table so far */
-	List	   *p_jointree;		/* join tree so far */
+	List	   *p_joinlist;		/* join items so far (will become
+								 * FromExpr node's fromlist) */
 	int			p_last_resno;	/* last targetlist resno assigned */
 	bool		p_hasAggs;
 	bool		p_hasSubLinks;

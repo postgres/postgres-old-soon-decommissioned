@@ -102,6 +102,11 @@ set_plan_references(Plan *plan)
 			fix_expr_references(plan, (Node *) plan->targetlist);
 			fix_expr_references(plan, (Node *) plan->qual);
 			break;
+		case T_SubqueryScan:
+			fix_expr_references(plan, (Node *) plan->targetlist);
+			fix_expr_references(plan, (Node *) plan->qual);
+			/* No need to recurse into the subplan, it's fixed already */
+			break;
 		case T_NestLoop:
 			set_join_references((Join *) plan);
 			fix_expr_references(plan, (Node *) plan->targetlist);

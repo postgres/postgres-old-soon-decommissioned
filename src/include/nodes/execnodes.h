@@ -453,6 +453,24 @@ typedef struct TidScanState
 	HeapTupleData tss_htup;
 } TidScanState;
 
+/* ----------------
+ *	 SubqueryScanState information
+ *
+ *		SubqueryScanState is used for scanning a sub-query in the range table.
+ *		The sub-query will have its own EState, which we save here.
+ *		ScanTupleSlot references the current output tuple of the sub-query.
+ *
+ *		SubQueryDesc	   queryDesc for sub-query
+ *		SubEState		   exec state for sub-query
+ * ----------------
+ */
+typedef struct SubqueryScanState
+{
+	CommonScanState csstate;	/* its first field is NodeTag */
+	struct QueryDesc *sss_SubQueryDesc;
+	EState	   *sss_SubEState;
+} SubqueryScanState;
+
 /* ----------------------------------------------------------------
  *				 Join State Information
  * ----------------------------------------------------------------

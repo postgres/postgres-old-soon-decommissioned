@@ -115,6 +115,7 @@ cost_seqscan(Path *path, RelOptInfo *baserel)
 
 	/* Should only be applied to base relations */
 	Assert(length(baserel->relids) == 1);
+	Assert(!baserel->issubquery);
 
 	if (!enable_seqscan)
 		startup_cost += disable_cost;
@@ -223,6 +224,7 @@ cost_index(Path *path, Query *root,
 	/* Should only be applied to base relations */
 	Assert(IsA(baserel, RelOptInfo) &&IsA(index, IndexOptInfo));
 	Assert(length(baserel->relids) == 1);
+	Assert(!baserel->issubquery);
 
 	if (!enable_indexscan && !is_injoin)
 		startup_cost += disable_cost;

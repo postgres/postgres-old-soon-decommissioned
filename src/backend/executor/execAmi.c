@@ -44,6 +44,7 @@
 #include "executor/nodeSeqscan.h"
 #include "executor/nodeSort.h"
 #include "executor/nodeSubplan.h"
+#include "executor/nodeSubqueryscan.h"
 #include "executor/nodeUnique.h"
 
 static Pointer ExecBeginScan(Relation relation, int nkeys, ScanKey skeys,
@@ -304,6 +305,14 @@ ExecReScan(Plan *node, ExprContext *exprCtxt, Plan *parent)
 			ExecIndexReScan((IndexScan *) node, exprCtxt, parent);
 			break;
 
+		case T_TidScan:
+			ExecTidReScan((TidScan *) node, exprCtxt, parent);
+			break;
+
+		case T_SubqueryScan:
+			ExecSubqueryReScan((SubqueryScan *) node, exprCtxt, parent);
+			break;
+
 		case T_Material:
 			ExecMaterialReScan((Material *) node, exprCtxt, parent);
 			break;
@@ -346,10 +355,6 @@ ExecReScan(Plan *node, ExprContext *exprCtxt, Plan *parent)
 
 		case T_Append:
 			ExecReScanAppend((Append *) node, exprCtxt, parent);
-			break;
-
-		case T_TidScan:
-			ExecTidReScan((TidScan *) node, exprCtxt, parent);
 			break;
 
 		default:

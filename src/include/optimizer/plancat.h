@@ -17,10 +17,10 @@
 #include "nodes/relation.h"
 
 
-extern void relation_info(Query *root, Index relid,
-			  bool *hasindex, long *pages, double *tuples);
+extern void relation_info(Oid relationObjectId,
+						  bool *hasindex, long *pages, double *tuples);
 
-extern List *find_secondary_indexes(Query *root, Index relid);
+extern List *find_secondary_indexes(Oid relationObjectId);
 
 extern List *find_inheritance_children(Oid inhparent);
 

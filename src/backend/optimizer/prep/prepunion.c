@@ -411,7 +411,7 @@ find_all_inheritors(Oid parentrel)
 		 * there can't be any cycles in the inheritance graph anyway.)
 		 */
 		currentchildren = set_differencei(currentchildren, examined_relids);
-		unexamined_relids = LispUnioni(unexamined_relids, currentchildren);
+		unexamined_relids = set_unioni(unexamined_relids, currentchildren);
 	}
 
 	return examined_relids;

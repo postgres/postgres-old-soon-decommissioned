@@ -122,7 +122,7 @@ add_equijoined_keys(Query *root, RestrictInfo *restrictinfo)
 				newset = lcons(item1, lcons(item2, NIL));
 
 			/* Found a set to merge into our new set */
-			newset = LispUnion(newset, curset);
+			newset = set_union(newset, curset);
 
 			/*
 			 * Remove old set from equi_key_list.  NOTE this does not
