@@ -20,7 +20,9 @@
 #include <fcntl.h>
 #include <ctype.h>
 #include <time.h>
+#ifndef WIN32_CLIENT_ONLY
 #include <unistd.h>
+#endif
 
 #ifndef HAVE_STRDUP
 #include "strdup.h"
@@ -35,7 +37,6 @@
 #include "win32.h"
 #else
 #include <sys/socket.h>
-#include <unistd.h>
 #include <netdb.h>
 #include <netinet/in.h>
 #ifdef HAVE_NETINET_TCP_H

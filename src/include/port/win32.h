@@ -210,6 +210,10 @@ typedef int gid_t;
 #endif
 typedef long key_t;
 
+#ifdef WIN32_CLIENT_ONLY
+typedef int pid_t;
+#endif
+
 /*
  * Supplement to <sys/stat.h>.
  */
