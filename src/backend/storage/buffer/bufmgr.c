@@ -663,6 +663,7 @@ WriteBuffer(Buffer buffer)
 	bufHdr->flags |= (BM_DIRTY | BM_JUST_DIRTIED);
 	UnpinBuffer(bufHdr);
 	SpinRelease(BufMgrLock);
+	CommitInfoNeedsSave[buffer - 1] = 0;
     }
     return(TRUE);
 } 
@@ -784,6 +785,7 @@ FlushBuffer(Buffer buffer, bool release)
     if ( release )
     	UnpinBuffer(bufHdr);
     SpinRelease(BufMgrLock);
+    CommitInfoNeedsSave[buffer - 1] = 0;
     
     return(STATUS_OK);
 }
@@ -816,6 +818,7 @@ WriteNoReleaseBuffer(Buffer buffer)
 	SpinAcquire(BufMgrLock);
 	bufHdr->flags |= (BM_DIRTY | BM_JUST_DIRTIED);
 	SpinRelease(BufMgrLock);
+    	CommitInfoNeedsSave[buffer - 1] = 0;
     }
     return(STATUS_OK);
 }
@@ -1765,5 +1768,6 @@ int SetBufferWriteMode (int mode)
 
 void SetBufferCommitInfoNeedsSave(Buffer buffer)
 {
-    CommitInfoNeedsSave[buffer - 1]++;
+    if ( !BufferIsLocal(buffer) )
+    	CommitInfoNeedsSave[buffer - 1]++;
 }
