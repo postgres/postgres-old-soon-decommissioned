@@ -19,6 +19,7 @@
 #include "catalog/pg_am.h"
 #include "catalog/pg_class.h"
 #include "rewrite/prs2lock.h"
+#include "storage/relfilenode.h"
 #include "storage/fd.h"
 
 /* added to prevent circular dependency.  bjm 1999/11/15 */
@@ -86,6 +87,7 @@ typedef struct TriggerDesc
 typedef struct RelationData
 {
 	File		rd_fd;			/* open file descriptor, or -1 if none */
+	RelFileNode	rd_node;		/* relation file node */
 	int			rd_nblocks;		/* number of blocks in rel */
 	uint16		rd_refcnt;		/* reference count */
 	bool		rd_myxactonly;	/* rel uses the local buffer mgr */

@@ -296,6 +296,19 @@ typedef enum
 			 (sizeof(PageHeaderData) - sizeof(ItemIdData)))) \
 	 / ((int) sizeof(ItemIdData)))
 
+#ifdef XLOG
+
+#define PageGetLSN(page) \
+	(((PageHeader) (page))->pd_lsn)
+#define PageSetLSN(page, lsn) \
+	(((PageHeader) (page))->pd_lsn = (XLogRecPtr) (lsn))
+
+#define PageGetSUI(page) \
+	(((PageHeader) (page))->pd_sui)
+#define PageSetSUI(page, sui) \
+	(((PageHeader) (page))->pd_sui = (StartUpID) (sui))
+
+#endif
 
 /* ----------------------------------------------------------------
  *		extern declarations

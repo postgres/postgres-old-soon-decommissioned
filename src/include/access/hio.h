@@ -18,6 +18,6 @@
 
 extern void RelationPutHeapTuple(Relation relation, Buffer buffer,
 					 HeapTuple tuple);
-extern Buffer RelationGetBufferForTuple(Relation relation, Size len, Buffer Ubuf);
+extern Buffer RelationGetBufferForTuple(Relation relation, Size len);
 
 #endif	 /* HIO_H */

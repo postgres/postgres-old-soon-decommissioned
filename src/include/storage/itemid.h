@@ -14,7 +14,6 @@
 #ifndef ITEMID_H
 #define ITEMID_H
 
-
 /*
  * An item pointer (also called line pointer) on a buffer page
  */
@@ -31,8 +30,15 @@ typedef ItemIdData *ItemId;
  * lp_flags contains these flags:
  */
 #define LP_USED			0x01	/* this line pointer is being used */
-/* currently, there is one unused flag bit ... */
 
+#ifdef XLOG
+
+#define LP_DELETE		0x02    /* item is to be deleted */
+
+#define ItemIdDeleted(itemId) \
+	(((itemId)->lp_flags & LP_DELETE) != 0)
+
+#endif
 
 /*
  * Item offsets, lengths, and flags are represented by these types when
