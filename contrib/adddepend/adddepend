@@ -221,7 +221,7 @@ sub findForeignKeys
 			my $ref_cols = "$fcolumn_name";
 
 			# Perhaps there is more than a single column
-			while ($lcolumn_name = pop(@junk) and $fcolumn_name = pop(@junk)) {
+			while ($lcolumn_name = shift(@junk) and $fcolumn_name = shift(@junk)) {
 				$key_cols .= ", $lcolumn_name";
 				$ref_cols .= ", $fcolumn_name";
 			}
