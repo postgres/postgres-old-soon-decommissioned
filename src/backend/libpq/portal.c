@@ -5,9 +5,7 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
- *
- * IDENTIFICATION
- *	  $Header$
+ *  $Id$
  *
  *-------------------------------------------------------------------------
  */
@@ -75,8 +73,8 @@ in_range(char *msg, int value, int min, int max)
 {
 	if (value < min || value >= max)
 	{
-		sprintf(PQerrormsg, "FATAL: %s, %d is not in range [%d,%d)\n",
-				msg, value, min, max);
+		snprintf(PQerrormsg, ERROR_MSG_LENGTH,
+			"FATAL: %s, %d is not in range [%d,%d)\n", msg, value, min, max);
 		pqdebug("%s", PQerrormsg);
 		fputs(PQerrormsg, stderr);
 		return 0;
@@ -89,7 +87,7 @@ valid_pointer(char *msg, void *ptr)
 {
 	if (!ptr)
 	{
-		sprintf(PQerrormsg, "FATAL: %s\n", msg);
+		snprintf(PQerrormsg, ERROR_MSG_LENGTH, "FATAL: %s\n", msg);
 		pqdebug("%s", PQerrormsg);
 		fputs(PQerrormsg, stderr);
 		return 0;

@@ -6,16 +6,15 @@
  * Copyright (c) 1994, Regents of the University of California
  *
  *	 DESCRIPTION
- *		This code provides support for a tee node, which allows multiple
- *	  parent in a megaplan.
+ *		This code provides support for a tee node, which allows 
+ * 		multiple parent in a megaplan.
  *
  *	 INTERFACE ROUTINES
  *		ExecTee
  *		ExecInitTee
  *		ExecEndTee
  *
- * IDENTIFICATION
- *	  $Header$
+ *  $Id$
  *
  *-------------------------------------------------------------------------
  */

@@ -5,9 +5,7 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
- *
- * IDENTIFICATION
- *	  $Header$
+ *  $Id$
  *
  * NOTES
  *	  Every (plan) node in POSTGRES has an associated "out" routine which
