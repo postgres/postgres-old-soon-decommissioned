@@ -73,8 +73,14 @@ output_files := $(foreach file, $(file_list), expected/$(file).out)
 
 all: $(input_files) $(output_files)
 
+ifneq ($(PORTNAME),win32)
 abs_srcdir := $(shell cd $(srcdir) && pwd)
 abs_builddir := $(shell pwd)
+else
+abs_srcdir := $(shell cd $(srcdir) && pwd -W)
+abs_builddir := $(shell pwd -W)
+endif
+
 
 define sed-command
 sed -e 's,@abs_srcdir@,$(abs_srcdir),g' \
