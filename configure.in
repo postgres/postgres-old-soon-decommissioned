@@ -908,7 +908,10 @@ AC_LIBOBJ(copydir)
 AC_LIBOBJ(gettimeofday)
 AC_LIBOBJ(kill)
 AC_LIBOBJ(open)
-AC_LIBOBJ(rand) ;;
+AC_LIBOBJ(rand)
+AC_DEFINE([HAVE_SYMLINK], 1,
+          [Define to 1 if you have the `symlink' function.])
+;;
 esac
 
 if test "$with_readline" = yes; then

@@ -482,11 +482,20 @@ DropTableSpace(DropTableSpaceStmt *stmt)
 				 errmsg("could not unlink file \"%s\": %m",
 						subfile)));
 
+#ifndef WIN32
 	if (unlink(location) < 0)
 		ereport(ERROR,
 				(errcode_for_file_access(),
 				 errmsg("could not unlink symbolic link \"%s\": %m",
 						location)));
+#else
+	/* The junction is a directory, not a file */
+	if (rmdir(location) < 0)
+		ereport(ERROR,
+				(errcode_for_file_access(),
+				 errmsg("could not remove junction dir \"%s\": %m",
+				 		location)));
+#endif
 
 	pfree(subfile);
 	pfree(location);
