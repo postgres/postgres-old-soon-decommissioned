@@ -20,13 +20,25 @@ if [ $? -ne 0 ]; then
      exit 1
 fi
 
-$FRONTEND regression < create.sql
-if [ $? -ne 0 ]; then
-     echo the creation script has an error
-     exit 1
-fi
+#$FRONTEND regression < create.sql
+#if [ $? -ne 0 ]; then
+#     echo the creation script has an error
+#     exit 1
+#fi
 
 echo =============== running regression queries ... =================
+for i in `cat sql/tests`
+do
+	echo -n ${i} ..
+	$FRONTEND regression < sql/${i}.sql 2>&1 | tee output/${i}.out
+	if [ `diff expected/${i}.out output/${i}.out | wc -l` -ne 0 ]
+	then
+		echo failed
+	else
+		echo ok
+	fi
+done
+exit
 $FRONTEND regression < queries.sql
 # this will generate error result code
 
