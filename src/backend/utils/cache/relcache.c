@@ -570,7 +570,8 @@ RelationBuildTupleDesc(RelationBuildDescInfo buildinfo,
 	 * cases for attnum=1 that used to exist in fastgetattr() and
 	 * index_getattr().
 	 */
-	relation->rd_att->attrs[0]->attcacheoff = 0;
+	if (relation->rd_rel->relnatts > 0)
+		relation->rd_att->attrs[0]->attcacheoff = 0;
 
 	/*
 	 * Set up constraint/default info
@@ -2049,7 +2050,7 @@ RelationBuildLocalRelation(const char *relname,
 	int			i;
 	bool		has_not_null;
 
-	AssertArg(natts > 0);
+	AssertArg(natts >= 0);
 
 	/*
 	 * switch to the cache context to create the relcache entry.
