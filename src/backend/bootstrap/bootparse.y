@@ -225,7 +225,7 @@ Boot_DeclareIndexStmt:
 					DefineIndex(LexIDStr($5),
 								LexIDStr($3),
 								LexIDStr($7),
-								$9, NIL, 0, 0, NIL);
+								$9, NIL, 0, 0, 0, NIL);
 					DO_END;
 				}
 		;

@@ -333,6 +333,7 @@ typedef struct IndexStmt
 								 * transformStmt() */
 	bool	   *lossy;			/* is index lossy? */
 	bool		unique;			/* is index unique? */
+	bool		primary;		/* is index on primary key? */
 } IndexStmt;
 
 /* ----------------------

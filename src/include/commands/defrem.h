@@ -25,6 +25,7 @@ extern void DefineIndex(char *heapRelationName,
 			List *attributeList,
 			List *parameterList,
 			bool unique,
+			bool primary,
 			Expr *predicate,
 			List *rangetable);
 extern void ExtendIndex(char *indexRelationName,

@@ -82,7 +82,7 @@ static void
 static void UpdateIndexRelation(Oid indexoid, Oid heapoid,
 					FuncIndexInfo *funcInfo, int natts,
 					AttrNumber *attNums, Oid *classOids, Node *predicate,
-					List *attributeList, bool islossy, bool unique);
+					List *attributeList, bool islossy, bool unique, bool primary);
 static void DefaultBuild(Relation heapRelation, Relation indexRelation,
 			 int numberOfAttributes, AttrNumber *attributeNumber,
 			 IndexStrategy indexStrategy, uint16 parameterCount,
@@ -734,7 +734,8 @@ UpdateIndexRelation(Oid indexoid,
 					Node *predicate,
 					List *attributeList,
 					bool islossy,
-					bool unique)
+					bool unique,
+                    bool primary)
 {
 	Form_pg_index indexForm;
 	IndexElem  *IndexKey;
@@ -775,6 +776,7 @@ UpdateIndexRelation(Oid indexoid,
 	indexForm->indproc = (PointerIsValid(funcInfo)) ?
 		FIgetProcOid(funcInfo) : InvalidOid;
 	indexForm->indislossy = islossy;
+	indexForm->indisprimary = primary;
 	indexForm->indisunique = unique;
 
 	indexForm->indhaskeytype = 0;
@@ -1014,7 +1016,8 @@ index_create(char *heapRelationName,
 			 Datum *parameter,
 			 Node *predicate,
 			 bool islossy,
-			 bool unique)
+			 bool unique,
+             bool primary)
 {
 	Relation	heapRelation;
 	Relation	indexRelation;
@@ -1126,7 +1129,7 @@ index_create(char *heapRelationName,
 	 */
 	UpdateIndexRelation(indexoid, heapoid, funcInfo,
 						numatts, attNums, classObjectId, predicate,
-						attributeList, islossy, unique);
+						attributeList, islossy, unique, primary);
 
 	predInfo = (PredInfo *) palloc(sizeof(PredInfo));
 	predInfo->pred = predicate;

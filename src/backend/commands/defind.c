@@ -71,6 +71,7 @@ DefineIndex(char *heapRelationName,
 			List *attributeList,
 			List *parameterList,
 			bool unique,
+			bool primary,
 			Expr *predicate,
 			List *rangetable)
 {
@@ -189,7 +190,7 @@ DefineIndex(char *heapRelationName,
 					 &fInfo, NULL, accessMethodId,
 					 numberOfAttributes, attributeNumberA,
 			 classObjectId, parameterCount, parameterA, (Node *) cnfPred,
-					 lossy, unique);
+					 lossy, unique, primary);
 	}
 	else
 	{
@@ -206,7 +207,7 @@ DefineIndex(char *heapRelationName,
 					 attributeList,
 					 accessMethodId, numberOfAttributes, attributeNumberA,
 			 classObjectId, parameterCount, parameterA, (Node *) cnfPred,
-					 lossy, unique);
+					 lossy, unique, primary);
 	}
 }
 

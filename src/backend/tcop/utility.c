@@ -404,6 +404,7 @@ ProcessUtility(Node *parsetree,
 							stmt->indexParams,	/* parameters */
 							stmt->withClause,
 							stmt->unique,
+							0,		/* CREATE INDEX can't be primary */
 							(Expr *) stmt->whereClause,
 							stmt->rangetable);
 			}
