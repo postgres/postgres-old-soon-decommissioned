@@ -207,7 +207,7 @@ X = @EXEEXT@
 
 # Perl 
 
-PERL			= @PERL@
+PERL			= "@PERL@"	# quoted for pathname with spaces
 perl_archlibexp		= @perl_archlibexp@
 perl_privlibexp		= @perl_privlibexp@
 perl_useshrplib		= @perl_useshrplib@
