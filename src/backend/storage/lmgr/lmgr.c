@@ -22,6 +22,7 @@
 #include "postgres.h"
 #include "access/transam.h"
 #include "catalog/catalog.h"
+#include "utils/inval.h"
 
 extern Oid	MyDatabaseId;
 
@@ -161,7 +162,16 @@ LockRelation(Relation relation, LOCKMODE lockmode)
 	tag.objId.blkno = InvalidBlockNumber;
 
 	LockAcquire(LockTableId, &tag, lockmode);
-	return;
+
+	/*
+	 * Check to see if the relcache entry has been invalidated
+	 * while we were waiting to lock it.  If so, rebuild it,
+	 * or elog() trying.  Increment the refcount to ensure that
+	 * RelationFlushRelation will rebuild it and not just delete it.
+	 */
+	RelationIncrementReferenceCount(relation);
+	DiscardInvalid();
+	RelationDecrementReferenceCount(relation);
 }
 
 /*

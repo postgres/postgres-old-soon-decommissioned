@@ -755,6 +755,7 @@ static void
 AtAbort_Cache()
 {
 	RegisterInvalid(false);
+	RelationCacheAbort();
 }
 
 /* --------------------------------
