@@ -343,4 +343,14 @@ extern int	pqWriteReady(PGconn *conn);
  */
 #define pqIsnonblocking(conn)	((conn)->nonblocking)
 
+#ifdef ENABLE_NLS
+extern char * libpq_gettext(const char *msgid)
+#ifdef __GNUC__
+__attribute__((format_arg(1)))
+#endif
+;
+#else
+#define libpq_gettext(x) (x)
+#endif
+
 #endif	 /* LIBPQ_INT_H */
