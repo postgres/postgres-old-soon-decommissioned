@@ -1217,6 +1217,15 @@ AlterTableStmt:
 					n->name = $6;
 					$$ = (Node *)n;
 				}
+			/* ALTER TABLE <name> CLUSTER ON <indexname> */
+			| ALTER TABLE qualified_name CLUSTER ON name
+				{
+					AlterTableStmt *n = makeNode(AlterTableStmt);
+					n->subtype = 'L';
+					n->relation = $3;
+					n->name = $6;
+					$$ = (Node *)n;
+				}
 		;
 
 alter_column_default:

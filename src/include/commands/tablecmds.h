@@ -43,6 +43,8 @@ extern void AlterTableDropConstraint(Oid myrelid, bool recurse,
 						 const char *constrName,
 						 DropBehavior behavior);
 
+extern void AlterTableClusterOn(Oid relOid, const char *indexName);
+
 extern void AlterTableCreateToastTable(Oid relOid, bool silent);
 
 extern void AlterTableOwner(Oid relationOid, int32 newOwnerSysId);

@@ -609,6 +609,9 @@ ProcessUtility(Node *parsetree,
 						AlterTableOwner(relid,
 										get_usesysid(stmt->name));
 						break;
+					case 'L':	/* CLUSTER ON */
+						AlterTableClusterOn(relid, stmt->name);
+						break;
 					case 'o': /* ADD OIDS */
 						AlterTableAlterOids(relid,
 						 interpretInhOption(stmt->relation->inhOpt),

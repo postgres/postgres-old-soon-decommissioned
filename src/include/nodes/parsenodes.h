@@ -704,6 +704,7 @@ typedef struct AlterTableStmt
 								 *	X = drop constraint
 								 *	E = create toast table
 								 *	U = change owner
+								 *	L = CLUSTER ON
 								 *  o = DROP OIDS
 								 *------------
 								 */
