@@ -56,10 +56,12 @@
  * Initialize the Junk filter.
  *
  * The initial targetlist and associated tuple descriptor are passed in.
+ * An optional resultSlot can be passed as well.
  *-------------------------------------------------------------------------
  */
 JunkFilter *
-ExecInitJunkFilter(List *targetList, TupleDesc tupType)
+ExecInitJunkFilter(List *targetList, TupleDesc tupType,
+				   TupleTableSlot *slot)
 {
 	MemoryContext oldContext;
 	MemoryContext junkContext;
@@ -245,6 +247,10 @@ ExecInitJunkFilter(List *targetList, TupleDesc tupType)
 	junkfilter->jf_cleanTupType = cleanTupType;
 	junkfilter->jf_cleanMap = cleanMap;
 	junkfilter->jf_junkContext = junkContext;
+	junkfilter->jf_resultSlot = slot;
+
+	if (slot)
+		ExecSetSlotDescriptor(slot, cleanTupType, false);
 
 	MemoryContextSwitchTo(oldContext);
 
@@ -260,7 +266,6 @@ ExecInitJunkFilter(List *targetList, TupleDesc tupType)
 void
 ExecFreeJunkFilter(JunkFilter *junkfilter)
 {
-
 	/*
 	 * Since the junkfilter is inside its own context, we just have to
 	 * delete the context and we're set.
@@ -336,6 +341,10 @@ ExecGetJunkAttribute(JunkFilter *junkfilter,
  * ExecRemoveJunk
  *
  * Construct and return a tuple with all the junk attributes removed.
+ *
+ * Note: for historical reasons, this does not store the constructed
+ * tuple into the junkfilter's resultSlot.  The caller should do that
+ * if it wants to.
  *-------------------------------------------------------------------------
  */
 HeapTuple
