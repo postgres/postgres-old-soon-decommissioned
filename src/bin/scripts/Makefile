@@ -18,10 +18,11 @@ SCRIPTS := createdb dropdb createuser dropuser createlang droplang vacuumdb \
 
 all: $(SCRIPTS)
 
-# we don't need this now, but we may need it some day, bjm  2002-01-03
-#createlang: createlang.sh
-#	cp $< $@
-#	chmod a+x $@
+# we don't really need to edit createlang.sh at the moment,
+# but keep the old generation procedure in case we need it again.
+createlang: createlang.sh
+	cp $< $@
+	chmod a+x $@
 
 install: all installdirs
 	for i in $(filter-out createlang, $(SCRIPTS)); do \
