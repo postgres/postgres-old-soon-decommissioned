@@ -247,6 +247,7 @@ _copyIndexScan(IndexScan *from)
 	 */
 	newnode->indxid = listCopy(from->indxid);
 	Node_Copy(from, newnode, indxqual);
+	Node_Copy(from, newnode, indxqualorig);
 	Node_Copy(from, newnode, indxstate);
 
 	return newnode;

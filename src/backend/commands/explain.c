@@ -217,9 +217,14 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 	{
 		case T_IndexScan:
 			appendStringInfo(str, " using ");
-			l = ((IndexScan *) plan)->indxid;
-			relation = RelationIdCacheGetRelation((int) lfirst(l));
-			appendStringInfo(str, (RelationGetRelationName(relation))->data);
+			i = 0;
+			foreach (l, ((IndexScan *) plan)->indxid)
+			{
+				relation = RelationIdCacheGetRelation((int) lfirst(l));
+				if (++i > 1)
+					appendStringInfo(str, ", ");
+				appendStringInfo(str, (RelationGetRelationName(relation))->data);
+			}
 		case T_SeqScan:
 			if (((Scan *) plan)->scanrelid > 0)
 			{

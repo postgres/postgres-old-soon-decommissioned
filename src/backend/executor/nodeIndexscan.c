@@ -154,7 +154,7 @@ IndexNext(IndexScan *node)
 					 prev_index++)
 				{
 					scanstate->cstate.cs_ExprContext->ecxt_scantuple = slot;
-					if (ExecQual(nth(prev_index, node->indxqual),
+					if (ExecQual(nth(prev_index, node->indxqualorig),
 								 scanstate->cstate.cs_ExprContext))
 					{
 						prev_matches = true;

@@ -546,6 +546,9 @@ _readIndexScan()
 	token = lsptok(NULL, &length);		/* eat :indxqual */
 	local_node->indxqual = nodeRead(true);		/* now read it */
 
+	token = lsptok(NULL, &length);		/* eat :indxqualorig */
+	local_node->indxqualorig = nodeRead(true);		/* now read it */
+
 	return local_node;
 }
 

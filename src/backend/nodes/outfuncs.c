@@ -517,6 +517,9 @@ _outIndexScan(StringInfo str, IndexScan *node)
 	appendStringInfo(str, " :indxqual ");
 	_outNode(str, node->indxqual);
 
+	appendStringInfo(str, " :indxqualorig ");
+	_outNode(str, node->indxqualorig);
+
 }
 
 /*
