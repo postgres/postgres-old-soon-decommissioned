@@ -304,9 +304,6 @@ DATA(insert OID = 30 (	oidvector  PGNSP PGUID INDEX_MAX_KEYS*4 f b t \054 0  26 
 DESCR("array of INDEX_MAX_KEYS oids, used in system tables");
 #define OIDVECTOROID	30
 
-DATA(insert OID = 32 (	SET		   PGNSP PGUID -1 f b t \054 0	 0 unknownin unknownout - - - i p f 0 -1 0 _null_ _null_ ));
-DESCR("set of tuples");
-
 DATA(insert OID = 71 (	pg_type		 PGNSP PGUID -1 f c t \054 1247 0 record_in record_out record_recv record_send - d x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 75 (	pg_attribute PGNSP PGUID -1 f c t \054 1249 0 record_in record_out record_recv record_send - d x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 81 (	pg_proc		 PGNSP PGUID -1 f c t \054 1255 0 record_in record_out record_recv record_send - d x f 0 -1 0 _null_ _null_ ));
