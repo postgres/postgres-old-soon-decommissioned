@@ -101,6 +101,7 @@ typedef struct _tableInfo
 	char	  **check_expr;		/* [CONSTRAINT name] CHECK expressions */
 	int			ntrig;			/* # of triggers */
 	char	  **triggers;		/* CREATE TRIGGER ... */
+    char       *primary_key;    /* PRIMARY KEY of the table, if any */
 } TableInfo;
 
 typedef struct _inhInfo
