@@ -33,7 +33,7 @@
 #include "libpq-fe.h"
 #include "libpq-int.h"
 #include "fe-auth.h"
-#include "md5.h"
+#include "libpq/crypt.h"
 
 #ifdef WIN32
 #include "win32.h"

@@ -33,7 +33,7 @@ endif
 SHLIB_LINK += $(filter -L%, $(LDFLAGS)) $(filter -lcrypt -ldes -lkrb -lcom_err -lcrypto -lk5crypto -lkrb5 -lssl -lsocket -lnsl -lresolv -lintl, $(LIBS))
 
 
-all: md5.c md5.h all-lib
+all: md5.c all-lib
 
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib
@@ -50,9 +50,6 @@ dllist.c: $(backend_src)/lib/dllist.c
 	rm -f $@ && $(LN_S) $< .
 
 md5.c: $(backend_src)/libpq/md5.c
-	rm -f $@ && $(LN_S) $< .
-
-md5.h: $(backend_src)/../include/libpq/md5.h
 	rm -f $@ && $(LN_S) $< .
 
 # this only gets done if configure finds system doesn't have inet_aton()

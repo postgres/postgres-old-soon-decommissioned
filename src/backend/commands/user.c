@@ -25,7 +25,6 @@
 #include "catalog/indexing.h"
 #include "commands/user.h"
 #include "libpq/crypt.h"
-#include "libpq/md5.h"
 #include "miscadmin.h"
 #include "utils/array.h"
 #include "utils/builtins.h"

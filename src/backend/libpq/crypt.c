@@ -19,7 +19,6 @@
 
 #include "postgres.h"
 #include "libpq/crypt.h"
-#include "libpq/md5.h"
 #include "miscadmin.h"
 #include "storage/fd.h"
 #include "utils/nabstime.h"
