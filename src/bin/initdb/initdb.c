@@ -2234,7 +2234,12 @@ main(int argc, char *argv[])
 		share_path = xmalloc(MAXPGPATH);
 		get_share_path(backend_exec, share_path);
 	}
-
+	else if (!is_absolute_path(share_path))
+	{
+		fprintf(stderr, _("%s: input file location must be an absolute path\n"), progname);
+		exit(1);
+	}
+	
 	canonicalize_path(share_path);
 
 	if ((short_version = get_short_version()) == NULL)
