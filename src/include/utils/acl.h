@@ -224,6 +224,8 @@ typedef enum AclObjectKind
 extern Acl *acldefault(GrantObjectType objtype, AclId ownerid);
 extern Acl *aclupdate(const Acl *old_acl, const AclItem *mod_aip,
 					  int modechg, AclId ownerid, DropBehavior behavior);
+extern Acl *aclnewowner(const Acl *old_acl, AclId oldownerid, AclId newownerid);
+					  
 extern AclMode aclmask(const Acl *acl, AclId userid, AclId ownerid,
 					   AclMode mask, AclMaskHow how);
 
