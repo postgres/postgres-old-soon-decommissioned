@@ -79,7 +79,7 @@ outer join syntax.
       <listitem>
        <para>
 The previous C function manager did not
-handle NULLs properly, nor did it support 64-bit CPU's.  The new
+handle NULLs properly, nor did it support 64-bit CPU's (Alpha).  The new
 function manager does.  You can continue using your old custom
 functions, but you may want to rewrite them in the future to use the new
 function manager call interface.
