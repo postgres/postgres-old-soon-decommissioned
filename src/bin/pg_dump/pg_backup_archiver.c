@@ -2262,6 +2262,17 @@ _printTocEntry(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt, bool isDat
 			ahprintf(AH, "%s\n\n", te->defn);
 	}
 
+	/*
+	 * If it's an ACL entry, it might contain SET SESSION AUTHORIZATION
+	 * commands, so we can no longer assume we know the current auth setting.
+	 */
+	if (strncmp(te->desc, "ACL", 3) == 0)
+	{
+		if (AH->currUser)
+			free(AH->currUser);
+		AH->currUser = NULL;
+	}
+
 	return 1;
 }
 
