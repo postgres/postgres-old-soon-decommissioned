@@ -60,14 +60,14 @@ endif
 ifeq ($(PORTNAME), solaris_sparc)
   INSTALL-SHLIB-DEP := install-shlib
   SHLIB := libpq++.so.1
-  LDFLAGS_SL = -G -shared -soname $(SHLIB)
+  LDFLAGS_SL = -G -shared 
   CFLAGS += $(CFLAGS_SL)
 endif
 
 ifeq ($(PORTNAME), solaris_i386)
   INSTALL-SHLIB-DEP := install-shlib
   SHLIB := libpq++.so.1
-  LDFLAGS_SL = -G -shared -soname $(SHLIB)
+  LDFLAGS_SL = -G -shared 
   CFLAGS += $(CFLAGS_SL)
 endif
 
