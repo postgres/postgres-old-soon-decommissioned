@@ -781,6 +781,10 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 	qry->targetList = transformTargetList(pstate, stmt->targetList);
 
 	qry->qual = transformWhereClause(pstate, stmt->whereClause);
+
+        /***S*H***/
+	qry->havingQual = transformWhereClause(pstate, stmt->havingClause);
+
 	qry->hasSubLinks = pstate->p_hasSubLinks;
 
 	qry->sortClause = transformSortClause(pstate,

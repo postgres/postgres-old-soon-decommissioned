@@ -2527,7 +2527,7 @@ groupby:  ColId
 
 having_clause:  HAVING a_expr
 				{
-					elog(NOTICE, "HAVING not yet supported; ignore clause");
+					/***S*H***/ /* elog(NOTICE, "HAVING not yet supported; ignore clause");*/
 					$$ = $2;
 				}
 		| /*EMPTY*/								{ $$ = NULL; }

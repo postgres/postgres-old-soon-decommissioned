@@ -839,6 +839,7 @@ replace_agg_clause(Node *clause, List *subplanTargetList)
 	}
 }
 
+
 /*
  * del_agg_tlist_references
  *	  Remove the Agg nodes from the target list

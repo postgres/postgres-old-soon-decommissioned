@@ -6700,7 +6700,7 @@ case 463:
 case 464:
 #line 2529 "gram.y"
 {
-					elog(NOTICE, "HAVING not yet supported; ignore clause");
+					/***S*H***/ /* elog(NOTICE, "HAVING not yet supported; ignore clause");*/
 					yyval.node = yyvsp[0].node;
 				;
     break;}

@@ -195,7 +195,7 @@ FireRetrieveRulesAtQuery(Query *parsetree,
 	if ((rt_entry_locks = relation->rd_rules) == NULL)
 		return NIL;
 
-	locks = matchLocks(CMD_SELECT, rt_entry_locks, rt_index, parsetree);
+	locks = matchLocks(CMD_SELECT, rt_entry_locks, rt_index, parsetree);	
 
 	/* find all retrieve instead */
 	foreach(i, locks)
@@ -375,6 +375,7 @@ ProcessRetrieveQuery(Query *parsetree,
 	List	   *product_queries = NIL;
 	int			rt_index = 0;
 
+
 	foreach(rt, rtable)
 	{
 		RangeTblEntry *rt_entry = lfirst(rt);
@@ -383,6 +384,8 @@ ProcessRetrieveQuery(Query *parsetree,
 
 		rt_index++;
 		rt_entry_relation = heap_openr(rt_entry->relname);
+
+
 
 		if (rt_entry_relation->rd_rules != NULL)
 		{
@@ -413,6 +416,7 @@ ProcessRetrieveQuery(Query *parsetree,
 		rt_entry_relation = heap_openr(rt_entry->relname);
 		rt_entry_locks = rt_entry_relation->rd_rules;
 		heap_close(rt_entry_relation);
+
 
 		if (rt_entry_locks)
 		{
@@ -683,7 +687,6 @@ static int	numQueryRewriteInvoked = 0;
 List *
 QueryRewrite(Query *parsetree)
 {
-
 	QueryRewriteSubLink(parsetree->qual);
 	return QueryRewriteOne(parsetree);
 }
@@ -779,6 +782,8 @@ deepRewriteQuery(Query *parsetree)
 	List	   *result = NIL;
 	bool		instead;
 	List	   *qual_products = NIL;
+
+
 
 	if (++numQueryRewriteInvoked > REWRITE_INVOKE_MAX)
 	{
