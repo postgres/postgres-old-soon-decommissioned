@@ -183,6 +183,8 @@ typedef enum NodeTag {
     T_VariableSetStmt,
     T_VariableShowStmt,
     T_VariableResetStmt,
+    T_CreateTrigStmt,
+    T_DropTrigStmt,
 
     T_A_Expr = 700,
     T_Attr,
