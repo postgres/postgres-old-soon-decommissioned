@@ -11,7 +11,10 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "c.h"
+
+#include <sys/types.h> 
+
+#include "postgres.h"
 
 #include "nodes/primnodes.h"
 #include "nodes/plannodes.h"
