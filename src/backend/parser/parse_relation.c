@@ -439,12 +439,12 @@ checkTargetTypes(ParseState *pstate, char *target_colname,
 
 	if (attrtype_id == BPCHAROID &&
 		get_atttypmod(rte->relid, resdomno_id) !=
-		get_atttype(pstate->p_target_relation->rd_id, resdomno_target))
-		elog(ERROR, "Length of %s is longer than length of target column %s",
+		get_atttypmod(pstate->p_target_relation->rd_id, resdomno_target))
+		elog(ERROR, "Length of %s is not equal to the length of target column %s",
 			 colname, target_colname);
 	if (attrtype_id == VARCHAROID &&
 		get_atttypmod(rte->relid, resdomno_id) >
-		get_atttype(pstate->p_target_relation->rd_id, resdomno_target))
+		get_atttypmod(pstate->p_target_relation->rd_id, resdomno_target))
 		elog(ERROR, "Length of %s is longer than length of target column %s",
 			 colname, target_colname);
 
