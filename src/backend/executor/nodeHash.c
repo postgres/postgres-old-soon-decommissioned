@@ -75,12 +75,7 @@ ExecHash(Hash *node)
 		 * ----------------
 		 */
 		for (i = 0; i < nbatch; i++)
-		{
-			File		tfile = OpenTemporaryFile();
-
-			Assert(tfile >= 0);
-			hashtable->innerBatchFile[i] = BufFileCreate(tfile);
-		}
+			hashtable->innerBatchFile[i] = BufFileCreateTemp();
 	}
 
 	/* ----------------

@@ -14,6 +14,7 @@
 #define HASHJOIN_H
 
 #include "access/htup.h"
+#include "storage/buffile.h"
 
 /* ----------------------------------------------------------------
  *				hash-join hash table structures

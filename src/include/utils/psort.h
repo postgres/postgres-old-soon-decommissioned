@@ -15,7 +15,7 @@
 
 #include "access/relscan.h"
 #include "nodes/plannodes.h"
-#include "storage/fd.h"
+#include "storage/buffile.h"
 #include "utils/lselect.h"
 
 #define MAXTAPES		7		/* See Knuth Fig. 70, p273 */
@@ -57,7 +57,8 @@ typedef struct Psortstate
 	struct leftist *Tuples;
 
 	BufFile    *psort_grab_file;
-	long		psort_current;	/* could be file offset, or array index */
+	long		psort_current;	/* array index (only used if not tape) */
+	int			psort_saved_fileno;	/* upper bits of psort_saved, if tape */
 	long		psort_saved;	/* could be file offset, or array index */
 	bool		using_tape_files;
 	bool		all_fetched;	/* this is for cursors */

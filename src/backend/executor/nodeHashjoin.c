@@ -129,12 +129,7 @@ ExecHashJoin(HashJoin *node)
 		 * ----------------
 		 */
 		for (i = 0; i < hashtable->nbatch; i++)
-		{
-			File		tfile = OpenTemporaryFile();
-
-			Assert(tfile >= 0);
-			hashtable->outerBatchFile[i] = BufFileCreate(tfile);
-		}
+			hashtable->outerBatchFile[i] = BufFileCreateTemp();
 	}
 	else if (hashtable == NULL)
 		return NULL;
@@ -551,13 +546,12 @@ ExecHashJoinNewBatch(HashJoinState *hjstate)
 	 * Rewind inner and outer batch files for this batch, so that we can
 	 * start reading them.
 	 */
-	if (BufFileSeek(hashtable->outerBatchFile[newbatch - 1], 0L,
-					SEEK_SET) != 0L)
+	if (BufFileSeek(hashtable->outerBatchFile[newbatch - 1], 0, 0L, SEEK_SET))
 		elog(ERROR, "Failed to rewind hash temp file");
 
 	innerFile = hashtable->innerBatchFile[newbatch - 1];
 
-	if (BufFileSeek(innerFile, 0L, SEEK_SET) != 0L)
+	if (BufFileSeek(innerFile, 0, 0L, SEEK_SET))
 		elog(ERROR, "Failed to rewind hash temp file");
 
 	/*

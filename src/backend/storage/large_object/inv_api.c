@@ -300,6 +300,21 @@ inv_destroy(Oid lobjId)
  *		end of relations.  Once clustering works, we should fix this.
  */
 #ifdef NOT_USED
+
+struct pgstat
+{								/* just the fields we need from stat
+								 * structure */
+	int			st_ino;
+	int			st_mode;
+	unsigned int st_size;
+	unsigned int st_sizehigh;	/* high order bits */
+/* 2^64 == 1.8 x 10^20 bytes */
+	int			st_uid;
+	int			st_atime_s;		/* just the seconds */
+	int			st_mtime_s;		/* since SysV and the new BSD both have */
+	int			st_ctime_s;		/* usec fields.. */
+};
+
 int
 inv_stat(LargeObjectDesc *obj_desc, struct pgstat * stbuf)
 {
