@@ -1,7 +1,5 @@
 /* $Header$ */
 
-#include <port/win32defs.h>
-
 #define USES_WINSOCK
 #define NOFILE		  100
 
