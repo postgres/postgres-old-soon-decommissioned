@@ -68,6 +68,8 @@ else
     USETCPIP=""
 fi
 
+unset PGHOST
+
 # ----------
 # Determine if echo -n works
 # ----------
