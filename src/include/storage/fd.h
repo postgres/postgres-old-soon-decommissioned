@@ -39,6 +39,8 @@
  * FileSeek uses the standard UNIX lseek(2) flags.
  */
 
+#define SORT_TEMP_DIR "pg_sorttemp"
+
 typedef char *FileName;
 
 typedef int File;

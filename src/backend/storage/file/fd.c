@@ -742,21 +742,29 @@ PathNameOpenFile(FileName fileName, int fileFlags, int fileMode)
 File
 OpenTemporaryFile(void)
 {
-	char		tempfilename[64];
+	char		tempfilepath[128];
 	File		file;
 
 	/*
 	 * Generate a tempfile name that's unique within the current
 	 * transaction
 	 */
-	snprintf(tempfilename, sizeof(tempfilename),
-			 "pg_sorttemp%d.%ld", MyProcPid, tempFileCounter++);
+	snprintf(tempfilepath, sizeof(tempfilepath),
+			 "%s%c%d.%ld", SORT_TEMP_DIR, SEP_CHAR, MyProcPid,
+			 tempFileCounter++);
 
 	/* Open the file */
-	file = FileNameOpenFile(tempfilename,
+	file = FileNameOpenFile(tempfilepath,
 							O_RDWR | O_CREAT | O_TRUNC | PG_BINARY, 0600);
 	if (file <= 0)
-		elog(ERROR, "Failed to create temporary file %s", tempfilename);
+	{
+		/* mkdir could fail if some one else already created it */
+		mkdir(SORT_TEMP_DIR, S_IRWXU);
+		file = FileNameOpenFile(tempfilepath,
+							O_RDWR | O_CREAT | O_TRUNC | PG_BINARY, 0600);
+		if (file <= 0)
+			elog(ERROR, "Failed to create temporary file %s", tempfilepath);
+	}
 
 	/* Mark it for deletion at close or EOXact */
 	VfdCache[file].fdstate |= FD_TEMPORARY;

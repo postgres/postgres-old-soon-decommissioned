@@ -261,6 +261,7 @@ InitProcess(void)
 	MyProc->databaseId = MyDatabaseId;
 	MyProc->xid = InvalidTransactionId;
 	MyProc->xmin = InvalidTransactionId;
+	MyProc->startOid = ShmemVariableCache->nextOid;
 	MyProc->waitLock = NULL;
 	MyProc->waitHolder = NULL;
 	SHMQueueInit(&(MyProc->procHolders));
