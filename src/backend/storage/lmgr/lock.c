@@ -819,7 +819,7 @@ LockResolveConflicts(LOCKMETHOD lockmethod,
 	{
 		/* ------------------------
 		 * If someone with a greater priority is waiting for the lock,
-		 * do not continue and share the lock, even if we can.	bjm
+		 * do not continue and share the lock, even if we can.
 		 * Don't do this if the process already has some locks, because
 		 * this could hold up other people waiting on our locks, causing
 		 * a priority inversion.  bjm
