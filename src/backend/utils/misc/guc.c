@@ -520,7 +520,12 @@ parse_int(const char *value, int *result)
 
 	errno = 0;
 	val = strtol(value, &endptr, 0);
-	if (endptr == value || *endptr != '\0' || errno == ERANGE)
+	if (endptr == value || *endptr != '\0' || errno == ERANGE
+#ifdef HAVE_LONG_INT_64
+		/* if long > 32 bits, check for overflow of int4 */
+		|| val != (long) ((int32) val)
+#endif
+	   )
 		return false;
 	if (result)
 		*result = (int) val;

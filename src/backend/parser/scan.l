@@ -310,14 +310,21 @@ other			.
 					startlit();
 				}
 <xh>{xhstop}	{
+					long val;
 					char* endptr;
 
 					BEGIN(INITIAL);
 					errno = 0;
-					yylval.ival = strtol(literalbuf, &endptr, 16);
-					if (*endptr != '\0' || errno == ERANGE)
+					val = strtol(literalbuf, &endptr, 16);
+					if (*endptr != '\0' || errno == ERANGE
+#ifdef HAVE_LONG_INT_64
+						/* if long > 32 bits, check for overflow of int4 */
+						|| val != (long) ((int32) val)
+#endif
+						)
 						elog(ERROR, "Bad hexadecimal integer input '%s'",
 							 literalbuf);
+					yylval.ival = val;
 					return ICONST;
 				}
 <xh><<EOF>>		{ elog(ERROR, "Unterminated hexadecimal integer"); }
@@ -454,16 +461,23 @@ other			.
 				}
 
 {integer}		{
+					long val;
 					char* endptr;
 
 					errno = 0;
-					yylval.ival = strtol((char *)yytext, &endptr, 10);
-					if (*endptr != '\0' || errno == ERANGE)
+					val = strtol((char *)yytext, &endptr, 10);
+					if (*endptr != '\0' || errno == ERANGE
+#ifdef HAVE_LONG_INT_64
+						/* if long > 32 bits, check for overflow of int4 */
+						|| val != (long) ((int32) val)
+#endif
+						)
 					{
 						/* integer too large, treat it as a float */
 						yylval.str = pstrdup((char*)yytext);
 						return FCONST;
 					}
+					yylval.ival = val;
 					return ICONST;
 				}
 {decimal}		{
