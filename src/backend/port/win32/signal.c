@@ -21,7 +21,6 @@
 static CRITICAL_SECTION pg_signal_crit_sec;
 static int	pg_signal_queue;
 
-#define PG_SIGNAL_COUNT 32
 static pqsigfunc pg_signal_array[PG_SIGNAL_COUNT];
 static pqsigfunc pg_signal_defaults[PG_SIGNAL_COUNT];
 static int	pg_signal_mask;

@@ -116,9 +116,6 @@ void pg_queue_signal(int signum);
 #define SIG_ERR ((pqsigfunc)-1)
 #define SIG_IGN ((pqsigfunc)1)
 
-#define kill(pid,sig)   pgkill(pid,sig)
-extern int pgkill(int pid, int sig);
-
 #ifndef FRONTEND
 #define pg_usleep(t) pgwin32_backend_usleep(t)
 void pgwin32_backend_usleep(long microsec);
