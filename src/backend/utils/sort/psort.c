@@ -587,7 +587,7 @@ dumptuples(FILE *file, Sort *node)
 	FREEMEM(node,sizeof (struct leftist));
 	FREE(tp);
 	if (PS(node)->using_tape_files) {
-	    PUTTUP(node, tup, PS(node)->Tape->tp_file);
+	    PUTTUP(node, tup, file);
 	    FREEMEM(node,tup->t_len);
 	    FREE(tup);
 	}
