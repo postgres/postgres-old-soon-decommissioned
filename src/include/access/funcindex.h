@@ -13,8 +13,6 @@
 #ifndef _FUNC_INDEX_INCLUDED_
 #define _FUNC_INDEX_INCLUDED_
 
-#include "postgres.h"
-
 typedef struct {
 	int	nargs;
 	Oid	arglist[8];
