@@ -179,7 +179,7 @@ PostgreSQL documentation
         <command>postmaster</command>.  Defaults to listening only on
         <systemitem class="systemname">localhost</systemitem>.
         Specifying this option is equivalent to setting the <xref
-        linkend="guc-listen-addresses">.
+        linkend="guc-listen-addresses"> configuration parameter.
        </para>
       </listitem>
      </varlistentry>
