@@ -121,6 +121,7 @@ extern struct Port *MyProcPort;
 extern long MyCancelKey;
 
 extern char OutputFileName[];
+extern char pg_pathname[];
 
 /*
  * done in storage/backendid.h for now.

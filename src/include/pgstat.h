@@ -333,7 +333,7 @@ extern bool		pgstat_collect_blocklevel;
  * ----------
  */
 extern int		pgstat_init(void);
-extern int		pgstat_start(int real_argc, char *real_argv[]);
+extern int		pgstat_start(void);
 extern int		pgstat_ispgstat(int pid);
 extern void		pgstat_close_sockets(void);
 extern void		pgstat_beterm(int pid);
