@@ -26,7 +26,6 @@ WANTED_DIRS = \
 		oid2name	\
 		pg_autovacuum	\
 		pg_dumplo	\
-		pg_logger	\
 		pg_trgm		\
 		pgbench		\
 		pgcrypto	\
