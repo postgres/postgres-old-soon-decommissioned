@@ -515,19 +515,14 @@ InitPostgres(char *name)		/* database name */
 	}
 
 	/*
-	 * ********************************
-	 *
-	 *
-	 *
-	 * code after this point assumes we are in the proper directory!
+	 * Code after this point assumes we are in the proper directory!
 	 *
 	 * So, how do we implement alternate locations for databases? There are
 	 * two possible locations for tables and we need to look in
 	 * DataDir/pg_database to find the true location of an individual
 	 * database. We can brute-force it as done in InitMyDatabaseInfo(), or
 	 * we can be patient and wait until we open pg_database gracefully.
-	 * Will try that, but may not work... - thomas 1997-11-01 ********************************
-	 *
+	 * Will try that, but may not work... - thomas 1997-11-01
 	 */
 
 	/* Does not touch files (?) - thomas 1997-11-01 */

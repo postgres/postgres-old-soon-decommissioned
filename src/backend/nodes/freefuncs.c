@@ -1045,9 +1045,8 @@ _freeStream(Stream *node)
 	pfree(node);
 }
 
-/* ****************
- *			  parsenodes.h routines have no free functions
- * ****************
+/*
+ *	parsenodes.h routines have no free functions
  */
 
 static void
@@ -1134,9 +1133,8 @@ _freeQuery(Query *node)
 }
 
 
-/* ****************
- *			  mnodes.h routines have no free functions
- * ****************
+/*
+ *	mnodes.h routines have no free functions
  */
 
 /* ****************************************************************
