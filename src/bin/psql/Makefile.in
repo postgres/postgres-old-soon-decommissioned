@@ -28,7 +28,7 @@ ifdef MULTIBYTE
 CFLAGS+= $(MBFLAGS)
 endif
 
-OBJS= psql.o stringutils.o @STRDUP@ 
+OBJS= psql.o stringutils.o @STRDUP@ @STRERROR2@
 
 all: submake psql
 
