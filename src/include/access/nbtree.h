@@ -50,6 +50,10 @@ typedef BTPageOpaqueData *BTPageOpaque;
 #define BTREE_METAPAGE	0	/* first page is meta */
 #define BTREE_MAGIC		0x053162
 
+#define BTreeInvalidParent(opaque)	\
+	(opaque->btpo_parent == InvalidBlockNumber || \
+		opaque->btpo_parent == BTREE_METAPAGE)
+
 #define BTREE_VERSION	1
 
 typedef struct BTMetaPageData
