@@ -20,11 +20,22 @@
 
 #include <sys/types.h>
 #ifdef WIN32
-#include "winsock.h"
-#else
-#include <sys/socket.h>
-#include <sys/un.h>
-#include <netinet/in.h>
+# include "winsock.h"
+#else /* not WIN32 */
+# include <sys/socket.h>
+# ifdef HAVE_SYS_UN_H
+#  include <sys/un.h>
+# endif
+# include <netinet/in.h>
+#endif /* not WIN32 */
+
+
+#ifndef HAVE_STRUCT_SOCKADDR_UN
+struct sockaddr_un
+{
+	short int	sun_family;		/* AF_UNIX */
+	char		sun_path[108];  /* path name (gag) */
+};
 #endif
 
 /* Define a generic socket address type. */
@@ -33,9 +44,7 @@ typedef union SockAddr
 {
 	struct sockaddr sa;
 	struct sockaddr_in in;
-#ifndef WIN32
 	struct sockaddr_un un;
-#endif
 } SockAddr;
 
 

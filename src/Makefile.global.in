@@ -149,6 +149,7 @@ AWK = @AWK@
 CXX=@CXX@
 CXXFLAGS=@CXXFLAGS@ @INCLUDES@
 GCC = @GCC@
+X = @EXEEXT@
 
 ifeq ($(GCC), yes)
   CFLAGS += -Wall -Wmissing-prototypes -Wmissing-declarations
