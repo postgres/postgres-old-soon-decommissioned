@@ -11,6 +11,9 @@
  *
  *-------------------------------------------------------------------------
  */
+
+#include "postgres.h"
+
 #include "access/skey.h"
 #include "catalog/pg_rewrite.h"
 #include "catalog/catname.h"	/* for RewriteRelationName */
