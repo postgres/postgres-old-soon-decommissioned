@@ -650,8 +650,8 @@ ExecHashJoinGetSavedTuple(HashJoinState *hjstate,
 	heapTuple = (HeapTuple) (*position);
 	heapTuple->t_data = (HeapTupleHeader) 
 						((char *) heapTuple + HEAPTUPLESIZE);
-	(*position) = (char *) LONGALIGN(*position + 
-									 heapTuple->t_len + HEAPTUPLESIZE);
+	(*position) = (char *) MAXALIGN(*position + 
+									heapTuple->t_len + HEAPTUPLESIZE);
 
 	return ExecStoreTuple(heapTuple, tupleSlot, InvalidBuffer, false);
 }
@@ -843,7 +843,7 @@ ExecHashJoinSaveTuple(HeapTuple heapTuple,
 	}
 	memmove(position, heapTuple, HEAPTUPLESIZE);
 	memmove(position + HEAPTUPLESIZE, heapTuple->t_data, heapTuple->t_len);
-	position = (char *) LONGALIGN(position + heapTuple->t_len + HEAPTUPLESIZE);
+	position = (char *) MAXALIGN(position + heapTuple->t_len + HEAPTUPLESIZE);
 	*pageend = position - buffer;
 
 	return position;
