@@ -97,7 +97,7 @@ CREATE OPERATOR <replaceable>name</replaceable> (
 
   <para>
    The other clauses specify optional operator optimization clauses.
-   Their meaning is detailed in <xref linkend="xoper">.
+   Their meaning is detailed in <xref linkend="xoper-optimization">.
   </para>
  </refsect1>
 
@@ -303,6 +303,16 @@ CREATE OPERATOR === (
    <productname>PostgreSQL</productname> extension.  There are no
    provisions for user-defined operators in the SQL standard.
   </para>
+ </refsect1>
+
+ <refsect1>
+  <title>See Also</title>
+
+  <simplelist type="inline">
+   <member><xref linkend="sql-alteroperator" endterm="sql-alteroperator-title"></member>
+   <member><xref linkend="sql-createopclass" endterm="sql-createopclass-title"></member>
+   <member><xref linkend="sql-dropoperator" endterm="sql-dropoperator-title"></member>
+  </simplelist>
  </refsect1>
 </refentry>
 

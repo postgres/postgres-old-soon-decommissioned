@@ -37,7 +37,7 @@ CHECKPOINT
   <para>
    A checkpoint is a point in the transaction log sequence at which
    all data files have been updated to reflect the information in the
-   log.  All data files will be flushed to disk.  Refer to the
+   log.  All data files will be flushed to disk.  Refer to
    <xref linkend="wal"> for more information about the WAL system.
   </para>
 

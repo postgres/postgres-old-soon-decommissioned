@@ -83,7 +83,8 @@ DROP VIEW kinds;
   <title>Compatibility</title>
 
   <para>
-   This command conforms to the SQL standard.
+   This command conforms to the SQL standard, except that the standard only
+   allows one view to be dropped per command. 
   </para>
  </refsect1>
 

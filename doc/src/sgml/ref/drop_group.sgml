@@ -49,6 +49,17 @@ DROP GROUP <replaceable class="PARAMETER">name</replaceable>
  </refsect1>
 
  <refsect1>
+  <title>Notes</title>
+
+  <para>
+   It is unwise to drop a group that has any
+   granted permissions on objects.  Currently, this is not enforced,
+   but it is likely that future versions of
+   <productname>PostgreSQL</productname> will check for the error.
+  </para>
+ </refsect1>
+
+ <refsect1>
   <title>Examples</title>
 
   <para>

@@ -184,7 +184,7 @@ CLUSTER emp;
   </para>
 
   <para>
-   Cluster all the tables on the database that have previously been clustered:
+   Cluster all tables in the database that have previously been clustered:
 <programlisting>
 CLUSTER;
 </programlisting>

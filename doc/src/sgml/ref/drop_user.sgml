@@ -63,6 +63,13 @@ DROP USER <replaceable class="PARAMETER">name</replaceable>
    To drop a user who owns a database, first drop the database or change
    its ownership.
   </para>
+
+  <para>
+   It is unwise to drop a user who either owns any database objects or has any
+   granted permissions on objects.  Currently, this is only enforced for
+   the case of owners of databases, but it is likely that future versions of
+   <productname>PostgreSQL</productname> will check other cases.
+  </para>
  </refsect1>
 
  <refsect1>
