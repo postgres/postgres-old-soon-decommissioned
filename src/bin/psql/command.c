@@ -707,8 +707,8 @@ exec_command(const char *cmd,
 			if (SetVariable(pset.vars, opt0, newval))
 			{
 				/* Check for special variables */
-				if (strcmp(opt0, "VERBOSE") == 0)
-					SyncVerboseVariable();
+				if (strcmp(opt0, "VERBOSITY") == 0)
+					SyncVerbosityVariable();
 			}
 			else
 			{
@@ -1469,7 +1469,7 @@ SyncVariables(void)
 	SetVariable(pset.vars, "ENCODING", pg_encoding_to_char(pset.encoding));
 
 	/* send stuff to it, too */
-	SyncVerboseVariable();
+	SyncVerbosityVariable();
 }
 
 /*
@@ -1488,12 +1488,12 @@ UnsyncVariables(void)
 }
 
 /*
- * Update connection state from VERBOSE variable
+ * Update connection state from VERBOSITY variable
  */
 void
-SyncVerboseVariable(void)
+SyncVerbosityVariable(void)
 {
-	switch (SwitchVariable(pset.vars, "VERBOSE",
+	switch (SwitchVariable(pset.vars, "VERBOSITY",
 						   "default", "terse", "verbose", NULL))
 	{
 		case 1:					/* default */

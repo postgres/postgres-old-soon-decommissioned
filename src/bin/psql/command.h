@@ -42,6 +42,6 @@ extern void SyncVariables(void);
 
 extern void UnsyncVariables(void);
 
-extern void SyncVerboseVariable(void);
+extern void SyncVerbosityVariable(void);
 
 #endif   /* COMMAND_H */
