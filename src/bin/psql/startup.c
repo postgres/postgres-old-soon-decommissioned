@@ -124,6 +124,9 @@ main(int argc, char *argv[])
 		}
 	}
 
+#ifdef WIN32
+	setvbuf(stderr,NULL,_IONBF,0);
+#endif
 	pset.cur_cmd_source = stdin;
 	pset.cur_cmd_interactive = false;
 	pset.encoding = PQenv2encoding();
