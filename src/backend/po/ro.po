@@ -342,13 +342,13 @@ msgstr "imposibil de citit din fiºierul jurnal %u, segment %u, decalare %u: %m"
 
 #: access/transam/xlog.c:2559
 #, c-format
-msgid "there is no contrecord flag in log file %u, segment %u, offset %u: %m"
+msgid "there is no contrecord flag in log file %u, segment %u, offset %u"
 msgstr "nu existã un marcator contrecord în fiºierul jurnal %u, segment %u, decalare %u: %m"
 
 #: access/transam/xlog.c:2569
 #, c-format
 msgid "invalid contrecord length %u in log file %u, segment %u, offset %u"
-msgstr "lungime contrecord incorectã (%u) în fiºierul jurnal %u, segment %u, decalare %u"
+msgstr "lungime contrecord incorectã (%u) în fiºierul jurnal %u, segment %u, decalare %u: %m"
 
 #: access/transam/xlog.c:2636
 #, c-format
