@@ -54,7 +54,7 @@ typedef union SockAddr
 /* Configure the UNIX socket location for the well known port. */
 
 #define UNIXSOCK_PATH(sun,port,defpath) \
-		sprintf((sun).sun_path, "%s/.s.PGSQL.%d", \
+		snprintf((sun).sun_path, sizeof((sun).sun_path), "%s/.s.PGSQL.%d", \
 				((defpath) && *(defpath) != '\0') ? (defpath) : \
 				DEFAULT_PGSOCKET_DIR, \
 				(port))
