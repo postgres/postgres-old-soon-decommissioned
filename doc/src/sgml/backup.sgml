@@ -818,7 +818,7 @@ restore_command = 'cp /mnt/server/archivedir/%f %p'
     which transaction ID to use.  Keep in mind that while transaction
     IDs are asigned sequentially at transaction start, transactions can
     complete in a different numeric order.
-   </para
+   </para>
    <para>
     Note that the stop point must be after the ending time of the backup
     (ie, the time of <function>pg_stop_backup</>).  You cannot use a base
