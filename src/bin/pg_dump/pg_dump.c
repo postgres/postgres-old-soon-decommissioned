@@ -2649,10 +2649,14 @@ dumpTables(FILE *fout, TableInfo *tblinfo, int numTables,
 								(actual_atts > 0) ? ", " : "",
 								fmtId(tblinfo[i].attnames[j]),
 								tblinfo[i].typnames[j]);
-
-						sprintf(q, "%s(%d)",
+						if(tblinfo[i].atttypmod[j] != -1) {
+						        sprintf(q, "%s(%d)",
 								q,
 								tblinfo[i].atttypmod[j] - VARHDRSZ);
+						}
+						else {
+						        sprintf(q, "%s", q);
+						}
 						actual_atts++;
 					}
 					else
