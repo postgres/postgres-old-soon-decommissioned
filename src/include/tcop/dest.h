@@ -33,8 +33,7 @@
 #ifndef DEST_H
 #define DEST_H
 
-#include "catalog/pg_attribute.h"
-#include "access/tupdesc.h"
+#include "access/tupdesc.h" 
 
 /* ----------------
  *	CommandDest is used to allow the results of calling

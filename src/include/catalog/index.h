@@ -13,11 +13,11 @@
 #ifndef	INDEX_H 
 #define INDEX_H
 
-#include "access/funcindex.h"
-#include "access/itup.h"
 #include "nodes/execnodes.h"
+#include "access/htup.h"
+#include "access/itup.h"
 #include "nodes/parsenodes.h"
-
+#include "storage/buf.h"
 
 extern Form_pg_am
 AccessMethodObjectIdGetAccessMethodTupleForm(Oid accessMethodObjectId);

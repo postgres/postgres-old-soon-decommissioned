@@ -13,13 +13,8 @@
 #ifndef	GENAM_H
 #define GENAM_H
 
-
-#include "access/attnum.h"
-#include "access/htup.h"
-#include "access/istrat.h"
 #include "access/itup.h"
 #include "access/relscan.h"
-#include "access/skey.h"
 #include "access/sdir.h"
 #include "access/funcindex.h"
 

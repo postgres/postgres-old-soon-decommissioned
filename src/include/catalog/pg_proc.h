@@ -754,9 +754,6 @@ DATA(insert OID =  1239 (  texticregexne       PGUID 11 f t f 2 f 16 "25 25" 100
 DATA(insert OID =  1240 (  nameicregexeq     PGUID 11 f t f 2 f 16 "19 25" 100 0 0 100  foo bar ));
 DATA(insert OID =  1241 (  nameicregexne     PGUID 11 f t f 2 f 16 "19 25" 100 0 0 100  foo bar ));
 
-
-#include "nodes/pg_list.h"
-
 /* 
  * prototypes for functions pg_proc.c 
  */

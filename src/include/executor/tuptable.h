@@ -18,7 +18,7 @@
 #define TUPTABLE_H
 
 #include "access/htup.h"
-#include "access/relscan.h"
+#include "storage/buf.h"
 
 /* ----------------
  *	Note:  the executor tuple table is managed and manipulated by special

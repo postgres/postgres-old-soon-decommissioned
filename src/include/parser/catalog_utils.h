@@ -13,10 +13,6 @@
 #ifndef	CATALOG_UTILS_H
 #define	CATALOG_UTILS_H
 
-
-
-#include "access/htup.h"
-#include "utils/rel.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
 #include "utils/syscache.h"

@@ -13,9 +13,6 @@
 #ifndef PLANNODES_H
 #define	PLANNODES_H
 
-
-#include "nodes/nodes.h"
-#include "nodes/pg_list.h"
 #include "nodes/primnodes.h"
 
 /* ----------------------------------------------------------------

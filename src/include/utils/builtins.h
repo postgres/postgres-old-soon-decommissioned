@@ -18,12 +18,10 @@
 #ifndef BUILTINS_H
 #define BUILTINS_H
 
-
 #include "storage/itemptr.h"
-
-#include "storage/large_object.h"
-
-#include "utils/geo-decls.h"
+#include "utils/nabstime.h"
+#include "utils/geo-decls.h" 
+#include "utils/rel.h"
 
 /*
  *	Defined in adt/

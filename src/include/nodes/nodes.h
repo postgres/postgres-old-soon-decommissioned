@@ -13,7 +13,6 @@
 #ifndef NODES_H
 #define	NODES_H
 
-
 /*
  * The first field of every node is NodeTag. Each node created (with makeNode)
  * will have one of the following tags as the value of its first field.
