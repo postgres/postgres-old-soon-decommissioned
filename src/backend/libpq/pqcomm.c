@@ -255,8 +255,8 @@ StreamServerPort(int family, char *hostName, unsigned short portName,
 			if ((hp == NULL) || (hp->h_addrtype != AF_INET))
 			{
 				snprintf(PQerrormsg, PQERRORMSG_LENGTH,
-					   "FATAL: StreamServerPort: gethostbyname(%s) failed: %s\n",
-					   hostName, hstrerror(h_errno));
+					   "FATAL: StreamServerPort: gethostbyname(%s) failed\n",
+							hostName);
 					   fputs(PQerrormsg, stderr);
 					   pqdebug("%s", PQerrormsg);
 				return STATUS_ERROR;
