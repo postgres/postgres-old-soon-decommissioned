@@ -910,7 +910,7 @@ pgstat_vacuum_tabstat(void)
 	/*
 	 * Free the dbid list.
 	 */
-	pfree((char *) dbidlist);
+	pfree(dbidlist);
 
 	/*
 	 * Tell the caller how many removeable objects we found

@@ -432,8 +432,8 @@ decl_cursor_args :
 						memcpy(ftmp, $2->fieldnames, nfields * sizeof(char *));
 						memcpy(vtmp, $2->varnos, nfields * sizeof(int));
 
-						pfree((char *)($2->fieldnames));
-						pfree((char *)($2->varnos));
+						pfree($2->fieldnames);
+						pfree($2->varnos);
 
 						$2->fieldnames = ftmp;
 						$2->varnos = vtmp;
