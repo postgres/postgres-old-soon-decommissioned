@@ -134,7 +134,7 @@ postmaster [ -n | -s ] ...
       <term>-l</term>
       <listitem>
        <para>
-	This enables SSL socket communication.  The <term>-i</term> option
+	This enables SSL socket communication.  The <option>-i</option> option
 	is also required.
 	You have to have compiled with SSL enabled to use this option.
        </para>
