@@ -981,6 +981,8 @@ describeUsers (const char *name)
 			   "lll", &myopt, pset.queryFout);
 
 	/* clean up */
+	for (i = 0; i < PQntuples(res); i++)
+		free(cells[i * cols + 2]);
 	free(cells);
 
 	PQclear(res);
