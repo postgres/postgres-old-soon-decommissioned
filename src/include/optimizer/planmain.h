@@ -43,7 +43,7 @@ extern Unique *make_unique(List *tlist, Plan *lefttree, char *uniqueAttr);
  */
 extern void make_var_only_tlist(Query *root, List *tlist);
 extern void add_restrict_and_join_to_rels(Query *root, List *clauses);
-extern void init_join_info(List *rel_list);
+extern void set_joininfo_mergeable_hashable(List *rel_list);
 extern void add_missing_vars_to_tlist(Query *root, List *tlist);
 
 /*

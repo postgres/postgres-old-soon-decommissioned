@@ -44,7 +44,7 @@ determines the output format for the date and time data types.
 .IR GEQO
 enables or disables the genetic optimizer algorithm. This algorithm is
 .IR on
-by default, which used GEQO for statements of six or more tables and indexes.
+by default, which used GEQO for statements of six or more tables.
 Set the
 .IR Programmer's Guide
 for more information.
@@ -101,7 +101,7 @@ set DateStyle to 'SQL,European'
 .PP
 .nf
 --
---Use GEQO for statements with 4 or more tables and indexes
+--Use GEQO for statements with 4 or more tables
 --
 set GEQO to 'on=4'
 --

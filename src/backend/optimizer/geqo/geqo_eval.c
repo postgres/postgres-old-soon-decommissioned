@@ -135,7 +135,7 @@ gimme_tree(Query *root, Gene *tour, int rel_count, int num_gene, RelOptInfo *out
 			}
 
 			/* process new_rel->pathlist */
-			find_all_join_paths(root, new_rels);
+			update_rels_pathlist_for_joins(root, new_rels);
 
 			/* prune new_rels */
 			/* MAU: is this necessary? */

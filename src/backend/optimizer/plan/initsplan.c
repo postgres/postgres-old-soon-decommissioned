@@ -303,16 +303,16 @@ add_vars_to_targetlist(Query *root, List *vars, List *join_relids)
  *****************************************************************************/
 
 /*
- * init_join_info
+ * set_joininfo_mergeable_hashable
  *	  Set the MergeJoinable or HashJoinable field for every joininfo node
- *	  (within a rel node) and the MergeJoinOrder or HashJoinOp field for
+ *	  (within a rel node) and the mergejoinorder or hashjoinop field for
  *	  each restrictinfo node(within a joininfo node) for all relations in a
  *	  query.
  *
  *	  Returns nothing.
  */
 void
-init_join_info(List *rel_list)
+set_joininfo_mergeable_hashable(List *rel_list)
 {
 	List	   *x,
 			   *y,
