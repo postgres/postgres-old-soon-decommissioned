@@ -48,13 +48,10 @@ CATALOG(pg_index)
 								 * index */
 	int2vector	indkey;
 	oidvector	indclass;
-	bool		indisclustered;	/* this is unused, but is referenced by
-								 * the ODBC driver.  Remove it someday.
-								 * bjm 2001-05-14
-								 */
+	bool		indisclustered;	/* unused */
 	bool		indislossy;		/* do we fetch false tuples (lossy
 								 * compression)? */
-	bool		indhaskeytype;	/* does key type != attribute type? */
+	bool		indhaskeytype;	/* not used, originally added by GIST */
 	bool		indisunique;	/* is this a unique index? */
 	bool		indisprimary;	/* is this index for primary key */
 	Oid			indreference;	/* oid of index of referenced relation (ie
