@@ -89,7 +89,7 @@ quote_postgres(char *arg, int lineno)
 
 	res[ri++] = '\'';
 	res[ri] = '\0';
-
+	
 	return res;
 }
 

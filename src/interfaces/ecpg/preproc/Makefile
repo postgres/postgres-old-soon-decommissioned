@@ -18,7 +18,8 @@ override CFLAGS += -Wno-error
 endif
 
 OBJS=preproc.o pgc.o type.o ecpg.o ecpg_keywords.o output.o\
-    keywords.o c_keywords.o ../lib/typename.o descriptor.o variable.o
+    keywords.o c_keywords.o ../lib/typename.o descriptor.o variable.o \
+    $(SNPRINTF) $(STRDUP)
 
 all: submake-libpgport ecpg
 
