@@ -273,7 +273,7 @@ extern int pqGetc(FILE* stream, FILE *debug);
 extern int pqGetInt(int* result, int bytes, FILE* stream, FILE *debug );
 /* put a n-byte integer into the stream */
 /* returns 0 if successful */
-extern int pqPutInt(int n, int bytes, FILE* stream, FILE *debug );
+extern int pqPutInt(const int n, int bytes, FILE* stream, FILE *debug );
 extern void pqFlush(FILE* stream, FILE* debug);
 
 /* === in fe-lobj.c === */
