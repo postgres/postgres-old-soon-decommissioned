@@ -20,17 +20,6 @@ langname=
 echo=
 list=
 
-# Check for echo -n vs echo \c
-
-if echo '\c' | grep -s c >/dev/null 2>&1
-then
-    ECHO_N="echo -n"
-    ECHO_C=""
-else
-    ECHO_N="echo"
-    ECHO_C='\c'
-fi
-
 
 # ----------
 # Get options, language name and dbname

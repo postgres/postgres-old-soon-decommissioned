@@ -20,6 +20,17 @@ PSQLOPT=
 dbname=
 forcedel=t
 
+# Check for echo -n vs echo \c
+
+if echo '\c' | grep -s c >/dev/null 2>&1
+then
+    ECHO_N="echo -n"
+    ECHO_C=""
+else
+    ECHO_N="echo"
+    ECHO_C='\c'
+fi
+
 while [ $# -gt 0 ]
 do
     case "$1" in 
@@ -75,8 +86,8 @@ fi
 
 if [ "$forcedel" = f ]; then
 	echo "Database \"$dbname\" will be permanently deleted."
-	echo -n "Are you sure? (y/n) "
-	read -r
+	$ECHO_N "Are you sure? (y/n) "$ECHO_C
+	read REPLY
 
 	[ $? -eq 1 ] && exit 1
 	[ "$REPLY" != "y" -a "$REPLY" != "Y" ] && exit 0
