@@ -25,6 +25,7 @@
 #include "storage/lwlock.h"
 #include "storage/pg_sema.h"
 #include "storage/spin.h"
+#include "storage/s_lock.h"
 
 
 #ifdef HAS_TEST_AND_SET

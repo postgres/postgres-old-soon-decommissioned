@@ -1,8 +1,5 @@
 /* $PostgreSQL$ */
 
-#define HAS_TEST_AND_SET
-typedef unsigned char slock_t;
-
 /*
  * Sort this out for all operating systems some time.  The __xxx
  * symbols are defined on both GCC and Solaris CC, although GCC
