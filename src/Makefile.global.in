@@ -137,7 +137,7 @@ CXX = @CXX@
 CXXFLAGS = @CXXFLAGS@ @INCLUDES@
 
 ifeq ($(GCC), yes)
-  override CFLAGS += -Wall -Wmissing-prototypes -Wmissing-declarations
+  CFLAGS += -Wall -Wmissing-prototypes -Wmissing-declarations
 endif
 
 # Kind-of compilers
