@@ -52,9 +52,8 @@
 #endif
 
 
-/*----------------------------------------------------------------
+/*
  * common definitions for generic fe/be routines
- *----------------------------------------------------------------
  */
 
 struct authsvc
@@ -98,9 +97,8 @@ static const struct authsvc authsvcs[] = {
 static const int n_authsvcs = sizeof(authsvcs) / sizeof(struct authsvc);
 
 #ifdef KRB4
-/*----------------------------------------------------------------
+/*
  * MIT Kerberos authentication system - protocol version 4
- *----------------------------------------------------------------
  */
 
 #include "krb.h"
@@ -230,9 +228,8 @@ pg_krb4_sendauth(char *PQerrormsg, int sock,
 #endif	 /* KRB4 */
 
 #ifdef KRB5
-/*----------------------------------------------------------------
+/*
  * MIT Kerberos authentication system - protocol version 5
- *----------------------------------------------------------------
  */
 
 #include <krb5.h>

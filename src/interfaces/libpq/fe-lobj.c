@@ -507,13 +507,12 @@ lo_export(PGconn *conn, Oid lobjId, const char *filename)
 }
 
 
-/* ----------------
+/*
  * lo_initialize
  *
  * Initialize the large object interface for an existing connection.
  * We ask the backend about the functions OID's in pg_proc for all
  * functions that are required for large object operations.
- * ----------------
  */
 static int
 lo_initialize(PGconn *conn)
