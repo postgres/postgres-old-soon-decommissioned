@@ -329,6 +329,9 @@ fastgetiattr(IndexTuple tup,
 		case sizeof(short):
 		    off = SHORTALIGN(off) + sizeof(short);
 		    break;
+		case sizeof(int32):
+		    off = INTALIGN(off) + sizeof(int32);
+		    break;
 		case -1:
 		    usecache = false;
 		    off = (tupleDesc->attrs[i]->attalign=='d')?
