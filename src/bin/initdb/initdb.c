@@ -1909,7 +1909,7 @@ escape_locale(char **locale)
 {
 	int			len = strlen(*locale),
 				i, j;
-	char		*loc_temp = xmalloc(len * 2);
+	char		*loc_temp = xmalloc(len * 2 + 1);
 	
 	for (i = 0, j = 0; i < len; i++)
 	{
