@@ -101,6 +101,7 @@ distdir:
 	done
 	$(MAKE) -C $(distdir) distprep
 	$(MAKE) -C $(distdir) distclean
+	rm -f $(distdir)/README.CVS
 
 distcheck: $(distdir).tar.gz
 	-rm -rf $(dummy)
