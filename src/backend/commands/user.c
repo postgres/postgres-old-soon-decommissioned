@@ -855,6 +855,7 @@ AlterGroup(AlterGroupStmt *stmt, const char * tag)
         foreach(item, stmt->listUsers)
         {
             Value *v;
+
             if (strcmp(tag, "ALTER GROUP")==0)
             {
                 /* Get the uid of the proposed user to add. */
@@ -875,7 +876,10 @@ AlterGroup(AlterGroupStmt *stmt, const char * tag)
                 v = lfirst(item);
             }
             else
+			{
                 elog(ERROR, "AlterGroup: unknown tag %s", tag);
+				v = NULL;		/* keep compiler quiet */
+			}
 
             if (!member(v, newlist))
                 newlist = lcons(v, newlist);
