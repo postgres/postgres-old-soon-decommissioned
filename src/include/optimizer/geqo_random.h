@@ -26,13 +26,13 @@
 
 #include <math.h>
 
-#define GEQOMASK 2147483647
+/* geqo_rand returns a random float value between 0 and 1 inclusive */
 
-#define geqo_rand() ((double)random()/GEQOMASK)
+#define geqo_rand() (((double) random()) / ((double) MAX_RANDOM_VALUE))
 
-/* geqo_randint returns integer value
-   between lower and upper inclusive */
+/* geqo_randint returns integer value between lower and upper inclusive */
 
-#define geqo_randint(upper,lower) ( (int) floor( geqo_rand()*((upper-lower)+0.999999) )  +	lower )
+#define geqo_randint(upper,lower) \
+	( (int) floor( geqo_rand()*(((upper)-(lower))+0.999999) ) + (lower) )
 
 #endif	 /* GEQO_RANDOM_H */

@@ -1850,7 +1850,7 @@ DoBackend(Port *port)
 	 */
 	random_seed = 0;
 	gettimeofday(&now, &tz);
-	srandom(now.tv_usec);
+	srandom((unsigned int) now.tv_usec);
 
 	/* ----------------
 	 * Now, build the argv vector that will be given to PostgresMain.
@@ -2029,7 +2029,6 @@ RandomSalt(char *salt)
 static long
 PostmasterRandom(void)
 {
-
 	static bool initialized = false;
 
 	if (!initialized)

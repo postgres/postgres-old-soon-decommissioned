@@ -106,9 +106,9 @@ geqo(Query *root)
 /* seed random number generator */
 /* XXX why is this done every time around? */
     if (Geqo_random_seed >= 0)
-        srandom(Geqo_random_seed);
+        srandom((unsigned int) Geqo_random_seed);
     else
-        srandom(time(NULL));
+        srandom((unsigned int) time(NULL));
 
 /* allocate genetic pool memory */
 	pool = alloc_pool(pool_size, number_of_rels);
