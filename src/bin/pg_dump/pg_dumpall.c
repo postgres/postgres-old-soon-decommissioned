@@ -219,9 +219,7 @@ main(int argc, char *argv[])
 
 	conn = connectDatabase("template1", pghost, pgport, pguser, force_password);
 
-	printf("--\n");
-	printf("-- PostgreSQL database cluster dump\n");
-	printf("--\n\n");
+	printf("--\n-- PostgreSQL database cluster dump\n--\n\n");
 	printf("\\connect \"template1\"\n\n");
 
 	if (!data_only)
@@ -239,9 +237,7 @@ main(int argc, char *argv[])
 
 	PQfinish(conn);
 
-	printf("--\n");
-	printf("-- PostgreSQL database cluster dump complete\n");
-	printf("--\n\n");
+	printf("--\n-- PostgreSQL database cluster dump complete\n--\n\n");
 
 	exit(0);
 }
