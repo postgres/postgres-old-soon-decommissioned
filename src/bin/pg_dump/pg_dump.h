@@ -159,6 +159,7 @@ typedef struct _aggInfo
 	char	   *aggbasetype;
 	char	   *agginitval;
 	char	   *usename;
+	int		   convertok;		/* Flag to indicate of version convertsion is OK */
 } AggInfo;
 
 typedef struct _oprInfo

@@ -786,6 +786,7 @@ _ReadBuf(ArchiveHandle *AH, void *buf, int len)
 
 	res = fread(buf, 1, len, AH->FH);
 	ctx->filePos += res;
+
 	return res;
 }
 
@@ -854,7 +855,10 @@ _getFilePos(ArchiveHandle *AH, lclContext *ctx)
 	{
 		pos = ftell(AH->FH);
 		if (pos != ctx->filePos)
-			fprintf(stderr, "Warning: ftell mismatch with filePos\n");
+		{
+			fprintf(stderr, "Warning: ftell mismatch with filePos - filePos used\n");
+			pos = ctx->filePos;
+		}
 	}
 	else
 		pos = ctx->filePos;

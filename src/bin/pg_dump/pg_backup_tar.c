@@ -834,6 +834,7 @@ _CloseArchive(ArchiveHandle *AH)
 		ropt->dropSchema = 1;
 		ropt->compression = 0;
 		ropt->superuser = PQuser(AH->connection);
+		ropt->suppressDumpWarnings = true;
 
 		savVerbose = AH->public.verbose;
 		AH->public.verbose = 0;
