@@ -35,7 +35,7 @@ export PATH
 
 # OPENLINK Added an fsync option to postmaster
 # REQUIRES: pg95 compiled with -DOPENLINK_PATCHES, see README_OPENLINK
-FSYNC=#-F
+# FSYNC=-F
 
 CMDNAME=`basename $0`
 
