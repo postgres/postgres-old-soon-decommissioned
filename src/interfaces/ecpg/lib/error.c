@@ -12,7 +12,8 @@
 
 /* This should hold the back-end error message from 
  * the last back-end operation. */
-char *ECPGerr;
+static char *ECPGerr;
+
 
 void
 ECPGraise(int line, int code, const char *str)
