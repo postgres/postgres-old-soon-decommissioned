@@ -540,7 +540,8 @@ hash_search(HTAB *hashp,
 		/*
 		 * Try to catch subsequent errors
 		 */
-		Assert(currBucket && !(saveState.currBucket = NULL));
+		Assert(currBucket);
+		saveState.currBucket = NULL;
 	}
 	else
 	{
