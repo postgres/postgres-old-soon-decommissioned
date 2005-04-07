@@ -1691,12 +1691,18 @@ exec_stmt_return(PLpgSQL_execstate *estate, PLpgSQL_stmt_return *stmt)
 											&(estate->retisnull),
 											&(estate->rettype));
 		}
+
+		return PLPGSQL_RC_RETURN;
 	}
 
+	/*
+	 * Special hack for function returning VOID: instead of NULL, return a
+	 * non-null VOID value.  This is of dubious importance but is kept for
+	 * backwards compatibility.  Note that the only other way to get here
+	 * is to have written "RETURN NULL" in a function returning tuple.
+	 */
 	if (estate->fn_rettype == VOIDOID)
 	{
-		/* Special hack for function returning VOID */
-		Assert(stmt->retvarno < 0 && stmt->expr == NULL);
 		estate->retval = (Datum) 0;
 		estate->retisnull = false;
 		estate->rettype = VOIDOID;
