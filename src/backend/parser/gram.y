@@ -229,7 +229,7 @@ static void doNegateFloat(Value *v);
 				transaction_mode_list_or_empty
 				TableFuncElementList
 				prep_type_clause prep_type_list
-				execute_param_clause
+				execute_param_clause using_clause
 
 %type <range>	into_clause OptTempTableName
 
@@ -4734,13 +4734,19 @@ insert_column_item:
  *
  *****************************************************************************/
 
-DeleteStmt: DELETE_P FROM relation_expr where_clause
+DeleteStmt: DELETE_P FROM relation_expr using_clause where_clause
 				{
 					DeleteStmt *n = makeNode(DeleteStmt);
 					n->relation = $3;
-					n->whereClause = $4;
+					n->usingClause = $4;
+					n->whereClause = $5;
 					$$ = (Node *)n;
 				}
+		;
+
+using_clause:
+	    		USING from_list						{ $$ = $2; }
+			| /*EMPTY*/								{ $$ = NIL; }
 		;
 
 LockStmt:	LOCK_P opt_table qualified_name_list opt_lock opt_nowait

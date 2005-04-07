@@ -1164,10 +1164,16 @@ psql_completion(char *text, int start, int end)
 	else if (pg_strcasecmp(prev2_wd, "DELETE") == 0 &&
 			 pg_strcasecmp(prev_wd, "FROM") == 0)
 		COMPLETE_WITH_SCHEMA_QUERY(Query_for_list_of_tables, NULL);
-	/* Complete DELETE FROM <table> with "WHERE" (perhaps a safe idea?) */
+	/* Complete DELETE FROM <table> */
 	else if (pg_strcasecmp(prev3_wd, "DELETE") == 0 &&
 			 pg_strcasecmp(prev2_wd, "FROM") == 0)
-		COMPLETE_WITH_CONST("WHERE");
+	{
+		static const char *const list_DELETE[] =
+		{"USING", "WHERE", "SET", NULL};
+
+		COMPLETE_WITH_LIST(list_DELETE);
+	}
+	/* XXX: implement tab completion for DELETE ... USING */
 
 /* EXPLAIN */
 

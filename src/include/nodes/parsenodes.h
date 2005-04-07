@@ -613,6 +613,7 @@ typedef struct DeleteStmt
 	NodeTag		type;
 	RangeVar   *relation;		/* relation to delete from */
 	Node	   *whereClause;	/* qualifications */
+	List	   *usingClause;	/* optional using clause for more tables */
 } DeleteStmt;
 
 /* ----------------------

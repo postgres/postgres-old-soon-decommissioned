@@ -675,6 +675,7 @@ _equalDeleteStmt(DeleteStmt *a, DeleteStmt *b)
 {
 	COMPARE_NODE_FIELD(relation);
 	COMPARE_NODE_FIELD(whereClause);
+	COMPARE_NODE_FIELD(usingClause);
 
 	return true;
 }

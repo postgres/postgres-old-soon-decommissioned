@@ -479,6 +479,14 @@ transformDeleteStmt(ParseState *pstate, DeleteStmt *stmt)
 
 	qry->distinctClause = NIL;
 
+	/*
+	 * The USING clause is non-standard SQL syntax, and is equivalent
+	 * in functionality to the FROM list that can be specified for
+	 * UPDATE. The USING keyword is used rather than FROM because FROM
+	 * is already a keyword in the DELETE syntax.
+	 */
+	transformFromClause(pstate, stmt->usingClause);
+
 	/* fix where clause */
 	qual = transformWhereClause(pstate, stmt->whereClause, "WHERE");
 
