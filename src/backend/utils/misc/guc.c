@@ -791,7 +791,7 @@ static struct config_bool ConfigureNamesBool[] =
 			NULL
 		},
 		&add_missing_from,
-		true, NULL, NULL
+		false, NULL, NULL
 	},
 	{
 		{"check_function_bodies", PGC_USERSET, CLIENT_CONN_STATEMENT,

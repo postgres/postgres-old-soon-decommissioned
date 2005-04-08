@@ -148,12 +148,6 @@ DELETE FROM films
    In some cases the join style is easier to write or faster to
    execute than the sub-select style.
   </para>
-
-  <para>
-   If <varname>add_missing_from</varname> is enabled, any relations
-   mentioned in the <literal>WHERE</literal> condition will be
-   implicitly added to the <literal>USING</literal> clause.
-  </para>
  </refsect1>
 
  <refsect1>
