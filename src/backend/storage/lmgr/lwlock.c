@@ -328,7 +328,8 @@ LWLockAcquire(LWLockId lockid, LWLockMode mode)
 	SpinLockRelease_NoHoldoff(&lock->mutex);
 
 	/* Add lock to list of locks held by this backend */
-	Assert(num_held_lwlocks < MAX_SIMUL_LWLOCKS);
+	if (num_held_lwlocks >= MAX_SIMUL_LWLOCKS)
+		elog(ERROR, "too many LWLocks taken");
 	held_lwlocks[num_held_lwlocks++] = lockid;
 
 	/*
@@ -397,7 +398,8 @@ LWLockConditionalAcquire(LWLockId lockid, LWLockMode mode)
 	else
 	{
 		/* Add lock to list of locks held by this backend */
-		Assert(num_held_lwlocks < MAX_SIMUL_LWLOCKS);
+		if (num_held_lwlocks >= MAX_SIMUL_LWLOCKS)
+			elog(ERROR, "too many LWLocks taken");
 		held_lwlocks[num_held_lwlocks++] = lockid;
 	}
 
