@@ -213,6 +213,10 @@ LWLockAcquire(LWLockId lockid, LWLockMode mode)
 	 */
 	Assert(!(proc == NULL && IsUnderPostmaster));
 
+	/* Ensure we will have room to remember the lock */
+	if (num_held_lwlocks >= MAX_SIMUL_LWLOCKS)
+		elog(ERROR, "too many LWLocks taken");
+
 	/*
 	 * Lock out cancel/die interrupts until we exit the code section
 	 * protected by the LWLock.  This ensures that interrupts will not
@@ -328,8 +332,6 @@ LWLockAcquire(LWLockId lockid, LWLockMode mode)
 	SpinLockRelease_NoHoldoff(&lock->mutex);
 
 	/* Add lock to list of locks held by this backend */
-	if (num_held_lwlocks >= MAX_SIMUL_LWLOCKS)
-		elog(ERROR, "too many LWLocks taken");
 	held_lwlocks[num_held_lwlocks++] = lockid;
 
 	/*
@@ -353,6 +355,10 @@ LWLockConditionalAcquire(LWLockId lockid, LWLockMode mode)
 	bool		mustwait;
 
 	PRINT_LWDEBUG("LWLockConditionalAcquire", lockid, lock);
+
+	/* Ensure we will have room to remember the lock */
+	if (num_held_lwlocks >= MAX_SIMUL_LWLOCKS)
+		elog(ERROR, "too many LWLocks taken");
 
 	/*
 	 * Lock out cancel/die interrupts until we exit the code section
@@ -398,8 +404,6 @@ LWLockConditionalAcquire(LWLockId lockid, LWLockMode mode)
 	else
 	{
 		/* Add lock to list of locks held by this backend */
-		if (num_held_lwlocks >= MAX_SIMUL_LWLOCKS)
-			elog(ERROR, "too many LWLocks taken");
 		held_lwlocks[num_held_lwlocks++] = lockid;
 	}
 
