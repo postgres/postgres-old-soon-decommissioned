@@ -9,7 +9,7 @@
  <para>
   The <application>PL/Python</application> procedural language allows
   <productname>PostgreSQL</productname> functions to be written in the
-  Python language,<ulink url="http://www.python.org"></ulink>.
+  <ulink url="http://www.python.org">Python language</ulink>.
  </para>
 
  <para>
