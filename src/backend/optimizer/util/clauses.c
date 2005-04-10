@@ -1788,6 +1788,10 @@ eval_const_expressions_mutator(Node *node,
 			newargs = lappend(newargs, e);
 		}
 
+		/* If all the arguments were constant null, the result is just null */
+		if (newargs == NIL)
+			return (Node *) makeNullConst(coalesceexpr->coalescetype);
+
 		newcoalesce = makeNode(CoalesceExpr);
 		newcoalesce->coalescetype = coalesceexpr->coalescetype;
 		newcoalesce->args = newargs;
