@@ -1553,6 +1553,10 @@ eval_const_expressions_mutator(Node *node, List *active_fns)
 			FastAppend(&newargs, e);
 		}
 
+		/* If all the arguments were constant null, the result is just null */
+		if (FastListValue(&newargs) == NIL)
+			return (Node *) makeNullConst(coalesceexpr->coalescetype);
+
 		newcoalesce = makeNode(CoalesceExpr);
 		newcoalesce->coalescetype = coalesceexpr->coalescetype;
 		newcoalesce->args = FastListValue(&newargs);
