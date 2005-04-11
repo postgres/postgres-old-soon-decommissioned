@@ -309,6 +309,7 @@ PersistHoldablePortal(Portal portal)
 {
 	QueryDesc  *queryDesc = PortalGetQueryDesc(portal);
 	Portal		saveActivePortal;
+	Snapshot	saveActiveSnapshot;
 	ResourceOwner saveResourceOwner;
 	MemoryContext savePortalContext;
 	MemoryContext saveQueryContext;
@@ -350,12 +351,14 @@ PersistHoldablePortal(Portal portal)
 	 * Set up global portal context pointers.
 	 */
 	saveActivePortal = ActivePortal;
+	saveActiveSnapshot = ActiveSnapshot;
 	saveResourceOwner = CurrentResourceOwner;
 	savePortalContext = PortalContext;
 	saveQueryContext = QueryContext;
 	PG_TRY();
 	{
 		ActivePortal = portal;
+		ActiveSnapshot = queryDesc->snapshot;
 		CurrentResourceOwner = portal->resowner;
 		PortalContext = PortalGetHeapMemory(portal);
 		QueryContext = portal->queryContext;
@@ -428,6 +431,7 @@ PersistHoldablePortal(Portal portal)
 
 		/* Restore global vars and propagate error */
 		ActivePortal = saveActivePortal;
+		ActiveSnapshot = saveActiveSnapshot;
 		CurrentResourceOwner = saveResourceOwner;
 		PortalContext = savePortalContext;
 		QueryContext = saveQueryContext;
@@ -442,6 +446,7 @@ PersistHoldablePortal(Portal portal)
 	portal->status = PORTAL_READY;
 
 	ActivePortal = saveActivePortal;
+	ActiveSnapshot = saveActiveSnapshot;
 	CurrentResourceOwner = saveResourceOwner;
 	PortalContext = savePortalContext;
 	QueryContext = saveQueryContext;
