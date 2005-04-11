@@ -54,6 +54,31 @@ op_in_opclass(Oid opno, Oid opclass)
 }
 
 /*
+ * get_op_opclass_strategy
+ *
+ *		Get the operator's strategy number within the specified opclass,
+ *		or 0 if it's not a member of the opclass.
+ */
+int
+get_op_opclass_strategy(Oid opno, Oid opclass)
+{
+	HeapTuple	tp;
+	Form_pg_amop amop_tup;
+	int			result;
+
+	tp = SearchSysCache(AMOPOPID,
+						ObjectIdGetDatum(opno),
+						ObjectIdGetDatum(opclass),
+						0, 0);
+	if (!HeapTupleIsValid(tp))
+		return 0;
+	amop_tup = (Form_pg_amop) GETSTRUCT(tp);
+	result = amop_tup->amopstrategy;
+	ReleaseSysCache(tp);
+	return result;
+}
+
+/*
  * get_op_opclass_properties
  *
  *		Get the operator's strategy number, subtype, and recheck (lossy) flag

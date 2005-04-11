@@ -24,6 +24,12 @@ extern void query_planner(Query *root, List *tlist, double tuple_fraction,
 			  Path **cheapest_path, Path **sorted_path);
 
 /*
+ * prototypes for plan/planagg.c
+ */
+extern Plan *optimize_minmax_aggregates(Query *root, List *tlist,
+										Path *best_path);
+
+/*
  * prototypes for plan/createplan.c
  */
 extern Plan *create_plan(Query *root, Path *best_path);
