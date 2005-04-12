@@ -51,6 +51,7 @@ DefineAggregate(List *names, List *parameters)
 	AclResult	aclresult;
 	List	   *transfuncName = NIL;
 	List	   *finalfuncName = NIL;
+	List	   *sortoperatorName = NIL;
 	TypeName   *baseType = NULL;
 	TypeName   *transType = NULL;
 	char	   *initval = NULL;
@@ -81,6 +82,8 @@ DefineAggregate(List *names, List *parameters)
 			transfuncName = defGetQualifiedName(defel);
 		else if (pg_strcasecmp(defel->defname, "finalfunc") == 0)
 			finalfuncName = defGetQualifiedName(defel);
+		else if (pg_strcasecmp(defel->defname, "sortop") == 0)
+			sortoperatorName = defGetQualifiedName(defel);
 		else if (pg_strcasecmp(defel->defname, "basetype") == 0)
 			baseType = defGetTypeName(defel);
 		else if (pg_strcasecmp(defel->defname, "stype") == 0)
@@ -143,9 +146,10 @@ DefineAggregate(List *names, List *parameters)
 	 */
 	AggregateCreate(aggName,	/* aggregate name */
 					aggNamespace,		/* namespace */
+					baseTypeId, /* type of data being aggregated */
 					transfuncName,		/* step function name */
 					finalfuncName,		/* final function name */
-					baseTypeId, /* type of data being aggregated */
+					sortoperatorName,	/* sort operator name */
 					transTypeId,	/* transition data type */
 					initval);	/* initial condition */
 }

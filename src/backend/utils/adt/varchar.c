@@ -687,6 +687,40 @@ bpcharcmp(PG_FUNCTION_ARGS)
 	PG_RETURN_INT32(cmp);
 }
 
+Datum
+bpchar_larger(PG_FUNCTION_ARGS)
+{
+	BpChar	   *arg1 = PG_GETARG_BPCHAR_P(0);
+	BpChar	   *arg2 = PG_GETARG_BPCHAR_P(1);
+	int			len1,
+				len2;
+	int			cmp;
+
+	len1 = bcTruelen(arg1);
+	len2 = bcTruelen(arg2);
+
+	cmp = varstr_cmp(VARDATA(arg1), len1, VARDATA(arg2), len2);
+
+	PG_RETURN_BPCHAR_P((cmp >= 0) ? arg1 : arg2);
+}
+
+Datum
+bpchar_smaller(PG_FUNCTION_ARGS)
+{
+	BpChar	   *arg1 = PG_GETARG_BPCHAR_P(0);
+	BpChar	   *arg2 = PG_GETARG_BPCHAR_P(1);
+	int			len1,
+				len2;
+	int			cmp;
+
+	len1 = bcTruelen(arg1);
+	len2 = bcTruelen(arg2);
+
+	cmp = varstr_cmp(VARDATA(arg1), len1, VARDATA(arg2), len2);
+
+	PG_RETURN_BPCHAR_P((cmp <= 0) ? arg1 : arg2);
+}
+
 
 /*
  * bpchar needs a specialized hash function because we want to ignore
