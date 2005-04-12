@@ -73,7 +73,6 @@ static void fix_indxqual_sublist(List *indexqual, IndexOptInfo *index,
 static Node *fix_indxqual_operand(Node *node, IndexOptInfo *index,
 								  Oid *opclass);
 static List *get_switched_clauses(List *clauses, Relids outerrelids);
-static List *order_qual_clauses(Query *root, List *clauses);
 static void copy_path_costsize(Plan *dest, Path *src);
 static void copy_plan_costsize(Plan *dest, Plan *src);
 static SeqScan *make_seqscan(List *qptlist, List *qpqual, Index scanrelid);
@@ -1417,7 +1416,7 @@ get_switched_clauses(List *clauses, Relids outerrelids)
  * For now, we just move any quals that contain SubPlan references (but not
  * InitPlan references) to the end of the list.
  */
-static List *
+List *
 order_qual_clauses(Query *root, List *clauses)
 {
 	List	   *nosubplans;

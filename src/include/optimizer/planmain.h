@@ -40,6 +40,7 @@ extern Sort *make_sort_from_sortclauses(Query *root, List *sortcls,
 						   Plan *lefttree);
 extern Sort *make_sort_from_groupcols(Query *root, List *groupcls,
 						 AttrNumber *grpColIdx, Plan *lefttree);
+extern List *order_qual_clauses(Query *root, List *clauses);
 extern Agg *make_agg(Query *root, List *tlist, List *qual,
 		 AggStrategy aggstrategy,
 		 int numGroupCols, AttrNumber *grpColIdx,
