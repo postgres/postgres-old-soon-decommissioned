@@ -721,7 +721,7 @@ struct encoding_match encoding_match_list[] = {
 	{PG_JOHAB, "???"},
 #endif
 
-	{PG_UTF8, "UTF8"},
+	{PG_UTF8, "UTF-8"},
 	{PG_UTF8, "utf8"},
 
 	{PG_LATIN1, "ISO-8859-1"},
