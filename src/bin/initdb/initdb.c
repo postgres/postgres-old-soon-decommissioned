@@ -1672,7 +1672,10 @@ setup_conversion(void)
 /*
  * Set up privileges
  *
- * We set most system catalogs and built-in functions as world-accessible.
+ * We mark most system catalogs as world-readable.  We don't currently have
+ * to touch functions, languages, or databases, because their default
+ * permissions are OK.
+ *
  * Some objects may require different permissions by default, so we
  * make sure we don't overwrite privilege sets that have already been
  * set (NOT NULL).
@@ -1687,12 +1690,6 @@ setup_privileges(void)
 		"UPDATE pg_class "
 		"  SET relacl = '{\"=r/\\\\\"$POSTGRES_SUPERUSERNAME\\\\\"\"}' "
 		"  WHERE relkind IN ('r', 'v', 'S') AND relacl IS NULL;\n",
-		"UPDATE pg_proc "
-		"  SET proacl = '{\"=X/\\\\\"$POSTGRES_SUPERUSERNAME\\\\\"\"}' "
-		"  WHERE proacl IS NULL;\n",
-		"UPDATE pg_language "
-		"  SET lanacl = '{\"=U/\\\\\"$POSTGRES_SUPERUSERNAME\\\\\"\"}' "
-		"  WHERE lanpltrusted;\n",
 		"GRANT USAGE ON SCHEMA pg_catalog TO PUBLIC;\n",
 		"GRANT CREATE, USAGE ON SCHEMA public TO PUBLIC;\n",
 		NULL
