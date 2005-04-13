@@ -4732,8 +4732,8 @@ ATPrepAlterColumnType(List **wqueue,
 
 		/* Expression must be able to access vars of old table */
 		rte = addRangeTableEntryForRelation(pstate,
-											RelationGetRelid(rel),
-							makeAlias(RelationGetRelationName(rel), NIL),
+											rel,
+											NULL,
 											false,
 											true);
 		addRTEtoQuery(pstate, rte, false, true);

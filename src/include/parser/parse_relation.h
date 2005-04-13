@@ -45,7 +45,7 @@ extern RangeTblEntry *addRangeTableEntry(ParseState *pstate,
 				   bool inh,
 				   bool inFromCl);
 extern RangeTblEntry *addRangeTableEntryForRelation(ParseState *pstate,
-							  Oid relid,
+							  Relation rel,
 							  Alias *alias,
 							  bool inh,
 							  bool inFromCl);
