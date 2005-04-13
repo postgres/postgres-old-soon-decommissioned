@@ -97,7 +97,7 @@ static const char *const lock_mode_names[] =
  * --------
  */
 
-int			Trace_lock_oidmin = BootstrapObjectIdData;
+int			Trace_lock_oidmin = FirstNormalObjectId;
 bool		Trace_locks = false;
 bool		Trace_userlocks = false;
 int			Trace_lock_table = 0;

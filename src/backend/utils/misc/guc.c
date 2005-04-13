@@ -1090,7 +1090,7 @@ static struct config_int ConfigureNamesInt[] =
 			GUC_NOT_IN_SAMPLE
 		},
 		&Trace_lock_oidmin,
-		BootstrapObjectIdData, 0, INT_MAX, NULL, NULL
+		FirstNormalObjectId, 0, INT_MAX, NULL, NULL
 	},
 	{
 		{"trace_lock_table", PGC_SUSET, DEVELOPER_OPTIONS,

@@ -404,7 +404,7 @@ GuessControlValues(void)
 	ControlFile.checkPointCopy.undo = ControlFile.checkPointCopy.redo;
 	ControlFile.checkPointCopy.ThisTimeLineID = 1;
 	ControlFile.checkPointCopy.nextXid = (TransactionId) 514;	/* XXX */
-	ControlFile.checkPointCopy.nextOid = BootstrapObjectIdData;
+	ControlFile.checkPointCopy.nextOid = FirstBootstrapObjectId;
 	ControlFile.checkPointCopy.time = time(NULL);
 
 	ControlFile.state = DB_SHUTDOWNED;

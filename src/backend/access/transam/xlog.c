@@ -3505,7 +3505,7 @@ BootStrapXLOG(void)
 	checkPoint.undo = checkPoint.redo;
 	checkPoint.ThisTimeLineID = ThisTimeLineID;
 	checkPoint.nextXid = FirstNormalTransactionId;
-	checkPoint.nextOid = BootstrapObjectIdData;
+	checkPoint.nextOid = FirstBootstrapObjectId;
 	checkPoint.time = time(NULL);
 
 	ShmemVariableCache->nextXid = checkPoint.nextXid;

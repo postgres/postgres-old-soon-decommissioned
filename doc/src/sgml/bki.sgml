@@ -167,8 +167,8 @@ $PostgreSQL$
       values and <replaceable
       class="parameter">oid_value</replaceable> for its OID.  If
       <replaceable class="parameter">oid_value</replaceable> is zero
-      (0) or the clause is omitted, then the next available OID is
-      used.
+      (0) or the clause is omitted, and the table has OIDs, then the
+      next available OID is assigned.
      </para>
 
      <para>
