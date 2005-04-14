@@ -356,7 +356,7 @@ DefineOpClass(CreateOpClassStmt *stmt)
 	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
 
 	/* dependency on indexed datatype */
-	referenced.classId = RelOid_pg_type;
+	referenced.classId = TypeRelationId;
 	referenced.objectId = typeoid;
 	referenced.objectSubId = 0;
 	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
@@ -364,7 +364,7 @@ DefineOpClass(CreateOpClassStmt *stmt)
 	/* dependency on storage datatype */
 	if (OidIsValid(storageoid))
 	{
-		referenced.classId = RelOid_pg_type;
+		referenced.classId = TypeRelationId;
 		referenced.objectId = storageoid;
 		referenced.objectSubId = 0;
 		recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
@@ -386,7 +386,7 @@ DefineOpClass(CreateOpClassStmt *stmt)
 	{
 		OpClassMember *proc = (OpClassMember *) lfirst(l);
 
-		referenced.classId = RelOid_pg_proc;
+		referenced.classId = ProcedureRelationId;
 		referenced.objectId = proc->object;
 		referenced.objectSubId = 0;
 		recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);

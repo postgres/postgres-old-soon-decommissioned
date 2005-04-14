@@ -32,6 +32,7 @@ typedef void (*IndexBuildCallback) (Relation index,
 
 extern Oid index_create(Oid heapRelationId,
 			 const char *indexRelationName,
+			 Oid indexRelationId,
 			 IndexInfo *indexInfo,
 			 Oid accessMethodObjectId,
 			 Oid tableSpaceId,

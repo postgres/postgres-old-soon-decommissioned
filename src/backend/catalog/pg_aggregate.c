@@ -240,12 +240,12 @@ AggregateCreate(const char *aggName,
 	 * dependency on aggTransType since we depend on it indirectly through
 	 * transfn.
 	 */
-	myself.classId = RelOid_pg_proc;
+	myself.classId = ProcedureRelationId;
 	myself.objectId = procOid;
 	myself.objectSubId = 0;
 
 	/* Depends on transition function */
-	referenced.classId = RelOid_pg_proc;
+	referenced.classId = ProcedureRelationId;
 	referenced.objectId = transfn;
 	referenced.objectSubId = 0;
 	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
@@ -253,7 +253,7 @@ AggregateCreate(const char *aggName,
 	/* Depends on final function, if any */
 	if (OidIsValid(finalfn))
 	{
-		referenced.classId = RelOid_pg_proc;
+		referenced.classId = ProcedureRelationId;
 		referenced.objectId = finalfn;
 		referenced.objectSubId = 0;
 		recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);

@@ -21,7 +21,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -31,7 +31,9 @@
  *		typedef struct FormData_pg_index.
  * ----------------
  */
-CATALOG(pg_index) BKI_WITHOUT_OIDS
+#define IndexRelationId  2610
+
+CATALOG(pg_index,2610) BKI_WITHOUT_OIDS
 {
 	Oid			indexrelid;		/* OID of the index */
 	Oid			indrelid;		/* OID of the relation it indexes */

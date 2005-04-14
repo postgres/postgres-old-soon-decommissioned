@@ -724,6 +724,7 @@ ProcessUtility(Node *parsetree,
 
 				DefineIndex(stmt->relation,		/* relation */
 							stmt->idxname,		/* index name */
+							InvalidOid,			/* no predefined OID */
 							stmt->accessMethod, /* am name */
 							stmt->tableSpace,
 							stmt->indexParams,	/* parameters */

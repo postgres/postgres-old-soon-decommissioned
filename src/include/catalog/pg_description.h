@@ -38,7 +38,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -48,7 +48,9 @@
  *		typedef struct FormData_pg_description
  * ----------------
  */
-CATALOG(pg_description) BKI_WITHOUT_OIDS
+#define DescriptionRelationId  2609
+
+CATALOG(pg_description,2609) BKI_WITHOUT_OIDS
 {
 	Oid			objoid;			/* OID of object itself */
 	Oid			classoid;		/* OID of table containing object */

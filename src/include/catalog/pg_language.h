@@ -21,7 +21,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -31,7 +31,9 @@
  *		typedef struct FormData_pg_language
  * ----------------
  */
-CATALOG(pg_language)
+#define LanguageRelationId  2612
+
+CATALOG(pg_language,2612)
 {
 	NameData	lanname;
 	bool		lanispl;		/* Is a procedural language */

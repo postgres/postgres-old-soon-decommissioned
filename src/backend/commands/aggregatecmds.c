@@ -206,7 +206,7 @@ RemoveAggregate(RemoveAggrStmt *stmt)
 	/*
 	 * Do the deletion
 	 */
-	object.classId = RelOid_pg_proc;
+	object.classId = ProcedureRelationId;
 	object.objectId = procOid;
 	object.objectSubId = 0;
 

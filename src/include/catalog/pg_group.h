@@ -20,12 +20,13 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
+#define GroupRelationId  1261
 
-CATALOG(pg_group) BOOTSTRAP BKI_SHARED_RELATION BKI_WITHOUT_OIDS
+CATALOG(pg_group,1261) BKI_SHARED_RELATION BKI_WITHOUT_OIDS
 {
 	NameData	groname;
 	int4		grosysid;

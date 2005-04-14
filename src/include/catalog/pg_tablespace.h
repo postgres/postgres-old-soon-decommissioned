@@ -21,7 +21,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -31,7 +31,9 @@
  *		typedef struct FormData_pg_tablespace
  * ----------------
  */
-CATALOG(pg_tablespace) BOOTSTRAP BKI_SHARED_RELATION
+#define TableSpaceRelationId  1213
+
+CATALOG(pg_tablespace,1213) BKI_SHARED_RELATION
 {
 	NameData	spcname;		/* tablespace name */
 	int4		spcowner;		/* sysid of owner */

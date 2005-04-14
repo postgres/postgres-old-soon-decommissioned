@@ -813,10 +813,10 @@ CheckPgUserAclNotNull(void)
 	HeapTuple	htup;
 
 	htup = SearchSysCache(RELOID,
-						  ObjectIdGetDatum(RelOid_pg_shadow),
+						  ObjectIdGetDatum(ShadowRelationId),
 						  0, 0, 0);
 	if (!HeapTupleIsValid(htup))	/* should not happen, we hope */
-		elog(ERROR, "cache lookup failed for relation %u", RelOid_pg_shadow);
+		elog(ERROR, "cache lookup failed for relation %u", ShadowRelationId);
 
 	if (heap_attisnull(htup, Anum_pg_class_relacl))
 		ereport(ERROR,

@@ -448,7 +448,7 @@ RemoveView(const RangeVar *view, DropBehavior behavior)
 
 	viewOid = RangeVarGetRelid(view, false);
 
-	object.classId = RelOid_pg_class;
+	object.classId = RelationRelationId;
 	object.objectId = viewOid;
 	object.objectSubId = 0;
 

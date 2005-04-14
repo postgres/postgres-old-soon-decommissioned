@@ -23,7 +23,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -41,7 +41,9 @@
  *	agginitval			initial value for transition state (can be NULL)
  * ----------------------------------------------------------------
  */
-CATALOG(pg_aggregate) BKI_WITHOUT_OIDS
+#define AggregateRelationId  2600
+
+CATALOG(pg_aggregate,2600) BKI_WITHOUT_OIDS
 {
 	regproc		aggfnoid;
 	regproc		aggtransfn;

@@ -42,7 +42,6 @@
 #define  StatisticRelationName "pg_statistic"
 #define  TableSpaceRelationName "pg_tablespace"
 #define  TypeRelationName "pg_type"
-#define  VersionRelationName "pg_version"
 #define  AttrDefaultRelationName "pg_attrdef"
 #define  TriggerRelationName "pg_trigger"
 

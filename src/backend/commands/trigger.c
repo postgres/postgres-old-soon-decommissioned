@@ -422,20 +422,20 @@ CreateTrigger(CreateTrigStmt *stmt, bool forConstraint)
 	 * dependency on the constraint will indirectly depend on the
 	 * relations.
 	 */
-	referenced.classId = RelOid_pg_proc;
+	referenced.classId = ProcedureRelationId;
 	referenced.objectId = funcoid;
 	referenced.objectSubId = 0;
 	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
 
 	if (!forConstraint)
 	{
-		referenced.classId = RelOid_pg_class;
+		referenced.classId = RelationRelationId;
 		referenced.objectId = RelationGetRelid(rel);
 		referenced.objectSubId = 0;
 		recordDependencyOn(&myself, &referenced, DEPENDENCY_AUTO);
 		if (constrrelid != InvalidOid)
 		{
-			referenced.classId = RelOid_pg_class;
+			referenced.classId = RelationRelationId;
 			referenced.objectId = constrrelid;
 			referenced.objectSubId = 0;
 			recordDependencyOn(&myself, &referenced, DEPENDENCY_AUTO);

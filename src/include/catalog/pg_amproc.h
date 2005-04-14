@@ -32,7 +32,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -42,7 +42,9 @@
  *		typedef struct FormData_pg_amproc
  * ----------------
  */
-CATALOG(pg_amproc) BKI_WITHOUT_OIDS
+#define AccessMethodProcedureRelationId  2603
+
+CATALOG(pg_amproc,2603) BKI_WITHOUT_OIDS
 {
 	Oid			amopclaid;		/* the index opclass this entry is for */
 	Oid			amprocsubtype;	/* procedure subtype, or zero if default */

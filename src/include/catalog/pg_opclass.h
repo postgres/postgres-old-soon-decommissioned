@@ -40,7 +40,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -50,8 +50,9 @@
  *		typedef struct FormData_pg_opclass
  * ----------------
  */
+#define OperatorClassRelationId  2616
 
-CATALOG(pg_opclass)
+CATALOG(pg_opclass,2616)
 {
 	Oid			opcamid;		/* index access method opclass is for */
 	NameData	opcname;		/* name of this opclass */

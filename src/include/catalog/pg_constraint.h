@@ -21,7 +21,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -31,7 +31,9 @@
  *		typedef struct FormData_pg_constraint
  * ----------------
  */
-CATALOG(pg_constraint)
+#define ConstraintRelationId  2606
+
+CATALOG(pg_constraint,2606)
 {
 	/*
 	 * conname + connamespace is deliberately not unique; we allow, for

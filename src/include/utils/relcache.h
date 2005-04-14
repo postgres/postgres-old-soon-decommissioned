@@ -53,8 +53,7 @@ extern Relation RelationBuildLocalRelation(const char *relname,
 						   TupleDesc tupDesc,
 						   Oid relid,
 						   Oid reltablespace,
-						   bool shared_relation,
-						   bool nailit);
+						   bool shared_relation);
 
 /*
  * Routines for flushing/rebuilding relcache entries in various scenarios

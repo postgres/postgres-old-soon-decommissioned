@@ -25,7 +25,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -35,7 +35,9 @@
  *		typedef struct FormData_pg_proc
  * ----------------
  */
-CATALOG(pg_proc) BOOTSTRAP
+#define ProcedureRelationId  1255
+
+CATALOG(pg_proc,1255) BKI_BOOTSTRAP
 {
 	NameData	proname;		/* procedure name */
 	Oid			pronamespace;	/* OID of namespace containing this proc */

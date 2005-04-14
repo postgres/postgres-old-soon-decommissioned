@@ -24,7 +24,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -34,7 +34,9 @@
  *		typedef struct FormData_pg_am
  * ----------------
  */
-CATALOG(pg_am)
+#define AccessMethodRelationId  2601
+
+CATALOG(pg_am,2601)
 {
 	NameData	amname;			/* access method name */
 	int2		amstrategies;	/* total NUMBER of strategies (operators)

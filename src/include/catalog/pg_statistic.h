@@ -21,7 +21,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -37,7 +37,9 @@ typedef struct varlena anyarray;
  *		typedef struct FormData_pg_statistic
  * ----------------
  */
-CATALOG(pg_statistic) BKI_WITHOUT_OIDS
+#define StatisticRelationId  2619
+
+CATALOG(pg_statistic,2619) BKI_WITHOUT_OIDS
 {
 	/* These fields form the unique key for the entry: */
 	Oid			starelid;		/* relation containing attribute */

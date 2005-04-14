@@ -149,7 +149,7 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 	myself.objectSubId = 0;
 
 	/* dependency on the PL handler function */
-	referenced.classId = RelOid_pg_proc;
+	referenced.classId = ProcedureRelationId;
 	referenced.objectId = procOid;
 	referenced.objectSubId = 0;
 	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
@@ -157,7 +157,7 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 	/* dependency on the validator function, if any */
 	if (OidIsValid(valProcOid))
 	{
-		referenced.classId = RelOid_pg_proc;
+		referenced.classId = ProcedureRelationId;
 		referenced.objectId = valProcOid;
 		referenced.objectSubId = 0;
 		recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);

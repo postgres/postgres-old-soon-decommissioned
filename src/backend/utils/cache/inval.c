@@ -541,7 +541,7 @@ PrepareForTupleInvalidation(Relation relation, HeapTuple tuple)
 	 */
 	tupleRelId = RelationGetRelid(relation);
 
-	if (tupleRelId == RelOid_pg_class)
+	if (tupleRelId == RelationRelationId)
 	{
 		Form_pg_class classtup = (Form_pg_class) GETSTRUCT(tuple);
 		RelFileNode rnode;
@@ -575,7 +575,7 @@ PrepareForTupleInvalidation(Relation relation, HeapTuple tuple)
 		rnode.relNode = classtup->relfilenode;
 		RegisterSmgrInvalidation(rnode);
 	}
-	else if (tupleRelId == RelOid_pg_attribute)
+	else if (tupleRelId == AttributeRelationId)
 	{
 		Form_pg_attribute atttup = (Form_pg_attribute) GETSTRUCT(tuple);
 

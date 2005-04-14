@@ -20,7 +20,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -31,8 +31,9 @@
  *		cpp turns this into typedef struct FormData_pg_listener
  * ----------------------------------------------------------------
  */
+#define ListenerRelationId  2614
 
-CATALOG(pg_listener) BKI_WITHOUT_OIDS
+CATALOG(pg_listener,2614) BKI_WITHOUT_OIDS
 {
 	NameData	relname;
 	int4		listenerpid;

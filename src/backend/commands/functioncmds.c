@@ -719,7 +719,7 @@ RemoveFunction(RemoveFuncStmt *stmt)
 	/*
 	 * Do the deletion
 	 */
-	object.classId = RelOid_pg_proc;
+	object.classId = ProcedureRelationId;
 	object.objectId = funcOid;
 	object.objectSubId = 0;
 
@@ -1304,13 +1304,13 @@ CreateCast(CreateCastStmt *stmt)
 	myself.objectSubId = 0;
 
 	/* dependency on source type */
-	referenced.classId = RelOid_pg_type;
+	referenced.classId = TypeRelationId;
 	referenced.objectId = sourcetypeid;
 	referenced.objectSubId = 0;
 	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
 
 	/* dependency on target type */
-	referenced.classId = RelOid_pg_type;
+	referenced.classId = TypeRelationId;
 	referenced.objectId = targettypeid;
 	referenced.objectSubId = 0;
 	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
@@ -1318,7 +1318,7 @@ CreateCast(CreateCastStmt *stmt)
 	/* dependency on function */
 	if (OidIsValid(funcid))
 	{
-		referenced.classId = RelOid_pg_proc;
+		referenced.classId = ProcedureRelationId;
 		referenced.objectId = funcid;
 		referenced.objectSubId = 0;
 		recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);

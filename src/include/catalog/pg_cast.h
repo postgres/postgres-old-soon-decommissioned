@@ -21,7 +21,9 @@
 #ifndef PG_CAST_H
 #define PG_CAST_H
 
-CATALOG(pg_cast)
+#define CastRelationId  2605
+
+CATALOG(pg_cast,2605)
 {
 	Oid			castsource;		/* source datatype for cast */
 	Oid			casttarget;		/* destination datatype for cast */

@@ -21,7 +21,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -40,7 +40,9 @@
  *	condefault			TRUE if this is a default conversion
  * ----------------------------------------------------------------
  */
-CATALOG(pg_conversion)
+#define ConversionRelationId  2607
+
+CATALOG(pg_conversion,2607)
 {
 	NameData	conname;
 	Oid			connamespace;

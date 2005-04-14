@@ -20,6 +20,7 @@
 /* commands/indexcmds.c */
 extern void DefineIndex(RangeVar *heapRelation,
 			char *indexRelationName,
+			Oid indexRelationId,
 			char *accessMethodName,
 			char *tableSpaceName,
 			List *attributeList,

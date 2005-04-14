@@ -759,6 +759,7 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 		intoRelationId = heap_create_with_catalog(intoName,
 												  namespaceId,
 												  InvalidOid,
+												  InvalidOid,
 												  tupdesc,
 												  RELKIND_RELATION,
 												  false,

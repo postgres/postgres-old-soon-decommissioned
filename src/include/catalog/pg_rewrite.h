@@ -24,7 +24,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -34,7 +34,9 @@
  *		typedef struct FormData_pg_rewrite
  * ----------------
  */
-CATALOG(pg_rewrite)
+#define RewriteRelationId  2618
+
+CATALOG(pg_rewrite,2618)
 {
 	NameData	rulename;
 	Oid			ev_class;

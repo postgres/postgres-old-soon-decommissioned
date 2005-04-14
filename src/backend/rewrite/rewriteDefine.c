@@ -148,11 +148,11 @@ InsertRule(char *rulname,
 	 * implicit --- this prevents deleting a view's SELECT rule.  Other
 	 * kinds of rules can be AUTO.
 	 */
-	myself.classId = RelationGetRelid(pg_rewrite_desc);
+	myself.classId = RewriteRelationId;
 	myself.objectId = rewriteObjectId;
 	myself.objectSubId = 0;
 
-	referenced.classId = RelOid_pg_class;
+	referenced.classId = RelationRelationId;
 	referenced.objectId = eventrel_oid;
 	referenced.objectSubId = 0;
 

@@ -26,7 +26,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -36,7 +36,9 @@
  *		typedef struct FormData_pg_operator
  * ----------------
  */
-CATALOG(pg_operator)
+#define OperatorRelationId  2617
+
+CATALOG(pg_operator,2617)
 {
 	NameData	oprname;		/* name of operator */
 	Oid			oprnamespace;	/* OID of namespace containing this oper */

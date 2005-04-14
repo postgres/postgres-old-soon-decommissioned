@@ -21,7 +21,7 @@
 
 /* ----------------
  *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
+ *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
  *		can be read by both genbki.sh and the C compiler.
  * ----------------
  */
@@ -36,7 +36,9 @@
  *	nspacl				access privilege list
  * ----------------------------------------------------------------
  */
-CATALOG(pg_namespace)
+#define NamespaceRelationId  2615
+
+CATALOG(pg_namespace,2615)
 {
 	NameData	nspname;
 	int4		nspowner;
