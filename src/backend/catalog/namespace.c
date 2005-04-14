@@ -20,7 +20,6 @@
 #include "postgres.h"
 
 #include "access/xact.h"
-#include "catalog/catname.h"
 #include "catalog/dependency.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_conversion.h"
@@ -1783,7 +1782,7 @@ RemoveTempRelations(Oid tempNamespaceId)
 	 * be a waste of cycles).  We do this by finding everything that has a
 	 * dependency on the namespace.
 	 */
-	object.classId = get_system_catalog_relid(NamespaceRelationName);
+	object.classId = NamespaceRelationId;
 	object.objectId = tempNamespaceId;
 	object.objectSubId = 0;
 

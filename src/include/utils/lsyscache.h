@@ -62,7 +62,6 @@ extern bool get_func_retset(Oid funcid);
 extern bool func_strict(Oid funcid);
 extern char func_volatile(Oid funcid);
 extern Oid	get_relname_relid(const char *relname, Oid relnamespace);
-extern Oid	get_system_catalog_relid(const char *catname);
 extern char *get_rel_name(Oid relid);
 extern Oid	get_rel_namespace(Oid relid);
 extern Oid	get_rel_type_id(Oid relid);

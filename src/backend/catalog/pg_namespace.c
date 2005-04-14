@@ -15,7 +15,6 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "catalog/catname.h"
 #include "catalog/indexing.h"
 #include "catalog/pg_namespace.h"
 #include "utils/builtins.h"
@@ -61,7 +60,7 @@ NamespaceCreate(const char *nspName, int32 ownerSysId)
 	values[Anum_pg_namespace_nspowner - 1] = Int32GetDatum(ownerSysId);
 	nulls[Anum_pg_namespace_nspacl - 1] = 'n';
 
-	nspdesc = heap_openr(NamespaceRelationName, RowExclusiveLock);
+	nspdesc = heap_open(NamespaceRelationId, RowExclusiveLock);
 	tupDesc = nspdesc->rd_att;
 
 	tup = heap_formtuple(tupDesc, values, nulls);

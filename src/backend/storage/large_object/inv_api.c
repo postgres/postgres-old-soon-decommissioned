@@ -19,7 +19,6 @@
 #include "access/heapam.h"
 #include "access/tuptoaster.h"
 #include "catalog/catalog.h"
-#include "catalog/catname.h"
 #include "catalog/indexing.h"
 #include "catalog/pg_largeobject.h"
 #include "commands/comment.h"
@@ -60,9 +59,9 @@ open_lo_relation(void)
 
 		/* Use RowExclusiveLock since we might either read or write */
 		if (lo_heap_r == NULL)
-			lo_heap_r = heap_openr(LargeObjectRelationName, RowExclusiveLock);
+			lo_heap_r = heap_open(LargeObjectRelationId, RowExclusiveLock);
 		if (lo_index_r == NULL)
-			lo_index_r = index_openr(LargeObjectLOidPNIndex);
+			lo_index_r = index_open(LargeObjectLOidPNIndexId);
 	}
 	PG_CATCH();
 	{
@@ -230,15 +229,10 @@ inv_close(LargeObjectDesc *obj_desc)
 int
 inv_drop(Oid lobjId)
 {
-	Oid			classoid;
-
 	LargeObjectDrop(lobjId);
 
-	/* pg_largeobject doesn't have a hard-coded OID, so must look it up */
-	classoid = get_system_catalog_relid(LargeObjectRelationName);
-
 	/* Delete any comments on the large object */
-	DeleteComments(lobjId, classoid, 0);
+	DeleteComments(lobjId, LargeObjectRelationId, 0);
 
 	/*
 	 * Advance command counter so that tuple removal will be seen by later

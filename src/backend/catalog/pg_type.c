@@ -15,9 +15,9 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "catalog/catname.h"
 #include "catalog/dependency.h"
 #include "catalog/indexing.h"
+#include "catalog/pg_namespace.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
 #include "miscadmin.h"
@@ -56,7 +56,7 @@ TypeShellMake(const char *typeName, Oid typeNamespace)
 	/*
 	 * open pg_type
 	 */
-	pg_type_desc = heap_openr(TypeRelationName, RowExclusiveLock);
+	pg_type_desc = heap_open(TypeRelationId, RowExclusiveLock);
 	tupDesc = pg_type_desc->rd_att;
 
 	/*
@@ -274,7 +274,7 @@ TypeCreate(const char *typeName,
 	 * NOTE: updating will not work correctly in bootstrap mode; but we don't
 	 * expect to be overwriting any shell types in bootstrap mode.
 	 */
-	pg_type_desc = heap_openr(TypeRelationName, RowExclusiveLock);
+	pg_type_desc = heap_open(TypeRelationId, RowExclusiveLock);
 
 	tup = SearchSysCacheCopy(TYPENAMENSP,
 							 CStringGetDatum(typeName),
@@ -389,7 +389,7 @@ GenerateTypeDependencies(Oid typeNamespace,
 	/* skip for relation rowtype, since we have indirect dependency */
 	if (!OidIsValid(relationOid))
 	{
-		referenced.classId = get_system_catalog_relid(NamespaceRelationName);
+		referenced.classId = NamespaceRelationId;
 		referenced.objectId = typeNamespace;
 		referenced.objectSubId = 0;
 		recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
@@ -502,7 +502,7 @@ TypeRename(const char *oldTypeName, Oid typeNamespace,
 	Relation	pg_type_desc;
 	HeapTuple	tuple;
 
-	pg_type_desc = heap_openr(TypeRelationName, RowExclusiveLock);
+	pg_type_desc = heap_open(TypeRelationId, RowExclusiveLock);
 
 	tuple = SearchSysCacheCopy(TYPENAMENSP,
 							   CStringGetDatum(oldTypeName),

@@ -70,7 +70,6 @@ typedef SysScanDescData *SysScanDesc;
  */
 extern Relation index_open(Oid relationId);
 extern Relation index_openrv(const RangeVar *relation);
-extern Relation index_openr(const char *sysRelationName);
 extern void index_close(Relation relation);
 extern bool index_insert(Relation indexRelation,
 			 Datum *values, bool *isnull,
@@ -119,7 +118,7 @@ extern void IndexScanEnd(IndexScanDesc scan);
  * heap-or-index access to system catalogs (in genam.c)
  */
 extern SysScanDesc systable_beginscan(Relation heapRelation,
-				   const char *indexRelname,
+				   Oid indexId,
 				   bool indexOK,
 				   Snapshot snapshot,
 				   int nkeys, ScanKey key);

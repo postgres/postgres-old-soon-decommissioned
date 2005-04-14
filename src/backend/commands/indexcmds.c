@@ -17,7 +17,6 @@
 
 #include "access/heapam.h"
 #include "catalog/catalog.h"
-#include "catalog/catname.h"
 #include "catalog/dependency.h"
 #include "catalog/heap.h"
 #include "catalog/index.h"
@@ -1039,7 +1038,7 @@ ReindexDatabase(const char *dbname, bool force /* currently unused */ ,
 	 * We only consider plain relations here (toast rels will be processed
 	 * indirectly by reindex_relation).
 	 */
-	relationRelation = heap_openr(RelationRelationName, AccessShareLock);
+	relationRelation = heap_open(RelationRelationId, AccessShareLock);
 	scan = heap_beginscan(relationRelation, SnapshotNow, 0, NULL);
 	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{

@@ -29,7 +29,6 @@
 #include <utime.h>
 #endif
 
-#include "catalog/catname.h"
 #include "catalog/pg_shadow.h"
 #include "libpq/libpq-be.h"
 #include "miscadmin.h"

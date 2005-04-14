@@ -20,7 +20,6 @@
  * relation lookup routines
  */
 extern Relation RelationIdGetRelation(Oid relationId);
-extern Relation RelationSysNameGetRelation(const char *relationName);
 
 /* finds an existing cache entry, but won't make a new one */
 extern Relation RelationIdCacheGetRelation(Oid relationId);

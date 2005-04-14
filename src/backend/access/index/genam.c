@@ -162,7 +162,7 @@ IndexScanEnd(IndexScanDesc scan)
  * systable_beginscan --- set up for heap-or-index scan
  *
  *	rel: catalog to scan, already opened and suitably locked
- *	indexRelname: name of index to conditionally use
+ *	indexId: OID of index to conditionally use
  *	indexOK: if false, forces a heap scan (see notes below)
  *	snapshot: time qual to use (usually should be SnapshotNow)
  *	nkeys, key: scan keys
@@ -179,7 +179,7 @@ IndexScanEnd(IndexScanDesc scan)
  */
 SysScanDesc
 systable_beginscan(Relation heapRelation,
-				   const char *indexRelname,
+				   Oid indexId,
 				   bool indexOK,
 				   Snapshot snapshot,
 				   int nkeys, ScanKey key)
@@ -187,18 +187,10 @@ systable_beginscan(Relation heapRelation,
 	SysScanDesc sysscan;
 	Relation	irel;
 
-	if (indexOK && !IsIgnoringSystemIndexes())
-	{
-		/* We assume it's a system index, so index_openr is OK */
-		irel = index_openr(indexRelname);
-
-		if (ReindexIsProcessingIndex(RelationGetRelid(irel)))
-		{
-			/* oops, can't use index that's being rebuilt */
-			index_close(irel);
-			irel = NULL;
-		}
-	}
+	if (indexOK &&
+		!IsIgnoringSystemIndexes() &&
+		!ReindexIsProcessingIndex(indexId))
+		irel = index_open(indexId);
 	else
 		irel = NULL;
 

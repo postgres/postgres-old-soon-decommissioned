@@ -15,12 +15,12 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "catalog/catname.h"
 #include "catalog/dependency.h"
 #include "catalog/indexing.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_aggregate.h"
 #include "catalog/pg_language.h"
+#include "catalog/pg_operator.h"
 #include "catalog/pg_proc.h"
 #include "miscadmin.h"
 #include "optimizer/cost.h"
@@ -224,7 +224,7 @@ AggregateCreate(const char *aggName,
 	else
 		nulls[Anum_pg_aggregate_agginitval - 1] = 'n';
 
-	aggdesc = heap_openr(AggregateRelationName, RowExclusiveLock);
+	aggdesc = heap_open(AggregateRelationId, RowExclusiveLock);
 	tupDesc = aggdesc->rd_att;
 
 	tup = heap_formtuple(tupDesc, values, nulls);
@@ -262,7 +262,7 @@ AggregateCreate(const char *aggName,
 	/* Depends on sort operator, if any */
 	if (OidIsValid(sortop))
 	{
-		referenced.classId = get_system_catalog_relid(OperatorRelationName);
+		referenced.classId = OperatorRelationId;
 		referenced.objectId = sortop;
 		referenced.objectSubId = 0;
 		recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);

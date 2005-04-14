@@ -931,25 +931,6 @@ get_relname_relid(const char *relname, Oid relnamespace)
 						  0, 0);
 }
 
-/*
- * get_system_catalog_relid
- *		Get the OID of a system catalog identified by name.
- */
-Oid
-get_system_catalog_relid(const char *catname)
-{
-	Oid			relid;
-
-	relid = GetSysCacheOid(RELNAMENSP,
-						   PointerGetDatum(catname),
-						   ObjectIdGetDatum(PG_CATALOG_NAMESPACE),
-						   0, 0);
-	if (!OidIsValid(relid))
-		elog(ERROR, "cache lookup failed for system relation %s", catname);
-
-	return relid;
-}
-
 #ifdef NOT_USED
 /*
  * get_relnatts

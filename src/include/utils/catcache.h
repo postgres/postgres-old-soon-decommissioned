@@ -36,8 +36,8 @@ typedef struct catcache
 	int			id;				/* cache identifier --- see syscache.h */
 	struct catcache *cc_next;	/* link to next catcache */
 	const char *cc_relname;		/* name of relation the tuples come from */
-	const char *cc_indname;		/* name of index matching cache keys */
 	Oid			cc_reloid;		/* OID of relation the tuples come from */
+	Oid			cc_indexoid;	/* OID of index matching cache keys */
 	bool		cc_relisshared; /* is relation shared across databases? */
 	TupleDesc	cc_tupdesc;		/* tuple descriptor (copied from reldesc) */
 	int			cc_reloidattr;	/* AttrNumber of relation OID attr, or 0 */
@@ -164,7 +164,7 @@ extern DLLIMPORT MemoryContext CacheMemoryContext;
 extern void CreateCacheMemoryContext(void);
 extern void AtEOXact_CatCache(bool isCommit);
 
-extern CatCache *InitCatCache(int id, const char *relname, const char *indname,
+extern CatCache *InitCatCache(int id, Oid reloid, Oid indexoid,
 			 int reloidattr,
 			 int nkeys, const int *key);
 extern void InitCatCachePhase2(CatCache *cache);

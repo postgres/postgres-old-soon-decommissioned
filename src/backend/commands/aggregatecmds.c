@@ -23,7 +23,6 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "catalog/catname.h"
 #include "catalog/dependency.h"
 #include "catalog/indexing.h"
 #include "catalog/namespace.h"
@@ -236,7 +235,7 @@ RenameAggregate(List *name, TypeName *basetype, const char *newname)
 	else
 		basetypeOid = ANYOID;
 
-	rel = heap_openr(ProcedureRelationName, RowExclusiveLock);
+	rel = heap_open(ProcedureRelationId, RowExclusiveLock);
 
 	procOid = find_aggregate_func(name, basetypeOid, false);
 
@@ -315,7 +314,7 @@ AlterAggregateOwner(List *name, TypeName *basetype, AclId newOwnerSysId)
 	else
 		basetypeOid = ANYOID;
 
-	rel = heap_openr(ProcedureRelationName, RowExclusiveLock);
+	rel = heap_open(ProcedureRelationId, RowExclusiveLock);
 
 	procOid = find_aggregate_func(name, basetypeOid, false);
 

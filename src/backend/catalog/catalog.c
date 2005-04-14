@@ -18,7 +18,6 @@
 
 #include "access/transam.h"
 #include "catalog/catalog.h"
-#include "catalog/catname.h"
 #include "catalog/pg_namespace.h"
 #include "catalog/pg_tablespace.h"
 #include "miscadmin.h"

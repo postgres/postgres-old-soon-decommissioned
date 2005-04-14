@@ -42,7 +42,6 @@
 #include "pl.tab.h"
 
 #include "access/heapam.h"
-#include "catalog/catname.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_attribute.h"
 #include "catalog/pg_attrdef.h"

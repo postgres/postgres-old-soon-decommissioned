@@ -19,7 +19,6 @@
 
 #include "access/genam.h"
 #include "access/heapam.h"
-#include "catalog/catname.h"
 #include "catalog/pg_amop.h"
 #include "catalog/pg_inherits.h"
 #include "catalog/pg_index.h"
@@ -509,7 +508,7 @@ find_inheritance_children(Oid inhparent)
 				Anum_pg_inherits_inhparent,
 				BTEqualStrategyNumber, F_OIDEQ,
 				ObjectIdGetDatum(inhparent));
-	relation = heap_openr(InheritsRelationName, AccessShareLock);
+	relation = heap_open(InheritsRelationId, AccessShareLock);
 	scan = heap_beginscan(relation, SnapshotNow, 1, key);
 	while ((inheritsTuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{

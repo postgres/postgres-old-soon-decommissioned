@@ -15,7 +15,6 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "catalog/catname.h"
 #include "catalog/pg_inherits.h"
 #include "catalog/pg_proc.h"
 #include "funcapi.h"
@@ -922,7 +921,7 @@ find_inheritors(Oid relid, Oid **supervec)
 	queue = list_make1_oid(relid);
 	visited = NIL;
 
-	inhrel = heap_openr(InheritsRelationName, AccessShareLock);
+	inhrel = heap_open(InheritsRelationId, AccessShareLock);
 
 	/*
 	 * Use queue to do a breadth-first traversal of the inheritance graph

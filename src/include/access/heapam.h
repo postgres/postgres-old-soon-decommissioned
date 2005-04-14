@@ -126,12 +126,10 @@ extern Datum fastgetattr(HeapTuple tup, int attnum, TupleDesc tupleDesc,
 extern Relation relation_open(Oid relationId, LOCKMODE lockmode);
 extern Relation conditional_relation_open(Oid relationId, LOCKMODE lockmode, bool nowait);
 extern Relation relation_openrv(const RangeVar *relation, LOCKMODE lockmode);
-extern Relation relation_openr(const char *sysRelationName, LOCKMODE lockmode);
 extern void relation_close(Relation relation, LOCKMODE lockmode);
 
 extern Relation heap_open(Oid relationId, LOCKMODE lockmode);
 extern Relation heap_openrv(const RangeVar *relation, LOCKMODE lockmode);
-extern Relation heap_openr(const char *sysRelationName, LOCKMODE lockmode);
 
 #define heap_close(r,l)  relation_close(r,l)
 

@@ -46,7 +46,6 @@
 #include "access/heapam.h"
 #include "access/hash.h"
 #include "access/nbtree.h"
-#include "catalog/catname.h"
 #include "catalog/indexing.h"
 #include "catalog/pg_am.h"
 #include "catalog/pg_opclass.h"
@@ -328,14 +327,14 @@ lookup_default_opclass(Oid type_id, Oid am_id)
 	 * that we consider all opclasses, regardless of the current search
 	 * path.
 	 */
-	rel = heap_openr(OperatorClassRelationName, AccessShareLock);
+	rel = heap_open(OperatorClassRelationId, AccessShareLock);
 
 	ScanKeyInit(&skey[0],
 				Anum_pg_opclass_opcamid,
 				BTEqualStrategyNumber, F_OIDEQ,
 				ObjectIdGetDatum(am_id));
 
-	scan = systable_beginscan(rel, OpclassAmNameNspIndex, true,
+	scan = systable_beginscan(rel, OpclassAmNameNspIndexId, true,
 							  SnapshotNow, 1, skey);
 
 	while (HeapTupleIsValid(tup = systable_getnext(scan)))
