@@ -211,6 +211,13 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate)
 		elog(ERROR, "function in FROM has unsupported return type");
 	}
 
+	/*
+	 * For RECORD results, make sure a typmod has been assigned.  (The
+	 * function should do this for itself, but let's cover things in case
+	 * it doesn't.)
+	 */
+	BlessTupleDesc(tupdesc);
+
 	scanstate->tupdesc = tupdesc;
 	ExecSetSlotDescriptor(scanstate->ss.ss_ScanTupleSlot,
 						  tupdesc, false);
