@@ -1668,6 +1668,13 @@ evaluate_function(Oid funcid, Oid result_type, List *args,
 		return NULL;
 
 	/*
+	 * Can't simplify if it returns RECORD, since it will be needing an
+	 * expected tupdesc which we can't supply here.
+	 */
+	if (funcform->prorettype == RECORDOID)
+		return NULL;
+
+	/*
 	 * Check for constant inputs and especially constant-NULL inputs.
 	 */
 	foreach(arg, args)
