@@ -184,5 +184,6 @@ extern long hash_select_dirsize(long num_entries);
  */
 extern uint32 string_hash(const void *key, Size keysize);
 extern uint32 tag_hash(const void *key, Size keysize);
+extern uint32 oid_hash(const void *key, Size keysize);
 
 #endif   /* HSEARCH_H */

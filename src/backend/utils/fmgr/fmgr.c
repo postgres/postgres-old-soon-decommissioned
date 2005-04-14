@@ -509,7 +509,7 @@ record_C_func(HeapTuple procedureTuple,
 		MemSet(&hash_ctl, 0, sizeof(hash_ctl));
 		hash_ctl.keysize = sizeof(Oid);
 		hash_ctl.entrysize = sizeof(CFuncHashTabEntry);
-		hash_ctl.hash = tag_hash;
+		hash_ctl.hash = oid_hash;
 		CFuncHash = hash_create("CFuncHash",
 								100,
 								&hash_ctl,

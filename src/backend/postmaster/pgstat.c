@@ -2065,7 +2065,7 @@ pgstat_add_backend(PgStat_MsgHdr *msg)
 		memset(&hash_ctl, 0, sizeof(hash_ctl));
 		hash_ctl.keysize = sizeof(Oid);
 		hash_ctl.entrysize = sizeof(PgStat_StatTabEntry);
-		hash_ctl.hash = tag_hash;
+		hash_ctl.hash = oid_hash;
 		dbentry->tables = hash_create("Per-database table",
 									  PGSTAT_TAB_HASH_SIZE,
 									  &hash_ctl,
@@ -2364,7 +2364,7 @@ pgstat_read_statsfile(HTAB **dbhash, Oid onlydb,
 	memset(&hash_ctl, 0, sizeof(hash_ctl));
 	hash_ctl.keysize = sizeof(Oid);
 	hash_ctl.entrysize = sizeof(PgStat_StatDBEntry);
-	hash_ctl.hash = tag_hash;
+	hash_ctl.hash = oid_hash;
 	hash_ctl.hcxt = use_mcxt;
 	*dbhash = hash_create("Databases hash", PGSTAT_DB_HASH_SIZE, &hash_ctl,
 						  HASH_ELEM | HASH_FUNCTION | mcxt_flags);
@@ -2453,7 +2453,7 @@ pgstat_read_statsfile(HTAB **dbhash, Oid onlydb,
 				memset(&hash_ctl, 0, sizeof(hash_ctl));
 				hash_ctl.keysize = sizeof(Oid);
 				hash_ctl.entrysize = sizeof(PgStat_StatTabEntry);
-				hash_ctl.hash = tag_hash;
+				hash_ctl.hash = oid_hash;
 				hash_ctl.hcxt = use_mcxt;
 				dbentry->tables = hash_create("Per-database table",
 											  PGSTAT_TAB_HASH_SIZE,
@@ -2888,7 +2888,7 @@ pgstat_recv_resetcounter(PgStat_MsgResetcounter *msg, int len)
 	memset(&hash_ctl, 0, sizeof(hash_ctl));
 	hash_ctl.keysize = sizeof(Oid);
 	hash_ctl.entrysize = sizeof(PgStat_StatTabEntry);
-	hash_ctl.hash = tag_hash;
+	hash_ctl.hash = oid_hash;
 	dbentry->tables = hash_create("Per-database table",
 								  PGSTAT_TAB_HASH_SIZE,
 								  &hash_ctl,

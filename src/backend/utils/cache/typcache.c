@@ -123,7 +123,7 @@ lookup_type_cache(Oid type_id, int flags)
 		MemSet(&ctl, 0, sizeof(ctl));
 		ctl.keysize = sizeof(Oid);
 		ctl.entrysize = sizeof(TypeCacheEntry);
-		ctl.hash = tag_hash;
+		ctl.hash = oid_hash;
 		TypeCacheHash = hash_create("Type information cache", 64,
 									&ctl, HASH_ELEM | HASH_FUNCTION);
 	}
