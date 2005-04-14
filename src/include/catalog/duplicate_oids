@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# duplicate_oids
+#
+# $PostgreSQL$
+#
+# finds manually-assigned oids that are duplicated in the system tables.
+#
+# run this script in src/include/catalog.
+#
+
+# note: we exclude BKI_BOOTSTRAP relations since they are expected to have
+# matching DATA lines in pg_class.h
+
+cat pg_*.h indexing.h | \
+egrep -v -e '^CATALOG\(.*BKI_BOOTSTRAP' | \
+sed -n	-e 's/^DATA(insert *OID *= *\([0-9][0-9]*\).*$/\1/p' \
+	-e 's/^CATALOG([^,]*, *\([0-9][0-9]*\).*$/\1/p' \
+	-e 's/^DECLARE_INDEX([^,]*, *\([0-9][0-9]*\).*$/\1/p' \
+	-e 's/^DECLARE_UNIQUE_INDEX([^,]*, *\([0-9][0-9]*\).*$/\1/p' | \
+sort -n | \
+uniq -d
+
+exit 0
