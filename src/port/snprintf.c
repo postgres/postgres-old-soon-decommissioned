@@ -194,7 +194,7 @@ dopr(char *buffer, const char *format, va_list args, char *end)
 	int			precision;
 	int			position;
 	char	   *output;
-	int			percents = 1;
+	int			nargs = 1;
 	const char *p;
 	struct fmtpar
 	{
@@ -220,18 +220,22 @@ dopr(char *buffer, const char *format, va_list args, char *end)
 		int			longlongflag;
 	}		   *fmtpar, **fmtparptr;
 
-	/* Create enough structures to hold all arguments */
+	/*
+	 * Create enough structures to hold all arguments.  This overcounts,
+	 * eg not all '*' characters are necessarily arguments, but it's not
+	 * worth being exact.
+	 */
 	for (p = format; *p != '\0'; p++)
-		if (*p == '%')			/* counts %% as two, so overcounts */
-			percents++;
+		if (*p == '%' || *p == '*')
+			nargs++;
 
 	/* Need to use malloc() because memory system might not be started yet. */
-	if ((fmtpar = malloc(sizeof(struct fmtpar) * percents)) == NULL)
+	if ((fmtpar = malloc(sizeof(struct fmtpar) * nargs)) == NULL)
 	{
 		fprintf(stderr, _("out of memory\n"));
 		exit(1);
 	}
-	if ((fmtparptr = malloc(sizeof(struct fmtpar *) * percents)) == NULL)
+	if ((fmtparptr = malloc(sizeof(struct fmtpar *) * nargs)) == NULL)
 	{
 		fprintf(stderr, _("out of memory\n"));
 		exit(1);
