@@ -19,6 +19,7 @@
 
 #include "postgres.h"
 
+#include "access/heapam.h"
 #include "catalog/pg_aggregate.h"
 #include "catalog/pg_language.h"
 #include "catalog/pg_operator.h"
@@ -2101,6 +2102,16 @@ evaluate_function(Oid funcid, Oid result_type, List *args,
 	 * Can't simplify if it returns a set.
 	 */
 	if (funcform->proretset)
+		return NULL;
+
+	/*
+	 * Can't simplify if it returns RECORD, except in the case where it has
+	 * OUT parameters, since it will be needing an expected tupdesc which we
+	 * can't supply here.
+	 */
+	if (funcform->prorettype == RECORDOID &&
+		(heap_attisnull(func_tuple, Anum_pg_proc_proallargtypes) ||
+		 heap_attisnull(func_tuple, Anum_pg_proc_proargmodes)))
 		return NULL;
 
 	/*
