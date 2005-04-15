@@ -74,7 +74,6 @@ static PROC_HDR *ProcGlobal = NULL;
 static PGPROC *DummyProcs = NULL;
 
 static bool waitingForLock = false;
-static bool waitingForSignal = false;
 
 /* Mark these volatile because they can be changed by signal handler */
 static volatile bool statement_timeout_active = false;
@@ -962,9 +961,7 @@ CheckDeadLock(void)
 void
 ProcWaitForSignal(void)
 {
-	waitingForSignal = true;
 	PGSemaphoreLock(&MyProc->sem, true);
-	waitingForSignal = false;
 }
 
 /*
@@ -978,7 +975,6 @@ void
 ProcCancelWaitForSignal(void)
 {
 	PGSemaphoreReset(&MyProc->sem);
-	waitingForSignal = false;
 }
 
 /*
