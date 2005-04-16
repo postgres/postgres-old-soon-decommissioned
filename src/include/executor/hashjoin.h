@@ -83,7 +83,7 @@ typedef struct HashJoinTableData
 
 	bool		growEnabled;	/* flag to shut off nbatch increases */
 
-	bool		hashNonEmpty;	/* did inner plan produce any rows? */
+	double		totalTuples;	/* # tuples obtained from inner plan */
 
 	/*
 	 * These arrays are allocated for the life of the hash join, but

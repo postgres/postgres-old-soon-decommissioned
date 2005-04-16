@@ -19,6 +19,7 @@
 extern int	ExecCountSlotsHash(Hash *node);
 extern HashState *ExecInitHash(Hash *node, EState *estate);
 extern TupleTableSlot *ExecHash(HashState *node);
+extern Node *MultiExecHash(HashState *node);
 extern void ExecEndHash(HashState *node);
 extern void ExecReScanHash(HashState *node, ExprContext *exprCtxt);
 

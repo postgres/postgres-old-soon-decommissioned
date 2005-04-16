@@ -105,6 +105,7 @@ extern TupleTableSlot *EvalPlanQual(EState *estate, Index rti,
  */
 extern PlanState *ExecInitNode(Plan *node, EState *estate);
 extern TupleTableSlot *ExecProcNode(PlanState *node);
+extern Node *MultiExecProcNode(PlanState *node);
 extern int	ExecCountSlotsNode(Plan *node);
 extern void ExecEndNode(PlanState *node);
 

@@ -123,13 +123,13 @@ ExecHashJoin(HashJoinState *node)
 		 * execute the Hash node, to build the hash table
 		 */
 		hashNode->hashtable = hashtable;
-		(void) ExecProcNode((PlanState *) hashNode);
+		(void) MultiExecProcNode((PlanState *) hashNode);
 
 		/*
 		 * If the inner relation is completely empty, and we're not doing
 		 * an outer join, we can quit without scanning the outer relation.
 		 */
-		if (!hashtable->hashNonEmpty && node->js.jointype != JOIN_LEFT)
+		if (hashtable->totalTuples == 0 && node->js.jointype != JOIN_LEFT)
 		{
 			ExecHashTableDestroy(hashtable);
 			node->hj_HashTable = NULL;
