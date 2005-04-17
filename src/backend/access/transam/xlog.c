@@ -5194,7 +5194,7 @@ assign_xlog_sync_method(const char *method, bool doit, GucSource source)
 #ifndef FSYNC_IS_WRITE_THROUGH
 	if (pg_strcasecmp(method, "fsync") == 0)
 #else
-	/* Win32 fsync() == _commit(0, which writes through a write cache */
+	/* Win32 fsync() == _commit(), which writes through a write cache */
 	if (pg_strcasecmp(method, "fsync_writethrough") == 0)
 #endif
 	{
