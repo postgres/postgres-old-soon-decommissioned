@@ -304,11 +304,16 @@ typedef enum NodeTag
 	T_FunctionParameter,
 
 	/*
-	 * TAGS FOR FUNCTION-CALL CONTEXT AND RESULTINFO NODES (see fmgr.h)
+	 * TAGS FOR RANDOM OTHER STUFF
+	 *
+	 * These are objects that aren't part of parse/plan/execute node tree
+	 * structures, but we give them NodeTags anyway for identification
+	 * purposes (usually because they are involved in APIs where we want
+	 * to pass multiple object types through the same pointer).
 	 */
 	T_TriggerData = 900,		/* in commands/trigger.h */
-	T_ReturnSetInfo				/* in nodes/execnodes.h */
-
+	T_ReturnSetInfo,			/* in nodes/execnodes.h */
+	T_TIDBitmap					/* in nodes/tidbitmap.h */
 } NodeTag;
 
 /*
