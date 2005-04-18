@@ -688,7 +688,13 @@ SELECT pg_start_backup('label');
 <programlisting>
 SELECT pg_stop_backup();
 </programlisting>
-     If this returns successfully, you're done.
+     This should return successfully.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Once the WAL segment files used during the backup are archived as part
+     of normal database activity, you are done.
     </para>
    </listitem>
   </orderedlist>
