@@ -44,6 +44,7 @@ typedef struct cmdargs
 {
 	int			vacuum_base_threshold,
 				analyze_base_threshold,
+				update_interval,
 				sleep_base_value,
 				debug,
 				
