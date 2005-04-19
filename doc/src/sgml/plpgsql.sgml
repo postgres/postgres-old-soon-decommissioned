@@ -2104,6 +2104,7 @@ END;
      </para>
     </tip>
     <example id="plpgsql-upsert-example">
+    <title>Exceptions with UPDATE/INSERT</title>
     <para>
     This example uses an <literal>EXCEPTION</> to <command>UPDATE</> or
     <command>INSERT</>, as appropriate.
