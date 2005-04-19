@@ -19,6 +19,10 @@
 #include "executor/instrument.h"
 #include "executor/nodeAgg.h"
 #include "executor/nodeAppend.h"
+#include "executor/nodeBitmapAnd.h"
+#include "executor/nodeBitmapHeapscan.h"
+#include "executor/nodeBitmapIndexscan.h"
+#include "executor/nodeBitmapOr.h"
 #include "executor/nodeFunctionscan.h"
 #include "executor/nodeGroup.h"
 #include "executor/nodeGroup.h"
@@ -107,12 +111,28 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 			ExecReScanAppend((AppendState *) node, exprCtxt);
 			break;
 
+		case T_BitmapAndState:
+			ExecReScanBitmapAnd((BitmapAndState *) node, exprCtxt);
+			break;
+
+		case T_BitmapOrState:
+			ExecReScanBitmapOr((BitmapOrState *) node, exprCtxt);
+			break;
+
 		case T_SeqScanState:
 			ExecSeqReScan((SeqScanState *) node, exprCtxt);
 			break;
 
 		case T_IndexScanState:
 			ExecIndexReScan((IndexScanState *) node, exprCtxt);
+			break;
+
+		case T_BitmapIndexScanState:
+			ExecBitmapIndexReScan((BitmapIndexScanState *) node, exprCtxt);
+			break;
+
+		case T_BitmapHeapScanState:
+			ExecBitmapHeapReScan((BitmapHeapScanState *) node, exprCtxt);
 			break;
 
 		case T_TidScanState:
@@ -380,6 +400,7 @@ ExecMayReturnRawTuples(PlanState *node)
 			/* Table scan nodes */
 		case T_SeqScanState:
 		case T_IndexScanState:
+		case T_BitmapHeapScanState:
 		case T_TidScanState:
 		case T_SubqueryScanState:
 		case T_FunctionScanState:

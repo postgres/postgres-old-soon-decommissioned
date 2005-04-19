@@ -493,12 +493,20 @@ plannode_type(Plan *p)
 			return "RESULT";
 		case T_Append:
 			return "APPEND";
+		case T_BitmapAnd:
+			return "BITMAPAND";
+		case T_BitmapOr:
+			return "BITMAPOR";
 		case T_Scan:
 			return "SCAN";
 		case T_SeqScan:
 			return "SEQSCAN";
 		case T_IndexScan:
 			return "INDEXSCAN";
+		case T_BitmapIndexScan:
+			return "BITMAPINDEXSCAN";
+		case T_BitmapHeapScan:
+			return "BITMAPHEAPSCAN";
 		case T_TidScan:
 			return "TIDSCAN";
 		case T_SubqueryScan:
@@ -551,7 +559,8 @@ print_plan_recursive(Plan *p, Query *parsetree, int indentLevel, char *label)
 		   p->startup_cost, p->total_cost,
 		   p->plan_rows, p->plan_width);
 	if (IsA(p, Scan) ||
-		IsA(p, SeqScan))
+		IsA(p, SeqScan) ||
+		IsA(p, BitmapHeapScan))
 	{
 		RangeTblEntry *rte;
 
@@ -584,27 +593,48 @@ print_plan_recursive(Plan *p, Query *parsetree, int indentLevel, char *label)
 	if (IsA(p, Append))
 	{
 		ListCell   *l;
-		int			whichplan = 0;
 		Append	   *appendplan = (Append *) p;
 
 		foreach(l, appendplan->appendplans)
 		{
 			Plan	   *subnode = (Plan *) lfirst(l);
 
-			/*
-			 * I don't think we need to fiddle with the range table here,
-			 * bjm
-			 */
 			print_plan_recursive(subnode, parsetree, indentLevel + 3, "a: ");
+		}
+	}
 
-			whichplan++;
+	if (IsA(p, BitmapAnd))
+	{
+		ListCell   *l;
+		BitmapAnd	   *bitmapandplan = (BitmapAnd *) p;
+
+		foreach(l, bitmapandplan->bitmapplans)
+		{
+			Plan	   *subnode = (Plan *) lfirst(l);
+
+			print_plan_recursive(subnode, parsetree, indentLevel + 3, "a: ");
+		}
+	}
+
+	if (IsA(p, BitmapOr))
+	{
+		ListCell   *l;
+		BitmapOr	   *bitmaporplan = (BitmapOr *) p;
+
+		foreach(l, bitmaporplan->bitmapplans)
+		{
+			Plan	   *subnode = (Plan *) lfirst(l);
+
+			print_plan_recursive(subnode, parsetree, indentLevel + 3, "a: ");
 		}
 	}
 }
 
-/* print_plan
-  prints just the plan node types */
-
+/*
+ * print_plan
+ *
+ * prints just the plan node types
+ */
 void
 print_plan(Plan *p, Query *parsetree)
 {

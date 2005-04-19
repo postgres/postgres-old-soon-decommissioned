@@ -160,7 +160,7 @@ tbm_create(long maxbytes)
 	hash_ctl.hash = tag_hash;
 	hash_ctl.hcxt = CurrentMemoryContext;
 	tbm->pagetable = hash_create("TIDBitmap",
-								 nbuckets,
+								 128,	/* start small and extend */
 								 &hash_ctl,
 								 HASH_ELEM | HASH_FUNCTION | HASH_CONTEXT);
 

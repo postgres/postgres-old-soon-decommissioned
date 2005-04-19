@@ -401,6 +401,36 @@ cost_index(Path *path, Query *root,
 }
 
 /*
+ * cost_bitmap_scan
+ *	  Determines and returns the cost of scanning a relation using a bitmap
+ *	  index-then-heap plan.
+ *
+ * 'root' is the query root
+ * 'baserel' is the relation to be scanned
+ * 'bitmapqual' is an AND/OR tree of IndexPaths for the component scans
+ * 'is_injoin' is T if we are considering using the scan as the inside
+ *		of a nestloop join (hence, some of the quals are join clauses)
+ */
+void
+cost_bitmap_scan(Path *path, Query *root, RelOptInfo *baserel,
+				 Node *bitmapqual, bool is_injoin)
+{
+	Cost		startup_cost = 0;
+	Cost		run_cost = 0;
+
+	/* Should only be applied to base relations */
+	Assert(IsA(baserel, RelOptInfo));
+	Assert(baserel->relid > 0);
+	Assert(baserel->rtekind == RTE_RELATION);
+
+	/* XXX lots to do here */
+	run_cost += 10;
+
+	path->startup_cost = startup_cost;
+	path->total_cost = startup_cost + run_cost;
+}
+
+/*
  * cost_tidscan
  *	  Determines and returns the cost of scanning a relation using TIDs.
  */
@@ -760,6 +790,8 @@ cost_nestloop(NestPath *path, Query *root)
 	 */
 	if (IsA(inner_path, IndexPath))
 		inner_path_rows = ((IndexPath *) inner_path)->rows;
+	else if (IsA(inner_path, BitmapHeapPath))
+		inner_path_rows = ((BitmapHeapPath *) inner_path)->rows;
 
 	if (!enable_nestloop)
 		startup_cost += disable_cost;

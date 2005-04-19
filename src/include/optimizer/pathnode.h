@@ -33,6 +33,9 @@ extern IndexPath *create_index_path(Query *root,
 				  List *restriction_clauses,
 				  List *pathkeys,
 				  ScanDirection indexscandir);
+extern BitmapHeapPath *create_bitmap_heap_path(Query *root,
+											   RelOptInfo *rel,
+											   Node *bitmapqual);
 extern TidPath *create_tidscan_path(Query *root, RelOptInfo *rel,
 					List *tideval);
 extern AppendPath *create_append_path(RelOptInfo *rel, List *subpaths);

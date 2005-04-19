@@ -391,6 +391,7 @@ match_unsorted_outer(Query *root,
 		 * waste of time.)
 		 */
 		if (!(IsA(inner_cheapest_total, IndexPath) ||
+			  IsA(inner_cheapest_total, BitmapHeapPath) ||
 			  IsA(inner_cheapest_total, TidPath)))
 			matpath = (Path *)
 				create_material_path(innerrel, inner_cheapest_total);

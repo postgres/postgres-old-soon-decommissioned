@@ -1037,6 +1037,20 @@ finalize_plan(Plan *plan, List *rtable,
 			 */
 			break;
 
+		case T_BitmapIndexScan:
+			finalize_primnode((Node *) ((BitmapIndexScan *) plan)->indxqual,
+							  &context);
+			/*
+			 * we need not look at indxqualorig, since it will have the
+			 * same param references as indxqual.
+			 */
+			break;
+
+		case T_BitmapHeapScan:
+			finalize_primnode((Node *) ((BitmapHeapScan *) plan)->bitmapqualorig,
+							  &context);
+			break;
+
 		case T_TidScan:
 			finalize_primnode((Node *) ((TidScan *) plan)->tideval,
 							  &context);
@@ -1071,6 +1085,38 @@ finalize_plan(Plan *plan, List *rtable,
 				ListCell   *l;
 
 				foreach(l, ((Append *) plan)->appendplans)
+				{
+					context.paramids =
+						bms_add_members(context.paramids,
+										finalize_plan((Plan *) lfirst(l),
+													  rtable,
+													  outer_params,
+													  valid_params));
+				}
+			}
+			break;
+
+		case T_BitmapAnd:
+			{
+				ListCell   *l;
+
+				foreach(l, ((BitmapAnd *) plan)->bitmapplans)
+				{
+					context.paramids =
+						bms_add_members(context.paramids,
+										finalize_plan((Plan *) lfirst(l),
+													  rtable,
+													  outer_params,
+													  valid_params));
+				}
+			}
+			break;
+
+		case T_BitmapOr:
+			{
+				ListCell   *l;
+
+				foreach(l, ((BitmapOr *) plan)->bitmapplans)
 				{
 					context.paramids =
 						bms_add_members(context.paramids,

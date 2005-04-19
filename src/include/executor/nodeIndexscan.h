@@ -24,6 +24,4 @@ extern void ExecIndexMarkPos(IndexScanState *node);
 extern void ExecIndexRestrPos(IndexScanState *node);
 extern void ExecIndexReScan(IndexScanState *node, ExprContext *exprCtxt);
 
-extern void ExecUpdateIndexScanKeys(IndexScanState *node, ExprContext *econtext);
-
 #endif   /* NODEINDEXSCAN_H */

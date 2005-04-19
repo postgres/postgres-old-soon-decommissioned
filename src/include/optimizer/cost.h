@@ -53,6 +53,8 @@ extern double clamp_row_est(double nrows);
 extern void cost_seqscan(Path *path, Query *root, RelOptInfo *baserel);
 extern void cost_index(Path *path, Query *root, IndexOptInfo *index,
 		   List *indexQuals, bool is_injoin);
+extern void cost_bitmap_scan(Path *path, Query *root, RelOptInfo *baserel,
+							 Node *bitmapqual, bool is_injoin);
 extern void cost_tidscan(Path *path, Query *root,
 			 RelOptInfo *baserel, List *tideval);
 extern void cost_subqueryscan(Path *path, RelOptInfo *baserel);

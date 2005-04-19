@@ -107,6 +107,21 @@ set_plan_references(Plan *plan, List *rtable)
 			fix_expr_references(plan,
 							(Node *) ((IndexScan *) plan)->indxqualorig);
 			break;
+		case T_BitmapIndexScan:
+			/* no need to fix targetlist and qual */
+			Assert(plan->targetlist == NIL);
+			Assert(plan->qual == NIL);
+			fix_expr_references(plan,
+								(Node *) ((BitmapIndexScan *) plan)->indxqual);
+			fix_expr_references(plan,
+							(Node *) ((BitmapIndexScan *) plan)->indxqualorig);
+			break;
+		case T_BitmapHeapScan:
+			fix_expr_references(plan, (Node *) plan->targetlist);
+			fix_expr_references(plan, (Node *) plan->qual);
+			fix_expr_references(plan,
+						(Node *) ((BitmapHeapScan *) plan)->bitmapqualorig);
+			break;
 		case T_TidScan:
 			fix_expr_references(plan, (Node *) plan->targetlist);
 			fix_expr_references(plan, (Node *) plan->qual);
@@ -223,6 +238,16 @@ set_plan_references(Plan *plan, List *rtable)
 			 * recurse into child plans.
 			 */
 			foreach(l, ((Append *) plan)->appendplans)
+				set_plan_references((Plan *) lfirst(l), rtable);
+			break;
+		case T_BitmapAnd:
+			/* BitmapAnd works like Append */
+			foreach(l, ((BitmapAnd *) plan)->bitmapplans)
+				set_plan_references((Plan *) lfirst(l), rtable);
+			break;
+		case T_BitmapOr:
+			/* BitmapOr works like Append */
+			foreach(l, ((BitmapOr *) plan)->bitmapplans)
 				set_plan_references((Plan *) lfirst(l), rtable);
 			break;
 		default:
