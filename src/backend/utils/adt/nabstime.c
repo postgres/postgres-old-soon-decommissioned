@@ -192,7 +192,7 @@ abstime2tm(AbsoluteTime _time, int *tzp, struct pg_tm * tm, char **tzn)
 		time -= CTimeZone;
 
 	if ((!HasCTZSet) && (tzp != NULL))
-		tx = pg_localtime(&time);
+		tx = pg_localtime(&time,global_timezone);
 	else
 		tx = pg_gmtime(&time);
 
@@ -1677,7 +1677,7 @@ timeofday(PG_FUNCTION_ARGS)
 	gettimeofday(&tp, &tpz);
 	tt = (pg_time_t) tp.tv_sec;
 	pg_strftime(templ, sizeof(templ), "%a %b %d %H:%M:%S.%%06d %Y %Z",
-				pg_localtime(&tt));
+				pg_localtime(&tt,global_timezone));
 	snprintf(buf, sizeof(buf), templ, tp.tv_usec);
 
 	len = VARHDRSZ + strlen(buf);

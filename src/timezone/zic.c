@@ -14,8 +14,8 @@
 #include <limits.h>
 #include <locale.h>
 
-#include "pgtz.h"
 #include "private.h"
+#include "pgtz.h"
 #include "tzfile.h"
 
 #ifdef HAVE_SYS_STAT_H

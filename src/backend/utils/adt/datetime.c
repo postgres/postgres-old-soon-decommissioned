@@ -1634,7 +1634,8 @@ DetermineLocalTimeZone(struct pg_tm * tm)
 	res = pg_next_dst_boundary(&prevtime,
 							   &before_gmtoff, &before_isdst,
 							   &boundary,
-							   &after_gmtoff, &after_isdst);
+							   &after_gmtoff, &after_isdst,
+		                       global_timezone);
 	if (res < 0)
 		goto overflow;			/* failure? */
 
