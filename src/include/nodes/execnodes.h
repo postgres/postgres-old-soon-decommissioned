@@ -901,6 +901,7 @@ typedef struct IndexScanState
 /* ----------------
  *	 BitmapIndexScanState information
  *
+ *		result			   bitmap to return output into, or NULL
  *		ScanKeys		   Skey structures to scan index rel
  *		NumScanKeys		   number of Skey structs
  *		RuntimeKeyInfo	   array of exprstates for Skeys
@@ -914,6 +915,7 @@ typedef struct IndexScanState
 typedef struct BitmapIndexScanState
 {
 	ScanState	ss;				/* its first field is NodeTag */
+	TIDBitmap  *biss_result;
 	ScanKey		biss_ScanKeys;
 	int			biss_NumScanKeys;
 	ExprState **biss_RuntimeKeyInfo;
