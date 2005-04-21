@@ -406,7 +406,7 @@ typedef struct IndexPath
  * out in physical heap order no matter what the underlying indexes did.
  *
  * The individual indexscans are represented by IndexPath nodes, and any
- * logic on top of them is represented by regular AND and OR expressions.
+ * logic on top of them is represented by BitmapAndPath and BitmapOrPath.
  * Notice that we can use the same IndexPath node both to represent a regular
  * IndexScan plan, and as the child of a BitmapHeapPath that represents
  * scanning the same index using a BitmapIndexScan.  The startup_cost and
@@ -420,10 +420,36 @@ typedef struct IndexPath
 typedef struct BitmapHeapPath
 {
 	Path		path;
-	Node	   *bitmapqual;		/* the IndexPath/AND/OR tree */
+	Path	   *bitmapqual;		/* IndexPath, BitmapAndPath, BitmapOrPath */
 	bool		isjoininner;	/* T if it's a nestloop inner scan */
 	double		rows;			/* estimated number of result tuples */
 } BitmapHeapPath;
+
+/*
+ * BitmapAndPath represents a BitmapAnd plan node; it can only appear as
+ * part of the substructure of a BitmapHeapPath.  The Path structure is
+ * a bit more heavyweight than we really need for this, but for simplicity
+ * we make it a derivative of Path anyway.
+ */
+typedef struct BitmapAndPath
+{
+	Path		path;
+	List	   *bitmapquals;		/* IndexPaths and BitmapOrPaths */
+	Selectivity bitmapselectivity;
+} BitmapAndPath;
+
+/*
+ * BitmapOrPath represents a BitmapOr plan node; it can only appear as
+ * part of the substructure of a BitmapHeapPath.  The Path structure is
+ * a bit more heavyweight than we really need for this, but for simplicity
+ * we make it a derivative of Path anyway.
+ */
+typedef struct BitmapOrPath
+{
+	Path		path;
+	List	   *bitmapquals;		/* IndexPaths and BitmapAndPaths */
+	Selectivity bitmapselectivity;
+} BitmapOrPath;
 
 /*
  * TidPath represents a scan by TID

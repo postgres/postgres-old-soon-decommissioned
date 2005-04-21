@@ -533,6 +533,7 @@ psql_completion(char *text, int start, int end)
 		"default_with_oids",
 		"dynamic_library_path",
 		"effective_cache_size",
+		"enable_bitmapscan",
 		"enable_hashagg",
 		"enable_hashjoin",
 		"enable_indexscan",

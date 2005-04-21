@@ -170,6 +170,8 @@ typedef enum NodeTag
 	T_Path,
 	T_IndexPath,
 	T_BitmapHeapPath,
+	T_BitmapAndPath,
+	T_BitmapOrPath,
 	T_NestPath,
 	T_MergePath,
 	T_HashPath,

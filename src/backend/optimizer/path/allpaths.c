@@ -901,6 +901,12 @@ print_path(Query *root, Path *path, int indent)
 		case T_BitmapHeapPath:
 			ptype = "BitmapHeapScan";
 			break;
+		case T_BitmapAndPath:
+			ptype = "BitmapAndPath";
+			break;
+		case T_BitmapOrPath:
+			ptype = "BitmapOrPath";
+			break;
 		case T_TidPath:
 			ptype = "TidScan";
 			break;

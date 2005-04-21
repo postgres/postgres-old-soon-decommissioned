@@ -2371,6 +2371,9 @@ PostgresMain(int argc, char *argv[], const char *username)
 					case 'i':	/* indexscan */
 						tmp = "enable_indexscan";
 						break;
+					case 'b':	/* bitmapscan */
+						tmp = "enable_bitmapscan";
+						break;
 					case 't':	/* tidscan */
 						tmp = "enable_tidscan";
 						break;

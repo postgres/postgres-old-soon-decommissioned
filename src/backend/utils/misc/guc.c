@@ -370,6 +370,14 @@ static struct config_bool ConfigureNamesBool[] =
 		true, NULL, NULL
 	},
 	{
+		{"enable_bitmapscan", PGC_USERSET, QUERY_TUNING_METHOD,
+			gettext_noop("Enables the planner's use of bitmap-scan plans."),
+			NULL
+		},
+		&enable_bitmapscan,
+		true, NULL, NULL
+	},
+	{
 		{"enable_tidscan", PGC_USERSET, QUERY_TUNING_METHOD,
 			gettext_noop("Enables the planner's use of TID scan plans."),
 			NULL
