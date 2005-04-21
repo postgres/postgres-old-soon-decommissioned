@@ -466,7 +466,7 @@ create_index_path(Query *root,
 	 */
 	pathnode->rows = index->rel->rows;
 
-	cost_index(&pathnode->path, root, index, indexquals, false);
+	cost_index(pathnode, root, index, indexquals, false);
 
 	return pathnode;
 }

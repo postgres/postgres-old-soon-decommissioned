@@ -1710,7 +1710,7 @@ make_innerjoin_index_path(Query *root,
 	/* Like costsize.c, force estimate to be at least one row */
 	pathnode->rows = clamp_row_est(pathnode->rows);
 
-	cost_index(&pathnode->path, root, index, indexquals, true);
+	cost_index(pathnode, root, index, indexquals, true);
 
 	return (Path *) pathnode;
 }
