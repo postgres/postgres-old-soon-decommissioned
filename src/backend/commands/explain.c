@@ -847,9 +847,14 @@ explain_outNode(StringInfo str,
 		for (i = 0; i < indent; i++)
 			appendStringInfo(str, "  ");
 		appendStringInfo(str, "  ->  ");
+		/*
+		 * Ordinarily we don't pass down our own outer_plan value to our
+		 * child nodes, but in bitmap scan trees we must, since the bottom
+		 * BitmapIndexScan nodes may have outer references.
+		 */
 		explain_outNode(str, outerPlan(plan),
 						outerPlanState(planstate),
-						NULL,
+						IsA(plan, BitmapHeapScan) ? outer_plan : NULL,
 						indent + 3, es);
 	}
 
@@ -907,7 +912,7 @@ explain_outNode(StringInfo str,
 
 			explain_outNode(str, subnode,
 							bitmapandstate->bitmapplans[j],
-							NULL,
+							outer_plan,	/* pass down same outer plan */
 							indent + 3, es);
 			j++;
 		}
@@ -931,7 +936,7 @@ explain_outNode(StringInfo str,
 
 			explain_outNode(str, subnode,
 							bitmaporstate->bitmapplans[j],
-							NULL,
+							outer_plan,	/* pass down same outer plan */
 							indent + 3, es);
 			j++;
 		}

@@ -194,10 +194,6 @@ get_relation_info(Oid relationObjectId, RelOptInfo *rel)
 					info->tuples = rel->tuples;
 			}
 
-			/* initialize cached join info to empty */
-			info->outer_relids = NULL;
-			info->inner_paths = NIL;
-
 			index_close(indexRelation);
 
 			indexinfos = lcons(info, indexinfos);

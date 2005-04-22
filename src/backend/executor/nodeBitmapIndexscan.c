@@ -492,7 +492,8 @@ ExecInitBitmapIndexScan(BitmapIndexScan *node, EState *estate)
 		indexstate->biss_RuntimeKeyInfo = NULL;
 		indexstate->biss_RuntimeContext = NULL;
 		/* Get rid of the speculatively-allocated flag array, too */
-		pfree(runtimeKeyInfo);
+		if (runtimeKeyInfo)
+			pfree(runtimeKeyInfo);
 	}
 
 	/*

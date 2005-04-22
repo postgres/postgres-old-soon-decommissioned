@@ -58,6 +58,7 @@ extern void cost_bitmap_heap_scan(Path *path, Query *root, RelOptInfo *baserel,
 								  Path *bitmapqual, bool is_injoin);
 extern void cost_bitmap_and_node(BitmapAndPath *path, Query *root);
 extern void cost_bitmap_or_node(BitmapOrPath *path, Query *root);
+extern void cost_bitmap_tree_node(Path *path, Cost *cost, Selectivity *selec);
 extern void cost_tidscan(Path *path, Query *root,
 			 RelOptInfo *baserel, List *tideval);
 extern void cost_subqueryscan(Path *path, RelOptInfo *baserel);

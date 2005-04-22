@@ -27,10 +27,10 @@ extern void get_actual_join_clauses(List *restrictinfo_list,
 						List **joinquals, List **otherquals);
 extern List *remove_redundant_join_clauses(Query *root,
 							  List *restrictinfo_list,
-							  JoinType jointype);
+							  bool isouterjoin);
 extern List *select_nonredundant_join_clauses(Query *root,
 								 List *restrictinfo_list,
 								 List *reference_list,
-								 JoinType jointype);
+								 bool isouterjoin);
 
 #endif   /* RESTRICTINFO_H */

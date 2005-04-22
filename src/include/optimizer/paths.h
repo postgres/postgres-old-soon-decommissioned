@@ -38,7 +38,9 @@ extern void debug_print_rel(Query *root, RelOptInfo *rel);
 extern void create_index_paths(Query *root, RelOptInfo *rel);
 extern Path *best_inner_indexscan(Query *root, RelOptInfo *rel,
 					 Relids outer_relids, JoinType jointype);
-extern List *group_clauses_by_indexkey(IndexOptInfo *index);
+extern List *group_clauses_by_indexkey(IndexOptInfo *index,
+									   List *clauses, List *outer_clauses,
+									   Relids outer_relids);
 extern List *group_clauses_by_indexkey_for_or(IndexOptInfo *index,
 								 Expr *orsubclause);
 extern bool match_index_to_operand(Node *operand, int indexcol,

@@ -30,12 +30,14 @@ extern void add_path(RelOptInfo *parent_rel, Path *new_path);
 extern Path *create_seqscan_path(Query *root, RelOptInfo *rel);
 extern IndexPath *create_index_path(Query *root,
 				  IndexOptInfo *index,
-				  List *restriction_clauses,
+				  List *clause_groups,
 				  List *pathkeys,
-				  ScanDirection indexscandir);
+				  ScanDirection indexscandir,
+				  bool isjoininner);
 extern BitmapHeapPath *create_bitmap_heap_path(Query *root,
 											   RelOptInfo *rel,
-											   Path *bitmapqual);
+											   Path *bitmapqual,
+											   bool isjoininner);
 extern BitmapAndPath *create_bitmap_and_path(Query *root,
 											 RelOptInfo *rel,
 											 List *bitmapquals);

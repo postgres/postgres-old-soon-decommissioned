@@ -343,7 +343,10 @@ build_minmax_path(Query *root, RelOptInfo *rel, MinMaxAggInfo *info)
 		 * to build the path, it's convenient to extract that first and then
 		 * look through it for the equality restrictions.
 		 */
-		restrictclauses = group_clauses_by_indexkey(index);
+		restrictclauses = group_clauses_by_indexkey(index,
+													index->rel->baserestrictinfo,
+													NIL,
+													NULL);
 
 		if (list_length(restrictclauses) < indexcol)
 			continue;			/* definitely haven't got enough */
@@ -376,7 +379,8 @@ build_minmax_path(Query *root, RelOptInfo *rel, MinMaxAggInfo *info)
 		new_path = create_index_path(root, index,
 									 restrictclauses,
 									 NIL,
-									 indexscandir);
+									 indexscandir,
+									 false);
 
 		/*
 		 * Estimate actual cost of fetching just one row.
