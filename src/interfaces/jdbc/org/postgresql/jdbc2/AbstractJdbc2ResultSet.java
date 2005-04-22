@@ -617,6 +617,10 @@ public abstract class AbstractJdbc2ResultSet extends org.postgresql.jdbc1.Abstra
 		{
 			throw new PSQLException( "postgresql.updateable.notoninsertrow" );
 		}
+		if (updateValues.size() == 0)
+		{
+			throw new PSQLException( "postgresql.updateable.noinsertvalues" );
+		}
 		else
 		{
 
@@ -1011,7 +1015,7 @@ public abstract class AbstractJdbc2ResultSet extends org.postgresql.jdbc1.Abstra
 		if (onInsertRow)
 			throw new PSQLException("postgresql.res.oninsertrow");
 
-		if (isBeforeFirst() || isAfterLast())
+		if (isBeforeFirst() || isAfterLast() || rows.size() == 0)
 			return;
 
 		StringBuffer selectSQL = new StringBuffer( "select ");
@@ -1081,7 +1085,7 @@ public abstract class AbstractJdbc2ResultSet extends org.postgresql.jdbc1.Abstra
 		{
 			throw new PSQLException( "postgresql.updateable.notupdateable" );
 		}
-		if (isBeforeFirst() || isAfterLast())
+		if (isBeforeFirst() || isAfterLast() || rows.size() == 0)
 		{
 			throw new PSQLException("postgresql.updateable.badupdateposition");
 		}
@@ -1592,7 +1596,7 @@ public abstract class AbstractJdbc2ResultSet extends org.postgresql.jdbc1.Abstra
 		{
 			throw new PSQLException( "postgresql.updateable.notupdateable" );
 		}
-		if (!onInsertRow && (isBeforeFirst() || isAfterLast()))
+		if (!onInsertRow && (isBeforeFirst() || isAfterLast() || rows.size() == 0))
 		{
 			throw new PSQLException("postgresql.updateable.badupdateposition");
 		}
