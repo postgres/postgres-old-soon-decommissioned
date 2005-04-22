@@ -699,7 +699,7 @@ public abstract class AbstractJdbc2ResultSet extends org.postgresql.jdbc1.Abstra
 			throw new PSQLException( "postgresql.updateable.notupdateable" );
 		}
 
-		if (current_row < 0) {
+		if (current_row < 0 || current_row >= rows.size()) {
 			this_row = null;
 			rowBuffer = null;
 		} else {
