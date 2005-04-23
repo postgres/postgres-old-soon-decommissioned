@@ -712,7 +712,8 @@ PrintFreeSpaceMapStatistics(int elevel)
 			(errmsg("free space map contains information about:\n"
 					"%d relations, limit %d relations\n"
 					"%d pages with free space, %.0f total pages used (including overhead)\n"
-					"%.0f pages required to track all freespace, limit %d pages (%.0f kB)",
+					"%.0f pages required to track all freespace, limit %d pages\n"
+					"%.0f kB memory used",
 					numRels, MaxFSMRelations,
 					storedPages, Min(needed, MaxFSMPages),
 					needed, MaxFSMPages,
