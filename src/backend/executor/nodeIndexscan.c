@@ -534,11 +534,13 @@ ExecEndIndexScan(IndexScanState *node)
 	relation = node->ss.ss_currentRelation;
 
 	/*
-	 * Free the exprcontext(s)
+	 * Free the exprcontext(s) ... now dead code, see ExecFreeExprContext
 	 */
+#ifdef NOT_USED
 	ExecFreeExprContext(&node->ss.ps);
 	if (node->iss_RuntimeContext)
 		FreeExprContext(node->iss_RuntimeContext);
+#endif
 
 	/*
 	 * clear out tuple table slots

@@ -220,11 +220,13 @@ ExecEndBitmapIndexScan(BitmapIndexScanState *node)
 	relation = node->ss.ss_currentRelation;
 
 	/*
-	 * Free the exprcontext(s)
+	 * Free the exprcontext(s) ... now dead code, see ExecFreeExprContext
 	 */
+#ifdef NOT_USED
 	ExecFreeExprContext(&node->ss.ps);
 	if (node->biss_RuntimeContext)
 		FreeExprContext(node->biss_RuntimeContext);
+#endif
 
 	/*
 	 * close the index relation
