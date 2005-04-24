@@ -10,6 +10,11 @@
  *
  *				select 1 * 2
  *
+ *				insert into emp values ('mike', 15000)
+ *
+ *		(Remember that in an INSERT or UPDATE, we need a plan tree that
+ *		generates the new rows.)
+ *
  *		Result nodes are also used to optimise queries with constant
  *		qualifications (ie, quals that do not depend on the scanned data),
  *		such as:
@@ -20,7 +25,7 @@
  *
  *						Result	(with 2 > 1 qual)
  *						/
- *				   SeqScan (emp.all)
+ *				   SeqScan (emp.*)
  *
  *		At runtime, the Result node evaluates the constant qual once,
  *		which is shown by EXPLAIN as a One-Time Filter.  If it's
