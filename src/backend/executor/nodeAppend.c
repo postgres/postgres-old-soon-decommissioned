@@ -43,7 +43,7 @@
  *		and student-emp inherits from student and employee, the
  *		query:
  *
- *				retrieve (e.name) from e in person*
+ *				select name from person
  *
  *		generates the plan:
  *
