@@ -33,7 +33,6 @@ extern Plan *optimize_minmax_aggregates(Query *root, List *tlist,
  * prototypes for plan/createplan.c
  */
 extern Plan *create_plan(Query *root, Path *best_path);
-extern List *create_bitmap_restriction(Path *bitmapqual);
 extern SubqueryScan *make_subqueryscan(List *qptlist, List *qpqual,
 				  Index scanrelid, Plan *subplan);
 extern Append *make_append(List *appendplans, bool isTarget, List *tlist);

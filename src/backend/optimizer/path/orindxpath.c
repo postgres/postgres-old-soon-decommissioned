@@ -146,7 +146,8 @@ create_or_index_quals(Query *root, RelOptInfo *rel)
 	 * Convert the path's indexclauses structure to a RestrictInfo tree,
 	 * and add it to the rel's restriction list.
 	 */
-	newrinfos = create_bitmap_restriction((Path *) bestpath);
+	newrinfos = make_restrictinfo_from_bitmapqual((Path *) bestpath,
+												  true, true);
 	Assert(list_length(newrinfos) == 1);
 	or_rinfo = (RestrictInfo *) linitial(newrinfos);
 	Assert(IsA(or_rinfo, RestrictInfo));
