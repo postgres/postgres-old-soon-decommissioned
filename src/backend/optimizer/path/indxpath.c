@@ -500,8 +500,14 @@ choose_bitmap_and(Query *root, RelOptInfo *rel, List *paths)
 	 * And we consider an index redundant if all its index conditions were
 	 * already used by earlier indexes.  (We could use pred_test() to have
 	 * a more intelligent, but much more expensive, check --- but in most
-	 * cases simple equality should suffice, since after all the index
-	 * conditions are all coming from the same query clauses.)
+	 * cases simple pointer equality should suffice, since after all the
+	 * index conditions are all coming from the same RestrictInfo lists.)
+	 *
+	 * XXX is there any risk of throwing away a useful partial index here
+	 * because we don't explicitly look at indpred?  At least in simple
+	 * cases, the partial index will sort before competing non-partial
+	 * indexes and so it makes the right choice, but perhaps we need to
+	 * work harder.
 	 */
 
 	/* Convert list to array so we can apply qsort */
@@ -530,7 +536,7 @@ choose_bitmap_and(Query *root, RelOptInfo *rel, List *paths)
 		if (IsA(newpath, IndexPath))
 		{
 			newqual = ((IndexPath *) newpath)->indexclauses;
-			if (list_difference(newqual, qualsofar) == NIL)
+			if (list_difference_ptr(newqual, qualsofar) == NIL)
 				continue;		/* redundant */
 		}
 
