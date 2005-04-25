@@ -24,4 +24,14 @@ extern void ExecIndexMarkPos(IndexScanState *node);
 extern void ExecIndexRestrPos(IndexScanState *node);
 extern void ExecIndexReScan(IndexScanState *node, ExprContext *exprCtxt);
 
+/* routines exported to share code with nodeBitmapIndexscan.c */
+extern bool ExecIndexBuildScanKeys(PlanState *planstate, List *quals,
+					   List *strategies, List *subtypes,
+					   ExprState ***runtimeKeyInfo,
+					   ScanKey *scanKeys, int *numScanKeys);
+extern void ExecIndexEvalRuntimeKeys(ExprContext *econtext,
+									 ExprState **run_keys,
+									 ScanKey scan_keys,
+									 int n_keys);
+
 #endif   /* NODEINDEXSCAN_H */

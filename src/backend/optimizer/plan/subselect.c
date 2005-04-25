@@ -1028,21 +1028,21 @@ finalize_plan(Plan *plan, List *rtable,
 			break;
 
 		case T_IndexScan:
-			finalize_primnode((Node *) ((IndexScan *) plan)->indxqual,
+			finalize_primnode((Node *) ((IndexScan *) plan)->indexqual,
 							  &context);
 
 			/*
-			 * we need not look at indxqualorig, since it will have the
-			 * same param references as indxqual.
+			 * we need not look at indexqualorig, since it will have the
+			 * same param references as indexqual.
 			 */
 			break;
 
 		case T_BitmapIndexScan:
-			finalize_primnode((Node *) ((BitmapIndexScan *) plan)->indxqual,
+			finalize_primnode((Node *) ((BitmapIndexScan *) plan)->indexqual,
 							  &context);
 			/*
-			 * we need not look at indxqualorig, since it will have the
-			 * same param references as indxqual.
+			 * we need not look at indexqualorig, since it will have the
+			 * same param references as indexqual.
 			 */
 			break;
 

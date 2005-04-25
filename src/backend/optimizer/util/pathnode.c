@@ -475,13 +475,10 @@ create_index_path(Query *root,
 	/* Flatten the clause-groups list to produce indexclauses list */
 	allclauses = flatten_clausegroups_list(clause_groups);
 
-	/*
-	 * We are making a pathnode for a single-scan indexscan; therefore,
-	 * indexinfo etc should be single-element lists.
-	 */
-	pathnode->indexinfo = list_make1(index);
-	pathnode->indexclauses = list_make1(allclauses);
-	pathnode->indexquals = list_make1(indexquals);
+	/* Fill in the pathnode */
+	pathnode->indexinfo = index;
+	pathnode->indexclauses = allclauses;
+	pathnode->indexquals = indexquals;
 
 	pathnode->isjoininner = isjoininner;
 	pathnode->indexscandir = indexscandir;
