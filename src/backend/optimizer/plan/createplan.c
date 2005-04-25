@@ -889,6 +889,14 @@ create_bitmap_scan_plan(Query *root,
 	/* Sort clauses into best execution order */
 	qpqual = order_qual_clauses(root, qpqual);
 
+	/*
+	 * When dealing with special or lossy operators, we will at this point
+	 * have duplicate clauses in qpqual and bitmapqualorig.  We may as well
+	 * drop 'em from bitmapqualorig, since there's no point in making the
+	 * tests twice.
+	 */
+	bitmapqualorig = list_difference_ptr(bitmapqualorig, qpqual);
+
 	/* Finally ready to build the plan node */
 	scan_plan = make_bitmap_heapscan(tlist,
 									 qpqual,
