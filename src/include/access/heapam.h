@@ -123,6 +123,12 @@ extern Datum fastgetattr(HeapTuple tup, int attnum, TupleDesc tupleDesc,
 
 /* heapam.c */
 
+typedef enum
+{
+	LockTupleShared,
+	LockTupleExclusive
+} LockTupleMode;
+
 extern Relation relation_open(Oid relationId, LOCKMODE lockmode);
 extern Relation conditional_relation_open(Oid relationId, LOCKMODE lockmode, bool nowait);
 extern Relation relation_openrv(const RangeVar *relation, LOCKMODE lockmode);
@@ -155,8 +161,8 @@ extern HTSU_Result heap_delete(Relation relation, ItemPointer tid, ItemPointer c
 			CommandId cid, Snapshot crosscheck, bool wait);
 extern HTSU_Result heap_update(Relation relation, ItemPointer otid, HeapTuple tup,
 		ItemPointer ctid, CommandId cid, Snapshot crosscheck, bool wait);
-extern HTSU_Result heap_mark4update(Relation relation, HeapTuple tup,
-				 Buffer *userbuf, CommandId cid);
+extern HTSU_Result heap_lock_tuple(Relation relation, HeapTuple tup,
+				 Buffer *userbuf, CommandId cid, LockTupleMode mode);
 
 extern Oid	simple_heap_insert(Relation relation, HeapTuple tup);
 extern void simple_heap_delete(Relation relation, ItemPointer tid);

@@ -22,7 +22,7 @@
 
 
 /* Version identifier for this pg_control format */
-#define PG_CONTROL_VERSION	74
+#define PG_CONTROL_VERSION	81
 
 /*
  * Body of CheckPoint XLOG records.  This is declared here because we keep
@@ -39,12 +39,14 @@ typedef struct CheckPoint
 	TimeLineID	ThisTimeLineID; /* current TLI */
 	TransactionId nextXid;		/* next free XID */
 	Oid			nextOid;		/* next free OID */
+	MultiXactId	nextMulti;		/* next free MultiXactId */
 	time_t		time;			/* time stamp of checkpoint */
 } CheckPoint;
 
 /* XLOG info values for XLOG rmgr */
 #define XLOG_CHECKPOINT_SHUTDOWN		0x00
 #define XLOG_CHECKPOINT_ONLINE			0x10
+#define XLOG_NEXTMULTI					0x20
 #define XLOG_NEXTOID					0x30
 
 

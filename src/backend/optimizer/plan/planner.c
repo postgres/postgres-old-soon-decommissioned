@@ -635,13 +635,13 @@ grouping_planner(Query *parse, double tuple_fraction)
 		tlist = postprocess_setop_tlist(result_plan->targetlist, tlist);
 
 		/*
-		 * Can't handle FOR UPDATE here (parser should have checked
+		 * Can't handle FOR UPDATE/SHARE here (parser should have checked
 		 * already, but let's make sure).
 		 */
 		if (parse->rowMarks)
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("SELECT FOR UPDATE is not allowed with UNION/INTERSECT/EXCEPT")));
+					 errmsg("SELECT FOR UPDATE/SHARE is not allowed with UNION/INTERSECT/EXCEPT")));
 
 		/*
 		 * Calculate pathkeys that represent result ordering requirements

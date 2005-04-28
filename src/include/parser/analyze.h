@@ -21,6 +21,6 @@ extern List *parse_analyze_varparams(Node *parseTree, Oid **paramTypes,
 						int *numParams);
 extern List *parse_sub_analyze(Node *parseTree, ParseState *parentParseState);
 extern List *analyzeCreateSchemaStmt(CreateSchemaStmt *stmt);
-extern void CheckSelectForUpdate(Query *qry);
+extern void CheckSelectLocking(Query *qry, bool forUpdate);
 
 #endif   /* ANALYZE_H */

@@ -365,7 +365,8 @@ typedef float float4;
 typedef double float8;
 
 /*
- * Oid, RegProcedure, TransactionId, SubTransactionId, CommandId, AclId
+ * Oid, RegProcedure, TransactionId, SubTransactionId, MultiXactId,
+ * CommandId, AclId
  */
 
 /* typedef Oid is in postgres_ext.h */
@@ -383,6 +384,9 @@ typedef uint32 SubTransactionId;
 
 #define InvalidSubTransactionId		((SubTransactionId) 0)
 #define TopSubTransactionId			((SubTransactionId) 1)
+
+/* MultiXactId must be equivalent to TransactionId, to fit in t_xmax */
+typedef TransactionId MultiXactId;
 
 typedef uint32 CommandId;
 

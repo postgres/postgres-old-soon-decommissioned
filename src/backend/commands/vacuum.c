@@ -1800,7 +1800,7 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 			 !TransactionIdPrecedes(HeapTupleHeaderGetXmin(tuple.t_data),
 									OldestXmin)) ||
 				(!(tuple.t_data->t_infomask & (HEAP_XMAX_INVALID |
-											   HEAP_MARKED_FOR_UPDATE)) &&
+											   HEAP_IS_LOCKED)) &&
 				 !(ItemPointerEquals(&(tuple.t_self),
 									 &(tuple.t_data->t_ctid)))))
 			{
@@ -1839,7 +1839,7 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 				 * we have to move to the end of chain.
 				 */
 				while (!(tp.t_data->t_infomask & (HEAP_XMAX_INVALID |
-											  HEAP_MARKED_FOR_UPDATE)) &&
+												  HEAP_IS_LOCKED)) &&
 					   !(ItemPointerEquals(&(tp.t_self),
 										   &(tp.t_data->t_ctid))))
 				{
@@ -1984,7 +1984,8 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 					 * and we are too close to 6.5 release. - vadim
 					 * 06/11/99
 					 */
-					if (!(TransactionIdEquals(HeapTupleHeaderGetXmax(Ptp.t_data),
+					if (Ptp.t_data->t_infomask & HEAP_XMAX_IS_MULTI ||
+						!(TransactionIdEquals(HeapTupleHeaderGetXmax(Ptp.t_data),
 									 HeapTupleHeaderGetXmin(tp.t_data))))
 					{
 						ReleaseBuffer(Pbuf);

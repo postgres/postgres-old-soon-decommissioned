@@ -276,11 +276,22 @@ pull_up_subqueries(Query *parse, Node *jtnode, bool below_outer_join)
 			parse->rtable = list_concat(parse->rtable, subquery->rtable);
 
 			/*
-			 * Pull up any FOR UPDATE markers, too.  (OffsetVarNodes
+			 * Pull up any FOR UPDATE/SHARE markers, too.  (OffsetVarNodes
 			 * already adjusted the marker values, so just list_concat the
 			 * list.)
+			 *
+			 * Executor can't handle multiple FOR UPDATE/SHARE flags, so
+			 * complain if they are valid but different
 			 */
+			if (parse->rowMarks && subquery->rowMarks &&
+				parse->forUpdate != subquery->forUpdate)
+				ereport(ERROR,
+						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+						 errmsg("cannot use both FOR UPDATE and FOR SHARE in one query")));
+
 			parse->rowMarks = list_concat(parse->rowMarks, subquery->rowMarks);
+			if (subquery->rowMarks)
+				parse->forUpdate = subquery->forUpdate;
 
 			/*
 			 * We also have to fix the relid sets of any parent

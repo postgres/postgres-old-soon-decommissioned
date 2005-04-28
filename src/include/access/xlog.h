@@ -133,6 +133,7 @@ extern void ShutdownXLOG(int code, Datum arg);
 extern void InitXLOGAccess(void);
 extern void CreateCheckPoint(bool shutdown, bool force);
 extern void XLogPutNextOid(Oid nextOid);
+extern void XLogPutNextMultiXactId(MultiXactId multi);
 extern XLogRecPtr GetRedoRecPtr(void);
 
 #endif   /* XLOG_H */

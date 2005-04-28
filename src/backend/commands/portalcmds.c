@@ -90,7 +90,7 @@ PerformCursorOpen(DeclareCursorStmt *stmt, ParamListInfo params)
 	if (query->rowMarks != NIL)
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("DECLARE CURSOR ... FOR UPDATE is not supported"),
+				 errmsg("DECLARE CURSOR ... FOR UPDATE/SHARE is not supported"),
 				 errdetail("Cursors must be READ ONLY.")));
 
 	plan = planner(query, true, stmt->options, NULL);

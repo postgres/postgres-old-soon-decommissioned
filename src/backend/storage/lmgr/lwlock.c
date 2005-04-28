@@ -114,6 +114,12 @@ NumLWLocks(void)
 	/* subtrans.c needs one per SubTrans buffer */
 	numLocks += NUM_SLRU_BUFFERS;
 
+	/*
+	 * multixact.c needs one per MultiXact buffer, but there are
+	 * two SLRU areas for MultiXact
+	 */
+	numLocks += 2 * NUM_SLRU_BUFFERS;
+
 	/* Perhaps create a few more for use by user-defined modules? */
 
 	return numLocks;

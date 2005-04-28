@@ -323,11 +323,11 @@ mark_baserels_for_outer_join(Query *root, Relids rels, Relids outerrels)
 		Assert(bms_is_subset(rel->outerjoinset, outerrels));
 
 		/*
-		 * Presently the executor cannot support FOR UPDATE marking of
+		 * Presently the executor cannot support FOR UPDATE/SHARE marking of
 		 * rels appearing on the nullable side of an outer join. (It's
 		 * somewhat unclear what that would mean, anyway: what should we
 		 * mark when a result row is generated from no element of the
-		 * nullable relation?)	So, complain if target rel is FOR UPDATE.
+		 * nullable relation?)	So, complain if target rel is FOR UPDATE/SHARE.
 		 * It's sufficient to make this check once per rel, so do it only
 		 * if rel wasn't already known nullable.
 		 */
@@ -336,7 +336,7 @@ mark_baserels_for_outer_join(Query *root, Relids rels, Relids outerrels)
 			if (list_member_int(root->rowMarks, relno))
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-						 errmsg("SELECT FOR UPDATE cannot be applied to the nullable side of an outer join")));
+						 errmsg("SELECT FOR UPDATE/SHARE cannot be applied to the nullable side of an outer join")));
 		}
 
 		rel->outerjoinset = outerrels;

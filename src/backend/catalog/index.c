@@ -471,7 +471,7 @@ index_create(Oid heapRelationId,
 	int			i;
 
 	/*
-	 * Only SELECT ... FOR UPDATE are allowed while doing this
+	 * Only SELECT ... FOR UPDATE/SHARE are allowed while doing this
 	 */
 	heapRelation = heap_open(heapRelationId, ShareLock);
 
@@ -1460,6 +1460,7 @@ IndexBuildHeapScan(Relation heapRelation,
 					 * a system catalog, because we often release lock on
 					 * system catalogs before committing.
 					 */
+					Assert(!(heapTuple->t_data->t_infomask & HEAP_XMAX_IS_MULTI));
 					if (!TransactionIdIsCurrentTransactionId(
 							   HeapTupleHeaderGetXmax(heapTuple->t_data))
 						&& !IsSystemRelation(heapRelation))

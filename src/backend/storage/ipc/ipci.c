@@ -15,6 +15,7 @@
 #include "postgres.h"
 
 #include "access/clog.h"
+#include "access/multixact.h"
 #include "access/subtrans.h"
 #include "access/xlog.h"
 #include "miscadmin.h"
@@ -75,6 +76,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 		size += XLOGShmemSize();
 		size += CLOGShmemSize();
 		size += SUBTRANSShmemSize();
+		size += MultiXactShmemSize();
 		size += LWLockShmemSize();
 		size += SInvalShmemSize(maxBackends);
 		size += FreeSpaceShmemSize();
@@ -140,6 +142,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 	XLOGShmemInit();
 	CLOGShmemInit();
 	SUBTRANSShmemInit();
+	MultiXactShmemInit();
 	InitBufferPool();
 
 	/*

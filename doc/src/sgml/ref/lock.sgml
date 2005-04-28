@@ -177,8 +177,8 @@ where <replaceable class="PARAMETER">lockmode</replaceable> is one of:
    <command>LOCK TABLE</> is concerned, differing only in the rules
    about which modes conflict with which. For information on how to
    acquire an actual row-level lock, see <xref linkend="locking-rows">
-   and the <xref linkend="sql-for-update"
-   endterm="sql-for-update-title"> in the <command>SELECT</command>
+   and the <xref linkend="sql-for-update-share"
+   endterm="sql-for-update-share-title"> in the <command>SELECT</command>
    reference documentation.
   </para>
  </refsect1>

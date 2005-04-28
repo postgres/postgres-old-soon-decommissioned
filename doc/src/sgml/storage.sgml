@@ -75,6 +75,12 @@ Item
 </row>
 
 <row>
+ <entry><filename>pg_multixact</></entry>
+ <entry>Subdirectory containing multi-transaction status data
+  (used for shared row locks)</entry> 
+</row>
+
+<row>
  <entry><filename>pg_subtrans</></entry>
  <entry>Subdirectory containing subtransaction status data</entry>
 </row>

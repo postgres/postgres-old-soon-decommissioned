@@ -23,7 +23,7 @@
 #define NoLock					0
 
 #define AccessShareLock			1		/* SELECT */
-#define RowShareLock			2		/* SELECT FOR UPDATE */
+#define RowShareLock			2		/* SELECT FOR UPDATE/FOR SHARE */
 #define RowExclusiveLock		3		/* INSERT, UPDATE, DELETE */
 #define ShareUpdateExclusiveLock 4		/* VACUUM (non-FULL) */
 #define ShareLock				5		/* CREATE INDEX */

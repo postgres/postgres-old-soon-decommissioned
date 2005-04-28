@@ -198,6 +198,7 @@ CreateExecutorState(void)
 	estate->es_processed = 0;
 	estate->es_lastoid = InvalidOid;
 	estate->es_rowMark = NIL;
+	estate->es_forUpdate = false;
 
 	estate->es_instrument = false;
 	estate->es_select_into = false;

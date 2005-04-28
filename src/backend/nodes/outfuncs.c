@@ -1268,7 +1268,8 @@ _outSelectStmt(StringInfo str, SelectStmt *node)
 	WRITE_NODE_FIELD(sortClause);
 	WRITE_NODE_FIELD(limitOffset);
 	WRITE_NODE_FIELD(limitCount);
-	WRITE_NODE_FIELD(forUpdate);
+	WRITE_NODE_FIELD(lockedRels);
+	WRITE_BOOL_FIELD(forUpdate);
 	WRITE_ENUM_FIELD(op, SetOperation);
 	WRITE_BOOL_FIELD(all);
 	WRITE_NODE_FIELD(larg);
@@ -1385,6 +1386,7 @@ _outQuery(StringInfo str, Query *node)
 	WRITE_NODE_FIELD(rtable);
 	WRITE_NODE_FIELD(jointree);
 	WRITE_NODE_FIELD(rowMarks);
+	WRITE_BOOL_FIELD(forUpdate);
 	WRITE_NODE_FIELD(targetList);
 	WRITE_NODE_FIELD(groupClause);
 	WRITE_NODE_FIELD(havingQual);

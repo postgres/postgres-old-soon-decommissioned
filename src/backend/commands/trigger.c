@@ -1592,12 +1592,12 @@ GetTupleForTrigger(EState *estate, ResultRelInfo *relinfo,
 		HTSU_Result	test;
 
 		/*
-		 * mark tuple for update
+		 * lock tuple for update
 		 */
 		*newSlot = NULL;
 		tuple.t_self = *tid;
 ltrmark:;
-		test = heap_mark4update(relation, &tuple, &buffer, cid);
+		test = heap_lock_tuple(relation, &tuple, &buffer, cid, LockTupleExclusive);
 		switch (test)
 		{
 			case HeapTupleSelfUpdated:
@@ -1636,8 +1636,7 @@ ltrmark:;
 
 			default:
 				ReleaseBuffer(buffer);
-				elog(ERROR, "unrecognized heap_mark4update status: %u",
-					 test);
+				elog(ERROR, "invalid heap_lock_tuple status: %d", test);
 				return NULL;	/* keep compiler quiet */
 		}
 	}

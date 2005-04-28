@@ -40,6 +40,9 @@ typedef enum LWLockId
 	CheckpointStartLock,
 	CLogControlLock,
 	SubtransControlLock,
+	MultiXactGenLock,
+	MultiXactOffsetControlLock,
+	MultiXactMemberControlLock,
 	RelCacheInitLock,
 	BgWriterCommLock,
 
