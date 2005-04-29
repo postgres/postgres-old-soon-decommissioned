@@ -487,7 +487,7 @@ _bt_getbuf(Relation rel, BlockNumber blkno, int access)
 		needLock = !RELATION_IS_LOCAL(rel);
 
 		if (needLock)
-			LockPage(rel, 0, ExclusiveLock);
+			LockRelationForExtension(rel, ExclusiveLock);
 
 		buf = ReadBuffer(rel, P_NEW);
 
@@ -496,7 +496,7 @@ _bt_getbuf(Relation rel, BlockNumber blkno, int access)
 		 * to extend the relation some more.
 		 */
 		if (needLock)
-			UnlockPage(rel, 0, ExclusiveLock);
+			UnlockRelationForExtension(rel, ExclusiveLock);
 
 		/* Acquire appropriate buffer lock on new page */
 		LockBuffer(buf, access);

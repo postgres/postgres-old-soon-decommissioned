@@ -147,11 +147,6 @@ DATA(insert OID = 1255 (  pg_proc		PGNSP 81 PGUID 0 1255 0 0 0 0 0 f f r 18 0 0 
 DESCR("");
 DATA(insert OID = 1259 (  pg_class		PGNSP 83 PGUID 0 1259 0 0 0 0 0 f f r 25 0 0 0 0 0 t f f f _null_ ));
 DESCR("");
-DATA(insert OID = 376  (  pg_xactlock	PGNSP  0 PGUID 0 0 1664 0 0 0 0 f t s 1  0 0 0 0 0 f f f f _null_ ));
-DESCR("");
-
-/* Xact lock pseudo-table */
-#define XactLockTableId			376
 
 #define		  RELKIND_INDEX			  'i'		/* secondary index */
 #define		  RELKIND_RELATION		  'r'		/* ordinary cataloged heap */

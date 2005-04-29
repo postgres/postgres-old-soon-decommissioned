@@ -79,11 +79,6 @@ RelationPutHeapTuple(Relation relation,
  *	happen if space is freed in that page after heap_update finds there's not
  *	enough there).	In that case, the page will be pinned and locked only once.
  *
- *	Note that we use LockPage(rel, 0) to lock relation for extension.
- *	We can do this as long as in all other places we use page-level locking
- *	for indices only. Alternatively, we could define pseudo-table as
- *	we do for transactions with XactLockTable.
- *
  *	ereport(ERROR) is allowed here, so this routine *must* be called
  *	before any (unlogged) changes are made in buffer pool.
  */
@@ -235,7 +230,7 @@ RelationGetBufferForTuple(Relation relation, Size len,
 	needLock = !RELATION_IS_LOCAL(relation);
 
 	if (needLock)
-		LockPage(relation, 0, ExclusiveLock);
+		LockRelationForExtension(relation, ExclusiveLock);
 
 	/*
 	 * XXX This does an lseek - rather expensive - but at the moment it is
@@ -251,7 +246,7 @@ RelationGetBufferForTuple(Relation relation, Size len,
 	 * extend the relation some more.
 	 */
 	if (needLock)
-		UnlockPage(relation, 0, ExclusiveLock);
+		UnlockRelationForExtension(relation, ExclusiveLock);
 
 	/*
 	 * We can be certain that locking the otherBuffer first is OK, since

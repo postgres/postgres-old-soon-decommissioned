@@ -51,7 +51,11 @@ extern void UnlockRelation(Relation relation, LOCKMODE lockmode);
 extern void LockRelationForSession(LockRelId *relid, LOCKMODE lockmode);
 extern void UnlockRelationForSession(LockRelId *relid, LOCKMODE lockmode);
 
-/* Lock a page (mainly used for indexes) */
+/* Lock a relation for extension */
+extern void LockRelationForExtension(Relation relation, LOCKMODE lockmode);
+extern void UnlockRelationForExtension(Relation relation, LOCKMODE lockmode);
+
+/* Lock a page (currently only used within indexes) */
 extern void LockPage(Relation relation, BlockNumber blkno, LOCKMODE lockmode);
 extern bool ConditionalLockPage(Relation relation, BlockNumber blkno, LOCKMODE lockmode);
 extern void UnlockPage(Relation relation, BlockNumber blkno, LOCKMODE lockmode);

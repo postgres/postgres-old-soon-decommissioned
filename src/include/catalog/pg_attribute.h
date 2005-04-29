@@ -461,14 +461,4 @@ DATA(insert ( 1259 tableoid			26 0  4  -7 0 -1 -1 t p i t f f t 0));
 { 0, {"indexprs"},			25, -1, -1, 9, 0, -1, -1, false, 'x', 'i', false, false, false, true, 0 }, \
 { 0, {"indpred"},			25, -1, -1, 10, 0, -1, -1, false, 'x', 'i', false, false, false, true, 0 }
 
-/* ----------------
- *		pg_xactlock - this is not a real relation, but is a placeholder
- *				  to allow a relation OID to be used for transaction
- *				  waits.  We need a pg_xactlock entry in pg_class only to
- *				  ensure that that OID can never be allocated to a real
- *				  table; and this entry is just to link to that one.
- * ----------------
- */
-DATA(insert ( 376 xactlockfoo		26 0  4   1 0 -1 -1 t p i t f f t 0));
-
 #endif   /* PG_ATTRIBUTE_H */
