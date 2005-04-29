@@ -8,6 +8,10 @@
 #include "postgres_fe.h"
 #include "command.h"
 
+#ifdef WIN32_CLIENT_ONLY	/* needed for BCC */
+#undef mkdir
+#endif
+
 #include <errno.h>
 #include <ctype.h>
 #ifdef HAVE_PWD_H

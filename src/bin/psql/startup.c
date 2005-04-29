@@ -19,7 +19,7 @@
 #include "getopt_long.h"
 
 #ifndef HAVE_INT_OPTRESET
-int			optreset;
+extern int optreset;
 #endif
 
 #include <locale.h>

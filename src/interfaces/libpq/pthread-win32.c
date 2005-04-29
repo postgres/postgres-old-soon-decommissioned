@@ -12,7 +12,7 @@
 
 
 #include <windows.h>
-#include <pthread.h>
+#include "pthread.h"
 
 HANDLE
 pthread_self()

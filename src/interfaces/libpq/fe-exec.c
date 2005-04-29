@@ -2294,7 +2294,7 @@ PQisnonblocking(const PGconn *conn)
 int
 PQflush(PGconn *conn)
 {
-	return (pqFlush(conn));
+	return pqFlush(conn);
 }
 
 
