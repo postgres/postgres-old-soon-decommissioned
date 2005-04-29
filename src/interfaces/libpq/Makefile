@@ -145,8 +145,8 @@ uninstall: uninstall-lib
 	rm -f $(DESTDIR)$(includedir)/libpq-fe.h $(DESTDIR)$(includedir_internal)/libpq-int.h $(DESTDIR)$(includedir_internal)/pqexpbuffer.h
 
 clean distclean: clean-lib
-	# pg_config_paths.h might be left over from a Win32 client-only build
 	rm -f $(OBJS) pg_config_paths.h crypt.c getaddrinfo.c inet_aton.c noblock.c pgstrcasecmp.c snprintf.c strerror.c open.c thread.c md5.c ip.c encnames.c wchar.c pthread.h
+	rm -f pg_config_paths.h	# Might be left over from a Win32 client-only build
 
 maintainer-clean: distclean
 	rm -f $(srcdir)/libpqdll.def $(srcdir)/libpqddll.def $(srcdir)/blibpqdll.def $(srcdir)/libpq.rc
