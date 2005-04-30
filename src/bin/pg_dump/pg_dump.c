@@ -959,7 +959,7 @@ dumpClasses_dumpData(Archive *fout, char *oid, void *dctxv)
 				{
 					if (field > 0)
 						appendPQExpBuffer(q, ", ");
-					appendPQExpBuffer(q, fmtId(PQfname(res, field)));
+					appendPQExpBufferStr(q, fmtId(PQfname(res, field)));
 				}
 				appendPQExpBuffer(q, ") ");
 				archprintf(fout, "%s", q->data);
@@ -6422,12 +6422,12 @@ dumpTriggers(Archive *fout, TableInfo *tblinfo, int numTables)
 			if (tgisconstraint)
 			{
 				appendPQExpBuffer(query, "CREATE CONSTRAINT TRIGGER ");
-				appendPQExpBuffer(query, fmtId(PQgetvalue(res, j, i_tgconstrname)));
+				appendPQExpBufferStr(query, fmtId(PQgetvalue(res, j, i_tgconstrname)));
 			}
 			else
 			{
 				appendPQExpBuffer(query, "CREATE TRIGGER ");
-				appendPQExpBuffer(query, fmtId(tgname));
+				appendPQExpBufferStr(query, fmtId(tgname));
 			}
 			appendPQExpBuffer(query, "\n    ");
 			/* Trigger type */
