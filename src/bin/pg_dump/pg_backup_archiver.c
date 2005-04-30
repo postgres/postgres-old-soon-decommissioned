@@ -345,7 +345,7 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 						 * mode with libpq.
 						 */
 						if (te->copyStmt && strlen(te->copyStmt) > 0)
-							ahprintf(AH, te->copyStmt);
+							ahprintf(AH, "%s", te->copyStmt);
 
 						(*AH->PrintTocDataPtr) (AH, te, ropt);
 
@@ -2197,9 +2197,7 @@ _reconnectToDB(ArchiveHandle *AH, const char *dbname)
 
 		appendPQExpBuffer(qry, "\\connect %s\n\n",
 						  dbname ? fmtId(dbname) : "-");
-
-		ahprintf(AH, qry->data);
-
+		ahprintf(AH, "%s", qry->data);
 		destroyPQExpBuffer(qry);
 	}
 

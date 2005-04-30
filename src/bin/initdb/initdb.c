@@ -2609,7 +2609,7 @@ main(int argc, char *argv[])
 	make_template0();
 
 	if (authwarning != NULL)
-		fprintf(stderr, authwarning);
+		fprintf(stderr, "%s", authwarning);
 
 	/* Get directory specification used to start this executable */
 	strcpy(bin_dir, argv[0]);

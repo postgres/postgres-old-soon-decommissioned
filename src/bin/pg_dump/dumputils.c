@@ -160,7 +160,7 @@ appendStringLiteralDQ(PQExpBuffer buf, const char *str, const char *dqprefix)
 	/* start with $ + dqprefix if not NULL */
 	appendPQExpBufferChar(delimBuf, '$');
 	if (dqprefix)
-		appendPQExpBuffer(delimBuf, dqprefix);
+		appendPQExpBufferStr(delimBuf, dqprefix);
 
 	/*
 	 * Make sure we choose a delimiter which (without the trailing $) is
