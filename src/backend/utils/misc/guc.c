@@ -3992,10 +3992,8 @@ flatten_set_variable_args(const char *name, List *args)
 								   Int32GetDatum(arg->typename->typmod));
 
 					intervalout =
-						DatumGetCString(DirectFunctionCall3(interval_out,
-															interval,
-											ObjectIdGetDatum(InvalidOid),
-													 Int32GetDatum(-1)));
+						DatumGetCString(DirectFunctionCall1(interval_out,
+															interval));
 					appendStringInfo(&buf, "INTERVAL '%s'", intervalout);
 				}
 				else

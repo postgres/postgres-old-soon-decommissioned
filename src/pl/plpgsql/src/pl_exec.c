@@ -3881,15 +3881,11 @@ static char *
 convert_value_to_string(Datum value, Oid valtype)
 {
 	Oid			typoutput;
-	Oid			typioparam;
 	bool		typIsVarlena;
 
-	getTypeOutputInfo(valtype, &typoutput, &typioparam, &typIsVarlena);
+	getTypeOutputInfo(valtype, &typoutput, &typIsVarlena);
 
-	return DatumGetCString(OidFunctionCall3(typoutput,
-											value,
-											ObjectIdGetDatum(typioparam),
-											Int32GetDatum(-1)));
+	return DatumGetCString(OidFunctionCall1(typoutput, value));
 }
 
 /* ----------

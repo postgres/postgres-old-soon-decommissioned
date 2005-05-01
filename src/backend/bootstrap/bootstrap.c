@@ -850,10 +850,8 @@ InsertOneValue(char *value, int i)
 								 CStringGetDatum(value),
 								 ObjectIdGetDatum(typioparam),
 								 Int32GetDatum(-1));
-	prt = DatumGetCString(OidFunctionCall3(typoutput,
-										   values[i],
-										   ObjectIdGetDatum(typioparam),
-										   Int32GetDatum(-1)));
+	prt = DatumGetCString(OidFunctionCall1(typoutput,
+										   values[i]));
 	elog(DEBUG4, "inserted -> %s", prt);
 	pfree(prt);
 }

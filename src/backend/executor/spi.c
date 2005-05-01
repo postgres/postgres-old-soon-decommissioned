@@ -632,9 +632,7 @@ SPI_getvalue(HeapTuple tuple, TupleDesc tupdesc, int fnumber)
 				result;
 	bool		isnull;
 	Oid			typoid,
-				foutoid,
-				typioparam;
-	int32		typmod;
+				foutoid;
 	bool		typisvarlena;
 
 	SPI_result = 0;
@@ -651,17 +649,11 @@ SPI_getvalue(HeapTuple tuple, TupleDesc tupdesc, int fnumber)
 		return NULL;
 
 	if (fnumber > 0)
-	{
 		typoid = tupdesc->attrs[fnumber - 1]->atttypid;
-		typmod = tupdesc->attrs[fnumber - 1]->atttypmod;
-	}
 	else
-	{
 		typoid = (SystemAttributeDefinition(fnumber, true))->atttypid;
-		typmod = -1;
-	}
 
-	getTypeOutputInfo(typoid, &foutoid, &typioparam, &typisvarlena);
+	getTypeOutputInfo(typoid, &foutoid, &typisvarlena);
 
 	/*
 	 * If we have a toasted datum, forcibly detoast it here to avoid
@@ -672,10 +664,8 @@ SPI_getvalue(HeapTuple tuple, TupleDesc tupdesc, int fnumber)
 	else
 		val = origval;
 
-	result = OidFunctionCall3(foutoid,
-							  val,
-							  ObjectIdGetDatum(typioparam),
-							  Int32GetDatum(typmod));
+	result = OidFunctionCall1(foutoid,
+							  val);
 
 	/* Clean up detoasted copy, if any */
 	if (val != origval)

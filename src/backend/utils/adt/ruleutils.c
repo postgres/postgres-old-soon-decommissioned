@@ -3594,7 +3594,6 @@ get_const_expr(Const *constval, deparse_context *context)
 {
 	StringInfo	buf = context->buf;
 	Oid			typoutput;
-	Oid			typioparam;
 	bool		typIsVarlena;
 	char	   *extval;
 	char	   *valptr;
@@ -3613,12 +3612,10 @@ get_const_expr(Const *constval, deparse_context *context)
 	}
 
 	getTypeOutputInfo(constval->consttype,
-					  &typoutput, &typioparam, &typIsVarlena);
+					  &typoutput, &typIsVarlena);
 
-	extval = DatumGetCString(OidFunctionCall3(typoutput,
-											  constval->constvalue,
-											ObjectIdGetDatum(typioparam),
-											  Int32GetDatum(-1)));
+	extval = DatumGetCString(OidFunctionCall1(typoutput,
+											  constval->constvalue));
 
 	switch (constval->consttype)
 	{

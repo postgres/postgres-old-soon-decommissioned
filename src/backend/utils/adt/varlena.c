@@ -2174,7 +2174,6 @@ array_to_text(PG_FUNCTION_ARGS)
 	int			typlen;
 	bool		typbyval;
 	char		typalign;
-	Oid			typioparam;
 	StringInfo	result_str = makeStringInfo();
 	int			i;
 	ArrayMetaState *my_extra;
@@ -2221,7 +2220,6 @@ array_to_text(PG_FUNCTION_ARGS)
 	typlen = my_extra->typlen;
 	typbyval = my_extra->typbyval;
 	typalign = my_extra->typalign;
-	typioparam = my_extra->typioparam;
 
 	for (i = 0; i < nitems; i++)
 	{
@@ -2230,10 +2228,8 @@ array_to_text(PG_FUNCTION_ARGS)
 
 		itemvalue = fetch_att(p, typbyval, typlen);
 
-		value = DatumGetCString(FunctionCall3(&my_extra->proc,
-											  itemvalue,
-											ObjectIdGetDatum(typioparam),
-											  Int32GetDatum(-1)));
+		value = DatumGetCString(FunctionCall1(&my_extra->proc,
+											  itemvalue));
 
 		if (i > 0)
 			appendStringInfo(result_str, "%s%s", fldsep, value);
