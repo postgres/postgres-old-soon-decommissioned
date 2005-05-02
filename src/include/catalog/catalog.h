@@ -19,6 +19,7 @@
 
 extern char *relpath(RelFileNode rnode);
 extern char *GetDatabasePath(Oid dbNode, Oid spcNode);
+extern char *GetTablespacePath(Oid spcNode);
 
 extern bool IsSystemRelation(Relation relation);
 extern bool IsToastRelation(Relation relation);

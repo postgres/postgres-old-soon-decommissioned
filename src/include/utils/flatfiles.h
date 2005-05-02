@@ -30,4 +30,7 @@ extern void AtEOSubXact_UpdateFlatFiles(bool isCommit,
 
 extern Datum flatfile_update_trigger(PG_FUNCTION_ARGS);
 
+/* from checkfiles.c */
+extern void CheckStaleRelFiles(void);
+
 #endif   /* FLATFILES_H */

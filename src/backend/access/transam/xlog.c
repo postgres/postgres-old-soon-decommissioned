@@ -43,6 +43,7 @@
 #include "utils/builtins.h"
 #include "utils/guc.h"
 #include "utils/relcache.h"
+#include "utils/flatfiles.h"
 
 
 /*
@@ -4525,6 +4526,8 @@ StartupXLOG(void)
 
 		CreateCheckPoint(true, true);
 
+		CheckStaleRelFiles();
+
 		/*
 		 * Close down recovery environment
 		 */
@@ -4535,6 +4538,12 @@ StartupXLOG(void)
 		 * old backup_label, if present.
 		 */
 		remove_backup_label();
+	}
+	else
+	{
+		XLogInitRelationCache();
+		CheckStaleRelFiles();
+		XLogCloseRelationCache();
 	}
 
 	/*
