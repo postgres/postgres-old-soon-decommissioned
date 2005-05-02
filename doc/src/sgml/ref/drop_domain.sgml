@@ -93,8 +93,10 @@ DROP DOMAIN box;
 
   <simplelist type="inline">
    <member><xref linkend="sql-createdomain" endterm="sql-createdomain-title"></member>
+   <member><xref linkend="sql-alterdomain" endterm="sql-alterdomain-title"></member>
   </simplelist>
  </refsect1>
+
 </refentry>
 
 <!-- Keep this comment at the end of the file

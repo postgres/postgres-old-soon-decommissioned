@@ -208,6 +208,16 @@ ALTER DOMAIN zipcode DROP CONSTRAINT zipchk;
    <productname>PostgreSQL</productname> extension.
   </para>
  </refsect1>
+
+ <refsect1 id="SQL-ALTERDOMAIN-see-also">
+  <title>See Also</title>
+
+  <simplelist type="inline">
+   <member><xref linkend="sql-createdomain" endterm="sql-createdomain-title"></member>
+   <member><xref linkend="sql-dropdomain" endterm="sql-dropdomain-title"></member>
+  </simplelist>
+ </refsect1>
+
 </refentry>
 
 <!-- Keep this comment at the end of the file
