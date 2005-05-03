@@ -2137,7 +2137,7 @@ l3:
 				 * If the XMAX is already a MultiXactId, then we need to
 				 * expand it to include our own TransactionId.
 				 */
-				xid = MultiXactIdExpand(xmax, true, xid);
+				xid = MultiXactIdExpand((MultiXactId) xmax, xid);
 				new_infomask |= HEAP_XMAX_IS_MULTI;
 			}
 			else if (TransactionIdIsInProgress(xmax))
@@ -2165,7 +2165,7 @@ l3:
 					 * create a new MultiXactId that includes both the old
 					 * locker and our own TransactionId.
 					 */
-					xid = MultiXactIdExpand(xmax, false, xid);
+					xid = MultiXactIdCreate(xmax, xid);
 					new_infomask |= HEAP_XMAX_IS_MULTI;
 				}
 			}

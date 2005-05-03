@@ -16,10 +16,10 @@
 
 #define MultiXactIdIsValid(multi) ((multi) != InvalidMultiXactId)
 
-extern void MultiXactIdWait(MultiXactId multi);
-extern MultiXactId MultiXactIdExpand(MultiXactId multi, bool isMulti,
-									 TransactionId xid);
+extern MultiXactId MultiXactIdCreate(TransactionId xid1, TransactionId xid2);
+extern MultiXactId MultiXactIdExpand(MultiXactId multi, TransactionId xid);
 extern bool MultiXactIdIsRunning(MultiXactId multi);
+extern void MultiXactIdWait(MultiXactId multi);
 extern void MultiXactIdSetOldestMember(void);
 
 extern void AtEOXact_MultiXact(void);
