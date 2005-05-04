@@ -1029,7 +1029,7 @@ psql_completion(char *text, int start, int end)
 			  pg_strcasecmp(prev2_wd, "TO") == 0))
 		{
 			static const char *const list_COPY[] =
-			{"BINARY", "OIDS", "DELIMETER", "NULL", "CSV", NULL};
+			{"BINARY", "OIDS", "DELIMITER", "NULL", "CSV", NULL};
 
 			COMPLETE_WITH_LIST(list_COPY);
 		}
