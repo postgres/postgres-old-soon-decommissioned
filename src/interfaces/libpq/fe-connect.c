@@ -2005,6 +2005,10 @@ freePGconn(PGconn *conn)
 {
 	pgParameterStatus *pstatus;
 
+#ifdef WIN32
+	WSACleanup();
+#endif
+
 	if (!conn)
 		return;
 
