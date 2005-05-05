@@ -2034,6 +2034,10 @@ freePGconn(PGconn *conn)
 	PGnotify   *notify;
 	pgParameterStatus *pstatus;
 
+#ifdef WIN32
+	WSACleanup();
+#endif
+
 	if (!conn)
 		return;
 
