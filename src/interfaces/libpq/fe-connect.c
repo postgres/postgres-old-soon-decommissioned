@@ -1963,7 +1963,12 @@ makeEmptyPGconn(void)
 	PGconn	   *conn;
 
 #ifdef WIN32
-	/* make sure socket support is up and running */
+	/*
+	 *	Make sure socket support is up and running.
+	 *	Even though this is done in libpqdll.c, that is only for MSVC and
+	 *	BCC builds and doesn't work for static builds at all, so we have
+	 *	to do it in the main code too.
+	 */
 	WSADATA		wsaData;
 
 	if (WSAStartup(MAKEWORD(1, 1), &wsaData))
