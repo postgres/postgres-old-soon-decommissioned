@@ -318,6 +318,13 @@ coerce_type(ParseState *pstate, Node *node,
 		return coerce_record_to_complex(pstate, node, targetTypeId,
 										ccontext, cformat);
 	}
+	if (targetTypeId == RECORDOID &&
+		ISCOMPLEX(inputTypeId))
+	{
+		/* Coerce a specific complex type to RECORD */
+		/* NB: we do NOT want a RelabelType here */
+		return node;
+	}
 	if (typeInheritsFrom(inputTypeId, targetTypeId))
 	{
 		/*
@@ -403,6 +410,13 @@ can_coerce_type(int nargs, Oid *input_typeids, Oid *target_typeids,
 		 */
 		if (inputTypeId == RECORDOID &&
 			ISCOMPLEX(targetTypeId))
+			continue;
+
+		/*
+		 * If input is a composite type and target is RECORD, accept
+		 */
+		if (targetTypeId == RECORDOID &&
+			ISCOMPLEX(inputTypeId))
 			continue;
 
 		/*
