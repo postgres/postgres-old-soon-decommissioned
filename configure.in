@@ -1095,7 +1095,13 @@ AC_MSG_ERROR([[
 
 # Force use of our snprintf if system's doesn't do arg control
 # This feature is used by NLS
-if test "$enable_nls" = yes && test $pgac_need_repl_snprintf = no; then
+if test "$enable_nls" = yes &&
+   test $pgac_need_repl_snprintf = no &&
+# On Win32, libintl replaces snprintf() with its own version that 
+# understands arg control, so we don't need our own.  In fact, it 
+# also uses macros that conflict with ours, so we _can't_ use
+# our own.
+   test "$PORTNAME" != "win32"; then
   PGAC_FUNC_PRINTF_ARG_CONTROL
   if test $pgac_cv_printf_arg_control != yes ; then
     pgac_need_repl_snprintf=yes
