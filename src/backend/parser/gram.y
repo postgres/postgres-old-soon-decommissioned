@@ -331,7 +331,8 @@ static void doNegateFloat(Value *v);
 /*
  * If you make any token changes, update the keyword table in
  * parser/keywords.c and add new keywords to the appropriate one of
- * the reserved-or-not-so-reserved keyword lists, below.
+ * the reserved-or-not-so-reserved keyword lists, below; search
+ * this file for "Name classification hierarchy".
  */
 
 /* ordinary key words in alphabetical order */
