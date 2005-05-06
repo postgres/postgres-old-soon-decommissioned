@@ -2208,9 +2208,10 @@
       <entry><type>bool</type></entry>
       <entry></entry>
       <entry>
-       This is a trusted language.  If this is an internal
-       language (<structfield>lanispl</structfield> is false) then
-       this column is meaningless.
+       True if this is a trusted language, which means that it is believed
+       not to grant access to anything outside the normal SQL execution
+       environment.  Only superusers may create functions in untrusted
+       languages.
       </entry>
      </row>
 
