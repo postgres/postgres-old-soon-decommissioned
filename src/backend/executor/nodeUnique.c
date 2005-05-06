@@ -28,6 +28,7 @@
 #include "access/heapam.h"
 #include "executor/executor.h"
 #include "executor/nodeUnique.h"
+#include "utils/memutils.h"
 
 
 /* ----------------------------------------------------------------

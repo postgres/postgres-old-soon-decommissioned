@@ -73,6 +73,7 @@
 #include "executor/execdefs.h"
 #include "executor/nodeMergejoin.h"
 #include "utils/lsyscache.h"
+#include "utils/memutils.h"
 #include "utils/syscache.h"
 
 

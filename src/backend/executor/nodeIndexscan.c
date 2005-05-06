@@ -32,6 +32,7 @@
 #include "nodes/nodeFuncs.h"
 #include "optimizer/clauses.h"
 #include "parser/parsetree.h"
+#include "utils/memutils.h"
 
 
 static TupleTableSlot *IndexNext(IndexScanState *node);

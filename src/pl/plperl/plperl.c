@@ -51,6 +51,7 @@
 #include "executor/spi.h"
 #include "funcapi.h"
 #include "utils/lsyscache.h"
+#include "utils/memutils.h"
 #include "utils/typcache.h"
 
 /* perl stuff */

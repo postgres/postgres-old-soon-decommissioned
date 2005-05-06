@@ -52,6 +52,7 @@
 #include "parser/parse_type.h"
 #include "tcop/tcopprot.h"
 #include "utils/lsyscache.h"
+#include "utils/memutils.h"
 #include "utils/syscache.h"
 #include "utils/typcache.h"
 

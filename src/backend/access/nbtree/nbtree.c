@@ -26,6 +26,7 @@
 #include "miscadmin.h"
 #include "storage/freespace.h"
 #include "storage/smgr.h"
+#include "utils/memutils.h"
 
 
 /* Working state for btbuild and its callback */

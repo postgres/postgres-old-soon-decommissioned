@@ -27,6 +27,7 @@
 #include "executor/nodeBitmapIndexscan.h"
 #include "executor/nodeIndexscan.h"
 #include "miscadmin.h"
+#include "utils/memutils.h"
 
 
 /* ----------------------------------------------------------------

@@ -75,7 +75,6 @@
 
 #include <unistd.h>
 #include <signal.h>
-#include <errno.h>
 #include <netinet/in.h>
 
 #include "access/heapam.h"
@@ -88,6 +87,7 @@
 #include "storage/sinval.h"
 #include "tcop/tcopprot.h"
 #include "utils/fmgroids.h"
+#include "utils/memutils.h"
 #include "utils/ps_status.h"
 #include "utils/syscache.h"
 

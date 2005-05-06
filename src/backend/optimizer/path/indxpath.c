@@ -37,6 +37,7 @@
 #include "utils/builtins.h"
 #include "utils/catcache.h"
 #include "utils/lsyscache.h"
+#include "utils/memutils.h"
 #include "utils/pg_locale.h"
 #include "utils/selfuncs.h"
 #include "utils/syscache.h"

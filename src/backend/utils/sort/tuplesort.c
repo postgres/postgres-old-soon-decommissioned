@@ -94,6 +94,7 @@
 #include "utils/datum.h"
 #include "utils/logtape.h"
 #include "utils/lsyscache.h"
+#include "utils/memutils.h"
 #include "utils/syscache.h"
 #include "utils/tuplesort.h"
 

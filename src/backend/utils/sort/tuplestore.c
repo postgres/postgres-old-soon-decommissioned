@@ -45,7 +45,9 @@
 
 #include "access/heapam.h"
 #include "storage/buffile.h"
+#include "utils/memutils.h"
 #include "utils/tuplestore.h"
+
 
 /*
  * Possible states of a Tuplestore object.	These denote the states that

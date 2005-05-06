@@ -39,6 +39,7 @@
 #include "executor/execdebug.h"
 #include "executor/nodeBitmapHeapscan.h"
 #include "parser/parsetree.h"
+#include "utils/memutils.h"
 
 
 static TupleTableSlot *BitmapHeapNext(BitmapHeapScanState *node);
