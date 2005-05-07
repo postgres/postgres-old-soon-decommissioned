@@ -1040,7 +1040,7 @@ psql_completion(char *text, int start, int end)
 			  pg_strcasecmp(prev3_wd, "TO") == 0))
 		{
 			static const char *const list_CSV[] =
-			{"QUOTE", "ESCAPE", "FORCE QUOTE", NULL};
+			{"HEADER", "QUOTE", "ESCAPE", "FORCE QUOTE", NULL};
 
 			COMPLETE_WITH_LIST(list_CSV);
 		}
