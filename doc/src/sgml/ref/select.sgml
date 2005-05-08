@@ -47,7 +47,7 @@ where <replaceable class="parameter">from_item</replaceable> can be one of:
   <title>Description</title>
 
   <para>
-   <command>SELECT</command> retrieves rows from one or more tables.
+   <command>SELECT</command> retrieves rows from zero or more tables.
    The general processing of <command>SELECT</command> is as follows:
 
    <orderedlist>

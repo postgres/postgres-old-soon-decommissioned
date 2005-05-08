@@ -34,7 +34,7 @@ SELECT <replaceable>select_list</replaceable> FROM <replaceable>table_expression
   </para>
 
   <para>
-   The simplest kind of query has the form
+   A simple kind of query has the form
 <programlisting>
 SELECT * FROM table1;
 </programlisting>
