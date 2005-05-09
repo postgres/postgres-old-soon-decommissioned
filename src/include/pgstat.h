@@ -11,10 +11,10 @@
 #ifndef PGSTAT_H
 #define PGSTAT_H
 
+#include "libpq/pqcomm.h"
 #include "utils/hsearch.h"
 #include "utils/nabstime.h"
 #include "utils/rel.h"
-
 
 /* ----------
  * The types of backend/postmaster -> collector messages
@@ -54,6 +54,7 @@ typedef struct PgStat_MsgHdr
 	int			m_procpid;
 	Oid			m_databaseid;
 	AclId		m_userid;
+	SockAddr	m_clientaddr;
 } PgStat_MsgHdr;
 
 /* ----------
@@ -231,8 +232,11 @@ typedef struct PgStat_StatBeEntry
 	Oid			databaseid;
 	Oid			userid;
 	int			procpid;
+	AbsoluteTime start_sec;
+	int         start_usec;
 	AbsoluteTime activity_start_sec;
 	int			activity_start_usec;
+	SockAddr    clientaddr;
 	char		activity[PGSTAT_ACTIVITY_SIZE];
 } PgStat_StatBeEntry;
 

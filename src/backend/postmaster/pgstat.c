@@ -1300,6 +1300,7 @@ pgstat_setheader(PgStat_MsgHdr *hdr, int mtype)
 	hdr->m_procpid = MyProcPid;
 	hdr->m_databaseid = MyDatabaseId;
 	hdr->m_userid = GetSessionUserId();
+	memcpy(&hdr->m_clientaddr, &MyProcPort->raddr, sizeof(hdr->m_clientaddr));
 }
 
 
@@ -2032,12 +2033,15 @@ pgstat_add_backend(PgStat_MsgHdr *msg)
 	beentry->databaseid = msg->m_databaseid;
 	beentry->procpid = msg->m_procpid;
 	beentry->userid = msg->m_userid;
+	beentry->start_sec = 
+		GetCurrentAbsoluteTimeUsec(&beentry->start_usec);
 	beentry->activity_start_sec = 0;
 	beentry->activity_start_usec = 0;
+	memcpy(&beentry->clientaddr, &msg->m_clientaddr, sizeof(beentry->clientaddr));
 	MemSet(beentry->activity, 0, PGSTAT_ACTIVITY_SIZE);
 
 	/*
-	 * Lookup or create the database entry for this backends DB.
+	 * Lookup or create the database entry for this backend's DB.
 	 */
 	dbentry = (PgStat_StatDBEntry *) hash_search(pgStatDBHash,
 										   (void *) &(msg->m_databaseid),
@@ -2072,9 +2076,7 @@ pgstat_add_backend(PgStat_MsgHdr *msg)
 									  HASH_ELEM | HASH_FUNCTION);
 	}
 
-	/*
-	 * Count number of connects to the database
-	 */
+	/* Count the number of connects to the database */
 	dbentry->n_connects++;
 
 	return 0;
