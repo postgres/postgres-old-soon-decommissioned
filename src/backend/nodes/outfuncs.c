@@ -1255,7 +1255,6 @@ _outSelectStmt(StringInfo str, SelectStmt *node)
 {
 	WRITE_NODE_TYPE("SELECT");
 
-	WRITE_NODE_FIELD(whereClause);
 	WRITE_NODE_FIELD(distinctClause);
 	WRITE_NODE_FIELD(into);
 	WRITE_NODE_FIELD(intoColNames);
