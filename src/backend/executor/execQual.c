@@ -948,7 +948,7 @@ ExecMakeFunctionResult(FuncExprState *fcache,
 				 * returns set, save the current argument values to re-use
 				 * on the next call.
 				 */
-				if (fcache->func.fn_retset)
+				if (fcache->func.fn_retset && *isDone == ExprMultipleResult)
 				{
 					memcpy(&fcache->setArgs, &fcinfo, sizeof(fcinfo));
 					fcache->setHasSetArg = hasSetArg;
@@ -967,7 +967,8 @@ ExecMakeFunctionResult(FuncExprState *fcache,
 				 * Make sure we say we are returning a set, even if the
 				 * function itself doesn't return sets.
 				 */
-				*isDone = ExprMultipleResult;
+				if (hasSetArg)
+					*isDone = ExprMultipleResult;
 				break;
 			}
 
