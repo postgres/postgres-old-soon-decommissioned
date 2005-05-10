@@ -341,7 +341,8 @@ CreateTableSpace(CreateTableSpaceStmt *stmt)
 	/*
 	 * All seems well, create the symlink
 	 */
-	linkloc = GetTablespacePath(tablespaceoid);
+	linkloc = (char *) palloc(strlen(DataDir) + 11 + 10 + 1);
+	sprintf(linkloc, "%s/pg_tblspc/%u", DataDir, tablespaceoid);
 
 	if (symlink(location, linkloc) < 0)
 		ereport(ERROR,
@@ -494,7 +495,8 @@ remove_tablespace_directories(Oid tablespaceoid, bool redo)
 	char	   *subfile;
 	struct stat st;
 
-	location = GetTablespacePath(tablespaceoid);
+	location = (char *) palloc(strlen(DataDir) + 11 + 10 + 1);
+	sprintf(location, "%s/pg_tblspc/%u", DataDir, tablespaceoid);
 
 	/*
 	 * Check if the tablespace still contains any files.  We try to rmdir
@@ -1034,7 +1036,8 @@ tblspc_redo(XLogRecPtr lsn, XLogRecord *record)
 		set_short_version(location);
 
 		/* Create the symlink if not already present */
-		linkloc = GetTablespacePath(xlrec->ts_id);
+		linkloc = (char *) palloc(strlen(DataDir) + 11 + 10 + 1);
+		sprintf(linkloc, "%s/pg_tblspc/%u", DataDir, xlrec->ts_id);
 
 		if (symlink(location, linkloc) < 0)
 		{

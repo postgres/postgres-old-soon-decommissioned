@@ -12,7 +12,7 @@ subdir = src/backend/utils/init
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = flatfiles.o globals.o miscinit.o postinit.o checkfiles.o
+OBJS = flatfiles.o globals.o miscinit.o postinit.o
 
 all: SUBSYS.o
 

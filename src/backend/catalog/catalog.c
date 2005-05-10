@@ -106,39 +106,6 @@ GetDatabasePath(Oid dbNode, Oid spcNode)
 	return path;
 }
 
-/*
- * GetTablespacePath	- construct path to a tablespace symbolic link
- *
- * Result is a palloc'd string.
- *
- * XXX this must agree with relpath and GetDatabasePath!
- */
-char *
-GetTablespacePath(Oid spcNode)
-{
-	int			pathlen;
-	char	   *path;
-
-	Assert(spcNode != GLOBALTABLESPACE_OID);
-
-	if (spcNode == DEFAULTTABLESPACE_OID)
-	{
-		/* The default tablespace is {datadir}/base */
-		pathlen = strlen(DataDir) + 5 + 1;
-		path = (char *) palloc(pathlen);
-		snprintf(path, pathlen, "%s/base",
-				 DataDir);
-	}
-	else
-	{
-		/* All other tablespaces have symlinks in pg_tblspc */
-		pathlen = strlen(DataDir) + 11 + OIDCHARS + 1;
-		path = (char *) palloc(pathlen);
-		snprintf(path, pathlen, "%s/pg_tblspc/%u",
-				 DataDir, spcNode);
-	}
-	return path;
-}
 
 /*
  * IsSystemRelation
