@@ -388,7 +388,7 @@ _hash_expandtable(Relation rel, Buffer metabuf)
 	 * Check to see if split is still needed; someone else might have
 	 * already done one while we waited for the lock.
 	 *
-	 * Make sure this stays in sync with_hash_doinsert()
+	 * Make sure this stays in sync with _hash_doinsert()
 	 */
 	if (metap->hashm_ntuples <=
 		(double) metap->hashm_ffactor * (metap->hashm_maxbucket + 1))
