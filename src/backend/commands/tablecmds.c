@@ -5464,7 +5464,7 @@ ATExecClusterOn(Relation rel, const char *indexName)
 						indexName, RelationGetRelationName(rel))));
 
 	/* Check index is valid to cluster on */
-	check_index_is_clusterable(rel, indexOid);
+	check_index_is_clusterable(rel, indexOid, false);
 
 	/* And do the work */
 	mark_index_clustered(rel, indexOid);
