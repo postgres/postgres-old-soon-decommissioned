@@ -56,7 +56,7 @@ _hash_formitem(IndexTuple itup)
 		(sizeof(HashItemData) - sizeof(IndexTupleData));
 
 	hitem = (HashItem) palloc(nbytes_hitem);
-	memcpy((char *) &(hitem->hash_itup), (char *) itup, tuplen);
+	memcpy(&(hitem->hash_itup), itup, tuplen);
 
 	return hitem;
 }

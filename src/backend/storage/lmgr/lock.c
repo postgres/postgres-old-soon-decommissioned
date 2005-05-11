@@ -551,8 +551,8 @@ LockAcquire(LOCKMETHODID lockmethodid, LOCKTAG *locktag,
 		ProcQueueInit(&(lock->waitProcs));
 		lock->nRequested = 0;
 		lock->nGranted = 0;
-		MemSet((char *) lock->requested, 0, sizeof(int) * MAX_LOCKMODES);
-		MemSet((char *) lock->granted, 0, sizeof(int) * MAX_LOCKMODES);
+		MemSet(lock->requested, 0, sizeof(int) * MAX_LOCKMODES);
+		MemSet(lock->granted, 0, sizeof(int) * MAX_LOCKMODES);
 		LOCK_PRINT("LockAcquire: new", lock, lockmode);
 	}
 	else

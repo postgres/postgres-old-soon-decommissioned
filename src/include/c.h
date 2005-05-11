@@ -630,7 +630,7 @@ typedef NameData *Name;
 #define MemSet(start, val, len) \
 	do \
 	{ \
-		int32 * _start = (int32 *) (start); \
+		int32  *_start = (int32 *) (start); \
 		int		_val = (val); \
 		Size	_len = (len); \
 \
@@ -639,12 +639,12 @@ typedef NameData *Name;
 			_val == 0 && \
 			_len <= MEMSET_LOOP_LIMIT) \
 		{ \
-			int32 * _stop = (int32 *) ((char *) _start + _len); \
+			int32 *_stop = (int32 *) ((char *) _start + _len); \
 			while (_start < _stop) \
 				*_start++ = 0; \
 		} \
 		else \
-			memset((char *) _start, _val, _len); \
+			memset(_start, _val, _len); \
 	} while (0)
 
 #define MEMSET_LOOP_LIMIT  1024
@@ -658,7 +658,7 @@ typedef NameData *Name;
 #define MemSetAligned(start, val, len) \
 	do \
 	{ \
-		int32 * _start = (int32 *) (start); \
+		int32  *_start = (int32 *) (start); \
 		int		_val = (val); \
 		Size	_len = (len); \
 \
@@ -666,12 +666,12 @@ typedef NameData *Name;
 			_val == 0 && \
 			_len <= MEMSET_LOOP_LIMIT) \
 		{ \
-			int32 * _stop = (int32 *) ((char *) _start + _len); \
+			int32 *_stop = (int32 *) ((char *) _start + _len); \
 			while (_start < _stop) \
 				*_start++ = 0; \
 		} \
 		else \
-			memset((char *) _start, _val, _len); \
+			memset(_start, _val, _len); \
 	} while (0)
 
 

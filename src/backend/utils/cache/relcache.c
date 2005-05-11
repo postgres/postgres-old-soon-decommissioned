@@ -297,7 +297,7 @@ AllocateRelationDesc(Relation relation, Form_pg_class relp)
 	/*
 	 * clear all fields of reldesc
 	 */
-	MemSet((char *) relation, 0, sizeof(RelationData));
+	MemSet(relation, 0, sizeof(RelationData));
 	relation->rd_targblock = InvalidBlockNumber;
 
 	/* make sure relation is marked as having no open file yet */
@@ -315,7 +315,7 @@ AllocateRelationDesc(Relation relation, Form_pg_class relp)
 	 */
 	relationForm = (Form_pg_class) palloc(CLASS_TUPLE_SIZE);
 
-	memcpy((char *) relationForm, (char *) relp, CLASS_TUPLE_SIZE);
+	memcpy(relationForm, relp, CLASS_TUPLE_SIZE);
 
 	/* initialize relation tuple form */
 	relation->rd_rel = relationForm;

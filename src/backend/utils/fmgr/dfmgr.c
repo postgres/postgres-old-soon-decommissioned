@@ -126,7 +126,7 @@ load_external_function(char *filename, char *funcname,
 					(errcode(ERRCODE_OUT_OF_MEMORY),
 					 errmsg("out of memory")));
 
-		MemSet((char *) file_scanner, 0, sizeof(DynamicFileList));
+		MemSet(file_scanner, 0, sizeof(DynamicFileList));
 		strcpy(file_scanner->filename, fullname);
 		file_scanner->device = stat_buf.st_dev;
 #ifndef WIN32

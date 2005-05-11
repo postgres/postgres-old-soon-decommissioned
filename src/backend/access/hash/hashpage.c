@@ -295,8 +295,8 @@ _hash_metapinit(Relation rel)
 	metap->hashm_maxbucket = metap->hashm_lowmask = 1;	/* nbuckets - 1 */
 	metap->hashm_highmask = 3;	/* (nbuckets << 1) - 1 */
 
-	MemSet((char *) metap->hashm_spares, 0, sizeof(metap->hashm_spares));
-	MemSet((char *) metap->hashm_mapp, 0, sizeof(metap->hashm_mapp));
+	MemSet(metap->hashm_spares, 0, sizeof(metap->hashm_spares));
+	MemSet(metap->hashm_mapp, 0, sizeof(metap->hashm_mapp));
 
 	metap->hashm_spares[1] = 1; /* the first bitmap page is only spare */
 	metap->hashm_ovflpoint = 1;

@@ -455,7 +455,7 @@ InitCatalogCache(void)
 
 	Assert(!CacheInitialized);
 
-	MemSet((char *) SysCache, 0, sizeof(SysCache));
+	MemSet(SysCache, 0, sizeof(SysCache));
 
 	for (cacheId = 0; cacheId < SysCacheSize; cacheId++)
 	{
