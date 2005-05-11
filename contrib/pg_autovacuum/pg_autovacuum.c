@@ -1749,7 +1749,7 @@ VacuumLoop(int argc, char **argv)
 			fflush(LOGOUTPUT);
 		}
 
-		pg_usleep(sleep_secs * 1000000);	/* Larger Pause between outer loops */
+		pg_usleep(sleep_secs * 1000000L);	/* Larger Pause between outer loops */
 
 		gettimeofday(&then, 0); /* Reset time counter */
 
