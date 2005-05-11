@@ -33,7 +33,7 @@ PostgreSQL documentation
    is present in other <acronym>SQL</acronym> database management
    systems, and in many cases this functionality is compatible and
    consistent between the various implementations.  This chapter is also
-   not exhaustive;  additional functions appear in relivant sections of 
+   not exhaustive;  additional functions appear in relevant sections of 
    the manual.
   </para>
 
