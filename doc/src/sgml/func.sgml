@@ -32,7 +32,9 @@ PostgreSQL documentation
    <acronym>SQL</acronym> standard. Some of the extended functionality
    is present in other <acronym>SQL</acronym> database management
    systems, and in many cases this functionality is compatible and
-   consistent between the various implementations.
+   consistent between the various implementations.  This chapter is also
+   not exhaustive;  additional functions appear in relivant sections of 
+   the manual.
   </para>
 
 
