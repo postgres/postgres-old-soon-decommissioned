@@ -47,7 +47,7 @@ $PostgreSQL$
   C++</productname>, change into the <filename>src</filename> directory
   and type the command
 <screen>
-<userinput>make -DCFG=Release /f bcc32.mak</userinput>
+<userinput>make -N -DCFG=Release /f bcc32.mak</userinput>
 </screen>
  </para>
 
