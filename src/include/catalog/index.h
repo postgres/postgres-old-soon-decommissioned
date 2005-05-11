@@ -52,7 +52,8 @@ extern void FormIndexDatum(IndexInfo *indexInfo,
 			   Datum *values,
 			   bool *isnull);
 
-extern void UpdateStats(Oid relid, double reltuples);
+extern void IndexCloseAndUpdateStats(Relation heap, double heapTuples,
+									 Relation index, double indexTuples);
 
 extern void setRelhasindex(Oid relid, bool hasindex,
 			   bool isprimary, Oid reltoastidxid);
