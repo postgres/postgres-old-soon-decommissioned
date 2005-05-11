@@ -475,12 +475,6 @@ CommitHoldablePortals(void)
  *
  * Remove all non-holdable portals created in this transaction.
  * Portals remaining from prior transactions should be left untouched.
- *
- * XXX This assumes that portals can be deleted in a random order, ie,
- * no portal has a reference to any other (at least not one that will be
- * exercised during deletion).	I think this is okay at the moment, but
- * we've had bugs of that ilk in the past.  Keep a close eye on cursor
- * references...
  */
 void
 AtCommit_Portals(void)
@@ -516,6 +510,9 @@ AtCommit_Portals(void)
 
 		/* Zap all non-holdable portals */
 		PortalDrop(portal, true);
+
+		/* Restart the iteration */
+		hash_seq_init(&status, PortalHashTable);
 	}
 }
 
