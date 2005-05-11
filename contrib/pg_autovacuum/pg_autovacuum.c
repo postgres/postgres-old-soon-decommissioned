@@ -1056,9 +1056,9 @@ perform_maintenance_command(db_info * dbi, tbl_info * tbl, int operation)
 	 */
 	if ((tbl->relisshared > 0 && strcmp("template1", dbi->dbname) != 0) ||
 		(operation == ANALYZE_ONLY))
-		snprintf(buf, sizeof(buf), "ANALYZE %s", tbl->table_name);
+		snprintf(buf, sizeof(buf), "ANALYZE %s.%s", dbi->dbname, tbl->table_name);
 	else if (operation == VACUUM_ANALYZE)
-		snprintf(buf, sizeof(buf), "VACUUM ANALYZE %s", tbl->table_name);
+		snprintf(buf, sizeof(buf), "VACUUM ANALYZE %s.%s", dbi->dbname, tbl->table_name);
 	else
 		return;
 
