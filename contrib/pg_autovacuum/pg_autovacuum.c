@@ -1749,7 +1749,16 @@ VacuumLoop(int argc, char **argv)
 			fflush(LOGOUTPUT);
 		}
 
-		pg_usleep(sleep_secs * 1000000L);	/* Larger Pause between outer loops */
+		/* Larger Pause between outer loops */
+		/*
+		 *	pg_usleep() is wrong here because its maximum is ~2000 seconds,
+		 *	and we don't need signal interruptability on Win32 here.
+		 */
+#ifndef WIN32
+		sleep(sleep_secs);			/* Unix sleep is seconds */
+#else
+		sleep(sleep_secs * 1000);	/* Win32 sleep() is milliseconds */
+#endif
 
 		gettimeofday(&then, 0); /* Reset time counter */
 
