@@ -1060,17 +1060,11 @@ ExecMakeFunctionResultNoSets(FuncExprState *fcache,
 	foreach(arg, fcache->args)
 	{
 		ExprState  *argstate = (ExprState *) lfirst(arg);
-		ExprDoneCond thisArgIsDone;
 
 		fcinfo.arg[i] = ExecEvalExpr(argstate,
 									 econtext,
 									 &fcinfo.argnull[i],
-									 &thisArgIsDone);
-
-		if (thisArgIsDone != ExprSingleResult)
-			ereport(ERROR,
-					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("set-valued function called in context that cannot accept a set")));
+									 NULL);
 		i++;
 	}
 
