@@ -417,7 +417,7 @@ perl -pi -e 's/iso-(.*).gml/ISO\1/g' docbook.cat
      <filename>/usr/local/share/sgml/catalog</filename> can also be
      made:
 <programlisting>
-CATALOG "docbook-dsssl-1.<replaceable>xx</>/catalog
+CATALOG "docbook-dsssl-1.<replaceable>xx</>/catalog"
 </programlisting>
      Because stylesheets change rather often, and it's sometimes
      beneficial to try out alternative versions,
