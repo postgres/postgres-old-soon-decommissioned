@@ -131,6 +131,7 @@ $PostgreSQL$
   Free <productname>Borland C++</productname> compiler tools can be downloaded from
   <ulink url="http://www.borland.com/products/downloads/download_cbuilder.html#"></>,
   and require similar setup.
+ </para>
 </chapter>
 
 <!-- Keep this comment at the end of the file
