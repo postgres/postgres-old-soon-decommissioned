@@ -258,17 +258,14 @@ extern int	NIndexTupleInserted;
 #define MJ2_printf(s, p1, p2)			printf(s, p1, p2)
 #define MJ_debugtup(slot)				debugtup(slot, NULL)
 #define MJ_dump(state)					ExecMergeTupleDump(state)
+#define MJ_DEBUG_COMPARE(res) \
+  MJ1_printf("  MJCompare() returns %d\n", (res))
 #define MJ_DEBUG_QUAL(clause, res) \
   MJ2_printf("  ExecQual(%s, econtext) returns %s\n", \
-			 CppAsString(clause), T_OR_F(res));
-
-#define MJ_DEBUG_MERGE_COMPARE(qual, res) \
-  MJ2_printf("  MergeCompare(mergeclauses, %s, ...) returns %s\n", \
-			 CppAsString(qual), T_OR_F(res));
-
+			 CppAsString(clause), T_OR_F(res))
 #define MJ_DEBUG_PROC_NODE(slot) \
   MJ2_printf("  %s = ExecProcNode(...) returns %s\n", \
-			 CppAsString(slot), NULL_OR_TUPLE(slot));
+			 CppAsString(slot), NULL_OR_TUPLE(slot))
 
 #else
 
@@ -278,8 +275,8 @@ extern int	NIndexTupleInserted;
 #define MJ2_printf(s, p1, p2)
 #define MJ_debugtup(slot)
 #define MJ_dump(state)
+#define MJ_DEBUG_COMPARE(res)
 #define MJ_DEBUG_QUAL(clause, res)
-#define MJ_DEBUG_MERGE_COMPARE(qual, res)
 #define MJ_DEBUG_PROC_NODE(slot)
 #endif   /* EXEC_MERGEJOINDEBUG */
 
