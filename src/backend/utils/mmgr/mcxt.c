@@ -123,7 +123,10 @@ MemoryContextReset(MemoryContext context)
 {
 	AssertArg(MemoryContextIsValid(context));
 
-	MemoryContextResetChildren(context);
+	/* save a function call in common case where there are no children */
+	if (context->firstchild != NULL)
+		MemoryContextResetChildren(context);
+
 	(*context->methods->reset) (context);
 }
 
