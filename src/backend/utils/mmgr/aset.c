@@ -395,12 +395,17 @@ AllocSetReset(MemoryContext context)
 	AllocSetCheck(context);
 #endif
 
+	/* Nothing to do if context has never contained any data */
+	if (block == NULL)
+		return;
+
 	/* Clear chunk freelists */
-	MemSet(set->freelist, 0, sizeof(set->freelist));
+	MemSetAligned(set->freelist, 0, sizeof(set->freelist));
+
 	/* New blocks list is either empty or just the keeper block */
 	set->blocks = set->keeper;
 
-	while (block != NULL)
+	do
 	{
 		AllocBlock	next = block->next;
 
@@ -427,6 +432,7 @@ AllocSetReset(MemoryContext context)
 		}
 		block = next;
 	}
+	while (block != NULL);
 }
 
 /*
@@ -451,7 +457,7 @@ AllocSetDelete(MemoryContext context)
 #endif
 
 	/* Make it look empty, just in case... */
-	MemSet(set->freelist, 0, sizeof(set->freelist));
+	MemSetAligned(set->freelist, 0, sizeof(set->freelist));
 	set->blocks = NULL;
 	set->keeper = NULL;
 
