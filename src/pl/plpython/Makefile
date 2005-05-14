@@ -58,6 +58,8 @@ endif
 
 SHLIB_LINK = $(BE_DLLLIBS) $(python_libspec) $(python_additional_libs)
 
+REGRESS = plpython_schema plpython_populate plpython_function plpython_test plpython_error plpython_drop
+
 include $(top_srcdir)/src/Makefile.shlib
 
 
@@ -78,15 +80,20 @@ installdirs:
 uninstall:
 	rm -f $(DESTDIR)$(pkglibdir)/plpython$(DLSUFFIX)
 
+installcheck: submake
+	$(SHELL) $(top_builddir)/src/test/regress/pg_regress --load-language=plpythonu $(REGRESS)
+
+.PHONY: submake
+submake:
+	$(MAKE) -C $(top_builddir)/src/test/regress pg_regress
+
 clean distclean maintainer-clean: clean-lib
 	rm -f $(OBJS)
-	@rm -f error.diff feature.diff error.output feature.output test.log
+	rm -rf results
+	rm -f regression.diffs regression.out
 ifeq ($(PORTNAME), win32)
 	rm -f python${pytverstr}.def
 endif
-
-installcheck:
-	PATH=$(bindir):$$PATH $(SHELL) $(srcdir)/test.sh
 
 else # can't build
 
