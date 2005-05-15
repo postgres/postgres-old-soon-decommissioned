@@ -411,6 +411,10 @@ index_markpos(IndexScanDesc scan)
 
 /* ----------------
  *		index_restrpos	- restore a scan position
+ *
+ * NOTE: this only restores the internal scan state of the index AM.
+ * The current result tuple (scan->xs_ctup) doesn't change.  See comments
+ * for ExecRestrPos().
  * ----------------
  */
 void

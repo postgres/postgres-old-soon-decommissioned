@@ -342,9 +342,8 @@ ExecSeqReScan(SeqScanState *node, ExprContext *exprCtxt)
 void
 ExecSeqMarkPos(SeqScanState *node)
 {
-	HeapScanDesc scan;
+	HeapScanDesc scan = node->ss_currentScanDesc;
 
-	scan = node->ss_currentScanDesc;
 	heap_markpos(scan);
 }
 
@@ -357,8 +356,15 @@ ExecSeqMarkPos(SeqScanState *node)
 void
 ExecSeqRestrPos(SeqScanState *node)
 {
-	HeapScanDesc scan;
+	HeapScanDesc scan = node->ss_currentScanDesc;
 
-	scan = node->ss_currentScanDesc;
+	/*
+	 * Clear any reference to the previously returned tuple.  This is
+	 * needed because the slot is simply pointing at scan->rs_cbuf, which
+	 * heap_restrpos will change; we'd have an internally inconsistent
+	 * slot if we didn't do this.
+	 */
+	ExecClearTuple(node->ss_ScanTupleSlot);
+
 	heap_restrpos(scan);
 }
