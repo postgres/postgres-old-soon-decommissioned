@@ -88,7 +88,7 @@
 #include <getopt.h>
 #endif
 
-#ifdef USE_RENDEZVOUS
+#ifdef USE_BONJOUR
 #include <DNSServiceDiscovery/DNSServiceDiscovery.h>
 #endif
 
@@ -198,7 +198,7 @@ bool		log_hostname;		/* for ps display and logging */
 bool		Log_connections = false;
 bool		Db_user_namespace = false;
 
-char	   *rendezvous_name;
+char	   *bonjour_name;
 
 /* list of library:init-function to be preloaded */
 char	   *preload_libraries_string = NULL;
@@ -242,7 +242,7 @@ extern int	optreset;
  */
 static void checkDataDir(void);
 
-#ifdef USE_RENDEZVOUS
+#ifdef USE_BONJOUR
 static void reg_reply(DNSServiceRegistrationReplyErrorType errorCode,
 		  void *context);
 #endif
@@ -746,11 +746,11 @@ PostmasterMain(int argc, char *argv[])
 		pfree(rawstring);
 	}
 
-#ifdef USE_RENDEZVOUS
-	/* Register for Rendezvous only if we opened TCP socket(s) */
-	if (ListenSocket[0] != -1 && rendezvous_name != NULL)
+#ifdef USE_BONJOUR
+	/* Register for Bonjour only if we opened TCP socket(s) */
+	if (ListenSocket[0] != -1 && bonjour_name != NULL)
 	{
-		DNSServiceRegistrationCreate(rendezvous_name,
+		DNSServiceRegistrationCreate(bonjour_name,
 									 "_postgresql._tcp.",
 									 "",
 									 htonl(PostPortNumber),
@@ -1009,7 +1009,7 @@ checkDataDir(void)
 }
 
 
-#ifdef USE_RENDEZVOUS
+#ifdef USE_BONJOUR
 
 /*
  * empty callback function for DNSServiceRegistrationCreate()
@@ -1019,7 +1019,7 @@ reg_reply(DNSServiceRegistrationReplyErrorType errorCode, void *context)
 {
 
 }
-#endif   /* USE_RENDEZVOUS */
+#endif   /* USE_BONJOUR */
 
 
 /*

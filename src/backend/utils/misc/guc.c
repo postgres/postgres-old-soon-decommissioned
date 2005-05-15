@@ -1573,11 +1573,11 @@ static struct config_string ConfigureNamesString[] =
 	},
 
 	{
-		{"rendezvous_name", PGC_POSTMASTER, CONN_AUTH_SETTINGS,
-			gettext_noop("Sets the Rendezvous broadcast service name."),
+		{"bonjour_name", PGC_POSTMASTER, CONN_AUTH_SETTINGS,
+			gettext_noop("Sets the Bonjour broadcast service name."),
 			NULL
 		},
-		&rendezvous_name,
+		&bonjour_name,
 		"", NULL, NULL
 	},
 

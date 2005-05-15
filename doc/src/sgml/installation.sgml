@@ -864,10 +864,10 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
-       <term><option>--with-rendezvous</option></term>
+       <term><option>--with-bonjour</option></term>
        <listitem>
         <para>
-         Build with Rendezvous support.  This requires Rendezvous support
+         Build with Bonjour support.  This requires Bonjour support
          in your operating system.  Recommended on Mac OS X.
         </para>
        </listitem>

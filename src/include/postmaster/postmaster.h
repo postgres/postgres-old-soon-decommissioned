@@ -28,7 +28,7 @@ extern int	AuthenticationTimeout;
 extern char *preload_libraries_string;
 extern bool Log_connections;
 extern bool log_hostname;
-extern char *rendezvous_name;
+extern char *bonjour_name;
 
 #ifdef WIN32
 extern HANDLE PostmasterHandle;
