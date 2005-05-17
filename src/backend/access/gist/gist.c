@@ -15,7 +15,7 @@
 #include "postgres.h"
 
 #include "access/genam.h"
-#include "access/gist.h"
+#include "access/gist_private.h"
 #include "access/gistscan.h"
 #include "access/heapam.h"
 #include "catalog/index.h"
@@ -26,10 +26,10 @@
 
 #undef GIST_PAGEADDITEM
 
-#define ATTSIZE(datum, TupDesc, i, isnull) \
+#define ATTSIZE(datum, tupdesc, i, isnull) \
 	( \
 		(isnull) ? 0 : \
-			att_addlength(0, (TupDesc)->attrs[(i)-1]->attlen, (datum)) \
+			att_addlength(0, (tupdesc)->attrs[(i)-1]->attlen, (datum)) \
 	)
 
 /* result's status */

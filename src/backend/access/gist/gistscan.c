@@ -15,7 +15,7 @@
 #include "postgres.h"
 
 #include "access/genam.h"
-#include "access/gist.h"
+#include "access/gist_private.h"
 #include "access/gistscan.h"
 #include "utils/memutils.h"
 #include "utils/resowner.h"
