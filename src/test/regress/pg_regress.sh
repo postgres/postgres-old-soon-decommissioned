@@ -11,6 +11,7 @@ PostgreSQL regression test driver
 Usage: $me [options...] [extra tests...]
 
 Options:
+  --dbname=DB               use database DB (default \`regression')
   --debug                   turn on debug mode in programs that are run
   --inputdir=DIR            take input files from DIR (default \`.')
   --load-language=lang      load the named language before running the
@@ -123,6 +124,9 @@ do
         --version)
                 echo "pg_regress (PostgreSQL @VERSION@)"
                 exit 0;;
+        --dbname=*)
+                dbname=`expr "x$1" : "x--dbname=\(.*\)"`
+                shift;;
         --debug)
                 debug=yes
                 shift;;

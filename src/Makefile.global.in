@@ -228,6 +228,9 @@ XGETTEXT = @XGETTEXT@
 GZIP	= gzip
 BZIP2	= bzip2
 
+PL_TESTDB = pl_regression
+CONTRIB_TESTDB = contrib_regression
+
 # Installation.
 
 INSTALL	= $(SHELL) $(top_srcdir)/config/install-sh -c

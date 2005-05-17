@@ -40,6 +40,7 @@ SO_MAJOR_VERSION = 2
 SO_MINOR_VERSION = 0
 OBJS = pltcl.o
 
+REGRESS_OPTS = --dbname=$(PL_TESTDB) --load-language=pltcl
 REGRESS = pltcl_setup pltcl_queries
 
 include $(top_srcdir)/src/Makefile.shlib
@@ -68,7 +69,7 @@ uninstall:
 	$(MAKE) -C modules $@
 
 installcheck: submake
-	$(SHELL) $(top_builddir)/src/test/regress/pg_regress --load-language=pltcl $(REGRESS)
+	$(SHELL) $(top_builddir)/src/test/regress/pg_regress $(REGRESS_OPTS) $(REGRESS)
 
 .PHONY: submake
 submake:
