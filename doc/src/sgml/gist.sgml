@@ -202,7 +202,7 @@ $PostgreSQL$
  <para>
   The lack of write-ahead logging is just a small matter of programming,
   but since it isn't done yet, a crash could render a <acronym>GiST</acronym>
-  index inconsistent, forcing a REINDEX.
+  index inconsistent, forcing a <command>REINDEX</command>.
  </para>
 
 </sect1>
