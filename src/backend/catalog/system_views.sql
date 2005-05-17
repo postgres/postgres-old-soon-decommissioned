@@ -261,8 +261,10 @@ CREATE VIEW pg_stat_database AS
 
 CREATE VIEW pg_locks AS 
     SELECT * 
-    FROM pg_lock_status() AS L(relation oid, database oid, 
-        transaction xid, pid int4, mode text, granted boolean);
+    FROM pg_lock_status() AS L
+    (locktype text, database oid, relation oid, page int4, tuple int2,
+     transaction xid, classid oid, objid oid, objsubid int2,
+     pid int4, mode text, granted boolean);
 
 CREATE VIEW pg_settings AS 
     SELECT * 
