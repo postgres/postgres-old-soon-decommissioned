@@ -442,8 +442,8 @@ GetSnapshotData(Snapshot snapshot, bool serializable)
 
 	/*
 	 * Allocating space for MaxBackends xids is usually overkill;
-	 * lastBackend would be sufficient.  But it seems better to do the
-	 * malloc while not holding the lock, so we can't look at lastBackend.
+	 * numProcs would be sufficient.  But it seems better to do the
+	 * malloc while not holding the lock, so we can't look at numProcs.
 	 *
 	 * This does open a possibility for avoiding repeated malloc/free: since
 	 * MaxBackends does not change at runtime, we can simply reuse the
