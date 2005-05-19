@@ -361,7 +361,7 @@ extern bool LockAcquire(LOCKMETHODID lockmethodid, LOCKTAG *locktag,
 			TransactionId xid, LOCKMODE lockmode, bool dontWait);
 extern bool LockRelease(LOCKMETHODID lockmethodid, LOCKTAG *locktag,
 			TransactionId xid, LOCKMODE lockmode);
-extern bool LockReleaseAll(LOCKMETHODID lockmethodid, bool allxids);
+extern void LockReleaseAll(LOCKMETHODID lockmethodid, bool allxids);
 extern void LockReleaseCurrentOwner(void);
 extern void LockReassignCurrentOwner(void);
 extern int LockCheckConflicts(LockMethod lockMethodTable,
