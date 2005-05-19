@@ -133,7 +133,7 @@ extern Snapshot CopySnapshot(Snapshot snapshot);
 extern void FreeSnapshot(Snapshot snapshot);
 extern void FreeXactSnapshot(void);
 
-/* in sinval.c; declared here to avoid including tqual.h in sinval.h: */
+/* in procarray.c; declared here to avoid including tqual.h in procarray.h: */
 extern Snapshot GetSnapshotData(Snapshot snapshot, bool serializable);
 
 #endif   /* TQUAL_H */

@@ -36,7 +36,7 @@
 #include "executor/executor.h"
 #include "miscadmin.h"
 #include "storage/freespace.h"
-#include "storage/sinval.h"
+#include "storage/procarray.h"
 #include "storage/smgr.h"
 #include "tcop/pquery.h"
 #include "utils/acl.h"

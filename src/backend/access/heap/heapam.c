@@ -47,7 +47,7 @@
 #include "catalog/catalog.h"
 #include "catalog/namespace.h"
 #include "miscadmin.h"
-#include "storage/sinval.h"
+#include "storage/procarray.h"
 #include "utils/inval.h"
 #include "utils/relcache.h"
 #include "pgstat.h"

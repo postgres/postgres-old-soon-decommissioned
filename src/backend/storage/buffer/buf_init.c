@@ -115,7 +115,7 @@ InitBufferPool(void)
 			buf->flags = 0;
 			buf->usage_count = 0;
 			buf->refcount = 0;
-			buf->wait_backend_id = 0;
+			buf->wait_backend_pid = 0;
 
 			SpinLockInit(&buf->buf_hdr_lock);
 

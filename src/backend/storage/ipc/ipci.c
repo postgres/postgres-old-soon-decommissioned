@@ -30,6 +30,7 @@
 #include "storage/pg_shmem.h"
 #include "storage/pmsignal.h"
 #include "storage/proc.h"
+#include "storage/procarray.h"
 #include "storage/sinval.h"
 #include "storage/spin.h"
 
@@ -78,6 +79,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 		size += SUBTRANSShmemSize();
 		size += MultiXactShmemSize();
 		size += LWLockShmemSize();
+		size += ProcArrayShmemSize(maxBackends);
 		size += SInvalShmemSize(maxBackends);
 		size += FreeSpaceShmemSize();
 		size += BgWriterShmemSize();
@@ -155,6 +157,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 	 * Set up process table
 	 */
 	InitProcGlobal(maxBackends);
+	CreateSharedProcArray(maxBackends);
 
 	/*
 	 * Set up shared-inval messaging

@@ -30,7 +30,6 @@
 
 #include "access/slru.h"
 #include "access/subtrans.h"
-#include "storage/sinval.h"
 #include "utils/tqual.h"
 
 

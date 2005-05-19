@@ -40,7 +40,7 @@
 #include "postmaster/bgwriter.h"
 #include "storage/fd.h"
 #include "storage/freespace.h"
-#include "storage/sinval.h"
+#include "storage/procarray.h"
 #include "utils/acl.h"
 #include "utils/array.h"
 #include "utils/builtins.h"

@@ -14,8 +14,8 @@
 #ifndef SINVALADT_H
 #define SINVALADT_H
 
-#include "storage/shmem.h"
 #include "storage/sinval.h"
+
 
 /*
  * The shared cache invalidation manager is responsible for transmitting
@@ -71,7 +71,6 @@ typedef struct ProcState
 	/* nextMsgNum is -1 in an inactive ProcState array entry. */
 	int			nextMsgNum;		/* next message number to read, or -1 */
 	bool		resetState;		/* true, if backend has to reset its state */
-	SHMEM_OFFSET procStruct;	/* location of backend's PGPROC struct */
 } ProcState;
 
 /* Shared cache invalidation memory segment */

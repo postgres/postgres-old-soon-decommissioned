@@ -41,7 +41,7 @@
 
 #include "access/multixact.h"
 #include "access/subtrans.h"
-#include "storage/sinval.h"
+#include "storage/procarray.h"
 #include "utils/tqual.h"
 
 /*

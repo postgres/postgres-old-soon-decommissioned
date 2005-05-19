@@ -21,7 +21,7 @@
 #include "catalog/catalog.h"
 #include "miscadmin.h"
 #include "storage/lmgr.h"
-#include "storage/sinval.h"
+#include "storage/procarray.h"
 #include "utils/inval.h"
 
 

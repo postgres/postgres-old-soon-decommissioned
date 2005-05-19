@@ -15,7 +15,6 @@
 #define _PROC_H_
 
 #include "access/xlog.h"
-#include "storage/backendid.h"
 #include "storage/lock.h"
 #include "storage/pg_sema.h"
 
@@ -137,7 +136,7 @@ extern bool LockWaitCancel(void);
 
 extern void ProcWaitForSignal(void);
 extern void ProcCancelWaitForSignal(void);
-extern void ProcSendSignal(BackendId procId);
+extern void ProcSendSignal(int pid);
 
 extern bool enable_sig_alarm(int delayms, bool is_statement_timeout);
 extern bool disable_sig_alarm(bool is_statement_timeout);

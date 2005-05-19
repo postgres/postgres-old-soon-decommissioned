@@ -15,7 +15,8 @@ override CFLAGS+= -fno-inline
 endif
 endif
 
-OBJS = ipc.o ipci.o pmsignal.o shmem.o shmqueue.o sinval.o sinvaladt.o
+OBJS = ipc.o ipci.o pmsignal.o procarray.o shmem.o shmqueue.o \
+	sinval.o sinvaladt.o
 
 all: SUBSYS.o
 

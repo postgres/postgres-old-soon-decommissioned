@@ -38,7 +38,7 @@
 #include "miscadmin.h"
 #include "optimizer/clauses.h"
 #include "parser/parse_expr.h"
-#include "storage/sinval.h"
+#include "storage/procarray.h"
 #include "storage/smgr.h"
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"

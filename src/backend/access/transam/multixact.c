@@ -44,7 +44,7 @@
 #include "utils/memutils.h"
 #include "storage/backendid.h"
 #include "storage/lmgr.h"
-#include "storage/sinval.h"
+#include "storage/procarray.h"
 
 
 /*
@@ -383,8 +383,8 @@ MultiXactIdIsRunning(MultiXactId multi)
 	}
 
 	/*
-	 * This could be made better by having a special entry point in sinval.c,
-	 * walking the PGPROC array only once for the whole array.  But in most
+	 * This could be made faster by having another entry point in procarray.c,
+	 * walking the PGPROC array only once for all the members.  But in most
 	 * cases nmembers should be small enough that it doesn't much matter.
 	 */
 	for (i = 0; i < nmembers; i++)

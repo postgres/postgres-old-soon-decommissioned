@@ -20,7 +20,7 @@
 
 #include "commands/dbcommands.h"
 #include "miscadmin.h"
-#include "storage/sinval.h"
+#include "storage/procarray.h"
 #include "storage/fd.h"
 #include "utils/builtins.h"
 #include "funcapi.h"

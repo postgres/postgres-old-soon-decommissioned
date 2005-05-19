@@ -30,6 +30,7 @@ typedef enum LWLockId
 	LockMgrLock,
 	OidGenLock,
 	XidGenLock,
+	ProcArrayLock,
 	SInvalLock,
 	FreeSpaceLock,
 	MMCacheLock,

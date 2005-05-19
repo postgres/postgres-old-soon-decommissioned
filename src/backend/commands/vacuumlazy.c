@@ -45,7 +45,6 @@
 #include "commands/vacuum.h"
 #include "miscadmin.h"
 #include "storage/freespace.h"
-#include "storage/sinval.h"
 #include "storage/smgr.h"
 #include "utils/lsyscache.h"
 
