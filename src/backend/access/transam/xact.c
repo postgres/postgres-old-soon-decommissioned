@@ -1498,7 +1498,7 @@ CommitTransaction(void)
 	 */
 	RecordTransactionCommit();
 
-	/*
+	/*----------
 	 * Let others know about no transaction in progress by me. Note that
 	 * this must be done _before_ releasing locks we hold and _after_
 	 * RecordTransactionCommit.
@@ -1510,6 +1510,7 @@ CommitTransaction(void)
 	 * xid 0 as running as well, or it will be able to see two tuple versions
 	 * - one deleted by xid 1 and one inserted by xid 0.  See notes in
 	 * GetSnapshotData.
+	 *----------
 	 */
 	if (MyProc != NULL)
 	{
