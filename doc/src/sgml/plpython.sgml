@@ -46,7 +46,9 @@
   <title>PL/Python Functions</title>
 
   <para>
-   Functions in PL/Python are declared in the usual way, for example
+   Functions in PL/Python are declared via the usual <xref
+   linkend="sql-createfunction" endterm="sql-createfunction-title">
+   syntax. For example:
 <programlisting>
 CREATE FUNCTION myfunc(text) RETURNS text
     AS 'return args[0]'

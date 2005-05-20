@@ -44,7 +44,9 @@ $PostgreSQL$
   <title>PL/Perl Functions and Arguments</title>
 
   <para>
-   To create a function in the PL/Perl language, use the standard syntax:
+   To create a function in the PL/Perl language, use the standard
+   <xref linkend="sql-createfunction" endterm="sql-createfunction-title">
+   syntax:
 <programlisting>
 CREATE FUNCTION <replaceable>funcname</replaceable> (<replaceable>argument-types</replaceable>) RETURNS <replaceable>return-type</replaceable> AS $$
     # PL/Perl function body

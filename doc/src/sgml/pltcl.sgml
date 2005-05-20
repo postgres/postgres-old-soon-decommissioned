@@ -75,7 +75,9 @@ $PostgreSQL$
     <title>PL/Tcl Functions and Arguments</title>
 
     <para>
-     To create a function in the <application>PL/Tcl</> language, use the standard syntax:
+     To create a function in the <application>PL/Tcl</> language, use
+     the standard <xref linkend="sql-createfunction"
+     endterm="sql-createfunction-title"> syntax:
 
 <programlisting>
 CREATE FUNCTION <replaceable>funcname</replaceable> (<replaceable>argument-types</replaceable>) RETURNS <replaceable>return-type</replaceable> AS $$
