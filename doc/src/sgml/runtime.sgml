@@ -1595,7 +1595,7 @@ SET ENABLE_SEQSCAN TO OFF;
         values are
         <literal>fsync</> (call <function>fsync()</> at each commit),
         <literal>fdatasync</> (call <function>fdatasync()</> at each commit),
-        <literal>fsync_writethrough</> (call <function>_commit()</> at each commit on Windows),
+        <literal>fsync_writethrough</> (force write-through of any disk write cache),
         <literal>open_sync</> (write WAL files with <function>open()</> option <symbol>O_SYNC</>), and
         <literal>open_datasync</> (write WAL files with <function>open()</> option <symbol>O_DSYNC</>).
         Not all of these choices are available on all platforms.

@@ -16,8 +16,8 @@
 #define mkdir(a,b)	mkdir(a)
 
 
-#define fsync(a)	_commit(a)
-#define FSYNC_IS_WRITE_THROUGH
+#define HAVE_FSYNC_WRITETHROUGH
+#define HAVE_FSYNC_WRITETHROUGH_ONLY
 #define ftruncate(a,b)	chsize(a,b)
 
 #define USES_WINSOCK

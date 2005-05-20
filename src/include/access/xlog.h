@@ -75,6 +75,13 @@ typedef struct XLogRecord
  */
 #define XLOG_NO_TRAN			XLR_INFO_MASK
 
+/* Sync methods */
+#define SYNC_METHOD_FSYNC		0
+#define SYNC_METHOD_FDATASYNC	1
+#define SYNC_METHOD_OPEN		2			/* for O_SYNC and O_DSYNC */
+#define SYNC_METHOD_FSYNC_WRITETHROUGH	3
+extern int	sync_method;
+
 /*
  * List of these structs is used to pass data to XLogInsert().
  *
