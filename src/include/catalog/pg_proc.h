@@ -3269,6 +3269,8 @@ DESCR("I/O");
 /* cryptographic */
 DATA(insert OID =  2311 (  md5	   PGNSP PGUID 12 f f t f i 1 25 "25" _null_ _null_ _null_  md5_text - _null_ ));
 DESCR("calculates md5 hash");
+DATA(insert OID =  2321 (  md5	   PGNSP PGUID 12 f f t f i 1 25 "17" _null_ _null_ _null_  md5_bytea - _null_ ));
+DESCR("calculates md5 hash");
 
 /* crosstype operations for date vs. timestamp and timestamptz */
 DATA(insert OID = 2338 (  date_lt_timestamp		   PGNSP PGUID 12 f f t f i 2 16 "1082 1114" _null_ _null_ _null_ date_lt_timestamp - _null_ ));

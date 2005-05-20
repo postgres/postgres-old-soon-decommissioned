@@ -2329,6 +2329,17 @@ PostgreSQL documentation
      </row>
 
      <row>
+      <entry><literal><function>md5</function>(<parameter>string</parameter>)</literal></entry>
+      <entry><type>text</type></entry>
+      <entry>
+       Calculates the MD5 hash of <parameter>string</parameter>,
+       returning the result in hexadecimal.
+      </entry>
+      <entry><literal>md5('Th\\000omas'::bytea)</literal></entry>
+      <entry><literal>8ab2d3c9689aaf18 b4958c334c82d8b1</literal></entry>
+     </row>
+
+     <row>
       <entry>
        <literal><function>decode</function>(<parameter>string</parameter> <type>text</type>,
               <parameter>type</parameter> <type>text</type>)</literal>
