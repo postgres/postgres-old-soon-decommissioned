@@ -446,7 +446,7 @@ char  foo[16], bar[16];
    </para>
 
    <para>
-    The declarations are also echoed to the output file as a normal C
+    The declarations are also echoed to the output file as normal C
     variables, so there's no need to declare them again.  Variables
     that are not intended to be used in SQL commands can be declared
     normally outside these special sections.
