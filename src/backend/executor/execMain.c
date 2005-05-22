@@ -353,16 +353,10 @@ ExecCheckRTEPerms(RangeTblEntry *rte)
 	AclId		userid;
 
 	/*
-	 * If it's a subquery, recursively examine its rangetable.
-	 */
-	if (rte->rtekind == RTE_SUBQUERY)
-	{
-		ExecCheckRTPerms(rte->subquery->rtable);
-		return;
-	}
-
-	/*
-	 * Otherwise, only plain-relation RTEs need to be checked here.
+	 * Only plain-relation RTEs need to be checked here.  Subquery RTEs
+	 * are checked by ExecInitSubqueryScan if the subquery is still a
+	 * separate subquery --- if it's been pulled up into our query level
+	 * then the RTEs are in our rangetable and will be checked here.
 	 * Function RTEs are checked by init_fcache when the function is
 	 * prepared for execution. Join and special RTEs need no checks.
 	 */

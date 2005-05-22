@@ -308,10 +308,11 @@ use_physical_tlist(RelOptInfo *rel)
 	int			i;
 
 	/*
-	 * Currently, can't do this for subquery or function scans.  (This is
-	 * mainly because we don't have an equivalent of build_physical_tlist
-	 * for them; worth adding?)
+	 * OK for subquery scans, but not function scans.  (This is mainly
+	 * because build_physical_tlist doesn't support them; worth adding?)
 	 */
+	if (rel->rtekind == RTE_SUBQUERY)
+		return true;
 	if (rel->rtekind != RTE_RELATION)
 		return false;
 

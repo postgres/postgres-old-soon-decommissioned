@@ -219,8 +219,7 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate)
 	BlessTupleDesc(tupdesc);
 
 	scanstate->tupdesc = tupdesc;
-	ExecSetSlotDescriptor(scanstate->ss.ss_ScanTupleSlot,
-						  tupdesc, false);
+	ExecAssignScanType(&scanstate->ss, tupdesc, false);
 
 	/*
 	 * Other node-specific setup
@@ -235,7 +234,7 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate)
 	 * Initialize result tuple type and projection info.
 	 */
 	ExecAssignResultTypeFromTL(&scanstate->ss.ps);
-	ExecAssignProjectionInfo(&scanstate->ss.ps);
+	ExecAssignScanProjectionInfo(&scanstate->ss);
 
 	return scanstate;
 }
