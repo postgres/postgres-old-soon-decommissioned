@@ -130,7 +130,7 @@ AbsoluteTimeUsecToTimestampTz(AbsoluteTime sec, int usec)
 
 #ifdef HAVE_INT64_TIMESTAMP
 	result = ((sec - ((POSTGRES_EPOCH_JDATE - UNIX_EPOCH_JDATE) * 86400))
-			  * INT64CONST(1000000)) + usec;
+			  * USECS_PER_SEC) + usec;
 #else
 	result = sec - ((POSTGRES_EPOCH_JDATE - UNIX_EPOCH_JDATE) * 86400)
 		+ (usec / 1000000.0);
@@ -948,7 +948,7 @@ interval_reltime(PG_FUNCTION_ARGS)
 #ifdef HAVE_INT64_TIMESTAMP
 	span = ((((INT64CONST(365250000) * year) + (INT64CONST(30000000) * month))
 			 * INT64CONST(86400)) + interval->time);
-	span /= INT64CONST(1000000);
+	span /= USECS_PER_SEC;
 #else
 	span = (((((double) 365.25 * year) + ((double) 30 * month)) * 86400) + interval->time);
 #endif
@@ -989,7 +989,7 @@ reltime_interval(PG_FUNCTION_ARGS)
 			month = (reltime / (30 * 86400));
 			reltime -= (month * (30 * 86400));
 
-			result->time = (reltime * INT64CONST(1000000));
+			result->time = (reltime * USECS_PER_SEC);
 #else
 			TMODULO(reltime, year, (36525 * 864));
 			TMODULO(reltime, month, (30 * 86400));
