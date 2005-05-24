@@ -18,6 +18,7 @@
 #include "catalog/pg_operator.h"
 #include "catalog/pg_proc.h"
 #include "commands/dbcommands.h"
+#include "mb/pg_wchar.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
 #include "nodes/params.h"
@@ -1356,7 +1357,13 @@ exprTypmod(Node *expr)
 				{
 					case BPCHAROID:
 						if (!con->constisnull)
-							return VARSIZE(DatumGetPointer(con->constvalue));
+						{
+							int32 len = VARSIZE(DatumGetPointer(con->constvalue));
+
+							if (pg_database_encoding_max_length() > 1)
+								len = pg_mbstrlen_with_len(VARDATA(DatumGetPointer(con->constvalue)), len);
+							return len;
+						}
 						break;
 					default:
 						break;
