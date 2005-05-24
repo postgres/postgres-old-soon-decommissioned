@@ -104,9 +104,12 @@ PrepareQuery(PrepareStmt *stmt)
 	/* Generate plans for queries.	Snapshot is already set. */
 	plan_list = pg_plan_queries(query_list, NULL, false);
 
-	/* Save the results. */
+	/*
+	 *	Save the results.  We don't have the query string for this PREPARE,
+	 *	but we do have the string we got from the client, so use that.
+	 */
 	StorePreparedStatement(stmt->name,
-						   NULL,	/* text form not available */
+						   debug_query_string,
 						   commandTag,
 						   query_list,
 						   plan_list,
