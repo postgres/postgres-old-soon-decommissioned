@@ -130,7 +130,7 @@ static void pgwin32_update_ident(char *ident)
  * environment strings may be moved, so this should be called before any code
  * that might try to hang onto a getenv() result.)
  */
-char	  **
+char **
 save_ps_display_args(int argc, char **argv)
 {
 	save_argc = argc;
