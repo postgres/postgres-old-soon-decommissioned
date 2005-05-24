@@ -622,7 +622,7 @@ init(void)
 	for (i = 0; i < (sizeof(DDLAFTERs) / sizeof(char *)); i++)
 	{
 		res = PQexec(con, DDLAFTERs[i]);
-		if (strncmp(DDLs[i], "drop", 4) && PQresultStatus(res) != PGRES_COMMAND_OK)
+		if (PQresultStatus(res) != PGRES_COMMAND_OK)
 		{
 			fprintf(stderr, "%s", PQerrorMessage(con));
 			exit(1);
