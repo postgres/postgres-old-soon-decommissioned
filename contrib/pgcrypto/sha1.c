@@ -59,7 +59,7 @@ static uint32 _K[] = {0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6};
 #define F2(b, c, d) (((b) & (c)) | ((b) & (d)) | ((c) & (d)))
 #define F3(b, c, d) (((b) ^ (c)) ^ (d))
 
-#define S(n, x)		(((x) << (n)) | ((x) >> (32 - n)))
+#define S(n, x)		(((x) << (n)) | ((x) >> (32 - (n))))
 
 #define H(n)	(ctxt->h.b32[(n)])
 #define COUNT	(ctxt->count)

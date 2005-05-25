@@ -1564,7 +1564,7 @@ tuplesort_restorepos(Tuplesortstate *state)
  */
 
 #define HEAPCOMPARE(tup1,index1,tup2,index2) \
-	(checkIndex && (index1 != index2) ? index1 - index2 : \
+	(checkIndex && (index1 != index2) ? (index1) - (index2) : \
 	 COMPARETUP(state, tup1, tup2))
 
 /*

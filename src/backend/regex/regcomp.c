@@ -232,7 +232,7 @@ struct vars
 	struct cvec *cv;			/* interface cvec */
 	struct cvec *cv2;			/* utility cvec */
 	struct cvec *mcces;			/* collating-element information */
-#define  ISCELEADER(v,c) (v->mcces != NULL && haschr(v->mcces, (c)))
+#define  ISCELEADER(v,c) ((v)->mcces != NULL && haschr((v)->mcces, (c)))
 	struct state *mccepbegin;	/* in nfa, start of MCCE prototypes */
 	struct state *mccepend;		/* in nfa, end of MCCE prototypes */
 	struct subre *lacons;		/* lookahead-constraint vector */

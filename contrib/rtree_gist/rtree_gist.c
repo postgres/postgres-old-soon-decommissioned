@@ -276,14 +276,14 @@ gbox_picksplit(PG_FUNCTION_ARGS)
 
 #define ADDLIST( list, unionD, pos, num ) do { \
 	if ( pos ) { \
-		if ( unionD->high.x < cur->high.x ) unionD->high.x	= cur->high.x; \
-		if ( unionD->low.x	> cur->low.x  ) unionD->low.x	= cur->low.x; \
-		if ( unionD->high.y < cur->high.y ) unionD->high.y	= cur->high.y; \
-		if ( unionD->low.y	> cur->low.y  ) unionD->low.y	= cur->low.y; \
+		if ( (unionD)->high.x < cur->high.x ) (unionD)->high.x	= cur->high.x; \
+		if ( (unionD)->low.x  > cur->low.x  ) (unionD)->low.x	= cur->low.x; \
+		if ( (unionD)->high.y < cur->high.y ) (unionD)->high.y	= cur->high.y; \
+		if ( (unionD)->low.y  > cur->low.y  ) (unionD)->low.y	= cur->low.y; \
 	} else { \
-			memcpy( (void*)unionD, (void*) cur, sizeof( BOX ) );  \
+			memcpy( (void*)(unionD), (void*) cur, sizeof( BOX ) );  \
 	} \
-	list[pos] = num; \
+	(list)[pos] = num; \
 	(pos)++; \
 } while(0)
 

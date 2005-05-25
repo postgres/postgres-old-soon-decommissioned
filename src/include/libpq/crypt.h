@@ -17,7 +17,7 @@
 
 #define MD5_PASSWD_LEN	35
 
-#define isMD5(passwd)	(strncmp((passwd),"md5",3) == 0 && \
+#define isMD5(passwd)	(strncmp(passwd, "md5", 3) == 0 && \
 						 strlen(passwd) == MD5_PASSWD_LEN)
 
 

@@ -63,7 +63,7 @@
 
 /* function-pointer declarator */
 #ifndef FUNCPTR
-#define FUNCPTR(name, args) (*name) args
+#define FUNCPTR(name, args) (*(name)) args
 #endif
 
 /* memory allocation */

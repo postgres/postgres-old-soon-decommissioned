@@ -255,8 +255,8 @@ extern off_t ftello(FILE *stream);
 #endif
 
 #ifndef HAVE_FSEEKO
-#define fseeko(a, b, c) fseek((a), (b), (c))
-#define ftello(a) ftell((a))
+#define fseeko(a, b, c) fseek(a, b, c)
+#define ftello(a)		ftell(a)
 #endif
 
 #ifndef HAVE_GETOPT

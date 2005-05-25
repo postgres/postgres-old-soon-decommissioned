@@ -32,7 +32,7 @@ typedef ItemSubpositionData *ItemSubposition;
  *		struct	objpos	*OBJP;
  *		unsigned		LEN;
  */
-#define PNOBREAK(OBJP, LEN)		((OBJP)->op_len >= LEN)
+#define PNOBREAK(OBJP, LEN)		((OBJP)->op_len >= (LEN))
 
 /*
  *		PSKIP(OBJP, LEN)

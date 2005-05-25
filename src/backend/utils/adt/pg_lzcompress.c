@@ -328,8 +328,8 @@ do {									\
 do { \
 	if ((__ctrl & 0xff) == 0)												\
 	{																		\
-		*__ctrlp = __ctrlb;													\
-		__ctrlp = __buf++;													\
+		*(__ctrlp) = __ctrlb;												\
+		__ctrlp = (__buf)++;												\
 		__ctrlb = 0;														\
 		__ctrl = 1;															\
 	}																		\
@@ -346,7 +346,7 @@ do { \
 #define pglz_out_literal(_ctrlp,_ctrlb,_ctrl,_buf,_byte) \
 do { \
 	pglz_out_ctrl(_ctrlp,_ctrlb,_ctrl,_buf);								\
-	*_buf++ = (unsigned char)(_byte);										\
+	*(_buf)++ = (unsigned char)(_byte);										\
 	_ctrl <<= 1;															\
 } while (0)
 
@@ -366,14 +366,14 @@ do { \
 	_ctrl <<= 1;															\
 	if (_len > 17)															\
 	{																		\
-		_buf[0] = (unsigned char)((((_off) & 0xf00) >> 4) | 0x0f);			\
-		_buf[1] = (unsigned char)((_off & 0xff));							\
-		_buf[2] = (unsigned char)((_len) - 18);								\
-		_buf += 3;															\
+		(_buf)[0] = (unsigned char)((((_off) & 0xf00) >> 4) | 0x0f);		\
+		(_buf)[1] = (unsigned char)(((_off) & 0xff));						\
+		(_buf)[2] = (unsigned char)((_len) - 18);							\
+		(_buf) += 3;														\
 	} else {																\
-		_buf[0] = (unsigned char)((((_off) & 0xf00) >> 4) | (_len - 3));	\
-		_buf[1] = (unsigned char)((_off) & 0xff);							\
-		_buf += 2;															\
+		(_buf)[0] = (unsigned char)((((_off) & 0xf00) >> 4) | ((_len) - 3)); \
+		(_buf)[1] = (unsigned char)((_off) & 0xff);							\
+		(_buf) += 2;														\
 	}																		\
 } while (0)
 

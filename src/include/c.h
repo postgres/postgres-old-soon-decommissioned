@@ -535,7 +535,7 @@ typedef NameData *Name;
  * endof
  *		Address of the element one past the last in an array.
  */
-#define endof(array)	(&array[lengthof(array)])
+#define endof(array)	(&(array)[lengthof(array)])
 
 /* ----------------
  * Alignment macros: align a length or address appropriately for a given type.
@@ -549,7 +549,7 @@ typedef NameData *Name;
  */
 
 #define TYPEALIGN(ALIGNVAL,LEN)  \
-	(((long) (LEN) + (ALIGNVAL-1)) & ~((long) (ALIGNVAL-1)))
+	(((long) (LEN) + ((ALIGNVAL) - 1)) & ~((long) ((ALIGNVAL) - 1)))
 
 #define SHORTALIGN(LEN)			TYPEALIGN(ALIGNOF_SHORT, (LEN))
 #define INTALIGN(LEN)			TYPEALIGN(ALIGNOF_INT, (LEN))

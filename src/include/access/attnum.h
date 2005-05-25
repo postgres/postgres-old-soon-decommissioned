@@ -58,6 +58,6 @@ typedef int16 AttrNumber;
  *		Returns the attribute number for an attribute offset.
  */
 #define AttrOffsetGetAttrNumber(attributeOffset) \
-	 ((AttrNumber) (1 + attributeOffset))
+	 ((AttrNumber) (1 + (attributeOffset)))
 
 #endif   /* ATTNUM_H */

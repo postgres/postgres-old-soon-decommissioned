@@ -43,11 +43,11 @@
 #ifdef HAVE_LIBZ
 #include <zlib.h>
 #define GZCLOSE(fh) gzclose(fh)
-#define GZWRITE(p, s, n, fh) gzwrite(fh, p, n * s)
-#define GZREAD(p, s, n, fh) gzread(fh, p, n * s)
+#define GZWRITE(p, s, n, fh) gzwrite(fh, p, (n) * (s))
+#define GZREAD(p, s, n, fh) gzread(fh, p, (n) * (s))
 #else
 #define GZCLOSE(fh) fclose(fh)
-#define GZWRITE(p, s, n, fh) (fwrite(p, s, n, fh) * s)
+#define GZWRITE(p, s, n, fh) (fwrite(p, s, n, fh) * (s))
 #define GZREAD(p, s, n, fh) fread(p, s, n, fh)
 #define Z_DEFAULT_COMPRESSION -1
 

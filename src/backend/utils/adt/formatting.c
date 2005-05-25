@@ -171,7 +171,7 @@ static char *months_full[] = {
  * AC / DC
  * ----------
  */
-#define YEAR_ABS(_y)	(_y <= 0 ? -(_y -1) : _y)
+#define YEAR_ABS(_y)	((_y) <= 0 ? -((_y) - 1) : _y)
 #define BC_STR_ORIG " BC"
 
 #define A_D_STR		"A.D."
@@ -280,15 +280,15 @@ typedef struct
  */
 #define NUM_F_DECIMAL		(1 << 1)
 #define NUM_F_LDECIMAL		(1 << 2)
-#define NUM_F_ZERO		(1 << 3)
+#define NUM_F_ZERO			(1 << 3)
 #define NUM_F_BLANK			(1 << 4)
 #define NUM_F_FILLMODE		(1 << 5)
 #define NUM_F_LSIGN			(1 << 6)
 #define NUM_F_BRACKET		(1 << 7)
 #define NUM_F_MINUS			(1 << 8)
-#define NUM_F_PLUS		(1 << 9)
+#define NUM_F_PLUS			(1 << 9)
 #define NUM_F_ROMAN			(1 << 10)
-#define NUM_F_MULTI		(1 << 11)
+#define NUM_F_MULTI			(1 << 11)
 #define NUM_F_PLUS_POST		(1 << 12)
 #define NUM_F_MINUS_POST	(1 << 13)
 
@@ -457,13 +457,13 @@ static int	dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, v
  * Suffix tests
  * ----------
  */
-#define S_THth(_s)	(((_s & DCH_S_TH) || (_s & DCH_S_th)) ? 1 : 0)
-#define S_TH(_s)	((_s & DCH_S_TH) ? 1 : 0)
-#define S_th(_s)	((_s & DCH_S_th) ? 1 : 0)
-#define S_TH_TYPE(_s)	((_s & DCH_S_TH) ? TH_UPPER : TH_LOWER)
+#define S_THth(_s)	((((_s) & DCH_S_TH) || ((_s) & DCH_S_th)) ? 1 : 0)
+#define S_TH(_s)	(((_s) & DCH_S_TH) ? 1 : 0)
+#define S_th(_s)	(((_s) & DCH_S_th) ? 1 : 0)
+#define S_TH_TYPE(_s)	(((_s) & DCH_S_TH) ? TH_UPPER : TH_LOWER)
 
-#define S_FM(_s)	((_s & DCH_S_FM) ? 1 : 0)
-#define S_SP(_s)	((_s & DCH_S_SP) ? 1 : 0)
+#define S_FM(_s)	(((_s) & DCH_S_FM) ? 1 : 0)
+#define S_SP(_s)	(((_s) & DCH_S_SP) ? 1 : 0)
 
 /* ----------
  * Suffixes definition for DATE-TIME TO/FROM CHAR
