@@ -50,12 +50,18 @@ static text *MB_do_like_escape(text *, text *);
 static int
 wchareq(unsigned char *p1, unsigned char *p2)
 {
-	int			l;
+	int			p1_len;
 
-	l = pg_mblen(p1);
-	if (pg_mblen(p2) != l)
+	/* Optimization:  quickly compare the first byte. */
+	if(*p1 != *p2)
 		return (0);
-	while (l--)
+
+	p1_len = pg_mblen(p1);
+	if (pg_mblen(p2) != p1_len)
+		return (0);
+
+	/* They are the same length */
+	while (p1_len--)
 	{
 		if (*p1++ != *p2++)
 			return (0);
