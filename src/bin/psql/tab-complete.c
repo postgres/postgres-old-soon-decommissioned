@@ -827,7 +827,8 @@ psql_completion(char *text, int start, int end)
 
 	/* ALTER TABLE xxx RENAME yyy */
 	else if (pg_strcasecmp(prev4_wd, "TABLE") == 0 &&
-			 pg_strcasecmp(prev2_wd, "RENAME") == 0)
+			 pg_strcasecmp(prev2_wd, "RENAME") == 0 &&
+			 pg_strcasecmp(prev_wd, "TO") != 0)
 		COMPLETE_WITH_CONST("TO");
 
 	/* If we have TABLE <sth> DROP, provide COLUMN or CONSTRAINT */
