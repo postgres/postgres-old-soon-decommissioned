@@ -294,7 +294,7 @@ extern void GetCurrentTimeUsec(struct tm * tm, fsec_t *fsec, int *tzp);
 extern void j2date(int jd, int *year, int *month, int *day);
 extern int	date2j(int year, int month, int day);
 
-extern int ParseDateTime(const char *timestr, char *lowstr,
+extern int ParseDateTime(const char *timestr, char *workbuf, size_t buflen,
 			  char **field, int *ftype,
 			  int maxfields, int *numfields);
 extern int DecodeDateTime(char **field, int *ftype,
