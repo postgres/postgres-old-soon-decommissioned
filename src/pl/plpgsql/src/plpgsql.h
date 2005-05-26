@@ -336,11 +336,9 @@ typedef struct
 	int			lineno;
 	char	   *label;
 	List	   *body;			/* List of statements */
-	List	   *exceptions; 	/* List of WHEN clauses */
-	int 		n_initvars;
-	int 	   *initvarnos;
-	int 		sqlstate_varno;
-	int 		sqlerrm_varno;
+	List	   *exceptions;		/* List of WHEN clauses */
+	int			n_initvars;
+	int		   *initvarnos;
 } PLpgSQL_stmt_block;
 
 
