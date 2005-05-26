@@ -285,7 +285,8 @@ fict_vars_sect	:
 										 plpgsql_build_datatype(TEXTOID, -1), true);  
 						$$.sqlerrm_varno = var->dno;
 						plpgsql_add_initdatums(NULL);
-					};
+					}
+				;
 
 decl_sect		: opt_label
 					{

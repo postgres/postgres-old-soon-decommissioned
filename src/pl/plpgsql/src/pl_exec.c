@@ -760,7 +760,7 @@ exec_stmt_block(PLpgSQL_execstate *estate, PLpgSQL_stmt_block *block)
   	var = (PLpgSQL_var *) (estate->datums[block->sqlerrm_varno]);
    	var->isnull = false;
   	var->freeval = true;
-  	var->value = DirectFunctionCall1(textin, CStringGetDatum("Sucessful completion"));
+  	var->value = DirectFunctionCall1(textin, CStringGetDatum("Successful completion"));
 
 	/*
 	 * First initialize all variables declared in this block
@@ -777,7 +777,7 @@ exec_stmt_block(PLpgSQL_execstate *estate, PLpgSQL_stmt_block *block)
 
 					if (var->freeval)
 					{
-						pfree((void *) (var->value));
+						pfree(DatumGetPointer(var->value));
 						var->freeval = false;
 					}
 
@@ -872,13 +872,12 @@ exec_stmt_block(PLpgSQL_execstate *estate, PLpgSQL_stmt_block *block)
 			CurrentResourceOwner = oldowner;
  
 			/* set SQLSTATE and SQLERRM variables */
-		    
 			var = (PLpgSQL_var *) (estate->datums[block->sqlstate_varno]);
-			pfree((void *) (var->value));
+			pfree(DatumGetPointer(var->value));
 			var->value = DirectFunctionCall1(textin, CStringGetDatum(unpack_sql_state(edata->sqlerrcode)));
-  
+
 			var = (PLpgSQL_var *) (estate->datums[block->sqlerrm_varno]);
-			pfree((void *) (var->value));
+			pfree(DatumGetPointer(var->value));
 			var->value = DirectFunctionCall1(textin, CStringGetDatum(edata->message));
 
 			/*
