@@ -104,7 +104,7 @@ extern IndexBulkDeleteResult *index_vacuum_cleanup(Relation indexRelation,
 extern RegProcedure index_cost_estimator(Relation indexRelation);
 extern RegProcedure index_getprocid(Relation irel, AttrNumber attnum,
 				uint16 procnum);
-extern struct FmgrInfo *index_getprocinfo(Relation irel, AttrNumber attnum,
+extern FmgrInfo *index_getprocinfo(Relation irel, AttrNumber attnum,
 				  uint16 procnum);
 
 /*

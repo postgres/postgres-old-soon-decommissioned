@@ -86,6 +86,7 @@ RelationGetIndexScan(Relation indexRelation,
 	else
 		scan->keyData = NULL;
 
+	scan->is_multiscan = false;			/* caller may change this */
 	scan->kill_prior_tuple = false;
 	scan->ignore_killed_tuples = true;	/* default setting */
 	scan->keys_are_unique = false;		/* may be set by index AM */
@@ -100,10 +101,6 @@ RelationGetIndexScan(Relation indexRelation,
 	scan->xs_ctup.t_datamcxt = NULL;
 	scan->xs_ctup.t_data = NULL;
 	scan->xs_cbuf = InvalidBuffer;
-
-	/* mark cached function lookup data invalid; it will be set later */
-	scan->fn_getnext.fn_oid = InvalidOid;
-	scan->fn_getmulti.fn_oid = InvalidOid;
 
 	scan->unique_tuple_pos = 0;
 	scan->unique_tuple_mark = 0;
