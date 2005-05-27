@@ -1618,7 +1618,7 @@ name_text(PG_FUNCTION_ARGS)
  * truncate names if they're too long.
  */
 List *
-textToQualifiedNameList(text *textval, const char *caller)
+textToQualifiedNameList(text *textval)
 {
 	char	   *rawname;
 	List	   *result = NIL;

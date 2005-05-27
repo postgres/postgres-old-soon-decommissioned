@@ -56,7 +56,7 @@ int4notin(PG_FUNCTION_ARGS)
 
 	/* Parse the argument */
 
-	names = textToQualifiedNameList(relation_and_attr, "int4notin");
+	names = textToQualifiedNameList(relation_and_attr);
 	nnames = list_length(names);
 	if (nnames < 2)
 		ereport(ERROR,

@@ -290,8 +290,7 @@ relation_size(PG_FUNCTION_ARGS)
 	Oid			relnodeOid;
 	Oid         tblspcOid;
 
-	relrv = makeRangeVarFromNameList(textToQualifiedNameList(relname,
-													   "relation_size"));
+	relrv = makeRangeVarFromNameList(textToQualifiedNameList(relname));
 	relation = relation_openrv(relrv, AccessShareLock);
 
 	tblspcOid  = relation->rd_rel->reltablespace;

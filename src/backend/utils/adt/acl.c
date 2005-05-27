@@ -1425,8 +1425,7 @@ convert_table_name(text *tablename)
 {
 	RangeVar   *relrv;
 
-	relrv = makeRangeVarFromNameList(textToQualifiedNameList(tablename,
-												 "has_table_privilege"));
+	relrv = makeRangeVarFromNameList(textToQualifiedNameList(tablename));
 
 	return RangeVarGetRelid(relrv, false);
 }

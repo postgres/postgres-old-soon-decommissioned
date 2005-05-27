@@ -63,8 +63,7 @@ pgstattuple(PG_FUNCTION_ARGS)
 	Datum		result;
 
 	/* open relation */
-	relrv = makeRangeVarFromNameList(textToQualifiedNameList(relname,
-														 "pgstattuple"));
+	relrv = makeRangeVarFromNameList(textToQualifiedNameList(relname));
 	rel = heap_openrv(relrv, AccessShareLock);
 
 	result = pgstattuple_real(rel);

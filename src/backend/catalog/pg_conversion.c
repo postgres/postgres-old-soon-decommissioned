@@ -298,7 +298,7 @@ pg_convert_using(PG_FUNCTION_ARGS)
 	*(str + len) = '\0';
 
 	/* Look up the conversion name */
-	parsed_name = textToQualifiedNameList(conv_name, "convert_using");
+	parsed_name = textToQualifiedNameList(conv_name);
 	convoid = FindConversionByName(parsed_name);
 	if (!OidIsValid(convoid))
 		ereport(ERROR,

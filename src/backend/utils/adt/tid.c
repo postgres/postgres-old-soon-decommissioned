@@ -302,8 +302,7 @@ currtid_byrelname(PG_FUNCTION_ARGS)
 	RangeVar   *relrv;
 	Relation	rel;
 
-	relrv = makeRangeVarFromNameList(textToQualifiedNameList(relname,
-												   "currtid_byrelname"));
+	relrv = makeRangeVarFromNameList(textToQualifiedNameList(relname));
 	rel = heap_openrv(relrv, AccessShareLock);
 	if (rel->rd_rel->relkind == RELKIND_VIEW)
 		return currtid_for_view(rel, tid);
