@@ -616,7 +616,7 @@ ForwardFsyncRequest(RelFileNode rnode, BlockNumber segno)
  *
  * This is exported because it must be called during CreateCheckPoint;
  * we have to be sure we have accepted all pending requests *after* we
- * establish the checkpoint redo pointer.  Since CreateCheckPoint
+ * establish the checkpoint REDO pointer.  Since CreateCheckPoint
  * sometimes runs in non-bgwriter processes, do nothing if not bgwriter.
  */
 void
@@ -628,6 +628,15 @@ AbsorbFsyncRequests(void)
 
 	if (!am_bg_writer)
 		return;
+
+	/*
+	 * We have to PANIC if we fail to absorb all the pending requests
+	 * (eg, because our hashtable runs out of memory).  This is because
+	 * the system cannot run safely if we are unable to fsync what we
+	 * have been told to fsync.  Fortunately, the hashtable is so small
+	 * that the problem is quite unlikely to arise in practice.
+	 */
+	START_CRIT_SECTION();
 
 	/*
 	 * We try to avoid holding the lock for a long time by copying the
@@ -647,6 +656,9 @@ AbsorbFsyncRequests(void)
 
 	for (request = requests; n > 0; request++, n--)
 		RememberFsyncRequest(request->rnode, request->segno);
+
 	if (requests)
 		pfree(requests);
+
+	END_CRIT_SECTION();
 }
