@@ -1410,7 +1410,7 @@ expandRTE(ParseState *pstate, RangeTblEntry *rte,
 							varnode = makeVar(rtindex,
 											  attnum,
 											  atttypid,
-											  -1,
+											  colDef->typename->typmod,
 											  sublevels_up);
 
 							*colvars = lappend(*colvars, varnode);
@@ -1659,7 +1659,7 @@ get_rte_attribute_type(RangeTblEntry *rte, AttrNumber attnum,
 					ColumnDef  *colDef = nth(attnum - 1, coldeflist);
 
 					*vartype = typenameTypeId(colDef->typename);
-					*vartypmod = -1;
+					*vartypmod = colDef->typename->typmod;
 				}
 				else
 					ereport(ERROR,
