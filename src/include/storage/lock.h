@@ -348,6 +348,15 @@ typedef struct
 } LockData;
 
 
+/* Result codes for LockAcquire() */
+typedef enum
+{
+	LOCKACQUIRE_NOT_AVAIL,		/* lock not available, and dontWait=true */
+	LOCKACQUIRE_OK,				/* lock successfully acquired */
+	LOCKACQUIRE_ALREADY_HELD	/* incremented count for lock already held */
+} LockAcquireResult;
+
+
 /*
  * function prototypes
  */
@@ -357,7 +366,7 @@ extern LOCKMETHODID LockMethodTableInit(const char *tabName,
 					const LOCKMASK *conflictsP,
 					int numModes, int maxBackends);
 extern LOCKMETHODID LockMethodTableRename(LOCKMETHODID lockmethodid);
-extern bool LockAcquire(LOCKMETHODID lockmethodid, LOCKTAG *locktag,
+extern LockAcquireResult LockAcquire(LOCKMETHODID lockmethodid, LOCKTAG *locktag,
 			TransactionId xid, LOCKMODE lockmode, bool dontWait);
 extern bool LockRelease(LOCKMETHODID lockmethodid, LOCKTAG *locktag,
 			TransactionId xid, LOCKMODE lockmode);
