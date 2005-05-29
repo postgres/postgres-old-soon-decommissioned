@@ -220,6 +220,7 @@ DROP DATABASE</computeroutput>
   <simplelist type="inline">
    <member><xref linkend="app-createdb"></member>
    <member><xref linkend="sql-dropdatabase" endterm="sql-dropdatabase-title"></member>
+   <member>Environment Variables (<xref linkend="libpq-envars">)</member>
   </simplelist>
  </refsect1>
 

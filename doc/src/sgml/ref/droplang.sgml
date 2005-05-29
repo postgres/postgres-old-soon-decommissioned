@@ -220,6 +220,7 @@ PostgreSQL documentation
   <simplelist type="inline">
    <member><xref linkend="app-createlang"></member>
    <member><xref linkend="sql-droplanguage" endterm="sql-droplanguage-title"></member>
+   <member>Environment Variables (<xref linkend="libpq-envars">)</member>
   </simplelist>
  </refsect1>
 

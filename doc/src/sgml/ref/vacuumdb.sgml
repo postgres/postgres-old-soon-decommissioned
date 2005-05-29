@@ -301,6 +301,7 @@ PostgreSQL documentation
 
   <simplelist type="inline">
    <member><xref linkend="sql-vacuum" endterm="sql-vacuum-title"></member>
+   <member>Environment Variables (<xref linkend="libpq-envars">)</member>
   </simplelist>
  </refsect1>
 

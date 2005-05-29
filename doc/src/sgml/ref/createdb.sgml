@@ -294,6 +294,7 @@ PostgreSQL documentation
   <simplelist type="inline">
    <member><xref linkend="app-dropdb"></member>
    <member><xref linkend="sql-createdatabase" endterm="sql-createdatabase-title"></member>
+   <member>Environment Variables (<xref linkend="libpq-envars">)</member>
   </simplelist>
  </refsect1>
 

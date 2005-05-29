@@ -415,7 +415,8 @@ PostgreSQL documentation
 
   <para>
     <xref linkend="app-pgdump">.  Check there for details on possible
-    error conditions.
+    error conditions.  Also see suppored environment variables
+    (<xref linkend="libpq-envars">).
   </para>
  </refsect1>   
 

@@ -235,6 +235,7 @@ PostgreSQL documentation
 
   <simplelist type="inline">
    <member><xref linkend="sql-cluster" endterm="sql-cluster-title"></member>
+   <member>Environment Variables (<xref linkend="libpq-envars">)</member>
   </simplelist>
  </refsect1>
 

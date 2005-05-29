@@ -697,6 +697,7 @@ CREATE DATABASE foo WITH TEMPLATE template0;
    <member><xref linkend="app-pg-dumpall"></member>
    <member><xref linkend="app-pgrestore"></member>
    <member><xref linkend="app-psql"></member>
+   <member>Environment Variables (<xref linkend="libpq-envars">)</member>
   </simplelist>
  </refsect1>
 

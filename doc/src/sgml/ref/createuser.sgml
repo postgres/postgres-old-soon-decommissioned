@@ -334,6 +334,7 @@ PostgreSQL documentation
   <simplelist type="inline">
    <member><xref linkend="app-dropuser"></member>
    <member><xref linkend="sql-createuser" endterm="sql-createuser-title"></member>
+   <member>Environment Variables (<xref linkend="libpq-envars">)</member>
   </simplelist>
  </refsect1>
 

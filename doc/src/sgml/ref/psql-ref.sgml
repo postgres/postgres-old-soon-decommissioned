@@ -2759,6 +2759,14 @@ second | four
 
  </refsect1>
 
+ <refsect1>
+  <title>See Also</title>
+
+  <simplelist type="inline">
+   <member>Environment Variables (<xref linkend="libpq-envars">)</member>
+  </simplelist>
+ </refsect1>
+
 </refentry>
 
 <!-- Keep this comment at the end of the file
