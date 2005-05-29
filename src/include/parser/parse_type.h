@@ -25,7 +25,6 @@ extern char *TypeNameToString(const TypeName *typename);
 extern Oid	typenameTypeId(const TypeName *typename);
 extern Type typenameType(const TypeName *typename);
 
-extern bool typeidIsValid(Oid id);
 extern Type typeidType(Oid id);
 
 extern Oid	typeTypeId(Type tp);

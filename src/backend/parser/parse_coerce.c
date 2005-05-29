@@ -371,12 +371,6 @@ can_coerce_type(int nargs, Oid *input_typeids, Oid *target_typeids,
 		if (inputTypeId == targetTypeId)
 			continue;
 
-		/* don't choke on references to no-longer-existing types */
-		if (!typeidIsValid(inputTypeId))
-			return false;
-		if (!typeidIsValid(targetTypeId))
-			return false;
-
 		/* accept if target is ANY */
 		if (targetTypeId == ANYOID)
 			continue;

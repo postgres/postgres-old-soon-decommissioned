@@ -239,15 +239,6 @@ typenameType(const TypeName *typename)
 	return (Type) tup;
 }
 
-/* check to see if a type id is valid, returns true if it is */
-bool
-typeidIsValid(Oid id)
-{
-	return SearchSysCacheExists(TYPEOID,
-								ObjectIdGetDatum(id),
-								0, 0, 0);
-}
-
 /* return a Type structure, given a type id */
 /* NB: caller must ReleaseSysCache the type tuple when done with it */
 Type
