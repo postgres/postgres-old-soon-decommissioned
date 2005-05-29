@@ -1036,10 +1036,6 @@ create_fsm_rel(RelFileNode *rel)
 										 (void *) rel,
 										 HASH_ENTER,
 										 &found);
-	if (!fsmrel)
-		ereport(ERROR,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of shared memory")));
 
 	if (!found)
 	{

@@ -521,10 +521,6 @@ record_C_func(HeapTuple procedureTuple,
 					&fn_oid,
 					HASH_ENTER,
 					&found);
-	if (entry == NULL)
-		ereport(ERROR,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory")));
 	/* OID is already filled in */
 	entry->fn_xmin = HeapTupleHeaderGetXmin(procedureTuple->t_data);
 	entry->fn_cmin = HeapTupleHeaderGetCmin(procedureTuple->t_data);

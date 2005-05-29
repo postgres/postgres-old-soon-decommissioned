@@ -2157,10 +2157,6 @@ plpgsql_HashTableInsert(PLpgSQL_function *function,
 											 (void *) func_key,
 											 HASH_ENTER,
 											 &found);
-	if (hentry == NULL)
-		ereport(ERROR,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory")));
 	if (found)
 		elog(WARNING, "trying to insert a function that already exists");
 

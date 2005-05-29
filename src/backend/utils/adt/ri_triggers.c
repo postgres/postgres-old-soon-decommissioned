@@ -3466,10 +3466,6 @@ ri_HashPreparedPlan(RI_QueryKey *key, void *plan)
 	entry = (RI_QueryHashEntry *) hash_search(ri_query_cache,
 											  (void *) key,
 											  HASH_ENTER, &found);
-	if (entry == NULL)
-		ereport(ERROR,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory")));
 	entry->plan = plan;
 }
 

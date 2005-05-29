@@ -805,9 +805,8 @@ register_dirty_segment(SMgrRelation reln, MdfdVec *seg)
 		entry.rnode = reln->smgr_rnode;
 		entry.segno = seg->mdfd_segno;
 
-		if (hash_search(pendingOpsTable, &entry, HASH_ENTER, NULL) != NULL)
-			return true;
-		/* out of memory: fall through to do it locally */
+		(void) hash_search(pendingOpsTable, &entry, HASH_ENTER, NULL);
+		return true;
 	}
 	else
 	{
@@ -838,10 +837,7 @@ RememberFsyncRequest(RelFileNode rnode, BlockNumber segno)
 	entry.rnode = rnode;
 	entry.segno = segno;
 
-	if (hash_search(pendingOpsTable, &entry, HASH_ENTER, NULL) == NULL)
-		ereport(FATAL,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory")));
+	(void) hash_search(pendingOpsTable, &entry, HASH_ENTER, NULL);
 }
 
 /*

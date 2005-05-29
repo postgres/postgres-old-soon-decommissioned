@@ -223,9 +223,6 @@ XLogOpenRelation(bool redo, RmgrId rmid, RelFileNode rnode)
 		hentry = (XLogRelCacheEntry *)
 			hash_search(_xlrelcache, (void *) &rnode, HASH_ENTER, &found);
 
-		if (hentry == NULL)
-			elog(PANIC, "XLogOpenRelation: out of memory for cache");
-
 		if (found)
 			elog(PANIC, "XLogOpenRelation: file found on insert into cache");
 

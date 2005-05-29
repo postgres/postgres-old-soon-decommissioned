@@ -207,10 +207,6 @@ smgropen(RelFileNode rnode)
 	reln = (SMgrRelation) hash_search(SMgrRelationHash,
 									  (void *) &rnode,
 									  HASH_ENTER, &found);
-	if (reln == NULL)
-		ereport(ERROR,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory")));
 
 	/* Initialize it if not present before */
 	if (!found)

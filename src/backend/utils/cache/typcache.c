@@ -158,10 +158,6 @@ lookup_type_cache(Oid type_id, int flags)
 		typentry = (TypeCacheEntry *) hash_search(TypeCacheHash,
 												  (void *) &type_id,
 												  HASH_ENTER, &found);
-		if (typentry == NULL)
-			ereport(ERROR,
-					(errcode(ERRCODE_OUT_OF_MEMORY),
-					 errmsg("out of memory")));
 		Assert(!found);			/* it wasn't there a moment ago */
 
 		MemSet(typentry, 0, sizeof(TypeCacheEntry));
@@ -480,10 +476,6 @@ assign_record_type_typmod(TupleDesc tupDesc)
 	recentry = (RecordCacheEntry *) hash_search(RecordCacheHash,
 												(void *) hashkey,
 												HASH_ENTER, &found);
-	if (recentry == NULL)
-		ereport(ERROR,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory")));
 	if (!found)
 	{
 		/* New entry ... hash_search initialized only the hash key */

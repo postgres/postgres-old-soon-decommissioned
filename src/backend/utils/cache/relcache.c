@@ -137,10 +137,6 @@ do { \
 										   (void *) &(RELATION->rd_id), \
 										   HASH_ENTER, \
 										   &found); \
-	if (idhentry == NULL) \
-		ereport(ERROR, \
-				(errcode(ERRCODE_OUT_OF_MEMORY), \
-				 errmsg("out of memory"))); \
 	/* used to give notice if found -- now just keep quiet */ \
 	idhentry->reldesc = RELATION; \
 } while(0)
@@ -1044,10 +1040,6 @@ LookupOpclassInfo(Oid operatorClassOid,
 	opcentry = (OpClassCacheEnt *) hash_search(OpClassCache,
 											   (void *) &operatorClassOid,
 											   HASH_ENTER, &found);
-	if (opcentry == NULL)
-		ereport(ERROR,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory")));
 
 	if (found && opcentry->valid)
 	{

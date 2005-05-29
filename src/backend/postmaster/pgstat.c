@@ -2061,10 +2061,6 @@ pgstat_get_db_entry(int databaseid)
 	result = (PgStat_StatDBEntry *) hash_search(pgStatDBHash,
 												&databaseid,
 												HASH_ENTER, &found);
-	if (result == NULL)
-		ereport(ERROR,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory in statistics collector --- abort")));
 
 	/* If not found, initialize the new one. */
 	if (!found)
@@ -2126,10 +2122,6 @@ pgstat_sub_backend(int procpid)
 													   (void *) &procpid,
 													   HASH_ENTER,
 													   &found);
-			if (deadbe == NULL)
-				ereport(ERROR,
-						(errcode(ERRCODE_OUT_OF_MEMORY),
-						 errmsg("out of memory in statistics collector --- abort")));
 
 			if (!found)
 			{
@@ -2435,12 +2427,6 @@ pgstat_read_statsfile(HTAB **dbhash, Oid onlydb,
 											  (void *) &dbbuf.databaseid,
 															 HASH_ENTER,
 															 &found);
-				if (dbentry == NULL)
-				{
-					ereport(ERROR,
-							(errcode(ERRCODE_OUT_OF_MEMORY),
-							 errmsg("out of memory")));
-				}
 				if (found)
 				{
 					ereport(pgStatRunningInCollector ? LOG : WARNING,
@@ -2503,10 +2489,6 @@ pgstat_read_statsfile(HTAB **dbhash, Oid onlydb,
 				tabentry = (PgStat_StatTabEntry *) hash_search(tabhash,
 												(void *) &tabbuf.tableid,
 													 HASH_ENTER, &found);
-				if (tabentry == NULL)
-					ereport(ERROR,
-							(errcode(ERRCODE_OUT_OF_MEMORY),
-							 errmsg("out of memory")));
 
 				if (found)
 				{
@@ -2730,10 +2712,6 @@ pgstat_recv_tabstat(PgStat_MsgTabstat *msg, int len)
 		tabentry = (PgStat_StatTabEntry *) hash_search(dbentry->tables,
 											  (void *) &(tabmsg[i].t_id),
 													 HASH_ENTER, &found);
-		if (tabentry == NULL)
-			ereport(ERROR,
-					(errcode(ERRCODE_OUT_OF_MEMORY),
-			 errmsg("out of memory in statistics collector --- abort")));
 
 		if (!found)
 		{

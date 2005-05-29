@@ -346,9 +346,9 @@ StorePreparedStatement(const char *stmt_name,
 											  HASH_ENTER,
 											  &found);
 
-	/* Shouldn't get a failure, nor a duplicate entry */
-	if (!entry || found)
-		elog(ERROR, "could not store prepared statement \"%s\"",
+	/* Shouldn't get a duplicate entry */
+	if (found)
+		elog(ERROR, "duplicate prepared statement \"%s\"",
 			 stmt_name);
 
 	/* Fill in the hash table entry with copied data */

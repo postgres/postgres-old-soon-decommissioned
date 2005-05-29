@@ -110,11 +110,6 @@ BufTableInsert(BufferTag *tagPtr, int buf_id)
 	result = (BufferLookupEnt *)
 		hash_search(SharedBufHash, (void *) tagPtr, HASH_ENTER, &found);
 
-	if (!result)
-		ereport(ERROR,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of shared memory")));
-
 	if (found)					/* found something already in the table */
 		return result->id;
 

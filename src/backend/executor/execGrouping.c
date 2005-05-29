@@ -379,13 +379,9 @@ LookupTupleHashEntry(TupleHashTable hashtable, TupleTableSlot *slot,
 		}
 		else
 		{
-			/* created new entry ... we hope */
-			if (entry == NULL)
-				ereport(ERROR,
-						(errcode(ERRCODE_OUT_OF_MEMORY),
-						 errmsg("out of memory")));
-
 			/*
+			 * created new entry
+			 *
 			 * Zero any caller-requested space in the entry.  (This zaps
 			 * the "key data" dynahash.c copied into the new entry, but we
 			 * don't care since we're about to overwrite it anyway.)
