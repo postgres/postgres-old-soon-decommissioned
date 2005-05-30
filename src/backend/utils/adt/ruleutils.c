@@ -1919,6 +1919,28 @@ get_select_query_def(Query *query, deparse_context *context,
 		else
 			get_rule_expr(query->limitCount, context, false);
 	}
+
+	/* Add the FOR UPDATE/SHARE clause if present */
+	if (query->rowMarks != NIL)
+	{
+		if (query->forUpdate)
+			appendContextKeyword(context, " FOR UPDATE OF ",
+								 -PRETTYINDENT_STD, PRETTYINDENT_STD, 0);
+		else
+			appendContextKeyword(context, " FOR SHARE OF ",
+								 -PRETTYINDENT_STD, PRETTYINDENT_STD, 0);
+		sep = "";
+		foreach(l, query->rowMarks)
+		{
+			int			rtindex = lfirst_int(l);
+			RangeTblEntry *rte = rt_fetch(rtindex, query->rtable);
+
+			appendStringInfo(buf, "%s%s",
+							 sep,
+							 quote_identifier(rte->eref->aliasname));
+			sep = ", ";
+		}
+	}
 }
 
 static void
