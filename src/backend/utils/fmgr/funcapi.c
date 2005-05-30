@@ -822,6 +822,10 @@ build_function_result_tupdesc_d(Datum proallargtypes,
  * RelationNameGetTupleDesc
  *
  * Given a (possibly qualified) relation name, build a TupleDesc.
+ *
+ * Note: while this works as advertised, it's seldom the best way to
+ * build a tupdesc for a function's result type.  It's kept around
+ * only for backwards compatibility with existing user-written code.
  */
 TupleDesc
 RelationNameGetTupleDesc(const char *relname)
@@ -844,7 +848,10 @@ RelationNameGetTupleDesc(const char *relname)
 /*
  * TypeGetTupleDesc
  *
- * Given a type Oid, build a TupleDesc.
+ * Given a type Oid, build a TupleDesc.  (In most cases you should be
+ * using get_call_result_type or one of its siblings instead of this
+ * routine, so that you can handle OUT parameters, RECORD result type,
+ * and polymorphic results.)
  *
  * If the type is composite, *and* a colaliases List is provided, *and*
  * the List is of natts length, use the aliases instead of the relation
