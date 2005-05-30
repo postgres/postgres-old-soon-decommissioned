@@ -849,7 +849,7 @@ other			.
 "\\r"			{ appendPQExpBufferChar(output_buf, '\r'); }
 "\\f"			{ appendPQExpBufferChar(output_buf, '\f'); }
 
-"\\"[0-7]{1,3}	{
+{xqoctesc}		{
 					/* octal case */
 					appendPQExpBufferChar(output_buf,
 										  (char) strtol(yytext + 1, NULL, 8));
