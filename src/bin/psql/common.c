@@ -1237,17 +1237,6 @@ command_no_begin(const char *query)
 }
 
 
-char
-parse_char(char **buf)
-{
-	long		l;
-
-	l = strtol(*buf, buf, 0);
-	--*buf;
-	return (char) l;
-}
-
-
 /*
  * Test if the current user is a database superuser.
  *
