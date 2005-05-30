@@ -308,13 +308,17 @@ use_physical_tlist(RelOptInfo *rel)
 	int			i;
 
 	/*
-	 * OK for subquery scans, but not function scans.  (This is mainly
-	 * because build_physical_tlist doesn't support them; worth adding?)
+	 * OK for subquery and function scans; otherwise, can't do it for
+	 * anything except real relations.
 	 */
-	if (rel->rtekind == RTE_SUBQUERY)
-		return true;
 	if (rel->rtekind != RTE_RELATION)
+	{
+		if (rel->rtekind == RTE_SUBQUERY)
+			return true;
+		if (rel->rtekind == RTE_FUNCTION)
+			return true;
 		return false;
+	}
 
 	/*
 	 * Can't do it with inheritance cases either (mainly because Append
