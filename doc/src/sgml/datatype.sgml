@@ -1118,7 +1118,7 @@ SELECT b, char_length(b) FROM test2;
    <para>
     When entering <type>bytea</type> values, octets of certain values
     <emphasis>must</emphasis> be escaped (but all octet values
-    <emphasis>may</emphasis> be escaped) when used as part of a string
+    <emphasis>can</emphasis> be escaped) when used as part of a string
     literal in an <acronym>SQL</acronym> statement. In general, to
     escape an octet, it is converted into the three-digit octal number
     equivalent of its decimal octet value, and preceded by two
