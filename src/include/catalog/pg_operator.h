@@ -695,6 +695,7 @@ DATA(insert OID = 1759 (  "-"	   PGNSP PGUID b f 1700 1700 1700	 0	0 0 0 0 0 num
 DATA(insert OID = 1760 (  "*"	   PGNSP PGUID b f 1700 1700 1700 1760	0 0 0 0 0 numeric_mul - - ));
 DATA(insert OID = 1761 (  "/"	   PGNSP PGUID b f 1700 1700 1700	 0	0 0 0 0 0 numeric_div - - ));
 DATA(insert OID = 1762 (  "%"	   PGNSP PGUID b f 1700 1700 1700	 0	0 0 0 0 0 numeric_mod - - ));
+DATA(insert OID = 1038 (  "^"	   PGNSP PGUID b f 1700 1700 1700	 0	0 0 0 0 0 numeric_power - - ));
 DATA(insert OID = 1763 (  "@"	   PGNSP PGUID l f	0 1700 1700    0	0 0 0 0 0 numeric_abs - - ));
 
 DATA(insert OID = 1784 (  "="	  PGNSP PGUID b f 1560 1560 16 1784 1785 1786 1786 1786 1787 biteq eqsel eqjoinsel ));
