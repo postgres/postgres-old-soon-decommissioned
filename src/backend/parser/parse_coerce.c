@@ -168,8 +168,11 @@ coerce_type(ParseState *pstate, Node *node,
 
 		if (!con->constisnull)
 		{
-			char	   *val = DatumGetCString(DirectFunctionCall1(unknownout,
-													   con->constvalue));
+			/*
+			 * We assume here that UNKNOWN's internal representation is the
+			 * same as CSTRING
+			 */
+			char	   *val = DatumGetCString(con->constvalue);
 
 			/*
 			 * We pass typmod -1 to the input routine, primarily because
@@ -183,7 +186,6 @@ coerce_type(ParseState *pstate, Node *node,
 			 * ugly...
 			 */
 			newcon->constvalue = stringTypeDatum(targetType, val, -1);
-			pfree(val);
 		}
 
 		result = (Node *) newcon;
