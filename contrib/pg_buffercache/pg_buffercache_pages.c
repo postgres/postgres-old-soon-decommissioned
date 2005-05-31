@@ -92,8 +92,8 @@ pg_buffercache_pages(PG_FUNCTION_ARGS)
 									OIDOID, -1, 0);
 		TupleDescInitEntry(tupledesc, (AttrNumber) 4, "reldatabase",
 									OIDOID, -1, 0);
-		TupleDescInitEntry(tupledesc, (AttrNumber) 5, "relblockbumber",
-									NUMERICOID, -1, 0);
+		TupleDescInitEntry(tupledesc, (AttrNumber) 5, "relblocknumber",
+									INT8OID, -1, 0);
 		TupleDescInitEntry(tupledesc, (AttrNumber) 6, "isdirty",
 									BOOLOID, -1, 0);
 
