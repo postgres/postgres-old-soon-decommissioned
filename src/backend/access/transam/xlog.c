@@ -430,8 +430,8 @@ static uint32 readOff = 0;
 static char *readBuf = NULL;
 
 /* State information for XLOG reading */
-static XLogRecPtr ReadRecPtr;
-static XLogRecPtr EndRecPtr;
+static XLogRecPtr ReadRecPtr;				/* start of last record read */
+static XLogRecPtr EndRecPtr;				/* end+1 of last record read */
 static XLogRecord *nextRecord = NULL;
 static StartUpID lastReadSUI;
 
@@ -1899,6 +1899,37 @@ got_record:;
 				(errmsg("record with zero length at %X/%X",
 						RecPtr->xlogid, RecPtr->xrecoff)));
 		goto next_record_is_invalid;
+	}
+	if (!nextmode)
+	{
+		/*
+		 * We can't exactly verify the prev-link, but surely it should be
+		 * less than the record's own address.
+		 */
+		if (!XLByteLT(record->xl_prev, *RecPtr))
+		{
+			ereport(emode,
+					(errmsg("record with incorrect prev-link %X/%X at %X/%X",
+							record->xl_prev.xlogid, record->xl_prev.xrecoff,
+							RecPtr->xlogid, RecPtr->xrecoff)));
+			goto next_record_is_invalid;
+		}
+	}
+	else
+	{
+		/*
+		 * Record's prev-link should exactly match our previous location.
+		 * This check guards against torn WAL pages where a stale but
+		 * valid-looking WAL record starts on a sector boundary.
+		 */
+		if (!XLByteEQ(record->xl_prev, ReadRecPtr))
+		{
+			ereport(emode,
+					(errmsg("record with incorrect prev-link %X/%X at %X/%X",
+							record->xl_prev.xlogid, record->xl_prev.xrecoff,
+							RecPtr->xlogid, RecPtr->xrecoff)));
+			goto next_record_is_invalid;
+		}
 	}
 
 	/*
