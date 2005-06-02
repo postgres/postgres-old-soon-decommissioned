@@ -66,6 +66,7 @@ quote_postgres(char *arg, int lineno)
 	res[ri++] = '\'';
 	res[ri] = '\0';
 
+	ECPGfree(arg);
 	return res;
 }
 
@@ -799,8 +800,6 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 					if (!mallocedval)
 						return false;
 
-					ECPGfree(newcopy);
-
 					*tobeinserted_p = mallocedval;
 					*malloced_p = true;
 				}
@@ -834,8 +833,6 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 					mallocedval = quote_postgres(newcopy, stmt->lineno);
 					if (!mallocedval)
 						return false;
-
-					ECPGfree(newcopy);
 
 					*tobeinserted_p = mallocedval;
 					*malloced_p = true;
