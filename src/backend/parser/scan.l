@@ -193,7 +193,7 @@ xnstart			[nN]{quote}
 xqstart			{quote}
 xqdouble		{quote}{quote}
 xqinside		[^\\']+
-xqescape		[\\][^0-7x]
+xqescape		[\\][^0-7]
 xqoctesc		[\\][0-7]{1,3}
 xqhexesc		[\\]x[0-9A-Fa-f]{1,2}
 
