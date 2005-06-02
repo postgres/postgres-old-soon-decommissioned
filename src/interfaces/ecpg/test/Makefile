@@ -10,7 +10,8 @@ override CFLAGS += $(PTHREAD_CFLAGS)
 ECPG = ../preproc/ecpg -I$(srcdir)/../include
 
 TESTS = test1 test2 test3 test4 test5 perftest dyntest dyntest2 test_notice \
-	test_code100 test_init testdynalloc num_test dt_test test_informix
+	test_code100 test_init testdynalloc num_test dt_test test_informix \
+	test_desc
 ifeq ($(enable_thread_safety), yes)
 TESTS += test_thread test_thread_implicit
 endif
