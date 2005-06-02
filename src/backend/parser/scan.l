@@ -193,8 +193,9 @@ xnstart			[nN]{quote}
 xqstart			{quote}
 xqdouble		{quote}{quote}
 xqinside		[^\\']+
-xqescape		[\\][^0-7]
+xqescape		[\\][^0-7x]
 xqoctesc		[\\][0-7]{1,3}
+xqhexesc		[\\]x[0-9A-Fa-f]{1,2}
 
 /* $foo$ style quotes ("dollar quoting")
  * The quoted string starts with $foo$ where "foo" is an optional string
@@ -433,6 +434,10 @@ other			.
 				}
 <xq>{xqoctesc}  {
 					unsigned char c = strtoul(yytext+1, NULL, 8);
+					addlitchar(c);
+				}
+<xq>{xqhexesc}  {
+					unsigned char c = strtoul(yytext+2, NULL, 16);
 					addlitchar(c);
 				}
 <xq>{quotecontinue} {
