@@ -113,6 +113,13 @@ _bt_initmetapage(Page page, BlockNumber rootbknum, uint32 level)
 
 	metaopaque = (BTPageOpaque) PageGetSpecialPointer(page);
 	metaopaque->btpo_flags = BTP_META;
+
+	/*
+	 * Set pd_lower just past the end of the metadata.  This is not
+	 * essential but it makes the page look compressible to xlog.c.
+	 */
+	((PageHeader) page)->pd_lower =
+		((char *) metad + sizeof(BTMetaPageData)) - (char *) page;
 }
 
 /*

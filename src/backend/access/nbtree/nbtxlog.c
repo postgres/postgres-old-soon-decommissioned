@@ -135,6 +135,13 @@ _bt_restore_meta(Relation reln, XLogRecPtr lsn,
 	pageop = (BTPageOpaque) PageGetSpecialPointer(metapg);
 	pageop->btpo_flags = BTP_META;
 
+	/*
+	 * Set pd_lower just past the end of the metadata.  This is not
+	 * essential but it makes the page look compressible to xlog.c.
+	 */
+	((PageHeader) metapg)->pd_lower =
+		((char *) md + sizeof(BTMetaPageData)) - (char *) metapg;
+
 	PageSetLSN(metapg, lsn);
 	PageSetTLI(metapg, ThisTimeLineID);
 	LockBuffer(metabuf, BUFFER_LOCK_UNLOCK);

@@ -66,7 +66,7 @@ main(int argc, char *argv[])
 	int			fd;
 	char		ControlFilePath[MAXPGPATH];
 	char	   *DataDir;
-	crc64		crc;
+	pg_crc32	crc;
 	char		pgctime_str[128];
 	char		ckpttime_str[128];
 	char		sysident_str[32];
@@ -120,13 +120,13 @@ main(int argc, char *argv[])
 	close(fd);
 
 	/* Check the CRC. */
-	INIT_CRC64(crc);
-	COMP_CRC64(crc,
-			   (char *) &ControlFile + sizeof(crc64),
-			   sizeof(ControlFileData) - sizeof(crc64));
-	FIN_CRC64(crc);
+	INIT_CRC32(crc);
+	COMP_CRC32(crc,
+			   (char *) &ControlFile,
+			   offsetof(ControlFileData, crc));
+	FIN_CRC32(crc);
 
-	if (!EQ_CRC64(crc, ControlFile.crc))
+	if (!EQ_CRC32(crc, ControlFile.crc))
 		printf(_("WARNING: Calculated CRC checksum does not match value stored in file.\n"
 				 "Either the file is corrupt, or it has a different layout than this program\n"
 			 "is expecting.  The results below are untrustworthy.\n\n"));
