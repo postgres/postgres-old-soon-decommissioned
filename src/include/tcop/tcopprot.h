@@ -59,6 +59,8 @@ extern bool assign_max_stack_depth(int newval, bool doit, GucSource source);
 extern void die(SIGNAL_ARGS);
 extern void quickdie(SIGNAL_ARGS);
 extern void authdie(SIGNAL_ARGS);
+extern void prepare_for_client_read(void);
+extern void client_read_ended(void);
 extern int	PostgresMain(int argc, char *argv[], const char *username);
 extern void ResetUsage(void);
 extern void ShowUsage(const char *title);
