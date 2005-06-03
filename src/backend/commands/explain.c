@@ -100,6 +100,12 @@ ExplainQuery(ExplainStmt *stmt, DestReceiver *dest)
 	}
 	else
 	{
+		/*
+		 * Must acquire locks in case we didn't come fresh from the parser.
+		 * XXX this also scribbles on query, another reason for copyObject
+		 */
+		AcquireRewriteLocks(query);
+
 		/* Rewrite through rule system */
 		rewritten = QueryRewrite(query);
 
@@ -166,6 +172,8 @@ ExplainOneQuery(Query *query, ExplainStmt *stmt, TupOutputState *tstate)
 			cursorOptions = dcstmt->options;
 			/* Still need to rewrite cursor command */
 			Assert(query->commandType == CMD_SELECT);
+			/* get locks (we assume ExplainQuery already copied tree) */
+			AcquireRewriteLocks(query);
 			rewritten = QueryRewrite(query);
 			if (list_length(rewritten) != 1)
 				elog(ERROR, "unexpected rewrite result");

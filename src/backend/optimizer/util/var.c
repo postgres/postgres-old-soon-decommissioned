@@ -524,9 +524,7 @@ flatten_join_alias_vars_mutator(Node *node,
 				newvar = (Node *) lfirst(l);
 				attnum++;
 				/* Ignore dropped columns */
-				if (get_rte_attribute_is_dropped(context->root->rtable,
-												 var->varno,
-												 attnum))
+				if (IsA(newvar, Const))
 					continue;
 
 				/*

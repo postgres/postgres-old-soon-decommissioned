@@ -99,6 +99,7 @@ PrepareQuery(PrepareStmt *stmt)
 	query = copyObject(stmt->query);
 
 	/* Rewrite the query. The result could be 0, 1, or many queries. */
+	AcquireRewriteLocks(query);
 	query_list = QueryRewrite(query);
 
 	/* Generate plans for queries.	Snapshot is already set. */

@@ -76,6 +76,7 @@ PerformCursorOpen(DeclareCursorStmt *stmt, ParamListInfo params)
 	 * query, so we are not expecting rule rewriting to do anything
 	 * strange.
 	 */
+	AcquireRewriteLocks(query);
 	rewritten = QueryRewrite(query);
 	if (list_length(rewritten) != 1 || !IsA(linitial(rewritten), Query))
 		elog(ERROR, "unexpected rewrite result");
