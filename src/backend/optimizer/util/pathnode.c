@@ -278,6 +278,12 @@ add_path(RelOptInfo *parent_rel, Path *new_path)
 	ListCell   *p1;
 
 	/*
+	 * This is a convenient place to check for query cancel --- no part
+	 * of the planner goes very long without calling add_path().
+	 */
+	CHECK_FOR_INTERRUPTS();
+
+	/*
 	 * Loop to check proposed new path against old paths.  Note it is
 	 * possible for more than one old path to be tossed out because
 	 * new_path dominates it.
