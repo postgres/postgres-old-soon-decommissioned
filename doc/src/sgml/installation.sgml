@@ -816,8 +816,8 @@ su - postgres
        <term><option>--with-krb-srvnam=<replaceable>NAME</></option></term>
        <listitem>
         <para>
-         The name of the Kerberos service principal.
-         <literal>postgres</literal> is the default. There's probably no
+         The default name of the Kerberos service principal.
+         <literal>postgres</literal> is the default. There's usually no
          reason to change this.
         </para>
        </listitem>

@@ -280,6 +280,18 @@ PGconn *PQconnectdb(const char *conninfo);
     </varlistentry>
 
     <varlistentry>
+     <term><literal>krbsrvname</literal></term>
+     <listitem>
+      <para>
+       Kerberos service name to use when authenticating with Kerberos 4 or 5.
+       This must match the service name specified in the server
+       configuration for Kerberos authentication to succeed. (See also
+			 <xref linkend="kerberos-auth">.)
+      </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry>
      <term><literal>service</literal></term>
      <listitem>
      <para>
@@ -3766,6 +3778,15 @@ an <acronym>SSL</acronym> connection (equivalent to <literal>sslmode</>
 This option is deprecated in favor of the <literal>sslmode</>
 setting, and is only available if
 <productname>PostgreSQL</> is compiled with SSL support.
+</para>
+</listitem>
+<listitem>
+<para>
+<indexterm>
+ <primary><envar>PGKRBSRVNAME</envar></primary>
+</indexterm>
+<envar>PGKRBSRVNAME</envar> sets the Kerberos service name to use when
+authenticating with Kerberos 4 or 5.
 </para>
 </listitem>
 <listitem>

@@ -170,6 +170,12 @@ static const PQconninfoOption PQconninfoOptions[] = {
 	{"sslmode", "PGSSLMODE", DefaultSSLMode, NULL,
 	"SSL-Mode", "", 8},			/* sizeof("disable") == 8 */
 
+#if defined(KRB4) || defined(KRB5)
+	/* Kerberos authentication supports specifying the service name */
+	{"krbsrvname", "PGKRBSRVNAME", PG_KRB_SRVNAM, NULL,
+	 "Kerberos-service-name", "", 20},
+#endif
+
 	/* Terminating entry --- MUST BE LAST */
 	{NULL, NULL, NULL, NULL,
 	NULL, NULL, 0}
@@ -392,6 +398,10 @@ connectOptions1(PGconn *conn, const char *conninfo)
 			free(conn->sslmode);
 		conn->sslmode = strdup("require");
 	}
+#endif
+#if defined(KRB4) || defined(KRB5)
+	tmp = conninfo_getval(connOptions, "krbsrvname");
+	conn->krbsrvname = tmp ? strdup(tmp) : NULL;
 #endif
 
 	/*
@@ -2074,6 +2084,10 @@ freePGconn(PGconn *conn)
 		free(conn->pgpass);
 	if (conn->sslmode)
 		free(conn->sslmode);
+#if defined(KRB4) || defined(KRB5)
+	if (conn->krbsrvname)
+		free(conn->krbsrvname);
+#endif
 	/* Note that conn->Pfdebug is not ours to close or free */
 	notify = conn->notifyHead;
 	while (notify != NULL)

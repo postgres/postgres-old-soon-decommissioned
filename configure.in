@@ -447,11 +447,11 @@ AC_SUBST(krb_srvtab)
 # Kerberos configuration parameters
 #
 PGAC_ARG_REQ(with, krb-srvnam,
-             [  --with-krb-srvnam=NAME  name of the service principal in Kerberos [[postgres]]],
+             [  --with-krb-srvnam=NAME  name of the default service principal in Kerberos [[postgres]]],
              [],
              [with_krb_srvnam="postgres"])
 AC_DEFINE_UNQUOTED([PG_KRB_SRVNAM], ["$with_krb_srvnam"],
-                   [Define to the name of the PostgreSQL service principal in Kerberos. (--with-krb-srvnam=NAME)])
+                   [Define to the name of the default PostgreSQL service principal in Kerberos. (--with-krb-srvnam=NAME)])
 
 
 #
