@@ -399,17 +399,6 @@ AllocSetReset(MemoryContext context)
 	if (block == NULL)
 		return;
 
-	/*
-	 * When blocks list has only "keeper" block and freeptr of the block
-	 * is initial value, the context is not used from last reset.
-	 */
-	if (block == set->keeper && block->next == NULL)
-	{
-		char	   *datastart = ((char *) block) + ALLOC_BLOCKHDRSZ;
-		if (block->freeptr == datastart)
-			return;
-	}
-
 	/* Clear chunk freelists */
 	MemSetAligned(set->freelist, 0, sizeof(set->freelist));
 
