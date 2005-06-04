@@ -1556,6 +1556,7 @@ exprTypmod(Node *expr)
 						{
 							int32 len = VARSIZE(DatumGetPointer(con->constvalue)) - VARHDRSZ;
 
+							/* if multi-byte, take len and find # characters */
 							if (pg_database_encoding_max_length() > 1)
 								len = pg_mbstrlen_with_len(VARDATA(DatumGetPointer(con->constvalue)), len);
 							return len + VARHDRSZ;
