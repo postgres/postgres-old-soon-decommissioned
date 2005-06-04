@@ -695,10 +695,11 @@ coerce_record_to_complex(ParseState *pstate, Node *node,
 	{
 		int			rtindex = ((Var *) node)->varno;
 		int			sublevels_up = ((Var *) node)->varlevelsup;
-		List	   *rtable;
+		RangeTblEntry *rte;
 
-		rtable = GetLevelNRangeTable(pstate, sublevels_up);
-		expandRTE(rtable, rtindex, sublevels_up, false, NULL, &args);
+		rte = GetRTEByRangeTablePosn(pstate, rtindex, sublevels_up);
+		expandRTE(rte, rtindex, sublevels_up, false,
+				  NULL, &args);
 	}
 	else
 		ereport(ERROR,

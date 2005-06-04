@@ -451,7 +451,7 @@ build_physical_tlist(Query *root, RelOptInfo *rel)
 			break;
 
 		case RTE_FUNCTION:
-			expandRTE(root->rtable, varno, 0, true /* include dropped */,
+			expandRTE(rte, varno, 0, true /* include dropped */,
 					  NULL, &colvars);
 			foreach(l, colvars)
 			{

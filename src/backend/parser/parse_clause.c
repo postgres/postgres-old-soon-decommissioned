@@ -663,7 +663,8 @@ transformFromClauseItem(ParseState *pstate, Node *n, List **containedRels)
 			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(j->larg));
 			leftrti = 0;		/* keep compiler quiet */
 		}
-		expandRTE(pstate->p_rtable, leftrti, 0, false,
+		rte = rt_fetch(leftrti, pstate->p_rtable);
+		expandRTE(rte, leftrti, 0, false,
 				  &l_colnames, &l_colvars);
 
 		if (IsA(j->rarg, RangeTblRef))
@@ -675,7 +676,8 @@ transformFromClauseItem(ParseState *pstate, Node *n, List **containedRels)
 			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(j->rarg));
 			rightrti = 0;		/* keep compiler quiet */
 		}
-		expandRTE(pstate->p_rtable, rightrti, 0, false,
+		rte = rt_fetch(rightrti, pstate->p_rtable);
+		expandRTE(rte, rightrti, 0, false,
 				  &r_colnames, &r_colvars);
 
 		/*
