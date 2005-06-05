@@ -20,10 +20,10 @@
 extern JoinInfo *find_joininfo_node(RelOptInfo *this_rel, Relids join_relids);
 extern JoinInfo *make_joininfo_node(RelOptInfo *this_rel, Relids join_relids);
 
-extern void add_join_clause_to_rels(Query *root,
+extern void add_join_clause_to_rels(PlannerInfo *root,
 						RestrictInfo *restrictinfo,
 						Relids join_relids);
-extern void remove_join_clause_from_rels(Query *root,
+extern void remove_join_clause_from_rels(PlannerInfo *root,
 							 RestrictInfo *restrictinfo,
 							 Relids join_relids);
 

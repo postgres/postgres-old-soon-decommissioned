@@ -31,7 +31,7 @@
 #include "utils/memutils.h"
 
 
-static bool desirable_join(Query *root,
+static bool desirable_join(PlannerInfo *root,
 			   RelOptInfo *outer_rel, RelOptInfo *inner_rel);
 
 
@@ -241,7 +241,7 @@ gimme_tree(Gene *tour, int num_gene, GeqoEvalData *evaldata)
  * Heuristics for gimme_tree: do we want to join these two relations?
  */
 static bool
-desirable_join(Query *root,
+desirable_join(PlannerInfo *root,
 			   RelOptInfo *outer_rel, RelOptInfo *inner_rel)
 {
 	ListCell   *l;

@@ -63,7 +63,7 @@ static int	gimme_number_generations(int pool_size);
  */
 
 RelOptInfo *
-geqo(Query *root, int number_of_rels, List *initial_rels)
+geqo(PlannerInfo *root, int number_of_rels, List *initial_rels)
 {
 	GeqoEvalData evaldata;
 	int			generation;

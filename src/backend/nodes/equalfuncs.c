@@ -653,10 +653,6 @@ _equalQuery(Query *a, Query *b)
 	COMPARE_NODE_FIELD(setOperations);
 	COMPARE_NODE_FIELD(resultRelations);
 
-	/*
-	 * We do not check the planner-internal fields.  They might not be set
-	 * yet, and in any case they should be derivable from the other fields.
-	 */
 	return true;
 }
 

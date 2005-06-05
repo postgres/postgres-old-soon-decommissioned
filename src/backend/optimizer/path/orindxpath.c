@@ -79,7 +79,7 @@
  *----------
  */
 bool
-create_or_index_quals(Query *root, RelOptInfo *rel)
+create_or_index_quals(PlannerInfo *root, RelOptInfo *rel)
 {
 	BitmapOrPath *bestpath = NULL;
 	RestrictInfo *bestrinfo = NULL;

@@ -43,8 +43,9 @@ static List *expand_targetlist(List *tlist, int command_type,
  *	  Returns the new targetlist.
  */
 List *
-preprocess_targetlist(Query *parse, List *tlist)
+preprocess_targetlist(PlannerInfo *root, List *tlist)
 {
+	Query  *parse = root->parse;
 	int		result_relation = parse->resultRelation;
 	List   *range_table = parse->rtable;
 	CmdType	command_type = parse->commandType;

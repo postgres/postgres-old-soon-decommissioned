@@ -156,8 +156,6 @@ _readQuery(void)
 	READ_NODE_FIELD(setOperations);
 	READ_NODE_FIELD(resultRelations);
 
-	/* planner-internal fields are left zero */
-
 	READ_DONE();
 }
 

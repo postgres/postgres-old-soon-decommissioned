@@ -3040,8 +3040,6 @@ query_tree_walker(Query *query,
 		return true;
 	if (walker(query->limitCount, context))
 		return true;
-	if (walker(query->in_info_list, context))
-		return true;
 	if (range_table_walker(query->rtable, walker, context, flags))
 		return true;
 	return false;
@@ -3564,7 +3562,6 @@ query_tree_mutator(Query *query,
 	MUTATE(query->havingQual, query->havingQual, Node *);
 	MUTATE(query->limitOffset, query->limitOffset, Node *);
 	MUTATE(query->limitCount, query->limitCount, Node *);
-	MUTATE(query->in_info_list, query->in_info_list, List *);
 	query->rtable = range_table_mutator(query->rtable,
 										mutator, context, flags);
 	return query;

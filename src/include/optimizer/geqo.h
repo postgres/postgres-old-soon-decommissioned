@@ -72,13 +72,14 @@ extern double Geqo_selection_bias;
  */
 typedef struct
 {
-	Query	   *root;			/* the query we are planning */
+	PlannerInfo *root;			/* the query we are planning */
 	List	   *initial_rels;	/* the base relations */
 } GeqoEvalData;
 
 
 /* routines in geqo_main.c */
-extern RelOptInfo *geqo(Query *root, int number_of_rels, List *initial_rels);
+extern RelOptInfo *geqo(PlannerInfo *root,
+						int number_of_rels, List *initial_rels);
 
 /* routines in geqo_eval.c */
 extern Cost geqo_eval(Gene *tour, int num_gene, GeqoEvalData *evaldata);

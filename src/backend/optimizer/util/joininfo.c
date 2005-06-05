@@ -82,7 +82,7 @@ make_joininfo_node(RelOptInfo *this_rel, Relids join_relids)
  *				 (there must be more than one)
  */
 void
-add_join_clause_to_rels(Query *root,
+add_join_clause_to_rels(PlannerInfo *root,
 						RestrictInfo *restrictinfo,
 						Relids join_relids)
 {
@@ -131,7 +131,7 @@ add_join_clause_to_rels(Query *root,
  *				 (there must be more than one)
  */
 void
-remove_join_clause_from_rels(Query *root,
+remove_join_clause_from_rels(PlannerInfo *root,
 							 RestrictInfo *restrictinfo,
 							 Relids join_relids)
 {
