@@ -22,8 +22,8 @@ extern RangeTblEntry *refnameRangeTblEntry(ParseState *pstate,
 					 const char *schemaname,
 					 const char *refname,
 					 int *sublevels_up);
-extern void checkNameSpaceConflicts(ParseState *pstate, Node *namespace1,
-						Node *namespace2);
+extern void checkNameSpaceConflicts(ParseState *pstate, List *namespace1,
+						List *namespace2);
 extern int RTERangeTablePosn(ParseState *pstate,
 				  RangeTblEntry *rte,
 				  int *sublevels_up);
@@ -64,7 +64,8 @@ extern RangeTblEntry *addRangeTableEntryForJoin(ParseState *pstate,
 						  Alias *alias,
 						  bool inFromCl);
 extern void addRTEtoQuery(ParseState *pstate, RangeTblEntry *rte,
-			  bool addToJoinList, bool addToNameSpace);
+			  bool addToJoinList,
+			  bool addToRelNameSpace, bool addToVarNameSpace);
 extern RangeTblEntry *addImplicitRTE(ParseState *pstate, RangeVar *relation);
 extern void expandRTE(RangeTblEntry *rte, int rtindex, int sublevels_up,
 		  bool include_dropped,

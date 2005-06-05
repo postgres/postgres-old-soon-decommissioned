@@ -1486,7 +1486,7 @@ AddRelationRawConstraints(Relation rel,
 										NULL,
 										false,
 										true);
-	addRTEtoQuery(pstate, rte, true, true);
+	addRTEtoQuery(pstate, rte, true, true, true);
 
 	/*
 	 * Process column default expressions.

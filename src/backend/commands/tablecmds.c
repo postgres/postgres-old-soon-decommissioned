@@ -4720,7 +4720,7 @@ ATPrepAlterColumnType(List **wqueue,
 											NULL,
 											false,
 											true);
-		addRTEtoQuery(pstate, rte, false, true);
+		addRTEtoQuery(pstate, rte, false, true, true);
 
 		transform = transformExpr(pstate, cmd->transform);
 

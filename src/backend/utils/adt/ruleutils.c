@@ -4009,8 +4009,8 @@ get_from_clause(Query *query, const char *prefix, deparse_context *context)
 	 * We use the query's jointree as a guide to what to print.  However,
 	 * we must ignore auto-added RTEs that are marked not inFromCl. (These
 	 * can only appear at the top level of the jointree, so it's
-	 * sufficient to check here.) Also ignore the rule pseudo-RTEs for NEW
-	 * and OLD.
+	 * sufficient to check here.)  This check also ensures we ignore
+	 * the rule pseudo-RTEs for NEW and OLD.
 	 */
 	foreach(l, query->jointree->fromlist)
 	{
@@ -4022,10 +4022,6 @@ get_from_clause(Query *query, const char *prefix, deparse_context *context)
 			RangeTblEntry *rte = rt_fetch(varno, query->rtable);
 
 			if (!rte->inFromCl)
-				continue;
-			if (strcmp(rte->eref->aliasname, "*NEW*") == 0)
-				continue;
-			if (strcmp(rte->eref->aliasname, "*OLD*") == 0)
 				continue;
 		}
 
