@@ -222,7 +222,7 @@ plperl_safe_init(void)
 	"use vars qw($PLContainer); $PLContainer = new Safe('PLPerl');"
 	"$PLContainer->permit_only(':default');"
 	"$PLContainer->permit(qw[:base_math !:base_io sort time]);"
-	"$PLContainer->share(qw[&elog &spi_exec_query &spi_return_next "
+	"$PLContainer->share(qw[&elog &spi_exec_query &return_next "
 	"&DEBUG &LOG &INFO &NOTICE &WARNING &ERROR %_SHARED ]);"
 			   ;
 

@@ -182,8 +182,11 @@ $$  LANGUAGE plperl;
 SELECT * FROM perl_set();
 </programlisting>
 
-   Note that when you do this, Perl will have to build the entire array in
-   memory; therefore the technique does not scale to very large result sets.
+   When you do this, Perl will have to build the entire array in memory;
+   therefore the technique does not scale to very large result sets. You
+   can instead call <function>return_next</function> for each element of
+   the result set, passing it either a scalar or a reference to a hash,
+   as appropriate to your function's return type.
   </para>
 
     <para>
