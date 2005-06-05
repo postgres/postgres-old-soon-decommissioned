@@ -454,7 +454,11 @@ assign_timezone(const char *value, bool doit, bool interactive)
 		if (doit)
 		{
 			/* Here we change from SQL to Unix sign convention */
+#ifdef HAVE_INT64_TIMESTAMP
+			CTimeZone = -(interval->time / INT64CONST(1000000));
+#else
 			CTimeZone = -interval->time;
+#endif
 			HasCTZSet = true;
 		}
 		pfree(interval);
@@ -608,7 +612,11 @@ show_timezone(void)
 		Interval	interval;
 
 		interval.month = 0;
+#ifdef HAVE_INT64_TIMESTAMP
+		interval.time = -(CTimeZone * INT64CONST(1000000));
+#else
 		interval.time = -CTimeZone;
+#endif
 
 		tzn = DatumGetCString(DirectFunctionCall1(interval_out,
 										  IntervalPGetDatum(&interval)));
