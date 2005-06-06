@@ -356,14 +356,14 @@ CreateTableSpace(CreateTableSpaceStmt *stmt)
 		XLogRecData rdata[2];
 
 		xlrec.ts_id = tablespaceoid;
-		rdata[0].buffer = InvalidBuffer;
 		rdata[0].data = (char *) &xlrec;
 		rdata[0].len = offsetof(xl_tblspc_create_rec, ts_path);
+		rdata[0].buffer = InvalidBuffer;
 		rdata[0].next = &(rdata[1]);
 
-		rdata[1].buffer = InvalidBuffer;
 		rdata[1].data = (char *) location;
 		rdata[1].len = strlen(location) + 1;
+		rdata[1].buffer = InvalidBuffer;
 		rdata[1].next = NULL;
 
 		(void) XLogInsert(RM_TBLSPC_ID, XLOG_TBLSPC_CREATE, rdata);
@@ -461,9 +461,9 @@ DropTableSpace(DropTableSpaceStmt *stmt)
 		XLogRecData rdata[1];
 
 		xlrec.ts_id = tablespaceoid;
-		rdata[0].buffer = InvalidBuffer;
 		rdata[0].data = (char *) &xlrec;
 		rdata[0].len = sizeof(xl_tblspc_drop_rec);
+		rdata[0].buffer = InvalidBuffer;
 		rdata[0].next = NULL;
 
 		(void) XLogInsert(RM_TBLSPC_ID, XLOG_TBLSPC_DROP, rdata);

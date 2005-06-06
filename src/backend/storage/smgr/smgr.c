@@ -370,9 +370,9 @@ smgrcreate(SMgrRelation reln, bool isTemp, bool isRedo)
 	 */
 	xlrec.rnode = reln->smgr_rnode;
 
-	rdata.buffer = InvalidBuffer;
 	rdata.data = (char *) &xlrec;
 	rdata.len = sizeof(xlrec);
+	rdata.buffer = InvalidBuffer;
 	rdata.next = NULL;
 
 	lsn = XLogInsert(RM_SMGR_ID, XLOG_SMGR_CREATE | XLOG_NO_TRAN, &rdata);
@@ -635,9 +635,9 @@ smgrtruncate(SMgrRelation reln, BlockNumber nblocks, bool isTemp)
 		xlrec.blkno = newblks;
 		xlrec.rnode = reln->smgr_rnode;
 
-		rdata.buffer = InvalidBuffer;
 		rdata.data = (char *) &xlrec;
 		rdata.len = sizeof(xlrec);
+		rdata.buffer = InvalidBuffer;
 		rdata.next = NULL;
 
 		lsn = XLogInsert(RM_SMGR_ID, XLOG_SMGR_TRUNCATE | XLOG_NO_TRAN,

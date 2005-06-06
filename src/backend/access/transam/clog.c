@@ -379,9 +379,9 @@ WriteZeroPageXlogRec(int pageno)
 {
 	XLogRecData rdata;
 
-	rdata.buffer = InvalidBuffer;
 	rdata.data = (char *) (&pageno);
 	rdata.len = sizeof(int);
+	rdata.buffer = InvalidBuffer;
 	rdata.next = NULL;
 	(void) XLogInsert(RM_CLOG_ID, CLOG_ZEROPAGE | XLOG_NO_TRAN, &rdata);
 }

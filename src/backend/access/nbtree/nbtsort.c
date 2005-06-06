@@ -287,14 +287,14 @@ _bt_blwritepage(BTWriteState *wstate, Page page, BlockNumber blkno)
 		xlrec.node = wstate->index->rd_node;
 		xlrec.blkno = blkno;
 
-		rdata[0].buffer = InvalidBuffer;
 		rdata[0].data = (char *) &xlrec;
 		rdata[0].len = SizeOfHeapNewpage;
+		rdata[0].buffer = InvalidBuffer;
 		rdata[0].next = &(rdata[1]);
 
-		rdata[1].buffer = InvalidBuffer;
 		rdata[1].data = (char *) page;
 		rdata[1].len = BLCKSZ;
+		rdata[1].buffer = InvalidBuffer;
 		rdata[1].next = NULL;
 
 		recptr = XLogInsert(RM_HEAP_ID, XLOG_HEAP_NEWPAGE, rdata);
