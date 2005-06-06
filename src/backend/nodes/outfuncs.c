@@ -1150,9 +1150,8 @@ _outPlannerInfo(StringInfo str, PlannerInfo *node)
 {
 	WRITE_NODE_TYPE("PLANNERINFO");
 
+	/* NB: this isn't a complete set of fields */
 	WRITE_NODE_FIELD(parse);
-	WRITE_NODE_FIELD(base_rel_list);
-	WRITE_NODE_FIELD(other_rel_list);
 	WRITE_NODE_FIELD(join_rel_list);
 	WRITE_NODE_FIELD(equi_key_list);
 	WRITE_NODE_FIELD(in_info_list);

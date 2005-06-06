@@ -106,12 +106,15 @@ query_planner(PlannerInfo *root, List *tlist, double tuple_fraction,
 							  &constant_quals);
 
 	/*
-	 * init planner lists to empty
+	 * Init planner lists to empty.  We create the base_rel_array with a
+	 * size that will be sufficient if no pullups or inheritance additions
+	 * happen ... otherwise it will be enlarged as needed.
 	 *
 	 * NOTE: in_info_list was set up by subquery_planner, do not touch here
 	 */
-	root->base_rel_list = NIL;
-	root->other_rel_list = NIL;
+	root->base_rel_array_size = list_length(parse->rtable) + 1;
+	root->base_rel_array = (RelOptInfo **)
+		palloc0(root->base_rel_array_size * sizeof(RelOptInfo *));
 	root->join_rel_list = NIL;
 	root->equi_key_list = NIL;
 
