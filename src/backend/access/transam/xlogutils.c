@@ -186,7 +186,7 @@ XLogCloseRelationCache(void)
  * Open a relation during XLOG replay
  */
 Relation
-XLogOpenRelation(bool redo, RmgrId rmid, RelFileNode rnode)
+XLogOpenRelation(RelFileNode rnode)
 {
 	XLogRelDesc *res;
 	XLogRelCacheEntry *hentry;

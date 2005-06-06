@@ -1304,12 +1304,6 @@ rtree_redo(XLogRecPtr lsn, XLogRecord *record)
 }
 
 void
-rtree_undo(XLogRecPtr lsn, XLogRecord *record)
-{
-	elog(PANIC, "rtree_undo: unimplemented");
-}
-
-void
 rtree_desc(char *buf, uint8 xl_info, char *rec)
 {
 }

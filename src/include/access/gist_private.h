@@ -99,8 +99,8 @@ extern void freeGISTstate(GISTSTATE *giststate);
 extern void gistdentryinit(GISTSTATE *giststate, int nkey, GISTENTRY *e,
 			   Datum k, Relation r, Page pg, OffsetNumber o,
 			   int b, bool l, bool isNull);
+
 extern void gist_redo(XLogRecPtr lsn, XLogRecord *record);
-extern void gist_undo(XLogRecPtr lsn, XLogRecord *record);
 extern void gist_desc(char *buf, uint8 xl_info, char *rec);
 
 /* gistget.c */

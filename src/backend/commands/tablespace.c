@@ -1065,12 +1065,6 @@ tblspc_redo(XLogRecPtr lsn, XLogRecord *record)
 }
 
 void
-tblspc_undo(XLogRecPtr lsn, XLogRecord *record)
-{
-	elog(PANIC, "tblspc_undo: unimplemented");
-}
-
-void
 tblspc_desc(char *buf, uint8 xl_info, char *rec)
 {
 	uint8		info = xl_info & ~XLR_INFO_MASK;

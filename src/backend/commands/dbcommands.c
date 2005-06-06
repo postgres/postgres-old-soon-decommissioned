@@ -1335,12 +1335,6 @@ dbase_redo(XLogRecPtr lsn, XLogRecord *record)
 }
 
 void
-dbase_undo(XLogRecPtr lsn, XLogRecord *record)
-{
-	elog(PANIC, "dbase_undo: unimplemented");
-}
-
-void
 dbase_desc(char *buf, uint8 xl_info, char *rec)
 {
 	uint8		info = xl_info & ~XLR_INFO_MASK;

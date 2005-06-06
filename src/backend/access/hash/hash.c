@@ -672,12 +672,6 @@ hash_redo(XLogRecPtr lsn, XLogRecord *record)
 }
 
 void
-hash_undo(XLogRecPtr lsn, XLogRecord *record)
-{
-	elog(PANIC, "hash_undo: unimplemented");
-}
-
-void
 hash_desc(char *buf, uint8 xl_info, char *rec)
 {
 }

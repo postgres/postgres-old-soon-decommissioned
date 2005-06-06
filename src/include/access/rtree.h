@@ -127,7 +127,6 @@ extern Datum rtbuild(PG_FUNCTION_ARGS);
 extern void _rtdump(Relation r);
 
 extern void rtree_redo(XLogRecPtr lsn, XLogRecord *record);
-extern void rtree_undo(XLogRecPtr lsn, XLogRecord *record);
 extern void rtree_desc(char *buf, uint8 xl_info, char *rec);
 
 /* rtscan.c */

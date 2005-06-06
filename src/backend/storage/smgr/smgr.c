@@ -909,13 +909,6 @@ smgr_redo(XLogRecPtr lsn, XLogRecord *record)
 }
 
 void
-smgr_undo(XLogRecPtr lsn, XLogRecord *record)
-{
-	/* Since we have no transactional WAL entries, should never undo */
-	elog(PANIC, "smgr_undo: cannot undo");
-}
-
-void
 smgr_desc(char *buf, uint8 xl_info, char *rec)
 {
 	uint8		info = xl_info & ~XLR_INFO_MASK;

@@ -1733,12 +1733,6 @@ gist_redo(XLogRecPtr lsn, XLogRecord *record)
 }
 
 void
-gist_undo(XLogRecPtr lsn, XLogRecord *record)
-{
-	elog(PANIC, "gist_undo: unimplemented");
-}
-
-void
 gist_desc(char *buf, uint8 xl_info, char *rec)
 {
 }

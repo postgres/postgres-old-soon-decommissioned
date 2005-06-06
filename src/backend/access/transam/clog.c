@@ -412,11 +412,6 @@ clog_redo(XLogRecPtr lsn, XLogRecord *record)
 }
 
 void
-clog_undo(XLogRecPtr lsn, XLogRecord *record)
-{
-}
-
-void
 clog_desc(char *buf, uint8 xl_info, char *rec)
 {
 	uint8		info = xl_info & ~XLR_INFO_MASK;

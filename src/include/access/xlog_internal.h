@@ -5,7 +5,7 @@
  *
  * NOTE: this file is intended to contain declarations useful for
  * manipulating the XLOG files directly, but it is not supposed to be
- * needed by rmgr routines (redo/undo support for individual record types).
+ * needed by rmgr routines (redo support for individual record types).
  * So the XLogRecord typedef and associated stuff appear in xlog.h.
  *
  * Portions Copyright (c) 1996-2005, PostgreSQL Global Development Group
@@ -224,7 +224,6 @@ typedef struct RmgrData
 {
 	const char *rm_name;
 	void		(*rm_redo) (XLogRecPtr lsn, XLogRecord *rptr);
-	void		(*rm_undo) (XLogRecPtr lsn, XLogRecord *rptr);
 	void		(*rm_desc) (char *buf, uint8 xl_info, char *rec);
 	void		(*rm_startup) (void);
 	void		(*rm_cleanup) (void);

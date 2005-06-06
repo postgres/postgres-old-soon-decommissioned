@@ -3845,17 +3845,6 @@ xact_redo(XLogRecPtr lsn, XLogRecord *record)
 }
 
 void
-xact_undo(XLogRecPtr lsn, XLogRecord *record)
-{
-	uint8		info = record->xl_info & ~XLR_INFO_MASK;
-
-	if (info == XLOG_XACT_COMMIT)		/* shouldn't be called by XLOG */
-		elog(PANIC, "xact_undo: can't undo committed xaction");
-	else if (info != XLOG_XACT_ABORT)
-		elog(PANIC, "xact_redo: unknown op code %u", info);
-}
-
-void
 xact_desc(char *buf, uint8 xl_info, char *rec)
 {
 	uint8		info = xl_info & ~XLR_INFO_MASK;

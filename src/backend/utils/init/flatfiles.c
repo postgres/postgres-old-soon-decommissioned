@@ -645,7 +645,7 @@ BuildFlatFiles(bool database_only)
 	rnode.relNode = DatabaseRelationId;
 
 	/* No locking is needed because no one else is alive yet */
-	rel = XLogOpenRelation(true, 0, rnode);
+	rel = XLogOpenRelation(rnode);
 	write_database_file(rel);
 
 	if (!database_only)
@@ -655,7 +655,7 @@ BuildFlatFiles(bool database_only)
 		rnode.dbNode = 0;
 		rnode.relNode = GroupRelationId;
 
-		rel = XLogOpenRelation(true, 0, rnode);
+		rel = XLogOpenRelation(rnode);
 		write_group_file(rel);
 
 		/* hard-wired path to pg_shadow */
@@ -663,7 +663,7 @@ BuildFlatFiles(bool database_only)
 		rnode.dbNode = 0;
 		rnode.relNode = ShadowRelationId;
 
-		rel = XLogOpenRelation(true, 0, rnode);
+		rel = XLogOpenRelation(rnode);
 		write_user_file(rel);
 	}
 
