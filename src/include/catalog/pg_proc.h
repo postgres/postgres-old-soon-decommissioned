@@ -3644,6 +3644,8 @@ DATA(insert OID = 2557 ( bool				   PGNSP PGUID 12 f f t f i 1  16 "23" _null_ _
 DESCR("convert int4 to boolean");
 DATA(insert OID = 2558 ( int4				   PGNSP PGUID 12 f f t f i 1  23 "16" _null_ _null_ _null_	bool_int4 - _null_ ));
 DESCR("convert boolean to int4");
+DATA(insert OID = 2559 ( lastval			   PGNSP PGUID 12 f f t f v 0 20 "" _null_ _null_ _null_	lastval - _null_ ));
+DESCR("current value from last used sequence");
 
 
 /*

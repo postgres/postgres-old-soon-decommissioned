@@ -82,6 +82,7 @@ typedef struct xl_seq_rec
 
 extern Datum nextval(PG_FUNCTION_ARGS);
 extern Datum currval(PG_FUNCTION_ARGS);
+extern Datum lastval(PG_FUNCTION_ARGS);
 extern Datum setval(PG_FUNCTION_ARGS);
 extern Datum setval_and_iscalled(PG_FUNCTION_ARGS);
 
