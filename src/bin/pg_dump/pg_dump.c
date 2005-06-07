@@ -5189,8 +5189,8 @@ dumpFunc(Archive *fout, FuncInfo *finfo)
 	{
 		appendPQExpBuffer(query,
 						  "SELECT proretset, prosrc, probin, "
-						  "null::text as proallargtypes, "
-						  "null::text as proargmodes, "
+						  "null as proallargtypes, "
+						  "null as proargmodes, "
 						  "proargnames, "
 						  "provolatile, proisstrict, prosecdef, "
 						  "(SELECT lanname FROM pg_catalog.pg_language WHERE oid = prolang) as lanname "
@@ -5202,9 +5202,9 @@ dumpFunc(Archive *fout, FuncInfo *finfo)
 	{
 		appendPQExpBuffer(query,
 						  "SELECT proretset, prosrc, probin, "
-						  "null::text as proallargtypes, "
-						  "null::text as proargmodes, "
-						  "null::text as proargnames, "
+						  "null as proallargtypes, "
+						  "null as proargmodes, "
+						  "null as proargnames, "
 						  "provolatile, proisstrict, prosecdef, "
 						  "(SELECT lanname FROM pg_catalog.pg_language WHERE oid = prolang) as lanname "
 						  "FROM pg_catalog.pg_proc "
@@ -5215,9 +5215,9 @@ dumpFunc(Archive *fout, FuncInfo *finfo)
 	{
 		appendPQExpBuffer(query,
 						  "SELECT proretset, prosrc, probin, "
-						  "null::text as proallargtypes, "
-						  "null::text as proargmodes, "
-						  "null::text as proargnames, "
+						  "null as proallargtypes, "
+						  "null as proargmodes, "
+						  "null as proargnames, "
 		 "case when proiscachable then 'i' else 'v' end as provolatile, "
 						  "proisstrict, "
 						  "'f'::boolean as prosecdef, "
@@ -5230,9 +5230,9 @@ dumpFunc(Archive *fout, FuncInfo *finfo)
 	{
 		appendPQExpBuffer(query,
 						  "SELECT proretset, prosrc, probin, "
-						  "null::text as proallargtypes, "
-						  "null::text as proargmodes, "
-						  "null::text as proargnames, "
+						  "null as proallargtypes, "
+						  "null as proargmodes, "
+						  "null as proargnames, "
 		 "case when proiscachable then 'i' else 'v' end as provolatile, "
 						  "'f'::boolean as proisstrict, "
 						  "'f'::boolean as prosecdef, "
