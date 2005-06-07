@@ -524,6 +524,8 @@ typedef struct
 {								/* Dynamic SQL string to execute */
 	int			cmd_type;
 	int			lineno;
+	PLpgSQL_rec *rec;					/* INTO record or row variable */
+	PLpgSQL_row *row;
 	PLpgSQL_expr *query;
 } PLpgSQL_stmt_dynexecute;
 
