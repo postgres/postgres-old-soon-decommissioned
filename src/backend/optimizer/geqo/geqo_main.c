@@ -252,7 +252,6 @@ geqo(PlannerInfo *root, int number_of_rels, List *initial_rels)
 	 */
 	best_tour = (Gene *) pool->data[0].string;
 
-	/* root->join_rel_list will be modified during this ! */
 	best_rel = gimme_tree(best_tour, pool->string_length, &evaldata);
 
 	if (best_rel == NULL)

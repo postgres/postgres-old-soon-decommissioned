@@ -116,6 +116,7 @@ query_planner(PlannerInfo *root, List *tlist, double tuple_fraction,
 	root->base_rel_array = (RelOptInfo **)
 		palloc0(root->base_rel_array_size * sizeof(RelOptInfo *));
 	root->join_rel_list = NIL;
+	root->join_rel_hash = NULL;
 	root->equi_key_list = NIL;
 
 	/*

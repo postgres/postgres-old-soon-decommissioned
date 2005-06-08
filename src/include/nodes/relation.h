@@ -72,7 +72,17 @@ typedef struct PlannerInfo
 	struct RelOptInfo **base_rel_array;	/* All one-relation RelOptInfos */
 	int			base_rel_array_size;	/* current allocated array len */
 
+	/*
+	 * join_rel_list is a list of all join-relation RelOptInfos we have
+	 * considered in this planning run.  For small problems we just scan
+	 * the list to do lookups, but when there are many join relations we
+	 * build a hash table for faster lookups.  The hash table is present
+	 * and valid when join_rel_hash is not NULL.  Note that we still maintain
+	 * the list even when using the hash table for lookups; this simplifies
+	 * life for GEQO.
+	 */
 	List	   *join_rel_list;	/* list of join-relation RelOptInfos */
+	struct HTAB *join_rel_hash;	/* optional hashtable for join relations */
 
 	List	   *equi_key_list;	/* list of lists of equijoined
 								 * PathKeyItems */
