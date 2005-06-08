@@ -1263,13 +1263,12 @@ stmt_dynexecute : K_EXECUTE lno
 						new->cmd_type = PLPGSQL_STMT_DYNEXECUTE;
 						new->lineno   = $2;
 						new->query    = expr;
-
 						new->rec = NULL;
 						new->row = NULL;
 
 						/*
-						 * If we saw "INTO", look for an additional
-						 * row or record var.
+						 * If we saw "INTO", look for a following row
+						 * var, record var, or list of scalars.
 						 */
 						if (endtoken == K_INTO)
 						{
@@ -1293,9 +1292,9 @@ stmt_dynexecute : K_EXECUTE lno
 									plpgsql_error_lineno = $2;
 									ereport(ERROR,
 											(errcode(ERRCODE_SYNTAX_ERROR),
-											 errmsg("syntax error at \"%s\"",
-													yytext),
-											 errdetail("Expected record or row variable.")));
+											 errmsg("syntax error at \"%s\"", yytext),
+											 errdetail("Expected record variable, row variable, "
+													   "or list of scalar variables.")));
 							}
 							if (yylex() != ';')
 								yyerror("syntax error");
