@@ -505,6 +505,8 @@ typedef struct xl_heap_newpage
 typedef struct xl_heap_lock
 {
 	xl_heaptid	target;			/* locked tuple id */
+	TransactionId locking_xid;	/* might be a MultiXactId not xid */
+	bool		xid_is_mxact;	/* is it? */
 	bool		shared_lock;	/* shared or exclusive row lock? */
 } xl_heap_lock;
 
