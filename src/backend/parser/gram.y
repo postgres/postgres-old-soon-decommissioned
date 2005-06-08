@@ -6099,14 +6099,6 @@ a_expr:		c_expr									{ $$ = $1; }
 				{ $$ = (Node *) makeSimpleA_Expr(AEXPR_OP, "+", NULL, $2); }
 			| '-' a_expr					%prec UMINUS
 				{ $$ = doNegate($2); }
-			| '%' a_expr
-				{ $$ = (Node *) makeSimpleA_Expr(AEXPR_OP, "%", NULL, $2); }
-			| '^' a_expr
-				{ $$ = (Node *) makeSimpleA_Expr(AEXPR_OP, "^", NULL, $2); }
-			| a_expr '%'
-				{ $$ = (Node *) makeSimpleA_Expr(AEXPR_OP, "%", $1, NULL); }
-			| a_expr '^'
-				{ $$ = (Node *) makeSimpleA_Expr(AEXPR_OP, "^", $1, NULL); }
 			| a_expr '+' a_expr
 				{ $$ = (Node *) makeSimpleA_Expr(AEXPR_OP, "+", $1, $3); }
 			| a_expr '-' a_expr
@@ -6468,14 +6460,6 @@ b_expr:		c_expr
 				{ $$ = (Node *) makeSimpleA_Expr(AEXPR_OP, "+", NULL, $2); }
 			| '-' b_expr					%prec UMINUS
 				{ $$ = doNegate($2); }
-			| '%' b_expr
-				{ $$ = (Node *) makeSimpleA_Expr(AEXPR_OP, "%", NULL, $2); }
-			| '^' b_expr
-				{ $$ = (Node *) makeSimpleA_Expr(AEXPR_OP, "^", NULL, $2); }
-			| b_expr '%'
-				{ $$ = (Node *) makeSimpleA_Expr(AEXPR_OP, "%", $1, NULL); }
-			| b_expr '^'
-				{ $$ = (Node *) makeSimpleA_Expr(AEXPR_OP, "^", $1, NULL); }
 			| b_expr '+' b_expr
 				{ $$ = (Node *) makeSimpleA_Expr(AEXPR_OP, "+", $1, $3); }
 			| b_expr '-' b_expr
