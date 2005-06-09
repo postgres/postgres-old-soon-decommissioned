@@ -21,7 +21,8 @@ enum printFormat
 	PRINT_UNALIGNED,
 	PRINT_ALIGNED,
 	PRINT_HTML,
-	PRINT_LATEX
+	PRINT_LATEX,
+	PRINT_TROFF_MS
 	/* add your favourite output format here ... */
 };
 
