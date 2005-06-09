@@ -2830,6 +2830,11 @@ archive_command = 'copy "%p" /mnt/server/archivedir/"%f"'  # Windows
              <entry>yes</entry>
             </row>
             <row>
+             <entry><literal>%h</literal></entry>
+             <entry>Remote Hostname or IP address</entry>
+             <entry>yes</entry>
+            </row>
+            <row>
              <entry><literal>%p</literal></entry>
              <entry>Process ID</entry>
              <entry>no</entry>
@@ -2837,6 +2842,11 @@ archive_command = 'copy "%p" /mnt/server/archivedir/"%f"'  # Windows
             <row>
              <entry><literal>%t</literal></entry>
              <entry>Time stamp</entry>
+             <entry>no</entry>
+            </row>
+            <row>
+             <entry><literal>%m</literal></entry>
+             <entry>Timestamp with milliseconds</entry>
              <entry>no</entry>
             </row>
             <row>
