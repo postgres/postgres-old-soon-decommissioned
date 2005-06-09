@@ -3771,6 +3771,7 @@ BootStrapXLOG(void)
 	BootStrapCLOG();
 	BootStrapSUBTRANS();
 	BootStrapMultiXact();
+	free(buffer);
 }
 
 static char *
