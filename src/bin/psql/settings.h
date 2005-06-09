@@ -49,6 +49,8 @@ typedef struct _psqlSettings
 	int			sversion;		/* backend server version */
 	const char *progname;		/* in case you renamed psql */
 	char	   *inputfile;		/* for error reporting */
+	char	   *dirname;		/* current directory for \s display */
+
 	unsigned	lineno;			/* also for error reporting */
 
 	bool		timing;			/* enable timing of all queries */
