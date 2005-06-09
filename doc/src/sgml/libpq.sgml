@@ -3218,8 +3218,8 @@ A result of -2 indicates that an error occurred (consult
 When <parameter>async</> is true (not zero), <function>PQgetCopyData</>
 will not block waiting for input; it will return zero if the <command>COPY</command> is still
 in progress but no complete row is available.  (In this case wait for
-read-ready before trying again; it does not matter whether you call
-<function>PQconsumeInput</>.)  When <parameter>async</> is
+read-ready and then call <function>PQconsumeInput</> before calling
+<function>PQgetCopyData</> again.)  When <parameter>async</> is
 false (zero), <function>PQgetCopyData</> will block until data is available
 or the operation completes.
 </para>
@@ -3691,9 +3691,11 @@ sets the user name used to connect to the database.
 </indexterm>
 <envar>PGPASSWORD</envar>
 sets the password used if the server demands password
-authentication.  This environment variable is deprecated for security
-reasons; instead consider using the <filename>~/.pgpass</>
-file (see <xref linkend="libpq-pgpass">).
+authentication.  Use of this environment variable is not 
+recommended for security reasons (some operating systems
+allow non-root users to see process environment variables via
+<application>ps</>); instead consider using  the 
+<filename>~/.pgpass</> file (see <xref linkend="libpq-pgpass">).
 </para>
 </listitem>
 <listitem>
