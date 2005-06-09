@@ -1459,6 +1459,8 @@ DATA(insert OID = 1156 (  timestamptz_ge   PGNSP PGUID 12 f f t f i 2 16 "1184 1
 DESCR("greater-than-or-equal");
 DATA(insert OID = 1157 (  timestamptz_gt   PGNSP PGUID 12 f f t f i 2 16 "1184 1184" _null_ _null_ _null_ timestamp_gt - _null_ ));
 DESCR("greater-than");
+DATA(insert OID = 1158 (  to_timestamp	   PGNSP PGUID 14 f f t f i 1 1184 "701" _null_	_null_ _null_ "select (\'epoch\'::timestamptz + $1 * \'1 second\'::interval)" - _null_ ));
+DESCR("convert UNIX epoch to timestamptz");
 DATA(insert OID = 1159 (  timezone		   PGNSP PGUID 12 f f t f i 2 1114 "25 1184" _null_ _null_ _null_  timestamptz_zone - _null_ ));
 DESCR("adjust timestamp to new time zone");
 
