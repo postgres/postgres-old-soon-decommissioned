@@ -1006,7 +1006,7 @@ troff_ms_escaped_print(const char *in, FILE *fout)
 		switch (*p)
 		{
 			case '\\':
-				fputs("\(rs", fout);
+				fputs("\\(rs", fout);
 				break;
 			default:
 				fputc(*p, fout);
