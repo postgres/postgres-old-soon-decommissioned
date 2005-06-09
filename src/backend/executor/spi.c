@@ -1497,6 +1497,7 @@ static int
 _SPI_pquery(QueryDesc *queryDesc, long tcount)
 {
 	int			operation = queryDesc->operation;
+	CommandDest	origDest = queryDesc->dest->mydest;
 	int			res;
 	Oid			save_lastoid;
 
@@ -1504,10 +1505,10 @@ _SPI_pquery(QueryDesc *queryDesc, long tcount)
 	{
 		case CMD_SELECT:
 			res = SPI_OK_SELECT;
-			if (queryDesc->parsetree->into != NULL)		/* select into table */
+			if (queryDesc->parsetree->into)			/* select into table? */
 			{
 				res = SPI_OK_SELINTO;
-				queryDesc->dest = None_Receiver;		/* don't output results */
+				queryDesc->dest = None_Receiver;	/* don't output results */
 			}
 			break;
 		case CMD_INSERT:
@@ -1548,7 +1549,8 @@ _SPI_pquery(QueryDesc *queryDesc, long tcount)
 
 	ExecutorEnd(queryDesc);
 
-	if (queryDesc->dest->mydest == SPI)
+	/* Test origDest here so that SPI_processed gets set in SELINTO case */
+	if (origDest == SPI)
 	{
 		SPI_processed = _SPI_current->processed;
 		SPI_lastoid = save_lastoid;
