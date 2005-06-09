@@ -156,7 +156,7 @@ typedef struct _PQprintOpt
 	char	   *fieldSep;		/* field separator */
 	char	   *tableOpt;		/* insert to HTML <table ...> */
 	char	   *caption;		/* HTML <caption> */
-	char	  **fieldName;		/* null terminated array of repalcement
+	char	  **fieldName;		/* null terminated array of replacement
 								 * field names */
 } PQprintOpt;
 

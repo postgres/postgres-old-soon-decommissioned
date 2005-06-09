@@ -30,7 +30,7 @@
 #endif
 
 /* keep this in same order as ExecStatusType in libpq-fe.h */
-char	   *const pgresStatus[] = {
+char *const pgresStatus[] = {
 	"PGRES_EMPTY_QUERY",
 	"PGRES_COMMAND_OK",
 	"PGRES_TUPLES_OK",
@@ -960,7 +960,14 @@ PQsendQueryGuts(PGconn *conn,
 			if (paramFormats && paramFormats[i] != 0)
 			{
 				/* binary parameter */
-				nbytes = paramLengths[i];
+				if (paramLengths)
+					nbytes = paramLengths[i];
+				else
+				{
+					printfPQExpBuffer(&conn->errorMessage,
+									  libpq_gettext("length must be given for binary parameter\n"));
+					goto sendFailed;
+				}
 			}
 			else
 			{
