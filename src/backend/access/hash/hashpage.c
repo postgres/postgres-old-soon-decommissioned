@@ -30,6 +30,7 @@
 
 #include "access/genam.h"
 #include "access/hash.h"
+#include "miscadmin.h"
 #include "storage/lmgr.h"
 #include "utils/lsyscache.h"
 
