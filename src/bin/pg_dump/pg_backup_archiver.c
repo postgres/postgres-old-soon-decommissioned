@@ -1997,6 +1997,14 @@ _tocEntryRequired(TocEntry *te, RestoreOptions *ropt, bool include_acls)
 	/* Check if tablename only is wanted */
 	if (ropt->selTypes)
 	{
+		if (ropt->schemaNames)
+		{
+			/* If no namespace is specified, it means all. */
+			if (!te->namespace)
+				return 0;
+			if(strcmp(ropt->schemaNames, te->namespace) != 0)
+				return 0;
+		}
 		if ((strcmp(te->desc, "TABLE") == 0) || (strcmp(te->desc, "TABLE DATA") == 0))
 		{
 			if (!ropt->selTable)

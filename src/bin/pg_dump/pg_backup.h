@@ -98,6 +98,7 @@ typedef struct _restoreOptions
 	char	   *indexNames;
 	char	   *functionNames;
 	char	   *tableNames;
+	char	   *schemaNames;
 	char	   *triggerNames;
 
 	int			useDB;

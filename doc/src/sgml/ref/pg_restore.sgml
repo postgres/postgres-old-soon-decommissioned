@@ -240,6 +240,18 @@
      </varlistentry>
 
      <varlistentry>
+      <term><option>-n <replaceable class="parameter">namespace</replaceable></option></term>
+      <term><option>--schema=<replaceable class="parameter">schema</replaceable></option></term>
+      <listitem>
+       <para>
+        Restore only definitions and/or data in the named schema. Not to be
+        confused with the <option>-s</option> option.  This can be combined with
+        <option>-t</option> option.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term><option>-O</option></term>
       <term><option>--no-owner</option></term>
       <listitem>
