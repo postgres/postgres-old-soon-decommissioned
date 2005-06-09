@@ -17,8 +17,10 @@
 #include "nodes/relation.h"
 
 
-extern RestrictInfo *make_restrictinfo(Expr *clause, bool is_pushed_down,
-				  bool valid_everywhere);
+extern RestrictInfo *make_restrictinfo(Expr *clause,
+									   bool is_pushed_down,
+									   bool valid_everywhere,
+									   Relids required_relids);
 extern List *make_restrictinfo_from_bitmapqual(Path *bitmapqual,
 											   bool is_pushed_down,
 											   bool valid_everywhere);

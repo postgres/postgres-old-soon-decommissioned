@@ -594,20 +594,12 @@ _equalRestrictInfo(RestrictInfo *a, RestrictInfo *b)
 	COMPARE_NODE_FIELD(clause);
 	COMPARE_SCALAR_FIELD(is_pushed_down);
 	COMPARE_SCALAR_FIELD(valid_everywhere);
+	COMPARE_BITMAPSET_FIELD(required_relids);
 
 	/*
 	 * We ignore all the remaining fields, since they may not be set yet,
 	 * and should be derivable from the clause anyway.
 	 */
-
-	return true;
-}
-
-static bool
-_equalJoinInfo(JoinInfo *a, JoinInfo *b)
-{
-	COMPARE_BITMAPSET_FIELD(unjoined_relids);
-	COMPARE_NODE_FIELD(jinfo_restrictinfo);
 
 	return true;
 }
@@ -1914,9 +1906,6 @@ equal(void *a, void *b)
 			break;
 		case T_RestrictInfo:
 			retval = _equalRestrictInfo(a, b);
-			break;
-		case T_JoinInfo:
-			retval = _equalJoinInfo(a, b);
 			break;
 		case T_InClauseInfo:
 			retval = _equalInClauseInfo(a, b);

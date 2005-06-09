@@ -183,7 +183,6 @@ typedef enum NodeTag
 	T_UniquePath,
 	T_PathKeyItem,
 	T_RestrictInfo,
-	T_JoinInfo,
 	T_InnerIndexscanInfo,
 	T_InClauseInfo,
 

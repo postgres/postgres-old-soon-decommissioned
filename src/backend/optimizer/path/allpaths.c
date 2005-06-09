@@ -1048,14 +1048,10 @@ debug_print_rel(PlannerInfo *root, RelOptInfo *rel)
 		printf("\n");
 	}
 
-	foreach(l, rel->joininfo)
+	if (rel->joininfo)
 	{
-		JoinInfo   *j = (JoinInfo *) lfirst(l);
-
-		printf("\tjoininfo (");
-		print_relids(j->unjoined_relids);
-		printf("): ");
-		print_restrictclauses(root, j->jinfo_restrictinfo);
+		printf("\tjoininfo: ");
+		print_restrictclauses(root, rel->joininfo);
 		printf("\n");
 	}
 

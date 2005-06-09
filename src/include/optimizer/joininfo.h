@@ -17,8 +17,7 @@
 #include "nodes/relation.h"
 
 
-extern JoinInfo *find_joininfo_node(RelOptInfo *this_rel, Relids join_relids);
-extern JoinInfo *make_joininfo_node(RelOptInfo *this_rel, Relids join_relids);
+extern bool have_relevant_joinclause(RelOptInfo *rel1, RelOptInfo *rel2);
 
 extern void add_join_clause_to_rels(PlannerInfo *root,
 						RestrictInfo *restrictinfo,
