@@ -1994,7 +1994,7 @@ bar
         The filename that will be used to store the history list. The default
         value is <filename>~/.psql_history</filename>.  For example, using:
 <programlisting>
-\set HISTFILE ~/.psql_history-:DBNAME
+\set HISTFILE ~/.psql_history- :DBNAME
 </programlisting>
         in <filename>~/.psqlrc</filename> will get <application>psql</application> to
         maintain a separate history for each database.
