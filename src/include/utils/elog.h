@@ -282,6 +282,7 @@ extern int	Log_destination;
 
 /* Other exported functions */
 extern void DebugFileOpen(void);
+extern char *unpack_sql_state(int sql_state);
 
 /*
  * Write errors to stderr (or by equal means when stderr is

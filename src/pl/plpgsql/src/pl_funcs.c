@@ -634,7 +634,7 @@ dump_block(PLpgSQL_stmt_block *block)
 	{
 		ListCell *e;
 
-		foreach (e, block->exceptions)
+		foreach (e, block->exceptions->exc_list)
 		{
 			PLpgSQL_exception *exc = (PLpgSQL_exception *) lfirst(e);
 			PLpgSQL_condition *cond;

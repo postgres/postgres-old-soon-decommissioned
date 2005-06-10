@@ -323,6 +323,13 @@ typedef struct PLpgSQL_condition
 } PLpgSQL_condition;
 
 typedef struct
+{
+	int			sqlstate_varno;
+	int			sqlerrm_varno;
+	List	   *exc_list;		/* List of WHEN clauses */
+} PLpgSQL_exception_block;
+
+typedef struct
 {								/* One EXCEPTION ... WHEN clause */
 	int			lineno;
 	PLpgSQL_condition *conditions;
@@ -336,9 +343,9 @@ typedef struct
 	int			lineno;
 	char	   *label;
 	List	   *body;			/* List of statements */
-	List	   *exceptions;		/* List of WHEN clauses */
 	int			n_initvars;
 	int		   *initvarnos;
+	PLpgSQL_exception_block *exceptions;
 } PLpgSQL_stmt_block;
 
 
