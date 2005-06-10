@@ -1294,7 +1294,11 @@ expand_tilde(char **filename)
 	if (!filename || !(*filename))
 		return NULL;
 
-	/* MSDOS uses tilde for short versions of long file names, so skip it. */
+	/*
+	 *	WIN32 doesn't use tilde expansion for file names.
+	 *	Also, it uses tilde for short versions of long file names,
+	 *	though the tilde is usually toward the end, not at the beginning.
+	 */
 #ifndef WIN32
 
 	/* try tilde expansion */
