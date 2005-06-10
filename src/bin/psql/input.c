@@ -245,7 +245,7 @@ finishInput(int exitstatus, void *arg)
 		if (hist_size >= 0)
 			stifle_history(hist_size);
 
-		write_history(psql_history);
+		saveHistory(psql_history);
 		free(psql_history);
 		psql_history = NULL;
 	}
