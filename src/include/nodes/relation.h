@@ -92,6 +92,8 @@ typedef struct PlannerInfo
 	List	   *query_pathkeys; /* desired pathkeys for query_planner(),
 								 * and actual pathkeys afterwards */
 
+	double		tuple_fraction;	/* tuple_fraction passed to query_planner */
+
 	bool		hasJoinRTEs;	/* true if any RTEs are RTE_JOIN kind */
 	bool		hasHavingQual;	/* true if havingQual was non-null */
 } PlannerInfo;

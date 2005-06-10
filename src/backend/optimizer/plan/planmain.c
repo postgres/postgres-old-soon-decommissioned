@@ -79,6 +79,9 @@ query_planner(PlannerInfo *root, List *tlist, double tuple_fraction,
 	Path	   *cheapestpath;
 	Path	   *sortedpath;
 
+	/* Make tuple_fraction accessible to lower-level routines */
+	root->tuple_fraction = tuple_fraction;
+
 	/*
 	 * If the query has an empty join tree, then it's something easy like
 	 * "SELECT 2+2;" or "INSERT ... VALUES()".	Fall through quickly.
