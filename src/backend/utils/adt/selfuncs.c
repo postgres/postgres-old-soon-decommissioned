@@ -4221,12 +4221,11 @@ genericcostestimate(PlannerInfo *root,
 	 * of partial redundancy (such as "x < 4" from the qual and "x < 5"
 	 * from the predicate) will be recognized and handled correctly by
 	 * clauselist_selectivity().  This assumption is somewhat fragile,
-	 * since it depends on pred_test() and clauselist_selectivity() having
-	 * similar capabilities, and there are certainly many cases where we
-	 * will end up with a too-low selectivity estimate.  This will bias
-	 * the system in favor of using partial indexes where possible, which
-	 * is not necessarily a bad thing.	But it'd be nice to do better
-	 * someday.
+	 * since it depends on predicate_implied_by() and clauselist_selectivity()
+	 * having similar capabilities, and there are certainly many cases where
+	 * we will end up with a too-low selectivity estimate.  This will bias the
+	 * system in favor of using partial indexes where possible, which is not
+	 * necessarily a bad thing. But it'd be nice to do better someday.
 	 *
 	 * Note that index->indpred and indexQuals are both in implicit-AND form,
 	 * so ANDing them together just takes merging the lists.  However,

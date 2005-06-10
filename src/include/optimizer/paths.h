@@ -49,7 +49,6 @@ extern bool match_index_to_operand(Node *operand, int indexcol,
 extern List *expand_indexqual_conditions(IndexOptInfo *index,
 										 List *clausegroups);
 extern void check_partial_indexes(PlannerInfo *root, RelOptInfo *rel);
-extern bool pred_test(List *predicate_list, List *restrictinfo_list);
 extern List *flatten_clausegroups_list(List *clausegroups);
 
 /*
