@@ -126,7 +126,7 @@ mic_to_euc_jp(PG_FUNCTION_ARGS)
 	Assert(PG_GETARG_INT32(1) == PG_EUC_JP);
 	Assert(len >= 0);
 
-	mic2sjis(src, dest, len);
+	mic2euc_jp(src, dest, len);
 
 	PG_RETURN_VOID();
 }
