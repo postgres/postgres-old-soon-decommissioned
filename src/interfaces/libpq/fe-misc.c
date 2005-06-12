@@ -175,7 +175,8 @@ pqGetnchar(char *s, size_t len, PGconn *conn)
 	conn->inCursor += len;
 
 	if (conn->Pfdebug)
-		fprintf(conn->Pfdebug, libpq_gettext("From backend (%lu)> %.*s\n"), (unsigned long) len, (int) len, s);
+		fprintf(conn->Pfdebug, libpq_gettext("From backend (%lu)> %.*s\n"),
+				(unsigned long) len, (int) len, s);
 
 	return 0;
 }
