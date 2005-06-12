@@ -874,6 +874,21 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
+       <term><option>--enable-integer-datetimes</option></term>
+       <listitem>
+        <para>
+         Use 64-bit integer storage for datetimes and intervals, rather
+         than the default floating-point storage.  This reduces the range
+         of representable values but guarantees microsecond precision across
+         the full range (see <xref linkend="datatype-datetime"> for more
+         information).  Note also that the integer datetimes code is newer
+         than the floating-point code, and we still find bugs in it from time
+         to time.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
        <term><option>--disable-spinlocks</option></term>
        <listitem>
         <para>
