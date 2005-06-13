@@ -269,7 +269,8 @@ COPY weather FROM '/home/user/weather.txt';
     where the file name for the source file must be available to the
     backend server machine, not the client, since the backend server
     reads the file directly.  You can read more about the
-    <command>COPY</command> command in <xref linkend="sql-copy">.
+    <command>COPY</command> command in <xref linkend="sql-copy"
+    endterm="sql-copy-title">.
    </para>
   </sect1>
 
