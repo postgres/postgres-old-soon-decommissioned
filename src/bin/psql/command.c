@@ -114,11 +114,6 @@ HandleSlashCmds(PsqlScanState scan_state,
 		{
 			/* adjust cmd for possible messages below */
 			cmd[1] = '\0';
-
-#if 0							/* turned out to be too annoying */
-			if (isalpha((unsigned char) cmd[0]))
-				psql_error("Warning: This syntax is deprecated.\n");
-#endif
 		}
 	}
 

@@ -42,6 +42,9 @@ typedef struct _printTableOpt
 								 * mode */
 	char	   *tableAttr;		/* attributes for HTML <table ...> */
 	int			encoding;		/* character encoding */
+	bool		normal_query;	/* are we presenting the results of a
+								 * "normal" query, or a slash
+								 * command? */
 } printTableOpt;
 
 
