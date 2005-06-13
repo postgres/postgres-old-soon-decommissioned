@@ -359,6 +359,14 @@
      </row>
 
      <row>
+      <entry><structfield>amoptionalkey</structfield></entry>
+      <entry><type>bool</type></entry>
+      <entry></entry>
+      <entry>Does the access method support a scan without any constraint
+       for the first index column?</entry>
+     </row>
+
+     <row>
       <entry><structfield>amindexnulls</structfield></entry>
       <entry><type>bool</type></entry>
       <entry></entry>

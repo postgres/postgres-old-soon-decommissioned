@@ -594,15 +594,17 @@ _bt_first(IndexScanDesc scan, ScanDirection dir)
 				}
 
 				/*
-				 * Done if that was the last attribute.
+				 * Done if that was the last attribute, or if next key
+				 * is not in sequence (implying no boundary key is available
+				 * for the next attribute).
 				 */
-				if (i >= so->numberOfKeys)
+				if (i >= so->numberOfKeys ||
+					cur->sk_attno != curattr + 1)
 					break;
 
 				/*
-				 * Reset for next attr, which should be in sequence.
+				 * Reset for next attr.
 				 */
-				Assert(cur->sk_attno == curattr + 1);
 				curattr = cur->sk_attno;
 				chosen = NULL;
 			}

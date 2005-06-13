@@ -161,7 +161,8 @@ get_relation_info(Oid relationObjectId, RelOptInfo *rel)
 			}
 
 			info->relam = indexRelation->rd_rel->relam;
-			info->amcostestimate = index_cost_estimator(indexRelation);
+			info->amcostestimate = indexRelation->rd_am->amcostestimate;
+			info->amoptionalkey = indexRelation->rd_am->amoptionalkey;
 
 			/*
 			 * Fetch the ordering operators associated with the index, if
