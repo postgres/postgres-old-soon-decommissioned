@@ -1248,6 +1248,8 @@ DATA(insert OID = 956 (  lo_lseek		   PGNSP PGUID 12 f f t f v 3 23 "23 23 23" _
 DESCR("large object seek");
 DATA(insert OID = 957 (  lo_creat		   PGNSP PGUID 12 f f t f v 1 26 "23" _null_ _null_ _null_  lo_creat - _null_ ));
 DESCR("large object create");
+DATA(insert OID = 715 (  lo_create		   PGNSP PGUID 12 f f t f v 1 26 "26" _null_ _null_ _null_  lo_create - _null_ ));
+DESCR("large object create");
 DATA(insert OID = 958 (  lo_tell		   PGNSP PGUID 12 f f t f v 1 23 "23" _null_ _null_ _null_  lo_tell - _null_ ));
 DESCR("large object position");
 
