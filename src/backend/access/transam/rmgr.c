@@ -37,6 +37,6 @@ const RmgrData RmgrTable[RM_MAX_ID + 1] = {
 	{"Btree", btree_redo, btree_desc, btree_xlog_startup, btree_xlog_cleanup},
 	{"Hash", hash_redo, hash_desc, NULL, NULL},
 	{"Rtree", rtree_redo, rtree_desc, NULL, NULL},
-	{"Gist", gist_redo, gist_desc, NULL, NULL},
+	{"Gist", gist_redo, gist_desc, gist_xlog_startup, gist_xlog_cleanup},
 	{"Sequence", seq_redo, seq_desc, NULL, NULL}
 };
