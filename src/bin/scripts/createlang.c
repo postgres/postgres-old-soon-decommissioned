@@ -148,7 +148,7 @@ main(int argc, char *argv[])
 		popt.topt.border = 1;
 		popt.topt.encoding = PQclientEncoding(conn);
 		popt.title = _("Procedural Languages");
-		printQuery(result, &popt, stdout);
+		printQuery(result, &popt, stdout, NULL);
 
 		PQfinish(conn);
 		exit(0);

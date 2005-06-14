@@ -56,6 +56,7 @@ typedef struct _psqlSettings
 	bool		timing;			/* enable timing of all queries */
 
 	PGVerbosity verbosity;		/* current error verbosity level */
+	FILE		*logfile;	/* session log file handle */
 } PsqlSettings;
 
 extern PsqlSettings pset;

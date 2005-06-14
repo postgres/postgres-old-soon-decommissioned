@@ -263,7 +263,7 @@ do_lo_list(void)
 	myopt.nullPrint = NULL;
 	myopt.title = _("Large objects");
 
-	printQuery(res, &myopt, pset.queryFout);
+	printQuery(res, &myopt, pset.queryFout, pset.logfile);
 
 	PQclear(res);
 	return true;

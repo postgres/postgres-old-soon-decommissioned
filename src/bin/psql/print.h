@@ -62,7 +62,7 @@ typedef struct _printTableOpt
 void printTable(const char *title, const char *const * headers,
 		   const char *const * cells, const char *const * footers,
 		   const char *align,
-		   const printTableOpt *opt, FILE *fout);
+		   const printTableOpt *opt, FILE *fout, FILE *flog);
 
 
 
@@ -82,7 +82,8 @@ typedef struct _printQueryOpt
  *
  * It calls the printTable above with all the things set straight.
  */
-void		printQuery(const PGresult *result, const printQueryOpt *opt, FILE *fout);
+void		printQuery(const PGresult *result, const printQueryOpt *opt,
+					   FILE *fout, FILE *flog);
 
 #ifndef __CYGWIN__
 #define DEFAULT_PAGER "more"

@@ -223,6 +223,17 @@ PostgreSQL documentation
     </varlistentry>
 
     <varlistentry>
+      <term><option>-L <replaceable class="parameter">filename</replaceable></></term>
+      <term><option>--log <replaceable class="parameter">filename</replaceable></></term>
+      <listitem>
+      <para>
+      Log all query output into file <replaceable
+      class="parameter">filename</replaceable> in addition to the regular output source.
+      </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term><option>-o <replaceable class="parameter">filename</replaceable></></term>
       <term><option>--output <replaceable class="parameter">filename</replaceable></></term>
       <listitem>

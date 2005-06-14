@@ -723,6 +723,13 @@ PSQLexec(const char *query, bool start_xact)
 			   "%s\n"
 			   "**************************\n\n", query);
 		fflush(stdout);
+		if (pset.logfile)
+		{
+			fprintf(pset.logfile, "********* QUERY **********\n"
+			   "%s\n"
+			   "**************************\n\n", query);
+			fflush(pset.logfile);
+		}
 
 		if (echo_hidden == 1)	/* noexec? */
 			return NULL;
@@ -803,7 +810,7 @@ PrintQueryTuples(const PGresult *results)
 			return false;
 		}
 
-		printQuery(results, &my_popt, pset.queryFout);
+		printQuery(results, &my_popt, pset.queryFout, pset.logfile);
 
 		/* close file/pipe, restore old setting */
 		setQFout(NULL);
@@ -815,7 +822,7 @@ PrintQueryTuples(const PGresult *results)
 		pset.gfname = NULL;
 	}
 	else
-		printQuery(results, &my_popt, pset.queryFout);
+		printQuery(results, &my_popt, pset.queryFout, pset.logfile);
 
 	return true;
 }
@@ -905,6 +912,8 @@ PrintQueryResults(PGresult *results)
 					else
 						fprintf(pset.queryFout, "%s\n", PQcmdStatus(results));
 				}
+				if (pset.logfile)
+					fprintf(pset.logfile, "%s\n", PQcmdStatus(results));
 				SetVariable(pset.vars, "LASTOID", buf);
 				break;
 			}
@@ -974,6 +983,14 @@ SendQuery(const char *query)
 	{
 		puts(query);
 		fflush(stdout);
+	}
+
+	if (pset.logfile)
+	{
+		fprintf(pset.logfile, "********* QUERY **********\n"
+		   "%s\n"
+		   "**************************\n\n", query);
+		fflush(pset.logfile);
 	}
 
 	SetCancelConn();
