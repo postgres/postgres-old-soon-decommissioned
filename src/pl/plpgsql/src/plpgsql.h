@@ -515,7 +515,7 @@ typedef struct
 	int			lineno;
 	int			elog_level;
 	char	   *message;
-	List	   *params;
+	List	   *params;			/* list of expressions */
 } PLpgSQL_stmt_raise;
 
 
