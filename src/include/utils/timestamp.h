@@ -256,6 +256,10 @@ extern Datum timestamptz_part(PG_FUNCTION_ARGS);
 
 extern Datum now(PG_FUNCTION_ARGS);
 
+extern Datum pgsql_postmaster_start_time(PG_FUNCTION_ARGS);
+
+extern TimestampTz StartTime;
+
 /* Internal routines (not fmgr-callable) */
 
 extern int	tm2timestamp(struct pg_tm * tm, fsec_t fsec, int *tzp, Timestamp *dt);

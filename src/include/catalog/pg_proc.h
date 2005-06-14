@@ -3651,6 +3651,10 @@ DESCR("convert boolean to int4");
 DATA(insert OID = 2559 ( lastval			   PGNSP PGUID 12 f f t f v 0 20 "" _null_ _null_ _null_	lastval - _null_ ));
 DESCR("current value from last used sequence");
 
+/* start time function */
+DATA(insert OID = 2560 (  pg_postmaster_start_time PGNSP PGUID 12 f f t f s 0 1184 "" _null_ _null_ _null_ pgsql_postmaster_start_time - _null_ ));
+DESCR("postmaster start time");
+
 
 /*
  * Symbolic values for provolatile column: these indicate whether the result

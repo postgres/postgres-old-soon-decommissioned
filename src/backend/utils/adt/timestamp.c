@@ -938,6 +938,12 @@ now(PG_FUNCTION_ARGS)
 	PG_RETURN_TIMESTAMPTZ(result);
 }
 
+Datum
+pgsql_postmaster_start_time(PG_FUNCTION_ARGS)
+{
+	PG_RETURN_TIMESTAMPTZ(StartTime);
+}
+
 void
 dt2time(Timestamp jd, int *hour, int *min, int *sec, fsec_t *fsec)
 {
