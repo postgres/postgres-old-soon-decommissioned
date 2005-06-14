@@ -29,5 +29,6 @@ extern void ClientAuthentication(Port *port);
 extern char *pg_krb_server_keyfile;
 extern char *pg_krb_srvnam;
 extern bool pg_krb_caseins_users;
+extern char *pg_krb_server_hostname;
 
 #endif   /* AUTH_H */

@@ -1594,6 +1594,15 @@ static struct config_string ConfigureNamesString[] =
 	},
 
 	{
+		{"krb_server_hostname", PGC_POSTMASTER, CONN_AUTH_SECURITY,
+			gettext_noop("Sets the hostname of the Kerberos server."),
+			NULL
+		},
+		&pg_krb_server_hostname,
+		NULL, NULL, NULL
+	},
+
+	{
 		{"bonjour_name", PGC_POSTMASTER, CONN_AUTH_SETTINGS,
 			gettext_noop("Sets the Bonjour broadcast service name."),
 			NULL

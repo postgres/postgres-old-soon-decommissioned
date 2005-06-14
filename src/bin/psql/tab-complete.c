@@ -559,7 +559,6 @@ psql_completion(char *text, int start, int end)
 		"geqo_selection_bias",
 		"geqo_threshold",
 		"join_collapse_limit",
-		"krb_server_keyfile",
 		"lc_messages",
 		"lc_monetary",
 		"lc_numeric",
