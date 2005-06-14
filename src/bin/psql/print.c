@@ -595,8 +595,10 @@ void
 html_escaped_print(const char *in, FILE *fout)
 {
 	const char *p;
-
+	bool	leading_space = true;
+	
 	for (p = in; *p; p++)
+	{
 		switch (*p)
 		{
 			case '&':
@@ -617,9 +619,19 @@ html_escaped_print(const char *in, FILE *fout)
 			case '\'':
 				fputs("&apos;", fout);
 				break;
+			case ' ':
+				/* protect leading space, for EXPLAIN output */
+				if (leading_space)
+					fputs("&nbsp;", fout);
+				else
+					fputs(" ", fout);
+				break;
 			default:
 				fputc(*p, fout);
 		}
+		if (*p != ' ')
+			leading_space = false;
+	}
 }
 
 
