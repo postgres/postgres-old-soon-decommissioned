@@ -675,10 +675,12 @@ dump_if(PLpgSQL_stmt_if *stmt)
 
 	dump_stmts(stmt->true_body);
 
-	dump_ind();
-	printf("    ELSE\n");
-
-	dump_stmts(stmt->false_body);
+	if (stmt->false_body != NIL)
+	{
+		dump_ind();
+		printf("    ELSE\n");
+		dump_stmts(stmt->false_body);
+	}
 
 	dump_ind();
 	printf("    ENDIF\n");
@@ -908,6 +910,18 @@ dump_dynexecute(PLpgSQL_stmt_dynexecute *stmt)
 	printf("EXECUTE ");
 	dump_expr(stmt->query);
 	printf("\n");
+
+	dump_indent += 2;
+	if (stmt->rec != NULL)
+	{
+		dump_ind();
+		printf("    target = %d %s\n", stmt->rec->recno, stmt->rec->refname);
+	} else if (stmt->row != NULL)
+	{
+		dump_ind();
+		printf("    target = %d %s\n", stmt->row->rowno, stmt->row->refname);
+	}
+	dump_indent -= 2;
 }
 
 static void
@@ -987,7 +1001,7 @@ plpgsql_dumptree(PLpgSQL_function *func)
 	printf("\nExecution tree of successfully compiled PL/pgSQL function %s:\n",
 		   func->fn_name);
 
-	printf("\nFunctions data area:\n");
+	printf("\nFunction's data area:\n");
 	for (i = 0; i < func->ndatums; i++)
 	{
 		d = func->datums[i];
@@ -1062,7 +1076,7 @@ plpgsql_dumptree(PLpgSQL_function *func)
 				printf("??? unknown data type %d\n", d->dtype);
 		}
 	}
-	printf("\nFunctions statements:\n");
+	printf("\nFunction's statements:\n");
 
 	dump_indent = 0;
 	printf("%3d:", func->action->lineno);
