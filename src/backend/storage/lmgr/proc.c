@@ -644,8 +644,7 @@ ProcSleep(LockMethod lockMethodTable,
 									   lockmode,
 									   lock,
 									   proclock,
-									   MyProc,
-									   NULL) == STATUS_OK)
+									   MyProc) == STATUS_OK)
 				{
 					/* Skip the wait and just grant myself the lock. */
 					GrantLock(lock, proclock, lockmode);
@@ -846,8 +845,7 @@ ProcLockWakeup(LockMethod lockMethodTable, LOCK *lock)
 							   lockmode,
 							   lock,
 							   proc->waitProcLock,
-							   proc,
-							   NULL) == STATUS_OK)
+							   proc) == STATUS_OK)
 		{
 			/* OK to waken */
 			GrantLock(lock, proc->waitProcLock, lockmode);

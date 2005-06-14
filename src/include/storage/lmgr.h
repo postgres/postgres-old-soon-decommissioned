@@ -49,7 +49,8 @@ extern void LockRelation(Relation relation, LOCKMODE lockmode);
 extern bool ConditionalLockRelation(Relation relation, LOCKMODE lockmode);
 extern void UnlockRelation(Relation relation, LOCKMODE lockmode);
 
-extern void LockRelationForSession(LockRelId *relid, LOCKMODE lockmode);
+extern void LockRelationForSession(LockRelId *relid, bool istemprel,
+								   LOCKMODE lockmode);
 extern void UnlockRelationForSession(LockRelId *relid, LOCKMODE lockmode);
 
 /* Lock a relation for extension */

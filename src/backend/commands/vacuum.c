@@ -1009,7 +1009,7 @@ vacuum_rel(Oid relid, VacuumStmt *vacstmt, char expected_relkind)
 	 * same process.
 	 */
 	onerelid = onerel->rd_lockInfo.lockRelId;
-	LockRelationForSession(&onerelid, lmode);
+	LockRelationForSession(&onerelid, onerel->rd_istemp, lmode);
 
 	/*
 	 * Remember the relation's TOAST relation for later
