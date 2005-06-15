@@ -479,7 +479,7 @@ remove_table_from_list(Dlelem *tbl_to_remove)
 
 	if (args->debug >= 1)
 	{
-		sprintf(logbuffer, "Removing table: %s from list.", tbl->table_name);
+		sprintf(logbuffer, "Removing table: %s.%s from list.", tbl->dbi->dbname, tbl->table_name);
 		log_entry(logbuffer, LVL_DEBUG);
 		fflush(LOGOUTPUT);
 	}
@@ -1064,7 +1064,7 @@ perform_maintenance_command(db_info * dbi, tbl_info * tbl, int operation)
 
 	if (args->debug >= 1)
 	{
-		sprintf(logbuffer, "Performing: %s", buf);
+		sprintf(logbuffer, "Performing: %s on database %s", buf, dbi->dbname);
 		log_entry(logbuffer, LVL_DEBUG);
 		fflush(LOGOUTPUT);
 	}
