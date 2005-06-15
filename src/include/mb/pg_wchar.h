@@ -340,4 +340,6 @@ extern void mic2latin(unsigned char *mic, unsigned char *p, int len, int lc);
 extern void latin2mic_with_table(unsigned char *l, unsigned char *p, int len, int lc, unsigned char *tab);
 extern void mic2latin_with_table(unsigned char *mic, unsigned char *p, int len, int lc, unsigned char *tab);
 
+extern bool pg_utf8_islegal(const unsigned char *source, int length);
+
 #endif   /* PG_WCHAR_H */

@@ -361,9 +361,16 @@ UtfToLocal(unsigned char *utf, unsigned char *iso,
 			iutf = *utf++ << 8;
 			iutf |= *utf++;
 		}
-		else
+		else if (l == 3)
 		{
 			iutf = *utf++ << 16;
+			iutf |= *utf++ << 8;
+			iutf |= *utf++;
+		}
+		else if (l == 4)
+		{
+			iutf = *utf++ << 24;
+			iutf |= *utf++ << 16;
 			iutf |= *utf++ << 8;
 			iutf |= *utf++;
 		}
