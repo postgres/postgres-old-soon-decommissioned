@@ -1218,6 +1218,7 @@ typedef struct HashState
 	HashJoinTable hashtable;	/* hash table for the hashjoin */
 	List	   *hashkeys;		/* list of ExprState nodes */
 	/* hashkeys is same as parent's hj_InnerHashKeys */
+	TupleTableSlot *firstTuple;	/* tuple produced by ExecHash() */
 } HashState;
 
 /* ----------------
