@@ -7750,7 +7750,6 @@ unreserved_keyword:
 			| ALTER
 			| ASSERTION
 			| ASSIGNMENT
-			| ASYMMETRIC
 			| AT
 			| BACKWARD
 			| BEFORE
@@ -7897,7 +7896,6 @@ unreserved_keyword:
 			| STDIN
 			| STDOUT
 			| STORAGE
-			| SYMMETRIC
 			| SYSID
 			| STRICT_P
 			| TABLESPACE
@@ -8028,6 +8026,7 @@ reserved_keyword:
 			| ARRAY
 			| AS
 			| ASC
+			| ASYMMETRIC
 			| BOTH
 			| CASE
 			| CAST
@@ -8079,6 +8078,7 @@ reserved_keyword:
 			| SELECT
 			| SESSION_USER
 			| SOME
+			| SYMMETRIC
 			| TABLE
 			| THEN
 			| TO
