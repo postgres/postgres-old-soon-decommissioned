@@ -2910,7 +2910,7 @@ timestamp_to_char(PG_FUNCTION_ARGS)
 
 	ZERO_tmtc(&tmtc);
 
-	if (timestamp2tm(dt, NULL, tmtcTm(&tmtc), &tmtcFsec(&tmtc), NULL) != 0)
+	if (timestamp2tm(dt, NULL, tmtcTm(&tmtc), &tmtcFsec(&tmtc), NULL, NULL) != 0)
 		ereport(ERROR,
 				(errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
 				 errmsg("timestamp out of range")));
@@ -2935,7 +2935,7 @@ timestamptz_to_char(PG_FUNCTION_ARGS)
 
 	ZERO_tmtc(&tmtc);
 
-	if (timestamp2tm(dt, &tz, tmtcTm(&tmtc), &tmtcFsec(&tmtc), &tmtcTzn(&tmtc)) != 0)
+	if (timestamp2tm(dt, &tz, tmtcTm(&tmtc), &tmtcFsec(&tmtc), &tmtcTzn(&tmtc), NULL) != 0)
 		ereport(ERROR,
 				(errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
 				 errmsg("timestamp out of range")));

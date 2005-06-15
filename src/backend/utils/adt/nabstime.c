@@ -556,7 +556,7 @@ timestamp_abstime(PG_FUNCTION_ARGS)
 		result = NOSTART_ABSTIME;
 	else if (TIMESTAMP_IS_NOEND(timestamp))
 		result = NOEND_ABSTIME;
-	else if (timestamp2tm(timestamp, NULL, tm, &fsec, NULL) == 0)
+	else if (timestamp2tm(timestamp, NULL, tm, &fsec, NULL, NULL) == 0)
 	{
 		tz = DetermineLocalTimeZone(tm);
 		result = tm2abstime(tm, tz);
@@ -632,7 +632,7 @@ timestamptz_abstime(PG_FUNCTION_ARGS)
 		result = NOSTART_ABSTIME;
 	else if (TIMESTAMP_IS_NOEND(timestamp))
 		result = NOEND_ABSTIME;
-	else if (timestamp2tm(timestamp, NULL, tm, &fsec, NULL) == 0)
+	else if (timestamp2tm(timestamp, NULL, tm, &fsec, NULL, NULL) == 0)
 		result = tm2abstime(tm, 0);
 	else
 	{

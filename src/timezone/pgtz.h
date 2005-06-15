@@ -18,8 +18,6 @@
 
 #include "tzfile.h"
 
-#define TZ_STRLEN_MAX 255
-
 extern char *pg_TZDIR(void);
 
 #define BIGGEST(a, b)	(((a) > (b)) ? (a) : (b))

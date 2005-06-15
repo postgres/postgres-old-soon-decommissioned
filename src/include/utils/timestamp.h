@@ -264,7 +264,7 @@ extern TimestampTz StartTime;
 
 extern int	tm2timestamp(struct pg_tm * tm, fsec_t fsec, int *tzp, Timestamp *dt);
 extern int timestamp2tm(Timestamp dt, int *tzp, struct pg_tm * tm,
-			 fsec_t *fsec, char **tzn);
+			 fsec_t *fsec, char **tzn, pg_tz *attimezone);
 extern void dt2time(Timestamp dt, int *hour, int *min, int *sec, fsec_t *fsec);
 
 extern int	interval2tm(Interval span, struct pg_tm * tm, fsec_t *fsec);
