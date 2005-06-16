@@ -139,8 +139,9 @@ xqstart			{quote}
 xqstop			{quote}
 xqdouble		{quote}{quote}
 xqinside		[^\\']+
-xqescape                [\\][^0-7]
-xqoctesc                [\\][0-7]{1,3}
+xqescape		[\\][^0-7]
+xqoctesc		[\\][0-7]{1,3}
+xqhexesc		[\\]x[0-9A-Fa-f]{1,2}
 xqcat			{quote}{whitespace_with_newline}{quote}
 
 /* $foo$ style quotes ("dollar quoting")
@@ -400,7 +401,8 @@ cppline			{space}*#(.*\\{space})*.*{newline}
 <xq>{xqdouble}		{ addlitchar('\''); }
 <xq>{xqinside}		{ addlit(yytext, yyleng); }
 <xq>{xqescape}  	{ addlit(yytext, yyleng); }
-<xq>{xqoctesc}          { addlit(yytext, yyleng); }
+<xq>{xqoctesc}		{ addlit(yytext, yyleng); }
+<xq>{xqhexesc}		{ addlit(yytext, yyleng); }
 <xq>{xqcat}		{ /* ignore */ }
 <xq>.                   {
                                        /* This is only needed for \ just before EOF */
