@@ -865,7 +865,7 @@ static struct config_bool ConfigureNamesBool[] =
 
 	{
 		{"krb_caseins_users", PGC_POSTMASTER, CONN_AUTH_SECURITY,
-			gettext_noop("Sets if Kerberos user names should be treated case insensitive."),
+			gettext_noop("Sets whether Kerberos user names should be treated case insensitive."),
 			NULL
 		},
 		&pg_krb_caseins_users,
