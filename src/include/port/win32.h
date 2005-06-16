@@ -19,6 +19,11 @@
 #define HAVE_FSYNC_WRITETHROUGH
 #define HAVE_FSYNC_WRITETHROUGH_ONLY
 #define ftruncate(a,b)	chsize(a,b)
+/*
+ *	Even though we don't support 'fsync' as a wal_sync_method,
+ *	we do fsync() a few other places where _commit() is just fine.
+ */
+#define fsync(fd) _commit(fd)
 
 #define USES_WINSOCK
 
