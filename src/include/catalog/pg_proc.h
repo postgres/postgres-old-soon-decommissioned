@@ -3005,6 +3005,8 @@ DATA(insert OID = 2084 (  pg_show_all_settings	PGNSP PGUID 12 f f t t s 0 2249 "
 DESCR("SHOW ALL as a function");
 DATA(insert OID = 1371 (  pg_lock_status   PGNSP PGUID 12 f f t t v 0 2249 "" _null_ _null_ _null_ pg_lock_status - _null_ ));
 DESCR("view system lock information");
+DATA(insert OID = 1065 (  pg_prepared_xact PGNSP PGUID 12 f f t t v 0 2249 "" _null_ _null_ _null_ pg_prepared_xact - _null_ ));
+DESCR("view two-phase transactions");
 
 DATA(insert OID = 2079 (  pg_table_is_visible		PGNSP PGUID 12 f f t f s 1 16 "26" _null_ _null_ _null_	pg_table_is_visible - _null_ ));
 DESCR("is table visible in search path?");

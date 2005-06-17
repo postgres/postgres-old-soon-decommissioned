@@ -41,7 +41,7 @@
  * so increase that if you want to add more modes.
  */
 
-extern void InitLockTable(int maxBackends);
+extern void InitLockTable(void);
 extern void RelationInitLockInfo(Relation relation);
 
 /* Lock a relation */

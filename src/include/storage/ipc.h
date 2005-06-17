@@ -29,8 +29,6 @@ extern void on_shmem_exit(void (*function) (int code, Datum arg), Datum arg);
 extern void on_exit_reset(void);
 
 /* ipci.c */
-extern void CreateSharedMemoryAndSemaphores(bool makePrivate,
-								int maxBackends,
-								int port);
+extern void CreateSharedMemoryAndSemaphores(bool makePrivate, int port);
 
 #endif   /* IPC_H */

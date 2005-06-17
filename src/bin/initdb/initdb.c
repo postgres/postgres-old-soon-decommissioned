@@ -2124,6 +2124,7 @@ main(int argc, char *argv[])
 		"pg_xlog/archive_status",
 		"pg_clog",
 		"pg_subtrans",
+		"pg_twophase",
 		"pg_multixact/members",
 		"pg_multixact/offsets",
 		"base",

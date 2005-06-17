@@ -74,6 +74,7 @@ test: btree_index
 test: hash_index
 test: update
 test: namespace
+test: prepared_xacts
 test: privileges
 test: misc
 test: select_views

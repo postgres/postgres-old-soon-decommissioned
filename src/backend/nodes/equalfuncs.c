@@ -1053,6 +1053,7 @@ _equalTransactionStmt(TransactionStmt *a, TransactionStmt *b)
 {
 	COMPARE_SCALAR_FIELD(kind);
 	COMPARE_NODE_FIELD(options);
+	COMPARE_STRING_FIELD(gid);
 
 	return true;
 }

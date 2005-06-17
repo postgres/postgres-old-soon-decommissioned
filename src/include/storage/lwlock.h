@@ -46,6 +46,7 @@ typedef enum LWLockId
 	MultiXactMemberControlLock,
 	RelCacheInitLock,
 	BgWriterCommLock,
+	TwoPhaseStateLock,
 
 	NumFixedLWLocks,			/* must be last except for
 								 * MaxDynamicLWLock */

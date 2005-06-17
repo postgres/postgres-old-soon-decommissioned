@@ -14,21 +14,23 @@
 #ifndef PROCARRAY_H
 #define PROCARRAY_H
 
-extern int	ProcArrayShmemSize(int maxBackends);
-extern void CreateSharedProcArray(int maxBackends);
-extern void ProcArrayAddMyself(void);
-extern void ProcArrayRemoveMyself(void);
+#include "storage/lock.h"
+
+
+extern int	ProcArrayShmemSize(void);
+extern void CreateSharedProcArray(void);
+extern void ProcArrayAdd(PGPROC *proc);
+extern void ProcArrayRemove(PGPROC *proc);
 
 extern bool TransactionIdIsInProgress(TransactionId xid);
+extern bool TransactionIdIsActive(TransactionId xid);
 extern TransactionId GetOldestXmin(bool allDbs);
 
-/* Use "struct PGPROC", not PGPROC, to avoid including proc.h here */
-extern struct PGPROC *BackendPidGetProc(int pid);
+extern PGPROC *BackendPidGetProc(int pid);
 extern bool IsBackendPid(int pid);
 extern bool DatabaseHasActiveBackends(Oid databaseId, bool ignoreMyself);
 
 extern int	CountActiveBackends(void);
-extern int	CountEmptyBackendSlots(void);
 
 extern void XidCacheRemoveRunningXids(TransactionId xid,
 						  int nxids, TransactionId *xids);

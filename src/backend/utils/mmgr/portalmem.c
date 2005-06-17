@@ -467,6 +467,48 @@ CommitHoldablePortals(void)
 }
 
 /*
+ * Pre-prepare processing for portals.
+ *
+ * Currently we refuse PREPARE if the transaction created any holdable
+ * cursors, since it's quite unclear what to do with one.  However, this
+ * has the same API as CommitHoldablePortals and is invoked in the same
+ * way by xact.c, so that we can easily do something reasonable if anyone
+ * comes up with something reasonable to do.
+ *
+ * Returns TRUE if any holdable cursors were processed, FALSE if not.
+ */
+bool
+PrepareHoldablePortals(void)
+{
+	bool result = false;
+	HASH_SEQ_STATUS status;
+	PortalHashEnt *hentry;
+
+	hash_seq_init(&status, PortalHashTable);
+
+	while ((hentry = (PortalHashEnt *) hash_seq_search(&status)) != NULL)
+	{
+		Portal		portal = hentry->portal;
+
+		/* Is it a holdable portal created in the current xact? */
+		if ((portal->cursorOptions & CURSOR_OPT_HOLD) &&
+			portal->createSubid != InvalidSubTransactionId &&
+			portal->status == PORTAL_READY)
+		{
+			/*
+			 * We are exiting the transaction that created a holdable
+			 * cursor.	Can't do PREPARE.
+			 */
+			ereport(ERROR,
+					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+					 errmsg("cannot PREPARE a transaction that has created a cursor WITH HOLD")));
+		}
+	}
+
+	return result;
+}
+
+/*
  * Pre-commit processing for portals.
  *
  * Remove all non-holdable portals created in this transaction.

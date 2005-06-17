@@ -25,6 +25,7 @@
 #include "utils/guc.h"
 #include "utils/guc_tables.h"
 
+#include "access/twophase.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_type.h"
 #include "commands/async.h"
@@ -1100,6 +1101,15 @@ static struct config_int ConfigureNamesInt[] =
 		},
 		&max_files_per_process,
 		1000, 25, INT_MAX, NULL, NULL
+	},
+
+	{
+		{"max_prepared_transactions", PGC_POSTMASTER, RESOURCES,
+			gettext_noop("Sets the maximum number of simultaneously prepared transactions."),
+			NULL
+		},
+		&max_prepared_xacts,
+		50, 0, 10000, NULL, NULL
 	},
 
 #ifdef LOCK_DEBUG

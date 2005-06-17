@@ -30,6 +30,10 @@ extern void AtEOXact_Inval(bool isCommit);
 
 extern void AtEOSubXact_Inval(bool isCommit);
 
+extern void AtPrepare_Inval(void);
+
+extern void PostPrepare_Inval(void);
+
 extern void CommandEndInvalidationMessages(void);
 
 extern void CacheInvalidateHeapTuple(Relation relation, HeapTuple tuple);
@@ -46,5 +50,8 @@ extern void CacheRegisterSyscacheCallback(int cacheid,
 
 extern void CacheRegisterRelcacheCallback(CacheCallbackFunction func,
 							  Datum arg);
+
+extern void inval_twophase_postcommit(TransactionId xid, uint16 info,
+									  void *recdata, uint32 len);
 
 #endif   /* INVAL_H */
