@@ -1114,13 +1114,11 @@ FinishPreparedTransaction(char *gid, bool isCommit)
 	 */
 	gxact->valid = false;
 
-	if (isCommit)
-		ProcessRecords(bufptr, xid, twophase_postcommit_callbacks);
-	else
-		ProcessRecords(bufptr, xid, twophase_postabort_callbacks);
-
 	/*
-	 * We also have to remove any files that were supposed to be dropped.
+	 * We have to remove any files that were supposed to be dropped.
+	 * For consistency with the regular xact.c code paths, must do this
+	 * before releasing locks, so do it before running the callbacks.
+	 *
 	 * NB: this code knows that we couldn't be dropping any temp rels ...
 	 */
 	if (isCommit)
@@ -1133,6 +1131,12 @@ FinishPreparedTransaction(char *gid, bool isCommit)
 		for (i = 0; i < hdr->nabortrels; i++)
 			smgrdounlink(smgropen(abortrels[i]), false, false);
 	}
+
+	/* And now do the callbacks */
+	if (isCommit)
+		ProcessRecords(bufptr, xid, twophase_postcommit_callbacks);
+	else
+		ProcessRecords(bufptr, xid, twophase_postabort_callbacks);
 
 	pgstat_count_xact_commit();
 
