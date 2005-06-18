@@ -15,6 +15,7 @@
 #define TWOPHASE_H
 
 #include "storage/lock.h"
+#include "utils/timestamp.h"
 
 
 /*
@@ -31,8 +32,9 @@ extern void TwoPhaseShmemInit(void);
 
 extern PGPROC *TwoPhaseGetDummyProc(TransactionId xid);
 
-extern GlobalTransaction MarkAsPreparing(TransactionId xid, Oid databaseid,
-										 char *gid, AclId owner);
+extern GlobalTransaction MarkAsPreparing(TransactionId xid, const char *gid,
+										 TimestampTz prepared_at,
+										 AclId owner, Oid databaseid);
 extern void MarkAsPrepared(GlobalTransaction gxact);
 
 extern void StartPrepare(GlobalTransaction gxact);
@@ -44,6 +46,6 @@ extern void RecoverPreparedTransactions(void);
 extern void RecreateTwoPhaseFile(TransactionId xid, void *content, int len);
 extern void RemoveTwoPhaseFile(TransactionId xid, bool giveWarning);
 
-extern void FinishPreparedTransaction(char *gid, bool isCommit);
+extern void FinishPreparedTransaction(const char *gid, bool isCommit);
 
 #endif   /* TWOPHASE_H */
