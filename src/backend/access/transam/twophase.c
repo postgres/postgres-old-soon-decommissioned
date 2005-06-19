@@ -36,9 +36,10 @@
  */
 #include "postgres.h"
 
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <time.h>
 #include <unistd.h>
 
 #include "access/heapam.h"
