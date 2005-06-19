@@ -510,8 +510,7 @@ pgarch_readyXlog(char *xlog)
 			 errmsg("could not open archive status directory \"%s\": %m",
 					XLogArchiveStatusDir)));
 
-	errno = 0;
-	while ((rlde = readdir(rldir)) != NULL)
+	while ((rlde = ReadDir(rldir, XLogArchiveStatusDir)) != NULL)
 	{
 		int			basenamelen = (int) strlen(rlde->d_name) - 6;
 
@@ -531,23 +530,7 @@ pgarch_readyXlog(char *xlog)
 					strcpy(newxlog, rlde->d_name);
 			}
 		}
-
-		errno = 0;
 	}
-#ifdef WIN32
-
-	/*
-	 * This fix is in mingw cvs (runtime/mingwex/dirent.c rev 1.4), but
-	 * not in released version
-	 */
-	if (GetLastError() == ERROR_NO_MORE_FILES)
-		errno = 0;
-#endif
-	if (errno)
-		ereport(ERROR,
-				(errcode_for_file_access(),
-			 errmsg("could not read archive status directory \"%s\": %m",
-					XLogArchiveStatusDir)));
 	FreeDir(rldir);
 
 	if (found)

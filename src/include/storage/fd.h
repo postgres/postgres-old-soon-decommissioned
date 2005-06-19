@@ -76,6 +76,7 @@ extern int	FreeFile(FILE *file);
 
 /* Operations to allow use of the <dirent.h> library routines */
 extern DIR *AllocateDir(const char *dirname);
+extern struct dirent *ReadDir(DIR *dir, const char *dirname);
 extern int	FreeDir(DIR *dir);
 
 /* If you've really really gotta have a plain kernel FD, use this */
