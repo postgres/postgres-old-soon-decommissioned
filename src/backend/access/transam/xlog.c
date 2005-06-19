@@ -5110,6 +5110,8 @@ CreateCheckPoint(bool shutdown, bool force)
 	CheckPointSUBTRANS();
 	CheckPointMultiXact();
 	FlushBufferPool();
+	/* We deliberately delay 2PC checkpointing as long as possible */
+	CheckPointTwoPhase(checkPoint.redo);
 
 	START_CRIT_SECTION();
 

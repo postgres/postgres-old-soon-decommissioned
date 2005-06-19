@@ -1742,19 +1742,6 @@ PrepareTransaction(void)
 	EndPrepare(gxact);
 
 	/*
-	 * Mark the prepared transaction as valid.  As soon as we mark ourselves
-	 * not running in MyProc below, others can commit/rollback the xact.
-	 *
-	 * NB: a side effect of this is to make a dummy ProcArray entry for the
-	 * prepared XID.  This must happen before we clear the XID from MyProc,
-	 * else there is a window where the XID is not running according to
-	 * TransactionIdInProgress, and onlookers would be entitled to assume
-	 * the xact crashed.  Instead we have a window where the same XID
-	 * appears twice in ProcArray, which is OK.
-	 */
-	MarkAsPrepared(gxact);
-
-	/*
 	 * Now we clean up backend-internal state and release internal
 	 * resources.
 	 */

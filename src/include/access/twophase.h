@@ -14,7 +14,7 @@
 #ifndef TWOPHASE_H
 #define TWOPHASE_H
 
-#include "storage/lock.h"
+#include "storage/proc.h"
 #include "utils/timestamp.h"
 
 
@@ -35,7 +35,6 @@ extern PGPROC *TwoPhaseGetDummyProc(TransactionId xid);
 extern GlobalTransaction MarkAsPreparing(TransactionId xid, const char *gid,
 										 TimestampTz prepared_at,
 										 AclId owner, Oid databaseid);
-extern void MarkAsPrepared(GlobalTransaction gxact);
 
 extern void StartPrepare(GlobalTransaction gxact);
 extern void EndPrepare(GlobalTransaction gxact);
@@ -45,6 +44,8 @@ extern void RecoverPreparedTransactions(void);
 
 extern void RecreateTwoPhaseFile(TransactionId xid, void *content, int len);
 extern void RemoveTwoPhaseFile(TransactionId xid, bool giveWarning);
+
+extern void CheckPointTwoPhase(XLogRecPtr redo_horizon);
 
 extern void FinishPreparedTransaction(const char *gid, bool isCommit);
 
