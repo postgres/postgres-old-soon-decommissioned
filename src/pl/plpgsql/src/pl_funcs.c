@@ -1,5 +1,5 @@
 /**********************************************************************
- * pl_funcs.c		- Misc functins for the PL/pgSQL
+ * pl_funcs.c		- Misc functions for the PL/pgSQL
  *			  procedural language
  *
  * IDENTIFICATION
