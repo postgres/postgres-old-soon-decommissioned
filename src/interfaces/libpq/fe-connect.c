@@ -3104,6 +3104,8 @@ PasswordFromFile(char *hostname, char *port, char *dbname, char *username)
 	if (stat(pgpassfile, &stat_buf) == -1)
 		return NULL;
 
+#ifndef WIN32
+
 	if (!S_ISREG(stat_buf.st_mode))
 	{
 		fprintf(stderr,
@@ -3113,7 +3115,6 @@ PasswordFromFile(char *hostname, char *port, char *dbname, char *username)
 		return NULL;
 	}
 
-#ifndef WIN32
 	/* If password file is insecure, alert the user and ignore it. */
 	if (stat_buf.st_mode & (S_IRWXG | S_IRWXO))
 	{
