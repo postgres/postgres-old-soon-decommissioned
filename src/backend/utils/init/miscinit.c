@@ -549,7 +549,8 @@ CreateLockFile(const char *filename, bool amPostmaster,
 		other_pid = (pid_t) (encoded_pid < 0 ? -encoded_pid : encoded_pid);
 
 		if (other_pid <= 0)
-			elog(FATAL, "bogus data in lock file \"%s\"", filename);
+			elog(FATAL, "bogus data in lock file \"%s\": \"%s\"",
+				 filename, buffer);
 
 		/*
 		 * Check to see if the other process still exists
