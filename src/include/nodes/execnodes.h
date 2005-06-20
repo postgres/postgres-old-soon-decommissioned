@@ -304,7 +304,9 @@ typedef struct EState
 	ResultRelInfo *es_result_relation_info;		/* currently active array
 												 * elt */
 	JunkFilter *es_junkFilter;	/* currently active junk filter */
+
 	Relation	es_into_relation_descriptor;	/* for SELECT INTO */
+	bool		es_into_relation_use_wal;
 
 	/* Parameter info: */
 	ParamListInfo es_param_list_info;	/* values of external params */

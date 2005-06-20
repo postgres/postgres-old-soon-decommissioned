@@ -156,7 +156,8 @@ extern ItemPointer heap_get_latest_tid(Relation relation, Snapshot snapshot,
 					ItemPointer tid);
 extern void setLastTid(const ItemPointer tid);
 
-extern Oid	heap_insert(Relation relation, HeapTuple tup, CommandId cid);
+extern Oid	heap_insert(Relation relation, HeapTuple tup, CommandId cid,
+						bool use_wal, bool use_fsm);
 extern HTSU_Result heap_delete(Relation relation, ItemPointer tid, ItemPointer ctid,
 			CommandId cid, Snapshot crosscheck, bool wait);
 extern HTSU_Result heap_update(Relation relation, ItemPointer otid, HeapTuple tup,

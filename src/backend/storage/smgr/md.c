@@ -660,6 +660,9 @@ mdtruncate(SMgrRelation reln, BlockNumber nblocks, bool isTemp)
 
 /*
  *	mdimmedsync() -- Immediately sync a relation to stable storage.
+ *
+ * Note that only writes already issued are synced; this routine knows
+ * nothing of dirty buffers that may exist inside the buffer manager.
  */
 bool
 mdimmedsync(SMgrRelation reln)
