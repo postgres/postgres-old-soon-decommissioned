@@ -38,9 +38,9 @@ irealloc(void *pointer, const int size)
 char *
 icatalloc(char *old, const char *new)
 {
-	register char *result;
-	register int oldsize,
-				newsize;
+	char *result;
+	int oldsize,
+		newsize;
 
 	newsize = (new == NULL) ? 0 : strlen(new);
 	if (old == NULL)
