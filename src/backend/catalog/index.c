@@ -1293,10 +1293,10 @@ UpdateStats(Oid relid, double reltuples)
 		}
 	}
 
-	if (!pg_class_scan)
-		heap_freetuple(tuple);
-	else
+	if (in_place_upd)
 		heap_endscan(pg_class_scan);
+	else
+		heap_freetuple(tuple);
 
 	/*
 	 * We shouldn't have to do this, but we do...  Modify the reldesc in
