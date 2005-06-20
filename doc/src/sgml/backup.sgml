@@ -1136,7 +1136,7 @@ restore_command = 'copy /mnt/server/archivedir/%f "%p"'  # Windows
   <itemizedlist>
    <listitem>
     <para>
-     Operations on non-B-tree indexes (hash, R-tree, and GiST indexes) are
+     Operations on hash and R-tree indexes are
      not presently WAL-logged, so replay will not update these index types.
      The recommended workaround is to manually <command>REINDEX</> each
      such index after completing a recovery operation.
