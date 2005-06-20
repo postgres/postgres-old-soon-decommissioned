@@ -163,19 +163,15 @@ typedef struct gistxlogEntryUpdate {
 typedef struct gistxlogPageSplit {
 	RelFileNode	node;
 	BlockNumber	origblkno; /*splitted page*/
-	uint16		ntodelete;
 	uint16		pathlen;
 	uint16		npage;
-	uint16		nitup;
 
 	/* see comments on gistxlogEntryUpdate */
 	ItemPointerData	key;
  
 	/* follow:
 	 * 1. path to root (BlockNumber) 
-	 * 2. todelete OffsetNumbers 
-	 * 3. tuples to insert
-	 * 4. gistxlogPage and array of OffsetNumber per page
+	 * 2. gistxlogPage and array of IndexTupleData per page
          */ 
 } gistxlogPageSplit;
 
@@ -215,7 +211,8 @@ extern void gistmakedeal(GISTInsertState *state, GISTSTATE *giststate);
 
 typedef struct SplitedPageLayout {
         gistxlogPage    block;
-        OffsetNumber    *list;
+        IndexTupleData  *list;
+	int		lenlist;
         Buffer          buffer; /* to write after all proceed */
 
         struct SplitedPageLayout *next;
@@ -236,8 +233,7 @@ extern XLogRecData* formUpdateRdata(RelFileNode node, BlockNumber blkno,
                 BlockNumber *path, int pathlen);
 
 extern XLogRecData* formSplitRdata(RelFileNode node, BlockNumber blkno,
-                OffsetNumber *todelete, int ntodelete, 
-                IndexTuple *itup, int ituplen, ItemPointer key,
+                ItemPointer key,
                 BlockNumber *path, int pathlen, SplitedPageLayout *dist );
 
 extern XLogRecPtr gistxlogInsertCompletion(RelFileNode node, ItemPointerData *keys, int len);
