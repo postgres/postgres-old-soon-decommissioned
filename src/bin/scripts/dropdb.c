@@ -117,7 +117,8 @@ main(int argc, char *argv[])
 	appendPQExpBuffer(&sql, "DROP DATABASE %s;\n",
 					  fmtId(dbname));
 
-	conn = connectDatabase("template1", host, port, username, password, progname);
+	conn = connectDatabase(strcmp(dbname, "postgres") == 0 ? "template1" : "postgres",
+						   host, port, username, password, progname);
 
 	if (echo)
 		printf("%s", sql.data);

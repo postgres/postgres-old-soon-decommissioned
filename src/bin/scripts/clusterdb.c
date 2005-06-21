@@ -207,7 +207,7 @@ cluster_all_databases(const char *host, const char *port,
 	PGresult   *result;
 	int			i;
 
-	conn = connectDatabase("template1", host, port, username, password, progname);
+	conn = connectDatabase("postgres", host, port, username, password, progname);
 	result = executeQuery(conn, "SELECT datname FROM pg_database WHERE datallowconn;", progname, echo);
 	PQfinish(conn);
 

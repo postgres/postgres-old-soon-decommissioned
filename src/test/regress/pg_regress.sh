@@ -441,7 +441,7 @@ then
     # wait forever, however.
     i=0
     max=60
-    until "$bindir/psql" -X $psql_options template1 </dev/null 2>/dev/null
+    until "$bindir/psql" -X $psql_options postgres </dev/null 2>/dev/null
     do
         i=`expr $i + 1`
         if [ $i -ge $max ]

@@ -93,7 +93,7 @@ createdb(const CreatedbStmt *stmt)
 	DefElem    *dencoding = NULL;
 	char	   *dbname = stmt->dbname;
 	char	   *dbowner = NULL;
-	char	   *dbtemplate = NULL;
+	const char *dbtemplate = NULL;
 	int			encoding = -1;
 
 #ifndef WIN32

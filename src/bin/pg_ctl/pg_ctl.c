@@ -442,7 +442,7 @@ test_postmaster_connection(void)
 	for (i = 0; i < wait_seconds; i++)
 	{
 		if ((conn = PQsetdbLogin(NULL, portstr, NULL, NULL,
-								 "template1", NULL, NULL)) != NULL &&
+								 "postgres", NULL, NULL)) != NULL &&
 			(PQstatus(conn) == CONNECTION_OK ||
 			 (strcmp(PQerrorMessage(conn),
 					 PQnoPasswordSupplied) == 0)))

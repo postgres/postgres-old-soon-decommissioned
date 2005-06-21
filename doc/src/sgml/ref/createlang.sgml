@@ -223,6 +223,9 @@ PostgreSQL documentation
 <screen>
 <prompt>$ </prompt><userinput>createlang pltcl template1</userinput>
 </screen>
+    Note that installing the language into <literal>template1</literal>
+    will cause it to be automatically installed into subsequently-created
+    databases as well.
    </para>
  </refsect1>
 

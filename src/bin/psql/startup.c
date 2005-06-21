@@ -195,7 +195,7 @@ main(int argc, char *argv[])
 	{
 		need_pass = false;
 		pset.db = PQsetdbLogin(options.host, options.port, NULL, NULL,
-			options.action == ACT_LIST_DB ? "template1" : options.dbname,
+			options.action == ACT_LIST_DB ? "postgres" : options.dbname,
 							   username, password);
 
 		if (PQstatus(pset.db) == CONNECTION_BAD &&

@@ -468,7 +468,7 @@ su - postgres
 </programlisting>
    Finally, restore your data with
 <screen>
-<userinput>/usr/local/pgsql/bin/psql -d template1 -f <replaceable>outputfile</></userinput>
+<userinput>/usr/local/pgsql/bin/psql -d postgres -f <replaceable>outputfile</></userinput>
 </screen>
    using the <emphasis>new</> <application>psql</>.
   </para>

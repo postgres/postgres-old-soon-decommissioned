@@ -233,7 +233,7 @@ vacuum_all_databases(bool full, bool verbose, bool analyze,
 	PGresult   *result;
 	int			i;
 
-	conn = connectDatabase("template1", host, port, username, password, progname);
+	conn = connectDatabase("postgres", host, port, username, password, progname);
 	result = executeQuery(conn, "SELECT datname FROM pg_database WHERE datallowconn;", progname, echo);
 	PQfinish(conn);
 

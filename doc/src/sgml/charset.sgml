@@ -647,6 +647,7 @@ $ <userinput>psql -l</userinput>
  euc_kr        | t-ishii | EUC_KR
  euc_tw        | t-ishii | EUC_TW
  mule_internal | t-ishii | MULE_INTERNAL
+ postgres      | t-ishii | EUC_JP
  regression    | t-ishii | SQL_ASCII
  template1     | t-ishii | EUC_JP
  test          | t-ishii | EUC_JP
