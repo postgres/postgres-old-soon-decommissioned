@@ -390,14 +390,6 @@ su - postgres
     </para>
 
     <para>
-     <application>pg_dumpall</application> does not
-     save large objects.  Check
-     <![%standalone-include[the documentation]]>
-     <![%standalone-ignore[<xref linkend="backup-dump-caveats">]]>
-     if you need to do this.
-    </para>
-
-    <para>
      To make the backup, you can use the <application>pg_dumpall</application>
      command from the version you are currently running.  For best
      results, however, try to use the <application>pg_dumpall</application>

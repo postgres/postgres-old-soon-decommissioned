@@ -44,16 +44,6 @@ PostgreSQL documentation
   </para>
 
   <para>
-   Thus, <application>pg_dumpall</application> is an integrated
-   solution for backing up your databases.  But note a limitation:
-   it cannot dump <quote>large objects</quote>, since
-   <application>pg_dump</application> cannot dump such objects into
-   text files.  If you have databases containing large objects,
-   they should be dumped using one of <application>pg_dump</application>'s
-   non-text output modes.
-  </para>
-
-  <para>
    Since <application>pg_dumpall</application> reads tables from all
    databases you will most likely have to connect as a database
    superuser in order to produce a complete dump.  Also you will need

@@ -457,7 +457,6 @@ _CloseArchive(ArchiveHandle *AH)
  * It is called just prior to the dumper's DataDumper routine.
  *
  * Optional, but strongly recommended.
- *
  */
 static void
 _StartBlobs(ArchiveHandle *AH, TocEntry *te)
@@ -516,7 +515,6 @@ _StartBlob(ArchiveHandle *AH, TocEntry *te, Oid oid)
  * Called by the archiver when the dumper calls EndBlob.
  *
  * Optional.
- *
  */
 static void
 _EndBlob(ArchiveHandle *AH, TocEntry *te, Oid oid)
@@ -531,7 +529,6 @@ _EndBlob(ArchiveHandle *AH, TocEntry *te, Oid oid)
  * Called by the archiver when finishing saving all BLOB DATA.
  *
  * Optional.
- *
  */
 static void
 _EndBlobs(ArchiveHandle *AH, TocEntry *te)
@@ -543,5 +540,4 @@ _EndBlobs(ArchiveHandle *AH, TocEntry *te)
 
 	if (fclose(ctx->blobToc) != 0)
 		die_horribly(AH, modulename, "could not close large object TOC file: %s\n", strerror(errno));
-
 }
