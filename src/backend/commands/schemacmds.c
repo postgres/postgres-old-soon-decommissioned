@@ -42,7 +42,6 @@ CreateSchemaCommand(CreateSchemaStmt *stmt)
 	Oid			namespaceId;
 	List	   *parsetree_list;
 	ListCell   *parsetree_item;
-	const char *owner_name;
 	AclId		owner_userid;
 	AclId		saved_userid;
 	AclResult	aclresult;
@@ -56,13 +55,11 @@ CreateSchemaCommand(CreateSchemaStmt *stmt)
 	if (!authId)
 	{
 		owner_userid = saved_userid;
-		owner_name = GetUserNameFromId(owner_userid);
 	}
 	else if (superuser())
 	{
-		owner_name = authId;
 		/* The following will error out if user does not exist */
-		owner_userid = get_usesysid(owner_name);
+		owner_userid = get_usesysid(authId);
 
 		/*
 		 * Set the current user to the requested authorization so that
@@ -74,6 +71,8 @@ CreateSchemaCommand(CreateSchemaStmt *stmt)
 	}
 	else
 	{
+		const char *owner_name;
+
 		/* not superuser */
 		owner_userid = saved_userid;
 		owner_name = GetUserNameFromId(owner_userid);
