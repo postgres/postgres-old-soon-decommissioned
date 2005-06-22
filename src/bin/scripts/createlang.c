@@ -191,12 +191,14 @@ main(int argc, char *argv[])
 	{
 		trusted = true;
 		handler = "plperl_call_handler";
+		validator = "plperl_validator";
 		object = "plperl";
 	}
 	else if (strcmp(langname, "plperlu") == 0)
 	{
 		trusted = false;
 		handler = "plperl_call_handler";
+		validator = "plperl_validator";
 		object = "plperl";
 	}
 	else if (strcmp(langname, "plpythonu") == 0)
