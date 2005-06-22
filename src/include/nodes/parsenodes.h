@@ -1758,8 +1758,8 @@ typedef struct ReindexStmt
 								 * OBJECT_DATABASE */
 	RangeVar   *relation;		/* Table or index to reindex */
 	const char *name;			/* name of database to reindex */
-	bool		force;
-	bool		all;
+	bool		do_system;		/* include system tables in database case */
+	bool		do_user;		/* include user tables in database case */
 } ReindexStmt;
 
 /* ----------------------

@@ -300,6 +300,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"substring", SUBSTRING},
 	{"symmetric", SYMMETRIC},
 	{"sysid", SYSID},
+	{"system", SYSTEM_P},
 	{"table", TABLE},
 	{"tablespace", TABLESPACE},
 	{"temp", TEMP},
