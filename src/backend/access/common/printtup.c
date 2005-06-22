@@ -19,6 +19,7 @@
 #include "access/printtup.h"
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
+#include "tcop/pquery.h"
 #include "utils/lsyscache.h"
 #include "utils/portal.h"
 
@@ -130,16 +131,9 @@ printtup_startup(DestReceiver *self, int operation, TupleDesc typeinfo)
 	 * descriptions, then we send back the tuple descriptor of the tuples.
 	 */
 	if (operation == CMD_SELECT && myState->sendDescrip)
-	{
-		List	   *targetlist;
-
-		if (portal->strategy == PORTAL_ONE_SELECT)
-			targetlist = ((Query *) linitial(portal->parseTrees))->targetList;
-		else
-			targetlist = NIL;
-
-		SendRowDescriptionMessage(typeinfo, targetlist, portal->formats);
-	}
+		SendRowDescriptionMessage(typeinfo,
+								  FetchPortalTargetList(portal),
+								  portal->formats);
 
 	/* ----------------
 	 * We could set up the derived attr info at this time, but we postpone it

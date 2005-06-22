@@ -22,6 +22,8 @@ extern DLLIMPORT Portal ActivePortal;
 
 extern PortalStrategy ChoosePortalStrategy(List *parseTrees);
 
+extern List *FetchPortalTargetList(Portal portal);
+
 extern void PortalStart(Portal portal, ParamListInfo params,
 						Snapshot snapshot);
 
