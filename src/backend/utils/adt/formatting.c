@@ -3508,8 +3508,7 @@ static char *
 int_to_roman(int number)
 {
 	int			len = 0,
-				num = 0,
-				set = 0;
+				num = 0;
 	char	   *p = NULL,
 			   *result,
 				numstr[5];
@@ -3529,9 +3528,6 @@ int_to_roman(int number)
 		num = *p - 49;			/* 48 ascii + 1 */
 		if (num < 0)
 			continue;
-		if (num == -1 && set == 0)
-			continue;
-		set = 1;
 
 		if (len > 3)
 		{
