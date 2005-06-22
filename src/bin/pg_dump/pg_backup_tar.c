@@ -1120,7 +1120,7 @@ _tarPositionTo(ArchiveHandle *AH, const char *filename)
 		ahlog(AH, 4, "skipping tar member %s\n", th->targetFile);
 
 		id = atoi(th->targetFile);
-		if ((TocIDRequired(AH, id, AH->ropt) & 2) != 0)
+		if ((TocIDRequired(AH, id, AH->ropt) & REQ_DATA) != 0)
 			die_horribly(AH, modulename, "dumping data out of order is not supported in this archive format: "
 			"%s is required, but comes before %s in the archive file.\n",
 						 th->targetFile, filename);
@@ -1155,7 +1155,6 @@ _tarGetHeader(ArchiveHandle *AH, TAR_MEMBER *th)
 	size_t		len;
 	unsigned long ullen;
 	off_t		hPos;
-	int			i;
 	bool		gotBlock = false;
 
 	while (!gotBlock)
@@ -1178,7 +1177,7 @@ _tarGetHeader(ArchiveHandle *AH, TAR_MEMBER *th)
 		hPos = ctx->tarFHpos;
 
 		/* Read a 512 byte block, return EOF, exit if short */
-		len = _tarReadRaw(AH, &h[0], 512, NULL, ctx->tarFH);
+		len = _tarReadRaw(AH, h, 512, NULL, ctx->tarFH);
 		if (len == 0)			/* EOF */
 			return 0;
 
@@ -1188,20 +1187,22 @@ _tarGetHeader(ArchiveHandle *AH, TAR_MEMBER *th)
 						 (unsigned long) len);
 
 		/* Calc checksum */
-		chk = _tarChecksum(&h[0]);
+		chk = _tarChecksum(h);
+		sscanf(&h[148], "%8o", &sum);
 
 		/*
-		 * If the checksum failed, see if it is a null block. If so, then
-		 * just try with next block...
+		 * If the checksum failed, see if it is a null block. If so,
+		 * silently continue to the next block.
 		 */
-
 		if (chk == sum)
 			gotBlock = true;
 		else
 		{
+			int			i;
+
 			for (i = 0; i < 512; i++)
 			{
-				if (h[0] != 0)
+				if (h[i] != 0)
 				{
 					gotBlock = true;
 					break;
@@ -1213,7 +1214,6 @@ _tarGetHeader(ArchiveHandle *AH, TAR_MEMBER *th)
 	sscanf(&h[0], "%99s", tag);
 	sscanf(&h[124], "%12lo", &ullen);
 	len = (size_t) ullen;
-	sscanf(&h[148], "%8o", &sum);
 
 	{
 		char		buf[100];
