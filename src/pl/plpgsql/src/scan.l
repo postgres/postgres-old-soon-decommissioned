@@ -139,6 +139,7 @@ alias			{ return K_ALIAS;			}
 begin			{ return K_BEGIN;			}
 close			{ return K_CLOSE;			}
 constant		{ return K_CONSTANT;		}
+continue		{ return K_CONTINUE;		}
 cursor			{ return K_CURSOR;			}
 debug			{ return K_DEBUG;			}
 declare			{ return K_DECLARE;			}

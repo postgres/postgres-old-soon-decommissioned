@@ -845,7 +845,8 @@ static void
 dump_exit(PLpgSQL_stmt_exit *stmt)
 {
 	dump_ind();
-	printf("EXIT lbl='%s'", stmt->label);
+	printf("%s label='%s'",
+		   stmt->is_exit ? "EXIT" : "CONTINUE", stmt->label);
 	if (stmt->cond != NULL)
 	{
 		printf(" WHEN ");
