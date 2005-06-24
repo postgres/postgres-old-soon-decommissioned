@@ -59,8 +59,16 @@ index_keytest(IndexTuple tuple,
 
 		test = FunctionCall2(&key->sk_func, datum, key->sk_argument);
 
-		if (!DatumGetBool(test))
-			return false;
+		if (key->sk_flags & SK_NEGATE)
+		{
+			if (DatumGetBool(test))
+				return false;
+		}
+		else
+		{
+			if (!DatumGetBool(test))
+				return false;
+		}
 
 		key++;
 		scanKeySize--;

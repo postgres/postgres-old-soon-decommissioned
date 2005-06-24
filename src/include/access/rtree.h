@@ -136,5 +136,6 @@ extern void ReleaseResources_rtree(void);
 
 /* rtstrat.c */
 extern StrategyNumber RTMapToInternalOperator(StrategyNumber strat);
+extern bool RTMapToInternalNegate(StrategyNumber strat);
 
 #endif   /* RTREE_H */
