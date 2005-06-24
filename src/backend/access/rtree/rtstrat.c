@@ -37,7 +37,11 @@ static const StrategyNumber RTOperMap[RTNStrategies] = {
 	RTOverLeftStrategyNumber,	/* right */
 	RTContainsStrategyNumber,	/* same */
 	RTContainsStrategyNumber,	/* contains */
-	RTOverlapStrategyNumber		/* contained-by */
+	RTOverlapStrategyNumber,	/* contained-by */
+	RTAboveStrategyNumber,		/* overbelow */
+	RTOverAboveStrategyNumber,	/* below */
+	RTOverBelowStrategyNumber,	/* above */
+	RTBelowStrategyNumber		/* overabove */
 };
 
 /*
@@ -52,7 +56,11 @@ static const bool RTNegateMap[RTNStrategies] = {
 	true,						/* right */
 	false,						/* same */
 	false,						/* contains */
-	false						/* contained-by */
+	false,						/* contained-by */
+	true,						/* overbelow */
+	true,						/* below */
+	true,						/* above */
+	true						/* overabove */
 };
 
 
