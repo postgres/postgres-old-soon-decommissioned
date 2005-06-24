@@ -14,8 +14,8 @@ if [ ! -d results ];then
     mkdir results
 fi
 
-dropdb unitest
-createdb -E UTF8 unitest
+dropdb utf8
+createdb -E UTF8 utf8
 
 PSQL="psql -n -e -q"
 tests="euc_jp sjis euc_kr euc_cn euc_tw big5 utf8 mule_internal"
