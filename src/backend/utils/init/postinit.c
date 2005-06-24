@@ -536,12 +536,10 @@ static bool
 ThereIsAtLeastOneUser(void)
 {
 	Relation	pg_shadow_rel;
-	TupleDesc	pg_shadow_dsc;
 	HeapScanDesc scan;
 	bool		result;
 
 	pg_shadow_rel = heap_open(ShadowRelationId, AccessExclusiveLock);
-	pg_shadow_dsc = RelationGetDescr(pg_shadow_rel);
 
 	scan = heap_beginscan(pg_shadow_rel, SnapshotNow, 0, NULL);
 	result = (heap_getnext(scan, ForwardScanDirection) != NULL);
