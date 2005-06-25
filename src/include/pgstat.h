@@ -138,7 +138,7 @@ typedef struct PgStat_MsgActivity
 typedef struct PgStat_MsgTabstat
 {
 	PgStat_MsgHdr m_hdr;
-	int			m_databaseid;
+	Oid			m_databaseid;
 	int			m_nentries;
 	int			m_xact_commit;
 	int			m_xact_rollback;
