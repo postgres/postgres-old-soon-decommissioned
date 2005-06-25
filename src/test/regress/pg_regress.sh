@@ -535,9 +535,6 @@ fi
 # Create the regression database
 # We use template0 so that any installation-local cruft in template1
 # will not mess up the tests.
-# Note: the reason for checkpointing just after creating the new DB is so
-# that if we get a backend core dump during the tests, WAL replay won't
-# remove the core file.
 # ----------
 
 message "creating database \"$dbname\""
@@ -548,7 +545,6 @@ if [ $? -ne 0 ]; then
 fi
 
 "$bindir/psql" -q -X $psql_options -c "\
-checkpoint;
 alter database \"$dbname\" set lc_messages to 'C';
 alter database \"$dbname\" set lc_monetary to 'C';
 alter database \"$dbname\" set lc_numeric to 'C';
