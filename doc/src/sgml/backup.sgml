@@ -1121,6 +1121,18 @@ restore_command = 'copy /mnt/server/archivedir/%f "%p"'  # Windows
 
    <listitem>
     <para>
+     If a <command>CREATE DATABASE</> command is executed while a base
+     backup is being taken, and then the template database that the
+     <command>CREATE DATABASE</> copied is modified while the base backup
+     is still in progress, it is possible that recovery will cause those
+     modifications to be propagated into the created database as well.
+     This is of course undesirable.  To avoid this risk, it is best not to
+     modify any template databases while taking a base backup.
+    </para>
+   </listitem>
+
+   <listitem>
+    <para>
      <command>CREATE TABLESPACE</> commands are WAL-logged with the literal
      absolute path, and will therefore be replayed as tablespace creations
      with the same absolute path.  This might be undesirable if the log is
