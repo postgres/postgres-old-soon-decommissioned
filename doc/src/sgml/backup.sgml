@@ -177,7 +177,7 @@ pg_dumpall &gt; <replaceable>outfile</>
 </synopsis>
     The resulting dump can be restored with <application>psql</>:
 <synopsis>
-psql template1 &lt; <replaceable class="parameter">infile</replaceable>
+psql -f <replaceable class="parameter">infile</replaceable> template1
 </synopsis>
     (Actually, you can specify any existing database name to start from,
     but if you are reloading in an empty cluster then <literal>template1</>
@@ -256,7 +256,7 @@ cat <replaceable class="parameter">filename</replaceable>* | psql <replaceable c
      following command dumps a database using the custom dump format:
 
 <programlisting>
-pg_dump -Fc <replaceable class="parameter">dbname</replaceable> > <replaceable class="parameter">filename</replaceable>
+pg_dump -Fc <replaceable class="parameter">dbname</replaceable> &gt; <replaceable class="parameter">filename</replaceable>
 </programlisting>
 
      A custom-format dump is not a script for <application>psql</>, but
@@ -364,13 +364,27 @@ tar -cf backup.tar /usr/local/pgsql/data
   </para>
 
   <para>
-   If your database is spread across multiple volumes (for example,
-   data files and WAL log on different disks) there may not be any way
-   to obtain exactly-simultaneous frozen snapshots of all the volumes.
+   If your database is spread across multiple file systems, there may not 
+   be any way to obtain exactly-simultaneous frozen snapshots of all 
+   the volumes.  For example, if your data files and WAL log are on different
+   disks, or if tablespaces are on different file systems, it might
+   not be possible to use snapshot backup because the snapshots must be
+   simultaneous.
    Read your file system documentation very carefully before trusting
    to the consistent-snapshot technique in such situations.  The safest
    approach is to shut down the database server for long enough to
    establish all the frozen snapshots.
+  </para>
+
+  <para>
+   Another option is to use <application>rsync</> to perform a file
+   system backup.  This is done by first running <application>rsync</>
+   while the database server is running, then shutting down the database
+   server just long enough to do a second <application>rsync</>.  The
+   second <application>rsync</> will be much quicker than the first,
+   because it has relatively little data to transfer, and the end result
+   will be consistent because the server was down.  This method
+   allows a file system backup to be performed with minimal downtime.
   </para>
 
   <para>
@@ -674,7 +688,13 @@ SELECT pg_start_backup('label');
 <programlisting>
 SELECT pg_stop_backup();
 </programlisting>
-     If this returns successfully, you're done.
+     This should return successfully.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Once the WAL segment files used during the backup are archived as part
+     of normal database activity, you are done.
     </para>
    </listitem>
   </orderedlist>
@@ -710,23 +730,34 @@ SELECT pg_stop_backup();
 
    <para>
     To make use of this backup, you will need to keep around all the WAL
-    segment files generated at or after the starting time of the backup.
+    segment files generated during and after the file system backup.
     To aid you in doing this, the <function>pg_stop_backup</> function
-    creates a <firstterm>backup history file</> that is immediately stored
-    into the WAL archive area.  This file is named after the first WAL
-    segment file that you need to have to make use of the backup.  For
-    example, if the starting WAL file is <literal>0000000100001234000055CD</>
-    the backup history file will be named something like
-    <literal>0000000100001234000055CD.007C9330.backup</>.  (The second part of
-    this file name stands for an exact position within the WAL file, and can
-    ordinarily be ignored.)  Once you have safely archived the backup dump
-    file, you can delete all archived WAL segments with names numerically
-    preceding this one.  The backup history file is just a small text file.
-    It contains the label string you gave to <function>pg_start_backup</>, as
-    well as the starting and ending times of the backup.  If you used the
-    label to identify where the associated dump file is kept, then the
-    archived history file is enough to tell you which dump file to restore,
-    should you need to do so.
+    creates a <firstterm>backup history file</> that is immediately
+    stored into the WAL archive area. This file is named after the first
+    WAL segment file that you need to have to make use of the backup.
+    For example, if the starting WAL file is
+    <literal>0000000100001234000055CD</> the backup history file will be
+    named something like
+    <literal>0000000100001234000055CD.007C9330.backup</>. (The second
+    number in the file name stands for an exact position within the WAL
+    file, and can ordinarily be ignored.) Once you have safely archived
+    the file system backup and the WAL segment files used during the
+    backup (as specified in the backup history file), all archived WAL
+    segments with names numerically less are no longer needed to recover
+    the file system backup and may be deleted. However, you should
+    consider keeping several backup sets to be absolutely certain that
+    you are can recover your data. Keep in mind that only completed WAL
+    segment files are archived, so there will be delay between running
+    <function>pg_stop_backup</> and the archiving of all WAL segment
+    files needed to make the file system backup consistent.
+   </para>
+   <para>
+    The backup history file is just a small text file. It contains the
+    label string you gave to <function>pg_start_backup</>, as well as
+    the starting and ending times of the backup. If you used the label
+    to identify where the associated dump file is kept, then the
+    archived history file is enough to tell you which dump file to
+    restore, should you need to do so.
    </para>
 
    <para>
@@ -1111,6 +1142,31 @@ restore_command = 'copy /mnt/server/archivedir/%f "%p"'  # Windows
      such index after completing a recovery operation.
     </para>
    </listitem>
+
+   <listitem>
+    <para>
+     If a <command>CREATE DATABASE</> command is executed while a base
+     backup is being taken, and then the template database that the
+     <command>CREATE DATABASE</> copied is modified while the base backup
+     is still in progress, it is possible that recovery will cause those
+     modifications to be propagated into the created database as well.
+     This is of course undesirable.  To avoid this risk, it is best not to
+     modify any template databases while taking a base backup.
+    </para>
+   </listitem>
+
+   <listitem>
+    <para>
+     <command>CREATE TABLESPACE</> commands are WAL-logged with the literal
+     absolute path, and will therefore be replayed as tablespace creations
+     with the same absolute path.  This might be undesirable if the log is
+     being replayed on a different machine.  It can be dangerous even if
+     the log is being replayed on the same machine, but into a new data
+     directory: the replay will still overwrite the contents of the original
+     tablespace.  To avoid potential gotchas of this sort, the best practice
+     is to take a new base backup after creating or dropping tablespaces.
+    </para>
+   </listitem>
   </itemizedlist>
    </para>
 
@@ -1121,7 +1177,9 @@ restore_command = 'copy /mnt/server/archivedir/%f "%p"'  # Windows
     since we may need to fix partially-written disk pages.  It is not
     necessary to store so many page copies for PITR operations, however.
     An area for future development is to compress archived WAL data by
-    removing unnecessary page copies.
+    removing unnecessary page copies.  In the meantime, administrators
+    may wish to reduce the number of page snapshots included in WAL by
+    increasing the checkpoint interval parameters as much as feasible.
    </para>
   </sect2>
  </sect1>
@@ -1203,14 +1261,14 @@ pg_dumpall -p 5432 | psql -d template1 -p 6543
    version, start the new server, restore the data. For example:
 
 <programlisting>
-pg_dumpall > backup
+pg_dumpall &gt; backup
 pg_ctl stop
 mv /usr/local/pgsql /usr/local/pgsql.old
 cd ~/postgresql-&version;
 gmake install
 initdb -D /usr/local/pgsql/data
 postmaster -D /usr/local/pgsql/data
-psql template1 < backup
+psql -f backup template1
 </programlisting>
 
    See <xref linkend="runtime"> about ways to start and stop the
