@@ -538,7 +538,7 @@ dumpTablespaces(PGconn *conn)
 					 "pg_catalog.pg_get_userbyid(spcowner) AS spcowner, "
 					   "spclocation, spcacl "
 					   "FROM pg_catalog.pg_tablespace "
-					   "WHERE spcname NOT LIKE 'pg\\_%'");
+					   "WHERE spcname NOT LIKE E'pg\\_%'");
 
 	if (PQntuples(res) > 0)
 		printf("--\n-- Tablespaces\n--\n\n");
