@@ -97,6 +97,7 @@ typedef struct HASHHDR
 	Size		entrysize;		/* total user element size in bytes */
 	long		max_dsize;		/* 'dsize' limit if directory is fixed
 								 * size */
+	int			nelem_alloc;	/* number of entries to allocate at once */
 	HASHELEMENT *freeList;		/* linked list of free elements */
 #ifdef HASH_STATISTICS
 	long		accesses;
@@ -158,8 +159,8 @@ typedef struct HASHCTL
 
 /* max_dsize value to indicate expansible directory */
 #define NO_MAX_DSIZE			(-1)
-/* number of hash elements allocated at once */
-#define HASHELEMENT_ALLOC_INCR	(32)
+/* max number of hash elements allocated at once */
+#define HASHELEMENT_ALLOC_MAX	(32)
 
 /* hash_search operations */
 typedef enum

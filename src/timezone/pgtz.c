@@ -978,7 +978,7 @@ init_timezone_hashtable(void)
 	hash_ctl.entrysize = sizeof(pg_tz);
 
 	timezone_cache = hash_create("Timezones",
-								 31,
+								 4,
 								 &hash_ctl,
 								 HASH_ELEM);
 	if (!timezone_cache)
