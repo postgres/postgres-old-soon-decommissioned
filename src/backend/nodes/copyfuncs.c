@@ -1048,6 +1048,21 @@ _copyCoalesceExpr(CoalesceExpr *from)
 }
 
 /*
+ * _copyMinMaxExpr
+ */
+static MinMaxExpr *
+_copyMinMaxExpr(MinMaxExpr *from)
+{
+	MinMaxExpr *newnode = makeNode(MinMaxExpr);
+
+	COPY_SCALAR_FIELD(minmaxtype);
+	COPY_SCALAR_FIELD(op);
+	COPY_NODE_FIELD(args);
+
+	return newnode;
+}
+
+/*
  * _copyNullIfExpr (same as OpExpr)
  */
 static NullIfExpr *
@@ -2804,6 +2819,9 @@ copyObject(void *from)
 			break;
 		case T_CoalesceExpr:
 			retval = _copyCoalesceExpr(from);
+			break;
+		case T_MinMaxExpr:
+			retval = _copyMinMaxExpr(from);
 			break;
 		case T_NullIfExpr:
 			retval = _copyNullIfExpr(from);

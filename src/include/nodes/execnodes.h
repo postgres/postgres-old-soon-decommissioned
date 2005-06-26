@@ -674,6 +674,17 @@ typedef struct CoalesceExprState
 } CoalesceExprState;
 
 /* ----------------
+ *		MinMaxExprState node
+ * ----------------
+ */
+typedef struct MinMaxExprState
+{
+	ExprState	xprstate;
+	List	   *args;			/* the arguments */
+	FmgrInfo	cfunc;			/* lookup info for comparison func */
+} MinMaxExprState;
+
+/* ----------------
  *		CoerceToDomainState node
  * ----------------
  */

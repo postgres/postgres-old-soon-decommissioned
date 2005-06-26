@@ -658,6 +658,23 @@ typedef struct CoalesceExpr
 } CoalesceExpr;
 
 /*
+ * MinMaxExpr - a GREATEST or LEAST function
+ */
+typedef enum MinMaxOp
+{
+	IS_GREATEST,
+	IS_LEAST
+} MinMaxOp;
+
+typedef struct MinMaxExpr
+{
+	Expr		xpr;
+	Oid			minmaxtype;		/* common type of arguments and result */
+	MinMaxOp	op;				/* function to execute */
+	List	   *args;			/* the arguments */
+} MinMaxExpr;
+
+/*
  * NullIfExpr - a NULLIF expression
  *
  * Like DistinctExpr, this is represented the same as an OpExpr referencing

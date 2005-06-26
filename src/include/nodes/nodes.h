@@ -126,6 +126,7 @@ typedef enum NodeTag
 	T_ArrayExpr,
 	T_RowExpr,
 	T_CoalesceExpr,
+	T_MinMaxExpr,
 	T_NullIfExpr,
 	T_NullTest,
 	T_BooleanTest,
@@ -159,6 +160,7 @@ typedef enum NodeTag
 	T_ArrayExprState,
 	T_RowExprState,
 	T_CoalesceExprState,
+	T_MinMaxExprState,
 	T_CoerceToDomainState,
 	T_DomainConstraintState,
 

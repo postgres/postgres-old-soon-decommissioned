@@ -451,6 +451,16 @@ _equalCoalesceExpr(CoalesceExpr *a, CoalesceExpr *b)
 }
 
 static bool
+_equalMinMaxExpr(MinMaxExpr *a, MinMaxExpr *b)
+{
+	COMPARE_SCALAR_FIELD(minmaxtype);
+	COMPARE_SCALAR_FIELD(op);
+	COMPARE_NODE_FIELD(args);
+
+	return true;
+}
+
+static bool
 _equalNullIfExpr(NullIfExpr *a, NullIfExpr *b)
 {
 	COMPARE_SCALAR_FIELD(opno);
@@ -1867,6 +1877,9 @@ equal(void *a, void *b)
 			break;
 		case T_CoalesceExpr:
 			retval = _equalCoalesceExpr(a, b);
+			break;
+		case T_MinMaxExpr:
+			retval = _equalMinMaxExpr(a, b);
 			break;
 		case T_NullIfExpr:
 			retval = _equalNullIfExpr(a, b);

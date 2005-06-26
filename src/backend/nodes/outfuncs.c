@@ -865,6 +865,16 @@ _outCoalesceExpr(StringInfo str, CoalesceExpr *node)
 }
 
 static void
+_outMinMaxExpr(StringInfo str, MinMaxExpr *node)
+{
+	WRITE_NODE_TYPE("MINMAX");
+
+	WRITE_OID_FIELD(minmaxtype);
+	WRITE_ENUM_FIELD(op, MinMaxOp);
+	WRITE_NODE_FIELD(args);
+}
+
+static void
 _outNullIfExpr(StringInfo str, NullIfExpr *node)
 {
 	WRITE_NODE_TYPE("NULLIFEXPR");
@@ -1895,6 +1905,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_CoalesceExpr:
 				_outCoalesceExpr(str, obj);
+				break;
+			case T_MinMaxExpr:
+				_outMinMaxExpr(str, obj);
 				break;
 			case T_NullIfExpr:
 				_outNullIfExpr(str, obj);

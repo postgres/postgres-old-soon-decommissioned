@@ -4296,6 +4296,16 @@ exec_simple_check_node(Node *node)
 				return TRUE;
 			}
 
+		case T_MinMaxExpr:
+			{
+				MinMaxExpr *expr = (MinMaxExpr *) node;
+
+				if (!exec_simple_check_node((Node *) expr->args))
+					return FALSE;
+
+				return TRUE;
+			}
+
 		case T_NullIfExpr:
 			{
 				NullIfExpr *expr = (NullIfExpr *) node;
