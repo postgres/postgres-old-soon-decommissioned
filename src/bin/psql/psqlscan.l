@@ -235,17 +235,18 @@ quotefail		{quote}{whitespace}*"-"
 xbstart			[bB]{quote}
 xbinside		[^']*
 
-/* Hexadecimal number
- */
+/* Hexadecimal number */
 xhstart			[xX]{quote}
 xhinside		[^']*
 
-/* National character
- */
+/* National character */
 xnstart			[nN]{quote}
 
+/* Quoted string that allows backslash escapes */
+xestart			[eE]{quote}
+
 /* Extended quote
- * xqdouble implements embedded quote
+ * xqdouble implements embedded quote, ''''
  */
 xqstart			{quote}
 xqdouble		{quote}{quote}
@@ -447,6 +448,10 @@ other			.
 				}
 
 {xqstart}		{
+					BEGIN(xq);
+					ECHO;
+				}
+{xestart}		{
 					BEGIN(xq);
 					ECHO;
 				}

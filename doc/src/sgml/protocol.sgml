@@ -1072,10 +1072,13 @@
     <literal>is_superuser</>,
     <literal>session_authorization</>,
     <literal>DateStyle</>,
-    <literal>TimeZone</>, and
-    <literal>integer_datetimes</>.
+    <literal>TimeZone</>,
+    <literal>integer_datetimes</>, and
+    <literal>standard_compliant_strings</>.
     (<literal>server_encoding</>, <literal>TimeZone</>, and
-    <literal>integer_datetimes</> were not reported by releases before 8.0.)
+    <literal>integer_datetimes</> were not reported by releases before 8.0;
+    <literal>standard_compliant_strings</> was not reported by releases
+    before 8.1.)
     Note that
     <literal>server_version</>,
     <literal>server_encoding</> and

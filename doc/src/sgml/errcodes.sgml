@@ -371,6 +371,11 @@
 </row>
 
 <row>
+<entry><literal>22P06</literal></entry>
+<entry>NONSTANDARD USE OF ESCAPE CHARACTER</entry>
+</row>
+
+<row>
 <entry><literal>22010</literal></entry>
 <entry>INVALID INDICATOR PARAMETER VALUE</entry>
 </row>
