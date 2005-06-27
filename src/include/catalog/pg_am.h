@@ -112,7 +112,7 @@ DESCR("b-tree index access method");
 DATA(insert OID = 405 (  hash	1 1 0 f f f f t hashinsert hashbeginscan hashgettuple hashgetmulti hashrescan hashendscan hashmarkpos hashrestrpos hashbuild hashbulkdelete - hashcostestimate ));
 DESCR("hash index access method");
 #define HASH_AM_OID 405
-DATA(insert OID = 783 (  gist	100 7 0 f t f f f gistinsert gistbeginscan gistgettuple gistgetmulti gistrescan gistendscan gistmarkpos gistrestrpos gistbuild gistbulkdelete gistvacuumcleanup gistcostestimate ));
+DATA(insert OID = 783 (  gist	100 7 0 f t f f t gistinsert gistbeginscan gistgettuple gistgetmulti gistrescan gistendscan gistmarkpos gistrestrpos gistbuild gistbulkdelete gistvacuumcleanup gistcostestimate ));
 DESCR("GiST index access method");
 #define GIST_AM_OID 783
 

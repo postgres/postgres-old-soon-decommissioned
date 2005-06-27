@@ -19,6 +19,8 @@
 #include "storage/bufpage.h"
 #include "storage/off.h"
 #include "utils/rel.h"
+#include "access/xlog.h"
+#include "access/xlogdefs.h"
 
 /*
  * amproc indexes for GiST indexes.
@@ -39,9 +41,22 @@
 #define F_DELETED		(1 << 1)
 #define F_TUPLES_DELETED	(1 << 2)
 
+typedef XLogRecPtr GistNSN;
+
 typedef struct GISTPageOpaqueData
 {
-	uint32		flags;
+	uint8		flags;
+
+   /* number page to which current one is splitted in last split */
+	uint8		nsplited;
+
+   /* level of page, 0 - leaf */
+	uint16		level;
+	BlockNumber	rightlink;
+
+   /* the only meaning - change this value if
+      page split. */
+	GistNSN		nsn;
 } GISTPageOpaqueData;
 
 typedef GISTPageOpaqueData *GISTPageOpaque;
@@ -90,18 +105,20 @@ typedef struct GISTENTRY
 	bool		leafkey;
 } GISTENTRY;
 
-#define GistPageIsLeaf(page)	(((GISTPageOpaque) PageGetSpecialPointer(page))->flags & F_LEAF)
+#define	GistPageGetOpaque(page)	( (GISTPageOpaque) PageGetSpecialPointer(page) )
+
+#define GistPageIsLeaf(page)	( GistPageGetOpaque(page)->flags & F_LEAF)
 #define GIST_LEAF(entry) (GistPageIsLeaf((entry)->page))
-#define GistPageSetLeaf(page)	(((GISTPageOpaque) PageGetSpecialPointer(page))->flags |= F_LEAF)
-#define GistPageSetNonLeaf(page)	(((GISTPageOpaque) PageGetSpecialPointer(page))->flags &= ~F_LEAF)
+#define GistPageSetLeaf(page)	( GistPageGetOpaque(page)->flags |= F_LEAF)
+#define GistPageSetNonLeaf(page) 	( GistPageGetOpaque(page)->flags &= ~F_LEAF)
 
-#define GistPageIsDeleted(page)	(((GISTPageOpaque) PageGetSpecialPointer(page))->flags & F_DELETED)
-#define GistPageSetDeleted(page)	(((GISTPageOpaque) PageGetSpecialPointer(page))->flags |= F_DELETED)
-#define GistPageSetNonDeleted(page)	(((GISTPageOpaque) PageGetSpecialPointer(page))->flags &= ~F_DELETED)
+#define GistPageIsDeleted(page)	( GistPageGetOpaque(page)->flags & F_DELETED)
+#define GistPageSetDeleted(page)	( GistPageGetOpaque(page)->flags |= F_DELETED)
+#define GistPageSetNonDeleted(page)	( GistPageGetOpaque(page)->flags &= ~F_DELETED)
 
-#define GistTuplesDeleted(page)	(((GISTPageOpaque) PageGetSpecialPointer(page))->flags & F_TUPLES_DELETED)
-#define GistMarkTuplesDeleted(page)	(((GISTPageOpaque) PageGetSpecialPointer(page))->flags |= F_TUPLES_DELETED)
-#define GistClearTuplesDeleted(page)	(((GISTPageOpaque) PageGetSpecialPointer(page))->flags &= ~F_TUPLES_DELETED)
+#define GistTuplesDeleted(page)	( GistPageGetOpaque(page)->flags & F_TUPLES_DELETED)
+#define GistMarkTuplesDeleted(page)	( GistPageGetOpaque(page)->flags |= F_TUPLES_DELETED)
+#define GistClearTuplesDeleted(page)	( GistPageGetOpaque(page)->flags &= ~F_TUPLES_DELETED)
 
 /*
  * Vector of GISTENTRY structs; user-defined methods union and pick

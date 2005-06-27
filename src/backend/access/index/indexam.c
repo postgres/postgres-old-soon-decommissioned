@@ -287,7 +287,6 @@ index_beginscan_internal(Relation indexRelation,
 	FmgrInfo   *procedure;
 
 	RELATION_CHECKS;
-	GET_REL_PROCEDURE(ambeginscan);
 
 	RelationIncrementReferenceCount(indexRelation);
 
@@ -299,6 +298,13 @@ index_beginscan_internal(Relation indexRelation,
 	 * that we will rebuild it and not just flush it...
 	 */
 	LockRelation(indexRelation, AccessShareLock);
+
+	/*
+	 * LockRelation can clean rd_aminfo structure, so fill procedure
+	 * after LockRelation 
+	 */
+
+	GET_REL_PROCEDURE(ambeginscan);
 
 	/*
 	 * Tell the AM to open a scan.
