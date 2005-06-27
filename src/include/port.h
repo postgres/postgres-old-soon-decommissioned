@@ -267,10 +267,6 @@ extern int	getopt(int nargc, char *const * nargv, const char *ostr);
 extern int	isinf(double x);
 #endif
 
-#if !defined(HAVE_GETHOSTNAME) && defined(KRB4)
-extern int	gethostname(char *name, int namelen);
-#endif
-
 #ifndef HAVE_RINT
 extern double rint(double x);
 #endif

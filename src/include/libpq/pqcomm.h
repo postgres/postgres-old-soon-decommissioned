@@ -160,7 +160,7 @@ extern bool Db_user_namespace;
 /* These are the authentication request codes sent by the backend. */
 
 #define AUTH_REQ_OK			0	/* User is authenticated  */
-#define AUTH_REQ_KRB4		1	/* Kerberos V4 */
+#define AUTH_REQ_KRB4		1	/* Kerberos V4. Not supported any more. */
 #define AUTH_REQ_KRB5		2	/* Kerberos V5 */
 #define AUTH_REQ_PASSWORD	3	/* Password */
 #define AUTH_REQ_CRYPT		4	/* crypt password */

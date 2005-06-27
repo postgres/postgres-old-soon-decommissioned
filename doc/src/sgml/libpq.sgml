@@ -283,7 +283,7 @@ PGconn *PQconnectdb(const char *conninfo);
      <term><literal>krbsrvname</literal></term>
      <listitem>
       <para>
-       Kerberos service name to use when authenticating with Kerberos 4 or 5.
+       Kerberos service name to use when authenticating with Kerberos 5.
        This must match the service name specified in the server
        configuration for Kerberos authentication to succeed. (See also
        <xref linkend="kerberos-auth">.)
@@ -3813,7 +3813,7 @@ setting, and is only available if
  <primary><envar>PGKRBSRVNAME</envar></primary>
 </indexterm>
 <envar>PGKRBSRVNAME</envar> sets the Kerberos service name to use when
-authenticating with Kerberos 4 or 5.
+authenticating with Kerberos 5.
 </para>
 </listitem>
 <listitem>

@@ -262,7 +262,7 @@ struct pg_conn
 	char	   *pguser;			/* Postgres username and password, if any */
 	char	   *pgpass;
 	char	   *sslmode;		/* SSL mode (require,prefer,allow,disable) */
-#if defined(KRB5) || defined(KRB4)
+#ifdef KRB5
 	char       *krbsrvname;     /* Kerberos service name */
 #endif
 
