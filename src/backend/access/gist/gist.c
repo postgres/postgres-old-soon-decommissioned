@@ -421,13 +421,10 @@ gistplacetopage(GISTInsertState *state, GISTSTATE *giststate) {
 	else
 	{
 		/* enough space */
-		OffsetNumber l, off;
 		XLogRecPtr	oldlsn;
 
-		off = ( PageIsEmpty(state->stack->page) ) ? 
-			FirstOffsetNumber : OffsetNumberNext(PageGetMaxOffsetNumber(state->stack->page));
-		
-		l = gistfillbuffer(state->r, state->stack->page, state->itup, state->ituplen, off);
+		gistfillbuffer(state->r, state->stack->page, state->itup, state->ituplen, InvalidOffsetNumber);
+
 		oldlsn = PageGetLSN(state->stack->page);
 		if ( !state->r->rd_istemp ) {
 			OffsetNumber	noffs=0, offs[ MAXALIGN( sizeof(OffsetNumber) ) / sizeof(OffsetNumber) ];
@@ -999,10 +996,9 @@ gistSplit(Relation r,
 	}
 	else
 	{
-		OffsetNumber l;
 		char *ptr;
 
-		l = gistfillbuffer(r, right, rvectup, v.spl_nright, FirstOffsetNumber);
+		gistfillbuffer(r, right, rvectup, v.spl_nright, FirstOffsetNumber);
 		/* XLOG stuff */
 		ROTATEDIST(*dist);
 		(*dist)->block.blkno = BufferGetBlockNumber(rightbuf);
@@ -1035,10 +1031,9 @@ gistSplit(Relation r,
 	}
 	else
 	{
-		OffsetNumber l;
 		char *ptr;
 
-		l = gistfillbuffer(r, left, lvectup, v.spl_nleft, FirstOffsetNumber);
+		gistfillbuffer(r, left, lvectup, v.spl_nleft, FirstOffsetNumber);
 		/* XLOG stuff */
 		ROTATEDIST(*dist);
 		(*dist)->block.blkno = BufferGetBlockNumber(leftbuf);

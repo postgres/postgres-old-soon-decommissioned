@@ -198,14 +198,8 @@ gistRedoEntryUpdateRecord(XLogRecPtr lsn, XLogRecord *record, bool isnewroot) {
 		}
 
 		/* add tuples */
-		if ( xlrec.len > 0 ) {
-        	        OffsetNumber off = (PageIsEmpty(page)) ?  
-        	                FirstOffsetNumber
-        	                :
-        	                OffsetNumberNext(PageGetMaxOffsetNumber(page));
-
-			gistfillbuffer(reln, page, xlrec.itup, xlrec.len, off);
-		}
+		if ( xlrec.len > 0 ) 
+			gistfillbuffer(reln, page, xlrec.itup, xlrec.len, InvalidOffsetNumber);
 
 		/* special case: leafpage, nothing to insert, nothing to delete, then
 		   vacuum marks page */
@@ -623,9 +617,7 @@ gistContinueInsert(gistIncompleteInsert *insert) {
 						}
 				}
 			} else 
-				gistfillbuffer( index, pages[numbuffer-1], itup, lenitup, 
-					(PageIsEmpty(pages[numbuffer-1])) ? 
-						FirstOffsetNumber : OffsetNumberNext(PageGetMaxOffsetNumber(pages[numbuffer-1])) );
+				gistfillbuffer( index, pages[numbuffer-1], itup, lenitup, InvalidOffsetNumber); 
 
 			lenitup=numbuffer;
 			for(j=0;j<numbuffer;j++) {

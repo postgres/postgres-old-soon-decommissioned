@@ -62,6 +62,10 @@ gistfillbuffer(Relation r, Page page, IndexTuple *itup,
 	OffsetNumber l = InvalidOffsetNumber;
 	int			i;
 
+	if ( off == InvalidOffsetNumber ) 
+		off = ( PageIsEmpty(page) ) ?  FirstOffsetNumber : 
+			OffsetNumberNext(PageGetMaxOffsetNumber(page));
+
 	for (i = 0; i < len; i++)
 	{
 		l = PageAddItem(page, (Item) itup[i], IndexTupleSize(itup[i]),

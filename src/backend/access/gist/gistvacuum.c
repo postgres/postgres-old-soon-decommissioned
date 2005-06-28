@@ -199,12 +199,7 @@ gistVacuumUpdate( GistVacuum *gv, BlockNumber blkno, bool needunion ) {
 				needunion = false; /* gistSplit already forms unions */
 			} else {
 				/* enough free space */
-				OffsetNumber off = (PageIsEmpty(page)) ?
-					FirstOffsetNumber
-					:
-					OffsetNumberNext(PageGetMaxOffsetNumber(page));
-
-				gistfillbuffer(gv->index, page, addon, curlenaddon, off); 
+				gistfillbuffer(gv->index, page, addon, curlenaddon, InvalidOffsetNumber); 
 			} 
 		}
 	}
