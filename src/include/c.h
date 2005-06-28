@@ -366,7 +366,7 @@ typedef double float8;
 
 /*
  * Oid, RegProcedure, TransactionId, SubTransactionId, MultiXactId,
- * CommandId, AclId
+ * CommandId
  */
 
 /* typedef Oid is in postgres_ext.h */
@@ -393,8 +393,6 @@ typedef uint32 MultiXactOffset;
 typedef uint32 CommandId;
 
 #define FirstCommandId	((CommandId) 0)
-
-typedef int32 AclId;			/* user and group identifiers */
 
 /*
  * Array indexing support
@@ -506,8 +504,6 @@ typedef NameData *Name;
 		(((long)(pointer) % (sizeof (type))) == 0)
 
 #define OidIsValid(objectId)  ((bool) ((objectId) != InvalidOid))
-
-#define AclIdIsValid(aclId)  ((bool) ((aclId) != 0))
 
 #define RegProcedureIsValid(p)	OidIsValid(p)
 

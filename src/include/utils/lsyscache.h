@@ -104,8 +104,8 @@ extern void free_attstatsslot(Oid atttype,
 				  Datum *values, int nvalues,
 				  float4 *numbers, int nnumbers);
 extern char *get_namespace_name(Oid nspid);
-extern AclId get_usesysid(const char *username);
-extern AclId get_grosysid(char *groname);
+extern Oid get_roleid(const char *rolname);
+extern Oid get_roleid_checked(const char *rolname);
 
 #define is_array_type(typid)  (get_element_type(typid) != InvalidOid)
 

@@ -36,7 +36,7 @@
 CATALOG(pg_tablespace,1213) BKI_SHARED_RELATION
 {
 	NameData	spcname;		/* tablespace name */
-	int4		spcowner;		/* sysid of owner */
+	Oid			spcowner;		/* owner of tablespace */
 	text		spclocation;	/* physical location (VAR LENGTH) */
 	aclitem		spcacl[1];		/* access permissions (VAR LENGTH) */
 } FormData_pg_tablespace;

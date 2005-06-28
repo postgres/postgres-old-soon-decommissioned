@@ -29,7 +29,7 @@
 
 
 int
-md5_crypt_verify(const Port *port, const char *user, char *client_pass)
+md5_crypt_verify(const Port *port, const char *role, char *client_pass)
 {
 	char	   *shadow_pass = NULL,
 			   *valuntil = NULL,
@@ -39,13 +39,11 @@ md5_crypt_verify(const Port *port, const char *user, char *client_pass)
 	ListCell   *token;
 	char	   *crypt_client_pass = client_pass;
 
-	if ((line = get_user_line(user)) == NULL)
+	if ((line = get_role_line(role)) == NULL)
 		return STATUS_ERROR;
 
-	/* Skip over username and usesysid */
+	/* Skip over rolename */
 	token = list_head(*line);
-	if (token)
-		token = lnext(token);
 	if (token)
 		token = lnext(token);
 	if (token)
@@ -146,17 +144,28 @@ md5_crypt_verify(const Port *port, const char *user, char *client_pass)
 		/*
 		 * Password OK, now check to be sure we are not past valuntil
 		 */
-		AbsoluteTime vuntil;
-
 		if (valuntil == NULL || *valuntil == '\0')
-			vuntil = INVALID_ABSTIME;
-		else
-			vuntil = DatumGetAbsoluteTime(DirectFunctionCall1(abstimein,
-											 CStringGetDatum(valuntil)));
-		if (vuntil != INVALID_ABSTIME && vuntil < GetCurrentAbsoluteTime())
-			retval = STATUS_ERROR;
-		else
 			retval = STATUS_OK;
+		else
+		{
+			TimestampTz vuntil;
+			AbsoluteTime sec;
+			int			usec;
+			TimestampTz curtime;
+
+			vuntil = DatumGetTimestampTz(DirectFunctionCall3(timestamptz_in,
+								CStringGetDatum(valuntil),
+								ObjectIdGetDatum(InvalidOid),
+								Int32GetDatum(-1)));
+
+			sec = GetCurrentAbsoluteTimeUsec(&usec);
+			curtime = AbsoluteTimeUsecToTimestampTz(sec, usec);
+
+			if (vuntil < curtime)
+				retval = STATUS_ERROR;
+			else
+				retval = STATUS_OK;
+		}
 	}
 
 	if (port->auth_method == uaMD5)

@@ -15,7 +15,6 @@
 #include "postgres.h"
 
 #include "access/xact.h"
-#include "catalog/pg_shadow.h"
 #include "fmgr.h"
 #include "funcapi.h"
 #include "miscadmin.h"
@@ -306,7 +305,7 @@ pg_stat_get_backend_userid(PG_FUNCTION_ARGS)
 	if (!OidIsValid(beentry->userid))
 		PG_RETURN_NULL();
 
-	PG_RETURN_INT32(beentry->userid);
+	PG_RETURN_OID(beentry->userid);
 }
 
 

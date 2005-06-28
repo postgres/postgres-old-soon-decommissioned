@@ -5108,7 +5108,7 @@ ParseLongOption(const char *string, char **name, char **value)
 
 
 /*
- * Handle options fetched from pg_database.datconfig or pg_shadow.useconfig.
+ * Handle options fetched from pg_database.datconfig or pg_authid.rolconfig.
  * The array parameter must be an array of TEXT (it must not be NULL).
  */
 void
@@ -5154,7 +5154,7 @@ ProcessGUCArray(ArrayType *array, GucSource source)
 
 		/*
 		 * We process all these options at SUSET level.  We assume that
-		 * the right to insert an option into pg_database or pg_shadow was
+		 * the right to insert an option into pg_database or pg_authid was
 		 * checked when it was inserted.
 		 */
 		SetConfigOption(name, value, PGC_SUSET, source);

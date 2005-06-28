@@ -20,6 +20,6 @@
 extern void CreateConversionCommand(CreateConversionStmt *parsetree);
 extern void DropConversionCommand(List *conversion_name, DropBehavior behavior);
 extern void RenameConversion(List *name, const char *newname);
-extern void AlterConversionOwner(List *name, AclId newOwnerSysId);
+extern void AlterConversionOwner(List *name, Oid newOwnerId);
 
 #endif   /* CONVERSIONCMDS_H */

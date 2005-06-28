@@ -47,7 +47,7 @@ CATALOG(pg_class,1259) BKI_BOOTSTRAP
 	NameData	relname;		/* class name */
 	Oid			relnamespace;	/* OID of namespace containing this class */
 	Oid			reltype;		/* OID of associated entry in pg_type */
-	int4		relowner;		/* class owner */
+	Oid			relowner;		/* class owner */
 	Oid			relam;			/* index access method; 0 if not an index */
 	Oid			relfilenode;	/* identifier of physical storage file */
 	Oid			reltablespace;	/* identifier of table space for relation */

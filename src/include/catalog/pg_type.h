@@ -44,7 +44,7 @@ CATALOG(pg_type,1247) BKI_BOOTSTRAP
 {
 	NameData	typname;		/* type name */
 	Oid			typnamespace;	/* OID of namespace containing this type */
-	int4		typowner;		/* type owner */
+	Oid			typowner;		/* type owner */
 
 	/*
 	 * For a fixed-size type, typlen is the number of bytes we use to

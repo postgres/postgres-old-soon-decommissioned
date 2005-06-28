@@ -41,7 +41,7 @@
 CATALOG(pg_namespace,2615)
 {
 	NameData	nspname;
-	int4		nspowner;
+	Oid			nspowner;
 	aclitem		nspacl[1];		/* VARIABLE LENGTH FIELD */
 } FormData_pg_namespace;
 
@@ -82,6 +82,6 @@ DESCR("Standard public schema");
 /*
  * prototypes for functions in pg_namespace.c
  */
-extern Oid NamespaceCreate(const char *nspName, int32 ownerSysId);
+extern Oid NamespaceCreate(const char *nspName, Oid ownerId);
 
 #endif   /* PG_NAMESPACE_H */

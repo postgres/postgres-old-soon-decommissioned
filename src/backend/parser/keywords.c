@@ -269,6 +269,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"returns", RETURNS},
 	{"revoke", REVOKE},
 	{"right", RIGHT},
+	{"role", ROLE},
 	{"rollback", ROLLBACK},
 	{"row", ROW},
 	{"rows", ROWS},

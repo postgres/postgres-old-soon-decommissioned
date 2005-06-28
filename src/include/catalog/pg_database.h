@@ -36,7 +36,7 @@
 CATALOG(pg_database,1262) BKI_SHARED_RELATION
 {
 	NameData	datname;		/* database name */
-	int4		datdba;			/* sysid of owner */
+	Oid			datdba;			/* owner of database */
 	int4		encoding;		/* character encoding */
 	bool		datistemplate;	/* allowed as CREATE DATABASE template? */
 	bool		datallowconn;	/* new connections allowed? */

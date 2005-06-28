@@ -34,7 +34,6 @@
 #include "access/heapam.h"
 #include "access/xact.h"
 #include "catalog/pg_database.h"
-#include "catalog/pg_shadow.h"
 #include "libpq/libpq.h"
 #include "libpq/pqsignal.h"
 #include "mb/pg_wchar.h"

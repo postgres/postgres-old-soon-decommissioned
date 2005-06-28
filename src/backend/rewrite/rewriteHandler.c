@@ -945,7 +945,7 @@ ApplyRetrieveRule(Query *parsetree,
 	subrte->checkAsUser = rte->checkAsUser;
 
 	rte->requiredPerms = 0;		/* no permission check on subquery itself */
-	rte->checkAsUser = 0;
+	rte->checkAsUser = InvalidOid;
 
 	/*
 	 * FOR UPDATE/SHARE of view?

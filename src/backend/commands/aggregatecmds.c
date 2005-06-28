@@ -295,7 +295,7 @@ RenameAggregate(List *name, TypeName *basetype, const char *newname)
  * Change aggregate owner
  */
 void
-AlterAggregateOwner(List *name, TypeName *basetype, AclId newOwnerSysId)
+AlterAggregateOwner(List *name, TypeName *basetype, Oid newOwnerId)
 {
 	Oid			basetypeOid;
 	Oid			procOid;
@@ -329,7 +329,7 @@ AlterAggregateOwner(List *name, TypeName *basetype, AclId newOwnerSysId)
 	 * If the new owner is the same as the existing owner, consider the
 	 * command to have succeeded.  This is for dump restoration purposes.
 	 */
-	if (procForm->proowner != newOwnerSysId)
+	if (procForm->proowner != newOwnerId)
 	{
 		/* Otherwise, must be superuser to change object ownership */
 		if (!superuser())
@@ -341,7 +341,7 @@ AlterAggregateOwner(List *name, TypeName *basetype, AclId newOwnerSysId)
 		 * Modify the owner --- okay to scribble on tup because it's a
 		 * copy
 		 */
-		procForm->proowner = newOwnerSysId;
+		procForm->proowner = newOwnerId;
 
 		simple_heap_update(rel, &tup->t_self, tup);
 		CatalogUpdateIndexes(rel, tup);

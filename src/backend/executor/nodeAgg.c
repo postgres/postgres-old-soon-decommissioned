@@ -1270,7 +1270,7 @@ ExecInitAgg(Agg *node, EState *estate)
 		/* Check that aggregate owner has permission to call component fns */
 		{
 			HeapTuple	procTuple;
-			AclId		aggOwner;
+			Oid		aggOwner;
 
 			procTuple = SearchSysCache(PROCOID,
 									   ObjectIdGetDatum(aggref->aggfnoid),

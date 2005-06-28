@@ -226,7 +226,7 @@ typedef FormData_pg_attribute *Form_pg_attribute;
 #define Schema_pg_type \
 { 1247, {"typname"},	   19, -1, NAMEDATALEN, 1, 0, -1, -1, false, 'p', 'i', true, false, false, true, 0 }, \
 { 1247, {"typnamespace"},  26, -1,	4,	2, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0 }, \
-{ 1247, {"typowner"},	   23, -1,	4,	3, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0 }, \
+{ 1247, {"typowner"},	   26, -1,	4,	3, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0 }, \
 { 1247, {"typlen"},		   21, -1,	2,	4, 0, -1, -1, true, 'p', 's', true, false, false, true, 0 }, \
 { 1247, {"typbyval"},	   16, -1,	1,	5, 0, -1, -1, true, 'p', 'c', true, false, false, true, 0 }, \
 { 1247, {"typtype"},	   18, -1,	1,	6, 0, -1, -1, true, 'p', 'c', true, false, false, true, 0 }, \
@@ -250,7 +250,7 @@ typedef FormData_pg_attribute *Form_pg_attribute;
 
 DATA(insert ( 1247 typname			19 -1 NAMEDATALEN	1 0 -1 -1 f p i t f f t 0));
 DATA(insert ( 1247 typnamespace		26 -1 4   2 0 -1 -1 t p i t f f t 0));
-DATA(insert ( 1247 typowner			23 -1 4   3 0 -1 -1 t p i t f f t 0));
+DATA(insert ( 1247 typowner			26 -1 4   3 0 -1 -1 t p i t f f t 0));
 DATA(insert ( 1247 typlen			21 -1 2   4 0 -1 -1 t p s t f f t 0));
 DATA(insert ( 1247 typbyval			16 -1 1   5 0 -1 -1 t p c t f f t 0));
 DATA(insert ( 1247 typtype			18 -1 1   6 0 -1 -1 t p c t f f t 0));
@@ -286,7 +286,7 @@ DATA(insert ( 1247 tableoid			26 0  4  -7 0 -1 -1 t p i t f f t 0));
 #define Schema_pg_proc \
 { 1255, {"proname"},			19, -1, NAMEDATALEN,  1, 0, -1, -1, false, 'p', 'i', true, false, false, true, 0 }, \
 { 1255, {"pronamespace"},		26, -1, 4,	2, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0 }, \
-{ 1255, {"proowner"},			23, -1, 4,	3, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0 }, \
+{ 1255, {"proowner"},			26, -1, 4,	3, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0 }, \
 { 1255, {"prolang"},			26, -1, 4,	4, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0 }, \
 { 1255, {"proisagg"},			16, -1, 1,	5, 0, -1, -1, true, 'p', 'c', true, false, false, true, 0 }, \
 { 1255, {"prosecdef"},			16, -1, 1,	6, 0, -1, -1, true, 'p', 'c', true, false, false, true, 0 }, \
@@ -305,7 +305,7 @@ DATA(insert ( 1247 tableoid			26 0  4  -7 0 -1 -1 t p i t f f t 0));
 
 DATA(insert ( 1255 proname			19 -1 NAMEDATALEN	1 0 -1 -1 f p i t f f t 0));
 DATA(insert ( 1255 pronamespace		26 -1 4   2 0 -1 -1 t p i t f f t 0));
-DATA(insert ( 1255 proowner			23 -1 4   3 0 -1 -1 t p i t f f t 0));
+DATA(insert ( 1255 proowner			26 -1 4   3 0 -1 -1 t p i t f f t 0));
 DATA(insert ( 1255 prolang			26 -1 4   4 0 -1 -1 t p i t f f t 0));
 DATA(insert ( 1255 proisagg			16 -1 1   5 0 -1 -1 t p c t f f t 0));
 DATA(insert ( 1255 prosecdef		16 -1 1   6 0 -1 -1 t p c t f f t 0));
@@ -385,7 +385,7 @@ DATA(insert ( 1249 tableoid			26 0  4  -7 0 -1 -1 t p i t f f t 0));
 { 1259, {"relname"},	   19, -1, NAMEDATALEN, 1, 0, -1, -1, false, 'p', 'i', true, false, false, true, 0 }, \
 { 1259, {"relnamespace"},  26, -1,	4,	2, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0 }, \
 { 1259, {"reltype"},	   26, -1,	4,	3, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0 }, \
-{ 1259, {"relowner"},	   23, -1,	4,	4, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0 }, \
+{ 1259, {"relowner"},	   26, -1,	4,	4, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0 }, \
 { 1259, {"relam"},		   26, -1,	4,	5, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0 }, \
 { 1259, {"relfilenode"},   26, -1,	4,	6, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0 }, \
 { 1259, {"reltablespace"}, 26, -1,	4,	7, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0 }, \
@@ -411,7 +411,7 @@ DATA(insert ( 1249 tableoid			26 0  4  -7 0 -1 -1 t p i t f f t 0));
 DATA(insert ( 1259 relname			19 -1 NAMEDATALEN	1 0 -1 -1 f p i t f f t 0));
 DATA(insert ( 1259 relnamespace		26 -1 4   2 0 -1 -1 t p i t f f t 0));
 DATA(insert ( 1259 reltype			26 -1 4   3 0 -1 -1 t p i t f f t 0));
-DATA(insert ( 1259 relowner			23 -1 4   4 0 -1 -1 t p i t f f t 0));
+DATA(insert ( 1259 relowner			26 -1 4   4 0 -1 -1 t p i t f f t 0));
 DATA(insert ( 1259 relam			26 -1 4   5 0 -1 -1 t p i t f f t 0));
 DATA(insert ( 1259 relfilenode		26 -1 4   6 0 -1 -1 t p i t f f t 0));
 DATA(insert ( 1259 reltablespace	26 -1 4   7 0 -1 -1 t p i t f f t 0));

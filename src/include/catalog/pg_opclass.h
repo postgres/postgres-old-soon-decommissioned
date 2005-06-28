@@ -57,7 +57,7 @@ CATALOG(pg_opclass,2616)
 	Oid			opcamid;		/* index access method opclass is for */
 	NameData	opcname;		/* name of this opclass */
 	Oid			opcnamespace;	/* namespace of this opclass */
-	int4		opcowner;		/* opclass owner */
+	Oid			opcowner;		/* opclass owner */
 	Oid			opcintype;		/* type of data indexed by opclass */
 	bool		opcdefault;		/* T if opclass is default for opcintype */
 	Oid			opckeytype;		/* type of data in index, or InvalidOid */

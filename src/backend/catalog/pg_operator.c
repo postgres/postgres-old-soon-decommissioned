@@ -235,7 +235,7 @@ OperatorShellMake(const char *operatorName,
 	namestrcpy(&oname, operatorName);
 	values[i++] = NameGetDatum(&oname); /* oprname */
 	values[i++] = ObjectIdGetDatum(operatorNamespace);	/* oprnamespace */
-	values[i++] = Int32GetDatum(GetUserId());	/* oprowner */
+	values[i++] = ObjectIdGetDatum(GetUserId());	/* oprowner */
 	values[i++] = CharGetDatum(leftTypeId ? (rightTypeId ? 'b' : 'r') : 'l');	/* oprkind */
 	values[i++] = BoolGetDatum(false);	/* oprcanhash */
 	values[i++] = ObjectIdGetDatum(leftTypeId); /* oprleft */
@@ -519,7 +519,7 @@ OperatorCreate(const char *operatorName,
 	namestrcpy(&oname, operatorName);
 	values[i++] = NameGetDatum(&oname); /* oprname */
 	values[i++] = ObjectIdGetDatum(operatorNamespace);	/* oprnamespace */
-	values[i++] = Int32GetDatum(GetUserId());	/* oprowner */
+	values[i++] = ObjectIdGetDatum(GetUserId());	/* oprowner */
 	values[i++] = CharGetDatum(leftTypeId ? (rightTypeId ? 'b' : 'r') : 'l');	/* oprkind */
 	values[i++] = BoolGetDatum(canHash);		/* oprcanhash */
 	values[i++] = ObjectIdGetDatum(leftTypeId); /* oprleft */

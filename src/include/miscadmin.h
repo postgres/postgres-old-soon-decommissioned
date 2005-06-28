@@ -228,21 +228,21 @@ extern char *DatabasePath;
 /* now in utils/init/miscinit.c */
 extern void SetDatabasePath(const char *path);
 
-extern char *GetUserNameFromId(AclId userid);
-extern AclId GetUserId(void);
-extern void SetUserId(AclId userid);
-extern AclId GetSessionUserId(void);
-extern void SetSessionUserId(AclId userid);
-extern void InitializeSessionUserId(const char *username);
+extern char *GetUserNameFromId(Oid roleid);
+extern Oid GetUserId(void);
+extern void SetUserId(Oid roleid);
+extern Oid GetSessionUserId(void);
+extern void SetSessionUserId(Oid roleid);
+extern void InitializeSessionUserId(const char *rolename);
 extern void InitializeSessionUserIdStandalone(void);
-extern void SetSessionAuthorization(AclId userid, bool is_superuser);
+extern void SetSessionAuthorization(Oid roleid, bool is_superuser);
 
 extern void SetDataDir(const char *dir);
 extern char *make_absolute_path(const char *path);
 
 /* in utils/misc/superuser.c */
 extern bool superuser(void);	/* current user is superuser */
-extern bool superuser_arg(AclId userid);		/* given user is superuser */
+extern bool superuser_arg(Oid roleid);		/* given user is superuser */
 
 
 /*****************************************************************************

@@ -101,7 +101,7 @@ typedef struct PgStat_MsgBestart
 {
 	PgStat_MsgHdr	m_hdr;
 	Oid				m_databaseid;
-	AclId			m_userid;
+	Oid 			m_userid;
 	SockAddr		m_clientaddr;
 } PgStat_MsgBestart;
 

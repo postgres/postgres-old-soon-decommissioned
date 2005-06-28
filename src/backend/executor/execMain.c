@@ -352,7 +352,7 @@ ExecCheckRTEPerms(RangeTblEntry *rte)
 {
 	AclMode		requiredPerms;
 	Oid			relOid;
-	AclId		userid;
+	Oid		userid;
 
 	/*
 	 * Only plain-relation RTEs need to be checked here.  Subquery RTEs

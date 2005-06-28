@@ -3036,7 +3036,7 @@ ri_PlanCheck(const char *querystr, int nargs, Oid *argtypes,
 {
 	void	   *qplan;
 	Relation	query_rel;
-	AclId		save_uid;
+	Oid			save_uid;
 
 	/*
 	 * The query is always run against the FK table except when this is an
@@ -3089,7 +3089,7 @@ ri_PerformCheck(RI_QueryKey *qkey, void *qplan,
 	Snapshot	crosscheck_snapshot;
 	int			limit;
 	int			spi_result;
-	AclId		save_uid;
+	Oid			save_uid;
 	Datum		vals[RI_MAX_NUMKEYS * 2];
 	char		nulls[RI_MAX_NUMKEYS * 2];
 

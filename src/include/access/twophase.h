@@ -34,7 +34,7 @@ extern PGPROC *TwoPhaseGetDummyProc(TransactionId xid);
 
 extern GlobalTransaction MarkAsPreparing(TransactionId xid, const char *gid,
 										 TimestampTz prepared_at,
-										 AclId owner, Oid databaseid);
+										 Oid owner, Oid databaseid);
 
 extern void StartPrepare(GlobalTransaction gxact);
 extern void EndPrepare(GlobalTransaction gxact);

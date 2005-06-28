@@ -1535,7 +1535,7 @@ _outRangeTblEntry(StringInfo str, RangeTblEntry *node)
 	WRITE_BOOL_FIELD(inh);
 	WRITE_BOOL_FIELD(inFromCl);
 	WRITE_UINT_FIELD(requiredPerms);
-	WRITE_UINT_FIELD(checkAsUser);
+	WRITE_OID_FIELD(checkAsUser);
 }
 
 static void

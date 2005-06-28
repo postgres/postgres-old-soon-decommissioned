@@ -46,7 +46,7 @@ CATALOG(pg_conversion,2607)
 {
 	NameData	conname;
 	Oid			connamespace;
-	int4		conowner;
+	Oid			conowner;
 	int4		conforencoding;
 	int4		contoencoding;
 	regproc		conproc;
@@ -86,7 +86,7 @@ typedef FormData_pg_conversion *Form_pg_conversion;
 #include "nodes/parsenodes.h"
 
 extern Oid ConversionCreate(const char *conname, Oid connamespace,
-				 AclId conowner,
+				 Oid conowner,
 				 int32 conforencoding, int32 contoencoding,
 				 Oid conproc, bool def);
 extern void ConversionDrop(Oid conversionOid, DropBehavior behavior);

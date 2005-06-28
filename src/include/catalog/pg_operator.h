@@ -42,7 +42,7 @@ CATALOG(pg_operator,2617)
 {
 	NameData	oprname;		/* name of operator */
 	Oid			oprnamespace;	/* OID of namespace containing this oper */
-	int4		oprowner;		/* oper owner */
+	Oid			oprowner;		/* operator owner */
 	char		oprkind;		/* 'l', 'r', or 'b' */
 	bool		oprcanhash;		/* can be used in hash join? */
 	Oid			oprleft;		/* left arg type, or 0 if 'l' oprkind */

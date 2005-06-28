@@ -227,7 +227,7 @@ TypeCreate(const char *typeName,
 	namestrcpy(&name, typeName);
 	values[i++] = NameGetDatum(&name);	/* typname */
 	values[i++] = ObjectIdGetDatum(typeNamespace);		/* typnamespace */
-	values[i++] = Int32GetDatum(GetUserId());	/* typowner */
+	values[i++] = ObjectIdGetDatum(GetUserId());	/* typowner */
 	values[i++] = Int16GetDatum(internalSize);	/* typlen */
 	values[i++] = BoolGetDatum(passedByValue);	/* typbyval */
 	values[i++] = CharGetDatum(typeType);		/* typtype */

@@ -269,7 +269,7 @@ RemoveOperatorById(Oid operOid)
  */
 void
 AlterOperatorOwner(List *name, TypeName *typeName1, TypeName *typeName2,
-				   AclId newOwnerSysId)
+				   Oid newOwnerId)
 {
 	Oid			operOid;
 	HeapTuple	tup;
@@ -293,7 +293,7 @@ AlterOperatorOwner(List *name, TypeName *typeName1, TypeName *typeName2,
 	 * If the new owner is the same as the existing owner, consider the
 	 * command to have succeeded.  This is for dump restoration purposes.
 	 */
-	if (oprForm->oprowner != newOwnerSysId)
+	if (oprForm->oprowner != newOwnerId)
 	{
 		/* Otherwise, must be superuser to change object ownership */
 		if (!superuser())
@@ -305,7 +305,7 @@ AlterOperatorOwner(List *name, TypeName *typeName1, TypeName *typeName2,
 		 * Modify the owner --- okay to scribble on tup because it's a
 		 * copy
 		 */
-		oprForm->oprowner = newOwnerSysId;
+		oprForm->oprowner = newOwnerId;
 
 		simple_heap_update(rel, &tup->t_self, tup);
 

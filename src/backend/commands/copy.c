@@ -25,7 +25,6 @@
 #include "catalog/index.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_index.h"
-#include "catalog/pg_shadow.h"
 #include "catalog/pg_type.h"
 #include "commands/copy.h"
 #include "commands/trigger.h"
