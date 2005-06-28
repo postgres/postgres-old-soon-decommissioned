@@ -859,6 +859,9 @@ RenameRole(const char *oldname, const char *newname)
 	ReleaseSysCache(oldtuple);
 	heap_close(rel, NoLock);
 
+	/*
+	 * Set flag to update flat auth file at commit.
+	 */
 	auth_file_update_needed();
 }
 
@@ -902,6 +905,11 @@ GrantRole(GrantRoleStmt *stmt)
 						stmt->grantee_roles, grantee_ids,
 						stmt->admin_opt);
 	}
+
+	/*
+	 * Set flag to update flat auth file at commit.
+	 */
+	auth_file_update_needed();
 }
 
 /*
