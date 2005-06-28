@@ -471,7 +471,7 @@ InitPostgres(const char *dbname, const char *username)
 	InitializeSearchPath();
 
 	/* set up ACL framework (currently just sets RolMemCache callback) */
-	InitializeAcl();
+	initialize_acl();
 
 	/* initialize client encoding */
 	InitializeClientEncoding();

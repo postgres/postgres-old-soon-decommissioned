@@ -211,7 +211,7 @@ extern AclMode aclmask(const Acl *acl, Oid roleid, Oid ownerId,
 
 extern bool is_member_of_role(Oid member, Oid role);
 
-extern void InitializeAcl(void);
+extern void initialize_acl(void);
 
 /*
  * SQL functions (from acl.c)

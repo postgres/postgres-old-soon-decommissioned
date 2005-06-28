@@ -2414,7 +2414,7 @@ convert_tablespace_priv_string(text *priv_type_text)
 }
 
 void
-InitializeAcl(void)
+initialize_acl(void)
 {
 	if (!IsBootstrapProcessingMode())
 	{

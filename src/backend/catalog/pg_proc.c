@@ -266,7 +266,7 @@ ProcedureCreate(const char *procedureName,
 					(errcode(ERRCODE_DUPLICATE_FUNCTION),
 					 errmsg("function \"%s\" already exists with same argument types",
 							procedureName)));
-		if (GetUserId() != oldproc->proowner && !superuser())
+		if (!pg_proc_ownercheck(HeapTupleGetOid(oldtup), GetUserId()))
 			aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_PROC,
 						   procedureName);
 
