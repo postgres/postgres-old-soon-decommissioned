@@ -1440,7 +1440,7 @@ get_set_pwd(void)
 
 	check_ok();
 
-	snprintf(pwdpath, sizeof(pwdpath), "%s/global/pg_pwd", pg_data);
+	snprintf(pwdpath, sizeof(pwdpath), "%s/global/pg_auth", pg_data);
 	if (stat(pwdpath, &statbuf) != 0 || !S_ISREG(statbuf.st_mode))
 	{
 		fprintf(stderr,
