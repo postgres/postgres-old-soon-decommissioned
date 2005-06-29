@@ -362,6 +362,7 @@ gistplacetopage(GISTInsertState *state, GISTSTATE *giststate) {
 				Page page = (Page)BufferGetPage(ptr->buffer);
 				GistPageGetOpaque(page)->rightlink = ( ptr->next ) ?
 					ptr->next->block.blkno : InvalidBlockNumber;
+				GistPageGetOpaque(page)->nsn = PageGetLSN(page);
 				LockBuffer( ptr->buffer, GIST_UNLOCK  );
 				WriteBuffer(ptr->buffer);
 				ptr=ptr->next;
