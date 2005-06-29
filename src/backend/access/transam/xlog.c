@@ -43,6 +43,7 @@
 #include "storage/spin.h"
 #include "utils/builtins.h"
 #include "utils/guc.h"
+#include "utils/nabstime.h"
 #include "utils/relcache.h"
 
 

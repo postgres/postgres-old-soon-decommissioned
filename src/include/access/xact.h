@@ -17,7 +17,7 @@
 #include "access/xlog.h"
 #include "storage/relfilenode.h"
 #include "nodes/pg_list.h"
-#include "utils/nabstime.h"
+#include "utils/timestamp.h"
 
 
 /*
@@ -140,8 +140,7 @@ extern TransactionId GetCurrentTransactionId(void);
 extern TransactionId GetCurrentTransactionIdIfAny(void);
 extern SubTransactionId GetCurrentSubTransactionId(void);
 extern CommandId GetCurrentCommandId(void);
-extern AbsoluteTime GetCurrentTransactionStartTime(void);
-extern AbsoluteTime GetCurrentTransactionStartTimeUsec(int *usec);
+extern TimestampTz GetCurrentTransactionStartTimestamp(void);
 extern int	GetCurrentTransactionNestLevel(void);
 extern bool TransactionIdIsCurrentTransactionId(TransactionId xid);
 extern void CommandCounterIncrement(void);

@@ -105,6 +105,7 @@
 #include "utils/datum.h"
 #include "utils/int8.h"
 #include "utils/lsyscache.h"
+#include "utils/nabstime.h"
 #include "utils/pg_locale.h"
 #include "utils/selfuncs.h"
 #include "utils/syscache.h"

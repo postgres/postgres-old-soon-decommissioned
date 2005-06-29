@@ -47,7 +47,6 @@
 #include "storage/off.h"
 #include "storage/smgr.h"
 #include "tcop/dest.h"
-#include "utils/nabstime.h"
 #include "utils/rel.h"
 
 #define atooid(x)	((Oid) strtoul((x), NULL, 10))

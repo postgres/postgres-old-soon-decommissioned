@@ -149,9 +149,6 @@ static int	UseNewLine = 0;		/* Use EOF as query delimiters */
 #endif   /* TCOP_DONTUSENEWLINE */
 
 
-/* Backend startup time */
-TimestampTz	StartTime;
-
 /* ----------------------------------------------------------------
  *		decls for routines only used in this file
  * ----------------------------------------------------------------
@@ -2373,9 +2370,6 @@ PostgresMain(int argc, char *argv[], const char *username)
 	sigjmp_buf	local_sigjmp_buf;
 	volatile bool send_rfq = true;
 
-	AbsoluteTime            StartTimeSec;   /* integer part */
-      int                     StartTimeUSec;  /* microsecond part */
-
 #define PendingConfigOption(name,val) \
 	(guc_names = lappend(guc_names, pstrdup(name)), \
 	 guc_values = lappend(guc_values, pstrdup(val)))
@@ -2966,13 +2960,10 @@ PostgresMain(int argc, char *argv[], const char *username)
 	pgstat_bestart();
 
 	/*
-	 * Get stand-alone backend startup time
+	 * Remember stand-alone backend startup time
 	 */
 	if (!IsUnderPostmaster)
-	{
-		StartTimeSec = GetCurrentAbsoluteTimeUsec(&StartTimeUSec);
-		StartTime = AbsoluteTimeUsecToTimestampTz(StartTimeSec, StartTimeUSec);
-	}
+		PgStartTime = GetCurrentTimestamp();
 
 	/*
 	 * POSTGRES main processing loop begins here

@@ -25,7 +25,7 @@
 #include "miscadmin.h"
 #include "storage/fd.h"
 #include "nodes/pg_list.h"
-#include "utils/nabstime.h"
+#include "utils/timestamp.h"
 
 
 int
@@ -149,19 +149,13 @@ md5_crypt_verify(const Port *port, const char *role, char *client_pass)
 		else
 		{
 			TimestampTz vuntil;
-			AbsoluteTime sec;
-			int			usec;
-			TimestampTz curtime;
 
 			vuntil = DatumGetTimestampTz(DirectFunctionCall3(timestamptz_in,
 								CStringGetDatum(valuntil),
 								ObjectIdGetDatum(InvalidOid),
 								Int32GetDatum(-1)));
 
-			sec = GetCurrentAbsoluteTimeUsec(&usec);
-			curtime = AbsoluteTimeUsecToTimestampTz(sec, usec);
-
-			if (vuntil < curtime)
+			if (vuntil < GetCurrentTimestamp())
 				retval = STATUS_ERROR;
 			else
 				retval = STATUS_OK;

@@ -34,7 +34,6 @@
 #include "storage/fd.h"
 #include "storage/itemptr.h"
 #include "storage/off.h"
-#include "utils/nabstime.h"
 #include "utils/rel.h"
 
 /* Not needed now that this file is compiled as part of bootparse. */

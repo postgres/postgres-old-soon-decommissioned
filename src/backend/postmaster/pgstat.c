@@ -2026,10 +2026,8 @@ pgstat_add_backend(PgStat_MsgHdr *msg)
 
 	/* Put this new backend into the slot */
 	beentry->procpid = msg->m_procpid;
-	beentry->start_sec = 
-		GetCurrentAbsoluteTimeUsec(&beentry->start_usec);
-	beentry->activity_start_sec = 0;
-	beentry->activity_start_usec = 0;
+	beentry->start_timestamp = GetCurrentTimestamp();
+	beentry->activity_start_timestamp = 0;
 	beentry->activity[0] = '\0';
 
 	/*
@@ -2665,8 +2663,7 @@ pgstat_recv_activity(PgStat_MsgActivity *msg, int len)
 
 	StrNCpy(entry->activity, msg->m_what, PGSTAT_ACTIVITY_SIZE);
 
-	entry->activity_start_sec =
-		GetCurrentAbsoluteTimeUsec(&entry->activity_start_usec);
+	entry->activity_start_timestamp = GetCurrentTimestamp();
 }
 
 
