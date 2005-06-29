@@ -210,6 +210,7 @@ extern AclMode aclmask(const Acl *acl, Oid roleid, Oid ownerId,
 		AclMode mask, AclMaskHow how);
 
 extern bool is_member_of_role(Oid member, Oid role);
+extern bool is_admin_of_role(Oid member, Oid role);
 
 extern void initialize_acl(void);
 
