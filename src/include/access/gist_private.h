@@ -234,7 +234,7 @@ extern IndexTuple * gistSplit(Relation r, Buffer buffer, IndexTuple *itup,
                   int *len, SplitedPageLayout    **dist, GISTSTATE *giststate);
 
 extern GISTInsertStack* gistFindPath( Relation r, BlockNumber child, 
-	Buffer  (*myReadBuffer)(bool, Relation, BlockNumber) );
+	Buffer  (*myReadBuffer)(Relation, BlockNumber) );
 /* gistxlog.c */
 extern void gist_redo(XLogRecPtr lsn, XLogRecord *record);
 extern void gist_desc(char *buf, uint8 xl_info, char *rec);

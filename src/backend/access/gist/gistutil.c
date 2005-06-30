@@ -809,8 +809,6 @@ GISTInitBuffer(Buffer b, uint32 f)
 
 	opaque = GistPageGetOpaque(page);
 	opaque->flags = f;
-	opaque->nsplited = 0;
-	opaque->level = 0;
 	opaque->rightlink = InvalidBlockNumber;
 	memset( &(opaque->nsn), 0, sizeof(GistNSN) );
 }

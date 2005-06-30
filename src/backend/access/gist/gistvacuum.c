@@ -60,7 +60,6 @@ gistVacuumUpdate( GistVacuum *gv, BlockNumber blkno, bool needunion ) {
 	page = (Page) BufferGetPage(buffer);
 	maxoff = PageGetMaxOffsetNumber(page);
 
-
 	if ( GistPageIsLeaf(page) ) {
 		if ( GistTuplesDeleted(page) ) {
 			needunion = needwrite = true;

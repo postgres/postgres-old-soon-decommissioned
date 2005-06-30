@@ -45,13 +45,7 @@ typedef XLogRecPtr GistNSN;
 
 typedef struct GISTPageOpaqueData
 {
-	uint8		flags;
-
-   /* number page to which current one is splitted in last split */
-	uint8		nsplited;
-
-   /* level of page, 0 - leaf */
-	uint16		level;
+	uint32		flags; /* 29 bits are unused for now */ 
 	BlockNumber	rightlink;
 
    /* the only meaning - change this value if
