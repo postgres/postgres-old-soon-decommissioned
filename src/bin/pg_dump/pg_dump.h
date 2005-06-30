@@ -78,7 +78,8 @@ typedef enum
 	DO_CAST,
 	DO_TABLE_DATA,
 	DO_TABLE_TYPE,
-	DO_BLOBS
+	DO_BLOBS,
+	DO_BLOB_COMMENTS
 } DumpableObjectType;
 
 typedef struct _dumpableObject
