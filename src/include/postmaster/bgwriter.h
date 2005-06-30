@@ -23,7 +23,7 @@ extern int	CheckPointWarning;
 
 extern void BackgroundWriterMain(void);
 
-extern void RequestCheckpoint(bool waitforit);
+extern void RequestCheckpoint(bool waitforit, bool warnontime);
 
 extern bool ForwardFsyncRequest(RelFileNode rnode, BlockNumber segno);
 extern void AbsorbFsyncRequests(void);

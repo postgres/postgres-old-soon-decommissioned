@@ -1337,7 +1337,7 @@ XLogWrite(XLogwrtRqst WriteRqst)
 						if (XLOG_DEBUG)
 							elog(LOG, "time for a checkpoint, signaling bgwriter");
 #endif
-						RequestCheckpoint(false);
+						RequestCheckpoint(false, true);
 					}
 				}
 			}
@@ -5496,7 +5496,7 @@ pg_start_backup(PG_FUNCTION_ARGS)
 	 * will have different checkpoint positions and hence different
 	 * history file names, even if nothing happened in between.
 	 */
-	RequestCheckpoint(true);
+	RequestCheckpoint(true, false);
 
 	/*
 	 * Now we need to fetch the checkpoint record location, and also its

@@ -989,7 +989,7 @@ ProcessUtility(Node *parsetree,
 				ereport(ERROR,
 						(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
 						 errmsg("must be superuser to do CHECKPOINT")));
-			RequestCheckpoint(true);
+			RequestCheckpoint(true, false);
 			break;
 
 		case T_ReindexStmt:

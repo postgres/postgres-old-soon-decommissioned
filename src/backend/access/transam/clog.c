@@ -336,7 +336,7 @@ TruncateCLOG(TransactionId oldestXact)
 		return;					/* nothing to remove */
 
 	/* Perform a CHECKPOINT */
-	RequestCheckpoint(true);
+	RequestCheckpoint(true, false);
 
 	/* Now we can remove the old CLOG segment(s) */
 	SimpleLruTruncate(ClogCtl, cutoffPage);

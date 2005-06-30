@@ -542,7 +542,7 @@ createdb(const CreatedbStmt *stmt)
 	 * Perhaps if we ever implement CREATE DATABASE in a less cheesy
 	 * way, we can avoid this.
 	 */
-	RequestCheckpoint(true);
+	RequestCheckpoint(true, false);
 
 	/*
 	 * Set flag to update flat database file at commit.
@@ -668,7 +668,7 @@ dropdb(const char *dbname)
 	 * open files, which would cause rmdir() to fail.
 	 */
 #ifdef WIN32
-	RequestCheckpoint(true);
+	RequestCheckpoint(true, false);
 #endif
 
 	/*
