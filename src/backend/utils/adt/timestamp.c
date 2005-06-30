@@ -19,6 +19,7 @@
 #include <math.h>
 #include <float.h>
 #include <limits.h>
+#include <sys/time.h>
 
 #include "access/hash.h"
 #include "access/xact.h"
