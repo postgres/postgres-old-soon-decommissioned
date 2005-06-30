@@ -12,7 +12,7 @@
 exec sql include sql3types;
 exec sql include sqlca;
 
-static void error()
+static void error(void)
 {  printf("#%ld:%s\n",sqlca.sqlcode,sqlca.sqlerrm.sqlerrmc);
    exit(1);
 }
