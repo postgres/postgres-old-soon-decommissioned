@@ -597,7 +597,6 @@ _sendSQLLine(ArchiveHandle *AH, char *qry, char *eos)
 					}
 					else
 					{
-
 						if (qry[pos] == '\\')
 						{
 							if (AH->sqlparse.lastChar == '\\')

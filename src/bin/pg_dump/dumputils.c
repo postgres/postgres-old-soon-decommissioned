@@ -111,6 +111,27 @@ fmtId(const char *rawid)
 void
 appendStringLiteral(PQExpBuffer buf, const char *str, bool escapeAll)
 {
+	bool has_escapes = false;
+	const char *str2 = str;
+
+	while (*str2)
+	{
+		char		ch = *str2++;
+
+		if (ch == '\\' ||
+		    ((unsigned char) ch < (unsigned char) ' ' &&
+			 (escapeAll ||
+			  (ch != '\t' && ch != '\n' && ch != '\v' &&
+			   ch != '\f' && ch != '\r'))))
+		{
+			has_escapes = true;
+			break;
+		}
+	}
+	
+	if (has_escapes)
+		appendPQExpBufferChar(buf, 'E');
+	
 	appendPQExpBufferChar(buf, '\'');
 	while (*str)
 	{
@@ -122,9 +143,9 @@ appendStringLiteral(PQExpBuffer buf, const char *str, bool escapeAll)
 			appendPQExpBufferChar(buf, ch);
 		}
 		else if ((unsigned char) ch < (unsigned char) ' ' &&
-				 (escapeAll
-				  || (ch != '\t' && ch != '\n' && ch != '\v' && ch != '\f' && ch != '\r')
-				  ))
+				 (escapeAll ||
+				  (ch != '\t' && ch != '\n' && ch != '\v' &&
+				   ch != '\f' && ch != '\r')))
 		{
 			/*
 			 * generate octal escape for control chars other than
