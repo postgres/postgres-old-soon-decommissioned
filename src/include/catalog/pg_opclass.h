@@ -175,5 +175,8 @@ DATA(insert OID = 2232 (	405		name_pattern_ops	PGNSP PGUID   19 f 0 ));
 DATA(insert OID = 2233 (	403		reltime_ops		PGNSP PGUID  703 t 0 ));
 DATA(insert OID = 2234 (	403		tinterval_ops	PGNSP PGUID  704 t 0 ));
 DATA(insert OID = 2235 (	405		aclitem_ops		PGNSP PGUID 1033 t 0 ));
+DATA(insert OID = 2593 (	783		box_ops			PGNSP PGUID  603 t 0 ));
+DATA(insert OID = 2594 (	783		poly_ops		PGNSP PGUID  604 t 603 ));
+DATA(insert OID = 2595 (	783		circle_ops		PGNSP PGUID  718 t 603 ));
 
 #endif   /* PG_OPCLASS_H */

@@ -170,4 +170,28 @@ DATA(insert (	2231	0 1 456 ));
 DATA(insert (	2232	0 1 455 ));
 DATA(insert (	2235	0 1 329 ));
 
+
+/* gist */
+DATA(insert (	2593	0 1 2578 ));
+DATA(insert (	2593	0 2 2583 ));
+DATA(insert (	2593	0 3 2579 ));
+DATA(insert (	2593	0 4 2580 ));
+DATA(insert (	2593	0 5 2581 ));
+DATA(insert (	2593	0 6 2582 ));
+DATA(insert (	2593	0 7 2584 ));
+DATA(insert (	2594	0 1 2585 ));
+DATA(insert (	2594	0 2 2583 ));
+DATA(insert (	2594	0 3 2586 ));
+DATA(insert (	2594	0 4 2580 ));
+DATA(insert (	2594	0 5 2581 ));
+DATA(insert (	2594	0 6 2582 ));
+DATA(insert (	2594	0 7 2584 ));
+DATA(insert (	2595	0 1 2591 ));
+DATA(insert (	2595	0 2 2583 ));
+DATA(insert (	2595	0 3 2592 ));
+DATA(insert (	2595	0 4 2580 ));
+DATA(insert (	2595	0 5 2581 ));
+DATA(insert (	2595	0 6 2582 ));
+DATA(insert (	2595	0 7 2584 ));
+
 #endif   /* PG_AMPROC_H */
