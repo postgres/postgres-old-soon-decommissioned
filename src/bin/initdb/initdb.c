@@ -1986,10 +1986,8 @@ escape_quotes(const char *src)
 	
 	for (i = 0, j = 0; i < len; i++)
 	{
-		if (src[i] == '\\')
-			result[j++] = '\\';
-		if (src[i] == '\'')		/* ANSI standard, '' */
-			result[j++] = '\'';
+		if (src[i] == '\\' || src[i] == '\'')
+			result[j++] = src[i];	/* double these */
 		result[j++] = src[i];
 	}
 	result[j] = '\0';

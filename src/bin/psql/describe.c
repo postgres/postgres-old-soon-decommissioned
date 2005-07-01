@@ -1899,7 +1899,7 @@ processNamePattern(PQExpBuffer buf, const char *pattern,
 
 			/* Ensure chars special to string literals are passed properly */
 			if (*cp == '\'' || *cp == '\\')
-				appendPQExpBufferChar(&namebuf, *cp);
+				appendPQExpBufferChar(&namebuf, *cp);	/* double these */
 
 			i = PQmblen(cp, pset.encoding);
 			while (i--)
