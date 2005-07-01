@@ -27,7 +27,6 @@ WANTED_DIRS = \
 		pgbench		\
 		pgcrypto	\
 		pgstattuple	\
-		rtree_gist	\
 		seg		\
 		spi		\
 		tablefunc	\
