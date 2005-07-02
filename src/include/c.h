@@ -479,6 +479,8 @@ typedef NameData *Name;
 
 #define NameStr(name)	((name).data)
 
+#define SQL_STR_DOUBLE(ch)	((ch) == '\'' || (ch) == '\\')
+#define ESCAPE_STRING_SYNTAX	'E'
 
 /* ----------------------------------------------------------------
  *				Section 4:	IsValid macros for system types

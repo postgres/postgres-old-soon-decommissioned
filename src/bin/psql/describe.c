@@ -1898,8 +1898,8 @@ processNamePattern(PQExpBuffer buf, const char *pattern,
 				appendPQExpBuffer(&namebuf, "\\\\");
 
 			/* Ensure chars special to string literals are passed properly */
-			if (*cp == '\'' || *cp == '\\')
-				appendPQExpBufferChar(&namebuf, *cp);	/* double these */
+			if (SQL_STR_DOUBLE(*cp))
+				appendPQExpBufferChar(&namebuf, *cp);
 
 			i = PQmblen(cp, pset.encoding);
 			while (i--)

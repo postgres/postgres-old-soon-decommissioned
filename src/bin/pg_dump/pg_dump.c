@@ -7792,18 +7792,17 @@ dumpTrigger(Archive *fout, TriggerInfo *tginfo)
 		}
 		p--;
 
-		/* do we need E''? */
 		while (s2 < p)
 			if (*s2++ == '\\')
 			{
-				appendPQExpBufferChar(query, 'E');
+				appendPQExpBufferChar(query, ESCAPE_STRING_SYNTAX);
 				break;
 			}
 
 		appendPQExpBufferChar(query, '\'');
 		while (s < p)
 		{
-			if (*s == '\'')
+			if (*s == '\'')		/* bytea already doubles backslashes */
 				appendPQExpBufferChar(query, '\'');
 			appendPQExpBufferChar(query, *s++);
 		}

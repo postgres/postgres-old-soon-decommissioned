@@ -60,19 +60,25 @@ quote_literal(PG_FUNCTION_ARGS)
 
 	len = VARSIZE(t) - VARHDRSZ;
 	/* We make a worst-case result area; wasting a little space is OK */
-	result = (text *) palloc(len * 2 + 2 + VARHDRSZ);
+	result = (text *) palloc(len * 2 + 3 + VARHDRSZ);
 
 	cp1 = VARDATA(t);
 	cp2 = VARDATA(result);
 
+	for(; len-- > 0; cp1++)
+		if (*cp1 == '\\')
+		{
+			*cp2++ = ESCAPE_STRING_SYNTAX;
+			break;
+		}
+	
+	len = VARSIZE(t) - VARHDRSZ;
+	cp1 = VARDATA(t);
 	*cp2++ = '\'';
 	while (len-- > 0)
 	{
-		if (*cp1 == '\'')
-			*cp2++ = '\'';
-		else if (*cp1 == '\\')
-			*cp2++ = '\\';
-
+		if (SQL_STR_DOUBLE(*cp1))
+			*cp2++ = *cp1;
 		*cp2++ = *cp1++;
 	}
 	*cp2++ = '\'';

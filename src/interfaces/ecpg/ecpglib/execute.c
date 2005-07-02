@@ -45,21 +45,14 @@ quote_postgres(char *arg, int lineno)
 	if (!res)
 		return (res);
 
+	if (strchr(arg, '\\') != NULL)
+		res[ri++] = ESCAPE_STRING_SYNTAX;
 	res[ri++] = '\'';
 
 	for (i = 0; arg[i]; i++, ri++)
 	{
-		switch (arg[i])
-		{
-			case '\'':
-				res[ri++] = '\'';
-				break;
-			case '\\':
-				res[ri++] = '\\';
-				break;
-			default:
-				;
-		}
+		if (SQL_STR_DOUBLE(arg[i]))
+			res[ri++] = arg[i];
 		res[ri] = arg[i];
 	}
 

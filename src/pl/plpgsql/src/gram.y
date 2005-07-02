@@ -389,13 +389,16 @@ decl_statement	: decl_varname decl_const decl_datatype decl_notnull decl_defval
 						curname_def = palloc0(sizeof(PLpgSQL_expr));
 
 						curname_def->dtype = PLPGSQL_DTYPE_EXPR;
-						strcpy(buf, "SELECT '");
+						strcpy(buf, "SELECT ");
 						cp1 = new->refname;
 						cp2 = buf + strlen(buf);
-						while (*cp1 != '\0')
+						if (strchr(cp1, '\\') != NULL)
+							*cp2++ = ESCAPE_STRING_SYNTAX;
+						*cp2++ = '\'';
+						while (*cp1)
 						{
-							if (*cp1 == '\\' || *cp1 == '\'')
-								*cp2++ = *cp1;	/* double these */
+							if (SQL_STR_DOUBLE(*cp1))
+								*cp2++ = *cp1;
 							*cp2++ = *cp1++;
 						}
 						strcpy(cp2, "'::refcursor");
