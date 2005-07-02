@@ -180,25 +180,6 @@ $PostgreSQL$
 
 </sect1>
 
-<sect1 id="limitations">
- <title>Limitations</title>
-
- <para>
-  The current implementation of <acronym>GiST</acronym> within
-  <productname>PostgreSQL</productname> has some major limitations:
-  <acronym>GiST</acronym> index access is not concurrent, and the
-  <acronym>GiST</acronym> interface doesn't allow the development of certain
-  data types, such as digital trees (see papers by Aoki et al).
- </para>
-
- <para>
-  Solutions to the concurrency problems appear in Marcel Kornacker's
-  thesis; however these ideas have not yet been put into practice in the
-  <productname>PostgreSQL</productname> implementation.
- </para>
-
-</sect1>
-
 <sect1 id="examples">
  <title>Examples</title>
 
