@@ -1176,8 +1176,7 @@ create_nestloop_plan(PlannerInfo *root,
 			List	   *bitmapclauses;
 
 			bitmapclauses =
-				make_restrictinfo_from_bitmapqual(innerpath->bitmapqual,
-												  true, true);
+				make_restrictinfo_from_bitmapqual(innerpath->bitmapqual, true);
 			joinrestrictclauses =
 				select_nonredundant_join_clauses(root,
 												 joinrestrictclauses,

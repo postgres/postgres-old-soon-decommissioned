@@ -1164,9 +1164,13 @@ _outPlannerInfo(StringInfo str, PlannerInfo *node)
 	WRITE_NODE_FIELD(parse);
 	WRITE_NODE_FIELD(join_rel_list);
 	WRITE_NODE_FIELD(equi_key_list);
+	WRITE_NODE_FIELD(left_join_clauses);
+	WRITE_NODE_FIELD(right_join_clauses);
+	WRITE_NODE_FIELD(full_join_clauses);
 	WRITE_NODE_FIELD(in_info_list);
 	WRITE_NODE_FIELD(query_pathkeys);
 	WRITE_BOOL_FIELD(hasJoinRTEs);
+	WRITE_BOOL_FIELD(hasOuterJoins);
 	WRITE_BOOL_FIELD(hasHavingQual);
 }
 
@@ -1234,7 +1238,6 @@ _outRestrictInfo(StringInfo str, RestrictInfo *node)
 	/* NB: this isn't a complete set of fields */
 	WRITE_NODE_FIELD(clause);
 	WRITE_BOOL_FIELD(is_pushed_down);
-	WRITE_BOOL_FIELD(valid_everywhere);
 	WRITE_BOOL_FIELD(can_join);
 	WRITE_BITMAPSET_FIELD(clause_relids);
 	WRITE_BITMAPSET_FIELD(required_relids);

@@ -87,6 +87,15 @@ typedef struct PlannerInfo
 	List	   *equi_key_list;	/* list of lists of equijoined
 								 * PathKeyItems */
 
+	List	   *left_join_clauses;	/* list of RestrictInfos for outer join
+									 * clauses w/nonnullable var on left */
+
+	List	   *right_join_clauses;	/* list of RestrictInfos for outer join
+									 * clauses w/nonnullable var on right */
+
+	List	   *full_join_clauses;	/* list of RestrictInfos for full outer
+									 * join clauses */
+
 	List	   *in_info_list;	/* list of InClauseInfos */
 
 	List	   *query_pathkeys; /* desired pathkeys for query_planner(),
@@ -95,6 +104,7 @@ typedef struct PlannerInfo
 	double		tuple_fraction;	/* tuple_fraction passed to query_planner */
 
 	bool		hasJoinRTEs;	/* true if any RTEs are RTE_JOIN kind */
+	bool		hasOuterJoins;	/* true if any RTEs are outer joins */
 	bool		hasHavingQual;	/* true if havingQual was non-null */
 } PlannerInfo;
 
@@ -695,10 +705,6 @@ typedef struct HashPath
  * joined, will also have is_pushed_down set because it will get attached to
  * some lower joinrel.
  *
- * We also store a valid_everywhere flag, which says that the clause is not
- * affected by any lower-level outer join, and therefore any conditions it
- * asserts can be presumed true throughout the plan tree.
- *
  * In general, the referenced clause might be arbitrarily complex.	The
  * kinds of clauses we can handle as indexscan quals, mergejoin clauses,
  * or hashjoin clauses are fairly limited --- the code for each kind of
@@ -724,8 +730,6 @@ typedef struct RestrictInfo
 	Expr	   *clause;			/* the represented clause of WHERE or JOIN */
 
 	bool		is_pushed_down; /* TRUE if clause was pushed down in level */
-
-	bool		valid_everywhere;		/* TRUE if valid on every level */
 
 	/*
 	 * This flag is set true if the clause looks potentially useful as a

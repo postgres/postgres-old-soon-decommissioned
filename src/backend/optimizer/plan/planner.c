@@ -194,7 +194,6 @@ subquery_planner(Query *parse, double tuple_fraction,
 	int			saved_planid = PlannerPlanId;
 	PlannerInfo *root;
 	Plan	   *plan;
-	bool		hasOuterJoins;
 	List	   *newHaving;
 	List	   *lst;
 	ListCell   *l;
@@ -228,12 +227,16 @@ subquery_planner(Query *parse, double tuple_fraction,
 	/*
 	 * Detect whether any rangetable entries are RTE_JOIN kind; if not, we
 	 * can avoid the expense of doing flatten_join_alias_vars().  Also
-	 * check for outer joins --- if none, we can skip
-	 * reduce_outer_joins(). This must be done after we have done
+	 * check for outer joins --- if none, we can skip reduce_outer_joins()
+	 * and some other processing.  This must be done after we have done
 	 * pull_up_subqueries, of course.
+	 *
+	 * Note: if reduce_outer_joins manages to eliminate all outer joins,
+	 * root->hasOuterJoins is not reset currently.  This is OK since its
+	 * purpose is merely to suppress unnecessary processing in simple cases.
 	 */
 	root->hasJoinRTEs = false;
-	hasOuterJoins = false;
+	root->hasOuterJoins = false;
 	foreach(l, parse->rtable)
 	{
 		RangeTblEntry *rte = (RangeTblEntry *) lfirst(l);
@@ -243,7 +246,7 @@ subquery_planner(Query *parse, double tuple_fraction,
 			root->hasJoinRTEs = true;
 			if (IS_OUTER_JOIN(rte->jointype))
 			{
-				hasOuterJoins = true;
+				root->hasOuterJoins = true;
 				/* Can quit scanning once we find an outer join */
 				break;
 			}
@@ -347,7 +350,7 @@ subquery_planner(Query *parse, double tuple_fraction,
 	 * joins. This step is most easily done after we've done expression
 	 * preprocessing.
 	 */
-	if (hasOuterJoins)
+	if (root->hasOuterJoins)
 		reduce_outer_joins(root);
 
 	/*

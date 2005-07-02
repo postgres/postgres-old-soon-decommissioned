@@ -1249,7 +1249,6 @@ _copyRestrictInfo(RestrictInfo *from)
 
 	COPY_NODE_FIELD(clause);
 	COPY_SCALAR_FIELD(is_pushed_down);
-	COPY_SCALAR_FIELD(valid_everywhere);
 	COPY_SCALAR_FIELD(can_join);
 	COPY_BITMAPSET_FIELD(clause_relids);
 	COPY_BITMAPSET_FIELD(required_relids);

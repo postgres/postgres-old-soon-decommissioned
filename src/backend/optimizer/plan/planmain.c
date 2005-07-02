@@ -121,6 +121,9 @@ query_planner(PlannerInfo *root, List *tlist, double tuple_fraction,
 	root->join_rel_list = NIL;
 	root->join_rel_hash = NULL;
 	root->equi_key_list = NIL;
+	root->left_join_clauses = NIL;
+	root->right_join_clauses = NIL;
+	root->full_join_clauses = NIL;
 
 	/*
 	 * Construct RelOptInfo nodes for all base relations in query.
