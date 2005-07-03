@@ -1327,14 +1327,16 @@ plperl_hash_from_tuple(HeapTuple tuple, TupleDesc tupdesc)
 		getTypeOutputInfo(tupdesc->attrs[i]->atttypid,
 						  &typoutput, &typisvarlena);
 
-		outputstr = DatumGetCString(OidFunctionCall1(typoutput,
-													 attr));
+		outputstr = DatumGetCString(OidFunctionCall1(typoutput, attr));
 
 		sv = newSVpv(outputstr, 0);
 #if PERL_BCDVERSION >= 0x5006000L
-		if (GetDatabaseEncoding() == PG_UTF8) SvUTF8_on(sv);
+		if (GetDatabaseEncoding() == PG_UTF8)
+			SvUTF8_on(sv);
 #endif
 		hv_store(hv, attname, namelen, sv, 0);
+
+		pfree(outputstr);
 	}
 
 	return newRV_noinc((SV *) hv);
