@@ -34,6 +34,9 @@
 #include "px.h"
 
 #include <openssl/evp.h>
+#include <openssl/blowfish.h>
+#include <openssl/cast.h>
+#include <openssl/des.h>
 
 /*
  * Is OpenSSL compiled with AES? 
