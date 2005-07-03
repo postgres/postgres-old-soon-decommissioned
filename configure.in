@@ -304,6 +304,17 @@ AC_DEFINE_UNQUOTED(PG_VERSION_STR,
 
 
 #
+# Native compiler
+#
+
+if test -z "$CC_FOR_BUILD"; then
+  CC_FOR_BUILD=$CC
+fi
+
+AC_SUBST(CC_FOR_BUILD)
+
+
+#
 # Set up TAS assembly code if needed; the template file has now had its
 # chance to request this.
 #
