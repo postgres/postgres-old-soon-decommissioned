@@ -2200,13 +2200,17 @@ evaluate_function(Oid funcid, Oid result_type, List *args,
 		return NULL;
 
 	/*
-	 * Can't simplify if it returns RECORD, except in the case where it has
-	 * OUT parameters, since it will be needing an expected tupdesc which we
-	 * can't supply here.
+	 * Can't simplify if it returns RECORD.  The immediate problem is that
+	 * it will be needing an expected tupdesc which we can't supply here.
+	 *
+	 * In the case where it has OUT parameters, it could get by without an
+	 * expected tupdesc, but we still have issues: get_expr_result_type()
+	 * doesn't know how to extract type info from a RECORD constant, and
+	 * in the case of a NULL function result there doesn't seem to be any
+	 * clean way to fix that.  In view of the likelihood of there being
+	 * still other gotchas, seems best to leave the function call unreduced.
 	 */
-	if (funcform->prorettype == RECORDOID &&
-		(heap_attisnull(func_tuple, Anum_pg_proc_proallargtypes) ||
-		 heap_attisnull(func_tuple, Anum_pg_proc_proargmodes)))
+	if (funcform->prorettype == RECORDOID)
 		return NULL;
 
 	/*
