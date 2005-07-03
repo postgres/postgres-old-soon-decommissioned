@@ -224,7 +224,7 @@ plperl_safe_init(void)
 	"$PLContainer->permit_only(':default');"
 	"$PLContainer->permit(qw[:base_math !:base_io sort time]);"
 	"$PLContainer->share(qw[&elog &spi_exec_query &DEBUG &LOG "
-    "&INFO &NOTICE &WARNING &ERROR %SHARED ]);"
+    "&INFO &NOTICE &WARNING &ERROR %_SHARED ]);"
 	"sub ::mksafefunc { return $PLContainer->reval(qq[sub { $_[0] $_[1]}]); }"
 			   ;
 
@@ -1419,6 +1419,8 @@ plperl_hash_from_tuple(HeapTuple tuple, TupleDesc tupdesc)
 						   Int32GetDatum(tupdesc->attrs[i]->atttypmod)));
 
 		hv_store(hv, attname, namelen, newSVpv(outputstr, 0), 0);
+
+		pfree(outputstr);
 	}
 
 	return newRV_noinc((SV *) hv);
