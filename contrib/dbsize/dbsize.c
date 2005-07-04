@@ -24,9 +24,6 @@
 #include "utils/syscache.h"
 
 
-/* hack to make it compile under Win32 */
-extern DLLIMPORT char *DataDir;
-
 Datum pg_tablespace_size(PG_FUNCTION_ARGS);
 Datum pg_database_size(PG_FUNCTION_ARGS);
 Datum pg_relation_size(PG_FUNCTION_ARGS);
@@ -91,11 +88,11 @@ calculate_database_size(Oid dbOid)
 	/* Shared storage in pg_global is not counted */
 
 	/* Include pg_default storage */
-	snprintf(pathname, MAXPGPATH, "%s/base/%u", DataDir, dbOid);
+	snprintf(pathname, MAXPGPATH, "base/%u", dbOid);
 	totalsize += db_dir_size(pathname);
 
 	/* Scan the non-default tablespaces */
-	snprintf(pathname, MAXPGPATH, "%s/pg_tblspc", DataDir);
+	snprintf(pathname, MAXPGPATH, "pg_tblspc");
 	dirdesc = AllocateDir(pathname);
 
 	while ((direntry = ReadDir(dirdesc, pathname)) != NULL)
@@ -104,8 +101,8 @@ calculate_database_size(Oid dbOid)
 			strcmp(direntry->d_name, "..") == 0)
 		    continue;
 
-		snprintf(pathname, MAXPGPATH, "%s/pg_tblspc/%s/%u",
-				 DataDir, direntry->d_name, dbOid);
+		snprintf(pathname, MAXPGPATH, "pg_tblspc/%s/%u",
+				 direntry->d_name, dbOid);
 		totalsize += db_dir_size(pathname);
 	}
 
@@ -134,11 +131,11 @@ pg_tablespace_size(PG_FUNCTION_ARGS)
     struct dirent *direntry;
 
 	if (tblspcOid == DEFAULTTABLESPACE_OID)
-	    snprintf(tblspcPath, MAXPGPATH, "%s/base", DataDir);
+	    snprintf(tblspcPath, MAXPGPATH, "base");
 	else if (tblspcOid == GLOBALTABLESPACE_OID)
-	    snprintf(tblspcPath, MAXPGPATH, "%s/global", DataDir);
+	    snprintf(tblspcPath, MAXPGPATH, "global");
 	else
-		snprintf(tblspcPath, MAXPGPATH, "%s/pg_tblspc/%u", DataDir, tblspcOid);
+		snprintf(tblspcPath, MAXPGPATH, "pg_tblspc/%u", tblspcOid);
 
 	dirdesc = AllocateDir(tblspcPath);
 
@@ -208,12 +205,12 @@ calculate_relation_size(Oid tblspcOid, Oid relnodeOid)
 		tblspcOid = MyDatabaseTableSpace;
 
 	if (tblspcOid == DEFAULTTABLESPACE_OID)
-	    snprintf(dirpath, MAXPGPATH, "%s/base/%u", DataDir, MyDatabaseId);
+	    snprintf(dirpath, MAXPGPATH, "base/%u", MyDatabaseId);
 	else if (tblspcOid == GLOBALTABLESPACE_OID)
-	    snprintf(dirpath, MAXPGPATH, "%s/global", DataDir);
+	    snprintf(dirpath, MAXPGPATH, "global");
 	else
-	    snprintf(dirpath, MAXPGPATH, "%s/pg_tblspc/%u/%u",
-				 DataDir, tblspcOid, MyDatabaseId);
+	    snprintf(dirpath, MAXPGPATH, "pg_tblspc/%u/%u",
+				 tblspcOid, MyDatabaseId);
 
 	for (segcount = 0 ;; segcount++)
 	{

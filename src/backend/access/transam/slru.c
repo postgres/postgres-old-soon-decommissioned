@@ -190,7 +190,7 @@ SimpleLruInit(SlruCtl ctl, const char *name,
 	 */
 	ctl->shared = shared;
 	ctl->do_fsync = true;		/* default behavior */
-	snprintf(ctl->Dir, MAXPGPATH, "%s/%s", DataDir, subdir);
+	StrNCpy(ctl->Dir, subdir, sizeof(ctl->Dir));
 }
 
 /*

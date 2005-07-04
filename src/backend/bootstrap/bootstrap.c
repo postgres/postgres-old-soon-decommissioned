@@ -365,14 +365,16 @@ BootstrapMain(int argc, char *argv[])
 	Assert(DataDir);
 	ValidatePgVersion(DataDir);
 
+	/* Change into DataDir (if under postmaster, should be done already) */
+	if (!IsUnderPostmaster)
+		ChangeToDataDir();
+
 	/* If standalone, create lockfile for data directory */
 	if (!IsUnderPostmaster)
-		CreateDataDirLockFile(DataDir, false);
+		CreateDataDirLockFile(false);
 
 	SetProcessingMode(BootstrapProcessing);
 	IgnoreSystemIndexes(true);
-
-	XLOGPathInit();
 
 	BaseInit();
 

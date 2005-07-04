@@ -2809,8 +2809,6 @@ PostgresMain(int argc, char *argv[], const char *username)
 			errhint("Try \"%s --help\" for more information.", argv[0])));
 		}
 
-		XLOGPathInit();
-
 		BaseInit();
 	}
 	else
@@ -2841,12 +2839,14 @@ PostgresMain(int argc, char *argv[], const char *username)
 		Assert(DataDir);
 		ValidatePgVersion(DataDir);
 
+		/* Change into DataDir (if under postmaster, was done already) */
+		ChangeToDataDir();
+
 		/*
 		 * Create lockfile for data directory.
 		 */
-		CreateDataDirLockFile(DataDir, false);
+		CreateDataDirLockFile(false);
 
-		XLOGPathInit();
 		BaseInit();
 
 		/*

@@ -155,7 +155,7 @@ mdcreate(SMgrRelation reln, bool isRedo)
 
 	path = relpath(reln->smgr_rnode);
 
-	fd = FileNameOpenFile(path, O_RDWR | O_CREAT | O_EXCL | PG_BINARY, 0600);
+	fd = PathNameOpenFile(path, O_RDWR | O_CREAT | O_EXCL | PG_BINARY, 0600);
 
 	if (fd < 0)
 	{
@@ -169,7 +169,7 @@ mdcreate(SMgrRelation reln, bool isRedo)
 		 * mdopen)
 		 */
 		if (isRedo || IsBootstrapProcessingMode())
-			fd = FileNameOpenFile(path, O_RDWR | PG_BINARY, 0600);
+			fd = PathNameOpenFile(path, O_RDWR | PG_BINARY, 0600);
 		if (fd < 0)
 		{
 			pfree(path);
@@ -340,7 +340,7 @@ mdopen(SMgrRelation reln, bool allowNotFound)
 
 	path = relpath(reln->smgr_rnode);
 
-	fd = FileNameOpenFile(path, O_RDWR | PG_BINARY, 0600);
+	fd = PathNameOpenFile(path, O_RDWR | PG_BINARY, 0600);
 
 	if (fd < 0)
 	{
@@ -352,7 +352,7 @@ mdopen(SMgrRelation reln, bool allowNotFound)
 		 * (See mdcreate)
 		 */
 		if (IsBootstrapProcessingMode())
-			fd = FileNameOpenFile(path, O_RDWR | O_CREAT | O_EXCL | PG_BINARY, 0600);
+			fd = PathNameOpenFile(path, O_RDWR | O_CREAT | O_EXCL | PG_BINARY, 0600);
 		if (fd < 0)
 		{
 			pfree(path);
@@ -879,7 +879,7 @@ _mdfd_openseg(SMgrRelation reln, BlockNumber segno, int oflags)
 		fullpath = path;
 
 	/* open the file */
-	fd = FileNameOpenFile(fullpath, O_RDWR | PG_BINARY | oflags, 0600);
+	fd = PathNameOpenFile(fullpath, O_RDWR | PG_BINARY | oflags, 0600);
 
 	pfree(fullpath);
 

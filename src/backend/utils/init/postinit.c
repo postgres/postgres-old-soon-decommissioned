@@ -338,12 +338,6 @@ InitPostgres(const char *dbname, const char *username)
 
 		ValidatePgVersion(fullpath);
 
-		if (chdir(fullpath) == -1)
-			ereport(FATAL,
-					(errcode_for_file_access(),
-					 errmsg("could not change directory to \"%s\": %m",
-							fullpath)));
-
 		SetDatabasePath(fullpath);
 	}
 
