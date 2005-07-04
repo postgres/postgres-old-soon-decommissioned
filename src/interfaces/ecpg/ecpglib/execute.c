@@ -63,7 +63,7 @@ quote_postgres(char *arg, int lineno)
 	return res;
 }
 
-#if defined(__GNUC__) && (defined (__powerpc__) || defined(__AMD64__) || defined(__x86_64__))
+#if defined(__GNUC__) && (defined (__powerpc__) || defined(__amd64__) || defined(__x86_64__))
 #define APREF ap
 #else
 #define APREF *ap
@@ -171,7 +171,7 @@ create_statement(int lineno, int compat, int force_indicator, struct connection 
 			if (!(var = (struct variable *) ECPGalloc(sizeof(struct variable), lineno)))
 				return false;
 
-#if defined(__GNUC__) && (defined (__powerpc__) || defined(__AMD64__) || defined(__x86_64__))
+#if defined(__GNUC__) && (defined (__powerpc__) || defined(__amd64__) || defined(__x86_64__))
 			ECPGget_variable(ap, type, var, true);
 #else
 			ECPGget_variable(&ap, type, var, true);
