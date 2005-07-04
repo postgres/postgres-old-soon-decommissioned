@@ -34,7 +34,19 @@
 #include "px.h"
 
 #include <openssl/evp.h>
+#include <openssl/blowfish.h>
+#include <openssl/cast.h>
+#include <openssl/des.h>
 
+/*
+ * Does OpenSSL support AES? 
+ */
+#undef GOT_AES
+#if OPENSSL_VERSION_NUMBER >= 0x00907000L
+#define GOT_AES
+#include <openssl/aes.h>
+#endif
+  
 /*
  * Hashes
  */
@@ -73,8 +85,15 @@ static void
 digest_finish(PX_MD * h, uint8 *dst)
 {
 	EVP_MD_CTX *ctx = (EVP_MD_CTX *) h->p.ptr;
+	const EVP_MD *md = EVP_MD_CTX_md(ctx);
 
 	EVP_DigestFinal(ctx, dst, NULL);
+
+	/*
+	 * Some builds of 0.9.7x clear all of ctx in EVP_DigestFinal.
+	 * Fix it by reinitializing ctx.
+	 */
+	EVP_DigestInit(ctx, md);
 }
 
 static void
