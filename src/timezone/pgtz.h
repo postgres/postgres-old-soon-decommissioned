@@ -18,6 +18,16 @@
 
 #include "tzfile.h"
 
+/*
+ *	Prevent the use of /port functions because
+ *	the are not included in this binary.
+ */
+#undef vsnprintf
+#undef snprintf
+#undef sprintf
+#undef fprintf
+#undef printf
+
 extern char *pg_TZDIR(void);
 
 #define BIGGEST(a, b)	(((a) > (b)) ? (a) : (b))
