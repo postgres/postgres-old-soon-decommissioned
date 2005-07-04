@@ -39,11 +39,12 @@
 #include <openssl/des.h>
 
 /*
- * Is OpenSSL compiled with AES? 
+ * Does OpenSSL support AES? 
  */
 #undef GOT_AES
-#ifdef AES_ENCRYPT
+#if OPENSSL_VERSION_NUMBER >= 0x00907000L
 #define GOT_AES
+#include <openssl/aes.h>
 #endif
 
 /*
