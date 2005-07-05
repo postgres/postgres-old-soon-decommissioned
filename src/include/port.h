@@ -178,7 +178,7 @@ extern int	pclose_check(FILE *stream);
 #define TZNAME_GLOBAL _tzname
 #endif
 
-#if defined(WIN32) || defined(__CYGWIN__)
+#if (defined(WIN32) || defined(__CYGWIN__)) && !defined(NO_PGPORT)
 /*
  *	Win32 doesn't have reliable rename/unlink during concurrent access,
  *	and we need special code to do symlinks.
@@ -204,11 +204,11 @@ extern int	pgsymlink(const char *oldpath, const char *newpath);
 #define symlink(oldpath, newpath)	pgsymlink(oldpath, newpath)
 #endif
 
-#endif /* defined(WIN32) || defined(__CYGWIN__) */
+#endif /* defined(WIN32) || defined(__CYGWIN__) && !defined(NO_PGPORT) */
 
 extern bool rmtree(char *path, bool rmtopdir);
 
-#if defined(WIN32) && !defined(__CYGWIN__)
+#if defined(WIN32) && !defined(__CYGWIN__) && !defined(NO_PGPORT)
 
 /* open() replacement to allow delete of held files and passing
  * of special options. */
