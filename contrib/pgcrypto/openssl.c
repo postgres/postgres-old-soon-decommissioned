@@ -393,7 +393,7 @@ ossl_des3_init(PX_Cipher * c, const uint8 *key, unsigned klen, const uint8 *iv)
 
 	memset(&xkey1, 0, sizeof(xkey1));
 	memset(&xkey2, 0, sizeof(xkey2));
-	memset(&xkey2, 0, sizeof(xkey2));
+	memset(&xkey3, 0, sizeof(xkey3));
 	memcpy(&xkey1, key, klen > 8 ? 8 : klen);
 	if (klen > 8)
 		memcpy(&xkey2, key + 8, (klen - 8) > 8 ? 8 : (klen - 8));
