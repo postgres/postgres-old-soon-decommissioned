@@ -59,6 +59,6 @@ endif
 
 rijndael.o: rijndael.tbl
 
-rijndael.tbl: rijndael.c
+rijndael.tbl:
 	$(CC) $(CPPFLAGS) $(CFLAGS) -DPRINT_TABS rijndael.c -o gen-rtab
 	./gen-rtab > rijndael.tbl
