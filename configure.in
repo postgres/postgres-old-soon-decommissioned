@@ -500,6 +500,7 @@ fi
 #
 PGAC_ARG_BOOL(with, zlib, yes,
               [  --without-zlib          do not use Zlib])
+AC_SUBST(with_zlib)
 
 #
 # Elf
