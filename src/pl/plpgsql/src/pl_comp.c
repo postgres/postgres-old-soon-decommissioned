@@ -547,6 +547,13 @@ do_compile(FunctionCallInfo fcinfo,
 			function->fn_retistuple = true;
 			function->fn_retset = false;
 
+			/* shouldn't be any declared arguments */
+			if (procStruct->pronargs != 0)
+				ereport(ERROR,
+						(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
+						 errmsg("trigger functions cannot have declared arguments"),
+						 errhint("You probably want to use TG_NARGS and TG_ARGV instead.")));
+
 			/* Add the record for referencing NEW */
 			rec = palloc0(sizeof(PLpgSQL_rec));
 			rec->dtype = PLPGSQL_DTYPE_REC;
