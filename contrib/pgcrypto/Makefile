@@ -16,7 +16,7 @@ CF_SRCS = $(if $(subst no,,$(with_openssl)), $(OSSL_SRCS), $(INT_SRCS))
 CF_TESTS = $(if $(subst no,,$(with_openssl)), $(OSSL_TESTS))
 CF_CFLAGS = $(if $(subst no,,$(with_openssl)), $(OSSL_CFLAGS), $(INT_CFLAGS))
 
-PG_CPPFLAGS	:= $(CF_CFLAGS) -I$(srcdir) $(PG_CPPFLAGS)
+PG_CPPFLAGS	= $(CF_CFLAGS)
 
 SRCS		= pgcrypto.c px.c px-hmac.c px-crypt.c misc.c random.c \
 		crypt-gensalt.c crypt-blowfish.c crypt-des.c \
