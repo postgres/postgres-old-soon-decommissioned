@@ -601,6 +601,7 @@ extern Datum byteacat(PG_FUNCTION_ARGS);
 extern Datum byteapos(PG_FUNCTION_ARGS);
 extern Datum bytea_substr(PG_FUNCTION_ARGS);
 extern Datum bytea_substr_no_len(PG_FUNCTION_ARGS);
+extern Datum pg_column_size(PG_FUNCTION_ARGS);
 
 /* version.c */
 extern Datum pgsql_version(PG_FUNCTION_ARGS);

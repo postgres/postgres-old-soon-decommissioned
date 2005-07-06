@@ -138,4 +138,12 @@ extern Datum toast_compress_datum(Datum value);
  */
 extern Size toast_raw_datum_size(Datum value);
 
+/* ----------
+ * toast_datum_size -
+ *
+ *	Return the storage size of a varlena datum
+ * ----------
+ */
+extern Size toast_datum_size(Datum value);
+
 #endif   /* TUPTOASTER_H */

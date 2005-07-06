@@ -3658,6 +3658,10 @@ DESCR("current value from last used sequence");
 DATA(insert OID = 2560 (  pg_postmaster_start_time PGNSP PGUID 12 f f t f s 0 1184 "" _null_ _null_ _null_ pgsql_postmaster_start_time - _null_ ));
 DESCR("postmaster start time");
 
+/* Column storage size */
+DATA(insert OID = 1269 (  pg_column_size	   PGNSP PGUID 12 f f t f i 1 23 "2276" _null_ _null_ _null_  pg_column_size - _null_ ));
+DESCR("bytes required to store the value, perhaps with compression");
+
 /* new functions for Y-direction rtree opclasses */
 DATA(insert OID = 2562 (  box_below		   PGNSP PGUID 12 f f t f i 2 16 "603 603" _null_ _null_ _null_	box_below - _null_ ));
 DESCR("is below");

@@ -2187,6 +2187,14 @@ PostgreSQL documentation
       </row>
 
       <row>
+       <entry><literal><function>pg_column_size</function>(<parameter>string</parameter>)</literal></entry>
+       <entry><type>integer</type></entry>
+       <entry>Number of bytes required to store the value, which might be compressed</entry>
+       <entry><literal>pg_column_size('jo\\000se'::bytea)</literal></entry>
+       <entry><literal>5</literal></entry>
+      </row>
+
+      <row>
        <entry><literal><function>position</function>(<parameter>substring</parameter> in <parameter>string</parameter>)</literal></entry>
        <entry><type>integer</type></entry>
        <entry>Location of specified substring</entry>
