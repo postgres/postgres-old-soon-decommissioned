@@ -184,7 +184,6 @@ endif
 endif # not PGXS
 
 CC = @CC@
-CC_FOR_BUILD = @CC_FOR_BUILD@
 GCC = @GCC@
 CFLAGS = @CFLAGS@
 
