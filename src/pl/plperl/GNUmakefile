@@ -37,7 +37,7 @@ OBJS = plperl.o spi_internal.o SPI.o
 SHLIB_LINK = $(perl_embed_ldflags) $(BE_DLLLIBS)
 
 REGRESS_OPTS = --dbname=$(PL_TESTDB) --load-language=plperl
-REGRESS = plperl plperl_trigger plperl_shared
+REGRESS = plperl plperl_trigger plperl_shared plperl_elog
 
 include $(top_srcdir)/src/Makefile.shlib
 
