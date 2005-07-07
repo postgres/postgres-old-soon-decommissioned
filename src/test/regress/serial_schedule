@@ -98,3 +98,4 @@ test: polymorphism
 test: rowtypes
 test: stats
 test: tablespace
+test: dependency

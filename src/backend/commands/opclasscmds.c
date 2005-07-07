@@ -392,6 +392,9 @@ DefineOpClass(CreateOpClassStmt *stmt)
 		recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
 	}
 
+	/* dependency on owner */
+	recordDependencyOnOwner(OperatorClassRelationId, opclassoid, GetUserId());
+
 	heap_close(rel, RowExclusiveLock);
 }
 
@@ -962,6 +965,9 @@ AlterOpClassOwner(List *name, const char *access_method, Oid newOwnerId)
 		simple_heap_update(rel, &tup->t_self, tup);
 
 		CatalogUpdateIndexes(rel, tup);
+
+		/* Update owner dependency reference */
+		changeDependencyOnOwner(OperatorClassRelationId, amOid, newOwnerId);
 	}
 
 	heap_close(rel, NoLock);

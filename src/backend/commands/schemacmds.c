@@ -342,6 +342,10 @@ AlterSchemaOwner(const char *name, Oid newOwnerId)
 		CatalogUpdateIndexes(rel, newtuple);
 
 		heap_freetuple(newtuple);
+
+		/* Update owner dependency reference */
+		changeDependencyOnOwner(NamespaceRelationId, HeapTupleGetOid(tup),
+								newOwnerId);
 	}
 
 	ReleaseSysCache(tup);

@@ -925,6 +925,9 @@ AlterFunctionOwner(List *name, List *argtypes, Oid newOwnerId)
 		CatalogUpdateIndexes(rel, newtuple);
 
 		heap_freetuple(newtuple);
+
+		/* Update owner dependency reference */
+		changeDependencyOnOwner(ProcedureRelationId, procOid, newOwnerId);
 	}
 
 	ReleaseSysCache(tup);

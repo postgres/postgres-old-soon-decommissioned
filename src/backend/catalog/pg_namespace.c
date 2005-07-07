@@ -15,6 +15,7 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
+#include "catalog/dependency.h"
 #include "catalog/indexing.h"
 #include "catalog/pg_namespace.h"
 #include "utils/builtins.h"
@@ -71,6 +72,9 @@ NamespaceCreate(const char *nspName, Oid ownerId)
 	CatalogUpdateIndexes(nspdesc, tup);
 
 	heap_close(nspdesc, RowExclusiveLock);
+
+	/* Record dependency on owner */
+	recordDependencyOnOwner(NamespaceRelationId, nspoid, ownerId);
 
 	return nspoid;
 }

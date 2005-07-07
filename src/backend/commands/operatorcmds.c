@@ -310,6 +310,9 @@ AlterOperatorOwner(List *name, TypeName *typeName1, TypeName *typeName2,
 		simple_heap_update(rel, &tup->t_self, tup);
 
 		CatalogUpdateIndexes(rel, tup);
+
+		/* Update owner dependency reference */
+		changeDependencyOnOwner(OperatorRelationId, operOid, newOwnerId);
 	}
 
 	heap_close(rel, NoLock);

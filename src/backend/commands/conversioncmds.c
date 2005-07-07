@@ -17,6 +17,7 @@
 #include "catalog/pg_conversion.h"
 #include "access/heapam.h"
 #include "catalog/catalog.h"
+#include "catalog/dependency.h"
 #include "catalog/indexing.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_type.h"
@@ -220,6 +221,10 @@ AlterConversionOwner(List *name, Oid newOwnerId)
 		simple_heap_update(rel, &tup->t_self, tup);
 
 		CatalogUpdateIndexes(rel, tup);
+
+		/* Update owner dependency reference */
+		changeDependencyOnOwner(ConversionRelationId, conversionOid,
+								newOwnerId);
 	}
 
 	heap_close(rel, NoLock);

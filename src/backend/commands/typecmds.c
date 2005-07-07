@@ -1208,6 +1208,7 @@ AlterDomainDefault(List *names, Node *defaultRaw)
 							 domainoid,
 							 typTup->typrelid,
 							 0, /* relation kind is n/a */
+							 typTup->typowner,
 							 typTup->typinput,
 							 typTup->typoutput,
 							 typTup->typreceive,
@@ -2080,6 +2081,9 @@ AlterTypeOwner(List *names, Oid newOwnerId)
 		simple_heap_update(rel, &tup->t_self, tup);
 
 		CatalogUpdateIndexes(rel, tup);
+
+		/* Update owner dependency reference */
+		changeDependencyOnOwner(TypeRelationId, typeOid, newOwnerId);
 	}
 
 	/* Clean up */

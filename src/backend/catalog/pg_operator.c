@@ -889,6 +889,7 @@ makeOperatorDependencies(HeapTuple tuple)
 
 	/* In case we are updating a shell, delete any existing entries */
 	deleteDependencyRecordsFor(myself.classId, myself.objectId);
+	deleteSharedDependencyRecordsFor(myself.classId, myself.objectId);
 
 	/* Dependency on namespace */
 	if (OidIsValid(oper->oprnamespace))
@@ -962,4 +963,8 @@ makeOperatorDependencies(HeapTuple tuple)
 		referenced.objectSubId = 0;
 		recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
 	}
+
+	/* Dependency on owner */
+	recordDependencyOnOwner(OperatorRelationId, HeapTupleGetOid(tuple),
+							oper->oprowner);
 }

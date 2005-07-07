@@ -5321,6 +5321,9 @@ ATExecChangeOwner(Oid relationOid, Oid newOwnerId)
 
 		heap_freetuple(newtuple);
 
+		/* Update owner dependency reference */
+		changeDependencyOnOwner(RelationRelationId, relationOid, newOwnerId);
+
 		/*
 		 * If we are operating on a table, also change the ownership of
 		 * any indexes and sequences that belong to the table, as well as

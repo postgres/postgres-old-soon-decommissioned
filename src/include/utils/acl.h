@@ -208,6 +208,7 @@ extern Acl *aclnewowner(const Acl *old_acl, Oid oldOwnerId, Oid newOwnerId);
 
 extern AclMode aclmask(const Acl *acl, Oid roleid, Oid ownerId,
 		AclMode mask, AclMaskHow how);
+extern int aclmembers(const Acl *acl, Oid **roleids);
 
 extern bool is_member_of_role(Oid member, Oid role);
 extern bool is_admin_of_role(Oid member, Oid role);
