@@ -18,17 +18,8 @@
 #include "nodes/parsenodes.h"
 
 /* XLOG stuff */
-#define XLOG_DBASE_CREATE_OLD	0x00
-#define XLOG_DBASE_DROP_OLD		0x10
-#define XLOG_DBASE_CREATE		0x20
-#define XLOG_DBASE_DROP			0x30
-
-/*
- * Note: "old" versions are deprecated and need not be supported beyond 8.0.
- * Not only are they relatively bulky, but they do the Wrong Thing when a
- * WAL log is replayed in a data area that's at a different absolute path
- * than the original.
- */
+#define XLOG_DBASE_CREATE		0x00
+#define XLOG_DBASE_DROP			0x10
 
 typedef struct xl_dbase_create_rec_old
 {
