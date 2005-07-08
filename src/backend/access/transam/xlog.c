@@ -595,9 +595,7 @@ begin:;
 				{
 					/* OK, put it in this slot */
 					dtbuf[i] = rdt->buffer;
-					/* If fsync is off, no need to backup pages. */
-					if (fullPageWrites &&
-						XLogCheckBuffer(rdt, &(dtbuf_lsn[i]), &(dtbuf_xlg[i])))
+					if (XLogCheckBuffer(rdt, &(dtbuf_lsn[i]), &(dtbuf_xlg[i])))
 					{
 						dtbuf_bkp[i] = true;
 						rdt->data = NULL;
@@ -947,7 +945,8 @@ XLogCheckBuffer(XLogRecData *rdata,
 	 */
 	*lsn = page->pd_lsn;
 
-	if (XLByteLE(page->pd_lsn, RedoRecPtr))
+	if (fullPageWrites &&
+		XLByteLE(page->pd_lsn, RedoRecPtr))
 	{
 		/*
 		 * The page needs to be backed up, so set up *bkpb
