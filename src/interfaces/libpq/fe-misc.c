@@ -1142,7 +1142,11 @@ libpq_gettext(const char *msgid)
 		if (!ldir)
 			ldir = LOCALEDIR;
 		bindtextdomain("libpq", ldir);
+#ifdef WIN32
+		SetLastError(save_errno);
+#else
 		errno = save_errno;
+#endif
 	}
 
 	return dgettext("libpq", msgid);
