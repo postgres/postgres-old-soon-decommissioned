@@ -69,7 +69,7 @@ STRING          \'([^'\n]|\\.)*\'
 
 \n              ConfigFileLineno++; return GUC_EOL;
 [ \t\r]+        /* eat whitespace */
-#.*$            /* eat comment */
+#.*             /* eat comment (.* matches anything until newline) */
 
 {ID}            return GUC_ID;
 {QUALIFIED_ID}  return GUC_QUALIFIED_ID;
