@@ -1127,13 +1127,25 @@ PQenv2encoding(void)
 char *
 libpq_gettext(const char *msgid)
 {
-	static int	already_bound = 0;
+	static bool already_bound = false;
 
 	if (!already_bound)
 	{
-		already_bound = 1;
+		/* dgettext() preserves errno, but bindtextdomain() doesn't */
+		int		save_errno = errno;
+		const char *ldir;
+
+		already_bound = true;
 		/* No relocatable lookup here because the binary could be anywhere */
-		bindtextdomain("libpq", getenv("PGLOCALEDIR") ? getenv("PGLOCALEDIR") : LOCALEDIR);
+		ldir = getenv("PGLOCALEDIR");
+		if (!ldir)
+			ldir = LOCALEDIR;
+		bindtextdomain("libpq", ldir);
+#ifdef WIN32
+		SetLastError(save_errno);
+#else
+		errno = save_errno;
+#endif
 	}
 
 	return dgettext("libpq", msgid);
