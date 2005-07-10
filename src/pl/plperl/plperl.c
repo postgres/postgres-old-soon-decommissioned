@@ -61,6 +61,7 @@
 #include "perl.h"
 #include "XSUB.h"
 #include "ppport.h"
+#include "spi_internal.h"
 
 /* just in case these symbols aren't provided */
 #ifndef pTHX_
