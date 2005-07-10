@@ -489,16 +489,21 @@ pg_mbstrlen(const unsigned char *mbstr)
 }
 
 /* returns the length (counted as a wchar) of a multibyte string
-   (not necessarily  NULL terminated) */
+ * (not necessarily NULL terminated)
+ */
 int
 pg_mbstrlen_with_len(const unsigned char *mbstr, int limit)
 {
 	int			len = 0;
-	int			l;
+
+	/* optimization for single byte encoding */
+	if (pg_database_encoding_max_length() == 1)
+		return limit;
 
 	while (limit > 0 && *mbstr)
 	{
-		l = pg_mblen(mbstr);
+		int		l = pg_mblen(mbstr);
+
 		limit -= l;
 		mbstr += l;
 		len++;

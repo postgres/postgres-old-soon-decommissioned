@@ -1571,9 +1571,10 @@ exec_bind_message(StringInfo input_message)
 						getTypeBinaryInputInfo(ptype, &typreceive, &typioparam);
 
 						params[i].value =
-							OidFunctionCall2(typreceive,
+							OidFunctionCall3(typreceive,
 											 PointerGetDatum(&pbuf),
-										   ObjectIdGetDatum(typioparam));
+											 ObjectIdGetDatum(typioparam),
+											 Int32GetDatum(-1));
 
 						/* Trouble if it didn't eat the whole buffer */
 						if (pbuf.cursor != pbuf.len)

@@ -982,12 +982,21 @@ Datum
 time_recv(PG_FUNCTION_ARGS)
 {
 	StringInfo	buf = (StringInfo) PG_GETARG_POINTER(0);
+#ifdef NOT_USED
+	Oid			typelem = PG_GETARG_OID(1);
+#endif
+	int32		typmod = PG_GETARG_INT32(2);
+	TimeADT		result;
 
 #ifdef HAVE_INT64_TIMESTAMP
-	PG_RETURN_TIMEADT((TimeADT) pq_getmsgint64(buf));
+	result = pq_getmsgint64(buf);
 #else
-	PG_RETURN_TIMEADT((TimeADT) pq_getmsgfloat8(buf));
+	result = pq_getmsgfloat8(buf);
 #endif
+
+	AdjustTimeForTypmod(&result, typmod);
+
+	PG_RETURN_TIMEADT(result);
 }
 
 /*
@@ -1774,18 +1783,24 @@ Datum
 timetz_recv(PG_FUNCTION_ARGS)
 {
 	StringInfo	buf = (StringInfo) PG_GETARG_POINTER(0);
-	TimeTzADT  *time;
+#ifdef NOT_USED
+	Oid			typelem = PG_GETARG_OID(1);
+#endif
+	int32		typmod = PG_GETARG_INT32(2);
+	TimeTzADT  *result;
 
-	time = (TimeTzADT *) palloc(sizeof(TimeTzADT));
+	result = (TimeTzADT *) palloc(sizeof(TimeTzADT));
 
 #ifdef HAVE_INT64_TIMESTAMP
-	time->time = pq_getmsgint64(buf);
+	result->time = pq_getmsgint64(buf);
 #else
-	time->time = pq_getmsgfloat8(buf);
+	result->time = pq_getmsgfloat8(buf);
 #endif
-	time->zone = pq_getmsgint(buf, sizeof(time->zone));
+	result->zone = pq_getmsgint(buf, sizeof(result->zone));
 
-	PG_RETURN_TIMETZADT_P(time);
+	AdjustTimeForTypmod(&(result->time), typmod);
+
+	PG_RETURN_TIMETZADT_P(result);
 }
 
 /*

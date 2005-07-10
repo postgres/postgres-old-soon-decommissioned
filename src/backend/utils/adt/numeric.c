@@ -383,6 +383,10 @@ Datum
 numeric_recv(PG_FUNCTION_ARGS)
 {
 	StringInfo	buf = (StringInfo) PG_GETARG_POINTER(0);
+#ifdef NOT_USED
+	Oid			typelem = PG_GETARG_OID(1);
+#endif
+	int32		typmod = PG_GETARG_INT32(2);
 	NumericVar	value;
 	Numeric		res;
 	int			len,
@@ -418,6 +422,8 @@ numeric_recv(PG_FUNCTION_ARGS)
 				 errmsg("invalid digit in external \"numeric\" value")));
 		value.digits[i] = d;
 	}
+
+	apply_typmod(&value, typmod);
 
 	res = make_result(&value);
 	free_var(&value);
