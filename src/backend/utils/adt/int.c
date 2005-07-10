@@ -215,9 +215,10 @@ int2vectorrecv(PG_FUNCTION_ARGS)
 	int2vector  *result;
 
 	result = (int2vector *)
-		DatumGetPointer(DirectFunctionCall2(array_recv,
+		DatumGetPointer(DirectFunctionCall3(array_recv,
 											PointerGetDatum(buf),
-											ObjectIdGetDatum(INT2OID)));
+											ObjectIdGetDatum(INT2OID),
+											Int32GetDatum(-1)));
 	/* sanity checks: int2vector must be 1-D, no nulls */
 	if (result->ndim != 1 ||
 		result->flags != 0 ||

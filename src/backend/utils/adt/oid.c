@@ -257,9 +257,10 @@ oidvectorrecv(PG_FUNCTION_ARGS)
 	oidvector  *result;
 
 	result = (oidvector *)
-		DatumGetPointer(DirectFunctionCall2(array_recv,
+		DatumGetPointer(DirectFunctionCall3(array_recv,
 											PointerGetDatum(buf),
-											ObjectIdGetDatum(OIDOID)));
+											ObjectIdGetDatum(OIDOID),
+											Int32GetDatum(-1)));
 	/* sanity checks: oidvector must be 1-D, no nulls */
 	if (result->ndim != 1 ||
 		result->flags != 0 ||
