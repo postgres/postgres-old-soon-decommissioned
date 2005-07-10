@@ -814,7 +814,8 @@ px_get_pseudo_random_bytes(uint8 *dst, unsigned count)
 }
 
 static time_t seed_time = 0;
-static void system_reseed()
+
+static void system_reseed(void)
 {
 	uint8 buf[1024];
 	int n;
