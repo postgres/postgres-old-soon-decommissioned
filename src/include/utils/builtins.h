@@ -429,6 +429,8 @@ extern Datum nameicregexne(PG_FUNCTION_ARGS);
 extern Datum texticregexeq(PG_FUNCTION_ARGS);
 extern Datum texticregexne(PG_FUNCTION_ARGS);
 extern Datum textregexsubstr(PG_FUNCTION_ARGS);
+extern Datum textregexreplace_noopt(PG_FUNCTION_ARGS);
+extern Datum textregexreplace(PG_FUNCTION_ARGS);
 extern Datum similar_escape(PG_FUNCTION_ARGS);
 
 /* regproc.c */
@@ -566,6 +568,7 @@ extern List *textToQualifiedNameList(text *textval);
 extern bool SplitIdentifierString(char *rawstring, char separator,
 					  List **namelist);
 extern Datum replace_text(PG_FUNCTION_ARGS);
+extern Datum replace_text_regexp(PG_FUNCTION_ARGS);
 extern Datum split_text(PG_FUNCTION_ARGS);
 extern Datum text_to_array(PG_FUNCTION_ARGS);
 extern Datum array_to_text(PG_FUNCTION_ARGS);
