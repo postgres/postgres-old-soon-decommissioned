@@ -1493,6 +1493,18 @@ lo_import 152801
           </varlistentry>
 
           <varlistentry>
+          <term><literal>numericsep</literal></term>
+          <listitem>
+          <para>
+          Specifies the character separator between groups of three digits
+          to the left of the decimal marker.  The default is <literal>''</>
+          (none).  Setting this to a period also changes the decimal marker 
+          to a comma.
+          </para>
+          </listitem>
+          </varlistentry>
+
+          <varlistentry>
           <term><literal>recordsep</literal></term>
           <listitem>
           <para>
