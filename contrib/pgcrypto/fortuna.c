@@ -29,13 +29,13 @@
  * $PostgreSQL$
  */
 
-#include <postgres.h>
+#include "postgres.h"
+
 #include <sys/time.h>
 #include <time.h>
 
 #include "rijndael.h"
 #include "sha2.h"
-
 #include "fortuna.h"
 
 

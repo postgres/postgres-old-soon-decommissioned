@@ -29,10 +29,11 @@
  * $PostgreSQL$
  */
 
-#include <postgres.h>
-#include <fmgr.h>
-#include <parser/scansup.h>
-#include <mb/pg_wchar.h>
+#include "postgres.h"
+
+#include "fmgr.h"
+#include "parser/scansup.h"
+#include "mb/pg_wchar.h"
 
 #include "mbuf.h"
 #include "px.h"

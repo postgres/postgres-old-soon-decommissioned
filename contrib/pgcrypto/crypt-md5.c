@@ -8,10 +8,11 @@
  *
  * $FreeBSD$
  *
+ * $PostgreSQL$
  */
-/* $PostgreSQL$ */
 
-#include <postgres.h>
+#include "postgres.h"
+
 #include "px.h"
 #include "px-crypt.h"
 

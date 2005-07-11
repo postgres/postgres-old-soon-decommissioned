@@ -1,4 +1,3 @@
-/*	$PostgreSQL$ */
 /*	   $KAME$    */
 
 /*
@@ -28,6 +27,8 @@
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
+ *
+ * $PostgreSQL$
  */
 /*
  * FIPS pub 180-1: Secure Hash Algorithm (SHA-1)
@@ -36,18 +37,16 @@
  */
 
 #include "postgres.h"
-#include "px.h"
 
+#include <sys/param.h>
+
+#include "px.h"
 #include "sha1.h"
 
 /* sanity check */
-#if BYTE_ORDER != BIG_ENDIAN
-#if BYTE_ORDER != LITTLE_ENDIAN
-#define unsupported 1
+#if !defined(BYTE_ORDER) || (BYTE_ORDER != LITTLE_ENDIAN && BYTE_ORDER != BIG_ENDIAN)
+#error Define BYTE_ORDER to be equal to either LITTLE_ENDIAN or BIG_ENDIAN
 #endif
-#endif
-
-#ifndef unsupported
 
 /* constant table */
 static uint32 _K[] = {0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6};
@@ -346,5 +345,3 @@ sha1_result(struct sha1_ctxt * ctxt, uint8 *digest0)
 	digest[19] = ctxt->h.b8[16];
 #endif
 }
-
-#endif   /* unsupported */

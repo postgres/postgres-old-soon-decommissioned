@@ -1,4 +1,3 @@
-/*	$PostgreSQL$	*/
 /*	   $KAME$	   */
 
 /*
@@ -28,12 +27,21 @@
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
+ *
+ * $PostgreSQL$
  */
 
 #include "postgres.h"
-#include "px.h"
 
+#include <sys/param.h>
+
+#include "px.h"
 #include "md5.h"
+
+/* sanity check */
+#if !defined(BYTE_ORDER) || (BYTE_ORDER != LITTLE_ENDIAN && BYTE_ORDER != BIG_ENDIAN)
+#error Define BYTE_ORDER to be equal to either LITTLE_ENDIAN or BIG_ENDIAN
+#endif
 
 #define SHIFT(X, s) (((X) << (s)) | ((X) >> (32 - (s))))
 

@@ -29,9 +29,7 @@
  * $PostgreSQL$
  */
 
-#include <postgres.h>
-
-#include <string.h>
+#include "postgres.h"
 
 #include "px.h"
 #include "mbuf.h"

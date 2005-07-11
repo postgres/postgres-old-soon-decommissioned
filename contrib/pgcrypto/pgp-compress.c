@@ -29,7 +29,7 @@
  * $PostgreSQL$
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
 #include "mbuf.h"
 #include "px.h"
@@ -43,6 +43,7 @@
 #ifndef DISABLE_ZLIB
 
 #include <zlib.h>
+
 #define ZIP_OUT_BUF 8192
 #define ZIP_IN_BLOCK 8192
 

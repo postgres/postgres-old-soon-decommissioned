@@ -29,8 +29,7 @@
  * $PostgreSQL$
  */
 
-
-#include <postgres.h>
+#include "postgres.h"
 
 #include "px.h"
 
@@ -49,7 +48,6 @@
 
 #define TRY_DEV_RANDOM
 
-#include <errno.h>
 #include <fcntl.h>
 #include <unistd.h>
 

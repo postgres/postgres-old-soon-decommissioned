@@ -28,7 +28,7 @@
  *
  * $PostgreSQL$
  */
-#include <postgres.h>
+#include "postgres.h"
 
 #include <openssl/bn.h>
 
