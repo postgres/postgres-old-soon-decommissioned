@@ -126,7 +126,7 @@ static uint8 * try_win32_genrand(uint8 *dst)
 	if (!res)
 		return dst;
 	
-	res = CryptGenRandom(h, NUM_BYTES, dst);
+	res = CryptGenRandom(h, RND_BYTES, dst);
 	if (res == TRUE)
 		dst += len;
 
