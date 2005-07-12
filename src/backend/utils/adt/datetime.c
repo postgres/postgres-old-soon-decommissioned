@@ -3278,7 +3278,7 @@ DecodeInterval(char **field, int *ftype, int nf, int *dtype, struct pg_tm * tm, 
 		sec = (*fsec / USECS_PER_SEC);
 		*fsec -= (sec * USECS_PER_SEC);
 #else
-		TMODULO(*fsec, sec, 1e0);
+		TMODULO(*fsec, sec, 1.0);
 #endif
 		tm->tm_sec += sec;
 	}
