@@ -1020,8 +1020,8 @@ plperl_func_handler(PG_FUNCTION_ARGS)
         /* Return a perl string converted to a Datum */
         char *val;
  
-
-        if (prodesc->fn_retisarray && SvTYPE(SvRV(perlret)) == SVt_PVAV)
+        if (prodesc->fn_retisarray && SvROK(perlret) &&
+			SvTYPE(SvRV(perlret)) == SVt_PVAV)
         {
             array_ret = plperl_convert_to_pg_array(perlret);
             SvREFCNT_dec(perlret);
