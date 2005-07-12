@@ -2802,7 +2802,7 @@ convert_timevalue_to_scalar(Datum value, Oid typid)
 
 #ifdef HAVE_INT64_TIMESTAMP
 				if (interval->status != 0)
-					return ((interval->data[1] - interval->data[0]) *1000000.0);
+					return ((interval->data[1] - interval->data[0]) * 1000000.0);
 #else
 				if (interval->status != 0)
 					return interval->data[1] - interval->data[0];

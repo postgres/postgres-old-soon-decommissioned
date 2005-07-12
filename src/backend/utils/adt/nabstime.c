@@ -833,7 +833,6 @@ interval_reltime(PG_FUNCTION_ARGS)
 
 #ifdef HAVE_INT64_TIMESTAMP
 	int64		span;
-
 #else
 	double		span;
 #endif
