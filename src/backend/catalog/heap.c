@@ -296,7 +296,7 @@ heap_create(const char *relname,
 /* ----------------------------------------------------------------
  *		heap_create_with_catalog		- Create a cataloged relation
  *
- *		this is done in 6 steps:
+ *		this is done in multiple steps:
  *
  *		1) CheckAttributeNamesTypes() is used to make certain the tuple
  *		   descriptor contains a valid set of attribute names and types

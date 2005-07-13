@@ -1485,7 +1485,7 @@ CommitTransaction(void)
 
 	/*
 	 * set the current transaction state information appropriately during
-	 * the abort processing
+	 * commit processing
 	 */
 	s->state = TRANS_COMMIT;
 
@@ -1677,7 +1677,7 @@ PrepareTransaction(void)
 
 	/*
 	 * set the current transaction state information appropriately during
-	 * the processing
+	 * prepare processing
 	 */
 	s->state = TRANS_PREPARE;
 
