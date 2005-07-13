@@ -38,7 +38,7 @@
 #ifdef _WIN32_IE
 #undef _WIN32_IE
 #endif
-#define _WIN32_IE 0x0400
+#define _WIN32_IE 0x0500
 #ifdef near
 #undef near
 #endif
@@ -1211,7 +1211,7 @@ keep_going:						/* We will come back to here until there
 							continue;
 						}
 					}
-					if (!set_noblock(conn->sock))
+					if (!pg_set_noblock(conn->sock))
 					{
 						printfPQExpBuffer(&conn->errorMessage,
 										  libpq_gettext("could not set socket to non-blocking mode: %s\n"),
@@ -2027,12 +2027,18 @@ makeEmptyPGconn(void)
 /*
  * freePGconn
  *	 - free the PGconn data structure
+ *
+ * When changing/adding to this function, see also closePGconn!
  */
 static void
 freePGconn(PGconn *conn)
 {
 	PGnotify   *notify;
 	pgParameterStatus *pstatus;
+
+#ifdef WIN32
+	WSACleanup();
+#endif
 
 	if (!conn)
 		return;
@@ -2066,6 +2072,7 @@ freePGconn(PGconn *conn)
 	if (conn->sslmode)
 		free(conn->sslmode);
 	/* Note that conn->Pfdebug is not ours to close or free */
+	freeaddrinfo_all(conn->addrlist_family, conn->addrlist);
 	notify = conn->notifyHead;
 	while (notify != NULL)
 	{
@@ -2074,7 +2081,6 @@ freePGconn(PGconn *conn)
 		notify = notify->next;
 		free(prev);
 	}
-	freeaddrinfo_all(conn->addrlist_family, conn->addrlist);
 	pstatus = conn->pstatus;
 	while (pstatus != NULL)
 	{
@@ -2097,10 +2103,15 @@ freePGconn(PGconn *conn)
 /*
  * closePGconn
  *	 - properly close a connection to the backend
+ *
+ * Release all transient state, but NOT the connection parameters.
  */
 static void
 closePGconn(PGconn *conn)
 {
+	PGnotify   *notify;
+	pgParameterStatus *pstatus;
+
 	/*
 	 * Note that the protocol doesn't allow us to send Terminate messages
 	 * during the startup phase.
@@ -2136,6 +2147,27 @@ closePGconn(PGconn *conn)
 										 * absent */
 	conn->asyncStatus = PGASYNC_IDLE;
 	pqClearAsyncResult(conn);	/* deallocate result and curTuple */
+	freeaddrinfo_all(conn->addrlist_family, conn->addrlist);
+	conn->addrlist = NULL;
+	conn->addr_cur = NULL;
+	notify = conn->notifyHead;
+	while (notify != NULL)
+	{
+		PGnotify *prev = notify;
+
+		notify = notify->next;
+		free(prev);
+	}
+	conn->notifyHead = NULL;
+	pstatus = conn->pstatus;
+	while (pstatus != NULL)
+	{
+		pgParameterStatus *prev = pstatus;
+
+		pstatus = pstatus->next;
+		free(prev);
+	}
+	conn->pstatus = NULL;
 	if (conn->lobjfuncs)
 		free(conn->lobjfuncs);
 	conn->lobjfuncs = NULL;
@@ -3296,7 +3328,7 @@ pqGetHomeDirectory(char *buf, int bufsize)
 	char		tmppath[MAX_PATH];
 
 	ZeroMemory(tmppath, sizeof(tmppath));
-	if (!SHGetSpecialFolderPath(NULL, tmppath, CSIDL_APPDATA, FALSE))
+	if (SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, 0, tmppath) != S_OK)
 		return false;
 	snprintf(buf, bufsize, "%s/postgresql", tmppath);
 	return true;
