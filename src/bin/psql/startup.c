@@ -130,6 +130,7 @@ main(int argc, char *argv[])
 	setvbuf(stderr, NULL, _IONBF, 0);
 	setup_win32_locks();
 #endif
+	setDecimalLocale();
 	pset.cur_cmd_source = stdin;
 	pset.cur_cmd_interactive = false;
 	pset.encoding = PQenv2encoding();
