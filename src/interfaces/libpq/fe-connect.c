@@ -2116,7 +2116,7 @@ closePGconn(PGconn *conn)
 	conn->addr_cur = NULL;
 	if (conn->notifyList)
 		DLFreeList(conn->notifyList);
-	conn->notifyList = NULL;
+	conn->notifyList = DLNewList();
 	pstatus = conn->pstatus;
 	while (pstatus != NULL)
 	{
