@@ -12,7 +12,8 @@ subdir = src/backend/postmaster
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = bgwriter.o fork_process.o pgarch.o pgstat.o postmaster.o syslogger.o
+OBJS = bgwriter.o autovacuum.o pgarch.o pgstat.o postmaster.o syslogger.o \
+	fork_process.o
 
 all: SUBSYS.o
 

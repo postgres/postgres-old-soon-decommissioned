@@ -32,6 +32,7 @@
 #include "catalog/pg_authid.h"
 #include "libpq/libpq-be.h"
 #include "miscadmin.h"
+#include "postmaster/autovacuum.h"
 #include "storage/fd.h"
 #include "storage/ipc.h"
 #include "storage/pg_shmem.h"
@@ -394,7 +395,7 @@ void
 InitializeSessionUserIdStandalone(void)
 {
 	/* This function should only be called in a single-user backend. */
-	AssertState(!IsUnderPostmaster);
+	AssertState(!IsUnderPostmaster || IsAutoVacuumProcess());
 
 	/* call only once */
 	AssertState(!OidIsValid(AuthenticatedUserId));

@@ -2111,7 +2111,7 @@ authdie(SIGNAL_ARGS)
  * Query-cancel signal from postmaster: abort current transaction
  * at soonest convenient time
  */
-static void
+void
 StatementCancelHandler(SIGNAL_ARGS)
 {
 	int			save_errno = errno;

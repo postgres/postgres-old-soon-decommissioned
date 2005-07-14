@@ -44,6 +44,7 @@
 #include "access/xlog.h"
 #include "commands/vacuum.h"
 #include "miscadmin.h"
+#include "pgstat.h"
 #include "storage/freespace.h"
 #include "storage/smgr.h"
 #include "utils/lsyscache.h"
@@ -179,6 +180,10 @@ lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt)
 						vacrelstats->rel_pages,
 						vacrelstats->rel_tuples,
 						hasindex);
+
+	/* report results to the stats collector, too */
+	pgstat_report_vacuum(RelationGetRelid(onerel), vacstmt->analyze,
+						 vacrelstats->rel_tuples);
 }
 
 

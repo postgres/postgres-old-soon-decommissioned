@@ -125,7 +125,7 @@ extern DLLIMPORT int default_statistics_target; /* DLLIMPORT for PostGIS */
 
 
 /* in commands/vacuum.c */
-extern void vacuum(VacuumStmt *vacstmt);
+extern void vacuum(VacuumStmt *vacstmt, List *relids);
 extern void vac_open_indexes(Relation relation, LOCKMODE lockmode,
 							 int *nindexes, Relation **Irel);
 extern void vac_close_indexes(int nindexes, Relation *Irel, LOCKMODE lockmode);

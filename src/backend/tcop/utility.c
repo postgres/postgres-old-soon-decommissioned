@@ -843,7 +843,7 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_VacuumStmt:
-			vacuum((VacuumStmt *) parsetree);
+			vacuum((VacuumStmt *) parsetree, NIL);
 			break;
 
 		case T_ExplainStmt:
