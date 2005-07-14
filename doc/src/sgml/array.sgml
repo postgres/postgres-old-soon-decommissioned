@@ -63,7 +63,7 @@ CREATE TABLE tictactoe (
  </para>
 
  <para>
-  An alternative syntax, which conforms to the SQL:1999 standard, may
+  An alternative syntax, which conforms to the SQL:2003 standard, may
   be used for one-dimensional arrays.
   <structfield>pay_by_quarter</structfield> could have been defined
   as:

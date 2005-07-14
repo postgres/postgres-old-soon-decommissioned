@@ -98,8 +98,7 @@ $PostgreSQL$
    is under development. It is planned to make <acronym>SQL</acronym>
    a Turing-complete
    language, i.e. all computable queries (e.g. recursive queries) will be
-   possible. This is a very complex task and therefore the completion of
-   the new standard can not be expected before 1999.
+   possible. This has now been completed as SQL:2003.
   </para>
 
   <sect1 id="rel-model">
