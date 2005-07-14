@@ -1472,7 +1472,7 @@ do_pset(const char *param, const char *value, printQueryOpt *popt, bool quiet)
 		}
 	}
 
-	/* toggle between full and barebones format */
+	/* toggle between full and tuples-only format */
 	else if (strcmp(param, "t") == 0 || strcmp(param, "tuples_only") == 0)
 	{
 		popt->topt.tuples_only = !popt->topt.tuples_only;
