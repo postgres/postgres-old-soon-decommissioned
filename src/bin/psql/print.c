@@ -1722,8 +1722,10 @@ setDecimalLocale(void)
 		grouping = "3";		/* most common */
 	if (*extlconv->thousands_sep)
 		thousands_sep = strdup(extlconv->thousands_sep);
+	else if (*decimal_point != ',')
+		thousands_sep = ",";
 	else
-		thousands_sep = ",";	/* matches SQL standard decimal marker */
+		thousands_sep = ".";
 }
 	
 
