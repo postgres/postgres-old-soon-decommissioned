@@ -5286,12 +5286,23 @@ ATExecChangeOwner(Oid relationOid, Oid newOwnerId)
 		Datum		aclDatum;
 		bool		isNull;
 		HeapTuple	newtuple;
+		Oid		    namespaceOid = tuple_class->relnamespace;
+		AclResult	aclresult;
 
-		/* Otherwise, check that we are the superuser */
-		if (!superuser())
-			ereport(ERROR,
-					(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-					 errmsg("must be superuser to change owner")));
+		/* Otherwise, must be owner of the existing object */
+		if (!pg_class_ownercheck(relationOid,GetUserId()))
+			aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_CLASS,
+						   RelationGetRelationName(target_rel));
+
+		/* Must be able to become new owner */
+		check_is_member_of_role(GetUserId(), newOwnerId);
+
+		/* New owner must have CREATE privilege on namespace */
+		aclresult = pg_namespace_aclcheck(namespaceOid, newOwnerId,
+										  ACL_CREATE);
+		if (aclresult != ACLCHECK_OK)
+			aclcheck_error(aclresult, ACL_KIND_NAMESPACE,
+						   get_namespace_name(namespaceOid));
 
 		memset(repl_null, ' ', sizeof(repl_null));
 		memset(repl_repl, ' ', sizeof(repl_repl));
