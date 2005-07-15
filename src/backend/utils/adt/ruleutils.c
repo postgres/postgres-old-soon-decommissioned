@@ -1510,11 +1510,17 @@ deparse_context_for_subplan(const char *name, List *tlist,
 			if (var->varnoold > 0 && var->varnoold <= rtablelength)
 			{
 				RangeTblEntry *varrte = rt_fetch(var->varnoold, rtable);
-				char	   *varname;
+				AttrNumber varattnum = var->varoattno;
 
-				varname = get_rte_attribute_name(varrte, var->varoattno);
-				attrs = lappend(attrs, makeString(varname));
-				continue;
+				/* need this test in case it's referencing a resjunk col */
+				if (varattnum <= list_length(varrte->eref->colnames))
+				{
+					char	   *varname;
+
+					varname = get_rte_attribute_name(varrte, varattnum);
+					attrs = lappend(attrs, makeString(varname));
+					continue;
+				}
 			}
 		}
 		/* Fallback if can't get name */
