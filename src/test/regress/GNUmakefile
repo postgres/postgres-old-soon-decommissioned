@@ -22,6 +22,9 @@ override CFLAGS += $(CFLAGS_SL)
 
 SHLIB_LINK = $(BE_DLLLIBS)
 
+# port number for temp-installation test postmaster
+TEMP_PORT = 5$(DEF_PGPORT)
+
 # default encoding
 MULTIBYTE = SQL_ASCII
 
@@ -119,7 +122,7 @@ all-spi:
 ##
 
 check: all
-	$(SHELL) ./pg_regress --temp-install --top-builddir=$(top_builddir) --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) $(MAXCONNOPT)
+	$(SHELL) ./pg_regress --temp-install --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) $(MAXCONNOPT)
 
 installcheck: all
 	$(SHELL) ./pg_regress --schedule=$(srcdir)/serial_schedule --multibyte=$(MULTIBYTE)
@@ -134,7 +137,7 @@ bigtest:
 	$(SHELL) ./pg_regress --schedule=$(srcdir)/serial_schedule --multibyte=$(MULTIBYTE) numeric_big
 
 bigcheck:
-	$(SHELL) ./pg_regress --temp-install --top-builddir=$(top_builddir) --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) $(MAXCONNOPT) numeric_big
+	$(SHELL) ./pg_regress --temp-install --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) $(MAXCONNOPT) numeric_big
 
 
 ##
