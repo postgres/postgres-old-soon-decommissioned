@@ -73,6 +73,9 @@ LINK.static = $(AR) $(AROPT)
 
 ifeq ($(enable_shared), yes)
 
+# Insert -L from LDFLAGS after any -L already present in SHLIB_LINK
+SHLIB_LINK := $(filter -L%, $(SHLIB_LINK)) $(filter -L%, $(LDFLAGS)) $(filter-out -L%, $(SHLIB_LINK))
+
 # Default shlib naming convention used by the majority of platforms
 shlib		= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
 shlib_major	= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION)
@@ -240,7 +243,6 @@ ifeq ($(PORTNAME), beos)
   SHLIB_LINK		+= -ltermcap -lstdc++.r4 -lbind -lsocket -L/boot/develop/lib/x86
 endif
 
-SHLIB_LINK := $(filter -L%, $(LDFLAGS)) $(SHLIB_LINK)
 ifeq ($(enable_rpath), yes)
 SHLIB_LINK += $(rpath)
 endif
