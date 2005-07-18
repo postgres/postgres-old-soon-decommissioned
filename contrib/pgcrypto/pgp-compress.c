@@ -270,7 +270,7 @@ restart:
 	dec->stream.avail_out = dec->buf_len;
 	dec->pos = dec->buf;
 
-	// Z_NO_FLUSH, Z_SYNC_FLUSH,
+	/* Z_NO_FLUSH, Z_SYNC_FLUSH */
 	flush = dec->stream.avail_in ? Z_SYNC_FLUSH : Z_FINISH;
 	res = inflate(&dec->stream, flush);
 	if (res != Z_OK && res != Z_STREAM_END)

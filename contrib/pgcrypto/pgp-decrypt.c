@@ -339,7 +339,7 @@ static void mdc_free(void *priv)
 	ctx->mdc_ctx = NULL;
 }
 
-// fixme: clarify
+/* fixme: clarify */
 static int mdc_finish(PGP_Context *ctx, PullFilter *src,
 		int len, uint8 **data_p)
 {
