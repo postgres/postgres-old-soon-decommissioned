@@ -1766,7 +1766,7 @@ listSchemas(const char *pattern, bool verbose)
 	appendPQExpBuffer(&buf,
 	  "\nFROM pg_catalog.pg_namespace n LEFT JOIN pg_catalog.pg_user u\n"
 					  "       ON n.nspowner=u.usesysid\n"
-				 "WHERE	(n.nspname NOT LIKE E'pg\\\\_temp\\\\_%%' OR\n"
+					  "WHERE	(n.nspname !~ '^pg_temp_' OR\n"
 	   "		 n.nspname = (pg_catalog.current_schemas(true))[1])\n");		/* temp schema is first */
 
 	processNamePattern(&buf, pattern, true, false,
