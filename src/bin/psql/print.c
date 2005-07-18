@@ -65,17 +65,18 @@ integer_digits(const char *my_str)
 static int
 len_numericseps(const char *my_str)
 {
-	int int_len = integer_digits(my_str), sep_len;
+	int int_len = integer_digits(my_str), len = 0;
 	int	groupdigits = atoi(grouping);
 
-	if (int_len == 0)
-		sep_len = 0;
-	else
+	if (int_len > 0)
 		/* Don't count a leading separator */
-		sep_len = int_len / groupdigits - (int_len % groupdigits == 0);
+		len = (int_len / groupdigits - (int_len % groupdigits == 0)) *
+			  strlen(thousands_sep);
 
-	return sep_len * strlen(thousands_sep) -
-		   strlen(".") + strlen(decimal_point);
+	if (strchr(my_str, '.') != NULL)
+		len += strlen(decimal_point) - strlen(".");
+	
+	return len;
 }
 
 static int
