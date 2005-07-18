@@ -40,7 +40,7 @@ typedef struct _printTableOpt
 	char	   *fieldSep;		/* field separator for unaligned text mode */
 	char	   *recordSep;		/* record separator for unaligned text
 								 * mode */
-	bool		numericSep;		/* locale-aware numeric units separator and
+	bool		numericLocale;	/* locale-aware numeric units separator and
 								 *  decimal marker */
 	char	   *tableAttr;		/* attributes for HTML <table ...> */
 	int			encoding;		/* character encoding */

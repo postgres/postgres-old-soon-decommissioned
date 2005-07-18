@@ -1420,16 +1420,16 @@ do_pset(const char *param, const char *value, printQueryOpt *popt, bool quiet)
 				   : _("Expanded display is off.\n"));
 	}
 
-	/* numeric separators */
-	else if (strcmp(param, "numericsep") == 0)
+	/* locale-aware numeric output */
+	else if (strcmp(param, "numericlocale") == 0)
 	{
-		popt->topt.numericSep = !popt->topt.numericSep;
+		popt->topt.numericLocale = !popt->topt.numericLocale;
 		if (!quiet)
 		{
-			if (popt->topt.numericSep)
-				puts(_("Showing numeric separators."));
+			if (popt->topt.numericLocale)
+				puts(_("Showing locale-adjusted numeric output."));
 			else
-				puts(_("Numeric separators are off."));
+				puts(_("Locale-adjusted numeric output is off."));
 		}
 	}
 
