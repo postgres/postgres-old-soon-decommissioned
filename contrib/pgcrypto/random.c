@@ -44,7 +44,9 @@
  */
 #if defined(__linux__) || defined(__FreeBSD__) || defined(__OpenBSD__) \
 	|| defined(__NetBSD__) || defined(__DragonFly__) \
-	|| defined(__darwin__) || defined(__SOLARIS__)
+	|| defined(__darwin__) || defined(__SOLARIS__) \
+	|| defined(__hpux) || defined(__HPUX__) \
+	|| defined(__CYGWIN__) || defined(_AIX)
 
 #define TRY_DEV_RANDOM
 

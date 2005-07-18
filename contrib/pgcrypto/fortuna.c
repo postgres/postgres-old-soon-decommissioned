@@ -174,8 +174,8 @@ static void init_state(FState *st)
 }
 
 /*
- * Must not reseed more ofter than RESEED_PER_SEC
- * times per second.
+ * The time between reseed must be at least RESEED_INTERVAL
+ * microseconds.
  */
 static int too_often(FState *st)
 {
@@ -241,7 +241,6 @@ static void reseed(FState *st)
 
 	memset(&key_md, 0, sizeof(key_md));
 	memset(buf, 0, BLOCK);
-	n = k = 0;
 }
 
 /*

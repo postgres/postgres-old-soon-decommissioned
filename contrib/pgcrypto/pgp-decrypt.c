@@ -339,7 +339,6 @@ static void mdc_free(void *priv)
 	ctx->mdc_ctx = NULL;
 }
 
-/* fixme: clarify */
 static int mdc_finish(PGP_Context *ctx, PullFilter *src,
 		int len, uint8 **data_p)
 {
@@ -364,6 +363,7 @@ static int mdc_finish(PGP_Context *ctx, PullFilter *src,
 		return 0;
 	}
 	
+	/* safety check */
 	if (ctx->in_mdc_pkt > 1)
 	{
 		px_debug("mdc_finish: several times here?");
@@ -371,6 +371,7 @@ static int mdc_finish(PGP_Context *ctx, PullFilter *src,
 	}
 	ctx->in_mdc_pkt++;
 	
+	/* is the packet sane? */
 	if (res != 20)
 	{
 		px_debug("mdc_finish: read failed, res=%d", res);

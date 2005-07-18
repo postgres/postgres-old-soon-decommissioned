@@ -238,8 +238,6 @@ unsigned	pgp_armor_dec_len(unsigned len);
 int pgp_compress_filter(PushFilter **res, PGP_Context *ctx, PushFilter *dst);
 int pgp_decompress_filter(PullFilter **res, PGP_Context *ctx, PullFilter *src);
 
-extern void (*pgp_packet_debug) (int tag, uint8 *buf, int len);
-
 int pgp_key_alloc(PGP_PubKey **pk_p);
 void pgp_key_free(PGP_PubKey *pk);
 int _pgp_read_public_key(PullFilter *pkt, PGP_PubKey *pk);
