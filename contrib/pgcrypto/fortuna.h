@@ -32,14 +32,8 @@
 #ifndef __FORTUNA_H
 #define __FORTUNA_H
 
-/*
- * Event source ID's
- */
-#define SYSTEM_ENTROPY	0
-#define USER_ENTROPY	1
-
 void fortuna_get_bytes(unsigned len, uint8 *dst);
-void fortuna_add_entropy(unsigned src_id, const uint8 *data, unsigned len);
+void fortuna_add_entropy(const uint8 *data, unsigned len);
 
 #endif
 
