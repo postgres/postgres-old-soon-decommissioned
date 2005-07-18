@@ -68,10 +68,11 @@ len_numericseps(const char *my_str)
 	int int_len = integer_digits(my_str), sep_len;
 	int	groupdigits = atoi(grouping);
 
-	if (int_len % groupdigits != 0)
-		sep_len = int_len / groupdigits;
+	if (int_len == 0)
+		sep_len = 0;
 	else
-		sep_len = int_len / groupdigits - 1;	/* no leading separator */
+		/* Don't count a leading separator */
+		sep_len = int_len / groupdigits - (int_len % groupdigits == 0);
 
 	return sep_len * strlen(thousands_sep) -
 		   strlen(".") + strlen(decimal_point);
@@ -93,7 +94,7 @@ format_numericsep(char *my_str)
 	if (my_str[0] == '-')
 		my_str++;
 	
-	new_str = pg_local_malloc(len_numericseps(my_str) + 1);
+	new_str = pg_local_malloc(len_with_numericsep(my_str) + 1);
 
 	leading_digits = (int_len % groupdigits != 0) ?
 					 int_len % groupdigits : groupdigits;
