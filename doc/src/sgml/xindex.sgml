@@ -26,9 +26,10 @@ $PostgreSQL$
     necessary to make manual additions to the system catalogs
     <classname>pg_amop</>, <classname>pg_amproc</>, and
     <classname>pg_opclass</> in order to create a user-defined
-    operator class.  That approach is now deprecated in favor of
-    using <command>CREATE OPERATOR CLASS</>, which is a much simpler
-    and less error-prone way of creating the necessary catalog entries.
+    operator class.  That approach is now deprecated in favor of using
+    <xref linkend="sql-createopclass" endterm="sql-createopclass-title">,
+    which is a much simpler and less error-prone way of creating the
+    necessary catalog entries.
    </para>
   </note>
 
