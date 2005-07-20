@@ -2784,10 +2784,11 @@ convert_timevalue_to_scalar(Datum value, Oid typid)
 				 * too accurate, but plenty good enough for our purposes.
 				 */
 #ifdef HAVE_INT64_TIMESTAMP
-				return (interval->time + (interval->month * ((365.25 / 12.0) * 86400000000.0)));
+				return interval->time + interval->day * (double)USECS_PER_DAY +
+					   interval->month * ((365.25 / 12.0) * USECS_PER_DAY);
 #else
-				return interval->time +
-				interval  ->month * (365.25 / 12.0 * 24.0 * 60.0 * 60.0);
+				return interval->time + interval->day * SECS_PER_DAY +
+						interval->month * ((365.25 / 12.0) * (double)SECS_PER_DAY);
 #endif
 			}
 		case RELTIMEOID:

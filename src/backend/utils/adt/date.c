@@ -1423,6 +1423,7 @@ time_interval(PG_FUNCTION_ARGS)
 	result = (Interval *) palloc(sizeof(Interval));
 
 	result->time = time;
+	result->day = 0;
 	result->month = 0;
 
 	PG_RETURN_INTERVAL_P(result);
@@ -1477,8 +1478,9 @@ time_mi_time(PG_FUNCTION_ARGS)
 
 	result = (Interval *) palloc(sizeof(Interval));
 
-	result->time = (time1 - time2);
 	result->month = 0;
+	result->day = 0;
+	result->time = time1 - time2;
 
 	PG_RETURN_INTERVAL_P(result);
 }

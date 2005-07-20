@@ -292,6 +292,15 @@ assign_timezone(const char *value, bool doit, GucSource source)
 			pfree(interval);
 			return NULL;
 		}
+		if (interval->day != 0)
+		{
+			if (source >= PGC_S_INTERACTIVE)
+				ereport(ERROR,
+						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+						 errmsg("invalid interval value for time zone: day not allowed")));
+			pfree(interval);
+			return NULL;
+		}
 		if (doit)
 		{
 			/* Here we change from SQL to Unix sign convention */
@@ -414,6 +423,7 @@ show_timezone(void)
 		Interval interval;
 
 		interval.month = 0;
+		interval.day = 0;
 #ifdef HAVE_INT64_TIMESTAMP
 		interval.time = -(CTimeZone * USECS_PER_SEC);
 #else
