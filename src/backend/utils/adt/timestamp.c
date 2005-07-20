@@ -2201,7 +2201,7 @@ interval_mul(PG_FUNCTION_ARGS)
 	result->time += (months - result->month) * INT64CONST(30) *
 					USECS_PER_DAY;
 #else
-	result->month = rint(months);
+	result->month = (int)months;
 	result->time = JROUND(span1->time * factor);
 	/* evaluate fractional months as 30 days */
 	result->time += JROUND((months - result->month) * 30 * SECS_PER_DAY);
@@ -2246,7 +2246,7 @@ interval_div(PG_FUNCTION_ARGS)
 					INT64CONST(30) * USECS_PER_DAY) / factor;
 #else
 	months = span->month / factor;
-	result->month = rint(months);
+	result->month = (int)months;
 	result->time = JROUND(span->time / factor);
 	/* evaluate fractional months as 30 days */
 	result->time += JROUND((months - result->month) * 30 * SECS_PER_DAY);
