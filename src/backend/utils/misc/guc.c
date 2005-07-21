@@ -1349,7 +1349,7 @@ static struct config_int ConfigureNamesInt[] =
 			NULL
 		},
 		&Log_RotationAge,
-		24 * 60, 0, INT_MAX / 60, NULL, NULL
+		HOURS_PER_DAY * SECS_PER_MINUTE, 0, INT_MAX / SECS_PER_MINUTE, NULL, NULL
 	},
 
 	{

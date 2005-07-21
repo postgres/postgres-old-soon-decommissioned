@@ -1284,7 +1284,7 @@ ServerLoop(void)
 		 * less than an hour ...
 		 */
 		now = time(NULL);
-		if (now - last_touch_time >= 58 * 60)
+		if (now - last_touch_time >= 58 * SECS_PER_MINUTE)
 		{
 			TouchSocketFile();
 			TouchSocketLockFile();
