@@ -630,6 +630,7 @@ typedef NameData *Name;
 #define MemSet(start, val, len) \
 	do \
 	{ \
+		/* must be void* because we don't know if it is integer aligned yet */ \
 		void   *_vstart = (void *) (start); \
 		int		_val = (val); \
 		Size	_len = (len); \
