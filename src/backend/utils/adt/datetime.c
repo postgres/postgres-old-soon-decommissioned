@@ -3275,8 +3275,8 @@ DecodeInterval(char **field, int *ftype, int nf, int *dtype, struct pg_tm * tm, 
 		int			sec;
 
 #ifdef HAVE_INT64_TIMESTAMP
-		sec = (*fsec / USECS_PER_SEC);
-		*fsec -= (sec * USECS_PER_SEC);
+		sec = *fsec / USECS_PER_SEC;
+		*fsec -= sec * USECS_PER_SEC;
 #else
 		TMODULO(*fsec, sec, 1.0);
 #endif

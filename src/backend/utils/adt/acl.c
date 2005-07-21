@@ -1017,7 +1017,7 @@ aclmask(const Acl *acl, Oid roleid, Oid ownerId,
 		if (aidata->ai_grantee == ACL_ID_PUBLIC ||
 			aidata->ai_grantee == roleid)
 		{
-			result |= (aidata->ai_privs & mask);
+			result |= aidata->ai_privs & mask;
 			if ((how == ACLMASK_ALL) ? (result == mask) : (result != 0))
 				return result;
 		}
@@ -1030,7 +1030,7 @@ aclmask(const Acl *acl, Oid roleid, Oid ownerId,
 	 * a given ACL entry grants any privileges still of interest before
 	 * we perform the is_member test.
 	 */
-	remaining = (mask & ~result);
+	remaining = mask & ~result;
 	for (i = 0; i < num; i++)
 	{
 		AclItem    *aidata = &aidat[i];
@@ -1042,10 +1042,10 @@ aclmask(const Acl *acl, Oid roleid, Oid ownerId,
 		if ((aidata->ai_privs & remaining) &&
 			is_member_of_role(roleid, aidata->ai_grantee))
 		{
-			result |= (aidata->ai_privs & mask);
+			result |= aidata->ai_privs & mask;
 			if ((how == ACLMASK_ALL) ? (result == mask) : (result != 0))
 				return result;
-			remaining = (mask & ~result);
+			remaining = mask & ~result;
 		}
 	}
 

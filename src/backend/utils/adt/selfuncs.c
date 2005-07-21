@@ -2799,14 +2799,14 @@ convert_timevalue_to_scalar(Datum value, Oid typid)
 #endif
 		case TINTERVALOID:
 			{
-				TimeInterval interval = DatumGetTimeInterval(value);
+				TimeInterval tinterval = DatumGetTimeInterval(value);
 
 #ifdef HAVE_INT64_TIMESTAMP
-				if (interval->status != 0)
-					return ((interval->data[1] - interval->data[0]) * 1000000.0);
+				if (tinterval->status != 0)
+					return ((tinterval->data[1] - tinterval->data[0]) * 1000000.0);
 #else
-				if (interval->status != 0)
-					return interval->data[1] - interval->data[0];
+				if (tinterval->status != 0)
+					return tinterval->data[1] - tinterval->data[0];
 #endif
 				return 0;		/* for lack of a better idea */
 			}

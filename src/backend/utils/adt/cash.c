@@ -197,7 +197,7 @@ cash_in(PG_FUNCTION_ARGS)
 				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
 			errmsg("invalid input syntax for type money: \"%s\"", str)));
 
-	result = (value * sgn);
+	result = value * sgn;
 
 #ifdef CASHDEBUG
 	printf("cashin- result is %d\n", result);
