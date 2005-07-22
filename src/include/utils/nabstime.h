@@ -162,6 +162,6 @@ extern Datum timeofday(PG_FUNCTION_ARGS);
 
 /* non-fmgr-callable support routines */
 extern AbsoluteTime GetCurrentAbsoluteTime(void);
-extern void abstime2tm(AbsoluteTime time, int *tzp, struct pg_tm * tm, char **tzn);
+extern void abstime2tm(AbsoluteTime time, int *tzp, struct pg_tm *tm, char **tzn);
 
 #endif   /* NABSTIME_H */
