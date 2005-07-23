@@ -2989,7 +2989,7 @@ to_timestamp(PG_FUNCTION_ARGS)
 
 	do_to_timestamp(date_txt, fmt, &tm, &fsec);
 
-	tz = DetermineLocalTimeZone(&tm);
+	tz = DetermineTimeZoneOffset(&tm, global_timezone);
 
 	if (tm2timestamp(&tm, fsec, &tz, &result) != 0)
 		ereport(ERROR,

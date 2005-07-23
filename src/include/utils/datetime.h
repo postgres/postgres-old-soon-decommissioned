@@ -291,7 +291,7 @@ extern int DecodeInterval(char **field, int *ftype,
 extern void DateTimeParseError(int dterr, const char *str,
 				   const char *datatype);
 
-extern int	DetermineLocalTimeZone(struct pg_tm *tm);
+extern int	DetermineTimeZoneOffset(struct pg_tm *tm, pg_tz *tzp);
 
 extern int	EncodeDateOnly(struct pg_tm *tm, int style, char *str);
 extern int	EncodeTimeOnly(struct pg_tm *tm, fsec_t fsec, int *tzp, int style, char *str);

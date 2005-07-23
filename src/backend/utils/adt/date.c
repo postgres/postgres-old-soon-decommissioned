@@ -301,7 +301,7 @@ date2timestamptz(DateADT dateVal)
 	tm->tm_hour = 0;
 	tm->tm_min = 0;
 	tm->tm_sec = 0;
-	tz = DetermineLocalTimeZone(tm);
+	tz = DetermineTimeZoneOffset(tm, global_timezone);
 
 #ifdef HAVE_INT64_TIMESTAMP
 	result = dateVal * USECS_PER_DAY + tz * USECS_PER_SEC;
@@ -2231,7 +2231,7 @@ time_timetz(PG_FUNCTION_ARGS)
 
 	GetCurrentDateTime(tm);
 	time2tm(time, tm, &fsec);
-	tz = DetermineLocalTimeZone(tm);
+	tz = DetermineTimeZoneOffset(tm, global_timezone);
 
 	result = (TimeTzADT *) palloc(sizeof(TimeTzADT));
 

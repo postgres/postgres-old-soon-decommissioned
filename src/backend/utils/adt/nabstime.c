@@ -474,7 +474,7 @@ timestamp_abstime(PG_FUNCTION_ARGS)
 		result = NOEND_ABSTIME;
 	else if (timestamp2tm(timestamp, NULL, tm, &fsec, NULL, NULL) == 0)
 	{
-		tz = DetermineLocalTimeZone(tm);
+		tz = DetermineTimeZoneOffset(tm, global_timezone);
 		result = tm2abstime(tm, tz);
 	}
 	else
