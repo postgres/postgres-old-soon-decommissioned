@@ -2308,9 +2308,9 @@ interval_div(PG_FUNCTION_ARGS)
 	result->day = span->day / factor;
 	result->time = span->time / factor;
 
-	/* Computer remainders */
-	month_remainder = (span->month - result->month * factor) / factor;
-	day_remainder = (span->day - result->day * factor) / factor;
+	/* Compute remainders */
+	month_remainder = span->month / factor - result->month;
+	day_remainder = span->day / factor - result->day;
 
 	/* Cascade fractions to lower units */
 	/* fractional months full days into days */
