@@ -436,6 +436,16 @@ static struct config_bool ConfigureNamesBool[] =
 		true, NULL, NULL
 	},
 	{
+		{"enable_constraint_exclusion", PGC_USERSET, QUERY_TUNING_OTHER,
+			gettext_noop("Enables the planner's use of constraints in queries."),
+			gettext_noop("Constraints will be examined to exclude tables "
+						 "that can be proven not to be required to produce "
+						 "a correct result for the query.")
+		},
+		&enable_constraint_exclusion,
+		false, NULL, NULL
+	},
+	{
 		{"geqo", PGC_USERSET, QUERY_TUNING_GEQO,
 			gettext_noop("Enables genetic query optimization."),
 			gettext_noop("This algorithm attempts to do planning without "

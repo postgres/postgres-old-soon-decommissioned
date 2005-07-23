@@ -184,7 +184,6 @@ optimize_minmax_aggregates(PlannerInfo *root, List *tlist, Path *best_path)
 	 */
 	if (IsA(best_path, ResultPath))
 	{
-		Assert(((ResultPath *) best_path)->subpath != NULL);
 		constant_quals = ((ResultPath *) best_path)->constantqual;
 		/* no need to do this more than once: */
 		constant_quals = order_qual_clauses(root, constant_quals);

@@ -19,5 +19,7 @@
 
 extern bool predicate_implied_by(List *predicate_list,
 								 List *restrictinfo_list);
+extern bool predicate_refuted_by(List *predicate_list,
+								 List *restrictinfo_list);
 
 #endif   /* PREDTEST_H */

@@ -19,6 +19,8 @@
 
 extern void get_relation_info(Oid relationObjectId, RelOptInfo *rel);
 
+extern List *get_relation_constraints(Oid relationObjectId, RelOptInfo *rel);
+
 extern List *build_physical_tlist(PlannerInfo *root, RelOptInfo *rel);
 
 extern List *find_inheritance_children(Oid inhparent);

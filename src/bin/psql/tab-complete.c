@@ -540,6 +540,7 @@ psql_completion(char *text, int start, int end)
 		"dynamic_library_path",
 		"effective_cache_size",
 		"enable_bitmapscan",
+		"enable_constraint_exclusion",
 		"enable_hashagg",
 		"enable_hashjoin",
 		"enable_indexscan",
