@@ -48,15 +48,6 @@
 
 
 /*
- *	Becauase O_DIRECT bypasses the kernel buffers, and because we never
- *	read those buffers except during crash recovery, it seems like
- *	a win to use it in all cases.
- */
-#ifdef O_DIRECT
-#define PG_O_DIRECT	O_DIR(enableFsync ? (open_sync_bit | O_DIRECT) : 0)
-#else
-
-/*
  * This chunk of hackery attempts to determine which file sync methods
  * are available on the current platform, and to choose an appropriate
  * default method.	We assume that fsync() is always available, and that
