@@ -5,6 +5,8 @@ DATA_built = earthdistance.sql
 DOCS = README.earthdistance
 REGRESS = earthdistance
 
+SHLIB_LINK += $(filter -lm, $(LIBS))
+
 ifdef USE_PGXS
 PGXS = $(shell pg_config --pgxs)
 include $(PGXS)

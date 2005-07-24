@@ -19,7 +19,7 @@ DATA_built = tsearch2.sql untsearch2.sql
 DOCS = README.tsearch2
 REGRESS = tsearch2
 
-SHLIB_LINK := -lm
+SHLIB_LINK += $(filter -lm, $(LIBS))
 
 
 ifdef USE_PGXS
