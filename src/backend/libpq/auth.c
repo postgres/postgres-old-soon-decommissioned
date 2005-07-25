@@ -234,7 +234,7 @@ pg_krb5_recvauth(Port *port)
 
 	kusername = pg_an_to_ln(kusername);
 	if (pg_krb_caseins_users)
-		ret = strncasecmp(port->user_name, kusername, SM_DATABASE_USER);
+		ret = pg_strncasecmp(port->user_name, kusername, SM_DATABASE_USER);
 	else
 		ret = strncmp(port->user_name, kusername, SM_DATABASE_USER);
 	if (ret)

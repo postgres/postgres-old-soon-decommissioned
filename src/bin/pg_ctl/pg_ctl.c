@@ -911,7 +911,7 @@ pgwin32_CommandLine(bool registration)
 
 	if (registration)
 	{
-		if (strcasecmp(cmdLine + strlen(cmdLine) - 4, ".exe"))
+		if (pg_strcasecmp(cmdLine + strlen(cmdLine) - 4, ".exe"))
 		{
 			/* If commandline does not end in .exe, append it */
 			strcat(cmdLine, ".exe");
