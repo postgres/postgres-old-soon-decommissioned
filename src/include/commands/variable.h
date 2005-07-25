@@ -26,6 +26,9 @@ extern bool assign_random_seed(double value,
 extern const char *show_random_seed(void);
 extern const char *assign_client_encoding(const char *value,
 					   bool doit, GucSource source);
+extern const char *assign_role(const char *value,
+							 bool doit, GucSource source);
+extern const char *show_role(void);
 extern const char *assign_session_authorization(const char *value,
 							 bool doit, GucSource source);
 extern const char *show_session_authorization(void);

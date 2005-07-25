@@ -1004,6 +1004,13 @@ set_rest:  var_name TO var_list_or_default
 						n->args = list_make1(makeStringConst($2, NULL));
 					$$ = n;
 				}
+			| ROLE ColId_or_Sconst
+				{
+					VariableSetStmt *n = makeNode(VariableSetStmt);
+					n->name = "role";
+					n->args = list_make1(makeStringConst($2, NULL));
+					$$ = n;
+				}
 			| SESSION AUTHORIZATION ColId_or_Sconst
 				{
 					VariableSetStmt *n = makeNode(VariableSetStmt);

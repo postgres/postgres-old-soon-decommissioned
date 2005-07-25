@@ -102,6 +102,7 @@ Complete list of usable sgml source files in this directory.
 <!entity selectInto         system "select_into.sgml">
 <!entity set                system "set.sgml">
 <!entity setConstraints     system "set_constraints.sgml">
+<!entity setRole            system "set_role.sgml">
 <!entity setSessionAuth     system "set_session_auth.sgml">
 <!entity setTransaction     system "set_transaction.sgml">
 <!entity show               system "show.sgml">

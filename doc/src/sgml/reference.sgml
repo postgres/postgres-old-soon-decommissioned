@@ -134,6 +134,7 @@ PostgreSQL Reference Manual
    &selectInto;
    &set;
    &setConstraints;
+   &setRole;
    &setSessionAuth;
    &setTransaction;
    &show;

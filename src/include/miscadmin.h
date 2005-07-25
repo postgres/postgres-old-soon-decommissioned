@@ -230,12 +230,14 @@ extern void SetDatabasePath(const char *path);
 
 extern char *GetUserNameFromId(Oid roleid);
 extern Oid GetUserId(void);
-extern void SetUserId(Oid roleid);
+extern void SetUserId(Oid userid);
+extern Oid GetOuterUserId(void);
 extern Oid GetSessionUserId(void);
-extern void SetSessionUserId(Oid roleid);
 extern void InitializeSessionUserId(const char *rolename);
 extern void InitializeSessionUserIdStandalone(void);
-extern void SetSessionAuthorization(Oid roleid, bool is_superuser);
+extern void SetSessionAuthorization(Oid userid, bool is_superuser);
+extern Oid GetCurrentRoleId(void);
+extern void SetCurrentRoleId(Oid roleid, bool is_superuser);
 
 extern void SetDataDir(const char *dir);
 extern void ChangeToDataDir(void);
