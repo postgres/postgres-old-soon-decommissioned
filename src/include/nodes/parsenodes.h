@@ -1139,11 +1139,24 @@ typedef struct DropPLangStmt
 
 /* ----------------------
  *	Create/Alter/Drop Role Statements
+ *
+ * Note: these node types are also used for the backwards-compatible
+ * Create/Alter/Drop User/Group statements.  In the ALTER and DROP cases
+ * there's really no need to distinguish what the original spelling was,
+ * but for CREATE we mark the type because the defaults vary.
  * ----------------------
  */
+typedef enum RoleStmtType
+{
+	ROLESTMT_ROLE,
+	ROLESTMT_USER,
+	ROLESTMT_GROUP
+} RoleStmtType;
+
 typedef struct CreateRoleStmt
 {
 	NodeTag		type;
+	RoleStmtType stmt_type;		/* ROLE/USER/GROUP */
 	char	   *role;			/* role name */
 	List	   *options;		/* List of DefElem nodes */
 } CreateRoleStmt;

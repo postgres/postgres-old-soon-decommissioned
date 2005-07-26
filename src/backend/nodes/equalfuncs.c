@@ -1308,6 +1308,7 @@ _equalDropPLangStmt(DropPLangStmt *a, DropPLangStmt *b)
 static bool
 _equalCreateRoleStmt(CreateRoleStmt *a, CreateRoleStmt *b)
 {
+	COMPARE_SCALAR_FIELD(stmt_type);
 	COMPARE_STRING_FIELD(role);
 	COMPARE_NODE_FIELD(options);
 

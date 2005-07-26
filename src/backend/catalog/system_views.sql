@@ -10,13 +10,15 @@ CREATE VIEW pg_roles AS
     SELECT 
         rolname,
         rolsuper,
+        rolinherit,
         rolcreaterole,
         rolcreatedb,
         rolcatupdate,
         rolcanlogin,
         '********'::text as rolpassword,
         rolvaliduntil,
-        rolconfig
+        rolconfig,
+        oid
     FROM pg_authid;
 
 CREATE VIEW pg_shadow AS

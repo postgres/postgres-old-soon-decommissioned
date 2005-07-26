@@ -8559,7 +8559,12 @@ SELECT has_function_privilege('joeuser', 'myfunc(int, text)', 'execute');
     can access a role in a particular way.  The possibilities for its
     arguments are analogous to <function>has_table_privilege</function>.
     The desired access privilege type must evaluate to
-    <literal>MEMBER</literal>.
+    <literal>MEMBER</literal> or
+    <literal>USAGE</literal>.
+    <literal>MEMBER</literal> denotes direct or indirect membership in
+    the role (that is, the right to do <literal>SET ROLE</>), while
+    <literal>USAGE</literal> denotes whether the privileges of the role
+    are immediately available without doing <literal>SET ROLE</>.
    </para>
 
    <para>
