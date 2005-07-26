@@ -48,6 +48,7 @@ PostgreSQL Reference Manual
    &alterLanguage;
    &alterOperator;
    &alterOperatorClass;
+   &alterRole;
    &alterSchema;
    &alterSequence;
    &alterTable;
@@ -76,6 +77,7 @@ PostgreSQL Reference Manual
    &createLanguage;
    &createOperator;
    &createOperatorClass;
+   &createRole;
    &createRule;
    &createSchema;
    &createSequence;
@@ -100,6 +102,7 @@ PostgreSQL Reference Manual
    &dropLanguage;
    &dropOperator;
    &dropOperatorClass;
+   &dropRole;
    &dropRule;
    &dropSchema;
    &dropSequence;

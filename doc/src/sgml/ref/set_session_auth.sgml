@@ -89,8 +89,8 @@ SELECT SESSION_USER, CURRENT_USER;
 
   <para>
    The SQL standard allows some other expressions to appear in place
-   of the literal <replaceable>username</replaceable> which are not
-   important in practice.  <productname>PostgreSQL</productname>
+   of the literal <replaceable>username</replaceable>, but these options
+   are not important in practice.  <productname>PostgreSQL</productname>
    allows identifier syntax (<literal>"username"</literal>), which SQL
    does not.  SQL does not allow this command during a transaction;
    <productname>PostgreSQL</productname> does not make this
