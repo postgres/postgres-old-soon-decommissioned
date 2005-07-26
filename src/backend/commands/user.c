@@ -377,6 +377,10 @@ CreateRole(CreateRoleStmt *stmt)
 
 /*
  * ALTER ROLE
+ *
+ * Note: the rolemembers option accepted here is intended to support the
+ * backwards-compatible ALTER GROUP syntax.  Although it will work to say
+ * "ALTER ROLE role ROLE rolenames", we don't document it.
  */
 void
 AlterRole(AlterRoleStmt *stmt)

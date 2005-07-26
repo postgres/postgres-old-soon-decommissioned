@@ -728,6 +728,7 @@ AlterRoleStmt:
 				 {
 					AlterRoleStmt *n = makeNode(AlterRoleStmt);
 					n->role = $3;
+					n->action = +1;	/* add, if there are members */
 					n->options = $5;
 					$$ = (Node *)n;
 				 }
@@ -764,6 +765,7 @@ AlterUserStmt:
 				 {
 					AlterRoleStmt *n = makeNode(AlterRoleStmt);
 					n->role = $3;
+					n->action = +1;	/* add, if there are members */
 					n->options = $5;
 					$$ = (Node *)n;
 				 }
