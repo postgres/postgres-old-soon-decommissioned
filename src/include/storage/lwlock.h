@@ -33,7 +33,6 @@ typedef enum LWLockId
 	ProcArrayLock,
 	SInvalLock,
 	FreeSpaceLock,
-	MMCacheLock,
 	WALInsertLock,
 	WALWriteLock,
 	ControlFileLock,
