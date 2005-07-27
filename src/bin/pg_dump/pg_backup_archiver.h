@@ -49,7 +49,7 @@
 #define GZCLOSE(fh) fclose(fh)
 #define GZWRITE(p, s, n, fh) (fwrite(p, s, n, fh) * (s))
 #define GZREAD(p, s, n, fh) fread(p, s, n, fh)
-#define Z_DEFAULT_COMPRESSION -1
+#define Z_DEFAULT_COMPRESSION (-1)
 
 typedef struct _z_stream
 {

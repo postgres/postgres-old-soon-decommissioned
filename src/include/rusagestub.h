@@ -21,7 +21,7 @@
 #include <limits.h>				/* for CLK_TCK */
 
 #define RUSAGE_SELF		0
-#define RUSAGE_CHILDREN -1
+#define RUSAGE_CHILDREN (-1)
 
 struct rusage
 {
