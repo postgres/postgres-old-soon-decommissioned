@@ -163,7 +163,7 @@ add_equijoined_keys(PlannerInfo *root, RestrictInfo *restrictinfo)
 				newset = list_make2(item1, item2);
 
 			/* Found a set to merge into our new set */
-			newset = list_union(newset, curset);
+			newset = list_concat_unique(newset, curset);
 
 			/*
 			 * Remove old set from equi_key_list.
@@ -714,8 +714,7 @@ canonicalize_pathkeys(PlannerInfo *root, List *pathkeys)
 		 * canonicalized the keys, so that equivalent-key knowledge is
 		 * used when deciding if an item is redundant.
 		 */
-		if (!list_member_ptr(new_pathkeys, cpathkey))
-			new_pathkeys = lappend(new_pathkeys, cpathkey);
+		new_pathkeys = list_append_unique_ptr(new_pathkeys, cpathkey);
 	}
 	return new_pathkeys;
 }
@@ -1024,8 +1023,7 @@ build_index_pathkeys(PlannerInfo *root,
 		 * Eliminate redundant ordering info; could happen if query is
 		 * such that index keys are equijoined...
 		 */
-		if (!list_member_ptr(retval, cpathkey))
-			retval = lappend(retval, cpathkey);
+		retval = list_append_unique_ptr(retval, cpathkey);
 
 		indexkeys++;
 		ordering++;
@@ -1467,8 +1465,7 @@ make_pathkeys_for_mergeclauses(PlannerInfo *root,
 		 * pathkey, a simple ptrMember test is sufficient to detect
 		 * redundant keys.
 		 */
-		if (!list_member_ptr(pathkeys, pathkey))
-			pathkeys = lappend(pathkeys, pathkey);
+		pathkeys = list_append_unique_ptr(pathkeys, pathkey);
 	}
 
 	return pathkeys;

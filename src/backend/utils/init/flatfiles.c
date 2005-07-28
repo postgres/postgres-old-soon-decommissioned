@@ -571,12 +571,8 @@ write_auth_file(Relation rel_authid, Relation rel_authmem)
 				 * Now add all the new roles to roles_list.
 				 */
 				for (i = first_found; i <= last_found; i++)
-				{
-					Oid	rolid = authmem_info[i].roleid;
-
-					if (!list_member_oid(roles_list, rolid))
-						roles_list = lappend_oid(roles_list, rolid);
-				}
+					roles_list = list_append_unique_oid(roles_list,
+														authmem_info[i].roleid);
 			}
 
 			/*

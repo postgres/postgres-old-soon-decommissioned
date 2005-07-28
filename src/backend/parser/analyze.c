@@ -2789,8 +2789,8 @@ transformLocking(Query *qry, List *lockedRels, bool forUpdate)
 			switch (rte->rtekind)
 			{
 				case RTE_RELATION:
-					if (!list_member_int(rowMarks, i))	/* avoid duplicates */
-						rowMarks = lappend_int(rowMarks, i);
+					/* use list_append_unique to avoid duplicates */
+					rowMarks = list_append_unique_int(rowMarks, i);
 					rte->requiredPerms |= ACL_SELECT_FOR_UPDATE;
 					break;
 				case RTE_SUBQUERY:
@@ -2826,8 +2826,8 @@ transformLocking(Query *qry, List *lockedRels, bool forUpdate)
 					switch (rte->rtekind)
 					{
 						case RTE_RELATION:
-							if (!list_member_int(rowMarks, i))	/* avoid duplicates */
-								rowMarks = lappend_int(rowMarks, i);
+							/* use list_append_unique to avoid duplicates */
+							rowMarks = list_append_unique_int(rowMarks, i);
 							rte->requiredPerms |= ACL_SELECT_FOR_UPDATE;
 							break;
 						case RTE_SUBQUERY:

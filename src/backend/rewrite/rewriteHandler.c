@@ -1001,8 +1001,7 @@ markQueryForLocking(Query *qry, bool forUpdate, bool skipOldNew)
 
 		if (rte->rtekind == RTE_RELATION)
 		{
-			if (!list_member_int(qry->rowMarks, rti))
-				qry->rowMarks = lappend_int(qry->rowMarks, rti);
+			qry->rowMarks = list_append_unique_int(qry->rowMarks, rti);
 			rte->requiredPerms |= ACL_SELECT_FOR_UPDATE;
 		}
 		else if (rte->rtekind == RTE_SUBQUERY)

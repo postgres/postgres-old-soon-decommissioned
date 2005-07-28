@@ -44,7 +44,6 @@ make_rels_by_joins(PlannerInfo *root, int level, List **joinrels)
 {
 	List	   *result_rels = NIL;
 	List	   *new_rels;
-	ListCell   *nr;
 	ListCell   *r;
 	int			k;
 
@@ -121,13 +120,7 @@ make_rels_by_joins(PlannerInfo *root, int level, List **joinrels)
 		 * for subsequent passes, do not enter the same RelOptInfo into
 		 * our output list multiple times.
 		 */
-		foreach(nr, new_rels)
-		{
-			RelOptInfo *jrel = (RelOptInfo *) lfirst(nr);
-
-			if (!list_member_ptr(result_rels, jrel))
-				result_rels = lcons(jrel, result_rels);
-		}
+		result_rels = list_concat_unique_ptr(result_rels, new_rels);
 	}
 
 	/*
@@ -182,8 +175,9 @@ make_rels_by_joins(PlannerInfo *root, int level, List **joinrels)
 						jrel = make_join_rel(root, old_rel, new_rel,
 											 JOIN_INNER);
 						/* Avoid making duplicate entries ... */
-						if (jrel && !list_member_ptr(result_rels, jrel))
-							result_rels = lcons(jrel, result_rels);
+						if (jrel)
+							result_rels = list_append_unique_ptr(result_rels,
+																 jrel);
 					}
 				}
 			}
@@ -224,13 +218,7 @@ make_rels_by_joins(PlannerInfo *root, int level, List **joinrels)
 													 old_rel,
 													 other_rels);
 
-			foreach(nr, new_rels)
-			{
-				RelOptInfo *jrel = (RelOptInfo *) lfirst(nr);
-
-				if (!list_member_ptr(result_rels, jrel))
-					result_rels = lcons(jrel, result_rels);
-			}
+			result_rels = list_concat_unique_ptr(result_rels, new_rels);
 		}
 
 		/*----------
