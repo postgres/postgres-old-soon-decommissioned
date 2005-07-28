@@ -38,15 +38,18 @@
  * $PostgreSQL$
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "c.h"
 
 #include "getopt_long.h"
+
+#ifndef HAVE_INT_OPTRESET
+int			optreset;
+#endif
 
 #define BADCH	'?'
 #define BADARG	':'
 #define EMSG	""
+
 
 int
 getopt_long(int argc, char *const argv[],

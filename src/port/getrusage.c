@@ -13,10 +13,8 @@
  *-------------------------------------------------------------------------
  */
 
-#include <stdio.h>
-#include <errno.h>
-
 #include "c.h"
+
 #include "rusagestub.h"
 
 /* This code works on:

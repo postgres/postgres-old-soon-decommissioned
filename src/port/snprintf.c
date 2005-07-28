@@ -32,7 +32,7 @@
  * SUCH DAMAGE.
  */
 
-#include "postgres.h"
+#include "c.h"
 
 #ifndef WIN32
 #include <sys/ioctl.h>

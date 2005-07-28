@@ -9,9 +9,8 @@
  * modified for ANSI by D'Arcy J.M. Cain
  */
 
-#include <string.h>
-#include <stdio.h>
-#include <errno.h>
+#include "c.h"
+
 
 extern const char *const sys_errlist[];
 extern int	sys_nerr;

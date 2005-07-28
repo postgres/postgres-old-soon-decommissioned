@@ -13,10 +13,10 @@
 
 #ifdef WIN32
 
-#include <postgres.h>
+#include "c.h"
+
 #include <windows.h>
 #include <fcntl.h>
-#include <errno.h>
 #include <assert.h>
 
 int win32_open(const char *fileName, int fileFlags, ...);

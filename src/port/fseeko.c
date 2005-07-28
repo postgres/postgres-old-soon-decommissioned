@@ -24,10 +24,8 @@
 #ifdef bsdi
 #include <pthread.h>
 #endif
-#include <stdio.h>
-#include <sys/types.h>
 #include <sys/stat.h>
-#include <errno.h>
+
 
 /*
  *	On BSD/OS and NetBSD, off_t and fpos_t are the same.  Standards

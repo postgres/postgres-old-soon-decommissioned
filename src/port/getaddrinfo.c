@@ -21,7 +21,6 @@
 #include "c.h"
 
 #ifndef WIN32_CLIENT_ONLY
-#include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>
 #include <netinet/in.h>

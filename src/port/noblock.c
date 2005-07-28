@@ -14,8 +14,8 @@
 
 #include "c.h"
 
-#include <sys/types.h>
 #include <fcntl.h>
+
 
 bool
 pg_set_noblock(int sock)

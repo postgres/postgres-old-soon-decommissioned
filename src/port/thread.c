@@ -14,8 +14,6 @@
 
 #include "c.h"
 
-#include <sys/types.h>
-#include <errno.h>
 #ifdef WIN32_CLIENT_ONLY
 #undef ERROR
 #else
@@ -24,6 +22,7 @@
 #if defined(ENABLE_THREAD_SAFETY)
 #include <pthread.h>
 #endif
+
 
 /*
  *	Threading sometimes requires specially-named versions of functions

@@ -13,9 +13,10 @@
  *-------------------------------------------------------------------------
  */
 
-#include <string.h>
-#include <stdlib.h>
+#include "c.h"
+
 #include "strdup.h"
+
 
 char *
 strdup(char const * string)

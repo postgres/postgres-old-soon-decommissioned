@@ -43,10 +43,7 @@ __RCSID("$NetBSD$");
 
 #include "c.h"
 
-#include <stddef.h>
-#include <sys/types.h>
 #include <limits.h>
-#include <stdlib.h>
 
 #ifndef WIN32
 #include <unistd.h>
