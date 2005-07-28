@@ -959,13 +959,10 @@ load_role(void)
 		int		i = 0;
 		ListCell	*line;
 
+		/* We assume the flat file was written already-sorted */
 		role_sorted = palloc(role_length * sizeof(List *));
 		foreach(line, role_lines)
-		{
 			role_sorted[i++] = lfirst(line);
-		}
-
-		/* We assume the flat file was written already-sorted */
 	}
 }
 
