@@ -43,7 +43,8 @@ extern Path *best_inner_indexscan(PlannerInfo *root, RelOptInfo *rel,
 					 Relids outer_relids, JoinType jointype);
 extern List *group_clauses_by_indexkey(IndexOptInfo *index,
 									   List *clauses, List *outer_clauses,
-									   Relids outer_relids);
+									   Relids outer_relids,
+									   bool *found_clause);
 extern bool match_index_to_operand(Node *operand, int indexcol,
 					   IndexOptInfo *index);
 extern List *expand_indexqual_conditions(IndexOptInfo *index,
