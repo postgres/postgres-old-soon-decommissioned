@@ -1,0 +1,26 @@
+if test "$GCC" != yes ; then
+  CC="$CC -Xa"			# relaxed ISO C mode
+  CFLAGS="-v -DSUNOS4_CC"	# -v is like gcc -Wall
+  if test "$enable_debug" != yes; then
+    CFLAGS="$CFLAGS -O"		# any optimization breaks debug
+  fi
+fi
+
+# Pick right test-and-set (TAS) code.  We need out-of-line assembler
+# when not using gcc.
+case $host in
+  sparc-*-solaris*)
+	if test "$GCC" != yes ; then
+		need_tas=yes
+		tas_file=solaris_sparc.s
+	fi
+    ;;
+  i?86-*-solaris*)
+	if test "$GCC" != yes ; then
+		need_tas=yes
+		tas_file=solaris_i386.s
+	fi
+    ;;
+esac
+
+# -D_POSIX_PTHREAD_SEMANTICS enables 5-arg getpwuid_r, among other things
