@@ -20,7 +20,6 @@ WANTED_DIRS = \
 		lo		\
 		ltree		\
 		oid2name	\
-		pg_autovacuum	\
 		pg_buffercache	\
 		pg_trgm		\
 		pgbench		\
