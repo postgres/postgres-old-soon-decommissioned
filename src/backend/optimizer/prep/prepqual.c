@@ -335,9 +335,10 @@ push_nots(Expr *qual)
 	{
 		/*
 		 * Another NOT cancels this NOT, so eliminate the NOT and stop
-		 * negating this branch.
+		 * negating this branch.  But search the subexpression for more
+		 * NOTs to simplify.
 		 */
-		return get_notclausearg(qual);
+		return find_nots(get_notclausearg(qual));
 	}
 	else
 	{
