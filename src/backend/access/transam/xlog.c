@@ -54,6 +54,8 @@
  *	with fsync(), but because skipping the kernel buffer forces writes out
  *	quickly, it seems best just to use it for O_SYNC.  It is hard to imagine
  *	how fsync() could be a win for O_DIRECT compared to O_SYNC and O_DIRECT.
+ *	Also, O_DIRECT is never enough to force data to the drives, it merely
+ *	tries to bypass the kernel cache, so we still need O_SYNC or fsync().
  */
 #ifdef O_DIRECT
 #define PG_O_DIRECT				O_DIRECT
