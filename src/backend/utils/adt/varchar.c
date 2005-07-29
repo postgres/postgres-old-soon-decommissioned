@@ -226,7 +226,7 @@ bpchar(PG_FUNCTION_ARGS)
 	char	   *r;
 	char	   *s;
 	int			i;
-	int			charlen;		/* number of charcters in the input string
+	int			charlen;		/* number of characters in the input string
 								 * + VARHDRSZ */
 
 	/* No work if typmod is invalid */
