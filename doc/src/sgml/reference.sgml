@@ -176,6 +176,7 @@ PostgreSQL Reference Manual
    &pgDumpall;
    &pgRestore;
    &psqlRef;
+   &reindexdb;
    &vacuumdb;
 
  </reference>

@@ -39,7 +39,6 @@ WANTED_DIRS = \
 #		mSQL-interface	\ (requires msql installed)
 #		mac		\ (does not have a makefile)
 #		oracle		\ (does not have a makefile)
-#		reindexdb	\ (does not have a makefile)
 #		start-scripts	\ (does not have a makefile)
 #		xml2		\ (non-standard makefile)
 

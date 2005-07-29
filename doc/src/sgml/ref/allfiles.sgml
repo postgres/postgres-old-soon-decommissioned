@@ -136,4 +136,5 @@ Complete list of usable sgml source files in this directory.
 <!entity postgres           system "postgres-ref.sgml">
 <!entity postmaster         system "postmaster.sgml">
 <!entity psqlRef            system "psql-ref.sgml">
+<!entity reindexdb          system "reindexdb.sgml">
 <!entity vacuumdb           system "vacuumdb.sgml">
