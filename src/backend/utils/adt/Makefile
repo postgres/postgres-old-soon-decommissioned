@@ -24,7 +24,7 @@ OBJS = acl.o arrayfuncs.o array_userfuncs.o arrayutils.o bool.o \
 	tid.o timestamp.o varbit.o varchar.o varlena.o version.o xid.o \
 	network.o mac.o inet_net_ntop.o inet_net_pton.o \
 	ri_triggers.o pg_lzcompress.o pg_locale.o formatting.o \
-	ascii.o quote.o pgstatfuncs.o encode.o
+	ascii.o quote.o pgstatfuncs.o encode.o dbsize.o
 
 like.o: like.c like_match.c
 

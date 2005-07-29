@@ -11,7 +11,6 @@ WANTED_DIRS = \
 		dbase		\
 		dblink		\
 		dbmirror	\
-		dbsize		\
 		earthdistance	\
 		fulltextindex	\
 		fuzzystrmatch	\

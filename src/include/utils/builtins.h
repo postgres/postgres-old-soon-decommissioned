@@ -363,6 +363,17 @@ extern Datum float84le(PG_FUNCTION_ARGS);
 extern Datum float84gt(PG_FUNCTION_ARGS);
 extern Datum float84ge(PG_FUNCTION_ARGS);
 
+/* dbsize.c */
+extern Datum pg_tablespace_size_oid(PG_FUNCTION_ARGS);
+extern Datum pg_tablespace_size_name(PG_FUNCTION_ARGS);
+extern Datum pg_database_size_oid(PG_FUNCTION_ARGS);
+extern Datum pg_database_size_name(PG_FUNCTION_ARGS);
+extern Datum pg_relation_size_oid(PG_FUNCTION_ARGS);
+extern Datum pg_relation_size_name(PG_FUNCTION_ARGS);
+extern Datum pg_complete_relation_size_oid(PG_FUNCTION_ARGS);
+extern Datum pg_complete_relation_size_name(PG_FUNCTION_ARGS);
+extern Datum pg_size_pretty(PG_FUNCTION_ARGS);
+
 /* misc.c */
 extern Datum nullvalue(PG_FUNCTION_ARGS);
 extern Datum nonnullvalue(PG_FUNCTION_ARGS);
