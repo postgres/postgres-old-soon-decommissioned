@@ -1164,13 +1164,13 @@ ServerLoop(void)
 		/*
 		 * Wait for something to happen.
 		 *
-		 * We wait at most one minute, to ensure that the other background
-		 * tasks handled below get done even when no requests are
-		 * arriving.
+		 * We wait at most one minute, or the minimum autovacuum delay, to
+		 * ensure that the other background tasks handled below get done
+		 * even when no requests are arriving.
 		 */
 		memcpy((char *) &rmask, (char *) &readmask, sizeof(fd_set));
 
-		timeout.tv_sec = 60;
+		timeout.tv_sec = Min(60, autovacuum_naptime);
 		timeout.tv_usec = 0;
 
 		PG_SETMASK(&UnBlockSig);
@@ -3273,7 +3273,7 @@ SubPostmasterMain(int argc, char *argv[])
 		/* Close the postmaster's sockets */
 		ClosePostmasterPorts(false);
 
-		/* Attached process to shared data structures */
+		/* Attach process to shared data structures */
 		CreateSharedMemoryAndSemaphores(false, 0);
 
 		AutoVacMain(argc - 2, argv + 2);

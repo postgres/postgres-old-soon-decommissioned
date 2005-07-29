@@ -4914,6 +4914,36 @@ GetRedoRecPtr(void)
 }
 
 /*
+ * GetRecentNextXid - get the nextXid value saved by the most recent checkpoint
+ *
+ * This is currently used only by the autovacuum daemon.  To check for
+ * impending XID wraparound, autovac needs an approximate idea of the current
+ * XID counter, and it needs it before choosing which DB to attach to, hence
+ * before it sets up a PGPROC, hence before it can take any LWLocks.  But it
+ * has attached to shared memory, and so we can let it reach into the shared
+ * ControlFile structure and pull out the last checkpoint nextXID.
+ *
+ * Since we don't take any sort of lock, we have to assume that reading a
+ * TransactionId is atomic ... but that assumption is made elsewhere, too,
+ * and in any case the worst possible consequence of a bogus result is that
+ * autovac issues an unnecessary database-wide VACUUM.
+ *
+ * Note: we could also choose to read ShmemVariableCache->nextXid in an
+ * unlocked fashion, thus getting a more up-to-date result; but since that
+ * changes far more frequently than the controlfile checkpoint copy, it would
+ * pose a far higher risk of bogus result if we did have a nonatomic-read
+ * problem.
+ *
+ * A (theoretically) completely safe answer is to read the actual pg_control
+ * file into local process memory, but that certainly seems like overkill.
+ */
+TransactionId
+GetRecentNextXid(void)
+{
+	return ControlFile->checkPointCopy.nextXid;
+}
+
+/*
  * This must be called ONCE during postmaster or standalone-backend shutdown
  */
 void

@@ -1418,7 +1418,7 @@ static struct config_int ConfigureNamesInt[] =
 			NULL
 		},
 		&autovacuum_naptime,
-		60, 0, INT_MAX, NULL, NULL
+		60, 1, INT_MAX, NULL, NULL
 	},
 	{
 		{"autovacuum_vacuum_threshold", PGC_SIGHUP, AUTOVACUUM,

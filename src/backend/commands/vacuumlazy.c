@@ -182,8 +182,8 @@ lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt)
 						hasindex);
 
 	/* report results to the stats collector, too */
-	pgstat_report_vacuum(RelationGetRelid(onerel), vacstmt->analyze,
-						 vacrelstats->rel_tuples);
+	pgstat_report_vacuum(RelationGetRelid(onerel), onerel->rd_rel->relisshared,
+		   				 vacstmt->analyze, vacrelstats->rel_tuples);
 }
 
 

@@ -317,7 +317,9 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt)
 		 * a zero-column table.
 		 */
 		if (!vacstmt->vacuum)
-			pgstat_report_analyze(RelationGetRelid(onerel), 0, 0);
+			pgstat_report_analyze(RelationGetRelid(onerel),
+								  onerel->rd_rel->relisshared,
+				   				  0, 0);
 
 		vac_close_indexes(nindexes, Irel, AccessShareLock);
 		relation_close(onerel, AccessShareLock);
@@ -436,8 +438,9 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt)
 		}
 
 		/* report results to the stats collector, too */
-		pgstat_report_analyze(RelationGetRelid(onerel), totalrows,
-							  totaldeadrows);
+		pgstat_report_analyze(RelationGetRelid(onerel),
+							  onerel->rd_rel->relisshared,
+			   				  totalrows, totaldeadrows);
 	}
 
 	/* Done with indexes */

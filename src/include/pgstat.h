@@ -384,10 +384,11 @@ extern void pgstat_ping(void);
 extern void pgstat_report_activity(const char *what);
 extern void pgstat_report_tabstat(void);
 extern void pgstat_report_autovac(void);
-extern void pgstat_report_vacuum(Oid tableoid, bool analyze,
-					PgStat_Counter tuples);
-extern void pgstat_report_analyze(Oid tableoid, PgStat_Counter livetuples,
-					PgStat_Counter deadtuples);
+extern void pgstat_report_vacuum(Oid tableoid, bool shared,
+								 bool analyze, PgStat_Counter tuples);
+extern void pgstat_report_analyze(Oid tableoid, bool shared,
+								  PgStat_Counter livetuples,
+								  PgStat_Counter deadtuples);
 extern int	pgstat_vacuum_tabstat(void);
 
 extern void pgstat_reset_counters(void);
