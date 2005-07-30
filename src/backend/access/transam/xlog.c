@@ -69,17 +69,18 @@
  * default method.	We assume that fsync() is always available, and that
  * configure determined whether fdatasync() is.
  */
-#if defined(O_SYNC)
+#ifdef O_SYNC
 #define CMP_OPEN_SYNC_FLAG		O_SYNC
-#else
-#if defined(O_FSYNC)
+#elif defined(O_FSYNC)
 #define CMP_OPEN_SYNC_FLAG		O_FSYNC
 #endif
-#endif
+#ifdef CMP_OPEN_SYNC_FLAG
 #define OPEN_SYNC_FLAG			(CMP_OPEN_SYNC_FLAG | PG_O_DIRECT)
+#endif
 
-#if defined(O_DSYNC)
-#if defined(OPEN_SYNC_FLAG)
+#ifdef O_DSYNC
+#ifdef OPEN_SYNC_FLAG
+/* O_DSYNC is distinct? */
 #if O_DSYNC != CMP_OPEN_SYNC_FLAG
 #define OPEN_DATASYNC_FLAG		(O_DSYNC | PG_O_DIRECT)
 #endif
@@ -114,7 +115,7 @@
 #define XLOG_BUFFER_POINTERALIGN(PTR)	\
 	POINTERALIGN((ALIGNOF_XLOG_BUFFER), (PTR))
 
-#if defined(OPEN_DATASYNC_FLAG)
+#ifdef OPEN_DATASYNC_FLAG
 #define DEFAULT_SYNC_METHOD_STR	"open_datasync"
 #define DEFAULT_SYNC_METHOD		SYNC_METHOD_OPEN
 #define DEFAULT_SYNC_FLAGBIT	OPEN_DATASYNC_FLAG
