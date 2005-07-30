@@ -241,7 +241,7 @@ tas_dummy()						/* really means: extern int tas(slock_t
 								 * *lock); */
 {
 
-#ifdef SUNOS4_CC
+#ifdef SUNOS_CC
 	asm(".seg \"data\"");
 	asm(".seg \"text\"");
 #else
