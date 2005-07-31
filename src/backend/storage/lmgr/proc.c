@@ -254,6 +254,8 @@ InitProcess(void)
 	MyProc->xmin = InvalidTransactionId;
 	MyProc->pid = MyProcPid;
 	MyProc->databaseId = MyDatabaseId;
+	/* Will be set properly after the session role id is determined */
+	MyProc->roleId = InvalidOid;
 	MyProc->lwWaiting = false;
 	MyProc->lwExclusive = false;
 	MyProc->lwWaitLink = NULL;
@@ -331,6 +333,7 @@ InitDummyProcess(int proctype)
 	MyProc->xid = InvalidTransactionId;
 	MyProc->xmin = InvalidTransactionId;
 	MyProc->databaseId = MyDatabaseId;
+	MyProc->roleId = InvalidOid;
 	MyProc->lwWaiting = false;
 	MyProc->lwExclusive = false;
 	MyProc->lwWaitLink = NULL;

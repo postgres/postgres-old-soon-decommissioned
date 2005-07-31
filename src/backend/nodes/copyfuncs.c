@@ -2204,6 +2204,17 @@ _copyCreatedbStmt(CreatedbStmt *from)
 	return newnode;
 }
 
+static AlterDatabaseStmt *
+_copyAlterDatabaseStmt(AlterDatabaseStmt *from)
+{
+	AlterDatabaseStmt *newnode = makeNode(AlterDatabaseStmt);
+
+	COPY_STRING_FIELD(dbname);
+	COPY_NODE_FIELD(options);
+
+	return newnode;
+}
+
 static AlterDatabaseSetStmt *
 _copyAlterDatabaseSetStmt(AlterDatabaseSetStmt *from)
 {
@@ -3010,6 +3021,9 @@ copyObject(void *from)
 			break;
 		case T_CreatedbStmt:
 			retval = _copyCreatedbStmt(from);
+			break;
+		case T_AlterDatabaseStmt:
+			retval = _copyAlterDatabaseStmt(from);
 			break;
 		case T_AlterDatabaseSetStmt:
 			retval = _copyAlterDatabaseSetStmt(from);

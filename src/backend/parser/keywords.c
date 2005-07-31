@@ -83,6 +83,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"comment", COMMENT},
 	{"commit", COMMIT},
 	{"committed", COMMITTED},
+	{"connection", CONNECTION},
 	{"constraint", CONSTRAINT},
 	{"constraints", CONSTRAINTS},
 	{"conversion", CONVERSION_P},

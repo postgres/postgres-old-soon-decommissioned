@@ -30,6 +30,7 @@ where <replaceable class="PARAMETER">option</replaceable> can be:
     | CREATEUSER | NOCREATEUSER
     | INHERIT | NOINHERIT
     | LOGIN | NOLOGIN
+    | CONNECTION LIMIT <replaceable class="PARAMETER">connlimit</replaceable>
     | [ ENCRYPTED | UNENCRYPTED ] PASSWORD '<replaceable class="PARAMETER">password</replaceable>'
     | VALID UNTIL '<replaceable class="PARAMETER">timestamp</replaceable>' 
 

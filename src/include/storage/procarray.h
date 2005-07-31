@@ -31,6 +31,8 @@ extern bool IsBackendPid(int pid);
 extern bool DatabaseHasActiveBackends(Oid databaseId, bool ignoreMyself);
 
 extern int	CountActiveBackends(void);
+extern int	CountDBBackends(Oid databaseid);
+extern int	CountUserBackends(Oid roleid);
 
 extern void XidCacheRemoveRunningXids(TransactionId xid,
 						  int nxids, TransactionId *xids);

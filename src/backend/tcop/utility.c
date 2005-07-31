@@ -275,6 +275,7 @@ check_xact_readonly(Node *parsetree)
 
 	switch (nodeTag(parsetree))
 	{
+		case T_AlterDatabaseStmt:
 		case T_AlterDatabaseSetStmt:
 		case T_AlterDomainStmt:
 		case T_AlterFunctionStmt:
@@ -786,6 +787,10 @@ ProcessUtility(Node *parsetree,
 
 		case T_CreatedbStmt:
 			createdb((CreatedbStmt *) parsetree);
+			break;
+
+		case T_AlterDatabaseStmt:
+			AlterDatabase((AlterDatabaseStmt *) parsetree);
 			break;
 
 		case T_AlterDatabaseSetStmt:
@@ -1502,6 +1507,10 @@ CreateCommandTag(Node *parsetree)
 
 		case T_CreatedbStmt:
 			tag = "CREATE DATABASE";
+			break;
+
+		case T_AlterDatabaseStmt:
+			tag = "ALTER DATABASE";
 			break;
 
 		case T_AlterDatabaseSetStmt:

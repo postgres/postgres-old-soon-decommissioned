@@ -270,6 +270,7 @@ typedef enum NodeTag
 	T_ReindexStmt,
 	T_CheckPointStmt,
 	T_CreateSchemaStmt,
+	T_AlterDatabaseStmt,
 	T_AlterDatabaseSetStmt,
 	T_AlterRoleSetStmt,
 	T_CreateConversionStmt,

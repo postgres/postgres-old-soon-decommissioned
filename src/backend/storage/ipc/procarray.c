@@ -733,6 +733,60 @@ CountActiveBackends(void)
 	return count;
 }
 
+/*
+ * CountDBBackends --- count backends that are using specified database
+ */
+int
+CountDBBackends(Oid databaseid)
+{
+	ProcArrayStruct *arrayP = procArray;
+	int			count = 0;
+	int			index;
+
+	LWLockAcquire(ProcArrayLock, LW_SHARED);
+
+	for (index = 0; index < arrayP->numProcs; index++)
+	{
+		PGPROC	   *proc = arrayP->procs[index];
+
+		if (proc->pid == 0)
+			continue;			/* do not count prepared xacts */
+		if (proc->databaseId == databaseid)
+			count++;
+	}
+
+	LWLockRelease(ProcArrayLock);
+
+	return count;
+}
+
+/*
+ * CountUserBackends --- count backends that are used by specified user
+ */
+int
+CountUserBackends(Oid roleid)
+{
+	ProcArrayStruct *arrayP = procArray;
+	int			count = 0;
+	int			index;
+
+	LWLockAcquire(ProcArrayLock, LW_SHARED);
+
+	for (index = 0; index < arrayP->numProcs; index++)
+	{
+		PGPROC	   *proc = arrayP->procs[index];
+
+		if (proc->pid == 0)
+			continue;			/* do not count prepared xacts */
+		if (proc->roleId == roleid)
+			count++;
+	}
+
+	LWLockRelease(ProcArrayLock);
+
+	return count;
+}
+
 
 #define XidCacheRemove(i) \
 	do { \

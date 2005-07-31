@@ -71,6 +71,7 @@ struct PGPROC
 
 	int			pid;			/* This backend's process id, or 0 */
 	Oid			databaseId;		/* OID of database this backend is using */
+	Oid			roleId;			/* OID of role using this backend */
 
 	/* Info about LWLock the process is currently waiting for, if any. */
 	bool		lwWaiting;		/* true if waiting for an LW lock */

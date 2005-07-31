@@ -15,6 +15,7 @@ CREATE VIEW pg_roles AS
         rolcreatedb,
         rolcatupdate,
         rolcanlogin,
+        rolconnlimit,
         '********'::text as rolpassword,
         rolvaliduntil,
         rolconfig,

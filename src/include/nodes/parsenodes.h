@@ -1624,6 +1624,13 @@ typedef struct CreatedbStmt
  *	Alter Database
  * ----------------------
  */
+typedef struct AlterDatabaseStmt
+{
+	NodeTag		type;
+	char	   *dbname;			/* name of database to alter */
+	List	   *options;		/* List of DefElem nodes */
+} AlterDatabaseStmt;
+
 typedef struct AlterDatabaseSetStmt
 {
 	NodeTag		type;
