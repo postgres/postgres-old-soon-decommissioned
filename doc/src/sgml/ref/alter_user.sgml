@@ -1,0 +1,88 @@
+<!--
+$PostgreSQL$
+PostgreSQL documentation
+-->
+
+<refentry id="SQL-ALTERUSER">
+ <refmeta>
+  <refentrytitle id="sql-alteruser-title">ALTER USER</refentrytitle>
+  <refmiscinfo>SQL - Language Statements</refmiscinfo>
+ </refmeta>
+
+ <refnamediv>
+  <refname>ALTER USER</refname>
+  <refpurpose>change a database role</refpurpose>
+ </refnamediv>
+
+ <indexterm zone="sql-alteruser">
+  <primary>ALTER USER</primary>
+ </indexterm>
+
+ <refsynopsisdiv>
+<synopsis>
+ALTER USER <replaceable class="PARAMETER">name</replaceable> [ [ WITH ] <replaceable class="PARAMETER">option</replaceable> [ ... ] ]
+
+where <replaceable class="PARAMETER">option</replaceable> can be:
+    
+      SUPERUSER | NOSUPERUSER
+    | CREATEDB | NOCREATEDB
+    | CREATEROLE | NOCREATEROLE
+    | CREATEUSER | NOCREATEUSER
+    | INHERIT | NOINHERIT
+    | LOGIN | NOLOGIN
+    | CONNECTION LIMIT <replaceable class="PARAMETER">connlimit</replaceable>
+    | [ ENCRYPTED | UNENCRYPTED ] PASSWORD '<replaceable class="PARAMETER">password</replaceable>'
+    | VALID UNTIL '<replaceable class="PARAMETER">timestamp</replaceable>' 
+
+ALTER USER <replaceable class="PARAMETER">name</replaceable> RENAME TO <replaceable>newname</replaceable>
+
+ALTER USER <replaceable class="PARAMETER">name</replaceable> SET <replaceable>parameter</replaceable> { TO | = } { <replaceable>value</replaceable> | DEFAULT }
+ALTER USER <replaceable class="PARAMETER">name</replaceable> RESET <replaceable>parameter</replaceable>
+</synopsis>
+ </refsynopsisdiv>
+
+ <refsect1>
+  <title>Description</title>
+
+  <para>
+   <command>ALTER USER</command> is now an alias for
+   <xref linkend="sql-alterrole" endterm="sql-alterrole-title">,
+   which see for more information.
+  </para>
+ </refsect1>
+
+ <refsect1>
+  <title>Compatibility</title>
+    
+  <para>
+   The <command>ALTER USER</command> statement is a
+   <productname>PostgreSQL</productname> extension.  The SQL standard
+   leaves the definition of users to the implementation.
+  </para>
+ </refsect1>
+
+ <refsect1>
+  <title>See Also</title>
+
+  <simplelist type="inline">
+   <member><xref linkend="sql-alterrole" endterm="sql-alterrole-title"></member>
+  </simplelist>
+ </refsect1>
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:nil
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+sgml-parent-document:nil
+sgml-default-dtd-file:"../reference.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:"/usr/lib/sgml/catalog"
+sgml-local-ecat-files:nil
+End:
+-->
