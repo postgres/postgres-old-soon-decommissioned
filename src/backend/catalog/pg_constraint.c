@@ -599,3 +599,69 @@ GetConstraintNameForTrigger(Oid triggerId)
 
 	return result;
 }
+
+/*
+ * AlterConstraintNamespaces
+ *		Find any constraints belonging to the specified object,
+ *		and move them to the specified new namespace.
+ *
+ * isType indicates whether the owning object is a type or a relation.
+ */
+void
+AlterConstraintNamespaces(Oid ownerId, Oid oldNspId,
+						  Oid newNspId, bool isType)
+{
+	Relation		conRel;
+	ScanKeyData 	key[1];
+	SysScanDesc 	scan;
+	HeapTuple 		tup;
+
+	conRel = heap_open(ConstraintRelationId, RowExclusiveLock);
+
+	if (isType)
+	{
+		ScanKeyInit(&key[0],
+					Anum_pg_constraint_contypid,
+					BTEqualStrategyNumber, F_OIDEQ,
+					ObjectIdGetDatum(ownerId));
+
+		scan = systable_beginscan(conRel, ConstraintTypidIndexId, true,
+								  SnapshotNow, 1, key);
+	}
+	else
+	{
+		ScanKeyInit(&key[0],
+					Anum_pg_constraint_conrelid,
+					BTEqualStrategyNumber, F_OIDEQ,
+					ObjectIdGetDatum(ownerId));
+
+		scan = systable_beginscan(conRel, ConstraintRelidIndexId, true,
+								  SnapshotNow, 1, key);
+	}
+
+	while (HeapTupleIsValid((tup = systable_getnext(scan))))
+	{
+		Form_pg_constraint conform = (Form_pg_constraint) GETSTRUCT(tup);
+
+		if (conform->connamespace == oldNspId)
+		{
+			tup = heap_copytuple(tup);
+			conform = (Form_pg_constraint) GETSTRUCT(tup);
+
+			conform->connamespace = newNspId;
+
+			simple_heap_update(conRel, &tup->t_self, tup);
+			CatalogUpdateIndexes(conRel, tup);
+
+			/*
+			 * Note: currently, the constraint will not have its own
+			 * dependency on the namespace, so we don't need to do
+			 * changeDependencyFor().
+			 */
+		}
+	}
+
+	systable_endscan(scan);
+
+	heap_close(conRel, RowExclusiveLock);
+}

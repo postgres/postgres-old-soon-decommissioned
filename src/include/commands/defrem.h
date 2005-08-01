@@ -55,6 +55,8 @@ extern void AlterFunction(AlterFunctionStmt *stmt);
 extern void CreateCast(CreateCastStmt *stmt);
 extern void DropCast(DropCastStmt *stmt);
 extern void DropCastById(Oid castOid);
+extern void AlterFunctionNamespace(List *name, List *argtypes, 
+								   const char *newschema);
 
 /* commands/operatorcmds.c */
 extern void DefineOperator(List *names, List *parameters);

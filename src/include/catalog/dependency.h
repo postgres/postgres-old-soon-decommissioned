@@ -174,6 +174,10 @@ extern void recordMultipleDependencies(const ObjectAddress *depender,
 
 extern long deleteDependencyRecordsFor(Oid classId, Oid objectId);
 
+extern long changeDependencyFor(Oid classId, Oid objectId,
+								Oid refClassId, Oid oldRefObjectId,
+								Oid newRefObjectId);
+
 /* in pg_shdepend.c */
 
 extern void recordSharedDependencyOn(ObjectAddress *depender,

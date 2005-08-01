@@ -143,6 +143,38 @@ ExecRenameStmt(RenameStmt *stmt)
 }
 
 /*
+ * Executes an ALTER OBJECT / SET SCHEMA statement.  Based on the object
+ * type, the function appropriate to that type is executed.
+ */
+void
+ExecAlterObjectSchemaStmt(AlterObjectSchemaStmt *stmt)
+{
+	switch (stmt->objectType)
+	{
+		case OBJECT_AGGREGATE:
+		case OBJECT_FUNCTION:
+			AlterFunctionNamespace(stmt->object, stmt->objarg,
+								   stmt->newschema);
+			break;
+		    
+		case OBJECT_SEQUENCE:
+		case OBJECT_TABLE:
+			CheckRelationOwnership(stmt->relation, true);
+			AlterTableNamespace(stmt->relation, stmt->newschema);
+			break;
+		    
+		case OBJECT_TYPE:
+		case OBJECT_DOMAIN:
+			AlterTypeNamespace(stmt->object, stmt->newschema);
+			break;
+		    
+		default:
+			elog(ERROR, "unrecognized AlterObjectSchemaStmt type: %d",
+				 (int) stmt->objectType);
+	}
+}
+
+/*
  * Executes an ALTER OBJECT / OWNER TO statement.  Based on the object
  * type, the function appropriate to that type is executed.
  */

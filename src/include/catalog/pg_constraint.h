@@ -185,4 +185,7 @@ extern char *ChooseConstraintName(const char *name1, const char *name2,
 
 extern char *GetConstraintNameForTrigger(Oid triggerId);
 
+extern void AlterConstraintNamespaces(Oid ownerId, Oid oldNspId,
+									  Oid newNspId, bool isType);
+
 #endif   /* PG_CONSTRAINT_H */

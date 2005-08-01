@@ -1477,14 +1477,29 @@ typedef struct RemoveOpClassStmt
 typedef struct RenameStmt
 {
 	NodeTag		type;
+	ObjectType	renameType;		/* OBJECT_TABLE, OBJECT_COLUMN, etc */
 	RangeVar   *relation;		/* in case it's a table */
 	List	   *object;			/* in case it's some other object */
 	List	   *objarg;			/* argument types, if applicable */
 	char	   *subname;		/* name of contained object (column, rule,
 								 * trigger, etc) */
 	char	   *newname;		/* the new name */
-	ObjectType	renameType;		/* OBJECT_TABLE, OBJECT_COLUMN, etc */
 } RenameStmt;
+
+/* ----------------------
+ *		ALTER object SET SCHEMA Statement
+ * ----------------------
+ */
+typedef struct AlterObjectSchemaStmt
+{
+	NodeTag    type;
+	ObjectType	objectType;		/* OBJECT_TABLE, OBJECT_TYPE, etc */
+	RangeVar   *relation;		/* in case it's a table */
+	List	   *object;			/* in case it's some other object */
+	List	   *objarg;			/* argument types, if applicable */
+	char	   *addname;		/* additional name if needed */
+	char       *newschema;		/* the new schema */
+} AlterObjectSchemaStmt;
 
 /* ----------------------
  *		Alter Object Owner Statement
@@ -1493,12 +1508,12 @@ typedef struct RenameStmt
 typedef struct AlterOwnerStmt
 {
 	NodeTag		type;
+	ObjectType	objectType;		/* OBJECT_TABLE, OBJECT_TYPE, etc */
 	RangeVar   *relation;		/* in case it's a table */
 	List	   *object;			/* in case it's some other object */
 	List	   *objarg;			/* argument types, if applicable */
 	char	   *addname;		/* additional name if needed */
 	char	   *newowner;		/* the new owner */
-	ObjectType	objectType;		/* OBJECT_TABLE, OBJECT_TYPE, etc */
 } AlterOwnerStmt;
 
 
