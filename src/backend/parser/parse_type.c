@@ -423,7 +423,7 @@ parseTypeString(const char *str, Oid *type_id, int32 *typmod)
 		stmt->sortClause != NIL ||
 		stmt->limitOffset != NULL ||
 		stmt->limitCount != NULL ||
-		stmt->lockedRels != NIL ||
+		stmt->lockingClause != NULL ||
 		stmt->op != SETOP_NONE)
 		goto fail;
 	if (list_length(stmt->targetList) != 1)

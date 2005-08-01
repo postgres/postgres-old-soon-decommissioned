@@ -95,6 +95,7 @@ typedef struct Query
 
 	bool		forUpdate;		/* true if rowMarks are FOR UPDATE,
 								 * false if they are FOR SHARE */
+	bool		rowNoWait;		/* FOR UPDATE/SHARE NOWAIT option */
 
 	List	   *targetList;		/* target list (of TargetEntry) */
 
@@ -415,6 +416,20 @@ typedef struct DefElem
 	Node	   *arg;			/* a (Value *) or a (TypeName *) */
 } DefElem;
 
+/*
+ * LockingClause - raw representation of FOR UPDATE/SHARE options
+ *
+ * Note: lockedRels == NIL means "all relations in query".  Otherwise it
+ * is a list of String nodes giving relation eref names.
+ */
+typedef struct LockingClause
+{
+	NodeTag		type;
+	List	   *lockedRels;		/* FOR UPDATE or FOR SHARE relations */
+	bool		forUpdate;		/* true = FOR UPDATE, false = FOR SHARE */
+	bool		nowait;			/* NOWAIT option */
+} LockingClause;
+
 
 /****************************************************************************
  *	Nodes for a Query tree
@@ -686,8 +701,7 @@ typedef struct SelectStmt
 	List	   *sortClause;		/* sort clause (a list of SortBy's) */
 	Node	   *limitOffset;	/* # of result tuples to skip */
 	Node	   *limitCount;		/* # of result tuples to return */
-	List	   *lockedRels;		/* FOR UPDATE or FOR SHARE relations */
-	bool		forUpdate;		/* true = FOR UPDATE, false = FOR SHARE */
+	LockingClause *lockingClause;	/* FOR UPDATE/FOR SHARE */
 
 	/*
 	 * These fields are used only in upper-level SelectStmts.
@@ -698,6 +712,7 @@ typedef struct SelectStmt
 	struct SelectStmt *rarg;	/* right child */
 	/* Eventually add fields for CORRESPONDING spec here */
 } SelectStmt;
+
 
 /* ----------------------
  *		Set Operation node for post-analysis query trees

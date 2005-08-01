@@ -201,7 +201,7 @@ static void get_agg_expr(Aggref *aggref, deparse_context *context);
 static void get_const_expr(Const *constval, deparse_context *context);
 static void get_sublink_expr(SubLink *sublink, deparse_context *context);
 static void get_from_clause(Query *query, const char *prefix,
-                            deparse_context *context);
+							deparse_context *context);
 static void get_from_clause_item(Node *jtnode, Query *query,
 					 deparse_context *context);
 static void get_from_clause_alias(Alias *alias, int varno,
@@ -1961,6 +1961,8 @@ get_select_query_def(Query *query, deparse_context *context,
 							 quote_identifier(rte->eref->aliasname));
 			sep = ", ";
 		}
+		if (query->rowNoWait)
+			appendStringInfo(buf, " NOWAIT");
 	}
 }
 
@@ -2401,8 +2403,8 @@ get_delete_query_def(Query *query, deparse_context *context)
 					 only_marker(rte),
 					 generate_relation_name(rte->relid));
 
-    /* Add the USING clause if given */
-    get_from_clause(query, " USING ", context);
+	/* Add the USING clause if given */
+	get_from_clause(query, " USING ", context);
 
 	/* Add a WHERE clause if given */
 	if (query->jointree->quals != NULL)

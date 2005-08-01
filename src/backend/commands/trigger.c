@@ -1598,7 +1598,8 @@ GetTupleForTrigger(EState *estate, ResultRelInfo *relinfo,
 		*newSlot = NULL;
 		tuple.t_self = *tid;
 ltrmark:;
-		test = heap_lock_tuple(relation, &tuple, &buffer, cid, LockTupleExclusive);
+		test = heap_lock_tuple(relation, &tuple, &buffer, cid,
+							   LockTupleExclusive, false);
 		switch (test)
 		{
 			case HeapTupleSelfUpdated:

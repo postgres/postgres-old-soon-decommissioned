@@ -315,6 +315,7 @@ typedef enum NodeTag
 	T_CompositeTypeStmt,
 	T_InhRelation,
 	T_FunctionParameter,
+	T_LockingClause,
 
 	/*
 	 * TAGS FOR RANDOM OTHER STUFF

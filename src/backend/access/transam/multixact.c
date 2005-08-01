@@ -559,6 +559,43 @@ MultiXactIdWait(MultiXactId multi)
 }
 
 /*
+ * ConditionalMultiXactIdWait
+ *		As above, but only lock if we can get the lock without blocking.
+ */
+bool
+ConditionalMultiXactIdWait(MultiXactId multi)
+{
+	bool	result = true;
+	TransactionId *members;
+	int		nmembers;
+
+	nmembers = GetMultiXactIdMembers(multi, &members);
+
+	if (nmembers >= 0)
+	{
+		int		i;
+
+		for (i = 0; i < nmembers; i++)
+		{
+			TransactionId	member = members[i];
+
+			debug_elog4(DEBUG2, "ConditionalMultiXactIdWait: trying %d (%u)",
+						i, member);
+			if (!TransactionIdIsCurrentTransactionId(member))
+			{
+				result = ConditionalXactLockTableWait(member);
+				if (!result)
+					break;
+			}
+		}
+
+		pfree(members);
+	}
+
+	return result;
+}
+
+/*
  * CreateMultiXactId
  * 		Make a new MultiXactId
  *
@@ -590,7 +627,7 @@ CreateMultiXactId(int nxids, TransactionId *xids)
 	 */
 	multi = mXactCacheGetBySet(nxids, xids);
 	if (MultiXactIdIsValid(multi))
-	{	
+	{
 		debug_elog2(DEBUG2, "Create: in cache!");
 		return multi;
 	}

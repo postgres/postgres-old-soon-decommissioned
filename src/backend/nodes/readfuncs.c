@@ -146,6 +146,7 @@ _readQuery(void)
 	READ_NODE_FIELD(jointree);
 	READ_NODE_FIELD(rowMarks);
 	READ_BOOL_FIELD(forUpdate);
+	READ_BOOL_FIELD(rowNoWait);
 	READ_NODE_FIELD(targetList);
 	READ_NODE_FIELD(groupClause);
 	READ_NODE_FIELD(havingQual);

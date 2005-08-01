@@ -31,7 +31,7 @@ SELECT [ ALL | DISTINCT [ ON ( <replaceable class="PARAMETER">expression</replac
     [ ORDER BY <replaceable class="PARAMETER">expression</replaceable> [ ASC | DESC | USING <replaceable class="PARAMETER">operator</replaceable> ] [, ...] ]
     [ LIMIT { <replaceable class="PARAMETER">count</replaceable> | ALL } ]
     [ OFFSET <replaceable class="PARAMETER">start</replaceable> ]
-    [ FOR { UPDATE | SHARE } [ OF <replaceable class="PARAMETER">tablename</replaceable> [, ...] ] ]
+    [ FOR { UPDATE | SHARE } [ OF <replaceable class="parameter">table_name</replaceable> [, ...] ] [ NOWAIT ] ]
 </synopsis>
  </refsynopsisdiv>
 

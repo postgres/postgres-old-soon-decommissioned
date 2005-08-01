@@ -163,7 +163,8 @@ extern HTSU_Result heap_delete(Relation relation, ItemPointer tid, ItemPointer c
 extern HTSU_Result heap_update(Relation relation, ItemPointer otid, HeapTuple tup,
 		ItemPointer ctid, CommandId cid, Snapshot crosscheck, bool wait);
 extern HTSU_Result heap_lock_tuple(Relation relation, HeapTuple tup,
-				 Buffer *userbuf, CommandId cid, LockTupleMode mode);
+				 Buffer *userbuf, CommandId cid,
+				 LockTupleMode mode, bool nowait);
 
 extern Oid	simple_heap_insert(Relation relation, HeapTuple tup);
 extern void simple_heap_delete(Relation relation, ItemPointer tid);
