@@ -72,7 +72,7 @@ fe_palloc(Size size)
 
 	if ((res = malloc(size)) == NULL)
 	{
-		fprintf(stderr, gettext("out of memory\n"));
+		fprintf(stderr, "out of memory\n");
 		exit(1);
 	}
 	return res;
@@ -85,7 +85,7 @@ fe_pstrdup(const char *string)
 
 	if ((res = strdup(string)) == NULL)
 	{
-		fprintf(stderr, gettext("out of memory\n"));
+		fprintf(stderr, "out of memory\n");
 		exit(1);
 	}
 	return res;
@@ -98,7 +98,7 @@ fe_repalloc(void *pointer, Size size)
 
 	if ((res = realloc(pointer, size)) == NULL)
 	{
-		fprintf(stderr, gettext("out of memory\n"));
+		fprintf(stderr, "out of memory\n");
 		exit(1);
 	}
 	return res;
@@ -280,10 +280,10 @@ pgsymlink(const char *oldpath, const char *newpath)
 #ifndef FRONTEND
 		ereport(ERROR,
 				(errcode_for_file_access(),
-				 errmsg("Error setting junction for %s: %s",
+				 errmsg("could not set junction for \"%s\": %s",
 						nativeTarget, msg)));
 #else
-		fprintf(stderr, "Error setting junction for %s: %s\n",
+		fprintf(stderr, "could not set junction for \"%s\": %s\n",
 				nativeTarget, msg);
 #endif
 		LocalFree(msg);
@@ -325,10 +325,19 @@ fnames(char *path)
 
 	dir = opendir(path);
 	if (dir == NULL)
+	{
+#ifndef FRONTEND
+		elog(WARNING, "could not open directory \"%s\": %m", path);
+#else
+		fprintf(stderr, "could not open directory \"%s\": %s\n",
+				path, strerror(errno));
+#endif
 		return NULL;
+	}
 
 	filenames = (char **) palloc(fnsize * sizeof(char *));
 
+	errno = 0;
 	while ((file = readdir(dir)) != NULL)
 	{
 		if (strcmp(file->d_name, ".") != 0 && strcmp(file->d_name, "..") != 0)
@@ -341,6 +350,25 @@ fnames(char *path)
 			}
 			filenames[numnames++] = pstrdup(file->d_name);
 		}
+		errno = 0;
+	}
+#ifdef WIN32
+
+	/*
+	 * This fix is in mingw cvs (runtime/mingwex/dirent.c rev 1.4), but
+	 * not in released version
+	 */
+	if (GetLastError() == ERROR_NO_MORE_FILES)
+		errno = 0;
+#endif
+	if (errno)
+	{
+#ifndef FRONTEND
+		elog(WARNING, "could not read directory \"%s\": %m", path);
+#else
+		fprintf(stderr, "could not read directory \"%s\": %s\n",
+				path, strerror(errno));
+#endif
 	}
 
 	filenames[numnames] = NULL;
@@ -349,6 +377,7 @@ fnames(char *path)
 
 	return filenames;
 }
+
 
 /*
  *	fnames_cleanup
@@ -366,6 +395,7 @@ fnames_cleanup(char **filenames)
 	pfree(filenames);
 }
 
+
 /*
  *	rmtree
  *
@@ -377,7 +407,8 @@ fnames_cleanup(char **filenames)
 bool
 rmtree(char *path, bool rmtopdir)
 {
-	char		filepath[MAXPGPATH];
+	char		pathbuf[MAXPGPATH];
+	char	   *filepath;
 	char	  **filenames;
 	char	  **filename;
 	struct stat statbuf;
@@ -392,22 +423,21 @@ rmtree(char *path, bool rmtopdir)
 		return false;
 
 	/* now we have the names we can start removing things */
+	filepath = pathbuf;
 
 	for (filename = filenames; *filename; filename++)
 	{
 		snprintf(filepath, MAXPGPATH, "%s/%s", path, *filename);
 
 		if (stat(filepath, &statbuf) != 0)
-		{
-			fnames_cleanup(filenames);
-			return false;
-		}
+			goto report_and_fail;
 
 		if (S_ISDIR(statbuf.st_mode))
 		{
 			/* call ourselves recursively for a directory */
 			if (!rmtree(filepath, true))
 			{
+				/* we already reported the error */
 				fnames_cleanup(filenames);
 				return false;
 			}
@@ -415,22 +445,28 @@ rmtree(char *path, bool rmtopdir)
 		else
 		{
 			if (unlink(filepath) != 0)
-			{
-				fnames_cleanup(filenames);
-				return false;
-			}
+				goto report_and_fail;
 		}
 	}
 
 	if (rmtopdir)
 	{
-		if (rmdir(path) != 0)
-		{
-			fnames_cleanup(filenames);
-			return false;
-		}
+		filepath = path;
+		if (rmdir(filepath) != 0)
+			goto report_and_fail;
 	}
 
 	fnames_cleanup(filenames);
 	return true;
+
+report_and_fail:
+
+#ifndef FRONTEND
+	elog(WARNING, "could not remove file or directory \"%s\": %m", filepath);
+#else
+	fprintf(stderr, "could not remove file or directory \"%s\": %s\n",
+			filepath, strerror(errno));
+#endif
+	fnames_cleanup(filenames);
+	return false;
 }
