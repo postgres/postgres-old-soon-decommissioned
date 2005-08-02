@@ -2,16 +2,15 @@
  * interface functions to dictionary
  * Teodor Sigaev <teodor@sigaev.ru>
  */
-#include <errno.h>
-#include <stdlib.h>
-#include <string.h>
+#include "postgres.h"
+
 #include <ctype.h>
 
-#include "postgres.h"
-#include "fmgr.h"
-#include "utils/array.h"
 #include "catalog/pg_type.h"
 #include "executor/spi.h"
+#include "fmgr.h"
+#include "utils/array.h"
+#include "utils/memutils.h"
 
 #include "dict.h"
 #include "common.h"
@@ -92,7 +91,9 @@ reset_dict(void)
 static int
 comparedict(const void *a, const void *b)
 {
-	return ((DictInfo *) a)->dict_id - ((DictInfo *) b)->dict_id;
+	if ( ((DictInfo *) a)->dict_id == ((DictInfo *) b)->dict_id )
+		return 0;
+	return ( ((DictInfo *) a)->dict_id < ((DictInfo *) b)->dict_id ) ? -1 : 1;
 }
 
 DictInfo *

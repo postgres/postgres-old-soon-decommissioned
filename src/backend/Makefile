@@ -17,18 +17,20 @@ DIRS := access bootstrap catalog parser commands executor lib libpq \
 	main nodes optimizer port postmaster regex rewrite \
 	storage tcop utils $(top_builddir)/src/timezone
 
-OBJS := $(DIRS:%=%/SUBSYS.o)
+SUBSYSOBJS := $(DIRS:%=%/SUBSYS.o)
+
+OBJS := $(SUBSYSOBJS) $(top_builddir)/src/port/libpgport_srv.a
+
+# We put libpgport into OBJS, so remove it from LIBS
+LIBS := $(patsubst -lpgport, , $(LIBS))
 
 ifeq ($(PORTNAME), qnx4)
 # This file crashes qnx4's wlink and is therefore not in
 # bootstrap/SUBSYS.o on that platform. (Wotta hack ... is it still
 # necessary?) [ Yes, until the Watcom compiler goes open source it's
 # effectively unsupported ]
-OBJS+= bootstrap/bootstrap.o
+OBJS += bootstrap/bootstrap.o
 endif
-
-# Use server version of port library
-LIBS := $(patsubst -lpgport,-lpgport_srv, $(LIBS))
 
 ##########################################################################
 
@@ -48,7 +50,7 @@ postgres: $(OBJS) $(DLLINIT) postgres.def libpostgres.a
 	$(DLLTOOL) --dllname $@$(X) --output-exp $@.exp --def postgres.def
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@$(X) -Wl,--base-file,$@.base $@.exp $(OBJS) $(LIBS)
 	$(DLLTOOL) --dllname $@$(X) --base-file $@.base --output-exp $@.exp --def postgres.def
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@$(X) $@.exp $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -Wl,--stack,4194304 -o $@$(X) $@.exp $(OBJS) $(LIBS)
 	rm -f $@.exp $@.base
 
 postgres.def: $(OBJS)
@@ -65,11 +67,11 @@ postgres: $(OBJS) $(DLLINIT) postgres.def libpostgres.a $(WIN32RES)
 	$(DLLTOOL) --dllname $@$(X) --output-exp $@.exp --def postgres.def
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@$(X) -Wl,--base-file,$@.base $@.exp $(OBJS) $(WIN32RES) $(LIBS)
 	$(DLLTOOL) --dllname $@$(X) --base-file $@.base --output-exp $@.exp --def postgres.def
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@$(X) $@.exp $(OBJS) $(WIN32RES) $(LIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -Wl,--stack=4194304 -o $@$(X) $@.exp $(OBJS) $(WIN32RES) $(LIBS)
 	rm -f $@.exp $@.base
 
 postgres.def: $(OBJS)
-	$(DLLTOOL) --export-all --output-def $@ $^ $(top_builddir)/src/port/libpgport.a
+	$(DLLTOOL) --export-all --output-def $@ $^
 
 libpostgres.a: postgres.def
 	$(DLLTOOL) --dllname postgres.exe --def postgres.def --output-lib $@
@@ -98,7 +100,7 @@ endif
 endif # aix
 
 # Parallel make trickery
-$(OBJS): $(DIRS:%=%-recursive) ;
+$(SUBSYSOBJS): $(DIRS:%=%-recursive) ;
 
 .PHONY: $(DIRS:%=%-recursive)
 # Update the commonly used headers before building the subdirectories

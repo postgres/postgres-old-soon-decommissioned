@@ -2,17 +2,16 @@
  * interface functions to tscfg
  * Teodor Sigaev <teodor@sigaev.ru>
  */
-#include <errno.h>
-#include <stdlib.h>
-#include <string.h>
+#include "postgres.h"
+
 #include <ctype.h>
 #include <locale.h>
 
-#include "postgres.h"
-#include "fmgr.h"
-#include "utils/array.h"
 #include "catalog/pg_type.h"
 #include "executor/spi.h"
+#include "fmgr.h"
+#include "utils/array.h"
+#include "utils/memutils.h"
 
 #include "ts_cfg.h"
 #include "dict.h"
@@ -186,7 +185,9 @@ reset_cfg(void)
 static int
 comparecfg(const void *a, const void *b)
 {
-	return ((TSCfgInfo *) a)->id - ((TSCfgInfo *) b)->id;
+	if ( ((TSCfgInfo *) a)->id == ((TSCfgInfo *) b)->id )
+		return 0;
+	return ( ((TSCfgInfo *) a)->id < ((TSCfgInfo *) b)->id ) ? -1 : 1;
 }
 
 TSCfgInfo *
