@@ -206,6 +206,8 @@ extern int	pgsymlink(const char *oldpath, const char *newpath);
 
 #endif /* defined(WIN32) || defined(__CYGWIN__) */
 
+extern void copydir(char *fromdir, char *todir, bool recurse);
+
 extern bool rmtree(char *path, bool rmtopdir);
 
 #if defined(WIN32) && !defined(__CYGWIN__)
@@ -222,8 +224,6 @@ extern int	win32_open(const char *, int,...);
 #define popen(a,b) _popen(a,b)
 #define pclose(a) _pclose(a)
 #endif
-
-extern int	copydir(char *fromdir, char *todir);
 
 /* Missing rand functions */
 extern long lrand48(void);

@@ -913,7 +913,6 @@ fi
 
 # Win32 support
 if test "$PORTNAME" = "win32"; then
-AC_LIBOBJ(copydir)
 AC_LIBOBJ(gettimeofday)
 AC_LIBOBJ(kill)
 AC_LIBOBJ(open)
