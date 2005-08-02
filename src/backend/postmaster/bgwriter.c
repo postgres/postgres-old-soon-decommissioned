@@ -256,8 +256,7 @@ BackgroundWriterMain(void)
 		/*
 		 * Sleep at least 1 second after any error.  A write error is
 		 * likely to be repeated, and we don't want to be filling the
-		 * error logs as fast as we can.  (XXX think about ways to make
-		 * progress when the LRU dirty buffer cannot be written...)
+		 * error logs as fast as we can.
 		 */
 		pg_usleep(1000000L);
 	}
