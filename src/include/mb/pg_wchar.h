@@ -200,7 +200,7 @@ typedef enum pg_enc
 #define PG_VALID_BE_ENCODING(_enc) \
 		((_enc) >= 0 && (_enc) <= PG_ENCODING_BE_LAST)
 
-#define PG_ENCODING_IS_CLIEN_ONLY(_enc) \
+#define PG_ENCODING_IS_CLIENT_ONLY(_enc) \
 		(((_enc) > PG_ENCODING_BE_LAST && (_enc) <= PG_ENCODING_FE_LAST)
 
 #define PG_VALID_ENCODING(_enc) \
