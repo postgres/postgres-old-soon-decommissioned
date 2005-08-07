@@ -234,7 +234,7 @@ ifeq ($(PORTNAME), unixware)
 endif
 
 ifeq ($(PORTNAME), cygwin)
-  shlib			= $(NAME)$(DLSUFFIX)
+  shlib			= cyg$(NAME)$(DLSUFFIX)
   # needed for /contrib modules, not sure why
   SHLIB_LINK		+= $(LIBS)
   haslibarule   = yes
