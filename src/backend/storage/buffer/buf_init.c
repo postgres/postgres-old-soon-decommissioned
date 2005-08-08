@@ -149,6 +149,7 @@ InitBufferPool(void)
  * NB: this is called before InitProcess(), so we do not have a PGPROC and
  * cannot do LWLockAcquire; hence we can't actually access stuff in
  * shared memory yet.  We are only initializing local data here.
+ * (See also InitBufferPoolBackend, over in bufmgr.c.)
  */
 void
 InitBufferPoolAccess(void)

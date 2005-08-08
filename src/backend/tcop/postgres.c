@@ -2953,13 +2953,6 @@ PostgresMain(int argc, char *argv[], const char *username)
 										   ALLOCSET_DEFAULT_INITSIZE,
 										   ALLOCSET_DEFAULT_MAXSIZE);
 
-	/* ----------
-	 * Tell the statistics collector that we're alive and
-	 * to which database we belong.
-	 * ----------
-	 */
-	pgstat_bestart();
-
 	/*
 	 * Remember stand-alone backend startup time
 	 */
