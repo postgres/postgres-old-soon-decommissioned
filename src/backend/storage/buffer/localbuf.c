@@ -308,11 +308,14 @@ void
 AtEOXact_LocalBuffers(bool isCommit)
 {
 #ifdef USE_ASSERT_CHECKING
-	int			i;
-
-	for (i = 0; i < NLocBuffer; i++)
+	if (assert_enabled)
 	{
-		Assert(LocalRefCount[i] == 0);
+		int			i;
+
+		for (i = 0; i < NLocBuffer; i++)
+		{
+			Assert(LocalRefCount[i] == 0);
+		}
 	}
 #endif
 }

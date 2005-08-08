@@ -1067,15 +1067,18 @@ void
 AtEOXact_Buffers(bool isCommit)
 {
 #ifdef USE_ASSERT_CHECKING
-	int			i;
-
-	for (i = 0; i < NBuffers; i++)
+	if (assert_enabled)
 	{
-		Assert(PrivateRefCount[i] == 0);
+		int			i;
+
+		for (i = 0; i < NBuffers; i++)
+		{
+			Assert(PrivateRefCount[i] == 0);
+		}
 	}
+#endif
 
 	AtEOXact_LocalBuffers(isCommit);
-#endif
 
 	/* Make sure we reset the strategy hint in case VACUUM errored out */
 	StrategyHintVacuum(false);
