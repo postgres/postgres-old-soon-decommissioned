@@ -346,10 +346,13 @@ assign_timezone(const char *value, bool doit, GucSource source)
 			 * pg_timezone_initialize() will eventually select a default
 			 * value from the environment.
 			 */
-			const char *curzone = pg_get_timezone_name(global_timezone);
+			if (doit)
+			{
+				const char *curzone = pg_get_timezone_name(global_timezone);
 
-			if (curzone)
-				value = curzone;
+				if (curzone)
+					value = curzone;
+			}
 		}
 		else
 		{
