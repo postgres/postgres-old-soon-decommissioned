@@ -235,8 +235,6 @@ endif
 
 ifeq ($(PORTNAME), cygwin)
   shlib			= cyg$(NAME)$(DLSUFFIX)
-  # needed for /contrib modules, not sure why
-  SHLIB_LINK		+= $(LIBS)
   haslibarule   = yes
 endif
 
