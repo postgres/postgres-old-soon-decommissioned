@@ -393,8 +393,8 @@ _bt_insertonpg(Relation rel,
 				 errmsg("index row size %lu exceeds btree maximum, %lu",
 						(unsigned long) itemsz,
 						(unsigned long) BTMaxItemSize(page)),
-				 errhint("Values larger than 1/3 of a buffer page cannot be indexed\n"
-						 "Consider a separate column containing an MD5 hash of the value\n"
+				 errhint("Values larger than 1/3 of a buffer page cannot be indexed.\n"
+						 "Consider a separate column containing an MD5 hash of the value, "
 						 "or use full text indexing.")));
 
 	/*
