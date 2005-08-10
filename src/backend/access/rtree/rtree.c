@@ -733,7 +733,8 @@ rtpicksplit(Relation r,
 				(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
 				 errmsg("index row size %lu exceeds rtree maximum, %lu",
 						(unsigned long) newitemsz,
-						(unsigned long) RTPageAvailSpace)));
+						(unsigned long) RTPageAvailSpace),
+				 errhint("Values larger than a buffer page cannot be indexed.")));
 
 	maxoff = PageGetMaxOffsetNumber(page);
 	newitemoff = OffsetNumberNext(maxoff);		/* phony index for new

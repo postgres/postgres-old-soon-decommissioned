@@ -88,7 +88,8 @@ _hash_doinsert(Relation rel, HashItem hitem)
 				(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
 				 errmsg("index row size %lu exceeds hash maximum %lu",
 						(unsigned long) itemsz,
-						(unsigned long) HashMaxItemSize((Page) metap))));
+						(unsigned long) HashMaxItemSize((Page) metap)),
+				 errhint("Values larger than a buffer page cannot be indexed.")));
 
 	/*
 	 * Compute the target bucket number, and convert to block number.
