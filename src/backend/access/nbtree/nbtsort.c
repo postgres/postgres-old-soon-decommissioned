@@ -500,7 +500,7 @@ _bt_buildadd(BTWriteState *wstate, BTPageState *state, BTItem bti)
 						(unsigned long) btisz,
 						(unsigned long) BTMaxItemSize(npage)),
 				 errhint("Values larger than 1/3 of a buffer page cannot be indexed.\n"
-						 "Consider a separate column containing an MD5 hash of the value, "
+						 "Consider a function index of an MD5 hash of the value, "
 						 "or use full text indexing.")));
 
 	if (pgspc < btisz || pgspc < state->btps_full)
