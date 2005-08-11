@@ -1001,13 +1001,15 @@ load_hba(void)
  *	dboid: gets database OID
  *	dbtablespace: gets database's default tablespace's OID
  *	dbfrozenxid: gets database's frozen XID
+ *	dbvacuumxid: gets database's vacuum XID
  *
  * This is not much related to the other functions in hba.c, but we put it
  * here because it uses the next_token() infrastructure.
  */
 bool
 read_pg_database_line(FILE *fp, char *dbname, Oid *dboid,
-					  Oid *dbtablespace, TransactionId *dbfrozenxid)
+					  Oid *dbtablespace, TransactionId *dbfrozenxid,
+					  TransactionId *dbvacuumxid)
 {
 	char		buf[MAX_TOKEN];
 
@@ -1030,6 +1032,10 @@ read_pg_database_line(FILE *fp, char *dbname, Oid *dboid,
 	if (!isdigit((unsigned char) buf[0]))
 		elog(FATAL, "bad data in flat pg_database file");
 	*dbfrozenxid = atoxid(buf);
+	next_token(fp, buf, sizeof(buf));
+	if (!isdigit((unsigned char) buf[0]))
+		elog(FATAL, "bad data in flat pg_database file");
+	*dbvacuumxid = atoxid(buf);
 	/* expect EOL next */
 	if (next_token(fp, buf, sizeof(buf)))
 		elog(FATAL, "bad data in flat pg_database file");

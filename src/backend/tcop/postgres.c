@@ -162,7 +162,6 @@ static List *pg_rewrite_queries(List *querytree_list);
 static void start_xact_command(void);
 static void finish_xact_command(void);
 static void SigHupHandler(SIGNAL_ARGS);
-static void FloatExceptionHandler(SIGNAL_ARGS);
 static void log_disconnections(int code, Datum arg);
 
 
@@ -2151,7 +2150,7 @@ StatementCancelHandler(SIGNAL_ARGS)
 }
 
 /* signal handler for floating point exception */
-static void
+void
 FloatExceptionHandler(SIGNAL_ARGS)
 {
 	ereport(ERROR,

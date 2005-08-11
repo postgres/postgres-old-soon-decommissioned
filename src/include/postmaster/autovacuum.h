@@ -21,6 +21,8 @@ extern int		autovacuum_vac_thresh;
 extern double	autovacuum_vac_scale;
 extern int		autovacuum_anl_thresh;
 extern double	autovacuum_anl_scale;
+extern int		autovacuum_vac_cost_delay;
+extern int		autovacuum_vac_cost_limit;
 
 /* Status inquiry functions */
 extern bool AutoVacuumingActive(void);

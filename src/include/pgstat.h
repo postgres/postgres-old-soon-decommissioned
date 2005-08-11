@@ -367,6 +367,7 @@ extern bool pgstat_collect_blocklevel;
 extern void pgstat_init(void);
 extern int	pgstat_start(void);
 extern void pgstat_beterm(int pid);
+extern void pgstat_reset_all(void);
 
 #ifdef EXEC_BACKEND
 extern void PgstatBufferMain(int argc, char *argv[]);
