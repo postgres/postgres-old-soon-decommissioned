@@ -32,6 +32,7 @@ extern void join_path_components(char *ret_path,
 								 const char *head, const char *tail);
 extern void canonicalize_path(char *path);
 extern void make_native_path(char *path);
+extern bool path_contains_parent_reference(const char *path);
 extern const char *get_progname(const char *argv0);
 extern void get_share_path(const char *my_exec_path, char *ret_path);
 extern void get_etc_path(const char *my_exec_path, char *ret_path);
