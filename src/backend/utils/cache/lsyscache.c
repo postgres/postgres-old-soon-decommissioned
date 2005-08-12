@@ -1223,13 +1223,14 @@ getTypeIOParam(HeapTuple typeTuple)
 	Form_pg_type typeStruct = (Form_pg_type) GETSTRUCT(typeTuple);
 
 	/*
-	 * Composite types get their own OID as parameter; array types get
-	 * their typelem as parameter; everybody else gets zero.
+	 * Array types get their typelem as parameter; everybody else gets
+	 * their own type OID as parameter.  (This is a change from 8.0,
+	 * in which only composite types got their own OID as parameter.)
 	 */
-	if (typeStruct->typtype == 'c')
-		return HeapTupleGetOid(typeTuple);
-	else
+	if (OidIsValid(typeStruct->typelem))
 		return typeStruct->typelem;
+	else
+		return HeapTupleGetOid(typeTuple);
 }
 
 /*
