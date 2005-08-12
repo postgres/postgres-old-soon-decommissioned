@@ -1266,6 +1266,7 @@ write_syslog(int level, const char *line)
 static void
 write_eventlog(int level, const char *line)
 {
+	int eventlevel = EVENTLOG_ERROR_TYPE;
 	static HANDLE evtHandle = INVALID_HANDLE_VALUE;
 
 	if (evtHandle == INVALID_HANDLE_VALUE)
@@ -1278,8 +1279,33 @@ write_eventlog(int level, const char *line)
 		}
 	}
 
+	switch (level)
+	{
+		case DEBUG5:
+		case DEBUG4:
+		case DEBUG3:
+		case DEBUG2:
+		case DEBUG1:
+		case LOG:
+		case COMMERROR:
+		case INFO:
+		case NOTICE:
+			eventlevel = EVENTLOG_INFORMATION_TYPE;
+			break;
+		case WARNING:
+			eventlevel = EVENTLOG_WARNING_TYPE;
+			break;
+		case ERROR:
+		case FATAL:
+		case PANIC:
+		default:
+			eventlevel = EVENTLOG_ERROR_TYPE;
+			break;
+	}
+
+
 	ReportEvent(evtHandle,
-				level,
+				eventlevel,
 				0,
 				0,				/* All events are Id 0 */
 				NULL,
@@ -1557,7 +1583,6 @@ send_message_to_server_log(ErrorData *edata)
 		appendStringInfoChar(&buf, '\n');
 	}
 
-
 #ifdef HAVE_SYSLOG
 	/* Write to syslog, if enabled */
 	if (Log_destination & LOG_DESTINATION_SYSLOG)
@@ -1597,40 +1622,32 @@ send_message_to_server_log(ErrorData *edata)
 		write_syslog(syslog_level, buf.data);
 	}
 #endif   /* HAVE_SYSLOG */
+
 #ifdef WIN32
+	/* Write to eventlog, if enabled */
 	if (Log_destination & LOG_DESTINATION_EVENTLOG)
 	{
-		int			eventlog_level;
-
-		switch (edata->elevel)
-		{
-			case DEBUG5:
-			case DEBUG4:
-			case DEBUG3:
-			case DEBUG2:
-			case DEBUG1:
-			case LOG:
-			case COMMERROR:
-			case INFO:
-			case NOTICE:
-				eventlog_level = EVENTLOG_INFORMATION_TYPE;
-				break;
-			case WARNING:
-				eventlog_level = EVENTLOG_WARNING_TYPE;
-				break;
-			case ERROR:
-			case FATAL:
-			case PANIC:
-			default:
-				eventlog_level = EVENTLOG_ERROR_TYPE;
-				break;
-		}
-		write_eventlog(eventlog_level, buf.data);
+		write_eventlog(edata->elevel, buf.data);
 	}
 #endif   /* WIN32 */
+
 	/* Write to stderr, if enabled */
 	if ((Log_destination & LOG_DESTINATION_STDERR) || whereToSendOutput == Debug)
-		fprintf(stderr, "%s", buf.data);
+	{
+#ifdef WIN32
+		/*
+		 * In a win32 service environment, there is no usable stderr. Capture
+		 * anything going there and write it to the eventlog instead.
+		 *
+		 * If stderr redirection is active, it's ok to write to stderr
+		 * because that's really a pipe to the syslogger process.
+		 */
+		if ((!Redirect_stderr || am_syslogger) && pgwin32_is_service())
+			write_eventlog(edata->elevel, buf.data);
+		else
+#endif
+			fprintf(stderr, "%s", buf.data);
+	}
 
 	/* If in the syslogger process, try to write messages direct to file */
 	if (am_syslogger)
