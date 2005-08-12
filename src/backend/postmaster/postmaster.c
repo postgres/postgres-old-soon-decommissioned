@@ -3382,20 +3382,22 @@ sigusr1_handler(SIGNAL_ARGS)
 		}
 	}
 
-	if (PgArchPID != 0 && Shutdown == NoShutdown)
+	if (CheckPostmasterSignal(PMSIGNAL_WAKEN_ARCHIVER) &&
+		PgArchPID != 0 && Shutdown == NoShutdown)
 	{
-		if (CheckPostmasterSignal(PMSIGNAL_WAKEN_ARCHIVER))
-		{
-			/*
-			 * Send SIGUSR1 to archiver process, to wake it up and begin
-			 * archiving next transaction log file.
-			 */
-			kill(PgArchPID, SIGUSR1);
-		}
+		/*
+		 * Send SIGUSR1 to archiver process, to wake it up and begin
+		 * archiving next transaction log file.
+		 */
+		kill(PgArchPID, SIGUSR1);
 	}
 
-	if (CheckPostmasterSignal(PMSIGNAL_ROTATE_LOGFILE) && SysLoggerPID != 0)
+	if (CheckPostmasterSignal(PMSIGNAL_ROTATE_LOGFILE) &&
+		SysLoggerPID != 0)
+	{
+		/* Tell syslogger to rotate logfile */
 	    kill(SysLoggerPID, SIGUSR1);
+	}
 
 	PG_SETMASK(&UnBlockSig);
 

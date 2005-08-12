@@ -292,6 +292,8 @@ extern Datum pgsql_postmaster_start_time(PG_FUNCTION_ARGS);
 
 extern TimestampTz GetCurrentTimestamp(void);
 
+extern TimestampTz time_t_to_timestamptz(time_t tm);
+
 extern int	tm2timestamp(struct pg_tm *tm, fsec_t fsec, int *tzp, Timestamp *dt);
 extern int timestamp2tm(Timestamp dt, int *tzp, struct pg_tm *tm,
 			 fsec_t *fsec, char **tzn, pg_tz *attimezone);
