@@ -66,9 +66,6 @@ exec_srv.o: exec.c
 getaddrinfo_srv.o: getaddrinfo.c
 	$(CC) $(CFLAGS) $(subst -DFRONTEND,, $(CPPFLAGS)) -c $< -o $@
 
-snprintf_srv.o: snprintf.c
-	$(CC) $(CFLAGS) $(subst -DFRONTEND,, $(CPPFLAGS)) -c $< -o $@
-
 # No thread flags for server version
 thread_srv.o: thread.c
 	$(CC) $(CFLAGS) $(subst -DFRONTEND,, $(CPPFLAGS)) -c $< -o $@
