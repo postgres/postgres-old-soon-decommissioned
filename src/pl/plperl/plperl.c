@@ -921,6 +921,16 @@ plperl_func_handler(PG_FUNCTION_ARGS)
 	plperl_current_tuple_store = 0;
 	plperl_current_tuple_desc = 0;
 
+	if (!rsi || !IsA(rsi, ReturnSetInfo) ||
+		(rsi->allowedModes & SFRM_Materialize) == 0 ||
+		rsi->expectedDesc == NULL)
+	{
+		ereport(ERROR,
+				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+				 errmsg("set-valued function called in context that "
+						"cannot accept a set")));
+	}
+
 	perlret = plperl_call_perl_func(prodesc, fcinfo);
 
 	/************************************************************
@@ -936,16 +946,6 @@ plperl_func_handler(PG_FUNCTION_ARGS)
 
 	if (prodesc->fn_retisset) 
 	{
-		if (!rsi || !IsA(rsi, ReturnSetInfo) ||
-			(rsi->allowedModes & SFRM_Materialize) == 0 ||
-			rsi->expectedDesc == NULL)
-		{
-			ereport(ERROR,
-					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("set-valued function called in context that "
-							"cannot accept a set")));
-		}
-
 		/* If the Perl function returned an arrayref, we pretend that it
 		 * called return_next() for each element of the array, to handle
 		 * old SRFs that didn't know about return_next(). Any other sort
