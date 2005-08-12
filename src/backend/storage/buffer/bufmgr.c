@@ -153,6 +153,8 @@ ReadBuffer(Relation reln, BlockNumber blockNum)
 		 * block is not currently in memory.
 		 */
 		bufHdr = BufferAlloc(reln, blockNum, &found);
+		/* we are guaranted that nobody else has touched this will-be-new block */
+		Assert(!(found && isExtend));
 		if (found)
 			BufferHitCount++;
 	}
