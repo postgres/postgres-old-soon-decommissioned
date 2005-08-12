@@ -556,7 +556,6 @@ extern Oid	TypeShellMake(const char *typeName, Oid typeNamespace);
 
 extern Oid TypeCreate(const char *typeName,
 		   Oid typeNamespace,
-		   Oid assignedTypeOid,
 		   Oid relationOid,
 		   char relationKind,
 		   int16 internalSize,

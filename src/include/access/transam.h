@@ -126,6 +126,5 @@ extern TransactionId ReadNewTransactionId(void);
 extern void SetTransactionIdLimit(TransactionId oldest_datfrozenxid,
 								  Name oldest_datname);
 extern Oid	GetNewObjectId(void);
-extern void CheckMaxObjectId(Oid assigned_oid);
 
 #endif   /* TRAMSAM_H */

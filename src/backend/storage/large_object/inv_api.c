@@ -177,14 +177,14 @@ inv_create(Oid lobjId)
 {
 	/*
 	 * Allocate an OID to be the LO's identifier, unless we were told
-	 * what to use.  In event of collision with an existing ID, loop
-	 * to find a free one.
+	 * what to use.  We can use the index on pg_largeobject for checking
+	 * OID uniqueness, even though it has additional columns besides OID.
 	 */
 	if (!OidIsValid(lobjId))
 	{
-		do {
-			lobjId = newoid();
-		} while (LargeObjectExists(lobjId));
+		open_lo_relation();
+
+		lobjId = GetNewOidWithIndex(lo_heap_r, lo_index_r);
 	}
 
 	/*

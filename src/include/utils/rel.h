@@ -136,8 +136,8 @@ typedef struct RelationData
 	bool		rd_istemp;		/* rel uses the local buffer mgr */
 	bool		rd_isnailed;	/* rel is nailed in cache */
 	bool		rd_isvalid;		/* relcache entry is valid */
-	char		rd_indexvalid;	/* state of rd_indexlist: 0 = not valid, 1
-								 * = valid, 2 = temporarily forced */
+	char		rd_indexvalid;	/* state of rd_indexlist: 0 = not valid,
+								 * 1 = valid, 2 = temporarily forced */
 	SubTransactionId rd_createSubid;	/* rel was created in current xact */
 
 	/*
@@ -151,6 +151,7 @@ typedef struct RelationData
 	TupleDesc	rd_att;			/* tuple descriptor */
 	Oid			rd_id;			/* relation's object id */
 	List	   *rd_indexlist;	/* list of OIDs of indexes on relation */
+	Oid			rd_oidindex;	/* OID of unique index on OID, if any */
 	LockInfoData rd_lockInfo;	/* lock mgr's info for locking relation */
 	RuleLock   *rd_rules;		/* rewrite rules */
 	MemoryContext rd_rulescxt;	/* private memory cxt for rd_rules, if any */

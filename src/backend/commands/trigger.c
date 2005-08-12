@@ -184,7 +184,9 @@ CreateTrigger(CreateTrigStmt *stmt, bool forConstraint)
 	 * Generate the trigger's OID now, so that we can use it in the name
 	 * if needed.
 	 */
-	trigoid = newoid();
+	tgrel = heap_open(TriggerRelationId, RowExclusiveLock);
+
+	trigoid = GetNewOid(tgrel);
 
 	/*
 	 * If trigger is an RI constraint, use specified trigger name as
@@ -252,7 +254,6 @@ CreateTrigger(CreateTrigStmt *stmt, bool forConstraint)
 	 * NOTE that this is cool only because we have AccessExclusiveLock on the
 	 * relation, so the trigger set won't be changing underneath us.
 	 */
-	tgrel = heap_open(TriggerRelationId, RowExclusiveLock);
 	ScanKeyInit(&key,
 				Anum_pg_trigger_tgrelid,
 				BTEqualStrategyNumber, F_OIDEQ,

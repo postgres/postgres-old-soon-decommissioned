@@ -1069,9 +1069,7 @@ heap_insert(Relation relation, HeapTuple tup, CommandId cid,
 		 * pointers to one another).
 		 */
 		if (!OidIsValid(HeapTupleGetOid(tup)))
-			HeapTupleSetOid(tup, newoid());
-		else
-			CheckMaxObjectId(HeapTupleGetOid(tup));
+			HeapTupleSetOid(tup, GetNewOid(relation));
 	}
 	else
 	{

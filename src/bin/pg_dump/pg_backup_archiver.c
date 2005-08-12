@@ -1962,11 +1962,11 @@ _tocEntryRequired(TocEntry *te, RestoreOptions *ropt, bool include_acls)
 	}
 
 	/*
-	 * Special case: <Init> type with <Max OID> tag; this is part of a
-	 * DATA restore even though it has SQL.
+	 * Special case: <Init> type with <Max OID> tag; this is obsolete
+	 * and we always ignore it.
 	 */
 	if ((strcmp(te->desc, "<Init>") == 0) && (strcmp(te->tag, "Max OID") == 0))
-		res = REQ_DATA;
+		return 0;
 
 	/* Mask it if we only want schema */
 	if (ropt->schemaOnly)
