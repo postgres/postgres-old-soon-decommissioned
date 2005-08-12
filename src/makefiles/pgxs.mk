@@ -100,10 +100,12 @@ ifdef MODULES
 	done
 endif # MODULES
 ifdef DOCS
+ifdef docdir
 	@for file in $(addprefix $(srcdir)/, $(DOCS)); do \
 	  echo "$(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/contrib"; \
 	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/contrib; \
 	done
+endif # docdir
 endif # DOCS
 ifdef PROGRAM
 	$(INSTALL_PROGRAM) $(PROGRAM)$(X) $(DESTDIR)$(bindir)
@@ -133,8 +135,10 @@ ifneq (,$(MODULES)$(MODULE_big))
 	$(mkinstalldirs) $(DESTDIR)$(pkglibdir)
 endif
 ifdef DOCS
+ifdef docdir
 	$(mkinstalldirs) $(DESTDIR)$(docdir)/contrib
-endif
+endif # docdir
+endif # DOCS
 ifneq (,$(PROGRAM)$(SCRIPTS)$(SCRIPTS_built))
 	$(mkinstalldirs) $(DESTDIR)$(bindir)
 endif
