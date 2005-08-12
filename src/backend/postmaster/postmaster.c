@@ -3394,6 +3394,9 @@ sigusr1_handler(SIGNAL_ARGS)
 		}
 	}
 
+	if (CheckPostmasterSignal(PMSIGNAL_ROTATE_LOGFILE) && SysLoggerPID != 0)
+	    kill(SysLoggerPID, SIGUSR1);
+
 	PG_SETMASK(&UnBlockSig);
 
 	errno = save_errno;
