@@ -33,7 +33,7 @@ extern int	bgwriter_lru_maxpages;
 extern int	bgwriter_all_maxpages;
 
 /* in buf_init.c */
-extern DLLIMPORT Block *BufferBlockPointers;
+extern DLLIMPORT char *BufferBlocks;
 extern DLLIMPORT int32 *PrivateRefCount;
 
 /* in localbuf.c */
@@ -107,7 +107,7 @@ extern DLLIMPORT int32 *LocalRefCount;
 	BufferIsLocal(buffer) ? \
 		LocalBufferBlockPointers[-(buffer) - 1] \
 	: \
-		BufferBlockPointers[(buffer) - 1] \
+		(Block) (BufferBlocks + ((Size) ((buffer) - 1)) * BLCKSZ) \
 )
 
 /*
