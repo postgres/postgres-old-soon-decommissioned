@@ -377,11 +377,8 @@ PostmasterMain(int argc, char *argv[])
 	char	   *userDoption = NULL;
 	int			i;
 
-	if ((progname = get_progname(argv[0])) == NULL)
-	{
-		printf(_("unable to allocate memory for program name \"%s\".\n"), progname);
-		ExitPostmaster(0);
-	}
+	/* This will call exit() if strdup() fails. */
+	progname = get_progname(argv[0]);	
 
 	MyProcPid = PostmasterPid = getpid();
 
