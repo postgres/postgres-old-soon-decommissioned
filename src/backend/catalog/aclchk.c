@@ -388,6 +388,9 @@ ExecuteGrantStmt_Relation(GrantStmt *stmt)
 		pfree(new_acl);
 
 		heap_close(relation, RowExclusiveLock);
+
+		/* prevent error when processing duplicate objects */
+		CommandCounterIncrement();
 	}
 }
 
@@ -565,6 +568,9 @@ ExecuteGrantStmt_Database(GrantStmt *stmt)
 		heap_endscan(scan);
 
 		heap_close(relation, RowExclusiveLock);
+
+		/* prevent error when processing duplicate objects */
+		CommandCounterIncrement();
 	}
 }
 
@@ -738,6 +744,9 @@ ExecuteGrantStmt_Function(GrantStmt *stmt)
 		pfree(new_acl);
 
 		heap_close(relation, RowExclusiveLock);
+
+		/* prevent error when processing duplicate objects */
+		CommandCounterIncrement();
 	}
 }
 
@@ -920,6 +929,9 @@ ExecuteGrantStmt_Language(GrantStmt *stmt)
 		pfree(new_acl);
 
 		heap_close(relation, RowExclusiveLock);
+
+		/* prevent error when processing duplicate objects */
+		CommandCounterIncrement();
 	}
 }
 
@@ -1093,6 +1105,9 @@ ExecuteGrantStmt_Namespace(GrantStmt *stmt)
 		pfree(new_acl);
 
 		heap_close(relation, RowExclusiveLock);
+
+		/* prevent error when processing duplicate objects */
+		CommandCounterIncrement();
 	}
 }
 
@@ -1269,6 +1284,9 @@ ExecuteGrantStmt_Tablespace(GrantStmt *stmt)
 
 		heap_endscan(scan);
 		heap_close(relation, RowExclusiveLock);
+
+		/* prevent error when processing duplicate objects */
+		CommandCounterIncrement();
 	}
 }
 
