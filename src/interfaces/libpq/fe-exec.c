@@ -2166,7 +2166,15 @@ PQoidValue(const PGresult *res)
 #endif
 	result = strtoul(res->cmdStatus + 7, &endptr, 10);
 
-	if (!endptr || (*endptr != ' ' && *endptr != '\0') || errno == ERANGE)
+	if (!endptr || (*endptr != ' ' && *endptr != '\0')
+#ifndef WIN32
+	/*
+	 *	On WIN32, errno is not thread-safe and GetLastError() isn't set by
+	 *	strtoul(), so we can't check on this platform.
+	 */
+ || errno == ERANGE
+#endif
+		)
 		return InvalidOid;
 	else
 		return (Oid) result;
