@@ -56,16 +56,12 @@ endif
 # Add libraries that pgcrypto depends (or might depend) on into the
 # shared library link.  (The order in which you list them here doesn't
 # matter.)
-SHLIB_LINK += $(filter -lcrypt -ldes -lcrypto -lssl -lz, $(LIBS))
+SHLIB_LINK += $(filter -lcrypto -lz, $(LIBS))
 ifeq ($(PORTNAME), win32)
-SHLIB_LINK += $(filter -leay32 -lssleay32 -lz, $(LIBS))
-endif
-
-# to make ws2_32.lib the last library (must occur after definition of PORTNAME)
-ifeq ($(PORTNAME),win32)
+SHLIB_LINK += $(filter -leay32, $(LIBS))
+# those must be at the end
 SHLIB_LINK += -lwsock32 -lws2_32
 endif
-
 
 rijndael.o: rijndael.tbl
 

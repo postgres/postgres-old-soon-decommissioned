@@ -48,3 +48,14 @@ pgp_elgamal_decrypt(PGP_PubKey *pk, PGP_MPI *_c1, PGP_MPI *_c2,
 	return PXE_PGP_NO_BIGNUM;
 }
 
+int pgp_rsa_encrypt(PGP_PubKey *pk, PGP_MPI *m, PGP_MPI **c)
+{
+	return PXE_PGP_NO_BIGNUM;
+}
+
+int pgp_rsa_decrypt(PGP_PubKey *pk, PGP_MPI *c, PGP_MPI **m)
+{
+	return PXE_PGP_NO_BIGNUM;
+}
+
+

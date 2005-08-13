@@ -73,8 +73,6 @@ char *_crypt_gensalt_md5_rn(unsigned long count,
 char *_crypt_gensalt_blowfish_rn(unsigned long count,
 			 const char *input, int size, char *output, int output_size);
 
-#ifndef PX_SYSTEM_CRYPT
-
 /* disable 'extended DES crypt' */
 /* #define DISABLE_XDES */
 
@@ -88,6 +86,5 @@ char	   *px_crypt_des(const char *key, const char *setting);
 /* crypt-md5.c */
 char *px_crypt_md5(const char *pw, const char *salt,
 			 char *dst, unsigned dstlen);
-#endif   /* !PX_SYSTEM_CRYPT */
 
 #endif   /* _PX_CRYPT_H */

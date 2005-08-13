@@ -35,8 +35,6 @@
 #include "px-crypt.h"
 
 
-#ifndef PX_SYSTEM_CRYPT
-
 static char *
 run_crypt_des(const char *psw, const char *salt,
 			  char *buf, unsigned len)
@@ -106,24 +104,6 @@ px_crypt(const char *psw, const char *salt, char *buf, unsigned len)
 
 	return c->crypt(psw, salt, buf, len);
 }
-
-#else							/* PX_SYSTEM_CRYPT */
-
-extern char *crypt(const char *psw, const char *salt);
-
-char *
-px_crypt(const char *psw, const char *salt,
-		 char *buf, unsigned len)
-{
-	char	   *res;
-
-	res = crypt(psw, salt);
-	if (!res || strlen(res) >= len)
-		return NULL;
-	strcpy(buf, res);
-	return buf;
-}
-#endif
 
 /*
  * salt generators
