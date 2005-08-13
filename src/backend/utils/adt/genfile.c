@@ -171,6 +171,10 @@ pg_stat_file(PG_FUNCTION_ARGS)
 				(errcode_for_file_access(),
 				 errmsg("could not stat file \"%s\": %m", filename)));
 
+	/*
+	 * This record type had better match the output parameters declared
+	 * for me in pg_proc.h (actually, in system_views.sql at the moment).
+	 */
 	tupdesc = CreateTemplateTupleDesc(5, false);
 	TupleDescInitEntry(tupdesc, (AttrNumber) 1,
 					   "length", INT8OID, -1, 0);
