@@ -338,7 +338,8 @@ exec_command(const char *cmd,
 				success = describeFunctions(pattern, show_verbose);
 				break;
 			case 'g':
-				success = describeGroups(pattern);
+				/* no longer distinct from \du */
+				success = describeRoles(pattern);
 				break;
 			case 'l':
 				success = do_lo_list();
@@ -363,7 +364,7 @@ exec_command(const char *cmd,
 				success = listTables(&cmd[1], pattern, show_verbose);
 				break;
 			case 'u':
-				success = describeUsers(pattern);
+				success = describeRoles(pattern);
 				break;
 
 			default:
