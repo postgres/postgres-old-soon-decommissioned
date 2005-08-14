@@ -1061,10 +1061,10 @@
     <literal>DateStyle</>,
     <literal>TimeZone</>,
     <literal>integer_datetimes</>, and
-    <literal>standard_compliant_strings</>.
+    <literal>standard_conforming_strings</>.
     (<literal>server_encoding</>, <literal>TimeZone</>, and
     <literal>integer_datetimes</> were not reported by releases before 8.0;
-    <literal>standard_compliant_strings</> was not reported by releases
+    <literal>standard_conforming_strings</> was not reported by releases
     before 8.1.)
     Note that
     <literal>server_version</>,
