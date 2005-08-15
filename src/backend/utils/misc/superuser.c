@@ -5,7 +5,7 @@
  *
  * All code should use either of these two functions to find out
  * whether a given user is a superuser, rather than examining
- * pg_shadow.usesuper directly, so that the escape hatch built in for
+ * pg_authid.rolsuper directly, so that the escape hatch built in for
  * the single-user case works.
  *
  *
