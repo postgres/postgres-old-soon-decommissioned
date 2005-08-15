@@ -97,7 +97,7 @@ typedef struct _dumpableObject
 typedef struct _namespaceInfo
 {
 	DumpableObject dobj;
-	char	   *usename;		/* name of owner, or empty string */
+	char	   *rolname;		/* name of owner, or empty string */
 	char	   *nspacl;
 	bool		dump;			/* true if need to dump definition */
 } NamespaceInfo;
@@ -110,7 +110,7 @@ typedef struct _typeInfo
 	 * Note: dobj.name is the pg_type.typname entry.  format_type() might
 	 * produce something different than typname
 	 */
-	char	   *usename;		/* name of owner, or empty string */
+	char	   *rolname;		/* name of owner, or empty string */
 	Oid			typinput;
 	Oid			typelem;
 	Oid			typrelid;
@@ -126,7 +126,7 @@ typedef struct _typeInfo
 typedef struct _funcInfo
 {
 	DumpableObject dobj;
-	char	   *usename;		/* name of owner, or empty string */
+	char	   *rolname;		/* name of owner, or empty string */
 	Oid			lang;
 	int			nargs;
 	Oid		   *argtypes;
@@ -146,20 +146,20 @@ typedef struct _aggInfo
 typedef struct _oprInfo
 {
 	DumpableObject dobj;
-	char	   *usename;
+	char	   *rolname;
 	Oid			oprcode;
 } OprInfo;
 
 typedef struct _opclassInfo
 {
 	DumpableObject dobj;
-	char	   *usename;
+	char	   *rolname;
 } OpclassInfo;
 
 typedef struct _convInfo
 {
 	DumpableObject dobj;
-	char	   *usename;
+	char	   *rolname;
 } ConvInfo;
 
 typedef struct _tableInfo
@@ -168,7 +168,7 @@ typedef struct _tableInfo
 	 * These fields are collected for every table in the database.
 	 */
 	DumpableObject dobj;
-	char	   *usename;		/* name of owner, or empty string */
+	char	   *rolname;		/* name of owner, or empty string */
 	char	   *relacl;
 	char		relkind;
 	char	   *reltablespace;	/* relation tablespace */
