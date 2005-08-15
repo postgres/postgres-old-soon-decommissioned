@@ -346,8 +346,9 @@ UPDATE pg_proc SET
                          'timestamptz',
                          'timestamptz',
                          'timestamptz',
+                         'timestamptz',
                          'bool'],
-  proargmodes = ARRAY['i'::"char", 'o', 'o', 'o', 'o', 'o'],
-  proargnames = ARRAY['filename'::text,
-                      'length', 'atime', 'mtime', 'ctime','isdir']
+  proargmodes = ARRAY['i'::"char", 'o', 'o', 'o', 'o', 'o', 'o'],
+  proargnames = ARRAY['filename'::text, 'size', 'access', 'modification',
+		      'change', 'creation', 'isdir']
 WHERE oid = 'pg_stat_file(text)'::regprocedure;
