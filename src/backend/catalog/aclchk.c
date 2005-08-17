@@ -53,7 +53,7 @@ static const char *privilege_to_string(AclMode privilege);
 
 
 #ifdef ACLDEBUG
-static
+static void
 dumpacl(Acl *acl)
 {
 	int			i;
