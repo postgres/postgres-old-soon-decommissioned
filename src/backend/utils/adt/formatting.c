@@ -4446,7 +4446,6 @@ NUM_processor(FormatNode *node, NUMDesc *Num, char *inout, char *number,
 	}
 	else
 	{
-
 		if (*(Np->number_p - 1) == '.')
 			*(Np->number_p - 1) = '\0';
 		else
@@ -4462,8 +4461,6 @@ NUM_processor(FormatNode *node, NUMDesc *Num, char *inout, char *number,
 #endif
 		return Np->number;
 	}
-	else
-		return NULL;
 
 	return NULL;
 }
