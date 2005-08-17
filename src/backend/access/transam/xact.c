@@ -1877,8 +1877,8 @@ AbortTransaction(void)
 
 	/*
 	 * Reset user id which might have been changed transiently.  We cannot
-	 * use s->currentUser, but must get the session outer-level userid from
-	 * miscinit.c.
+	 * use s->currentUser, since it may not be set yet; instead rely on
+	 * internal state of miscinit.c.
 	 *
 	 * (Note: it is not necessary to restore session authorization here
 	 * because that can only be changed via GUC, and GUC will take care of
@@ -1886,7 +1886,7 @@ AbortTransaction(void)
 	 * DEFINER function could send control here with the wrong current
 	 * userid.)
 	 */
-	SetUserId(GetOuterUserId());
+	AtAbort_UserId();
 
 	/*
 	 * do abort processing

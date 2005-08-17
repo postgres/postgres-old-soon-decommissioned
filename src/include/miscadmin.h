@@ -235,6 +235,7 @@ extern Oid GetOuterUserId(void);
 extern Oid GetSessionUserId(void);
 extern void InitializeSessionUserId(const char *rolename);
 extern void InitializeSessionUserIdStandalone(void);
+extern void AtAbort_UserId(void);
 extern void SetSessionAuthorization(Oid userid, bool is_superuser);
 extern Oid GetCurrentRoleId(void);
 extern void SetCurrentRoleId(Oid roleid, bool is_superuser);
