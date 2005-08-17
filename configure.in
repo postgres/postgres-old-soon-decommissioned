@@ -17,7 +17,7 @@ dnl Read the Autoconf manual for details.
 dnl
 m4_pattern_forbid(^PGAC_)dnl to catch undefined macros
 
-AC_INIT([PostgreSQL], [8.0.0], [pgsql-bugs@postgresql.org])
+AC_INIT([PostgreSQL], [8.0.3], [pgsql-bugs@postgresql.org])
 
 AC_PREREQ(2.53)
 AC_COPYRIGHT([Copyright (c) 1996-2005, PostgreSQL Global Development Group])
@@ -673,12 +673,17 @@ if test "$with_krb4" = yes ; then
 fi
 
 if test "$with_krb5" = yes ; then
-  AC_SEARCH_LIBS(com_err, [krb5 'krb5 -ldes -lasn1 -lroken' com_err], [],
-                 [AC_MSG_ERROR([could not find function 'com_err' required for Kerberos 5])])
-  AC_SEARCH_LIBS(krb5_encrypt, [krb5 'krb5 -ldes -lasn1 -lroken' crypto k5crypto], [],
-                 [AC_MSG_ERROR([could not find function 'krb5_encrypt' required for Kerberos 5])])
-  AC_SEARCH_LIBS(krb5_sendauth, [krb5 'krb5 -ldes -lasn1 -lroken'], [],
-                 [AC_MSG_ERROR([could not find function 'krb5_sendauth' required for Kerberos 5])])
+  if test "$PORTNAME" != "win32"; then
+     AC_SEARCH_LIBS(com_err, [krb5 'krb5 -ldes -lasn1 -lroken' com_err], [],
+                    [AC_MSG_ERROR([could not find function 'com_err' required for Kerberos 5])])
+     AC_SEARCH_LIBS(krb5_encrypt, [krb5 'krb5 -ldes -lasn1 -lroken' crypto k5crypto], [],
+                    [AC_MSG_ERROR([could not find function 'krb5_encrypt' required for Kerberos 5])])
+     AC_SEARCH_LIBS(krb5_sendauth, [krb5 'krb5 -ldes -lasn1 -lroken'], [],
+                    [AC_MSG_ERROR([could not find function 'krb5_sendauth' required for Kerberos 5])])
+  else
+     AC_SEARCH_LIBS(com_err, 'comerr32 -lkrb5_32', [],
+                    [AC_MSG_ERROR([could not find function 'com_err' required for Kerberos 5])])
+  fi
 fi
 
 if test "$with_openssl" = yes ; then
@@ -850,10 +855,9 @@ AC_CHECK_DECLS(fdatasync, [], [], [#include <unistd.h>])
 
 HAVE_IPV6=no
 AC_CHECK_TYPE([struct sockaddr_in6],
-              [AC_CHECK_FUNC(inet_ntop,
-                             [AC_DEFINE(HAVE_IPV6, 1, [Define to 1 if you have support for IPv6.])
-							  HAVE_IPV6=yes])],
-              [],
+        [AC_DEFINE(HAVE_IPV6, 1, [Define to 1 if you have support for IPv6.])
+         HAVE_IPV6=yes],
+        [],
 [$ac_includes_default
 #include <netinet/in.h>])
 AC_SUBST(HAVE_IPV6)
