@@ -736,8 +736,8 @@ CheckFreeSpaceMapStatistics(int elevel, int numRels, double needed)
 	else if (needed > MaxFSMPages)
 		ereport(elevel,
 			(errmsg("the number of page slots needed (%.0f) exceeds max_fsm_pages (%d)",
-			 needed,MaxFSMPages),
-			 errhint("Consider increasing the configuration parameter \"max_fsm_relations\"\n"
+			 needed, MaxFSMPages),
+			 errhint("Consider increasing the configuration parameter \"max_fsm_pages\"\n"
 					 "to a value over %.0f.", needed)));
 }
 
