@@ -519,7 +519,8 @@ make_agg_subplan(PlannerInfo *root, MinMaxAggInfo *info, List *constant_quals)
 
 	plan = (Plan *) make_limit(plan, 
 							   subparse->limitOffset,
-							   subparse->limitCount);
+							   subparse->limitCount,
+							   0, 1);
 
 	/*
 	 * Convert the plan into an InitPlan, and make a Param for its result.

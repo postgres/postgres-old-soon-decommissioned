@@ -54,7 +54,8 @@ extern Group *make_group(PlannerInfo *root, List *tlist, List *qual,
 extern Material *make_material(Plan *lefttree);
 extern Plan *materialize_finished_plan(Plan *subplan);
 extern Unique *make_unique(Plan *lefttree, List *distinctList);
-extern Limit *make_limit(Plan *lefttree, Node *limitOffset, Node *limitCount);
+extern Limit *make_limit(Plan *lefttree, Node *limitOffset, Node *limitCount,
+						 int offset_est, int count_est);
 extern SetOp *make_setop(SetOpCmd cmd, Plan *lefttree,
 		   List *distinctList, AttrNumber flagColIdx);
 extern Result *make_result(List *tlist, Node *resconstantqual, Plan *subplan);
