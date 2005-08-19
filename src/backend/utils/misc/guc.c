@@ -1365,7 +1365,7 @@ static struct config_int ConfigureNamesInt[] =
 
 	{
 		{"bgwriter_lru_maxpages", PGC_SIGHUP, RESOURCES,
-			gettext_noop("Background writer maximum number of all pages to flush per round"),
+			gettext_noop("Background writer maximum number of LRU pages to flush per round"),
 			NULL
 		},
 		&bgwriter_lru_maxpages,
@@ -1374,7 +1374,7 @@ static struct config_int ConfigureNamesInt[] =
 
 	{
 		{"bgwriter_all_maxpages", PGC_SIGHUP, RESOURCES,
-			gettext_noop("Background writer maximum number of LRU pages to flush per round"),
+			gettext_noop("Background writer maximum number of all pages to flush per round"),
 			NULL
 		},
 		&bgwriter_all_maxpages,
