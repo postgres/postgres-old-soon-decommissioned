@@ -31,7 +31,7 @@ typedef int XidStatus;
 extern void TransactionIdSetStatus(TransactionId xid, XidStatus status);
 extern XidStatus TransactionIdGetStatus(TransactionId xid);
 
-extern int	CLOGShmemSize(void);
+extern Size CLOGShmemSize(void);
 extern void CLOGShmemInit(void);
 extern void BootStrapCLOG(void);
 extern void StartupCLOG(void);

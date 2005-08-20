@@ -55,10 +55,10 @@ static void ProcessCatchupEvent(void);
 /*	should be called only by the POSTMASTER									*/
 /****************************************************************************/
 void
-CreateSharedInvalidationState(int maxBackends)
+CreateSharedInvalidationState(void)
 {
 	/* SInvalLock must be initialized already, during LWLock init */
-	SIBufferInit(maxBackends);
+	SIBufferInit();
 }
 
 /*

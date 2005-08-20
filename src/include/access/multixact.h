@@ -48,7 +48,7 @@ extern int GetMultiXactIdMembers(MultiXactId multi, TransactionId **xids);
 
 extern void AtEOXact_MultiXact(void);
 
-extern int	MultiXactShmemSize(void);
+extern Size MultiXactShmemSize(void);
 extern void MultiXactShmemInit(void);
 extern void BootStrapMultiXact(void);
 extern void StartupMultiXact(void);

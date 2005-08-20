@@ -255,15 +255,13 @@ InitLocalBuffers(void)
 	int			i;
 
 	/* Allocate and zero buffer headers and auxiliary arrays */
-	LocalBufferDescriptors = (BufferDesc *)
-		MemoryContextAllocZero(TopMemoryContext,
-							   nbufs * sizeof(BufferDesc));
-	LocalBufferBlockPointers = (Block *)
-		MemoryContextAllocZero(TopMemoryContext,
-							   nbufs * sizeof(Block));
-	LocalRefCount = (int32 *)
-		MemoryContextAllocZero(TopMemoryContext,
-							   nbufs * sizeof(int32));
+	LocalBufferDescriptors = (BufferDesc *) calloc(nbufs, sizeof(BufferDesc));
+	LocalBufferBlockPointers = (Block *) calloc(nbufs, sizeof(Block));
+	LocalRefCount = (int32 *) calloc(nbufs, sizeof(int32));
+	if (!LocalBufferDescriptors || !LocalBufferBlockPointers || !LocalRefCount)
+		ereport(FATAL,
+				(errcode(ERRCODE_OUT_OF_MEMORY),
+				 errmsg("out of memory")));
 
 	nextFreeLocalBuf = 0;
 

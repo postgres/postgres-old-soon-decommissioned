@@ -156,7 +156,7 @@ extern void xlog_redo(XLogRecPtr lsn, XLogRecord *record);
 extern void xlog_desc(char *buf, uint8 xl_info, char *rec);
 
 extern void UpdateControlFile(void);
-extern int	XLOGShmemSize(void);
+extern Size XLOGShmemSize(void);
 extern void XLOGShmemInit(void);
 extern void BootStrapXLOG(void);
 extern void StartupXLOG(void);

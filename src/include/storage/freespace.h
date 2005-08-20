@@ -37,7 +37,7 @@ extern int	MaxFSMPages;
  * function prototypes
  */
 extern void InitFreeSpaceMap(void);
-extern int	FreeSpaceShmemSize(void);
+extern Size FreeSpaceShmemSize(void);
 
 extern BlockNumber GetPageWithFreeSpace(RelFileNode *rel, Size spaceNeeded);
 extern BlockNumber RecordAndGetPageWithFreeSpace(RelFileNode *rel,

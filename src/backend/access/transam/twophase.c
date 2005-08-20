@@ -152,13 +152,20 @@ static void ProcessRecords(char *bufptr, TransactionId xid,
 /*
  * Initialization of shared memory
  */
-int
+Size
 TwoPhaseShmemSize(void)
 {
+	Size		size;
+
 	/* Need the fixed struct, the array of pointers, and the GTD structs */
-	return MAXALIGN(offsetof(TwoPhaseStateData, prepXacts) + 
-					sizeof(GlobalTransaction) * max_prepared_xacts) +
-		sizeof(GlobalTransactionData) * max_prepared_xacts;
+	size = offsetof(TwoPhaseStateData, prepXacts);
+	size = add_size(size, mul_size(max_prepared_xacts,
+								   sizeof(GlobalTransaction)));
+	size = MAXALIGN(size);
+	size = add_size(size, mul_size(max_prepared_xacts,
+								   sizeof(GlobalTransactionData)));
+
+	return size;
 }
 
 void

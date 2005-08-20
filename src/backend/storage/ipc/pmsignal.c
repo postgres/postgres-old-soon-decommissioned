@@ -48,7 +48,9 @@ PMSignalInit(void)
 	bool		found;
 
 	PMSignalFlags = (sig_atomic_t *)
-		ShmemInitStruct("PMSignalFlags", NUM_PMSIGNALS * sizeof(sig_atomic_t), &found);
+		ShmemInitStruct("PMSignalFlags",
+						NUM_PMSIGNALS * sizeof(sig_atomic_t),
+						&found);
 
 	if (!found)
 		MemSet(PMSignalFlags, 0, NUM_PMSIGNALS * sizeof(sig_atomic_t));

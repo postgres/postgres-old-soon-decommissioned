@@ -208,16 +208,16 @@ StrategyHintVacuum(bool vacuum_active)
  * Note: for somewhat historical reasons, the buffer lookup hashtable size
  * is also determined here.
  */
-int
+Size
 StrategyShmemSize(void)
 {
-	int			size = 0;
+	Size		size = 0;
 
 	/* size of lookup hash table */
-	size += BufTableShmemSize(NBuffers);
+	size = add_size(size, BufTableShmemSize(NBuffers));
 
 	/* size of the shared replacement strategy control block */
-	size += MAXALIGN(sizeof(BufferStrategyControl));
+	size = add_size(size, MAXALIGN(sizeof(BufferStrategyControl)));
 
 	return size;
 }

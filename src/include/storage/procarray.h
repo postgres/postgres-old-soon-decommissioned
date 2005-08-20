@@ -17,7 +17,7 @@
 #include "storage/lock.h"
 
 
-extern int	ProcArrayShmemSize(void);
+extern Size ProcArrayShmemSize(void);
 extern void CreateSharedProcArray(void);
 extern void ProcArrayAdd(PGPROC *proc);
 extern void ProcArrayRemove(PGPROC *proc);

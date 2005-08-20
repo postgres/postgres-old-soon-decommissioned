@@ -144,8 +144,7 @@ TransactionIdGetStatus(TransactionId xid)
 /*
  * Initialization of shared memory for CLOG
  */
-
-int
+Size
 CLOGShmemSize(void)
 {
 	return SimpleLruShmemSize();

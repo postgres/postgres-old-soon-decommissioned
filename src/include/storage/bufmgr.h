@@ -140,7 +140,7 @@ extern void DropBuffers(Oid dbid);
 #ifdef NOT_USED
 extern void PrintPinnedBufs(void);
 #endif
-extern int	BufferShmemSize(void);
+extern Size BufferShmemSize(void);
 extern RelFileNode BufferGetFileNode(Buffer buffer);
 
 extern void SetBufferCommitInfoNeedsSave(Buffer buffer);

@@ -141,9 +141,10 @@ static int	SlruSelectLRUPage(SlruCtl ctl, int pageno);
  * Initialization of shared memory
  */
 
-int
+Size
 SimpleLruShmemSize(void)
 {
+	/* we assume NUM_SLRU_BUFFERS isn't so large as to risk overflow */
 	return BUFFERALIGN(sizeof(SlruSharedData)) + BLCKSZ * NUM_SLRU_BUFFERS;
 }
 

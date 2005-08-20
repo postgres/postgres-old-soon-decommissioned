@@ -462,15 +462,19 @@ ReqShutdownHandler(SIGNAL_ARGS)
  * BgWriterShmemSize
  *		Compute space needed for bgwriter-related shared memory
  */
-int
+Size
 BgWriterShmemSize(void)
 {
+	Size		size;
+
 	/*
 	 * Currently, the size of the requests[] array is arbitrarily set
 	 * equal to NBuffers.  This may prove too large or small ...
 	 */
-	return MAXALIGN(sizeof(BgWriterShmemStruct) +
-					(NBuffers - 1) *sizeof(BgWriterRequest));
+	size = offsetof(BgWriterShmemStruct, requests);
+	size = add_size(size, mul_size(NBuffers, sizeof(BgWriterRequest)));
+
+	return size;
 }
 
 /*

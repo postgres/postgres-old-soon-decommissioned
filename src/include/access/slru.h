@@ -96,7 +96,7 @@ typedef SlruCtlData *SlruCtl;
 typedef struct SlruFlushData *SlruFlush;
 
 
-extern int	SimpleLruShmemSize(void);
+extern Size SimpleLruShmemSize(void);
 extern void SimpleLruInit(SlruCtl ctl, const char *name,
 			  LWLockId ctllock, const char *subdir);
 extern int	SimpleLruZeroPage(SlruCtl ctl, int pageno);

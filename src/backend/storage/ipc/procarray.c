@@ -81,11 +81,16 @@ static void DisplayXidCache(void);
 /*
  * Report shared-memory space needed by CreateSharedProcArray.
  */
-int
+Size
 ProcArrayShmemSize(void)
 {
-	return MAXALIGN(offsetof(ProcArrayStruct, procs) +
-					(MaxBackends + max_prepared_xacts) * sizeof(PGPROC *));
+	Size		size;
+
+	size = offsetof(ProcArrayStruct, procs);
+	size = add_size(size, mul_size(sizeof(PGPROC *),
+								   add_size(MaxBackends, max_prepared_xacts)));
+
+	return size;
 }
 
 /*

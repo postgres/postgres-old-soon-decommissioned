@@ -391,7 +391,7 @@ extern int LockCheckConflicts(LockMethod lockMethodTable,
 extern void GrantLock(LOCK *lock, PROCLOCK *proclock, LOCKMODE lockmode);
 extern void GrantAwaitedLock(void);
 extern void RemoveFromWaitQueue(PGPROC *proc);
-extern int	LockShmemSize(void);
+extern Size LockShmemSize(void);
 extern bool DeadLockCheck(PGPROC *proc);
 extern void DeadLockReport(void);
 extern void RememberSimpleDeadLock(PGPROC *proc1,

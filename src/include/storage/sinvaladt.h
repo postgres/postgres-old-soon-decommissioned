@@ -107,7 +107,7 @@ extern SISeg *shmInvalBuffer;	/* pointer to the shared inval buffer */
 /*
  * prototypes for functions in sinvaladt.c
  */
-extern void SIBufferInit(int maxBackends);
+extern void SIBufferInit(void);
 extern int	SIBackendInit(SISeg *segP);
 
 extern bool SIInsertDataEntry(SISeg *segP, SharedInvalidationMessage *data);

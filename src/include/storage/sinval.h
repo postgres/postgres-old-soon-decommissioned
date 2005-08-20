@@ -83,8 +83,8 @@ typedef union
 } SharedInvalidationMessage;
 
 
-extern int	SInvalShmemSize(int maxBackends);
-extern void CreateSharedInvalidationState(int maxBackends);
+extern Size SInvalShmemSize(void);
+extern void CreateSharedInvalidationState(void);
 extern void InitBackendSharedInvalidationState(void);
 
 extern void SendSharedInvalidMessage(SharedInvalidationMessage *msg);

@@ -190,7 +190,7 @@ extern void *hash_search(HTAB *hashp, const void *keyPtr, HASHACTION action,
 			bool *foundPtr);
 extern void hash_seq_init(HASH_SEQ_STATUS *status, HTAB *hashp);
 extern void *hash_seq_search(HASH_SEQ_STATUS *status);
-extern long hash_estimate_size(long num_entries, Size entrysize);
+extern Size hash_estimate_size(long num_entries, Size entrysize);
 extern long hash_select_dirsize(long num_entries);
 
 /*

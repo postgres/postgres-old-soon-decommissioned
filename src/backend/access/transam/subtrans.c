@@ -161,8 +161,7 @@ SubTransGetTopmostTransaction(TransactionId xid)
 /*
  * Initialization of shared memory for SUBTRANS
  */
-
-int
+Size
 SUBTRANSShmemSize(void)
 {
 	return SimpleLruShmemSize();

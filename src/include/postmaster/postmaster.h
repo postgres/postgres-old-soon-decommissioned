@@ -42,7 +42,7 @@ extern void ClosePostmasterPorts(bool am_syslogger);
 extern pid_t postmaster_forkexec(int argc, char *argv[]);
 extern int	SubPostmasterMain(int argc, char *argv[]);
 
-extern size_t ShmemBackendArraySize(void);
+extern Size ShmemBackendArraySize(void);
 extern void ShmemBackendArrayAllocation(void);
 #endif
 

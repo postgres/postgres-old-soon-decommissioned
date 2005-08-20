@@ -37,7 +37,7 @@ static HTAB *SharedBufHash;
  * Estimate space needed for mapping hashtable
  *		size is the desired hash table size (possibly more than NBuffers)
  */
-int
+Size
 BufTableShmemSize(int size)
 {
 	return hash_estimate_size(size, sizeof(BufferLookupEnt));

@@ -73,7 +73,7 @@ extern void LWLockReleaseAll(void);
 extern bool LWLockHeldByMe(LWLockId lockid);
 
 extern int	NumLWLocks(void);
-extern int	LWLockShmemSize(void);
+extern Size LWLockShmemSize(void);
 extern void CreateLWLocks(void);
 
 #endif   /* LWLOCK_H */

@@ -182,11 +182,11 @@ extern long int LocalBufferFlushCount;
 extern BufferDesc *StrategyGetBuffer(void);
 extern void StrategyFreeBuffer(BufferDesc *buf, bool at_head);
 extern int	StrategySyncStart(void);
-extern int	StrategyShmemSize(void);
+extern Size StrategyShmemSize(void);
 extern void StrategyInitialize(bool init);
 
 /* buf_table.c */
-extern int	BufTableShmemSize(int size);
+extern Size	BufTableShmemSize(int size);
 extern void InitBufTable(int size);
 extern int	BufTableLookup(BufferTag *tagPtr);
 extern int	BufTableInsert(BufferTag *tagPtr, int buf_id);

@@ -28,7 +28,7 @@ extern void RequestCheckpoint(bool waitforit, bool warnontime);
 extern bool ForwardFsyncRequest(RelFileNode rnode, BlockNumber segno);
 extern void AbsorbFsyncRequests(void);
 
-extern int	BgWriterShmemSize(void);
+extern Size BgWriterShmemSize(void);
 extern void BgWriterShmemInit(void);
 
 #endif   /* _BGWRITER_H */

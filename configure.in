@@ -1132,6 +1132,9 @@ fi
 # Need a #define for the size of Datum (unsigned long)
 AC_CHECK_SIZEOF([unsigned long])
 
+# And one for the size of size_t (enables tweaks for > 32bit address space)
+AC_CHECK_SIZEOF([size_t])
+
 # Determine memory alignment requirements for the basic C data types.
 
 PGAC_CHECK_ALIGNOF(short)
