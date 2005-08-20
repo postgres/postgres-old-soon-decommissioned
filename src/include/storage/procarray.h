@@ -27,6 +27,7 @@ extern bool TransactionIdIsActive(TransactionId xid);
 extern TransactionId GetOldestXmin(bool allDbs);
 
 extern PGPROC *BackendPidGetProc(int pid);
+extern int BackendXidGetPid(TransactionId xid);
 extern bool IsBackendPid(int pid);
 extern bool DatabaseHasActiveBackends(Oid databaseId, bool ignoreMyself);
 
