@@ -200,7 +200,6 @@ static MemoryContext	MXactContext = NULL;
 /* internal MultiXactId management */
 static void MultiXactIdSetOldestVisible(void);
 static MultiXactId CreateMultiXactId(int nxids, TransactionId *xids);
-static int GetMultiXactIdMembers(MultiXactId multi, TransactionId **xids);
 static void RecordNewMultiXact(MultiXactId multi, MultiXactOffset offset,
 							   int nxids, TransactionId *xids);
 static MultiXactId GetNewMultiXactId(int nxids, MultiXactOffset *offset);
@@ -816,7 +815,7 @@ GetNewMultiXactId(int nxids, MultiXactOffset *offset)
  * still running; in that case we have not actually looked them up, and
  * *xids is not set.
  */
-static int
+int
 GetMultiXactIdMembers(MultiXactId multi, TransactionId **xids)
 {
 	int			pageno;
