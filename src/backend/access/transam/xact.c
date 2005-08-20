@@ -129,12 +129,12 @@ typedef struct TransactionStateData
 typedef TransactionStateData *TransactionState;
 
 /*
- * childXids is currently implemented as an integer List, relying on the
- * assumption that TransactionIds are no wider than int.  We use these
+ * childXids is currently implemented as an Oid List, relying on the
+ * assumption that TransactionIds are no wider than Oid.  We use these
  * macros to provide some isolation in case that changes in the future.
  */
-#define lfirst_xid(lc)				((TransactionId) lfirst_int(lc))
-#define lappend_xid(list, datum)	lappend_int(list, (int) (datum))
+#define lfirst_xid(lc)				((TransactionId) lfirst_oid(lc))
+#define lappend_xid(list, datum)	lappend_oid(list, (Oid) (datum))
 
 /*
  * CurrentTransactionState always points to the current transaction state
