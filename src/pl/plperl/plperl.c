@@ -680,7 +680,7 @@ plperl_create_sub(char *s, bool trusted)
 	 * errors properly.  Perhaps it's because there's another level of
 	 * eval inside mksafefunc?
 	 */
-	count = perl_call_pv((trusted ? "mksafefunc" : "mkunsafefunc"),
+	count = perl_call_pv((trusted ? "::mksafefunc" : "::mkunsafefunc"),
 						 G_SCALAR | G_EVAL | G_KEEPERR);
 	SPAGAIN;
 
