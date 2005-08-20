@@ -152,19 +152,23 @@ extern bool heap_release_fetch(Relation relation, Snapshot snapshot,
 				   HeapTuple tuple, Buffer *userbuf, bool keep_buf,
 				   PgStat_Info *pgstat_info);
 
-extern ItemPointer heap_get_latest_tid(Relation relation, Snapshot snapshot,
+extern void heap_get_latest_tid(Relation relation, Snapshot snapshot,
 					ItemPointer tid);
 extern void setLastTid(const ItemPointer tid);
 
 extern Oid	heap_insert(Relation relation, HeapTuple tup, CommandId cid,
 						bool use_wal, bool use_fsm);
-extern HTSU_Result heap_delete(Relation relation, ItemPointer tid, ItemPointer ctid,
-			CommandId cid, Snapshot crosscheck, bool wait);
-extern HTSU_Result heap_update(Relation relation, ItemPointer otid, HeapTuple tup,
-		ItemPointer ctid, CommandId cid, Snapshot crosscheck, bool wait);
-extern HTSU_Result heap_lock_tuple(Relation relation, HeapTuple tup,
-				 Buffer *userbuf, CommandId cid,
-				 LockTupleMode mode, bool nowait);
+extern HTSU_Result heap_delete(Relation relation, ItemPointer tid,
+							   ItemPointer ctid, TransactionId *update_xmax,
+							   CommandId cid, Snapshot crosscheck, bool wait);
+extern HTSU_Result heap_update(Relation relation, ItemPointer otid,
+							   HeapTuple newtup,
+							   ItemPointer ctid, TransactionId *update_xmax,
+							   CommandId cid, Snapshot crosscheck, bool wait);
+extern HTSU_Result heap_lock_tuple(Relation relation, HeapTuple tuple,
+								   Buffer *buffer, ItemPointer ctid,
+								   TransactionId *update_xmax, CommandId cid,
+								   LockTupleMode mode, bool nowait);
 
 extern Oid	simple_heap_insert(Relation relation, HeapTuple tup);
 extern void simple_heap_delete(Relation relation, ItemPointer tid);

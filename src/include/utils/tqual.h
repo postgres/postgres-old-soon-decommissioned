@@ -42,7 +42,6 @@ typedef struct SnapshotData
 	TransactionId *xip;			/* array of xact IDs in progress */
 	/* note: all ids in xip[] satisfy xmin <= xip[i] < xmax */
 	CommandId	curcid;			/* in my xact, CID < curcid are visible */
-	ItemPointerData tid;		/* required for Dirty snapshot -:( */
 } SnapshotData;
 
 typedef SnapshotData *Snapshot;
