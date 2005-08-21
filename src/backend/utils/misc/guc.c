@@ -2029,7 +2029,7 @@ static struct config_string ConfigureNamesString[] =
 	},
 
 	{
-		{"custom_variable_classes", PGC_POSTMASTER, RESOURCES_KERNEL,
+		{"custom_variable_classes", PGC_SIGHUP, CUSTOM_OPTIONS,
 			gettext_noop("Sets the list of known custom variable classes."),
 			NULL,
 			GUC_LIST_INPUT | GUC_LIST_QUOTE
