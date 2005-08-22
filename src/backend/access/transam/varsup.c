@@ -66,9 +66,9 @@ GetNewTransactionId(bool isSubXact)
 			TransactionIdFollowsOrEquals(xid, ShmemVariableCache->xidStopLimit))
 			ereport(ERROR,
 					(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
-					 errmsg("database is shut down to avoid wraparound data loss in database \"%s\"",
+					 errmsg("database is not accepting queries to avoid wraparound data loss in database \"%s\"",
 							NameStr(ShmemVariableCache->limit_datname)),
-					 errhint("Stop the postmaster and use a standalone backend to VACUUM in \"%s\".",
+					 errhint("Stop the postmaster and use a standalone backend to VACUUM database \"%s\".",
 							 NameStr(ShmemVariableCache->limit_datname))));
 		else
 			ereport(WARNING,
