@@ -206,20 +206,25 @@ AlterConversionOwner(List *name, Oid newOwnerId)
 	 */
 	if (convForm->conowner != newOwnerId)
 	{
-		/* Otherwise, must be owner of the existing object */
-		if (!pg_conversion_ownercheck(HeapTupleGetOid(tup),GetUserId()))
-			aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_CONVERSION,
-						   NameListToString(name));
+		/* Superusers can always do it */
+		if (!superuser())
+		{
+			/* Otherwise, must be owner of the existing object */
+			if (!pg_conversion_ownercheck(HeapTupleGetOid(tup),GetUserId()))
+				aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_CONVERSION,
+							   NameListToString(name));
 
-		/* Must be able to become new owner */
-		check_is_member_of_role(GetUserId(), newOwnerId);
+			/* Must be able to become new owner */
+			check_is_member_of_role(GetUserId(), newOwnerId);
 
-		/* New owner must have CREATE privilege on namespace */
-		aclresult = pg_namespace_aclcheck(convForm->connamespace, newOwnerId,
-										  ACL_CREATE);
-		if (aclresult != ACLCHECK_OK)
-			aclcheck_error(aclresult, ACL_KIND_NAMESPACE,
-						   get_namespace_name(convForm->connamespace));
+			/* New owner must have CREATE privilege on namespace */
+			aclresult = pg_namespace_aclcheck(convForm->connamespace,
+											  newOwnerId,
+											  ACL_CREATE);
+			if (aclresult != ACLCHECK_OK)
+				aclcheck_error(aclresult, ACL_KIND_NAMESPACE,
+							   get_namespace_name(convForm->connamespace));
+		}
 
 		/*
 		 * Modify the owner --- okay to scribble on tup because it's a

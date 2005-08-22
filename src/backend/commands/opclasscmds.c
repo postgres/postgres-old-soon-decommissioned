@@ -951,20 +951,24 @@ AlterOpClassOwner(List *name, const char *access_method, Oid newOwnerId)
 	 */
 	if (opcForm->opcowner != newOwnerId)
 	{
-		/* Otherwise, must be owner of the existing object */
-		if (!pg_opclass_ownercheck(HeapTupleGetOid(tup),GetUserId()))
-			aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_OPCLASS,
-						   NameListToString(name));
+		/* Superusers can always do it */
+		if (!superuser())
+		{
+			/* Otherwise, must be owner of the existing object */
+			if (!pg_opclass_ownercheck(HeapTupleGetOid(tup),GetUserId()))
+				aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_OPCLASS,
+							   NameListToString(name));
 
-		/* Must be able to become new owner */
-		check_is_member_of_role(GetUserId(), newOwnerId);
+			/* Must be able to become new owner */
+			check_is_member_of_role(GetUserId(), newOwnerId);
 
-		/* New owner must have CREATE privilege on namespace */
-		aclresult = pg_namespace_aclcheck(namespaceOid, newOwnerId,
-										  ACL_CREATE);
-		if (aclresult != ACLCHECK_OK)
-			aclcheck_error(aclresult, ACL_KIND_NAMESPACE,
-					get_namespace_name(namespaceOid));
+			/* New owner must have CREATE privilege on namespace */
+			aclresult = pg_namespace_aclcheck(namespaceOid, newOwnerId,
+											  ACL_CREATE);
+			if (aclresult != ACLCHECK_OK)
+				aclcheck_error(aclresult, ACL_KIND_NAMESPACE,
+							   get_namespace_name(namespaceOid));
+		}
 
 		/*
 		 * Modify the owner --- okay to scribble on tup because it's a
