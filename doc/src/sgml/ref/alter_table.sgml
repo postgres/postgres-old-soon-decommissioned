@@ -289,10 +289,11 @@ where <replaceable class="PARAMETER">action</replaceable> is one of:
   </para>
 
   <para>
-   You must own the table to use <command>ALTER TABLE</>; except for
-   <command>ALTER TABLE OWNER</>, which may only be executed by a superuser.
+   You must own the table to use <command>ALTER TABLE</>.
    To change the schema of a table, you must also have
    <literal>CREATE</literal> privilege on the new schema.
+   To alter the owner, the new owner must have
+   <literal>CREATE</literal> privilege on the schema.
   </para>
  </refsect1>
 
