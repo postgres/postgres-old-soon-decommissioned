@@ -36,7 +36,7 @@
 
 
 /* These parameters are set by GUC */
-bool		enable_constraint_exclusion = false;
+bool		constraint_exclusion = false;
 bool		enable_geqo = false;	/* just in case GUC doesn't set it */
 int			geqo_threshold;
 
@@ -318,7 +318,7 @@ set_inherited_rel_pathlist(PlannerInfo *root, RelOptInfo *rel,
 		 * exclusion, just ignore it.  (We have to have converted the
 		 * baserestrictinfo Vars before we can make the test.)
 		 */
-		if (enable_constraint_exclusion)
+		if (constraint_exclusion)
 		{
 			List   *constraint_pred;
 

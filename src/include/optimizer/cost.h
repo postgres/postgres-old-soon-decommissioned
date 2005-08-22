@@ -49,7 +49,7 @@ extern bool enable_hashagg;
 extern bool enable_nestloop;
 extern bool enable_mergejoin;
 extern bool enable_hashjoin;
-extern bool enable_constraint_exclusion;
+extern bool constraint_exclusion;
 
 extern double clamp_row_est(double nrows);
 extern void cost_seqscan(Path *path, PlannerInfo *root, RelOptInfo *baserel);
