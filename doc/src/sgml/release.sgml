@@ -30,21 +30,22 @@ $PostgreSQL$
       <listitem>
        <para>
         This was accomplished by eliminating global locks and using a clock
-       sweep algorithm to find free buffers.
+       sweep algorithm to find free buffers. This increases scalability
+       on multi-CPU systems.
        </para> 
       </listitem>
      </varlistentry>
 
      <varlistentry>
       <term>
-       Allow indexes to be used for MIN/MAX (Tom)
+       Automatically use indexes for MIN() and MAX() (Tom)
       </term>
  
       <listitem>
        <para>
-        In previous releases, the only way to use index for MIN/MAX was to rewrite
-        the query as SELECT col FROM tab ORDER BY col LIMIT 1. This now happens
-        automatically.
+        In previous releases, the only way to use an index for MIN/MAX
+        was to rewrite the query as SELECT col FROM tab ORDER BY col
+        LIMIT 1. Index usage now happens automatically.
        </para> 
       </listitem>
      </varlistentry>
