@@ -926,6 +926,7 @@ AlterOpClassOwner(List *name, const char *access_method, Oid newOwnerId)
 					 errmsg("operator class \"%s\" does not exist for access method \"%s\"",
 							opcname, access_method)));
 
+		opcOid = HeapTupleGetOid(tup);
 	}
 	else
 	{
@@ -981,7 +982,7 @@ AlterOpClassOwner(List *name, const char *access_method, Oid newOwnerId)
 		CatalogUpdateIndexes(rel, tup);
 
 		/* Update owner dependency reference */
-		changeDependencyOnOwner(OperatorClassRelationId, amOid, newOwnerId);
+		changeDependencyOnOwner(OperatorClassRelationId, opcOid, newOwnerId);
 	}
 
 	heap_close(rel, NoLock);
