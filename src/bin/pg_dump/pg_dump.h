@@ -270,6 +270,7 @@ typedef struct _triggerInfo
 	char	   *tgconstrname;
 	Oid			tgconstrrelid;
 	char	   *tgconstrrelname;
+	bool		tgenabled;
 	bool		tgdeferrable;
 	bool		tginitdeferred;
 } TriggerInfo;

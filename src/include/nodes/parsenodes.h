@@ -837,15 +837,21 @@ typedef enum AlterTableType
 	AT_ClusterOn,				/* CLUSTER ON */
 	AT_DropCluster,				/* SET WITHOUT CLUSTER */
 	AT_DropOids,				/* SET WITHOUT OIDS */
-	AT_SetTableSpace			/* SET TABLESPACE */
+	AT_SetTableSpace,			/* SET TABLESPACE */
+	AT_EnableTrig,				/* ENABLE TRIGGER name */
+	AT_DisableTrig,				/* DISABLE TRIGGER name */
+	AT_EnableTrigAll,			/* ENABLE TRIGGER ALL */
+	AT_DisableTrigAll,			/* DISABLE TRIGGER ALL */
+	AT_EnableTrigUser,			/* ENABLE TRIGGER USER */
+	AT_DisableTrigUser			/* DISABLE TRIGGER USER */
 } AlterTableType;
 
 typedef struct AlterTableCmd	/* one subcommand of an ALTER TABLE */
 {
 	NodeTag		type;
 	AlterTableType subtype;		/* Type of table alteration to apply */
-	char	   *name;			/* column or constraint name to act on, or
-								 * new owner or tablespace */
+	char	   *name;			/* column, constraint, or trigger to act on,
+								 * or new owner or tablespace */
 	Node	   *def;			/* definition of new column, column type,
 								 * index, or constraint */
 	Node	   *transform;		/* transformation expr for ALTER TYPE */

@@ -113,6 +113,9 @@ extern void RemoveTriggerById(Oid trigOid);
 
 extern void renametrig(Oid relid, const char *oldname, const char *newname);
 
+extern void EnableDisableTrigger(Relation rel, const char *tgname,
+								 bool enable, bool skip_system);
+
 extern void RelationBuildTriggers(Relation relation);
 
 extern TriggerDesc *CopyTriggerDesc(TriggerDesc *trigdesc);
