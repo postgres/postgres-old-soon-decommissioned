@@ -1078,7 +1078,7 @@ $PostgreSQL$
         </itemizedlist>
        </para>
        <para>
-        <function>pg_complete_relation_size()</> includes indexes and TOAST
+        <function>complete_relation_size()</> includes indexes and TOAST
         tables.
        </para>
       </listitem>

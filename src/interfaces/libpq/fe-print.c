@@ -88,7 +88,7 @@ PQprint(FILE *fout, const PGresult *res, const PQprintOpt *po)
 		int			total_line_length = 0;
 		int			usePipe = 0;
 		char	   *pagerenv;
-#if defined(ENABLE_THREAD_SAFETY) && !defined(WIN32)
+#ifdef ENABLE_THREAD_SAFETY
 		sigset_t	osigset;
 		bool		sigpipe_masked = false;
 		bool		sigpipe_pending;
@@ -189,14 +189,14 @@ PQprint(FILE *fout, const PGresult *res, const PQprintOpt *po)
 				if (fout)
 				{
 					usePipe = 1;
-#ifndef WIN32
 #ifdef ENABLE_THREAD_SAFETY
 					if (pq_block_sigpipe(&osigset, &sigpipe_pending) == 0)
 						sigpipe_masked = true;
 #else
+#ifndef WIN32
 					oldsigpipehandler = pqsignal(SIGPIPE, SIG_IGN);
-#endif /* ENABLE_THREAD_SAFETY */
-#endif /* WIN32 */
+#endif
+#endif
 				}
 				else
 					fout = stdout;
@@ -311,15 +311,16 @@ PQprint(FILE *fout, const PGresult *res, const PQprintOpt *po)
 			_pclose(fout);
 #else
 			pclose(fout);
-            
+#endif
 #ifdef ENABLE_THREAD_SAFETY
 			/* we can't easily verify if EPIPE occurred, so say it did */
 			if (sigpipe_masked)
 				pq_reset_sigpipe(&osigset, sigpipe_pending, true);
 #else
+#ifndef WIN32
 			pqsignal(SIGPIPE, oldsigpipehandler);
-#endif /* ENABLE_THREAD_SAFETY */
-#endif /* WIN32 */
+#endif
+#endif
 		}
 		if (po->html3 && !po->expanded)
 			fputs("</table>\n", fout);

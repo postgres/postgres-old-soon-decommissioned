@@ -1133,11 +1133,7 @@ libpq_gettext(const char *msgid)
 	if (!already_bound)
 	{
 		/* dgettext() preserves errno, but bindtextdomain() doesn't */
-#ifdef WIN32
-		int		save_errno = GetLastError();
-#else
-		int		save_errno = errno;    
-#endif
+		int		save_errno = errno;
 		const char *ldir;
 
 		already_bound = true;

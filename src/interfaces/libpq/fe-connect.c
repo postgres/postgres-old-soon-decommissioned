@@ -55,11 +55,7 @@
 #endif
 
 #ifdef ENABLE_THREAD_SAFETY
-#ifdef WIN32
-#include "pthread-win32.h"
-#else
 #include <pthread.h>
-#endif
 #endif
 
 #include "libpq/ip.h"
