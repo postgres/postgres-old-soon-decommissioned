@@ -2,14 +2,15 @@
 $PostgreSQL$
 
 Typical markup:
-[A-Z][A-Z ]+[A-Z]		<command>
-[A-Za-z_][A-Za-z0-9_]+()	<function>
-[A-Za-z_]/[A-Za-z_]+		<filename>
-PostgreSQL			<productname>
-pg_[A-Za-z0-9_]			<appication>
-[A-Z][A-Z]			<type>, <envar.
-				<literal>
-&<>				use &
+
+[A-Z][A-Z ]+[A-Z]               <command>
+[A-Za-z_][A-Za-z0-9_]+()        <function>
+[A-Za-z_]/[A-Za-z_]+            <filename>
+PostgreSQL                      <productname>
+pg_[A-Za-z0-9_]                 <appication>
+[A-Z][A-Z]                      <type>, <envar.
+                                <literal>
+&<>                             use &
 -->
 
 <appendix id="release">
