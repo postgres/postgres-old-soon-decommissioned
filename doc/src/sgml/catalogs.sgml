@@ -3789,9 +3789,7 @@
       <entry><structfield>tgenabled</structfield></entry>
       <entry><type>bool</type></entry>
       <entry></entry>
-      <entry>True if trigger is enabled (not presently checked everywhere
-      it should be, so disabling a trigger by setting this false does not
-      work reliably)</entry>
+      <entry>True if trigger is enabled</entry>
      </row>
 
      <row>
