@@ -299,7 +299,13 @@ $PostgreSQL$
        will be treated literally in non-E strings. To prepare for this
        change, use E'' strings in places that need special backslash
        processing, and turn on escape_string_warning to find additional
-       strings that need to be converted to use <literal>E''</>.
+       strings that need to be converted to use <literal>E''</>.  Also,
+       use two single-quotes ('') to embed a literal single-quote
+       in a string, rather than the PostgreSQL-supported syntax of
+       backslash single-quote (\').  The former is standards-conforming
+       and does not require the use of the E'' string syntax.  You can
+       also use the $$ string syntax, which does not treat backslashes
+       specially.
       </para>
      </listitem>
 
