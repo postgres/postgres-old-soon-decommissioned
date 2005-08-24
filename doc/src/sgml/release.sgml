@@ -284,8 +284,8 @@ $PostgreSQL$
 
        <listitem>
         <para>
-         <varname>standard_conforming_strings>/> - does this release
-         treat backslashes literally in normal strings?
+         <varname>standard_conforming_strings</> - does this release
+         treat backslashes literally in ordinary strings?
         </para>
        </listitem>
 
@@ -625,13 +625,13 @@ $PostgreSQL$
 
       <listitem>
        <para>
-        Fix <command>HAVING</> without aggregate functions and no
-        <command>GROUP BY</> to behave as if the main query returns a
-        single group (Tom)
+        Fix <command>HAVING</> without any aggregate functions or
+        <command>GROUP BY</> so that the query returns a single group (Tom)
        </para>
        <para>
         Previously, such a case would treat the <command>HAVING</>
-        clause as <command>WHERE</> clause.
+        clause the same as a <command>WHERE</> clause.  This was not per spec.
+       </para>
       </listitem>
 
       <listitem>
