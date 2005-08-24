@@ -1257,6 +1257,17 @@ $PostgreSQL$
        </para>
       </listitem>
 
+      <listitem>
+       <para>
+        Move language handlers into the pg_catalog schema
+       </para>
+       </para>
+       <para>
+        This makes it possible to dump installed languages and makes it
+        easier to drop the public schema.
+       </para>
+      </listitem>
+
      </itemizedlist>
     </sect3>
   
