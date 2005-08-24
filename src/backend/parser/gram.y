@@ -1164,7 +1164,7 @@ ColId_or_Sconst:
 
 
 VariableShowStmt:
-			SHOW ColId
+			SHOW var_name
 				{
 					VariableShowStmt *n = makeNode(VariableShowStmt);
 					n->name = $2;
@@ -1197,7 +1197,7 @@ VariableShowStmt:
 		;
 
 VariableResetStmt:
-			RESET ColId
+			RESET var_name
 				{
 					VariableResetStmt *n = makeNode(VariableResetStmt);
 					n->name = $2;
