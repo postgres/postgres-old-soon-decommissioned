@@ -5144,7 +5144,8 @@ variable: opt_pointer ECPGColLabel opt_array_bounds opt_initializer
 							*dim = '\0';
 					else	
 							sprintf(dim, "[%s]", dimension);
-					if (strcmp(length, "0") == 0)
+					/* if (strcmp(length, "0") == 0)*/
+					if (atoi(length) <= 0)
 						mmerror(PARSE_ERROR, ET_ERROR, "pointer to varchar are not implemented");
 
 					if (strcmp(dimension, "0") == 0)
