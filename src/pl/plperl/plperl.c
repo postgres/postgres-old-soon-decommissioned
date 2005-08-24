@@ -370,7 +370,7 @@ plperl_convert_to_pg_array(SV *src)
 	SPAGAIN ;
 
 	if (count != 1)
-		croak("Big trouble\n") ;
+		elog(ERROR, "unexpected _plperl_to_pg_array failure");
 
 	rv = POPs;
 			   
