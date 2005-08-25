@@ -31,6 +31,7 @@
 /* Various macros that ought to be in <netdb.h>, but might not be */
 
 #ifndef EAI_FAIL
+#ifndef WIN32
 #define EAI_BADFLAGS	(-1)
 #define EAI_NONAME		(-2)
 #define EAI_AGAIN		(-3)
@@ -40,7 +41,18 @@
 #define EAI_SERVICE		(-8)
 #define EAI_MEMORY		(-10)
 #define EAI_SYSTEM		(-11)
-#endif
+#else /* WIN32 */
+#define EAI_AGAIN		WSATRY_AGAIN
+#define EAI_BADFLAGS	WSAEINVAL
+#define EAI_FAIL		WSANO_RECOVERY
+#define EAI_FAMILY		WSAEAFNOSUPPORT
+#define EAI_MEMORY		WSA_NOT_ENOUGH_MEMORY
+#define EAI_NODATA		WSANO_DATA
+#define EAI_NONAME		WSAHOST_NOT_FOUND
+#define EAI_SERVICE		WSATYPE_NOT_FOUND
+#define EAI_SOCKTYPE	WSAESOCKTNOSUPPORT 
+#endif /* !WIN32 */
+#endif /* !EAI_FAIL */
 
 #ifndef AI_PASSIVE
 #define AI_PASSIVE		0x0001
