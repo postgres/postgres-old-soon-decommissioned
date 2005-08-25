@@ -2256,7 +2256,7 @@ _printTocEntry(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt, bool isDat
 	 */
 	if (AH->ropt && AH->ropt->noOwner && strcmp(te->desc, "SCHEMA") == 0)
 	{
-		ahprintf(AH, "CREATE SCHEMA %s;\n\n\n", te->tag);
+		ahprintf(AH, "CREATE SCHEMA %s;\n\n\n", fmtId(te->tag));
 	}
 	else
 	{
