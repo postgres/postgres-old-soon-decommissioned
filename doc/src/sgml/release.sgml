@@ -1759,6 +1759,12 @@ pg_[A-Za-z0-9_]                 <application>
        </para>
       </listitem>
 
+      <listitem>
+       <para>
+        Allow IPv6 connections to be used on Win32 (Andrew)
+       </para>
+      </listitem>
+
      </itemizedlist>
     </sect3>
   
