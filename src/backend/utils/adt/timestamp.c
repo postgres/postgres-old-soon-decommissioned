@@ -2262,7 +2262,7 @@ interval_mul(PG_FUNCTION_ARGS)
 {
 	Interval   *span = PG_GETARG_INTERVAL_P(0);
 	float8		factor = PG_GETARG_FLOAT8(1);
-	double		month_remainder, day_remainder;
+	double		month_remainder, day_remainder, month_remainder_days;
 	Interval   *result;
 
 	result = (Interval *) palloc(sizeof(Interval));
@@ -2276,17 +2276,15 @@ interval_mul(PG_FUNCTION_ARGS)
 
 	/* Cascade fractions to lower units */
 	/* fractional months full days into days */
-	result->day += month_remainder * DAYS_PER_MONTH;
+	month_remainder_days = month_remainder * DAYS_PER_MONTH;
+	result->day += month_remainder_days;
 	/* fractional months partial days into time */
-	day_remainder += (month_remainder * DAYS_PER_MONTH) -
-					 (int)(month_remainder * DAYS_PER_MONTH);
+	day_remainder += month_remainder_days - (int) month_remainder_days;
 
 #ifdef HAVE_INT64_TIMESTAMP
-	result->time = rint(span->time * factor +
-					day_remainder * USECS_PER_DAY);
+	result->time = rint(span->time * factor + day_remainder * USECS_PER_DAY);
 #else
-	result->time = JROUND(span->time * factor +
-					day_remainder * SECS_PER_DAY);
+	result->time = JROUND(span->time * factor + day_remainder * SECS_PER_DAY);
 #endif
 
 	result = DatumGetIntervalP(DirectFunctionCall1(interval_justify_hours,
@@ -2309,7 +2307,7 @@ interval_div(PG_FUNCTION_ARGS)
 {
 	Interval   *span = PG_GETARG_INTERVAL_P(0);
 	float8		factor = PG_GETARG_FLOAT8(1);
-	double		month_remainder, day_remainder;
+	double		month_remainder, day_remainder, month_remainder_days;
 	Interval   *result;
 
 	result = (Interval *) palloc(sizeof(Interval));
@@ -2329,10 +2327,10 @@ interval_div(PG_FUNCTION_ARGS)
 
 	/* Cascade fractions to lower units */
 	/* fractional months full days into days */
-	result->day += month_remainder * DAYS_PER_MONTH;
+	month_remainder_days = month_remainder * DAYS_PER_MONTH;
+	result->day += month_remainder_days;
 	/* fractional months partial days into time */
-	day_remainder += (month_remainder * DAYS_PER_MONTH) -
-					 (int)(month_remainder * DAYS_PER_MONTH);
+	day_remainder += month_remainder_days - (int) month_remainder_days;
 
 #ifdef HAVE_INT64_TIMESTAMP
 	result->time += rint(day_remainder * USECS_PER_DAY);
