@@ -1567,14 +1567,18 @@ GetTupleForTrigger(EState *estate, ResultRelInfo *relinfo,
 	if (newSlot != NULL)
 	{
 		int			test;
+		ItemPointerData update_ctid;
+		TransactionId update_xmax;
+
+		*newSlot = NULL;
 
 		/*
 		 * mark tuple for update
 		 */
-		*newSlot = NULL;
-		tuple.t_self = *tid;
 ltrmark:;
-		test = heap_mark4update(relation, &tuple, &buffer, cid);
+		tuple.t_self = *tid;
+		test = heap_mark4update(relation, &tuple, &buffer,
+								&update_ctid, &update_xmax, cid);
 		switch (test)
 		{
 			case HeapTupleSelfUpdated:
@@ -1591,15 +1595,18 @@ ltrmark:;
 					ereport(ERROR,
 							(errcode(ERRCODE_T_R_SERIALIZATION_FAILURE),
 							 errmsg("could not serialize access due to concurrent update")));
-				else if (!(ItemPointerEquals(&(tuple.t_self), tid)))
+				else if (!ItemPointerEquals(&update_ctid, &tuple.t_self))
 				{
-					TupleTableSlot *epqslot = EvalPlanQual(estate,
-											 relinfo->ri_RangeTableIndex,
-														&(tuple.t_self));
+					/* it was updated, so look at the updated version */
+					TupleTableSlot *epqslot;
 
-					if (!(TupIsNull(epqslot)))
+					epqslot = EvalPlanQual(estate,
+										   relinfo->ri_RangeTableIndex,
+										   &update_ctid,
+										   update_xmax);
+					if (!TupIsNull(epqslot))
 					{
-						*tid = tuple.t_self;
+						*tid = update_ctid;
 						*newSlot = epqslot;
 						goto ltrmark;
 					}
@@ -1634,6 +1641,7 @@ ltrmark:;
 		tuple.t_data = (HeapTupleHeader) PageGetItem((Page) dp, lp);
 		tuple.t_len = ItemIdGetLength(lp);
 		tuple.t_self = *tid;
+		tuple.t_tableOid = RelationGetRelid(relation);
 	}
 
 	result = heap_copytuple(&tuple);
@@ -2347,14 +2355,18 @@ AfterTriggerEndQuery(void)
 
 
 /* ----------
- * AfterTriggerEndXact()
+ * AfterTriggerFireDeferred()
  *
  *	Called just before the current transaction is committed. At this
- *	time we invoke all DEFERRED triggers and tidy up.
+ *	time we invoke all pending DEFERRED triggers.
+ *
+ *	It is possible for other modules to queue additional deferred triggers
+ *	during pre-commit processing; therefore xact.c may have to call this
+ *	multiple times.
  * ----------
  */
 void
-AfterTriggerEndXact(void)
+AfterTriggerFireDeferred(void)
 {
 	AfterTriggerEventList *events;
 
@@ -2369,14 +2381,14 @@ AfterTriggerEndXact(void)
 	 * for them to use.  (Since PortalRunUtility doesn't set a snap for
 	 * COMMIT, we can't assume ActiveSnapshot is valid on entry.)
 	 */
-	if (afterTriggers->events.head != NULL)
+	events = &afterTriggers->events;
+	if (events->head != NULL)
 		ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
 
 	/*
 	 * Run all the remaining triggers.  Loop until they are all gone,
 	 * just in case some trigger queues more for us to do.
 	 */
-	events = &afterTriggers->events;
 	while (afterTriggerMarkEvents(events, NULL, false))
 	{
 		CommandId		firing_id = afterTriggers->firing_counter++;
@@ -2384,34 +2396,26 @@ AfterTriggerEndXact(void)
 		afterTriggerInvokeEvents(events, firing_id, true);
 	}
 
-	/*
-	 * Forget everything we know about AFTER triggers.
-	 *
-	 * Since all the info is in TopTransactionContext or children thereof, we
-	 * need do nothing special to reclaim memory.
-	 */
-	afterTriggers = NULL;
+	Assert(events->head == NULL);
 }
 
 
 /* ----------
- * AfterTriggerAbortXact()
+ * AfterTriggerEndXact()
  *
- *	The current transaction has entered the abort state.
- *	All outstanding triggers are canceled so we simply throw
+ *	The current transaction is finishing.
+ *
+ *	Any unfired triggers are canceled so we simply throw
  *	away anything we know.
+ *
+ *	Note: it is possible for this to be called repeatedly in case of
+ *	error during transaction abort; therefore, do not complain if
+ *	already closed down.
  * ----------
  */
 void
-AfterTriggerAbortXact(void)
+AfterTriggerEndXact(bool isCommit)
 {
-	/*
-	 * Ignore call if we aren't in a transaction.  (Need this to survive
-	 * repeat call in case of error during transaction abort.)
-	 */
-	if (afterTriggers == NULL)
-		return;
-
 	/*
 	 * Forget everything we know about AFTER triggers.
 	 *
