@@ -5189,6 +5189,12 @@ SELECT SUBSTRING('XY1234Z', 'Y*?([0-9]{1,3})');
     </table>
 
    <para>
+    If you are using both <function>justify_hours</> and <function>justify_days</>,
+    it is best to use <function>justify_hours</> first so any additional days will
+    justified by <function>justify_days</>.
+   </para>
+
+   <para>
     In addition to these functions, the SQL <literal>OVERLAPS</> operator is
     supported:
 <synopsis>
