@@ -577,6 +577,7 @@ make_new_heap(Oid OIDOldHeap, const char *NewName, Oid NewTableSpace)
 										  RelationGetNamespace(OldHeap),
 										  NewTableSpace,
 										  InvalidOid,
+										  OldHeap->rd_rel->relowner,
 										  tupdesc,
 										  OldHeap->rd_rel->relkind,
 										  OldHeap->rd_rel->relisshared,

@@ -39,6 +39,7 @@
 #include "catalog/pg_amproc.h"
 #include "catalog/pg_attrdef.h"
 #include "catalog/pg_attribute.h"
+#include "catalog/pg_authid.h"
 #include "catalog/pg_constraint.h"
 #include "catalog/pg_index.h"
 #include "catalog/pg_namespace.h"
@@ -2074,6 +2075,8 @@ RelationBuildLocalRelation(const char *relname,
 	rel->rd_rel->relhasoids = rel->rd_att->tdhasoid;
 	rel->rd_rel->relnatts = natts;
 	rel->rd_rel->reltype = InvalidOid;
+	/* needed when bootstrapping: */
+	rel->rd_rel->relowner = BOOTSTRAP_SUPERUSERID;
 
 	/*
 	 * Insert relation physical and logical identifiers (OIDs) into the

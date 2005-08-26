@@ -29,6 +29,7 @@
 #include "catalog/heap.h"
 #include "catalog/pg_am.h"
 #include "catalog/pg_attribute.h"
+#include "catalog/pg_authid.h"
 #include "catalog/pg_class.h"
 #include "catalog/pg_namespace.h"
 #include "catalog/pg_tablespace.h"
@@ -199,6 +200,7 @@ Boot_CreateStmt:
 													  PG_CATALOG_NAMESPACE,
 													  $3 ? GLOBALTABLESPACE_OID : 0,
 													  $6,
+													  BOOTSTRAP_SUPERUSERID,
 													  tupdesc,
 													  RELKIND_RELATION,
 													  $3,

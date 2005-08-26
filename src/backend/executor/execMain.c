@@ -759,6 +759,7 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 												  namespaceId,
 												  InvalidOid,
 												  InvalidOid,
+												  GetUserId(),
 												  tupdesc,
 												  RELKIND_RELATION,
 												  false,
