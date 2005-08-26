@@ -449,25 +449,25 @@ typedef unsigned int slock_t;
 static __inline__ int
 tas(volatile slock_t *lock)
 {
-	register volatile slock_t *__l = lock;
-	register int __r;
+	register volatile slock_t *_l = lock;
+	register int _res;
+	register int _tmp;
 
 	__asm__ __volatile__(
 		"       .set push           \n"
 		"       .set mips2          \n"
 		"       .set noreorder      \n"
 		"       .set nomacro        \n"
-		"1:     ll      %0, %1      \n"
-		"       bne     %0, $0, 1f  \n"
-		"        xori   %0, 1       \n"
-		"       sc      %0, %1      \n"
-		"       beq     %0, $0, 1b  \n"
-		"        sync               \n"
+		"       ll      %0, %2      \n"
+		"       or      %1, %0, $1  \n"
+		"       sc      %1, %2      \n"
+		"       xori    %1, $1      \n"
+		"       or      %0, %0, %1  \n"
 		"1:     .set pop              "
-:		"=&r" (__r), "+R" (*__l)
+:		"=&r" (_res), "=&r" (_tmp), "+R" (*_l)
 :
-:		"memory", "cc");
-	return __r;
+:		"memory");
+	return _res;
 }
 
 #endif /* __mips__ && !__sgi */
