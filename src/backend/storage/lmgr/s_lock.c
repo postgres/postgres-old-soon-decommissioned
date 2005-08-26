@@ -135,7 +135,12 @@ s_lock(volatile slock_t *lock, const char *file, int line)
  */
 
 
-#if defined(__m68k__)
+/*
+ * Note: all the if-tests here probably ought to be testing gcc version
+ * rather than platform, but I don't have adequate info to know what to
+ * write.  Ideally we'd flush all this in favor of the inline version.
+ */
+#if defined(__m68k__) && !defined(__linux__)
 /* really means: extern int tas(slock_t* **lock); */
 static void
 tas_dummy()
@@ -169,7 +174,7 @@ _success:						\n\
 #endif   /* __NetBSD__ && __ELF__ */
 );
 }
-#endif   /* __m68k__ */
+#endif   /* __m68k__ && !__linux__ */
 
 
 #else							/* not __GNUC__ */

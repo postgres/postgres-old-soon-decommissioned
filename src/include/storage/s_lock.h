@@ -191,7 +191,7 @@ tas(volatile slock_t *lock)
 	return (int) ret;
 }
 
-#else
+#else /* __INTEL_COMPILER */
 
 static __inline__ int
 tas(volatile slock_t *lock)
@@ -203,7 +203,7 @@ tas(volatile slock_t *lock)
 	return ret;
 }
 
-#endif
+#endif /* __INTEL_COMPILER */
 #endif	 /* __ia64__ || __ia64 */
 
 
@@ -328,7 +328,7 @@ do \
 #endif /* powerpc */
 
 
-#if defined(__mc68000__) && defined(__linux__)
+#if (defined(__mc68000__) || defined(__m68k__)) && defined(__linux__)
 #define HAS_TEST_AND_SET
 
 typedef unsigned char slock_t;
@@ -350,7 +350,7 @@ tas(volatile slock_t *lock)
 	return rv;
 }
 
-#endif	 /* defined(__mc68000__) && defined(__linux__) */
+#endif	 /* (__mc68000__ || __m68k__) && __linux__ */
 
 
 #if defined(__vax__)
@@ -491,7 +491,7 @@ tas(volatile slock_t *lock)
 /* These live in s_lock.c, but only for gcc */
 
 
-#if defined(__m68k__)
+#if defined(__m68k__) && !defined(__linux__)
 #define HAS_TEST_AND_SET
 
 typedef unsigned char slock_t;
