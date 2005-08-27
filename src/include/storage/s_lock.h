@@ -440,6 +440,7 @@ do \
 
 #if defined(__mips__) && !defined(__sgi)
 /* Note: on SGI we use the OS' mutex ABI, see below */
+/* Note: R10000 processors require a separate SYNC */
 #define HAS_TEST_AND_SET
 
 typedef unsigned int slock_t;
@@ -459,11 +460,12 @@ tas(volatile slock_t *lock)
 		"       .set noreorder      \n"
 		"       .set nomacro        \n"
 		"       ll      %0, %2      \n"
-		"       or      %1, %0, $1  \n"
+		"       or      %1, %0, 1   \n"
 		"       sc      %1, %2      \n"
-		"       xori    %1, $1      \n"
+		"       xori    %1, 1       \n"
 		"       or      %0, %0, %1  \n"
-		"1:     .set pop              "
+		"       sync                \n"
+		"       .set pop              "
 :		"=&r" (_res), "=&r" (_tmp), "+R" (*_l)
 :
 :		"memory");
