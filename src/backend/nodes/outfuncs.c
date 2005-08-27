@@ -1169,6 +1169,9 @@ _outPlannerInfo(StringInfo str, PlannerInfo *node)
 	WRITE_NODE_FIELD(full_join_clauses);
 	WRITE_NODE_FIELD(in_info_list);
 	WRITE_NODE_FIELD(query_pathkeys);
+	WRITE_NODE_FIELD(group_pathkeys);
+	WRITE_NODE_FIELD(sort_pathkeys);
+	WRITE_FLOAT_FIELD(tuple_fraction, "%.4f");
 	WRITE_BOOL_FIELD(hasJoinRTEs);
 	WRITE_BOOL_FIELD(hasOuterJoins);
 	WRITE_BOOL_FIELD(hasHavingQual);

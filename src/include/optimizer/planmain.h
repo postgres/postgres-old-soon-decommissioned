@@ -22,7 +22,8 @@
  */
 extern void query_planner(PlannerInfo *root, List *tlist,
 						  double tuple_fraction,
-						  Path **cheapest_path, Path **sorted_path);
+						  Path **cheapest_path, Path **sorted_path,
+						  double *num_groups);
 
 /*
  * prototypes for plan/planagg.c

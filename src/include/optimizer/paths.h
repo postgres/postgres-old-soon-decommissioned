@@ -102,9 +102,6 @@ extern void generate_implied_equalities(PlannerInfo *root);
 extern List *canonicalize_pathkeys(PlannerInfo *root, List *pathkeys);
 extern PathKeysComparison compare_pathkeys(List *keys1, List *keys2);
 extern bool pathkeys_contained_in(List *keys1, List *keys2);
-extern PathKeysComparison compare_noncanonical_pathkeys(List *keys1,
-							  List *keys2);
-extern bool noncanonical_pathkeys_contained_in(List *keys1, List *keys2);
 extern Path *get_cheapest_path_for_pathkeys(List *paths, List *pathkeys,
 							   CostSelector cost_criterion);
 extern Path *get_cheapest_fractional_path_for_pathkeys(List *paths,
