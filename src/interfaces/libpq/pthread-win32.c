@@ -17,7 +17,7 @@
 HANDLE
 pthread_self()
 {
-	return GetCurrentThread();
+	return GetCurrentThreadId();
 }
 
 void
