@@ -2706,12 +2706,12 @@ main(int argc, char *argv[])
 	get_parent_directory(bin_dir);
 	
 	printf(_("\nSuccess. You can now start the database server using:\n\n"
-			 "    %s%s%s%spostmaster -D %s%s%s\n"
+			 "    %s%s%spostmaster%s -D %s%s%s\n"
 			 "or\n"
-			 "    %s%s%s%spg_ctl -D %s%s%s -l logfile start\n\n"),
-	  QUOTE_PATH, bin_dir, QUOTE_PATH, (strlen(bin_dir) > 0) ? DIR_SEP : "",
+			 "    %s%s%spg_ctl%s -D %s%s%s -l logfile start\n\n"),
+	  QUOTE_PATH, bin_dir, (strlen(bin_dir) > 0) ? DIR_SEP : "", QUOTE_PATH,
 	  QUOTE_PATH, pg_data_native, QUOTE_PATH,
-	  QUOTE_PATH, bin_dir, QUOTE_PATH, (strlen(bin_dir) > 0) ? DIR_SEP : "",
+	  QUOTE_PATH, bin_dir, (strlen(bin_dir) > 0) ? DIR_SEP : "", QUOTE_PATH,
 	  QUOTE_PATH, pg_data_native, QUOTE_PATH);
 
 	return 0;
