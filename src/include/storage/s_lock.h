@@ -472,6 +472,14 @@ tas(volatile slock_t *lock)
 	return _res;
 }
 
+/* MIPS S_UNLOCK is almost standard but requires a "sync" instruction */
+#define S_UNLOCK(lock)	\
+do \
+{\
+	__asm__ __volatile__ ("	sync \n"); \
+	*((volatile slock_t *) (lock)) = 0; \
+} while (0)
+
 #endif /* __mips__ && !__sgi */
 
 
