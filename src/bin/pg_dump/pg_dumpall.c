@@ -928,10 +928,10 @@ dumpUserConfig(PGconn *conn, const char *username)
 		else
 			printfPQExpBuffer(buf, "SELECT useconfig[%d] FROM pg_shadow WHERE usename = ", count);
 		appendStringLiteral(buf, username, true);
-		appendPQExpBuffer(buf, ";");
 
 		res = executeQuery(conn, buf->data);
-		if (!PQgetisnull(res, 0, 0))
+		if (PQntuples(res) == 1 &&
+			!PQgetisnull(res, 0, 0))
 		{
 			makeAlterConfigCommand(PQgetvalue(res, 0, 0), "ROLE", username);
 			PQclear(res);
