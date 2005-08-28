@@ -538,6 +538,11 @@ choose_bitmap_and(PlannerInfo *root, RelOptInfo *rel, List *paths)
 	 * cases, the partial index will sort before competing non-partial
 	 * indexes and so it makes the right choice, but perhaps we need to
 	 * work harder.
+	 *
+	 * Note: outputting the selected sub-paths in selectivity order is a good
+	 * thing even if we weren't using that as part of the selection method,
+	 * because it makes the short-circuit case in MultiExecBitmapAnd() more
+	 * likely to apply.
 	 */
 
 	/* Convert list to array so we can apply qsort */

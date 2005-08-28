@@ -49,6 +49,8 @@ extern void tbm_add_tuples(TIDBitmap *tbm, const ItemPointer tids, int ntids);
 extern void tbm_union(TIDBitmap *a, const TIDBitmap *b);
 extern void tbm_intersect(TIDBitmap *a, const TIDBitmap *b);
 
+extern bool tbm_is_empty(const TIDBitmap *tbm);
+
 extern void tbm_begin_iterate(TIDBitmap *tbm);
 extern TBMIterateResult *tbm_iterate(TIDBitmap *tbm);
 

@@ -511,6 +511,15 @@ tbm_intersect_page(TIDBitmap *a, PagetableEntry *apage, const TIDBitmap *b)
 }
 
 /*
+ * tbm_is_empty - is a TIDBitmap completely empty?
+ */
+bool
+tbm_is_empty(const TIDBitmap *tbm)
+{
+	return (tbm->nentries == 0);
+}
+
+/*
  * tbm_begin_iterate - prepare to iterate through a TIDBitmap
  *
  * NB: after this is called, it is no longer allowed to modify the contents
