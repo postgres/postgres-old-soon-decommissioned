@@ -14,7 +14,7 @@
 #include <windows.h>
 #include "pthread-win32.h"
 
-HANDLE
+DWORD
 pthread_self()
 {
 	return GetCurrentThreadId();
