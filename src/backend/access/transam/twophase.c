@@ -64,7 +64,7 @@
 #define TWOPHASE_DIR "pg_twophase"
 
 /* GUC variable, can't be changed after startup */
-int max_prepared_xacts = 50;
+int max_prepared_xacts = 5;
 
 /*
  * This struct describes one global transaction that is in prepared state

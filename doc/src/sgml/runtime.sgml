@@ -1179,7 +1179,7 @@ SET ENABLE_SEQSCAN TO OFF;
         endterm="sql-prepare-transaction-title">).
         Setting this parameter to zero disables the prepared-transaction
         feature.
-        The default is 50.
+        The default is 5.
         This option can only be set at server start.
        </para>
 
