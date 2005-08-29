@@ -490,8 +490,14 @@ tas(volatile slock_t *lock)
 /* MIPS S_UNLOCK is almost standard but requires a "sync" instruction */
 #define S_UNLOCK(lock)	\
 do \
-{\
-	__asm__ __volatile__ ("	sync \n"); \
+{ \
+	__asm__ __volatile__( \
+		"       .set push           \n" \
+		"       .set mips2          \n" \
+		"       .set noreorder      \n" \
+		"       .set nomacro        \n" \
+		"       sync                \n" \
+		"       .set pop              "); \
 	*((volatile slock_t *) (lock)) = 0; \
 } while (0)
 
