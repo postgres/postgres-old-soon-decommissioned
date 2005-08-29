@@ -434,7 +434,7 @@ main(int argc, char *const argv[])
 						 * Does not really make sense to declare a cursor
 						 * but not open it
 						 */
-						snprintf(errortext, sizeof(errortext), "cursor `%s´ has been declared but ot opened\n", ptr->name);
+						snprintf(errortext, sizeof(errortext), "cursor \"%s\" has been declared but not opened\n", ptr->name);
 						mmerror(PARSE_ERROR, ET_WARNING, errortext);
 					}
 					ptr = ptr->next;
