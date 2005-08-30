@@ -727,8 +727,9 @@ dropDatabaseDependencies(Oid databaseId)
 /*
  * deleteSharedDependencyRecordsFor
  *
- * Delete all pg_shdepend entries corresponding to a database-local object
- * that's being dropped or modified.
+ * Delete all pg_shdepend entries corresponding to an object that's being
+ * dropped or modified.  The object is assumed to be either a shared object
+ * or local to the current database (the classId tells us which).
  */
 void
 deleteSharedDependencyRecordsFor(Oid classId, Oid objectId)
