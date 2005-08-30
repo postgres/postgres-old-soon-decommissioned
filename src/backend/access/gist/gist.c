@@ -503,7 +503,7 @@ gistlayerinsert(Relation r, BlockNumber blkno,
 		 * changed beginning from 'child' offset
 		 */
 		if (ret & SPLITED)
-			gistadjscans(r, GISTOP_SPLIT, blkno, child);
+			gistadjscans(r, GISTOP_SPLIT, nblkno, FirstOffsetNumber);
 	}
 
 	ret = INSERTED;
@@ -1420,6 +1420,9 @@ gistnewroot(Relation r, IndexTuple *itup, int len)
 	Page		p;
 
 	b = ReadBuffer(r, GISTP_ROOT);
+
+	gistadjscans(r, GISTOP_SPLIT, GISTP_ROOT, FirstOffsetNumber);
+
 	GISTInitBuffer(b, 0);
 	p = BufferGetPage(b);
 
