@@ -1446,8 +1446,13 @@ pgstat_send(void *msg, int len)
 
 	((PgStat_MsgHdr *) msg)->m_size = len;
 
+#ifdef USE_ASSERT_CHECKING
+	if (send(pgStatSock, msg, len, 0) < 0)
+		elog(LOG, "could not send to statistics collector: %m");
+#else
 	send(pgStatSock, msg, len, 0);
 	/* We deliberately ignore any error from send() */
+#endif
 }
 
 
