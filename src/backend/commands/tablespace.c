@@ -447,6 +447,11 @@ DropTableSpace(DropTableSpaceStmt *stmt)
 	heap_endscan(scandesc);
 
 	/*
+	 * Remove dependency on owner.
+	 */
+	deleteSharedDependencyRecordsFor(TableSpaceRelationId, tablespaceoid);
+
+	/*
 	 * Try to remove the physical infrastructure
 	 */
 	if (!remove_tablespace_directories(tablespaceoid, false))
