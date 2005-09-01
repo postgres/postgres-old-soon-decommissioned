@@ -39,7 +39,7 @@ WANTED_DIRS = \
 #		mac		\ (does not have a makefile)
 #		oracle		\ (does not have a makefile)
 #		start-scripts	\ (does not have a makefile)
-#		xml2		\ (non-standard makefile)
+#		xml2		\ (requires libxml installed)
 
 
 all install installdirs uninstall clean distclean maintainer-clean:
