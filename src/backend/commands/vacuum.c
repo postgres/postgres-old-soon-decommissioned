@@ -2407,7 +2407,7 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 		{
 			Buffer		buf;
 			Page		page;
-			OffsetNumber unused[BLCKSZ / sizeof(OffsetNumber)];
+			OffsetNumber unused[MaxOffsetNumber];
 			OffsetNumber offnum,
 						maxoff;
 			int			uncnt;
@@ -2896,7 +2896,7 @@ vacuum_heap(VRelStats *vacrelstats, Relation onerel, VacPageList vacuum_pages)
 static void
 vacuum_page(Relation onerel, Buffer buffer, VacPage vacpage)
 {
-	OffsetNumber unused[BLCKSZ / sizeof(OffsetNumber)];
+	OffsetNumber unused[MaxOffsetNumber];
 	int			uncnt;
 	Page		page = BufferGetPage(buffer);
 	ItemId		itemid;

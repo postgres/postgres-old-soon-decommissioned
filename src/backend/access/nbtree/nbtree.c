@@ -584,7 +584,7 @@ btbulkdelete(PG_FUNCTION_ARGS)
 	IndexBulkDeleteResult *result;
 	double		tuples_removed;
 	double		num_index_tuples;
-	OffsetNumber deletable[BLCKSZ / sizeof(OffsetNumber)];
+	OffsetNumber deletable[MaxOffsetNumber];
 	int			ndeletable;
 	Buffer		buf;
 	BlockNumber num_pages;

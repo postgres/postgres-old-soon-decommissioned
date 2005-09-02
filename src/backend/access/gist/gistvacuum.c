@@ -52,7 +52,7 @@ gistVacuumUpdate( GistVacuum *gv, BlockNumber blkno, bool needunion ) {
 	int 		lenaddon=4, curlenaddon=0, ntodelete=0;
 	IndexTuple	idxtuple, *addon=NULL;
 	bool		needwrite=false;
-	OffsetNumber    todelete[ BLCKSZ/SizeOfIptrData ];
+	OffsetNumber    todelete[MaxOffsetNumber];
 	ItemPointerData	*completed=NULL;
 	int 		ncompleted=0, lencompleted=16;
 
@@ -439,7 +439,7 @@ gistbulkdelete(PG_FUNCTION_ARGS) {
 		page   = (Page) BufferGetPage(buffer);
 
 		if ( GistPageIsLeaf(page) ) {
-			OffsetNumber todelete[BLCKSZ/SizeOfIptrData];
+			OffsetNumber todelete[MaxOffsetNumber];
 			int ntodelete = 0;
 
 			LockBuffer(buffer, GIST_UNLOCK);

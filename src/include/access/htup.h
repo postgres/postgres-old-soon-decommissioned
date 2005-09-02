@@ -324,6 +324,16 @@ do { \
 	(BLCKSZ - MAXALIGN(sizeof(PageHeaderData) + MaxSpecialSpace))
 
 /*
+ * MaxHeapTuplesPerPage is an upper bound on the number of tuples that can
+ * fit on one heap page.  (Note that indexes could have more, because they
+ * use a smaller tuple header.)  We arrive at the divisor because each tuple
+ * must be maxaligned, and it must have an associated item pointer.
+ */
+#define MaxHeapTuplesPerPage	\
+	((int) ((BLCKSZ - offsetof(PageHeaderData, pd_linp)) / \
+			(MAXALIGN(offsetof(HeapTupleHeaderData, t_bits)) + sizeof(ItemIdData))))
+
+/*
  * MaxAttrSize is a somewhat arbitrary upper limit on the declared size of
  * data fields of char(n) and similar types.  It need not have anything
  * directly to do with the *actual* upper limit of varlena values, which
