@@ -24,6 +24,17 @@
 
 #include "storage/fd.h"
 
+/*
+ *	On Windows, call non-macro versions of palloc; we can't reference
+ *	CurrentMemoryContext in this file because of DLLIMPORT conflict.
+ */
+#if defined(WIN32) || defined(__CYGWIN__)
+#undef palloc
+#undef pstrdup
+#define palloc(sz)		pgport_palloc(sz)
+#define pstrdup(str)	pgport_pstrdup(str)
+#endif
+
 
 static void copy_file(char *fromfile, char *tofile);
 
