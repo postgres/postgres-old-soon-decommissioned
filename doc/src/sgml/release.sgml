@@ -1599,7 +1599,7 @@ pg_[A-Za-z0-9_]                 <application>
       <listitem>
        <para>
         Add <option>-n</> / <option>--schema</> switch to 
-        <application>pg_restore</> (Richard van den Bergg)
+        <application>pg_restore</> (Richard van den Berg)
        </para>
        <para>
         This allows only objects from a specified schema to be restored.
