@@ -44,6 +44,7 @@
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
 #include "commands/defrem.h"
+#include "commands/proclang.h"
 #include "miscadmin.h"
 #include "optimizer/cost.h"
 #include "parser/parse_func.h"
@@ -543,17 +544,11 @@ CreateFunction(CreateFunctionStmt *stmt)
 								   PointerGetDatum(languageName),
 								   0, 0, 0);
 	if (!HeapTupleIsValid(languageTuple))
-		/* Add any new languages to this list to invoke the hint. */
 		ereport(ERROR,
 				(errcode(ERRCODE_UNDEFINED_OBJECT),
 				 errmsg("language \"%s\" does not exist", languageName),
-				 (strcmp(languageName, "plperl") == 0 ||
-				  strcmp(languageName, "plperlu") == 0 ||
-				  strcmp(languageName, "plpgsql") == 0 ||
-				  strcmp(languageName, "plpythonu") == 0 ||
-				  strcmp(languageName, "pltcl") == 0 ||
-				  strcmp(languageName, "pltclu") == 0) ?
-				 errhint("You need to use \"createlang\" to load the language into the database.") : 0));
+				 (PLTemplateExists(languageName) ?
+				  errhint("Use CREATE LANGUAGE to load the language into the database.") : 0)));
 
 	languageOid = HeapTupleGetOid(languageTuple);
 	languageStruct = (Form_pg_language) GETSTRUCT(languageTuple);
