@@ -2959,7 +2959,7 @@ DATA(insert OID = 2035 (  timestamp_smaller PGNSP PGUID 12 f f t f i 2 1114 "111
 DESCR("smaller of two");
 DATA(insert OID = 2036 (  timestamp_larger	PGNSP PGUID 12 f f t f i 2 1114 "1114 1114" _null_ _null_ _null_	timestamp_larger - _null_ ));
 DESCR("larger of two");
-DATA(insert OID = 2037 (  timezone			PGNSP PGUID 12 f f t f i 2 1266 "25 1266" _null_ _null_ _null_  timetz_zone - _null_ ));
+DATA(insert OID = 2037 (  timezone			PGNSP PGUID 12 f f t f v 2 1266 "25 1266" _null_ _null_ _null_  timetz_zone - _null_ ));
 DESCR("adjust time with time zone to new zone");
 DATA(insert OID = 2038 (  timezone			PGNSP PGUID 12 f f t f i 2 1266 "1186 1266" _null_ _null_ _null_	timetz_izone - _null_ ));
 DESCR("adjust time with time zone to new zone");
