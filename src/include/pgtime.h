@@ -58,7 +58,7 @@ extern const char *pg_get_timezone_name(pg_tz *tz);
 
 extern pg_tz *global_timezone;
 
-/* Maximum length of a timezone name */
+/* Maximum length of a timezone name (not including trailing null) */
 #define TZ_STRLEN_MAX 255
 
 #endif   /* _PGTIME_H */
