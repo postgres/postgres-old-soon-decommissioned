@@ -27,27 +27,25 @@
 #include "dumputils.h"
 
 #include <ctype.h>
-#include <errno.h>
 #include <unistd.h>
+
+#ifdef WIN32
+#include <io.h>
+#endif
 
 #include "pqexpbuffer.h"
 #include "libpq/libpq-fs.h"
 
 
-typedef enum _teReqs_
-{
-	REQ_SCHEMA = 1,
-	REQ_DATA = 2,
-	REQ_ALL = REQ_SCHEMA + REQ_DATA
-} teReqs;
-
 const char *progname;
+
 static char *modulename = gettext_noop("archiver");
 
 
 static ArchiveHandle *_allocAH(const char *FileSpec, const ArchiveFormat fmt,
 		 const int compression, ArchiveMode mode);
-static void _getObjectDescription(PQExpBuffer buf, TocEntry *te);
+static void _getObjectDescription(PQExpBuffer buf, TocEntry *te,
+								  ArchiveHandle *AH);
 static void _printTocEntry(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt, bool isData, bool acl_pass);
 
 
@@ -62,7 +60,7 @@ static void _becomeOwner(ArchiveHandle *AH, TocEntry *te);
 static void _selectOutputSchema(ArchiveHandle *AH, const char *schemaName);
 static void _selectTablespace(ArchiveHandle *AH, const char *tablespace);
 
-static teReqs _tocEntryRequired(TocEntry *te, RestoreOptions *ropt, bool acl_pass);
+static teReqs _tocEntryRequired(TocEntry *te, RestoreOptions *ropt, bool include_acls);
 static void _disableTriggersIfNecessary(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt);
 static void _enableTriggersIfNecessary(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt);
 static TocEntry *getTocEntryByDumpId(ArchiveHandle *AH, DumpId id);
@@ -74,6 +72,8 @@ static void _die_horribly(ArchiveHandle *AH, const char *modulename, const char 
 
 static int	_canRestoreBlobs(ArchiveHandle *AH);
 static int	_restoringToDB(ArchiveHandle *AH);
+
+static void dumpTimestamp(ArchiveHandle *AH, const char *msg, time_t tim);
 
 
 /*
@@ -131,10 +131,9 @@ void
 RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 {
 	ArchiveHandle *AH = (ArchiveHandle *) AHX;
-	TocEntry   *te = AH->toc->next;
+	TocEntry   *te;
 	teReqs		reqs;
 	OutputContext sav;
-	int			impliedDataOnly;
 	bool		defnDumped;
 
 	AH->ropt = ropt;
@@ -187,17 +186,16 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 	 */
 	if (!ropt->dataOnly)
 	{
-		te = AH->toc->next;
-		impliedDataOnly = 1;
-		while (te != AH->toc)
+		int		impliedDataOnly = 1;
+
+		for (te = AH->toc->next; te != AH->toc; te = te->next)
 		{
-			reqs = _tocEntryRequired(te, ropt, false);
+			reqs = _tocEntryRequired(te, ropt, true);
 			if ((reqs & REQ_SCHEMA) != 0)
 			{					/* It's schema, and it's wanted */
 				impliedDataOnly = 0;
 				break;
 			}
-			te = te->next;
 		}
 		if (impliedDataOnly)
 		{
@@ -214,6 +212,9 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 
 	ahprintf(AH, "--\n-- PostgreSQL database dump\n--\n\n");
 
+	if (AH->public.verbose)
+		dumpTimestamp(AH, "Started on", AH->createDate);
+
 	/*
 	 * Establish important parameter values right away.
 	 */
@@ -226,12 +227,11 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 	 */
 	if (ropt->dropSchema)
 	{
-		te = AH->toc->prev;
-		AH->currentTE = te;
-
-		while (te != AH->toc)
+		for (te = AH->toc->prev; te != AH->toc; te = te->prev)
 		{
-			reqs = _tocEntryRequired(te, ropt, false);
+			AH->currentTE = te;
+
+			reqs = _tocEntryRequired(te, ropt, false /* needn't drop ACLs */);
 			if (((reqs & REQ_SCHEMA) != 0) && te->dropStmt)
 			{
 				/* We want the schema */
@@ -242,15 +242,13 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 				/* Drop it */
 				ahprintf(AH, "%s", te->dropStmt);
 			}
-			te = te->prev;
 		}
 	}
 
 	/*
-	 * Now process each TOC entry
+	 * Now process each non-ACL TOC entry
 	 */
-	te = AH->toc->next;
-	while (te != AH->toc)
+	for (te = AH->toc->next; te != AH->toc; te = te->next)
 	{
 		AH->currentTE = te;
 
@@ -347,7 +345,7 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 						 * mode with libpq.
 						 */
 						if (te->copyStmt && strlen(te->copyStmt) > 0)
-							ahprintf(AH, te->copyStmt);
+							ahprintf(AH, "%s", te->copyStmt);
 
 						(*AH->PrintTocDataPtr) (AH, te, ropt);
 
@@ -380,14 +378,12 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 				_printTocEntry(AH, te, ropt, false, false);
 			}
 		}
-		te = te->next;
 	}							/* end loop over TOC entries */
 
 	/*
 	 * Scan TOC again to output ownership commands and ACLs
 	 */
-	te = AH->toc->next;
-	while (te != AH->toc)
+	for (te = AH->toc->next; te != AH->toc; te = te->next)
 	{
 		AH->currentTE = te;
 
@@ -400,9 +396,12 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 				  te->desc, te->tag);
 			_printTocEntry(AH, te, ropt, false, true);
 		}
-
-		te = te->next;
 	}
+
+	if (AH->public.verbose)
+		dumpTimestamp(AH, "Completed on", time(NULL));
+
+	ahprintf(AH, "--\n-- PostgreSQL database dump complete\n--\n\n");
 
 	/*
 	 * Clean up & we're done.
@@ -423,8 +422,6 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 			AH->blobConnection = NULL;
 		}
 	}
-
-	ahprintf(AH, "--\n-- PostgreSQL database dump complete\n--\n\n");
 }
 
 /*
@@ -708,7 +705,7 @@ PrintTOCSummary(Archive *AHX, RestoreOptions *ropt)
 
 	while (te != AH->toc)
 	{
-		if (_tocEntryRequired(te, ropt, false) != 0)
+		if (_tocEntryRequired(te, ropt, true) != 0)
 			ahprintf(AH, "%d; %u %u %s %s %s %s\n", te->dumpId,
 					 te->catalogId.tableoid, te->catalogId.oid,
 					 te->desc, te->namespace ? te->namespace : "-",
@@ -894,24 +891,21 @@ SortTocFromFile(Archive *AHX, RestoreOptions *ropt)
 	if (!fh)
 		die_horribly(AH, modulename, "could not open TOC file\n");
 
-	while (fgets(buf, 1024, fh) != NULL)
+	while (fgets(buf, sizeof(buf), fh) != NULL)
 	{
-		/* Find a comment */
+		/* Truncate line at comment, if any */
 		cmnt = strchr(buf, ';');
-		if (cmnt == buf)
-			continue;
-
-		/* End string at comment */
 		if (cmnt != NULL)
 			cmnt[0] = '\0';
 
-		/* Skip if all spaces */
-		if (strspn(buf, " \t") == strlen(buf))
+		/* Ignore if all blank */
+		if (strspn(buf, " \t\r") == strlen(buf))
 			continue;
 
-		/* Get an ID */
+		/* Get an ID, check it's valid and not already seen */
 		id = strtol(buf, &endptr, 10);
-		if (endptr == buf || id <= 0 || id > AH->maxDumpId)
+		if (endptr == buf || id <= 0 || id > AH->maxDumpId ||
+			ropt->idWanted[id - 1])
 		{
 			write_msg(modulename, "WARNING: line ignored: %s\n", buf);
 			continue;
@@ -1279,7 +1273,8 @@ warn_or_die_horribly(ArchiveHandle *AH,
 	}
 	if (AH->currentTE != NULL && AH->currentTE != AH->lastErrorTE)
 	{
-		write_msg(modulename, "Error from TOC entry %d; %u %u %s %s %s\n", AH->currentTE->dumpId,
+		write_msg(modulename, "Error from TOC entry %d; %u %u %s %s %s\n",
+				  AH->currentTE->dumpId,
 		 AH->currentTE->catalogId.tableoid, AH->currentTE->catalogId.oid,
 		  AH->currentTE->desc, AH->currentTE->tag, AH->currentTE->owner);
 	}
@@ -1340,7 +1335,7 @@ getTocEntryByDumpId(ArchiveHandle *AH, DumpId id)
 	return NULL;
 }
 
-int
+teReqs
 TocIDRequired(ArchiveHandle *AH, DumpId id, RestoreOptions *ropt)
 {
 	TocEntry   *te = getTocEntryByDumpId(AH, id);
@@ -1348,7 +1343,7 @@ TocIDRequired(ArchiveHandle *AH, DumpId id, RestoreOptions *ropt)
 	if (!te)
 		return 0;
 
-	return _tocEntryRequired(te, ropt, false);
+	return _tocEntryRequired(te, ropt, true);
 }
 
 size_t
@@ -1717,6 +1712,22 @@ _allocAH(const char *FileSpec, const ArchiveFormat fmt,
 	AH->gzOut = 0;
 	AH->OF = stdout;
 
+	/*
+	 * On Windows, we need to use binary mode to read/write non-text archive
+	 * formats.  Force stdin/stdout into binary mode if that is what
+	 * we are using.
+	 */
+#ifdef WIN32
+	if (fmt != archNull &&
+		(AH->fSpec == NULL || strcmp(AH->fSpec, "") == 0))
+	{
+		if (mode == archModeWrite)
+			setmode(fileno(stdout), O_BINARY);
+		else
+			setmode(fileno(stdin), O_BINARY);
+	}
+#endif
+
 #if 0
 	write_msg(modulename, "archive format is %d\n", fmt);
 #endif
@@ -1728,7 +1739,6 @@ _allocAH(const char *FileSpec, const ArchiveFormat fmt,
 
 	switch (AH->format)
 	{
-
 		case archCustom:
 			InitArchiveFmt_Custom(AH);
 			break;
@@ -1970,16 +1980,16 @@ ReadToc(ArchiveHandle *AH)
 }
 
 static teReqs
-_tocEntryRequired(TocEntry *te, RestoreOptions *ropt, bool acl_pass)
+_tocEntryRequired(TocEntry *te, RestoreOptions *ropt, bool include_acls)
 {
-	teReqs		res = 3;		/* Schema = 1, Data = 2, Both = 3 */
+	teReqs		res = REQ_ALL;
 
 	/* ENCODING objects are dumped specially, so always reject here */
 	if (strcmp(te->desc, "ENCODING") == 0)
 		return 0;
 
 	/* If it's an ACL, maybe ignore it */
-	if ((!acl_pass || ropt->aclsSkip) && strcmp(te->desc, "ACL") == 0)
+	if ((!include_acls || ropt->aclsSkip) && strcmp(te->desc, "ACL") == 0)
 		return 0;
 
 	if (!ropt->create && strcmp(te->desc, "DATABASE") == 0)
@@ -2185,9 +2195,7 @@ _reconnectToDB(ArchiveHandle *AH, const char *dbname)
 
 		appendPQExpBuffer(qry, "\\connect %s\n\n",
 						  dbname ? fmtId(dbname) : "-");
-
-		ahprintf(AH, qry->data);
-
+		ahprintf(AH, "%s", qry->data);
 		destroyPQExpBuffer(qry);
 	}
 
@@ -2373,7 +2381,7 @@ _selectTablespace(ArchiveHandle *AH, const char *tablespace)
  * information used is all that's available in older dump files.
  */
 static void
-_getObjectDescription(PQExpBuffer buf, TocEntry *te)
+_getObjectDescription(PQExpBuffer buf, TocEntry *te, ArchiveHandle *AH)
 {
 	const char *type = te->desc;
 
@@ -2393,8 +2401,22 @@ _getObjectDescription(PQExpBuffer buf, TocEntry *te)
 		strcmp(type, "TABLE") == 0 ||
 		strcmp(type, "TYPE") == 0)
 	{
-		appendPQExpBuffer(buf, "%s %s", type, fmtId(te->namespace));
-		appendPQExpBuffer(buf, ".%s", fmtId(te->tag));
+		appendPQExpBuffer(buf, "%s ", type);
+		if (te->namespace && te->namespace[0])			/* is null pre-7.3 */
+			appendPQExpBuffer(buf, "%s.", fmtId(te->namespace));
+		/*
+		 * Pre-7.3 pg_dump would sometimes (not always) put
+		 * a fmtId'd name into te->tag for an index.
+		 * This check is heuristic, so make its scope as
+		 * narrow as possible.
+		 */
+		if (AH->version < K_VERS_1_7 &&
+			te->tag[0] == '"' &&
+			te->tag[strlen(te->tag)-1] == '"' &&
+			strcmp(type, "INDEX") == 0)
+			appendPQExpBuffer(buf, "%s", te->tag);
+		else
+			appendPQExpBuffer(buf, "%s", fmtId(te->tag));
 		return;
 	}
 
@@ -2553,7 +2575,7 @@ _printTocEntry(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt, bool isDat
 			PQExpBuffer temp = createPQExpBuffer();
 
 			appendPQExpBuffer(temp, "ALTER ");
-			_getObjectDescription(temp, te);
+			_getObjectDescription(temp, te, AH);
 			appendPQExpBuffer(temp, " OWNER TO %s;", fmtId(te->owner));
 			ahprintf(AH, "%s\n\n", temp->data);
 			destroyPQExpBuffer(temp);
@@ -2741,4 +2763,17 @@ checkSeek(FILE *fp)
 #endif
 	else
 		return true;
+}
+
+
+/*
+ * dumpTimestamp
+ */
+static void
+dumpTimestamp(ArchiveHandle *AH, const char *msg, time_t tim)
+{
+	char		buf[256];
+
+	if (strftime(buf, 256, "%Y-%m-%d %H:%M:%S %Z", localtime(&tim)) != 0)
+		ahprintf(AH, "-- %s %s\n\n", msg, buf);
 }
