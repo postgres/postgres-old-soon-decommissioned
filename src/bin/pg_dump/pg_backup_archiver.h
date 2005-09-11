@@ -136,22 +136,24 @@ typedef struct _outputContext
 
 typedef enum
 {
-	SQL_SCAN = 0,
-	SQL_IN_SQL_COMMENT,
-	SQL_IN_EXT_COMMENT,
-	SQL_IN_QUOTE,
-	SQL_IN_DOLLARTAG,
-	SQL_IN_DOLLARQUOTE
+	SQL_SCAN = 0,				/* normal */
+	SQL_IN_SQL_COMMENT,			/* -- comment */
+	SQL_IN_EXT_COMMENT,			/* slash-star comment */
+	SQL_IN_SINGLE_QUOTE,		/* '...' literal */
+	SQL_IN_E_QUOTE,				/* E'...' literal */
+	SQL_IN_DOUBLE_QUOTE,		/* "..." identifier */
+	SQL_IN_DOLLAR_TAG,			/* possible dollar-quote starting tag */
+	SQL_IN_DOLLAR_QUOTE			/* body of dollar quote */
 } sqlparseState;
 
 typedef struct
 {
-	int			backSlash;
-	sqlparseState state;
-	char		lastChar;
-	char		quoteChar;
-	int			braceDepth;
-	PQExpBuffer tagBuf;
+	sqlparseState state;		/* see above */
+	char		lastChar;		/* preceding char, or '\0' initially */
+	bool		backSlash;		/* next char is backslash quoted? */
+	int			braceDepth;		/* parenthesis nesting depth */
+	PQExpBuffer tagBuf;			/* dollar quote tag (NULL if not created) */
+	int			minTagEndPos;	/* first possible end position of $-quote */
 } sqlparseInfo;
 
 typedef enum
