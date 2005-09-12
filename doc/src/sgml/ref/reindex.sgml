@@ -176,10 +176,11 @@ REINDEX { INDEX | TABLE | DATABASE | SYSTEM } <replaceable class="PARAMETER">nam
 
   <para>
    If corruption is suspected in the indexes of any of the shared
-   system catalogs (<structname>pg_authid</structname>,
+   system catalogs (which are <structname>pg_authid</structname>,
    <structname>pg_auth_members</structname>,
    <structname>pg_database</structname>,
-   <structname>pg_shdepend</structname>, or
+   <structname>pg_pltemplate</structname>,
+   <structname>pg_shdepend</structname>, and
    <structname>pg_tablespace</structname>), then a standalone server
    must be used to repair it.  <command>REINDEX</> will not process
    shared catalogs in multiuser mode.
