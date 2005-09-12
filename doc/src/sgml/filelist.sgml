@@ -41,6 +41,7 @@
 <!entity monitoring    SYSTEM "monitoring.sgml">
 <!entity regress       SYSTEM "regress.sgml">
 <!entity runtime       SYSTEM "runtime.sgml">
+<!entity config        SYSTEM "config.sgml">
 <!entity user-manag    SYSTEM "user-manag.sgml">
 <!entity wal           SYSTEM "wal.sgml">
 

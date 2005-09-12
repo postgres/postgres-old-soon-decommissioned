@@ -146,6 +146,7 @@ $PostgreSQL$
   &installation;
   &installw;
   &runtime;
+  &config;
   &user-manag;
   &manage-ag;
   &client-auth;
