@@ -155,6 +155,7 @@ void
 BackgroundWriterMain(void)
 {
 	sigjmp_buf	local_sigjmp_buf;
+	MemoryContext bgwriter_context;
 
 	Assert(BgWriterShmem != NULL);
 	BgWriterShmem->bgwriter_pid = MyProcPid;
@@ -203,6 +204,19 @@ BackgroundWriterMain(void)
 	last_checkpoint_time = time(NULL);
 
 	/*
+	 * Create a memory context that we will do all our work in.  We do this
+	 * so that we can reset the context during error recovery and thereby
+	 * avoid possible memory leaks.  Formerly this code just ran in
+	 * TopMemoryContext, but resetting that would be a really bad idea.
+	 */
+	bgwriter_context = AllocSetContextCreate(TopMemoryContext,
+											 "Background Writer",
+											 ALLOCSET_DEFAULT_MINSIZE,
+											 ALLOCSET_DEFAULT_INITSIZE,
+											 ALLOCSET_DEFAULT_MAXSIZE);
+	MemoryContextSwitchTo(bgwriter_context);
+
+	/*
 	 * If an exception is encountered, processing resumes here.
 	 *
 	 * See notes in postgres.c about the design of this coding.
@@ -242,8 +256,11 @@ BackgroundWriterMain(void)
 		 * Now return to normal top-level context and clear ErrorContext
 		 * for next time.
 		 */
-		MemoryContextSwitchTo(TopMemoryContext);
+		MemoryContextSwitchTo(bgwriter_context);
 		FlushErrorState();
+
+		/* Flush any leaked data in the top-level context */
+		MemoryContextResetAndDeleteChildren(bgwriter_context);
 
 		/* Now we can allow interrupts again */
 		RESUME_INTERRUPTS();
@@ -508,6 +525,23 @@ RequestCheckpoint(bool waitforit)
 	volatile BgWriterShmemStruct *bgs = BgWriterShmem;
 	sig_atomic_t old_failed = bgs->ckpt_failed;
 	sig_atomic_t old_started = bgs->ckpt_started;
+
+	/*
+	 * If in a standalone backend, just do it ourselves.
+	 */
+	if (!IsPostmasterEnvironment)
+	{
+		CreateCheckPoint(false, true);
+
+		/*
+		 * After any checkpoint, close all smgr files.	This is so we
+		 * won't hang onto smgr references to deleted files
+		 * indefinitely.
+		 */
+		smgrcloseall();
+
+		return;
+	}
 
 	/*
 	 * Send signal to request checkpoint.  When waitforit is false, we
