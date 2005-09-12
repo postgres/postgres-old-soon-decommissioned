@@ -2070,7 +2070,7 @@ SELECT * FROM parent WHERE key = 2400;
     </indexterm>
 
     <sect2 id="runtime-config-logging-where">
-     <title>Where to log</title>
+     <title>Where To Log</title>
 
      <indexterm zone="runtime-config-logging-where">
       <primary>where to log</primary>
