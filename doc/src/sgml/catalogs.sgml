@@ -1137,9 +1137,14 @@
    <primary>pg_autovacuum</primary>
   </indexterm>
 
+  <indexterm zone="catalog-pg-autovacuum">
+   <primary>autovacuum</primary>
+   <secondary>table-specific configuration</secondary>
+  </indexterm>
+
   <para>
    The catalog <structname>pg_autovacuum</structname> stores optional
-   per-relation configuration parameters for <quote>autovacuum</>.
+   per-relation configuration parameters for <xref linkend="autovacuum" endterm="autovacuum-title">.
    If there is an entry here for a particular relation, the given
    parameters will be used for autovacuuming that table.  If no entry
    is present, the system-wide defaults will be used.
