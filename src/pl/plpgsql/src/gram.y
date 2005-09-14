@@ -458,13 +458,13 @@ decl_cursor_args :
 					}
 				;
 
-decl_cursor_arglist : decl_cursor_arglist decl_cursor_arg
-					{
-						$$ = lappend($1, $2);
-					}
-				| decl_cursor_arg
+decl_cursor_arglist : decl_cursor_arg
 					{
 						$$ = list_make1($1);
+					}
+				| decl_cursor_arglist ',' decl_cursor_arg
+					{
+						$$ = lappend($1, $3);
 					}
 				;
 
