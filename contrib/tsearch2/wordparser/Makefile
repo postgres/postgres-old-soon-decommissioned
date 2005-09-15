@@ -1,14 +1,21 @@
 # $PostgreSQL$
 
-subdir = contrib/tsearch2/wordparser
-top_builddir = ../../..
-include $(top_builddir)/src/Makefile.global
-
 
 PG_CPPFLAGS = -I$(srcdir)/..
-override CFLAGS += $(CFLAGS_SL)
-
 SUBOBJS =  parser.o deflex.o
+EXTRA_CLEAN = SUBSYS.o $(SUBOBJS) parser.c
+
+ifdef USE_PGXS
+PGXS = $(shell pg_config --pgxs)
+include $(PGXS)
+else
+subdir = contrib/tsearch2
+top_builddir = ../../..
+include $(top_builddir)/src/Makefile.global
+include $(top_srcdir)/contrib/contrib-global.mk
+endif
+
+override CFLAGS += $(CFLAGS_SL)
 
 all: SUBSYS.o
 
@@ -22,6 +29,4 @@ endif
 SUBSYS.o: $(SUBOBJS)
 	$(LD) $(LDREL) $(LDOUT) $@ $^
 
-EXTRA_CLEAN = SUBSYS.o $(SUBOBJS) parser.c
 
-include $(top_srcdir)/contrib/contrib-global.mk
