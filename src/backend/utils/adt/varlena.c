@@ -1727,7 +1727,7 @@ textToQualifiedNameList(text *textval)
  *			   identifiers.
  * Outputs:
  *	namelist: filled with a palloc'd list of pointers to identifiers within
- *			  rawstring.  Caller should freeList() this even on error return.
+ *			  rawstring.  Caller should list_free() this even on error return.
  *
  * Returns TRUE if okay, FALSE if there is a syntax error in the string.
  *
