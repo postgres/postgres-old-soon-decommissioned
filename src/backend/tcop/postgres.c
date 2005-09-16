@@ -2205,7 +2205,7 @@ ProcessInterrupts(void)
 		DisableCatchupInterrupt();
 		ereport(ERROR,
 				(errcode(ERRCODE_QUERY_CANCELED),
-				 errmsg("canceling query due to user request")));
+				 errmsg("canceling query due to user request or statement timeout")));
 	}
 	/* If we get here, do nothing (probably, QueryCancelPending was reset) */
 }
