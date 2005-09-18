@@ -389,7 +389,7 @@ dropdb <replaceable class="parameter">dbname</replaceable>
 
    <para>
     To define a tablespace, use the <xref
-    linkend="sql-createtablespace" endterm="sql-createdatabase-title">
+    linkend="sql-createtablespace" endterm="sql-createtablespace-title">
     command, for example:<indexterm><primary>CREATE TABLESPACE</></>
 <programlisting>
 CREATE TABLESPACE fastspace LOCATION '/mnt/sda1/postgresql/data';
