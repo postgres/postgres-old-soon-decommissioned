@@ -1298,7 +1298,8 @@ do_edit(const char *filename_arg, PQExpBuffer query_buf)
  * process_file
  *
  * Read commands from filename and then them to the main processing loop
- * Handler for \i, but can be used for other things as well.
+ * Handler for \i, but can be used for other things as well.  Returns
+ * MainLoop() error code.
  */
 int
 process_file(char *filename)
@@ -1308,7 +1309,7 @@ process_file(char *filename)
 	char	   *oldfilename;
 
 	if (!filename)
-		return false;
+		return EXIT_FAILURE;
 
 	canonicalize_path(filename);
 	fd = fopen(filename, PG_BINARY_R);
@@ -1316,7 +1317,7 @@ process_file(char *filename)
 	if (!fd)
 	{
 		psql_error("%s: %s\n", filename, strerror(errno));
-		return false;
+		return EXIT_FAILURE;
 	}
 
 	oldfilename = pset.inputfile;
