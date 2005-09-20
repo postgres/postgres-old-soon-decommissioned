@@ -690,9 +690,9 @@ process_psqlrc_file(char *filename)
 	sprintf(psqlrc, "%s-%s", filename, PG_VERSION);
 
 	if (access(psqlrc, R_OK) == 0)
-		process_file(psqlrc);
+		(void)process_file(psqlrc);
 	else if (access(filename, R_OK) == 0)
-		process_file(filename);
+		(void)process_file(filename);
 	free(psqlrc);
 }
 
