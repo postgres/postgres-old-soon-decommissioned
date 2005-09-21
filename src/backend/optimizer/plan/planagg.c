@@ -113,7 +113,7 @@ optimize_minmax_aggregates(PlannerInfo *root, List *tlist, Path *best_path)
 	if (!IsA(rtr, RangeTblRef))
 		return NULL;
 	rte = rt_fetch(rtr->rtindex, parse->rtable);
-	if (rte->rtekind != RTE_RELATION)
+	if (rte->rtekind != RTE_RELATION || rte->inh)
 		return NULL;
 	rel = find_base_rel(root, rtr->rtindex);
 
