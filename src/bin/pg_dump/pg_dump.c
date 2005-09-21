@@ -617,8 +617,8 @@ main(int argc, char **argv)
 	/* First the special encoding entry. */
 	dumpEncoding(g_fout);
 
-	/* The database item is always second. */
-	if (!dataOnly)
+	/* The database item is always second, unless we don't want it at all */
+	if (!dataOnly && selectTableName == NULL && selectSchemaName == NULL)
 		dumpDatabase(g_fout);
 
 	/* Now the rearrangeable objects. */
