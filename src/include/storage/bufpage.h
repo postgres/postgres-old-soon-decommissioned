@@ -258,8 +258,8 @@ typedef PageHeaderData *PageHeader;
 #define PageGetItem(page, itemId) \
 ( \
 	AssertMacro(PageIsValid(page)), \
-	AssertMacro((itemId)->lp_flags & LP_USED), \
-	(Item)(((char *)(page)) + (itemId)->lp_off) \
+	AssertMacro(ItemIdIsUsed(itemId)), \
+	(Item)(((char *)(page)) + ItemIdGetOffset(itemId)) \
 )
 
 /*

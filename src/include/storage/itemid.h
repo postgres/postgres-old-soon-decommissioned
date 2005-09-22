@@ -38,7 +38,7 @@ typedef ItemIdData *ItemId;
 
 /*
  * This bit may be passed to PageAddItem together with
- * LP_USED & LP_DELETED bits to specify overwrite mode
+ * LP_USED & LP_DELETE bits to specify overwrite mode
  */
 #define OverwritePageMode	0x10
 
