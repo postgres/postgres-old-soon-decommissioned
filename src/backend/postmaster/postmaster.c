@@ -2701,8 +2701,9 @@ BackendRun(Port *port)
 
 	if (Log_connections)
 		ereport(LOG,
-				(errmsg("connection received: host=%s port=%s",
-						remote_host, remote_port)));
+				(errmsg("connection received: host=%s%s%s",
+						remote_host, remote_port[0] ? " port=" : "",
+						remote_port)));
 
 	/*
 	 * save remote_host and remote_port in port stucture
