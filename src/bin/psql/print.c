@@ -570,7 +570,7 @@ print_aligned_vertical(const char *title, const char *const *headers,
 
 	if (cells[0] == NULL)
 	{
-		puts(_("(No rows)\n"));
+		fprintf(fout, _("(No rows)\n"));
 		return;
 	}
 
@@ -704,7 +704,7 @@ print_aligned_vertical(const char *title, const char *const *headers,
 			if (opt_align[i % col_count] == 'r' && opt_numeric_locale)
 			    format_numeric_locale(my_cell);
 			if (opt_border < 2)
-				puts(my_cell);
+				fprintf(fout, "%s\n", my_cell);
 			else
 				fprintf(fout, "%-s%*s |\n", my_cell, dwidth - cell_w[i], "");
 			free(my_cell);
