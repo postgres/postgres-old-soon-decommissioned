@@ -78,7 +78,8 @@ gistVacuumUpdate( GistVacuum *gv, BlockNumber blkno, bool needunion ) {
 			needchildunion = (GistTupleIsInvalid(idxtuple)) ? true : false;
 		
 			if ( needchildunion ) 
-				elog(DEBUG2,"gistVacuumUpdate: Need union for block %u", ItemPointerGetBlockNumber(&(idxtuple->t_tid)));
+				elog(DEBUG2, "gistVacuumUpdate: need union for block %u",
+					 ItemPointerGetBlockNumber(&(idxtuple->t_tid)));
 	
 			chldtuple = gistVacuumUpdate( gv, ItemPointerGetBlockNumber(&(idxtuple->t_tid)),
 				needchildunion );
@@ -309,10 +310,10 @@ gistvacuumcleanup(PG_FUNCTION_ARGS) {
 		}
         	freeGISTstate(&(gv.giststate));
         	MemoryContextDelete(gv.opCtx);
-	} else if (needFullVacuum) {
-		elog(NOTICE,"It's desirable to vacuum full or reindex GiST index '%s' due to crash recovery", 
-			RelationGetRelationName(rel));
-	}
+	} else if (needFullVacuum)
+		ereport(NOTICE,
+				(errmsg("index \"%s\" needs VACUUM FULL or REINDEX to finish crash recovery",
+						RelationGetRelationName(rel))));
 
 	needFullVacuum = false;
 

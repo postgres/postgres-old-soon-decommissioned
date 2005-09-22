@@ -380,7 +380,7 @@ gistadjone(IndexScanDesc scan,
  */
 static void
 adjustiptr(IndexScanDesc scan,
-		   ItemPointer iptr, GISTSearchStack	*stk,
+		   ItemPointer iptr, GISTSearchStack *stk,
 		   int op,
 		   BlockNumber blkno,
 		   OffsetNumber offnum, XLogRecPtr newlsn, XLogRecPtr oldlsn)
@@ -422,7 +422,8 @@ adjustiptr(IndexScanDesc scan,
 					}
 					break;
 				default:
-					elog(ERROR, "Bad operation in GiST scan adjust: %d", op);
+					elog(ERROR, "unrecognized GiST scan adjust operation: %d",
+						 op);
 			}
 		}
 	}
