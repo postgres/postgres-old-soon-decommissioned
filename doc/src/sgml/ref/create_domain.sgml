@@ -48,10 +48,13 @@ where <replaceable class="PARAMETER">constraint</replaceable> is:
   </para>
 
   <para>
-   Domains are useful for abstracting common fields between tables into
-   a single location for maintenance.  For example, an email address column may be used
-   in several tables, all with the same properties.  Define a domain and
-   use that rather than setting up each table's constraints individually.
+   Domains are useful for abstracting common fields between tables
+   into a single location for maintenance.  For example, an email address
+   column may be used in several tables, all with the same properties.
+   Define a domain and use that rather than setting up each table's
+   constraints individually. <note>Keep in mind also that declaring a
+   function result value as a domain is pretty dangerous, because none of
+   the PLs enforce domain constraints on their results.</note>
   </para>
  </refsect1>
 
