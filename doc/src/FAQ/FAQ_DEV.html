@@ -13,7 +13,7 @@
     <H1>Developer's Frequently Asked Questions (FAQ) for
     PostgreSQL</H1>
 
-    <P>Last updated: Wed Jan  5 17:36:58 EST 2005</P>
+    <P>Last updated: Mon Sep 19 21:28:08 EDT 2005</P>
 
     <P>Current maintainer: Bruce Momjian (<A href=
     "mailto:pgman@candle.pha.pa.us">pgman@candle.pha.pa.us</A>)<BR>
@@ -26,9 +26,7 @@
     <BR>
      
 
-    <CENTER>
       <H2>General Questions</H2>
-    </CENTER>
     <A href="#1.1">1.1</A>) How do I get involved in PostgreSQL
     development?<BR>
      <A href="#1.2">1.2</A>) What development environment is required
@@ -36,8 +34,8 @@
      <A href="#1.3">1.3</A>) What areas need work?<BR>
      <A href="#1.4">1.4</A>) What do I do after choosing an item to
     work on?<BR>
-     <A href="#1.5">1.5</A>) Where can I learn more about the code?<BR>
-     <A href="#1.6">1.6</A>) I've developed a patch, what next?<BR>
+     <A href="#1.5">1.5</A>) I've developed a patch, what next?<BR>
+     <A href="#1.6">1.6</A>) Where can I learn more about the code?<BR>
      <A href="#1.7">1.7</A>) How do I download/update the current
     source tree?<BR>
      <A href="#1.8">1.8</A>) How do I test my changes?<BR>
@@ -46,8 +44,8 @@
      <A href="#1.10">1.10</A>) What books are good for developers?<BR>
      <A href="#1.11">1.11</A>) What is configure all about?<BR>
      <A href="#1.12">1.12</A>) How do I add a new port?<BR>
-     <A href="#1.13">1.13</A>) Why don't you use threads/raw
-    devices/async-I/O, &lt;insert your favorite wizz-bang feature
+     <A href="#1.13">1.13</A>) Why don't you use threads, raw
+    devices, async-I/O, &lt;insert your favorite wizz-bang feature
     here&gt;?<BR>
      <A href="#1.14">1.14</A>) How are RPM's packaged?<BR>
      <A href="#1.15">1.15</A>) How are CVS branches handled?<BR>
@@ -59,9 +57,7 @@
     site development?<BR>
      
 
-    <CENTER>
       <H2>Technical Questions</H2>
-    </CENTER>
     <A href="#2.1">2.1</A>) How do I efficiently access information in
     tables from the backend code?<BR>
      <A href="#2.2">2.2</A>) Why are table, column, type, function,
@@ -75,22 +71,22 @@
     <I>pfree</I>() to allocate memory?<BR>
      <A href="#2.6">2.6</A>) What is ereport()?<BR>
      <A href="#2.7">2.7</A>) What is CommandCounterIncrement()?<BR>
+     <A href="#2.8">2.8</A>) What debugging features are available?<BR>
+
      <BR>
      
     <HR>
 
-    <CENTER>
-      <H2>General Questions</H2>
-    </CENTER>
+    <H2>General Questions</H2>
 
-    <H3><A name="1.1">1.1</A>) How go I get involved in PostgreSQL
+    <H3><A name="1.1">1.1</A>) How do I get involved in PostgreSQL
     development?</H3>
 
     <P>Download the code and have a look around. See <A href=
     "#1.7">1.7</A>.</P>
 
     <P>Subscribe to and read the <A href=
-    "http://archives.posrgresql.org/pgsql-hackers">pgsql-hackers</A>
+    "http://archives.postgresql.org/pgsql-hackers">pgsql-hackers</A>
     mailing list (often termed 'hackers'). This is where the major
     contributors and core members of the project discuss
     development.</P>
@@ -130,8 +126,8 @@
     <H3><A name="1.3">1.3</A>) What areas need work?</H3>
     Outstanding features are detailed in the TODO list. This is located
     in <I>doc/TODO</I> in the source distribution or at <A href=
-    "http://developer.postgresql.org/todo.php">
-    http://developer.postgresql.org/todo.php</A>.
+    "http://www.postgresql.org/docs/faqs.TODO.html">
+    http://www.postgresql.org/docs/faqs.TODO.html</A>.
     
 
     <P>You can learn more about these features by consulting the
@@ -143,34 +139,48 @@
 
     <P>Send an email to pgsql-hackers with a proposal for what you want
     to do (assuming your contribution is not trivial). Working in
-    isolation is not advisable: others may be working on the same TODO
-    item; you may have misunderstood the TODO item; your approach may
-    benefit from the review of others.</P>
+    isolation is not advisable because others might be working on the same
+    TODO item, or you might have misunderstood the TODO item. In the
+    email, discuss both the internal implementation method you plan to
+    use, and any user-visible changes (new syntax, etc). For complex
+    patches, it is important to get community feeback on your proposal
+    before starting work. Failure to do so might mean your patch is
+    rejected.</P>
 
-    <H3><A name="1.5">1.5</A>) Where can I learn more about the
+    <P>A web site is maintained for patches awaiting review,
+    <a href="http://momjian.postgresql.org/cgi-bin/pgpatches">
+    http://momjian.postgresql.org/cgi-bin/pgpatches</a>, and
+    those that are being kept for the next release,
+    <a href="http://momjian.postgresql.org/cgi-bin/pgpatches_hold">
+    http://momjian.postgresql.org/cgi-bin/pgpatches2</a>.</P>
+    
+    <H3><A name="1.5">1.5</A>) I've developed a patch, what next?</H3>
+
+    <P>Generate the patch in contextual diff format. If you are
+    unfamiliar with this, you might find the script
+    <I>src/tools/makediff/difforig</I> useful.</P>
+
+    <P>Ensure that your patch is generated against the most recent
+    version of the code. If it is a patch adding new functionality, the
+    most recent version is CVS HEAD; if it is a bug fix, this will be
+    the most recently version of the branch which suffers from the bug
+    (for more on branches in PostgreSQL, see <A href=
+    "#1.15">1.15</A>).</P>
+
+    <P>Finally, submit the patch to pgsql-patches@postgresql.org. It
+    will be reviewed by other contributors to the project and will be
+    either accepted or sent back for further work. Also, please try to
+    include documentation changes as part of the patch. If you can't do
+    that, let us know and we will manually update the documentation when
+    the patch is applied.</P>
+
+    <H3><A name="1.6">1.6</A>) Where can I learn more about the
     code?</H3>
 
     <P>Other than documentation in the source tree itself, you can find
     some papers/presentations discussing the code at <A href=
     "http://www.postgresql.org/developer">
     http://www.postgresql.org/developer</A>.</P>
-
-    <H3><A name="1.6">1.6</A>) I've developed a patch, what next?</H3>
-
-    <P>Generate the patch in contextual diff format. If you are
-    unfamiliar with this, you may find the script
-    <I>src/tools/makediff/difforig</I> useful.</P>
-
-    <P>Ensure that your patch is generated against the most recent
-    version of the code. If it is a patch adding new functionality, the
-    most recent version is cvs HEAD; if it is a bug fix, this will be
-    the most recently version of the branch which suffers from the bug
-    (for more on branches in PostgreSQL, see <A href=
-    "#1.15">1.15</A>).</P>
-
-    <P>Finally, submit the patch to pgsql-patches@postgresql.org. It
-    will be reviewed by other contributors to the project and may be
-    either accepted or sent back for further work.</P>
 
     <H3><A name="1.7">1.7</A>) How do I download/update the current
     source tree?</H3>
@@ -180,7 +190,7 @@
     <A href=
     "ftp://ftp.postgresql.org">ftp://ftp.postgresql.org</A>.</P>
 
-    <P>Regular developers may want to take advantage of anonymous
+    <P>Regular developers might want to take advantage of anonymous
     access to our source code management system. The source tree is
     currently hosted in CVS. For details of how to obtain the source
     from CVS see <A href=
@@ -192,7 +202,7 @@
     <P><B>Basic system testing</B></P>
 
     <P>The easiest way to test your code is to ensure that it builds
-    against the latest verion of the code and that it does not generate
+    against the latest version of the code and that it does not generate
     compiler warnings.</P>
 
     <P>It is worth advised that you pass --enable-cassert to
@@ -210,8 +220,8 @@
     directory of the source tree. If any tests failure,
     investigate.</P>
 
-    <P>If you've deliberately changed existing behaviour, this change
-    may cause a regression test failure but not any actual regression.
+    <P>If you've deliberately changed existing behavior, this change
+    might cause a regression test failure but not any actual regression.
     If so, you should also patch the regression test suite.</P>
 
     <P><B>Other run time testing</B></P>
@@ -228,6 +238,12 @@
 
     <P>There have been a number of discussions about other testing
     frameworks and some developers are exploring these ideas.</P>
+
+    <P>Keep in mind the <I>Makefiles</I> do not have the proper
+    dependencies for include files. You have to do a <I>make clean</I>
+    and then another <I>make</I>. If you are using <SMALL>GCC</SMALL>
+    you can use the <I>--enable-depend</I> option of <I>configure</I>
+    to have the compiler compute the dependencies automatically.</P>
 
     <H3><A name="1.9">1.9</A>) What tools are available for
     developers?</H3>
@@ -421,8 +437,8 @@
     handling. There is a <I>backend/port</I> directory if you need
     special files for your OS.</P>
 
-    <H3><A name="1.13">1.13</A>) Why don't you use threads/raw
-    devices/async-I/O, &lt;insert your favorite wizz-bang feature
+    <H3><A name="1.13">1.13</A>) Why don't you use threads, raw
+    devices, async-I/O, &lt;insert your favorite wizz-bang feature
     here&gt;?</H3>
 
     <P>There is always a temptation to use the newest operating system
@@ -472,7 +488,7 @@
 
       <LI>The initscript;</LI>
 
-      <LI>Any other ancilliary scripts and files;</LI>
+      <LI>Any other ancillary scripts and files;</LI>
 
       <LI>A README.rpm-dist document that tries to adequately document
       both the differences between the RPM build and the WHY of the
@@ -601,7 +617,7 @@
     cvs ... checkout pgsql
 </PRE>
 
-    <P>To get a past branch, you cd to whereever you want it and
+    <P>To get a past branch, you cd to wherever you want it and
     say</P>
 <PRE>
     cvs ... checkout -r BRANCHNAME pgsql
@@ -682,7 +698,7 @@
     questions about development of new features, on IRC at
     irc.freenode.net in the #postgresql channel.</P>
 
-    <H3><A name="1.18">1.18</A>) How go I get involved in PostgreSQL
+    <H3><A name="1.18">1.18</A>) How do I get involved in PostgreSQL
     web site development?</H3>
 
     <P>PostgreSQL website development is discussed on the
@@ -690,15 +706,13 @@
     the source code is available at <A href=
     "http://gborg.postgresql.org/project/pgweb/projdisplay.php">http://gborg.postgresql.org/project/pgweb/projdisplay.php</A>
     , the code for the next version of the website is under the
-    "portal" module. You will al so find code for the "techdocs"
+    "portal" module. You will also find code for the "techdocs"
     website if you would like to contribute to that. A temporary todo
     list for current website development issues is available at <A
     href=
     "http://xzilla.postgresql.org/todo">http://xzilla.postgresql.org/todo</A></P>
 
-    <CENTER>
       <H2>Technical Questions</H2>
-    </CENTER>
 
     <H3><A name="2.1">2.1</A>) How do I efficiently access information
     in tables from the backend code?</H3>
@@ -762,7 +776,7 @@
     delete tuples by passing the tuple's <I>t_self</I> to
     <I>heap_destroy().</I> You use <I>t_self</I> for
     <I>heap_update()</I> too. Remember, tuples can be either system
-    cache copies, which may go away after you call
+    cache copies, which might go away after you call
     <I>ReleaseSysCache()</I>, or read directly from disk buffers, which
     go away when you <I>heap_getnext()</I>, <I>heap_endscan</I>, or
     <I>ReleaseBuffer()</I>, in the <I>heap_fetch()</I> case. Or it may
@@ -810,7 +824,7 @@
       <DL>
         <DT>lfirst(i), lfirst_int(i), lfirst_oid(i)</DT>
 
-        <DD>return the data (a point, inteter and OID respectively) at
+        <DD>return the data (a point, integer and OID respectively) at
         list element <I>i.</I></DD>
 
         <DT>lnext(i)</DT>
@@ -897,7 +911,7 @@
     to create, copy, read, and output those structures (in particular,
     the files <I>copyfuncs.c</I> and <I>equalfuncs.c</I>. Make sure you
     add support for your new field to these files. Find any other
-    places the structure may need code for your new field. <I>mkid</I>
+    places the structure might need code for your new field. <I>mkid</I>
     is helpful with this (see <A href="#1.9">1.9</A>).</P>
 
     <H3><A name="2.5">2.5</A>) Why do we use <I>palloc</I>() and
@@ -942,6 +956,45 @@
     modified by previous pieces. <I>CommandCounterIncrement()</I>
     increments the Command Counter, creating a new part of the
     transaction.</P>
+
+    <H3><A name="2.8">2.8</A>) What debugging features are
+    available?</H3>
+
+    <P>First, try running <I>configure</I> with the --enable-cassert
+    option, many <I>assert()</I>s monitor the progress of the backend
+    and halt the program when something unexpected occurs.</P>
+
+    <P>The <I>postmaster</I> has a <I>-d</I> option that allows even more
+    detailed information to be reported. The <I>-d</I> option takes a
+    number that specifies the debug level. Be warned that high debug
+    level values generate large log files.</P>
+
+    <P>If the <I>postmaster</I> is not running, you can actually run the
+    <I>postgres</I> backend from the command line, and type your
+    <SMALL>SQL</SMALL> statement directly. This is recommended
+    <B>only</B> for debugging purposes. If you have compiled with debugging
+    symbols, you can use a debugger to see what is happening. Because
+    the backend was not started from <I>postmaster</I>, it is not
+    running in an identical environment and locking/backend interaction
+    problems might not be duplicated.</P>
+
+    <P>If the <I>postmaster</I> is running, start <I>psql</I> in one
+    window, then find the <SMALL>PID</SMALL> of the <I>postgres</I>
+    process used by <I>psql</I> using <CODE>SELECT pg_backend_pid()</CODE>.
+    Use a debugger to attach to the <I>postgres</I> <SMALL>PID</SMALL>.
+    You can set breakpoints in the debugger and issue queries from
+
+    <I>psql</I>. If you are debugging <I>postgres</I> startup, you can
+    set PGOPTIONS="-W n", then start <I>psql</I>. This will cause startup
+    to delay for <I>n</I> seconds so you can attach to the process with
+    the debugger, set any breakpoints, and continue through the startup
+    sequence.</P>
+
+    <P>You can also compile with profiling to see what functions are
+    taking execution time. The backend profile files will be deposited
+    in the <I>pgsql/data</I> directory. The client profile file will be
+    put in the client's current directory. Linux requires a compile with
+    <I>-DLINUX_PROFILE</I> for proper profiling.</P>
   </BODY>
 </HTML>
 

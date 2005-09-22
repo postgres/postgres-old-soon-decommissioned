@@ -1,7 +1,7 @@
 
           Developer's Frequently Asked Questions (FAQ) for PostgreSQL
                                        
-   Last updated: Wed Jan 5 17:36:58 EST 2005
+   Last updated: Mon Sep 19 21:28:08 EDT 2005
    
    Current maintainer: Bruce Momjian (pgman@candle.pha.pa.us)
    
@@ -9,21 +9,21 @@
    http://www.postgresql.org/files/documentation/faqs/FAQ_DEV.html.
      _________________________________________________________________
    
-                             General Questions
-                                      
+General Questions
+
    1.1) How do I get involved in PostgreSQL development?
    1.2) What development environment is required to develop code?
    1.3) What areas need work?
    1.4) What do I do after choosing an item to work on?
-   1.5) Where can I learn more about the code?
-   1.6) I've developed a patch, what next?
+   1.5) I've developed a patch, what next?
+   1.6) Where can I learn more about the code?
    1.7) How do I download/update the current source tree?
    1.8) How do I test my changes?
    1.9) What tools are available for developers?
    1.10) What books are good for developers?
    1.11) What is configure all about?
    1.12) How do I add a new port?
-   1.13) Why don't you use threads/raw devices/async-I/O, <insert your
+   1.13) Why don't you use threads, raw devices, async-I/O, <insert your
    favorite wizz-bang feature here>?
    1.14) How are RPM's packaged?
    1.15) How are CVS branches handled?
@@ -31,8 +31,8 @@
    1.17) Where can I get technical assistance?
    1.18) How do I get involved in PostgreSQL web site development?
    
-                            Technical Questions
-                                      
+Technical Questions
+
    2.1) How do I efficiently access information in tables from the
    backend code?
    2.2) Why are table, column, type, function, view names sometimes
@@ -42,11 +42,12 @@
    2.5) Why do we use palloc() and pfree() to allocate memory?
    2.6) What is ereport()?
    2.7) What is CommandCounterIncrement()?
+   2.8) What debugging features are available?
      _________________________________________________________________
    
-                             General Questions
-                                      
-  1.1) How go I get involved in PostgreSQL development?
+General Questions
+
+  1.1) How do I get involved in PostgreSQL development?
   
    Download the code and have a look around. See 1.7.
    
@@ -84,7 +85,7 @@
   
    Outstanding features are detailed in the TODO list. This is located in
    doc/TODO in the source distribution or at
-   http://developer.postgresql.org/todo.php.
+   http://www.postgresql.org/docs/faqs.TODO.html.
    
    You can learn more about these features by consulting the archives,
    the SQL standards and the recommend texts (see 1.10).
@@ -93,30 +94,42 @@
   
    Send an email to pgsql-hackers with a proposal for what you want to do
    (assuming your contribution is not trivial). Working in isolation is
-   not advisable: others may be working on the same TODO item; you may
-   have misunderstood the TODO item; your approach may benefit from the
-   review of others.
+   not advisable because others might be working on the same TODO item,
+   or you might have misunderstood the TODO item. In the email, discuss
+   both the internal implementation method you plan to use, and any
+   user-visible changes (new syntax, etc). For complex patches, it is
+   important to get community feeback on your proposal before starting
+   work. Failure to do so might mean your patch is rejected.
    
-  1.5) Where can I learn more about the code?
-  
-   Other than documentation in the source tree itself, you can find some
-   papers/presentations discussing the code at
-   http://www.postgresql.org/developer.
+   A web site is maintained for patches awaiting review,
+   http://momjian.postgresql.org/cgi-bin/pgpatches, and those that are
+   being kept for the next release,
+   http://momjian.postgresql.org/cgi-bin/pgpatches2.
    
-  1.6) I've developed a patch, what next?
+  1.5) I've developed a patch, what next?
   
    Generate the patch in contextual diff format. If you are unfamiliar
-   with this, you may find the script src/tools/makediff/difforig useful.
+   with this, you might find the script src/tools/makediff/difforig
+   useful.
    
    Ensure that your patch is generated against the most recent version of
    the code. If it is a patch adding new functionality, the most recent
-   version is cvs HEAD; if it is a bug fix, this will be the most
+   version is CVS HEAD; if it is a bug fix, this will be the most
    recently version of the branch which suffers from the bug (for more on
    branches in PostgreSQL, see 1.15).
    
    Finally, submit the patch to pgsql-patches@postgresql.org. It will be
-   reviewed by other contributors to the project and may be either
-   accepted or sent back for further work.
+   reviewed by other contributors to the project and will be either
+   accepted or sent back for further work. Also, please try to include
+   documentation changes as part of the patch. If you can't do that, let
+   us know and we will manually update the documentation when the patch
+   is applied.
+   
+  1.6) Where can I learn more about the code?
+  
+   Other than documentation in the source tree itself, you can find some
+   papers/presentations discussing the code at
+   http://www.postgresql.org/developer.
    
   1.7) How do I download/update the current source tree?
   
@@ -124,7 +137,7 @@
    developers can just get the most recent source tree snapshot from
    ftp://ftp.postgresql.org.
    
-   Regular developers may want to take advantage of anonymous access to
+   Regular developers might want to take advantage of anonymous access to
    our source code management system. The source tree is currently hosted
    in CVS. For details of how to obtain the source from CVS see
    http://developer.postgresql.org/docs/postgres/cvs.html.
@@ -134,7 +147,7 @@
    Basic system testing
    
    The easiest way to test your code is to ensure that it builds against
-   the latest verion of the code and that it does not generate compiler
+   the latest version of the code and that it does not generate compiler
    warnings.
    
    It is worth advised that you pass --enable-cassert to configure. This
@@ -150,7 +163,7 @@
    test suite. To do this, issue "make check" in the root directory of
    the source tree. If any tests failure, investigate.
    
-   If you've deliberately changed existing behaviour, this change may
+   If you've deliberately changed existing behavior, this change might
    cause a regression test failure but not any actual regression. If so,
    you should also patch the regression test suite.
    
@@ -166,6 +179,11 @@
    
    There have been a number of discussions about other testing frameworks
    and some developers are exploring these ideas.
+   
+   Keep in mind the Makefiles do not have the proper dependencies for
+   include files. You have to do a make clean and then another make. If
+   you are using GCC you can use the --enable-depend option of configure
+   to have the compiler compute the dependencies automatically.
    
   1.9) What tools are available for developers?
   
@@ -338,8 +356,8 @@
    src/makefiles directory for port-specific Makefile handling. There is
    a backend/port directory if you need special files for your OS.
    
-  1.13) Why don't you use threads/raw devices/async-I/O, <insert your favorite
-  wizz-bang feature here>?
+  1.13) Why don't you use threads, raw devices, async-I/O, <insert your
+  favorite wizz-bang feature here>?
   
    There is always a temptation to use the newest operating system
    features as soon as they arrive. We resist that temptation.
@@ -377,7 +395,7 @@
     1. A set of patches to make certain portions of the source tree
        'behave' in the different environment of the RPMset;
     2. The initscript;
-    3. Any other ancilliary scripts and files;
+    3. Any other ancillary scripts and files;
     4. A README.rpm-dist document that tries to adequately document both
        the differences between the RPM build and the WHY of the
        differences, as well as useful RPM environment operations (like,
@@ -495,7 +513,7 @@
    want to contain the toplevel "pgsql" directory and say
     cvs ... checkout pgsql
 
-   To get a past branch, you cd to whereever you want it and say
+   To get a past branch, you cd to wherever you want it and say
     cvs ... checkout -r BRANCHNAME pgsql
 
    For example, just a couple days ago I did
@@ -548,19 +566,19 @@
    questions about development of new features, on IRC at
    irc.freenode.net in the #postgresql channel.
    
-  1.18) How go I get involved in PostgreSQL web site development?
+  1.18) How do I get involved in PostgreSQL web site development?
   
    PostgreSQL website development is discussed on the
    pgsql-www@postgresql.org mailing list. The is a project page where the
    source code is available at
    http://gborg.postgresql.org/project/pgweb/projdisplay.php , the code
    for the next version of the website is under the "portal" module. You
-   will al so find code for the "techdocs" website if you would like to
+   will also find code for the "techdocs" website if you would like to
    contribute to that. A temporary todo list for current website
    development issues is available at http://xzilla.postgresql.org/todo
    
-                            Technical Questions
-                                      
+Technical Questions
+
   2.1) How do I efficiently access information in tables from the backend code?
   
    You first need to find the tuples(rows) you are interested in. There
@@ -614,10 +632,10 @@
    values you want changed. It returns a palloc'ed tuple, which you pass
    to heap_replace(). You can delete tuples by passing the tuple's t_self
    to heap_destroy(). You use t_self for heap_update() too. Remember,
-   tuples can be either system cache copies, which may go away after you
-   call ReleaseSysCache(), or read directly from disk buffers, which go
-   away when you heap_getnext(), heap_endscan, or ReleaseBuffer(), in the
-   heap_fetch() case. Or it may be a palloc'ed tuple, that you must
+   tuples can be either system cache copies, which might go away after
+   you call ReleaseSysCache(), or read directly from disk buffers, which
+   go away when you heap_getnext(), heap_endscan, or ReleaseBuffer(), in
+   the heap_fetch() case. Or it may be a palloc'ed tuple, that you must
    pfree() when finished.
    
   2.2) Why are table, column, type, function, view names sometimes referenced
@@ -653,7 +671,7 @@ typedef struct nameData
    Here are some of the List manipulation commands:
    
    lfirst(i), lfirst_int(i), lfirst_oid(i)
-          return the data (a point, inteter and OID respectively) at list
+          return the data (a point, integer and OID respectively) at list
           element i.
           
    lnext(i)
@@ -718,8 +736,8 @@ typedef struct nameData
    routines in src/backend/nodes used to create, copy, read, and output
    those structures (in particular, the files copyfuncs.c and
    equalfuncs.c. Make sure you add support for your new field to these
-   files. Find any other places the structure may need code for your new
-   field. mkid is helpful with this (see 1.9).
+   files. Find any other places the structure might need code for your
+   new field. mkid is helpful with this (see 1.9).
    
   2.5) Why do we use palloc() and pfree() to allocate memory?
   
@@ -757,3 +775,37 @@ typedef struct nameData
    to be broken into pieces so each piece can see rows modified by
    previous pieces. CommandCounterIncrement() increments the Command
    Counter, creating a new part of the transaction.
+   
+  2.8) What debugging features are available?
+  
+   First, try running configure with the --enable-cassert option, many
+   assert()s monitor the progress of the backend and halt the program
+   when something unexpected occurs.
+   
+   The postmaster has a -d option that allows even more detailed
+   information to be reported. The -d option takes a number that
+   specifies the debug level. Be warned that high debug level values
+   generate large log files.
+   
+   If the postmaster is not running, you can actually run the postgres
+   backend from the command line, and type your SQL statement directly.
+   This is recommended only for debugging purposes. If you have compiled
+   with debugging symbols, you can use a debugger to see what is
+   happening. Because the backend was not started from postmaster, it is
+   not running in an identical environment and locking/backend
+   interaction problems might not be duplicated.
+   
+   If the postmaster is running, start psql in one window, then find the
+   PID of the postgres process used by psql using SELECT
+   pg_backend_pid(). Use a debugger to attach to the postgres PID. You
+   can set breakpoints in the debugger and issue queries from psql. If
+   you are debugging postgres startup, you can set PGOPTIONS="-W n", then
+   start psql. This will cause startup to delay for n seconds so you can
+   attach to the process with the debugger, set any breakpoints, and
+   continue through the startup sequence.
+   
+   You can also compile with profiling to see what functions are taking
+   execution time. The backend profile files will be deposited in the
+   pgsql/data directory. The client profile file will be put in the
+   client's current directory. Linux requires a compile with
+   -DLINUX_PROFILE for proper profiling.
