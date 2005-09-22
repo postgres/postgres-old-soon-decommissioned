@@ -517,7 +517,7 @@ pg_[A-Za-z0-9_]                 <application>
         constraints (Simon)
        </para>
        <para>
-        This allows for a type of table partitioning. If child tables
+        This allows for a basic type of table partitioning. If child tables
         store separate key ranges and this is enforced using appropriate
         <command>CHECK</> constraints, the optimizer will skip child
         table accesses when the constraint guarantees no matching rows
