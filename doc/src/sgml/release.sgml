@@ -177,7 +177,9 @@ pg_[A-Za-z0-9_]                 <application>
         Integrating autovacuum into the server allows it to be
         automatically started and stopped in sync with the database
         server, and allows autovacuum to be configured from
-        <filename>postgresql.conf</>.
+        <filename>postgresql.conf</>.  Autovacuum now checks to see if
+        the database is in danger of xid wraparound and
+        <command>VACUUM</command>s the whole database if needed.
        </para>
       </listitem>
      </varlistentry>
