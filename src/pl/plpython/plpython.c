@@ -516,6 +516,8 @@ PLy_modify_tuple(PLyProcedure * proc, PyObject * pltd, TriggerData *tdata,
 			if (plval != Py_None && !tupdesc->attrs[atti]->attisdropped)
 			{
 				plstr = PyObject_Str(plval);
+				if (!plstr)
+					PLy_elog(ERROR, "function \"%s\" could not modify tuple", proc->proname);
 				src = PyString_AsString(plstr);
 
 				modvalues[i] = FunctionCall3(&proc->result.out.r.atts[atti].typfunc,
@@ -773,6 +775,8 @@ PLy_function_handler(FunctionCallInfo fcinfo, PLyProcedure * proc)
 		{
 			fcinfo->isnull = false;
 			plrv_so = PyObject_Str(plrv);
+			if (!plrv_so)
+				PLy_elog(ERROR, "function \"%s\" could not create return value", proc->proname);
 			plrv_sc = PyString_AsString(plrv_so);
 			rv = FunctionCall3(&proc->result.out.d.typfunc,
 							   PointerGetDatum(plrv_sc),
@@ -1206,10 +1210,14 @@ PLy_procedure_munge_source(const char *name, const char *src)
 
 	while (*sp != '\0')
 	{
-		if (*sp == '\n')
+		if (*sp == '\r' && *(sp + 1) == '\n')
+			sp++;
+
+		if (*sp == '\n' || *sp == '\r')
 		{
-			*mp++ = *sp++;
+			*mp++ = '\n';
 			*mp++ = '\t';
+			sp++;
 		}
 		else
 			*mp++ = *sp++;
@@ -2014,7 +2022,9 @@ PLy_spi_execute_plan(PyObject * ob, PyObject * list, int limit)
 		char	   *sv;
 
 		PyObject   *so = PyObject_Str(list);
-
+		if (!so)
+			PLy_elog(ERROR, "function \"%s\" could not execute plan",
+					 PLy_procedure_name(PLy_curr_procedure));
 		sv = PyString_AsString(so);
 		PLy_exception_set(PLy_exc_spi_error,
 						  "Expected sequence of %d arguments, got %d. %s",
@@ -2039,6 +2049,9 @@ PLy_spi_execute_plan(PyObject * ob, PyObject * list, int limit)
 			if (elem != Py_None)
 			{
 				so = PyObject_Str(elem);
+				if (!so)
+					PLy_elog(ERROR, "function \"%s\" could not execute plan",
+							 PLy_procedure_name(PLy_curr_procedure));
 				sv = PyString_AsString(so);
 
 				/*
@@ -2526,7 +2539,13 @@ PLy_traceback(int *xlevel)
 	else
 		vstr = "Unknown";
 
-	estr = PyString_AsString(eob);
+	/*
+	 * I'm not sure what to do if eob is NULL here -- we can't call
+	 * PLy_elog because that function calls us, so we could end up
+	 * with infinite recursion.  I'm not even sure if eob could be
+	 * NULL here -- would an Assert() be more appropriate?
+	 */
+	estr = eob ? PyString_AsString(eob) : "Unknown Exception";
 	xstr = PLy_printf("%s: %s", estr, vstr);
 
 	Py_DECREF(eob);
