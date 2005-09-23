@@ -1332,7 +1332,7 @@ beginmerge(Tuplesortstate *state)
  * as explained in the header comments of this file.  Load tuples from each
  * active source tape until the tape's run is exhausted or it has used up
  * its fair share of available memory.	In any case, we guarantee that there
- * is at one preread tuple available from each unexhausted input tape.
+ * is at least one preread tuple available from each unexhausted input tape.
  */
 static void
 mergepreread(Tuplesortstate *state)
