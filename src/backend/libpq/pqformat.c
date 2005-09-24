@@ -501,8 +501,12 @@ pq_getmsgint64(StringInfo msg)
 	l32 = ntohl(l32);
 
 #ifdef INT64_IS_BUSTED
-	/* just lose the high half */
+	/* error out if incoming value is wider than 32 bits */
 	result = l32;
+	if ((result < 0) ? (h32 != -1) : (h32 != 0))
+		ereport(ERROR,
+				(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
+				 errmsg("binary value is out of range for type bigint")));
 #else
 	result = h32;
 	result <<= 32;
