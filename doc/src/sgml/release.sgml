@@ -1318,13 +1318,13 @@ pg_[A-Za-z0-9_]                 <application>
 
       <listitem>
        <para>
-        Add support for 3 and 4-byte <literal>UTF8</> characters (John
+        Add support for four-byte <literal>UTF8</> characters (John
         Hansen)
        </para>
        <para>
-        Previously only one and two-byte <literal>UTF8</> characters
+        Previously only one, two, and three-byte <literal>UTF8</> characters
         were supported. This is particularly important for support for
-        some Chinese characters.
+        some Chinese character sets.
        </para>
       </listitem>
 
