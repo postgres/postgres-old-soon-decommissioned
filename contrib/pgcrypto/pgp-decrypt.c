@@ -792,7 +792,7 @@ parse_literal_data(PGP_Context * ctx, MBuf * dst, PullFilter * pkt)
 			break;
 	}
 	if (res >= 0 && got_cr)
-		res = mbuf_append(dst, "\r", 1);
+		res = mbuf_append(dst, (const uint8 *) "\r", 1);
 	return res;
 }
 
