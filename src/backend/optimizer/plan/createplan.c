@@ -1634,7 +1634,8 @@ fix_indexqual_operand(Node *node, IndexOptInfo *index, Oid *opclass)
 
 	/* Ooops... */
 	elog(ERROR, "node is not an index attribute");
-	return NULL;				/* keep compiler quiet */
+	*opclass = InvalidOid;		/* keep compiler quiet */
+	return NULL;
 }
 
 /*

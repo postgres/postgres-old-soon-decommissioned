@@ -542,7 +542,10 @@ CopyGetInt32(CopyState cstate, int32 *val)
 	uint32		buf;
 
 	if (CopyGetData(cstate, &buf, sizeof(buf), sizeof(buf)) != sizeof(buf))
+	{
+		*val = 0;				/* suppress compiler warning */
 		return false;
+	}
 	*val = (int32) ntohl(buf);
 	return true;
 }
@@ -568,7 +571,10 @@ CopyGetInt16(CopyState cstate, int16 *val)
 	uint16		buf;
 
 	if (CopyGetData(cstate, &buf, sizeof(buf), sizeof(buf)) != sizeof(buf))
+	{
+		*val = 0;				/* suppress compiler warning */
 		return false;
+	}
 	*val = (int16) ntohs(buf);
 	return true;
 }

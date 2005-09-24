@@ -649,8 +649,8 @@ grouping_planner(PlannerInfo *root, double tuple_fraction)
 {
 	Query	   *parse = root->parse;
 	List	   *tlist = parse->targetList;
-	int			offset_est;
-	int			count_est;
+	int			offset_est = 0;
+	int			count_est = 0;
 	Plan	   *result_plan;
 	List	   *current_pathkeys;
 	List	   *sort_pathkeys;

@@ -161,6 +161,8 @@ GetCCHashEqFuncs(Oid keytype, PGFunction *hashfunc, RegProcedure *eqfunc)
 			break;
 		default:
 			elog(FATAL, "type %u not supported as catcache key", keytype);
+			*hashfunc = NULL;	/* keep compiler quiet */
+			*eqfunc = InvalidOid;
 			break;
 	}
 }

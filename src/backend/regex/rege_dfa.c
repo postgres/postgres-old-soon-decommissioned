@@ -578,7 +578,6 @@ getvacant(struct vars * v,		/* used only for debug flags */
 	struct sset *ss;
 	struct sset *p;
 	struct arcp ap;
-	struct arcp lastap;
 	color		co;
 
 	ss = pickss(v, d, cp, start);
@@ -608,6 +607,8 @@ getvacant(struct vars * v,		/* used only for debug flags */
 			p->ins = ss->inchain[i];
 		else
 		{
+			struct arcp lastap = {NULL, 0};
+
 			assert(p->ins.ss != NULL);
 			for (ap = p->ins; ap.ss != NULL &&
 				 !(ap.ss == ss && ap.co == i);

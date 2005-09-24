@@ -2403,6 +2403,7 @@ convert_to_scalar(Datum value, Oid valuetypid, double *scaledvalue,
 			return true;
 	}
 	/* Don't know how to convert */
+	*scaledvalue = *scaledlobound = *scaledhibound = 0;
 	return false;
 }
 

@@ -3401,7 +3401,11 @@ parse_bool(const char *value, bool *result)
 	}
 
 	else
+	{
+		if (result)
+			*result = false;	/* suppress compiler warning */
 		return false;
+	}
 	return true;
 }
 
@@ -3427,7 +3431,11 @@ parse_int(const char *value, int *result)
 		|| val != (long) ((int32) val)
 #endif
 		)
+	{
+		if (result)
+			*result = 0;		/* suppress compiler warning */
 		return false;
+	}
 	if (result)
 		*result = (int) val;
 	return true;
@@ -3449,7 +3457,11 @@ parse_real(const char *value, double *result)
 	errno = 0;
 	val = strtod(value, &endptr);
 	if (endptr == value || *endptr != '\0' || errno == ERANGE)
+	{
+		if (result)
+			*result = 0;		/* suppress compiler warning */
 		return false;
+	}
 	if (result)
 		*result = val;
 	return true;

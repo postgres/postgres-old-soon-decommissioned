@@ -158,6 +158,8 @@ examine_parameter_list(List *parameters, Oid languageOid,
 	ListCell   *x;
 	int			i;
 
+	*requiredResultType = InvalidOid;		/* default result */
+
 	inTypes = (Oid *) palloc(parameterCount * sizeof(Oid));
 	allTypes = (Datum *) palloc(parameterCount * sizeof(Datum));
 	paramModes = (Datum *) palloc(parameterCount * sizeof(Datum));
@@ -243,7 +245,6 @@ examine_parameter_list(List *parameters, Oid languageOid,
 	{
 		*allParameterTypes = NULL;
 		*parameterModes = NULL;
-		*requiredResultType = InvalidOid;
 	}
 
 	if (have_names)
@@ -383,16 +384,22 @@ compute_attributes_sql_style(List *options,
 	if (as_item)
 		*as = (List *) as_item->arg;
 	else
+	{
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
 				 errmsg("no function body specified")));
+		*as = NIL;				/* keep compiler quiet */
+	}
 
 	if (language_item)
 		*language = strVal(language_item->arg);
 	else
+	{
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
 				 errmsg("no language specified")));
+		*language = NULL;		/* keep compiler quiet */
+	}
 
 	/* process optional items */
 	if (volatility_item)

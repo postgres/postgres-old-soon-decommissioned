@@ -464,6 +464,7 @@ cfindloop(struct vars * v,
 				if (er != REG_NOMATCH)
 				{
 					ERR(er);
+					*coldp = cold;
 					return er;
 				}
 				if ((shorter) ? end == estop : end == begin)
