@@ -391,7 +391,7 @@ print_aligned_text(const char *title, const char *const *headers,
 	/* calc column widths */
 	for (i = 0; i < col_count; i++)
 	{
-		tmp = pg_wcswidth((unsigned char *) headers[i], strlen(headers[i]), encoding);
+		tmp = pg_wcswidth(headers[i], strlen(headers[i]), encoding);
 		if (tmp > widths[i])
 			widths[i] = tmp;
 		head_w[i] = tmp;
@@ -406,7 +406,7 @@ print_aligned_text(const char *title, const char *const *headers,
 		else 
 		    numeric_locale_len = 0;
 		
-		tmp = pg_wcswidth((unsigned char *) *ptr, strlen(*ptr), encoding) + numeric_locale_len;
+		tmp = pg_wcswidth(*ptr, strlen(*ptr), encoding) + numeric_locale_len;
 		if (tmp > widths[i % col_count])
 			widths[i % col_count] = tmp;
 		cell_w[i] = tmp;
@@ -425,7 +425,7 @@ print_aligned_text(const char *title, const char *const *headers,
 	/* print title */
 	if (title && !opt_tuples_only)
 	{
-		tmp = pg_wcswidth((unsigned char *) title, strlen(title), encoding);
+		tmp = pg_wcswidth(title, strlen(title), encoding);
 		if (tmp >= total_w)
 			fprintf(fout, "%s\n", title);
 		else
@@ -591,7 +591,7 @@ print_aligned_vertical(const char *title, const char *const *headers,
 
 	for (i = 0; i < col_count; i++)
 	{
-		tmp = pg_wcswidth((unsigned char *) headers[i], strlen(headers[i]), encoding);
+		tmp = pg_wcswidth(headers[i], strlen(headers[i]), encoding);
 		if (tmp > hwidth)
 			hwidth = tmp;
 		head_w[i] = tmp;
@@ -623,7 +623,7 @@ print_aligned_vertical(const char *title, const char *const *headers,
 		else 
 		    numeric_locale_len = 0;
 
-		tmp = pg_wcswidth((unsigned char *) *ptr, strlen(*ptr), encoding) + numeric_locale_len;
+		tmp = pg_wcswidth(*ptr, strlen(*ptr), encoding) + numeric_locale_len;
 		if (tmp > dwidth)
 			dwidth = tmp;
 		cell_w[i] = tmp;

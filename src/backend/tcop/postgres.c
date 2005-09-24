@@ -1548,9 +1548,7 @@ exec_bind_message(StringInfo input_message)
 						 * We have to do encoding conversion before
 						 * calling the typinput routine.
 						 */
-						pstring = (char *)
-							pg_client_to_server((unsigned char *) pbuf.data,
-												plength);
+						pstring = pg_client_to_server(pbuf.data, plength);
 						params[i].value =
 							OidFunctionCall3(typinput,
 											 CStringGetDatum(pstring),

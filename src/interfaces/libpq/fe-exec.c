@@ -2429,7 +2429,7 @@ PQescapeBytea(const unsigned char *bintext, size_t binlen, size_t *bytealen)
 	{
 		if (*vp < 0x20 || *vp > 0x7e)
 		{
-			(void) sprintf(rp, "\\\\%03o", *vp);
+			(void) sprintf((char *) rp, "\\\\%03o", *vp);
 			rp += 5;
 		}
 		else if (*vp == '\'')
@@ -2483,7 +2483,7 @@ PQunescapeBytea(const unsigned char *strtext, size_t *retbuflen)
 	if (strtext == NULL)
 		return NULL;
 
-	strtextlen = strlen(strtext);
+	strtextlen = strlen((const char *) strtext);
 
 	/*
 	 * Length of input is max length of output, but add one to avoid

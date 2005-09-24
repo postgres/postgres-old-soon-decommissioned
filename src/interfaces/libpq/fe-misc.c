@@ -1092,7 +1092,7 @@ pqSocketPoll(int sock, int forRead, int forWrite, time_t end_time)
  * specified encoding.
  */
 int
-PQmblen(const unsigned char *s, int encoding)
+PQmblen(const char *s, int encoding)
 {
 	return (pg_encoding_mblen(encoding, s));
 }
@@ -1102,7 +1102,7 @@ PQmblen(const unsigned char *s, int encoding)
  * specified encoding.
  */
 int
-PQdsplen(const unsigned char *s, int encoding)
+PQdsplen(const char *s, int encoding)
 {
 	return (pg_encoding_dsplen(encoding, s));
 }

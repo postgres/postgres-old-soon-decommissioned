@@ -421,7 +421,7 @@ LocalToUtf(unsigned char *iso, unsigned char *utf,
 			continue;
 		}
 
-		l = pg_encoding_mblen(encoding, iso);
+		l = pg_encoding_mblen(encoding, (char *) iso);
 
 		if (l == 1)
 			iiso = *iso++;

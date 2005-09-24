@@ -4,10 +4,8 @@
 
 #include "mb/pg_wchar.h"
 
-pg_wchar	utf2ucs(const unsigned char *c);
+extern char *mbvalidate(char *pwcs, int encoding);
 
-unsigned char *mbvalidate(unsigned char *pwcs, int encoding);
-
-int			pg_wcswidth(unsigned char *pwcs, size_t len, int encoding);
+extern int	pg_wcswidth(const char *pwcs, size_t len, int encoding);
 
 #endif   /* MBPRINT_H */

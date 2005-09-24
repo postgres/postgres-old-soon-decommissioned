@@ -555,7 +555,7 @@ varbit_send(PG_FUNCTION_ARGS)
 
 	pq_begintypsend(&buf);
 	pq_sendint(&buf, VARBITLEN(s), sizeof(int32));
-	pq_sendbytes(&buf, VARBITS(s), VARBITBYTES(s));
+	pq_sendbytes(&buf, (char *) VARBITS(s), VARBITBYTES(s));
 	PG_RETURN_BYTEA_P(pq_endtypsend(&buf));
 }
 

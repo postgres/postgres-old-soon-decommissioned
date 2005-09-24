@@ -473,9 +473,7 @@ parse_fcall_arguments(StringInfo msgBuf, struct fp_info * fip,
 			 * have to do encoding conversion before calling the typinput
 			 * routine, though.
 			 */
-			pstring = (char *)
-				pg_client_to_server((unsigned char *) abuf.data,
-									argsize);
+			pstring = pg_client_to_server(abuf.data, argsize);
 			fcinfo->arg[i] =
 				OidFunctionCall3(typinput,
 								 CStringGetDatum(pstring),

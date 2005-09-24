@@ -36,8 +36,8 @@ extern Datum utf8_to_uhc(PG_FUNCTION_ARGS);
 Datum
 uhc_to_utf8(PG_FUNCTION_ARGS)
 {
-	unsigned char *src = PG_GETARG_CSTRING(2);
-	unsigned char *dest = PG_GETARG_CSTRING(3);
+	unsigned char *src = (unsigned char *) PG_GETARG_CSTRING(2);
+	unsigned char *dest = (unsigned char *) PG_GETARG_CSTRING(3);
 	int			len = PG_GETARG_INT32(4);
 
 	Assert(PG_GETARG_INT32(0) == PG_UHC);
@@ -53,8 +53,8 @@ uhc_to_utf8(PG_FUNCTION_ARGS)
 Datum
 utf8_to_uhc(PG_FUNCTION_ARGS)
 {
-	unsigned char *src = PG_GETARG_CSTRING(2);
-	unsigned char *dest = PG_GETARG_CSTRING(3);
+	unsigned char *src = (unsigned char *) PG_GETARG_CSTRING(2);
+	unsigned char *dest = (unsigned char *) PG_GETARG_CSTRING(3);
 	int			len = PG_GETARG_INT32(4);
 
 	Assert(PG_GETARG_INT32(0) == PG_UTF8);
