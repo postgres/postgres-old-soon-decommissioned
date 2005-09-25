@@ -1607,6 +1607,13 @@ ECPG = ecpg
      useful when searching for errors in your <acronym>SQL</acronym>
      statements.
     </para>
+    <note>
+    <para>
+    On Win32, if the <application>ecpg</> libraries and application are compiled with
+    different flags, this function call will crash the application because the
+    internal representation of the <literal>FILE</> pointers differ.
+    </para>
+    </note>
    </listitem>
 
    <listitem>
