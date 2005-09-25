@@ -3517,9 +3517,10 @@ void PQtrace(PGconn *conn, FILE *stream);
 </para>
 <note>
 <para>
-On Win32, if the <application>libpq</> library and application are compiled with
-different flags, this function call will crash the application because the
-internal representation of the <literal>FILE</> pointers differ.
+On Win32, if the <application>libpq</> library and an application are
+compiled with different flags, this function call will crash the 
+application because the internal representation of the <literal>FILE</> 
+pointers differ.
 </para>
 </note>
 </listitem>

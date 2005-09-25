@@ -1609,9 +1609,10 @@ ECPG = ecpg
     </para>
     <note>
     <para>
-    On Win32, if the <application>ecpg</> libraries and application are compiled with
-    different flags, this function call will crash the application because the
-    internal representation of the <literal>FILE</> pointers differ.
+    On Win32, if the <application>ecpg</> libraries and an application are
+    compiled with different flags, this function call will crash the 
+    application because the internal representation of the 
+    <literal>FILE</> pointers differ.
     </para>
     </note>
    </listitem>
