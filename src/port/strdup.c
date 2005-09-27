@@ -19,10 +19,12 @@
 
 
 char *
-strdup(char const * string)
+strdup(const char *string)
 {
 	char	   *nstr;
 
-	nstr = strcpy((char *) malloc(strlen(string) + 1), string);
+	nstr = (char *) malloc(strlen(string) + 1);
+	if (nstr)
+		strcpy(nstr, string);
 	return nstr;
 }
