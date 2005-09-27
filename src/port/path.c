@@ -538,6 +538,24 @@ get_locale_path(const char *my_exec_path, char *ret_path)
 	make_relative_path(ret_path, LOCALEDIR, PGBINDIR, my_exec_path);
 }
 
+/*
+ *	get_doc_path
+ */
+void
+get_doc_path(const char *my_exec_path, char *ret_path)
+{
+	make_relative_path(ret_path, DOCDIR, PGBINDIR, my_exec_path);
+}
+
+/*
+ *	get_man_path
+ */
+void
+get_man_path(const char *my_exec_path, char *ret_path)
+{
+	make_relative_path(ret_path, MANDIR, PGBINDIR, my_exec_path);
+}
+
 
 /*
  *	get_home_path

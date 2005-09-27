@@ -81,6 +81,8 @@ pg_config_paths.h: $(top_builddir)/src/Makefile.global
 	echo "#define LIBDIR \"$(libdir)\"" >>$@
 	echo "#define PKGLIBDIR \"$(pkglibdir)\"" >>$@
 	echo "#define LOCALEDIR \"$(localedir)\"" >>$@
+	echo "#define DOCDIR \"$(docdir)\"" >>$@
+	echo "#define MANDIR \"$(mandir)\"" >>$@
 
 clean distclean maintainer-clean:
 	rm -f libpgport.a libpgport_srv.a $(LIBOBJS) $(LIBOBJS_SRV) pg_config_paths.h
