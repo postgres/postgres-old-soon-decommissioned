@@ -1044,7 +1044,7 @@ pg_[A-Za-z0-9_]                 <application>
 
       <listitem>
        <para>
-        Add <function>to_timestamp(DOUBLE PRECISION)</>
+        Add <function>to_timestamp(DOUBLE PRECISION) (Michael Glaesemann)</>
        </para>
        <para>
         Converts Unix seconds since 1970 to a <type>TIMESTAMP WITH
