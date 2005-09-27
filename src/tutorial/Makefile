@@ -24,7 +24,7 @@ top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 include $(top_srcdir)/src/makefiles/pgxs.mk
 else
-PGXS = $(shell pg_config --pgxs)
+PGXS := $(shell pg_config --pgxs)
 include $(PGXS)
 endif
 

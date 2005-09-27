@@ -5,7 +5,7 @@ SUBOBJS = spell.o regis.o
 EXTRA_CLEAN = SUBSYS.o $(SUBOBJS)
 
 ifdef USE_PGXS
-PGXS = $(shell pg_config --pgxs)
+PGXS := $(shell pg_config --pgxs)
 include $(PGXS)
 else
 subdir = contrib/tsearch2

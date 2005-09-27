@@ -8,7 +8,7 @@ REGRESS = earthdistance
 SHLIB_LINK += $(filter -lm, $(LIBS))
 
 ifdef USE_PGXS
-PGXS = $(shell pg_config --pgxs)
+PGXS := $(shell pg_config --pgxs)
 include $(PGXS)
 else
 subdir = contrib/earthdistance

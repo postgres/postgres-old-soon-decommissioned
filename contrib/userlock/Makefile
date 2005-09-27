@@ -5,7 +5,7 @@ DATA_built = user_locks.sql
 DOCS = README.user_locks
 
 ifdef USE_PGXS
-PGXS = $(shell pg_config --pgxs)
+PGXS := $(shell pg_config --pgxs)
 include $(PGXS)
 else
 subdir = contrib/userlock

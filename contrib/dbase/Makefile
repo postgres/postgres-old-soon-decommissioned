@@ -16,7 +16,7 @@ MAN = dbf2pg.1			# XXX not implemented
 
 
 ifdef USE_PGXS
-PGXS = $(shell pg_config --pgxs)
+PGXS := $(shell pg_config --pgxs)
 include $(PGXS)
 else
 subdir = contrib/dbase

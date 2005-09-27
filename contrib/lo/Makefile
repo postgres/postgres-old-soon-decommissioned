@@ -6,7 +6,7 @@ DATA = lo_drop.sql lo_test.sql
 DOCS = README.lo
 
 ifdef USE_PGXS
-PGXS = $(shell pg_config --pgxs)
+PGXS := $(shell pg_config --pgxs)
 include $(PGXS)
 else
 subdir = contrib/lo

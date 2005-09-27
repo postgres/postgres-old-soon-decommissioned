@@ -9,7 +9,7 @@ REGRESS = seg
 EXTRA_CLEAN = segparse.c segparse.h segscan.c y.tab.c y.tab.h
 
 ifdef USE_PGXS
-PGXS = $(shell pg_config --pgxs)
+PGXS := $(shell pg_config --pgxs)
 include $(PGXS)
 else
 subdir = contrib/seg

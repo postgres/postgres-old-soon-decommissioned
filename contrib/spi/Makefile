@@ -9,7 +9,7 @@ DOCS	= README.spi $(addsuffix .example, $(MODULES))
 PG_CPPFLAGS = -DREFINT_VERBOSE
 
 ifdef USE_PGXS
-PGXS = $(shell pg_config --pgxs)
+PGXS := $(shell pg_config --pgxs)
 include $(PGXS)
 else
 subdir = contrib/spi

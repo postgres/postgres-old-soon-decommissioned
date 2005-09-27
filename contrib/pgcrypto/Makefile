@@ -44,7 +44,7 @@ REGRESS = init md5 sha1 hmac-md5 hmac-sha1 blowfish rijndael \
 
 
 ifdef USE_PGXS
-PGXS = $(shell pg_config --pgxs)
+PGXS := $(shell pg_config --pgxs)
 include $(PGXS)
 else
 subdir = contrib/pgcrypto

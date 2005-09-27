@@ -14,7 +14,7 @@ DOCS		= README.pgstattuple README.pgstattuple.euc_jp
 DATA_built	= pgstattuple.sql
 
 ifdef USE_PGXS
-PGXS = $(shell pg_config --pgxs)
+PGXS := $(shell pg_config --pgxs)
 include $(PGXS)
 else
 subdir = contrib/pgstattuple

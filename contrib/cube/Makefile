@@ -12,7 +12,7 @@ EXTRA_CLEAN = cubeparse.c cubeparse.h cubescan.c y.tab.c y.tab.h
 SHLIB_LINK += $(filter -lm, $(LIBS))
 
 ifdef USE_PGXS
-PGXS = $(shell pg_config --pgxs)
+PGXS := $(shell pg_config --pgxs)
 include $(PGXS)
 else
 subdir = contrib/cube
