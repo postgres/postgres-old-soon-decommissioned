@@ -205,6 +205,11 @@ distclean maintainer-clean: clean
 
 ifdef REGRESS
 
+# Calling makefile can set REGRESS_OPTS, but this is the default:
+ifndef REGRESS_OPTS
+REGRESS_OPTS = --dbname=$(CONTRIB_TESTDB)
+endif
+
 # When doing a VPATH build, must copy over the test .sql and .out
 # files so that the driver script can find them.  We have to use an
 # absolute path for the targets, because otherwise make will try to
@@ -224,7 +229,9 @@ endif # VPATH
 
 .PHONY: submake
 submake:
+ifndef PGXS
 	$(MAKE) -C $(top_builddir)/src/test/regress pg_regress
+endif
 
 # against installed postmaster
 installcheck: submake
