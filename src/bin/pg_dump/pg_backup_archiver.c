@@ -304,7 +304,7 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 
 					if (strcmp(te->desc, "BLOBS") == 0)
 					{
-						ahlog(AH, 1, "restoring blob data\n");
+						ahlog(AH, 1, "restoring large object data\n");
 
 						_selectOutputSchema(AH, "pg_catalog");
 
