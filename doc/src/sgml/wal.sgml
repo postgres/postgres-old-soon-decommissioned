@@ -14,7 +14,7 @@
    disk drives for permanent storage that is immune to the failures
    listed above. In fact, a computer can be completely destroyed, but if
    the disk drives survive they can be moved to another computer with
-   similar hardware and all committed transaction will remain intact.
+   similar hardware and all committed transactions will remain intact.
   </para>
 
   <para>
