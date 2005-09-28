@@ -133,7 +133,7 @@ query_planner(Query *root, List *tlist, double tuple_fraction,
 	 */
 	build_base_rel_tlists(root, tlist);
 
-	(void) distribute_quals_to_rels(root, (Node *) root->jointree);
+	(void) distribute_quals_to_rels(root, (Node *) root->jointree, false);
 
 	/*
 	 * Use the completed lists of equijoined keys to deduce any implied
