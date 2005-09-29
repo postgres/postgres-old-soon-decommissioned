@@ -110,7 +110,7 @@
   </sect1>
 
   <sect1 id="wal-benefits">
-   <title>Benefits of <acronym>WAL</acronym></title>
+   <title>Benefits of Write-Ahead Logging</title>
 
    <indexterm zone="wal-benefits">
     <primary>fsync</primary>
