@@ -186,7 +186,7 @@ PostgreSQL documentation
 
      <varlistentry>
       <term><option>-c <replaceable class="parameter">number</replaceable></></term>
-      <term><option>--conn-limit <replaceable class="parameter">number</replaceable></></term>
+      <term><option>--connection-limit <replaceable class="parameter">number</replaceable></></term>
       <listitem>
        <para>
         Set a maximum number of connections for the new user.
