@@ -143,9 +143,9 @@ main(int argc, char *argv[])
 static void
 help(const char *progname)
 {
-	printf(_("%s removes a PostgreSQL user.\n\n"), progname);
+	printf(_("%s removes a PostgreSQL role.\n\n"), progname);
 	printf(_("Usage:\n"));
-	printf(_("  %s [OPTION]... [USERNAME]\n"), progname);
+	printf(_("  %s [OPTION]... [ROLENAME]\n"), progname);
 	printf(_("\nOptions:\n"));
 	printf(_("  -e, --echo                show the commands being sent to the server\n"));
 	printf(_("  -i, --interactive         prompt before deleting anything\n"));
