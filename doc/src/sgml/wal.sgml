@@ -76,8 +76,8 @@
   </para>
  
   <para>
-   The following sections into detail about how the Write-Ahead Log
-   is used to obtain efficient, reliable operation.
+   The following sections explain how the Write-Ahead Log is used to 
+   obtain efficient, reliable operation.
   </para>
 
   <sect1 id="wal">
