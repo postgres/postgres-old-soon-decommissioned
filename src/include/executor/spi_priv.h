@@ -18,8 +18,11 @@
 
 typedef struct
 {
+	/* current results */
 	uint32		processed;		/* by Executor */
+	Oid			lastoid;
 	SPITupleTable *tuptable;
+
 	MemoryContext procCxt;		/* procedure context */
 	MemoryContext execCxt;		/* executor context */
 	MemoryContext savedcxt;
