@@ -1030,6 +1030,59 @@ find_expr_references_walker(Node *node,
 		}
 		return false;
 	}
+	if (IsA(node, Const))
+	{
+		Const	   *con = (Const *) node;
+		Oid			objoid;
+
+		/*
+		 * If it's a regclass or similar literal referring to an existing
+		 * object, add a reference to that object.  (Currently, only the
+		 * regclass case has any likely use, but we may as well handle all
+		 * the OID-alias datatypes consistently.)
+		 */
+		if (!con->constisnull)
+		{
+			switch (con->consttype)
+			{
+				case REGPROCOID:
+				case REGPROCEDUREOID:
+					objoid = DatumGetObjectId(con->constvalue);
+					if (SearchSysCacheExists(PROCOID,
+											 ObjectIdGetDatum(objoid),
+											 0, 0, 0))
+						add_object_address(OCLASS_PROC, objoid, 0,
+										   &context->addrs);
+					break;
+				case REGOPEROID:
+				case REGOPERATOROID:
+					objoid = DatumGetObjectId(con->constvalue);
+					if (SearchSysCacheExists(OPEROID,
+											 ObjectIdGetDatum(objoid),
+											 0, 0, 0))
+						add_object_address(OCLASS_OPERATOR, objoid, 0,
+										   &context->addrs);
+					break;
+				case REGCLASSOID:
+					objoid = DatumGetObjectId(con->constvalue);
+					if (SearchSysCacheExists(RELOID,
+											 ObjectIdGetDatum(objoid),
+											 0, 0, 0))
+						add_object_address(OCLASS_CLASS, objoid, 0,
+										   &context->addrs);
+					break;
+				case REGTYPEOID:
+					objoid = DatumGetObjectId(con->constvalue);
+					if (SearchSysCacheExists(TYPEOID,
+											 ObjectIdGetDatum(objoid),
+											 0, 0, 0))
+						add_object_address(OCLASS_TYPE, objoid, 0,
+										   &context->addrs);
+					break;
+			}
+		}
+		return false;
+	}
 	if (IsA(node, FuncExpr))
 	{
 		FuncExpr   *funcexpr = (FuncExpr *) node;

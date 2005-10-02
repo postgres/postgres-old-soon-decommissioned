@@ -3114,6 +3114,18 @@ SELECT * FROM pg_attribute
    </para>
 
    <para>
+    An additional property of the OID alias types is that if a
+    constant of one of these types appears in a stored expression
+    (such as a column default expression or view), it creates a dependency
+    on the referenced object.  For example, if a column has a default
+    expression <literal>nextval('my_seq'::regclass)</>,
+    <productname>PostgreSQL</productname>
+    understands that the default expression depends on the sequence
+    <literal>my_seq</>; the system will not let the sequence be dropped
+    without first removing the default expression.
+   </para>
+
+   <para>
     Another identifier type used by the system is <type>xid</>, or transaction
     (abbreviated <abbrev>xact</>) identifier.  This is the data type of the system columns
     <structfield>xmin</> and <structfield>xmax</>.  Transaction identifiers are 32-bit quantities.

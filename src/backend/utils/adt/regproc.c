@@ -1090,6 +1090,23 @@ regtypesend(PG_FUNCTION_ARGS)
 
 
 /*
+ * text_regclass: convert text to regclass
+ */
+Datum
+text_regclass(PG_FUNCTION_ARGS)
+{
+	text	   *relname = PG_GETARG_TEXT_P(0);
+	Oid			result;
+	RangeVar   *rv;
+
+	rv = makeRangeVarFromNameList(textToQualifiedNameList(relname));
+	result = RangeVarGetRelid(rv, false);
+
+	PG_RETURN_OID(result);
+}
+
+
+/*
  * Given a C string, parse it into a qualified-name list.
  */
 List *

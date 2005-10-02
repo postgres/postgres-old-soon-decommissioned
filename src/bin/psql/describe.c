@@ -763,7 +763,8 @@ describeOneTableDetails(const char *schemaname,
 	/* Get column info (index requires additional checks) */
 	printfPQExpBuffer(&buf, "SELECT a.attname,");
 	appendPQExpBuffer(&buf, "\n  pg_catalog.format_type(a.atttypid, a.atttypmod),"
-	"\n  (SELECT substring(d.adsrc for 128) FROM pg_catalog.pg_attrdef d"
+					  "\n  (SELECT substring(pg_catalog.pg_get_expr(d.adbin, d.adrelid) for 128)"
+					  "\n   FROM pg_catalog.pg_attrdef d"
 					  "\n   WHERE d.adrelid = a.attrelid AND d.adnum = a.attnum AND a.atthasdef),"
 					  "\n  a.attnotnull, a.attnum");
 	if (verbose)

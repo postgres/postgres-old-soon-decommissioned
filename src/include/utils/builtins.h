@@ -482,6 +482,7 @@ extern Datum regtypein(PG_FUNCTION_ARGS);
 extern Datum regtypeout(PG_FUNCTION_ARGS);
 extern Datum regtyperecv(PG_FUNCTION_ARGS);
 extern Datum regtypesend(PG_FUNCTION_ARGS);
+extern Datum text_regclass(PG_FUNCTION_ARGS);
 extern List *stringToQualifiedNameList(const char *string, const char *caller);
 extern char *format_procedure(Oid procedure_oid);
 extern char *format_operator(Oid operator_oid);
