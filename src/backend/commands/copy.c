@@ -900,7 +900,8 @@ DoCopy(const CopyStmt *stmt)
 	rel = heap_openrv(relation, (is_from ? RowExclusiveLock : AccessShareLock));
 
 	/* check read-only transaction */
-	if (XactReadOnly && !is_from && !isTempNamespace(RelationGetNamespace(rel)))
+	if (XactReadOnly && is_from &&
+		!isTempNamespace(RelationGetNamespace(rel)))
 		ereport(ERROR,
 				(errcode(ERRCODE_READ_ONLY_SQL_TRANSACTION),
 				 errmsg("transaction is read-only")));
@@ -2395,6 +2396,7 @@ CopyReadAttributeCSV(const char *delim, const char *null_print, char *quote,
 			if (done && line_buf.len == 0)
 				break;
 			start_cursor = line_buf.cursor;
+			continue;
 		}
 
 		end_cursor = line_buf.cursor;
