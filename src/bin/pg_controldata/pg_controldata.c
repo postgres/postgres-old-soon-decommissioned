@@ -168,6 +168,8 @@ main(int argc, char *argv[])
 	printf(_("Latest checkpoint's NextMultiXactId:  %u\n"), ControlFile.checkPointCopy.nextMulti);
 	printf(_("Latest checkpoint's NextMultiOffset:  %u\n"), ControlFile.checkPointCopy.nextMultiOffset);
 	printf(_("Time of latest checkpoint:            %s\n"), ckpttime_str);
+	printf(_("Maximum data alignment:               %u\n"), ControlFile.maxAlign);
+	/* we don't print floatFormat since can't say much useful about it */
 	printf(_("Database block size:                  %u\n"), ControlFile.blcksz);
 	printf(_("Blocks per segment of large relation: %u\n"), ControlFile.relseg_size);
 	printf(_("Bytes per WAL segment:                %u\n"), ControlFile.xlog_seg_size);
