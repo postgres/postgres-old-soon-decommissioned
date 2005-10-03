@@ -35,6 +35,7 @@
 #include "commands/tablecmds.h"
 #include "commands/tablespace.h"
 #include "commands/trigger.h"
+#include "commands/typecmds.h"
 #include "executor/executor.h"
 #include "lib/stringinfo.h"
 #include "miscadmin.h"
@@ -2434,6 +2435,9 @@ ATRewriteTable(AlteredTableInfo *tab, Oid OIDNewHeap)
 		TupleTableSlot *newslot;
 		HeapScanDesc scan;
 		HeapTuple	tuple;
+		MemoryContext oldCxt;
+		List *dropped_attrs = NIL;
+		ListCell *lc;
 
 		econtext = GetPerTupleExprContext(estate);
 
@@ -2455,28 +2459,43 @@ ATRewriteTable(AlteredTableInfo *tab, Oid OIDNewHeap)
 		memset(nulls, 'n', i * sizeof(char));
 
 		/*
+		 * Any attributes that are dropped according to the new tuple
+		 * descriptor can be set to NULL. We precompute the list of
+		 * dropped attributes to avoid needing to do so in the
+		 * per-tuple loop.
+		 */
+		for (i = 0; i < newTupDesc->natts; i++)
+		{
+			if (newTupDesc->attrs[i]->attisdropped)
+				dropped_attrs = lappend_int(dropped_attrs, i);
+		}
+
+		/*
 		 * Scan through the rows, generating a new row if needed and then
 		 * checking all the constraints.
 		 */
 		scan = heap_beginscan(oldrel, SnapshotNow, 0, NULL);
 
+		/*
+		 * Switch to per-tuple memory context and reset it for each
+		 * tuple produced, so we don't leak memory.
+		 */
+		oldCxt = MemoryContextSwitchTo(GetPerTupleMemoryContext(estate));
+
 		while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 		{
 			if (newrel)
 			{
-				/*
-				 * Extract data from old tuple.  We can force to null any
-				 * columns that are deleted according to the new tuple.
-				 */
-				int			natts = newTupDesc->natts;
+				Oid		tupOid = InvalidOid;
 
+				/* Extract data from old tuple */
 				heap_deformtuple(tuple, oldTupDesc, values, nulls);
+				if (oldTupDesc->tdhasoid)
+					tupOid = HeapTupleGetOid(tuple);
 
-				for (i = 0; i < natts; i++)
-				{
-					if (newTupDesc->attrs[i]->attisdropped)
-						nulls[i] = 'n';
-				}
+				/* Set dropped attributes to null in new tuple */
+				foreach (lc, dropped_attrs)
+					nulls[lfirst_int(lc)] = 'n';
 
 				/*
 				 * Process supplied expressions to replace selected
@@ -2500,7 +2519,16 @@ ATRewriteTable(AlteredTableInfo *tab, Oid OIDNewHeap)
 						nulls[ex->attnum - 1] = ' ';
 				}
 
+				/*
+				 * Form the new tuple. Note that we don't explicitly
+				 * pfree it, since the per-tuple memory context will
+				 * be reset shortly.
+				 */
 				tuple = heap_formtuple(newTupDesc, values, nulls);
+
+				/* Preserve OID, if any */
+				if (newTupDesc->tdhasoid)
+					HeapTupleSetOid(tuple, tupOid);
 			}
 
 			/* Now check any constraints on the possibly-changed tuple */
@@ -2546,17 +2574,14 @@ ATRewriteTable(AlteredTableInfo *tab, Oid OIDNewHeap)
 
 			/* Write the tuple out to the new relation */
 			if (newrel)
-			{
 				simple_heap_insert(newrel, tuple);
-
-				heap_freetuple(tuple);
-			}
 
 			ResetExprContext(econtext);
 
 			CHECK_FOR_INTERRUPTS();
 		}
 
+		MemoryContextSwitchTo(oldCxt);
 		heap_endscan(scan);
 	}
 
@@ -2853,6 +2878,7 @@ ATExecAddColumn(AlteredTableInfo *tab, Relation rel,
 	int			minattnum,
 				maxatts;
 	HeapTuple	typeTuple;
+	Oid			typeOid;
 	Form_pg_type tform;
 	Expr	   *defval;
 
@@ -2930,9 +2956,10 @@ ATExecAddColumn(AlteredTableInfo *tab, Relation rel,
 
 	typeTuple = typenameType(colDef->typename);
 	tform = (Form_pg_type) GETSTRUCT(typeTuple);
+	typeOid = HeapTupleGetOid(typeTuple);
 
 	/* make sure datatype is legal for a column */
-	CheckAttributeType(colDef->colname, HeapTupleGetOid(typeTuple));
+	CheckAttributeType(colDef->colname, typeOid);
 
 	attributeTuple = heap_addheader(Natts_pg_attribute,
 									false,
@@ -2943,7 +2970,7 @@ ATExecAddColumn(AlteredTableInfo *tab, Relation rel,
 
 	attribute->attrelid = myrelid;
 	namestrcpy(&(attribute->attname), colDef->colname);
-	attribute->atttypid = HeapTupleGetOid(typeTuple);
+	attribute->atttypid = typeOid;
 	attribute->attstattarget = -1;
 	attribute->attlen = tform->typlen;
 	attribute->attcacheoff = -1;
@@ -3015,11 +3042,37 @@ ATExecAddColumn(AlteredTableInfo *tab, Relation rel,
 	 * and return NULL if so, so without any modification of the tuple
 	 * data we will get the effect of NULL values in the new column.
 	 *
+	 * An exception occurs when the new column is of a domain type: the
+	 * domain might have a NOT NULL constraint, or a check constraint that
+	 * indirectly rejects nulls.  If there are any domain constraints then
+	 * we construct an explicit NULL default value that will be passed through
+	 * CoerceToDomain processing.  (This is a tad inefficient, since it
+	 * causes rewriting the table which we really don't have to do, but
+	 * the present design of domain processing doesn't offer any simple way
+	 * of checking the constraints more directly.)
+	 *
 	 * Note: we use build_column_default, and not just the cooked default
 	 * returned by AddRelationRawConstraints, so that the right thing
 	 * happens when a datatype's default applies.
 	 */
 	defval = (Expr *) build_column_default(rel, attribute->attnum);
+
+	if (!defval && GetDomainConstraints(typeOid) != NIL)
+	{
+		Oid		basetype = getBaseType(typeOid);
+
+		defval = (Expr *) makeNullConst(basetype);
+		defval = (Expr *) coerce_to_target_type(NULL,
+												(Node *) defval,
+												basetype,
+												typeOid,
+												colDef->typename->typmod,
+												COERCION_ASSIGNMENT,
+												COERCE_IMPLICIT_CAST);
+		if (defval == NULL)		/* should not happen */
+			elog(ERROR, "failed to coerce base type to domain");
+	}
+
 	if (defval)
 	{
 		NewColumnValue *newval;
@@ -5311,7 +5364,7 @@ change_owner_recurse_to_sequences(Oid relationOid, int32 newOwnerSysId)
 	 * SERIAL sequences are those having an internal dependency on one
 	 * of the table's columns (we don't care *which* column, exactly).
 	 */
-	depRel = heap_openr(DependRelationName, RowExclusiveLock);
+	depRel = heap_openr(DependRelationName, AccessShareLock);
 
 	ScanKeyInit(&key[0],
 			Anum_pg_depend_refclassid,
@@ -5357,6 +5410,8 @@ change_owner_recurse_to_sequences(Oid relationOid, int32 newOwnerSysId)
 	}
 
 	systable_endscan(scan);
+
+	relation_close(depRel, AccessShareLock);
 }
 
 /*
