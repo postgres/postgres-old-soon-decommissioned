@@ -92,6 +92,9 @@ extern int	CommitDelay;
 extern int	CommitSiblings;
 extern char *default_tablespace;
 extern bool	fullPageWrites;
+#ifdef TRACE_SORT
+extern bool	trace_sort;
+#endif
 
 static const char *assign_log_destination(const char *value,
 					   bool doit, GucSource source);
@@ -890,6 +893,18 @@ static struct config_bool ConfigureNamesBool[] =
 		&Log_truncate_on_rotation,
 		false, NULL, NULL
 	},
+
+#ifdef TRACE_SORT
+	{
+		{"trace_sort", PGC_USERSET, DEVELOPER_OPTIONS,
+			gettext_noop("Emit information about resource usage in sorting."),
+			NULL,
+			GUC_NOT_IN_SAMPLE
+		},
+		&trace_sort,
+		false, NULL, NULL
+	},
+#endif
 
 #ifdef WAL_DEBUG
 	{
