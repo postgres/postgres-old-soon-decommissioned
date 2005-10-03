@@ -752,7 +752,8 @@ DoCopy(const CopyStmt *stmt)
 	rel = heap_openrv(relation, (is_from ? RowExclusiveLock : AccessShareLock));
 
 	/* check read-only transaction */
-	if (XactReadOnly && !is_from && !isTempNamespace(RelationGetNamespace(rel)))
+	if (XactReadOnly && is_from &&
+		!isTempNamespace(RelationGetNamespace(rel)))
 		ereport(ERROR,
 				(errcode(ERRCODE_READ_ONLY_SQL_TRANSACTION),
 				 errmsg("transaction is read-only")));
