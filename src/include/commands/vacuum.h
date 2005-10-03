@@ -14,14 +14,6 @@
 #ifndef VACUUM_H
 #define VACUUM_H
 
-#include <sys/time.h>
-
-#ifdef HAVE_GETRUSAGE
-#include <sys/resource.h>
-#else
-#include "rusagestub.h"
-#endif
-
 #include "access/htup.h"
 #include "catalog/pg_attribute.h"
 #include "catalog/pg_statistic.h"
@@ -113,13 +105,6 @@ typedef struct VacAttrStats
 } VacAttrStats;
 
 
-/* State structure for vac_init_rusage/vac_show_rusage */
-typedef struct VacRUsage
-{
-	struct timeval tv;
-	struct rusage ru;
-} VacRUsage;
-
 /* Default statistics target (GUC parameter) */
 extern DLLIMPORT int default_statistics_target; /* DLLIMPORT for PostGIS */
 
@@ -137,8 +122,6 @@ extern void vacuum_set_xid_limits(VacuumStmt *vacstmt, bool sharedRel,
 					  TransactionId *oldestXmin,
 					  TransactionId *freezeLimit);
 extern bool vac_is_partial_index(Relation indrel);
-extern void vac_init_rusage(VacRUsage *ru0);
-extern const char *vac_show_rusage(VacRUsage *ru0);
 extern void vacuum_delay_point(void);
 
 /* in commands/vacuumlazy.c */

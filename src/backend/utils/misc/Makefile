@@ -14,7 +14,7 @@ include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 
-OBJS = guc.o help_config.o ps_status.o superuser.o
+OBJS = guc.o help_config.o pg_rusage.o ps_status.o superuser.o
 
 # This location might depend on the installation directories. Therefore
 # we can't subsitute it into pg_config.h.
