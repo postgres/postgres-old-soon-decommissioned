@@ -393,7 +393,7 @@ pg_[A-Za-z0-9_]                 <application>
 
      <listitem>
       <para>
-       <varname>Add proper sequence function dependencies for <command>
+       Add proper sequence function dependencies for <command>
        DEFAULT</> clauses (Tom)
       </para>
       <para>
