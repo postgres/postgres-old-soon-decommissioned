@@ -857,7 +857,7 @@ DoCopy(const CopyStmt *stmt)
 							  (is_from ? RowExclusiveLock : AccessShareLock));
 
 	/* check read-only transaction */
-	if (XactReadOnly && !is_from &&
+	if (XactReadOnly && is_from &&
 		!isTempNamespace(RelationGetNamespace(cstate->rel)))
 		ereport(ERROR,
 				(errcode(ERRCODE_READ_ONLY_SQL_TRANSACTION),
