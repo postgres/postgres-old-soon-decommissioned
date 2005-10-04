@@ -1579,7 +1579,7 @@ printTable(const char *title,
 									border, output);
 			break;
 		default:
-			fprintf(stderr, _("illegal output format: %d"), opt->format);
+			fprintf(stderr, _("invalid output format (internal error): %d"), opt->format);
 			exit(EXIT_FAILURE);
 	}
 

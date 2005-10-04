@@ -1176,13 +1176,13 @@ describeOneTableDetails(const char *schemaname,
 				{
 					appendPQExpBuffer(&buf, ", ");
 					appendPQExpBuffer(&buf, tmpbuf.data);
-					
+
 					count_footers -= 2;
 				}
 				else
 					count_footers -= 1;
 				termPQExpBuffer(&tmpbuf);
-				
+
 				footers[count_footers++] = pg_strdup(buf.data);
 			}
 		}
@@ -1365,15 +1365,15 @@ add_tablespace_footer(char relkind, Oid tablespace, char **footers,
 				printfPQExpBuffer(&buf, 
 					newline?_("Tablespace: \"%s\""):_("tablespace \"%s\""),
 					PQgetvalue(result1, 0, 0));
-					
+
 				footers[(*count)++] = pg_strdup(buf.data);
 			}
 			PQclear(result1);
-			
+
 			return true;
 		}
 	}
-	
+
 	return false;
 }
 
