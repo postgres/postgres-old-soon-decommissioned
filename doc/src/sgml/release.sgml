@@ -1153,8 +1153,7 @@ psql -t -f fixseq.sql db1 | psql -e db1
         Add <function>pg_column_size()</> (Mark Kirkwood)
        </para>
        <para>
-        This returns storage size of a column, including any
-        compression used.
+        This returns storage size of a column, which might be compressed.
        </para>
       </listitem>
 
