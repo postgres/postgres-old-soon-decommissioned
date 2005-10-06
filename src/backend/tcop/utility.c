@@ -823,7 +823,7 @@ ProcessUtility(Node *parsetree,
 			{
 				ListenStmt *stmt = (ListenStmt *) parsetree;
 
-				Async_Listen(stmt->relation->relname, MyProcPid);
+				Async_Listen(stmt->relation->relname);
 			}
 			break;
 
@@ -831,7 +831,7 @@ ProcessUtility(Node *parsetree,
 			{
 				UnlistenStmt *stmt = (UnlistenStmt *) parsetree;
 
-				Async_Unlisten(stmt->relation->relname, MyProcPid);
+				Async_Unlisten(stmt->relation->relname);
 			}
 			break;
 

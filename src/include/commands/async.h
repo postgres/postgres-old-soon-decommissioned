@@ -16,9 +16,9 @@
 extern bool Trace_notify;
 
 /* notify-related SQL statements */
-extern void Async_Notify(char *relname);
-extern void Async_Listen(char *relname, int pid);
-extern void Async_Unlisten(char *relname, int pid);
+extern void Async_Notify(const char *relname);
+extern void Async_Listen(const char *relname);
+extern void Async_Unlisten(const char *relname);
 
 /* perform (or cancel) outbound notify processing at transaction commit */
 extern void AtCommit_Notify(void);
