@@ -94,9 +94,6 @@ typedef struct TriggerDesc
 typedef struct PgStat_Info
 {
 	void	   *tabentry;
-	bool		no_stats;
-	bool		heap_scan_counted;
-	bool		index_scan_counted;
 } PgStat_Info;
 
 

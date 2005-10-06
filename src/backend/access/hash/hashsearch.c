@@ -15,6 +15,7 @@
 #include "postgres.h"
 
 #include "access/hash.h"
+#include "pgstat.h"
 #include "storage/lmgr.h"
 
 
@@ -129,6 +130,8 @@ _hash_first(IndexScanDesc scan, ScanDirection dir)
 	IndexTuple	itup;
 	ItemPointer current;
 	OffsetNumber offnum;
+
+	pgstat_count_index_scan(&scan->xs_pgstat_info);
 
 	current = &(scan->currentItemData);
 	ItemPointerSetInvalid(current);

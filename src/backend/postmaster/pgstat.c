@@ -1159,17 +1159,11 @@ pgstat_initstats(PgStat_Info *stats, Relation rel)
 	 * Initialize data not to count at all.
 	 */
 	stats->tabentry = NULL;
-	stats->no_stats = FALSE;
-	stats->heap_scan_counted = FALSE;
-	stats->index_scan_counted = FALSE;
 
 	if (pgStatSock < 0 ||
 		!(pgstat_collect_tuplelevel ||
 		  pgstat_collect_blocklevel))
-	{
-		stats->no_stats = TRUE;
 		return;
-	}
 
 	tsarr = rel->rd_rel->relisshared ? &SharedTabStat : &RegularTabStat;
 

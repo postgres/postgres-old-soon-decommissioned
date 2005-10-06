@@ -18,6 +18,8 @@
 #include "access/iqual.h"
 #include "access/relscan.h"
 #include "access/rtree.h"
+#include "pgstat.h"
+
 
 static OffsetNumber findnext(IndexScanDesc s, OffsetNumber n,
 		 ScanDirection dir);
@@ -118,6 +120,7 @@ rtnext(IndexScanDesc s, ScanDirection dir)
 		/* first call: start at the root */
 		Assert(BufferIsValid(so->curbuf) == false);
 		so->curbuf = ReadBuffer(s->indexRelation, P_ROOT);
+		pgstat_count_index_scan(&s->xs_pgstat_info);
 	}
 
 	p = BufferGetPage(so->curbuf);

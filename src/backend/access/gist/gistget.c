@@ -17,7 +17,9 @@
 #include "access/itup.h"
 #include "access/gist_private.h"
 #include "executor/execdebug.h"
+#include "pgstat.h"
 #include "utils/memutils.h"
+
 
 static OffsetNumber gistfindnext(IndexScanDesc scan, OffsetNumber n,
 			 ScanDirection dir);
@@ -161,6 +163,8 @@ gistnext(IndexScanDesc scan, ScanDirection dir, ItemPointer tids, int maxtids, b
 
 		stk->next = NULL;
 		stk->block = GIST_ROOT_BLKNO;
+
+		pgstat_count_index_scan(&scan->xs_pgstat_info);
 	}
 	else if (so->curbuf == InvalidBuffer)
 	{
