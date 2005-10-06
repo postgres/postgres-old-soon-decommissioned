@@ -1570,7 +1570,7 @@ END IF;
 </programlisting>
 
 <programlisting>
-IF v_count > 0 THEN 
+IF v_count &gt; 0 THEN 
     INSERT INTO users_count (count) VALUES (v_count);
     RETURN 't';
 ELSE
@@ -1998,6 +1998,44 @@ END;
       don't use <literal>EXCEPTION</> without need.
      </para>
     </tip>
+
+    <example id="plpgsql-upsert-example">
+    <title>Exceptions with <command>UPDATE</>/<command>INSERT</></title>
+    <para>
+
+
+    This example uses exception handling to perform either
+    <command>UPDATE</> or <command>INSERT</>, as appropriate.
+
+<programlisting>
+CREATE TABLE db (a INT PRIMARY KEY, b TEXT);
+
+CREATE FUNCTION merge_db(key INT, data TEXT) RETURNS VOID AS
+$$
+BEGIN
+    LOOP
+        UPDATE db SET b = data WHERE a = key;
+        IF found THEN
+            RETURN;
+        END IF;
+
+        BEGIN
+            INSERT INTO db(a,b) VALUES (key, data);
+            RETURN;
+        EXCEPTION WHEN unique_violation THEN
+            -- do nothing
+        END;
+    END LOOP;
+END;
+$$
+LANGUAGE plpgsql;
+
+SELECT merge_db(1, 'david');
+SELECT merge_db(1, 'dennis');
+</programlisting>
+
+    </para>
+    </example>
   </sect2>
   </sect1>
 
@@ -3233,7 +3271,7 @@ BEGIN
 
     SELECT count(*) INTO a_running_job_count FROM cs_jobs WHERE end_stamp IS NULL;
 
-    IF a_running_job_count > 0 THEN
+    IF a_running_job_count &gt; 0 THEN
         COMMIT; -- free lock<co id="co.plpgsql-porting-commit">
         raise_application_error(-20000, 'Unable to create a new job: a job is currently running.');
     END IF;
@@ -3299,7 +3337,7 @@ BEGIN
 
     SELECT count(*) INTO a_running_job_count FROM cs_jobs WHERE end_stamp IS NULL;
 
-    IF a_running_job_count > 0 THEN
+    IF a_running_job_count &gt; 0 THEN
         RAISE EXCEPTION 'Unable to create a new job: a job is currently running';<co id="co.plpgsql-porting-raise">
     END IF;
 
@@ -3464,7 +3502,7 @@ DECLARE
     length integer;
     ss_length integer;
 BEGIN
-    IF beg_index > 0 THEN
+    IF beg_index &gt; 0 THEN
         temp_str := substring(string FROM beg_index);
         pos := position(string_to_search IN temp_str);
 
@@ -3478,11 +3516,11 @@ BEGIN
         length := char_length(string);
         beg := length + beg_index - ss_length + 2;
 
-        WHILE beg > 0 LOOP
+        WHILE beg &gt; 0 LOOP
             temp_str := substring(string FROM beg FOR ss_length);
             pos := position(string_to_search IN temp_str);
 
-            IF pos > 0 THEN
+            IF pos &gt; 0 THEN
                 RETURN beg;
             END IF;
 
@@ -3507,7 +3545,7 @@ DECLARE
     length integer;
     ss_length integer;
 BEGIN
-    IF beg_index > 0 THEN
+    IF beg_index &gt; 0 THEN
         beg := beg_index;
         temp_str := substring(string FROM beg_index);
 
@@ -3533,11 +3571,11 @@ BEGIN
         length := char_length(string);
         beg := length + beg_index - ss_length + 2;
 
-        WHILE beg > 0 LOOP
+        WHILE beg &gt; 0 LOOP
             temp_str := substring(string FROM beg FOR ss_length);
             pos := position(string_to_search IN temp_str);
 
-            IF pos > 0 THEN
+            IF pos &gt; 0 THEN
                 occur_number := occur_number + 1;
 
                 IF occur_number = occur_index THEN
