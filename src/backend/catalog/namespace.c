@@ -335,12 +335,28 @@ RelationIsVisible(Oid relid)
 		/*
 		 * If it is in the path, it might still not be visible; it could
 		 * be hidden by another relation of the same name earlier in the
-		 * path. So we must do a slow check to see if this rel would be
-		 * found by RelnameGetRelid.
+		 * path. So we must do a slow check for conflicting relations.
 		 */
 		char	   *relname = NameStr(relform->relname);
+		ListCell   *l;
 
-		visible = (RelnameGetRelid(relname) == relid);
+		visible = false;
+		foreach(l, namespaceSearchPath)
+		{
+			Oid			namespaceId = lfirst_oid(l);
+
+			if (namespaceId == relnamespace)
+			{
+				/* Found it first in path */
+				visible = true;
+				break;
+			}
+			if (OidIsValid(get_relname_relid(relname, namespaceId)))
+			{
+				/* Found something else first in path */
+				break;
+			}
+		}
 	}
 
 	ReleaseSysCache(reltup);
@@ -417,12 +433,31 @@ TypeIsVisible(Oid typid)
 		/*
 		 * If it is in the path, it might still not be visible; it could
 		 * be hidden by another type of the same name earlier in the path.
-		 * So we must do a slow check to see if this type would be found
-		 * by TypenameGetTypid.
+		 * So we must do a slow check for conflicting types.
 		 */
 		char	   *typname = NameStr(typform->typname);
+		ListCell   *l;
 
-		visible = (TypenameGetTypid(typname) == typid);
+		visible = false;
+		foreach(l, namespaceSearchPath)
+		{
+			Oid			namespaceId = lfirst_oid(l);
+
+			if (namespaceId == typnamespace)
+			{
+				/* Found it first in path */
+				visible = true;
+				break;
+			}
+			if (SearchSysCacheExists(TYPENAMENSP,
+									 PointerGetDatum(typname),
+									 ObjectIdGetDatum(namespaceId),
+									 0, 0))
+			{
+				/* Found something else first in path */
+				break;
+			}
+		}
 	}
 
 	ReleaseSysCache(typtup);
