@@ -75,6 +75,11 @@
 #define INDEX_MAX_KEYS		32
 
 /*
+ * Number of spare LWLocks to allocate for user-defined add-on code.
+ */
+#define NUM_USER_DEFINED_LWLOCKS	4
+
+/*
  * Define this to make libpgtcl's "pg_result -assign" command process
  * C-style backslash sequences in returned tuple data and convert
  * PostgreSQL array values into Tcl lists.	CAUTION: This conversion

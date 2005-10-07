@@ -140,7 +140,8 @@ NumLWLocks(void)
 	 */
 	numLocks += 2 * NUM_SLRU_BUFFERS;
 
-	/* Perhaps create a few more for use by user-defined modules? */
+	/* Leave a few extra for use by user-defined modules. */
+	numLocks += NUM_USER_DEFINED_LWLOCKS;
 
 	return numLocks;
 }
