@@ -21,6 +21,8 @@
 
 #include "libpq-fe.h"
 
+#include <ctype.h>
+
 #ifdef WIN32
 #include "win32.h"
 #else
@@ -38,8 +40,6 @@
 /* for getrlimit */
 #include <sys/resource.h>
 #endif   /* ! WIN32 */
-
-#include <ctype.h>
 
 extern char *optarg;
 extern int	optind;
