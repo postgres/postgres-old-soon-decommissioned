@@ -90,14 +90,6 @@ typedef struct IndexScanDescData
 typedef IndexScanDescData *IndexScanDesc;
 
 
-/* ----------------
- *		IndexScanDescPtr is used in the executor where we have to
- *		keep track of several index scans when using several indices
- *		- cim 9/10/89
- * ----------------
- */
-typedef IndexScanDesc *IndexScanDescPtr;
-
 /*
  * HeapScanIsValid
  *		True iff the heap scan is valid.
