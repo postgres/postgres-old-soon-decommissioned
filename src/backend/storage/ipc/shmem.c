@@ -71,8 +71,7 @@ SHMEM_OFFSET ShmemBase;			/* start address of shared memory */
 
 static SHMEM_OFFSET ShmemEnd;	/* end+1 address of shared memory */
 
-NON_EXEC_STATIC slock_t *ShmemLock;		/* spinlock for shared memory
-										 * allocation */
+slock_t *ShmemLock;		/* spinlock for shared memory and LWLock allocation */
 
 NON_EXEC_STATIC slock_t *ShmemIndexLock;		/* spinlock for ShmemIndex */
 
