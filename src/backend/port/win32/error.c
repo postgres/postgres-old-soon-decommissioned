@@ -13,7 +13,7 @@
 
 #include "postgres.h"
 
-static struct
+static const struct
 {
 	DWORD		winerr;
 	int			doserr;
@@ -73,6 +73,9 @@ static struct
 	},
 	{
 		ERROR_LOCK_VIOLATION, EACCES
+	},
+	{
+		ERROR_SHARING_VIOLATION, EACCES
 	},
 	{
 		ERROR_BAD_NETPATH, ENOENT
@@ -168,21 +171,21 @@ _dosmaperr(unsigned long e)
 		return;
 	}
 
-	for (i = 0; i < sizeof(doserrors) / sizeof(doserrors[0]); i++)
+	for (i = 0; i < lengthof(doserrors); i++)
 	{
 		if (doserrors[i].winerr == e)
 		{
 			errno = doserrors[i].doserr;
 			ereport(DEBUG5,
-					(errmsg_internal("Mapped win32 error code %i to %i",
-									 (int) e, errno)));
+					(errmsg_internal("mapped win32 error code %lu to %d",
+									  e, errno)));
 			return;
 		}
 	}
 
-	ereport(DEBUG4,
-			(errmsg_internal("Unknown win32 error code: %i",
-							 (int) e)));
+	ereport(LOG,
+			(errmsg_internal("unrecognized win32 error code: %lu",
+							 e)));
 	errno = EINVAL;
 	return;
 }
