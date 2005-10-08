@@ -280,7 +280,7 @@ pg_krb5_sendauth(char *PQerrormsg, int sock, const char *hostname, const char *s
 	}
 
 	retval = krb5_sendauth(pg_krb5_context, &auth_context,
-						   (krb5_pointer) & sock, "postgres",
+						   (krb5_pointer) & sock, (char *) servicename,
 						   pg_krb5_client, server,
 						   AP_OPTS_MUTUAL_REQUIRED,
 						   NULL, 0,		/* no creds, use ccache instead */
