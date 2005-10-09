@@ -944,10 +944,18 @@ time2tm(TimeADT time, struct pg_tm *tm, fsec_t *fsec)
 #else
 	double		trem;
 
+recalc:
 	trem = time;
 	TMODULO(trem, tm->tm_hour, (double)SECS_PER_HOUR);
 	TMODULO(trem, tm->tm_min, (double)SECS_PER_MINUTE);
 	TMODULO(trem, tm->tm_sec, 1.0);
+	trem = TIMEROUND(trem);
+	/* roundoff may need to propagate to higher-order fields */
+	if (trem >= 1.0)
+	{
+		time = ceil(time);
+		goto recalc;
+	}
 	*fsec = trem;
 #endif
 
@@ -1837,9 +1845,17 @@ timetz2tm(TimeTzADT *time, struct pg_tm *tm, fsec_t *fsec, int *tzp)
 #else
 	double		trem = time->time;
 
+recalc:
 	TMODULO(trem, tm->tm_hour, (double)SECS_PER_HOUR);
 	TMODULO(trem, tm->tm_min, (double)SECS_PER_MINUTE);
 	TMODULO(trem, tm->tm_sec, 1.0);
+	trem = TIMEROUND(trem);
+	/* roundoff may need to propagate to higher-order fields */
+	if (trem >= 1.0)
+	{
+		trem = ceil(time->time);
+		goto recalc;
+	}
 	*fsec = trem;
 #endif
 

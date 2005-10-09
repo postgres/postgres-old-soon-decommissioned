@@ -60,6 +60,10 @@ typedef struct
 
 #define MAX_TIME_PRECISION 10
 
+/* round off to MAX_TIME_PRECISION decimal places */
+#define TIME_PREC_INV 10000000000.0
+#define TIMEROUND(j) (rint(((double) (j)) * TIME_PREC_INV) / TIME_PREC_INV)
+
 #define DatumGetDateADT(X)	  ((DateADT) DatumGetInt32(X))
 #define DatumGetTimeADT(X)	  ((TimeADT) DatumGetFloat8(X))
 #define DatumGetTimeTzADTP(X) ((TimeTzADT *) DatumGetPointer(X))
