@@ -215,6 +215,10 @@ extern bool is_member_of_role(Oid member, Oid role);
 extern bool is_admin_of_role(Oid member, Oid role);
 extern void check_is_member_of_role(Oid member, Oid role);
 
+extern void select_best_grantor(Oid roleId, AclMode privileges,
+								const Acl *acl, Oid ownerId,
+								Oid *grantorId, AclMode *grantOptions);
+
 extern void initialize_acl(void);
 
 /*
