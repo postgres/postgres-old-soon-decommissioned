@@ -461,8 +461,15 @@ clause_selectivity(Query *root,
 			}
 		}
 
-		/* Proceed with examination of contained clause */
-		clause = (Node *) rinfo->clause;
+		/*
+		 * Proceed with examination of contained clause.  If the clause is an
+		 * OR-clause, we want to look at the variant with sub-RestrictInfos,
+		 * so that per-subclause selectivities can be cached.
+		 */
+		if (rinfo->orclause)
+			clause = (Node *) rinfo->orclause;
+		else
+			clause = (Node *) rinfo->clause;
 	}
 
 	if (IsA(clause, Var))
