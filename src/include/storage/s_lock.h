@@ -872,4 +872,10 @@ extern int	tas(volatile slock_t *lock);		/* in port/.../tas.s, or
  */
 extern void s_lock(volatile slock_t *lock, const char *file, int line);
 
+/* Support for dynamic adjustment of spins_per_delay */
+#define DEFAULT_SPINS_PER_DELAY  100
+
+extern void set_spins_per_delay(int shared_spins_per_delay);
+extern int	update_spins_per_delay(int shared_spins_per_delay);
+
 #endif	 /* S_LOCK_H */
