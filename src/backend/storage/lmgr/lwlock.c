@@ -226,7 +226,8 @@ LWLockId
 LWLockAssign(void)
 {
 	LWLockId	result;
-	int		   *LWLockCounter;
+	/* use volatile pointer to prevent code rearrangement */
+	volatile int *LWLockCounter;
 
 	LWLockCounter = (int *) ((char *) LWLockArray - 2 * sizeof(int));
 	SpinLockAcquire(ShmemLock);
