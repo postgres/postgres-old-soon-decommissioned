@@ -270,7 +270,10 @@ _bt_check_unique(Relation rel, BTItem btitem, Relation heapRel,
 						HEAPTUPLE_DEAD)
 					{
 						curitemid->lp_flags |= LP_DELETE;
-						SetBufferCommitInfoNeedsSave(buf);
+						if (nbuf != InvalidBuffer)
+							SetBufferCommitInfoNeedsSave(nbuf);
+						else
+							SetBufferCommitInfoNeedsSave(buf);
 					}
 					if (sv_infomask != htup.t_data->t_infomask)
 						SetBufferCommitInfoNeedsSave(hbuffer);
