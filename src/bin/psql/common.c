@@ -681,7 +681,10 @@ AcceptResult(const PGresult *result, const char *query)
 
 	if (!OK)
 	{
-		psql_error("%s", PQerrorMessage(pset.db));
+		const char *error = PQerrorMessage(pset.db);
+		if (strlen(error))
+			psql_error("%s", error);
+
 		ReportSyntaxErrorPosition(result, query);
 		CheckConnection();
 	}

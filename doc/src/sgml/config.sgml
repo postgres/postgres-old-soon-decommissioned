@@ -2295,7 +2295,8 @@ SELECT * FROM parent WHERE key = 2400;
         Valid values are <literal>DEBUG5</>,
         <literal>DEBUG4</>, <literal>DEBUG3</>, <literal>DEBUG2</>,
         <literal>DEBUG1</>, <literal>LOG</>, <literal>NOTICE</>,
-        <literal>WARNING</>, and <literal>ERROR</>.  Each level
+        <literal>WARNING</>, <literal>ERROR</>, <literal>FATAL</>,
+        and <literal>PANIC</>.  Each level
         includes all the levels that follow it.  The later the level,
         the fewer messages are sent.  The default is
         <literal>NOTICE</>.  Note that <literal>LOG</> has a different
