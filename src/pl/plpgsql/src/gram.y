@@ -1986,6 +1986,8 @@ make_select_stmt(void)
 		expr->params[nparams] = params[nparams];
 	plpgsql_dstring_free(&ds);
 
+	check_sql_expr(expr->query);
+
 	if (have_into)
 	{
 		PLpgSQL_stmt_select *select;
