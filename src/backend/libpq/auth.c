@@ -162,11 +162,11 @@ pg_krb5_init(void)
 	if (retval)
 	{
 		ereport(LOG,
-				(errmsg("Kerberos sname_to_principal(\"%s\") returned error %d",
-						pg_krb_srvnam, retval)));
+				(errmsg("Kerberos sname_to_principal(\"%s\", \"%s\") returned error %d",
+						khostname ? khostname : "localhost", pg_krb_srvnam, retval)));
 		com_err("postgres", retval,
-				"while getting server principal for service \"%s\"",
-				pg_krb_srvnam);
+				"while getting server principal for server \"%s\" for service \"%s\"",
+				khostname ? khostname : "localhost", pg_krb_srvnam);
 		krb5_kt_close(pg_krb5_context, pg_krb5_keytab);
 		krb5_free_context(pg_krb5_context);
 		return STATUS_ERROR;
