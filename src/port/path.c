@@ -403,7 +403,7 @@ get_progname(const char *argv0)
 	{
 		char *progname;
 
-		progname = strdup(nodir_name);
+		progname = strdup(nodir_name);	/* leaks memory, but called only once */
 		if (progname == NULL)
 		{
 			fprintf(stderr, "%s: out of memory\n", nodir_name);
