@@ -1360,7 +1360,7 @@ SET ENABLE_SEQSCAN TO OFF;
        <para>
         When this option is on, the <productname>PostgreSQL</> server
         writes full pages to WAL when they are first modified after a
-        checkpoint so full recovery is possible. Turning this option off
+        checkpoint so crash recovery is possible. Turning this option off
         might lead to a corrupt system after an operating system crash
         or power failure because uncorrected partial pages might contain
         inconsistent or corrupt data. The risks are less but similar to
