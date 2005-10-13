@@ -29,14 +29,6 @@
  *
  * ProcKill -- destroys the shared memory state (and locks)
  *		associated with the process.
- *
- * 5/15/91 -- removed the buffer pool based lock chain in favor
- *		of a shared memory lock chain.	The write-protection is
- *		more expensive if the lock chain is in the buffer pool.
- *		The only reason I kept the lock chain in the buffer pool
- *		in the first place was to allow the lock table to grow larger
- *		than available shared memory and that isn't going to work
- *		without a lot of unimplemented support anyway.
  */
 #include "postgres.h"
 
