@@ -3520,9 +3520,9 @@ void PQtrace(PGconn *conn, FILE *stream);
 On Win32, if the <application>libpq</> library and an application are
 compiled with different flags, this function call will crash the 
 application because the internal representation of the <literal>FILE</> 
-pointers differ.  Specifically, threading/non-threading, release/debug, and
-static/dynamic flags should be the same for the library and all applications
-using that library.
+pointers differ.  Specifically, multi-threaded/single-threaded,
+release/debug, and static/dynamic flags should be the same for the
+library and all applications using that library.
 </para>
 </note>
 </listitem>
