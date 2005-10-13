@@ -713,7 +713,7 @@ COPY country FROM '/usr1/proj/bray/sql/country_data';
    using a temporary table which is automatically deleted:
 <programlisting>
 BEGIN;
-CREATE TEMP TABLE a_list_COUNTRIES AS
+CREATE TEMP TABLE a_list_countries AS
     SELECT * FROM country WHERE country_name LIKE 'A%';
 COPY a_list_countries TO '/usr1/proj/bray/sql/a_list_countries.copy';
 ROLLBACK;
