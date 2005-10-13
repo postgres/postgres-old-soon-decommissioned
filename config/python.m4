@@ -84,7 +84,7 @@ pythreads=`${PYTHON} -c "import sys; print int('thread' in sys.builtin_module_na
 if test "$pythreads" = "1"; then
   AC_MSG_RESULT(yes)
   case $host_os in
-  openbsd*|freebsd*)
+  openbsd*|freebsd4*)
     AC_MSG_ERROR([*** Threaded Python not supported on this platform ***])
     ;;
   esac
