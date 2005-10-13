@@ -71,8 +71,11 @@ ALTER DATABASE <replaceable class="PARAMETER">name</replaceable> OWNER TO <repla
   </para>
 
   <para>
-   The fifth form changes the owner of the database.  Only a superuser
-   can change the database's owner.
+   The fifth form changes the owner of the database.
+   To alter the owner, you must own the database and also be a direct or
+   indirect member of the new owning role, and you must have the
+   <literal>CREATEDB</literal> privilege.
+   (Note that superusers have all these privileges automatically.)
   </para>
  </refsect1>
 
