@@ -675,8 +675,8 @@ vac=&gt; SELECT * FROM ttest;
 
 =&gt; DELETE FROM ttest;
 INFO:  trigf (fired before): there are 2 rows in ttest
-INFO:  trigf (fired after ): there are 1 rows in ttest
 INFO:  trigf (fired before): there are 1 rows in ttest
+INFO:  trigf (fired after ): there are 0 rows in ttest
 INFO:  trigf (fired after ): there are 0 rows in ttest
                                        ^^^^^^
                              remember what we said about visibility.
