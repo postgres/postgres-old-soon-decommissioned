@@ -68,7 +68,7 @@ static bool
 haveNativeWindowsIPv6routines(void)
 {
 	void	   *hLibrary = NULL;
-	static bool alreadyLookedForIpv6routines = FALSE;
+	static bool alreadyLookedForIpv6routines = false;
 
 	if (alreadyLookedForIpv6routines)
 		return (getaddrinfo_ptr != NULL);
@@ -126,7 +126,7 @@ haveNativeWindowsIPv6routines(void)
 		}
 	}
 
-	alreadyLookedForIpv6routines = TRUE;
+	alreadyLookedForIpv6routines = true;
 	return (getaddrinfo_ptr != NULL);
 }
 
