@@ -178,6 +178,7 @@
 (define %graphic-default-extension% "gif")
 (define %gentext-nav-use-ff%    #t)
 (define %body-attr%             '())
+(define ($generate-book-lot-list$) '())
 
 ;; Returns the depth of auto TOC that should be made at the nd-level
 (define (toc-depth nd)
