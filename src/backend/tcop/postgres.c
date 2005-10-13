@@ -95,7 +95,8 @@ int			max_stack_depth = 2048;
 static int	max_stack_depth_bytes = 2048 * 1024;
 
 /* stack base pointer (initialized by PostgresMain) */
-static char *stack_base_ptr = NULL;
+/* Do not make static so PL/Java can modifiy it */
+char *stack_base_ptr = NULL;
 
 
 /*
