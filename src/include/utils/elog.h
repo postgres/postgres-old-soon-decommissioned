@@ -283,6 +283,9 @@ extern int	Log_destination;
 /* Other exported functions */
 extern void DebugFileOpen(void);
 extern char *unpack_sql_state(int sql_state);
+#ifdef HAVE_SYSLOG
+extern void set_syslog_parameters(const char *ident, int facility);
+#endif
 
 /*
  * Write errors to stderr (or by equal means when stderr is
