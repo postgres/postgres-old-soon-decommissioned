@@ -616,7 +616,7 @@ SELECT *, upper(fooname) FROM getfoo(1) AS t1;
  fooid | foosubid | fooname | upper
 -------+----------+---------+-------
      1 |        1 | Joe     | JOE
-(2 rows)
+(1 row)
 </screen>
 
      As the example shows, we can work with the columns of the function's
