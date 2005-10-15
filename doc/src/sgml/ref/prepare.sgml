@@ -63,7 +63,8 @@ PREPARE <replaceable class="PARAMETER">plan_name</replaceable> [ (<replaceable c
    also means that a single  prepared statement cannot be used by
    multiple simultaneous database clients; however, each client can create
    their own prepared statement to use.  The prepared statement can be
-   manually cleaned up using the <command>DEALLOCATE</> command.
+   manually cleaned up using the <xref linkend="sql-deallocate"
+   endterm="sql-deallocate-title"> command.
   </para>
 
   <para>
