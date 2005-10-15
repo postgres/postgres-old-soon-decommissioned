@@ -157,7 +157,7 @@ ALTER SEQUENCE <replaceable class="parameter">name</replaceable> SET SCHEMA <rep
         specified, any calls to <function>nextval</function> after the
         sequence has reached its maximum value will return an error.
         If neither <literal>CYCLE</literal> or <literal>NO
-        CYCLE</literal> are specified, the old cycle behaviour will be
+        CYCLE</literal> are specified, the old cycle behavior will be
         maintained.
        </para>
       </listitem>

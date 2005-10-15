@@ -23,7 +23,7 @@ $PostgreSQL$
 
   <para>
    The outputs and algorithms shown below are taken from version 8.0. 
-   The behaviour of earlier (or later) versions may vary.
+   The behavior of earlier (or later) versions may vary.
   </para>
 
  <sect1 id="row-estimation-examples">

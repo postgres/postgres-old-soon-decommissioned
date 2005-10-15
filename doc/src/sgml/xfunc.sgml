@@ -1210,7 +1210,7 @@ CREATE FUNCTION square_root(double precision) RETURNS double precision
 
     <indexterm zone="xfunc-c-basetype">
      <primary>data type</primary>
-     <secondary>internal organisation</secondary>
+     <secondary>internal organization</secondary>
     </indexterm>
 
     <para>

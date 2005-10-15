@@ -3272,7 +3272,7 @@ ORDER BY c.ordinal_position;
      </row>
 
      <row>
-      <entry><literal>sql_language_comformance</literal></entry>
+      <entry><literal>sql_language_conformance</literal></entry>
       <entry><type>character_data</type></entry>
       <entry>
        The standard conformance level for the language binding.  For
