@@ -134,7 +134,7 @@ pg_read_file(PG_FUNCTION_ARGS)
 
 	nbytes = fread(VARDATA(buf), 1, (size_t) bytes_to_read, file);
 
-	if (nbytes < 0)
+	if (ferror(file))
 		ereport(ERROR,
 				(errcode_for_file_access(),
 				 errmsg("could not read file \"%s\": %m", filename)));
