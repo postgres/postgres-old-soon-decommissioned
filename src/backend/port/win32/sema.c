@@ -216,8 +216,8 @@ semop(int semId, struct sembuf * sops, int nsops)
 	if (nsops != 1)
 	{
 		/*
-		 * Not supported (we return on 1st success, and don't cancel
-		 * earlier ops)
+		 * Not supported (we return on 1st success, and don't cancel earlier
+		 * ops)
 		 */
 		errno = E2BIG;
 		return -1;

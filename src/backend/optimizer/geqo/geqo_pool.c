@@ -96,13 +96,12 @@ random_init_pool(Pool *pool, GeqoEvalData *evaldata)
 	int			bad = 0;
 
 	/*
-	 * We immediately discard any invalid individuals (those that
-	 * geqo_eval returns DBL_MAX for), thereby not wasting pool space on
-	 * them.
+	 * We immediately discard any invalid individuals (those that geqo_eval
+	 * returns DBL_MAX for), thereby not wasting pool space on them.
 	 *
-	 * If we fail to make any valid individuals after 10000 tries, give up;
-	 * this probably means something is broken, and we shouldn't just let
-	 * ourselves get stuck in an infinite loop.
+	 * If we fail to make any valid individuals after 10000 tries, give up; this
+	 * probably means something is broken, and we shouldn't just let ourselves
+	 * get stuck in an infinite loop.
 	 */
 	i = 0;
 	while (i < pool->size)
@@ -223,8 +222,8 @@ spread_chromo(Chromosome *chromo, Pool *pool)
 
 
 		/*
-		 * these 2 cases move the search indices since a new location has
-		 * not yet been found.
+		 * these 2 cases move the search indices since a new location has not
+		 * yet been found.
 		 */
 
 		else if (chromo->worth < pool->data[mid].worth)
@@ -242,8 +241,7 @@ spread_chromo(Chromosome *chromo, Pool *pool)
 	/* now we have index for chromo */
 
 	/*
-	 * move every gene from index on down one position to make room for
-	 * chromo
+	 * move every gene from index on down one position to make room for chromo
 	 */
 
 	/*

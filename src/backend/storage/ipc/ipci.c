@@ -66,13 +66,12 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int port)
 
 		/*
 		 * Size of the Postgres shared-memory block is estimated via
-		 * moderately-accurate estimates for the big hogs, plus 100K for
-		 * the stuff that's too small to bother with estimating.
+		 * moderately-accurate estimates for the big hogs, plus 100K for the
+		 * stuff that's too small to bother with estimating.
 		 *
-		 * We take some care during this phase to ensure that the total
-		 * size request doesn't overflow size_t.  If this gets through,
-		 * we don't need to be so careful during the actual allocation
-		 * phase.
+		 * We take some care during this phase to ensure that the total size
+		 * request doesn't overflow size_t.  If this gets through, we don't
+		 * need to be so careful during the actual allocation phase.
 		 */
 		size = 100000;
 		size = add_size(size, hash_estimate_size(SHMEM_INDEX_SIZE,
@@ -115,9 +114,9 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int port)
 	else
 	{
 		/*
-		 * We are reattaching to an existing shared memory segment.
-		 * This should only be reached in the EXEC_BACKEND case, and
-		 * even then only with makePrivate == false.
+		 * We are reattaching to an existing shared memory segment. This
+		 * should only be reached in the EXEC_BACKEND case, and even then only
+		 * with makePrivate == false.
 		 */
 #ifdef EXEC_BACKEND
 		Assert(!makePrivate);

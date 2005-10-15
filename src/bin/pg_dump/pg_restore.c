@@ -113,8 +113,8 @@ main(int argc, char **argv)
 		{"verbose", 0, NULL, 'v'},
 
 		/*
-		 * the following options don't have an equivalent short option
-		 * letter, but are available as '-X long-name'
+		 * the following options don't have an equivalent short option letter,
+		 * but are available as '-X long-name'
 		 */
 		{"use-set-session-authorization", no_argument, &use_setsessauth, 1},
 		{"disable-triggers", no_argument, &disable_triggers, 1},
@@ -150,8 +150,7 @@ main(int argc, char **argv)
 			case 'a':			/* Dump data only */
 				opts->dataOnly = 1;
 				break;
-			case 'c':			/* clean (i.e., drop) schema prior to
-								 * create */
+			case 'c':			/* clean (i.e., drop) schema prior to create */
 				opts->dropSchema = 1;
 				break;
 			case 'C':
@@ -331,8 +330,7 @@ main(int argc, char **argv)
 	AH->verbose = opts->verbose;
 
 	/*
-	 * Whether to keep submitting sql commands as "pg_restore ... | psql
-	 * ... "
+	 * Whether to keep submitting sql commands as "pg_restore ... | psql ... "
 	 */
 	AH->exit_on_error = opts->exit_on_error;
 

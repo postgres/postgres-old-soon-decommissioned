@@ -47,7 +47,7 @@
 
 extern DLLIMPORT bool check_function_bodies;
 
-static bool	plpgsql_firstcall = true;
+static bool plpgsql_firstcall = true;
 
 static void plpgsql_init_all(void);
 
@@ -118,7 +118,7 @@ plpgsql_call_handler(PG_FUNCTION_ARGS)
 	 */
 	if (CALLED_AS_TRIGGER(fcinfo))
 		retval = PointerGetDatum(plpgsql_exec_trigger(func,
-									   (TriggerData *) fcinfo->context));
+										   (TriggerData *) fcinfo->context));
 	else
 		retval = plpgsql_exec_function(func, fcinfo);
 
@@ -198,7 +198,7 @@ plpgsql_validator(PG_FUNCTION_ARGS)
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 						 errmsg("plpgsql functions cannot take type %s",
-								format_type_be(proc->proargtypes.values[i]))));
+							  format_type_be(proc->proargtypes.values[i]))));
 		}
 	}
 

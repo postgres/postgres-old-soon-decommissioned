@@ -93,7 +93,6 @@ list_length(List *l)
 {
 	return l ? l->length : 0;
 }
-
 #else
 
 extern ListCell *list_head(List *l);

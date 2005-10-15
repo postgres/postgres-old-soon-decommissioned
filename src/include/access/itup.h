@@ -22,7 +22,7 @@
 /*
  * Index tuple header structure
  *
- * All index tuples start with IndexTupleData.  If the HasNulls bit is set,
+ * All index tuples start with IndexTupleData.	If the HasNulls bit is set,
  * this is followed by an IndexAttributeBitMapData.  The index attribute
  * values follow, beginning at a MAXALIGN boundary.
  *
@@ -129,7 +129,7 @@ typedef IndexAttributeBitMapData *IndexAttributeBitMap;
 
 /* routines in indextuple.c */
 extern IndexTuple index_form_tuple(TupleDesc tupleDescriptor,
-				Datum *values, bool *isnull);
+				 Datum *values, bool *isnull);
 extern Datum nocache_index_getattr(IndexTuple tup, int attnum,
 					  TupleDesc tupleDesc, bool *isnull);
 extern IndexTuple CopyIndexTuple(IndexTuple source);

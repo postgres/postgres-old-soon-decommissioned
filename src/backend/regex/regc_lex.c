@@ -712,8 +712,7 @@ next(struct vars * v)
  * lexescape - parse an ARE backslash escape (backslash already eaten)
  * Note slightly nonstandard use of the CCLASS type code.
  */
-static int						/* not actually used, but convenient for
-								 * RETV */
+static int						/* not actually used, but convenient for RETV */
 lexescape(struct vars * v)
 {
 	chr			c;
@@ -816,8 +815,7 @@ lexescape(struct vars * v)
 			break;
 		case CHR('x'):
 			NOTE(REG_UUNPORT);
-			c = lexdigits(v, 16, 1, 255);		/* REs >255 long outside
-												 * spec */
+			c = lexdigits(v, 16, 1, 255);		/* REs >255 long outside spec */
 			if (ISERR())
 				FAILW(REG_EESCAPE);
 			RETV(PLAIN, c);
@@ -844,8 +842,7 @@ lexescape(struct vars * v)
 		case CHR('9'):
 			save = v->now;
 			v->now--;			/* put first digit back */
-			c = lexdigits(v, 10, 1, 255);		/* REs >255 long outside
-												 * spec */
+			c = lexdigits(v, 10, 1, 255);		/* REs >255 long outside spec */
 			if (ISERR())
 				FAILW(REG_EESCAPE);
 			/* ugly heuristic (first test is "exactly 1 digit?") */

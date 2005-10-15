@@ -26,7 +26,7 @@ typedef struct
 	MemoryContext procCxt;		/* procedure context */
 	MemoryContext execCxt;		/* executor context */
 	MemoryContext savedcxt;
-	SubTransactionId connectSubid;	/* ID of connecting subtransaction */
+	SubTransactionId connectSubid;		/* ID of connecting subtransaction */
 } _SPI_connection;
 
 typedef struct

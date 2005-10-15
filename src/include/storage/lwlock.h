@@ -47,8 +47,7 @@ typedef enum LWLockId
 	BgWriterCommLock,
 	TwoPhaseStateLock,
 
-	NumFixedLWLocks,			/* must be last except for
-								 * MaxDynamicLWLock */
+	NumFixedLWLocks,			/* must be last except for MaxDynamicLWLock */
 
 	MaxDynamicLWLock = 1000000000
 } LWLockId;

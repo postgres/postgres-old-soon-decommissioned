@@ -112,9 +112,9 @@ PostmasterIsAlive(bool amDirectChild)
 	{
 		/*
 		 * Use kill() to see if the postmaster is still alive.	This can
-		 * sometimes give a false positive result, since the postmaster's
-		 * PID may get recycled, but it is good enough for existing uses
-		 * by indirect children.
+		 * sometimes give a false positive result, since the postmaster's PID
+		 * may get recycled, but it is good enough for existing uses by
+		 * indirect children.
 		 */
 		return (kill(PostmasterPid, 0) == 0);
 	}

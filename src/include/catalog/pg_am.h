@@ -34,18 +34,18 @@
  *		typedef struct FormData_pg_am
  * ----------------
  */
-#define AccessMethodRelationId  2601
+#define AccessMethodRelationId	2601
 
 CATALOG(pg_am,2601)
 {
 	NameData	amname;			/* access method name */
-	int2		amstrategies;	/* total NUMBER of strategies (operators)
-								 * by which we can traverse/search this AM */
-	int2		amsupport;		/* total NUMBER of support functions that
-								 * this AM uses */
-	int2		amorderstrategy;/* if this AM has a sort order, the
-								 * strategy number of the sort operator.
-								 * Zero if AM is not ordered. */
+	int2		amstrategies;	/* total NUMBER of strategies (operators) by
+								 * which we can traverse/search this AM */
+	int2		amsupport;		/* total NUMBER of support functions that this
+								 * AM uses */
+	int2		amorderstrategy;/* if this AM has a sort order, the strategy
+								 * number of the sort operator. Zero if AM is
+								 * not ordered. */
 	bool		amcanunique;	/* does AM support UNIQUE indexes? */
 	bool		amcanmulticol;	/* does AM support multi-column indexes? */
 	bool		amoptionalkey;	/* can query omit key for the first column? */

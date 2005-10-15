@@ -29,10 +29,10 @@
 
 typedef struct xl_multixact_create
 {
-	MultiXactId		mid;		/* new MultiXact's ID */
-	MultiXactOffset	moff;		/* its starting offset in members file */
-	int32			nxids;		/* number of member XIDs */
-	TransactionId	xids[1];	/* VARIABLE LENGTH ARRAY */
+	MultiXactId mid;			/* new MultiXact's ID */
+	MultiXactOffset moff;		/* its starting offset in members file */
+	int32		nxids;			/* number of member XIDs */
+	TransactionId xids[1];		/* VARIABLE LENGTH ARRAY */
 } xl_multixact_create;
 
 #define MinSizeOfMultiXactCreate offsetof(xl_multixact_create, xids)
@@ -44,7 +44,7 @@ extern bool MultiXactIdIsRunning(MultiXactId multi);
 extern void MultiXactIdWait(MultiXactId multi);
 extern bool ConditionalMultiXactIdWait(MultiXactId multi);
 extern void MultiXactIdSetOldestMember(void);
-extern int GetMultiXactIdMembers(MultiXactId multi, TransactionId **xids);
+extern int	GetMultiXactIdMembers(MultiXactId multi, TransactionId **xids);
 
 extern void AtEOXact_MultiXact(void);
 
@@ -54,13 +54,13 @@ extern void BootStrapMultiXact(void);
 extern void StartupMultiXact(void);
 extern void ShutdownMultiXact(void);
 extern void MultiXactGetCheckptMulti(bool is_shutdown,
-									 MultiXactId *nextMulti,
-									 MultiXactOffset *nextMultiOffset);
+						 MultiXactId *nextMulti,
+						 MultiXactOffset *nextMultiOffset);
 extern void CheckPointMultiXact(void);
 extern void MultiXactSetNextMXact(MultiXactId nextMulti,
-								  MultiXactOffset nextMultiOffset);
+					  MultiXactOffset nextMultiOffset);
 extern void MultiXactAdvanceNextMXact(MultiXactId minMulti,
-									  MultiXactOffset minMultiOffset);
+						  MultiXactOffset minMultiOffset);
 
 extern void multixact_redo(XLogRecPtr lsn, XLogRecord *record);
 extern void multixact_desc(char *buf, uint8 xl_info, char *rec);

@@ -21,29 +21,29 @@
 #include "utils/inval.h"
 
 
-const TwoPhaseCallback twophase_recover_callbacks[TWOPHASE_RM_MAX_ID + 1] = 
+const TwoPhaseCallback twophase_recover_callbacks[TWOPHASE_RM_MAX_ID + 1] =
 {
-	NULL,							/* END ID */
-	lock_twophase_recover,			/* Lock */
-	NULL,							/* Inval */
-	NULL,							/* flat file update */
-	NULL							/* notify/listen */
+	NULL,						/* END ID */
+	lock_twophase_recover,		/* Lock */
+	NULL,						/* Inval */
+	NULL,						/* flat file update */
+	NULL						/* notify/listen */
 };
 
-const TwoPhaseCallback twophase_postcommit_callbacks[TWOPHASE_RM_MAX_ID + 1] = 
+const TwoPhaseCallback twophase_postcommit_callbacks[TWOPHASE_RM_MAX_ID + 1] =
 {
-	NULL,							/* END ID */
-	lock_twophase_postcommit,		/* Lock */
-	inval_twophase_postcommit,		/* Inval */
-	flatfile_twophase_postcommit,	/* flat file update */
-	notify_twophase_postcommit		/* notify/listen */
+	NULL,						/* END ID */
+	lock_twophase_postcommit,	/* Lock */
+	inval_twophase_postcommit,	/* Inval */
+	flatfile_twophase_postcommit,		/* flat file update */
+	notify_twophase_postcommit	/* notify/listen */
 };
 
-const TwoPhaseCallback twophase_postabort_callbacks[TWOPHASE_RM_MAX_ID + 1] = 
+const TwoPhaseCallback twophase_postabort_callbacks[TWOPHASE_RM_MAX_ID + 1] =
 {
-	NULL,							/* END ID */
-	lock_twophase_postabort,		/* Lock */
-	NULL,							/* Inval */
-	NULL,							/* flat file update */
-	NULL							/* notify/listen */
+	NULL,						/* END ID */
+	lock_twophase_postabort,	/* Lock */
+	NULL,						/* Inval */
+	NULL,						/* flat file update */
+	NULL						/* notify/listen */
 };

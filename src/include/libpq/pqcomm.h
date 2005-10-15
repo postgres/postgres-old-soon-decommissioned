@@ -46,7 +46,6 @@
 #define ss_len __ss_len
 #define HAVE_STRUCT_SOCKADDR_STORAGE_SS_LEN 1
 #endif
-
 #else							/* !HAVE_STRUCT_SOCKADDR_STORAGE */
 
 /* Define a struct sockaddr_storage if we don't have one. */
@@ -183,8 +182,7 @@ typedef uint32 AuthRequest;
 typedef struct CancelRequestPacket
 {
 	/* Note that each field is stored in network byte order! */
-	MsgType		cancelRequestCode;		/* code to identify a cancel
-										 * request */
+	MsgType		cancelRequestCode;		/* code to identify a cancel request */
 	uint32		backendPID;		/* PID of client's backend */
 	uint32		cancelAuthCode; /* secret key to authorize cancel */
 } CancelRequestPacket;

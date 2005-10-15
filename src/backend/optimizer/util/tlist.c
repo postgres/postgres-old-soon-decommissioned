@@ -93,7 +93,7 @@ add_to_flat_tlist(List *tlist, List *vars)
 		{
 			TargetEntry *tle;
 
-			tle = makeTargetEntry(copyObject(var), /* copy needed?? */
+			tle = makeTargetEntry(copyObject(var),		/* copy needed?? */
 								  next_resno++,
 								  NULL,
 								  false);

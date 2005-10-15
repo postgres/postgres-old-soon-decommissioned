@@ -469,7 +469,7 @@ _StartBlobs(ArchiveHandle *AH, TocEntry *te)
 
 	if (ctx->blobToc == NULL)
 		die_horribly(AH, modulename,
-					 "could not open large object TOC for output: %s\n", strerror(errno));
+		"could not open large object TOC for output: %s\n", strerror(errno));
 }
 
 /*

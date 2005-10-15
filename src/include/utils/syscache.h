@@ -54,7 +54,7 @@
 #define NAMESPACEOID	23
 #define OPERNAMENSP		24
 #define OPEROID			25
-#define PROCNAMEARGSNSP	26
+#define PROCNAMEARGSNSP 26
 #define PROCOID			27
 #define RELNAMENSP		28
 #define RELOID			29

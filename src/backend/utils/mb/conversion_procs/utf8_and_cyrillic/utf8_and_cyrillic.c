@@ -75,7 +75,7 @@ koi8r_to_utf8(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	LocalToUtf(src, dest, LUmapKOI8R,
-			sizeof(LUmapKOI8R) / sizeof(pg_local_to_utf), PG_KOI8R, len);
+			   sizeof(LUmapKOI8R) / sizeof(pg_local_to_utf), PG_KOI8R, len);
 
 	PG_RETURN_VOID();
 }
@@ -109,7 +109,7 @@ win1251_to_utf8(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	LocalToUtf(src, dest, LUmapWIN1251,
-		sizeof(LUmapWIN1251) / sizeof(pg_local_to_utf), PG_WIN1251, len);
+			sizeof(LUmapWIN1251) / sizeof(pg_local_to_utf), PG_WIN1251, len);
 
 	PG_RETURN_VOID();
 }

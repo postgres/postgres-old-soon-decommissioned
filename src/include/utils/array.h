@@ -162,7 +162,7 @@ extern ArrayType *array_set_slice(ArrayType *array, int nSubscripts,
 				bool *isNull);
 
 extern Datum array_map(FunctionCallInfo fcinfo, Oid inpType, Oid retType,
-					   ArrayMapState *amstate);
+		  ArrayMapState *amstate);
 
 extern ArrayType *construct_array(Datum *elems, int nelems,
 				Oid elmtype,

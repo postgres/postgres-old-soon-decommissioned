@@ -63,7 +63,7 @@ win1252_to_utf8(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	LocalToUtf(src, dest, LUmapWIN1252,
-		sizeof(LUmapWIN1252) / sizeof(pg_local_to_utf), PG_WIN1252, len);
+			sizeof(LUmapWIN1252) / sizeof(pg_local_to_utf), PG_WIN1252, len);
 
 	PG_RETURN_VOID();
 }

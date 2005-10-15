@@ -120,8 +120,8 @@ InitBufferPool(void)
 			buf->buf_id = i;
 
 			/*
-			 * Initially link all the buffers together as unused.
-			 * Subsequent management of this list is done by freelist.c.
+			 * Initially link all the buffers together as unused. Subsequent
+			 * management of this list is done by freelist.c.
 			 */
 			buf->freeNext = i + 1;
 

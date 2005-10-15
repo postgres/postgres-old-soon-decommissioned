@@ -41,8 +41,7 @@ typedef struct ItemPointerData
 }
 
 #ifdef __arm__
-__attribute__((packed))			/* Appropriate whack upside the head for
-								 * ARM */
+__attribute__((packed))			/* Appropriate whack upside the head for ARM */
 #endif
 ItemPointerData;
 

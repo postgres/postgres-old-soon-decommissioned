@@ -61,7 +61,7 @@ typedef enum
 } SubXactEvent;
 
 typedef void (*SubXactCallback) (SubXactEvent event, SubTransactionId mySubid,
-								 SubTransactionId parentSubid, void *arg);
+									SubTransactionId parentSubid, void *arg);
 
 
 /* ----------------

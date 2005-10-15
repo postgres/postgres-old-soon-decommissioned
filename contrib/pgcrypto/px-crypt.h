@@ -65,13 +65,13 @@ extern char px_crypt_a64[];
 
 /* crypt-gensalt.c */
 char *_crypt_gensalt_traditional_rn(unsigned long count,
-			 const char *input, int size, char *output, int output_size);
+				 const char *input, int size, char *output, int output_size);
 char *_crypt_gensalt_extended_rn(unsigned long count,
-			 const char *input, int size, char *output, int output_size);
+				 const char *input, int size, char *output, int output_size);
 char *_crypt_gensalt_md5_rn(unsigned long count,
-			 const char *input, int size, char *output, int output_size);
+				 const char *input, int size, char *output, int output_size);
 char *_crypt_gensalt_blowfish_rn(unsigned long count,
-			 const char *input, int size, char *output, int output_size);
+				 const char *input, int size, char *output, int output_size);
 
 /* disable 'extended DES crypt' */
 /* #define DISABLE_XDES */

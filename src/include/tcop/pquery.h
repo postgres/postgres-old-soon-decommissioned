@@ -25,7 +25,7 @@ extern PortalStrategy ChoosePortalStrategy(List *parseTrees);
 extern List *FetchPortalTargetList(Portal portal);
 
 extern void PortalStart(Portal portal, ParamListInfo params,
-						Snapshot snapshot);
+			Snapshot snapshot);
 
 extern void PortalSetResultFormat(Portal portal, int nFormats,
 					  int16 *formats);

@@ -46,7 +46,7 @@ typedef struct
  * prototypes for functions in pqcomm.c
  */
 extern int StreamServerPort(int family, char *hostName,
-	 unsigned short portNumber, char *unixSocketName, int ListenSocket[],
+		 unsigned short portNumber, char *unixSocketName, int ListenSocket[],
 				 int MaxListen);
 extern int	StreamConnection(int server_fd, Port *port);
 extern void StreamClose(int sock);

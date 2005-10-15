@@ -47,7 +47,7 @@ typedef struct SnapshotData
 typedef SnapshotData *Snapshot;
 
 /* Special snapshot values: */
-#define InvalidSnapshot				((Snapshot) 0x0) /* same as NULL */
+#define InvalidSnapshot				((Snapshot) 0x0)	/* same as NULL */
 #define SnapshotNow					((Snapshot) 0x1)
 #define SnapshotSelf				((Snapshot) 0x2)
 #define SnapshotAny					((Snapshot) 0x3)
@@ -111,7 +111,7 @@ typedef enum
 	HEAPTUPLE_DEAD,				/* tuple is dead and deletable */
 	HEAPTUPLE_LIVE,				/* tuple is live (committed, no deleter) */
 	HEAPTUPLE_RECENTLY_DEAD,	/* tuple is dead, but not deletable yet */
-	HEAPTUPLE_INSERT_IN_PROGRESS,	/* inserting xact is still in progress */
+	HEAPTUPLE_INSERT_IN_PROGRESS,		/* inserting xact is still in progress */
 	HEAPTUPLE_DELETE_IN_PROGRESS	/* deleting xact is still in progress */
 } HTSV_Result;
 

@@ -146,8 +146,8 @@ rt_poly_size(PG_FUNCTION_ARGS)
 				ydim;
 
 	/*
-	 * Can't just use GETARG because of possibility that input is NULL;
-	 * since POLYGON is toastable, GETARG will try to inspect its value
+	 * Can't just use GETARG because of possibility that input is NULL; since
+	 * POLYGON is toastable, GETARG will try to inspect its value
 	 */
 	if (aptr == NULL)
 	{

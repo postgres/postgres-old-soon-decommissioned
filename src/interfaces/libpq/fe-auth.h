@@ -39,6 +39,6 @@ extern MsgType fe_getauthsvc(char *PQerrormsg);
 extern void fe_setauthsvc(const char *name, char *PQerrormsg);
 extern char *fe_getauthname(char *PQerrormsg);
 
-#define PG_KRB5_VERSION "PGVER5.1"      /* at most KRB_SENDAUTH_VLEN chars */
+#define PG_KRB5_VERSION "PGVER5.1"		/* at most KRB_SENDAUTH_VLEN chars */
 
 #endif   /* FE_AUTH_H */

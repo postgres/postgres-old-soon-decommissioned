@@ -73,11 +73,10 @@ makeVar(Index varno,
 	var->varlevelsup = varlevelsup;
 
 	/*
-	 * Since few if any routines ever create Var nodes with
-	 * varnoold/varoattno different from varno/varattno, we don't provide
-	 * separate arguments for them, but just initialize them to the given
-	 * varno/varattno. This reduces code clutter and chance of error for
-	 * most callers.
+	 * Since few if any routines ever create Var nodes with varnoold/varoattno
+	 * different from varno/varattno, we don't provide separate arguments for
+	 * them, but just initialize them to the given varno/varattno. This
+	 * reduces code clutter and chance of error for most callers.
 	 */
 	var->varnoold = varno;
 	var->varoattno = varattno;
@@ -102,8 +101,8 @@ makeTargetEntry(Expr *expr,
 	tle->resname = resname;
 
 	/*
-	 * We always set these fields to 0. If the caller wants to change them
-	 * he must do so explicitly.  Few callers do that, so omitting these
+	 * We always set these fields to 0. If the caller wants to change them he
+	 * must do so explicitly.  Few callers do that, so omitting these
 	 * arguments reduces the chance of error.
 	 */
 	tle->ressortgroupref = 0;

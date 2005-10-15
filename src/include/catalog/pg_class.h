@@ -40,7 +40,7 @@
  *		to get the relacl field ... and don't forget to check isNull.
  * ----------------
  */
-#define RelationRelationId  1259
+#define RelationRelationId	1259
 
 CATALOG(pg_class,1259) BKI_BOOTSTRAP
 {
@@ -62,8 +62,8 @@ CATALOG(pg_class,1259) BKI_BOOTSTRAP
 
 	/*
 	 * Class pg_attribute must contain exactly "relnatts" user attributes
-	 * (with attnums ranging from 1 to relnatts) for this class.  It may
-	 * also contain entries with negative attnums for system attributes.
+	 * (with attnums ranging from 1 to relnatts) for this class.  It may also
+	 * contain entries with negative attnums for system attributes.
 	 */
 	int2		relchecks;		/* # of CHECK constraints for class */
 	int2		reltriggers;	/* # of TRIGGERs */

@@ -1,8 +1,8 @@
 /*
  * fork_process.c
- *   A simple wrapper on top of fork(). This does not handle the
- *   EXEC_BACKEND case; it might be extended to do so, but it would be
- *   considerably more complex.
+ *	 A simple wrapper on top of fork(). This does not handle the
+ *	 EXEC_BACKEND case; it might be extended to do so, but it would be
+ *	 considerably more complex.
  *
  * Copyright (c) 1996-2005, PostgreSQL Global Development Group
  *
@@ -25,29 +25,29 @@
 pid_t
 fork_process(void)
 {
-	pid_t result;
+	pid_t		result;
+
 #ifdef LINUX_PROFILE
 	struct itimerval prof_itimer;
 #endif
 
 	/*
-	 * Flush stdio channels just before fork, to avoid double-output
-	 * problems. Ideally we'd use fflush(NULL) here, but there are still a
-	 * few non-ANSI stdio libraries out there (like SunOS 4.1.x) that
-	 * coredump if we do. Presently stdout and stderr are the only stdio
-	 * output channels used by the postmaster, so fflush'ing them should
-	 * be sufficient.
+	 * Flush stdio channels just before fork, to avoid double-output problems.
+	 * Ideally we'd use fflush(NULL) here, but there are still a few non-ANSI
+	 * stdio libraries out there (like SunOS 4.1.x) that coredump if we do.
+	 * Presently stdout and stderr are the only stdio output channels used by
+	 * the postmaster, so fflush'ing them should be sufficient.
 	 */
 	fflush(stdout);
 	fflush(stderr);
 
 #ifdef LINUX_PROFILE
+
 	/*
-	 * Linux's fork() resets the profiling timer in the child process. If
-	 * we want to profile child processes then we need to save and restore
-	 * the timer setting.  This is a waste of time if not profiling,
-	 * however, so only do it if commanded by specific -DLINUX_PROFILE
-	 * switch.
+	 * Linux's fork() resets the profiling timer in the child process. If we
+	 * want to profile child processes then we need to save and restore the
+	 * timer setting.  This is a waste of time if not profiling, however, so
+	 * only do it if commanded by specific -DLINUX_PROFILE switch.
 	 */
 	getitimer(ITIMER_PROF, &prof_itimer);
 #endif
@@ -81,4 +81,5 @@ fork_process(void)
 
 	return result;
 }
-#endif /* ! WIN32 */
+
+#endif   /* ! WIN32 */

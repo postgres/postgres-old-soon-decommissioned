@@ -53,8 +53,8 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 	/* We will have to decode the value */
 
 	/*
-	 * check for null value and set indicator accordingly, i.e. -1 if NULL
-	 * and 0 if not
+	 * check for null value and set indicator accordingly, i.e. -1 if NULL and
+	 * 0 if not
 	 */
 	if (PQgetisnull(results, act_tuple, act_field))
 		value_for_indicator = -1;
@@ -85,8 +85,8 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 				if (force_indicator == false)
 				{
 					/*
-					 * Informix has an additional way to specify NULLs
-					 * note that this uses special values to denote NULL
+					 * Informix has an additional way to specify NULLs note
+					 * that this uses special values to denote NULL
 					 */
 					ECPGset_noind_null(type, var + offset * act_tuple);
 				}
@@ -424,8 +424,8 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 						if (INFORMIX_MODE(compat))
 						{
 							/*
-							 * Informix wants its own NULL value here
-							 * instead of an error
+							 * Informix wants its own NULL value here instead
+							 * of an error
 							 */
 							ECPGset_noind_null(ECPGt_numeric, nres);
 						}
@@ -471,8 +471,8 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 						if (INFORMIX_MODE(compat))
 						{
 							/*
-							 * Informix wants its own NULL value here
-							 * instead of an error
+							 * Informix wants its own NULL value here instead
+							 * of an error
 							 */
 							ECPGset_noind_null(ECPGt_interval, ires);
 						}
@@ -514,8 +514,8 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 						if (INFORMIX_MODE(compat))
 						{
 							/*
-							 * Informix wants its own NULL value here
-							 * instead of an error
+							 * Informix wants its own NULL value here instead
+							 * of an error
 							 */
 							ECPGset_noind_null(ECPGt_date, &ddres);
 						}
@@ -556,8 +556,8 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 						if (INFORMIX_MODE(compat))
 						{
 							/*
-							 * Informix wants its own NULL value here
-							 * instead of an error
+							 * Informix wants its own NULL value here instead
+							 * of an error
 							 */
 							ECPGset_noind_null(ECPGt_timestamp, &tres);
 						}

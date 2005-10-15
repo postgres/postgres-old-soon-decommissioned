@@ -187,9 +187,9 @@ text_char(PG_FUNCTION_ARGS)
 	char		result;
 
 	/*
-	 * An empty input string is converted to \0 (for consistency with
-	 * charin). If the input is longer than one character, the excess data
-	 * is silently discarded.
+	 * An empty input string is converted to \0 (for consistency with charin).
+	 * If the input is longer than one character, the excess data is silently
+	 * discarded.
 	 */
 	if (VARSIZE(arg1) > VARHDRSZ)
 		result = *(VARDATA(arg1));

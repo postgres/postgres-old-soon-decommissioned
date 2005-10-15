@@ -24,6 +24,6 @@ extern ParamListInfo PlannerBoundParamList;		/* current boundParams */
 extern Plan *planner(Query *parse, bool isCursor, int cursorOptions,
 		ParamListInfo boundParams);
 extern Plan *subquery_planner(Query *parse, double tuple_fraction,
-							  List **subquery_pathkeys);
+				 List **subquery_pathkeys);
 
 #endif   /* PLANNER_H */

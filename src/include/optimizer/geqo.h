@@ -48,8 +48,7 @@
  *
  * If you change these, update backend/utils/misc/postgresql.sample.conf
  */
-extern int	Geqo_effort;		/* 1 .. 10, knob for adjustment of
-								 * defaults */
+extern int	Geqo_effort;		/* 1 .. 10, knob for adjustment of defaults */
 
 #define DEFAULT_GEQO_EFFORT 5
 #define MIN_GEQO_EFFORT 1
@@ -79,7 +78,7 @@ typedef struct
 
 /* routines in geqo_main.c */
 extern RelOptInfo *geqo(PlannerInfo *root,
-						int number_of_rels, List *initial_rels);
+	 int number_of_rels, List *initial_rels);
 
 /* routines in geqo_eval.c */
 extern Cost geqo_eval(Gene *tour, int num_gene, GeqoEvalData *evaldata);

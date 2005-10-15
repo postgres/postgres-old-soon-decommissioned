@@ -46,7 +46,7 @@ extern void PGSharedMemoryReAttach(void);
 #endif
 
 extern PGShmemHeader *PGSharedMemoryCreate(Size size, bool makePrivate,
-										   int port);
+					 int port);
 extern bool PGSharedMemoryIsInUse(unsigned long id1, unsigned long id2);
 extern void PGSharedMemoryDetach(void);
 

@@ -173,9 +173,8 @@ NullCommand(CommandDest dest)
 		case RemoteExecute:
 
 			/*
-			 * tell the fe that we saw an empty query string.  In
-			 * protocols before 3.0 this has a useless empty-string
-			 * message body.
+			 * tell the fe that we saw an empty query string.  In protocols
+			 * before 3.0 this has a useless empty-string message body.
 			 */
 			if (PG_PROTOCOL_MAJOR(FrontendProtocol) >= 3)
 				pq_putemptymessage('I');

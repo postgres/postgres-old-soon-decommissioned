@@ -24,7 +24,7 @@
 #ifdef USE_READLINE
 static bool useReadline;
 static bool useHistory;
-char  *psql_history;
+char	   *psql_history;
 
 
 enum histcontrol
@@ -105,7 +105,7 @@ gets_interactive(const char *prompt)
 		HC = GetHistControlConfig();
 
 		if (((HC & hctl_ignorespace) && s[0] == ' ') ||
-			((HC & hctl_ignoredups) && prev_hist && strcmp(s, prev_hist) == 0))
+		  ((HC & hctl_ignoredups) && prev_hist && strcmp(s, prev_hist) == 0))
 		{
 			/* Ignore this line as far as history is concerned */
 		}
@@ -221,7 +221,7 @@ saveHistory(char *fname)
 		psql_error("could not save history to file \"%s\": %s\n", fname, strerror(errno));
 	}
 #else
-		psql_error("history is not supported by this installation\n");
+	psql_error("history is not supported by this installation\n");
 #endif
 
 	return false;

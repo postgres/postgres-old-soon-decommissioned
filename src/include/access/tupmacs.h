@@ -66,7 +66,6 @@
 	: \
 	PointerGetDatum((char *) (T)) \
 )
-
 #else							/* SIZEOF_DATUM != 8 */
 
 #define fetch_att(T,attbyval,attlen) \
@@ -159,7 +158,6 @@
 				break; \
 		} \
 	} while (0)
-
 #else							/* SIZEOF_DATUM != 8 */
 
 #define store_att_byval(T,newdatum,attlen) \

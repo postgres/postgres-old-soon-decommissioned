@@ -33,7 +33,7 @@ extern bool IsReservedName(const char *name);
 
 extern Oid	GetNewOid(Relation relation);
 extern Oid	GetNewOidWithIndex(Relation relation, Relation indexrel);
-extern Oid	GetNewRelFileNode(Oid reltablespace, bool relisshared,
-							  Relation pg_class);
+extern Oid GetNewRelFileNode(Oid reltablespace, bool relisshared,
+				  Relation pg_class);
 
 #endif   /* CATALOG_H */

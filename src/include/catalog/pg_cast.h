@@ -21,7 +21,7 @@
 #ifndef PG_CAST_H
 #define PG_CAST_H
 
-#define CastRelationId  2605
+#define CastRelationId	2605
 
 CATALOG(pg_cast,2605)
 {
@@ -44,11 +44,9 @@ typedef FormData_pg_cast *Form_pg_cast;
 
 typedef enum CoercionCodes
 {
-	COERCION_CODE_IMPLICIT = 'i',		/* coercion in context of
-										 * expression */
-	COERCION_CODE_ASSIGNMENT = 'a',		/* coercion in context of
-										 * assignment */
-	COERCION_CODE_EXPLICIT = 'e'		/* explicit cast operation */
+	COERCION_CODE_IMPLICIT = 'i',		/* coercion in context of expression */
+	COERCION_CODE_ASSIGNMENT = 'a',		/* coercion in context of assignment */
+	COERCION_CODE_EXPLICIT = 'e'	/* explicit cast operation */
 } CoercionCodes;
 
 
@@ -107,8 +105,8 @@ DATA(insert ( 1700	700 1745 i ));
 DATA(insert ( 1700	701 1746 i ));
 
 /* Allow explicit coercions between int4 and bool */
-DATA(insert (	23	16  2557 e ));
-DATA(insert (	16	23  2558 e ));
+DATA(insert (	23	16	2557 e ));
+DATA(insert (	16	23	2558 e ));
 
 /*
  * OID category: allow implicit conversion from any integral type (including
@@ -116,7 +114,7 @@ DATA(insert (	16	23  2558 e ));
  * from OID to int4 or int8.  Similarly for each OID-alias type.  Also allow
  * implicit coercions between OID and each OID-alias type, as well as
  * regproc<->regprocedure and regoper<->regoperator.  (Other coercions
- * between alias types must pass through OID.)  Lastly, there is an implicit
+ * between alias types must pass through OID.)	Lastly, there is an implicit
  * cast from text to regclass, which exists mainly to support legacy forms
  * of nextval() and related functions.
  */

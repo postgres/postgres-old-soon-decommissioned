@@ -30,9 +30,9 @@ extern Var *makeVar(Index varno,
 		Index varlevelsup);
 
 extern TargetEntry *makeTargetEntry(Expr *expr,
-									AttrNumber resno,
-									char *resname,
-									bool resjunk);
+				AttrNumber resno,
+				char *resname,
+				bool resjunk);
 
 extern TargetEntry *flatCopyTargetEntry(TargetEntry *src_tle);
 

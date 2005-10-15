@@ -90,8 +90,8 @@ chkpass_in(PG_FUNCTION_ARGS)
 
 	mysalt[0] = salt_chars[random() & 0x3f];
 	mysalt[1] = salt_chars[random() & 0x3f];
-	mysalt[2] = 0;				/* technically the terminator is not
-								 * necessary but I like to play safe */
+	mysalt[2] = 0;				/* technically the terminator is not necessary
+								 * but I like to play safe */
 	strcpy(result->password, crypt(str, mysalt));
 	PG_RETURN_POINTER(result);
 }

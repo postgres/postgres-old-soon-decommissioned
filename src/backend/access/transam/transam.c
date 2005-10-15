@@ -54,8 +54,8 @@ TransactionLogFetch(TransactionId transactionId)
 	XidStatus	xidstatus;
 
 	/*
-	 * Before going to the commit log manager, check our single item cache
-	 * to see if we didn't just check the transaction status a moment ago.
+	 * Before going to the commit log manager, check our single item cache to
+	 * see if we didn't just check the transaction status a moment ago.
 	 */
 	if (TransactionIdEquals(transactionId, cachedFetchXid))
 		return cachedFetchXidStatus;
@@ -78,8 +78,8 @@ TransactionLogFetch(TransactionId transactionId)
 	xidstatus = TransactionIdGetStatus(transactionId);
 
 	/*
-	 * DO NOT cache status for unfinished or sub-committed transactions!
-	 * We only cache status that is guaranteed not to change.
+	 * DO NOT cache status for unfinished or sub-committed transactions! We
+	 * only cache status that is guaranteed not to change.
 	 */
 	if (xidstatus != TRANSACTION_STATUS_IN_PROGRESS &&
 		xidstatus != TRANSACTION_STATUS_SUB_COMMITTED)
@@ -169,18 +169,18 @@ TransactionIdDidCommit(TransactionId transactionId)
 		return true;
 
 	/*
-	 * If it's marked subcommitted, we have to check the parent
-	 * recursively. However, if it's older than TransactionXmin, we can't
-	 * look at pg_subtrans; instead assume that the parent crashed without
-	 * cleaning up its children.
+	 * If it's marked subcommitted, we have to check the parent recursively.
+	 * However, if it's older than TransactionXmin, we can't look at
+	 * pg_subtrans; instead assume that the parent crashed without cleaning up
+	 * its children.
 	 *
-	 * Originally we Assert'ed that the result of SubTransGetParent was
-	 * not zero.  However with the introduction of prepared transactions,
-	 * there can be a window just after database startup where we do not
-	 * have complete knowledge in pg_subtrans of the transactions after
-	 * TransactionXmin.  StartupSUBTRANS() has ensured that any missing
-	 * information will be zeroed.  Since this case should not happen under
-	 * normal conditions, it seems reasonable to emit a WARNING for it.
+	 * Originally we Assert'ed that the result of SubTransGetParent was not zero.
+	 * However with the introduction of prepared transactions, there can be a
+	 * window just after database startup where we do not have complete
+	 * knowledge in pg_subtrans of the transactions after TransactionXmin.
+	 * StartupSUBTRANS() has ensured that any missing information will be
+	 * zeroed.	Since this case should not happen under normal conditions, it
+	 * seems reasonable to emit a WARNING for it.
 	 */
 	if (xidstatus == TRANSACTION_STATUS_SUB_COMMITTED)
 	{
@@ -225,10 +225,10 @@ TransactionIdDidAbort(TransactionId transactionId)
 		return true;
 
 	/*
-	 * If it's marked subcommitted, we have to check the parent
-	 * recursively. However, if it's older than TransactionXmin, we can't
-	 * look at pg_subtrans; instead assume that the parent crashed without
-	 * cleaning up its children.
+	 * If it's marked subcommitted, we have to check the parent recursively.
+	 * However, if it's older than TransactionXmin, we can't look at
+	 * pg_subtrans; instead assume that the parent crashed without cleaning up
+	 * its children.
 	 */
 	if (xidstatus == TRANSACTION_STATUS_SUB_COMMITTED)
 	{

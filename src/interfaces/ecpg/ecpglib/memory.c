@@ -50,7 +50,7 @@ ECPGstrdup(const char *string, int lineno)
 
 	if (string == NULL)
 		return NULL;
-	
+
 	new = strdup(string);
 	if (!new)
 	{

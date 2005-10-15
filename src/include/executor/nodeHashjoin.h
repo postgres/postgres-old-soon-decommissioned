@@ -24,6 +24,6 @@ extern void ExecEndHashJoin(HashJoinState *node);
 extern void ExecReScanHashJoin(HashJoinState *node, ExprContext *exprCtxt);
 
 extern void ExecHashJoinSaveTuple(HeapTuple heapTuple, uint32 hashvalue,
-								  BufFile **fileptr);
+					  BufFile **fileptr);
 
 #endif   /* NODEHASHJOIN_H */

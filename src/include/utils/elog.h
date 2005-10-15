@@ -23,23 +23,22 @@
 #define DEBUG3		12
 #define DEBUG2		13
 #define DEBUG1		14			/* used by GUC debug_* variables */
-#define LOG			15			/* Server operational messages; sent only
-								 * to server log by default. */
-#define COMMERROR	16			/* Client communication problems; same as
-								 * LOG for server reporting, but never
-								 * sent to client. */
-#define INFO		17			/* Informative messages that are always
-								 * sent to client;	is not affected by
+#define LOG			15			/* Server operational messages; sent only to
+								 * server log by default. */
+#define COMMERROR	16			/* Client communication problems; same as LOG
+								 * for server reporting, but never sent to
+								 * client. */
+#define INFO		17			/* Informative messages that are always sent
+								 * to client;  is not affected by
 								 * client_min_messages */
 #define NOTICE		18			/* Helpful messages to users about query
-								 * operation;  sent to client and server
-								 * log by default. */
-#define WARNING		19			/* Warnings.  NOTICE is for expected
-								 * messages like implicit sequence
-								 * creation by SERIAL. WARNING is for
-								 * unexpected messages. */
-#define ERROR		20			/* user error - abort transaction; return
-								 * to known state */
+								 * operation;  sent to client and server log
+								 * by default. */
+#define WARNING		19			/* Warnings.  NOTICE is for expected messages
+								 * like implicit sequence creation by SERIAL.
+								 * WARNING is for unexpected messages. */
+#define ERROR		20			/* user error - abort transaction; return to
+								 * known state */
 /* Save ERROR value in PGERROR so it can be restored when Win32 includes
  * modify it.  We have to use a constant rather than ERROR because macros
  * are expanded only when referenced outside macros.
@@ -283,6 +282,7 @@ extern int	Log_destination;
 /* Other exported functions */
 extern void DebugFileOpen(void);
 extern char *unpack_sql_state(int sql_state);
+
 #ifdef HAVE_SYSLOG
 extern void set_syslog_parameters(const char *ident, int facility);
 #endif

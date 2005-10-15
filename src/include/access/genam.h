@@ -82,8 +82,8 @@ extern IndexScanDesc index_beginscan(Relation heapRelation,
 				Snapshot snapshot,
 				int nkeys, ScanKey key);
 extern IndexScanDesc index_beginscan_multi(Relation indexRelation,
-				Snapshot snapshot,
-				int nkeys, ScanKey key);
+					  Snapshot snapshot,
+					  int nkeys, ScanKey key);
 extern void index_rescan(IndexScanDesc scan, ScanKey key);
 extern void index_endscan(IndexScanDesc scan);
 extern void index_markpos(IndexScanDesc scan);
@@ -92,8 +92,8 @@ extern HeapTuple index_getnext(IndexScanDesc scan, ScanDirection direction);
 extern bool index_getnext_indexitem(IndexScanDesc scan,
 						ScanDirection direction);
 extern bool index_getmulti(IndexScanDesc scan,
-						   ItemPointer tids, int32 max_tids,
-						   int32 *returned_tids);
+			   ItemPointer tids, int32 max_tids,
+			   int32 *returned_tids);
 
 extern IndexBulkDeleteResult *index_bulk_delete(Relation indexRelation,
 				  IndexBulkDeleteCallback callback,

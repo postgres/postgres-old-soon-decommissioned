@@ -31,7 +31,7 @@
  *		typedef struct FormData_pg_database
  * ----------------
  */
-#define DatabaseRelationId  1262
+#define DatabaseRelationId	1262
 
 CATALOG(pg_database,1262) BKI_SHARED_RELATION
 {

@@ -35,7 +35,7 @@ extern List *RelationGetIndexExpressions(Relation relation);
 extern List *RelationGetIndexPredicate(Relation relation);
 
 extern void RelationSetIndexList(Relation relation,
-								 List *indexIds, Oid oidIndex);
+					 List *indexIds, Oid oidIndex);
 
 extern void RelationInitIndexAccessInfo(Relation relation);
 
@@ -67,7 +67,7 @@ extern void RelationCacheInvalidate(void);
 
 extern void AtEOXact_RelationCache(bool isCommit);
 extern void AtEOSubXact_RelationCache(bool isCommit, SubTransactionId mySubid,
-									  SubTransactionId parentSubid);
+						  SubTransactionId parentSubid);
 
 /*
  * Routines to help manage rebuilding of relcache init file

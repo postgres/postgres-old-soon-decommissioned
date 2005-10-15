@@ -207,7 +207,8 @@ inet_cidr_pton_ipv4(const char *src, u_char *dst, size_t size)
 			bits = 24;
 		else if (*odst >= 128)	/* Class B */
 			bits = 16;
-		else					/* Class A */
+		else
+			/* Class A */
 			bits = 8;
 		/* If imputed mask is narrower than specified octets, widen. */
 		if (bits < ((dst - odst) * 8))

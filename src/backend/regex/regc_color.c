@@ -179,7 +179,7 @@ setcolor(struct colormap * cm,
 		if (t == fillt || t == cb)
 		{						/* must allocate a new block */
 			newt = (union tree *) MALLOC((bottom) ?
-							sizeof(struct colors) : sizeof(struct ptrs));
+								sizeof(struct colors) : sizeof(struct ptrs));
 			if (newt == NULL)
 			{
 				CERR(REG_ESPACE);
@@ -256,7 +256,7 @@ newcolor(struct colormap * cm)
 		}
 		else
 			new = (struct colordesc *) REALLOC(cm->cd,
-										   n * sizeof(struct colordesc));
+											   n * sizeof(struct colordesc));
 		if (new == NULL)
 		{
 			CERR(REG_ESPACE);

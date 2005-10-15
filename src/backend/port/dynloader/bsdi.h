@@ -37,7 +37,6 @@
 #define		  pg_dlsym		  dlsym
 #define		  pg_dlclose	  dlclose
 #define		  pg_dlerror	  dlerror
-
 #else							/* not HAVE_DLOPEN */
 
 #define pg_dlsym(handle, funcname)	  ((PGFunction) dld_get_func((funcname)))

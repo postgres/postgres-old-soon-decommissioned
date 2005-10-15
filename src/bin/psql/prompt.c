@@ -175,7 +175,7 @@ get_prompt(promptStatus_t status)
 				case '5':
 				case '6':
 				case '7':
-					*buf = (char) strtol(p, (char **)&p, 8);
+					*buf = (char) strtol(p, (char **) &p, 8);
 					--p;
 					break;
 				case 'R':
@@ -293,9 +293,8 @@ get_prompt(promptStatus_t status)
 
 					/*
 					 * readline >=4.0 undocumented feature: non-printing
-					 * characters in prompt strings must be marked as
-					 * such, in order to properly display the line during
-					 * editing.
+					 * characters in prompt strings must be marked as such, in
+					 * order to properly display the line during editing.
 					 */
 					buf[0] = '\001';
 					buf[1] = (*p == '[') ? RL_PROMPT_START_IGNORE : RL_PROMPT_END_IGNORE;

@@ -121,7 +121,7 @@ _xl_remove_hash_entry(XLogRelDesc *rdesc)
 	rdesc->moreRecently->lessRecently = rdesc->lessRecently;
 
 	hentry = (XLogRelCacheEntry *) hash_search(_xlrelcache,
-				  (void *) &(rdesc->reldata.rd_node), HASH_REMOVE, NULL);
+					  (void *) &(rdesc->reldata.rd_node), HASH_REMOVE, NULL);
 	if (hentry == NULL)
 		elog(PANIC, "_xl_remove_hash_entry: file was not found in cache");
 
@@ -211,11 +211,11 @@ XLogOpenRelation(RelFileNode rnode)
 		res->reldata.rd_node = rnode;
 
 		/*
-		 * We set up the lockRelId in case anything tries to lock the
-		 * dummy relation.	Note that this is fairly bogus since relNode
-		 * may be different from the relation's OID.  It shouldn't really
-		 * matter though, since we are presumably running by ourselves and
-		 * can't have any lock conflicts ...
+		 * We set up the lockRelId in case anything tries to lock the dummy
+		 * relation.  Note that this is fairly bogus since relNode may be
+		 * different from the relation's OID.  It shouldn't really matter
+		 * though, since we are presumably running by ourselves and can't have
+		 * any lock conflicts ...
 		 */
 		res->reldata.rd_lockInfo.lockRelId.dbId = rnode.dbNode;
 		res->reldata.rd_lockInfo.lockRelId.relId = rnode.relNode;
@@ -233,13 +233,13 @@ XLogOpenRelation(RelFileNode rnode)
 		RelationOpenSmgr(&(res->reldata));
 
 		/*
-		 * Create the target file if it doesn't already exist.  This lets
-		 * us cope if the replay sequence contains writes to a relation
-		 * that is later deleted.  (The original coding of this routine
-		 * would instead return NULL, causing the writes to be suppressed.
-		 * But that seems like it risks losing valuable data if the
-		 * filesystem loses an inode during a crash.  Better to write the
-		 * data until we are actually told to delete the file.)
+		 * Create the target file if it doesn't already exist.  This lets us
+		 * cope if the replay sequence contains writes to a relation that is
+		 * later deleted.  (The original coding of this routine would instead
+		 * return NULL, causing the writes to be suppressed. But that seems
+		 * like it risks losing valuable data if the filesystem loses an inode
+		 * during a crash.	Better to write the data until we are actually
+		 * told to delete the file.)
 		 */
 		smgrcreate(res->reldata.rd_smgr, res->reldata.rd_istemp, true);
 	}

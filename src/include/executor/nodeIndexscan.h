@@ -30,8 +30,8 @@ extern bool ExecIndexBuildScanKeys(PlanState *planstate, List *quals,
 					   ExprState ***runtimeKeyInfo,
 					   ScanKey *scanKeys, int *numScanKeys);
 extern void ExecIndexEvalRuntimeKeys(ExprContext *econtext,
-									 ExprState **run_keys,
-									 ScanKey scan_keys,
-									 int n_keys);
+						 ExprState **run_keys,
+						 ScanKey scan_keys,
+						 int n_keys);
 
 #endif   /* NODEINDEXSCAN_H */

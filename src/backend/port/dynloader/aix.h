@@ -12,7 +12,6 @@
 #ifdef HAVE_DLOPEN
 
 #include <dlfcn.h>
-
 #else							/* HAVE_DLOPEN */
 
 #ifdef __cplusplus
@@ -42,7 +41,6 @@ void	   *dlopen(const char *path, int mode);
 void	   *dlsym(void *handle, const char *symbol);
 char	   *dlerror(void);
 int			dlclose(void *handle);
-
 #else
 void	   *dlopen();
 void	   *dlsym();

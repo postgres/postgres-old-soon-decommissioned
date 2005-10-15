@@ -40,7 +40,8 @@ bool
 pg_set_block(int sock)
 {
 #if !defined(WIN32) && !defined(__BEOS__)
-	int flags;
+	int			flags;
+
 	flags = fcntl(sock, F_GETFL);
 	if (flags < 0 || fcntl(sock, F_SETFL, (long) (flags & ~O_NONBLOCK)))
 		return false;

@@ -106,10 +106,9 @@ geqo(PlannerInfo *root, int number_of_rels, List *initial_rels)
 	random_init_pool(pool, &evaldata);
 
 /* sort the pool according to cheapest path as fitness */
-	sort_pool(pool);			/* we have to do it only one time, since
-								 * all kids replace the worst individuals
-								 * in future (-> geqo_pool.c:spread_chromo
-								 * ) */
+	sort_pool(pool);			/* we have to do it only one time, since all
+								 * kids replace the worst individuals in
+								 * future (-> geqo_pool.c:spread_chromo ) */
 
 #ifdef GEQO_DEBUG
 	elog(DEBUG1, "GEQO selected %d pool entries, best %.2f, worst %.2f",

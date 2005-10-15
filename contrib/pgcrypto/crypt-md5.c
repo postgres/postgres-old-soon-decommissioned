@@ -24,9 +24,9 @@
 char *
 px_crypt_md5(const char *pw, const char *salt, char *passwd, unsigned dstlen)
 {
-	static char *magic = "$1$"; /* This string is magic for this
-								 * algorithm.  Having it this way, we can
-								 * get get better later on */
+	static char *magic = "$1$"; /* This string is magic for this algorithm.
+								 * Having it this way, we can get get better
+								 * later on */
 	static char *p;
 	static const char *sp,
 			   *ep;

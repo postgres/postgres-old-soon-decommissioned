@@ -14,11 +14,11 @@
 char *
 scheck(const char *string, const char *format)
 {
-	char *fbuf;
+	char	   *fbuf;
 	const char *fp;
-	char *tp;
-	int c;
-	char *result;
+	char	   *tp;
+	int			c;
+	char	   *result;
 	char		dummy;
 	static char nada;
 

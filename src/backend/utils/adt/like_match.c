@@ -97,8 +97,8 @@ MatchText(char *t, int tlen, char *p, int plen)
 				return LIKE_TRUE;
 
 			/*
-			 * Otherwise, scan for a text position at which we can match
-			 * the rest of the pattern.
+			 * Otherwise, scan for a text position at which we can match the
+			 * rest of the pattern.
 			 */
 			while (tlen > 0)
 			{
@@ -118,16 +118,16 @@ MatchText(char *t, int tlen, char *p, int plen)
 			}
 
 			/*
-			 * End of text with no match, so no point in trying later
-			 * places to start matching this pattern.
+			 * End of text with no match, so no point in trying later places
+			 * to start matching this pattern.
 			 */
 			return LIKE_ABORT;
 		}
 		else if ((*p != '_') && !CHAREQ(t, p))
 		{
 			/*
-			 * Not the single-character wildcard and no explicit match?
-			 * Then time to quit...
+			 * Not the single-character wildcard and no explicit match? Then
+			 * time to quit...
 			 */
 			return LIKE_FALSE;
 		}
@@ -147,8 +147,8 @@ MatchText(char *t, int tlen, char *p, int plen)
 		return LIKE_TRUE;
 
 	/*
-	 * End of text with no match, so no point in trying later places to
-	 * start matching this pattern.
+	 * End of text with no match, so no point in trying later places to start
+	 * matching this pattern.
 	 */
 	return LIKE_ABORT;
 }	/* MatchText() */
@@ -183,8 +183,8 @@ MatchTextIC(char *t, int tlen, char *p, int plen)
 				return LIKE_TRUE;
 
 			/*
-			 * Otherwise, scan for a text position at which we can match
-			 * the rest of the pattern.
+			 * Otherwise, scan for a text position at which we can match the
+			 * rest of the pattern.
 			 */
 			while (tlen > 0)
 			{
@@ -204,16 +204,16 @@ MatchTextIC(char *t, int tlen, char *p, int plen)
 			}
 
 			/*
-			 * End of text with no match, so no point in trying later
-			 * places to start matching this pattern.
+			 * End of text with no match, so no point in trying later places
+			 * to start matching this pattern.
 			 */
 			return LIKE_ABORT;
 		}
 		else if ((*p != '_') && !ICHAREQ(t, p))
 		{
 			/*
-			 * Not the single-character wildcard and no explicit match?
-			 * Then time to quit...
+			 * Not the single-character wildcard and no explicit match? Then
+			 * time to quit...
 			 */
 			return LIKE_FALSE;
 		}
@@ -233,8 +233,8 @@ MatchTextIC(char *t, int tlen, char *p, int plen)
 		return LIKE_TRUE;
 
 	/*
-	 * End of text with no match, so no point in trying later places to
-	 * start matching this pattern.
+	 * End of text with no match, so no point in trying later places to start
+	 * matching this pattern.
 	 */
 	return LIKE_ABORT;
 }	/* MatchTextIC() */
@@ -289,7 +289,7 @@ do_like_escape(text *pat, text *esc)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_ESCAPE_SEQUENCE),
 					 errmsg("invalid escape string"),
-			  errhint("Escape string must be empty or one character.")));
+				  errhint("Escape string must be empty or one character.")));
 
 		e = VARDATA(esc);
 
@@ -303,9 +303,9 @@ do_like_escape(text *pat, text *esc)
 		}
 
 		/*
-		 * Otherwise, convert occurrences of the specified escape
-		 * character to '\', and double occurrences of '\' --- unless they
-		 * immediately follow an escape character!
+		 * Otherwise, convert occurrences of the specified escape character to
+		 * '\', and double occurrences of '\' --- unless they immediately
+		 * follow an escape character!
 		 */
 		afterescape = false;
 		while (plen > 0)

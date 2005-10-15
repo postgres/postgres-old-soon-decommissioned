@@ -91,7 +91,6 @@ static void gen_tabs(void);
 
 #include "rijndael.tbl"
 #define tab_gen		1
-
 #else							/* !PRE_CALC_TABLES */
 
 static u1byte pow_tab[256];
@@ -143,7 +142,6 @@ static u4byte tab_gen = 0;
 			 il_tab[1][byte((bi)[((n) + 3) & 3],1)] ^	\
 			 il_tab[2][byte((bi)[((n) + 2) & 3],2)] ^	\
 			 il_tab[3][byte((bi)[((n) + 1) & 3],3)] ^ *((k) + (n))
-
 #else
 
 #define ls_box(x)							 \

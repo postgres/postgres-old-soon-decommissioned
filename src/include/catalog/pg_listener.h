@@ -31,7 +31,7 @@
  *		cpp turns this into typedef struct FormData_pg_listener
  * ----------------------------------------------------------------
  */
-#define ListenerRelationId  2614
+#define ListenerRelationId	2614
 
 CATALOG(pg_listener,2614) BKI_WITHOUT_OIDS
 {

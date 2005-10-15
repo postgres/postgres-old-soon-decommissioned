@@ -86,13 +86,14 @@ linear(int pool_size, double bias)		/* bias is y-intercept of linear
 
 	/*
 	 * If geqo_rand() returns exactly 1.0 then we will get exactly max from
-	 * this equation, whereas we need 0 <= index < max.  Also it seems possible
-	 * that roundoff error might deliver values slightly outside the range;
-	 * in particular avoid passing a value slightly less than 0 to sqrt().
-	 * If we get a bad value just try again.
+	 * this equation, whereas we need 0 <= index < max.  Also it seems
+	 * possible that roundoff error might deliver values slightly outside the
+	 * range; in particular avoid passing a value slightly less than 0 to
+	 * sqrt(). If we get a bad value just try again.
 	 */
-	do {
-		double	sqrtval;
+	do
+	{
+		double		sqrtval;
 
 		sqrtval = (bias * bias) - 4.0 * (bias - 1.0) * geqo_rand();
 		if (sqrtval > 0.0)

@@ -41,10 +41,10 @@ avg_pool(Pool *pool)
 		elog(ERROR, "pool_size is zero");
 
 	/*
-	 * Since the pool may contain multiple occurrences of DBL_MAX, divide
-	 * by pool->size before summing, not after, to avoid overflow.	This
-	 * loses a little in speed and accuracy, but this routine is only used
-	 * for debug printouts, so we don't care that much.
+	 * Since the pool may contain multiple occurrences of DBL_MAX, divide by
+	 * pool->size before summing, not after, to avoid overflow.  This loses a
+	 * little in speed and accuracy, but this routine is only used for debug
+	 * printouts, so we don't care that much.
 	 */
 	for (i = 0; i < pool->size; i++)
 		cumulative += pool->data[i].worth / pool->size;

@@ -31,7 +31,7 @@
  *		typedef struct FormData_pg_language
  * ----------------
  */
-#define LanguageRelationId  2612
+#define LanguageRelationId	2612
 
 CATALOG(pg_language,2612)
 {

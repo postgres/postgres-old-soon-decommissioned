@@ -148,9 +148,9 @@ md5_crypt_verify(const Port *port, const char *role, char *client_pass)
 			TimestampTz vuntil;
 
 			vuntil = DatumGetTimestampTz(DirectFunctionCall3(timestamptz_in,
-								CStringGetDatum(valuntil),
-								ObjectIdGetDatum(InvalidOid),
-								Int32GetDatum(-1)));
+												   CStringGetDatum(valuntil),
+												ObjectIdGetDatum(InvalidOid),
+														 Int32GetDatum(-1)));
 
 			if (vuntil < GetCurrentTimestamp())
 				retval = STATUS_ERROR;

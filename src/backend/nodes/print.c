@@ -603,7 +603,7 @@ print_plan_recursive(Plan *p, Query *parsetree, int indentLevel, char *label)
 	if (IsA(p, BitmapAnd))
 	{
 		ListCell   *l;
-		BitmapAnd	   *bitmapandplan = (BitmapAnd *) p;
+		BitmapAnd  *bitmapandplan = (BitmapAnd *) p;
 
 		foreach(l, bitmapandplan->bitmapplans)
 		{
@@ -616,7 +616,7 @@ print_plan_recursive(Plan *p, Query *parsetree, int indentLevel, char *label)
 	if (IsA(p, BitmapOr))
 	{
 		ListCell   *l;
-		BitmapOr	   *bitmaporplan = (BitmapOr *) p;
+		BitmapOr   *bitmaporplan = (BitmapOr *) p;
 
 		foreach(l, bitmaporplan->bitmapplans)
 		{

@@ -80,14 +80,13 @@ static __inline__ MemoryContext
 MemoryContextSwitchTo(MemoryContext context)
 {
 	MemoryContext old = CurrentMemoryContext;
+
 	CurrentMemoryContext = context;
 	return old;
 }
-
 #else
 
 extern MemoryContext MemoryContextSwitchTo(MemoryContext context);
-
 #endif   /* __GNUC__ */
 
 /*

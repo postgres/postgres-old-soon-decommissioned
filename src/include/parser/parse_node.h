@@ -56,14 +56,13 @@ typedef struct ParseState
 	List	   *p_rtable;		/* range table so far */
 	List	   *p_joinlist;		/* join items so far (will become FromExpr
 								 * node's fromlist) */
-	List	   *p_relnamespace;	/* current namespace for relations */
-	List	   *p_varnamespace;	/* current namespace for columns */
+	List	   *p_relnamespace; /* current namespace for relations */
+	List	   *p_varnamespace; /* current namespace for columns */
 	Oid		   *p_paramtypes;	/* OIDs of types for $n parameter symbols */
 	int			p_numparams;	/* allocated size of p_paramtypes[] */
 	int			p_next_resno;	/* next targetlist resno to assign */
 	LockingClause *p_locking_clause;	/* FOR UPDATE/FOR SHARE info */
-	Node	   *p_value_substitute;		/* what to replace VALUE with,
-										 * if any */
+	Node	   *p_value_substitute;		/* what to replace VALUE with, if any */
 	bool		p_variableparams;
 	bool		p_hasAggs;
 	bool		p_hasSubLinks;

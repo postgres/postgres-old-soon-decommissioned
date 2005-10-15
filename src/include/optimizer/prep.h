@@ -46,7 +46,7 @@ extern List *preprocess_targetlist(PlannerInfo *root, List *tlist);
  * prototypes for prepunion.c
  */
 extern Plan *plan_set_operations(PlannerInfo *root, double tuple_fraction,
-								 List **sortClauses);
+					List **sortClauses);
 
 extern List *find_all_inheritors(Oid parentrel);
 

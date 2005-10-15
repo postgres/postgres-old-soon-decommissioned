@@ -93,9 +93,8 @@ pq_beginmessage(StringInfo buf, char msgtype)
 
 	/*
 	 * We stash the message type into the buffer's cursor field, expecting
-	 * that the pq_sendXXX routines won't touch it.  We could
-	 * alternatively make it the first byte of the buffer contents, but
-	 * this seems easier.
+	 * that the pq_sendXXX routines won't touch it.  We could alternatively
+	 * make it the first byte of the buffer contents, but this seems easier.
 	 */
 	buf->cursor = msgtype;
 }
@@ -664,8 +663,8 @@ pq_getmsgstring(StringInfo msg)
 	str = &msg->data[msg->cursor];
 
 	/*
-	 * It's safe to use strlen() here because a StringInfo is guaranteed
-	 * to have a trailing null byte.  But check we found a null inside the
+	 * It's safe to use strlen() here because a StringInfo is guaranteed to
+	 * have a trailing null byte.  But check we found a null inside the
 	 * message.
 	 */
 	slen = strlen(str);

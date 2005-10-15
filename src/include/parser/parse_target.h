@@ -28,7 +28,7 @@ extern void updateTargetListEntry(ParseState *pstate, TargetEntry *tle,
 extern List *checkInsertTargets(ParseState *pstate, List *cols,
 				   List **attrnos);
 extern TupleDesc expandRecordVariable(ParseState *pstate, Var *var,
-									  int levelsup);
+					 int levelsup);
 extern char *FigureColname(Node *node);
 
 #endif   /* PARSE_TARGET_H */

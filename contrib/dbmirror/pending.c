@@ -115,7 +115,7 @@ recordchange(PG_FUNCTION_ARGS)
 		if (SPI_connect() < 0)
 		{
 			ereport(ERROR, (errcode(ERRCODE_CONNECTION_FAILURE),
-			  errmsg("dbmirror:recordchange could not connect to SPI")));
+				  errmsg("dbmirror:recordchange could not connect to SPI")));
 			return -1;
 		}
 		trigdata = (TriggerData *) fcinfo->context;
@@ -155,7 +155,7 @@ recordchange(PG_FUNCTION_ARGS)
 		else
 		{
 			ereport(ERROR, (errcode(ERRCODE_TRIGGERED_ACTION_EXCEPTION),
-					 errmsg("dbmirror:recordchange Unknown operation")));
+						 errmsg("dbmirror:recordchange Unknown operation")));
 
 		}
 
@@ -219,7 +219,7 @@ storePending(char *cpTableName, HeapTuple tBeforeTuple,
 	vpPlan = SPI_prepare(cpQueryBase, 3, taPlanArgTypes);
 	if (vpPlan == NULL)
 		ereport(ERROR, (errcode(ERRCODE_TRIGGERED_ACTION_EXCEPTION),
-				   errmsg("dbmirror:storePending error creating plan")));
+						errmsg("dbmirror:storePending error creating plan")));
 
 
 	saPlanData[0] = PointerGetDatum(cpTableName);
@@ -662,7 +662,7 @@ saveSequenceUpdate(Oid relid, int64 nextValue, bool iscalled)
 	if (SPI_connect() < 0)
 		ereport(ERROR,
 				(errcode(ERRCODE_EXTERNAL_ROUTINE_EXCEPTION),
-				 errmsg("dbmirror:savesequenceupdate could not connect to SPI")));
+			errmsg("dbmirror:savesequenceupdate could not connect to SPI")));
 
 	insertPlan = SPI_prepare(insertQuery, 2, insertArgTypes);
 	insertDataPlan = SPI_prepare(insertDataQuery, 1, insertDataArgTypes);

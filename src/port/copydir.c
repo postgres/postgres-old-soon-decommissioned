@@ -66,11 +66,11 @@ copydir(char *fromdir, char *todir, bool recurse)
 
 	while ((xlde = ReadDir(xldir, fromdir)) != NULL)
 	{
-	    struct stat fst;
+		struct stat fst;
 
-	    if (strcmp(xlde->d_name, ".") == 0 ||
+		if (strcmp(xlde->d_name, ".") == 0 ||
 			strcmp(xlde->d_name, "..") == 0)
-		    continue;
+			continue;
 
 		snprintf(fromfile, MAXPGPATH, "%s/%s", fromdir, xlde->d_name);
 		snprintf(tofile, MAXPGPATH, "%s/%s", todir, xlde->d_name);

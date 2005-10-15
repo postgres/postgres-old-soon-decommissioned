@@ -178,7 +178,7 @@ _dosmaperr(unsigned long e)
 			errno = doserrors[i].doserr;
 			ereport(DEBUG5,
 					(errmsg_internal("mapped win32 error code %lu to %d",
-									  e, errno)));
+									 e, errno)));
 			return;
 		}
 	}

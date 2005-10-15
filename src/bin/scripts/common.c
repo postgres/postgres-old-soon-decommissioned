@@ -20,7 +20,7 @@
 #include "common.h"
 
 #ifndef HAVE_INT_OPTRESET
-int		optreset;
+int			optreset;
 #endif
 
 
@@ -97,8 +97,8 @@ connectDatabase(const char *dbname, const char *pghost, const char *pgport,
 		password = simple_prompt("Password: ", 100, false);
 
 	/*
-	 * Start the connection.  Loop until we have a password if requested
-	 * by backend.
+	 * Start the connection.  Loop until we have a password if requested by
+	 * backend.
 	 */
 	do
 	{

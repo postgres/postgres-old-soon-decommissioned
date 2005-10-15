@@ -26,7 +26,7 @@ typedef struct
 {
 	BOX		   *key;
 	int			pos;
-}	KBsort;
+} KBsort;
 
 static int	compare_KB(const void *a, const void *b);
 static bool gist_box_leaf_consistent(BOX *key, BOX *query,

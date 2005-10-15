@@ -184,9 +184,8 @@ typedef struct _tableInfo
 	bool		dump;			/* true if we want to dump it */
 
 	/*
-	 * These fields are computed only if we decide the table is
-	 * interesting (it's either a table to dump, or a direct parent of a
-	 * dumpable table).
+	 * These fields are computed only if we decide the table is interesting
+	 * (it's either a table to dump, or a direct parent of a dumpable table).
 	 */
 	int			numatts;		/* number of attributes */
 	char	  **attnames;		/* the attribute names */
@@ -200,9 +199,9 @@ typedef struct _tableInfo
 	bool	   *attisserial;	/* true if attr is serial or bigserial */
 
 	/*
-	 * Note: we need to store per-attribute notnull, default, and
-	 * constraint stuff for all interesting tables so that we can tell
-	 * which constraints were inherited.
+	 * Note: we need to store per-attribute notnull, default, and constraint
+	 * stuff for all interesting tables so that we can tell which constraints
+	 * were inherited.
 	 */
 	bool	   *notnull;		/* Not null constraints on attributes */
 	struct _attrDefInfo **attrdefs;		/* DEFAULT expressions */

@@ -38,8 +38,8 @@ pg_dlopen(char *filename)
 	static int	dl_initialized = 0;
 
 	/*
-	 * initializes the dynamic loader with the executable's pathname.
-	 * (only needs to do this the first time pg_dlopen is called.)
+	 * initializes the dynamic loader with the executable's pathname. (only
+	 * needs to do this the first time pg_dlopen is called.)
 	 */
 	if (!dl_initialized)
 	{
@@ -60,9 +60,8 @@ pg_dlopen(char *filename)
 		return NULL;
 
 	/*
-	 * If undefined symbols: try to link with the C and math libraries!
-	 * This could be smarter, if the dynamic linker was able to handle
-	 * shared libs!
+	 * If undefined symbols: try to link with the C and math libraries! This
+	 * could be smarter, if the dynamic linker was able to handle shared libs!
 	 */
 	if (dld_undefined_sym_count > 0)
 	{

@@ -148,9 +148,9 @@ DATA(insert ( 2147	int8inc		-					0	20		0 ));
 DATA(insert ( 2148	int8_accum	numeric_variance	0	1231	"{0,0,0}" ));
 DATA(insert ( 2149	int4_accum	numeric_variance	0	1231	"{0,0,0}" ));
 DATA(insert ( 2150	int2_accum	numeric_variance	0	1231	"{0,0,0}" ));
-DATA(insert ( 2151	float4_accum	float8_variance	0	1022	"{0,0,0}" ));
-DATA(insert ( 2152	float8_accum	float8_variance	0	1022	"{0,0,0}" ));
-DATA(insert ( 2153	numeric_accum  numeric_variance	0	1231	"{0,0,0}" ));
+DATA(insert ( 2151	float4_accum	float8_variance 0	1022	"{0,0,0}" ));
+DATA(insert ( 2152	float8_accum	float8_variance 0	1022	"{0,0,0}" ));
+DATA(insert ( 2153	numeric_accum  numeric_variance 0	1231	"{0,0,0}" ));
 
 /* stddev */
 DATA(insert ( 2154	int8_accum	numeric_stddev		0	1231	"{0,0,0}" ));

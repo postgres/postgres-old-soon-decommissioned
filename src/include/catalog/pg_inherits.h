@@ -31,7 +31,7 @@
  *		typedef struct FormData_pg_inherits
  * ----------------
  */
-#define InheritsRelationId  2611
+#define InheritsRelationId	2611
 
 CATALOG(pg_inherits,2611) BKI_WITHOUT_OIDS
 {

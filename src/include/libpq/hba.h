@@ -36,8 +36,8 @@ extern void load_ident(void);
 extern void load_role(void);
 extern int	hba_getauthmethod(hbaPort *port);
 extern int	authident(hbaPort *port);
-extern bool	read_pg_database_line(FILE *fp, char *dbname, Oid *dboid,
-								  Oid *dbtablespace, TransactionId *dbfrozenxid,
-								  TransactionId *dbvacuumxid);
+extern bool read_pg_database_line(FILE *fp, char *dbname, Oid *dboid,
+					  Oid *dbtablespace, TransactionId *dbfrozenxid,
+					  TransactionId *dbvacuumxid);
 
-#endif /* HBA_H */
+#endif   /* HBA_H */

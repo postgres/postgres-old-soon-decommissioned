@@ -44,8 +44,8 @@ DllRegisterServer(void)
 	}
 
 	/*
-	 * Add PostgreSQL source name as a subkey under the Application key in
-	 * the EventLog registry key.
+	 * Add PostgreSQL source name as a subkey under the Application key in the
+	 * EventLog registry key.
 	 */
 	if (RegCreateKey(HKEY_LOCAL_MACHINE, "SYSTEM\\CurrentControlSet\\Services\\EventLog\\Application\\PostgreSQL", &key))
 	{
@@ -91,8 +91,8 @@ STDAPI
 DllUnregisterServer(void)
 {
 	/*
-	 * Remove PostgreSQL source name as a subkey under the Application key
-	 * in the EventLog registry key.
+	 * Remove PostgreSQL source name as a subkey under the Application key in
+	 * the EventLog registry key.
 	 */
 
 	if (RegDeleteKey(HKEY_LOCAL_MACHINE, "SYSTEM\\CurrentControlSet\\Services\\EventLog\\Application\\PostgreSQL"))

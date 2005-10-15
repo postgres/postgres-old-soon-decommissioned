@@ -134,9 +134,9 @@ extern char *HbaFileName;
 extern char *IdentFileName;
 extern char *external_pid_file;
 
-extern int  tcp_keepalives_idle;
-extern int  tcp_keepalives_interval;
-extern int  tcp_keepalives_count;
+extern int	tcp_keepalives_idle;
+extern int	tcp_keepalives_interval;
+extern int	tcp_keepalives_count;
 
 extern void SetConfigOption(const char *name, const char *value,
 				GucContext context, GucSource source);
@@ -227,7 +227,7 @@ extern bool ClearDateCache(bool newval, bool doit, GucSource source);
 
 /* in commands/tablespace.c */
 extern const char *assign_default_tablespace(const char *newval,
-				   bool doit, GucSource source);
+						  bool doit, GucSource source);
 
 /* in utils/adt/regexp.c */
 extern const char *assign_regex_flavor(const char *value,

@@ -393,8 +393,8 @@ ScanKeywordLookup(const char *text)
 		return NULL;
 
 	/*
-	 * Apply an ASCII-only downcasing.	We must not use tolower() since it
-	 * may produce the wrong translation in some locales (eg, Turkish).
+	 * Apply an ASCII-only downcasing.	We must not use tolower() since it may
+	 * produce the wrong translation in some locales (eg, Turkish).
 	 */
 	for (i = 0; i < len; i++)
 	{

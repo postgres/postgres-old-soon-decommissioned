@@ -26,7 +26,7 @@
 
 
 /*
- * Actual bitmap representation is private to tidbitmap.c.  Callers can
+ * Actual bitmap representation is private to tidbitmap.c.	Callers can
  * do IsA(x, TIDBitmap) on it, but nothing else.
  */
 typedef struct TIDBitmap TIDBitmap;
@@ -34,7 +34,7 @@ typedef struct TIDBitmap TIDBitmap;
 /* Result structure for tbm_iterate */
 typedef struct
 {
-	BlockNumber	blockno;		/* page number containing tuples */
+	BlockNumber blockno;		/* page number containing tuples */
 	int			ntuples;		/* -1 indicates lossy result */
 	OffsetNumber offsets[1];	/* VARIABLE LENGTH ARRAY */
 } TBMIterateResult;				/* VARIABLE LENGTH STRUCT */

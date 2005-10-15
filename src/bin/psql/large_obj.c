@@ -122,8 +122,8 @@ do_lo_export(const char *loid_arg, const char *filename_arg)
 
 	status = lo_export(pset.db, atooid(loid_arg), filename_arg);
 	if (status != 1)
-	{							/* of course this status is documented
-								 * nowhere :( */
+	{							/* of course this status is documented nowhere
+								 * :( */
 		fputs(PQerrorMessage(pset.db), stderr);
 		return fail_lo_xact("\\lo_export", own_transaction);
 	}
@@ -254,7 +254,7 @@ do_lo_list(void)
 
 	snprintf(buf, sizeof(buf),
 			 "SELECT loid as \"ID\",\n"
-			 "  pg_catalog.obj_description(loid, 'pg_largeobject') as \"%s\"\n"
+		   "  pg_catalog.obj_description(loid, 'pg_largeobject') as \"%s\"\n"
 			 "FROM (SELECT DISTINCT loid FROM pg_catalog.pg_largeobject) x\n"
 			 "ORDER BY 1",
 			 _("Description"));

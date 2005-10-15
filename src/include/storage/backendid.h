@@ -18,8 +18,7 @@
  *		-cim 8/17/90
  * ----------------
  */
-typedef int BackendId;			/* unique currently active backend
-								 * identifier */
+typedef int BackendId;			/* unique currently active backend identifier */
 
 #define InvalidBackendId		(-1)
 

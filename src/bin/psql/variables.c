@@ -55,8 +55,8 @@ GetVariableBool(VariableSpace space, const char *name)
 		return false;			/* accept "off" or "OFF" as true */
 
 	/*
-	 * for backwards compatibility, anything except "off" or "OFF" is
-	 * taken as "true"
+	 * for backwards compatibility, anything except "off" or "OFF" is taken as
+	 * "true"
 	 */
 	return true;
 }

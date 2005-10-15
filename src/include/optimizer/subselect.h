@@ -26,6 +26,6 @@ extern Node *SS_replace_correlation_vars(Node *expr);
 extern Node *SS_process_sublinks(Node *expr, bool isQual);
 extern void SS_finalize_plan(Plan *plan, List *rtable);
 extern Param *SS_make_initplan_from_plan(PlannerInfo *root, Plan *plan,
-										 Oid resulttype, int32 resulttypmod);
+						   Oid resulttype, int32 resulttypmod);
 
 #endif   /* SUBSELECT_H */

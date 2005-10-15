@@ -218,8 +218,7 @@ freestate(struct nfa * nfa,
 		nfa->states = s->next;
 	}
 	s->prev = NULL;
-	s->next = nfa->free;		/* don't delete it, put it on the free
-								 * list */
+	s->next = nfa->free;		/* don't delete it, put it on the free list */
 	nfa->free = s;
 }
 
@@ -275,10 +274,10 @@ newarc(struct nfa * nfa,
 	a->from = from;
 
 	/*
-	 * Put the new arc on the beginning, not the end, of the chains. Not
-	 * only is this easier, it has the very useful side effect that
-	 * deleting the most-recently-added arc is the cheapest case rather
-	 * than the most expensive one.
+	 * Put the new arc on the beginning, not the end, of the chains. Not only
+	 * is this easier, it has the very useful side effect that deleting the
+	 * most-recently-added arc is the cheapest case rather than the most
+	 * expensive one.
 	 */
 	a->inchain = to->ins;
 	to->ins = a;
@@ -1155,8 +1154,7 @@ cleanup(struct nfa * nfa)
 static void
 markreachable(struct nfa * nfa,
 			  struct state * s,
-			  struct state * okay,		/* consider only states with this
-										 * mark */
+			  struct state * okay,		/* consider only states with this mark */
 			  struct state * mark)		/* the value to mark with */
 {
 	struct arc *a;
@@ -1175,8 +1173,7 @@ markreachable(struct nfa * nfa,
 static void
 markcanreach(struct nfa * nfa,
 			 struct state * s,
-			 struct state * okay,		/* consider only states with this
-										 * mark */
+			 struct state * okay,		/* consider only states with this mark */
 			 struct state * mark)		/* the value to mark with */
 {
 	struct arc *a;

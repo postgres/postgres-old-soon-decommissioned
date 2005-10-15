@@ -35,15 +35,15 @@ extern IndexPath *create_index_path(PlannerInfo *root,
 				  ScanDirection indexscandir,
 				  bool isjoininner);
 extern BitmapHeapPath *create_bitmap_heap_path(PlannerInfo *root,
-											   RelOptInfo *rel,
-											   Path *bitmapqual,
-											   bool isjoininner);
+						RelOptInfo *rel,
+						Path *bitmapqual,
+						bool isjoininner);
 extern BitmapAndPath *create_bitmap_and_path(PlannerInfo *root,
-											 RelOptInfo *rel,
-											 List *bitmapquals);
+					   RelOptInfo *rel,
+					   List *bitmapquals);
 extern BitmapOrPath *create_bitmap_or_path(PlannerInfo *root,
-										   RelOptInfo *rel,
-										   List *bitmapquals);
+					  RelOptInfo *rel,
+					  List *bitmapquals);
 extern TidPath *create_tidscan_path(PlannerInfo *root, RelOptInfo *rel,
 					List *tideval);
 extern AppendPath *create_append_path(RelOptInfo *rel, List *subpaths);

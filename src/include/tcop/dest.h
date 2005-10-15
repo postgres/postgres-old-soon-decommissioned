@@ -102,7 +102,7 @@ struct _DestReceiver
 {
 	/* Called for each tuple to be output: */
 	void		(*receiveSlot) (TupleTableSlot *slot,
-								DestReceiver *self);
+											DestReceiver *self);
 	/* Per-executor-run initialization and shutdown: */
 	void		(*rStartup) (DestReceiver *self,
 										 int operation,

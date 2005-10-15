@@ -20,7 +20,7 @@
 extern void cluster(ClusterStmt *stmt);
 
 extern void check_index_is_clusterable(Relation OldHeap, Oid indexOid,
-			  bool recheck);
+						   bool recheck);
 extern void mark_index_clustered(Relation rel, Oid indexOid);
 extern Oid make_new_heap(Oid OIDOldHeap, const char *NewName,
 			  Oid NewTableSpace);

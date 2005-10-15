@@ -43,7 +43,7 @@ help(const char *progname)
 	printf("  -c             automatically generate C code from embedded SQL code;\n"
 		   "                 currently this works for EXEC SQL TYPE\n");
 	printf("  -C MODE        set compatibility mode;\n"
-		   "                 MODE may be one of \"INFORMIX\", \"INFORMIX_SE\"\n");
+	  "                 MODE may be one of \"INFORMIX\", \"INFORMIX_SE\"\n");
 #ifdef YYDEBUG
 	printf("  -d             generate parser debug output\n");
 #endif
@@ -431,8 +431,8 @@ main(int argc, char *const argv[])
 					if (!(ptr->opened))
 					{
 						/*
-						 * Does not really make sense to declare a cursor
-						 * but not open it
+						 * Does not really make sense to declare a cursor but
+						 * not open it
 						 */
 						snprintf(errortext, sizeof(errortext), "cursor \"%s\" has been declared but not opened\n", ptr->name);
 						mmerror(PARSE_ERROR, ET_WARNING, errortext);

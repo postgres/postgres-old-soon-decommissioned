@@ -313,7 +313,7 @@ help(const char *progname)
 	printf(_("  -l, --login               role can login (default)\n"));
 	printf(_("  -L, --no-login            role cannot login\n"));
 	printf(_("  -i, --inherit             role inherits privileges of roles it is a\n"
-                 "                            member of (default)\n"));
+			 "                            member of (default)\n"));
 	printf(_("  -I, --no-inherit          role does not inherit privileges\n"));
 	printf(_("  -c, --connection-limit=N  connection limit for role (default: no limit)\n"));
 	printf(_("  -P, --pwprompt            assign a password to new role\n"));
@@ -329,6 +329,6 @@ help(const char *progname)
 	printf(_("  -U, --username=USERNAME   user name to connect as (not the one to create)\n"));
 	printf(_("  -W, --password            prompt for password to connect\n"));
 	printf(_("\nIf one of -s, -S, -d, -D, -r, -R and ROLENAME is not specified, you will\n"
-		 "be prompted interactively.\n"));
+			 "be prompted interactively.\n"));
 	printf(_("\nReport bugs to <pgsql-bugs@postgresql.org>.\n"));
 }

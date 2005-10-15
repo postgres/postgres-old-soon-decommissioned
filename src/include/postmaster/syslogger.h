@@ -24,7 +24,6 @@ extern bool am_syslogger;
 
 #ifndef WIN32
 extern int	syslogPipe[2];
-
 #else
 extern HANDLE syslogPipe[2];
 #endif

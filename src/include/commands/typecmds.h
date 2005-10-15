@@ -38,6 +38,6 @@ extern void AlterTypeOwner(List *names, Oid newOwnerId);
 extern void AlterTypeOwnerInternal(Oid typeOid, Oid newOwnerId);
 extern void AlterTypeNamespace(List *names, const char *newschema);
 extern void AlterTypeNamespaceInternal(Oid typeOid, Oid nspOid,
-									   bool errorOnTableType);
+						   bool errorOnTableType);
 
 #endif   /* TYPECMDS_H */

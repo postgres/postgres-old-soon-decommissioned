@@ -66,7 +66,7 @@ struct copy_options
 	bool		binary;
 	bool		oids;
 	bool		csv_mode;
-	bool        header;
+	bool		header;
 	char	   *delim;
 	char	   *null;
 	char	   *quote;
@@ -151,9 +151,8 @@ parse_slash_copy(const char *args)
 		goto error;
 
 	/*
-	 * strtokx() will not have returned a multi-character token starting
-	 * with '.', so we don't need strcmp() here.  Likewise for '(', etc,
-	 * below.
+	 * strtokx() will not have returned a multi-character token starting with
+	 * '.', so we don't need strcmp() here.  Likewise for '(', etc, below.
 	 */
 	if (token[0] == '.')
 	{
@@ -272,8 +271,8 @@ parse_slash_copy(const char *args)
 	if (token)
 	{
 		/*
-		 * WITH is optional.  Also, the backend will allow WITH followed
-		 * by nothing, so we do too.
+		 * WITH is optional.  Also, the backend will allow WITH followed by
+		 * nothing, so we do too.
 		 */
 		if (pg_strcasecmp(token, "with") == 0)
 			token = strtokx(NULL, whitespace, NULL, NULL,
@@ -672,7 +671,7 @@ handleCopyIn(PGconn *conn, FILE *copystream)
 	{
 		if (!QUIET())
 			puts(_("Enter data to be copied followed by a newline.\n"
-			  "End with a backslash and a period on a line by itself."));
+				   "End with a backslash and a period on a line by itself."));
 		prompt = get_prompt(PROMPT_COPY);
 	}
 	else
@@ -714,8 +713,8 @@ handleCopyIn(PGconn *conn, FILE *copystream)
 			if (c == EOF && s == copybuf && firstload)
 			{
 				/*
-				 * We are guessing a little bit as to the right
-				 * line-ending here...
+				 * We are guessing a little bit as to the right line-ending
+				 * here...
 				 */
 				if (saw_cr)
 					PQputline(conn, "\\.\r\n");

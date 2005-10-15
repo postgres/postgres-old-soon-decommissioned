@@ -52,8 +52,7 @@ newcvec(int nchrs,				/* to hold this many chrs... */
 	if (cv == NULL)
 		return NULL;
 	cv->chrspace = nchrs;
-	cv->chrs = (chr *) &cv->mcces[nmcces];		/* chrs just after MCCE
-												 * ptrs */
+	cv->chrs = (chr *) &cv->mcces[nmcces];		/* chrs just after MCCE ptrs */
 	cv->mccespace = nmcces;
 	cv->ranges = cv->chrs + nchrs + nmcces * (MAXMCCE + 1);
 	cv->rangespace = nranges;

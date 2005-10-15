@@ -75,7 +75,7 @@ proc_exit(int code)
 	shmem_exit(code);
 	while (--on_proc_exit_index >= 0)
 		(*on_proc_exit_list[on_proc_exit_index].function) (code,
-							  on_proc_exit_list[on_proc_exit_index].arg);
+								  on_proc_exit_list[on_proc_exit_index].arg);
 	exit(code);
 }
 
@@ -84,7 +84,7 @@ shmem_exit(int code)
 {
 	while (--on_shmem_exit_index >= 0)
 		(*on_shmem_exit_list[on_shmem_exit_index].function) (code,
-							on_shmem_exit_list[on_shmem_exit_index].arg);
+								on_shmem_exit_list[on_shmem_exit_index].arg);
 	on_shmem_exit_index = 0;
 }
 

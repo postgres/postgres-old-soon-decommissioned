@@ -266,7 +266,6 @@ extern int	NIndexTupleInserted;
 #define MJ_DEBUG_PROC_NODE(slot) \
   MJ2_printf("  %s = ExecProcNode(...) returns %s\n", \
 			 CppAsString(slot), NULL_OR_TUPLE(slot))
-
 #else
 
 #define MJ_nodeDisplay(l)

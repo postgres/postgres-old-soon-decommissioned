@@ -90,12 +90,12 @@ void		px_free(void *p);
 
 #define PXE_PGP_CORRUPT_DATA		-100
 #define PXE_PGP_CORRUPT_ARMOR		-101
-#define PXE_PGP_UNSUPPORTED_COMPR   -102
-#define PXE_PGP_UNSUPPORTED_CIPHER  -103
-#define PXE_PGP_UNSUPPORTED_HASH    -104
-#define PXE_PGP_COMPRESSION_ERROR   -105
-#define PXE_PGP_NOT_TEXT            -106
-#define PXE_PGP_UNEXPECTED_PKT      -107
+#define PXE_PGP_UNSUPPORTED_COMPR	-102
+#define PXE_PGP_UNSUPPORTED_CIPHER	-103
+#define PXE_PGP_UNSUPPORTED_HASH	-104
+#define PXE_PGP_COMPRESSION_ERROR	-105
+#define PXE_PGP_NOT_TEXT			-106
+#define PXE_PGP_UNEXPECTED_PKT		-107
 #define PXE_PGP_NO_BIGNUM			-108
 #define PXE_PGP_MATH_FAILED			-109
 #define PXE_PGP_SHORT_ELGAMAL_KEY	-110
@@ -110,7 +110,7 @@ void		px_free(void *p);
 #define PXE_PGP_NO_USABLE_KEY		-119
 #define PXE_PGP_NEED_SECRET_PSW		-120
 #define PXE_PGP_BAD_S2K_MODE		-121
-#define PXE_PGP_UNSUPPORTED_PUBALGO	-122
+#define PXE_PGP_UNSUPPORTED_PUBALGO -122
 #define PXE_PGP_MULTIPLE_SUBKEYS	-123
 
 
@@ -132,7 +132,7 @@ struct px_digest
 	union
 	{
 		unsigned	code;
-		void *ptr;
+		void	   *ptr;
 	}			p;
 };
 
@@ -207,9 +207,10 @@ const char *px_strerror(int err);
 
 const char *px_resolve_alias(const PX_Alias * aliases, const char *name);
 
-void          px_set_debug_handler(void (*handler)(const char *));
+void		px_set_debug_handler(void (*handler) (const char *));
+
 #ifdef PX_DEBUG
-void          px_debug(const char *fmt, ...);
+void		px_debug(const char *fmt,...);
 #else
 #define px_debug(...)
 #endif

@@ -46,13 +46,10 @@
 /* internal character type and related */
 typedef pg_wchar chr;			/* the type itself */
 typedef unsigned uchr;			/* unsigned type that will hold a chr */
-typedef int celt;				/* type to hold chr, MCCE number, or
-								 * NOCELT */
+typedef int celt;				/* type to hold chr, MCCE number, or NOCELT */
 
-#define NOCELT	(-1)			/* celt value which is not valid chr or
-								 * MCCE */
-#define CHR(c)	((unsigned char) (c))	/* turn char literal into chr
-										 * literal */
+#define NOCELT	(-1)			/* celt value which is not valid chr or MCCE */
+#define CHR(c)	((unsigned char) (c))	/* turn char literal into chr literal */
 #define DIGITVAL(c) ((c)-'0')	/* turn chr digit into its value */
 #define CHRBITS 32				/* bits in a chr; must not use sizeof */
 #define CHR_MIN 0x00000000		/* smallest and largest chr; the value */

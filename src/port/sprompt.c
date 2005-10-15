@@ -46,7 +46,6 @@ simple_prompt(const char *prompt, int maxlen, bool echo)
 #ifdef HAVE_TERMIOS_H
 	struct termios t_orig,
 				t;
-
 #else
 #ifdef WIN32
 	HANDLE		t = NULL;
@@ -61,8 +60,8 @@ simple_prompt(const char *prompt, int maxlen, bool echo)
 	prompt_state = true;		/* disable SIGINT */
 
 	/*
-	 * Do not try to collapse these into one "w+" mode file. Doesn't work
-	 * on some platforms (eg, HPUX 10.20).
+	 * Do not try to collapse these into one "w+" mode file. Doesn't work on
+	 * some platforms (eg, HPUX 10.20).
 	 */
 	termin = fopen("/dev/tty", "r");
 	termout = fopen("/dev/tty", "w");

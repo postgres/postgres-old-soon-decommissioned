@@ -42,13 +42,13 @@ extern List *generate_bitmap_or_paths(PlannerInfo *root, RelOptInfo *rel,
 extern Path *best_inner_indexscan(PlannerInfo *root, RelOptInfo *rel,
 					 Relids outer_relids, JoinType jointype);
 extern List *group_clauses_by_indexkey(IndexOptInfo *index,
-									   List *clauses, List *outer_clauses,
-									   Relids outer_relids,
-									   bool *found_clause);
+						  List *clauses, List *outer_clauses,
+						  Relids outer_relids,
+						  bool *found_clause);
 extern bool match_index_to_operand(Node *operand, int indexcol,
 					   IndexOptInfo *index);
 extern List *expand_indexqual_conditions(IndexOptInfo *index,
-										 List *clausegroups);
+							List *clausegroups);
 extern void check_partial_indexes(PlannerInfo *root, RelOptInfo *rel);
 extern List *flatten_clausegroups_list(List *clausegroups);
 
@@ -110,7 +110,7 @@ extern Path *get_cheapest_fractional_path_for_pathkeys(List *paths,
 extern List *build_index_pathkeys(PlannerInfo *root, IndexOptInfo *index,
 					 ScanDirection scandir);
 extern List *convert_subquery_pathkeys(PlannerInfo *root, RelOptInfo *rel,
-									   List *subquery_pathkeys);
+						  List *subquery_pathkeys);
 extern List *build_join_pathkeys(PlannerInfo *root,
 					RelOptInfo *joinrel,
 					JoinType jointype,

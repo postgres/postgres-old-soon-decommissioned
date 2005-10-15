@@ -56,8 +56,7 @@ SetRelationRuleStatus(Oid relationId, bool relHasRules,
 	Form_pg_class classForm;
 
 	/*
-	 * Find the tuple to update in pg_class, using syscache for the
-	 * lookup.
+	 * Find the tuple to update in pg_class, using syscache for the lookup.
 	 */
 	relationRelation = heap_open(RelationRelationId, RowExclusiveLock);
 	tuple = SearchSysCacheCopy(RELOID,

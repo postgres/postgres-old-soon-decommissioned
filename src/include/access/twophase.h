@@ -25,7 +25,7 @@
 typedef struct GlobalTransactionData *GlobalTransaction;
 
 /* GUC variable */
-extern int max_prepared_xacts;
+extern int	max_prepared_xacts;
 
 extern Size TwoPhaseShmemSize(void);
 extern void TwoPhaseShmemInit(void);
@@ -33,8 +33,8 @@ extern void TwoPhaseShmemInit(void);
 extern PGPROC *TwoPhaseGetDummyProc(TransactionId xid);
 
 extern GlobalTransaction MarkAsPreparing(TransactionId xid, const char *gid,
-										 TimestampTz prepared_at,
-										 Oid owner, Oid databaseid);
+				TimestampTz prepared_at,
+				Oid owner, Oid databaseid);
 
 extern void StartPrepare(GlobalTransaction gxact);
 extern void EndPrepare(GlobalTransaction gxact);

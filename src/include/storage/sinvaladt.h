@@ -81,8 +81,7 @@ typedef struct SISeg
 	 */
 	int			minMsgNum;		/* oldest message still needed */
 	int			maxMsgNum;		/* next message number to be assigned */
-	int			lastBackend;	/* index of last active procState entry,
-								 * +1 */
+	int			lastBackend;	/* index of last active procState entry, +1 */
 	int			maxBackends;	/* size of procState array */
 	int			freeBackends;	/* number of empty procState slots */
 
@@ -94,8 +93,8 @@ typedef struct SISeg
 	/*
 	 * Per-backend state info.
 	 *
-	 * We declare procState as 1 entry because C wants a fixed-size array,
-	 * but actually it is maxBackends entries long.
+	 * We declare procState as 1 entry because C wants a fixed-size array, but
+	 * actually it is maxBackends entries long.
 	 */
 	ProcState	procState[1];	/* reflects the invalidation state */
 } SISeg;

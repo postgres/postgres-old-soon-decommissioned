@@ -23,8 +23,7 @@
 typedef struct RawColumnDefault
 {
 	AttrNumber	attnum;			/* attribute to attach default to */
-	Node	   *raw_default;	/* default value (untransformed parse
-								 * tree) */
+	Node	   *raw_default;	/* default value (untransformed parse tree) */
 } RawColumnDefault;
 
 typedef struct CookedConstraint

@@ -66,6 +66,6 @@ extern int	PostgresMain(int argc, char *argv[], const char *username);
 extern void ResetUsage(void);
 extern void ShowUsage(const char *title);
 extern void set_debug_options(int debug_flag,
-							  GucContext context, GucSource source);
+				  GucContext context, GucSource source);
 
 #endif   /* TCOPPROT_H */
