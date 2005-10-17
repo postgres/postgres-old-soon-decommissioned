@@ -262,7 +262,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 		service = portNumberStr;
 	}
 
-	ret = getaddrinfo_all(hostName, service, &hint, &addrs);
+	ret = pg_getaddrinfo_all(hostName, service, &hint, &addrs);
 	if (ret || !addrs)
 	{
 		if (hostName)
@@ -274,7 +274,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 				 (errmsg("could not translate service \"%s\" to address: %s",
 						 service, gai_strerror(ret))));
 		if (addrs)
-			freeaddrinfo_all(hint.ai_family, addrs);
+			pg_freeaddrinfo_all(hint.ai_family, addrs);
 		return STATUS_ERROR;
 	}
 
@@ -425,7 +425,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 		added++;
 	}
 
-	freeaddrinfo_all(hint.ai_family, addrs);
+	pg_freeaddrinfo_all(hint.ai_family, addrs);
 
 	if (!added)
 		return STATUS_ERROR;

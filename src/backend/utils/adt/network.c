@@ -1013,10 +1013,10 @@ inet_client_addr(PG_FUNCTION_ARGS)
 
 	remote_host[0] = '\0';
 
-	ret = getnameinfo_all(&port->raddr.addr, port->raddr.salen,
-						  remote_host, sizeof(remote_host),
-						  NULL, 0,
-						  NI_NUMERICHOST | NI_NUMERICSERV);
+	ret = pg_getnameinfo_all(&port->raddr.addr, port->raddr.salen,
+							 remote_host, sizeof(remote_host),
+							 NULL, 0,
+							 NI_NUMERICHOST | NI_NUMERICSERV);
 	if (ret)
 		PG_RETURN_NULL();
 
@@ -1050,10 +1050,10 @@ inet_client_port(PG_FUNCTION_ARGS)
 
 	remote_port[0] = '\0';
 
-	ret = getnameinfo_all(&port->raddr.addr, port->raddr.salen,
-						  NULL, 0,
-						  remote_port, sizeof(remote_port),
-						  NI_NUMERICHOST | NI_NUMERICSERV);
+	ret = pg_getnameinfo_all(&port->raddr.addr, port->raddr.salen,
+							 NULL, 0,
+							 remote_port, sizeof(remote_port),
+							 NI_NUMERICHOST | NI_NUMERICSERV);
 	if (ret)
 		PG_RETURN_NULL();
 
@@ -1087,10 +1087,10 @@ inet_server_addr(PG_FUNCTION_ARGS)
 
 	local_host[0] = '\0';
 
-	ret = getnameinfo_all(&port->laddr.addr, port->laddr.salen,
-						  local_host, sizeof(local_host),
-						  NULL, 0,
-						  NI_NUMERICHOST | NI_NUMERICSERV);
+	ret = pg_getnameinfo_all(&port->laddr.addr, port->laddr.salen,
+							 local_host, sizeof(local_host),
+							 NULL, 0,
+							 NI_NUMERICHOST | NI_NUMERICSERV);
 	if (ret)
 		PG_RETURN_NULL();
 
@@ -1124,10 +1124,10 @@ inet_server_port(PG_FUNCTION_ARGS)
 
 	local_port[0] = '\0';
 
-	ret = getnameinfo_all(&port->laddr.addr, port->laddr.salen,
-						  NULL, 0,
-						  local_port, sizeof(local_port),
-						  NI_NUMERICHOST | NI_NUMERICSERV);
+	ret = pg_getnameinfo_all(&port->laddr.addr, port->laddr.salen,
+							 NULL, 0,
+							 local_port, sizeof(local_port),
+							 NI_NUMERICHOST | NI_NUMERICSERV);
 	if (ret)
 		PG_RETURN_NULL();
 

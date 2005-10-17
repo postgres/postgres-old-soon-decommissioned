@@ -313,8 +313,8 @@ CreateRole(CreateRoleStmt *stmt)
 				DirectFunctionCall1(textin, CStringGetDatum(password));
 		else
 		{
-			if (!EncryptMD5(password, stmt->role, strlen(stmt->role),
-							encrypted_password))
+			if (!pg_md5_encrypt(password, stmt->role, strlen(stmt->role),
+								encrypted_password))
 				elog(ERROR, "password encryption failed");
 			new_record[Anum_pg_authid_rolpassword - 1] =
 				DirectFunctionCall1(textin, CStringGetDatum(encrypted_password));
@@ -642,8 +642,8 @@ AlterRole(AlterRoleStmt *stmt)
 				DirectFunctionCall1(textin, CStringGetDatum(password));
 		else
 		{
-			if (!EncryptMD5(password, stmt->role, strlen(stmt->role),
-							encrypted_password))
+			if (!pg_md5_encrypt(password, stmt->role, strlen(stmt->role),
+								encrypted_password))
 				elog(ERROR, "password encryption failed");
 			new_record[Anum_pg_authid_rolpassword - 1] =
 				DirectFunctionCall1(textin, CStringGetDatum(encrypted_password));

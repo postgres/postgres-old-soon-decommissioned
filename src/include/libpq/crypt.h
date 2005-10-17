@@ -21,12 +21,13 @@
 						 strlen(passwd) == MD5_PASSWD_LEN)
 
 
+/* in crypt.c */
 extern int md5_crypt_verify(const Port *port, const char *user,
 				 char *client_pass);
-extern bool md5_hash(const void *buff, size_t len, char *hexsum);
-extern bool CheckMD5Pwd(char *passwd, char *storedpwd, char *seed);
 
-extern bool EncryptMD5(const char *passwd, const char *salt,
+/* in md5.c --- these are also present in frontend libpq */
+extern bool pg_md5_hash(const void *buff, size_t len, char *hexsum);
+extern bool pg_md5_encrypt(const char *passwd, const char *salt,
 		   size_t salt_len, char *buf);
 
 #endif

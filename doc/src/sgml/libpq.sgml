@@ -4049,15 +4049,13 @@ passed around freely between threads.
 
 <para>
 The deprecated functions
-<function>PQrequestCancel</function>,
-<function>PQoidStatus</function> and
-<function>fe_setauthsvc</function>
+<function>PQrequestCancel</function> and
+<function>PQoidStatus</function>
 are not thread-safe and should not be used in multithread programs.
 <function>PQrequestCancel</function> can be replaced by
 <function>PQcancel</function>.
 <function>PQoidStatus</function> can be replaced by
 <function>PQoidValue</function>.
-There is no good reason to call <function>fe_setauthsvc</function> at all.
 </para>
 
 <para>

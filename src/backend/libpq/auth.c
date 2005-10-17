@@ -376,10 +376,10 @@ ClientAuthentication(Port *port)
 			{
 				char		hostinfo[NI_MAXHOST];
 
-				getnameinfo_all(&port->raddr.addr, port->raddr.salen,
-								hostinfo, sizeof(hostinfo),
-								NULL, 0,
-								NI_NUMERICHOST);
+				pg_getnameinfo_all(&port->raddr.addr, port->raddr.salen,
+								   hostinfo, sizeof(hostinfo),
+								   NULL, 0,
+								   NI_NUMERICHOST);
 
 #ifdef USE_SSL
 				ereport(FATAL,

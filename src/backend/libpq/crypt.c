@@ -76,9 +76,9 @@ md5_crypt_verify(const Port *port, const char *role, char *client_pass)
 			if (isMD5(shadow_pass))
 			{
 				/* stored password already encrypted, only do salt */
-				if (!EncryptMD5(shadow_pass + strlen("md5"),
-								(char *) port->md5Salt,
-								sizeof(port->md5Salt), crypt_pwd))
+				if (!pg_md5_encrypt(shadow_pass + strlen("md5"),
+									(char *) port->md5Salt,
+									sizeof(port->md5Salt), crypt_pwd))
 				{
 					pfree(crypt_pwd);
 					return STATUS_ERROR;
@@ -89,19 +89,19 @@ md5_crypt_verify(const Port *port, const char *role, char *client_pass)
 				/* stored password is plain, double-encrypt */
 				char	   *crypt_pwd2 = palloc(MD5_PASSWD_LEN + 1);
 
-				if (!EncryptMD5(shadow_pass,
-								port->user_name,
-								strlen(port->user_name),
-								crypt_pwd2))
+				if (!pg_md5_encrypt(shadow_pass,
+									port->user_name,
+									strlen(port->user_name),
+									crypt_pwd2))
 				{
 					pfree(crypt_pwd);
 					pfree(crypt_pwd2);
 					return STATUS_ERROR;
 				}
-				if (!EncryptMD5(crypt_pwd2 + strlen("md5"),
-								port->md5Salt,
-								sizeof(port->md5Salt),
-								crypt_pwd))
+				if (!pg_md5_encrypt(crypt_pwd2 + strlen("md5"),
+									port->md5Salt,
+									sizeof(port->md5Salt),
+									crypt_pwd))
 				{
 					pfree(crypt_pwd);
 					pfree(crypt_pwd2);
@@ -123,10 +123,10 @@ md5_crypt_verify(const Port *port, const char *role, char *client_pass)
 			{
 				/* Encrypt user-supplied password to match stored MD5 */
 				crypt_client_pass = palloc(MD5_PASSWD_LEN + 1);
-				if (!EncryptMD5(client_pass,
-								port->user_name,
-								strlen(port->user_name),
-								crypt_client_pass))
+				if (!pg_md5_encrypt(client_pass,
+									port->user_name,
+									strlen(port->user_name),
+									crypt_client_pass))
 				{
 					pfree(crypt_client_pass);
 					return STATUS_ERROR;
