@@ -37,8 +37,6 @@ _hash_doinsert(Relation rel, HashItem hitem)
 	Buffer		metabuf;
 	HashMetaPage metap;
 	IndexTuple	itup;
-	BlockNumber itup_blkno;
-	OffsetNumber itup_off;
 	BlockNumber blkno;
 	Page		page;
 	HashPageOpaque pageopaque;
@@ -159,8 +157,7 @@ _hash_doinsert(Relation rel, HashItem hitem)
 	}
 
 	/* found page with enough space, so add the item here */
-	itup_off = _hash_pgaddtup(rel, buf, itemsz, hitem);
-	itup_blkno = BufferGetBlockNumber(buf);
+	(void) _hash_pgaddtup(rel, buf, itemsz, hitem);
 
 	/* write and release the modified page */
 	_hash_wrtbuf(rel, buf);

@@ -50,7 +50,6 @@ ExecHashJoin(HashJoinState *node)
 	HashState  *hashNode;
 	List	   *joinqual;
 	List	   *otherqual;
-	ScanDirection dir;
 	TupleTableSlot *inntuple;
 	ExprContext *econtext;
 	ExprDoneCond isDone;
@@ -68,7 +67,6 @@ ExecHashJoin(HashJoinState *node)
 	otherqual = node->js.ps.qual;
 	hashNode = (HashState *) innerPlanState(node);
 	outerNode = outerPlanState(node);
-	dir = estate->es_direction;
 
 	/*
 	 * get information from HashJoin state

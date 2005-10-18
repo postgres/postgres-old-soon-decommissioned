@@ -1335,7 +1335,6 @@ AlterDomainDropConstraint(List *names, const char *constrName, DropBehavior beha
 	Oid			domainoid;
 	HeapTuple	tup;
 	Relation	rel;
-	Form_pg_type typTup;
 	Relation	conrel;
 	SysScanDesc conscan;
 	ScanKeyData key[1];
@@ -1378,8 +1377,6 @@ AlterDomainDropConstraint(List *names, const char *constrName, DropBehavior beha
 
 	conscan = systable_beginscan(conrel, ConstraintTypidIndexId, true,
 								 SnapshotNow, 1, key);
-
-	typTup = (Form_pg_type) GETSTRUCT(tup);
 
 	/*
 	 * Scan over the result set, removing any matching entries.

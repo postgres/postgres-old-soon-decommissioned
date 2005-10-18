@@ -1452,7 +1452,6 @@ AddRelationRawConstraints(Relation rel,
 	TupleDesc	tupleDesc;
 	TupleConstr *oldconstr;
 	int			numoldchecks;
-	ConstrCheck *oldchecks;
 	ParseState *pstate;
 	RangeTblEntry *rte;
 	int			numchecks;
@@ -1467,15 +1466,9 @@ AddRelationRawConstraints(Relation rel,
 	tupleDesc = RelationGetDescr(rel);
 	oldconstr = tupleDesc->constr;
 	if (oldconstr)
-	{
 		numoldchecks = oldconstr->num_check;
-		oldchecks = oldconstr->check;
-	}
 	else
-	{
 		numoldchecks = 0;
-		oldchecks = NULL;
-	}
 
 	/*
 	 * Create a dummy ParseState and insert the target relation as its sole

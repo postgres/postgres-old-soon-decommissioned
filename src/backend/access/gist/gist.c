@@ -321,14 +321,12 @@ gistplacetopage(GISTInsertState *state, GISTSTATE *giststate)
 		/* no space for insertion */
 		IndexTuple *itvec,
 				   *newitup;
-		int			tlen,
-					olen;
+		int			tlen;
 		SplitedPageLayout *dist = NULL,
 				   *ptr;
 
 		is_splitted = true;
 		itvec = gistextractbuffer(state->stack->buffer, &tlen);
-		olen = tlen;
 		itvec = gistjoinvector(itvec, &tlen, state->itup, state->ituplen);
 		newitup = gistSplit(state->r, state->stack->buffer, itvec, &tlen, &dist, giststate);
 

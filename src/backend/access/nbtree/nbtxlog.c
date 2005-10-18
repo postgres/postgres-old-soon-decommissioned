@@ -156,7 +156,6 @@ btree_xlog_insert(bool isleaf, bool ismeta,
 	Relation	reln;
 	Buffer		buffer;
 	Page		page;
-	BTPageOpaque pageop;
 	char	   *datapos;
 	int			datalen;
 	xl_btree_metadata md;
@@ -187,7 +186,6 @@ btree_xlog_insert(bool isleaf, bool ismeta,
 		page = (Page) BufferGetPage(buffer);
 		if (PageIsNew((PageHeader) page))
 			elog(PANIC, "btree_insert_redo: uninitialized page");
-		pageop = (BTPageOpaque) PageGetSpecialPointer(page);
 
 		if (XLByteLE(lsn, PageGetLSN(page)))
 		{

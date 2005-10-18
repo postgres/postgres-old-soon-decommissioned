@@ -174,7 +174,6 @@ void
 RemoveConversionById(Oid conversionOid)
 {
 	Relation	rel;
-	TupleDesc	tupDesc;
 	HeapTuple	tuple;
 	HeapScanDesc scan;
 	ScanKeyData scanKeyData;
@@ -186,7 +185,6 @@ RemoveConversionById(Oid conversionOid)
 
 	/* open pg_conversion */
 	rel = heap_open(ConversionRelationId, RowExclusiveLock);
-	tupDesc = rel->rd_att;
 
 	scan = heap_beginscan(rel, SnapshotNow,
 						  1, &scanKeyData);

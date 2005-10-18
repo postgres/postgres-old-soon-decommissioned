@@ -79,11 +79,9 @@ ScanKey
 _bt_mkscankey_nodata(Relation rel)
 {
 	ScanKey		skey;
-	TupleDesc	itupdesc;
 	int			natts;
 	int			i;
 
-	itupdesc = RelationGetDescr(rel);
 	natts = RelationGetNumberOfAttributes(rel);
 
 	skey = (ScanKey) palloc(natts * sizeof(ScanKeyData));

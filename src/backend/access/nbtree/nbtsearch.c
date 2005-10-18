@@ -225,7 +225,6 @@ _bt_binsrch(Relation rel,
 			ScanKey scankey,
 			bool nextkey)
 {
-	TupleDesc	itupdesc;
 	Page		page;
 	BTPageOpaque opaque;
 	OffsetNumber low,
@@ -233,7 +232,6 @@ _bt_binsrch(Relation rel,
 	int32		result,
 				cmpval;
 
-	itupdesc = RelationGetDescr(rel);
 	page = BufferGetPage(buf);
 	opaque = (BTPageOpaque) PageGetSpecialPointer(page);
 
