@@ -1,14 +1,16 @@
 # $PostgreSQL$
 
-PG_CPPFLAGS = -I$(srcdir)/.. 
 SUBOBJS = spell.o regis.o 
+
 EXTRA_CLEAN = SUBSYS.o $(SUBOBJS)
+
+PG_CPPFLAGS = -I$(srcdir)/.. 
 
 ifdef USE_PGXS
 PGXS := $(shell pg_config --pgxs)
 include $(PGXS)
 else
-subdir = contrib/tsearch2
+subdir = contrib/tsearch2/ispell
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 include $(top_srcdir)/contrib/contrib-global.mk

@@ -8,6 +8,8 @@ REGRESS = seg
 
 EXTRA_CLEAN = segparse.c segparse.h segscan.c y.tab.c y.tab.h
 
+PG_CPPFLAGS = -I.
+
 ifdef USE_PGXS
 PGXS := $(shell pg_config --pgxs)
 include $(PGXS)
