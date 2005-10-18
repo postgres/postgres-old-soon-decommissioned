@@ -925,3 +925,12 @@ LogicalTapeTell(LogicalTapeSet *lts, int tapenum,
 	*blocknum = lt->curBlockNumber;
 	*offset = lt->pos;
 }
+
+/*
+ * Obtain total disk space currently used by a LogicalTapeSet, in blocks.
+ */
+long
+LogicalTapeSetBlocks(LogicalTapeSet *lts)
+{
+	return lts->nFileBlocks;
+}
