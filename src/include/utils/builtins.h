@@ -593,7 +593,8 @@ extern List *textToQualifiedNameList(text *textval);
 extern bool SplitIdentifierString(char *rawstring, char separator,
 					  List **namelist);
 extern Datum replace_text(PG_FUNCTION_ARGS);
-extern Datum replace_text_regexp(PG_FUNCTION_ARGS);
+extern text *replace_text_regexp(text *src_text, void *regexp,
+								 text *replace_text, bool glob);
 extern Datum split_text(PG_FUNCTION_ARGS);
 extern Datum text_to_array(PG_FUNCTION_ARGS);
 extern Datum array_to_text(PG_FUNCTION_ARGS);
