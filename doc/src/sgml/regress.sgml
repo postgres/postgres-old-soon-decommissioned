@@ -307,6 +307,21 @@ exclusion of those that don't.
    </sect2>
 
    <sect2>
+    <title>Insufficient stack depth</title>
+      
+    <para>
+     If the <literal>errors</literal> test results in a server crash
+     at the <literal>select infinite_recurse()</> command, it means that
+     the platform's limit on process stack size is smaller than the
+     <xref linkend="guc-max-stack-depth"> parameter indicates.  This
+     can be fixed by running the postmaster under a higher stack
+     size limit (4MB is recommended with the default value of 
+     <varname>max_stack_depth</>).  If you are unable to do that, an
+     alternative is to reduce the value of <varname>max_stack_depth</>.
+    </para>
+   </sect2>
+
+   <sect2>
     <title>The <quote>random</quote> test</title>
       
     <para>
