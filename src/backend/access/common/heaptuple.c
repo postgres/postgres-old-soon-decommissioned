@@ -27,6 +27,7 @@
 #include "access/tuptoaster.h"
 #include "catalog/pg_type.h"
 #include "executor/tuptable.h"
+#include "utils/typcache.h"
 
 
 /* ----------------------------------------------------------------
@@ -603,10 +604,17 @@ heap_getsysattr(HeapTuple tup, int attnum, TupleDesc tupleDesc, bool *isnull)
 			 *
 			 * We have to make a copy of the tuple so we can safely insert the
 			 * Datum overhead fields, which are not set in on-disk tuples.
+			 *
+			 * It's possible that the passed tupleDesc is a record type that
+			 * hasn't been "blessed" yet, so cover that case.
 			 */
 		case InvalidAttrNumber:
 			{
 				HeapTupleHeader dtup;
+
+				if (tupleDesc->tdtypeid == RECORDOID &&
+					tupleDesc->tdtypmod < 0)
+					assign_record_type_typmod(tupleDesc);
 
 				dtup = (HeapTupleHeader) palloc(tup->t_len);
 				memcpy((char *) dtup, (char *) tup->t_data, tup->t_len);

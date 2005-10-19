@@ -3180,7 +3180,7 @@ ExecInitExpr(Expr *node, PlanState *parent)
 				{
 					/* generic record, use runtime type assignment */
 					rstate->tupdesc = ExecTypeFromExprList(rowexpr->args);
-					rstate->tupdesc = BlessTupleDesc(rstate->tupdesc);
+					BlessTupleDesc(rstate->tupdesc);
 				}
 				else
 				{
