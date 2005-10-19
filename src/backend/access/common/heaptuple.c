@@ -466,33 +466,6 @@ heap_getsysattr(HeapTuple tup, int attnum, TupleDesc tupleDesc, bool *isnull)
 		case TableOidAttributeNumber:
 			result = ObjectIdGetDatum(tup->t_tableOid);
 			break;
-
-			/*
-			 * If the attribute number is 0, then we are supposed to
-			 * return the entire tuple as a row-type Datum.  (Using zero
-			 * for this purpose is unclean since it risks confusion with
-			 * "invalid attr" result codes, but it's not worth changing
-			 * now.)
-			 *
-			 * We have to make a copy of the tuple so we can safely insert
-			 * the Datum overhead fields, which are not set in on-disk
-			 * tuples.
-			 */
-		case InvalidAttrNumber:
-			{
-				HeapTupleHeader dtup;
-
-				dtup = (HeapTupleHeader) palloc(tup->t_len);
-				memcpy((char *) dtup, (char *) tup->t_data, tup->t_len);
-
-				HeapTupleHeaderSetDatumLength(dtup, tup->t_len);
-				HeapTupleHeaderSetTypeId(dtup, tupleDesc->tdtypeid);
-				HeapTupleHeaderSetTypMod(dtup, tupleDesc->tdtypmod);
-
-				result = PointerGetDatum(dtup);
-			}
-			break;
-
 		default:
 			elog(ERROR, "invalid attnum: %d", attnum);
 			result = 0;			/* keep compiler quiet */
