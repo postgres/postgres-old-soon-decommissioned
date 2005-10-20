@@ -613,7 +613,8 @@ PostmasterMain(int argc, char *argv[])
 	}
 
 	/*
-	 * Other one-time internal sanity checks can go here.
+	 * Other one-time internal sanity checks can go here, if they are fast.
+	 * (Put any slow processing further down, after postmaster.pid creation.)
 	 */
 	if (!CheckDateTokenTables())
 	{
@@ -656,21 +657,6 @@ PostmasterMain(int argc, char *argv[])
 #endif
 
 	/*
-	 * Initialize SSL library, if specified.
-	 */
-#ifdef USE_SSL
-	if (EnableSSL)
-		secure_initialize();
-#endif
-
-	/*
-	 * process any libraries that should be preloaded and optionally
-	 * pre-initialized
-	 */
-	if (preload_libraries_string)
-		process_preload_libraries(preload_libraries_string);
-
-	/*
 	 * Fork away from controlling terminal, if -S specified.
 	 *
 	 * Must do this before we grab any interlock files, else the interlocks
@@ -689,6 +675,30 @@ PostmasterMain(int argc, char *argv[])
 	 * before the Unix socket.
 	 */
 	CreateDataDirLockFile(DataDir, true);
+
+	/*
+	 * If timezone is not set, determine what the OS uses.  (In theory this
+	 * should be done during GUC initialization, but because it can take as
+	 * much as several seconds, we delay it until after we've created the
+	 * postmaster.pid file.  This prevents problems with boot scripts that
+	 * expect the pidfile to appear quickly.)
+	 */
+	pg_timezone_initialize();
+
+	/*
+	 * Initialize SSL library, if specified.
+	 */
+#ifdef USE_SSL
+	if (EnableSSL)
+		secure_initialize();
+#endif
+
+	/*
+	 * process any libraries that should be preloaded and optionally
+	 * pre-initialized
+	 */
+	if (preload_libraries_string)
+		process_preload_libraries(preload_libraries_string);
 
 	/*
 	 * Remove old temporary files.	At this point there can be no other
@@ -954,7 +964,30 @@ checkDataDir(void)
 	}
 
 	/*
+	 * Check that the directory belongs to my userid; if not, reject.
+	 *
+	 * This check is an essential part of the interlock that prevents two
+	 * postmasters from starting in the same directory (see CreateLockFile()).
+	 * Do not remove or weaken it.
+	 *
+	 * XXX can we safely enable this check on Windows?
+	 */
+#if !defined(WIN32) && !defined(__CYGWIN__)
+	if (stat_buf.st_uid != geteuid())
+		ereport(FATAL,
+				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
+				 errmsg("data directory \"%s\" has wrong ownership",
+						DataDir),
+				 errhint("The server must be started by the user that owns the data directory.")));
+#endif
+
+	/*
 	 * Check if the directory has group or world access.  If so, reject.
+	 *
+	 * It would be possible to allow weaker constraints (for example, allow
+	 * group access) but we cannot make a general assumption that that is
+	 * okay; for example there are platforms where nearly all users customarily
+	 * belong to the same group.  Perhaps this test should be configurable.
 	 *
 	 * XXX temporarily suppress check when on Windows, because there may not
 	 * be proper support for Unix-y file permissions.  Need to think of a
@@ -2508,7 +2541,7 @@ report_fork_failure_to_client(Port *port, int errnum)
 			 strerror(errnum));
 
 	/* Set port to non-blocking.  Don't do send() if this fails */
-	if (!set_noblock(port->sock))
+	if (!pg_set_noblock(port->sock))
 		return;
 
 	send(port->sock, buffer, strlen(buffer) + 1, 0);

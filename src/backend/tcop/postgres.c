@@ -114,6 +114,13 @@ static volatile sig_atomic_t got_SIGHUP = false;
 static bool xact_started = false;
 
 /*
+ * Flag to indicate that we are doing the outer loop's read-from-client,
+ * as opposed to any random read from client that might happen within
+ * commands like COPY FROM STDIN.
+ */
+static bool DoingCommandRead = false;
+
+/*
  * Flags to implement skip-till-Sync-after-error behavior for messages of
  * the extended query protocol.
  */
@@ -406,6 +413,52 @@ ReadCommand(StringInfo inBuf)
 	return result;
 }
 
+/*
+ * prepare_for_client_read -- set up to possibly block on client input
+ *
+ * This must be called immediately before any low-level read from the
+ * client connection.  It is necessary to do it at a sufficiently low level
+ * that there won't be any other operations except the read kernel call
+ * itself between this call and the subsequent client_read_ended() call.
+ * In particular there mustn't be use of malloc() or other potentially
+ * non-reentrant libc functions.  This restriction makes it safe for us
+ * to allow interrupt service routines to execute nontrivial code while
+ * we are waiting for input.
+ */
+void
+prepare_for_client_read(void)
+{
+	if (DoingCommandRead)
+	{
+		/* Enable immediate processing of asynchronous signals */
+		EnableNotifyInterrupt();
+		EnableCatchupInterrupt();
+
+		/* Allow "die" interrupt to be processed while waiting */
+		ImmediateInterruptOK = true;
+
+		/* And don't forget to detect one that already arrived */
+		QueryCancelPending = false;
+		CHECK_FOR_INTERRUPTS();
+	}
+}
+
+/*
+ * client_read_ended -- get out of the client-input state
+ */
+void
+client_read_ended(void)
+{
+	if (DoingCommandRead)
+	{
+		ImmediateInterruptOK = false;
+		QueryCancelPending = false;		/* forget any CANCEL signal */
+
+		DisableNotifyInterrupt();
+		DisableCatchupInterrupt();
+	}
+}
+
 
 /*
  * Parse a query string and pass it through the rewriter.
@@ -495,7 +548,8 @@ pg_parse_query(const char *query_string)
 			if (IsA(parsetree, PrepareStmt))
 				parsetree = (Node *) (((PrepareStmt *) parsetree)->query);
 
-			if (IsA(parsetree, SelectStmt))
+			if (IsA(parsetree, SelectStmt) &&
+				((SelectStmt *) parsetree)->into == NULL)
 				continue;		/* optimization for frequent command */
 
 			if (log_statement == LOGSTMT_MOD &&
@@ -513,6 +567,7 @@ pg_parse_query(const char *query_string)
 			}
 			commandTag = CreateCommandTag(parsetree);
 			if (strncmp(commandTag, "CREATE ", strlen("CREATE ")) == 0 ||
+				IsA(parsetree, SelectStmt) || /* SELECT INTO, CREATE AS */
 				strncmp(commandTag, "ALTER ", strlen("ALTER ")) == 0 ||
 				strncmp(commandTag, "DROP ", strlen("DROP ")) == 0 ||
 				IsA(parsetree, GrantStmt) ||	/* GRANT or REVOKE */
@@ -2590,6 +2645,8 @@ PostgresMain(int argc, char *argv[], const char *username)
 	{
 		if (!SelectConfigFiles(userDoption, argv[0]))
 			proc_exit(1);
+		/* If timezone is not set, determine what the OS uses */
+		pg_timezone_initialize();
 	}
 
 	/*
@@ -2844,6 +2901,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 		 * not in other exception-catching places since these interrupts
 		 * are only enabled while we wait for client input.
 		 */
+		DoingCommandRead = false;
 		DisableNotifyInterrupt();
 		DisableCatchupInterrupt();
 
@@ -2948,21 +3006,13 @@ PostgresMain(int argc, char *argv[], const char *username)
 		}
 
 		/*
-		 * (2) deal with pending asynchronous NOTIFY from other backends,
-		 * and enable async.c's signal handler to execute NOTIFY directly.
-		 * Then set up other stuff needed before blocking for input.
+		 * (2) Allow asynchronous signals to be executed immediately
+		 * if they come in while we are waiting for client input.
+		 * (This must be conditional since we don't want, say, reads on
+		 * behalf of COPY FROM STDIN doing the same thing.)
 		 */
-		QueryCancelPending = false;		/* forget any earlier CANCEL
-										 * signal */
-
-		EnableNotifyInterrupt();
-		EnableCatchupInterrupt();
-
-		/* Allow "die" interrupt to be processed while waiting */
-		ImmediateInterruptOK = true;
-		/* and don't forget to detect one that already arrived */
-		QueryCancelPending = false;
-		CHECK_FOR_INTERRUPTS();
+		QueryCancelPending = false;		/* forget any earlier CANCEL signal */
+		DoingCommandRead = true;
 
 		/*
 		 * (3) read a command (loop blocks here)
@@ -2972,11 +3022,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 		/*
 		 * (4) disable async signal conditions again.
 		 */
-		ImmediateInterruptOK = false;
-		QueryCancelPending = false;		/* forget any CANCEL signal */
-
-		DisableNotifyInterrupt();
-		DisableCatchupInterrupt();
+		DoingCommandRead = false;
 
 		/*
 		 * (5) check for any other interesting events that happened while
