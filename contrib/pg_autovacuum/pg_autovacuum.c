@@ -18,15 +18,16 @@
 #ifdef WIN32
 #include <windows.h>
 #endif
+#include <sys/stat.h>
+#include <fcntl.h>
 
 #include "pg_autovacuum.h"
 
 #ifdef WIN32
-unsigned int sleep();
-
 SERVICE_STATUS ServiceStatus;
 SERVICE_STATUS_HANDLE hStatus;
 int			appMode = 0;
+char       deps[255];
 #endif
 
 /* define atooid */
@@ -91,7 +92,7 @@ log_entry(const char *logentry, int level)
 {
 	/*
 	 * Note: Under Windows we dump the log entries to the normal
-	 * stderr/logfile as well, otherwise it can be a pain to debug 
+	 * stderr/logfile as well, otherwise it can be a pain to debug
 	 * service install failures etc.
 	 */
 
@@ -187,13 +188,13 @@ log_entry(const char *logentry, int level)
  * Function used to detach the pg_autovacuum daemon from the tty and go into
  * the background.
  *
- * This code is mostly ripped directly from pm_dameonize in postmaster.c with
- * unneeded code removed.
+ * This code is ripped directly from pmdaemonize in postmaster.c.
  */
 #ifndef WIN32
 static void
 daemonize(void)
 {
+	int			i;
 	pid_t		pid;
 
 	pid = fork();
@@ -210,7 +211,8 @@ daemonize(void)
 	}
 
 /* GH: If there's no setsid(), we hopefully don't need silent mode.
- * Until there's a better solution.  */
+ * Until there's a better solution.
+ */
 #ifdef HAVE_SETSID
 	if (setsid() < 0)
 	{
@@ -219,7 +221,11 @@ daemonize(void)
 		_exit(1);
 	}
 #endif
-
+	i = open(NULL_DEV, O_RDWR);
+	dup2(i, 0);
+	dup2(i, 1);
+	dup2(i, 2);
+	close(i);
 }
 #endif   /* WIN32 */
 
@@ -308,7 +314,7 @@ init_table_info(PGresult *res, int row, db_info * dbi)
 static void
 update_table_thresholds(db_info * dbi, tbl_info * tbl, int vacuum_type)
 {
-	PGresult   *res = NULL;
+	PGresult   *res;
 	int			disconnect = 0;
 	char		query[128];
 
@@ -322,7 +328,7 @@ update_table_thresholds(db_info * dbi, tbl_info * tbl, int vacuum_type)
 	{
 		snprintf(query, sizeof(query), PAGES_QUERY, tbl->relid);
 		res = send_query(query, dbi);
-		if (res != NULL)
+		if (res != NULL && PQntuples(res) > 0)
 		{
 			tbl->reltuples =
 				atof(PQgetvalue(res, 0, PQfnumber(res, "reltuples")));
@@ -344,8 +350,6 @@ update_table_thresholds(db_info * dbi, tbl_info * tbl, int vacuum_type)
 				(args->analyze_base_threshold + args->analyze_scaling_factor * tbl->reltuples);
 			tbl->CountAtLastAnalyze = tbl->curr_analyze_count;
 
-			PQclear(res);
-
 			/*
 			 * If the stats collector is reporting fewer updates then we
 			 * have on record then the stats were probably reset, so we
@@ -358,6 +362,8 @@ update_table_thresholds(db_info * dbi, tbl_info * tbl, int vacuum_type)
 				tbl->CountAtLastVacuum = tbl->curr_vacuum_count;
 			}
 		}
+
+		PQclear(res);
 	}
 	if (disconnect)
 		db_disconnect(dbi);
@@ -557,6 +563,9 @@ init_db_list(void)
 	Dllist	   *db_list = DLNewList();
 	db_info    *dbs = NULL;
 	PGresult   *res = NULL;
+#ifdef WIN32
+	int			k = 0;
+#endif
 
 	DLAddHead(db_list, DLNewElem(init_dbinfo((char *) "template1", 0, 0)));
 	if (DLGetHead(db_list) == NULL)
@@ -572,6 +581,30 @@ init_db_list(void)
 	 */
 	dbs = ((db_info *) DLE_VAL(DLGetHead(db_list)));
 	dbs->conn = db_connect(dbs);
+
+#ifdef WIN32
+	while (dbs->conn == NULL && !appMode && k < 10)
+	{
+		int        j;
+
+		/* Pause for 30 seconds to allow the database to start up */
+		log_entry("Pausing 30 seconds to allow the database to startup completely", LVL_INFO);
+		fflush(LOGOUTPUT);
+		ServiceStatus.dwWaitHint = 10;
+		for (j=0; j<6; j++)
+		{
+			pg_usleep(5000000);
+			ServiceStatus.dwCheckPoint++;
+			SetServiceStatus(hStatus, &ServiceStatus);
+			fflush(LOGOUTPUT);
+		}
+
+		/* now try again */
+		log_entry("Attempting to connect again.", LVL_INFO);
+		dbs->conn = db_connect(dbs);
+		k++;
+	}
+#endif
 
 	if (dbs->conn != NULL)
 	{
@@ -905,7 +938,7 @@ db_connect(db_info * dbi)
 		PQfinish(db_conn);
 		db_conn = NULL;
 	}
-		
+
 	return db_conn;
 }	/* end of db_connect() */
 
@@ -981,44 +1014,44 @@ static void
 perform_maintenance_command(db_info * dbi, tbl_info * tbl, int operation)
 {
 	char		buf[256];
-	
-	/* 
+
+	/*
 	 * Set the vacuum_cost variables if supplied on command line
-	 */	
+	 */
 	if (args->av_vacuum_cost_delay != -1)
-	{	
+	{
 		snprintf(buf, sizeof(buf), "set vacuum_cost_delay = %d",
 				 args->av_vacuum_cost_delay);
 		send_query(buf, dbi);
 	}
 	if (args->av_vacuum_cost_page_hit != -1)
-	{	
+	{
 		snprintf(buf, sizeof(buf), "set vacuum_cost_page_hit = %d",
 				 args->av_vacuum_cost_page_hit);
 		send_query(buf, dbi);
 	}
 	if (args->av_vacuum_cost_page_miss != -1)
-	{	
+	{
 		snprintf(buf, sizeof(buf), "set vacuum_cost_page_miss = %d",
 				 args->av_vacuum_cost_page_miss);
 		send_query(buf, dbi);
 	}
 	if (args->av_vacuum_cost_page_dirty != -1)
-	{	
+	{
 		snprintf(buf, sizeof(buf), "set vacuum_cost_page_dirty = %d",
 				 args->av_vacuum_cost_page_dirty);
 		send_query(buf, dbi);
 	}
 	if (args->av_vacuum_cost_limit != -1)
-	{	
+	{
 		snprintf(buf, sizeof(buf), "set vacuum_cost_limit = %d",
 				 args->av_vacuum_cost_limit);
 		send_query(buf, dbi);
 	}
-	
+
 	/*
-	 * if ((relisshared = t and database != template1) or 
-	 * if operation = ANALYZE_ONLY) 
+	 * if ((relisshared = t and database != template1) or
+	 * if operation = ANALYZE_ONLY)
 	 * then only do an analyze
 	 */
 	if ((tbl->relisshared > 0 && strcmp("template1", dbi->dbname) != 0) ||
@@ -1028,14 +1061,14 @@ perform_maintenance_command(db_info * dbi, tbl_info * tbl, int operation)
 		snprintf(buf, sizeof(buf), "VACUUM ANALYZE %s", tbl->table_name);
 	else
 		return;
-			
+
 	if (args->debug >= 1)
 	{
 		sprintf(logbuffer, "Performing: %s", buf);
 		log_entry(logbuffer, LVL_DEBUG);
 		fflush(LOGOUTPUT);
 	}
-	
+
 	send_query(buf, dbi);
 
 	update_table_thresholds(dbi, tbl, operation);
@@ -1073,6 +1106,7 @@ get_cmd_args(int argc, char *argv[])
 #ifndef WIN32
 	args->daemonize = 0;
 #else
+    args->service_dependencies = 0;
 	args->install_as_service = 0;
 	args->remove_as_service = 0;
 	args->service_user = 0;
@@ -1085,7 +1119,7 @@ get_cmd_args(int argc, char *argv[])
 	args->port = 0;
 
 	/*
-	 * Cost-Based Vacuum Delay Settings for pg_autovacuum 
+	 * Cost-Based Vacuum Delay Settings for pg_autovacuum
 	 */
 	args->av_vacuum_cost_delay = -1;
 	args->av_vacuum_cost_page_hit = -1;
@@ -1166,7 +1200,17 @@ get_cmd_args(int argc, char *argv[])
 				exit(0);
 #ifdef WIN32
 			case 'E':
-				args->service_dependencies = optarg;
+				/*
+				 * CreateService() expects a list of service
+				 * dependencies as a NUL-separated, double-NUL
+				 * terminated list (although we only allow the user to
+				 * specify a single dependency). So we zero out the
+				 * list first, and make sure to leave room for two NUL
+				 * terminators.
+				 */
+				ZeroMemory(deps, sizeof(deps));
+				snprintf(deps, sizeof(deps) - 2, "%s", optarg);
+				args->service_dependencies = deps;
 				break;
 			case 'I':
 				args->install_as_service++;
@@ -1245,7 +1289,7 @@ usage(void)
 	fprintf(stderr, "   [-m] vacuum_cost_page_miss (default=none)\n");
 	fprintf(stderr, "   [-n] vacuum_cost_page_dirty (default=none)\n");
 	fprintf(stderr, "   [-l] vacuum_cost_limit (default=none)\n");
-	
+
 	fprintf(stderr, "   [-U] username (libpq default)\n");
 	fprintf(stderr, "   [-P] password (libpq default)\n");
 	fprintf(stderr, "   [-H] host (libpq default)\n");
@@ -1297,10 +1341,10 @@ print_cmd_args(void)
 	log_entry(logbuffer, LVL_INFO);
 	sprintf(logbuffer, "  args->analyze_scaling_factor=%f", args->analyze_scaling_factor);
 	log_entry(logbuffer, LVL_INFO);
-	
+
 	if (args->av_vacuum_cost_delay != -1)
 		sprintf(logbuffer, "  args->av_vacuum_cost_delay=%d", args->av_vacuum_cost_delay);
-	else 
+	else
 		sprintf(logbuffer, "  args->av_vacuum_cost_delay=(default)");
 	log_entry(logbuffer, LVL_INFO);
 	if (args->av_vacuum_cost_page_hit != -1)
@@ -1323,7 +1367,7 @@ print_cmd_args(void)
 	else
 		sprintf(logbuffer, "  args->av_vacuum_cost_limit=(default)");
 	log_entry(logbuffer, LVL_INFO);
-	
+
 	sprintf(logbuffer, "  args->debug=%d", args->debug);
 	log_entry(logbuffer, LVL_INFO);
 
@@ -1359,7 +1403,7 @@ ControlHandler(DWORD request)
 
 /* Register with the Service Control Manager */
 static int
-InstallService()
+InstallService(void)
 {
 	SC_HANDLE	schService = NULL;
 	SC_HANDLE	schSCManager = NULL;
@@ -1440,8 +1484,8 @@ InstallService()
 	if (args->av_vacuum_cost_page_dirty != -1)
 		sprintf(szCommand, "%s -d %d", szCommand, args->av_vacuum_cost_page_dirty);
 	if (args->av_vacuum_cost_limit != -1)
-		sprintf(szCommand, "%s -d %d", szCommand, args->av_vacuum_cost_limit);		
-		
+		sprintf(szCommand, "%s -d %d", szCommand, args->av_vacuum_cost_limit);
+
 	/* And write the new value */
 	if (RegSetValueEx(hk, "ImagePath", 0, REG_EXPAND_SZ, (LPBYTE) szCommand, (DWORD) strlen(szCommand) + 1))
 		return -4;
@@ -1471,7 +1515,7 @@ InstallService()
 
 /* Unregister from the Service Control Manager */
 static int
-RemoveService()
+RemoveService(void)
 {
 	SC_HANDLE	schService = NULL;
 	SC_HANDLE	schSCManager = NULL;
@@ -1699,7 +1743,16 @@ VacuumLoop(int argc, char **argv)
 			fflush(LOGOUTPUT);
 		}
 
-		sleep(sleep_secs);		/* Larger Pause between outer loops */
+		/* Larger Pause between outer loops */
+		/*
+		 *	pg_usleep() is wrong here because its maximum is ~2000 seconds,
+		 *	and we don't need signal interruptability on Win32 here.
+		 */
+#ifndef WIN32
+		sleep(sleep_secs);			/* Unix sleep is seconds */
+#else
+		sleep(sleep_secs * 1000);	/* Win32 sleep() is milliseconds */
+#endif
 
 		gettimeofday(&then, 0); /* Reset time counter */
 
@@ -1753,15 +1806,12 @@ main(int argc, char *argv[])
 		if (InstallService() != 0)
 		{
 			FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPTSTR) & lpMsgBuf, 0, NULL);
-			sprintf(logbuffer, "%s", (char *) lpMsgBuf);
-			log_entry(logbuffer, LVL_ERROR);
-			fflush(LOGOUTPUT);
+            fprintf(stderr, "Error: %s\n", (char *) lpMsgBuf);
 			exit(-1);
 		}
 		else
 		{
-			log_entry("Successfully installed Windows service", LVL_INFO);
-			fflush(LOGOUTPUT);
+			fprintf(stderr, "Successfully installed pg_autovacuum as a service.\n");
 			exit(0);
 		}
 	}
@@ -1772,15 +1822,12 @@ main(int argc, char *argv[])
 		if (RemoveService() != 0)
 		{
 			FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPTSTR) & lpMsgBuf, 0, NULL);
-			sprintf(logbuffer, "%s", (char *) lpMsgBuf);
-			log_entry(logbuffer, LVL_ERROR);
-			fflush(LOGOUTPUT);
+            fprintf(stderr, "Error: %s\n", (char *) lpMsgBuf);
 			exit(-1);
 		}
 		else
 		{
-			log_entry("Successfully removed Windows service", LVL_INFO);
-			fflush(LOGOUTPUT);
+			fprintf(stderr, "Successfully removed pg_autovacuum as a service.\n");
 			exit(0);
 		}
 	}
