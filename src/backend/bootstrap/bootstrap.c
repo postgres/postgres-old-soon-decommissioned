@@ -359,6 +359,8 @@ BootstrapMain(int argc, char *argv[])
 	{
 		if (!SelectConfigFiles(userDoption, progname))
 			proc_exit(1);
+		/* If timezone is not set, determine what the OS uses */
+		pg_timezone_initialize();
 	}
 
 	/* Validate we have been given a reasonable-looking DataDir */

@@ -2846,9 +2846,6 @@ SelectConfigFiles(const char *userDoption, const char *progname)
 
 	free(configdir);
 
-	/* If timezone is not set, determine what the OS uses */
-	pg_timezone_initialize();
-
 	return true;
 }
 
