@@ -1036,9 +1036,8 @@ describeOneTableDetails(const char *schemaname,
 		if (tableinfo.checks)
 		{
 			printfPQExpBuffer(&buf,
-							  "SELECT "
-							  "pg_catalog.pg_get_constraintdef(r.oid, true), "
-							  "conname\n"
+							  "SELECT r.conname, "
+							  "pg_catalog.pg_get_constraintdef(r.oid, true)\n"
 							  "FROM pg_catalog.pg_constraint r\n"
 					"WHERE r.conrelid = '%s' AND r.contype = 'c' ORDER BY 1",
 							  oid);
@@ -1192,8 +1191,8 @@ describeOneTableDetails(const char *schemaname,
 			for (i = 0; i < check_count; i++)
 			{
 				printfPQExpBuffer(&buf, _("    \"%s\" %s"),
-								  PQgetvalue(result2, i, 1),
-								  PQgetvalue(result2, i, 0));
+								  PQgetvalue(result2, i, 0),
+								  PQgetvalue(result2, i, 1));
 
 				footers[count_footers++] = pg_strdup(buf.data);
 			}
