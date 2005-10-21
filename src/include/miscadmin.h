@@ -83,15 +83,17 @@ do { \
 	if (InterruptPending) \
 		ProcessInterrupts(); \
 } while(0)
+
 #else							/* WIN32 */
 
 #define CHECK_FOR_INTERRUPTS() \
 do { \
-	if (WaitForSingleObjectEx(pgwin32_signal_event,0,TRUE) == WAIT_OBJECT_0) \
-		pgwin32_dispatch_queued_signals(); \
+	if (UNBLOCKED_SIGNAL_QUEUE()) \
+		pgwin32_check_queued_signals(); \
 	if (InterruptPending) \
 		ProcessInterrupts(); \
 } while(0)
+
 #endif   /* WIN32 */
 
 
