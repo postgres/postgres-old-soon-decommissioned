@@ -196,6 +196,15 @@ ExplainOneQuery(Query *query, ExplainStmt *stmt, TupOutputState *tstate)
 	/* plan the query */
 	plan = planner(query, isCursor, cursorOptions, NULL);
 
+	/*
+	 * Update snapshot command ID to ensure this query sees results of any
+	 * previously executed queries.  (It's a bit cheesy to modify
+	 * ActiveSnapshot without making a copy, but for the limited ways in
+	 * which EXPLAIN can be invoked, I think it's OK, because the active
+	 * snapshot shouldn't be shared with anything else anyway.)
+	 */
+	ActiveSnapshot->curcid = GetCurrentCommandId();
+
 	/* Create a QueryDesc requesting no output */
 	queryDesc = CreateQueryDesc(query, plan,
 								ActiveSnapshot, InvalidSnapshot,
