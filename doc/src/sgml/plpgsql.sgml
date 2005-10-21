@@ -2838,7 +2838,7 @@ CREATE FUNCTION emp_stamp() RETURNS trigger AS $emp_stamp$
         END IF;
 
         -- Remember who changed the payroll when
-        NEW.last_date := now();
+        NEW.last_date := current_timestamp;
         NEW.last_user := current_user;
         RETURN NEW;
     END;
