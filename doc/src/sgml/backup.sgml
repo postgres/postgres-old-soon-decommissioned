@@ -677,6 +677,15 @@ SELECT pg_stop_backup();
    </para>
 
    <para>
+    Some versions of GNU <application>tar</> consider it an error if a file
+    is changed while <application>tar</> is copying it.  This case is normal,
+    and not an error, when taking a base backup of an active database.
+    Since ignoring all errors from <application>tar</> would be unwise,
+    you should either manually inspect <application>tar</>'s messages or
+    else use a different backup tool that does not complain about this case.
+   </para>
+
+   <para>
     It is not necessary to be very concerned about the amount of time elapsed
     between <function>pg_start_backup</> and the start of the actual backup,
     nor between the end of the backup and <function>pg_stop_backup</>; a
