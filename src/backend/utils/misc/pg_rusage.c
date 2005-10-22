@@ -26,10 +26,8 @@
 void
 pg_rusage_init(PGRUsage *ru0)
 {
-	struct timezone tz;
-
 	getrusage(RUSAGE_SELF, &ru0->ru);
-	gettimeofday(&ru0->tv, &tz);
+	gettimeofday(&ru0->tv, NULL);
 }
 
 /*
