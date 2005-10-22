@@ -88,8 +88,7 @@ do { \
 
 #define CHECK_FOR_INTERRUPTS() \
 do { \
-	if (UNBLOCKED_SIGNAL_QUEUE()) \
-		pgwin32_check_queued_signals(); \
+	pgwin32_check_queued_signals(); \
 	if (InterruptPending) \
 		ProcessInterrupts(); \
 } while(0)
