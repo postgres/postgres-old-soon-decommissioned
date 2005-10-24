@@ -500,6 +500,16 @@ pg_fe_getauthname(char *PQerrormsg)
 	struct passwd *pw = NULL;
 #endif
 
+	/*
+	 *	pglock_thread() really only needs to be called around
+	 *	pg_krb5_authname(), but some users are using configure
+	 *	--enable-thread-safety-force, so we might as well do
+	 *	the locking within our library to protect pqGetpwuid().
+	 *	In fact, application developers can use getpwuid()
+	 *	in their application if they use the locking call we
+	 *	provide, or install their own locking function using
+	 *	PQregisterThreadLock().
+	 */
 	pglock_thread();
 
 #ifdef KRB5

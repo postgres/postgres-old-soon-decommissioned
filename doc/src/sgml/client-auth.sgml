@@ -337,6 +337,7 @@ hostnossl  <replaceable>database</replaceable>  <replaceable>user</replaceable> 
           authentication.
           Since the password is sent in clear text over the
           network, this should not be used on untrusted networks.
+          It also does not usually work with threaded client applications.
           See <xref linkend="auth-password"> for details.
          </para>
         </listitem>

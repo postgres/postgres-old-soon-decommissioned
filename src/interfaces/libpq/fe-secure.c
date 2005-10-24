@@ -220,8 +220,8 @@ KWbuHn491xNO25CQWMtem80uKw+pTnisBRF/454n1Jnhub144YRBoN8CAQI=\n\
 
 
 /*
- * Exported (but as yet undocumented) function to allow application to
- * tell us it's already initialized OpenSSL.
+ *	Exported function to allow application to tell us it's already
+ *	initialized OpenSSL.
  */
 void
 PQinitSSL(int do_init)
