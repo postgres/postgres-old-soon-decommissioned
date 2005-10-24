@@ -554,12 +554,16 @@ $$ LANGUAGE plperl;
    system operations are not allowed for security reasons:
 <programlisting>
 CREATE FUNCTION badfunc() RETURNS integer AS $$
-    open(TEMP, "&gt;/tmp/badfile");
-    print TEMP "Gotcha!\n";
+    my $tmpfile = "/tmp/badfile";
+    open my $fh, '&gt;', $tmpfile
+        or elog(ERROR, qq{Could not open the file "$tmpfile": $!});
+    print $fh "Testing writing to a file\n";
+    close $fh or elog(ERROR, qq{Could not close the file "$tmpfile": $!});
     return 1;
 $$ LANGUAGE plperl;
 </programlisting>
-   The creation of the function will succeed, but executing it will not.
+	The creation of this function will fail as its use of a forbidden
+	operation will be be caught by the validator.
   </para>
 
   <para>
