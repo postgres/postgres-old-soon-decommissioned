@@ -93,7 +93,7 @@ TranslateSocketError(void)
 static int
 pgwin32_poll_signals(void)
 {
-	if (WaitForSingleObjectEx(pgwin32_signal_event, 0, TRUE) == WAIT_OBJECT_0)
+	if (UNBLOCKED_SIGNAL_QUEUE())
 	{
 		pgwin32_dispatch_queued_signals();
 		errno = EINTR;

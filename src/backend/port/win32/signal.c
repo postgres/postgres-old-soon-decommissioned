@@ -90,16 +90,6 @@ pgwin32_signal_initialize(void)
 }
 
 /*
- * Support routine for CHECK_FOR_INTERRUPTS() macro
- */
-void
-pgwin32_check_queued_signals(void)
-{
-	if (WaitForSingleObjectEx(pgwin32_signal_event, 0, TRUE) == WAIT_OBJECT_0)
-		pgwin32_dispatch_queued_signals();
-}
-
-/*
  * Dispatch all signals currently queued and not blocked
  * Blocked signals are ignored, and will be fired at the time of
  * the sigsetmask() call.
