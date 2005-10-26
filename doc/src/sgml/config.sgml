@@ -2,7 +2,7 @@
 $PostgreSQL$
 -->
 <chapter Id="runtime-config">
-  <title>Run-time Configuration</title>
+  <title>Server Configuration</title>
 
   <indexterm>
    <primary>configuration</primary>

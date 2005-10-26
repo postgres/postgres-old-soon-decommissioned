@@ -3,7 +3,7 @@ $PostgreSQL$
 -->
 
 <chapter Id="runtime">
- <title>Server Run-time Environment</title>
+ <title>Operating System Environment</title>
 
  <para>
   This chapter discusses how to set up and run the database server
