@@ -174,11 +174,10 @@ write_group_file(Relation grel)
 				 errmsg("could not write to temporary file \"%s\": %m", tempname)));
 
 	/*
-	 * Read pg_group and write the file.  Note we use SnapshotSelf to
-	 * ensure we see all effects of current transaction.  (Perhaps could
-	 * do a CommandCounterIncrement beforehand, instead?)
+	 * Read pg_group and write the file
 	 */
-	scan = heap_beginscan(grel, SnapshotSelf, 0, NULL);
+	CommandCounterIncrement();	/* see our current changes */
+	scan = heap_beginscan(grel, SnapshotNow, 0, NULL);
 	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{
 		Datum		datum,
@@ -321,11 +320,10 @@ write_user_file(Relation urel)
 				 errmsg("could not write to temporary file \"%s\": %m", tempname)));
 
 	/*
-	 * Read pg_shadow and write the file.  Note we use SnapshotSelf to
-	 * ensure we see all effects of current transaction.  (Perhaps could
-	 * do a CommandCounterIncrement beforehand, instead?)
+	 * Read pg_shadow and write the file
 	 */
-	scan = heap_beginscan(urel, SnapshotSelf, 0, NULL);
+	CommandCounterIncrement();	/* see our current changes */
+	scan = heap_beginscan(urel, SnapshotNow, 0, NULL);
 	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{
 		Datum		datum;
@@ -781,6 +779,7 @@ CreateUser(CreateUserStmt *stmt)
 	 * Set flag to update flat password file at commit.
 	 */
 	user_file_update_needed();
+	group_file_update_needed();
 }
 
 
@@ -1200,6 +1199,7 @@ DropUser(DropUserStmt *stmt)
 	 * Set flag to update flat password file at commit.
 	 */
 	user_file_update_needed();
+	group_file_update_needed();
 }
 
 
@@ -1286,6 +1286,7 @@ RenameUser(const char *oldname, const char *newname)
 	heap_close(rel, NoLock);
 
 	user_file_update_needed();
+	group_file_update_needed();
 }
 
 
