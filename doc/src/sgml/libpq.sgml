@@ -3976,12 +3976,14 @@ This file should contain lines of the following format:
 <replaceable>hostname</replaceable>:<replaceable>port</replaceable>:<replaceable>database</replaceable>:<replaceable>username</replaceable>:<replaceable>password</replaceable>
 </synopsis>
 Each of the first four fields may be a literal value, or <literal>*</literal>,
-which
-matches anything.  The password field from the first line that matches the
+which matches anything.  The password field from the first line that matches the
 current connection parameters will be used.  (Therefore, put more-specific
 entries first when you are using wildcards.)
 If an entry needs to contain <literal>:</literal> or
 <literal>\</literal>, escape this character with <literal>\</literal>.
+A hostname of <literal>localhost</> matches both <literal>host</> (TCP)
+and <literal>local</> (Unix domain socket) connections coming from the
+local machine.
 </para>
 
 <para>
