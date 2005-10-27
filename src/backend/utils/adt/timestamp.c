@@ -1943,8 +1943,31 @@ timestamp_mi(PG_FUNCTION_ARGS)
 	result->month = 0;
 	result->day = 0;
 
-	/* this is wrong, but removing it breaks a lot of regression tests */
-	result = DatumGetIntervalP(DirectFunctionCall1(interval_justify_hours,
+	/*
+	 *	This is wrong, but removing it breaks a lot of regression tests.
+	 *	For example:
+	 *
+	 *	test=> SET timezone = 'EST5EDT';
+	 *	test=> SELECT
+	 *	test-> ('2005-10-30 13:22:00-05'::timestamptz -
+	 *	test(>  '2005-10-29 13:22:00-04'::timestamptz);
+	 *	?column?
+	 *	----------------
+	 *	 1 day 01:00:00
+	 *	 (1 row)
+	 *
+	 *	so adding that to the first timestamp gets:
+	 *
+	 *	 test=> SELECT
+	 *	 test-> ('2005-10-29 13:22:00-04'::timestamptz +
+	 *	 test(> ('2005-10-30 13:22:00-05'::timestamptz -
+	 *	 test(>  '2005-10-29 13:22:00-04'::timestamptz)) at time zone 'EST';
+	 *	    timezone
+	 *	--------------------
+	 *	2005-10-30 14:22:00
+	 *	(1 row)
+	 */
+ 	result = DatumGetIntervalP(DirectFunctionCall1(interval_justify_hours,
 												 IntervalPGetDatum(result)));
 
 	PG_RETURN_INTERVAL_P(result);
