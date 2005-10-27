@@ -1491,7 +1491,7 @@ printTable(const char *title,
 	 * normal (user-submitted) query, not a table we're printing for a slash
 	 * command.
 	 */
-	if (opt->expanded && opt->normal_query)
+	if (opt->expanded)
 		use_expanded = true;
 	else
 		use_expanded = false;

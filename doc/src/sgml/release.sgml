@@ -1700,7 +1700,7 @@ psql -t -f fixseq.sql db1 | psql -e db1
       <listitem>
        <para>
         Prevent <command>\x</> (expanded mode) from affecting
-        backslash-command displays (Neil)
+        the output of <command>\d tablename<\> (Neil)
        </para>
       </listitem>
 

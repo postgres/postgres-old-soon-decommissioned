@@ -703,6 +703,9 @@ describeOneTableDetails(const char *schemaname,
 
 	retval = false;
 
+	/* This output looks confusing in expanded mode. */
+	myopt.expanded = false;
+
 	initPQExpBuffer(&buf);
 	initPQExpBuffer(&title);
 	initPQExpBuffer(&tmpbuf);

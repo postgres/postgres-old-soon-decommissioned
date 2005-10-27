@@ -795,8 +795,6 @@ PrintQueryTuples(const PGresult *results)
 {
 	printQueryOpt my_popt = pset.popt;
 
-	my_popt.topt.normal_query = true;
-
 	/* write output to \g argument, if any */
 	if (pset.gfname)
 	{
