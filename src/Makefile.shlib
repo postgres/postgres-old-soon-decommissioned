@@ -309,7 +309,7 @@ else # PORTNAME == aix
 # AIX case
 $(shlib): lib$(NAME).a
 	$(MKLDEXPORT) lib$(NAME).a > lib$(NAME)$(EXPSUFF)
-	$(COMPILER) $(LDFLAGS_SL) -o $@ $< $(LDFLAGS) $(SHLIB_LINK) -Wl,-bI:$(top_builddir)/src/backend/$(POSTGRES_IMP) -Wl,-bE:lib$(NAME)$(EXPSUFF)
+	$(COMPILER) $(LDFLAGS) $(LDFLAGS_SL) -o $@ $< -Wl,-bE:lib$(NAME)$(EXPSUFF) $(SHLIB_LINK)
 	
 endif # PORTNAME == aix
 
