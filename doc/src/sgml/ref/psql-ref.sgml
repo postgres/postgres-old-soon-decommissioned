@@ -1443,10 +1443,7 @@ lo_import 152801
           Toggles between regular and expanded format. When expanded
           format is enabled, query results are displayed in two
           columns, with the column name on the left and the data on
-          the right. This option only affects how normal query results
-          are displayed; the output of <application>psql</application>
-          meta-commands is always presented using the regular
-          format. This mode is useful if the data wouldn't fit on the
+          the right. This mode is useful if the data wouldn't fit on the
           screen in the normal <quote>horizontal</quote> mode.
           </para>
 
