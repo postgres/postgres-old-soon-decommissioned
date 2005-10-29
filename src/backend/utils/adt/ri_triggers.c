@@ -2407,8 +2407,8 @@ RI_FKey_setdefault_upd(PG_FUNCTION_ARGS)
  * RI_FKey_keyequal_upd_pk -
  *
  *	Check if we have a key change on an update to a PK relation. This is
- *	used by the AFTER trigger queue manager to detect "triggered data
- *	change violation".
+ *	used by the AFTER trigger queue manager to see if it can skip queuing
+ *	an instance of an RI trigger.
  * ----------
  */
 bool
@@ -2481,8 +2481,8 @@ RI_FKey_keyequal_upd_pk(Trigger *trigger, Relation pk_rel,
  * RI_FKey_keyequal_upd_fk -
  *
  *	Check if we have a key change on an update to an FK relation. This is
- *	used by the AFTER trigger queue manager to detect "triggered data
- *	change violation".
+ *	used by the AFTER trigger queue manager to see if it can skip queuing
+ *	an instance of an RI trigger.
  * ----------
  */
 bool
