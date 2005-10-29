@@ -214,7 +214,7 @@ win32_utf8_wcstotext(const wchar_t *str)
 	if (nbytes == 0)			/* shouldn't happen */
 		ereport(ERROR,
 				(errcode(ERRCODE_CHARACTER_NOT_IN_REPERTOIRE),
-				 errmsg("UTF16 to UTF8 translation failed: %lu",
+				 errmsg("UTF-16 to UTF-8 translation failed: %lu",
 						GetLastError())));
 
 	result = palloc(nbytes + VARHDRSZ);

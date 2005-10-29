@@ -186,7 +186,7 @@ ProcedureCreate(const char *procedureName,
 	if ((returnType == INTERNALOID || internalOutParam) && !internalInParam)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
-				 errmsg("unsafe use of INTERNAL pseudo-type"),
+				 errmsg("unsafe use of pseudo-type \"internal\""),
 				 errdetail("A function returning \"internal\" must have at least one \"internal\" argument.")));
 
 	/*

@@ -379,7 +379,7 @@ UtfToLocal(unsigned char *utf, unsigned char *iso,
 		{
 			ereport(WARNING,
 					(errcode(ERRCODE_UNTRANSLATABLE_CHARACTER),
-					 errmsg("ignoring unconvertible UTF8 character 0x%04x",
+					 errmsg("ignoring unconvertible UTF-8 character 0x%04x",
 							iutf)));
 			continue;
 		}

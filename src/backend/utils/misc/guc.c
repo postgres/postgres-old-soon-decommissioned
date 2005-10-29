@@ -719,7 +719,7 @@ static struct config_bool ConfigureNamesBool[] =
 
 	{
 		{"autovacuum", PGC_SIGHUP, AUTOVACUUM,
-			gettext_noop("Starts the auto vacuum subprocess."),
+			gettext_noop("Starts the autovacuum subprocess."),
 			NULL
 		},
 		&autovacuum_start_daemon,

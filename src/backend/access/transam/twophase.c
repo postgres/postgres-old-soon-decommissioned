@@ -904,7 +904,7 @@ EndPrepare(GlobalTransaction gxact)
 		close(fd);
 		ereport(ERROR,
 				(errcode_for_file_access(),
-				 errmsg("could not seek twophase state file: %m")));
+				 errmsg("could not seek in twophase state file: %m")));
 	}
 
 	/*

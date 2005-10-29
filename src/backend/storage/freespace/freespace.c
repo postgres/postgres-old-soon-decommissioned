@@ -726,14 +726,14 @@ CheckFreeSpaceMapStatistics(int elevel, int numRels, double needed)
 		ereport(elevel,
 				(errmsg("max_fsm_relations(%d) equals the number of relations checked",
 						MaxFSMRelations),
-				 errhint("You have >= %d relations.\n"
+				 errhint("You have at least %d relations.  "
 						 "Consider increasing the configuration parameter \"max_fsm_relations\".",
 						 numRels)));
 	else if (needed > MaxFSMPages)
 		ereport(elevel,
-				(errmsg("the number of page slots needed (%.0f) exceeds max_fsm_pages (%d)",
+				(errmsg("number of page slots needed (%.0f) exceeds max_fsm_pages (%d)",
 						needed, MaxFSMPages),
-				 errhint("Consider increasing the configuration parameter \"max_fsm_pages\"\n"
+				 errhint("Consider increasing the configuration parameter \"max_fsm_pages\" "
 						 "to a value over %.0f.", needed)));
 }
 

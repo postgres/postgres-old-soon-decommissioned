@@ -1194,7 +1194,7 @@ AddRoleMems(const char *rolename, Oid roleid,
 	if (grantorId != GetUserId() && !superuser())
 		ereport(ERROR,
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-				 errmsg("must be superuser to set grantor ID")));
+				 errmsg("must be superuser to set grantor")));
 
 	/* We need only regular writer's lock on pg_auth_members */
 	pg_authmem_rel = heap_open(AuthMemRelationId, RowExclusiveLock);

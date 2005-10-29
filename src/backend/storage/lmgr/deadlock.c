@@ -888,7 +888,7 @@ DescribeLockTag(StringInfo buf, const LOCKTAG *lock)
 			break;
 		default:
 			appendStringInfo(buf,
-							 _("unknown locktag type %d"),
+							 _("unrecognized locktag type %d"),
 							 lock->locktag_type);
 			break;
 	}

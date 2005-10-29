@@ -78,7 +78,7 @@ copydir(char *fromdir, char *todir, bool recurse)
 		if (stat(fromfile, &fst) < 0)
 			ereport(ERROR,
 					(errcode_for_file_access(),
-					 errmsg("could not stat \"%s\": %m", fromfile)));
+					 errmsg("could not stat file \"%s\": %m", fromfile)));
 
 		if (fst.st_mode & S_IFDIR)
 		{
