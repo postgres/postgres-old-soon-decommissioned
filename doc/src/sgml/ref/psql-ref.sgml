@@ -2107,7 +2107,7 @@ bar
         files. When <literal>off</> (the default), a statement in a
         transaction block that generates an error aborts the entire
         transaction. The on_error_rollback-on mode works by issuing an
-        implicit <command>SAVEPONT</> for you, just before each command
+        implicit <command>SAVEPOINT</> for you, just before each command
         that is in a transaction block, and rolls back to the savepoint
         on error.
         </para>
