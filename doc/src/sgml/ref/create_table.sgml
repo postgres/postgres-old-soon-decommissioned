@@ -421,7 +421,9 @@ and <replaceable class="PARAMETER">table_constraint</replaceable> is:
       primary key of the <replaceable
       class="parameter">reftable</replaceable> is used.  The
       referenced columns must be the columns of a unique or primary
-      key constraint in the referenced table.
+      key constraint in the referenced table.  Note that foreign key
+      constraints may not be defined between temporary tables and
+      permanent tables.
      </para>
 
      <para>
