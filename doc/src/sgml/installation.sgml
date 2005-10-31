@@ -1919,9 +1919,9 @@ kill `cat /usr/local/pgsql/data/postmaster.pid`
        <row>
         <entry><systemitem class="osname">Tru64 UNIX</></entry>
         <entry><systemitem>Alpha</></entry>
-        <entry>8.0.0</entry>
-        <entry>Honda Shigehiro (<email>fwif0083@mb.infoweb.ne.jp</email>), 2005-01-07</entry>
-        <entry>5.0</entry>
+        <entry>8.1.0</entry>
+        <entry>Honda Shigehiro (<email>fwif0083@mb.infoweb.ne.jp</email>), 2005-11-01</entry>
+        <entry>5.0, <command>cc</> 6.1-011</entry>
        </row>
        <row>
         <entry><systemitem class="osname">UnixWare</></entry>
