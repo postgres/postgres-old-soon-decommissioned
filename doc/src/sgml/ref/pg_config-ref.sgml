@@ -277,7 +277,10 @@
   </para>
 
   <para>
-   The options <option>--cc</option>, <option>--cppflags</option>,
+   The options <option>--docdir</option>, <option>--pkgincludedir</option>,
+   <option>--localedir</option>, <option>--mandir</option>,
+   <option>--sharedir</option>, <option>--sysconfdir</option>,
+   <option>--cc</option>, <option>--cppflags</option>,
    <option>--cflags</option>, <option>--cflags_sl</option>,
    <option>--ldflags</option>, <option>--ldflags_sl</option>,
    and <option>--libs</option> are new in <productname>PostgreSQL</> 8.1.

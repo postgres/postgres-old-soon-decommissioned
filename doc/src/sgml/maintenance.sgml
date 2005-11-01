@@ -586,7 +586,8 @@ analyze threshold = analyze base threshold + analyze scale factor * number of tu
 
   <para>
    In some situations it is worthwhile to rebuild indexes periodically
-   with the <command>REINDEX</> command.
+   with the <xref linkend="sql-reindex" endterm="sql-reindex-title">
+   command.
   </para>
 
   <para>
