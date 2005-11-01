@@ -28,6 +28,11 @@ ifdef MAX_CONNECTIONS
 MAXCONNOPT += --max-connections=$(MAX_CONNECTIONS)
 endif
 
+# locale
+NOLOCALE :=
+ifdef NO_LOCALE
+NOLOCALE += --no-locale
+endif
 
 ##
 ## Prepare for tests
@@ -132,17 +137,17 @@ all-spi:
 check: all
 	-rm -rf ./testtablespace
 	mkdir ./testtablespace
-	$(SHELL) ./pg_regress --temp-install --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(MAXCONNOPT)
+	$(SHELL) ./pg_regress --temp-install --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(MAXCONNOPT) $(NOLOCALE)
 
 installcheck: all
 	-rm -rf ./testtablespace
 	mkdir ./testtablespace
-	$(SHELL) ./pg_regress --schedule=$(srcdir)/serial_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql 
+	$(SHELL) ./pg_regress --schedule=$(srcdir)/serial_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE)
 
 installcheck-parallel: all
 	-rm -rf ./testtablespace
 	mkdir ./testtablespace
-	$(SHELL) ./pg_regress --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(MAXCONNOPT)
+	$(SHELL) ./pg_regress --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(MAXCONNOPT) $(NOLOCALE)
 
 
 # old interfaces follow...
@@ -152,10 +157,10 @@ runtest: installcheck
 runtest-parallel: installcheck-parallel
 
 bigtest:
-	$(SHELL) ./pg_regress --schedule=$(srcdir)/serial_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql numeric_big
+	$(SHELL) ./pg_regress --schedule=$(srcdir)/serial_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE) numeric_big 
 
 bigcheck:
-	$(SHELL) ./pg_regress --temp-install --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(MAXCONNOPT) numeric_big
+	$(SHELL) ./pg_regress --temp-install --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(MAXCONNOPT) $(NOLOCALE) numeric_big
 
 
 ##
