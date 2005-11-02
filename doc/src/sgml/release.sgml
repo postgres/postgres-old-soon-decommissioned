@@ -2052,7 +2052,7 @@ psql -t -f fixseq.sql db1 | psql -e db1
 
       <listitem>
        <para>
-        Improve <filename>/contrib/pgbench</> (Tatsuo)
+        Improve <filename>/contrib/pgbench</> (Tomoaki Sato, Tatsuo)
        </para>
        <para>
         There is now a facility for testing with SQL command scripts given
