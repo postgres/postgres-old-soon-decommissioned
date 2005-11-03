@@ -966,7 +966,7 @@ DoCopy(const CopyStmt *stmt)
 		}
 		if (pipe)
 		{
-			if (whereToSendOutput == Remote)
+			if (whereToSendOutput == DestRemote)
 				ReceiveCopyBegin(cstate);
 			else
 				cstate->copy_file = stdin;
@@ -1017,7 +1017,7 @@ DoCopy(const CopyStmt *stmt)
 		}
 		if (pipe)
 		{
-			if (whereToSendOutput == Remote)
+			if (whereToSendOutput == DestRemote)
 				cstate->fe_copy = true;
 			else
 				cstate->copy_file = stdout;

@@ -3323,7 +3323,7 @@ BeginReportingGUCOptions(void)
 	 * Don't do anything unless talking to an interactive frontend of protocol
 	 * 3.0 or later.
 	 */
-	if (whereToSendOutput != Remote ||
+	if (whereToSendOutput != DestRemote ||
 		PG_PROTOCOL_MAJOR(FrontendProtocol) < 3)
 		return;
 

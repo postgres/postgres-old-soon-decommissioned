@@ -94,8 +94,11 @@ printtup_create_DR(CommandDest dest, Portal portal)
 
 	self->portal = portal;
 
-	/* Send T message automatically if Remote, but not if RemoteExecute */
-	self->sendDescrip = (dest == Remote);
+	/*
+	 * Send T message automatically if DestRemote, but not if
+	 * DestRemoteExecute
+	 */
+	self->sendDescrip = (dest == DestRemote);
 
 	self->attrinfo = NULL;
 	self->nattrs = 0;

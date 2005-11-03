@@ -906,13 +906,13 @@ PostmasterMain(int argc, char *argv[])
 	SysLoggerPID = SysLogger_Start();
 
 	/*
-	 * Reset whereToSendOutput from Debug (its starting state) to None. This
-	 * stops ereport from sending log messages to stderr unless
+	 * Reset whereToSendOutput from DestDebug (its starting state) to DestNone.
+	 * This stops ereport from sending log messages to stderr unless
 	 * Log_destination permits.  We don't do this until the postmaster is
 	 * fully launched, since startup failures may as well be reported to
 	 * stderr.
 	 */
-	whereToSendOutput = None;
+	whereToSendOutput = DestNone;
 
 	/*
 	 * Initialize the statistics collector stuff
@@ -2654,7 +2654,7 @@ BackendRun(Port *port)
 	 * Must do this now because authentication uses libpq to send messages.
 	 */
 	pq_init();					/* initialize libpq to talk to client */
-	whereToSendOutput = Remote; /* now safe to ereport to client */
+	whereToSendOutput = DestRemote; /* now safe to ereport to client */
 
 	/*
 	 * We arrange for a simple exit(0) if we receive SIGTERM or SIGQUIT during

@@ -994,7 +994,7 @@ ProcessIncomingNotify(void)
 static void
 NotifyMyFrontEnd(char *relname, int32 listenerPID)
 {
-	if (whereToSendOutput == Remote)
+	if (whereToSendOutput == DestRemote)
 	{
 		StringInfoData buf;
 
