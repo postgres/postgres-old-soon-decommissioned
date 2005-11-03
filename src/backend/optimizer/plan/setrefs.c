@@ -382,9 +382,10 @@ set_subqueryscan_references(SubqueryScan *plan, List *rtable)
 									   result->initPlan);
 
 		/*
-		 * we also have to transfer the SubqueryScan's result-column names
+		 * We also have to transfer the SubqueryScan's result-column names
 		 * into the subplan, else columns sent to client will be improperly
-		 * labeled if this is the topmost plan level.
+		 * labeled if this is the topmost plan level.  Copy the "source
+		 * column" information too.
 		 */
 		forboth(lp, plan->scan.plan.targetlist, lc, result->targetlist)
 		{
@@ -392,6 +393,8 @@ set_subqueryscan_references(SubqueryScan *plan, List *rtable)
 			TargetEntry *ctle = (TargetEntry *) lfirst(lc);
 
 			ctle->resname = ptle->resname;
+			ctle->resorigtbl = ptle->resorigtbl;
+			ctle->resorigcol = ptle->resorigcol;
 		}
 	}
 	else
