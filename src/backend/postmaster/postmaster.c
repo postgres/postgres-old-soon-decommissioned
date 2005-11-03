@@ -3186,7 +3186,7 @@ SubPostmasterMain(int argc, char *argv[])
 
 	/* In EXEC_BACKEND case we will not have inherited these settings */
 	IsPostmasterEnvironment = true;
-	whereToSendOutput = None;
+	whereToSendOutput = DestNone;
 
 	/* Setup essential subsystems (to ensure elog() behaves sanely) */
 	MemoryContextInit();
