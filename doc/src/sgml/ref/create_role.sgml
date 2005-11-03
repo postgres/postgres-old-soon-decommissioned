@@ -112,7 +112,7 @@ where <replaceable class="PARAMETER">option</replaceable> can be:
       <listitem>
        <para>
         These clauses determine whether a role will be permitted to
-        create new roles (that is, execute <literal>CREATE ROLE</literal>).
+        create new roles (that is, execute <command>CREATE ROLE</command>).
         A role with <literal>CREATEROLE</literal> privilege can also alter
         and drop other roles.
         If not specified,
@@ -374,7 +374,7 @@ CREATE ROLE jonathan LOGIN;
 <programlisting>
 CREATE USER davide WITH PASSWORD 'jw8s0F4';
 </programlisting>
-   (<literal>CREATE USER</> is the same as <literal>CREATE ROLE</> except
+   (<command>CREATE USER</> is the same as <command>CREATE ROLE</> except
    that it implies <literal>LOGIN</>.)
   </para>
 
