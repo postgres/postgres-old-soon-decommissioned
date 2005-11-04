@@ -504,7 +504,7 @@ initdb --locale=sv_SE
         <row>
          <entry><literal>MULE_INTERNAL</literal></entry>
          <entry>Mule internal code</entry>
-         <entry>Multi-lingual Emacs</entry>
+         <entry>Multilingual Emacs</entry>
          <entry>1-4</entry>
          <entry></entry>
         </row>

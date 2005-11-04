@@ -52,7 +52,7 @@ $PostgreSQL$
    difficult work.  It was necessary to understand the inner workings of the
    database, such as the lock manager and Write-Ahead Log.  The
    <acronym>GiST</acronym> interface has a high level of abstraction,
-   requiring the access method implementor to only implement the semantics of
+   requiring the access method implementer to only implement the semantics of
    the data type being accessed.  The <acronym>GiST</acronym> layer itself
    takes care of concurrency, logging and searching the tree structure.
  </para>
@@ -187,7 +187,7 @@ $PostgreSQL$
   The <productname>PostgreSQL</productname> source distribution includes
   several examples of index methods implemented using
   <acronym>GiST</acronym>.  The core system currently provides R-Tree
-  equivalent functionality for some of the built-in geometric datatypes
+  equivalent functionality for some of the built-in geometric data types
   (see <filename>src/backend/access/gist/gistproc.c</>).  The following
   <filename>contrib</> modules also contain <acronym>GiST</acronym>
   operator classes: 
@@ -197,7 +197,7 @@ $PostgreSQL$
   <varlistentry>
    <term>btree_gist</term>
    <listitem>
-    <para>B-Tree equivalent functionality for several datatypes</para>
+    <para>B-Tree equivalent functionality for several data types</para>
    </listitem>
   </varlistentry>
 

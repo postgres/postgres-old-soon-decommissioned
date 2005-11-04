@@ -5416,7 +5416,7 @@
    and <structfield>histogram_bounds</> arrays can be set on a
    column-by-column basis using the <command>ALTER TABLE SET STATISTICS</>
    command, or globally by setting the
-   <xref linkend="guc-default-statistics-target"> runtime parameter.
+   <xref linkend="guc-default-statistics-target"> run-time parameter.
   </para>
 
  </sect1>

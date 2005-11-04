@@ -59,7 +59,7 @@ CREATE TABLE tictactoe (
   all considered to be of the same type, regardless of size or number
   of dimensions.  So, declaring number of dimensions or sizes in
   <command>CREATE TABLE</command> is simply documentation, it does not
-  affect runtime behavior.
+  affect run-time behavior.
  </para>
 
  <para>

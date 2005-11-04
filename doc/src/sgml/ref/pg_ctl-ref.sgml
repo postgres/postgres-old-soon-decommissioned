@@ -308,7 +308,7 @@ PostgreSQL documentation
      <term><option>-U <replaceable class="parameter">username</replaceable></option></term>
      <listitem>
       <para>
-       Username for the user to start the service. For domain users, use the
+       User name for the user to start the service. For domain users, use the
        format <literal>DOMAIN\username</literal>.
       </para>
      </listitem>
