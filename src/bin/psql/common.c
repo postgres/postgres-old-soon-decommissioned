@@ -315,7 +315,14 @@ setup_win32_locks(void)
 void
 setup_cancel_handler(void)
 {
-	SetConsoleCtrlHandler(consoleHandler, TRUE);
+	static bool done = false;
+
+	/* only need one handler per process */
+	if (!done)
+	{
+		SetConsoleCtrlHandler(consoleHandler, TRUE);
+		done = true;
+	}
 }
 
 #endif /* WIN32 */
