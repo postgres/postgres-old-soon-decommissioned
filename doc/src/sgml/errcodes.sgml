@@ -127,7 +127,7 @@
 
 <row>
 <entry>Class 02</entry>
-<entry>No Data &mdash; this is also a warning class per SQL:2003</entry>
+<entry>No Data &mdash; this is also a warning class per the SQL standard</entry>
 </row>
 
 <row>
