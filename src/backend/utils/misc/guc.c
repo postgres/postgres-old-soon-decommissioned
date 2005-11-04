@@ -466,7 +466,7 @@ static struct config_bool ConfigureNamesBool[] =
 		{"constraint_exclusion", PGC_USERSET, QUERY_TUNING_OTHER,
 			gettext_noop("Enables the planner to use constraints to limit table access."),
 			gettext_noop("This prevents table access if the table constraints "
-						 "guarantee that table access is necessary.")
+						 "guarantee that table access is not necessary.")
 		},
 		&constraint_exclusion,
 		false, NULL, NULL
