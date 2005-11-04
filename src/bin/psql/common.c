@@ -268,6 +268,7 @@ handle_sigint(SIGNAL_ARGS)
 	}
 	errno = save_errno;			/* just in case the write changed it */
 }
+
 #else							/* WIN32 */
 
 static BOOL WINAPI
@@ -313,8 +314,16 @@ setup_win32_locks(void)
 void
 setup_cancel_handler(void)
 {
-	SetConsoleCtrlHandler(consoleHandler, TRUE);
+	static bool done = false;
+
+	/* only need one handler per process */
+	if (!done)
+	{
+		SetConsoleCtrlHandler(consoleHandler, TRUE);
+		done = true;
+	}
 }
+
 #endif   /* WIN32 */
 
 
