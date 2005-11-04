@@ -3067,6 +3067,26 @@ check_is_member_of_role(Oid member, Oid role)
 						GetUserNameFromId(role))));
 }
 
+/*
+ * Is member a member of role, not considering superuserness?
+ *
+ * This is identical to is_member_of_role except we ignore superuser
+ * status.
+ */
+bool
+is_member_of_role_nosuper(Oid member, Oid role)
+{
+	/* Fast path for simple case */
+	if (member == role)
+		return true;
+
+	/*
+	 * Find all the roles that member is a member of, including multi-level
+	 * recursion, then see if target role is any one of them.
+	 */
+	return list_member_oid(roles_is_member_of(member), role);
+}
+
 
 /*
  * Is member an admin of role (directly or indirectly)?  That is, is it

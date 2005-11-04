@@ -1214,9 +1214,10 @@ AddRoleMems(const char *rolename, Oid roleid,
 		 * Refuse creation of membership loops, including the trivial case
 		 * where a role is made a member of itself.  We do this by checking to
 		 * see if the target role is already a member of the proposed member
-		 * role.
+		 * role.  We have to ignore possible superuserness, however, else we
+		 * could never grant membership in a superuser-privileged role.
 		 */
-		if (is_member_of_role(roleid, memberid))
+		if (is_member_of_role_nosuper(roleid, memberid))
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_GRANT_OPERATION),
 					 (errmsg("role \"%s\" is a member of role \"%s\"",
