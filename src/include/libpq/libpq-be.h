@@ -80,7 +80,6 @@ typedef struct Port
 	 * but since it gets used by elog.c in the same way as database_name and
 	 * other members of this struct, we may as well keep it here.
 	 */
-	const char *commandTag;		/* current command tag */
 	struct timeval session_start;		/* for session duration logging */
 
 	/*
