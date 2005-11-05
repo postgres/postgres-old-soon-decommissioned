@@ -79,7 +79,6 @@ typedef struct Port
 	 * database_name and other members of this struct, we may as well keep
 	 * it here.
 	 */
-	const char *commandTag;		/* current command tag */
 	struct timeval session_start;		/* for session duration logging */
 
 	/*

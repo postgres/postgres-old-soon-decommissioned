@@ -166,6 +166,8 @@ static int WaitOnLock(LOCKMETHODID lockmethodid, LOCALLOCK *locallock,
 		   ResourceOwner owner);
 static void LockCountMyLocks(SHMEM_OFFSET lockOffset, PGPROC *proc,
 				 int *myHolding);
+static bool UnGrantLock(LOCK *lock, LOCKMODE lockmode,
+						PROCLOCK *proclock, LockMethod lockMethodTable);
 
 
 /*
@@ -958,6 +960,62 @@ GrantLock(LOCK *lock, PROCLOCK *proclock, LOCKMODE lockmode)
 }
 
 /*
+ * UnGrantLock -- opposite of GrantLock. 
+ *
+ * Updates the lock and proclock data structures to show that the lock
+ * is no longer held nor requested by the current holder.
+ *
+ * Returns true if there were any waiters waiting on the lock that
+ * should now be woken up with ProcLockWakeup.
+ */
+static bool
+UnGrantLock(LOCK *lock, LOCKMODE lockmode,
+			PROCLOCK *proclock, LockMethod lockMethodTable)
+{
+	bool wakeupNeeded = false;
+
+	Assert((lock->nRequested > 0) && (lock->requested[lockmode] > 0));
+	Assert((lock->nGranted > 0) && (lock->granted[lockmode] > 0));
+	Assert(lock->nGranted <= lock->nRequested);
+
+	/*
+	 * fix the general lock stats
+	 */
+	lock->nRequested--;
+	lock->requested[lockmode]--;
+	lock->nGranted--;
+	lock->granted[lockmode]--;
+
+	if (lock->granted[lockmode] == 0)
+	{
+		/* change the conflict mask.  No more of this lock type. */
+		lock->grantMask &= LOCKBIT_OFF(lockmode);
+	}
+
+	LOCK_PRINT("UnGrantLock: updated", lock, lockmode);
+
+	/*
+	 * We need only run ProcLockWakeup if the released lock conflicts with
+	 * at least one of the lock types requested by waiter(s).  Otherwise
+	 * whatever conflict made them wait must still exist.  NOTE: before
+	 * MVCC, we could skip wakeup if lock->granted[lockmode] was still
+	 * positive. But that's not true anymore, because the remaining
+	 * granted locks might belong to some waiter, who could now be
+	 * awakened because he doesn't conflict with his own locks.
+	 */
+	if (lockMethodTable->conflictTab[lockmode] & lock->waitMask)
+		wakeupNeeded = true;
+
+	/*
+	 * Now fix the per-proclock state.
+	 */
+	proclock->holdMask &= LOCKBIT_OFF(lockmode);
+	PROCLOCK_PRINT("UnGrantLock: updated", proclock);
+
+	return wakeupNeeded;
+}
+
+/*
  * GrantLockLocal -- update the locallock data structures to show
  *		the lock request has been granted.
  *
@@ -1016,19 +1074,21 @@ WaitOnLock(LOCKMETHODID lockmethodid, LOCALLOCK *locallock,
 		   ResourceOwner owner)
 {
 	LockMethod	lockMethodTable = LockMethods[lockmethodid];
-	char	   *new_status,
-			   *old_status;
+	const char *old_status;
+	char	   *new_status;
+	int			len;
 
 	Assert(lockmethodid < NumLockMethods);
 
 	LOCK_PRINT("WaitOnLock: sleeping on lock",
 			   locallock->lock, locallock->tag.mode);
 
-	old_status = pstrdup(get_ps_display());
-	new_status = (char *) palloc(strlen(old_status) + 10);
-	strcpy(new_status, old_status);
-	strcat(new_status, " waiting");
+	old_status = get_ps_display(&len);
+	new_status = (char *) palloc(len + 8 + 1);
+	memcpy(new_status, old_status, len);
+	strcpy(new_status + len, " waiting");
 	set_ps_display(new_status);
+	new_status[len] = '\0';		/* truncate off " waiting" */
 
 	awaitedLock = locallock;
 	awaitedOwner = owner;
@@ -1054,8 +1114,7 @@ WaitOnLock(LOCKMETHODID lockmethodid, LOCALLOCK *locallock,
 	{
 		/*
 		 * We failed as a result of a deadlock, see CheckDeadLock(). Quit
-		 * now.  Removal of the proclock and lock objects, if no longer
-		 * needed, will happen in xact cleanup (see above for motivation).
+		 * now.
 		 */
 		awaitedLock = NULL;
 		LOCK_PRINT("WaitOnLock: aborting on lock",
@@ -1072,8 +1131,7 @@ WaitOnLock(LOCKMETHODID lockmethodid, LOCALLOCK *locallock,
 
 	awaitedLock = NULL;
 
-	set_ps_display(old_status);
-	pfree(old_status);
+	set_ps_display(new_status);
 	pfree(new_status);
 
 	LOCK_PRINT("WaitOnLock: wakeup on lock",
@@ -1087,22 +1145,21 @@ WaitOnLock(LOCKMETHODID lockmethodid, LOCALLOCK *locallock,
  *
  * Locktable lock must be held by caller.
  *
- * NB: this does not remove the process' proclock object, nor the lock object,
- * even though their counts might now have gone to zero.  That will happen
- * during a subsequent LockReleaseAll call, which we expect will happen
- * during transaction cleanup.	(Removal of a proc from its wait queue by
- * this routine can only happen if we are aborting the transaction.)
+ * NB: this does not clean up any locallock object that may exist for the lock.
  */
 void
 RemoveFromWaitQueue(PGPROC *proc)
 {
 	LOCK	   *waitLock = proc->waitLock;
+	PROCLOCK   *proclock = proc->waitProcLock;
 	LOCKMODE	lockmode = proc->waitLockMode;
+	LOCKMETHODID lockmethodid = LOCK_LOCKMETHOD(*waitLock);
 
 	/* Make sure proc is waiting */
 	Assert(proc->links.next != INVALID_OFFSET);
 	Assert(waitLock);
 	Assert(waitLock->waitProcs.size > 0);
+	Assert(0 < lockmethodid && lockmethodid < NumLockMethods);
 
 	/* Remove proc from lock's wait queue */
 	SHMQueueDelete(&(proc->links));
@@ -1122,8 +1179,32 @@ RemoveFromWaitQueue(PGPROC *proc)
 	proc->waitLock = NULL;
 	proc->waitProcLock = NULL;
 
+	/*
+	 * Delete the proclock immediately if it represents no already-held locks.
+	 * This must happen now because if the owner of the lock decides to release
+	 * it, and the requested/granted counts then go to zero, LockRelease
+	 * expects there to be no remaining proclocks.
+	 */
+	if (proclock->holdMask == 0)
+	{
+		PROCLOCK_PRINT("RemoveFromWaitQueue: deleting proclock", proclock);
+		SHMQueueDelete(&proclock->lockLink);
+		SHMQueueDelete(&proclock->procLink);
+		proclock = (PROCLOCK *) hash_search(LockMethodProcLockHash[lockmethodid],
+											(void *) &(proclock->tag),
+											HASH_REMOVE, NULL);
+		if (!proclock)
+			elog(WARNING, "proclock table corrupted");
+	}
+
+	/*
+	 * There should still be some requests for the lock ... else what were
+	 * we waiting for?  Therefore no need to delete the lock object.
+	 */
+	Assert(waitLock->nRequested > 0);
+
 	/* See if any other waiters for the lock can be woken up now */
-	ProcLockWakeup(GetLocksMethodTable(waitLock), waitLock);
+	ProcLockWakeup(LockMethods[lockmethodid], waitLock);
 }
 
 /*
@@ -1146,7 +1227,7 @@ LockRelease(LOCKMETHODID lockmethodid, LOCKTAG *locktag,
 	PROCLOCK   *proclock;
 	LWLockId	masterLock;
 	LockMethod	lockMethodTable;
-	bool		wakeupNeeded = false;
+	bool		wakeupNeeded;
 
 #ifdef LOCK_DEBUG
 	if (lockmethodid == USER_LOCKMETHOD && Trace_userlocks)
@@ -1265,46 +1346,8 @@ LockRelease(LOCKMETHODID lockmethodid, LOCKTAG *locktag,
 		RemoveLocalLock(locallock);
 		return FALSE;
 	}
-	Assert((lock->nRequested > 0) && (lock->requested[lockmode] > 0));
-	Assert((lock->nGranted > 0) && (lock->granted[lockmode] > 0));
-	Assert(lock->nGranted <= lock->nRequested);
 
-	/*
-	 * fix the general lock stats
-	 */
-	lock->nRequested--;
-	lock->requested[lockmode]--;
-	lock->nGranted--;
-	lock->granted[lockmode]--;
-
-	if (lock->granted[lockmode] == 0)
-	{
-		/* change the conflict mask.  No more of this lock type. */
-		lock->grantMask &= LOCKBIT_OFF(lockmode);
-	}
-
-	LOCK_PRINT("LockRelease: updated", lock, lockmode);
-	Assert((lock->nRequested >= 0) && (lock->requested[lockmode] >= 0));
-	Assert((lock->nGranted >= 0) && (lock->granted[lockmode] >= 0));
-	Assert(lock->nGranted <= lock->nRequested);
-
-	/*
-	 * We need only run ProcLockWakeup if the released lock conflicts with
-	 * at least one of the lock types requested by waiter(s).  Otherwise
-	 * whatever conflict made them wait must still exist.  NOTE: before
-	 * MVCC, we could skip wakeup if lock->granted[lockmode] was still
-	 * positive. But that's not true anymore, because the remaining
-	 * granted locks might belong to some waiter, who could now be
-	 * awakened because he doesn't conflict with his own locks.
-	 */
-	if (lockMethodTable->conflictTab[lockmode] & lock->waitMask)
-		wakeupNeeded = true;
-
-	/*
-	 * Now fix the per-proclock state.
-	 */
-	proclock->holdMask &= LOCKBIT_OFF(lockmode);
-	PROCLOCK_PRINT("LockRelease: updated", proclock);
+	wakeupNeeded = UnGrantLock(lock, lockmode, proclock, lockMethodTable);
 
 	/*
 	 * If this was my last hold on this lock, delete my entry in the
@@ -1312,7 +1355,7 @@ LockRelease(LOCKMETHODID lockmethodid, LOCKTAG *locktag,
 	 */
 	if (proclock->holdMask == 0)
 	{
-		PROCLOCK_PRINT("LockRelease: deleting", proclock);
+		PROCLOCK_PRINT("LockRelease: deleting proclock", proclock);
 		SHMQueueDelete(&proclock->lockLink);
 		SHMQueueDelete(&proclock->procLink);
 		proclock = (PROCLOCK *) hash_search(LockMethodProcLockHash[lockmethodid],
@@ -1333,6 +1376,7 @@ LockRelease(LOCKMETHODID lockmethodid, LOCKTAG *locktag,
 		 * We've just released the last lock, so garbage-collect the lock
 		 * object.
 		 */
+		LOCK_PRINT("LockRelease: deleting lock", lock, lockmode);
 		Assert(SHMQueueEmpty(&(lock->procLocks)));
 		lock = (LOCK *) hash_search(LockMethodLockHash[lockmethodid],
 									(void *) &(lock->tag),
@@ -1483,22 +1527,8 @@ LockReleaseAll(LOCKMETHODID lockmethodid, bool allxids)
 			for (i = 1; i <= numLockModes; i++)
 			{
 				if (proclock->holdMask & LOCKBIT_ON(i))
-				{
-					lock->requested[i]--;
-					lock->granted[i]--;
-					Assert(lock->requested[i] >= 0 && lock->granted[i] >= 0);
-					if (lock->granted[i] == 0)
-						lock->grantMask &= LOCKBIT_OFF(i);
-					lock->nRequested--;
-					lock->nGranted--;
-
-					/*
-					 * Read comments in LockRelease
-					 */
-					if (!wakeupNeeded &&
-						lockMethodTable->conflictTab[i] & lock->waitMask)
-						wakeupNeeded = true;
-				}
+					wakeupNeeded |= UnGrantLock(lock, i, proclock,
+												lockMethodTable);
 			}
 		}
 		Assert((lock->nRequested >= 0) && (lock->nGranted >= 0));

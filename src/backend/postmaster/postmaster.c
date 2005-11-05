@@ -2638,7 +2638,6 @@ BackendRun(Port *port)
 	/* set these to empty in case they are needed before we set them up */
 	port->remote_host = "";
 	port->remote_port = "";
-	port->commandTag = "";
 
 	/*
 	 * Initialize libpq and enable reporting of ereport errors to the
