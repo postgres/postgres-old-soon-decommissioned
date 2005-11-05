@@ -86,7 +86,7 @@ SubTransSetParent(TransactionId xid, TransactionId parent)
 
 	*ptr = parent;
 
-	SubTransCtl->shared->page_status[slotno] = SLRU_PAGE_DIRTY;
+	SubTransCtl->shared->page_dirty[slotno] = true;
 
 	LWLockRelease(SubtransControlLock);
 }
@@ -199,7 +199,7 @@ BootStrapSUBTRANS(void)
 
 	/* Make sure it's written out */
 	SimpleLruWritePage(SubTransCtl, slotno, NULL);
-	Assert(SubTransCtl->shared->page_status[slotno] == SLRU_PAGE_CLEAN);
+	Assert(!SubTransCtl->shared->page_dirty[slotno]);
 
 	LWLockRelease(SubtransControlLock);
 }

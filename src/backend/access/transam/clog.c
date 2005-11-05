@@ -107,7 +107,7 @@ TransactionIdSetStatus(TransactionId xid, XidStatus status)
 	byteval |= (status << bshift);
 	*byteptr = byteval;
 
-	ClogCtl->shared->page_status[slotno] = SLRU_PAGE_DIRTY;
+	ClogCtl->shared->page_dirty[slotno] = true;
 
 	LWLockRelease(CLogControlLock);
 }
@@ -175,7 +175,7 @@ BootStrapCLOG(void)
 
 	/* Make sure it's written out */
 	SimpleLruWritePage(ClogCtl, slotno, NULL);
-	Assert(ClogCtl->shared->page_status[slotno] == SLRU_PAGE_CLEAN);
+	Assert(!ClogCtl->shared->page_dirty[slotno]);
 
 	LWLockRelease(CLogControlLock);
 }
@@ -246,7 +246,7 @@ StartupCLOG(void)
 		/* Zero the rest of the page */
 		MemSet(byteptr + 1, 0, BLCKSZ - byteno - 1);
 
-		ClogCtl->shared->page_status[slotno] = SLRU_PAGE_DIRTY;
+		ClogCtl->shared->page_dirty[slotno] = true;
 	}
 
 	LWLockRelease(CLogControlLock);
@@ -404,7 +404,7 @@ clog_redo(XLogRecPtr lsn, XLogRecord *record)
 
 		slotno = ZeroCLOGPage(pageno, false);
 		SimpleLruWritePage(ClogCtl, slotno, NULL);
-		Assert(ClogCtl->shared->page_status[slotno] == SLRU_PAGE_CLEAN);
+		Assert(!ClogCtl->shared->page_dirty[slotno]);
 
 		LWLockRelease(CLogControlLock);
 	}
