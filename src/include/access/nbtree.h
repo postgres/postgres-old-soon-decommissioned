@@ -429,6 +429,7 @@ extern void _bt_metapinit(Relation rel);
 extern void _bt_initmetapage(Page page, BlockNumber rootbknum, uint32 level);
 extern Buffer _bt_getroot(Relation rel, int access);
 extern Buffer _bt_gettrueroot(Relation rel);
+extern void _bt_checkpage(Relation rel, Buffer buf);
 extern Buffer _bt_getbuf(Relation rel, BlockNumber blkno, int access);
 extern Buffer _bt_relandgetbuf(Relation rel, Buffer obuf,
 				 BlockNumber blkno, int access);

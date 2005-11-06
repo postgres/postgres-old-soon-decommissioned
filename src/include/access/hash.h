@@ -310,7 +310,7 @@ extern uint32 _hash_datum2hashkey(Relation rel, Datum key);
 extern Bucket _hash_hashkey2bucket(uint32 hashkey, uint32 maxbucket,
 					 uint32 highmask, uint32 lowmask);
 extern uint32 _hash_log2(uint32 num);
-extern void _hash_checkpage(Relation rel, Page page, int flags);
+extern void _hash_checkpage(Relation rel, Buffer buf, int flags);
 
 /* hash.c */
 extern void hash_redo(XLogRecPtr lsn, XLogRecord *record);
