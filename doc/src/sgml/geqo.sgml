@@ -51,8 +51,8 @@ Genetic Optimizer
     caused by the support of a variety of <firstterm>join
     methods</firstterm> (e.g., nested loop, hash join, merge join in
     <productname>PostgreSQL</productname>) to process individual joins
-    and a diversity of <firstterm>indexes</firstterm> (e.g., R-tree,
-    B-tree, hash in <productname>PostgreSQL</productname>) as access
+    and a diversity of <firstterm>indexes</firstterm> (e.g.,
+    B-tree, hash, GiST in <productname>PostgreSQL</productname>) as access
     paths for relations.
    </para>
 

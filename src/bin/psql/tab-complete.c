@@ -1025,7 +1025,7 @@ psql_completion(char *text, int start, int end)
 	else if (pg_strcasecmp(prev_wd, "USING") == 0)
 	{
 		static const char *const index_mth[] =
-		{"BTREE", "RTREE", "HASH", "GIST", NULL};
+		{"BTREE", "HASH", "GIST", NULL};
 
 		COMPLETE_WITH_LIST(index_mth);
 	}

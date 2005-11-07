@@ -94,7 +94,6 @@ DATA(insert OID =  397 (	403		array_ops		PGNSP PGUID 2277 t 0 ));
 DATA(insert OID =  423 (	403		bit_ops			PGNSP PGUID 1560 t 0 ));
 DATA(insert OID =  424 (	403		bool_ops		PGNSP PGUID   16 t 0 ));
 #define BOOL_BTREE_OPS_OID 424
-DATA(insert OID =  425 (	402		box_ops			PGNSP PGUID  603 t 0 ));
 DATA(insert OID =  426 (	403		bpchar_ops		PGNSP PGUID 1042 t 0 ));
 #define BPCHAR_BTREE_OPS_OID 426
 DATA(insert OID =  427 (	405		bpchar_ops		PGNSP PGUID 1042 t 0 ));
@@ -135,7 +134,6 @@ DATA(insert OID = 1989 (	403		oid_ops			PGNSP PGUID   26 t 0 ));
 DATA(insert OID = 1990 (	405		oid_ops			PGNSP PGUID   26 t 0 ));
 DATA(insert OID = 1991 (	403		oidvector_ops	PGNSP PGUID   30 t 0 ));
 DATA(insert OID = 1992 (	405		oidvector_ops	PGNSP PGUID   30 t 0 ));
-DATA(insert OID = 1993 (	402		poly_ops		PGNSP PGUID  604 t 0 ));
 DATA(insert OID = 1994 (	403		text_ops		PGNSP PGUID   25 t 0 ));
 #define TEXT_BTREE_OPS_OID 1994
 DATA(insert OID = 1995 (	405		text_ops		PGNSP PGUID   25 t 0 ));

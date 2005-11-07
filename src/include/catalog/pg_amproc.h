@@ -74,15 +74,6 @@ typedef FormData_pg_amproc *Form_pg_amproc;
  * ----------------
  */
 
-/* rtree */
-DATA(insert (	 425	0 1 193 ));
-DATA(insert (	 425	0 2 194 ));
-DATA(insert (	 425	0 3 195 ));
-DATA(insert (	1993	0 1 197 ));
-DATA(insert (	1993	0 2 198 ));
-DATA(insert (	1993	0 3 199 ));
-
-
 /* btree */
 DATA(insert (	 397	0 1 382 ));
 DATA(insert (	 421	0 1 357 ));

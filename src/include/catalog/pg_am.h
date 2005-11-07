@@ -104,8 +104,6 @@ typedef FormData_pg_am *Form_pg_am;
  * ----------------
  */
 
-DATA(insert OID = 402 (  rtree 12 3 0 f f f f f rtinsert rtbeginscan rtgettuple rtgetmulti rtrescan rtendscan rtmarkpos rtrestrpos rtbuild rtbulkdelete - rtcostestimate ));
-DESCR("r-tree index access method");
 DATA(insert OID = 403 (  btree	5 1 1 t t t t t btinsert btbeginscan btgettuple btgetmulti btrescan btendscan btmarkpos btrestrpos btbuild btbulkdelete btvacuumcleanup btcostestimate ));
 DESCR("b-tree index access method");
 #define BTREE_AM_OID 403

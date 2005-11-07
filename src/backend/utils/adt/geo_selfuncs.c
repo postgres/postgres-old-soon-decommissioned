@@ -22,19 +22,19 @@
 
 
 /*
- *	Selectivity functions for rtrees.  These are bogus -- unless we know
- *	the actual key distribution in the index, we can't make a good prediction
- *	of the selectivity of these operators.
+ *	Selectivity functions for geometric operators.  These are bogus -- unless
+ *	we know the actual key distribution in the index, we can't make a good
+ *	prediction of the selectivity of these operators.
  *
  *	Note: the values used here may look unreasonably small.  Perhaps they
  *	are.  For now, we want to make sure that the optimizer will make use
- *	of an r-tree index if one is available, so the selectivity had better
+ *	of a geometric index if one is available, so the selectivity had better
  *	be fairly small.
  *
- *	In general, rtrees need to search multiple subtrees in order to guarantee
+ *	In general, GiST needs to search multiple subtrees in order to guarantee
  *	that all occurrences of the same key have been found.  Because of this,
  *	the estimated cost for scanning the index ought to be higher than the
- *	output selectivity would indicate.	rtcostestimate(), over in selfuncs.c,
+ *	output selectivity would indicate.	gistcostestimate(), over in selfuncs.c,
  *	ought to be adjusted accordingly --- but until we can generate somewhat
  *	realistic numbers here, it hardly matters...
  */
