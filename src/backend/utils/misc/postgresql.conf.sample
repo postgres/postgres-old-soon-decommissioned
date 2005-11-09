@@ -21,7 +21,7 @@
 # This file is read on postmaster startup and when the postmaster
 # receives a SIGHUP. If you edit the file on a running system, you have 
 # to SIGHUP the postmaster for the changes to take effect, or use 
-# "pg_ctl reload". Some settings, such as listen_address, require
+# "pg_ctl reload". Some settings, such as listen_addresses, require
 # a postmaster shutdown and restart to take effect.
 
 
@@ -111,7 +111,8 @@
 
 #fsync = true			# turns forced synchronization on or off
 #wal_sync_method = fsync	# the default varies across platforms:
-				# fsync, fdatasync, open_sync, or open_datasync
+				# fsync, fdatasync, fsync_writethrough,
+				# open_sync, open_datasync
 #wal_buffers = 8		# min 4, 8KB each
 #commit_delay = 0		# range 0-100000, in microseconds
 #commit_siblings = 5		# range 1-1000
