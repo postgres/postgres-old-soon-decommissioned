@@ -714,6 +714,11 @@ typedef struct HashPath
  * joined, will also have is_pushed_down set because it will get attached to
  * some lower joinrel.
  *
+ * When application of a qual must be delayed by outer join, we also mark it
+ * with outerjoin_delayed = true.  This isn't redundant with required_relids
+ * because that might equal clause_relids whether or not it's an outer-join
+ * clause.
+ *
  * In general, the referenced clause might be arbitrarily complex.	The
  * kinds of clauses we can handle as indexscan quals, mergejoin clauses,
  * or hashjoin clauses are fairly limited --- the code for each kind of
@@ -739,6 +744,8 @@ typedef struct RestrictInfo
 	Expr	   *clause;			/* the represented clause of WHERE or JOIN */
 
 	bool		is_pushed_down; /* TRUE if clause was pushed down in level */
+
+	bool		outerjoin_delayed;		/* TRUE if delayed by outer join */
 
 	/*
 	 * This flag is set true if the clause looks potentially useful as a merge
