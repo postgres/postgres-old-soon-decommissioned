@@ -19,6 +19,7 @@
 
 extern RestrictInfo *make_restrictinfo(Expr *clause,
 				  bool is_pushed_down,
+				  bool outerjoin_delayed,
 				  Relids required_relids);
 extern List *make_restrictinfo_from_bitmapqual(Path *bitmapqual,
 								  bool is_pushed_down,
