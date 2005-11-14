@@ -304,6 +304,8 @@ typedef struct EState
 	ResultRelInfo *es_result_relation_info;		/* currently active array elt */
 	JunkFilter *es_junkFilter;	/* currently active junk filter */
 
+	TupleTableSlot *es_trig_tuple_slot;			/* for trigger output tuples */
+
 	Relation	es_into_relation_descriptor;	/* for SELECT INTO */
 	bool		es_into_relation_use_wal;
 
