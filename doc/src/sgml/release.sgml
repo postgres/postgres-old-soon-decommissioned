@@ -10,6 +10,9 @@ PostgreSQL                      <productname>
 pg_[A-Za-z0-9_]                 <application>
 [A-Z][A-Z]                      <type>, <envar>, <literal>
 &<>                             use &
+
+For new features, add links to the documentation sections.
+
 -->
 
 <appendix id="release">
