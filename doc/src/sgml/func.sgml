@@ -32,7 +32,9 @@ PostgreSQL documentation
    <acronym>SQL</acronym> standard. Some of the extended functionality
    is present in other <acronym>SQL</acronym> database management
    systems, and in many cases this functionality is compatible and
-   consistent between the various implementations.
+   consistent between the various implementations.  This chapter is also
+   not exhaustive;  additional functions appear in relevant sections of 
+   the manual.
   </para>
 
 
@@ -1315,7 +1317,7 @@ PostgreSQL documentation
 
       <row>
        <entry><literal><function>strpos</function>(<parameter>string</parameter>, <parameter>substring</parameter>)</literal></entry>
-       <entry><type>text</type></entry>
+       <entry><type>int</type></entry>
        <entry>
         Location of specified substring (same as
         <literal>position(<parameter>substring</parameter> in
@@ -4460,6 +4462,17 @@ SELECT SUBSTRING('XY1234Z', 'Y*?([0-9]{1,3})');
 
      <listitem>
       <para>
+       In conversions from string to <type>timestamp</type> or
+       <type>date</type>, the <literal>CC</literal> field is ignored if there
+       is a <literal>YYY</literal>, <literal>YYYY</literal> or
+       <literal>Y,YYY</literal> field. If <literal>CC</literal> is used with
+       <literal>YY</literal> or <literal>Y</literal> then the year is computed
+       as <literal>(CC-1)*100+YY</literal>.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
        Millisecond (<literal>MS</literal>) and microsecond (<literal>US</literal>)
        values in a conversion from string to <type>timestamp</type> are used as part of the
        seconds after the decimal point. For example 
@@ -5449,6 +5462,12 @@ SELECT EXTRACT(SECOND FROM TIME '17:12:28.5');
         week starts on Monday.)  In other words, the first Thursday of
         a year is in week 1 of that year. (for <type>timestamp</type> values only)
        </para>
+       <para>
+        Because of this, it is possible for early January dates to be part of the 
+        52nd or 53rd week of the previous year.  For example, <literal>2005-01-01</>
+        is part of the 53rd week of year 2004, and <literal>2006-01-01</> is part of 
+        the 52nd week of year 2005.
+       </para>
 
 <screen>
 SELECT EXTRACT(WEEK FROM TIMESTAMP '2001-02-16 20:38:40');
@@ -5890,7 +5909,7 @@ SELECT TIMESTAMP 'now';
        <row>
         <entry> <literal>&gt;^</literal> </entry>
         <entry>Is above?</entry>
-        <entry><literal>circle '((0,5),1)' >^ circle '((0,0),1)'</literal></entry>
+        <entry><literal>circle '((0,5),1)' &gt;^ circle '((0,0),1)'</literal></entry>
        </row>
        <row>
         <entry> <literal>?#</literal> </entry>
@@ -6096,7 +6115,7 @@ SELECT TIMESTAMP 'now';
        <row>
         <entry><literal><function>circle</function>(<type>point</type>, <type>double precision</type>)</literal></entry>
         <entry><type>circle</type></entry>
-        <entry>point and radius to circle</entry>
+        <entry>center and radius to circle</entry>
         <entry><literal>circle(point '(0,0)', 2.0)</literal></entry>
        </row>
        <row>
@@ -6118,10 +6137,29 @@ SELECT TIMESTAMP 'now';
         <entry><literal>path(polygon '((0,0),(1,1),(2,0))')</literal></entry>
        </row>
        <row>
+        <entry><literal><function>point</function>(<type>double
+         precision</type>, <type>double precision</type>)</literal></entry>
+        <entry><type>point</type></entry>
+        <entry>construct point</entry>
+        <entry><literal>point(23.4, -44.5)</literal></entry>
+       </row>
+       <row>
+        <entry><literal><function>point</function>(<type>box</type>)</literal></entry>
+        <entry><type>point</type></entry>
+        <entry>center of box</entry>
+        <entry><literal>point(box '((-1,0),(1,0))')</literal></entry>
+       </row>
+       <row>
         <entry><literal><function>point</function>(<type>circle</type>)</literal></entry>
         <entry><type>point</type></entry>
         <entry>center of circle</entry>
         <entry><literal>point(circle '((0,0),2.0)')</literal></entry>
+       </row>
+       <row>
+        <entry><literal><function>point</function>(<type>lseg</type>)</literal></entry>
+        <entry><type>point</type></entry>
+        <entry>center of lseg</entry>
+        <entry><literal>point(lseg '((-1,0),(1,0))')</literal></entry>
        </row>
        <row>
         <entry><literal><function>point</function>(<type>lseg</type>, <type>lseg</type>)</literal></entry>
@@ -8487,6 +8525,10 @@ SELECT pg_type_is_visible('myschema.widget'::regtype);
    </para>
 
    <indexterm zone="functions-info">
+    <primary>format_type</primary>
+   </indexterm>
+
+   <indexterm zone="functions-info">
     <primary>pg_get_viewdef</primary>
    </indexterm>
 
@@ -8535,6 +8577,11 @@ SELECT pg_type_is_visible('myschema.widget'::regtype);
      </thead>
 
      <tbody>
+      <row>
+       <entry><literal><function>format_type</function>(<parameter>type_oid</parameter>, <parameter>typemod</>)</literal></entry>
+       <entry><type>text</type></entry>
+       <entry>get SQL name of a data type</entry>
+      </row>
       <row>
        <entry><literal><function>pg_get_viewdef</function>(<parameter>view_name</parameter>)</literal></entry>
        <entry><type>text</type></entry>
@@ -8623,6 +8670,12 @@ SELECT pg_type_is_visible('myschema.widget'::regtype);
      </tbody>
     </tgroup>
    </table>
+
+  <para>
+   <function>format_type</function> returns the SQL name of a data type that
+   is identified by its type OID and possibly a type modifier.  Pass NULL
+   for the type modifier if no specific modifier is known.
+  </para>
 
   <para>
    <function>pg_get_viewdef</function>,
