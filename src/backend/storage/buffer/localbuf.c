@@ -242,6 +242,52 @@ WriteLocalBuffer(Buffer buffer, bool release)
 }
 
 /*
+ * DropRelFileNodeLocalBuffers
+ *		This function removes from the buffer pool all the pages of the
+ *		specified relation that have block numbers >= firstDelBlock.
+ *		(In particular, with firstDelBlock = 0, all pages are removed.)
+ *		Dirty pages are simply dropped, without bothering to write them
+ *		out first.	Therefore, this is NOT rollback-able, and so should be
+ *		used only with extreme caution!
+ *
+ *		See DropRelFileNodeBuffers in bufmgr.c for more notes.
+ */
+void
+DropRelFileNodeLocalBuffers(RelFileNode rnode, BlockNumber firstDelBlock)
+{
+	int			i;
+
+	for (i = 0; i < NLocBuffer; i++)
+	{
+		BufferDesc *bufHdr = &LocalBufferDescriptors[i];
+		LocalBufferLookupEnt *hresult;
+
+		if ((bufHdr->flags & BM_TAG_VALID) &&
+			RelFileNodeEquals(bufHdr->tag.rnode, rnode) &&
+			bufHdr->tag.blockNum >= firstDelBlock)
+		{
+			if (LocalRefCount[i] != 0)
+				elog(ERROR, "block %u of %u/%u/%u is still referenced (local %u)",
+					 bufHdr->tag.blockNum,
+					 bufHdr->tag.rnode.spcNode,
+					 bufHdr->tag.rnode.dbNode,
+					 bufHdr->tag.rnode.relNode,
+					 LocalRefCount[i]);
+			/* Remove entry from hashtable */
+			hresult = (LocalBufferLookupEnt *)
+				hash_search(LocalBufHash, (void *) &bufHdr->tag,
+							HASH_REMOVE, NULL);
+			if (!hresult)			/* shouldn't happen */
+				elog(ERROR, "local buffer hash table corrupted");
+			/* Mark buffer invalid */
+			CLEAR_BUFFERTAG(bufHdr->tag);
+			bufHdr->flags = 0;
+			bufHdr->usage_count = 0;
+		}
+	}
+}
+
+/*
  * InitLocalBuffers -
  *	  init the local buffer cache. Since most queries (esp. multi-user ones)
  *	  don't involve local buffers, we delay allocating actual memory for the
