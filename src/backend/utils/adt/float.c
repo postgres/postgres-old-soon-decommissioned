@@ -1886,6 +1886,7 @@ check_float8_array(ArrayType *transarray, const char *caller)
 	 */
 	if (ARR_NDIM(transarray) != 1 ||
 		ARR_DIMS(transarray)[0] != 3 ||
+		ARR_HASNULL(transarray) ||
 		ARR_ELEMTYPE(transarray) != FLOAT8OID)
 		elog(ERROR, "%s: expected 3-element float8 array", caller);
 	return (float8 *) ARR_DATA_PTR(transarray);

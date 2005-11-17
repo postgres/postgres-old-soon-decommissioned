@@ -442,8 +442,8 @@ typedef struct varlena VarChar; /* var-length char, ie SQL varchar(n) */
 typedef struct
 {
 	int32		size;			/* these fields must match ArrayType! */
-	int			ndim;
-	int			flags;
+	int			ndim;			/* always 1 for int2vector */
+	int32		dataoffset;		/* always 0 for int2vector */
 	Oid			elemtype;
 	int			dim1;
 	int			lbound1;
@@ -453,8 +453,8 @@ typedef struct
 typedef struct
 {
 	int32		size;			/* these fields must match ArrayType! */
-	int			ndim;
-	int			flags;
+	int			ndim;			/* always 1 for oidvector */
+	int32		dataoffset;		/* always 0 for oidvector */
 	Oid			elemtype;
 	int			dim1;
 	int			lbound1;

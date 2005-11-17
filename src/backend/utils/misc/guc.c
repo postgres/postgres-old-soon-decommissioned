@@ -877,6 +877,16 @@ static struct config_bool ConfigureNamesBool[] =
 		true, NULL, NULL
 	},
 	{
+		{"array_nulls", PGC_USERSET, COMPAT_OPTIONS_PREVIOUS,
+			gettext_noop("Enable input of NULL elements in arrays."),
+			gettext_noop("When turned on, unquoted NULL in an array input "
+						 "value means a NULL value; "
+						 "otherwise it is taken literally.")
+		},
+		&Array_nulls,
+		true, NULL, NULL
+	},
+	{
 		{"default_with_oids", PGC_USERSET, COMPAT_OPTIONS_PREVIOUS,
 			gettext_noop("Create new tables with OIDs by default."),
 			NULL
@@ -5383,14 +5393,13 @@ GUCArrayAdd(ArrayType *array, const char *name, const char *value)
 			}
 		}
 
-		isnull = false;
 		a = array_set(array, 1, &index,
 					  datum,
-					  -1 /* varlenarray */ ,
+					  false,
+					  -1 /* varlena array */ ,
 					  -1 /* TEXT's typlen */ ,
 					  false /* TEXT's typbyval */ ,
-					  'i' /* TEXT's typalign */ ,
-					  &isnull);
+					  'i' /* TEXT's typalign */ );
 	}
 	else
 		a = construct_array(&datum, 1,
@@ -5456,14 +5465,13 @@ GUCArrayDelete(ArrayType *array, const char *name)
 		/* else add it to the output array */
 		if (newarray)
 		{
-			isnull = false;
 			newarray = array_set(newarray, 1, &index,
 								 d,
+								 false,
 								 -1 /* varlenarray */ ,
 								 -1 /* TEXT's typlen */ ,
 								 false /* TEXT's typbyval */ ,
-								 'i' /* TEXT's typalign */ ,
-								 &isnull);
+								 'i' /* TEXT's typalign */ );
 		}
 		else
 			newarray = construct_array(&d, 1,

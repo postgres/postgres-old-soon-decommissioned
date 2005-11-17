@@ -3331,11 +3331,7 @@ exec_assign_value(PLpgSQL_execstate * estate,
 					if (arraytyplen > 0)		/* fixed-length array? */
 						return;
 
-					oldarrayval = construct_md_array(NULL, 0, NULL, NULL,
-													 arrayelemtypeid,
-													 elemtyplen,
-													 elemtypbyval,
-													 elemtypalign);
+					oldarrayval = construct_empty_array(arrayelemtypeid);
 				}
 				else
 					oldarrayval = (ArrayType *) DatumGetPointer(oldarraydatum);
@@ -3354,18 +3350,11 @@ exec_assign_value(PLpgSQL_execstate * estate,
 										nsubscripts,
 										subscriptvals,
 										coerced_value,
+										*isNull,
 										arraytyplen,
 										elemtyplen,
 										elemtypbyval,
-										elemtypalign,
-										isNull);
-
-				/*
-				 * Assign it to the base variable.
-				 */
-				exec_assign_value(estate, target,
-								  PointerGetDatum(newarrayval),
-								  arraytypeid, isNull);
+										elemtypalign);
 
 				/*
 				 * Avoid leaking the result of exec_simple_cast_value, if it
@@ -3373,6 +3362,15 @@ exec_assign_value(PLpgSQL_execstate * estate,
 				 */
 				if (!*isNull && coerced_value != value && !elemtypbyval)
 					pfree(DatumGetPointer(coerced_value));
+
+				/*
+				 * Assign the new array to the base variable.  It's never
+				 * NULL at this point.
+				 */
+				*isNull = false;
+				exec_assign_value(estate, target,
+								  PointerGetDatum(newarrayval),
+								  arraytypeid, isNull);
 
 				/*
 				 * Avoid leaking the modified array value, too.

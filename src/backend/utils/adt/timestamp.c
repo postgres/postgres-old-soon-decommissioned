@@ -2434,7 +2434,7 @@ interval_accum(PG_FUNCTION_ARGS)
 
 	deconstruct_array(transarray,
 					  INTERVALOID, sizeof(Interval), false, 'd',
-					  &transdatums, &ndatums);
+					  &transdatums, NULL, &ndatums);
 	if (ndatums != 2)
 		elog(ERROR, "expected 2-element interval array");
 
@@ -2475,7 +2475,7 @@ interval_avg(PG_FUNCTION_ARGS)
 
 	deconstruct_array(transarray,
 					  INTERVALOID, sizeof(Interval), false, 'd',
-					  &transdatums, &ndatums);
+					  &transdatums, NULL, &ndatums);
 	if (ndatums != 2)
 		elog(ERROR, "expected 2-element interval array");
 
