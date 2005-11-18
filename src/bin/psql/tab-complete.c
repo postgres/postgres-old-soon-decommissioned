@@ -1597,6 +1597,10 @@ psql_completion(char *text, int start, int end)
 			 && pg_strcasecmp(prev2_wd, "SESSION") == 0
 			 && pg_strcasecmp(prev_wd, "AUTHORIZATION") == 0)
 		COMPLETE_WITH_QUERY(Query_for_list_of_roles);
+	/* Complete RESET SESSION with AUTHORIZATION */
+	else if (pg_strcasecmp(prev2_wd, "RESET") == 0 &&
+			 pg_strcasecmp(prev_wd, "SESSION") == 0)
+		COMPLETE_WITH_CONST("AUTHORIZATION");
 	/* Complete SET <var> with "TO" */
 	else if (pg_strcasecmp(prev2_wd, "SET") == 0 &&
 			 pg_strcasecmp(prev4_wd, "UPDATE") != 0 &&
