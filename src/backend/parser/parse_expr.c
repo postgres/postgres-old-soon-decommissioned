@@ -18,6 +18,7 @@
 #include "catalog/pg_operator.h"
 #include "catalog/pg_proc.h"
 #include "commands/dbcommands.h"
+#include "mb/pg_wchar.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
 #include "nodes/params.h"
@@ -33,7 +34,6 @@
 #include "utils/builtins.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
-
 
 bool		Transform_null_equals = false;
 
@@ -1491,7 +1491,14 @@ exprTypmod(Node *expr)
 				{
 					case BPCHAROID:
 						if (!con->constisnull)
-							return VARSIZE(DatumGetPointer(con->constvalue));
+						{
+							int32 len = VARSIZE(DatumGetPointer(con->constvalue)) - VARHDRSZ;
+
+							if (pg_database_encoding_max_length() > 1)
+								len = pg_mbstrlen_with_len(VARDATA(DatumGetPointer(con->constvalue)), len);
+
+							return len + VARHDRSZ;
+						}
 						break;
 					default:
 						break;
@@ -1555,8 +1562,12 @@ exprTypmod(Node *expr)
 				int32		typmod;
 				ListCell   *arg;
 
+				if (exprType((Node *) linitial(cexpr->args)) != coalescetype)
+					return -1;
 				typmod = exprTypmod((Node *) linitial(cexpr->args));
-				foreach(arg, cexpr->args)
+				if (typmod < 0)
+					return -1;	/* no point in trying harder */
+				for_each_cell(arg, lnext(list_head(cexpr->args)))
 				{
 					Node	   *e = (Node *) lfirst(arg);
 
