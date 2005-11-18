@@ -1425,8 +1425,12 @@ exprTypmod(Node *expr)
 				int32		typmod;
 				List	   *arg;
 
+				if (exprType((Node *) lfirst(cexpr->args)) != coalescetype)
+					return -1;
 				typmod = exprTypmod((Node *) lfirst(cexpr->args));
-				foreach(arg, cexpr->args)
+				if (typmod < 0)
+					return -1;	/* no point in trying harder */
+				foreach(arg, lnext(cexpr->args))
 				{
 					Node	   *e = (Node *) lfirst(arg);
 
