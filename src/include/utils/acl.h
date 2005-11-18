@@ -78,9 +78,9 @@ typedef struct AclItem
 #define ACLITEM_ALL_GOPTION_BITS	((AclMode) 0xFFFF << 16)
 
 /*
- * Definitions for convenient access to Acl (array of AclItem) and IdList
- * (array of Oid).	These are standard PostgreSQL arrays, but are restricted
- * to have one dimension.  We also ignore the lower bound when reading,
+ * Definitions for convenient access to Acl (array of AclItem).
+ * These are standard PostgreSQL arrays, but are restricted to have one
+ * dimension and no nulls.  We also ignore the lower bound when reading,
  * and set it to one when writing.
  *
  * CAUTION: as of PostgreSQL 7.1, these arrays are toastable (just like all
@@ -101,16 +101,6 @@ typedef ArrayType Acl;
 #define ACL_SIZE(ACL)			ARR_SIZE(ACL)
 
 /*
- * IdList		a one-dimensional array of Oid
- */
-typedef ArrayType IdList;
-
-#define IDLIST_NUM(IDL)			(ARR_DIMS(IDL)[0])
-#define IDLIST_DAT(IDL)			((Oid *) ARR_DATA_PTR(IDL))
-#define IDLIST_N_SIZE(N)		(ARR_OVERHEAD_NONULLS(1) + ((N) * sizeof(Oid)))
-#define IDLIST_SIZE(IDL)		ARR_SIZE(IDL)
-
-/*
  * fmgr macros for these types
  */
 #define DatumGetAclItemP(X)		   ((AclItem *) DatumGetPointer(X))
@@ -122,13 +112,6 @@ typedef ArrayType IdList;
 #define PG_GETARG_ACL_P(n)		   DatumGetAclP(PG_GETARG_DATUM(n))
 #define PG_GETARG_ACL_P_COPY(n)    DatumGetAclPCopy(PG_GETARG_DATUM(n))
 #define PG_RETURN_ACL_P(x)		   PG_RETURN_POINTER(x)
-
-#define DatumGetIdListP(X)		   ((IdList *) PG_DETOAST_DATUM(X))
-#define DatumGetIdListPCopy(X)	   ((IdList *) PG_DETOAST_DATUM_COPY(X))
-#define PG_GETARG_IDLIST_P(n)	   DatumGetIdListP(PG_GETARG_DATUM(n))
-#define PG_GETARG_IDLIST_P_COPY(n) DatumGetIdListPCopy(PG_GETARG_DATUM(n))
-#define PG_RETURN_IDLIST_P(x)	   PG_RETURN_POINTER(x)
-
 
 /*
  * ACL modification opcodes for aclupdate
