@@ -1458,8 +1458,8 @@ ExecInsert(TupleTableSlot *slot,
 /* ----------------------------------------------------------------
  *		ExecDelete
  *
- *		DELETE is like UPDATE, we delete the tuple and its
- *		index tuples.
+ *		DELETE is like UPDATE, except that we delete the tuple and no
+ *		index modifications are needed
  * ----------------------------------------------------------------
  */
 static void
