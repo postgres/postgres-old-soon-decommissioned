@@ -1664,8 +1664,12 @@ exprTypmod(Node *expr)
 				int32		typmod;
 				ListCell   *arg;
 
+				if (exprType((Node *) linitial(cexpr->args)) != coalescetype)
+					return -1;
 				typmod = exprTypmod((Node *) linitial(cexpr->args));
-				foreach(arg, cexpr->args)
+				if (typmod < 0)
+					return -1;	/* no point in trying harder */
+				for_each_cell(arg, lnext(list_head(cexpr->args)))
 				{
 					Node	   *e = (Node *) lfirst(arg);
 
@@ -1688,8 +1692,12 @@ exprTypmod(Node *expr)
 				int32		typmod;
 				ListCell   *arg;
 
+				if (exprType((Node *) linitial(mexpr->args)) != minmaxtype)
+					return -1;
 				typmod = exprTypmod((Node *) linitial(mexpr->args));
-				foreach(arg, mexpr->args)
+				if (typmod < 0)
+					return -1;	/* no point in trying harder */
+				for_each_cell(arg, lnext(list_head(mexpr->args)))
 				{
 					Node	   *e = (Node *) lfirst(arg);
 
