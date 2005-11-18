@@ -207,12 +207,16 @@ plperl_init_all(void)
 	"    { " \
 	"      $res .= _plperl_to_pg_array($elem); " \
 	"    } " \
-	"    else " \
+	"    elsif (defined($elem)) " \
 	"    { " \
 	"      my $str = qq($elem); " \
 	"      $str =~ s/([\"\\\\])/\\\\$1/g; " \
 	"      $res .= qq(\"$str\"); " \
 	"    } " \
+	"    else " \
+	"    { "\
+	"      $res .= 'NULL' ; " \
+	"    } "\
 	"  } " \
 	"  return qq({$res}); " \
 	"} "
