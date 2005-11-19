@@ -1278,6 +1278,7 @@ typedef struct DropStmt
 	List	   *objects;		/* list of sublists of names (as Values) */
 	ObjectType	removeType;		/* object type */
 	DropBehavior behavior;		/* RESTRICT or CASCADE behavior */
+	bool         missing_ok;    /* skip error if object is missing? */
 } DropStmt;
 
 /* ----------------------

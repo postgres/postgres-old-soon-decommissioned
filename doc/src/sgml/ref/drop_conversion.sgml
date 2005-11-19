@@ -17,7 +17,7 @@
 
  <refsynopsisdiv>
 <synopsis>
-DROP CONVERSION <replaceable>name</replaceable> [ CASCADE | RESTRICT ]
+DROP CONVERSION [ IF EXISTS ] <replaceable>name</replaceable> [ CASCADE | RESTRICT ]
 </synopsis>
  </refsynopsisdiv>
   
@@ -34,6 +34,16 @@ DROP CONVERSION <replaceable>name</replaceable> [ CASCADE | RESTRICT ]
   <title>Parameters</title>
 
    <variablelist>
+    <varlistentry>
+     <term><literal>IF EXISTS</literal></term>
+     <listitem>
+      <para>
+       Do not throw an error if the conversion does not exist. 
+       A notice is issued in this case.
+      </para>
+     </listitem>
+    </varlistentry>
+
     <varlistentry>
      <term><replaceable>name</replaceable></term>
 

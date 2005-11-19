@@ -18,7 +18,8 @@
 #include "nodes/parsenodes.h"
 
 extern void CreateConversionCommand(CreateConversionStmt *parsetree);
-extern void DropConversionCommand(List *conversion_name, DropBehavior behavior);
+extern void DropConversionCommand(List *conversion_name, 
+								  DropBehavior behavior, bool missing_ok);
 extern void RenameConversion(List *name, const char *newname);
 extern void AlterConversionOwner(List *name, Oid newOwnerId);
 

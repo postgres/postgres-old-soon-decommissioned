@@ -160,6 +160,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"header", HEADER},
 	{"hold", HOLD},
 	{"hour", HOUR_P},
+	{"if",IF_P},
 	{"ilike", ILIKE},
 	{"immediate", IMMEDIATE},
 	{"immutable", IMMUTABLE},
