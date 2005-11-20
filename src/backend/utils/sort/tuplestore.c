@@ -707,7 +707,6 @@ readtup_heap(Tuplestorestate *state, unsigned int len)
 	/* reconstruct the HeapTupleData portion */
 	tuple->t_len = len - sizeof(unsigned int);
 	ItemPointerSetInvalid(&(tuple->t_self));
-	tuple->t_datamcxt = CurrentMemoryContext;
 	tuple->t_data = (HeapTupleHeader) (((char *) tuple) + HEAPTUPLESIZE);
 	/* read in the tuple proper */
 	if (BufFileRead(state->myfile, (void *) tuple->t_data,

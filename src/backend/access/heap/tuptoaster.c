@@ -774,7 +774,6 @@ toast_insert_or_update(Relation rel, HeapTuple newtup, HeapTuple oldtup)
 		result_tuple->t_len = new_len;
 		result_tuple->t_self = newtup->t_self;
 		result_tuple->t_tableOid = newtup->t_tableOid;
-		result_tuple->t_datamcxt = CurrentMemoryContext;
 		new_data = (HeapTupleHeader) ((char *) result_tuple + HEAPTUPLESIZE);
 		result_tuple->t_data = new_data;
 

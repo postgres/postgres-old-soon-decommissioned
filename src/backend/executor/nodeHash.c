@@ -621,7 +621,6 @@ ExecHashTableInsert(HashJoinTable hashtable,
 		memcpy((char *) &hashTuple->htup,
 			   (char *) tuple,
 			   sizeof(hashTuple->htup));
-		hashTuple->htup.t_datamcxt = hashtable->batchCxt;
 		hashTuple->htup.t_data = (HeapTupleHeader)
 			(((char *) hashTuple) + MAXALIGN(sizeof(HashJoinTupleData)));
 		memcpy((char *) hashTuple->htup.t_data,

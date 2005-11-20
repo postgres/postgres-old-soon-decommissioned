@@ -789,7 +789,6 @@ ExecHashJoinGetSavedTuple(HashJoinState *hjstate,
 				 errmsg("could not read from hash-join temporary file: %m")));
 	heapTuple = palloc(HEAPTUPLESIZE + htup.t_len);
 	memcpy((char *) heapTuple, (char *) &htup, sizeof(HeapTupleData));
-	heapTuple->t_datamcxt = CurrentMemoryContext;
 	heapTuple->t_data = (HeapTupleHeader)
 		((char *) heapTuple + HEAPTUPLESIZE);
 	nread = BufFileRead(file, (void *) heapTuple->t_data, htup.t_len);

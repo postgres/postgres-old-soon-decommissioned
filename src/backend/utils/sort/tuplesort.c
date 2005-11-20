@@ -2071,7 +2071,6 @@ readtup_heap(Tuplesortstate *state, int tapenum, unsigned int len)
 	/* reconstruct the HeapTupleData portion */
 	tuple->t_len = len - sizeof(unsigned int);
 	ItemPointerSetInvalid(&(tuple->t_self));
-	tuple->t_datamcxt = CurrentMemoryContext;
 	tuple->t_data = (HeapTupleHeader) (((char *) tuple) + HEAPTUPLESIZE);
 	/* read in the tuple proper */
 	if (LogicalTapeRead(state->tapeset, tapenum, (void *) tuple->t_data,

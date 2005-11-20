@@ -1769,7 +1769,6 @@ ltrmark:;
 
 		Assert(ItemIdIsUsed(lp));
 
-		tuple.t_datamcxt = NULL;
 		tuple.t_data = (HeapTupleHeader) PageGetItem((Page) dp, lp);
 		tuple.t_len = ItemIdGetLength(lp);
 		tuple.t_self = *tid;

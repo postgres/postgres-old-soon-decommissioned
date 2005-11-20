@@ -349,7 +349,6 @@ lazy_scan_heap(Relation onerel, LVRelStats *vacrelstats,
 				continue;
 			}
 
-			tuple.t_datamcxt = NULL;
 			tuple.t_data = (HeapTupleHeader) PageGetItem(page, itemid);
 			tuple.t_len = ItemIdGetLength(itemid);
 			ItemPointerSet(&(tuple.t_self), blkno, offnum);
@@ -885,7 +884,6 @@ count_nondeletable_pages(Relation onerel, LVRelStats *vacrelstats)
 			if (!ItemIdIsUsed(itemid))
 				continue;
 
-			tuple.t_datamcxt = NULL;
 			tuple.t_data = (HeapTupleHeader) PageGetItem(page, itemid);
 			tuple.t_len = ItemIdGetLength(itemid);
 			ItemPointerSet(&(tuple.t_self), blkno, offnum);

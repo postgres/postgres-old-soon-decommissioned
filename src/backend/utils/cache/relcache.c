@@ -2998,7 +2998,6 @@ load_relcache_init_file(void)
 				goto read_failed;
 
 			/* Fix up internal pointers in the tuple -- see heap_copytuple */
-			rel->rd_indextuple->t_datamcxt = CurrentMemoryContext;
 			rel->rd_indextuple->t_data = (HeapTupleHeader) ((char *) rel->rd_indextuple + HEAPTUPLESIZE);
 			rel->rd_index = (Form_pg_index) GETSTRUCT(rel->rd_indextuple);
 
