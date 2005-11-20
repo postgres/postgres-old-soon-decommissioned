@@ -882,6 +882,7 @@ _equalDropStmt(DropStmt *a, DropStmt *b)
 	COMPARE_NODE_FIELD(objects);
 	COMPARE_SCALAR_FIELD(removeType);
 	COMPARE_SCALAR_FIELD(behavior);
+	COMPARE_SCALAR_FIELD(missing_ok);
 
 	return true;
 }

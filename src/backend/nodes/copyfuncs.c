@@ -1897,6 +1897,7 @@ _copyDropStmt(DropStmt *from)
 	COPY_NODE_FIELD(objects);
 	COPY_SCALAR_FIELD(removeType);
 	COPY_SCALAR_FIELD(behavior);
+	COPY_SCALAR_FIELD(missing_ok);
 
 	return newnode;
 }
