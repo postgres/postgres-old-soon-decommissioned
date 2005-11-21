@@ -1875,4 +1875,24 @@ typedef struct DeallocateStmt
 	char	   *name;			/* The name of the plan to remove */
 } DeallocateStmt;
 
+/*
+ * 		DROP OWNED statement
+ */
+typedef struct DropOwnedStmt
+{
+	NodeTag		type;
+	List	   *roles;
+	DropBehavior behavior;
+} DropOwnedStmt;
+
+/*
+ * 		REASSIGN OWNED statement
+ */
+typedef struct ReassignOwnedStmt
+{
+	NodeTag		type;
+	List	   *roles;
+	char	   *newrole;
+} ReassignOwnedStmt;
+
 #endif   /* PARSENODES_H */

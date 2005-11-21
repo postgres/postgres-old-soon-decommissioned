@@ -347,6 +347,8 @@ check_xact_readonly(Node *parsetree)
 		case T_GrantStmt:
 		case T_GrantRoleStmt:
 		case T_TruncateStmt:
+		case T_DropOwnedStmt:
+		case T_ReassignOwnedStmt:
 			ereport(ERROR,
 					(errcode(ERRCODE_READ_ONLY_SQL_TRANSACTION),
 					 errmsg("transaction is read-only")));
@@ -725,8 +727,7 @@ ProcessUtility(Node *parsetree,
 			break;
 
 			/*
-			 * ******************************** object creation / destruction ********************************
-			 *
+			 * **************** object creation / destruction ******************
 			 */
 		case T_DefineStmt:
 			{
@@ -1017,6 +1018,14 @@ ProcessUtility(Node *parsetree,
 
 		case T_DropRoleStmt:
 			DropRole((DropRoleStmt *) parsetree);
+			break;
+
+		case T_DropOwnedStmt:
+			DropOwnedObjects((DropOwnedStmt *) parsetree);
+			break;
+
+		case T_ReassignOwnedStmt:
+			ReassignOwnedObjects((ReassignOwnedStmt *) parsetree);
 			break;
 
 		case T_LockStmt:
@@ -1675,6 +1684,14 @@ CreateCommandTag(Node *parsetree)
 
 		case T_DropRoleStmt:
 			tag = "DROP ROLE";
+			break;
+
+		case T_DropOwnedStmt:
+			tag = "DROP OWNED";
+			break;
+
+		case T_ReassignOwnedStmt:
+			tag = "REASSIGN OWNED";
 			break;
 
 		case T_LockStmt:

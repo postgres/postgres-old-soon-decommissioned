@@ -22,5 +22,6 @@ extern void DropConversionCommand(List *conversion_name,
 								  DropBehavior behavior, bool missing_ok);
 extern void RenameConversion(List *name, const char *newname);
 extern void AlterConversionOwner(List *name, Oid newOwnerId);
+extern void AlterConversionOwner_oid(Oid conversionOid, Oid newOwnerId);
 
 #endif   /* CONVERSIONCMDS_H */

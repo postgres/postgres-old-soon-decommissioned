@@ -221,6 +221,9 @@ extern Datum hash_aclitem(PG_FUNCTION_ARGS);
  * prototypes for functions in aclchk.c
  */
 extern void ExecuteGrantStmt(GrantStmt *stmt);
+extern void ExecGrantStmt_oids(bool is_grant, GrantObjectType objtype,
+				   List *objects, bool all_privs, AclMode privileges,
+				   List *grantees, bool grant_option, DropBehavior behavior);
 
 extern AclMode pg_class_aclmask(Oid table_oid, Oid roleid,
 				 AclMode mask, AclMaskHow how);

@@ -2122,7 +2122,8 @@ AlterTypeOwner(List *names, Oid newOwnerId)
  * AlterTypeOwnerInternal - change type owner unconditionally
  *
  * This is currently only used to propagate ALTER TABLE OWNER to the
- * table's rowtype.  It assumes the caller has done all needed checks.
+ * table's rowtype, and to implement REASSIGN OWNED BY.  It assumes the
+ * caller has done all needed checks.
  */
 void
 AlterTypeOwnerInternal(Oid typeOid, Oid newOwnerId)

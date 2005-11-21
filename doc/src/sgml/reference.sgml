@@ -102,6 +102,7 @@ PostgreSQL Reference Manual
    &dropLanguage;
    &dropOperator;
    &dropOperatorClass;
+   &dropOwned;
    &dropRole;
    &dropRule;
    &dropSchema;
@@ -125,6 +126,7 @@ PostgreSQL Reference Manual
    &notify;
    &prepare;
    &prepareTransaction;
+   &reassignOwned;
    &reindex;
    &releaseSavepoint;
    &reset;

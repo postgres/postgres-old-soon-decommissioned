@@ -177,6 +177,8 @@ extern long changeDependencyFor(Oid classId, Oid objectId,
 					Oid refClassId, Oid oldRefObjectId,
 					Oid newRefObjectId);
 
+extern bool objectIsInternalDependency(Oid classId, Oid objectId);
+
 /* in pg_shdepend.c */
 
 extern void recordSharedDependencyOn(ObjectAddress *depender,
@@ -200,5 +202,9 @@ extern char *checkSharedDependencies(Oid classId, Oid objectId);
 extern void copyTemplateDependencies(Oid templateDbId, Oid newDbId);
 
 extern void dropDatabaseDependencies(Oid databaseId);
+
+extern void shdepDropOwned(List *relids, DropBehavior behavior);
+
+extern void shdepReassignOwned(List *relids, Oid newrole);
 
 #endif   /* DEPENDENCY_H */

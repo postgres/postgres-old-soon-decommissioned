@@ -48,6 +48,8 @@
 #include "utils/syscache.h"
 
 
+static void AlterOperatorOwner_internal(Relation rel, Oid operOid, Oid newOwnerId);
+
 /*
  * DefineOperator
  *		this function extracts all the information from the
@@ -260,6 +262,18 @@ RemoveOperatorById(Oid operOid)
 	heap_close(relation, RowExclusiveLock);
 }
 
+void
+AlterOperatorOwner_oid(Oid operOid, Oid newOwnerId)
+{
+	Relation	rel;
+
+	rel = heap_open(OperatorRelationId, RowExclusiveLock);
+
+	AlterOperatorOwner_internal(rel, operOid, newOwnerId);
+
+	heap_close(rel, NoLock);
+}
+
 /*
  * change operator owner
  */
@@ -268,15 +282,26 @@ AlterOperatorOwner(List *name, TypeName *typeName1, TypeName *typeName2,
 				   Oid newOwnerId)
 {
 	Oid			operOid;
-	HeapTuple	tup;
 	Relation	rel;
-	AclResult	aclresult;
-	Form_pg_operator oprForm;
 
 	rel = heap_open(OperatorRelationId, RowExclusiveLock);
 
 	operOid = LookupOperNameTypeNames(name, typeName1, typeName2,
 									  false);
+
+	AlterOperatorOwner_internal(rel, operOid, newOwnerId);
+
+	heap_close(rel, NoLock);
+}
+
+static void
+AlterOperatorOwner_internal(Relation rel, Oid operOid, Oid newOwnerId)
+{
+	HeapTuple	tup;
+	AclResult	aclresult;
+	Form_pg_operator oprForm;
+
+	Assert(RelationGetRelid(rel) == OperatorRelationId);
 
 	tup = SearchSysCacheCopy(OPEROID,
 							 ObjectIdGetDatum(operOid),
@@ -298,7 +323,7 @@ AlterOperatorOwner(List *name, TypeName *typeName1, TypeName *typeName2,
 			/* Otherwise, must be owner of the existing object */
 			if (!pg_oper_ownercheck(operOid, GetUserId()))
 				aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_OPER,
-							   NameListToString(name));
+							   NameStr(oprForm->oprname));
 
 			/* Must be able to become new owner */
 			check_is_member_of_role(GetUserId(), newOwnerId);
@@ -325,7 +350,5 @@ AlterOperatorOwner(List *name, TypeName *typeName1, TypeName *typeName2,
 		changeDependencyOnOwner(OperatorRelationId, operOid, newOwnerId);
 	}
 
-	heap_close(rel, NoLock);
 	heap_freetuple(tup);
-
 }

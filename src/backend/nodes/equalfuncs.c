@@ -1469,10 +1469,23 @@ _equalDeallocateStmt(DeallocateStmt *a, DeallocateStmt *b)
 	return true;
 }
 
+static bool
+_equalDropOwnedStmt(DropOwnedStmt *a, DropOwnedStmt *b)
+{
+	COMPARE_NODE_FIELD(roles);
+	COMPARE_SCALAR_FIELD(behavior);
 
-/*
- * stuff from parsenodes.h
- */
+	return true;
+}
+
+static bool
+_equalReassignOwnedStmt(ReassignOwnedStmt *a, ReassignOwnedStmt *b)
+{
+	COMPARE_NODE_FIELD(roles);
+	COMPARE_NODE_FIELD(newrole);
+
+	return true;
+}
 
 static bool
 _equalAExpr(A_Expr *a, A_Expr *b)
@@ -2187,6 +2200,13 @@ equal(void *a, void *b)
 			break;
 		case T_DeallocateStmt:
 			retval = _equalDeallocateStmt(a, b);
+			break;
+		case T_DropOwnedStmt:
+			retval = _equalDropOwnedStmt(a, b);
+			break;
+
+		case T_ReassignOwnedStmt:
+			retval = _equalReassignOwnedStmt(a, b);
 			break;
 
 		case T_A_Expr:

@@ -163,6 +163,58 @@ deleteDependencyRecordsFor(Oid classId, Oid objectId)
 }
 
 /*
+ * objectIsInternalDependency -- return whether the specified object
+ * is listed as an internal dependency for some other object.
+ *
+ * This is used to implement DROP/REASSIGN OWNED.  We cannot invoke
+ * performDeletion blindly, because it may try to drop or modify an internal-
+ * dependent object before the "main" object, so we need to skip the first
+ * object and expect it to be automatically dropped when the main object is
+ * dropped.
+ */
+bool
+objectIsInternalDependency(Oid classId, Oid objectId)
+{
+	Relation	depRel;
+	ScanKeyData	key[2];
+	SysScanDesc	scan;
+	HeapTuple	tup;
+	bool		isdep = false;
+
+	depRel = heap_open(DependRelationId, AccessShareLock);
+
+	ScanKeyInit(&key[0],
+				Anum_pg_depend_classid,
+				BTEqualStrategyNumber, F_OIDEQ,
+				ObjectIdGetDatum(classId));
+	ScanKeyInit(&key[1],
+				Anum_pg_depend_objid,
+				BTEqualStrategyNumber, F_OIDEQ,
+				ObjectIdGetDatum(objectId));
+
+	scan = systable_beginscan(depRel, DependDependerIndexId, true,
+							  SnapshotNow, 2, key);
+
+	while (HeapTupleIsValid(tup = systable_getnext(scan)))
+	{
+		Form_pg_depend depForm = (Form_pg_depend) GETSTRUCT(tup);
+
+		if (depForm->deptype == DEPENDENCY_INTERNAL)
+		{
+			/* No need to keep scanning */
+			isdep = true;
+			break;
+		}
+	}
+
+	systable_endscan(scan);
+
+	heap_close(depRel, AccessShareLock);
+
+	return isdep;
+}
+
+/*
  * Adjust dependency record(s) to point to a different object of the same type
  *
  * classId/objectId specify the referencing object.

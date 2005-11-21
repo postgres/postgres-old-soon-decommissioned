@@ -2595,6 +2595,27 @@ _copyDeallocateStmt(DeallocateStmt *from)
 	return newnode;
 }
 
+static DropOwnedStmt *
+_copyDropOwnedStmt(DropOwnedStmt *from)
+{
+	DropOwnedStmt *newnode = makeNode(DropOwnedStmt);
+
+	COPY_NODE_FIELD(roles);
+	COPY_SCALAR_FIELD(behavior);
+	
+	return newnode;
+}
+
+static ReassignOwnedStmt *
+_copyReassignOwnedStmt(ReassignOwnedStmt *from)
+{
+	ReassignOwnedStmt *newnode = makeNode(ReassignOwnedStmt);
+
+	COPY_NODE_FIELD(roles);
+	COPY_SCALAR_FIELD(newrole);
+
+	return newnode;
+}
 
 /* ****************************************************************
  *					pg_list.h copy functions
@@ -3145,6 +3166,12 @@ copyObject(void *from)
 			break;
 		case T_DeallocateStmt:
 			retval = _copyDeallocateStmt(from);
+			break;
+		case T_DropOwnedStmt:
+			retval = _copyDropOwnedStmt(from);
+			break;
+		case T_ReassignOwnedStmt:
+			retval = _copyReassignOwnedStmt(from);
 			break;
 
 		case T_A_Expr:

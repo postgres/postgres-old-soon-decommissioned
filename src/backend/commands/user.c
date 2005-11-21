@@ -1119,6 +1119,67 @@ GrantRole(GrantRoleStmt *stmt)
 }
 
 /*
+ * DropOwnedObjects
+ *
+ * Drop the objects owned by a given list of roles.
+ */
+void
+DropOwnedObjects(DropOwnedStmt *stmt)
+{
+	List	*role_ids = roleNamesToIds(stmt->roles);
+	ListCell *cell;
+
+	/* Check privileges */
+	foreach (cell, role_ids)
+	{
+		Oid	roleid = lfirst_oid(cell);
+
+		if (!has_privs_of_role(GetUserId(), roleid))
+			ereport(ERROR,
+					(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
+					 errmsg("permission denied to drop objects")));
+	}
+
+	/* Ok, do it */
+	shdepDropOwned(role_ids, stmt->behavior);
+}
+
+/*
+ * ReassignOwnedObjects
+ *
+ * Give the objects owned by a given list of roles away to another user.
+ */
+void
+ReassignOwnedObjects(ReassignOwnedStmt *stmt)
+{
+	List	   *role_ids = roleNamesToIds(stmt->roles);
+	ListCell   *cell;
+	Oid			newrole;
+
+	/* Check privileges */
+	foreach (cell, role_ids)
+	{
+		Oid	roleid = lfirst_oid(cell);
+
+		if (!has_privs_of_role(GetUserId(), roleid))
+			ereport(ERROR,
+					(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
+					 errmsg("permission denied to reassign objects")));
+	}
+
+	/* Must have privileges on the receiving side too */
+	newrole = get_roleid_checked(stmt->newrole);
+
+	if (!has_privs_of_role(GetUserId(), newrole))
+			ereport(ERROR,
+					(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
+					 errmsg("permission denied to reassign objects")));
+
+	/* Ok, do it */
+	shdepReassignOwned(role_ids, newrole);
+}
+
+/*
  * roleNamesToIds
  *
  * Given a list of role names (as String nodes), generate a list of role OIDs
