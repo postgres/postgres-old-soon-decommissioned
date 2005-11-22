@@ -840,7 +840,7 @@ ProcessUtility(Node *parsetree,
 			{
 				DropdbStmt *stmt = (DropdbStmt *) parsetree;
 
-				dropdb(stmt->dbname);
+				dropdb(stmt->dbname, stmt->missing_ok);
 			}
 			break;
 
