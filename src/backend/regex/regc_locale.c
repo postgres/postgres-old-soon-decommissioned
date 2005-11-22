@@ -655,7 +655,8 @@ cclass(struct vars * v,			/* context */
 	/*
 	 * Now compute the character class contents.
 	 *
-	 * For the moment, assume that only char codes < 256 can be in these classes.
+	 * For the moment, assume that only char codes < 256 can be in these
+	 * classes.
 	 */
 
 	switch ((enum classes) index)

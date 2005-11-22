@@ -431,9 +431,9 @@ process_duplicate_ors(List *orlist)
 	/*
 	 * Generate new OR list consisting of the remaining sub-clauses.
 	 *
-	 * If any clause degenerates to empty, then we have a situation like (A AND
-	 * B) OR (A), which can be reduced to just A --- that is, the additional
-	 * conditions in other arms of the OR are irrelevant.
+	 * If any clause degenerates to empty, then we have a situation like (A
+	 * AND B) OR (A), which can be reduced to just A --- that is, the
+	 * additional conditions in other arms of the OR are irrelevant.
 	 *
 	 * Note that because we use list_difference, any multiple occurrences of a
 	 * winning clause in an AND sub-clause will be removed automatically.

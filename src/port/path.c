@@ -280,8 +280,8 @@ canonicalize_path(char *path)
 	/*
 	 * Remove any trailing uses of "." and process ".." ourselves
 	 *
-	 * Note that "/../.." should reduce to just "/", while "../.." has to be kept
-	 * as-is.  In the latter case we put back mistakenly trimmed ".."
+	 * Note that "/../.." should reduce to just "/", while "../.." has to be
+	 * kept as-is.	In the latter case we put back mistakenly trimmed ".."
 	 * components below.  Also note that we want a Windows drive spec to be
 	 * visible to trim_directory(), but it's not part of the logic that's
 	 * looking at the name components; hence distinction between path and

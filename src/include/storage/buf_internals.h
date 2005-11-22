@@ -199,7 +199,7 @@ extern BufferDesc *LocalBufferAlloc(Relation reln, BlockNumber blockNum,
 				 bool *foundPtr);
 extern void WriteLocalBuffer(Buffer buffer, bool release);
 extern void DropRelFileNodeLocalBuffers(RelFileNode rnode,
-										BlockNumber firstDelBlock);
+							BlockNumber firstDelBlock);
 extern void AtEOXact_LocalBuffers(bool isCommit);
 
 #endif   /* BUFMGR_INTERNALS_H */

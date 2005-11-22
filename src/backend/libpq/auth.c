@@ -163,7 +163,7 @@ pg_krb5_init(void)
 	{
 		ereport(LOG,
 				(errmsg("Kerberos sname_to_principal(\"%s\", \"%s\") returned error %d",
-			   khostname ? khostname : "server hostname", pg_krb_srvnam, retval)));
+		 khostname ? khostname : "server hostname", pg_krb_srvnam, retval)));
 		com_err("postgres", retval,
 		"while getting server principal for server \"%s\" for service \"%s\"",
 				khostname ? khostname : "server hostname", pg_krb_srvnam);

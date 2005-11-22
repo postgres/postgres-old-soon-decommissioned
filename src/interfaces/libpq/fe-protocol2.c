@@ -379,9 +379,9 @@ pqParseInput2(PGconn *conn)
 		 * NOTIFY and NOTICE messages can happen in any state besides COPY
 		 * OUT; always process them right away.
 		 *
-		 * Most other messages should only be processed while in BUSY state. (In
-		 * particular, in READY state we hold off further parsing until the
-		 * application collects the current PGresult.)
+		 * Most other messages should only be processed while in BUSY state.
+		 * (In particular, in READY state we hold off further parsing until
+		 * the application collects the current PGresult.)
 		 *
 		 * However, if the state is IDLE then we got trouble; we need to deal
 		 * with the unexpected message somehow.
@@ -1420,7 +1420,7 @@ pqFunctionCall2(PGconn *conn, Oid fnid,
  */
 char *
 pqBuildStartupPacket2(PGconn *conn, int *packetlen,
-					  const PQEnvironmentOption * options)
+					  const PQEnvironmentOption *options)
 {
 	StartupPacket *startpacket;
 

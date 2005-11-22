@@ -853,8 +853,8 @@ findTypeInputFunction(List *procname, Oid typeOid)
 	 * Input functions can take a single argument of type CSTRING, or three
 	 * arguments (string, typioparam OID, typmod).
 	 *
-	 * For backwards compatibility we allow OPAQUE in place of CSTRING; if we see
-	 * this, we issue a warning and fix up the pg_proc entry.
+	 * For backwards compatibility we allow OPAQUE in place of CSTRING; if we
+	 * see this, we issue a warning and fix up the pg_proc entry.
 	 */
 	argList[0] = CSTRINGOID;
 
@@ -1838,8 +1838,8 @@ domainAddConstraint(Oid domainOid, Oid domainNamespace, Oid baseTypeOid,
 	/*
 	 * Deparse it to produce text for consrc.
 	 *
-	 * Since VARNOs aren't allowed in domain constraints, relation context isn't
-	 * required as anything other than a shell.
+	 * Since VARNOs aren't allowed in domain constraints, relation context
+	 * isn't required as anything other than a shell.
 	 */
 	ccsrc = deparse_expression(expr,
 							   deparse_context_for(domainName,

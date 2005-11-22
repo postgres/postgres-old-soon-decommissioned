@@ -79,12 +79,12 @@
  */
 typedef enum
 {
-	DestNone,				/* results are discarded */
-	DestDebug,				/* results go to debugging output */
-	DestRemote,				/* results sent to frontend process */
-	DestRemoteExecute,		/* sent to frontend, in Execute command */
-	DestSPI,				/* results sent to SPI manager */
-	DestTuplestore			/* results sent to Tuplestore */
+	DestNone,					/* results are discarded */
+	DestDebug,					/* results go to debugging output */
+	DestRemote,					/* results sent to frontend process */
+	DestRemoteExecute,			/* sent to frontend, in Execute command */
+	DestSPI,					/* results sent to SPI manager */
+	DestTuplestore				/* results sent to Tuplestore */
 } CommandDest;
 
 /* ----------------

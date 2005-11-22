@@ -1110,7 +1110,8 @@ main(int argc, char **argv)
 					fprintf(stderr, "Use limit/ulimt to increase the limit before using pgbench.\n");
 					exit(1);
 				}
-#endif   /* #if !(defined(__CYGWIN__) || defined(__MINGW32__)) */
+#endif   /* #if !(defined(__CYGWIN__) ||
+								 * defined(__MINGW32__)) */
 				break;
 			case 'C':
 				is_connect = 1;

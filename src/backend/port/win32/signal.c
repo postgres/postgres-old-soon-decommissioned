@@ -22,10 +22,10 @@
  * pg_signal_mask is only changed by main thread so shouldn't need it.
  */
 volatile int pg_signal_queue;
-int		pg_signal_mask;
+int			pg_signal_mask;
 
-HANDLE	pgwin32_signal_event;
-HANDLE	pgwin32_initial_signal_pipe = INVALID_HANDLE_VALUE;
+HANDLE		pgwin32_signal_event;
+HANDLE		pgwin32_initial_signal_pipe = INVALID_HANDLE_VALUE;
 
 /*
  * pg_signal_crit_sec is used to protect only pg_signal_queue. That is the only

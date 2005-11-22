@@ -54,8 +54,8 @@ SpinlockSemas(void)
 	 * It would be cleaner to distribute this logic into the affected modules,
 	 * similar to the way shmem space estimation is handled.
 	 *
-	 * For now, though, we just need a few spinlocks (10 should be plenty) plus
-	 * one for each LWLock.
+	 * For now, though, we just need a few spinlocks (10 should be plenty)
+	 * plus one for each LWLock.
 	 */
 	return NumLWLocks() + 10;
 }

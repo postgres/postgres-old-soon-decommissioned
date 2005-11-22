@@ -487,9 +487,9 @@ _bt_buildadd(BTWriteState *wstate, BTPageState *state, BTItem bti)
 	 * the per-page available space. Note that at this point, btisz doesn't
 	 * include the ItemId.
 	 *
-	 * NOTE: similar code appears in _bt_insertonpg() to defend against oversize
-	 * items being inserted into an already-existing index. But during
-	 * creation of an index, we don't go through there.
+	 * NOTE: similar code appears in _bt_insertonpg() to defend against
+	 * oversize items being inserted into an already-existing index. But
+	 * during creation of an index, we don't go through there.
 	 */
 	if (btisz > BTMaxItemSize(npage))
 		ereport(ERROR,

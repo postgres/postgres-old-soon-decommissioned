@@ -237,8 +237,8 @@ ExecHashTableCreate(Hash *node, List *hashOperators)
 	/*
 	 * Initialize the hash table control block.
 	 *
-	 * The hashtable control block is just palloc'd from the executor's per-query
-	 * memory context.
+	 * The hashtable control block is just palloc'd from the executor's
+	 * per-query memory context.
 	 */
 	hashtable = (HashJoinTable) palloc(sizeof(HashJoinTableData));
 	hashtable->nbuckets = nbuckets;

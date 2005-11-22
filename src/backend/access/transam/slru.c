@@ -278,7 +278,7 @@ SimpleLruReadPage(SlruCtl ctl, int pageno, TransactionId xid)
 		SlruRecentlyUsed(shared, slotno);
 
 		/*
-		 * We must grab the per-buffer lock to do I/O.  To avoid deadlock,
+		 * We must grab the per-buffer lock to do I/O.	To avoid deadlock,
 		 * must release ControlLock while waiting for per-buffer lock.
 		 * Fortunately, most of the time the per-buffer lock shouldn't be
 		 * already held, so we can do this:
@@ -352,10 +352,10 @@ SimpleLruWritePage(SlruCtl ctl, int slotno, SlruFlush fdata)
 	pageno = shared->page_number[slotno];
 
 	/*
-	 * We must grab the per-buffer lock to do I/O.  To avoid deadlock,
-	 * must release ControlLock while waiting for per-buffer lock.
-	 * Fortunately, most of the time the per-buffer lock shouldn't be
-	 * already held, so we can do this:
+	 * We must grab the per-buffer lock to do I/O.	To avoid deadlock, must
+	 * release ControlLock while waiting for per-buffer lock. Fortunately,
+	 * most of the time the per-buffer lock shouldn't be already held, so we
+	 * can do this:
 	 */
 	if (!LWLockConditionalAcquire(shared->buffer_locks[slotno],
 								  LW_EXCLUSIVE))
@@ -754,8 +754,8 @@ SlruSelectLRUPage(SlruCtl ctl, int pageno)
 		/*
 		 * We need to do I/O.  Normal case is that we have to write it out,
 		 * but it's possible in the worst case to have selected a read-busy
-		 * page.  In that case we just wait for someone else to complete
-		 * the I/O, which we can do by waiting for the per-buffer lock.
+		 * page.  In that case we just wait for someone else to complete the
+		 * I/O, which we can do by waiting for the per-buffer lock.
 		 */
 		if (shared->page_status[bestslot] == SLRU_PAGE_READ_IN_PROGRESS)
 		{

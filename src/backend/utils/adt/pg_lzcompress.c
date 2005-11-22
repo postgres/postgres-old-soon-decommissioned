@@ -782,9 +782,9 @@ pglz_get_next_decomp_char_from_lzdata(PGLZ_DecompState *dstate)
 		 * function and a difference occurs early). Otherwise, all the checks,
 		 * needed here, cause too much overhead.
 		 *
-		 * Thus we decompress the entire rest at once into the temporary buffer
-		 * and change the decomp state to return the prepared data from the
-		 * buffer by the more simple calls to
+		 * Thus we decompress the entire rest at once into the temporary
+		 * buffer and change the decomp state to return the prepared data from
+		 * the buffer by the more simple calls to
 		 * pglz_get_next_decomp_char_from_plain().
 		 */
 		if (dstate->cp_out - dstate->temp_buf >= 256)

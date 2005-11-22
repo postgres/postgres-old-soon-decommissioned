@@ -496,8 +496,9 @@ make_join_rel(PlannerInfo *root, RelOptInfo *rel1, RelOptInfo *rel2,
 			 * innerrel is exactly RHS; conversely JOIN_REVERSE_IN handles
 			 * RHS/LHS.
 			 *
-			 * JOIN_UNIQUE_OUTER will work if outerrel is exactly RHS; conversely
-			 * JOIN_UNIQUE_INNER will work if innerrel is exactly RHS.
+			 * JOIN_UNIQUE_OUTER will work if outerrel is exactly RHS;
+			 * conversely JOIN_UNIQUE_INNER will work if innerrel is exactly
+			 * RHS.
 			 *
 			 * But none of these will work if we already found another IN that
 			 * needs to trigger here.

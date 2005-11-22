@@ -212,7 +212,7 @@ RE_compile_and_execute(text *text_re, char *dat, int dat_len,
 	pg_wchar   *data;
 	size_t		data_len;
 	int			regexec_result;
-	regex_t	   *re;
+	regex_t    *re;
 	char		errMsg[100];
 
 	/* Convert data string to wide characters */
@@ -452,7 +452,7 @@ textregexreplace_noopt(PG_FUNCTION_ARGS)
 	text	   *s = PG_GETARG_TEXT_P(0);
 	text	   *p = PG_GETARG_TEXT_P(1);
 	text	   *r = PG_GETARG_TEXT_P(2);
-	regex_t	   *re;
+	regex_t    *re;
 
 	re = RE_compile_and_cache(p, regex_flavor);
 
@@ -475,7 +475,7 @@ textregexreplace(PG_FUNCTION_ARGS)
 	int			i;
 	bool		glob = false;
 	bool		ignorecase = false;
-	regex_t	   *re;
+	regex_t    *re;
 
 	/* parse options */
 	for (i = 0; i < opt_len; i++)

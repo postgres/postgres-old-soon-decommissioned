@@ -87,9 +87,9 @@ typedef struct ControlFileData
 	 * pg_control_version identifies the format of pg_control itself.
 	 * catalog_version_no identifies the format of the system catalogs.
 	 *
-	 * There are additional version identifiers in individual files; for example,
-	 * WAL logs contain per-page magic numbers that can serve as version cues
-	 * for the WAL log.
+	 * There are additional version identifiers in individual files; for
+	 * example, WAL logs contain per-page magic numbers that can serve as
+	 * version cues for the WAL log.
 	 */
 	uint32		pg_control_version;		/* PG_CONTROL_VERSION */
 	uint32		catalog_version_no;		/* see catversion.h */

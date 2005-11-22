@@ -83,7 +83,6 @@ do { \
 	if (InterruptPending) \
 		ProcessInterrupts(); \
 } while(0)
-
 #else							/* WIN32 */
 
 #define CHECK_FOR_INTERRUPTS() \
@@ -93,7 +92,6 @@ do { \
 	if (InterruptPending) \
 		ProcessInterrupts(); \
 } while(0)
-
 #endif   /* WIN32 */
 
 

@@ -206,7 +206,7 @@ main(int argc, char *argv[])
 	{
 		need_pass = false;
 		pset.db = PQsetdbLogin(options.host, options.port, NULL, NULL,
-				 options.action == ACT_LIST_DB && options.dbname == NULL ? 
+					options.action == ACT_LIST_DB && options.dbname == NULL ?
 							   "postgres" : options.dbname,
 							   username, password);
 

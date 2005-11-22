@@ -466,8 +466,8 @@ distribute_qual_to_rels(PlannerInfo *root, Node *clause,
 		 * we'd produce no output rows, rather than the intended single
 		 * null-extended row, for any nonnullable-side rows failing the qual.
 		 *
-		 * Note: an outer-join qual that mentions only nullable-side rels can be
-		 * pushed down into the nullable side without changing the join
+		 * Note: an outer-join qual that mentions only nullable-side rels can
+		 * be pushed down into the nullable side without changing the join
 		 * result, so we treat it the same as an ordinary inner-join qual,
 		 * except for not setting maybe_equijoin (see below).
 		 */
@@ -860,8 +860,8 @@ process_implied_equality(PlannerInfo *root,
 	/*
 	 * Push the new clause into all the appropriate restrictinfo lists.
 	 *
-	 * Note: we mark the qual "pushed down" to ensure that it can never be taken
-	 * for an original JOIN/ON clause.
+	 * Note: we mark the qual "pushed down" to ensure that it can never be
+	 * taken for an original JOIN/ON clause.
 	 */
 	distribute_qual_to_rels(root, (Node *) clause,
 							true, true, false, NULL, relids);

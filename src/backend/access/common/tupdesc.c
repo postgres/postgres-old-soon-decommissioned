@@ -49,8 +49,8 @@ CreateTemplateTupleDesc(int natts, bool hasoid)
 	 * Allocate enough memory for the tuple descriptor, including the
 	 * attribute rows, and set up the attribute row pointers.
 	 *
-	 * Note: we assume that sizeof(struct tupleDesc) is a multiple of the struct
-	 * pointer alignment requirement, and hence we don't need to insert
+	 * Note: we assume that sizeof(struct tupleDesc) is a multiple of the
+	 * struct pointer alignment requirement, and hence we don't need to insert
 	 * alignment padding between the struct and the array of attribute row
 	 * pointers.
 	 */

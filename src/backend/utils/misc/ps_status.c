@@ -380,7 +380,7 @@ get_ps_display(int *displen)
 
 	/* Remove any trailing spaces to offset the effect of PS_PADDING */
 	offset = ps_buffer_size;
-	while (offset > ps_buffer_fixed_size && ps_buffer[offset-1] == PS_PADDING)
+	while (offset > ps_buffer_fixed_size && ps_buffer[offset - 1] == PS_PADDING)
 		offset--;
 
 	*displen = offset - ps_buffer_fixed_size;

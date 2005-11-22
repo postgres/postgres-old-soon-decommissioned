@@ -901,9 +901,9 @@ OpenTemporaryFile(bool interXact)
 		 * We might need to create the pg_tempfiles subdirectory, if no one
 		 * has yet done so.
 		 *
-		 * Don't check for error from mkdir; it could fail if someone else just
-		 * did the same thing.	If it doesn't work then we'll bomb out on the
-		 * second create attempt, instead.
+		 * Don't check for error from mkdir; it could fail if someone else
+		 * just did the same thing.  If it doesn't work then we'll bomb out on
+		 * the second create attempt, instead.
 		 */
 		dirpath = make_database_relative(PG_TEMP_FILES_DIR);
 		mkdir(dirpath, S_IRWXU);

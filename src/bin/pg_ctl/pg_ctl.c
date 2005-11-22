@@ -334,9 +334,9 @@ start_postmaster(void)
 	/*
 	 * Win32 needs START /B rather than "&".
 	 *
-	 * Win32 has a problem with START and quoted executable names. You must add a
-	 * "" as the title at the beginning so you can quote the executable name:
-	 * http://www.winnetmag.com/Article/ArticleID/14589/14589.html
+	 * Win32 has a problem with START and quoted executable names. You must
+	 * add a "" as the title at the beginning so you can quote the executable
+	 * name: http://www.winnetmag.com/Article/ArticleID/14589/14589.html
 	 * http://dev.remotenetworktechnology.com/cmd/cmdfaq.htm
 	 */
 	if (log_file != NULL)

@@ -85,9 +85,9 @@ typedef struct Port
 	/*
 	 * TCP keepalive settings.
 	 *
-	 * default values are 0 if AF_UNIX or not yet known; current values are 0 if
-	 * AF_UNIX or using the default. Also, -1 in a default value means we were
-	 * unable to find out the default (getsockopt failed).
+	 * default values are 0 if AF_UNIX or not yet known; current values are 0
+	 * if AF_UNIX or using the default. Also, -1 in a default value means we
+	 * were unable to find out the default (getsockopt failed).
 	 */
 	int			default_keepalives_idle;
 	int			default_keepalives_interval;

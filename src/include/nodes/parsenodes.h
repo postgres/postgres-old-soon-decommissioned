@@ -533,9 +533,9 @@ typedef struct RangeTblEntry
 	/*
 	 * Fields valid for a join RTE (else NULL/zero):
 	 *
-	 * joinaliasvars is a list of Vars or COALESCE expressions corresponding to
-	 * the columns of the join result.	An alias Var referencing column K of
-	 * the join result can be replaced by the K'th element of joinaliasvars
+	 * joinaliasvars is a list of Vars or COALESCE expressions corresponding
+	 * to the columns of the join result.  An alias Var referencing column K
+	 * of the join result can be replaced by the K'th element of joinaliasvars
 	 * --- but to simplify the task of reverse-listing aliases correctly, we
 	 * do not do that until planning time.	In a Query loaded from a stored
 	 * rule, it is also possible for joinaliasvars items to be NULL Consts,

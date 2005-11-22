@@ -65,13 +65,13 @@ typedef struct Plan
 	/*
 	 * Information for management of parameter-change-driven rescanning
 	 *
-	 * extParam includes the paramIDs of all external PARAM_EXEC params affecting
-	 * this plan node or its children.	setParam params from the node's
-	 * initPlans are not included, but their extParams are.
+	 * extParam includes the paramIDs of all external PARAM_EXEC params
+	 * affecting this plan node or its children.  setParam params from the
+	 * node's initPlans are not included, but their extParams are.
 	 *
-	 * allParam includes all the extParam paramIDs, plus the IDs of local params
-	 * that affect the node (i.e., the setParams of its initplans). These are
-	 * _all_ the PARAM_EXEC params that affect this node.
+	 * allParam includes all the extParam paramIDs, plus the IDs of local
+	 * params that affect the node (i.e., the setParams of its initplans).
+	 * These are _all_ the PARAM_EXEC params that affect this node.
 	 */
 	Bitmapset  *extParam;
 	Bitmapset  *allParam;

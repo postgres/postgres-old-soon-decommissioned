@@ -958,10 +958,11 @@ OpclassGetCandidates(Oid amid)
 		 * something we already accepted?  If so, keep only the one that
 		 * appears earlier in the search path.
 		 *
-		 * If we have an ordered list from SearchSysCacheList (the normal case),
-		 * then any conflicting opclass must immediately adjoin this one in
-		 * the list, so we only need to look at the newest result item.  If we
-		 * have an unordered list, we have to scan the whole result list.
+		 * If we have an ordered list from SearchSysCacheList (the normal
+		 * case), then any conflicting opclass must immediately adjoin this
+		 * one in the list, so we only need to look at the newest result item.
+		 * If we have an unordered list, we have to scan the whole result
+		 * list.
 		 */
 		if (resultList)
 		{
