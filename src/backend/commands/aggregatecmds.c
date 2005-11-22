@@ -119,8 +119,8 @@ DefineAggregate(List *names, List *parameters)
 	/*
 	 * look up the aggregate's base type (input datatype) and transtype.
 	 *
-	 * We have historically allowed the command to look like basetype = 'ANY' so
-	 * we must do a case-insensitive comparison for the name ANY.  Ugh.
+	 * We have historically allowed the command to look like basetype = 'ANY'
+	 * so we must do a case-insensitive comparison for the name ANY.  Ugh.
 	 *
 	 * basetype can be a pseudo-type, but transtype can't, since we need to be
 	 * able to store values of the transtype.  However, we can allow

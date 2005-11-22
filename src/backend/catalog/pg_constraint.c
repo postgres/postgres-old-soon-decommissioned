@@ -497,8 +497,8 @@ RemoveConstraintById(Oid conId)
 		/*
 		 * XXX for now, do nothing special when dropping a domain constraint
 		 *
-		 * Probably there should be some form of locking on the domain type, but
-		 * we have no such concept at the moment.
+		 * Probably there should be some form of locking on the domain type,
+		 * but we have no such concept at the moment.
 		 */
 	}
 	else

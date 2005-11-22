@@ -80,7 +80,7 @@ typedef struct AclItem
 /*
  * Definitions for convenient access to Acl (array of AclItem).
  * These are standard PostgreSQL arrays, but are restricted to have one
- * dimension and no nulls.  We also ignore the lower bound when reading,
+ * dimension and no nulls.	We also ignore the lower bound when reading,
  * and set it to one when writing.
  *
  * CAUTION: as of PostgreSQL 7.1, these arrays are toastable (just like all

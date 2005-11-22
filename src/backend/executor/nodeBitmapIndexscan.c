@@ -211,8 +211,8 @@ ExecInitBitmapIndexScan(BitmapIndexScan *node, EState *estate)
 	/*
 	 * Miscellaneous initialization
 	 *
-	 * We do not need a standard exprcontext for this node, though we may decide
-	 * below to create a runtime-key exprcontext
+	 * We do not need a standard exprcontext for this node, though we may
+	 * decide below to create a runtime-key exprcontext
 	 */
 
 	/*

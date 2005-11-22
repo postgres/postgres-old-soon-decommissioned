@@ -202,8 +202,8 @@ systable_beginscan(Relation heapRelation,
 		/*
 		 * Change attribute numbers to be index column numbers.
 		 *
-		 * This code could be generalized to search for the index key numbers to
-		 * substitute, but for now there's no need.
+		 * This code could be generalized to search for the index key numbers
+		 * to substitute, but for now there's no need.
 		 */
 		for (i = 0; i < nkeys; i++)
 		{

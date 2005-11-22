@@ -125,8 +125,8 @@ add_entropy(text *data1, text *data2, text *data3)
 	/*
 	 * Try to make the feeding unpredictable.
 	 *
-	 * Prefer data over keys, as it's rather likely that key is same in several
-	 * calls.
+	 * Prefer data over keys, as it's rather likely that key is same in
+	 * several calls.
 	 */
 
 	/* chance: 7/8 */

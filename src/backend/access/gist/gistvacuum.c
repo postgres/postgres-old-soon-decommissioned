@@ -65,6 +65,7 @@ gistVacuumUpdate(GistVacuum *gv, BlockNumber blkno, bool needunion)
 				lencompleted = 16;
 
 	buffer = ReadBuffer(gv->index, blkno);
+
 	/*
 	 * This is only used during VACUUM FULL, so we need not bother to lock
 	 * individual index pages

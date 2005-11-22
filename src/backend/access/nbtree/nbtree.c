@@ -307,8 +307,8 @@ btgettuple(PG_FUNCTION_ARGS)
 	 * Save heap TID to use it in _bt_restscan.  Then release the read lock on
 	 * the buffer so that we aren't blocking other backends.
 	 *
-	 * NOTE: we do keep the pin on the buffer!	This is essential to ensure that
-	 * someone else doesn't delete the index entry we are stopped on.
+	 * NOTE: we do keep the pin on the buffer!	This is essential to ensure
+	 * that someone else doesn't delete the index entry we are stopped on.
 	 */
 	if (res)
 	{
@@ -774,8 +774,8 @@ btvacuumcleanup(PG_FUNCTION_ARGS)
 
 		/*
 		 * We can't use _bt_getbuf() here because it always applies
-		 * _bt_checkpage(), which will barf on an all-zero page.
-		 * We want to recycle all-zero pages, not fail.
+		 * _bt_checkpage(), which will barf on an all-zero page. We want to
+		 * recycle all-zero pages, not fail.
 		 */
 		buf = ReadBuffer(rel, blkno);
 		LockBuffer(buf, BT_READ);

@@ -22,7 +22,7 @@
 
 
 /*
- *	Selectivity functions for geometric operators.  These are bogus -- unless
+ *	Selectivity functions for geometric operators.	These are bogus -- unless
  *	we know the actual key distribution in the index, we can't make a good
  *	prediction of the selectivity of these operators.
  *

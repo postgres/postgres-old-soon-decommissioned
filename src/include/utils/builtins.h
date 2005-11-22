@@ -594,7 +594,7 @@ extern bool SplitIdentifierString(char *rawstring, char separator,
 					  List **namelist);
 extern Datum replace_text(PG_FUNCTION_ARGS);
 extern text *replace_text_regexp(text *src_text, void *regexp,
-								 text *replace_text, bool glob);
+					text *replace_text, bool glob);
 extern Datum split_text(PG_FUNCTION_ARGS);
 extern Datum text_to_array(PG_FUNCTION_ARGS);
 extern Datum array_to_text(PG_FUNCTION_ARGS);
@@ -753,7 +753,7 @@ extern Datum numeric_in(PG_FUNCTION_ARGS);
 extern Datum numeric_out(PG_FUNCTION_ARGS);
 extern Datum numeric_recv(PG_FUNCTION_ARGS);
 extern Datum numeric_send(PG_FUNCTION_ARGS);
-extern Datum numeric(PG_FUNCTION_ARGS);
+extern Datum numeric (PG_FUNCTION_ARGS);
 extern Datum numeric_abs(PG_FUNCTION_ARGS);
 extern Datum numeric_uminus(PG_FUNCTION_ARGS);
 extern Datum numeric_uplus(PG_FUNCTION_ARGS);

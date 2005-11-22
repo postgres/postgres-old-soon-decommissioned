@@ -148,8 +148,8 @@ CATALOG(pg_type,1247) BKI_BOOTSTRAP
 	/*
 	 * This flag represents a "NOT NULL" constraint against this datatype.
 	 *
-	 * If true, the attnotnull column for a corresponding table column using this
-	 * datatype will always enforce the NOT NULL constraint.
+	 * If true, the attnotnull column for a corresponding table column using
+	 * this datatype will always enforce the NOT NULL constraint.
 	 *
 	 * Used primarily for domain types.
 	 */

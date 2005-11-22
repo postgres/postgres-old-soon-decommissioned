@@ -403,9 +403,9 @@ ExecMayReturnRawTuples(PlanState *node)
 	 * but just pass up input tuples, we have to recursively examine the input
 	 * plan node.
 	 *
-	 * Note: Hash and Material are listed here because they sometimes return an
-	 * original input tuple, not a copy.  But Sort and SetOp never return an
-	 * original tuple, so they can be treated like projecting nodes.
+	 * Note: Hash and Material are listed here because they sometimes return
+	 * an original input tuple, not a copy.  But Sort and SetOp never return
+	 * an original tuple, so they can be treated like projecting nodes.
 	 */
 	switch (nodeTag(node))
 	{

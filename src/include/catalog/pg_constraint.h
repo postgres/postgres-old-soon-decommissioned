@@ -61,8 +61,8 @@ CATALOG(pg_constraint,2606)
 	 * contypid links to the pg_type row for a domain if this is a domain
 	 * constraint.	Otherwise it's 0.
 	 *
-	 * For SQL-style global ASSERTIONs, both conrelid and contypid would be zero.
-	 * This is not presently supported, however.
+	 * For SQL-style global ASSERTIONs, both conrelid and contypid would be
+	 * zero. This is not presently supported, however.
 	 */
 	Oid			contypid;		/* domain this constraint constrains */
 

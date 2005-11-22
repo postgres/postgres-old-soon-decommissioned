@@ -176,8 +176,8 @@ bool
 objectIsInternalDependency(Oid classId, Oid objectId)
 {
 	Relation	depRel;
-	ScanKeyData	key[2];
-	SysScanDesc	scan;
+	ScanKeyData key[2];
+	SysScanDesc scan;
 	HeapTuple	tup;
 	bool		isdep = false;
 

@@ -608,8 +608,8 @@ fmgr_oldstyle(PG_FUNCTION_ARGS)
 	 * backwards-compatibility wrapper).  Note, however, that we'll never get
 	 * here with NULL arguments if the function is marked strict.
 	 *
-	 * We also need to detoast any TOAST-ed inputs, since it's unlikely that an
-	 * old-style function knows about TOASTing.
+	 * We also need to detoast any TOAST-ed inputs, since it's unlikely that
+	 * an old-style function knows about TOASTing.
 	 */
 	isnull = false;
 	for (i = 0; i < n_arguments; i++)

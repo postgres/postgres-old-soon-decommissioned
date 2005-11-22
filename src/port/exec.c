@@ -95,8 +95,8 @@ validate_exec(const char *path)
 	/*
 	 * Ensure that the file exists and is a regular file.
 	 *
-	 * XXX if you have a broken system where stat() looks at the symlink instead
-	 * of the underlying file, you lose.
+	 * XXX if you have a broken system where stat() looks at the symlink
+	 * instead of the underlying file, you lose.
 	 */
 	if (stat(path, &buf) < 0)
 		return -1;
@@ -297,9 +297,9 @@ resolve_symlinks(char *path)
 	 * points, for example).  After following the final symlink, we use
 	 * getcwd() to figure out where the heck we're at.
 	 *
-	 * One might think we could skip all this if path doesn't point to a symlink
-	 * to start with, but that's wrong.  We also want to get rid of any
-	 * directory symlinks that are present in the given path. We expect
+	 * One might think we could skip all this if path doesn't point to a
+	 * symlink to start with, but that's wrong.  We also want to get rid of
+	 * any directory symlinks that are present in the given path. We expect
 	 * getcwd() to give us an accurate, symlink-free path.
 	 */
 	if (!getcwd(orig_wd, MAXPGPATH))

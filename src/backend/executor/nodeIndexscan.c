@@ -578,8 +578,8 @@ ExecIndexBuildScanKeys(PlanState *planstate, List *quals,
 		 * listed in the var node and use the value of the const as comparison
 		 * data.
 		 *
-		 * If we don't have a const node, it means our scan key is a function of
-		 * information obtained during the execution of the plan, in which
+		 * If we don't have a const node, it means our scan key is a function
+		 * of information obtained during the execution of the plan, in which
 		 * case we need to recalculate the index scan key at run time.	Hence,
 		 * we set have_runtime_keys to true and place the appropriate
 		 * subexpression in run_keys. The corresponding scan key values are

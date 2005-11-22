@@ -593,8 +593,8 @@ write_auth_file(Relation rel_authid, Relation rel_authmem)
 			 * Convert list of role Oids to list of role names. We must do
 			 * this before re-sorting auth_info.
 			 *
-			 * We skip the first list element (curr_role itself) since there is
-			 * no point in writing that a role is a member of itself.
+			 * We skip the first list element (curr_role itself) since there
+			 * is no point in writing that a role is a member of itself.
 			 */
 			for_each_cell(mem, lnext(list_head(roles_list)))
 			{
@@ -775,8 +775,8 @@ AtEOXact_UpdateFlatFiles(bool isCommit)
 	 * likely won't have gotten a strong enough lock), so get the locks we
 	 * need before writing anything.
 	 *
-	 * For writing the auth file, it's sufficient to ExclusiveLock pg_authid; we
-	 * take just regular AccessShareLock on pg_auth_members.
+	 * For writing the auth file, it's sufficient to ExclusiveLock pg_authid;
+	 * we take just regular AccessShareLock on pg_auth_members.
 	 */
 	if (database_file_update_subid != InvalidSubTransactionId)
 		drel = heap_open(DatabaseRelationId, ExclusiveLock);

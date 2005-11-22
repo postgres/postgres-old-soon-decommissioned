@@ -72,7 +72,7 @@
  * ----------
  */
 extern HeapTuple toast_insert_or_update(Relation rel,
-										HeapTuple newtup, HeapTuple oldtup);
+					   HeapTuple newtup, HeapTuple oldtup);
 
 /* ----------
  * toast_delete -

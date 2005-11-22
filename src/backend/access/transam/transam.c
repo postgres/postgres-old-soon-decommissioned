@@ -174,9 +174,9 @@ TransactionIdDidCommit(TransactionId transactionId)
 	 * pg_subtrans; instead assume that the parent crashed without cleaning up
 	 * its children.
 	 *
-	 * Originally we Assert'ed that the result of SubTransGetParent was not zero.
-	 * However with the introduction of prepared transactions, there can be a
-	 * window just after database startup where we do not have complete
+	 * Originally we Assert'ed that the result of SubTransGetParent was not
+	 * zero. However with the introduction of prepared transactions, there can
+	 * be a window just after database startup where we do not have complete
 	 * knowledge in pg_subtrans of the transactions after TransactionXmin.
 	 * StartupSUBTRANS() has ensured that any missing information will be
 	 * zeroed.	Since this case should not happen under normal conditions, it

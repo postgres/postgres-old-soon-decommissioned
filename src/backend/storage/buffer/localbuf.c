@@ -277,7 +277,7 @@ DropRelFileNodeLocalBuffers(RelFileNode rnode, BlockNumber firstDelBlock)
 			hresult = (LocalBufferLookupEnt *)
 				hash_search(LocalBufHash, (void *) &bufHdr->tag,
 							HASH_REMOVE, NULL);
-			if (!hresult)			/* shouldn't happen */
+			if (!hresult)		/* shouldn't happen */
 				elog(ERROR, "local buffer hash table corrupted");
 			/* Mark buffer invalid */
 			CLEAR_BUFFERTAG(bufHdr->tag);

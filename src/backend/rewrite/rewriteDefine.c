@@ -462,8 +462,9 @@ DefineQueryRewrite(RuleStmt *stmt)
 		 * appropriate, also modify the 'relkind' field to show that the
 		 * relation is now a view.
 		 *
-		 * Important side effect: an SI notice is broadcast to force all backends
-		 * (including me!) to update relcache entries with the new rule.
+		 * Important side effect: an SI notice is broadcast to force all
+		 * backends (including me!) to update relcache entries with the new
+		 * rule.
 		 */
 		SetRelationRuleStatus(ev_relid, true, RelisBecomingView);
 	}

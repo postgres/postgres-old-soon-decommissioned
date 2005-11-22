@@ -440,8 +440,8 @@ set_subquery_pathlist(PlannerInfo *root, RelOptInfo *rel,
 	 * Restrictions on individual clauses are checked by
 	 * qual_is_pushdown_safe().
 	 *
-	 * Non-pushed-down clauses will get evaluated as qpquals of the SubqueryScan
-	 * node.
+	 * Non-pushed-down clauses will get evaluated as qpquals of the
+	 * SubqueryScan node.
 	 *
 	 * XXX Are there any cases where we want to make a policy decision not to
 	 * push down a pushable qual, because it'd result in a worse plan?

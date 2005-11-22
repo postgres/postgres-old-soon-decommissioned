@@ -82,7 +82,7 @@ ArrayGetNItems(int ndim, const int *dims)
 	ret = 1;
 	for (i = 0; i < ndim; i++)
 	{
-		int64	prod;
+		int64		prod;
 
 		/* A negative dimension implies that UB-LB overflowed ... */
 		if (dims[i] < 0)
@@ -91,7 +91,8 @@ ArrayGetNItems(int ndim, const int *dims)
 					 errmsg("array size exceeds the maximum allowed (%d)",
 							(int) MaxArraySize)));
 
-		prod = (int64) ret * (int64) dims[i];
+		prod = (int64) ret *(int64) dims[i];
+
 		ret = (int32) prod;
 		if ((int64) ret != prod)
 			ereport(ERROR,

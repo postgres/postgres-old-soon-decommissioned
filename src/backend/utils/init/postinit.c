@@ -325,8 +325,8 @@ InitPostgres(const char *dbname, const char *username)
 	/*
 	 * Set up the global variables holding database id and path.
 	 *
-	 * We take a shortcut in the bootstrap case, otherwise we have to look up the
-	 * db name in pg_database.
+	 * We take a shortcut in the bootstrap case, otherwise we have to look up
+	 * the db name in pg_database.
 	 */
 	if (bootstrap)
 	{

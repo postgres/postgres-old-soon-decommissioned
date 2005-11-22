@@ -381,9 +381,9 @@ LookupTupleHashEntry(TupleHashTable hashtable, TupleTableSlot *slot,
 			/*
 			 * created new entry
 			 *
-			 * Zero any caller-requested space in the entry.  (This zaps the "key
-			 * data" dynahash.c copied into the new entry, but we don't care
-			 * since we're about to overwrite it anyway.)
+			 * Zero any caller-requested space in the entry.  (This zaps the
+			 * "key data" dynahash.c copied into the new entry, but we don't
+			 * care since we're about to overwrite it anyway.)
 			 */
 			MemSet(entry, 0, hashtable->entrysize);
 

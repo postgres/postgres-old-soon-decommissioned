@@ -261,8 +261,8 @@ ShutdownSUBTRANS(void)
 	/*
 	 * Flush dirty SUBTRANS pages to disk
 	 *
-	 * This is not actually necessary from a correctness point of view. We do it
-	 * merely as a debugging aid.
+	 * This is not actually necessary from a correctness point of view. We do
+	 * it merely as a debugging aid.
 	 */
 	SimpleLruFlush(SubTransCtl, false);
 }
@@ -276,9 +276,9 @@ CheckPointSUBTRANS(void)
 	/*
 	 * Flush dirty SUBTRANS pages to disk
 	 *
-	 * This is not actually necessary from a correctness point of view. We do it
-	 * merely to improve the odds that writing of dirty pages is done by the
-	 * checkpoint process and not by backends.
+	 * This is not actually necessary from a correctness point of view. We do
+	 * it merely to improve the odds that writing of dirty pages is done by
+	 * the checkpoint process and not by backends.
 	 */
 	SimpleLruFlush(SubTransCtl, true);
 }

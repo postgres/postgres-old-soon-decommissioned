@@ -1426,8 +1426,8 @@ SearchCatCacheList(CatCache *cache,
 	 * relation.  For each matching tuple found in the relation, use an
 	 * existing cache entry if possible, else build a new one.
 	 *
-	 * We have to bump the member refcounts temporarily to ensure they won't get
-	 * dropped from the cache while loading other members. We use a PG_TRY
+	 * We have to bump the member refcounts temporarily to ensure they won't
+	 * get dropped from the cache while loading other members. We use a PG_TRY
 	 * block to ensure we can undo those refcounts if we get an error before
 	 * we finish constructing the CatCList.
 	 */

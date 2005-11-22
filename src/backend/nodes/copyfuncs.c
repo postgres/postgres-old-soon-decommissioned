@@ -2597,18 +2597,18 @@ _copyDeallocateStmt(DeallocateStmt *from)
 }
 
 static DropOwnedStmt *
-_copyDropOwnedStmt(DropOwnedStmt *from)
+_copyDropOwnedStmt(DropOwnedStmt * from)
 {
 	DropOwnedStmt *newnode = makeNode(DropOwnedStmt);
 
 	COPY_NODE_FIELD(roles);
 	COPY_SCALAR_FIELD(behavior);
-	
+
 	return newnode;
 }
 
 static ReassignOwnedStmt *
-_copyReassignOwnedStmt(ReassignOwnedStmt *from)
+_copyReassignOwnedStmt(ReassignOwnedStmt * from)
 {
 	ReassignOwnedStmt *newnode = makeNode(ReassignOwnedStmt);
 

@@ -808,9 +808,9 @@ ExpandIndirectionStar(ParseState *pstate, A_Indirection *ind)
 	 * lookup_rowtype_tupdesc(), which will almost certainly fail as well, but
 	 * it will give an appropriate error message.
 	 *
-	 * If it's a Var of type RECORD, we have to work even harder: we have to find
-	 * what the Var refers to, and pass that to get_expr_result_type. That
-	 * task is handled by expandRecordVariable().
+	 * If it's a Var of type RECORD, we have to work even harder: we have to
+	 * find what the Var refers to, and pass that to get_expr_result_type.
+	 * That task is handled by expandRecordVariable().
 	 */
 	if (IsA(expr, Var) &&
 		((Var *) expr)->vartype == RECORDOID)

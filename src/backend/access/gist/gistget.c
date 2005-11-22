@@ -396,8 +396,8 @@ gistindex_keytest(IndexTuple tuple,
 		 * are the index datum (as a GISTENTRY*), the comparison datum, and
 		 * the comparison operator's strategy number and subtype from pg_amop.
 		 *
-		 * (Presently there's no need to pass the subtype since it'll always be
-		 * zero, but might as well pass it for possible future use.)
+		 * (Presently there's no need to pass the subtype since it'll always
+		 * be zero, but might as well pass it for possible future use.)
 		 */
 		test = FunctionCall4(&key->sk_func,
 							 PointerGetDatum(&de),

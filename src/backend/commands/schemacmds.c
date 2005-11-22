@@ -175,7 +175,7 @@ RemoveSchema(List *names, DropBehavior behavior, bool missing_ok)
 		else
 		{
 			ereport(NOTICE,
-					 (errmsg("schema \"%s\" does not exist, skipping", 
+					(errmsg("schema \"%s\" does not exist, skipping",
 							namespaceName)));
 		}
 

@@ -1074,8 +1074,8 @@ toast_save_datum(Relation rel, Datum value)
 		 * FormIndexDatum: this relies on the knowledge that the index columns
 		 * are the same as the initial columns of the table.
 		 *
-		 * Note also that there had better not be any user-created index on the
-		 * TOAST table, since we don't bother to update anything else.
+		 * Note also that there had better not be any user-created index on
+		 * the TOAST table, since we don't bother to update anything else.
 		 */
 		index_insert(toastidx, t_values, t_isnull,
 					 &(toasttup->t_self),
@@ -1213,9 +1213,9 @@ toast_fetch_datum(varattrib *attr)
 	/*
 	 * Read the chunks by index
 	 *
-	 * Note that because the index is actually on (valueid, chunkidx) we will see
-	 * the chunks in chunkidx order, even though we didn't explicitly ask for
-	 * it.
+	 * Note that because the index is actually on (valueid, chunkidx) we will
+	 * see the chunks in chunkidx order, even though we didn't explicitly ask
+	 * for it.
 	 */
 	nextidx = 0;
 

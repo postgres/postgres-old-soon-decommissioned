@@ -293,10 +293,10 @@ TransactionIdIsInProgress(TransactionId xid)
 	/*
 	 * Step 3: have to check pg_subtrans.
 	 *
-	 * At this point, we know it's either a subtransaction of one of the Xids in
-	 * xids[], or it's not running.  If it's an already-failed subtransaction,
-	 * we want to say "not running" even though its parent may still be
-	 * running.  So first, check pg_clog to see if it's been aborted.
+	 * At this point, we know it's either a subtransaction of one of the Xids
+	 * in xids[], or it's not running.  If it's an already-failed
+	 * subtransaction, we want to say "not running" even though its parent may
+	 * still be running.  So first, check pg_clog to see if it's been aborted.
 	 */
 	xc_slow_answer_inc();
 

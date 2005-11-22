@@ -350,8 +350,8 @@ ShmemInitStruct(const char *name, Size size, bool *foundPtr)
 			 * If the shmem index doesn't exist, we are bootstrapping: we must
 			 * be trying to init the shmem index itself.
 			 *
-			 * Notice that the ShmemIndexLock is held until the shmem index has
-			 * been completely initialized.
+			 * Notice that the ShmemIndexLock is held until the shmem index
+			 * has been completely initialized.
 			 */
 			*foundPtr = FALSE;
 			ShmemIndexAlloc = ShmemAlloc(size);

@@ -410,7 +410,8 @@ DefineView(RangeVar *view, Query *viewParse, bool replace)
 	/*
 	 * Create the view relation
 	 *
-	 * NOTE: if it already exists and replace is false, the xact will be aborted.
+	 * NOTE: if it already exists and replace is false, the xact will be
+	 * aborted.
 	 */
 	viewOid = DefineVirtualRelation(view, viewParse->targetList, replace);
 

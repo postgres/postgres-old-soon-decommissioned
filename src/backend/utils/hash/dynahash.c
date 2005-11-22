@@ -118,8 +118,8 @@ hash_create(const char *tabname, long nelem, HASHCTL *info, int flags)
 	 * For shared hash tables, we have a local hash header (HTAB struct) that
 	 * we allocate in TopMemoryContext; all else is in shared memory.
 	 *
-	 * For non-shared hash tables, everything including the hash header is in a
-	 * memory context created specially for the hash table --- this makes
+	 * For non-shared hash tables, everything including the hash header is in
+	 * a memory context created specially for the hash table --- this makes
 	 * hash_destroy very simple.  The memory context is made a child of either
 	 * a context specified by the caller, or TopMemoryContext if nothing is
 	 * specified.

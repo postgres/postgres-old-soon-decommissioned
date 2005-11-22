@@ -1471,7 +1471,7 @@ _equalDeallocateStmt(DeallocateStmt *a, DeallocateStmt *b)
 }
 
 static bool
-_equalDropOwnedStmt(DropOwnedStmt *a, DropOwnedStmt *b)
+_equalDropOwnedStmt(DropOwnedStmt * a, DropOwnedStmt * b)
 {
 	COMPARE_NODE_FIELD(roles);
 	COMPARE_SCALAR_FIELD(behavior);
@@ -1480,7 +1480,7 @@ _equalDropOwnedStmt(DropOwnedStmt *a, DropOwnedStmt *b)
 }
 
 static bool
-_equalReassignOwnedStmt(ReassignOwnedStmt *a, ReassignOwnedStmt *b)
+_equalReassignOwnedStmt(ReassignOwnedStmt * a, ReassignOwnedStmt * b)
 {
 	COMPARE_NODE_FIELD(roles);
 	COMPARE_NODE_FIELD(newrole);

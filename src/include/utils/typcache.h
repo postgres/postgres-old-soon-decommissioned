@@ -35,8 +35,8 @@ typedef struct TypeCacheEntry
 	/*
 	 * Information obtained from opclass entries
 	 *
-	 * These will be InvalidOid if no match could be found, or if the information
-	 * hasn't yet been requested.
+	 * These will be InvalidOid if no match could be found, or if the
+	 * information hasn't yet been requested.
 	 */
 	Oid			btree_opc;		/* OID of the default btree opclass */
 	Oid			hash_opc;		/* OID of the default hash opclass */
