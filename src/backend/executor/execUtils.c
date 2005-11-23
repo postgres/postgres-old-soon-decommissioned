@@ -436,22 +436,6 @@ ExecAssignResultType(PlanState *planstate,
 }
 
 /* ----------------
- *		ExecAssignResultTypeFromOuterPlan
- * ----------------
- */
-void
-ExecAssignResultTypeFromOuterPlan(PlanState *planstate)
-{
-	PlanState  *outerPlan;
-	TupleDesc	tupDesc;
-
-	outerPlan = outerPlanState(planstate);
-	tupDesc = ExecGetResultType(outerPlan);
-
-	ExecAssignResultType(planstate, tupDesc, false);
-}
-
-/* ----------------
  *		ExecAssignResultTypeFromTL
  * ----------------
  */

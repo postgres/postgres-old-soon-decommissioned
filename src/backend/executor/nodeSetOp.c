@@ -258,7 +258,7 @@ ExecInitSetOp(SetOp *node, EState *estate)
 	 * setop nodes do no projections, so initialize projection info for this
 	 * node appropriately
 	 */
-	ExecAssignResultTypeFromOuterPlan(&setopstate->ps);
+	ExecAssignResultTypeFromTL(&setopstate->ps);
 	setopstate->ps.ps_ProjInfo = NULL;
 
 	/*

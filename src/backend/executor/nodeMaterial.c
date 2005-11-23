@@ -195,7 +195,7 @@ ExecInitMaterial(Material *node, EState *estate)
 	 * initialize tuple type.  no need to initialize projection info because
 	 * this node doesn't do projections.
 	 */
-	ExecAssignResultTypeFromOuterPlan(&matstate->ss.ps);
+	ExecAssignResultTypeFromTL(&matstate->ss.ps);
 	ExecAssignScanTypeFromOuterPlan(&matstate->ss);
 	matstate->ss.ps.ps_ProjInfo = NULL;
 

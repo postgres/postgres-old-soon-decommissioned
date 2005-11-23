@@ -150,7 +150,7 @@ ExecInitUnique(Unique *node, EState *estate)
 	 * unique nodes do no projections, so initialize projection info for this
 	 * node appropriately
 	 */
-	ExecAssignResultTypeFromOuterPlan(&uniquestate->ps);
+	ExecAssignResultTypeFromTL(&uniquestate->ps);
 	uniquestate->ps.ps_ProjInfo = NULL;
 
 	/*
