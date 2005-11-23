@@ -886,11 +886,17 @@ process_file(char *filename)
 	{
 		Command    *commands;
 
-		commands = process_commands(buf);
-		if (commands == NULL)
-		{
-			fclose(fd);
-			return false;
+
+		if (strncmp(buf, "\n", 1) != 0) {
+			commands = process_commands(buf);
+			if (commands == NULL)
+			{
+				fclose(fd);
+				return false;
+			}
+		} else {
+			lineno++;
+			continue;
 		}
 
 		my_commands[lineno] = commands;
