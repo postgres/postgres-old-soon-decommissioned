@@ -218,7 +218,6 @@ extern ExprContext *MakePerTupleExprContext(EState *estate);
 extern void ExecAssignExprContext(EState *estate, PlanState *planstate);
 extern void ExecAssignResultType(PlanState *planstate,
 					 TupleDesc tupDesc, bool shouldFree);
-extern void ExecAssignResultTypeFromOuterPlan(PlanState *planstate);
 extern void ExecAssignResultTypeFromTL(PlanState *planstate);
 extern TupleDesc ExecGetResultType(PlanState *planstate);
 extern ProjectionInfo *ExecBuildProjectionInfo(List *targetList,

@@ -327,7 +327,7 @@ ExecInitLimit(Limit *node, EState *estate)
 	 * limit nodes do no projections, so initialize projection info for this
 	 * node appropriately
 	 */
-	ExecAssignResultTypeFromOuterPlan(&limitstate->ps);
+	ExecAssignResultTypeFromTL(&limitstate->ps);
 	limitstate->ps.ps_ProjInfo = NULL;
 
 	return limitstate;
