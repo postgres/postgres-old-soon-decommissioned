@@ -35,7 +35,7 @@ extern		"C"
 
 /* Application-visible enum types */
 
-			typedef enum
+typedef enum
 {
 	/*
 	 * Although it is okay to add to this list, values which become unused
