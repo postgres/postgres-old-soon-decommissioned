@@ -374,6 +374,14 @@ rewriteRuleAction(Query *parsetree,
 
 			sub_action->jointree->fromlist =
 				list_concat(newjointree, sub_action->jointree->fromlist);
+
+			/*
+			 * There could have been some SubLinks in newjointree, in which
+			 * case we'd better mark the sub_action correctly.
+			 */
+			if (parsetree->hasSubLinks && !sub_action->hasSubLinks)
+				sub_action->hasSubLinks =
+					checkExprHasSubLink((Node *) newjointree);
 		}
 	}
 
