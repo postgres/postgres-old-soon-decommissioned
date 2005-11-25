@@ -402,28 +402,38 @@ ExecStoreTuple(HeapTuple tuple,
 	Assert(BufferIsValid(buffer) ? (!shouldFree) : true);
 
 	/*
-	 * clear out any old contents of the slot
+	 * Free any old physical tuple belonging to the slot.
 	 */
-	if (!slot->tts_isempty)
-		ExecClearTuple(slot);
+	if (slot->tts_shouldFree)
+		heap_freetuple(slot->tts_tuple);
 
 	/*
-	 * store the new tuple into the specified slot.
+	 * Store the new tuple into the specified slot.
 	 */
 	slot->tts_isempty = false;
 	slot->tts_shouldFree = shouldFree;
 	slot->tts_tuple = tuple;
 
+	/* Mark extracted state invalid */
+	slot->tts_nvalid = 0;
+
 	/*
 	 * If tuple is on a disk page, keep the page pinned as long as we hold a
 	 * pointer into it.  We assume the caller already has such a pin.
+	 *
+	 * This is coded to optimize the case where the slot previously held a
+	 * tuple on the same disk page: in that case releasing and re-acquiring
+	 * the pin is a waste of cycles.  This is a common situation during
+	 * seqscans, so it's worth troubling over.
 	 */
-	slot->tts_buffer = buffer;
-	if (BufferIsValid(buffer))
-		IncrBufferRefCount(buffer);
-
-	/* Mark extracted state invalid */
-	slot->tts_nvalid = 0;
+	if (slot->tts_buffer != buffer)
+	{
+		if (BufferIsValid(slot->tts_buffer))
+			ReleaseBuffer(slot->tts_buffer);
+		slot->tts_buffer = buffer;
+		if (BufferIsValid(buffer))
+			IncrBufferRefCount(buffer);
+	}
 
 	return slot;
 }
