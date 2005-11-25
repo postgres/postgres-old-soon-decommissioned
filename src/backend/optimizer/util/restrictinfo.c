@@ -171,7 +171,7 @@ make_restrictinfo_from_bitmapqual(Path *bitmapqual,
 
 		/*
 		 * Avoid generating one-element ORs, which could happen due to
-		 * redundancy elimination.
+		 * redundancy elimination or ScalarArrayOpExpr quals.
 		 */
 		if (list_length(withris) <= 1)
 			result = withris;

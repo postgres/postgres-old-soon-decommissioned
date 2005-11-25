@@ -112,6 +112,10 @@ extern Selectivity booltestsel(PlannerInfo *root, BoolTestType booltesttype,
 			Node *arg, int varRelid, JoinType jointype);
 extern Selectivity nulltestsel(PlannerInfo *root, NullTestType nulltesttype,
 			Node *arg, int varRelid);
+extern Selectivity scalararraysel(PlannerInfo *root,
+								  ScalarArrayOpExpr *clause,
+								  bool is_join_clause,
+								  int varRelid, JoinType jointype);
 
 extern void mergejoinscansel(PlannerInfo *root, Node *clause,
 				 Selectivity *leftscan,

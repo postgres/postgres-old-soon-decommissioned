@@ -347,6 +347,7 @@ build_minmax_path(PlannerInfo *root, RelOptInfo *rel, MinMaxAggInfo *info)
 												index->rel->baserestrictinfo,
 													NIL,
 													NULL,
+													SAOP_FORBID,
 													&found_clause);
 
 		if (list_length(restrictclauses) < indexcol)
