@@ -325,7 +325,7 @@ _copyTidScan(TidScan *from)
 	/*
 	 * copy remainder of node
 	 */
-	COPY_NODE_FIELD(tideval);
+	COPY_NODE_FIELD(tidquals);
 
 	return newnode;
 }

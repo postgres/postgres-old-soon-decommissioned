@@ -503,13 +503,14 @@ typedef struct BitmapOrPath
 /*
  * TidPath represents a scan by TID
  *
- * tideval is an implicitly OR'ed list of quals of the form CTID = something.
- * Note they are bare quals, not RestrictInfos.
+ * tidquals is an implicitly OR'ed list of qual expressions of the form
+ * "CTID = pseudoconstant" or "CTID = ANY(pseudoconstant_array)".
+ * Note they are bare expressions, not RestrictInfos.
  */
 typedef struct TidPath
 {
 	Path		path;
-	List	   *tideval;		/* qual(s) involving CTID = something */
+	List	   *tidquals;		/* qual(s) involving CTID = something */
 } TidPath;
 
 /*

@@ -1024,7 +1024,7 @@ finalize_plan(Plan *plan, List *rtable,
 			break;
 
 		case T_TidScan:
-			finalize_primnode((Node *) ((TidScan *) plan)->tideval,
+			finalize_primnode((Node *) ((TidScan *) plan)->tidquals,
 							  &context);
 			break;
 

@@ -45,7 +45,7 @@ extern BitmapOrPath *create_bitmap_or_path(PlannerInfo *root,
 					  RelOptInfo *rel,
 					  List *bitmapquals);
 extern TidPath *create_tidscan_path(PlannerInfo *root, RelOptInfo *rel,
-					List *tideval);
+					List *tidquals);
 extern AppendPath *create_append_path(RelOptInfo *rel, List *subpaths);
 extern ResultPath *create_result_path(RelOptInfo *rel, Path *subpath,
 				   List *constantqual);

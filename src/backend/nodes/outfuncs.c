@@ -390,7 +390,7 @@ _outTidScan(StringInfo str, TidScan *node)
 
 	_outScanInfo(str, (Scan *) node);
 
-	WRITE_NODE_FIELD(tideval);
+	WRITE_NODE_FIELD(tidquals);
 }
 
 static void
@@ -1079,7 +1079,7 @@ _outTidPath(StringInfo str, TidPath *node)
 
 	_outPathInfo(str, (Path *) node);
 
-	WRITE_NODE_FIELD(tideval);
+	WRITE_NODE_FIELD(tidquals);
 }
 
 static void

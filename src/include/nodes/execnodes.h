@@ -972,14 +972,14 @@ typedef struct BitmapHeapScanState
  *	 TidScanState information
  *
  *		NumTids		   number of tids in this scan
- *		TidPtr		   current tid in use
- *		TidList		   evaluated item pointers
+ *		TidPtr		   index of currently fetched tid
+ *		TidList		   evaluated item pointers (array of size NumTids)
  * ----------------
  */
 typedef struct TidScanState
 {
 	ScanState	ss;				/* its first field is NodeTag */
-	List	   *tss_tideval;	/* list of ExprState nodes */
+	List	   *tss_tidquals;	/* list of ExprState nodes */
 	int			tss_NumTids;
 	int			tss_TidPtr;
 	int			tss_MarkTidPtr;
