@@ -958,9 +958,6 @@ typedef struct BitmapIndexScanState
  *		bitmapqualorig	   execution state for bitmapqualorig expressions
  *		tbm				   bitmap obtained from child index scan(s)
  *		tbmres			   current-page data
- *		curslot			   current tbmres index or tuple offset on page
- *		minslot			   lowest tbmres index or tuple offset to try
- *		maxslot			   highest tbmres index or tuple offset to try
  * ----------------
  */
 typedef struct BitmapHeapScanState
@@ -969,9 +966,6 @@ typedef struct BitmapHeapScanState
 	List	   *bitmapqualorig;
 	TIDBitmap  *tbm;
 	TBMIterateResult *tbmres;
-	int			curslot;
-	int			minslot;
-	int			maxslot;
 } BitmapHeapScanState;
 
 /* ----------------

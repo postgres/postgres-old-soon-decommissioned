@@ -55,6 +55,15 @@ typedef SnapshotData *Snapshot;
 
 extern DLLIMPORT Snapshot SnapshotDirty;
 
+/* This macro encodes the knowledge of which snapshots are MVCC-safe */
+#define IsMVCCSnapshot(snapshot)  \
+	((snapshot) != SnapshotNow && \
+	 (snapshot) != SnapshotSelf && \
+	 (snapshot) != SnapshotAny && \
+	 (snapshot) != SnapshotToast && \
+	 (snapshot) != SnapshotDirty)
+
+
 extern DLLIMPORT Snapshot SerializableSnapshot;
 extern DLLIMPORT Snapshot LatestSnapshot;
 extern DLLIMPORT Snapshot ActiveSnapshot;
@@ -69,8 +78,9 @@ extern TransactionId RecentGlobalXmin;
  *		True iff heap tuple satisfies a time qual.
  *
  * Notes:
- *		Assumes heap tuple is valid.
- *		Beware of multiple evaluations of snapshot argument.
+ *	Assumes heap tuple is valid.
+ *	Beware of multiple evaluations of snapshot argument.
+ *	Hint bits in the HeapTuple's t_infomask may be updated as a side effect.
  */
 #define HeapTupleSatisfiesVisibility(tuple, snapshot, buffer) \
 ((snapshot) == SnapshotNow ? \
