@@ -3036,6 +3036,7 @@ DeleteStmt:  DELETE_P FROM relation_expr using_clause where_clause
 
 using_clause: USING from_list	{ cat2_str(make_str("using"), $2); }
 			| /* EMPTY */		{ $$ = EMPTY; }
+		;
 
 LockStmt:  LOCK_P opt_table qualified_name_list opt_lock opt_nowait
 			{ $$ = cat_str(5, make_str("lock"), $2, $3, $4, $5); }
