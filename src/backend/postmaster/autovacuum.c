@@ -898,6 +898,14 @@ autovacuum_do_vac_analyze(List *relids, bool dovacuum, bool doanalyze,
 	vacstmt->relation = NULL;	/* all tables, or not used if relids != NIL */
 	vacstmt->va_cols = NIL;
 
+	/*
+	 * Functions in indexes may want a snapshot set.  Note we only need
+	 * to do this in limited cases, because it'll be done in vacuum()
+	 * otherwise.
+	 */
+	if (doanalyze && !dovacuum && relids != NIL)
+		ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
+
 	vacuum(vacstmt, relids);
 
 	pfree(vacstmt);
