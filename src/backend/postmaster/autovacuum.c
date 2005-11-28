@@ -495,6 +495,9 @@ process_whole_db(void)
 	/* Start a transaction so our commands have one to play into. */
 	StartTransactionCommand();
 
+	 /* functions in indexes may want a snapshot set */
+	ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
+
 	dbRel = heap_open(DatabaseRelationId, AccessShareLock);
 
 	/* Must use a table scan, since there's no syscache for pg_database */
@@ -555,6 +558,9 @@ do_autovacuum(PgStat_StatDBEntry *dbentry)
 
 	/* Start a transaction so our commands have one to play into. */
 	StartTransactionCommand();
+
+	 /* functions in indexes may want a snapshot set */
+	ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
 
 	/*
 	 * StartTransactionCommand and CommitTransactionCommand will automatically
@@ -897,14 +903,6 @@ autovacuum_do_vac_analyze(List *relids, bool dovacuum, bool doanalyze,
 	vacstmt->verbose = false;
 	vacstmt->relation = NULL;	/* all tables, or not used if relids != NIL */
 	vacstmt->va_cols = NIL;
-
-	/*
-	 * Functions in indexes may want a snapshot set.  Note we only need
-	 * to do this in limited cases, because it'll be done in vacuum()
-	 * otherwise.
-	 */
-	if (doanalyze && !dovacuum && relids != NIL)
-		ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
 
 	vacuum(vacstmt, relids);
 
