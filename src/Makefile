@@ -24,6 +24,7 @@ all install installdirs uninstall dep depend distprep:
 	$(MAKE) -C pl $@
 	$(MAKE) -C makefiles $@
 	$(MAKE) -C utils $@
+	$(MAKE) -C test/regress $@
 
 install: install-local
 

@@ -55,6 +55,12 @@ pg_regress: pg_regress.sh GNUmakefile $(top_builddir)/src/Makefile.global
 	  $< >$@
 	chmod a+x $@
 
+install: pg_regress
+	$(INSTALL_SCRIPT) pg_regress $(DESTDIR)$(pgxsdir)/$(subdir)/pg_regress
+
+uninstall:
+	rm -f $(DESTDIR)$(pgxsdir)/$(subdir)/pg_regress
+
 
 # Build dynamically-loaded object file for CREATE FUNCTION ... LANGUAGE 'C'.
 
