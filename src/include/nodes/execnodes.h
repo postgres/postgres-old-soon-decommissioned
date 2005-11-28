@@ -1101,6 +1101,7 @@ typedef struct MergeJoinState
  *		hj_FirstOuterTupleSlot	first tuple retrieved from outer plan
  *		hj_NeedNewOuter			true if need new outer tuple on next call
  *		hj_MatchedOuter			true if found a join match for current outer
+ *		hj_OuterNotEmpty		true if outer relation known not empty
  * ----------------
  */
 
@@ -1125,6 +1126,7 @@ typedef struct HashJoinState
 	TupleTableSlot *hj_FirstOuterTupleSlot;
 	bool		hj_NeedNewOuter;
 	bool		hj_MatchedOuter;
+	bool		hj_OuterNotEmpty;
 } HashJoinState;
 
 
