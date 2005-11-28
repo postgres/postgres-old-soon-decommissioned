@@ -22,10 +22,10 @@ SUBSYSOBJS := $(DIRS:%=%/SUBSYS.o)
 OBJS := $(SUBSYSOBJS) $(top_builddir)/src/port/libpgport_srv.a
 
 # We put libpgport into OBJS, so remove it from LIBS
-LIBS := $(patsubst -lpgport, , $(LIBS))
+LIBS := $(filter-out -lpgport, $(LIBS))
 
 # The backend doesn't need everything that's in LIBS, however
-LIBS := $(filter-out -lreadline -ledit -ltermcap -lncurses -lcurses, $(LIBS))
+LIBS := $(filter-out -lz -lreadline -ledit -ltermcap -lncurses -lcurses, $(LIBS))
 
 ifeq ($(PORTNAME), qnx4)
 # This file crashes qnx4's wlink and is therefore not in
