@@ -42,10 +42,11 @@ typedef struct
 
 /* Utility statements PREPARE, EXECUTE, DEALLOCATE, EXPLAIN EXECUTE */
 extern void PrepareQuery(PrepareStmt *stmt);
-extern void ExecuteQuery(ExecuteStmt *stmt, DestReceiver *dest,
-			 char *completionTag);
+extern void ExecuteQuery(ExecuteStmt *stmt, ParamListInfo params,
+						 DestReceiver *dest, char *completionTag);
 extern void DeallocateQuery(DeallocateStmt *stmt);
-extern void ExplainExecuteQuery(ExplainStmt *stmt, TupOutputState *tstate);
+extern void ExplainExecuteQuery(ExplainStmt *stmt, ParamListInfo params,
+								TupOutputState *tstate);
 
 /* Low-level access to stored prepared statements */
 extern void StorePreparedStatement(const char *stmt_name,

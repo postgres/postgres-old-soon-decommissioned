@@ -365,7 +365,7 @@ check_xact_readonly(Node *parsetree)
  *		general utility function invoker
  *
  *	parsetree: the parse tree for the utility statement
- *	params: parameters to use during execution (currently only used by DECLARE)
+ *	params: parameters to use during execution
  *	dest: where to send results
  *	completionTag: points to a buffer of size COMPLETION_TAG_BUFSIZE
  *		in which to store a command completion status string.
@@ -648,7 +648,8 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_ExecuteStmt:
-			ExecuteQuery((ExecuteStmt *) parsetree, dest, completionTag);
+			ExecuteQuery((ExecuteStmt *) parsetree, params,
+						 dest, completionTag);
 			break;
 
 		case T_DeallocateStmt:
@@ -891,7 +892,7 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_ExplainStmt:
-			ExplainQuery((ExplainStmt *) parsetree, dest);
+			ExplainQuery((ExplainStmt *) parsetree, params, dest);
 			break;
 
 		case T_VariableSetStmt:

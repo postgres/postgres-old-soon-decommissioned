@@ -121,7 +121,8 @@ PrepareQuery(PrepareStmt *stmt)
  * Implements the 'EXECUTE' utility statement.
  */
 void
-ExecuteQuery(ExecuteStmt *stmt, DestReceiver *dest, char *completionTag)
+ExecuteQuery(ExecuteStmt *stmt, ParamListInfo params,
+			 DestReceiver *dest, char *completionTag)
 {
 	PreparedStatement *entry;
 	char	   *query_string;
@@ -150,6 +151,7 @@ ExecuteQuery(ExecuteStmt *stmt, DestReceiver *dest, char *completionTag)
 		 * of query, in case parameters are pass-by-reference.
 		 */
 		estate = CreateExecutorState();
+		estate->es_param_list_info = params;
 		paramLI = EvaluateParams(estate, stmt->params, entry->argtype_list);
 	}
 
@@ -538,7 +540,8 @@ DropPreparedStatement(const char *stmt_name, bool showError)
  * Implements the 'EXPLAIN EXECUTE' utility statement.
  */
 void
-ExplainExecuteQuery(ExplainStmt *stmt, TupOutputState *tstate)
+ExplainExecuteQuery(ExplainStmt *stmt, ParamListInfo params,
+					TupOutputState *tstate)
 {
 	ExecuteStmt *execstmt = (ExecuteStmt *) stmt->query->utilityStmt;
 	PreparedStatement *entry;
@@ -568,6 +571,7 @@ ExplainExecuteQuery(ExplainStmt *stmt, TupOutputState *tstate)
 		 * of query, in case parameters are pass-by-reference.
 		 */
 		estate = CreateExecutorState();
+		estate->es_param_list_info = params;
 		paramLI = EvaluateParams(estate, execstmt->params,
 								 entry->argtype_list);
 	}
