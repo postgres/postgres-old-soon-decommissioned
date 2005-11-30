@@ -16,7 +16,6 @@
  */
 #include "postgres.h"
 
-#include <errno.h>
 #include <math.h>
 #include <limits.h>
 #include <ctype.h>
@@ -84,19 +83,6 @@ pg_atoi(char *s, int size, int c)
 				 errmsg("invalid input syntax for integer: \"%s\"",
 						s)));
 
-	/*
-	 * Skip any trailing whitespace; if anything but whitespace remains
-	 * before the terminating character, bail out
-	 */
-	while (*badp && *badp != c && isspace((unsigned char) *badp))
-		badp++;
-
-	if (*badp && *badp != c)
-		ereport(ERROR,
-				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
-				 errmsg("invalid input syntax for integer: \"%s\"",
-						s)));
-
 	switch (size)
 	{
 		case sizeof(int32):
@@ -125,6 +111,20 @@ pg_atoi(char *s, int size, int c)
 		default:
 			elog(ERROR, "unsupported result size: %d", size);
 	}
+
+	/*
+	 * Skip any trailing whitespace; if anything but whitespace remains
+	 * before the terminating character, bail out
+	 */
+	while (*badp && *badp != c && isspace((unsigned char) *badp))
+		badp++;
+
+	if (*badp && *badp != c)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+				 errmsg("invalid input syntax for integer: \"%s\"",
+						s)));
+
 	return (int32) l;
 }
 
