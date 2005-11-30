@@ -66,18 +66,25 @@ quote_postgres(char *arg, int lineno)
 	res[ri++] = '\'';
 	res[ri] = '\0';
 
+	ECPGfree(arg);
 	return res;
 }
 
+#if defined(__GNUC__) && (defined (__powerpc__) || defined(__AMD64__) || defined(__x86_64__))
+#define APREF ap
+#else
+#define APREF *ap
+#endif
+
 void
-ECPGget_variable(va_list *ap, enum ECPGttype type, struct variable * var, bool indicator)
+ECPGget_variable(va_list APREF, enum ECPGttype type, struct variable * var, bool indicator)
 {
 	var->type = type;
-	var->pointer = va_arg(*ap, char *);
+	var->pointer = va_arg(APREF, char *);
 
-	var->varcharsize = va_arg(*ap, long);
-	var->arrsize = va_arg(*ap, long);
-	var->offset = va_arg(*ap, long);
+	var->varcharsize = va_arg(APREF, long);
+	var->arrsize = va_arg(APREF, long);
+	var->offset = va_arg(APREF, long);
 
 	if (var->arrsize == 0 || var->varcharsize == 0)
 		var->value = *((char **) (var->pointer));
@@ -97,11 +104,11 @@ ECPGget_variable(va_list *ap, enum ECPGttype type, struct variable * var, bool i
 
 	if (indicator)
 	{
-		var->ind_type = va_arg(*ap, enum ECPGttype);
-		var->ind_pointer = va_arg(*ap, char *);
-		var->ind_varcharsize = va_arg(*ap, long);
-		var->ind_arrsize = va_arg(*ap, long);
-		var->ind_offset = va_arg(*ap, long);
+		var->ind_type = va_arg(APREF, enum ECPGttype);
+		var->ind_pointer = va_arg(APREF, char *);
+		var->ind_varcharsize = va_arg(APREF, long);
+		var->ind_arrsize = va_arg(APREF, long);
+		var->ind_offset = va_arg(APREF, long);
 
 		if (var->ind_type != ECPGt_NO_INDICATOR
 			&& (var->ind_arrsize == 0 || var->ind_varcharsize == 0))
@@ -120,6 +127,7 @@ ECPGget_variable(va_list *ap, enum ECPGttype type, struct variable * var, bool i
 			var->ind_varcharsize = 0;
 	}
 }
+#undef APREF
 
 /*
  * create a list of variables
@@ -140,7 +148,7 @@ ECPGget_variable(va_list *ap, enum ECPGttype type, struct variable * var, bool i
  * ind_offset - indicator offset
  */
 static bool
-create_statement(int lineno, int compat, int force_indicator, struct connection * connection, struct statement ** stmt, char *query, va_list ap)
+create_statement(int lineno, int compat, int force_indicator, struct connection * connection, struct statement ** stmt, const char *query, va_list ap)
 {
 	struct variable **list = &((*stmt)->inlist);
 	enum ECPGttype type;
@@ -148,7 +156,7 @@ create_statement(int lineno, int compat, int force_indicator, struct connection 
 	if (!(*stmt = (struct statement *) ECPGalloc(sizeof(struct statement), lineno)))
 		return false;
 
-	(*stmt)->command = query;
+	(*stmt)->command = ECPGstrdup(query, lineno);
 	(*stmt)->connection = connection;
 	(*stmt)->lineno = lineno;
 	(*stmt)->compat = compat;
@@ -170,7 +178,11 @@ create_statement(int lineno, int compat, int force_indicator, struct connection 
 			if (!(var = (struct variable *) ECPGalloc(sizeof(struct variable), lineno)))
 				return false;
 
+#if defined(__GNUC__) && (defined (__powerpc__) || defined(__AMD64__) || defined(__x86_64__))
+			ECPGget_variable(ap, type, var, true);
+#else
 			ECPGget_variable(&ap, type, var, true);
+#endif
 
 			/* if variable is NULL, the statement hasn't been prepared */
 			if (var->pointer == NULL)
@@ -219,6 +231,7 @@ free_statement(struct statement * stmt)
 		return;
 	free_variable(stmt->inlist);
 	free_variable(stmt->outlist);
+	ECPGfree(stmt->command);
 	ECPGfree(stmt);
 }
 
@@ -808,8 +821,6 @@ ECPGstore_input(const int lineno, const bool force_indicator, const struct varia
 					if (!mallocedval)
 						return false;
 
-					ECPGfree(newcopy);
-
 					*tobeinserted_p = mallocedval;
 					*malloced_p = true;
 				}
@@ -843,8 +854,6 @@ ECPGstore_input(const int lineno, const bool force_indicator, const struct varia
 					mallocedval = quote_postgres(newcopy, lineno);
 					if (!mallocedval)
 						return false;
-
-					ECPGfree(newcopy);
 
 					*tobeinserted_p = mallocedval;
 					*malloced_p = true;
@@ -1361,7 +1370,7 @@ ECPGexecute(struct statement * stmt)
 }
 
 bool
-ECPGdo(int lineno, int compat, int force_indicator, const char *connection_name, char *query,...)
+ECPGdo(int lineno, int compat, int force_indicator, const char *connection_name, const char *query,...)
 {
 	va_list		args;
 	struct statement *stmt;
@@ -1371,7 +1380,7 @@ ECPGdo(int lineno, int compat, int force_indicator, const char *connection_name,
 
 	/* Make sure we do NOT honor the locale for numeric input/output */
 	/* since the database wants the standard decimal point */
-	oldlocale = strdup(setlocale(LC_NUMERIC, NULL));
+	oldlocale = ECPGstrdup(setlocale(LC_NUMERIC, NULL), lineno);
 	setlocale(LC_NUMERIC, "C");
 
 	if (!ECPGinit(con, connection_name, lineno))

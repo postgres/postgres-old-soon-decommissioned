@@ -17,9 +17,8 @@ static pthread_mutex_t connections_mutex = PTHREAD_MUTEX_INITIALIZER;
 static pthread_key_t actual_connection_key;
 static pthread_once_t actual_connection_key_once = PTHREAD_ONCE_INIT;
 
-#else
-static struct connection *actual_connection = NULL;
 #endif
+static struct connection *actual_connection = NULL;
 static struct connection *all_connections = NULL;
 
 #ifdef ENABLE_THREAD_SAFETY
@@ -39,6 +38,16 @@ ecpg_get_connection_nr(const char *connection_name)
 	{
 #ifdef ENABLE_THREAD_SAFETY
 		ret = pthread_getspecific(actual_connection_key);
+		/* if no connection in TSD for this thread, get the global default connection
+		 * and hope the user knows what they're doing (i.e. using their own mutex to
+		 * protect that connection from concurrent accesses */
+		if(NULL == ret)
+		{
+			ECPGlog("no TSD connection, going for global\n");
+			ret = actual_connection;
+		}
+		else
+			ECPGlog("got the TSD connection\n");
 #else
 		ret = actual_connection;
 #endif
@@ -67,6 +76,16 @@ ECPGget_connection(const char *connection_name)
 	{
 #ifdef ENABLE_THREAD_SAFETY
 		ret = pthread_getspecific(actual_connection_key);
+		/* if no connection in TSD for this thread, get the global default connection
+         * and hope the user knows what they're doing (i.e. using their own mutex to
+         * protect that connection from concurrent accesses */
+        if(NULL == ret)
+		{
+			ECPGlog("no TSD connection here either, using global\n");
+            ret = actual_connection;
+		}
+		else
+			ECPGlog("got TSD connection\n");
 #else
 		ret = actual_connection;
 #endif
@@ -117,10 +136,9 @@ ecpg_finish(struct connection * act)
 #ifdef ENABLE_THREAD_SAFETY
 		if (pthread_getspecific(actual_connection_key) == act)
 			pthread_setspecific(actual_connection_key, all_connections);
-#else
+#endif
 		if (actual_connection == act)
 			actual_connection = all_connections;
-#endif
 
 		ECPGlog("ecpg_finish: Connection %s closed.\n", act->name);
 
@@ -242,7 +260,7 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 	struct sqlca_t *sqlca = ECPGget_sqlca();
 	enum COMPAT_MODE compat = c;
 	struct connection *this;
-	char	   *dbname = name ? strdup(name) : NULL,
+	char	   *dbname = name ? ECPGstrdup(name, lineno) : NULL,
 			   *host = NULL,
 			   *tmp,
 			   *port = NULL,
@@ -264,7 +282,7 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 		if (envname)
 		{
 			ECPGfree(dbname);
-			dbname = strdup(envname);
+			dbname = ECPGstrdup(envname, lineno);
 		}
 
 	}
@@ -284,17 +302,17 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 			tmp = strrchr(dbname, ':');
 			if (tmp != NULL)		/* port number given */
 			{
-				port = strdup(tmp + 1);
+				port = ECPGstrdup(tmp + 1, lineno);
 				*tmp = '\0';
 			}
 
 			tmp = strrchr(dbname, '@');
 			if (tmp != NULL)		/* host name given */
 			{
-				host = strdup(tmp + 1);
+				host = ECPGstrdup(tmp + 1, lineno);
 				*tmp = '\0';
 			}
-			realname = strdup(dbname);
+			realname = ECPGstrdup(dbname, lineno);
 		}
 		else if (strncmp(dbname, "tcp:", 4) == 0 || strncmp(dbname, "unix:", 5) == 0)
 		{
@@ -322,14 +340,14 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 				tmp = strrchr(dbname + offset, '?');
 				if (tmp != NULL)	/* options given */
 				{
-					options = strdup(tmp + 1);
+					options = ECPGstrdup(tmp + 1, lineno);
 					*tmp = '\0';
 				}
 
 				tmp = last_dir_separator(dbname + offset);
 				if (tmp != NULL)	/* database name given */
 				{
-					realname = strdup(tmp + 1);
+					realname = ECPGstrdup(tmp + 1, lineno);
 					*tmp = '\0';
 				}
 
@@ -342,7 +360,7 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 					if ((tmp2 = strchr(tmp + 1, ':')) != NULL)
 					{
 						*tmp2 = '\0';
-						host = strdup(tmp + 1);
+						host = ECPGstrdup(tmp + 1, lineno);
 						if (strncmp(dbname, "unix:", 5) != 0)
 						{
 							ECPGlog("connect: socketname %s given for TCP connection in line %d\n", host, lineno);
@@ -361,7 +379,7 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 						}
 					}
 					else
-						port = strdup(tmp + 1);
+						port = ECPGstrdup(tmp + 1, lineno);
 				}
 
 				if (strncmp(dbname, "unix:", 5) == 0)
@@ -384,14 +402,14 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 					}
 				}
 				else
-					host = strdup(dbname + offset);
+					host = ECPGstrdup(dbname + offset, lineno);
 
 			}
 			else
-				realname = strdup(dbname);
+				realname = ECPGstrdup(dbname, lineno);
 		}
 		else
-			realname = strdup(dbname);
+			realname = ECPGstrdup(dbname, lineno);
 	}
 	else
 		realname = NULL;
@@ -416,9 +434,8 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 #ifdef ENABLE_THREAD_SAFETY
 	pthread_once(&actual_connection_key_once, ecpg_actual_connection_init);
 	pthread_setspecific(actual_connection_key, all_connections);
-#else
-	actual_connection = all_connections;
 #endif
+	actual_connection = all_connections;
 
 	ECPGlog("ECPGconnect: opening database %s on %s port %s %s%s%s%s\n",
 			realname ? realname : "<DEFAULT>",
