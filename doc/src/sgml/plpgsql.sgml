@@ -1964,7 +1964,7 @@ END LOOP;
 <optional> &lt;&lt;<replaceable>label</replaceable>&gt;&gt; </optional>
 FOR <replaceable>name</replaceable> IN <optional> REVERSE </optional> <replaceable>expression</replaceable> .. <replaceable>expression</replaceable> LOOP
     <replaceable>statements</replaceable>
-END LOOP <optional> <replaceable>labal</replaceable> </optional>;
+END LOOP <optional> <replaceable>label</replaceable> </optional>;
 </synopsis>
 
        <para>
