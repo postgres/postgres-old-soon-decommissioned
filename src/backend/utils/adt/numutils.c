@@ -73,7 +73,7 @@ pg_atoi(char *s, int size, int c)
 				 errmsg("invalid input syntax for integer: \"%s\"",
 						s)));
 
-	errno = 0;
+	errno = 0;	/* avoid having to check the result for failure */
 	l = strtol(s, &badp, 10);
 
 	/* We made no progress parsing the string, so bail out */
