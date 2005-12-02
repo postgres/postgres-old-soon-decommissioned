@@ -326,7 +326,7 @@ parsePGArray(const char *atext, char ***itemarray, int *nitems)
  *
  *	name: the object name, in the form to use in the commands (already quoted)
  *	type: the object type (as seen in GRANT command: must be one of
- *		TABLE, FUNCTION, LANGUAGE, or SCHEMA, or DATABASE)
+ *		TABLE, FUNCTION, LANGUAGE, SCHEMA, DATABASE, or TABLESPACE)
  *	acls: the ACL string fetched from the database
  *	owner: username of object owner (will be passed through fmtId), or NULL
  *	remoteVersion: version of database
