@@ -31,7 +31,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"call", SQL_CALL},
 	{"cardinality", SQL_CARDINALITY},
 	{"connect", SQL_CONNECT},
-	{"connection", SQL_CONNECTION},
 	{"continue", SQL_CONTINUE},
 	{"count", SQL_COUNT},
 	{"current", SQL_CURRENT},
