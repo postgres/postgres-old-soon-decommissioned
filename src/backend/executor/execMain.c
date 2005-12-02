@@ -52,13 +52,6 @@
 #include "utils/memutils.h"
 
 
-typedef struct execRowMark
-{
-	Relation	relation;
-	Index		rti;
-	char		resname[32];
-} execRowMark;
-
 typedef struct evalPlanQual
 {
 	Index		rti;
@@ -567,10 +560,10 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 			Index		rti = lfirst_int(l);
 			Oid			relid = getrelid(rti, rangeTable);
 			Relation	relation;
-			execRowMark *erm;
+			ExecRowMark *erm;
 
 			relation = heap_open(relid, RowShareLock);
-			erm = (execRowMark *) palloc(sizeof(execRowMark));
+			erm = (ExecRowMark *) palloc(sizeof(ExecRowMark));
 			erm->relation = relation;
 			erm->rti = rti;
 			snprintf(erm->resname, sizeof(erm->resname), "ctid%u", rti);
@@ -1020,7 +1013,7 @@ ExecEndPlan(PlanState *planstate, EState *estate)
 	 */
 	foreach(l, estate->es_rowMarks)
 	{
-		execRowMark *erm = lfirst(l);
+		ExecRowMark *erm = lfirst(l);
 
 		heap_close(erm->relation, NoLock);
 	}
@@ -1165,7 +1158,7 @@ lnext:	;
 		lmark:	;
 				foreach(l, estate->es_rowMarks)
 				{
-					execRowMark *erm = lfirst(l);
+					ExecRowMark *erm = lfirst(l);
 					HeapTupleData tuple;
 					Buffer		buffer;
 					ItemPointerData update_ctid;
@@ -1859,9 +1852,9 @@ EvalPlanQual(EState *estate, Index rti,
 		relation = NULL;
 		foreach(l, estate->es_rowMarks)
 		{
-			if (((execRowMark *) lfirst(l))->rti == rti)
+			if (((ExecRowMark *) lfirst(l))->rti == rti)
 			{
-				relation = ((execRowMark *) lfirst(l))->relation;
+				relation = ((ExecRowMark *) lfirst(l))->relation;
 				break;
 			}
 		}

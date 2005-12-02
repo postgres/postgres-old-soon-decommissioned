@@ -346,6 +346,15 @@ typedef struct EState
 } EState;
 
 
+/* es_rowMarks is a list of these structs: */
+typedef struct ExecRowMark
+{
+	Relation	relation;		/* opened and RowShareLock'd relation */
+	Index		rti;			/* its range table index */
+	char		resname[32];	/* name for its ctid junk attribute */
+} ExecRowMark;
+
+
 /* ----------------------------------------------------------------
  *				 Tuple Hash Tables
  *

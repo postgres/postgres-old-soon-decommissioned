@@ -230,6 +230,9 @@ extern void ExecAssignScanType(ScanState *scanstate,
 				   TupleDesc tupDesc, bool shouldFree);
 extern void ExecAssignScanTypeFromOuterPlan(ScanState *scanstate);
 
+extern Relation ExecOpenScanRelation(EState *estate, Index scanrelid);
+extern void ExecCloseScanRelation(Relation scanrel);
+
 extern void ExecOpenIndices(ResultRelInfo *resultRelInfo);
 extern void ExecCloseIndices(ResultRelInfo *resultRelInfo);
 extern void ExecInsertIndexTuples(TupleTableSlot *slot, ItemPointer tupleid,

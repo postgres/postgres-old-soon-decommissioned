@@ -286,8 +286,8 @@ ExecInitBitmapIndexScan(BitmapIndexScan *node, EState *estate)
 
 	/*
 	 * We do not open or lock the base relation here.  We assume that an
-	 * ancestor BitmapHeapScan node is holding AccessShareLock on the heap
-	 * relation throughout the execution of the plan tree.
+	 * ancestor BitmapHeapScan node is holding AccessShareLock (or better)
+	 * on the heap relation throughout the execution of the plan tree.
 	 */
 
 	indexstate->ss.ss_currentRelation = NULL;
