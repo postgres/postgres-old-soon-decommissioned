@@ -230,6 +230,8 @@ extern void ExecAssignScanType(ScanState *scanstate,
 				   TupleDesc tupDesc, bool shouldFree);
 extern void ExecAssignScanTypeFromOuterPlan(ScanState *scanstate);
 
+extern bool ExecRelationIsTargetRelation(EState *estate, Index scanrelid);
+
 extern Relation ExecOpenScanRelation(EState *estate, Index scanrelid);
 extern void ExecCloseScanRelation(Relation scanrel);
 

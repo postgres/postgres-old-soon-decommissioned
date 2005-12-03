@@ -694,6 +694,28 @@ ExecAssignScanTypeFromOuterPlan(ScanState *scanstate)
  */
 
 /* ----------------------------------------------------------------
+ *		ExecRelationIsTargetRelation
+ *
+ *		Detect whether a relation (identified by rangetable index)
+ *		is one of the target relations of the query.
+ * ----------------------------------------------------------------
+ */
+bool
+ExecRelationIsTargetRelation(EState *estate, Index scanrelid)
+{
+	ResultRelInfo *resultRelInfos;
+	int			i;
+
+	resultRelInfos = estate->es_result_relations;
+	for (i = 0; i < estate->es_num_result_relations; i++)
+	{
+		if (resultRelInfos[i].ri_RangeTableIndex == scanrelid)
+			return true;
+	}
+	return false;
+}
+
+/* ----------------------------------------------------------------
  *		ExecOpenScanRelation
  *
  *		Open the heap relation to be scanned by a base-level scan plan node.

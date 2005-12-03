@@ -79,9 +79,11 @@ extern bool index_insert(Relation indexRelation,
 
 extern IndexScanDesc index_beginscan(Relation heapRelation,
 				Relation indexRelation,
+				bool need_index_lock,
 				Snapshot snapshot,
 				int nkeys, ScanKey key);
 extern IndexScanDesc index_beginscan_multi(Relation indexRelation,
+					  bool need_index_lock,
 					  Snapshot snapshot,
 					  int nkeys, ScanKey key);
 extern void index_rescan(IndexScanDesc scan, ScanKey key);

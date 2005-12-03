@@ -643,7 +643,8 @@ copy_heap_data(Oid OIDNewHeap, Oid OIDOldHeap, Oid OIDOldIndex)
 	 * Scan through the OldHeap on the OldIndex and copy each tuple into the
 	 * NewHeap.
 	 */
-	scan = index_beginscan(OldHeap, OldIndex, SnapshotNow, 0, (ScanKey) NULL);
+	scan = index_beginscan(OldHeap, OldIndex, true,
+						   SnapshotNow, 0, (ScanKey) NULL);
 
 	while ((tuple = index_getnext(scan, ForwardScanDirection)) != NULL)
 	{

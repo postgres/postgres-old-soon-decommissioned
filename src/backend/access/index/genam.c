@@ -86,7 +86,8 @@ RelationGetIndexScan(Relation indexRelation,
 	else
 		scan->keyData = NULL;
 
-	scan->is_multiscan = false; /* caller may change this */
+	scan->is_multiscan = false;			/* caller may change this */
+	scan->have_lock = false;			/* ditto */
 	scan->kill_prior_tuple = false;
 	scan->ignore_killed_tuples = true;	/* default setting */
 	scan->keys_are_unique = false;		/* may be set by index AM */
@@ -211,8 +212,8 @@ systable_beginscan(Relation heapRelation,
 			key[i].sk_attno = i + 1;
 		}
 
-		sysscan->iscan = index_beginscan(heapRelation, irel, snapshot,
-										 nkeys, key);
+		sysscan->iscan = index_beginscan(heapRelation, irel, true,
+										 snapshot, nkeys, key);
 		sysscan->scan = NULL;
 	}
 	else

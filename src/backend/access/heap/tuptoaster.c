@@ -1142,8 +1142,8 @@ toast_delete_datum(Relation rel, Datum value)
 	/*
 	 * Find the chunks by index
 	 */
-	toastscan = index_beginscan(toastrel, toastidx, SnapshotToast,
-								1, &toastkey);
+	toastscan = index_beginscan(toastrel, toastidx, true,
+								SnapshotToast, 1, &toastkey);
 	while ((toasttup = index_getnext(toastscan, ForwardScanDirection)) != NULL)
 	{
 		/*
@@ -1219,8 +1219,8 @@ toast_fetch_datum(varattrib *attr)
 	 */
 	nextidx = 0;
 
-	toastscan = index_beginscan(toastrel, toastidx, SnapshotToast,
-								1, &toastkey);
+	toastscan = index_beginscan(toastrel, toastidx, true,
+								SnapshotToast, 1, &toastkey);
 	while ((ttup = index_getnext(toastscan, ForwardScanDirection)) != NULL)
 	{
 		/*
@@ -1394,8 +1394,8 @@ toast_fetch_datum_slice(varattrib *attr, int32 sliceoffset, int32 length)
 	 * The index is on (valueid, chunkidx) so they will come in order
 	 */
 	nextidx = startchunk;
-	toastscan = index_beginscan(toastrel, toastidx, SnapshotToast,
-								nscankeys, toastkey);
+	toastscan = index_beginscan(toastrel, toastidx, true,
+								SnapshotToast, nscankeys, toastkey);
 	while ((ttup = index_getnext(toastscan, ForwardScanDirection)) != NULL)
 	{
 		/*
