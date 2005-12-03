@@ -297,6 +297,7 @@ typedef struct _procLangInfo
 	Oid			lanplcallfoid;
 	Oid			lanvalidator;
 	char	   *lanacl;
+	char	   *lanowner;		/* name of owner, or empty string */
 } ProcLangInfo;
 
 typedef struct _castInfo
