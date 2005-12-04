@@ -411,6 +411,7 @@ doCustom(CState * state, int n, int debug)
 	CState	   *st = &state[n];
 	Command   **commands;
 
+top:
 	commands = sql_files[st->use_file];
 
 	if (st->listen)
@@ -489,6 +490,7 @@ doCustom(CState * state, int n, int debug)
 		{
 			st->state = 0;
 			st->use_file = getrand(0, num_files - 1);
+			commands = sql_files[st->use_file];
 		}
 	}
 
@@ -572,6 +574,8 @@ doCustom(CState * state, int n, int debug)
 			free(val);
 			st->listen = 1;
 		}
+
+		goto top;
 	}
 }
 
