@@ -468,10 +468,17 @@ AC_SUBST(with_openssl)
 
 
 #
+# Prefer libedit
+#
+PGAC_ARG_BOOL(with, libedit-preferred, no,
+              [  --with-libedit-preferred  prefer BSD Libedit over GNU Readline])
+
+
+#
 # Readline
 #
 PGAC_ARG_BOOL(with, readline, yes,
-              [  --without-readline      do not use Readline])
+              [  --without-readline      do not use GNU Readline / BSD Libedit line editing])
 # readline on MinGW has problems with backslashes in psql and other bugs.
 # This is particularly a problem with non-US code pages.
 # Therefore disable its use until we understand the cause. 2004-07-20
