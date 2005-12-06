@@ -101,9 +101,8 @@
 #endif
 
 /*
- *	These strings are to be translation via xgettext.  We can't
- *	call gettext() because it is located in variable initialization and
- *	a function call can not be used.
+ *	Use this to mark strings to be translated by gettext, in places where
+ *	you don't want an actual function call to occur (eg, constant tables).
  */
 #define gettext_noop(x) (x)
 

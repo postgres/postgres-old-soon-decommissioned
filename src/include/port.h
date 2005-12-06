@@ -112,7 +112,8 @@ extern int	pg_strncasecmp(const char *s1, const char *s2, size_t n);
 extern unsigned char pg_toupper(unsigned char ch);
 extern unsigned char pg_tolower(unsigned char ch);
 
-#ifdef USE_SNPRINTF
+#ifdef USE_REPL_SNPRINTF
+
 extern int	pg_vsnprintf(char *str, size_t count, const char *fmt, va_list args);
 extern int
 pg_snprintf(char *str, size_t count, const char *fmt,...)
@@ -132,6 +133,26 @@ pg_printf(const char *fmt,...)
 __attribute__((format(printf, 1, 2)));
 
 /*
+ * Some versions of libintl try to replace printf and friends with macros;
+ * if we are doing likewise, make sure our versions win.
+ */
+#ifdef vsnprintf
+#undef vsnprintf
+#endif
+#ifdef snprintf
+#undef snprintf
+#endif
+#ifdef sprintf
+#undef sprintf
+#endif
+#ifdef fprintf
+#undef fprintf
+#endif
+#ifdef printf
+#undef printf
+#endif
+
+/*
  *	The GCC-specific code below prevents the __attribute__(... 'printf')
  *	above from being replaced, and this is required because gcc doesn't
  *	know anything about pg_printf.
@@ -149,7 +170,8 @@ __attribute__((format(printf, 1, 2)));
 #define fprintf			pg_fprintf
 #define printf			pg_printf
 #endif
-#endif
+
+#endif /* USE_REPL_SNPRINTF */
 
 /* Portable prompt handling */
 extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
