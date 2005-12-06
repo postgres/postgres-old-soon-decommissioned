@@ -1690,12 +1690,12 @@ TruncateMultiXact(void)
 		int			entryno;
 		MultiXactOffset *offptr;
 
-		LWLockAcquire(MultiXactOffsetControlLock, LW_EXCLUSIVE);
+		/* lock is acquired by SimpleLruReadPage_ReadOnly */
 
 		pageno = MultiXactIdToOffsetPage(oldestMXact);
 		entryno = MultiXactIdToOffsetEntry(oldestMXact);
 
-		slotno = SimpleLruReadPage(MultiXactOffsetCtl, pageno, oldestMXact);
+		slotno = SimpleLruReadPage_ReadOnly(MultiXactOffsetCtl, pageno, oldestMXact);
 		offptr = (MultiXactOffset *) MultiXactOffsetCtl->shared->page_buffer[slotno];
 		offptr += entryno;
 		oldestOffset = *offptr;

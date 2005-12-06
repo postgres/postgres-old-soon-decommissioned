@@ -128,9 +128,9 @@ TransactionIdGetStatus(TransactionId xid)
 	char	   *byteptr;
 	XidStatus	status;
 
-	LWLockAcquire(CLogControlLock, LW_EXCLUSIVE);
+	/* lock is acquired by SimpleLruReadPage_ReadOnly */
 
-	slotno = SimpleLruReadPage(ClogCtl, pageno, xid);
+	slotno = SimpleLruReadPage_ReadOnly(ClogCtl, pageno, xid);
 	byteptr = ClogCtl->shared->page_buffer[slotno] + byteno;
 
 	status = (*byteptr >> bshift) & CLOG_XACT_BITMASK;
