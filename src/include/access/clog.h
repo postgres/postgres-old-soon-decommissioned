@@ -28,6 +28,10 @@ typedef int XidStatus;
 #define TRANSACTION_STATUS_SUB_COMMITTED	0x03
 
 
+/* Number of SLRU buffers to use for clog */
+#define NUM_CLOG_BUFFERS	8
+
+
 extern void TransactionIdSetStatus(TransactionId xid, XidStatus status);
 extern XidStatus TransactionIdGetStatus(TransactionId xid);
 

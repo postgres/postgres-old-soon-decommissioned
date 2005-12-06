@@ -21,7 +21,9 @@
  */
 #include "postgres.h"
 
-#include "access/slru.h"
+#include "access/clog.h"
+#include "access/multixact.h"
+#include "access/subtrans.h"
 #include "storage/lwlock.h"
 #include "storage/proc.h"
 #include "storage/spin.h"
@@ -129,16 +131,13 @@ NumLWLocks(void)
 	numLocks += 2 * NBuffers;
 
 	/* clog.c needs one per CLOG buffer */
-	numLocks += NUM_SLRU_BUFFERS;
+	numLocks += NUM_CLOG_BUFFERS;
 
 	/* subtrans.c needs one per SubTrans buffer */
-	numLocks += NUM_SLRU_BUFFERS;
+	numLocks += NUM_SUBTRANS_BUFFERS;
 
-	/*
-	 * multixact.c needs one per MultiXact buffer, but there are two SLRU
-	 * areas for MultiXact
-	 */
-	numLocks += 2 * NUM_SLRU_BUFFERS;
+	/* multixact.c needs two SLRU areas */
+	numLocks += NUM_MXACTOFFSET_BUFFERS + NUM_MXACTMEMBER_BUFFERS;
 
 	/* Leave a few extra for use by user-defined modules. */
 	numLocks += NUM_USER_DEFINED_LWLOCKS;

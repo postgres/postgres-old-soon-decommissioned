@@ -1249,8 +1249,8 @@ MultiXactShmemSize(void)
 			 mul_size(sizeof(MultiXactId) * 2, MaxBackends))
 
 	size = SHARED_MULTIXACT_STATE_SIZE;
-	size = add_size(size, SimpleLruShmemSize());
-	size = add_size(size, SimpleLruShmemSize());
+	size = add_size(size, SimpleLruShmemSize(NUM_MXACTOFFSET_BUFFERS));
+	size = add_size(size, SimpleLruShmemSize(NUM_MXACTMEMBER_BUFFERS));
 
 	return size;
 }
@@ -1265,9 +1265,11 @@ MultiXactShmemInit(void)
 	MultiXactOffsetCtl->PagePrecedes = MultiXactOffsetPagePrecedes;
 	MultiXactMemberCtl->PagePrecedes = MultiXactMemberPagePrecedes;
 
-	SimpleLruInit(MultiXactOffsetCtl, "MultiXactOffset Ctl",
+	SimpleLruInit(MultiXactOffsetCtl,
+				  "MultiXactOffset Ctl", NUM_MXACTOFFSET_BUFFERS,
 				  MultiXactOffsetControlLock, "pg_multixact/offsets");
-	SimpleLruInit(MultiXactMemberCtl, "MultiXactMember Ctl",
+	SimpleLruInit(MultiXactMemberCtl,
+				  "MultiXactMember Ctl", NUM_MXACTMEMBER_BUFFERS,
 				  MultiXactMemberControlLock, "pg_multixact/members");
 
 	/* Initialize our shared state struct */

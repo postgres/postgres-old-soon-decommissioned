@@ -18,6 +18,10 @@
 
 #define MultiXactIdIsValid(multi) ((multi) != InvalidMultiXactId)
 
+/* Number of SLRU buffers to use for multixact */
+#define NUM_MXACTOFFSET_BUFFERS		8
+#define NUM_MXACTMEMBER_BUFFERS		16
+
 /* ----------------
  *		multixact-related XLOG entries
  * ----------------

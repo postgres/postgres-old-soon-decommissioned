@@ -164,14 +164,14 @@ SubTransGetTopmostTransaction(TransactionId xid)
 Size
 SUBTRANSShmemSize(void)
 {
-	return SimpleLruShmemSize();
+	return SimpleLruShmemSize(NUM_SUBTRANS_BUFFERS);
 }
 
 void
 SUBTRANSShmemInit(void)
 {
 	SubTransCtl->PagePrecedes = SubTransPagePrecedes;
-	SimpleLruInit(SubTransCtl, "SUBTRANS Ctl",
+	SimpleLruInit(SubTransCtl, "SUBTRANS Ctl", NUM_SUBTRANS_BUFFERS,
 				  SubtransControlLock, "pg_subtrans");
 	/* Override default assumption that writes should be fsync'd */
 	SubTransCtl->do_fsync = false;

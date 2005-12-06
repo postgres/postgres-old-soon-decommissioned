@@ -147,14 +147,15 @@ TransactionIdGetStatus(TransactionId xid)
 Size
 CLOGShmemSize(void)
 {
-	return SimpleLruShmemSize();
+	return SimpleLruShmemSize(NUM_CLOG_BUFFERS);
 }
 
 void
 CLOGShmemInit(void)
 {
 	ClogCtl->PagePrecedes = CLOGPagePrecedes;
-	SimpleLruInit(ClogCtl, "CLOG Ctl", CLogControlLock, "pg_clog");
+	SimpleLruInit(ClogCtl, "CLOG Ctl", NUM_CLOG_BUFFERS,
+				  CLogControlLock, "pg_clog");
 }
 
 /*
