@@ -115,8 +115,9 @@ extern unsigned char pg_tolower(unsigned char ch);
 #ifdef USE_REPL_SNPRINTF
 
 /*
- * Some versions of libintl try to replace printf and friends with macros;
- * if we are doing likewise, make sure our versions win.
+ * Versions of libintl >= 0.13 try to replace printf() and friends with
+ * macros to their own versions that understand the %$ format.  We do the
+ * same, so disable their macros, if they exist.
  */
 #ifdef vsnprintf
 #undef vsnprintf
