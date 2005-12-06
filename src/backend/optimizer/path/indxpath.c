@@ -666,10 +666,6 @@ group_clauses_by_indexkey_for_join(Query *root,
 		{
 			RestrictInfo *rinfo = (RestrictInfo *) lfirst(i);
 
-			/* Can't use pushed-down clauses in outer join */
-			if (isouterjoin && rinfo->ispusheddown)
-				continue;
-
 			if (match_clause_to_indexcol(rel,
 										 index,
 										 indexcol,
