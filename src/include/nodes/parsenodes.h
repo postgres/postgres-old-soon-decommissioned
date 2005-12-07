@@ -660,8 +660,8 @@ typedef enum SetOperation
 
 typedef enum ContainsOids
 {
-	MUST_HAVE_OIDS,				/* WITH OIDS explicitely specified */
-	MUST_NOT_HAVE_OIDS,			/* WITHOUT OIDS explicitely specified */
+	MUST_HAVE_OIDS,				/* WITH OIDS explicitly specified */
+	MUST_NOT_HAVE_OIDS,			/* WITHOUT OIDS explicitly specified */
 	DEFAULT_OIDS				/* neither specified; use the default, which
 								 * is the value of the default_with_oids GUC
 								 * var */
