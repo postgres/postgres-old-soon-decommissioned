@@ -29,10 +29,10 @@
  *		and ExecEndNode in sync when new nodes are added.
  *
  *	 EXAMPLE
- *		suppose we want the age of the manager of the shoe department and
- *		the number of employees in that department.  so we have the query:
+ *		Suppose we want the age of the manager of the shoe department and
+ *		the number of employees in that department.  So we have the query:
  *
- *				retrieve (DEPT.no_emps, EMP.age)
+ *				select DEPT.no_emps, EMP.age
  *				where EMP.name = DEPT.mgr and
  *					  DEPT.name = "shoe"
  *
