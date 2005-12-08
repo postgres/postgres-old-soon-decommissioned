@@ -60,7 +60,7 @@ probably use <literal>HH24</>.)</para></listitem>
 <listitem><para><filename>/contrib/tsearch2</> fixes
 (Teodor)</para></listitem>
 
-<listitem><para>Fix Win32 error message translation problem with
+<listitem><para>Fix problem with Win32 translated error messages in
 languages that require word reordering, like Turkish (Andrew,
 Tom)</para></listitem>
 
