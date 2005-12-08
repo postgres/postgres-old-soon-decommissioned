@@ -40,6 +40,7 @@
 
 #include <windows.h>
 
+#if !defined(WIN32_CLIENT_ONLY)
 /*
  * The native routines may or may not exist on the Windows platform we are on,
  * so we dynamically look up the routines, and call them via function pointers.
@@ -129,6 +130,7 @@ haveNativeWindowsIPv6routines(void)
 	return (getaddrinfo_ptr != NULL);
 }
 #endif
+#endif
 
 
 /*
@@ -149,7 +151,7 @@ getaddrinfo(const char *node, const char *service,
 			   *psin;
 	struct addrinfo hints;
 
-#ifdef WIN32
+#if defined(WIN32) && !defined(WIN32_CLIENT_ONLY)
 
 	/*
 	 * If Windows has native IPv6 support, use the native Windows routine.
@@ -272,7 +274,7 @@ freeaddrinfo(struct addrinfo * res)
 {
 	if (res)
 	{
-#ifdef WIN32
+#if defined(WIN32) && !defined(WIN32_CLIENT_ONLY)
 
 		/*
 		 * If Windows has native IPv6 support, use the native Windows routine.
@@ -364,7 +366,7 @@ getnameinfo(const struct sockaddr * sa, int salen,
 			char *node, int nodelen,
 			char *service, int servicelen, int flags)
 {
-#ifdef WIN32
+#if defined(WIN32) && !defined(WIN32_CLIENT_ONLY)
 
 	/*
 	 * If Windows has native IPv6 support, use the native Windows routine.

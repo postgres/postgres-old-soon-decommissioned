@@ -42,6 +42,10 @@
 #define EAI_MEMORY		(-10)
 #define EAI_SYSTEM		(-11)
 #else							/* WIN32 */
+#if defined(WIN32_CLIENT_ONLY)
+#define WSA_NOT_ENOUGH_MEMORY   (WSAENOBUFS)
+#define WSATYPE_NOT_FOUND       (WSABASEERR+109)
+#endif
 #define EAI_AGAIN		WSATRY_AGAIN
 #define EAI_BADFLAGS	WSAEINVAL
 #define EAI_FAIL		WSANO_RECOVERY
