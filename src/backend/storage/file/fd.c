@@ -1405,7 +1405,7 @@ TryAgain:
  *		dir = AllocateDir(path);
  *		while ((dirent = ReadDir(dir, path)) != NULL)
  *			process dirent;
- *		FreeDir(path);
+ *		FreeDir(dir);
  *
  * since a NULL dir parameter is taken as indicating AllocateDir failed.
  * (Make sure errno hasn't been changed since AllocateDir if you use this
