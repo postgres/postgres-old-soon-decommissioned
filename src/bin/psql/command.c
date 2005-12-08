@@ -935,9 +935,9 @@ do_connect(const char *new_dbname, const char *new_user)
 		password_prompt = strdup("Password: ");
 	else
 	{
-		password_prompt = malloc(strlen("Password for user %s: ") - 2 +
+		password_prompt = malloc(strlen(_("Password for user %s: ")) - 2 +
 								 strlen(userparam) + 1);
-		sprintf(password_prompt, "Password for user %s: ", userparam);
+		sprintf(password_prompt, _("Password for user %s: "), userparam);
 	}
 
 	/* need to prompt for password? */
