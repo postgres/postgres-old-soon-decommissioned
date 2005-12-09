@@ -45,21 +45,21 @@ submake-backend:
 
 
 install: all installdirs
-	$(INSTALL_PROGRAM) createdb$(X)   $(DESTDIR)$(bindir)/createdb$(X)
-	$(INSTALL_PROGRAM) dropdb$(X)     $(DESTDIR)$(bindir)/dropdb$(X)
-	$(INSTALL_PROGRAM) createlang$(X) $(DESTDIR)$(bindir)/createlang$(X)
-	$(INSTALL_PROGRAM) droplang$(X)   $(DESTDIR)$(bindir)/droplang$(X)
-	$(INSTALL_PROGRAM) createuser$(X) $(DESTDIR)$(bindir)/createuser$(X)
-	$(INSTALL_PROGRAM) dropuser$(X)   $(DESTDIR)$(bindir)/dropuser$(X)
-	$(INSTALL_PROGRAM) clusterdb$(X)  $(DESTDIR)$(bindir)/clusterdb$(X)
-	$(INSTALL_PROGRAM) vacuumdb$(X)   $(DESTDIR)$(bindir)/vacuumdb$(X)
-	$(INSTALL_PROGRAM) reindexdb$(X)  $(DESTDIR)$(bindir)/reindexdb$(X)
+	$(INSTALL_PROGRAM) createdb$(X)   '$(DESTDIR)$(bindir)'/createdb$(X)
+	$(INSTALL_PROGRAM) dropdb$(X)     '$(DESTDIR)$(bindir)'/dropdb$(X)
+	$(INSTALL_PROGRAM) createlang$(X) '$(DESTDIR)$(bindir)'/createlang$(X)
+	$(INSTALL_PROGRAM) droplang$(X)   '$(DESTDIR)$(bindir)'/droplang$(X)
+	$(INSTALL_PROGRAM) createuser$(X) '$(DESTDIR)$(bindir)'/createuser$(X)
+	$(INSTALL_PROGRAM) dropuser$(X)   '$(DESTDIR)$(bindir)'/dropuser$(X)
+	$(INSTALL_PROGRAM) clusterdb$(X)  '$(DESTDIR)$(bindir)'/clusterdb$(X)
+	$(INSTALL_PROGRAM) vacuumdb$(X)   '$(DESTDIR)$(bindir)'/vacuumdb$(X)
+	$(INSTALL_PROGRAM) reindexdb$(X)  '$(DESTDIR)$(bindir)'/reindexdb$(X)
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(bindir)
+	$(mkinstalldirs) '$(DESTDIR)$(bindir)'
 
 uninstall:
-	rm -f $(addprefix $(DESTDIR)$(bindir)/, $(addsuffix $(X), $(PROGRAMS)))
+	rm -f $(addprefix '$(DESTDIR)$(bindir)'/, $(addsuffix $(X), $(PROGRAMS)))
 
 
 clean distclean maintainer-clean:

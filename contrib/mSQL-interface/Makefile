@@ -22,13 +22,13 @@ endif
 all: all-lib
 
 install: all installdirs install-lib
-	$(INSTALL_DATA) README.$(NAME) $(docdir)/contrib
+	$(INSTALL_DATA) $(srcdir)/README.$(NAME) '$(DESTDIR)$(docdir)/contrib'
 
 installdirs:
-	$(mkinstalldirs) $(libdir) $(docdir)/contrib
+	$(mkinstalldirs) $(libdir) '$(DESTDIR)$(docdir)/contrib'
 
 uninstall: uninstall-lib
-	rm -f $(docdir)/contrib/README.$(NAME)
+	rm -f '$(DESTDIR)$(docdir)/contrib/README.$(NAME)'
 
 clean distclean maintainer-clean: clean-lib
 	rm -f $(OBJS)

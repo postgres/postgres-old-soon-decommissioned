@@ -20,13 +20,13 @@ ipcclean: ipcclean.sh
 	chmod a+x $@
 
 install: all installdirs
-	$(INSTALL_SCRIPT) ipcclean $(DESTDIR)$(bindir)/ipcclean
+	$(INSTALL_SCRIPT) ipcclean '$(DESTDIR)$(bindir)/ipcclean'
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(bindir)
+	$(mkinstalldirs) '$(DESTDIR)$(bindir)'
 
 uninstall:
-	rm -f $(DESTDIR)$(bindir)/ipcclean
+	rm -f '$(DESTDIR)$(bindir)/ipcclean'
 
 clean distclean maintainer-clean:
 	rm -f ipcclean

@@ -34,10 +34,13 @@ zic: $(ZICOBJS)
 	$(CC) $(CFLAGS) $(ZICOBJS) $(LDFLAGS) $(LIBS) -o $@$(X)
 
 install: all installdirs
-	./zic -d $(DESTDIR)$(datadir)/timezone $(TZDATAFILES)
+	./zic -d '$(DESTDIR)$(datadir)/timezone' $(TZDATAFILES)
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(datadir)
+	$(mkinstalldirs) '$(DESTDIR)$(datadir)'
+
+uninstall:
+	rm -rf '$(DESTDIR)$(datadir)/timezone'
 
 clean distclean maintainer-clean:
 	rm -f SUBSYS.o zic$(X) $(OBJS) $(ZICOBJS)

@@ -36,11 +36,14 @@ LIBOBJS_SRV := $(patsubst thread.o,thread_srv.o, $(LIBOBJS_SRV))
 all: libpgport.a libpgport_srv.a
 
 # libpgport is needed by some contrib
-install: all
-	$(INSTALL_STLIB) libpgport.a $(DESTDIR)$(libdir)
+install: all installdirs
+	$(INSTALL_STLIB) libpgport.a '$(DESTDIR)$(libdir)/libpgport.a'
+
+installdirs:
+	$(mkinstalldirs) '$(DESTDIR)$(libdir)'
 
 uninstall:
-	$(RM) $(DESTDIR)$(libdir)/libpgport.a
+	rm -f '$(DESTDIR)$(libdir)/libpgport.a'
 
 libpgport.a: $(LIBOBJS)
 	$(AR) $(AROPT) $@ $^

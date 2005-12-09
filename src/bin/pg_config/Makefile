@@ -35,13 +35,13 @@ pg_config: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) -o $@$(X)
 
 install: all installdirs
-	$(INSTALL_SCRIPT) pg_config$(X) $(DESTDIR)$(bindir)/pg_config$(X)
+	$(INSTALL_SCRIPT) pg_config$(X) '$(DESTDIR)$(bindir)/pg_config$(X)'
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(bindir)
+	$(mkinstalldirs) '$(DESTDIR)$(bindir)'
 
 uninstall:
-	rm -f $(DESTDIR)$(bindir)/pg_config$(X)
+	rm -f '$(DESTDIR)$(bindir)/pg_config$(X)'
 
 clean distclean maintainer-clean:
 	rm -f pg_config$(X) $(OBJS)

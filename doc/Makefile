@@ -83,10 +83,10 @@ endif
 
 installdirs:
 ifdef found_html
-	$(mkinstalldirs) $(DESTDIR)$(docdir)/html
+	$(mkinstalldirs) '$(DESTDIR)$(docdir)'/html
 endif
 ifdef found_man
-	$(mkinstalldirs) $(addprefix $(DESTDIR)$(mandir)/man, 1 $(sqlmansectnum))
+	$(mkinstalldirs) $(addprefix '$(DESTDIR)$(mandir)'/man, 1 $(sqlmansectnum))
 endif
 
 

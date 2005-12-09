@@ -33,7 +33,7 @@ include $(top_srcdir)/src/Makefile.shlib
 install: all installdirs install-lib
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(libdir)
+	$(mkinstalldirs) '$(DESTDIR)$(libdir)'
 
 uninstall: uninstall-lib
 

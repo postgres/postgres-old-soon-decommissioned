@@ -62,13 +62,13 @@ c_keywords.o ecpg_keywords.o keywords.o preproc.o: preproc.h
 distprep: $(srcdir)/preproc.c $(srcdir)/preproc.h $(srcdir)/pgc.c
 
 install: all installdirs
-	$(INSTALL_PROGRAM) ecpg$(X) $(DESTDIR)$(bindir)
+	$(INSTALL_PROGRAM) ecpg$(X) '$(DESTDIR)$(bindir)'
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(bindir)
+	$(mkinstalldirs) '$(DESTDIR)$(bindir)'
 
 uninstall:
-	rm -f $(DESTDIR)$(bindir)/ecpg$(X)
+	rm -f '$(DESTDIR)$(bindir)/ecpg$(X)'
 
 clean distclean:
 	rm -f *.o ecpg$(X)

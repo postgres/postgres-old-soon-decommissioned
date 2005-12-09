@@ -46,7 +46,7 @@ pgstrcasecmp.c rint.c snprintf.c: % : $(top_srcdir)/src/port/%
 install: all installdirs install-lib
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(libdir)
+	$(mkinstalldirs) '$(DESTDIR)$(libdir)'
 
 uninstall: uninstall-lib
 

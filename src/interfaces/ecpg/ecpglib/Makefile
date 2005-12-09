@@ -57,7 +57,7 @@ $(top_builddir)/src/port/pg_config_paths.h:
 install: all installdirs install-lib
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(libdir)
+	$(mkinstalldirs) '$(DESTDIR)$(libdir)'
 
 uninstall: uninstall-lib
 

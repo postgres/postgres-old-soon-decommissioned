@@ -21,7 +21,7 @@ install: all installdirs
 	$(INSTALL_DATA) dllinit.o $(DESTDIR)$(pgxsdir)/$(subdir)/
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(pgxsdir)/$(subdir)
+	$(mkinstalldirs) '$(DESTDIR)$(pgxsdir)/$(subdir)'
 
 uninstall:
 	rm -f $(DESTDIR)$(pgxsdir)/$(subdir)/dllinit.o

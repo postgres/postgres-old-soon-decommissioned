@@ -24,13 +24,13 @@ pg_ctl: $(OBJS) $(libpq_builddir)/libpq.a
 	$(CC) $(CFLAGS) $(OBJS) $(libpq_pgport) $(LDFLAGS) $(LIBS) -o $@$(X)
 
 install: all installdirs
-	$(INSTALL_PROGRAM) pg_ctl$(X) $(DESTDIR)$(bindir)/pg_ctl$(X)
+	$(INSTALL_PROGRAM) pg_ctl$(X) '$(DESTDIR)$(bindir)/pg_ctl$(X)'
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(bindir)
+	$(mkinstalldirs) '$(DESTDIR)$(bindir)'
 
 uninstall:
-	rm -f $(DESTDIR)$(bindir)/pg_ctl$(X)
+	rm -f '$(DESTDIR)$(bindir)/pg_ctl$(X)'
 
 clean distclean maintainer-clean:
 	rm -f pg_ctl$(X) $(OBJS)

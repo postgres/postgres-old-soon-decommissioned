@@ -51,14 +51,14 @@ endif
 distprep: $(srcdir)/sql_help.h $(srcdir)/psqlscan.c
 
 install: all installdirs
-	$(INSTALL_PROGRAM) psql$(X) $(DESTDIR)$(bindir)/psql$(X)
-	$(INSTALL_DATA) $(srcdir)/psqlrc.sample $(DESTDIR)$(datadir)/psqlrc.sample
+	$(INSTALL_PROGRAM) psql$(X) '$(DESTDIR)$(bindir)/psql$(X)'
+	$(INSTALL_DATA) $(srcdir)/psqlrc.sample '$(DESTDIR)$(datadir)/psqlrc.sample'
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(bindir)
+	$(mkinstalldirs) '$(DESTDIR)$(bindir)'
 
 uninstall:
-	rm -f $(DESTDIR)$(bindir)/psql$(X)
+	rm -f '$(DESTDIR)$(bindir)/psql$(X)' '$(DESTDIR)$(datadir)/psqlrc.sample'
 
 # psqlscan.c is in the distribution tarball, so is not cleaned here
 clean distclean:

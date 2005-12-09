@@ -184,14 +184,14 @@ $(REGRESSION_SCRIPT): Makefile
 	cat regress_epilogue >> $@;
 
 install: $(SQLSCRIPT) installdirs
-	$(INSTALL_DATA) $(SQLSCRIPT) $(DESTDIR)$(datadir)
+	$(INSTALL_DATA) $(SQLSCRIPT) '$(DESTDIR)$(datadir)'
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(datadir) $(DESTDIR)$(pkglibdir)
+	$(mkinstalldirs) '$(DESTDIR)$(datadir)' '$(DESTDIR)$(pkglibdir)'
 
 uninstall:
-	rm -f $(DESTDIR)$(datadir)/$(SQLSCRIPT)
+	rm -f '$(DESTDIR)$(datadir)/$(SQLSCRIPT)'
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
 
 clean distclean maintainer-clean:

@@ -73,7 +73,7 @@ endif
 
 install: all installdirs
 ifeq ($(enable_shared), yes)
-	$(INSTALL_SHLIB) $(shlib) $(DESTDIR)$(pkglibdir)/$(NAME)$(DLSUFFIX)
+	$(INSTALL_SHLIB) $(shlib) '$(DESTDIR)$(pkglibdir)/$(NAME)$(DLSUFFIX)'
 else
 	@echo "*****"; \
 	 echo "* PL/Tcl was not installed due to lack of shared library support."; \
@@ -82,11 +82,11 @@ endif
 	$(MAKE) -C modules $@
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(pkglibdir)
+	$(mkinstalldirs) '$(DESTDIR)$(pkglibdir)'
 	$(MAKE) -C modules $@
 
 uninstall:
-	rm -f $(DESTDIR)$(pkglibdir)/$(NAME)$(DLSUFFIX)
+	rm -f '$(DESTDIR)$(pkglibdir)/$(NAME)$(DLSUFFIX)'
 	$(MAKE) -C modules $@
 
 installcheck: submake
