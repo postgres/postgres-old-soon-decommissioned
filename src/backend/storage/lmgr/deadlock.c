@@ -930,7 +930,8 @@ DeadLockReport(void)
 		appendStringInfo(&buf,
 				  _("Process %d waits for %s on %s; blocked by process %d."),
 						 info->pid,
-						 GetLockmodeName(info->lockmode),
+						 GetLockmodeName(info->locktag.locktag_lockmethodid,
+										 info->lockmode),
 						 buf2.data,
 						 nextpid);
 	}

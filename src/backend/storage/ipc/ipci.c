@@ -25,7 +25,7 @@
 #include "storage/bufmgr.h"
 #include "storage/freespace.h"
 #include "storage/ipc.h"
-#include "storage/lmgr.h"
+#include "storage/lock.h"
 #include "storage/lwlock.h"
 #include "storage/pg_sema.h"
 #include "storage/pg_shmem.h"
@@ -159,7 +159,6 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int port)
 	 * Set up lock manager
 	 */
 	InitLocks();
-	InitLockTable();
 
 	/*
 	 * Set up process table

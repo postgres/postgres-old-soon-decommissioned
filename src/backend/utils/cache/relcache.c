@@ -3362,7 +3362,7 @@ RelationIdIsInInitFile(Oid relationId)
  * just after sending them.  The unlink before ensures that a backend that's
  * currently starting cannot read the now-obsolete init file and then miss
  * the SI messages that will force it to update its relcache entries.  (This
- * works because the backend startup sequence gets into the PROC array before
+ * works because the backend startup sequence gets into the PGPROC array before
  * trying to load the init file.)  The unlink after is to synchronize with a
  * backend that may currently be trying to write an init file based on data
  * that we've just rendered invalid.  Such a backend will see the SI messages,

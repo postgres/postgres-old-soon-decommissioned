@@ -256,7 +256,8 @@ pg_lock_status(PG_FUNCTION_ARGS)
 		else
 			nulls[10] = 'n';
 		values[11] = DirectFunctionCall1(textin,
-									 CStringGetDatum(GetLockmodeName(mode)));
+									 CStringGetDatum(GetLockmodeName(LOCK_LOCKMETHOD(*lock),
+																	 mode)));
 		values[12] = BoolGetDatum(granted);
 
 		tuple = heap_formtuple(funcctx->tuple_desc, values, nulls);

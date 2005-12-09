@@ -630,7 +630,7 @@ ProcSleep(LockMethod lockMethodTable,
 		  LOCK *lock,
 		  PROCLOCK *proclock)
 {
-	LWLockId	masterLock = lockMethodTable->masterLock;
+	LWLockId	masterLock = LockMgrLock;
 	PROC_QUEUE *waitQueue = &(lock->waitProcs);
 	LOCKMASK	myHeldLocks = MyProc->heldLocks;
 	bool		early_deadlock = false;
