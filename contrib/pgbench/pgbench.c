@@ -898,10 +898,8 @@ process_file(char *filename)
 				fclose(fd);
 				return false;
 			}
-		} else {
-			lineno++;
+		} else
 			continue;
-		}
 
 		my_commands[lineno] = commands;
 		lineno++;
@@ -1120,8 +1118,7 @@ main(int argc, char **argv)
 					fprintf(stderr, "Use limit/ulimt to increase the limit before using pgbench.\n");
 					exit(1);
 				}
-#endif   /* #if !(defined(__CYGWIN__) ||
-								 * defined(__MINGW32__)) */
+#endif
 				break;
 			case 'C':
 				is_connect = 1;
