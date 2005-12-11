@@ -19,6 +19,13 @@
 #include "storage/shmem.h"
 
 
+/*
+ * Number of partitions the shared lock tables are divided into.
+ *
+ * See LockTagToPartition() if you change this.
+ */
+#define NUM_LOCK_PARTITIONS  16
+
 /* originally in procq.h */
 typedef struct PROC_QUEUE
 {
@@ -348,6 +355,7 @@ typedef struct LOCALLOCK
 	LOCK	   *lock;			/* associated LOCK object in shared mem */
 	PROCLOCK   *proclock;		/* associated PROCLOCK object in shmem */
 	bool		isTempObject;	/* true if lock is on a temporary object */
+	int			partition;		/* ID of partition containing this lock */
 	int			nLocks;			/* total number of times lock is held */
 	int			numLockOwners;	/* # of relevant ResourceOwners */
 	int			maxLockOwners;	/* allocated size of array */
@@ -389,6 +397,7 @@ typedef enum
  */
 extern void InitLocks(void);
 extern LockMethod GetLocksMethodTable(const LOCK *lock);
+extern int	LockTagToPartition(const LOCKTAG *locktag);
 extern LockAcquireResult LockAcquire(const LOCKTAG *locktag,
 			bool isTempObject,
 			LOCKMODE lockmode,
@@ -406,7 +415,7 @@ extern int LockCheckConflicts(LockMethod lockMethodTable,
 				   LOCK *lock, PROCLOCK *proclock, PGPROC *proc);
 extern void GrantLock(LOCK *lock, PROCLOCK *proclock, LOCKMODE lockmode);
 extern void GrantAwaitedLock(void);
-extern void RemoveFromWaitQueue(PGPROC *proc);
+extern void RemoveFromWaitQueue(PGPROC *proc, int partition);
 extern Size LockShmemSize(void);
 extern bool DeadLockCheck(PGPROC *proc);
 extern void DeadLockReport(void);

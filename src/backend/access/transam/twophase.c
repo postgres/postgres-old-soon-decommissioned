@@ -284,7 +284,8 @@ MarkAsPreparing(TransactionId xid, const char *gid,
 	gxact->proc.lwWaitLink = NULL;
 	gxact->proc.waitLock = NULL;
 	gxact->proc.waitProcLock = NULL;
-	SHMQueueInit(&(gxact->proc.procLocks));
+	for (i = 0; i < NUM_LOCK_PARTITIONS; i++)
+		SHMQueueInit(&(gxact->proc.myProcLocks[i]));
 	/* subxid data must be filled later by GXactLoadSubxactData */
 	gxact->proc.subxids.overflowed = false;
 	gxact->proc.subxids.nxids = 0;

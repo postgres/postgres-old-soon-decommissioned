@@ -8,7 +8,7 @@
  * exclusive and shared lock modes (to support read/write and read-only
  * access to a shared object).	There are few other frammishes.  User-level
  * locking should be done with the full lock manager --- which depends on
- * an LWLock to protect its shared state.
+ * LWLocks to protect its shared state.
  *
  *
  * Portions Copyright (c) 1996-2005, PostgreSQL Global Development Group
@@ -125,7 +125,10 @@ NumLWLocks(void)
 	 */
 
 	/* Predefined LWLocks */
-	numLocks = (int) NumFixedLWLocks;
+	numLocks = (int) FirstLockMgrLock;
+
+	/* lock.c gets the ones starting at FirstLockMgrLock */
+	numLocks += NUM_LOCK_PARTITIONS;
 
 	/* bufmgr.c needs two for each shared buffer */
 	numLocks += 2 * NBuffers;
@@ -204,10 +207,11 @@ CreateLWLocks(void)
 
 	/*
 	 * Initialize the dynamic-allocation counter, which is stored just before
-	 * the first LWLock.
+	 * the first LWLock.  The LWLocks used by lock.c are not dynamically
+	 * allocated, it just assumes it has them.
 	 */
 	LWLockCounter = (int *) ((char *) LWLockArray - 2 * sizeof(int));
-	LWLockCounter[0] = (int) NumFixedLWLocks;
+	LWLockCounter[0] = (int) FirstLockMgrLock + NUM_LOCK_PARTITIONS;
 	LWLockCounter[1] = numLocks;
 }
 
