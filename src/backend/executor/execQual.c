@@ -541,7 +541,7 @@ ExecEvalWholeRowVar(ExprState *exprstate, ExprContext *econtext,
 	Assert(variable->varno != OUTER);
 	slot = econtext->ecxt_scantuple;
 
-	tuple = slot->tts_tuple;
+	tuple = ExecFetchSlotTuple(slot);
 	tupleDesc = slot->tts_tupleDescriptor;
 
 	/*
