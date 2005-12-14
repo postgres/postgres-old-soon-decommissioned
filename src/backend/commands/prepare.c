@@ -443,6 +443,30 @@ FetchPreparedStatementResultDesc(PreparedStatement *stmt)
 }
 
 /*
+ * Given a prepared statement, determine whether it will return tuples.
+ *
+ * Note: this is used rather than just testing the result of
+ * FetchPreparedStatementResultDesc() because that routine can fail if
+ * invoked in an aborted transaction.  This one is safe to use in any
+ * context.  Be sure to keep the two routines in sync!
+ */
+bool
+PreparedStatementReturnsTuples(PreparedStatement *stmt)
+{
+	switch (ChoosePortalStrategy(stmt->query_list))
+	{
+		case PORTAL_ONE_SELECT:
+		case PORTAL_UTIL_SELECT:
+			return true;
+
+		case PORTAL_MULTI_QUERY:
+			/* will not return tuples */
+			break;
+	}
+	return false;
+}
+
+/*
  * Implements the 'DEALLOCATE' utility statement: deletes the
  * specified plan from storage.
  */
