@@ -728,7 +728,7 @@ typedef unsigned long slock_t;
 #endif	 /* __sgi */
 
 
-#if defined(sinix)		/* Sinux */
+#if defined(sinix)		/* Sinix */
 /*
  * SINIX / Reliant UNIX
  * slock_t is defined as a struct abilock_t, which has a single unsigned long
