@@ -15,12 +15,12 @@
 
 typedef enum _backslashResult
 {
-	CMD_UNKNOWN = 0,			/* not done parsing yet (internal only) */
-	CMD_SEND,					/* query complete; send off */
-	CMD_SKIP_LINE,				/* keep building query */
-	CMD_TERMINATE,				/* quit program */
-	CMD_NEWEDIT,				/* query buffer was changed (e.g., via \e) */
-	CMD_ERROR					/* the execution of the backslash command
+	PSQL_CMD_UNKNOWN = 0,			/* not done parsing yet (internal only) */
+	PSQL_CMD_SEND,					/* query complete; send off */
+	PSQL_CMD_SKIP_LINE,				/* keep building query */
+	PSQL_CMD_TERMINATE,				/* quit program */
+	PSQL_CMD_NEWEDIT,				/* query buffer was changed (e.g., via \e) */
+	PSQL_CMD_ERROR					/* the execution of the backslash command
 								 * resulted in an error */
 } backslashResult;
 

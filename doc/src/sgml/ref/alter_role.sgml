@@ -183,6 +183,16 @@ ALTER ROLE <replaceable class="PARAMETER">name</replaceable> RESET <replaceable>
   </para>
 
   <para>
+   Caution must be exercised when specifying an unencrypted password
+   with this command.  The password will be transmitted to the server
+   in cleartext, and it might also be logged in the client's command
+   history or the server log.  <xref linkend="app-psql"
+   endterm="app-psql-title"> contains a command
+   <command>\password</command> that can be used to safely change a
+   role's password.
+  </para>
+
+  <para>
    It is also possible to tie a
    session default to a specific database rather than to a role; see
    <xref linkend="sql-alterdatabase" endterm="sql-alterdatabase-title">.

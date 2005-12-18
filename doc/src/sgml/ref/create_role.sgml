@@ -357,6 +357,18 @@ where <replaceable class="PARAMETER">option</replaceable> can be:
    connection <quote>slot</> remains for the role, it is possible that
    both will fail.  Also, the limit is never enforced for superusers.
   </para>
+
+  <para>
+   Caution must be exercised when specifying an unencrypted password
+   with this command.  The password will be transmitted to the server
+   in cleartext, and it might also be logged in the client's command
+   history or the server log.  The command <xref
+   linkend="APP-CREATEUSER" endterm="APP-CREATEUSER-title">, however, transmits
+   the password encrypted.  Also, <xref linkend="app-psql"
+   endterm="app-psql-title"> contains a command
+   <command>\password</command> that can be used to safely change the
+   password later.
+  </para>
  </refsect1>
 
  <refsect1>
