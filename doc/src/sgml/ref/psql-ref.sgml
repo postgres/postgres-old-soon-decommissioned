@@ -1378,16 +1378,15 @@ lo_import 152801
         </listitem>
       </varlistentry>
 
-
       <varlistentry>
-        <term><literal>\password [ <replaceable class=parameter>username</replaceable> ]</literal>
+        <term><literal>\password [ <replaceable class="parameter">username</replaceable> ]</literal></term>
         <listitem>
         <para>
-        Changes the password of the specified user or by default the
-        current user.  This command prompts for the new password,
-        encrypts it, and sends it to the server.  This makes sure that
-        the new password does not appear in the command history, the
-        server log, or elsewhere in cleartext.
+        Changes the password of the specified user (by default, the current
+        user).  This command prompts for the new password, encrypts it, and
+        sends it to the server as an <command>ALTER ROLE</> command.  This
+        makes sure that the new password does not appear in cleartext in the
+        command history, the server log, or elsewhere.
         </para>
         </listitem>
       </varlistentry>
