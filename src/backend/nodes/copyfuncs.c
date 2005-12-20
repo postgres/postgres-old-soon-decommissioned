@@ -1278,6 +1278,22 @@ _copyRestrictInfo(RestrictInfo *from)
 }
 
 /*
+ * _copyOuterJoinInfo
+ */
+static OuterJoinInfo *
+_copyOuterJoinInfo(OuterJoinInfo *from)
+{
+	OuterJoinInfo *newnode = makeNode(OuterJoinInfo);
+
+	COPY_BITMAPSET_FIELD(min_lefthand);
+	COPY_BITMAPSET_FIELD(min_righthand);
+	COPY_SCALAR_FIELD(is_full_join);
+	COPY_SCALAR_FIELD(lhs_strict);
+
+	return newnode;
+}
+
+/*
  * _copyInClauseInfo
  */
 static InClauseInfo *
@@ -2905,6 +2921,9 @@ copyObject(void *from)
 			break;
 		case T_RestrictInfo:
 			retval = _copyRestrictInfo(from);
+			break;
+		case T_OuterJoinInfo:
+			retval = _copyOuterJoinInfo(from);
 			break;
 		case T_InClauseInfo:
 			retval = _copyInClauseInfo(from);

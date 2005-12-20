@@ -21,14 +21,10 @@
 /*
  * prototypes for prepjointree.c
  */
-extern int	from_collapse_limit;
-extern int	join_collapse_limit;
-
 extern Node *pull_up_IN_clauses(PlannerInfo *root, Node *node);
 extern Node *pull_up_subqueries(PlannerInfo *root, Node *jtnode,
 				   bool below_outer_join);
 extern void reduce_outer_joins(PlannerInfo *root);
-extern Node *simplify_jointree(PlannerInfo *root, Node *jtnode);
 extern Relids get_relids_in_jointree(Node *jtnode);
 extern Relids get_relids_for_join(PlannerInfo *root, int joinrelid);
 

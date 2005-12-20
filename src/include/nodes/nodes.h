@@ -186,6 +186,7 @@ typedef enum NodeTag
 	T_PathKeyItem,
 	T_RestrictInfo,
 	T_InnerIndexscanInfo,
+	T_OuterJoinInfo,
 	T_InClauseInfo,
 
 	/*

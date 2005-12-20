@@ -133,7 +133,6 @@ make_reloptinfo(PlannerInfo *root, int relid, RelOptKind reloptkind)
 	rel->baserestrictinfo = NIL;
 	rel->baserestrictcost.startup = 0;
 	rel->baserestrictcost.per_tuple = 0;
-	rel->outerjoinset = NULL;
 	rel->joininfo = NIL;
 	rel->index_outer_relids = NULL;
 	rel->index_inner_paths = NIL;
@@ -369,7 +368,6 @@ build_join_rel(PlannerInfo *root,
 	joinrel->baserestrictinfo = NIL;
 	joinrel->baserestrictcost.startup = 0;
 	joinrel->baserestrictcost.per_tuple = 0;
-	joinrel->outerjoinset = NULL;
 	joinrel->joininfo = NIL;
 	joinrel->index_outer_relids = NULL;
 	joinrel->index_inner_paths = NIL;

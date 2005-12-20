@@ -845,12 +845,7 @@ typedef struct TargetEntry
  * or qualified join.  Also, FromExpr nodes can appear to denote an
  * ordinary cross-product join ("FROM foo, bar, baz WHERE ...").
  * FromExpr is like a JoinExpr of jointype JOIN_INNER, except that it
- * may have any number of child nodes, not just two.  Also, there is an
- * implementation-defined difference: the planner is allowed to join the
- * children of a FromExpr using whatever join order seems good to it.
- * At present, JoinExpr nodes are always joined in exactly the order
- * implied by the jointree structure (except the planner may choose to
- * swap inner and outer members of a join pair).
+ * may have any number of child nodes, not just two.
  *
  * NOTE: the top level of a Query's jointree is always a FromExpr.
  * Even if the jointree contains no rels, there will be a FromExpr.

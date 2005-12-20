@@ -614,6 +614,17 @@ _equalRestrictInfo(RestrictInfo *a, RestrictInfo *b)
 }
 
 static bool
+_equalOuterJoinInfo(OuterJoinInfo *a, OuterJoinInfo *b)
+{
+	COMPARE_BITMAPSET_FIELD(min_lefthand);
+	COMPARE_BITMAPSET_FIELD(min_righthand);
+	COMPARE_SCALAR_FIELD(is_full_join);
+	COMPARE_SCALAR_FIELD(lhs_strict);
+
+	return true;
+}
+
+static bool
 _equalInClauseInfo(InClauseInfo *a, InClauseInfo *b)
 {
 	COMPARE_BITMAPSET_FIELD(lefthand);
@@ -1953,6 +1964,9 @@ equal(void *a, void *b)
 			break;
 		case T_RestrictInfo:
 			retval = _equalRestrictInfo(a, b);
+			break;
+		case T_OuterJoinInfo:
+			retval = _equalOuterJoinInfo(a, b);
 			break;
 		case T_InClauseInfo:
 			retval = _equalInClauseInfo(a, b);

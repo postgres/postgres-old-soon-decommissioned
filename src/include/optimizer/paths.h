@@ -23,8 +23,7 @@
 extern bool enable_geqo;
 extern int	geqo_threshold;
 
-extern RelOptInfo *make_one_rel(PlannerInfo *root);
-extern RelOptInfo *make_fromexpr_rel(PlannerInfo *root, FromExpr *from);
+extern RelOptInfo *make_one_rel(PlannerInfo *root, List *joinlist);
 
 #ifdef OPTIMIZER_DEBUG
 extern void debug_print_rel(PlannerInfo *root, RelOptInfo *rel);
@@ -88,10 +87,8 @@ extern void add_paths_to_joinrel(PlannerInfo *root, RelOptInfo *joinrel,
  *	  routines to determine which relations to join
  */
 extern List *make_rels_by_joins(PlannerInfo *root, int level, List **joinrels);
-extern RelOptInfo *make_jointree_rel(PlannerInfo *root, Node *jtnode);
 extern RelOptInfo *make_join_rel(PlannerInfo *root,
-			  RelOptInfo *rel1, RelOptInfo *rel2,
-			  JoinType jointype);
+			  RelOptInfo *rel1, RelOptInfo *rel2);
 
 /*
  * pathkeys.c

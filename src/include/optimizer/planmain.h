@@ -65,10 +65,12 @@ extern bool is_projection_capable_plan(Plan *plan);
 /*
  * prototypes for plan/initsplan.c
  */
+extern int	from_collapse_limit;
+extern int	join_collapse_limit;
+
 extern void add_base_rels_to_query(PlannerInfo *root, Node *jtnode);
 extern void build_base_rel_tlists(PlannerInfo *root, List *final_tlist);
-extern Relids distribute_quals_to_rels(PlannerInfo *root, Node *jtnode,
-						 bool below_outer_join);
+extern List *deconstruct_jointree(PlannerInfo *root);
 extern void process_implied_equality(PlannerInfo *root,
 						 Node *item1, Node *item2,
 						 Oid sortop1, Oid sortop2,
