@@ -138,9 +138,9 @@ hashtext(PG_FUNCTION_ARGS)
 	Datum		result;
 
 	/*
-	 * Note: this is currently identical in behavior to hashvarlena, but it
-	 * seems likely that we may need to do something different in non-C
-	 * locales.  (See also hashbpchar, if so.)
+	 * Note: this is currently identical in behavior to hashvarlena, but
+	 * keep it as a separate function in case we someday want to do something
+	 * different in non-C locales.  (See also hashbpchar, if so.)
 	 */
 	result = hash_any((unsigned char *) VARDATA(key),
 					  VARSIZE(key) - VARHDRSZ);
