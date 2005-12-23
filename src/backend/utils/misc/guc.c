@@ -1902,7 +1902,7 @@ static struct config_string ConfigureNamesString[] =
 			GUC_LIST_INPUT | GUC_LIST_QUOTE
 		},
 		&namespace_search_path,
-		"$user,public", assign_search_path, NULL
+		"\"$user\",public", assign_search_path, NULL
 	},
 
 	{

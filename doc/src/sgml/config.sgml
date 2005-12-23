@@ -39,7 +39,7 @@ $PostgreSQL$
 # This is a comment
 log_connections = yes
 log_destination = 'syslog'
-search_path = '$user, public'
+search_path = '"$user", public'
 </programlisting>
     One parameter is specified per line. The equal sign between name and
     value is optional. Whitespace is insignificant and blank lines are
@@ -3117,7 +3117,7 @@ SELECT * FROM parent WHERE key = 2400;
 
        <para>
         The default value for this parameter is
-        <literal>'$user, public'</literal> (where the second part will be
+        <literal>'"$user", public'</literal> (where the second part will be
         ignored if there is no schema named <literal>public</>).
         This supports shared use of a database (where no users
         have private schemas, and all share use of <literal>public</>),
