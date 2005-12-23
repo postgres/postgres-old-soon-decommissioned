@@ -616,6 +616,10 @@ OptRoleElem:
 					$$ = makeDefElem("password",
 									 (Node *)makeString($2));
 				}
+			| PASSWORD NULL_P
+				{
+					$$ = makeDefElem("password", NULL);
+				}
 			| ENCRYPTED PASSWORD Sconst
 				{
 					$$ = makeDefElem("encryptedPassword",
