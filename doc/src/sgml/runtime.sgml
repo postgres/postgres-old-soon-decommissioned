@@ -1031,12 +1031,12 @@ set semsys:seminfo_semmsl=32
      <tbody>
       <row>
        <entry><xref linkend="guc-max-connections"></>
-       <entry>400 + 400 * <xref linkend="guc-max-locks-per-transaction"></entry>
+       <entry>400 + 270 * <xref linkend="guc-max-locks-per-transaction"></entry>
       </row>
 
       <row>
        <entry><xref linkend="guc-max-prepared-transactions"></>
-       <entry>600 + 400 * <xref linkend="guc-max-locks-per-transaction"></entry>
+       <entry>600 + 270 * <xref linkend="guc-max-locks-per-transaction"></entry>
       </row>
 
       <row>
