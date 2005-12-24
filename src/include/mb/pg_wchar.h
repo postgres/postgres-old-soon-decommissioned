@@ -143,7 +143,7 @@ typedef unsigned int pg_wchar;
  *			If you add some encoding don'y forget check
  *			PG_ENCODING_[BE|FE]_LAST macros.
  *
- *		The PG_SQL_ASCII is default encoding and must be = 0.
+ * The PG_SQL_ASCII is default encoding and must be = 0.
  */
 typedef enum pg_enc
 {
