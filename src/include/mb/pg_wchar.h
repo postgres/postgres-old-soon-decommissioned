@@ -177,7 +177,8 @@ typedef enum pg_enc
 	PG_ISO_8859_7,				/* ISO-8859-7 */
 	PG_ISO_8859_8,				/* ISO-8859-8 */
 	PG_WIN1250,					/* windows-1250 */
-
+	/* PG_ENCODING_BE_LAST points to the above entry */
+	
 	/* followings are for client encoding only */
 	PG_SJIS,					/* Shift JIS (Winindows-932) */
 	PG_BIG5,					/* Big5 (Windows-950) */
