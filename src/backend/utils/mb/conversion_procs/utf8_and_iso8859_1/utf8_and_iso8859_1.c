@@ -46,12 +46,12 @@ iso8859_1_to_utf8(PG_FUNCTION_ARGS)
 
 	while (len-- > 0 && (c = *src++))
 	{
-		if (c < 0x80)
+		if (!IS_HIGHBIT_SET(c))
 			*dest++ = c;
 		else
 		{
 			*dest++ = (c >> 6) | 0xc0;
-			*dest++ = (c & 0x003f) | 0x80;
+			*dest++ = (c & 0x003f) | HIGHBIT;
 		}
 	}
 	*dest = '\0';

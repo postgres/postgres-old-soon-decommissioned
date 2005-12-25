@@ -58,7 +58,6 @@ typedef struct
 #define VARBITEND(PTR)		(((bits8 *) (PTR)) + VARSIZE(PTR))
 /* Mask that will cover exactly one byte, i.e. BITS_PER_BYTE bits */
 #define BITMASK 0xFF
-#define BITHIGH 0x80
 
 
 extern Datum bit_in(PG_FUNCTION_ARGS);

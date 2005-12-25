@@ -111,7 +111,7 @@ heap_fill_tuple(TupleDesc tupleDesc,
 	if (bit != NULL)
 	{
 		bitP = &bit[-1];
-		bitmask = CSIGNBIT;
+		bitmask = HIGHBIT;
 	}
 	else
 	{
@@ -128,7 +128,7 @@ heap_fill_tuple(TupleDesc tupleDesc,
 
 		if (bit != NULL)
 		{
-			if (bitmask != CSIGNBIT)
+			if (bitmask != HIGHBIT)
 				bitmask <<= 1;
 			else
 			{
@@ -210,7 +210,7 @@ DataFill(char *data,
 	if (bit != NULL)
 	{
 		bitP = &bit[-1];
-		bitmask = CSIGNBIT;
+		bitmask = HIGHBIT;
 	}
 	else
 	{
@@ -227,7 +227,7 @@ DataFill(char *data,
 
 		if (bit != NULL)
 		{
-			if (bitmask != CSIGNBIT)
+			if (bitmask != HIGHBIT)
 				bitmask <<= 1;
 			else
 			{

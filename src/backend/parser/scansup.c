@@ -149,7 +149,7 @@ downcase_truncate_identifier(const char *ident, int len, bool warn)
 
 		if (ch >= 'A' && ch <= 'Z')
 			ch += 'a' - 'A';
-		else if (ch >= 0x80 && isupper(ch))
+		else if (IS_HIGHBIT_SET(ch) && isupper(ch))
 			ch = tolower(ch);
 		result[i] = (char) ch;
 	}

@@ -177,7 +177,7 @@ euc_tw2mic(unsigned char *euc, unsigned char *p, int len)
 			*p++ = *euc++;
 			*p++ = *euc++;
 		}
-		else if (c1 & 0x80)
+		else if (IS_HIGHBIT_SET(c1))
 		{						/* CNS11643-1 */
 			len -= 2;
 			*p++ = LC_CNS11643_1;

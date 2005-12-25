@@ -413,7 +413,7 @@ LocalToUtf(unsigned char *iso, unsigned char *utf,
 
 	for (; len > 0 && *iso; len -= l)
 	{
-		if (*iso < 0x80)
+		if (!IS_HIGHBIT_SET(*iso))
 		{
 			*utf++ = *iso++;
 			l = 1;

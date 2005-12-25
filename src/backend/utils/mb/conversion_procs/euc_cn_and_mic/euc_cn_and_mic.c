@@ -77,7 +77,7 @@ euc_cn2mic(unsigned char *euc, unsigned char *p, int len)
 
 	while (len >= 0 && (c1 = *euc++))
 	{
-		if (c1 & 0x80)
+		if (IS_HIGHBIT_SET(c1))
 		{
 			len -= 2;
 			*p++ = LC_GB2312_80;

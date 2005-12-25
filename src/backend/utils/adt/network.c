@@ -904,16 +904,16 @@ bitncmp(void *l, void *r, int n)
 	rb = ((const u_char *) r)[b];
 	for (b = n % 8; b > 0; b--)
 	{
-		if ((lb & 0x80) != (rb & 0x80))
+		if (IS_HIGHBIT_SET(lb) != IS_HIGHBIT_SET(rb))
 		{
-			if (lb & 0x80)
-				return (1);
-			return (-1);
+			if (IS_HIGHBIT_SET(lb))
+				return 1;
+			return -1;
 		}
 		lb <<= 1;
 		rb <<= 1;
 	}
-	return (0);
+	return 0;
 }
 
 static bool
