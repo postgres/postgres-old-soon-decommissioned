@@ -251,7 +251,7 @@ main(int argc, char *argv[])
 		{
 			char	   *encrypted_password;
 
-			encrypted_password = pg_make_encrypted_password(newpassword,
+			encrypted_password = PQencryptPassword(newpassword,
 															newuser);
 			if (!encrypted_password)
 			{

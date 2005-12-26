@@ -534,7 +534,7 @@ pg_fe_getauthname(char *PQerrormsg)
 
 
 /*
- * pg_make_encrypted_password -- exported routine to encrypt a password
+ * PQencryptPassword -- exported routine to encrypt a password
  *
  * This is intended to be used by client applications that wish to send
  * commands like ALTER USER joe PASSWORD 'pwd'.  The password need not
@@ -548,11 +548,11 @@ pg_fe_getauthname(char *PQerrormsg)
  * is for.
  *
  * Return value is a malloc'd string, or NULL if out-of-memory.  The client
- * may assume the string doesn't contain any weird characters that would
+ * may assume the string doesn't contain any special characters that would
  * require escaping.
  */
 char *
-pg_make_encrypted_password(const char *passwd, const char *user)
+PQencryptPassword(const char *passwd, const char *user)
 {
 	char	   *crypt_pwd;
 
