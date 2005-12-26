@@ -95,7 +95,7 @@ mic2gb18030(unsigned char *mic, unsigned char *p, int len)
 	{
 		len -= pg_mic_mblen(mic++);
 
-		if (c1 <= 0x7f)			/* ASCII */
+		if (!IS_HIGHBIT_SET(c1))		/* ASCII */
 			*p++ = c1;
 		else if (c1 >= 0x81 && c1 <= 0xfe)
 		{
@@ -141,10 +141,8 @@ latin2mic(unsigned char *l, unsigned char *p, int len, int lc)
 
 	while (len-- > 0 && (c1 = *l++))
 	{
-		if (c1 > 0x7f)
-		{						/* Latin? */
-			*p++ = lc;
-		}
+		if (IS_HIGHBIT_SET(c1))
+			*p++ = lc;			/* Latin? */
 		*p++ = c1;
 	}
 	*p = '\0';
@@ -164,7 +162,7 @@ mic2latin(unsigned char *mic, unsigned char *p, int len, int lc)
 
 		if (c1 == lc)
 			*p++ = *mic++;
-		else if (c1 > 0x7f)
+		else if (IS_HIGHBIT_SET(c1))
 		{
 			mic--;
 			pg_print_bogus_char(&mic, &p);
@@ -201,7 +199,7 @@ pg_mic2ascii(unsigned char *mic, unsigned char *p, int len)
 
 	while (len-- > 0 && (c1 = *mic))
 	{
-		if (c1 > 0x7f)
+		if (IS_HIGHBIT_SET(c1))
 			pg_print_bogus_char(&mic, &p);
 		else
 		{						/* should be ASCII */

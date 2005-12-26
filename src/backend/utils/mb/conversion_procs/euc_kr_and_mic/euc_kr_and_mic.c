@@ -110,15 +110,13 @@ mic2euc_kr(unsigned char *mic, unsigned char *p, int len)
 			*p++ = *mic++;
 			*p++ = *mic++;
 		}
-		else if (c1 > 0x7f)
+		else if (IS_HIGHBIT_SET(c1))
 		{						/* cannot convert to EUC_KR! */
 			mic--;
 			pg_print_bogus_char(&mic, &p);
 		}
 		else
-		{						/* should be ASCII */
-			*p++ = c1;
-		}
+			*p++ = c1;		/* should be ASCII */
 	}
 	*p = '\0';
 }
