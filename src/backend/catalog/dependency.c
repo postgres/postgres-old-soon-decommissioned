@@ -1129,22 +1129,27 @@ find_expr_references_walker(Node *node,
 						   &context->addrs);
 		/* fall through to examine arguments */
 	}
-	if (IsA(node, SubLink))
-	{
-		SubLink    *sublink = (SubLink *) node;
-		ListCell   *opid;
-
-		foreach(opid, sublink->operOids)
-		{
-			add_object_address(OCLASS_OPERATOR, lfirst_oid(opid), 0,
-							   &context->addrs);
-		}
-		/* fall through to examine arguments */
-	}
 	if (is_subplan(node))
 	{
 		/* Extra work needed here if we ever need this case */
 		elog(ERROR, "already-planned subqueries not supported");
+	}
+	if (IsA(node, RowCompareExpr))
+	{
+		RowCompareExpr *rcexpr = (RowCompareExpr *) node;
+		ListCell   *l;
+
+		foreach(l, rcexpr->opnos)
+		{
+			add_object_address(OCLASS_OPERATOR, lfirst_oid(l), 0,
+							   &context->addrs);
+		}
+		foreach(l, rcexpr->opclasses)
+		{
+			add_object_address(OCLASS_OPCLASS, lfirst_oid(l), 0,
+							   &context->addrs);
+		}
+		/* fall through to examine arguments */
 	}
 	if (IsA(node, Query))
 	{

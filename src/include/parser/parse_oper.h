@@ -59,8 +59,5 @@ extern Expr *make_op(ParseState *pstate, List *opname,
 extern Expr *make_scalar_array_op(ParseState *pstate, List *opname,
 					 bool useOr,
 					 Node *ltree, Node *rtree);
-extern Expr *make_op_expr(ParseState *pstate, Operator op,
-			 Node *ltree, Node *rtree,
-			 Oid ltypeId, Oid rtypeId);
 
 #endif   /* PARSE_OPER_H */

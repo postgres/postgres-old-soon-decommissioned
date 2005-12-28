@@ -736,10 +736,8 @@ _outSubLink(StringInfo str, SubLink *node)
 	WRITE_NODE_TYPE("SUBLINK");
 
 	WRITE_ENUM_FIELD(subLinkType, SubLinkType);
-	WRITE_BOOL_FIELD(useOr);
-	WRITE_NODE_FIELD(lefthand);
+	WRITE_NODE_FIELD(testexpr);
 	WRITE_NODE_FIELD(operName);
-	WRITE_NODE_FIELD(operOids);
 	WRITE_NODE_FIELD(subselect);
 }
 
@@ -749,8 +747,7 @@ _outSubPlan(StringInfo str, SubPlan *node)
 	WRITE_NODE_TYPE("SUBPLAN");
 
 	WRITE_ENUM_FIELD(subLinkType, SubLinkType);
-	WRITE_BOOL_FIELD(useOr);
-	WRITE_NODE_FIELD(exprs);
+	WRITE_NODE_FIELD(testexpr);
 	WRITE_NODE_FIELD(paramIds);
 	WRITE_NODE_FIELD(plan);
 	WRITE_INT_FIELD(plan_id);
@@ -853,6 +850,18 @@ _outRowExpr(StringInfo str, RowExpr *node)
 	WRITE_NODE_FIELD(args);
 	WRITE_OID_FIELD(row_typeid);
 	WRITE_ENUM_FIELD(row_format, CoercionForm);
+}
+
+static void
+_outRowCompareExpr(StringInfo str, RowCompareExpr *node)
+{
+	WRITE_NODE_TYPE("ROWCOMPARE");
+
+	WRITE_ENUM_FIELD(rctype, RowCompareType);
+	WRITE_NODE_FIELD(opnos);
+	WRITE_NODE_FIELD(opclasses);
+	WRITE_NODE_FIELD(largs);
+	WRITE_NODE_FIELD(rargs);
 }
 
 static void
@@ -1935,6 +1944,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_RowExpr:
 				_outRowExpr(str, obj);
+				break;
+			case T_RowCompareExpr:
+				_outRowCompareExpr(str, obj);
 				break;
 			case T_CoalesceExpr:
 				_outCoalesceExpr(str, obj);

@@ -4283,6 +4283,18 @@ exec_simple_check_node(Node *node)
 				return TRUE;
 			}
 
+		case T_RowCompareExpr:
+			{
+				RowCompareExpr    *expr = (RowCompareExpr *) node;
+
+				if (!exec_simple_check_node((Node *) expr->largs))
+					return FALSE;
+				if (!exec_simple_check_node((Node *) expr->rargs))
+					return FALSE;
+
+				return TRUE;
+			}
+
 		case T_CoalesceExpr:
 			{
 				CoalesceExpr *expr = (CoalesceExpr *) node;
