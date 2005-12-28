@@ -90,7 +90,7 @@
 
 /* XXX these should appear in other modules' header files */
 extern bool Log_disconnections;
-extern DLLIMPORT bool check_function_bodies;
+extern bool check_function_bodies;
 extern int	CommitDelay;
 extern int	CommitSiblings;
 extern char *default_tablespace;
