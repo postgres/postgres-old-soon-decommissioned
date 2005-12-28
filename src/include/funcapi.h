@@ -165,11 +165,15 @@ extern TypeFuncClass get_func_result_type(Oid functionId,
 					 Oid *resultTypeId,
 					 TupleDesc *resultTupleDesc);
 
-extern char *get_func_result_name(Oid functionId);
-
 extern bool resolve_polymorphic_argtypes(int numargs, Oid *argtypes,
 							 char *argmodes,
 							 Node *call_expr);
+
+extern int	get_func_arg_info(HeapTuple procTup,
+							  Oid **p_argtypes, char ***p_argnames,
+							  char **p_argmodes);
+
+extern char *get_func_result_name(Oid functionId);
 
 extern TupleDesc build_function_result_tupdesc_d(Datum proallargtypes,
 								Datum proargmodes,
