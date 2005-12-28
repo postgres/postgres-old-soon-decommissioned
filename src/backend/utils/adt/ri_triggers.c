@@ -3294,7 +3294,7 @@ ri_ReportViolation(RI_QueryKey *qkey, const char *constrname,
 	else
 		ereport(ERROR,
 				(errcode(ERRCODE_FOREIGN_KEY_VIOLATION),
-				 errmsg("update or delete on \"%s\" violates foreign key constraint \"%s\" on \"%s\"",
+				 errmsg("update or delete on table \"%s\" violates foreign key constraint \"%s\" on table \"%s\"",
 						RelationGetRelationName(pk_rel),
 						constrname, RelationGetRelationName(fk_rel)),
 			errdetail("Key (%s)=(%s) is still referenced from table \"%s\".",
