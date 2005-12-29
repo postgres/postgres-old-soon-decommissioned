@@ -56,6 +56,9 @@
 #include "miscadmin.h"
 #include "mb/pg_wchar.h"
 
+/* define this before the perl headers get a chance to mangle DLLIMPORT */
+extern DLLIMPORT bool check_function_bodies;
+
 /* perl stuff */
 #include "EXTERN.h"
 #include "perl.h"
@@ -68,8 +71,6 @@
 #define pTHX_
 #define pTHX void
 #endif
-
-extern DLLIMPORT bool check_function_bodies;
 
 
 /**********************************************************************
