@@ -58,6 +58,7 @@
 #include "postgres.h"
 
 #include "access/transam.h"
+#include "miscadmin.h"
 #include "storage/pg_shmem.h"
 #include "storage/spin.h"
 #include "utils/tqual.h"
