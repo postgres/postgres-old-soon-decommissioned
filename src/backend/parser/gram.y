@@ -1304,7 +1304,7 @@ alter_table_cmds:
 
 /* Subcommands that are for ALTER TABLE only */
 alter_table_cmd:
-			/* ALTER TABLE <relation> ADD_P [COLUMN] <coldef> */
+			/* ALTER TABLE <relation> ADD [COLUMN] <coldef> */
 			ADD_P opt_column columnDef
 				{
 					AlterTableCmd *n = makeNode(AlterTableCmd);
@@ -1377,7 +1377,7 @@ alter_table_cmd:
 					n->transform = $6;
 					$$ = (Node *)n;
 				}
-			/* ALTER TABLE <relation> ADD_P CONSTRAINT ... */
+			/* ALTER TABLE <relation> ADD CONSTRAINT ... */
 			| ADD_P TableConstraint
 				{
 					AlterTableCmd *n = makeNode(AlterTableCmd);
@@ -4767,7 +4767,7 @@ AlterDomainStmt:
 					n->typename = $3;
 					$$ = (Node *)n;
 				}
-			/* ALTER DOMAIN <domain> ADD_P CONSTRAINT ... */
+			/* ALTER DOMAIN <domain> ADD CONSTRAINT ... */
 			| ALTER DOMAIN_P any_name ADD_P TableConstraint
 				{
 					AlterDomainStmt *n = makeNode(AlterDomainStmt);
