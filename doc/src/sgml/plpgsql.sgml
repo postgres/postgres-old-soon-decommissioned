@@ -2482,7 +2482,7 @@ CLOSE curs1;
          representing its name, so that the portal name is the same as
          the cursor variable name, unless the programmer overrides it
          by assignment before opening the cursor.  But an unbound cursor
-         variable defaults to the null value initially , so it will receive
+         variable defaults to the null value initially, so it will receive
          an automatically-generated unique name, unless overridden.
         </para>
        </note>
