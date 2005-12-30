@@ -193,7 +193,7 @@ ifeq ($(PORTNAME), solaris)
   ifeq ($(GCC), yes)
     LINK.shared		= $(CC) -shared
   else
-    LINK.shared		= $(CC) -G
+    LINK.shared		= $(CC) -G $(CFLAGS)	# CFLAGS added for X86_64
   endif
   ifeq ($(with_gnu_ld), yes)
     LINK.shared		+= -Wl,-soname,$(soname)

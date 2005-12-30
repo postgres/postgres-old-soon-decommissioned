@@ -791,7 +791,8 @@ typedef unsigned char slock_t;
 
 /* out-of-line assembler from src/backend/port/tas/foo.s */
 
-#if defined(__sun) && defined(__i386)	/* i386 using Sun compiler */
+/* i386/X86_64 using Sun compiler */
+#if defined(__sun) && (defined(__i386) || defined(__x86_64__)) 
 /*
  * Solaris/386 (we only get here for non-gcc case)
  */
