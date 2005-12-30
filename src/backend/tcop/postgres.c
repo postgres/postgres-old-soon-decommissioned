@@ -2432,7 +2432,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	char		stack_base;
 	StringInfoData input_message;
 	sigjmp_buf	local_sigjmp_buf;
-	volatile bool send_rfq = true;
+	volatile bool send_ready_for_query = true;
 
 #define PendingConfigOption(name,val) \
 	(guc_names = lappend(guc_names, pstrdup(name)), \
@@ -3115,7 +3115,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	PG_SETMASK(&UnBlockSig);
 
 	if (!ignore_till_sync)
-		send_rfq = true;		/* initially, or after error */
+		send_ready_for_query = true;		/* initially, or after error */
 
 	/*
 	 * Non-error queries loop here.
@@ -3150,7 +3150,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 		 * processing of batched messages, and because we don't want to report
 		 * uncommitted updates (that confuses autovacuum).
 		 */
-		if (send_rfq)
+		if (send_ready_for_query)
 		{
 			if (IsTransactionOrTransactionBlock())
 			{
@@ -3166,7 +3166,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 			}
 
 			ReadyForQuery(whereToSendOutput);
-			send_rfq = false;
+			send_ready_for_query = false;
 		}
 
 		/*
@@ -3216,7 +3216,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 
 					exec_simple_query(query_string);
 
-					send_rfq = true;
+					send_ready_for_query = true;
 				}
 				break;
 
@@ -3297,7 +3297,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 				/* commit the function-invocation transaction */
 				finish_xact_command();
 
-				send_rfq = true;
+				send_ready_for_query = true;
 				break;
 
 			case 'C':			/* close */
@@ -3384,7 +3384,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 			case 'S':			/* sync */
 				pq_getmsgend(&input_message);
 				finish_xact_command();
-				send_rfq = true;
+				send_ready_for_query = true;
 				break;
 
 				/*
