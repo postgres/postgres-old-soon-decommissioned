@@ -179,7 +179,7 @@ typedef struct PgStat_MsgAnalyze
 typedef struct PgStat_MsgActivity
 {
 	PgStat_MsgHdr m_hdr;
-	char		m_stat_msg[PGSTAT_ACTIVITY_SIZE];
+	char		m_cmd_str[PGSTAT_ACTIVITY_SIZE];
 } PgStat_MsgActivity;
 
 /* ----------
