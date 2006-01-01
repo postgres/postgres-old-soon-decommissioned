@@ -425,9 +425,9 @@ typedef double Cost;			/* execution cost (in page-access units) */
 typedef enum CmdType
 {
 	CMD_UNKNOWN,
-	CMD_SELECT,					/* select stmt (formerly retrieve) */
-	CMD_UPDATE,					/* update stmt (formerly replace) */
-	CMD_INSERT,					/* insert stmt (formerly append) */
+	CMD_SELECT,					/* select stmt */
+	CMD_UPDATE,					/* update stmt */
+	CMD_INSERT,					/* insert stmt */
 	CMD_DELETE,
 	CMD_UTILITY,				/* cmds like create, destroy, copy, vacuum,
 								 * etc. */
