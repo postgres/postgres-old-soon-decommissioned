@@ -106,15 +106,17 @@ pg_perm_setlocale(int category, const char *locale)
 	 * We must ignore attempts to set to "", which means "keep using the
 	 * old environment value".
 	 */
-	if (category != LC_MESSAGES)
-		result = setlocale(category, locale);
-	else
+#ifdef LC_MESSAGES
+	if (category == LC_MESSAGES)
 	{
 		result = (char *) locale;
 		if (locale == NULL || locale[0] == '\0')
 			return result;
 	}
+	else
 #endif
+		result = setlocale(category, locale);
+#endif /* WIN32 */
 
 	if (result == NULL)
 		return result;			/* fall out immediately on failure */
