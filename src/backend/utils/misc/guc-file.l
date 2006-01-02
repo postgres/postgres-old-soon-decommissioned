@@ -157,8 +157,7 @@ ProcessConfigFile(GucContext context)
 	/*
 	 * Parse
 	 */
-	yyin = fp;
-	YY_FLUSH_BUFFER;			/* in case we abandoned a prior scan */
+	yyrestart(fp);
 	head = tail = NULL;
 	opt_name = opt_value = NULL;
 	ConfigFileLineno = 1;
