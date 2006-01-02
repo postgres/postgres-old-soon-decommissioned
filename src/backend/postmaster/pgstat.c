@@ -810,9 +810,9 @@ pgstat_report_tabstat(void)
 	int			i;
 
 	if (pgStatSock < 0 ||
-		!(pgstat_collect_querystring ||
-		  pgstat_collect_tuplelevel ||
-		  pgstat_collect_blocklevel))
+		(!pgstat_collect_querystring &&
+		 !pgstat_collect_tuplelevel &&
+		 !pgstat_collect_blocklevel))
 	{
 		/* Not reporting stats, so just flush whatever we have */
 		RegularTabStat.tsa_used = 0;
@@ -1224,9 +1224,9 @@ pgstat_initstats(PgStat_Info *stats, Relation rel)
 void
 pgstat_count_xact_commit(void)
 {
-	if (!(pgstat_collect_querystring ||
-		  pgstat_collect_tuplelevel ||
-		  pgstat_collect_blocklevel))
+	if	(!pgstat_collect_querystring &&
+		 !pgstat_collect_tuplelevel &&
+		 !pgstat_collect_blocklevel)
 		return;
 
 	pgStatXactCommit++;
@@ -1256,9 +1256,9 @@ pgstat_count_xact_commit(void)
 void
 pgstat_count_xact_rollback(void)
 {
-	if (!(pgstat_collect_querystring ||
-		  pgstat_collect_tuplelevel ||
-		  pgstat_collect_blocklevel))
+	if	(!pgstat_collect_querystring &&
+		 !pgstat_collect_tuplelevel &&
+		 !pgstat_collect_blocklevel)
 		return;
 
 	pgStatXactRollback++;
