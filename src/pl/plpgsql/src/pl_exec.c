@@ -382,10 +382,37 @@ plpgsql_exec_function(PLpgSQL_function *func, FunctionCallInfo fcinfo)
 	{
 		if (estate.retistuple)
 		{
-			/* Copy tuple to upper executor memory, as a tuple Datum */
+			/*
+			 * We have to check that the returned tuple actually matches
+			 * the expected result type.
+			 */
+			ReturnSetInfo *rsi = estate.rsi;
+			TupleDesc	tupdesc;
+
+			if (rsi && IsA(rsi, ReturnSetInfo) &&
+				rsi->expectedDesc != NULL)
+				tupdesc = rsi->expectedDesc;
+			else if (estate.fn_rettype == RECORDOID)
+			{
+				/* assume caller can handle any record type */
+				tupdesc = estate.rettupdesc;
+			}
+			else
+				tupdesc = lookup_rowtype_tupdesc(estate.fn_rettype, -1);
+			/* got the expected result rowtype, now check it */
+			if (estate.rettupdesc == NULL ||
+				!compatible_tupdesc(estate.rettupdesc, tupdesc))
+				ereport(ERROR,
+						(errcode(ERRCODE_DATATYPE_MISMATCH),
+						 errmsg("returned record type does not match expected record type")));
+
+			/*
+			 * Copy tuple to upper executor memory, as a tuple Datum.
+			 * Make sure it is labeled with the caller-supplied tuple type.
+			 */
 			estate.retval =
 				PointerGetDatum(SPI_returntuple((HeapTuple) (estate.retval),
-												estate.rettupdesc));
+												tupdesc));
 		}
 		else
 		{
