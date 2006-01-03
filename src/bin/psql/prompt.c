@@ -296,8 +296,8 @@ get_prompt(promptStatus_t status)
 					 * characters in prompt strings must be marked as such, in
 					 * order to properly display the line during editing.
 					 */
-					buf[0] = '\001';
-					buf[1] = (*p == '[') ? RL_PROMPT_START_IGNORE : RL_PROMPT_END_IGNORE;
+					buf[0] = (*p == '[') ? RL_PROMPT_START_IGNORE : RL_PROMPT_END_IGNORE;
+					buf[1] = '\0';
 #endif   /* USE_READLINE */
 					break;
 
