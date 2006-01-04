@@ -114,9 +114,10 @@ typedef struct PROC_HDR
 	int			spins_per_delay;
 } PROC_HDR;
 
-
-#define DUMMY_PROC_DEFAULT	0
-#define DUMMY_PROC_BGWRITER 1
+/*
+ * We set aside some extra PGPROC structures for "dummy" processes,
+ * ie things that aren't full-fledged backends but need shmem access.
+ */
 #define NUM_DUMMY_PROCS		2
 
 
@@ -134,7 +135,8 @@ extern int	ProcGlobalSemas(void);
 extern Size ProcGlobalShmemSize(void);
 extern void InitProcGlobal(void);
 extern void InitProcess(void);
-extern void InitDummyProcess(int proctype);
+extern void InitProcessPhase2(void);
+extern void InitDummyProcess(void);
 extern bool HaveNFreeProcs(int n);
 extern void ProcReleaseLocks(bool isCommit);
 

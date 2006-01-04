@@ -2860,7 +2860,6 @@ PostgresMain(int argc, char *argv[], const char *username)
 
 	PG_SETMASK(&BlockSig);		/* block everything except SIGQUIT */
 
-
 	if (IsUnderPostmaster)
 	{
 		/* noninteractive case: nothing should be left after switches */
@@ -2932,6 +2931,19 @@ PostgresMain(int argc, char *argv[], const char *username)
 		 */
 		BuildFlatFiles(true);
 	}
+
+	/*
+	 * Create a per-backend PGPROC struct in shared memory, except in
+	 * the EXEC_BACKEND case where this was done in SubPostmasterMain.
+	 * We must do this before we can use LWLocks (and in the EXEC_BACKEND
+	 * case we already had to do some stuff with LWLocks).
+	 */
+#ifdef EXEC_BACKEND
+	if (!IsUnderPostmaster)
+		InitProcess();
+#else
+	InitProcess();
+#endif
 
 	/*
 	 * General initialization.

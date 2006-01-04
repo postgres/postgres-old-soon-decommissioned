@@ -135,9 +135,6 @@ SysLoggerMain(int argc, char *argv[])
 
 	MyProcPid = getpid();		/* reset MyProcPid */
 
-	/* Lose the postmaster's on-exit routines */
-	on_exit_reset();
-
 #ifdef EXEC_BACKEND
 	syslogger_parseArgs(argc, argv);
 #endif   /* EXEC_BACKEND */
@@ -459,6 +456,9 @@ SysLogger_Start(void)
 			/* in postmaster child ... */
 			/* Close the postmaster's sockets */
 			ClosePostmasterPorts(true);
+
+			/* Lose the postmaster's on-exit routines */
+			on_exit_reset();
 
 			/* Drop our connection to postmaster's shared memory, as well */
 			PGSharedMemoryDetach();

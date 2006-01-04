@@ -381,22 +381,19 @@ BootstrapMain(int argc, char *argv[])
 	BaseInit();
 
 	/*
-	 * We aren't going to do the full InitPostgres pushups, but there are a
-	 * couple of things that need to get lit up even in a dummy process.
+	 * When we are a dummy process, we aren't going to do the full
+	 * InitPostgres pushups, but there are a couple of things that need
+	 * to get lit up even in a dummy process.
 	 */
 	if (IsUnderPostmaster)
 	{
-		/* set up proc.c to get use of LWLocks */
-		switch (xlogop)
-		{
-			case BS_XLOG_BGWRITER:
-				InitDummyProcess(DUMMY_PROC_BGWRITER);
-				break;
-
-			default:
-				InitDummyProcess(DUMMY_PROC_DEFAULT);
-				break;
-		}
+		/*
+		 * Create a PGPROC so we can use LWLocks.  In the EXEC_BACKEND case,
+		 * this was already done by SubPostmasterMain().
+		 */
+#ifndef EXEC_BACKEND
+		InitDummyProcess();
+#endif
 
 		/* finish setting up bufmgr.c */
 		InitBufferPoolBackend();
@@ -437,11 +434,17 @@ BootstrapMain(int argc, char *argv[])
 			proc_exit(1);
 	}
 
+	/*
+	 * We must be getting invoked for bootstrap mode
+	 */
+	Assert(!IsUnderPostmaster);
+
 	SetProcessingMode(BootstrapProcessing);
 
 	/*
-	 * backend initialization
+	 * Do backend-like initialization for bootstrap mode
 	 */
+	InitProcess();
 	(void) InitPostgres(dbname, NULL);
 
 	/*
