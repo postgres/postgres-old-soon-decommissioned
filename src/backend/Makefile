@@ -27,14 +27,6 @@ LIBS := $(filter-out -lpgport, $(LIBS))
 # The backend doesn't need everything that's in LIBS, however
 LIBS := $(filter-out -lz -lreadline -ledit -ltermcap -lncurses -lcurses, $(LIBS))
 
-ifeq ($(PORTNAME), qnx4)
-# This file crashes qnx4's wlink and is therefore not in
-# bootstrap/SUBSYS.o on that platform. (Wotta hack ... is it still
-# necessary?) [ Yes, until the Watcom compiler goes open source it's
-# effectively unsupported ]
-OBJS += bootstrap/bootstrap.o
-endif
-
 ##########################################################################
 
 all: submake-libpgport postgres $(POSTGRES_IMP)

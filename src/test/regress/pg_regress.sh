@@ -216,7 +216,7 @@ esac
 # On some platforms we can't use Unix sockets.
 # ----------
 case $host_platform in
-    *-*-cygwin* | *-*-mingw32* | *-*-qnx* | *beos*)
+    *-*-cygwin* | *-*-mingw32* | *beos*)
         unix_sockets=no;;
     *)
         unix_sockets=yes;;
@@ -228,7 +228,7 @@ esac
 # ----------
 
 case $host_platform in
-    *-*-qnx* | *-*-sco3.2v5*)
+    *-*-sco3.2v5*)
         DIFFFLAGS=-b;;
     *)
         DIFFFLAGS=-w;;

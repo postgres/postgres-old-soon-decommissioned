@@ -12,16 +12,9 @@ include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 
-# qnx4's wlink currently crashes with bootstrap.o
-ifneq ($(PORTNAME), qnx4)
 OBJS= bootparse.o bootstrap.o 
-else
-OBJS= bootparse.o
-endif
 
-
-# make sure bootstrap.o is built even on qnx4
-all: SUBSYS.o bootstrap.o
+all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) $@ $^

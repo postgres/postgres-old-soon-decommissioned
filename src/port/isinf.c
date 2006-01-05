@@ -74,18 +74,3 @@ isinf(double x)
 }
 #endif
 #endif
-
-#ifdef __QNX__
-#include <float.h>
-
-int
-isinf(double x)
-{
-	if (x == HUGE_VAL)
-		return 1;
-	if (x == -HUGE_VAL)
-		return -1;
-	return 0;
-}
-
-#endif

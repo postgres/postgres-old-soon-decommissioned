@@ -25,9 +25,6 @@ OBJS+=dynloader.o pg_sema.o pg_shmem.o
 
 OBJS+=$(TAS)
 
-ifeq ($(PORTNAME), qnx4)
-OBJS+=qnx4/SUBSYS.o
-endif
 ifeq ($(PORTNAME), beos)
 OBJS+=beos/SUBSYS.o
 endif
@@ -42,11 +39,6 @@ all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) $@ $^
-
-qnx4/SUBSYS.o: qnx4.dir
-
-qnx4.dir:
-	$(MAKE) -C qnx4 all
 
 beos/SUBSYS.o: beos.dir
 
@@ -74,6 +66,5 @@ distclean clean:
 	rm -f SUBSYS.o $(OBJS) ipc_test ipc_test.o
 	$(MAKE) -C beos clean
 	$(MAKE) -C darwin clean
-	$(MAKE) -C qnx4 clean
 	$(MAKE) -C win32 clean
 

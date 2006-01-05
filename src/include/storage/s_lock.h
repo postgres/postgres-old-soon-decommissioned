@@ -684,25 +684,6 @@ typedef unsigned int slock_t;
 #endif	/* HPUX on IA64, non gcc */
 
 
-#if defined(__QNX__) && defined(__WATCOMC__)	/* QNX */
-/*
- * QNX 4 using WATCOM C
- */
-#define HAS_TEST_AND_SET
-
-typedef unsigned char slock_t;
-
-#define TAS(lock) wc_tas(lock)
-extern slock_t wc_tas(volatile slock_t *lock);
-#pragma aux wc_tas =\
-		"	mov   al,1    " \
-		" lock	xchg	al,[esi]" \
-		parm [esi]        \
-		value [al];
-
-#endif	 /* __QNX__ and __WATCOMC__*/
-
-
 #if defined(__sgi)	/* SGI compiler */
 /*
  * SGI IRIX 5

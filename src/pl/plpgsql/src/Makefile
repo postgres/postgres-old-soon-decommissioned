@@ -21,14 +21,7 @@ rpath :=
 
 OBJS = pl_gram.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o
 
-ifneq ($(PORTNAME), qnx4)
 all: all-lib
-else
-all:
-	@echo "*****"
-	@echo "* PL/pgSQL was not built due to library manager problems."
-	@echo "*****"
-endif
 
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib

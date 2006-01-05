@@ -2153,7 +2153,7 @@ comparetup_index(Tuplesortstate *state, const void *a, const void *b)
 	 * Some rather brain-dead implementations of qsort will sometimes call the
 	 * comparison routine to compare a value to itself.  (At this writing only
 	 * QNX 4 is known to do such silly things.)  Don't raise a bogus error in
-	 * that case.
+	 * that case.   Update: The QNX port is gone.
 	 */
 	if (state->enforceUnique && !equal_hasnull && tuple1 != tuple2)
 		ereport(ERROR,
