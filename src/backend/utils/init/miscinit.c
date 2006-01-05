@@ -777,7 +777,7 @@ CreateLockFile(const char *filename, bool amPostmaster,
 		 * using real kill() either...
 		 *
 		 * Normally kill() will fail with ESRCH if the given PID doesn't
-		 * exist. BeOS returns EINVAL for some silly reason, however.
+		 * exist.
 		 */
 		if (other_pid != my_pid
 #ifndef WIN32
@@ -786,11 +786,7 @@ CreateLockFile(const char *filename, bool amPostmaster,
 			)
 		{
 			if (kill(other_pid, 0) == 0 ||
-				(errno != ESRCH &&
-#ifdef __BEOS__
-				 errno != EINVAL &&
-#endif
-				 errno != EPERM))
+				(errno != ESRCH && errno != EPERM))
 			{
 				/* lockfile belongs to a live process */
 				ereport(FATAL,

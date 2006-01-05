@@ -1322,7 +1322,6 @@ main(int argc, char **argv)
 	 * Disallow running as root, to forestall any possible security holes.
 	 */
 #ifndef WIN32
-#ifndef __BEOS__				/* no root check on BEOS */
 	if (geteuid() == 0)
 	{
 		write_stderr(_("%s: cannot be run as root\n"
@@ -1332,7 +1331,6 @@ main(int argc, char **argv)
 					 progname);
 		exit(1);
 	}
-#endif
 #endif
 
 	/*

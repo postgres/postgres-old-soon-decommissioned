@@ -170,11 +170,6 @@
  * built-in definition of bool.
  */
 
-/* BeOS defines bool already, but the compiler chokes on the
- * #ifndef unless we wrap it in this check.
- */
-#ifndef __BEOS__
-
 #ifndef __cplusplus
 
 #ifndef bool
@@ -189,7 +184,6 @@ typedef char bool;
 #define false	((bool) 0)
 #endif
 #endif   /* not C++ */
-#endif   /* __BEOS__ */
 
 typedef bool *BoolPtr;
 

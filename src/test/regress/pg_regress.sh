@@ -216,7 +216,7 @@ esac
 # On some platforms we can't use Unix sockets.
 # ----------
 case $host_platform in
-    *-*-cygwin* | *-*-mingw32* | *beos*)
+    *-*-cygwin* | *-*-mingw32*)
         unix_sockets=no;;
     *)
         unix_sockets=yes;;

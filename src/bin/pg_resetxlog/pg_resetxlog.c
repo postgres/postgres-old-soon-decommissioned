@@ -220,7 +220,6 @@ main(int argc, char *argv[])
 	 * the data directory.
 	 */
 #ifndef WIN32
-#ifndef __BEOS__				/* no root check on BeOS */
 	if (geteuid() == 0)
 	{
 		fprintf(stderr, _("%s: cannot be executed by \"root\"\n"),
@@ -229,7 +228,6 @@ main(int argc, char *argv[])
 				progname);
 		exit(1);
 	}
-#endif
 #endif
 
 	DataDir = argv[optind];

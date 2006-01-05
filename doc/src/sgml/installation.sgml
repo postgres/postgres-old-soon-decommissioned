@@ -1996,13 +1996,6 @@ kill `cat /usr/local/pgsql/data/postmaster.pid`
 
     <tbody>
      <row>
-      <entry><systemitem class="osname">BeOS</></entry>
-      <entry><systemitem>x86</></entry>
-      <entry>7.2</entry>
-      <entry>Cyril Velter (<email>cyril.velter@libertysurf.fr</email>), 2001-11-29</entry>
-      <entry>needs updates to semaphore code</entry>
-     </row>
-     <row>
       <entry><systemitem class="osname">Linux</></entry>
       <entry><systemitem>PlayStation 2</></entry>
       <entry>8.0.0</entry>

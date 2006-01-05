@@ -633,8 +633,6 @@ get_id(void)
 
 	pw = getpwuid(geteuid());
 
-#ifndef __BEOS__				/* no root check on BEOS */
-
 	if (geteuid() == 0)			/* 0 is root's uid */
 	{
 		fprintf(stderr,
@@ -645,7 +643,6 @@ get_id(void)
 				progname);
 		exit(1);
 	}
-#endif
 #else							/* the windows code */
 
 	struct passwd_win32
