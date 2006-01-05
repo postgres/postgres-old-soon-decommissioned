@@ -185,7 +185,7 @@ systable_beginscan(Relation heapRelation,
 	Relation	irel;
 
 	if (indexOK &&
-		!IsIgnoringSystemIndexes() &&
+		!IgnoreSystemIndexes &&
 		!ReindexIsProcessingIndex(indexId))
 		irel = index_open(indexId);
 	else

@@ -551,7 +551,7 @@ RelationBuildRuleLock(Relation relation)
 	 *
 	 * Note: since we scan the rules using RewriteRelRulenameIndexId, we will
 	 * be reading the rules in name order, except possibly during
-	 * emergency-recovery operations (ie, IsIgnoringSystemIndexes). This in
+	 * emergency-recovery operations (ie, IgnoreSystemIndexes). This in
 	 * turn ensures that rules will be fired in name order.
 	 */
 	rewrite_desc = heap_open(RewriteRelationId, AccessShareLock);

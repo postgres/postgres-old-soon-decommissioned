@@ -306,8 +306,7 @@ extern bool InitPostgres(const char *dbname, const char *username);
 extern void BaseInit(void);
 
 /* in utils/init/miscinit.c */
-extern void IgnoreSystemIndexes(bool mode);
-extern bool IsIgnoringSystemIndexes(void);
+extern bool IgnoreSystemIndexes;
 extern void SetReindexProcessing(Oid heapOid, Oid indexOid);
 extern void ResetReindexProcessing(void);
 extern bool ReindexIsProcessingHeap(Oid heapOid);

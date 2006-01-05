@@ -62,27 +62,7 @@ static char socketLockFile[MAXPGPATH];
  * ----------------------------------------------------------------
  */
 
-static bool isIgnoringSystemIndexes = false;
-
-/*
- * IsIgnoringSystemIndexes
- *		True if ignoring system indexes.
- */
-bool
-IsIgnoringSystemIndexes(void)
-{
-	return isIgnoringSystemIndexes;
-}
-
-/*
- * IgnoreSystemIndexes
- *		Set true or false whether PostgreSQL ignores system indexes.
- */
-void
-IgnoreSystemIndexes(bool mode)
-{
-	isIgnoringSystemIndexes = mode;
-}
+bool IgnoreSystemIndexes = false;
 
 /* ----------------------------------------------------------------
  *		system index reindexing support

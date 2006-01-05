@@ -107,7 +107,7 @@ get_relation_info(Oid relationObjectId, RelOptInfo *rel)
 	/*
 	 * Make list of indexes.  Ignore indexes on system catalogs if told to.
 	 */
-	if (IsIgnoringSystemIndexes() && IsSystemClass(relation->rd_rel))
+	if (IgnoreSystemIndexes && IsSystemClass(relation->rd_rel))
 		hasindex = false;
 	else
 		hasindex = relation->rd_rel->relhasindex;

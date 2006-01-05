@@ -28,6 +28,7 @@
 extern CommandDest whereToSendOutput;
 extern DLLIMPORT const char *debug_query_string;
 extern int	max_stack_depth;
+extern int	PostAuthDelay;
 
 /* GUC-configurable parameters */
 
@@ -67,5 +68,8 @@ extern void ResetUsage(void);
 extern void ShowUsage(const char *title);
 extern void set_debug_options(int debug_flag,
 				  GucContext context, GucSource source);
+extern bool set_plan_disabling_options(const char *arg,
+									  GucContext context, GucSource source);
+extern const char *get_stats_option_name(const char *arg);
 
 #endif   /* TCOPPROT_H */

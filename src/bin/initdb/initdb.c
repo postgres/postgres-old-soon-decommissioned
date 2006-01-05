@@ -1686,10 +1686,10 @@ setup_sysviews(void)
 	sysviews_setup = readfile(system_views_file);
 
 	/*
-	 * We use -N here to avoid backslashing stuff in system_views.sql
+	 * We use -j here to avoid backslashing stuff in system_views.sql
 	 */
 	snprintf(cmd, sizeof(cmd),
-			 "\"%s\" %s -N template1 >%s",
+			 "\"%s\" %s -j template1 >%s",
 			 backend_exec, backend_options,
 			 DEVNULL);
 
@@ -1870,10 +1870,10 @@ setup_schema(void)
 	lines = readfile(info_schema_file);
 
 	/*
-	 * We use -N here to avoid backslashing stuff in information_schema.sql
+	 * We use -j here to avoid backslashing stuff in information_schema.sql
 	 */
 	snprintf(cmd, sizeof(cmd),
-			 "\"%s\" %s -N template1 >%s",
+			 "\"%s\" %s -j template1 >%s",
 			 backend_exec, backend_options,
 			 DEVNULL);
 
