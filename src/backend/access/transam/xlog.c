@@ -41,6 +41,7 @@
 #include "storage/spin.h"
 #include "utils/builtins.h"
 #include "utils/guc.h"
+#include "utils/pg_locale.h"
 #include "utils/relcache.h"
 
 
@@ -63,8 +64,13 @@
 #endif
 #endif
 
+#if defined(O_DSYNC)
 #if defined(OPEN_SYNC_FLAG)
-#if defined(O_DSYNC) && (O_DSYNC != OPEN_SYNC_FLAG)
+#if O_DSYNC != OPEN_SYNC_FLAG
+#define OPEN_DATASYNC_FLAG	  O_DSYNC
+#endif
+#else /* !defined(OPEN_SYNC_FLAG) */
+/* Win32 only has O_DSYNC */
 #define OPEN_DATASYNC_FLAG	  O_DSYNC
 #endif
 #endif
@@ -79,7 +85,11 @@
 #define DEFAULT_SYNC_METHOD		  SYNC_METHOD_FDATASYNC
 #define DEFAULT_SYNC_FLAGBIT	  0
 #else
+#ifndef FSYNC_IS_WRITE_THROUGH
 #define DEFAULT_SYNC_METHOD_STR   "fsync"
+#else
+#define DEFAULT_SYNC_METHOD_STR   "fsync_writethrough"
+#endif
 #define DEFAULT_SYNC_METHOD		  SYNC_METHOD_FSYNC
 #define DEFAULT_SYNC_FLAGBIT	  0
 #endif
@@ -414,8 +424,8 @@ static char *readRecordBuf = NULL;
 static uint32 readRecordBufSize = 0;
 
 /* State information for XLOG reading */
-static XLogRecPtr ReadRecPtr;
-static XLogRecPtr EndRecPtr;
+static XLogRecPtr ReadRecPtr;				/* start of last record read */
+static XLogRecPtr EndRecPtr;				/* end+1 of last record read */
 static XLogRecord *nextRecord = NULL;
 static TimeLineID lastPageTLI = 0;
 
@@ -2494,6 +2504,37 @@ got_record:;
 					 record->xl_rmid, RecPtr->xlogid, RecPtr->xrecoff)));
 		goto next_record_is_invalid;
 	}
+	if (randAccess)
+	{
+		/*
+		 * We can't exactly verify the prev-link, but surely it should be
+		 * less than the record's own address.
+		 */
+		if (!XLByteLT(record->xl_prev, *RecPtr))
+		{
+			ereport(emode,
+					(errmsg("record with incorrect prev-link %X/%X at %X/%X",
+							record->xl_prev.xlogid, record->xl_prev.xrecoff,
+							RecPtr->xlogid, RecPtr->xrecoff)));
+			goto next_record_is_invalid;
+		}
+	}
+	else
+	{
+		/*
+		 * Record's prev-link should exactly match our previous location.
+		 * This check guards against torn WAL pages where a stale but
+		 * valid-looking WAL record starts on a sector boundary.
+		 */
+		if (!XLByteEQ(record->xl_prev, ReadRecPtr))
+		{
+			ereport(emode,
+					(errmsg("record with incorrect prev-link %X/%X at %X/%X",
+							record->xl_prev.xlogid, record->xl_prev.xrecoff,
+							RecPtr->xlogid, RecPtr->xrecoff)));
+			goto next_record_is_invalid;
+		}
+	}
 
 	/*
 	 * Compute total length of record including any appended backup
@@ -3307,14 +3348,14 @@ ReadControlFile(void)
 			  " but the server was compiled with LOCALE_NAME_BUFLEN %d.",
 						   ControlFile->localeBuflen, LOCALE_NAME_BUFLEN),
 			 errhint("It looks like you need to recompile or initdb.")));
-	if (setlocale(LC_COLLATE, ControlFile->lc_collate) == NULL)
+	if (pg_perm_setlocale(LC_COLLATE, ControlFile->lc_collate) == NULL)
 		ereport(FATAL,
 		(errmsg("database files are incompatible with operating system"),
 		 errdetail("The database cluster was initialized with LC_COLLATE \"%s\","
 				   " which is not recognized by setlocale().",
 				   ControlFile->lc_collate),
 		 errhint("It looks like you need to initdb or install locale support.")));
-	if (setlocale(LC_CTYPE, ControlFile->lc_ctype) == NULL)
+	if (pg_perm_setlocale(LC_CTYPE, ControlFile->lc_ctype) == NULL)
 		ereport(FATAL,
 		(errmsg("database files are incompatible with operating system"),
 		 errdetail("The database cluster was initialized with LC_CTYPE \"%s\","
@@ -5154,7 +5195,12 @@ assign_xlog_sync_method(const char *method, bool doit, GucSource source)
 	int			new_sync_method;
 	int			new_sync_bit;
 
+#ifndef FSYNC_IS_WRITE_THROUGH
 	if (pg_strcasecmp(method, "fsync") == 0)
+#else
+	/* Win32 fsync() == _commit(), which writes through a write cache */
+	if (pg_strcasecmp(method, "fsync_writethrough") == 0)
+#endif
 	{
 		new_sync_method = SYNC_METHOD_FSYNC;
 		new_sync_bit = 0;
