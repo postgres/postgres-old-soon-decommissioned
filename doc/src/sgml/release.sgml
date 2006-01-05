@@ -81,8 +81,10 @@ marker (Bruce)</para></listitem>
 final line with no newline is processed properly (Tom)
 </para></listitem>
 
-<listitem><para>Fix bug in <filename>/contrib/pgcrypto</> Openwall
-gen_salt processing (Marko Kreen></para></listitem>
+<listitem><para>Fix bug in <filename>/contrib/pgcrypto</> gen_salt,
+which caused it not to use all available salt space for md5 and
+xdes algorithms (Marko Kreen, Solar Designer)</para>
+<para>Salts for blowfish and standard des are unaffected</para></listitem>
 
 <listitem><para>Fix autovacuum crash when processing expression indexes
 </para></listitem>
