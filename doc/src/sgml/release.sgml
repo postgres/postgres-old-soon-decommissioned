@@ -8059,7 +8059,6 @@ only supported with merge-joinable join conditions</>.</para></listitem>
 
 <listitem><para>Prevent core dump in <application>pg_autovacuum</> when a
 table has been dropped</para></listitem>
-</itemizedlist>
 
 </itemizedlist>
 
