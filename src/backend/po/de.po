@@ -8492,7 +8492,7 @@ msgstr ""
 #: commands/tablecmds.c:4675
 #, c-format
 msgid "multiple constraints named \"%s\" were dropped"
-msgstr "mehrere Constraints namens »%s« wurde gelöscht"
+msgstr "mehrere Constraints namens »%s« wurden gelöscht"
 
 #: commands/tablecmds.c:4720
 #, c-format
