@@ -28,6 +28,8 @@ extern const char *locale_numeric_assign(const char *value,
 extern const char *locale_time_assign(const char *value,
 				   bool doit, bool interactive);
 
+extern char *pg_perm_setlocale(int category, const char *locale);
+
 extern bool lc_collate_is_c(void);
 
 /*
