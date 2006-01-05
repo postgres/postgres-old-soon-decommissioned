@@ -105,6 +105,10 @@ extern char *strdup(char const *);
 extern long random(void);
 #endif
 
+#ifndef HAVE_UNSETENV
+extern void unsetenv(const char *name);
+#endif
+
 #ifndef HAVE_SRANDOM
 extern void srandom(unsigned int seed);
 #endif
