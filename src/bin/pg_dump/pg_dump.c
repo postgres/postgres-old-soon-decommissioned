@@ -1828,7 +1828,8 @@ getTypes(int *numTypes)
 		 * ordinary type because that would bring the table up into the
 		 * datatype part of the dump order.)
 		 */
-		if (OidIsValid(tinfo[i].typrelid) && tinfo[i].typrelkind != 'c')
+		if (OidIsValid(tinfo[i].typrelid) &&
+			tinfo[i].typrelkind != RELKIND_COMPOSITE_TYPE)
 			tinfo[i].dobj.objType = DO_TABLE_TYPE;
 
 		/*
@@ -4609,7 +4610,8 @@ dumpType(Archive *fout, TypeInfo *tinfo)
 
 	/* skip complex types, except for standalone composite types */
 	/* (note: this test should now be unnecessary) */
-	if (OidIsValid(tinfo->typrelid) && tinfo->typrelkind != 'c')
+	if (OidIsValid(tinfo->typrelid) &&
+		tinfo->typrelkind != RELKIND_COMPOSITE_TYPE)
 		return;
 
 	/* skip undefined placeholder types */
