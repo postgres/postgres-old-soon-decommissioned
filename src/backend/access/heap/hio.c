@@ -281,10 +281,17 @@ RelationGetBufferForTuple(Relation relation, Size len,
 		UnlockRelationForExtension(relation, ExclusiveLock);
 
 	/*
-	 * We need to initialize the empty new page.
+	 * We need to initialize the empty new page.  Double-check that it really
+	 * is empty (this should never happen, but if it does we don't want to
+	 * risk wiping out valid data).
 	 */
 	pageHeader = (Page) BufferGetPage(buffer);
-	Assert(PageIsNew((PageHeader) pageHeader));
+
+	if (!PageIsNew((PageHeader) pageHeader))
+		elog(ERROR, "page %u of relation \"%s\" should be empty but is not",
+			 BufferGetBlockNumber(buffer),
+			 RelationGetRelationName(relation));
+
 	PageInit(pageHeader, BufferGetPageSize(buffer), 0);
 
 	if (len > PageGetFreeSpace(pageHeader))
