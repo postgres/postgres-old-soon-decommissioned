@@ -1002,6 +1002,7 @@ ExecEndPlan(PlanState *planstate, EState *estate)
 			!estate->es_into_relation_descriptor->rd_istemp)
 		{
 			FlushRelationBuffers(estate->es_into_relation_descriptor);
+			/* FlushRelationBuffers will have opened rd_smgr */
 			smgrimmedsync(estate->es_into_relation_descriptor->rd_smgr);
 		}
 
