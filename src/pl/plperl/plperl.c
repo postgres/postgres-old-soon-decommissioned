@@ -57,6 +57,12 @@
 #include "mb/pg_wchar.h"
 
 /* perl stuff */
+
+/* stop perl from hijacking stdio and other stuff */
+#ifdef WIN32
+#define WIN32IO_IS_STDIO
+#endif 
+
 #include "EXTERN.h"
 #include "perl.h"
 #include "XSUB.h"
