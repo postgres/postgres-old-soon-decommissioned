@@ -484,7 +484,6 @@ extern DLLIMPORT bool assert_enabled;
 /*
  * Trap
  *		Generates an exception if the given condition is true.
- *
  */
 #define Trap(condition, errorType) \
 		do { \
@@ -510,7 +509,6 @@ extern DLLIMPORT bool assert_enabled;
 #define AssertMacro(condition)	((void)true)
 #define AssertArg(condition)
 #define AssertState(condition)
-#define assert_enabled 0
 #else
 #define Assert(condition) \
 		Trap(!(condition), "FailedAssertion")

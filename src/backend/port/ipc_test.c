@@ -47,15 +47,12 @@ volatile uint32 InterruptHoldoffCount = 0;
 volatile uint32 CritSectionCount = 0;
 
 bool		IsUnderPostmaster = false;
+bool		assert_enabled = true;
 
 int			MaxBackends = 32;
 int			NBuffers = 64;
 
 char	   *DataDir = ".";
-
-#ifndef assert_enabled
-bool		assert_enabled = true;
-#endif
 
 
 #define MAX_ON_EXITS 20
