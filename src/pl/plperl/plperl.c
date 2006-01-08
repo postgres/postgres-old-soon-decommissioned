@@ -60,18 +60,7 @@
 extern DLLIMPORT bool check_function_bodies;
 
 /* perl stuff */
-#include "EXTERN.h"
-#include "perl.h"
-#include "XSUB.h"
-#include "ppport.h"
-#include "spi_internal.h"
-
-/* just in case these symbols aren't provided */
-#ifndef pTHX_
-#define pTHX_
-#define pTHX void
-#endif
-
+#include "plperl.h"
 
 /**********************************************************************
  * The information we cache about loaded procedures
