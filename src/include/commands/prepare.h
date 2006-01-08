@@ -30,13 +30,16 @@
 typedef struct
 {
 	/* dynahash.c requires key to be first field */
-	char		stmt_name[NAMEDATALEN];
-	char	   *query_string;	/* text of query, or NULL */
-	const char *commandTag;		/* command tag (a constant!), or NULL */
-	List	   *query_list;		/* list of queries */
-	List	   *plan_list;		/* list of plans */
-	List	   *argtype_list;	/* list of parameter type OIDs */
-	MemoryContext context;		/* context containing this query */
+	char			stmt_name[NAMEDATALEN];
+	char		   *query_string;	/* text of query, or NULL */
+	const char	   *commandTag;		/* command tag (a constant!), or NULL */
+	List		   *query_list;		/* list of queries, rewritten */
+	List		   *plan_list;		/* list of plans */
+	List		   *argtype_list;	/* list of parameter type OIDs */
+	TimestampTz		prepare_time;	/* the time when the stmt was prepared */
+	bool			from_sql;		/* stmt prepared via SQL, not
+									 * FE/BE protocol? */
+	MemoryContext	context;		/* context containing this query */
 } PreparedStatement;
 
 
@@ -54,7 +57,8 @@ extern void StorePreparedStatement(const char *stmt_name,
 					   const char *commandTag,
 					   List *query_list,
 					   List *plan_list,
-					   List *argtype_list);
+					   List *argtype_list,
+					   bool from_sql);
 extern PreparedStatement *FetchPreparedStatement(const char *stmt_name,
 					   bool throwError);
 extern void DropPreparedStatement(const char *stmt_name, bool showError);
