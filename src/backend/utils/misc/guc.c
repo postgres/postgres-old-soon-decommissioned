@@ -983,7 +983,7 @@ static struct config_bool ConfigureNamesBool[] =
 	},
 
 	{
-		{"allow_system_table_mods", PGC_BACKEND, DEVELOPER_OPTIONS,
+		{"allow_system_table_mods", PGC_POSTMASTER, DEVELOPER_OPTIONS,
 		 gettext_noop("Allows modifications of the structure of system tables."),
 		 NULL,
 		 GUC_NOT_IN_SAMPLE
