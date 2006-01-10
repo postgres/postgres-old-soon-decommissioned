@@ -842,21 +842,24 @@ gmtload(struct state * sp)
 bool
 pg_tzset(const char *name)
 {
+	struct state tmpmem;
+
 	if (lcl_is_set && strcmp(lcl_TZname, name) == 0)
 		return true;			/* no change */
 
 	if (strlen(name) >= sizeof(lcl_TZname))
 		return false;			/* not gonna fit */
 
-	if (tzload(name, lclptr) != 0)
+	if (tzload(name, &tmpmem) != 0)
 	{
-		if (name[0] == ':' || tzparse(name, lclptr, FALSE) != 0)
+		if (name[0] == ':' || tzparse(name, &tmpmem, FALSE) != 0)
 		{
 			/* Unknown timezone. Fail our call instead of loading GMT! */
 			return false;
 		}
 	}
 
+	memcpy(lclptr, &tmpmem, sizeof(struct state));
 	strcpy(lcl_TZname, name);
 	lcl_is_set = true;
 
