@@ -165,15 +165,11 @@ int			setitimer(int which, const struct itimerval * value, struct itimerval * ov
 /*
  * Supplement to <sys/types.h>.
  *
- * Perl already has conflicting defines for uid_t and gid_t.
+ * Perl already has typedefs for uid_t and gid_t.
  */
 #ifndef PLPERL_HAVE_UID_GID
 typedef int uid_t;
 typedef int gid_t;
-#else
-/* These are redefined by perl. */
-#define uid_t int
-#define gid_t int
 #endif
 typedef long key_t;
 
