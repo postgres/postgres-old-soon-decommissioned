@@ -902,6 +902,7 @@ PLy_function_build_args(FunctionCallInfo fcinfo, PLyProcedure * proc)
 			 * FIXME -- error check this
 			 */
 			PyList_SetItem(args, i, arg);
+			arg = NULL;
 		}
 	}
 	PG_CATCH();
