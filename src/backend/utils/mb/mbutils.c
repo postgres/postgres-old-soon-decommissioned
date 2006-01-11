@@ -80,8 +80,8 @@ SetClientEncoding(int encoding, bool doit)
 	 * Check for cases that require no conversion function.
 	 */
 	if (current_server_encoding == encoding ||
-		(current_server_encoding == PG_SQL_ASCII ||
-		 encoding == PG_SQL_ASCII))
+		current_server_encoding == PG_SQL_ASCII ||
+		encoding == PG_SQL_ASCII)
 	{
 		if (doit)
 		{
