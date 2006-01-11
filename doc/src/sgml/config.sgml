@@ -1853,8 +1853,8 @@ archive_command = 'copy "%p" /mnt/server/archivedir/"%f"'  # Windows
       <listitem>
        <para>
         Use genetic query optimization to plan queries with at least
-        this many <literal>FROM</> items involved. (Note that an outer
-        <literal>JOIN</> construct counts as only one <literal>FROM</>
+        this many <literal>FROM</> items involved. (Note that a
+        <literal>FULL OUTER JOIN</> construct counts as only one <literal>FROM</>
         item.) The default is 12. For simpler queries it is usually best
         to use the deterministic, exhaustive planner, but for queries with
         many tables the deterministic planner takes too long.
