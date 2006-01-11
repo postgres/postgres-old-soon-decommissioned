@@ -194,7 +194,7 @@ text_macaddr(PG_FUNCTION_ARGS)
 
 	result = DirectFunctionCall1(macaddr_in, CStringGetDatum(str));
 
-	return (result);
+	return result;
 }
 
 /*

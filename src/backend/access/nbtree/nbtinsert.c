@@ -1498,7 +1498,7 @@ _bt_newroot(Relation rel, Buffer lbuf, Buffer rbuf)
 	/* write and let go of metapage buffer */
 	_bt_wrtbuf(rel, metabuf);
 
-	return (rootbuf);
+	return rootbuf;
 }
 
 /*

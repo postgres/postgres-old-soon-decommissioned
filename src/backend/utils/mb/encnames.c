@@ -490,7 +490,7 @@ pg_char_to_encoding(const char *s)
 	pg_encname *p = NULL;
 
 	if (!s)
-		return (-1);
+		return -1;
 
 	p = pg_char_to_encname_struct(s);
 	return p ? p->encoding : -1;

@@ -561,7 +561,7 @@ XLogInsert(RmgrId rmid, uint8 info, XLogRecData *rdata)
 	{
 		RecPtr.xlogid = 0;
 		RecPtr.xrecoff = SizeOfXLogLongPHD;		/* start of 1st chkpt record */
-		return (RecPtr);
+		return RecPtr;
 	}
 
 	/*
@@ -953,7 +953,7 @@ begin:;
 
 	END_CRIT_SECTION();
 
-	return (RecPtr);
+	return RecPtr;
 }
 
 /*
@@ -1742,7 +1742,7 @@ XLogFileInit(uint32 log, uint32 seg,
 								path, log, seg)));
 		}
 		else
-			return (fd);
+			return fd;
 	}
 
 	/*
@@ -1834,7 +1834,7 @@ XLogFileInit(uint32 log, uint32 seg,
 		   errmsg("could not open file \"%s\" (log file %u, segment %u): %m",
 				  path, log, seg)));
 
-	return (fd);
+	return fd;
 }
 
 /*

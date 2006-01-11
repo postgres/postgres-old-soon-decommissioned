@@ -2936,7 +2936,7 @@ PQsetClientEncoding(PGconn *conn, const char *encoding)
 		status = 0;				/* everything is ok */
 	}
 	PQclear(res);
-	return (status);
+	return status;
 }
 
 PGVerbosity

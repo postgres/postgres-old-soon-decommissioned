@@ -898,7 +898,7 @@ bitncmp(void *l, void *r, int n)
 	b = n / 8;
 	x = memcmp(l, r, b);
 	if (x)
-		return (x);
+		return x;
 
 	lb = ((const u_char *) l)[b];
 	rb = ((const u_char *) r)[b];

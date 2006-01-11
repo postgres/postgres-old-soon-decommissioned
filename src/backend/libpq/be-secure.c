@@ -486,7 +486,7 @@ my_SSL_set_fd(SSL *s, int fd)
 	SSL_set_bio(s, bio, bio);
 	ret = 1;
 err:
-	return (ret);
+	return ret;
 }
 
 /*

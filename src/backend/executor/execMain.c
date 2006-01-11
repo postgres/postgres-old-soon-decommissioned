@@ -1231,7 +1231,7 @@ lnext:	;
 						default:
 							elog(ERROR, "unrecognized heap_lock_tuple status: %u",
 								 test);
-							return (NULL);
+							return NULL;
 					}
 				}
 			}
@@ -2109,7 +2109,7 @@ lpqnext:;
 			epq->rti = 0;
 			estate->es_useEvalPlan = false;
 			/* and continue Query execution */
-			return (NULL);
+			return NULL;
 		}
 		Assert(oldepq->rti != 0);
 		/* push current PQ to freePQ stack */
@@ -2119,7 +2119,7 @@ lpqnext:;
 		goto lpqnext;
 	}
 
-	return (slot);
+	return slot;
 }
 
 static void

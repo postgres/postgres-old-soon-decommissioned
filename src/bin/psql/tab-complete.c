@@ -2169,7 +2169,7 @@ complete_from_list(const char *text, int state)
 		casesensitive = false;
 		list_index = 0;
 		state++;
-		return (complete_from_list(text, state));
+		return complete_from_list(text, state);
 	}
 
 	/* If no more matches, return null. */

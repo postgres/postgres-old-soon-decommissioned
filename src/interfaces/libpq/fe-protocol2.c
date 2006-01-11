@@ -1180,11 +1180,11 @@ pqEndcopy2(PGconn *conn)
 	 * and the flush fails
 	 */
 	if (pqFlush(conn) && pqIsnonblocking(conn))
-		return (1);
+		return 1;
 
 	/* non blocking connections may have to abort at this point. */
 	if (pqIsnonblocking(conn) && PQisBusy(conn))
-		return (1);
+		return 1;
 
 	/* Return to active duty */
 	conn->asyncStatus = PGASYNC_BUSY;
