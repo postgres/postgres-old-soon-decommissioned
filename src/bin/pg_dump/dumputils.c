@@ -480,10 +480,8 @@ buildACLCommands(const char *name, const char *type,
 	 * If we didn't find any owner privs, the owner must have revoked 'em all
 	 */
 	if (!found_owner_privs && owner)
-	{
 		appendPQExpBuffer(firstsql, "REVOKE ALL ON %s %s FROM %s;\n",
 						  type, name, fmtId(owner));
-	}
 
 	destroyPQExpBuffer(grantee);
 	destroyPQExpBuffer(grantor);
