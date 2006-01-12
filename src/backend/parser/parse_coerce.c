@@ -266,7 +266,8 @@ coerce_type(ParseState *pstate, Node *node,
 		}
 
 		param->paramtype = targetTypeId;
-		return (Node *) param;
+		return coerce_to_domain((Node *) param, InvalidOid, targetTypeId,
+								cformat);
 	}
 	if (find_coercion_pathway(targetTypeId, inputTypeId, ccontext,
 							  &funcId))
