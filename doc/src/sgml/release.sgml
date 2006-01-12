@@ -632,7 +632,7 @@ SELECT  'ALTER TABLE ' ||
     ' SET DEFAULT ' ||
     regexp_replace(d.adsrc,
                    $$val\(\(('[^']*')::text\)::regclass$$,
-                   $$val\(\1$$,
+                   $$val(\1$$,
                    'g') ||
     ';'
 FROM    pg_namespace n, pg_class c, pg_attribute a, pg_attrdef d
