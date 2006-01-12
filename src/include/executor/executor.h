@@ -98,7 +98,7 @@ extern bool ExecContextForcesOids(PlanState *planstate, bool *hasoids);
 extern void ExecConstraints(ResultRelInfo *resultRelInfo,
 				TupleTableSlot *slot, EState *estate);
 extern TupleTableSlot *EvalPlanQual(EState *estate, Index rti,
-									ItemPointer tid, TransactionId priorXmax);
+				ItemPointer tid, TransactionId priorXmax, CommandId curCid);
 
 /*
  * prototypes from functions in execProcnode.c

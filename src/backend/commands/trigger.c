@@ -1592,7 +1592,8 @@ ltrmark:;
 					epqslot = EvalPlanQual(estate,
 										   relinfo->ri_RangeTableIndex,
 										   &update_ctid,
-										   update_xmax);
+										   update_xmax,
+										   cid);
 					if (!TupIsNull(epqslot))
 					{
 						*tid = update_ctid;
