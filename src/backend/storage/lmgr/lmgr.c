@@ -383,13 +383,6 @@ XactLockTableWait(TransactionId xid)
 			break;
 		xid = SubTransGetParent(xid);
 	}
-
-	/*
-	 * Transaction was committed/aborted/crashed - we have to update pg_clog
-	 * if transaction is still marked as running.
-	 */
-	if (!TransactionIdDidCommit(xid) && !TransactionIdDidAbort(xid))
-		TransactionIdAbort(xid);
 }
 
 /*
@@ -420,13 +413,6 @@ ConditionalXactLockTableWait(TransactionId xid)
 			break;
 		xid = SubTransGetParent(xid);
 	}
-
-	/*
-	 * Transaction was committed/aborted/crashed - we have to update pg_clog
-	 * if transaction is still marked as running.
-	 */
-	if (!TransactionIdDidCommit(xid) && !TransactionIdDidAbort(xid))
-		TransactionIdAbort(xid);
 
 	return true;
 }
