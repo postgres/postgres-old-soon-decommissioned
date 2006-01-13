@@ -447,6 +447,17 @@ CREATE TYPE <replaceable class="parameter">name</replaceable> (
   </para>
 
   <para>
+   Because there are no restrictions on use of a data type once it's been
+   created, creating a base type is tantamount to granting public execute
+   permission on the functions mentioned in the type definition.  (The creator
+   of the type is therefore required to own these functions.)  This is usually
+   not an issue for the sorts of functions that are useful in a type
+   definition.  But you might want to think twice before designing a type
+   in a way that would require <quote>secret</> information to be used
+   while converting it to or from external form.
+  </para>
+
+  <para>
    In <productname>PostgreSQL</productname> versions before 7.3, it
    was customary to avoid creating a shell type by replacing the
    functions' forward references to the type name with the placeholder
