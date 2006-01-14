@@ -663,6 +663,14 @@ clause_selectivity(PlannerInfo *root,
 							varRelid,
 							jointype);
 	}
+	else if (IsA(clause, RowCompareExpr))
+	{
+		/* Use node specific selectivity calculation function */
+		s1 = rowcomparesel(root,
+						   (RowCompareExpr *) clause,
+						   varRelid,
+						   jointype);
+	}
 	else if (IsA(clause, NullTest))
 	{
 		/* Use node specific selectivity calculation function */

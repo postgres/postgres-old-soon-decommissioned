@@ -116,6 +116,9 @@ extern Selectivity scalararraysel(PlannerInfo *root,
 								  ScalarArrayOpExpr *clause,
 								  bool is_join_clause,
 								  int varRelid, JoinType jointype);
+extern Selectivity rowcomparesel(PlannerInfo *root,
+								 RowCompareExpr *clause,
+								 int varRelid, JoinType jointype);
 
 extern void mergejoinscansel(PlannerInfo *root, Node *clause,
 				 Selectivity *leftscan,
