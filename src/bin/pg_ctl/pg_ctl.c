@@ -1521,10 +1521,13 @@ main(int argc, char **argv)
 		do_wait = false;
 	}
 
-	snprintf(def_postopts_file, MAXPGPATH, "%s/postmaster.opts.default", pg_data);
-	snprintf(postopts_file, MAXPGPATH, "%s/postmaster.opts", pg_data);
-	snprintf(pid_file, MAXPGPATH, "%s/postmaster.pid", pg_data);
-	snprintf(conf_file, MAXPGPATH, "%s/postgresql.conf", pg_data);
+	if (pg_data != NULL)
+	{
+		snprintf(def_postopts_file, MAXPGPATH, "%s/postmaster.opts.default", pg_data);
+		snprintf(postopts_file, MAXPGPATH, "%s/postmaster.opts", pg_data);
+		snprintf(pid_file, MAXPGPATH, "%s/postmaster.pid", pg_data);
+		snprintf(conf_file, MAXPGPATH, "%s/postgresql.conf", pg_data);
+	}
 
 	switch (ctl_command)
 	{
