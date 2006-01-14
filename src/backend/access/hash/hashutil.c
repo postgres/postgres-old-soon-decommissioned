@@ -16,7 +16,7 @@
 
 #include "access/genam.h"
 #include "access/hash.h"
-#include "access/iqual.h"
+#include "executor/execdebug.h"
 
 
 /*
@@ -25,8 +25,39 @@
 bool
 _hash_checkqual(IndexScanDesc scan, IndexTuple itup)
 {
-	return index_keytest(itup, RelationGetDescr(scan->indexRelation),
-						 scan->numberOfKeys, scan->keyData);
+	TupleDesc	tupdesc = RelationGetDescr(scan->indexRelation);
+	ScanKey		key = scan->keyData;
+	int			scanKeySize = scan->numberOfKeys;
+
+	IncrIndexProcessed();
+
+	while (scanKeySize > 0)
+	{
+		Datum		datum;
+		bool		isNull;
+		Datum		test;
+
+		datum = index_getattr(itup,
+							  key->sk_attno,
+							  tupdesc,
+							  &isNull);
+
+		/* assume sk_func is strict */
+		if (isNull)
+			return false;
+		if (key->sk_flags & SK_ISNULL)
+			return false;
+
+		test = FunctionCall2(&key->sk_func, datum, key->sk_argument);
+
+		if (!DatumGetBool(test))
+			return false;
+
+		key++;
+		scanKeySize--;
+	}
+
+	return true;
 }
 
 /*

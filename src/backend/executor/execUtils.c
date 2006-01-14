@@ -67,9 +67,7 @@ int			NTupleReplaced;
 int			NTupleAppended;
 int			NTupleDeleted;
 int			NIndexTupleInserted;
-extern int	NIndexTupleProcessed;		/* have to be defined in the access
-										 * method level so that the
-										 * cinterface.a will link ok. */
+int			NIndexTupleProcessed;
 
 
 static void ShutdownExprContext(ExprContext *econtext);

@@ -332,13 +332,15 @@ gistnext(IndexScanDesc scan, ScanDirection dir, ItemPointer tids, int maxtids, b
 }
 
 /*
- * Similar to index_keytest, but first decompress the key in the
- * IndexTuple before passing it to the sk_func (and we have previously
- * overwritten the sk_func to use the user-defined Consistent method,
- * so we actually invoke that). Note that this function is always
- * invoked in a short-lived memory context, so we don't need to worry
- * about cleaning up allocated memory (either here or in the
- * implementation of any Consistent methods).
+ * gistindex_keytest() -- does this index tuple satisfy the scan key(s)?
+ *
+ * We must decompress the key in the IndexTuple before passing it to the
+ * sk_func (and we have previously overwritten the sk_func to use the
+ * user-defined Consistent method, so we actually are invoking that).
+ *
+ * Note that this function is always invoked in a short-lived memory context,
+ * so we don't need to worry about cleaning up allocated memory, either here
+ * or in the implementation of any Consistent methods.
  */
 static bool
 gistindex_keytest(IndexTuple tuple,

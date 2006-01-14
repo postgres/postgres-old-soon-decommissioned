@@ -69,10 +69,15 @@ typedef struct ScanKeyData
 
 typedef ScanKeyData *ScanKey;
 
-/* ScanKeyData sk_flags */
+/*
+ * ScanKeyData sk_flags
+ *
+ * sk_flags bits 0-15 are reserved for system-wide use (symbols for those
+ * bits should be defined here).  Bits 16-31 are reserved for use within
+ * individual index access methods.
+ */
 #define SK_ISNULL		0x0001	/* sk_argument is NULL */
 #define SK_UNARY		0x0002	/* unary operator (currently unsupported) */
-#define SK_NEGATE		0x0004	/* must negate the function result */
 
 
 /*
