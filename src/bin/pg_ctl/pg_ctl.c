@@ -117,6 +117,7 @@ static pgpid_t get_pgpid(void);
 static char **readfile(const char *path);
 static int	start_postmaster(void);
 static bool test_postmaster_connection(void);
+static bool postmaster_is_alive(pid_t pid);
 
 static char def_postopts_file[MAXPGPATH];
 static char postopts_file[MAXPGPATH];
@@ -237,7 +238,7 @@ static pgpid_t
 get_pgpid(void)
 {
 	FILE	   *pidf;
-	pgpid_t		pid;
+	long		pid;
 
 	pidf = fopen(pid_file, "r");
 	if (pidf == NULL)
@@ -247,14 +248,19 @@ get_pgpid(void)
 			return 0;
 		else
 		{
-			write_stderr(_("%s: could not open PID file \"%s\": %s"),
+			write_stderr(_("%s: could not open PID file \"%s\": %s\n"),
 						 progname, pid_file, strerror(errno));
 			exit(1);
 		}
 	}
-	fscanf(pidf, "%ld", &pid);
+	if (fscanf(pidf, "%ld", &pid) != 1)
+	{
+		write_stderr(_("%s: invalid data in PID file \"%s\"\n"),
+					 progname, pid_file);
+		exit(1);
+	}
 	fclose(pidf);
-	return pid;
+	return (pgpid_t) pid;
 }
 
 
@@ -675,7 +681,8 @@ do_restart(void)
 
 	if (pid == 0)				/* no pid file */
 	{
-		write_stderr(_("%s: PID file \"%s\" does not exist\n"), progname, pid_file);
+		write_stderr(_("%s: PID file \"%s\" does not exist\n"),
+					 progname, pid_file);
 		write_stderr(_("Is postmaster running?\n"));
 		write_stderr(_("starting postmaster anyway\n"));
 		do_start();
@@ -684,45 +691,58 @@ do_restart(void)
 	else if (pid < 0)			/* standalone backend, not postmaster */
 	{
 		pid = -pid;
-		write_stderr(_("%s: cannot restart postmaster; "
-					   "postgres is running (PID: %ld)\n"),
-					 progname, pid);
-		write_stderr(_("Please terminate postgres and try again.\n"));
-		exit(1);
+		if (postmaster_is_alive((pid_t) pid))
+		{
+			write_stderr(_("%s: cannot restart postmaster; "
+						   "postgres is running (PID: %ld)\n"),
+						 progname, pid);
+			write_stderr(_("Please terminate postgres and try again.\n"));
+			exit(1);
+		}
 	}
 
-	if (kill((pid_t) pid, sig) != 0)
+	if (postmaster_is_alive((pid_t) pid))
 	{
-		write_stderr(_("%s: could not send stop signal (PID: %ld): %s\n"), progname, pid,
-					 strerror(errno));
-		exit(1);
-	}
+		if (kill((pid_t) pid, sig) != 0)
+		{
+			write_stderr(_("%s: could not send stop signal (PID: %ld): %s\n"), progname, pid,
+						 strerror(errno));
+			exit(1);
+		}
 
-	print_msg(_("waiting for postmaster to shut down..."));
+		print_msg(_("waiting for postmaster to shut down..."));
 
 	/* always wait for restart */
 
-	for (cnt = 0; cnt < wait_seconds; cnt++)
-	{
-		if ((pid = get_pgpid()) != 0)
+		for (cnt = 0; cnt < wait_seconds; cnt++)
 		{
-			print_msg(".");
-			pg_usleep(1000000); /* 1 sec */
+			if ((pid = get_pgpid()) != 0)
+			{
+				print_msg(".");
+				pg_usleep(1000000); /* 1 sec */
+			}
+			else
+				break;
 		}
-		else
-			break;
-	}
 
-	if (pid != 0)				/* pid file still exists */
+		if (pid != 0)				/* pid file still exists */
+		{
+			print_msg(_(" failed\n"));
+
+			write_stderr(_("%s: postmaster does not shut down\n"), progname);
+			exit(1);
+		}
+
+		print_msg(_(" done\n"));
+		printf(_("postmaster stopped\n"));
+	}
+	else
 	{
-		print_msg(_(" failed\n"));
-
-		write_stderr(_("%s: postmaster does not shut down\n"), progname);
-		exit(1);
+		write_stderr(_("%s: old postmaster process (PID: %ld) seems to be gone\n"),
+					 progname, pid);
+		write_stderr(_("starting postmaster anyway\n"));
 	}
 
-	print_msg(_(" done\n"));
-	printf(_("postmaster stopped\n"));
 	do_start();
 }
 
@@ -763,34 +783,67 @@ do_reload(void)
  *	utility routines
  */
 
+static bool
+postmaster_is_alive(pid_t pid)
+{
+	/*
+	 * Test to see if the process is still there.  Note that we do not
+	 * consider an EPERM failure to mean that the process is still there;
+	 * EPERM must mean that the given PID belongs to some other userid,
+	 * and considering the permissions on $PGDATA, that means it's not
+	 * the postmaster we are after.
+	 *
+	 * Don't believe that our own PID or parent shell's PID is the postmaster,
+	 * either.  (Windows hasn't got getppid(), though.)
+	 */
+	if (pid == getpid())
+		return false;
+#ifndef WIN32
+	if (pid == getppid())
+		return false;
+#endif
+	if (kill(pid, 0) == 0)
+		return true;
+	return false;
+}
+
 static void
 do_status(void)
 {
 	pgpid_t		pid;
 
 	pid = get_pgpid();
-	if (pid == 0)				/* no pid file */
+	if (pid != 0)				/* 0 means no pid file */
 	{
-		printf(_("%s: neither postmaster nor postgres running\n"), progname);
-		exit(1);
-	}
-	else if (pid < 0)			/* standalone backend */
-	{
-		pid = -pid;
-		printf(_("%s: a standalone backend \"postgres\" is running (PID: %ld)\n"), progname, pid);
-	}
-	else
-	/* postmaster */
-	{
-		char	  **optlines;
+		if (pid < 0)			/* standalone backend */
+		{
+			pid = -pid;
+			if (postmaster_is_alive((pid_t) pid))
+			{
+				printf(_("%s: a standalone backend \"postgres\" is running (PID: %ld)\n"),
+					   progname, pid);
+				return;
+			}
+		}
+		else					/* postmaster */
+		{
+			if (postmaster_is_alive((pid_t) pid))
+			{
+				char	  **optlines;
 
-		printf(_("%s: postmaster is running (PID: %ld)\n"), progname, pid);
+				printf(_("%s: postmaster is running (PID: %ld)\n"),
+					   progname, pid);
 
-		optlines = readfile(postopts_file);
-		if (optlines != NULL)
-			for (; *optlines != NULL; optlines++)
-				fputs(*optlines, stdout);
+				optlines = readfile(postopts_file);
+				if (optlines != NULL)
+					for (; *optlines != NULL; optlines++)
+						fputs(*optlines, stdout);
+				return;
+			}
+		}
 	}
+	printf(_("%s: neither postmaster nor postgres running\n"), progname);
+	exit(1);
 }
 
 
@@ -800,8 +853,8 @@ do_kill(pgpid_t pid)
 {
 	if (kill((pid_t) pid, sig) != 0)
 	{
-		write_stderr(_("%s: could not send signal %d (PID: %ld): %s\n"), progname, sig, pid,
-					 strerror(errno));
+		write_stderr(_("%s: could not send signal %d (PID: %ld): %s\n"),
+					 progname, sig, pid, strerror(errno));
 		exit(1);
 	}
 }
@@ -1465,10 +1518,13 @@ main(int argc, char **argv)
 		do_wait = false;
 	}
 
-	snprintf(def_postopts_file, MAXPGPATH, "%s/postmaster.opts.default", pg_data);
-	snprintf(postopts_file, MAXPGPATH, "%s/postmaster.opts", pg_data);
-	snprintf(pid_file, MAXPGPATH, "%s/postmaster.pid", pg_data);
-	snprintf(conf_file, MAXPGPATH, "%s/postgresql.conf", pg_data);
+	if (pg_data != NULL)
+	{
+		snprintf(def_postopts_file, MAXPGPATH, "%s/postmaster.opts.default", pg_data);
+		snprintf(postopts_file, MAXPGPATH, "%s/postmaster.opts", pg_data);
+		snprintf(pid_file, MAXPGPATH, "%s/postmaster.pid", pg_data);
+		snprintf(conf_file, MAXPGPATH, "%s/postgresql.conf", pg_data);
+	}
 
 	switch (ctl_command)
 	{
