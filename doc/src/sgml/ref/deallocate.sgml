@@ -25,7 +25,7 @@ PostgreSQL documentation
 
  <refsynopsisdiv>
 <synopsis>
-DEALLOCATE [ PREPARE ] <replaceable class="parameter">plan_name</replaceable>
+DEALLOCATE [ PREPARE ] <replaceable class="parameter">name</replaceable>
 </synopsis>
  </refsynopsisdiv>
 
@@ -58,7 +58,7 @@ DEALLOCATE [ PREPARE ] <replaceable class="parameter">plan_name</replaceable>
    </varlistentry>
 
    <varlistentry>
-    <term><replaceable class="parameter">plan_name</replaceable></term>
+    <term><replaceable class="parameter">name</replaceable></term>
     <listitem>
      <para>
       The name of the prepared statement to deallocate.
