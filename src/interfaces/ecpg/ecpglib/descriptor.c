@@ -503,7 +503,11 @@ ECPGset_desc(int lineno, const char *desc_name, int index,...)
 			break;
 
 		type = va_arg(args, enum ECPGttype);
+#if defined(__GNUC__) && (defined (__powerpc__) || defined(__amd64__) || defined(__x86_64__))
+		ECPGget_variable(args, type, var, false);
+#else
 		ECPGget_variable(&args, type, var, false);
+#endif
 
 		switch (itemtype)
 		{
