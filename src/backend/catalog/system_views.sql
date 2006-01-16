@@ -160,7 +160,7 @@ CREATE VIEW pg_prepared_statements AS
     SELECT P.name, P.statement, P.prepare_time, P.parameter_types, P.from_sql
     FROM pg_prepared_statement() AS P
     (name text, statement text, prepare_time timestamptz,
-     parameter_types oid[], from_sql boolean);
+     parameter_types regtype[], from_sql boolean);
 
 CREATE VIEW pg_settings AS 
     SELECT * 
