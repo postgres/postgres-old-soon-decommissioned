@@ -295,10 +295,10 @@ and <replaceable class="PARAMETER">table_constraint</replaceable> is:
      <para>
       An optional name for a column or table constraint.  If the
       constraint is violated, the constraint name is present in error messages,
-      so constraint names like <literal>"col must be positive"</> can be used
+      so constraint names like <literal>col must be positive</> can be used
       to communicate helpful constraint information to client applications.
-      (Double-quotes are required for constraint names that contain spaces.)
-      If not specified, the system generates a name.
+      (Double-quotes are needed to specify constraint names that contain spaces.)
+      If a constraint name is not specified, the system generates a name.
      </para>
     </listitem>
    </varlistentry>
