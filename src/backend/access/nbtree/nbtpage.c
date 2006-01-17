@@ -813,7 +813,7 @@ _bt_pagedel(Relation rel, Buffer buf, bool vacuum_full)
 	 * better drop the target page lock first.
 	 */
 	_bt_relbuf(rel, buf);
-	/* we need a scan key to do our search, so build one */
+	/* we need an insertion scan key to do our search, so build one */
 	itup_scankey = _bt_mkscankey(rel, &(targetkey->bti_itup));
 	/* find the leftmost leaf page containing this key */
 	stack = _bt_search(rel, rel->rd_rel->relnatts, itup_scankey, false,
