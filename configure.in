@@ -810,6 +810,9 @@ if test "$with_krb5" = yes; then
                    [#include <krb5.h>])
 fi
 
+# This is probably only present on Darwin, but may as well check always
+AC_CHECK_DECLS(F_FULLFSYNC, [], [], [#include <fcntl.h>])
+
 ##
 ## Functions, global variables
 ##

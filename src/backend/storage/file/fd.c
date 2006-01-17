@@ -265,13 +265,15 @@ int
 pg_fsync_writethrough(int fd)
 {
 	if (enableFsync)
+	{
 #ifdef WIN32
 		return _commit(fd);
-#elif defined(__darwin__)
-	return (fcntl(fd, F_FULLFSYNC, 0) == -1) ? -1 : 0;
+#elif defined(F_FULLFSYNC)
+		return (fcntl(fd, F_FULLFSYNC, 0) == -1) ? -1 : 0;
 #else
 		return -1;
 #endif
+	}
 	else
 		return 0;
 }
