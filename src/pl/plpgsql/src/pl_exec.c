@@ -253,12 +253,14 @@ plpgsql_exec_function(PLpgSQL_function *func, FunctionCallInfo fcinfo)
 						tupType = HeapTupleHeaderGetTypeId(td);
 						tupTypmod = HeapTupleHeaderGetTypMod(td);
 						tupdesc = lookup_rowtype_tupdesc(tupType, tupTypmod);
+						tupdesc = CreateTupleDescCopy(tupdesc);
 						/* Build a temporary HeapTuple control structure */
 						tmptup.t_len = HeapTupleHeaderGetDatumLength(td);
 						ItemPointerSetInvalid(&(tmptup.t_self));
 						tmptup.t_tableOid = InvalidOid;
 						tmptup.t_data = td;
 						exec_move_row(&estate, NULL, row, &tmptup, tupdesc);
+						FreeTupleDesc(tupdesc);
 					}
 					else
 					{
@@ -3110,12 +3112,14 @@ exec_assign_value(PLpgSQL_execstate *estate,
 					tupType = HeapTupleHeaderGetTypeId(td);
 					tupTypmod = HeapTupleHeaderGetTypMod(td);
 					tupdesc = lookup_rowtype_tupdesc(tupType, tupTypmod);
+					tupdesc = CreateTupleDescCopy(tupdesc);
 					/* Build a temporary HeapTuple control structure */
 					tmptup.t_len = HeapTupleHeaderGetDatumLength(td);
 					ItemPointerSetInvalid(&(tmptup.t_self));
 					tmptup.t_tableOid = InvalidOid;
 					tmptup.t_data = td;
 					exec_move_row(estate, NULL, row, &tmptup, tupdesc);
+					FreeTupleDesc(tupdesc);
 				}
 				break;
 			}
@@ -3152,12 +3156,14 @@ exec_assign_value(PLpgSQL_execstate *estate,
 					tupType = HeapTupleHeaderGetTypeId(td);
 					tupTypmod = HeapTupleHeaderGetTypMod(td);
 					tupdesc = lookup_rowtype_tupdesc(tupType, tupTypmod);
+					tupdesc = CreateTupleDescCopy(tupdesc);
 					/* Build a temporary HeapTuple control structure */
 					tmptup.t_len = HeapTupleHeaderGetDatumLength(td);
 					ItemPointerSetInvalid(&(tmptup.t_self));
 					tmptup.t_tableOid = InvalidOid;
 					tmptup.t_data = td;
 					exec_move_row(estate, rec, NULL, &tmptup, tupdesc);
+					FreeTupleDesc(tupdesc);
 				}
 				break;
 			}

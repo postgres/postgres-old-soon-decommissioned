@@ -246,7 +246,7 @@ get_expr_result_type(Node *expr,
 			*resultTupleDesc = NULL;
 		result = get_type_func_class(typid);
 		if (result == TYPEFUNC_COMPOSITE && resultTupleDesc)
-			*resultTupleDesc = lookup_rowtype_tupdesc(typid, -1);
+			*resultTupleDesc = CreateTupleDescCopy(lookup_rowtype_tupdesc(typid, -1));
 	}
 
 	return result;
@@ -363,7 +363,7 @@ internal_get_result_type(Oid funcid,
 	{
 		case TYPEFUNC_COMPOSITE:
 			if (resultTupleDesc)
-				*resultTupleDesc = lookup_rowtype_tupdesc(rettype, -1);
+				*resultTupleDesc = CreateTupleDescCopy(lookup_rowtype_tupdesc(rettype, -1));
 			/* Named composite types can't have any polymorphic columns */
 			break;
 		case TYPEFUNC_SCALAR:

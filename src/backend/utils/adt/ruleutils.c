@@ -2699,7 +2699,7 @@ get_name_for_var_field(Var *var, int fieldno,
 
 	/* Got the tupdesc, so we can extract the field name */
 	Assert(fieldno >= 1 && fieldno <= tupleDesc->natts);
-	return NameStr(tupleDesc->attrs[fieldno - 1]->attname);
+	return pstrdup(NameStr(tupleDesc->attrs[fieldno - 1]->attname));
 }
 
 
@@ -3493,6 +3493,7 @@ get_rule_expr(Node *node, deparse_context *context,
 				if (rowexpr->row_typeid != RECORDOID)
 				{
 					tupdesc = lookup_rowtype_tupdesc(rowexpr->row_typeid, -1);
+					tupdesc = CreateTupleDescCopy(tupdesc);
 					Assert(list_length(rowexpr->args) <= tupdesc->natts);
 				}
 
