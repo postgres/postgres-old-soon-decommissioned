@@ -3245,6 +3245,7 @@ get_rule_expr(Node *node, deparse_context *context,
 				if (rowexpr->row_typeid != RECORDOID)
 				{
 					tupdesc = lookup_rowtype_tupdesc(rowexpr->row_typeid, -1);
+					tupdesc = CreateTupleDescCopy(tupdesc);
 					Assert(list_length(rowexpr->args) <= tupdesc->natts);
 				}
 

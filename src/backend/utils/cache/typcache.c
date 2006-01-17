@@ -383,6 +383,8 @@ lookup_default_opclass(Oid type_id, Oid am_id)
  *
  * Note: returned TupleDesc points to cached copy; caller must copy it
  * if intending to scribble on it or keep a reference for a long time.
+ * ("A long time" basically means "across any possible cache flush",
+ * which typically could occur at any relation open or catalog lookup.)
  */
 TupleDesc
 lookup_rowtype_tupdesc(Oid type_id, int32 typmod)

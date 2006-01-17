@@ -533,6 +533,7 @@ pltcl_func_handler(PG_FUNCTION_ARGS)
 					tupType = HeapTupleHeaderGetTypeId(td);
 					tupTypmod = HeapTupleHeaderGetTypMod(td);
 					tupdesc = lookup_rowtype_tupdesc(tupType, tupTypmod);
+					tupdesc = CreateTupleDescCopy(tupdesc);
 					/* Build a temporary HeapTuple control structure */
 					tmptup.t_len = HeapTupleHeaderGetDatumLength(td);
 					tmptup.t_data = td;
@@ -541,6 +542,7 @@ pltcl_func_handler(PG_FUNCTION_ARGS)
 					pltcl_build_tuple_argument(&tmptup, tupdesc, &list_tmp);
 					Tcl_DStringAppendElement(&tcl_cmd,
 											 Tcl_DStringValue(&list_tmp));
+					FreeTupleDesc(tupdesc);
 				}
 			}
 			else

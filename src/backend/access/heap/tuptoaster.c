@@ -820,6 +820,7 @@ toast_flatten_tuple_attribute(Datum value,
 	if (tupleDesc == NULL)
 		return value;			/* not a composite type */
 
+	tupleDesc = CreateTupleDescCopy(tupleDesc);
 	att = tupleDesc->attrs;
 	numAttrs = tupleDesc->natts;
 
@@ -866,7 +867,10 @@ toast_flatten_tuple_attribute(Datum value,
 	 * If nothing to untoast, just return the original tuple.
 	 */
 	if (!need_change)
+	{
+		FreeTupleDesc(tupleDesc);
 		return value;
+	}
 
 	/*
 	 * Calculate the new size of the tuple.  Header size should not
@@ -903,6 +907,7 @@ toast_flatten_tuple_attribute(Datum value,
 	for (i = 0; i < numAttrs; i++)
 		if (toast_free[i])
 			pfree(DatumGetPointer(toast_values[i]));
+	FreeTupleDesc(tupleDesc);
 
 	return PointerGetDatum(new_data);
 }

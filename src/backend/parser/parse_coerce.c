@@ -700,7 +700,7 @@ coerce_record_to_complex(ParseState *pstate, Node *node,
 						format_type_be(RECORDOID),
 						format_type_be(targetTypeId))));
 
-	tupdesc = lookup_rowtype_tupdesc(targetTypeId, -1);
+	tupdesc = CreateTupleDescCopy(lookup_rowtype_tupdesc(targetTypeId, -1));
 	newargs = NIL;
 	ucolno = 1;
 	arg = list_head(args);
@@ -757,6 +757,8 @@ coerce_record_to_complex(ParseState *pstate, Node *node,
 						format_type_be(RECORDOID),
 						format_type_be(targetTypeId)),
 				 errdetail("Input has too many columns.")));
+
+	FreeTupleDesc(tupdesc);
 
 	rowexpr = makeNode(RowExpr);
 	rowexpr->args = newargs;

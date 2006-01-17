@@ -861,6 +861,7 @@ PLy_function_build_args(FunctionCallInfo fcinfo, PLyProcedure * proc)
 					tupType = HeapTupleHeaderGetTypeId(td);
 					tupTypmod = HeapTupleHeaderGetTypMod(td);
 					tupdesc = lookup_rowtype_tupdesc(tupType, tupTypmod);
+					tupdesc = CreateTupleDescCopy(tupdesc);
 
 					/* Set up I/O funcs if not done yet */
 					if (proc->args[i].is_rowtype != 1)
@@ -871,6 +872,7 @@ PLy_function_build_args(FunctionCallInfo fcinfo, PLyProcedure * proc)
 					tmptup.t_data = td;
 
 					arg = PLyDict_FromTuple(&(proc->args[i]), &tmptup, tupdesc);
+					FreeTupleDesc(tupdesc);
 				}
 			}
 			else

@@ -54,6 +54,7 @@ record_in(PG_FUNCTION_ARGS)
 {
 	char	   *string = PG_GETARG_CSTRING(0);
 	Oid			tupType = PG_GETARG_OID(1);
+	HeapTupleHeader result;
 	int32		tupTypmod;
 	TupleDesc	tupdesc;
 	HeapTuple	tuple;
@@ -78,6 +79,7 @@ record_in(PG_FUNCTION_ARGS)
 		errmsg("input of anonymous composite types is not implemented")));
 	tupTypmod = -1;				/* for all non-anonymous types */
 	tupdesc = lookup_rowtype_tupdesc(tupType, tupTypmod);
+	tupdesc = CreateTupleDescCopy(tupdesc);
 	ncolumns = tupdesc->natts;
 
 	/*
@@ -244,11 +246,21 @@ record_in(PG_FUNCTION_ARGS)
 
 	tuple = heap_formtuple(tupdesc, values, nulls);
 
+	/*
+	 * We cannot return tuple->t_data because heap_formtuple allocates it
+	 * as part of a larger chunk, and our caller may expect to be able to
+	 * pfree our result.  So must copy the info into a new palloc chunk.
+	 */
+	result = (HeapTupleHeader) palloc(tuple->t_len);
+	memcpy(result, tuple->t_data, tuple->t_len);
+
+	heap_freetuple(tuple);
 	pfree(buf.data);
 	pfree(values);
 	pfree(nulls);
+	FreeTupleDesc(tupdesc);
 
-	PG_RETURN_HEAPTUPLEHEADER(tuple->t_data);
+	PG_RETURN_HEAPTUPLEHEADER(result);
 }
 
 /*
@@ -258,7 +270,7 @@ Datum
 record_out(PG_FUNCTION_ARGS)
 {
 	HeapTupleHeader rec = PG_GETARG_HEAPTUPLEHEADER(0);
-	Oid			tupType = PG_GETARG_OID(1);
+	Oid			tupType;
 	int32		tupTypmod;
 	TupleDesc	tupdesc;
 	HeapTupleData tuple;
@@ -270,19 +282,11 @@ record_out(PG_FUNCTION_ARGS)
 	char	   *nulls;
 	StringInfoData buf;
 
-	/*
-	 * Use the passed type unless it's RECORD; in that case, we'd better
-	 * get the type info out of the datum itself.  Note that for RECORD,
-	 * what we'll probably actually get is RECORD's typelem, ie, zero.
-	 */
-	if (tupType == InvalidOid || tupType == RECORDOID)
-	{
-		tupType = HeapTupleHeaderGetTypeId(rec);
-		tupTypmod = HeapTupleHeaderGetTypMod(rec);
-	}
-	else
-		tupTypmod = -1;
+	/* Extract type info from the tuple itself */
+	tupType = HeapTupleHeaderGetTypeId(rec);
+	tupTypmod = HeapTupleHeaderGetTypMod(rec);
 	tupdesc = lookup_rowtype_tupdesc(tupType, tupTypmod);
+	tupdesc = CreateTupleDescCopy(tupdesc);
 	ncolumns = tupdesc->natts;
 
 	/* Build a temporary HeapTuple control structure */
@@ -407,6 +411,7 @@ record_out(PG_FUNCTION_ARGS)
 
 	pfree(values);
 	pfree(nulls);
+	FreeTupleDesc(tupdesc);
 
 	PG_RETURN_CSTRING(buf.data);
 }
@@ -419,6 +424,7 @@ record_recv(PG_FUNCTION_ARGS)
 {
 	StringInfo	buf = (StringInfo) PG_GETARG_POINTER(0);
 	Oid			tupType = PG_GETARG_OID(1);
+	HeapTupleHeader result;
 	int32		tupTypmod;
 	TupleDesc	tupdesc;
 	HeapTuple	tuple;
@@ -442,6 +448,7 @@ record_recv(PG_FUNCTION_ARGS)
 		errmsg("input of anonymous composite types is not implemented")));
 	tupTypmod = -1;				/* for all non-anonymous types */
 	tupdesc = lookup_rowtype_tupdesc(tupType, tupTypmod);
+	tupdesc = CreateTupleDescCopy(tupdesc);
 	ncolumns = tupdesc->natts;
 
 	/*
@@ -580,10 +587,20 @@ record_recv(PG_FUNCTION_ARGS)
 
 	tuple = heap_formtuple(tupdesc, values, nulls);
 
+	/*
+	 * We cannot return tuple->t_data because heap_formtuple allocates it
+	 * as part of a larger chunk, and our caller may expect to be able to
+	 * pfree our result.  So must copy the info into a new palloc chunk.
+	 */
+	result = (HeapTupleHeader) palloc(tuple->t_len);
+	memcpy(result, tuple->t_data, tuple->t_len);
+
+	heap_freetuple(tuple);
 	pfree(values);
 	pfree(nulls);
+	FreeTupleDesc(tupdesc);
 
-	PG_RETURN_HEAPTUPLEHEADER(tuple->t_data);
+	PG_RETURN_HEAPTUPLEHEADER(result);
 }
 
 /*
@@ -593,7 +610,7 @@ Datum
 record_send(PG_FUNCTION_ARGS)
 {
 	HeapTupleHeader rec = PG_GETARG_HEAPTUPLEHEADER(0);
-	Oid			tupType = PG_GETARG_OID(1);
+	Oid			tupType;
 	int32		tupTypmod;
 	TupleDesc	tupdesc;
 	HeapTupleData tuple;
@@ -605,19 +622,11 @@ record_send(PG_FUNCTION_ARGS)
 	char	   *nulls;
 	StringInfoData buf;
 
-	/*
-	 * Use the passed type unless it's RECORD; in that case, we'd better
-	 * get the type info out of the datum itself.  Note that for RECORD,
-	 * what we'll probably actually get is RECORD's typelem, ie, zero.
-	 */
-	if (tupType == InvalidOid || tupType == RECORDOID)
-	{
-		tupType = HeapTupleHeaderGetTypeId(rec);
-		tupTypmod = HeapTupleHeaderGetTypMod(rec);
-	}
-	else
-		tupTypmod = -1;
+	/* Extract type info from the tuple itself */
+	tupType = HeapTupleHeaderGetTypeId(rec);
+	tupTypmod = HeapTupleHeaderGetTypMod(rec);
 	tupdesc = lookup_rowtype_tupdesc(tupType, tupTypmod);
+	tupdesc = CreateTupleDescCopy(tupdesc);
 	ncolumns = tupdesc->natts;
 
 	/* Build a temporary HeapTuple control structure */
@@ -720,6 +729,7 @@ record_send(PG_FUNCTION_ARGS)
 
 	pfree(values);
 	pfree(nulls);
+	FreeTupleDesc(tupdesc);
 
 	PG_RETURN_BYTEA_P(pq_endtypsend(&buf));
 }
