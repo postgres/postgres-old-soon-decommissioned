@@ -498,6 +498,11 @@ process_whole_db(void)
 	 /* functions in indexes may want a snapshot set */
 	ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
 
+	/*
+	 * Clean up any dead statistics collector entries for this DB.
+	 */
+	pgstat_vacuum_tabstat();
+
 	dbRel = heap_open(DatabaseRelationId, AccessShareLock);
 
 	/* Must use a table scan, since there's no syscache for pg_database */
@@ -561,6 +566,13 @@ do_autovacuum(PgStat_StatDBEntry *dbentry)
 
 	 /* functions in indexes may want a snapshot set */
 	ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
+
+	/*
+	 * Clean up any dead statistics collector entries for this DB.
+	 * We always want to do this exactly once per DB-processing cycle,
+	 * even if we find nothing worth vacuuming in the database.
+	 */
+	pgstat_vacuum_tabstat();
 
 	/*
 	 * StartTransactionCommand and CommitTransactionCommand will automatically

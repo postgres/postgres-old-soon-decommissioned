@@ -19,6 +19,7 @@
 
 #include "access/xact.h"
 #include "commands/tablespace.h"
+#include "pgstat.h"
 #include "storage/bufmgr.h"
 #include "storage/freespace.h"
 #include "storage/ipc.h"
@@ -468,6 +469,9 @@ smgr_internal_unlink(RelFileNode rnode, int which, bool isTemp, bool isRedo)
 	 * any more anyway, but we may as well recycle the map space quickly.
 	 */
 	FreeSpaceMapForgetRel(&rnode);
+
+	/* Tell the stats collector to forget it immediately, too. */
+	pgstat_drop_relation(rnode.relNode);
 
 	/*
 	 * And delete the physical files.
