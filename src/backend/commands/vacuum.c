@@ -35,6 +35,7 @@
 #include "commands/vacuum.h"
 #include "executor/executor.h"
 #include "miscadmin.h"
+#include "postmaster/autovacuum.h"
 #include "storage/freespace.h"
 #include "storage/procarray.h"
 #include "storage/smgr.h"
@@ -324,9 +325,10 @@ vacuum(VacuumStmt *vacstmt, List *relids)
 				 errhint("Use VACUUM FULL, then VACUUM FREEZE.")));
 
 	/*
-	 * Send info about dead objects to the statistics collector
+	 * Send info about dead objects to the statistics collector, unless
+	 * we are in autovacuum --- autovacuum.c does this for itself.
 	 */
-	if (vacstmt->vacuum)
+	if (vacstmt->vacuum && !IsAutoVacuumProcess())
 		pgstat_vacuum_tabstat();
 
 	/*
