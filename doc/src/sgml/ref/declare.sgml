@@ -253,6 +253,11 @@ DECLARE <replaceable class="parameter">name</replaceable> [ BINARY ] [ INSENSITI
     the standard SQL cursor conventions, including those involving
     <command>DECLARE</command> and <command>OPEN</command> statements.
    </para>
+
+   <para>
+    You can see all available cursors by querying the
+    <structname>pg_cursors</structname> system view.
+   </para>
  </refsect1>
 
  <refsect1>

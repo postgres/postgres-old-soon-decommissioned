@@ -148,6 +148,13 @@ CREATE VIEW pg_locks AS
      transactionid xid, classid oid, objid oid, objsubid int2,
      transaction xid, pid int4, mode text, granted boolean);
 
+CREATE VIEW pg_cursors AS
+    SELECT C.name, C.statement, C.is_holdable, C.is_binary,
+           C.is_scrollable, C.creation_time
+    FROM pg_cursor() AS C
+         (name text, statement text, is_holdable boolean, is_binary boolean,
+          is_scrollable boolean, creation_time timestamptz);
+
 CREATE VIEW pg_prepared_xacts AS
     SELECT P.transaction, P.gid, P.prepared,
            U.rolname AS owner, D.datname AS database

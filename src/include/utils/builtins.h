@@ -865,4 +865,7 @@ extern Datum pg_convert_using(PG_FUNCTION_ARGS);
 /* commands/prepare.c */
 extern Datum pg_prepared_statement(PG_FUNCTION_ARGS);
 
+/* utils/mmgr/portalmem.c */
+extern Datum pg_cursor(PG_FUNCTION_ARGS);
+
 #endif   /* BUILTINS_H */

@@ -28,6 +28,7 @@
 #include "optimizer/planner.h"
 #include "rewrite/rewriteHandler.h"
 #include "tcop/pquery.h"
+#include "tcop/tcopprot.h"
 #include "utils/memutils.h"
 
 
@@ -105,8 +106,12 @@ PerformCursorOpen(DeclareCursorStmt *stmt, ParamListInfo params)
 	query = copyObject(query);
 	plan = copyObject(plan);
 
+	/*
+	 * XXX: debug_query_string is wrong here: the user might have
+	 * submitted more than one semicolon delimited queries.
+	 */
 	PortalDefineQuery(portal,
-					  NULL,		/* unfortunately don't have sourceText */
+					  pstrdup(debug_query_string),
 					  "SELECT", /* cursor's query is always a SELECT */
 					  list_make1(query),
 					  list_make1(plan),

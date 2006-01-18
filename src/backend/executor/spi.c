@@ -921,8 +921,8 @@ SPI_cursor_open(const char *name, void *plan,
 	 * Set up the portal.
 	 */
 	PortalDefineQuery(portal,
-					  NULL,		/* unfortunately don't have sourceText */
-					  "SELECT", /* nor the raw parse tree... */
+					  spiplan->query,
+					  "SELECT", /* don't have the raw parse tree... */
 					  list_make1(queryTree),
 					  list_make1(planTree),
 					  PortalGetHeapMemory(portal));

@@ -162,11 +162,11 @@ ExecuteQuery(ExecuteStmt *stmt, ParamListInfo params,
 		paramLI = EvaluateParams(estate, stmt->params, entry->argtype_list);
 	}
 
-	/*
-	 * Create a new portal to run the query in
-	 */
+	/* Create a new portal to run the query in */
 	portal = CreateNewPortal();
-
+	/* Don't display the portal in pg_cursors, it is for internal use only */
+	portal->visible = false;
+	
 	/*
 	 * For CREATE TABLE / AS EXECUTE, make a copy of the stored query so that
 	 * we can modify its destination (yech, but this has always been ugly).

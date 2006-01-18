@@ -956,6 +956,8 @@ exec_simple_query(const char *query_string)
 		 * already is one, silently drop it.
 		 */
 		portal = CreatePortal("", true, true);
+		/* Don't display the portal in pg_cursors */
+		portal->visible = false;
 
 		PortalDefineQuery(portal,
 						  query_string,

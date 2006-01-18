@@ -72,7 +72,6 @@
  * PORTAL_MULTI_QUERY: all other cases.  Here, we do not support partial
  * execution: the portal's queries will be run to completion on first call.
  */
-
 typedef enum PortalStrategy
 {
 	PORTAL_ONE_SELECT,
@@ -166,6 +165,10 @@ typedef struct PortalData
 	bool		atEnd;
 	bool		posOverflow;
 	long		portalPos;
+
+	/* Presentation data, primarily used by the pg_cursors system view */
+	TimestampTz	creation_time;	/* time at which this portal was defined */
+	bool		visible;		/* include this portal in pg_cursors? */
 } PortalData;
 
 /*

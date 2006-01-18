@@ -602,7 +602,7 @@
    </para>
   </sect2>
 
-  <sect2>
+  <sect2 id="protocol-flow-ext-query">
    <title>Extended Query</title>
 
    <para>

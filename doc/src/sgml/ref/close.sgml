@@ -76,6 +76,11 @@ CLOSE <replaceable class="PARAMETER">name</replaceable>
    <xref linkend="sql-declare" endterm="sql-declare-title">
    statement to declare a cursor.
   </para>
+
+  <para>
+   You can see all available cursors by querying the
+   <structname>pg_cursors</structname> system view.
+  </para>
  </refsect1>
 
  <refsect1>
