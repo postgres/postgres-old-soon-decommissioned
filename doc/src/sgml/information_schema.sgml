@@ -1875,8 +1875,9 @@ ORDER BY c.ordinal_position;
       <entry><literal>parameter_mode</literal></entry>
       <entry><type>character_data</type></entry>
       <entry>
-       Always <literal>IN</literal>, meaning input parameter (in the
-       future there might be other parameter modes)
+       <literal>IN</literal> for input parameter,
+       <literal>OUT</literal> for output parameter,
+       and <literal>INOUT</literal> for input/ouput parameter.
       </entry>
      </row>
 
