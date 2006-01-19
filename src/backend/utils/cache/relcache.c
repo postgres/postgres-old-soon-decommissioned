@@ -1795,8 +1795,6 @@ RelationCacheInvalidate(void)
 		}
 	}
 
-	rebuildList = list_concat(rebuildFirstList, rebuildList);
-
 	/*
 	 * Now zap any remaining smgr cache entries.  This must happen before we
 	 * start to rebuild entries, since that may involve catalog fetches which
@@ -1805,6 +1803,12 @@ RelationCacheInvalidate(void)
 	smgrcloseall();
 
 	/* Phase 2: rebuild the items found to need rebuild in phase 1 */
+	foreach(l, rebuildFirstList)
+	{
+		relation = (Relation) lfirst(l);
+		RelationClearRelation(relation, true);
+	}
+	list_free(rebuildFirstList);
 	foreach(l, rebuildList)
 	{
 		relation = (Relation) lfirst(l);
