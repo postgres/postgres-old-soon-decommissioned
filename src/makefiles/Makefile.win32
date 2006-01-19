@@ -6,7 +6,7 @@ override CPPFLAGS+="-I$(top_srcdir)/src/include/port/win32"
 DLLTOOL= dlltool
 DLLWRAP= dllwrap
 ifdef PGXS
-BE_DLLLIBS= -L$(DESTDIR)$(bindir) -lpostgres
+BE_DLLLIBS= -L$(DESTDIR)$(libdir) -lpostgres
 else
 BE_DLLLIBS= -L$(top_builddir)/src/backend -lpostgres
 endif
