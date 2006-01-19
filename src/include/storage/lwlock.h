@@ -41,6 +41,7 @@ typedef enum LWLockId
 	SubtransControlLock,
 	RelCacheInitLock,
 	BgWriterCommLock,
+	TablespaceCreateLock,
 
 	NumFixedLWLocks,			/* must be last except for
 								 * MaxDynamicLWLock */
