@@ -151,6 +151,14 @@ ROLLBACK;
   </para>
 
   <para>
+   Genetic query optimization (<acronym>GEQO</acronym>) randomly 
+   tests execution plans.  Therefore, when the number of tables exceeds
+   <varname>geqo_threshold</> causing genetic query optimization to be 
+   used, the execution plan is likely to change each time the statement
+   is executed.
+  </para>
+
+  <para>
    Prior to <productname>PostgreSQL</productname> 7.3, the plan was
    emitted in the form of a <literal>NOTICE</literal> message.  Now it
    appears as a query result (formatted like a table with a single
