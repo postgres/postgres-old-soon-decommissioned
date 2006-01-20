@@ -635,7 +635,7 @@ do_autovacuum(PgStat_StatDBEntry *dbentry)
 		 * Skip temp tables (i.e. those in temp namespaces).  We cannot safely
 		 * process other backends' temp tables.
 		 */
-		if (isTempNamespace(classForm->relnamespace))
+		if (isAnyTempNamespace(classForm->relnamespace))
 			continue;
 
 		relid = HeapTupleGetOid(tuple);
