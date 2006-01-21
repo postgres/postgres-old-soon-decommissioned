@@ -143,6 +143,7 @@ typedef ArrayType Acl;
  * Bitmasks defining "all rights" for each supported object type
  */
 #define ACL_ALL_RIGHTS_RELATION		(ACL_INSERT|ACL_SELECT|ACL_UPDATE|ACL_DELETE|ACL_RULE|ACL_REFERENCES|ACL_TRIGGER)
+#define ACL_ALL_RIGHTS_SEQUENCE		(ACL_USAGE|ACL_SELECT|ACL_UPDATE)
 #define ACL_ALL_RIGHTS_DATABASE		(ACL_CREATE|ACL_CREATE_TEMP)
 #define ACL_ALL_RIGHTS_FUNCTION		(ACL_EXECUTE)
 #define ACL_ALL_RIGHTS_LANGUAGE		(ACL_USAGE)
@@ -169,6 +170,7 @@ typedef enum
 typedef enum AclObjectKind
 {
 	ACL_KIND_CLASS,				/* pg_class */
+	ACL_KIND_SEQUENCE,			/* pg_sequence */
 	ACL_KIND_DATABASE,			/* pg_database */
 	ACL_KIND_PROC,				/* pg_proc */
 	ACL_KIND_OPER,				/* pg_operator */

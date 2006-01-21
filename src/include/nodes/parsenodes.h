@@ -884,7 +884,8 @@ typedef struct AlterDomainStmt
  */
 typedef enum GrantObjectType
 {
-	ACL_OBJECT_RELATION,		/* table, view, sequence */
+	ACL_OBJECT_RELATION,		/* table, view */
+	ACL_OBJECT_SEQUENCE,		/* sequence */
 	ACL_OBJECT_DATABASE,		/* database */
 	ACL_OBJECT_FUNCTION,		/* function */
 	ACL_OBJECT_LANGUAGE,		/* procedural language */

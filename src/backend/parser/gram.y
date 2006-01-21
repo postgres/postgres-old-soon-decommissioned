@@ -3322,6 +3322,13 @@ privilege_target:
 					n->objs = $2;
 					$$ = n;
 				}
+			| SEQUENCE qualified_name_list
+				{
+					PrivTarget *n = makeNode(PrivTarget);
+					n->objtype = ACL_OBJECT_SEQUENCE;
+					n->objs = $2;
+					$$ = n;
+				}
 			| FUNCTION function_with_argtypes_list
 				{
 					PrivTarget *n = makeNode(PrivTarget);

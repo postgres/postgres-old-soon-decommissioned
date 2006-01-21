@@ -545,6 +545,10 @@ acldefault(GrantObjectType objtype, Oid ownerId)
 			world_default = ACL_NO_RIGHTS;
 			owner_default = ACL_ALL_RIGHTS_RELATION;
 			break;
+		case ACL_OBJECT_SEQUENCE:
+			world_default = ACL_NO_RIGHTS;
+			owner_default = ACL_ALL_RIGHTS_SEQUENCE;
+			break;
 		case ACL_OBJECT_DATABASE:
 			world_default = ACL_CREATE_TEMP;	/* not NO_RIGHTS! */
 			owner_default = ACL_ALL_RIGHTS_DATABASE;

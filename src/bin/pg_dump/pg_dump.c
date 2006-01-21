@@ -6788,7 +6788,8 @@ dumpTable(Archive *fout, TableInfo *tbinfo)
 
 		/* Handle the ACL here */
 		namecopy = strdup(fmtId(tbinfo->dobj.name));
-		dumpACL(fout, tbinfo->dobj.catId, tbinfo->dobj.dumpId, "TABLE",
+		dumpACL(fout, tbinfo->dobj.catId, tbinfo->dobj.dumpId,
+				(tbinfo->relkind == RELKIND_SEQUENCE) ? "SEQUENCE" : "TABLE",
 				namecopy, tbinfo->dobj.name,
 				tbinfo->dobj.namespace->dobj.name, tbinfo->rolname,
 				tbinfo->relacl);

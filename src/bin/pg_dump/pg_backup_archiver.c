@@ -1889,7 +1889,8 @@ _tocEntryRequired(TocEntry *te, RestoreOptions *ropt, bool include_acls)
 			if (strcmp(ropt->schemaNames, te->namespace) != 0)
 				return 0;
 		}
-		if ((strcmp(te->desc, "TABLE") == 0) || (strcmp(te->desc, "TABLE DATA") == 0))
+		if (strcmp(te->desc, "TABLE") == 0 ||
+			strcmp(te->desc, "TABLE DATA") == 0)
 		{
 			if (!ropt->selTable)
 				return 0;
@@ -2276,8 +2277,7 @@ _getObjectDescription(PQExpBuffer buf, TocEntry *te, ArchiveHandle *AH)
 	const char *type = te->desc;
 
 	/* Use ALTER TABLE for views and sequences */
-	if (strcmp(type, "VIEW") == 0 ||
-		strcmp(type, "SEQUENCE") == 0)
+	if (strcmp(type, "VIEW") == 0 || strcmp(type, "SEQUENCE") == 0)
 		type = "TABLE";
 
 	/* objects named by a schema and name */

@@ -25,6 +25,11 @@ GRANT { { SELECT | INSERT | UPDATE | DELETE | RULE | REFERENCES | TRIGGER }
     ON [ TABLE ] <replaceable class="PARAMETER">tablename</replaceable> [, ...]
     TO { <replaceable class="PARAMETER">username</replaceable> | GROUP <replaceable class="PARAMETER">groupname</replaceable> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
 
+GRANT { { USAGE | SELECT | UPDATE }
+    [,...] | ALL [ PRIVILEGES ] }
+    ON SEQUENCE <replaceable class="PARAMETER">sequencename</replaceable> [, ...]
+    TO { <replaceable class="PARAMETER">username</replaceable> | GROUP <replaceable class="PARAMETER">groupname</replaceable> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
 GRANT { { CREATE | TEMPORARY | TEMP } [,...] | ALL [ PRIVILEGES ] }
     ON DATABASE <replaceable>dbname</replaceable> [, ...]
     TO { <replaceable class="PARAMETER">username</replaceable> | GROUP <replaceable class="PARAMETER">groupname</replaceable> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
@@ -259,6 +264,10 @@ GRANT <replaceable class="PARAMETER">role</replaceable> [, ...]
        schema (assuming that the objects' own privilege requirements are
        also met).  Essentially this allows the grantee to <quote>look up</>
        objects within the schema.
+      </para>
+      <para>
+       For sequences, this privilege allows the use of the
+       <function>currval</function> and <function>nextval</function> functions.
       </para>
      </listitem>
     </varlistentry>
@@ -511,7 +520,7 @@ GRANT <replaceable class="PARAMETER">privileges</replaceable>
 
    <para>
     The <literal>RULE</literal> privilege, and privileges on
-    databases, tablespaces, schemas, languages, and sequences are
+    databases, tablespaces, schemas, and languages are
     <productname>PostgreSQL</productname> extensions.
    </para>
  </refsect1>
