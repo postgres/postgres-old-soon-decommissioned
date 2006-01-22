@@ -49,7 +49,7 @@ gmake check
 <screen>
 <computeroutput>
 ======================
- All 98 tests passed.
+ All 100 tests passed.
 ======================
 </computeroutput>
 </screen>

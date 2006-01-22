@@ -74,6 +74,7 @@ test: arrays
 test: btree_index
 test: hash_index
 test: update
+test: delete
 test: namespace
 test: prepared_xacts
 test: privileges

@@ -291,6 +291,7 @@ static void doNegateFloat(Value *v);
 %type <node>	table_ref
 %type <jexpr>	joined_table
 %type <range>	relation_expr
+%type <range>	relation_expr_opt_alias
 %type <target>	target_el insert_target_el update_target_el insert_column_item
 
 %type <typnam>	Typename SimpleTypename ConstTypename
@@ -5148,7 +5149,8 @@ insert_column_item:
  *
  *****************************************************************************/
 
-DeleteStmt: DELETE_P FROM relation_expr using_clause where_clause
+DeleteStmt: DELETE_P FROM relation_expr_opt_alias
+			using_clause where_clause
 				{
 					DeleteStmt *n = makeNode(DeleteStmt);
 					n->relation = $3;
@@ -5200,7 +5202,7 @@ opt_nowait:	NOWAIT							{ $$ = TRUE; }
  *
  *****************************************************************************/
 
-UpdateStmt: UPDATE relation_expr
+UpdateStmt: UPDATE relation_expr_opt_alias
 			SET update_target_list
 			from_clause
 			where_clause
@@ -5874,6 +5876,20 @@ relation_expr:
 					$$ = $3;
 					$$->inhOpt = INH_NO;
 					$$->alias = NULL;
+				}
+		;
+
+
+relation_expr_opt_alias: relation_expr
+				{
+					$$ = $1;
+				}
+			| relation_expr opt_as IDENT
+				{
+					Alias *alias = makeNode(Alias);
+					alias->aliasname = $3;
+					$1->alias = alias;
+					$$ = $1;
 				}
 		;
 
