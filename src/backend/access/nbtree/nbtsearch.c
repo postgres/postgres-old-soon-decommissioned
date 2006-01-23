@@ -509,8 +509,8 @@ _bt_first(IndexScanDesc scan, ScanDirection dir)
 	pgstat_count_index_scan(&scan->xs_pgstat_info);
 
 	/*
-	 * Examine the scan keys and eliminate any redundant keys; also discover
-	 * how many keys must be matched to continue the scan.
+	 * Examine the scan keys and eliminate any redundant keys; also mark the
+	 * keys that must be matched to continue the scan.
 	 */
 	_bt_preprocess_keys(scan);
 
