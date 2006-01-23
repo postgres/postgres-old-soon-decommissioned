@@ -22,7 +22,7 @@
 #include "utils/inet.h"
 
 
-static Datum text_network(text *src, int is_cidr);
+static Datum text_network(text *src, bool is_cidr);
 static int32 network_cmp_internal(inet *a1, inet *a2);
 static int	bitncmp(void *l, void *r, int n);
 static bool addressOK(unsigned char *a, int bits, int family);
