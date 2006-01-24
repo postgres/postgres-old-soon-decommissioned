@@ -527,7 +527,7 @@ verify_peer(PGconn *conn)
 	struct hostent *h = NULL;
 	struct sockaddr addr;
 	struct sockaddr_in *sin;
-	socklen_t	len;
+	ACCEPT_TYPE_ARG3 len;
 	char	  **s;
 	unsigned long l;
 
