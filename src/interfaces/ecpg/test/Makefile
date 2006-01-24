@@ -11,7 +11,7 @@ ECPG = ../preproc/ecpg -I$(srcdir)/../include
 
 TESTS = test1 test2 test3 test4 test5 perftest dyntest dyntest2 test_notice \
 	test_code100 test_init testdynalloc num_test dt_test test_informix \
-	test_desc
+	test_informix2 test_desc
 ifeq ($(enable_thread_safety), yes)
 TESTS += test_thread test_thread_implicit
 endif
@@ -24,11 +24,17 @@ all: $(TESTS)
 test_informix: test_informix.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -L../compatlib -L../ecpglib -L ../pgtypeslib -L../../libpq $^ $(LIBS) -lpgtypes -lecpg -lecpg_compat -lpq $(PTHREAD_LIBS) -o $@
 
+test_informix2: test_informix2.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -L../compatlib -L../ecpglib -L ../pgtypeslib -L../../libpq $^ $(LIBS) -lpgtypes -lecpg -lecpg_compat -lpq $(PTHREAD_LIBS) -o $@
+	
 %.c: %.pgc
 	$(ECPG) -o $@ -I$(srcdir) $<
 
 test_informix.c: test_informix.pgc
 	$(ECPG) -o $@ -C INFORMIX -r no_indicator $<
+
+test_informix2.c: test_informix2.pgc
+	$(ECPG) -o $@ -C INFORMIX  $<
 
 clean:
 	rm -f $(TESTS) $(TESTS:%=%.o) $(TESTS:%=%.c) log
