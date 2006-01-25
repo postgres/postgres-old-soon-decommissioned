@@ -67,7 +67,9 @@ extern bool has_distinct_clause(Query *query);
 extern bool has_distinct_on_clause(Query *query);
 
 extern int	NumRelids(Node *clause);
-extern void CommuteClause(OpExpr *clause);
+
+extern void CommuteOpExpr(OpExpr *clause);
+extern void CommuteRowCompareExpr(RowCompareExpr *clause);
 
 extern Node *strip_implicit_coercions(Node *node);
 
