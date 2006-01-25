@@ -61,38 +61,6 @@ _hash_checkqual(IndexScanDesc scan, IndexTuple itup)
 }
 
 /*
- * _hash_formitem -- construct a hash index entry
- */
-HashItem
-_hash_formitem(IndexTuple itup)
-{
-	int			nbytes_hitem;
-	HashItem	hitem;
-	Size		tuplen;
-
-	/* disallow nulls in hash keys */
-	if (IndexTupleHasNulls(itup))
-		ereport(ERROR,
-				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("hash indexes cannot contain null keys")));
-
-	/*
-	 * make a copy of the index tuple (XXX do we still need to copy?)
-	 *
-	 * HashItemData used to have more fields than IndexTupleData, but no
-	 * longer...
-	 */
-	tuplen = IndexTupleSize(itup);
-	nbytes_hitem = tuplen +
-		(sizeof(HashItemData) - sizeof(IndexTupleData));
-
-	hitem = (HashItem) palloc(nbytes_hitem);
-	memcpy(&(hitem->hash_itup), itup, tuplen);
-
-	return hitem;
-}
-
-/*
  * _hash_datum2hashkey -- given a Datum, call the index's hash procedure
  */
 uint32
