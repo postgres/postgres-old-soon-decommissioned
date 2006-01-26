@@ -545,7 +545,7 @@ hashinet(PG_FUNCTION_ARGS)
 	int			addrsize = ip_addrsize(addr);
 
 	/* XXX this assumes there are no pad bytes in the data structure */
-	return hash_any(VARDATA(addr), addrsize + 2);
+	return hash_any((unsigned char *) VARDATA(addr), addrsize + 2);
 }
 
 /*
