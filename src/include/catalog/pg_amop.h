@@ -388,11 +388,11 @@ DATA(insert (	1974	0 5 f 1205 ));
  *	btree cidr
  */
 
-DATA(insert (	 432	0 1 f  822 ));
-DATA(insert (	 432	0 2 f  823 ));
-DATA(insert (	 432	0 3 f  820 ));
-DATA(insert (	 432	0 4 f  825 ));
-DATA(insert (	 432	0 5 f  824 ));
+DATA(insert (	 432	0 1 f 1203 ));
+DATA(insert (	 432	0 2 f 1204 ));
+DATA(insert (	 432	0 3 f 1201 ));
+DATA(insert (	 432	0 4 f 1206 ));
+DATA(insert (	 432	0 5 f 1205 ));
 
 /*
  *	btree numeric
@@ -523,7 +523,7 @@ DATA(insert (	 427	0 1 f 1054 ));
 /* char_ops */
 DATA(insert (	 431	0 1 f	92 ));
 /* cidr_ops */
-DATA(insert (	 433	0 1 f  820 ));
+DATA(insert (	 433	0 1 f 1201 ));
 /* date_ops */
 DATA(insert (	 435	0 1 f 1093 ));
 /* float4_ops */

@@ -22,7 +22,6 @@ typedef struct
 {
 	unsigned char family;		/* PGSQL_AF_INET or PGSQL_AF_INET6 */
 	unsigned char bits;			/* number of bits in netmask */
-	bool is_cidr;				/* is cidr? */
 	unsigned char ipaddr[16];	/* up to 128 bits of address */
 } inet_struct;
 

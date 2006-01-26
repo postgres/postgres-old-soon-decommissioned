@@ -249,7 +249,7 @@ DATA(insert (  718	604 1544 e ));
  * INET category
  */
 DATA(insert (  650	869    0 i ));
-DATA(insert (  869	650    0 i ));
+DATA(insert (  869	650 1715 a ));
 
 /*
  * BitString category
