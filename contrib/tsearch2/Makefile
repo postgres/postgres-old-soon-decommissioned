@@ -16,7 +16,7 @@ OBJS	+= $(SUBDIROBJS)
 
 PG_CPPFLAGS = -I$(srcdir)/snowball -I$(srcdir)/ispell -I$(srcdir)/wordparser
 
-DATA = stopword/english.stop stopword/russian.stop
+DATA = stopword/english.stop stopword/russian.stop stopword/russian.stop.utf8
 DATA_built = tsearch2.sql untsearch2.sql
 DOCS = README.tsearch2
 REGRESS = tsearch2

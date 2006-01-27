@@ -1,6 +1,6 @@
 # $PostgreSQL$
 
-SUBOBJS = english_stem.o api.o russian_stem.o utilities.o
+SUBOBJS = english_stem.o api.o russian_stem.o russian_stem_UTF8.o utilities.o
 
 EXTRA_CLEAN = SUBSYS.o $(SUBOBJS)
 
