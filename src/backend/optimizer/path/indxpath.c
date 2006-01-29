@@ -1611,11 +1611,6 @@ identify_ignorable_ordering_cols(PlannerInfo *root,
 			bool		varonleft;
 			bool		ispc;
 
-			/*
-			 * We know this clause passed match_clause_to_indexcol as a
-			 * toplevel clause; so it's not a ScalarArrayOp.
-			 */
-
 			/* First check for boolean-index cases. */
 			if (IsBooleanOpclass(opclass))
 			{
@@ -1632,8 +1627,9 @@ identify_ignorable_ordering_cols(PlannerInfo *root,
 				}
 			}
 
-			/* Else clause must be a binary opclause. */
-			Assert(IsA(clause, OpExpr));
+			/* Otherwise, ignore if not a binary opclause */
+			if (!is_opclause(clause) || list_length(clause->args) != 2)
+				continue;
 
 			/* Determine left/right sides and check the operator */
 			clause_op = clause->opno;
