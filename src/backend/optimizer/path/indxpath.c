@@ -343,7 +343,8 @@ find_usable_indexes(PlannerInfo *root, RelOptInfo *rel,
 		if (istoplevel && index_is_ordered && !isjoininner)
 		{
 			index_pathkeys = build_index_pathkeys(root, index,
-												  ForwardScanDirection);
+												  ForwardScanDirection,
+												  true);
 			useful_pathkeys = truncate_useless_pathkeys(root, rel,
 														index_pathkeys);
 		}
@@ -1705,7 +1706,7 @@ match_index_to_query_keys(PlannerInfo *root,
 	ListCell   *r;
 
 	/* Get the pathkeys that exactly describe the index */
-	index_pathkeys = build_index_pathkeys(root, index, indexscandir);
+	index_pathkeys = build_index_pathkeys(root, index, indexscandir, false);
 
 	/*
 	 * Can we match to the query's requested pathkeys?  The inner loop skips
