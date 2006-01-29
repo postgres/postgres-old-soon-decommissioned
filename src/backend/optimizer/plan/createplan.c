@@ -963,6 +963,12 @@ create_bitmap_scan_plan(PlannerInfo *root,
 	 */
 	bitmapqualorig = list_difference_ptr(bitmapqualorig, qpqual);
 
+	/*
+	 * Copy the finished bitmapqualorig to make sure we have an independent
+	 * copy --- needed in case there are subplans in the index quals
+	 */
+	bitmapqualorig = copyObject(bitmapqualorig);
+
 	/* Finally ready to build the plan node */
 	scan_plan = make_bitmap_heapscan(tlist,
 									 qpqual,
