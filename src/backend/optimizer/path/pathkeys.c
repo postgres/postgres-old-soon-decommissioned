@@ -909,13 +909,20 @@ get_cheapest_fractional_path_for_pathkeys(List *paths,
  * If 'scandir' is BackwardScanDirection, attempt to build pathkeys
  * representing a backwards scan of the index.	Return NIL if can't do it.
  *
+ * If 'canonical' is TRUE, we remove duplicate pathkeys (which can occur
+ * if two index columns are equijoined, eg WHERE x = 1 AND y = 1).  This
+ * is required if the result is to be compared directly to a canonical query
+ * pathkeys list.  However, some callers want a list with exactly one entry
+ * per index column, and they must pass FALSE.
+ *
  * We generate the full pathkeys list whether or not all are useful for the
  * current query.  Caller should do truncate_useless_pathkeys().
  */
 List *
 build_index_pathkeys(PlannerInfo *root,
 					 IndexOptInfo *index,
-					 ScanDirection scandir)
+					 ScanDirection scandir,
+					 bool canonical)
 {
 	List	   *retval = NIL;
 	int		   *indexkeys = index->indexkeys;
@@ -956,11 +963,11 @@ build_index_pathkeys(PlannerInfo *root,
 		item = makePathKeyItem(indexkey, sortop, true);
 		cpathkey = make_canonical_pathkey(root, item);
 
-		/*
-		 * Eliminate redundant ordering info; could happen if query is such
-		 * that index keys are equijoined...
-		 */
-		retval = list_append_unique_ptr(retval, cpathkey);
+		/* Eliminate redundant ordering info if requested */
+		if (canonical)
+			retval = list_append_unique_ptr(retval, cpathkey);
+		else
+			retval = lappend(retval, cpathkey);
 
 		indexkeys++;
 		ordering++;
