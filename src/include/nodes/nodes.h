@@ -190,6 +190,7 @@ typedef enum NodeTag
 	T_InnerIndexscanInfo,
 	T_OuterJoinInfo,
 	T_InClauseInfo,
+	T_AppendRelInfo,
 
 	/*
 	 * TAGS FOR MEMORY NODES (memnodes.h)

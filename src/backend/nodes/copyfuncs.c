@@ -1322,6 +1322,25 @@ _copyInClauseInfo(InClauseInfo *from)
 	return newnode;
 }
 
+/*
+ * _copyAppendRelInfo
+ */
+static AppendRelInfo *
+_copyAppendRelInfo(AppendRelInfo *from)
+{
+	AppendRelInfo *newnode = makeNode(AppendRelInfo);
+
+	COPY_SCALAR_FIELD(parent_relid);
+	COPY_SCALAR_FIELD(child_relid);
+	COPY_SCALAR_FIELD(parent_reltype);
+	COPY_SCALAR_FIELD(child_reltype);
+	COPY_NODE_FIELD(col_mappings);
+	COPY_NODE_FIELD(translated_vars);
+	COPY_SCALAR_FIELD(parent_reloid);
+
+	return newnode;
+}
+
 /* ****************************************************************
  *					parsenodes.h copy functions
  * ****************************************************************
@@ -2944,6 +2963,9 @@ copyObject(void *from)
 			break;
 		case T_InClauseInfo:
 			retval = _copyInClauseInfo(from);
+			break;
+		case T_AppendRelInfo:
+			retval = _copyAppendRelInfo(from);
 			break;
 
 			/*

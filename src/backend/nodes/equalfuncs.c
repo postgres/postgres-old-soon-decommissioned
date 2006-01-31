@@ -644,6 +644,20 @@ _equalInClauseInfo(InClauseInfo *a, InClauseInfo *b)
 	return true;
 }
 
+static bool
+_equalAppendRelInfo(AppendRelInfo *a, AppendRelInfo *b)
+{
+	COMPARE_SCALAR_FIELD(parent_relid);
+	COMPARE_SCALAR_FIELD(child_relid);
+	COMPARE_SCALAR_FIELD(parent_reltype);
+	COMPARE_SCALAR_FIELD(child_reltype);
+	COMPARE_NODE_FIELD(col_mappings);
+	COMPARE_NODE_FIELD(translated_vars);
+	COMPARE_SCALAR_FIELD(parent_reloid);
+
+	return true;
+}
+
 
 /*
  * Stuff from parsenodes.h
@@ -1983,6 +1997,9 @@ equal(void *a, void *b)
 			break;
 		case T_InClauseInfo:
 			retval = _equalInClauseInfo(a, b);
+			break;
+		case T_AppendRelInfo:
+			retval = _equalAppendRelInfo(a, b);
 			break;
 		case T_List:
 		case T_IntList:
