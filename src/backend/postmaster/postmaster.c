@@ -171,9 +171,6 @@ char	   *ListenAddresses;
  */
 int			ReservedBackends;
 
-
-static const char *progname = NULL;
-
 /* The socket(s) we're listening to. */
 #define MAXLISTEN	64
 static int	ListenSocket[MAXLISTEN];
@@ -382,9 +379,6 @@ PostmasterMain(int argc, char *argv[])
 	int			status;
 	char	   *userDoption = NULL;
 	int			i;
-
-	/* This will call exit() if strdup() fails. */
-	progname = get_progname(argv[0]);
 
 	MyProcPid = PostmasterPid = getpid();
 
