@@ -303,7 +303,7 @@ const char *
 get_progname(const char *argv0)
 {
 	const char  *nodir_name;
-	const char	*progname;
+	char		*progname;
 
 	nodir_name = last_dir_separator(argv0);
 	if (nodir_name)
