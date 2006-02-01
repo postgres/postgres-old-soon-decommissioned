@@ -3336,7 +3336,18 @@ SubPostmasterMain(int argc, char *argv[])
 		/* Need a PGPROC to run CreateSharedMemoryAndSemaphores */
 		InitProcess();
 
-		/* Attach process to shared data structures */
+		/*
+		 *	Attach process to shared data structures.  If testing
+		 *	EXEC_BACKEND on Linux, you must run this as root
+		 *	before starting the postmaster:
+		 *
+		 *		echo 0 >/proc/sys/kernel/randomize_va_space
+		 *
+		 *	This prevents a randomized stack base address that causes
+		 *	child shared memory to be at a different address than
+		 *	the parent, making it impossible to attached to shared
+		 *	memory.  Return the value to '1' when finished.
+		 */
 		CreateSharedMemoryAndSemaphores(false, 0);
 
 		/* And run the backend */
