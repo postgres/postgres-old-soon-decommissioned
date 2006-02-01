@@ -34,6 +34,7 @@ extern char *rendezvous_name;
 extern HANDLE PostmasterHandle;
 #endif
 
+extern const char *progname;
 
 extern int	PostmasterMain(int argc, char *argv[]);
 extern void ClosePostmasterPorts(bool am_syslogger);

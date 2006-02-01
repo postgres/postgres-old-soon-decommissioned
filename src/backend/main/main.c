@@ -45,7 +45,7 @@
 #include "libpq/pqsignal.h"
 #endif
 
-
+const char *progname;
 
 int
 main(int argc, char *argv[])
@@ -100,6 +100,8 @@ main(int argc, char *argv[])
 					 argv[0], strerror(errno));
 #endif
 #endif   /* NOFIXADE */
+
+	progname = get_progname(argv[0]);
 
 #if defined(WIN32)
 	{
