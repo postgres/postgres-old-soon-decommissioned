@@ -856,6 +856,25 @@ DoCopy(const CopyStmt *stmt)
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 				 errmsg("COPY delimiter must be a single character")));
 
+	/* Disallow end-of-line characters */
+	if (strchr(cstate->delim, '\r') != NULL ||
+	    strchr(cstate->delim, '\n') != NULL)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+				 errmsg("COPY delimiter cannot be newline or carriage return")));
+
+	if (strchr(cstate->null_print, '\r') != NULL ||
+		strchr(cstate->null_print, '\n') != NULL)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+				 errmsg("COPY null cannot use newline or carriage return")));
+
+	/* Disallow backslash in non-CSV mode */
+	if (!cstate->csv_mode && strchr(cstate->delim, '\\') != NULL)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+				 errmsg("COPY delimiter cannot be backslash")));
+
 	/* Check header */
 	if (!cstate->csv_mode && cstate->header_line)
 		ereport(ERROR,
