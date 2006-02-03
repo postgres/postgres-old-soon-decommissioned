@@ -1249,6 +1249,13 @@ AC_DEFINE(USE_SYSV_SHARED_MEMORY, 1, [Define to select SysV-style shared memory.
 SHMEM_IMPLEMENTATION="src/backend/port/sysv_shmem.c"
 
 
+# If not set in template file, set bytes to use libc memset()
+if test x"$MEMSET_LOOP_LIMIT" = x"" ; then
+  MEMSET_LOOP_LIMIT=1024
+fi
+AC_DEFINE_UNQUOTED(MEMSET_LOOP_LIMIT, ${MEMSET_LOOP_LIMIT}, [Define bytes to use libc memset().])
+
+
 if test "$enable_nls" = yes ; then
   PGAC_CHECK_GETTEXT
 fi
