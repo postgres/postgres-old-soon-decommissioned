@@ -28,7 +28,7 @@
 
 /* geqo_rand returns a random float value between 0 and 1 inclusive */
 
-#define geqo_rand() (((double) random()) / ((double) MAX_RANDOM_VALUE))
+#define geqo_rand() ((double) random() / (double) MAX_RANDOM_VALUE)
 
 /* geqo_randint returns integer value between lower and upper inclusive */
 

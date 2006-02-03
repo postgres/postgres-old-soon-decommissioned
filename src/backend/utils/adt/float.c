@@ -1833,8 +1833,8 @@ drandom(PG_FUNCTION_ARGS)
 {
 	float8		result;
 
-	/* result 0.0-1.0 */
-	result = ((double) random()) / ((double) MAX_RANDOM_VALUE);
+	/* result [0.0 - 1.0) */
+	result = (double) random() / ((double) MAX_RANDOM_VALUE + 1);
 
 	PG_RETURN_FLOAT8(result);
 }
