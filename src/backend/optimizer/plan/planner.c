@@ -222,7 +222,7 @@ subquery_planner(Query *parse, double tuple_fraction,
 	 * this query.
 	 */
 	parse->jointree = (FromExpr *)
-		pull_up_subqueries(root, (Node *) parse->jointree, false);
+		pull_up_subqueries(root, (Node *) parse->jointree, false, false);
 
 	/*
 	 * Detect whether any rangetable entries are RTE_JOIN kind; if not, we can

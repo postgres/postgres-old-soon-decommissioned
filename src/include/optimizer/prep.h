@@ -23,7 +23,7 @@
  */
 extern Node *pull_up_IN_clauses(PlannerInfo *root, Node *node);
 extern Node *pull_up_subqueries(PlannerInfo *root, Node *jtnode,
-				   bool below_outer_join);
+				   bool below_outer_join, bool append_rel_member);
 extern void reduce_outer_joins(PlannerInfo *root);
 extern Relids get_relids_in_jointree(Node *jtnode);
 extern Relids get_relids_for_join(PlannerInfo *root, int joinrelid);
@@ -51,11 +51,6 @@ extern void expand_inherited_tables(PlannerInfo *root);
 extern Node *adjust_appendrel_attrs(Node *node, AppendRelInfo *appinfo);
 
 extern Relids *adjust_appendrel_attr_needed(RelOptInfo *oldrel,
-											AppendRelInfo *appinfo,
-											AttrNumber new_min_attr,
-											AttrNumber new_max_attr);
-
-extern Relids *adjust_other_rel_attr_needed(RelOptInfo *oldrel,
 											AppendRelInfo *appinfo,
 											AttrNumber new_min_attr,
 											AttrNumber new_max_attr);

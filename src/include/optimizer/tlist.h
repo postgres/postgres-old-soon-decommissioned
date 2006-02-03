@@ -29,4 +29,6 @@ extern Node *get_sortgroupclause_expr(SortClause *sortClause,
 extern List *get_sortgrouplist_exprs(List *sortClauses,
 						List *targetList);
 
+extern bool tlist_same_datatypes(List *tlist, List *colTypes, bool junkOK);
+
 #endif   /* TLIST_H */
