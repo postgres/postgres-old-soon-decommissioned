@@ -63,7 +63,6 @@ DROP ROLE [ IF EXISTS ] <replaceable class="PARAMETER">name</replaceable> [, ...
     </listitem>
    </varlistentry>
 
-  <variablelist>
    <varlistentry>
     <term><replaceable class="PARAMETER">name</replaceable></term>
     <listitem>
