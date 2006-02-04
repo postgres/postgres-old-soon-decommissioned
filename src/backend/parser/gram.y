@@ -824,7 +824,15 @@ DropRoleStmt:
 			DROP ROLE name_list
 				{
 					DropRoleStmt *n = makeNode(DropRoleStmt);
+					n->missing_ok = FALSE;
 					n->roles = $3;
+					$$ = (Node *)n;
+				}
+			| DROP ROLE IF_P EXISTS name_list
+				{
+					DropRoleStmt *n = makeNode(DropRoleStmt);
+					n->missing_ok = TRUE;
+					n->roles = $5;
 					$$ = (Node *)n;
 				}
 			;
@@ -842,7 +850,15 @@ DropUserStmt:
 			DROP USER name_list
 				{
 					DropRoleStmt *n = makeNode(DropRoleStmt);
+					n->missing_ok = FALSE;
 					n->roles = $3;
+					$$ = (Node *)n;
+				}
+			| DROP USER IF_P EXISTS name_list
+				{
+					DropRoleStmt *n = makeNode(DropRoleStmt);
+					n->roles = $5;
+					n->missing_ok = TRUE;
 					$$ = (Node *)n;
 				}
 			;
@@ -900,7 +916,15 @@ DropGroupStmt:
 			DROP GROUP_P name_list
 				{
 					DropRoleStmt *n = makeNode(DropRoleStmt);
+					n->missing_ok = FALSE;
 					n->roles = $3;
+					$$ = (Node *)n;
+				}
+			| DROP GROUP_P IF_P EXISTS name_list
+				{
+					DropRoleStmt *n = makeNode(DropRoleStmt);
+					n->missing_ok = TRUE;
+					n->roles = $5;
 					$$ = (Node *)n;
 				}
 		;

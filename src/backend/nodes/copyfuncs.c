@@ -2518,6 +2518,7 @@ _copyDropRoleStmt(DropRoleStmt *from)
 	DropRoleStmt *newnode = makeNode(DropRoleStmt);
 
 	COPY_NODE_FIELD(roles);
+	COPY_SCALAR_FIELD(missing_ok);
 
 	return newnode;
 }

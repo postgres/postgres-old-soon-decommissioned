@@ -1398,6 +1398,7 @@ static bool
 _equalDropRoleStmt(DropRoleStmt *a, DropRoleStmt *b)
 {
 	COMPARE_NODE_FIELD(roles);
+	COMPARE_SCALAR_FIELD(missing_ok);
 
 	return true;
 }

@@ -1193,6 +1193,7 @@ typedef struct DropRoleStmt
 {
 	NodeTag		type;
 	List	   *roles;			/* List of roles to remove */
+	bool		missing_ok;		/* skip error if a role is missing? */
 } DropRoleStmt;
 
 /* ----------------------

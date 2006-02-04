@@ -840,9 +840,22 @@ DropRole(DropRoleStmt *stmt)
 							   PointerGetDatum(role),
 							   0, 0, 0);
 		if (!HeapTupleIsValid(tuple))
-			ereport(ERROR,
-					(errcode(ERRCODE_UNDEFINED_OBJECT),
-					 errmsg("role \"%s\" does not exist", role)));
+		{
+			if (!stmt->missing_ok)
+			{
+				ereport(ERROR,
+						(errcode(ERRCODE_UNDEFINED_OBJECT),
+						 errmsg("role \"%s\" does not exist", role)));
+			}
+			else
+			{
+				ereport(NOTICE,
+						(errmsg("role \"%s\" does not exist, skipping", 
+								role)));
+			}
+
+			continue;
+		}
 
 		roleid = HeapTupleGetOid(tuple);
 
