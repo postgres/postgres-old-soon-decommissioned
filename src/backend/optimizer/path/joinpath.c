@@ -867,14 +867,13 @@ join_before_append(PlannerInfo *root,
 		Assert(childrel->reloptkind == RELOPT_OTHER_MEMBER_REL);
 
 		/*
-		 * If the child has no cheapest_total_path, assume it was deemed
-		 * excludable by constraint exclusion (see set_append_rel_pathlist).
+		 * Check to see if child was rejected by constraint exclusion.
+		 * If so, it will have a cheapest_total_path that's an Append path
+		 * with no members (see set_plain_rel_pathlist).
 		 */
-		if (childrel->cheapest_total_path == NULL)
-		{
-			Assert(constraint_exclusion);
-			continue;
-		}
+		if (IsA(childrel->cheapest_total_path, AppendPath) &&
+			((AppendPath *) childrel->cheapest_total_path)->subpaths == NIL)
+			continue;			/* OK, we can ignore it */
 
 		/*
 		 * Get the best innerjoin indexpath (if any) for this outer rel.
