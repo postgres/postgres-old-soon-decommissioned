@@ -100,6 +100,8 @@ ECPGprepare(int lineno, const char *name, const char *variable)
 	/* add prepared statement to our list */
 	this->name = ECPGstrdup(name, lineno);
 	this->stmt = stmt;
+	ECPGlog("ECPGprepare line %d: QUERY: %s\n", stmt->lineno, stmt->command);
+		
 
 	if (prep_stmts == NULL)
 		this->next = NULL;

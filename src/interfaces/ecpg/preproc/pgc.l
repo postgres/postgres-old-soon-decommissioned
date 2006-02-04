@@ -787,6 +787,7 @@ cppline			{space}*#(.*\\{space})*.*{newline}
 							}
 						}
 					}
+<C>":"				{ return(':'); }
 <C>";"				{ return(';'); }
 <C>","				{ return(','); }
 <C>"*"				{ return('*'); }
@@ -1001,8 +1002,7 @@ cppline			{space}*#(.*\\{space})*.*{newline}
 
 						for (defptr = defines;
 							 defptr != NULL && strcmp(yytext, defptr->old) != 0;
-							 defptr = defptr->next)
-							;
+							 defptr = defptr->next);
 
 						preproc_tos++;
 						stacked_if_value[preproc_tos].else_branch = FALSE;
@@ -1016,11 +1016,19 @@ cppline			{space}*#(.*\\{space})*.*{newline}
 						BEGIN(xskip);
 				}
 
+<xcond>{other}	{
+			mmerror(PARSE_ERROR, ET_FATAL, "Missing identifier in 'EXEC SQL IFDEF' command");
+			yyterminate();
+		}
 <def_ident>{identifier} {
 				old = mm_strdup(yytext);
 				BEGIN(def);
 				startlit();
 			}
+<def_ident>{other}	{
+			mmerror(PARSE_ERROR, ET_FATAL, "Missing identifier in 'EXEC SQL DEFINE' command");
+			yyterminate();
+		}
 <def>{space}*";"	{
 						struct _defines *ptr, *this;
 
@@ -1048,10 +1056,13 @@ cppline			{space}*#(.*\\{space})*.*{newline}
 						BEGIN(C);
 					}
 <def>[^;]			{ addlit(yytext, yyleng); }
-
 <incl>\<[^\>]+\>{space}*";"?		{	parse_include(); }
 <incl>{dquote}{xdinside}{dquote}{space}*";"?	{	parse_include(); }
 <incl>[^;\<\>\"]+";"		{ parse_include(); }
+<incl>{other}	{
+			mmerror(PARSE_ERROR, ET_FATAL, "Incorrect 'EXEC SQL INCLUDE' command");
+			yyterminate();
+		}
 
 <<EOF>>				{
 			  		if (yy_buffer == NULL)
