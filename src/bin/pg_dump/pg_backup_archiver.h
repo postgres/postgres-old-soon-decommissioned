@@ -239,7 +239,8 @@ typedef struct _archiveHandle
 	PGconn	   *connection;
 	int			connectToDB;	/* Flag to indicate if direct DB connection is
 								 * required */
-	int			pgCopyIn;		/* Currently in libpq 'COPY IN' mode. */
+	bool		writingCopyData;	/* True when we are sending COPY data */
+	bool		pgCopyIn;		/* Currently in libpq 'COPY IN' mode. */
 	PQExpBuffer pgCopyBuf;		/* Left-over data from incomplete lines in
 								 * COPY IN */
 

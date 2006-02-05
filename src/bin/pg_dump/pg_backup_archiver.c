@@ -330,9 +330,14 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 						 * with libpq.
 						 */
 						if (te->copyStmt && strlen(te->copyStmt) > 0)
+						{
 							ahprintf(AH, "%s", te->copyStmt);
+							AH->writingCopyData = true;
+						}
 
 						(*AH->PrintTocDataPtr) (AH, te, ropt);
+
+						AH->writingCopyData = false;
 
 						_enableTriggersIfNecessary(AH, te, ropt);
 					}
