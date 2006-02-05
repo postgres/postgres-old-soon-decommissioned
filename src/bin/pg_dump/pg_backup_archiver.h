@@ -164,6 +164,13 @@ typedef enum
 	STAGE_FINALIZING
 } ArchiverStage;
 
+typedef enum
+{
+	REQ_SCHEMA = 1,
+	REQ_DATA = 2,
+	REQ_ALL = REQ_SCHEMA + REQ_DATA
+} teReqs;
+
 typedef struct _archiveHandle
 {
 	Archive		public;			/* Public part of archive */
@@ -237,7 +244,8 @@ typedef struct _archiveHandle
 	int			blobTxActive;	/* Flag set if TX active on blobConnection */
 	int			connectToDB;	/* Flag to indicate if direct DB
 								 * connection is required */
-	int			pgCopyIn;		/* Currently in libpq 'COPY IN' mode. */
+	bool		writingCopyData;	/* True when we are sending COPY data */
+	bool		pgCopyIn;		/* Currently in libpq 'COPY IN' mode. */
 	PQExpBuffer pgCopyBuf;		/* Left-over data from incomplete lines in
 								 * COPY IN */
 
@@ -321,7 +329,7 @@ extern void WriteToc(ArchiveHandle *AH);
 extern void ReadToc(ArchiveHandle *AH);
 extern void WriteDataChunks(ArchiveHandle *AH);
 
-extern int	TocIDRequired(ArchiveHandle *AH, DumpId id, RestoreOptions *ropt);
+extern teReqs TocIDRequired(ArchiveHandle *AH, DumpId id, RestoreOptions *ropt);
 extern bool checkSeek(FILE *fp);
 
 /*
