@@ -904,9 +904,15 @@ explain_outNode(StringInfo str,
 				appendStringInfo(str, "  ");
 			appendStringInfo(str, "  ->  ");
 
+			/*
+			 * Ordinarily we don't pass down our own outer_plan value to our
+			 * child nodes, but in an Append we must, since we might be
+			 * looking at an appendrel indexscan with outer references
+			 * from the member scans.
+			 */
 			explain_outNode(str, subnode,
 							appendstate->appendplans[j],
-							NULL,
+							outer_plan,
 							indent + 3, es);
 			j++;
 		}

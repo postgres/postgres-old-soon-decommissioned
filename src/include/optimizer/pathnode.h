@@ -95,12 +95,5 @@ extern RelOptInfo *build_join_rel(PlannerInfo *root,
 			   RelOptInfo *inner_rel,
 			   JoinType jointype,
 			   List **restrictlist_ptr);
-extern RelOptInfo *translate_join_rel(PlannerInfo *root,
-				   RelOptInfo *oldjoinrel,
-				   AppendRelInfo *appinfo,
-				   RelOptInfo *outer_rel,
-				   RelOptInfo *inner_rel,
-				   JoinType jointype,
-				   List **restrictlist_ptr);
 
 #endif   /* PATHNODE_H */
