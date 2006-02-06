@@ -242,12 +242,12 @@ PQprint(FILE *fout, const PGresult *res, const PQprintOpt *po)
 		if (po->expanded && po->html3)
 		{
 			if (po->caption)
-				fprintf(fout, "<centre><h2>%s</h2></centre>\n", po->caption);
+				fprintf(fout, "<center><h2>%s</h2></center>\n", po->caption);
 			else
 				fprintf(fout,
-						"<centre><h2>"
+						"<center><h2>"
 						"Query retrieved %d rows * %d fields"
-						"</h2></centre>\n",
+						"</h2></center>\n",
 						nTups, nFields);
 		}
 		for (i = 0; i < nTups; i++)
