@@ -1313,7 +1313,7 @@ main(int argc, char **argv)
 		}
 		else if (strcmp(argv[1], "-V") == 0 || strcmp(argv[1], "--version") == 0)
 		{
-			printf("%s (PostgreSQL) %s\n", progname, PG_VERSION);
+			puts("pg_ctl (PostgreSQL) " PG_VERSION);
 			exit(0);
 		}
 	}
