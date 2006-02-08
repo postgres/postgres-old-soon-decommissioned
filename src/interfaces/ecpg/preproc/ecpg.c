@@ -418,7 +418,7 @@ main(int argc, char *const argv[])
 					fprintf(yyout, "/* End of automatic include section */\n");
 				}
 
-				fprintf(yyout, "#line 1 \"%s\"\n", input_filename);
+				output_line_number();
 
 				/* and parse the source */
 				yyparse();
