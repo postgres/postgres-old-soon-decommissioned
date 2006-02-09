@@ -2410,7 +2410,7 @@ _printTocEntry(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt, bool isDat
 		ahprintf(AH, "-- %sName: %s; Type: %s; Schema: %s; Owner: %s",
 				 pfx, te->tag, te->desc,
 				 te->namespace ? te->namespace : "-",
-				 te->owner);
+				 ropt->noOwner ? "-" : te->owner);
 		if (te->tablespace)
 			ahprintf(AH, "; Tablespace: %s", te->tablespace);
 		ahprintf(AH, "\n");
