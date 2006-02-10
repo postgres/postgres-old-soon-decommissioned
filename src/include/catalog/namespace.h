@@ -32,21 +32,6 @@ typedef struct _FuncCandidateList
 	Oid			args[1];		/* arg types --- VARIABLE LENGTH ARRAY */
 }	*FuncCandidateList;	/* VARIABLE LENGTH STRUCT */
 
-/*
- *	This structure holds a list of opclass candidates found by namespace
- *	lookup.
- */
-typedef struct _OpclassCandidateList
-{
-	struct _OpclassCandidateList *next;
-	char	   *opcname_tmp;	/* for internal use of namespace lookup */
-	int			pathpos;		/* for internal use of namespace lookup */
-	Oid			oid;			/* the opclass's OID */
-	Oid			opcintype;		/* type of data indexed by opclass */
-	bool		opcdefault;		/* T if opclass is default for opcintype */
-	Oid			opckeytype;		/* type of data in index, or InvalidOid */
-}	*OpclassCandidateList;
-
 
 extern Oid	RangeVarGetRelid(const RangeVar *relation, bool failOK);
 extern Oid	RangeVarGetCreationNamespace(const RangeVar *newRelation);
@@ -62,7 +47,6 @@ extern bool FunctionIsVisible(Oid funcid);
 extern FuncCandidateList OpernameGetCandidates(List *names, char oprkind);
 extern bool OperatorIsVisible(Oid oprid);
 
-extern OpclassCandidateList OpclassGetCandidates(Oid amid);
 extern Oid	OpclassnameGetOpcid(Oid amid, const char *opcname);
 extern bool OpclassIsVisible(Oid opcid);
 
