@@ -78,8 +78,8 @@ pgwin32_is_admin(void)
 
 	for (x = 0; x < Groups->GroupCount; x++)
 	{
-		if (EqualSid(AdministratorsSid, Groups->Groups[x].Sid) ||
-			EqualSid(PowerUsersSid, Groups->Groups[x].Sid))
+		if ((EqualSid(AdministratorsSid, Groups->Groups[x].Sid) && (Groups->Groups[x].Attributes & SE_GROUP_ENABLED)) ||
+			(EqualSid(PowerUsersSid, Groups->Groups[x].Sid) && (Groups->Groups[x].Attributes & SE_GROUP_ENABLED)))
 		{
 			success = TRUE;
 			break;
