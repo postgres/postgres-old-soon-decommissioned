@@ -590,23 +590,13 @@ fi
 ## Libraries
 ##
 
-if test "$PORTNAME" != "aix" -a "$PORTNAME" != "alpha"
-then
-	AC_CHECK_LIB(bsd,      main)
-fi
 AC_SEARCH_LIBS(setproctitle, util)
 AC_SEARCH_LIBS(pow, m)
 AC_SEARCH_LIBS(dlopen, dl)
-AC_CHECK_LIB(nsl,      main)
 AC_SEARCH_LIBS(socket, [socket wsock32])
 AC_SEARCH_LIBS(shl_load, dld)
-AC_CHECK_LIB(ld,       main)
-AC_CHECK_LIB(BSD,      main)
-AC_CHECK_LIB(gen,      main)
-AC_CHECK_LIB(resolv,   main)
+AC_SEARCH_LIBS(ldopen, ld)
 AC_SEARCH_LIBS(getopt_long, [getopt gnugetopt])
-# QNX:
-AC_CHECK_LIB(unix, main)
 AC_SEARCH_LIBS(crypt, crypt)
 # Solaris:
 AC_SEARCH_LIBS(fdatasync, [rt posix4])
