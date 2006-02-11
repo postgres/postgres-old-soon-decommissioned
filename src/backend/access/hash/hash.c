@@ -496,6 +496,17 @@ hashbulkdelete(PG_FUNCTION_ARGS)
 	tuples_removed = 0;
 	num_index_tuples = 0;
 
+	/* return statistics */
+	num_pages = RelationGetNumberOfBlocks(rel);
+
+	result = (IndexBulkDeleteResult *) palloc0(sizeof(IndexBulkDeleteResult));
+	result->num_pages = num_pages;
+
+    if (!callback_state)
+    {
+        	PG_RETURN_POINTER(result);
+    }
+
 	/*
 	 * Read the metapage to fetch original bucket and tuple counts.  Also, we
 	 * keep a copy of the last-seen metapage so that we can use its
@@ -644,11 +655,6 @@ loop_top:
 
 	_hash_wrtbuf(rel, metabuf);
 
-	/* return statistics */
-	num_pages = RelationGetNumberOfBlocks(rel);
-
-	result = (IndexBulkDeleteResult *) palloc0(sizeof(IndexBulkDeleteResult));
-	result->num_pages = num_pages;
 	result->num_index_tuples = num_index_tuples;
 	result->tuples_removed = tuples_removed;
 
