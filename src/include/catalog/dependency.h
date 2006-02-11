@@ -179,6 +179,12 @@ extern long changeDependencyFor(Oid classId, Oid objectId,
 
 extern bool objectIsInternalDependency(Oid classId, Oid objectId);
 
+extern List* getDependentOids(Oid classId, Oid objId,
+							  Oid refClassId, DependencyType deptype);
+
+extern List* getReferencingOids(Oid refClassId, Oid refObjId, Oid refObjSubId,
+								Oid classId, DependencyType deptype);
+
 /* in pg_shdepend.c */
 
 extern void recordSharedDependencyOn(ObjectAddress *depender,
