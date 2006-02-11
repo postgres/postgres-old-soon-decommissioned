@@ -125,7 +125,7 @@ gistVacuumUpdate(GistVacuum *gv, BlockNumber blkno, bool needunion)
 					if (chldtuple.ituplen > 1)
 					{
 						/*
-						 * child was split, so we need mark completion
+						 * child was splitted, so we need mark completion
 						 * insert(split)
 						 */
 						int			j;
@@ -329,9 +329,9 @@ gistVacuumUpdate(GistVacuum *gv, BlockNumber blkno, bool needunion)
 }
 
 /*
- * For usual vacuum just update FSM, for full vacuum
+ * For usial vacuum just update FSM, for full vacuum
  * reforms parent tuples if some of childs was deleted or changed,
- * update invalid tuples (they can exist from last crash recovery only),
+ * update invalid tuples (they can exsist from last crash recovery only),
  * tries to get smaller index
  */
 
@@ -505,15 +505,10 @@ gistbulkdelete(PG_FUNCTION_ARGS)
 			   *ptr;
 	bool		needLock;
 
-    if (callback_state)
-    {
-    	stack = (GistBDItem *) palloc0(sizeof(GistBDItem));
+	stack = (GistBDItem *) palloc0(sizeof(GistBDItem));
 
-	   stack->blkno = GIST_ROOT_BLKNO;
-	   needFullVacuum = false;
-    }
-    else
-        stack = NULL;
+	stack->blkno = GIST_ROOT_BLKNO;
+	needFullVacuum = false;
 
 	while (stack)
 	{

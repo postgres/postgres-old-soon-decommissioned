@@ -685,11 +685,6 @@ index_getmulti(IndexScanDesc scan,
  *		callback routine tells whether a given main-heap tuple is
  *		to be deleted
  *
- *      passing NULL callback_state can be interpreted by the 
- *      index access method as meaning that the index does not need
- *      to be scanned in logical sequence to remove rows for this call
- *      index_vacuum_cleanup is always required after this, however.
- * 
  *		return value is an optional palloc'd struct of statistics
  * ----------------
  */

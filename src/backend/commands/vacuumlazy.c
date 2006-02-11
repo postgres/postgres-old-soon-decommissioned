@@ -639,19 +639,16 @@ lazy_scan_index(Relation indrel, LVRelStats *vacrelstats)
 	if (!stats)
 		return;
 
-	/* now update statistics in pg_class
-     * we use the number of tuples from the table because we have not
-     * actually scanned the index, so don't know the number of tuples in index
-     */
+	/* now update statistics in pg_class */
 	vac_update_relstats(RelationGetRelid(indrel),
 						stats->num_pages,
-						vacrelstats->rel_tuples, 
+						stats->num_index_tuples,
 						false);
 
 	ereport(elevel,
 			(errmsg("index \"%s\" now contains %.0f row versions in %u pages",
 					RelationGetRelationName(indrel),
-					vacrelstats->rel_tuples,
+					stats->num_index_tuples,
 					stats->num_pages),
 	errdetail("%u index pages have been deleted, %u are currently reusable.\n"
 			  "%s.",
