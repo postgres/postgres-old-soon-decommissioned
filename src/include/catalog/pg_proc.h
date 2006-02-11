@@ -2431,6 +2431,21 @@ DESCR("INET address of the server");
 DATA(insert OID = 2199 (  inet_server_port		PGNSP PGUID 12 f f f f s 0 23 "" _null_ _null_ _null_  inet_server_port - _null_ ));
 DESCR("server's port number for this connection");
 
+DATA(insert OID = 2627 (  inetnot			PGNSP PGUID 12 f f t f i 1 869 "869" _null_ _null_ _null_	inetnot - _null_ ));
+DESCR("binary NOT");
+DATA(insert OID = 2628 (  inetand			PGNSP PGUID 12 f f t f i 2 869 "869 869" _null_ _null_ _null_	inetand - _null_ ));
+DESCR("binary AND");
+DATA(insert OID = 2629 (  inetor			PGNSP PGUID 12 f f t f i 2 869 "869 869" _null_ _null_ _null_	inetor - _null_ ));
+DESCR("binary OR");
+DATA(insert OID = 2630 (  inetpl			PGNSP PGUID 12 f f t f i 2 869 "869 20" _null_ _null_ _null_	inetpl - _null_ ));
+DESCR("add integer to INET value");
+DATA(insert OID = 2631 ( int8pl_inet		PGNSP PGUID 14 f f t f i 2 869 "20 869" _null_ _null_ _null_	"select $2 + $1" - _null_ ));
+DESCR("add integer to INET value");
+DATA(insert OID = 2632 (  inetmi_int8		PGNSP PGUID 12 f f t f i 2 869 "869 20" _null_ _null_ _null_	inetmi_int8 - _null_ ));
+DESCR("subtract integer from INET value");
+DATA(insert OID = 2633 (  inetmi			PGNSP PGUID 12 f f t f i 2 20 "869 869" _null_ _null_ _null_	inetmi - _null_ ));
+DESCR("subtract INET values");
+
 DATA(insert OID = 1686 ( numeric			PGNSP PGUID 12 f f t f i 1 1700 "25" _null_ _null_ _null_ text_numeric - _null_ ));
 DESCR("(internal)");
 DATA(insert OID = 1688 ( text				PGNSP PGUID 12 f f t f i 1 25 "1700" _null_ _null_ _null_ numeric_text - _null_ ));

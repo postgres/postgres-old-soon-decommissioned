@@ -734,6 +734,12 @@ extern Datum inet_client_addr(PG_FUNCTION_ARGS);
 extern Datum inet_client_port(PG_FUNCTION_ARGS);
 extern Datum inet_server_addr(PG_FUNCTION_ARGS);
 extern Datum inet_server_port(PG_FUNCTION_ARGS);
+extern Datum inetnot(PG_FUNCTION_ARGS);
+extern Datum inetand(PG_FUNCTION_ARGS);
+extern Datum inetor(PG_FUNCTION_ARGS);
+extern Datum inetpl(PG_FUNCTION_ARGS);
+extern Datum inetmi_int8(PG_FUNCTION_ARGS);
+extern Datum inetmi(PG_FUNCTION_ARGS);
 
 /* mac.c */
 extern Datum macaddr_in(PG_FUNCTION_ARGS);
