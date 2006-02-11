@@ -685,6 +685,10 @@ index_getmulti(IndexScanDesc scan,
  *		callback routine tells whether a given main-heap tuple is
  *		to be deleted
  *
+ *		if callback_state is NULL then there are no tuples to be deleted;
+ *		index AM can choose to avoid work in this case, but must still
+ *		follow the protocol of returning statistical info.
+ * 
  *		return value is an optional palloc'd struct of statistics
  * ----------------
  */

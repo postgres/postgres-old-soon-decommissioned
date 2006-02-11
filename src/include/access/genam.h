@@ -51,6 +51,7 @@ typedef struct IndexVacuumCleanupInfo
 {
 	bool		vacuum_full;	/* VACUUM FULL (we have exclusive lock) */
 	int			message_level;	/* ereport level for progress messages */
+	double		num_heap_tuples;	/* tuples remaining in heap */
 } IndexVacuumCleanupInfo;
 
 /* Struct for heap-or-index scans of system tables */

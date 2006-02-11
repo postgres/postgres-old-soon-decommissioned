@@ -625,6 +625,7 @@ lazy_scan_index(Relation indrel, LVRelStats *vacrelstats)
 	/* Do post-VACUUM cleanup, even though we deleted nothing */
 	vcinfo.vacuum_full = false;
 	vcinfo.message_level = elevel;
+	vcinfo.num_heap_tuples = vacrelstats->rel_tuples;
 
 	stats = index_vacuum_cleanup(indrel, &vcinfo, stats);
 
@@ -697,6 +698,9 @@ lazy_vacuum_index(Relation indrel,
 	/* Do post-VACUUM cleanup */
 	vcinfo.vacuum_full = false;
 	vcinfo.message_level = elevel;
+	/* We don't yet know rel_tuples, so pass -1 */
+	/* index_bulk_delete can't have skipped scan anyway ... */
+	vcinfo.num_heap_tuples = -1;
 
 	stats = index_vacuum_cleanup(indrel, &vcinfo, stats);
 

@@ -201,6 +201,12 @@ ambulkdelete (Relation indexRelation,
   </para>
 
   <para>
+   If <literal>callback_state</> is NULL then no tuples are to be deleted.
+   The index AM may choose to optimize this case (eg by not scanning the
+   index) but it is still expected to deliver accurate statistics.
+  </para>
+
+  <para>
 <programlisting>
 IndexBulkDeleteResult *
 amvacuumcleanup (Relation indexRelation,
