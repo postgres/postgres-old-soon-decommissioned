@@ -12,6 +12,7 @@
 
 #include "settings.h"
 #include "common.h"
+#include "pqexpbuffer.h"
 #include "input.h"
 #include "variables.h"
 
