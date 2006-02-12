@@ -379,7 +379,7 @@ exec_command(const char *cmd,
 				break;
 			case 'g':
 				/* no longer distinct from \du */
-				success = describeRoles(pattern);
+				success = describeRoles(pattern, show_verbose);
 				break;
 			case 'l':
 				success = do_lo_list();
@@ -404,7 +404,7 @@ exec_command(const char *cmd,
 				success = listTables(&cmd[1], pattern, show_verbose);
 				break;
 			case 'u':
-				success = describeRoles(pattern);
+				success = describeRoles(pattern, show_verbose);
 				break;
 
 			default:

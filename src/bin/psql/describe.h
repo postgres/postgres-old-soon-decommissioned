@@ -26,7 +26,7 @@ extern bool describeTypes(const char *pattern, bool verbose);
 extern bool describeOperators(const char *pattern);
 
 /* \du, \dg */
-extern bool describeRoles(const char *pattern);
+extern bool describeRoles(const char *pattern, bool verbose);
 
 /* \z (or \dp) */
 extern bool permissionsList(const char *pattern);

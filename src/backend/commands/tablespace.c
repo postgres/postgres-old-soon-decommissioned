@@ -54,6 +54,7 @@
 #include "catalog/indexing.h"
 #include "catalog/pg_namespace.h"
 #include "catalog/pg_tablespace.h"
+#include "commands/comment.h"
 #include "commands/tablespace.h"
 #include "miscadmin.h"
 #include "storage/fd.h"
@@ -427,6 +428,11 @@ DropTableSpace(DropTableSpaceStmt *stmt)
 	simple_heap_delete(rel, &tuple->t_self);
 
 	heap_endscan(scandesc);
+
+	/*
+	 * Remove any comments on this tablespace.
+	 */
+	DeleteSharedComments(tablespaceoid, TableSpaceRelationId);
 
 	/*
 	 * Remove dependency on owner.

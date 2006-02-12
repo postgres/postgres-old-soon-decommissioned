@@ -18,6 +18,7 @@
 #include "catalog/indexing.h"
 #include "catalog/pg_auth_members.h"
 #include "catalog/pg_authid.h"
+#include "commands/comment.h"
 #include "commands/user.h"
 #include "libpq/crypt.h"
 #include "miscadmin.h"
@@ -939,6 +940,11 @@ DropRole(DropRoleStmt *stmt)
 		}
 
 		systable_endscan(sscan);
+
+		/*
+		 * Remove any comments on this role.
+		 */
+		DeleteSharedComments(roleid, AuthIdRelationId);
 
 		/*
 		 * Advance command counter so that later iterations of this loop will

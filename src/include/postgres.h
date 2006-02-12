@@ -539,6 +539,7 @@ extern int ExceptionalCondition(char *conditionName, char *errorType,
 /* these need to expand into some harmless, repeatable declaration */
 #define DATA(x)   extern int no_such_variable
 #define DESCR(x)  extern int no_such_variable
+#define SHDESCR(x) extern int no_such_variable
 
 typedef int4 aclitem;			/* PHONY definition for catalog use only */
 

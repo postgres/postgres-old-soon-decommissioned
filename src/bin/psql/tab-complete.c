@@ -925,7 +925,8 @@ psql_completion(char *text, int start, int end)
 		static const char *const list_COMMENT[] =
 		{"CAST", "CONVERSION", "DATABASE", "INDEX", "LANGUAGE", "RULE", "SCHEMA",
 			"SEQUENCE", "TABLE", "TYPE", "VIEW", "COLUMN", "AGGREGATE", "FUNCTION",
-		"OPERATOR", "TRIGGER", "CONSTRAINT", "DOMAIN", "LARGE OBJECT", NULL};
+			"OPERATOR", "TRIGGER", "CONSTRAINT", "DOMAIN", "LARGE OBJECT",
+			"TABLESPACE", "ROLE", NULL};
 
 		COMPLETE_WITH_LIST(list_COMMENT);
 	}

@@ -2953,11 +2953,12 @@ TruncateStmt:
  *
  *	COMMENT ON [ [ DATABASE | DOMAIN | INDEX | SEQUENCE | TABLE | TYPE | VIEW |
  *				   CONVERSION | LANGUAGE | OPERATOR CLASS | LARGE OBJECT |
- *				   CAST ] <objname> |
+ *				   CAST | COLUMN | SCHEMA | TABLESPACE | ROLE ] <objname> |
  *				 AGGREGATE <aggname> (<aggtype>) |
  *				 FUNCTION <funcname> (arg1, arg2, ...) |
  *				 OPERATOR <op> (leftoperand_typ, rightoperand_typ) |
  *				 TRIGGER <triggername> ON <relname> |
+ *				 CONSTRAINT <constraintname> ON <relname> |
  *				 RULE <rulename> ON <relname> ]
  *			   IS 'text'
  *
@@ -3088,6 +3089,8 @@ comment_type:
 			| TYPE_P							{ $$ = OBJECT_TYPE; }
 			| VIEW								{ $$ = OBJECT_VIEW; }
 			| CONVERSION_P						{ $$ = OBJECT_CONVERSION; }
+			| TABLESPACE						{ $$ = OBJECT_TABLESPACE; }
+			| ROLE								{ $$ = OBJECT_ROLE; }
 		;
 
 comment_text:

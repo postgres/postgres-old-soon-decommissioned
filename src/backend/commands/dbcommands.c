@@ -658,10 +658,8 @@ dropdb(const char *dbname, bool missing_ok)
 	/*
 	 * Delete any comments associated with the database
 	 *
-	 * NOTE: this is probably dead code since any such comments should have
-	 * been in that database, not mine.
 	 */
-	DeleteComments(db_id, DatabaseRelationId, 0);
+	DeleteSharedComments(db_id, DatabaseRelationId);
 
 	/*
 	 * Remove shared dependency references for the database.
