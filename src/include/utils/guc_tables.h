@@ -126,6 +126,7 @@ struct config_generic
 #define GUC_DISALLOW_IN_FILE	0x0040	/* can't set in postgresql.conf */
 #define GUC_CUSTOM_PLACEHOLDER	0x0080	/* placeholder for custom variable */
 #define GUC_SUPERUSER_ONLY		0x0100	/* show only to superusers */
+#define GUC_IS_NAME				0x0200	/* limit string to NAMEDATALEN-1 */
 
 /* bit values in status field */
 #define GUC_HAVE_TENTATIVE	0x0001		/* tentative value is defined */
