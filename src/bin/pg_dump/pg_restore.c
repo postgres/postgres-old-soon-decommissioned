@@ -66,7 +66,6 @@ int			optreset;
 #endif
 
 
-/* Forward decls */
 static void usage(const char *progname);
 
 typedef struct option optType;
