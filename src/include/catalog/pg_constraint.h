@@ -187,10 +187,4 @@ extern char *GetConstraintNameForTrigger(Oid triggerId);
 extern void AlterConstraintNamespaces(Oid ownerId, Oid oldNspId,
 						  Oid newNspId, bool isType);
 
-extern void RenameConstraint(Oid conId, const char* newName,
-						     bool implicitRename, const char* cmdName);
-
-extern Oid GetRelationConstraintOid(Oid relId, const char* name);
-extern Oid GetConstraintRelationId(Oid conId);
-
 #endif   /* PG_CONSTRAINT_H */

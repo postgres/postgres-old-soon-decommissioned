@@ -108,15 +108,6 @@ ALTER INDEX <replaceable class="PARAMETER">name</replaceable> SET TABLESPACE <re
    </para>
 
    <para>
-    Indexes are also used internally by constraints, namely by UNIQUE and
-    PRIMARY KEY constraints. If you rename an index that is used internally by
-    a constraint of that type, this constraint will implicitly be renamed as
-    well. On the other hand, if you rename such a constraint, it will
-    implicitly rename its corresponding index such that both objects always
-    have the same name.
-   </para>
-
-   <para>
     There was formerly an <command>ALTER INDEX OWNER</> variant, but
     this is now ignored (with a warning).  An index cannot have an owner
     different from its table's owner.  Changing the table's owner

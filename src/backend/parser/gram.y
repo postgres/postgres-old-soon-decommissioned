@@ -4099,15 +4099,6 @@ RenameStmt: ALTER AGGREGATE func_name '(' aggr_argtype ')' RENAME TO name
 					n->newname = $8;
 					$$ = (Node *)n;
 				}
-			| ALTER TABLE relation_expr ALTER CONSTRAINT name RENAME TO name
-				{
-					RenameStmt *n = makeNode(RenameStmt);
-					n->renameType = OBJECT_CONSTRAINT;
-					n->relation = $3;
-					n->subname = $6;
-					n->newname = $9;
-					$$ = (Node *)n;
-				}
 			| ALTER TRIGGER name ON relation_expr RENAME TO name
 				{
 					RenameStmt *n = makeNode(RenameStmt);
