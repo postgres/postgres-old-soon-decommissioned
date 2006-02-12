@@ -3720,16 +3720,15 @@ NUM_prepare_locale(NUMProc *Np)
 		else
 			Np->L_negative_sign = "-";
 
-		/* Might be "" */
-		if (lconv->positive_sign)
+		if (lconv->positive_sign && *lconv->positive_sign)
 			Np->L_positive_sign = lconv->positive_sign;
 		else
 			Np->L_positive_sign = "+";
 
 		/*
-		 * Number thousands separator (might be "")
+		 * Number thousands separator
 		 */
-		if (lconv->thousands_sep)
+		if (lconv->thousands_sep && *lconv->thousands_sep)
 			Np->L_thousands_sep = lconv->thousands_sep;
 		else
 			Np->L_thousands_sep = ",";
