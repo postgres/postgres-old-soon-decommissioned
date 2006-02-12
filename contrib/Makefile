@@ -21,6 +21,7 @@ WANTED_DIRS = \
 		ltree		\
 		oid2name	\
 		pg_buffercache	\
+		pg_freespacemap \
 		pg_trgm		\
 		pgbench		\
 		pgcrypto	\
