@@ -173,7 +173,7 @@ slashUsage(unsigned short int pager)
 	 * in 80 columns >> "
 	 */
 	fprintf(output, _("General\n"));
-	fprintf(output, _("  \\c[onnect] [DBNAME|- [USER]]\n"
+	fprintf(output, _("  \\c[onnect] [DBNAME|- USER|- HOST|- PORT|-]\n"
 			"                 connect to new database (currently \"%s\")\n"),
 			PQdb(pset.db));
 	fprintf(output, _("  \\cd [DIR]      change the current working directory\n"));
