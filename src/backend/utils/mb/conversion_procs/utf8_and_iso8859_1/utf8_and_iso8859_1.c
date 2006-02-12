@@ -84,8 +84,10 @@ utf8_to_iso8859_1(PG_FUNCTION_ARGS)
 			len -= 2;
 		}
 		else if ((c & 0xe0) == 0xe0)
-			elog(ERROR, "could not convert UTF8 character 0x%04x to ISO8859-1",
-				 c);
+			ereport(WARNING,
+					(errcode(ERRCODE_UNTRANSLATABLE_CHARACTER),
+					 errmsg("ignoring unconvertible UTF-8 character 0x%04x",
+							c)));
 		else
 		{
 			*dest++ = c;
