@@ -448,6 +448,19 @@
        </para>
       </listitem>
      </varlistentry>
+
+     <varlistentry>
+      <term><option>-1</option></term>
+      <term><option>--single-transaction</option></term>
+      <listitem>
+       <para>
+        Force the restore to execute as a single transaction. Either all
+        SQL statements complete successfully, or no changes are applied. This
+        option also forces --exit-on-error.
+       </para>
+      </listitem>
+     </varlistentry>
+
     </variablelist>
    </para>
  </refsect1>

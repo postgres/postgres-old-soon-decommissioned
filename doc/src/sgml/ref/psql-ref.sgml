@@ -463,6 +463,18 @@ PostgreSQL documentation
       </listitem>
     </varlistentry>
 
+     <varlistentry>
+      <term><option>-1</option></term>
+      <term><option>--single-transaction</option></term>
+      <listitem>
+       <para>
+        When psql executes a script with the -f option, this additional option
+        will force the script to execute as a single transaction. Either all
+        SQL statements complete successfully, or no changes are applied. 
+       </para>
+      </listitem>
+     </varlistentry>
+
     <varlistentry>
       <term><option>-?</></term>
       <term><option>--help</></term>

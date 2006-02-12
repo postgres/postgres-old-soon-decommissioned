@@ -217,6 +217,9 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 
 	AH->stage = STAGE_PROCESSING;
 
+    if (ropt->single_txn)
+		ahprintf(AH, "BEGIN;\n\n");
+
 	/*
 	 * Drop the items at the start, in reverse order
 	 */
@@ -369,6 +372,9 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 			_printTocEntry(AH, te, ropt, false, true);
 		}
 	}
+
+    if (ropt->single_txn)
+		ahprintf(AH, "COMMIT;\n\n");
 
 	if (AH->public.verbose)
 		dumpTimestamp(AH, "Completed on", time(NULL));
