@@ -449,7 +449,7 @@ pg_char_to_encname_struct(const char *name)
 	if (name == NULL || *name == '\0')
 		return NULL;
 
-	if (strlen(name) > NAMEDATALEN)
+	if (strlen(name) >= NAMEDATALEN)
 	{
 #ifdef FRONTEND
 		fprintf(stderr, "encoding name too long\n");
