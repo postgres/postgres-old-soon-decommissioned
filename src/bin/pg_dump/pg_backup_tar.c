@@ -27,7 +27,10 @@
 
 #include <ctype.h>
 #include <limits.h>
+
+#ifndef WIN32_CLIENT_ONLY
 #include <unistd.h>
+#endif
 
 static void _ArchiveEntry(ArchiveHandle *AH, TocEntry *te);
 static void _StartData(ArchiveHandle *AH, TocEntry *te);

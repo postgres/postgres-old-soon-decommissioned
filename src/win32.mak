@@ -18,6 +18,10 @@ ALL:
    nmake /f win32.mak $(MAKEMACRO)
    cd ..\..\bin\psql
    nmake /f win32.mak $(MAKEMACRO)
+   cd ..\..\bin\pg_dump
+   nmake /f win32.mak $(MAKEMACRO)
+   cd ..\..\bin\scripts
+   nmake /f win32.mak $(MAKEMACRO)
    cd ..\..\bin\pg_config
    nmake /f win32.mak $(MAKEMACRO)
    cd ..\..
@@ -27,6 +31,10 @@ CLEAN:
    cd interfaces\libpq
    nmake /f win32.mak CLEAN
    cd ..\..\bin\psql
+   nmake /f win32.mak CLEAN
+   cd ..\..\bin\pg_dump
+   nmake /f win32.mak CLEAN
+   cd ..\..\bin\scripts
    nmake /f win32.mak CLEAN
    cd ..\..\bin\pg_config
    nmake /f win32.mak CLEAN

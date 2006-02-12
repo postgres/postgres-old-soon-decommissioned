@@ -14,7 +14,11 @@
 #include "postgres_fe.h"
 
 #include <time.h>
+
+#ifndef WIN32_CLIENT_ONLY
 #include <unistd.h>
+#endif
+
 #ifdef ENABLE_NLS
 #include <locale.h>
 #endif

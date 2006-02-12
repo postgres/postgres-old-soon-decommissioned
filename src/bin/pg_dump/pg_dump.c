@@ -24,7 +24,10 @@
  */
 #include "postgres.h"
 
+#ifndef WIN32_CLIENT_ONLY
 #include <unistd.h>
+#endif
+
 #include <ctype.h>
 #ifdef ENABLE_NLS
 #include <locale.h>

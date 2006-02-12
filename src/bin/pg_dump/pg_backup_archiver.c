@@ -27,7 +27,10 @@
 #include "dumputils.h"
 
 #include <ctype.h>
+
+#ifndef WIN32_CLIENT_ONLY
 #include <unistd.h>
+#endif
 
 #ifdef WIN32
 #include <io.h>
