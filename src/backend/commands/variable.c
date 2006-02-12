@@ -736,7 +736,9 @@ assign_client_encoding(const char *value, bool doit, bool interactive)
  * by the numeric userid, followed by a comma, followed by the user name.
  * This cannot be confused with a plain user name because of the NAMEDATALEN
  * limit on names, so we can tell whether we're being passed an initial
- * username or a saved/restored value.
+ * username or a saved/restored value.  (NOTE: we rely on guc.c to have
+ * properly truncated any incoming value, but not to truncate already-stored
+ * values.  See GUC_IS_NAME processing.)
  */
 extern char *session_authorization_string; /* in guc.c */
 
