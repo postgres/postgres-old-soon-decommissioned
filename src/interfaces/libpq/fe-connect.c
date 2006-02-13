@@ -505,6 +505,13 @@ connectOptions2(PGconn *conn)
 	else
 		conn->sslmode = strdup(DefaultSSLMode);
 
+	/*
+	 * Only if we get this far is it appropriate to try to connect.
+	 * (We need a state flag, rather than just the boolean result of
+	 * this function, in case someone tries to PQreset() the PGconn.)
+	 */
+	conn->options_valid = true;
+
 	return true;
 }
 
@@ -728,6 +735,9 @@ connectDBStart(PGconn *conn)
 
 	if (!conn)
 		return 0;
+
+	if (!conn->options_valid)
+		goto connect_errReturn;
 
 	/* Ensure our buffers are empty */
 	conn->inStart = conn->inCursor = conn->inEnd = 0;
@@ -1814,6 +1824,8 @@ makeEmptyPGconn(void)
 	conn->status = CONNECTION_BAD;
 	conn->asyncStatus = PGASYNC_IDLE;
 	conn->xactStatus = PQTRANS_IDLE;
+	conn->options_valid = false;
+	conn->nonblocking = false;
 	conn->setenv_state = SETENV_STATE_IDLE;
 	conn->client_encoding = PG_SQL_ASCII;
 	conn->verbosity = PQERRORS_DEFAULT;
@@ -1838,7 +1850,6 @@ makeEmptyPGconn(void)
 	conn->inBuffer = (char *) malloc(conn->inBufSize);
 	conn->outBufSize = 16 * 1024;
 	conn->outBuffer = (char *) malloc(conn->outBufSize);
-	conn->nonblocking = FALSE;
 	initPQExpBuffer(&conn->errorMessage);
 	initPQExpBuffer(&conn->workBuffer);
 

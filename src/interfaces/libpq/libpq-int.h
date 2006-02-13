@@ -276,9 +276,9 @@ struct pg_conn
 	/* Status indicators */
 	ConnStatusType status;
 	PGAsyncStatusType asyncStatus;
-	PGTransactionStatusType xactStatus;
-	/* note: xactStatus never changes to ACTIVE */
+	PGTransactionStatusType xactStatus;		/* never changes to ACTIVE */
 	PGQueryClass queryclass;
+	bool		options_valid;	/* true if OK to attempt connection */
 	bool		nonblocking;	/* whether this connection is using nonblock
 								 * sending semantics */
 	char		copy_is_binary; /* 1 = copy binary, 0 = copy text */
