@@ -68,6 +68,8 @@ gistVacuumUpdate(GistVacuum *gv, BlockNumber blkno, bool needunion)
 	int			ncompleted = 0,
 				lencompleted = 16;
 
+	vacuum_delay_point();
+
 	buffer = ReadBuffer(gv->index, blkno);
 
 	/*
@@ -406,9 +408,12 @@ gistvacuumcleanup(PG_FUNCTION_ARGS)
 	freePages = (BlockNumber *) palloc(sizeof(BlockNumber) * maxFreePages);
 	for (blkno = GIST_ROOT_BLKNO + 1; blkno < npages; blkno++)
 	{
-		Buffer		buffer = ReadBuffer(rel, blkno);
+		Buffer		buffer;
 		Page		page;
 
+		vacuum_delay_point();
+
+		buffer = ReadBuffer(rel, blkno);
 		LockBuffer(buffer, GIST_SHARE);
 		page = (Page) BufferGetPage(buffer);
 
@@ -561,7 +566,7 @@ gistbulkdelete(PG_FUNCTION_ARGS)
 			page = (Page) BufferGetPage(buffer);
 			if (stack->blkno == GIST_ROOT_BLKNO && !GistPageIsLeaf(page))
 			{
-				/* the only root can become non-leaf during relock */
+				/* only the root can become non-leaf during relock */
 				LockBuffer(buffer, GIST_UNLOCK);
 				ReleaseBuffer(buffer);
 				/* one more check */
@@ -648,7 +653,6 @@ gistbulkdelete(PG_FUNCTION_ARGS)
 
 		LockBuffer(buffer, GIST_UNLOCK);
 		ReleaseBuffer(buffer);
-
 
 		ptr = stack->next;
 		pfree(stack);
