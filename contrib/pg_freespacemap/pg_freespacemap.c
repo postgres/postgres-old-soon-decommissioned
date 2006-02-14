@@ -15,6 +15,8 @@
 #define		NUM_FREESPACE_PAGES_ELEM 	6
 
 #if defined(WIN32) || defined(__CYGWIN__)
+/* Need DLLIMPORT for some things that are not so marked in main headers */
+extern DLLIMPORT int	MaxFSMPages;
 extern DLLIMPORT volatile uint32 InterruptHoldoffCount;
 #endif
 
