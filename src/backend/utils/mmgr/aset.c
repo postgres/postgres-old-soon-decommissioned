@@ -1069,7 +1069,7 @@ AllocSetStats(MemoryContext context)
 		}
 	}
 	fprintf(stderr,
-			"%s: %ld total in %ld blocks; %ld free (%ld chunks); %ld used\n",
+			"%s: %lu total in %ld blocks; %lu free (%ld chunks); %lu used\n",
 			set->header.name, totalspace, nblocks, freespace, nchunks,
 			totalspace - freespace);
 }
