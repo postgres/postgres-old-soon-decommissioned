@@ -376,6 +376,13 @@ GRANT <replaceable class="PARAMETER">role</replaceable> [, ...]
    </para>
 
    <para>
+    Granting permission on a table does not automatically extend 
+    permissions to any sequences used by the table, including 
+    sequences tied to <type>SERIAL</> columns.  Permissions on 
+    sequence must be set separately.
+   </para>
+
+   <para>
     Currently, <productname>PostgreSQL</productname> does not support
     granting or revoking privileges for individual columns of a table.
     One possible workaround is to create a view having just the desired
