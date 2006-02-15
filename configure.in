@@ -595,7 +595,12 @@ AC_SEARCH_LIBS(pow, m)
 AC_SEARCH_LIBS(dlopen, dl)
 AC_SEARCH_LIBS(socket, [socket wsock32])
 AC_SEARCH_LIBS(shl_load, dld)
-AC_SEARCH_LIBS(ldopen, ld)
+# We only use libld in port/dynloader/aix.c
+case $host_os in
+     aix*)
+	AC_SEARCH_LIBS(ldopen, ld)
+	;;
+esac
 AC_SEARCH_LIBS(getopt_long, [getopt gnugetopt])
 AC_SEARCH_LIBS(crypt, crypt)
 # Solaris:
