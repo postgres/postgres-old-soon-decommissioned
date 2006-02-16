@@ -180,6 +180,9 @@
 (define %body-attr%             '())
 (define ($generate-book-lot-list$) '())
 
+;; Do not combine first section into chapter chunk.
+(define (chunk-skip-first-element-list) '())
+
 ;; Returns the depth of auto TOC that should be made at the nd-level
 (define (toc-depth nd)
   (cond ((string=? (gi nd) (normalize "book")) 2)
