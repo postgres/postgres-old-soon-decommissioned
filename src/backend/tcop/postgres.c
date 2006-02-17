@@ -98,8 +98,10 @@ int			PostAuthDelay = 0;
 /* max_stack_depth converted to bytes for speed of checking */
 static int	max_stack_depth_bytes = 2048 * 1024;
 
-/* stack base pointer (initialized by PostgresMain) */
-/* Do not make static so PL/Java can modifiy it */
+/*
+ * Stack base pointer -- initialized by PostgresMain. This is not static
+ * so that PL/Java can modify it.
+ */
 char	   *stack_base_ptr = NULL;
 
 
