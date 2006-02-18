@@ -779,7 +779,11 @@ struct encoding_match encoding_match_list[] = {
 	{PG_LATIN10, "iso885916"},
 
 	{PG_WIN1252, "CP1252"},
+	{PG_WIN1253, "CP1253"},
+	{PG_WIN1254, "CP1254"},
+	{PG_WIN1255, "CP1255"},
 	{PG_WIN1256, "CP1256"},
+	{PG_WIN1257, "CP1257"},
 	{PG_WIN1258, "CP1258"},
 #ifdef NOT_VERIFIED
 	{PG_WIN874, "???"},
