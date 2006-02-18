@@ -918,9 +918,6 @@ html_escaped_print(const char *in, FILE *fout)
 			case '"':
 				fputs("&quot;", fout);
 				break;
-			case '\'':
-				fputs("&apos;", fout);
-				break;
 			case ' ':
 				/* protect leading space, for EXPLAIN output */
 				if (leading_space)
