@@ -93,7 +93,7 @@ static char	   *token_start;
 static YY_BUFFER_STATE scanbufhandle;
 static char *scanbuf;
 
-unsigned char unescape_single_char(unsigned char c);
+static unsigned char unescape_single_char(unsigned char c);
 
 %}
 
@@ -855,7 +855,7 @@ litbufdup(void)
 }
 
 
-unsigned char
+static unsigned char
 unescape_single_char(unsigned char c)
 {
 	switch (c)
