@@ -140,6 +140,9 @@ _readQuery(void)
 	READ_NODE_FIELD(utilityStmt);
 	READ_INT_FIELD(resultRelation);
 	READ_NODE_FIELD(into);
+	READ_BOOL_FIELD(intoHasOids);
+	READ_ENUM_FIELD(intoOnCommit, OnCommitAction);
+	READ_STRING_FIELD(intoTableSpaceName);
 	READ_BOOL_FIELD(hasAggs);
 	READ_BOOL_FIELD(hasSubLinks);
 	READ_NODE_FIELD(rtable);

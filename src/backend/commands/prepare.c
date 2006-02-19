@@ -196,6 +196,10 @@ ExecuteQuery(ExecuteStmt *stmt, ParamListInfo params,
 					(errcode(ERRCODE_WRONG_OBJECT_TYPE),
 					 errmsg("prepared statement is not a SELECT")));
 		query->into = copyObject(stmt->into);
+		query->intoHasOids = stmt->into_has_oids;
+		query->intoOnCommit = stmt->into_on_commit;
+		if (stmt->into_tbl_space)
+			query->intoTableSpaceName = pstrdup(stmt->into_tbl_space);
 
 		MemoryContextSwitchTo(oldContext);
 	}

@@ -27,6 +27,16 @@ typedef enum QuerySource
 	QSRC_NON_INSTEAD_RULE		/* added by non-INSTEAD rule */
 } QuerySource;
 
+/* What to do at commit time for temporary relations */
+typedef enum OnCommitAction
+{
+	ONCOMMIT_NOOP,				/* No ON COMMIT clause (do nothing) */
+	ONCOMMIT_PRESERVE_ROWS,		/* ON COMMIT PRESERVE ROWS (do nothing) */
+	ONCOMMIT_DELETE_ROWS,		/* ON COMMIT DELETE ROWS */
+	ONCOMMIT_DROP				/* ON COMMIT DROP */
+} OnCommitAction;
+
+
 /*
  * Grantable rights are encoded so that we can OR them together in a bitmask.
  * The present representation of AclItem limits us to 16 distinct rights,
@@ -82,6 +92,8 @@ typedef struct Query
 
 	RangeVar   *into;			/* target relation for SELECT INTO */
 	bool		intoHasOids;	/* should target relation contain OIDs? */
+	OnCommitAction	intoOnCommit;		/* what do we do at COMMIT? */
+	char	   *intoTableSpaceName;	/* table space to use, or NULL */
 
 	bool		hasAggs;		/* has aggregates in tlist or havingQual */
 	bool		hasSubLinks;	/* has subquery SubLink */
@@ -674,14 +686,16 @@ typedef struct SelectStmt
 	/*
 	 * These fields are used only in "leaf" SelectStmts.
 	 *
-	 * into, intoColNames and intoHasOids are a kluge; they belong somewhere
-	 * else...
+	 * into, intoColNames, intoHasOids, intoOnCommit, and
+	 * intoTableSpaceName are a kluge; they belong somewhere else...
 	 */
 	List	   *distinctClause; /* NULL, list of DISTINCT ON exprs, or
 								 * lcons(NIL,NIL) for all (SELECT DISTINCT) */
 	RangeVar   *into;			/* target table (for select into table) */
 	List	   *intoColNames;	/* column names for into table */
 	ContainsOids intoHasOids;	/* should target table have OIDs? */
+	OnCommitAction	intoOnCommit;		/* what do we do at COMMIT? */
+	char	   *intoTableSpaceName;		/* table space to use, or NULL */
 	List	   *targetList;		/* the target list (of ResTarget) */
 	List	   *fromClause;		/* the FROM clause */
 	Node	   *whereClause;	/* WHERE qualification */
@@ -975,15 +989,6 @@ typedef struct CopyStmt
  * implementation).
  * ----------------------
  */
-
-/* What to do at commit time for temporary relations */
-typedef enum OnCommitAction
-{
-	ONCOMMIT_NOOP,				/* No ON COMMIT clause (do nothing) */
-	ONCOMMIT_PRESERVE_ROWS,		/* ON COMMIT PRESERVE ROWS (do nothing) */
-	ONCOMMIT_DELETE_ROWS,		/* ON COMMIT DELETE ROWS */
-	ONCOMMIT_DROP				/* ON COMMIT DROP */
-} OnCommitAction;
 
 typedef struct CreateStmt
 {
@@ -1862,10 +1867,14 @@ typedef struct PrepareStmt
 
 typedef struct ExecuteStmt
 {
-	NodeTag		type;
-	char	   *name;			/* The name of the plan to execute */
-	RangeVar   *into;			/* Optional table to store results in */
-	List	   *params;			/* Values to assign to parameters */
+	NodeTag			type;
+	char		   *name;				/* The name of the plan to execute */
+	RangeVar	   *into;				/* Optional table to store results in */
+	ContainsOids	into_contains_oids;	/* Should it have OIDs? */
+	bool			into_has_oids;		/* Merge GUC info with user input */
+	OnCommitAction	into_on_commit;		/* What do we do at COMMIT? */
+	char		   *into_tbl_space;		/* Tablespace to use, or NULL */
+	List		   *params;				/* Values to assign to parameters */
 } ExecuteStmt;
 
 
@@ -1887,7 +1896,7 @@ typedef struct DropOwnedStmt
 	NodeTag		type;
 	List	   *roles;
 	DropBehavior behavior;
-}	DropOwnedStmt;
+} DropOwnedStmt;
 
 /*
  *		REASSIGN OWNED statement
@@ -1897,6 +1906,6 @@ typedef struct ReassignOwnedStmt
 	NodeTag		type;
 	List	   *roles;
 	char	   *newrole;
-}	ReassignOwnedStmt;
+} ReassignOwnedStmt;
 
 #endif   /* PARSENODES_H */

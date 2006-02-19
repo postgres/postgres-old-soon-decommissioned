@@ -1662,6 +1662,8 @@ _copyQuery(Query *from)
 	COPY_SCALAR_FIELD(resultRelation);
 	COPY_NODE_FIELD(into);
 	COPY_SCALAR_FIELD(intoHasOids);
+	COPY_SCALAR_FIELD(intoOnCommit);
+	COPY_STRING_FIELD(intoTableSpaceName);
 	COPY_SCALAR_FIELD(hasAggs);
 	COPY_SCALAR_FIELD(hasSubLinks);
 	COPY_NODE_FIELD(rtable);
@@ -1729,6 +1731,8 @@ _copySelectStmt(SelectStmt *from)
 	COPY_NODE_FIELD(into);
 	COPY_NODE_FIELD(intoColNames);
 	COPY_SCALAR_FIELD(intoHasOids);
+	COPY_SCALAR_FIELD(intoOnCommit);
+	COPY_STRING_FIELD(intoTableSpaceName);
 	COPY_NODE_FIELD(targetList);
 	COPY_NODE_FIELD(fromClause);
 	COPY_NODE_FIELD(whereClause);
@@ -2631,6 +2635,10 @@ _copyExecuteStmt(ExecuteStmt *from)
 
 	COPY_STRING_FIELD(name);
 	COPY_NODE_FIELD(into);
+	COPY_SCALAR_FIELD(into_contains_oids);
+	COPY_SCALAR_FIELD(into_has_oids);
+	COPY_SCALAR_FIELD(into_on_commit);
+	COPY_STRING_FIELD(into_tbl_space);
 	COPY_NODE_FIELD(params);
 
 	return newnode;
