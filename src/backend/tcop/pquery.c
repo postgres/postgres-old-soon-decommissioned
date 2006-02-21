@@ -795,7 +795,7 @@ PortalRunSelect(Portal portal,
 			nprocessed = queryDesc->estate->es_processed;
 		}
 
-		if (direction != NoMovementScanDirection)
+		if (!ScanDirectionIsNoMovement(direction))
 		{
 			long		oldPos;
 
@@ -837,7 +837,7 @@ PortalRunSelect(Portal portal,
 			nprocessed = queryDesc->estate->es_processed;
 		}
 
-		if (direction != NoMovementScanDirection)
+		if (!ScanDirectionIsNoMovement(direction))
 		{
 			if (nprocessed > 0 && portal->atEnd)
 			{
@@ -890,13 +890,13 @@ RunFromStore(Portal portal, ScanDirection direction, long count,
 
 	(*dest->rStartup) (dest, CMD_SELECT, portal->tupDesc);
 
-	if (direction == NoMovementScanDirection)
+	if (ScanDirectionIsNoMovement(direction))
 	{
 		/* do nothing except start/stop the destination */
 	}
 	else
 	{
-		bool		forward = (direction == ForwardScanDirection);
+		bool		forward = ScanDirectionIsForward(direction);
 
 		for (;;)
 		{

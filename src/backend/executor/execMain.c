@@ -218,7 +218,7 @@ ExecutorRun(QueryDesc *queryDesc,
 	/*
 	 * run plan
 	 */
-	if (direction == NoMovementScanDirection)
+	if (ScanDirectionIsNoMovement(direction))
 		result = NULL;
 	else
 		result = ExecutePlan(estate,
