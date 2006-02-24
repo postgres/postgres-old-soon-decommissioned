@@ -107,7 +107,6 @@ char	   *conversion_file;
 char	   *info_schema_file;
 char	   *features_file;
 char	   *system_views_file;
-char	   *effective_user;
 bool		testpath = true;
 bool		made_new_pgdata = false;
 bool		found_existing_pgdata = false;
@@ -476,6 +475,9 @@ popen_check(const char *command, const char *mode)
  * this tries to build all the elements of a path to a directory a la mkdir -p
  * we assume the path is in canonical form, i.e. uses / as the separator
  * we also assume it isn't null.
+ *
+ * note that on failure, the path arg has been modified to show the particular
+ * directory level we had problems with.
  */
 static int
 mkdir_p(char *path, mode_t omode)
@@ -544,30 +546,24 @@ mkdir_p(char *path, mode_t omode)
 		}
 		if (last)
 			(void) umask(oumask);
-		if (mkdir(path, last ? omode : S_IRWXU | S_IRWXG | S_IRWXO) < 0)
+
+		/* check for pre-existing directory; ok if it's a parent */
+		if (stat(path, &sb) == 0)
 		{
-			if (errno == EEXIST || errno == EISDIR)
+			if (!S_ISDIR(sb.st_mode))
 			{
-				if (stat(path, &sb) < 0)
-				{
-					retval = 1;
-					break;
-				}
-				else if (!S_ISDIR(sb.st_mode))
-				{
-					if (last)
-						errno = EEXIST;
-					else
-						errno = ENOTDIR;
-					retval = 1;
-					break;
-				}
-			}
-			else
-			{
+				if (last)
+					errno = EEXIST;
+				else
+					errno = ENOTDIR;
 				retval = 1;
 				break;
 			}
+		}
+		else if (mkdir(path, last ? omode : S_IRWXU | S_IRWXG | S_IRWXO) < 0)
+		{
+			retval = 1;
+			break;
 		}
 		if (!last)
 			*p = '/';
@@ -1274,7 +1270,7 @@ bootstrap_template1(char *short_version)
 		exit_nicely();
 	}
 
-	bki_lines = replace_token(bki_lines, "POSTGRES", effective_user);
+	bki_lines = replace_token(bki_lines, "POSTGRES", username);
 
 	bki_lines = replace_token(bki_lines, "ENCODING", encodingid);
 
@@ -1433,7 +1429,7 @@ get_set_pwd(void)
 	PG_CMD_OPEN;
 
 	PG_CMD_PRINTF2("ALTER USER \"%s\" WITH PASSWORD '%s';\n",
-				   effective_user, pwd1);
+				   username, pwd1);
 
 	PG_CMD_CLOSE;
 
@@ -1712,7 +1708,7 @@ setup_privileges(void)
 	PG_CMD_OPEN;
 
 	priv_lines = replace_token(privileges_setup,
-							   "$POSTGRES_SUPERUSERNAME", effective_user);
+							   "$POSTGRES_SUPERUSERNAME", username);
 	for (line = priv_lines; *line != NULL; line++)
 		PG_CMD_PUTS(*line);
 
@@ -2120,6 +2116,7 @@ main(int argc, char *argv[])
 				ret;
 	int			option_index;
 	char	   *short_version;
+    char       *effective_user;
 	char	   *pgdenv;			/* PGDATA value gotten from and sent to
 								 * environment */
 	char		bin_dir[MAXPGPATH];
@@ -2364,10 +2361,10 @@ main(int argc, char *argv[])
 		exit(1);
 	}
 
-	if (strlen(username))
-		effective_user = username;
-	else
-		effective_user = get_id();
+	effective_user = get_id();
+	if (strlen(username) == 0)
+		username = effective_user;
+
 
 	if (strlen(encoding))
 		encodingid = get_encoding_id(encoding);
@@ -2394,7 +2391,7 @@ main(int argc, char *argv[])
 				"PG_HBA_SAMPLE=%s\nPG_IDENT_SAMPLE=%s\n",
 				PG_VERSION,
 				pg_data, share_path, bin_path,
-				effective_user, bki_file,
+				username, bki_file,
 				desc_file, conf_file,
 				hba_file, ident_file);
 		if (show_setting)
@@ -2613,7 +2610,7 @@ main(int argc, char *argv[])
 	make_template0();
 
 	if (authwarning != NULL)
-		fprintf(stderr, authwarning);
+		fprintf(stderr, "%s", authwarning);
 
 	/* Get directory specification used to start this executable */
 	strcpy(bin_dir, argv[0]);
