@@ -38,7 +38,6 @@ WANTED_DIRS = \
 #		adddepend	\ (does not have a makefile)
 #		mSQL-interface	\ (requires msql installed)
 #		mac		\ (does not have a makefile)
-#		oracle		\ (does not have a makefile)
 #		start-scripts	\ (does not have a makefile)
 #		xml2		\ (requires libxml installed)
 
