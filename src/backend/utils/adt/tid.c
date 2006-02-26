@@ -174,7 +174,6 @@ tideq(PG_FUNCTION_ARGS)
 				   arg1->ip_posid == arg2->ip_posid);
 }
 
-#ifdef NOT_USED
 Datum
 tidne(PG_FUNCTION_ARGS)
 {
@@ -185,7 +184,6 @@ tidne(PG_FUNCTION_ARGS)
 				   BlockIdGetBlockNumber(&(arg2->ip_blkid)) ||
 				   arg1->ip_posid != arg2->ip_posid);
 }
-#endif
 
 /*
  *	Functions to get latest tid of a specified tuple.

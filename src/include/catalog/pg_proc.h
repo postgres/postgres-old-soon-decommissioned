@@ -1598,6 +1598,8 @@ DATA(insert OID = 1293 ( currtid		   PGNSP PGUID 12 f f t f v 2 27 "26 27" _null
 DESCR("latest tid of a tuple");
 DATA(insert OID = 1294 ( currtid2		   PGNSP PGUID 12 f f t f v 2 27 "25 27" _null_ _null_ _null_ currtid_byrelname - _null_ ));
 DESCR("latest tid of a tuple");
+DATA(insert OID = 2398 ( tidne			   PGNSP PGUID 12 f f t f i 2 16 "27 27" _null_ _null_ _null_ tidne - _null_ ));
+DESCR("not equal");
 
 DATA(insert OID = 2168 ( pg_database_size		PGNSP PGUID 12 f f t f v 1 20 "19" _null_ _null_ _null_ pg_database_size_name - _null_ ));
 DESCR("Calculate total disk space usage for the specified database");

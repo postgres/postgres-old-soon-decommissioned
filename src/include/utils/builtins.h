@@ -531,6 +531,7 @@ extern Datum tidout(PG_FUNCTION_ARGS);
 extern Datum tidrecv(PG_FUNCTION_ARGS);
 extern Datum tidsend(PG_FUNCTION_ARGS);
 extern Datum tideq(PG_FUNCTION_ARGS);
+extern Datum tidne(PG_FUNCTION_ARGS);
 extern Datum currtid_byreloid(PG_FUNCTION_ARGS);
 extern Datum currtid_byrelname(PG_FUNCTION_ARGS);
 
