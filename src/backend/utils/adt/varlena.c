@@ -81,7 +81,7 @@ static void appendStringInfoText(StringInfo str, const text *t);
  *		ereport(ERROR, ...) if bad form.
  *
  *		BUGS:
- *				The input is scaned twice.
+ *				The input is scanned twice.
  *				The error checking of input is minimal.
  */
 Datum
