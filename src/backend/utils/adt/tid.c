@@ -111,6 +111,7 @@ tidout(PG_FUNCTION_ARGS)
 	blockNumber = BlockIdGetBlockNumber(blockId);
 	offsetNumber = itemPtr->ip_posid;
 
+	/* Perhaps someday we should output this as a record. */
 	snprintf(buf, sizeof(buf), "(%u,%u)", blockNumber, offsetNumber);
 
 	PG_RETURN_CSTRING(pstrdup(buf));
