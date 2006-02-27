@@ -62,7 +62,7 @@ uninstall:
 	rm -f '$(DESTDIR)$(pgxsdir)/$(subdir)/pg_regress'
 
 
-# Build dynamically-loaded object file for CREATE FUNCTION ... LANGUAGE 'C'.
+# Build dynamically-loaded object file for CREATE FUNCTION ... LANGUAGE C.
 
 NAME = regress
 SO_MAJOR_VERSION= 0

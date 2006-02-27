@@ -120,7 +120,7 @@ CREATE OPERATOR <> (
 CREATE FUNCTION issn_cmp(issn, issn)
 RETURNS integer
 AS '$libdir/isbn_issn'
-LANGUAGE c STRICT;
+LANGUAGE C STRICT;
 
 -- Create default operator class for 'issn'    --
 -- Needed to create index or primary key       --
@@ -253,7 +253,7 @@ CREATE OPERATOR <> (
 CREATE FUNCTION isbn_cmp(isbn, isbn)
 RETURNS integer
 AS '$libdir/isbn_issn'
-LANGUAGE c STRICT;
+LANGUAGE C STRICT;
 
 -- Create default operator class for 'isbn'    --
 -- Needed to create index or primary key       --

@@ -54,7 +54,7 @@ free_percent		-- 再利用可能な領域．table_lenに対するfree_spaceの比率．
 
    CREATE OR REPLACE FUNCTION pgstattuple(text) RETURNS pgstattuple_type
      AS 'MODULE_PATHNAME', 'pgstattuple'
-     LANGUAGE 'c' WITH (isstrict);
+     LANGUAGE C STRICT;
 
    第一引数: テーブル名
 
