@@ -2,6 +2,7 @@
 
 MODULES = isbn_issn
 DATA_built = isbn_issn.sql
+DATA = uninstall_isbn_issn.sql
 DOCS = README.isbn_issn
 
 ifdef USE_PGXS

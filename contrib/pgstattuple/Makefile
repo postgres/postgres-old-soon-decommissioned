@@ -12,6 +12,7 @@ MODULE_big	= pgstattuple
 OBJS		= $(SRCS:.c=.o)
 DOCS		= README.pgstattuple README.pgstattuple.euc_jp
 DATA_built	= pgstattuple.sql
+DATA      	= uninstall_pgstattuple.sql
 
 ifdef USE_PGXS
 PGXS := $(shell pg_config --pgxs)

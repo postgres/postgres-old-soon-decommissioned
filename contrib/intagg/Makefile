@@ -6,6 +6,7 @@
 
 MODULES = int_aggregate
 DATA_built = int_aggregate.sql
+DATA = uninstall_int_aggregate.sql
 DOCS = README.int_aggregate
 
 ifdef USE_PGXS

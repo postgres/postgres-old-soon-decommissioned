@@ -2,6 +2,7 @@
 
 MODULES = user_locks
 DATA_built = user_locks.sql
+DATA = uninstall_user_locks.sql
 DOCS = README.user_locks
 
 ifdef USE_PGXS

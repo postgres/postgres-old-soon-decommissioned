@@ -4,6 +4,7 @@ MODULE_big = pg_buffercache
 OBJS	= pg_buffercache_pages.o
 
 DATA_built = pg_buffercache.sql 
+DATA = uninstall_pg_buffercache.sql 
 DOCS = README.pg_buffercache
 
 ifdef USE_PGXS

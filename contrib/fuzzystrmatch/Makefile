@@ -4,6 +4,7 @@ MODULE_big = fuzzystrmatch
 SRCS += fuzzystrmatch.c dmetaphone.c
 OBJS = $(SRCS:.c=.o)
 DATA_built = fuzzystrmatch.sql
+DATA = uninstall_fuzzystrmatch.sql
 DOCS = README.fuzzystrmatch README.soundex
 
 ifdef USE_PGXS

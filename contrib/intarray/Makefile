@@ -3,6 +3,7 @@
 MODULE_big = _int
 OBJS = _int_bool.o _int_gist.o _int_op.o _int_tool.o _intbig_gist.o 
 DATA_built = _int.sql
+DATA = uninstall__int.sql
 DOCS = README.intarray
 REGRESS = _int
 
