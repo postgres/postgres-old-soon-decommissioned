@@ -128,9 +128,9 @@ DATA(insert OID = 388 (  "!"	   PGNSP PGUID r f	20	 0	1700   0   0   0   0  0   
 DATA(insert OID = 389 (  "!!"	   PGNSP PGUID l f	 0	20	1700   0   0   0   0  0   0 numeric_fac - - ));
 DATA(insert OID = 385 (  "="	   PGNSP PGUID b t	29	29	16 385	 0	 0	 0	 0	 0 cideq eqsel eqjoinsel ));
 DATA(insert OID = 386 (  "="	   PGNSP PGUID b t	22	22	16 386	 0	 0	 0	 0	 0 int2vectoreq eqsel eqjoinsel ));
-DATA(insert OID = 387 (  "="	   PGNSP PGUID b f	27	27	16 387	 0	 0	 0	 0	 0 tideq eqsel eqjoinsel ));
+DATA(insert OID = 387 (  "="	   PGNSP PGUID b f	27	27	16 387 402	 0	 0	 0	 0 tideq eqsel eqjoinsel ));
 #define TIDEqualOperator   387
-DATA(insert OID = 402 (  "<>"	   PGNSP PGUID b f	27	27	16 402	 0	 0	 0	 0	 0 tidne neqsel neqjoinsel ));
+DATA(insert OID = 402 (  "<>"	   PGNSP PGUID b f	27	27	16 402 387	 0	 0	 0	 0 tidne neqsel neqjoinsel ));
 
 DATA(insert OID = 410 ( "="		   PGNSP PGUID b t	20	20	16 410 411 412 412 412 413 int8eq eqsel eqjoinsel ));
 DATA(insert OID = 411 ( "<>"	   PGNSP PGUID b f	20	20	16 411 410 0 0 0 0 int8ne neqsel neqjoinsel ));

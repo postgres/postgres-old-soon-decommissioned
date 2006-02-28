@@ -2690,6 +2690,15 @@ DefineStmt:
 					n->definition = $4;
 					$$ = (Node *)n;
 				}
+			| CREATE TYPE_P any_name 
+				{
+					/* Shell type (identified by lack of definition) */
+					DefineStmt *n = makeNode(DefineStmt);
+					n->kind = OBJECT_TYPE;
+					n->defnames = $3;
+					n->definition = NIL;
+					$$ = (Node *)n;
+				}
 			| CREATE TYPE_P any_name AS '(' TableFuncElementList ')'
 				{
 					CompositeTypeStmt *n = makeNode(CompositeTypeStmt);

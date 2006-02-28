@@ -321,3 +321,29 @@ anyelement_out(PG_FUNCTION_ARGS)
 
 	PG_RETURN_VOID();			/* keep compiler quiet */
 }
+
+/*
+ * shell_in		- input routine for "shell" types (those not yet filled in).
+ */
+Datum
+shell_in(PG_FUNCTION_ARGS)
+{
+	ereport(ERROR,
+			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+			 errmsg("cannot accept a value of a shell type")));
+
+	PG_RETURN_VOID();			/* keep compiler quiet */
+}
+
+/*
+ * shell_out		- output routine for "shell" types.
+ */
+Datum
+shell_out(PG_FUNCTION_ARGS)
+{
+	ereport(ERROR,
+			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+			 errmsg("cannot display a value of a shell type")));
+
+	PG_RETURN_VOID();			/* keep compiler quiet */
+}
