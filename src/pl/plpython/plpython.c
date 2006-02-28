@@ -769,8 +769,8 @@ PLy_function_handler(FunctionCallInfo fcinfo, PLyProcedure * proc)
 			if (plrv != Py_None)
 				ereport(ERROR,
 						(errcode(ERRCODE_DATATYPE_MISMATCH),
-						 errmsg("unexpected return value from plpython procedure"),
-						 errdetail("void-returning functions must return \"None\"")));
+						 errmsg("invalid return value from plpython function"),
+						 errdetail("Functions returning type \"void\" must return \"None\".")));
 
 			fcinfo->isnull = false;
 			rv = (Datum) 0;
