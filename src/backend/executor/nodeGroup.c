@@ -154,9 +154,12 @@ ExecGroup(GroupState *node)
  * -----------------
  */
 GroupState *
-ExecInitGroup(Group *node, EState *estate)
+ExecInitGroup(Group *node, EState *estate, int eflags)
 {
 	GroupState *grpstate;
+
+	/* check for unsupported flags */
+	Assert(!(eflags & (EXEC_FLAG_BACKWARD | EXEC_FLAG_MARK)));
 
 	/*
 	 * create state structure
@@ -192,7 +195,7 @@ ExecInitGroup(Group *node, EState *estate)
 	/*
 	 * initialize child nodes
 	 */
-	outerPlanState(grpstate) = ExecInitNode(outerPlan(node), estate);
+	outerPlanState(grpstate) = ExecInitNode(outerPlan(node), estate, eflags);
 
 	/*
 	 * initialize tuple type.

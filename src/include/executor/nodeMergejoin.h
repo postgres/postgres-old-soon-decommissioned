@@ -17,7 +17,7 @@
 #include "nodes/execnodes.h"
 
 extern int	ExecCountSlotsMergeJoin(MergeJoin *node);
-extern MergeJoinState *ExecInitMergeJoin(MergeJoin *node, EState *estate);
+extern MergeJoinState *ExecInitMergeJoin(MergeJoin *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecMergeJoin(MergeJoinState *node);
 extern void ExecEndMergeJoin(MergeJoinState *node);
 extern void ExecReScanMergeJoin(MergeJoinState *node, ExprContext *exprCtxt);

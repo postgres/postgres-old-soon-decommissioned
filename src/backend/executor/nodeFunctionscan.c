@@ -120,7 +120,7 @@ ExecFunctionScan(FunctionScanState *node)
  * ----------------------------------------------------------------
  */
 FunctionScanState *
-ExecInitFunctionScan(FunctionScan *node, EState *estate)
+ExecInitFunctionScan(FunctionScan *node, EState *estate, int eflags)
 {
 	FunctionScanState *scanstate;
 	RangeTblEntry *rte;

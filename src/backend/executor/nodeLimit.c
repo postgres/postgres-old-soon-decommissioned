@@ -280,10 +280,13 @@ recompute_limits(LimitState *node)
  * ----------------------------------------------------------------
  */
 LimitState *
-ExecInitLimit(Limit *node, EState *estate)
+ExecInitLimit(Limit *node, EState *estate, int eflags)
 {
 	LimitState *limitstate;
 	Plan	   *outerPlan;
+
+	/* check for unsupported flags */
+	Assert(!(eflags & EXEC_FLAG_MARK));
 
 	/*
 	 * create state structure
@@ -321,7 +324,7 @@ ExecInitLimit(Limit *node, EState *estate)
 	 * then initialize outer plan
 	 */
 	outerPlan = outerPlan(node);
-	outerPlanState(limitstate) = ExecInitNode(outerPlan, estate);
+	outerPlanState(limitstate) = ExecInitNode(outerPlan, estate, eflags);
 
 	/*
 	 * limit nodes do no projections, so initialize projection info for this

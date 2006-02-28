@@ -211,10 +211,13 @@ ExecEndBitmapIndexScan(BitmapIndexScanState *node)
  * ----------------------------------------------------------------
  */
 BitmapIndexScanState *
-ExecInitBitmapIndexScan(BitmapIndexScan *node, EState *estate)
+ExecInitBitmapIndexScan(BitmapIndexScan *node, EState *estate, int eflags)
 {
 	BitmapIndexScanState *indexstate;
 	bool		relistarget;
+
+	/* check for unsupported flags */
+	Assert(!(eflags & (EXEC_FLAG_BACKWARD | EXEC_FLAG_MARK)));
 
 	/*
 	 * create state structure

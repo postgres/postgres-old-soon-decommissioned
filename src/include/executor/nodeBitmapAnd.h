@@ -17,7 +17,7 @@
 #include "nodes/execnodes.h"
 
 extern int	ExecCountSlotsBitmapAnd(BitmapAnd *node);
-extern BitmapAndState *ExecInitBitmapAnd(BitmapAnd *node, EState *estate);
+extern BitmapAndState *ExecInitBitmapAnd(BitmapAnd *node, EState *estate, int eflags);
 extern Node *MultiExecBitmapAnd(BitmapAndState *node);
 extern void ExecEndBitmapAnd(BitmapAndState *node);
 extern void ExecReScanBitmapAnd(BitmapAndState *node, ExprContext *exprCtxt);

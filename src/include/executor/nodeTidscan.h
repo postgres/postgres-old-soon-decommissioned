@@ -17,7 +17,7 @@
 #include "nodes/execnodes.h"
 
 extern int	ExecCountSlotsTidScan(TidScan *node);
-extern TidScanState *ExecInitTidScan(TidScan *node, EState *estate);
+extern TidScanState *ExecInitTidScan(TidScan *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecTidScan(TidScanState *node);
 extern void ExecEndTidScan(TidScanState *node);
 extern void ExecTidMarkPos(TidScanState *node);

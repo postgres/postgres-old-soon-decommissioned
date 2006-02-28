@@ -16,7 +16,7 @@
 
 #include "nodes/execnodes.h"
 
-extern void ExecInitSubPlan(SubPlanState *node, EState *estate);
+extern void ExecInitSubPlan(SubPlanState *node, EState *estate, int eflags);
 extern Datum ExecSubPlan(SubPlanState *node,
 			ExprContext *econtext,
 			bool *isNull,

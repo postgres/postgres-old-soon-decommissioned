@@ -272,9 +272,12 @@ ExecNestLoop(NestLoopState *node)
  * ----------------------------------------------------------------
  */
 NestLoopState *
-ExecInitNestLoop(NestLoop *node, EState *estate)
+ExecInitNestLoop(NestLoop *node, EState *estate, int eflags)
 {
 	NestLoopState *nlstate;
+
+	/* check for unsupported flags */
+	Assert(!(eflags & (EXEC_FLAG_BACKWARD | EXEC_FLAG_MARK)));
 
 	NL1_printf("ExecInitNestLoop: %s\n",
 			   "initializing node");
@@ -309,9 +312,16 @@ ExecInitNestLoop(NestLoop *node, EState *estate)
 
 	/*
 	 * initialize child nodes
+	 *
+	 * Tell the inner child that cheap rescans would be good.  (This is
+	 * unnecessary if we are doing nestloop with inner indexscan, because
+	 * the rescan will always be with a fresh parameter --- but since
+	 * nodeIndexscan doesn't actually care about REWIND, there's no point
+	 * in dealing with that refinement.)
 	 */
-	outerPlanState(nlstate) = ExecInitNode(outerPlan(node), estate);
-	innerPlanState(nlstate) = ExecInitNode(innerPlan(node), estate);
+	outerPlanState(nlstate) = ExecInitNode(outerPlan(node), estate, eflags);
+	innerPlanState(nlstate) = ExecInitNode(innerPlan(node), estate,
+										   eflags | EXEC_FLAG_REWIND);
 
 #define NESTLOOP_NSLOTS 2
 

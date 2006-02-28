@@ -1466,9 +1466,12 @@ ExecMergeJoin(MergeJoinState *node)
  * ----------------------------------------------------------------
  */
 MergeJoinState *
-ExecInitMergeJoin(MergeJoin *node, EState *estate)
+ExecInitMergeJoin(MergeJoin *node, EState *estate, int eflags)
 {
 	MergeJoinState *mergestate;
+
+	/* check for unsupported flags */
+	Assert(!(eflags & (EXEC_FLAG_BACKWARD | EXEC_FLAG_MARK)));
 
 	MJ1_printf("ExecInitMergeJoin: %s\n",
 			   "initializing node");
@@ -1512,9 +1515,12 @@ ExecInitMergeJoin(MergeJoin *node, EState *estate)
 
 	/*
 	 * initialize child nodes
+	 *
+	 * inner child must support MARK/RESTORE.
 	 */
-	outerPlanState(mergestate) = ExecInitNode(outerPlan(node), estate);
-	innerPlanState(mergestate) = ExecInitNode(innerPlan(node), estate);
+	outerPlanState(mergestate) = ExecInitNode(outerPlan(node), estate, eflags);
+	innerPlanState(mergestate) = ExecInitNode(innerPlan(node), estate,
+											  eflags | EXEC_FLAG_MARK);
 
 #define MERGEJOIN_NSLOTS 4
 

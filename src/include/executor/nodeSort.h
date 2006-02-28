@@ -17,7 +17,7 @@
 #include "nodes/execnodes.h"
 
 extern int	ExecCountSlotsSort(Sort *node);
-extern SortState *ExecInitSort(Sort *node, EState *estate);
+extern SortState *ExecInitSort(Sort *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecSort(SortState *node);
 extern void ExecEndSort(SortState *node);
 extern void ExecSortMarkPos(SortState *node);

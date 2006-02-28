@@ -109,9 +109,12 @@ ExecUnique(UniqueState *node)
  * ----------------------------------------------------------------
  */
 UniqueState *
-ExecInitUnique(Unique *node, EState *estate)
+ExecInitUnique(Unique *node, EState *estate, int eflags)
 {
 	UniqueState *uniquestate;
+
+	/* check for unsupported flags */
+	Assert(!(eflags & EXEC_FLAG_MARK));
 
 	/*
 	 * create state structure
@@ -144,7 +147,7 @@ ExecInitUnique(Unique *node, EState *estate)
 	/*
 	 * then initialize outer plan
 	 */
-	outerPlanState(uniquestate) = ExecInitNode(outerPlan(node), estate);
+	outerPlanState(uniquestate) = ExecInitNode(outerPlan(node), estate, eflags);
 
 	/*
 	 * unique nodes do no projections, so initialize projection info for this

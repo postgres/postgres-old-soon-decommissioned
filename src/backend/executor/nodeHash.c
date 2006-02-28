@@ -116,9 +116,12 @@ MultiExecHash(HashState *node)
  * ----------------------------------------------------------------
  */
 HashState *
-ExecInitHash(Hash *node, EState *estate)
+ExecInitHash(Hash *node, EState *estate, int eflags)
 {
 	HashState  *hashstate;
+
+	/* check for unsupported flags */
+	Assert(!(eflags & (EXEC_FLAG_BACKWARD | EXEC_FLAG_MARK)));
 
 	SO_printf("ExecInitHash: initializing hash node\n");
 
@@ -158,7 +161,7 @@ ExecInitHash(Hash *node, EState *estate)
 	/*
 	 * initialize child nodes
 	 */
-	outerPlanState(hashstate) = ExecInitNode(outerPlan(node), estate);
+	outerPlanState(hashstate) = ExecInitNode(outerPlan(node), estate, eflags);
 
 	/*
 	 * initialize tuple type. no need to initialize projection info because

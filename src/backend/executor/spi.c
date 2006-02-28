@@ -1553,7 +1553,7 @@ _SPI_pquery(QueryDesc *queryDesc, long tcount)
 
 	AfterTriggerBeginQuery();
 
-	ExecutorStart(queryDesc, false);
+	ExecutorStart(queryDesc, 0);
 
 	ExecutorRun(queryDesc, ForwardScanDirection, tcount);
 

@@ -17,7 +17,7 @@
 #include "nodes/execnodes.h"
 
 extern int	ExecCountSlotsMaterial(Material *node);
-extern MaterialState *ExecInitMaterial(Material *node, EState *estate);
+extern MaterialState *ExecInitMaterial(Material *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecMaterial(MaterialState *node);
 extern void ExecEndMaterial(MaterialState *node);
 extern void ExecMaterialMarkPos(MaterialState *node);

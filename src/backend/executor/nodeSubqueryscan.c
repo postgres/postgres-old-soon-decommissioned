@@ -111,12 +111,15 @@ ExecSubqueryScan(SubqueryScanState *node)
  * ----------------------------------------------------------------
  */
 SubqueryScanState *
-ExecInitSubqueryScan(SubqueryScan *node, EState *estate)
+ExecInitSubqueryScan(SubqueryScan *node, EState *estate, int eflags)
 {
 	SubqueryScanState *subquerystate;
 	RangeTblEntry *rte;
 	EState	   *sp_estate;
 	MemoryContext oldcontext;
+
+	/* check for unsupported flags */
+	Assert(!(eflags & EXEC_FLAG_MARK));
 
 	/*
 	 * SubqueryScan should not have any "normal" children.
@@ -192,7 +195,7 @@ ExecInitSubqueryScan(SubqueryScan *node, EState *estate)
 	/*
 	 * Start up the subplan (this is a very cut-down form of InitPlan())
 	 */
-	subquerystate->subplan = ExecInitNode(node->subplan, sp_estate);
+	subquerystate->subplan = ExecInitNode(node->subplan, sp_estate, eflags);
 
 	MemoryContextSwitchTo(oldcontext);
 

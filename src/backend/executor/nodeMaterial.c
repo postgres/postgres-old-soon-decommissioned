@@ -153,7 +153,7 @@ ExecMaterial(MaterialState *node)
  * ----------------------------------------------------------------
  */
 MaterialState *
-ExecInitMaterial(Material *node, EState *estate)
+ExecInitMaterial(Material *node, EState *estate, int eflags)
 {
 	MaterialState *matstate;
 	Plan	   *outerPlan;
@@ -186,10 +186,15 @@ ExecInitMaterial(Material *node, EState *estate)
 	ExecInitScanTupleSlot(estate, &matstate->ss);
 
 	/*
-	 * initializes child nodes
+	 * initialize child nodes
+	 *
+	 * We shield the child node from the need to support REWIND, BACKWARD,
+	 * or MARK/RESTORE.
 	 */
+	eflags &= ~(EXEC_FLAG_REWIND | EXEC_FLAG_BACKWARD | EXEC_FLAG_MARK);
+
 	outerPlan = outerPlan(node);
-	outerPlanState(matstate) = ExecInitNode(outerPlan, estate);
+	outerPlanState(matstate) = ExecInitNode(outerPlan, estate, eflags);
 
 	/*
 	 * initialize tuple type.  no need to initialize projection info because

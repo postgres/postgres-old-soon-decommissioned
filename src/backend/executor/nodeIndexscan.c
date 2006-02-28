@@ -458,7 +458,7 @@ ExecIndexRestrPos(IndexScanState *node)
  * ----------------------------------------------------------------
  */
 IndexScanState *
-ExecInitIndexScan(IndexScan *node, EState *estate)
+ExecInitIndexScan(IndexScan *node, EState *estate, int eflags)
 {
 	IndexScanState *indexstate;
 	Relation	currentRelation;
