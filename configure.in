@@ -26,7 +26,7 @@ AC_CONFIG_AUX_DIR(config)
 AC_PREFIX_DEFAULT(/usr/local/pgsql)
 AC_SUBST(configure_args, [$ac_configure_args])
 
-AC_DEFINE_UNQUOTED(PG_VERSION, "$PACKAGE_VERSION", [PostgreSQL version])
+AC_DEFINE_UNQUOTED(PG_VERSION, "$PACKAGE_VERSION", [PostgreSQL version as a string])
 
 AC_CANONICAL_HOST
 
@@ -585,6 +585,10 @@ if test "$with_python" = yes; then
   PGAC_CHECK_PYTHON_EMBED_SETUP
 fi
 
+# Supply a numeric version string for use by 3rd party add-ons
+PG_VERSION_NUM="`echo "$PACKAGE_VERSION" | sed 's/[A-Za-z].*$//' |
+$AWK -F'\.' '{printf \"%d%02d%02d\", $1, $2, (NF >= 3) ? $3 : 0}'`"
+AC_DEFINE_UNQUOTED(PG_VERSION_NUM, $PG_VERSION_NUM, [PostgreSQL version as a number])
 
 ##
 ## Libraries
