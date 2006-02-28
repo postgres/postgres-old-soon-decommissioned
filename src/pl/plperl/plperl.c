@@ -4,7 +4,7 @@
  * IDENTIFICATION
  *
  *	  This software is copyrighted by Mark Hollomon
- *	  but is shameless cribbed from pltcl.c by Jan Wieck.
+ *	  but is shamelessly cribbed from pltcl.c by Jan Wieck.
  *
  *	  The author hereby grants permission  to  use,  copy,	modify,
  *	  distribute,  and	license this software and its documentation
