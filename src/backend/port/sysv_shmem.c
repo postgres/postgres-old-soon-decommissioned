@@ -426,7 +426,7 @@ PGSharedMemoryReAttach(void)
 	UsedShmemSegAddr = origUsedShmemSegAddr;
 #endif
 
-	elog(DEBUG3, "Attaching to %p", UsedShmemSegAddr);
+	elog(DEBUG3, "attaching to %p", UsedShmemSegAddr);
 	hdr = (void *) PGSharedMemoryAttach((IpcMemoryKey) UsedShmemSegID, &shmid);
 	if (hdr == NULL)
 		elog(FATAL, "could not reattach to shared memory (key=%d, addr=%p): %m",
