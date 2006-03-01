@@ -232,7 +232,7 @@ ExplainOnePlan(QueryDesc *queryDesc, ExplainStmt *stmt,
 	instr_time	starttime;
 	double		totaltime = 0;
 	ExplainState *es;
-	StringInfo	str;
+	StringInfoData buf;
 	int			eflags;
 
 	INSTR_TIME_SET_CURRENT(starttime);
@@ -285,9 +285,8 @@ ExplainOnePlan(QueryDesc *queryDesc, ExplainStmt *stmt,
 		}
 	}
 
-	str = makeStringInfo();
-
-	explain_outNode(str, queryDesc->plantree, queryDesc->planstate,
+	initStringInfo(&buf);
+	explain_outNode(&buf, queryDesc->plantree, queryDesc->planstate,
 					NULL, 0, es);
 
 	/*
@@ -335,18 +334,18 @@ ExplainOnePlan(QueryDesc *queryDesc, ExplainStmt *stmt,
 				if (trig->tgisconstraint &&
 				(conname = GetConstraintNameForTrigger(trig->tgoid)) != NULL)
 				{
-					appendStringInfo(str, "Trigger for constraint %s",
+					appendStringInfo(&buf, "Trigger for constraint %s",
 									 conname);
 					pfree(conname);
 				}
 				else
-					appendStringInfo(str, "Trigger %s", trig->tgname);
+					appendStringInfo(&buf, "Trigger %s", trig->tgname);
 
 				if (numrels > 1)
-					appendStringInfo(str, " on %s",
+					appendStringInfo(&buf, " on %s",
 							RelationGetRelationName(rInfo->ri_RelationDesc));
 
-				appendStringInfo(str, ": time=%.3f calls=%.0f\n",
+				appendStringInfo(&buf, ": time=%.3f calls=%.0f\n",
 								 1000.0 * instr->total,
 								 instr->ntuples);
 			}
@@ -370,12 +369,11 @@ ExplainOnePlan(QueryDesc *queryDesc, ExplainStmt *stmt,
 	totaltime += elapsed_time(&starttime);
 
 	if (stmt->analyze)
-		appendStringInfo(str, "Total runtime: %.3f ms\n",
+		appendStringInfo(&buf, "Total runtime: %.3f ms\n",
 						 1000.0 * totaltime);
-	do_text_output_multiline(tstate, str->data);
+	do_text_output_multiline(tstate, buf.data);
 
-	pfree(str->data);
-	pfree(str);
+	pfree(buf.data);
 	pfree(es);
 }
 
