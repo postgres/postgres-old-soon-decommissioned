@@ -201,7 +201,7 @@ flagInhTables(TableInfo *tblinfo, int numTables,
 			continue;
 
 		/* Don't bother computing anything for non-target tables, either */
-		if (!tblinfo[i].dump)
+		if (!tblinfo[i].dobj.dump)
 			continue;
 
 		/* Find all the immediate parent tables */
@@ -242,7 +242,7 @@ flagInhAttrs(TableInfo *tblinfo, int numTables,
 			continue;
 
 		/* Don't bother computing anything for non-target tables, either */
-		if (!tbinfo->dump)
+		if (!tbinfo->dobj.dump)
 			continue;
 
 		numParents = tbinfo->numParents;
@@ -388,7 +388,7 @@ flagInhAttrs(TableInfo *tblinfo, int numTables,
  *		Given a newly-created dumpable object, assign a dump ID,
  *		and enter the object into the lookup table.
  *
- * The caller is expected to have filled in objType and catalogId,
+ * The caller is expected to have filled in objType and catId,
  * but not any of the other standard fields of a DumpableObject.
  */
 void
@@ -397,6 +397,7 @@ AssignDumpId(DumpableObject *dobj)
 	dobj->dumpId = ++lastDumpId;
 	dobj->name = NULL;			/* must be set later */
 	dobj->namespace = NULL;		/* may be set later */
+	dobj->dump = true;			/* default assumption */
 	dobj->dependencies = NULL;
 	dobj->nDeps = 0;
 	dobj->allocDeps = 0;
