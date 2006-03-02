@@ -76,11 +76,6 @@ lo_open(PGconn *conn, Oid lobjId, int mode)
 	if (PQresultStatus(res) == PGRES_COMMAND_OK)
 	{
 		PQclear(res);
-
-		/* have to do this to reset offset in shared fd cache */
-		/* but only if fd is valid */
-		if (fd >= 0 && lo_lseek(conn, fd, 0L, SEEK_SET) < 0)
-			return -1;
 		return fd;
 	}
 	else
