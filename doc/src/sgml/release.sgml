@@ -132,7 +132,7 @@ and <function>isinf</> during configure (Tom)</para></listitem>
 avoiding a kernel call per data line (Alon Goldshuv)</para></listitem>
 
 <listitem><para>Improve speed of <filename>/contrib/tsearch2</> index
-creation (Teodor)</para></listitem>
+creation (Tom)</para></listitem>
 
 </itemizedlist>
 
