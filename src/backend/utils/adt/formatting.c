@@ -163,6 +163,7 @@ struct FormatNode
 
 /* ----------
  * Full months
+ *	This needs to be NLS-localized someday.
  * ----------
  */
 static char *months_full[] = {
