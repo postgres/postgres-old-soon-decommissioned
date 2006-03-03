@@ -254,6 +254,20 @@ COPY <replaceable class="parameter">tablename</replaceable> [ ( <replaceable cla
  </refsect1>
 
  <refsect1>
+  <title>Outputs</title>
+
+  <para>
+   On successful completion, a <command>COPY</> command returns a command
+   tag of the form
+<screen>
+COPY <replaceable class="parameter">count</replaceable>
+</screen>
+   The <replaceable class="parameter">count</replaceable> is the number
+   of rows inserted into or copied from the table.
+  </para>
+ </refsect1>
+
+ <refsect1>
   <title>Notes</title>
 
    <para>

@@ -636,7 +636,13 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_CopyStmt:
-			DoCopy((CopyStmt *) parsetree);
+			{
+				uint64	processed = DoCopy((CopyStmt *) parsetree);
+
+				if (completionTag)
+					snprintf(completionTag, COMPLETION_TAG_BUFSIZE,
+							 "COPY " UINT64_FORMAT, processed);
+			}
 			break;
 
 		case T_PrepareStmt:

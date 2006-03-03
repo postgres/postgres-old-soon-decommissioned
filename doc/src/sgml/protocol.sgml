@@ -2069,7 +2069,7 @@ CommandComplete (B)
         String
 </term>
 <listitem>
-<para>
+       <para>
         The command tag.  This is usually a single
         word that identifies which SQL command was completed.
        </para>
@@ -2109,7 +2109,16 @@ CommandComplete (B)
         <literal>FETCH <replaceable>rows</replaceable></literal> where
         <replaceable>rows</replaceable> is the number of rows that
         have been retrieved from the cursor.
-</para>
+       </para>
+
+       <para>
+        For a <command>COPY</command> command, the tag is
+        <literal>COPY <replaceable>rows</replaceable></literal> where
+        <replaceable>rows</replaceable> is the number of rows copied.
+        (Note: the row count appears only in
+        <productname>PostgreSQL</productname> 8.2 and later.)
+       </para>
+
 </listitem>
 </varlistentry>
 </variablelist>

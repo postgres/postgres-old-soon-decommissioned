@@ -17,6 +17,6 @@
 #include "nodes/parsenodes.h"
 
 
-extern void DoCopy(const CopyStmt *stmt);
+extern uint64 DoCopy(const CopyStmt *stmt);
 
 #endif   /* COPY_H */
