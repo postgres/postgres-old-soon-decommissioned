@@ -685,7 +685,10 @@ AcceptResult(const PGresult *result, const char *query)
 				break;
 
 			case PGRES_COPY_OUT:
-				/* keep cancel connection for copy out state */
+				/*
+				 * Keep cancel connection active during copy out state.
+				 * The matching ResetCancelConn() is in handleCopyOut.
+				 */
 				SetCancelConn();
 				break;
 
@@ -702,6 +705,7 @@ AcceptResult(const PGresult *result, const char *query)
 			psql_error("%s", error);
 
 		ReportSyntaxErrorPosition(result, query);
+
 		CheckConnection();
 	}
 
@@ -719,6 +723,9 @@ AcceptResult(const PGresult *result, const char *query)
  * In autocommit-off mode, a new transaction block is started if start_xact
  * is true; nothing special is done when start_xact is false.  Typically,
  * start_xact = false is used for SELECTs and explicit BEGIN/COMMIT commands.
+ *
+ * Caller is responsible for handling the ensuing processing if a COPY
+ * command is sent.
  *
  * Note: we don't bother to check PQclientEncoding; it is assumed that no
  * caller uses this path to issue "SET CLIENT_ENCODING".
