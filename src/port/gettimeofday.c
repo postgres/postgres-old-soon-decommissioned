@@ -32,7 +32,7 @@
 
 
 /* FILETIME of Jan 1 1970 00:00:00. */
-static const unsigned __int64 epoch = 116444736000000000L;
+static const unsigned __int64 epoch = 116444736000000000LL;
 
 /*
  * timezone information is stored outside the kernel so tzp isn't used anymore.
