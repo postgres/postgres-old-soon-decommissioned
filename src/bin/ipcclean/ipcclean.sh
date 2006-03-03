@@ -19,7 +19,8 @@ if [ "$1" = '-?' -o "$1" = "--help" ]; then
     exit 0
 fi
 
-if [ "$USER" = 'root' -o "$LOGNAME" = 'root' ]
+# only check $LOGNAME if $USER is not set
+if [ "$USER" = 'root' -o \( ! "$USER" -a "$LOGNAME" = 'root' \) ]
 then
   (
     echo "$CMDNAME: cannot be run as root" 1>&2
