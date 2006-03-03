@@ -9808,7 +9808,7 @@ SELECT set_config('log_statement_stats', 'off', false);
 
    <para>
     For details about proper usage of these functions, see
-    <xref linkend="backup-online">.
+    <xref linkend="continuous-archiving">.
    </para>
 
    <para>

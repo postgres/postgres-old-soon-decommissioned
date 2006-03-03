@@ -1387,7 +1387,7 @@ SET ENABLE_SEQSCAN TO OFF;
        <para>
         Turning off this parameter does not affect use of
         WAL archiving for point-in-time recovery (PITR)
-        (see <xref linkend="backup-online">).
+        (see <xref linkend="continuous-archiving">).
        </para>
 
        <para>
