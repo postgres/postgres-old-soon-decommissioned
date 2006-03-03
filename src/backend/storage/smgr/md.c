@@ -28,6 +28,9 @@
 #include "utils/memutils.h"
 
 
+/* interval for calling AbsorbFsyncRequests in mdsync */
+#define FSYNCS_PER_ABSORB		10
+
 /*
  *	The magnetic disk storage manager keeps track of open file
  *	descriptors in its own descriptor pool.  This is done to make it
@@ -702,6 +705,7 @@ mdsync(void)
 {
 	HASH_SEQ_STATUS hstat;
 	PendingOperationEntry *entry;
+	int			absorb_counter;
 
 	if (!pendingOpsTable)
 		return false;
@@ -714,6 +718,7 @@ mdsync(void)
 	 */
 	AbsorbFsyncRequests();
 
+	absorb_counter = FSYNCS_PER_ABSORB;
 	hash_seq_init(&hstat, pendingOpsTable);
 	while ((entry = (PendingOperationEntry *) hash_seq_search(&hstat)) != NULL)
 	{
@@ -726,6 +731,19 @@ mdsync(void)
 		{
 			SMgrRelation reln;
 			MdfdVec    *seg;
+
+			/*
+			 * If in bgwriter, absorb pending requests every so often to
+			 * prevent overflow of the fsync request queue.  The hashtable
+			 * code does not specify whether entries added by this will be
+			 * visited by our search, but we don't really care: it's OK if
+			 * we do, and OK if we don't.
+			 */
+			if (--absorb_counter <= 0)
+			{
+				AbsorbFsyncRequests();
+				absorb_counter = FSYNCS_PER_ABSORB;
+			}
 
 			/*
 			 * Find or create an smgr hash entry for this relation. This may
