@@ -39,6 +39,7 @@
 #else							/* not BUILDING_DLL */
 #define DLLIMPORT __declspec (dllimport)
 #endif
+
 #elif defined(WIN32_CLIENT_ONLY)
 
 #if defined(_DLL)
@@ -46,6 +47,7 @@
 #else							/* not _DLL */
 #define DLLIMPORT __declspec (dllimport)
 #endif
+
 #else							/* not CYGWIN, not MSVC, not MingW */
 
 #define DLLIMPORT
