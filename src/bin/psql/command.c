@@ -659,8 +659,11 @@ exec_command(const char *cmd,
 
 		expand_tilde(&fname);
 		/* This scrolls off the screen when using /dev/tty */
+#ifndef WIN32
 		success = saveHistory(fname ? fname : "/dev/tty");
-
+#else
+		success = saveHistory(fname ? fname : stderr);
+#endif
 		if (success && !quiet && fname)
 			printf(gettext("Wrote history to file \"%s/%s\".\n"),
 				   pset.dirname ? pset.dirname : ".", fname);
