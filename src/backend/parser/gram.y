@@ -2938,10 +2938,11 @@ attrs:		'.' attr_name
  *****************************************************************************/
 
 TruncateStmt:
-			TRUNCATE opt_table qualified_name_list
+			TRUNCATE opt_table qualified_name_list opt_drop_behavior
 				{
 					TruncateStmt *n = makeNode(TruncateStmt);
 					n->relations = $3;
+					n->behavior = $4;
 					$$ = (Node *)n;
 				}
 		;

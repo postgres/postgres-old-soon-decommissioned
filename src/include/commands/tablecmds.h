@@ -36,7 +36,7 @@ extern void AlterRelationNamespaceInternal(Relation classRel, Oid relOid,
 							   Oid oldNspOid, Oid newNspOid,
 							   bool hasDependEntry);
 
-extern void ExecuteTruncate(List *relations);
+extern void ExecuteTruncate(TruncateStmt *stmt);
 
 extern void renameatt(Oid myrelid,
 		  const char *oldattname,

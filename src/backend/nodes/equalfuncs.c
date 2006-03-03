@@ -930,6 +930,7 @@ static bool
 _equalTruncateStmt(TruncateStmt *a, TruncateStmt *b)
 {
 	COMPARE_NODE_FIELD(relations);
+	COMPARE_SCALAR_FIELD(behavior);
 
 	return true;
 }

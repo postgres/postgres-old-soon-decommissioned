@@ -628,11 +628,7 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_TruncateStmt:
-			{
-				TruncateStmt *stmt = (TruncateStmt *) parsetree;
-
-				ExecuteTruncate(stmt->relations);
-			}
+			ExecuteTruncate((TruncateStmt *) parsetree);
 			break;
 
 		case T_CommentStmt:

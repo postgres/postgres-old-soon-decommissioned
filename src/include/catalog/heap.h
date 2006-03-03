@@ -62,6 +62,8 @@ extern void heap_truncate(List *relids);
 
 extern void heap_truncate_check_FKs(List *relations, bool tempTables);
 
+extern List *heap_truncate_find_FKs(List *relationIds);
+
 extern List *AddRelationRawConstraints(Relation rel,
 						  List *rawColDefaults,
 						  List *rawConstraints);
