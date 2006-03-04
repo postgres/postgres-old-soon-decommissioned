@@ -22,7 +22,7 @@
 #define PGSJISALTCODE 0x81ac
 #define PGEUCALTCODE 0xa2ae
 
-#define ISSJISHEAD(c) ((c >= 0x81 && c <= 0x9f) || (c >= 0xe0 && c <= 0xef))
+#define ISSJISHEAD(c) ((c >= 0x81 && c <= 0x9f) || (c >= 0xe0 && c <= 0xfc))
 #define ISSJISTAIL(c) ((c >= 0x40 && c <= 0x7e) || (c >= 0x80 && c <= 0xfc))
 
 /*
