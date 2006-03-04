@@ -897,8 +897,8 @@ sysctl -w kern.sysv.shmall
        <para>
         <varname>SHMALL</> is measured in 4KB pages on this platform,
         and recent releases of OS X reject attempts to set 
-        <varname>SHMALL</> and <varname>SHMMAX</> to a value 
-        that isn't an exact multiple of 4096.
+        and <varname>SHMMAX</> to a value that isn't an exact 
+        multiple of 4096.
        </para>
       </listitem>
      </varlistentry>
