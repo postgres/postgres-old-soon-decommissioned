@@ -741,6 +741,13 @@ grow_memtuples(Tuplesortstate *state)
 	 */
 	if (state->availMem <= (long) (state->memtupsize * sizeof(SortTuple)))
 		return false;
+	/*
+	 * On a 64-bit machine, allowedMem could be high enough to get us into
+	 * trouble with MaxAllocSize, too.
+	 */
+	if ((Size) (state->memtupsize * 2) >= MaxAllocSize / sizeof(SortTuple))
+		return false;
+
 	FREEMEM(state, GetMemoryChunkSpace(state->memtuples));
 	state->memtupsize *= 2;
 	state->memtuples = (SortTuple *)
