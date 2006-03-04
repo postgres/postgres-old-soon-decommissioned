@@ -654,12 +654,7 @@ exec_command(const char *cmd,
 
 		expand_tilde(&fname);
 		/* This scrolls off the screen when using /dev/tty */
-#ifndef WIN32
-		success = saveHistory(fname ? fname : "/dev/tty");
-#else
-		success = saveHistory(fname ? fname : stderr);
-#endif
-
+		success = saveHistory(fname ? fname : DEVTTY);
 		if (success && !quiet && fname)
 			printf(gettext("Wrote history to file \"%s\".\n"), fname);
 		if (!fname)

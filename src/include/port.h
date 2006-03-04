@@ -20,7 +20,8 @@
 #include <ctype.h>
 
 /* non-blocking */
-extern bool set_noblock(int sock);
+extern bool pg_set_noblock(int sock);
+extern bool pg_set_block(int sock);
 
 /* Portable path handling for Unix/Win32 */
 
@@ -79,8 +80,11 @@ extern int find_other_exec(const char *argv0, const char *target,
 
 #if defined(WIN32) && !defined(__CYGWIN__)
 #define DEVNULL "nul"
+/* "con" does not work from the MinGW 1.0.10 console. */
+#define DEVTTY	"con"
 #else
 #define DEVNULL "/dev/null"
+#define DEVTTY "/dev/tty"
 #endif
 
 /*
@@ -174,7 +178,8 @@ extern bool rmtree(char *path, bool rmtopdir);
 
 #if defined(WIN32) && !defined(__CYGWIN__)
 
-/* open() replacement to allow delete of held files */
+/* open() replacement to allow delete of held files and passing
+ * of special options. */
 #ifndef WIN32_CLIENT_ONLY
 extern int	win32_open(const char *, int,...);
 
