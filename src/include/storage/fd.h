@@ -71,7 +71,7 @@ extern long FileSeek(File file, long offset, int whence);
 extern int	FileTruncate(File file, long offset);
 
 /* Operations that allow use of regular stdio --- USE WITH CAUTION */
-extern FILE *AllocateFile(char *name, char *mode);
+extern FILE *AllocateFile(const char *name, const char *mode);
 extern int	FreeFile(FILE *file);
 
 /* Operations to allow use of the <dirent.h> library routines */

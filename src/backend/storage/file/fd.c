@@ -1236,7 +1236,7 @@ FileTruncate(File file, long offset)
  * Ideally this should be the *only* direct call of fopen() in the backend.
  */
 FILE *
-AllocateFile(char *name, char *mode)
+AllocateFile(const char *name, const char *mode)
 {
 	FILE	   *file;
 
