@@ -84,7 +84,7 @@ extern int find_other_exec(const char *argv0, const char *target,
 
 #if defined(WIN32) && !defined(__CYGWIN__)
 #define DEVNULL "nul"
-/* "con" does not work from the MinGW 1.0.10 console. */
+/* "con" does not work from the Msys 1.0.10 console (part of MinGW). */
 #define DEVTTY	"con"
 #else
 #define DEVNULL "/dev/null"
