@@ -2,7 +2,7 @@
  * SQL Information Schema
  * as defined in ISO 9075-2:1999 chapter 20
  *
- * Copyright (c) 2003-2005, PostgreSQL Global Development Group
+ * Copyright (c) 2003-2006, PostgreSQL Global Development Group
  *
  * $PostgreSQL$
  */

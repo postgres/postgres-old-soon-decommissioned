@@ -3,7 +3,7 @@
  * encode.c
  *	  Various data encoding/decoding things.
  *
- * Copyright (c) 2001-2005, PostgreSQL Global Development Group
+ * Copyright (c) 2001-2006, PostgreSQL Global Development Group
  *
  *
  * IDENTIFICATION

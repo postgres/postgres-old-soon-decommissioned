@@ -3,7 +3,7 @@
  * fork_process.h
  *	  Exports from postmaster/fork_process.c.
  *
- * Copyright (c) 1996-2005, PostgreSQL Global Development Group
+ * Copyright (c) 1996-2006, PostgreSQL Global Development Group
  *
  * $PostgreSQL$
  *

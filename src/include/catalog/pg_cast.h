@@ -8,7 +8,7 @@
  * but also length coercion functions.
  *
  *
- * Copyright (c) 2002-2005, PostgreSQL Global Development Group
+ * Copyright (c) 2002-2006, PostgreSQL Global Development Group
  *
  * $PostgreSQL$
  *

@@ -5,7 +5,7 @@
  * $PostgreSQL$
  *
  *
- *	 Portions Copyright (c) 1999-2005, PostgreSQL Global Development Group
+ *	 Portions Copyright (c) 1999-2006, PostgreSQL Global Development Group
  *
  *	 The PostgreSQL routines for a DateTime/int/float/numeric formatting,
  *	 inspire with Oracle TO_CHAR() / TO_DATE() / TO_NUMBER() routines.

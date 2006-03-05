@@ -4,7 +4,7 @@
  *	  implementation of Value nodes
  *
  *
- * Copyright (c) 2003-2005, PostgreSQL Global Development Group
+ * Copyright (c) 2003-2006, PostgreSQL Global Development Group
  *
  *
  * IDENTIFICATION

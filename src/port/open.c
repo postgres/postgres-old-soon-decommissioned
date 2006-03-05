@@ -4,7 +4,7 @@
  *	   Win32 open() replacement
  *
  *
- * Portions Copyright (c) 1996-2005, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2006, PostgreSQL Global Development Group
  *
  * $PostgreSQL$
  *

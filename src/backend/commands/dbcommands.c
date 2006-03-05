@@ -10,7 +10,7 @@
  * AccessExclusiveLock since there's no need to lock out ordinary readers
  * of pg_database.
  *
- * Portions Copyright (c) 1996-2005, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2006, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  *

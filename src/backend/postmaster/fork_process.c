@@ -4,7 +4,7 @@
  *	 EXEC_BACKEND case; it might be extended to do so, but it would be
  *	 considerably more complex.
  *
- * Copyright (c) 1996-2005, PostgreSQL Global Development Group
+ * Copyright (c) 1996-2006, PostgreSQL Global Development Group
  *
  * IDENTIFICATION
  *	  $PostgreSQL$
