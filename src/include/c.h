@@ -57,6 +57,8 @@
 #else
 #if defined(_MSC_VER) || defined(__BORLANDC__)
 #define WIN32_CLIENT_ONLY
+/* Some use MinGW-generated pg_config.h but MSVC for extensions. */
+#undef HAVE_STRINGS_H
 #endif
 #endif
 #include "postgres_ext.h"
@@ -66,8 +68,7 @@
 #include <string.h>
 #include <stddef.h>
 #include <stdarg.h>
-/* Some use MinGW-generated pg_config.h but MSVC for extensions. */
-#if defined(HAVE_STRINGS_H) && !defined(WIN32_CLIENT_ONLY)
+#ifdef HAVE_STRINGS_H
 #include <strings.h>
 #endif
 #include <sys/types.h>

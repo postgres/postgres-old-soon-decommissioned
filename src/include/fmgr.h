@@ -293,10 +293,13 @@ typedef struct
 /* Expected signature of an info function */
 typedef Pg_finfo_record *(*PGFInfoFunction) (void);
 
-/* Macro to build an info function associated with the given function name */
-
+/*
+ *	Macro to build an info function associated with the given function name.
+ *	Win32 loadable functions usually link with 'dlltool --export-all', but it
+ *	doesn't hurt to add DLLIMPORT in case they don't.
+ */
 #define PG_FUNCTION_INFO_V1(funcname) \
-extern Pg_finfo_record * CppConcat(pg_finfo_,funcname) (void); \
+extern DLLIMPORT Pg_finfo_record * CppConcat(pg_finfo_,funcname) (void); \
 Pg_finfo_record * \
 CppConcat(pg_finfo_,funcname) (void) \
 { \
