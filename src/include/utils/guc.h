@@ -121,6 +121,7 @@ extern bool Australian_timezones;
 
 extern bool default_with_oids;
 extern bool escape_string_warning;
+extern bool standard_conforming_strings;
 
 extern int	log_min_error_statement;
 extern int	log_min_messages;

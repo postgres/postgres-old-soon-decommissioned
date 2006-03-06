@@ -1329,6 +1329,29 @@ is_superuser(void)
 
 
 /*
+ * Test if the current session uses standard string literals.
+ *
+ * Note: this will correctly detect the setting only with a protocol-3.0
+ * or newer backend; otherwise it will always say "false".
+ */
+bool
+standard_strings(void)
+{
+	const char *val;
+
+	if (!pset.db)
+		return false;
+
+	val = PQparameterStatus(pset.db, "standard_conforming_strings");
+
+	if (val && strcmp(val, "on") == 0)
+		return true;
+
+	return false;
+}
+
+
+/*
  * Return the session user of the current connection.
  *
  * Note: this will correctly detect the session user only with a

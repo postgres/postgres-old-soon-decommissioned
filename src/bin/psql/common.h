@@ -57,6 +57,7 @@ extern PGresult *PSQLexec(const char *query, bool start_xact);
 extern bool SendQuery(const char *query);
 
 extern bool is_superuser(void);
+extern bool standard_strings(void);
 extern const char *session_username(void);
 
 extern char *expand_tilde(char **filename);
