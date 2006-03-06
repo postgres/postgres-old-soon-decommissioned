@@ -613,6 +613,10 @@ parse_hba_auth(ListCell **line_item, UserAuth *userauth_p,
 	else if (strcmp(token, "pam") == 0)
 		*userauth_p = uaPAM;
 #endif
+#ifdef USE_LDAP
+    else if (strcmp(token,"ldap") == 0)
+        *userauth_p = uaLDAP;
+#endif
 	else
 	{
 		*error_p = true;
