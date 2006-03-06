@@ -1249,7 +1249,7 @@ PostgreSQL documentation
       <row>
        <entry><literal><function>ascii</function>(<type>text</type>)</literal></entry>
        <entry><type>int</type></entry>
-       <entry><acronym>ASCII</acronym> code of the first character of the argument</entry>
+       <entry><acronym>ASCII</acronym> code of the first byte of the argument</entry>
        <entry><literal>ascii('x')</literal></entry>
        <entry><literal>120</literal></entry>
       </row>
