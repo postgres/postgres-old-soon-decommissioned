@@ -125,6 +125,9 @@ autovac_start(void)
 	if (!AutoVacuumingActive())
 		return 0;
 
+	/* Even if zero_damaged_pages is true, we don't want autovacuum zeroing. */
+	zero_damaged_pages = false;
+
 	/*
 	 * Do nothing if too soon since last autovacuum exit.  This limits how
 	 * often the daemon runs.  Since the time per iteration can be quite
