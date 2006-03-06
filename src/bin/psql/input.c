@@ -114,7 +114,7 @@ gets_interactive(const char *prompt)
 
 /* Put the line in the history buffer and also add the trailing \n */
 void
-pgadd_history(char *s, PQExpBuffer history_buf)
+pg_append_history(char *s, PQExpBuffer history_buf)
 {
 #ifdef USE_READLINE
 
@@ -134,12 +134,13 @@ pgadd_history(char *s, PQExpBuffer history_buf)
 }
 
 
-/* Feed the contents of the history buffer to readline */
+/*
+ *	Feed the string to readline
+ */
 void
-pgflush_history(PQExpBuffer history_buf)
+pg_write_history(char *s)
 {
-#ifdef USE_READLINE	
-	char *s;
+#ifdef USE_READLINE
 	static char *prev_hist;
 	int slen, i;
 	
@@ -147,7 +148,6 @@ pgflush_history(PQExpBuffer history_buf)
 	{
 		enum histcontrol HC;
 		
-		s = history_buf->data;
 		prev_hist = NULL;
 			
 		HC = GetHistControlConfig();
@@ -168,14 +168,12 @@ pgflush_history(PQExpBuffer history_buf)
 			prev_hist = pg_strdup(s);
 			add_history(s);
 		}
-		
-		resetPQExpBuffer(history_buf);
 	}
 #endif
 }
 
 void
-pgclear_history(PQExpBuffer history_buf)
+pg_clear_history(PQExpBuffer history_buf)
 {
 #ifdef USE_READLINE	
 	if (useReadline && useHistory)

@@ -39,9 +39,9 @@ char	   *gets_fromFile(FILE *source);
 void		initializeInput(int flags);
 bool		saveHistory(char *fname);
 
-void pgadd_history(char *s, PQExpBuffer history_buf);
-void pgclear_history(PQExpBuffer history_buf);
-void pgflush_history(PQExpBuffer history_buf);
+void pg_append_history(char *s, PQExpBuffer history_buf);
+void pg_clear_history(PQExpBuffer history_buf);
+void pg_write_history(char *s);
 
 
 #endif   /* INPUT_H */
