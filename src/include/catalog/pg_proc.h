@@ -1462,6 +1462,8 @@ DATA(insert OID = 1173 (  timestamptz	   PGNSP PGUID 12 f f t f i 1 1184 "702" _
 DESCR("convert abstime to timestamp with time zone");
 DATA(insert OID = 1174 (  timestamptz	   PGNSP PGUID 12 f f t f s 1 1184 "1082" _null_ _null_ _null_	date_timestamptz - _null_ ));
 DESCR("convert date to timestamp with time zone");
+DATA(insert OID = 2711 (  justify_interval PGNSP PGUID 12 f f t f i 1 1186 "1186" _null_ _null_ _null_	interval_justify_interval - _null_ ));
+DESCR("promote groups of 24 hours to numbers of days and promote groups of 30 days to numbers of months");
 DATA(insert OID = 1175 (  justify_hours    PGNSP PGUID 12 f f t f i 1 1186 "1186" _null_ _null_ _null_	interval_justify_hours - _null_ ));
 DESCR("promote groups of 24 hours to numbers of days");
 DATA(insert OID = 1295 (  justify_days	   PGNSP PGUID 12 f f t f i 1 1186 "1186" _null_ _null_ _null_	interval_justify_days - _null_ ));

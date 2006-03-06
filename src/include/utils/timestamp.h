@@ -234,6 +234,7 @@ extern Datum interval_cmp(PG_FUNCTION_ARGS);
 extern Datum interval_hash(PG_FUNCTION_ARGS);
 extern Datum interval_smaller(PG_FUNCTION_ARGS);
 extern Datum interval_larger(PG_FUNCTION_ARGS);
+extern Datum interval_justify_interval(PG_FUNCTION_ARGS);
 extern Datum interval_justify_hours(PG_FUNCTION_ARGS);
 extern Datum interval_justify_days(PG_FUNCTION_ARGS);
 
