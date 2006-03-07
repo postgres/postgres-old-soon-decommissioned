@@ -125,9 +125,6 @@ autovac_start(void)
 	if (!AutoVacuumingActive())
 		return 0;
 
-	/* Even if zero_damaged_pages is true, we don't want autovacuum zeroing. */
-	SetConfigOption("zero_damaged_pages", "false", PGC_SUSET, PGC_S_SESSION);
-
 	/*
 	 * Do nothing if too soon since last autovacuum exit.  This limits how
 	 * often the daemon runs.  Since the time per iteration can be quite
@@ -306,6 +303,13 @@ AutoVacMain(int argc, char *argv[])
 	PG_exception_stack = &local_sigjmp_buf;
 
 	PG_SETMASK(&UnBlockSig);
+
+	/*
+	 * Force zero_damaged_pages OFF in the autovac process, even if it is
+	 * set in postgresql.conf.  We don't really want such a dangerous option
+	 * being applied non-interactively.
+	 */
+	SetConfigOption("zero_damaged_pages", "false", PGC_SUSET, PGC_S_OVERRIDE);
 
 	/* Get a list of databases */
 	dblist = autovac_get_database_list();
