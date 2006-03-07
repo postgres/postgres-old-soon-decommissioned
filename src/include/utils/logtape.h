@@ -26,6 +26,7 @@ typedef struct LogicalTapeSet LogicalTapeSet;
 
 extern LogicalTapeSet *LogicalTapeSetCreate(int ntapes);
 extern void LogicalTapeSetClose(LogicalTapeSet *lts);
+extern void LogicalTapeSetForgetFreeSpace(LogicalTapeSet *lts);
 extern size_t LogicalTapeRead(LogicalTapeSet *lts, int tapenum,
 				void *ptr, size_t size);
 extern void LogicalTapeWrite(LogicalTapeSet *lts, int tapenum,
