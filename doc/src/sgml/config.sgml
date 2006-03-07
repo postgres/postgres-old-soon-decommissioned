@@ -3733,7 +3733,7 @@ dynamic_library_path = 'C:\tools\postgresql;H:\my_project\lib;$libdir'
        <para>
         When on, a warning is issued if a backslash (<literal>\</>)
         appears in an ordinary string literal (<literal>'...'</>
-        syntax). The default is <literal>off</>.
+        syntax). The default is <literal>on</>.
        </para>
        <para>
         Escape string syntax (<literal>E'...'</>) should be used for

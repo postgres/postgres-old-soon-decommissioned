@@ -969,7 +969,7 @@ static struct config_bool ConfigureNamesBool[] =
 			NULL
 		},
 		&escape_string_warning,
-		false, NULL, NULL
+		true, NULL, NULL
 	},
 
 	{
