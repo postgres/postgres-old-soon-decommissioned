@@ -75,7 +75,7 @@ clean distclean:
 # garbage from partial builds
 	@rm -f y.tab.c y.tab.h
 # garbage from development
-	@rm -f core a.out *~ *.output *.tab.c
+	@rm -f core a.out *.output *.tab.c
 
 # `make clean' does not remove preproc.c, preproc.h, or pgc.c since we
 # want to ship those files in the distribution for people with
