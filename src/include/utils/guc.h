@@ -31,10 +31,10 @@
  *
  * SIGHUP options can only be set at postmaster startup or by changing
  * the configuration file and sending the HUP signal to the postmaster
- * or a backend process. (Notice that the signal receipt will be
- * evaluated immediately only in the postmaster. The backend checks it
- * at a certain point in its main loop. It's safer to wait than to
- * read a file asynchronously.)
+ * or a backend process. (Notice that the signal receipt will not be
+ * evaluated immediately. The postmaster and the backend check it at a
+ * certain point in their main loop. It's safer to wait than to read a
+ * file asynchronously.)
  *
  * BACKEND options can only be set at postmaster startup, from the
  * configuration file, or by client request in the connection startup
