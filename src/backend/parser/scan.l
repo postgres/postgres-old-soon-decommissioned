@@ -45,8 +45,6 @@
 #undef fprintf
 #define fprintf(file, fmt, msg)  ereport(ERROR, (errmsg_internal("%s", msg)))
 
-extern YYSTYPE yylval;
-
 static int		xcdepth = 0;	/* depth of nesting in slash-star comments */
 static char    *dolqstart;      /* current $foo$ quote start string */
 

@@ -242,16 +242,6 @@ pull_up_subqueries(PlannerInfo *root, Node *jtnode,
 				j->rarg = pull_up_subqueries(root, j->rarg,
 											 below_outer_join, false);
 				break;
-			case JOIN_UNION:
-
-				/*
-				 * This is where we fail if upper levels of planner haven't
-				 * rewritten UNION JOIN as an Append ...
-				 */
-				ereport(ERROR,
-						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-						 errmsg("UNION JOIN is not implemented")));
-				break;
 			default:
 				elog(ERROR, "unrecognized join type: %d",
 					 (int) j->jointype);

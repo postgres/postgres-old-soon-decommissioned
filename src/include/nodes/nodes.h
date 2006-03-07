@@ -458,13 +458,6 @@ typedef enum JoinType
 	JOIN_RIGHT,					/* pairs + unmatched inner tuples */
 
 	/*
-	 * SQL92 considers UNION JOIN to be a kind of join, so list it here for
-	 * parser convenience, even though it's not implemented like a join in the
-	 * executor.  (The planner must convert it to an Append plan.)
-	 */
-	JOIN_UNION,
-
-	/*
 	 * These are used for queries like WHERE foo IN (SELECT bar FROM ...).
 	 * Only JOIN_IN is actually implemented in the executor; the others are
 	 * defined for internal use in the planner.

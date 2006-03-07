@@ -449,8 +449,6 @@ clause_selectivity(PlannerInfo *root,
 					cacheable = true;
 					break;
 
-				case JOIN_UNION:
-					/* unimplemented anyway... */
 				case JOIN_IN:
 				case JOIN_REVERSE_IN:
 				case JOIN_UNIQUE_OUTER:
