@@ -126,7 +126,7 @@ autovac_start(void)
 		return 0;
 
 	/* Even if zero_damaged_pages is true, we don't want autovacuum zeroing. */
-	zero_damaged_pages = false;
+	SetConfigOption("zero_damaged_pages", "false", PGC_SUSET, PGC_S_SESSION);
 
 	/*
 	 * Do nothing if too soon since last autovacuum exit.  This limits how
