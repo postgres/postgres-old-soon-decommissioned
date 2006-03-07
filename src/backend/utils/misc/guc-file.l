@@ -61,6 +61,7 @@ static char *GUC_scanstr(const char *s);
 %option nodefault
 %option nounput
 %option noyywrap
+%option prefix="GUC_yy"
 
 
 SIGN            ("-"|"+")

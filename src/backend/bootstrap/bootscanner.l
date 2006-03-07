@@ -54,6 +54,7 @@ static int	yyline = 1;			/* line number for error reporting */
 %option nodefault
 %option nounput
 %option noyywrap
+%option prefix="boot_yy"
 
 
 D		[0-9]

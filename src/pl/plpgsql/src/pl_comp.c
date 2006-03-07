@@ -61,12 +61,6 @@
 
 
 /* ----------
- * Variables in the parser that shouldn't go into plpgsql.h
- * ----------
- */
-extern PLPGSQL_YYSTYPE plpgsql_yylval;
-
-/* ----------
  * Our own local and global variables
  * ----------
  */

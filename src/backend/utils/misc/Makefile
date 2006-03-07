@@ -33,9 +33,7 @@ guc.o: $(srcdir)/guc-file.c
 
 $(srcdir)/guc-file.c: guc-file.l
 ifdef FLEX
-	$(FLEX) $(FLEXFLAGS) $<
-	sed -e 's/^yy/GUC_yy/g' -e 's/\([^a-zA-Z0-9_]\)yy/\1GUC_yy/g' lex.yy.c > $@
-	rm -f lex.yy.c
+	$(FLEX) $(FLEXFLAGS) -o'$@' $<
 else
 	@$(missing) flex $< $@
 endif

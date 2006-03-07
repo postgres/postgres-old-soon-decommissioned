@@ -53,8 +53,6 @@ extern char *optarg;
 
 #define ALLOC(t, c)		((t *) calloc((unsigned)(c), sizeof(t)))
 
-extern int	Int_yyparse(void);
-
 static void usage(void);
 static void bootstrap_signals(void);
 static hashnode *AddStr(char *str, int strlength, int mderef);
@@ -468,11 +466,8 @@ BootstrapMain(int argc, char *argv[])
 
 	/*
 	 * Process bootstrap input.
-	 *
-	 * the sed script boot.sed renamed yyparse to Int_yyparse for the
-	 * bootstrap parser to avoid conflicts with the normal SQL parser
 	 */
-	Int_yyparse();
+	boot_yyparse();
 
 	/* Perform a checkpoint to ensure everything's down to disk */
 	SetProcessingMode(NormalProcessing);

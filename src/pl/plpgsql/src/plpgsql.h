@@ -656,7 +656,7 @@ extern char *plpgsql_error_funcname;
 /* linkage to the real yytext variable */
 extern char *plpgsql_base_yytext;
 
-#define plpgsql_yytext plpgsql_base_yytext
+#define yytext plpgsql_base_yytext
 
 extern PLpgSQL_function *plpgsql_curr_compile;
 extern bool plpgsql_check_syntax;

@@ -64,6 +64,8 @@ static	void			 check_labels(const char *start_label,
 
 %}
 
+%name-prefix="plpgsql_yy"
+
 %union {
 		int32					ival;
 		bool					boolean;
@@ -2362,5 +2364,8 @@ check_labels(const char *start_label, const char *end_label)
 		}
 	}
 }
+
+/* Needed to avoid conflict between different prefix settings: */
+#undef yylex
 
 #include "pl_scan.c"

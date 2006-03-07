@@ -73,6 +73,7 @@ bool plpgsql_SpaceScanned = false;
 %option nodefault
 %option nounput
 %option noyywrap
+%option prefix="plpgsql_base_yy"
 
 %option case-insensitive
 

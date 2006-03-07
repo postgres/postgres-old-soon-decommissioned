@@ -21,14 +21,17 @@ include $(top_builddir)/src/Makefile.global
 include $(top_srcdir)/contrib/contrib-global.mk
 endif
 
+
 # segscan is compiled as part of segparse
 segparse.o: segscan.c
+
+# See notes in src/backend/parser/Makefile about the following two rules
 
 segparse.c: segparse.h ;
 
 segparse.h: segparse.y
 ifdef YACC
-	$(YACC) -d $(YFLAGS) -p seg_yy $<
+	$(YACC) -d $(YFLAGS) $<
 	mv -f y.tab.c segparse.c
 	mv -f y.tab.h segparse.h
 else

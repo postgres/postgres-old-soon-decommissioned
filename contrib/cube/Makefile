@@ -28,11 +28,13 @@ endif
 # cubescan is compiled as part of cubeparse
 cubeparse.o: cubescan.c
 
+# See notes in src/backend/parser/Makefile about the following two rules
+
 cubeparse.c: cubeparse.h ;
 
 cubeparse.h: cubeparse.y
 ifdef YACC
-	$(YACC) -d $(YFLAGS) -p cube_yy $<
+	$(YACC) -d $(YFLAGS) $<
 	mv -f y.tab.c cubeparse.c
 	mv -f y.tab.h cubeparse.h
 else
