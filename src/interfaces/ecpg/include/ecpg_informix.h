@@ -1,7 +1,5 @@
 /*
  * This file contains stuff needed to be as compatible to Informix as possible.
- *
- * $PostgreSQL$
  */
 #ifndef _ECPG_INFORMIX_H
 #define _ECPG_INFORMIX_H
