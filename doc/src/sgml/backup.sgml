@@ -1,6 +1,5 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
+
 <chapter id="backup">
  <title>Backup and Restore</title>
 

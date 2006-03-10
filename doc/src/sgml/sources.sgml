@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
  <chapter id="source">
   <title>PostgreSQL Coding Conventions</title>

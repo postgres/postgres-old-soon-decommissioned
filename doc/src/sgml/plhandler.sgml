@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
  <chapter id="plhandler">
    <title>Writing A Procedural Language Handler</title>

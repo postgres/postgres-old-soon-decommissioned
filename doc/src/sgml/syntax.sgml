@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
 <chapter id="sql-syntax">
  <title>SQL Syntax</title>

@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
 <sect2 id="dfunc">
  <title id="dfunc-title">Compiling and Linking Dynamically-Loaded Functions</title>

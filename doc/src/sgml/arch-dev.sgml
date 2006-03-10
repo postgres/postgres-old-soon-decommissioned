@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
  <chapter id="overview">
   <title>Overview of PostgreSQL Internals</title>

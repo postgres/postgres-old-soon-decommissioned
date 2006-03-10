@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
  <chapter id="datatype">
   <title id="datatype-title">Data Types</title>

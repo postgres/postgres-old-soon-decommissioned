@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
 <chapter Id="runtime">
  <title>Operating System Environment</title>

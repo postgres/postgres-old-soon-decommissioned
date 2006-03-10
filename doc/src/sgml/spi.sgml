@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
 <chapter id="spi">
  <title>Server Programming Interface</title>

@@ -1,8 +1,4 @@
-<!-- reference.sgml
-$PostgreSQL$
-
-PostgreSQL Reference Manual
--->
+<!-- $PostgreSQL$ -->
 
 <part id="reference">
  <title>Reference</title>

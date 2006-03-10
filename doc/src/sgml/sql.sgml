@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
  <chapter id="sql-intro">
   <title>SQL</title>

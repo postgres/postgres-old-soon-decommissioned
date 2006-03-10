@@ -1,7 +1,4 @@
-<!--
-$PostgreSQL$
-PostgreSQL documentation
--->
+<!-- $PostgreSQL$ -->
 
  <chapter id="functions">
   <title>Functions and Operators</title>

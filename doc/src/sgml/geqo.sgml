@@ -1,7 +1,4 @@
-<!--
-$PostgreSQL$
-Genetic Optimizer
--->
+<!-- $PostgreSQL$ -->
 
  <chapter id="geqo">
   <chapterinfo>

@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
 <chapter id="client-authentication">
  <title>Client Authentication</title>

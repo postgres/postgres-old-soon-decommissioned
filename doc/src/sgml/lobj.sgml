@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
  <chapter id="largeObjects">
   <title id="largeObjects-title">Large Objects</title>

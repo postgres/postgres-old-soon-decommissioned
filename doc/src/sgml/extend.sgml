@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
  <chapter id="extend">
   <title>Extending <acronym>SQL</acronym></title>

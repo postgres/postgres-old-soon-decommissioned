@@ -1,6 +1,5 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
+
 <chapter Id="runtime-config">
   <title>Server Configuration</title>
 

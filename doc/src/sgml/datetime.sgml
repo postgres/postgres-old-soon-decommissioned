@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
  <appendix id="datetime-appendix">
   <title>Date/Time Support</title>

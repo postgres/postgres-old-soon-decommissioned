@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
  <sect1 id="xaggr">
   <title>User-Defined Aggregates</title>

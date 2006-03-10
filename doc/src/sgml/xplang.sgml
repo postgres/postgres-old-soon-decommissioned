@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
  <chapter id="xplang">
   <title id="xplang-title">Procedural Languages</title>

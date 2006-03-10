@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
  <sect1 id="xoper">
   <title>User-Defined Operators</title>

@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
 <sect1 id="xindex">
  <title>Interfacing Extensions To Indexes</title>

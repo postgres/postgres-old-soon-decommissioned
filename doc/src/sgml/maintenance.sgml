@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
 <chapter id="maintenance">
  <title>Routine Database Maintenance Tasks</title>

@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
  <sect1 id="xfunc">
   <title>User-Defined Functions</title>

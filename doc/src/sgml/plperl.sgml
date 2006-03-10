@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
  <chapter id="plperl">
   <title>PL/Perl - Perl Procedural Language</title>

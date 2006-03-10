@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
 <chapter id="install-win32">
  <title>Client-Only Installation on <productname>Windows</productname></title>

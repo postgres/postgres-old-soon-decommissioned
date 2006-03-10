@@ -1,6 +1,6 @@
+<!-- $PostgreSQL$ -->
 <!--
  Documentation of the system catalogs, directed toward PostgreSQL developers
- $PostgreSQL$
  -->
 
 <chapter id="catalogs">

@@ -1,6 +1,4 @@
-<!--
-$PostgreSQL$
--->
+<!-- $PostgreSQL$ -->
 
 <sect1 id="bug-reporting">
  <title>Bug Reporting Guidelines</title>
