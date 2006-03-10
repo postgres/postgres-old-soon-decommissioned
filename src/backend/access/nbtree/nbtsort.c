@@ -475,6 +475,12 @@ _bt_buildadd(BTWriteState *wstate, BTPageState *state, BTItem bti)
 	Size		pgspc;
 	Size		btisz;
 
+	/*
+	 * This is a handy place to check for cancel interrupts during the
+	 * btree load phase of index creation.
+	 */
+	CHECK_FOR_INTERRUPTS();
+
 	npage = state->btps_page;
 	nblkno = state->btps_blkno;
 	last_off = state->btps_lastoff;
