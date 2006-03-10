@@ -1294,6 +1294,8 @@ ExecMakeTableFunctionResult(ExprState *funcexpr,
 		Datum		result;
 		HeapTuple	tuple;
 
+		CHECK_FOR_INTERRUPTS();
+
 		/*
 		 * reset per-tuple memory context before each call of the function or
 		 * expression. This cleans up any local memory the function may leak
