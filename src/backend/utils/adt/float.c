@@ -74,13 +74,6 @@
 #define M_PI 3.14159265358979323846
 #endif
 
-#ifndef SHRT_MAX
-#define SHRT_MAX 32767
-#endif
-#ifndef SHRT_MIN
-#define SHRT_MIN (-32768)
-#endif
-
 /* Recent HPUXen have isfinite() macro in place of more standard finite() */
 #if !defined(HAVE_FINITE) && defined(isfinite)
 #define finite(x) isfinite(x)

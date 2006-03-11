@@ -40,13 +40,6 @@
 #include "utils/builtins.h"
 
 
-#ifndef SHRT_MAX
-#define SHRT_MAX (0x7FFF)
-#endif
-#ifndef SHRT_MIN
-#define SHRT_MIN (-0x8000)
-#endif
-
 #define SAMESIGN(a,b)	(((a) < 0) == ((b) < 0))
 
 #define Int2VectorSize(n)	(offsetof(int2vector, values) + (n) * sizeof(int2))
