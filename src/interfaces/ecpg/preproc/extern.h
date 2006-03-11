@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifndef _ECPG_PREPROC_EXTERN_H
 #define _ECPG_PREPROC_EXTERN_H
 

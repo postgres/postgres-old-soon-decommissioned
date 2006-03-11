@@ -2,6 +2,8 @@
 /* NdBox = [(lowerleft),(upperright)] */
 /* [(xLL(1)...xLL(N)),(xUR(1)...xUR(n))] */
 
+/* $PostgreSQL$ */
+
 #define YYPARSE_PARAM result  /* need this to pass a pointer (void *) to yyparse */
 #define YYSTYPE char *
 #define YYDEBUG 1

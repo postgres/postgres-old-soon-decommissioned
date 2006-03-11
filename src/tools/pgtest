@@ -1,4 +1,6 @@
-:
+#!/bin/sh
+
+# $PostgreSQL$
 
 # This runs a build/initdb/regression test suite
 #

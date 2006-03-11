@@ -1,6 +1,8 @@
 /*
 moddatetime.c
 
+$PostgreSQL$
+
 What is this?
 It is a function to be called from a trigger for the purpose of updating
 a modification datetime stamp in a record when that record is UPDATEd.

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# $PostgreSQL$
+
 cat <<END
 To get a list of keywords compared to SQL'92, take the keywords out of
 backend/parser/keywords.c and tools/SQL_keywords.

@@ -1,4 +1,7 @@
 #! /bin/sh
+
+# $PostgreSQL$
+
 # Utility to create manufacturer's oui table
 # OUI is "Organizationally Unique Identifier" assigned by IEEE.
 # There are currently three duplicate listings, so we can not enforce

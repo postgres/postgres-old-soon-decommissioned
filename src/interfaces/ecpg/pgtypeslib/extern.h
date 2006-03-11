@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifndef __PGTYPES_COMMON_H__
 #define __PGTYPES_COMMON_H__
 

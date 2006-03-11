@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifndef PGTYPES_NUMERIC
 #define PGTYPES_NUMERIC
 

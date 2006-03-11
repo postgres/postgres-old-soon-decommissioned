@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #include "libc.h"
 #include <sys/ioctl.h>
 #if defined(__STRICT_ANSI__)

@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #include <stdio.h>
 #include <pgtypes_numeric.h>
 #include <decimal.h>

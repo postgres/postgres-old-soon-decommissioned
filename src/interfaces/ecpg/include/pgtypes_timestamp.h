@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifndef PGTYPES_TIMESTAMP
 #define PGTYPES_TIMESTAMP
 

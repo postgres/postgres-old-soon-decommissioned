@@ -2,6 +2,8 @@
  * Written by Solar Designer and placed in the public domain.
  * See crypt_blowfish.c for more information.
  *
+ * $PostgreSQL$
+ *
  * This file contains salt generation functions for the traditional and
  * other common crypt(3) algorithms, except for bcrypt which is defined
  * entirely in crypt_blowfish.c.

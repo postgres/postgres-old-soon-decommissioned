@@ -1,5 +1,7 @@
 #! /bin/sh
 # Utility to remove manufacturer's oui table
+# $PostgreSQL$
+
 
 args=
 

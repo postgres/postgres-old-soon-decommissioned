@@ -5,6 +5,7 @@
  *
  * Joe Conway <mail@joeconway.com>
  *
+ * $PostgreSQL$
  * Copyright (c) 2001-2006, PostgreSQL Global Development Group
  * ALL RIGHTS RESERVED;
  *

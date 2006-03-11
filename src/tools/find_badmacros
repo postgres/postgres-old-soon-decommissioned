@@ -1,6 +1,9 @@
 #!/bin/sh
+
 # This script attempts to find bad ifdef's, i.e. ifdef's that use braces
 # but not the do { ... } while (0) syntax
+#
+# $PostgreSQL$
 #
 # This is useful for running before pgindent
 

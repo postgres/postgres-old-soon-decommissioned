@@ -5,6 +5,8 @@
  * DMN Digital Music Network.
  * www.dmn.com
  *
+ * $PostgreSQL$
+ *
  * Copyright (C) Digital Music Network
  * December 20, 2001
  *

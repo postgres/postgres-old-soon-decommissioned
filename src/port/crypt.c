@@ -1,3 +1,4 @@
+/* $PostgreSQL$ */
 /*	$NetBSD$	*/
 
 /*

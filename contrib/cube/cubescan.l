@@ -1,6 +1,7 @@
 %{
 /* 
 ** A scanner for EMP-style numeric ranges 
+ * $PostgreSQL$
 */
 
 #include "postgres.h"

@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 /* This is used by psql under Win32 */
 
 /*

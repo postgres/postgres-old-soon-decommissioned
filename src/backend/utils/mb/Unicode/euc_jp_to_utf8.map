@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 static pg_local_to_utf LUmapEUC_JP[] = {
   {0x8ea1, 0xefbda1},
   {0x8ea2, 0xefbda2},

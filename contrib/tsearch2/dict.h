@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifndef __DICT_H__
 #define __DICT_H__
 #include "postgres.h"

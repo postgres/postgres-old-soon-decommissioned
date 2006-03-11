@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 /* 
  * example of dictionary 
  * Teodor Sigaev <teodor@sigaev.ru>

@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifndef	pg_config_h_win32__
 #define	pg_config_h_win32__
 /*

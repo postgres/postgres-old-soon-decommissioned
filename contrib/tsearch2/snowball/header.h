@@ -1,3 +1,4 @@
+/* $PostgreSQL$ */
 
 #include <limits.h>
 

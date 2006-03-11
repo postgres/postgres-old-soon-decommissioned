@@ -1,4 +1,6 @@
 #! /bin/sh
+# $PostgreSQL$
+#
 # Start tclsh \
 exec @TCLSH@ "$0" "$@"
 

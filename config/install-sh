@@ -1,6 +1,8 @@
 #!/bin/sh
 # install - install a program, script, or datafile
 
+# $PostgreSQL$
+
 scriptversion=2005-02-02.21
 
 # This originates from X11R5 (mit/util/scripts/install.sh), which was

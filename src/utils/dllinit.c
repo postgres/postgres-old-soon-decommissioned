@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifdef __CYGWIN__
 #include <cygwin/version.h>
 #endif

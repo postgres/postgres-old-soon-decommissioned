@@ -1,3 +1,5 @@
+# $PostgreSQL$
+
 if test "$GCC" != yes ; then
   CC="$CC -std"
   CFLAGS="-O -ieee"

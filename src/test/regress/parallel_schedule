@@ -1,5 +1,6 @@
 # ----------
 # The first group of parallel test
+# $PostgreSQL$
 # ----------
 test: boolean char name varchar text int2 int4 int8 oid float4 float8 bit numeric
 

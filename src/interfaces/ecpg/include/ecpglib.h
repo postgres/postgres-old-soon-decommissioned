@@ -1,6 +1,7 @@
 /*
  * this is a small part of c.h since we don't want to leak all postgres
  * definitions into ecpg programs
+ * $PostgreSQL$
  */
 
 #ifndef _ECPGLIB_H

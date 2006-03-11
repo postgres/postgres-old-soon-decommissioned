@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# $PostgreSQL$
+
 egrep 'x = "|elapse' | \
 awk 'BEGIN { x = 0; y = 0; z = 0; a = 0; } \
      /.*elapse.*/ {x = $2 + x; y = $4 + y; z = $6 + z;} \

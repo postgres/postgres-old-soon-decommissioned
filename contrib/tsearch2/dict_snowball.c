@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 /*
  * example of Snowball dictionary
  * http://snowball.tartarus.org/

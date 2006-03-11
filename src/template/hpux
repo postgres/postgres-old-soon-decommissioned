@@ -1,3 +1,5 @@
+# $PostgreSQL$
+
 CPPFLAGS="-D_XOPEN_SOURCE_EXTENDED"
 
 if test "$GCC" != yes ; then

@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 /* Routines to read and write xBase-files (.dbf)
 
    By Maarten Boekhold, 29th of oktober 1995

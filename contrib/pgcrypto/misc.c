@@ -2,6 +2,8 @@
  * Copyright (c) 1999
  *		University of California.  All rights reserved.
  *
+ * $PostgreSQL$
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:

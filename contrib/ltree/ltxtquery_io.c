@@ -1,6 +1,7 @@
 /*
  * txtquery io
  * Teodor Sigaev <teodor@stack.net>
+ * $PostgreSQL$
  */
 
 #include "ltree.h"

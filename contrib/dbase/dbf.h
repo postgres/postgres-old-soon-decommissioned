@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 /* header-file for dbf.c
    declares routines for reading and writing xBase-files (.dbf), and
    associated structures

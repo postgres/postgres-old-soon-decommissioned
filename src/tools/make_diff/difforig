@@ -1,4 +1,7 @@
-:
+#!/bin/sh
+
+# $PostgreSQL$
+
 if [ "$#" -eq 0 ]
 then	APATH="."
 else	APATH="$1"

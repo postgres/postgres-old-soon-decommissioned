@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 /* This program reads in an xbase-dbf file and sends 'inserts' to an
    PostgreSQL-server with the records in the xbase-file
 

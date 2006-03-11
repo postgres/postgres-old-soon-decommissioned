@@ -1,6 +1,8 @@
 #ifndef _CRC32_H
 #define _CRC32_H
 
+/* $PostgreSQL$ */
+
 /* Returns crc32 of data block */
 extern unsigned int crc32_sz(char *buf, int size);
 

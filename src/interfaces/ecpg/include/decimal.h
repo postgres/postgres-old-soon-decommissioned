@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifndef _ECPG_DECIMAL_H
 #define _ECPG_DECIMAL_H
 

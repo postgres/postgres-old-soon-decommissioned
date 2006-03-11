@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 static pg_local_to_utf LUmapGBK[ 21792 ] = {
   {0x0080, 0xe282ac},
   {0x8140, 0xe4b882},

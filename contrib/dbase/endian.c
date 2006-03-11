@@ -1,3 +1,4 @@
+/* $PostgreSQL$ */
 /* Maarten Boekhold (maarten.boekhold@reuters.com) oktober 1995 */
 
 #include <sys/types.h>

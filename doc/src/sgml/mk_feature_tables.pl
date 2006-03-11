@@ -1,5 +1,7 @@
 # /usr/bin/perl -w
 
+# $PostgreSQL$
+
 my $yesno = $ARGV[0];
 
 open PACK, $ARGV[1] or die;

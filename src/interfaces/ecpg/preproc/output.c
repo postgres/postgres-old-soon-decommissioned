@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #include "postgres_fe.h"
 
 #include "extern.h"

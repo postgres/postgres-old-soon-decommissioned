@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifndef __DEFLEX_H__
 #define __DEFLEX_H__
 

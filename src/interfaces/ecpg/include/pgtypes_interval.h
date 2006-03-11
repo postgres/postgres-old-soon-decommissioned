@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifndef PGTYPES_INTERVAL
 #define PGTYPES_INTERVAL
 

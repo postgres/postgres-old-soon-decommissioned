@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifndef __LTREE_H__
 #define __LTREE_H__
 

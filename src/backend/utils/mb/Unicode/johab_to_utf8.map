@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 static pg_local_to_utf LUmapJOHAB[ 17046 ] = {
   {0x8444, 0xe384b3},
   {0x8446, 0xe384b5},

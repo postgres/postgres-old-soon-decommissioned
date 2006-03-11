@@ -1,6 +1,8 @@
 /*
  * This is a port of the Double Metaphone algorithm for use in PostgreSQL.
  *
+ * $PostgreSQL$
+ *
  * Double Metaphone computes 2 "sounds like" strings - a primary and an
  * alternate. In most cases they are the same, but for foreign names
  * especially they can be a bit different, depending on pronunciation.
@@ -48,7 +50,7 @@
 
 
 /*
- * $Revision: 1.6 $
+ * $Revision: 1.7 $
  * $Id$
  */
 

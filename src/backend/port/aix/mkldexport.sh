@@ -3,6 +3,8 @@
 # mkldexport
 #	create an AIX exports file from an object file
 #
+# $PostgreSQL$
+#
 # Usage:
 #	mkldexport objectfile [location]
 # where

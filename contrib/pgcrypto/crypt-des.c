@@ -1,6 +1,8 @@
 /*
  * FreeSec: libcrypt for NetBSD
  *
+ * $PostgreSQL$
+ *
  * Copyright (c) 1994 David Burren
  * All rights reserved.
  *

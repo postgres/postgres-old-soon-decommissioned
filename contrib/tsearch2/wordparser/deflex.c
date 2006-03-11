@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #include "deflex.h"
 
 const char *lex_descr[] = {

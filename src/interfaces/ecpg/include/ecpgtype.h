@@ -4,6 +4,8 @@
  *
  * All types that can be handled for host variable declarations has to
  * be handled eventually.
+ *
+ * $PostgreSQL$
  */
 
 /*

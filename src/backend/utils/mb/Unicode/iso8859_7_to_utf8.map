@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 static pg_local_to_utf LUmapISO8859_7[ 125 ] = {
   {0x0080, 0xc280},
   {0x0081, 0xc281},

@@ -1,4 +1,6 @@
-:
+#!/bin/sh
+
+# $PostgreSQL$
 
 # This script is used to compute the total number of "C" lines in the release
 # This should be run from the top of the CVS tree after a 'make distclean'

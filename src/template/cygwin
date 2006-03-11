@@ -1,3 +1,5 @@
+# $PostgreSQL$
+
 SRCH_LIB="/usr/local/lib"
 
 # This is required to link pg_dump because it finds pg_toupper() in

@@ -8,6 +8,7 @@
  * Darko Prenosil <Darko.Prenosil@finteh.hr>
  * Shridhar Daithankar <shridhar_daithankar@persistent.co.in>
  *
+ * $PostgreSQL$
  * Copyright (c) 2001-2006, PostgreSQL Global Development Group
  * ALL RIGHTS RESERVED;
  *

@@ -2,6 +2,8 @@
 **
 **		halt.c
 **
+** $PostgreSQL$
+**
 **		This is used to print out error messages and exit
 */
 

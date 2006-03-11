@@ -1,3 +1,5 @@
+# $PostgreSQL$
+
 AROPT=rc
 SHARED_LIB=
 DLSUFFIX=.o

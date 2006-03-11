@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifndef _ECPG_ERRNO_H
 #define _ECPG_ERRNO_H
 

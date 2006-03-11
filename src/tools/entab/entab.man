@@ -1,3 +1,4 @@
+.\" $PostgreSQL$
 .TH ENTAB 1 local
 .SH NAME
 entab - tab processor

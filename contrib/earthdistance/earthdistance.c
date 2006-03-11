@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #include "postgres.h"
 
 #include <math.h>

@@ -1,6 +1,8 @@
 /*
  * functions needed for descriptor handling
  *
+ * $PostgreSQL$
+ *
  * since descriptor might be either a string constant or a string var
  * we need to check for a constant if we expect a constant
  */

@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifndef _ECPG_DATETIME_H
 #define _ECPG_DATETIME_H
 

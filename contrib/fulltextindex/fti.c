@@ -8,6 +8,8 @@
 /*
  *	Trigger function accepts variable number of arguments:
  *
+ * $PostgreSQL$
+ *
  *		1. relation in which to store the substrings
  *		2. fields to extract substrings from
  *

@@ -1,3 +1,4 @@
+/* $PostgreSQL$ */
 
 /* This file was generated automatically by the Snowball to ANSI C compiler */
 

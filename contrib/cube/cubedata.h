@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #define CUBE_MAX_DIM (100)
 typedef struct NDBOX
 {

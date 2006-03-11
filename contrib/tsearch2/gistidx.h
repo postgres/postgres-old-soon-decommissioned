@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifndef __GISTIDX_H__
 #define __GISTIDX_H__
 

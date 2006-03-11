@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 #ifndef PGTYPES_DATETIME
 #define PGTYPES_DATETIME
 

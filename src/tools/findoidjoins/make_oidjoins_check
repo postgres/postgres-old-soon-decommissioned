@@ -1,5 +1,7 @@
 #! /bin/sh
 
+# $PostgreSQL$
+
 # You first run findoidjoins on the template1 database, and send that
 # output into this script to generate a list of SQL statements.
 

@@ -4,6 +4,7 @@
  *
  * Originally by
  * B. Palmer, bpalmer@crimelabs.net 1-17-2001
+ * $PostgreSQL$
  */
 #include "postgres_fe.h"
 

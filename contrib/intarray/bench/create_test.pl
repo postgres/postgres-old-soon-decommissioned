@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+# $PostgreSQL$
+
 use strict;
 print <<EOT;
 create table message (

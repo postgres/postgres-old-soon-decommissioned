@@ -1,3 +1,5 @@
+$PostgreSQL$
+
 Bruce Momjian <pgman@candle.pha.pa.us>
 
 Here are some of the scripts I use to make development easier.

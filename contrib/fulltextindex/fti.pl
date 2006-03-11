@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 #
+# $PostgreSQL$
+#
 # This script substracts all suffixes of all words in a specific column in a table
 # and generates output that can be loaded into a new table with the
 # psql '\copy' command. The new table should have the following structure:

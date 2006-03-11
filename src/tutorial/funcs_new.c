@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 /******************************************************************************
   These are user-defined functions that can be bound to a Postgres backend
   and called by Postgres to execute SQL functions of the same name.

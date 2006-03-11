@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 /*
  * interface functions to dictionary
  * Teodor Sigaev <teodor@sigaev.ru>

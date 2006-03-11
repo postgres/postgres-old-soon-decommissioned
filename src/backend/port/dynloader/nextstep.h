@@ -3,9 +3,9 @@
  * port_protos.h
  *	  port-specific prototypes for NeXT
  *
-
--------------------------------------------------------------------------
+ * $PostgreSQL$
  */
+
 #ifndef PORT_PROTOS_H
 #define PORT_PROTOS_H
 

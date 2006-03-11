@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 /*
  * ISpell interface
  * Teodor Sigaev <teodor@sigaev.ru>
