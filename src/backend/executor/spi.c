@@ -1282,7 +1282,7 @@ _SPI_prepare_plan(const char *src, _SPI_plan *plan)
 		Node	   *parsetree = (Node *) lfirst(list_item);
 		List	   *query_list;
 
-		query_list = pg_analyze_and_rewrite(parsetree, argtypes, nargs);
+		query_list = pg_analyze_and_rewrite(parsetree, src, argtypes, nargs);
 
 		query_list_list = lappend(query_list_list, query_list);
 

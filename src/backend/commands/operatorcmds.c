@@ -152,9 +152,9 @@ DefineOperator(List *names, List *parameters)
 
 	/* Transform type names to type OIDs */
 	if (typeName1)
-		typeId1 = typenameTypeId(typeName1);
+		typeId1 = typenameTypeId(NULL, typeName1);
 	if (typeName2)
-		typeId2 = typenameTypeId(typeName2);
+		typeId2 = typenameTypeId(NULL, typeName2);
 
 	/*
 	 * If any of the mergejoin support operators were given, then canMerge is
@@ -210,8 +210,9 @@ RemoveOperator(RemoveOperStmt *stmt)
 	HeapTuple	tup;
 	ObjectAddress object;
 
-	operOid = LookupOperNameTypeNames(operatorName, typeName1, typeName2,
-									  false);
+	operOid = LookupOperNameTypeNames(NULL, operatorName,
+									  typeName1, typeName2,
+									  false, -1);
 
 	tup = SearchSysCache(OPEROID,
 						 ObjectIdGetDatum(operOid),
@@ -286,8 +287,9 @@ AlterOperatorOwner(List *name, TypeName *typeName1, TypeName *typeName2,
 
 	rel = heap_open(OperatorRelationId, RowExclusiveLock);
 
-	operOid = LookupOperNameTypeNames(name, typeName1, typeName2,
-									  false);
+	operOid = LookupOperNameTypeNames(NULL, name,
+									  typeName1, typeName2,
+									  false, -1);
 
 	AlterOperatorOwner_internal(rel, operOid, newOwnerId);
 

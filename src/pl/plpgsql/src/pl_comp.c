@@ -1082,7 +1082,7 @@ plpgsql_parse_wordtype(char *word)
 	 * Word wasn't found on the namestack. Try to find a data type with that
 	 * name, but ignore pg_type entries that are in fact class types.
 	 */
-	typeOid = LookupTypeName(makeTypeName(cp[0]));
+	typeOid = LookupTypeName(NULL, makeTypeName(cp[0]));
 	if (OidIsValid(typeOid))
 	{
 		HeapTuple	typeTup;

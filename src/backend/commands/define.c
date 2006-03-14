@@ -37,6 +37,7 @@
 
 #include "catalog/namespace.h"
 #include "commands/defrem.h"
+#include "nodes/makefuncs.h"
 #include "parser/parse_type.h"
 #include "parser/scansup.h"
 #include "utils/int8.h"
@@ -219,14 +220,8 @@ defGetTypeName(DefElem *def)
 		case T_TypeName:
 			return (TypeName *) def->arg;
 		case T_String:
-			{
-				/* Allow quoted typename for backwards compatibility */
-				TypeName   *n = makeNode(TypeName);
-
-				n->names = list_make1(def->arg);
-				n->typmod = -1;
-				return n;
-			}
+			/* Allow quoted typename for backwards compatibility */
+			return makeTypeNameFromNameList(list_make1(def->arg));
 		default:
 			ereport(ERROR,
 					(errcode(ERRCODE_SYNTAX_ERROR),

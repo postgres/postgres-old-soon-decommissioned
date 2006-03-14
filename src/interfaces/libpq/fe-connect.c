@@ -1918,6 +1918,8 @@ freePGconn(PGconn *conn)
 		free(conn->krbsrvname);
 #endif
 	/* Note that conn->Pfdebug is not ours to close or free */
+	if (conn->last_query)
+		free(conn->last_query);
 	pg_freeaddrinfo_all(conn->addrlist_family, conn->addrlist);
 	notify = conn->notifyHead;
 	while (notify != NULL)

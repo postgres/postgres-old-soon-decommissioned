@@ -18,10 +18,10 @@
 
 
 extern A_Expr *makeA_Expr(A_Expr_Kind kind, List *name,
-		   Node *lexpr, Node *rexpr);
+		   Node *lexpr, Node *rexpr, int location);
 
 extern A_Expr *makeSimpleA_Expr(A_Expr_Kind kind, const char *name,
-				 Node *lexpr, Node *rexpr);
+				 Node *lexpr, Node *rexpr, int location);
 
 extern Var *makeVar(Index varno,
 		AttrNumber varattno,
@@ -56,6 +56,8 @@ extern RelabelType *makeRelabelType(Expr *arg, Oid rtype, int32 rtypmod,
 extern RangeVar *makeRangeVar(char *schemaname, char *relname);
 
 extern TypeName *makeTypeName(char *typnam);
+extern TypeName *makeTypeNameFromNameList(List *names);
+extern TypeName *makeTypeNameFromOid(Oid typeid, int32 typmod);
 
 extern FuncExpr *makeFuncExpr(Oid funcid, Oid rettype,
 			 List *args, CoercionForm fformat);

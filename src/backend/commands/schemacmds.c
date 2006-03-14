@@ -121,7 +121,7 @@ CreateSchemaCommand(CreateSchemaStmt *stmt)
 		List	   *querytree_list;
 		ListCell   *querytree_item;
 
-		querytree_list = parse_analyze(parsetree, NULL, 0);
+		querytree_list = parse_analyze(parsetree, NULL, NULL, 0);
 
 		foreach(querytree_item, querytree_list)
 		{

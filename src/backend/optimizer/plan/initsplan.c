@@ -992,8 +992,9 @@ process_implied_equality(PlannerInfo *root,
 	 */
 	ltype = exprType(item1);
 	rtype = exprType(item2);
-	eq_operator = compatible_oper(list_make1(makeString("=")),
-								  ltype, rtype, true);
+	eq_operator = compatible_oper(NULL, list_make1(makeString("=")),
+								  ltype, rtype,
+								  true, -1);
 	if (!HeapTupleIsValid(eq_operator))
 	{
 		/*

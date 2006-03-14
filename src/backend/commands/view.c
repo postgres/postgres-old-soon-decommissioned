@@ -114,14 +114,10 @@ DefineVirtualRelation(const RangeVar *relation, List *tlist, bool replace)
 		if (!tle->resjunk)
 		{
 			ColumnDef  *def = makeNode(ColumnDef);
-			TypeName   *typename = makeNode(TypeName);
 
 			def->colname = pstrdup(tle->resname);
-
-			typename->typeid = exprType((Node *) tle->expr);
-			typename->typmod = exprTypmod((Node *) tle->expr);
-			def->typename = typename;
-
+			def->typename = makeTypeNameFromOid(exprType((Node *) tle->expr),
+											exprTypmod((Node *) tle->expr));
 			def->inhcount = 0;
 			def->is_local = true;
 			def->is_not_null = false;

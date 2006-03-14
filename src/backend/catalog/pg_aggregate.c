@@ -171,9 +171,9 @@ AggregateCreate(const char *aggName,
 
 	/* handle sortop, if supplied */
 	if (aggsortopName)
-		sortop = LookupOperName(aggsortopName,
+		sortop = LookupOperName(NULL, aggsortopName,
 								aggBaseType, aggBaseType,
-								false);
+								false, -1);
 
 	/*
 	 * Everything looks okay.  Try to create the pg_proc entry for the

@@ -175,8 +175,9 @@ OperatorLookup(List *operatorName,
 	Oid			operatorObjectId;
 	RegProcedure oprcode;
 
-	operatorObjectId = LookupOperName(operatorName, leftObjectId,
-									  rightObjectId, true);
+	operatorObjectId = LookupOperName(NULL, operatorName,
+									  leftObjectId, rightObjectId,
+									  true, -1);
 	if (!OidIsValid(operatorObjectId))
 	{
 		*defined = false;

@@ -278,6 +278,7 @@ struct pg_conn
 	PGAsyncStatusType asyncStatus;
 	PGTransactionStatusType xactStatus;		/* never changes to ACTIVE */
 	PGQueryClass queryclass;
+	char	   *last_query;		/* last SQL command, or NULL if unknown */
 	bool		options_valid;	/* true if OK to attempt connection */
 	bool		nonblocking;	/* whether this connection is using nonblock
 								 * sending semantics */

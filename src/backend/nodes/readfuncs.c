@@ -893,6 +893,8 @@ _readTypeName(void)
 	READ_BOOL_FIELD(pct_type);
 	READ_INT_FIELD(typmod);
 	READ_NODE_FIELD(arrayBounds);
+	/* location is deliberately not stored */
+	local_node->location = -1;
 
 	READ_DONE();
 }

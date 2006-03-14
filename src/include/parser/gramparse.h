@@ -17,6 +17,15 @@
 
 #include "nodes/parsenodes.h"
 
+/*
+ * We track token locations in terms of byte offsets from the start of the
+ * source string, not the column number/line number representation that
+ * bison uses by default.  Also, to minimize overhead we track only one
+ * location (usually the first token location) for each construct, not
+ * the beginning and ending locations as bison does by default.  It's
+ * therefore sufficient to make YYLTYPE an int.
+ */
+#define YYLTYPE  int
 
 /* from scan.l */
 extern void scanner_init(const char *str);

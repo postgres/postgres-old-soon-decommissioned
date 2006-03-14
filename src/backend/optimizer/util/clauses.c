@@ -2637,7 +2637,7 @@ inline_function(Oid funcid, Oid result_type, List *args,
 	if (list_length(raw_parsetree_list) != 1)
 		goto fail;
 
-	querytree_list = parse_analyze(linitial(raw_parsetree_list),
+	querytree_list = parse_analyze(linitial(raw_parsetree_list), src,
 								   argtypes, funcform->pronargs);
 
 	if (list_length(querytree_list) != 1)

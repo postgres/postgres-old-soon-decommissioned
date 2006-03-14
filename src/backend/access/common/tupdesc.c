@@ -499,7 +499,7 @@ BuildDescForRelation(List *schema)
 							attname)));
 
 		TupleDescInitEntry(desc, attnum, attname,
-						   typenameTypeId(entry->typename),
+						   typenameTypeId(NULL, entry->typename),
 						   atttypmod, attdim);
 
 		/* Fill in additional stuff not handled by TupleDescInitEntry */

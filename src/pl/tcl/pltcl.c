@@ -1754,7 +1754,6 @@ pltcl_SPI_prepare(ClientData cdata, Tcl_Interp *interp,
 	pltcl_query_desc *qdesc;
 	void	   *plan;
 	int			i;
-	HeapTuple	typeTup;
 	Tcl_HashEntry *hashent;
 	int			hashnew;
 	Tcl_HashTable *query_hash;
@@ -1802,33 +1801,18 @@ pltcl_SPI_prepare(ClientData cdata, Tcl_Interp *interp,
 		 ************************************************************/
 		for (i = 0; i < nargs; i++)
 		{
-			char	   *argcopy;
-			List	   *names = NIL;
-			ListCell   *l;
-			TypeName   *typename;
+			List	   *names;
+			HeapTuple	typeTup;
 
-			/************************************************************
-			 * Use SplitIdentifierString() on a copy of the type name,
-			 * turn the resulting pointer list into a TypeName node
-			 * and call typenameType() to get the pg_type tuple.
-			 ************************************************************/
-			argcopy = pstrdup(args[i]);
-			SplitIdentifierString(argcopy, '.', &names);
-			typename = makeNode(TypeName);
-			foreach(l, names)
-				typename->names = lappend(typename->names, makeString(lfirst(l)));
-
-			typeTup = typenameType(typename);
+			/* Parse possibly-qualified type name and look it up in pg_type */
+			names = stringToQualifiedNameList(args[i],
+											  "pltcl_SPI_prepare");
+			typeTup = typenameType(NULL, makeTypeNameFromNameList(names));
 			qdesc->argtypes[i] = HeapTupleGetOid(typeTup);
 			perm_fmgr_info(((Form_pg_type) GETSTRUCT(typeTup))->typinput,
 						   &(qdesc->arginfuncs[i]));
 			qdesc->argtypioparams[i] = getTypeIOParam(typeTup);
 			ReleaseSysCache(typeTup);
-
-			list_free(typename->names);
-			pfree(typename);
-			list_free(names);
-			pfree(argcopy);
 		}
 
 		/************************************************************
