@@ -63,7 +63,12 @@
 
 /* Location tracking support --- simpler than bison's default */
 #define YYLLOC_DEFAULT(Current, Rhs, N) \
-	Current = Rhs[1];
+	do { \
+		if (N) \
+			(Current) = (Rhs)[1]; \
+		else \
+			(Current) = (Rhs)[0]; \
+	} while (0)
 
 extern List *parsetree;			/* final parse result is delivered here */
 
