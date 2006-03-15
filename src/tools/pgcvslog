@@ -30,7 +30,7 @@
 #	/cvsroot/pgsql/doc/src/FAQ/FAQ.html
 #
 
-if [ "X$1" == "X-h" ]
+if [ "X$1" = "X-h" ]
 then	HTML="Y"
 	shift
 else	HTML="N"
