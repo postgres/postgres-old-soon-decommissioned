@@ -202,7 +202,9 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate, int eflags)
 	}
 	else if (functypclass == TYPEFUNC_RECORD)
 	{
-		tupdesc = BuildDescForRelation(rte->coldeflist);
+		tupdesc = BuildDescFromLists(rte->eref->colnames,
+									 rte->funccoltypes,
+									 rte->funccoltypmods);
 	}
 	else
 	{

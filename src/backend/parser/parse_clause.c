@@ -537,22 +537,26 @@ transformRangeFunction(ParseState *pstate, RangeFunction *r)
 	}
 
 	/*
-	 * If a coldeflist is supplied, ensure it defines a legal set of names (no
-	 * duplicates) and datatypes (no pseudo-types, for instance).
+	 * OK, build an RTE for the function.
+	 */
+	rte = addRangeTableEntryForFunction(pstate, funcname, funcexpr,
+										r, true);
+
+	/*
+	 * If a coldeflist was supplied, ensure it defines a legal set of names
+	 * (no duplicates) and datatypes (no pseudo-types, for instance).
+	 * addRangeTableEntryForFunction looked up the type names but didn't
+	 * check them further than that.
 	 */
 	if (r->coldeflist)
 	{
 		TupleDesc	tupdesc;
 
-		tupdesc = BuildDescForRelation(r->coldeflist);
+		tupdesc = BuildDescFromLists(rte->eref->colnames,
+									 rte->funccoltypes,
+									 rte->funccoltypmods);
 		CheckAttributeNamesTypes(tupdesc, RELKIND_COMPOSITE_TYPE);
 	}
-
-	/*
-	 * OK, build an RTE for the function.
-	 */
-	rte = addRangeTableEntryForFunction(pstate, funcname, funcexpr,
-										r, true);
 
 	return rte;
 }

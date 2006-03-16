@@ -1355,7 +1355,8 @@ _copyRangeTblEntry(RangeTblEntry *from)
 	COPY_SCALAR_FIELD(relid);
 	COPY_NODE_FIELD(subquery);
 	COPY_NODE_FIELD(funcexpr);
-	COPY_NODE_FIELD(coldeflist);
+	COPY_NODE_FIELD(funccoltypes);
+	COPY_NODE_FIELD(funccoltypmods);
 	COPY_SCALAR_FIELD(jointype);
 	COPY_NODE_FIELD(joinaliasvars);
 	COPY_NODE_FIELD(alias);

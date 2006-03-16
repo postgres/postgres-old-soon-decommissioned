@@ -1450,7 +1450,7 @@ _outTypeName(StringInfo str, TypeName *node)
 	WRITE_BOOL_FIELD(pct_type);
 	WRITE_INT_FIELD(typmod);
 	WRITE_NODE_FIELD(arrayBounds);
-	/* location is deliberately not stored */
+	WRITE_INT_FIELD(location);
 }
 
 static void
@@ -1580,7 +1580,8 @@ _outRangeTblEntry(StringInfo str, RangeTblEntry *node)
 			break;
 		case RTE_FUNCTION:
 			WRITE_NODE_FIELD(funcexpr);
-			WRITE_NODE_FIELD(coldeflist);
+			WRITE_NODE_FIELD(funccoltypes);
+			WRITE_NODE_FIELD(funccoltypmods);
 			break;
 		case RTE_JOIN:
 			WRITE_ENUM_FIELD(jointype, JoinType);
