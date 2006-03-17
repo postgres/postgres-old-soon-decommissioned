@@ -165,6 +165,7 @@
        <variablelist>
         <varlistentry>
          <term><literal>t</></term>
+         <term><literal>tar</></term>
          <listitem>
           <para>
            The archive is a <command>tar</command> archive. Using this
@@ -177,6 +178,7 @@
 
         <varlistentry>
          <term><literal>c</></term>
+         <term><literal>custom</></term>
          <listitem>
           <para>
            The archive is in the custom format of

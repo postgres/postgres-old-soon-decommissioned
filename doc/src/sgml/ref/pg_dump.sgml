@@ -229,6 +229,7 @@ PostgreSQL documentation
        <variablelist>
         <varlistentry>
          <term><literal>p</></term>
+         <term><literal>plain</></term>
          <listitem>
           <para>
            Output a plain-text <acronym>SQL</acronym> script file (default)
@@ -238,6 +239,7 @@ PostgreSQL documentation
 
         <varlistentry>
          <term><literal>t</></term>
+         <term><literal>tar</></term>
          <listitem>
           <para>
          Output a <command>tar</command> archive suitable for input into 
@@ -251,6 +253,7 @@ PostgreSQL documentation
 
         <varlistentry>
          <term><literal>c</></term>
+         <term><literal>custom</></term>
          <listitem>
           <para>
          Output a custom archive suitable for input into 
