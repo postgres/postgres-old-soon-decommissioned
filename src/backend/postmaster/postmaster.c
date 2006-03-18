@@ -810,7 +810,7 @@ PostmasterMain(int argc, char *argv[])
 		DNSServiceRegistrationCreate(bonjour_name,
 									 "_postgresql._tcp.",
 									 "",
-									 htonl(PostPortNumber),
+									 htons(PostPortNumber),
 									 "",
 									 (DNSServiceRegistrationReply) reg_reply,
 									 NULL);
