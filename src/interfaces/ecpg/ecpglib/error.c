@@ -186,7 +186,7 @@ ECPGraise_backend(int line, PGresult *result, PGconn *conn, int compat)
 	/* assign SQLCODE for backward compatibility */
 	if (strncmp(sqlca->sqlstate, "23505", sizeof(sqlca->sqlstate)) == 0)
 		sqlca->sqlcode = INFORMIX_MODE(compat) ? ECPG_INFORMIX_DUPLICATE_KEY : ECPG_DUPLICATE_KEY;
-	if (strncmp(sqlca->sqlstate, "21000", sizeof(sqlca->sqlstate)) == 0)
+	else if (strncmp(sqlca->sqlstate, "21000", sizeof(sqlca->sqlstate)) == 0)
 		sqlca->sqlcode = INFORMIX_MODE(compat) ? ECPG_INFORMIX_SUBSELECT_NOT_ONE : ECPG_SUBSELECT_NOT_ONE;
 	else
 		sqlca->sqlcode = ECPG_PGSQL;
