@@ -291,10 +291,7 @@ cash_out(PG_FUNCTION_ARGS)
 	/* see if we need to signify negative amount */
 	if (minus)
 	{
-		if (!PointerIsValid(result = palloc(CASH_BUFSZ + 2 - count + strlen(nsymbol))))
-			ereport(ERROR,
-					(errcode(ERRCODE_OUT_OF_MEMORY),
-					 errmsg("out of memory")));
+		result = palloc(CASH_BUFSZ + 2 - count + strlen(nsymbol));
 
 		/* Position code of 0 means use parens */
 		if (convention == 0)
@@ -306,11 +303,7 @@ cash_out(PG_FUNCTION_ARGS)
 	}
 	else
 	{
-		if (!PointerIsValid(result = palloc(CASH_BUFSZ + 2 - count)))
-			ereport(ERROR,
-					(errcode(ERRCODE_OUT_OF_MEMORY),
-					 errmsg("out of memory")));
-
+		result = palloc(CASH_BUFSZ + 2 - count);
 		strcpy(result, buf + count);
 	}
 

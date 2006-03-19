@@ -2122,8 +2122,6 @@ plperl_spi_exec_prepared(char* query, HV * attr, int argc, SV ** argv)
 		{
 			nulls = (char *)palloc( argc);
 			argvalues = (Datum *) palloc(argc * sizeof(Datum));
-			if ( nulls == NULL || argvalues == NULL) 
-				elog(ERROR, "spi_exec_prepared: not enough memory");
 		} 
 		else 
 		{
@@ -2253,8 +2251,6 @@ plperl_spi_query_prepared(char* query, int argc, SV ** argv)
 		{
 			nulls = (char *)palloc( argc);
 			argvalues = (Datum *) palloc(argc * sizeof(Datum));
-			if ( nulls == NULL || argvalues == NULL) 
-				elog(ERROR, "spi_query_prepared: not enough memory");
 		} 
 		else 
 		{

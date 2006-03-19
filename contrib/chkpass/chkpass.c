@@ -108,11 +108,9 @@ chkpass_out(PG_FUNCTION_ARGS)
 	chkpass    *password = (chkpass *) PG_GETARG_POINTER(0);
 	char	   *result;
 
-	if ((result = (char *) palloc(16)) != NULL)
-	{
-		result[0] = ':';
-		strcpy(result + 1, password->password);
-	}
+	result = (char *) palloc(16);
+	result[0] = ':';
+	strcpy(result + 1, password->password);
 
 	PG_RETURN_CSTRING(result);
 }
@@ -129,11 +127,9 @@ chkpass_rout(PG_FUNCTION_ARGS)
 	chkpass    *password = (chkpass *) PG_GETARG_POINTER(0);
 	text	   *result;
 
-	if ((result = (text *) palloc(VARHDRSZ + 16)) != NULL)
-	{
-		result->vl_len = VARHDRSZ + strlen(password->password);
-		memcpy(result->vl_dat, password->password, strlen(password->password));
-	}
+	result = (text *) palloc(VARHDRSZ + 16);
+	result->vl_len = VARHDRSZ + strlen(password->password);
+	memcpy(result->vl_dat, password->password, strlen(password->password));
 
 	PG_RETURN_TEXT_P(result);
 }

@@ -347,14 +347,10 @@ _metaphone(
 	if (max_phonemes == 0)
 	{							/* Assume largest possible */
 		*phoned_word = palloc(sizeof(char) * strlen(word) +1);
-		if (!*phoned_word)
-			return META_ERROR;
 	}
 	else
 	{
 		*phoned_word = palloc(sizeof(char) * max_phonemes + 1);
-		if (!*phoned_word)
-			return META_ERROR;
 	}
 
 	/*-- The first phoneme has to be processed specially. --*/
