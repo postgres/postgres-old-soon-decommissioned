@@ -110,7 +110,7 @@ static DH  *load_dh_buffer(const char *, size_t);
 static DH  *tmp_dh_cb(SSL *s, int is_export, int keylength);
 static int	verify_cb(int, X509_STORE_CTX *);
 static void info_cb(const SSL *ssl, int type, int args);
-static int	initialize_SSL(void);
+static void	initialize_SSL(void);
 static void destroy_SSL(void);
 static int	open_server_SSL(Port *);
 static void close_SSL(Port *);
@@ -204,13 +204,11 @@ KWbuHn491xNO25CQWMtem80uKw+pTnisBRF/454n1Jnhub144YRBoN8CAQI=\n\
 int
 secure_initialize(void)
 {
-	int			r = 0;
-
 #ifdef USE_SSL
-	r = initialize_SSL();
+	initialize_SSL();
 #endif
 
-	return r;
+	return 0;
 }
 
 /*
@@ -712,7 +710,7 @@ info_cb(const SSL *ssl, int type, int args)
 /*
  *	Initialize global SSL context.
  */
-static int
+static void
 initialize_SSL(void)
 {
 	struct stat buf;
@@ -802,8 +800,6 @@ initialize_SSL(void)
 							SSL_VERIFY_CLIENT_ONCE),
 						   verify_cb);
 	}
-
-	return 0;
 }
 
 /*
