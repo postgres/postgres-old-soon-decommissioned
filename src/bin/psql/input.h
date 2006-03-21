@@ -37,7 +37,7 @@ char	   *gets_interactive(const char *prompt);
 char	   *gets_fromFile(FILE *source);
 
 void		initializeInput(int flags);
-bool		saveHistory(char *fname);
+bool		saveHistory(char *fname, bool encodeFlag);
 
 void pg_append_history(char *s, PQExpBuffer history_buf);
 void pg_clear_history(PQExpBuffer history_buf);

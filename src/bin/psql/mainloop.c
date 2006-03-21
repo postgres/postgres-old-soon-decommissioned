@@ -112,7 +112,7 @@ MainLoop(FILE *source)
 			slashCmdStatus = PSQL_CMD_UNKNOWN;
 			prompt_status = PROMPT_READY;
 			if (pset.cur_cmd_interactive)
-				pg_clear_history(history_buf);			
+				pg_write_history(history_buf->data);
 
 			if (pset.cur_cmd_interactive)
 				putc('\n', stdout);
@@ -321,7 +321,8 @@ MainLoop(FILE *source)
 				break;
 		}
 
-		if (pset.cur_cmd_interactive && prompt_status != PROMPT_CONTINUE)
+		if ((pset.cur_cmd_interactive && prompt_status == PROMPT_READY) ||
+			(GetVariableBool(pset.vars, "SINGLELINE") && prompt_status == PROMPT_CONTINUE))
 		{
 			/*
 			 *	Pass all the contents of history_buf to readline

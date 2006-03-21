@@ -148,6 +148,10 @@ pg_write_history(char *s)
 	{
 		enum histcontrol HC;
 		
+		/* Flushing of empty buffer should do nothing */
+		if  (*s == 0)
+			return;
+		
 		prev_hist = NULL;
 			
 		HC = GetHistControlConfig();
@@ -295,13 +299,20 @@ initializeInput(int flags)
 }
 
 
+/* This function is designed for saving the readline history when user 
+ * run \s command or when psql finishes. 
+ * We have an argument named encodeFlag to handle those cases differently
+ * In that case of call via \s we don't really need to encode \n as \x01,
+ * but when we save history for Readline we must do that conversion
+ */
 bool
-saveHistory(char *fname)
+saveHistory(char *fname, bool encodeFlag)
 {
 #ifdef USE_READLINE
 	if (useHistory && fname)
 	{
-		encode_history();		
+		if (encodeFlag)
+			encode_history();
 		if (write_history(fname) == 0)
 			return true;
 
@@ -331,7 +342,7 @@ finishInput(int exitstatus, void *arg)
 		if (hist_size >= 0)
 			stifle_history(hist_size);
 
-		saveHistory(psql_history);
+		saveHistory(psql_history, true);
 		free(psql_history);
 		psql_history = NULL;
 	}
