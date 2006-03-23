@@ -72,6 +72,12 @@ int4notin(PG_FUNCTION_ARGS)
 
 	/* Find the column to search */
 	attrid = attnameAttNum(relation_to_scan, attribute, true);
+	if (attrid == InvalidAttrNumber)
+		ereport(ERROR,
+				(errcode(ERRCODE_UNDEFINED_COLUMN),
+				 errmsg("column \"%s\" of relation \"%s\" does not exist",
+						attribute,
+						RelationGetRelationName(relation_to_scan))));
 
 	scan_descriptor = heap_beginscan(relation_to_scan, SnapshotNow,
 									 0, (ScanKey) NULL);

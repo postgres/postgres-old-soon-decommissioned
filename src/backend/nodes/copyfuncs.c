@@ -1520,6 +1520,7 @@ _copyResTarget(ResTarget *from)
 	COPY_STRING_FIELD(name);
 	COPY_NODE_FIELD(indirection);
 	COPY_NODE_FIELD(val);
+	COPY_SCALAR_FIELD(location);
 
 	return newnode;
 }

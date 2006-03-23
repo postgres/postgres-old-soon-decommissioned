@@ -327,6 +327,7 @@ typedef struct ResTarget
 	char	   *name;			/* column name or NULL */
 	List	   *indirection;	/* subscripts and field names, or NIL */
 	Node	   *val;			/* the value expression to compute or assign */
+	int			location;		/* token location, or -1 if unknown */
 } ResTarget;
 
 /*

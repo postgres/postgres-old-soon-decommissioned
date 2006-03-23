@@ -1738,6 +1738,7 @@ _outResTarget(StringInfo str, ResTarget *node)
 	WRITE_STRING_FIELD(name);
 	WRITE_NODE_FIELD(indirection);
 	WRITE_NODE_FIELD(val);
+	WRITE_INT_FIELD(location);
 }
 
 static void

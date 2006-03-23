@@ -216,6 +216,11 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt)
 			char	   *col = strVal(lfirst(le));
 
 			i = attnameAttNum(onerel, col, false);
+			if (i == InvalidAttrNumber)
+				ereport(ERROR,
+						(errcode(ERRCODE_UNDEFINED_COLUMN),
+						 errmsg("column \"%s\" of relation \"%s\" does not exist",
+								col, RelationGetRelationName(onerel))));
 			vacattrstats[tcnt] = examine_attribute(onerel, i);
 			if (vacattrstats[tcnt] != NULL)
 				tcnt++;

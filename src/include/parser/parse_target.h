@@ -24,7 +24,8 @@ extern TargetEntry *transformTargetEntry(ParseState *pstate,
 					 char *colname, bool resjunk);
 extern void updateTargetListEntry(ParseState *pstate, TargetEntry *tle,
 					  char *colname, int attrno,
-					  List *indirection);
+					  List *indirection,
+					  int location);
 extern List *checkInsertTargets(ParseState *pstate, List *cols,
 				   List **attrnos);
 extern TupleDesc expandRecordVariable(ParseState *pstate, Var *var,
