@@ -1473,7 +1473,9 @@ IndexBuildHeapScan(Relation heapRelation,
 
 					/*
 					 * If tuple is recently deleted then we must index it
-					 * anyway to keep VACUUM from complaining.
+					 * anyway to preserve MVCC semantics.  (Pre-existing
+					 * transactions could try to use the index after we
+					 * finish building it, and may need to see such tuples.)
 					 */
 					indexIt = true;
 					tupleIsAlive = false;
@@ -1541,13 +1543,10 @@ IndexBuildHeapScan(Relation heapRelation,
 
 		/*
 		 * In a partial index, discard tuples that don't satisfy the
-		 * predicate.  We can also discard recently-dead tuples, since VACUUM
-		 * doesn't complain about tuple count mismatch for partial indexes.
+		 * predicate.
 		 */
 		if (predicate != NIL)
 		{
-			if (!tupleIsAlive)
-				continue;
 			if (!ExecQual(predicate, econtext, false))
 				continue;
 		}
