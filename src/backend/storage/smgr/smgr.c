@@ -942,7 +942,7 @@ smgr_redo(XLogRecPtr lsn, XLogRecord *record)
 }
 
 void
-smgr_desc(char *buf, uint8 xl_info, char *rec)
+smgr_desc(StringInfo buf, uint8 xl_info, char *rec)
 {
 	uint8		info = xl_info & ~XLR_INFO_MASK;
 
@@ -950,7 +950,7 @@ smgr_desc(char *buf, uint8 xl_info, char *rec)
 	{
 		xl_smgr_create *xlrec = (xl_smgr_create *) rec;
 
-		sprintf(buf + strlen(buf), "file create: %u/%u/%u",
+		appendStringInfo(buf, "file create: %u/%u/%u",
 				xlrec->rnode.spcNode, xlrec->rnode.dbNode,
 				xlrec->rnode.relNode);
 	}
@@ -958,10 +958,10 @@ smgr_desc(char *buf, uint8 xl_info, char *rec)
 	{
 		xl_smgr_truncate *xlrec = (xl_smgr_truncate *) rec;
 
-		sprintf(buf + strlen(buf), "file truncate: %u/%u/%u to %u blocks",
+		appendStringInfo(buf, "file truncate: %u/%u/%u to %u blocks",
 				xlrec->rnode.spcNode, xlrec->rnode.dbNode,
 				xlrec->rnode.relNode, xlrec->blkno);
 	}
 	else
-		strcat(buf, "UNKNOWN");
+		appendStringInfo(buf, "UNKNOWN");
 }

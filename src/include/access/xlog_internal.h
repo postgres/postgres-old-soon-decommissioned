@@ -228,7 +228,7 @@ typedef struct RmgrData
 {
 	const char *rm_name;
 	void		(*rm_redo) (XLogRecPtr lsn, XLogRecord *rptr);
-	void		(*rm_desc) (char *buf, uint8 xl_info, char *rec);
+	void		(*rm_desc) (StringInfo buf, uint8 xl_info, char *rec);
 	void		(*rm_startup) (void);
 	void		(*rm_cleanup) (void);
 } RmgrData;

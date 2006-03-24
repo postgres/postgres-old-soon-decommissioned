@@ -67,6 +67,6 @@ extern void MultiXactAdvanceNextMXact(MultiXactId minMulti,
 						  MultiXactOffset minMultiOffset);
 
 extern void multixact_redo(XLogRecPtr lsn, XLogRecord *record);
-extern void multixact_desc(char *buf, uint8 xl_info, char *rec);
+extern void multixact_desc(StringInfo buf, uint8 xl_info, char *rec);
 
 #endif   /* MULTIXACT_H */

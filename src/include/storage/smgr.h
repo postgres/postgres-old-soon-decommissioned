@@ -85,7 +85,7 @@ extern void smgrabort(void);
 extern void smgrsync(void);
 
 extern void smgr_redo(XLogRecPtr lsn, XLogRecord *record);
-extern void smgr_desc(char *buf, uint8 xl_info, char *rec);
+extern void smgr_desc(StringInfo buf, uint8 xl_info, char *rec);
 
 
 /* internals: move me elsewhere -- ay 7/94 */

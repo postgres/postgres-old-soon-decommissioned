@@ -244,7 +244,7 @@ extern GISTInsertStack *gistFindPath(Relation r, BlockNumber child,
 
 /* gistxlog.c */
 extern void gist_redo(XLogRecPtr lsn, XLogRecord *record);
-extern void gist_desc(char *buf, uint8 xl_info, char *rec);
+extern void gist_desc(StringInfo buf, uint8 xl_info, char *rec);
 extern void gist_xlog_startup(void);
 extern void gist_xlog_cleanup(void);
 extern IndexTuple gist_form_invalid_tuple(BlockNumber blkno);

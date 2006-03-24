@@ -412,17 +412,17 @@ clog_redo(XLogRecPtr lsn, XLogRecord *record)
 }
 
 void
-clog_desc(char *buf, uint8 xl_info, char *rec)
+clog_desc(StringInfo buf, uint8 xl_info, char *rec)
 {
-	uint8		info = xl_info & ~XLR_INFO_MASK;
+	uint8			info = xl_info & ~XLR_INFO_MASK;
 
 	if (info == CLOG_ZEROPAGE)
 	{
 		int			pageno;
 
 		memcpy(&pageno, rec, sizeof(int));
-		sprintf(buf + strlen(buf), "zeropage: %d", pageno);
+		appendStringInfo(buf, "zeropage: %d", pageno);
 	}
 	else
-		strcat(buf, "UNKNOWN");
+		appendStringInfo(buf, "UNKNOWN");
 }

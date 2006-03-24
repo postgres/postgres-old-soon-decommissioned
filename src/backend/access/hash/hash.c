@@ -675,6 +675,6 @@ hash_redo(XLogRecPtr lsn, XLogRecord *record)
 }
 
 void
-hash_desc(char *buf, uint8 xl_info, char *rec)
+hash_desc(StringInfo buf, uint8 xl_info, char *rec)
 {
 }
