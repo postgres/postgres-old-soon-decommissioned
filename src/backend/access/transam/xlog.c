@@ -980,8 +980,7 @@ XLogCheckBuffer(XLogRecData *rdata,
 	 */
 	*lsn = page->pd_lsn;
 
-	if (fullPageWrites &&
-		XLByteLE(page->pd_lsn, RedoRecPtr))
+	if (XLByteLE(page->pd_lsn, RedoRecPtr))
 	{
 		/*
 		 * The page needs to be backed up, so set up *bkpb
