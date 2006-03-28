@@ -243,7 +243,7 @@ btree_xlog_split(bool onleft, bool isroot,
 	rightsib = (onleft) ? xlrec->otherblk : targetblk;
 
 	/* Left (original) sibling */
-	buffer = XLogReadBuffer(false, reln, leftsib);
+	buffer = XLogReadBuffer(true, reln, leftsib);
 	if (!BufferIsValid(buffer))
 		elog(PANIC, "btree_split_redo: lost left sibling");
 
@@ -504,7 +504,7 @@ btree_xlog_delete_page(bool ismeta,
 	}
 
 	/* Rewrite target page as empty deleted page */
-	buffer = XLogReadBuffer(false, reln, target);
+	buffer = XLogReadBuffer(true, reln, target);
 	if (!BufferIsValid(buffer))
 		elog(PANIC, "btree_delete_page_redo: lost target page");
 	page = (Page) BufferGetPage(buffer);
