@@ -468,6 +468,12 @@ DropTableSpace(DropTableSpaceStmt *stmt)
 	}
 
 	/*
+	 * Note: because we checked that the tablespace was empty, there should
+	 * be no need to worry about flushing shared buffers or free space map
+	 * entries for relations in the tablespace.
+	 */
+
+	/*
 	 * Allow TablespaceCreateDbspace again.
 	 */
 	LWLockRelease(TablespaceCreateLock);

@@ -4097,7 +4097,7 @@ xact_redo_commit(xl_xact_commit *xlrec, TransactionId xid)
 	/* Make sure files supposed to be dropped are dropped */
 	for (i = 0; i < xlrec->nrels; i++)
 	{
-		XLogCloseRelation(xlrec->xnodes[i]);
+		XLogDropRelation(xlrec->xnodes[i]);
 		smgrdounlink(smgropen(xlrec->xnodes[i]), false, true);
 	}
 }
@@ -4132,7 +4132,7 @@ xact_redo_abort(xl_xact_abort *xlrec, TransactionId xid)
 	/* Make sure files supposed to be dropped are dropped */
 	for (i = 0; i < xlrec->nrels; i++)
 	{
-		XLogCloseRelation(xlrec->xnodes[i]);
+		XLogDropRelation(xlrec->xnodes[i]);
 		smgrdounlink(smgropen(xlrec->xnodes[i]), false, true);
 	}
 }

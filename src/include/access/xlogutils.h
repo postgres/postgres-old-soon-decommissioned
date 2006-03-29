@@ -19,8 +19,9 @@ extern void XLogInitRelationCache(void);
 extern void XLogCloseRelationCache(void);
 
 extern Relation XLogOpenRelation(RelFileNode rnode);
-extern void XLogCloseRelation(RelFileNode rnode);
+extern void XLogDropRelation(RelFileNode rnode);
+extern void XLogDropDatabase(Oid dbid);
 
-extern Buffer XLogReadBuffer(bool extend, Relation reln, BlockNumber blkno);
+extern Buffer XLogReadBuffer(Relation reln, BlockNumber blkno, bool init);
 
 #endif

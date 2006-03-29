@@ -166,7 +166,7 @@ ReverifyMyDatabase(const char *name)
 		 * other backend will eventually try to write them and die in
 		 * mdblindwrt.	Flush any such pages to forestall trouble.
 		 */
-		DropBuffers(MyDatabaseId);
+		DropDatabaseBuffers(MyDatabaseId);
 		/* Now I can commit hara-kiri with a clear conscience... */
 		ereport(FATAL,
 				(errcode(ERRCODE_UNDEFINED_DATABASE),

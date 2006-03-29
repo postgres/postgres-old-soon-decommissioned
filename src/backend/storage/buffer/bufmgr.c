@@ -1450,7 +1450,7 @@ DropRelFileNodeBuffers(RelFileNode rnode, bool istemp,
 }
 
 /* ---------------------------------------------------------------------
- *		DropBuffers
+ *		DropDatabaseBuffers
  *
  *		This function removes all the buffers in the buffer cache for a
  *		particular database.  Dirty pages are simply dropped, without
@@ -1461,7 +1461,7 @@ DropRelFileNodeBuffers(RelFileNode rnode, bool istemp,
  * --------------------------------------------------------------------
  */
 void
-DropBuffers(Oid dbid)
+DropDatabaseBuffers(Oid dbid)
 {
 	int			i;
 	volatile BufferDesc *bufHdr;
