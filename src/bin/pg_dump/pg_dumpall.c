@@ -444,7 +444,7 @@ dumpRoles(PGconn *conn)
 						  "true as rolcanlogin, "
 						  "-1 as rolconnlimit, "
 						  "passwd as rolpassword, "
-						  "valuntil as rolvaliduntil "
+						  "valuntil as rolvaliduntil, "
 						  "null as rolcomment "
 						  "FROM pg_shadow "
 						  "UNION ALL "
@@ -457,8 +457,8 @@ dumpRoles(PGconn *conn)
 						  "false as rolcanlogin, "
 						  "-1 as rolconnlimit, "
 						  "null::text as rolpassword, "
-						  "null::abstime as rolvaliduntil "
-						  "null "
+						  "null::abstime as rolvaliduntil, "
+						  "null as rolcomment "
 						  "FROM pg_group");
 
 	res = executeQuery(conn, buf->data);
