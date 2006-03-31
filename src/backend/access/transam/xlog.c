@@ -2529,8 +2529,8 @@ RestoreBkpBlocks(XLogRecord *record, XLogRecPtr lsn)
 
 		PageSetLSN(page, lsn);
 		PageSetTLI(page, ThisTimeLineID);
-		LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
-		WriteBuffer(buffer);
+		MarkBufferDirty(buffer);
+		UnlockReleaseBuffer(buffer);
 
 		blk += BLCKSZ - bkpb.hole_length;
 	}

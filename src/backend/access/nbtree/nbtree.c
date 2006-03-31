@@ -624,18 +624,13 @@ btbulkdelete(PG_FUNCTION_ARGS)
 				}
 			}
 
-			/*
-			 * If we need to delete anything, do it and write the buffer; else
-			 * just release the buffer.
-			 */
-			nextpage = opaque->btpo_next;
+			/* Apply any needed deletes */
 			if (ndeletable > 0)
-			{
 				_bt_delitems(rel, buf, deletable, ndeletable);
-				_bt_wrtbuf(rel, buf);
-			}
-			else
-				_bt_relbuf(rel, buf);
+
+			/* Fetch nextpage link before releasing the buffer */
+			nextpage = opaque->btpo_next;
+			_bt_relbuf(rel, buf);
 
 			/* call vacuum_delay_point while not holding any buffer lock */
 			vacuum_delay_point();

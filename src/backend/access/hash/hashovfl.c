@@ -146,7 +146,8 @@ _hash_addovflpage(Relation rel, Buffer metabuf, Buffer buf)
 	ovflopaque->hasho_bucket = pageopaque->hasho_bucket;
 	ovflopaque->hasho_flag = LH_OVERFLOW_PAGE;
 	ovflopaque->hasho_filler = HASHO_FILL;
-	_hash_wrtnorelbuf(rel, ovflbuf);
+
+	MarkBufferDirty(ovflbuf);
 
 	/* logically chain overflow page to previous page */
 	pageopaque->hasho_nextblkno = ovflblkno;

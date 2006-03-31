@@ -189,7 +189,7 @@ extern void BufTableDelete(BufferTag *tagPtr);
 /* localbuf.c */
 extern BufferDesc *LocalBufferAlloc(Relation reln, BlockNumber blockNum,
 				 bool *foundPtr);
-extern void WriteLocalBuffer(Buffer buffer, bool release);
+extern void MarkLocalBufferDirty(Buffer buffer);
 extern void DropRelFileNodeLocalBuffers(RelFileNode rnode,
 							BlockNumber firstDelBlock);
 extern void AtEOXact_LocalBuffers(bool isCommit);
