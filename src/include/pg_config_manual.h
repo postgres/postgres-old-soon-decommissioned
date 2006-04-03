@@ -44,8 +44,19 @@
 #define RELSEG_SIZE (0x40000000 / BLCKSZ)
 
 /*
+ * Size of a WAL file block.  This need have no particular relation to BLCKSZ.
+ * XLOG_BLCKSZ must be a power of 2, and if your system supports O_DIRECT I/O,
+ * XLOG_BLCKSZ must be a multiple of the alignment requirement for direct-I/O
+ * buffers, else direct I/O may fail.
+ *
+ * Changing XLOG_BLCKSZ requires an initdb.
+ */
+#define XLOG_BLCKSZ		8192
+
+/*
  * XLOG_SEG_SIZE is the size of a single WAL file.	This must be a power of 2
- * and larger than BLCKSZ (preferably, a great deal larger than BLCKSZ).
+ * and larger than XLOG_BLCKSZ (preferably, a great deal larger than
+ * XLOG_BLCKSZ).
  *
  * Changing XLOG_SEG_SIZE requires an initdb.
  */

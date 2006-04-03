@@ -182,8 +182,8 @@ typedef XLogLongPageHeaderData *XLogLongPageHeader;
 
 /* Check if an xrecoff value is in a plausible range */
 #define XRecOffIsValid(xrecoff) \
-		((xrecoff) % BLCKSZ >= SizeOfXLogShortPHD && \
-		(BLCKSZ - (xrecoff) % BLCKSZ) >= SizeOfXLogRecord)
+		((xrecoff) % XLOG_BLCKSZ >= SizeOfXLogShortPHD && \
+		(XLOG_BLCKSZ - (xrecoff) % XLOG_BLCKSZ) >= SizeOfXLogRecord)
 
 /*
  * The XLog directory and control file (relative to $PGDATA)
