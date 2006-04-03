@@ -8,7 +8,7 @@ DATA = uninstall_cube.sql
 DOCS = README.cube
 REGRESS = cube
 
-EXTRA_CLEAN = cubeparse.c cubeparse.h cubescan.c y.tab.c y.tab.h
+EXTRA_CLEAN = y.tab.c y.tab.h
 
 PG_CPPFLAGS = -I.
 
@@ -26,24 +26,29 @@ endif
 
 
 # cubescan is compiled as part of cubeparse
-cubeparse.o: cubescan.c
+cubeparse.o: $(srcdir)/cubescan.c
 
 # See notes in src/backend/parser/Makefile about the following two rules
 
-cubeparse.c: cubeparse.h ;
+$(srcdir)/cubeparse.c: $(srcdir)/cubeparse.h ;
 
-cubeparse.h: cubeparse.y
+$(srcdir)/cubeparse.h: cubeparse.y
 ifdef YACC
 	$(YACC) -d $(YFLAGS) $<
-	mv -f y.tab.c cubeparse.c
-	mv -f y.tab.h cubeparse.h
+	mv -f y.tab.c $(srcdir)/cubeparse.c
+	mv -f y.tab.h $(srcdir)/cubeparse.h
 else
 	@$(missing) bison $< $@
 endif
 
-cubescan.c: cubescan.l
+$(srcdir)/cubescan.c: cubescan.l
 ifdef FLEX
 	$(FLEX) $(FLEXFLAGS) -o'$@' $<
 else
 	@$(missing) flex $< $@
 endif
+
+distprep: $(srcdir)/cubeparse.c $(srcdir)/cubeparse.h $(srcdir)/cubescan.c
+
+maintainer-clean:
+	rm -f $(srcdir)/cubeparse.c $(srcdir)/cubeparse.h $(srcdir)/cubescan.c

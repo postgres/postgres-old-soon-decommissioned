@@ -42,7 +42,7 @@ WANTED_DIRS = \
 #		xml2		\ (requires libxml installed)
 
 
-all install installdirs uninstall clean distclean maintainer-clean:
+all install installdirs uninstall distprep clean distclean maintainer-clean:
 	@for dir in $(WANTED_DIRS); do \
 		$(MAKE) -C $$dir $@ || exit; \
 	done
