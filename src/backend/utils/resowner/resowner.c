@@ -277,7 +277,6 @@ ResourceOwnerReleaseInternal(ResourceOwner owner,
 		}
 
 		/* Clean up index scans too */
-		ReleaseResources_gist();
 		ReleaseResources_hash();
 	}
 

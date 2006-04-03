@@ -493,11 +493,6 @@ gistplacetopage(GISTInsertState *state, GISTSTATE *giststate)
 
 		END_CRIT_SECTION();
 
-		if (!is_leaf)			/* small optimization: inform scan ablout
-								 * deleting... */
-			gistadjscans(state->r, GISTOP_DEL, state->stack->blkno,
-						 state->stack->childoffnum, PageGetLSN(state->stack->page), oldlsn);
-
 		if (state->ituplen > 1)
 		{						/* previous is_splitted==true */
 

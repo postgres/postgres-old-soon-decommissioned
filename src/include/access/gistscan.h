@@ -22,7 +22,5 @@ extern Datum gistrescan(PG_FUNCTION_ARGS);
 extern Datum gistmarkpos(PG_FUNCTION_ARGS);
 extern Datum gistrestrpos(PG_FUNCTION_ARGS);
 extern Datum gistendscan(PG_FUNCTION_ARGS);
-extern void gistadjscans(Relation r, int op, BlockNumber blkno, OffsetNumber offnum, XLogRecPtr newlsn, XLogRecPtr oldlsn);
-extern void ReleaseResources_gist(void);
 
 #endif   /* GISTSCAN_H */
