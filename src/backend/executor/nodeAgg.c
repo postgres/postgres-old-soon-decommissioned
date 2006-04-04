@@ -1407,10 +1407,8 @@ GetAggInitVal(Datum textInitVal, Oid transtype)
 
 	getTypeInputInfo(transtype, &typinput, &typioparam);
 	strInitVal = DatumGetCString(DirectFunctionCall1(textout, textInitVal));
-	initVal = OidFunctionCall3(typinput,
-							   CStringGetDatum(strInitVal),
-							   ObjectIdGetDatum(typioparam),
-							   Int32GetDatum(-1));
+	initVal = OidInputFunctionCall(typinput, strInitVal,
+								   typioparam, -1);
 	pfree(strInitVal);
 	return initVal;
 }

@@ -3921,8 +3921,7 @@ get_const_expr(Const *constval, deparse_context *context)
 	getTypeOutputInfo(constval->consttype,
 					  &typoutput, &typIsVarlena);
 
-	extval = DatumGetCString(OidFunctionCall1(typoutput,
-											  constval->constvalue));
+	extval = OidOutputFunctionCall(typoutput, constval->constvalue);
 
 	switch (constval->consttype)
 	{

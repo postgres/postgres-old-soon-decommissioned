@@ -629,9 +629,9 @@ SPI_fname(TupleDesc tupdesc, int fnumber)
 char *
 SPI_getvalue(HeapTuple tuple, TupleDesc tupdesc, int fnumber)
 {
+	char	   *result;
 	Datum		origval,
-				val,
-				result;
+				val;
 	bool		isnull;
 	Oid			typoid,
 				foutoid;
@@ -666,14 +666,13 @@ SPI_getvalue(HeapTuple tuple, TupleDesc tupdesc, int fnumber)
 	else
 		val = origval;
 
-	result = OidFunctionCall1(foutoid,
-							  val);
+	result = OidOutputFunctionCall(foutoid, val);
 
 	/* Clean up detoasted copy, if any */
 	if (val != origval)
 		pfree(DatumGetPointer(val));
 
-	return DatumGetCString(result);
+	return result;
 }
 
 Datum

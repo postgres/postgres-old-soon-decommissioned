@@ -357,8 +357,7 @@ print_expr(Node *expr, List *rtable)
 		getTypeOutputInfo(c->consttype,
 						  &typoutput, &typIsVarlena);
 
-		outputstr = DatumGetCString(OidFunctionCall1(typoutput,
-													 c->constvalue));
+		outputstr = OidOutputFunctionCall(typoutput, c->constvalue);
 		printf("%s", outputstr);
 		pfree(outputstr);
 	}

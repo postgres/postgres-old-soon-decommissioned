@@ -4043,6 +4043,8 @@ make_tuple_from_row(PLpgSQL_execstate *estate,
  *
  * Note: callers generally assume that the result is a palloc'd string and
  * should be pfree'd.  This is not all that safe an assumption ...
+ *
+ * Note: not caching the conversion function lookup is bad for performance.
  * ----------
  */
 static char *
@@ -4053,7 +4055,7 @@ convert_value_to_string(Datum value, Oid valtype)
 
 	getTypeOutputInfo(valtype, &typoutput, &typIsVarlena);
 
-	return DatumGetCString(OidFunctionCall1(typoutput, value));
+	return OidOutputFunctionCall(typoutput, value);
 }
 
 /* ----------
@@ -4068,22 +4070,25 @@ exec_cast_value(Datum value, Oid valtype,
 				int32 reqtypmod,
 				bool isnull)
 {
-	if (!isnull)
+	/*
+	 * If the type of the queries return value isn't that of the variable,
+	 * convert it.
+	 */
+	if (valtype != reqtype || reqtypmod != -1)
 	{
-		/*
-		 * If the type of the queries return value isn't that of the variable,
-		 * convert it.
-		 */
-		if (valtype != reqtype || reqtypmod != -1)
+		if (!isnull)
 		{
 			char	   *extval;
 
 			extval = convert_value_to_string(value, valtype);
-			value = FunctionCall3(reqinput,
-								  CStringGetDatum(extval),
-								  ObjectIdGetDatum(reqtypioparam),
-								  Int32GetDatum(reqtypmod));
+			value = InputFunctionCall(reqinput, extval,
+									  reqtypioparam, reqtypmod);
 			pfree(extval);
+		}
+		else
+		{
+			value = InputFunctionCall(reqinput, NULL,
+									  reqtypioparam, reqtypmod);
 		}
 	}
 

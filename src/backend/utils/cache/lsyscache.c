@@ -1554,10 +1554,8 @@ get_typdefault(Oid typid)
 			strDefaultVal = DatumGetCString(DirectFunctionCall1(textout,
 																datum));
 			/* Convert C string to a value of the given type */
-			datum = OidFunctionCall3(type->typinput,
-									 CStringGetDatum(strDefaultVal),
-								 ObjectIdGetDatum(getTypeIOParam(typeTuple)),
-									 Int32GetDatum(-1));
+			datum = OidInputFunctionCall(type->typinput, strDefaultVal,
+										 getTypeIOParam(typeTuple), -1);
 			/* Build a Const node containing the value */
 			expr = (Node *) makeConst(typid,
 									  type->typlen,

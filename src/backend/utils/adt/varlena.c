@@ -2580,8 +2580,7 @@ array_to_text(PG_FUNCTION_ARGS)
 		{
 			itemvalue = fetch_att(p, typbyval, typlen);
 
-			value = DatumGetCString(FunctionCall1(&my_extra->proc,
-												  itemvalue));
+			value = OutputFunctionCall(&my_extra->proc, itemvalue);
 
 			if (printed)
 				appendStringInfo(&buf, "%s%s", fldsep, value);
