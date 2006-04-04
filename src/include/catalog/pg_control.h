@@ -147,4 +147,13 @@ typedef struct ControlFileData
 	pg_crc32	crc;
 } ControlFileData;
 
+/*
+ * Physical size of the pg_control file.  Note that this is considerably
+ * bigger than the actually used size (ie, sizeof(ControlFileData)).
+ * The idea is to keep the physical size constant independent of format
+ * changes, so that ReadControlFile will deliver a suitable wrong-version
+ * message instead of a read error if it's looking at an incompatible file.
+ */
+#define PG_CONTROL_SIZE		8192
+
 #endif   /* PG_CONTROL_H */
