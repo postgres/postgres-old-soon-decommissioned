@@ -156,7 +156,7 @@ CATALOG(pg_type,1247) BKI_BOOTSTRAP
 	bool		typnotnull;
 
 	/*
-	 * Domains use typbasetype to show the base (or complex) type that the
+	 * Domains use typbasetype to show the base (or domain) type that the
 	 * domain is based on.	Zero if the type is not a domain.
 	 */
 	Oid			typbasetype;

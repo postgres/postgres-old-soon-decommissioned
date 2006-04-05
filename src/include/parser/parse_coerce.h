@@ -49,7 +49,8 @@ extern bool can_coerce_type(int nargs, Oid *input_typeids, Oid *target_typeids,
 extern Node *coerce_type(ParseState *pstate, Node *node,
 			Oid inputTypeId, Oid targetTypeId, int32 targetTypeMod,
 			CoercionContext ccontext, CoercionForm cformat);
-extern Node *coerce_to_domain(Node *arg, Oid baseTypeId, Oid typeId,
+extern Node *coerce_to_domain(Node *arg, Oid baseTypeId, int32 baseTypeMod,
+				 Oid typeId,
 				 CoercionForm cformat, bool hideInputCoercion,
 				 bool lengthCoercionDone);
 

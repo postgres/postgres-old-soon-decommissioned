@@ -177,7 +177,6 @@ SendRowDescriptionMessage(TupleDesc typeinfo, List *targetlist, int16 *formats)
 	{
 		Oid			atttypid = attrs[i]->atttypid;
 		int32		atttypmod = attrs[i]->atttypmod;
-		Oid			basetype;
 
 		pq_sendstring(&buf, NameStr(attrs[i]->attname));
 		/* column ID info appears in protocol 3.0 and up */
@@ -203,12 +202,7 @@ SendRowDescriptionMessage(TupleDesc typeinfo, List *targetlist, int16 *formats)
 			}
 		}
 		/* If column is a domain, send the base type and typmod instead */
-		basetype = getBaseType(atttypid);
-		if (basetype != atttypid)
-		{
-			atttypmod = get_typtypmod(atttypid);
-			atttypid = basetype;
-		}
+		atttypid = getBaseTypeAndTypmod(atttypid, &atttypmod);
 		pq_sendint(&buf, (int) atttypid, sizeof(atttypid));
 		pq_sendint(&buf, attrs[i]->attlen, sizeof(attrs[i]->attlen));
 		/* typmod appears in protocol 2.0 and up */

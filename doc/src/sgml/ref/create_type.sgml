@@ -591,6 +591,7 @@ CREATE TABLE big_objs (
    <member><xref linkend="sql-createfunction" endterm="sql-createfunction-title"></member>
    <member><xref linkend="sql-droptype" endterm="sql-droptype-title"></member>
    <member><xref linkend="sql-altertype" endterm="sql-altertype-title"></member>
+   <member><xref linkend="sql-createdomain" endterm="sql-createdomain-title"></member>
   </simplelist>
  </refsect1>
 

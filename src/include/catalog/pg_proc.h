@@ -3363,6 +3363,10 @@ DATA(insert OID = 2398 (  shell_in			PGNSP PGUID 12 f f t f i 1 2282 "2275" _nul
 DESCR("I/O");
 DATA(insert OID = 2399 (  shell_out			PGNSP PGUID 12 f f t f i 1 2275 "2282" _null_ _null_ _null_ shell_out - _null_ ));
 DESCR("I/O");
+DATA(insert OID = 2597 (  domain_in			PGNSP PGUID 12 f f f f v 3 2276 "2275 26 23" _null_ _null_ _null_ domain_in - _null_ ));
+DESCR("I/O");
+DATA(insert OID = 2598 (  domain_recv		PGNSP PGUID 12 f f f f v 3 2276 "2281 26 23" _null_ _null_ _null_ domain_recv - _null_ ));
+DESCR("I/O");
 
 /* cryptographic */
 DATA(insert OID =  2311 (  md5	   PGNSP PGUID 12 f f t f i 1 25 "25" _null_ _null_ _null_	md5_text - _null_ ));

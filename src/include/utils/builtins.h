@@ -99,6 +99,10 @@ extern Datum i4tochar(PG_FUNCTION_ARGS);
 extern Datum text_char(PG_FUNCTION_ARGS);
 extern Datum char_text(PG_FUNCTION_ARGS);
 
+/* domains.c */
+extern Datum domain_in(PG_FUNCTION_ARGS);
+extern Datum domain_recv(PG_FUNCTION_ARGS);
+
 /* int.c */
 extern Datum int2in(PG_FUNCTION_ARGS);
 extern Datum int2out(PG_FUNCTION_ARGS);

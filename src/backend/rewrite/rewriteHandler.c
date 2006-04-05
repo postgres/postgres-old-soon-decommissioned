@@ -599,7 +599,7 @@ rewriteTargetList(Query *parsetree, Relation target_relation)
 												  att_tup->attbyval);
 					/* this is to catch a NOT NULL domain constraint */
 					new_expr = coerce_to_domain(new_expr,
-												InvalidOid,
+												InvalidOid, -1,
 												att_tup->atttypid,
 												COERCE_IMPLICIT_CAST,
 												false,

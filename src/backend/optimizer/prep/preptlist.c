@@ -249,7 +249,7 @@ expand_targetlist(List *tlist, int command_type,
 													  true,		/* isnull */
 													  att_tup->attbyval);
 						new_expr = coerce_to_domain(new_expr,
-													InvalidOid,
+													InvalidOid, -1,
 													atttype,
 													COERCE_IMPLICIT_CAST,
 													false,
