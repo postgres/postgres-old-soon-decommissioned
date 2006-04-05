@@ -69,7 +69,7 @@ typedef struct XLogContRecord
 /*
  * Each page of XLOG file has a header like this:
  */
-#define XLOG_PAGE_MAGIC 0xD05D	/* can be used as WAL version indicator */
+#define XLOG_PAGE_MAGIC 0xD05E	/* can be used as WAL version indicator */
 
 typedef struct XLogPageHeaderData
 {
@@ -93,6 +93,7 @@ typedef struct XLogLongPageHeaderData
 	XLogPageHeaderData std;		/* standard header fields */
 	uint64		xlp_sysid;		/* system identifier from pg_control */
 	uint32		xlp_seg_size;	/* just as a cross-check */
+	uint32		xlp_xlog_blcksz;	/* just as a cross-check */
 } XLogLongPageHeaderData;
 
 #define SizeOfXLogLongPHD	MAXALIGN(sizeof(XLogLongPageHeaderData))
