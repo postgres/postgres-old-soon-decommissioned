@@ -196,7 +196,8 @@ HISTORY.html: release.sgml
 
 regress_README.html: regress.sgml
 	( echo '<!doctype chapter PUBLIC "-//OASIS//DTD DocBook V4.2//EN" ['; \
-	  echo '<!entity % standalone-ignore "IGNORE"> ]>'; \
+	  echo '<!entity % standalone-ignore "IGNORE">'; \
+	  echo '<!entity % standalone-include "INCLUDE"> ]>'; \
 	  cat $< ) >tempfile_regress_README.sgml
 	$(JADE.text) -V nochunks tempfile_regress_README.sgml >$@
 	rm tempfile_regress_README.sgml
