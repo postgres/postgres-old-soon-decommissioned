@@ -25,7 +25,10 @@ ifneq ($(PORTNAME), win32)
 override CFLAGS += $(PTHREAD_CFLAGS)
 endif
 
-# Need to recomple any libpgport object files
+# Need to recomple any libpgport object files because we need these
+# object files to use the same compile flags as libpq.  If we used
+# the object files from libpgport, this would not be true on all
+# platforms.
 LIBS := $(patsubst -lpgport,, $(LIBS))
 
 OBJS=	fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
