@@ -456,7 +456,7 @@ getrule(const char *strp, struct rule * rulep)
  * calculate the Epoch-relative time that rule takes effect.
  */
 static pg_time_t
-transtime(const pg_time_t janfirst, int year,
+transtime(pg_time_t janfirst, int year,
 		  const struct rule * rulep, long offset)
 {
 	int			leapyear;

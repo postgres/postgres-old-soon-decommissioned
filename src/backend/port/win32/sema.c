@@ -134,6 +134,7 @@ semget(int semKey, int semNum, int flags)
 	HANDLE	   *sem_handles = NULL;
 	int		   *sem_counts = NULL;
 	int			i;
+	win32_sem_set_hdr *new_set;
 
 	sec_attrs.nLength = sizeof(sec_attrs);
 	sec_attrs.lpSecurityDescriptor = NULL;
@@ -144,7 +145,7 @@ semget(int semKey, int semNum, int flags)
 
 	strcpy(num_part, _itoa(_getpid() * -1, cur_num, 10));		/* For shared memory,
 																 * include the pid */
-	win32_sem_set_hdr *new_set = (win32_sem_set_hdr *) ShmemInitStruct(semname, sem_set_size, &found);
+	new_set = (win32_sem_set_hdr *) ShmemInitStruct(semname, sem_set_size, &found);
 
 	if (found)
 	{
