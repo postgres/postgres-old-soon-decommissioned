@@ -202,8 +202,10 @@ static char *log_error_verbosity_str;
 static char *log_statement_str;
 static char *log_min_error_statement_str;
 static char *log_destination_string;
+#ifdef HAVE_SYSLOG
 static char *syslog_facility_str;
 static char *syslog_ident_str;
+#endif
 static bool phony_autocommit;
 static bool session_auth_is_superuser;
 static double phony_random_seed;
