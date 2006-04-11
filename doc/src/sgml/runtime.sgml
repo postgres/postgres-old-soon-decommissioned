@@ -764,6 +764,18 @@ options "SEMMNS=240"
        </para>
 
        <para>
+        If running in FreeBSD jails by enabling <application>sysconf</>'s
+        <literal>security.jail.sysvipc_allowed</>, <application>postmaster</>s
+        running in different jails should be run by different operating system
+        users.  This improves security because it prevents one jail from
+        interfering with shared memory or semaphores in another, and it
+        allows the PostgreSQL IPC cleanup code to function properly.  
+        (In FreeBSD 6.0 and later the IPC cleanup code doesn't properly detect
+        processes in other jails, preventing the running of postmasters on the
+        same port in different jails.)
+       </para>
+
+       <para>
         <systemitem class="osname">FreeBSD</> versions before 4.0 work like 
         <systemitem class="osname">NetBSD</> and <systemitem class="osname">
         OpenBSD</> (see below).
