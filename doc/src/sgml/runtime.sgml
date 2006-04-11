@@ -767,7 +767,7 @@ options "SEMMNS=240"
        </para>
 
        <para>
-        If running in FreeBSD jails by enabling <application>sysconf</>'s
+        If running in FreeBSD jails by enabling <application>sysctl</>'s
         <literal>security.jail.sysvipc_allowed</>, <application>postmaster</>s
         running in different jails should be run by different operating system
         users.  This improves security because it prevents non-root users
