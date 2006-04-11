@@ -25,7 +25,7 @@ ifneq ($(PORTNAME), win32)
 override CFLAGS += $(PTHREAD_CFLAGS)
 endif
 
-# Need to recomple any libpgport object files because we need these
+# Need to recompile any libpgport object files because we need these
 # object files to use the same compile flags as libpq.  If we used
 # the object files from libpgport, this would not be true on all
 # platforms.
