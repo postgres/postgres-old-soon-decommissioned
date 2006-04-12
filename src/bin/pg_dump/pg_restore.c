@@ -224,7 +224,6 @@ main(int argc, char **argv)
 				break;
 
 			case 'n':			/* Dump data for this schema only */
-				opts->selTypes = 1;
 				opts->schemaNames = strdup(optarg);
 				break;
 
