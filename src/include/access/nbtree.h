@@ -206,6 +206,7 @@ typedef struct xl_btree_metadata
 typedef struct xl_btree_insert
 {
 	xl_btreetid target;			/* inserted tuple id */
+	/* BlockNumber downlink field FOLLOWS IF NOT XLOG_BTREE_INSERT_LEAF */
 	/* xl_btree_metadata FOLLOWS IF XLOG_BTREE_INSERT_META */
 	/* INDEX TUPLE FOLLOWS AT END OF STRUCT */
 } xl_btree_insert;
