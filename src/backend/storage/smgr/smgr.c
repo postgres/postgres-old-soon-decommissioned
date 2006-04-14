@@ -18,6 +18,7 @@
 #include "postgres.h"
 
 #include "access/xact.h"
+#include "access/xlogutils.h"
 #include "commands/tablespace.h"
 #include "pgstat.h"
 #include "storage/bufmgr.h"
@@ -942,6 +943,9 @@ smgr_redo(XLogRecPtr lsn, XLogRecord *record)
 					 reln->smgr_rnode.dbNode,
 					 reln->smgr_rnode.relNode,
 					 xlrec->blkno)));
+
+		/* Also tell xlogutils.c about it */
+		XLogTruncateRelation(xlrec->rnode, xlrec->blkno);
 	}
 	else
 		elog(PANIC, "smgr_redo: unknown op code %u", info);

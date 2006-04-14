@@ -980,7 +980,8 @@ XLogCheckBuffer(XLogRecData *rdata,
 	 */
 	*lsn = page->pd_lsn;
 
-	if (XLByteLE(page->pd_lsn, RedoRecPtr))
+	if (fullPageWrites &&
+		XLByteLE(page->pd_lsn, RedoRecPtr))
 	{
 		/*
 		 * The page needs to be backed up, so set up *bkpb
@@ -4785,6 +4786,12 @@ StartupXLOG(void)
 			if (RmgrTable[rmid].rm_cleanup != NULL)
 				RmgrTable[rmid].rm_cleanup();
 		}
+
+		/*
+		 * Check to see if the XLOG sequence contained any unresolved
+		 * references to uninitialized pages.
+		 */
+		XLogCheckInvalidPages();
 
 		/*
 		 * Reset pgstat data, because it may be invalid after recovery.
