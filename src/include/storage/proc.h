@@ -61,7 +61,7 @@ struct PGPROC
 	SHM_QUEUE	links;			/* list link if process is in a list */
 
 	PGSemaphoreData sem;		/* ONE semaphore to sleep on */
-	int			waitStatus;		/* STATUS_OK or STATUS_ERROR after wakeup */
+	int			waitStatus;		/* STATUS_WAITING, STATUS_OK or STATUS_ERROR */
 
 	TransactionId xid;			/* transaction currently being executed by
 								 * this proc */
@@ -147,7 +147,6 @@ extern void ProcLockWakeup(LockMethod lockMethodTable, LOCK *lock);
 extern bool LockWaitCancel(void);
 
 extern void ProcWaitForSignal(void);
-extern void ProcCancelWaitForSignal(void);
 extern void ProcSendSignal(int pid);
 
 extern bool enable_sig_alarm(int delayms, bool is_statement_timeout);

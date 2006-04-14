@@ -1726,8 +1726,6 @@ UnlockBuffers(void)
 
 	if (buf)
 	{
-		HOLD_INTERRUPTS();		/* don't want to die() partway through... */
-
 		LockBufHdr(buf);
 
 		/*
@@ -1740,11 +1738,7 @@ UnlockBuffers(void)
 
 		UnlockBufHdr(buf);
 
-		ProcCancelWaitForSignal();
-
 		PinCountWaitBuf = NULL;
-
-		RESUME_INTERRUPTS();
 	}
 }
 
