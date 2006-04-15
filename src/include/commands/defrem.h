@@ -57,22 +57,23 @@ extern void AlterFunction(AlterFunctionStmt *stmt);
 extern void CreateCast(CreateCastStmt *stmt);
 extern void DropCast(DropCastStmt *stmt);
 extern void DropCastById(Oid castOid);
-extern void AlterFunctionNamespace(List *name, List *argtypes,
+extern void AlterFunctionNamespace(List *name, List *argtypes, bool isagg,
 					   const char *newschema);
 
 /* commands/operatorcmds.c */
 extern void DefineOperator(List *names, List *parameters);
-extern void RemoveOperator(RemoveOperStmt *stmt);
+extern void RemoveOperator(RemoveFuncStmt *stmt);
 extern void RemoveOperatorById(Oid operOid);
 extern void AlterOperatorOwner(List *name, TypeName *typeName1,
 				   TypeName *typename2, Oid newOwnerId);
 extern void AlterOperatorOwner_oid(Oid operOid, Oid newOwnerId);
 
 /* commands/aggregatecmds.c */
-extern void DefineAggregate(List *names, List *parameters);
-extern void RemoveAggregate(RemoveAggrStmt *stmt);
-extern void RenameAggregate(List *name, TypeName *basetype, const char *newname);
-extern void AlterAggregateOwner(List *name, TypeName *basetype, Oid newOwnerId);
+extern void DefineAggregate(List *name, List *args, bool oldstyle,
+							List *parameters);
+extern void RemoveAggregate(RemoveFuncStmt *stmt);
+extern void RenameAggregate(List *name, List *args, const char *newname);
+extern void AlterAggregateOwner(List *name, List *args, Oid newOwnerId);
 
 /* commands/opclasscmds.c */
 extern void DefineOpClass(CreateOpClassStmt *stmt);

@@ -678,7 +678,7 @@ CreateFunction(CreateFunctionStmt *stmt)
 void
 RemoveFunction(RemoveFuncStmt *stmt)
 {
-	List	   *functionName = stmt->funcname;
+	List	   *functionName = stmt->name;
 	List	   *argTypes = stmt->args;	/* list of TypeName nodes */
 	Oid			funcOid;
 	HeapTuple	tup;
@@ -1440,10 +1440,13 @@ DropCastById(Oid castOid)
 }
 
 /*
- * Execute ALTER FUNCTION SET SCHEMA
+ * Execute ALTER FUNCTION/AGGREGATE SET SCHEMA
+ *
+ * These commands are identical except for the lookup procedure, so share code.
  */
 void
-AlterFunctionNamespace(List *name, List *argtypes, const char *newschema)
+AlterFunctionNamespace(List *name, List *argtypes, bool isagg,
+					   const char *newschema)
 {
 	Oid			procOid;
 	Oid			oldNspOid;
@@ -1455,7 +1458,10 @@ AlterFunctionNamespace(List *name, List *argtypes, const char *newschema)
 	procRel = heap_open(ProcedureRelationId, RowExclusiveLock);
 
 	/* get function OID */
-	procOid = LookupFuncNameTypeNames(name, argtypes, false);
+	if (isagg)
+		procOid = LookupAggNameTypeNames(name, argtypes, false);
+	else
+		procOid = LookupFuncNameTypeNames(name, argtypes, false);
 
 	/* check permissions on function */
 	if (!pg_proc_ownercheck(procOid, GetUserId()))

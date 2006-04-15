@@ -868,28 +868,17 @@ CommentType(List *typename, char *comment)
  *
  * This routine is used to allow a user to provide comments on an
  * aggregate function. The aggregate function is determined by both
- * its name and its argument type, which, with the comments are
- * the three parameters handed to this routine.
+ * its name and its argument type(s).
  */
 static void
 CommentAggregate(List *aggregate, List *arguments, char *comment)
 {
-	TypeName   *aggtype = (TypeName *) linitial(arguments);
-	Oid			baseoid,
-				oid;
+	Oid			oid;
 
-	/* First, attempt to determine the base aggregate oid */
-	if (aggtype)
-		baseoid = typenameTypeId(NULL, aggtype);
-	else
-		baseoid = ANYOID;
-
-	/* Now, attempt to find the actual tuple in pg_proc */
-
-	oid = find_aggregate_func(aggregate, baseoid, false);
+	/* Look up function and make sure it's an aggregate */
+	oid = LookupAggNameTypeNames(aggregate, arguments, false);
 
 	/* Next, validate the user's attempt to comment */
-
 	if (!pg_proc_ownercheck(oid, GetUserId()))
 		aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_PROC,
 					   NameListToString(aggregate));
