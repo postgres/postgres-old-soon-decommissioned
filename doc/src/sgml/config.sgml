@@ -2759,7 +2759,7 @@ SELECT * FROM parent WHERE key = 2400;
         <para>
          The <command>EXECUTE</command> statement is not considered a
          <literal>ddl</> or <literal>mod</> statement.  Statements that
-         generate errors are not logged.  Set
+         generate syntax errors are not logged.  Set
          <varname>log_min_error_statement</> to <literal>error</> to
          log such statements.      
         </para>
