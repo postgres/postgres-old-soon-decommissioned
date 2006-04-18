@@ -586,19 +586,21 @@ log_after_parse(List *raw_parsetree_list, const char *query_string,
 
 		/*
 		 * For the first EXECUTE we find, record the client statement used by
-		 * the PREPARE.
+		 * the PREPARE.  PREPARE doesn't save the parse tree so we have no
+		 * way to conditionally output based on the type of query prepared.
 		 */
 		if (IsA(parsetree, ExecuteStmt))
 		{
 			ExecuteStmt *stmt = (ExecuteStmt *) parsetree;
 			PreparedStatement *entry;
 
-			if ((entry = FetchPreparedStatement(stmt->name, false)) != NULL &&
+			if (*prepare_string == NULL &&
+				(entry = FetchPreparedStatement(stmt->name, false)) != NULL &&
 				entry->query_string)
 			{
 				*prepare_string = palloc(strlen(entry->query_string) +
-									  strlen("  [protocol PREPARE:  %s]") - 1);
-				sprintf(*prepare_string, "  [protocol PREPARE:  %s]",
+									  strlen("  [PREPARE:  %s]") - 2 + 1);
+				sprintf(*prepare_string, "  [PREPARE:  %s]",
 						entry->query_string);
 			}
 		}
