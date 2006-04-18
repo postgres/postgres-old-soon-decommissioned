@@ -440,19 +440,6 @@ su - postgres
 </screen>
      works.
     </para>
-
-    <para>
-     Very old versions might not have <application>pg_ctl</>.  If you
-     can't find it or it doesn't work, find out the process ID of the
-     old server, for example by typing
-<screen>
-<userinput>ps ax | grep postmaster</userinput>
-</screen>
-     and signal it to stop this way:
-<screen>
-<userinput>kill -INT <replaceable>processID</></userinput>
-</screen>
-    </para>
    </step>
 
    <step>
