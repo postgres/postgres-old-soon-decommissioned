@@ -729,8 +729,10 @@ PQprintTuples(const PGresult *res,
 				fprintf(fout, "|\n%s\n", tborder);
 		}
 	}
-}
 
+	if (tborder)
+		free(tborder);
+}
 
 
 /* simply send out max-length number of filler characters to fp */
