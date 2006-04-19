@@ -2203,7 +2203,7 @@ _selectOutputSchema(ArchiveHandle *AH, const char *schemaName)
 	PQExpBuffer qry;
 
 	if (!schemaName || *schemaName == '\0' ||
-		strcmp(AH->currSchema, schemaName) == 0)
+		(AH->currSchema && strcmp(AH->currSchema, schemaName) == 0))
 		return;					/* no need to do anything */
 
 	qry = createPQExpBuffer();

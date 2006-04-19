@@ -250,14 +250,13 @@ get_prompt(promptStatus_t status)
 					/* execute command */
 				case '`':
 					{
-						FILE	   *fd = NULL;
+						FILE	   *fd;
 						char	   *file = pg_strdup(p + 1);
 						int			cmdend;
 
 						cmdend = strcspn(file, "`");
 						file[cmdend] = '\0';
-						if (file)
-							fd = popen(file, "r");
+						fd = popen(file, "r");
 						if (fd)
 						{
 							fgets(buf, MAX_PROMPT_SIZE - 1, fd);
