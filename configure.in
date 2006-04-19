@@ -559,7 +559,6 @@ case $host_os in sysv5*)
   AC_SUBST(ld_R_works)
 esac
 AC_PROG_RANLIB
-AC_CHECK_PROGS(LORDER, lorder)
 AC_PATH_PROG(TAR, tar)
 PGAC_CHECK_STRIP
 

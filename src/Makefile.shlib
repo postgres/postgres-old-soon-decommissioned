@@ -266,17 +266,9 @@ all-static-lib: lib$(NAME).a
 
 all-shared-lib: $(shlib)
 
-ifndef LORDER
-MK_NO_LORDER := true
-endif
-
 ifndef haslibarule
 lib$(NAME).a: $(OBJS)
-ifdef MK_NO_LORDER
 	$(LINK.static) $@ $^
-else
-	$(LINK.static) $@ `$(LORDER) $^ | tsort`
-endif
 	$(RANLIB) $@
 endif #haslibarule
 
