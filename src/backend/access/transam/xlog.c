@@ -2727,7 +2727,25 @@ ReadRecord(XLogRecPtr *RecPtr, int emode)
 		readFile = XLogFileRead(readId, readSeg, emode);
 		if (readFile < 0)
 			goto next_record_is_invalid;
-		readOff = (uint32) (-1);	/* force read to occur below */
+
+		/*
+		 * Whenever switching to a new WAL segment, we read the first page of
+		 * the file and validate its header, even if that's not where the
+		 * target record is.  This is so that we can check the additional
+		 * identification info that is present in the first page's "long"
+		 * header.
+		 */
+		readOff = 0;
+		if (read(readFile, readBuf, XLOG_BLCKSZ) != XLOG_BLCKSZ)
+		{
+			ereport(emode,
+					(errcode_for_file_access(),
+					 errmsg("could not read from log file %u, segment %u, offset %u: %m",
+							readId, readSeg, readOff)));
+			goto next_record_is_invalid;
+		}
+		if (!ValidXLOGHeader((XLogPageHeader) readBuf, emode))
+			goto next_record_is_invalid;
 	}
 
 	targetPageOff = ((RecPtr->xrecoff % XLogSegSize) / XLOG_BLCKSZ) * XLOG_BLCKSZ;
@@ -3036,6 +3054,15 @@ ValidXLOGHeader(XLogPageHeader hdr, int emode)
 			return false;
 		}
 	}
+	else if (readOff == 0)
+	{
+		/* hmm, first page of file doesn't have a long header? */
+		ereport(emode,
+				(errmsg("invalid info bits %04X in log file %u, segment %u, offset %u",
+						hdr->xlp_info, readId, readSeg, readOff)));
+		return false;
+	}
+
 	recaddr.xlogid = readId;
 	recaddr.xrecoff = readSeg * XLogSegSize + readOff;
 	if (!XLByteEQ(hdr->xlp_pageaddr, recaddr))
