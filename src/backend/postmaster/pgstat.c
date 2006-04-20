@@ -216,7 +216,8 @@ pgstat_init(void)
 	struct timeval tv;
 	char		test_byte;
 	int			sel_res;
-
+	int			tries = 0;
+	
 #define TESTBYTEVAL ((char) 199)
 
 	/*
@@ -276,6 +277,10 @@ pgstat_init(void)
 			continue;
 #endif
 
+		if (++tries > 1)
+			ereport(LOG,
+				(errmsg("trying another address for the statistics collector")));
+		
 		/*
 		 * Create the socket.
 		 */
