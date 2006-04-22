@@ -318,9 +318,8 @@ _readParam(void)
 {
 	READ_LOCALS(Param);
 
-	READ_INT_FIELD(paramkind);
+	READ_ENUM_FIELD(paramkind, ParamKind);
 	READ_INT_FIELD(paramid);
-	READ_STRING_FIELD(paramname);
 	READ_OID_FIELD(paramtype);
 
 	READ_DONE();

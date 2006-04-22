@@ -247,29 +247,29 @@ EvaluateParams(EState *estate, List *params, List *argtypes)
 	if (list_length(params) != nargs)
 		elog(ERROR, "wrong number of arguments");
 
+	if (nargs == 0)
+		return NULL;
+
 	exprstates = (List *) ExecPrepareExpr((Expr *) params, estate);
 
-	paramLI = (ParamListInfo)
-		palloc0((nargs + 1) * sizeof(ParamListInfoData));
+	/* sizeof(ParamListInfoData) includes the first array element */
+	paramLI = (ParamListInfo) palloc(sizeof(ParamListInfoData) +
+									 (nargs - 1) * sizeof(ParamExternData));
+	paramLI->numParams = nargs;
 
 	forboth(le, exprstates, la, argtypes)
 	{
 		ExprState  *n = lfirst(le);
-		bool		isNull;
+		ParamExternData *prm = &paramLI->params[i];
 
-		paramLI[i].value = ExecEvalExprSwitchContext(n,
-											  GetPerTupleExprContext(estate),
-													 &isNull,
-													 NULL);
-		paramLI[i].kind = PARAM_NUM;
-		paramLI[i].id = i + 1;
-		paramLI[i].ptype = lfirst_oid(la);
-		paramLI[i].isnull = isNull;
+		prm->ptype = lfirst_oid(la);
+		prm->value = ExecEvalExprSwitchContext(n,
+											   GetPerTupleExprContext(estate),
+											   &prm->isnull,
+											   NULL);
 
 		i++;
 	}
-
-	paramLI[i].kind = PARAM_INVALID;
 
 	return paramLI;
 }

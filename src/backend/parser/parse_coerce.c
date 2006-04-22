@@ -210,7 +210,7 @@ coerce_type(ParseState *pstate, Node *node,
 		return result;
 	}
 	if (inputTypeId == UNKNOWNOID && IsA(node, Param) &&
-		((Param *) node)->paramkind == PARAM_NUM &&
+		((Param *) node)->paramkind == PARAM_EXTERN &&
 		pstate != NULL && pstate->p_variableparams)
 	{
 		/*

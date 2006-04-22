@@ -624,9 +624,8 @@ _outParam(StringInfo str, Param *node)
 {
 	WRITE_NODE_TYPE("PARAM");
 
-	WRITE_INT_FIELD(paramkind);
+	WRITE_ENUM_FIELD(paramkind, ParamKind);
 	WRITE_INT_FIELD(paramid);
-	WRITE_STRING_FIELD(paramname);
 	WRITE_OID_FIELD(paramtype);
 }
 

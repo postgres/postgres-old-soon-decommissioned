@@ -3120,24 +3120,7 @@ get_rule_expr(Node *node, deparse_context *context,
 			break;
 
 		case T_Param:
-			{
-				Param	   *param = (Param *) node;
-
-				switch (param->paramkind)
-				{
-					case PARAM_NAMED:
-						appendStringInfo(buf, "$%s", param->paramname);
-						break;
-					case PARAM_NUM:
-					case PARAM_EXEC:
-					case PARAM_SUBLINK:
-						appendStringInfo(buf, "$%d", param->paramid);
-						break;
-					default:
-						appendStringInfo(buf, "(param)");
-						break;
-				}
-			}
+			appendStringInfo(buf, "$%d", ((Param *) node)->paramid);
 			break;
 
 		case T_Aggref:

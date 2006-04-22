@@ -568,8 +568,8 @@ transformParamRef(ParseState *pstate, ParamRef *pref)
 	}
 
 	param = makeNode(Param);
-	param->paramkind = PARAM_NUM;
-	param->paramid = (AttrNumber) paramno;
+	param->paramkind = PARAM_EXTERN;
+	param->paramid = paramno;
 	param->paramtype = toppstate->p_paramtypes[paramno - 1];
 
 	return (Node *) param;
@@ -1177,7 +1177,7 @@ transformSubLink(ParseState *pstate, SubLink *sublink)
 
 			param = makeNode(Param);
 			param->paramkind = PARAM_SUBLINK;
-			param->paramid = (AttrNumber) tent->resno;
+			param->paramid = tent->resno;
 			param->paramtype = exprType((Node *) tent->expr);
 
 			right_list = lappend(right_list, param);

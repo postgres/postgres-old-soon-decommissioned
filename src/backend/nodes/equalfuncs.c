@@ -147,22 +147,8 @@ static bool
 _equalParam(Param *a, Param *b)
 {
 	COMPARE_SCALAR_FIELD(paramkind);
+	COMPARE_SCALAR_FIELD(paramid);
 	COMPARE_SCALAR_FIELD(paramtype);
-
-	switch (a->paramkind)
-	{
-		case PARAM_NAMED:
-			COMPARE_STRING_FIELD(paramname);
-			break;
-		case PARAM_NUM:
-		case PARAM_EXEC:
-		case PARAM_SUBLINK:
-			COMPARE_SCALAR_FIELD(paramid);
-			break;
-		default:
-			elog(ERROR, "unrecognized paramkind: %d",
-				 a->paramkind);
-	}
 
 	return true;
 }

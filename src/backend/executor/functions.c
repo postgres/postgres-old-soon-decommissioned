@@ -431,17 +431,19 @@ postquel_sub_params(SQLFunctionCachePtr fcache,
 	{
 		int			i;
 
-		paramLI = (ParamListInfo) palloc0((nargs + 1) * sizeof(ParamListInfoData));
+		/* sizeof(ParamListInfoData) includes the first array element */
+		paramLI = (ParamListInfo) palloc(sizeof(ParamListInfoData) +
+									 (nargs - 1) * sizeof(ParamExternData));
+		paramLI->numParams = nargs;
 
 		for (i = 0; i < nargs; i++)
 		{
-			paramLI[i].kind = PARAM_NUM;
-			paramLI[i].id = i + 1;
-			paramLI[i].ptype = fcache->argtypes[i];
-			paramLI[i].value = fcinfo->arg[i];
-			paramLI[i].isnull = fcinfo->argnull[i];
+			ParamExternData *prm = &paramLI->params[i];
+
+			prm->value = fcinfo->arg[i];
+			prm->isnull = fcinfo->argnull[i];
+			prm->ptype = fcache->argtypes[i];
 		}
-		paramLI[nargs].kind = PARAM_INVALID;
 	}
 	else
 		paramLI = NULL;

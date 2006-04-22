@@ -3205,7 +3205,7 @@ check_parameter_resolution_walker(Node *node,
 	{
 		Param	   *param = (Param *) node;
 
-		if (param->paramkind == PARAM_NUM)
+		if (param->paramkind == PARAM_EXTERN)
 		{
 			int			paramno = param->paramid;
 
