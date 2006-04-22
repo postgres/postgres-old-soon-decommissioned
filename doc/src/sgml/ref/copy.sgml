@@ -106,7 +106,8 @@ COPY <replaceable class="parameter">tablename</replaceable> [ ( <replaceable cla
     <term><replaceable class="parameter">filename</replaceable></term>
     <listitem>
      <para>
-      The absolute path name of the input or output file.
+      The absolute path name of the input or output file.  Windows users
+      might need to double backslashes used as path separators.
      </para>
     </listitem>
    </varlistentry>
