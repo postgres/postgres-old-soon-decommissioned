@@ -25,6 +25,7 @@ WANTED_DIRS = \
 		pg_trgm		\
 		pgbench		\
 		pgcrypto	\
+		pgrowlocks	\
 		pgstattuple	\
 		seg		\
 		spi		\
