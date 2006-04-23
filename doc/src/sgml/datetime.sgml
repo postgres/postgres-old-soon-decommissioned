@@ -171,10 +171,7 @@
       <tip>
        <para>
         Gregorian years AD 1-99 may be entered by using 4 digits with leading
-        zeros (e.g., <literal>0099</> is AD 99). Previous versions of
-        <productname>PostgreSQL</productname> accepted years with three
-        digits and with single digits, but as of version 7.0 the rules have
-        been tightened up to reduce the possibility of ambiguity.
+        zeros (e.g., <literal>0099</> is AD 99).
        </para>
       </tip>
      </para>

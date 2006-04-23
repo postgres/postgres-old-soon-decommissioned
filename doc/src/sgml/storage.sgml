@@ -187,15 +187,13 @@ Oversized-Attribute Storage Technique).
 </para>
 
 <para>
-Since <productname>PostgreSQL</productname> uses a fixed page size (commonly
-8Kb), and does not allow tuples to span multiple pages, it's not possible to
-store very large field values directly.  Before <productname>PostgreSQL</> 7.1
-there was a hard limit of just under one page on the total amount of data that
-could be put into a table row.  In release 7.1 and later, this limit is
-overcome by allowing large field values to be compressed and/or broken up into
-multiple physical rows.  This happens transparently to the user, with only
-small impact on most of the backend code.  The technique is affectionately
-known as <acronym>TOAST</> (or <quote>the best thing since sliced bread</>).
+<productname>PostgreSQL</productname> uses a fixed page size (commonly
+8Kb), and does not allow tuples to span multiple pages.  Therefore,  it is
+not possible to store very large field values directly.  To overcome 
+this limitation, large  field values are compressed and/or broken up into
+multiple physical rows. This happens transparently to the user, with only
+small impact on most of the backend code.  The technique is affectionately 
+known as <acronym>TOAST</>  (or <quote>the best thing since sliced bread</>).
 </para>
 
 <para>

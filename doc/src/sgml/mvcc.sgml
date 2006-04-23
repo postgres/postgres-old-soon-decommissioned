@@ -899,10 +899,6 @@ UPDATE accounts SET balance = balance - 100.00 WHERE acctnum = 22222;
     TABLE</command> locks the whole table.)  This should be taken into
     account when porting applications to
     <productname>PostgreSQL</productname> from other environments.
-    (Before version 6.5 <productname>PostgreSQL</productname> used
-    read locks, and so this above consideration is also relevant when
-    upgrading from <productname>PostgreSQL</productname> versions
-    prior to 6.5.)
    </para>
 
    <para>

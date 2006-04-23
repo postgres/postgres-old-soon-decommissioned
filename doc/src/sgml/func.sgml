@@ -6118,14 +6118,6 @@ LOCALTIMESTAMP (<replaceable>precision</replaceable>)
      the result is given to the full available precision.
     </para>
 
-    <note>
-     <para>
-      Prior to <productname>PostgreSQL</productname> 7.2, the precision
-      parameters were unimplemented, and the result was always given
-      in integer seconds.
-     </para>
-    </note>
-
    <para>
     Some examples:
 <screen>
