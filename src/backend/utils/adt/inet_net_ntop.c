@@ -289,7 +289,7 @@ inet_cidr_ntop_ipv6(const u_char *src, int bits, char *dst, size_t size)
 		}
 	}
 	/* Format CIDR /width. */
-	SPRINTF((cp, "/%u", bits));
+	(void) SPRINTF((cp, "/%u", bits));
 	if (strlen(outbuf) + 1 > size)
 		goto emsgsize;
 	strcpy(dst, outbuf);
