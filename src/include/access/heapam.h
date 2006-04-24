@@ -100,7 +100,7 @@ extern Datum fastgetattr(HeapTuple tup, int attnum, TupleDesc tupleDesc,
 		( \
 			((attnum) > (int) (tup)->t_data->t_natts) ? \
 			( \
-				((isnull) != NULL) ? (*(isnull) = true) : (dummyret)NULL), \
+				(((isnull) != NULL) ? (*(isnull) = true) : (dummyret)NULL), \
 				(Datum)NULL \
 			) \
 			: \
