@@ -848,7 +848,7 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 
 					if (var->arrsize > 1)
 					{
-						for (element = 0; element < var->arrsize; element++)
+						for (element = 0; element < var->arrsize; element++, nval = PGTYPESnumeric_new())
 						{
 							if (var->type == ECPGt_numeric)
 								PGTYPESnumeric_copy((numeric *) ((var + var->offset * element)->value), nval);
