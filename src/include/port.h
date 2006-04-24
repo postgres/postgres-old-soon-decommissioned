@@ -255,10 +255,8 @@ extern int	win32_open(const char *, int,...);
 #define		open(a,b,...)	win32_open(a,b,##__VA_ARGS__)
 #endif
 
-#ifndef __BORLANDC__
 #define popen(a,b) _popen(a,b)
 #define pclose(a) _pclose(a)
-#endif
 
 /* Missing rand functions */
 extern long lrand48(void);
