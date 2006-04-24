@@ -45,7 +45,7 @@
 #define fastgetattr(tup, attnum, tupleDesc, isnull)					\
 (																	\
 	AssertMacro((attnum) > 0),										\
-	((isnull) ? (*(isnull) = false) : (dummyret)NULL),				\
+	(((isnull) != NULL) ? (*(isnull) = false) : (dummyret)NULL),				\
 	HeapTupleNoNulls(tup) ?											\
 	(																\
 		(tupleDesc)->attrs[(attnum)-1]->attcacheoff >= 0 ?			\
@@ -61,7 +61,7 @@
 	(																\
 		att_isnull((attnum)-1, (tup)->t_data->t_bits) ?				\
 		(															\
-			((isnull) ? (*(isnull) = true) : (dummyret)NULL),		\
+			(((isnull) != NULL) ? (*(isnull) = true) : (dummyret)NULL),		\
 			(Datum)NULL												\
 		)															\
 		:															\
