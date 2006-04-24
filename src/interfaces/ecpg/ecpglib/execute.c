@@ -860,7 +860,7 @@ ECPGstore_input(const int lineno, const bool force_indicator, const struct varia
 
 					if (var->arrsize > 1)
 					{
-						for (element = 0; element < var->arrsize; element++)
+						for (element = 0; element < var->arrsize; element++, nval = PGTYPESnumeric_new())
 						{
 							if (var->type == ECPGt_numeric)
 								PGTYPESnumeric_copy((numeric *) ((var + var->offset * element)->value), nval);
