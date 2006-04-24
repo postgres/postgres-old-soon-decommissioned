@@ -772,7 +772,13 @@ heap_create_with_catalog(const char *relname,
 		referenced.objectSubId = 0;
 		recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
 
-		recordDependencyOnOwner(RelationRelationId, relid, ownerid);
+		/*
+		 * For composite types, the dependency on owner is tracked for the
+		 * pg_type entry, so don't record it here.  All other relkinds need
+		 * their ownership tracked.
+		 */
+		if (relkind != RELKIND_COMPOSITE_TYPE)
+			recordDependencyOnOwner(RelationRelationId, relid, ownerid);
 	}
 
 	/*
