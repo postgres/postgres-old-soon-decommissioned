@@ -1614,6 +1614,12 @@ DATA(insert OID = 1298 (  timetzdate_pl    PGNSP PGUID 14 f f t f i 2 1184 "1266
 DESCR("convert time with time zone and date to timestamp with time zone");
 DATA(insert OID = 1299 (  now			   PGNSP PGUID 12 f f t f s 0 1184 "" _null_ _null_ _null_	now - _null_ ));
 DESCR("current transaction time");
+DATA(insert OID = 2647 (  transaction_timestamp	PGNSP PGUID 12 f f t f s 0 1184 "" _null_ _null_ _null_	now - _null_ ));
+DESCR("current transaction time");
+DATA(insert OID = 2648 (  statement_timestamp	PGNSP PGUID 12 f f t f s 0 1184 "" _null_ _null_ _null_	statement_timestamp - _null_ ));
+DESCR("current statement time");
+DATA(insert OID = 2649 (  clock_timestamp	PGNSP PGUID 12 f f t f v 0 1184 "" _null_ _null_ _null_	clock_timestamp - _null_ ));
+DESCR("current clock time");
 
 /* OIDS 1300 - 1399 */
 

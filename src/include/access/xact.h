@@ -141,6 +141,8 @@ extern TransactionId GetCurrentTransactionIdIfAny(void);
 extern SubTransactionId GetCurrentSubTransactionId(void);
 extern CommandId GetCurrentCommandId(void);
 extern TimestampTz GetCurrentTransactionStartTimestamp(void);
+extern TimestampTz GetCurrentStatementStartTimestamp(void);
+extern void SetCurrentStatementStartTimestamp(void);
 extern int	GetCurrentTransactionNestLevel(void);
 extern bool TransactionIdIsCurrentTransactionId(TransactionId xid);
 extern void CommandCounterIncrement(void);

@@ -920,6 +920,18 @@ now(PG_FUNCTION_ARGS)
 }
 
 Datum
+statement_timestamp(PG_FUNCTION_ARGS)
+{
+	PG_RETURN_TIMESTAMPTZ(GetCurrentStatementStartTimestamp());
+}
+
+Datum
+clock_timestamp(PG_FUNCTION_ARGS)
+{
+	PG_RETURN_TIMESTAMPTZ(GetCurrentTimestamp());
+}
+
+Datum
 pgsql_postmaster_start_time(PG_FUNCTION_ARGS)
 {
 	PG_RETURN_TIMESTAMPTZ(PgStartTime);

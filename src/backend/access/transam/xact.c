@@ -172,6 +172,7 @@ static CommandId currentCommandId;
  * keep it inside the TransactionState stack.
  */
 static TimestampTz xactStartTimestamp;
+static TimestampTz stmtStartTimestamp;
 
 /*
  * GID to be used for preparing the current transaction.  This is also
@@ -425,6 +426,24 @@ TimestampTz
 GetCurrentTransactionStartTimestamp(void)
 {
 	return xactStartTimestamp;
+}
+
+/*
+ *	GetCurrentStatementStartTimestamp
+ */
+TimestampTz
+GetCurrentStatementStartTimestamp(void)
+{
+	return stmtStartTimestamp;
+}
+
+/*
+ *	SetCurrentStatementStartTimestamp
+ */
+void
+SetCurrentStatementStartTimestamp(void)
+{
+	stmtStartTimestamp = GetCurrentTimestamp();
 }
 
 /*
@@ -1367,9 +1386,9 @@ StartTransaction(void)
 	XactLockTableInsert(s->transactionId);
 
 	/*
-	 * set now()
+	 * now() and statement_timestamp() should be the same time
 	 */
-	xactStartTimestamp = GetCurrentTimestamp();
+	xactStartTimestamp = stmtStartTimestamp;
 
 	/*
 	 * initialize current transaction state fields
