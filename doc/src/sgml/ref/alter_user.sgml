@@ -36,8 +36,8 @@ where <replaceable class="PARAMETER">option</replaceable> can be:
 
 ALTER USER <replaceable class="PARAMETER">name</replaceable> RENAME TO <replaceable>newname</replaceable>
 
-ALTER USER <replaceable class="PARAMETER">name</replaceable> SET <replaceable>varname</replaceable> { TO | = } { <replaceable>value</replaceable> | DEFAULT }
-ALTER USER <replaceable class="PARAMETER">name</replaceable> RESET <replaceable>varname</replaceable>
+ALTER USER <replaceable class="PARAMETER">name</replaceable> SET <replaceable>configuration_parameter</replaceable> { TO | = } { <replaceable>value</replaceable> | DEFAULT }
+ALTER USER <replaceable class="PARAMETER">name</replaceable> RESET <replaceable>configuration_parameter</replaceable>
 </synopsis>
  </refsynopsisdiv>
 
