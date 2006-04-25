@@ -50,11 +50,8 @@ SET <replaceable class="parameter">configuration_parameter</replaceable> TO DEFA
 
   <para>
    See the <command>SET</> reference page for details on the
-   transaction behavior of <command>RESET</>.  <command>RESET
-   CONNECTION</command> can be used to reset all aspects of
-   a session, not just parameter values.
+   transaction behavior of <command>RESET</>.
   </para>
-
  </refsect1>
 
  <refsect1>
