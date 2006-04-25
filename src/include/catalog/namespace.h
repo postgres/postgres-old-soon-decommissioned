@@ -74,6 +74,8 @@ extern void PopSpecialNamespace(Oid namespaceId);
 extern Oid	FindConversionByName(List *conname);
 extern Oid	FindDefaultConversionProc(int4 for_encoding, int4 to_encoding);
 
+extern void RemoveTempRelations(Oid tempNamespaceId);
+
 /* initialization & transaction cleanup code */
 extern void InitializeSearchPath(void);
 extern void AtEOXact_Namespace(bool isCommit);

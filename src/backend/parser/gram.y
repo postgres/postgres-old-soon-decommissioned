@@ -1244,6 +1244,12 @@ VariableResetStmt:
 					n->name = $2;
 					$$ = (Node *) n;
 				}
+			| RESET CONNECTION
+				{
+					VariableResetStmt *n = makeNode(VariableResetStmt);
+					n->name = "connection";
+					$$ = (Node *) n;
+				}
 			| RESET TIME ZONE
 				{
 					VariableResetStmt *n = makeNode(VariableResetStmt);

@@ -134,7 +134,6 @@ char	   *namespace_search_path = NULL;
 /* Local functions */
 static void recomputeNamespacePath(void);
 static void InitTempTableNamespace(void);
-static void RemoveTempRelations(Oid tempNamespaceId);
 static void RemoveTempRelationsCallback(int code, Datum arg);
 static void NamespaceCallback(Datum arg, Oid relid);
 
@@ -1729,7 +1728,7 @@ AtEOSubXact_Namespace(bool isCommit, SubTransactionId mySubid,
  * in order to clean out any relations that might have been created by
  * a crashed backend.
  */
-static void
+void
 RemoveTempRelations(Oid tempNamespaceId)
 {
 	ObjectAddress object;
