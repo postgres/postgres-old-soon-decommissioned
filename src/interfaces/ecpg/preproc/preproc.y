@@ -1196,8 +1196,6 @@ VariableResetStmt:	RESET var_name
 			{ $$ = make_str("reset transaction isolation level"); }
 		| RESET SESSION AUTHORIZATION
 			{ $$ = make_str("reset session authorization"); }
-		| RESET CONNECTION
-			{ $$ = make_str("reset connection"); }
 		| RESET ALL
 			{ $$ = make_str("reset all"); }
 		;

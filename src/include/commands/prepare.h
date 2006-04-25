@@ -62,7 +62,6 @@ extern void StorePreparedStatement(const char *stmt_name,
 extern PreparedStatement *FetchPreparedStatement(const char *stmt_name,
 					   bool throwError);
 extern void DropPreparedStatement(const char *stmt_name, bool showError);
-extern void DropAllPreparedStatements(void);
 extern List *FetchPreparedStatementParams(const char *stmt_name);
 extern TupleDesc FetchPreparedStatementResultDesc(PreparedStatement *stmt);
 extern bool PreparedStatementReturnsTuples(PreparedStatement *stmt);

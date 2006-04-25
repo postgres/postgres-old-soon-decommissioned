@@ -200,7 +200,6 @@ extern void AtSubAbort_Portals(SubTransactionId mySubid,
 extern void AtSubCleanup_Portals(SubTransactionId mySubid);
 extern Portal CreatePortal(const char *name, bool allowDup, bool dupSilent);
 extern Portal CreateNewPortal(void);
-extern void PortalHashTableDeleteAll(void);
 extern void PortalDrop(Portal portal, bool isTopCommit);
 extern void DropDependentPortals(MemoryContext queryContext);
 extern Portal GetPortalByName(const char *name);

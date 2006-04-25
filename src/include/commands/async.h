@@ -19,7 +19,6 @@ extern bool Trace_notify;
 extern void Async_Notify(const char *relname);
 extern void Async_Listen(const char *relname);
 extern void Async_Unlisten(const char *relname);
-extern void Async_UnlistenAll(void);
 
 /* perform (or cancel) outbound notify processing at transaction commit */
 extern void AtCommit_Notify(void);

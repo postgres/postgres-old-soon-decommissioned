@@ -33,6 +33,7 @@
 #include "utils/hsearch.h"
 #include "utils/memutils.h"
 
+
 /*
  * The hash table in which prepared queries are stored. This is
  * per-backend: query plans are not shared between backends.
@@ -544,30 +545,6 @@ void
 DeallocateQuery(DeallocateStmt *stmt)
 {
 	DropPreparedStatement(stmt->name, true);
-}
-
-/*
- * Remove all prepared plans from the backend.
- */
-void
-DropAllPreparedStatements(void)
-{
-	PreparedStatement	*prep_statement;
-	HASH_SEQ_STATUS         status;
-
-	if	(!prepared_queries)
-		return;
-
-	hash_seq_init(&status, prepared_queries);
-
-	while ((prep_statement = (PreparedStatement *) hash_seq_search(&status)))
-	{
-		DropDependentPortals(prep_statement->context);
-
-		/* Flush the context holding the subsidiary data */
-		MemoryContextDelete(prep_statement->context);
-                hash_search(prepared_queries, prep_statement->stmt_name, HASH_REMOVE, NULL);
-	}
 }
 
 /*
