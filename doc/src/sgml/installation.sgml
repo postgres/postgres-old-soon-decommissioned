@@ -1049,7 +1049,7 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
-       <term><option>COLLATEINDEX=<replaceable></></option></term>
+       <term><option>COLLATEINDEX</option></term>
        <listitem>
         <para>
          Used for building the SGML documentation.
