@@ -36,8 +36,8 @@ where <replaceable class="PARAMETER">option</replaceable> can be:
 
 ALTER ROLE <replaceable class="PARAMETER">name</replaceable> RENAME TO <replaceable>newname</replaceable>
 
-ALTER ROLE <replaceable class="PARAMETER">name</replaceable> SET <replaceable>parameter</replaceable> { TO | = } { <replaceable>value</replaceable> | DEFAULT }
-ALTER ROLE <replaceable class="PARAMETER">name</replaceable> RESET <replaceable>parameter</replaceable>
+ALTER ROLE <replaceable class="PARAMETER">name</replaceable> SET <replaceable>varname</replaceable> { TO | = } { <replaceable>value</replaceable> | DEFAULT }
+ALTER ROLE <replaceable class="PARAMETER">name</replaceable> RESET <replaceable>varname</replaceable>
 </synopsis>
  </refsynopsisdiv>
 
@@ -143,7 +143,7 @@ ALTER ROLE <replaceable class="PARAMETER">name</replaceable> RESET <replaceable>
      </varlistentry>
 
      <varlistentry>
-      <term><replaceable>parameter</replaceable></term>
+      <term><replaceable>varname</replaceable></term>
       <term><replaceable>value</replaceable></term>
       <listitem>
        <para>
