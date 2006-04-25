@@ -61,6 +61,7 @@ extern Datum pgrowlocks(PG_FUNCTION_ARGS);
 #undef MAKERANGEVARFROMNAMELIST_HAS_TWO_ARGS
 
 typedef struct {
+	Relation	rel;
 	HeapScanDesc scan;
 	int ncolumns;
 } MyData;
@@ -100,6 +101,7 @@ pgrowlocks(PG_FUNCTION_ARGS)
 		rel = heap_openrv(relrv, AccessShareLock);
 		scan = heap_beginscan(rel, SnapshotNow, 0, NULL);
 		mydata = palloc(sizeof(*mydata));
+		mydata->rel = rel;
 		mydata->scan = scan;
 		mydata->ncolumns = tupdesc->natts;
 		funcctx->user_fctx = mydata;
@@ -222,7 +224,7 @@ pgrowlocks(PG_FUNCTION_ARGS)
 	}
 
 	heap_endscan(scan);
-	heap_close(scan->rs_rd, AccessShareLock);
+	heap_close(mydata->rel, AccessShareLock);
 
 	SRF_RETURN_DONE(funcctx);
 }
