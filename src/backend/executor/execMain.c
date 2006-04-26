@@ -37,6 +37,7 @@
 #include "catalog/heap.h"
 #include "catalog/namespace.h"
 #include "commands/tablecmds.h"
+#include "commands/tablespace.h"
 #include "commands/trigger.h"
 #include "executor/execdebug.h"
 #include "executor/execdefs.h"
@@ -737,6 +738,7 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 	{
 		char	   *intoName;
 		Oid			namespaceId;
+		Oid			tablespaceId;
 		AclResult	aclresult;
 		Oid			intoRelationId;
 		TupleDesc	tupdesc;
@@ -753,6 +755,16 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 			aclcheck_error(aclresult, ACL_KIND_NAMESPACE,
 						   get_namespace_name(namespaceId));
 
+		tablespaceId = GetDefaultTablespace();
+		if (OidIsValid(tablespaceId)) {
+			aclresult = pg_tablespace_aclcheck(tablespaceId, GetUserId(),
+											   ACL_CREATE);
+
+			if (aclresult != ACLCHECK_OK)
+				aclcheck_error(aclresult, ACL_KIND_TABLESPACE,
+							   get_tablespace_name(tablespaceId));
+		}
+
 		/*
 		 * have to copy tupType to get rid of constraints
 		 */
@@ -760,7 +772,7 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 
 		intoRelationId = heap_create_with_catalog(intoName,
 												  namespaceId,
-												  InvalidOid,
+												  tablespaceId,
 												  InvalidOid,
 												  GetUserId(),
 												  tupdesc,
