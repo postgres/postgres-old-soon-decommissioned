@@ -3812,8 +3812,6 @@ DATA(insert OID = 2591 (  gist_circle_consistent PGNSP PGUID 12 f f t f i 3 16 "
 DESCR("GiST support");
 DATA(insert OID = 2592 (  gist_circle_compress	PGNSP PGUID 12 f f t f i 1 2281 "2281" _null_ _null_ _null_ gist_circle_compress - _null_ ));
 DESCR("GiST support");
-DATA(insert OID = 2599 (  parentsel              PGNSP PGUID 12 f f t f s 4 701 "2281 26 2281 23" _null_ _null_ _null_ parentsel - _null_ ));
-DESCR("enhanced restriction selectivity for ltree isparent comparison operators");
 
 
 /*

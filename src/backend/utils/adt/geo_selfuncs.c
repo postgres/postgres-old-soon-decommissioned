@@ -20,6 +20,7 @@
 
 #include "utils/geo_decls.h"
 
+
 /*
  *	Selectivity functions for geometric operators.	These are bogus -- unless
  *	we know the actual key distribution in the index, we can't make a good
@@ -92,4 +93,3 @@ contjoinsel(PG_FUNCTION_ARGS)
 {
 	PG_RETURN_FLOAT8(0.001);
 }
-
