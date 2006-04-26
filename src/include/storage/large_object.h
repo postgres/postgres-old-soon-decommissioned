@@ -71,7 +71,7 @@ typedef struct LargeObjectDesc
 /* inversion stuff in inv_api.c */
 extern void close_lo_relation(bool isCommit);
 extern Oid	inv_create(Oid lobjId);
-extern LargeObjectDesc *inv_open(Oid lobjId, int flags);
+extern LargeObjectDesc *inv_open(Oid lobjId, int flags, MemoryContext mcxt);
 extern void inv_close(LargeObjectDesc *obj_desc);
 extern int	inv_drop(Oid lobjId);
 extern int	inv_seek(LargeObjectDesc *obj_desc, int offset, int whence);
