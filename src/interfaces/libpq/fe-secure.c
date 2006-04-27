@@ -1014,9 +1014,9 @@ SSLerrfree(char *buf)
 }
 
 /*
- *	Return pointer to SSL object.
+ *	Return pointer to OpenSSL object.
  */
-SSL *
+void *
 PQgetssl(PGconn *conn)
 {
 	if (!conn)

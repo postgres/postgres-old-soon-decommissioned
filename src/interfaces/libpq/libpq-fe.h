@@ -28,11 +28,6 @@ extern		"C"
  */
 #include "postgres_ext.h"
 
-/* SSL type is needed here only to declare PQgetssl() */
-#ifdef USE_SSL
-#include <openssl/ssl.h>
-#endif
-
 /* Application-visible enum types */
 
 typedef enum
@@ -271,12 +266,9 @@ extern int	PQbackendPID(const PGconn *conn);
 extern int	PQclientEncoding(const PGconn *conn);
 extern int	PQsetClientEncoding(PGconn *conn, const char *encoding);
 
-#ifdef USE_SSL
-/* Get the SSL structure associated with a connection */
-extern SSL *PQgetssl(PGconn *conn);
-#else
+/* Get the OpenSSL structure associated with a connection. Returns NULL for
+ * unencrypted connections or if any other TLS library is in use. */
 extern void *PQgetssl(PGconn *conn);
-#endif
 
 /* Tell libpq whether it needs to initialize OpenSSL */
 extern void PQinitSSL(int do_init);
