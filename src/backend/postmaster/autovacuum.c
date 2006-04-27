@@ -412,7 +412,7 @@ AutoVacMain(int argc, char *argv[])
 		InitPostgres(db->name, NULL);
 		SetProcessingMode(NormalProcessing);
 		set_ps_display(db->name);
-		ereport(LOG,
+		ereport(DEBUG1,
 				(errmsg("autovacuum: processing database \"%s\"", db->name)));
 
 		/* Create the memory context where cross-transaction state is stored */
