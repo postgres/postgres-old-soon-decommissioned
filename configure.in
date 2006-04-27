@@ -267,6 +267,9 @@ choke me
 
   # Disable strict-aliasing rules; needed for gcc 3.3+
   PGAC_PROG_CC_CFLAGS_OPT([-fno-strict-aliasing])
+elif test ${CC} = "xlc"; then
+  # AIX xlc has to have strict aliasing turned off too
+  PGAC_PROG_CC_CFLAGS_OPT([-qnoansialias])
 fi
 
 # supply -g if --enable-debug
