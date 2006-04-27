@@ -1782,7 +1782,7 @@ typedef struct LockStmt
 typedef struct ConstraintsSetStmt
 {
 	NodeTag		type;
-	List	   *constraints;	/* List of names as Value strings */
+	List	   *constraints;	/* List of names as RangeVars */
 	bool		deferred;
 } ConstraintsSetStmt;
 

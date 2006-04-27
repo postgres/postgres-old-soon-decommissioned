@@ -1283,7 +1283,7 @@ ConstraintsSetStmt:
 
 constraints_set_list:
 			ALL										{ $$ = NIL; }
-			| name_list								{ $$ = $1; }
+			| qualified_name_list					{ $$ = $1; }
 		;
 
 constraints_set_mode:
