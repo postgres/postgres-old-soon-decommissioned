@@ -8,6 +8,9 @@
 #include "postgres_fe.h"
 
 #include <sys/types.h>
+#ifdef USE_SSL
+#include <openssl/ssl.h>
+#endif
 
 #ifndef WIN32
 #include <unistd.h>
