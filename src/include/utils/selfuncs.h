@@ -97,6 +97,19 @@ typedef enum
 
 /* selfuncs.c */
 
+extern void examine_variable(PlannerInfo *root, Node *node, int varRelid,
+							 VariableStatData *vardata);
+extern bool get_restriction_variable(PlannerInfo *root, List *args,
+									 int varRelid,
+									 VariableStatData *vardata, Node **other,
+									 bool *varonleft);
+extern void get_join_variables(PlannerInfo *root, List *args,
+							   VariableStatData *vardata1,
+							   VariableStatData *vardata2);
+extern double get_variable_numdistinct(VariableStatData *vardata);
+extern double mcv_selectivity(VariableStatData *vardata, FmgrInfo *opproc,
+							  Datum constval, double *sumcommonp);
+
 extern Pattern_Prefix_Status pattern_fixed_prefix(Const *patt,
 					 Pattern_Type ptype,
 					 Const **prefix,
@@ -154,8 +167,5 @@ extern Selectivity estimate_hash_bucketsize(PlannerInfo *root, Node *hashkey,
 extern Datum btcostestimate(PG_FUNCTION_ARGS);
 extern Datum hashcostestimate(PG_FUNCTION_ARGS);
 extern Datum gistcostestimate(PG_FUNCTION_ARGS);
-extern bool get_restriction_variable(PlannerInfo *root, List *args, int varRelid,
-						 VariableStatData *vardata, Node **other,
-						 bool *varonleft);
 
 #endif   /* SELFUNCS_H */
