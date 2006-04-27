@@ -122,14 +122,14 @@
 #ifdef USE_SSL
 
 #ifndef WIN32
-#define USER_CERT_FILE	".postgresql/postgresql.crt"
+#define USER_CERT_FILE		".postgresql/postgresql.crt"
 #define USER_KEY_FILE		".postgresql/postgresql.key"
-#define ROOT_CERT_FILE	".postgresql/root.crt"
+#define ROOT_CERT_FILE		".postgresql/root.crt"
 #else
 /* On Windows, the "home" directory is already PostgreSQL-specific */
-#define USER_CERT_FILE	"postgresql.crt"
+#define USER_CERT_FILE		"postgresql.crt"
 #define USER_KEY_FILE		"postgresql.key"
-#define ROOT_CERT_FILE	"root.crt"
+#define ROOT_CERT_FILE		"root.crt"
 #endif
 
 #ifdef NOT_USED
