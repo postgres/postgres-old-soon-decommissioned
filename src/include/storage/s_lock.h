@@ -763,23 +763,14 @@ typedef unsigned char slock_t;
 #endif
 
 
-#if defined(__sparc__) || defined(__sparc)
+#if defined(__sun) && (defined(__i386) || defined(__x86_64__) || defined(__sparc__) || defined(__sparc))
 #define HAS_TEST_AND_SET
-
 typedef unsigned char slock_t;
-#endif
 
+extern volatile slock_t pg_atomic_cas(volatile slock_t *lock, slock_t with,
+									  slock_t cmp);
 
-/* out-of-line assembler from src/backend/port/tas/foo.s */
-
-/* i386/X86_64 using Sun compiler */
-#if defined(__sun) && (defined(__i386) || defined(__x86_64__)) 
-/*
- * Solaris/386 (we only get here for non-gcc case)
- */
-#define HAS_TEST_AND_SET
-
-typedef unsigned char slock_t;
+#define TAS(a) (pg_atomic_cas((a), 1, 0) != 0)
 #endif
 
 
