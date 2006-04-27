@@ -108,7 +108,8 @@ extern void get_join_variables(PlannerInfo *root, List *args,
 							   VariableStatData *vardata2);
 extern double get_variable_numdistinct(VariableStatData *vardata);
 extern double mcv_selectivity(VariableStatData *vardata, FmgrInfo *opproc,
-							  Datum constval, double *sumcommonp);
+							  Datum constval, bool varonleft,
+							  double *sumcommonp);
 
 extern Pattern_Prefix_Status pattern_fixed_prefix(Const *patt,
 					 Pattern_Type ptype,
