@@ -48,14 +48,20 @@ win32.dir:
 	$(MAKE) -C win32 all
 
 tas.o: tas.s
+ifeq ($(PORTNAME), solaris)
+	# preprocess assembler file with cpp, used by x86
+	$(CC) $(CFLAGS) -c -P $<
+	mv $*.i $*_cpp.s
+	$(CC) $(CFLAGS) -c $*_cpp.s -o $@
+else
 	$(CC) $(CFLAGS) -c $<
+endif
 
 # IPC test program
 ipc_test: ipc_test.o pg_sema.o pg_shmem.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $(export_dynamic) $^ $(LIBS) -o $@
 
 distclean clean:
-	rm -f SUBSYS.o $(OBJS) ipc_test ipc_test.o
+	rm -f SUBSYS.o $(OBJS) ipc_test ipc_test.o tas_cpp.s
 	$(MAKE) -C darwin clean
 	$(MAKE) -C win32 clean
-
