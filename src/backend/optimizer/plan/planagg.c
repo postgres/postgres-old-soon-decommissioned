@@ -118,15 +118,6 @@ optimize_minmax_aggregates(PlannerInfo *root, List *tlist, Path *best_path)
 	rel = find_base_rel(root, rtr->rtindex);
 
 	/*
-	 * Also reject cases with subplans or volatile functions in WHERE. This
-	 * may be overly paranoid, but it's not entirely clear if the
-	 * transformation is safe then.
-	 */
-	if (contain_subplans(parse->jointree->quals) ||
-		contain_volatile_functions(parse->jointree->quals))
-		return NULL;
-
-	/*
 	 * Since this optimization is not applicable all that often, we want to
 	 * fall out before doing very much work if possible.  Therefore we do the
 	 * work in several passes.	The first pass scans the tlist and HAVING qual
@@ -508,7 +499,7 @@ make_agg_subplan(PlannerInfo *root, MinMaxAggInfo *info, List *constant_quals)
 	ntest->nulltesttype = IS_NOT_NULL;
 	ntest->arg = copyObject(info->target);
 
-	plan->qual = lappend(plan->qual, ntest);
+	plan->qual = lcons(ntest, plan->qual);
 
 	if (constant_quals)
 		plan = (Plan *) make_result(copyObject(plan->targetlist),
