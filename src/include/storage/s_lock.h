@@ -767,7 +767,7 @@ typedef unsigned char slock_t;
 #define HAS_TEST_AND_SET
 typedef unsigned char slock_t;
 
-extern volatile slock_t pg_atomic_cas(volatile slock_t *lock, slock_t with,
+extern slock_t pg_atomic_cas(volatile slock_t *lock, slock_t with,
 									  slock_t cmp);
 
 #define TAS(a) (pg_atomic_cas((a), 1, 0) != 0)
