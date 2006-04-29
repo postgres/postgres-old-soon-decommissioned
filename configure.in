@@ -248,19 +248,20 @@ else
   fi
 fi
 
-# The Intel compiler on Linux supports most gcc options, but not
-# all of them, so only add these options if we are really using
-# gcc.
+# Some versions of GCC support some additional useful warning flags.
+# Check whether they are supported, and add them to CFLAGS if so.
 
 if test "$GCC" = yes; then
+
+# ICC pretends to be GCC but it's lying; it doesn't support these options.
+# So we have to check if "GCC" is really ICC.
 AC_TRY_COMPILE([], [@%:@ifndef __INTEL_COMPILER
 choke me
 @%:@endif], [ICC=[yes]], [ICC=[no]])
+
   if test "$ICC" = no; then
     CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wpointer-arith -Winline"
 
-    # Some versions of GCC support some additional useful warning flags.
-    # Check whether they are supported, and add them to CFLAGS if so.
     PGAC_PROG_CC_CFLAGS_OPT([-Wdeclaration-after-statement])
     PGAC_PROG_CC_CFLAGS_OPT([-Wendif-labels])
   else
