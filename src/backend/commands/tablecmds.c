@@ -3362,6 +3362,11 @@ ATExecColumnDefault(Relation rel, const char *colName,
 	 * safety, but at present we do not expect anything to depend on the
 	 * default.
 	 */
+	if (newDefault)
+		RemoveSequenceDefault(RelationGetRelid(rel), attnum, DROP_RESTRICT, false);
+	else 
+		RemoveSequenceDefault(RelationGetRelid(rel), attnum, DROP_RESTRICT, true);		
+
 	RemoveAttrDefault(RelationGetRelid(rel), attnum, DROP_RESTRICT, false);
 
 	if (newDefault)

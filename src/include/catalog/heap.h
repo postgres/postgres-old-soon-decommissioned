@@ -97,4 +97,7 @@ extern void CheckAttributeNamesTypes(TupleDesc tupdesc, char relkind);
 
 extern void CheckAttributeType(const char *attname, Oid atttypid);
 
+extern void RemoveSequenceDefault(Oid relid, AttrNumber attnum,
+				  DropBehavior behavior, bool flag);
+
 #endif   /* HEAP_H */
