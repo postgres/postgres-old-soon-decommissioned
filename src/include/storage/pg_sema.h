@@ -54,6 +54,11 @@ typedef struct PGSemaphoreData
 } PGSemaphoreData;
 #endif
 
+#ifdef USE_WIN32_SEMAPHORES
+
+typedef HANDLE	PGSemaphoreData;
+#endif
+
 typedef PGSemaphoreData *PGSemaphore;
 
 

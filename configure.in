@@ -1269,17 +1269,22 @@ AC_FUNC_MEMCMP
 
 
 # Select semaphore implementation type.
-if test x"$USE_NAMED_POSIX_SEMAPHORES" = x"1" ; then
-  AC_DEFINE(USE_NAMED_POSIX_SEMAPHORES, 1, [Define to select named POSIX semaphores.])
-  SEMA_IMPLEMENTATION="src/backend/port/posix_sema.c"
-else
-  if test x"$USE_UNNAMED_POSIX_SEMAPHORES" = x"1" ; then
-    AC_DEFINE(USE_UNNAMED_POSIX_SEMAPHORES, 1, [Define to select unnamed POSIX semaphores.])
+if test "$PORTNAME" != "win32"; then
+  if test x"$USE_NAMED_POSIX_SEMAPHORES" = x"1" ; then
+    AC_DEFINE(USE_NAMED_POSIX_SEMAPHORES, 1, [Define to select named POSIX semaphores.])
     SEMA_IMPLEMENTATION="src/backend/port/posix_sema.c"
   else
-    AC_DEFINE(USE_SYSV_SEMAPHORES, 1, [Define to select SysV-style semaphores.])
-    SEMA_IMPLEMENTATION="src/backend/port/sysv_sema.c"
+    if test x"$USE_UNNAMED_POSIX_SEMAPHORES" = x"1" ; then
+      AC_DEFINE(USE_UNNAMED_POSIX_SEMAPHORES, 1, [Define to select unnamed POSIX semaphores.])
+      SEMA_IMPLEMENTATION="src/backend/port/posix_sema.c"
+    else
+      AC_DEFINE(USE_SYSV_SEMAPHORES, 1, [Define to select SysV-style semaphores.])
+      SEMA_IMPLEMENTATION="src/backend/port/sysv_sema.c"
+    fi
   fi
+else
+  AC_DEFINE(USE_WIN32_SEMAPHORES, 1, [Define to select Win32-style semaphores.])
+  SEMA_IMPLEMENTATION="src/backend/port/win32_sema.c"
 fi
 
 
