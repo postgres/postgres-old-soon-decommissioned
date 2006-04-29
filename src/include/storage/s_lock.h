@@ -765,7 +765,7 @@ typedef unsigned char slock_t;
 
 #if defined(__sun) && (defined(__i386) || defined(__x86_64__) || defined(__sparc__) || defined(__sparc))
 #define HAS_TEST_AND_SET
-typedef unsigned char slock_t;
+typedef unsigned int slock_t;
 
 extern slock_t pg_atomic_cas(volatile slock_t *lock, slock_t with,
 									  slock_t cmp);
