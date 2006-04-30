@@ -287,6 +287,9 @@ aclparse(const char *s, AclItem *aip)
 			case ACL_CREATE_TEMP_CHR:
 				read = ACL_CREATE_TEMP;
 				break;
+			case ACL_CONNECT_CHR:
+				read = ACL_CONNECT;
+				break;
 			default:
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
@@ -550,7 +553,7 @@ acldefault(GrantObjectType objtype, Oid ownerId)
 			owner_default = ACL_ALL_RIGHTS_SEQUENCE;
 			break;
 		case ACL_OBJECT_DATABASE:
-			world_default = ACL_CREATE_TEMP;	/* not NO_RIGHTS! */
+			world_default = ACL_CREATE_TEMP | ACL_CONNECT;	/* not NO_RIGHTS! */
 			owner_default = ACL_ALL_RIGHTS_DATABASE;
 			break;
 		case ACL_OBJECT_FUNCTION:

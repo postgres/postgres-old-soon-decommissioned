@@ -135,16 +135,17 @@ typedef ArrayType Acl;
 #define ACL_USAGE_CHR			'U'
 #define ACL_CREATE_CHR			'C'
 #define ACL_CREATE_TEMP_CHR		'T'
+#define ACL_CONNECT_CHR			'c'
 
 /* string holding all privilege code chars, in order by bitmask position */
-#define ACL_ALL_RIGHTS_STR	"arwdRxtXUCT"
+#define ACL_ALL_RIGHTS_STR	"arwdRxtXUCTc"
 
 /*
  * Bitmasks defining "all rights" for each supported object type
  */
 #define ACL_ALL_RIGHTS_RELATION		(ACL_INSERT|ACL_SELECT|ACL_UPDATE|ACL_DELETE|ACL_RULE|ACL_REFERENCES|ACL_TRIGGER)
 #define ACL_ALL_RIGHTS_SEQUENCE		(ACL_USAGE|ACL_SELECT|ACL_UPDATE)
-#define ACL_ALL_RIGHTS_DATABASE		(ACL_CREATE|ACL_CREATE_TEMP)
+#define ACL_ALL_RIGHTS_DATABASE		(ACL_CREATE|ACL_CREATE_TEMP|ACL_CONNECT )
 #define ACL_ALL_RIGHTS_FUNCTION		(ACL_EXECUTE)
 #define ACL_ALL_RIGHTS_LANGUAGE		(ACL_USAGE)
 #define ACL_ALL_RIGHTS_NAMESPACE	(ACL_USAGE|ACL_CREATE)
