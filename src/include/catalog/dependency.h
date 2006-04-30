@@ -207,7 +207,4 @@ extern void shdepDropOwned(List *relids, DropBehavior behavior);
 
 extern void shdepReassignOwned(List *relids, Oid newrole);
 
-extern void performSequenceDefaultDeletion(const ObjectAddress *object,
-					DropBehavior behavior, int deleteFlag);
-
 #endif   /* DEPENDENCY_H */
