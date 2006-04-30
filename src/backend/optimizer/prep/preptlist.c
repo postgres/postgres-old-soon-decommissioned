@@ -116,7 +116,7 @@ preprocess_targetlist(PlannerInfo *root, List *tlist)
 		 * invalid.  This is also checked at parse time, but that's
 		 * insufficient because of rule substitution, query pullup, etc.
 		 */
-		CheckSelectLocking(parse, parse->forUpdate);
+		CheckSelectLocking(parse);
 
 		/*
 		 * Currently the executor only supports FOR UPDATE/SHARE at top level
@@ -128,19 +128,19 @@ preprocess_targetlist(PlannerInfo *root, List *tlist)
 
 		foreach(l, parse->rowMarks)
 		{
-			Index		rti = lfirst_int(l);
+			RowMarkClause *rc = (RowMarkClause *) lfirst(l);
 			Var		   *var;
 			char	   *resname;
 			TargetEntry *tle;
 
-			var = makeVar(rti,
+			var = makeVar(rc->rti,
 						  SelfItemPointerAttributeNumber,
 						  TIDOID,
 						  -1,
 						  0);
 
 			resname = (char *) palloc(32);
-			snprintf(resname, 32, "ctid%u", rti);
+			snprintf(resname, 32, "ctid%u", rc->rti);
 
 			tle = makeTargetEntry((Expr *) var,
 								  list_length(tlist) + 1,

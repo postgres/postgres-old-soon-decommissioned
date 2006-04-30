@@ -70,4 +70,11 @@ extern bool get_rte_attribute_is_dropped(RangeTblEntry *rte,
 
 extern TargetEntry *get_tle_by_resno(List *tlist, AttrNumber resno);
 
+/* ----------------
+ *		FOR UPDATE/SHARE info
+ * ----------------
+ */
+
+extern RowMarkClause *get_rowmark(Query *qry, Index rtindex);
+
 #endif   /* PARSETREE_H */

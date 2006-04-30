@@ -1796,7 +1796,7 @@ CreateQueryTag(Query *parsetree)
 				tag = "SELECT INTO";
 			else if (parsetree->rowMarks != NIL)
 			{
-				if (parsetree->forUpdate)
+				if (((RowMarkClause *) linitial(parsetree->rowMarks))->forUpdate)
 					tag = "SELECT FOR UPDATE";
 				else
 					tag = "SELECT FOR SHARE";

@@ -320,6 +320,7 @@ typedef enum NodeTag
 	T_InhRelation,
 	T_FunctionParameter,
 	T_LockingClause,
+	T_RowMarkClause,
 
 	/*
 	 * TAGS FOR RANDOM OTHER STUFF

@@ -71,8 +71,8 @@ typedef struct ParseState
 	Oid		   *p_paramtypes;	/* OIDs of types for $n parameter symbols */
 	int			p_numparams;	/* allocated size of p_paramtypes[] */
 	int			p_next_resno;	/* next targetlist resno to assign */
-	LockingClause *p_locking_clause;	/* FOR UPDATE/FOR SHARE info */
-	Node	   *p_value_substitute;		/* what to replace VALUE with, if any */
+	List	   *p_locking_clause;	/* raw FOR UPDATE/FOR SHARE info */
+	Node	   *p_value_substitute;	/* what to replace VALUE with, if any */
 	bool		p_variableparams;
 	bool		p_hasAggs;
 	bool		p_hasSubLinks;

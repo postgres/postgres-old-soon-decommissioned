@@ -268,7 +268,7 @@ set_append_rel_pathlist(PlannerInfo *root, RelOptInfo *rel,
 	 * currently supposes that every rowMark relation is involved in every
 	 * row returned by the query.)
 	 */
-	if (list_member_int(root->parse->rowMarks, parentRTindex))
+	if (get_rowmark(root->parse, parentRTindex))
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 				 errmsg("SELECT FOR UPDATE/SHARE is not supported for inheritance queries")));

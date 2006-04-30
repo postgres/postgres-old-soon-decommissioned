@@ -321,8 +321,6 @@ typedef struct EState
 	uint32		es_processed;	/* # of tuples processed */
 	Oid			es_lastoid;		/* last oid processed (by INSERT) */
 	List	   *es_rowMarks;	/* not good place, but there is no other */
-	bool		es_forUpdate;	/* true = FOR UPDATE, false = FOR SHARE */
-	bool		es_rowNoWait;	/* FOR UPDATE/SHARE NOWAIT option */
 
 	bool		es_instrument;	/* true requests runtime instrumentation */
 	bool		es_select_into; /* true if doing SELECT INTO */
@@ -351,6 +349,8 @@ typedef struct ExecRowMark
 {
 	Relation	relation;		/* opened and RowShareLock'd relation */
 	Index		rti;			/* its range table index */
+	bool		forUpdate;		/* true = FOR UPDATE, false = FOR SHARE */
+	bool		noWait;			/* NOWAIT option */
 	char		resname[32];	/* name for its ctid junk attribute */
 } ExecRowMark;
 
