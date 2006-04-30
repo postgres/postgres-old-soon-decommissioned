@@ -9227,6 +9227,7 @@ SELECT has_table_privilege('myschema.mytable', 'select');
     arguments are analogous to <function>has_table_privilege</function>.
     The desired access privilege type must evaluate to
     <literal>CREATE</literal>,
+    <literal>CONNECT</literal>,
     <literal>TEMPORARY</literal>, or
     <literal>TEMP</literal> (which is equivalent to
     <literal>TEMPORARY</literal>).

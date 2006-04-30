@@ -24,6 +24,8 @@
 #ifndef ACL_H
 #define ACL_H
 
+#include "access/htup.h"
+#include "access/tupdesc.h"
 #include "nodes/parsenodes.h"
 #include "utils/array.h"
 
@@ -145,7 +147,7 @@ typedef ArrayType Acl;
  */
 #define ACL_ALL_RIGHTS_RELATION		(ACL_INSERT|ACL_SELECT|ACL_UPDATE|ACL_DELETE|ACL_RULE|ACL_REFERENCES|ACL_TRIGGER)
 #define ACL_ALL_RIGHTS_SEQUENCE		(ACL_USAGE|ACL_SELECT|ACL_UPDATE)
-#define ACL_ALL_RIGHTS_DATABASE		(ACL_CREATE|ACL_CREATE_TEMP|ACL_CONNECT )
+#define ACL_ALL_RIGHTS_DATABASE		(ACL_CREATE|ACL_CREATE_TEMP|ACL_CONNECT)
 #define ACL_ALL_RIGHTS_FUNCTION		(ACL_EXECUTE)
 #define ACL_ALL_RIGHTS_LANGUAGE		(ACL_USAGE)
 #define ACL_ALL_RIGHTS_NAMESPACE	(ACL_USAGE|ACL_CREATE)
@@ -250,6 +252,8 @@ extern AclMode pg_class_aclmask(Oid table_oid, Oid roleid,
 				 AclMode mask, AclMaskHow how);
 extern AclMode pg_database_aclmask(Oid db_oid, Oid roleid,
 					AclMode mask, AclMaskHow how);
+extern AclMode pg_database_tuple_aclmask(HeapTuple db_tuple, TupleDesc tupdesc,
+					Oid roleid, AclMode mask, AclMaskHow how);
 extern AclMode pg_proc_aclmask(Oid proc_oid, Oid roleid,
 				AclMode mask, AclMaskHow how);
 extern AclMode pg_language_aclmask(Oid lang_oid, Oid roleid,

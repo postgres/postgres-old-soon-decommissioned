@@ -605,6 +605,7 @@ do { \
 	else if (strcmp(type, "DATABASE") == 0)
 	{
 		CONVERT_PRIV('C', "CREATE");
+		CONVERT_PRIV('c', "CONNECT");
 		CONVERT_PRIV('T', "TEMPORARY");
 	}
 	else if (strcmp(type, "TABLESPACE") == 0)

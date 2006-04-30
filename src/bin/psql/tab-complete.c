@@ -1373,7 +1373,8 @@ psql_completion(char *text, int start, int end)
 	{
 		static const char *const list_privileg[] =
 		{"SELECT", "INSERT", "UPDATE", "DELETE", "RULE", "REFERENCES",
-		"TRIGGER", "CREATE", "TEMPORARY", "EXECUTE", "USAGE", "ALL", NULL};
+		 "TRIGGER", "CREATE", "CONNECT", "TEMPORARY", "EXECUTE", "USAGE",
+		 "ALL", NULL};
 
 		COMPLETE_WITH_LIST(list_privileg);
 	}
