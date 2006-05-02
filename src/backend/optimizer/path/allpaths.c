@@ -274,6 +274,13 @@ set_append_rel_pathlist(PlannerInfo *root, RelOptInfo *rel,
 				 errmsg("SELECT FOR UPDATE/SHARE is not supported for inheritance queries")));
 
 	/*
+	 * We might have looked up indexes for the parent rel, but they're
+	 * really not relevant to the appendrel.  Reset the pointer to avoid
+	 * any confusion.
+	 */
+	rel->indexlist = NIL;
+
+	/*
 	 * Initialize to compute size estimates for whole append relation
 	 */
 	rel->rows = 0;
