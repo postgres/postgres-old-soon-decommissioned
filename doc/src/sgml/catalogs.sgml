@@ -395,10 +395,24 @@
      </row>
 
      <row>
+      <entry><structfield>amstorage</structfield></entry>
+      <entry><type>bool</type></entry>
+      <entry></entry>
+      <entry>Can index storage data type differ from column data type?</entry>
+     </row>
+
+     <row>
       <entry><structfield>amconcurrent</structfield></entry>
       <entry><type>bool</type></entry>
       <entry></entry>
       <entry>Does the access method support concurrent updates?</entry>
+     </row>
+
+     <row>
+      <entry><structfield>amclusterable</structfield></entry>
+      <entry><type>bool</type></entry>
+      <entry></entry>
+      <entry>Can an index of this type be CLUSTERed on?</entry>
      </row>
 
      <row>

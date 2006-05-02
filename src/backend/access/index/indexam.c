@@ -684,19 +684,17 @@ index_getmulti(IndexScanDesc scan,
  *
  *		callback routine tells whether a given main-heap tuple is
  *		to be deleted
- *
- *		if callback_state is NULL then there are no tuples to be deleted;
- *		index AM can choose to avoid work in this case, but must still
- *		follow the protocol of returning statistical info.
  * 
  *		return value is an optional palloc'd struct of statistics
  * ----------------
  */
 IndexBulkDeleteResult *
-index_bulk_delete(Relation indexRelation,
+index_bulk_delete(IndexVacuumInfo *info,
+				  IndexBulkDeleteResult *stats,
 				  IndexBulkDeleteCallback callback,
 				  void *callback_state)
 {
+	Relation	indexRelation = info->index;
 	FmgrInfo   *procedure;
 	IndexBulkDeleteResult *result;
 
@@ -704,8 +702,9 @@ index_bulk_delete(Relation indexRelation,
 	GET_REL_PROCEDURE(ambulkdelete);
 
 	result = (IndexBulkDeleteResult *)
-		DatumGetPointer(FunctionCall3(procedure,
-									  PointerGetDatum(indexRelation),
+		DatumGetPointer(FunctionCall4(procedure,
+									  PointerGetDatum(info),
+									  PointerGetDatum(stats),
 									  PointerGetDatum((Pointer) callback),
 									  PointerGetDatum(callback_state)));
 
@@ -719,26 +718,20 @@ index_bulk_delete(Relation indexRelation,
  * ----------------
  */
 IndexBulkDeleteResult *
-index_vacuum_cleanup(Relation indexRelation,
-					 IndexVacuumCleanupInfo *info,
+index_vacuum_cleanup(IndexVacuumInfo *info,
 					 IndexBulkDeleteResult *stats)
 {
+	Relation	indexRelation = info->index;
 	FmgrInfo   *procedure;
 	IndexBulkDeleteResult *result;
 
 	RELATION_CHECKS;
-
-	/* It's okay for an index AM not to have a vacuumcleanup procedure */
-	if (!RegProcedureIsValid(indexRelation->rd_am->amvacuumcleanup))
-		return stats;
-
 	GET_REL_PROCEDURE(amvacuumcleanup);
 
 	result = (IndexBulkDeleteResult *)
-		DatumGetPointer(FunctionCall3(procedure,
-									  PointerGetDatum(indexRelation),
-									  PointerGetDatum((Pointer) info),
-									  PointerGetDatum((Pointer) stats)));
+		DatumGetPointer(FunctionCall2(procedure,
+									  PointerGetDatum(info),
+									  PointerGetDatum(stats)));
 
 	return result;
 }
