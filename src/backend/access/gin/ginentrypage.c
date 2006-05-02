@@ -116,7 +116,7 @@ entryIsMoveRight(GinBtree btree, Page page) {
 static BlockNumber
 entryLocateEntry(GinBtree btree, GinBtreeStack *stack) {
 	OffsetNumber low, high, maxoff;
-	IndexTuple  itup;
+	IndexTuple  itup = NULL;
 	int result;
 	Page page = BufferGetPage( stack->buffer );
 

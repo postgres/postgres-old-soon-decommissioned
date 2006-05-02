@@ -66,6 +66,8 @@ fillScanKey( GinState *ginstate, GinScanKey key, Datum query,
 	}
 }
 
+#ifdef NOT_USED
+
 static void
 resetScanKeys(GinScanKey keys, uint32 nkeys) {
 	uint32	i, j;
@@ -91,6 +93,8 @@ resetScanKeys(GinScanKey keys, uint32 nkeys) {
 		}
 	}
 }
+
+#endif
 
 static void
 freeScanKeys(GinScanKey keys, uint32 nkeys, bool removeRes) {
