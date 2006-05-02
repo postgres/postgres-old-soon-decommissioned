@@ -376,6 +376,13 @@ check_index_is_clusterable(Relation OldHeap, Oid indexOid, bool recheck)
 							RelationGetRelationName(OldIndex))));
 	}
 
+	if (!OldIndex->rd_am->amclusterable) 
+		ereport(ERROR,
+				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+			   errmsg("cannot cluster on index \"%s\" because access method does not clusterable",
+			   	RelationGetRelationName(OldIndex))));
+
+
 	/*
 	 * Disallow clustering system relations.  This will definitely NOT work
 	 * for shared relations (we have no way to update pg_class rows in other

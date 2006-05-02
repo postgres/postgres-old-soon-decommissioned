@@ -2982,7 +2982,16 @@ scan_index(Relation indrel, double num_tuples)
 	/*
 	 * Check for tuple count mismatch.	If the index is partial, then it's OK
 	 * for it to have fewer tuples than the heap; else we got trouble.
+	 *
+	 * XXX Hack. Since GIN stores every pointer to heap several times and
+	 * counting num_index_tuples during vacuum is very comlpex and slow
+	 * we just copy num_tuples to num_index_tuples as upper limit to avoid
+	 * WARNING and optimizer mistakes.
 	 */
+	if ( indrel->rd_rel->relam == GIN_AM_OID ) 
+	{
+		stats->num_index_tuples = num_tuples; 
+	} else
 	if (stats->num_index_tuples != num_tuples)
 	{
 		if (stats->num_index_tuples > num_tuples ||
@@ -3052,7 +3061,16 @@ vacuum_index(VacPageList vacpagelist, Relation indrel,
 	/*
 	 * Check for tuple count mismatch.	If the index is partial, then it's OK
 	 * for it to have fewer tuples than the heap; else we got trouble.
+	 *
+	 * XXX Hack. Since GIN stores every pointer to heap several times and
+	 * counting num_index_tuples during vacuum is very comlpex and slow
+	 * we just copy num_tuples to num_index_tuples as upper limit to avoid
+	 * WARNING and optimizer mistakes.
 	 */
+	if ( indrel->rd_rel->relam == GIN_AM_OID ) 
+	{
+		stats->num_index_tuples = num_tuples; 
+	} else
 	if (stats->num_index_tuples != num_tuples + keep_tuples)
 	{
 		if (stats->num_index_tuples > num_tuples + keep_tuples ||

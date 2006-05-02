@@ -871,6 +871,11 @@ DATA(insert OID = 2577 (  "|>>"    PGNSP PGUID b f 604 604	16	 0	 0	 0	 0	 0	 0 
 DATA(insert OID = 2589 (  "&<|"    PGNSP PGUID b f 718 718	16	 0	 0	 0	 0	 0	 0 circle_overbelow positionsel positionjoinsel ));
 DATA(insert OID = 2590 (  "|&>"    PGNSP PGUID b f 718 718	16	 0	 0	 0	 0	 0	 0 circle_overabove positionsel positionjoinsel ));
 
+/* overlap/contains/contained from arrays */
+DATA(insert OID = 2750 (  "&&"	   PGNSP PGUID b f 2277 2277	16 2750	 0	 0	 0	 0	 0 arrayoverlap areasel areajoinsel ));
+DATA(insert OID = 2751 (  "@"	   PGNSP PGUID b f 2277 2277	16 2752	 0	 0	 0	 0	 0 arraycontains contsel contjoinsel ));
+DATA(insert OID = 2752 (  "~"	   PGNSP PGUID b f 2277 2277	16 2751	 0	 0	 0	 0	 0 arraycontained contsel contjoinsel ));
+
 
 /*
  * function prototypes

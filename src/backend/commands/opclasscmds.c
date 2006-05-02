@@ -273,11 +273,11 @@ DefineOpClass(CreateOpClassStmt *stmt)
 		else
 		{
 			/*
-			 * Currently, only GiST allows storagetype different from
+			 * Currently, only GiST and GIN allows storagetype different from
 			 * datatype.  This hardcoded test should be eliminated in favor of
 			 * adding another boolean column to pg_am ...
 			 */
-			if (amoid != GIST_AM_OID)
+			if (!(amoid == GIST_AM_OID || amoid == GIN_AM_OID))
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),
 						 errmsg("storage type may not be different from data type for access method \"%s\"",

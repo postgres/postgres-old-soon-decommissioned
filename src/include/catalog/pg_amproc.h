@@ -185,4 +185,14 @@ DATA(insert (	2595	0 5 2581 ));
 DATA(insert (	2595	0 6 2582 ));
 DATA(insert (	2595	0 7 2584 ));
 
+/* gin */
+DATA(insert (	2745	0 1  351 ));
+DATA(insert (	2745	0 2 2743 ));
+DATA(insert (	2745	0 3 2743 ));
+DATA(insert (	2745	0 4 2744 ));
+DATA(insert (	2746	0 1  360 ));
+DATA(insert (	2746	0 2 2743 ));
+DATA(insert (	2746	0 3 2743 ));
+DATA(insert (	2746	0 4 2744 ));
+
 #endif   /* PG_AMPROC_H */

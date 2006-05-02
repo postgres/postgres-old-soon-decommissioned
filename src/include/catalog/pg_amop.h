@@ -636,4 +636,18 @@ DATA(insert (	2595	0 10 t	1515 ));
 DATA(insert (	2595	0 11 t	1514 ));
 DATA(insert (	2595	0 12 t	2590 ));
 
+/*
+ * gin _int4_ops
+ */
+DATA(insert (	2745	0 1  f	2750 ));
+DATA(insert (	2745	0 2  f	2751 ));
+DATA(insert (	2745	0 3  t	2752 ));
+
+/*
+ * gin _text_ops
+ */
+DATA(insert (	2746	0 1  f	2750 ));
+DATA(insert (	2746	0 2  f	2751 ));
+DATA(insert (	2746	0 3  t	2752 ));
+
 #endif   /* PG_AMOP_H */
