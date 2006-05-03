@@ -24,8 +24,6 @@
 #ifndef ACL_H
 #define ACL_H
 
-#include "access/htup.h"
-#include "access/tupdesc.h"
 #include "nodes/parsenodes.h"
 #include "utils/array.h"
 
@@ -252,8 +250,6 @@ extern AclMode pg_class_aclmask(Oid table_oid, Oid roleid,
 				 AclMode mask, AclMaskHow how);
 extern AclMode pg_database_aclmask(Oid db_oid, Oid roleid,
 					AclMode mask, AclMaskHow how);
-extern AclMode pg_database_tuple_aclmask(HeapTuple db_tuple, TupleDesc tupdesc,
-					Oid roleid, AclMode mask, AclMaskHow how);
 extern AclMode pg_proc_aclmask(Oid proc_oid, Oid roleid,
 				AclMode mask, AclMaskHow how);
 extern AclMode pg_language_aclmask(Oid lang_oid, Oid roleid,
