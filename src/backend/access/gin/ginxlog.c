@@ -266,7 +266,7 @@ ginRedoSplit(XLogRecPtr lsn, XLogRecord *record) {
 	}
 
 	PageSetLSN(rpage, lsn);
-	PageSetTLI(lpage, ThisTimeLineID);
+	PageSetTLI(rpage, ThisTimeLineID);
 	MarkBufferDirty(rbuffer);
 
 	PageSetLSN(lpage, lsn);
