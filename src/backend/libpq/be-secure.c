@@ -795,6 +795,7 @@ initialize_SSL(void)
 	}
 	else
 	{
+#ifdef X509_V_FLAG_CRL_CHECK
 		/*
 		 *	Check the Certificate Revocation List (CRL) if file exists.
 		 *	http://searchsecurity.techtarget.com/sDefinition/0,,sid14_gci803160,00.html
@@ -816,6 +817,7 @@ initialize_SSL(void)
 					 errdetail("Will not check certificates against CRL.")));
 			}
 		}
+#endif /* X509_V_FLAG_CRL_CHECK */
 
 		SSL_CTX_set_verify(SSL_context,
 						   (SSL_VERIFY_PEER |
