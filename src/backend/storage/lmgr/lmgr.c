@@ -478,6 +478,9 @@ LockSharedObject(Oid classid, Oid objid, uint16 objsubid,
 					   objsubid);
 
 	(void) LockAcquire(&tag, false, lockmode, false, false);
+
+	/* Make sure syscaches are up-to-date with any changes we waited for */
+	AcceptInvalidationMessages();
 }
 
 /*
