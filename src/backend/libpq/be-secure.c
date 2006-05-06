@@ -803,7 +803,7 @@ initialize_SSL(void)
 
 		if (cvstore)
 		{
-		   /* Set the flags to check against the complete CRL chain */
+			/* Set the flags to check against the complete CRL chain */
 			if (X509_STORE_load_locations(cvstore, ROOT_CRL_FILE, NULL) != 0)
 /* OpenSSL 0.96 does not support X509_V_FLAG_CRL_CHECK */
 #ifdef X509_V_FLAG_CRL_CHECK
