@@ -126,6 +126,17 @@ typedef IndexAttributeBitMapData *IndexAttributeBitMap;
 	) \
 )
 
+/*
+ * MaxIndexTuplesPerPage is an upper bound on the number of tuples that can
+ * fit on one index page.  An index tuple must have either data or a null
+ * bitmap, so we can safely assume it's at least 1 byte bigger than a bare
+ * IndexTupleData struct.  We arrive at the divisor because each tuple
+ * must be maxaligned, and it must have an associated item pointer.
+ */
+#define MaxIndexTuplesPerPage	\
+	((int) ((BLCKSZ - offsetof(PageHeaderData, pd_linp)) / \
+			(MAXALIGN(sizeof(IndexTupleData) + 1) + sizeof(ItemIdData))))
+
 
 /* routines in indextuple.c */
 extern IndexTuple index_form_tuple(TupleDesc tupleDescriptor,
