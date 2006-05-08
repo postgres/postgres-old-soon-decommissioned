@@ -206,6 +206,7 @@ _bt_getroot(Relation rel, int access)
 		rootopaque->btpo_prev = rootopaque->btpo_next = P_NONE;
 		rootopaque->btpo_flags = (BTP_LEAF | BTP_ROOT);
 		rootopaque->btpo.level = 0;
+		rootopaque->btpo_cycleid = 0;
 
 		/* NO ELOG(ERROR) till meta is updated */
 		START_CRIT_SECTION();
@@ -544,7 +545,7 @@ _bt_getbuf(Relation rel, BlockNumber blkno, int access)
 		 * Release the file-extension lock; it's now OK for someone else to
 		 * extend the relation some more.  Note that we cannot release this
 		 * lock before we have buffer lock on the new page, or we risk a race
-		 * condition against btvacuumcleanup --- see comments therein.
+		 * condition against btvacuumscan --- see comments therein.
 		 */
 		if (needLock)
 			UnlockRelationForExtension(rel, ExclusiveLock);
@@ -608,7 +609,7 @@ _bt_pageinit(Page page, Size size)
 /*
  *	_bt_page_recyclable() -- Is an existing page recyclable?
  *
- * This exists to make sure _bt_getbuf and btvacuumcleanup have the same
+ * This exists to make sure _bt_getbuf and btvacuumscan have the same
  * policy about whether a page is safe to re-use.
  */
 bool
@@ -651,12 +652,20 @@ _bt_delitems(Relation rel, Buffer buf,
 			 OffsetNumber *itemnos, int nitems)
 {
 	Page		page = BufferGetPage(buf);
+	BTPageOpaque opaque;
 
 	/* No ereport(ERROR) until changes are logged */
 	START_CRIT_SECTION();
 
 	/* Fix the page */
 	PageIndexMultiDelete(page, itemnos, nitems);
+
+	/*
+	 * We can clear the vacuum cycle ID since this page has certainly
+	 * been processed by the current vacuum scan.
+	 */
+	opaque = (BTPageOpaque) PageGetSpecialPointer(page);
+	opaque->btpo_cycleid = 0;
 
 	MarkBufferDirty(buf);
 

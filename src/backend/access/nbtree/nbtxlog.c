@@ -249,6 +249,7 @@ btree_xlog_split(bool onleft, bool isroot,
 	pageop->btpo_next = rightsib;
 	pageop->btpo.level = xlrec->level;
 	pageop->btpo_flags = (xlrec->level == 0) ? BTP_LEAF : 0;
+	pageop->btpo_cycleid = 0;
 
 	_bt_restore_page(page,
 					 (char *) xlrec + SizeOfBtreeSplit,
@@ -281,6 +282,7 @@ btree_xlog_split(bool onleft, bool isroot,
 	pageop->btpo_next = xlrec->rightblk;
 	pageop->btpo.level = xlrec->level;
 	pageop->btpo_flags = (xlrec->level == 0) ? BTP_LEAF : 0;
+	pageop->btpo_cycleid = 0;
 
 	_bt_restore_page(page,
 					 (char *) xlrec + SizeOfBtreeSplit + xlrec->leftlen,
@@ -506,6 +508,7 @@ btree_xlog_delete_page(bool ismeta,
 	pageop->btpo_next = rightsib;
 	pageop->btpo.xact = FrozenTransactionId;
 	pageop->btpo_flags = BTP_DELETED;
+	pageop->btpo_cycleid = 0;
 
 	PageSetLSN(page, lsn);
 	PageSetTLI(page, ThisTimeLineID);
@@ -548,6 +551,7 @@ btree_xlog_newroot(XLogRecPtr lsn, XLogRecord *record)
 	pageop->btpo.level = xlrec->level;
 	if (xlrec->level == 0)
 		pageop->btpo_flags |= BTP_LEAF;
+	pageop->btpo_cycleid = 0;
 
 	if (record->xl_len > SizeOfBtreeNewroot)
 	{

@@ -244,6 +244,7 @@ _bt_blnewpage(uint32 level)
 	opaque->btpo_prev = opaque->btpo_next = P_NONE;
 	opaque->btpo.level = level;
 	opaque->btpo_flags = (level > 0) ? 0 : BTP_LEAF;
+	opaque->btpo_cycleid = 0;
 
 	/* Make the P_HIKEY line pointer appear allocated */
 	((PageHeader) page)->pd_lower += sizeof(ItemIdData);

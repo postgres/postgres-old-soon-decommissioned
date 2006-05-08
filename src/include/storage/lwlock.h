@@ -47,6 +47,7 @@ typedef enum LWLockId
 	BgWriterCommLock,
 	TwoPhaseStateLock,
 	TablespaceCreateLock,
+	BtreeVacuumLock,
 	FirstLockMgrLock,			/* must be last except for MaxDynamicLWLock */
 
 	MaxDynamicLWLock = 1000000000
