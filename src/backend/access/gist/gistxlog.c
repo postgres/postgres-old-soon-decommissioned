@@ -625,7 +625,7 @@ gistContinueInsert(gistIncompleteInsert *insert)
 					}
 			}
 
-			if (gistnospace(pages[numbuffer - 1], itup, lenitup))
+			if (gistnospace(pages[numbuffer - 1], itup, lenitup, InvalidOffsetNumber))
 			{
 				/* no space left on page, so we must split */
 				buffers[numbuffer] = ReadBuffer(index, P_NEW);
