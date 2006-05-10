@@ -397,17 +397,8 @@ DefineIndex(RangeVar *heapRelation,
 
 	index_create(relationId, indexRelationName, indexRelationId,
 				 indexInfo, accessMethodId, tablespaceId, classObjectId,
-				 primary, isconstraint,
+				 primary, false, isconstraint,
 				 allowSystemTableMods, skip_build);
-
-	/*
-	 * We update the relation's pg_class tuple even if it already has
-	 * relhasindex = true.	This is needed to cause a shared-cache-inval
-	 * message to be sent for the pg_class tuple, which will cause other
-	 * backends to flush their relcache entries and in particular their cached
-	 * lists of the indexes for this relation.
-	 */
-	setRelhasindex(relationId, true, primary, InvalidOid);
 }
 
 

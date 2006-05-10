@@ -21,6 +21,15 @@
 
 
 /*
+ * Struct for statistics returned by ambuild
+ */
+typedef struct IndexBuildResult
+{
+	double		heap_tuples;	/* # of tuples seen in parent table */
+	double		index_tuples;	/* # of tuples inserted into index */
+} IndexBuildResult;
+
+/*
  * Struct for input arguments passed to ambulkdelete and amvacuumcleanup
  *
  * Note that num_heap_tuples will not be valid during ambulkdelete,

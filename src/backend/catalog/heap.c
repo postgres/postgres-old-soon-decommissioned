@@ -1921,17 +1921,14 @@ RelationTruncateIndexes(Oid heapId)
 		RelationTruncate(currentIndex, 0);
 
 		/* Initialize the index and rebuild */
-		index_build(heapRelation, currentIndex, indexInfo);
+		/* Note: we do not need to re-establish pkey or toast settings */
+		index_build(heapRelation, currentIndex, indexInfo, false, false);
 
-		/*
-		 * index_build will close both the heap and index relations (but not
-		 * give up the locks we hold on them).	We're done with this index,
-		 * but we must re-open the heap rel.
-		 */
-		heapRelation = heap_open(heapId, NoLock);
+		/* We're done with this index */
+		index_close(currentIndex);
 	}
 
-	/* Finish by closing the heap rel again */
+	/* And now done with the heap; but keep lock until commit */
 	heap_close(heapRelation, NoLock);
 }
 

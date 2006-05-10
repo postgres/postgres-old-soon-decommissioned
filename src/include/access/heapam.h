@@ -168,6 +168,7 @@ extern HTSU_Result heap_lock_tuple(Relation relation, HeapTuple tuple,
 				Buffer *buffer, ItemPointer ctid,
 				TransactionId *update_xmax, CommandId cid,
 				LockTupleMode mode, bool nowait);
+extern void heap_inplace_update(Relation relation, HeapTuple tuple);
 
 extern Oid	simple_heap_insert(Relation relation, HeapTuple tup);
 extern void simple_heap_delete(Relation relation, ItemPointer tid);
