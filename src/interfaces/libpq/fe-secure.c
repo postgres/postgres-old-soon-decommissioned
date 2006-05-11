@@ -681,7 +681,7 @@ static unsigned long
 pq_threadidcallback(void)
 {
 	/*
-	 * This is not starndard-compliant.  pthread_self() returns pthread_t, and
+	 * This is not standards-compliant.  pthread_self() returns pthread_t, and
 	 * shouldn't be cast to unsigned long, but CRYPTO_set_id_callback requires
 	 * it, so we have to do it.
 	 */
