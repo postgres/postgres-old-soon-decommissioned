@@ -27,6 +27,11 @@
  */
 #define YYLTYPE  int
 
+/* GUC variables in scan.l (every one of these is a bad idea :-() */
+extern bool escape_string_warning;
+extern bool standard_conforming_strings;
+
+
 /* from scan.l */
 extern void scanner_init(const char *str);
 extern void scanner_finish(void);

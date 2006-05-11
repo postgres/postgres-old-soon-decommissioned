@@ -467,7 +467,7 @@ other			.
 					BEGIN(INITIAL);
 					ECHO;
 				}
-<xq,xe>{xqdouble}  {
+<xq,xe>{xqdouble} {
 					ECHO;
 				}
 <xq>{xqinside}  {

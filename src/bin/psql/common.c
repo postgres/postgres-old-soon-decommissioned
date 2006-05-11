@@ -1101,8 +1101,8 @@ is_superuser(void)
 /*
  * Test if the current session uses standard string literals.
  *
- * Note: this will correctly detect the setting only with a protocol-3.0
- * or newer backend; otherwise it will always say "false".
+ * Note: With a pre-protocol-3.0 connection this will always say "false",
+ * which should be the right answer.
  */
 bool
 standard_strings(void)
