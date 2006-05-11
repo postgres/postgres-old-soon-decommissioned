@@ -216,8 +216,6 @@ static void
 tas_dummy()						/* really means: extern int tas(slock_t
 								 * *lock); */
 {
-	asm(".seg \"data\"");
-	asm(".seg \"text\"");
 	asm("_tas:");
 
 	/*
