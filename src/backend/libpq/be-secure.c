@@ -525,7 +525,7 @@ load_dh_file(int keylength)
 	/* make sure the DH parameters are usable */
 	if (dh != NULL)
 	{
-		if (DH_check(dh, &codes))
+		if (DH_check(dh, &codes) == 0)
 		{
 			elog(LOG, "DH_check error (%s): %s", fnbuf, SSLerrmessage());
 			return NULL;
