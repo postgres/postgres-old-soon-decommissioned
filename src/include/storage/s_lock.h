@@ -311,6 +311,10 @@ tas(volatile slock_t *lock)
 {
 	register slock_t _res;
 
+	/*
+	 *	See comment in /pg/backend/port/tas/solaris_sparc.s for why this
+	 *	uses "ldstub", and that file uses "cas".
+	 */
 	__asm__ __volatile__(
 		"	ldstub	[%2], %0	\n"
 :		"=r"(_res), "+m"(*lock)
