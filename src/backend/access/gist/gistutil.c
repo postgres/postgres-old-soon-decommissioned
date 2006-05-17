@@ -112,18 +112,17 @@ gistfitpage(IndexTuple *itvec, int len) {
  * Read buffer into itup vector
  */
 IndexTuple *
-gistextractbuffer(Buffer buffer, int *len /* out */ )
+gistextractpage(Page page, int *len /* out */ )
 {
 	OffsetNumber i,
 				maxoff;
 	IndexTuple *itvec;
-	Page		p = (Page) BufferGetPage(buffer);
 
-	maxoff = PageGetMaxOffsetNumber(p);
+	maxoff = PageGetMaxOffsetNumber(page);
 	*len = maxoff;
 	itvec = palloc(sizeof(IndexTuple) * maxoff);
 	for (i = FirstOffsetNumber; i <= maxoff; i = OffsetNumberNext(i))
-		itvec[i - FirstOffsetNumber] = (IndexTuple) PageGetItem(p, PageGetItemId(p, i));
+		itvec[i - FirstOffsetNumber] = (IndexTuple) PageGetItem(page, PageGetItemId(page, i));
 
 	return itvec;
 }
