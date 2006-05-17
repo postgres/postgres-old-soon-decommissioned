@@ -76,9 +76,9 @@ typedef struct
 
 /* Configure the UNIX socket location for the well known port. */
 
-#define UNIXSOCK_PATH(path,port,defpath) \
+#define UNIXSOCK_PATH(path, port, sockdir) \
 		snprintf(path, sizeof(path), "%s/.s.PGSQL.%d", \
-				((defpath) && *(defpath) != '\0') ? (defpath) : \
+				((sockdir) && *(sockdir) != '\0') ? (sockdir) : \
 				DEFAULT_PGSOCKET_DIR, \
 				(port))
 
