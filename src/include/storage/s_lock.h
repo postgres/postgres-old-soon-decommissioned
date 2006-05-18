@@ -313,7 +313,8 @@ tas(volatile slock_t *lock)
 
 	/*
 	 *	See comment in /pg/backend/port/tas/solaris_sparc.s for why this
-	 *	uses "ldstub", and that file uses "cas".
+	 *	uses "ldstub", and that file uses "cas".  gcc currently generates
+	 *	sparcv7-targeted binaries, so "cas" use isn't possible.
 	 */
 	__asm__ __volatile__(
 		"	ldstub	[%2], %0	\n"
