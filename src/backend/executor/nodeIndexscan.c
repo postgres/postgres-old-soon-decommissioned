@@ -249,7 +249,7 @@ IndexNext(IndexScanState *node)
 
 					entry = (DupHashTabEntry *)
 						hash_search(node->iss_DupHash,
-									&tuple->t_data->t_ctid,
+									&tuple->t_self,
 									HASH_ENTER,
 									&found);
 					if (entry == NULL ||
