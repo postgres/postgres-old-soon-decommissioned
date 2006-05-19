@@ -753,14 +753,16 @@ gistContinueInsert(gistIncompleteInsert *insert)
 			 * for following possible replays
 			 */
 
-			/* write pages with XLOG LSN */
+			/* write pages, we should mark it dirty befor XLogInsert() */
+			for (j = 0; j < numbuffer; j++) {
+				GistPageGetOpaque(pages[j])->rightlink = InvalidBlockNumber;
+				MarkBufferDirty(buffers[j]);
+			}
 			recptr = XLogInsert(RM_GIST_ID, XLOG_GIST_PAGE_UPDATE, rdata);
 			for (j = 0; j < numbuffer; j++)
 			{
 				PageSetLSN(pages[j], recptr);
 				PageSetTLI(pages[j], ThisTimeLineID);
-				GistPageGetOpaque(pages[j])->rightlink = InvalidBlockNumber;
-				MarkBufferDirty(buffers[j]);
 			}
 
 			END_CRIT_SECTION();
