@@ -771,7 +771,7 @@ typedef unsigned char slock_t;
 #if defined(__sun) && (defined(__i386) || defined(__x86_64__) || defined(__sparc__) || defined(__sparc))
 #define HAS_TEST_AND_SET
 
-#if defined(__sparcv9) || defined(__sparcv8plus)
+#if defined(__i386) || defined(__x86_64__) || defined(__sparcv9) || defined(__sparcv8plus)
 typedef unsigned int slock_t;
 #else
 typedef unsigned char slock_t;
