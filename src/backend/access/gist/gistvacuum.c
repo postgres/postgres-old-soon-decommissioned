@@ -104,19 +104,25 @@ gistDeleteSubtree( GistVacuum *gv, BlockNumber blkno ) {
 
 	if (!gv->index->rd_istemp)
 	{
-		XLogRecData rdata;
+		XLogRecData rdata[2];
 		XLogRecPtr	recptr;
 		gistxlogPageDelete	xlrec;
 
 		xlrec.node = gv->index->rd_node;
 		xlrec.blkno = blkno;
 
-		rdata.buffer = InvalidBuffer;
-		rdata.data = (char *) &xlrec;
-		rdata.len = sizeof(gistxlogPageDelete);
-		rdata.next = NULL;
+		rdata[0].buffer = buffer;
+		rdata[0].buffer_std = true;
+		rdata[0].data = NULL;
+		rdata[0].len = 0;
+		rdata[0].next = &(rdata[1]);
 
-		recptr = XLogInsert(RM_GIST_ID, XLOG_GIST_PAGE_DELETE, &rdata);
+		rdata[1].buffer = InvalidBuffer;
+		rdata[1].data = (char *) &xlrec;
+		rdata[1].len = sizeof(gistxlogPageDelete);
+		rdata[1].next = NULL;
+
+		recptr = XLogInsert(RM_GIST_ID, XLOG_GIST_PAGE_DELETE, rdata);
 		PageSetLSN(page, recptr);
 		PageSetTLI(page, ThisTimeLineID);
 	}
