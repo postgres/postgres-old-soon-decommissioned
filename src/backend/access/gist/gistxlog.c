@@ -557,28 +557,16 @@ gistMakePageLayout(Buffer *buffers, int nbuffers) {
 
 	while( nbuffers-- > 0 ) {
 		Page page = BufferGetPage( buffers[ nbuffers ] );
-		IndexTuple	idxtup;
-		OffsetNumber	i;
-		char *ptr;
+		IndexTuple*	vec;
+		int	veclen;
 
 		resptr = (SplitedPageLayout*)palloc0( sizeof(SplitedPageLayout) );
 
 		resptr->block.blkno = BufferGetBlockNumber( buffers[ nbuffers ] );
 		resptr->block.num = PageGetMaxOffsetNumber( page );
 
-		for(i=FirstOffsetNumber; i<= PageGetMaxOffsetNumber( page ); i++) {
-			idxtup = (IndexTuple) PageGetItem(page, PageGetItemId(page, i));
-			resptr->lenlist += IndexTupleSize(idxtup);
-		}
-
-		resptr->list = (IndexTupleData*)palloc( resptr->lenlist );
-		ptr = (char*)(resptr->list);
-
-		for(i=FirstOffsetNumber; i<= PageGetMaxOffsetNumber( page ); i++) {
-			idxtup = (IndexTuple) PageGetItem(page, PageGetItemId(page, i));
-			memcpy( ptr, idxtup, IndexTupleSize(idxtup) );
-			ptr += IndexTupleSize(idxtup);
-		}
+		vec = gistextractpage( page, &veclen ); 
+		resptr->list = gistfillitupvec( vec, veclen, &(resptr->lenlist) );
 
 		resptr->next = res;
 		res = resptr;

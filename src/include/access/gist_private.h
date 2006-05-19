@@ -283,6 +283,8 @@ extern IndexTuple *gistextractpage(Page page, int *len /* out */ );
 extern IndexTuple *gistjoinvector(
 			   IndexTuple *itvec, int *len,
 			   IndexTuple *additvec, int addlen);
+extern IndexTupleData* gistfillitupvec(IndexTuple *vec, int veclen, int *memlen);
+
 extern IndexTuple gistunion(Relation r, IndexTuple *itvec,
 		  int len, GISTSTATE *giststate);
 extern IndexTuple gistgetadjusted(Relation r,
@@ -308,8 +310,19 @@ extern void gistcentryinit(GISTSTATE *giststate, int nkey,
 extern void gistDeCompressAtt(GISTSTATE *giststate, Relation r,
 				  IndexTuple tuple, Page p, OffsetNumber o,
 				  GISTENTRY *attdata, bool *isnull);
-extern void gistunionsubkey(Relation r, GISTSTATE *giststate,
-				IndexTuple *itvec, GIST_SPLITVEC *spl, bool isall);
+
+typedef struct {
+	int		*attrsize;
+	Datum	*attr;
+	int		len;
+	OffsetNumber *entries;
+	bool	*isnull;
+	int		*idgrp;
+} GistSplitVec;
+
+extern void gistunionsubkeyvec(GISTSTATE *giststate, 
+	IndexTuple *itvec, GistSplitVec *gsvp,  bool isall);
+
 extern void GISTInitBuffer(Buffer b, uint32 f);
 extern void gistdentryinit(GISTSTATE *giststate, int nkey, GISTENTRY *e,
 			   Datum k, Relation r, Page pg, OffsetNumber o,
