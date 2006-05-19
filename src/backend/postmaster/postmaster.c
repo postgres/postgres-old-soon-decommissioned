@@ -2182,6 +2182,9 @@ reaper(SIGNAL_ARGS)
 		{
 			AutoVacPID = 0;
 			autovac_stopped();
+			/* Tell the collector about process termination */
+			pgstat_beterm(pid);
+
 			if (exitstatus != 0)
 				HandleChildCrash(pid, exitstatus,
 								 _("autovacuum process"));
