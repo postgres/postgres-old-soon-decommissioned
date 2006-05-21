@@ -512,6 +512,7 @@ psql_completion(char *text, int start, int end)
 		 */
 		"add_missing_from",
 		"australian_timezones",
+		"backslash_quote",
 		"client_encoding",
 		"client_min_messages",
 		"commit_delay",
@@ -1026,7 +1027,7 @@ psql_completion(char *text, int start, int end)
 			  pg_strcasecmp(prev2_wd, "TO") == 0))
 		{
 			static const char *const list_COPY[] =
-			{"BINARY", "OIDS", "DELIMETER", "NULL", "CSV", NULL};
+			{"BINARY", "OIDS", "DELIMITER", "NULL", "CSV", NULL};
 
 			COMPLETE_WITH_LIST(list_COPY);
 		}
