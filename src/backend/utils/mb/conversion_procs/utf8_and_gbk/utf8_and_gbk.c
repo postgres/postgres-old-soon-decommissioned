@@ -62,7 +62,7 @@ utf8_to_gbk(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapGBK,
-			   sizeof(ULmapGBK) / sizeof(pg_utf_to_local), len);
+			   sizeof(ULmapGBK) / sizeof(pg_utf_to_local), PG_GBK, len);
 
 	PG_RETURN_VOID();
 }

@@ -705,6 +705,8 @@ typedef NameData *Name;
 
 /* msb for char */
 #define CSIGNBIT (0x80)
+#define HIGHBIT					(0x80)
+#define IS_HIGHBIT_SET(ch)		((unsigned char)(ch) & HIGHBIT)
 
 #define STATUS_OK				(0)
 #define STATUS_ERROR			(-1)

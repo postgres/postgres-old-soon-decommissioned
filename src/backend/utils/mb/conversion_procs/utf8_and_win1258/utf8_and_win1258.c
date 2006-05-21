@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- *	  ASCII <--> UTF8
+ *	  WIN1258 <--> UTF8
  *
  * Portions Copyright (c) 1996-2005, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
@@ -14,12 +14,14 @@
 #include "postgres.h"
 #include "fmgr.h"
 #include "mb/pg_wchar.h"
+#include "../../Unicode/win1258_to_utf8.map"
+#include "../../Unicode/utf8_to_win1258.map"
 
-PG_FUNCTION_INFO_V1(ascii_to_utf8);
-PG_FUNCTION_INFO_V1(utf8_to_ascii);
+PG_FUNCTION_INFO_V1(win1258_to_utf8);
+PG_FUNCTION_INFO_V1(utf8_to_win1258);
 
-extern Datum ascii_to_utf8(PG_FUNCTION_ARGS);
-extern Datum utf8_to_ascii(PG_FUNCTION_ARGS);
+extern Datum win1258_to_utf8(PG_FUNCTION_ARGS);
+extern Datum utf8_to_win1258(PG_FUNCTION_ARGS);
 
 /* ----------
  * conv_proc(
@@ -31,37 +33,36 @@ extern Datum utf8_to_ascii(PG_FUNCTION_ARGS);
  * ) returns VOID;
  * ----------
  */
-
 Datum
-ascii_to_utf8(PG_FUNCTION_ARGS)
+win1258_to_utf8(PG_FUNCTION_ARGS)
 {
 	unsigned char *src = (unsigned char *) PG_GETARG_CSTRING(2);
 	unsigned char *dest = (unsigned char *) PG_GETARG_CSTRING(3);
 	int			len = PG_GETARG_INT32(4);
 
-	Assert(PG_GETARG_INT32(0) == PG_SQL_ASCII);
+	Assert(PG_GETARG_INT32(0) == PG_WIN1258);
 	Assert(PG_GETARG_INT32(1) == PG_UTF8);
 	Assert(len >= 0);
 
-	/* this looks wrong, but basically we're just rejecting high-bit-set */
-	pg_ascii2mic(src, dest, len);
+	LocalToUtf(src, dest, LUmapWIN1258,
+			sizeof(LUmapWIN1258) / sizeof(pg_local_to_utf), PG_WIN1258, len);
 
 	PG_RETURN_VOID();
 }
 
 Datum
-utf8_to_ascii(PG_FUNCTION_ARGS)
+utf8_to_win1258(PG_FUNCTION_ARGS)
 {
 	unsigned char *src = (unsigned char *) PG_GETARG_CSTRING(2);
 	unsigned char *dest = (unsigned char *) PG_GETARG_CSTRING(3);
 	int			len = PG_GETARG_INT32(4);
 
 	Assert(PG_GETARG_INT32(0) == PG_UTF8);
-	Assert(PG_GETARG_INT32(1) == PG_SQL_ASCII);
+	Assert(PG_GETARG_INT32(1) == PG_WIN1258);
 	Assert(len >= 0);
 
-	/* this looks wrong, but basically we're just rejecting high-bit-set */
-	pg_mic2ascii(src, dest, len);
+	UtfToLocal(src, dest, ULmapWIN1258,
+			   sizeof(ULmapWIN1258) / sizeof(pg_utf_to_local), PG_WIN1258, len);
 
 	PG_RETURN_VOID();
 }

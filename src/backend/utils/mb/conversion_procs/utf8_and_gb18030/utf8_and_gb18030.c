@@ -62,7 +62,7 @@ utf8_to_gb18030(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapGB18030,
-			   sizeof(ULmapGB18030) / sizeof(pg_utf_to_local), len);
+			   sizeof(ULmapGB18030) / sizeof(pg_utf_to_local), PG_GB18030, len);
 
 	PG_RETURN_VOID();
 }
