@@ -122,3 +122,5 @@ PQsendPrepare             119
 PQgetCancel               120
 PQfreeCancel              121
 PQcancel                  122
+PQescapeStringConn        126
+PQescapeByteaConn         127
