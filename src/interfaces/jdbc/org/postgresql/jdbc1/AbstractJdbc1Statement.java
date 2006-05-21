@@ -1145,7 +1145,7 @@ public abstract class AbstractJdbc1Statement implements BaseStatement
 			{
 			    case '\\':
 			    case '\'':
-					p_output.append('\\');
+					p_output.append(c);
 					p_output.append(c);
 					break;
 			    case '\0':

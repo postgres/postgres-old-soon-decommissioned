@@ -402,7 +402,7 @@ sub mirrorInsert($$$$$) {
       if(defined $recordValues{$column}) {
 	my $quotedValue = $recordValues{$column};
 	$quotedValue =~ s/\\/\\\\/g;
-	$quotedValue =~ s/'/\\'/g;
+	$quotedValue =~ s/'/''/g;
 	$valuesQuery .= "'$quotedValue'";
       }
       else {
@@ -585,7 +585,7 @@ sub mirrorUpdate($$$$$) {
       if(defined $currentValue ) {
 	$quotedValue = $currentValue;
 	$quotedValue =~ s/\\/\\\\/g;
-	$quotedValue =~ s/'/\\'/g;
+	$quotedValue =~ s/'/''/g;
 	$updateQuery .= "'$quotedValue'";
 	}
       else {
@@ -607,7 +607,7 @@ sub mirrorUpdate($$$$$) {
       if(defined $currentValue) {
 	$quotedValue = $currentValue;
 	$quotedValue =~ s/\\/\\\\/g;
-        $quotedValue =~ s/'/\\'/g;
+        $quotedValue =~ s/'/''/g;
 	$updateQuery .= "'$quotedValue'";
       }
       else {

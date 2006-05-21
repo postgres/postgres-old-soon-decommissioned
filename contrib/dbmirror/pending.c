@@ -491,7 +491,7 @@ packageData(HeapTuple tTupleData, TupleDesc tTupleDesc,
 			}
 			if (*cpUnFormatedPtr == '\\' || *cpUnFormatedPtr == '\'')
 			{
-				*cpFormatedPtr = '\\';
+				*cpFormatedPtr = *cpUnFormatedPtr;
 				cpFormatedPtr++;
 				iUsedDataBlock++;
 			}

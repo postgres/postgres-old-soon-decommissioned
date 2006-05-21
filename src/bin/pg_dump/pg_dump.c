@@ -6544,7 +6544,7 @@ dumpTriggers(Archive *fout, TableInfo *tblinfo, int numTables)
 				for (s = tgargs; s < p;)
 				{
 					if (*s == '\'')
-						appendPQExpBufferChar(query, '\\');
+						appendPQExpBufferChar(query, *s);
 					appendPQExpBufferChar(query, *s++);
 				}
 				appendPQExpBufferChar(query, '\'');

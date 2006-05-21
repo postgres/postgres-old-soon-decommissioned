@@ -421,7 +421,7 @@ decl_statement	: decl_varname decl_const decl_datatype decl_notnull decl_defval
 						while (*cp1 != '\0')
 						{
 							if (*cp1 == '\\' || *cp1 == '\'')
-								*cp2++ = '\\';
+								*cp2++ = *cp1;
 							*cp2++ = *cp1++;
 						}
 						strcpy(cp2, "'::refcursor");

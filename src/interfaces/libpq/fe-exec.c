@@ -2329,7 +2329,7 @@ PQescapeBytea(const unsigned char *bintext, size_t binlen, size_t *bytealen)
 		}
 		else if (*vp == '\'')
 		{
-			rp[0] = '\\';
+			rp[0] = '\'';
 			rp[1] = '\'';
 			rp += 2;
 		}
