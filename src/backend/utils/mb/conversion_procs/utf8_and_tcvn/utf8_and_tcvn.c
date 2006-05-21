@@ -62,7 +62,7 @@ utf8_to_tcvn(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapTCVN,
-			   sizeof(ULmapTCVN) / sizeof(pg_utf_to_local), len);
+			   sizeof(ULmapTCVN) / sizeof(pg_utf_to_local), PG_TCVN, len);
 
 	PG_RETURN_VOID();
 }

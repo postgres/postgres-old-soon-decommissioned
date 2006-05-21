@@ -49,10 +49,7 @@ namein(PG_FUNCTION_ARGS)
 	NameData   *result;
 	int			len;
 
-	/* verify encoding */
 	len = strlen(s);
-	pg_verifymbstr(s, len, false);
-
 	len = pg_mbcliplen(s, len, NAMEDATALEN - 1);
 
 	result = (NameData *) palloc0(NAMEDATALEN);

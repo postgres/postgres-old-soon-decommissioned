@@ -75,10 +75,7 @@ bpcharin(PG_FUNCTION_ARGS)
 	int			i;
 	int			charlen;		/* number of charcters in the input string */
 
-	/* verify encoding */
 	len = strlen(s);
-	pg_verifymbstr(s, len, false);
-
 	charlen = pg_mbstrlen(s);
 
 	/* If typmod is -1 (or invalid), use the actual string length */
@@ -364,10 +361,7 @@ varcharin(PG_FUNCTION_ARGS)
 	size_t		len,
 				maxlen;
 
-	/* verify encoding */
 	len = strlen(s);
-	pg_verifymbstr(s, len, false);
-
 	maxlen = atttypmod - VARHDRSZ;
 
 	if (atttypmod >= (int32) VARHDRSZ && len > maxlen)

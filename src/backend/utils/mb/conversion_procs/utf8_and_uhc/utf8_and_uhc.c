@@ -62,7 +62,7 @@ utf8_to_uhc(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapUHC,
-			   sizeof(ULmapUHC) / sizeof(pg_utf_to_local), len);
+			   sizeof(ULmapUHC) / sizeof(pg_utf_to_local), PG_UHC, len);
 
 	PG_RETURN_VOID();
 }
