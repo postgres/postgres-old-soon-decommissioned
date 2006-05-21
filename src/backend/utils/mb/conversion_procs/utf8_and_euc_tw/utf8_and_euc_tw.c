@@ -62,7 +62,7 @@ utf8_to_euc_tw(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapEUC_TW,
-			   sizeof(ULmapEUC_TW) / sizeof(pg_utf_to_local), len);
+			   sizeof(ULmapEUC_TW) / sizeof(pg_utf_to_local), PG_EUC_TW, len);
 
 	PG_RETURN_VOID();
 }

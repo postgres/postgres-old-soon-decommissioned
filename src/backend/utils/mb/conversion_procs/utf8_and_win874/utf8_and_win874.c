@@ -46,7 +46,7 @@ utf_to_win874(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapWIN874,
-			   sizeof(ULmapWIN874) / sizeof(pg_utf_to_local), len);
+			   sizeof(ULmapWIN874) / sizeof(pg_utf_to_local), PG_WIN874, len);
 
 	PG_RETURN_VOID();
 }

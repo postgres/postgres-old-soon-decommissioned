@@ -62,7 +62,7 @@ utf8_to_sjis(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapSJIS,
-			   sizeof(ULmapSJIS) / sizeof(pg_utf_to_local), len);
+			   sizeof(ULmapSJIS) / sizeof(pg_utf_to_local), PG_SJIS, len);
 
 	PG_RETURN_VOID();
 }

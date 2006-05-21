@@ -62,7 +62,7 @@ utf8_to_big5(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapBIG5,
-			   sizeof(ULmapBIG5) / sizeof(pg_utf_to_local), len);
+			   sizeof(ULmapBIG5) / sizeof(pg_utf_to_local), PG_BIG5, len);
 
 	PG_RETURN_VOID();
 }

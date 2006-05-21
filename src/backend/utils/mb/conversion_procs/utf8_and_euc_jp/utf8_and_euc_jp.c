@@ -62,7 +62,7 @@ utf8_to_euc_jp(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapEUC_JP,
-			   sizeof(ULmapEUC_JP) / sizeof(pg_utf_to_local), len);
+			   sizeof(ULmapEUC_JP) / sizeof(pg_utf_to_local), PG_EUC_JP, len);
 
 	PG_RETURN_VOID();
 }
