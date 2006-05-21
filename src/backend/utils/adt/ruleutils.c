@@ -568,7 +568,7 @@ pg_get_triggerdef(PG_FUNCTION_ARGS)
 			{
 				/* escape quotes and backslashes */
 				if (*p == '\'' || *p == '\\')
-					appendStringInfoChar(&buf, '\\');
+					appendStringInfoChar(&buf, *p);
 				appendStringInfoChar(&buf, *p++);
 			}
 			p++;
@@ -3699,7 +3699,7 @@ get_const_expr(Const *constval, deparse_context *context)
 
 				if (ch == '\'' || ch == '\\')
 				{
-					appendStringInfoChar(buf, '\\');
+					appendStringInfoChar(buf, ch);
 					appendStringInfoChar(buf, ch);
 				}
 				else if (((unsigned char) ch) < ((unsigned char) ' '))

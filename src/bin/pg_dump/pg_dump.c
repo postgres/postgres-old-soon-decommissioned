@@ -7553,7 +7553,7 @@ dumpTrigger(Archive *fout, TriggerInfo *tginfo)
 		while (s < p)
 		{
 			if (*s == '\'')
-				appendPQExpBufferChar(query, '\\');
+				appendPQExpBufferChar(query, '\'');
 			appendPQExpBufferChar(query, *s++);
 		}
 		appendPQExpBufferChar(query, '\'');

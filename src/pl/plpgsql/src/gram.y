@@ -389,7 +389,7 @@ decl_statement	: decl_varname decl_const decl_datatype decl_notnull decl_defval
 						while (*cp1 != '\0')
 						{
 							if (*cp1 == '\\' || *cp1 == '\'')
-								*cp2++ = '\\';
+								*cp2++ = *cp1;
 							*cp2++ = *cp1++;
 						}
 						strcpy(cp2, "'::refcursor");
@@ -473,6 +473,10 @@ decl_cursor_arglist : decl_cursor_arg
 				| decl_cursor_arglist ',' decl_cursor_arg
 					{
 						int i = $1->nfields++;
+
+						/* Guard against overflowing the array on malicious input */
+						if (i >= 1024)
+							yyerror("too many parameters specified for refcursor");
 
 						$1->fieldnames[i] = $3->refname;
 						$1->varnos[i] = $3->dno;
@@ -1762,8 +1766,19 @@ read_sql_construct(int until,
 						 errmsg("missing \"%s\" at end of SQL statement",
 								expected)));
 		}
+
 		if (plpgsql_SpaceScanned)
 			plpgsql_dstring_append(&ds, " ");
+
+		/* Check for array overflow */
+		if (nparams >= 1024)
+		{
+			plpgsql_error_lineno = lno;
+			ereport(ERROR,
+					(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
+					 errmsg("too many variables specified in SQL statement")));
+		}
+
 		switch (tok)
 		{
 			case T_SCALAR:
@@ -1936,6 +1951,15 @@ make_select_stmt(void)
 
 					while ((tok = yylex()) == ',')
 					{
+						/* Check for array overflow */
+						if (nfields >= 1024)
+						{
+							plpgsql_error_lineno = plpgsql_scanner_lineno();
+							ereport(ERROR,
+									(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
+									 errmsg("too many INTO variables specified")));
+						}
+
 						tok = yylex();
 						switch(tok)
 						{
@@ -1986,6 +2010,16 @@ make_select_stmt(void)
 
 		if (plpgsql_SpaceScanned)
 			plpgsql_dstring_append(&ds, " ");
+
+		/* Check for array overflow */
+		if (nparams >= 1024)
+		{
+			plpgsql_error_lineno = plpgsql_scanner_lineno();
+			ereport(ERROR,
+					(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
+					 errmsg("too many variables specified in SQL statement")));
+		}
+
 		switch (tok)
 		{
 			case T_SCALAR:
@@ -2081,6 +2115,15 @@ make_fetch_stmt(void)
 
 				while ((tok = yylex()) == ',')
 				{
+					/* Check for array overflow */
+					if (nfields >= 1024)
+					{
+						plpgsql_error_lineno = plpgsql_scanner_lineno();
+						ereport(ERROR,
+								(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
+								 errmsg("too many INTO variables specified")));
+					}
+
 					tok = yylex();
 					switch(tok)
 					{

@@ -178,7 +178,7 @@ do_lo_import(const char *filename_arg, const char *comment_arg)
 		for (i = 0; i < slen; i++)
 		{
 			if (comment_arg[i] == '\'' || comment_arg[i] == '\\')
-				*bufptr++ = '\\';
+				*bufptr++ = comment_arg[i];
 			*bufptr++ = comment_arg[i];
 		}
 		strcpy(bufptr, "'");
