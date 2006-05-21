@@ -46,7 +46,7 @@ utf8_to_koi8r(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapKOI8R,
-			   sizeof(ULmapKOI8R) / sizeof(pg_utf_to_local), len);
+			   sizeof(ULmapKOI8R) / sizeof(pg_utf_to_local), PG_KOI8R, len);
 
 	PG_RETURN_VOID();
 }

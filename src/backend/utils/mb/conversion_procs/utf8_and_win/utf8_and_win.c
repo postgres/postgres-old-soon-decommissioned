@@ -143,7 +143,7 @@ utf8_to_win(PG_FUNCTION_ARGS)
 	{
 		if (encoding == maps[i].encoding)
 		{
-			UtfToLocal(src, dest, maps[i].map2, maps[i].size2, len);
+			UtfToLocal(src, dest, maps[i].map2, maps[i].size2, encoding, len);
 			PG_RETURN_VOID();
 		}
 	}

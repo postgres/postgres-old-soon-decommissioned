@@ -62,7 +62,7 @@ utf8_to_johab(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapJOHAB,
-			   sizeof(ULmapJOHAB) / sizeof(pg_utf_to_local), len);
+			   sizeof(ULmapJOHAB) / sizeof(pg_utf_to_local), PG_JOHAB, len);
 
 	PG_RETURN_VOID();
 }

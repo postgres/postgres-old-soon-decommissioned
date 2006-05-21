@@ -73,9 +73,6 @@ bpchar_input(const char *s, size_t len, int32 atttypmod)
 	char	   *r;
 	size_t		maxlen;
 
-	/* verify encoding */
-	pg_verifymbstr(s, len, false);
-
 	/* If typmod is -1 (or invalid), use the actual string length */
 	if (atttypmod < (int32) VARHDRSZ)
 		maxlen = len;
@@ -392,9 +389,6 @@ varchar_input(const char *s, size_t len, int32 atttypmod)
 {
 	VarChar    *result;
 	size_t		maxlen;
-
-	/* verify encoding */
-	pg_verifymbstr(s, len, false);
 
 	maxlen = atttypmod - VARHDRSZ;
 
