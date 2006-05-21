@@ -483,6 +483,7 @@ psql_completion(char *text, int start, int end)
 		 */
 		"add_missing_from",
 		"australian_timezones",
+		"backslash_quote",
 		"client_encoding",
 		"client_min_messages",
 		"commit_delay",

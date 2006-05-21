@@ -18,6 +18,17 @@
 #include "nodes/parsenodes.h"
 
 
+typedef enum
+{
+	BACKSLASH_QUOTE_OFF,
+	BACKSLASH_QUOTE_ON,
+	BACKSLASH_QUOTE_SAFE_ENCODING
+} BackslashQuoteType;
+
+/* GUC variables in scan.l (every one of these is a bad idea :-() */
+extern BackslashQuoteType backslash_quote;
+
+
 /* from parser.c */
 extern int	yylex(void);
 
