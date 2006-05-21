@@ -125,4 +125,6 @@ PQcancel                  122
 lo_create                 123
 PQinitSSL                 124
 PQregisterThreadLock      125
-PQencryptPassword         126
+PQescapeStringConn        126
+PQescapeByteaConn         127
+PQencryptPassword         128
