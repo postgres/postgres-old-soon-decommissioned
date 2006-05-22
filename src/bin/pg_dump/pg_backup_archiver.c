@@ -122,7 +122,8 @@ CloseArchive(Archive *AHX)
 		res = fclose(AH->OF);
 
 	if (res != 0)
-		die_horribly(AH, modulename, "could not close output archive file\n");
+		die_horribly(AH, modulename, "could not close output file: %s\n",
+					 strerror(errno));
 }
 
 /* Public */
@@ -306,7 +307,7 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 				{
 #ifndef HAVE_LIBZ
 					if (AH->compression != 0)
-						die_horribly(AH, modulename, "cannot restore from compressed archive (not configured for compression support)\n");
+						die_horribly(AH, modulename, "cannot restore from compressed archive (compression not supported in this installation)\n");
 #endif
 
 					_printTocEntry(AH, te, ropt, true, false);
@@ -774,7 +775,8 @@ SortTocFromFile(Archive *AHX, RestoreOptions *ropt)
 	/* Setup the file */
 	fh = fopen(ropt->tocFile, PG_BINARY_R);
 	if (!fh)
-		die_horribly(AH, modulename, "could not open TOC file\n");
+		die_horribly(AH, modulename, "could not open TOC file: %s\n",
+					 strerror(errno));
 
 	while (fgets(buf, sizeof(buf), fh) != NULL)
 	{
@@ -1066,7 +1068,7 @@ ahwrite(const void *ptr, size_t size, size_t nmemb, ArchiveHandle *AH)
 	{
 		res = GZWRITE((void *) ptr, size, nmemb, AH->OF);
 		if (res != (nmemb * size))
-			die_horribly(AH, modulename, "could not write to compressed archive\n");
+			die_horribly(AH, modulename, "could not write to output file: %s\n", strerror(errno));
 		return res;
 	}
 	else if (AH->CustomOutPtr)
@@ -1089,8 +1091,8 @@ ahwrite(const void *ptr, size_t size, size_t nmemb, ArchiveHandle *AH)
 		{
 			res = fwrite((void *) ptr, size, nmemb, AH->OF);
 			if (res != nmemb)
-				die_horribly(AH, modulename, "could not write to output file (%lu != %lu)\n",
-							 (unsigned long) res, (unsigned long) nmemb);
+				die_horribly(AH, modulename, "could not write to output file: %s\n",
+							 strerror(errno));
 			return res;
 		}
 	}
@@ -1321,7 +1323,7 @@ ReadOffset(ArchiveHandle *AH, off_t *o)
 			break;
 
 		default:
-			die_horribly(AH, modulename, "Unexpected data offset flag %d\n", offsetFlg);
+			die_horribly(AH, modulename, "unexpected data offset flag %d\n", offsetFlg);
 	}
 
 	/*
@@ -1556,7 +1558,7 @@ _discoverArchiveFormat(ArchiveHandle *AH)
 	/* Close the file */
 	if (wantClose)
 		if (fclose(fh) != 0)
-			die_horribly(AH, modulename, "could not close the input file after reading header: %s\n",
+			die_horribly(AH, modulename, "could not close input file: %s\n",
 						 strerror(errno));
 
 	return AH->format;
