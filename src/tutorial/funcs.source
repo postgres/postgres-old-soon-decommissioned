@@ -110,7 +110,7 @@ SELECT name(high_pay()) AS overpaid;
 -- SELECT * FROM EMP;
 --
 -- CREATE FUNCTION clean_EMP () RETURNS integer
---	  AS 'DELETE FROM EMP WHERE EMP.salary <= 0\;
+--	  AS 'DELETE FROM EMP WHERE EMP.salary <= 0;
 --		  SELECT 1 AS ignore_this'
 --	  LANGUAGE SQL;
 --
