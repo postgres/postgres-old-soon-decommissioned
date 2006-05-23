@@ -32,7 +32,11 @@ typedef struct Tuplesortstate Tuplesortstate;
  * We provide two different interfaces to what is essentially the same
  * code: one for sorting HeapTuples and one for sorting IndexTuples.
  * They differ primarily in the way that the sort key information is
- * supplied.
+ * supplied.  Also, tuplesort.c guarantees to preserve all the header
+ * fields of an IndexTuple, but when sorting HeapTuples only the user data
+ * is guaranteed preserved, not the "system columns" (tuple identity and
+ * transaction visibility info).
+ *
  * Yet a third slightly different interface supports sorting bare Datums.
  */
 
