@@ -943,6 +943,24 @@ ResolveNew_mutator(Node *node, ResolveNew_context *context)
 				List	   *fields;
 
 				/*
+				 * Klugy fix for bug #2447: we can't expand a whole-row
+				 * reference to "NEW" in a rule WHERE expression while
+				 * inserting it into the original query, because its varno
+				 * will be PRS2_NEW_VARNO which is not the rtindex of the RTE
+				 * we should use.  The 8.0 ResolveNew API is wrongly designed.
+				 * We aren't going to try to back-port the 8.1 API, just avoid
+				 * crashing.  (This never worked before 8.0, either.)
+				 * CopyAndAddInvertedQual passes NIL for target_rtable, so
+				 * testing for NIL would be sufficient, but let's put in a
+				 * full check on the rtindex for safety.
+				 */
+				if (this_varno < 1 ||
+					this_varno > list_length(context->target_rtable))
+					ereport(ERROR,
+							(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+							 errmsg("cannot handle whole-row reference")));
+
+				/*
 				 * If generating an expansion for a var of a named rowtype
 				 * (ie, this is a plain relation RTE), then we must
 				 * include dummy items for dropped columns.  If the var is

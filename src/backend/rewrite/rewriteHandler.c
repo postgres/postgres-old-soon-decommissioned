@@ -1046,7 +1046,7 @@ CopyAndAddInvertedQual(Query *parsetree,
 		new_qual = ResolveNew(new_qual,
 							  PRS2_NEW_VARNO,
 							  0,
-							  parsetree->rtable,
+							  NIL,				/* fix bug #2447 */
 							  parsetree->targetList,
 							  event,
 							  rt_index);
