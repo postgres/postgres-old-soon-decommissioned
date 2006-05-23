@@ -366,6 +366,7 @@ extern int	PQendcopy(PGconn *conn);
 /* Set blocking/nonblocking connection to the backend */
 extern int	PQsetnonblocking(PGconn *conn, int arg);
 extern int	PQisnonblocking(const PGconn *conn);
+extern int	PQisthreadsafe(void);
 
 /* Force the write buffer to be written (or at least try) */
 extern int	PQflush(PGconn *conn);
