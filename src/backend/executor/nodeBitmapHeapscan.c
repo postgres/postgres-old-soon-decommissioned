@@ -511,8 +511,6 @@ ExecInitBitmapHeapScan(BitmapHeapScan *node, EState *estate, int eflags)
 	ExecInitResultTupleSlot(estate, &scanstate->ss.ps);
 	ExecInitScanTupleSlot(estate, &scanstate->ss);
 
-	CXT1_printf("ExecInitBitmapHeapScan: context is %d\n", CurrentMemoryContext);
-
 	/*
 	 * open the base relation and acquire appropriate lock on it.
 	 */

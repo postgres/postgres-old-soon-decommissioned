@@ -123,8 +123,6 @@ ExecInitHash(Hash *node, EState *estate, int eflags)
 	/* check for unsupported flags */
 	Assert(!(eflags & (EXEC_FLAG_BACKWARD | EXEC_FLAG_MARK)));
 
-	SO_printf("ExecInitHash: initializing hash node\n");
-
 	/*
 	 * create state structure
 	 */

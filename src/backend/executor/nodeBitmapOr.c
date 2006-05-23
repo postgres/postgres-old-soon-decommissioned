@@ -53,8 +53,6 @@ ExecInitBitmapOr(BitmapOr *node, EState *estate, int eflags)
 	/* check for unsupported flags */
 	Assert(!(eflags & (EXEC_FLAG_BACKWARD | EXEC_FLAG_MARK)));
 
-	CXT1_printf("ExecInitBitmapOr: context is %d\n", CurrentMemoryContext);
-
 	/*
 	 * Set up empty vector of subplan states
 	 */

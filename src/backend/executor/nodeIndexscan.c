@@ -528,8 +528,6 @@ ExecInitIndexScan(IndexScan *node, EState *estate, int eflags)
 	 */
 	indexstate->iss_RuntimeKeysReady = false;
 
-	CXT1_printf("ExecInitIndexScan: context is %d\n", CurrentMemoryContext);
-
 	/*
 	 * build the index scan keys from the index qualification
 	 */

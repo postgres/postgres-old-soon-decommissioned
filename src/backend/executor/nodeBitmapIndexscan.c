@@ -266,8 +266,6 @@ ExecInitBitmapIndexScan(BitmapIndexScan *node, EState *estate, int eflags)
 	 */
 	indexstate->biss_RuntimeKeysReady = false;
 
-	CXT1_printf("ExecInitBitmapIndexScan: context is %d\n", CurrentMemoryContext);
-
 	/*
 	 * build the index scan keys from the index qualification
 	 */
