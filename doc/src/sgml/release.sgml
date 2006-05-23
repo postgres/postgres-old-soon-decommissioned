@@ -146,7 +146,7 @@ Fuhr)</para></listitem>
 <para>Currently this code is only used on Solaris.
 </para></listitem>
 
-<listitem><para>Fix for Bonjour on Intel Macs (Ashley Clark)</para></listitem>
+<listitem><para>Fix for OS/X Bonjour on x86 systems (Ashley Clark)</para></listitem>
 
 <listitem><para>Fix various minor memory leaks</para></listitem>
 
