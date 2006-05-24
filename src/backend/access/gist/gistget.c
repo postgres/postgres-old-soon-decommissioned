@@ -361,7 +361,7 @@ gistindex_keytest(IndexTuple tuple,
 	IncrIndexProcessed();
 
 	/*
-	 * Tuple doesn't restore after crash recovery because of inclomplete
+	 * Tuple doesn't restore after crash recovery because of incomplete
 	 * insert
 	 */
 	if (!GistPageIsLeaf(p) && GistTupleIsInvalid(tuple))
@@ -378,14 +378,15 @@ gistindex_keytest(IndexTuple tuple,
 							  key->sk_attno,
 							  giststate->tupdesc,
 							  &isNull);
-		/* is the index entry NULL? */
-		if (isNull)
-		{
-			/* XXX eventually should check if SK_ISNULL */
+
+		if ( key->sk_flags & SK_ISNULL ) {
+			/* is the compared-to datum NULL? on non-leaf page it's possible
+			   to have nulls in childs :( */
+
+			if ( isNull || !GistPageIsLeaf(p) )
+				return true;
 			return false;
-		}
-		/* is the compared-to datum NULL? */
-		if (key->sk_flags & SK_ISNULL)
+		} else if ( isNull )
 			return false;
 
 		gistdentryinit(giststate, key->sk_attno - 1, &de,
