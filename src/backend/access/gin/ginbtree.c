@@ -202,7 +202,7 @@ findParents( GinBtree btree, GinBtreeStack *stack,
 	for(;;) {
 		buffer = ReadBuffer(btree->index, blkno);
 		LockBuffer(buffer, GIN_EXCLUSIVE);
-		page = BufferGetPage(root->buffer);
+		page = BufferGetPage(buffer);
 		if ( GinPageIsLeaf(page) )
 			elog(ERROR, "Lost path");
 
@@ -224,6 +224,7 @@ findParents( GinBtree btree, GinBtreeStack *stack,
 			ptr->blkno = blkno;
 			ptr->buffer = buffer;
 			ptr->parent = root; /* it's may be wrong, but in next call we will correct */
+			ptr->off = offset;
 			stack->parent = ptr;
 			return;
 		}
