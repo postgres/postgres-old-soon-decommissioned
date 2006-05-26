@@ -472,7 +472,14 @@ typedef NameData *Name;
 
 #define NameStr(name)	((name).data)
 
-#define SQL_STR_DOUBLE(ch)	((ch) == '\'' || (ch) == '\\')
+/*
+ *	In 8.2, we are warning for \ in a non-E string if std_strings are off.
+ *	For this reason, we use E for \ strings, unless standard_conforming_strings
+ *	is on.
+ */
+#define SQL_STR_DOUBLE(ch, escape_backslash)	\
+					((ch) == '\'' || ((escape_backslash) && (ch) == '\\'))
+	
 #define ESCAPE_STRING_SYNTAX	'E'
 
 /* ----------------------------------------------------------------

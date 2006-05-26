@@ -105,24 +105,29 @@ fmtId(const char *rawid)
  * Special characters are escaped. Quote mark ' goes to '' per SQL
  * standard, other stuff goes to \ sequences.  If escapeAll is false,
  * whitespace characters are not escaped (tabs, newlines, etc.).  This
- * is appropriate for dump file output.
+ * is appropriate for dump file output.  Using E'' strings for
+ * backslashes is always safe for standard_conforming_strings on or off.
  */
 void
-appendStringLiteral(PQExpBuffer buf, const char *str, bool escapeAll)
+appendStringLiteral(PQExpBuffer buf, const char *str, bool escapeAll,
+					bool e_string_for_backslash)
 {
 	char		ch;
 	const char *p;
+	bool		is_e_string = false;
 
 	for (p = str; *p; p++)
 	{
 		ch = *p;
-		if (ch == '\\' ||
+
+		if ((e_string_for_backslash && ch == '\\') ||
 			((unsigned char) ch < (unsigned char) ' ' &&
 			 (escapeAll ||
 			  (ch != '\t' && ch != '\n' && ch != '\v' &&
 			   ch != '\f' && ch != '\r'))))
 		{
 			appendPQExpBufferChar(buf, ESCAPE_STRING_SYNTAX);
+			is_e_string = true;
 			break;
 		}
 	}
@@ -131,7 +136,7 @@ appendStringLiteral(PQExpBuffer buf, const char *str, bool escapeAll)
 	for (p = str; *p; p++)
 	{
 		ch = *p;
-		if (SQL_STR_DOUBLE(ch))
+		if (SQL_STR_DOUBLE(ch, is_e_string))
 		{
 			appendPQExpBufferChar(buf, ch);
 			appendPQExpBufferChar(buf, ch);
@@ -208,7 +213,7 @@ appendStringLiteralDQOpt(PQExpBuffer buf, const char *str,
 						 bool escapeAll, const char *dqprefix)
 {
 	if (strchr(str, '\'') == NULL && strchr(str, '\\') == NULL)
-		appendStringLiteral(buf, str, escapeAll);
+		appendStringLiteral(buf, str, escapeAll, true);
 	else
 		appendStringLiteralDQ(buf, str, dqprefix);
 }

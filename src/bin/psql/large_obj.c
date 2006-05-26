@@ -178,10 +178,11 @@ do_lo_import(const char *filename_arg, const char *comment_arg)
 
 		if (strchr(comment_arg, '\\') != NULL)
 			*bufptr++ = ESCAPE_STRING_SYNTAX;
+
 		*bufptr++ = '\'';
 		for (i = 0; i < slen; i++)
 		{
-			if (SQL_STR_DOUBLE(comment_arg[i]))
+			if (SQL_STR_DOUBLE(comment_arg[i], true))
 				*bufptr++ = comment_arg[i];
 			*bufptr++ = comment_arg[i];
 		}

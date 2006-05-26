@@ -258,11 +258,11 @@ main(int argc, char *argv[])
 				fprintf(stderr, _("Password encryption failed.\n"));
 				exit(1);
 			}
-			appendStringLiteral(&sql, encrypted_password, false);
+			appendStringLiteral(&sql, encrypted_password, false, true);
 			PQfreemem(encrypted_password);
 		}
 		else
-			appendStringLiteral(&sql, newpassword, false);
+			appendStringLiteral(&sql, newpassword, false, true);
 	}
 	if (superuser == TRI_YES)
 		appendPQExpBuffer(&sql, " SUPERUSER");

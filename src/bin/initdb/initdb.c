@@ -2103,7 +2103,8 @@ check_ok(void)
 }
 
 /*
- * Escape any single quotes or backslashes in given string
+ * Escape any single quotes or backslashes in given string;
+ * postgresql.conf always enables backslash escapes
  */
 static char *
 escape_quotes(const char *src)
@@ -2115,7 +2116,7 @@ escape_quotes(const char *src)
 
 	for (i = 0, j = 0; i < len; i++)
 	{
-		if (SQL_STR_DOUBLE(src[i]))
+		if (SQL_STR_DOUBLE(src[i], true))
 			result[j++] = src[i];
 		result[j++] = src[i];
 	}

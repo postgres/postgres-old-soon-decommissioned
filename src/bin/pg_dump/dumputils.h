@@ -17,10 +17,9 @@
 
 #include "pqexpbuffer.h"
 
-
 extern const char *fmtId(const char *identifier);
 extern void appendStringLiteral(PQExpBuffer buf, const char *str,
-					bool escapeAll);
+					bool escapeAll, bool e_string_for_backslash);
 extern void appendStringLiteralDQ(PQExpBuffer buf, const char *str,
 					  const char *dqprefix);
 extern void appendStringLiteralDQOpt(PQExpBuffer buf, const char *str,
