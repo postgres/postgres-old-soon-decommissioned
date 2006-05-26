@@ -652,7 +652,8 @@ ProcessCopyResult(PGresult *results)
 			break;
 
 		case PGRES_COPY_IN:
-			success = handleCopyIn(pset.db, pset.cur_cmd_source);
+			success = handleCopyIn(pset.db, pset.cur_cmd_source,
+								   PQbinaryTuples(results));
 			break;
 
 		default:
