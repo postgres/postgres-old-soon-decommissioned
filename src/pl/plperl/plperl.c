@@ -525,6 +525,12 @@ plperl_trigger_build_args(FunctionCallInfo fcinfo)
 	hv_store(hv, "relname", 7,
 			 newSVpv(SPI_getrelname(tdata->tg_relation), 0), 0);
 
+	hv_store(hv, "table_name", 10,
+			 newSVpv(SPI_getrelname(tdata->tg_relation), 0), 0);
+
+	hv_store(hv, "table_schema", 12,
+			 newSVpv(SPI_getnspname(tdata->tg_relation), 0), 0);
+
 	if (TRIGGER_FIRED_BEFORE(tdata->tg_event))
 		when = "BEFORE";
 	else if (TRIGGER_FIRED_AFTER(tdata->tg_event))
