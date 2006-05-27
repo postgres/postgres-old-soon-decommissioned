@@ -528,6 +528,26 @@ SELECT 'doesn''t' AS ret
       </varlistentry>
 
       <varlistentry>
+       <term><varname>$TG_table_name</varname></term>
+       <listitem>
+        <para>
+         The name of the table that caused the trigger procedure
+         to be invoked.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
+       <term><varname>$TG_table_schema</varname></term>
+       <listitem>
+        <para>
+         The schema of the table that caused the trigger procedure
+         to be invoked.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
        <term><varname>$TG_relatts</varname></term>
        <listitem>
         <para>
