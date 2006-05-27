@@ -57,7 +57,7 @@ endif
 
 
 # Force these dependencies to be known even without dependency info built:
-gram.o keywords.o: $(srcdir)/parse.h
+gram.o keywords.o parser.o: $(srcdir)/parse.h
 
 
 # gram.c, parse.h, and scan.c are in the distribution tarball, so they
