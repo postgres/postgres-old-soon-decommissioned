@@ -473,12 +473,13 @@ typedef NameData *Name;
 #define NameStr(name)	((name).data)
 
 /*
- *	In 8.2, we are warning for \ in a non-E string if std_strings are off.
- *	For this reason, we use E for \ strings, unless standard_conforming_strings
- *	is on.
+ * Support macros for escaping strings.  escape_backslash should be TRUE
+ * if generating a non-standard-conforming string.  Prefixing a string
+ * with ESCAPE_STRING_SYNTAX guarantees it is non-standard-conforming.
+ * Beware of multiple evaluation of the "ch" argument!
  */
 #define SQL_STR_DOUBLE(ch, escape_backslash)	\
-					((ch) == '\'' || ((escape_backslash) && (ch) == '\\'))
+	((ch) == '\'' || ((ch) == '\\' && (escape_backslash)))
 	
 #define ESCAPE_STRING_SYNTAX	'E'
 

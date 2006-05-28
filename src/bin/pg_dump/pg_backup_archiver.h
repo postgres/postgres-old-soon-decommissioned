@@ -326,6 +326,9 @@ extern void WriteDataChunks(ArchiveHandle *AH);
 extern teReqs TocIDRequired(ArchiveHandle *AH, DumpId id, RestoreOptions *ropt);
 extern bool checkSeek(FILE *fp);
 
+#define appendStringLiteralAHX(buf,str,AH) \
+	appendStringLiteral(buf, str, (AH)->public.encoding, (AH)->public.std_strings)
+
 /*
  * Mandatory routines for each supported format
  */

@@ -60,6 +60,10 @@ typedef struct _Archive
 	int			minRemoteVersion;		/* allowable range */
 	int			maxRemoteVersion;
 
+	/* info needed for string escaping */
+	int			encoding;		/* libpq code for client_encoding */
+	bool		std_strings;	/* standard_conforming_strings */
+
 	/* error handling */
 	bool		exit_on_error;	/* whether to exit on SQL errors... */
 	int			n_errors;		/* number of errors (if no die) */
@@ -181,5 +185,8 @@ extern int
 archprintf(Archive *AH, const char *fmt,...)
 /* This extension allows gcc to check the format string */
 __attribute__((format(printf, 2, 3)));
+
+#define appendStringLiteralAH(buf,str,AH) \
+	appendStringLiteral(buf, str, (AH)->encoding, (AH)->std_strings)
 
 #endif   /* PG_BACKUP_H */

@@ -15,15 +15,16 @@
 #ifndef DUMPUTILS_H
 #define DUMPUTILS_H
 
+#include "libpq-fe.h"
 #include "pqexpbuffer.h"
 
 extern const char *fmtId(const char *identifier);
 extern void appendStringLiteral(PQExpBuffer buf, const char *str,
-					bool escapeAll, bool e_string_for_backslash);
+								int encoding, bool std_strings);
+extern void appendStringLiteralConn(PQExpBuffer buf, const char *str,
+									PGconn *conn);
 extern void appendStringLiteralDQ(PQExpBuffer buf, const char *str,
 					  const char *dqprefix);
-extern void appendStringLiteralDQOpt(PQExpBuffer buf, const char *str,
-						 bool escapeAll, const char *dqprefix);
 extern int	parse_version(const char *versionString);
 extern bool parsePGArray(const char *atext, char ***itemarray, int *nitems);
 extern bool buildACLCommands(const char *name, const char *type,

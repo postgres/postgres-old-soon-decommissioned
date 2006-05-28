@@ -183,11 +183,12 @@ main(int argc, char *argv[])
 
 	if (comment)
 	{
+		conn = connectDatabase(dbname, host, port, username, password, progname);
+
 		printfPQExpBuffer(&sql, "COMMENT ON DATABASE %s IS ", fmtId(dbname));
-		appendStringLiteral(&sql, comment, false, true);
+		appendStringLiteralConn(&sql, comment, conn);
 		appendPQExpBuffer(&sql, ";\n");
 
-		conn = connectDatabase(dbname, host, port, username, password, progname);
 		if (echo)
 			printf("%s", sql.data);
 		result = PQexec(conn, sql.data);
