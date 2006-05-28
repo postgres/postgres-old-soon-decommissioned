@@ -2745,7 +2745,28 @@ RAISE EXCEPTION 'Nonexistent ID --> %', user_id;
      <listitem>
       <para>
        Data type <type>name</type>; the name of the table that caused the trigger
-       invocation.
+       invocation. This is now deprecated, and could disappear in a future 
+	   release. Use <literal>TG_TABLE_NAME</> instead.
+      </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry>
+     <term><varname>TG_TABLE_NAME</varname></term>
+     <listitem>
+      <para>
+       Data type <type>name</type>; the name of the table that 
+	   caused the trigger invocation.
+      </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry>
+     <term><varname>TG_TABLE_SCHEMA</varname></term>
+     <listitem>
+      <para>
+       Data type <type>name</type>; the name of the schema of the 
+	   table that caused the trigger invocation.
       </para>
      </listitem>
     </varlistentry>

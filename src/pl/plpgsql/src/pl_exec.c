@@ -539,6 +539,21 @@ plpgsql_exec_trigger(PLpgSQL_function *func,
 	var->isnull = false;
 	var->freeval = true;
 
+	var = (PLpgSQL_var *) (estate.datums[func->tg_table_name_varno]);
+	var->value = DirectFunctionCall1(namein,
+			CStringGetDatum(RelationGetRelationName(trigdata->tg_relation)));
+	var->isnull = false;
+	var->freeval = true;
+
+	var = (PLpgSQL_var *) (estate.datums[func->tg_table_schema_varno]);
+	var->value = DirectFunctionCall1(namein,
+									 CStringGetDatum(
+										 get_namespace_name(
+											 RelationGetNamespace(
+												 trigdata->tg_relation))));
+	var->isnull = false;
+	var->freeval = true;
+
 	var = (PLpgSQL_var *) (estate.datums[func->tg_nargs_varno]);
 	var->value = Int16GetDatum(trigdata->tg_trigger->tgnargs);
 	var->isnull = false;

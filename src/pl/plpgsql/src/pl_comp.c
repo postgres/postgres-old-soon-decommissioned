@@ -581,6 +581,20 @@ do_compile(FunctionCallInfo fcinfo,
 										 true);
 			function->tg_relname_varno = var->dno;
 
+			/* tg_table_name is now preferred to tg_relname */
+			var = plpgsql_build_variable("tg_table_name", 0,
+										 plpgsql_build_datatype(NAMEOID, -1),
+										 true);
+			function->tg_table_name_varno = var->dno;
+
+			
+			/* add variable tg_table_schema */
+			var = plpgsql_build_variable("tg_table_schema", 0,
+										 plpgsql_build_datatype(NAMEOID, -1),
+										 true);
+			function->tg_table_schema_varno = var->dno;
+
+			
 			/* Add the variable tg_nargs */
 			var = plpgsql_build_variable("tg_nargs", 0,
 										 plpgsql_build_datatype(INT4OID, -1),

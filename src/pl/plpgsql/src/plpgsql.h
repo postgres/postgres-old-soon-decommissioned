@@ -572,6 +572,8 @@ typedef struct PLpgSQL_function
 	int			tg_op_varno;
 	int			tg_relid_varno;
 	int			tg_relname_varno;
+	int         tg_table_name_varno;
+	int         tg_table_schema_varno;
 	int			tg_nargs_varno;
 
 	int			ndatums;
