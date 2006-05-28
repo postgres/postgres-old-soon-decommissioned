@@ -1445,8 +1445,6 @@ dumpStdStrings(Archive *AH)
 
 		check_sql_result(res, g_conn, qry->data, PGRES_TUPLES_OK);
 
-		PQclear(res);
-
 		resetPQExpBuffer(qry);
 
 		std_strings = (strcmp(PQgetvalue(res, 0, 0), "on") == 0);
@@ -1454,7 +1452,8 @@ dumpStdStrings(Archive *AH)
 		appendStringLiteral(qry, PQgetvalue(res, 0, 0), true, !std_strings);
 		appendPQExpBuffer(qry, ";\n");
 		puts(PQgetvalue(res, 0, 0));
-		
+
+		PQclear(res);
 	}
 	
 	ArchiveEntry(AH, nilCatalogId, createDumpId(),

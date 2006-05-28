@@ -364,6 +364,12 @@ PQclear(PGresult *res)
 	if (res->tuples)
 		free(res->tuples);
 
+	/* zero out the pointer fields to catch programming errors */
+	res->attDescs = NULL;
+	res->tuples = NULL;
+	res->errFields = NULL;
+	/* res->curBlock was zeroed out earlier */
+
 	/* Free the PGresult structure itself */
 	free(res);
 }
