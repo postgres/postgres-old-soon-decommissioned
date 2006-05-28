@@ -129,3 +129,4 @@ PQescapeStringConn        126
 PQescapeByteaConn         127
 PQencryptPassword         128
 PQisthreadsafe            129
+enlargePQExpBuffer        130
