@@ -881,6 +881,7 @@ describeOneTableDetails(const char *schemaname,
 							  schemaname, relationname);
 			break;
 		case 's':
+			/* not used as of 8.2, but keep it for backwards compatibility */
 			printfPQExpBuffer(&title, _("Special relation \"%s.%s\""),
 							  schemaname, relationname);
 			break;
@@ -1471,6 +1472,10 @@ listTables(const char *tabtypes, const char *pattern, bool verbose)
 
 	initPQExpBuffer(&buf);
 
+	/*
+	 * Note: as of Pg 8.2, we no longer use relkind 's', but we keep it here
+	 * for backwards compatibility.
+	 */
 	printfPQExpBuffer(&buf,
 					  "SELECT n.nspname as \"%s\",\n"
 					  "  c.relname as \"%s\",\n"

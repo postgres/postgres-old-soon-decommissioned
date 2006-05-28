@@ -1898,10 +1898,6 @@ getRelationDescription(StringInfo buffer, Oid relid)
 			appendStringInfo(buffer, _("index %s"),
 							 relname);
 			break;
-		case RELKIND_SPECIAL:
-			appendStringInfo(buffer, _("special system relation %s"),
-							 relname);
-			break;
 		case RELKIND_SEQUENCE:
 			appendStringInfo(buffer, _("sequence %s"),
 							 relname);
