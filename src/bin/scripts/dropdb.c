@@ -131,6 +131,7 @@ main(int argc, char *argv[])
 		exit(1);
 	}
 
+	PQclear(result);
 	PQfinish(conn);
 	if (!quiet)
 	{
