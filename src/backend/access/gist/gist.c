@@ -1033,7 +1033,13 @@ gistSplitByKey(Relation r, Page page, IndexTuple *itup, int len, GISTSTATE *gist
 		/*
 		 * all keys are not-null
 		 */
-		gistUserPicksplit(r, entryvec, attno, v, itup, len, giststate);
+		if ( gistUserPicksplit(r, entryvec, attno, v, itup, len, giststate) && attno+1 != r->rd_att->natts )
+			/*
+			 * Splitting on attno column is not optimized: unions of left and right
+			 * page are the same, we will try to split page by 
+			 * following columns
+			 */
+			gistSplitByKey(r, page, itup, len, giststate, v, entryvec, attno+1);
 	}
 }
 

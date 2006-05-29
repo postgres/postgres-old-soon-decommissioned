@@ -312,7 +312,7 @@ extern void GISTInitBuffer(Buffer b, uint32 f);
 extern void gistdentryinit(GISTSTATE *giststate, int nkey, GISTENTRY *e,
 			   Datum k, Relation r, Page pg, OffsetNumber o,
 			   int b, bool l, bool isNull);
-void gistUserPicksplit(Relation r, GistEntryVector *entryvec, int attno, GIST_SPLITVEC *v,
+bool gistUserPicksplit(Relation r, GistEntryVector *entryvec, int attno, GIST_SPLITVEC *v,
 				  IndexTuple *itup, int len, GISTSTATE *giststate);
 
 /* gistvacuum.c */
