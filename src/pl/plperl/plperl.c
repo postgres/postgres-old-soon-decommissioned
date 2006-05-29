@@ -771,7 +771,7 @@ plperl_create_sub(char *s, bool trusted)
 	ENTER;
 	SAVETMPS;
 	PUSHMARK(SP);
-	XPUSHs(sv_2mortal(newSVpv("my $_TD=$_[0]; shift;", 0)));
+	XPUSHs(sv_2mortal(newSVpv("our $_TD; local $_TD=$_[0]; shift;", 0)));
 	XPUSHs(sv_2mortal(newSVpv(s, 0)));
 	PUTBACK;
 
