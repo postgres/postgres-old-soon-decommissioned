@@ -189,7 +189,7 @@ findParents( GinBtree btree, GinBtreeStack *stack,
 	Assert( !GinPageIsLeaf(page) );
 
 	/* check trivial case */
-	if ( (root->off != btree->findChildPtr(btree, page, stack->blkno, InvalidOffsetNumber)) != InvalidBuffer ) {
+	if ( (root->off = btree->findChildPtr(btree, page, stack->blkno, InvalidOffsetNumber)) != InvalidOffsetNumber ) {
 		stack->parent = root;
 		return;
 	}
