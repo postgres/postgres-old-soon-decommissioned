@@ -352,7 +352,7 @@ pgarch_ArchiverCopyLoop(void)
 	 * some backend will add files onto the list of those that need archiving
 	 * while we are still copying earlier archives
 	 */
-	while (pgarch_readyXlog(xlog))
+	while (PostmasterIsAlive(true) && pgarch_readyXlog(xlog))
 	{
 		int			failures = 0;
 
