@@ -61,6 +61,8 @@
 
 #include "dblink.h"
 
+PG_MODULE_MAGIC;
+
 typedef struct remoteConn
 {
 	PGconn	   *conn;			/* Hold the remote connection */

@@ -26,6 +26,8 @@
 
 extern DLLIMPORT bool check_function_bodies;
 
+PG_MODULE_MAGIC;
+
 static bool plpgsql_firstcall = true;
 
 static void plpgsql_init_all(void);

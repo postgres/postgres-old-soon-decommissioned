@@ -88,6 +88,8 @@
  *	 that can build the final query automagically?
  */
 
+PG_MODULE_MAGIC;
+
 #define MAX_FTI_QUERY_LENGTH 8192
 
 extern Datum fti(PG_FUNCTION_ARGS);

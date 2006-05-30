@@ -11,6 +11,8 @@
 #include "commands/trigger.h"	/* -"- and triggers */
 #include "miscadmin.h"			/* for GetUserName() */
 
+PG_MODULE_MAGIC;
+
 extern Datum insert_username(PG_FUNCTION_ARGS);
 
 PG_FUNCTION_INFO_V1(insert_username);

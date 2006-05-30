@@ -45,6 +45,8 @@
 
 #include "fuzzystrmatch.h"
 
+PG_MODULE_MAGIC;
+
 /*
  * Calculates Levenshtein Distance between two strings.
  * Uses simplest and fastest cost model only, i.e. assumes a cost of 1 for

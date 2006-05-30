@@ -38,6 +38,8 @@
 #include "utils/lsyscache.h"
 #include "utils/array.h"
 
+PG_MODULE_MAGIC;
+
 enum FieldUsage
 {
 	PRIMARY = 0, NONPRIMARY, ALL, NUM_FIELDUSAGE

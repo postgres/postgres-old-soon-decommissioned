@@ -15,6 +15,8 @@
 #include "fmgr.h"
 #include "mb/pg_wchar.h"
 
+PG_MODULE_MAGIC;
+
 PG_FUNCTION_INFO_V1(iso8859_1_to_utf8);
 PG_FUNCTION_INFO_V1(utf8_to_iso8859_1);
 

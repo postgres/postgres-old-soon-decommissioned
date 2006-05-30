@@ -12,6 +12,7 @@
 #include "utils/selfuncs.h"
 #include "utils/syscache.h"
 
+PG_MODULE_MAGIC;
 
 /* compare functions */
 PG_FUNCTION_INFO_V1(ltree_cmp);

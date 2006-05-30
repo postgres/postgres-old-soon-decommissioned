@@ -17,6 +17,8 @@
 #include "../../Unicode/sjis_to_utf8.map"
 #include "../../Unicode/utf8_to_sjis.map"
 
+PG_MODULE_MAGIC;
+
 PG_FUNCTION_INFO_V1(sjis_to_utf8);
 PG_FUNCTION_INFO_V1(utf8_to_sjis);
 

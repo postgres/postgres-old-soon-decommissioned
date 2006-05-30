@@ -32,6 +32,8 @@
 #include <compile.h>
 #include <eval.h>
 
+PG_MODULE_MAGIC;
+
 /* convert Postgresql Datum or tuple into a PyObject.
  * input to Python.  Tuples are converted to dictionary
  * objects.

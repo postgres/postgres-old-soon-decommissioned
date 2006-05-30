@@ -37,6 +37,8 @@
 #include "../../Unicode/win1257_to_utf8.map"
 #include "../../Unicode/win1258_to_utf8.map"
 
+PG_MODULE_MAGIC;
+
 PG_FUNCTION_INFO_V1(win_to_utf8);
 PG_FUNCTION_INFO_V1(utf8_to_win);
 

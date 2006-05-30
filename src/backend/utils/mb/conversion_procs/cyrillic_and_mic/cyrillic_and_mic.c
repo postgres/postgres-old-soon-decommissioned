@@ -17,6 +17,8 @@
 
 #define ENCODING_GROWTH_RATE 4
 
+PG_MODULE_MAGIC;
+
 PG_FUNCTION_INFO_V1(koi8r_to_mic);
 PG_FUNCTION_INFO_V1(mic_to_koi8r);
 PG_FUNCTION_INFO_V1(iso_to_mic);

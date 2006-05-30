@@ -18,6 +18,8 @@
 
 #include "cubedata.h"
 
+PG_MODULE_MAGIC;
+
 extern int	cube_yyparse();
 extern void cube_yyerror(const char *message);
 extern void cube_scanner_init(const char *str);

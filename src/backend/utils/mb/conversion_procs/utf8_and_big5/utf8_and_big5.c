@@ -17,6 +17,8 @@
 #include "../../Unicode/big5_to_utf8.map"
 #include "../../Unicode/utf8_to_big5.map"
 
+PG_MODULE_MAGIC;
+
 PG_FUNCTION_INFO_V1(big5_to_utf8);
 PG_FUNCTION_INFO_V1(utf8_to_big5);
 

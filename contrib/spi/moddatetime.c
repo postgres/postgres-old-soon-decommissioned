@@ -17,6 +17,8 @@ OH, me, I'm Terry Mackintosh <terry@terrym.com>
 #include "executor/spi.h"		/* this is what you need to work with SPI */
 #include "commands/trigger.h"	/* -"- and triggers */
 
+PG_MODULE_MAGIC;
+
 extern Datum moddatetime(PG_FUNCTION_ARGS);
 
 PG_FUNCTION_INFO_V1(moddatetime);

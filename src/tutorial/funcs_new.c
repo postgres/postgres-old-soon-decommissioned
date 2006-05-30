@@ -18,6 +18,8 @@
 #include "utils/geo_decls.h"	/* for point type */
 
 
+PG_MODULE_MAGIC;
+
 /* These prototypes just prevent possible warnings from gcc. */
 
 Datum		add_one(PG_FUNCTION_ARGS);

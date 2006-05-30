@@ -17,6 +17,8 @@
 
 #define ENCODING_GROWTH_RATE 4
 
+PG_MODULE_MAGIC;
+
 PG_FUNCTION_INFO_V1(latin2_to_mic);
 PG_FUNCTION_INFO_V1(mic_to_latin2);
 PG_FUNCTION_INFO_V1(win1250_to_mic);

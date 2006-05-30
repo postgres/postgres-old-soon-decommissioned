@@ -6,6 +6,10 @@
 
 #include "postgres.h"
 
+#include "fmgr.h"
+
+
+PG_MODULE_MAGIC;
 
 /*
  *	This is the internal storage format for ISBNs.

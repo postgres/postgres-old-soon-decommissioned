@@ -33,6 +33,8 @@ extern DLLIMPORT bool check_function_bodies;
 /* perl stuff */
 #include "plperl.h"
 
+PG_MODULE_MAGIC;
+
 /**********************************************************************
  * The information we cache about loaded procedures
  **********************************************************************/

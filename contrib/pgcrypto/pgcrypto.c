@@ -40,6 +40,8 @@
 #include "px-crypt.h"
 #include "pgcrypto.h"
 
+PG_MODULE_MAGIC;
+
 /* private stuff */
 
 typedef int (*PFN) (const char *name, void **res);

@@ -17,6 +17,8 @@
 #include "../../Unicode/johab_to_utf8.map"
 #include "../../Unicode/utf8_to_johab.map"
 
+PG_MODULE_MAGIC;
+
 PG_FUNCTION_INFO_V1(johab_to_utf8);
 PG_FUNCTION_INFO_V1(utf8_to_johab);
 

@@ -20,6 +20,8 @@
 
 #include "fmgr.h"
 
+PG_MODULE_MAGIC;
+
 /*
  * This type encrypts it's input unless the first character is a colon.
  * The output is the encrypted form with a leading colon.  The output

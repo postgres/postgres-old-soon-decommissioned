@@ -37,6 +37,8 @@
 #include "storage/procarray.h"
 #endif
 
+PG_MODULE_MAGIC;
+
 PG_FUNCTION_INFO_V1(pgrowlocks);
 
 extern Datum pgrowlocks(PG_FUNCTION_ARGS);

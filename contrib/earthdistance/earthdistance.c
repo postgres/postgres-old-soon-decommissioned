@@ -7,6 +7,8 @@
 #include "utils/geo_decls.h"	/* for Pt */
 
 
+PG_MODULE_MAGIC;
+
 /* Earth's radius is in statute miles. */
 const double EARTH_RADIUS = 3958.747716;
 const double TWO_PI = 2.0 * M_PI;

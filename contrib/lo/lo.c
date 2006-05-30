@@ -17,6 +17,7 @@
 /* Required for triggers */
 #include "commands/trigger.h"
 
+PG_MODULE_MAGIC;
 
 #define atooid(x)  ((Oid) strtoul((x), NULL, 10))
 

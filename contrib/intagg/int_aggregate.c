@@ -34,6 +34,7 @@
 #include "utils/memutils.h"
 #include "utils/lsyscache.h"
 
+PG_MODULE_MAGIC;
 
 /*
  * This is actually a postgres version of a one dimensional array.

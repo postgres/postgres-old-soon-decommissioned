@@ -24,6 +24,8 @@ extern DLLIMPORT int	MaxFSMRelations;
 extern DLLIMPORT volatile uint32 InterruptHoldoffCount;
 #endif
 
+PG_MODULE_MAGIC;
+
 Datum		pg_freespacemap_pages(PG_FUNCTION_ARGS);
 Datum		pg_freespacemap_relations(PG_FUNCTION_ARGS);
 

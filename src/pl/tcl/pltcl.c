@@ -67,6 +67,7 @@ utf_e2u(unsigned char *src)
 #define  UTF_E2U(x)  (x)
 #endif   /* PLTCL_UTF */
 
+PG_MODULE_MAGIC;
 
 /**********************************************************************
  * The information we cache about loaded procedures

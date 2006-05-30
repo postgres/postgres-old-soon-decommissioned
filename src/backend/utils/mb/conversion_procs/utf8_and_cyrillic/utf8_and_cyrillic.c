@@ -17,6 +17,8 @@
 #include "../../Unicode/utf8_to_koi8r.map"
 #include "../../Unicode/koi8r_to_utf8.map"
 
+PG_MODULE_MAGIC;
+
 PG_FUNCTION_INFO_V1(utf8_to_koi8r);
 PG_FUNCTION_INFO_V1(koi8r_to_utf8);
 
