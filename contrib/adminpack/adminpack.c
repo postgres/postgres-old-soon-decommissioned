@@ -8,7 +8,7 @@
  * Author: Andreas Pflug <pgadmin@pse-consulting.de>
  *
  * IDENTIFICATION
- *	  $PostgreSQL: $
+ *	  $PostgreSQL$
  *
  *-------------------------------------------------------------------------
  */
@@ -41,6 +41,8 @@
 extern DLLIMPORT char *DataDir;
 extern DLLIMPORT char *Log_directory;
 extern DLLIMPORT char *Log_filename;
+
+PG_MODULE_MAGIC;
 
 Datum pg_file_write(PG_FUNCTION_ARGS);
 Datum pg_file_rename(PG_FUNCTION_ARGS);
