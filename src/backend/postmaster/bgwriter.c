@@ -613,7 +613,7 @@ RequestCheckpoint(bool waitforit, bool warnontime)
 		if (bgs->ckpt_failed != old_failed)
 			ereport(ERROR,
 					(errmsg("checkpoint request failed"),
-					 errhint("Consult the server log for details.")));
+					 errhint("Consult recent messages in the server log for details.")));
 	}
 }
 
