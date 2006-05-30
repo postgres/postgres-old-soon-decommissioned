@@ -122,8 +122,8 @@ namesend(PG_FUNCTION_ARGS)
  *
  *		namelt	- returns 1 iff a < b
  *		namele	- returns 1 iff a <= b
- *		namegt	- returns 1 iff a < b
- *		namege	- returns 1 iff a <= b
+ *		namegt	- returns 1 iff a > b
+ *		namege	- returns 1 iff a >= b
  *
  */
 Datum
