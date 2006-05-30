@@ -5,6 +5,7 @@ top_builddir = ..
 include $(top_builddir)/src/Makefile.global
 
 WANTED_DIRS = \
+		adminpack	\
 		btree_gist	\
 		chkpass		\
 		cube		\
