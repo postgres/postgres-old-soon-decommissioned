@@ -1426,5 +1426,11 @@ AC_CONFIG_HEADERS([src/include/pg_config.h],
 echo >src/include/stamp-h
 ])
 
+#
+# Warn about unknown options
+#
+
+PGAC_CHECK_ARGS
+
 AC_OUTPUT
 
