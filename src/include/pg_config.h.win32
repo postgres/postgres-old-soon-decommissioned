@@ -26,6 +26,9 @@
 #define HAVE_RANDOM
 #endif
 
+#undef inline
+#define inline __inline
+
 #define INT64_FORMAT "%I64d"
 #define HAVE_DECL_VSNPRINTF 1
 
