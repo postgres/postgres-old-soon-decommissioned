@@ -9,7 +9,6 @@
 #include "utils/geo_decls.h"	/* includes <math.h> */
 #include "executor/executor.h"	/* For GetAttributeByName */
 #include "commands/sequence.h"	/* for nextval() */
-#include "pgmagic.h"
 
 #define P_MAXDIG 12
 #define LDELIM			'('
@@ -28,7 +27,11 @@ extern int	oldstyle_length(int n, text *t);
 extern Datum int44in(PG_FUNCTION_ARGS);
 extern Datum int44out(PG_FUNCTION_ARGS);
 
+#ifdef PG_MODULE_MAGIC
 PG_MODULE_MAGIC;
+#endif
+
+
 /*
  * Distance from a point to a path
  */
