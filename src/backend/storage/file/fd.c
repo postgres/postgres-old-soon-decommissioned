@@ -649,7 +649,7 @@ AllocateVfd(void)
 	Index		i;
 	File		file;
 
-	DO_DB(elog(LOG, "AllocateVfd. Size %d", SizeVfdCache));
+	DO_DB(elog(LOG, "AllocateVfd. Size %lu", SizeVfdCache));
 
 	Assert(SizeVfdCache > 0);	/* InitFileAccess not called? */
 
