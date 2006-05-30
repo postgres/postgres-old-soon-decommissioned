@@ -97,7 +97,7 @@ MultiExecHash(HashState *node)
 
 	/* must provide our own instrumentation support */
 	if (node->ps.instrument)
-		InstrStopNodeMulti(node->ps.instrument, hashtable->totalTuples);
+		InstrStopNode(node->ps.instrument, hashtable->totalTuples);
 
 	/*
 	 * We do not return the hash table directly because it's not a subtype of

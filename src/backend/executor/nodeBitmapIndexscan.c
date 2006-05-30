@@ -112,7 +112,7 @@ MultiExecBitmapIndexScan(BitmapIndexScanState *node)
 
 	/* must provide our own instrumentation support */
 	if (node->ss.ps.instrument)
-		InstrStopNodeMulti(node->ss.ps.instrument, nTuples);
+		InstrStopNode(node->ss.ps.instrument, nTuples);
 
 	return (Node *) tbm;
 }

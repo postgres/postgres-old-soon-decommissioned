@@ -423,7 +423,7 @@ ExecProcNode(PlanState *node)
 	}
 
 	if (node->instrument)
-		InstrStopNode(node->instrument, !TupIsNull(result));
+		InstrStopNode(node->instrument, TupIsNull(result) ? 0 : 1 );
 
 	return result;
 }

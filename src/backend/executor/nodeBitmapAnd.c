@@ -161,7 +161,7 @@ MultiExecBitmapAnd(BitmapAndState *node)
 
 	/* must provide our own instrumentation support */
 	if (node->ps.instrument)
-		InstrStopNodeMulti(node->ps.instrument, 0 /* XXX */ );
+		InstrStopNode(node->ps.instrument, 0 /* XXX */ );
 
 	return (Node *) result;
 }

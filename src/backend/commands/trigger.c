@@ -1306,7 +1306,7 @@ ExecCallTriggerFunc(TriggerData *trigdata,
 	 * one "tuple returned" (really the number of firings).
 	 */
 	if (instr)
-		InstrStopNode(instr + tgindx, true);
+		InstrStopNode(instr + tgindx, 1);
 
 	return (HeapTuple) DatumGetPointer(result);
 }
@@ -2154,7 +2154,7 @@ AfterTriggerExecute(AfterTriggerEvent event,
 	 * one "tuple returned" (really the number of firings).
 	 */
 	if (instr)
-		InstrStopNode(instr + tgindx, true);
+		InstrStopNode(instr + tgindx, 1);
 }
 
 
