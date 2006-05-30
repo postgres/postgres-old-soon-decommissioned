@@ -32,8 +32,7 @@ typedef enum StatMsgType
 	PGSTAT_MTYPE_RESETCOUNTER,
 	PGSTAT_MTYPE_AUTOVAC_START,
 	PGSTAT_MTYPE_VACUUM,
-	PGSTAT_MTYPE_ANALYZE,
-	PGSTAT_MTYPE_REWRITE
+	PGSTAT_MTYPE_ANALYZE
 } StatMsgType;
 
 /* ----------
@@ -107,15 +106,6 @@ typedef struct PgStat_MsgDummy
 	PgStat_MsgHdr m_hdr;
 	char		m_dummy[512];
 } PgStat_MsgDummy;
-
-/* ----------
- * PgStat_MsgRewrite            Sent by backends to cause a rewrite of the stats file
- * ----------
- */
-typedef struct Pgstat_MsgRewrite
-{
-	PgStat_MsgHdr m_hdr;
-} PgStat_MsgRewrite;
 
 /* ----------
  * PgStat_MsgBestart			Sent by the backend on startup
