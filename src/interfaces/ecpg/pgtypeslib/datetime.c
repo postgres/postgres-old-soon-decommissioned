@@ -19,16 +19,16 @@ PGTYPESdate_from_timestamp(timestamp dt)
 
 	dDate = 0;					/* suppress compiler warning */
 
-	if (TIMESTAMP_NOT_FINITE(dt))
-		return
-
+	if (!TIMESTAMP_NOT_FINITE(dt))
+	{
 #ifdef HAVE_INT64_TIMESTAMP
 		/* Microseconds to days */
-			dDate = (dt / USECS_PER_DAY);
+		dDate = (dt / USECS_PER_DAY);
 #else
 		/* Seconds to days */
-			dDate = (dt / (double) SECS_PER_DAY);
+		dDate = (dt / (double) SECS_PER_DAY);
 #endif
+	}
 
 	return dDate;
 }
