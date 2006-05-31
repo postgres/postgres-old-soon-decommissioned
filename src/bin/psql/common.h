@@ -23,6 +23,12 @@
 #define atooid(x)  ((Oid) strtoul((x), NULL, 10))
 
 /*
+ *	We use this to prefix strings with E'' that we know are already safe,
+ *	so we don't get an escape_string_warning.
+ */
+#define	NEED_E_STR(str)		((strchr(str, '\\') && !standard_strings()) ? ESCAPE_STRING_SYNTAX : ' ')
+
+/*
  * Safer versions of some standard C library functions. If an
  * out-of-memory condition occurs, these functions will bail out
  * safely; therefore, their return value is guaranteed to be non-NULL.

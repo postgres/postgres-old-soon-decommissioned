@@ -185,6 +185,8 @@ main(int argc, char *argv[])
 	{
 		conn = connectDatabase(dbname, host, port, username, password, progname);
 
+		executeCommand(conn, "SET escape_string_warning TO 'off'", progname, false);
+
 		printfPQExpBuffer(&sql, "COMMENT ON DATABASE %s IS ", fmtId(dbname));
 		appendStringLiteralConn(&sql, comment, conn);
 		appendPQExpBuffer(&sql, ";\n");

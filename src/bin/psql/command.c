@@ -681,8 +681,9 @@ exec_command(const char *cmd,
 				PGresult   *res;
 
 				initPQExpBuffer(&buf);
-				printfPQExpBuffer(&buf, "ALTER USER %s PASSWORD '%s';",
-								  fmtId(user), encrypted_password);
+				printfPQExpBuffer(&buf, "ALTER USER %s PASSWORD %c'%s';",
+								  fmtId(user), NEED_E_STR(encrypted_password),
+								  encrypted_password);
 				res = PSQLexec(buf.data, false);
 				termPQExpBuffer(&buf);
 				if (!res)

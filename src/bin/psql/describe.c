@@ -1907,14 +1907,17 @@ processNamePattern(PQExpBuffer buf, const char *pattern,
 			if (altnamevar)
 			{
 				appendPQExpBuffer(buf, "(%s ~ ", namevar);
+				appendPQExpBufferChar(buf, NEED_E_STR(namebuf.data));
 				appendStringLiteralConn(buf, namebuf.data, pset.db);
 				appendPQExpBuffer(buf, "\n        OR %s ~ ", altnamevar);
+				appendPQExpBufferChar(buf, NEED_E_STR(namebuf.data));
 				appendStringLiteralConn(buf, namebuf.data, pset.db);
 				appendPQExpBuffer(buf, ")\n");
 			}
 			else
 			{
 				appendPQExpBuffer(buf, "%s ~ ", namevar);
+				appendPQExpBufferChar(buf, NEED_E_STR(namebuf.data));
 				appendStringLiteralConn(buf, namebuf.data, pset.db);
 				appendPQExpBufferChar(buf, '\n');
 			}
@@ -1938,6 +1941,7 @@ processNamePattern(PQExpBuffer buf, const char *pattern,
 		{
 			WHEREAND();
 			appendPQExpBuffer(buf, "%s ~ ", schemavar);
+			appendPQExpBufferChar(buf, NEED_E_STR(schemabuf.data));
 			appendStringLiteralConn(buf, schemabuf.data, pset.db);
 			appendPQExpBufferChar(buf, '\n');
 		}

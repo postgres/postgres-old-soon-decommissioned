@@ -338,6 +338,8 @@ main(int argc, char *argv[])
 		printf("SET client_encoding = '%s';\n",
 			   pg_encoding_to_char(encoding));
 		printf("SET standard_conforming_strings = %s;\n", std_strings);
+		if (strcmp(std_strings, "off") == 0)
+			printf("SET escape_string_warning = 'off';\n");
 		printf("\n");
 
 		/* Dump roles (users) */

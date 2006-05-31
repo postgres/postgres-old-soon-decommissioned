@@ -243,6 +243,8 @@ main(int argc, char *argv[])
 	printfPQExpBuffer(&sql, "CREATE ROLE %s", fmtId(newuser));
 	if (newpassword)
 	{
+		executeCommand(conn, "SET escape_string_warning TO 'off'", progname, false);
+
 		if (encrypted == TRI_YES)
 			appendPQExpBuffer(&sql, " ENCRYPTED");
 		if (encrypted == TRI_NO)
