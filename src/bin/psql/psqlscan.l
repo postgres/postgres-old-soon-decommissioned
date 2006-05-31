@@ -861,6 +861,9 @@ other			.
 
 {quote}			{ return LEXRES_OK; }
 
+    /* We don't need a state here because we are already in a string */
+{xqdouble}		{ emit("'", 1); }
+
 "\\n"			{ appendPQExpBufferChar(output_buf, '\n'); }
 "\\t"			{ appendPQExpBufferChar(output_buf, '\t'); }
 "\\b"			{ appendPQExpBufferChar(output_buf, '\b'); }
