@@ -314,14 +314,14 @@ extern int no_such_variable
 /*-------------------------------------------------------------------------
  *		Support for verifying backend compatibility of loaded modules
  *
- * If a loaded module includes the macro call
+ * We require dynamically-loaded modules to include the macro call
  *		PG_MODULE_MAGIC;
- * (put this in only one source file), then we can check for obvious
- * incompatibility, such as being compiled for a different major PostgreSQL
- * version.
+ * so that we can check for obvious incompatibility, such as being compiled
+ * for a different major PostgreSQL version.
  *
  * To compile with versions of PostgreSQL that do not support this,
- * you may put an #ifdef/#endif test around it.
+ * you may put an #ifdef/#endif test around it.  Note that in a multiple-
+ * source-file module, the macro call should only appear once.
  * 
  * The specific items included in the magic block are intended to be ones that
  * are custom-configurable and especially likely to break dynamically loaded
