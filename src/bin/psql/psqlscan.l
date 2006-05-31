@@ -857,12 +857,14 @@ other			.
 }
 
 <xslashquote>{
-	/* single-quoted text: copy literally except for backslash sequences */
+	/*
+	 * single-quoted text: copy literally except for '' and backslash
+	 * sequences
+	 */
 
 {quote}			{ return LEXRES_OK; }
 
-    /* We don't need a state here because we are already in a string */
-{xqdouble}		{ emit("'", 1); }
+{xqdouble}		{ appendPQExpBufferChar(output_buf, '\''); }
 
 "\\n"			{ appendPQExpBufferChar(output_buf, '\n'); }
 "\\t"			{ appendPQExpBufferChar(output_buf, '\t'); }
