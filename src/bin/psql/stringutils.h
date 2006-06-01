@@ -15,6 +15,7 @@ extern char *strtokx(const char *s,
 		const char *delim,
 		const char *quote,
 		char escape,
+		bool e_strings,
 		bool del_quotes,
 		int encoding);
 
