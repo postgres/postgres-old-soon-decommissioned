@@ -191,6 +191,21 @@ appendStringLiteralConn(PQExpBuffer buf, const char *str, PGconn *conn)
 {
 	size_t	length = strlen(str);
 
+	/*
+	 * XXX This is a kluge to silence escape_string_warning in our utility
+	 * programs.  It should go away someday.
+	 */
+	if (strchr(str, '\\') != NULL && PQserverVersion(conn) >= 80100)
+	{
+		/* ensure we are not adjacent to an identifier */
+		if (buf->len > 0 && buf->data[buf->len-1] != ' ')
+			appendPQExpBufferChar(buf, ' ');
+		appendPQExpBufferChar(buf, ESCAPE_STRING_SYNTAX);
+		appendStringLiteral(buf, str, PQclientEncoding(conn), false);
+		return;
+	}
+	/* XXX end kluge */
+
 	if (!enlargePQExpBuffer(buf, 2 * length + 2))
 		return;
 	appendPQExpBufferChar(buf, '\'');
