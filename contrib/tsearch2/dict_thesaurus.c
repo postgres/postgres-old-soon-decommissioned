@@ -728,10 +728,11 @@ thesaurus_lexize(PG_FUNCTION_ARGS)
 
 			info = findVariant( info, stored, curpos, infos, nlex);
 		}
-
-	} else {
+	} else if ( res ) { /* stop-word */
 		LexemeInfo	*infos = findTheLexeme(d, NULL);
 		info = findVariant( NULL, stored, curpos, &infos, 1);
+	} else {
+		info = NULL; /* word isn't recognized */
 	}
 
 	dstate->private = (void*)info;
