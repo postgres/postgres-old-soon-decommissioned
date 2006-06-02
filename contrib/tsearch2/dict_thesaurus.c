@@ -331,9 +331,9 @@ compileTheLexeme(DictThesaurus *d) {
 
 		if ( !(ptr && ptr->lexeme) ) {
 			if ( !ptr )
-				elog(NOTICE,"Thesaurus: word '%s' isn't recognized by subdictionary", d->wrds[i].lexeme);
+				elog(ERROR,"Thesaurus: word '%s' isn't recognized by subdictionary", d->wrds[i].lexeme);
 			else
-				elog(ERROR,"Thesaurus: word '%s' is recognized as stop-word, assign any stop-word", d->wrds[i].lexeme);
+				elog(NOTICE,"Thesaurus: word '%s' is recognized as stop-word, assign any stop-word", d->wrds[i].lexeme);
 
 			newwrds = addCompiledLexeme( newwrds, &nnw, &tnm, NULL, d->wrds[i].entries, 0);
 		} else {
