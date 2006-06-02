@@ -330,8 +330,12 @@ compileTheLexeme(DictThesaurus *d) {
 			);
 
 		if ( !(ptr && ptr->lexeme) ) {
+			if ( !ptr )
+				elog(NOTICE,"Thesaurus: word '%s' isn't recognized by subdictionary", d->wrds[i].lexeme);
+			else
+				elog(ERROR,"Thesaurus: word '%s' is recognized as stop-word, assign any stop-word", d->wrds[i].lexeme);
+
 			newwrds = addCompiledLexeme( newwrds, &nnw, &tnm, NULL, d->wrds[i].entries, 0);
-			elog(NOTICE,"Thesaurus: word '%s' isn't recognized by subdictionary or it's a stop-word, assign any non-recognized word", d->wrds[i].lexeme);
 		} else {
 			while( ptr->lexeme ) {
 				TSLexeme	*remptr = ptr+1;
@@ -420,7 +424,7 @@ compileTheSubstitute(DictThesaurus *d) {
 			);
 
 			reml = lexized;
-			if ( lexized ) {
+			if ( lexized && lexized->lexeme ) {
 				int toset = (lexized->lexeme && outptr != d->subst[i].res ) ? (outptr - d->subst[i].res)  : -1;
 
 				while( lexized->lexeme ) {
@@ -443,12 +447,17 @@ compileTheSubstitute(DictThesaurus *d) {
 
 				if ( toset > 0)
 					d->subst[i].res[toset].flags |= TSL_ADDPOS;
+			} else {
+				elog(NOTICE,"Thesaurus: word '%s' isn't recognized by subdictionary or it's a stop-word, ignored", inptr->lexeme);
 			}
 
 			if ( inptr->lexeme )
 				free( inptr->lexeme );
 			inptr++;
 		}
+
+		if ( outptr == d->subst[i].res )
+			elog(ERROR,"Thesaurus: all words in subsitution aren't recognized by subdictionary");
 
 		d->subst[i].reslen = outptr - d->subst[i].res;
 
