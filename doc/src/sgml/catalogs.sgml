@@ -1954,7 +1954,9 @@
       <entry><structfield>encoding</structfield></entry>
       <entry><type>int4</type></entry>
       <entry></entry>
-      <entry>Character encoding for this database</entry>
+      <entry>Character encoding for this database
+          (<function>pg_encoding_to_char()</function> can translate
+           this number to the encoding name)</entry>
      </row>
 
      <row>
