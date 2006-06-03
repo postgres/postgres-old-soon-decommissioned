@@ -610,7 +610,7 @@ msgstr "Кластер баз данных был инициализирован без HAVE_INT64_TIMESTAMP, но серв
 
 #: access/transam/xlog.c:3298
 msgid "The database cluster was initialized with HAVE_INT64_TIMESTAMP but the server was compiled without HAVE_INT64_TIMESTAMP."
-msgstr "Кластер баз данных был инициализирован с PG_CONTROL_VERSION, но сервер был скомпилирован без PG_CONTROL_VERSION."
+msgstr "Кластер баз данных был инициализирован с HAVE_INT64_TIMESTAMP, но сервер был скомпилирован без HAVE_INT64_TIMESTAMP."
 
 #: access/transam/xlog.c:3306
 #, c-format
