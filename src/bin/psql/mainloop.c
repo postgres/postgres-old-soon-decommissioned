@@ -306,7 +306,7 @@ MainLoop(FILE *source)
 			if (first_query_scan && pset.cur_cmd_interactive)
 			{
 				/* Sending a command (PSQL_CMD_SEND) zeros the length */
-				if (scan_result == PSCAN_BACKSLASH && query_buf->len != 0)
+				if (scan_result == PSCAN_BACKSLASH && history_buf->len != 0)
 					pg_write_history(line);
 				else
 					pg_append_history(line, history_buf);
