@@ -41,8 +41,8 @@ MainLoop(FILE *source)
 	char	   *line;			/* current line of input */
 	int			added_nl_pos;
 	bool		success;
-	bool		line_saved_in_history;
-	
+
+	volatile bool		line_saved_in_history;
 	volatile int successResult = EXIT_SUCCESS;
 	volatile backslashResult slashCmdStatus = PSQL_CMD_UNKNOWN;
 	volatile promptStatus_t prompt_status = PROMPT_READY;
