@@ -1831,7 +1831,7 @@ archive_command = 'copy "%p" /mnt/server/archivedir/"%f"'  # Windows
        <para>
         Sets the planner's estimate of the cost of processing
         each index entry during an index scan.
-        The default is 0.001.
+        The default is 0.005.
        </para>
       </listitem>
      </varlistentry>
