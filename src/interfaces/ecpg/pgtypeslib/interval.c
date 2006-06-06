@@ -793,6 +793,7 @@ PGTYPESinterval_from_asc(char *str, char **endptr)
 		return NULL;
 	}
 
+	errno = 0;
 	return result;
 }
 
