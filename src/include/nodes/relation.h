@@ -407,6 +407,9 @@ typedef struct Path
  *
  * 'isjoininner' is TRUE if the path is a nestloop inner scan (that is,
  * some of the index conditions are join rather than restriction clauses).
+ * Note that the path costs will be calculated differently from a plain
+ * indexscan in this case, and in addition there's a special 'rows' value
+ * different from the parent RelOptInfo's (see below).
  *
  * 'indexscandir' is one of:
  *		ForwardScanDirection: forward scan of an ordered index

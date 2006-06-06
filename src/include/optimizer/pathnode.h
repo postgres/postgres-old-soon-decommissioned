@@ -33,7 +33,7 @@ extern IndexPath *create_index_path(PlannerInfo *root,
 				  List *clause_groups,
 				  List *pathkeys,
 				  ScanDirection indexscandir,
-				  bool isjoininner);
+				  RelOptInfo *outer_rel);
 extern BitmapHeapPath *create_bitmap_heap_path(PlannerInfo *root,
 						RelOptInfo *rel,
 						Path *bitmapqual,

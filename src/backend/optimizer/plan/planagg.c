@@ -373,7 +373,7 @@ build_minmax_path(PlannerInfo *root, RelOptInfo *rel, MinMaxAggInfo *info)
 									 restrictclauses,
 									 NIL,
 									 indexscandir,
-									 false);
+									 NULL);
 
 		/*
 		 * Estimate actual cost of fetching just one row.
