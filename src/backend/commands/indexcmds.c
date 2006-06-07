@@ -1108,7 +1108,7 @@ ReindexDatabase(const char *databaseName, bool do_system, bool do_user)
 		/* functions in indexes may want a snapshot set */
 		ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
 		if (reindex_relation(relid, true))
-			ereport(NOTICE,
+			ereport(INFO,
 					(errmsg("table \"%s\" was reindexed",
 							get_rel_name(relid))));
 		CommitTransactionCommand();
