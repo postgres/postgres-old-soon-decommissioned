@@ -157,7 +157,7 @@ tzload(const char *name, struct state * sp)
 		}
 		if (doaccess && access(name, R_OK) != 0)
 			return -1;
-		if ((fid = open(name, O_RDONLY | PG_BINARY)) == -1)
+		if ((fid = open(name, O_RDONLY | PG_BINARY, 0)) == -1)
 			return -1;
 	}
 	{

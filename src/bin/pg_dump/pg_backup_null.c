@@ -25,9 +25,7 @@
 #include "pg_backup.h"
 #include "pg_backup_archiver.h"
 
-#ifndef WIN32_CLIENT_ONLY
 #include <unistd.h>				/* for dup */
-#endif
 
 #include "libpq/libpq-fs.h"
 

@@ -11,10 +11,7 @@
 
 #include <math.h>
 #include <signal.h>
-
-#ifndef WIN32_CLIENT_ONLY
 #include <unistd.h>
-#endif
 
 #ifndef WIN32
 #include <sys/ioctl.h>			/* for ioctl() */
@@ -641,10 +638,10 @@ print_aligned_text(const char *title, const char *const * headers,
 		for (ptr = footers; *ptr; ptr++)
 			fprintf(fout, "%s\n", *ptr);
 
-#ifndef __MINGW32__
+#ifndef WIN32
 
 	/*
-	 * for some reason MinGW outputs an extra newline, so this supresses it
+	 * for some reason MinGW (and MSVC) outputs an extra newline, so this supresses it
 	 */
 	fputc('\n', fout);
 #endif

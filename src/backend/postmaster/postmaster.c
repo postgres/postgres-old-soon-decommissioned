@@ -1121,7 +1121,7 @@ pmdaemonize(void)
 		ExitPostmaster(1);
 	}
 #endif
-	i = open(NULL_DEV, O_RDWR);
+	i = open(NULL_DEV, O_RDWR, 0);
 	dup2(i, 0);
 	dup2(i, 1);
 	dup2(i, 2);

@@ -153,7 +153,7 @@ SysLoggerMain(int argc, char *argv[])
 	 */
 	if (redirection_done)
 	{
-		int			fd = open(NULL_DEV, O_WRONLY);
+		int			fd = open(NULL_DEV, O_WRONLY, 0);
 
 		/*
 		 * The closes might look redundant, but they are not: we want to be

@@ -22,10 +22,8 @@
 #ifndef GETADDRINFO_H
 #define GETADDRINFO_H
 
-#ifndef WIN32_CLIENT_ONLY
 #include <sys/socket.h>
 #include <netdb.h>
-#endif
 
 
 /* Various macros that ought to be in <netdb.h>, but might not be */
@@ -42,7 +40,7 @@
 #define EAI_MEMORY		(-10)
 #define EAI_SYSTEM		(-11)
 #else							/* WIN32 */
-#if defined(WIN32_CLIENT_ONLY)
+#ifdef WIN32_ONLY_COMPILER
 #define WSA_NOT_ENOUGH_MEMORY   (WSAENOBUFS)
 #define WSATYPE_NOT_FOUND       (WSABASEERR+109)
 #endif

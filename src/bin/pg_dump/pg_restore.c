@@ -53,9 +53,7 @@
 #include <termios.h>
 #endif
 
-#ifndef WIN32_CLIENT_ONLY
 #include <unistd.h>
-#endif
 
 #include "getopt_long.h"
 

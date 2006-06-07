@@ -1,7 +1,6 @@
 /* $PostgreSQL$ */
 
-#include <windows.h>
-#include <stdio.h>
+#include "postgres.h"
 
 char	   *dlerror(void);
 int			dlclose(void *handle);

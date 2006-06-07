@@ -14,12 +14,8 @@
 
 #include "c.h"
 
-#ifdef WIN32_CLIENT_ONLY
-#undef ERROR
-#else
 #include <pwd.h>
-#endif
-#if defined(ENABLE_THREAD_SAFETY)
+#if defined(FRONTEND) && defined(ENABLE_THREAD_SAFETY)
 #include <pthread.h>
 #endif
 

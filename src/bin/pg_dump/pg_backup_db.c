@@ -15,9 +15,7 @@
 #include "pg_backup_db.h"
 #include "dumputils.h"
 
-#ifndef WIN32_CLIENT_ONLY
 #include <unistd.h>
-#endif
 
 #include <ctype.h>
 

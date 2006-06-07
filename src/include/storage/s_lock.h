@@ -784,6 +784,24 @@ extern slock_t pg_atomic_cas(volatile slock_t *lock, slock_t with,
 #endif
 
 
+#ifdef WIN32_ONLY_COMPILER
+typedef LONG slock_t;
+
+#define HAS_TEST_AND_SET
+#define TAS(lock) (InterlockedCompareExchange(lock, 1, 0))
+
+#define SPIN_DELAY() spin_delay()
+
+static __forceinline void
+spin_delay(void)
+{
+	/* See comment for gcc code. Same code, MASM syntax */
+	__asm rep nop;
+}
+
+#endif
+
+  
 #endif	/* !defined(HAS_TEST_AND_SET) */
 
 

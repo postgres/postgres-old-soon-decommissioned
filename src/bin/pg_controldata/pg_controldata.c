@@ -104,7 +104,7 @@ main(int argc, char *argv[])
 
 	snprintf(ControlFilePath, MAXPGPATH, "%s/global/pg_control", DataDir);
 
-	if ((fd = open(ControlFilePath, O_RDONLY)) == -1)
+	if ((fd = open(ControlFilePath, O_RDONLY, 0)) == -1)
 	{
 		fprintf(stderr, _("%s: could not open file \"%s\" for reading: %s\n"),
 				progname, ControlFilePath, strerror(errno));

@@ -44,10 +44,8 @@
 
 #include "c.h"
 
-#ifndef WIN32_CLIENT_ONLY
 #include <netinet/in.h>
 #include <ctype.h>
-#endif
 
 /*
  * Check whether "cp" is a valid ascii representation

@@ -26,7 +26,7 @@
 #include "prompt.h"
 #include "stringutils.h"
 
-#if defined(WIN32) && (!defined(__MINGW32__))
+#if defined(WIN32) && !defined(S_ISDIR)
 #define __S_ISTYPE(mode, mask)	(((mode) & S_IFMT) == (mask))
 #define S_ISDIR(mode)	 __S_ISTYPE((mode), S_IFDIR)
 #endif

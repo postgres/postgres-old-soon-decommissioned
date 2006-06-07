@@ -16,7 +16,11 @@
 
 #include <sys/stat.h>
 
+#ifndef WIN32_ONLY_COMPILER
 #include "dynloader.h"
+#else
+#include "port/dynloader/win32.h"
+#endif
 #include "miscadmin.h"
 #include "utils/dynamic_loader.h"
 

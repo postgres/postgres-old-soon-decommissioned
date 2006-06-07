@@ -20,9 +20,7 @@
 #include <fcntl.h>
 #include <ctype.h>
 #include <time.h>
-#ifndef WIN32_CLIENT_ONLY
 #include <unistd.h>
-#endif
 
 #ifndef HAVE_STRDUP
 #include "strdup.h"

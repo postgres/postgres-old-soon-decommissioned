@@ -34,10 +34,8 @@
 #include <signal.h>
 #include <time.h>
 
-#ifndef WIN32_CLIENT_ONLY
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#endif
 
 #ifdef WIN32
 #include "win32.h"

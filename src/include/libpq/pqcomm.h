@@ -16,21 +16,12 @@
 #ifndef PQCOMM_H
 #define PQCOMM_H
 
-#ifdef WIN32
-#include <winsock.h>
-/* workaround for clashing defines of "ERROR" */
-#ifdef ELOG_H
-#undef ERROR
-#define ERROR	PGERROR
-#endif
-#else							/* not WIN32 */
 #include <sys/socket.h>
 #include <netdb.h>
 #ifdef HAVE_SYS_UN_H
 #include <sys/un.h>
 #endif
 #include <netinet/in.h>
-#endif   /* not WIN32 */
 
 #ifdef HAVE_STRUCT_SOCKADDR_STORAGE
 

@@ -13,9 +13,7 @@
 #include "utils/builtins.h"
 #endif
 
-#ifndef WIN32_CLIENT_ONLY
 #include <unistd.h>
-#endif
 
 #include "mb/pg_wchar.h"
 #include <ctype.h>

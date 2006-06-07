@@ -80,6 +80,14 @@
 #define HAVE_FINITE 1
 #endif
 
+/* Visual C++ etc lacks NAN, and won't accept 0.0/0.0.  NAN definition from 
+ * http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vclang/html/vclrfNotNumberNANItems.asp
+ */
+#if defined(WIN32) && !defined(NAN)
+static const uint32 nan[2] = {0xffffffff, 0x7fffffff};
+#define NAN (*(const double *) nan)
+#endif
+
 /* not sure what the following should be, but better to make it over-sufficient */
 #define MAXFLOATWIDTH	64
 #define MAXDOUBLEWIDTH	128
