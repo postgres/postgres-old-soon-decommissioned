@@ -47,7 +47,7 @@ dbf_open(char *file, int flags)
 		return (dbhead *) DBF_ERROR;
 	}
 
-	if ((file_no = open(file, flags)) == -1)
+	if ((file_no = open(file, flags, 0)) == -1)
 	{
 		free(fieldc);
 		free(head);
@@ -250,7 +250,7 @@ dbf_open_new(char *name, int flags)
 	}
 	else
 	{
-		if ((dbh->db_fd = open(name, flags)) == -1)
+		if ((dbh->db_fd = open(name, flags, 0)) == -1)
 		{
 			free(dbh);
 			return (dbhead *) DBF_ERROR;
