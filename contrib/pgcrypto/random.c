@@ -82,10 +82,10 @@ try_dev_random(uint8 *dst)
 	int			fd;
 	int			res;
 
-	fd = open("/dev/urandom", O_RDONLY);
+	fd = open("/dev/urandom", O_RDONLY, 0);
 	if (fd == -1)
 	{
-		fd = open("/dev/random", O_RDONLY);
+		fd = open("/dev/random", O_RDONLY, 0);
 		if (fd == -1)
 			return dst;
 	}
