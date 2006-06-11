@@ -7,7 +7,6 @@
  */
 #include "postgres_fe.h"
 #include "common.h"
-#include "pqexpbuffer.h"
 #include "input.h"
 #include "print.h"
 #include "help.h"

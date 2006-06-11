@@ -43,7 +43,6 @@
 
 #include "postgres_fe.h"
 #include "tab-complete.h"
-#include "pqexpbuffer.h"
 #include "input.h"
 
 /* If we don't have this, we might as well forget about the whole thing: */
@@ -51,6 +50,7 @@
 
 #include <ctype.h>
 #include "libpq-fe.h"
+#include "pqexpbuffer.h"
 #include "common.h"
 #include "settings.h"
 

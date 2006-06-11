@@ -1361,7 +1361,7 @@ do_edit(const char *filename_arg, PQExpBuffer query_buf)
 		}
 		else
 		{
-			/* read file back in */
+			/* read file back into query_buf */
 			char		line[1024];
 
 			resetPQExpBuffer(query_buf);
@@ -1374,14 +1374,6 @@ do_edit(const char *filename_arg, PQExpBuffer query_buf)
 				error = true;
 			}
 
-#ifdef USE_READLINE
-#ifdef HAVE_REPLACE_HISTORY_ENTRY
-
-			replace_history_entry(where_history(), query_buf->data, NULL);
-#else
-			add_history(query_buf->data);
-#endif
-#endif
 			fclose(stream);
 		}
 
