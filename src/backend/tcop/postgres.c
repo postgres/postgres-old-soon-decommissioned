@@ -3344,11 +3344,17 @@ PostgresMain(int argc, char *argv[], const char *username)
 				/* start an xact for this function invocation */
 				initialize_command();
 
+				/*
+				 * Note: we may at this point be inside an aborted
+				 * transaction.  We can't throw error for that until
+				 * we've finished reading the function-call message, so
+				 * HandleFunctionRequest() must check for it after doing so.
+				 * Be careful not to do anything that assumes we're inside a
+				 * valid transaction here.
+				 */
+
 				/* switch back to message context */
 				MemoryContextSwitchTo(MessageContext);
-
-				/* set snapshot in case function needs one */
-				ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
 
 				if (HandleFunctionRequest(&input_message) == EOF)
 				{
