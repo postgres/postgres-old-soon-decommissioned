@@ -117,6 +117,9 @@ main(int argc, char *argv[])
 						 argv[0], err);
 			exit(1);
 		}
+
+        /* In case of general protection fault, don't show GUI popup box */
+        SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX);
 	}
 #endif
 
