@@ -116,6 +116,7 @@ dolqinside		[^$]+
 \.\.			{ return K_DOTDOT;			}
 alias			{ return K_ALIAS;			}
 begin			{ return K_BEGIN;			}
+by				{ return K_BY;   			}
 close			{ return K_CLOSE;			}
 constant		{ return K_CONSTANT;		}
 continue		{ return K_CONTINUE;		}
