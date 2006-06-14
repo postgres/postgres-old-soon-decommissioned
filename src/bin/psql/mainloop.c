@@ -17,11 +17,6 @@
 #include "psqlscan.h"
 #include "settings.h"
 
-#ifndef WIN32
-#include <setjmp.h>
-sigjmp_buf	main_loop_jmp;
-#endif
-
 
 /*
  * Main processing loop for reading lines of input
@@ -80,16 +75,14 @@ MainLoop(FILE *source)
 	while (successResult == EXIT_SUCCESS)
 	{
 		/*
-		 * Welcome code for Control-C
+		 * Clean up after a previous Control-C
 		 */
 		if (cancel_pressed)
 		{
 			if (!pset.cur_cmd_interactive)
 			{
 				/*
-				 * You get here if you stopped a script with Ctrl-C and a
-				 * query cancel was issued. In that case we don't do the
-				 * longjmp, so the query routine can finish nicely.
+				 * You get here if you stopped a script with Ctrl-C.
 				 */
 				successResult = EXIT_USER;
 				break;
@@ -98,18 +91,24 @@ MainLoop(FILE *source)
 			cancel_pressed = false;
 		}
 
-#ifndef WIN32
-		if (sigsetjmp(main_loop_jmp, 1) != 0)
+		/*
+		 * Establish longjmp destination for exiting from wait-for-input.
+		 * We must re-do this each time through the loop for safety, since
+		 * the jmpbuf might get changed during command execution.
+		 */
+		if (sigsetjmp(sigint_interrupt_jmp, 1) != 0)
 		{
 			/* got here with longjmp */
 
 			/* reset parsing state */
-			resetPQExpBuffer(query_buf);
 			psql_scan_finish(scan_state);
 			psql_scan_reset(scan_state);
+			resetPQExpBuffer(query_buf);
+			resetPQExpBuffer(history_buf);
 			count_eof = 0;
 			slashCmdStatus = PSQL_CMD_UNKNOWN;
 			prompt_status = PROMPT_READY;
+			cancel_pressed = false;
 
 			if (pset.cur_cmd_interactive)
 				putc('\n', stdout);
@@ -119,14 +118,6 @@ MainLoop(FILE *source)
 				break;
 			}
 		}
-
-		/*
-		 * establish the control-C handler only after main_loop_jmp is ready
-		 */
-		pqsignal(SIGINT, handle_sigint);		/* control-C => cancel */
-#else							/* WIN32 */
-		setup_cancel_handler();
-#endif
 
 		fflush(stdout);
 
@@ -360,14 +351,13 @@ MainLoop(FILE *source)
 	}
 
 	/*
-	 * Reset SIGINT handler because main_loop_jmp will be invalid as soon as
-	 * we exit this routine.  If there is an outer MainLoop instance, it will
-	 * re-enable ^C catching as soon as it gets back to the top of its loop
-	 * and resets main_loop_jmp to point to itself.
+	 * Let's just make real sure the SIGINT handler won't try to use
+	 * sigint_interrupt_jmp after we exit this routine.  If there is an outer
+	 * MainLoop instance, it will reset sigint_interrupt_jmp to point to
+	 * itself at the top of its loop, before any further interactive input
+	 * happens.
 	 */
-#ifndef WIN32
-	pqsignal(SIGINT, SIG_DFL);
-#endif
+	sigint_interrupt_enabled = false;
 
 	destroyPQExpBuffer(query_buf);
 	destroyPQExpBuffer(previous_buf);

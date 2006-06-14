@@ -134,7 +134,6 @@ main(int argc, char *argv[])
 
 #ifdef WIN32
 	setvbuf(stderr, NULL, _IONBF, 0);
-	setup_win32_locks();
 #endif
 	setDecimalLocale();
 	pset.cur_cmd_source = stdin;
@@ -370,6 +369,9 @@ main(int argc, char *argv[])
 			initializeInput(options.no_readline ? 0 : 1);
 		if (options.action_string)		/* -f - was used */
 			pset.inputfile = "<stdin>";
+
+		/* establish control-C handling for interactive operation */
+		setup_cancel_handler();
 
 		successResult = MainLoop(stdin);
 	}

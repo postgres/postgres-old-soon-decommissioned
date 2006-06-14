@@ -663,6 +663,11 @@ describeTableDetails(const char *pattern, bool verbose)
 			PQclear(res);
 			return false;
 		}
+		if (cancel_pressed)
+		{
+			PQclear(res);
+			return false;
+		}
 	}
 
 	PQclear(res);

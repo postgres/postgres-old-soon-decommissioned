@@ -127,7 +127,11 @@ PrintVariables(VariableSpace space)
 	struct _variable *ptr;
 
 	for (ptr = space->next; ptr; ptr = ptr->next)
+	{
 		printf("%s = '%s'\n", ptr->name, ptr->value);
+		if (cancel_pressed)
+			break;
+	}
 }
 
 bool
