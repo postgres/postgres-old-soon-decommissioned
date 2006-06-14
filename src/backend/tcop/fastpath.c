@@ -382,6 +382,9 @@ HandleFunctionRequest(StringInfo msgBuf)
 		retval = (Datum) 0;
 	}
 
+	/* ensure we do at least one CHECK_FOR_INTERRUPTS per function call */
+	CHECK_FOR_INTERRUPTS();
+
 	SendFunctionResult(retval, fcinfo.isnull, fip->rettype, rformat);
 
 	return 0;
