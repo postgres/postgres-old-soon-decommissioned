@@ -478,6 +478,7 @@ static bool InstallXLogFileSegment(uint32 *log, uint32 *seg, char *tmppath,
 					   bool use_lock);
 static int	XLogFileOpen(uint32 log, uint32 seg);
 static int	XLogFileRead(uint32 log, uint32 seg, int emode);
+static void	XLogFileClose(void);
 static bool RestoreArchivedFile(char *path, const char *xlogfname,
 					const char *recovername, off_t expectedSize);
 static int	PreallocXlogFiles(XLogRecPtr endptr);
@@ -1384,14 +1385,7 @@ XLogWrite(XLogwrtRqst WriteRqst, bool flexible)
 			 */
 			Assert(npages == 0);
 			if (openLogFile >= 0)
-			{
-				if (close(openLogFile))
-					ereport(PANIC,
-							(errcode_for_file_access(),
-						errmsg("could not close log file %u, segment %u: %m",
-							   openLogId, openLogSeg)));
-				openLogFile = -1;
-			}
+				XLogFileClose();
 			XLByteToPrevSeg(LogwrtResult.Write, openLogId, openLogSeg);
 
 			/* create/use new log file */
@@ -1567,14 +1561,7 @@ XLogWrite(XLogwrtRqst WriteRqst, bool flexible)
 		{
 			if (openLogFile >= 0 &&
 				!XLByteInPrevSeg(LogwrtResult.Write, openLogId, openLogSeg))
-			{
-				if (close(openLogFile))
-					ereport(PANIC,
-							(errcode_for_file_access(),
-						errmsg("could not close log file %u, segment %u: %m",
-							   openLogId, openLogSeg)));
-				openLogFile = -1;
-			}
+				XLogFileClose();
 			if (openLogFile < 0)
 			{
 				XLByteToPrevSeg(LogwrtResult.Write, openLogId, openLogSeg);
@@ -2150,6 +2137,34 @@ XLogFileRead(uint32 log, uint32 seg, int emode)
 		   errmsg("could not open file \"%s\" (log file %u, segment %u): %m",
 				  path, log, seg)));
 	return -1;
+}
+
+/*
+ * Close the current logfile segment for writing.
+ */
+static void
+XLogFileClose(void)
+{
+	Assert(openLogFile >= 0);
+
+#ifdef _POSIX_ADVISORY_INFO
+	/*
+	 * WAL caches will not be accessed in the future, so we advise OS to
+	 * free them. But we will not do so if WAL archiving is active,
+	 * because archivers might use the caches to read the WAL segment.
+	 * While O_DIRECT works for O_SYNC, posix_fadvise() works for fsync()
+	 * and O_SYNC, and some platforms only have posix_fadvise().
+	 */
+	if (!XLogArchivingActive())
+		posix_fadvise(openLogFile, 0, 0, POSIX_FADV_DONTNEED);
+#endif
+
+	if (close(openLogFile))
+		ereport(PANIC,
+			(errcode_for_file_access(),
+			errmsg("could not close log file %u, segment %u: %m",
+				   openLogId, openLogSeg)));
+	openLogFile = -1;
 }
 
 /*
@@ -5609,14 +5624,7 @@ assign_xlog_sync_method(const char *method, bool doit, GucSource source)
 						 errmsg("could not fsync log file %u, segment %u: %m",
 								openLogId, openLogSeg)));
 			if (open_sync_bit != new_sync_bit)
-			{
-				if (close(openLogFile))
-					ereport(PANIC,
-							(errcode_for_file_access(),
-						errmsg("could not close log file %u, segment %u: %m",
-							   openLogId, openLogSeg)));
-				openLogFile = -1;
-			}
+				XLogFileClose();
 		}
 		sync_method = new_sync_method;
 		open_sync_bit = new_sync_bit;
