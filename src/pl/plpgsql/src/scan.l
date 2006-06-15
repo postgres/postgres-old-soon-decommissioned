@@ -129,6 +129,7 @@ else			{ return K_ELSE;			}
 elseif          { return K_ELSIF;           }
 elsif           { return K_ELSIF;           }
 end				{ return K_END;				}
+strict			{ return K_STRICT;	    	}
 exception		{ return K_EXCEPTION;		}
 execute			{ return K_EXECUTE;			}
 exit			{ return K_EXIT;			}

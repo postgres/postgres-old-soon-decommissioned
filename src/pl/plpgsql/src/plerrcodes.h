@@ -722,3 +722,13 @@
 {
 	"index_corrupted", ERRCODE_INDEX_CORRUPTED
 },
+
+{
+	"no_data_found", ERRCODE_NO_DATA
+},
+
+{
+	"too_many_rows", ERRCODE_CARDINALITY_VIOLATION
+},
+
+

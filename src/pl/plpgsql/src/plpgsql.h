@@ -432,6 +432,7 @@ typedef struct
 {								/* SELECT ... INTO statement		*/
 	int			cmd_type;
 	int			lineno;
+	bool		strict;
 	PLpgSQL_rec *rec;
 	PLpgSQL_row *row;
 	PLpgSQL_expr *query;
