@@ -60,7 +60,6 @@ typedef struct catcache
 	 * searches, each of which will result in loading a negative entry
 	 */
 	long		cc_invals;		/* # of entries invalidated from cache */
-	long		cc_discards;	/* # of entries discarded due to overflow */
 	long		cc_lsearches;	/* total # list-searches */
 	long		cc_lhits;		/* # of matches against existing lists */
 #endif
@@ -75,11 +74,10 @@ typedef struct catctup
 	CatCache   *my_cache;		/* link to owning catcache */
 
 	/*
-	 * Each tuple in a cache is a member of two Dllists: one lists all the
-	 * elements in all the caches in LRU order, and the other lists just the
-	 * elements in one hashbucket of one cache, also in LRU order.
+	 * Each tuple in a cache is a member of a Dllist that stores the elements
+	 * of its hash bucket.  We keep each Dllist in LRU order to speed repeated
+	 * lookups.
 	 */
-	Dlelem		lrulist_elem;	/* list member of global LRU list */
 	Dlelem		cache_elem;		/* list member of per-bucket list */
 
 	/*
@@ -125,9 +123,8 @@ typedef struct catclist
 	 * table rows satisfying the partial key.  (Note: none of these will be
 	 * negative cache entries.)
 	 *
-	 * A CatCList is only a member of a per-cache list; we do not do separate
-	 * LRU management for CatCLists.  See CatalogCacheCleanup() for the
-	 * details of the management algorithm.
+	 * A CatCList is only a member of a per-cache list; we do not currently
+	 * divide them into hash buckets.
 	 *
 	 * A list marked "dead" must not be returned by subsequent searches.
 	 * However, it won't be physically deleted from the cache until its
@@ -143,7 +140,6 @@ typedef struct catclist
 	int			refcount;		/* number of active references */
 	bool		dead;			/* dead but not yet removed? */
 	bool		ordered;		/* members listed in index order? */
-	bool		touched;		/* used since last CatalogCacheCleanup? */
 	short		nkeys;			/* number of lookup keys specified */
 	uint32		hash_value;		/* hash value for lookup keys */
 	HeapTupleData tuple;		/* header for tuple holding keys */
@@ -156,8 +152,6 @@ typedef struct catcacheheader
 {
 	CatCache   *ch_caches;		/* head of list of CatCache structs */
 	int			ch_ntup;		/* # of tuples in all caches */
-	int			ch_maxtup;		/* max # of tuples allowed (LRU) */
-	Dllist		ch_lrulist;		/* overall LRU list, most recent first */
 } CatCacheHeader;
 
 
@@ -169,7 +163,8 @@ extern void AtEOXact_CatCache(bool isCommit);
 
 extern CatCache *InitCatCache(int id, Oid reloid, Oid indexoid,
 			 int reloidattr,
-			 int nkeys, const int *key);
+			 int nkeys, const int *key,
+			 int nbuckets);
 extern void InitCatCachePhase2(CatCache *cache);
 
 extern HeapTuple SearchCatCache(CatCache *cache,
