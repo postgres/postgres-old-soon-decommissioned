@@ -973,10 +973,14 @@ SET ENABLE_SEQSCAN TO OFF;
         library is first used.  However, the time to start each new
         server process may increase slightly, even if that process never
         uses the library.  So this parameter is recommended only for
-        libraries that will be used in most sessions.  The <quote>magic
-        block</> required in all PostgreSQL-supported libraries is checked
-        to guarantee compatibility.  For this reason, non-PostgreSQL
-        libraries cannot be loaded in this way.
+        libraries that will be used in most sessions. 
+       </para>
+
+       <para>
+        Every  PostgreSQL-supported library has a <quote>magic
+        block</> that is checked to guarantee compatibility.  
+        For this reason, non-PostgreSQL libraries cannot be 
+        loaded in this way.
        </para>
       </listitem>
      </varlistentry>
