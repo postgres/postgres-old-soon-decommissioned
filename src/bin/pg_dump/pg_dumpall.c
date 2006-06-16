@@ -888,7 +888,15 @@ dumpCreateDB(PGconn *conn)
 			appendPQExpBuffer(buf, " ENCODING = ");
 			appendStringLiteralConn(buf, dbencoding, conn);
 
-			/* Output tablespace if it isn't default */
+			/*
+			 *	Output tablespace if it isn't the default.  For default, it
+			 *	uses the default from the template database.  If tablespace
+			 *	is specified and tablespace creation failed earlier,
+			 *	(e.g. no such directory), the database creation will fail
+			 *	too.  One solution would be to use 'SET default_tablespace'
+			 *	like we do in pg_dump for setting non-default database
+			 *	locations.
+			 */
 			if (strcmp(dbtablespace, "pg_default") != 0)
 				appendPQExpBuffer(buf, " TABLESPACE = %s",
 								  fmtId(dbtablespace));

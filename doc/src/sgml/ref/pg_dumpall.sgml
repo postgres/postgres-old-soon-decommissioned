@@ -377,6 +377,13 @@ PostgreSQL documentation
    databases.
   </para>
 
+  <para>
+   <application>pg_dumpall</application> requires all needed
+   tablespace directories to exist before the restore or
+   database creation will fail for databases in non-default
+   locations.
+  </para>
+
  </refsect1>
 
 
