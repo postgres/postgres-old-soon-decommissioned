@@ -4075,15 +4075,14 @@ DropCastStmt: DROP CAST opt_if_exists '(' Typename AS Typename ')' opt_drop_beha
 					n->sourcetype = $5;
 					n->targettype = $7;
 					n->behavior = $9;
-					n->missing_ok =
+					n->missing_ok = $3;
 					$$ = (Node *)n;
 				}
 		;
 
-opt_if_exists: IF_P EXISTS { $$ = true; }
-               | /* empty */ { $$ = false; }
-        ;
-
+opt_if_exists: IF_P EXISTS						{ $$ = true; }
+		| /*EMPTY*/								{ $$ = false; }
+		;
 
 
 /*****************************************************************************
