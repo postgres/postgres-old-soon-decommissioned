@@ -974,7 +974,7 @@ SET ENABLE_SEQSCAN TO OFF;
         server process may increase slightly, even if that process never
         uses the library.  So this parameter is recommended only for
         libraries that will be used in most sessions.  The <quote>magic
-        block</> present in all PostgreSQL-supported libraries is checked
+        block</> required in all PostgreSQL-supported libraries is checked
         to guarantee compatibility.  For this reason, non-PostgreSQL
         libraries cannot be loaded in this way.
        </para>
