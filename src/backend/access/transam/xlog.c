@@ -2147,7 +2147,7 @@ XLogFileClose(void)
 {
 	Assert(openLogFile >= 0);
 
-#ifdef _POSIX_ADVISORY_INFO
+#ifdef POSIX_FADV_DONTNEED
 	/*
 	 * WAL caches will not be accessed in the future, so we advise OS to
 	 * free them. But we will not do so if WAL archiving is active,
