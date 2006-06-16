@@ -986,12 +986,12 @@ ProcessUtility(Node *parsetree,
 					case OBJECT_RULE:
 						/* RemoveRewriteRule checks permissions */
 						RemoveRewriteRule(relId, stmt->property,
-										  stmt->behavior);
+										  stmt->behavior, stmt->missing_ok);
 						break;
 					case OBJECT_TRIGGER:
 						/* DropTrigger checks permissions */
 						DropTrigger(relId, stmt->property,
-									stmt->behavior);
+									stmt->behavior, stmt->missing_ok);
 						break;
 					default:
 						elog(ERROR, "unrecognized object type: %d",

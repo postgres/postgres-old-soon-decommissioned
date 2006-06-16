@@ -403,10 +403,25 @@ DropTableSpace(DropTableSpaceStmt *stmt)
 	tuple = heap_getnext(scandesc, ForwardScanDirection);
 
 	if (!HeapTupleIsValid(tuple))
-		ereport(ERROR,
-				(errcode(ERRCODE_UNDEFINED_OBJECT),
-				 errmsg("tablespace \"%s\" does not exist",
-						tablespacename)));
+	{
+		if ( ! stmt->missing_ok )
+		{
+			ereport(ERROR,
+					(errcode(ERRCODE_UNDEFINED_OBJECT),
+					 errmsg("tablespace \"%s\" does not exist",
+							tablespacename)));
+		}
+		else
+		{
+			ereport(NOTICE,
+					(errmsg("tablespace \"%s\" does not exist ... skipping",
+							tablespacename)));
+			/* XXX I assume I need one or both of these next two calls */
+			heap_endscan(scandesc);
+			heap_close(rel, NoLock);
+		}
+		return;
+	}
 
 	tablespaceoid = HeapTupleGetOid(tuple);
 

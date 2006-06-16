@@ -108,7 +108,7 @@ typedef struct TriggerData
 extern Oid	CreateTrigger(CreateTrigStmt *stmt, bool forConstraint);
 
 extern void DropTrigger(Oid relid, const char *trigname,
-			DropBehavior behavior);
+			DropBehavior behavior, bool missing_ok);
 extern void RemoveTriggerById(Oid trigOid);
 
 extern void renametrig(Oid relid, const char *oldname, const char *newname);

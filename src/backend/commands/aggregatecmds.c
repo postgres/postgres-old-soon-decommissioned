@@ -211,7 +211,21 @@ RemoveAggregate(RemoveFuncStmt *stmt)
 	ObjectAddress object;
 
 	/* Look up function and make sure it's an aggregate */
-	procOid = LookupAggNameTypeNames(aggName, aggArgs, false);
+	procOid = LookupAggNameTypeNames(aggName, aggArgs, stmt->missing_ok);
+	
+	if (!OidIsValid(procOid))
+	{
+		/* we only get here if stmt->missing_ok is true */
+
+		/* XXX might need better message here */
+
+		ereport(NOTICE,
+				(errmsg("aggregate %s does not exist ... skipping",
+					   stmt->name)));
+		
+
+		return;
+	}
 
 	/*
 	 * Find the function tuple, do permissions and validity checks

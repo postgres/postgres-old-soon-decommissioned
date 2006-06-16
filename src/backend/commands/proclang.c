@@ -396,9 +396,18 @@ DropProceduralLanguage(DropPLangStmt *stmt)
 							 CStringGetDatum(languageName),
 							 0, 0, 0);
 	if (!HeapTupleIsValid(langTup))
-		ereport(ERROR,
-				(errcode(ERRCODE_UNDEFINED_OBJECT),
-				 errmsg("language \"%s\" does not exist", languageName)));
+	{
+		if (! stmt->missing_ok)
+			ereport(ERROR,
+					(errcode(ERRCODE_UNDEFINED_OBJECT),
+					 errmsg("language \"%s\" does not exist", languageName)));
+		else 
+			ereport(NOTICE,
+					(errmsg("language \"%s\" does not exist ... skipping", 
+							languageName)));
+ 
+		return;
+	}
 
 	object.classId = LanguageRelationId;
 	object.objectId = HeapTupleGetOid(langTup);
