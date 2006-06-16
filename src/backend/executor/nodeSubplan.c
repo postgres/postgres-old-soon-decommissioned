@@ -865,14 +865,14 @@ ExecInitSubPlan(SubPlanState *node, EState *estate, int eflags)
 		 */
 		tupDesc = ExecTypeFromTL(leftptlist, false);
 		slot = ExecAllocTableSlot(tupTable);
-		ExecSetSlotDescriptor(slot, tupDesc, true);
+		ExecSetSlotDescriptor(slot, tupDesc);
 		node->projLeft = ExecBuildProjectionInfo(lefttlist,
 												 NULL,
 												 slot);
 
 		tupDesc = ExecTypeFromTL(rightptlist, false);
 		slot = ExecAllocTableSlot(tupTable);
-		ExecSetSlotDescriptor(slot, tupDesc, true);
+		ExecSetSlotDescriptor(slot, tupDesc);
 		node->projRight = ExecBuildProjectionInfo(righttlist,
 												  node->innerecontext,
 												  slot);

@@ -850,7 +850,8 @@ ExpandIndirectionStar(ParseState *pstate, A_Indirection *ind)
 		((Var *) expr)->vartype == RECORDOID)
 		tupleDesc = expandRecordVariable(pstate, (Var *) expr, 0);
 	else if (get_expr_result_type(expr, NULL, &tupleDesc) != TYPEFUNC_COMPOSITE)
-		tupleDesc = lookup_rowtype_tupdesc(exprType(expr), exprTypmod(expr));
+		tupleDesc = lookup_rowtype_tupdesc_copy(exprType(expr),
+												exprTypmod(expr));
 	Assert(tupleDesc);
 
 	/* Generate a list of references to the individual fields */
@@ -1027,7 +1028,8 @@ expandRecordVariable(ParseState *pstate, Var *var, int levelsup)
 	 * appropriate error message while failing.
 	 */
 	if (get_expr_result_type(expr, NULL, &tupleDesc) != TYPEFUNC_COMPOSITE)
-		tupleDesc = lookup_rowtype_tupdesc(exprType(expr), exprTypmod(expr));
+		tupleDesc = lookup_rowtype_tupdesc_copy(exprType(expr),
+												exprTypmod(expr));
 
 	return tupleDesc;
 }

@@ -1418,12 +1418,19 @@ rowtype_field_matches(Oid rowtypeid, int fieldnum,
 		return true;
 	tupdesc = lookup_rowtype_tupdesc(rowtypeid, -1);
 	if (fieldnum <= 0 || fieldnum > tupdesc->natts)
+	{
+		ReleaseTupleDesc(tupdesc);
 		return false;
+	}
 	attr = tupdesc->attrs[fieldnum - 1];
 	if (attr->attisdropped ||
 		attr->atttypid != expectedtype ||
 		attr->atttypmod != expectedtypmod)
+	{
+		ReleaseTupleDesc(tupdesc);
 		return false;
+	}
+	ReleaseTupleDesc(tupdesc);
 	return true;
 }
 

@@ -524,7 +524,7 @@ ExecInitTidScan(TidScan *node, EState *estate, int eflags)
 	/*
 	 * get the scan type from the relation descriptor.
 	 */
-	ExecAssignScanType(&tidstate->ss, RelationGetDescr(currentRelation), false);
+	ExecAssignScanType(&tidstate->ss, RelationGetDescr(currentRelation));
 
 	/*
 	 * Initialize result tuple type and projection info.

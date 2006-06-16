@@ -19,6 +19,7 @@
 #ifndef RESOWNER_H
 #define RESOWNER_H
 
+#include "access/tupdesc.h"
 #include "storage/buf.h"
 #include "utils/catcache.h"
 #include "utils/rel.h"
@@ -106,5 +107,12 @@ extern void ResourceOwnerRememberRelationRef(ResourceOwner owner,
 								 Relation rel);
 extern void ResourceOwnerForgetRelationRef(ResourceOwner owner,
 							   Relation rel);
+
+/* support for tupledesc refcount management */
+extern void ResourceOwnerEnlargeTupleDescs(ResourceOwner owner);
+extern void ResourceOwnerRememberTupleDesc(ResourceOwner owner,
+										   TupleDesc tupdesc);
+extern void ResourceOwnerForgetTupleDesc(ResourceOwner owner,
+										 TupleDesc tupdesc);
 
 #endif   /* RESOWNER_H */

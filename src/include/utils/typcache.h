@@ -58,7 +58,7 @@ typedef struct TypeCacheEntry
 	/*
 	 * Tuple descriptor if it's a composite type (row type).  NULL if not
 	 * composite or information hasn't yet been requested.  (NOTE: this is
-	 * actually just a link to information maintained by relcache.c.)
+	 * a reference-counted tupledesc.)
 	 */
 	TupleDesc	tupDesc;
 } TypeCacheEntry;
@@ -78,6 +78,8 @@ extern TupleDesc lookup_rowtype_tupdesc(Oid type_id, int32 typmod);
 
 extern TupleDesc lookup_rowtype_tupdesc_noerror(Oid type_id, int32 typmod,
 							   bool noError);
+
+extern TupleDesc lookup_rowtype_tupdesc_copy(Oid type_id, int32 typmod);
 
 extern void assign_record_type_typmod(TupleDesc tupDesc);
 

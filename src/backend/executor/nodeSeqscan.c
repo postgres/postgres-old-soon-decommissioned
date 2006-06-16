@@ -159,7 +159,7 @@ InitScanRelation(SeqScanState *node, EState *estate)
 	node->ss_currentRelation = currentRelation;
 	node->ss_currentScanDesc = currentScanDesc;
 
-	ExecAssignScanType(node, RelationGetDescr(currentRelation), false);
+	ExecAssignScanType(node, RelationGetDescr(currentRelation));
 }
 
 

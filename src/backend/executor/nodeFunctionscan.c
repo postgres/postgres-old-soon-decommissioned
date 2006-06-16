@@ -220,7 +220,7 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate, int eflags)
 	BlessTupleDesc(tupdesc);
 
 	scanstate->tupdesc = tupdesc;
-	ExecAssignScanType(&scanstate->ss, tupdesc, false);
+	ExecAssignScanType(&scanstate->ss, tupdesc);
 
 	/*
 	 * Other node-specific setup

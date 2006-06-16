@@ -892,7 +892,10 @@ toast_flatten_tuple_attribute(Datum value,
 	 * If nothing to untoast, just return the original tuple.
 	 */
 	if (!need_change)
+	{
+		ReleaseTupleDesc(tupleDesc);
 		return value;
+	}
 
 	/*
 	 * Calculate the new size of the tuple.  Header size should not change,
@@ -929,6 +932,7 @@ toast_flatten_tuple_attribute(Datum value,
 	for (i = 0; i < numAttrs; i++)
 		if (toast_free[i])
 			pfree(DatumGetPointer(toast_values[i]));
+	ReleaseTupleDesc(tupleDesc);
 
 	return PointerGetDatum(new_data);
 }

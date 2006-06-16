@@ -2637,6 +2637,9 @@ ATRewriteTable(AlteredTableInfo *tab, Oid OIDNewHeap)
 
 		MemoryContextSwitchTo(oldCxt);
 		heap_endscan(scan);
+
+		ExecDropSingleTupleTableSlot(oldslot);
+		ExecDropSingleTupleTableSlot(newslot);
 	}
 
 	FreeExecutorState(estate);

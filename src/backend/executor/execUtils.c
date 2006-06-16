@@ -427,12 +427,11 @@ ExecAssignExprContext(EState *estate, PlanState *planstate)
  * ----------------
  */
 void
-ExecAssignResultType(PlanState *planstate,
-					 TupleDesc tupDesc, bool shouldFree)
+ExecAssignResultType(PlanState *planstate, TupleDesc tupDesc)
 {
 	TupleTableSlot *slot = planstate->ps_ResultTupleSlot;
 
-	ExecSetSlotDescriptor(slot, tupDesc, shouldFree);
+	ExecSetSlotDescriptor(slot, tupDesc);
 }
 
 /* ----------------
@@ -461,7 +460,7 @@ ExecAssignResultTypeFromTL(PlanState *planstate)
 	 * to set up planstate->targetlist ...
 	 */
 	tupDesc = ExecTypeFromTL(planstate->plan->targetlist, hasoid);
-	ExecAssignResultType(planstate, tupDesc, true);
+	ExecAssignResultType(planstate, tupDesc);
 }
 
 /* ----------------
@@ -659,12 +658,11 @@ ExecGetScanType(ScanState *scanstate)
  * ----------------
  */
 void
-ExecAssignScanType(ScanState *scanstate,
-				   TupleDesc tupDesc, bool shouldFree)
+ExecAssignScanType(ScanState *scanstate, TupleDesc tupDesc)
 {
 	TupleTableSlot *slot = scanstate->ss_ScanTupleSlot;
 
-	ExecSetSlotDescriptor(slot, tupDesc, shouldFree);
+	ExecSetSlotDescriptor(slot, tupDesc);
 }
 
 /* ----------------
@@ -680,7 +678,7 @@ ExecAssignScanTypeFromOuterPlan(ScanState *scanstate)
 	outerPlan = outerPlanState(scanstate);
 	tupDesc = ExecGetResultType(outerPlan);
 
-	ExecAssignScanType(scanstate, tupDesc, false);
+	ExecAssignScanType(scanstate, tupDesc);
 }
 
 

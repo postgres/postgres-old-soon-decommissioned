@@ -883,6 +883,7 @@ PLy_function_build_args(FunctionCallInfo fcinfo, PLyProcedure * proc)
 					tmptup.t_data = td;
 
 					arg = PLyDict_FromTuple(&(proc->args[i]), &tmptup, tupdesc);
+					ReleaseTupleDesc(tupdesc);
 				}
 			}
 			else

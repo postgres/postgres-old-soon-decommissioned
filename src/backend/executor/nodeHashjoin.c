@@ -436,8 +436,7 @@ ExecInitHashJoin(HashJoin *node, EState *estate, int eflags)
 	ExecAssignProjectionInfo(&hjstate->js.ps);
 
 	ExecSetSlotDescriptor(hjstate->hj_OuterTupleSlot,
-						  ExecGetResultType(outerPlanState(hjstate)),
-						  false);
+						  ExecGetResultType(outerPlanState(hjstate)));
 
 	/*
 	 * initialize hash-specific info

@@ -772,6 +772,8 @@ coerce_record_to_complex(ParseState *pstate, Node *node,
 						format_type_be(targetTypeId)),
 				 errdetail("Input has too many columns.")));
 
+	ReleaseTupleDesc(tupdesc);
+
 	rowexpr = makeNode(RowExpr);
 	rowexpr->args = newargs;
 	rowexpr->row_typeid = targetTypeId;

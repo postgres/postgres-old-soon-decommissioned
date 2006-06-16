@@ -79,7 +79,7 @@ ExecInitJunkFilter(List *targetList, bool hasoid, TupleTableSlot *slot)
 	 * Use the given slot, or make a new slot if we weren't given one.
 	 */
 	if (slot)
-		ExecSetSlotDescriptor(slot, cleanTupType, false);
+		ExecSetSlotDescriptor(slot, cleanTupType);
 	else
 		slot = MakeSingleTupleTableSlot(cleanTupType);
 
@@ -150,7 +150,7 @@ ExecInitJunkFilterConversion(List *targetList,
 	 * Use the given slot, or make a new slot if we weren't given one.
 	 */
 	if (slot)
-		ExecSetSlotDescriptor(slot, cleanTupType, false);
+		ExecSetSlotDescriptor(slot, cleanTupType);
 	else
 		slot = MakeSingleTupleTableSlot(cleanTupType);
 

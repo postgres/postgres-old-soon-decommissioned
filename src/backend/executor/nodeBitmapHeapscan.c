@@ -538,7 +538,7 @@ ExecInitBitmapHeapScan(BitmapHeapScan *node, EState *estate, int eflags)
 	/*
 	 * get the scan type from the relation descriptor.
 	 */
-	ExecAssignScanType(&scanstate->ss, RelationGetDescr(currentRelation), false);
+	ExecAssignScanType(&scanstate->ss, RelationGetDescr(currentRelation));
 
 	/*
 	 * Initialize result tuple type and projection info.

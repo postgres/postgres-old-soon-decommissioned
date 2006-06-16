@@ -1552,8 +1552,7 @@ ExecInitMergeJoin(MergeJoin *node, EState *estate, int eflags)
 
 	mergestate->mj_MarkedTupleSlot = ExecInitExtraTupleSlot(estate);
 	ExecSetSlotDescriptor(mergestate->mj_MarkedTupleSlot,
-						  ExecGetResultType(innerPlanState(mergestate)),
-						  false);
+						  ExecGetResultType(innerPlanState(mergestate)));
 
 	switch (node->join.jointype)
 	{

@@ -904,6 +904,7 @@ plperl_call_perl_func(plperl_proc_desc *desc, FunctionCallInfo fcinfo)
 
 			hashref = plperl_hash_from_tuple(&tmptup, tupdesc);
 			XPUSHs(sv_2mortal(hashref));
+			ReleaseTupleDesc(tupdesc);
 		}
 		else
 		{

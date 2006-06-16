@@ -511,6 +511,7 @@ pltcl_func_handler(PG_FUNCTION_ARGS)
 					pltcl_build_tuple_argument(&tmptup, tupdesc, &list_tmp);
 					Tcl_DStringAppendElement(&tcl_cmd,
 											 Tcl_DStringValue(&list_tmp));
+					ReleaseTupleDesc(tupdesc);
 				}
 			}
 			else

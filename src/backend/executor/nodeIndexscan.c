@@ -516,7 +516,7 @@ ExecInitIndexScan(IndexScan *node, EState *estate, int eflags)
 	/*
 	 * get the scan type from the relation descriptor.
 	 */
-	ExecAssignScanType(&indexstate->ss, RelationGetDescr(currentRelation), false);
+	ExecAssignScanType(&indexstate->ss, RelationGetDescr(currentRelation));
 
 	/*
 	 * Open the index relation.
