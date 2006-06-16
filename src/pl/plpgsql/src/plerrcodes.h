@@ -712,6 +712,14 @@
 },
 
 {
+	"no_data_found", ERRCODE_NO_DATA_FOUND
+},
+
+{
+	"too_many_rows", ERRCODE_TOO_MANY_ROWS
+},
+
+{
 	"internal_error", ERRCODE_INTERNAL_ERROR
 },
 
@@ -722,13 +730,3 @@
 {
 	"index_corrupted", ERRCODE_INDEX_CORRUPTED
 },
-
-{
-	"no_data_found", ERRCODE_NO_DATA
-},
-
-{
-	"too_many_rows", ERRCODE_CARDINALITY_VIOLATION
-},
-
-

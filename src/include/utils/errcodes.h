@@ -331,6 +331,8 @@
 /* Class P0 - PL/pgSQL Error (PostgreSQL-specific error class) */
 #define ERRCODE_PLPGSQL_ERROR				MAKE_SQLSTATE('P','0', '0','0','0')
 #define ERRCODE_RAISE_EXCEPTION				MAKE_SQLSTATE('P','0', '0','0','1')
+#define ERRCODE_NO_DATA_FOUND				MAKE_SQLSTATE('P','0', '0','0','2')
+#define ERRCODE_TOO_MANY_ROWS				MAKE_SQLSTATE('P','0', '0','0','3')
 
 /* Class XX - Internal Error (PostgreSQL-specific error class) */
 /* (this is for "can't-happen" conditions and software bugs) */

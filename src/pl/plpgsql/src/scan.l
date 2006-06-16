@@ -129,7 +129,6 @@ else			{ return K_ELSE;			}
 elseif          { return K_ELSIF;           }
 elsif           { return K_ELSIF;           }
 end				{ return K_END;				}
-strict			{ return K_STRICT;	    	}
 exception		{ return K_EXCEPTION;		}
 execute			{ return K_EXECUTE;			}
 exit			{ return K_EXIT;			}
@@ -158,6 +157,7 @@ return			{ return K_RETURN;			}
 reverse			{ return K_REVERSE;			}
 row_count		{ return K_ROW_COUNT;		}
 select			{ return K_SELECT;			}
+strict			{ return K_STRICT;	    	}
 then			{ return K_THEN;			}
 to				{ return K_TO;				}
 type			{ return K_TYPE;			}

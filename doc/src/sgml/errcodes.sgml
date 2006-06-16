@@ -1344,6 +1344,18 @@
 <entry>raise_exception</entry>
 </row>
 
+<row>
+<entry><literal>P0002</literal></entry>
+<entry>NO DATA FOUND</entry>
+<entry>no_data_found</entry>
+</row>
+
+<row>
+<entry><literal>P0003</literal></entry>
+<entry>TOO MANY ROWS</entry>
+<entry>too_many_rows</entry>
+</row>
+
 
 <row>
 <entry spanname="span13"><emphasis role="bold">Class XX &mdash; Internal Error</></entry>

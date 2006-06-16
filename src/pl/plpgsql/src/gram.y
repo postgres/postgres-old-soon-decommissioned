@@ -157,7 +157,6 @@ static	void			 check_labels(const char *start_label,
 %token	K_ELSE
 %token	K_ELSIF
 %token	K_END
-%token	K_STRICT
 %token	K_EXCEPTION
 %token	K_EXECUTE
 %token	K_EXIT
@@ -187,6 +186,7 @@ static	void			 check_labels(const char *start_label,
 %token	K_RETURN_NEXT
 %token	K_REVERSE
 %token	K_SELECT
+%token	K_STRICT
 %token	K_THEN
 %token	K_TO
 %token	K_TYPE
