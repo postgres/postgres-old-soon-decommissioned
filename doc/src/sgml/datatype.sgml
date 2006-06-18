@@ -2153,7 +2153,7 @@ January 8 04:05:06 1999 PST
       <listitem>
        <para>
         If <varname>timezone</> is not specified in
-        <filename>postgresql.conf</> nor as a postmaster command-line switch,
+        <filename>postgresql.conf</> nor as a server command-line option,
         the server attempts to use the value of the <envar>TZ</envar>
         environment variable as the default time zone.  If <envar>TZ</envar>
         is not defined or is not any of the time zone names known to

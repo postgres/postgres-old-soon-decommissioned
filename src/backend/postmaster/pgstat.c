@@ -491,11 +491,11 @@ pgstat_forkexec(STATS_PROCESS_TYPE procType)
 	switch (procType)
 	{
 		case STAT_PROC_BUFFER:
-			av[ac++] = "-forkbuf";
+			av[ac++] = "--forkbuf";
 			break;
 
 		case STAT_PROC_COLLECTOR:
-			av[ac++] = "-forkcol";
+			av[ac++] = "--forkcol";
 			break;
 
 		default:

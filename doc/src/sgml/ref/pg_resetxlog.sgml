@@ -168,8 +168,7 @@ PostgreSQL documentation
    server crashed then a lock file may have been left
    behind; in that case you can remove the lock file to allow
    <command>pg_resetxlog</command> to run.  But before you do
-   so, make doubly certain that there
-   is no <command>postmaster</command> nor any backend server process still alive.
+   so, make doubly certain that there is no server process still alive.
   </para>
  </refsect1>
 

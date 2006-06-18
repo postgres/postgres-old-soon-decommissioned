@@ -208,7 +208,7 @@ autovac_forkexec(void)
 	int			ac = 0;
 
 	av[ac++] = "postgres";
-	av[ac++] = "-forkautovac";
+	av[ac++] = "--forkautovac";
 	av[ac++] = NULL;			/* filled in by postmaster_forkexec */
 	av[ac] = NULL;
 

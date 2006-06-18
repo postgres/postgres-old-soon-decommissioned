@@ -534,7 +534,7 @@ syslogger_forkexec(void)
 	char		numbuf[2][32];
 
 	av[ac++] = "postgres";
-	av[ac++] = "-forklog";
+	av[ac++] = "--forklog";
 	av[ac++] = NULL;			/* filled in by postmaster_forkexec */
 
 	/* static variables (those not passed by write_backend_variables) */

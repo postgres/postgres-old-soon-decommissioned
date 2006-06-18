@@ -197,7 +197,7 @@ pgarch_forkexec(void)
 
 	av[ac++] = "postgres";
 
-	av[ac++] = "-forkarch";
+	av[ac++] = "--forkarch";
 
 	av[ac++] = NULL;			/* filled in by postmaster_forkexec */
 

@@ -8,7 +8,7 @@
 #
 #-------------------------------------------------------------------------
 
-PGFILEDESC = "PostgreSQL Database Backend"
+PGFILEDESC = "PostgreSQL Server"
 subdir = src/backend
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
