@@ -21,6 +21,7 @@
 #include "access/twophase.h"
 #include "access/xlog.h"
 #include "miscadmin.h"
+#include "pgstat.h"
 #include "postmaster/bgwriter.h"
 #include "postmaster/postmaster.h"
 #include "storage/bufmgr.h"
@@ -86,6 +87,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int port)
 		size = add_size(size, MultiXactShmemSize());
 		size = add_size(size, LWLockShmemSize());
 		size = add_size(size, ProcArrayShmemSize());
+		size = add_size(size, BackendStatusShmemSize());
 		size = add_size(size, SInvalShmemSize());
 		size = add_size(size, FreeSpaceShmemSize());
 		size = add_size(size, BgWriterShmemSize());
@@ -167,6 +169,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int port)
 	if (!IsUnderPostmaster)
 		InitProcGlobal();
 	CreateSharedProcArray();
+	CreateSharedBackendStatus();
 
 	/*
 	 * Set up shared-inval messaging
