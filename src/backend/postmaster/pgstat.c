@@ -1368,8 +1368,14 @@ pgstat_bestart(void)
 	/*
 	 * To minimize the time spent modifying the entry, fetch all the
 	 * needed data first.
+	 *
+	 * If we have a MyProcPort, use its session start time (for consistency,
+	 * and to save a kernel call).
 	 */
-	proc_start_timestamp = GetCurrentTimestamp();
+	if (MyProcPort)
+		proc_start_timestamp = MyProcPort->SessionStartTime;
+	else
+		proc_start_timestamp = GetCurrentTimestamp();
 	userid = GetSessionUserId();
 
 	/*
@@ -1464,7 +1470,7 @@ pgstat_report_activity(const char *cmd_str)
 	 * To minimize the time spent modifying the entry, fetch all the
 	 * needed data first.
 	 */
-	start_timestamp = GetCurrentTimestamp();
+	start_timestamp = GetCurrentStatementStartTimestamp();
 
 	len = strlen(cmd_str);
 	len = pg_mbcliplen(cmd_str, len, PGBE_ACTIVITY_SIZE - 1);

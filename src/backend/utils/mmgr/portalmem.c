@@ -202,7 +202,7 @@ CreatePortal(const char *name, bool allowDup, bool dupSilent)
 	portal->atStart = true;
 	portal->atEnd = true;		/* disallow fetches until query is set */
 	portal->visible = true;
-	portal->creation_time = GetCurrentTimestamp();
+	portal->creation_time = GetCurrentStatementStartTimestamp();
 
 	/* put portal in table (sets portal->name) */
 	PortalHashTableInsert(portal, name);

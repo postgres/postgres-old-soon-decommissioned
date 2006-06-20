@@ -373,7 +373,7 @@ StorePreparedStatement(const char *stmt_name,
 	entry->plan_list = plan_list;
 	entry->argtype_list = argtype_list;
 	entry->context = entrycxt;
-	entry->prepare_time = GetCurrentTimestamp();
+	entry->prepare_time = GetCurrentStatementStartTimestamp();
 	entry->from_sql = from_sql;
 
 	MemoryContextSwitchTo(oldcxt);

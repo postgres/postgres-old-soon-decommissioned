@@ -177,6 +177,12 @@ typedef double fsec_t;
 #define INTERVAL_PRECISION(t) ((t) & INTERVAL_PRECISION_MASK)
 #define INTERVAL_RANGE(t) (((t) >> 16) & INTERVAL_RANGE_MASK)
 
+#ifdef HAVE_INT64_TIMESTAMP
+#define TimestampTzPlusMilliseconds(tz,ms) ((tz) + ((ms) * 1000))
+#else
+#define TimestampTzPlusMilliseconds(tz,ms) ((tz) + ((ms) / 1000.0))
+#endif
+
 
 /* Set at postmaster start */
 extern TimestampTz PgStartTime;
@@ -293,7 +299,11 @@ extern Datum pgsql_postmaster_start_time(PG_FUNCTION_ARGS);
 
 extern TimestampTz GetCurrentTimestamp(void);
 
+extern void TimestampDifference(TimestampTz start_time, TimestampTz stop_time,
+								long *secs, int *microsecs);
+
 extern TimestampTz time_t_to_timestamptz(time_t tm);
+extern time_t timestamptz_to_time_t(TimestampTz t);
 
 extern int	tm2timestamp(struct pg_tm * tm, fsec_t fsec, int *tzp, Timestamp *dt);
 extern int timestamp2tm(Timestamp dt, int *tzp, struct pg_tm * tm,

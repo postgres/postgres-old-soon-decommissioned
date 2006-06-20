@@ -31,6 +31,7 @@
 
 #include "libpq/hba.h"
 #include "libpq/pqcomm.h"
+#include "utils/timestamp.h"
 
 
 typedef enum CAC_state
@@ -80,7 +81,8 @@ typedef struct Port
 	 * but since it gets used by elog.c in the same way as database_name and
 	 * other members of this struct, we may as well keep it here.
 	 */
-	struct timeval session_start;		/* for session duration logging */
+	TimestampTz	SessionStartTime;	/* backend start time */
+	time_t		session_start;		/* same, in time_t format */
 
 	/*
 	 * TCP keepalive settings.
@@ -97,7 +99,8 @@ typedef struct Port
 	int			keepalives_count;
 
 	/*
-	 * SSL structures
+	 * SSL structures (keep these last so that USE_SSL doesn't affect
+	 * locations of other fields)
 	 */
 #ifdef USE_SSL
 	SSL		   *ssl;
