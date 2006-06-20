@@ -20,7 +20,7 @@
 /* This is intended to be used in both frontend and backend, so use c.h */
 #include "c.h"
 
-#include "libpq/crypt.h"
+#include "libpq/md5.h"
 
 
 /*
@@ -265,7 +265,7 @@ bytesToHex(uint8 b[16], char *s)
  *
  *	Calculates the MD5 sum of the bytes in a buffer.
  *
- *	SYNOPSIS	  #include "crypt.h"
+ *	SYNOPSIS	  #include "md5.h"
  *				  int pg_md5_hash(const void *buff, size_t len, char *hexsum)
  *
  *	INPUT		  buff	  the buffer containing the bytes that you want

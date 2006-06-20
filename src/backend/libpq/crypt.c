@@ -22,6 +22,7 @@
 
 #include "libpq/crypt.h"
 #include "libpq/libpq.h"
+#include "libpq/md5.h"
 #include "miscadmin.h"
 #include "storage/fd.h"
 #include "nodes/pg_list.h"

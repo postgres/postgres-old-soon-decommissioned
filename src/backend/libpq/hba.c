@@ -29,7 +29,6 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
-#include "libpq/crypt.h"
 #include "libpq/libpq.h"
 #include "miscadmin.h"
 #include "nodes/pg_list.h"

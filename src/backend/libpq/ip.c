@@ -20,7 +20,6 @@
 /* This is intended to be used in both frontend and backend, so use c.h */
 #include "c.h"
 
-#include <errno.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>

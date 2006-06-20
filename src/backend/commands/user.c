@@ -20,7 +20,7 @@
 #include "catalog/pg_authid.h"
 #include "commands/comment.h"
 #include "commands/user.h"
-#include "libpq/crypt.h"
+#include "libpq/md5.h"
 #include "miscadmin.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"

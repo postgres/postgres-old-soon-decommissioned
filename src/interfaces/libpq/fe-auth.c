@@ -50,7 +50,7 @@
 #include "libpq-fe.h"
 #include "libpq-int.h"
 #include "fe-auth.h"
-#include "libpq/crypt.h"
+#include "libpq/md5.h"
 
 
 #ifdef KRB5

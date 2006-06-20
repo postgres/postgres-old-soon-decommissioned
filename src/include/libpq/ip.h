@@ -3,6 +3,9 @@
  * ip.h
  *	  Definitions for IPv6-aware network access.
  *
+ * These definitions are used by both frontend and backend code.  Be careful
+ * what you include here!
+ *
  * Copyright (c) 2003-2006, PostgreSQL Global Development Group
  *
  * $PostgreSQL$

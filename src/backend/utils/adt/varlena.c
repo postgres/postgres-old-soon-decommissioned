@@ -19,7 +19,7 @@
 #include "access/tuptoaster.h"
 #include "catalog/pg_type.h"
 #include "lib/stringinfo.h"
-#include "libpq/crypt.h"
+#include "libpq/md5.h"
 #include "libpq/pqformat.h"
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"
