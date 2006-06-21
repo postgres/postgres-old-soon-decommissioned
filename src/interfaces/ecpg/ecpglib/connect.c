@@ -222,6 +222,9 @@ ECPGnoticeReceiver(void *arg, const PGresult *result)
 	if (sqlstate == NULL)
 		sqlstate = ECPG_SQLSTATE_ECPG_INTERNAL_ERROR;
 
+	if (message == NULL)  /* Shouldn't happen, but need to be sure */
+		message = "No message received";
+
 	/* these are not warnings */
 	if (strncmp(sqlstate, "00", 2) == 0)
 		return;
