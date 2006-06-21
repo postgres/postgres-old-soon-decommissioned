@@ -131,7 +131,10 @@ PGTYPESnumeric_new(void)
 		return NULL;
 
 	if (alloc_var(var, 0) < 0)
+	{
+		free(var);
 		return NULL;
+	}
 
 	return var;
 }

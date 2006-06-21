@@ -403,6 +403,7 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 							ECPGfree(realname);
 						if (dbname)
 							ECPGfree(dbname);
+						ecpg_finish(this);
 						return false;
 					}
 				}
