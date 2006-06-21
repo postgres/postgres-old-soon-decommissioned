@@ -14,7 +14,7 @@ enum COMPAT_MODE
 
 enum ARRAY_TYPE
 {
-	ECPG_ARRAY_NOT_SET, ECPG_ARRAY_ARRAY, ECPG_ARRAY_VECTOR, ECPG_ARRAY_NONE
+	ECPG_ARRAY_ERROR, ECPG_ARRAY_NOT_SET, ECPG_ARRAY_ARRAY, ECPG_ARRAY_VECTOR, ECPG_ARRAY_NONE
 };
 
 /* Here are some methods used by the lib. */
@@ -125,7 +125,12 @@ PGresult  **ECPGdescriptor_lvalue(int line, const char *descriptor);
 bool ECPGstore_result(const PGresult *results, int act_field,
 				 const struct statement * stmt, struct variable * var);
 bool		ECPGstore_input(const int, const bool, const struct variable *, const char **, bool *);
+#if defined(__GNUC__) && (defined (__powerpc__) || defined(__AMD64__) || defined(__x86_64__))
+  // work around a gcc/ABI bug with va_lists on ppc+amd64
+void		ECPGget_variable(va_list, enum ECPGttype, struct variable *, bool);
+#else
 void		ECPGget_variable(va_list *, enum ECPGttype, struct variable *, bool);
+#endif
 
 /* SQLSTATE values generated or processed by ecpglib (intentionally
  * not exported -- users should refer to the codes directly) */
