@@ -1841,7 +1841,7 @@ domainAddConstraint(Oid domainOid, Oid domainNamespace, Oid baseTypeOid,
 	if (pstate->p_hasAggs)
 		ereport(ERROR,
 				(errcode(ERRCODE_GROUPING_ERROR),
-				 errmsg("cannot use aggregate in check constraint")));
+				 errmsg("cannot use aggregate function in check constraint")));
 
 	/*
 	 * Convert to string form for storage.
