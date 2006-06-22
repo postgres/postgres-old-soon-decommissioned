@@ -10,7 +10,6 @@ BE_DLLLIBS= -L$(libdir) -lpostgres
 else
 BE_DLLLIBS= -L$(top_builddir)/src/backend -lpostgres
 endif
-DLLINIT = $(top_builddir)/src/utils/dllinit.o
 
 AROPT = crs
 DLSUFFIX = .dll
@@ -18,7 +17,7 @@ CFLAGS_SL =
 
 %.dll: %.o
 	$(DLLTOOL) --export-all --output-def $*.def $<
-	$(DLLWRAP) -o $@ --def $*.def $< $(DLLINIT) $(SHLIB_LINK)
+	$(DLLWRAP) -o $@ --def $*.def $< $(SHLIB_LINK)
 	rm -f $*.def
 
 ifneq (,$(findstring backend,$(subdir)))
