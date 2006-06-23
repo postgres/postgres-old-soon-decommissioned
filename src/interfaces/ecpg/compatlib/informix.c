@@ -672,6 +672,7 @@ intoasc(interval * i, char *str)
 	begin				 : Wed Apr 2 2003
 	copyright			 : (C) 2003 by Carsten Wolff
 	email				 : carsten.wolff@credativ.de
+	Contributed under the PostgreSQL License by credativ GmbH
  ***************************************************************************/
 
 static struct
