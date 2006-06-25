@@ -1418,7 +1418,7 @@ main(int argc, char **argv)
 					wait_set = true;
 					break;
 				default:
-					write_stderr(_("%s: invalid option %s\n"), progname, optarg);
+					/* getopt_long already issued a suitable error message */
 					do_advice();
 					exit(1);
 			}
