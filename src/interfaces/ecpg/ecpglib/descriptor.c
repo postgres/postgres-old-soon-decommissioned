@@ -349,7 +349,7 @@ ECPGget_desc(int lineno, const char *desc_name, int index,...)
 					return false;
 				}
 				/* allocate storage if needed */
-				if (arrsize == 0 && var != NULL && *(void **) var == NULL)
+				if (arrsize == 0 && *(void **) var == NULL)
 				{
 					void *mem = (void *) ECPGalloc(offset * ntuples, lineno);
 					if (!mem)
