@@ -156,8 +156,6 @@ typedef struct HASHCTL
 
 /* max_dsize value to indicate expansible directory */
 #define NO_MAX_DSIZE			(-1)
-/* max number of hash elements allocated at once */
-#define HASHELEMENT_ALLOC_MAX	(32)
 
 /* hash_search operations */
 typedef enum
