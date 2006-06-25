@@ -142,7 +142,7 @@ typedef struct
 	GISTENTRY	vector[1];
 } GistEntryVector;
 
-#define GEVHDRSZ	(offsetof(GistEntryVector, vector[0]))
+#define GEVHDRSZ	(offsetof(GistEntryVector, vector))
 
 /*
  * macro to initialize a GISTENTRY
