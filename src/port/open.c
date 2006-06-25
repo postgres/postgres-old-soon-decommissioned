@@ -19,7 +19,7 @@
 #include <fcntl.h>
 #include <assert.h>
 
-int			win32_open(const char *fileName, int fileFlags,...);
+int			pgwin32_open(const char *fileName, int fileFlags,...);
 
 static int
 openFlagsToCreateFileFlags(int openFlags)
@@ -54,7 +54,7 @@ openFlagsToCreateFileFlags(int openFlags)
  *	 - handle other flags? (eg FILE_FLAG_NO_BUFFERING/FILE_FLAG_WRITE_THROUGH)
  */
 int
-win32_open(const char *fileName, int fileFlags,...)
+pgwin32_open(const char *fileName, int fileFlags,...)
 {
 	int			fd;
 	HANDLE		h;

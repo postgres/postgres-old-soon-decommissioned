@@ -246,10 +246,10 @@ extern bool rmtree(char *path, bool rmtopdir);
 
 /* open() replacement to allow delete of held files and passing
  * of special options. */
-extern int	win32_open(const char *, int,...);
+extern int	pgwin32_open(const char *, int,...);
 
 #ifndef FRONTEND
-#define		open(a,b,c)	win32_open(a,b,c)
+#define		open(a,b,c)	pgwin32_open(a,b,c)
 #endif
 
 #define popen(a,b) _popen(a,b)

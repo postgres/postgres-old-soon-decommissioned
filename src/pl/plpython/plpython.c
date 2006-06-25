@@ -6,7 +6,15 @@
  *********************************************************************
  */
 
+#if defined(_MSC_VER) && defined(_DEBUG)
+/* Python uses #pragma to bring in a non-default libpython on VC++ if
+ * _DEBUG is defined */
+#undef _DEBUG
 #include <Python.h>
+#define _DEBUG
+#else
+#include <Python.h>
+#endif
 #include "postgres.h"
 
 /* system stuff */
