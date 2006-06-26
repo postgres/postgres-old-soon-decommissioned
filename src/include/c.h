@@ -473,7 +473,7 @@ typedef NameData *Name;
  */
 #define SQL_STR_DOUBLE(ch, escape_backslash)	\
 	((ch) == '\'' || ((ch) == '\\' && (escape_backslash)))
-	
+
 #define ESCAPE_STRING_SYNTAX	'E'
 
 /* ----------------------------------------------------------------
