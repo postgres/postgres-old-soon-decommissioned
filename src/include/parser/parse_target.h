@@ -22,6 +22,10 @@ extern void markTargetListOrigins(ParseState *pstate, List *targetlist);
 extern TargetEntry *transformTargetEntry(ParseState *pstate,
 					 Node *node, Node *expr,
 					 char *colname, bool resjunk);
+extern List *ExpandColumnRefStar(ParseState *pstate, ColumnRef *cref,
+								 bool targetlist);
+extern List *ExpandIndirectionStar(ParseState *pstate, A_Indirection *ind,
+								   bool targetlist);
 extern void updateTargetListEntry(ParseState *pstate, TargetEntry *tle,
 					  char *colname, int attrno,
 					  List *indirection,
