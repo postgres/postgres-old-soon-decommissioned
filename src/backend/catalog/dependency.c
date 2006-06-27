@@ -1927,3 +1927,89 @@ getRelationDescription(StringInfo buffer, Oid relid)
 
 	ReleaseSysCache(relTup);
 }
+
+/* Recursively travel and search for the default sequence. Finally detach it */
+
+void performSequenceDefaultDeletion(const ObjectAddress *object,
+					DropBehavior behavior, int deleteFlag)
+{        
+        
+        ScanKeyData key[3];
+        int                     nkeys;
+        SysScanDesc scan;
+        HeapTuple       tup;
+        ObjectAddress otherObject;            
+	  Relation	depRel;
+	
+	  depRel = heap_open(DependRelationId, RowExclusiveLock);
+
+        ScanKeyInit(&key[0],
+                                Anum_pg_depend_classid,
+                                BTEqualStrategyNumber, F_OIDEQ,
+                                ObjectIdGetDatum(object->classId));
+        ScanKeyInit(&key[1],
+                                Anum_pg_depend_objid,
+                                BTEqualStrategyNumber, F_OIDEQ,
+                                ObjectIdGetDatum(object->objectId));
+        if (object->objectSubId != 0)
+        {
+               ScanKeyInit(&key[2],
+                                        Anum_pg_depend_objsubid,
+                                        BTEqualStrategyNumber, F_INT4EQ,
+                                        Int32GetDatum(object->objectSubId));
+                nkeys = 3;
+        }
+        else
+                nkeys = 2;
+
+        scan = systable_beginscan(depRel, DependDependerIndexId, true,
+                                                          SnapshotNow, nkeys, key);
+
+        while (HeapTupleIsValid(tup = systable_getnext(scan)))
+        {
+		
+                Form_pg_depend foundDep = (Form_pg_depend) GETSTRUCT(tup);
+
+                otherObject.classId = foundDep->refclassid;
+                otherObject.objectId = foundDep->refobjid;
+                otherObject.objectSubId = foundDep->refobjsubid;
+
+		  /* Detach the default sequence from the relation */
+		  if(deleteFlag == 1)	
+		  {	
+                	simple_heap_delete(depRel, &tup->t_self);	
+			break;
+		  }
+
+                switch (foundDep->deptype)
+                {
+                        case DEPENDENCY_NORMAL:                        
+			{
+
+				if(getObjectClass(&otherObject) == OCLASS_CLASS)
+				{
+					/* Dont allow to change the default sequence */
+					if(deleteFlag == 2)	
+					{ 
+						systable_endscan(scan);
+				                heap_close(depRel, RowExclusiveLock);
+                                        	elog(ERROR, "%s is a SERIAL sequence. Can't alter the relation", getObjectDescription(&otherObject));
+	                                        return;
+					}
+					else /* Detach the default sequence from the relation */
+					{
+						performSequenceDefaultDeletion(&otherObject, behavior, 1);
+						systable_endscan(scan);
+						heap_close(depRel, RowExclusiveLock);
+        	                                return;					
+					}
+				}
+			}
+                		
+        	}
+	}
+
+        systable_endscan(scan);
+	heap_close(depRel, RowExclusiveLock);  	
+
+}
