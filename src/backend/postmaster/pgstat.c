@@ -2922,7 +2922,7 @@ pgstat_recv_vacuum(PgStat_MsgVacuum *msg, int len)
 	else
 	{
 		/* last_anl_tuples must never exceed n_live_tuples */
-		tabentry->last_anl_tuplse = Min(tabentry->last_anl_tuples,
+		tabentry->last_anl_tuples = Min(tabentry->last_anl_tuples,
 										msg->m_tuples);
 	}
 }
