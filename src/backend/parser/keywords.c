@@ -169,6 +169,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"including", INCLUDING},
 	{"increment", INCREMENT},
 	{"index", INDEX},
+	{"indexes", INDEXES},
 	{"inherit", INHERIT},
 	{"inherits", INHERITS},
 	{"initially", INITIALLY},

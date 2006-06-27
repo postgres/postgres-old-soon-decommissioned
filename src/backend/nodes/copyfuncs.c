@@ -1940,7 +1940,7 @@ _copyInhRelation(InhRelation *from)
 	InhRelation *newnode = makeNode(InhRelation);
 
 	COPY_NODE_FIELD(relation);
-	COPY_SCALAR_FIELD(including_defaults);
+	COPY_NODE_FIELD(options);
 
 	return newnode;
 }
