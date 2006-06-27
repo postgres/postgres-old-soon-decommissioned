@@ -2713,9 +2713,9 @@ BackendInitialize(Port *port)
 	 * Now that we have the user and database name, we can set the process
 	 * title for ps.  It's good to do this as early as possible in startup.
 	 */
-	init_ps_display(port->user_name, port->database_name, remote_ps_data);
-	set_ps_display("authentication");
-
+	init_ps_display(port->user_name, port->database_name, remote_ps_data,
+		update_process_title ? "authentication" : "");
+	
 	/*
 	 * Now perform authentication exchange.
 	 */

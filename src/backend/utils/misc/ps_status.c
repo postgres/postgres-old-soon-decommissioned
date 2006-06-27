@@ -31,6 +31,7 @@
 #include "utils/ps_status.h"
 
 extern char **environ;
+bool update_process_title = true;
 
 
 /*
@@ -210,7 +211,7 @@ save_ps_display_args(int argc, char **argv)
  */
 void
 init_ps_display(const char *username, const char *dbname,
-				const char *host_info)
+				const char *host_info, const char *initial_str)
 {
 	Assert(username);
 	Assert(dbname);
@@ -270,6 +271,7 @@ init_ps_display(const char *username, const char *dbname,
 
 	ps_buffer_fixed_size = strlen(ps_buffer);
 
+	set_ps_display(initial_str, true);
 #endif   /* not PS_USE_NONE */
 }
 
@@ -280,8 +282,12 @@ init_ps_display(const char *username, const char *dbname,
  * indication of what you're currently doing passed in the argument.
  */
 void
-set_ps_display(const char *activity)
+set_ps_display(const char *activity, bool force)
 {
+
+	if (!force && !update_process_title)
+		return;
+		
 #ifndef PS_USE_NONE
 	/* no ps display for stand-alone backend */
 	if (!IsUnderPostmaster)

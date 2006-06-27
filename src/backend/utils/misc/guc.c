@@ -64,6 +64,7 @@
 #include "utils/builtins.h"
 #include "utils/memutils.h"
 #include "utils/pg_locale.h"
+#include "utils/ps_status.h"
 #include "pgstat.h"
 #include "access/gin.h"
 
@@ -725,6 +726,16 @@ static struct config_bool ConfigureNamesBool[] =
 						 "at which that command began execution.")
 		},
 		&pgstat_collect_querystring,
+		true, NULL, NULL
+	},
+
+	{
+		{"update_process_title", PGC_SUSET, STATS_COLLECTOR,
+			gettext_noop("Updates the process title to show the active SQL command."),
+			gettext_noop("Enables updating of the process title every time a new
+            SQL command is received by the server.")
+		},
+		&update_process_title,
 		true, NULL, NULL
 	},
 

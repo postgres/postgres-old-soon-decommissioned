@@ -1743,8 +1743,7 @@ PgstatCollectorMain(int argc, char *argv[])
 	/*
 	 * Identify myself via ps
 	 */
-	init_ps_display("stats collector process", "", "");
-	set_ps_display("");
+	init_ps_display("stats collector process", "", "", "");
 
 	/*
 	 * Arrange to write the initial status file right away
@@ -1975,8 +1974,7 @@ pgstat_recvbuffer(void)
 	/*
 	 * Identify myself via ps
 	 */
-	init_ps_display("stats buffer process", "", "");
-	set_ps_display("");
+	init_ps_display("stats buffer process", "", "", "");
 
 	/*
 	 * We want to die if our child collector process does.	There are two ways

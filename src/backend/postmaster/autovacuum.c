@@ -239,8 +239,7 @@ AutoVacMain(int argc, char *argv[])
 	MyProcPid = getpid();
 
 	/* Identify myself via ps */
-	init_ps_display("autovacuum process", "", "");
-	set_ps_display("");
+	init_ps_display("autovacuum process", "", "", "");
 
 	SetProcessingMode(InitProcessing);
 
@@ -416,7 +415,7 @@ AutoVacMain(int argc, char *argv[])
 		 */
 		InitPostgres(db->name, NULL);
 		SetProcessingMode(NormalProcessing);
-		set_ps_display(db->name);
+		set_ps_display(db->name, false);
 		ereport(DEBUG1,
 				(errmsg("autovacuum: processing database \"%s\"", db->name)));
 

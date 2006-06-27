@@ -353,8 +353,7 @@ BootstrapMain(int argc, char *argv[])
 				statmsg = "??? process";
 				break;
 		}
-		init_ps_display(statmsg, "", "");
-		set_ps_display("");
+		init_ps_display(statmsg, "", "", "");
 	}
 
 	/* Acquire configuration parameters, unless inherited from postmaster */

@@ -908,7 +908,7 @@ ProcessIncomingNotify(void)
 	if (Trace_notify)
 		elog(DEBUG1, "ProcessIncomingNotify");
 
-	set_ps_display("notify interrupt");
+	set_ps_display("notify interrupt", false);
 
 	notifyInterruptOccurred = 0;
 
@@ -979,7 +979,7 @@ ProcessIncomingNotify(void)
 	 */
 	pq_flush();
 
-	set_ps_display("idle");
+	set_ps_display("idle", false);
 
 	if (Trace_notify)
 		elog(DEBUG1, "ProcessIncomingNotify: done");

@@ -244,8 +244,7 @@ PgArchiverMain(int argc, char *argv[])
 	/*
 	 * Identify myself via ps
 	 */
-	init_ps_display("archiver process", "", "");
-	set_ps_display("");
+	init_ps_display("archiver process", "", "", "");
 
 	pgarch_MainLoop();
 
