@@ -217,7 +217,13 @@ extern void heap_deform_tuple(HeapTuple tuple, TupleDesc tupleDesc,
 				  Datum *values, bool *isnull);
 extern void heap_deformtuple(HeapTuple tuple, TupleDesc tupleDesc,
 				 Datum *values, char *nulls);
-extern void heap_freetuple(HeapTuple tuple);
+extern void heap_freetuple(HeapTuple htup);
+extern MinimalTuple heap_form_minimal_tuple(TupleDesc tupleDescriptor,
+				Datum *values, bool *isnull);
+extern void heap_free_minimal_tuple(MinimalTuple mtup);
+extern MinimalTuple heap_copy_minimal_tuple(MinimalTuple mtup);
+extern HeapTuple heap_tuple_from_minimal_tuple(MinimalTuple mtup);
+extern MinimalTuple minimal_tuple_from_heap_tuple(HeapTuple htup);
 extern HeapTuple heap_addheader(int natts, bool withoid,
 			   Size structlen, void *structure);
 

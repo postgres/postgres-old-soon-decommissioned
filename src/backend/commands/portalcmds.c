@@ -411,17 +411,8 @@ PersistHoldablePortal(Portal portal)
 
 			for (store_pos = 0; store_pos < portal->portalPos; store_pos++)
 			{
-				HeapTuple	tup;
-				bool		should_free;
-
-				tup = tuplestore_gettuple(portal->holdStore, true,
-										  &should_free);
-
-				if (tup == NULL)
+				if (!tuplestore_advance(portal->holdStore, true))
 					elog(ERROR, "unexpected end of tuple stream");
-
-				if (should_free)
-					pfree(tup);
 			}
 		}
 	}

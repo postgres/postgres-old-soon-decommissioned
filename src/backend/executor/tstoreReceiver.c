@@ -45,7 +45,7 @@ tstoreReceiveSlot(TupleTableSlot *slot, DestReceiver *self)
 	TStoreState *myState = (TStoreState *) self;
 	MemoryContext oldcxt = MemoryContextSwitchTo(myState->cxt);
 
-	tuplestore_puttuple(myState->tstore, ExecFetchSlotTuple(slot));
+	tuplestore_puttupleslot(myState->tstore, slot);
 
 	MemoryContextSwitchTo(oldcxt);
 }

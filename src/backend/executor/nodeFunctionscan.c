@@ -48,8 +48,6 @@ FunctionNext(FunctionScanState *node)
 	EState	   *estate;
 	ScanDirection direction;
 	Tuplestorestate *tuplestorestate;
-	bool		should_free;
-	HeapTuple	heapTuple;
 
 	/*
 	 * get information from the estate and scan state
@@ -86,14 +84,11 @@ FunctionNext(FunctionScanState *node)
 	/*
 	 * Get the next tuple from tuplestore. Return NULL if no more tuples.
 	 */
-	heapTuple = tuplestore_getheaptuple(tuplestorestate,
-										ScanDirectionIsForward(direction),
-										&should_free);
 	slot = node->ss.ss_ScanTupleSlot;
-	if (heapTuple)
-		return ExecStoreTuple(heapTuple, slot, InvalidBuffer, should_free);
-	else
-		return ExecClearTuple(slot);
+	(void) tuplestore_gettupleslot(tuplestorestate,
+								   ScanDirectionIsForward(direction),
+								   slot);
+	return slot;
 }
 
 /* ----------------------------------------------------------------
