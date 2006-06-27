@@ -25,6 +25,7 @@
 #include "pg_backup_archiver.h"
 #include "pg_backup_tar.h"
 
+#include <sys/stat.h>
 #include <ctype.h>
 #include <limits.h>
 #include <unistd.h>
@@ -376,7 +377,7 @@ tarOpen(ArchiveHandle *AH, const char *filename, char mode)
 			if (name == NULL)
 				break;
 			fd = open(name, O_RDWR | O_CREAT | O_EXCL | O_BINARY |
-					  O_TEMPORARY, S_IREAD | S_IWRITE);
+					  O_TEMPORARY, S_IRUSR | S_IWUSR);
 			free(name);
 
 			if (fd != -1)	/* created a file */
