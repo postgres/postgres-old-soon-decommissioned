@@ -2919,6 +2919,12 @@ pgstat_recv_vacuum(PgStat_MsgVacuum *msg, int len)
 	tabentry->n_dead_tuples = 0;
 	if (msg->m_analyze)
 		tabentry->last_anl_tuples = msg->m_tuples;
+	else
+	{
+		/* last_anl_tuples must never exceed n_live_tuples */
+		tabentry->last_anl_tuplse = Min(tabentry->last_anl_tuples,
+										msg->m_tuples);
+	}
 }
 
 /* ----------
@@ -3055,7 +3061,8 @@ pgstat_recv_tabstat(PgStat_MsgTabstat *msg, int len)
 			tabentry->tuples_updated += tabmsg[i].t_tuples_updated;
 			tabentry->tuples_deleted += tabmsg[i].t_tuples_deleted;
 
-			tabentry->n_live_tuples += tabmsg[i].t_tuples_inserted;
+			tabentry->n_live_tuples += tabmsg[i].t_tuples_inserted -
+				tabmsg[i].t_tuples_deleted;
 			tabentry->n_dead_tuples += tabmsg[i].t_tuples_updated +
 				tabmsg[i].t_tuples_deleted;
 
