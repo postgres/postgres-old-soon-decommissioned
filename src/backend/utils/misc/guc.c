@@ -725,7 +725,7 @@ static struct config_bool ConfigureNamesBool[] =
 						 "at which that command began execution.")
 		},
 		&pgstat_collect_querystring,
-		false, NULL, NULL
+		true, NULL, NULL
 	},
 
 	{
