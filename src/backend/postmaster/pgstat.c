@@ -2635,7 +2635,8 @@ pgstat_recv_tabstat(PgStat_MsgTabstat *msg, int len)
 			tabentry->tuples_updated += tabmsg[i].t_tuples_updated;
 			tabentry->tuples_deleted += tabmsg[i].t_tuples_deleted;
 
-			tabentry->n_live_tuples += tabmsg[i].t_tuples_inserted;
+			tabentry->n_live_tuples += tabmsg[i].t_tuples_inserted -
+				tabmsg[i].t_tuples_deleted;
 			tabentry->n_dead_tuples += tabmsg[i].t_tuples_updated +
 				tabmsg[i].t_tuples_deleted;
 
@@ -2829,6 +2830,12 @@ pgstat_recv_vacuum(PgStat_MsgVacuum *msg, int len)
 			tabentry->autovac_analyze_timestamp = msg->m_vacuumtime;
 		else
 			tabentry->analyze_timestamp = msg->m_vacuumtime;
+	}
+	else
+	{
+		/* last_anl_tuples must never exceed n_live_tuples */
+		tabentry->last_anl_tuples = Min(tabentry->last_anl_tuples,
+										msg->m_tuples);
 	}
 }
 
