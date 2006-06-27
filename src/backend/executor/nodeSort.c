@@ -41,9 +41,7 @@ ExecSort(SortState *node)
 	EState	   *estate;
 	ScanDirection dir;
 	Tuplesortstate *tuplesortstate;
-	HeapTuple	heapTuple;
 	TupleTableSlot *slot;
-	bool		should_free;
 
 	/*
 	 * get state info from node
@@ -103,8 +101,7 @@ ExecSort(SortState *node)
 			if (TupIsNull(slot))
 				break;
 
-			tuplesort_puttuple(tuplesortstate,
-							   (void *) ExecFetchSlotTuple(slot));
+			tuplesort_puttupleslot(tuplesortstate, slot);
 		}
 
 		/*
@@ -131,15 +128,11 @@ ExecSort(SortState *node)
 	 * Get the first or next tuple from tuplesort. Returns NULL if no more
 	 * tuples.
 	 */
-	heapTuple = tuplesort_getheaptuple(tuplesortstate,
-									   ScanDirectionIsForward(dir),
-									   &should_free);
-
 	slot = node->ss.ps.ps_ResultTupleSlot;
-	if (heapTuple)
-		return ExecStoreTuple(heapTuple, slot, InvalidBuffer, should_free);
-	else
-		return ExecClearTuple(slot);
+	(void) tuplesort_gettupleslot(tuplesortstate,
+								  ScanDirectionIsForward(dir),
+								  slot);
+	return slot;
 }
 
 /* ----------------------------------------------------------------

@@ -179,7 +179,7 @@ _bt_spooldestroy(BTSpool *btspool)
 void
 _bt_spool(IndexTuple itup, BTSpool *btspool)
 {
-	tuplesort_puttuple(btspool->sortstate, (void *) itup);
+	tuplesort_putindextuple(btspool->sortstate, itup);
 }
 
 /*
