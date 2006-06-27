@@ -26,7 +26,7 @@ extern void ExecReScanHash(HashState *node, ExprContext *exprCtxt);
 extern HashJoinTable ExecHashTableCreate(Hash *node, List *hashOperators);
 extern void ExecHashTableDestroy(HashJoinTable hashtable);
 extern void ExecHashTableInsert(HashJoinTable hashtable,
-					HeapTuple tuple,
+					TupleTableSlot *slot,
 					uint32 hashvalue);
 extern uint32 ExecHashGetHashValue(HashJoinTable hashtable,
 					 ExprContext *econtext,
@@ -35,7 +35,7 @@ extern void ExecHashGetBucketAndBatch(HashJoinTable hashtable,
 						  uint32 hashvalue,
 						  int *bucketno,
 						  int *batchno);
-extern HeapTuple ExecScanHashBucket(HashJoinState *hjstate,
+extern HashJoinTuple ExecScanHashBucket(HashJoinState *hjstate,
 				   ExprContext *econtext);
 extern void ExecHashTableReset(HashJoinTable hashtable);
 extern void ExecChooseHashTableSize(double ntuples, int tupwidth,
