@@ -957,10 +957,9 @@ agg_retrieve_hash_table(AggState *aggstate)
 		 * Store the copied first input tuple in the tuple table slot reserved
 		 * for it, so that it can be used in ExecProject.
 		 */
-		ExecStoreTuple(entry->shared.firstTuple,
-					   firstSlot,
-					   InvalidBuffer,
-					   false);
+		ExecStoreMinimalTuple(entry->shared.firstTuple,
+							  firstSlot,
+							  false);
 
 		pergroup = entry->pergroup;
 
