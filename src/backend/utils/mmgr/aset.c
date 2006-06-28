@@ -883,9 +883,9 @@ AllocSetRealloc(MemoryContext context, void *pointer, Size size)
 	if (oldsize > ALLOC_CHUNK_LIMIT)
 	{
 		/*
-		 * The chunk must been allocated as a single-chunk block.  Find the
-		 * containing block and use realloc() to make it bigger with minimum
-		 * space wastage.
+		 * The chunk must have been allocated as a single-chunk block.  Find
+		 * the containing block and use realloc() to make it bigger with
+		 * minimum space wastage.
 		 */
 		AllocBlock	block = set->blocks;
 		AllocBlock	prevblock = NULL;
