@@ -585,11 +585,13 @@ subplan_is_hashable(SubLink *slink, SubPlan *node)
 		return false;
 
 	/*
-	 * The estimated size of the subquery result must fit in work_mem. (XXX
-	 * what about hashtable overhead?)
+	 * The estimated size of the subquery result must fit in work_mem.
+	 * (Note: we use sizeof(HeapTupleHeaderData) here even though the tuples
+	 * will actually be stored as MinimalTuples; this provides some fudge
+	 * factor for hashtable overhead.)
 	 */
 	subquery_size = node->plan->plan_rows *
-		(MAXALIGN(node->plan->plan_width) + MAXALIGN(sizeof(HeapTupleData)));
+		(MAXALIGN(node->plan->plan_width) + MAXALIGN(sizeof(HeapTupleHeaderData)));
 	if (subquery_size > work_mem * 1024L)
 		return false;
 

@@ -1298,7 +1298,7 @@ choose_hashed_grouping(PlannerInfo *root, double tuple_fraction,
 	}
 
 	/* Estimate per-hash-entry space at tuple width... */
-	hashentrysize = cheapest_path_width;
+	hashentrysize = MAXALIGN(cheapest_path_width) + MAXALIGN(sizeof(MinimalTupleData));
 	/* plus space for pass-by-ref transition values... */
 	hashentrysize += agg_counts->transitionSpace;
 	/* plus the per-hash-entry overhead */
