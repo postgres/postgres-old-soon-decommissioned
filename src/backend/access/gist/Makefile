@@ -13,7 +13,7 @@ top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
 OBJS = gist.o gistutil.o gistxlog.o gistvacuum.o gistget.o gistscan.o \
-       gistproc.o
+       gistproc.o gistsplit.o
 
 all: SUBSYS.o
 

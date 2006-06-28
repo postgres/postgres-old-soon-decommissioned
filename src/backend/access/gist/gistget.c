@@ -391,7 +391,6 @@ gistindex_keytest(IndexTuple tuple,
 
 		gistdentryinit(giststate, key->sk_attno - 1, &de,
 					   datum, r, p, offset,
-					   IndexTupleSize(tuple) - sizeof(IndexTupleData),
 					   FALSE, isNull);
 
 		/*
