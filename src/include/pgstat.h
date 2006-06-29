@@ -362,7 +362,6 @@ extern int	pgstat_start(void);
 extern void pgstat_reset_all(void);
 
 #ifdef EXEC_BACKEND
-extern void PgstatBufferMain(int argc, char *argv[]);
 extern void PgstatCollectorMain(int argc, char *argv[]);
 #endif
 
