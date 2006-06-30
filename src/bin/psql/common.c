@@ -1102,6 +1102,8 @@ SendQuery(const char *query)
 			ResetCancelConn();
 			return false;
 		}
+
+		PQclear(svptres);
 	}
 
 	PQclear(results);
