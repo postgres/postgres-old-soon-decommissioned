@@ -151,6 +151,7 @@ extern Selectivity scalararraysel(PlannerInfo *root,
 								  ScalarArrayOpExpr *clause,
 								  bool is_join_clause,
 								  int varRelid, JoinType jointype);
+extern int	estimate_array_length(Node *arrayexpr);
 extern Selectivity rowcomparesel(PlannerInfo *root,
 								 RowCompareExpr *clause,
 								 int varRelid, JoinType jointype);
