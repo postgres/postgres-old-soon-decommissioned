@@ -270,6 +270,9 @@ subquery_planner(Query *parse, double tuple_fraction,
 	 */
 	root->hasHavingQual = (parse->havingQual != NULL);
 
+	/* Clear this flag; might get set in distribute_qual_to_rels */
+	root->hasPseudoConstantQuals = false;
+
 	/*
 	 * Do expression preprocessing on targetlist and quals.
 	 */
