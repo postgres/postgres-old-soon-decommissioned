@@ -201,3 +201,17 @@ GinPageGetCopyPage( Page page ) {
 	
 	return tmppage;
 }
+
+Datum
+ginoption(PG_FUNCTION_ARGS)
+{
+	ArrayType	   *options = (ArrayType *) PG_GETARG_POINTER(0);
+
+	if (options != NULL)
+		ereport(ERROR,
+			(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+				errmsg("GIN does not support parameters at all")));
+
+	/* Do not use PG_RETURN_NULL. */
+	PG_RETURN_BYTEA_P(NULL);
+}

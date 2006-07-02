@@ -794,6 +794,7 @@ ProcessUtility(Node *parsetree,
 							stmt->indexParams,	/* parameters */
 							(Expr *) stmt->whereClause,
 							stmt->rangetable,
+							stmt->options,
 							stmt->unique,
 							stmt->primary,
 							stmt->isconstraint,

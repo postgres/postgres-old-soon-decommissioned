@@ -173,3 +173,16 @@ _hash_checkpage(Relation rel, Buffer buf, int flags)
 					 errhint("Please REINDEX it.")));
 	}
 }
+
+Datum
+hashoption(PG_FUNCTION_ARGS)
+{
+#define HASH_MIN_FILLFACTOR			50
+#define HASH_DEFAULT_FILLFACTOR		75
+
+	ArrayType	   *options = (ArrayType *) PG_GETARG_POINTER(0);
+
+	/* Use index common routine. */
+	PG_RETURN_BYTEA_P(genam_option(options,
+		HASH_MIN_FILLFACTOR, HASH_DEFAULT_FILLFACTOR));
+}

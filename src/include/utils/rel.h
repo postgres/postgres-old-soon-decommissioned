@@ -115,6 +115,7 @@ typedef struct RelationAmInfo
 	FmgrInfo	ambulkdelete;
 	FmgrInfo	amvacuumcleanup;
 	FmgrInfo	amcostestimate;
+	FmgrInfo	amoption;
 } RelationAmInfo;
 
 
@@ -142,8 +143,14 @@ typedef struct RelationData
 	 * survived into; or zero if the rel was not created in the current top
 	 * transaction.  This should be relied on only for optimization purposes;
 	 * it is possible for new-ness to be "forgotten" (eg, after CLUSTER).
+	 *
+	 * rd_options and rd_amcache are alike, but different in terms of
+	 * lifetime. Invalidation of rd_options is at the change of pg_class
+	 * and of rd_amcache is at the change of AM's metapages. Also, rd_options
+	 * is serialized in the relcache init file, but rd_amcache is not.
 	 */
 	Form_pg_class rd_rel;		/* RELATION tuple */
+	bytea	   *rd_options;		/* parsed rd_rel->reloptions */
 	TupleDesc	rd_att;			/* tuple descriptor */
 	Oid			rd_id;			/* relation's object id */
 	List	   *rd_indexlist;	/* list of OIDs of indexes on relation */

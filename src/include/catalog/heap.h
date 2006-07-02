@@ -17,6 +17,7 @@
 #include "catalog/pg_attribute.h"
 #include "nodes/parsenodes.h"
 #include "parser/parse_node.h"
+#include "utils/array.h"
 #include "utils/rel.h"
 
 
@@ -54,7 +55,8 @@ extern Oid heap_create_with_catalog(const char *relname,
 						 bool oidislocal,
 						 int oidinhcount,
 						 OnCommitAction oncommit,
-						 bool allow_system_table_mods);
+						 bool allow_system_table_mods,
+						 ArrayType *options);
 
 extern void heap_drop_with_catalog(Oid relid);
 

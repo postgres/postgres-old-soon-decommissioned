@@ -1738,3 +1738,54 @@ heap_addheader(int natts,		/* max domain index */
 
 	return tuple;
 }
+
+/*
+ * build_class_tuple
+ *
+ *	XXX Natts_pg_class_fixed is a hack - see pg_class.h
+ */
+HeapTuple
+build_class_tuple(Form_pg_class pgclass, ArrayType *options)
+{
+	HeapTuple		tuple;
+	HeapTupleHeader	td;
+	Form_pg_class	data;	/* contents of tuple */
+	Size			len;
+	Size			size;
+	int				hoff;
+
+	/* size of pg_class tuple with options */
+	if (options)
+		size = offsetof(FormData_pg_class, reloptions) + VARATT_SIZE(options);
+	else
+		size = CLASS_TUPLE_SIZE;
+
+	/* header needs no null bitmap */
+	hoff = offsetof(HeapTupleHeaderData, t_bits);
+	hoff += sizeof(Oid);
+	hoff = MAXALIGN(hoff);
+	len = hoff + size;
+
+	tuple = (HeapTuple) palloc0(HEAPTUPLESIZE + len);
+	tuple->t_data = td = (HeapTupleHeader) ((char *) tuple + HEAPTUPLESIZE);
+
+	tuple->t_len = len;
+	ItemPointerSetInvalid(&(tuple->t_self));
+	tuple->t_tableOid = InvalidOid;
+
+	/* we don't bother to fill the Datum fields */
+
+	td->t_natts = Natts_pg_class_fixed;
+	td->t_hoff = hoff;
+	td->t_infomask = HEAP_HASOID;
+
+	data = (Form_pg_class) ((char *) td + hoff);
+	memcpy(data, pgclass, CLASS_TUPLE_SIZE);
+	if (options)
+	{
+		td->t_natts++;
+		memcpy(data->reloptions, options, VARATT_SIZE(options));
+	}
+
+	return tuple;
+}

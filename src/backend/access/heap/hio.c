@@ -102,12 +102,18 @@ RelationGetBufferForTuple(Relation relation, Size len,
 {
 	Buffer		buffer = InvalidBuffer;
 	Page		pageHeader;
-	Size		pageFreeSpace;
+	Size		pageFreeSpace,
+				freespace;
 	BlockNumber targetBlock,
 				otherBlock;
 	bool		needLock;
 
+	if (relation->rd_options == NULL)
+		elog(ERROR, "RelationGetBufferForTuple %s IS NULL", RelationGetRelationName(relation));
+	Assert(relation->rd_options != NULL);
+
 	len = MAXALIGN(len);		/* be conservative */
+	freespace = HeapGetPageFreeSpace(relation);
 
 	/*
 	 * If we're gonna fail for oversize tuple, do it right away
@@ -146,7 +152,7 @@ RelationGetBufferForTuple(Relation relation, Size len,
 		 * We have no cached target page, so ask the FSM for an initial
 		 * target.
 		 */
-		targetBlock = GetPageWithFreeSpace(&relation->rd_node, len);
+		targetBlock = GetPageWithFreeSpace(&relation->rd_node, len + freespace);
 
 		/*
 		 * If the FSM knows nothing of the rel, try the last page before we
@@ -202,7 +208,7 @@ RelationGetBufferForTuple(Relation relation, Size len,
 		 */
 		pageHeader = (Page) BufferGetPage(buffer);
 		pageFreeSpace = PageGetFreeSpace(pageHeader);
-		if (len <= pageFreeSpace)
+		if (len + freespace <= pageFreeSpace)
 		{
 			/* use this page as future insert target, too */
 			relation->rd_targblock = targetBlock;
@@ -235,7 +241,7 @@ RelationGetBufferForTuple(Relation relation, Size len,
 		targetBlock = RecordAndGetPageWithFreeSpace(&relation->rd_node,
 													targetBlock,
 													pageFreeSpace,
-													len);
+													len + freespace);
 	}
 
 	/*

@@ -690,7 +690,7 @@ gistContinueInsert(gistIncompleteInsert *insert)
 			 * that wiil be enough space....
 			 */
 
-			if (gistnospace(pages[0], itup, lenitup, *todelete))
+			if (gistnospace(pages[0], itup, lenitup, *todelete, 0))
 			{
 
 				/* no space left on page, so we must split */

@@ -149,6 +149,8 @@ lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt)
 	/* Set threshold for interesting free space = average request size */
 	/* XXX should we scale it up or down?  Adjust vacuum.c too, if so */
 	vacrelstats->threshold = GetAvgFSMRequestSize(&onerel->rd_node);
+	if (vacrelstats->threshold < HeapGetPageFreeSpace(onerel))
+		vacrelstats->threshold = HeapGetPageFreeSpace(onerel);
 
 	/* Open all indexes of the relation */
 	vac_open_indexes(onerel, ShareUpdateExclusiveLock, &nindexes, &Irel);

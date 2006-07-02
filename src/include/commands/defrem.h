@@ -26,6 +26,7 @@ extern void DefineIndex(RangeVar *heapRelation,
 			List *attributeList,
 			Expr *predicate,
 			List *rangetable,
+			List *options,
 			bool unique,
 			bool primary,
 			bool isconstraint,
@@ -94,5 +95,7 @@ extern int64 defGetInt64(DefElem *def);
 extern List *defGetQualifiedName(DefElem *def);
 extern TypeName *defGetTypeName(DefElem *def);
 extern int	defGetTypeLength(DefElem *def);
+
+extern DefElem *defWithOids(bool value);
 
 #endif   /* DEFREM_H */

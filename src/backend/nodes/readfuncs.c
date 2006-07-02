@@ -141,6 +141,7 @@ _readQuery(void)
 	READ_INT_FIELD(resultRelation);
 	READ_NODE_FIELD(into);
 	READ_BOOL_FIELD(intoHasOids);
+	READ_NODE_FIELD(intoOptions);
 	READ_ENUM_FIELD(intoOnCommit, OnCommitAction);
 	READ_STRING_FIELD(intoTableSpaceName);
 	READ_BOOL_FIELD(hasAggs);

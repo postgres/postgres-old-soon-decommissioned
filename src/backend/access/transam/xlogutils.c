@@ -337,7 +337,7 @@ _xl_remove_hash_entry(XLogRelDesc *rdesc)
 	RelationCloseSmgr(&(rdesc->reldata));
 
 	memset(rdesc, 0, sizeof(XLogRelDesc));
-	memset(tpgc, 0, sizeof(FormData_pg_class));
+	memset(tpgc, 0, CLASS_TUPLE_SIZE);
 	rdesc->reldata.rd_rel = tpgc;
 }
 

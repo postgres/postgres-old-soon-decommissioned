@@ -77,6 +77,7 @@ static bool relationHasPrimaryKey(Relation rel);
  * 'isconstraint': index is for a PRIMARY KEY or UNIQUE constraint,
  *		so build a pg_constraint entry for it.
  * 'is_alter_table': this is due to an ALTER rather than a CREATE operation.
+ * 'options': options passed by WITH.
  * 'check_rights': check for CREATE rights in the namespace.  (This should
  *		be true except when ALTER is deleting/recreating an index.)
  * 'skip_build': make the catalog entries but leave the index file empty;
@@ -92,6 +93,7 @@ DefineIndex(RangeVar *heapRelation,
 			List *attributeList,
 			Expr *predicate,
 			List *rangetable,
+			List *options,
 			bool unique,
 			bool primary,
 			bool isconstraint,
@@ -397,7 +399,7 @@ DefineIndex(RangeVar *heapRelation,
 
 	index_create(relationId, indexRelationName, indexRelationId,
 				 indexInfo, accessMethodId, tablespaceId, classObjectId,
-				 primary, false, isconstraint,
+				 options, primary, false, isconstraint,
 				 allowSystemTableMods, skip_build);
 }
 

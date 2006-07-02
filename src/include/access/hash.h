@@ -234,6 +234,7 @@ extern Datum hashmarkpos(PG_FUNCTION_ARGS);
 extern Datum hashrestrpos(PG_FUNCTION_ARGS);
 extern Datum hashbulkdelete(PG_FUNCTION_ARGS);
 extern Datum hashvacuumcleanup(PG_FUNCTION_ARGS);
+extern Datum hashoption(PG_FUNCTION_ARGS);
 
 /*
  * Datatype-specific hash functions in hashfunc.c.

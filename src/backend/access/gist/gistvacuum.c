@@ -376,7 +376,7 @@ gistVacuumUpdate(GistVacuum *gv, BlockNumber blkno, bool needunion)
 		if (curlenaddon)
 		{
 			/* insert updated tuples */
-			if (gistnospace(tempPage, addon, curlenaddon, InvalidOffsetNumber)) {
+			if (gistnospace(tempPage, addon, curlenaddon, InvalidOffsetNumber, 0)) {
 				/* there is no space on page to insert tuples */
 				res = vacuumSplitPage(gv, tempPage, buffer, addon, curlenaddon);
 				tempPage=NULL; /* vacuumSplitPage() free tempPage */

@@ -1079,3 +1079,16 @@ BTreeShmemInit(void)
 	else
 		Assert(found);
 }
+
+Datum
+btoption(PG_FUNCTION_ARGS)
+{
+#define BTREE_MIN_FILLFACTOR		50
+#define BTREE_DEFAULT_FILLFACTOR	90
+
+	ArrayType	   *options = (ArrayType *) PG_GETARG_POINTER(0);
+
+	/* Use index common routine. */
+	PG_RETURN_BYTEA_P(genam_option(options,
+		BTREE_MIN_FILLFACTOR, BTREE_DEFAULT_FILLFACTOR));
+}
