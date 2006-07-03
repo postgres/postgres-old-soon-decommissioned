@@ -107,6 +107,13 @@ typedef struct BTMetaPageData
 	  MAXALIGN(sizeof(BTPageOpaqueData))) / 3 - sizeof(ItemIdData))
 
 /*
+ * Because of above, min fillfactor can't be less than 2/3rds; see notes in
+ * nbtsort.c before you change these!
+ */
+#define BTREE_MIN_FILLFACTOR		70
+#define BTREE_DEFAULT_FILLFACTOR	90
+
+/*
  *	Test whether two btree entries are "the same".
  *
  *	Old comments:
@@ -453,7 +460,7 @@ extern Datum btmarkpos(PG_FUNCTION_ARGS);
 extern Datum btrestrpos(PG_FUNCTION_ARGS);
 extern Datum btbulkdelete(PG_FUNCTION_ARGS);
 extern Datum btvacuumcleanup(PG_FUNCTION_ARGS);
-extern Datum btoption(PG_FUNCTION_ARGS);
+extern Datum btoptions(PG_FUNCTION_ARGS);
 
 /*
  * prototypes for functions in nbtinsert.c

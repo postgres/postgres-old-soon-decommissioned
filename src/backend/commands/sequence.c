@@ -205,17 +205,7 @@ DefineSequence(CreateSeqStmt *seq)
 
 	/* Now form & insert sequence tuple */
 	tuple = heap_formtuple(tupDesc, value, null);
-
-	{
-		/*
-		 * HACK: Sequences insert only one tuple during initialize.
-		 * We treat sequences as heaps then.
-		 */
-		HeapOption opaque = { sizeof(HeapOption), 100 };
-		rel->rd_options = (bytea *) &opaque;
-		simple_heap_insert(rel, tuple);
-		rel->rd_options = NULL;
-	}
+	simple_heap_insert(rel, tuple);
 
 	Assert(ItemPointerGetOffsetNumber(&(tuple->t_self)) == FirstOffsetNumber);
 

@@ -33,6 +33,7 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
+#include "access/reloptions.h"
 #include "access/xlog.h"
 #include "catalog/heap.h"
 #include "catalog/namespace.h"
@@ -45,8 +46,8 @@
 #include "miscadmin.h"
 #include "optimizer/clauses.h"
 #include "optimizer/var.h"
-#include "parser/parse_clause.h"
 #include "parser/parsetree.h"
+#include "parser/parse_clause.h"
 #include "storage/smgr.h"
 #include "utils/acl.h"
 #include "utils/guc.h"
@@ -543,7 +544,7 @@ InitPlan(QueryDesc *queryDesc, int eflags)
 	{
 		do_select_into = true;
 		estate->es_select_into = true;
-		estate->es_into_oids = parseTree->intoHasOids;
+		estate->es_into_oids = interpretOidsOption(parseTree->intoOptions);
 	}
 
 	/*
@@ -727,10 +728,10 @@ InitPlan(QueryDesc *queryDesc, int eflags)
 		char	   *intoName;
 		Oid			namespaceId;
 		Oid			tablespaceId;
+		Datum		reloptions;
 		AclResult	aclresult;
 		Oid			intoRelationId;
 		TupleDesc	tupdesc;
-		ArrayType  *options;
 
 		/*
 		 * Check consistency of arguments
@@ -770,6 +771,13 @@ InitPlan(QueryDesc *queryDesc, int eflags)
 			/* note InvalidOid is OK in this case */
 		}
 
+		/* Parse and validate any reloptions */
+		reloptions = transformRelOptions((Datum) 0,
+										 parseTree->intoOptions,
+										 true,
+										 false);
+		(void) heap_reloptions(RELKIND_RELATION, reloptions, true);
+
 		/* Check permissions except when using the database's default */
 		if (OidIsValid(tablespaceId))
 		{
@@ -788,7 +796,6 @@ InitPlan(QueryDesc *queryDesc, int eflags)
 		 */
 		tupdesc = CreateTupleDescCopy(tupType);
 
-		options = OptionBuild(NULL, parseTree->intoOptions);
 		intoRelationId = heap_create_with_catalog(intoName,
 												  namespaceId,
 												  tablespaceId,
@@ -800,10 +807,8 @@ InitPlan(QueryDesc *queryDesc, int eflags)
 												  true,
 												  0,
 												  parseTree->intoOnCommit,
-												  allowSystemTableMods,
-												  options);
-		if (options)
-			pfree(options);
+												  reloptions,
+												  allowSystemTableMods);
 
 		FreeTupleDesc(tupdesc);
 

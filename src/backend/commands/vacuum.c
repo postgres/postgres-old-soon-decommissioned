@@ -3119,8 +3119,6 @@ vac_update_fsm(Relation onerel, VacPageList fraged_pages,
 	 * vacuumlazy.c does, we'd be skewing that statistic.
 	 */
 	threshold = GetAvgFSMRequestSize(&onerel->rd_node);
-	if (threshold < HeapGetPageFreeSpace(onerel))
-		threshold = HeapGetPageFreeSpace(onerel);
 
 	pageSpaces = (PageFreeSpaceInfo *)
 		palloc(nPages * sizeof(PageFreeSpaceInfo));
@@ -3391,11 +3389,13 @@ static Size
 PageGetFreeSpaceWithFillFactor(Relation relation, Page page)
 {
 	PageHeader	pd = (PageHeader) page;
-	Size		pagefree = HeapGetPageFreeSpace(relation);
 	Size		freespace = pd->pd_upper - pd->pd_lower;
+	Size		targetfree;
 
-	if (freespace > pagefree)
-		return freespace - pagefree;
+	targetfree = RelationGetTargetPageFreeSpace(relation,
+												HEAP_DEFAULT_FILLFACTOR);
+	if (freespace > targetfree)
+		return freespace - targetfree;
 	else
 		return 0;
 }

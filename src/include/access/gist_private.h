@@ -272,7 +272,10 @@ extern Datum gistgetmulti(PG_FUNCTION_ARGS);
 #define GiSTPageSize   \
     ( BLCKSZ - SizeOfPageHeaderData - MAXALIGN(sizeof(GISTPageOpaqueData)) ) 
 
-extern Datum gistoption(PG_FUNCTION_ARGS);
+#define GIST_MIN_FILLFACTOR			50
+#define GIST_DEFAULT_FILLFACTOR		90
+
+extern Datum gistoptions(PG_FUNCTION_ARGS);
 extern bool gistfitpage(IndexTuple *itvec, int len);
 extern bool gistnospace(Page page, IndexTuple *itvec, int len, OffsetNumber todelete, Size freespace);
 extern void gistcheckpage(Relation rel, Buffer buf);
@@ -330,4 +333,5 @@ extern void gistSplitByKey(Relation r, Page page, IndexTuple *itup,
 							int len, GISTSTATE *giststate,
 							GistSplitVector *v, GistEntryVector *entryvec, 
 							int attno);
+
 #endif   /* GIST_PRIVATE_H */

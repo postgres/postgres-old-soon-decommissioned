@@ -19,7 +19,6 @@
 #include <unistd.h>
 
 #include "access/attnum.h"
-#include "access/heapam.h"
 #include "access/htup.h"
 #include "access/itup.h"
 #include "access/skey.h"
@@ -193,8 +192,6 @@ Boot_CreateStmt:
 												   RELKIND_RELATION,
 												   $3,
 												   true);
-						boot_reldesc->rd_options =
-							heap_option(RELKIND_RELATION, NULL);
 						elog(DEBUG4, "bootstrap relation created");
 					}
 					else
@@ -212,8 +209,8 @@ Boot_CreateStmt:
 													  true,
 													  0,
 													  ONCOMMIT_NOOP,
-													  true,
-													  NULL);
+													  (Datum) 0,
+													  true);
 						elog(DEBUG4, "relation created with oid %u", id);
 					}
 					do_end();

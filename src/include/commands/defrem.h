@@ -95,7 +95,6 @@ extern int64 defGetInt64(DefElem *def);
 extern List *defGetQualifiedName(DefElem *def);
 extern TypeName *defGetTypeName(DefElem *def);
 extern int	defGetTypeLength(DefElem *def);
-
 extern DefElem *defWithOids(bool value);
 
 #endif   /* DEFREM_H */

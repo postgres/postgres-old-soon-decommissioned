@@ -1509,7 +1509,6 @@ _outQuery(StringInfo str, Query *node)
 
 	WRITE_INT_FIELD(resultRelation);
 	WRITE_NODE_FIELD(into);
-	WRITE_BOOL_FIELD(intoHasOids);
 	WRITE_NODE_FIELD(intoOptions);
 	WRITE_ENUM_FIELD(intoOnCommit, OnCommitAction);
 	WRITE_STRING_FIELD(intoTableSpaceName);

@@ -213,7 +213,7 @@ typedef struct ginxlogDeletePage {
 } ginxlogDeletePage;
 
 /* ginutil.c */
-extern Datum ginoption(PG_FUNCTION_ARGS);
+extern Datum ginoptions(PG_FUNCTION_ARGS);
 extern void initGinState( GinState *state, Relation index );
 extern Buffer GinNewBuffer(Relation index);
 extern void GinInitBuffer(Buffer b, uint32 f);

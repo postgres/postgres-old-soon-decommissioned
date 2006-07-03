@@ -14,7 +14,6 @@
 #ifndef GENAM_H
 #define GENAM_H
 
-#include "access/heapam.h"
 #include "access/itup.h"
 #include "access/relscan.h"
 #include "access/sdir.h"
@@ -144,14 +143,5 @@ extern SysScanDesc systable_beginscan(Relation heapRelation,
 				   int nkeys, ScanKey key);
 extern HeapTuple systable_getnext(SysScanDesc sysscan);
 extern void systable_endscan(SysScanDesc sysscan);
-
-
-typedef HeapOption	IndexOption;
-
-extern bytea *genam_option(ArrayType *options,
-                           int minFillfactor, int defaultFillfactor);
-
-#define IndexGetFillFactor(relation)	HeapGetFillFactor(relation)
-#define IndexGetPageFreeSpace(relation)	HeapGetPageFreeSpace(relation)
 
 #endif   /* GENAM_H */

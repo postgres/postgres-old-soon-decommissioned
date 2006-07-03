@@ -1680,7 +1680,6 @@ _copyQuery(Query *from)
 	COPY_NODE_FIELD(utilityStmt);
 	COPY_SCALAR_FIELD(resultRelation);
 	COPY_NODE_FIELD(into);
-	COPY_SCALAR_FIELD(intoHasOids);
 	COPY_NODE_FIELD(intoOptions);
 	COPY_SCALAR_FIELD(intoOnCommit);
 	COPY_STRING_FIELD(intoTableSpaceName);
@@ -2641,7 +2640,6 @@ _copyExecuteStmt(ExecuteStmt *from)
 
 	COPY_STRING_FIELD(name);
 	COPY_NODE_FIELD(into);
-	COPY_SCALAR_FIELD(into_has_oids);
 	COPY_NODE_FIELD(intoOptions);
 	COPY_SCALAR_FIELD(into_on_commit);
 	COPY_STRING_FIELD(into_tbl_space);

@@ -16,12 +16,9 @@
 #include "postgres.h"
 
 #include "access/genam.h"
-#include "access/heapam.h"
 #include "catalog/index.h"
 #include "catalog/indexing.h"
 #include "executor/executor.h"
-#include "utils/syscache.h"
-#include "commands/defrem.h"
 
 
 /*

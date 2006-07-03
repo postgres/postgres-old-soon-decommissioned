@@ -15,17 +15,12 @@
 #define PARSE_CLAUSE_H
 
 #include "parser/parse_node.h"
-#include "utils/array.h"
 
 extern void transformFromClause(ParseState *pstate, List *frmList);
 extern int setTargetTable(ParseState *pstate, RangeVar *relation,
 			   bool inh, bool alsoSource, AclMode requiredPerms);
 extern bool interpretInhOption(InhOption inhOpt);
-extern bool interpretOidsOption(List *options);
-
-extern ArrayType *OptionBuild(ArrayType *array, List *list);
-extern void OptionParse(ArrayType *options, Size num, DefElem kwds[],
-						bool strict);
+extern bool interpretOidsOption(List *defList);
 
 extern Node *transformWhereClause(ParseState *pstate, Node *clause,
 					 const char *constructName);

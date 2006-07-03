@@ -17,7 +17,6 @@
 #include "access/itup.h"
 #include "catalog/pg_index.h"
 #include "nodes/execnodes.h"
-#include "utils/array.h"
 
 
 #define DEFAULT_INDEX_TYPE	"btree"
@@ -38,7 +37,7 @@ extern Oid index_create(Oid heapRelationId,
 			 Oid accessMethodObjectId,
 			 Oid tableSpaceId,
 			 Oid *classObjectId,
-			 List *options,
+			 Datum reloptions,
 			 bool isprimary,
 			 bool istoast,
 			 bool isconstraint,
@@ -71,7 +70,5 @@ extern double IndexBuildHeapScan(Relation heapRelation,
 
 extern void reindex_index(Oid indexId);
 extern bool reindex_relation(Oid relid, bool toast_too);
-
-extern bytea *index_option(RegProcedure amoption, ArrayType *options);
 
 #endif   /* INDEX_H */

@@ -1882,7 +1882,6 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 	if (stmt->intoColNames)
 		applyColumnNames(qry->targetList, stmt->intoColNames);
 
-	qry->intoHasOids = interpretOidsOption(stmt->intoOptions);
 	qry->intoOptions = copyObject(stmt->intoOptions);
 	qry->intoOnCommit = stmt->intoOnCommit;
 	qry->intoTableSpaceName = stmt->intoTableSpaceName;
@@ -2753,8 +2752,6 @@ transformExecuteStmt(ParseState *pstate, ExecuteStmt *stmt)
 	result->utilityStmt = (Node *) stmt;
 
 	paramtypes = FetchPreparedStatementParams(stmt->name);
-
-	stmt->into_has_oids = interpretOidsOption(stmt->intoOptions);
 
 	if (stmt->params || paramtypes)
 	{
