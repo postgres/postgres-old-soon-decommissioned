@@ -2516,42 +2516,6 @@ PQescapeString(char *to, const char *from, size_t length)
 }
 
 /*
- * Escaping arbitrary strings to get valid SQL identifier strings.
- *
- * Replaces " with "".
- *
- * length is the length of the source string.  (Note: if a terminating NUL
- * is encountered sooner, PQescapeIdentifier stops short of "length"; the behavior
- * is thus rather like strncpy.)
- *
- * For safety the buffer at "to" must be at least 2*length + 1 bytes long.
- * A terminating NUL character is added to the output string, whether the
- * input is NUL-terminated or not.
- *
- * Returns the actual length of the output (not counting the terminating NUL).
- */
-size_t
-PQescapeIdentifier(char *to, const char *from, size_t length)
-{
-	const char *source = from;
-	char	   *target = to;
-	size_t		remaining = length;
-
-	while (remaining > 0 && *source != '\0')
-	{
-		if (*source  == '"')
-			*target++ = *source;
-		*target++ = *source++;
-		remaining--;
-	}
-
-	/* Write the terminating NUL character. */
-	*target = '\0';
-
-	return target - to;
-}
-
-/*
  *		PQescapeBytea	- converts from binary string to the
  *		minimal encoding necessary to include the string in an SQL
  *		INSERT statement with a bytea type column as the target.

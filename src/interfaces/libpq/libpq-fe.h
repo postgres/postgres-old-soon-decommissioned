@@ -436,8 +436,6 @@ extern unsigned char *PQescapeByteaConn(PGconn *conn,
 				  size_t *to_length);
 extern unsigned char *PQunescapeBytea(const unsigned char *strtext,
 				size_t *retbuflen);
-extern size_t PQescapeIdentifier(char *to, const char *from, size_t length);
-
 /* These forms are deprecated! */
 extern size_t PQescapeString(char *to, const char *from, size_t length);
 extern unsigned char *PQescapeBytea(const unsigned char *from, size_t from_length,
