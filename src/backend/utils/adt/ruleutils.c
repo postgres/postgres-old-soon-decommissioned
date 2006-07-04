@@ -270,7 +270,7 @@ pg_get_ruledef_worker(Oid ruleoid, int prettyFlags)
 	else
 	{
 		/*
-		 * Get the rules definition and put it into executors memory
+		 * Get the rule's definition and put it into executor's memory
 		 */
 		ruletup = SPI_tuptable->vals[0];
 		rulettc = SPI_tuptable->tupdesc;
@@ -403,7 +403,7 @@ pg_get_viewdef_worker(Oid viewoid, int prettyFlags)
 	else
 	{
 		/*
-		 * Get the rules definition and put it into executors memory
+		 * Get the rule's definition and put it into executor's memory
 		 */
 		ruletup = SPI_tuptable->vals[0];
 		rulettc = SPI_tuptable->tupdesc;
