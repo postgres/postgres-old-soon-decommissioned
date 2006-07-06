@@ -59,6 +59,9 @@
 
 #if defined(_MSC_VER) || defined(__BORLANDC__)
 #define	WIN32_ONLY_COMPILER
+#define errcode __vc_errcode
+#include <crtdefs.h>
+#undef errcode
 #endif
 
 #include <stdio.h>

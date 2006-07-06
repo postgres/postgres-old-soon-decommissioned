@@ -10,7 +10,10 @@
 /* Python uses #pragma to bring in a non-default libpython on VC++ if
  * _DEBUG is defined */
 #undef _DEBUG
+/* Also hide away errcode, since we load Python.h before postgres.h */
+#define errcode __vc_errcode
 #include <Python.h>
+#undef errcode
 #define _DEBUG
 #else
 #include <Python.h>
@@ -2360,7 +2363,7 @@ PLy_init_plpy(void)
 /* the python interface to the elog function
  * don't confuse these with PLy_elog
  */
-static PyObject *PLy_output(int, PyObject *, PyObject *);
+static PyObject *PLy_output(volatile int, PyObject *, PyObject *);
 
 static PyObject *
 PLy_debug(PyObject * self, PyObject * args)
