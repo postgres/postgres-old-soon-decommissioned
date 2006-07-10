@@ -272,10 +272,9 @@ GRANT <replaceable class="PARAMETER">role</replaceable> [, ...]
        of privilege that is applicable to procedural languages.
       </para>
       <para>
-       For schemas, allows access to objects contained in the specified
-       schema (assuming that the objects' own privilege requirements are
-       also met).  Essentially this allows the grantee to <quote>look up</>
-       objects within the schema.
+       For schemas, allows the grantee to find objects contained in the
+       specified schema (assuming that the objects' own privilege requirements 
+       are also met).
       </para>
       <para>
        For sequences, this privilege allows the use of the
