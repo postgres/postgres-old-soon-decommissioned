@@ -117,12 +117,15 @@ extern void vac_close_indexes(int nindexes, Relation *Irel, LOCKMODE lockmode);
 extern void vac_update_relstats(Oid relid,
 					BlockNumber num_pages,
 					double num_tuples,
-					bool hasindex);
+					bool hasindex,
+					TransactionId minxid,
+					TransactionId vacuumxid);
 extern void vacuum_set_xid_limits(VacuumStmt *vacstmt, bool sharedRel,
 					  TransactionId *oldestXmin,
 					  TransactionId *freezeLimit);
 extern bool vac_is_partial_index(Relation indrel);
 extern void vacuum_delay_point(void);
+extern TransactionId vactuple_get_minxid(HeapTuple tuple);
 
 /* in commands/vacuumlazy.c */
 extern void lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt);

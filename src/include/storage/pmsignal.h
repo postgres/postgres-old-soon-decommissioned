@@ -26,6 +26,7 @@ typedef enum
 	PMSIGNAL_WAKEN_CHILDREN,	/* send a SIGUSR1 signal to all backends */
 	PMSIGNAL_WAKEN_ARCHIVER,	/* send a NOTIFY signal to xlog archiver */
 	PMSIGNAL_ROTATE_LOGFILE,	/* send SIGUSR1 to syslogger to rotate logfile */
+	PMSIGNAL_START_AUTOVAC,		/* start an autovacuum iteration */
 
 	NUM_PMSIGNALS				/* Must be last value of enum! */
 } PMSignalReason;

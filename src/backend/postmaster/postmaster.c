@@ -3417,6 +3417,16 @@ sigusr1_handler(SIGNAL_ARGS)
 		kill(SysLoggerPID, SIGUSR1);
 	}
 
+	if (CheckPostmasterSignal(PMSIGNAL_START_AUTOVAC))
+	{
+		/* start one iteration of the autovacuum daemon */
+		if (Shutdown == NoShutdown)
+		{
+			Assert(!AutoVacuumingActive());
+			AutoVacPID = autovac_start();
+		}
+	}
+
 	PG_SETMASK(&UnBlockSig);
 
 	errno = save_errno;

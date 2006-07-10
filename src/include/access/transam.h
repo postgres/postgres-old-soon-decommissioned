@@ -23,6 +23,7 @@
  * always be considered valid.
  *
  * FirstNormalTransactionId is the first "normal" transaction id.
+ * Note: if you need to change it, you must change it in pg_class.h as well.
  * ----------------
  */
 #define InvalidTransactionId		((TransactionId) 0)
@@ -123,7 +124,7 @@ extern bool TransactionIdFollowsOrEquals(TransactionId id1, TransactionId id2);
 /* in transam/varsup.c */
 extern TransactionId GetNewTransactionId(bool isSubXact);
 extern TransactionId ReadNewTransactionId(void);
-extern void SetTransactionIdLimit(TransactionId oldest_datfrozenxid,
+extern void SetTransactionIdLimit(TransactionId oldest_datminxid,
 					  Name oldest_datname);
 extern Oid	GetNewObjectId(void);
 

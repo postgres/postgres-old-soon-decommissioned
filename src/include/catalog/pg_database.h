@@ -43,7 +43,7 @@ CATALOG(pg_database,1262) BKI_SHARED_RELATION
 	int4		datconnlimit;	/* max connections allowed (-1=no limit) */
 	Oid			datlastsysoid;	/* highest OID to consider a system OID */
 	TransactionId datvacuumxid; /* all XIDs before this are vacuumed */
-	TransactionId datfrozenxid; /* all XIDs before this are frozen */
+	TransactionId datminxid;	/* minimum XID present anywhere in the DB */
 	Oid			dattablespace;	/* default table space for this DB */
 	text		datconfig[1];	/* database-specific GUC (VAR LENGTH) */
 	aclitem		datacl[1];		/* access permissions (VAR LENGTH) */
@@ -69,7 +69,7 @@ typedef FormData_pg_database *Form_pg_database;
 #define Anum_pg_database_datconnlimit	6
 #define Anum_pg_database_datlastsysoid	7
 #define Anum_pg_database_datvacuumxid	8
-#define Anum_pg_database_datfrozenxid	9
+#define Anum_pg_database_datminxid		9
 #define Anum_pg_database_dattablespace	10
 #define Anum_pg_database_datconfig		11
 #define Anum_pg_database_datacl			12
