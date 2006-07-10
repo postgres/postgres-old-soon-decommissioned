@@ -34,6 +34,8 @@
 #ifndef DBLINK_H
 #define DBLINK_H
 
+#include "fmgr.h"
+
 /*
  * External declarations
  */

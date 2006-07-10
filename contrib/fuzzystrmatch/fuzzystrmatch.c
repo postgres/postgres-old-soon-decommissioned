@@ -142,7 +142,7 @@ levenshtein(PG_FUNCTION_ARGS)
 			 * position in the source string, matches the character at the
 			 * current row position in the target string; cost is 1 otherwise.
 			 */
-			c = ((CHAREQ(str_s, str_t)) ? 0 : 1);
+			c = (*str_s != *str_t);
 
 			/*
 			 * c1 is upper right cell plus 1
@@ -167,7 +167,7 @@ levenshtein(PG_FUNCTION_ARGS)
 			/*
 			 * Increment the pointer to str_s
 			 */
-			NextChar(str_s);
+			str_s++;
 		}
 
 		/*
@@ -181,7 +181,7 @@ levenshtein(PG_FUNCTION_ARGS)
 		/*
 		 * Increment the pointer to str_t
 		 */
-		NextChar(str_t);
+		str_t++;
 
 		/*
 		 * Rewind the pointer to str_s

@@ -81,9 +81,6 @@ static const char *soundex_table = "01230120022455012623010202";
 /*
  * Levenshtein
  */
-#define STRLEN(p) strlen(p)
-#define CHAREQ(p1, p2) (*(p1) == *(p2))
-#define NextChar(p) ((p)++)
 #define MAX_LEVENSHTEIN_STRLEN		255
 
 
