@@ -32,6 +32,8 @@
 #ifndef _PG_CRYPTO_H
 #define _PG_CRYPTO_H
 
+#include "fmgr.h"
+
 /* exported functions */
 Datum		pg_digest(PG_FUNCTION_ARGS);
 Datum		pg_digest_exists(PG_FUNCTION_ARGS);

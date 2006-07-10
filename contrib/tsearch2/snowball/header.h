@@ -4,7 +4,7 @@
 
 #include "api.h"
 
-#define HEAD 2*sizeof(int)
+#define HEAD (2 * sizeof(int))
 
 #define SIZE(p)		   ((int *)(p))[-1]
 #define SET_SIZE(p, n) ((int *)(p))[-1] = n
