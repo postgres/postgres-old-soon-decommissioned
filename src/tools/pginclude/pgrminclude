@@ -64,10 +64,10 @@ do
 			then	grep -v '^#include[ 	][ 	]*[<"]'"$INCLUDE"'[>"]' "$FILE" >/tmp/$$b
 				mv /tmp/$$b "$FILE"
 			fi
-			if [ "$1" = "-v" ]
-			then	cat /tmp/$$
-				cat /tmp/$$.c
-			fi
+		fi
+		if [ "$1" = "-v" ]
+		then	cat /tmp/$$
+			cat /tmp/$$.c
 		fi
 	done
 done
