@@ -10,6 +10,7 @@
 #include <stdarg.h>
 #include <signal.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <errno.h>
 
 
