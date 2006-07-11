@@ -35,9 +35,9 @@ do
 		# preserve configure-specific includes
 		# these includes are surrounded by #ifdef's
 		grep -B1 '^#include[ 	][ 	]*[<"]'"$INCLUDE"'[>"]' "$FILE" |
-		     egrep -q '^#if|^#else' && continue		
+		     egrep -q '^#if|^#else' && continue
 		grep -A1 '^#include[ 	][ 	]*[<"]'"$INCLUDE"'[>"]' "$FILE" |
-		     egrep -q '^#else|^#endif' && continue		
+		     egrep -q '^#else|^#endif' && continue
 
 		# set up initial file contents
 		cat /tmp/$$a |
@@ -61,12 +61,16 @@ do
 			-o /tmp/$$.o >/tmp/$$ 2>&1
 		if [ "$?" -eq 0 ]
 		then	echo "$FILE $INCLUDE"
+			if [ "$1" = "-v" ]
+			then	cat /tmp/$$
+				cat /tmp/$$b
+				cat /tmp/$$.c
+			fi
 			grep -v '^#include[ 	][ 	]*[<"]'"$INCLUDE"'[>"]' "$FILE" >/tmp/$$b
 			mv /tmp/$$b "$FILE"
+		elif [ "$1" = "-v" ]
+		then	echo "$FILE"
 		fi
-		if [ "$1" = "-v" ]
-		then	cat /tmp/$$
-			cat /tmp/$$.c
-		fi
+
 	done
 done
