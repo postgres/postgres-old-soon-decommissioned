@@ -55,7 +55,9 @@ do
 		fi
 		echo "}" >>/tmp/$$.c
 
-		cc -fsyntax-only -Werror -Wall -Wmissing-prototypes -Wmissing-declarations -I/pg/include -I/pg/backend -c /tmp/$$.c -o /tmp/$$.o >/tmp/$$ 2>&1
+		cc -fsyntax-only -Werror -Wall -Wmissing-prototypes \
+			-Wmissing-declarations -I/pg/include -I/pg/backend \
+			-c /tmp/$$.c -o /tmp/$$.o >/tmp/$$ 2>&1
 		if [ "$?" -eq 0 ]
 		then	echo "$FILE $INCLUDE"
 			if [ "$IS_INCLUDE" = "N" ]
