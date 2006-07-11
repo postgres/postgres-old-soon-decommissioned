@@ -28,6 +28,7 @@
 #define GinOverlapStrategy		1
 #define GinContainsStrategy		2
 #define GinContainedStrategy	3
+#define GinEqualStrategy		4
 
 #define	ARRAYCHECK(x) do { 									\
 	if ( ARR_HASNULL(x) )									\
@@ -86,6 +87,7 @@ ginarrayconsistent(PG_FUNCTION_ARGS) {
 			res = TRUE;
 			break;
 		case GinContainsStrategy:
+		case GinEqualStrategy:
 			res = TRUE;
 			for(i=0;i<nentries;i++)
 				if ( !check[i] ) {
