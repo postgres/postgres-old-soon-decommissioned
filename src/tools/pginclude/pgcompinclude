@@ -14,7 +14,7 @@ do
 	pgdefine "$FILE" >>/tmp/$$.c
 	echo "}" >>/tmp/$$.c
 	cc $CFLAGS -fsyntax-only -Werror -Wall -Wmissing-prototypes -Wmissing-declarations \
-		-I/pg/include -I/pg/backend -I`dirname $FILE` -c /tmp/$$.c -o /tmp/$$.o >/tmp/$$ 2>&1
+		-I/pg/include -I/pg/backend -I/pg/interfaces/libpq -I`dirname $FILE` -c /tmp/$$.c -o /tmp/$$.o >/tmp/$$ 2>&1
 	if [ "$?" -ne 0 ]
 	then	echo "$FILE"
 		if [ "$1" = "-v" ]
