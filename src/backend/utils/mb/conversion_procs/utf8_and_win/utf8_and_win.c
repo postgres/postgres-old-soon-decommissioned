@@ -14,8 +14,6 @@
 #include "postgres.h"
 #include "fmgr.h"
 #include "mb/pg_wchar.h"
-#include "../../Unicode/utf8_to_win866.map"
-#include "../../Unicode/utf8_to_win874.map"
 #include "../../Unicode/utf8_to_win1250.map"
 #include "../../Unicode/utf8_to_win1251.map"
 #include "../../Unicode/utf8_to_win1252.map"
@@ -25,8 +23,8 @@
 #include "../../Unicode/utf8_to_win1256.map"
 #include "../../Unicode/utf8_to_win1257.map"
 #include "../../Unicode/utf8_to_win1258.map"
-#include "../../Unicode/win866_to_utf8.map"
-#include "../../Unicode/win874_to_utf8.map"
+#include "../../Unicode/utf8_to_win866.map"
+#include "../../Unicode/utf8_to_win874.map"
 #include "../../Unicode/win1250_to_utf8.map"
 #include "../../Unicode/win1251_to_utf8.map"
 #include "../../Unicode/win1252_to_utf8.map"
@@ -35,6 +33,8 @@
 #include "../../Unicode/win1255_to_utf8.map"
 #include "../../Unicode/win1256_to_utf8.map"
 #include "../../Unicode/win1257_to_utf8.map"
+#include "../../Unicode/win866_to_utf8.map"
+#include "../../Unicode/win874_to_utf8.map"
 #include "../../Unicode/win1258_to_utf8.map"
 
 PG_MODULE_MAGIC;

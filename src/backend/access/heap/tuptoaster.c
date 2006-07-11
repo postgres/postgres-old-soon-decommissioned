@@ -30,14 +30,14 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-#include "access/heapam.h"
 #include "access/genam.h"
+#include "access/heapam.h"
 #include "access/tuptoaster.h"
 #include "catalog/catalog.h"
-#include "utils/rel.h"
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"
 #include "utils/pg_lzcompress.h"
+#include "utils/rel.h"
 #include "utils/typcache.h"
 
 

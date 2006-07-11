@@ -33,10 +33,10 @@
 
 #include "libpq/pqsignal.h"
 #include "miscadmin.h"
+#include "pgtime.h"
 #include "postmaster/fork_process.h"
 #include "postmaster/postmaster.h"
 #include "postmaster/syslogger.h"
-#include "pgtime.h"
 #include "storage/ipc.h"
 #include "storage/pg_shmem.h"
 #include "utils/guc.h"

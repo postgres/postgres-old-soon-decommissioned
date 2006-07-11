@@ -42,8 +42,8 @@
  */
 #include "postgres.h"
 
-#include "access/heapam.h"
 #include "access/hash.h"
+#include "access/heapam.h"
 #include "access/nbtree.h"
 #include "catalog/pg_type.h"
 #include "commands/defrem.h"
