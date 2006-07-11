@@ -414,21 +414,26 @@ extern Datum arraycontains(PG_FUNCTION_ARGS);
 extern Datum arraycontained(PG_FUNCTION_ARGS);
 
 /* ginbulk.c */
-typedef struct {
+typedef struct EntryAccumulator {
     Datum       value;
 	uint32      length;
 	uint32      number;
 	ItemPointerData *list;
 	bool		shouldSort;
+	struct EntryAccumulator	*left;
+	struct EntryAccumulator	*right;
 } EntryAccumulator;
 
 typedef struct {
 	GinState	*ginstate;
     EntryAccumulator    *entries;
-	uint32      length;
-	uint32      number;
-	uint32      curget;
+	uint32		maxdepth;
+	EntryAccumulator	**stack;
+	uint32				stackpos;
 	uint32      allocatedMemory;
+
+	uint32				length;
+	EntryAccumulator	*entryallocator;
 } BuildAccumulator;
 
 extern void ginInitBA(BuildAccumulator *accum);
