@@ -213,7 +213,7 @@ ginoptions(PG_FUNCTION_ARGS)
 	 * It's not clear that fillfactor is useful for GIN, but for the moment
 	 * we'll accept it anyway.  (It won't do anything...)
 	 */
-#define GIN_MIN_FILLFACTOR			50
+#define GIN_MIN_FILLFACTOR			10
 #define GIN_DEFAULT_FILLFACTOR		100
 
 	result = default_reloptions(reloptions, validate,

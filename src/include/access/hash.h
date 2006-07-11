@@ -167,7 +167,7 @@ typedef HashMetaPageData *HashMetaPage;
 	 MAXALIGN(sizeof(HashPageOpaqueData)) - \
 	 sizeof(ItemIdData))
 
-#define HASH_MIN_FILLFACTOR			50
+#define HASH_MIN_FILLFACTOR			10
 #define HASH_DEFAULT_FILLFACTOR		75
 
 /*

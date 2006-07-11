@@ -107,11 +107,15 @@ typedef struct BTMetaPageData
 	  MAXALIGN(sizeof(BTPageOpaqueData))) / 3 - sizeof(ItemIdData))
 
 /*
- * Because of above, min fillfactor can't be less than 2/3rds; see notes in
- * nbtsort.c before you change these!
+ * The leaf-page fillfactor defaults to 90% but is user-adjustable.
+ * For pages above the leaf level, we use a fixed 70% fillfactor.
+ * The fillfactor is applied during index build and when splitting
+ * a rightmost page; when splitting non-rightmost pages we try to
+ * divide the data equally.
  */
-#define BTREE_MIN_FILLFACTOR		70
+#define BTREE_MIN_FILLFACTOR		10
 #define BTREE_DEFAULT_FILLFACTOR	90
+#define BTREE_NONLEAF_FILLFACTOR	70
 
 /*
  *	Test whether two btree entries are "the same".

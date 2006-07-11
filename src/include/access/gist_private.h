@@ -272,7 +272,7 @@ extern Datum gistgetmulti(PG_FUNCTION_ARGS);
 #define GiSTPageSize   \
     ( BLCKSZ - SizeOfPageHeaderData - MAXALIGN(sizeof(GISTPageOpaqueData)) ) 
 
-#define GIST_MIN_FILLFACTOR			50
+#define GIST_MIN_FILLFACTOR			10
 #define GIST_DEFAULT_FILLFACTOR		90
 
 extern Datum gistoptions(PG_FUNCTION_ARGS);
