@@ -20,9 +20,9 @@
 #include "miscadmin.h"
 #include "nodes/execnodes.h"
 #include "pgstat.h"
+#include "utils/builtins.h"
 #include "utils/hsearch.h"
 #include "utils/inet.h"
-#include "utils/builtins.h"
 #include "libpq/ip.h"
 
 /* bogus ... these externs should be in a header file */

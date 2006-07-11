@@ -17,9 +17,9 @@
 #include "nodes/makefuncs.h"
 #include "optimizer/clauses.h"
 #include "optimizer/tlist.h"
-#include "parser/parsetree.h"
 #include "parser/parse_coerce.h"
 #include "parser/parse_relation.h"
+#include "parser/parsetree.h"
 #include "rewrite/rewriteManip.h"
 #include "utils/lsyscache.h"
 

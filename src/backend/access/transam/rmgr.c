@@ -8,12 +8,12 @@
 #include "postgres.h"
 
 #include "access/clog.h"
+#include "access/gin.h"
 #include "access/gist_private.h"
 #include "access/hash.h"
 #include "access/heapam.h"
 #include "access/multixact.h"
 #include "access/nbtree.h"
-#include "access/gin.h"
 #include "access/xact.h"
 #include "access/xlog_internal.h"
 #include "commands/dbcommands.h"

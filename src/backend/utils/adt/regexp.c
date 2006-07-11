@@ -29,8 +29,8 @@
  */
 #include "postgres.h"
 
-#include "regex/regex.h"
 #include "mb/pg_wchar.h"
+#include "regex/regex.h"
 #include "utils/builtins.h"
 #include "utils/guc.h"
 

@@ -23,9 +23,6 @@
 #include "executor/nodeAgg.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
-#ifdef OPTIMIZER_DEBUG
-#include "nodes/print.h"
-#endif
 #include "optimizer/clauses.h"
 #include "optimizer/cost.h"
 #include "optimizer/pathnode.h"
@@ -36,9 +33,12 @@
 #include "optimizer/subselect.h"
 #include "optimizer/tlist.h"
 #include "optimizer/var.h"
-#include "parser/parsetree.h"
+#ifdef OPTIMIZER_DEBUG
+#include "nodes/print.h"
+#endif
 #include "parser/parse_expr.h"
 #include "parser/parse_oper.h"
+#include "parser/parsetree.h"
 #include "utils/selfuncs.h"
 #include "utils/syscache.h"
 

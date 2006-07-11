@@ -26,10 +26,10 @@
 
 #include "fmgr.h"
 #include "funcapi.h"
-#include "access/heapam.h"
-#include "access/nbtree.h"
 #include "access/gist_private.h"
 #include "access/hash.h"
+#include "access/heapam.h"
+#include "access/nbtree.h"
 #include "access/transam.h"
 #include "catalog/namespace.h"
 #include "utils/builtins.h"

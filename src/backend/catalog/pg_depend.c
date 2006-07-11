@@ -16,8 +16,8 @@
 
 #include "access/genam.h"
 #include "access/heapam.h"
-#include "catalog/indexing.h"
 #include "catalog/dependency.h"
+#include "catalog/indexing.h"
 #include "catalog/pg_depend.h"
 #include "miscadmin.h"
 #include "utils/fmgroids.h"

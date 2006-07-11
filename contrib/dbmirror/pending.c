@@ -33,6 +33,7 @@
 #include "postgres.h"
 
 #include "executor/spi.h"
+
 #include "commands/sequence.h"
 #include "commands/trigger.h"
 #include "utils/lsyscache.h"

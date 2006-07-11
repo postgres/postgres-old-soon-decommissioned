@@ -20,8 +20,8 @@
 
 #include "fmgr.h"
 #include "miscadmin.h"
-#include "executor/spi.h"
 #include "commands/trigger.h"
+#include "executor/spi.h"
 #include "utils/tuplestore.h"
 
 /**********************************************************************

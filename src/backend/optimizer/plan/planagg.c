@@ -24,9 +24,9 @@
 #include "optimizer/paths.h"
 #include "optimizer/planmain.h"
 #include "optimizer/subselect.h"
-#include "parser/parsetree.h"
 #include "parser/parse_clause.h"
 #include "parser/parse_expr.h"
+#include "parser/parsetree.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
 
