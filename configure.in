@@ -652,8 +652,6 @@ if test "$with_krb5" = yes ; then
   if test "$PORTNAME" != "win32"; then
      AC_SEARCH_LIBS(com_err, [krb5 'krb5 -ldes -lasn1 -lroken' com_err], [],
                     [AC_MSG_ERROR([could not find function 'com_err' required for Kerberos 5])])
-     AC_SEARCH_LIBS(krb5_encrypt, [krb5 'krb5 -ldes -lasn1 -lroken' crypto k5crypto], [],
-                    [AC_MSG_ERROR([could not find function 'krb5_encrypt' required for Kerberos 5])])
      AC_SEARCH_LIBS(krb5_sendauth, [krb5 'krb5 -ldes -lasn1 -lroken'], [],
                     [AC_MSG_ERROR([could not find function 'krb5_sendauth' required for Kerberos 5])])
   else
