@@ -98,29 +98,29 @@ struct _archiveHandle;
 struct _tocEntry;
 struct _restoreList;
 
-typedef void (*ClosePtr) (struct _archiveHandle * AH);
-typedef void (*ArchiveEntryPtr) (struct _archiveHandle * AH, struct _tocEntry * te);
+typedef void (*ClosePtr) (struct _archiveHandle *AH);
+typedef void (*ArchiveEntryPtr) (struct _archiveHandle *AH, struct _tocEntry *te);
 
-typedef void (*StartDataPtr) (struct _archiveHandle * AH, struct _tocEntry * te);
-typedef size_t (*WriteDataPtr) (struct _archiveHandle * AH, const void *data, size_t dLen);
-typedef void (*EndDataPtr) (struct _archiveHandle * AH, struct _tocEntry * te);
+typedef void (*StartDataPtr) (struct _archiveHandle *AH, struct _tocEntry *te);
+typedef size_t (*WriteDataPtr) (struct _archiveHandle *AH, const void *data, size_t dLen);
+typedef void (*EndDataPtr) (struct _archiveHandle *AH, struct _tocEntry *te);
 
-typedef void (*StartBlobsPtr) (struct _archiveHandle * AH, struct _tocEntry * te);
-typedef void (*StartBlobPtr) (struct _archiveHandle * AH, struct _tocEntry * te, Oid oid);
-typedef void (*EndBlobPtr) (struct _archiveHandle * AH, struct _tocEntry * te, Oid oid);
-typedef void (*EndBlobsPtr) (struct _archiveHandle * AH, struct _tocEntry * te);
+typedef void (*StartBlobsPtr) (struct _archiveHandle *AH, struct _tocEntry *te);
+typedef void (*StartBlobPtr) (struct _archiveHandle *AH, struct _tocEntry *te, Oid oid);
+typedef void (*EndBlobPtr) (struct _archiveHandle *AH, struct _tocEntry *te, Oid oid);
+typedef void (*EndBlobsPtr) (struct _archiveHandle *AH, struct _tocEntry *te);
 
-typedef int (*WriteBytePtr) (struct _archiveHandle * AH, const int i);
-typedef int (*ReadBytePtr) (struct _archiveHandle * AH);
-typedef size_t (*WriteBufPtr) (struct _archiveHandle * AH, const void *c, size_t len);
-typedef size_t (*ReadBufPtr) (struct _archiveHandle * AH, void *buf, size_t len);
-typedef void (*SaveArchivePtr) (struct _archiveHandle * AH);
-typedef void (*WriteExtraTocPtr) (struct _archiveHandle * AH, struct _tocEntry * te);
-typedef void (*ReadExtraTocPtr) (struct _archiveHandle * AH, struct _tocEntry * te);
-typedef void (*PrintExtraTocPtr) (struct _archiveHandle * AH, struct _tocEntry * te);
-typedef void (*PrintTocDataPtr) (struct _archiveHandle * AH, struct _tocEntry * te, RestoreOptions *ropt);
+typedef int (*WriteBytePtr) (struct _archiveHandle *AH, const int i);
+typedef int (*ReadBytePtr) (struct _archiveHandle *AH);
+typedef size_t (*WriteBufPtr) (struct _archiveHandle *AH, const void *c, size_t len);
+typedef size_t (*ReadBufPtr) (struct _archiveHandle *AH, void *buf, size_t len);
+typedef void (*SaveArchivePtr) (struct _archiveHandle *AH);
+typedef void (*WriteExtraTocPtr) (struct _archiveHandle *AH, struct _tocEntry *te);
+typedef void (*ReadExtraTocPtr) (struct _archiveHandle *AH, struct _tocEntry *te);
+typedef void (*PrintExtraTocPtr) (struct _archiveHandle *AH, struct _tocEntry *te);
+typedef void (*PrintTocDataPtr) (struct _archiveHandle *AH, struct _tocEntry *te, RestoreOptions *ropt);
 
-typedef size_t (*CustomOutPtr) (struct _archiveHandle * AH, const void *buf, size_t len);
+typedef size_t (*CustomOutPtr) (struct _archiveHandle *AH, const void *buf, size_t len);
 
 typedef enum _archiveMode
 {

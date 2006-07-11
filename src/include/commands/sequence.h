@@ -14,6 +14,7 @@
 #define SEQUENCE_H
 
 #include "nodes/parsenodes.h"
+#include "storage/relfilenode.h"
 #include "access/xlog.h"
 #include "fmgr.h"
 

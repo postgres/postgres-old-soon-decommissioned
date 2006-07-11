@@ -17,6 +17,7 @@
 #define _PGTZ_H
 
 #include "tzfile.h"
+#include "pgtime.h"
 
 extern char *pg_TZDIR(void);
 

@@ -17,6 +17,7 @@
 #define SYSCACHE_H
 
 #include "access/htup.h"
+#include "utils/catcache.h"
 
 /*
  *		Declarations for util/syscache.c.

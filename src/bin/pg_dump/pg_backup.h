@@ -26,6 +26,7 @@
 #include "postgres_fe.h"
 
 #include "pg_dump.h"
+#include "dumputils.h"
 
 #include "libpq-fe.h"
 #include "pqexpbuffer.h"

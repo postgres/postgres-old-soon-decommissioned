@@ -9,6 +9,7 @@
 
 #include "libpq-fe.h"
 #include "ecpgtype.h"
+#include "sqlca.h"
 #include <string.h>
 
 #ifndef __cplusplus
@@ -39,7 +40,7 @@ extern		"C"
 
 struct sqlca_t;
 
-void		ECPGinit_sqlca(struct sqlca_t * sqlca);
+void		ECPGinit_sqlca(struct sqlca_t *sqlca);
 void		ECPGdebug(int, FILE *);
 bool		ECPGstatus(int, const char *);
 bool		ECPGsetcommit(int, const char *, const char *);

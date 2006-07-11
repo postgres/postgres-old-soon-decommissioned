@@ -14,6 +14,8 @@
 #ifndef INET_H
 #define INET_H
 
+#include "fmgr.h"
+
 /*
  *	This is the internal storage format for IP addresses
  *	(both INET and CIDR datatypes):

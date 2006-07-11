@@ -184,6 +184,10 @@ extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
  *	pgpipe, but in other cases we define rename to pgrename just on Win32.
  */
 #ifndef WIN32
+/*
+ *	The function prototypes are not supplied because every C file
+ *	includes this file.
+ */
 #define pgpipe(a)			pipe(a)
 #define piperead(a,b,c)		read(a,b,c)
 #define pipewrite(a,b,c)	write(a,b,c)

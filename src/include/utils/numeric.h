@@ -14,6 +14,8 @@
 #ifndef _PG_NUMERIC_H_
 #define _PG_NUMERIC_H_
 
+#include "fmgr.h"
+
 /*
  * Hardcoded precision limit - arbitrary, but must be small enough that
  * dscale values will fit in 14 bits.
