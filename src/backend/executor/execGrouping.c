@@ -18,8 +18,8 @@
 #include "access/heapam.h"
 #include "executor/executor.h"
 #include "parser/parse_oper.h"
-#include "utils/memutils.h"
 #include "utils/lsyscache.h"
+#include "utils/memutils.h"
 #include "utils/syscache.h"
 
 

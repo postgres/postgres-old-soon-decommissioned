@@ -15,8 +15,8 @@
 #ifndef EXECDESC_H
 #define EXECDESC_H
 
-#include "nodes/parsenodes.h"
 #include "nodes/execnodes.h"
+#include "nodes/parsenodes.h"
 #include "tcop/dest.h"
 
 

@@ -43,8 +43,8 @@
 
 #include "access/genam.h"
 #include "access/heapam.h"
-#include "catalog/index.h"
 #include "catalog/catalog.h"
+#include "catalog/index.h"
 #include "catalog/pg_index.h"
 #include "executor/execdebug.h"
 #include "miscadmin.h"

@@ -9,8 +9,8 @@
 
 #include "dict.h"
 #include "common.h"
-#include "snowball/header.h"
 #include "snowball/english_stem.h"
+#include "snowball/header.h"
 #include "snowball/russian_stem.h"
 #include "snowball/russian_stem_UTF8.h"
 #include "ts_locale.h"

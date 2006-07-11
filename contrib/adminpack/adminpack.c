@@ -20,9 +20,9 @@
 #include <dirent.h>
 
 #include "miscadmin.h"
-#include "storage/fd.h"
 #include "catalog/pg_type.h"
 #include "funcapi.h"
+#include "storage/fd.h"
 #include "utils/datetime.h"
 
 

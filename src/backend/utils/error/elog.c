@@ -65,8 +65,8 @@
 #include "postmaster/syslogger.h"
 #include "storage/ipc.h"
 #include "tcop/tcopprot.h"
-#include "utils/memutils.h"
 #include "utils/guc.h"
+#include "utils/memutils.h"
 #include "utils/ps_status.h"
 
 

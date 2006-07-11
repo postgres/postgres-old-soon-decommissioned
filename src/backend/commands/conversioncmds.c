@@ -14,15 +14,15 @@
  */
 #include "postgres.h"
 
-#include "catalog/pg_conversion.h"
 #include "access/heapam.h"
 #include "catalog/catalog.h"
 #include "catalog/dependency.h"
 #include "catalog/indexing.h"
 #include "catalog/namespace.h"
+#include "catalog/pg_conversion.h"
 #include "catalog/pg_type.h"
-#include "mb/pg_wchar.h"
 #include "commands/conversioncmds.h"
+#include "mb/pg_wchar.h"
 #include "miscadmin.h"
 #include "parser/parse_func.h"
 #include "utils/acl.h"

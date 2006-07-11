@@ -14,10 +14,10 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "funcapi.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
+#include "funcapi.h"
 #include "parser/parse_coerce.h"
 #include "parser/parse_expr.h"
 #include "utils/array.h"

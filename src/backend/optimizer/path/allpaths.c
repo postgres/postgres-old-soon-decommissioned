@@ -28,9 +28,9 @@
 #include "optimizer/planner.h"
 #include "optimizer/prep.h"
 #include "optimizer/var.h"
-#include "parser/parsetree.h"
 #include "parser/parse_clause.h"
 #include "parser/parse_expr.h"
+#include "parser/parsetree.h"
 #include "rewrite/rewriteManip.h"
 
 

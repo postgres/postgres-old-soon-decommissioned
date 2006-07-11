@@ -72,8 +72,8 @@
 #include "optimizer/plancat.h"
 #include "parser/parsetree.h"
 #include "utils/array.h"
-#include "utils/selfuncs.h"
 #include "utils/lsyscache.h"
+#include "utils/selfuncs.h"
 #include "utils/syscache.h"
 #include "utils/tuplesort.h"
 
