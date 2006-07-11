@@ -57,7 +57,8 @@ do
 
 		cc $CFLAGS -fsyntax-only -Werror -Wall -Wmissing-prototypes \
 			-Wmissing-declarations -I/pg/include -I/pg/backend \
-			-c /tmp/$$.c -o /tmp/$$.o >/tmp/$$ 2>&1
+			-I/pg/interfaces/libpq -I`dirname $FILE` -c /tmp/$$.c \
+			-o /tmp/$$.o >/tmp/$$ 2>&1
 		if [ "$?" -eq 0 ]
 		then	echo "$FILE $INCLUDE"
 			grep -v '^#include[ 	][ 	]*[<"]'"$INCLUDE"'[>"]' "$FILE" >/tmp/$$b
