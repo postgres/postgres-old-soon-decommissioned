@@ -19,9 +19,9 @@
 #include "catalog/index.h"
 #include "miscadmin.h"
 #include "storage/freespace.h"
-#include "utils/memutils.h"
 #include "storage/freespace.h"
 #include "storage/smgr.h"
+#include "utils/memutils.h"
 #include "commands/vacuum.h"
 
 typedef struct {

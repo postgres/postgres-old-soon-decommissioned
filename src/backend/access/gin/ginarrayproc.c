@@ -19,10 +19,10 @@
 #include "miscadmin.h"
 #include "storage/freespace.h"
 #include "utils/array.h"
+#include "utils/builtins.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
 #include "utils/typcache.h"
-#include "utils/builtins.h"
 #include "access/gin.h"
 
 #define GinOverlapStrategy		1

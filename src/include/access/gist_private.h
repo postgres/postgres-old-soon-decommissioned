@@ -14,8 +14,8 @@
 #ifndef GIST_PRIVATE_H
 #define GIST_PRIVATE_H
 
-#include "access/itup.h"
 #include "access/gist.h"
+#include "access/itup.h"
 #include "access/xlog.h"
 #include "access/xlogdefs.h"
 #include "fmgr.h"

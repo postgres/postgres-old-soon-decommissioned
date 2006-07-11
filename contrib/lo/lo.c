@@ -7,12 +7,12 @@
 
 #include "postgres.h"
 
-/* Required for largeobjects */
-#include "libpq/libpq-fs.h"
-#include "libpq/be-fsstubs.h"
-
 /* Required for SPI */
 #include "executor/spi.h"
+
+/* Required for largeobjects */
+#include "libpq/be-fsstubs.h"
+#include "libpq/libpq-fs.h"
 
 /* Required for triggers */
 #include "commands/trigger.h"

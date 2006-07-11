@@ -21,8 +21,8 @@
 #include "catalog/index.h"
 #include "commands/vacuum.h"
 #include "miscadmin.h"
-#include "utils/memutils.h"
 #include "storage/freespace.h"
+#include "utils/memutils.h"
 #include "storage/smgr.h"
 
 

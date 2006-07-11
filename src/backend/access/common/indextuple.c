@@ -17,8 +17,8 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "access/tuptoaster.h"
 #include "access/itup.h"
+#include "access/tuptoaster.h"
 #include "catalog/pg_type.h"
 
 

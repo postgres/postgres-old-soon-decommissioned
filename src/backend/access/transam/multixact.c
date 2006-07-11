@@ -52,9 +52,9 @@
 #include "access/slru.h"
 #include "access/xact.h"
 #include "miscadmin.h"
-#include "utils/memutils.h"
 #include "storage/backendid.h"
 #include "storage/lmgr.h"
+#include "utils/memutils.h"
 #include "storage/procarray.h"
 
 
