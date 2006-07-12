@@ -275,7 +275,9 @@ GRANT <replaceable class="PARAMETER">role</replaceable> [, ...]
        For schemas, allows access to objects contained in the specified
        schema (assuming that the objects' own privilege requirements are
        also met).  Essentially this allows the grantee to <quote>look up</>
-       objects within the schema.
+       objects within the schema.  Without this permission, it is still
+       possible to see the object names by querying the system tables, but
+       they cannot be accessed via SQL.
       </para>
       <para>
        For sequences, this privilege allows the use of the
