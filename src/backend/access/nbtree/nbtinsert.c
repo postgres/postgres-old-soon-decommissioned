@@ -17,6 +17,7 @@
 
 #include "access/heapam.h"
 #include "access/nbtree.h"
+#include "access/transam.h"
 #include "miscadmin.h"
 #include "utils/inval.h"
 

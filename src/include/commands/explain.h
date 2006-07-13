@@ -14,8 +14,6 @@
 #define EXPLAIN_H
 
 #include "executor/executor.h"
-#include "nodes/parsenodes.h"
-#include "tcop/dest.h"
 
 
 extern void ExplainQuery(ExplainStmt *stmt, ParamListInfo params,

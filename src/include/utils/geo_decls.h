@@ -21,6 +21,8 @@
 #ifndef GEO_DECLS_H
 #define GEO_DECLS_H
 
+#include <math.h>
+
 #include "fmgr.h"
 
 /*--------------------------------------------------------------------

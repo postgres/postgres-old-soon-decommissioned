@@ -14,10 +14,7 @@
 #ifndef BUFMGR_H
 #define BUFMGR_H
 
-#include "access/xlogdefs.h"
 #include "storage/buf.h"
-#include "storage/lock.h"
-#include "storage/relfilenode.h"
 #include "utils/rel.h"
 
 typedef void *Block;

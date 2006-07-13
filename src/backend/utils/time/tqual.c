@@ -41,6 +41,8 @@
 
 #include "access/multixact.h"
 #include "access/subtrans.h"
+#include "access/transam.h"
+#include "access/xact.h"
 #include "storage/procarray.h"
 #include "utils/tqual.h"
 

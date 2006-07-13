@@ -14,8 +14,6 @@
 #ifndef INDEX_H
 #define INDEX_H
 
-#include "access/itup.h"
-#include "catalog/pg_index.h"
 #include "nodes/execnodes.h"
 
 

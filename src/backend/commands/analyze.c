@@ -17,6 +17,7 @@
 #include <math.h>
 
 #include "access/heapam.h"
+#include "access/transam.h"
 #include "access/tuptoaster.h"
 #include "catalog/catalog.h"
 #include "catalog/index.h"

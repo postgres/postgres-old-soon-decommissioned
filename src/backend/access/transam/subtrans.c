@@ -30,6 +30,7 @@
 
 #include "access/slru.h"
 #include "access/subtrans.h"
+#include "access/transam.h"
 #include "utils/tqual.h"
 
 

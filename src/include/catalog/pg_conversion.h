@@ -82,7 +82,6 @@ typedef FormData_pg_conversion *Form_pg_conversion;
 /*
  * prototypes for functions in pg_conversion.c
  */
-#include "nodes/pg_list.h"
 #include "nodes/parsenodes.h"
 
 extern Oid ConversionCreate(const char *conname, Oid connamespace,

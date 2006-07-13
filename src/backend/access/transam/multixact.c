@@ -50,6 +50,7 @@
 
 #include "access/multixact.h"
 #include "access/slru.h"
+#include "access/transam.h"
 #include "access/xact.h"
 #include "miscadmin.h"
 #include "storage/backendid.h"

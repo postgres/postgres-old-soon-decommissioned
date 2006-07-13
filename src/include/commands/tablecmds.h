@@ -16,7 +16,6 @@
 
 #include "nodes/parsenodes.h"
 #include "utils/rel.h"
-#include "access/tupdesc.h"
 
 
 extern Oid	DefineRelation(CreateStmt *stmt, char relkind);

@@ -15,6 +15,7 @@
 
 #include "postgres.h"
 
+#include "catalog/pg_type.h"
 #include "commands/dbcommands.h"
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"

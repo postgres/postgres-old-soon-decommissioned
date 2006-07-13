@@ -23,6 +23,7 @@
 
 #include <limits.h>
 
+#include "access/xact.h"
 #include "commands/portalcmds.h"
 #include "executor/executor.h"
 #include "optimizer/planner.h"

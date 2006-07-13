@@ -17,6 +17,8 @@
  *		ExecInitSubPlan - initialize a subselect
  *		ExecEndSubPlan	- shut down a subselect
  */
+#include <math.h>
+
 #include "postgres.h"
 
 #include "access/heapam.h"

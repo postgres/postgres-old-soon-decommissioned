@@ -16,6 +16,7 @@
 
 #include "catalog/pg_cast.h"
 #include "catalog/pg_proc.h"
+#include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
 #include "nodes/params.h"
 #include "optimizer/clauses.h"

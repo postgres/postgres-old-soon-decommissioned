@@ -14,9 +14,7 @@
 #define PREPARE_H
 
 #include "executor/executor.h"
-#include "nodes/parsenodes.h"
-#include "tcop/dest.h"
-
+#include "utils/timestamp.h"
 
 /*
  * The data structure representing a prepared statement

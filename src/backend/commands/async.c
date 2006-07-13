@@ -79,6 +79,7 @@
 
 #include "access/heapam.h"
 #include "access/twophase_rmgr.h"
+#include "access/xact.h"
 #include "catalog/pg_listener.h"
 #include "commands/async.h"
 #include "libpq/libpq.h"

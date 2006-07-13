@@ -22,6 +22,8 @@
 #include "access/reloptions.h"
 #include "executor/execdebug.h"
 #include "miscadmin.h"
+#include "storage/lwlock.h"
+#include "storage/shmem.h"
 
 
 static void _bt_mark_scankey_required(ScanKey skey);

@@ -14,9 +14,7 @@
 #ifndef BOOTSTRAP_H
 #define BOOTSTRAP_H
 
-#include "access/itup.h"
 #include "nodes/execnodes.h"
-#include "utils/rel.h"
 
 /*
  * MAXATTR is the maximum number of attributes in a relation supported

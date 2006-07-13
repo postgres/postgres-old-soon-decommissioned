@@ -486,11 +486,11 @@ extern DLLIMPORT bool assert_enabled;
  *		Generates an exception if the given condition is true.
  */
 #define Trap(condition, errorType) \
-		do { \
-			if ((assert_enabled) && (condition)) \
-				ExceptionalCondition(CppAsString(condition), (errorType), \
-									 __FILE__, __LINE__); \
-		} while (0)
+	do { \
+		if ((assert_enabled) && (condition)) \
+			ExceptionalCondition(CppAsString(condition), (errorType), \
+								 __FILE__, __LINE__); \
+	} while (0)
 
 /*
  *	TrapMacro is the same as Trap but it's intended for use in macros:

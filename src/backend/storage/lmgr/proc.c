@@ -35,8 +35,10 @@
 #include <unistd.h>
 #include <sys/time.h>
 
-#include "miscadmin.h"
+#include "access/htup.h"
+#include "access/transam.h"
 #include "access/xact.h"
+#include "miscadmin.h"
 #include "storage/bufmgr.h"
 #include "storage/ipc.h"
 #include "storage/proc.h"

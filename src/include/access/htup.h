@@ -15,9 +15,8 @@
 #define HTUP_H
 
 #include "storage/bufpage.h"
+#include "storage/itemptr.h"
 #include "storage/relfilenode.h"
-#include "access/transam.h"
-
 
 /*
  * MaxTupleAttributeNumber limits the number of (user) columns in a tuple.

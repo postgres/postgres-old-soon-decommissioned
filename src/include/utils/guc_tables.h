@@ -14,6 +14,8 @@
 #ifndef GUC_TABLES_H
 #define GUC_TABLES_H 1
 
+#include "utils/guc.h"
+
 /*
  * GUC supports these types of variables:
  */

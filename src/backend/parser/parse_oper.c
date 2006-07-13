@@ -16,6 +16,7 @@
 #include "postgres.h"
 
 #include "catalog/pg_operator.h"
+#include "catalog/pg_type.h"
 #include "lib/stringinfo.h"
 #include "parser/parse_coerce.h"
 #include "parser/parse_expr.h"

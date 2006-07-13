@@ -22,7 +22,6 @@
 
 #include "access/itup.h"
 #include "executor/tuptable.h"
-#include "fmgr.h"
 
 
 /* Tuplesortstate is an opaque type whose details are not known outside

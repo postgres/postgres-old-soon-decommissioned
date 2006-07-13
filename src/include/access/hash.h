@@ -22,6 +22,7 @@
 #include "access/sdir.h"
 #include "access/xlog.h"
 #include "fmgr.h"
+#include "storage/lock.h"
 
 /*
  * Mapping from hash bucket number to physical block number of bucket's

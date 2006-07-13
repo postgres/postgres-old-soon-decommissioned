@@ -18,6 +18,9 @@
  *		ExecInitHash	- initialize node and subnodes
  *		ExecEndHash		- shutdown node and subnodes
  */
+
+#include <math.h>
+
 #include "postgres.h"
 
 #include "executor/execdebug.h"

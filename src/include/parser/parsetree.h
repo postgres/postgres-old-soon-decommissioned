@@ -16,7 +16,6 @@
 #define PARSETREE_H
 
 #include "nodes/parsenodes.h"
-#include "nodes/pg_list.h"		/* for list_nth(), etc */
 
 
 /* ----------------

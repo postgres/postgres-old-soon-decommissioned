@@ -15,7 +15,7 @@
 #define PARSENODES_H
 
 #include "nodes/primnodes.h"
-
+#include "nodes/value.h"
 
 /* Possible sources of a Query */
 typedef enum QuerySource

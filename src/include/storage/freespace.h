@@ -14,7 +14,6 @@
 #ifndef FREESPACE_H_
 #define FREESPACE_H_
 
-#include "storage/block.h"
 #include "storage/relfilenode.h"
 #include "storage/itemptr.h"
 

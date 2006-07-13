@@ -15,6 +15,7 @@
 
 #include "postgres.h"
 
+#include "access/xact.h"
 #include "commands/prepare.h"
 #include "commands/trigger.h"
 #include "executor/executor.h"

@@ -30,6 +30,8 @@
 #include "postgres.h"
 
 #include "access/subtrans.h"
+#include "access/transam.h"
+#include "access/xact.h"
 #include "access/twophase.h"
 #include "miscadmin.h"
 #include "storage/proc.h"

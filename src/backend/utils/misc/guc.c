@@ -27,6 +27,7 @@
 
 
 #include "access/twophase.h"
+#include "access/xact.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_type.h"
 #include "commands/async.h"

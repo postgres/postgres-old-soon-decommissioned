@@ -18,6 +18,7 @@
 
 #include "access/heapam.h"
 #include "access/twophase.h"
+#include "access/xact.h"
 #include "catalog/catalog.h"
 #include "catalog/namespace.h"
 #include "commands/alter.h"

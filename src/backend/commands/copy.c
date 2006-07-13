@@ -23,6 +23,7 @@
 #include "access/genam.h"
 #include "access/heapam.h"
 #include "access/printtup.h"
+#include "access/xact.h"
 #include "catalog/index.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_index.h"

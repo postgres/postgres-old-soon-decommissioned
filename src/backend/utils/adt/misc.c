@@ -19,6 +19,7 @@
 #include <dirent.h>
 #include <math.h>
 
+#include "access/xact.h"
 #include "catalog/pg_tablespace.h"
 #include "catalog/pg_type.h"
 #include "commands/dbcommands.h"

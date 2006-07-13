@@ -14,7 +14,6 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-#include "fmgr.h"
 #include "nodes/execnodes.h"
 
 

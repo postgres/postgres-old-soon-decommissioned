@@ -15,9 +15,6 @@
 #define EXECNODES_H
 
 #include "access/relscan.h"
-#include "executor/tuptable.h"
-#include "fmgr.h"
-#include "nodes/bitmapset.h"
 #include "nodes/params.h"
 #include "nodes/plannodes.h"
 #include "nodes/tidbitmap.h"

@@ -22,9 +22,7 @@
 #ifndef GEQO_MISC_H
 #define GEQO_MISC_H
 
-#include "optimizer/geqo.h"
 #include "optimizer/geqo_recombination.h"
-#include "nodes/relation.h"
 
 #ifdef GEQO_DEBUG
 

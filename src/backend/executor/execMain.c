@@ -34,6 +34,8 @@
 
 #include "access/heapam.h"
 #include "access/reloptions.h"
+#include "access/transam.h"
+#include "access/xact.h"
 #include "access/xlog.h"
 #include "catalog/heap.h"
 #include "catalog/namespace.h"

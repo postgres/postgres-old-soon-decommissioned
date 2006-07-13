@@ -14,7 +14,6 @@
 #ifndef NODEAGG_H
 #define NODEAGG_H
 
-#include "fmgr.h"
 #include "nodes/execnodes.h"
 
 extern int	ExecCountSlotsAgg(Agg *node);

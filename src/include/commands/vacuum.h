@@ -15,12 +15,10 @@
 #define VACUUM_H
 
 #include "access/htup.h"
-#include "catalog/pg_attribute.h"
 #include "catalog/pg_statistic.h"
 #include "catalog/pg_type.h"
 #include "nodes/parsenodes.h"
-#include "utils/rel.h"
-
+#include "storage/lock.h"
 
 /*----------
  * ANALYZE builds one of these structs for each attribute (column) that is

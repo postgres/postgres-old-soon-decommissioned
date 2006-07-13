@@ -14,10 +14,7 @@
 #ifndef HEAP_H
 #define HEAP_H
 
-#include "catalog/pg_attribute.h"
-#include "nodes/parsenodes.h"
 #include "parser/parse_node.h"
-#include "utils/rel.h"
 
 
 typedef struct RawColumnDefault

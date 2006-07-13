@@ -31,6 +31,7 @@
 #endif
 
 #include "access/printtup.h"
+#include "access/xact.h"
 #include "access/xlog.h"
 #include "catalog/pg_type.h"
 #include "commands/async.h"

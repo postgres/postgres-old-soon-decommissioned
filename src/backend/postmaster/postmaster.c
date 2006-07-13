@@ -99,6 +99,7 @@
 #include "commands/async.h"
 #include "lib/dllist.h"
 #include "libpq/auth.h"
+#include "libpq/ip.h"
 #include "libpq/libpq.h"
 #include "libpq/pqcomm.h"
 #include "libpq/pqsignal.h"

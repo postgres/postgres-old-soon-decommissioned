@@ -38,8 +38,10 @@
 #include "pgstat.h"
 
 #include "access/heapam.h"
+#include "access/transam.h"
 #include "access/xact.h"
 #include "catalog/pg_database.h"
+#include "libpq/ip.h"
 #include "libpq/libpq.h"
 #include "libpq/pqsignal.h"
 #include "mb/pg_wchar.h"

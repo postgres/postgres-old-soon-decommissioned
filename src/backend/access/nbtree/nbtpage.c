@@ -23,6 +23,7 @@
 #include "postgres.h"
 
 #include "access/nbtree.h"
+#include "access/transam.h"
 #include "miscadmin.h"
 #include "storage/freespace.h"
 #include "storage/lmgr.h"

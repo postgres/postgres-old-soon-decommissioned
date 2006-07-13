@@ -144,10 +144,12 @@ typedef struct
 #endif   /* HAVE_INT64_TIMESTAMP */
 
 
-#define TIMESTAMP_NOBEGIN(j)	do {(j) = DT_NOBEGIN;} while (0)
+#define TIMESTAMP_NOBEGIN(j)	\
+	do {(j) = DT_NOBEGIN;} while (0)
 #define TIMESTAMP_IS_NOBEGIN(j) ((j) == DT_NOBEGIN)
 
-#define TIMESTAMP_NOEND(j)		do {(j) = DT_NOEND;} while (0)
+#define TIMESTAMP_NOEND(j)		\
+	do {(j) = DT_NOEND;} while (0)
 #define TIMESTAMP_IS_NOEND(j)	((j) == DT_NOEND)
 
 #define TIMESTAMP_NOT_FINITE(j) (TIMESTAMP_IS_NOBEGIN(j) || TIMESTAMP_IS_NOEND(j))

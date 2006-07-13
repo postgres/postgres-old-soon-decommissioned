@@ -28,6 +28,7 @@
 #include "libpq/auth.h"
 #include "libpq/crypt.h"
 #include "libpq/hba.h"
+#include "libpq/ip.h"
 #include "libpq/libpq.h"
 #include "libpq/pqcomm.h"
 #include "libpq/pqformat.h"

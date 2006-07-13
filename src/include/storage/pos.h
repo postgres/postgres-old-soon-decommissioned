@@ -14,7 +14,6 @@
 #ifndef POS_H
 #define POS_H
 
-#include "storage/off.h"
 
 /*
  * a 'position' used to be <pagenumber, offset> in postgres.  this has

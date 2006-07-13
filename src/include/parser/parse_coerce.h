@@ -14,7 +14,6 @@
 #ifndef PARSE_COERCE_H
 #define PARSE_COERCE_H
 
-#include "catalog/pg_type.h"
 #include "parser/parse_node.h"
 
 

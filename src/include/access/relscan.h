@@ -15,6 +15,7 @@
 #define RELSCAN_H
 
 #include "access/skey.h"
+#include "utils/rel.h"
 #include "utils/tqual.h"
 
 

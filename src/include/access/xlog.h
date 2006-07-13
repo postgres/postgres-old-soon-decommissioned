@@ -12,7 +12,6 @@
 #define XLOG_H
 
 #include "access/rmgr.h"
-#include "access/transam.h"
 #include "access/xlogdefs.h"
 #include "lib/stringinfo.h"
 #include "storage/buf.h"

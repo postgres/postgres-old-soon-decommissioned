@@ -17,6 +17,7 @@
 
 #include "access/heapam.h"
 #include "catalog/heap.h"
+#include "catalog/pg_type.h"
 #include "commands/defrem.h"
 #include "nodes/makefuncs.h"
 #include "optimizer/clauses.h"

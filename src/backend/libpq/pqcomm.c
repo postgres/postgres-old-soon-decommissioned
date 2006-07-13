@@ -84,6 +84,7 @@
 #include <utime.h>
 #endif
 
+#include "libpq/ip.h"
 #include "libpq/libpq.h"
 #include "miscadmin.h"
 #include "storage/ipc.h"

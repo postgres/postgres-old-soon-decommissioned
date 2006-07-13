@@ -13,10 +13,7 @@
 #ifndef TUPTOASTER_H
 #define TUPTOASTER_H
 
-#include "access/heapam.h"
 #include "access/htup.h"
-#include "access/tupmacs.h"
-#include "utils/rel.h"
 
 
 /*

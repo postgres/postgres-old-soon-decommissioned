@@ -40,6 +40,7 @@
 #include <getopt.h>
 #endif
 
+#include "access/transam.h"
 #include "access/multixact.h"
 #include "access/xlog.h"
 #include "access/xlog_internal.h"

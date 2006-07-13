@@ -33,7 +33,9 @@
 #include <unistd.h>
 
 #include "access/heapam.h"
+#include "access/transam.h"
 #include "access/twophase_rmgr.h"
+#include "access/xact.h"
 #include "catalog/pg_auth_members.h"
 #include "catalog/pg_authid.h"
 #include "catalog/pg_database.h"

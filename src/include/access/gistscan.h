@@ -15,7 +15,6 @@
 #define GISTSCAN_H
 
 #include "access/relscan.h"
-#include "access/xlogdefs.h"
 
 extern Datum gistbeginscan(PG_FUNCTION_ARGS);
 extern Datum gistrescan(PG_FUNCTION_ARGS);
