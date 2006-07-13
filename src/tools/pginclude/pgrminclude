@@ -71,6 +71,8 @@ do
 				cat /tmp/$$b
 				cat /tmp/$$.c
 			fi
+			grep -v '^#include[ 	][ 	]*[<"]'"$INCLUDE"'[>"]' \
+				"$FILE" >/tmp/$$b
 			mv /tmp/$$b "$FILE"
 		fi
 	done
