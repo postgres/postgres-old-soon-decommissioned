@@ -47,7 +47,7 @@ static void mp_clear_free(mpz_t *a)
 {
 	if (!a)
 		return;
-	// fixme: no clear?
+	/* fixme: no clear? */
 	mp_int_free(a);
 }
 
