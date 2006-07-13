@@ -22,7 +22,6 @@
 
 #include "access/htup.h"
 #include "access/skey.h"
-#include "access/tupdesc.h"
 #include "lib/dllist.h"
 #include "utils/rel.h"
 

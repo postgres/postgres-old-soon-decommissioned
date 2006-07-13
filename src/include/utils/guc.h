@@ -13,7 +13,6 @@
 #ifndef GUC_H
 #define GUC_H
 
-#include "nodes/pg_list.h"
 #include "tcop/dest.h"
 #include "utils/array.h"
 

@@ -16,7 +16,6 @@
 #ifndef SYSCACHE_H
 #define SYSCACHE_H
 
-#include "access/htup.h"
 #include "utils/catcache.h"
 
 /*

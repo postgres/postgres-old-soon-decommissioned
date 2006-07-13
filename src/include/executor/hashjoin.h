@@ -14,7 +14,6 @@
 #ifndef HASHJOIN_H
 #define HASHJOIN_H
 
-#include "access/htup.h"
 #include "fmgr.h"
 #include "storage/buffile.h"
 

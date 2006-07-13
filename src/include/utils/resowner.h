@@ -19,10 +19,8 @@
 #ifndef RESOWNER_H
 #define RESOWNER_H
 
-#include "access/tupdesc.h"
 #include "storage/buf.h"
 #include "utils/catcache.h"
-#include "utils/rel.h"
 
 
 /*

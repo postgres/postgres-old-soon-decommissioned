@@ -20,8 +20,6 @@
 #define TCOPPROT_H
 
 #include "executor/execdesc.h"
-#include "nodes/params.h"
-#include "tcop/dest.h"
 #include "utils/guc.h"
 
 

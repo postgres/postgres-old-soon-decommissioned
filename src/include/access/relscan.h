@@ -16,7 +16,6 @@
 
 #include "access/skey.h"
 #include "storage/bufpage.h"
-#include "utils/rel.h"
 #include "utils/tqual.h"
 
 

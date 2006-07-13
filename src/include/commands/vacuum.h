@@ -15,8 +15,6 @@
 #define VACUUM_H
 
 #include "access/htup.h"
-#include "access/tupdesc.h"
-#include "catalog/pg_attribute.h"
 #include "catalog/pg_statistic.h"
 #include "catalog/pg_type.h"
 #include "nodes/parsenodes.h"
