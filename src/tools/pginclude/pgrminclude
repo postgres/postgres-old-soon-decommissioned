@@ -26,6 +26,7 @@ do
 
 		[ -s /usr/include/$INCLUDE ] && continue
 		[ "$INCLUDE" = postgres.h ] && continue
+		[ "$INCLUDE" = postgres_fe.h ] && continue
 		[ "$INCLUDE" = config.h ] && continue
 		[ "$INCLUDE" = c.h ] && continue
 
