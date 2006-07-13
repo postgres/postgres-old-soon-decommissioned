@@ -19,7 +19,7 @@
 
 typedef unsigned int BF_word;
 
-unsigned char _crypt_itoa64[64 + 1] =
+static unsigned char _crypt_itoa64[64 + 1] =
 "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 char *

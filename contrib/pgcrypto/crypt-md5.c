@@ -17,6 +17,20 @@
 #include "px-crypt.h"
 
 #define MD5_SIZE 16
+
+static const char _crypt_a64[] =
+"./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+static void
+_crypt_to64(char *s, unsigned long v, int n)
+{
+   	while (--n >= 0)
+	{
+		*s++ = _crypt_a64[v & 0x3f];
+		v >>= 6;
+	}
+}
+
 /*
  * UNIX password
  */

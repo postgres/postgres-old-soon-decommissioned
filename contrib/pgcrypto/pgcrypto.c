@@ -537,6 +537,34 @@ pg_decrypt_iv(PG_FUNCTION_ARGS)
 	PG_RETURN_BYTEA_P(res);
 }
 
+/* SQL function: pg_random_bytes(int4) returns bytea */
+PG_FUNCTION_INFO_V1(pg_random_bytes);
+
+Datum
+pg_random_bytes(PG_FUNCTION_ARGS)
+{
+	int err;
+	int len = PG_GETARG_INT32(0);
+	bytea *res;
+
+	if (len < 1 || len > 1024)
+		ereport(ERROR,
+				(errcode(ERRCODE_EXTERNAL_ROUTINE_INVOCATION_EXCEPTION),
+				 errmsg("Length not in range")));
+
+	res = palloc(VARHDRSZ + len);
+	VARATT_SIZEP(res) = VARHDRSZ + len;
+
+	/* generate result */
+	err = px_get_random_bytes((uint8*)VARDATA(res), len);
+	if (err < 0)
+		ereport(ERROR,
+				(errcode(ERRCODE_EXTERNAL_ROUTINE_INVOCATION_EXCEPTION),
+				 errmsg("Random generator error: %s", px_strerror(err))));
+
+	PG_RETURN_BYTEA_P(res);
+}
+
 /* SQL function: pg_cipher_exists(text) returns bool */
 PG_FUNCTION_INFO_V1(pg_cipher_exists);
 
