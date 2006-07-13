@@ -27,6 +27,7 @@
 #include "funcapi.h"
 #include "access/heapam.h"
 #include "access/transam.h"
+#include "access/xact.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_type.h"
 #include "storage/proc.h"
