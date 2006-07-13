@@ -33,8 +33,8 @@
 
 #include "access/htup.h"
 #include "nodes/tidbitmap.h"
+#include "storage/bufpage.h"
 #include "utils/hsearch.h"
-
 
 /*
  * The maximum number of tuples per page is not large (typically 256 with

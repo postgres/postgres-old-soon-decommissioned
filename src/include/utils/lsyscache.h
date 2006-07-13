@@ -13,7 +13,9 @@
 #ifndef LSYSCACHE_H
 #define LSYSCACHE_H
 
+#include "access/attnum.h"
 #include "access/htup.h"
+#include "nodes/pg_list.h"
 
 /* I/O function selector for get_type_io_data */
 typedef enum IOFuncSelector

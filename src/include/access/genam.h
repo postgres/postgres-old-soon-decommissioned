@@ -18,7 +18,6 @@
 #include "access/sdir.h"
 #include "nodes/primnodes.h"
 
-
 /*
  * Struct for statistics returned by ambuild
  */

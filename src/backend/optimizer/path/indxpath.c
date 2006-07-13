@@ -18,6 +18,7 @@
 #include <math.h>
 
 #include "access/skey.h"
+#include "catalog/pg_am.h"
 #include "catalog/pg_opclass.h"
 #include "catalog/pg_operator.h"
 #include "catalog/pg_type.h"

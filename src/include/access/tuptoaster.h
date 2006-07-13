@@ -14,7 +14,7 @@
 #define TUPTOASTER_H
 
 #include "access/htup.h"
-
+#include "storage/bufpage.h"
 
 /*
  * This enables de-toasting of index entries.  Needed until VACUUM is

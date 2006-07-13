@@ -15,7 +15,8 @@
 #define TUPTABLE_H
 
 #include "access/htup.h"
-
+#include "access/tupdesc.h"
+#include "storage/buf.h"
 
 /*----------
  * The executor stores tuples in a "tuple table" which is composed of

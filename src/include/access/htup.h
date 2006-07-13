@@ -14,7 +14,6 @@
 #ifndef HTUP_H
 #define HTUP_H
 
-#include "storage/bufpage.h"
 #include "storage/itemptr.h"
 #include "storage/relfilenode.h"
 

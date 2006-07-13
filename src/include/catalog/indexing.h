@@ -16,7 +16,7 @@
 #define INDEXING_H
 
 #include "access/htup.h"
-
+#include "utils/rel.h"
 
 /*
  * The state object used by CatalogOpenIndexes and friends is actually the
