@@ -18,6 +18,7 @@
 
 #include "access/heapam.h"
 #include "access/itup.h"
+#include "access/tuptoaster.h"
 
 
 /* ----------------------------------------------------------------
