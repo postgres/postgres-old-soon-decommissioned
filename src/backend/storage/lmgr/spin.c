@@ -22,8 +22,6 @@
  */
 #include "postgres.h"
 
-#include "storage/lwlock.h"
-#include "storage/pg_sema.h"
 #include "storage/spin.h"
 
 

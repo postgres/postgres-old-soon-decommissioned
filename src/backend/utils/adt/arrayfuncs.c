@@ -17,17 +17,13 @@
 #include <ctype.h>
 
 #include "access/tupmacs.h"
-#include "catalog/catalog.h"
-#include "catalog/pg_type.h"
 #include "libpq/pqformat.h"
 #include "parser/parse_coerce.h"
-#include "parser/parse_oper.h"
 #include "utils/array.h"
 #include "utils/builtins.h"
 #include "utils/datum.h"
 #include "utils/lsyscache.h"
 #include "utils/memutils.h"
-#include "utils/syscache.h"
 #include "utils/typcache.h"
 
 

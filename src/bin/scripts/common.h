@@ -10,8 +10,8 @@
 #define COMMON_H
 
 #include "libpq-fe.h"
-#include "pqexpbuffer.h"
 #include "getopt_long.h"
+#include "pqexpbuffer.h"
 
 #ifndef HAVE_INT_OPTRESET
 extern int	optreset;

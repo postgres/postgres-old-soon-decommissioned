@@ -15,7 +15,6 @@
 #include "funcapi.h"
 #include "access/heapam.h"
 #include "catalog/pg_type.h"
-#include "storage/lock.h"
 #include "storage/proc.h"
 #include "utils/builtins.h"
 

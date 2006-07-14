@@ -71,7 +71,6 @@
 #include "storage/pg_shmem.h"
 #include "storage/shmem.h"
 #include "storage/spin.h"
-#include "utils/tqual.h"
 
 
 /* shared memory global variables */

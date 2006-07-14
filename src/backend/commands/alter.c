@@ -14,10 +14,7 @@
  */
 #include "postgres.h"
 
-#include "access/htup.h"
-#include "catalog/catalog.h"
 #include "catalog/namespace.h"
-#include "catalog/pg_class.h"
 #include "commands/alter.h"
 #include "commands/conversioncmds.h"
 #include "commands/dbcommands.h"
@@ -34,7 +31,6 @@
 #include "tcop/utility.h"
 #include "utils/acl.h"
 #include "utils/lsyscache.h"
-#include "utils/syscache.h"
 
 
 /*

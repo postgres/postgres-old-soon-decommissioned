@@ -19,7 +19,6 @@
 #include <time.h>
 
 #include "miscadmin.h"
-#include "pgtime.h"
 #include "pgtz.h"
 #include "storage/fd.h"
 #include "tzfile.h"

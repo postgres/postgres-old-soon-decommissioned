@@ -24,7 +24,6 @@
 #include <ctype.h>
 
 #include "lib/stringinfo.h"
-#include "nodes/parsenodes.h"
 #include "nodes/plannodes.h"
 #include "nodes/relation.h"
 #include "utils/datum.h"

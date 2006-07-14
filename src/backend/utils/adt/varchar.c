@@ -16,13 +16,8 @@
 
 
 #include "access/hash.h"
-#include "catalog/pg_type.h"
-#include "lib/stringinfo.h"
 #include "libpq/pqformat.h"
-#include "miscadmin.h"
-#include "utils/array.h"
 #include "utils/builtins.h"
-#include "utils/fmgroids.h"
 #include "mb/pg_wchar.h"
 
 

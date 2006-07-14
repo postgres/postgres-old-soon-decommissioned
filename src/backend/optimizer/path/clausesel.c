@@ -15,12 +15,10 @@
 #include "postgres.h"
 
 #include "catalog/pg_operator.h"
-#include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
 #include "optimizer/clauses.h"
 #include "optimizer/cost.h"
 #include "optimizer/plancat.h"
-#include "optimizer/restrictinfo.h"
 #include "parser/parsetree.h"
 #include "utils/fmgroids.h"
 #include "utils/lsyscache.h"

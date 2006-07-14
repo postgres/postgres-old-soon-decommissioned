@@ -20,7 +20,6 @@
 #include "postgres.h"
 
 #include "storage/buf_internals.h"
-#include "storage/bufmgr.h"
 
 
 /* entry for buffer lookup hashtable */

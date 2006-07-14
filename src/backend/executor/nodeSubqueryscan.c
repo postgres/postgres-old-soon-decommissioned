@@ -27,13 +27,9 @@
  */
 #include "postgres.h"
 
-#include "catalog/pg_type.h"
 #include "executor/execdebug.h"
-#include "executor/execdefs.h"
-#include "executor/execdesc.h"
 #include "executor/nodeSubqueryscan.h"
 #include "parser/parsetree.h"
-#include "tcop/pquery.h"
 
 static TupleTableSlot *SubqueryNext(SubqueryScanState *node);
 

@@ -17,7 +17,6 @@
 #include "postgres.h"
 
 #include "access/gist.h"
-#include "access/itup.h"
 #include "access/skey.h"
 #include "utils/geo_decls.h"
 

@@ -14,7 +14,6 @@
  */
 #include "postgres.h"
 
-#include "access/skey.h"
 #include "catalog/pg_aggregate.h"
 #include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"

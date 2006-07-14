@@ -29,7 +29,6 @@
 #include "executor/execdebug.h"
 #include "executor/nodeTidscan.h"
 #include "optimizer/clauses.h"
-#include "parser/parsetree.h"
 #include "utils/array.h"
 
 

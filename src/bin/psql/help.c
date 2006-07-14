@@ -7,8 +7,6 @@
  */
 #include "postgres_fe.h"
 #include "common.h"
-#include "input.h"
-#include "print.h"
 #include "help.h"
 
 #include <signal.h>
@@ -24,7 +22,6 @@
 #endif
 
 #include "pqsignal.h"
-#include "libpq-fe.h"
 
 #include "settings.h"
 #include "common.h"

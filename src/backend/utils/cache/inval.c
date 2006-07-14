@@ -92,7 +92,6 @@
 #include "miscadmin.h"
 #include "storage/sinval.h"
 #include "storage/smgr.h"
-#include "utils/catcache.h"
 #include "utils/inval.h"
 #include "utils/memutils.h"
 #include "utils/relcache.h"

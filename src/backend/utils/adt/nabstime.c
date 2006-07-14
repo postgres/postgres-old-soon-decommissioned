@@ -22,10 +22,8 @@
 #include <time.h>
 #include <sys/time.h>
 
-#include "access/xact.h"
 #include "libpq/pqformat.h"
 #include "miscadmin.h"
-#include "pgtime.h"
 #include "utils/builtins.h"
 #include "utils/nabstime.h"
 

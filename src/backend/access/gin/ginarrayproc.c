@@ -13,15 +13,9 @@
  */
 
 #include "postgres.h"
-#include "access/genam.h"
-#include "access/heapam.h"
-#include "catalog/index.h"
-#include "miscadmin.h"
-#include "storage/freespace.h"
 #include "utils/array.h"
 #include "utils/builtins.h"
 #include "utils/lsyscache.h"
-#include "utils/syscache.h"
 #include "utils/typcache.h"
 #include "access/gin.h"
 

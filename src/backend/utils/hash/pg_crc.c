@@ -25,7 +25,6 @@
  */
 #include "postgres.h"
 
-#include "utils/pg_crc.h"
 
 
 /*

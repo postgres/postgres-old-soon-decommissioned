@@ -8,7 +8,6 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-#include "settings.h"
 #include "print.h"
 #include "psqlscan.h"
 

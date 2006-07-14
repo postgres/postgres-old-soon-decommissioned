@@ -46,19 +46,15 @@ int			optreset;
 
 
 
-#include "access/attnum.h"
 #include "access/htup.h"
 #include "catalog/pg_class.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_trigger.h"
 #include "catalog/pg_type.h"
 #include "commands/sequence.h"
-#include "libpq-fe.h"
 #include "libpq/libpq-fs.h"
 #include "mb/pg_wchar.h"
 
-#include "pg_dump.h"
-#include "pg_backup.h"
 #include "pg_backup_archiver.h"
 #include "dumputils.h"
 

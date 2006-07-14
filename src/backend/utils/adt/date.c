@@ -27,7 +27,6 @@
 #include "utils/builtins.h"
 #include "utils/date.h"
 #include "utils/nabstime.h"
-#include "utils/timestamp.h"
 
 /*
  * gcc's -ffast-math switch breaks routines that expect exact results from

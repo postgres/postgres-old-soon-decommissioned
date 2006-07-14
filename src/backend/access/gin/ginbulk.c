@@ -13,14 +13,7 @@
  */
 
 #include "postgres.h"
-#include "access/genam.h"
 #include "access/gin.h"
-#include "access/heapam.h"
-#include "catalog/index.h"
-#include "miscadmin.h"
-#include "storage/freespace.h"
-#include "utils/memutils.h"
-#include "access/tuptoaster.h"
 
 #define DEF_NENTRY	2048
 #define DEF_NPTR	4

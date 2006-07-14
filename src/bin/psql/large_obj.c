@@ -8,12 +8,9 @@
 #include "postgres_fe.h"
 #include "large_obj.h"
 
-#include "libpq-fe.h"
 
 #include "settings.h"
-#include "variables.h"
 #include "common.h"
-#include "print.h"
 
 
 /*

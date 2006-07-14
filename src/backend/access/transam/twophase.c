@@ -53,7 +53,6 @@
 #include "miscadmin.h"
 #include "pgstat.h"
 #include "storage/fd.h"
-#include "storage/proc.h"
 #include "storage/procarray.h"
 #include "storage/smgr.h"
 #include "utils/builtins.h"

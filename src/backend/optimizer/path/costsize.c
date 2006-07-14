@@ -63,18 +63,14 @@
 
 #include <math.h>
 
-#include "catalog/pg_statistic.h"
 #include "executor/nodeHash.h"
 #include "miscadmin.h"
 #include "optimizer/clauses.h"
 #include "optimizer/cost.h"
 #include "optimizer/pathnode.h"
-#include "optimizer/plancat.h"
 #include "parser/parsetree.h"
-#include "utils/array.h"
 #include "utils/lsyscache.h"
 #include "utils/selfuncs.h"
-#include "utils/syscache.h"
 #include "utils/tuplesort.h"
 
 

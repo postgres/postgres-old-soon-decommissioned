@@ -13,12 +13,7 @@
  */
 
 #include "postgres.h"
-#include "access/genam.h"
 #include "access/gin.h"
-#include "access/heapam.h"
-#include "catalog/index.h"
-#include "miscadmin.h"
-#include "storage/freespace.h"
 #include "access/tuptoaster.h"
 
 /*

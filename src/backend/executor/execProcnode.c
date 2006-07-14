@@ -103,7 +103,6 @@
 #include "executor/nodeTidscan.h"
 #include "executor/nodeUnique.h"
 #include "miscadmin.h"
-#include "tcop/tcopprot.h"
 
 /* ------------------------------------------------------------------------
  *		ExecInitNode

@@ -20,7 +20,6 @@
 #include <limits.h>
 #include <unistd.h>
 
-#include "utils/guc.h"
 #include "utils/guc_tables.h"
 #include "utils/help_config.h"
 

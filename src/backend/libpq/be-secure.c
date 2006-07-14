@@ -95,7 +95,6 @@
 #endif
 
 #include "libpq/libpq.h"
-#include "miscadmin.h"
 #include "tcop/tcopprot.h"
 
 

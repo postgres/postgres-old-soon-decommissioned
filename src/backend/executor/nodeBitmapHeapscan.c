@@ -38,7 +38,6 @@
 #include "access/heapam.h"
 #include "executor/execdebug.h"
 #include "executor/nodeBitmapHeapscan.h"
-#include "parser/parsetree.h"
 #include "pgstat.h"
 #include "utils/memutils.h"
 

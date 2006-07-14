@@ -31,8 +31,6 @@
 
 #include "libpq/ip.h"
 #include "libpq/libpq.h"
-#include "miscadmin.h"
-#include "nodes/pg_list.h"
 #include "storage/fd.h"
 #include "utils/flatfiles.h"
 #include "utils/guc.h"

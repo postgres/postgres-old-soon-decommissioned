@@ -26,9 +26,7 @@
 
 #include <math.h>
 
-#include "optimizer/geqo.h"
 #include "optimizer/geqo_misc.h"
-#include "optimizer/geqo_mutation.h"
 #include "optimizer/geqo_pool.h"
 #include "optimizer/geqo_selection.h"
 

@@ -21,7 +21,6 @@
 
 #include "access/xact.h"
 #include "catalog/pg_tablespace.h"
-#include "catalog/pg_type.h"
 #include "commands/dbcommands.h"
 #include "funcapi.h"
 #include "miscadmin.h"

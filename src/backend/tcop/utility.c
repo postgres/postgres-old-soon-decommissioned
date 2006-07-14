@@ -16,7 +16,6 @@
  */
 #include "postgres.h"
 
-#include "access/heapam.h"
 #include "access/twophase.h"
 #include "access/xact.h"
 #include "catalog/catalog.h"
@@ -44,9 +43,6 @@
 #include "commands/vacuum.h"
 #include "commands/view.h"
 #include "miscadmin.h"
-#include "nodes/makefuncs.h"
-#include "parser/parse_expr.h"
-#include "parser/parse_type.h"
 #include "postmaster/bgwriter.h"
 #include "rewrite/rewriteDefine.h"
 #include "rewrite/rewriteRemove.h"
@@ -55,7 +51,6 @@
 #include "tcop/utility.h"
 #include "utils/acl.h"
 #include "utils/guc.h"
-#include "utils/lsyscache.h"
 #include "utils/syscache.h"
 
 

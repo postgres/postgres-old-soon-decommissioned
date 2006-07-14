@@ -15,10 +15,8 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "catalog/catalog.h"
 #include "catalog/dependency.h"
 #include "catalog/indexing.h"
-#include "catalog/namespace.h"
 #include "catalog/pg_conversion.h"
 #include "catalog/pg_type.h"
 #include "commands/conversioncmds.h"

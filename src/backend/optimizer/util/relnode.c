@@ -15,11 +15,9 @@
 #include "postgres.h"
 
 #include "optimizer/cost.h"
-#include "optimizer/joininfo.h"
 #include "optimizer/pathnode.h"
 #include "optimizer/plancat.h"
 #include "optimizer/restrictinfo.h"
-#include "optimizer/tlist.h"
 #include "parser/parsetree.h"
 #include "utils/hsearch.h"
 

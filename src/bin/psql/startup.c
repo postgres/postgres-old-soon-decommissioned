@@ -27,7 +27,6 @@ int			optreset;
 
 #include <locale.h>
 
-#include "libpq-fe.h"
 
 #include "command.h"
 #include "common.h"
@@ -35,11 +34,8 @@ int			optreset;
 #include "help.h"
 #include "input.h"
 #include "mainloop.h"
-#include "print.h"
 #include "settings.h"
-#include "variables.h"
 
-#include "mb/pg_wchar.h"
 
 
 /*

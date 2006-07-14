@@ -28,7 +28,6 @@
 #include "access/transam.h"
 #include "access/twophase.h"
 #include "access/xact.h"
-#include "access/xlog.h"
 #include "access/xlog_internal.h"
 #include "access/xlogutils.h"
 #include "catalog/catversion.h"
@@ -38,16 +37,12 @@
 #include "postmaster/bgwriter.h"
 #include "storage/bufpage.h"
 #include "storage/fd.h"
-#include "storage/lwlock.h"
 #include "storage/pmsignal.h"
-#include "storage/proc.h"
 #include "storage/procarray.h"
 #include "storage/spin.h"
 #include "utils/builtins.h"
-#include "utils/guc.h"
 #include "utils/nabstime.h"
 #include "utils/pg_locale.h"
-#include "utils/relcache.h"
 
 
 /*

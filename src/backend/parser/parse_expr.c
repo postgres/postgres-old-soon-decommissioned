@@ -20,7 +20,6 @@
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
-#include "nodes/params.h"
 #include "nodes/plannodes.h"
 #include "optimizer/clauses.h"
 #include "parser/analyze.h"

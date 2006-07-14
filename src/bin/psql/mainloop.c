@@ -8,13 +8,10 @@
 #include "postgres_fe.h"
 #include "mainloop.h"
 
-#include "pqexpbuffer.h"
 
 #include "command.h"
 #include "common.h"
 #include "input.h"
-#include "prompt.h"
-#include "psqlscan.h"
 #include "settings.h"
 
 

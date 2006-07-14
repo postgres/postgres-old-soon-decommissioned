@@ -12,9 +12,6 @@
  */
 #include "postgres.h"
 
-#include "access/genam.h"
-#include "access/heapam.h"
-#include "catalog/heap.h"
 #include "executor/execdebug.h"
 #include "executor/instrument.h"
 #include "executor/nodeAgg.h"

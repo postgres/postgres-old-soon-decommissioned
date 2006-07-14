@@ -20,8 +20,6 @@
 #include <locale.h>
 
 #include "libpq/pqformat.h"
-#include "miscadmin.h"
-#include "utils/builtins.h"
 #include "utils/cash.h"
 #include "utils/pg_locale.h"
 

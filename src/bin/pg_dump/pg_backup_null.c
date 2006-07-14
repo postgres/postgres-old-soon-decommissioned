@@ -22,7 +22,6 @@
  *-------------------------------------------------------------------------
  */
 
-#include "pg_backup.h"
 #include "pg_backup_archiver.h"
 
 #include <unistd.h>				/* for dup */

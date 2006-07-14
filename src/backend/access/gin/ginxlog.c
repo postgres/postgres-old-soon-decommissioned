@@ -13,12 +13,8 @@
  */
 #include "postgres.h"
 
-#include "access/genam.h"
 #include "access/gin.h"
 #include "access/heapam.h"
-#include "catalog/index.h"
-#include "commands/vacuum.h"
-#include "miscadmin.h"
 #include "utils/memutils.h"
 
 static MemoryContext opCtx;     /* working memory for operations */

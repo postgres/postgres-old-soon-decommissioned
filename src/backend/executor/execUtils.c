@@ -43,17 +43,11 @@
 
 #include "access/genam.h"
 #include "access/heapam.h"
-#include "catalog/catalog.h"
 #include "catalog/index.h"
-#include "catalog/pg_index.h"
 #include "executor/execdebug.h"
-#include "miscadmin.h"
 #include "parser/parsetree.h"
-#include "utils/builtins.h"
-#include "utils/fmgroids.h"
 #include "utils/memutils.h"
 #include "utils/relcache.h"
-#include "utils/syscache.h"
 
 
 /* ----------------------------------------------------------------

@@ -17,7 +17,6 @@
 #include "access/gin.h"
 #include "access/heapam.h"
 #include "access/reloptions.h"
-#include "miscadmin.h"
 #include "storage/freespace.h"
 
 void 

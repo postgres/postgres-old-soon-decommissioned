@@ -46,7 +46,6 @@
 
 #include "storage/shmem.h"
 #include "utils/dynahash.h"
-#include "utils/hsearch.h"
 #include "utils/memutils.h"
 
 /*

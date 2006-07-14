@@ -70,7 +70,6 @@
 
 #include "access/heapam.h"
 #include "catalog/pg_aggregate.h"
-#include "catalog/pg_operator.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
 #include "executor/executor.h"

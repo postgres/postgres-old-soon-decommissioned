@@ -25,7 +25,6 @@
 
 #include "access/heapam.h"
 #include "access/tuptoaster.h"
-#include "catalog/pg_type.h"
 #include "executor/tuptable.h"
 
 

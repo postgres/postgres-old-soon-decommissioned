@@ -14,14 +14,10 @@
  */
 #include "postgres.h"
 
-#include "access/xact.h"
-#include "fmgr.h"
 #include "funcapi.h"
 #include "miscadmin.h"
-#include "nodes/execnodes.h"
 #include "pgstat.h"
 #include "utils/builtins.h"
-#include "utils/hsearch.h"
 #include "utils/inet.h"
 #include "libpq/ip.h"
 

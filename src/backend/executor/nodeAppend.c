@@ -57,10 +57,8 @@
 
 #include "postgres.h"
 
-#include "access/heapam.h"
 #include "executor/execdebug.h"
 #include "executor/nodeAppend.h"
-#include "parser/parsetree.h"
 
 static bool exec_append_initialize_next(AppendState *appendstate);
 

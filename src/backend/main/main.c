@@ -35,8 +35,6 @@
 #endif
 
 #include "bootstrap/bootstrap.h"
-#include "miscadmin.h"
-#include "pgstat.h"
 #include "postmaster/postmaster.h"
 #include "tcop/tcopprot.h"
 #include "utils/help_config.h"

@@ -18,7 +18,6 @@
 #include "commands/dbcommands.h"
 #include "funcapi.h"
 #include "miscadmin.h"
-#include "nodes/bitmapset.h"
 #include "nodes/makefuncs.h"
 #include "parser/parsetree.h"
 #include "parser/parse_coerce.h"

@@ -12,12 +12,9 @@
  */
 #include "postgres.h"
 
-#include "catalog/pg_proc.h"
-#include "catalog/pg_type.h"
 #include "utils/array.h"
 #include "utils/builtins.h"
 #include "utils/lsyscache.h"
-#include "utils/syscache.h"
 
 
 /*-----------------------------------------------------------------------------

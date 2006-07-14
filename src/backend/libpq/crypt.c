@@ -21,12 +21,7 @@
 #endif
 
 #include "libpq/crypt.h"
-#include "libpq/libpq.h"
 #include "libpq/md5.h"
-#include "miscadmin.h"
-#include "nodes/pg_list.h"
-#include "storage/fd.h"
-#include "utils/timestamp.h"
 
 
 int

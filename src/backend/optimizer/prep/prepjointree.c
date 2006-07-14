@@ -30,7 +30,6 @@
 #include "parser/parse_expr.h"
 #include "parser/parsetree.h"
 #include "rewrite/rewriteManip.h"
-#include "utils/lsyscache.h"
 
 
 typedef struct reduce_outer_joins_state

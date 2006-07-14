@@ -62,10 +62,8 @@
 #include <math.h>
 #include <unistd.h>
 
-#include "miscadmin.h"
 #include "storage/fd.h"
 #include "storage/freespace.h"
-#include "storage/itemptr.h"
 #include "storage/lwlock.h"
 #include "storage/shmem.h"
 

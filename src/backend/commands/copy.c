@@ -20,13 +20,9 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#include "access/genam.h"
 #include "access/heapam.h"
-#include "access/printtup.h"
 #include "access/xact.h"
-#include "catalog/index.h"
 #include "catalog/namespace.h"
-#include "catalog/pg_index.h"
 #include "catalog/pg_type.h"
 #include "commands/copy.h"
 #include "commands/trigger.h"
@@ -35,19 +31,14 @@
 #include "libpq/pqformat.h"
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"
-#include "nodes/makefuncs.h"
-#include "parser/parse_coerce.h"
 #include "parser/parse_relation.h"
 #include "rewrite/rewriteHandler.h"
 #include "storage/fd.h"
-#include "tcop/pquery.h"
 #include "tcop/tcopprot.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
 #include "utils/lsyscache.h"
 #include "utils/memutils.h"
-#include "utils/relcache.h"
-#include "utils/syscache.h"
 
 
 #define ISOCTAL(c) (((c) >= '0') && ((c) <= '7'))

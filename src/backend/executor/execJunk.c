@@ -14,9 +14,7 @@
  */
 #include "postgres.h"
 
-#include "access/heapam.h"
 #include "executor/executor.h"
-#include "nodes/makefuncs.h"
 
 /*-------------------------------------------------------------------------
  *		XXX this stuff should be rewritten to take advantage

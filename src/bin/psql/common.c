@@ -22,16 +22,11 @@
 #include <sys/timeb.h>			/* for _ftime() */
 #endif
 
-#include "libpq-fe.h"
 #include "pqsignal.h"
 
 #include "settings.h"
-#include "variables.h"
 #include "command.h"
 #include "copy.h"
-#include "prompt.h"
-#include "print.h"
-#include "mainloop.h"
 #include "mb/pg_wchar.h"
 
 

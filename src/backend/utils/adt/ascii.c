@@ -12,7 +12,6 @@
 #include "postgres.h"
 
 #include "mb/pg_wchar.h"
-#include "utils/builtins.h"
 #include "utils/ascii.h"
 
 static void pg_to_ascii(unsigned char *src, unsigned char *src_end,

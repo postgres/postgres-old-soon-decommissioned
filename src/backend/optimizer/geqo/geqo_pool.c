@@ -27,7 +27,6 @@
 #include <limits.h>
 #include <math.h>
 
-#include "optimizer/geqo.h"
 #include "optimizer/geqo_copy.h"
 #include "optimizer/geqo_pool.h"
 #include "optimizer/geqo_recombination.h"

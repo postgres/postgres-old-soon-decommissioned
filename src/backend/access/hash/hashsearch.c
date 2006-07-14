@@ -16,7 +16,6 @@
 
 #include "access/hash.h"
 #include "pgstat.h"
-#include "storage/lmgr.h"
 
 
 /*

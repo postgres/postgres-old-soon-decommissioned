@@ -16,12 +16,9 @@
 
 #include <math.h>
 
-#include "optimizer/clauses.h"
 #include "optimizer/cost.h"
 #include "optimizer/pathnode.h"
 #include "optimizer/paths.h"
-#include "parser/parsetree.h"
-#include "utils/lsyscache.h"
 
 
 static void sort_inner_and_outer(PlannerInfo *root, RelOptInfo *joinrel,

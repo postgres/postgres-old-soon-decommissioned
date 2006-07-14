@@ -26,7 +26,6 @@
 #include "optimizer/var.h"
 #include "parser/parsetree.h"
 #include "parser/parse_expr.h"
-#include "parser/parse_func.h"
 #include "utils/lsyscache.h"
 #include "utils/memutils.h"
 

@@ -26,9 +26,7 @@
 #include "executor/nodeSubplan.h"
 #include "nodes/makefuncs.h"
 #include "optimizer/clauses.h"
-#include "parser/parse_expr.h"
 #include "utils/array.h"
-#include "utils/datum.h"
 #include "utils/lsyscache.h"
 #include "utils/memutils.h"
 

@@ -25,8 +25,6 @@
 
 #include "postgres.h"
 
-#include "nodes/params.h"
-#include "nodes/parsenodes.h"
 #include "nodes/relation.h"
 #include "utils/datum.h"
 

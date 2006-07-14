@@ -22,7 +22,6 @@
 #include "storage/backendid.h"
 #include "storage/ipc.h"
 #include "storage/proc.h"
-#include "storage/sinval.h"
 #include "storage/sinvaladt.h"
 #include "utils/inval.h"
 

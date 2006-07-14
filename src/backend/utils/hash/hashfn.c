@@ -17,7 +17,6 @@
 
 #include "access/hash.h"
 #include "nodes/bitmapset.h"
-#include "utils/hsearch.h"
 
 
 /*

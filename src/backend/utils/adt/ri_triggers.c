@@ -32,15 +32,10 @@
 
 #include "postgres.h"
 
-#include "catalog/pg_operator.h"
 #include "commands/trigger.h"
 #include "executor/spi_priv.h"
-#include "optimizer/planmain.h"
-#include "parser/parse_oper.h"
-#include "rewrite/rewriteHandler.h"
 #include "utils/acl.h"
 #include "utils/fmgroids.h"
-#include "utils/guc.h"
 #include "utils/lsyscache.h"
 #include "utils/typcache.h"
 #include "miscadmin.h"

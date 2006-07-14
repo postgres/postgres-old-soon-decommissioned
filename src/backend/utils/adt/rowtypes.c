@@ -17,9 +17,7 @@
 #include <ctype.h>
 
 #include "access/heapam.h"
-#include "access/htup.h"
 #include "catalog/pg_type.h"
-#include "lib/stringinfo.h"
 #include "libpq/pqformat.h"
 #include "utils/builtins.h"
 #include "utils/lsyscache.h"

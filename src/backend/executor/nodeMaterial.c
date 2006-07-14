@@ -21,11 +21,9 @@
  */
 #include "postgres.h"
 
-#include "access/heapam.h"
 #include "executor/executor.h"
 #include "executor/nodeMaterial.h"
 #include "miscadmin.h"
-#include "utils/tuplestore.h"
 
 /* ----------------------------------------------------------------
  *		ExecMaterial

@@ -25,7 +25,6 @@
 #include "storage/freespace.h"
 #include "storage/ipc.h"
 #include "storage/smgr.h"
-#include "utils/hsearch.h"
 #include "utils/memutils.h"
 
 

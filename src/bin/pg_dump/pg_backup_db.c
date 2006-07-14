@@ -10,8 +10,6 @@
  *-------------------------------------------------------------------------
  */
 
-#include "pg_backup.h"
-#include "pg_backup_archiver.h"
 #include "pg_backup_db.h"
 #include "dumputils.h"
 
@@ -23,8 +21,6 @@
 #include <termios.h>
 #endif
 
-#include "libpq-fe.h"
-#include "libpq/libpq-fs.h"
 #ifndef HAVE_STRDUP
 #include "strdup.h"
 #endif

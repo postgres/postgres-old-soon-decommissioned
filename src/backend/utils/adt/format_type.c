@@ -19,7 +19,6 @@
 
 #include "catalog/namespace.h"
 #include "catalog/pg_type.h"
-#include "fmgr.h"
 #include "utils/builtins.h"
 #include "utils/datetime.h"
 #include "utils/lsyscache.h"

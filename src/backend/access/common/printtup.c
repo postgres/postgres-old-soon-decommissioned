@@ -15,13 +15,11 @@
  */
 #include "postgres.h"
 
-#include "access/heapam.h"
 #include "access/printtup.h"
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
 #include "tcop/pquery.h"
 #include "utils/lsyscache.h"
-#include "utils/portal.h"
 
 
 static void printtup_startup(DestReceiver *self, int operation,

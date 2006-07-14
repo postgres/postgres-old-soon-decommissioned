@@ -34,7 +34,6 @@
 #include "libpq/libpq-fs.h"
 #include "storage/large_object.h"
 #include "utils/fmgroids.h"
-#include "utils/lsyscache.h"
 #include "utils/resowner.h"
 
 

@@ -34,7 +34,6 @@
 #include "access/xact.h"
 #include "access/twophase.h"
 #include "miscadmin.h"
-#include "storage/proc.h"
 #include "storage/procarray.h"
 #include "utils/tqual.h"
 

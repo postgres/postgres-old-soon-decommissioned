@@ -45,11 +45,9 @@
 #include "miscadmin.h"
 #include "storage/fd.h"
 #include "storage/pmsignal.h"
-#include "utils/acl.h"
 #include "utils/builtins.h"
 #include "utils/flatfiles.h"
 #include "utils/resowner.h"
-#include "utils/syscache.h"
 
 
 /* Actual names of the flat files (within $PGDATA) */

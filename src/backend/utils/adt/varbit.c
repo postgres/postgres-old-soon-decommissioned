@@ -16,11 +16,7 @@
 
 #include "postgres.h"
 
-#include "catalog/pg_type.h"
 #include "libpq/pqformat.h"
-#include "utils/array.h"
-#include "utils/fmgroids.h"
-#include "utils/memutils.h"
 #include "utils/varbit.h"
 
 #define HEXDIG(z)	 ((z)<10 ? ((z)+'0') : ((z)-10+'A'))

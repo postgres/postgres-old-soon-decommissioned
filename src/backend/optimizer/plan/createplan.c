@@ -19,7 +19,6 @@
 #include <limits.h>
 
 #include "nodes/makefuncs.h"
-#include "nodes/nodeFuncs.h"
 #include "optimizer/clauses.h"
 #include "optimizer/cost.h"
 #include "optimizer/plancat.h"
@@ -32,7 +31,6 @@
 #include "parser/parse_expr.h"
 #include "parser/parsetree.h"
 #include "utils/lsyscache.h"
-#include "utils/syscache.h"
 
 
 static Plan *create_scan_plan(PlannerInfo *root, Path *best_path);

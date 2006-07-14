@@ -8,7 +8,6 @@
 #include "postgres_fe.h"
 
 #include "input.h"
-#include "pqexpbuffer.h"
 #include "settings.h"
 #include "tab-complete.h"
 #include "common.h"

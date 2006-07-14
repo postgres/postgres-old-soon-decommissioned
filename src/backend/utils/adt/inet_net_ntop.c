@@ -29,7 +29,6 @@ static const char rcsid[] = "Id: inet_net_ntop.c,v 1.1.2.2 2004/03/09 09:17:27 m
 #include <arpa/inet.h>
 
 #include "utils/inet.h"
-#include "utils/builtins.h"
 
 
 #define NS_IN6ADDRSZ 16

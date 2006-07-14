@@ -14,7 +14,6 @@
  */
 #include "postgres.h"
 
-#include "storage/bufpage.h"
 #include "storage/itemptr.h"
 
 /*

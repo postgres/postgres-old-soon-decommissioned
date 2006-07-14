@@ -20,9 +20,6 @@
  *-------------------------------------------------------------------------
  */
 
-#include "pg_backup.h"
-#include "pg_dump.h"
-#include "pg_backup_archiver.h"
 #include "pg_backup_db.h"
 #include "dumputils.h"
 
@@ -34,7 +31,6 @@
 #include <io.h>
 #endif
 
-#include "pqexpbuffer.h"
 #include "libpq/libpq-fs.h"
 #include "mb/pg_wchar.h"
 

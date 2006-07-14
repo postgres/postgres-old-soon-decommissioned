@@ -13,12 +13,8 @@
  */
 #include "postgres.h"
 
-#include "access/genam.h"
 #include "access/gist_private.h"
-#include "access/gistscan.h"
 #include "access/heapam.h"
-#include "catalog/index.h"
-#include "commands/vacuum.h"
 #include "miscadmin.h"
 #include "utils/memutils.h"
 

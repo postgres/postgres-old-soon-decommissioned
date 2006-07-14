@@ -20,7 +20,6 @@
 #include "parser/parsetree.h"
 #include "parser/parse_coerce.h"
 #include "parser/parse_expr.h"
-#include "parser/parse_node.h"
 #include "parser/parse_relation.h"
 #include "utils/builtins.h"
 #include "utils/int8.h"

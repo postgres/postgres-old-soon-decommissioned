@@ -24,7 +24,6 @@
 #include <locale.h>
 
 #include "private.h"
-#include "pgtz.h"
 #include "tzfile.h"
 
 

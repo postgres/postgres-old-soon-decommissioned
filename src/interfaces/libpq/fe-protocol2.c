@@ -20,7 +20,6 @@
 #include "libpq-fe.h"
 #include "libpq-int.h"
 
-#include "mb/pg_wchar.h"
 
 #ifdef WIN32
 #include "win32.h"

@@ -11,7 +11,6 @@
 #include "settings.h"
 #endif
 #include "mbprint.h"
-
 #include "mb/pg_wchar.h"
 
 static pg_wchar

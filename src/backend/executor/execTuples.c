@@ -94,7 +94,6 @@
 #include "funcapi.h"
 #include "access/heapam.h"
 #include "catalog/pg_type.h"
-#include "executor/executor.h"
 #include "parser/parse_expr.h"
 #include "utils/lsyscache.h"
 #include "utils/typcache.h"

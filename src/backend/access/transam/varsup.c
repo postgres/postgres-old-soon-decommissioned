@@ -17,7 +17,6 @@
 #include "access/subtrans.h"
 #include "access/transam.h"
 #include "miscadmin.h"
-#include "storage/ipc.h"
 #include "storage/proc.h"
 #include "utils/builtins.h"
 

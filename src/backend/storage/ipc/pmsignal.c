@@ -18,7 +18,6 @@
 #include <unistd.h>
 
 #include "miscadmin.h"
-#include "postmaster/postmaster.h"
 #include "storage/pmsignal.h"
 #include "storage/shmem.h"
 

@@ -22,13 +22,10 @@
 #include "access/xact.h"
 #include "catalog/pg_type.h"
 #include "commands/portalcmds.h"
-#include "executor/executor.h"
 #include "funcapi.h"
 #include "miscadmin.h"
 #include "utils/builtins.h"
-#include "utils/hsearch.h"
 #include "utils/memutils.h"
-#include "utils/portal.h"
 
 /*
  * Estimate of the maximum number of open portals a user would have,

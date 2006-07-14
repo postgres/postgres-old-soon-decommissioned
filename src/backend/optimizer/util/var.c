@@ -14,7 +14,6 @@
  */
 #include "postgres.h"
 
-#include "nodes/plannodes.h"
 #include "optimizer/clauses.h"
 #include "optimizer/prep.h"
 #include "optimizer/var.h"

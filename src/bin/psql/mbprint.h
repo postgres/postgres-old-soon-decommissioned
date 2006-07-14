@@ -2,7 +2,6 @@
 #ifndef MBPRINT_H
 #define MBPRINT_H
 
-#include "mb/pg_wchar.h"
 
 struct lineptr {
 	unsigned char *ptr;

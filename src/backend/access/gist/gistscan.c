@@ -18,7 +18,6 @@
 #include "access/gist_private.h"
 #include "access/gistscan.h"
 #include "utils/memutils.h"
-#include "utils/resowner.h"
 
 static void gistfreestack(GISTSearchStack *s);
 

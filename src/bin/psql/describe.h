@@ -8,7 +8,6 @@
 #ifndef DESCRIBE_H
 #define DESCRIBE_H
 
-#include "settings.h"
 
 /* \da */
 extern bool describeAggregates(const char *pattern, bool verbose);

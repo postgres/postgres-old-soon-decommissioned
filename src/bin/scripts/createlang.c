@@ -14,7 +14,6 @@
 #include "common.h"
 #include "print.h"
 
-
 static void help(const char *progname);
 
 

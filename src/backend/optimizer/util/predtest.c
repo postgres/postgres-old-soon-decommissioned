@@ -22,7 +22,6 @@
 #include "optimizer/clauses.h"
 #include "optimizer/predtest.h"
 #include "utils/array.h"
-#include "utils/catcache.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
 

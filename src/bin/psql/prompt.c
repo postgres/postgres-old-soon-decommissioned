@@ -8,12 +8,9 @@
 #include "postgres_fe.h"
 #include "prompt.h"
 
-#include "libpq-fe.h"
 
 #include "settings.h"
 #include "common.h"
-#include "input.h"
-#include "variables.h"
 
 #ifdef WIN32
 #include <io.h>

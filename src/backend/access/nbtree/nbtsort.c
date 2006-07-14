@@ -65,7 +65,6 @@
 #include "postgres.h"
 
 #include "access/nbtree.h"
-#include "access/xlog.h"
 #include "miscadmin.h"
 #include "storage/smgr.h"
 #include "utils/tuplesort.h"

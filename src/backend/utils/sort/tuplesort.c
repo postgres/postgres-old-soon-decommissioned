@@ -103,7 +103,6 @@
 #include "catalog/pg_amop.h"
 #include "catalog/pg_operator.h"
 #include "miscadmin.h"
-#include "utils/catcache.h"
 #include "utils/datum.h"
 #include "utils/logtape.h"
 #include "utils/lsyscache.h"

@@ -17,7 +17,6 @@
  */
 
 #include "postgres_fe.h"
-#include "pg_dump.h"
 #include "pg_backup_archiver.h"
 
 #include "postgres.h"
@@ -25,7 +24,6 @@
 
 #include <ctype.h>
 
-#include "libpq-fe.h"
 #ifndef HAVE_STRDUP
 #include "strdup.h"
 #endif

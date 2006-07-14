@@ -54,13 +54,8 @@
 #include "storage/ipc.h"
 #include "storage/pg_shmem.h"
 #include "storage/pmsignal.h"
-#include "storage/procarray.h"
-#include "tcop/tcopprot.h"
-#include "utils/hsearch.h"
 #include "utils/memutils.h"
 #include "utils/ps_status.h"
-#include "utils/rel.h"
-#include "utils/syscache.h"
 
 
 /* ----------

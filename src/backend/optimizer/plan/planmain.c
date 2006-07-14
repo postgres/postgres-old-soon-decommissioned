@@ -20,7 +20,6 @@
  */
 #include "postgres.h"
 
-#include "optimizer/clauses.h"
 #include "optimizer/cost.h"
 #include "optimizer/pathnode.h"
 #include "optimizer/paths.h"

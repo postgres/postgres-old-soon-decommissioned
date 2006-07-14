@@ -19,7 +19,6 @@
 #include <unistd.h>
 
 #include "storage/s_lock.h"
-#include "miscadmin.h"
 
 
 static int	spins_per_delay = DEFAULT_SPINS_PER_DELAY;

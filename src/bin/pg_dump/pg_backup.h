@@ -26,10 +26,8 @@
 #include "postgres_fe.h"
 
 #include "pg_dump.h"
-#include "dumputils.h"
 
 #include "libpq-fe.h"
-#include "pqexpbuffer.h"
 
 
 #define atooid(x)  ((Oid) strtoul((x), NULL, 10))

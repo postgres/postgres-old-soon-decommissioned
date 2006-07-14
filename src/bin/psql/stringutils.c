@@ -9,9 +9,7 @@
 
 #include <ctype.h>
 
-#include "libpq-fe.h"
 #include "common.h"
-#include "settings.h"
 #include "stringutils.h"
 
 

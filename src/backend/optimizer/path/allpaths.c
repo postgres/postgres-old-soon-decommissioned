@@ -15,7 +15,6 @@
 
 #include "postgres.h"
 
-#include "nodes/makefuncs.h"
 #ifdef OPTIMIZER_DEBUG
 #include "nodes/print.h"
 #endif

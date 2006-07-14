@@ -17,7 +17,6 @@
 
 #include <ctype.h>
 
-#include "miscadmin.h"
 #include "parser/scansup.h"
 #include "mb/pg_wchar.h"
 

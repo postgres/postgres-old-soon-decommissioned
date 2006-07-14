@@ -30,7 +30,6 @@
 #endif
 
 #include "catalog/pg_authid.h"
-#include "libpq/libpq-be.h"
 #include "miscadmin.h"
 #include "postmaster/autovacuum.h"
 #include "storage/fd.h"
@@ -40,7 +39,6 @@
 #include "storage/procarray.h"
 #include "utils/builtins.h"
 #include "utils/guc.h"
-#include "utils/lsyscache.h"
 #include "utils/syscache.h"
 
 

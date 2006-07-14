@@ -30,9 +30,6 @@ int			optreset;
 #endif
 
 #include "dumputils.h"
-#include "libpq-fe.h"
-#include "pg_backup.h"
-#include "pqexpbuffer.h"
 #include "mb/pg_wchar.h"
 
 

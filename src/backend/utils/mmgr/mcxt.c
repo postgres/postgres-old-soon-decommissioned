@@ -21,7 +21,6 @@
 
 #include "postgres.h"
 
-#include "nodes/memnodes.h"
 #include "utils/memutils.h"
 
 

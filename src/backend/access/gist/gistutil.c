@@ -13,12 +13,9 @@
  */
 #include "postgres.h"
 
-#include "access/genam.h"
 #include "access/gist_private.h"
-#include "access/gistscan.h"
 #include "access/heapam.h"
 #include "access/reloptions.h"
-#include "miscadmin.h"
 #include "storage/freespace.h"
 
 /*

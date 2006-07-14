@@ -25,7 +25,6 @@
  */
 #include "postgres.h"
 
-#include "catalog/pg_class.h"
 #include "lib/stringinfo.h"
 #include "miscadmin.h"
 #include "storage/proc.h"

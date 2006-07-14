@@ -54,7 +54,6 @@
 #include "common.h"
 #include "settings.h"
 
-
 #ifdef HAVE_RL_FILENAME_COMPLETION_FUNCTION
 #define filename_completion_function rl_filename_completion_function
 #else

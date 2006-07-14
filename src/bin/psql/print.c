@@ -9,7 +9,6 @@
  * catalog/pg_type.h, and thereby have access to INT4OID and similar macros.
  */
 #include "postgres.h"
-#include "common.h"
 #include "print.h"
 #include "catalog/pg_type.h"
 
@@ -28,7 +27,6 @@
 #include <locale.h>
 
 #include "pqsignal.h"
-#include "libpq-fe.h"
 
 #include "mbprint.h"
 

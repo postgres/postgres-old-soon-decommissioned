@@ -25,7 +25,6 @@
  *-------------------------------------------------------------------------
  */
 
-#include "pg_backup.h"
 #include "pg_backup_archiver.h"
 
 static void _ArchiveEntry(ArchiveHandle *AH, TocEntry *te);

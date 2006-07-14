@@ -20,12 +20,8 @@
 
 #include "access/genam.h"
 #include "access/hash.h"
-#include "access/heapam.h"
-#include "access/xlogutils.h"
 #include "catalog/index.h"
 #include "commands/vacuum.h"
-#include "executor/executor.h"
-#include "miscadmin.h"
 
 
 /* Working state for hashbuild and its callback */

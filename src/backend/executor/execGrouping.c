@@ -14,8 +14,6 @@
  */
 #include "postgres.h"
 
-#include "access/hash.h"
-#include "access/heapam.h"
 #include "executor/executor.h"
 #include "parser/parse_oper.h"
 #include "utils/lsyscache.h"

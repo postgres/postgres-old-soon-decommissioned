@@ -32,7 +32,6 @@
 
 #include "postgres.h"
 
-#include "nodes/makefuncs.h"
 #include "optimizer/clauses.h"
 #include "optimizer/prep.h"
 #include "utils/lsyscache.h"

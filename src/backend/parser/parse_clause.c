@@ -31,9 +31,7 @@
 #include "parser/parse_oper.h"
 #include "parser/parse_relation.h"
 #include "parser/parse_target.h"
-#include "parser/parse_type.h"
 #include "rewrite/rewriteManip.h"
-#include "utils/builtins.h"
 #include "utils/guc.h"
 
 
