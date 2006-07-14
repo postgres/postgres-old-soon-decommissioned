@@ -46,6 +46,8 @@ thread.o: thread.c
 
 path.o: path.c pg_config_paths.h
 
+path_srv.o: path.c pg_config_paths.h
+
 #
 # Server versions of object files
 #
