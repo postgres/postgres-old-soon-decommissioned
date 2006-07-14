@@ -19,12 +19,10 @@
 #include <time.h>
 
 #include "miscadmin.h"
-#include "pgtime.h"
 #include "pgtz.h"
 #include "storage/fd.h"
 #include "tzfile.h"
 #include "utils/datetime.h"
-#include "utils/elog.h"
 #include "utils/guc.h"
 #include "utils/hsearch.h"
 
