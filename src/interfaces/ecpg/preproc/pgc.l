@@ -21,7 +21,6 @@
 #include <ctype.h>
 #include <sys/types.h>
 #include <limits.h>
-#include <errno.h>
 
 #include "extern.h"
 

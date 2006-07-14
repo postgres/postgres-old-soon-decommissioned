@@ -50,7 +50,7 @@
 
 
 /*
- * $Revision: 1.7 $
+ * $Revision: 1.8 $
  * $Id$
  */
 
@@ -106,8 +106,8 @@ The remaining code is authored by Andrew Dunstan <amdunstan@ncshp.org> and
 #ifndef DMETAPHONE_MAIN
 
 #include "postgres.h"
+
 #include "fmgr.h"
-#include "utils/elog.h"
 
 /* turn off assertions for embedded function */
 #define NDEBUG

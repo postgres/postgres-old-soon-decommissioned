@@ -30,7 +30,6 @@
 
 #include "postgres_fe.h"
 
-#include <errno.h>
 #include <signal.h>
 #include <time.h>
 

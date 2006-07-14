@@ -9,7 +9,6 @@
 #define MAINLOOP_H
 
 #include "postgres_fe.h"
-#include <stdio.h>
 
 int			MainLoop(FILE *source);
 

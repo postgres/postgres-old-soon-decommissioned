@@ -175,7 +175,6 @@
 
 #include <unistd.h>
 #include <fcntl.h>
-#include <errno.h>
 
 #include "utils/pg_lzcompress.h"
 

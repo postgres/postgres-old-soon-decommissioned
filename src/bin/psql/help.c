@@ -12,7 +12,6 @@
 #include "help.h"
 
 #include <signal.h>
-#include <errno.h>
 
 #ifndef WIN32
 #ifdef HAVE_PWD_H

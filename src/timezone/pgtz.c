@@ -24,7 +24,6 @@
 #include "storage/fd.h"
 #include "tzfile.h"
 #include "utils/datetime.h"
-#include "utils/elog.h"
 #include "utils/guc.h"
 #include "utils/hsearch.h"
 

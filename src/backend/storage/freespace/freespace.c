@@ -58,7 +58,6 @@
  */
 #include "postgres.h"
 
-#include <errno.h>
 #include <limits.h>
 #include <math.h>
 #include <unistd.h>

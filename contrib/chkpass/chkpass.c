@@ -10,8 +10,6 @@
 
 #include "postgres.h"
 
-#include <stdio.h>
-#include <string.h>
 #include <time.h>
 #include <unistd.h>
 #ifdef HAVE_CRYPT_H

@@ -20,7 +20,6 @@
 #if defined(HAVE_STRUCT_CMSGCRED) || defined(HAVE_STRUCT_FCRED) || defined(HAVE_STRUCT_SOCKCRED)
 #include <sys/uio.h>
 #include <sys/ucred.h>
-#include <errno.h>
 #endif
 #include <netinet/in.h>
 #include <arpa/inet.h>

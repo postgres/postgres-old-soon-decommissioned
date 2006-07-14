@@ -17,7 +17,6 @@
  */
 #include "postgres.h"
 
-#include <errno.h>
 #include <fcntl.h>
 #include <signal.h>
 #include <unistd.h>

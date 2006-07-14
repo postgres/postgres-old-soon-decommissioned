@@ -27,7 +27,6 @@
  */
 #include "postgres.h"
 
-#include <errno.h>
 #include <unistd.h>
 
 #include "miscadmin.h"

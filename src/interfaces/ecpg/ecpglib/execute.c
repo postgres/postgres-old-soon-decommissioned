@@ -16,7 +16,6 @@
 #define POSTGRES_ECPG_INTERNAL
 #include "postgres_fe.h"
 
-#include <stdio.h>
 #include <locale.h>
 
 #include "pg_type.h"

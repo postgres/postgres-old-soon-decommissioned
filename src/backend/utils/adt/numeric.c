@@ -25,7 +25,6 @@
 #include <float.h>
 #include <limits.h>
 #include <math.h>
-#include <errno.h>
 
 #include "catalog/pg_type.h"
 #include "libpq/pqformat.h"

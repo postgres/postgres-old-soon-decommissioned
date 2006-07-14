@@ -14,7 +14,6 @@
  */
 #include "postgres_fe.h"
 
-#include <errno.h>
 #include <ctype.h>
 #include <fcntl.h>
 

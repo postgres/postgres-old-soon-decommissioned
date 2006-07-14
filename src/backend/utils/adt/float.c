@@ -53,7 +53,6 @@
 #include "postgres.h"
 
 #include <ctype.h>
-#include <errno.h>
 #include <float.h>
 #include <math.h>
 #include <limits.h>

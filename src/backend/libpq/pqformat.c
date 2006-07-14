@@ -69,7 +69,6 @@
 
 #include "postgres.h"
 
-#include <errno.h>
 #include <sys/param.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>

@@ -13,9 +13,6 @@
 
 #include "postgres.h"
 
-#include <stdio.h>
-#include <errno.h>
-
 static DWORD s_segsize = 0;
 
 /* Detach from a shared mem area based on its address */
