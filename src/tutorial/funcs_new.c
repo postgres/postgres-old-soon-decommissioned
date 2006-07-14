@@ -13,6 +13,7 @@
 
 #include "postgres.h"			/* general Postgres declarations */
 
+#include "fmgr.h"				/* for argument/result macros */
 #include "executor/executor.h"	/* for GetAttributeByName() */
 #include "utils/geo_decls.h"	/* for point type */
 

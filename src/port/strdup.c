@@ -15,6 +15,7 @@
 
 #include "c.h"
 
+#include "strdup.h"
 
 
 char *
