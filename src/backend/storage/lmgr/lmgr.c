@@ -16,6 +16,8 @@
 #include "postgres.h"
 
 #include "access/subtrans.h"
+#include "access/transam.h"
+#include "access/xact.h"
 #include "miscadmin.h"
 #include "storage/lmgr.h"
 #include "storage/procarray.h"

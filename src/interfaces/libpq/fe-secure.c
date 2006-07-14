@@ -85,6 +85,7 @@
 
 #include "libpq-fe.h"
 #include "fe-auth.h"
+#include "pqsignal.h"
 
 #ifdef WIN32
 #include "win32.h"
