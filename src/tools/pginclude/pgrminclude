@@ -61,9 +61,9 @@ do
 		fi
 		echo "}" >>/tmp/$$.c
 
-		cc $CFLAGS -fsyntax-only -Werror -Wall -Wmissing-prototypes \
+		cc -fsyntax-only -Werror -Wall -Wmissing-prototypes \
 			-Wmissing-declarations -I/pg/include -I/pg/backend \
-			-I/pg/interfaces/libpq -I`dirname $FILE` -c /tmp/$$.c \
+			-I/pg/interfaces/libpq -I`dirname $FILE` $CFLAGS -c /tmp/$$.c \
 			-o /tmp/$$.o >/tmp/$$ 2>&1
 		if [ "$?" -eq 0 ]
 		then	echo "$FILE $INCLUDE"
