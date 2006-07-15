@@ -6,11 +6,6 @@
  * $PostgreSQL$
  */
 #include "postgres_fe.h"
-#include "prompt.h"
-
-
-#include "settings.h"
-#include "common.h"
 
 #ifdef WIN32
 #include <io.h>
@@ -21,6 +16,12 @@
 #include <unistd.h>
 #include <netdb.h>
 #endif
+
+#include "common.h"
+#include "input.h"
+#include "prompt.h"
+#include "settings.h"
+
 
 /*--------------------------
  * get_prompt

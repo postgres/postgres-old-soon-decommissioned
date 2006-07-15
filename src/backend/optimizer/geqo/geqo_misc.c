@@ -21,6 +21,7 @@
 
 #include "postgres.h"
 
+#include "optimizer/geqo_misc.h"
 
 
 #ifdef GEQO_DEBUG

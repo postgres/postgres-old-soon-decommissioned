@@ -6,8 +6,6 @@
  * $PostgreSQL$
  */
 #include "postgres_fe.h"
-#include "common.h"
-#include "help.h"
 
 #include <signal.h>
 
@@ -23,9 +21,12 @@
 
 #include "pqsignal.h"
 
-#include "settings.h"
 #include "common.h"
+#include "help.h"
+#include "input.h"
+#include "settings.h"
 #include "sql_help.h"
+
 
 /*
  * PLEASE:

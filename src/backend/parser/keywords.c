@@ -17,6 +17,7 @@
 #include <ctype.h>
 
 #include "nodes/parsenodes.h"
+#include "parser/gramparse.h"	/* required before parser/parse.h! */
 #include "parser/keywords.h"
 #include "parser/parse.h"
 
