@@ -33,7 +33,7 @@
 #include "imath.h"
 
 #undef assert
-#define assert(TEST)
+#define assert(TEST) Assert(TEST)
 #define TRACEABLE_CLAMP 0
 #define TRACEABLE_FREE 0
 
