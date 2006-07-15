@@ -12,7 +12,7 @@ subdir = src/backend/port/nextstep
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = dynloader.o port.o
+OBJS = port.o
 
 all: SUBSYS.o
 

@@ -4,7 +4,7 @@
 # $PostgreSQL$
 #
 
-subdir = src/backend/utils/
+subdir = src/backend/utils
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 

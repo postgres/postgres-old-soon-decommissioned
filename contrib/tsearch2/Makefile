@@ -37,6 +37,8 @@ endif
 
 $(SUBDIROBJS): $(SUBDIRS:%=%-recursive) ;
 
+.PHONY: $(SUBDIRS:%=%-recursive)
+
 $(SUBDIRS:%=%-recursive):
 	$(MAKE) -C $(subst -recursive,,$@) SUBSYS.o
 
