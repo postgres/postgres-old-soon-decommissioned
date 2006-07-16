@@ -49,12 +49,6 @@
  */
 
 
-/*
- * $Revision: 1.8 $
- * $Id$
- */
-
-
 /***************************** COPYRIGHT NOTICES ***********************
 
 Most of this code is directly from the Text::DoubleMetaphone perl module

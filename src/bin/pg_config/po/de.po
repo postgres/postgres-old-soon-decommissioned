@@ -1,7 +1,7 @@
 # German message translation file for pg_config
 # Peter Eisentraut <peter_e@gmx.net>, 2004, 2005.
 #
-# $Id$
+# $PostgreSQL$
 #
 # Use these quotes: »%s«
 #
