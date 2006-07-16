@@ -221,11 +221,6 @@ HANDLE		pgwin32_create_signal_listener(pid_t pid);
 void		pgwin32_dispatch_queued_signals(void);
 void		pg_queue_signal(int signum);
 
-#ifndef FRONTEND
-#define pg_usleep(t) pgwin32_backend_usleep(t)
-void		pgwin32_backend_usleep(long microsec);
-#endif
-
 /* In backend/port/win32/socket.c */
 #ifndef FRONTEND
 #define socket(af, type, protocol) pgwin32_socket(af, type, protocol)

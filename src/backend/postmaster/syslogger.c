@@ -348,7 +348,7 @@ SysLoggerMain(int argc, char *argv[])
 		 * detect pipe EOF.  The main thread just wakes up once a second to
 		 * check for SIGHUP and rotation conditions.
 		 */
-		pgwin32_backend_usleep(1000000);
+		pg_usleep(1000000L);
 #endif   /* WIN32 */
 
 		if (pipe_eof_seen)

@@ -16,6 +16,12 @@
 #include <sys/time.h>
 
 /*
+ * In a Windows backend, we don't use this implementation, but rather
+ * the signal-aware version in src/backend/port/win32/signal.c.
+ */
+#if defined(FRONTEND) || !defined(WIN32)
+
+/*
  * pg_usleep --- delay the specified number of microseconds.
  *
  * NOTE: although the delay is specified in microseconds, the effective
@@ -24,9 +30,6 @@
  *
  * On machines where "long" is 32 bits, the maximum delay is ~2000 seconds.
  */
-#ifdef pg_usleep
-#undef pg_usleep
-#endif
 void
 pg_usleep(long microsec)
 {
@@ -43,3 +46,5 @@ pg_usleep(long microsec)
 #endif
 	}
 }
+
+#endif /* defined(FRONTEND) || !defined(WIN32) */

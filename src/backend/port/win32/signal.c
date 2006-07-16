@@ -41,11 +41,19 @@ static pqsigfunc pg_signal_defaults[PG_SIGNAL_COUNT];
 static DWORD WINAPI pg_signal_thread(LPVOID param);
 static BOOL WINAPI pg_console_handler(DWORD dwCtrlType);
 
-/* Sleep function that can be interrupted by signals */
+
+/*
+ * pg_usleep --- delay the specified number of microseconds, but
+ * stop waiting if a signal arrives.
+ *
+ * This replaces the non-signal-aware version provided by src/port/pgsleep.c.
+ */
 void
-pgwin32_backend_usleep(long microsec)
+pg_usleep(long microsec)
 {
-	if (WaitForSingleObject(pgwin32_signal_event, (microsec < 500 ? 1 : (microsec + 500) / 1000)) == WAIT_OBJECT_0)
+	if (WaitForSingleObject(pgwin32_signal_event,
+							(microsec < 500 ? 1 : (microsec + 500) / 1000))
+		== WAIT_OBJECT_0)
 	{
 		pgwin32_dispatch_queued_signals();
 		errno = EINTR;
