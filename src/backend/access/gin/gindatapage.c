@@ -546,7 +546,7 @@ insertItemPointer(GinPostingTreeScan *gdi, ItemPointerData *items, uint32 nitem)
 		gdi->stack = ginFindLeafPage( &gdi->btree, gdi->stack );	
 
 		if ( gdi->btree.findItem( &(gdi->btree), gdi->stack ) )
-			elog(ERROR,"Item pointer(%d:%d) is already exists", 
+			elog(ERROR,"item pointer (%u,%d) already exists", 
 				ItemPointerGetBlockNumber(gdi->btree.items + gdi->btree.curitem), 
 				ItemPointerGetOffsetNumber(gdi->btree.items + gdi->btree.curitem));
 
