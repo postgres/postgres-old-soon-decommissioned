@@ -8,7 +8,7 @@
  * platform, we'll need to split this file and provide a separate configure
  * test for getnameinfo().
  *
- * Windows may or may not have these routines, so we handle Windows special
+ * Windows may or may not have these routines, so we handle Windows specially
  * by dynamically checking for their existence.  If they already exist, we
  * use the Windows native routines, but if not, we use our own.
  *
@@ -30,6 +30,7 @@
 #include <arpa/inet.h>
 
 #include "getaddrinfo.h"
+#include "libpq/pqcomm.h"		/* needed for struct sockaddr_storage */
 
 
 #ifdef WIN32
