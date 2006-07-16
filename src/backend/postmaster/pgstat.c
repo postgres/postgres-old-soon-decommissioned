@@ -160,6 +160,7 @@ NON_EXEC_STATIC void PgstatCollectorMain(int argc, char *argv[]);
 static void pgstat_recvbuffer(void);
 static void pgstat_exit(SIGNAL_ARGS);
 static void pgstat_die(SIGNAL_ARGS);
+static void pgstat_beshutdown_hook(int code, Datum arg);
 
 static int	pgstat_add_backend(PgStat_MsgHdr *msg);
 static void pgstat_sub_backend(int procpid);
@@ -336,8 +337,12 @@ pgstat_init(void)
 		 * packet filtering rules prevent it).
 		 */
 		test_byte = TESTBYTEVAL;
+
+retry1:
 		if (send(pgStatSock, &test_byte, 1, 0) != 1)
 		{
+			if (errno == EINTR)
+				goto retry1;	/* if interrupted, just retry */
 			ereport(LOG,
 					(errcode_for_socket_access(),
 					 errmsg("could not send test message on socket for statistics collector: %m")));
@@ -388,8 +393,11 @@ pgstat_init(void)
 
 		test_byte++;			/* just make sure variable is changed */
 
+retry2:
 		if (recv(pgStatSock, &test_byte, 1, 0) != 1)
 		{
+			if (errno == EINTR)
+				goto retry2;	/* if interrupted, just retry */
 			ereport(LOG,
 					(errcode_for_socket_access(),
 					 errmsg("could not receive test message on socket for statistics collector: %m")));
@@ -422,7 +430,7 @@ pgstat_init(void)
 	 * messages will be discarded; backends won't block waiting to send
 	 * messages to the collector.
 	 */
-	if (!set_noblock(pgStatSock))
+	if (!pg_set_noblock(pgStatSock))
 	{
 		ereport(LOG,
 				(errcode_for_socket_access(),
@@ -670,6 +678,25 @@ pgstat_bestart(void)
 
 	pgstat_setheader(&msg.m_hdr, PGSTAT_MTYPE_BESTART);
 	pgstat_send(&msg, sizeof(msg));
+
+	/*
+	 * Set up a process-exit hook to ensure we flush the last batch of
+	 * statistics to the collector.
+	 */
+	on_proc_exit(pgstat_beshutdown_hook, 0);
+}
+
+/*
+ * Flush any remaining statistics counts out to the collector at process
+ * exit.   Without this, operations triggered during backend exit (such as
+ * temp table deletions) won't be counted.  This is an on_proc_exit hook,
+ * not on_shmem_exit, so that everything interesting must have happened
+ * already.
+ */
+static void
+pgstat_beshutdown_hook(int code, Datum arg)
+{
+	pgstat_report_tabstat();
 }
 
 
@@ -1309,13 +1336,24 @@ pgstat_setheader(PgStat_MsgHdr *hdr, int mtype)
 static void
 pgstat_send(void *msg, int len)
 {
+	int			rc;
+
 	if (pgStatSock < 0)
 		return;
 
 	((PgStat_MsgHdr *) msg)->m_size = len;
 
-	send(pgStatSock, msg, len, 0);
-	/* We deliberately ignore any error from send() */
+	/* We'll retry after EINTR, but ignore all other failures */
+	do
+	{
+		rc = send(pgStatSock, msg, len, 0);
+	} while (rc < 0 && errno == EINTR);
+
+#ifdef USE_ASSERT_CHECKING
+	/* In debug builds, log send failures ... */
+	if (rc < 0)
+		elog(LOG, "could not send to statistics collector: %m");
+#endif
 }
 
 
@@ -1766,7 +1804,7 @@ pgstat_recvbuffer(void)
 	 * Set the write pipe to nonblock mode, so that we cannot block when
 	 * the collector falls behind.
 	 */
-	if (!set_noblock(writePipe))
+	if (!pg_set_noblock(writePipe))
 		ereport(ERROR,
 				(errcode_for_socket_access(),
 				 errmsg("could not set statistics collector pipe to nonblocking mode: %m")));
@@ -1843,9 +1881,13 @@ pgstat_recvbuffer(void)
 			len = recv(pgStatSock, (char *) &input_buffer,
 					   sizeof(PgStat_Msg), 0);
 			if (len < 0)
+			{
+				if (errno == EINTR)
+					continue;
 				ereport(ERROR,
 						(errcode_for_socket_access(),
 					   errmsg("could not read statistics message: %m")));
+			}
 
 			/*
 			 * We ignore messages that are smaller than our common header
