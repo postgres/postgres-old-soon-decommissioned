@@ -434,7 +434,7 @@ rmtree(char *path, bool rmtopdir)
 	{
 		snprintf(filepath, MAXPGPATH, "%s/%s", path, *filename);
 
-		if (stat(filepath, &statbuf) != 0)
+		if (lstat(filepath, &statbuf) != 0)
 			goto report_and_fail;
 
 		if (S_ISDIR(statbuf.st_mode))
