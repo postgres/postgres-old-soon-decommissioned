@@ -104,21 +104,18 @@ def-files: $(srcdir)/libpqdll.def $(srcdir)/libpqddll.def $(srcdir)/blibpqdll.de
 $(srcdir)/libpqdll.def: exports.txt
 	echo '; DEF file for MS VC++' > $@
 	echo 'LIBRARY LIBPQ' >> $@
-	echo 'DESCRIPTION "PostgreSQL Client Library"' >> $@
 	echo 'EXPORTS' >> $@
 	sed -e '/^#/d' -e 's/^\(.* \)\([0-9][0-9]*\)/    \1@ \2/' < $< >> $@
 
 $(srcdir)/libpqddll.def: exports.txt
 	echo '; DEF file for MS VC++' > $@
 	echo 'LIBRARY LIBPQD' >> $@
-	echo 'DESCRIPTION "PostgreSQL Client Library"' >> $@
 	echo 'EXPORTS' >> $@
 	sed -e '/^#/d' -e 's/^\(.* \)\([0-9][0-9]*\)/    \1@ \2/' < $< >> $@
 
 $(srcdir)/blibpqdll.def: exports.txt
 	echo '; DEF file for Borland C++ Builder' > $@
 	echo 'LIBRARY BLIBPQ' >> $@
-	echo 'DESCRIPTION "PostgreSQL Client Library"' >> $@
 	echo 'EXPORTS' >> $@
 	sed -e '/^#/d' -e 's/^\(.* \)\([0-9][0-9]*\)/    _\1@ \2/' < $< >> $@
 	echo '' >> $@
