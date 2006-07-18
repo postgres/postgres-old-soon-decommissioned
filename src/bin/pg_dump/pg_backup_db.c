@@ -283,7 +283,7 @@ notice_processor(void *arg, const char *message)
 
 /* Public interface */
 /* Convenience function to send a query. Monitors result to handle COPY statements */
-int
+static int
 ExecuteSqlCommand(ArchiveHandle *AH, PQExpBuffer qry, char *desc)
 {
 	PGconn	   *conn = AH->connection;

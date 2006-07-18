@@ -82,7 +82,6 @@ extern void RemoveOpClass(RemoveOpClassStmt *stmt);
 extern void RemoveOpClassById(Oid opclassOid);
 extern void RenameOpClass(List *name, const char *access_method, const char *newname);
 extern void AlterOpClassOwner(List *name, const char *access_method, Oid newOwnerId);
-extern void AlterOpClassOwner_oid(Oid opcOid, Oid newOwnerId);
 
 /* support routines in commands/define.c */
 
