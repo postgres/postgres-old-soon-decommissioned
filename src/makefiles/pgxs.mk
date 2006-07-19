@@ -230,16 +230,16 @@ endif # VPATH
 .PHONY: submake
 submake:
 ifndef PGXS
-	$(MAKE) -C $(top_builddir)/src/test/regress pg_regress
+	$(MAKE) -C $(top_builddir)/src/test/regress pg_regress$(X)
 endif
 
 # against installed postmaster
 installcheck: submake
-	$(SHELL) $(top_builddir)/src/test/regress/pg_regress $(REGRESS_OPTS) $(REGRESS)
+	$(top_builddir)/src/test/regress/pg_regress $(REGRESS_OPTS) $(REGRESS)
 
 # in-tree test doesn't work yet (no way to install my shared library)
 #check: all submake
-#	$(SHELL) $(top_builddir)/src/test/regress/pg_regress --temp-install \
+#	$(top_builddir)/src/test/regress/pg_regress --temp-install \
 #	  --top-builddir=$(top_builddir) $(REGRESS_OPTS) $(REGRESS)
 check:
 	@echo "'make check' is not supported."
