@@ -94,8 +94,24 @@ extern int find_other_exec(const char *argv0, const char *target,
  *	It also requires double-quotes around the executable name and
  *	any files used for redirection.  Other args can use single-quotes.
  *
- *	See the "Notes" section about quotes at:
- *		http://home.earthlink.net/~rlively/MANUALS/COMMANDS/C/CMD.HTM
+ *	From http://www.computerhope.com/cmd.htm:
+ *
+ *  1. If all of the following conditions are met, then quote characters
+ *  on the command line are preserved:
+ *
+ *   - no /S switch
+ *   - exactly two quote characters
+ *   - no special characters between the two quote characters, where special
+ *     is one of: &<>()@^|
+ *   - there are one or more whitespace characters between the the two quote
+ *     characters
+ *   - the string between the two quote characters is the name of an
+ *     executable file.
+ *
+ *   2. Otherwise, old behavior is to see if the first character is a quote
+ *   character and if so, strip the leading character and remove the last
+ *   quote character on the command line, preserving any text after the last
+ *   quote character.
  */
 #if defined(WIN32) && !defined(__CYGWIN__)
 #define SYSTEMQUOTE "\""
