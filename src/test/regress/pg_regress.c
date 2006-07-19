@@ -21,6 +21,7 @@
 #include <ctype.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <signal.h>
 #include <unistd.h>
 
 #include "getopt_long.h"
