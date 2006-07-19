@@ -50,7 +50,7 @@ EXTRADEFS = '-DPGBINDIR="$(bindir)"' \
 all: submake-libpgport pg_regress$(X)
 
 pg_regress$(X): pg_regress.o
-	$(CC) $(CFLAGS) $^ $(libpq_pgport) $(LDFLAGS) $(LIBS) -o $@
+	$(CC) $(CFLAGS) $^ $(LDFLAGS) $(LIBS) -o $@
 
 # depend on Makefile.global to ensure that symbol changes propagate
 pg_regress.o: pg_regress.c $(top_builddir)/src/Makefile.global
