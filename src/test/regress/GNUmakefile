@@ -39,7 +39,8 @@ EXTRADEFS = '-DPGBINDIR="$(bindir)"' \
 	'-DLIBDIR="$(libdir)"' \
 	'-DPGSHAREDIR="$(datadir)"' \
 	'-DHOST_TUPLE="$(host_tuple)"' \
-	'-DMAKEPROG="$(MAKE)"'
+	'-DMAKEPROG="$(MAKE)"' \
+	'-DSHELLPROG="$(SHELL)"'
 
 ##
 ## Prepare for tests
