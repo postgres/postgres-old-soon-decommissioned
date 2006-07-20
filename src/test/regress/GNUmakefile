@@ -35,10 +35,7 @@ NOLOCALE += --no-locale
 endif
 
 # stuff to pass into build of pg_regress
-EXTRADEFS = '-DPGBINDIR="$(bindir)"' \
-	'-DLIBDIR="$(libdir)"' \
-	'-DPGSHAREDIR="$(datadir)"' \
-	'-DHOST_TUPLE="$(host_tuple)"' \
+EXTRADEFS = '-DHOST_TUPLE="$(host_tuple)"' \
 	'-DMAKEPROG="$(MAKE)"' \
 	'-DSHELLPROG="$(SHELL)"'
 
@@ -53,9 +50,12 @@ all: submake-libpgport pg_regress$(X)
 pg_regress$(X): pg_regress.o
 	$(CC) $(CFLAGS) $^ $(LDFLAGS) $(LIBS) -o $@
 
-# depend on Makefile.global to ensure that symbol changes propagate
-pg_regress.o: pg_regress.c $(top_builddir)/src/Makefile.global
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(EXTRADEFS) -c -o $@ $<
+# dependencies ensure that path changes propagate
+pg_regress.o: pg_regress.c $(top_builddir)/src/port/pg_config_paths.h
+	$(CC) $(CFLAGS) $(CPPFLAGS) -I$(top_builddir)/src/port $(EXTRADEFS) -c -o $@ $<
+
+$(top_builddir)/src/port/pg_config_paths.h: $(top_builddir)/src/Makefile.global
+	$(MAKE) -C $(top_builddir)/src/port pg_config_paths.h
 
 install: pg_regress$(X)
 	$(INSTALL_PROGRAM) pg_regress$(X) '$(DESTDIR)$(pgxsdir)/$(subdir)/pg_regress$(X)'

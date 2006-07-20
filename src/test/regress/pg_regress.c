@@ -25,6 +25,7 @@
 #include <unistd.h>
 
 #include "getopt_long.h"
+#include "pg_config_paths.h"
 
 #ifndef WIN32
 #define PID_TYPE pid_t
@@ -51,9 +52,11 @@ typedef struct _resultmap
 } _resultmap;
 
 /*
- * Values inserted from Makefile.  (It might seem tempting to get the paths
- * via get_share_path() and friends, but that's not going to work because
- * pg_regress is typically not executed from an installed bin directory.)
+ * Values obtained from pg_config_paths.h and Makefile.  (It might seem
+ * tempting to get the paths via get_share_path() and friends, but that's
+ * not going to work because pg_regress is typically not executed from an
+ * installed bin directory.  In any case, for our purposes the configured
+ * paths are what we want anyway.)
  */
 static char *bindir = PGBINDIR;
 static char *libdir = LIBDIR;
