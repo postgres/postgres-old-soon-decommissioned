@@ -63,7 +63,9 @@ static char *libdir = LIBDIR;
 static char *datadir = PGSHAREDIR;
 static char *host_platform = HOST_TUPLE;
 static char *makeprog = MAKEPROG;
+#ifndef WIN32					/* not used in WIN32 case */
 static char *shellprog = SHELLPROG;
+#endif
 
 /* currently we can use the same diff switches on all platforms */
 static const char *basic_diff_opts = "-w";
