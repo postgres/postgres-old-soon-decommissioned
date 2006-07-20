@@ -203,6 +203,10 @@ stop_postmaster(void)
 		/* We use pg_ctl to issue the kill and wait for stop */
 		char buf[MAXPGPATH * 2];
 
+		/* On Windows, system() seems not to force fflush, so... */
+		fflush(stdout);
+		fflush(stderr);
+
 		snprintf(buf, sizeof(buf),
 				 SYSTEMQUOTE "\"%s/pg_ctl\" stop -D \"%s/data\" -s -m fast" SYSTEMQUOTE,
 				 bindir, temp_install);
@@ -843,7 +847,7 @@ results_differ(const char *testname)
 	r = system(cmd);
 	if (!WIFEXITED(r) || WEXITSTATUS(r) > 1)
 	{
-		fprintf(stderr, _("diff command failed: %s\n"), cmd);
+		fprintf(stderr, _("diff command failed with status %d: %s\n"), r, cmd);
 		exit_nicely(2);
 	}
 
@@ -872,7 +876,8 @@ results_differ(const char *testname)
 		r = system(cmd);
 		if (!WIFEXITED(r) || WEXITSTATUS(r) > 1)
 		{
-			fprintf(stderr, _("diff command failed: %s\n"), cmd);
+			fprintf(stderr, _("diff command failed with status %d: %s\n"),
+					r, cmd);
 			exit_nicely(2);
 		}
 
@@ -902,7 +907,7 @@ results_differ(const char *testname)
 	r = system(cmd);
 	if (!WIFEXITED(r) || WEXITSTATUS(r) > 1)
 	{
-		fprintf(stderr, _("diff command failed: %s\n"), cmd);
+		fprintf(stderr, _("diff command failed with status %d: %s\n"), r, cmd);
 		exit_nicely(2);
 	}
 
