@@ -60,6 +60,8 @@ SHLIB_LINK = $(BE_DLLLIBS) $(python_libspec) $(python_additional_libs)
 
 REGRESS_OPTS = --dbname=$(PL_TESTDB) --load-language=plpythonu
 REGRESS = plpython_schema plpython_populate plpython_function plpython_test plpython_error plpython_drop
+# where to find psql for running the tests
+PSQLDIR = $(bindir)
 
 include $(top_srcdir)/src/Makefile.shlib
 
@@ -103,7 +105,7 @@ uninstall:
 	rm -f '$(DESTDIR)$(pkglibdir)/plpython$(DLSUFFIX)'
 
 installcheck: submake
-	$(top_builddir)/src/test/regress/pg_regress $(REGRESS_OPTS) $(REGRESS)
+	$(top_builddir)/src/test/regress/pg_regress --psqldir=$(PSQLDIR) $(REGRESS_OPTS) $(REGRESS)
 
 .PHONY: submake
 submake:

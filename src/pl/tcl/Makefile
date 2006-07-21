@@ -42,6 +42,8 @@ OBJS = pltcl.o
 
 REGRESS_OPTS = --dbname=$(PL_TESTDB) --load-language=pltcl
 REGRESS = pltcl_setup pltcl_queries
+# where to find psql for running the tests
+PSQLDIR = $(bindir)
 
 include $(top_srcdir)/src/Makefile.shlib
 
@@ -90,7 +92,7 @@ uninstall:
 	$(MAKE) -C modules $@
 
 installcheck: submake
-	$(top_builddir)/src/test/regress/pg_regress $(REGRESS_OPTS) $(REGRESS)
+	$(top_builddir)/src/test/regress/pg_regress --psqldir=$(PSQLDIR) $(REGRESS_OPTS) $(REGRESS)
 
 .PHONY: submake
 submake:

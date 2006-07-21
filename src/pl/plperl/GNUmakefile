@@ -38,6 +38,8 @@ SHLIB_LINK = $(perl_embed_ldflags) $(BE_DLLLIBS)
 
 REGRESS_OPTS = --dbname=$(PL_TESTDB) --load-language=plperl
 REGRESS = plperl plperl_trigger plperl_shared plperl_elog
+# where to find psql for running the tests
+PSQLDIR = $(bindir)
 
 include $(top_srcdir)/src/Makefile.shlib
 
@@ -84,7 +86,7 @@ uninstall:
 	rm -f '$(DESTDIR)$(pkglibdir)/plperl$(DLSUFFIX)'
 
 installcheck: submake
-	$(top_builddir)/src/test/regress/pg_regress $(REGRESS_OPTS) $(REGRESS)
+	$(top_builddir)/src/test/regress/pg_regress --psqldir=$(PSQLDIR) $(REGRESS_OPTS) $(REGRESS)
 
 .PHONY: submake
 submake:

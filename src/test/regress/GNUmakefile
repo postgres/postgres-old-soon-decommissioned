@@ -19,6 +19,9 @@ contribdir := $(top_builddir)/contrib
 # port number for temp-installation test postmaster
 TEMP_PORT = 5$(DEF_PGPORT)
 
+# where to find psql for testing an existing installation
+PSQLDIR = $(bindir)
+
 # default encoding
 MULTIBYTE = SQL_ASCII
 
@@ -150,12 +153,12 @@ check: all
 installcheck: all
 	-rm -rf ./testtablespace
 	mkdir ./testtablespace
-	./pg_regress --schedule=$(srcdir)/serial_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE)
+	./pg_regress --psqldir=$(PSQLDIR) --schedule=$(srcdir)/serial_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE)
 
 installcheck-parallel: all
 	-rm -rf ./testtablespace
 	mkdir ./testtablespace
-	./pg_regress --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(MAXCONNOPT) $(NOLOCALE)
+	./pg_regress --psqldir=$(PSQLDIR) --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(MAXCONNOPT) $(NOLOCALE)
 
 
 # old interfaces follow...
@@ -165,7 +168,7 @@ runtest: installcheck
 runtest-parallel: installcheck-parallel
 
 bigtest:
-	./pg_regress --schedule=$(srcdir)/serial_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE) numeric_big 
+	./pg_regress --psqldir=$(PSQLDIR) --schedule=$(srcdir)/serial_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE) numeric_big 
 
 bigcheck:
 	./pg_regress --temp-install=./tmp_check --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) --load-language=plpgsql $(MAXCONNOPT) $(NOLOCALE) numeric_big
