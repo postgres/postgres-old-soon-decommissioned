@@ -157,6 +157,16 @@ DATA(insert (	1989	0 4 f  612 ));
 DATA(insert (	1989	0 5 f  610 ));
 
 /*
+ * btree tid_ops
+ */
+
+DATA(insert (	2789	0 1 f 2799 ));
+DATA(insert (	2789	0 2 f 2801 ));
+DATA(insert (	2789	0 3 f 387  ));
+DATA(insert (	2789	0 4 f 2802 ));
+DATA(insert (	2789	0 5 f 2800 ));
+
+/*
  *	btree oidvector_ops
  */
 

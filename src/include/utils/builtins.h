@@ -538,6 +538,13 @@ extern Datum tidrecv(PG_FUNCTION_ARGS);
 extern Datum tidsend(PG_FUNCTION_ARGS);
 extern Datum tideq(PG_FUNCTION_ARGS);
 extern Datum tidne(PG_FUNCTION_ARGS);
+extern Datum tidlt(PG_FUNCTION_ARGS);
+extern Datum tidle(PG_FUNCTION_ARGS);
+extern Datum tidgt(PG_FUNCTION_ARGS);
+extern Datum tidge(PG_FUNCTION_ARGS);
+extern Datum bttidcmp(PG_FUNCTION_ARGS);
+extern Datum tidlarger(PG_FUNCTION_ARGS);
+extern Datum tidsmaller(PG_FUNCTION_ARGS);
 extern Datum currtid_byreloid(PG_FUNCTION_ARGS);
 extern Datum currtid_byrelname(PG_FUNCTION_ARGS);
 
