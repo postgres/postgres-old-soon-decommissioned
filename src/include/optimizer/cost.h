@@ -61,7 +61,7 @@ extern void cost_seqscan(Path *path, PlannerInfo *root, RelOptInfo *baserel);
 extern void cost_index(IndexPath *path, PlannerInfo *root, IndexOptInfo *index,
 		   List *indexQuals, RelOptInfo *outer_rel);
 extern void cost_bitmap_heap_scan(Path *path, PlannerInfo *root, RelOptInfo *baserel,
-					  Path *bitmapqual);
+					  Path *bitmapqual, RelOptInfo *outer_rel);
 extern void cost_bitmap_and_node(BitmapAndPath *path, PlannerInfo *root);
 extern void cost_bitmap_or_node(BitmapOrPath *path, PlannerInfo *root);
 extern void cost_bitmap_tree_node(Path *path, Cost *cost, Selectivity *selec);

@@ -37,7 +37,7 @@ extern IndexPath *create_index_path(PlannerInfo *root,
 extern BitmapHeapPath *create_bitmap_heap_path(PlannerInfo *root,
 						RelOptInfo *rel,
 						Path *bitmapqual,
-						bool isjoininner);
+						RelOptInfo *outer_rel);
 extern BitmapAndPath *create_bitmap_and_path(PlannerInfo *root,
 					   RelOptInfo *rel,
 					   List *bitmapquals);
