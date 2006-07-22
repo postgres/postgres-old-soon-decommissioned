@@ -513,7 +513,7 @@ initialize_environment(void)
 		 */
 		add_to_path("LD_LIBRARY_PATH", ':', libdir);
 		add_to_path("DYLD_LIBRARY_PATH", ':', libdir);
-#ifdef WIN32
+#if defined(WIN32) || defined(CYGWIN)
 		add_to_path("PATH", ';', libdir);
 #endif
 	}
@@ -546,7 +546,7 @@ initialize_environment(void)
 		 * this case.  (XXX really?  If so, what if installation has
 		 * been relocated?)
 		 */
-#ifdef WIN32
+#if defined(WIN32) || defined(CYGWIN)
 		add_to_path("PATH", ';', libdir);
 #endif
 
