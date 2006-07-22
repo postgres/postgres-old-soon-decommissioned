@@ -1958,7 +1958,7 @@ GetLockStatusData(void)
 	{
 		LWLockAcquire(FirstLockMgrLock + i, LW_SHARED);
 		proclockTable = LockMethodProcLockHash[i];
-		els += proclockTable->hctl->nentries;
+		els += hash_get_num_entries(proclockTable);
 	}
 
 	data->nelements = els;
