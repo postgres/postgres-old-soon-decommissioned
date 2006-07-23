@@ -87,6 +87,17 @@ typedef struct buftag
 )
 
 /*
+ * The shared buffer mapping table is partitioned to reduce contention.
+ * To determine which partition lock a given tag requires, compute the tag's
+ * hash code with BufTableHashCode(), then apply BufMappingPartitionLock().
+ * NB: NUM_BUFFER_PARTITIONS must be a power of 2!
+ */
+#define BufTableHashPartition(hashcode) \
+	((hashcode) % NUM_BUFFER_PARTITIONS)
+#define BufMappingPartitionLock(hashcode) \
+	((LWLockId) (FirstBufMappingLock + BufTableHashPartition(hashcode)))
+
+/*
  *	BufferDesc -- shared descriptor/state data for a single shared buffer.
  *
  * Note: buf_hdr_lock must be held to examine or change the tag, flags,
@@ -182,9 +193,10 @@ extern void StrategyInitialize(bool init);
 /* buf_table.c */
 extern Size BufTableShmemSize(int size);
 extern void InitBufTable(int size);
-extern int	BufTableLookup(BufferTag *tagPtr);
-extern int	BufTableInsert(BufferTag *tagPtr, int buf_id);
-extern void BufTableDelete(BufferTag *tagPtr);
+extern uint32 BufTableHashCode(BufferTag *tagPtr);
+extern int	BufTableLookup(BufferTag *tagPtr, uint32 hashcode);
+extern int	BufTableInsert(BufferTag *tagPtr, uint32 hashcode, int buf_id);
+extern void BufTableDelete(BufferTag *tagPtr, uint32 hashcode);
 
 /* localbuf.c */
 extern BufferDesc *LocalBufferAlloc(Relation reln, BlockNumber blockNum,

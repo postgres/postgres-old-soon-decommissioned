@@ -19,22 +19,14 @@
 #include "storage/shmem.h"
 
 
-/*
- * Number of partitions the shared lock tables are divided into.
- *
- * See LockTagToPartition() if you change this.
- */
-#define NUM_LOCK_PARTITIONS  16
+/* struct PGPROC is declared in proc.h, but must forward-reference it */
+typedef struct PGPROC PGPROC;
 
-/* originally in procq.h */
 typedef struct PROC_QUEUE
 {
 	SHM_QUEUE	links;			/* head of list of PGPROC objects */
 	int			size;			/* number of entries in list */
 } PROC_QUEUE;
-
-/* struct PGPROC is declared in proc.h, but must forward-reference it */
-typedef struct PGPROC PGPROC;
 
 /* GUC variables */
 extern int	max_locks_per_xact;

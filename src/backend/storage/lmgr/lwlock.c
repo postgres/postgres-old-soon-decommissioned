@@ -157,10 +157,7 @@ NumLWLocks(void)
 	 */
 
 	/* Predefined LWLocks */
-	numLocks = (int) FirstLockMgrLock;
-
-	/* lock.c gets the ones starting at FirstLockMgrLock */
-	numLocks += NUM_LOCK_PARTITIONS;
+	numLocks = (int) NumFixedLWLocks;
 
 	/* bufmgr.c needs two for each shared buffer */
 	numLocks += 2 * NBuffers;
@@ -239,11 +236,10 @@ CreateLWLocks(void)
 
 	/*
 	 * Initialize the dynamic-allocation counter, which is stored just before
-	 * the first LWLock.  The LWLocks used by lock.c are not dynamically
-	 * allocated, it just assumes it has them.
+	 * the first LWLock.
 	 */
 	LWLockCounter = (int *) ((char *) LWLockArray - 2 * sizeof(int));
-	LWLockCounter[0] = (int) FirstLockMgrLock + NUM_LOCK_PARTITIONS;
+	LWLockCounter[0] = (int) NumFixedLWLocks;
 	LWLockCounter[1] = numLocks;
 }
 
