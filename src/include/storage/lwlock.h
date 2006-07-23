@@ -24,7 +24,8 @@
 #define NUM_BUFFER_PARTITIONS  16
 
 /* Number of partitions the shared lock tables are divided into */
-#define NUM_LOCK_PARTITIONS  16
+#define LOG2_NUM_LOCK_PARTITIONS  4
+#define NUM_LOCK_PARTITIONS  (1 << LOG2_NUM_LOCK_PARTITIONS)
 
 /*
  * We have a number of predefined LWLocks, plus a bunch of LWLocks that are

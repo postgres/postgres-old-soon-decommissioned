@@ -480,7 +480,7 @@ FindLockCycleRecurse(PGPROC *checkProc,
 
 	while (proclock)
 	{
-		proc = (PGPROC *) MAKE_PTR(proclock->tag.proc);
+		proc = proclock->tag.myProc;
 
 		/* A proc never blocks itself */
 		if (proc != checkProc)

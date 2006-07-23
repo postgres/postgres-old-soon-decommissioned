@@ -152,7 +152,7 @@ pg_lock_status(PG_FUNCTION_ARGS)
 		 */
 		if (!granted)
 		{
-			if (proc->waitLock == (LOCK *) MAKE_PTR(proclock->tag.lock))
+			if (proc->waitLock == proclock->tag.myLock)
 			{
 				/* Yes, so report it with proper mode */
 				mode = proc->waitLockMode;
