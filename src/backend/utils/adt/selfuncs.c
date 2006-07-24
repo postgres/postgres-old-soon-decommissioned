@@ -4658,6 +4658,24 @@ genericcostestimate(PlannerInfo *root,
 	}
 
 	/*
+	 * A difficulty with the leaf-pages-only cost approach is that for
+	 * small selectivities (eg, single index tuple fetched) all indexes
+	 * will look equally attractive because we will estimate exactly 1
+	 * leaf page to be fetched.  All else being equal, we should prefer
+	 * physically smaller indexes over larger ones.  (An index might be
+	 * smaller because it is partial or because it contains fewer columns;
+	 * presumably the other columns in the larger index aren't useful to
+	 * the query, or the larger index would have better selectivity.)
+	 *
+	 * We can deal with this by adding a very small "fudge factor" that
+	 * depends on the index size.  The fudge factor used here is one
+	 * random_page_cost per 100000 index pages, which should be small
+	 * enough to not alter index-vs-seqscan decisions, but will prevent
+	 * indexes of different sizes from looking exactly equally attractive.
+	 */
+	*indexTotalCost += index->pages * random_page_cost / 100000.0;
+
+	/*
 	 * CPU cost: any complex expressions in the indexquals will need to be
 	 * evaluated once at the start of the scan to reduce them to runtime keys
 	 * to pass to the index AM (see nodeIndexscan.c).  We model the per-tuple
