@@ -1007,6 +1007,17 @@ su - postgres
        </listitem>
       </varlistentry>
 
+      <varlistentry>
+       <term><option>--enable-dtrace</option></term>
+       <listitem>
+        <para>
+         Compiles with support for the dynamic tracing tool DTrace.
+         Operating system support for DTrace is currently only
+         available in Solaris.
+        </para>
+       </listitem>
+      </varlistentry>
+
      </variablelist>
     </para>
 

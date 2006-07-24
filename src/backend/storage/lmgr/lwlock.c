@@ -420,6 +420,8 @@ LWLockAcquire(LWLockId lockid, LWLockMode mode)
 		block_counts[lockid]++;
 #endif
 
+		PG_TRACE2(lwlock__startwait, lockid, mode);
+
 		for (;;)
 		{
 			/* "false" means cannot accept cancel/die interrupt here. */
@@ -429,6 +431,8 @@ LWLockAcquire(LWLockId lockid, LWLockMode mode)
 			extraWaits++;
 		}
 
+		PG_TRACE2(lwlock__endwait, lockid, mode);
+
 		LOG_LWDEBUG("LWLockAcquire", lockid, "awakened");
 
 		/* Now loop back and try to acquire lock again. */
@@ -437,6 +441,8 @@ LWLockAcquire(LWLockId lockid, LWLockMode mode)
 
 	/* We are done updating shared state of the lock itself. */
 	SpinLockRelease(&lock->mutex);
+
+	PG_TRACE2(lwlock__acquire, lockid, mode);
 
 	/* Add lock to list of locks held by this backend */
 	held_lwlocks[num_held_lwlocks++] = lockid;
@@ -507,11 +513,13 @@ LWLockConditionalAcquire(LWLockId lockid, LWLockMode mode)
 		/* Failed to get lock, so release interrupt holdoff */
 		RESUME_INTERRUPTS();
 		LOG_LWDEBUG("LWLockConditionalAcquire", lockid, "failed");
+		PG_TRACE2(lwlock__condacquire__fail, lockid, mode);
 	}
 	else
 	{
 		/* Add lock to list of locks held by this backend */
 		held_lwlocks[num_held_lwlocks++] = lockid;
+		PG_TRACE2(lwlock__condacquire, lockid, mode);
 	}
 
 	return !mustwait;
@@ -595,6 +603,8 @@ LWLockRelease(LWLockId lockid)
 
 	/* We are done updating shared state of the lock itself. */
 	SpinLockRelease(&lock->mutex);
+
+	PG_TRACE1(lwlock__release, lockid);
 
 	/*
 	 * Awaken any waiters I removed from the queue.

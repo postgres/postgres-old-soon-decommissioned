@@ -206,6 +206,17 @@ PGAC_ARG_BOOL(enable, debug, no,
 AC_SUBST(enable_debug)
 
 #
+# DTrace
+#
+PGAC_ARG_BOOL(enable, dtrace, no,
+              [  --enable-dtrace         build with DTrace support],
+[AC_DEFINE([ENABLE_DTRACE], 1, 
+           [Define to 1 to enable DTrace support. (--enable-dtrace)])
+AC_CHECK_PROGS(DTRACE, dtrace)
+AC_SUBST(DTRACEFLAGS)])
+AC_SUBST(enable_dtrace)
+
+#
 # C compiler
 #
 

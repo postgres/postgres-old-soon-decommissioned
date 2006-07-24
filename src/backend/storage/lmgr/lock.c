@@ -796,7 +796,12 @@ LockAcquire(const LOCKTAG *locktag,
 		/*
 		 * Sleep till someone wakes me up.
 		 */
+
+		PG_TRACE2(lock__startwait, locktag->locktag_field2, lockmode);
+
 		WaitOnLock(locallock, owner);
+
+		PG_TRACE2(lock__endwait, locktag->locktag_field2, lockmode);
 
 		/*
 		 * NOTE: do not do any material change of state between here and

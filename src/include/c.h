@@ -56,6 +56,7 @@
 #include "pg_config_os.h"		/* must be before any system header files */
 #endif
 #include "postgres_ext.h"
+#include "pg_trace.h"
 
 #if defined(_MSC_VER) || defined(__BORLANDC__)
 #define	WIN32_ONLY_COMPILER
