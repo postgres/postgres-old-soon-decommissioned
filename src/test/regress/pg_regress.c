@@ -542,15 +542,6 @@ initialize_environment(void)
 			doputenv("PGUSER", user);
 
 		/*
-		 * On Windows, it seems to be necessary to adjust PATH even in
-		 * this case.  (XXX really?  If so, what if installation has
-		 * been relocated?)
-		 */
-#if defined(WIN32) || defined(CYGWIN)
-		add_to_path("PATH", ';', libdir);
-#endif
-
-		/*
 		 * Report what we're connecting to
 		 */
 		pghost = getenv("PGHOST");
