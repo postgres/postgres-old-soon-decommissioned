@@ -35,12 +35,14 @@ zic: $(ZICOBJS)
 
 install: all installdirs
 	./zic -d '$(DESTDIR)$(datadir)/timezone' $(TZDATAFILES)
+	$(MAKE) -C tznames $@
 
 installdirs:
 	$(mkinstalldirs) '$(DESTDIR)$(datadir)'
 
 uninstall:
 	rm -rf '$(DESTDIR)$(datadir)/timezone'
+	$(MAKE) -C tznames $@
 
 clean distclean maintainer-clean:
 	rm -f SUBSYS.o zic$(X) $(OBJS) $(ZICOBJS)

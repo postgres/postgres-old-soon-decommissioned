@@ -1564,8 +1564,9 @@ main(int argc, char *argv[])
 				 "ALTER DATABASE \"%s\" SET lc_messages TO 'C';"
 				 "ALTER DATABASE \"%s\" SET lc_monetary TO 'C';"
 				 "ALTER DATABASE \"%s\" SET lc_numeric TO 'C';"
-				 "ALTER DATABASE \"%s\" SET lc_time TO 'C';",
-				 dbname, dbname, dbname, dbname);
+				 "ALTER DATABASE \"%s\" SET lc_time TO 'C';"
+				 "ALTER DATABASE \"%s\" SET timezone_abbreviations TO 'Default';",
+				 dbname, dbname, dbname, dbname, dbname);
 
 	/*
 	 * Install any requested PL languages

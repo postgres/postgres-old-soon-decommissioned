@@ -3731,6 +3731,8 @@ DATA(insert OID = 2510 (  pg_prepared_statement PGNSP PGUID 12 f f t t s 0 2249 
 DESCR("get the prepared statements for this session");
 DATA(insert OID = 2511 (  pg_cursor PGNSP PGUID 12 f f t t s 0 2249 "" _null_ _null_ _null_ pg_cursor - _null_ ));
 DESCR("get the open cursors for this session");
+DATA(insert OID = 2599 (  pg_timezonenames PGNSP PGUID 12 f f t t s 0 2249 "" _null_ _null_ _null_ pg_timezonenames - _null_ ));
+DESCR("get the available time zone names");
 
 /* non-persistent series generator */
 DATA(insert OID = 1066 (  generate_series PGNSP PGUID 12 f f t t v 3 23 "23 23 23" _null_ _null_ _null_ generate_series_step_int4 - _null_ ));

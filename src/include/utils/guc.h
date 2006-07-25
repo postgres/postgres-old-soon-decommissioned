@@ -116,7 +116,6 @@ extern bool log_statement_stats;
 extern bool log_btree_build_stats;
 
 extern bool SQL_inheritance;
-extern bool Australian_timezones;
 
 extern bool default_with_oids;
 
@@ -219,9 +218,6 @@ extern void read_nondefault_variables(void);
  * having to include guc.h in some widely used headers that it really doesn't
  * belong in.
  */
-
-/* in utils/adt/datetime.c */
-extern bool ClearDateCache(bool newval, bool doit, GucSource source);
 
 /* in commands/tablespace.c */
 extern const char *assign_default_tablespace(const char *newval,
