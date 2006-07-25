@@ -437,7 +437,7 @@ initialize_environment(void)
 	unsetenv("LANG");
 	unsetenv("LANGUAGE");
 	/* On Windows the default locale may not be English, so force it */
-#if defined(WIN32) || defined(CYGWIN)
+#if defined(WIN32) || defined(__CYGWIN__)
 	putenv("LANG=en");
 #endif
 
@@ -513,7 +513,7 @@ initialize_environment(void)
 		 */
 		add_to_path("LD_LIBRARY_PATH", ':', libdir);
 		add_to_path("DYLD_LIBRARY_PATH", ':', libdir);
-#if defined(WIN32) || defined(CYGWIN)
+#if defined(WIN32) || defined(__CYGWIN__)
 		add_to_path("PATH", ';', libdir);
 #endif
 	}
