@@ -4,6 +4,8 @@
 #   a template for timezones you could need.  See the `Date/Time Support'
 #   appendix in the PostgreSQL documentation for more information.
 #
+# $PostgreSQL$
+#
 
 # Acre time is sometimes called Acre Standard Time (AST) which leads to a
 # conflict with AST (see below at AST)
