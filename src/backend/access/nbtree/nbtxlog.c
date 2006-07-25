@@ -346,6 +346,7 @@ btree_xlog_delete(XLogRecPtr lsn, XLogRecord *record)
 	Relation	reln;
 	Buffer		buffer;
 	Page		page;
+	BTPageOpaque opaque;
 
 	if (record->xl_info & XLR_BKP_BLOCK_1)
 		return;
@@ -373,6 +374,13 @@ btree_xlog_delete(XLogRecPtr lsn, XLogRecord *record)
 
 		PageIndexMultiDelete(page, unused, unend - unused);
 	}
+
+	/*
+	 * Mark the page as not containing any LP_DELETE items --- see comments
+	 * in _bt_delitems().
+	 */
+	opaque = (BTPageOpaque) PageGetSpecialPointer(page);
+	opaque->btpo_flags &= ~BTP_HAS_GARBAGE;
 
 	PageSetLSN(page, lsn);
 	PageSetTLI(page, ThisTimeLineID);

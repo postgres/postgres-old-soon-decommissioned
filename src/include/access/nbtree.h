@@ -71,6 +71,7 @@ typedef BTPageOpaqueData *BTPageOpaque;
 #define BTP_META		(1 << 3)	/* meta-page */
 #define BTP_HALF_DEAD	(1 << 4)	/* empty, but still in tree */
 #define BTP_SPLIT_END	(1 << 5)	/* rightmost page of split group */
+#define BTP_HAS_GARBAGE	(1 << 6)	/* page has LP_DELETEd tuples */
 
 
 /*
@@ -163,6 +164,7 @@ typedef struct BTMetaPageData
 #define P_ISROOT(opaque)		((opaque)->btpo_flags & BTP_ROOT)
 #define P_ISDELETED(opaque)		((opaque)->btpo_flags & BTP_DELETED)
 #define P_IGNORE(opaque)		((opaque)->btpo_flags & (BTP_DELETED|BTP_HALF_DEAD))
+#define P_HAS_GARBAGE(opaque)	((opaque)->btpo_flags & BTP_HAS_GARBAGE)
 
 /*
  *	Lehman and Yao's algorithm requires a ``high key'' on every non-rightmost

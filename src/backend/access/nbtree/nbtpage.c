@@ -668,6 +668,15 @@ _bt_delitems(Relation rel, Buffer buf,
 	opaque = (BTPageOpaque) PageGetSpecialPointer(page);
 	opaque->btpo_cycleid = 0;
 
+	/*
+	 * Mark the page as not containing any LP_DELETE items.  This is not
+	 * certainly true (there might be some that have recently been marked,
+	 * but weren't included in our target-item list), but it will almost
+	 * always be true and it doesn't seem worth an additional page scan
+	 * to check it.  Remember that BTP_HAS_GARBAGE is only a hint anyway.
+	 */
+	opaque->btpo_flags &= ~BTP_HAS_GARBAGE;
+
 	MarkBufferDirty(buf);
 
 	/* XLOG stuff */
