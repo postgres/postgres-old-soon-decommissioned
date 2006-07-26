@@ -1856,7 +1856,7 @@ archive_command = 'copy "%p" /mnt/server/archivedir/"%f"'  # Windows
      </varlistentry>
      
      <varlistentry id="guc-effective-cache-size" xreflabel="effective_cache_size">
-      <term><varname>effective_cache_size</varname> (<type>floating point</type>)</term>
+      <term><varname>effective_cache_size</varname> (<type>integer</type>)</term>
       <indexterm>
        <primary><varname>effective_cache_size</> configuration parameter</primary>
       </indexterm>
