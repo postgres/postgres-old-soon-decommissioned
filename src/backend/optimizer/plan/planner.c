@@ -1129,7 +1129,6 @@ preprocess_limit(PlannerInfo *root, double tuple_fraction,
 			else
 			{
 				*offset_est = DatumGetInt64(((Const *) est)->constvalue);
-
 				if (*offset_est < 0)
 					*offset_est = 0;	/* less than 0 is same as 0 */
 			}

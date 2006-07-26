@@ -463,6 +463,9 @@ typedef struct SetOp
 
 /* ----------------
  *		limit node
+ *
+ * Note: as of Postgres 8.2, the offset and count expressions are expected
+ * to yield int8, rather than int4 as before.
  * ----------------
  */
 typedef struct Limit
