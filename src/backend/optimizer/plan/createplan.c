@@ -2863,7 +2863,7 @@ make_setop(SetOpCmd cmd, Plan *lefttree,
  */
 Limit *
 make_limit(Plan *lefttree, Node *limitOffset, Node *limitCount,
-		   int offset_est, int count_est)
+		   int64 offset_est, int64 count_est)
 {
 	Limit	   *node = makeNode(Limit);
 	Plan	   *plan = &node->plan;

@@ -1090,7 +1090,7 @@ transformLimitClause(ParseState *pstate, Node *clause,
 
 	qual = transformExpr(pstate, clause);
 
-	qual = coerce_to_integer(pstate, qual, constructName);
+	qual = coerce_to_integer64(pstate, qual, constructName);
 
 	/*
 	 * LIMIT can't refer to any vars or aggregates of the current query; we
