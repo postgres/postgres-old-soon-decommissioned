@@ -5113,7 +5113,7 @@ _ShowOption(struct config_generic * record)
 				else if (*conf->variable && **conf->variable)
 					val = *conf->variable;
 				else
-					val = "unset";
+					val = "";
 			}
 			break;
 
