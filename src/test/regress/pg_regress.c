@@ -790,7 +790,7 @@ directory_exists(const char *dir)
 static void
 make_directory(const char *dir)
 {
-	if (mkdir(dir, S_IRWXU) < 0)
+	if (mkdir(dir, S_IRWXU | S_IRWXG | S_IRWXO) < 0)
 	{
 		fprintf(stderr, _("%s: could not create directory \"%s\": %s\n"),
 				progname, dir, strerror(errno));
