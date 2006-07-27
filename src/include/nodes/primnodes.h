@@ -184,9 +184,9 @@ typedef struct Aggref
 	Expr		xpr;
 	Oid			aggfnoid;		/* pg_proc Oid of the aggregate */
 	Oid			aggtype;		/* type Oid of result of the aggregate */
-	Expr	   *target;			/* expression we are aggregating on */
+	List	   *args;			/* arguments to the aggregate */
 	Index		agglevelsup;	/* > 0 if agg belongs to outer query */
-	bool		aggstar;		/* TRUE if argument was really '*' */
+	bool		aggstar;		/* TRUE if argument list was really '*' */
 	bool		aggdistinct;	/* TRUE if it's agg(DISTINCT ...) */
 } Aggref;
 

@@ -854,7 +854,7 @@ testdb=&gt;
         <listitem>
         <para>
         Lists all available aggregate functions, together with the data
-        type they operate on. If <replaceable
+        types they operate on. If <replaceable
         class="parameter">pattern</replaceable>
         is specified, only aggregates whose names match the pattern are shown.
         </para>

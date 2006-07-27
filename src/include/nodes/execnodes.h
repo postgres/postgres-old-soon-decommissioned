@@ -449,7 +449,7 @@ typedef struct GenericExprState
 typedef struct AggrefExprState
 {
 	ExprState	xprstate;
-	ExprState  *target;			/* state of my child node */
+	List	   *args;			/* states of argument expressions */
 	int			aggno;			/* ID number for agg within its plan node */
 } AggrefExprState;
 

@@ -147,8 +147,7 @@ typedef struct _funcInfo
 typedef struct _aggInfo
 {
 	FuncInfo	aggfn;
-	bool		anybasetype;	/* is the basetype "any"? */
-	char	   *fmtbasetype;	/* formatted type name */
+	/* we don't require any other fields at the moment */
 } AggInfo;
 
 typedef struct _oprInfo

@@ -3174,10 +3174,11 @@ ExecInitExpr(Expr *node, PlanState *parent)
 					aggstate->aggs = lcons(astate, aggstate->aggs);
 					naggs = ++aggstate->numaggs;
 
-					astate->target = ExecInitExpr(aggref->target, parent);
+					astate->args = (List *) ExecInitExpr((Expr *) aggref->args,
+														 parent);
 
 					/*
-					 * Complain if the aggregate's argument contains any
+					 * Complain if the aggregate's arguments contain any
 					 * aggregates; nested agg functions are semantically
 					 * nonsensical.  (This should have been caught earlier,
 					 * but we defend against it here anyway.)

@@ -7346,10 +7346,8 @@ func_expr:	func_name '(' ')'
 			| func_name '(' '*' ')'
 				{
 					/*
-					 * For now, we transform AGGREGATE(*) into AGGREGATE(1).
-					 *
-					 * This does the right thing for COUNT(*) (in fact,
-					 * any certainly-non-null expression would do for COUNT),
+					 * We consider AGGREGATE(*) to invoke a parameterless
+					 * aggregate.  This does the right thing for COUNT(*),
 					 * and there are no other aggregates in SQL92 that accept
 					 * '*' as parameter.
 					 *
@@ -7358,12 +7356,8 @@ func_expr:	func_name '(' ')'
 					 * really was.
 					 */
 					FuncCall *n = makeNode(FuncCall);
-					A_Const *star = makeNode(A_Const);
-
-					star->val.type = T_Integer;
-					star->val.val.ival = 1;
 					n->funcname = $1;
-					n->args = list_make1(star);
+					n->args = NIL;
 					n->agg_star = TRUE;
 					n->agg_distinct = FALSE;
 					n->location = @1;
