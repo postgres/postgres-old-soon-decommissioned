@@ -5483,6 +5483,12 @@
       <entry>current value of the parameter</entry>
      </row>
      <row>
+      <entry><structfield>unit</structfield></entry>
+      <entry><type>text</type></entry>
+      <entry></entry>
+      <entry>implicit unit of the parameter</entry>
+     </row>
+     <row>
       <entry><structfield>category</structfield></entry>
       <entry><type>text</type></entry>
       <entry></entry>
