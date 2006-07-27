@@ -14,11 +14,18 @@
 #include "access/gist.h"
 #include "access/skey.h"
 #include "lib/stringinfo.h"
+#include "utils/array.h"
 #include "utils/builtins.h"
 
 #include "cubedata.h"
 
 PG_MODULE_MAGIC;
+
+/*
+ * Taken from the intarray contrib header
+ */
+#define ARRPTR(x)  ( (double *) ARR_DATA_PTR(x) )
+#define ARRNELEMS(x)  ArrayGetNItems( ARR_NDIM(x), ARR_DIMS(x))
 
 extern int	cube_yyparse();
 extern void cube_yyerror(const char *message);
@@ -177,15 +184,6 @@ cube(PG_FUNCTION_ARGS)
 
 	PG_RETURN_DATUM (DirectFunctionCall1 (cube_in, PointerGetDatum(cstring)));
 }
-
-
-#include "utils/array.h"
-
-/*
-** Taken from the intarray contrib header
-*/
-#define ARRPTR(x)  ( (double *) ARR_DATA_PTR(x) )
-#define ARRNELEMS(x)  ArrayGetNItems( ARR_NDIM(x), ARR_DIMS(x))
 
 
 /*
@@ -1000,7 +998,7 @@ cube_cmp(PG_FUNCTION_ARGS)
 	a = (NDBOX *) PG_GETARG_POINTER(0);
 	b = (NDBOX *) PG_GETARG_POINTER(1);
 
-	PG_RETURN_INT16(cube_cmp_v0(a, b));
+	PG_RETURN_INT32(cube_cmp_v0(a, b));
 }
 
 
@@ -1285,7 +1283,7 @@ cube_dim(PG_FUNCTION_ARGS)
 
 	c = (NDBOX *) PG_GETARG_POINTER(0);
 
-	PG_RETURN_INT16 (c->dim);
+	PG_RETURN_INT32(c->dim);
 }
 
 /* Return a specific normalized LL coordinate */
