@@ -1421,9 +1421,29 @@ ECPGexecute(struct statement * stmt)
 				status = false;
 				break;
 			case PGRES_COPY_OUT:
-				ECPGlog("ECPGexecute line %d: Got PGRES_COPY_OUT ... tossing.\n", stmt->lineno);
-				PQendcopy(stmt->connection->connection);
-				break;
+				{
+					char *buffer;
+					int res;
+					ECPGlog("ECPGexecute line %d: Got PGRES_COPY_OUT\n", stmt->lineno);
+					while ((res = PQgetCopyData(stmt->connection->connection,
+										 &buffer, 0)) > 0)
+					{
+						printf("%s", buffer);
+						PQfreemem(buffer);
+					}
+					if (res == -1)
+					{
+						/* COPY done */
+						PQclear(results);
+						results = PQgetResult(stmt->connection->connection);
+						if (PQresultStatus(results) == PGRES_COMMAND_OK)
+							ECPGlog("ECPGexecute line %d: Got PGRES_COMMAND_OK after PGRES_COPY_OUT\n", stmt->lineno);
+						else
+							ECPGlog("ECPGexecute line %d: Got error after PGRES_COPY_OUT: %s", PQresultErrorMessage(results));
+					}
+					//PQendcopy(stmt->connection->connection);
+					break;
+				}
 			case PGRES_COPY_IN:
 				ECPGlog("ECPGexecute line %d: Got PGRES_COPY_IN ... tossing.\n", stmt->lineno);
 				PQendcopy(stmt->connection->connection);

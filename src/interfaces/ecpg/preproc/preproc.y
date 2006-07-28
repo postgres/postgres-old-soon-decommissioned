@@ -1194,16 +1194,16 @@ ColId_or_Sconst: ColId			{ $$ = $1; }
 		| StringConst			{ $$ = $1; }
 		;
 
-VariableShowStmt:  SHOW var_name
+VariableShowStmt:  SHOW var_name ecpg_into
 			{ $$ = cat2_str(make_str("show"), $2); }
-		| SHOW TIME ZONE
+		| SHOW TIME ZONE ecpg_into
 			{ $$ = make_str("show time zone"); }
-		| SHOW TRANSACTION ISOLATION LEVEL
+		| SHOW TRANSACTION ISOLATION LEVEL ecpg_into
 			{ $$ = make_str("show transaction isolation level"); }
-		| SHOW SESSION AUTHORIZATION
+		| SHOW SESSION AUTHORIZATION ecpg_into
 			{ $$ = make_str("show session authorization"); }
 		| SHOW ALL
-			{ $$ = make_str("show all"); }
+		   	{ mmerror(PARSE_ERROR, ET_ERROR, "SHOW ALL not implemented"); }
 		;
 
 VariableResetStmt:	RESET var_name
