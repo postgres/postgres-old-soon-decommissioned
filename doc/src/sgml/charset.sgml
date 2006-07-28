@@ -323,7 +323,7 @@ initdb --locale=sv_SE
     </para>
 
      <table id="charset-table">
-      <title>Server Character Sets</title>
+      <title><productname>PostgreSQL</productname> Character Sets</title>
       <tgroup cols="6">
        <thead>
         <row>
