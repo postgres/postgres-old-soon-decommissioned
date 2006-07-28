@@ -1441,7 +1441,6 @@ ECPGexecute(struct statement * stmt)
 						else
 							ECPGlog("ECPGexecute line %d: Got error after PGRES_COPY_OUT: %s", PQresultErrorMessage(results));
 					}
-					//PQendcopy(stmt->connection->connection);
 					break;
 				}
 			case PGRES_COPY_IN:
