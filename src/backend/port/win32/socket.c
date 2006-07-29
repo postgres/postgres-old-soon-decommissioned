@@ -106,6 +106,7 @@ int
 pgwin32_waitforsinglesocket(SOCKET s, int what)
 {
 	static HANDLE waitevent = INVALID_HANDLE_VALUE;
+	static SOCKET current_socket = -1;
 	HANDLE		events[2];
 	int			r;
 
@@ -121,6 +122,15 @@ pgwin32_waitforsinglesocket(SOCKET s, int what)
 		ereport(ERROR,
 				(errmsg_internal("Failed to reset socket waiting event: %i", (int) GetLastError())));
 
+	/*
+	 * make sure we don't multiplex this with a different socket 
+	 * from a previous call
+	 */
+
+	if (current_socket != s && current_socket != -1)
+		WSAEventSelect(current_socket, waitevent, 0);
+
+	current_socket = s;
 
 	if (WSAEventSelect(s, waitevent, what) == SOCKET_ERROR)
 	{
