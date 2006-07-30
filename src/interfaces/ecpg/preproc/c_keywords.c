@@ -3,7 +3,7 @@
  * keywords.c
  *	  lexical token lookup for reserved words in postgres embedded SQL
  *
- * $Header$
+ * $PostgreSQL$
  * §
  *-------------------------------------------------------------------------
  */
