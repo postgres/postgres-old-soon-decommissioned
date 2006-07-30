@@ -3,6 +3,8 @@
  * keywords.c
  *	  lexical token lookup for reserved words in postgres embedded SQL
  *
+ * $Header$
+ * §
  *-------------------------------------------------------------------------
  */
 #include "postgres_fe.h"

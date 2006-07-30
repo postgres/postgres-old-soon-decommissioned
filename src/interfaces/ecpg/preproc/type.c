@@ -1,3 +1,5 @@
+/* $Header$ */
+
 #include "postgres_fe.h"
 
 #include "extern.h"
