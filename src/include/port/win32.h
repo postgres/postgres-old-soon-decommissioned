@@ -109,12 +109,17 @@ int			semop(int semId, struct sembuf * sops, int flag);
 
 
 /*
- * Signal stuff
+ *	Signal stuff
+ *	WIN32 doesn't have wait(), so the return value for children
+ *	is simply the return value specified by the child, without
+ *	any additional information on whether the child terminated
+ *	on its own or via a signal.  These macros are also used
+ *	to interpret the return value of system().
  */
-#define WEXITSTATUS(w)	(((w) >> 8) & 0xff)
-#define WIFEXITED(w)	(((w) & 0xff) == 0)
-#define WIFSIGNALED(w)	(((w) & 0x7f) > 0 && (((w) & 0x7f) < 0x7f))
-#define WTERMSIG(w)		((w) & 0x7f)
+#define WEXITSTATUS(w)	(w)
+#define WIFEXITED(w)	(true)
+#define WIFSIGNALED(w)	(false)
+#define WTERMSIG(w)		(0)
 
 #define sigmask(sig) ( 1 << ((sig)-1) )
 
