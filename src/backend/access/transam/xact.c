@@ -1529,6 +1529,7 @@ CommitTransaction(void)
 		LWLockAcquire(ProcArrayLock, LW_EXCLUSIVE);
 		MyProc->xid = InvalidTransactionId;
 		MyProc->xmin = InvalidTransactionId;
+		MyProc->inVacuum = false;	/* must be cleared with xid/xmin */
 
 		/* Clear the subtransaction-XID cache too while holding the lock */
 		MyProc->subxids.nxids = 0;
@@ -1764,6 +1765,7 @@ PrepareTransaction(void)
 	LWLockAcquire(ProcArrayLock, LW_EXCLUSIVE);
 	MyProc->xid = InvalidTransactionId;
 	MyProc->xmin = InvalidTransactionId;
+	MyProc->inVacuum = false;	/* must be cleared with xid/xmin */
 
 	/* Clear the subtransaction-XID cache too while holding the lock */
 	MyProc->subxids.nxids = 0;
@@ -1927,6 +1929,7 @@ AbortTransaction(void)
 		LWLockAcquire(ProcArrayLock, LW_EXCLUSIVE);
 		MyProc->xid = InvalidTransactionId;
 		MyProc->xmin = InvalidTransactionId;
+		MyProc->inVacuum = false;	/* must be cleared with xid/xmin */
 
 		/* Clear the subtransaction-XID cache too while holding the lock */
 		MyProc->subxids.nxids = 0;

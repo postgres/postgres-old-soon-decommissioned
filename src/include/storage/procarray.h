@@ -24,7 +24,7 @@ extern void ProcArrayRemove(PGPROC *proc);
 
 extern bool TransactionIdIsInProgress(TransactionId xid);
 extern bool TransactionIdIsActive(TransactionId xid);
-extern TransactionId GetOldestXmin(bool allDbs);
+extern TransactionId GetOldestXmin(bool allDbs, bool ignoreVacuum);
 
 extern PGPROC *BackendPidGetProc(int pid);
 extern int	BackendXidGetPid(TransactionId xid);

@@ -5413,7 +5413,7 @@ CreateCheckPoint(bool shutdown, bool force)
 	 * StartupSUBTRANS hasn't been called yet.
 	 */
 	if (!InRecovery)
-		TruncateSUBTRANS(GetOldestXmin(true));
+		TruncateSUBTRANS(GetOldestXmin(true, false));
 
 	if (!shutdown)
 		ereport(DEBUG2,
