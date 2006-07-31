@@ -349,7 +349,6 @@ typedef struct LOCALLOCK
 	/* data */
 	LOCK	   *lock;			/* associated LOCK object in shared mem */
 	PROCLOCK   *proclock;		/* associated PROCLOCK object in shmem */
-	bool		isTempObject;	/* true if lock is on a temporary object */
 	uint32		hashcode;		/* copy of LOCKTAG's hash value */
 	int			nLocks;			/* total number of times lock is held */
 	int			numLockOwners;	/* # of relevant ResourceOwners */
@@ -405,7 +404,6 @@ extern void InitLocks(void);
 extern LockMethod GetLocksMethodTable(const LOCK *lock);
 extern uint32 LockTagHashCode(const LOCKTAG *locktag);
 extern LockAcquireResult LockAcquire(const LOCKTAG *locktag,
-			bool isTempObject,
 			LOCKMODE lockmode,
 			bool sessionLock,
 			bool dontWait);

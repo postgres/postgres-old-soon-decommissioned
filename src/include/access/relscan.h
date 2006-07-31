@@ -62,7 +62,6 @@ typedef struct IndexScanDescData
 	int			numberOfKeys;	/* number of scan keys */
 	ScanKey		keyData;		/* array of scan key descriptors */
 	bool		is_multiscan;	/* TRUE = using amgetmulti */
-	bool		have_lock;		/* TRUE = holding AccessShareLock for scan */
 
 	/* signaling to index AM about killing index tuples */
 	bool		kill_prior_tuple;		/* last-returned tuple is dead */

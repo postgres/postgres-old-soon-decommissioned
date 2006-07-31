@@ -36,7 +36,6 @@
 #include "utils/inval.h"
 #include "utils/lsyscache.h"
 #include "utils/memutils.h"
-#include "utils/relcache.h"
 #include "utils/syscache.h"
 
 
@@ -2986,7 +2985,6 @@ AfterTriggerSetState(ConstraintsSetStmt *stmt)
 				while (HeapTupleIsValid(htup = systable_getnext(tgscan)))
 				{
 					Form_pg_trigger pg_trigger = (Form_pg_trigger) GETSTRUCT(htup);
-					Relation constraintRel;
 					Oid constraintNamespaceId;
 
 					/*
@@ -3010,13 +3008,9 @@ AfterTriggerSetState(ConstraintsSetStmt *stmt)
 						pg_trigger->tgfoid == F_RI_FKEY_SETNULL_DEL ||
 						pg_trigger->tgfoid == F_RI_FKEY_SETDEFAULT_UPD ||
 						pg_trigger->tgfoid == F_RI_FKEY_SETDEFAULT_DEL)
-					{
-						constraintRel = RelationIdGetRelation(pg_trigger->tgconstrrelid);
-					} else {
-						constraintRel = RelationIdGetRelation(pg_trigger->tgrelid);
-					}
-					constraintNamespaceId = RelationGetNamespace(constraintRel);
-					RelationClose(constraintRel);
+						constraintNamespaceId = get_rel_namespace(pg_trigger->tgconstrrelid);
+					else
+						constraintNamespaceId = get_rel_namespace(pg_trigger->tgrelid);
 
 					/*
 					 * If this constraint is not in the schema we're

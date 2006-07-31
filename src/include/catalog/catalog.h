@@ -31,6 +31,8 @@ extern bool IsToastNamespace(Oid namespaceId);
 
 extern bool IsReservedName(const char *name);
 
+extern bool IsSharedRelation(Oid relationId);
+
 extern Oid	GetNewOid(Relation relation);
 extern Oid	GetNewOidWithIndex(Relation relation, Relation indexrel);
 extern Oid GetNewRelFileNode(Oid reltablespace, bool relisshared,

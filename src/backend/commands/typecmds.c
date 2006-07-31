@@ -1625,6 +1625,8 @@ get_rels_with_domain(Oid domainOid, LOCKMODE lockmode)
 	SysScanDesc depScan;
 	HeapTuple	depTup;
 
+	Assert(lockmode != NoLock);
+
 	/*
 	 * We scan pg_depend to find those things that depend on the domain. (We
 	 * assume we can ignore refobjsubid for a domain.)

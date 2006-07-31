@@ -21,13 +21,16 @@
 extern void RelationInitLockInfo(Relation relation);
 
 /* Lock a relation */
+extern void LockRelationOid(Oid relid, LOCKMODE lockmode);
+extern bool ConditionalLockRelationOid(Oid relid, LOCKMODE lockmode);
+extern void UnlockRelationId(LockRelId *relid, LOCKMODE lockmode);
+
 extern void LockRelation(Relation relation, LOCKMODE lockmode);
 extern bool ConditionalLockRelation(Relation relation, LOCKMODE lockmode);
 extern void UnlockRelation(Relation relation, LOCKMODE lockmode);
 
-extern void LockRelationForSession(LockRelId *relid, bool istemprel,
-					   LOCKMODE lockmode);
-extern void UnlockRelationForSession(LockRelId *relid, LOCKMODE lockmode);
+extern void LockRelationIdForSession(LockRelId *relid, LOCKMODE lockmode);
+extern void UnlockRelationIdForSession(LockRelId *relid, LOCKMODE lockmode);
 
 /* Lock a relation for extension */
 extern void LockRelationForExtension(Relation relation, LOCKMODE lockmode);
@@ -61,5 +64,8 @@ extern void LockSharedObject(Oid classid, Oid objid, uint16 objsubid,
 				 LOCKMODE lockmode);
 extern void UnlockSharedObject(Oid classid, Oid objid, uint16 objsubid,
 				   LOCKMODE lockmode);
+
+/* Knowledge about which locktags describe temp objects */
+extern bool LockTagIsTemp(const LOCKTAG *tag);
 
 #endif   /* LMGR_H */

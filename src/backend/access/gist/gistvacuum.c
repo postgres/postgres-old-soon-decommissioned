@@ -517,7 +517,7 @@ gistvacuumcleanup(PG_FUNCTION_ARGS)
 		GistVacuum	gv;
 		ArrayTuple	res;
 
-		LockRelation(rel, AccessExclusiveLock);
+		/* note: vacuum.c already acquired AccessExclusiveLock on index */
 
 		gv.index = rel;
 		initGISTstate(&(gv.giststate), rel);
@@ -543,8 +543,12 @@ gistvacuumcleanup(PG_FUNCTION_ARGS)
 				(errmsg("index \"%s\" needs VACUUM FULL or REINDEX to finish crash recovery",
 						RelationGetRelationName(rel))));
 
+	/*
+	 * If vacuum full, we already have exclusive lock on the index.
+	 * Otherwise, need lock unless it's local to this backend.
+	 */
 	if (info->vacuum_full)
-		needLock = false;		/* relation locked with AccessExclusiveLock */
+		needLock = false;
 	else
 		needLock = !RELATION_IS_LOCAL(rel);
 
@@ -612,9 +616,6 @@ gistvacuumcleanup(PG_FUNCTION_ARGS)
 	stats->std.num_pages = RelationGetNumberOfBlocks(rel);
 	if (needLock)
 		UnlockRelationForExtension(rel, ExclusiveLock);
-
-	if (info->vacuum_full)
-		UnlockRelation(rel, AccessExclusiveLock);
 
 	PG_RETURN_POINTER(stats);
 }

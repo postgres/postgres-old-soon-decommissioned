@@ -1239,12 +1239,13 @@ build_indices(void)
 		Relation	heap;
 		Relation	ind;
 
+		/* need not bother with locks during bootstrap */
 		heap = heap_open(ILHead->il_heap, NoLock);
-		ind = index_open(ILHead->il_ind);
+		ind = index_open(ILHead->il_ind, NoLock);
 
 		index_build(heap, ind, ILHead->il_info, false);
 
-		index_close(ind);
+		index_close(ind, NoLock);
 		heap_close(heap, NoLock);
 	}
 }

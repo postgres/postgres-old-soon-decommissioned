@@ -402,13 +402,6 @@
      </row>
 
      <row>
-      <entry><structfield>amconcurrent</structfield></entry>
-      <entry><type>bool</type></entry>
-      <entry></entry>
-      <entry>Does the access method support concurrent updates?</entry>
-     </row>
-
-     <row>
       <entry><structfield>amclusterable</structfield></entry>
       <entry><type>bool</type></entry>
       <entry></entry>

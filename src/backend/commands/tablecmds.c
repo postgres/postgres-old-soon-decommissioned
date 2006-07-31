@@ -5863,7 +5863,10 @@ ATExecSetTableSpace(Oid tableOid, Oid newTableSpace)
 	HeapTuple	tuple;
 	Form_pg_class rd_rel;
 
-	rel = relation_open(tableOid, NoLock);
+	/*
+	 * Need lock here in case we are recursing to toast table or index
+	 */
+	rel = relation_open(tableOid, AccessExclusiveLock);
 
 	/*
 	 * We can never allow moving of shared or nailed-in-cache relations,
