@@ -332,7 +332,6 @@ static const ScanKeyword ScanKeywords[] = {
 	{"time", TIME},
 	{"timestamp", TIMESTAMP},
 	{"to", TO},
-	{"toast", TOAST},
 	{"trailing", TRAILING},
 	{"transaction", TRANSACTION},
 	{"treat", TREAT},

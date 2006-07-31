@@ -20,6 +20,7 @@
 #include "access/xact.h"
 #include "catalog/catalog.h"
 #include "catalog/namespace.h"
+#include "catalog/toasting.h"
 #include "commands/alter.h"
 #include "commands/async.h"
 #include "commands/cluster.h"
@@ -526,7 +527,7 @@ ProcessUtility(Node *parsetree,
 				 * secondary relation too.
 				 */
 				CommandCounterIncrement();
-				AlterTableCreateToastTable(relOid, true);
+				AlterTableCreateToastTable(relOid);
 			}
 			break;
 

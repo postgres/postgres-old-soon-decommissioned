@@ -2009,8 +2009,8 @@ RelationTruncateIndexes(Oid heapId)
 		RelationTruncate(currentIndex, 0);
 
 		/* Initialize the index and rebuild */
-		/* Note: we do not need to re-establish pkey or toast settings */
-		index_build(heapRelation, currentIndex, indexInfo, false, false);
+		/* Note: we do not need to re-establish pkey setting */
+		index_build(heapRelation, currentIndex, indexInfo, false);
 
 		/* We're done with this index */
 		index_close(currentIndex);

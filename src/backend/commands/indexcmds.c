@@ -412,7 +412,7 @@ DefineIndex(RangeVar *heapRelation,
 
 	index_create(relationId, indexRelationName, indexRelationId,
 				 indexInfo, accessMethodId, tablespaceId, classObjectId,
-				 reloptions, primary, false, isconstraint,
+				 reloptions, primary, isconstraint,
 				 allowSystemTableMods, skip_build);
 }
 

@@ -28,8 +28,6 @@ extern void ATExecChangeOwner(Oid relationOid, Oid newOwnerId, bool recursing);
 
 extern void AlterTableInternal(Oid relid, List *cmds, bool recurse);
 
-extern void AlterTableCreateToastTable(Oid relOid, bool silent);
-
 extern void AlterTableNamespace(RangeVar *relation, const char *newschema);
 
 extern void AlterRelationNamespaceInternal(Relation classRel, Oid relOid,

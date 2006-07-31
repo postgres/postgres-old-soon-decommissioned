@@ -99,6 +99,7 @@ insert			{ return(INSERT_TUPLE); }
 "index"			{ return(INDEX); }
 "on"			{ return(ON); }
 "using"			{ return(USING); }
+"toast"			{ return(XTOAST); }
 
 {arrayid}		{
 					yylval.ival = EnterString(MapArrayTypeName((char*)yytext));

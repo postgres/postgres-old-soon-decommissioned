@@ -276,6 +276,28 @@ comment_level > 0 { next; }
 	print "declare unique index " iname " " oid " " data
 }
 
+/^DECLARE_TOAST\(/ {
+# ----
+#  end any prior catalog data insertions before starting a define toast
+# ----
+	if (reln_open == 1) {
+		print "close " catalog;
+		reln_open = 0;
+	}
+
+	data = substr($0, 15, length($0) - 15);
+	pos = index(data, ",");
+	tname = substr(data, 1, pos-1);
+	data = substr(data, pos+1, length(data)-pos);
+	pos = index(data, ",");
+	toastoid = substr(data, 1, pos-1);
+	data = substr(data, pos+1, length(data)-pos);
+	# previous commands already removed the trailing );
+	indexoid = data;
+
+	print "declare toast " toastoid " " indexoid " on " tname
+}
+
 /^BUILD_INDICES/	{ print "build indices"; }
 	
 # ----------------

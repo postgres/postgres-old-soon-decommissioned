@@ -26,8 +26,8 @@
 #include "catalog/index.h"
 #include "catalog/indexing.h"
 #include "catalog/namespace.h"
+#include "catalog/toasting.h"
 #include "commands/cluster.h"
-#include "commands/tablecmds.h"
 #include "miscadmin.h"
 #include "utils/acl.h"
 #include "utils/fmgroids.h"
@@ -620,7 +620,7 @@ make_new_heap(Oid OIDOldHeap, const char *NewName, Oid NewTableSpace)
 	 * AlterTableCreateToastTable ends with CommandCounterIncrement(), so that
 	 * the TOAST table will be visible for insertion.
 	 */
-	AlterTableCreateToastTable(OIDNewHeap, true);
+	AlterTableCreateToastTable(OIDNewHeap);
 
 	heap_close(OldHeap, NoLock);
 

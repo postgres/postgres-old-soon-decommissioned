@@ -422,7 +422,7 @@ static void doNegateFloat(Value *v);
 	SYSID SYSTEM_P
 
 	TABLE TABLESPACE TEMP TEMPLATE TEMPORARY THEN TIME TIMESTAMP
-	TO TOAST TRAILING TRANSACTION TREAT TRIGGER TRIM TRUE_P
+	TO TRAILING TRANSACTION TREAT TRIGGER TRIM TRUE_P
 	TRUNCATE TRUSTED TYPE_P
 
 	UNCOMMITTED UNENCRYPTED UNION UNIQUE UNKNOWN UNLISTEN UNTIL
@@ -1444,13 +1444,6 @@ alter_table_cmd:
 				{
 					AlterTableCmd *n = makeNode(AlterTableCmd);
 					n->subtype = AT_DropOids;
-					$$ = (Node *)n;
-				}
-			/* ALTER TABLE <name> CREATE TOAST TABLE -- ONLY */
-			| CREATE TOAST TABLE
-				{
-					AlterTableCmd *n = makeNode(AlterTableCmd);
-					n->subtype = AT_ToastTable;
 					$$ = (Node *)n;
 				}
 			/* ALTER TABLE <name> CLUSTER ON <indexname> */
@@ -8649,7 +8642,6 @@ unreserved_keyword:
 			| TEMP
 			| TEMPLATE
 			| TEMPORARY
-			| TOAST
 			| TRANSACTION
 			| TRIGGER
 			| TRUNCATE

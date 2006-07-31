@@ -854,7 +854,6 @@ typedef enum AlterTableType
 	AT_DropConstraintQuietly,	/* drop constraint, no error/warning (local in
 								 * commands/tablecmds.c) */
 	AT_AlterColumnType,			/* alter column type */
-	AT_ToastTable,				/* create toast table */
 	AT_ChangeOwner,				/* change owner */
 	AT_ClusterOn,				/* CLUSTER ON */
 	AT_DropCluster,				/* SET WITHOUT CLUSTER */
