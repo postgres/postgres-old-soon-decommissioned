@@ -1344,7 +1344,7 @@ main(int argc, char **argv)
 			exit(1);
 		}
 
-		memset(state + sizeof(*state), 0, sizeof(*state) * (nclients - 1));
+		memset(state + 1, 0, sizeof(*state) * (nclients - 1));
 
 		for (i = 1; i < nclients; i++)
 		{
