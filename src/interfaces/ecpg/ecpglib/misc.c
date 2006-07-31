@@ -246,7 +246,8 @@ ECPGlog(const char *format,...)
 
 	if (simple_debug)
 	{
-		char	   *f = (char *) malloc(strlen(format) + 100);
+		int             bufsize = strlen(format) + 100;
+		char		   *f = (char *) malloc(bufsize);
 
 		if (f == NULL)
 		{
@@ -256,11 +257,24 @@ ECPGlog(const char *format,...)
 			return;
 		}
 
-		sprintf(f, "[%d]: %s", (int) getpid(), format);
+		/*
+		 * regression tests set this environment variable to get the same
+		 * output for every run.
+		 */
+		if (getenv("ECPG_DONT_LOG_PID"))
+			snprintf(f, bufsize, "[NO_PID]: %s", format);
+		else
+			snprintf(f, bufsize, "[%d]: %s", (int) getpid(), format);
 
 		va_start(ap, format);
 		vfprintf(debugstream, f, ap);
 		va_end(ap);
+
+		/* dump out internal sqlca variables */
+		if (getenv("ECPG_DONT_LOG_PID"))
+			fprintf(debugstream, "[NO_PID]: sqlca: code: %ld, state: %s\n",
+					sqlca.sqlcode, sqlca.sqlstate);
+
 		fflush(debugstream);
 
 		ECPGfree(f);
