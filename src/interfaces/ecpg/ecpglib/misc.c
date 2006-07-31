@@ -239,6 +239,7 @@ void
 ECPGlog(const char *format,...)
 {
 	va_list		ap;
+	struct sqlca_t *sqlca = ECPGget_sqlca();
 
 #ifdef ENABLE_THREAD_SAFETY
 	pthread_mutex_lock(&debug_mutex);
@@ -273,7 +274,7 @@ ECPGlog(const char *format,...)
 		/* dump out internal sqlca variables */
 		if (getenv("ECPG_DONT_LOG_PID"))
 			fprintf(debugstream, "[NO_PID]: sqlca: code: %ld, state: %s\n",
-					sqlca.sqlcode, sqlca.sqlstate);
+					sqlca->sqlcode, sqlca->sqlstate);
 
 		fflush(debugstream);
 
