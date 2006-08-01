@@ -193,7 +193,7 @@ main(int argc, char **argv)
 {
 	PQExpBuffer query = createPQExpBuffer();
 	PGresult   *res;
-	objnameArg *this_obj_name = NULL;
+	objnameArg *this_obj_name, *schemaList_tail = NULL, *tableList_tail = NULL;
 	int			c;
 	const char *filename = NULL;
 	const char *format = "p";
@@ -301,8 +301,6 @@ main(int argc, char **argv)
 	while ((c = getopt_long(argc, argv, "abcCdDE:f:F:h:in:N:oOp:RsS:t:T:uU:vWxX:Z:",
 							long_options, &optindex)) != -1)
 	{
-		objnameArg *schemaList_tail = NULL, *tableList_tail = NULL;
-
 		switch (c)
 		{
 			case 'a':			/* Dump data only */
