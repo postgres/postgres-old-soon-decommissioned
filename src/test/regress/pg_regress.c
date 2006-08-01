@@ -921,7 +921,7 @@ results_differ(const char *testname)
 	if (strcmp(expectname, testname) != 0)
 	{
 		snprintf(expectfile, sizeof(expectfile), "%s/expected/%s.out",
-				 inputdir, testname, i);
+				 inputdir, testname);
 
 		snprintf(cmd, sizeof(cmd),
 				 SYSTEMQUOTE "diff %s \"%s\" \"%s\" > \"%s\"" SYSTEMQUOTE,
