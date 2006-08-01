@@ -278,6 +278,23 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 			_printTocEntry(AH, te, ropt, false, false);
 			defnDumped = true;
 
+			/* If we could not create a table, ignore the respective TABLE DATA if 
+			 * -X no-data-for-failed-tables is given */
+			if (ropt->noDataForFailedTables && AH->lastErrorTE == te && strcmp (te->desc, "TABLE") == 0) {
+				TocEntry *tes, *last;
+                                
+				ahlog (AH, 1, "table %s could not be created, will not restore its data\n", te->tag);
+
+				for (last = te, tes = te->next; tes != AH->toc; last = tes, tes = tes->next) {
+					if (strcmp (tes->desc, "TABLE DATA") == 0 && strcmp (tes->tag, te->tag) == 0 &&
+					    strcmp (tes->namespace ? tes->namespace : "", te->namespace ? te->namespace : "") == 0) {
+					    /* remove this node */
+					    last->next = tes->next;
+                                            break;
+					}
+				}
+			}
+
 			/* If we created a DB, connect to it... */
 			if (strcmp(te->desc, "DATABASE") == 0)
 			{

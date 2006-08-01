@@ -109,6 +109,7 @@ typedef struct _restoreOptions
 	char	   *pghost;
 	char	   *username;
 	int			ignoreVersion;
+	int			noDataForFailedTables;
 	int			requirePassword;
 	int			exit_on_error;
 
