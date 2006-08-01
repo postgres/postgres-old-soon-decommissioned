@@ -51,4 +51,11 @@ extern PGShmemHeader *PGSharedMemoryCreate(Size size, bool makePrivate,
 extern bool PGSharedMemoryIsInUse(unsigned long id1, unsigned long id2);
 extern void PGSharedMemoryDetach(void);
 
+
+extern void RegisterAddinContext(const char *name, Size size);
+extern Size AddinShmemSize(void);
+extern void InitAddinContexts(void * start);
+extern void *ShmemAllocFromContext(Size size, const char *name);
+extern void ShmemResetContext(const char *name);
+
 #endif   /* PG_SHMEM_H */

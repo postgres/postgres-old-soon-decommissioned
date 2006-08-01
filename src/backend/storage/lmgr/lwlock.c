@@ -29,6 +29,10 @@
 #include "storage/spin.h"
 
 
+static int NumAddinLWLocks(void);
+static void AssignAddinLWLocks(void);
+
+
 /* We use the ShmemLock spinlock to protect LWLockAssign */
 extern slock_t *ShmemLock;
 
@@ -89,6 +93,62 @@ static int *sh_acquire_counts;
 static int *ex_acquire_counts;
 static int *block_counts;
 #endif
+
+/* 
+ * Structures and globals to allow add-ins to register for their own
+ * lwlocks from the preload-libraries hook.
+ */
+typedef struct LWLockNode
+{
+	LWLockId *lock;
+	struct LWLockNode *next;
+} LWLockNode;
+
+static LWLockNode *addin_locks = NULL;
+static int num_addin_locks = 0;
+
+
+/*
+ *	RegisterAddinLWLock() --- Allow an andd-in to request a LWLock
+ *	                          from the preload-libraries hook.
+ */
+void
+RegisterAddinLWLock(LWLockId *lock)
+{
+	LWLockNode *locknode = malloc(sizeof(LWLockNode));
+
+	locknode->next = addin_locks;
+	locknode->lock = lock;
+
+	addin_locks = locknode;
+	num_addin_locks++;
+}
+
+/*
+ *	NumAddinLWLocks() --- Return the number of LWLocks requested by add-ins.
+ */
+int
+NumAddinLWLocks()
+{
+	return num_addin_locks;
+}
+
+/*
+ *	AssignAddinLWLocks() --- Assign LWLocks previously requested by add-ins.
+ */
+void
+AssignAddinLWLocks()
+{
+	LWLockNode *node = addin_locks;
+
+	while (node)
+	{
+		*(node->lock) = LWLockAssign();
+		node = node->next;
+	}
+}
+
+
 
 
 #ifdef LOCK_DEBUG
@@ -174,6 +234,9 @@ NumLWLocks(void)
 	/* Leave a few extra for use by user-defined modules. */
 	numLocks += NUM_USER_DEFINED_LWLOCKS;
 
+	/* Add the number that have been explicitly requested by add-ins. */
+	numLocks += NumAddinLWLocks();
+
 	return numLocks;
 }
 
@@ -241,6 +304,12 @@ CreateLWLocks(void)
 	LWLockCounter = (int *) ((char *) LWLockArray - 2 * sizeof(int));
 	LWLockCounter[0] = (int) NumFixedLWLocks;
 	LWLockCounter[1] = numLocks;
+
+	/* 
+	 * Allocate LWLocks for those add-ins that have explicitly requested
+	 * them.
+	 */
+	AssignAddinLWLocks();
 }
 
 

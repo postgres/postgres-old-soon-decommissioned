@@ -38,6 +38,11 @@ typedef unsigned long SHMEM_OFFSET;
 extern DLLIMPORT SHMEM_OFFSET ShmemBase;
 
 
+/* coerce an offset into a pointer in a specified address space.  This
+ * macro (only) is not confined to the primary shared memory region */
+#define MAKE_PTRFROM(base,xx_offs)\
+  (base+((unsigned long)(xx_offs)))
+
 /* coerce an offset into a pointer in this process's address space */
 #define MAKE_PTR(xx_offs)\
   (ShmemBase+((unsigned long)(xx_offs)))
