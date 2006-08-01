@@ -72,9 +72,7 @@ static int	strInArray(const char *pattern, char **arr, int arr_size);
  *	  Collect information about all potentially dumpable objects
  */
 TableInfo *
-getSchemaData(int *numTablesPtr,
-			  const bool schemaOnly,
-			  const bool dataOnly)
+getSchemaData(int *numTablesPtr)
 {
 	NamespaceInfo *nsinfo;
 	AggInfo    *agginfo;

@@ -340,9 +340,7 @@ extern char g_opaque_type[10];	/* name for the opaque type */
  *	common utility functions
  */
 
-extern TableInfo *getSchemaData(int *numTablesPtr,
-			  const bool schemaOnly,
-			  const bool dataOnly);
+extern TableInfo *getSchemaData(int *numTablesPtr);
 
 typedef enum _OidOptions
 {
