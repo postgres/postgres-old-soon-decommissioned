@@ -79,7 +79,7 @@ static struct _if_value
 
 %option yylineno
 
-%s C SQL incl def def_ident
+%s C SQL incl def def_ident undef 
 
 /*
  * OK, here is a short description of lex/flex rules behavior.
@@ -285,6 +285,7 @@ exec			[eE][xX][eE][cC]
 sql				[sS][qQ][lL]
 define			[dD][eE][fF][iI][nN][eE]
 include 		[iI][nN][cC][lL][uU][dD][eE]
+undef			[uU][nN][dD][eE][fF]
 
 ifdef			[iI][fF][dD][eE][fF]
 ifndef			[iI][fF][nN][dD][eE][fF]
@@ -837,7 +838,6 @@ cppline			{space}*#(.*\\{space})*.*{newline}
 <C>"->*"			{ return(S_MEMPOINT); }
 <C>".*"				{ return(S_DOTPOINT); }
 <C>{other}			{ return S_ANYTHING; }
-
 <C>{exec_sql}{define}{space}*	{ BEGIN(def_ident); }
 <C>{informix_special}{define}{space}*	{
 						/* are we simulating Informix? */
@@ -851,6 +851,55 @@ cppline			{space}*#(.*\\{space})*.*{newline}
 							return (S_ANYTHING);
 						}
 					}
+<C>{exec_sql}{undef}{space}*		{ BEGIN(undef); }
+<C>{informix_special}{undef}{space}* 	{
+						/* are we simulating Informix? */
+						if (INFORMIX_MODE)
+						{
+							BEGIN(undef);
+						}
+						else
+						{
+							yyless(1);
+							return (S_ANYTHING);
+						}
+					}
+<undef>{identifier}{space}*";" {
+					struct _defines *ptr, *ptr2 = NULL;
+					int i;
+
+					/*
+					 *	Skip the ";" and trailing whitespace. Note that yytext
+					 *	contains at least one non-space character plus the ";"
+					 */
+					for (i = strlen(yytext)-2;
+						 i > 0 && isspace((unsigned char) yytext[i]);
+						 i-- )
+						;
+					yytext[i+1] = '\0';
+
+
+					for (ptr = defines; ptr != NULL; ptr2 = ptr, ptr = ptr->next)
+					{
+						if (strcmp(yytext, ptr->old) == 0)
+						{
+							if (ptr2 == NULL)
+								defines = ptr->next;
+							else
+								ptr2->next = ptr->next;
+							free(ptr->new);
+							free(ptr->old);
+							free(ptr);
+							break;
+						}
+					}
+
+					BEGIN(C);
+				}
+<undef>{other}  		{
+		                	mmerror(PARSE_ERROR, ET_FATAL, "Missing identifier in 'EXEC SQL UNDEF' command");
+			                yyterminate();
+				}
 <C>{exec_sql}{include}{space}*	{ BEGIN(incl); }
 <C>{informix_special}{include}{space}* { 
 					  /* are we simulating Informix? */

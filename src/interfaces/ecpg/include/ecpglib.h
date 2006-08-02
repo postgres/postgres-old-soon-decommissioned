@@ -85,6 +85,10 @@ bool		ECPGdescribe(int, bool, const char *,...);
 /* dynamic result allocation */
 void		ECPGfree_auto_mem(void);
 
+#ifdef ENABLE_THREAD_SAFETY
+void		ecpg_pthreads_init();
+#endif
+
 #ifdef __cplusplus
 }
 #endif
