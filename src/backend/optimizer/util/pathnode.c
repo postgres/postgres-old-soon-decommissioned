@@ -1083,6 +1083,25 @@ create_functionscan_path(PlannerInfo *root, RelOptInfo *rel)
 }
 
 /*
+ * create_valuesscan_path
+ *	  Creates a path corresponding to a scan of a VALUES list,
+ *	  returning the pathnode.
+ */
+Path *
+create_valuesscan_path(PlannerInfo *root, RelOptInfo *rel)
+{
+	Path	   *pathnode = makeNode(Path);
+
+	pathnode->pathtype = T_ValuesScan;
+	pathnode->parent = rel;
+	pathnode->pathkeys = NIL;	/* result is always unordered */
+
+	cost_valuesscan(pathnode, root, rel);
+
+	return pathnode;
+}
+
+/*
  * create_nestloop_path
  *	  Creates a pathnode corresponding to a nestloop join between two
  *	  relations.

@@ -493,9 +493,9 @@ relation_excluded_by_constraints(RelOptInfo *rel, RangeTblEntry *rte)
  * For now, we don't apply the physical-tlist optimization when there are
  * dropped cols.
  *
- * We also support building a "physical" tlist for subqueries and functions,
- * since the same optimization can occur in SubqueryScan and FunctionScan
- * nodes.
+ * We also support building a "physical" tlist for subqueries, functions,
+ * and values lists, since the same optimization can occur in SubqueryScan,
+ * FunctionScan, and ValuesScan nodes.
  */
 List *
 build_physical_tlist(PlannerInfo *root, RelOptInfo *rel)
@@ -585,6 +585,21 @@ build_physical_tlist(PlannerInfo *root, RelOptInfo *rel)
 					tlist = NIL;
 					break;
 				}
+
+				tlist = lappend(tlist,
+								makeTargetEntry((Expr *) var,
+												var->varattno,
+												NULL,
+												false));
+			}
+			break;
+
+		case RTE_VALUES:
+			expandRTE(rte, varno, 0, false /* dropped not applicable */ ,
+					  NULL, &colvars);
+			foreach(l, colvars)
+			{
+				var = (Var *) lfirst(l);
 
 				tlist = lappend(tlist,
 								makeTargetEntry((Expr *) var,

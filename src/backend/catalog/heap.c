@@ -1841,7 +1841,7 @@ cookDefault(ParseState *pstate,
 	/*
 	 * Coerce the expression to the correct type and typmod, if given. This
 	 * should match the parser's processing of non-defaulted expressions ---
-	 * see updateTargetListEntry().
+	 * see transformAssignedExpr().
 	 */
 	if (OidIsValid(atttypid))
 	{

@@ -367,6 +367,22 @@ _copyFunctionScan(FunctionScan *from)
 }
 
 /*
+ * _copyValuesScan
+ */
+static ValuesScan *
+_copyValuesScan(ValuesScan *from)
+{
+	ValuesScan *newnode = makeNode(ValuesScan);
+
+	/*
+	 * copy node superclass fields
+	 */
+	CopyScanFields((Scan *) from, (Scan *) newnode);
+
+	return newnode;
+}
+
+/*
  * CopyJoinFields
  *
  *		This function copies the fields of the Join node.  It is used by
@@ -1356,6 +1372,7 @@ _copyRangeTblEntry(RangeTblEntry *from)
 	COPY_NODE_FIELD(funcexpr);
 	COPY_NODE_FIELD(funccoltypes);
 	COPY_NODE_FIELD(funccoltypmods);
+	COPY_NODE_FIELD(values_lists);
 	COPY_SCALAR_FIELD(jointype);
 	COPY_NODE_FIELD(joinaliasvars);
 	COPY_NODE_FIELD(alias);
@@ -1707,7 +1724,6 @@ _copyInsertStmt(InsertStmt *from)
 
 	COPY_NODE_FIELD(relation);
 	COPY_NODE_FIELD(cols);
-	COPY_NODE_FIELD(targetList);
 	COPY_NODE_FIELD(selectStmt);
 
 	return newnode;
@@ -1754,6 +1770,7 @@ _copySelectStmt(SelectStmt *from)
 	COPY_NODE_FIELD(whereClause);
 	COPY_NODE_FIELD(groupClause);
 	COPY_NODE_FIELD(havingClause);
+	COPY_NODE_FIELD(valuesLists);
 	COPY_NODE_FIELD(sortClause);
 	COPY_NODE_FIELD(limitOffset);
 	COPY_NODE_FIELD(limitCount);
@@ -2811,6 +2828,9 @@ copyObject(void *from)
 			break;
 		case T_FunctionScan:
 			retval = _copyFunctionScan(from);
+			break;
+		case T_ValuesScan:
+			retval = _copyValuesScan(from);
 			break;
 		case T_Join:
 			retval = _copyJoin(from);

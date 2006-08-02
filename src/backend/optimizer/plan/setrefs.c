@@ -186,6 +186,18 @@ set_plan_references(Plan *plan, List *rtable)
 				fix_expr_references(plan, rte->funcexpr);
 			}
 			break;
+		case T_ValuesScan:
+			{
+				RangeTblEntry *rte;
+
+				fix_expr_references(plan, (Node *) plan->targetlist);
+				fix_expr_references(plan, (Node *) plan->qual);
+				rte = rt_fetch(((ValuesScan *) plan)->scan.scanrelid,
+							   rtable);
+				Assert(rte->rtekind == RTE_VALUES);
+				fix_expr_references(plan, (Node *) rte->values_lists);
+			}
+			break;
 		case T_NestLoop:
 			set_join_references((Join *) plan, rtable);
 			fix_expr_references(plan, (Node *) plan->targetlist);
@@ -518,6 +530,12 @@ adjust_plan_varnos(Plan *plan, int rtoffset)
 			break;
 		case T_FunctionScan:
 			((FunctionScan *) plan)->scan.scanrelid += rtoffset;
+			adjust_expr_varnos((Node *) plan->targetlist, rtoffset);
+			adjust_expr_varnos((Node *) plan->qual, rtoffset);
+			/* rte was already fixed by set_subqueryscan_references */
+			break;
+		case T_ValuesScan:
+			((ValuesScan *) plan)->scan.scanrelid += rtoffset;
 			adjust_expr_varnos((Node *) plan->targetlist, rtoffset);
 			adjust_expr_varnos((Node *) plan->qual, rtoffset);
 			/* rte was already fixed by set_subqueryscan_references */

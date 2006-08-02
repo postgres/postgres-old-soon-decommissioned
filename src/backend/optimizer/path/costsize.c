@@ -775,6 +775,36 @@ cost_functionscan(Path *path, PlannerInfo *root, RelOptInfo *baserel)
 }
 
 /*
+ * cost_valuesscan
+ *	  Determines and returns the cost of scanning a VALUES RTE.
+ */
+void
+cost_valuesscan(Path *path, PlannerInfo *root, RelOptInfo *baserel)
+{
+	Cost		startup_cost = 0;
+	Cost		run_cost = 0;
+	Cost		cpu_per_tuple;
+
+	/* Should only be applied to base relations that are values lists */
+	Assert(baserel->relid > 0);
+	Assert(baserel->rtekind == RTE_VALUES);
+
+	/*
+	 * For now, estimate list evaluation cost at one operator eval per
+	 * list (probably pretty bogus, but is it worth being smarter?)
+	 */
+	cpu_per_tuple = cpu_operator_cost;
+
+	/* Add scanning CPU costs */
+	startup_cost += baserel->baserestrictcost.startup;
+	cpu_per_tuple += cpu_tuple_cost + baserel->baserestrictcost.per_tuple;
+	run_cost += cpu_per_tuple * baserel->tuples;
+
+	path->startup_cost = startup_cost;
+	path->total_cost = startup_cost + run_cost;
+}
+
+/*
  * cost_sort
  *	  Determines and returns the cost of sorting a relation, including
  *	  the cost of reading the input data.
@@ -2018,6 +2048,37 @@ set_function_size_estimates(PlannerInfo *root, RelOptInfo *rel)
 		rel->tuples = 1000;
 	else
 		rel->tuples = 1;
+
+	/* Now estimate number of output rows, etc */
+	set_baserel_size_estimates(root, rel);
+}
+
+/*
+ * set_values_size_estimates
+ *		Set the size estimates for a base relation that is a values list.
+ *
+ * The rel's targetlist and restrictinfo list must have been constructed
+ * already.
+ *
+ * We set the same fields as set_baserel_size_estimates.
+ */
+void
+set_values_size_estimates(PlannerInfo *root, RelOptInfo *rel)
+{
+	RangeTblEntry *rte;
+
+	/* Should only be applied to base relations that are values lists */
+	Assert(rel->relid > 0);
+	rte = rt_fetch(rel->relid, root->parse->rtable);
+	Assert(rte->rtekind == RTE_VALUES);
+
+	/*
+	 * Estimate number of rows the values list will return.
+	 * We know this precisely based on the list length (well,
+	 * barring set-returning functions in list items, but that's
+	 * a refinement not catered for anywhere else either).
+	 */
+	rel->tuples = list_length(rte->values_lists);
 
 	/* Now estimate number of output rows, etc */
 	set_baserel_size_estimates(root, rel);

@@ -258,7 +258,7 @@ transformArraySubscripts(ParseState *pstate,
 
 	/*
 	 * If doing an array store, coerce the source value to the right type.
-	 * (This should agree with the coercion done by updateTargetListEntry.)
+	 * (This should agree with the coercion done by transformAssignedExpr.)
 	 */
 	if (assignFrom != NULL)
 	{

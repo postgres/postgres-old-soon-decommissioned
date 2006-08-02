@@ -53,6 +53,7 @@ extern UniquePath *create_unique_path(PlannerInfo *root, RelOptInfo *rel,
 				   Path *subpath);
 extern Path *create_subqueryscan_path(RelOptInfo *rel, List *pathkeys);
 extern Path *create_functionscan_path(PlannerInfo *root, RelOptInfo *rel);
+extern Path *create_valuesscan_path(PlannerInfo *root, RelOptInfo *rel);
 
 extern NestPath *create_nestloop_path(PlannerInfo *root,
 					 RelOptInfo *joinrel,

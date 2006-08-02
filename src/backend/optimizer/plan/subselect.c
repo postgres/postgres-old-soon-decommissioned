@@ -1090,6 +1090,17 @@ finalize_plan(Plan *plan, List *rtable,
 			}
 			break;
 
+		case T_ValuesScan:
+			{
+				RangeTblEntry *rte;
+
+				rte = rt_fetch(((ValuesScan *) plan)->scan.scanrelid,
+							   rtable);
+				Assert(rte->rtekind == RTE_VALUES);
+				finalize_primnode((Node *) rte->values_lists, &context);
+			}
+			break;
+
 		case T_Append:
 			{
 				ListCell   *l;

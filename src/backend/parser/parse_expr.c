@@ -1281,56 +1281,9 @@ static Node *
 transformRowExpr(ParseState *pstate, RowExpr *r)
 {
 	RowExpr    *newr = makeNode(RowExpr);
-	List	   *newargs = NIL;
-	ListCell   *arg;
 
 	/* Transform the field expressions */
-	foreach(arg, r->args)
-	{
-		Node	   *e = (Node *) lfirst(arg);
-		Node	   *newe;
-
-		/*
-		 * Check for "something.*".  Depending on the complexity of the
-		 * "something", the star could appear as the last name in ColumnRef,
-		 * or as the last indirection item in A_Indirection.
-		 */
-		if (IsA(e, ColumnRef))
-		{
-			ColumnRef  *cref = (ColumnRef *) e;
-
-			if (strcmp(strVal(llast(cref->fields)), "*") == 0)
-			{
-				/* It is something.*, expand into multiple items */
-				newargs = list_concat(newargs,
-									  ExpandColumnRefStar(pstate, cref,
-														  false));
-				continue;
-			}
-		}
-		else if (IsA(e, A_Indirection))
-		{
-			A_Indirection *ind = (A_Indirection *) e;
-			Node	   *lastitem = llast(ind->indirection);
-
-			if (IsA(lastitem, String) &&
-				strcmp(strVal(lastitem), "*") == 0)
-			{
-				/* It is something.*, expand into multiple items */
-				newargs = list_concat(newargs,
-									  ExpandIndirectionStar(pstate, ind,
-															false));
-				continue;
-			}
-		}
-
-		/*
-		 * Not "something.*", so transform as a single expression
-		 */
-		newe = transformExpr(pstate, e);
-		newargs = lappend(newargs, newe);
-	}
-	newr->args = newargs;
+	newr->args = transformExpressionList(pstate, r->args);
 
 	/* Barring later casting, we consider the type RECORD */
 	newr->row_typeid = RECORDOID;
@@ -1525,6 +1478,15 @@ transformWholeRowRef(ParseState *pstate, char *schemaname, char *relname,
 										  -1,
 										  sublevels_up);
 			}
+			break;
+		case RTE_VALUES:
+			toid = RECORDOID;
+			/* returns composite; same as relation case */
+			result = (Node *) makeVar(vnum,
+									  InvalidAttrNumber,
+									  toid,
+									  -1,
+									  sublevels_up);
 			break;
 		default:
 

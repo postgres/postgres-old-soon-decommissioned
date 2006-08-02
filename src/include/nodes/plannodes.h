@@ -296,6 +296,16 @@ typedef struct FunctionScan
 	/* no other fields needed at present */
 } FunctionScan;
 
+/* ----------------
+ *		ValuesScan node
+ * ----------------
+ */
+typedef struct ValuesScan
+{
+	Scan		scan;
+	/* no other fields needed at present */
+} ValuesScan;
+
 /*
  * ==========
  * Join nodes

@@ -59,6 +59,10 @@ extern RangeTblEntry *addRangeTableEntryForFunction(ParseState *pstate,
 							  Node *funcexpr,
 							  RangeFunction *rangefunc,
 							  bool inFromCl);
+extern RangeTblEntry *addRangeTableEntryForValues(ParseState *pstate,
+							List *exprs,
+							Alias *alias,
+							bool inFromCl);
 extern RangeTblEntry *addRangeTableEntryForJoin(ParseState *pstate,
 						  List *colnames,
 						  JoinType jointype,

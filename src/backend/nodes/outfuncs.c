@@ -411,6 +411,14 @@ _outFunctionScan(StringInfo str, FunctionScan *node)
 }
 
 static void
+_outValuesScan(StringInfo str, ValuesScan *node)
+{
+	WRITE_NODE_TYPE("VALUESSCAN");
+
+	_outScanInfo(str, (Scan *) node);
+}
+
+static void
 _outJoin(StringInfo str, Join *node)
 {
 	WRITE_NODE_TYPE("JOIN");
@@ -1381,6 +1389,7 @@ _outSelectStmt(StringInfo str, SelectStmt *node)
 	WRITE_NODE_FIELD(whereClause);
 	WRITE_NODE_FIELD(groupClause);
 	WRITE_NODE_FIELD(havingClause);
+	WRITE_NODE_FIELD(valuesLists);
 	WRITE_NODE_FIELD(sortClause);
 	WRITE_NODE_FIELD(limitOffset);
 	WRITE_NODE_FIELD(limitCount);
@@ -1590,6 +1599,9 @@ _outRangeTblEntry(StringInfo str, RangeTblEntry *node)
 			WRITE_NODE_FIELD(funcexpr);
 			WRITE_NODE_FIELD(funccoltypes);
 			WRITE_NODE_FIELD(funccoltypmods);
+			break;
+		case RTE_VALUES:
+			WRITE_NODE_FIELD(values_lists);
 			break;
 		case RTE_JOIN:
 			WRITE_ENUM_FIELD(jointype, JoinType);
@@ -1875,6 +1887,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_FunctionScan:
 				_outFunctionScan(str, obj);
+				break;
+			case T_ValuesScan:
+				_outValuesScan(str, obj);
 				break;
 			case T_Join:
 				_outJoin(str, obj);

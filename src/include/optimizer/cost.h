@@ -70,6 +70,8 @@ extern void cost_tidscan(Path *path, PlannerInfo *root,
 extern void cost_subqueryscan(Path *path, RelOptInfo *baserel);
 extern void cost_functionscan(Path *path, PlannerInfo *root,
 				  RelOptInfo *baserel);
+extern void cost_valuesscan(Path *path, PlannerInfo *root,
+				  RelOptInfo *baserel);
 extern void cost_sort(Path *path, PlannerInfo *root,
 		  List *pathkeys, Cost input_cost, double tuples, int width);
 extern void cost_material(Path *path,
@@ -94,6 +96,7 @@ extern void set_joinrel_size_estimates(PlannerInfo *root, RelOptInfo *rel,
 						   JoinType jointype,
 						   List *restrictlist);
 extern void set_function_size_estimates(PlannerInfo *root, RelOptInfo *rel);
+extern void set_values_size_estimates(PlannerInfo *root, RelOptInfo *rel);
 
 /*
  * prototypes for clausesel.c

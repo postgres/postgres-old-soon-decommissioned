@@ -18,14 +18,16 @@
 
 
 extern List *transformTargetList(ParseState *pstate, List *targetlist);
+extern List *transformExpressionList(ParseState *pstate, List *exprlist);
 extern void markTargetListOrigins(ParseState *pstate, List *targetlist);
 extern TargetEntry *transformTargetEntry(ParseState *pstate,
 					 Node *node, Node *expr,
 					 char *colname, bool resjunk);
-extern List *ExpandColumnRefStar(ParseState *pstate, ColumnRef *cref,
-								 bool targetlist);
-extern List *ExpandIndirectionStar(ParseState *pstate, A_Indirection *ind,
-								   bool targetlist);
+extern Expr *transformAssignedExpr(ParseState *pstate, Expr *expr,
+					  char *colname,
+					  int attrno,
+					  List *indirection,
+					  int location);
 extern void updateTargetListEntry(ParseState *pstate, TargetEntry *tle,
 					  char *colname, int attrno,
 					  List *indirection,

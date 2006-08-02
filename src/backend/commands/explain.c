@@ -527,6 +527,9 @@ explain_outNode(StringInfo str,
 		case T_FunctionScan:
 			pname = "Function Scan";
 			break;
+		case T_ValuesScan:
+			pname = "Values Scan";
+			break;
 		case T_Material:
 			pname = "Materialize";
 			break;
@@ -666,6 +669,22 @@ explain_outNode(StringInfo str,
 									 quote_identifier(rte->eref->aliasname));
 			}
 			break;
+		case T_ValuesScan:
+			if (((Scan *) plan)->scanrelid > 0)
+			{
+				RangeTblEntry *rte = rt_fetch(((Scan *) plan)->scanrelid,
+											  es->rtable);
+				char	   *valsname;
+
+				/* Assert it's on a values rte */
+				Assert(rte->rtekind == RTE_VALUES);
+
+				valsname = rte->eref->aliasname;
+
+				appendStringInfo(str, " on %s",
+								 quote_identifier(valsname));
+			}
+			break;
 		default:
 			break;
 	}
@@ -728,6 +747,7 @@ explain_outNode(StringInfo str,
 		case T_SeqScan:
 		case T_SubqueryScan:
 		case T_FunctionScan:
+		case T_ValuesScan:
 			show_scan_qual(plan->qual,
 						   "Filter",
 						   ((Scan *) plan)->scanrelid,

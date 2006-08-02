@@ -902,6 +902,9 @@ _readRangeTblEntry(void)
 			READ_NODE_FIELD(funccoltypes);
 			READ_NODE_FIELD(funccoltypmods);
 			break;
+		case RTE_VALUES:
+			READ_NODE_FIELD(values_lists);
+			break;
 		case RTE_JOIN:
 			READ_ENUM_FIELD(jointype, JoinType);
 			READ_NODE_FIELD(joinaliasvars);

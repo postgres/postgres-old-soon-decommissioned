@@ -96,8 +96,13 @@ build_simple_rel(PlannerInfo *root, int relid, RelOptKind reloptkind)
 			break;
 		case RTE_SUBQUERY:
 		case RTE_FUNCTION:
-			/* Subquery or function --- set up attr range and arrays */
-			/* Note: 0 is included in range to support whole-row Vars */
+		case RTE_VALUES:
+			/*
+			 * Subquery, function, or values list --- set up attr range
+			 * and arrays
+			 *
+			 * Note: 0 is included in range to support whole-row Vars
+			 */
 			rel->min_attr = 0;
 			rel->max_attr = list_length(rte->eref->colnames);
 			rel->attr_needed = (Relids *)

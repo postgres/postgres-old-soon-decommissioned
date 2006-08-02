@@ -1041,6 +1041,27 @@ typedef struct FunctionScanState
 	ExprState  *funcexpr;
 } FunctionScanState;
 
+/* ----------------
+ *	 ValuesScanState information
+ *
+ *		Values nodes are used to scan the results of a
+ *		values list appearing in FROM or INSERT
+ *
+ *		exprlists			array of expression lists being evaluated
+ *		array_len			size of array
+ *		curr_idx			current array index (0-based)
+ *		marked_idx			marked position (for mark/restore)
+ * ----------------
+ */
+typedef struct ValuesScanState
+{
+	ScanState	ss;				/* its first field is NodeTag */
+	List	  **exprlists;
+	int			array_len;
+	int			curr_idx;
+	int			marked_idx;
+} ValuesScanState;
+
 /* ----------------------------------------------------------------
  *				 Join State Information
  * ----------------------------------------------------------------
