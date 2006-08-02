@@ -745,7 +745,7 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt,
 		 * construct to ensure that the values would be available while
 		 * evaluating the VALUES RTE.  This is a shame.  FIXME
 		 */
-		if (pstate->p_rtable != NIL &&
+		if (list_length(pstate->p_rtable) != 1 &&
 			contain_vars_of_level((Node *) exprsLists, 0))
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
