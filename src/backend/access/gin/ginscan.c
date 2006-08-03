@@ -15,6 +15,7 @@
 #include "postgres.h"
 #include "access/genam.h"
 #include "access/gin.h"
+#include "pgstat.h"
 #include "utils/memutils.h"
 
 
@@ -155,6 +156,8 @@ newScanKey( IndexScanDesc scan ) {
 
 	if ( so->nkeys == 0 )
 		elog(ERROR, "Gin doesn't support full scan due to it's awful inefficiency");
+
+	pgstat_count_index_scan(&scan->xs_pgstat_info);
 }
 
 Datum
