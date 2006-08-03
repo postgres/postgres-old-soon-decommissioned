@@ -1,5 +1,3 @@
-/* $PostgreSQL$ */
-
 #include "stdlib.h"
 
 static void
