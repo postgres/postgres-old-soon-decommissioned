@@ -2090,11 +2090,18 @@ AfterTriggerExecute(AfterTriggerEvent event,
 	/*
 	 * Fetch the required OLD and NEW tuples.
 	 */
+	LocTriggerData.tg_trigtuple = NULL;
+	LocTriggerData.tg_newtuple = NULL;
+	LocTriggerData.tg_trigtuplebuf = InvalidBuffer;
+	LocTriggerData.tg_newtuplebuf = InvalidBuffer;
+
 	if (ItemPointerIsValid(&(event->ate_oldctid)))
 	{
 		ItemPointerCopy(&(event->ate_oldctid), &(oldtuple.t_self));
 		if (!heap_fetch(rel, SnapshotAny, &oldtuple, &oldbuffer, false, NULL))
 			elog(ERROR, "failed to fetch old tuple for AFTER trigger");
+		LocTriggerData.tg_trigtuple = &oldtuple;
+		LocTriggerData.tg_trigtuplebuf = oldbuffer;
 	}
 
 	if (ItemPointerIsValid(&(event->ate_newctid)))
@@ -2102,39 +2109,25 @@ AfterTriggerExecute(AfterTriggerEvent event,
 		ItemPointerCopy(&(event->ate_newctid), &(newtuple.t_self));
 		if (!heap_fetch(rel, SnapshotAny, &newtuple, &newbuffer, false, NULL))
 			elog(ERROR, "failed to fetch new tuple for AFTER trigger");
+		if (LocTriggerData.tg_trigtuple != NULL)
+		{
+			LocTriggerData.tg_newtuple = &newtuple;
+			LocTriggerData.tg_newtuplebuf = newbuffer;
+		}
+		else
+		{
+			LocTriggerData.tg_trigtuple = &newtuple;
+			LocTriggerData.tg_trigtuplebuf = newbuffer;
+		}
 	}
 
 	/*
-	 * Setup the trigger information
+	 * Setup the remaining trigger information
 	 */
 	LocTriggerData.type = T_TriggerData;
 	LocTriggerData.tg_event =
 		event->ate_event & (TRIGGER_EVENT_OPMASK | TRIGGER_EVENT_ROW);
 	LocTriggerData.tg_relation = rel;
-
-	switch (event->ate_event & TRIGGER_EVENT_OPMASK)
-	{
-		case TRIGGER_EVENT_INSERT:
-			LocTriggerData.tg_trigtuple = &newtuple;
-			LocTriggerData.tg_newtuple = NULL;
-			LocTriggerData.tg_trigtuplebuf = newbuffer;
-			LocTriggerData.tg_newtuplebuf = InvalidBuffer;
-			break;
-
-		case TRIGGER_EVENT_UPDATE:
-			LocTriggerData.tg_trigtuple = &oldtuple;
-			LocTriggerData.tg_newtuple = &newtuple;
-			LocTriggerData.tg_trigtuplebuf = oldbuffer;
-			LocTriggerData.tg_newtuplebuf = newbuffer;
-			break;
-
-		case TRIGGER_EVENT_DELETE:
-			LocTriggerData.tg_trigtuple = &oldtuple;
-			LocTriggerData.tg_newtuple = NULL;
-			LocTriggerData.tg_trigtuplebuf = oldbuffer;
-			LocTriggerData.tg_newtuplebuf = InvalidBuffer;
-			break;
-	}
 
 	MemoryContextReset(per_tuple_context);
 
