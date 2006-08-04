@@ -127,7 +127,7 @@ RegisterAddinLWLock(LWLockId *lock)
 /*
  *	NumAddinLWLocks() --- Return the number of LWLocks requested by add-ins.
  */
-int
+static int
 NumAddinLWLocks()
 {
 	return num_addin_locks;
@@ -136,7 +136,7 @@ NumAddinLWLocks()
 /*
  *	AssignAddinLWLocks() --- Assign LWLocks previously requested by add-ins.
  */
-void
+static void
 AssignAddinLWLocks()
 {
 	LWLockNode *node = addin_locks;
