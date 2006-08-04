@@ -34,7 +34,7 @@
   <para>
    The other main category of maintenance task is periodic <quote>vacuuming</>
    of the database.  This activity is discussed in
-   <xref linkend="routine-vacuuming">.  Closely related to this is to update
+   <xref linkend="routine-vacuuming">.  Closely related to this updating
    the statistics that will be used by the query planner, as discussed in
    <xref linkend="vacuum-for-statistics">.
   </para>
