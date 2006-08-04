@@ -224,6 +224,7 @@ extern void end_tup_output(TupOutputState *tstate);
 extern EState *CreateExecutorState(void);
 extern void FreeExecutorState(EState *estate);
 extern ExprContext *CreateExprContext(EState *estate);
+extern ExprContext *CreateStandaloneExprContext(void);
 extern void FreeExprContext(ExprContext *econtext);
 extern void ReScanExprContext(ExprContext *econtext);
 

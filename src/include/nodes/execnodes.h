@@ -118,7 +118,7 @@ typedef struct ExprContext
 	Datum		domainValue_datum;
 	bool		domainValue_isNull;
 
-	/* Link to containing EState */
+	/* Link to containing EState (NULL if a standalone ExprContext) */
 	struct EState *ecxt_estate;
 
 	/* Functions to call back when ExprContext is shut down */
