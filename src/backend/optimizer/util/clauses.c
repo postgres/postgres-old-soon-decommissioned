@@ -2092,6 +2092,58 @@ eval_const_expressions_mutator(Node *node,
 		newfselect->resulttypmod = fselect->resulttypmod;
 		return (Node *) newfselect;
 	}
+	if (IsA(node, BooleanTest))
+	{
+		BooleanTest *btest = (BooleanTest *) node;
+		BooleanTest *newbtest;
+		Node	   *arg;
+
+		arg = eval_const_expressions_mutator((Node *) btest->arg,
+											 context);
+		if (arg && IsA(arg, Const))
+		{
+			Const  *carg = (Const *) arg;
+			bool	result;
+
+			switch (btest->booltesttype)
+			{
+				case IS_TRUE:
+					result = (!carg->constisnull &&
+							  DatumGetBool(carg->constvalue));
+					break;
+				case IS_NOT_TRUE:
+					result = (carg->constisnull ||
+							  !DatumGetBool(carg->constvalue));
+					break;
+				case IS_FALSE:
+					result = (!carg->constisnull &&
+							  !DatumGetBool(carg->constvalue));
+					break;
+				case IS_NOT_FALSE:
+					result = (carg->constisnull ||
+							  DatumGetBool(carg->constvalue));
+					break;
+				case IS_UNKNOWN:
+					result = carg->constisnull;
+					break;
+				case IS_NOT_UNKNOWN:
+					result = !carg->constisnull;
+					break;
+				default:
+					elog(ERROR, "unrecognized booltesttype: %d",
+						 (int) btest->booltesttype);
+					result = false;	/* keep compiler quiet */
+					break;
+			}
+
+			return makeBoolConst(result, false);
+		}
+
+		newbtest = makeNode(BooleanTest);
+		newbtest->arg = (Expr *) arg;
+		newbtest->booltesttype = btest->booltesttype;
+		return (Node *) newbtest;
+	}
 
 	/*
 	 * For any node type not handled above, we recurse using
