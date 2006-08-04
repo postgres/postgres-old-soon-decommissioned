@@ -973,6 +973,7 @@ PQsendQueryGuts(PGconn *conn,
 		pqPuts("", conn) < 0 ||
 		pqPuts(stmtName, conn) < 0)
 		goto sendFailed;
+
 	if (nParams > 0 && paramFormats)
 	{
 		if (pqPutInt(nParams, 2, conn) < 0)
@@ -988,8 +989,10 @@ PQsendQueryGuts(PGconn *conn,
 		if (pqPutInt(0, 2, conn) < 0)
 			goto sendFailed;
 	}
+
 	if (pqPutInt(nParams, 2, conn) < 0)
 		goto sendFailed;
+
 	for (i = 0; i < nParams; i++)
 	{
 		if (paramValues && paramValues[i])
