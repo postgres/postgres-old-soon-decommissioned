@@ -249,7 +249,7 @@ ECPGget_desc(int lineno, const char *desc_name, int index,...)
 				data_var.ind_varcharsize = varcharsize;
 				data_var.ind_arrsize = arrsize;
 				data_var.ind_offset = offset;
-				if ((data_var.ind_arrsize == 0 || data_var.ind_varcharsize == 0) && data_var.ind_pointer != NULL)
+				if (data_var.ind_arrsize == 0 || data_var.ind_varcharsize == 0)
 					data_var.ind_value = *((void **) (data_var.ind_pointer));
 				else
 					data_var.ind_value = data_var.ind_pointer;
