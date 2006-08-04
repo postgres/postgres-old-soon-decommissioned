@@ -38,7 +38,7 @@
 #include <signal.h>
 #endif
 
-#ifdef WIN32_CLIENT_ONLY
+#ifdef WIN32_ONLY_COMPILER
 typedef int ssize_t;			/* ssize_t doesn't exist in VC (at least not
 								 * VC6) */
 #endif
