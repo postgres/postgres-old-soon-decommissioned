@@ -35,9 +35,7 @@ clean distclean maintainer-clean:
 	$(MAKE) -C compat_informix $@
 	$(MAKE) -C complex $@
 	$(MAKE) -C thread $@
-	rm -f results/*.stdout results/*.stderr results/*.c
-	rm -rf tmp_check/
-	rm -f log/*.log
+	rm -rf tmp_check results log
 	rm -f pg_regress.inc.sh regression.diff
 
 all: pg_regress.sh
