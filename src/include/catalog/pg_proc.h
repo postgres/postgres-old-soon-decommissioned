@@ -3101,6 +3101,14 @@ DATA(insert OID = 2172 ( pg_start_backup		PGNSP PGUID 12 f f t f v 1 25 "25" _nu
 DESCR("Prepare for taking an online backup");
 DATA(insert OID = 2173 ( pg_stop_backup			PGNSP PGUID 12 f f t f v 0 25 "" _null_ _null_ _null_ pg_stop_backup - _null_ ));
 DESCR("Finish taking an online backup");
+DATA(insert OID = 2848 ( pg_switch_xlog			PGNSP PGUID 12 f f t f v 0 25 "" _null_ _null_ _null_ pg_switch_xlog - _null_ ));
+DESCR("Switch to new xlog file");
+DATA(insert OID = 2849 ( pg_current_xlog_location	PGNSP PGUID 12 f f t f v 0 25 "" _null_ _null_ _null_ pg_current_xlog_location - _null_ ));
+DESCR("current xlog location");
+DATA(insert OID = 2850 ( pg_xlogfile_name_offset	PGNSP PGUID 12 f f t f i 1 25 "25" _null_ _null_ _null_ pg_xlogfile_name_offset - _null_ ));
+DESCR("xlog filename and byte offset, given an xlog location");
+DATA(insert OID = 2851 ( pg_xlogfile_name			PGNSP PGUID 12 f f t f i 1 25 "25" _null_ _null_ _null_ pg_xlogfile_name - _null_ ));
+DESCR("xlog filename, given an xlog location");
 
 DATA(insert OID = 2621 ( pg_reload_conf			PGNSP PGUID 12 f f t f v 0 16 "" _null_ _null_ _null_ pg_reload_conf - _null_ ));
 DESCR("Reload configuration files");
