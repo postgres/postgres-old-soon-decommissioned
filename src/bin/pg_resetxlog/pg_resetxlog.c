@@ -578,6 +578,8 @@ RewriteControlFile(void)
 	ControlFile.checkPoint = ControlFile.checkPointCopy.redo;
 	ControlFile.prevCheckPoint.xlogid = 0;
 	ControlFile.prevCheckPoint.xrecoff = 0;
+	ControlFile.minRecoveryPoint.xlogid = 0;
+	ControlFile.minRecoveryPoint.xrecoff = 0;
 
 	/* Contents are protected with a CRC */
 	INIT_CRC32(ControlFile.crc);

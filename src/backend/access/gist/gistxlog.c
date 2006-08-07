@@ -818,6 +818,14 @@ gist_xlog_cleanup(void)
 	MemoryContextDelete(insertCtx);
 }
 
+bool
+gist_safe_restartpoint(void)
+{
+	if (incomplete_inserts)
+		return false;
+	return true;
+}
+
 
 XLogRecData *
 formSplitRdata(RelFileNode node, BlockNumber blkno, bool page_is_leaf,

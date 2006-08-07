@@ -22,7 +22,7 @@
 
 
 /* Version identifier for this pg_control format */
-#define PG_CONTROL_VERSION	820
+#define PG_CONTROL_VERSION	821
 
 /*
  * Body of CheckPoint XLOG records.  This is declared here because we keep
@@ -56,7 +56,8 @@ typedef enum DBState
 	DB_STARTUP = 0,
 	DB_SHUTDOWNED,
 	DB_SHUTDOWNING,
-	DB_IN_RECOVERY,
+	DB_IN_CRASH_RECOVERY,
+	DB_IN_ARCHIVE_RECOVERY,
 	DB_IN_PRODUCTION
 } DBState;
 
@@ -106,6 +107,8 @@ typedef struct ControlFileData
 	XLogRecPtr	prevCheckPoint; /* previous check point record ptr */
 
 	CheckPoint	checkPointCopy; /* copy of last check point record */
+
+	XLogRecPtr	minRecoveryPoint;	/* must replay xlog to here */
 
 	/*
 	 * This data is used to check for hardware-architecture compatibility of

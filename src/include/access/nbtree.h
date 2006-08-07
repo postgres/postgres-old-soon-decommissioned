@@ -545,5 +545,6 @@ extern void btree_redo(XLogRecPtr lsn, XLogRecord *record);
 extern void btree_desc(StringInfo buf, uint8 xl_info, char *rec);
 extern void btree_xlog_startup(void);
 extern void btree_xlog_cleanup(void);
+extern bool btree_safe_restartpoint(void);
 
 #endif   /* NBTREE_H */

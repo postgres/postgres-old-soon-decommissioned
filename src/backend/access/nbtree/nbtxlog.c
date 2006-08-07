@@ -794,3 +794,11 @@ btree_xlog_cleanup(void)
 	}
 	incomplete_splits = NIL;
 }
+
+bool
+btree_safe_restartpoint(void)
+{
+	if (incomplete_splits)
+		return false;
+	return true;
+}

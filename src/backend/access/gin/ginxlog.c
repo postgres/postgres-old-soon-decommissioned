@@ -528,7 +528,8 @@ gin_xlog_cleanup(void) {
 
 	topCtx = MemoryContextSwitchTo(opCtx);
 
-	foreach(l, incomplete_splits) {
+	foreach(l, incomplete_splits)
+	{
 		ginIncompleteSplit *split = (ginIncompleteSplit *) lfirst(l);
 		ginContinueSplit( split );
 		MemoryContextReset( opCtx );
@@ -538,3 +539,10 @@ gin_xlog_cleanup(void) {
 	MemoryContextDelete(opCtx);
 }
 
+bool
+gin_safe_restartpoint(void)
+{
+	if (incomplete_splits)
+		return false;
+	return true;
+}
