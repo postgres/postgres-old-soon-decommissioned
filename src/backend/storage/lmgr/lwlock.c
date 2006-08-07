@@ -25,6 +25,7 @@
 #include "access/multixact.h"
 #include "access/subtrans.h"
 #include "miscadmin.h"
+#include "storage/ipc.h"
 #include "storage/proc.h"
 #include "storage/spin.h"
 
