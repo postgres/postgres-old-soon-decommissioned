@@ -919,6 +919,7 @@ SPI_cursor_open(const char *name, void *plan,
 	 * Set up the portal.
 	 */
 	PortalDefineQuery(portal,
+					  NULL,
 					  spiplan->query,
 					  "SELECT", /* don't have the raw parse tree... */
 					  list_make1(queryTree),

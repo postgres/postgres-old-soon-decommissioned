@@ -201,6 +201,7 @@ ExecuteQuery(ExecuteStmt *stmt, ParamListInfo params,
 	}
 
 	PortalDefineQuery(portal,
+					  NULL,
 					  query_string,
 					  entry->commandTag,
 					  query_list,

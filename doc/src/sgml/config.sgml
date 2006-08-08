@@ -2808,7 +2808,11 @@ SELECT * FROM parent WHERE key = 2400;
         <literal>UPDATE</>, <literal>DELETE</>, <literal>TRUNCATE</>,
         and <literal>COPY FROM</>. <literal>PREPARE</> and
         <literal>EXPLAIN ANALYZE</> statements are also logged if their
-        contained command is of an appropriate type.
+        contained command is of an appropriate type.  Protocol-level
+        prepare, bind, and execute commands are logged only if
+        <varname>log_statement</> is <literal>all</>.  Bind parameter 
+        values are also logged if they are supplied in <literal>text</>
+        format.
        </para>
        <para>
         The default is <literal>none</>. Only superusers can change this

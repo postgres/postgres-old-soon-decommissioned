@@ -244,6 +244,7 @@ CreateNewPortal(void)
  */
 void
 PortalDefineQuery(Portal portal,
+				  const char *prepStmtName,
 				  const char *sourceText,
 				  const char *commandTag,
 				  List *parseTrees,
@@ -257,6 +258,7 @@ PortalDefineQuery(Portal portal,
 
 	Assert(commandTag != NULL || parseTrees == NIL);
 
+	portal->prepStmtName = prepStmtName;
 	portal->sourceText = sourceText;
 	portal->commandTag = commandTag;
 	portal->parseTrees = parseTrees;

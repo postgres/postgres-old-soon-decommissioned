@@ -100,6 +100,7 @@ typedef struct PortalData
 {
 	/* Bookkeeping data */
 	const char *name;			/* portal's name */
+	const char *prepStmtName;	/* protocol prepare name */
 	MemoryContext heap;			/* subsidiary memory for portal */
 	ResourceOwner resowner;		/* resources owned by portal */
 	void		(*cleanup) (Portal portal);		/* cleanup hook */
@@ -202,6 +203,7 @@ extern void PortalDrop(Portal portal, bool isTopCommit);
 extern void DropDependentPortals(MemoryContext queryContext);
 extern Portal GetPortalByName(const char *name);
 extern void PortalDefineQuery(Portal portal,
+				  const char *prepStmtName,
 				  const char *sourceText,
 				  const char *commandTag,
 				  List *parseTrees,
