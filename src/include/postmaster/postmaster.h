@@ -25,7 +25,6 @@ extern char *ListenAddresses;
 extern bool ClientAuthInProgress;
 extern int	PreAuthDelay;
 extern int	AuthenticationTimeout;
-extern char *preload_libraries_string;
 extern bool Log_connections;
 extern bool log_hostname;
 extern char *bonjour_name;

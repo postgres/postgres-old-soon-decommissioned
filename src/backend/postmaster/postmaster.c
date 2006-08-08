@@ -197,9 +197,6 @@ bool		Db_user_namespace = false;
 
 char	   *bonjour_name;
 
-/* list of library:init-function to be preloaded */
-char	   *preload_libraries_string = NULL;
-
 /* PIDs of special child processes; 0 when not running */
 static pid_t StartupPID = 0,
 			BgWriterPID = 0,
@@ -710,11 +707,9 @@ PostmasterMain(int argc, char *argv[])
 #endif
 
 	/*
-	 * process any libraries that should be preloaded and optionally
-	 * pre-initialized
+	 * process any libraries that should be preloaded at postmaster start
 	 */
-	if (preload_libraries_string)
-		process_preload_libraries(preload_libraries_string);
+	process_preload_libraries();
 
 	/*
 	 * Remove old temporary files.	At this point there can be no other
