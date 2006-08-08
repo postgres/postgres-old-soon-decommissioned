@@ -40,5 +40,5 @@ CLEAN:
 
 DISTCLEAN: CLEAN
    cd include
-   del config.h
+   del pg_config.h pg_config_os.h
    cd ..
