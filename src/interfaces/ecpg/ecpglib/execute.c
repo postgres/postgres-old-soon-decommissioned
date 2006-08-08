@@ -421,9 +421,6 @@ ECPGstore_result(const PGresult *results, int act_field,
 						len += strlen(PQgetvalue(results, act_tuple, act_field)) + 1;
 					len *= var->offset; /* should be 1, but YMNK */
 					len += (ntuples + 1) * sizeof(char *);
-
-					ECPGlog("ECPGstore_result: line %d: allocating %d bytes for %d tuples (char**=0)",
-							stmt->lineno, len, ntuples);
 				}
 				else
 				{
@@ -447,6 +444,7 @@ ECPGstore_result(const PGresult *results, int act_field,
 				len = var->offset * ntuples;
 				break;
 		}
+		ECPGlog("ECPGstore_result: line %d: allocating memory for %d tuples\n", stmt->lineno, ntuples);
 		var->value = (char *) ECPGalloc(len, stmt->lineno);
 		if (!var->value)
 			return false;
