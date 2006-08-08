@@ -60,11 +60,9 @@
 
 #if defined(_MSC_VER) || defined(__BORLANDC__)
 #define	WIN32_ONLY_COMPILER
-#define errcode __vc_errcode
 #if defined(__BORLANDC__) || (_MSC_VER > 1400)
 #include <crtdefs.h>
 #endif
-#undef errcode
 #endif
 
 #include <stdio.h>
