@@ -16,6 +16,8 @@
 #include "pgtypes_timestamp.h"
 #include "pgtypes_interval.h"
 
+static enum { NOT_CHECKED, REGRESS, NORMAL } ECPG_regression_mode = NOT_CHECKED;
+
 static bool
 garbage_left(enum ARRAY_TYPE isarray, char *scan_length, enum COMPAT_MODE compat)
 {
@@ -49,8 +51,32 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 	int	binary = PQfformat(results, act_field);
 	int 	size = PQgetlength(results, act_tuple, act_field);
 	int	value_for_indicator = 0;
+	long	log_offset;
 
-	ECPGlog("ECPGget_data line %d: RESULT: %s offset: %ld array: %s\n", lineno, pval ? (binary ? "BINARY" : pval) : "EMPTY", offset, isarray ? "Yes" : "No");
+	/*
+	 * use a global variable to see if the environment variable
+	 * ECPG_REGRESSION is set or not. Remember the state in order to avoid
+	 * subsequent calls to getenv() for this purpose.
+	 */
+	if (ECPG_regression_mode == NOT_CHECKED)
+	{
+		if (getenv("ECPG_REGRESSION"))
+			ECPG_regression_mode = REGRESS;
+		else 
+			ECPG_regression_mode = NORMAL;
+	}
+
+	/*
+	 * If we are running in a regression test, do not log the offset
+	 * variable, it depends on the machine's alignment.
+	 */
+	if (ECPG_regression_mode == REGRESS)
+		log_offset = -1;
+	else
+		log_offset = offset;
+
+	ECPGlog("ECPGget_data line %d: RESULT: %s offset: %ld array: %s\n", lineno, pval ? (binary ? "BINARY" : pval) : "EMPTY", log_offset, isarray ? "Yes" : "No");
+
 	/* We will have to decode the value */
 
 	/*
