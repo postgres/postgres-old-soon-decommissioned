@@ -36,7 +36,7 @@ clean distclean maintainer-clean:
 	$(MAKE) -C complex $@
 	$(MAKE) -C thread $@
 	rm -rf tmp_check results log
-	rm -f pg_regress.inc.sh regression.diff
+	rm -f pg_regress.inc.sh regression.diffs
 
 all: pg_regress.sh
 
