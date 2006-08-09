@@ -139,6 +139,18 @@ PGTYPESnumeric_new(void)
 	return var;
 }
 
+decimal *
+PGTYPESdecimal_new(void)
+{
+	decimal    *var;
+	if ((var = (decimal *) pgtypes_alloc(sizeof(decimal))) == NULL)
+		return NULL;
+
+	memset(var, 0, sizeof(decimal));
+
+	return var;
+}
+
 /* ----------
  * set_var_from_str()
  *
@@ -422,6 +434,12 @@ void
 PGTYPESnumeric_free(numeric *var)
 {
 	digitbuf_free(var->buf);
+	free(var);
+}
+
+void
+PGTYPESdecimal_free(decimal *var)
+{
 	free(var);
 }
 
@@ -1461,12 +1479,13 @@ PGTYPESnumeric_from_double(double d, numeric *dst)
 }
 
 static int
-numericvar_to_double_no_overflow(numeric *var, double *dp)
+numericvar_to_double(numeric *var, double *dp)
 {
 	char	   *tmp;
 	double		val;
 	char	   *endptr;
 	numeric	   *varcopy = PGTYPESnumeric_new();
+	int i;
 
 	if (PGTYPESnumeric_copy(var, varcopy) < 0)
 		return -1;
@@ -1474,6 +1493,11 @@ numericvar_to_double_no_overflow(numeric *var, double *dp)
 		return -1;
 	PGTYPESnumeric_free(varcopy);
 
+	/*
+	 * strtod seems to not reset errno to 0 in case of success.
+	 * at least on aome architectures
+	 */
+	errno = 0;
 	val = strtod(tmp, &endptr);
 	if (errno == ERANGE)
 	{
@@ -1501,7 +1525,7 @@ PGTYPESnumeric_to_double(numeric *nv, double *dp)
 	double		tmp;
 	int			i;
 
-	if ((i = numericvar_to_double_no_overflow(nv, &tmp)) != 0)
+	if ((i = numericvar_to_double(nv, &tmp)) != 0)
 		return -1;
 	*dp = tmp;
 	return 0;

@@ -41,7 +41,9 @@ extern		"C"
 #endif
 
 numeric    *PGTYPESnumeric_new(void);
+decimal    *PGTYPESdecimal_new(void);
 void		PGTYPESnumeric_free(numeric *);
+void		PGTYPESdecimal_free(decimal *);
 numeric    *PGTYPESnumeric_from_asc(char *, char **);
 char	   *PGTYPESnumeric_to_asc(numeric *, int);
 int			PGTYPESnumeric_add(numeric *, numeric *, numeric *);
