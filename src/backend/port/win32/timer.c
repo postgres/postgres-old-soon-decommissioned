@@ -56,7 +56,8 @@ pg_timer_thread(LPVOID param)
 				timerCommArea.value.it_value.tv_usec == 0)
 				waittime = INFINITE;	/* Cancel the interrupt */
 			else
-				waittime = timerCommArea.value.it_value.tv_usec / 10 + timerCommArea.value.it_value.tv_sec * 1000;
+				/* WaitForSingleObjectEx() uses milliseconds */
+				waittime = timerCommArea.value.it_value.tv_usec / 1000 + timerCommArea.value.it_value.tv_sec * 1000;
 			ResetEvent(timerCommArea.event);
 			LeaveCriticalSection(&timerCommArea.crit_sec);
 		}
