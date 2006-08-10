@@ -813,6 +813,10 @@ recurse_pushdown_safe(Node *setOp, Query *topquery,
  * Compare tlist's datatypes against the list of set-operation result types.
  * For any items that are different, mark the appropriate element of
  * differentTypes[] to show that this column will have type conversions.
+ *
+ * We don't have to care about typmods here: the only allowed difference
+ * between set-op input and output typmods is input is a specific typmod
+ * and output is -1, and that does not require a coercion.
  */
 static void
 compare_tlist_datatypes(List *tlist, List *colTypes,

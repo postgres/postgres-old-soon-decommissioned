@@ -245,6 +245,7 @@ _readSetOperationStmt(void)
 	READ_NODE_FIELD(larg);
 	READ_NODE_FIELD(rarg);
 	READ_NODE_FIELD(colTypes);
+	READ_NODE_FIELD(colTypmods);
 
 	READ_DONE();
 }

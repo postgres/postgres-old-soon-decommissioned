@@ -716,6 +716,7 @@ is_simple_union_all_recurse(Node *setOp, Query *setOpQuery, List *colTypes)
 		Assert(subquery != NULL);
 
 		/* Leaf nodes are OK if they match the toplevel column types */
+		/* We don't have to compare typmods here */
 		return tlist_same_datatypes(subquery->targetList, colTypes, true);
 	}
 	else if (IsA(setOp, SetOperationStmt))

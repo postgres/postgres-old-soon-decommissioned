@@ -769,7 +769,8 @@ typedef struct SetOperationStmt
 	/* Eventually add fields for CORRESPONDING spec here */
 
 	/* Fields derived during parse analysis: */
-	List	   *colTypes;		/* list of OIDs of output column types */
+	List	   *colTypes;		/* OID list of output column type OIDs */
+	List	   *colTypmods;		/* integer list of output column typmods */
 } SetOperationStmt;
 
 

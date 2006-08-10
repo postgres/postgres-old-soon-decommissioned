@@ -152,6 +152,10 @@ plan_set_operations(PlannerInfo *root, double tuple_fraction,
  * flag: if >= 0, add a resjunk output column indicating value of flag
  * refnames_tlist: targetlist to take column names from
  * *sortClauses: receives list of SortClauses for result plan, if any
+ *
+ * We don't have to care about typmods here: the only allowed difference
+ * between set-op input and output typmods is input is a specific typmod
+ * and output is -1, and that does not require a coercion.
  */
 static Plan *
 recurse_set_operations(Node *setOp, PlannerInfo *root,

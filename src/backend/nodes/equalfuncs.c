@@ -743,6 +743,7 @@ _equalSetOperationStmt(SetOperationStmt *a, SetOperationStmt *b)
 	COMPARE_NODE_FIELD(larg);
 	COMPARE_NODE_FIELD(rarg);
 	COMPARE_NODE_FIELD(colTypes);
+	COMPARE_NODE_FIELD(colTypmods);
 
 	return true;
 }
