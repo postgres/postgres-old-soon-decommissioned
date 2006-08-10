@@ -259,9 +259,6 @@ extern void _dosmaperr(unsigned long);
 typedef long ssize_t;
 typedef unsigned short mode_t;
 
-#define inline __inline
-#define __inline__ __inline
-
 #undef errcode
 #define errcode __vc_errcode
 
