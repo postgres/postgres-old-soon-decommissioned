@@ -740,6 +740,17 @@ typedef NameData *Name;
 #define PG_BINARY_W "w"
 #endif
 
+#ifdef MSVC
+/*
+ *	Certain "standard edition" versions of MSVC throw a warning
+ *	that later generates an error for "inline" statements, but
+ *	__inline seems to work.  e.g.  Microsoft Visual C++ .NET
+ *	Version 7.1.3088
+ */
+#define inline __inline
+#define __inline__ __inline
+#endif
+
 #if defined(sun) && defined(__sparc__) && !defined(__SVR4)
 #include <unistd.h>
 #endif
