@@ -181,6 +181,17 @@ typedef long key_t;
 typedef int pid_t;
 #endif
 
+#ifdef MSVC
+/*
+ *	Certain "standard edition" versions of MSVC throw a warning
+ *	that later generates an error for "inline" statements, but
+ *	__inline seems to work.  e.g.  Microsoft Visual C++ .NET
+ *	Version 7.1.3088
+ */
+#define inline __inline
+#define __inline__ __inline
+#endif
+
 /*
  * Supplement to <sys/stat.h>.
  */
