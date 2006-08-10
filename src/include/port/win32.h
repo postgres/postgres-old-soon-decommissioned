@@ -259,6 +259,15 @@ extern void _dosmaperr(unsigned long);
 typedef long ssize_t;
 typedef unsigned short mode_t;
 
+/*
+ *	Certain "standard edition" versions of MSVC throw a warning
+ *	that later generates an error for "inline" statements, but
+ *	__inline seems to work.  e.g.  Microsoft Visual C++ .NET
+ *	Version 7.1.3088
+ */
+#define inline __inline
+#define __inline__ __inline
+
 #undef errcode
 #define errcode __vc_errcode
 
