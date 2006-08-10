@@ -1094,11 +1094,11 @@ exec_simple_query(const char *query_string)
 			if (was_logged)
 				ereport(LOG,
 						(errmsg("duration: %ld.%03d ms",
-								secs, msecs)));
+								secs * 1000 + msecs, usecs % 1000)));
 			else
 				ereport(LOG,
 						(errmsg("duration: %ld.%03d ms  statement: %s%s",
-								secs, msecs,
+								secs * 1000 + msecs, usecs % 1000,
 								query_string,
 								prepare_string ? prepare_string : "")));
 		}
@@ -1855,11 +1855,11 @@ exec_execute_message(const char *portal_name, long max_rows)
 			if (log_statement == LOGSTMT_ALL)	/* already logged? */
 				ereport(LOG,
 						(errmsg("duration: %ld.%03d ms",
-								secs, msecs)));
+								secs * 1000 + msecs, usecs % 1000)));
 			else
 				ereport(LOG,
 						(errmsg("duration: %ld.%03d ms  execute %s%s%s%s:  %s",
-								secs, msecs,
+								secs * 1000 + msecs, usecs % 1000,
 								execute_is_fetch ? "fetch from " : "",
 								portal->prepStmtName ? portal->prepStmtName : "<unnamed>",
 								*portal->name ? "/" : "",
