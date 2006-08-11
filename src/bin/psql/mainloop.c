@@ -44,7 +44,7 @@ MainLoop(FILE *source)
 	/* Save the prior command source */
 	FILE	   *prev_cmd_source;
 	bool		prev_cmd_interactive;
-	unsigned int prev_lineno;
+	uint64		prev_lineno;
 
 	/* Save old settings */
 	prev_cmd_source = pset.cur_cmd_source;

@@ -188,7 +188,7 @@ psql_error(const char *fmt,...)
 		fflush(pset.queryFout);
 
 	if (pset.inputfile)
-		fprintf(stderr, "%s:%s:%u: ", pset.progname, pset.inputfile, pset.lineno);
+		fprintf(stderr, "%s:%s:" UINT64_FORMAT ": ", pset.progname, pset.inputfile, pset.lineno);
 	va_start(ap, fmt);
 	vfprintf(stderr, _(fmt), ap);
 	va_end(ap);

@@ -50,7 +50,7 @@ typedef struct _psqlSettings
 	char	   *inputfile;		/* for error reporting */
 	char	   *dirname;		/* current directory for \s display */
 
-	unsigned	lineno;			/* also for error reporting */
+	uint64		lineno;			/* also for error reporting */
 
 	bool		timing;			/* enable timing of all queries */
 
