@@ -27,7 +27,7 @@ m4_define([_m4_divert(PGAC_ARGS)],     5432)
 # This is the base layer. TYPE is either "with" or "enable", depending
 # on what you like. NAME is the rest of the option name, HELP-STRING
 # as usual. ACTION-IF-YES is executed if the option is given without
-# and argument (or "yes", which is the same); similar for ACTION-IF-NO.
+# an argument (or "yes", which is the same); similar for ACTION-IF-NO.
 
 AC_DEFUN([PGAC_ARG],
 [
