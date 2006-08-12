@@ -3116,6 +3116,15 @@ transformDeclareCursorStmt(ParseState *pstate, DeclareCursorStmt *stmt)
 	/* Shouldn't get any extras, since grammar only allows SelectStmt */
 	if (extras_before || extras_after)
 		elog(ERROR, "unexpected extra stuff in cursor statement");
+	if (!IsA(stmt->query, Query) ||
+		((Query *) stmt->query)->commandType != CMD_SELECT)
+		elog(ERROR, "unexpected non-SELECT command in cursor statement");
+
+	/* But we must explicitly disallow DECLARE CURSOR ... SELECT INTO */
+	if (((Query *) stmt->query)->into)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_CURSOR_DEFINITION),
+				 errmsg("DECLARE CURSOR may not specify INTO")));
 
 	return result;
 }

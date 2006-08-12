@@ -497,7 +497,7 @@ InitPlan(QueryDesc *queryDesc, int eflags)
 	/*
 	 * if there is a result relation, initialize result relation stuff
 	 */
-	if (parseTree->resultRelation != 0 && operation != CMD_SELECT)
+	if (parseTree->resultRelation)
 	{
 		List	   *resultRelations = parseTree->resultRelations;
 		int			numResultRelations;

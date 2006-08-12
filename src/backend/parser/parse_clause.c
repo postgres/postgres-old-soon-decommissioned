@@ -447,7 +447,7 @@ transformRangeSubselect(ParseState *pstate, RangeSubselect *r)
 
 	if (query->commandType != CMD_SELECT)
 		elog(ERROR, "expected SELECT query from subquery in FROM");
-	if (query->resultRelation != 0 || query->into != NULL)
+	if (query->into != NULL)
 		ereport(ERROR,
 				(errcode(ERRCODE_SYNTAX_ERROR),
 				 errmsg("subquery in FROM may not have SELECT INTO")));

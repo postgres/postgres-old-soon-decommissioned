@@ -264,7 +264,8 @@ DefineQueryRewrite(RuleStmt *stmt)
 		 * ... the one action must be a SELECT, ...
 		 */
 		query = (Query *) linitial(action);
-		if (!is_instead || query->commandType != CMD_SELECT)
+		if (!is_instead ||
+			query->commandType != CMD_SELECT || query->into != NULL)
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 				 errmsg("rules on SELECT must have action INSTEAD SELECT")));

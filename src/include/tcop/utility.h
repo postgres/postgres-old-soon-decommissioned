@@ -28,6 +28,8 @@ extern const char *CreateCommandTag(Node *parsetree);
 
 extern const char *CreateQueryTag(Query *parsetree);
 
+extern bool QueryReturnsTuples(Query *parsetree);
+
 extern bool QueryIsReadOnly(Query *parsetree);
 
 extern void CheckRelationOwnership(RangeVar *rel, bool noCatalogs);

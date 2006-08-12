@@ -89,7 +89,8 @@ typedef struct Query
 	Node	   *utilityStmt;	/* non-null if this is a non-optimizable
 								 * statement */
 
-	int			resultRelation; /* target relation (index into rtable) */
+	int			resultRelation; /* rtable index of target relation for
+								 * INSERT/UPDATE/DELETE; 0 for SELECT */
 
 	RangeVar   *into;			/* target relation for SELECT INTO */
 	List	   *intoOptions;		/* options from WITH clause */

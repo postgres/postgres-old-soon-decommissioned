@@ -623,7 +623,6 @@ is_simple_subquery(Query *subquery)
 	 */
 	if (!IsA(subquery, Query) ||
 		subquery->commandType != CMD_SELECT ||
-		subquery->resultRelation != 0 ||
 		subquery->into != NULL)
 		elog(ERROR, "subquery is bogus");
 
@@ -686,7 +685,6 @@ is_simple_union_all(Query *subquery)
 	/* Let's just make sure it's a valid subselect ... */
 	if (!IsA(subquery, Query) ||
 		subquery->commandType != CMD_SELECT ||
-		subquery->resultRelation != 0 ||
 		subquery->into != NULL)
 		elog(ERROR, "subquery is bogus");
 

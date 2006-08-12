@@ -1104,7 +1104,7 @@ transformSubLink(ParseState *pstate, SubLink *sublink)
 		elog(ERROR, "bad query in sub-select");
 	qtree = (Query *) linitial(qtrees);
 	if (qtree->commandType != CMD_SELECT ||
-		qtree->resultRelation != 0)
+		qtree->into != NULL)
 		elog(ERROR, "bad query in sub-select");
 	sublink->subselect = (Node *) qtree;
 

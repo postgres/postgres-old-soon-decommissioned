@@ -361,7 +361,9 @@ postquel_getnext(execution_state *es)
 			 * run it to completion.  (If we run to completion then
 			 * ExecutorRun is guaranteed to return NULL.)
 			 */
-			if (LAST_POSTQUEL_COMMAND(es) && es->qd->operation == CMD_SELECT)
+			if (LAST_POSTQUEL_COMMAND(es) &&
+				es->qd->operation == CMD_SELECT &&
+				es->qd->parsetree->into == NULL)
 				count = 1L;
 			else
 				count = 0L;
@@ -868,7 +870,7 @@ check_sql_fn_retval(Oid func_id, Oid rettype, List *queryTreeList,
 					JunkFilter **junkFilter)
 {
 	Query	   *parse;
-	int			cmd;
+	bool		isSelect;
 	List	   *tlist;
 	ListCell   *tlistitem;
 	int			tlistlen;
@@ -893,15 +895,18 @@ check_sql_fn_retval(Oid func_id, Oid rettype, List *queryTreeList,
 	/* find the final query */
 	parse = (Query *) lfirst(list_tail(queryTreeList));
 
-	cmd = parse->commandType;
-	tlist = parse->targetList;
+	/*
+	 * Note: eventually replace this with QueryReturnsTuples?  We'd need
+	 * a more general method of determining the output type, though.
+	 */
+	isSelect = (parse->commandType == CMD_SELECT && parse->into == NULL);
 
 	/*
 	 * The last query must be a SELECT if and only if return type isn't VOID.
 	 */
 	if (rettype == VOIDOID)
 	{
-		if (cmd == CMD_SELECT)
+		if (isSelect)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
 			 errmsg("return type mismatch in function declared to return %s",
@@ -911,7 +916,7 @@ check_sql_fn_retval(Oid func_id, Oid rettype, List *queryTreeList,
 	}
 
 	/* by here, the function is declared to return some type */
-	if (cmd != CMD_SELECT)
+	if (!isSelect)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
 			 errmsg("return type mismatch in function declared to return %s",
@@ -921,6 +926,7 @@ check_sql_fn_retval(Oid func_id, Oid rettype, List *queryTreeList,
 	/*
 	 * Count the non-junk entries in the result targetlist.
 	 */
+	tlist = parse->targetList;
 	tlistlen = ExecCleanTargetListLength(tlist);
 
 	fn_typtype = get_typtype(rettype);
