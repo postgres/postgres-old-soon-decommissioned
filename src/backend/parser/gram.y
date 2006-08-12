@@ -4525,7 +4525,6 @@ RuleActionStmtOrEmpty:
 			|	/*EMPTY*/							{ $$ = NULL; }
 		;
 
-/* change me to select, update, etc. some day */
 event:		SELECT									{ $$ = CMD_SELECT; }
 			| UPDATE								{ $$ = CMD_UPDATE; }
 			| DELETE_P								{ $$ = CMD_DELETE; }
