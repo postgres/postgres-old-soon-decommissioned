@@ -955,6 +955,7 @@ SPI_cursor_open(const char *name, void *plan,
 	PortalStart(portal, paramLI, snapshot);
 
 	Assert(portal->strategy == PORTAL_ONE_SELECT ||
+		   portal->strategy == PORTAL_ONE_RETURNING ||
 		   portal->strategy == PORTAL_UTIL_SELECT);
 
 	/* Return the created portal */
@@ -1521,17 +1522,15 @@ _SPI_pquery(QueryDesc *queryDesc, long tcount)
 	switch (operation)
 	{
 		case CMD_SELECT:
-			res = SPI_OK_SELECT;
 			if (queryDesc->parsetree->into)		/* select into table? */
-			{
 				res = SPI_OK_SELINTO;
-				queryDesc->dest = None_Receiver;		/* don't output results */
-			}
 			else if (queryDesc->dest->mydest != DestSPI)
 			{
 				/* Don't return SPI_OK_SELECT if we're discarding result */
 				res = SPI_OK_UTILITY;
 			}
+			else
+				res = SPI_OK_SELECT;
 			break;
 		case CMD_INSERT:
 			res = SPI_OK_INSERT;

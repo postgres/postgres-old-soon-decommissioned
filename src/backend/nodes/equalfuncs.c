@@ -664,6 +664,7 @@ _equalQuery(Query *a, Query *b)
 	COMPARE_NODE_FIELD(rtable);
 	COMPARE_NODE_FIELD(jointree);
 	COMPARE_NODE_FIELD(targetList);
+	COMPARE_NODE_FIELD(returningList);
 	COMPARE_NODE_FIELD(groupClause);
 	COMPARE_NODE_FIELD(havingQual);
 	COMPARE_NODE_FIELD(distinctClause);
@@ -673,6 +674,7 @@ _equalQuery(Query *a, Query *b)
 	COMPARE_NODE_FIELD(rowMarks);
 	COMPARE_NODE_FIELD(setOperations);
 	COMPARE_NODE_FIELD(resultRelations);
+	COMPARE_NODE_FIELD(returningLists);
 
 	return true;
 }
@@ -683,6 +685,7 @@ _equalInsertStmt(InsertStmt *a, InsertStmt *b)
 	COMPARE_NODE_FIELD(relation);
 	COMPARE_NODE_FIELD(cols);
 	COMPARE_NODE_FIELD(selectStmt);
+	COMPARE_NODE_FIELD(returningList);
 
 	return true;
 }
@@ -691,8 +694,9 @@ static bool
 _equalDeleteStmt(DeleteStmt *a, DeleteStmt *b)
 {
 	COMPARE_NODE_FIELD(relation);
-	COMPARE_NODE_FIELD(whereClause);
 	COMPARE_NODE_FIELD(usingClause);
+	COMPARE_NODE_FIELD(whereClause);
+	COMPARE_NODE_FIELD(returningList);
 
 	return true;
 }
@@ -704,6 +708,7 @@ _equalUpdateStmt(UpdateStmt *a, UpdateStmt *b)
 	COMPARE_NODE_FIELD(targetList);
 	COMPARE_NODE_FIELD(whereClause);
 	COMPARE_NODE_FIELD(fromClause);
+	COMPARE_NODE_FIELD(returningList);
 
 	return true;
 }

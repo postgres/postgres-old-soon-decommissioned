@@ -284,6 +284,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"reset", RESET},
 	{"restart", RESTART},
 	{"restrict", RESTRICT},
+	{"returning", RETURNING},
 	{"returns", RETURNS},
 	{"revoke", REVOKE},
 	{"right", RIGHT},

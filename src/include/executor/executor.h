@@ -132,6 +132,7 @@ extern void ExecConstraints(ResultRelInfo *resultRelInfo,
 				TupleTableSlot *slot, EState *estate);
 extern TupleTableSlot *EvalPlanQual(EState *estate, Index rti,
 			 ItemPointer tid, TransactionId priorXmax, CommandId curCid);
+extern DestReceiver *CreateIntoRelDestReceiver(void);
 
 /*
  * prototypes from functions in execProcnode.c

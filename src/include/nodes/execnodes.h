@@ -262,6 +262,7 @@ typedef struct JunkFilter
  *		TrigInstrument			optional runtime measurements for triggers
  *		ConstraintExprs			array of constraint-checking expr states
  *		junkFilter				for removing junk attributes from tuples
+ *		projectReturning		for computing a RETURNING list
  * ----------------
  */
 typedef struct ResultRelInfo
@@ -277,6 +278,7 @@ typedef struct ResultRelInfo
 	struct Instrumentation *ri_TrigInstrument;
 	List	  **ri_ConstraintExprs;
 	JunkFilter *ri_junkFilter;
+	ProjectionInfo *ri_projectReturning;
 } ResultRelInfo;
 
 /* ----------------

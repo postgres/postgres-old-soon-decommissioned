@@ -439,6 +439,7 @@ make_agg_subplan(PlannerInfo *root, MinMaxAggInfo *info)
 	subparse->commandType = CMD_SELECT;
 	subparse->resultRelation = 0;
 	subparse->resultRelations = NIL;
+	subparse->returningLists = NIL;
 	subparse->into = NULL;
 	subparse->hasAggs = false;
 	subparse->groupClause = NIL;

@@ -3,8 +3,8 @@
  * dest.h
  *	  support for communication destinations
  *
- * Whenever the backend executes a query, the results
- * have to go someplace.
+ * Whenever the backend executes a query that returns tuples, the results
+ * have to go someplace.  For example:
  *
  *	  - stdout is the destination only when we are running a
  *		standalone backend (no postmaster) and are returning results
@@ -84,7 +84,8 @@ typedef enum
 	DestRemote,					/* results sent to frontend process */
 	DestRemoteExecute,			/* sent to frontend, in Execute command */
 	DestSPI,					/* results sent to SPI manager */
-	DestTuplestore				/* results sent to Tuplestore */
+	DestTuplestore,				/* results sent to Tuplestore */
+	DestIntoRel					/* results sent to relation (SELECT INTO) */
 } CommandDest;
 
 /* ----------------

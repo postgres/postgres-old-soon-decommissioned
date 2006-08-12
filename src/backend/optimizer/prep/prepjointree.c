@@ -372,6 +372,10 @@ pull_up_simple_subquery(PlannerInfo *root, Node *jtnode, RangeTblEntry *rte,
 		ResolveNew((Node *) parse->targetList,
 				   varno, 0, rte,
 				   subtlist, CMD_SELECT, 0);
+	parse->returningList = (List *)
+		ResolveNew((Node *) parse->returningList,
+				   varno, 0, rte,
+				   subtlist, CMD_SELECT, 0);
 	resolvenew_in_jointree((Node *) parse->jointree, varno,
 						   rte, subtlist);
 	Assert(parse->setOperations == NULL);

@@ -447,6 +447,10 @@ FetchPreparedStatementResultDesc(PreparedStatement *stmt)
 			query = (Query *) linitial(stmt->query_list);
 			return ExecCleanTypeFromTL(query->targetList, false);
 
+		case PORTAL_ONE_RETURNING:
+			query = (Query *) linitial(stmt->query_list);
+			return ExecCleanTypeFromTL(query->returningList, false);
+
 		case PORTAL_UTIL_SELECT:
 			query = (Query *) linitial(stmt->query_list);
 			return UtilityTupleDescriptor(query->utilityStmt);
@@ -472,6 +476,7 @@ PreparedStatementReturnsTuples(PreparedStatement *stmt)
 	switch (ChoosePortalStrategy(stmt->query_list))
 	{
 		case PORTAL_ONE_SELECT:
+		case PORTAL_ONE_RETURNING:
 		case PORTAL_UTIL_SELECT:
 			return true;
 
@@ -499,6 +504,8 @@ FetchPreparedStatementTargetList(PreparedStatement *stmt)
 
 	if (strategy == PORTAL_ONE_SELECT)
 		return ((Query *) linitial(stmt->query_list))->targetList;
+	if (strategy == PORTAL_ONE_RETURNING)
+		return ((Query *) linitial(stmt->query_list))->returningList;
 	if (strategy == PORTAL_UTIL_SELECT)
 	{
 		Node	   *utilityStmt;

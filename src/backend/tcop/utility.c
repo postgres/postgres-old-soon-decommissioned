@@ -1148,7 +1148,7 @@ UtilityReturnsTuples(Node *parsetree)
 				switch (ChoosePortalStrategy(entry->query_list))
 				{
 					case PORTAL_ONE_SELECT:
-						return true;
+					case PORTAL_ONE_RETURNING:
 					case PORTAL_UTIL_SELECT:
 						return true;
 					case PORTAL_MULTI_QUERY:

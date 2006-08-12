@@ -80,6 +80,9 @@ extern void process_implied_equality(PlannerInfo *root,
  * prototypes for plan/setrefs.c
  */
 extern Plan *set_plan_references(Plan *plan, List *rtable);
+extern List *set_returning_clause_references(List *rlist,
+								Plan *topplan,
+								Index resultRelation);
 extern void fix_opfuncids(Node *node);
 extern void set_opfuncid(OpExpr *opexpr);
 
