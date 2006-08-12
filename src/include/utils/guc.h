@@ -193,9 +193,6 @@ extern void ParseLongOption(const char *string, char **name, char **value);
 extern bool set_config_option(const char *name, const char *value,
 				  GucContext context, GucSource source,
 				  bool isLocal, bool changeVal);
-extern bool verify_config_option(const char *name, const char *value,
-				GucContext context, GucSource source,
-				bool *isNewEqual, bool *isContextOK);
 extern char *GetConfigOptionByName(const char *name, const char **varname);
 extern void GetConfigOptionByNum(int varnum, const char **values, bool *noshow);
 extern int	GetNumConfigOptions(void);
