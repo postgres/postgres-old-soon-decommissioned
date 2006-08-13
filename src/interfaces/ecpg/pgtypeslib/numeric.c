@@ -1505,8 +1505,7 @@ numericvar_to_double(numeric *var, double *dp)
 		return -1;
 
 	/*
-	 * strtod seems to not reset errno to 0 in case of success.
-	 * at least on aome architectures
+	 * strtod does not reset errno to 0 in case of success.
 	 */
 	errno = 0;
 	val = strtod(tmp, &endptr);

@@ -387,8 +387,9 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 							ECPGraise(lineno, ECPG_CONNECT, ECPG_SQLSTATE_SQLCLIENT_UNABLE_TO_ESTABLISH_SQLCONNECTION, realname ? realname : "<DEFAULT>");
 							if (host)
 								ECPGfree(host);
-							if (port)
-								ECPGfree(port);
+							/* port not set yet
+							 * if (port)
+							 * 	ECPGfree(port); */
 							if (options)
 								ECPGfree(options);
 							if (realname)
