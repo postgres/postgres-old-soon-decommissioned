@@ -137,6 +137,7 @@ get				{ return K_GET;				}
 if				{ return K_IF;				}
 in				{ return K_IN;				}
 info			{ return K_INFO;			}
+insert			{ return K_INSERT;			}
 into			{ return K_INTO;			}
 is				{ return K_IS;				}
 log				{ return K_LOG;				}
@@ -154,7 +155,6 @@ result_oid		{ return K_RESULT_OID;		}
 return			{ return K_RETURN;			}
 reverse			{ return K_REVERSE;			}
 row_count		{ return K_ROW_COUNT;		}
-select			{ return K_SELECT;			}
 strict			{ return K_STRICT;	    	}
 then			{ return K_THEN;			}
 to				{ return K_TO;				}
