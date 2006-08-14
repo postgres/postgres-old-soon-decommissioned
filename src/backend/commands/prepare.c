@@ -448,7 +448,7 @@ FetchPreparedStatementResultDesc(PreparedStatement *stmt)
 			return ExecCleanTypeFromTL(query->targetList, false);
 
 		case PORTAL_ONE_RETURNING:
-			query = (Query *) linitial(stmt->query_list);
+			query = PortalListGetPrimaryQuery(stmt->query_list);
 			return ExecCleanTypeFromTL(query->returningList, false);
 
 		case PORTAL_UTIL_SELECT:
@@ -505,7 +505,7 @@ FetchPreparedStatementTargetList(PreparedStatement *stmt)
 	if (strategy == PORTAL_ONE_SELECT)
 		return ((Query *) linitial(stmt->query_list))->targetList;
 	if (strategy == PORTAL_ONE_RETURNING)
-		return ((Query *) linitial(stmt->query_list))->returningList;
+		return (PortalListGetPrimaryQuery(stmt->query_list))->returningList;
 	if (strategy == PORTAL_UTIL_SELECT)
 	{
 		Node	   *utilityStmt;
