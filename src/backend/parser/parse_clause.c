@@ -173,8 +173,9 @@ setTargetTable(ParseState *pstate, RangeVar *relation,
 	 * permissions.
 	 *
 	 * If we find an explicit reference to the rel later during parse
-	 * analysis, scanRTEForColumn will add the ACL_SELECT bit back again. That
-	 * can't happen for INSERT but it is possible for UPDATE and DELETE.
+	 * analysis, we will add the ACL_SELECT bit back again; see
+	 * scanRTEForColumn (for simple field references), ExpandColumnRefStar
+	 * (for foo.*) and ExpandAllTables (for *).
 	 */
 	rte->requiredPerms = requiredPerms;
 
