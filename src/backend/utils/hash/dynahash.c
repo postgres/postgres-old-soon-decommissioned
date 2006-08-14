@@ -392,10 +392,7 @@ hash_create(const char *tabname, long nelem, HASHCTL *info, int flags)
 
 	/* Build the hash directory structure */
 	if (!init_htab(hashp, nelem))
-	{
-		hash_destroy(hashp);
 		elog(ERROR, "failed to initialize hash table");
-	}
 
 	/*
 	 * For a shared hash table, preallocate the requested number of elements.
@@ -409,12 +406,9 @@ hash_create(const char *tabname, long nelem, HASHCTL *info, int flags)
 		nelem < hctl->nelem_alloc)
 	{
 		if (!element_alloc(hashp, (int) nelem))
-		{
-			hash_destroy(hashp);
 			ereport(ERROR,
 					(errcode(ERRCODE_OUT_OF_MEMORY),
 					 errmsg("out of memory")));
-		}
 	}
 
 	return hashp;
