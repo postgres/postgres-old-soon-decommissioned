@@ -4,7 +4,7 @@
  * pgbench: a simple benchmark program for PostgreSQL
  * written by Tatsuo Ishii
  *
- * Copyright (c) 2000-2005	Tatsuo Ishii
+ * Copyright (c) 2000-2006	Tatsuo Ishii
  *
  * Permission to use, copy, modify, and distribute this software and
  * its documentation for any purpose and without fee is hereby
@@ -1006,7 +1006,7 @@ process_file(char *filename)
 		while (isspace((unsigned char) buf[i]))
 			i++;
 
-		if (strncmp(&buf[i], "\n", 1) != 0 && strncmp(&buf[i], "--", 2) != 0) {
+ 		if (buf[i] != '\0' && strncmp(&buf[i], "--", 2) != 0) {
 			commands = process_commands(&buf[i]);
 			if (commands == NULL)
 			{
