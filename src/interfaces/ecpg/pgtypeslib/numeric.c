@@ -1512,7 +1512,10 @@ numericvar_to_double(numeric *var, double *dp)
 	if (errno == ERANGE)
 	{
 		free(tmp);
-		errno = PGTYPES_NUM_OVERFLOW;
+		if (val == 0)
+			errno = PGTYPES_NUM_UNDERFLOW;
+		else
+			errno = PGTYPES_NUM_OVERFLOW;
 		return -1;
 	}
 
@@ -1576,7 +1579,10 @@ PGTYPESnumeric_to_long(numeric *nv, long *lp)
 		return -1;
 	if (errno == ERANGE)
 	{
-		errno = PGTYPES_NUM_OVERFLOW;
+		if (*lp == LONG_MIN)
+			errno = PGTYPES_NUM_UNDERFLOW;
+		else
+			errno = PGTYPES_NUM_OVERFLOW;
 		return -1;
 	}
 	free(s);

@@ -230,7 +230,7 @@ PGTYPESdate_fmt_asc(date dDate, char *fmtstring, char *outbuf)
 					replace_type = PGTYPES_TYPE_UINT_4_LZ;
 					break;
 				case PGTYPES_FMTDATE_YEAR_DIGITS_SHORT:
-					replace_val.uint_val = tm.tm_year % 1000;
+					replace_val.uint_val = tm.tm_year % 100;
 					replace_type = PGTYPES_TYPE_UINT_2_LZ;
 					break;
 				default:
@@ -537,7 +537,7 @@ PGTYPESdate_defmt_asc(date * d, char *fmt, char *str)
 		 * matches
 		 */
 		free(str_copy);
-		errno = PGTYPES_DATE_ERR_ENOTDMY;
+		errno = PGTYPES_DATE_ERR_ENOSHORTDATE;
 		return -1;
 	}
 
