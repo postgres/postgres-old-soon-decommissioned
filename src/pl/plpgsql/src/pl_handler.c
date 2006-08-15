@@ -28,6 +28,8 @@ extern DLLIMPORT bool check_function_bodies;
 
 PG_MODULE_MAGIC;
 
+PLpgSQL_plugin **plugin_ptr = NULL;
+
 
 /*
  * _PG_init()			- library load-time initialization
@@ -45,6 +47,9 @@ _PG_init(void)
 
 	plpgsql_HashTableInit();
 	RegisterXactCallback(plpgsql_xact_cb, NULL);
+
+	/* Set up a rendezvous point with optional instrumentation plugin */
+	plugin_ptr = (PLpgSQL_plugin **) find_rendezvous_variable("PLpgSQL_plugin");
 
 	inited = true;
 }
