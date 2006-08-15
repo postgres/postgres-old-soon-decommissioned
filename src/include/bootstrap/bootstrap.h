@@ -50,6 +50,15 @@ extern char *CleanUpStr(char *s);
 extern int	EnterString(char *str);
 extern void build_indices(void);
 
+extern void boot_get_type_io_data(Oid typid,
+								  int16 *typlen,
+								  bool *typbyval,
+								  char *typalign,
+								  char *typdelim,
+								  Oid *typioparam,
+								  Oid *typinput,
+								  Oid *typoutput);
+
 extern int	boot_yyparse(void);
 
 extern int	boot_yylex(void);
