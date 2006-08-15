@@ -709,7 +709,7 @@ PostmasterMain(int argc, char *argv[])
 	/*
 	 * process any libraries that should be preloaded at postmaster start
 	 */
-	process_preload_libraries();
+	process_shared_preload_libraries();
 
 	/*
 	 * Remove old temporary files.	At this point there can be no other

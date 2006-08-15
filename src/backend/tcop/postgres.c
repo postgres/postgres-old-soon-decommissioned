@@ -3001,6 +3001,12 @@ PostgresMain(int argc, char *argv[], const char *username)
 		on_proc_exit(log_disconnections, 0);
 
 	/*
+	 * process any libraries that should be preloaded at backend start
+	 * (this likewise can't be done until GUC settings are complete)
+	 */
+	process_local_preload_libraries();
+
+	/*
 	 * Send this backend's cancellation info to the frontend.
 	 */
 	if (whereToSendOutput == DestRemote &&

@@ -488,7 +488,8 @@ extern char *Dynamic_library_path;
 extern PGFunction load_external_function(char *filename, char *funcname,
 					   bool signalNotFound, void **filehandle);
 extern PGFunction lookup_external_function(void *filehandle, char *funcname);
-extern void load_file(char *filename);
+extern void load_file(const char *filename, bool restrict);
+extern void **find_rendezvous_variable(const char *varName);
 
 
 /*

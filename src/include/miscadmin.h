@@ -307,7 +307,8 @@ extern void BaseInit(void);
 
 /* in utils/init/miscinit.c */
 extern bool IgnoreSystemIndexes;
-extern char *preload_libraries_string;
+extern char *shared_preload_libraries_string;
+extern char *local_preload_libraries_string;
 
 extern void SetReindexProcessing(Oid heapOid, Oid indexOid);
 extern void ResetReindexProcessing(void);
@@ -319,6 +320,7 @@ extern void TouchSocketLockFile(void);
 extern void RecordSharedMemoryInLockFile(unsigned long id1,
 							 unsigned long id2);
 extern void ValidatePgVersion(const char *path);
-extern void process_preload_libraries(void);
+extern void process_shared_preload_libraries(void);
+extern void process_local_preload_libraries(void);
 
 #endif   /* MISCADMIN_H */

@@ -1964,12 +1964,22 @@ static struct config_string ConfigureNamesString[] =
 	},
 
 	{
-		{"preload_libraries", PGC_POSTMASTER, RESOURCES_KERNEL,
+		{"shared_preload_libraries", PGC_POSTMASTER, RESOURCES_KERNEL,
 			gettext_noop("Lists shared libraries to preload into server."),
 			NULL,
 			GUC_LIST_INPUT | GUC_LIST_QUOTE | GUC_SUPERUSER_ONLY
 		},
-		&preload_libraries_string,
+		&shared_preload_libraries_string,
+		"", NULL, NULL
+	},
+
+	{
+		{"local_preload_libraries", PGC_BACKEND, CLIENT_CONN_OTHER,
+			gettext_noop("Lists shared libraries to preload into each backend."),
+			NULL,
+			GUC_LIST_INPUT | GUC_LIST_QUOTE
+		},
+		&local_preload_libraries_string,
 		"", NULL, NULL
 	},
 

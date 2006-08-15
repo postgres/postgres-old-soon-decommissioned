@@ -886,12 +886,9 @@ ProcessUtility(Node *parsetree,
 			{
 				LoadStmt   *stmt = (LoadStmt *) parsetree;
 
-				if (!superuser())
-					ereport(ERROR,
-							(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-							 errmsg("must be superuser to do LOAD")));
 				closeAllVfds(); /* probably not necessary... */
-				load_file(stmt->filename);
+				/* Allowed names are restricted if you're not superuser */
+				load_file(stmt->filename, !superuser());
 			}
 			break;
 
