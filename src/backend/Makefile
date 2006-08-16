@@ -140,7 +140,7 @@ $(top_builddir)/src/include/utils/fmgroids.h: utils/fmgroids.h
 
 
 utils/probes.o: utils/probes.d $(SUBSYSOBJS)
-	$(DTRACE) $(DTRACEFLAGS) -G -s $^
+	$(DTRACE) $(DTRACEFLAGS) -G -s $^ -o $@
 
 
 ##########################################################################
