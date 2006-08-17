@@ -16,6 +16,8 @@
 #ifndef XLOG_INTERNAL_H
 #define XLOG_INTERNAL_H
 
+#include <time.h>
+
 #include "access/xlog.h"
 #include "fmgr.h"
 #include "storage/block.h"
@@ -237,6 +239,12 @@ typedef struct RmgrData
 
 extern const RmgrData RmgrTable[];
 
+/* 
+ * Exported to support xlog switching from bgwriter
+ */
+extern time_t GetLastSegSwitchTime(void);
+extern XLogRecPtr RequestXLogSwitch(void);
+
 /*
  * These aren't in xlog.h because I'd rather not include fmgr.h there.
  */
@@ -244,6 +252,7 @@ extern Datum pg_start_backup(PG_FUNCTION_ARGS);
 extern Datum pg_stop_backup(PG_FUNCTION_ARGS);
 extern Datum pg_switch_xlog(PG_FUNCTION_ARGS);
 extern Datum pg_current_xlog_location(PG_FUNCTION_ARGS);
+extern Datum pg_current_xlog_insert_location(PG_FUNCTION_ARGS);
 extern Datum pg_xlogfile_name_offset(PG_FUNCTION_ARGS);
 extern Datum pg_xlogfile_name(PG_FUNCTION_ARGS);
 
