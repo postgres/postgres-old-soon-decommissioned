@@ -213,6 +213,9 @@ PGAC_ARG_BOOL(enable, dtrace, no,
 [AC_DEFINE([ENABLE_DTRACE], 1, 
            [Define to 1 to enable DTrace support. (--enable-dtrace)])
 AC_CHECK_PROGS(DTRACE, dtrace)
+if test -z "$DTRACE"; then
+  AC_MSG_ERROR([dtrace not found])
+fi
 AC_SUBST(DTRACEFLAGS)])
 AC_SUBST(enable_dtrace)
 
