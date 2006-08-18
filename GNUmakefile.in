@@ -48,7 +48,7 @@ distclean maintainer-clean:
 
 check: all
 
-check installcheck:
+check installcheck installcheck-parallel:
 	$(MAKE) -C src/test $@
 
 GNUmakefile: GNUmakefile.in $(top_builddir)/config.status
