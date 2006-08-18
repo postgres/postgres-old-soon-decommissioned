@@ -94,7 +94,7 @@ extern int find_other_exec(const char *argv0, const char *target,
  *	It also requires double-quotes around the executable name and
  *	any files used for redirection.  Other args can use single-quotes.
  *
- *	From http://www.computerhope.com/cmd.htm:
+ *	Generated using Win32 "CMD /?":
  *
  *  1. If all of the following conditions are met, then quote characters
  *  on the command line are preserved:
