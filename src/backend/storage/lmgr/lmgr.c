@@ -128,8 +128,8 @@ ConditionalLockRelationOid(Oid relid, LOCKMODE lockmode)
 /*
  *		UnlockRelationId
  *
- * Note: we don't supply UnlockRelationOid since it's normally easy for
- * callers to provide the LockRelId info from a relcache entry.
+ * Unlock, given a LockRelId.  This is preferred over UnlockRelationOid
+ * for speed reasons.
  */
 void
 UnlockRelationId(LockRelId *relid, LOCKMODE lockmode)
@@ -137,6 +137,21 @@ UnlockRelationId(LockRelId *relid, LOCKMODE lockmode)
 	LOCKTAG		tag;
 
 	SET_LOCKTAG_RELATION(tag, relid->dbId, relid->relId);
+
+	LockRelease(&tag, lockmode, false);
+}
+
+/*
+ *		UnlockRelationOid
+ *
+ * Unlock, given only a relation Oid.  Use UnlockRelationId if you can.
+ */
+void
+UnlockRelationOid(Oid relid, LOCKMODE lockmode)
+{
+	LOCKTAG		tag;
+
+	SetLocktagRelationOid(&tag, relid);
 
 	LockRelease(&tag, lockmode, false);
 }

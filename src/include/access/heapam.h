@@ -129,7 +129,8 @@ typedef enum
 } LockTupleMode;
 
 extern Relation relation_open(Oid relationId, LOCKMODE lockmode);
-extern Relation conditional_relation_open(Oid relationId, LOCKMODE lockmode, bool nowait);
+extern Relation try_relation_open(Oid relationId, LOCKMODE lockmode);
+extern Relation relation_open_nowait(Oid relationId, LOCKMODE lockmode);
 extern Relation relation_openrv(const RangeVar *relation, LOCKMODE lockmode);
 extern void relation_close(Relation relation, LOCKMODE lockmode);
 
