@@ -130,3 +130,9 @@ PQescapeByteaConn         127
 PQencryptPassword         128
 PQisthreadsafe            129
 enlargePQExpBuffer        130
+PQnparams                 131
+PQparamtype               132
+PQdescribePrepared        133
+PQdescribePortal          134
+PQsendDescribePrepared    135
+PQsendDescribePortal      136
