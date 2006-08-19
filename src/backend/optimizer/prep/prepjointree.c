@@ -657,6 +657,15 @@ is_simple_subquery(Query *subquery)
 		return false;
 
 	/*
+	 * Don't pull up a subquery that has any volatile functions in its
+	 * targetlist.  Otherwise we might introduce multiple evaluations of
+	 * these functions, if they get copied to multiple places in the upper
+	 * query, leading to surprising results.
+	 */
+	if (contain_volatile_functions((Node *) subquery->targetList))
+		return false;
+
+	/*
 	 * Hack: don't try to pull up a subquery with an empty jointree.
 	 * query_planner() will correctly generate a Result plan for a jointree
 	 * that's totally empty, but I don't think the right things happen if an
