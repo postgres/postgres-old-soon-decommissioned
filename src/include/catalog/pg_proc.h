@@ -2898,6 +2898,8 @@ DATA(insert OID = 1939 (  pg_stat_get_backend_userid	PGNSP PGUID 12 f f t f s 1 
 DESCR("Statistics: User ID of backend");
 DATA(insert OID = 1940 (  pg_stat_get_backend_activity	PGNSP PGUID 12 f f t f s 1 25 "23" _null_ _null_ _null_ pg_stat_get_backend_activity - _null_ ));
 DESCR("Statistics: Current query of backend");
+DATA(insert OID = 2853 (  pg_stat_get_backend_waiting	PGNSP PGUID 12 f f t f s 1 16 "23" _null_ _null_ _null_ pg_stat_get_backend_waiting - _null_ ));
+DESCR("Statistics: Is backend currently waiting for a lock");
 DATA(insert OID = 2094 (  pg_stat_get_backend_activity_start PGNSP PGUID 12 f f t f s 1 1184 "23" _null_ _null_ _null_	pg_stat_get_backend_activity_start - _null_));
 DESCR("Statistics: Start time for current query of backend");
 DATA(insert OID = 1391 ( pg_stat_get_backend_start PGNSP PGUID 12 f f t f s 1 1184 "23" _null_ _null_ _null_ pg_stat_get_backend_start - _null_));

@@ -334,6 +334,9 @@ typedef struct PgBackendStatus
 	Oid			st_userid;
 	SockAddr	st_clientaddr;
 
+	/* Is backend currently waiting on an lmgr lock? */
+	bool		st_waiting;
+
 	/* current command string; MUST be null-terminated */
 	char		st_activity[PGBE_ACTIVITY_SIZE];
 } PgBackendStatus;
@@ -387,6 +390,7 @@ extern void pgstat_report_analyze(Oid tableoid, bool shared,
 
 extern void pgstat_bestart(void);
 extern void pgstat_report_activity(const char *what);
+extern void pgstat_report_waiting(bool waiting);
 
 extern void pgstat_initstats(PgStat_Info *stats, Relation rel);
 
