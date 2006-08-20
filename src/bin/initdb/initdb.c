@@ -419,6 +419,7 @@ readfile(char *path)
 	}
 
 	fclose(infile);
+	free(buffer);
 	result[nlines] = NULL;
 
 	return result;
@@ -1058,6 +1059,7 @@ set_short_version(char *short_version, char *extrapath)
 				progname, path, strerror(errno));
 		exit_nicely();
 	}
+	free(path);
 }
 
 /*
@@ -1085,6 +1087,7 @@ set_null_conf(void)
 				progname, path, strerror(errno));
 		exit_nicely();
 	}
+	free(path);
 }
 
 /*
@@ -1542,6 +1545,9 @@ get_set_pwd(void)
 
 	PG_CMD_PRINTF2("ALTER USER \"%s\" WITH PASSWORD E'%s';\n",
 				   username, escape_quotes(pwd1));
+
+	/* MM: pwd1 is no longer needed, freeing it */
+	free(pwd1);
 
 	PG_CMD_CLOSE;
 
