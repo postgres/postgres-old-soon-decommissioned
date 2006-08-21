@@ -1444,7 +1444,6 @@ _outColumnDef(StringInfo str, ColumnDef *node)
 	WRITE_NODE_FIELD(raw_default);
 	WRITE_STRING_FIELD(cooked_default);
 	WRITE_NODE_FIELD(constraints);
-	WRITE_NODE_FIELD(support);
 }
 
 static void

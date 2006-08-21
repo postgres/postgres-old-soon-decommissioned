@@ -105,6 +105,7 @@ DROP SEQUENCE serial;
 
   <simplelist type="inline">
    <member><xref linkend="sql-createsequence" endterm="sql-createsequence-title"></member>
+   <member><xref linkend="sql-altersequence" endterm="sql-altersequence-title"></member>
   </simplelist>
  </refsect1>
 

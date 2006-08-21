@@ -371,7 +371,7 @@ where <replaceable class="PARAMETER">action</replaceable> is one of:
     <listitem>
      <para>
       This form moves the table into another schema.  Associated indexes,
-      constraints, and SERIAL-column sequences are moved as well.
+      constraints, and sequences owned by table columns are moved as well.
      </para>
     </listitem>
    </varlistentry>

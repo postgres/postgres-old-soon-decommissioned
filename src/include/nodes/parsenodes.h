@@ -393,10 +393,6 @@ typedef struct RangeFunction
  * parsetree produced by gram.y, but transformCreateStmt will remove
  * the item and set raw_default instead.  CONSTR_DEFAULT items
  * should not appear in any subsequent processing.
- *
- * The "support" field, if not null, denotes a supporting relation that
- * should be linked by an internal dependency to the column.  Currently
- * this is only used to link a SERIAL column's sequence to the column.
  */
 typedef struct ColumnDef
 {
@@ -409,7 +405,6 @@ typedef struct ColumnDef
 	Node	   *raw_default;	/* default value (untransformed parse tree) */
 	char	   *cooked_default; /* nodeToString representation */
 	List	   *constraints;	/* other constraints on column */
-	RangeVar   *support;		/* supporting relation, if any */
 } ColumnDef;
 
 /*

@@ -1641,7 +1641,6 @@ _copyColumnDef(ColumnDef *from)
 	COPY_NODE_FIELD(raw_default);
 	COPY_STRING_FIELD(cooked_default);
 	COPY_NODE_FIELD(constraints);
-	COPY_NODE_FIELD(support);
 
 	return newnode;
 }

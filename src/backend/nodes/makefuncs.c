@@ -322,3 +322,17 @@ makeFuncExpr(Oid funcid, Oid rettype, List *args, CoercionForm fformat)
 
 	return funcexpr;
 }
+
+/*
+ * makeDefElem -
+ *	build a DefElem node
+ */
+DefElem *
+makeDefElem(char *name, Node *arg)
+{
+	DefElem *res = makeNode(DefElem);
+
+	res->defname = name;
+	res->arg = arg;
+	return res;
+}

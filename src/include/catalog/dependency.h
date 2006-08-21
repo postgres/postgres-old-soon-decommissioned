@@ -112,7 +112,7 @@ typedef struct ObjectAddress
 	int32		objectSubId;	/* Subitem within the object (column of table) */
 } ObjectAddress;
 
-/* expansible list of ObjectAddresses */
+/* expansible list of ObjectAddresses (private in dependency.c) */
 typedef struct ObjectAddresses ObjectAddresses;
 
 /*
@@ -192,7 +192,9 @@ extern long changeDependencyFor(Oid classId, Oid objectId,
 					Oid refClassId, Oid oldRefObjectId,
 					Oid newRefObjectId);
 
-extern bool objectIsInternalDependency(Oid classId, Oid objectId);
+extern bool sequenceIsOwned(Oid seqId, Oid *tableId, int32 *colId);
+
+extern void markSequenceUnowned(Oid seqId);
 
 /* in pg_shdepend.c */
 
