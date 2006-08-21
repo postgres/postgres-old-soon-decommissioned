@@ -166,5 +166,6 @@ extern void CreateCheckPoint(bool shutdown, bool force);
 extern void XLogPutNextOid(Oid nextOid);
 extern XLogRecPtr GetRedoRecPtr(void);
 extern TransactionId GetRecentNextXid(void);
+extern void GetNextXidAndEpoch(TransactionId *xid, uint32 *epoch);
 
 #endif   /* XLOG_H */

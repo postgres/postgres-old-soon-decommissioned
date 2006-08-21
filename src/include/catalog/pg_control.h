@@ -22,7 +22,7 @@
 
 
 /* Version identifier for this pg_control format */
-#define PG_CONTROL_VERSION	821
+#define PG_CONTROL_VERSION	822
 
 /*
  * Body of CheckPoint XLOG records.  This is declared here because we keep
@@ -36,6 +36,7 @@ typedef struct CheckPoint
 								 * transaction when we started (i.e. UNDO end
 								 * point) */
 	TimeLineID	ThisTimeLineID; /* current TLI */
+	uint32		nextXidEpoch;	/* higher-order bits of nextXid */
 	TransactionId nextXid;		/* next free XID */
 	Oid			nextOid;		/* next free OID */
 	MultiXactId nextMulti;		/* next free MultiXactId */

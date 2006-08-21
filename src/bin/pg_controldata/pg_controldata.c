@@ -177,7 +177,8 @@ main(int argc, char *argv[])
 		   ControlFile.checkPointCopy.undo.xrecoff);
 	printf(_("Latest checkpoint's TimeLineID:       %u\n"),
 		   ControlFile.checkPointCopy.ThisTimeLineID);
-	printf(_("Latest checkpoint's NextXID:          %u\n"),
+	printf(_("Latest checkpoint's NextXID:          %u/%u\n"),
+		   ControlFile.checkPointCopy.nextXidEpoch,
 		   ControlFile.checkPointCopy.nextXid);
 	printf(_("Latest checkpoint's NextOID:          %u\n"),
 		   ControlFile.checkPointCopy.nextOid);
