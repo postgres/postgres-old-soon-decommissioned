@@ -837,8 +837,7 @@
        <entry><type>int</type></entry>
        <entry>return the bucket to which <parameter>operand</> would
        be assigned in an equidepth histogram with <parameter>count</>
-       buckets, an upper bound of <parameter>b1</>, and a lower bound
-       of <parameter>b2</></entry>
+       buckets, in the range <parameter>b1</> to <parameter>b2</></entry>
        <entry><literal>width_bucket(5.35, 0.024, 10.06, 5)</literal></entry>
        <entry><literal>3</literal></entry>
       </row>
