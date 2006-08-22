@@ -1486,7 +1486,10 @@ report_invalid_encoding(int encoding, const char *mbstr, int len)
 			(errcode(ERRCODE_CHARACTER_NOT_IN_REPERTOIRE),
 			 errmsg("invalid byte sequence for encoding \"%s\": 0x%s",
 					pg_enc2name_tbl[encoding].name,
-					buf)));
+					buf),
+			 errhint("This failure can also happen if the byte sequence does not "
+			 		 "match the encoding expected by the server, which is controlled "
+					 "by \"client_encoding\".")));
 }
 
 /*
