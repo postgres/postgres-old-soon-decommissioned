@@ -1448,6 +1448,9 @@ AC_CONFIG_HEADERS([src/include/pg_config.h],
 echo >src/include/stamp-h
 ])
 
+AC_CONFIG_HEADERS([src/interfaces/ecpg/include/ecpg_config.h])
+
+
 #
 # Warn about unknown options
 #

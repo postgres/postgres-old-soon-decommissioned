@@ -3,6 +3,12 @@
 #ifndef PGTYPES_INTERVAL
 #define PGTYPES_INTERVAL
 
+#include <ecpg_config.h>
+
+#if defined(USE_INTEGER_DATETIMES) && (defined(HAVE_LONG_INT_64) || defined(HAVE_LONG_LONG_INT_64))
+#define HAVE_INT64_TIMESTAMP
+#endif
+
 typedef struct
 {
 #ifdef HAVE_INT64_TIMESTAMP

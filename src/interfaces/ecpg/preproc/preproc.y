@@ -5414,7 +5414,18 @@ variable: opt_pointer ECPGColLabel opt_array_bounds opt_bit_field opt_initialize
 				case ECPGt_char:
 				case ECPGt_unsigned_char:
 					if (atoi(dimension) == -1)
+					{
+						int i = strlen($5);
+
+						if (atoi(length) == -1 && i > 0) /* char <var>[] = "string" */
+						{
+							/* if we have an initializer but no string size set, let's use the initializer's length */
+							free(length);
+							length = mm_alloc(i+sizeof("sizeof()"));
+							sprintf(length, "sizeof(%s)+1", $5+2);
+						}
 						type = ECPGmake_simple_type(actual_type[struct_level].type_enum, length);
+					}
 					else
 						type = ECPGmake_array_type(ECPGmake_simple_type(actual_type[struct_level].type_enum, length), dimension);
 

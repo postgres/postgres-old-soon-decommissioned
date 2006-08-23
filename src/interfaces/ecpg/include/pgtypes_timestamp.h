@@ -3,6 +3,7 @@
 #ifndef PGTYPES_TIMESTAMP
 #define PGTYPES_TIMESTAMP
 
+/* pgtypes_interval.h includes ecpg_config.h */
 #include <pgtypes_interval.h>
 
 #ifdef HAVE_INT64_TIMESTAMP
