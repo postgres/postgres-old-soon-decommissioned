@@ -1727,6 +1727,8 @@ OptSeqElem:  CACHE NumConst
 			{ $$ = make_str("no maxvalue"); }
 		| NO MINVALUE
 			{ $$ = make_str("no minvalue"); }
+		| OWNED BY any_name
+			{ $$ = cat2_str(make_str("owned by"), $3); }
 		| START opt_with NumConst
 			{ $$ = cat_str(3, make_str("start"), $2, $3); }
 		| RESTART opt_with NumConst
