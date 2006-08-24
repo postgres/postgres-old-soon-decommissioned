@@ -406,33 +406,33 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 			case ECPGt_unsigned_char:
 				if (pval)
 				{
-					if (varcharsize == 0 || varcharsize > strlen(pval))
-						strncpy((char *) ((long) var + offset * act_tuple), pval, strlen(pval) + 1);
+					if (varcharsize == 0 || varcharsize > size)
+						strncpy((char *) ((long) var + offset * act_tuple), pval, size + 1);
 					else
 					{
 						strncpy((char *) ((long) var + offset * act_tuple), pval, varcharsize);
 
-						if (varcharsize < strlen(pval))
+						if (varcharsize < size)
 						{
 							/* truncation */
 							switch (ind_type)
 							{
 								case ECPGt_short:
 								case ECPGt_unsigned_short:
-									*((short *) (ind + ind_offset * act_tuple)) = strlen(pval);
+									*((short *) (ind + ind_offset * act_tuple)) = size;
 									break;
 								case ECPGt_int:
 								case ECPGt_unsigned_int:
-									*((int *) (ind + ind_offset * act_tuple)) = strlen(pval);
+									*((int *) (ind + ind_offset * act_tuple)) = size;
 									break;
 								case ECPGt_long:
 								case ECPGt_unsigned_long:
-									*((long *) (ind + ind_offset * act_tuple)) = strlen(pval);
+									*((long *) (ind + ind_offset * act_tuple)) = size;
 									break;
 #ifdef HAVE_LONG_LONG_INT_64
 								case ECPGt_long_long:
 								case ECPGt_unsigned_long_long:
-									*((long long int *) (ind + ind_offset * act_tuple)) = strlen(pval);
+									*((long long int *) (ind + ind_offset * act_tuple)) = size;
 									break;
 #endif   /* HAVE_LONG_LONG_INT_64 */
 								default:
@@ -441,7 +441,7 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 							sqlca->sqlwarn[0] = sqlca->sqlwarn[1] = 'W';
 						}
 					}
-					pval += strlen(pval);
+					pval += size;
 				}
 				break;
 
@@ -451,7 +451,7 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 					struct ECPGgeneric_varchar *variable =
 					(struct ECPGgeneric_varchar *) ((long) var + offset * act_tuple);
 
-					variable->len = strlen(pval);
+					variable->len = size;
 					if (varcharsize == 0)
 						strncpy(variable->arr, pval, variable->len);
 					else
@@ -489,7 +489,7 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 							variable->len = varcharsize;
 						}
 					}
-					pval += strlen(pval);
+					pval += size;
 				}
 				break;
 
