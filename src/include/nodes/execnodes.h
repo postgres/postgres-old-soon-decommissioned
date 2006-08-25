@@ -37,6 +37,7 @@
  *		Predicate			partial-index predicate, or NIL if none
  *		PredicateState		exec state for predicate, or NIL if none
  *		Unique				is it a unique index?
+ *		Concurrent			are we doing a concurrent index build?
  * ----------------
  */
 typedef struct IndexInfo
@@ -49,6 +50,7 @@ typedef struct IndexInfo
 	List	   *ii_Predicate;	/* list of Expr */
 	List	   *ii_PredicateState;		/* list of ExprState */
 	bool		ii_Unique;
+	bool		ii_Concurrent;
 } IndexInfo;
 
 /* ----------------

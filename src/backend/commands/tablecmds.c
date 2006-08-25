@@ -3832,7 +3832,8 @@ ATExecAddIndex(AlteredTableInfo *tab, Relation rel,
 				true,			/* is_alter_table */
 				check_rights,
 				skip_build,
-				quiet);
+				quiet,
+				false);
 }
 
 /*

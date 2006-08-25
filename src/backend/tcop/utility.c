@@ -781,6 +781,9 @@ ProcessUtility(Node *parsetree,
 			{
 				IndexStmt  *stmt = (IndexStmt *) parsetree;
 
+				if (stmt->concurrent)
+					PreventTransactionChain(stmt, "CREATE INDEX CONCURRENTLY");
+
 				CheckRelationOwnership(stmt->relation, true);
 
 				DefineIndex(stmt->relation,		/* relation */
@@ -795,10 +798,11 @@ ProcessUtility(Node *parsetree,
 							stmt->unique,
 							stmt->primary,
 							stmt->isconstraint,
-							false,		/* is_alter_table */
-							true,		/* check_rights */
-							false,		/* skip_build */
-							false);		/* quiet */
+							false,				/* is_alter_table */
+							true,				/* check_rights */
+							false,				/* skip_build */
+							false,				/* quiet */
+							stmt->concurrent);	/* concurrent */
 			}
 			break;
 

@@ -649,6 +649,16 @@ amrestrpos (IndexScanDesc scan);
   </para>
 
   <para>
+   Furthermore, immediately before raising a uniqueness violation
+   according to the above rules, the access method must recheck the
+   liveness of the row being inserted.  If it is committed dead then
+   no error should be raised.  (This case cannot occur during the
+   ordinary scenario of inserting a row that's just been created by
+   the current transaction.  It can happen during
+   <command>CREATE UNIQUE INDEX CONCURRENTLY</>, however.) 
+  </para>
+
+  <para>
    We require the index access method to apply these tests itself, which
    means that it must reach into the heap to check the commit status of
    any row that is shown to have a duplicate key according to the index

@@ -1488,6 +1488,7 @@ transformIndexConstraints(ParseState *pstate, CreateStmtContext *cxt)
 		index->tableSpace = constraint->indexspace;
 		index->indexParams = NIL;
 		index->whereClause = NULL;
+		index->concurrent = false;
 
 		/*
 		 * Make sure referenced keys exist.  If we are making a PRIMARY KEY

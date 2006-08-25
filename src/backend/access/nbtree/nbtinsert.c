@@ -244,8 +244,33 @@ _bt_check_unique(Relation rel, IndexTuple itup, Relation heapRel,
 					}
 
 					/*
-					 * Otherwise we have a definite conflict.
+					 * Otherwise we have a definite conflict.  But before
+					 * complaining, look to see if the tuple we want to insert
+					 * is itself now committed dead --- if so, don't complain.
+					 * This is a waste of time in normal scenarios but we must
+					 * do it to support CREATE INDEX CONCURRENTLY.
 					 */
+					htup.t_self = itup->t_tid;
+					if (heap_fetch(heapRel, SnapshotSelf, &htup, &hbuffer,
+									false, NULL))
+					{
+						/* Normal case --- it's still live */
+						ReleaseBuffer(hbuffer);
+					}
+					else if (htup.t_data != NULL)
+					{
+						/*
+						 * It's been deleted, so no error, and no need to
+						 * continue searching
+						 */
+						break;
+					}
+					else
+					{
+						/* couldn't find the tuple?? */
+						elog(ERROR, "failed to fetch tuple being inserted");
+					}
+
 					ereport(ERROR,
 							(errcode(ERRCODE_UNIQUE_VIOLATION),
 					errmsg("duplicate key violates unique constraint \"%s\"",

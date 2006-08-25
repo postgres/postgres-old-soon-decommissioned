@@ -138,6 +138,18 @@ get_relation_info(PlannerInfo *root, Oid relationObjectId, RelOptInfo *rel)
 			indexRelation = index_open(indexoid, lmode);
 			index = indexRelation->rd_index;
 
+			/*
+			 * Ignore invalid indexes, since they can't safely be used for
+			 * queries.  Note that this is OK because the data structure
+			 * we are constructing is only used by the planner --- the
+			 * executor still needs to insert into "invalid" indexes!
+			 */
+			if (!index->indisvalid)
+			{
+				index_close(indexRelation, NoLock);
+				continue;
+			}
+
 			info = makeNode(IndexOptInfo);
 
 			info->indexoid = index->indexrelid;

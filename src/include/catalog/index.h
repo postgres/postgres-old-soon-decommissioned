@@ -39,7 +39,8 @@ extern Oid index_create(Oid heapRelationId,
 			 bool isprimary,
 			 bool isconstraint,
 			 bool allow_system_table_mods,
-			 bool skip_build);
+			 bool skip_build,
+			 bool concurrent);
 
 extern void index_drop(Oid indexId);
 
@@ -63,6 +64,8 @@ extern double IndexBuildHeapScan(Relation heapRelation,
 				   IndexInfo *indexInfo,
 				   IndexBuildCallback callback,
 				   void *callback_state);
+
+extern void validate_index(Oid heapId, Oid indexId, Snapshot snapshot);
 
 extern void reindex_index(Oid indexId);
 extern bool reindex_relation(Oid relid, bool toast_too);
