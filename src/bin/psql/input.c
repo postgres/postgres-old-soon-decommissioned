@@ -340,7 +340,14 @@ bool
 saveHistory(char *fname, bool encodeFlag)
 {
 #ifdef USE_READLINE
-	if (useHistory && fname)
+	/*
+	 * Suppressing the write attempt when HISTFILE is set to /dev/null
+	 * may look like a negligible optimization, but it's necessary on e.g.
+	 * Darwin, where write_history will fail because it tries to chmod
+	 * the target file.
+	 */
+	if (useHistory && fname &&
+		strcmp(fname, DEVNULL) != 0)
 	{
 		if (encodeFlag)
 			encode_history();
