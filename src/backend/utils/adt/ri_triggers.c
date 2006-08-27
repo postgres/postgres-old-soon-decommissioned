@@ -212,9 +212,19 @@ RI_FKey_check(PG_FUNCTION_ARGS)
 	}
 
 	/*
-	 * We should not even consider checking the row if it is no longer valid
-	 * since it was either deleted (doesn't matter) or updated (in which case
-	 * it'll be checked with its final values).
+	 * We should not even consider checking the row if it is no longer valid,
+	 * since it was either deleted (so the deferred check should be skipped)
+	 * or updated (in which case only the latest version of the row should
+	 * be checked).  Test its liveness with HeapTupleSatisfiesItself.
+	 *
+	 * NOTE: The normal coding rule is that one must acquire the buffer
+	 * content lock to call HeapTupleSatisfiesFOO.  We can skip that here
+	 * because we know that AfterTriggerExecute just fetched the tuple
+	 * successfully, so there cannot be a VACUUM compaction in progress
+	 * on the page (either heap_fetch would have waited for the VACUUM,
+	 * or the VACUUM's LockBufferForCleanup would be waiting for us to drop
+	 * pin).  And since this is a row inserted by our open transaction,
+	 * no one else can be entitled to change its xmin/xmax.
 	 */
 	Assert(new_row_buf != InvalidBuffer);
 	if (!HeapTupleSatisfiesItself(new_row->t_data, new_row_buf))
