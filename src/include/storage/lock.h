@@ -14,6 +14,7 @@
 #ifndef LOCK_H_
 #define LOCK_H_
 
+#include "nodes/pg_list.h"
 #include "storage/itemptr.h"
 #include "storage/lwlock.h"
 #include "storage/shmem.h"
@@ -412,6 +413,7 @@ extern bool LockRelease(const LOCKTAG *locktag,
 extern void LockReleaseAll(LOCKMETHODID lockmethodid, bool allLocks);
 extern void LockReleaseCurrentOwner(void);
 extern void LockReassignCurrentOwner(void);
+extern List *GetLockConflicts(const LOCKTAG *locktag, LOCKMODE lockmode);
 extern void AtPrepare_Locks(void);
 extern void PostPrepare_Locks(TransactionId xid);
 extern int LockCheckConflicts(LockMethod lockMethodTable,
@@ -421,13 +423,6 @@ extern void GrantLock(LOCK *lock, PROCLOCK *proclock, LOCKMODE lockmode);
 extern void GrantAwaitedLock(void);
 extern void RemoveFromWaitQueue(PGPROC *proc, uint32 hashcode);
 extern Size LockShmemSize(void);
-extern bool DeadLockCheck(PGPROC *proc);
-extern void DeadLockReport(void);
-extern void RememberSimpleDeadLock(PGPROC *proc1,
-					   LOCKMODE lockmode,
-					   LOCK *lock,
-					   PGPROC *proc2);
-extern void InitDeadLockChecking(void);
 extern LockData *GetLockStatusData(void);
 extern const char *GetLockmodeName(LOCKMETHODID lockmethodid, LOCKMODE mode);
 
@@ -437,6 +432,14 @@ extern void lock_twophase_postcommit(TransactionId xid, uint16 info,
 						 void *recdata, uint32 len);
 extern void lock_twophase_postabort(TransactionId xid, uint16 info,
 						void *recdata, uint32 len);
+
+extern bool DeadLockCheck(PGPROC *proc);
+extern void DeadLockReport(void);
+extern void RememberSimpleDeadLock(PGPROC *proc1,
+					   LOCKMODE lockmode,
+					   LOCK *lock,
+					   PGPROC *proc2);
+extern void InitDeadLockChecking(void);
 
 #ifdef LOCK_DEBUG
 extern void DumpLocks(PGPROC *proc);
