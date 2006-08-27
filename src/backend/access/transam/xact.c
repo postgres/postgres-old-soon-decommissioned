@@ -126,14 +126,6 @@ typedef struct TransactionStateData
 typedef TransactionStateData *TransactionState;
 
 /*
- * childXids is currently implemented as an Oid List, relying on the
- * assumption that TransactionIds are no wider than Oid.  We use these
- * macros to provide some isolation in case that changes in the future.
- */
-#define lfirst_xid(lc)				((TransactionId) lfirst_oid(lc))
-#define lappend_xid(list, datum)	lappend_oid(list, (Oid) (datum))
-
-/*
  * CurrentTransactionState always points to the current transaction state
  * block.  It will point to TopTransactionStateData when not in a
  * transaction at all, or when in a top-level transaction.
