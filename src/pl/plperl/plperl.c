@@ -1630,7 +1630,7 @@ plperl_spi_execute_fetch_result(SPITupleTable *tuptable, int processed,
 	hv_store(result, "processed", strlen("processed"),
 			 newSViv(processed), 0);
 
-	if (status == SPI_OK_SELECT)
+	if (status > 0 && tuptable)
 	{
 		AV		   *rows;
 		SV		   *row;

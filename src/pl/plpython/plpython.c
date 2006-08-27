@@ -2193,24 +2193,19 @@ PLy_spi_execute_fetch_result(SPITupleTable *tuptable, int rows, int status)
 	Py_DECREF(result->status);
 	result->status = PyInt_FromLong(status);
 
-	if (status == SPI_OK_UTILITY)
-	{
-		Py_DECREF(result->nrows);
-		result->nrows = PyInt_FromLong(0);
-	}
-	else if (status != SPI_OK_SELECT)
+	if (status > 0 && tuptable == NULL)
 	{
 		Py_DECREF(result->nrows);
 		result->nrows = PyInt_FromLong(rows);
 	}
-	else
+	else if (status > 0 && tuptable != NULL)
 	{
 		PLyTypeInfo args;
 		int			i;
 
-		PLy_typeinfo_init(&args);
 		Py_DECREF(result->nrows);
 		result->nrows = PyInt_FromLong(rows);
+		PLy_typeinfo_init(&args);
 
 		oldcontext = CurrentMemoryContext;
 		PG_TRY();
