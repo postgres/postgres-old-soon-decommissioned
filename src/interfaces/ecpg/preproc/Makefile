@@ -17,9 +17,10 @@ MAJOR_VERSION= 4
 MINOR_VERSION= 2
 PATCHLEVEL=1
 
-override CPPFLAGS := -I$(srcdir)/../include -I$(srcdir) $(CPPFLAGS) \
-	-DMAJOR_VERSION=$(MAJOR_VERSION) \
-	-DMINOR_VERSION=$(MINOR_VERSION) -DPATCHLEVEL=$(PATCHLEVEL)
+override CPPFLAGS := -I../include -I$(top_srcdir)/src/interfaces/ecpg/include \
+	-I$(srcdir) -DMAJOR_VERSION=$(MAJOR_VERSION) \
+	-DMINOR_VERSION=$(MINOR_VERSION) -DPATCHLEVEL=$(PATCHLEVEL) \
+	 $(CPPFLAGS)
 
 ifeq ($(GCC), yes)
 override CFLAGS += -Wno-error

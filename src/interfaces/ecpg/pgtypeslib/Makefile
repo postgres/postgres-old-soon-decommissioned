@@ -17,7 +17,8 @@ SO_MAJOR_VERSION= 2
 SO_MINOR_VERSION= 2
 DLTYPE= library
 
-override CPPFLAGS := -DFRONTEND -I$(top_srcdir)/src/interfaces/ecpg/include \
+override CPPFLAGS := -DFRONTEND \
+	-I../include -I$(top_srcdir)/src/interfaces/ecpg/include \
 	-I$(top_srcdir)/src/include/utils -I$(libpq_srcdir) $(CPPFLAGS)
 override CFLAGS += $(PTHREAD_CFLAGS)
 
