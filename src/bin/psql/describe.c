@@ -673,7 +673,7 @@ describeTableDetails(const char *pattern, bool verbose)
 
 	if (PQntuples(res) == 0)
 	{
-		if (!QUIET())
+		if (!pset.quiet)
 			fprintf(stderr, _("Did not find any relation named \"%s\".\n"),
 					pattern);
 		PQclear(res);
@@ -768,7 +768,7 @@ describeOneTableDetails(const char *schemaname,
 	/* Did we get anything? */
 	if (PQntuples(res) == 0)
 	{
-		if (!QUIET())
+		if (!pset.quiet)
 			fprintf(stderr, _("Did not find any relation with OID %s.\n"),
 					oid);
 		goto error_return;
@@ -1582,7 +1582,7 @@ listTables(const char *tabtypes, const char *pattern, bool verbose)
 	if (!res)
 		return false;
 
-	if (PQntuples(res) == 0 && !QUIET())
+	if (PQntuples(res) == 0 && !pset.quiet)
 	{
 		if (pattern)
 			fprintf(pset.queryFout, _("No matching relations found.\n"));

@@ -67,8 +67,7 @@ finish_lo_xact(const char *operation, bool own_transaction)
 {
 	PGresult   *res;
 
-	if (own_transaction &&
-		GetVariableBool(pset.vars, "AUTOCOMMIT"))
+	if (own_transaction && pset.autocommit)
 	{
 		/* close out our own xact */
 		if (!(res = PSQLexec("COMMIT", false)))
@@ -91,8 +90,7 @@ fail_lo_xact(const char *operation, bool own_transaction)
 {
 	PGresult   *res;
 
-	if (own_transaction &&
-		GetVariableBool(pset.vars, "AUTOCOMMIT"))
+	if (own_transaction && pset.autocommit)
 	{
 		/* close out our own xact */
 		res = PSQLexec("ROLLBACK", false);

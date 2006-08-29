@@ -704,7 +704,7 @@ handleCopyIn(PGconn *conn, FILE *copystream, bool isbinary)
 	/* Prompt if interactive input */
 	if (isatty(fileno(copystream)))
 	{
-		if (!QUIET())
+		if (!pset.quiet)
 			puts(_("Enter data to be copied followed by a newline.\n"
 				   "End with a backslash and a period on a line by itself."));
 		prompt = get_prompt(PROMPT_COPY);
