@@ -871,7 +871,9 @@ exec_simple_query(const char *query_string)
 	parsetree_list = pg_parse_query(query_string);
 
 	/* Log immediately if dictated by log_statement */
-	was_logged = log_after_parse(parsetree_list, query_string, &prepare_string);
+	if (log_statement != LOGSTMT_NONE || log_duration ||
+		log_min_duration_statement >= 0)
+		was_logged = log_after_parse(parsetree_list, query_string, &prepare_string);
 
 	/*
 	 * Switch back to transaction context to enter the loop.
