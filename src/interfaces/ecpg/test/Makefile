@@ -76,11 +76,11 @@ endif
 
 
 check: all
-	sh ./pg_regress  --dbname=regress1 --debug --temp-install --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE)
+	sh ./pg_regress  --dbname=regress1 --temp-install --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE)
 
 # the same options, but with --listen-on-tcp
 checktcp: all
-	sh ./pg_regress  --dbname=regress1 --debug --temp-install --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE) --listen-on-tcp
+	sh ./pg_regress  --dbname=regress1 --temp-install --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE) --listen-on-tcp
 
 installcheck: all
-	sh ./pg_regress  --dbname=regress1 --debug --top-builddir=$(top_builddir) --load-language=plpgsql $(NOLOCALE)
+	sh ./pg_regress  --dbname=regress1 --top-builddir=$(top_builddir) --load-language=plpgsql $(NOLOCALE)
