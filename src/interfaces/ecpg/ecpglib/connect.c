@@ -427,7 +427,8 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 				host = ECPGstrdup(tmp + 1, lineno);
 				*tmp = '\0';
 			}
-			realname = ECPGstrdup(dbname, lineno);
+
+			realname = (strlen(dbname) > 0) ? ECPGstrdup(dbname, lineno) : NULL;
 		}
 	}
 	else

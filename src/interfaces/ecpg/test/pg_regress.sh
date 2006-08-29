@@ -691,6 +691,12 @@ echo "$bindir/createuser" $psql_options -R -S -D -q connectuser
 if [ $? -ne 0 ]; then
 	echo Could not create user connectuser
 fi
+# to test username = dbname 
+echo "$bindir/createuser" $psql_options -R -S -D -q connectdb
+"$bindir/createuser" $psql_options -R -S -D -q connectdb
+if [ $? -ne 0 ]; then
+	echo Could not create user connectdb
+fi
 
 # this variable prevents that the PID gets included in the logfiles
 ECPG_REGRESSION=1; export ECPG_REGRESSION
