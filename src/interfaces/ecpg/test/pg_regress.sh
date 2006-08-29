@@ -751,6 +751,10 @@ for i in \
 		done
 	fi
 
+	mv "$outfile_source" "$outfile_source.tmp"
+	cat "$outfile_source.tmp" | sed -e 's,^\(#line [0-9]*\) ".*/\([^/]*\)",\1 "\2",' > "$outfile_source"
+	rm "$outfile_source.tmp"
+
 	DIFFER=""
 	diff $DIFFFLAGS expected/$outprg.stderr "$outfile_stderr" > /dev/null 2>&1
 	if [ $? != 0 ]; then
