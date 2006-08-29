@@ -245,6 +245,9 @@ ginGetEntry(BuildAccumulator *accum, Datum *value, uint32 *n) {
 		accum->stack = palloc0(sizeof(EntryAccumulator*)*(accum->maxdepth+1));
 		entry = accum->entries;
 
+		if ( entry == NULL )
+			return NULL;
+
 		/* find most-left value */
 		for(;;) {
 			accum->stack[ accum->stackpos ] = entry;
