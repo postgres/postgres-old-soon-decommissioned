@@ -122,7 +122,8 @@ typedef struct PortalData
 	 */
 
 	/* The query or queries the portal will execute */
-	const char *sourceText;		/* text of query, if known (may be NULL) */
+	const char *sourceText;		/* text of query, if known, might be NULL */
+	const char *bindText;		/* text of bind parameters, might be NULL */
 	const char *commandTag;		/* command tag for original query */
 	List	   *parseTrees;		/* parse tree(s) */
 	List	   *planTrees;		/* plan tree(s) */
@@ -215,6 +216,7 @@ extern Portal GetPortalByName(const char *name);
 extern void PortalDefineQuery(Portal portal,
 				  const char *prepStmtName,
 				  const char *sourceText,
+				  const char *bindText,
 				  const char *commandTag,
 				  List *parseTrees,
 				  List *planTrees,

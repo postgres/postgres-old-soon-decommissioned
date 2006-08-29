@@ -2839,7 +2839,7 @@ SELECT * FROM parent WHERE key = 2400;
         prepare, bind, and execute commands are logged only if
         <varname>log_statement</> is <literal>all</>.  Bind parameter 
         values are also logged if they are supplied in <literal>text</>
-        format.
+        format (literal single quotes are doubled).
        </para>
        <para>
         The default is <literal>none</>. Only superusers can change this

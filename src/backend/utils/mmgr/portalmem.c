@@ -274,6 +274,7 @@ void
 PortalDefineQuery(Portal portal,
 				  const char *prepStmtName,
 				  const char *sourceText,
+				  const char *bindText,
 				  const char *commandTag,
 				  List *parseTrees,
 				  List *planTrees,
@@ -288,6 +289,7 @@ PortalDefineQuery(Portal portal,
 
 	portal->prepStmtName = prepStmtName;
 	portal->sourceText = sourceText;
+	portal->bindText = bindText;
 	portal->commandTag = commandTag;
 	portal->parseTrees = parseTrees;
 	portal->planTrees = planTrees;

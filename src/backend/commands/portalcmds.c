@@ -114,6 +114,7 @@ PerformCursorOpen(DeclareCursorStmt *stmt, ParamListInfo params)
 	PortalDefineQuery(portal,
 					  NULL,
 					  pstrdup(debug_query_string),
+					  NULL,
 					  "SELECT", /* cursor's query is always a SELECT */
 					  list_make1(query),
 					  list_make1(plan),
