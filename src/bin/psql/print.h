@@ -12,6 +12,7 @@
 
 
 extern FILE *PageOutput(int lines, unsigned short int pager);
+extern void ClosePager(FILE *pagerpipe);
 
 extern void html_escaped_print(const char *in, FILE *fout);
 
@@ -32,11 +33,14 @@ typedef struct _printTableOpt
 	enum printFormat format;	/* one of the above */
 	bool		expanded;		/* expanded/vertical output (if supported by
 								 * output format) */
+	unsigned short int border;	/* Print a border around the table. 0=none,
+								 * 1=dividing lines, 2=full */
 	unsigned short int pager;	/* use pager for output (if to stdout and
 								 * stdout is a tty) 0=off 1=on 2=always */
 	bool		tuples_only;	/* don't output headers, row counts, etc. */
-	unsigned short int border;	/* Print a border around the table. 0=none,
-								 * 1=dividing lines, 2=full */
+	bool		start_table;	/* print start decoration, eg <table> */
+	bool		stop_table;		/* print stop decoration, eg </table> */
+	unsigned long prior_records;	/* start offset for record counters */
 	char	   *fieldSep;		/* field separator for unaligned text mode */
 	char	   *recordSep;		/* record separator for unaligned text mode */
 	bool		numericLocale;	/* locale-aware numeric units separator and
