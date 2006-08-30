@@ -1146,7 +1146,7 @@ exec_parse_message(const char *query_string,	/* string to execute */
 
 	if (log_statement == LOGSTMT_ALL)
 		ereport(LOG,
-				(errmsg("statement: prepare %s, %s",
+				(errmsg("statement: prepare %s: %s",
 						*stmt_name ? stmt_name : "<unnamed>",
 						query_string)));
 
@@ -1621,7 +1621,7 @@ exec_bind_message(StringInfo input_message)
 						*portal->name ? "/" : "",
 						*portal->name ? portal->name : "",
 						/* print bind parameters if we have them */
-						bind_values_str.len ? ", " : "",
+						bind_values_str.len ? ": " : "",
 						bind_values_str.len ? bind_values_str.data : ""),
 						errdetail("prepare: %s", pstmt->query_string)));
 	}
@@ -1788,7 +1788,7 @@ exec_execute_message(const char *portal_name, long max_rows)
 						*portal_name ? portal_name : ""),
 						errdetail("prepare: %s%s%s", sourceText,
 						/* optionally print bind parameters */
-						bindText ? ",  bind: " : "",
+						bindText ? "  |  bind: " : "",
 						bindText ? bindText : "")));
 
 	BeginCommand(portal->commandTag, dest);
@@ -1902,7 +1902,7 @@ exec_execute_message(const char *portal_name, long max_rows)
 								*portal_name ? portal_name : ""),
 								errdetail("prepare: %s%s%s", sourceText,
 								/* optionally print bind parameters */
-								bindText ? ",  bind: " : "",
+								bindText ? "  |  bind: " : "",
 								bindText ? bindText : "")));
 		}
 	}
