@@ -19,7 +19,6 @@
 #include <fcntl.h>
 #include <assert.h>
 
-int			pgwin32_open(const char *fileName, int fileFlags,...);
 
 static int
 openFlagsToCreateFileFlags(int openFlags)
@@ -110,6 +109,34 @@ pgwin32_open(const char *fileName, int fileFlags,...)
 		(fileFlags & (O_TEXT | O_BINARY) && (_setmode(fd, fileFlags & (O_TEXT | O_BINARY)) < 0)))
 		CloseHandle(h);			/* will not affect errno */
 	return fd;
+}
+
+FILE *
+pgwin32_fopen(const char *fileName, const char *mode)
+{
+	int openmode = 0;
+	int fd;
+	
+	if (strstr(mode, "r+"))
+		openmode |= O_RDWR;
+	else if (strchr(mode, 'r'))
+		openmode |= O_RDONLY;
+	if (strstr(mode, "w+"))
+		openmode |= O_RDWR | O_CREAT | O_TRUNC;
+	else if (strchr(mode, 'w'))
+		openmode |= O_WRONLY | O_CREAT | O_TRUNC;
+	if (strchr(mode, 'a'))
+		openmode |= O_WRONLY | O_APPEND;
+
+	if (strchr(mode, 'b'))
+		openmode |= O_BINARY;
+	if (strchr(mode, 't'))
+		openmode |= O_TEXT;
+	
+	fd = pgwin32_open(fileName, openmode);
+	if (fd == -1)
+		return NULL;
+	return _fdopen(fd, mode);
 }
 
 #endif

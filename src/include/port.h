@@ -264,12 +264,15 @@ extern bool rmtree(char *path, bool rmtopdir);
 
 #if defined(WIN32) && !defined(__CYGWIN__)
 
-/* open() replacement to allow delete of held files and passing
- * of special options. */
+/* open() and fopen() replacements to allow deletion of open files and
+ * passing of other special options.
+ */
 extern int	pgwin32_open(const char *, int,...);
+extern FILE *pgwin32_fopen(const char *, const char *);
 
 #ifndef FRONTEND
 #define		open(a,b,c)	pgwin32_open(a,b,c)
+#define		fopen(a,b) pgwin32_fopen(a,b)
 #endif
 
 #define popen(a,b) _popen(a,b)
