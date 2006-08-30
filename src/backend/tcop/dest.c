@@ -30,6 +30,7 @@
 
 #include "access/printtup.h"
 #include "access/xact.h"
+#include "commands/copy.h"
 #include "executor/executor.h"
 #include "executor/tstoreReceiver.h"
 #include "libpq/libpq.h"
@@ -128,6 +129,9 @@ CreateDestReceiver(CommandDest dest, Portal portal)
 
 		case DestIntoRel:
 			return CreateIntoRelDestReceiver();
+
+		case DestCopyOut:
+			return CreateCopyDestReceiver();
 	}
 
 	/* should never get here */
@@ -153,6 +157,7 @@ EndCommand(const char *commandTag, CommandDest dest)
 		case DestSPI:
 		case DestTuplestore:
 		case DestIntoRel:
+		case DestCopyOut:
 			break;
 	}
 }
@@ -192,6 +197,7 @@ NullCommand(CommandDest dest)
 		case DestSPI:
 		case DestTuplestore:
 		case DestIntoRel:
+		case DestCopyOut:
 			break;
 	}
 }
@@ -233,6 +239,7 @@ ReadyForQuery(CommandDest dest)
 		case DestSPI:
 		case DestTuplestore:
 		case DestIntoRel:
+		case DestCopyOut:
 			break;
 	}
 }

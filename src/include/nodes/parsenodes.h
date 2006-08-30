@@ -1012,16 +1012,22 @@ typedef struct GrantRoleStmt
 
 /* ----------------------
  *		Copy Statement
+ *
+ * We support "COPY relation FROM file", "COPY relation TO file", and
+ * "COPY (query) TO file".  In any given CopyStmt, exactly one of "relation"
+ * and "query" must be non-NULL.  Note: "query" is a SelectStmt before
+ * parse analysis, and a Query afterwards.
  * ----------------------
  */
 typedef struct CopyStmt
 {
 	NodeTag		type;
 	RangeVar   *relation;		/* the relation to copy */
+	Query	   *query;			/* the query to copy */
 	List	   *attlist;		/* List of column names (as Strings), or NIL
 								 * for all columns */
 	bool		is_from;		/* TO or FROM */
-	char	   *filename;		/* if NULL, use stdin/stdout */
+	char	   *filename;		/* filename, or NULL for STDIN/STDOUT */
 	List	   *options;		/* List of DefElem nodes */
 } CopyStmt;
 

@@ -1934,6 +1934,7 @@ _copyCopyStmt(CopyStmt *from)
 	CopyStmt   *newnode = makeNode(CopyStmt);
 
 	COPY_NODE_FIELD(relation);
+	COPY_NODE_FIELD(query);
 	COPY_NODE_FIELD(attlist);
 	COPY_SCALAR_FIELD(is_from);
 	COPY_STRING_FIELD(filename);

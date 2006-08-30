@@ -341,6 +341,19 @@ transformStmt(ParseState *pstate, Node *parseTree,
 			}
 			break;
 
+		case T_CopyStmt:
+			{
+				CopyStmt *n = (CopyStmt *) parseTree;
+
+				result = makeNode(Query);
+				result->commandType = CMD_UTILITY;
+				if (n->query)
+					n->query = transformStmt(pstate, (Node *) n->query,
+											 extras_before, extras_after);
+				result->utilityStmt = (Node *) parseTree;
+			}
+			break;
+
 		case T_AlterTableStmt:
 			result = transformAlterTableStmt(pstate,
 											 (AlterTableStmt *) parseTree,

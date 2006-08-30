@@ -863,6 +863,7 @@ static bool
 _equalCopyStmt(CopyStmt *a, CopyStmt *b)
 {
 	COMPARE_NODE_FIELD(relation);
+	COMPARE_NODE_FIELD(query);
 	COMPARE_NODE_FIELD(attlist);
 	COMPARE_SCALAR_FIELD(is_from);
 	COMPARE_STRING_FIELD(filename);

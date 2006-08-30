@@ -39,6 +39,9 @@
  *	\copy tablename [(columnlist)] from|to filename
  *	  [ with ] [ binary ] [ oids ] [ delimiter [as] char ] [ null [as] string ]
  *
+ *	\copy ( select stmt ) to filename
+ *	  [ with ] [ binary ] [ delimiter [as] char ] [ null [as] string ]
+ *
  * The pre-7.3 syntax was:
  *	\copy [ binary ] tablename [(columnlist)] [with oids] from|to filename
  *		[ [using] delimiters char ] [ with null as string ]
@@ -141,6 +144,26 @@ parse_slash_copy(const char *args)
 	}
 
 	result->table = pg_strdup(token);
+
+	/* Handle COPY (SELECT) case */
+	if (token[0] == '(')
+	{
+		int	parens = 1;
+
+		while (parens > 0)
+		{
+			token = strtokx(NULL, whitespace, ".,()", "\"'",
+							nonstd_backslash, true, false, pset.encoding);
+			if (!token)
+				goto error;
+			if (token[0] == '(')
+				parens++;
+			else if (token[0] == ')')
+				parens--;
+			xstrcat(&result->table, " ");
+			xstrcat(&result->table, token);
+		}
+	}
 
 	token = strtokx(NULL, whitespace, ".,()", "\"",
 					0, false, false, pset.encoding);

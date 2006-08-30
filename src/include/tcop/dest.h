@@ -85,7 +85,8 @@ typedef enum
 	DestRemoteExecute,			/* sent to frontend, in Execute command */
 	DestSPI,					/* results sent to SPI manager */
 	DestTuplestore,				/* results sent to Tuplestore */
-	DestIntoRel					/* results sent to relation (SELECT INTO) */
+	DestIntoRel,				/* results sent to relation (SELECT INTO) */
+	DestCopyOut					/* results sent to COPY TO code */
 } CommandDest;
 
 /* ----------------

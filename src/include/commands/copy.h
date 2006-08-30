@@ -15,8 +15,11 @@
 #define COPY_H
 
 #include "nodes/parsenodes.h"
+#include "tcop/dest.h"
 
 
 extern uint64 DoCopy(const CopyStmt *stmt);
+
+extern DestReceiver *CreateCopyDestReceiver(void);
 
 #endif   /* COPY_H */
