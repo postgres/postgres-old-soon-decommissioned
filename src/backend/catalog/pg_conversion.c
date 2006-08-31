@@ -119,15 +119,15 @@ ConversionCreate(const char *conname, Oid connamespace,
 	referenced.objectSubId = 0;
 	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
 
+	/* create dependency on namespace */
+	referenced.classId = NamespaceRelationId;
+	referenced.objectId = connamespace;
+	referenced.objectSubId = 0;
+	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
+
 	/* create dependency on owner */
 	recordDependencyOnOwner(ConversionRelationId, HeapTupleGetOid(tup),
 							conowner);
-
-	/* create dependency on namespace */
-	myself.classId = ConversionRelationId;
-	referenced.classId = NamespaceRelationId;
-	referenced.objectId = connamespace;
-	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
 
 	heap_freetuple(tup);
 	heap_close(rel, RowExclusiveLock);
