@@ -121,6 +121,12 @@ ConversionCreate(const char *conname, Oid connamespace,
 	referenced.objectSubId = 0;
 	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
 
+	/* create dependency on namespace */
+	referenced.classId = get_system_catalog_relid(NamespaceRelationName);
+	referenced.objectId = connamespace;
+	referenced.objectSubId = 0;
+	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
+
 	heap_freetuple(tup);
 	heap_close(rel, RowExclusiveLock);
 
