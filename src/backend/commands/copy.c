@@ -685,7 +685,7 @@ CopyLoadRawBuf(CopyState cstate)
 
 
 /*
- *	 DoCopy executes the SQL COPY statement.
+ *	 DoCopy executes the SQL COPY statement
  *
  * Either unload or reload contents of table <relation>, depending on <from>.
  * (<from> = TRUE means we are inserting into the table.)  In the "TO" case
