@@ -3588,7 +3588,7 @@ parse_int(const char *value, int *result, int flags)
 		}
 		else if (strcmp(endptr, "GB") == 0)
 		{
-			val *= KB_PER_MB;
+			val *= KB_PER_GB;
 			used = true;
 			endptr += 2;
 		}
