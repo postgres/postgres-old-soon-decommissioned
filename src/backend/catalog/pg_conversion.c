@@ -18,6 +18,7 @@
 #include "catalog/dependency.h"
 #include "catalog/indexing.h"
 #include "catalog/pg_conversion.h"
+#include "catalog/pg_namespace.h"
 #include "catalog/pg_proc.h"
 #include "catalog/namespace.h"
 #include "utils/builtins.h"
@@ -117,6 +118,12 @@ ConversionCreate(const char *conname, Oid connamespace,
 	/* create dependency on conversion procedure */
 	referenced.classId = ProcedureRelationId;
 	referenced.objectId = conproc;
+	referenced.objectSubId = 0;
+	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
+
+	/* create dependency on namespace */
+	referenced.classId = NamespaceRelationId;
+	referenced.objectId = connamespace;
 	referenced.objectSubId = 0;
 	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
 
