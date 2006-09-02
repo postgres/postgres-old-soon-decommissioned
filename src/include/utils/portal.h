@@ -173,7 +173,7 @@ typedef struct PortalData
 	bool		atStart;
 	bool		atEnd;
 	bool		posOverflow;
-	long		portalPos;
+	int64		portalPos;
 
 	/* Presentation data, primarily used by the pg_cursors system view */
 	TimestampTz	creation_time;	/* time at which this portal was defined */

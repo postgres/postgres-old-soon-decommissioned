@@ -1439,13 +1439,13 @@ typedef enum FetchDirection
 	FETCH_RELATIVE
 } FetchDirection;
 
-#define FETCH_ALL	LONG_MAX
+#define FETCH_ALL	LLONG_MAX
 
 typedef struct FetchStmt
 {
 	NodeTag		type;
 	FetchDirection direction;	/* see above */
-	long		howMany;		/* number of rows, or position argument */
+	int64		howMany;		/* number of rows, or position argument */
 	char	   *portalname;		/* name of portal (cursor) */
 	bool		ismove;			/* TRUE if MOVE */
 } FetchStmt;
