@@ -229,13 +229,6 @@ reindex_one_database(const char *name, const char *dbname, const char *type,
 
 	conn = connectDatabase(dbname, host, port, username, password, progname);
 
-	/* Suppress some NOTICE messages from REINDEX command */
-	if (quiet)
-	{
-		result = PQexec(conn, "SET client_min_messages = warning");
-		PQclear(result);
-	}
-
 	if (echo)
 		printf("%s", sql.data);
 	result = PQexec(conn, sql.data);
