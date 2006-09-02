@@ -4226,6 +4226,19 @@ dynamic_library_path = 'C:\tools\postgresql;H:\my_project\lib;$libdir'
       </listitem>
      </varlistentry>
 
+     <varlistentry id="guc-server-version-num" xreflabel="server_version_num">
+      <term><varname>server_version_num</varname> (<type>integer</type>)</term>
+      <indexterm>
+       <primary><varname>server_version_num</> configuration parameter</primary>
+      </indexterm>
+      <listitem>
+       <para>
+        Reports the version number of the server as an integer. It is determined 
+        by the value of <literal>PG_VERSION_NUM</> when building the server.
+       </para>
+      </listitem>
+     </varlistentry>
+
     </variablelist>
    </sect1>
 
