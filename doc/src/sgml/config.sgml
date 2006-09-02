@@ -383,7 +383,7 @@ SET ENABLE_SEQSCAN TO OFF;
        </para>
 
        <para>
-        The default value is 2. The value must be less than the value of
+        The default value is 3. The value must be less than the value of
         <varname>max_connections</varname>. This parameter can only be
         set at server start.
        </para>
