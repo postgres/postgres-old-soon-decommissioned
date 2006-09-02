@@ -1564,7 +1564,7 @@ static struct config_int ConfigureNamesInt[] =
 			NULL
 		},
 		&autovacuum_vac_thresh,
-		1000, 0, INT_MAX, NULL, NULL
+		500, 0, INT_MAX, NULL, NULL
 	},
 	{
 		{"autovacuum_analyze_threshold", PGC_SIGHUP, AUTOVACUUM,
@@ -1572,7 +1572,7 @@ static struct config_int ConfigureNamesInt[] =
 			NULL
 		},
 		&autovacuum_anl_thresh,
-		500, 0, INT_MAX, NULL, NULL
+		250, 0, INT_MAX, NULL, NULL
 	},
 
 	{
@@ -1738,7 +1738,7 @@ static struct config_real ConfigureNamesReal[] =
 			NULL
 		},
 		&autovacuum_vac_scale,
-		0.4, 0.0, 100.0, NULL, NULL
+		0.2, 0.0, 100.0, NULL, NULL
 	},
 	{
 		{"autovacuum_analyze_scale_factor", PGC_SIGHUP, AUTOVACUUM,
@@ -1746,7 +1746,7 @@ static struct config_real ConfigureNamesReal[] =
 			NULL
 		},
 		&autovacuum_anl_scale,
-		0.2, 0.0, 100.0, NULL, NULL
+		0.1, 0.0, 100.0, NULL, NULL
 	},
 
 	/* End-of-list marker */
