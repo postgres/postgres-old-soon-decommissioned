@@ -6,7 +6,7 @@
 #
 #-------------------------------------------------------------------------
 
-SRCS		= pgstattuple.c
+SRCS		= pgstattuple.c pgstatindex.c
 
 MODULE_big	= pgstattuple
 OBJS		= $(SRCS:.c=.o)
