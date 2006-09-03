@@ -200,6 +200,7 @@ $$ LANGUAGE plpythonu;
        the corresponding position.
       </para>
      </listitem>
+    </varlistentry>
 
     <varlistentry>
      <term>Mapping (dictionary)</term>
@@ -221,6 +222,7 @@ $$ LANGUAGE plpythonu;
        <symbol>None</symbol> with the corresponding column name as the key.
       </para>
      </listitem>
+    </varlistentry>
 
     <varlistentry>
      <term>Object (any object providing method <literal>__getattr__</literal>)</term>
