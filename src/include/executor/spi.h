@@ -126,8 +126,8 @@ extern void SPI_freetuptable(SPITupleTable *tuptable);
 extern Portal SPI_cursor_open(const char *name, void *plan,
 				Datum *Values, const char *Nulls, bool read_only);
 extern Portal SPI_cursor_find(const char *name);
-extern void SPI_cursor_fetch(Portal portal, bool forward, int64 count);
-extern void SPI_cursor_move(Portal portal, bool forward, int64 count);
+extern void SPI_cursor_fetch(Portal portal, bool forward, long count);
+extern void SPI_cursor_move(Portal portal, bool forward, long count);
 extern void SPI_cursor_close(Portal portal);
 
 extern void AtEOXact_SPI(bool isCommit);

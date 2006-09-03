@@ -14,8 +14,6 @@
 #ifndef PARSENODES_H
 #define PARSENODES_H
 
-#include "limits.h"
-
 #include "nodes/primnodes.h"
 #include "nodes/value.h"
 
@@ -1441,18 +1439,13 @@ typedef enum FetchDirection
 	FETCH_RELATIVE
 } FetchDirection;
 
-#ifdef HAVE_INT64
-#define FETCH_ALL	LLONG_MAX
-#else
 #define FETCH_ALL	LONG_MAX
-#endif
-
 
 typedef struct FetchStmt
 {
 	NodeTag		type;
 	FetchDirection direction;	/* see above */
-	int64		howMany;		/* number of rows, or position argument */
+	long		howMany;		/* number of rows, or position argument */
 	char	   *portalname;		/* name of portal (cursor) */
 	bool		ismove;			/* TRUE if MOVE */
 } FetchStmt;

@@ -666,22 +666,6 @@ other			.
 #endif
 						)
 					{
-						/* For Fetch/Move stmt, convert the string into int64 value */
-						if((strcmp(yylval.keyword, "fetch")==0) || (strcmp(yylval.keyword, "move")==0))
-						{
-								int64 int64Val;
-								errno = 0;
-	
-								int64Val =	strtoll(yytext, &endptr, 10);
-								if (*endptr != '\0' || errno == ERANGE)
-								{
-											yylval.str = pstrdup(yytext);
-											return FCONST;
-								}
-								yylval.i64val = int64Val; 
-								return I64CONST;
-						}
-
 						/* integer too large, treat it as a float */
 						yylval.str = pstrdup(yytext);
 						return FCONST;
