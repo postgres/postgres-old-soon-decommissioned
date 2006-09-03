@@ -34,6 +34,7 @@ struct variable no_indicator = {"no_indicator", &ecpg_no_indicator, 0, NULL};
 
 struct ECPGtype ecpg_query = {ECPGt_char_variable, 0L, NULL, {NULL}};
 
+/* INFORMIX workaround, no longer needed
 static struct inf_compat_col
 {
 	char *name;
@@ -46,6 +47,7 @@ static struct inf_compat_val
 	char *val;
 	struct inf_compat_val *next;
 } *informix_val;
+*/
 
 /*
  * Handle parsing errors and warnings
