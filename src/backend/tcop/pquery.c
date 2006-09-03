@@ -1347,7 +1347,7 @@ DoPortalRunFetch(Portal portal,
 				 * we are.	In any case, we arrange to fetch the target row
 				 * going forwards.
 				 */
-				if (portal->posOverflow || portal->portalPos == LLONG_MAX ||
+				if (portal->posOverflow || portal->portalPos == FETCH_ALL ||
 					count - 1 <= portal->portalPos / 2)
 				{
 					DoPortalRewind(portal);
