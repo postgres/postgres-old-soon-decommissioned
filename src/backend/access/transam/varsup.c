@@ -131,17 +131,28 @@ GetNewTransactionId(bool isSubXact)
 	 */
 	if (MyProc != NULL)
 	{
+		/*
+		 * Use volatile pointer to prevent code rearrangement; other backends
+		 * could be examining my subxids info concurrently, and we don't
+		 * want them to see an invalid intermediate state, such as
+		 * incrementing nxids before filling the array entry.  Note we are
+		 * assuming that TransactionId and int fetch/store are atomic.
+		 */
+		volatile PGPROC *myproc = MyProc;
+
 		if (!isSubXact)
-			MyProc->xid = xid;
+			myproc->xid = xid;
 		else
 		{
-			if (MyProc->subxids.nxids < PGPROC_MAX_CACHED_SUBXIDS)
+			int		nxids = myproc->subxids.nxids;
+
+			if (nxids < PGPROC_MAX_CACHED_SUBXIDS)
 			{
-				MyProc->subxids.xids[MyProc->subxids.nxids] = xid;
-				MyProc->subxids.nxids++;
+				myproc->subxids.xids[nxids] = xid;
+				myproc->subxids.nxids = nxids + 1;
 			}
 			else
-				MyProc->subxids.overflowed = true;
+				myproc->subxids.overflowed = true;
 		}
 	}
 
