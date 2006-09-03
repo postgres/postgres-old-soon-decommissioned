@@ -1591,8 +1591,8 @@ archive_command = 'copy "%p" /mnt/server/archivedir/"%f"'  # Windows
       </indexterm>
       <listitem>
        <para>
-        By default, the <xref linkend="guc-archive-command"> is only invoked
-        on completed WAL segments. Hence,
+        The <xref linkend="guc-archive-command"> is only invoked on completed 
+        WAL segments. Hence,
         if your server generates only little WAL traffic (or has slack periods 
         where it does so), there could be a long delay between the completion
         of a transaction and its safe recording in archive storage.  To put
