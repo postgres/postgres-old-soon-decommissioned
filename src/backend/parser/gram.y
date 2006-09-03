@@ -5974,7 +5974,7 @@ update_target_lists_el:
 						ResTarget *res_col = (ResTarget *) lfirst(col_cell);
 						Node *res_val = (Node *) lfirst(val_cell);
 
-						res_col->val = (Node *)copyObject(res_val);
+						res_col->val = res_val;
 					}
 				    
 					$$ = $2;
