@@ -1762,7 +1762,7 @@ dch_time(int arg, char *inout, int suf, bool is_to_char, bool is_interval,
 					tmfc->am = TRUE;
 				else
 					AMPM_ERROR;
-				return strlen(p_inout);
+				return strlen(P_M_STR);
 			}
 			break;
 		case DCH_AM:
@@ -1781,7 +1781,7 @@ dch_time(int arg, char *inout, int suf, bool is_to_char, bool is_interval,
 					tmfc->am = TRUE;
 				else
 					AMPM_ERROR;
-				return strlen(p_inout);
+				return strlen(PM_STR);
 			}
 			break;
 		case DCH_a_m:
@@ -1800,7 +1800,7 @@ dch_time(int arg, char *inout, int suf, bool is_to_char, bool is_interval,
 					tmfc->am = TRUE;
 				else
 					AMPM_ERROR;
-				return strlen(p_inout);
+				return strlen(p_m_STR);
 			}
 			break;
 		case DCH_am:
@@ -1819,7 +1819,7 @@ dch_time(int arg, char *inout, int suf, bool is_to_char, bool is_interval,
 					tmfc->am = TRUE;
 				else
 					AMPM_ERROR;
-				return strlen(p_inout);
+				return strlen(pm_STR);
 			}
 			break;
 		case DCH_HH:
