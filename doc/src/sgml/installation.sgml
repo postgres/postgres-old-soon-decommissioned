@@ -853,8 +853,9 @@ su - postgres
        <term><option>--with-ldap</option></term>
        <listitem>
         <para>
-         Build with <acronym>LDAP</><indexterm><primary>LDAP</></>
-         authentication support. On Unix, this requires the
+         Build with <acronym>LDAP</><indexterm><primary>LDAP</></> support
+         for authentication and connection parameter lookup.
+         On Unix, this requires the
          <productname>OpenLDAP</> package to be installed.
          <filename>configure</> will check for the required header files
          and libraries to make sure that your <productname>OpenLDAP</>
