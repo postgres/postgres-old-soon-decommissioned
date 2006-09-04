@@ -164,8 +164,8 @@ extern void AfterTriggerFireDeferred(void);
 extern void AfterTriggerEndXact(bool isCommit);
 extern void AfterTriggerBeginSubXact(void);
 extern void AfterTriggerEndSubXact(bool isCommit);
-
 extern void AfterTriggerSetState(ConstraintsSetStmt *stmt);
+extern void AfterTriggerCheckTruncate(List *relids);
 
 
 /*

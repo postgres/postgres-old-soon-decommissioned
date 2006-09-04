@@ -612,6 +612,13 @@ ExecuteTruncate(TruncateStmt *stmt)
 #endif
 
 	/*
+	 * Also check for pending AFTER trigger events on the target relations.
+	 * We can't just leave those be, since they will try to fetch tuples
+	 * that the TRUNCATE removes.
+	 */
+	AfterTriggerCheckTruncate(relids);
+
+	/*
 	 * OK, truncate each table.
 	 */
 	foreach(cell, rels)
