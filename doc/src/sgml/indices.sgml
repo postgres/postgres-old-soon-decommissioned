@@ -679,7 +679,12 @@ SELECT * FROM orders WHERE order_nr = 3501;
    <quote>x &lt; 1</quote> implies <quote>x &lt; 2</quote>; otherwise
    the predicate condition must exactly match part of the query's
    <literal>WHERE</> condition
-   or the index will not be recognized to be usable.
+   or the index will not be recognized to be usable. Matching takes
+   place at query planning time, not at run time. As a result,
+   parameterized query clauses will not work with a partial index. For
+   example a prepared query with a parameter might specify 
+   <quote>x &lt; ?</quote> which will never imply 
+   <quote>x &lt; 2</quote> for all possible values of the parameter. 
   </para>
 
   <para>
