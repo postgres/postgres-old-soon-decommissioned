@@ -2920,16 +2920,23 @@ DecodeInterval(char **field, int *ftype, int nf, int *dtype, struct pg_tm * tm, 
 						tm->tm_mday += val * 7;
 						if (fval != 0)
 						{
-							int			sec;
-
-							fval *= 7 * SECS_PER_DAY;
-							sec = fval;
-							tm->tm_sec += sec;
+							int extra_days;
+							fval *= 7;
+							extra_days = (int32) fval;
+							tm->tm_mday += extra_days;
+							fval -= extra_days;
+							if (fval != 0)
+							{
+								int			sec;
+								fval *= SECS_PER_DAY;
+								sec = fval;
+								tm->tm_sec += sec;
 #ifdef HAVE_INT64_TIMESTAMP
-							*fsec += (fval - sec) * 1000000;
+								*fsec += (fval - sec) * 1000000;
 #else
-							*fsec += fval - sec;
+								*fsec += fval - sec;
 #endif
+							}
 						}
 						tmask = (fmask & DTK_M(DAY)) ? 0 : DTK_M(DAY);
 						break;
@@ -2938,16 +2945,23 @@ DecodeInterval(char **field, int *ftype, int nf, int *dtype, struct pg_tm * tm, 
 						tm->tm_mon += val;
 						if (fval != 0)
 						{
-							int			sec;
-
-							fval *= DAYS_PER_MONTH * SECS_PER_DAY;
-							sec = fval;
-							tm->tm_sec += sec;
+							int         day;
+							fval *= DAYS_PER_MONTH;
+							day = fval;
+							tm->tm_mday += day;
+							fval -= day;
+							if (fval != 0)
+							{
+								int			sec;
+								fval *= SECS_PER_DAY;
+								sec = fval;
+								tm->tm_sec += sec;
 #ifdef HAVE_INT64_TIMESTAMP
-							*fsec += (fval - sec) * 1000000;
+								*fsec += (fval - sec) * 1000000;
 #else
-							*fsec += fval - sec;
+								*fsec += fval - sec;
 #endif
+							}
 						}
 						tmask = DTK_M(MONTH);
 						break;
