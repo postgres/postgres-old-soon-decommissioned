@@ -381,6 +381,41 @@
    </table>
 
   <para>
+   GIN indexes require four support functions,
+   shown in <xref linkend="xindex-gin-support-table">.
+  </para>
+
+   <table tocentry="1" id="xindex-gin-support-table">
+    <title>GIN Support Functions</title>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>Function</entry>
+       <entry>Support Number</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>compare</entry>
+       <entry>1</entry>
+      </row>
+      <row>
+       <entry>extract value</entry>
+       <entry>2</entry>
+      </row>
+      <row>
+       <entry>extract query</entry>
+       <entry>3</entry>
+      </row>
+      <row>
+       <entry>consistent</entry>
+       <entry>4</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+
+  <para>
    Unlike strategy operators, support functions return whichever data
    type the particular index method expects; for example in the case
    of the comparison function for B-trees, a signed integer.
