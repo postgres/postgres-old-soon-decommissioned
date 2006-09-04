@@ -131,7 +131,7 @@ extern DLLIMPORT int NBuffers;
 extern int	MaxBackends;
 
 extern DLLIMPORT int MyProcPid;
-extern struct Port *MyProcPort;
+extern DLLIMPORT struct Port *MyProcPort;
 extern long MyCancelKey;
 
 extern char OutputFileName[];

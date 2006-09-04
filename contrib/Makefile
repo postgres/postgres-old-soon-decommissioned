@@ -36,6 +36,10 @@ WANTED_DIRS = \
 		userlock	\
 		vacuumlo
 
+ifeq ($(with_openssl),yes)
+WANTED_DIRS += sslinfo
+endif
+
 # Missing:
 #		adddepend	\ (does not have a makefile)
 #		mSQL-interface	\ (requires msql installed)
