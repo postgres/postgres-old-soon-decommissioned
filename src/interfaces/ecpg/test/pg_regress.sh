@@ -668,7 +668,7 @@ create_database connectdb
 
 message "running regression test queries"
 
-outputdir="results/"
+outputdir="results"
 
 if [ ! -d "$outputdir" ]; then
     mkdir -p "$outputdir" || { (exit 2); exit; }
