@@ -986,11 +986,11 @@ SSLerrmessage(void)
 
 	errcode = ERR_get_error();
 	if (errcode == 0)
-		return "No SSL error reported";
+		return _("no SSL error reported");
 	errreason = ERR_reason_error_string(errcode);
 	if (errreason != NULL)
 		return errreason;
-	snprintf(errbuf, sizeof(errbuf), "SSL error code %lu", errcode);
+	snprintf(errbuf, sizeof(errbuf), _("SSL error code %lu"), errcode);
 	return errbuf;
 }
 
