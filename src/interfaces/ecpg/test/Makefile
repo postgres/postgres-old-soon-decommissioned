@@ -27,7 +27,7 @@ all install installdirs uninstall dep depend distprep:
 	$(MAKE) -C connect $@
 	$(MAKE) -C sql $@
 	$(MAKE) -C pgtypeslib $@
-	$(MAKE) -C errors $@
+	$(MAKE) -C preproc $@
 	$(MAKE) -C compat_informix $@
 	$(MAKE) -C complex $@
 	$(MAKE) -C thread $@
@@ -37,7 +37,7 @@ clean distclean maintainer-clean:
 	$(MAKE) -C connect extraclean
 	$(MAKE) -C sql $@
 	$(MAKE) -C pgtypeslib $@
-	$(MAKE) -C errors $@
+	$(MAKE) -C preproc $@
 	$(MAKE) -C compat_informix $@
 	$(MAKE) -C complex $@
 	$(MAKE) -C thread $@
