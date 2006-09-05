@@ -89,7 +89,7 @@ if [ $? -ne 0 ]; then
 fi
 
 
-cpp_define=`echo $OIDSFILE | tr abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ | sed -e 's/[^A-Z]/_/g'`
+cpp_define=`echo $OIDSFILE | tr abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ | sed -e 's/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/_/g'`
 
 #
 # Generate fmgroids.h
