@@ -122,7 +122,22 @@ compareEntries(GinState *ginstate, Datum a, Datum b) {
 }
 
 static FmgrInfo* cmpDatumPtr=NULL;
-static bool needUnique = FALSE;
+
+#if defined(__INTEL_COMPILER) && (defined(__ia64__) || defined(__ia64))   
+/* 
+ * Intel Compiler on Intel Itanium with -O2 has a bug around
+ * change static variable by user function called from
+ * libc func: it doesn't change. So mark it as volatile.
+ *
+ * It's a pity, but it's impossible to define optimization
+ * level here.
+ */
+#define	VOLATILE	volatile
+#else
+#define VOLATILE
+#endif
+
+static bool VOLATILE needUnique = FALSE;
 
 static int
 cmpEntries(const void * a, const void * b) {
