@@ -154,11 +154,12 @@ static int EVP_DigestFinal_ex(EVP_MD_CTX *ctx, unsigned char *res, unsigned int 
 #include "sha2.c"
 #include "internal-sha2.c"
 
-typedef int (*init_f)(PX_MD *md);
+typedef void (*init_f)(PX_MD *md);
 
 static int compat_find_digest(const char *name, PX_MD **res)
 {
 	init_f init = NULL;
+
 	if (pg_strcasecmp(name, "sha224") == 0)
 		init = init_sha224;
 	else if (pg_strcasecmp(name, "sha256") == 0)
@@ -169,6 +170,7 @@ static int compat_find_digest(const char *name, PX_MD **res)
 		init = init_sha512;
 	else
 		return PXE_NO_HASH;
+
 	*res = px_alloc(sizeof(PX_MD));
 	init(*res);
 	return 0;
