@@ -836,10 +836,10 @@ PGTYPESinterval_to_asc(interval * span)
 }
 
 int
-PGTYPESinterval_copy(interval * intvlsrc, interval * intrcldest)
+PGTYPESinterval_copy(interval * intvlsrc, interval * intvldest)
 {
-	intrcldest->time = intvlsrc->time;
-	intrcldest->month = intvlsrc->month;
+	intvldest->time = intvlsrc->time;
+	intvldest->month = intvlsrc->month;
 
 	return 0;
 }

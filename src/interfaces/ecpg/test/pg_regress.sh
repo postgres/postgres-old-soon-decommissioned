@@ -711,7 +711,7 @@ for i in \
          connect/*.pgc \
          compat_informix/*.pgc \
          complex/*.pgc \
-         errors/*.pgc \
+         preproc/*.pgc \
          pgtypeslib/*.pgc \
          sql/*.pgc \
          thread/*.pgc; do
