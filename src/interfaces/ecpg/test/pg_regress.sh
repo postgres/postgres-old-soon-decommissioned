@@ -644,7 +644,7 @@ trap 'sig_trap $?' 1 2 13 15
 if [ x"$temp_install" != x"" ]
 then
 	do_temp_install
-	PGPORT=$temp_port; export PGPORT
+	#PGPORT=$temp_port; export PGPORT
 else # not temp-install
 	dont_temp_install
 fi

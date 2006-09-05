@@ -53,6 +53,8 @@ replace_variables(char *text)
 				*ptr = '?';
 				for (++ptr; *ptr && isvarchar(*ptr); ptr++)
 					*ptr = ' ';
+				if (*ptr == '\0') /* we reached the end */
+					ptr--; /* since we will ptr++ in the top level for loop */
 			}
 		}
 	}
