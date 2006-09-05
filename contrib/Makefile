@@ -12,6 +12,7 @@ WANTED_DIRS = \
 		dblink		\
 		earthdistance	\
 		fuzzystrmatch	\
+		hstore			\
 		intagg		\
 		intarray	\
 		isbn_issn	\
