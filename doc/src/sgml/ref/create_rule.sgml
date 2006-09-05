@@ -200,8 +200,7 @@ CREATE [ OR REPLACE ] RULE <replaceable class="parameter">name</replaceable> AS 
   <title>Notes</title>
 
   <para>
-   You must have the privilege <literal>RULE</literal> on a table to
-   be allowed to define a rule on it.
+   You must be the owner of a table to create or change rules for it.
   </para>
 
   <para>

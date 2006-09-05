@@ -50,7 +50,7 @@ typedef uint32 AclMode;			/* a bitmask of privilege bits */
 #define ACL_SELECT		(1<<1)
 #define ACL_UPDATE		(1<<2)
 #define ACL_DELETE		(1<<3)
-#define ACL_RULE		(1<<4)
+/* #define ACL_RULE		(1<<4)	unused, available */
 #define ACL_REFERENCES	(1<<5)
 #define ACL_TRIGGER		(1<<6)
 #define ACL_EXECUTE		(1<<7)	/* for functions */

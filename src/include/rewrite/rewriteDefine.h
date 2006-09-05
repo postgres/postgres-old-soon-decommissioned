@@ -21,4 +21,6 @@ extern void DefineQueryRewrite(RuleStmt *args);
 extern void RenameRewriteRule(Oid owningRel, const char *oldName,
 				  const char *newName);
 
+extern void setRuleCheckAsUser(Node *node, Oid userid);
+
 #endif   /* REWRITEDEFINE_H */

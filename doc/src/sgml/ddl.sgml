@@ -1342,7 +1342,7 @@ ALTER TABLE products RENAME TO items;
   <para>
    There are several different privileges: <literal>SELECT</>,
    <literal>INSERT</>, <literal>UPDATE</>, <literal>DELETE</>,
-   <literal>RULE</>, <literal>REFERENCES</>, <literal>TRIGGER</>,
+   <literal>REFERENCES</>, <literal>TRIGGER</>,
    <literal>CREATE</>, <literal>CONNECT</>, <literal>TEMPORARY</>,
    <literal>EXECUTE</>, and <literal>USAGE</>.
    The privileges applicable to a particular

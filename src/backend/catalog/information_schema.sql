@@ -1194,7 +1194,6 @@ CREATE VIEW role_table_grants AS
           SELECT 'INSERT' UNION ALL
           SELECT 'UPDATE' UNION ALL
           SELECT 'REFERENCES' UNION ALL
-          SELECT 'RULE' UNION ALL
           SELECT 'TRIGGER') AS pr (type)
 
     WHERE c.relnamespace = nc.oid
@@ -1705,7 +1704,6 @@ CREATE VIEW table_constraints AS
                OR has_table_privilege(r.oid, 'INSERT')
                OR has_table_privilege(r.oid, 'UPDATE')
                OR has_table_privilege(r.oid, 'DELETE')
-               OR has_table_privilege(r.oid, 'RULE')
                OR has_table_privilege(r.oid, 'REFERENCES')
                OR has_table_privilege(r.oid, 'TRIGGER') )
 
@@ -1739,7 +1737,6 @@ CREATE VIEW table_constraints AS
                OR has_table_privilege(r.oid, 'INSERT')
                OR has_table_privilege(r.oid, 'UPDATE')
                OR has_table_privilege(r.oid, 'DELETE')
-               OR has_table_privilege(r.oid, 'RULE')
                OR has_table_privilege(r.oid, 'REFERENCES')
                OR has_table_privilege(r.oid, 'TRIGGER') );
 
@@ -1785,7 +1782,6 @@ CREATE VIEW table_privileges AS
           SELECT 'INSERT' UNION ALL
           SELECT 'UPDATE' UNION ALL
           SELECT 'REFERENCES' UNION ALL
-          SELECT 'RULE' UNION ALL
           SELECT 'TRIGGER') AS pr (type)
 
     WHERE c.relnamespace = nc.oid
@@ -1841,7 +1837,6 @@ CREATE VIEW tables AS
                OR has_table_privilege(c.oid, 'INSERT')
                OR has_table_privilege(c.oid, 'UPDATE')
                OR has_table_privilege(c.oid, 'DELETE')
-               OR has_table_privilege(c.oid, 'RULE')
                OR has_table_privilege(c.oid, 'REFERENCES')
                OR has_table_privilege(c.oid, 'TRIGGER') );
 
@@ -1963,7 +1958,6 @@ CREATE VIEW triggers AS
                OR has_table_privilege(c.oid, 'INSERT')
                OR has_table_privilege(c.oid, 'UPDATE')
                OR has_table_privilege(c.oid, 'DELETE')
-               OR has_table_privilege(c.oid, 'RULE')
                OR has_table_privilege(c.oid, 'REFERENCES')
                OR has_table_privilege(c.oid, 'TRIGGER') );
 
@@ -2162,7 +2156,6 @@ CREATE VIEW views AS
                OR has_table_privilege(c.oid, 'INSERT')
                OR has_table_privilege(c.oid, 'UPDATE')
                OR has_table_privilege(c.oid, 'DELETE')
-               OR has_table_privilege(c.oid, 'RULE')
                OR has_table_privilege(c.oid, 'REFERENCES')
                OR has_table_privilege(c.oid, 'TRIGGER') );
 
