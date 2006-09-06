@@ -95,7 +95,7 @@ PerformCursorOpen(DeclareCursorStmt *stmt, ParamListInfo params)
 			  errmsg("DECLARE CURSOR ... FOR UPDATE/SHARE is not supported"),
 				 errdetail("Cursors must be READ ONLY.")));
 
-	plan = planner(query, true, stmt->options, NULL);
+	plan = planner(query, true, stmt->options, params);
 
 	/*
 	 * Create a portal and copy the query and plan into its memory context.

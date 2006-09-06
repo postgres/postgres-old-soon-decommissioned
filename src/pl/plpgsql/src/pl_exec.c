@@ -3958,6 +3958,7 @@ exec_eval_simple_expr(PLpgSQL_execstate *estate,
 			ParamExternData *prm = &paramLI->params[i];
 			PLpgSQL_datum *datum = estate->datums[expr->params[i]];
 
+			prm->pflags = 0;
 			exec_eval_datum(estate, datum, expr->plan_argtypes[i],
 							&prm->ptype,
 							&prm->value, &prm->isnull);

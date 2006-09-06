@@ -893,6 +893,7 @@ SPI_cursor_open(const char *name, void *plan,
 			ParamExternData *prm = &paramLI->params[k];
 
 			prm->ptype = spiplan->argtypes[k];
+			prm->pflags = 0;
 			prm->isnull = (Nulls && Nulls[k] == 'n');
 			if (prm->isnull)
 			{
@@ -1357,6 +1358,7 @@ _SPI_execute_plan(_SPI_plan *plan, Datum *Values, const char *Nulls,
 
 				prm->value = Values[k];
 				prm->isnull = (Nulls && Nulls[k] == 'n');
+				prm->pflags = 0;
 				prm->ptype = plan->argtypes[k];
 			}
 		}

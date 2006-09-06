@@ -191,7 +191,7 @@ ExplainOneQuery(Query *query, ExplainStmt *stmt, ParamListInfo params,
 	}
 
 	/* plan the query */
-	plan = planner(query, isCursor, cursorOptions, NULL);
+	plan = planner(query, isCursor, cursorOptions, params);
 
 	/*
 	 * Update snapshot command ID to ensure this query sees results of any

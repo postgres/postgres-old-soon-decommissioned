@@ -261,6 +261,7 @@ EvaluateParams(EState *estate, List *params, List *argtypes)
 		ParamExternData *prm = &paramLI->params[i];
 
 		prm->ptype = lfirst_oid(la);
+		prm->pflags = 0;
 		prm->value = ExecEvalExprSwitchContext(n,
 											   GetPerTupleExprContext(estate),
 											   &prm->isnull,

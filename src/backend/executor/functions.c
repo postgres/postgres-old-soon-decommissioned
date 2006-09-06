@@ -442,6 +442,7 @@ postquel_sub_params(SQLFunctionCachePtr fcache,
 
 			prm->value = fcinfo->arg[i];
 			prm->isnull = fcinfo->argnull[i];
+			prm->pflags = 0;
 			prm->ptype = fcache->argtypes[i];
 		}
 	}
