@@ -266,15 +266,14 @@ CreateNewPortal(void)
  * Notes: commandTag shall be NULL if and only if the original query string
  * (before rewriting) was an empty string.	Also, the passed commandTag must
  * be a pointer to a constant string, since it is not copied.  The caller is
- * responsible for ensuring that the passed sourceText (if any), parse and
- * plan trees have adequate lifetime.  Also, queryContext must accurately
- * describe the location of the parse and plan trees.
+ * responsible for ensuring that the passed prepStmtName (if any), sourceText
+ * (if any), parse and plan trees have adequate lifetime.  Also, queryContext
+ * must accurately describe the location of the parse trees.
  */
 void
 PortalDefineQuery(Portal portal,
 				  const char *prepStmtName,
 				  const char *sourceText,
-				  const char *bindText,
 				  const char *commandTag,
 				  List *parseTrees,
 				  List *planTrees,
@@ -289,7 +288,6 @@ PortalDefineQuery(Portal portal,
 
 	portal->prepStmtName = prepStmtName;
 	portal->sourceText = sourceText;
-	portal->bindText = bindText;
 	portal->commandTag = commandTag;
 	portal->parseTrees = parseTrees;
 	portal->planTrees = planTrees;

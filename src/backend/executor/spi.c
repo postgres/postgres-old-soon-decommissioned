@@ -921,7 +921,6 @@ SPI_cursor_open(const char *name, void *plan,
 	PortalDefineQuery(portal,
 					  NULL,		/* no statement name */
 					  spiplan->query,
-					  NULL,
 					  CreateQueryTag(PortalListGetPrimaryQuery(qtlist)),
 					  qtlist,
 					  ptlist,

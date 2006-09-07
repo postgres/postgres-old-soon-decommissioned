@@ -14,7 +14,7 @@
 #ifndef UTILITY_H
 #define UTILITY_H
 
-#include "executor/execdesc.h"
+#include "tcop/tcopprot.h"
 
 
 extern void ProcessUtility(Node *parsetree, ParamListInfo params,
@@ -27,6 +27,10 @@ extern TupleDesc UtilityTupleDescriptor(Node *parsetree);
 extern const char *CreateCommandTag(Node *parsetree);
 
 extern const char *CreateQueryTag(Query *parsetree);
+
+extern LogStmtLevel GetCommandLogLevel(Node *parsetree);
+
+extern LogStmtLevel GetQueryLogLevel(Query *parsetree);
 
 extern bool QueryReturnsTuples(Query *parsetree);
 

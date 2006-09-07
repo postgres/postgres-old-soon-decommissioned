@@ -109,12 +109,11 @@ PerformCursorOpen(DeclareCursorStmt *stmt, ParamListInfo params)
 
 	/*
 	 * XXX: debug_query_string is wrong here: the user might have
-	 * submitted more than one semicolon delimited queries.
+	 * submitted multiple semicolon delimited queries.
 	 */
 	PortalDefineQuery(portal,
 					  NULL,
 					  pstrdup(debug_query_string),
-					  NULL,
 					  "SELECT", /* cursor's query is always a SELECT */
 					  list_make1(query),
 					  list_make1(plan),
