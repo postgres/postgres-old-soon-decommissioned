@@ -488,7 +488,7 @@ inv_read(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 }
 
 int
-inv_write(LargeObjectDesc *obj_desc, char *buf, int nbytes)
+inv_write(LargeObjectDesc *obj_desc, const char *buf, int nbytes)
 {
 	int			nwritten = 0;
 	int			n;

@@ -41,7 +41,7 @@ extern Datum lo_unlink(PG_FUNCTION_ARGS);
  * but too late now...
  */
 extern int	lo_read(int fd, char *buf, int len);
-extern int	lo_write(int fd, char *buf, int len);
+extern int	lo_write(int fd, const char *buf, int len);
 
 /*
  * Cleanup LOs at xact commit/abort

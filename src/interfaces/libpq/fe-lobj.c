@@ -172,7 +172,7 @@ lo_read(PGconn *conn, int fd, char *buf, size_t len)
  * returns the number of bytes written, or -1 on failure.
  */
 int
-lo_write(PGconn *conn, int fd, char *buf, size_t len)
+lo_write(PGconn *conn, int fd, const char *buf, size_t len)
 {
 	PQArgBlock	argv[2];
 	PGresult   *res;

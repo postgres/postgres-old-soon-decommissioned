@@ -165,7 +165,7 @@ lo_read(int fd, char *buf, int len)
 }
 
 int
-lo_write(int fd, char *buf, int len)
+lo_write(int fd, const char *buf, int len)
 {
 	int			status;
 
