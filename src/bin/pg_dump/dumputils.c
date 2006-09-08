@@ -622,7 +622,6 @@ do { \
 		{
 			/* table only */
 			CONVERT_PRIV('a', "INSERT");
-			CONVERT_PRIV('R', "RULE");
 			if (remoteVersion >= 70200)
 			{
 				CONVERT_PRIV('d', "DELETE");
