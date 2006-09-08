@@ -446,6 +446,29 @@ make_outerjoininfo(PlannerInfo *root,
 	Relids		strict_relids;
 	ListCell   *l;
 
+	/*
+	 * Presently the executor cannot support FOR UPDATE/SHARE marking of rels
+	 * appearing on the nullable side of an outer join. (It's somewhat unclear
+	 * what that would mean, anyway: what should we mark when a result row is
+	 * generated from no element of the nullable relation?)  So, complain if
+	 * any nullable rel is FOR UPDATE/SHARE.
+	 *
+	 * You might be wondering why this test isn't made far upstream in the
+	 * parser.  It's because the parser hasn't got enough info --- consider
+	 * FOR UPDATE applied to a view.  Only after rewriting and flattening
+	 * do we know whether the view contains an outer join.
+	 */
+	foreach(l, root->parse->rowMarks)
+	{
+		RowMarkClause *rc = (RowMarkClause *) lfirst(l);
+
+		if (bms_is_member(rc->rti, right_rels) ||
+			(is_full_join && bms_is_member(rc->rti, left_rels)))
+			ereport(ERROR,
+					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+					 errmsg("SELECT FOR UPDATE/SHARE cannot be applied to the nullable side of an outer join")));
+	}
+
 	/* If it's a full join, no need to be very smart */
 	ojinfo->is_full_join = is_full_join;
 	if (is_full_join)
