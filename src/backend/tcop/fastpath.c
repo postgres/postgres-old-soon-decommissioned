@@ -274,6 +274,8 @@ HandleFunctionRequest(StringInfo msgBuf)
 	struct fp_info my_fp;
 	struct fp_info *fip;
 	bool		callit;
+	bool		was_logged = false;
+	char		msec_str[32];
 
 	/*
 	 * Read message contents if not already done.
@@ -314,10 +316,14 @@ HandleFunctionRequest(StringInfo msgBuf)
 
 	fid = (Oid) pq_getmsgint(msgBuf, 4);		/* function oid */
 
+	/* Log as soon as we have the function OID */
 	if (log_statement == LOGSTMT_ALL)
+	{
 		ereport(LOG,
 				(errmsg("fastpath function call: function OID %u",
 						fid)));
+		was_logged = true;
+	}
 
 	/*
 	 * There used to be a lame attempt at caching lookup info here. Now we
@@ -386,6 +392,22 @@ HandleFunctionRequest(StringInfo msgBuf)
 	CHECK_FOR_INTERRUPTS();
 
 	SendFunctionResult(retval, fcinfo.isnull, fip->rettype, rformat);
+
+	/*
+	 * Emit duration logging if appropriate.
+	 */
+	switch (check_log_duration(msec_str, was_logged))
+	{
+		case 1:
+			ereport(LOG,
+					(errmsg("duration: %s ms", msec_str)));
+			break;
+		case 2:
+			ereport(LOG,
+					(errmsg("duration: %s ms  fastpath function call: function OID %u",
+							msec_str, fid)));
+			break;
+	}
 
 	return 0;
 }
