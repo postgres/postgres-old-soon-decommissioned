@@ -710,7 +710,6 @@ rm -f regression.diffs
 for i in \
          connect/*.pgc \
          compat_informix/*.pgc \
-         complex/*.pgc \
          preproc/*.pgc \
          pgtypeslib/*.pgc \
          sql/*.pgc \

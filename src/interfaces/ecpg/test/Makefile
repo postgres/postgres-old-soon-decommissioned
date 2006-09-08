@@ -29,7 +29,6 @@ all install installdirs uninstall dep depend distprep:
 	$(MAKE) -C pgtypeslib $@
 	$(MAKE) -C preproc $@
 	$(MAKE) -C compat_informix $@
-	$(MAKE) -C complex $@
 	$(MAKE) -C thread $@
 
 clean distclean maintainer-clean:
@@ -39,7 +38,6 @@ clean distclean maintainer-clean:
 	$(MAKE) -C pgtypeslib $@
 	$(MAKE) -C preproc $@
 	$(MAKE) -C compat_informix $@
-	$(MAKE) -C complex $@
 	$(MAKE) -C thread $@
 	rm -rf tmp_check results log
 	rm -f pg_regress regression.diffs
