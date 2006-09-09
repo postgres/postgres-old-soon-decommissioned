@@ -12,10 +12,10 @@ WANTED_DIRS = \
 		dblink		\
 		earthdistance	\
 		fuzzystrmatch	\
-		hstore			\
+		hstore		\
 		intagg		\
 		intarray	\
-		isbn_issn	\
+		isn		\
 		lo		\
 		ltree		\
 		oid2name	\
