@@ -2836,13 +2836,6 @@ SELECT * FROM test1 WHERE a;
      <literal>a</> through <literal>f</>.  Output is always in the
      last of the forms shown.
     </para>
-
-    <para>
-     The directory <filename class="directory">contrib/mac</filename>
-     in the <productname>PostgreSQL</productname> source distribution
-     contains tools that can be used to map MAC addresses to hardware
-     manufacturer names.
-    </para>
    </sect2>
 
   </sect1>
