@@ -219,6 +219,8 @@ DTRACEFLAGS = @DTRACEFLAGS@
 # Linking
 
 LIBS = @LIBS@
+LDAP_LIBS_FE = @LDAP_LIBS_FE@
+LDAP_LIBS_BE = @LDAP_LIBS_BE@
 LD = @LD@
 with_gnu_ld = @with_gnu_ld@
 ld_R_works = @ld_R_works@
