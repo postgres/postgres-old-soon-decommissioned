@@ -34,8 +34,7 @@ ifneq ($(PORTNAME), win32)
 OBJS += thread.o
 endif
 
-SHLIB_LINK = -L../pgtypeslib -lpgtypes $(libpq) \
-	$(filter -lintl -lssl -lcrypto -lkrb5 -lcrypt -lm, $(LIBS)) $(PTHREAD_LIBS)
+SHLIB_LINK = -L../pgtypeslib -lpgtypes $(libpq) -lm $(PTHREAD_LIBS)
 
 ifeq ($(PORTNAME), win32)
 # Link to shfolder.dll instead of shell32.dll

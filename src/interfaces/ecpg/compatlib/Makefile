@@ -20,8 +20,7 @@ DLTYPE= library
 override CPPFLAGS := -I../include -I$(top_srcdir)/src/interfaces/ecpg/include \
 	-I$(libpq_srcdir) -I$(top_srcdir)/src/include/utils $(CPPFLAGS)
 override CFLAGS += $(PTHREAD_CFLAGS)
-SHLIB_LINK = -L../ecpglib -lecpg -L../pgtypeslib -lpgtypes $(libpq) \
-	$(filter -lintl -lssl -lcrypto -lkrb5 -lcrypt -lm, $(LIBS)) \
+SHLIB_LINK = -L../ecpglib -lecpg -L../pgtypeslib -lpgtypes $(libpq) -lm \
 	$(PTHREAD_LIBS)
 
 OBJS= informix.o
