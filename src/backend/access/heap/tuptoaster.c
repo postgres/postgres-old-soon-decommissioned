@@ -162,9 +162,7 @@ heap_tuple_untoast_attr_slice(varattrib *attr, int32 sliceoffset, int32 slicelen
 		if (VARATT_IS_EXTERNAL(attr))
 			tmp = toast_fetch_datum(attr);
 		else
-		{
 			tmp = attr;			/* compressed in main tuple */
-		}
 
 		preslice = (varattrib *) palloc(attr->va_content.va_external.va_rawsize
 										+ VARHDRSZ);
