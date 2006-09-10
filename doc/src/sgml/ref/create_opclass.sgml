@@ -238,8 +238,8 @@ CREATE OPERATOR CLASS gist__int_ops
     DEFAULT FOR TYPE _int4 USING gist AS
         OPERATOR        3       &&,
         OPERATOR        6       =       RECHECK,
-        OPERATOR        7       @,
-        OPERATOR        8       ~,
+        OPERATOR        7       @>,
+        OPERATOR        8       <@,
         OPERATOR        20      @@ (_int4, query_int),
         FUNCTION        1       g_int_consistent (internal, _int4, int4),
         FUNCTION        2       g_int_union (bytea, internal),
