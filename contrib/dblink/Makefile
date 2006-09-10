@@ -20,3 +20,6 @@ top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 include $(top_srcdir)/contrib/contrib-global.mk
 endif
+
+# Apparently AIX requires that we mention everything libpq depends on :-(
+SHLIB_LINK += $(filter -lintl -lssl -lcrypto, $(LIBS))
