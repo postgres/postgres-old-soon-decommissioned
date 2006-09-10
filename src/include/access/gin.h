@@ -409,11 +409,6 @@ extern Datum ginvacuumcleanup(PG_FUNCTION_ARGS);
 extern Datum ginarrayextract(PG_FUNCTION_ARGS);
 extern Datum ginarrayconsistent(PG_FUNCTION_ARGS);
 
-/* I'm not sure that is the best place */
-extern Datum arrayoverlap(PG_FUNCTION_ARGS);
-extern Datum arraycontains(PG_FUNCTION_ARGS);
-extern Datum arraycontained(PG_FUNCTION_ARGS);
-
 /* ginbulk.c */
 typedef struct EntryAccumulator {
     Datum       value;
