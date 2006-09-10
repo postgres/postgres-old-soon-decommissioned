@@ -2367,6 +2367,7 @@ dch_date(int arg, char *inout, int suf, bool is_to_char, bool is_interval,
 			}
 			break;
 		case DCH_D:
+			INVALID_FOR_INTERVAL;
 			if (is_to_char)
 			{
 				sprintf(inout, "%d", tm->tm_wday + 1);
