@@ -7634,6 +7634,13 @@ SELECT NULLIF(value, '(none)') ...
        </row>
 
        <row>
+        <entry> <literal>&amp;&amp;</literal> </entry>
+        <entry>overlap (have elements in common)</entry>
+        <entry><literal>ARRAY[1,4,3] &amp;&amp; ARRAY[2,1]</literal></entry>
+        <entry><literal>t</literal></entry>
+       </row>
+
+       <row>
         <entry> <literal>||</literal> </entry>
         <entry>array-to-array concatenation</entry>
         <entry><literal>ARRAY[1,2,3] || ARRAY[4,5,6]</literal></entry>
