@@ -590,3 +590,55 @@ pclose_check(FILE *stream)
 
 	return -1;
 }
+
+
+/*
+ *	set_pglocale_pgservice
+ *
+ *	Set application-specific locale and service directory
+ *
+ *	This function takes the value of argv[0] rather than a full path.
+ *
+ * (You may be wondering why this is in exec.c.  It requires this module's
+ * services and doesn't introduce any new dependencies, so this seems as
+ * good as anyplace.)
+ */
+void
+set_pglocale_pgservice(const char *argv0, const char *app)
+{
+	char		path[MAXPGPATH];
+	char		my_exec_path[MAXPGPATH];
+	char		env_path[MAXPGPATH + sizeof("PGSYSCONFDIR=")];	/* longer than
+																 * PGLOCALEDIR */
+
+	/* don't set LC_ALL in the backend */
+	if (strcmp(app, "postgres") != 0)
+		setlocale(LC_ALL, "");
+
+	if (find_my_exec(argv0, my_exec_path) < 0)
+		return;
+
+#ifdef ENABLE_NLS
+	get_locale_path(my_exec_path, path);
+	bindtextdomain(app, path);
+	textdomain(app);
+
+	if (getenv("PGLOCALEDIR") == NULL)
+	{
+		/* set for libpq to use */
+		snprintf(env_path, sizeof(env_path), "PGLOCALEDIR=%s", path);
+		canonicalize_path(env_path + 12);
+		putenv(strdup(env_path));
+	}
+#endif
+
+	if (getenv("PGSYSCONFDIR") == NULL)
+	{
+		get_etc_path(my_exec_path, path);
+
+		/* set for libpq to use */
+		snprintf(env_path, sizeof(env_path), "PGSYSCONFDIR=%s", path);
+		canonicalize_path(env_path + 13);
+		putenv(strdup(env_path));
+	}
+}
