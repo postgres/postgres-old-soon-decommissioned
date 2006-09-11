@@ -2,7 +2,7 @@
 
 MODULES = lo
 DATA_built = lo.sql
-DATA = lo_drop.sql lo_test.sql
+DATA = uninstall_lo.sql
 DOCS = README.lo
 
 ifdef USE_PGXS

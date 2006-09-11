@@ -17,7 +17,7 @@ OBJS	+= $(SUBDIROBJS)
 PG_CPPFLAGS = -I$(srcdir)/snowball -I$(srcdir)/ispell -I$(srcdir)/wordparser
 
 DATA = stopword/english.stop stopword/russian.stop stopword/russian.stop.utf8 thesaurus
-DATA_built = tsearch2.sql untsearch2.sql
+DATA_built = tsearch2.sql uninstall_tsearch2.sql
 DOCS = README.tsearch2
 REGRESS = tsearch2
 
@@ -45,7 +45,7 @@ $(SUBDIRS:%=%-recursive):
 tsearch2.sql: tsearch.sql.in
 	sed -e 's,MODULE_PATHNAME,$$libdir/$(MODULE_big),g' $< >$@
 
-untsearch2.sql: untsearch.sql.in
+uninstall_tsearch2.sql: untsearch.sql.in
 	cp $< $@
 
 .PHONY: subclean
