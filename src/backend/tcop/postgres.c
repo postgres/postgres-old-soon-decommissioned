@@ -1610,10 +1610,11 @@ exec_bind_message(StringInfo input_message)
 			break;
 		case 2:
 			ereport(LOG,
-					(errmsg("duration: %s ms  bind %s to %s: %s",
+					(errmsg("duration: %s ms  bind %s%s%s: %s",
 							msec_str,
-							*portal_name ? portal_name : "<unnamed>",
 							*stmt_name ? stmt_name : "<unnamed>",
+							*portal_name ? "/" : "",
+							*portal_name ? portal_name : "",
 							pstmt->query_string ? pstmt->query_string : "<source not stored>"),
 					 errdetail_params(params)));
 			break;
@@ -1740,8 +1741,8 @@ exec_execute_message(const char *portal_name, long max_rows)
 		ereport(LOG,
 				(errmsg("%s %s%s%s%s%s",
 						execute_is_fetch ?
-						_("statement: execute fetch from") :
-						_("statement: execute"),
+						_("execute fetch from") :
+						_("execute"),
 						prepStmtName,
 						*portal_name ? "/" : "",
 						*portal_name ? portal_name : "",
