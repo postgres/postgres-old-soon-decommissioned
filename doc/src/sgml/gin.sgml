@@ -200,6 +200,7 @@
   be improved in future.
  </para>
 </sect1>
+
 <sect1 id="gin-examples">
  <title>Examples</title>
 
@@ -227,5 +228,7 @@
     </para>
    </listitem>
   </varlistentry>
+ </variablelist>
+</sect1>
 
 </chapter>
