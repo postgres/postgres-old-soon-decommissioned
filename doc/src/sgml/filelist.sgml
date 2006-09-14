@@ -78,6 +78,7 @@
 <!entity catalogs   SYSTEM "catalogs.sgml">
 <!entity geqo       SYSTEM "geqo.sgml">
 <!entity gist       SYSTEM "gist.sgml">
+<!entity gin        SYSTEM "gin.sgml">
 <!entity planstats    SYSTEM "planstats.sgml">
 <!entity indexam    SYSTEM "indexam.sgml">
 <!entity nls        SYSTEM "nls.sgml">

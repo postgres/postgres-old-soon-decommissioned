@@ -2172,7 +2172,20 @@ SELECT * FROM parent WHERE key = 2400;
        </para>
       </listitem>
      </varlistentry>
-     
+
+	 <varlistentry id="guc-gin-fuzzy-search-limit" xreflabel="gin_fuzzy_search_limit">
+	  <term><varname>gin_fuzzy_search_limit</varname> (<type>integer</type>)</term>
+	  <indexterm>
+	  <primary><varname>gin_fuzzy_search_limit</> configuration parameter</primary>
+	  </indexterm>
+	  <listitem>
+	   <para>
+		Soft upper limit of the size of the returned set by GIN index. For more
+		information see <xref linkend="gin-tips">.
+	   </para>
+	  </listitem>
+	 </varlistentry>
+	  
      </variablelist>
     </sect2>
    </sect1>
