@@ -49,6 +49,8 @@ extern		"C"
 {
 #endif
 
+extern interval *PGTYPESinterval_new(void);
+extern void PGTYPESinterval_free(interval *);
 extern interval *PGTYPESinterval_from_asc(char *, char **);
 extern char *PGTYPESinterval_to_asc(interval *);
 extern int	PGTYPESinterval_copy(interval *, interval *);

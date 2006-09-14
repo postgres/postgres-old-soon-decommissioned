@@ -12,6 +12,21 @@
 #include "pgtypes_error.h"
 #include "pgtypes_date.h"
 
+date *
+PGTYPESdate_new(void)
+{
+	date *result;
+	result = (date *) pgtypes_alloc(sizeof(date));
+	/* result can be NULL if we run out of memory */
+	return result;
+}
+
+void
+PGTYPESdate_free(date *d)
+{
+	free(d);
+}
+
 date
 PGTYPESdate_from_timestamp(timestamp dt)
 {
