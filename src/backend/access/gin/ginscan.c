@@ -127,6 +127,11 @@ newScanKey( IndexScanDesc scan ) {
 
 	so->keys = (GinScanKey) palloc( scan->numberOfKeys * sizeof(GinScanKeyData) );
 
+	if (scan->numberOfKeys < 1)
+		ereport(ERROR,
+				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+				errmsg("GIN indexes do not support whole-index scans")));
+
 	for(i=0; i<scan->numberOfKeys; i++) {
 		Datum*	entryValues;
 		uint32	nEntryValues;
@@ -155,7 +160,9 @@ newScanKey( IndexScanDesc scan ) {
 	so->nkeys = nkeys;
 
 	if ( so->nkeys == 0 )
-		elog(ERROR, "Gin doesn't support full scan due to it's awful inefficiency");
+		ereport(ERROR,
+				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+				errmsg("GIN index doesn't support search with void query")));
 
 	pgstat_count_index_scan(&scan->xs_pgstat_info);
 }
