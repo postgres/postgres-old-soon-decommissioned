@@ -11,8 +11,9 @@ pg_[A-Za-z0-9_]                 <application>
 [A-Z][A-Z]                      <type>, <envar>, <literal>
 &<>                             use &
 non-ascii                       convert to & escapes
-				http://www.mountaindragon.com/html/iso.htm
+				  http://www.mountaindragon.com/html/iso.htm
 				encode multibytes as UTF8
+				  http://www.pemberley.com/janeinfo/latin1.html#latexta
 
 For new features, add links to the documentation sections.
 
