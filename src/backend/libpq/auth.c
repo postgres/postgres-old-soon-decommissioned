@@ -75,7 +75,7 @@ static Port *pam_port_cludge;	/* Workaround for passing "Port *port" into
 #include <winldap.h>
 
 /* Correct header from the Platform SDK */
-typedef ULONG (WINLDAPAPI *__ldap_start_tls_sA)(
+typedef ULONG (*__ldap_start_tls_sA)(
     IN   PLDAP          ExternalHandle,
     OUT  PULONG         ServerReturnValue,
     OUT  LDAPMessage    **result,
