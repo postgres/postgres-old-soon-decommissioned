@@ -2411,7 +2411,7 @@ ldapServiceLookup(const char *purl, PQconninfoOption *options,
 	 *	at each component.
 	 */
 
-	if (strncasecmp(url, LDAP_URL, strlen(LDAP_URL)) != 0)
+	if (pg_strncasecmp(url, LDAP_URL, strlen(LDAP_URL)) != 0)
 	{
 		printfPQExpBuffer(errorMessage,
 		libpq_gettext("bad LDAP URL \"%s\": scheme must be ldap://\n"), purl);
@@ -2500,11 +2500,11 @@ ldapServiceLookup(const char *purl, PQconninfoOption *options,
 	}
 
 	/* set scope */
-	if (strcasecmp(scopestr, "base") == 0)
+	if (pg_strcasecmp(scopestr, "base") == 0)
 		scope = LDAP_SCOPE_BASE;
-	else if (strcasecmp(scopestr, "one") == 0)
+	else if (pg_strcasecmp(scopestr, "one") == 0)
 		scope = LDAP_SCOPE_ONELEVEL;
-	else if (strcasecmp(scopestr, "sub") == 0)
+	else if (pg_strcasecmp(scopestr, "sub") == 0)
 		scope = LDAP_SCOPE_SUBTREE;
 	else
 	{
