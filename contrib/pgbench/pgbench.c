@@ -460,7 +460,7 @@ top:
 		if (commands[st->state]->type == SQL_COMMAND)
 		{
 			res = PQgetResult(st->con);
-			if (strncasecmp(commands[st->state]->argv[0], "select", 6) != 0)
+			if (pg_strncasecmp(commands[st->state]->argv[0], "select", 6) != 0)
 			{
 				if (check(state, res, n, PGRES_COMMAND_OK))
 					return;
@@ -560,7 +560,7 @@ top:
 			fprintf(stderr, "\n");
 		}
 
-		if (strcasecmp(argv[0], "setrandom") == 0)
+		if (pg_strcasecmp(argv[0], "setrandom") == 0)
 		{
 			char	   *var;
 			int			min,
@@ -623,7 +623,7 @@ top:
 
 			st->listen = 1;
 		}
-		else if (strcasecmp(argv[0], "set") == 0)
+		else if (pg_strcasecmp(argv[0], "set") == 0)
 		{
 			char	   *var;
 			int			ope1,
@@ -925,7 +925,7 @@ process_commands(char *buf)
 			tok = strtok(NULL, delim);
 		}
 
-		if (strcasecmp(my_commands->argv[0], "setrandom") == 0)
+		if (pg_strcasecmp(my_commands->argv[0], "setrandom") == 0)
 		{
 			if (my_commands->argc < 4)
 			{
@@ -937,7 +937,7 @@ process_commands(char *buf)
 				fprintf(stderr, "%s: extra argument \"%s\" ignored\n",
 						my_commands->argv[0], my_commands->argv[j]);
 		}
-		else if (strcasecmp(my_commands->argv[0], "set") == 0)
+		else if (pg_strcasecmp(my_commands->argv[0], "set") == 0)
 		{
 			if (my_commands->argc < 3)
 			{
