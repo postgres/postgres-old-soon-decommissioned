@@ -11,7 +11,7 @@
  * _DEBUG is defined */
 #undef _DEBUG
 /* Also hide away errcode, since we load Python.h before postgres.h */
-#define errcode __vc_errcode
+#define errcode __msvc_errcode
 #include <Python.h>
 #undef errcode
 #define _DEBUG
