@@ -3791,7 +3791,9 @@ DATA(insert OID = 2510 (  pg_prepared_statement PGNSP PGUID 12 f f t t s 0 2249 
 DESCR("get the prepared statements for this session");
 DATA(insert OID = 2511 (  pg_cursor PGNSP PGUID 12 f f t t s 0 2249 "" _null_ _null_ _null_ pg_cursor - _null_ ));
 DESCR("get the open cursors for this session");
-DATA(insert OID = 2599 (  pg_timezonenames PGNSP PGUID 12 f f t t s 0 2249 "" _null_ _null_ _null_ pg_timezonenames - _null_ ));
+DATA(insert OID = 2599 (  pg_timezone_abbrevs	PGNSP PGUID 12 f f t t s 0 2249 "" "{25,1186,16}" "{o,o,o}" "{abbrev,utc_offset,is_dst}" pg_timezone_abbrevs - _null_ ));
+DESCR("get the available time zone abbreviations");
+DATA(insert OID = 2856 (  pg_timezone_names		PGNSP PGUID 12 f f t t s 0 2249 "" "{25,25,1186,16}" "{o,o,o,o}" "{name,abbrev,utc_offset,is_dst}" pg_timezone_names - _null_ ));
 DESCR("get the available time zone names");
 
 /* non-persistent series generator */

@@ -38,6 +38,7 @@ struct pg_tm
 };
 
 typedef struct pg_tz pg_tz;
+typedef struct pg_tzenum pg_tzenum;
 
 extern struct pg_tm *pg_localtime(const pg_time_t *timep, const pg_tz *tz);
 extern struct pg_tm *pg_gmtime(const pg_time_t *timep);
@@ -55,6 +56,10 @@ extern void pg_timezone_initialize(void);
 extern pg_tz *pg_tzset(const char *tzname);
 extern bool tz_acceptable(pg_tz *tz);
 extern const char *pg_get_timezone_name(pg_tz *tz);
+
+extern pg_tzenum *pg_tzenumerate_start(void);
+extern pg_tz *pg_tzenumerate_next(pg_tzenum *dir);
+extern void pg_tzenumerate_end(pg_tzenum *dir);
 
 extern pg_tz *global_timezone;
 

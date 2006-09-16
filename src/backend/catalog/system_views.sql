@@ -186,10 +186,11 @@ CREATE RULE pg_settings_n AS
 
 GRANT SELECT, UPDATE ON pg_settings TO PUBLIC;
 
-CREATE VIEW pg_timezonenames AS
-    SELECT *
-    FROM pg_timezonenames() AS T
-    (name text, utc_offset interval, is_dst boolean);
+CREATE VIEW pg_timezone_abbrevs AS
+    SELECT * FROM pg_timezone_abbrevs();
+
+CREATE VIEW pg_timezone_names AS
+    SELECT * FROM pg_timezone_names();
 
 -- Statistics views
 

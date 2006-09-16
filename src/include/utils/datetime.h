@@ -303,6 +303,7 @@ extern int	j2day(int jd);
 extern bool CheckDateTokenTables(void);
 extern void InstallTimeZoneAbbrevs(tzEntry *abbrevs, int n);
 
-extern Datum pg_timezonenames(PG_FUNCTION_ARGS);
+extern Datum pg_timezone_abbrevs(PG_FUNCTION_ARGS);
+extern Datum pg_timezone_names(PG_FUNCTION_ARGS);
 
 #endif   /* DATETIME_H */
