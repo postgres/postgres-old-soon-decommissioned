@@ -1171,9 +1171,6 @@ AtEOXact_Buffers(bool isCommit)
 #endif
 
 	AtEOXact_LocalBuffers(isCommit);
-
-	/* Make sure we reset the strategy hint in case VACUUM errored out */
-	StrategyHintVacuum(false);
 }
 
 /*
