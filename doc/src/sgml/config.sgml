@@ -2180,7 +2180,7 @@ SELECT * FROM parent WHERE key = 2400;
 	  </indexterm>
 	  <listitem>
 	   <para>
-		Soft upper limit of the size of the returned set by GIN index. For more
+		Soft upper limit of the size of the set returned by GIN index. For more
 		information see <xref linkend="gin-tips">.
 	   </para>
 	  </listitem>
