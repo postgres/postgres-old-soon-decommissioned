@@ -20,7 +20,7 @@ PostgreSQL documentation
 
  <refsynopsisdiv>
 <synopsis>
-DROP OWNED BY <replaceable class="PARAMETER">name</replaceable> [, ...] [ RESTRICT | CASCADE ]
+DROP OWNED BY <replaceable class="PARAMETER">name</replaceable> [, ...] [ CASCADE | RESTRICT ]
 </synopsis>
  </refsynopsisdiv>
 
