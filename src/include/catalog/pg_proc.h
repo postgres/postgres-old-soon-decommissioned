@@ -3946,6 +3946,34 @@ DESCR("contains");
 DATA(insert OID = 2749 (  arraycontained	   PGNSP PGUID 12 f f t f i 2 16 "2277 2277" _null_ _null_ _null_ arraycontained - _null_ ));
 DESCR("is contained by");
 
+/* userlock replacements */
+DATA(insert OID = 2880 (  pg_advisory_lock				PGNSP PGUID 12 f f t f v 1 2278 "20" _null_ _null_ _null_ pg_advisory_lock_int8 - _null_ ));
+DESCR("obtain exclusive advisory lock");
+DATA(insert OID = 2881 (  pg_advisory_lock_shared		PGNSP PGUID 12 f f t f v 1 2278 "20" _null_ _null_ _null_ pg_advisory_lock_shared_int8 - _null_ ));
+DESCR("obtain shared advisory lock");
+DATA(insert OID = 2882 (  pg_try_advisory_lock			PGNSP PGUID 12 f f t f v 1 16 "20" _null_ _null_ _null_ pg_try_advisory_lock_int8 - _null_ ));
+DESCR("obtain exclusive advisory lock if available");
+DATA(insert OID = 2883 (  pg_try_advisory_lock_shared	PGNSP PGUID 12 f f t f v 1 16 "20" _null_ _null_ _null_ pg_try_advisory_lock_shared_int8 - _null_ ));
+DESCR("obtain shared advisory lock if available");
+DATA(insert OID = 2884 (  pg_advisory_unlock			PGNSP PGUID 12 f f t f v 1 16 "20" _null_ _null_ _null_ pg_advisory_unlock_int8 - _null_ ));
+DESCR("release exclusive advisory lock");
+DATA(insert OID = 2885 (  pg_advisory_unlock_shared		PGNSP PGUID 12 f f t f v 1 16 "20" _null_ _null_ _null_ pg_advisory_unlock_shared_int8 - _null_ ));
+DESCR("release shared advisory lock");
+DATA(insert OID = 2886 (  pg_advisory_lock				PGNSP PGUID 12 f f t f v 2 2278 "23 23" _null_ _null_ _null_ pg_advisory_lock_int4 - _null_ ));
+DESCR("obtain exclusive advisory lock");
+DATA(insert OID = 2887 (  pg_advisory_lock_shared		PGNSP PGUID 12 f f t f v 2 2278 "23 23" _null_ _null_ _null_ pg_advisory_lock_shared_int4 - _null_ ));
+DESCR("obtain shared advisory lock");
+DATA(insert OID = 2888 (  pg_try_advisory_lock			PGNSP PGUID 12 f f t f v 2 16 "23 23" _null_ _null_ _null_ pg_try_advisory_lock_int4 - _null_ ));
+DESCR("obtain exclusive advisory lock if available");
+DATA(insert OID = 2889 (  pg_try_advisory_lock_shared	PGNSP PGUID 12 f f t f v 2 16 "23 23" _null_ _null_ _null_ pg_try_advisory_lock_shared_int4 - _null_ ));
+DESCR("obtain shared advisory lock if available");
+DATA(insert OID = 2890 (  pg_advisory_unlock			PGNSP PGUID 12 f f t f v 2 16 "23 23" _null_ _null_ _null_ pg_advisory_unlock_int4 - _null_ ));
+DESCR("release exclusive advisory lock");
+DATA(insert OID = 2891 (  pg_advisory_unlock_shared		PGNSP PGUID 12 f f t f v 2 16 "23 23" _null_ _null_ _null_ pg_advisory_unlock_shared_int4 - _null_ ));
+DESCR("release shared advisory lock");
+DATA(insert OID = 2892 (  pg_advisory_unlock_all		PGNSP PGUID 12 f f t f v 0 2278 "" _null_ _null_ _null_ pg_advisory_unlock_all - _null_ ));
+DESCR("release all advisory locks");
+
 /*
  * Symbolic values for provolatile column: these indicate whether the result
  * of a function is dependent *only* on the values of its explicit arguments,

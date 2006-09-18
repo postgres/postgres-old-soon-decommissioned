@@ -873,9 +873,11 @@ DescribeLockTag(StringInfo buf, const LOCKTAG *lock)
 			break;
 		case LOCKTAG_USERLOCK:
 			appendStringInfo(buf,
-							 _("user lock [%u,%u]"),
+							 _("user lock [%u,%u,%u,%u]"),
 							 lock->locktag_field1,
-							 lock->locktag_field2);
+							 lock->locktag_field2,
+							 lock->locktag_field3,
+							 lock->locktag_field4);
 			break;
 		default:
 			appendStringInfo(buf,

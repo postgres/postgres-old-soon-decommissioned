@@ -101,16 +101,6 @@
 /* #define TCL_ARRAYS */
 
 /*
- * User locks are handled totally on the application side as long term
- * cooperative locks which extend beyond the normal transaction
- * boundaries.	Their purpose is to indicate to an application that
- * someone is `working' on an item.  Define this flag to enable user
- * locks.  You will need the loadable module user-locks.c to use this
- * feature.
- */
-#define USER_LOCKS
-
-/*
  * Define this if you want psql to _always_ ask for a username and a
  * password for password authentication.
  */

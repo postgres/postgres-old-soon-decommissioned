@@ -127,8 +127,6 @@ static const LockMethodData default_lockmethod = {
 #endif
 };
 
-#ifdef USER_LOCKS
-
 static const LockMethodData user_lockmethod = {
 	AccessExclusiveLock,		/* highest valid lock mode number */
 	false,
@@ -141,17 +139,13 @@ static const LockMethodData user_lockmethod = {
 #endif
 };
 
-#endif /* USER_LOCKS */
-
 /*
  * map from lock method id to the lock table data structures
  */
 static const LockMethod LockMethods[] = {
 	NULL,
 	&default_lockmethod,
-#ifdef USER_LOCKS
 	&user_lockmethod
-#endif
 };
 
 
