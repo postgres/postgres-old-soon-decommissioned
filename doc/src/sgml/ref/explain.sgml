@@ -121,8 +121,8 @@ ROLLBACK;
     <listitem>
      <para>
       Any <command>SELECT</>, <command>INSERT</>, <command>UPDATE</>,
-      <command>DELETE</>, <command>EXECUTE</>, or <command>DECLARE</>
-      statement, whose execution plan you wish to see.
+      <command>DELETE</>, <command>VALUES</>, <command>EXECUTE</>, or
+      <command>DECLARE</> statement, whose execution plan you wish to see.
      </para>
     </listitem>
    </varlistentry>

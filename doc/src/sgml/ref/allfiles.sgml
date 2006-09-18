@@ -116,6 +116,7 @@ Complete list of usable sgml source files in this directory.
 <!entity unlisten           system "unlisten.sgml">
 <!entity update             system "update.sgml">
 <!entity vacuum             system "vacuum.sgml">
+<!entity values             system "values.sgml">
 
 <!-- applications and utilities -->
 <!entity clusterdb          system "clusterdb.sgml">

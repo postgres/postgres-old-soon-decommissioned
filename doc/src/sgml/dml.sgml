@@ -93,6 +93,16 @@ INSERT INTO products DEFAULT VALUES;
 </programlisting>
   </para>
 
+  <para>
+   You can insert multiple rows in a single command:
+<programlisting>
+INSERT INTO products (product_no, name, price) VALUES
+    (1, 'Cheese', 9.99),
+    (2, 'Bread', 1.99),
+    (3, 'Milk', 2.99);
+</programlisting>
+  </para>
+
   <tip>
    <para>
     When inserting a lot of data at the same time, considering using
