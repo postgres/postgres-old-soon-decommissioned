@@ -213,6 +213,7 @@ For new features, add links to the documentation sections.
         Have <function>to_char(time)</> and <function>to_char(interval)</>
         treat <literal>'HH'</> and <literal>'HH12'</> as 12-hour
         intervals.
+       </para>
 
        <para>
         Most applications should use <literal>'HH24'</> unless they
