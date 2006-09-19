@@ -507,12 +507,14 @@ initialize_environment(void)
 		 * Set up shared library paths to include the temp install.
 		 *
 		 * LD_LIBRARY_PATH covers many platforms.  DYLD_LIBRARY_PATH works on
-		 * Darwin, and maybe other Mach-based systems.  Windows needs shared
-		 * libraries in PATH.  (Only those linked into executables, not
-		 * dlopen'ed ones)  Feel free to account for others as well.
+		 * Darwin, and maybe other Mach-based systems.  LIBPATH is for AIX.
+		 * Windows needs shared libraries in PATH (only those linked into
+		 * executables, not dlopen'ed ones).
+		 * Feel free to account for others as well.
 		 */
 		add_to_path("LD_LIBRARY_PATH", ':', libdir);
 		add_to_path("DYLD_LIBRARY_PATH", ':', libdir);
+		add_to_path("LIBPATH", ':', libdir);
 #if defined(WIN32) || defined(__CYGWIN__)
 		add_to_path("PATH", ';', libdir);
 #endif
