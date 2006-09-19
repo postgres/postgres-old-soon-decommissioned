@@ -56,7 +56,7 @@ extern bool constraint_exclusion;
 
 extern double clamp_row_est(double nrows);
 extern double index_pages_fetched(double tuples_fetched, BlockNumber pages,
-								  BlockNumber other_pages);
+								  double index_pages, PlannerInfo *root);
 extern void cost_seqscan(Path *path, PlannerInfo *root, RelOptInfo *baserel);
 extern void cost_index(IndexPath *path, PlannerInfo *root, IndexOptInfo *index,
 		   List *indexQuals, RelOptInfo *outer_rel);

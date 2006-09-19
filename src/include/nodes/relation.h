@@ -109,6 +109,8 @@ typedef struct PlannerInfo
 	List	   *group_pathkeys; /* groupClause pathkeys, if any */
 	List	   *sort_pathkeys;	/* sortClause pathkeys, if any */
 
+	double		total_table_pages;	/* # of pages in all tables of query */
+
 	double		tuple_fraction; /* tuple_fraction passed to query_planner */
 
 	bool		hasJoinRTEs;	/* true if any RTEs are RTE_JOIN kind */

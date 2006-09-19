@@ -76,8 +76,8 @@ static void check_hashjoinable(RestrictInfo *restrictinfo);
  * At the end of this process, there should be one baserel RelOptInfo for
  * every non-join RTE that is used in the query.  Therefore, this routine
  * is the only place that should call build_simple_rel with reloptkind
- * RELOPT_BASEREL.  However, otherrels will be built later for append relation
- * members.
+ * RELOPT_BASEREL.  (Note: build_simple_rel recurses internally to build
+ * "other rel" RelOptInfos for the members of any appendrels we find here.)
  */
 void
 add_base_rels_to_query(PlannerInfo *root, Node *jtnode)

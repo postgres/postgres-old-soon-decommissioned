@@ -4647,7 +4647,8 @@ genericcostestimate(PlannerInfo *root,
 		/* use Mackert and Lohman formula to adjust for cache effects */
 		pages_fetched = index_pages_fetched(pages_fetched,
 											index->pages,
-											index->rel->pages);
+											(double) index->pages,
+											root);
 
 		/*
 		 * Now compute the total disk access cost, and then report a

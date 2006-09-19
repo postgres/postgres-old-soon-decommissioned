@@ -17,7 +17,8 @@
 #include "nodes/relation.h"
 
 
-extern void get_relation_info(PlannerInfo *root, Oid relationObjectId, RelOptInfo *rel);
+extern void get_relation_info(PlannerInfo *root, Oid relationObjectId,
+							  bool inhparent, RelOptInfo *rel);
 
 extern bool relation_excluded_by_constraints(RelOptInfo *rel,
 											 RangeTblEntry *rte);
