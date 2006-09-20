@@ -569,7 +569,7 @@ For new features, add links to the documentation sections.
        <para>
         Add support for <acronym>SSL</> Certificate Revocation List
         (<acronym>CRL</>) files, <filename>root.crl</> (Libor
-        Hoho&#353;)
+        Hoho&scaron;)
        </para>
 
        <para>
