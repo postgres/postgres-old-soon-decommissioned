@@ -834,7 +834,7 @@ For new features, add links to the documentation sections.
        </para>
 
        <para>
-        Both this and <literal>pg_prepared_statements</> are very
+        This, and <literal>pg_prepared_statements</> above, are very
         useful for pooled connection setups.
        </para>
       </listitem>
