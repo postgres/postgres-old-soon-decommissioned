@@ -575,7 +575,8 @@ ginvacuumcleanup(PG_FUNCTION_ARGS) {
 	bool	 needLock;
     BlockNumber npages,
 				blkno;
-	BlockNumber nFreePages,
+	BlockNumber totFreePages,
+				nFreePages,
 			   *freePages,
 			   maxFreePages;
 	BlockNumber lastBlock = GIN_ROOT_BLKNO,
@@ -610,7 +611,7 @@ ginvacuumcleanup(PG_FUNCTION_ARGS) {
 	if (maxFreePages > MaxFSMPages)
 		maxFreePages = MaxFSMPages;
 
-	nFreePages = 0;
+	totFreePages = nFreePages = 0;
 	freePages = (BlockNumber *) palloc(sizeof(BlockNumber) * maxFreePages);
 
 	for (blkno = GIN_ROOT_BLKNO + 1; blkno < npages; blkno++) {
@@ -626,6 +627,7 @@ ginvacuumcleanup(PG_FUNCTION_ARGS) {
 		if ( GinPageIsDeleted(page) ) {
 			if (nFreePages < maxFreePages)
 				freePages[nFreePages++] = blkno;
+			totFreePages++;
 		} else
 			lastFilledBlock = blkno;
 
@@ -638,7 +640,7 @@ ginvacuumcleanup(PG_FUNCTION_ARGS) {
 		int         i;
 		for (i = 0; i < nFreePages; i++) 
 			if (freePages[i] >= lastFilledBlock) {
-				nFreePages = i;
+				totFreePages = nFreePages = i;
 				break;
 			}
 
@@ -648,8 +650,8 @@ ginvacuumcleanup(PG_FUNCTION_ARGS) {
 		stats->pages_removed = lastBlock - lastFilledBlock;
 	}
 
-	RecordIndexFreeSpace(&index->rd_node, nFreePages, freePages);
-	stats->pages_free = nFreePages;
+	RecordIndexFreeSpace(&index->rd_node, totFreePages, nFreePages, freePages);
+	stats->pages_free = totFreePages;
 
 	if (needLock)
 		LockRelationForExtension(index, ExclusiveLock);

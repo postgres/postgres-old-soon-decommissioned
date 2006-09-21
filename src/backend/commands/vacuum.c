@@ -3314,7 +3314,7 @@ vac_update_fsm(Relation onerel, VacPageList fraged_pages,
 		}
 	}
 
-	RecordRelationFreeSpace(&onerel->rd_node, outPages, pageSpaces);
+	RecordRelationFreeSpace(&onerel->rd_node, outPages, outPages, pageSpaces);
 
 	pfree(pageSpaces);
 }
