@@ -251,7 +251,7 @@
   </para>
 
    <table tocentry="1" id="xindex-gin-array-strat-table">
-    <title>GiST Two-Dimensional <quote>R-tree</> Strategies</title>
+    <title>GIN Array's Strategies</title>
     <tgroup cols="2">
      <thead>
       <row>
