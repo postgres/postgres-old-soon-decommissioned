@@ -145,6 +145,9 @@ static unsigned char unescape_single_char(unsigned char c);
  * did not end with a newline.
  *
  * XXX perhaps \f (formfeed) should be treated as a newline as well?
+ *
+ * XXX if you change the set of whitespace characters, fix scanner_isspace()
+ * to agree, and see also the plpgsql lexer.
  */
 
 space			[ \t\n\r\f]

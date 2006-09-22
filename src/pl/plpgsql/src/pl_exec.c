@@ -26,6 +26,7 @@
 #include "funcapi.h"
 #include "optimizer/clauses.h"
 #include "parser/parse_expr.h"
+#include "parser/scansup.h"
 #include "tcop/tcopprot.h"
 #include "utils/array.h"
 #include "utils/builtins.h"
@@ -2527,7 +2528,7 @@ exec_stmt_dynexecute(PLpgSQL_execstate *estate,
 				char	   *ptr;
 
 				for (ptr = querystr; *ptr; ptr++)
-					if (!isspace((unsigned char) *ptr))
+					if (!scanner_isspace(*ptr))
 						break;
 				if (*ptr == 'S' || *ptr == 's')
 					ereport(ERROR,

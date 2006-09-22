@@ -6155,7 +6155,7 @@ assign_custom_variable_classes(const char *newval, bool doit, GucSource source)
 	initStringInfo(&buf);
 	while ((c = *cp++) != 0)
 	{
-		if (isspace(c))
+		if (isspace((unsigned char) c))
 		{
 			if (symLen > 0)
 				hasSpaceAfterToken = true;
@@ -6173,7 +6173,7 @@ assign_custom_variable_classes(const char *newval, bool doit, GucSource source)
 			continue;
 		}
 
-		if (hasSpaceAfterToken || !isalnum(c))
+		if (hasSpaceAfterToken || !isalnum((unsigned char) c))
 		{
 			/*
 			 * Syntax error due to token following space after token or non

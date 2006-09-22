@@ -59,7 +59,7 @@ extern void get_parent_directory(char *path);
 ( \
 	((filename)[0] == '/') || \
 	(filename)[0] == '\\' || \
-	(isalpha((filename)[0]) && (filename)[1] == ':' && \
+	(isalpha((unsigned char) ((filename)[0])) && (filename)[1] == ':' && \
 	((filename)[2] == '\\' || (filename)[2] == '/')) \
 )
 #endif

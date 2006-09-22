@@ -183,3 +183,26 @@ truncate_identifier(char *ident, int len, bool warn)
 		ident[len] = '\0';
 	}
 }
+
+/*
+ * scanner_isspace() --- return TRUE if flex scanner considers char whitespace
+ *
+ * This should be used instead of the potentially locale-dependent isspace()
+ * function when it's important to match the lexer's behavior.
+ *
+ * In principle we might need similar functions for isalnum etc, but for the
+ * moment only isspace seems needed.
+ */
+bool
+scanner_isspace(char ch)
+{
+	/* This must match scan.l's list of {space} characters */
+	/* and plpgsql's scan.l as well */
+	if (ch == ' ' ||
+		ch == '\t' ||
+		ch == '\n' ||
+		ch == '\r' ||
+		ch == '\f')
+		return true;
+	return false;
+}

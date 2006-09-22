@@ -381,7 +381,7 @@ plpgsql_convert_ident(const char *s, char **output, int numidents)
 			/* Normal identifier: extends till dot or whitespace */
 			const char *thisstart = s;
 
-			while (*s && *s != '.' && !isspace((unsigned char) *s))
+			while (*s && *s != '.' && !scanner_isspace(*s))
 				s++;
 			/* Downcase and truncate to NAMEDATALEN */
 			curident = downcase_truncate_identifier(thisstart, s - thisstart,
@@ -400,11 +400,11 @@ plpgsql_convert_ident(const char *s, char **output, int numidents)
 		/* If not done, skip whitespace, dot, whitespace */
 		if (*s)
 		{
-			while (*s && isspace((unsigned char) *s))
+			while (*s && scanner_isspace(*s))
 				s++;
 			if (*s++ != '.')
 				elog(ERROR, "expected dot between identifiers: %s", sstart);
-			while (*s && isspace((unsigned char) *s))
+			while (*s && scanner_isspace(*s))
 				s++;
 			if (*s == '\0')
 				elog(ERROR, "expected another identifier: %s", sstart);

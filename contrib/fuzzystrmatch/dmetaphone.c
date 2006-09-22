@@ -318,7 +318,7 @@ MakeUpper(metastring * s)
 	char	   *i;
 
 	for (i = s->str; *i; i++)
-		*i = toupper(*i);
+		*i = toupper((unsigned char) *i);
 }
 
 

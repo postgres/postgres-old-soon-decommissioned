@@ -332,7 +332,7 @@ lquery_in(PG_FUNCTION_ARGS)
 		{
 			if (*ptr == ',')
 				state = LQPRS_WAITSNUM;
-			else if (isdigit((unsigned int) *ptr))
+			else if (isdigit((unsigned char) *ptr))
 			{
 				curqlevel->low = atoi(ptr);
 				state = LQPRS_WAITND;
@@ -342,7 +342,7 @@ lquery_in(PG_FUNCTION_ARGS)
 		}
 		else if (state == LQPRS_WAITSNUM)
 		{
-			if (isdigit((unsigned int) *ptr))
+			if (isdigit((unsigned char) *ptr))
 			{
 				curqlevel->high = atoi(ptr);
 				state = LQPRS_WAITCLOSE;
@@ -359,7 +359,7 @@ lquery_in(PG_FUNCTION_ARGS)
 		{
 			if (*ptr == '}')
 				state = LQPRS_WAITEND;
-			else if (!isdigit((unsigned int) *ptr))
+			else if (!isdigit((unsigned char) *ptr))
 				UNCHAR;
 		}
 		else if (state == LQPRS_WAITND)
@@ -371,7 +371,7 @@ lquery_in(PG_FUNCTION_ARGS)
 			}
 			else if (*ptr == ',')
 				state = LQPRS_WAITSNUM;
-			else if (!isdigit((unsigned int) *ptr))
+			else if (!isdigit((unsigned char) *ptr))
 				UNCHAR;
 		}
 		else if (state == LQPRS_WAITEND)

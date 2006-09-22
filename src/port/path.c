@@ -69,7 +69,7 @@ skip_drive(const char *path)
 		while (*path && !IS_DIR_SEP(*path))
 			path++;
 	}
-	else if (isalpha(path[0]) && path[1] == ':')
+	else if (isalpha((unsigned char) path[0]) && path[1] == ':')
 	{
 		path += 2;
 	}
