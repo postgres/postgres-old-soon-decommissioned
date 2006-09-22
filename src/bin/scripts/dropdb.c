@@ -104,11 +104,8 @@ main(int argc, char *argv[])
 
 	if (interactive)
 	{
-		char	   *reply;
-
 		printf(_("Database \"%s\" will be permanently removed.\n"), dbname);
-		reply = simple_prompt("Are you sure? (y/n) ", 1, true);
-		if (check_yesno_response(reply) != 1)
+		if (!yesno_prompt("Are you sure?"))
 			exit(0);
 	}
 

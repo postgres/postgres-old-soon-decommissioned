@@ -35,6 +35,6 @@ extern PGresult *executeQuery(PGconn *conn, const char *query,
 extern void executeCommand(PGconn *conn, const char *query,
 			   const char *progname, bool echo);
 
-extern int	check_yesno_response(const char *string);
+extern bool yesno_prompt(const char *question);
 
 #endif   /* COMMON_H */
