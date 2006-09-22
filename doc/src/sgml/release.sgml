@@ -82,13 +82,13 @@ For new features, add links to the documentation sections.
 
       <listitem>
        <para>
-        Continuous archiving enhancements
+        Warm standby server enhancements
        </para>
       </listitem>
 
       <listitem>
        <para>
-        Monitoring and logging additions
+        Monitoring, logging, and performance tuning additions
        </para>
       </listitem>
 
@@ -113,13 +113,14 @@ For new features, add links to the documentation sections.
 
       <listitem>
        <para>
-        COPY support for SELECT statements
+        COPY TO support for SELECT statements
        </para>
       </listitem>
 
       <listitem>
        <para>
-        Array and aggregate improvements
+        Array and aggregate improvements, including SQL:2003 
+        statistical functions
        </para>
       </listitem>
 
