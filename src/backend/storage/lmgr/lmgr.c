@@ -629,6 +629,7 @@ LockTagIsTemp(const LOCKTAG *tag)
 			/* there are currently no non-table temp objects */
 			break;
 		case LOCKTAG_USERLOCK:
+		case LOCKTAG_ADVISORY:
 			/* assume these aren't temp */
 			break;
 	}
