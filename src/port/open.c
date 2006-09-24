@@ -126,7 +126,7 @@ pgwin32_fopen(const char *fileName, const char *mode)
 	else if (strchr(mode, 'w'))
 		openmode |= O_WRONLY | O_CREAT | O_TRUNC;
 	if (strchr(mode, 'a'))
-		openmode |= O_WRONLY | O_APPEND;
+		openmode |= O_WRONLY | O_CREAT | O_APPEND;
 
 	if (strchr(mode, 'b'))
 		openmode |= O_BINARY;
