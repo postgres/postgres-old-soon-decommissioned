@@ -1710,7 +1710,7 @@ For new features, add links to the documentation sections.
 
       <listitem>
        <para>
-        Add <application>pg_dump</> <literal>-X
+        Add <application>pg_restore</> <literal>-X
         no-data-for-failed-tables</> option to suppress loading
         data if table creation failed (the table already exists)
         (Martin Pitt)
