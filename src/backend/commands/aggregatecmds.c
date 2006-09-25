@@ -219,8 +219,9 @@ RemoveAggregate(RemoveFuncStmt *stmt)
 	{
 		/* we only get here if stmt->missing_ok is true */
 		ereport(NOTICE,
-				(errmsg("aggregate %s does not exist ... skipping",
-						NameListToString(stmt->name))));
+				(errmsg("aggregate %s(%s) does not exist ... skipping",
+						NameListToString(aggName),
+						TypeNameListToString(aggArgs))));
 		return;
 	}
 

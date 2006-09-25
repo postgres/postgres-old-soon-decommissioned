@@ -686,15 +686,15 @@ RemoveFunction(RemoveFuncStmt *stmt)
 	 * Find the function, do permissions and validity checks
 	 */
 	funcOid = LookupFuncNameTypeNames(functionName, argTypes, stmt->missing_ok);
-	if (stmt->missing_ok &&!OidIsValid(funcOid)) 
+	if (!OidIsValid(funcOid)) 
 	{
+		/* can only get here if stmt->missing_ok */
 		ereport(NOTICE,
 				(errmsg("function %s(%s) does not exist ... skipping",
 						NameListToString(functionName),
-						NameListToString(argTypes))));
+						TypeNameListToString(argTypes))));
 		return;
 	}
-
 
 	tup = SearchSysCache(PROCOID,
 						 ObjectIdGetDatum(funcOid),
@@ -1408,8 +1408,6 @@ DropCast(DropCastStmt *stmt)
 
 		return;
 	}
-
-			
 
 	/* Permission check */
 	if (!pg_type_ownercheck(sourcetypeid, GetUserId())
