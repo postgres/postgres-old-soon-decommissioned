@@ -109,7 +109,7 @@ For new features, add links to the documentation sections.
 
       <listitem>
        <para>
-        Allow inheritance to be removed from tables
+        Allow table inheritance to be added and removed from pre-existing tables
        </para>
       </listitem>
 
