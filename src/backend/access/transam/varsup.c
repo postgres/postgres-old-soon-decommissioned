@@ -239,7 +239,7 @@ SetTransactionIdLimit(TransactionId oldest_datminxid,
 	LWLockRelease(XidGenLock);
 
 	/* Log the info */
-	ereport(LOG,
+	ereport(DEBUG1,
 	   (errmsg("transaction ID wrap limit is %u, limited by database \"%s\"",
 			   xidWrapLimit, NameStr(*oldest_datname))));
 	/* Give an immediate warning if past the wrap warn point */
