@@ -109,10 +109,6 @@
 #endif
 #endif
 
-#ifndef HAVE_STRDUP
-#include "strdup.h"
-#endif
-
 #ifdef USE_SSL
 #include <openssl/ssl.h>
 #endif   /* USE_SSL */

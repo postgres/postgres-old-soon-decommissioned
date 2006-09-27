@@ -43,10 +43,6 @@
 
 #include <ctype.h>
 
-#ifndef HAVE_STRDUP
-#include "strdup.h"
-#endif
-
 #ifdef HAVE_TERMIOS_H
 #include <termios.h>
 #endif

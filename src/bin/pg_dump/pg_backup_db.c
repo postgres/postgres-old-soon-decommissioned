@@ -21,9 +21,6 @@
 #include <termios.h>
 #endif
 
-#ifndef HAVE_STRDUP
-#include "strdup.h"
-#endif
 
 static const char *modulename = gettext_noop("archiver (db)");
 

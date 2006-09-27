@@ -19,9 +19,6 @@
 #ifdef ENABLE_NLS
 #include <locale.h>
 #endif
-#ifndef HAVE_STRDUP
-#include "strdup.h"
-#endif
 
 #include "getopt_long.h"
 

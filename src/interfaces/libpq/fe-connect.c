@@ -22,10 +22,6 @@
 #include <time.h>
 #include <unistd.h>
 
-#ifndef HAVE_STRDUP
-#include "strdup.h"
-#endif
-
 #include "libpq-fe.h"
 #include "libpq-int.h"
 #include "fe-auth.h"

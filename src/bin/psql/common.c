@@ -9,9 +9,6 @@
 #include "common.h"
 
 #include <ctype.h>
-#ifndef HAVE_STRDUP
-#include <strdup.h>
-#endif
 #include <signal.h>
 #ifndef WIN32
 #include <sys/time.h>

@@ -34,10 +34,6 @@
 #include <termios.h>
 #endif
 
-#ifndef HAVE_STRDUP
-#include "strdup.h"
-#endif
-
 #include "getopt_long.h"
 
 #ifndef HAVE_INT_OPTRESET

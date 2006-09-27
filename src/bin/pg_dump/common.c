@@ -24,10 +24,6 @@
 
 #include <ctype.h>
 
-#ifndef HAVE_STRDUP
-#include "strdup.h"
-#endif
-
 
 /*
  * Variables for mapping DumpId to DumpableObject
