@@ -408,7 +408,7 @@ nodeRead(char *token, int tok_len)
 				char	   *val = palloc(tok_len);
 
 				/* skip leading 'b' */
-				strncpy(val, token + 1, tok_len - 1);
+				memcpy(val, token + 1, tok_len - 1);
 				val[tok_len - 1] = '\0';
 				result = (Node *) makeBitString(val);
 				break;

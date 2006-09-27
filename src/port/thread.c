@@ -81,7 +81,7 @@ pqStrerror(int errnum, char *strerrbuf, size_t buflen)
 #endif
 #else
 	/* no strerror_r() available, just use strerror */
-	StrNCpy(strerrbuf, strerror(errnum), buflen);
+	strlcpy(strerrbuf, strerror(errnum), buflen);
 
 	return strerrbuf;
 #endif

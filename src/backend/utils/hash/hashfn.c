@@ -27,8 +27,16 @@
 uint32
 string_hash(const void *key, Size keysize)
 {
+	/*
+	 * If the string exceeds keysize-1 bytes, we want to hash only that many,
+	 * because when it is copied into the hash table it will be truncated at
+	 * that length.
+	 */
+	Size	s_len = strlen((const char *) key);
+
+	s_len = Min(s_len, keysize-1);
 	return DatumGetUInt32(hash_any((const unsigned char *) key,
-								   (int) strlen((const char *) key)));
+								   (int) s_len));
 }
 
 /*

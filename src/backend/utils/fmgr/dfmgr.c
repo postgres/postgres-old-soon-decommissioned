@@ -594,7 +594,6 @@ find_rendezvous_variable(const char *varName)
 {
 	static HTAB         *rendezvousHash = NULL;
 
-	char			     key[NAMEDATALEN];
 	rendezvousHashEntry *hentry;
 	bool				 found;
 
@@ -612,12 +611,9 @@ find_rendezvous_variable(const char *varName)
 									 HASH_ELEM);
 	}
 
-	/* Turn the varName into a fixed-size string */
-	StrNCpy(key, varName, sizeof(key));
-
 	/* Find or create the hashtable entry for this varName */
 	hentry = (rendezvousHashEntry *) hash_search(rendezvousHash,
-												 key,
+												 varName,
 												 HASH_ENTER,
 												 &found);
 
