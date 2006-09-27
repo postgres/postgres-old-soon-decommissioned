@@ -329,7 +329,11 @@ extern int	inet_aton(const char *cp, struct in_addr * addr);
 #endif
 
 #ifndef HAVE_STRDUP
-extern char *strdup(char const *);
+extern char *strdup(const char *str);
+#endif
+
+#ifndef HAVE_STRLCPY
+extern size_t strlcpy(char *dst, const char *src, size_t siz);
 #endif
 
 #ifndef HAVE_RANDOM
