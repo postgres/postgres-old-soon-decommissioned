@@ -85,13 +85,14 @@ copytext(text *t)
 text *
 concat_text(text *arg1, text *arg2)
 {
-	int32		new_text_size = VARSIZE(arg1) + VARSIZE(arg2) - VARHDRSZ;
+	int32		arg1_size = VARSIZE(arg1) - VARHDRSZ;
+	int32		arg2_size = VARSIZE(arg2) - VARHDRSZ;
+	int32		new_text_size = arg1_size + arg2_size + VARHDRSZ;
 	text	   *new_text = (text *) palloc(new_text_size);
 
-	memset((void *) new_text, 0, new_text_size);
 	VARATT_SIZEP(new_text) = new_text_size;
-	strncpy(VARDATA(new_text), VARDATA(arg1), VARSIZE(arg1) - VARHDRSZ);
-	strncat(VARDATA(new_text), VARDATA(arg2), VARSIZE(arg2) - VARHDRSZ);
+	memcpy(VARDATA(new_text), VARDATA(arg1), arg1_size);
+	memcpy(VARDATA(new_text) + arg1_size, VARDATA(arg2), arg2_size);
 	return new_text;
 }
 
