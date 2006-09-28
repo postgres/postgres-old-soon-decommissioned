@@ -338,6 +338,19 @@
    </para>
   </tip>
 
+  <note>
+   <para>
+    If the <replaceable>expression</replaceable> is row-valued, then
+    <literal>IS NULL</> is true when the row expression itself is null
+    or when all the row's fields are null, while
+    <literal>IS NOT NULL</> is true when the row expression itself is non-null
+    and all the row's fields are non-null.
+    This definition conforms to the SQL standard, and is a change from the
+    inconsistent behavior exhibited by <productname>PostgreSQL</productname>
+    versions prior to 8.2.
+   </para>
+  </note>
+
    <para>
     <indexterm>
      <primary>IS DISTINCT FROM</primary>

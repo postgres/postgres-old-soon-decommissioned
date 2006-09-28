@@ -1717,6 +1717,18 @@ get_typtype(Oid typid)
 }
 
 /*
+ * type_is_rowtype
+ *
+ *		Convenience function to determine whether a type OID represents
+ *		a "rowtype" type --- either RECORD or a named composite type.
+ */
+bool
+type_is_rowtype(Oid typid)
+{
+	return (typid == RECORDOID || get_typtype(typid) == 'c');
+}
+
+/*
  * get_typ_typrelid
  *
  *		Given the type OID, get the typrelid (InvalidOid if not a complex

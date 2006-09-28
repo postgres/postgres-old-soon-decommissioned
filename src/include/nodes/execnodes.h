@@ -706,6 +706,19 @@ typedef struct MinMaxExprState
 } MinMaxExprState;
 
 /* ----------------
+ *		NullTestState node
+ * ----------------
+ */
+typedef struct NullTestState
+{
+	ExprState	xprstate;
+	ExprState  *arg;			/* input expression */
+	bool		argisrow;		/* T if input is of a composite type */
+	/* used only if argisrow: */
+	TupleDesc	argdesc;		/* tupdesc for most recent input */
+} NullTestState;
+
+/* ----------------
  *		CoerceToDomainState node
  * ----------------
  */

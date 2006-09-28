@@ -165,6 +165,7 @@ typedef enum NodeTag
 	T_RowCompareExprState,
 	T_CoalesceExprState,
 	T_MinMaxExprState,
+	T_NullTestState,
 	T_CoerceToDomainState,
 	T_DomainConstraintState,
 

@@ -717,9 +717,12 @@ typedef OpExpr NullIfExpr;
  * NullTest
  *
  * NullTest represents the operation of testing a value for NULLness.
- * Currently, we only support scalar input values, but eventually a
- * row-constructor input should be supported.
  * The appropriate test is performed and returned as a boolean Datum.
+ *
+ * NOTE: the semantics of this for rowtype inputs are noticeably different
+ * from the scalar case.  It would probably be a good idea to include an
+ * "argisrow" flag in the struct to reflect that, but for the moment,
+ * we do not do so to avoid forcing an initdb during 8.2beta.
  * ----------------
  */
 
