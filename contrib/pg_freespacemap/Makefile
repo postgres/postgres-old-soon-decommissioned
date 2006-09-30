@@ -4,6 +4,7 @@ MODULE_big = pg_freespacemap
 OBJS	= pg_freespacemap.o
 
 DATA_built = pg_freespacemap.sql 
+DATA = uninstall_pg_freespacemap.sql 
 DOCS = README.pg_freespacemap
 
 ifdef USE_PGXS
