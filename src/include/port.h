@@ -332,7 +332,7 @@ extern int	inet_aton(const char *cp, struct in_addr * addr);
 extern char *strdup(const char *str);
 #endif
 
-#ifndef HAVE_STRLCPY
+#if !defined(HAVE_STRLCPY) || defined(bsdi) /* bsdi doesn't have the prototype */
 extern size_t strlcpy(char *dst, const char *src, size_t siz);
 #endif
 
