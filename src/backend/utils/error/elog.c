@@ -451,7 +451,14 @@ errfinish(int dummy,...)
 		abort();
 	}
 
-	/* We reach here if elevel <= WARNING. OK to return to caller. */
+	/*
+	 * We reach here if elevel <= WARNING. OK to return to caller.
+	 *
+	 * But check for cancel/die interrupt first --- this is so that the user
+	 * can stop a query emitting tons of notice or warning messages, even if
+	 * it's in a loop that otherwise fails to check for interrupts.
+	 */
+	CHECK_FOR_INTERRUPTS();
 }
 
 
