@@ -5559,6 +5559,7 @@ date_trunc('<replaceable>field</replaceable>', <replaceable>source</replaceable>
      <member><literal>day</literal></member>
      <member><literal>week</literal></member>
      <member><literal>month</literal></member>
+     <member><literal>quarter</literal></member>
      <member><literal>year</literal></member>
      <member><literal>decade</literal></member>
      <member><literal>century</literal></member>
