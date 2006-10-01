@@ -105,6 +105,9 @@ su - postgres
       <indexterm>
        <primary>readline</primary>
       </indexterm>
+      <indexterm>
+       <primary>libedit</primary>
+      </indexterm>
 
       The <acronym>GNU</> <productname>Readline</> library (for
       simple line editing and command history retrieval) is
@@ -866,22 +869,25 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
-       <term><option>--with-libedit-preferred</option></term>
+       <term><option>--without-readline</option></term>
        <listitem>
         <para>
-         Favors the use of the BSD-licensed <application>libedit</> library
-         rather than GPL-licensed <application>Readline</>.
+         Prevents use of the <application>Readline</> library
+         (and <application>libedit</> as well).  This option disables
+         command-line editing and history in
+         <application>psql</application>, so it is not recommended.
         </para>
        </listitem>
       </varlistentry>
 
       <varlistentry>
-       <term><option>--without-readline</option></term>
+       <term><option>--with-libedit-preferred</option></term>
        <listitem>
         <para>
-         Prevents use of the <application>Readline</> library.  This disables
-         command-line editing and history in
-         <application>psql</application>, so it is not recommended.
+         Favors the use of the BSD-licensed <application>libedit</> library
+         rather than GPL-licensed <application>Readline</>.  This option
+         is significant only if you have both libraries installed; the
+         default in that case is to use <application>Readline</>.
         </para>
        </listitem>
       </varlistentry>
