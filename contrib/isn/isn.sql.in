@@ -1,6 +1,6 @@
 --
 --	PostgreSQL code for ISNs (ISBN, ISMN, ISSN, EAN13, UPC)
---  Copyright (c) 2004-2006, Germán Méndez Bravo (Kronuz)
+--  Copyright (c) 2004-2006, German Mendez Bravo (Kronuz)
 --
 --	$PostgreSQL$
 --
