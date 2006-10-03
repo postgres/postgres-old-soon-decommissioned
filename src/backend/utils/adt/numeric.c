@@ -3217,11 +3217,12 @@ apply_typmod(NumericVar *var, int32 typmod)
 					ereport(ERROR,
 							(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
 							 errmsg("numeric field overflow"),
-							 errdetail("A field with precision %d, scale %d must have an absolute value less than %s%d.",
+							 errdetail("A field with precision %d, scale %d must round to an absolute value less than %s%d.",
 									   precision, scale,
 									   /* Display 10^0 as 1 */
 									   maxdigits ? "10^" : "",
-									   maxdigits ? maxdigits : 1)));
+									   maxdigits ? maxdigits : 1
+									   )));
 				break;
 			}
 			ddigits -= DEC_DIGITS;
