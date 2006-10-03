@@ -272,9 +272,6 @@ typedef unsigned short mode_t;
 #define inline __inline
 #define __inline__ __inline
 
-#undef errcode
-#define errcode __msvc_errcode
-
 #define _S_IRWXU	(_S_IREAD | _S_IWRITE | _S_IEXEC)
 #define _S_IXUSR	_S_IEXEC
 #define _S_IWUSR	_S_IWRITE
