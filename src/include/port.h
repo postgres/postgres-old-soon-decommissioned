@@ -10,6 +10,8 @@
  *
  *-------------------------------------------------------------------------
  */
+#ifndef PG_PORT_H
+#define PG_PORT_H
 
 #include <ctype.h>
 #include <netdb.h>
@@ -361,3 +363,10 @@ extern int pqGethostbyname(const char *name,
 				char *buffer, size_t buflen,
 				struct hostent ** result,
 				int *herrno);
+
+typedef int (*qsort_arg_comparator) (const void *a, const void *b, void *arg);
+
+extern void qsort_arg(void *base, size_t nel, size_t elsize,
+					  qsort_arg_comparator cmp, void *arg);
+
+#endif /* PG_PORT_H */
