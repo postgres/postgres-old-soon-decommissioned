@@ -5074,7 +5074,7 @@ ORDER BY c.ordinal_position;
      </row>
 
      <row>
-      <entry><literal>view definition</literal></entry>
+      <entry><literal>view_definition</literal></entry>
       <entry><type>character_data</type></entry>
       <entry>
        Query expression defining the view (null if the view is not
