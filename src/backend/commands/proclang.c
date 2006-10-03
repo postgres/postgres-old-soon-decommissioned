@@ -401,7 +401,7 @@ DropProceduralLanguage(DropPLangStmt *stmt)
 					 errmsg("language \"%s\" does not exist", languageName)));
 		else 
 			ereport(NOTICE,
-					(errmsg("language \"%s\" does not exist ... skipping", 
+					(errmsg("language \"%s\" does not exist, skipping", 
 							languageName)));
  
 		return;

@@ -690,7 +690,7 @@ RemoveFunction(RemoveFuncStmt *stmt)
 	{
 		/* can only get here if stmt->missing_ok */
 		ereport(NOTICE,
-				(errmsg("function %s(%s) does not exist ... skipping",
+				(errmsg("function %s(%s) does not exist, skipping",
 						NameListToString(functionName),
 						TypeNameListToString(argTypes))));
 		return;

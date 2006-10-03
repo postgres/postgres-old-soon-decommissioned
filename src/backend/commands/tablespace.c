@@ -412,7 +412,7 @@ DropTableSpace(DropTableSpaceStmt *stmt)
 		else
 		{
 			ereport(NOTICE,
-					(errmsg("tablespace \"%s\" does not exist ... skipping",
+					(errmsg("tablespace \"%s\" does not exist, skipping",
 							tablespacename)));
 			/* XXX I assume I need one or both of these next two calls */
 			heap_endscan(scandesc);

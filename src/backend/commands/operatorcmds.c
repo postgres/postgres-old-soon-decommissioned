@@ -218,7 +218,7 @@ RemoveOperator(RemoveFuncStmt *stmt)
    if (stmt->missing_ok &&!OidIsValid(operOid) )
    {
        ereport(NOTICE,
-               (errmsg("operator %s does not exist ... skipping",
+               (errmsg("operator %s does not exist, skipping",
                        NameListToString(operatorName))));
        return;
    }

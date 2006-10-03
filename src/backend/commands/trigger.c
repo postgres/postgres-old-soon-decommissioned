@@ -487,7 +487,7 @@ DropTrigger(Oid relid, const char *trigname, DropBehavior behavior,
 							trigname, get_rel_name(relid))));
 		else
 			ereport(NOTICE,
-					(errmsg("trigger \"%s\" for table \"%s\" does not exist ...skipping",
+					(errmsg("trigger \"%s\" for table \"%s\" does not exist, skipping",
 							trigname, get_rel_name(relid))));
 		/* cleanup */
 		systable_endscan(tgscan);
