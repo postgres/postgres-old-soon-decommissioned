@@ -1,5 +1,9 @@
 /* $PostgreSQL$ */
 
+#if defined(_MSC_VER) || defined(__BORLANDC__)
+#define	WIN32_ONLY_COMPILER
+#endif
+
 /* undefine and redefine after #include */
 #undef mkdir
 

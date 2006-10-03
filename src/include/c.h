@@ -58,11 +58,8 @@
 #include "postgres_ext.h"
 #include "pg_trace.h"
 
-#if defined(_MSC_VER) || defined(__BORLANDC__)
-#define	WIN32_ONLY_COMPILER
 #if defined(__BORLANDC__) || (_MSC_VER > 1400)
 #include <crtdefs.h>
-#endif
 #endif
 
 #include <stdio.h>
