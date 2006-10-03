@@ -132,12 +132,13 @@ struct config_generic
 
 #define GUC_UNIT_KB				0x0400	/* value is in 1 kB */
 #define GUC_UNIT_BLOCKS			0x0800	/* value is in blocks */
-#define GUC_UNIT_MEMORY			(GUC_UNIT_KB|GUC_UNIT_BLOCKS)
+#define GUC_UNIT_XBLOCKS		0x0C00	/* value is in xlog blocks */
+#define GUC_UNIT_MEMORY			0x0C00	/* mask for KB, BLOCKS, XBLOCKS */
 
 #define GUC_UNIT_MS				0x1000	/* value is in milliseconds */
 #define GUC_UNIT_S				0x2000	/* value is in seconds */
 #define GUC_UNIT_MIN			0x4000	/* value is in minutes */
-#define GUC_UNIT_TIME			(GUC_UNIT_MS|GUC_UNIT_S|GUC_UNIT_MIN)
+#define GUC_UNIT_TIME			0x7000	/* mask for MS, S, MIN */
 
 /* bit values in status field */
 #define GUC_HAVE_TENTATIVE	0x0001		/* tentative value is defined */
