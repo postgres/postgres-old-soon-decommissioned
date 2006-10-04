@@ -1748,6 +1748,7 @@ do
 -Tpvcontents \
 -Tq128_t \
 -Tqaddr_t \
+-Tqsort_arg_comparator \
 -Tquad_t \
 -TrangeTableEntry_used_context \
 -Treduce_outer_joins_state \
