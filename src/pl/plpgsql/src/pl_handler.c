@@ -162,7 +162,7 @@ plpgsql_validator(PG_FUNCTION_ARGS)
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 						 errmsg("plpgsql functions cannot take type %s",
-							  format_type_be(argtypes[i]))));
+								format_type_be(argtypes[i]))));
 		}
 	}
 

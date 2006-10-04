@@ -1331,7 +1331,7 @@ toast_fetch_datum_slice(varattrib *attr, int32 sliceoffset, int32 length)
 		VARATT_SIZEP(result) |= VARATT_FLAG_COMPRESSED;
 
 	if (length == 0)
-		return result;		/* Can save a lot of work at this point! */
+		return result;			/* Can save a lot of work at this point! */
 
 	startchunk = sliceoffset / TOAST_MAX_CHUNK_SIZE;
 	endchunk = (sliceoffset + length - 1) / TOAST_MAX_CHUNK_SIZE;

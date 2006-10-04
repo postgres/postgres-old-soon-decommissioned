@@ -1,7 +1,7 @@
 /* $PostgreSQL$ */
 
 #if defined(_MSC_VER) || defined(__BORLANDC__)
-#define	WIN32_ONLY_COMPILER
+#define WIN32_ONLY_COMPILER
 #endif
 
 /* undefine and redefine after #include */
@@ -17,7 +17,7 @@
 #include <signal.h>
 #include <errno.h>
 #include <direct.h>
-#include <sys/utime.h> /* for non-unicode version */
+#include <sys/utime.h>			/* for non-unicode version */
 #undef near
 
 /* Must be here to avoid conflicting with prototype in windows.h */
@@ -46,7 +46,6 @@
 #else							/* not BUILDING_DLL */
 #define DLLIMPORT __declspec (dllimport)
 #endif
-
 #else							/* not CYGWIN, not MSVC, not MingW */
 
 #define DLLIMPORT
@@ -166,7 +165,7 @@ struct itimerval
 	struct timeval it_interval;
 	struct timeval it_value;
 };
-int			setitimer(int which, const struct itimerval *value, struct itimerval *ovalue);
+int			setitimer(int which, const struct itimerval * value, struct itimerval * ovalue);
 
 
 /*
@@ -293,4 +292,5 @@ typedef unsigned short mode_t;
 
 /* Pulled from Makefile.port in mingw */
 #define DLSUFFIX ".dll"
+
 #endif

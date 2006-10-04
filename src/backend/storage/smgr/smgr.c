@@ -471,10 +471,10 @@ smgr_internal_unlink(RelFileNode rnode, int which, bool isTemp, bool isRedo)
 	FreeSpaceMapForgetRel(&rnode);
 
 	/*
-	 * Tell the stats collector to forget it immediately, too.  Skip this
-	 * in recovery mode, since the stats collector likely isn't running
-	 * (and if it is, pgstat.c will get confused because we aren't a real
-	 * backend process).
+	 * Tell the stats collector to forget it immediately, too.	Skip this in
+	 * recovery mode, since the stats collector likely isn't running (and if
+	 * it is, pgstat.c will get confused because we aren't a real backend
+	 * process).
 	 */
 	if (!InRecovery)
 		pgstat_drop_relation(rnode.relNode);
@@ -960,16 +960,16 @@ smgr_desc(StringInfo buf, uint8 xl_info, char *rec)
 		xl_smgr_create *xlrec = (xl_smgr_create *) rec;
 
 		appendStringInfo(buf, "file create: %u/%u/%u",
-				xlrec->rnode.spcNode, xlrec->rnode.dbNode,
-				xlrec->rnode.relNode);
+						 xlrec->rnode.spcNode, xlrec->rnode.dbNode,
+						 xlrec->rnode.relNode);
 	}
 	else if (info == XLOG_SMGR_TRUNCATE)
 	{
 		xl_smgr_truncate *xlrec = (xl_smgr_truncate *) rec;
 
 		appendStringInfo(buf, "file truncate: %u/%u/%u to %u blocks",
-				xlrec->rnode.spcNode, xlrec->rnode.dbNode,
-				xlrec->rnode.relNode, xlrec->blkno);
+						 xlrec->rnode.spcNode, xlrec->rnode.dbNode,
+						 xlrec->rnode.relNode, xlrec->blkno);
 	}
 	else
 		appendStringInfo(buf, "UNKNOWN");

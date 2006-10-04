@@ -33,7 +33,7 @@ extern RangeTblEntry *GetRTEByRangeTablePosn(ParseState *pstate,
 extern Node *scanRTEForColumn(ParseState *pstate, RangeTblEntry *rte,
 				 char *colname, int location);
 extern Node *colNameToVar(ParseState *pstate, char *colname, bool localonly,
-						  int location);
+			 int location);
 extern Node *qualifiedNameToVar(ParseState *pstate,
 				   char *schemaname,
 				   char *refname,
@@ -73,7 +73,7 @@ extern void addRTEtoQuery(ParseState *pstate, RangeTblEntry *rte,
 			  bool addToJoinList,
 			  bool addToRelNameSpace, bool addToVarNameSpace);
 extern RangeTblEntry *addImplicitRTE(ParseState *pstate, RangeVar *relation,
-									 int location);
+			   int location);
 extern void expandRTE(RangeTblEntry *rte, int rtindex, int sublevels_up,
 		  bool include_dropped,
 		  List **colnames, List **colvars);

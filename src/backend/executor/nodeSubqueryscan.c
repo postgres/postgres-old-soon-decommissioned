@@ -204,7 +204,7 @@ ExecInitSubqueryScan(SubqueryScan *node, EState *estate, int eflags)
 	 * too soon during shutdown.
 	 */
 	ExecAssignScanType(&subquerystate->ss,
-			CreateTupleDescCopy(ExecGetResultType(subquerystate->subplan)));
+			 CreateTupleDescCopy(ExecGetResultType(subquerystate->subplan)));
 
 	/*
 	 * Initialize result tuple type and projection info.

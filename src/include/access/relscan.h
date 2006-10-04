@@ -27,12 +27,12 @@ typedef struct HeapScanDescData
 	int			rs_nkeys;		/* number of scan keys */
 	ScanKey		rs_key;			/* array of scan key descriptors */
 	BlockNumber rs_nblocks;		/* number of blocks to scan */
-	bool		rs_pageatatime;	/* verify visibility page-at-a-time? */
+	bool		rs_pageatatime; /* verify visibility page-at-a-time? */
 
 	/* scan current state */
 	bool		rs_inited;		/* false = scan not init'd yet */
 	HeapTupleData rs_ctup;		/* current tuple in scan, if any */
-	BlockNumber	rs_cblock;		/* current block # in scan, if any */
+	BlockNumber rs_cblock;		/* current block # in scan, if any */
 	Buffer		rs_cbuf;		/* current buffer in scan, if any */
 	/* NB: if rs_cbuf is not InvalidBuffer, we hold a pin on that buffer */
 	ItemPointerData rs_mctid;	/* marked scan position, if any */

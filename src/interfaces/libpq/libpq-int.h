@@ -285,7 +285,7 @@ struct pg_conn
 	/* Status indicators */
 	ConnStatusType status;
 	PGAsyncStatusType asyncStatus;
-	PGTransactionStatusType xactStatus;		/* never changes to ACTIVE */
+	PGTransactionStatusType xactStatus; /* never changes to ACTIVE */
 	PGQueryClass queryclass;
 	char	   *last_query;		/* last SQL command, or NULL if unknown */
 	bool		options_valid;	/* true if OK to attempt connection */

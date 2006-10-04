@@ -228,12 +228,12 @@ gistendscan(PG_FUNCTION_ARGS)
 
 static void
 gistfreestack(GISTSearchStack *s)
-{  
+{
 	while (s != NULL)
 	{
 		GISTSearchStack *p = s->next;
+
 		pfree(s);
 		s = p;
 	}
 }
-

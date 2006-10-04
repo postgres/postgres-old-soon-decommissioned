@@ -314,10 +314,10 @@ ExecInitNestLoop(NestLoop *node, EState *estate, int eflags)
 	 * initialize child nodes
 	 *
 	 * Tell the inner child that cheap rescans would be good.  (This is
-	 * unnecessary if we are doing nestloop with inner indexscan, because
-	 * the rescan will always be with a fresh parameter --- but since
-	 * nodeIndexscan doesn't actually care about REWIND, there's no point
-	 * in dealing with that refinement.)
+	 * unnecessary if we are doing nestloop with inner indexscan, because the
+	 * rescan will always be with a fresh parameter --- but since
+	 * nodeIndexscan doesn't actually care about REWIND, there's no point in
+	 * dealing with that refinement.)
 	 */
 	outerPlanState(nlstate) = ExecInitNode(outerPlan(node), estate, eflags);
 	innerPlanState(nlstate) = ExecInitNode(innerPlan(node), estate,

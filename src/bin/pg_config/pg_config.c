@@ -43,10 +43,10 @@ cleanup_path(char *path)
 	char	   *ptr;
 
 	/*
-	 *	GetShortPathName() will fail if the path does not exist, or short names
-	 *	are disabled on this file system.  In both cases, we just return the
-	 *	original path.  This is particularly useful for --sysconfdir, which
-	 *	might not exist.
+	 * GetShortPathName() will fail if the path does not exist, or short names
+	 * are disabled on this file system.  In both cases, we just return the
+	 * original path.  This is particularly useful for --sysconfdir, which
+	 * might not exist.
 	 */
 	GetShortPathName(path, path, MAXPGPATH - 1);
 

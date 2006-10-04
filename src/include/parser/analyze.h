@@ -17,13 +17,13 @@
 
 
 extern List *parse_analyze(Node *parseTree, const char *sourceText,
-						   Oid *paramTypes, int numParams);
+			  Oid *paramTypes, int numParams);
 extern List *parse_analyze_varparams(Node *parseTree, const char *sourceText,
-									 Oid **paramTypes, int *numParams);
+						Oid **paramTypes, int *numParams);
 extern List *parse_sub_analyze(Node *parseTree, ParseState *parentParseState);
 extern List *analyzeCreateSchemaStmt(CreateSchemaStmt *stmt);
 extern void CheckSelectLocking(Query *qry);
 extern void applyLockingClause(Query *qry, Index rtindex,
-							   bool forUpdate, bool noWait);
+				   bool forUpdate, bool noWait);
 
 #endif   /* ANALYZE_H */

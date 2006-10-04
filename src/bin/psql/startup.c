@@ -75,7 +75,7 @@ struct adhoc_opts
 	char	   *action_string;
 	bool		no_readline;
 	bool		no_psqlrc;
-    bool        single_txn;
+	bool		single_txn;
 };
 
 static int	parse_version(const char *versionString);
@@ -760,7 +760,6 @@ checkWin32Codepage(void)
 			   concp, wincp);
 	}
 }
-
 #endif
 
 

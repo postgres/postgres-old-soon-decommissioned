@@ -155,7 +155,7 @@ typedef struct Const
  *				For historical reasons, such parameters are numbered from 0.
  *				These numbers are independent of PARAM_EXTERN numbers.
  *
- *		PARAM_SUBLINK:  The parameter represents an output column of a SubLink
+ *		PARAM_SUBLINK:	The parameter represents an output column of a SubLink
  *				node's sub-select.  The column number is contained in the
  *				`paramid' field.  (This type of Param is converted to
  *				PARAM_EXEC during planning.)
@@ -366,7 +366,7 @@ typedef struct BoolExpr
  *
  * NOTE: in the raw output of gram.y, testexpr contains just the raw form
  * of the lefthand expression (if any), and operName is the String name of
- * the combining operator.  Also, subselect is a raw parsetree.  During parse
+ * the combining operator.	Also, subselect is a raw parsetree.  During parse
  * analysis, the parser transforms testexpr into a complete boolean expression
  * that compares the lefthand value(s) to PARAM_SUBLINK nodes representing the
  * output columns of the subselect.  And subselect is transformed to a Query.

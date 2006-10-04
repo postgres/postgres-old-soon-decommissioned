@@ -22,26 +22,26 @@ typedef HeapTuple Operator;
 
 /* Routines to look up an operator given name and exact input type(s) */
 extern Oid LookupOperName(ParseState *pstate, List *opername,
-						  Oid oprleft, Oid oprright,
-						  bool noError, int location);
+			   Oid oprleft, Oid oprright,
+			   bool noError, int location);
 extern Oid LookupOperNameTypeNames(ParseState *pstate, List *opername,
-								   TypeName *oprleft, TypeName *oprright,
-								   bool noError, int location);
+						TypeName *oprleft, TypeName *oprright,
+						bool noError, int location);
 
 /* Routines to find operators matching a name and given input types */
 /* NB: the selected operator may require coercion of the input types! */
 extern Operator oper(ParseState *pstate, List *op, Oid arg1, Oid arg2,
-					 bool noError, int location);
+	 bool noError, int location);
 extern Operator right_oper(ParseState *pstate, List *op, Oid arg,
-						   bool noError, int location);
+		   bool noError, int location);
 extern Operator left_oper(ParseState *pstate, List *op, Oid arg,
-						  bool noError, int location);
+		  bool noError, int location);
 
 /* Routines to find operators that DO NOT require coercion --- ie, their */
 /* input types are either exactly as given, or binary-compatible */
 extern Operator compatible_oper(ParseState *pstate, List *op,
-								Oid arg1, Oid arg2,
-								bool noError, int location);
+				Oid arg1, Oid arg2,
+				bool noError, int location);
 
 /* currently no need for compatible_left_oper/compatible_right_oper */
 

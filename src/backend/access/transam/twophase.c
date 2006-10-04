@@ -1250,8 +1250,8 @@ RemoveTwoPhaseFile(TransactionId xid, bool giveWarning)
 		if (errno != ENOENT || giveWarning)
 			ereport(WARNING,
 					(errcode_for_file_access(),
-				   errmsg("could not remove twophase state file \"%s\": %m",
-						  path)));
+					 errmsg("could not remove twophase state file \"%s\": %m",
+							path)));
 }
 
 /*

@@ -1026,7 +1026,7 @@ retry:
 		 * in which case immediate retry is indicated.
 		 */
 #ifdef WIN32
-		DWORD error = GetLastError();
+		DWORD		error = GetLastError();
 
 		switch (error)
 		{
@@ -1081,7 +1081,7 @@ retry:
 		 * See comments in FileRead()
 		 */
 #ifdef WIN32
-		DWORD error = GetLastError();
+		DWORD		error = GetLastError();
 
 		switch (error)
 		{
@@ -1279,8 +1279,8 @@ TryAgain:
 	}
 
 	/*
-	 * TEMPORARY hack to log the Windows error code on fopen failures,
-	 * in hopes of diagnosing some hard-to-reproduce problems.
+	 * TEMPORARY hack to log the Windows error code on fopen failures, in
+	 * hopes of diagnosing some hard-to-reproduce problems.
 	 */
 #ifdef WIN32
 	{

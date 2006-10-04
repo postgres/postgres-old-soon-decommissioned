@@ -28,7 +28,7 @@ extern List *make_restrictinfo_from_bitmapqual(Path *bitmapqual,
 extern bool restriction_is_or_clause(RestrictInfo *restrictinfo);
 extern List *get_actual_clauses(List *restrictinfo_list);
 extern List *extract_actual_clauses(List *restrictinfo_list,
-									bool pseudoconstant);
+					   bool pseudoconstant);
 extern void extract_actual_join_clauses(List *restrictinfo_list,
 							List **joinquals,
 							List **otherquals);

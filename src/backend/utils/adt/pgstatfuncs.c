@@ -186,7 +186,7 @@ Datum
 pg_stat_get_last_vacuum_time(PG_FUNCTION_ARGS)
 {
 	Oid			relid = PG_GETARG_OID(0);
-	TimestampTz	result;
+	TimestampTz result;
 	PgStat_StatTabEntry *tabentry;
 
 	if ((tabentry = pgstat_fetch_stat_tabentry(relid)) == NULL)
@@ -204,7 +204,7 @@ Datum
 pg_stat_get_last_autovacuum_time(PG_FUNCTION_ARGS)
 {
 	Oid			relid = PG_GETARG_OID(0);
-	TimestampTz	result;
+	TimestampTz result;
 	PgStat_StatTabEntry *tabentry;
 
 	if ((tabentry = pgstat_fetch_stat_tabentry(relid)) == NULL)
@@ -222,7 +222,7 @@ Datum
 pg_stat_get_last_analyze_time(PG_FUNCTION_ARGS)
 {
 	Oid			relid = PG_GETARG_OID(0);
-	TimestampTz	result;
+	TimestampTz result;
 	PgStat_StatTabEntry *tabentry;
 
 	if ((tabentry = pgstat_fetch_stat_tabentry(relid)) == NULL)
@@ -240,7 +240,7 @@ Datum
 pg_stat_get_last_autoanalyze_time(PG_FUNCTION_ARGS)
 {
 	Oid			relid = PG_GETARG_OID(0);
-	TimestampTz	result;
+	TimestampTz result;
 	PgStat_StatTabEntry *tabentry;
 
 	if ((tabentry = pgstat_fetch_stat_tabentry(relid)) == NULL)

@@ -52,7 +52,8 @@
 
 #include "pg_config.h"
 #include "pg_config_manual.h"	/* must be after pg_config.h */
-#if !defined(WIN32) && !defined(__CYGWIN__) /* win32 will include further down */
+#if !defined(WIN32) && !defined(__CYGWIN__)		/* win32 will include further
+												 * down */
 #include "pg_config_os.h"		/* must be before any system header files */
 #endif
 #include "postgres_ext.h"
@@ -470,7 +471,7 @@ typedef NameData *Name;
 
 /*
  * Support macros for escaping strings.  escape_backslash should be TRUE
- * if generating a non-standard-conforming string.  Prefixing a string
+ * if generating a non-standard-conforming string.	Prefixing a string
  * with ESCAPE_STRING_SYNTAX guarantees it is non-standard-conforming.
  * Beware of multiple evaluation of the "ch" argument!
  */

@@ -633,11 +633,11 @@ AcceptInvalidationMessages(void)
 	 * However, it also makes the system unbelievably slow --- the regression
 	 * tests take about 100 times longer than normal.
 	 *
-	 * If you're a glutton for punishment, try CLOBBER_CACHE_RECURSIVELY.
-	 * This slows things by at least a factor of 10000, so I wouldn't suggest
-	 * trying to run the entire regression tests that way.  It's useful to
-	 * try a few simple tests, to make sure that cache reload isn't subject
-	 * to internal cache-flush hazards, but after you've done a few thousand
+	 * If you're a glutton for punishment, try CLOBBER_CACHE_RECURSIVELY. This
+	 * slows things by at least a factor of 10000, so I wouldn't suggest
+	 * trying to run the entire regression tests that way.	It's useful to try
+	 * a few simple tests, to make sure that cache reload isn't subject to
+	 * internal cache-flush hazards, but after you've done a few thousand
 	 * recursive reloads it's unlikely you'll learn more.
 	 */
 #if defined(CLOBBER_CACHE_ALWAYS)

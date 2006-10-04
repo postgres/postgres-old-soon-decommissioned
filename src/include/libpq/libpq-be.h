@@ -81,8 +81,8 @@ typedef struct Port
 	 * but since it gets used by elog.c in the same way as database_name and
 	 * other members of this struct, we may as well keep it here.
 	 */
-	TimestampTz	SessionStartTime;	/* backend start time */
-	time_t		session_start;		/* same, in time_t format */
+	TimestampTz SessionStartTime;		/* backend start time */
+	time_t		session_start;	/* same, in time_t format */
 
 	/*
 	 * TCP keepalive settings.

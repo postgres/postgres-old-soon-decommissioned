@@ -786,8 +786,8 @@ InitCatCache(int id,
 
 	/*
 	 * nbuckets is the number of hash buckets to use in this catcache.
-	 * Currently we just use a hard-wired estimate of an appropriate size
-	 * for each cache; maybe later make them dynamically resizable?
+	 * Currently we just use a hard-wired estimate of an appropriate size for
+	 * each cache; maybe later make them dynamically resizable?
 	 *
 	 * nbuckets must be a power of two.  We check this via Assert rather than
 	 * a full runtime check because the values will be coming from constant

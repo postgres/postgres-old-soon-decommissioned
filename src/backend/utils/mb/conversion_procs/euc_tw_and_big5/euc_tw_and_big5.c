@@ -173,7 +173,7 @@ euc_tw2mic(const unsigned char *euc, unsigned char *p, int len)
 										(const char *) euc, len);
 			if (c1 == SS2)
 			{
-				c1 = euc[1];		/* plane No. */
+				c1 = euc[1];	/* plane No. */
 				if (c1 == 0xa1)
 					*p++ = LC_CNS11643_1;
 				else if (c1 == 0xa2)
@@ -187,7 +187,7 @@ euc_tw2mic(const unsigned char *euc, unsigned char *p, int len)
 				*p++ = euc[3];
 			}
 			else
-			{						/* CNS11643-1 */
+			{					/* CNS11643-1 */
 				*p++ = LC_CNS11643_1;
 				*p++ = c1;
 				*p++ = euc[1];
@@ -302,7 +302,7 @@ big52mic(const unsigned char *big5, unsigned char *p, int len)
 			{
 				*p++ = 0x9d;	/* LCPRV2 */
 			}
-			*p++ = lc;		/* Plane No. */
+			*p++ = lc;			/* Plane No. */
 			*p++ = (cnsBuf >> 8) & 0x00ff;
 			*p++ = cnsBuf & 0x00ff;
 		}

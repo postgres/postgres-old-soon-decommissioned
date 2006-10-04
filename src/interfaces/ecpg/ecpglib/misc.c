@@ -247,8 +247,8 @@ ECPGlog(const char *format,...)
 
 	if (simple_debug)
 	{
-		int             bufsize = strlen(format) + 100;
-		char		   *f = (char *) malloc(bufsize);
+		int			bufsize = strlen(format) + 100;
+		char	   *f = (char *) malloc(bufsize);
 
 		if (f == NULL)
 		{

@@ -119,7 +119,7 @@ DefineVirtualRelation(const RangeVar *relation, List *tlist, bool replace)
 
 			def->colname = pstrdup(tle->resname);
 			def->typename = makeTypeNameFromOid(exprType((Node *) tle->expr),
-											exprTypmod((Node *) tle->expr));
+											 exprTypmod((Node *) tle->expr));
 			def->inhcount = 0;
 			def->is_local = true;
 			def->is_not_null = false;

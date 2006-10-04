@@ -51,7 +51,7 @@ ItemPointerCompare(ItemPointer arg1, ItemPointer arg2)
 	 */
 	BlockNumber b1 = BlockIdGetBlockNumber(&(arg1->ip_blkid));
 	BlockNumber b2 = BlockIdGetBlockNumber(&(arg2->ip_blkid));
-	
+
 	if (b1 < b2)
 		return -1;
 	else if (b1 > b2)

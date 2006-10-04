@@ -95,8 +95,8 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int port)
 		size = add_size(size, 8192 - (size % 8192));
 
 		/*
-		 * The shared memory for add-ins is treated as a separate
-		 * segment, but in reality it is not.
+		 * The shared memory for add-ins is treated as a separate segment, but
+		 * in reality it is not.
 		 */
 		size_b4addins = size;
 		size = add_size(size, AddinShmemSize());
@@ -115,8 +115,8 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int port)
 		 * Modify hdr to show segment size before add-ins
 		 */
 		seghdr->totalsize = size_b4addins;
-		
-		/* 
+
+		/*
 		 * Set up segment header sections in each Addin context
 		 */
 		InitAddinContexts((void *) ((char *) seghdr + size_b4addins));

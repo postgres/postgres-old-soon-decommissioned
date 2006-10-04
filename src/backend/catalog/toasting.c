@@ -70,7 +70,7 @@ AlterTableCreateToastTable(Oid relOid)
 void
 BootstrapToastTable(char *relName, Oid toastOid, Oid toastIndexOid)
 {
-	Relation rel;
+	Relation	rel;
 
 	rel = heap_openrv(makeRangeVar(NULL, relName), AccessExclusiveLock);
 

@@ -696,7 +696,7 @@ int8inc(PG_FUNCTION_ARGS)
 
 /*
  * These functions are exactly like int8inc but are used for aggregates that
- * count only non-null values.  Since the functions are declared strict,
+ * count only non-null values.	Since the functions are declared strict,
  * the null checks happen before we ever get here, and all we need do is
  * increment the state value.  We could actually make these pg_proc entries
  * point right at int8inc, but then the opr_sanity regression test would

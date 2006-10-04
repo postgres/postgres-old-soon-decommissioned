@@ -28,26 +28,25 @@
 typedef struct
 {
 	/* dynahash.c requires key to be first field */
-	char			stmt_name[NAMEDATALEN];
-	char		   *query_string;	/* text of query, or NULL */
-	const char	   *commandTag;		/* command tag (a constant!), or NULL */
-	List		   *query_list;		/* list of queries, rewritten */
-	List		   *plan_list;		/* list of plans */
-	List		   *argtype_list;	/* list of parameter type OIDs */
-	TimestampTz		prepare_time;	/* the time when the stmt was prepared */
-	bool			from_sql;		/* stmt prepared via SQL, not
-									 * FE/BE protocol? */
-	MemoryContext	context;		/* context containing this query */
+	char		stmt_name[NAMEDATALEN];
+	char	   *query_string;	/* text of query, or NULL */
+	const char *commandTag;		/* command tag (a constant!), or NULL */
+	List	   *query_list;		/* list of queries, rewritten */
+	List	   *plan_list;		/* list of plans */
+	List	   *argtype_list;	/* list of parameter type OIDs */
+	TimestampTz prepare_time;	/* the time when the stmt was prepared */
+	bool		from_sql;		/* stmt prepared via SQL, not FE/BE protocol? */
+	MemoryContext context;		/* context containing this query */
 } PreparedStatement;
 
 
 /* Utility statements PREPARE, EXECUTE, DEALLOCATE, EXPLAIN EXECUTE */
 extern void PrepareQuery(PrepareStmt *stmt);
 extern void ExecuteQuery(ExecuteStmt *stmt, ParamListInfo params,
-						 DestReceiver *dest, char *completionTag);
+			 DestReceiver *dest, char *completionTag);
 extern void DeallocateQuery(DeallocateStmt *stmt);
 extern void ExplainExecuteQuery(ExplainStmt *stmt, ParamListInfo params,
-								TupOutputState *tstate);
+					TupOutputState *tstate);
 
 /* Low-level access to stored prepared statements */
 extern void StorePreparedStatement(const char *stmt_name,

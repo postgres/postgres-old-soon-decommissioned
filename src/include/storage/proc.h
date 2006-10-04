@@ -75,7 +75,7 @@ struct PGPROC
 	Oid			roleId;			/* OID of role using this backend */
 
 	bool		inVacuum;		/* true if current xact is a LAZY VACUUM */
-	
+
 	/* Info about LWLock the process is currently waiting for, if any. */
 	bool		lwWaiting;		/* true if waiting for an LW lock */
 	bool		lwExclusive;	/* true if waiting for exclusive access */

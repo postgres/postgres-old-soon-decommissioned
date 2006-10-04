@@ -491,9 +491,9 @@ PG_FUNCTION_INFO_V1(pg_random_bytes);
 Datum
 pg_random_bytes(PG_FUNCTION_ARGS)
 {
-	int err;
-	int len = PG_GETARG_INT32(0);
-	bytea *res;
+	int			err;
+	int			len = PG_GETARG_INT32(0);
+	bytea	   *res;
 
 	if (len < 1 || len > 1024)
 		ereport(ERROR,
@@ -504,7 +504,7 @@ pg_random_bytes(PG_FUNCTION_ARGS)
 	VARATT_SIZEP(res) = VARHDRSZ + len;
 
 	/* generate result */
-	err = px_get_random_bytes((uint8*)VARDATA(res), len);
+	err = px_get_random_bytes((uint8 *) VARDATA(res), len);
 	if (err < 0)
 		ereport(ERROR,
 				(errcode(ERRCODE_EXTERNAL_ROUTINE_INVOCATION_EXCEPTION),

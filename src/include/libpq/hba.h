@@ -27,7 +27,7 @@ typedef enum UserAuth
 	,uaPAM
 #endif   /* USE_PAM */
 #ifdef USE_LDAP
-    ,uaLDAP
+	,uaLDAP
 #endif
 } UserAuth;
 

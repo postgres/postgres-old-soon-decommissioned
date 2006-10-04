@@ -365,8 +365,8 @@ rekey(FState * st)
 static void
 startup_tricks(FState * st)
 {
-	int i;
-	uint8 buf[BLOCK];
+	int			i;
+	uint8		buf[BLOCK];
 
 	/* Use next block as counter. */
 	encrypt_counter(st, st->counter);

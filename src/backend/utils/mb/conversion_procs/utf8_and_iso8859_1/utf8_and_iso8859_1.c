@@ -93,7 +93,7 @@ utf8_to_iso8859_1(PG_FUNCTION_ARGS)
 		}
 		else
 		{
-			int		l = pg_utf_mblen(src);
+			int			l = pg_utf_mblen(src);
 
 			if (l > len || !pg_utf8_islegal(src, l))
 				report_invalid_encoding(PG_UTF8, (const char *) src, len);

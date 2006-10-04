@@ -169,9 +169,9 @@ extern bool resolve_polymorphic_argtypes(int numargs, Oid *argtypes,
 							 char *argmodes,
 							 Node *call_expr);
 
-extern int	get_func_arg_info(HeapTuple procTup,
-							  Oid **p_argtypes, char ***p_argnames,
-							  char **p_argmodes);
+extern int get_func_arg_info(HeapTuple procTup,
+				  Oid **p_argtypes, char ***p_argnames,
+				  char **p_argmodes);
 
 extern char *get_func_result_name(Oid functionId);
 

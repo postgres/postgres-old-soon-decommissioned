@@ -377,8 +377,8 @@ CreateRole(CreateRoleStmt *stmt)
 				GetUserId(), false);
 
 	/*
-	 * Close pg_authid, but keep lock till commit (this is important
-	 * to prevent any risk of deadlock failure while updating flat file)
+	 * Close pg_authid, but keep lock till commit (this is important to
+	 * prevent any risk of deadlock failure while updating flat file)
 	 */
 	heap_close(pg_authid_rel, NoLock);
 
@@ -696,8 +696,8 @@ AlterRole(AlterRoleStmt *stmt)
 					false);
 
 	/*
-	 * Close pg_authid, but keep lock till commit (this is important
-	 * to prevent any risk of deadlock failure while updating flat file)
+	 * Close pg_authid, but keep lock till commit (this is important to
+	 * prevent any risk of deadlock failure while updating flat file)
 	 */
 	heap_close(pg_authid_rel, NoLock);
 
@@ -845,7 +845,7 @@ DropRole(DropRoleStmt *stmt)
 			else
 			{
 				ereport(NOTICE,
-						(errmsg("role \"%s\" does not exist, skipping", 
+						(errmsg("role \"%s\" does not exist, skipping",
 								role)));
 			}
 
@@ -1075,8 +1075,8 @@ RenameRole(const char *oldname, const char *newname)
 	ReleaseSysCache(oldtuple);
 
 	/*
-	 * Close pg_authid, but keep lock till commit (this is important
-	 * to prevent any risk of deadlock failure while updating flat file)
+	 * Close pg_authid, but keep lock till commit (this is important to
+	 * prevent any risk of deadlock failure while updating flat file)
 	 */
 	heap_close(rel, NoLock);
 
@@ -1132,8 +1132,8 @@ GrantRole(GrantRoleStmt *stmt)
 	}
 
 	/*
-	 * Close pg_authid, but keep lock till commit (this is important
-	 * to prevent any risk of deadlock failure while updating flat file)
+	 * Close pg_authid, but keep lock till commit (this is important to
+	 * prevent any risk of deadlock failure while updating flat file)
 	 */
 	heap_close(pg_authid_rel, NoLock);
 
@@ -1149,7 +1149,7 @@ GrantRole(GrantRoleStmt *stmt)
  * Drop the objects owned by a given list of roles.
  */
 void
-DropOwnedObjects(DropOwnedStmt * stmt)
+DropOwnedObjects(DropOwnedStmt *stmt)
 {
 	List	   *role_ids = roleNamesToIds(stmt->roles);
 	ListCell   *cell;
@@ -1175,7 +1175,7 @@ DropOwnedObjects(DropOwnedStmt * stmt)
  * Give the objects owned by a given list of roles away to another user.
  */
 void
-ReassignOwnedObjects(ReassignOwnedStmt * stmt)
+ReassignOwnedObjects(ReassignOwnedStmt *stmt)
 {
 	List	   *role_ids = roleNamesToIds(stmt->roles);
 	ListCell   *cell;
@@ -1360,8 +1360,8 @@ AddRoleMems(const char *rolename, Oid roleid,
 	}
 
 	/*
-	 * Close pg_authmem, but keep lock till commit (this is important
-	 * to prevent any risk of deadlock failure while updating flat file)
+	 * Close pg_authmem, but keep lock till commit (this is important to
+	 * prevent any risk of deadlock failure while updating flat file)
 	 */
 	heap_close(pg_authmem_rel, NoLock);
 }
@@ -1473,8 +1473,8 @@ DelRoleMems(const char *rolename, Oid roleid,
 	}
 
 	/*
-	 * Close pg_authmem, but keep lock till commit (this is important
-	 * to prevent any risk of deadlock failure while updating flat file)
+	 * Close pg_authmem, but keep lock till commit (this is important to
+	 * prevent any risk of deadlock failure while updating flat file)
 	 */
 	heap_close(pg_authmem_rel, NoLock);
 }

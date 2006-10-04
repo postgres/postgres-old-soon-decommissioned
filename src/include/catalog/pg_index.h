@@ -41,7 +41,7 @@ CATALOG(pg_index,2610) BKI_WITHOUT_OIDS
 	bool		indisunique;	/* is this a unique index? */
 	bool		indisprimary;	/* is this index for primary key? */
 	bool		indisclustered; /* is this the index last clustered by? */
-	bool		indisvalid; 	/* is this index valid for use by queries? */
+	bool		indisvalid;		/* is this index valid for use by queries? */
 
 	/* VARIABLE LENGTH FIELDS: */
 	int2vector	indkey;			/* column numbers of indexed cols, or 0 */

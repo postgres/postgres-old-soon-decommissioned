@@ -73,4 +73,5 @@ isinf(double x)
 	return 0;
 }
 #endif
+
 #endif

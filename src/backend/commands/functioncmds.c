@@ -686,7 +686,7 @@ RemoveFunction(RemoveFuncStmt *stmt)
 	 * Find the function, do permissions and validity checks
 	 */
 	funcOid = LookupFuncNameTypeNames(functionName, argTypes, stmt->missing_ok);
-	if (!OidIsValid(funcOid)) 
+	if (!OidIsValid(funcOid))
 	{
 		/* can only get here if stmt->missing_ok */
 		ereport(NOTICE,
@@ -1394,7 +1394,7 @@ DropCast(DropCastStmt *stmt)
 						   0, 0);
 	if (!HeapTupleIsValid(tuple))
 	{
-		if (! stmt->missing_ok)
+		if (!stmt->missing_ok)
 			ereport(ERROR,
 					(errcode(ERRCODE_UNDEFINED_OBJECT),
 					 errmsg("cast from type %s to type %s does not exist",
@@ -1402,7 +1402,7 @@ DropCast(DropCastStmt *stmt)
 							TypeNameToString(stmt->targettype))));
 		else
 			ereport(NOTICE,
-					 (errmsg("cast from type %s to type %s does not exist ... skipping",
+					(errmsg("cast from type %s to type %s does not exist ... skipping",
 							TypeNameToString(stmt->sourcetype),
 							TypeNameToString(stmt->targettype))));
 

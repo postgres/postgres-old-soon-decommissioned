@@ -17,7 +17,7 @@
 
 
 extern void ExplainQuery(ExplainStmt *stmt, ParamListInfo params,
-						 DestReceiver *dest);
+			 DestReceiver *dest);
 
 extern TupleDesc ExplainResultDesc(ExplainStmt *stmt);
 

@@ -57,8 +57,8 @@ typedef struct TypeCacheEntry
 
 	/*
 	 * Tuple descriptor if it's a composite type (row type).  NULL if not
-	 * composite or information hasn't yet been requested.  (NOTE: this is
-	 * a reference-counted tupledesc.)
+	 * composite or information hasn't yet been requested.  (NOTE: this is a
+	 * reference-counted tupledesc.)
 	 */
 	TupleDesc	tupDesc;
 } TypeCacheEntry;

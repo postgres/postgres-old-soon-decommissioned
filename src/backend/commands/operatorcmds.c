@@ -214,14 +214,14 @@ RemoveOperator(RemoveFuncStmt *stmt)
 	operOid = LookupOperNameTypeNames(NULL, operatorName,
 									  typeName1, typeName2,
 									  stmt->missing_ok, -1);
- 
-   if (stmt->missing_ok &&!OidIsValid(operOid) )
-   {
-       ereport(NOTICE,
-               (errmsg("operator %s does not exist, skipping",
-                       NameListToString(operatorName))));
-       return;
-   }
+
+	if (stmt->missing_ok && !OidIsValid(operOid))
+	{
+		ereport(NOTICE,
+				(errmsg("operator %s does not exist, skipping",
+						NameListToString(operatorName))));
+		return;
+	}
 
 	tup = SearchSysCache(OPEROID,
 						 ObjectIdGetDatum(operOid),

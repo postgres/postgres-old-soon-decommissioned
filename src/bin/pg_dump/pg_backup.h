@@ -119,7 +119,7 @@ typedef struct _restoreOptions
 
 	int			suppressDumpWarnings;	/* Suppress output of WARNING entries
 										 * to stderr */
-    bool        single_txn;
+	bool		single_txn;
 
 } RestoreOptions;
 

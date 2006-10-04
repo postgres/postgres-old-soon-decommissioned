@@ -24,7 +24,7 @@
  * links to current parse state of outer query.
  *
  * p_sourcetext: source string that generated the raw parsetree being
- * analyzed, or NULL if not available.  (The string is used only to
+ * analyzed, or NULL if not available.	(The string is used only to
  * generate cursor positions in error messages: we need it to convert
  * byte-wise locations in parse structures to character-wise cursor
  * positions.)
@@ -71,8 +71,8 @@ typedef struct ParseState
 	Oid		   *p_paramtypes;	/* OIDs of types for $n parameter symbols */
 	int			p_numparams;	/* allocated size of p_paramtypes[] */
 	int			p_next_resno;	/* next targetlist resno to assign */
-	List	   *p_locking_clause;	/* raw FOR UPDATE/FOR SHARE info */
-	Node	   *p_value_substitute;	/* what to replace VALUE with, if any */
+	List	   *p_locking_clause;		/* raw FOR UPDATE/FOR SHARE info */
+	Node	   *p_value_substitute;		/* what to replace VALUE with, if any */
 	bool		p_variableparams;
 	bool		p_hasAggs;
 	bool		p_hasSubLinks;

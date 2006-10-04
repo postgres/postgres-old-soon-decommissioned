@@ -176,7 +176,7 @@ typedef struct PortalData
 	long		portalPos;
 
 	/* Presentation data, primarily used by the pg_cursors system view */
-	TimestampTz	creation_time;	/* time at which this portal was defined */
+	TimestampTz creation_time;	/* time at which this portal was defined */
 	bool		visible;		/* include this portal in pg_cursors? */
 } PortalData;
 

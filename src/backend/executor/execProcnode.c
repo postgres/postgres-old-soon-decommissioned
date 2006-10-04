@@ -197,7 +197,7 @@ ExecInitNode(Plan *node, EState *estate, int eflags)
 
 		case T_ValuesScan:
 			result = (PlanState *) ExecInitValuesScan((ValuesScan *) node,
-														estate, eflags);
+													  estate, eflags);
 			break;
 
 			/*

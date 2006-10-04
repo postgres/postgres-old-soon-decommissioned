@@ -957,10 +957,10 @@ ExecMergeJoin(MergeJoinState *node)
 				}
 
 				/*
-				 * Load up the new inner tuple's comparison values.  If we
-				 * see that it contains a NULL and hence can't match any
-				 * outer tuple, we can skip the comparison and assume the
-				 * new tuple is greater than current outer.
+				 * Load up the new inner tuple's comparison values.  If we see
+				 * that it contains a NULL and hence can't match any outer
+				 * tuple, we can skip the comparison and assume the new tuple
+				 * is greater than current outer.
 				 */
 				if (!MJEvalInnerValues(node, innerTupleSlot))
 				{
@@ -1377,8 +1377,8 @@ ExecMergeJoin(MergeJoinState *node)
 				else
 				{
 					/*
-					 * current inner can't possibly match any outer;
-					 * better to advance the inner scan than the outer.
+					 * current inner can't possibly match any outer; better to
+					 * advance the inner scan than the outer.
 					 */
 					node->mj_JoinState = EXEC_MJ_SKIPINNER_ADVANCE;
 				}

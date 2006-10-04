@@ -395,15 +395,15 @@ DropProceduralLanguage(DropPLangStmt *stmt)
 							 0, 0, 0);
 	if (!HeapTupleIsValid(langTup))
 	{
-		if (! stmt->missing_ok)
+		if (!stmt->missing_ok)
 			ereport(ERROR,
 					(errcode(ERRCODE_UNDEFINED_OBJECT),
 					 errmsg("language \"%s\" does not exist", languageName)));
-		else 
+		else
 			ereport(NOTICE,
-					(errmsg("language \"%s\" does not exist, skipping", 
+					(errmsg("language \"%s\" does not exist, skipping",
 							languageName)));
- 
+
 		return;
 	}
 

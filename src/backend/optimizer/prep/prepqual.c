@@ -212,7 +212,7 @@ push_nots(Expr *qual)
 
 		if (negator)
 		{
-			OpExpr *newopexpr = makeNode(OpExpr);
+			OpExpr	   *newopexpr = makeNode(OpExpr);
 
 			newopexpr->opno = negator;
 			newopexpr->opfuncid = InvalidOid;
@@ -228,9 +228,9 @@ push_nots(Expr *qual)
 	{
 		/*
 		 * Negate a ScalarArrayOpExpr if there is a negator for its operator;
-		 * for example x = ANY (list) becomes x <> ALL (list).
-		 * Otherwise, retain the clause as it is (the NOT can't be pushed down
-		 * any farther).
+		 * for example x = ANY (list) becomes x <> ALL (list). Otherwise,
+		 * retain the clause as it is (the NOT can't be pushed down any
+		 * farther).
 		 */
 		ScalarArrayOpExpr *saopexpr = (ScalarArrayOpExpr *) qual;
 		Oid			negator = get_negator(saopexpr->opno);

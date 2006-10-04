@@ -276,7 +276,7 @@ PQprint(FILE *fout, const PGresult *res, const PQprintOpt *po)
 				{
 					if (po->caption)
 						fprintf(fout,
-							  "<table %s><caption align=\"top\">%s</caption>\n",
+						   "<table %s><caption align=\"top\">%s</caption>\n",
 								po->tableOpt ? po->tableOpt : "",
 								po->caption);
 					else

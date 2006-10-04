@@ -108,8 +108,8 @@ PerformCursorOpen(DeclareCursorStmt *stmt, ParamListInfo params)
 	plan = copyObject(plan);
 
 	/*
-	 * XXX: debug_query_string is wrong here: the user might have
-	 * submitted multiple semicolon delimited queries.
+	 * XXX: debug_query_string is wrong here: the user might have submitted
+	 * multiple semicolon delimited queries.
 	 */
 	PortalDefineQuery(portal,
 					  NULL,

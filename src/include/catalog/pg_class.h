@@ -66,7 +66,7 @@ CATALOG(pg_class,1259) BKI_BOOTSTRAP
 	bool		relhasrules;	/* has associated rules */
 	bool		relhassubclass; /* has derived classes */
 	TransactionId relminxid;	/* minimum Xid present in table */
-	TransactionId relvacuumxid;	/* Xid used as last vacuum OldestXmin */
+	TransactionId relvacuumxid; /* Xid used as last vacuum OldestXmin */
 
 	/*
 	 * VARIABLE LENGTH FIELDS start here.  These fields may be NULL, too.

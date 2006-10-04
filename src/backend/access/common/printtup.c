@@ -127,8 +127,8 @@ printtup_startup(DestReceiver *self, int operation, TupleDesc typeinfo)
 	}
 
 	/*
-	 * If we are supposed to emit row descriptions,
-	 * then send the tuple descriptor of the tuples.
+	 * If we are supposed to emit row descriptions, then send the tuple
+	 * descriptor of the tuples.
 	 */
 	if (myState->sendDescrip)
 		SendRowDescriptionMessage(typeinfo,

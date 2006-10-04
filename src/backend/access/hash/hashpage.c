@@ -224,7 +224,7 @@ _hash_metapinit(Relation rel)
 	/*
 	 * Determine the target fill factor (in tuples per bucket) for this index.
 	 * The idea is to make the fill factor correspond to pages about as full
-	 * as the user-settable fillfactor parameter says.  We can compute it
+	 * as the user-settable fillfactor parameter says.	We can compute it
 	 * exactly if the index datatype is fixed-width, but for var-width there's
 	 * some guessing involved.
 	 */

@@ -125,7 +125,7 @@ IsTidEqualAnyClause(ScalarArrayOpExpr *node, int varno)
 	/* CTID must be first argument */
 	if (arg1 && IsA(arg1, Var))
 	{
-		Var	   *var = (Var *) arg1;
+		Var		   *var = (Var *) arg1;
 
 		if (var->varattno == SelfItemPointerAttributeNumber &&
 			var->vartype == TIDOID &&
@@ -187,7 +187,7 @@ TidQualFromExpr(Node *expr, int varno)
 	{
 		foreach(l, ((BoolExpr *) expr)->args)
 		{
-			List   *frtn = TidQualFromExpr((Node *) lfirst(l), varno);
+			List	   *frtn = TidQualFromExpr((Node *) lfirst(l), varno);
 
 			if (frtn)
 				rlst = list_concat(rlst, frtn);

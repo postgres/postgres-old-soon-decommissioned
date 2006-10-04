@@ -21,18 +21,18 @@
 #include "nodes/pg_list.h"
 
 extern Datum transformRelOptions(Datum oldOptions, List *defList,
-								 bool ignoreOids, bool isReset);
+					bool ignoreOids, bool isReset);
 
 extern void parseRelOptions(Datum options, int numkeywords,
-							const char * const *keywords,
-							char **values, bool validate);
+				const char *const * keywords,
+				char **values, bool validate);
 
 extern bytea *default_reloptions(Datum reloptions, bool validate,
-								 int minFillfactor, int defaultFillfactor);
+				   int minFillfactor, int defaultFillfactor);
 
 extern bytea *heap_reloptions(char relkind, Datum reloptions, bool validate);
 
 extern bytea *index_reloptions(RegProcedure amoptions, Datum reloptions,
-							   bool validate);
+				 bool validate);
 
 #endif   /* RELOPTIONS_H */

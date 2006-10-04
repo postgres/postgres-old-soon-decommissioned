@@ -41,7 +41,7 @@ typedef struct ExplainState
 } ExplainState;
 
 static void ExplainOneQuery(Query *query, ExplainStmt *stmt,
-							ParamListInfo params, TupOutputState *tstate);
+				ParamListInfo params, TupOutputState *tstate);
 static double elapsed_time(instr_time *starttime);
 static void explain_outNode(StringInfo str,
 				Plan *plan, PlanState *planstate,
@@ -760,7 +760,7 @@ explain_outNode(StringInfo str,
 				 * The tidquals list has OR semantics, so be sure to show it
 				 * as an OR condition.
 				 */
-				List *tidquals = ((TidScan *) plan)->tidquals;
+				List	   *tidquals = ((TidScan *) plan)->tidquals;
 
 				if (list_length(tidquals) > 1)
 					tidquals = list_make1(make_orclause(tidquals));
@@ -928,8 +928,8 @@ explain_outNode(StringInfo str,
 			/*
 			 * Ordinarily we don't pass down our own outer_plan value to our
 			 * child nodes, but in an Append we must, since we might be
-			 * looking at an appendrel indexscan with outer references
-			 * from the member scans.
+			 * looking at an appendrel indexscan with outer references from
+			 * the member scans.
 			 */
 			explain_outNode(str, subnode,
 							appendstate->appendplans[j],

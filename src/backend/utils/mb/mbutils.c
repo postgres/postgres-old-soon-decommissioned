@@ -133,9 +133,9 @@ SetClientEncoding(int encoding, bool doit)
 	else
 	{
 		/*
-		 * This is the first time through, so create the context. Make
-		 * it a child of TopMemoryContext so that these values survive
-		 * across transactions.
+		 * This is the first time through, so create the context. Make it a
+		 * child of TopMemoryContext so that these values survive across
+		 * transactions.
 		 */
 		MbProcContext = AllocSetContextCreate(TopMemoryContext,
 											  "MbProcContext",
@@ -378,28 +378,27 @@ pg_client_to_server(const char *s, int len)
 	{
 		/*
 		 * No conversion is possible, but we must still validate the data,
-		 * because the client-side code might have done string escaping
-		 * using the selected client_encoding.  If the client encoding is
-		 * ASCII-safe then we just do a straight validation under that
-		 * encoding.  For an ASCII-unsafe encoding we have a problem:
-		 * we dare not pass such data to the parser but we have no way
-		 * to convert it.  We compromise by rejecting the data if it
-		 * contains any non-ASCII characters.
+		 * because the client-side code might have done string escaping using
+		 * the selected client_encoding.  If the client encoding is ASCII-safe
+		 * then we just do a straight validation under that encoding.  For an
+		 * ASCII-unsafe encoding we have a problem: we dare not pass such data
+		 * to the parser but we have no way to convert it.	We compromise by
+		 * rejecting the data if it contains any non-ASCII characters.
 		 */
 		if (PG_VALID_BE_ENCODING(ClientEncoding->encoding))
 			(void) pg_verify_mbstr(ClientEncoding->encoding, s, len, false);
 		else
 		{
-			int		i;
+			int			i;
 
 			for (i = 0; i < len; i++)
 			{
 				if (s[i] == '\0' || IS_HIGHBIT_SET(s[i]))
 					ereport(ERROR,
 							(errcode(ERRCODE_CHARACTER_NOT_IN_REPERTOIRE),
-							 errmsg("invalid byte value for encoding \"%s\": 0x%02x",
-									pg_enc2name_tbl[PG_SQL_ASCII].name,
-									(unsigned char) s[i])));
+					 errmsg("invalid byte value for encoding \"%s\": 0x%02x",
+							pg_enc2name_tbl[PG_SQL_ASCII].name,
+							(unsigned char) s[i])));
 			}
 		}
 		return (char *) s;

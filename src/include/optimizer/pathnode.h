@@ -86,7 +86,7 @@ extern HashPath *create_hashjoin_path(PlannerInfo *root,
  * prototypes for relnode.c
  */
 extern RelOptInfo *build_simple_rel(PlannerInfo *root, int relid,
-									RelOptKind reloptkind);
+				 RelOptKind reloptkind);
 extern RelOptInfo *find_base_rel(PlannerInfo *root, int relid);
 extern RelOptInfo *find_join_rel(PlannerInfo *root, Relids relids);
 extern RelOptInfo *build_join_rel(PlannerInfo *root,

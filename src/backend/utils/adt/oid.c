@@ -258,10 +258,10 @@ oidvectorrecv(PG_FUNCTION_ARGS)
 	oidvector  *result;
 
 	/*
-	 * Normally one would call array_recv() using DirectFunctionCall3,
-	 * but that does not work since array_recv wants to cache some data
-	 * using fcinfo->flinfo->fn_extra.  So we need to pass it our own
-	 * flinfo parameter.
+	 * Normally one would call array_recv() using DirectFunctionCall3, but
+	 * that does not work since array_recv wants to cache some data using
+	 * fcinfo->flinfo->fn_extra.  So we need to pass it our own flinfo
+	 * parameter.
 	 */
 	InitFunctionCallInfoData(locfcinfo, fcinfo->flinfo, 3, NULL, NULL);
 

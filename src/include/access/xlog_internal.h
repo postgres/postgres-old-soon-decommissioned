@@ -239,7 +239,7 @@ typedef struct RmgrData
 
 extern const RmgrData RmgrTable[];
 
-/* 
+/*
  * Exported to support xlog switching from bgwriter
  */
 extern time_t GetLastSegSwitchTime(void);

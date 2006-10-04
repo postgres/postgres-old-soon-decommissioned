@@ -131,6 +131,7 @@ defGetBoolean(DefElem *def)
 	 */
 	if (def->arg == NULL)
 		return true;
+
 	/*
 	 * Allow 0, 1, "true", "false"
 	 */
@@ -150,7 +151,7 @@ defGetBoolean(DefElem *def)
 			break;
 		default:
 			{
-				char   *sval = defGetString(def);
+				char	   *sval = defGetString(def);
 
 				if (pg_strcasecmp(sval, "true") == 0)
 					return true;
@@ -310,9 +311,9 @@ defGetTypeLength(DefElem *def)
 DefElem *
 defWithOids(bool value)
 {
-	DefElem *f = makeNode(DefElem);
+	DefElem    *f = makeNode(DefElem);
 
 	f->defname = "oids";
-	f->arg = (Node *)makeInteger(value);
+	f->arg = (Node *) makeInteger(value);
 	return f;
 }

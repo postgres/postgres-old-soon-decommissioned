@@ -35,7 +35,7 @@
  */
 void
 RemoveRewriteRule(Oid owningRel, const char *ruleName, DropBehavior behavior,
-	              bool missing_ok)
+				  bool missing_ok)
 {
 	HeapTuple	tuple;
 	Oid			eventRelationOid;
@@ -54,7 +54,7 @@ RemoveRewriteRule(Oid owningRel, const char *ruleName, DropBehavior behavior,
 	 */
 	if (!HeapTupleIsValid(tuple))
 	{
-		if (! missing_ok)
+		if (!missing_ok)
 			ereport(ERROR,
 					(errcode(ERRCODE_UNDEFINED_OBJECT),
 					 errmsg("rule \"%s\" for relation \"%s\" does not exist",

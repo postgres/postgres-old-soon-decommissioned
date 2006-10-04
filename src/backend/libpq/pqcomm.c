@@ -594,13 +594,14 @@ StreamConnection(int server_fd, Port *port)
 		}
 
 #ifdef WIN32
+
 		/*
-		 *	This is a Win32 socket optimization.  The ideal size is 32k.
-		 *	http://support.microsoft.com/kb/823764/EN-US/
+		 * This is a Win32 socket optimization.  The ideal size is 32k.
+		 * http://support.microsoft.com/kb/823764/EN-US/
 		 */
 		on = PQ_BUFFER_SIZE * 4;
 		if (setsockopt(port->sock, SOL_SOCKET, SO_SNDBUF, (char *) &on,
-			sizeof(on)) < 0)
+					   sizeof(on)) < 0)
 		{
 			elog(LOG, "setsockopt(SO_SNDBUF) failed: %m");
 			return STATUS_ERROR;

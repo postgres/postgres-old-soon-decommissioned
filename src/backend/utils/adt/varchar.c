@@ -604,8 +604,8 @@ bpchareq(PG_FUNCTION_ARGS)
 	len2 = bcTruelen(arg2);
 
 	/*
-	 * Since we only care about equality or not-equality, we can avoid all
-	 * the expense of strcoll() here, and just do bitwise comparison.
+	 * Since we only care about equality or not-equality, we can avoid all the
+	 * expense of strcoll() here, and just do bitwise comparison.
 	 */
 	if (len1 != len2)
 		result = false;
@@ -631,8 +631,8 @@ bpcharne(PG_FUNCTION_ARGS)
 	len2 = bcTruelen(arg2);
 
 	/*
-	 * Since we only care about equality or not-equality, we can avoid all
-	 * the expense of strcoll() here, and just do bitwise comparison.
+	 * Since we only care about equality or not-equality, we can avoid all the
+	 * expense of strcoll() here, and just do bitwise comparison.
 	 */
 	if (len1 != len2)
 		result = true;

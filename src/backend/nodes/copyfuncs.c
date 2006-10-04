@@ -1050,7 +1050,7 @@ _copyRowExpr(RowExpr *from)
 static RowCompareExpr *
 _copyRowCompareExpr(RowCompareExpr *from)
 {
-	RowCompareExpr    *newnode = makeNode(RowCompareExpr);
+	RowCompareExpr *newnode = makeNode(RowCompareExpr);
 
 	COPY_SCALAR_FIELD(rctype);
 	COPY_NODE_FIELD(opnos);
@@ -2682,7 +2682,7 @@ _copyDeallocateStmt(DeallocateStmt *from)
 }
 
 static DropOwnedStmt *
-_copyDropOwnedStmt(DropOwnedStmt * from)
+_copyDropOwnedStmt(DropOwnedStmt *from)
 {
 	DropOwnedStmt *newnode = makeNode(DropOwnedStmt);
 
@@ -2693,7 +2693,7 @@ _copyDropOwnedStmt(DropOwnedStmt * from)
 }
 
 static ReassignOwnedStmt *
-_copyReassignOwnedStmt(ReassignOwnedStmt * from)
+_copyReassignOwnedStmt(ReassignOwnedStmt *from)
 {
 	ReassignOwnedStmt *newnode = makeNode(ReassignOwnedStmt);
 

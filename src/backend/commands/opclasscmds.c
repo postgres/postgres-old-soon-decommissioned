@@ -128,7 +128,7 @@ DefineOpClass(CreateOpClassStmt *stmt)
 	 * A minimum expectation therefore is that the caller have execute
 	 * privilege with grant option.  Since we don't have a way to make the
 	 * opclass go away if the grant option is revoked, we choose instead to
-	 * require ownership of the functions.  It's also not entirely clear what
+	 * require ownership of the functions.	It's also not entirely clear what
 	 * permissions should be required on the datatype, but ownership seems
 	 * like a safe choice.
 	 *
@@ -699,7 +699,7 @@ RemoveOpClass(RemoveOpClassStmt *stmt)
 		opcID = OpclassnameGetOpcid(amID, opcname);
 		if (!OidIsValid(opcID))
 		{
-			if (! stmt -> missing_ok )
+			if (!stmt->missing_ok)
 				ereport(ERROR,
 						(errcode(ERRCODE_UNDEFINED_OBJECT),
 						 errmsg("operator class \"%s\" does not exist for access method \"%s\"",
@@ -708,10 +708,10 @@ RemoveOpClass(RemoveOpClassStmt *stmt)
 				ereport(NOTICE,
 						(errmsg("operator class \"%s\" does not exist for access method \"%s\"",
 								opcname, stmt->amname)));
-			
+
 			return;
 		}
- 
+
 		tuple = SearchSysCache(CLAOID,
 							   ObjectIdGetDatum(opcID),
 							   0, 0, 0);
@@ -719,19 +719,19 @@ RemoveOpClass(RemoveOpClassStmt *stmt)
 
 	if (!HeapTupleIsValid(tuple))
 	{
-  
-		if (! stmt->missing_ok )
+
+		if (!stmt->missing_ok)
 			ereport(ERROR,
 					(errcode(ERRCODE_UNDEFINED_OBJECT),
 					 errmsg("operator class \"%s\" does not exist for access method \"%s\"",
-							NameListToString(stmt->opclassname), stmt->amname)));
+						NameListToString(stmt->opclassname), stmt->amname)));
 		else
 			ereport(NOTICE,
 					(errmsg("operator class \"%s\" does not exist for access method \"%s\"",
-							NameListToString(stmt->opclassname), stmt->amname)));
+						NameListToString(stmt->opclassname), stmt->amname)));
 		return;
 	}
-	
+
 	opcID = HeapTupleGetOid(tuple);
 
 	/* Permission check: must own opclass or its namespace */

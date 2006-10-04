@@ -18,10 +18,10 @@
 
 
 extern void get_relation_info(PlannerInfo *root, Oid relationObjectId,
-							  bool inhparent, RelOptInfo *rel);
+				  bool inhparent, RelOptInfo *rel);
 
 extern bool relation_excluded_by_constraints(RelOptInfo *rel,
-											 RangeTblEntry *rte);
+								 RangeTblEntry *rte);
 
 extern List *build_physical_tlist(PlannerInfo *root, RelOptInfo *rel);
 

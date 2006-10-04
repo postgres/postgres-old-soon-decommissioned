@@ -21,15 +21,15 @@
 typedef struct tzEntry
 {
 	/* the actual data: TZ abbrev (downcased), offset, DST flag */
-	char *abbrev;
-	int offset;					/* in seconds from UTC */
-	bool is_dst;
+	char	   *abbrev;
+	int			offset;			/* in seconds from UTC */
+	bool		is_dst;
 	/* source information (for error messages) */
-	int lineno;
+	int			lineno;
 	const char *filename;
 } tzEntry;
 
 
 extern bool load_tzoffsets(const char *filename, bool doit, int elevel);
 
-#endif /* TZPARSER_H */
+#endif   /* TZPARSER_H */

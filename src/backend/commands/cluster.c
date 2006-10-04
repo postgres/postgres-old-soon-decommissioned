@@ -288,7 +288,7 @@ cluster_rel(RelToCluster *rvtc, bool recheck)
 		tuple = SearchSysCache(INDEXRELID,
 							   ObjectIdGetDatum(rvtc->indexOid),
 							   0, 0, 0);
-		if (!HeapTupleIsValid(tuple))		/* probably can't happen */
+		if (!HeapTupleIsValid(tuple))	/* probably can't happen */
 		{
 			relation_close(OldHeap, AccessExclusiveLock);
 			return;
@@ -350,7 +350,7 @@ check_index_is_clusterable(Relation OldHeap, Oid indexOid, bool recheck)
 				 errmsg("cannot cluster on partial index \"%s\"",
 						RelationGetRelationName(OldIndex))));
 
-	if (!OldIndex->rd_am->amclusterable) 
+	if (!OldIndex->rd_am->amclusterable)
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 				 errmsg("cannot cluster on index \"%s\" because access method does not support clustering",

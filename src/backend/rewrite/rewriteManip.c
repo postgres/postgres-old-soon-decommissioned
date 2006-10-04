@@ -984,10 +984,11 @@ ResolveNew(Node *node, int target_varno, int sublevels_up,
 	{
 		if (IsA(result, Query))
 			((Query *) result)->hasSubLinks = true;
+
 		/*
 		 * Note: if we're called on a non-Query node then it's the caller's
-		 * responsibility to update hasSubLinks in the ancestor Query.
-		 * This is pretty fragile and perhaps should be rethought ...
+		 * responsibility to update hasSubLinks in the ancestor Query. This is
+		 * pretty fragile and perhaps should be rethought ...
 		 */
 	}
 

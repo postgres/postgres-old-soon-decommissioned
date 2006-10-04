@@ -29,4 +29,4 @@
  */
 #undef gai_strerror
 
-#endif /* WIN32_SYS_SOCKET_H */
+#endif   /* WIN32_SYS_SOCKET_H */

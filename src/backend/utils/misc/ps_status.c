@@ -31,7 +31,7 @@
 #include "utils/ps_status.h"
 
 extern char **environ;
-bool update_process_title = true;
+bool		update_process_title = true;
 
 
 /*
@@ -287,7 +287,7 @@ set_ps_display(const char *activity, bool force)
 
 	if (!force && !update_process_title)
 		return;
-		
+
 #ifndef PS_USE_NONE
 	/* no ps display for stand-alone backend */
 	if (!IsUnderPostmaster)
@@ -336,8 +336,8 @@ set_ps_display(const char *activity, bool force)
 #ifdef PS_USE_WIN32
 	{
 		/*
-		 * Win32 does not support showing any changed arguments. To make it
-		 * at all possible to track which backend is doing what, we create a
+		 * Win32 does not support showing any changed arguments. To make it at
+		 * all possible to track which backend is doing what, we create a
 		 * named object that can be viewed with for example Process Explorer.
 		 */
 		static HANDLE ident_handle = INVALID_HANDLE_VALUE;
@@ -351,7 +351,6 @@ set_ps_display(const char *activity, bool force)
 		ident_handle = CreateEvent(NULL, TRUE, FALSE, name);
 	}
 #endif   /* PS_USE_WIN32 */
-
 #endif   /* not PS_USE_NONE */
 }
 

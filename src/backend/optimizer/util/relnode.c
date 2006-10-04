@@ -97,9 +97,10 @@ build_simple_rel(PlannerInfo *root, int relid, RelOptKind reloptkind)
 		case RTE_SUBQUERY:
 		case RTE_FUNCTION:
 		case RTE_VALUES:
+
 			/*
-			 * Subquery, function, or values list --- set up attr range
-			 * and arrays
+			 * Subquery, function, or values list --- set up attr range and
+			 * arrays
 			 *
 			 * Note: 0 is included in range to support whole-row Vars
 			 */
@@ -417,8 +418,8 @@ build_joinrel_tlist(PlannerInfo *root, RelOptInfo *joinrel,
 		int			ndx;
 
 		/*
-		 * We can't run into any child RowExprs here, but we could find
-		 * a whole-row Var with a ConvertRowtypeExpr atop it.
+		 * We can't run into any child RowExprs here, but we could find a
+		 * whole-row Var with a ConvertRowtypeExpr atop it.
 		 */
 		var = origvar;
 		while (!IsA(var, Var))

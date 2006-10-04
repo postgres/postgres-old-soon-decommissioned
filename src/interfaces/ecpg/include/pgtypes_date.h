@@ -13,7 +13,7 @@ extern		"C"
 #endif
 
 extern date *PGTYPESdate_new(void);
-extern void  PGTYPESdate_free(date *);
+extern void PGTYPESdate_free(date *);
 extern date PGTYPESdate_from_asc(char *, char **);
 extern char *PGTYPESdate_to_asc(date);
 extern date PGTYPESdate_from_timestamp(timestamp);

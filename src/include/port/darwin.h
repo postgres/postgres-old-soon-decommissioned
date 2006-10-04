@@ -4,4 +4,5 @@
 
 #if HAVE_DECL_F_FULLFSYNC		/* not present before OS X 10.3 */
 #define HAVE_FSYNC_WRITETHROUGH
+
 #endif

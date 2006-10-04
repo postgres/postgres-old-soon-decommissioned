@@ -193,13 +193,13 @@ typedef enum AclObjectKind
  */
 typedef struct
 {
-	bool    is_grant;
+	bool		is_grant;
 	GrantObjectType objtype;
-	List   *objects;
-	bool    all_privs;
-	AclMode privileges;
-	List   *grantees;
-	bool    grant_option;
+	List	   *objects;
+	bool		all_privs;
+	AclMode		privileges;
+	List	   *grantees;
+	bool		grant_option;
 	DropBehavior behavior;
 } InternalGrant;
 

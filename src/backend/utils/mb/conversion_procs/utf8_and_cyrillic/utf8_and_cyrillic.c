@@ -69,4 +69,3 @@ koi8r_to_utf8(PG_FUNCTION_ARGS)
 
 	PG_RETURN_VOID();
 }
-

@@ -54,7 +54,7 @@ extern void PGSharedMemoryDetach(void);
 
 extern void RegisterAddinContext(const char *name, Size size);
 extern Size AddinShmemSize(void);
-extern void InitAddinContexts(void * start);
+extern void InitAddinContexts(void *start);
 extern void *ShmemAllocFromContext(Size size, const char *name);
 extern void ShmemResetContext(const char *name);
 

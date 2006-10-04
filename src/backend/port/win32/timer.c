@@ -59,7 +59,7 @@ pg_timer_thread(LPVOID param)
 			{
 				/* WaitForSingleObjectEx() uses milliseconds, round up */
 				waittime = (timerCommArea.value.it_value.tv_usec + 999) / 1000 +
-						   timerCommArea.value.it_value.tv_sec * 1000;
+					timerCommArea.value.it_value.tv_sec * 1000;
 			}
 			ResetEvent(timerCommArea.event);
 			LeaveCriticalSection(&timerCommArea.crit_sec);
@@ -85,7 +85,7 @@ pg_timer_thread(LPVOID param)
  * to handle the timer setting and notification upon timeout.
  */
 int
-setitimer(int which, const struct itimerval *value, struct itimerval *ovalue)
+setitimer(int which, const struct itimerval * value, struct itimerval * ovalue)
 {
 	Assert(value != NULL);
 	Assert(value->it_interval.tv_sec == 0 && value->it_interval.tv_usec == 0);

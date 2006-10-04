@@ -206,9 +206,9 @@ get_op_btree_interpretation(Oid opno, List **opclasses, List **opstrats)
 
 	/*
 	 * Get the nominal left-hand input type of the operator; we will ignore
-	 * opclasses that don't have that as the expected input datatype.  This
-	 * is a kluge to avoid being confused by binary-compatible opclasses
-	 * (such as text_ops and varchar_ops, which share the same operators).
+	 * opclasses that don't have that as the expected input datatype.  This is
+	 * a kluge to avoid being confused by binary-compatible opclasses (such as
+	 * text_ops and varchar_ops, which share the same operators).
 	 */
 	op_input_types(opno, &lefttype, &righttype);
 	Assert(OidIsValid(lefttype));
@@ -219,14 +219,15 @@ get_op_btree_interpretation(Oid opno, List **opclasses, List **opstrats)
 	catlist = SearchSysCacheList(AMOPOPID, 1,
 								 ObjectIdGetDatum(opno),
 								 0, 0, 0);
+
 	/*
-	 * If we can't find any opclass containing the op, perhaps it is a
-	 * <> operator.  See if it has a negator that is in an opclass.
+	 * If we can't find any opclass containing the op, perhaps it is a <>
+	 * operator.  See if it has a negator that is in an opclass.
 	 */
 	op_negated = false;
 	if (catlist->n_members == 0)
 	{
-		Oid		op_negator = get_negator(opno);
+		Oid			op_negator = get_negator(opno);
 
 		if (OidIsValid(op_negator))
 		{
@@ -1395,13 +1396,13 @@ get_type_io_data(Oid typid,
 	Form_pg_type typeStruct;
 
 	/*
-	 * In bootstrap mode, pass it off to bootstrap.c.  This hack allows
-	 * us to use array_in and array_out during bootstrap.
+	 * In bootstrap mode, pass it off to bootstrap.c.  This hack allows us to
+	 * use array_in and array_out during bootstrap.
 	 */
 	if (IsBootstrapProcessingMode())
 	{
-		Oid	typinput;
-		Oid	typoutput;
+		Oid			typinput;
+		Oid			typoutput;
 
 		boot_get_type_io_data(typid,
 							  typlen,

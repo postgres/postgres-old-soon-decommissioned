@@ -233,7 +233,7 @@ IsReservedName(const char *name)
  *
  * Hard-wiring this list is pretty grotty, but we really need it so that
  * we can compute the locktag for a relation (and then lock it) without
- * having already read its pg_class entry.  If we try to retrieve relisshared
+ * having already read its pg_class entry.	If we try to retrieve relisshared
  * from pg_class with no pre-existing lock, there is a race condition against
  * anyone who is concurrently committing a change to the pg_class entry:
  * since we read system catalog entries under SnapshotNow, it's possible

@@ -898,8 +898,8 @@ ExecOpenIndices(ResultRelInfo *resultRelInfo)
 	resultRelInfo->ri_IndexRelationInfo = indexInfoArray;
 
 	/*
-	 * For each index, open the index relation and save pg_index info.
-	 * We acquire RowExclusiveLock, signifying we will update the index.
+	 * For each index, open the index relation and save pg_index info. We
+	 * acquire RowExclusiveLock, signifying we will update the index.
 	 */
 	i = 0;
 	foreach(l, indexoidlist)

@@ -414,7 +414,7 @@ clog_redo(XLogRecPtr lsn, XLogRecord *record)
 void
 clog_desc(StringInfo buf, uint8 xl_info, char *rec)
 {
-	uint8			info = xl_info & ~XLR_INFO_MASK;
+	uint8		info = xl_info & ~XLR_INFO_MASK;
 
 	if (info == CLOG_ZEROPAGE)
 	{

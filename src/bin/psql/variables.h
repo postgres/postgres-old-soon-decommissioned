@@ -39,7 +39,7 @@ typedef struct _variable *VariableSpace;
 VariableSpace CreateVariableSpace(void);
 const char *GetVariable(VariableSpace space, const char *name);
 
-bool ParseVariableBool(const char *val);
+bool		ParseVariableBool(const char *val);
 int ParseVariableNum(const char *val,
 				 int defaultval,
 				 int faultval,

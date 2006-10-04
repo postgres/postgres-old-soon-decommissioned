@@ -345,9 +345,9 @@ ExecReScanAppend(AppendState *node, ExprContext *exprCtxt)
 
 		/*
 		 * If chgParam of subnode is not null then plan will be re-scanned by
-		 * first ExecProcNode.  However, if caller is passing us an exprCtxt
-		 * then forcibly rescan all the subnodes now, so that we can pass
-		 * the exprCtxt down to the subnodes (needed for appendrel indexscan).
+		 * first ExecProcNode.	However, if caller is passing us an exprCtxt
+		 * then forcibly rescan all the subnodes now, so that we can pass the
+		 * exprCtxt down to the subnodes (needed for appendrel indexscan).
 		 */
 		if (subnode->chgParam == NULL || exprCtxt != NULL)
 		{

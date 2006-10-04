@@ -56,7 +56,7 @@ extern Tuplesortstate *tuplesort_begin_datum(Oid datumType,
 					  int workMem, bool randomAccess);
 
 extern void tuplesort_puttupleslot(Tuplesortstate *state,
-								   TupleTableSlot *slot);
+					   TupleTableSlot *slot);
 extern void tuplesort_putindextuple(Tuplesortstate *state, IndexTuple tuple);
 extern void tuplesort_putdatum(Tuplesortstate *state, Datum val,
 				   bool isNull);
@@ -64,9 +64,9 @@ extern void tuplesort_putdatum(Tuplesortstate *state, Datum val,
 extern void tuplesort_performsort(Tuplesortstate *state);
 
 extern bool tuplesort_gettupleslot(Tuplesortstate *state, bool forward,
-								   TupleTableSlot *slot);
+					   TupleTableSlot *slot);
 extern IndexTuple tuplesort_getindextuple(Tuplesortstate *state, bool forward,
-										  bool *should_free);
+						bool *should_free);
 extern bool tuplesort_getdatum(Tuplesortstate *state, bool forward,
 				   Datum *val, bool *isNull);
 

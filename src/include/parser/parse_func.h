@@ -77,6 +77,6 @@ extern Oid LookupFuncName(List *funcname, int nargs, const Oid *argtypes,
 extern Oid LookupFuncNameTypeNames(List *funcname, List *argtypes,
 						bool noError);
 extern Oid LookupAggNameTypeNames(List *aggname, List *argtypes,
-						bool noError);
+					   bool noError);
 
 #endif   /* PARSE_FUNC_H */

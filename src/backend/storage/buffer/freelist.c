@@ -237,12 +237,12 @@ StrategyInitialize(bool init)
 	/*
 	 * Initialize the shared buffer lookup hashtable.
 	 *
-	 * Since we can't tolerate running out of lookup table entries, we
-	 * must be sure to specify an adequate table size here.  The maximum
-	 * steady-state usage is of course NBuffers entries, but BufferAlloc()
-	 * tries to insert a new entry before deleting the old.  In principle
-	 * this could be happening in each partition concurrently, so we
-	 * could need as many as NBuffers + NUM_BUFFER_PARTITIONS entries.
+	 * Since we can't tolerate running out of lookup table entries, we must be
+	 * sure to specify an adequate table size here.  The maximum steady-state
+	 * usage is of course NBuffers entries, but BufferAlloc() tries to insert
+	 * a new entry before deleting the old.  In principle this could be
+	 * happening in each partition concurrently, so we could need as many as
+	 * NBuffers + NUM_BUFFER_PARTITIONS entries.
 	 */
 	InitBufTable(NBuffers + NUM_BUFFER_PARTITIONS);
 

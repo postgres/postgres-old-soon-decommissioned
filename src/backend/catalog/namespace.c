@@ -718,7 +718,7 @@ OpernameGetOprid(List *names, Oid oprleft, Oid oprright)
 								 ObjectIdGetDatum(namespaceId));
 		if (HeapTupleIsValid(opertup))
 		{
-			Oid		result = HeapTupleGetOid(opertup);
+			Oid			result = HeapTupleGetOid(opertup);
 
 			ReleaseSysCache(opertup);
 			return result;
@@ -741,9 +741,9 @@ OpernameGetOprid(List *names, Oid oprleft, Oid oprright)
 	}
 
 	/*
-	 * We have to find the list member that is first in the search path,
-	 * if there's more than one.  This doubly-nested loop looks ugly,
-	 * but in practice there should usually be few catlist members.
+	 * We have to find the list member that is first in the search path, if
+	 * there's more than one.  This doubly-nested loop looks ugly, but in
+	 * practice there should usually be few catlist members.
 	 */
 	recomputeNamespacePath();
 
@@ -759,7 +759,7 @@ OpernameGetOprid(List *names, Oid oprleft, Oid oprright)
 
 			if (operform->oprnamespace == namespaceId)
 			{
-				Oid		result = HeapTupleGetOid(opertup);
+				Oid			result = HeapTupleGetOid(opertup);
 
 				ReleaseSysCacheList(catlist);
 				return result;

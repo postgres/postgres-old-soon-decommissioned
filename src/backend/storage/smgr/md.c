@@ -735,8 +735,8 @@ mdsync(void)
 			 * If in bgwriter, absorb pending requests every so often to
 			 * prevent overflow of the fsync request queue.  The hashtable
 			 * code does not specify whether entries added by this will be
-			 * visited by our search, but we don't really care: it's OK if
-			 * we do, and OK if we don't.
+			 * visited by our search, but we don't really care: it's OK if we
+			 * do, and OK if we don't.
 			 */
 			if (--absorb_counter <= 0)
 			{

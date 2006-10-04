@@ -15,14 +15,15 @@
 date *
 PGTYPESdate_new(void)
 {
-	date *result;
+	date	   *result;
+
 	result = (date *) pgtypes_alloc(sizeof(date));
 	/* result can be NULL if we run out of memory */
 	return result;
 }
 
 void
-PGTYPESdate_free(date *d)
+PGTYPESdate_free(date * d)
 {
 	free(d);
 }

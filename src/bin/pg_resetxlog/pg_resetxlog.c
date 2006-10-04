@@ -587,7 +587,7 @@ static void
 RewriteControlFile(void)
 {
 	int			fd;
-	char		buffer[PG_CONTROL_SIZE]; /* need not be aligned */
+	char		buffer[PG_CONTROL_SIZE];		/* need not be aligned */
 
 	/*
 	 * Adjust fields as needed to force an empty XLOG starting at the next

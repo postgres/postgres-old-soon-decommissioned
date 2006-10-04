@@ -31,7 +31,7 @@ static void strip_quotes(char *source, char quote, char escape, int encoding);
  * quote -		set of characters that can quote a token (NULL if none)
  * escape -		character that can quote quotes (0 if none)
  * e_strings -	if TRUE, treat E'...' syntax as a valid token
- * del_quotes -	if TRUE, strip quotes from the returned token, else return
+ * del_quotes - if TRUE, strip quotes from the returned token, else return
  *				it exactly as found in the string
  * encoding -	the active character-set encoding
  *

@@ -78,10 +78,10 @@
 static void init_md5(PX_MD * h);
 static void init_sha1(PX_MD * h);
 
-void init_sha224(PX_MD * h);
-void init_sha256(PX_MD * h);
-void init_sha384(PX_MD * h);
-void init_sha512(PX_MD * h);
+void		init_sha224(PX_MD * h);
+void		init_sha256(PX_MD * h);
+void		init_sha384(PX_MD * h);
+void		init_sha512(PX_MD * h);
 
 struct int_digest
 {

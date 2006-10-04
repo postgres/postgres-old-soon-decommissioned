@@ -347,6 +347,7 @@ tuplestore_puttuple_common(Tuplestorestate *state, void *tuple)
 	switch (state->status)
 	{
 		case TSS_INMEM:
+
 			/*
 			 * Grow the array as needed.  Note that we try to grow the array
 			 * when there is still one free slot remaining --- if we fail,

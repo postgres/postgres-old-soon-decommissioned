@@ -169,15 +169,16 @@ ecpg_strndup(const char *str, size_t len)
 int
 deccvasc(char *cp, int len, decimal *np)
 {
-	char		*str;
-	int		ret = 0;
-	numeric		*result;
+	char	   *str;
+	int			ret = 0;
+	numeric    *result;
 
 	rsetnull(CDECIMALTYPE, (char *) np);
 	if (risnull(CSTRINGTYPE, cp))
 		return 0;
 
-	str = ecpg_strndup(cp, len);	/* decimal_in always converts the complete string */
+	str = ecpg_strndup(cp, len);/* decimal_in always converts the complete
+								 * string */
 	if (!str)
 		ret = ECPG_INFORMIX_NUM_UNDERFLOW;
 	else
@@ -378,8 +379,8 @@ dectoasc(decimal *np, char *cp, int len, int right)
 		return -1;
 
 	/*
-	 * TODO: have to take care of len here and create exponential notation
-	 * if necessary
+	 * TODO: have to take care of len here and create exponential notation if
+	 * necessary
 	 */
 	if ((int) (strlen(str) + 1) > len)
 	{
@@ -647,7 +648,7 @@ intoasc(interval * i, char *str)
 }
 
 /*
- *	rfmt.c  -  description
+ *	rfmt.c	-  description
  *	by Carsten Wolff <carsten.wolff@credativ.de>, Wed Apr 2 2003
  */
 
@@ -936,7 +937,8 @@ byleng(char *str, int len)
 void
 ldchar(char *src, int len, char *dest)
 {
-	int dlen = byleng(src, len);
+	int			dlen = byleng(src, len);
+
 	memmove(dest, src, dlen);
 	dest[dlen] = '\0';
 }

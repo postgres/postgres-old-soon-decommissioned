@@ -109,7 +109,7 @@ typedef struct ControlFileData
 
 	CheckPoint	checkPointCopy; /* copy of last check point record */
 
-	XLogRecPtr	minRecoveryPoint;	/* must replay xlog to here */
+	XLogRecPtr	minRecoveryPoint;		/* must replay xlog to here */
 
 	/*
 	 * This data is used to check for hardware-architecture compatibility of

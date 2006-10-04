@@ -76,7 +76,7 @@ typedef struct catctup
 
 	/*
 	 * Each tuple in a cache is a member of a Dllist that stores the elements
-	 * of its hash bucket.  We keep each Dllist in LRU order to speed repeated
+	 * of its hash bucket.	We keep each Dllist in LRU order to speed repeated
 	 * lookups.
 	 */
 	Dlelem		cache_elem;		/* list member of per-bucket list */

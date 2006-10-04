@@ -458,7 +458,7 @@ static TParserStateActionItem actionTPS_InVerVersion[] = {
 
 static TParserStateActionItem actionTPS_InSVerVersion[] = {
 	{p_isEOF, 0, A_POP, TPS_Null, 0, NULL},
-	{p_isdigit, 0, A_BINGO|A_CLRALL, TPS_InUnsignedInt, SPACE, NULL},
+	{p_isdigit, 0, A_BINGO | A_CLRALL, TPS_InUnsignedInt, SPACE, NULL},
 	{NULL, 0, A_NEXT, TPS_Null, 0, NULL}
 };
 
@@ -613,7 +613,7 @@ static TParserStateActionItem actionTPS_InTagEnd[] = {
 static TParserStateActionItem actionTPS_InCommentFirst[] = {
 	{p_isEOF, 0, A_POP, TPS_Null, 0, NULL},
 	{p_iseqC, '-', A_NEXT, TPS_InCommentLast, 0, NULL},
-	/* <!DOCTYPE ...>*/
+	/* <!DOCTYPE ...> */
 	{p_iseqC, 'D', A_NEXT, TPS_InTag, 0, NULL},
 	{p_iseqC, 'd', A_NEXT, TPS_InTag, 0, NULL},
 	{NULL, 0, A_POP, TPS_Null, 0, NULL}
@@ -753,10 +753,10 @@ static TParserStateActionItem actionTPS_InPathFirstFirst[] = {
 };
 
 static TParserStateActionItem actionTPS_InPathSecond[] = {
-	{p_isEOF, 0, A_BINGO|A_CLEAR, TPS_Base, FILEPATH, NULL},
-	{p_iseqC, '/', A_NEXT|A_PUSH, TPS_InFileFirst, 0, NULL},
-	{p_iseqC, '/', A_BINGO|A_CLEAR, TPS_Base, FILEPATH, NULL},
-	{p_isspace, 0, A_BINGO|A_CLEAR, TPS_Base, FILEPATH, NULL},
+	{p_isEOF, 0, A_BINGO | A_CLEAR, TPS_Base, FILEPATH, NULL},
+	{p_iseqC, '/', A_NEXT | A_PUSH, TPS_InFileFirst, 0, NULL},
+	{p_iseqC, '/', A_BINGO | A_CLEAR, TPS_Base, FILEPATH, NULL},
+	{p_isspace, 0, A_BINGO | A_CLEAR, TPS_Base, FILEPATH, NULL},
 	{NULL, 0, A_POP, TPS_Null, 0, NULL}
 };
 

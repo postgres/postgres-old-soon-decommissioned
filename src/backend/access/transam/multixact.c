@@ -1493,10 +1493,10 @@ CheckPointMultiXact(void)
 
 	/*
 	 * Truncate the SLRU files.  This could be done at any time, but
-	 * checkpoint seems a reasonable place for it.  There is one exception:
-	 * if we are called during xlog recovery, then shared->latest_page_number
-	 * isn't valid (because StartupMultiXact hasn't been called yet) and
-	 * so SimpleLruTruncate would get confused.  It seems best not to risk
+	 * checkpoint seems a reasonable place for it.	There is one exception: if
+	 * we are called during xlog recovery, then shared->latest_page_number
+	 * isn't valid (because StartupMultiXact hasn't been called yet) and so
+	 * SimpleLruTruncate would get confused.  It seems best not to risk
 	 * removing any data during recovery anyway, so don't truncate.
 	 */
 	if (!InRecovery)
@@ -1917,7 +1917,7 @@ multixact_desc(StringInfo buf, uint8 xl_info, char *rec)
 		int			i;
 
 		appendStringInfo(buf, "create multixact %u offset %u:",
-				xlrec->mid, xlrec->moff);
+						 xlrec->mid, xlrec->moff);
 		for (i = 0; i < xlrec->nxids; i++)
 			appendStringInfo(buf, " %u", xlrec->xids[i]);
 	}

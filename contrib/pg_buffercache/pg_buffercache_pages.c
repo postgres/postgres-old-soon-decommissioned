@@ -74,7 +74,7 @@ pg_buffercache_pages(PG_FUNCTION_ARGS)
 
 	if (SRF_IS_FIRSTCALL())
 	{
-		int		i;
+		int			i;
 		volatile BufferDesc *bufHdr;
 
 		funcctx = SRF_FIRSTCALL_INIT();
@@ -123,9 +123,9 @@ pg_buffercache_pages(PG_FUNCTION_ARGS)
 		MemoryContextSwitchTo(oldcontext);
 
 		/*
-		 * To get a consistent picture of the buffer state, we must lock
-		 * all partitions of the buffer map.  Needless to say, this is
-		 * horrible for concurrency...
+		 * To get a consistent picture of the buffer state, we must lock all
+		 * partitions of the buffer map.  Needless to say, this is horrible
+		 * for concurrency...
 		 */
 		for (i = 0; i < NUM_BUFFER_PARTITIONS; i++)
 			LWLockAcquire(FirstBufMappingLock + i, LW_SHARED);

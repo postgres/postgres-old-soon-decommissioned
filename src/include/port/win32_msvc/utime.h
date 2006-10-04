@@ -1,1 +1,1 @@
-/* $PostgreSQL$ */ 
+/* $PostgreSQL$ */

@@ -35,7 +35,7 @@
  * ----------------
  */
 
-#define PARAM_FLAG_CONST	0x0001			/* parameter is constant */
+#define PARAM_FLAG_CONST	0x0001		/* parameter is constant */
 
 typedef struct ParamExternData
 {

@@ -206,15 +206,18 @@ executeCommand(PGconn *conn, const char *query,
 bool
 yesno_prompt(const char *question)
 {
-	char prompt[256];
+	char		prompt[256];
 
-	/* translator: This is a question followed by the translated options for "yes" and "no". */
+	/*
+	 * translator: This is a question followed by the translated options for
+	 * "yes" and "no".
+	 */
 	snprintf(prompt, sizeof(prompt), _("%s (%s/%s) "),
 			 _(question), _(PG_YESLETTER), _(PG_NOLETTER));
 
 	for (;;)
 	{
-		char *resp;
+		char	   *resp;
 
 		resp = simple_prompt(prompt, 1, true);
 

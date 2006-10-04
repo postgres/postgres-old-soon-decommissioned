@@ -109,8 +109,8 @@ extern void ResourceOwnerForgetRelationRef(ResourceOwner owner,
 /* support for tupledesc refcount management */
 extern void ResourceOwnerEnlargeTupleDescs(ResourceOwner owner);
 extern void ResourceOwnerRememberTupleDesc(ResourceOwner owner,
-										   TupleDesc tupdesc);
+							   TupleDesc tupdesc);
 extern void ResourceOwnerForgetTupleDesc(ResourceOwner owner,
-										 TupleDesc tupdesc);
+							 TupleDesc tupdesc);
 
 #endif   /* RESOWNER_H */

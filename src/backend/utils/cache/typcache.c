@@ -268,9 +268,9 @@ lookup_type_cache(Oid type_id, int flags)
 		Assert(rel->rd_rel->reltype == typentry->type_id);
 
 		/*
-		 * Link to the tupdesc and increment its refcount (we assert it's
-		 * a refcounted descriptor).  We don't use IncrTupleDescRefCount()
-		 * for this, because the reference mustn't be entered in the current
+		 * Link to the tupdesc and increment its refcount (we assert it's a
+		 * refcounted descriptor).	We don't use IncrTupleDescRefCount() for
+		 * this, because the reference mustn't be entered in the current
 		 * resource owner; it can outlive the current query.
 		 */
 		typentry->tupDesc = RelationGetDescr(rel);
@@ -372,7 +372,7 @@ lookup_rowtype_tupdesc_noerror(Oid type_id, int32 typmod, bool noError)
 TupleDesc
 lookup_rowtype_tupdesc_copy(Oid type_id, int32 typmod)
 {
-	TupleDesc tmp;
+	TupleDesc	tmp;
 
 	tmp = lookup_rowtype_tupdesc_internal(type_id, typmod, false);
 	return CreateTupleDescCopyConstr(tmp);
@@ -501,9 +501,9 @@ flush_rowtype_cache(Oid type_id)
 		return;					/* tupdesc hasn't been requested */
 
 	/*
-	 * Release our refcount and free the tupdesc if none remain.
-	 * (Can't use DecrTupleDescRefCount because this reference is not
-	 * logged in current resource owner.)
+	 * Release our refcount and free the tupdesc if none remain. (Can't use
+	 * DecrTupleDescRefCount because this reference is not logged in current
+	 * resource owner.)
 	 */
 	Assert(typentry->tupDesc->tdrefcount > 0);
 	if (--typentry->tupDesc->tdrefcount == 0)

@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * plperl.h
- *    Common include file for PL/Perl files
+ *	  Common include file for PL/Perl files
  *
  * This should be included _AFTER_ postgres.h and system include files
  *
@@ -17,14 +17,14 @@
 /* stop perl headers from hijacking stdio and other stuff on Windows */
 #ifdef WIN32
 #define WIN32IO_IS_STDIO
-/* 
+/*
  * isnan is defined in both the perl and mingw headers. We don't use it,
  * so this just clears up the compile warning.
  */
 #ifdef isnan
 #undef isnan
 #endif
-#endif 
+#endif
 
 /* required for perl API */
 #include "EXTERN.h"
@@ -51,12 +51,12 @@ HV		   *plperl_spi_exec(char *, int);
 void		plperl_return_next(SV *);
 SV		   *plperl_spi_query(char *);
 SV		   *plperl_spi_fetchrow(char *);
-SV *plperl_spi_prepare(char *, int, SV **);
-HV *plperl_spi_exec_prepared(char *, HV *, int, SV **);
-SV *plperl_spi_query_prepared(char *, int, SV **);
-void plperl_spi_freeplan(char *);
-void plperl_spi_cursor_close(char *);
+SV		   *plperl_spi_prepare(char *, int, SV **);
+HV		   *plperl_spi_exec_prepared(char *, HV *, int, SV **);
+SV		   *plperl_spi_query_prepared(char *, int, SV **);
+void		plperl_spi_freeplan(char *);
+void		plperl_spi_cursor_close(char *);
 
 
 
-#endif /* PL_PERL_H */
+#endif   /* PL_PERL_H */

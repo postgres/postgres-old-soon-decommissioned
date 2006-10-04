@@ -38,7 +38,7 @@ extern		"C"
 {
 #endif
 
-void		ECPGinit_sqlca(struct sqlca_t *sqlca);
+void		ECPGinit_sqlca(struct sqlca_t * sqlca);
 void		ECPGdebug(int, FILE *);
 bool		ECPGstatus(int, const char *);
 bool		ECPGsetcommit(int, const char *, const char *);

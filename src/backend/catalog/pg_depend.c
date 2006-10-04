@@ -264,7 +264,7 @@ changeDependencyFor(Oid classId, Oid objectId,
  * Detect whether a sequence is marked as "owned" by a column
  *
  * An ownership marker is an AUTO dependency from the sequence to the
- * column.  If we find one, store the identity of the owning column
+ * column.	If we find one, store the identity of the owning column
  * into *tableId and *colId and return TRUE; else return FALSE.
  *
  * Note: if there's more than one such pg_depend entry then you get

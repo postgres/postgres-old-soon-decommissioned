@@ -17,8 +17,8 @@ typedef long int int64;
 #ifndef HAVE_INT64
 typedef long long int int64;
 #endif
-#else                                                   /* not HAVE_LONG_INT_64 and not
-                                                                 * HAVE_LONG_LONG_INT_64 */
+#else							/* not HAVE_LONG_INT_64 and not
+								 * HAVE_LONG_LONG_INT_64 */
 
 /* Won't actually work, but fall back to long int so that code compiles */
 #ifndef HAVE_INT64
@@ -26,13 +26,13 @@ typedef long int int64;
 #endif
 
 #define INT64_IS_BUSTED
-#endif   /* not HAVE_LONG_INT_64 and not HAVE_LONG_LONG_INT_64 */
+#endif   /* not HAVE_LONG_INT_64 and not
+								 * HAVE_LONG_LONG_INT_64 */
 
 #if defined(USE_INTEGER_DATETIMES) && !defined(INT64_IS_BUSTED)
 #define HAVE_INT64_TIMESTAMP
 #endif
-
-#endif /* C_H */
+#endif   /* C_H */
 
 typedef struct
 {

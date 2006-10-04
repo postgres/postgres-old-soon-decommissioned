@@ -402,7 +402,7 @@ DropTableSpace(DropTableSpaceStmt *stmt)
 
 	if (!HeapTupleIsValid(tuple))
 	{
-		if ( ! stmt->missing_ok )
+		if (!stmt->missing_ok)
 		{
 			ereport(ERROR,
 					(errcode(ERRCODE_UNDEFINED_OBJECT),
@@ -481,8 +481,8 @@ DropTableSpace(DropTableSpaceStmt *stmt)
 	}
 
 	/*
-	 * Note: because we checked that the tablespace was empty, there should
-	 * be no need to worry about flushing shared buffers or free space map
+	 * Note: because we checked that the tablespace was empty, there should be
+	 * no need to worry about flushing shared buffers or free space map
 	 * entries for relations in the tablespace.
 	 */
 
@@ -1069,7 +1069,7 @@ tblspc_desc(StringInfo buf, uint8 xl_info, char *rec)
 		xl_tblspc_create_rec *xlrec = (xl_tblspc_create_rec *) rec;
 
 		appendStringInfo(buf, "create ts: %u \"%s\"",
-				xlrec->ts_id, xlrec->ts_path);
+						 xlrec->ts_id, xlrec->ts_path);
 	}
 	else if (info == XLOG_TBLSPC_DROP)
 	{

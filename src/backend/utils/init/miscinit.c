@@ -60,7 +60,7 @@ static char socketLockFile[MAXPGPATH];
  * ----------------------------------------------------------------
  */
 
-bool IgnoreSystemIndexes = false;
+bool		IgnoreSystemIndexes = false;
 
 /* ----------------------------------------------------------------
  *		system index reindexing support
@@ -1097,7 +1097,7 @@ ValidatePgVersion(const char *path)
  *-------------------------------------------------------------------------
  */
 
-/* 
+/*
  * GUC variables: lists of library names to be preloaded at postmaster
  * start and at backend start
  */
@@ -1146,7 +1146,7 @@ load_libraries(const char *libraries, const char *gucname, bool restricted)
 		/* If restricting, insert $libdir/plugins if not mentioned already */
 		if (restricted && first_dir_separator(filename) == NULL)
 		{
-			char   *expanded;
+			char	   *expanded;
 
 			expanded = palloc(strlen("$libdir/plugins/") + strlen(filename) + 1);
 			strcpy(expanded, "$libdir/plugins/");

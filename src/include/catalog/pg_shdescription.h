@@ -7,7 +7,7 @@
  * NOTE: an object is identified by the OID of the row that primarily
  * defines the object, plus the OID of the table that that row appears in.
  * For example, a database is identified by the OID of its pg_database row
- * plus the pg_class OID of table pg_database.  This allows unique
+ * plus the pg_class OID of table pg_database.	This allows unique
  * identification of objects without assuming that OIDs are unique
  * across tables.
  *
@@ -61,7 +61,7 @@ typedef FormData_pg_shdescription *Form_pg_shdescription;
  *		compiler constants for pg_shdescription
  * ----------------
  */
-#define Natts_pg_shdescription			3	
+#define Natts_pg_shdescription			3
 #define Anum_pg_shdescription_objoid		1
 #define Anum_pg_shdescription_classoid	2
 #define Anum_pg_shdescription_description 3

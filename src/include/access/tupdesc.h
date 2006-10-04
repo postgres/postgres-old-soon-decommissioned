@@ -104,7 +104,7 @@ extern void DecrTupleDescRefCount(TupleDesc tupdesc);
 		if ((tupdesc)->tdrefcount >= 0) \
 			DecrTupleDescRefCount(tupdesc); \
 	} while (0)
-  
+
 extern bool equalTupleDescs(TupleDesc tupdesc1, TupleDesc tupdesc2);
 
 extern void TupleDescInitEntry(TupleDesc desc,

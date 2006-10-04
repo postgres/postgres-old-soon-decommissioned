@@ -1798,7 +1798,7 @@ ReceiveFunctionCall(FmgrInfo *flinfo, StringInfo buf,
  *
  * This is little more than window dressing for FunctionCall1, but its use is
  * recommended anyway so that code invoking output functions can be identified
- * easily.  Note however that it does guarantee a non-toasted result.
+ * easily.	Note however that it does guarantee a non-toasted result.
  */
 bytea *
 SendFunctionCall(FmgrInfo *flinfo, Datum val)

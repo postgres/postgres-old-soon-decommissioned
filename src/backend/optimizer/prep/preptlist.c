@@ -157,13 +157,13 @@ preprocess_targetlist(PlannerInfo *root, List *tlist)
 	/*
 	 * If the query has a RETURNING list, add resjunk entries for any Vars
 	 * used in RETURNING that belong to other relations.  We need to do this
-	 * to make these Vars available for the RETURNING calculation.  Vars
-	 * that belong to the result rel don't need to be added, because they
-	 * will be made to refer to the actual heap tuple.
+	 * to make these Vars available for the RETURNING calculation.	Vars that
+	 * belong to the result rel don't need to be added, because they will be
+	 * made to refer to the actual heap tuple.
 	 */
 	if (parse->returningList && list_length(parse->rtable) > 1)
 	{
-		List   *vars;
+		List	   *vars;
 		ListCell   *l;
 
 		vars = pull_var_clause((Node *) parse->returningList, false);

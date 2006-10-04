@@ -516,7 +516,7 @@ DATA(insert OID = 2208 ( _regoper	   PGNSP PGUID -1 f b t \054 0 2203 array_in a
 DATA(insert OID = 2209 ( _regoperator  PGNSP PGUID -1 f b t \054 0 2204 array_in array_out array_recv array_send - i x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 2210 ( _regclass	   PGNSP PGUID -1 f b t \054 0 2205 array_in array_out array_recv array_send - i x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 2211 ( _regtype	   PGNSP PGUID -1 f b t \054 0 2206 array_in array_out array_recv array_send - i x f 0 -1 0 _null_ _null_ ));
-#define REGTYPEARRAYOID	2211
+#define REGTYPEARRAYOID 2211
 
 /*
  * pseudo-types

@@ -89,7 +89,7 @@ typedef ScanKeyData *ScanKey;
  * must be sorted according to the leading column number.
  *
  * The subsidiary ScanKey array appears in logical column order of the row
- * comparison, which may be different from index column order.  The array
+ * comparison, which may be different from index column order.	The array
  * elements are like a normal ScanKey array except that:
  *		sk_flags must include SK_ROW_MEMBER, plus SK_ROW_END in the last
  *				element (needed since row header does not include a count)

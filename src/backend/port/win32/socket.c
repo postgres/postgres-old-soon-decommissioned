@@ -123,7 +123,7 @@ pgwin32_waitforsinglesocket(SOCKET s, int what)
 				(errmsg_internal("Failed to reset socket waiting event: %i", (int) GetLastError())));
 
 	/*
-	 * make sure we don't multiplex this kernel event object with a different 
+	 * make sure we don't multiplex this kernel event object with a different
 	 * socket from a previous call
 	 */
 
