@@ -231,7 +231,7 @@ DB2X_XSLTPROC = db2x_xsltproc
 MAKEINFO = makeinfo
 
 postgres.texixml: postgres.xml
-	$(DB2X_XSLTPROC) -s texi $< -o $@
+	$(DB2X_XSLTPROC) -s texi -g output-file=$(basename $@) $< -o $@
 
 postgres.texi: postgres.texixml
 	$(DB2X_TEXIXML) --encoding=iso-8859-1//TRANSLIT $< \
