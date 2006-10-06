@@ -27,6 +27,7 @@ NULL=nul
 ALL: 
    cd include
    if not exist pg_config.h copy pg_config.h.win32 pg_config.h
+   if not exist pg_config_os.h copy port\win32.h pg_config_os.h
    cd ..
    cd interfaces\libpq
    make -N -DCFG=$(CFG) /f bcc32.mak 
@@ -47,5 +48,5 @@ CLEAN:
 
 DISTCLEAN: CLEAN
    cd include
-   del config.h
+   del pg_config.h pg_config_os.h
    cd ..
