@@ -176,7 +176,7 @@ newScanKey(IndexScanDesc scan)
 	if (so->nkeys == 0)
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("GIN index doesn't support search with void query")));
+				 errmsg("GIN index does not support search with void query")));
 
 	pgstat_count_index_scan(&scan->xs_pgstat_info);
 }

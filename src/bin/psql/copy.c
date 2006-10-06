@@ -713,7 +713,7 @@ handleCopyIn(PGconn *conn, FILE *copystream, bool isbinary)
 		/* got here with longjmp */
 
 		/* Terminate data transfer */
-		PQputCopyEnd(conn, _("aborted by user cancel"));
+		PQputCopyEnd(conn, _("canceled by user"));
 
 		/* Check command status and return to normal libpq state */
 		res = PQgetResult(conn);
@@ -840,7 +840,7 @@ handleCopyIn(PGconn *conn, FILE *copystream, bool isbinary)
 
 	/* Terminate data transfer */
 	if (PQputCopyEnd(conn,
-					 OK ? NULL : _("aborted due to read failure")) <= 0)
+					 OK ? NULL : _("aborted because of read failure")) <= 0)
 		OK = false;
 
 	/* Check command status and return to normal libpq state */

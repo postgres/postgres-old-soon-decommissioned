@@ -124,7 +124,7 @@ win_to_utf8(PG_FUNCTION_ARGS)
 
 	ereport(ERROR,
 			(errcode(ERRCODE_INTERNAL_ERROR),
-			 errmsg("unexpected encoding id %d for WIN charsets", encoding)));
+			 errmsg("unexpected encoding ID %d for WIN character sets", encoding)));
 
 	PG_RETURN_VOID();
 }

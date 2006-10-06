@@ -75,7 +75,7 @@ usage(void)
 #endif   /* WIN32 */
 	}
 
-/* If this " is the start of the string then it ought to end there to fit in 80 columns >> " */
+/* >>> If this " is the start of the string then it ought to end there to fit in 80 columns >> " */
 	printf(_("This is psql %s, the PostgreSQL interactive terminal.\n\n"),
 		   PG_VERSION);
 	puts(_("Usage:"));
@@ -89,7 +89,7 @@ usage(void)
 	printf(_("  -d DBNAME       specify database name to connect to (default: \"%s\")\n"), env);
 	puts(_("  -c COMMAND      run only single command (SQL or internal) and exit"));
 	puts(_("  -f FILENAME     execute commands from file, then exit"));
-	puts(_("  -1 (numeral)    execute command file as a single transaction"));
+	puts(_("  -1 (\"one\")      execute command file as a single transaction"));
 	puts(_("  -l              list available databases, then exit"));
 	puts(_("  -v NAME=VALUE   set psql variable NAME to VALUE"));
 	puts(_("  -X              do not read startup file (~/.psqlrc)"));

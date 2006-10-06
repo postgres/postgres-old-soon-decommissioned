@@ -285,7 +285,7 @@ internal_load_library(const char *libname)
 			ereport(ERROR,
 				  (errmsg("incompatible library \"%s\": missing magic block",
 						  libname),
-				   errhint("Extension libraries are now required to use the PG_MODULE_MAGIC macro.")));
+				   errhint("Extension libraries are required to use the PG_MODULE_MAGIC macro.")));
 		}
 
 		/*

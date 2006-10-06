@@ -811,17 +811,17 @@ initialize_SSL(void)
 						  X509_V_FLAG_CRL_CHECK | X509_V_FLAG_CRL_CHECK_ALL);
 #else
 				ereport(LOG,
-						(errmsg("SSL Certificate Revocation List (CRL) file \"%s\" ignored",
+						(errmsg("SSL certificate revocation list file \"%s\" ignored",
 								ROOT_CRL_FILE),
-				  errdetail("Installed SSL library does not support CRL.")));
+				  errdetail("SSL library does not support certificate revocation lists.")));
 #endif
 			else
 			{
 				/* Not fatal - we do not require CRL */
 				ereport(LOG,
-						(errmsg("SSL Certificate Revocation List (CRL) file \"%s\" not found, skipping: %s",
+						(errmsg("SSL certificate revocation list file \"%s\" not found, skipping: %s",
 								ROOT_CRL_FILE, SSLerrmessage()),
-					 errdetail("Will not check certificates against CRL.")));
+					 errdetail("Certificates will not be checked against revocation list.")));
 			}
 		}
 

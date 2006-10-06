@@ -872,7 +872,7 @@ DoCopy(const CopyStmt *stmt)
 		strchr(cstate->null_print, '\n') != NULL)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("COPY null cannot use newline or carriage return")));
+				 errmsg("COPY null representation cannot use newline or carriage return")));
 
 	/* Disallow backslash in non-CSV mode */
 	if (!cstate->csv_mode && strchr(cstate->delim, '\\') != NULL)
@@ -1549,7 +1549,7 @@ copy_in_error_callback(void *arg)
 		else if (cstate->cur_attname)
 		{
 			/* error is relevant to a particular column, value is NULL */
-			errcontext("COPY %s, line %d, column %s: NULL input",
+			errcontext("COPY %s, line %d, column %s: null input",
 					   cstate->cur_relname, cstate->cur_lineno,
 					   cstate->cur_attname);
 		}

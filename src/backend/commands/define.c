@@ -163,7 +163,7 @@ defGetBoolean(DefElem *def)
 	}
 	ereport(ERROR,
 			(errcode(ERRCODE_SYNTAX_ERROR),
-			 errmsg("%s requires a boolean value",
+			 errmsg("%s requires a Boolean value",
 					def->defname)));
 	return false;				/* keep compiler quiet */
 }

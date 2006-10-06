@@ -835,7 +835,8 @@ CheckLDAPAuth(Port *port)
 			if (_ldap_start_tls_sA == NULL)
 			{
 				ereport(LOG,
-						(errmsg("could not load function _ldap_start_tls_sA in wldap32.dll. LDAP over SSL is not supported on this platform.")));
+						(errmsg("could not load function _ldap_start_tls_sA in wldap32.dll"),
+						 errdetail("LDAP over SSL is not supported on this platform.")));
 				return STATUS_ERROR;
 			}
 

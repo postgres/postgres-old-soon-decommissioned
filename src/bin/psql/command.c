@@ -1077,7 +1077,7 @@ do_connect(char *dbname, char *user, char *host, char *port)
 
 			/* pset.db is left unmodified */
 			if (o_conn)
-				fputs(_("Previous connection kept.\n"), stderr);
+				fputs(_("Previous connection kept\n"), stderr);
 		}
 		else
 		{
@@ -1106,14 +1106,14 @@ do_connect(char *dbname, char *user, char *host, char *port)
 	{
 		printf(_("You are now connected to database \"%s\""), PQdb(pset.db));
 
-		if (param_is_newly_set(PQuser(o_conn), PQuser(pset.db)))
-			printf(_(" as user \"%s\""), PQuser(pset.db));
-
 		if (param_is_newly_set(PQhost(o_conn), PQhost(pset.db)))
 			printf(_(" on host \"%s\""), PQhost(pset.db));
 
 		if (param_is_newly_set(PQport(o_conn), PQport(pset.db)))
 			printf(_(" at port \"%s\""), PQport(pset.db));
+
+		if (param_is_newly_set(PQuser(o_conn), PQuser(pset.db)))
+			printf(_(" as user \"%s\""), PQuser(pset.db));
 
 		printf(".\n");
 	}

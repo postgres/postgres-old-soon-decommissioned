@@ -396,9 +396,10 @@ usage(const char *progname)
 			 "                           use SESSION AUTHORIZATION commands instead of\n"
 			 "                           OWNER TO commands\n"));
 	printf(_("  -X no-data-for-failed-tables\n"
-			 "                           do not restore data of tables which could not be\n"
+			 "                           do not restore data of tables that could not be\n"
 			 "                           created\n"));
-	printf(_("  -1, --single-transaction restore as a single transaction\n"));
+	printf(_("  -1, --single-transaction\n"
+			 "                           restore as a single transaction\n"));
 
 	printf(_("\nConnection options:\n"));
 	printf(_("  -h, --host=HOSTNAME      database server host or socket directory\n"));

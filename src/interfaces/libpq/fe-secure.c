@@ -808,7 +808,7 @@ initialize_SSL(PGconn *conn)
 					char	   *err = SSLerrmessage();
 
 					printfPQExpBuffer(&conn->errorMessage,
-									  libpq_gettext("Installed SSL library does not support CRL certificates, file \"%s\"\n"),
+									  libpq_gettext("SSL library does not support CRL certificates (file \"%s\")\n"),
 									  fnbuf);
 					SSLerrfree(err);
 					return -1;

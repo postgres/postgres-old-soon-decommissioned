@@ -437,7 +437,7 @@ BackgroundWriterMain(void)
 				 */
 				if ((switchpoint.xrecoff % XLogSegSize) != 0)
 					ereport(DEBUG1,
-							(errmsg("xlog switch forced (archive_timeout=%d)",
+							(errmsg("transaction log switch forced (archive_timeout=%d)",
 									XLogArchiveTimeout)));
 
 				/*

@@ -27,7 +27,7 @@
 	if ( ARR_HASNULL(x) )									\
 		ereport(ERROR,										\
 			(errcode(ERRCODE_NULL_VALUE_NOT_ALLOWED),		\
-			 errmsg("array must not contain nulls")));		\
+			 errmsg("array must not contain null values")));		\
 } while(0)
 
 

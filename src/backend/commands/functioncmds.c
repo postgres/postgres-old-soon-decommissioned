@@ -1402,7 +1402,7 @@ DropCast(DropCastStmt *stmt)
 							TypeNameToString(stmt->targettype))));
 		else
 			ereport(NOTICE,
-					(errmsg("cast from type %s to type %s does not exist ... skipping",
+					(errmsg("cast from type %s to type %s does not exist, skipping",
 							TypeNameToString(stmt->sourcetype),
 							TypeNameToString(stmt->targettype))));
 
