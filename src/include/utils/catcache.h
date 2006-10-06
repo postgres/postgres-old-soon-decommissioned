@@ -166,7 +166,7 @@ extern CatCache *InitCatCache(int id, Oid reloid, Oid indexoid,
 			 int reloidattr,
 			 int nkeys, const int *key,
 			 int nbuckets);
-extern void InitCatCachePhase2(CatCache *cache);
+extern void InitCatCachePhase2(CatCache *cache, bool touch_index);
 
 extern HeapTuple SearchCatCache(CatCache *cache,
 			   Datum v1, Datum v2,
