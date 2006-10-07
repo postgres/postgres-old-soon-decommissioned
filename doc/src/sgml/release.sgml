@@ -1815,7 +1815,7 @@ For new features, add links to the documentation sections.
       <listitem>
        <para>
         Add <link linkend="APP-PGRESTORE"><application>pg_restore</></link>
-        <literal>-X no-data-for-failed-tables</> option to suppress
+        <literal>--no-data-for-failed-tables</> option to suppress
         loading data if table creation failed (the table already
         exists) (Martin Pitt)
        </para>
