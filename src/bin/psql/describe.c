@@ -1673,7 +1673,8 @@ processNamePattern(PQExpBuffer buf, const char *pattern,
 				appendPQExpBufferChar(&namebuf, '"');
 				cp++;
 			}
-			inquotes = !inquotes;
+			else
+				inquotes = !inquotes;
 			cp++;
 		}
 		else if (!inquotes && isupper((unsigned char) *cp))
