@@ -188,9 +188,12 @@ INSTALL HISTORY regress_README: % : %.html
 INSTALL.html: standalone-install.sgml installation.sgml version.sgml
 	$(JADE.text) -V nochunks standalone-install.sgml installation.sgml >$@
 
+# remove links to main documentation
 HISTORY.html: release.sgml
 	( echo '<!doctype appendix PUBLIC "-//OASIS//DTD DocBook V4.2//EN">'; \
-	  cat $< ) >tempfile_HISTORY.sgml
+	  cat $< ) | \
+	$(PERL) -p -0 -e 's/<link[\n\s]+linkend[^>]*>//sg' | \
+	$(PERL) -p -e 's/<\/link>//g' >tempfile_HISTORY.sgml
 	$(JADE.text) -V nochunks tempfile_HISTORY.sgml >$@
 	rm tempfile_HISTORY.sgml
 
