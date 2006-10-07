@@ -94,7 +94,7 @@ pg_strncasecmp(const char *s1, const char *s2, size_t n)
  * Fold a character to upper case.
  *
  * Unlike some versions of toupper(), this is safe to apply to characters
- * that aren't upper case letters.  Note however that the whole thing is
+ * that aren't lower case letters.  Note however that the whole thing is
  * a bit bogus for multibyte character sets.
  */
 unsigned char
@@ -111,7 +111,7 @@ pg_toupper(unsigned char ch)
  * Fold a character to lower case.
  *
  * Unlike some versions of tolower(), this is safe to apply to characters
- * that aren't lower case letters.  Note however that the whole thing is
+ * that aren't upper case letters.  Note however that the whole thing is
  * a bit bogus for multibyte character sets.
  */
 unsigned char
