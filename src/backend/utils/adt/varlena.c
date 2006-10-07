@@ -779,6 +779,8 @@ text_position(Datum str, Datum search_str, int matchnum)
 					pos = p + 1;
 					break;
 				}
+				p1 += len2 - 1;
+				p += len2 - 1;
 			}
 			p1++;
 		}
@@ -809,6 +811,8 @@ text_position(Datum str, Datum search_str, int matchnum)
 					pos = p + 1;
 					break;
 				}
+				p1 += len2 - 1;
+				p += len2 - 1;
 			}
 			p1++;
 		}
