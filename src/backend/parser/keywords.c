@@ -67,6 +67,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"cache", CACHE},
 	{"called", CALLED},
 	{"cascade", CASCADE},
+	{"cascaded", CASCADED},
 	{"case", CASE},
 	{"cast", CAST},
 	{"chain", CHAIN},
