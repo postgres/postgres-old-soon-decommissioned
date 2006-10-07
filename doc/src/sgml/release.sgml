@@ -96,7 +96,7 @@ For new features, add links to the documentation sections.
       <listitem>
        <para>
 	Query language enhancements including <literal>RETURNING</literal>
-	values, multi-<literal>VALUES</literal>, support, and
+	values, multi-<literal>VALUES</literal> support, and
 	self-joins for <command>DELETE</command>
        </para>
       </listitem>
