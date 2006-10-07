@@ -16,7 +16,7 @@
 
 #include <sys/time.h>
 
-#ifdef HAVE_GETRUSAGE
+#ifdef HAVE_SYS_RESOURCE_H
 #include <sys/resource.h>
 #else
 #include "rusagestub.h"
