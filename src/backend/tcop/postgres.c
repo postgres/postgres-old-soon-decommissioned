@@ -1294,6 +1294,7 @@ exec_bind_message(StringInfo input_message)
 	PreparedStatement *pstmt;
 	Portal		portal;
 	ParamListInfo params;
+	List	   *query_list;
 	List	   *plan_list;
 	MemoryContext qContext;
 	bool		save_log_statement_stats = log_statement_stats;
@@ -1572,13 +1573,13 @@ exec_bind_message(StringInfo input_message)
 
 		qContext = PortalGetHeapMemory(portal);
 		oldContext = MemoryContextSwitchTo(qContext);
-		plan_list = pg_plan_queries(copyObject(pstmt->query_list),
-									params,
-									true);
+		query_list = copyObject(pstmt->query_list);
+		plan_list = pg_plan_queries(query_list, params, true);
 		MemoryContextSwitchTo(oldContext);
 	}
 	else
 	{
+		query_list = pstmt->query_list;
 		plan_list = pstmt->plan_list;
 		qContext = pstmt->context;
 	}
@@ -1590,7 +1591,7 @@ exec_bind_message(StringInfo input_message)
 					  *pstmt->stmt_name ? pstmt->stmt_name : NULL,
 					  pstmt->query_string,
 					  pstmt->commandTag,
-					  pstmt->query_list,
+					  query_list,
 					  plan_list,
 					  qContext);
 
