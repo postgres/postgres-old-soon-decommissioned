@@ -14,6 +14,8 @@ include $(top_builddir)/src/Makefile.global
 
 OBJS= dest.o fastpath.o postgres.o pquery.o utility.o
 
+override CPPFLAGS += -DWIN32_STACK_RLIMIT=$(WIN32_STACK_RLIMIT)
+
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)

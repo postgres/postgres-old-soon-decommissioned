@@ -311,6 +311,9 @@ HAVE_POSIX_SIGNALS= @HAVE_POSIX_SIGNALS@
 # systems now.  May be applicable to other systems to?
 ELF_SYSTEM= @ELF_SYS@
 
+# Backend stack size limit has to be hard-wired on Windows (it's in bytes)
+WIN32_STACK_RLIMIT=4194304
+
 # Pull in platform-specific magic
 include $(top_builddir)/src/Makefile.port
 

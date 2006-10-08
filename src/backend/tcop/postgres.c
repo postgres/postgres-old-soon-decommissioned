@@ -3678,7 +3678,12 @@ get_stack_depth_rlimit(void)
 	}
 	return val;
 #else /* no getrlimit */
+#if defined(WIN32) || defined(__CYGWIN__)
+	/* On Windows we set the backend stack size in src/backend/Makefile */
+	return WIN32_STACK_RLIMIT;
+#else  /* not windows ... give up */
 	return -1;
+#endif
 #endif
 }
 
