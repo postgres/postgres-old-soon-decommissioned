@@ -1765,7 +1765,9 @@ links to the main documentation.
        </para>
 
        <para>
-        This makes up-arrow recall of queries easier.
+	This makes up-arrow recall of queries easier.  (This is
+	not availble on Win32 because it uses the native command-line
+	editing present in the operating system.)
        </para>
       </listitem>
 
