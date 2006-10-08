@@ -27,6 +27,7 @@
 #include <sys/select.h>
 #endif
 #ifdef HAVE_SYS_RESOURCE_H
+#include <sys/time.h>
 #include <sys/resource.h>
 #endif
 #ifdef HAVE_GETOPT_H
