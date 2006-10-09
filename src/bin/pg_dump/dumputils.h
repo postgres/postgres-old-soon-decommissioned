@@ -2,6 +2,7 @@
  *
  * Utility routines for SQL dumping
  *	Basically this is stuff that is useful in both pg_dump and pg_dumpall.
+ *	Lately it's also being used by psql and bin/scripts/ ...
  *
  *
  * Portions Copyright (c) 1996-2006, PostgreSQL Global Development Group
@@ -31,5 +32,10 @@ extern bool buildACLCommands(const char *name, const char *type,
 				 const char *acls, const char *owner,
 				 int remoteVersion,
 				 PQExpBuffer sql);
+extern void processSQLNamePattern(PGconn *conn, PQExpBuffer buf,
+					  const char *pattern,
+					  bool have_where, bool force_escape,
+					  const char *schemavar, const char *namevar,
+					  const char *altnamevar, const char *visibilityrule);
 
 #endif   /* DUMPUTILS_H */
