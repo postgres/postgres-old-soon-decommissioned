@@ -1737,16 +1737,11 @@ processNamePattern(PQExpBuffer buf, const char *pattern,
 	{
 		/* We have a schema pattern, so constrain the schemavar */
 
-		appendPQExpBufferChar(&schemabuf, '$');
-		/* Optimize away ".*$", and possibly the whole pattern */
-		if (schemabuf.len >= 3 &&
-			strcmp(schemabuf.data + (schemabuf.len - 3), ".*$") == 0)
-			schemabuf.data[schemabuf.len - 3] = '\0';
-
-		if (schemabuf.data[0] && schemavar)
+		/* Optimize away a "*" pattern */
+		if (strcmp(schemabuf.data, ".*") != 0 && schemavar)
 		{
 			WHEREAND();
-			appendPQExpBuffer(buf, "%s ~ '^%s'\n",
+			appendPQExpBuffer(buf, "%s ~ '^(%s)$'\n",
 							  schemavar, schemabuf.data);
 		}
 	}
@@ -1764,24 +1759,19 @@ processNamePattern(PQExpBuffer buf, const char *pattern,
 	{
 		/* We have a name pattern, so constrain the namevar(s) */
 
-		appendPQExpBufferChar(&namebuf, '$');
-		/* Optimize away ".*$", and possibly the whole pattern */
-		if (namebuf.len >= 3 &&
-			strcmp(namebuf.data + (namebuf.len - 3), ".*$") == 0)
-			namebuf.data[namebuf.len - 3] = '\0';
-
-		if (namebuf.data[0])
+		/* Optimize away a "*" pattern */
+		if (strcmp(namebuf.data, ".*") != 0)
 		{
 			WHEREAND();
 			if (altnamevar)
 				appendPQExpBuffer(buf,
-								  "(%s ~ '^%s'\n"
-								  "        OR %s ~ '^%s')\n",
+								  "(%s ~ '^(%s)$'\n"
+								  "        OR %s ~ '^(%s)$')\n",
 								  namevar, namebuf.data,
 								  altnamevar, namebuf.data);
 			else
 				appendPQExpBuffer(buf,
-								  "%s ~ '^%s'\n",
+								  "%s ~ '^(%s)$'\n",
 								  namevar, namebuf.data);
 		}
 	}
