@@ -506,6 +506,8 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt,
 					List **extras_before, List **extras_after)
 {
 	Query	   *qry = makeNode(Query);
+	Query	   *selectQuery = NULL;
+	bool		copy_up_hack = false;
 	List	   *sub_rtable;
 	List	   *sub_namespace;
 	List	   *icolumns;
@@ -561,7 +563,6 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt,
 		 * be able to see.
 		 */
 		ParseState *sub_pstate = make_parsestate(pstate);
-		Query	   *selectQuery;
 		RangeTblEntry *rte;
 		RangeTblRef *rtr;
 
@@ -608,7 +609,7 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt,
 		Assert(rte == rt_fetch(rtr->rtindex, pstate->p_rtable));
 		pstate->p_joinlist = lappend(pstate->p_joinlist, rtr);
 
-		/*
+		/*----------
 		 * Generate a targetlist for the INSERT that selects all the
 		 * non-resjunk columns from the subquery.  (We need this to be
 		 * separate from the subquery's tlist because we may add columns,
@@ -618,8 +619,9 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt,
 		 * are copied up as-is rather than being referenced as subquery
 		 * outputs.  This is to ensure that when we try to coerce them to
 		 * the target column's datatype, the right things happen (see
-		 * special cases in coerce_type).  Otherwise, this fails: INSERT
-		 * INTO foo SELECT 'bar', ... FROM baz
+		 * special cases in coerce_type).  Otherwise, this fails:
+		 *		INSERT INTO foo SELECT 'bar', ... FROM baz
+		 *----------
 		 */
 		qry->targetList = NIL;
 		foreach(tl, selectQuery->targetList)
@@ -631,9 +633,12 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt,
 			if (resnode->resjunk)
 				continue;
 			if (tle->expr &&
-				(IsA(tle->expr, Const) ||IsA(tle->expr, Param)) &&
+				(IsA(tle->expr, Const) || IsA(tle->expr, Param)) &&
 				exprType((Node *) tle->expr) == UNKNOWNOID)
+			{
 				expr = tle->expr;
+				copy_up_hack = true;
+			}
 			else
 				expr = (Expr *) makeVar(rtr->rtindex,
 										resnode->resno,
@@ -702,6 +707,28 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt,
 		ereport(ERROR,
 				(errcode(ERRCODE_SYNTAX_ERROR),
 			 errmsg("INSERT has more target columns than expressions")));
+
+	/*
+	 * If we copied up any unknown Params (see HACK above) then their
+	 * resolved types need to be propagated into the Resdom nodes of
+	 * the sub-INSERT's tlist.  One hack begets another :-(
+	 */
+	if (copy_up_hack)
+	{
+		foreach(tl, selectQuery->targetList)
+		{
+			TargetEntry *tle = (TargetEntry *) lfirst(tl);
+			Resdom	   *resnode = tle->resdom;
+
+			if (resnode->resjunk)
+				continue;
+			if (resnode->restype == UNKNOWNOID)
+			{
+				resnode->restype = exprType((Node *) tle->expr);
+				resnode->restypmod = exprTypmod((Node *) tle->expr);
+			}
+		}
+	}
 
 	/* done building the range table and jointree */
 	qry->rtable = pstate->p_rtable;
@@ -1080,7 +1107,7 @@ transformInhRelation(ParseState *pstate, CreateStmtContext *cxt,
 	constr = tupleDesc->constr;
 
 	/*
-	 * Insert the inherited attributes into the cxt for the new table
+	 * Insert the copied attributes into the cxt for the new table
 	 * definition.
 	 */
 	for (parent_attno = 1; parent_attno <= tupleDesc->natts;
@@ -1098,7 +1125,7 @@ transformInhRelation(ParseState *pstate, CreateStmtContext *cxt,
 			continue;
 
 		/*
-		 * Create a new inherited column.
+		 * Create a new column, which is marked as NOT inherited.
 		 *
 		 * For constraints, ONLY the NOT NULL constraint is inherited by the
 		 * new column definition per SQL99.
@@ -1110,7 +1137,7 @@ transformInhRelation(ParseState *pstate, CreateStmtContext *cxt,
 		typename->typmod = attribute->atttypmod;
 		def->typename = typename;
 		def->inhcount = 0;
-		def->is_local = false;
+		def->is_local = true;
 		def->is_not_null = attribute->attnotnull;
 		def->raw_default = NULL;
 		def->cooked_default = NULL;
