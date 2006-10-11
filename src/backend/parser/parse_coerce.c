@@ -129,11 +129,22 @@ coerce_type(ParseState *pstate, Node *node,
 		return node;
 	}
 	if (targetTypeId == ANYOID ||
-		targetTypeId == ANYARRAYOID ||
-		targetTypeId == ANYELEMENTOID)
+		targetTypeId == ANYELEMENTOID ||
+		(targetTypeId == ANYARRAYOID && inputTypeId != UNKNOWNOID))
 	{
-		/* assume can_coerce_type verified that implicit coercion is okay */
-		/* NB: we do NOT want a RelabelType here */
+		/*
+		 * Assume can_coerce_type verified that implicit coercion is okay.
+		 *
+		 * Note: by returning the unmodified node here, we are saying that
+		 * it's OK to treat an UNKNOWN constant as a valid input for a
+		 * function accepting ANY or ANYELEMENT.  This should be all right,
+		 * since an UNKNOWN value is still a perfectly valid Datum.  However
+		 * an UNKNOWN value is definitely *not* an array, and so we mustn't
+		 * accept it for ANYARRAY.  (Instead, we will call anyarray_in below,
+		 * which will produce an error.)
+		 *
+		 * NB: we do NOT want a RelabelType here.
+		 */
 		return node;
 	}
 	if (inputTypeId == UNKNOWNOID && IsA(node, Const))
