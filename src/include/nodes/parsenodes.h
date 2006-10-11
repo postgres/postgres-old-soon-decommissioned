@@ -414,8 +414,18 @@ typedef struct InhRelation
 {
 	NodeTag		type;
 	RangeVar   *relation;
-	List	   *options;
+	List	   *options;		/* integer List of CreateStmtLikeOption */
 } InhRelation;
+
+typedef enum CreateStmtLikeOption
+{
+	CREATE_TABLE_LIKE_INCLUDING_DEFAULTS,
+	CREATE_TABLE_LIKE_EXCLUDING_DEFAULTS,
+	CREATE_TABLE_LIKE_INCLUDING_CONSTRAINTS,
+	CREATE_TABLE_LIKE_EXCLUDING_CONSTRAINTS,
+	CREATE_TABLE_LIKE_INCLUDING_INDEXES,
+	CREATE_TABLE_LIKE_EXCLUDING_INDEXES
+} CreateStmtLikeOption;
 
 /*
  * IndexElem - index parameters (used in CREATE INDEX)
@@ -1054,16 +1064,6 @@ typedef struct CreateStmt
 	OnCommitAction oncommit;	/* what do we do at COMMIT? */
 	char	   *tablespacename; /* table space to use, or NULL */
 } CreateStmt;
-
-typedef enum CreateStmtLikeOption
-{
-	CREATE_TABLE_LIKE_INCLUDING_DEFAULTS,
-	CREATE_TABLE_LIKE_EXCLUDING_DEFAULTS,
-	CREATE_TABLE_LIKE_INCLUDING_CONSTRAINTS,
-	CREATE_TABLE_LIKE_EXCLUDING_CONSTRAINTS,
-	CREATE_TABLE_LIKE_INCLUDING_INDEXES,
-	CREATE_TABLE_LIKE_EXCLUDING_INDEXES
-} CreateStmtLikeOption;
 
 /* ----------
  * Definitions for plain (non-FOREIGN KEY) constraints in CreateStmt
