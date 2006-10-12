@@ -50,8 +50,6 @@ static char *med3(char *a, char *b, char *c,
 	 qsort_arg_comparator cmp, void *arg);
 static void swapfunc(char *, char *, size_t, int);
 
-#define min(a, b)	((a) < (b) ? (a) : (b))
-
 /*
  * Qsort routine based on J. L. Bentley and M. D. McIlroy,
  * "Engineering a sort function",
@@ -184,9 +182,9 @@ loop:SWAPINIT(a, es);
 		pc -= es;
 	}
 	pn = (char *) a + n * es;
-	r = min(pa - (char *) a, pb - pa);
+	r = Min(pa - (char *) a, pb - pa);
 	vecswap(a, pb - r, r);
-	r = min(pd - pc, pn - pd - es);
+	r = Min(pd - pc, pn - pd - es);
 	vecswap(pb, pn - r, r);
 	if ((r = pb - pa) > es)
 		qsort_arg(a, r / es, es, cmp, arg);
