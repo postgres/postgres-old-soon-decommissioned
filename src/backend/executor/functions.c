@@ -85,12 +85,13 @@ static execution_state *init_execution_state(List *queryTree_list,
 static void init_sql_fcache(FmgrInfo *finfo);
 static void postquel_start(execution_state *es, SQLFunctionCachePtr fcache);
 static TupleTableSlot *postquel_getnext(execution_state *es);
-static void postquel_end(execution_state *es, SQLFunctionCachePtr fcache);
+static void postquel_end(execution_state *es);
 static void postquel_sub_params(SQLFunctionCachePtr fcache,
 					FunctionCallInfo fcinfo);
 static Datum postquel_execute(execution_state *es,
 				 FunctionCallInfo fcinfo,
-				 SQLFunctionCachePtr fcache);
+				 SQLFunctionCachePtr fcache,
+				 MemoryContext resultcontext);
 static void sql_exec_error_callback(void *arg);
 static void ShutdownSQLFunction(Datum arg);
 
@@ -327,7 +328,14 @@ postquel_start(execution_state *es, SQLFunctionCachePtr fcache)
 	/* Utility commands don't need Executor. */
 	if (es->qd->operation != CMD_UTILITY)
 	{
-		AfterTriggerBeginQuery();
+		/*
+		 * Only set up to collect queued triggers if it's not a SELECT.
+		 * This isn't just an optimization, but is necessary in case a SELECT
+		 * returns multiple rows to caller --- we mustn't exit from the
+		 * function execution with a stacked AfterTrigger level still active.
+		 */
+		if (es->qd->operation != CMD_SELECT)
+			AfterTriggerBeginQuery();
 		ExecutorStart(es->qd, false);
 	}
 
@@ -383,7 +391,7 @@ postquel_getnext(execution_state *es)
 }
 
 static void
-postquel_end(execution_state *es, SQLFunctionCachePtr fcache)
+postquel_end(execution_state *es)
 {
 	Snapshot	saveActiveSnapshot;
 
@@ -400,7 +408,8 @@ postquel_end(execution_state *es, SQLFunctionCachePtr fcache)
 			ActiveSnapshot = es->qd->snapshot;
 
 			ExecutorEnd(es->qd);
-			AfterTriggerEndQuery();
+			if (es->qd->operation != CMD_SELECT)
+				AfterTriggerEndQuery();
 		}
 		PG_CATCH();
 		{
@@ -453,12 +462,14 @@ postquel_sub_params(SQLFunctionCachePtr fcache,
 static Datum
 postquel_execute(execution_state *es,
 				 FunctionCallInfo fcinfo,
-				 SQLFunctionCachePtr fcache)
+				 SQLFunctionCachePtr fcache,
+				 MemoryContext resultcontext)
 {
 	TupleTableSlot *slot;
 	HeapTuple	tup;
 	TupleDesc	tupDesc;
 	Datum		value;
+	MemoryContext oldcontext;
 
 	if (es->status == F_EXEC_START)
 		postquel_start(es, fcache);
@@ -471,7 +482,7 @@ postquel_execute(execution_state *es,
 		 * We fall out here for all cases except where we have obtained
 		 * a row from a function's final SELECT.
 		 */
-		postquel_end(es, fcache);
+		postquel_end(es);
 		fcinfo->isnull = true;
 		return (Datum) NULL;
 	}
@@ -483,8 +494,12 @@ postquel_execute(execution_state *es,
 	Assert(LAST_POSTQUEL_COMMAND(es));
 
 	/*
-	 * Set up to return the function value.
+	 * Set up to return the function value.  For pass-by-reference
+	 * datatypes, be sure to allocate the result in resultcontext,
+	 * not the current memory context (which has query lifespan).
 	 */
+	oldcontext = MemoryContextSwitchTo(resultcontext);
+
 	if (fcache->returnsTuple)
 	{
 		/*
@@ -493,7 +508,7 @@ postquel_execute(execution_state *es,
 		 * reasons why we do this:
 		 *
 		 * 1. To copy the tuple out of the child execution context and
-		 * into our own context.
+		 * into the desired result context.
 		 *
 		 * 2. To remove any junk attributes present in the raw subselect
 		 * result.  (This is probably not absolutely necessary, but it
@@ -553,8 +568,8 @@ postquel_execute(execution_state *es,
 	{
 		/*
 		 * Returning a scalar, which we have to extract from the first
-		 * column of the SELECT result, and then copy into current
-		 * execution context if needed.
+		 * column of the SELECT result, and then copy into result
+		 * context if needed.
 		 */
 		tup = slot->val;
 		tupDesc = slot->ttc_tupleDescriptor;
@@ -565,12 +580,14 @@ postquel_execute(execution_state *es,
 			value = datumCopy(value, fcache->typbyval, fcache->typlen);
 	}
 
+	MemoryContextSwitchTo(oldcontext);
+
 	/*
 	 * If this is a single valued function we have to end the function
 	 * execution now.
 	 */
 	if (!fcinfo->flinfo->fn_retset)
-		postquel_end(es, fcache);
+		postquel_end(es);
 
 	return value;
 }
@@ -630,7 +647,7 @@ fmgr_sql(PG_FUNCTION_ARGS)
 	 */
 	while (es)
 	{
-		result = postquel_execute(es, fcinfo, fcache);
+		result = postquel_execute(es, fcinfo, fcache, oldcontext);
 		if (es->status != F_EXEC_DONE)
 			break;
 		es = es->next;
@@ -827,7 +844,7 @@ ShutdownSQLFunction(Datum arg)
 	{
 		/* Shut down anything still running */
 		if (es->status == F_EXEC_RUN)
-			postquel_end(es, fcache);
+			postquel_end(es);
 		/* Reset states to START in case we're called again */
 		es->status = F_EXEC_START;
 		es = es->next;
