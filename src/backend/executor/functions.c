@@ -329,7 +329,14 @@ postquel_start(execution_state *es, SQLFunctionCachePtr fcache)
 	/* Utility commands don't need Executor. */
 	if (es->qd->operation != CMD_UTILITY)
 	{
-		AfterTriggerBeginQuery();
+		/*
+		 * Only set up to collect queued triggers if it's not a SELECT.
+		 * This isn't just an optimization, but is necessary in case a SELECT
+		 * returns multiple rows to caller --- we mustn't exit from the
+		 * function execution with a stacked AfterTrigger level still active.
+		 */
+		if (es->qd->operation != CMD_SELECT)
+			AfterTriggerBeginQuery();
 		ExecutorStart(es->qd, false);
 	}
 
@@ -401,7 +408,8 @@ postquel_end(execution_state *es)
 		{
 			ActiveSnapshot = es->qd->snapshot;
 
-			AfterTriggerEndQuery(es->qd->estate);
+			if (es->qd->operation != CMD_SELECT)
+				AfterTriggerEndQuery(es->qd->estate);
 			ExecutorEnd(es->qd);
 		}
 		PG_CATCH();
