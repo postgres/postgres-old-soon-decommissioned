@@ -36,6 +36,8 @@ $PostgreSQL$
 values in rule WHERE expressions (Tom)</para></listitem>
 <listitem><para>Fix core dump when an untyped literal is taken as
 ANYARRAY</para></listitem>
+<listitem><para>Fix mishandling of AFTER triggers when query contains a SQL
+function returning multiple rows (Tom)</para></listitem>
 <listitem><para>Fix <command>ALTER TABLE ... TYPE</> to recheck
 <literal>NOT NULL</> for <literal>USING</> clause (Tom)</para></listitem>
 <listitem><para>Fix <function>string_to_array()</> to handle overlapping
