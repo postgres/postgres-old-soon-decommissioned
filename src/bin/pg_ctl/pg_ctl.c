@@ -858,7 +858,6 @@ do_status(void)
 				if (optlines != NULL)
 					for (; *optlines != NULL; optlines++)
 						fputs(*optlines, stdout);
-				free(optlines);
 				return;
 			}
 		}
