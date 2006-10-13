@@ -1506,20 +1506,20 @@ alter_table_cmd:
 					n->subtype = AT_DisableTrigUser;
 					$$ = (Node *)n;
 				}
-			/* ALTER TABLE <name> ALTER INHERITS ADD <parent> */
+			/* ALTER TABLE <name> INHERIT <parent> */
 			| INHERIT qualified_name
 				{
 					AlterTableCmd *n = makeNode(AlterTableCmd);
-					n->subtype = AT_AddInherits;
-					n->parent = $2;
+					n->subtype = AT_AddInherit;
+					n->def = (Node *) $2;
 					$$ = (Node *)n;
 				}
-			/* ALTER TABLE <name> alter INHERITS DROP <parent> */
+			/* ALTER TABLE <name> NO INHERIT <parent> */
 			| NO INHERIT qualified_name
 				{
 					AlterTableCmd *n = makeNode(AlterTableCmd);
-					n->subtype = AT_DropInherits;
-					n->parent = $3;
+					n->subtype = AT_DropInherit;
+					n->def = (Node *) $3;
 					$$ = (Node *)n;
 				}
 			| alter_rel_cmd

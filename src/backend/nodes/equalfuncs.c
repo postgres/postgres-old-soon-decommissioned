@@ -768,7 +768,6 @@ _equalAlterTableCmd(AlterTableCmd *a, AlterTableCmd *b)
 {
 	COMPARE_SCALAR_FIELD(subtype);
 	COMPARE_STRING_FIELD(name);
-	COMPARE_NODE_FIELD(parent);
 	COMPARE_NODE_FIELD(def);
 	COMPARE_NODE_FIELD(transform);
 	COMPARE_SCALAR_FIELD(behavior);

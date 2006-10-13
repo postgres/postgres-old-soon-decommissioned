@@ -905,8 +905,8 @@ typedef enum AlterTableType
 	AT_DisableTrigAll,			/* DISABLE TRIGGER ALL */
 	AT_EnableTrigUser,			/* ENABLE TRIGGER USER */
 	AT_DisableTrigUser,			/* DISABLE TRIGGER USER */
-	AT_AddInherits,				/* ADD INHERITS parent */
-	AT_DropInherits				/* DROP INHERITS parent */
+	AT_AddInherit,				/* INHERIT parent */
+	AT_DropInherit				/* NO INHERIT parent */
 } AlterTableType;
 
 typedef struct AlterTableCmd	/* one subcommand of an ALTER TABLE */
@@ -915,9 +915,8 @@ typedef struct AlterTableCmd	/* one subcommand of an ALTER TABLE */
 	AlterTableType subtype;		/* Type of table alteration to apply */
 	char	   *name;			/* column, constraint, or trigger to act on,
 								 * or new owner or tablespace */
-	RangeVar   *parent;			/* Parent table for add/drop inherits */
 	Node	   *def;			/* definition of new column, column type,
-								 * index, or constraint */
+								 * index, constraint, or parent table */
 	Node	   *transform;		/* transformation expr for ALTER TYPE */
 	DropBehavior behavior;		/* RESTRICT or CASCADE for DROP cases */
 } AlterTableCmd;
