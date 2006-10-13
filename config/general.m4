@@ -75,20 +75,20 @@ AC_ARG_WITH([$2], [$3], [
 # PGAC_CHECK_ARGS()
 # -----------------
 # Checks if the user passed any --with/without/enable/disable arguments that
-# we don't recognise. Just prints out a warning message, so this should be
+# we don't recognize. Just prints out a warning message, so this should be
 # called near the end, so the user will see it.
 
 AC_DEFUN([PGAC_CHECK_ARGS],
 [
-  for var in `set |sed -ne '/^\(with_\|enable\_\)/ s/=.*//p'` ; do
-     case $var in
-       m4_undivert([PGAC_ARGS])
-       with_gnu_ld) ;;
-     *)
-       echo -n "*** Option ignored: "
-       echo $var | sed -e 's/\([^=]*\)/--\1/;s/_/-/g'
-       ;;
-     esac
+  for pgac_var in `set | sed 's/=.*//' | $EGREP 'with_|enable_'`; do
+    case $pgac_var in
+      m4_undivert([PGAC_ARGS])
+      with_gnu_ld) ;;
+    *)
+      pgac_txt=`echo $pgac_var | tr '_' '-'`
+      AC_MSG_WARN([option ignored: --$pgac_txt])
+      ;;
+    esac
   done
 ])# PGAC_CHECK_ARGS
 
