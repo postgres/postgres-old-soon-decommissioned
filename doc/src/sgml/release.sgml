@@ -32,7 +32,7 @@ For new features, add links to the documentation sections.
    </para>
 
    <sect2>
-    <title>Migration to version 8.1.4</title>
+    <title>Migration to version 8.1.5</title>
 
     <para>
      A dump/restore is not required for those running 8.1.X.
