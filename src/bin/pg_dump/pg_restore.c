@@ -338,6 +338,14 @@ main(int argc, char **argv)
 
 	if (opts->tocFile)
 		SortTocFromFile(AH, opts);
+	else if (opts->noDataForFailedTables)
+	{
+		/*
+		 * we implement this option by clearing idWanted entries, so must
+		 * create a dummy idWanted array if there wasn't a tocFile
+		 */
+		InitDummyWantedList(AH, opts);
+	}
 
 	if (opts->tocSummary)
 		PrintTOCSummary(AH, opts);

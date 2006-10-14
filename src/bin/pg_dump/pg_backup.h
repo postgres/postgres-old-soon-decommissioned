@@ -112,15 +112,12 @@ typedef struct _restoreOptions
 	int			noDataForFailedTables;
 	int			requirePassword;
 	int			exit_on_error;
-
-	bool	   *idWanted;
-	bool		limitToList;
 	int			compression;
-
 	int			suppressDumpWarnings;	/* Suppress output of WARNING entries
 										 * to stderr */
 	bool		single_txn;
 
+	bool	   *idWanted;		/* array showing which dump IDs to emit */
 } RestoreOptions;
 
 /*
@@ -176,8 +173,9 @@ extern void PrintTOCSummary(Archive *AH, RestoreOptions *ropt);
 
 extern RestoreOptions *NewRestoreOptions(void);
 
-/* Rearrange TOC entries */
-extern void SortTocFromFile(Archive *AH, RestoreOptions *ropt);
+/* Rearrange and filter TOC entries */
+extern void SortTocFromFile(Archive *AHX, RestoreOptions *ropt);
+extern void InitDummyWantedList(Archive *AHX, RestoreOptions *ropt);
 
 /* Convenience functions used only when writing DATA */
 extern int	archputs(const char *s, Archive *AH);
