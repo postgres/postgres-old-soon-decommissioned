@@ -38,11 +38,6 @@ typedef unsigned long SHMEM_OFFSET;
 extern DLLIMPORT SHMEM_OFFSET ShmemBase;
 
 
-/* coerce an offset into a pointer in a specified address space.  This
- * macro (only) is not confined to the primary shared memory region */
-#define MAKE_PTRFROM(base,xx_offs)\
-  (base+((unsigned long)(xx_offs)))
-
 /* coerce an offset into a pointer in this process's address space */
 #define MAKE_PTR(xx_offs)\
   (ShmemBase+((unsigned long)(xx_offs)))
@@ -76,6 +71,9 @@ extern HTAB *ShmemInitHash(const char *name, long init_size, long max_size,
 extern void *ShmemInitStruct(const char *name, Size size, bool *foundPtr);
 extern Size add_size(Size s1, Size s2);
 extern Size mul_size(Size s1, Size s2);
+
+/* ipci.c */
+extern void RequestAddinShmemSpace(Size size);
 
 /* size constants for the shmem index table */
  /* max size of data structure string name */

@@ -60,6 +60,7 @@ typedef enum LWLockId
 	TwoPhaseStateLock,
 	TablespaceCreateLock,
 	BtreeVacuumLock,
+	AddinShmemInitLock,
 	FirstBufMappingLock,
 	FirstLockMgrLock = FirstBufMappingLock + NUM_BUFFER_PARTITIONS,
 
@@ -92,6 +93,6 @@ extern int	NumLWLocks(void);
 extern Size LWLockShmemSize(void);
 extern void CreateLWLocks(void);
 
-extern void RegisterAddinLWLock(LWLockId *lock);
+extern void RequestAddinLWLocks(int n);
 
 #endif   /* LWLOCK_H */
