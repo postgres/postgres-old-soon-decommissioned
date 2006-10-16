@@ -123,7 +123,7 @@ CREATE FUNCTION pymax (a integer, b integer)
 AS $$
   if (a is None) or (b is None):
     return None
-  if a > b:
+  if a &gt; b:
     return a
   return b
 $$ LANGUAGE plpythonu;

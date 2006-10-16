@@ -2342,7 +2342,7 @@ VALUES ('New York', NULL, NULL, 'NY');
 <programlisting>
 CHECK ( x = 1 )
 CHECK ( county IN ( 'Oxfordshire', 'Buckinghamshire', 'Warwickshire' ))
-CHECK ( outletID >= 100 AND outletID < 200 )
+CHECK ( outletID &gt;= 100 AND outletID &lt; 200 )
 </programlisting>
         Ensure that the constraints guarantee that there is no overlap
         between the key values permitted in different partitions.  A common
