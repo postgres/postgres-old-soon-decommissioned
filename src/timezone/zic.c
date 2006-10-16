@@ -2387,11 +2387,11 @@ link(const char *oldpath, const char *newpath)
 #endif
 
 /*
- *	This allows zic to compile by just assigning a dummy value.
+ *	This allows zic to compile by just returning a dummy value.
  *	localtime.c references it, but no one uses it from zic.
  */
-char *
-pg_TZDIR(void)
+int
+pg_open_tzfile(const char *name, char *canonname)
 {
-	return NULL;
+	return -1;
 }
