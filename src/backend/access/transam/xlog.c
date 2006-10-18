@@ -5807,6 +5807,16 @@ XLogPutNextOid(Oid nextOid)
 	 * record.	Therefore, the standard buffer LSN interlock applied to those
 	 * records will ensure no such OID reaches disk before the NEXTOID record
 	 * does.
+	 *
+	 * Note, however, that the above statement only covers state "within" the
+	 * database.  When we use a generated OID as a file or directory name,
+	 * we are in a sense violating the basic WAL rule, because that filesystem
+	 * change may reach disk before the NEXTOID WAL record does.  The impact
+	 * of this is that if a database crash occurs immediately afterward,
+	 * we might after restart re-generate the same OID and find that it
+	 * conflicts with the leftover file or directory.  But since for safety's
+	 * sake we always loop until finding a nonconflicting filename, this poses
+	 * no real problem in practice. See pgsql-hackers discussion 27-Sep-2006.
 	 */
 }
 
