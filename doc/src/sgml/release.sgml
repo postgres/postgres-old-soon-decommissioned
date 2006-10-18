@@ -1405,7 +1405,7 @@ links to the main documentation.
 
       <listitem>
        <para>
-        New <link linkend="functions-geometry-op-table">operators</link>
+        New <link linkend="functions-array">operators</link>
         for array-subset comparisons (<literal>@&gt;</>,
         <literal>&lt;@</>, <literal>&amp;&amp;</>) (Teodor, Tom)
        </para>
