@@ -176,7 +176,7 @@
 #define DTK_DATE_M		(DTK_M(YEAR) | DTK_M(MONTH) | DTK_M(DAY))
 #define DTK_TIME_M		(DTK_M(HOUR) | DTK_M(MINUTE) | DTK_M(SECOND))
 
-#define MAXDATELEN		51		/* maximum possible length of an input date
+#define MAXDATELEN		63		/* maximum possible length of an input date
 								 * string (not counting tr. null) */
 #define MAXDATEFIELDS	25		/* maximum possible number of fields in a date
 								 * string */
