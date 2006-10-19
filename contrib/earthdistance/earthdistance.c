@@ -2,12 +2,13 @@
 
 #include "postgres.h"
 
-#ifdef WIN32
-#define _USE_MATH_DEFINES
-#endif
 #include <math.h>
 
 #include "utils/geo_decls.h"	/* for Pt */
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 
 PG_MODULE_MAGIC;
