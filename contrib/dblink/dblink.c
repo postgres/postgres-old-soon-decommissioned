@@ -1640,7 +1640,10 @@ PG_FUNCTION_INFO_V1(dblink_current_query);
 Datum
 dblink_current_query(PG_FUNCTION_ARGS)
 {
-	PG_RETURN_TEXT_P(GET_TEXT(debug_query_string));
+	if (debug_query_string)
+		PG_RETURN_TEXT_P(GET_TEXT(debug_query_string));
+	else
+		PG_RETURN_NULL();
 }
 
 
