@@ -124,8 +124,8 @@ struct FSMRelation
 
 
 /* GUC variables */
-extern int	MaxFSMRelations;
-extern int	MaxFSMPages;
+extern DLLIMPORT int MaxFSMRelations;
+extern DLLIMPORT int MaxFSMPages;
 
 
 /*

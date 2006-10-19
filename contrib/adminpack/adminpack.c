@@ -22,6 +22,7 @@
 #include "miscadmin.h"
 #include "catalog/pg_type.h"
 #include "funcapi.h"
+#include "postmaster/syslogger.h"
 #include "storage/fd.h"
 #include "utils/datetime.h"
 
@@ -36,10 +37,6 @@
 #undef unlink
 #endif
 #endif
-
-extern DLLIMPORT char *DataDir;
-extern DLLIMPORT char *Log_directory;
-extern DLLIMPORT char *Log_filename;
 
 PG_MODULE_MAGIC;
 

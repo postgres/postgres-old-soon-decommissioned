@@ -21,10 +21,9 @@
 #include "catalog/pg_type.h"
 #include "funcapi.h"
 #include "utils/builtins.h"
+#include "utils/guc.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
-
-extern DLLIMPORT bool check_function_bodies;
 
 PG_MODULE_MAGIC;
 

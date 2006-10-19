@@ -70,8 +70,8 @@ extern volatile bool ProcDiePending;
 
 /* these are marked volatile because they are examined by signal handlers: */
 extern volatile bool ImmediateInterruptOK;
-extern volatile uint32 InterruptHoldoffCount;
-extern volatile uint32 CritSectionCount;
+extern DLLIMPORT volatile uint32 InterruptHoldoffCount;
+extern DLLIMPORT volatile uint32 CritSectionCount;
 
 /* in tcop/postgres.c */
 extern void ProcessInterrupts(void);
@@ -125,7 +125,7 @@ extern bool IsUnderPostmaster;
 
 extern bool ExitOnAnyError;
 
-extern char *DataDir;
+extern DLLIMPORT char *DataDir;
 
 extern DLLIMPORT int NBuffers;
 extern int	MaxBackends;

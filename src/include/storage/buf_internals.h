@@ -162,7 +162,7 @@ typedef struct sbufdesc
 
 
 /* in buf_init.c */
-extern BufferDesc *BufferDescriptors;
+extern DLLIMPORT BufferDesc *BufferDescriptors;
 
 /* in localbuf.c */
 extern BufferDesc *LocalBufferDescriptors;

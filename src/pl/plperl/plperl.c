@@ -23,12 +23,10 @@
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
 #include "parser/parse_type.h"
+#include "utils/guc.h"
 #include "utils/lsyscache.h"
 #include "utils/memutils.h"
 #include "utils/typcache.h"
-
-/* define this before the perl headers get a chance to mangle DLLIMPORT */
-extern DLLIMPORT bool check_function_bodies;
 
 /* perl stuff */
 #include "plperl.h"

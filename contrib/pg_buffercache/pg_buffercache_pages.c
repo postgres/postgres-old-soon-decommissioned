@@ -16,11 +16,6 @@
 
 #define NUM_BUFFERCACHE_PAGES_ELEM	6
 
-#if defined(WIN32) || defined(__CYGWIN__)
-extern DLLIMPORT BufferDesc *BufferDescriptors;
-extern DLLIMPORT volatile uint32 InterruptHoldoffCount;
-#endif
-
 PG_MODULE_MAGIC;
 
 Datum		pg_buffercache_pages(PG_FUNCTION_ARGS);

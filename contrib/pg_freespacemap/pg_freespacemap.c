@@ -17,13 +17,6 @@
 #define		NUM_FREESPACE_PAGES_ELEM	5
 #define		NUM_FREESPACE_RELATIONS_ELEM	7
 
-#if defined(WIN32) || defined(__CYGWIN__)
-/* Need DLLIMPORT for some things that are not so marked in main headers */
-extern DLLIMPORT int MaxFSMPages;
-extern DLLIMPORT int MaxFSMRelations;
-extern DLLIMPORT volatile uint32 InterruptHoldoffCount;
-#endif
-
 PG_MODULE_MAGIC;
 
 Datum		pg_freespacemap_pages(PG_FUNCTION_ARGS);

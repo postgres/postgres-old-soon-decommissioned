@@ -35,10 +35,6 @@
 #include "utils/syscache.h"
 
 
-/* GUC parameter */
-bool		check_function_bodies = true;
-
-
 Datum		fmgr_internal_validator(PG_FUNCTION_ARGS);
 Datum		fmgr_c_validator(PG_FUNCTION_ARGS);
 Datum		fmgr_sql_validator(PG_FUNCTION_ARGS);
