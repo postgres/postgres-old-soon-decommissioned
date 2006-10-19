@@ -75,6 +75,15 @@ getaddrinfo_all(const char *hostname, const char *servname,
 		return getaddrinfo_unix(servname, hintp, result);
 #endif
 
+#ifdef _AIX
+	/*
+	 * It seems AIX's getaddrinfo doesn't reliably zero sin_port when servname
+	 * is NULL, so force the issue.
+	 */
+	if (servname == NULL)
+		servname = "0";
+#endif
+
 	/* NULL has special meaning to getaddrinfo(). */
 	return getaddrinfo((!hostname || hostname[0] == '\0') ? NULL : hostname,
 					   servname, hintp, result);
