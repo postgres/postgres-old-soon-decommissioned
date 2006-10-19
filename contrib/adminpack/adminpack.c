@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * admin81.c
+ * adminpack.c
  *
  *
  * Copyright (c) 2002 - 2006, PostgreSQL Global Development Group
