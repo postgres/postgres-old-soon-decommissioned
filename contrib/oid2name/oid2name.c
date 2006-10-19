@@ -13,6 +13,8 @@
 #include <getopt.h>
 #endif
 
+extern char *optarg;
+
 #include "libpq-fe.h"
 
 /* an extensible array to keep track of elements to show */

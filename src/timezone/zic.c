@@ -14,6 +14,9 @@
 #include <limits.h>
 #include <locale.h>
 
+extern int	optind;
+extern char *optarg;
+
 #include "private.h"
 #include "pgtz.h"
 #include "tzfile.h"
