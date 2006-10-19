@@ -1,8 +1,7 @@
 # $PostgreSQL$
 
 MODULE_big = fuzzystrmatch
-SRCS += fuzzystrmatch.c dmetaphone.c
-OBJS = $(SRCS:.c=.o)
+OBJS = fuzzystrmatch.o dmetaphone.o
 DATA_built = fuzzystrmatch.sql
 DATA = uninstall_fuzzystrmatch.sql
 DOCS = README.fuzzystrmatch README.soundex

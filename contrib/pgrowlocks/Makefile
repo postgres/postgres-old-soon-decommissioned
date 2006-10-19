@@ -6,10 +6,8 @@
 #
 #-------------------------------------------------------------------------
 
-SRCS		= pgrowlocks.c
-
 MODULE_big	= pgrowlocks
-OBJS		= $(SRCS:.c=.o)
+OBJS		= pgrowlocks.o
 DOCS		= README.pgrowlocks README.pgrowlocks.euc_jp
 DATA_built	= pgrowlocks.sql
 DATA		= uninstall_pgrowlocks.sql
