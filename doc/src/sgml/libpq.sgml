@@ -2289,7 +2289,10 @@ It is not thread-safe.
 
    <indexterm zone="libpq-exec-escape-string"><primary>PQescapeStringConn</></>
    <indexterm zone="libpq-exec-escape-string"><primary>PQescapeString</></>
-   <indexterm zone="libpq-exec-escape-string"><primary>escaping strings</></>
+   <indexterm zone="libpq-exec-escape-string">
+     <primary>escaping strings</>
+     <secondary>in libpq</secondary>
+   </>
 
 <para>
 <function>PQescapeStringConn</function> escapes a string for use within an SQL
