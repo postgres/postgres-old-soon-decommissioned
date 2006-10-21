@@ -1352,6 +1352,8 @@ main(int argc, char **argv)
 
 		memset(state + 1, 0, sizeof(*state) * (nclients - 1));
 
+		snprintf(val, sizeof(val), "%d", scale);
+
 		for (i = 1; i < nclients; i++)
 		{
 			int			j;
@@ -1363,6 +1365,12 @@ main(int argc, char **argv)
 					fprintf(stderr, "Couldn't allocate memory for variable\n");
 					exit(1);
 				}
+			}
+
+			if (putVariable(&state[i], "scale", val) == false)
+			{
+				fprintf(stderr, "Couldn't allocate memory for variable\n");
+				exit(1);
 			}
 		}
 	}
@@ -1424,6 +1432,18 @@ main(int argc, char **argv)
 		{
 			fprintf(stderr, "Couldn't allocate memory for variable\n");
 			exit(1);
+		}
+
+		if (nclients > 1)
+		{
+			for (i = 1; i < nclients; i++)
+			{
+				if (putVariable(&state[i], "scale", val) == false)
+				{
+					fprintf(stderr, "Couldn't allocate memory for variable\n");
+					exit(1);
+				}
+			}
 		}
 	}
 
