@@ -694,21 +694,14 @@ retry:
 		BufTableDelete(&oldTag, oldHash);
 
 	/*
-	 * Avoid accepting a cancel interrupt when we release the mapping lock;
-	 * that would leave the buffer free but not on the freelist.  (Which would
-	 * not be fatal, since it'd get picked up again by the clock scanning
-	 * code, but we'd rather be sure it gets to the freelist.)
+	 * Done with mapping lock.
 	 */
-	HOLD_INTERRUPTS();
-
 	LWLockRelease(oldPartitionLock);
 
 	/*
 	 * Insert the buffer at the head of the list of free buffers.
 	 */
 	StrategyFreeBuffer(buf, true);
-
-	RESUME_INTERRUPTS();
 }
 
 /*
