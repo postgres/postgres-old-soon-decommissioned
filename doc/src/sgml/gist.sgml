@@ -199,7 +199,7 @@
   <varlistentry>
    <term>cube</term>
    <listitem>
-    <para>Indexing for multi-dimensional cubes</para>
+    <para>Indexing for multidimensional cubes</para>
    </listitem>
   </varlistentry>
 

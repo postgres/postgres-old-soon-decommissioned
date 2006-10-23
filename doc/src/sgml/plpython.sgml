@@ -65,7 +65,7 @@ $$ LANGUAGE plpythonu;
    <varname>args[]</varname>; named arguments are also passed as ordinary
    variables to the Python script. The result is returned from the Python code
    in the usual way, with <literal>return</literal> or
-   <literal>yield</literal> (in case of a resultset statement).
+   <literal>yield</literal> (in case of a result-set statement).
   </para>
 
   <para>

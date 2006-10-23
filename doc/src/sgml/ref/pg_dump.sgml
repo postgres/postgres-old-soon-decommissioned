@@ -748,7 +748,7 @@ CREATE DATABASE foo WITH TEMPLATE template0;
   </para>
 
   <para>
-   Because <application>pg_dump</application> is used to tranfer data
+   Because <application>pg_dump</application> is used to transfer data
    to newer versions of <productname>PostgreSQL</>, the output of
    <application>pg_dump</application> can be loaded into
    newer <productname>PostgreSQL</> databases.  It also can read older

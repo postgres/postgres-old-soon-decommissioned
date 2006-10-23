@@ -2313,7 +2313,7 @@ ORDER BY c.ordinal_position;
       <entry>
        <literal>IN</literal> for input parameter,
        <literal>OUT</literal> for output parameter,
-       and <literal>INOUT</literal> for input/ouput parameter.
+       and <literal>INOUT</literal> for input/output parameter.
       </entry>
      </row>
 

@@ -234,7 +234,7 @@ INSERT INTO films DEFAULT VALUES;
   </para>
 
   <para>
-   To insert multiple rows using the multi-row <command>VALUES</> syntax:
+   To insert multiple rows using the multirow <command>VALUES</> syntax:
 
 <programlisting>
 INSERT INTO films (code, title, did, date_prod, kind) VALUES

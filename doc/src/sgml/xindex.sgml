@@ -387,7 +387,7 @@
      </thead>
      <tbody>
       <row>
-       <entry>consistent - determine whether key satifies the 
+       <entry>consistent - determine whether key satisfies the 
 		query qualifier</entry>
        <entry>1</entry>
       </row>

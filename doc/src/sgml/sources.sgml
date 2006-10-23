@@ -219,7 +219,7 @@ elog(level, "format string", ...);
 <programlisting>
 ereport(level, (errmsg_internal("format string", ...)));
 </programlisting>
-    Notice that the SQLSTATE errcode is always defaulted, and the message
+    Notice that the SQLSTATE error code is always defaulted, and the message
     string is not included in the internationalization message dictionary.
     Therefore, <function>elog</> should be used only for internal errors and
     low-level debug logging.  Any message that is likely to be of interest to

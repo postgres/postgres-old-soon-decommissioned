@@ -290,7 +290,7 @@ make install
         <envar>SGML_CATALOG_FILES</envar> to point to the file
         whenever you use <application>jade</application> later on.
         (This method is also an option if OpenJade is already
-        installed and you want to install the rest of the toolchain
+        installed and you want to install the rest of the tool chain
         locally.)
        </para>
       </step>

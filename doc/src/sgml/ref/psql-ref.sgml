@@ -2772,7 +2772,7 @@ Field separator is "oo".
 
     <listitem>
      <para>
-      Set the console font to <quote>Lucida Console</>, because the
+      Set the console font to <literal>Lucida Console</>, because the
       raster font does not work with the ANSI code page.
      </para>
     </listitem>
