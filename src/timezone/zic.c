@@ -2383,7 +2383,7 @@ eitol(int i)
 int
 link(const char *oldpath, const char *newpath)
 {
-	if (!CopyFileEx(oldpath, newpath, NULL, NULL, FALSE, 0))
+	if (!CopyFile(oldpath, newpath, FALSE))
 		return -1;
 	return 0;
 }
