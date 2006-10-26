@@ -109,7 +109,7 @@
 
   <para>
    Slony is an example of this type of replication, with per-table
-   granularity.  It updates the backup server in batches, so the repliation
+   granularity.  It updates the backup server in batches, so the replication
    is asynchronous and might lose data during a fail over.
   </para>
  </sect1>
