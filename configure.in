@@ -1449,12 +1449,7 @@ echo >src/include/stamp-h
 
 AC_CONFIG_HEADERS([src/interfaces/ecpg/include/ecpg_config.h])
 
-
-#
-# Warn about unknown options
-#
-
-PGAC_CHECK_ARGS
-
 AC_OUTPUT
 
+# Warn about unknown options
+PGAC_ARG_CHECK
