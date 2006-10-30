@@ -1430,7 +1430,7 @@ restore_command = 'copy /mnt/server/archivedir/%f "%p"'  # Windows
 
    <para>
     Sample code for the C version of the <varname>restore_command</>
-    would be be:
+    would be:
 <programlisting>
 triggered = false;
 while (!NextWALFileReady() && !triggered)
