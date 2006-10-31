@@ -67,6 +67,15 @@ DROP TABLESPACE [ IF EXISTS ] <replaceable class="PARAMETER">tablespacename</rep
  </refsect1>
 
  <refsect1>
+  <title>Notes</title>
+
+   <para>
+    <command>DROP TABLESPACE</> cannot be executed inside a transaction block.
+   </para>
+ </refsect1>
+
+
+ <refsect1>
   <title>Examples</title>
 
   <para>

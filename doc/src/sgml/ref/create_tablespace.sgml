@@ -95,6 +95,11 @@ CREATE TABLESPACE <replaceable class="parameter">tablespacename</replaceable> [ 
   <para>
    Tablespaces are only supported on systems that support symbolic links.
   </para>
+
+   <para>
+    <command>CREATE TABLESPACE</> cannot be executed inside a transaction
+    block.
+   </para>
  </refsect1>
 
  <refsect1>

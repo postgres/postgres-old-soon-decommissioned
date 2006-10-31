@@ -106,7 +106,8 @@ REINDEX { INDEX | TABLE | DATABASE | SYSTEM } <replaceable class="PARAMETER">nam
      <para>
       Recreate all indexes within the current database.
       Indexes on shared system catalogs are skipped except in stand-alone mode
-      (see below).
+      (see below). This form of <command>REINDEX</command> cannot be executed 
+      inside a transaction block.
      </para>
     </listitem>
    </varlistentry>
@@ -118,6 +119,8 @@ REINDEX { INDEX | TABLE | DATABASE | SYSTEM } <replaceable class="PARAMETER">nam
       Recreate all indexes on system catalogs within the current database.
       Indexes on user tables are not processed.  Also, indexes on shared
       system catalogs are skipped except in stand-alone mode (see below).
+      This form of <command>REINDEX</command> cannot be executed inside a
+      transaction block.
      </para>
     </listitem>
    </varlistentry>

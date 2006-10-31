@@ -156,6 +156,10 @@ VACUUM [ FULL | FREEZE ] [ VERBOSE ] ANALYZE [ <replaceable class="PARAMETER">ta
   <title>Notes</title>
 
    <para>
+    <command>VACUUM</> cannot be executed inside a transaction block.
+   </para>
+
+   <para>
     We recommend that active production databases be
     vacuumed frequently (at least nightly), in order to
     remove expired rows. After adding or deleting a large number
