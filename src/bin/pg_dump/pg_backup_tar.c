@@ -701,6 +701,7 @@ _LoadBlobs(ArchiveHandle *AH, RestoreOptions *ropt)
 	lclContext *ctx = (lclContext *) AH->formatData;
 	TAR_MEMBER *th;
 	size_t		cnt;
+	bool		foundBlob = false;
 	char		buf[4096];
 
 	StartRestoreBlobs(AH);
@@ -725,10 +726,22 @@ _LoadBlobs(ArchiveHandle *AH, RestoreOptions *ropt)
 					ahwrite(buf, 1, cnt, AH);
 				}
 				EndRestoreBlob(AH, oid);
+				foundBlob = true;
 			}
+			tarClose(AH, th);
 		}
-
-		tarClose(AH, th);
+		else
+		{
+			tarClose(AH, th);
+			/*
+			 * Once we have found the first blob, stop at the first
+			 * non-blob entry (which will be 'blobs.toc').  This coding would
+			 * eat all the rest of the archive if there are no blobs ... but
+			 * this function shouldn't be called at all in that case.
+			 */
+			if (foundBlob)
+				break;
+		}
 
 		th = tarOpen(AH, NULL, 'r');
 	}
