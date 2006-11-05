@@ -77,7 +77,7 @@ FindMyDatabase(const char *name, Oid *db_id, Oid *db_tablespace)
 	char	   *filename;
 	FILE	   *db_file;
 	char		thisname[NAMEDATALEN];
-	TransactionId dummyxid;
+	TransactionId db_frozenxid;
 
 	filename = database_getflatfilename();
 	db_file = AllocateFile(filename, "r");
@@ -87,8 +87,7 @@ FindMyDatabase(const char *name, Oid *db_id, Oid *db_tablespace)
 				 errmsg("could not open file \"%s\": %m", filename)));
 
 	while (read_pg_database_line(db_file, thisname, db_id,
-								 db_tablespace, &dummyxid,
-								 &dummyxid))
+								 db_tablespace, &db_frozenxid))
 	{
 		if (strcmp(thisname, name) == 0)
 		{

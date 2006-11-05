@@ -510,6 +510,13 @@ typedef HeapTupleData *HeapTuple;
  * we can (and we do) restore entire page in redo
  */
 #define XLOG_HEAP_INIT_PAGE 0x80
+/*
+ * We ran out of opcodes, so heapam.c now has a second RmgrId.  These opcodes
+ * are associated with RM_HEAP2_ID, but are not logically different from
+ * the ones above associated with RM_HEAP_ID.  We apply XLOG_HEAP_OPMASK,
+ * although currently XLOG_HEAP_INIT_PAGE is not used for any of these.
+ */
+#define XLOG_HEAP2_FREEZE	0x00
 
 /*
  * All what we need to find changed tuple
@@ -612,5 +619,16 @@ typedef struct xl_heap_inplace
 } xl_heap_inplace;
 
 #define SizeOfHeapInplace	(offsetof(xl_heap_inplace, target) + SizeOfHeapTid)
+
+/* This is what we need to know about tuple freezing during vacuum */
+typedef struct xl_heap_freeze
+{
+	RelFileNode node;
+	BlockNumber block;
+	TransactionId cutoff_xid;
+	/* TUPLE OFFSET NUMBERS FOLLOW AT THE END */
+} xl_heap_freeze;
+
+#define SizeOfHeapFreeze (offsetof(xl_heap_freeze, cutoff_xid) + sizeof(TransactionId))
 
 #endif   /* HTUP_H */

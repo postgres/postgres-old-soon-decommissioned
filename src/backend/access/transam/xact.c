@@ -468,8 +468,12 @@ TransactionIdIsCurrentTransactionId(TransactionId xid)
 	 * is what we need during bootstrap.  (Bootstrap mode only inserts tuples,
 	 * it never updates or deletes them, so all tuples can be presumed good
 	 * immediately.)
+	 *
+	 * Likewise, InvalidTransactionId and FrozenTransactionId are certainly
+	 * not my transaction ID, so we can just return "false" immediately for
+	 * any non-normal XID.
 	 */
-	if (xid == BootstrapTransactionId)
+	if (!TransactionIdIsNormal(xid))
 		return false;
 
 	/*

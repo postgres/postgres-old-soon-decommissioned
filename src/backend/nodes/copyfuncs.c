@@ -2350,8 +2350,8 @@ _copyVacuumStmt(VacuumStmt *from)
 	COPY_SCALAR_FIELD(vacuum);
 	COPY_SCALAR_FIELD(full);
 	COPY_SCALAR_FIELD(analyze);
-	COPY_SCALAR_FIELD(freeze);
 	COPY_SCALAR_FIELD(verbose);
+	COPY_SCALAR_FIELD(freeze_min_age);
 	COPY_NODE_FIELD(relation);
 	COPY_NODE_FIELD(va_cols);
 

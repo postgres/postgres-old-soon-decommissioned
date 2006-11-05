@@ -1215,8 +1215,8 @@ _equalVacuumStmt(VacuumStmt *a, VacuumStmt *b)
 	COMPARE_SCALAR_FIELD(vacuum);
 	COMPARE_SCALAR_FIELD(full);
 	COMPARE_SCALAR_FIELD(analyze);
-	COMPARE_SCALAR_FIELD(freeze);
 	COMPARE_SCALAR_FIELD(verbose);
+	COMPARE_SCALAR_FIELD(freeze_min_age);
 	COMPARE_NODE_FIELD(relation);
 	COMPARE_NODE_FIELD(va_cols);
 

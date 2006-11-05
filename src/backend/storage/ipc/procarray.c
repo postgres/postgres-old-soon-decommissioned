@@ -213,7 +213,9 @@ TransactionIdIsInProgress(TransactionId xid)
 
 	/*
 	 * Don't bother checking a transaction older than RecentXmin; it could not
-	 * possibly still be running.
+	 * possibly still be running.  (Note: in particular, this guarantees
+	 * that we reject InvalidTransactionId, FrozenTransactionId, etc as
+	 * not running.)
 	 */
 	if (TransactionIdPrecedes(xid, RecentXmin))
 	{

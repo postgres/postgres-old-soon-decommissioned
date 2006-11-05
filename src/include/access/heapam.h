@@ -170,6 +170,8 @@ extern HTSU_Result heap_lock_tuple(Relation relation, HeapTuple tuple,
 				TransactionId *update_xmax, CommandId cid,
 				LockTupleMode mode, bool nowait);
 extern void heap_inplace_update(Relation relation, HeapTuple tuple);
+extern bool heap_freeze_tuple(HeapTupleHeader tuple, TransactionId cutoff_xid,
+							  Buffer buf);
 
 extern Oid	simple_heap_insert(Relation relation, HeapTuple tup);
 extern void simple_heap_delete(Relation relation, ItemPointer tid);
@@ -181,11 +183,17 @@ extern void heap_restrpos(HeapScanDesc scan);
 
 extern void heap_redo(XLogRecPtr lsn, XLogRecord *rptr);
 extern void heap_desc(StringInfo buf, uint8 xl_info, char *rec);
-extern XLogRecPtr log_heap_clean(Relation reln, Buffer buffer,
-			   OffsetNumber *unused, int uncnt);
+extern void heap2_redo(XLogRecPtr lsn, XLogRecord *rptr);
+extern void heap2_desc(StringInfo buf, uint8 xl_info, char *rec);
+
 extern XLogRecPtr log_heap_move(Relation reln, Buffer oldbuf,
 			  ItemPointerData from,
 			  Buffer newbuf, HeapTuple newtup);
+extern XLogRecPtr log_heap_clean(Relation reln, Buffer buffer,
+			   OffsetNumber *unused, int uncnt);
+extern XLogRecPtr log_heap_freeze(Relation reln, Buffer buffer,
+								  TransactionId cutoff_xid,
+								  OffsetNumber *offsets, int offcnt);
 
 /* in common/heaptuple.c */
 extern Size heap_compute_data_size(TupleDesc tupleDesc,

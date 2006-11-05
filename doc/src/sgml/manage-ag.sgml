@@ -249,19 +249,6 @@ createdb -T template0 <replaceable>dbname</>
    should always be marked with <literal>datistemplate = true</>.
   </para>
 
-  <para>
-   After preparing a template database, or making any changes to one,
-   it is a good idea to perform <command>VACUUM FREEZE</> in that
-   database.  If this is done when there are no other open transactions
-   in the same database, then it is guaranteed that all rows in the
-   database are <quote>frozen</> and will not be subject to transaction
-   ID wraparound problems.  This is particularly important for a database
-   that will have <literal>datallowconn</literal> set to false, since it
-   will be impossible to do routine maintenance <command>VACUUM</> in
-   such a database.
-   See <xref linkend="vacuum-for-wraparound"> for more information.
-  </para>
-
   <note>
    <para>
     <literal>template1</> and <literal>template0</> do not have any special

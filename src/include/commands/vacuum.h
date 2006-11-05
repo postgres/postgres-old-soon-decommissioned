@@ -104,8 +104,9 @@ typedef struct VacAttrStats
 } VacAttrStats;
 
 
-/* Default statistics target (GUC parameter) */
+/* GUC parameters */
 extern DLLIMPORT int default_statistics_target; /* DLLIMPORT for PostGIS */
+extern int	vacuum_freeze_min_age;
 
 
 /* in commands/vacuum.c */
@@ -117,14 +118,13 @@ extern void vac_update_relstats(Oid relid,
 					BlockNumber num_pages,
 					double num_tuples,
 					bool hasindex,
-					TransactionId minxid,
-					TransactionId vacuumxid);
+					TransactionId frozenxid);
 extern void vacuum_set_xid_limits(VacuumStmt *vacstmt, bool sharedRel,
 					  TransactionId *oldestXmin,
 					  TransactionId *freezeLimit);
+extern void vac_update_datfrozenxid(void);
 extern bool vac_is_partial_index(Relation indrel);
 extern void vacuum_delay_point(void);
-extern TransactionId vactuple_get_minxid(HeapTuple tuple);
 
 /* in commands/vacuumlazy.c */
 extern void lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt);

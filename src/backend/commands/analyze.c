@@ -421,7 +421,7 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt)
 		vac_update_relstats(RelationGetRelid(onerel),
 							RelationGetNumberOfBlocks(onerel),
 							totalrows, hasindex,
-							InvalidTransactionId, InvalidTransactionId);
+							InvalidTransactionId);
 
 		for (ind = 0; ind < nindexes; ind++)
 		{
@@ -432,7 +432,7 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt)
 			vac_update_relstats(RelationGetRelid(Irel[ind]),
 								RelationGetNumberOfBlocks(Irel[ind]),
 								totalindexrows, false,
-								InvalidTransactionId, InvalidTransactionId);
+								InvalidTransactionId);
 		}
 
 		/* report results to the stats collector, too */
