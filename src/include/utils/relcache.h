@@ -74,6 +74,7 @@ extern void AtEOSubXact_RelationCache(bool isCommit, SubTransactionId mySubid,
  */
 extern bool RelationIdIsInInitFile(Oid relationId);
 extern void RelationCacheInitFileInvalidate(bool beforeSend);
+extern void RelationCacheInitFileRemove(const char *dbPath);
 
 /* should be used only by relcache.c and catcache.c */
 extern bool criticalRelcachesBuilt;
