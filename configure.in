@@ -640,9 +640,14 @@ AC_DEFINE_UNQUOTED(PG_VERSION_NUM, $PG_VERSION_NUM, [PostgreSQL version as a num
 ##
 ## Libraries
 ##
+## Most libraries are included only if they demonstrably provide a function
+## we need, but libm is an exception: always include it, because there are
+## too many compilers that play cute optimization games that will break
+## probes for standard functions such as pow().
+##
 
+AC_CHECK_LIB(m, main)
 AC_SEARCH_LIBS(setproctitle, util)
-AC_SEARCH_LIBS(pow, m)
 AC_SEARCH_LIBS(dlopen, dl)
 AC_SEARCH_LIBS(socket, [socket wsock32])
 AC_SEARCH_LIBS(shl_load, dld)
