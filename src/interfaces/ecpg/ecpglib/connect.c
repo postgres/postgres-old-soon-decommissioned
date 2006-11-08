@@ -272,6 +272,8 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 
 	ECPGinit_sqlca(sqlca);
 
+	ECPGclear_auto_mem();
+
 	if (INFORMIX_MODE(compat))
 	{
 		char	   *envname;
