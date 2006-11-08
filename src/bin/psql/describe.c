@@ -1171,7 +1171,14 @@ describeOneTableDetails(const char *schemaname,
 
 		result6 = PSQLexec(buf.data, false);
 		if (!result6)
+		{
+			PQclear(result1);
+			PQclear(result2);
+			PQclear(result3);
+			PQclear(result4);
+			PQclear(result5);
 			goto error_return;
+		}
 		else
 			inherits_count = PQntuples(result6);
 
