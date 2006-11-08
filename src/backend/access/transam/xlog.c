@@ -2140,7 +2140,9 @@ XLogFileCopy(uint32 log, uint32 seg,
  * caller must *not* hold the lock at call.
  *
  * Returns TRUE if file installed, FALSE if not installed because of
- * exceeding max_advance limit.  (Any other kind of failure causes ereport().)
+ * exceeding max_advance limit.  On Windows, we also return FALSE if we
+ * can't rename the file into place because someone's got it open.
+ * (Any other kind of failure causes ereport().)
  */
 static bool
 InstallXLogFileSegment(uint32 *log, uint32 *seg, char *tmppath,
@@ -2195,10 +2197,25 @@ InstallXLogFileSegment(uint32 *log, uint32 *seg, char *tmppath,
 	unlink(tmppath);
 #else
 	if (rename(tmppath, path) < 0)
+	{
+#ifdef WIN32
+#if !defined(__CYGWIN__)
+		if (GetLastError() == ERROR_ACCESS_DENIED)
+#else
+		if (errno == EACCES)
+#endif
+		{
+			if (use_lock)
+				LWLockRelease(ControlFileLock);
+			return false;
+		}
+#endif /* WIN32 */
+
 		ereport(ERROR,
 				(errcode_for_file_access(),
 				 errmsg("could not rename file \"%s\" to \"%s\" (initialization of log file %u, segment %u): %m",
 						tmppath, path, *log, *seg)));
+	}
 #endif
 
 	if (use_lock)
