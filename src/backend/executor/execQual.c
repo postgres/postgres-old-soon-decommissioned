@@ -595,11 +595,6 @@ ExecEvalConst(ExprState *exprstate, ExprContext *econtext,
  *		something like ($.name) and the expression context contains
  *		the current parameter bindings (name = "sam") (age = 34)...
  *		so our job is to find and return the appropriate datum ("sam").
- *
- *		Q: if we have a parameter ($.foo) without a binding, i.e.
- *		   there is no (foo = xxx) in the parameter list info,
- *		   is this a fatal error or should this be a "not available"
- *		   (in which case we could return NULL)?	-cim 10/13/89
  * ----------------------------------------------------------------
  */
 static Datum
