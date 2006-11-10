@@ -1288,12 +1288,14 @@ pg_get_serial_sequence(PG_FUNCTION_ARGS)
 		Form_pg_depend deprec = (Form_pg_depend) GETSTRUCT(tup);
 
 		/*
-		 * We assume any auto dependency of a relation on a column must be
-		 * what we are looking for.
+		 * We assume any auto dependency of a sequence on a column must be
+		 * what we are looking for.  (We need the relkind test because indexes
+		 * can also have auto dependencies on columns.)
 		 */
 		if (deprec->classid == RelationRelationId &&
 			deprec->objsubid == 0 &&
-			deprec->deptype == DEPENDENCY_AUTO)
+			deprec->deptype == DEPENDENCY_AUTO &&
+			get_rel_relkind(deprec->objid) == RELKIND_SEQUENCE)
 		{
 			sequenceId = deprec->objid;
 			break;
