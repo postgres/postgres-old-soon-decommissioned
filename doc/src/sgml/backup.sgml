@@ -599,7 +599,7 @@ archive_command = 'test ! -f .../%f &amp;&amp; cp %p .../%f'
     In writing your archive command, you should assume that the file names to
     be archived may be up to 64 characters long and may contain any
     combination of ASCII letters, digits, and dots.  It is not necessary to
-    remember the original full path (<literal>%p</>) but it is necessary to
+    remember the original relative path (<literal>%p</>) but it is necessary to
     remember the file name (<literal>%f</>).
    </para>
 

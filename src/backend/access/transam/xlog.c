@@ -2434,7 +2434,7 @@ RestoreArchivedFile(char *path, const char *xlogfname,
 			switch (sp[1])
 			{
 				case 'p':
-					/* %p: full path of target file */
+					/* %p: relative path of target file */
 					sp++;
 					StrNCpy(dp, xlogpath, endp - dp);
 					make_native_path(dp);

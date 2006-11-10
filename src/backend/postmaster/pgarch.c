@@ -417,7 +417,7 @@ pgarch_archiveXlog(char *xlog)
 			switch (sp[1])
 			{
 				case 'p':
-					/* %p: full path of source file */
+					/* %p: relative path of source file */
 					sp++;
 					StrNCpy(dp, pathname, endp - dp);
 					make_native_path(dp);
