@@ -626,7 +626,10 @@ cost_bitmap_tree_node(Path *path, Cost *cost, Selectivity *selec)
 		*selec = ((BitmapOrPath *) path)->bitmapselectivity;
 	}
 	else
+	{
 		elog(ERROR, "unrecognized node type: %d", nodeTag(path));
+		*cost = *selec = 0;		/* keep compiler quiet */
+	}
 }
 
 /*
