@@ -243,7 +243,7 @@ gistnext(IndexScanDesc scan, ScanDirection dir, ItemPointer tids, int maxtids, b
 				n = OffsetNumberNext(n);
 		}
 
-		/* wonderfull, we can look at page */
+		/* wonderful, we can look at page */
 
 		for (;;)
 		{

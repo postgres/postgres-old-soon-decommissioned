@@ -389,7 +389,7 @@ scanGetItem(IndexScanDesc scan, ItemPointerData *item)
 				*item = key->curItem;
 		}
 		else
-			return FALSE;		/* finshed one of keys */
+			return FALSE;		/* finished one of keys */
 	}
 
 	for (i = 1; i <= so->nkeys; i++)
@@ -405,7 +405,7 @@ scanGetItem(IndexScanDesc scan, ItemPointerData *item)
 			else if (cmp > 0)
 			{
 				if (keyGetItem(scan->indexRelation, &so->ginstate, so->tempCtx, key) == TRUE)
-					return FALSE;		/* finshed one of keys */
+					return FALSE;		/* finished one of keys */
 			}
 			else
 			{					/* returns to begin */

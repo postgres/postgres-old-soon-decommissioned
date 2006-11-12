@@ -52,7 +52,7 @@
 /*
  * Static Function Prototypes --
  *
- * The following protoypes are declared static so as not to conflict
+ * The following prototypes are declared static so as not to conflict
  * with any other routines outside this module. These routines are
  * called by the public function CommentObject() routine to create
  * the appropriate comment for the specific object type.

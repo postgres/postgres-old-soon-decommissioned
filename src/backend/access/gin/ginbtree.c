@@ -38,7 +38,7 @@ ginTraverseLock(Buffer buffer, bool searchMode)
 			/* But root can become non-leaf during relock */
 			if (!GinPageIsLeaf(page))
 			{
-				/* resore old lock type (very rare) */
+				/* restore old lock type (very rare) */
 				LockBuffer(buffer, GIN_UNLOCK);
 				LockBuffer(buffer, GIN_SHARE);
 			}
@@ -263,7 +263,7 @@ findParents(GinBtree btree, GinBtreeStack *stack,
 }
 
 /*
- * Insert value (stored in GinBtree) to tree descibed by stack
+ * Insert value (stored in GinBtree) to tree described by stack
  */
 void
 ginInsertValue(GinBtree btree, GinBtreeStack *stack)
@@ -316,7 +316,7 @@ ginInsertValue(GinBtree btree, GinBtreeStack *stack)
 			Page		newlpage;
 
 			/*
-			 * newlpage is a pointer to memory page, it does'nt assosiates
+			 * newlpage is a pointer to memory page, it doesn't associate
 			 * with buffer, stack->buffer shoud be untouched
 			 */
 			newlpage = btree->splitPage(btree, stack->buffer, rbuffer, stack->off, &rdata);
