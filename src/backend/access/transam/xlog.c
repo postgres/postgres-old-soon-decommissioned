@@ -6595,7 +6595,7 @@ pg_xlogfile_name(PG_FUNCTION_ARGS)
 	if (sscanf(locationstr, "%X/%X", &uxlogid, &uxrecoff) != 2)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("could not parse xlog location \"%s\"",
+				 errmsg("could not parse transaction log location \"%s\"",
 						locationstr)));
 
 	locationpoint.xlogid = uxlogid;
