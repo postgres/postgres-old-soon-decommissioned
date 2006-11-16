@@ -311,7 +311,7 @@ ExecuteGrantStmt(GrantStmt *stmt)
 			break;
 		case ACL_OBJECT_NAMESPACE:
 			all_privileges = ACL_ALL_RIGHTS_NAMESPACE;
-			errormsg = _("invalid privilege type %s for namespace");
+			errormsg = _("invalid privilege type %s for schema");
 			break;
 		case ACL_OBJECT_TABLESPACE:
 			all_privileges = ACL_ALL_RIGHTS_TABLESPACE;
