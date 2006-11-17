@@ -302,7 +302,7 @@ ExecEvalArrayRef(ArrayRefExprState *astate,
 				if (isAssignment)
 					ereport(ERROR,
 							(errcode(ERRCODE_NULL_VALUE_NOT_ALLOWED),
-							 errmsg("array subscript in assignment must not be NULL")));
+							 errmsg("array subscript in assignment must not be null")));
 				*isNull = true;
 				return (Datum) NULL;
 			}
