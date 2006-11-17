@@ -45,6 +45,7 @@ typedef struct xl_multixact_create
 extern MultiXactId MultiXactIdCreate(TransactionId xid1, TransactionId xid2);
 extern MultiXactId MultiXactIdExpand(MultiXactId multi, TransactionId xid);
 extern bool MultiXactIdIsRunning(MultiXactId multi);
+extern bool MultiXactIdIsCurrent(MultiXactId multi);
 extern void MultiXactIdWait(MultiXactId multi);
 extern bool ConditionalMultiXactIdWait(MultiXactId multi);
 extern void MultiXactIdSetOldestMember(void);
