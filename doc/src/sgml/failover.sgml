@@ -121,7 +121,7 @@
 
    <para>
     A master/slave replication setup sends all data modification
-    queries to the master server.  The master server asynchonously
+    queries to the master server.  The master server asynchronously
     sends data changes to the slave server.  The slave can answer
     read-only queries while the master server is running.  The
     slave server is ideal for data warehouse queries.
