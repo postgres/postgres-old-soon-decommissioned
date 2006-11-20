@@ -140,14 +140,14 @@
  </varlistentry>
 
  <varlistentry>
-  <term>Query Broadcasting</term>
+  <term>Statement-Based Replication</term>
   <listitem>
 
    <para>
-    In query broadcasting, a program intercepts every SQL query
-    and sends it to all servers.  Each server operates independently.
-    Read-only queries can be sent to a single server because there
-    is no need for all servers to process it.
+    In statement-based replication, a program intercepts every SQL
+    query and sends it to all servers.  Each server operates
+    independently.  Read-only queries can be sent to a single server
+    because there is no need for all servers to process it.
    </para>
 
    <para>
