@@ -4553,15 +4553,15 @@ SELECT SUBSTRING('XY1234Z', 'Y*?([0-9]{1,3})');
        </row>
        <row>
         <entry><literal>MON</literal></entry>
-        <entry>abbreviated uppercase month name (3 chars)</entry>
+        <entry>abbreviated uppercase month name (3 chars in English, localized lengths vary)</entry>
        </row>
        <row>
         <entry><literal>Mon</literal></entry>
-        <entry>abbreviated mixed-case month name (3 chars)</entry>
+        <entry>abbreviated mixed-case month name (3 chars in English, localized lengths vary)</entry>
        </row>
        <row>
         <entry><literal>mon</literal></entry>
-        <entry>abbreviated lowercase month name (3 chars)</entry>
+        <entry>abbreviated lowercase month name (3 chars in English, localized lengths vary)</entry>
        </row>
        <row>
         <entry><literal>MM</literal></entry>
@@ -4581,15 +4581,15 @@ SELECT SUBSTRING('XY1234Z', 'Y*?([0-9]{1,3})');
        </row>
        <row>
         <entry><literal>DY</literal></entry>
-        <entry>abbreviated uppercase day name (3 chars)</entry>
+        <entry>abbreviated uppercase day name (3 chars in English, localized lengths vary)</entry>
        </row>
        <row>
         <entry><literal>Dy</literal></entry>
-        <entry>abbreviated mixed-case day name (3 chars)</entry>
+        <entry>abbreviated mixed-case day name (3 chars in English, localized lengths vary)</entry>
        </row>
        <row>
         <entry><literal>dy</literal></entry>
-        <entry>abbreviated lowercase day name (3 chars)</entry>
+        <entry>abbreviated lowercase day name (3 chars in English, localized lengths vary)</entry>
        </row>
        <row>
         <entry><literal>DDD</literal></entry>
