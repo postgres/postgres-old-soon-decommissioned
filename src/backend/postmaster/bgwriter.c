@@ -503,12 +503,12 @@ bg_quickdie(SIGNAL_ARGS)
 	 * corrupted, so we don't want to try to clean up our transaction. Just
 	 * nail the windows shut and get out of town.
 	 *
-	 * Note we do exit(1) not exit(0).	This is to force the postmaster into a
+	 * Note we do exit(2) not exit(0).	This is to force the postmaster into a
 	 * system reset cycle if some idiot DBA sends a manual SIGQUIT to a random
 	 * backend.  This is necessary precisely because we don't clean up our
 	 * shared memory state.
 	 */
-	exit(1);
+	exit(2);
 }
 
 /* SIGHUP: set flag to re-read config file at next convenient time */

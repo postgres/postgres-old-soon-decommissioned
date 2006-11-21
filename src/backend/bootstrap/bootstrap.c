@@ -421,15 +421,8 @@ BootstrapMain(int argc, char *argv[])
 		case BS_XLOG_STARTUP:
 			bootstrap_signals();
 			StartupXLOG();
-
-			/*
-			 * These next two functions don't consider themselves critical,
-			 * but we'd best PANIC anyway if they fail.
-			 */
-			START_CRIT_SECTION();
 			LoadFreeSpaceMap();
 			BuildFlatFiles(false);
-			END_CRIT_SECTION();
 			proc_exit(0);		/* startup done */
 
 		case BS_XLOG_BGWRITER:
