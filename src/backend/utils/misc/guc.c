@@ -176,7 +176,7 @@ bool		SQL_inheritance = true;
 
 bool		Password_encryption = true;
 
-int			log_min_error_statement = PANIC;
+int			log_min_error_statement = ERROR;
 int			log_min_messages = NOTICE;
 int			client_min_messages = NOTICE;
 int			log_min_duration_statement = -1;
@@ -1853,7 +1853,7 @@ static struct config_string ConfigureNamesString[] =
 						 "specified level or a higher level are logged.")
 		},
 		&log_min_error_statement_str,
-		"panic", assign_min_error_statement, NULL
+		"error", assign_min_error_statement, NULL
 	},
 
 	{
