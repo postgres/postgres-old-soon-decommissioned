@@ -2677,6 +2677,14 @@ $endif
     </listitem>
    </varlistentry>
   </variablelist>
+
+  <para>
+   Because <application>psql</application> uses <application>libpq</application>
+   internally, all <application>libpq</application> environment variables are
+   also honored by <application>psql</application>.  For a complete list of those
+   variables, see <xref linkend="libpq-envars">.
+  </para>
+
  </refsect1>
 
 
@@ -2894,14 +2902,6 @@ second | four
 </programlisting>
   </para>
 
- </refsect1>
-
- <refsect1>
-  <title>See Also</title>
-
-  <simplelist type="inline">
-   <member>Environment Variables (<xref linkend="libpq-envars">)</member>
-  </simplelist>
  </refsect1>
 
 </refentry>
