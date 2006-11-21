@@ -2990,6 +2990,11 @@ PostgresMain(int argc, char *argv[], const char *username)
 		pg_usleep(PostAuthDelay * 1000000L);
 
 	/*
+	 * You might expect to see a setsid() call here, but it's not needed,
+	 * because if we are under a postmaster then BackendInitialize() did it.
+	 */
+
+	/*
 	 * Set up signal handlers and masks.
 	 *
 	 * Note that postmaster blocked all signals before forking child process,

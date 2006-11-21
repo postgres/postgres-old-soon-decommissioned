@@ -1243,6 +1243,10 @@ CheckStatementTimeout(void)
 		/* Time to die */
 		statement_timeout_active = false;
 		cancel_from_timeout = true;
+#ifdef HAVE_SETSID
+		/* try to signal whole process group */
+		kill(-MyProcPid, SIGINT);
+#endif
 		kill(MyProcPid, SIGINT);
 	}
 	else

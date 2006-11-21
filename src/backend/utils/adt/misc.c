@@ -93,7 +93,12 @@ pg_signal_backend(int pid, int sig)
 		return false;
 	}
 
+	/* If we have setsid(), signal the backend's whole process group */
+#ifdef HAVE_SETSID
+	if (kill(-pid, sig))
+#else
 	if (kill(pid, sig))
+#endif
 	{
 		/* Again, just a warning to allow loops */
 		ereport(WARNING,

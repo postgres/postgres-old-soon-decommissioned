@@ -244,6 +244,17 @@ AutoVacMain(int argc, char *argv[])
 	SetProcessingMode(InitProcessing);
 
 	/*
+	 * If possible, make this process a group leader, so that the postmaster
+	 * can signal any child processes too.  (autovacuum probably never has
+	 * any child processes, but for consistency we make all postmaster
+	 * child processes do this.)
+	 */
+#ifdef HAVE_SETSID
+	if (setsid() < 0)
+		elog(FATAL, "setsid() failed: %m");
+#endif
+
+	/*
 	 * Set up signal handlers.	We operate on databases much like a regular
 	 * backend, so we use the same signal handling.  See equivalent code in
 	 * tcop/postgres.c.
