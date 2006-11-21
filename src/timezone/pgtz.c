@@ -729,7 +729,7 @@ static const struct
 								 * Tallinn, Vilnius */
 	{
 		"GMT Standard Time", "GMT Daylight Time",
-		"Europe/Dublin"
+		"Europe/London"
 	},							/* (GMT) Greenwich Mean Time : Dublin,
 								 * Edinburgh, Lisbon, London */
 	{
