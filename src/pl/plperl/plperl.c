@@ -119,7 +119,6 @@ static bool plperl_safe_init_done = false;
 static PerlInterpreter *plperl_trusted_interp = NULL;
 static PerlInterpreter *plperl_untrusted_interp = NULL;
 static PerlInterpreter *plperl_held_interp = NULL;
-static bool can_run_two;
 static bool trusted_context;
 static HTAB  *plperl_proc_hash = NULL;
 static HTAB  *plperl_query_hash = NULL;
