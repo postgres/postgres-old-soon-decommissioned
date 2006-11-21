@@ -1320,6 +1320,18 @@ dumpTimestamp(char *msg)
 	char		buf[256];
 	time_t		now = time(NULL);
 
-	if (strftime(buf, 256, "%Y-%m-%d %H:%M:%S %Z", localtime(&now)) != 0)
+	/*
+	 * We don't print the timezone on Win32, because the names are long and
+	 * localized, which means they may contain characters in various random
+	 * encodings; this has been seen to cause encoding errors when reading
+	 * the dump script.
+	 */
+	if (strftime(buf, sizeof(buf),
+#ifndef WIN32
+				 "%Y-%m-%d %H:%M:%S %Z",
+#else
+				 "%Y-%m-%d %H:%M:%S",
+#endif
+				 localtime(&now)) != 0)
 		printf("-- %s %s\n\n", msg, buf);
 }

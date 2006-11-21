@@ -1471,7 +1471,7 @@ log_line_prefix(StringInfo buf)
 					char		strfbuf[128];
 
 					strftime(strfbuf, sizeof(strfbuf),
-					/* Win32 timezone names are too long so don't print them. */
+					/* Win32 timezone names are too long so don't print them */
 #ifndef WIN32
 							 "%Y-%m-%d %H:%M:%S %Z",
 #else
@@ -1487,7 +1487,12 @@ log_line_prefix(StringInfo buf)
 					char		strfbuf[128];
 
 					strftime(strfbuf, sizeof(strfbuf),
+					/* Win32 timezone names are too long so don't print them */
+#ifndef WIN32
 							 "%Y-%m-%d %H:%M:%S %Z",
+#else
+							 "%Y-%m-%d %H:%M:%S",
+#endif
 							 localtime(&MyProcPort->session_start));
 					appendStringInfoString(buf, strfbuf);
 				}
