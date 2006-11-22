@@ -892,7 +892,7 @@ PrintQueryResults(PGresult *results)
 
 		case PGRES_COMMAND_OK:
 			{
-				char		buf[10];
+				char		buf[16];
 
 				success = true;
 				snprintf(buf, sizeof(buf),
