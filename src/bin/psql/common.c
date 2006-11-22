@@ -556,7 +556,7 @@ PrintQueryResults(PGresult *results)
 
 		case PGRES_COMMAND_OK:
 			{
-				char		buf[10];
+				char		buf[16];
 
 				success = true;
 				sprintf(buf, "%u", (unsigned int) PQoidValue(results));
