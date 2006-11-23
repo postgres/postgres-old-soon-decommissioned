@@ -631,6 +631,9 @@ heap_copytuple(HeapTuple tuple)
  *		heap_copytuple_with_tuple
  *
  *		copy a tuple into a caller-supplied HeapTuple management struct
+ *
+ * Note that after calling this function, the "dest" HeapTuple will not be
+ * allocated as a single palloc() block (unlike with heap_copytuple()).
  * ----------------
  */
 void
