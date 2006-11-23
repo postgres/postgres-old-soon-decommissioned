@@ -109,8 +109,9 @@ typedef uint16 LOCKMETHODID;
 #define AccessShareLock			1		/* SELECT */
 #define RowShareLock			2		/* SELECT FOR UPDATE/FOR SHARE */
 #define RowExclusiveLock		3		/* INSERT, UPDATE, DELETE */
-#define ShareUpdateExclusiveLock 4		/* VACUUM (non-FULL) */
-#define ShareLock				5		/* CREATE INDEX */
+#define ShareUpdateExclusiveLock 4		/* VACUUM (non-FULL),ANALYZE, CREATE
+										 * INDEX CONCURRENTLY */
+#define ShareLock				5		/* CREATE INDEX (WITHOUT CONCURRENTLY) */
 #define ShareRowExclusiveLock	6		/* like EXCLUSIVE MODE, but allows ROW
 										 * SHARE */
 #define ExclusiveLock			7		/* blocks ROW SHARE/SELECT...FOR
