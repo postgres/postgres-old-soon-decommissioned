@@ -653,6 +653,9 @@ local   db1,db2,@demodbs  all                         md5
     <ulink url="http://web.mit.edu/kerberos/www/">MIT Kerberos page</ulink>
     can be good starting points for exploration.
     Several sources for <productname>Kerberos</> distributions exist.
+    <productname>Kerberos</productname> provides secure authentication but
+    does not encrypt queries or data passed over the network;  for that
+    use <acronym>SSL</acronym>.
    </para>
 
    <para>
