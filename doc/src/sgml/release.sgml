@@ -88,6 +88,7 @@ units on Win32 (Bruce)</para>
 compilers (Hiroshi Saito)</para></listitem>
 <listitem><para>Fixes for <systemitem class="osname">AIX</> and
 <productname>Intel</> compilers (Tom)</para></listitem>
+<listitem><para>Fix rare bug in continuous archiving (Tom)</para></listitem>
 </itemizedlist>
 
    </sect2>
