@@ -26,8 +26,7 @@
  * required information obtained from localeconv(), and set them back.
  * The cached information is only used by the formatting functions
  * (to_char, etc.) and the money type.	For the user, this should all be
- * transparent.  (Actually, LC_TIME doesn't do anything at all right
- * now.)
+ * transparent.
  *
  * !!! NOW HEAR THIS !!!
  *
