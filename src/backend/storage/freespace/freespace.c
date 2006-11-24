@@ -625,7 +625,7 @@ PrintFreeSpaceMapStatistics(int elevel)
 					storedPages, numRels),
 	errdetail("A total of %.0f page slots are in use (including overhead).\n"
 			  "%.0f page slots are required to track all free space.\n"
-		  "Current limits are:  %d page slots, %d relations, using %.0f KB.",
+		  "Current limits are:  %d page slots, %d relations, using %.0f kB.",
 			  Min(needed, MaxFSMPages),
 			  needed,
 			  MaxFSMPages, MaxFSMRelations,
