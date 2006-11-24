@@ -171,7 +171,7 @@ pg_stat_file(PG_FUNCTION_ARGS)
 
 	/*
 	 * This record type had better match the output parameters declared for me
-	 * in pg_proc.h (actually, in system_views.sql at the moment).
+	 * in pg_proc.h.
 	 */
 	tupdesc = CreateTemplateTupleDesc(6, false);
 	TupleDescInitEntry(tupdesc, (AttrNumber) 1,

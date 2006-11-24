@@ -3123,7 +3123,7 @@ DESCR("Reload configuration files");
 DATA(insert OID = 2622 ( pg_rotate_logfile		PGNSP PGUID 12 f f t f v 0 16 "" _null_ _null_ _null_ pg_rotate_logfile - _null_ ));
 DESCR("Rotate log file");
 
-DATA(insert OID = 2623 ( pg_stat_file		PGNSP PGUID 12 f f t f v 1 2249 "25" _null_ _null_ _null_ pg_stat_file - _null_ ));
+DATA(insert OID = 2623 ( pg_stat_file		PGNSP PGUID 12 f f t f v 1 2249 "25" "{25,20,1184,1184,1184,1184,16}" "{i,o,o,o,o,o,o}" "{filename,size,access,modification,change,creation,isdir}" pg_stat_file - _null_ ));
 DESCR("Return file information");
 DATA(insert OID = 2624 ( pg_read_file		PGNSP PGUID 12 f f t f v 3 25 "25 20 20" _null_ _null_ _null_ pg_read_file - _null_ ));
 DESCR("Read text from a file");
