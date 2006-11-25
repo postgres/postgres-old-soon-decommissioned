@@ -416,7 +416,7 @@ links to the main documentation.
         <para>
          This also implies that data can no longer be shared between a PL/Perl
          function and a PL/PerlU function.
-         Some perl installations have not been compiled with the correct flags
+         Some Perl installations have not been compiled with the correct flags
          to allow multiple interpreters to exist within a single process.
          In this situation PL/Perl and PL/PerlU cannot both be used in a
          single backend. The solution is to get a Perl installation which
