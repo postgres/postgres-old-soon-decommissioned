@@ -162,7 +162,7 @@ utf8_to_iso8859(PG_FUNCTION_ARGS)
 
 	ereport(ERROR,
 			(errcode(ERRCODE_INTERNAL_ERROR),
-	   errmsg("unexpected encoding id %d for ISO-8859 charsets", encoding)));
+	   errmsg("unexpected encoding ID %d for ISO 8859 character sets", encoding)));
 
 	PG_RETURN_VOID();
 }
