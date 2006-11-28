@@ -323,10 +323,11 @@ tas(volatile slock_t *lock)
 #endif	 /* __sparc__ */
 
 
-#if defined(__ppc__) || defined(__powerpc__) || defined(__powerpc64__)
+/* PowerPC */
+#if defined(__ppc__) || defined(__powerpc__) || defined(__ppc64__) || defined(__powerpc64__)
 #define HAS_TEST_AND_SET
 
-#if defined(__powerpc64__)
+#if defined(__ppc64__) || defined(__powerpc64__)
 typedef unsigned long slock_t;
 #else
 typedef unsigned int slock_t;
@@ -366,7 +367,7 @@ tas(volatile slock_t *lock)
 /* PowerPC S_UNLOCK is almost standard but requires a "sync" instruction */
 #define S_UNLOCK(lock)	\
 do \
-{\
+{ \
 	__asm__ __volatile__ ("	sync \n"); \
 	*((volatile slock_t *) (lock)) = 0; \
 } while (0)
