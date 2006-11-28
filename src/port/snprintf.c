@@ -99,6 +99,7 @@
 #undef	vsnprintf
 #undef	snprintf
 #undef	sprintf
+#undef	vfprintf
 #undef	fprintf
 #undef	printf
 
@@ -209,7 +210,7 @@ pg_sprintf(char *str, const char *fmt,...)
 	return len;
 }
 
-static int
+int
 pg_vfprintf(FILE *stream, const char *fmt, va_list args)
 {
 	PrintfTarget target;
