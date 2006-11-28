@@ -1229,10 +1229,8 @@ findTargetlistEntry(ParseState *pstate, Node *node, List **tlist, int clause)
 							ereport(ERROR,
 									(errcode(ERRCODE_AMBIGUOUS_COLUMN),
 
-							/*
-							 * translator: first %s is name of a SQL
-							 * construct, eg ORDER BY
-							 */
+							/*------
+							  translator: first %s is name of a SQL construct, eg ORDER BY */
 									 errmsg("%s \"%s\" is ambiguous",
 											clauseText[clause], name),
 									 parser_errposition(pstate, location)));

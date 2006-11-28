@@ -1957,11 +1957,10 @@ useful_strerror(int errnum)
 	 */
 	if (str == NULL || *str == '\0')
 	{
-		/*
-		 * translator: This string will be truncated at 47 characters
-		 * expanded.
-		 */
 		snprintf(errorstr_buf, sizeof(errorstr_buf),
+				 /*------
+				   translator: This string will be truncated at 47
+				   characters expanded. */
 				 _("operating system error %d"), errnum);
 		str = errorstr_buf;
 	}
