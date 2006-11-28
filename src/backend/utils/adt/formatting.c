@@ -163,7 +163,6 @@ struct FormatNode
 
 /* ----------
  * Full months
- *	This needs to be NLS-localized someday.
  * ----------
  */
 static char *months_full[] = {
@@ -2928,7 +2927,13 @@ localize_month(int index)
 			m = _("Apr");
 			break;
 		case 4:
-			m = _("May");
+			/*------ 
+			  translator: Translate this as the abbreviation of "May".
+			  In English, it is both the full month name and the
+			  abbreviation, so this hack is needed to distinguish
+			  them.  The translation also needs to start with S:,
+			  which will be stripped at run time. */
+			m = _("S:May") + 2;
 			break;
 		case 5:
 			m = _("Jun");
