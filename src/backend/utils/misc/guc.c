@@ -1588,7 +1588,7 @@ static struct config_int ConfigureNamesInt[] =
 	{
 		/* see varsup.c for why this is PGC_POSTMASTER not PGC_SIGHUP */
 		{"autovacuum_freeze_max_age", PGC_POSTMASTER, AUTOVACUUM,
-			gettext_noop("Age at which to autovacuum a table to prevent transacion ID wraparound."),
+			gettext_noop("Age at which to autovacuum a table to prevent transaction ID wraparound."),
 			NULL
 		},
 		&autovacuum_freeze_max_age,
