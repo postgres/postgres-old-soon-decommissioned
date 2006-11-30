@@ -82,7 +82,7 @@ AC_DEFUN([PGAC_ARG_CHECK],
       continue 2
     fi
   done
-  pgac_txt=`echo $pgac_var | tr 'a_b' 'a-b'`
+  pgac_txt=`echo $pgac_var | sed 's/_/-/g'`
   AC_MSG_WARN([option ignored: --$pgac_txt])
 done])# PGAC_ARG_CHECK
 
