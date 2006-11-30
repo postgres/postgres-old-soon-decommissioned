@@ -1934,8 +1934,13 @@ pmdie(SIGNAL_ARGS)
 			 * Note: if we previously got SIGTERM then we may send SIGUSR2 to
 			 * the bgwriter a second time here.  This should be harmless.
 			 */
-			if (StartupPID != 0 || FatalError)
-				break;			/* let reaper() handle this */
+			if (StartupPID != 0)
+			{
+				signal_child(StartupPID, SIGTERM);
+				break;			/* let reaper() do the rest */
+			}
+			if (FatalError)
+				break;			/* let reaper() handle this case */
 			/* Start the bgwriter if not running */
 			if (BgWriterPID == 0)
 				BgWriterPID = StartBackgroundWriter();
@@ -2108,6 +2113,21 @@ reaper(SIGNAL_ARGS)
 			 */
 			HandleChildCrash(pid, exitstatus,
 							 _("background writer process"));
+
+			/*
+			 * If the bgwriter crashed while trying to write the shutdown
+			 * checkpoint, we may as well just stop here; any recovery
+			 * required will happen on next postmaster start.
+			 */
+			if (Shutdown > NoShutdown &&
+				!DLGetHead(BackendList) && AutoVacPID == 0)
+			{
+				ereport(LOG,
+						(errmsg("abnormal database system shutdown")));
+				ExitPostmaster(1);
+			}
+
+			/* Else, proceed as in normal crash recovery */
 			continue;
 		}
 
