@@ -39,7 +39,7 @@
     (milliseconds), <literal>s</literal> (seconds),
     <literal>min</literal> (minutes), <literal>h</literal> (hours),
     and <literal>d</literal> (days).  Note that the multiplier for
-    memory units in 1024, not 1000.
+    memory units is 1024, not 1000.
    </para>
 
    <para>

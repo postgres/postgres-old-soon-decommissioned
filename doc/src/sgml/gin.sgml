@@ -184,7 +184,7 @@
  <para>
   <acronym>GIN</acronym> doesn't support full index scans due to their
   extreme inefficiency: because there are often many keys per value,
-  each heap pointer will returned several times.
+  each heap pointer will be returned several times.
  </para>
 
  <para>
