@@ -825,6 +825,41 @@ FOR UPDATE [ OF <replaceable class="parameter">table_name</replaceable> [, ...] 
     effectively executes after <literal>LIMIT</literal>, however, and
     so that is the recommended place to write it.
    </para>
+
+  <caution>
+   <para>
+    Avoid locking a row and then modifying it within a later savepoint or
+    <application>PL/pgSQL</application> exception block.  A subsequent
+    rollback would cause the lock to be lost.  For example,
+<programlisting>
+BEGIN;
+SELECT * FROM mytable WHERE key = 1 FOR UPDATE;
+SAVEPOINT s;
+UPDATE mytable SET ... WHERE key = 1;
+ROLLBACK TO s;
+</programlisting>
+    After the <command>ROLLBACK</>, the row is effectively unlocked, rather
+    than returned to its pre-savepoint state of being locked but not modified.
+    This hazard occurs if a row locked in the current transaction is updated
+    or deleted: the former lock state is forgotten.  If the transaction is then
+    rolled back to a state between the original locking command and the
+    subsequent change, the row will appear not to be locked at all.  This is
+    an implementation deficiency which will be addressed in a future release
+    of <productname>PostgreSQL</productname>.
+   </para>
+  </caution>
+
+  <caution>
+   <para>
+    It is possible for a <command>SELECT</> command using both 
+    <literal>LIMIT</literal> and  <literal>FOR UPDATE</literal> 
+    clauses to return fewer rows than specified by <literal>LIMIT</literal>.
+    This is because <literal>LIMIT</> selects a number of rows,
+    but might then block requesting a <literal>FOR UPDATE</literal> lock.
+    Once the <literal>SELECT</> unblocks, the query qualification might not
+    be met and the row not be returned by <literal>SELECT</>.
+   </para>
+  </caution>
   </refsect2>
  </refsect1>
 
@@ -874,7 +909,7 @@ SELECT kind, sum(len) AS total FROM films GROUP BY kind;
 SELECT kind, sum(len) AS total
     FROM films
     GROUP BY kind
-    HAVING sum(len) < interval '5 hours';
+    HAVING sum(len) &lt; interval '5 hours';
 
    kind   | total
 ----------+-------
