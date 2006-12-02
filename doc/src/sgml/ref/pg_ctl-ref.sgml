@@ -172,8 +172,6 @@ PostgreSQL documentation
  <refsect1 id="app-pg-ctl-options">
   <title>Options</title>
 
-  <para>
-
     <variablelist>
      <varlistentry>
       <term><option>-D <replaceable class="parameter">datadir</replaceable></option></term>
@@ -278,12 +276,10 @@ PostgreSQL documentation
       </listitem>
      </varlistentry>
    </variablelist>
-  </para>
- </refsect1>
 
- <refsect1 id="app-pg-ctl-svcoptions">
-  <title>Windows options</title>
-  <para>
+  <refsect2 id="app-pg-ctl-windows-options">
+   <title>Options for Windows</title>
+
    <variablelist>
     <varlistentry>
      <term><option>-N <replaceable class="parameter">servicename</replaceable></option></term>
@@ -314,7 +310,8 @@ PostgreSQL documentation
      </listitem>
     </varlistentry>
    </variablelist>
-  </para>
+  </refsect2>
+
  </refsect1>
 
 
