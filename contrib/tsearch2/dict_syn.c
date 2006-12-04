@@ -132,8 +132,8 @@ syn_init(PG_FUNCTION_ARGS)
 			continue;
 		*end = '\0';
 
-		d->syn[cur].in = lowerstr(starti);
-		d->syn[cur].out = lowerstr(starto);
+		d->syn[cur].in = strdup(lowerstr(starti));
+		d->syn[cur].out = strdup(lowerstr(starto));
 		if (!(d->syn[cur].in && d->syn[cur].out))
 		{
 			fclose(fin);
