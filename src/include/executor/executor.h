@@ -110,8 +110,10 @@ extern JunkFilter *ExecInitJunkFilter(List *targetList, bool hasoid,
 extern JunkFilter *ExecInitJunkFilterConversion(List *targetList,
 							 TupleDesc cleanTupType,
 							 TupleTableSlot *slot);
-extern bool ExecGetJunkAttribute(JunkFilter *junkfilter, TupleTableSlot *slot,
-					 char *attrName, Datum *value, bool *isNull);
+extern AttrNumber ExecFindJunkAttribute(JunkFilter *junkfilter,
+										const char *attrName);
+extern Datum ExecGetJunkAttribute(TupleTableSlot *slot, AttrNumber attno,
+								  bool *isNull);
 extern TupleTableSlot *ExecFilterJunk(JunkFilter *junkfilter,
 			   TupleTableSlot *slot);
 extern HeapTuple ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot);
