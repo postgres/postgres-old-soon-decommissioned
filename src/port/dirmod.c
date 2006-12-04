@@ -254,7 +254,7 @@ pgsymlink(const char *oldpath, const char *newpath)
 		errno = 0;
 		FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
 					  NULL, GetLastError(),
-					  MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+					  MAKELANGID(LANG_ENGLISH, SUBLANG_DEFAULT),
 					  (LPSTR) & msg, 0, NULL);
 #ifndef FRONTEND
 		ereport(ERROR,

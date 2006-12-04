@@ -582,7 +582,7 @@ pgwin32_socket_strerror(int err)
 	if (FormatMessage(FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_FROM_HMODULE,
 					  handleDLL,
 					  err,
-					  MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+					  MAKELANGID(LANG_ENGLISH, SUBLANG_DEFAULT),
 					  wserrbuf,
 					  sizeof(wserrbuf) - 1,
 					  NULL) == 0)
