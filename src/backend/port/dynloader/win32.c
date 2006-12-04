@@ -18,7 +18,7 @@ set_dl_error(void)
 					  FORMAT_MESSAGE_FROM_SYSTEM,
 					  NULL,
 					  err,
-					  MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+					  MAKELANGID(LANG_ENGLISH, SUBLANG_DEFAULT),
 					  last_dyn_error,
 					  sizeof(last_dyn_error) - 1,
 					  NULL) == 0)
