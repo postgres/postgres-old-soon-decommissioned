@@ -88,8 +88,8 @@ PostgreSQL documentation
       or a single backslash command. Thus you cannot mix
       <acronym>SQL</acronym> and <application>psql</application>
       meta-commands. To achieve that, you could pipe the string into
-      <application>psql</application>, like this: <literal>echo "\x \\
-      select * from foo;" | psql</literal>.
+      <application>psql</application>, like this: <literal>echo -e
+      "\\x\nSELECT * FROM foo;" | psql</literal>.
       </para>
       <para>
        If the command string contains multiple SQL commands, they are
