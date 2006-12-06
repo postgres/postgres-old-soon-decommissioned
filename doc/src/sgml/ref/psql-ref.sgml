@@ -89,7 +89,7 @@ PostgreSQL documentation
       <acronym>SQL</acronym> and <application>psql</application>
       meta-commands with this option. To achieve that, you could
       pipe the string into <application>psql</application>, like
-      this: <literal>echo "\x \\ SELECT * FROM foo;" | psql</literal>.
+      this: <literal>echo '\x \\ SELECT * FROM foo;' | psql</literal>.
       (<literal>\\</> is the separator meta-command.)
       </para>
       <para>
