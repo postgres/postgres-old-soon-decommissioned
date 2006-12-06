@@ -1416,6 +1416,7 @@ StartTransaction(void)
 	 * GetCurrentTimestamp() call (which'd be expensive anyway).
 	 */
 	xactStartTimestamp = stmtStartTimestamp;
+	pgstat_report_txn_timestamp(xactStartTimestamp);
 
 	/*
 	 * initialize current transaction state fields
@@ -1628,6 +1629,7 @@ CommitTransaction(void)
 	/* smgrcommit already done */
 	AtEOXact_Files();
 	pgstat_count_xact_commit();
+	pgstat_report_txn_timestamp(0);
 
 	CurrentResourceOwner = NULL;
 	ResourceOwnerDelete(TopTransactionResourceOwner);
@@ -1994,6 +1996,7 @@ AbortTransaction(void)
 	smgrabort();
 	AtEOXact_Files();
 	pgstat_count_xact_rollback();
+	pgstat_report_txn_timestamp(0);
 
 	/*
 	 * State remains TRANS_ABORT until CleanupTransaction().

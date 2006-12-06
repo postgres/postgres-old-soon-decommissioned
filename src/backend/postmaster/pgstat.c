@@ -1355,6 +1355,7 @@ pgstat_bestart(void)
 	beentry->st_procpid = MyProcPid;
 	beentry->st_proc_start_timestamp = proc_start_timestamp;
 	beentry->st_activity_start_timestamp = 0;
+	beentry->st_txn_start_timestamp = 0;
 	beentry->st_databaseid = MyDatabaseId;
 	beentry->st_userid = userid;
 	beentry->st_clientaddr = clientaddr;
@@ -1443,6 +1444,29 @@ pgstat_report_activity(const char *cmd_str)
 	Assert((beentry->st_changecount & 1) == 0);
 }
 
+/*
+ * Set the current transaction start timestamp to the specified
+ * value. If there is no current active transaction, this is signified
+ * by 0.
+ */
+void
+pgstat_report_txn_timestamp(TimestampTz tstamp)
+{
+	volatile PgBackendStatus *beentry = MyBEEntry;
+
+	if (!pgstat_collect_querystring || !beentry)
+		return;
+
+	/*
+	 * Update my status entry, following the protocol of bumping
+	 * st_changecount before and after.  We use a volatile pointer
+	 * here to ensure the compiler doesn't try to get cute.
+	 */
+	beentry->st_changecount++;
+	beentry->st_txn_start_timestamp = tstamp;
+	beentry->st_changecount++;
+	Assert((beentry->st_changecount & 1) == 0);
+}
 
 /* ----------
  * pgstat_report_waiting() -
