@@ -2233,8 +2233,7 @@ finish_xact_command(void)
 
 #ifdef SHOW_MEMORY_STATS
 		/* Print mem stats after each commit for leak tracking */
-		if (ShowStats)
-			MemoryContextStats(TopMemoryContext);
+		MemoryContextStats(TopMemoryContext);
 #endif
 
 		xact_started = false;
