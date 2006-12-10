@@ -225,6 +225,7 @@ testxml: stylesheet.xsl postgres.xml
 htmlhelp: stylesheet-hh.xsl postgres.xml
 	$(XSLTPROC) $(XSLTPROCFLAGS) --stringparam pg.version '$(VERSION)' $^
 
+
 ##
 ## Experimental Texinfo targets
 ##
@@ -233,16 +234,18 @@ DB2X_TEXIXML = db2x_texixml
 DB2X_XSLTPROC = db2x_xsltproc
 MAKEINFO = makeinfo
 
-postgres.texixml: postgres.xml
+%.texixml: %.xml
 	$(DB2X_XSLTPROC) -s texi -g output-file=$(basename $@) $< -o $@
 
-postgres.texi: postgres.texixml
-	$(DB2X_TEXIXML) --encoding=iso-8859-1//TRANSLIT $< \
-			--to-stdout > $@
+%.texi: %.texixml
+	$(DB2X_TEXIXML) --encoding=iso-8859-1//TRANSLIT $< --to-stdout >$@
 
-postgres.info: postgres.texi
-	$(MAKEINFO) --enable-encoding --no-split \
-		    --no-validate $< -o $@
+%.info: %.texi
+	$(MAKEINFO) --enable-encoding --no-split --no-validate $< -o $@
+
+# Cancel built-in suffix rules, interfering with PS building
+.SUFFIXES:
+
 
 ##
 ## Check
