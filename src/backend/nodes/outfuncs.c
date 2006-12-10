@@ -634,6 +634,7 @@ _outParam(StringInfo str, Param *node)
 	WRITE_ENUM_FIELD(paramkind, ParamKind);
 	WRITE_INT_FIELD(paramid);
 	WRITE_OID_FIELD(paramtype);
+	WRITE_INT_FIELD(paramtypmod);
 }
 
 static void

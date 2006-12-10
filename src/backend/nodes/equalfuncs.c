@@ -147,6 +147,7 @@ _equalParam(Param *a, Param *b)
 	COMPARE_SCALAR_FIELD(paramkind);
 	COMPARE_SCALAR_FIELD(paramid);
 	COMPARE_SCALAR_FIELD(paramtype);
+	COMPARE_SCALAR_FIELD(paramtypmod);
 
 	return true;
 }

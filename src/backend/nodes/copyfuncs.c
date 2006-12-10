@@ -745,6 +745,7 @@ _copyParam(Param *from)
 	COPY_SCALAR_FIELD(paramkind);
 	COPY_SCALAR_FIELD(paramid);
 	COPY_SCALAR_FIELD(paramtype);
+	COPY_SCALAR_FIELD(paramtypmod);
 
 	return newnode;
 }
