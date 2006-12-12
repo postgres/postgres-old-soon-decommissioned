@@ -1039,6 +1039,19 @@ su - postgres
          specified in the environment variable
          <envar>DTRACEFLAGS</envar>.
         </para>
+
+        <para>
+         To include DTrace support in a 64-bit binary, specify
+         <literal>DTRACEFLAGS="-64"</> to configure.  For example,
+         using the GCC compiler:
+<screen>
+./configure CC='gcc -m64' --enable-dtrace DTRACEFLAGS='-64' ...
+</screen>            
+         Using Sun's compiler:
+<screen>            
+./configure CC='/opt/SUNWspro/bin/cc -xtarget=native64' --enable-dtrace DTRACEFLAGS='-64' ...
+</screen>
+        </para>
        </listitem>
       </varlistentry>
 
