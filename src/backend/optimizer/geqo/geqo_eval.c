@@ -258,7 +258,7 @@ desirable_join(PlannerInfo *root,
 	/*
 	 * Join if there is an applicable join clause.
 	 */
-	if (have_relevant_joinclause(outer_rel, inner_rel))
+	if (have_relevant_joinclause(root, outer_rel, inner_rel))
 		return true;
 
 	/*
