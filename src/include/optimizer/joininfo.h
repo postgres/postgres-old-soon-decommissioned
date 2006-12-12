@@ -17,7 +17,8 @@
 #include "nodes/relation.h"
 
 
-extern bool have_relevant_joinclause(RelOptInfo *rel1, RelOptInfo *rel2);
+extern bool have_relevant_joinclause(PlannerInfo *root,
+									 RelOptInfo *rel1, RelOptInfo *rel2);
 
 extern void add_join_clause_to_rels(PlannerInfo *root,
 						RestrictInfo *restrictinfo,
