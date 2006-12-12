@@ -2803,7 +2803,7 @@ SELECT * FROM parent WHERE key = 2400;
             </row>
             <row>
              <entry><literal>%t</literal></entry>
-             <entry>Time stamp (no milliseconds)</entry>
+             <entry>Time stamp (no milliseconds, no timezone on Windows)</entry>
              <entry>no</entry>
             </row>
             <row>
