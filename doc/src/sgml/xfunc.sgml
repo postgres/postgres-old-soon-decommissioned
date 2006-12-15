@@ -2929,7 +2929,7 @@ void RequestAddinShmemSpace(int size)
 void RequestAddinLWLocks(int n)
 </programlisting>
      from <function>_PG_init</>. 
-    </para>	
+    </para>
     <para>
      To avoid possible race-conditions, each backend should use the LWLock
      <function>AddinShmemInitLock</> when connecting to and initializing 
