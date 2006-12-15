@@ -280,6 +280,14 @@
 (define %refentry-new-page%     #t)
 (define %refentry-keep%         #f)
 
+;; Indentation of verbatim environments.  (This should really be done
+;; with start-indent in DSSSL.)
+;; Use of indentation in this area exposes a bug in openjade,
+;; http://archives.postgresql.org/pgsql-docs/2006-12/msg00064.php
+;; (define %indent-programlisting-lines% "    ")
+;; (define %indent-screen-lines% "    ")
+;; (define %indent-synopsis-lines% "    ")
+
 
 ;; Default graphic format: Jadetex wants eps, pdfjadetex wants pdf.
 ;; (Note that pdfjadetex will not accept eps, that's why we need to
