@@ -283,6 +283,8 @@ IRT     12600    # Iran Time (not in zic)
 # - IST: Indian Standard Time (Asia)
 IST      7200    # Israel Standard Time (not in zic)
 JAYT    32400    # Jayapura Time (Indonesia) (not in zic)
+JST     32400    # Japan Standard Time
+                 #     (Asia/Tokyo)
 KDT     36000 D  # Korean Daylight Time (not in zic)
 KGST    21600 D  # Kyrgyzstan Summer Time
                  #     (Asia/Bishkek)
