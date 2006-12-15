@@ -280,12 +280,6 @@
 (define %refentry-new-page%     #t)
 (define %refentry-keep%         #f)
 
-;; Indentation of verbatim environments.  (This should really be done
-;; with start-indent in DSSSL.)
-(define %indent-programlisting-lines% "    ")
-(define %indent-screen-lines% "    ")
-(define %indent-synopsis-lines% "    ")
-
 
 ;; Default graphic format: Jadetex wants eps, pdfjadetex wants pdf.
 ;; (Note that pdfjadetex will not accept eps, that's why we need to
