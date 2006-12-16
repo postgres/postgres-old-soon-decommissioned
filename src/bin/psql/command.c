@@ -303,10 +303,26 @@ exec_command(const char *cmd,
 	/* \copy */
 	else if (pg_strcasecmp(cmd, "copy") == 0)
 	{
+		/* Default fetch-it-all-and-print mode */
+		TimevalStruct before,
+					after;
+		double		elapsed_msec = 0;
+
 		char	   *opt = psql_scan_slash_option(scan_state,
 												 OT_WHOLE_LINE, NULL, false);
-
+		if (pset.timing)
+			GETTIMEOFDAY(&before);
+		
 		success = do_copy(opt);
+
+		if (pset.timing && success)
+		{
+			GETTIMEOFDAY(&after);
+			elapsed_msec = DIFF_MSEC(&after, &before);
+			printf(_("Time: %.3f ms\n"), elapsed_msec);
+
+		}
+
 		free(opt);
 	}
 

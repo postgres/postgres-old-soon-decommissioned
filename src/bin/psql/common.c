@@ -11,12 +11,10 @@
 #include <ctype.h>
 #include <signal.h>
 #ifndef WIN32
-#include <sys/time.h>
 #include <unistd.h>				/* for write() */
 #else
 #include <io.h>					/* for _write() */
 #include <win32.h>
-#include <sys/timeb.h>			/* for _ftime() */
 #endif
 
 #include "pqsignal.h"
@@ -27,28 +25,6 @@
 #include "mb/pg_wchar.h"
 #include "mbprint.h"
 
-
-/* Workarounds for Windows */
-/* Probably to be moved up the source tree in the future, perhaps to be replaced by
- * more specific checks like configure-style HAVE_GETTIMEOFDAY macros.
- */
-#ifndef WIN32
-
-typedef struct timeval TimevalStruct;
-
-#define GETTIMEOFDAY(T) gettimeofday(T, NULL)
-#define DIFF_MSEC(T, U) \
-	((((int) ((T)->tv_sec - (U)->tv_sec)) * 1000000.0 + \
-	  ((int) ((T)->tv_usec - (U)->tv_usec))) / 1000.0)
-#else
-
-typedef struct _timeb TimevalStruct;
-
-#define GETTIMEOFDAY(T) _ftime(T)
-#define DIFF_MSEC(T, U) \
-	(((T)->time - (U)->time) * 1000.0 + \
-	 ((T)->millitm - (U)->millitm))
-#endif
 
 
 static bool ExecQueryUsingCursor(const char *query, double *elapsed_msec);
