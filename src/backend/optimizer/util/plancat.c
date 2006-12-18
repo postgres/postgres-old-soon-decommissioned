@@ -190,9 +190,16 @@ get_relation_info(PlannerInfo *root, Oid relationObjectId, bool inhparent,
 			 * Fetch the ordering operators associated with the index, if any.
 			 */
 			amorderstrategy = indexRelation->rd_am->amorderstrategy;
-			if (amorderstrategy != 0)
+			if (amorderstrategy > 0)
 			{
 				int			oprindex = amorderstrategy - 1;
+
+				/*
+				 * Index AM must have a fixed set of strategies for it to
+				 * make sense to specify amorderstrategy, so we need not
+				 * allow the case amstrategies == 0.
+				 */
+				Assert(oprindex < indexRelation->rd_am->amstrategies);
 
 				for (i = 0; i < ncolumns; i++)
 				{

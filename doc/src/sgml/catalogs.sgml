@@ -347,7 +347,9 @@
       <entry><structfield>amstrategies</structfield></entry>
       <entry><type>int2</type></entry>
       <entry></entry>
-      <entry>Number of operator strategies for this access method</entry>
+      <entry>Number of operator strategies for this access method,
+       or zero if access method does not have a fixed set of operator
+       strategies</entry>
      </row>
 
      <row>
