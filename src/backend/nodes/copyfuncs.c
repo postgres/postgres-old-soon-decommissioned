@@ -1137,6 +1137,22 @@ _copyBooleanTest(BooleanTest *from)
 }
 
 /*
+ * _copyXmlExpr
+ */
+static XmlExpr *
+_copyXmlExpr(XmlExpr *from)
+{
+	XmlExpr *newnode = makeNode(XmlExpr);
+
+	COPY_SCALAR_FIELD(op);
+	COPY_STRING_FIELD(name);
+	COPY_NODE_FIELD(named_args);
+	COPY_NODE_FIELD(args);
+
+	return newnode;
+}
+
+/*
  * _copyCoerceToDomain
  */
 static CoerceToDomain *
@@ -2965,6 +2981,9 @@ copyObject(void *from)
 			break;
 		case T_BooleanTest:
 			retval = _copyBooleanTest(from);
+			break;
+		case T_XmlExpr:
+			retval = _copyXmlExpr(from);
 			break;
 		case T_CoerceToDomain:
 			retval = _copyCoerceToDomain(from);

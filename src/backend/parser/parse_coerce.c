@@ -919,6 +919,46 @@ coerce_to_bigint(ParseState *pstate, Node *node,
 	return node;
 }
 
+/*
+ * coerce_to_xml()
+ *		Coerce an argument of a construct that requires xml input.
+ *		Also check that input is not a set.
+ *
+ * Returns the possibly-transformed node tree.
+ *
+ * As with coerce_type, pstate may be NULL if no special unknown-Param
+ * processing is wanted.
+ */
+Node *
+coerce_to_xml(ParseState *pstate, Node *node,
+				 const char *constructName)
+{
+	Oid			inputTypeId = exprType(node);
+
+	if (inputTypeId != XMLOID)
+	{
+		node = coerce_to_target_type(pstate, node, inputTypeId,
+									 XMLOID, -1,
+									 COERCION_ASSIGNMENT,
+									 COERCE_IMPLICIT_CAST);
+		if (node == NULL)
+			ereport(ERROR,
+					(errcode(ERRCODE_DATATYPE_MISMATCH),
+			/* translator: first %s is name of a SQL construct, eg LIMIT */
+					 errmsg("argument of %s must be type xml, not type %s",
+							constructName, format_type_be(inputTypeId))));
+	}
+
+	if (expression_returns_set(node))
+		ereport(ERROR,
+				(errcode(ERRCODE_DATATYPE_MISMATCH),
+		/* translator: %s is name of a SQL construct, eg LIMIT */
+				 errmsg("argument of %s must not return a set",
+						constructName)));
+
+	return node;
+}
+
 
 /* select_common_type()
  *		Determine the common supertype of a list of input expression types.

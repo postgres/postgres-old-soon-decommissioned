@@ -102,5 +102,6 @@ test: sequence
 test: polymorphism
 test: rowtypes
 test: returning
+test: xml
 test: stats
 test: tablespace

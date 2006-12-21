@@ -496,6 +496,17 @@ _equalBooleanTest(BooleanTest *a, BooleanTest *b)
 }
 
 static bool
+_equalXmlExpr(XmlExpr *a, XmlExpr *b)
+{
+	COMPARE_SCALAR_FIELD(op);
+	COMPARE_STRING_FIELD(name);
+	COMPARE_NODE_FIELD(named_args);
+	COMPARE_NODE_FIELD(args);
+
+	return true;
+}
+
+static bool
 _equalCoerceToDomain(CoerceToDomain *a, CoerceToDomain *b)
 {
 	COMPARE_NODE_FIELD(arg);
@@ -1967,6 +1978,9 @@ equal(void *a, void *b)
 			break;
 		case T_BooleanTest:
 			retval = _equalBooleanTest(a, b);
+			break;
+		case T_XmlExpr:
+			retval = _equalXmlExpr(a, b);
 			break;
 		case T_CoerceToDomain:
 			retval = _equalCoerceToDomain(a, b);

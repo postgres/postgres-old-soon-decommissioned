@@ -906,6 +906,15 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
+       <term><option>--with-libxml</option></term>
+       <listitem>
+        <para>
+         Build with libxml, required for SQL/XML support.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
        <term><option>--enable-integer-datetimes</option></term>
        <listitem>
         <para>

@@ -766,6 +766,26 @@ typedef struct BooleanTest
 } BooleanTest;
 
 /*
+ * XmlExpr - holder for SQL/XML functions XMLCONCAT,
+ * XMLELEMENT, XMLFOREST
+ */
+typedef enum XmlExprOp
+{
+	IS_XMLCONCAT,
+	IS_XMLELEMENT,
+	IS_XMLFOREST,
+} XmlExprOp;
+
+typedef struct XmlExpr
+{
+	Expr		xpr;
+	XmlExprOp	op;				/* xml expression type */
+	char	   *name;			/* element name */
+	List	   *named_args;
+	List	   *args;
+} XmlExpr;
+
+/*
  * CoerceToDomain
  *
  * CoerceToDomain represents the operation of coercing a value to a domain

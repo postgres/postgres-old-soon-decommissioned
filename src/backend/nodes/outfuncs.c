@@ -921,6 +921,17 @@ _outBooleanTest(StringInfo str, BooleanTest *node)
 }
 
 static void
+_outXmlExpr(StringInfo str, XmlExpr *node)
+{
+	WRITE_NODE_TYPE("XMLEXPR");
+	
+	WRITE_ENUM_FIELD(op, XmlExprOp);
+	WRITE_STRING_FIELD(name);
+	WRITE_NODE_FIELD(named_args);
+	WRITE_NODE_FIELD(args);
+}
+
+static void
 _outCoerceToDomain(StringInfo str, CoerceToDomain *node)
 {
 	WRITE_NODE_TYPE("COERCETODOMAIN");
@@ -2018,6 +2029,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_BooleanTest:
 				_outBooleanTest(str, obj);
+				break;
+			case T_XmlExpr:
+				_outXmlExpr(str, obj);
 				break;
 			case T_CoerceToDomain:
 				_outCoerceToDomain(str, obj);

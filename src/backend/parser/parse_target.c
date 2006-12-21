@@ -1315,6 +1315,21 @@ FigureColnameInternal(Node *node, char **name)
 					return 2;
 			}
 			break;
+		case T_XmlExpr:
+			/* make SQL/XML functions act like a regular function */
+			switch (((XmlExpr*) node)->op)
+			{		
+				case IS_XMLCONCAT:
+					*name = "xmlconcat";
+					return 2;
+				case IS_XMLELEMENT:
+					*name = "xmlelement";
+					return 2;
+				case IS_XMLFOREST:
+					*name = "xmlforest";
+					return 2;
+			} 
+			break;
 		default:
 			break;
 	}

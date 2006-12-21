@@ -724,6 +724,22 @@ typedef struct NullTestState
 } NullTestState;
 
 /* ----------------
+ *		XmlExprState node
+ * ----------------
+ */
+typedef struct XmlExprState
+{
+	ExprState	xprstate;
+	XmlExprOp	op;
+	char	   *name;
+	List	   *named_args;
+	List	   *args;
+	Oid		   *named_args_tcache;
+	char	  **named_args_ncache;
+	Oid			arg_typeout;
+} XmlExprState;
+
+/* ----------------
  *		CoerceToDomainState node
  * ----------------
  */

@@ -140,6 +140,7 @@ typedef enum NodeTag
 	T_RangeTblRef,
 	T_JoinExpr,
 	T_FromExpr,
+	T_XmlExpr,
 
 	/*
 	 * TAGS FOR EXPRESSION STATE NODES (execnodes.h)
@@ -168,6 +169,7 @@ typedef enum NodeTag
 	T_NullTestState,
 	T_CoerceToDomainState,
 	T_DomainConstraintState,
+	T_XmlExprState,
 
 	/*
 	 * TAGS FOR PLANNER NODES (relation.h)
