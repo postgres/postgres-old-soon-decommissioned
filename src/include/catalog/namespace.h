@@ -51,6 +51,9 @@ extern bool OperatorIsVisible(Oid oprid);
 extern Oid	OpclassnameGetOpcid(Oid amid, const char *opcname);
 extern bool OpclassIsVisible(Oid opcid);
 
+extern Oid	OpfamilynameGetOpfid(Oid amid, const char *opfname);
+extern bool OpfamilyIsVisible(Oid opfid);
+
 extern Oid	ConversionGetConid(const char *conname);
 extern bool ConversionIsVisible(Oid conid);
 

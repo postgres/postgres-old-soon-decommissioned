@@ -342,6 +342,7 @@ make_restrictinfo_internal(Expr *clause,
 	restrictinfo->mergejoinoperator = InvalidOid;
 	restrictinfo->left_sortop = InvalidOid;
 	restrictinfo->right_sortop = InvalidOid;
+	restrictinfo->mergeopfamily = InvalidOid;
 
 	restrictinfo->left_pathkey = NIL;
 	restrictinfo->right_pathkey = NIL;

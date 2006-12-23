@@ -160,6 +160,7 @@ extern Selectivity rowcomparesel(PlannerInfo *root,
 			  int varRelid, JoinType jointype);
 
 extern void mergejoinscansel(PlannerInfo *root, Node *clause,
+				 Oid opfamily, int strategy,
 				 Selectivity *leftscan,
 				 Selectivity *rightscan);
 

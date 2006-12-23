@@ -27,6 +27,7 @@
 #include "catalog/pg_namespace.h"
 #include "catalog/pg_opclass.h"
 #include "catalog/pg_operator.h"
+#include "catalog/pg_opfamily.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
 #include "commands/dbcommands.h"
@@ -1062,10 +1063,93 @@ OpclassIsVisible(Oid opcid)
 		 */
 		char	   *opcname = NameStr(opcform->opcname);
 
-		visible = (OpclassnameGetOpcid(opcform->opcamid, opcname) == opcid);
+		visible = (OpclassnameGetOpcid(opcform->opcmethod, opcname) == opcid);
 	}
 
 	ReleaseSysCache(opctup);
+
+	return visible;
+}
+
+/*
+ * OpfamilynameGetOpfid
+ *		Try to resolve an unqualified index opfamily name.
+ *		Returns OID if opfamily found in search path, else InvalidOid.
+ *
+ * This is essentially the same as TypenameGetTypid, but we have to have
+ * an extra argument for the index AM OID.
+ */
+Oid
+OpfamilynameGetOpfid(Oid amid, const char *opfname)
+{
+	Oid			opfid;
+	ListCell   *l;
+
+	recomputeNamespacePath();
+
+	foreach(l, namespaceSearchPath)
+	{
+		Oid			namespaceId = lfirst_oid(l);
+
+		opfid = GetSysCacheOid(OPFAMILYAMNAMENSP,
+							   ObjectIdGetDatum(amid),
+							   PointerGetDatum(opfname),
+							   ObjectIdGetDatum(namespaceId),
+							   0);
+		if (OidIsValid(opfid))
+			return opfid;
+	}
+
+	/* Not found in path */
+	return InvalidOid;
+}
+
+/*
+ * OpfamilyIsVisible
+ *		Determine whether an opfamily (identified by OID) is visible in the
+ *		current search path.  Visible means "would be found by searching
+ *		for the unqualified opfamily name".
+ */
+bool
+OpfamilyIsVisible(Oid opfid)
+{
+	HeapTuple	opftup;
+	Form_pg_opfamily opfform;
+	Oid			opfnamespace;
+	bool		visible;
+
+	opftup = SearchSysCache(OPFAMILYOID,
+							ObjectIdGetDatum(opfid),
+							0, 0, 0);
+	if (!HeapTupleIsValid(opftup))
+		elog(ERROR, "cache lookup failed for opfamily %u", opfid);
+	opfform = (Form_pg_opfamily) GETSTRUCT(opftup);
+
+	recomputeNamespacePath();
+
+	/*
+	 * Quick check: if it ain't in the path at all, it ain't visible. Items in
+	 * the system namespace are surely in the path and so we needn't even do
+	 * list_member_oid() for them.
+	 */
+	opfnamespace = opfform->opfnamespace;
+	if (opfnamespace != PG_CATALOG_NAMESPACE &&
+		!list_member_oid(namespaceSearchPath, opfnamespace))
+		visible = false;
+	else
+	{
+		/*
+		 * If it is in the path, it might still not be visible; it could be
+		 * hidden by another opfamily of the same name earlier in the path. So
+		 * we must do a slow check to see if this opfamily would be found by
+		 * OpfamilynameGetOpfid.
+		 */
+		char	   *opfname = NameStr(opfform->opfname);
+
+		visible = (OpfamilynameGetOpfid(opfform->opfmethod, opfname) == opfid);
+	}
+
+	ReleaseSysCache(opftup);
 
 	return visible;
 }

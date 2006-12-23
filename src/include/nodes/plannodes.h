@@ -351,7 +351,9 @@ typedef struct NestLoop
 typedef struct MergeJoin
 {
 	Join		join;
-	List	   *mergeclauses;
+	List	   *mergeclauses;		/* mergeclauses as expression trees */
+	List	   *mergefamilies;		/* OID list of btree opfamilies */
+	List	   *mergestrategies;	/* integer list of btree strategies */
 } MergeJoin;
 
 /* ----------------

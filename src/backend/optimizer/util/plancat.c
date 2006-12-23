@@ -169,16 +169,16 @@ get_relation_info(PlannerInfo *root, Oid relationObjectId, bool inhparent,
 			info->ncolumns = ncolumns = index->indnatts;
 
 			/*
-			 * Need to make classlist and ordering arrays large enough to put
+			 * Need to make opfamily and ordering arrays large enough to put
 			 * a terminating 0 at the end of each one.
 			 */
 			info->indexkeys = (int *) palloc(sizeof(int) * ncolumns);
-			info->classlist = (Oid *) palloc0(sizeof(Oid) * (ncolumns + 1));
+			info->opfamily = (Oid *) palloc0(sizeof(Oid) * (ncolumns + 1));
 			info->ordering = (Oid *) palloc0(sizeof(Oid) * (ncolumns + 1));
 
 			for (i = 0; i < ncolumns; i++)
 			{
-				info->classlist[i] = indexRelation->rd_indclass->values[i];
+				info->opfamily[i] = indexRelation->rd_opfamily[i];
 				info->indexkeys[i] = index->indkey.values[i];
 			}
 

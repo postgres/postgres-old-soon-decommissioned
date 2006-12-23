@@ -33,17 +33,19 @@ typedef struct TypeCacheEntry
 	Oid			typrelid;
 
 	/*
-	 * Information obtained from opclass entries
+	 * Information obtained from opfamily entries
 	 *
 	 * These will be InvalidOid if no match could be found, or if the
 	 * information hasn't yet been requested.
 	 */
-	Oid			btree_opc;		/* OID of the default btree opclass */
-	Oid			hash_opc;		/* OID of the default hash opclass */
-	Oid			eq_opr;			/* OID of the equality operator */
-	Oid			lt_opr;			/* OID of the less-than operator */
-	Oid			gt_opr;			/* OID of the greater-than operator */
-	Oid			cmp_proc;		/* OID of the btree comparison function */
+	Oid			btree_opf;		/* the default btree opclass' family */
+	Oid			btree_opintype;	/* the default btree opclass' opcintype */
+	Oid			hash_opf;		/* the default hash opclass' family */
+	Oid			hash_opintype;	/* the default hash opclass' opcintype */
+	Oid			eq_opr;			/* the equality operator */
+	Oid			lt_opr;			/* the less-than operator */
+	Oid			gt_opr;			/* the greater-than operator */
+	Oid			cmp_proc;		/* the btree comparison function */
 
 	/*
 	 * Pre-set-up fmgr call info for the equality operator and the btree
@@ -71,6 +73,7 @@ typedef struct TypeCacheEntry
 #define TYPECACHE_EQ_OPR_FINFO		0x0010
 #define TYPECACHE_CMP_PROC_FINFO	0x0020
 #define TYPECACHE_TUPDESC			0x0040
+#define TYPECACHE_BTREE_OPFAMILY	0x0080
 
 extern TypeCacheEntry *lookup_type_cache(Oid type_id, int flags);
 

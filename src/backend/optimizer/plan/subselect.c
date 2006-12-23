@@ -689,11 +689,11 @@ convert_IN_to_join(PlannerInfo *root, SubLink *sublink)
 		return NULL;
 	if (sublink->testexpr && IsA(sublink->testexpr, OpExpr))
 	{
-		List	   *opclasses;
+		List	   *opfamilies;
 		List	   *opstrats;
 
 		get_op_btree_interpretation(((OpExpr *) sublink->testexpr)->opno,
-									&opclasses, &opstrats);
+									&opfamilies, &opstrats);
 		if (!list_member_int(opstrats, ROWCOMPARE_EQ))
 			return NULL;
 	}

@@ -1318,6 +1318,7 @@ typedef struct CreateOpClassStmt
 {
 	NodeTag		type;
 	List	   *opclassname;	/* qualified name (list of Value strings) */
+	List	   *opfamilyname;	/* qualified name (ditto); NIL if omitted */
 	char	   *amname;			/* name of index AM opclass is for */
 	TypeName   *datatype;		/* datatype of indexed column */
 	List	   *items;			/* List of CreateOpClassItem nodes */

@@ -428,7 +428,7 @@ _equalRowCompareExpr(RowCompareExpr *a, RowCompareExpr *b)
 {
 	COMPARE_SCALAR_FIELD(rctype);
 	COMPARE_NODE_FIELD(opnos);
-	COMPARE_NODE_FIELD(opclasses);
+	COMPARE_NODE_FIELD(opfamilies);
 	COMPARE_NODE_FIELD(largs);
 	COMPARE_NODE_FIELD(rargs);
 
@@ -1163,6 +1163,7 @@ static bool
 _equalCreateOpClassStmt(CreateOpClassStmt *a, CreateOpClassStmt *b)
 {
 	COMPARE_NODE_FIELD(opclassname);
+	COMPARE_NODE_FIELD(opfamilyname);
 	COMPARE_STRING_FIELD(amname);
 	COMPARE_NODE_FIELD(datatype);
 	COMPARE_NODE_FIELD(items);
