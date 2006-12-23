@@ -32,6 +32,6 @@ extern Datum xmlpi(PG_FUNCTION_ARGS);
 extern Datum xmlroot(PG_FUNCTION_ARGS);
 extern Datum xmlvalidate(PG_FUNCTION_ARGS);
 
-extern char *map_sql_identifier_to_xml_name(unsigned char *ident, bool fully_escaped);
+extern char *map_sql_identifier_to_xml_name(char *ident, bool fully_escaped);
 
 #endif /* XML_H */
