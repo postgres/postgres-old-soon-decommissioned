@@ -3575,12 +3575,13 @@ parse_bool(const char *value, bool *result)
 			*result = false;
 	}
 
-	else if (pg_strcasecmp(value, "on") == 0)
+	/* 'o' is not unique enough */
+	else if (pg_strncasecmp(value, "on", (len > 2 ? len : 2)) == 0)
 	{
 		if (result)
 			*result = true;
 	}
-	else if (pg_strcasecmp(value, "off") == 0)
+	else if (pg_strncasecmp(value, "off", (len > 2 ? len : 2)) == 0)
 	{
 		if (result)
 			*result = false;
