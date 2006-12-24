@@ -111,6 +111,12 @@ pg_send_history(PQExpBuffer history_buf)
 	static char *prev_hist = NULL;
 
 	char	   *s = history_buf->data;
+	int			i;
+
+	/* Trim any trailing \n's (OK to scribble on history_buf) */
+	for (i = strlen(s) - 1; i >= 0 && s[i] == '\n'; i--)
+		;
+	s[i + 1] = '\0';
 
 	if (useHistory && s[0])
 	{
@@ -123,12 +129,6 @@ pg_send_history(PQExpBuffer history_buf)
 		}
 		else
 		{
-			int			i;
-
-			/* Trim any trailing \n's (OK to scribble on history_buf) */
-			for (i = strlen(s) - 1; i >= 0 && s[i] == '\n'; i--)
-				;
-			s[i + 1] = '\0';
 			/* Save each previous line for ignoredups processing */
 			if (prev_hist)
 				free(prev_hist);
