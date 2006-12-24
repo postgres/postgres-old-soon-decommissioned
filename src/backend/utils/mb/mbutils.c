@@ -483,6 +483,14 @@ pg_mb2wchar_with_len(const char *from, pg_wchar *to, int len)
 	return (*pg_wchar_table[DatabaseEncoding->encoding].mb2wchar_with_len) ((const unsigned char *) from, to, len);
 }
 
+/* same, with any encoding */
+int
+pg_encoding_mb2wchar_with_len(int encoding,
+							  const char *from, pg_wchar *to, int len)
+{
+	return (*pg_wchar_table[encoding].mb2wchar_with_len) ((const unsigned char *) from, to, len);
+}
+
 /* returns the byte length of a multibyte word */
 int
 pg_mblen(const char *mbstr)
