@@ -130,6 +130,7 @@ typedef enum NodeTag
 	T_RowCompareExpr,
 	T_CoalesceExpr,
 	T_MinMaxExpr,
+	T_XmlExpr,
 	T_NullIfExpr,
 	T_NullTest,
 	T_BooleanTest,
@@ -140,7 +141,6 @@ typedef enum NodeTag
 	T_RangeTblRef,
 	T_JoinExpr,
 	T_FromExpr,
-	T_XmlExpr,
 
 	/*
 	 * TAGS FOR EXPRESSION STATE NODES (execnodes.h)
@@ -166,10 +166,10 @@ typedef enum NodeTag
 	T_RowCompareExprState,
 	T_CoalesceExprState,
 	T_MinMaxExprState,
+	T_XmlExprState,
 	T_NullTestState,
 	T_CoerceToDomainState,
 	T_DomainConstraintState,
-	T_XmlExprState,
 
 	/*
 	 * TAGS FOR PLANNER NODES (relation.h)

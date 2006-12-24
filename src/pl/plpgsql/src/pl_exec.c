@@ -4493,6 +4493,18 @@ exec_simple_check_node(Node *node)
 				return TRUE;
 			}
 
+		case T_XmlExpr:
+			{
+				XmlExpr *expr = (XmlExpr *) node;
+
+				if (!exec_simple_check_node((Node *) expr->named_args))
+					return FALSE;
+				if (!exec_simple_check_node((Node *) expr->args))
+					return FALSE;
+
+				return TRUE;
+			}
+
 		case T_NullIfExpr:
 			{
 				NullIfExpr *expr = (NullIfExpr *) node;

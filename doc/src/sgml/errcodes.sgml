@@ -541,6 +541,29 @@
 <entry>untranslatable_character</entry>
 </row>
 
+<row>
+<entry><literal>2200M</literal></entry>
+<entry>INVALID XML DOCUMENT</entry>
+<entry>invalid_xml_document</entry>
+</row>
+
+<row>
+<entry><literal>2200N</literal></entry>
+<entry>INVALID XML CONTENT</entry>
+<entry>invalid_xml_content</entry>
+</row>
+
+<row>
+<entry><literal>2200S</literal></entry>
+<entry>INVALID XML COMMENT</entry>
+<entry>invalid_xml_comment</entry>
+</row>
+
+<row>
+<entry><literal>2200T</literal></entry>
+<entry>INVALID XML PROCESSING INSTRUCTION</entry>
+<entry>invalid_xml_processing_instruction</entry>
+</row>
 
 <row>
 <entry spanname="span13"><emphasis role="bold">Class 23 &mdash; Integrity Constraint Violation</></entry>

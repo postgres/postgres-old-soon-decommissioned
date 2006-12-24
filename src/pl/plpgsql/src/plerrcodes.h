@@ -244,6 +244,22 @@
 },
 
 {
+	"invalid_xml_document", ERRCODE_INVALID_XML_DOCUMENT
+},
+
+{
+	"invalid_xml_content", ERRCODE_INVALID_XML_CONTENT
+},
+
+{
+	"invalid_xml_comment", ERRCODE_INVALID_XML_COMMENT
+},
+
+{
+	"invalid_xml_processing_instruction", ERRCODE_INVALID_XML_PROCESSING_INSTRUCTION
+},
+
+{
 	"integrity_constraint_violation", ERRCODE_INTEGRITY_CONSTRAINT_VIOLATION
 },
 

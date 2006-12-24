@@ -909,7 +909,7 @@ su - postgres
        <term><option>--with-libxml</option></term>
        <listitem>
         <para>
-         Build with libxml, required for SQL/XML support.
+         Build with libxml (enables SQL/XML support).
         </para>
        </listitem>
       </varlistentry>

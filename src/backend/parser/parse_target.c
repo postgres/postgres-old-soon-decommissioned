@@ -1328,6 +1328,15 @@ FigureColnameInternal(Node *node, char **name)
 				case IS_XMLFOREST:
 					*name = "xmlforest";
 					return 2;
+				case IS_XMLPARSE:
+					*name = "xmlparse";
+					return 2;
+				case IS_XMLPI:
+					*name = "xmlpi";
+					return 2;
+				case IS_XMLROOT:
+					*name = "xmlroot";
+					return 2;
 			} 
 			break;
 		default:

@@ -711,6 +711,18 @@ typedef struct MinMaxExprState
 } MinMaxExprState;
 
 /* ----------------
+ *		XmlExprState node
+ * ----------------
+ */
+typedef struct XmlExprState
+{
+	ExprState	xprstate;
+	List	   *named_args;		/* ExprStates for named arguments */
+	FmgrInfo   *named_outfuncs;	/* array of output fns for named arguments */
+	List	   *args;			/* ExprStates for other arguments */
+} XmlExprState;
+
+/* ----------------
  *		NullTestState node
  * ----------------
  */
@@ -722,22 +734,6 @@ typedef struct NullTestState
 	/* used only if argisrow: */
 	TupleDesc	argdesc;		/* tupdesc for most recent input */
 } NullTestState;
-
-/* ----------------
- *		XmlExprState node
- * ----------------
- */
-typedef struct XmlExprState
-{
-	ExprState	xprstate;
-	XmlExprOp	op;
-	char	   *name;
-	List	   *named_args;
-	List	   *args;
-	Oid		   *named_args_tcache;
-	char	  **named_args_ncache;
-	Oid			arg_typeout;
-} XmlExprState;
 
 /* ----------------
  *		CoerceToDomainState node

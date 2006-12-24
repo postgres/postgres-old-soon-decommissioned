@@ -27,10 +27,12 @@ typedef struct varlena xmltype;
 extern Datum xml_in(PG_FUNCTION_ARGS);
 extern Datum xml_out(PG_FUNCTION_ARGS);
 extern Datum xmlcomment(PG_FUNCTION_ARGS);
-extern Datum xmlparse(PG_FUNCTION_ARGS);
-extern Datum xmlpi(PG_FUNCTION_ARGS);
-extern Datum xmlroot(PG_FUNCTION_ARGS);
+extern Datum texttoxml(PG_FUNCTION_ARGS);
 extern Datum xmlvalidate(PG_FUNCTION_ARGS);
+
+extern xmltype *xmlparse(text *data, bool is_doc, bool preserve_whitespace);
+extern xmltype *xmlpi(char *target, text *arg);
+extern xmltype *xmlroot(xmltype *data, text *version, int standalone);
 
 extern char *map_sql_identifier_to_xml_name(char *ident, bool fully_escaped);
 
