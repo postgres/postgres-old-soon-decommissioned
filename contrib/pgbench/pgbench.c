@@ -1500,7 +1500,7 @@ main(int argc, char **argv)
 
 	/* set random seed */
 	gettimeofday(&tv1, NULL);
-	srand((unsigned int) tv1.tv_usec);
+	srandom((unsigned int) tv1.tv_usec);
 
 	/* get start up time */
 	gettimeofday(&tv1, NULL);
