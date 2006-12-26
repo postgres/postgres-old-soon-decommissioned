@@ -341,6 +341,7 @@ void
 ExecFunctionReScan(FunctionScanState *node, ExprContext *exprCtxt)
 {
 	ExecClearTuple(node->ss.ps.ps_ResultTupleSlot);
+	node->ss.ps.ps_TupFromTlist = false;
 
 	/*
 	 * If we haven't materialized yet, just return.

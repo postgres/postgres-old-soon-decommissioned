@@ -270,6 +270,8 @@ ExecTidReScan(TidScanState *node, ExprContext *exprCtxt)
 	estate = node->ss.ps.state;
 	scanrelid = ((TidScan *) node->ss.ps.plan)->scan.scanrelid;
 
+	node->ss.ps.ps_TupFromTlist = false;
+
 	/* If we are being passed an outer tuple, save it for runtime key calc */
 	if (exprCtxt != NULL)
 		node->ss.ps.ps_ExprContext->ecxt_outertuple =
@@ -384,6 +386,8 @@ ExecInitTidScan(TidScan *node, EState *estate)
 	 * create expression context for node
 	 */
 	ExecAssignExprContext(estate, &tidstate->ss.ps);
+
+	tidstate->ss.ps.ps_TupFromTlist = false;
 
 	/*
 	 * initialize child expressions
