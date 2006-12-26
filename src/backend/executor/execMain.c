@@ -2223,6 +2223,10 @@ EvalPlanQualStart(evalPlanQual *epq, EState *estate, evalPlanQual *priorepq)
 
 	rtsize = list_length(estate->es_range_table);
 
+	/*
+	 * It's tempting to think about using CreateSubExecutorState here, but
+	 * at present we can't because of memory leakage concerns ...
+	 */
 	epq->estate = epqstate = CreateExecutorState();
 
 	oldcontext = MemoryContextSwitchTo(epqstate->es_query_cxt);
