@@ -334,6 +334,7 @@ void
 ExecValuesReScan(ValuesScanState *node, ExprContext *exprCtxt)
 {
 	ExecClearTuple(node->ss.ps.ps_ResultTupleSlot);
+	node->ss.ps.ps_TupFromTlist = false;
 
 	node->curr_idx = -1;
 }
