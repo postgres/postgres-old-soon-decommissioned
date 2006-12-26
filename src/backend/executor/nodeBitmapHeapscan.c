@@ -364,6 +364,8 @@ ExecBitmapHeapReScan(BitmapHeapScanState *node, ExprContext *exprCtxt)
 	estate = node->ss.ps.state;
 	scanrelid = ((BitmapHeapScan *) node->ss.ps.plan)->scan.scanrelid;
 
+	node->ss.ps.ps_TupFromTlist = false;
+
 	/*
 	 * If we are being passed an outer tuple, link it into the "regular"
 	 * per-tuple econtext for possible qual eval.
@@ -487,6 +489,8 @@ ExecInitBitmapHeapScan(BitmapHeapScan *node, EState *estate, int eflags)
 	 * create expression context for node
 	 */
 	ExecAssignExprContext(estate, &scanstate->ss.ps);
+
+	scanstate->ss.ps.ps_TupFromTlist = false;
 
 	/*
 	 * initialize child expressions

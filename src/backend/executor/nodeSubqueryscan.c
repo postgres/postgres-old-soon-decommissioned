@@ -294,4 +294,5 @@ ExecSubqueryReScan(SubqueryScanState *node, ExprContext *exprCtxt)
 	MemoryContextSwitchTo(oldcontext);
 
 	node->ss.ss_ScanTupleSlot = NULL;
+	node->ss.ps.ps_TupFromTlist = false;
 }
