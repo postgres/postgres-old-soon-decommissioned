@@ -118,7 +118,7 @@ addWrd(DictThesaurus * d, char *b, char *e, uint16 idsubst, uint16 nwrd, uint16 
 	{
 		nres = ntres = 0;
 
-		if (idsubst <= d->nsubst)
+		if (idsubst >= d->nsubst)
 		{
 			if (d->nsubst == 0)
 			{
