@@ -319,6 +319,8 @@ ExecSeqReScan(SeqScanState *node, ExprContext *exprCtxt)
 	estate = node->ps.state;
 	scanrelid = ((SeqScan *) node->ps.plan)->scanrelid;
 
+	node->ps.ps_TupFromTlist = false;
+
 	/* If this is re-scanning of PlanQual ... */
 	if (estate->es_evTuple != NULL &&
 		estate->es_evTuple[scanrelid - 1] != NULL)

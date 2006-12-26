@@ -405,6 +405,8 @@ ExecIndexReScan(IndexScanState *node, ExprContext *exprCtxt)
 	numScanKeys = node->iss_NumScanKeys;
 	scanrelid = ((IndexScan *) node->ss.ps.plan)->scan.scanrelid;
 
+	node->ss.ps.ps_TupFromTlist = false;
+
 	if (econtext)
 	{
 		/*
@@ -679,6 +681,8 @@ ExecInitIndexScan(IndexScan *node, EState *estate)
 	 * create expression context for node
 	 */
 	ExecAssignExprContext(estate, &indexstate->ss.ps);
+
+	indexstate->ss.ps.ps_TupFromTlist = false;
 
 	/*
 	 * initialize child expressions
