@@ -832,6 +832,7 @@ SELECT pg_stat_get_backend_pid(s.backendid) AS procpid,
    in <productname>PostgreSQL</productname>. To include DTrace support
    specify <option>--enable-dtrace</> to configure.  See <xref
    linkend="install-procedure"> for further information.
+  </para>
   </sect2>
 
   <sect2 id="trace-points">
