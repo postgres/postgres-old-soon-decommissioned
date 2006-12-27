@@ -140,7 +140,7 @@ ifeq ($(PORTNAME), linux)
 $(shlib): exports.list
 
 exports.list: exports.txt
-	echo '{ global:' >$@
+	echo 'VERSION { global:' >$@
 	$(AWK) '/^[^#]/ {printf "%s;\n",$$1}' $< >>$@
 	echo ' local: *; };' >>$@
 
