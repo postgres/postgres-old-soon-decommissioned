@@ -3987,6 +3987,11 @@ DATA(insert OID = 2896 (  xml			   PGNSP PGUID 12 f f t f i 1 142 "25" _null_ _n
 DESCR("perform a non-validating parse of a character string to produce an XML value");
 DATA(insert OID = 2897 (  xmlvalidate 	   PGNSP PGUID 12 f f t f i 2 16 "142 25" _null_ _null_ _null_ xmlvalidate - _null_ ));
 DESCR("validate an XML value");
+DATA(insert OID = 2898 (  xml_recv		   PGNSP PGUID 12 f f t f s 1 142 "2281" _null_ _null_ _null_	xml_recv - _null_ ));
+DESCR("I/O");
+DATA(insert OID = 2899 (  xml_send		   PGNSP PGUID 12 f f t f s 1 17 "142" _null_ _null_ _null_	xml_send - _null_ ));
+DESCR("I/O");
+
 
 /*
  * Symbolic values for provolatile column: these indicate whether the result

@@ -26,6 +26,8 @@ typedef struct varlena xmltype;
 
 extern Datum xml_in(PG_FUNCTION_ARGS);
 extern Datum xml_out(PG_FUNCTION_ARGS);
+extern Datum xml_recv(PG_FUNCTION_ARGS);
+extern Datum xml_send(PG_FUNCTION_ARGS);
 extern Datum xmlcomment(PG_FUNCTION_ARGS);
 extern Datum texttoxml(PG_FUNCTION_ARGS);
 extern Datum xmlvalidate(PG_FUNCTION_ARGS);
