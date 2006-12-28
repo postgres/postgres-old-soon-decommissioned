@@ -60,8 +60,8 @@ static bool do_shell(const char *command);
 /*----------
  * HandleSlashCmds:
  *
- * Handles all the different commands that start with '\',
- * ordinarily called by MainLoop().
+ * Handles all the different commands that start with '\'.
+ * Ordinarily called by MainLoop().
  *
  * scan_state is a lexer working state that is set to continue scanning
  * just after the '\'.  The lexer is advanced past the command and all
@@ -147,6 +147,9 @@ HandleSlashCmds(PsqlScanState scan_state,
 	psql_scan_slash_command_end(scan_state);
 
 	free(cmd);
+
+	/* some commands write to queryFout, so make sure output is sent */
+	fflush(pset.queryFout);
 
 	return status;
 }
