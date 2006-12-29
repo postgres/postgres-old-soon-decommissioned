@@ -37,6 +37,7 @@
 #include "utils/fmgroids.h"
 #include "utils/lsyscache.h"
 #include "utils/typcache.h"
+#include "utils/xml.h"
 
 
 /* ----------
