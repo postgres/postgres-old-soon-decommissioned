@@ -37,5 +37,6 @@ extern xmltype *xmlpi(char *target, text *arg);
 extern xmltype *xmlroot(xmltype *data, text *version, int standalone);
 
 extern char *map_sql_identifier_to_xml_name(char *ident, bool fully_escaped);
+extern char *map_xml_name_to_sql_identifier(char *name);
 
 #endif /* XML_H */

@@ -3810,11 +3810,8 @@ get_rule_expr(Node *node, deparse_context *context,
 				}
 				if (xexpr->name)
 				{
-					/*
-					 * XXX need to de-escape the name
-					 */
 					appendStringInfo(buf, "NAME %s",
-									 quote_identifier(xexpr->name));
+									 quote_identifier(map_xml_name_to_sql_identifier(xexpr->name)));
 					needcomma = true;
 				}
 				if (xexpr->named_args)
@@ -3834,11 +3831,8 @@ get_rule_expr(Node *node, deparse_context *context,
 						if (needcomma)
 							appendStringInfoString(buf, ", ");
 						get_rule_expr((Node *) e, context, true);
-						/*
-						 * XXX need to de-escape the name
-						 */
 						appendStringInfo(buf, " AS %s",
-										 quote_identifier(argname));
+										 quote_identifier(map_xml_name_to_sql_identifier(argname)));
 						needcomma = true;
 					}
 					if (xexpr->op != IS_XMLFOREST)
