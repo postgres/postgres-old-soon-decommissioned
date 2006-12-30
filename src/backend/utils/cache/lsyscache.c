@@ -2016,6 +2016,60 @@ getTypeBinaryOutputInfo(Oid type, Oid *typSend, bool *typIsVarlena)
 	ReleaseSysCache(typeTuple);
 }
 
+/*
+ * get_typmodin
+ *
+ *		Given the type OID, return the type's typmodin procedure, if any.
+ */
+Oid
+get_typmodin(Oid typid)
+{
+	HeapTuple	tp;
+
+	tp = SearchSysCache(TYPEOID,
+						ObjectIdGetDatum(typid),
+						0, 0, 0);
+	if (HeapTupleIsValid(tp))
+	{
+		Form_pg_type typtup = (Form_pg_type) GETSTRUCT(tp);
+		Oid			result;
+
+		result = typtup->typmodin;
+		ReleaseSysCache(tp);
+		return result;
+	}
+	else
+		return InvalidOid;
+}
+
+#ifdef NOT_USED
+/*
+ * get_typmodout
+ *
+ *		Given the type OID, return the type's typmodout procedure, if any.
+ */
+Oid
+get_typmodout(Oid typid)
+{
+	HeapTuple	tp;
+
+	tp = SearchSysCache(TYPEOID,
+						ObjectIdGetDatum(typid),
+						0, 0, 0);
+	if (HeapTupleIsValid(tp))
+	{
+		Form_pg_type typtup = (Form_pg_type) GETSTRUCT(tp);
+		Oid			result;
+
+		result = typtup->typmodout;
+		ReleaseSysCache(tp);
+		return result;
+	}
+	else
+		return InvalidOid;
+}
+#endif /* NOT_USED */
+
 
 /*				---------- STATISTICS CACHE ----------					 */
 

@@ -24,6 +24,8 @@ extern Oid	LookupTypeName(ParseState *pstate, const TypeName *typename);
 extern char *TypeNameToString(const TypeName *typename);
 extern char *TypeNameListToString(List *typenames);
 extern Oid	typenameTypeId(ParseState *pstate, const TypeName *typename);
+extern int32 typenameTypeMod(ParseState *pstate, const TypeName *typename,
+							 Oid typeId);
 extern Type typenameType(ParseState *pstate, const TypeName *typename);
 
 extern Type typeidType(Oid id);

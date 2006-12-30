@@ -508,6 +508,7 @@ BuildDescForRelation(List *schema)
 	AttrDefault *attrdef = NULL;
 	TupleConstr *constr = (TupleConstr *) palloc0(sizeof(TupleConstr));
 	char	   *attname;
+	Oid			atttypid;
 	int32		atttypmod;
 	int			attdim;
 	int			ndef = 0;
@@ -533,7 +534,8 @@ BuildDescForRelation(List *schema)
 		attnum++;
 
 		attname = entry->colname;
-		atttypmod = entry->typename->typmod;
+		atttypid = typenameTypeId(NULL, entry->typename);
+		atttypmod = typenameTypeMod(NULL, entry->typename, atttypid);
 		attdim = list_length(entry->typename->arrayBounds);
 
 		if (entry->typename->setof)
@@ -543,8 +545,7 @@ BuildDescForRelation(List *schema)
 							attname)));
 
 		TupleDescInitEntry(desc, attnum, attname,
-						   typenameTypeId(NULL, entry->typename),
-						   atttypmod, attdim);
+						   atttypid, atttypmod, attdim);
 
 		/* Fill in additional stuff not handled by TupleDescInitEntry */
 		if (entry->is_not_null)

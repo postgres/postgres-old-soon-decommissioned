@@ -255,6 +255,7 @@ extern void mda_get_range(int n, int *span, const int *st, const int *endp);
 extern void mda_get_prod(int n, const int *range, int *prod);
 extern void mda_get_offset_values(int n, int *dist, const int *prod, const int *span);
 extern int	mda_next_tuple(int n, int *curr, const int *span);
+extern int32 *ArrayGetTypmods(ArrayType *arr, int *n);
 
 /*
  * prototypes for functions defined in array_userfuncs.c

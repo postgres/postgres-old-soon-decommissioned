@@ -565,6 +565,8 @@ extern Datum bpcharin(PG_FUNCTION_ARGS);
 extern Datum bpcharout(PG_FUNCTION_ARGS);
 extern Datum bpcharrecv(PG_FUNCTION_ARGS);
 extern Datum bpcharsend(PG_FUNCTION_ARGS);
+extern Datum bpchartypmodin(PG_FUNCTION_ARGS);
+extern Datum bpchartypmodout(PG_FUNCTION_ARGS);
 extern Datum bpchar(PG_FUNCTION_ARGS);
 extern Datum char_bpchar(PG_FUNCTION_ARGS);
 extern Datum name_bpchar(PG_FUNCTION_ARGS);
@@ -586,6 +588,8 @@ extern Datum varcharin(PG_FUNCTION_ARGS);
 extern Datum varcharout(PG_FUNCTION_ARGS);
 extern Datum varcharrecv(PG_FUNCTION_ARGS);
 extern Datum varcharsend(PG_FUNCTION_ARGS);
+extern Datum varchartypmodin(PG_FUNCTION_ARGS);
+extern Datum varchartypmodout(PG_FUNCTION_ARGS);
 extern Datum varchar(PG_FUNCTION_ARGS);
 
 /* varlena.c */
@@ -789,7 +793,9 @@ extern Datum numeric_in(PG_FUNCTION_ARGS);
 extern Datum numeric_out(PG_FUNCTION_ARGS);
 extern Datum numeric_recv(PG_FUNCTION_ARGS);
 extern Datum numeric_send(PG_FUNCTION_ARGS);
-extern Datum numeric (PG_FUNCTION_ARGS);
+extern Datum numerictypmodin(PG_FUNCTION_ARGS);
+extern Datum numerictypmodout(PG_FUNCTION_ARGS);
+extern Datum numeric(PG_FUNCTION_ARGS);
 extern Datum numeric_abs(PG_FUNCTION_ARGS);
 extern Datum numeric_uminus(PG_FUNCTION_ARGS);
 extern Datum numeric_uplus(PG_FUNCTION_ARGS);

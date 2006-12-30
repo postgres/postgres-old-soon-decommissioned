@@ -45,6 +45,7 @@
 #include "parser/gramparse.h"
 #include "parser/parse_expr.h"
 #include "parser/parse_relation.h"
+#include "parser/parse_type.h"
 #include "parser/scansup.h"
 #include "pgstat.h"
 #include "postmaster/autovacuum.h"
@@ -4523,14 +4524,17 @@ flatten_set_variable_args(const char *name, List *args)
 					 * to interval and back to normalize the value and account
 					 * for any typmod.
 					 */
+					int32		typmod;
 					Datum		interval;
 					char	   *intervalout;
+
+					typmod = typenameTypeMod(NULL, arg->typename, INTERVALOID);
 
 					interval =
 						DirectFunctionCall3(interval_in,
 											CStringGetDatum(val),
 											ObjectIdGetDatum(InvalidOid),
-									   Int32GetDatum(arg->typename->typmod));
+											Int32GetDatum(typmod));
 
 					intervalout =
 						DatumGetCString(DirectFunctionCall1(interval_out,
