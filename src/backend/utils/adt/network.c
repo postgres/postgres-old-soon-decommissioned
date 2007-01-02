@@ -1389,7 +1389,7 @@ internal_inetpl(inet *ip, int64 addend)
 			  (addend == -1 && carry == 1)))
 			ereport(ERROR,
 					(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
-					 errmsg("result out of range")));
+					 errmsg("result is out of range")));
 	}
 	ip_bits(dst) = ip_bits(ip);
 
@@ -1467,7 +1467,7 @@ inetmi(PG_FUNCTION_ARGS)
 				if ((res < 0) ? (lobyte != 0xFF) : (lobyte != 0))
 					ereport(ERROR,
 							(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
-							 errmsg("result out of range")));
+							 errmsg("result is out of range")));
 			}
 			carry >>= 8;
 			byte++;
