@@ -203,10 +203,12 @@ CREATE VIEW pg_stat_all_tables AS
             pg_stat_get_tuples_returned(C.oid) AS seq_tup_read, 
             sum(pg_stat_get_numscans(I.indexrelid))::bigint AS idx_scan, 
             sum(pg_stat_get_tuples_fetched(I.indexrelid))::bigint +
-                    pg_stat_get_tuples_fetched(C.oid) AS idx_tup_fetch, 
+            pg_stat_get_tuples_fetched(C.oid) AS idx_tup_fetch, 
             pg_stat_get_tuples_inserted(C.oid) AS n_tup_ins, 
             pg_stat_get_tuples_updated(C.oid) AS n_tup_upd, 
             pg_stat_get_tuples_deleted(C.oid) AS n_tup_del,
+            pg_stat_get_live_tuples(C.oid) AS n_live_tup, 
+            pg_stat_get_dead_tuples(C.oid) AS n_dead_tup,
             pg_stat_get_last_vacuum_time(C.oid) as last_vacuum,
             pg_stat_get_last_autovacuum_time(C.oid) as last_autovacuum,
             pg_stat_get_last_analyze_time(C.oid) as last_analyze,
