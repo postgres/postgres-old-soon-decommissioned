@@ -287,7 +287,6 @@ typedef unsigned short mode_t;
 
 #define isinf(x) ((_fpclass(x) == _FPCLASS_PINF) || (_fpclass(x) == _FPCLASS_NINF))
 #define isnan(x) _isnan(x)
-#define finite(x) _finite(x)
 
 #ifndef			BIG_ENDIAN
 #define			BIG_ENDIAN		4321

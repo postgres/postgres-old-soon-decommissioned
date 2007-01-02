@@ -1033,17 +1033,6 @@ if test "$with_readline" = yes; then
 fi
 
 
-dnl Cannot use AC_CHECK_FUNC because finite may be a macro
-AC_MSG_CHECKING(for finite)
-AC_TRY_LINK([
-#include <math.h>
-double glob_double;
-],
-            [return finite(glob_double) ? 0 : 1;],
-            [AC_DEFINE(HAVE_FINITE, 1, [Define to 1 if you have finite().])
-AC_MSG_RESULT(yes)],
-            [AC_MSG_RESULT(no)])
-
 dnl Cannot use AC_CHECK_FUNC because sigsetjmp may be a macro
 dnl (especially on GNU libc)
 dnl See also comments in c.h.
