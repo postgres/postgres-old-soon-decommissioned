@@ -411,6 +411,7 @@ extern Datum textregexsubstr(PG_FUNCTION_ARGS);
 extern Datum similar_escape(PG_FUNCTION_ARGS);
 extern const char *assign_regex_flavor(const char *value,
 					bool doit, bool interactive);
+extern bool regex_flavor_is_basic(void);
 
 /* regproc.c */
 extern Datum regprocin(PG_FUNCTION_ARGS);
