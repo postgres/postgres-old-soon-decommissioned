@@ -1440,11 +1440,19 @@ dpow(PG_FUNCTION_ARGS)
 
 	/*
 	 * pow() sets errno only on some platforms, depending on whether it
-	 * follows _IEEE_, _POSIX_, _XOPEN_, or _SVID_, so, for consistency,
-	 * we don't consult it and just do our check below.
+	 * follows _IEEE_, _POSIX_, _XOPEN_, or _SVID_, and some return Nan,
+	 * so we check and set result properly.
 	 */
+	errno = 0;
 	result = pow(arg1, arg2);
-
+	if (errno == ERANGE && isnan(result))
+	{
+		if ((fabs(arg1) > 1 && arg2 >= 0) || (fabs(arg1) < 1 && arg2 < 0))
+			result = (arg1 >= 0) ? get_float8_infinity() : -get_float8_infinity();
+		else
+			result = 0;
+	}
+	
 	CHECKFLOATVAL(result, isinf(arg1) || isinf(arg2), arg1 == 0);
 	PG_RETURN_FLOAT8(result);
 }
@@ -1461,10 +1469,19 @@ dexp(PG_FUNCTION_ARGS)
 
 	/*
 	 * exp() sets errno only on some platforms, depending on whether it
-	 * follows _IEEE_, _POSIX_, _XOPEN_, or _SVID_, so, for consistency,
-	 * we don't consult it and just do our check below.
+	 * follows _IEEE_, _POSIX_, _XOPEN_, or _SVID_, and some return Nan,
+	 * so we check and set result properly.
 	 */
+	errno = 0;
 	result = exp(arg1);
+	if (errno == ERANGE && isnan(result))
+	{
+		if (arg1 >= 0)
+			result = get_float8_infinity();
+		else
+			result = 0;
+	}
+	
 
 	CHECKFLOATVAL(result, isinf(arg1), false);
 	PG_RETURN_FLOAT8(result);
