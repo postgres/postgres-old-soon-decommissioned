@@ -426,6 +426,7 @@ extern Datum texticregexeq(PG_FUNCTION_ARGS);
 extern Datum texticregexne(PG_FUNCTION_ARGS);
 extern Datum textregexsubstr(PG_FUNCTION_ARGS);
 extern Datum similar_escape(PG_FUNCTION_ARGS);
+extern bool regex_flavor_is_basic(void);
 
 /* regproc.c */
 extern Datum regprocin(PG_FUNCTION_ARGS);

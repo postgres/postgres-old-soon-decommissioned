@@ -118,6 +118,7 @@ typedef struct
 	RelOptInfo *rel;			/* Relation, or NULL if not identifiable */
 	HeapTuple	statsTuple;		/* pg_statistic tuple, or NULL if none */
 	/* NB: if statsTuple!=NULL, it must be freed when caller is done */
+	Oid			vartype;		/* exposed type of expression */
 	Oid			atttype;		/* type to pass to get_attstatsslot */
 	int32		atttypmod;		/* typmod to pass to get_attstatsslot */
 	bool		isunique;		/* true if matched to a unique index */
@@ -163,7 +164,7 @@ static void examine_variable(Query *root, Node *node, int varRelid,
 static double get_variable_numdistinct(VariableStatData *vardata);
 static bool get_variable_maximum(Query *root, VariableStatData *vardata,
 					 Oid sortop, Datum *max);
-static Selectivity prefix_selectivity(Query *root, VariableStatData *vardata,
+static Selectivity prefix_selectivity(Query *root, Node *variable,
 				   Oid opclass, Const *prefix);
 static Selectivity pattern_selectivity(Const *patt, Pattern_Type ptype);
 static Datum string_to_datum(const char *str, Oid datatype);
@@ -546,7 +547,7 @@ scalarineqsel(Query *root, Oid operator, bool isgt,
 					 */
 					if (convert_to_scalar(constval, consttype, &val,
 										  values[i - 1], values[i],
-										  vardata->atttype,
+										  vardata->vartype,
 										  &low, &high))
 					{
 						if (high <= low)
@@ -812,6 +813,7 @@ patternsel(PG_FUNCTION_ARGS, Pattern_Type ptype)
 	List	   *args = (List *) PG_GETARG_POINTER(2);
 	int			varRelid = PG_GETARG_INT32(3);
 	VariableStatData vardata;
+	Node	   *variable;
 	Node	   *other;
 	bool		varonleft;
 	Datum		constval;
@@ -836,6 +838,7 @@ patternsel(PG_FUNCTION_ARGS, Pattern_Type ptype)
 		ReleaseVariableStats(vardata);
 		return DEFAULT_MATCH_SEL;
 	}
+	variable = (Node *) linitial(args);
 
 	/*
 	 * If the constant is NULL, assume operator is strict and return zero,
@@ -862,23 +865,18 @@ patternsel(PG_FUNCTION_ARGS, Pattern_Type ptype)
 	}
 
 	/*
-	 * The var, on the other hand, might be a binary-compatible type;
-	 * particularly a domain.  Try to fold it if it's not recognized
-	 * immediately.
-	 */
-	vartype = vardata.atttype;
-	if (vartype != consttype)
-		vartype = getBaseType(vartype);
-
-	/*
-	 * We should now be able to recognize the var's datatype.  Choose the
-	 * index opclass from which we must draw the comparison operators.
+	 * Similarly, the exposed type of the left-hand side should be one
+	 * of those we know.  (Do not look at vardata.atttype, which might be
+	 * something binary-compatible but different.)  We can use it to choose
+	 * the index opclass from which we must draw the comparison operators.
 	 *
 	 * NOTE: It would be more correct to use the PATTERN opclasses than the
 	 * simple ones, but at the moment ANALYZE will not generate statistics
 	 * for the PATTERN operators.  But our results are so approximate
 	 * anyway that it probably hardly matters.
 	 */
+	vartype = vardata.vartype;
+
 	switch (vartype)
 	{
 		case TEXTOID:
@@ -944,7 +942,7 @@ patternsel(PG_FUNCTION_ARGS, Pattern_Type ptype)
 
 		if (eqopr == InvalidOid)
 			elog(ERROR, "no = operator for opclass %u", opclass);
-		eqargs = list_make2(vardata.var, prefix);
+		eqargs = list_make2(variable, prefix);
 		result = DatumGetFloat8(DirectFunctionCall4(eqsel,
 													PointerGetDatum(root),
 												 ObjectIdGetDatum(eqopr),
@@ -963,7 +961,7 @@ patternsel(PG_FUNCTION_ARGS, Pattern_Type ptype)
 		Selectivity selec;
 
 		if (pstatus == Pattern_Prefix_Partial)
-			prefixsel = prefix_selectivity(root, &vardata, opclass, prefix);
+			prefixsel = prefix_selectivity(root, variable, opclass, prefix);
 		else
 			prefixsel = 1.0;
 		restsel = pattern_selectivity(rest, ptype);
@@ -1937,10 +1935,13 @@ add_unique_group_var(Query *root, List *varinfos,
  *		if we considered ones of the same rel, we'd be double-counting the
  *		restriction selectivity of the equality in the next step.
  *	3.	For Vars within a single source rel, we multiply together the numbers
- *		of values, clamp to the number of rows in the rel, and then multiply
- *		by the selectivity of the restriction clauses for that rel.  The
- *		initial product is probably too high (it's the worst case) but since
- *		we can clamp to the rel's rows it won't be hugely bad.	Multiplying
+ *		of values, clamp to the number of rows in the rel (divided by 10 if
+ *		more than one Var), and then multiply by the selectivity of the
+ *		restriction clauses for that rel.  When there's more than one Var,
+ *		the initial product is probably too high (it's the worst case) but
+ *		clamping to a fraction of the rel's rows seems to be a helpful
+ *		heuristic for not letting the estimate get out of hand.  (The factor
+ *		of 10 is derived from pre-Postgres-7.4 practice.)  Multiplying
  *		by the restriction selectivity is effectively assuming that the
  *		restriction clauses are independent of the grouping, which is a crummy
  *		assumption, but it's hard to do better.
@@ -2040,6 +2041,8 @@ estimate_num_groups(Query *root, List *groupExprs, double input_rows)
 		GroupVarInfo *varinfo1 = (GroupVarInfo *) linitial(varinfos);
 		RelOptInfo *rel = varinfo1->rel;
 		double		reldistinct = varinfo1->ndistinct;
+		double		relmaxndistinct = reldistinct;
+		int			relvarcount = 1;
 		List	   *newvarinfos = NIL;
 
 		/*
@@ -2051,7 +2054,12 @@ estimate_num_groups(Query *root, List *groupExprs, double input_rows)
 			GroupVarInfo *varinfo2 = (GroupVarInfo *) lfirst(l);
 
 			if (varinfo2->rel == varinfo1->rel)
+			{
 				reldistinct *= varinfo2->ndistinct;
+				if (relmaxndistinct < varinfo2->ndistinct)
+					relmaxndistinct = varinfo2->ndistinct;
+				relvarcount++;
+			}
 			else
 			{
 				/* not time to process varinfo2 yet */
@@ -2066,10 +2074,31 @@ estimate_num_groups(Query *root, List *groupExprs, double input_rows)
 		if (rel->tuples > 0)
 		{
 			/*
-			 * Clamp to size of rel, multiply by restriction selectivity.
+			 * Clamp to size of rel, or size of rel / 10 if multiple Vars.
+			 * The fudge factor is because the Vars are probably correlated
+			 * but we don't know by how much.  We should never clamp to less
+			 * than the largest ndistinct value for any of the Vars, though,
+			 * since there will surely be at least that many groups.
 			 */
-			if (reldistinct > rel->tuples)
-				reldistinct = rel->tuples;
+			double		clamp = rel->tuples;
+
+			if (relvarcount > 1)
+			{
+				clamp *= 0.1;
+				if (clamp < relmaxndistinct)
+				{
+					clamp = relmaxndistinct;
+					/* for sanity in case some ndistinct is too large: */
+					if (clamp > rel->tuples)
+						clamp = rel->tuples;
+				}
+			}
+			if (reldistinct > clamp)
+				reldistinct = clamp;
+
+			/*
+			 * Multiply by restriction selectivity.
+			 */
 			reldistinct *= rel->rows / rel->tuples;
 
 			/*
@@ -2273,19 +2302,20 @@ convert_to_scalar(Datum value, Oid valuetypid, double *scaledvalue,
 				  double *scaledlobound, double *scaledhibound)
 {
 	/*
-	 * In present usage, we can assume that the valuetypid exactly matches
-	 * the declared input type of the operator we are invoked for (because
-	 * constant-folding will ensure that any Const passed to the operator
-	 * has been reduced to the correct type).  However, the boundstypid is
-	 * the type of some variable that might be only binary-compatible with
-	 * the declared type; in particular it might be a domain type.	Must
-	 * fold the variable type down to base type so we can recognize it.
-	 * (But we can skip that lookup if the variable type matches the
-	 * const.)
+	 * Both the valuetypid and the boundstypid should exactly match
+	 * the declared input type(s) of the operator we are invoked for,
+	 * so we just error out if either is not recognized.
+	 *
+	 * XXX The histogram we are interpolating between points of could belong
+	 * to a column that's only binary-compatible with the declared type.
+	 * In essence we are assuming that the semantics of binary-compatible
+	 * types are enough alike that we can use a histogram generated with one
+	 * type's operators to estimate selectivity for the other's.  This is
+	 * outright wrong in some cases --- in particular signed versus unsigned
+	 * interpretation could trip us up.  But it's useful enough in the
+	 * majority of cases that we do it anyway.  Should think about more
+	 * rigorous ways to do it.
 	 */
-	if (boundstypid != valuetypid)
-		boundstypid = getBaseType(boundstypid);
-
 	switch (valuetypid)
 	{
 			/*
@@ -2817,8 +2847,7 @@ convert_timevalue_to_scalar(Datum value, Oid typid)
  *
  * Outputs: (these are valid only if TRUE is returned)
  *	*vardata: gets information about variable (see examine_variable)
- *	*other: gets other clause argument, stripped of binary relabeling,
- *		and aggressively reduced to a constant
+ *	*other: gets other clause argument, aggressively reduced to a constant
  *	*varonleft: set TRUE if variable is on the left, FALSE if on the right
  *
  * Returns TRUE if a variable is identified, otherwise FALSE.
@@ -2908,12 +2937,15 @@ get_join_variables(Query *root, List *args,
  *	varRelid: see specs for restriction selectivity functions
  *
  * Outputs: *vardata is filled as follows:
- *	var: the input expression (with any binary relabeling stripped)
+ *	var: the input expression (with any binary relabeling stripped, if
+ *		it is or contains a variable; but otherwise the type is preserved)
  *	rel: RelOptInfo for relation containing variable; NULL if expression
  *		contains no Vars (NOTE this could point to a RelOptInfo of a
  *		subquery, not one in the current query).
  *	statsTuple: the pg_statistic entry for the variable, if one exists;
  *		otherwise NULL.
+ *	vartype: exposed type of the expression; this should always match
+ *		the declared input type of the operator we are estimating for.
  *	atttype, atttypmod: type data to pass to get_attstatsslot().  This is
  *		commonly the same as the exposed type of the variable argument,
  *		but can be different in binary-compatible-type cases.
@@ -2924,27 +2956,32 @@ static void
 examine_variable(Query *root, Node *node, int varRelid,
 				 VariableStatData *vardata)
 {
+	Node	   *basenode;
 	Relids		varnos;
 	RelOptInfo *onerel;
 
 	/* Make sure we don't return dangling pointers in vardata */
 	MemSet(vardata, 0, sizeof(VariableStatData));
 
-	/* Ignore any binary-compatible relabeling */
+	/* Save the exposed type of the expression */
+	vardata->vartype = exprType(node);
+
+	/* Look inside any binary-compatible relabeling */
 
 	if (IsA(node, RelabelType))
-		node = (Node *) ((RelabelType *) node)->arg;
-
-	vardata->var = node;
+		basenode = (Node *) ((RelabelType *) node)->arg;
+	else
+		basenode = node;
 
 	/* Fast path for a simple Var */
 
-	if (IsA(node, Var) &&
-		(varRelid == 0 || varRelid == ((Var *) node)->varno))
+	if (IsA(basenode, Var) &&
+		(varRelid == 0 || varRelid == ((Var *) basenode)->varno))
 	{
-		Var		   *var = (Var *) node;
+		Var		   *var = (Var *) basenode;
 		Oid			relid;
 
+		vardata->var = basenode;	/* return Var without relabeling */
 		vardata->rel = find_base_rel(root, var->varno);
 		vardata->atttype = var->vartype;
 		vardata->atttypmod = var->vartypmod;
@@ -2978,7 +3015,7 @@ examine_variable(Query *root, Node *node, int varRelid,
 	 * membership.	Note that when varRelid isn't zero, only vars of that
 	 * relation are considered "real" vars.
 	 */
-	varnos = pull_varnos(node);
+	varnos = pull_varnos(basenode);
 
 	onerel = NULL;
 
@@ -2993,6 +3030,7 @@ examine_variable(Query *root, Node *node, int varRelid,
 				onerel = find_base_rel(root,
 				   (varRelid ? varRelid : bms_singleton_member(varnos)));
 				vardata->rel = onerel;
+				node = basenode; /* strip any relabeling */
 			}
 			/* else treat it as a constant */
 			break;
@@ -3001,11 +3039,13 @@ examine_variable(Query *root, Node *node, int varRelid,
 			{
 				/* treat it as a variable of a join relation */
 				vardata->rel = find_join_rel(root, varnos);
+				node = basenode; /* strip any relabeling */
 			}
 			else if (bms_is_member(varRelid, varnos))
 			{
 				/* ignore the vars belonging to other relations */
 				vardata->rel = find_base_rel(root, varRelid);
+				node = basenode; /* strip any relabeling */
 				/* note: no point in expressional-index search here */
 			}
 			/* else treat it as a constant */
@@ -3014,6 +3054,7 @@ examine_variable(Query *root, Node *node, int varRelid,
 
 	bms_free(varnos);
 
+	vardata->var = node;
 	vardata->atttype = exprType(node);
 	vardata->atttypmod = exprTypmod(node);
 
@@ -3113,7 +3154,7 @@ get_variable_numdistinct(VariableStatData *vardata)
 		stats = (Form_pg_statistic) GETSTRUCT(vardata->statsTuple);
 		stadistinct = stats->stadistinct;
 	}
-	else if (vardata->atttype == BOOLOID)
+	else if (vardata->vartype == BOOLOID)
 	{
 		/*
 		 * Special-case boolean columns: presumably, two distinct values.
@@ -3328,7 +3369,10 @@ get_variable_maximum(Query *root, VariableStatData *vardata,
  * These routines support analysis of LIKE and regular-expression patterns
  * by the planner/optimizer.  It's important that they agree with the
  * regular-expression code in backend/regex/ and the LIKE code in
- * backend/utils/adt/like.c.
+ * backend/utils/adt/like.c.  Also, the computation of the fixed prefix
+ * must be conservative: if we report a string longer than the true fixed
+ * prefix, the query may produce actually wrong answers, rather than just
+ * getting a bad selectivity estimate!
  *
  * Note that the prefix-analysis functions are called from
  * backend/optimizer/path/indxpath.c as well as from routines in this file.
@@ -3360,6 +3404,7 @@ like_fixed_prefix(Const *patt_const, bool case_insensitive,
 	Oid			typeid = patt_const->consttype;
 	int			pos,
 				match_pos;
+	bool		is_multibyte = (pg_database_encoding_max_length() > 1);
 
 	/* the right-hand const is type text or bytea */
 	Assert(typeid == BYTEAOID || typeid == TEXTOID);
@@ -3409,11 +3454,16 @@ like_fixed_prefix(Const *patt_const, bool case_insensitive,
 		}
 
 		/*
-		 * XXX I suspect isalpha() is not an adequately locale-sensitive
-		 * test for characters that can vary under case folding?
+		 * XXX In multibyte character sets, we can't trust isalpha, so assume
+		 * any multibyte char is potentially case-varying.
 		 */
-		if (case_insensitive && isalpha((unsigned char) patt[pos]))
-			break;
+		if (case_insensitive)
+		{
+			if (is_multibyte && (unsigned char) patt[pos] >= 0x80)
+				break;
+			if (isalpha((unsigned char) patt[pos]))
+				break;
+		}
 
 		/*
 		 * NOTE: this code used to think that %% meant a literal %, but
@@ -3460,11 +3510,13 @@ regex_fixed_prefix(Const *patt_const, bool case_insensitive,
 	int			pos,
 				match_pos,
 				prev_pos,
-				prev_match_pos,
-				paren_depth;
+				prev_match_pos;
+	bool		have_leading_paren;
 	char	   *patt;
 	char	   *rest;
 	Oid			typeid = patt_const->consttype;
+	bool		is_basic = regex_flavor_is_basic();
+	bool		is_multibyte = (pg_database_encoding_max_length() > 1);
 
 	/*
 	 * Should be unnecessary, there are no bytea regex operators defined.
@@ -3479,8 +3531,36 @@ regex_fixed_prefix(Const *patt_const, bool case_insensitive,
 	/* the right-hand const is type text for all of these */
 	patt = DatumGetCString(DirectFunctionCall1(textout, patt_const->constvalue));
 
+	/*
+	 * Check for ARE director prefix.  It's worth our trouble to recognize
+	 * this because similar_escape() uses it.
+	 */
+	pos = 0;
+	if (strncmp(patt, "***:", 4) == 0)
+	{
+		pos = 4;
+		is_basic = false;
+	}
+
 	/* Pattern must be anchored left */
-	if (patt[0] != '^')
+	if (patt[pos] != '^')
+	{
+		rest = patt;
+
+		*prefix_const = NULL;
+		*rest_const = string_to_const(rest, typeid);
+
+		return Pattern_Prefix_None;
+	}
+	pos++;
+
+	/*
+	 * If '|' is present in pattern, then there may be multiple alternatives
+	 * for the start of the string.  (There are cases where this isn't so,
+	 * for instance if the '|' is inside parens, but detecting that reliably
+	 * is too hard.)
+	 */
+	if (strchr(patt + pos, '|') != NULL)
 	{
 		rest = patt;
 
@@ -3490,73 +3570,68 @@ regex_fixed_prefix(Const *patt_const, bool case_insensitive,
 		return Pattern_Prefix_None;
 	}
 
-	/*
-	 * If unquoted | is present at paren level 0 in pattern, then there
-	 * are multiple alternatives for the start of the string.
-	 */
-	paren_depth = 0;
-	for (pos = 1; patt[pos]; pos++)
-	{
-		if (patt[pos] == '|' && paren_depth == 0)
-		{
-			rest = patt;
-
-			*prefix_const = NULL;
-			*rest_const = string_to_const(rest, typeid);
-
-			return Pattern_Prefix_None;
-		}
-		else if (patt[pos] == '(')
-			paren_depth++;
-		else if (patt[pos] == ')' && paren_depth > 0)
-			paren_depth--;
-		else if (patt[pos] == '\\')
-		{
-			/* backslash quotes the next character */
-			pos++;
-			if (patt[pos] == '\0')
-				break;
-		}
-	}
-
 	/* OK, allocate space for pattern */
 	match = palloc(strlen(patt) + 1);
 	prev_match_pos = match_pos = 0;
 
-	/* note start at pos 1 to skip leading ^ */
-	for (prev_pos = pos = 1; patt[pos]; )
+	/*
+	 * We special-case the syntax '^(...)$' because psql uses it.  But beware:
+	 * in BRE mode these parentheses are just ordinary characters.  Also,
+	 * sequences beginning "(?" are not what they seem, unless they're "(?:".
+	 * (We should recognize that, too, because of similar_escape().)
+	 *
+	 * Note: it's a bit bogus to be depending on the current regex_flavor
+	 * setting here, because the setting could change before the pattern is
+	 * used.  We minimize the risk by trusting the flavor as little as we can,
+	 * but perhaps it would be a good idea to get rid of the "basic" setting.
+	 */
+	have_leading_paren = false;
+	if (patt[pos] == '(' && !is_basic &&
+		(patt[pos + 1] != '?' || patt[pos + 2] == ':'))
 	{
-		int		len;
+		have_leading_paren = true;
+		pos += (patt[pos + 1] != '?' ? 1 : 3);
+	}
+
+	/* Scan remainder of pattern */
+	prev_pos = pos;
+	while (patt[pos])
+	{
+		int			len;
 
 		/*
-		 * Check for characters that indicate multiple possible matches
-		 * here. XXX I suspect isalpha() is not an adequately
-		 * locale-sensitive test for characters that can vary under case
-		 * folding?
+		 * Check for characters that indicate multiple possible matches here.
+		 * Also, drop out at ')' or '$' so the termination test works right.
 		 */
 		if (patt[pos] == '.' ||
 			patt[pos] == '(' ||
+			patt[pos] == ')' ||
 			patt[pos] == '[' ||
-			patt[pos] == '$' ||
-			(case_insensitive && isalpha((unsigned char) patt[pos])))
+			patt[pos] == '^' ||
+			patt[pos] == '$')
 			break;
 
 		/*
-		 * In AREs, backslash followed by alphanumeric is an escape, not
-		 * a quoted character.  Must treat it as having multiple possible
-		 * matches.
+		 * XXX In multibyte character sets, we can't trust isalpha, so assume
+		 * any multibyte char is potentially case-varying.
 		 */
-		if (patt[pos] == '\\' && isalnum((unsigned char) patt[pos + 1]))
-			break;
+		if (case_insensitive)
+		{
+			if (is_multibyte && (unsigned char) patt[pos] >= 0x80)
+				break;
+			if (isalpha((unsigned char) patt[pos]))
+				break;
+		}
 
 		/*
 		 * Check for quantifiers.  Except for +, this means the preceding
-		 * character is optional, so we must remove it from the prefix
-		 * too!
+		 * character is optional, so we must remove it from the prefix too!
+		 * Note: in BREs, \{ is a quantifier.
 		 */
 		if (patt[pos] == '*' ||
 			patt[pos] == '?' ||
-			patt[pos] == '{')
+			patt[pos] == '{' ||
+			(patt[pos] == '\\' && patt[pos + 1] == '{'))
 		{
 			match_pos = prev_match_pos;
 			pos = prev_pos;
@@ -3567,9 +3642,19 @@ regex_fixed_prefix(Const *patt_const, bool case_insensitive,
 			pos = prev_pos;
 			break;
 		}
+
+		/*
+		 * Normally, backslash quotes the next character.  But in AREs,
+		 * backslash followed by alphanumeric is an escape, not a quoted
+		 * character.  Must treat it as having multiple possible matches.
+		 * In BREs, \( is a parenthesis, so don't trust that either.
+		 * Note: since only ASCII alphanumerics are escapes, we don't have
+		 * to be paranoid about multibyte here.
+		 */
 		if (patt[pos] == '\\')
 		{
-			/* backslash quotes the next character */
+			if (isalnum((unsigned char) patt[pos + 1]) || patt[pos + 1] == '(')
+				break;
 			pos++;
 			if (patt[pos] == '\0')
 				break;
@@ -3586,6 +3671,9 @@ regex_fixed_prefix(Const *patt_const, bool case_insensitive,
 
 	match[match_pos] = '\0';
 	rest = &patt[pos];
+
+	if (have_leading_paren && patt[pos] == ')')
+		pos++;
 
 	if (patt[pos] == '$' && patt[pos + 1] == '\0')
 	{
@@ -3656,7 +3744,7 @@ pattern_fixed_prefix(Const *patt, Pattern_Type ptype,
  * more useful to use the upper-bound code than not.
  */
 static Selectivity
-prefix_selectivity(Query *root, VariableStatData *vardata,
+prefix_selectivity(Query *root, Node *variable,
 				   Oid opclass, Const *prefixcon)
 {
 	Selectivity prefixsel;
@@ -3668,7 +3756,7 @@ prefix_selectivity(Query *root, VariableStatData *vardata,
 								BTGreaterEqualStrategyNumber);
 	if (cmpopr == InvalidOid)
 		elog(ERROR, "no >= operator for opclass %u", opclass);
-	cmpargs = list_make2(vardata->var, prefixcon);
+	cmpargs = list_make2(variable, prefixcon);
 	/* Assume scalargtsel is appropriate for all supported types */
 	prefixsel = DatumGetFloat8(DirectFunctionCall4(scalargtsel,
 												   PointerGetDatum(root),
@@ -3690,7 +3778,7 @@ prefix_selectivity(Query *root, VariableStatData *vardata,
 									BTLessStrategyNumber);
 		if (cmpopr == InvalidOid)
 			elog(ERROR, "no < operator for opclass %u", opclass);
-		cmpargs = list_make2(vardata->var, greaterstrcon);
+		cmpargs = list_make2(variable, greaterstrcon);
 		/* Assume scalarltsel is appropriate for all supported types */
 		topsel = DatumGetFloat8(DirectFunctionCall4(scalarltsel,
 													PointerGetDatum(root),
@@ -3705,7 +3793,7 @@ prefix_selectivity(Query *root, VariableStatData *vardata,
 		prefixsel = topsel + prefixsel - 1.0;
 
 		/* Adjust for double-exclusion of NULLs */
-		prefixsel += nulltestsel(root, IS_NULL, vardata->var, 0);
+		prefixsel += nulltestsel(root, IS_NULL, variable, 0);
 
 		/*
 		 * A zero or slightly negative prefixsel should be converted into
