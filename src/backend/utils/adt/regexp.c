@@ -624,3 +624,12 @@ similar_escape(PG_FUNCTION_ARGS)
 
 	PG_RETURN_TEXT_P(result);
 }
+
+/*
+ * report whether regex_flavor is currently BASIC
+ */
+bool
+regex_flavor_is_basic(void)
+{
+	return (regex_flavor == REG_BASIC);
+}
