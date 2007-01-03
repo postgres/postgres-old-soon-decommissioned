@@ -6083,7 +6083,7 @@ copy_relation_data(Relation rel, SMgrRelation dst)
 		 * rel, because there's no need for smgr to schedule an fsync for this
 		 * write; we'll do it ourselves below.
 		 */
-		smgrwrite(dst, blkno, buf, true);
+		smgrextend(dst, blkno, buf, true);
 	}
 
 	/*
