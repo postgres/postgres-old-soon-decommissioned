@@ -1453,7 +1453,8 @@ dpow(PG_FUNCTION_ARGS)
 	if (errno == EDOM && isnan(result))
 	{
 		if ((fabs(arg1) > 1 && arg2 >= 0) || (fabs(arg1) < 1 && arg2 < 0))
-			result = (arg1 >= 0) ? get_float8_infinity() : -get_float8_infinity();
+			/* The sign if Inf is not significant in this case. */
+			result = get_float8_infinity();
 		else if (fabs(arg1) != 1)
 			result = 0;
 		else
