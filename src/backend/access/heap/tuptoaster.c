@@ -1113,7 +1113,7 @@ toast_delete_datum(Relation rel, Datum value)
 		return;
 
 	/*
-	 * Open the toast relation and it's index
+	 * Open the toast relation and its index
 	 */
 	toastrel = heap_open(attr->va_content.va_external.va_toastrelid,
 						 RowExclusiveLock);
@@ -1337,7 +1337,7 @@ toast_fetch_datum_slice(varattrib *attr, int32 sliceoffset, int32 length)
 	endoffset = (sliceoffset + length - 1) % TOAST_MAX_CHUNK_SIZE;
 
 	/*
-	 * Open the toast relation and it's index
+	 * Open the toast relation and its index
 	 */
 	toastrel = heap_open(attr->va_content.va_external.va_toastrelid,
 						 AccessShareLock);

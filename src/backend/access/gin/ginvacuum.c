@@ -34,8 +34,8 @@ typedef struct
 /*
  * Cleans array of ItemPointer (removes dead pointers)
  * Results are always stored in *cleaned, which will be allocated
- * if its needed. In case of *cleaned!=NULL caller is responsible to
- * enough space. *cleaned and items may point to the same
+ * if it's needed. In case of *cleaned!=NULL caller is responsible to
+ * have allocated enough space. *cleaned and items may point to the same
  * memory address.
  */
 

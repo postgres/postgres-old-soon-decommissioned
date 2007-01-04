@@ -244,7 +244,7 @@ typedef FormData_pg_type *Form_pg_type;
  * ----------------
  */
 
-/* keep the following ordered by OID so that later changes can be made easier*/
+/* keep the following ordered by OID so that later changes can be made more easily */
 
 /* Make sure the typlen, typbyval, and typalign values here match the initial
    values for attlen, attbyval, and attalign in both places in pg_attribute.h
