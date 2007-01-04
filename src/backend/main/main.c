@@ -258,7 +258,10 @@ startup_hacks(const char *progname)
 }
 
 
-
+/*
+ * Help display should match the options accepted by PostmasterMain()
+ * and PostgresMain().
+ */
 static void
 help(const char *progname)
 {
