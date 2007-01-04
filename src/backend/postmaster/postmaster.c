@@ -415,6 +415,11 @@ PostmasterMain(int argc, char *argv[])
 
 	opterr = 1;
 
+	/*
+	 * Parse command-line options.  CAUTION: keep this in sync with
+	 * tcop/postgres.c (the option sets should not conflict)
+	 * and with the common help() function in main/main.c.
+	 */
 	while ((opt = getopt(argc, argv, "A:B:c:D:d:EeFf:h:ijk:lN:nOo:Pp:r:S:sTt:W:-:")) != -1)
 	{
 		switch (opt)
@@ -513,7 +518,7 @@ PostmasterMain(int argc, char *argv[])
 				break;
 
 			case 's':
-				SetConfigOption("log_statement_stats", optarg, PGC_POSTMASTER, PGC_S_ARGV);
+				SetConfigOption("log_statement_stats", "true", PGC_POSTMASTER, PGC_S_ARGV);
 				break;
 
 			case 'T':
