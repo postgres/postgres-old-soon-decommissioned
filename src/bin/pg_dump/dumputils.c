@@ -438,6 +438,20 @@ buildACLCommands(const char *name, const char *type,
 	appendPQExpBuffer(firstsql, "REVOKE ALL ON %s %s FROM PUBLIC;\n",
 					  type, name);
 
+	/*
+	 * We still need some hacking though to cover the case where new default
+	 * public privileges are added in new versions: the REVOKE ALL will revoke
+	 * them, leading to behavior different from what the old version had,
+	 * which is generally not what's wanted.  So add back default privs if
+	 * the source database is too old to have had that particular priv.
+	 */
+	if (remoteVersion < 80200 && strcmp(type, "DATABASE") == 0)
+	{
+		/* database CONNECT priv didn't exist before 8.2 */
+		appendPQExpBuffer(firstsql, "GRANT CONNECT ON %s %s TO PUBLIC;\n",
+						  type, name);
+	}
+
 	/* Scan individual ACL items */
 	for (i = 0; i < naclitems; i++)
 	{
