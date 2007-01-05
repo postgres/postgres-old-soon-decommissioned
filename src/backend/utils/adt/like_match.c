@@ -16,7 +16,7 @@
  * MatchTextIC (MBMatchTextIC)
  * do_like_escape (MB_do_like_escape)
  *
- * Copyright (c) 1996-2006, PostgreSQL Global Development Group
+ * Copyright (c) 1996-2007, PostgreSQL Global Development Group
  *
  * IDENTIFICATION
  *	$PostgreSQL$

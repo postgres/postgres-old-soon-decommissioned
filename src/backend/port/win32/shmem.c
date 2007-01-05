@@ -3,7 +3,7 @@
  * shmem.c
  *	  Microsoft Windows Win32 Shared Memory Emulation
  *
- * Portions Copyright (c) 1996-2006, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2007, PostgreSQL Global Development Group
  *
  * IDENTIFICATION
  *	  $PostgreSQL$
