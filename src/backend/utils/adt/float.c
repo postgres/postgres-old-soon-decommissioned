@@ -1459,10 +1459,9 @@ dpow(PG_FUNCTION_ARGS)
 		else
 			result = 1;
 	}
-	else if (errno == ERANGE)
-	{
-		result = (arg1 >= 0) ? get_float8_infinity() : -get_float8_infinity();
-	}
+	/* Some platoforms, e.g. HPPA, return ERANGE, but HUGE_VAL, not Inf */
+	else if (errno == ERANGE && !isinf(result))
+		result = get_float8_infinity();
 	
 	CHECKFLOATVAL(result, isinf(arg1) || isinf(arg2), arg1 == 0);
 	PG_RETURN_FLOAT8(result);
