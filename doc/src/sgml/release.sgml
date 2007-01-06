@@ -27,7 +27,8 @@ wrap long lines
 
 For new features, add links to the documentation sections.  Use </link>
 so that perl can remove it so HISTORY.html can be created with no
-links to the main documentation.
+links to the main documentation.  This was added only in 8.2, so don't
+do it for earlier branch release files.
 
 -->
 
