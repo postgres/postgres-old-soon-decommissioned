@@ -1459,7 +1459,7 @@ dpow(PG_FUNCTION_ARGS)
 		else
 			result = 1;
 	}
-	else if (errno == ERANGE && !isinf(result))
+	else if (errno == ERANGE && result != 0 && !isinf(result))
 		result = get_float8_infinity();
 	
 	CHECKFLOATVAL(result, isinf(arg1) || isinf(arg2), arg1 == 0);
@@ -1478,7 +1478,7 @@ dexp(PG_FUNCTION_ARGS)
 
 	errno = 0;
 	result = exp(arg1);
-	if (errno == ERANGE && !isinf(result))
+	if (errno == ERANGE && result != 0 && !isinf(result))
 		result = get_float8_infinity();
 
 	CHECKFLOATVAL(result, isinf(arg1), false);
