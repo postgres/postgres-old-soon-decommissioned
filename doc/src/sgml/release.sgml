@@ -73,8 +73,7 @@ $Header$
       </para>
 
       <para>
-       This is because <link
-       linkend="guc-lc-numeric"><varname>lc_numeric</></link> can potentially
+       This is because <literal>lc_numeric</> can potentially
        change the output of these functions.
       </para>
      </listitem>
@@ -3090,8 +3089,7 @@ DROP SCHEMA information_schema CASCADE;
       </para>
 
       <para>
-       This is because <link
-       linkend="guc-lc-numeric"><varname>lc_numeric</></link> can potentially
+       This is because <literal>lc_numeric</> can potentially
        change the output of these functions.
       </para>
      </listitem>
