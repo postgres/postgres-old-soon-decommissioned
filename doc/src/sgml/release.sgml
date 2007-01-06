@@ -68,8 +68,7 @@ $Header$
       <para>
        <function>to_number()</> and <function>to_char(numeric)</>
        are now <literal>STABLE</>, not <literal>IMMUTABLE</>, for
-       new <link linkend="APP-INITDB"><application>initdb</></link>
-       installs (Tom)
+       new <application>initdb</> installs (Tom)
       </para>
 
       <para>
@@ -3084,8 +3083,7 @@ DROP SCHEMA information_schema CASCADE;
       <para>
        <function>to_number()</> and <function>to_char(numeric)</>
        are now <literal>STABLE</>, not <literal>IMMUTABLE</>, for
-       new <link linkend="APP-INITDB"><application>initdb</></link>
-       installs (Tom)
+       new <application>initdb</> installs (Tom)
       </para>
 
       <para>
