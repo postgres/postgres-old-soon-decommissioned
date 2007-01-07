@@ -724,7 +724,7 @@ if test "$with_pam" = yes ; then
 fi
 
 if test "$with_libxml" = yes ; then
-  AC_CHECK_LIB(xml2, xmlInitParser, [], [AC_MSG_ERROR([library 'xml2' is required for XML support])])
+  AC_CHECK_LIB(xml2, xmlSaveToBuffer, [], [AC_MSG_ERROR([library 'xml2' (version >= 2.6.23) is required for XML support])])
 fi
 
 

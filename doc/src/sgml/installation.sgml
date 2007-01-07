@@ -909,7 +909,8 @@ su - postgres
        <term><option>--with-libxml</option></term>
        <listitem>
         <para>
-         Build with libxml (enables SQL/XML support).
+         Build with libxml (enables SQL/XML support).  Libxml version 2.6.23 or
+         later is required for this feature.
         </para>
        </listitem>
       </varlistentry>
