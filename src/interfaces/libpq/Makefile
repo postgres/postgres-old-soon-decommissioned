@@ -170,7 +170,8 @@ uninstall: uninstall-lib
 
 clean distclean: clean-lib
 	rm -f $(OBJS) pg_config_paths.h crypt.c getaddrinfo.c inet_aton.c noblock.c open.c pgstrcasecmp.c snprintf.c strerror.c strlcpy.c thread.c md5.c ip.c encnames.c wchar.c pthread.h exports.list
-	rm -f pg_config_paths.h	# Might be left over from a Win32 client-only build
+# Might be left over from a Win32 client-only build
+	rm -f pg_config_paths.h
 
 maintainer-clean: distclean
 	rm -f $(srcdir)/libpqdll.def $(srcdir)/libpqddll.def $(srcdir)/blibpqdll.def $(srcdir)/libpq.rc

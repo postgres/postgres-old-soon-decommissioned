@@ -49,7 +49,7 @@ win32.dir:
 
 tas.o: tas.s
 ifeq ($(PORTNAME), solaris)
-	# preprocess assembler file with cpp, used by x86
+# preprocess assembler file with cpp, used by x86
 	$(CC) $(CFLAGS) -c -P $<
 	mv $*.i $*_cpp.s
 	$(CC) $(CFLAGS) -c $*_cpp.s -o $@
