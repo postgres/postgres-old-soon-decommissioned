@@ -2803,15 +2803,17 @@ ExecEvalXml(XmlExprState *xmlExpr, ExprContext *econtext,
 					e = (ExprState *) linitial(xmlExpr->args);
 					value = ExecEvalExpr(e, econtext, &isnull, NULL);
 					if (isnull)
-						return (Datum) 0;
-					arg = DatumGetTextP(value);
+						arg = NULL;
+					else
+						arg = DatumGetTextP(value);
 				}
 				else
+				{
 					arg = NULL;
+					isnull = false;
+				}
 
-				*isNull = false;
-
-				return PointerGetDatum(xmlpi(xexpr->name, arg));
+				return PointerGetDatum(xmlpi(xexpr->name, arg, isnull, isNull));
 			}
 			break;
 
