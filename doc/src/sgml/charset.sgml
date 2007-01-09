@@ -1223,7 +1223,7 @@ RESET client_encoding;
       </varlistentry>
 
       <varlistentry>
-       <term>RFC 2044</term>
+       <term>RFC 3629</term>
 
        <listitem>
         <para>
