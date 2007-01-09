@@ -312,6 +312,8 @@ boot_index_param:
 					n->name = LexIDStr($1);
 					n->expr = NULL;
 					n->opclass = list_make1(makeString(LexIDStr($2)));
+					n->ordering = SORTBY_DEFAULT;
+					n->nulls_ordering = SORTBY_NULLS_DEFAULT;
 					$$ = n;
 				}
 		;

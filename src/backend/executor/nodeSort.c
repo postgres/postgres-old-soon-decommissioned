@@ -84,8 +84,9 @@ ExecSort(SortState *node)
 
 		tuplesortstate = tuplesort_begin_heap(tupDesc,
 											  plannode->numCols,
-											  plannode->sortOperators,
 											  plannode->sortColIdx,
+											  plannode->sortOperators,
+											  plannode->nullsFirst,
 											  work_mem,
 											  node->randomAccess);
 		node->tuplesortstate = (void *) tuplesortstate;

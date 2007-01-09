@@ -385,6 +385,7 @@ typedef struct Sort
 	int			numCols;		/* number of sort-key columns */
 	AttrNumber *sortColIdx;		/* their indexes in the target list */
 	Oid		   *sortOperators;	/* OIDs of operators to sort them by */
+	bool	   *nullsFirst;		/* NULLS FIRST/LAST directions */
 } Sort;
 
 /* ---------------

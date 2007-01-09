@@ -201,6 +201,7 @@ _readSortClause(void)
 
 	READ_UINT_FIELD(tleSortGroupRef);
 	READ_OID_FIELD(sortop);
+	READ_BOOL_FIELD(nulls_first);
 
 	READ_DONE();
 }
@@ -215,6 +216,7 @@ _readGroupClause(void)
 
 	READ_UINT_FIELD(tleSortGroupRef);
 	READ_OID_FIELD(sortop);
+	READ_BOOL_FIELD(nulls_first);
 
 	READ_DONE();
 }

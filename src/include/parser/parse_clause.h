@@ -38,9 +38,9 @@ extern List *addAllTargetsToSortList(ParseState *pstate,
 						bool resolveUnknown);
 extern List *addTargetToSortList(ParseState *pstate, TargetEntry *tle,
 					List *sortlist, List *targetlist,
-					int sortby_kind, List *sortby_opname,
-					bool resolveUnknown);
+					SortByDir sortby_dir, SortByNulls sortby_nulls,
+					List *sortby_opname, bool resolveUnknown);
 extern Index assignSortGroupRef(TargetEntry *tle, List *tlist);
-extern bool targetIsInSortList(TargetEntry *tle, List *sortList);
+extern bool targetIsInSortList(TargetEntry *tle, Oid sortop, List *sortList);
 
 #endif   /* PARSE_CLAUSE_H */

@@ -1629,6 +1629,8 @@ transformIndexConstraints(ParseState *pstate, CreateStmtContext *cxt)
 			iparam->name = pstrdup(key);
 			iparam->expr = NULL;
 			iparam->opclass = NIL;
+			iparam->ordering = SORTBY_DEFAULT;
+			iparam->nulls_ordering = SORTBY_NULLS_DEFAULT;
 			index->indexParams = lappend(index->indexParams, iparam);
 		}
 

@@ -269,7 +269,7 @@ initialize_aggregates(AggState *aggstate,
 
 			peraggstate->sortstate =
 				tuplesort_begin_datum(peraggstate->inputType,
-									  peraggstate->sortOperator,
+									  peraggstate->sortOperator, false,
 									  work_mem, false);
 		}
 

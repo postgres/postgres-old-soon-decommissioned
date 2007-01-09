@@ -347,7 +347,7 @@ find_usable_indexes(PlannerInfo *root, RelOptInfo *rel,
 		 * how many of them are actually useful for this query.  This is not
 		 * relevant unless we are at top level.
 		 */
-		index_is_ordered = OidIsValid(index->ordering[0]);
+		index_is_ordered = OidIsValid(index->fwdsortop[0]);
 		if (index_is_ordered && istoplevel && outer_rel == NULL)
 		{
 			index_pathkeys = build_index_pathkeys(root, index,

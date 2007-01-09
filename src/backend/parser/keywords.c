@@ -242,6 +242,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"nowait", NOWAIT},
 	{"null", NULL_P},
 	{"nullif", NULLIF},
+	{"nulls", NULLS_P},
 	{"numeric", NUMERIC},
 	{"object", OBJECT_P},
 	{"of", OF},
