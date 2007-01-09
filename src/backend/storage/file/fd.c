@@ -50,6 +50,7 @@
 #include "access/xact.h"
 #include "storage/fd.h"
 #include "storage/ipc.h"
+#include "utils/guc.h"
 
 
 /*
@@ -938,7 +939,8 @@ OpenTemporaryFile(bool interXact)
 void
 FileClose(File file)
 {
-	Vfd		   *vfdP;
+	Vfd			*vfdP;
+	struct stat	filestats;
 
 	Assert(FileIsValid(file));
 
@@ -968,6 +970,19 @@ FileClose(File file)
 	{
 		/* reset flag so that die() interrupt won't cause problems */
 		vfdP->fdstate &= ~FD_TEMPORARY;
+		PG_TRACE1(temp__file__cleanup, vfdP->fileName);
+		if (log_temp_files >= 0)
+		{
+			if (stat(vfdP->fileName, &filestats) == 0)
+			{
+				if (filestats.st_size >= log_temp_files)
+					ereport(LOG,
+						(errmsg("temp file: path \"%s\" size %lu",
+						 vfdP->fileName, (unsigned long)filestats.st_size)));
+			}
+			else
+				elog(LOG, "Could not stat \"%s\": %m", vfdP->fileName);
+		}
 		if (unlink(vfdP->fileName))
 			elog(LOG, "failed to unlink \"%s\": %m",
 				 vfdP->fileName);

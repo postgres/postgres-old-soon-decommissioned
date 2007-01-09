@@ -123,6 +123,7 @@ extern int	log_min_error_statement;
 extern int	log_min_messages;
 extern int	client_min_messages;
 extern int	log_min_duration_statement;
+extern int	log_temp_files;
 
 extern int	num_temp_buffers;
 
