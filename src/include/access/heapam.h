@@ -98,7 +98,7 @@ extern Datum fastgetattr(HeapTuple tup, int attnum, TupleDesc tupleDesc,
 	( \
 		((attnum) > 0) ? \
 		( \
-			((attnum) > (int) (tup)->t_data->t_natts) ? \
+			((attnum) > (int) HeapTupleHeaderGetNatts((tup)->t_data)) ? \
 			( \
 				(((isnull) != NULL) ? (*(isnull) = true) : (dummyret)NULL), \
 				(Datum)NULL \
