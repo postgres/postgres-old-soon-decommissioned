@@ -1263,6 +1263,13 @@ SELECT a, b FROM table1 ORDER BY a + b, c;
   </para>
 
   <para>
+   Note that the ordering options are considered independently for each
+   sort column.  For example <literal>ORDER BY x, y DESC</> means
+   <literal>ORDER BY x ASC, y DESC</>, which is not the same as
+   <literal>ORDER BY x DESC, y DESC</>.
+  </para>
+
+  <para>
    For backwards compatibility with the SQL92 version of the standard,
    a <replaceable>sort_expression</> can instead be the name or number
    of an output column, as in
