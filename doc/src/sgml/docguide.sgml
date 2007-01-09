@@ -542,11 +542,12 @@ checking for sgmlspl... sgmlspl
    </para>
 
    <para>
-    When the HTML documentation is built, the process also generates
-    the linking information for the index entries.  Thus, if you want
-    your documentation to have a concept index at the end, you need to
-    build the HTML documentation once, and then build the
-    documentation again in whatever format you like.
+    To create a proper index, the build might process several identical
+    stages.  If you do not care about an index, and just want to
+    proof-read the output, use <literal>draft</>:
+<screen>
+<prompt>doc/src/sgml$ </prompt><userinput>gmake draft html</userinput>
+</screen>
    </para>
 
    <para>
