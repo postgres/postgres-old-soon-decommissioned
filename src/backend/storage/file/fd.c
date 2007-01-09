@@ -970,7 +970,6 @@ FileClose(File file)
 	{
 		/* reset flag so that die() interrupt won't cause problems */
 		vfdP->fdstate &= ~FD_TEMPORARY;
-		PG_TRACE1(temp__file__cleanup, vfdP->fileName);
 		if (log_temp_files >= 0)
 		{
 			if (stat(vfdP->fileName, &filestats) == 0)
