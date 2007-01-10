@@ -44,11 +44,11 @@ extern Sort *make_sort_from_groupcols(PlannerInfo *root, List *groupcls,
 						 AttrNumber *grpColIdx, Plan *lefttree);
 extern Agg *make_agg(PlannerInfo *root, List *tlist, List *qual,
 		 AggStrategy aggstrategy,
-		 int numGroupCols, AttrNumber *grpColIdx,
+		 int numGroupCols, AttrNumber *grpColIdx, Oid *grpOperators,
 		 long numGroups, int numAggs,
 		 Plan *lefttree);
 extern Group *make_group(PlannerInfo *root, List *tlist, List *qual,
-		   int numGroupCols, AttrNumber *grpColIdx,
+		   int numGroupCols, AttrNumber *grpColIdx, Oid *grpOperators,
 		   double numGroups,
 		   Plan *lefttree);
 extern Material *make_material(Plan *lefttree);

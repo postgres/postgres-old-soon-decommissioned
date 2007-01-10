@@ -84,14 +84,12 @@ extern bool execTuplesUnequal(TupleTableSlot *slot1,
 				  AttrNumber *matchColIdx,
 				  FmgrInfo *eqfunctions,
 				  MemoryContext evalContext);
-extern FmgrInfo *execTuplesMatchPrepare(TupleDesc tupdesc,
-					   int numCols,
-					   AttrNumber *matchColIdx);
-extern void execTuplesHashPrepare(TupleDesc tupdesc,
-					  int numCols,
-					  AttrNumber *matchColIdx,
-					  FmgrInfo **eqfunctions,
-					  FmgrInfo **hashfunctions);
+extern FmgrInfo *execTuplesMatchPrepare(int numCols,
+					   Oid *eqOperators);
+extern void execTuplesHashPrepare(int numCols,
+					  Oid *eqOperators,
+					  FmgrInfo **eqFunctions,
+					  FmgrInfo **hashFunctions);
 extern TupleHashTable BuildTupleHashTable(int numCols, AttrNumber *keyColIdx,
 					FmgrInfo *eqfunctions,
 					FmgrInfo *hashfunctions,

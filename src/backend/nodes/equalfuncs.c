@@ -638,6 +638,7 @@ _equalInClauseInfo(InClauseInfo *a, InClauseInfo *b)
 	COMPARE_BITMAPSET_FIELD(lefthand);
 	COMPARE_BITMAPSET_FIELD(righthand);
 	COMPARE_NODE_FIELD(sub_targetlist);
+	COMPARE_NODE_FIELD(in_operators);
 
 	return true;
 }

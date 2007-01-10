@@ -3995,6 +3995,7 @@ expression_tree_mutator(Node *node,
 
 				FLATCOPY(newnode, ininfo, InClauseInfo);
 				MUTATE(newnode->sub_targetlist, ininfo->sub_targetlist, List *);
+				/* Assume we need not make a copy of in_operators list */
 				return (Node *) newnode;
 			}
 			break;

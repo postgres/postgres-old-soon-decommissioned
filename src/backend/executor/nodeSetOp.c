@@ -267,9 +267,8 @@ ExecInitSetOp(SetOp *node, EState *estate, int eflags)
 	 * Precompute fmgr lookup data for inner loop
 	 */
 	setopstate->eqfunctions =
-		execTuplesMatchPrepare(ExecGetResultType(&setopstate->ps),
-							   node->numCols,
-							   node->dupColIdx);
+		execTuplesMatchPrepare(node->numCols,
+							   node->dupOperators);
 
 	return setopstate;
 }

@@ -211,9 +211,8 @@ ExecInitGroup(Group *node, EState *estate, int eflags)
 	 * Precompute fmgr lookup data for inner loop
 	 */
 	grpstate->eqfunctions =
-		execTuplesMatchPrepare(ExecGetScanType(&grpstate->ss),
-							   node->numCols,
-							   node->grpColIdx);
+		execTuplesMatchPrepare(node->numCols,
+							   node->grpOperators);
 
 	return grpstate;
 }

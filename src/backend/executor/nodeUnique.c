@@ -159,9 +159,8 @@ ExecInitUnique(Unique *node, EState *estate, int eflags)
 	 * Precompute fmgr lookup data for inner loop
 	 */
 	uniquestate->eqfunctions =
-		execTuplesMatchPrepare(ExecGetResultType(&uniquestate->ps),
-							   node->numCols,
-							   node->uniqColIdx);
+		execTuplesMatchPrepare(node->numCols,
+							   node->uniqOperators);
 
 	return uniquestate;
 }
