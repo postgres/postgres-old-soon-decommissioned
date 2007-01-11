@@ -2547,7 +2547,7 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 	if (tllen != list_length(qry->targetList))
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("ORDER BY on a UNION/INTERSECT/EXCEPT result must match existing result columns")));
+				 errmsg("A UNION/INTERSECT/EXCEPT ORDER BY cannot use expressions or functions, only result column names")));
 
 	qry->limitOffset = transformLimitClause(pstate, limitOffset,
 											"OFFSET");
