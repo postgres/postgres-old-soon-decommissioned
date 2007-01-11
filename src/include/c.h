@@ -59,7 +59,7 @@
 #include "postgres_ext.h"
 #include "pg_trace.h"
 
-#if defined(__BORLANDC__) || (_MSC_VER >= 1400)
+#if _MSC_VER >= 1400
 #define errcode __msvc_errcode
 #include <crtdefs.h>
 #undef errcode
