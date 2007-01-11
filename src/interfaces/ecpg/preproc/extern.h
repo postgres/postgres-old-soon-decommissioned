@@ -21,7 +21,8 @@ extern int	braces_open,
 			force_indicator,
 			ret_value,
 			struct_level,
-			ecpg_informix_var;
+			ecpg_informix_var,
+			regression_mode;
 extern char *descriptor_index;
 extern char *descriptor_name;
 extern char *connection;

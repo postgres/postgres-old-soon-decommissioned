@@ -16,10 +16,7 @@
 #include "pgtypes_timestamp.h"
 #include "pgtypes_interval.h"
 
-static enum
-{
-	NOT_CHECKED, REGRESS, NORMAL
-}	ECPG_regression_mode = NOT_CHECKED;
+extern int ecpg_internal_regression_mode;
 
 static bool
 garbage_left(enum ARRAY_TYPE isarray, char *scan_length, enum COMPAT_MODE compat)
@@ -57,23 +54,10 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 	long		log_offset;
 
 	/*
-	 * use a global variable to see if the environment variable
-	 * ECPG_REGRESSION is set or not. Remember the state in order to avoid
-	 * subsequent calls to getenv() for this purpose.
-	 */
-	if (ECPG_regression_mode == NOT_CHECKED)
-	{
-		if (getenv("ECPG_REGRESSION"))
-			ECPG_regression_mode = REGRESS;
-		else
-			ECPG_regression_mode = NORMAL;
-	}
-
-	/*
 	 * If we are running in a regression test, do not log the offset variable,
 	 * it depends on the machine's alignment.
 	 */
-	if (ECPG_regression_mode == REGRESS)
+	if (ecpg_internal_regression_mode)
 		log_offset = -1;
 	else
 		log_offset = offset;
