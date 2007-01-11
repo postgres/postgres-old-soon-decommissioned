@@ -343,7 +343,7 @@ extern char *strdup(const char *str);
 extern size_t strlcpy(char *dst, const char *src, size_t siz);
 #endif
 
-#ifndef HAVE_RANDOM
+#if !defined(HAVE_RANDOM) && !defined(__BORLANDC__)
 extern long random(void);
 #endif
 
