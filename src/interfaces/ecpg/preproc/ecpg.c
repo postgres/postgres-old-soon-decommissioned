@@ -425,7 +425,6 @@ main(int argc, char *const argv[])
 				else
 					fprintf(yyout, "/* Processed by ecpg (%d.%d.%d) */\n", MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL);
 
-				fprintf(yyout, "int ecpg_internal_regression_mode = %d;\n", regression_mode);
 				if (header_mode == false)
 				{
 					fprintf(yyout, "/* These include files are added by the preprocessor */\n#include <ecpgtype.h>\n#include <ecpglib.h>\n#include <ecpgerrno.h>\n#include <sqlca.h>\n");
@@ -436,6 +435,9 @@ main(int argc, char *const argv[])
 
 					fprintf(yyout, "/* End of automatic include section */\n");
 				}
+
+				if (regression_mode) 
+					fprintf(yyout, "#define ECPGdebug(X,Y) ECPGdebug((X)+100,(Y))\n");
 
 				output_line_number();
 

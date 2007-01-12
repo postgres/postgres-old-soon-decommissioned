@@ -16,8 +16,6 @@
 #include "pgtypes_timestamp.h"
 #include "pgtypes_interval.h"
 
-extern int ecpg_internal_regression_mode;
-
 static bool
 garbage_left(enum ARRAY_TYPE isarray, char *scan_length, enum COMPAT_MODE compat)
 {

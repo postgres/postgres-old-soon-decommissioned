@@ -12,6 +12,8 @@ enum COMPAT_MODE
 	ECPG_COMPAT_PGSQL = 0, ECPG_COMPAT_INFORMIX, ECPG_COMPAT_INFORMIX_SE
 };
 
+extern bool ecpg_internal_regression_mode;
+
 #define INFORMIX_MODE(X) ((X) == ECPG_COMPAT_INFORMIX || (X) == ECPG_COMPAT_INFORMIX_SE)
 
 enum ARRAY_TYPE

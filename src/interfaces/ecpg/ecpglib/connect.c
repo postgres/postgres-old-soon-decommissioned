@@ -19,7 +19,6 @@ static pthread_once_t actual_connection_key_once = PTHREAD_ONCE_INIT;
 #endif
 static struct connection *actual_connection = NULL;
 static struct connection *all_connections = NULL;
-extern int ecpg_internal_regression_mode;
 
 #ifdef ENABLE_THREAD_SAFETY
 static void
