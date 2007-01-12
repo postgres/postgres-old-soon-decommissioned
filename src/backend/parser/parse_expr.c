@@ -1455,10 +1455,6 @@ transformXmlExpr(ParseState *pstate, XmlExpr *x)
 				newe = coerce_to_specific_type(pstate, newe, XMLOID,
 											   "XMLCONCAT");
 				break;
-			case IS_XMLELEMENT:
-				newe = coerce_to_specific_type(pstate, newe, XMLOID,
-											   "XMLELEMENT");
-				break;
 			case IS_XMLFOREST:
 				newe = coerce_to_specific_type(pstate, newe, XMLOID,
 											   "XMLFOREST");
@@ -1488,7 +1484,7 @@ transformXmlExpr(ParseState *pstate, XmlExpr *x)
 		newx->args = lappend(newx->args, newe);
 		i++;
 	}
-		
+
 	return (Node *) newx;
 }
 
