@@ -70,8 +70,6 @@ static void 	xml_ereport_by_code(int level, int sqlcode,
 static xmlChar *xml_text2xmlChar(text *in);
 static xmlDocPtr xml_parse(text *data, bool is_document, bool preserve_whitespace);
 
-static char *map_sql_value_to_xml_value(Datum value, Oid type);
-
 #endif /* USE_LIBXML */
 
 #define NO_XML_SUPPORT() \
@@ -1260,11 +1258,10 @@ map_xml_name_to_sql_identifier(char *name)
 }
 
 
-#ifdef USE_LIBXML
 /*
  * Map SQL value to XML value; see SQL/XML:2003 section 9.16.
  */
-static char *
+char *
 map_sql_value_to_xml_value(Datum value, Oid type)
 {
 	StringInfoData buf;
@@ -1341,4 +1338,3 @@ map_sql_value_to_xml_value(Datum value, Oid type)
 
 	return buf.data;
 }
-#endif /* USE_LIBXML */

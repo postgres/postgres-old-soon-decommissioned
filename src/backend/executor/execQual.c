@@ -2692,11 +2692,10 @@ ExecEvalXml(XmlExprState *xmlExpr, ExprContext *econtext,
 				value = ExecEvalExpr(e, econtext, &isnull, NULL);
 				if (!isnull)
 				{
-					str = OutputFunctionCall(&xmlExpr->named_outfuncs[i],
-											 value);
 					appendStringInfo(&buf, "<%s>%s</%s>",
-									 argname, str, argname);
-					pfree(str);
+									 argname,
+									 map_sql_value_to_xml_value(value, exprType((Node *) e->expr)),
+									 argname);
 					*isNull = false;
 				}
 				i++;
