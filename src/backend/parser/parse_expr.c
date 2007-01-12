@@ -1455,6 +1455,9 @@ transformXmlExpr(ParseState *pstate, XmlExpr *x)
 				newe = coerce_to_specific_type(pstate, newe, XMLOID,
 											   "XMLCONCAT");
 				break;
+			case IS_XMLELEMENT:
+				/* no coercion necessary */
+				break;
 			case IS_XMLFOREST:
 				newe = coerce_to_specific_type(pstate, newe, XMLOID,
 											   "XMLFOREST");
