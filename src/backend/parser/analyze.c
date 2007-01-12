@@ -2549,7 +2549,7 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 				 errmsg("invalid UNION/INTERSECT/EXCEPT ORDER BY clause"),
 				 errdetail("Only result column names can be used, not expressions or functions."),
-				 errhint("Add the expression/function to every SELECT, or place the query in a FROM clause.")));
+				 errhint("Add the expression/function to every SELECT, or move the UNION into a FROM clause.")));
 
 	qry->limitOffset = transformLimitClause(pstate, limitOffset,
 											"OFFSET");
