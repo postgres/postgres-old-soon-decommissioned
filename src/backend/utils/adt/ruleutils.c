@@ -3890,7 +3890,6 @@ get_rule_expr(Node *node, deparse_context *context,
 						case IS_XMLELEMENT:
 						case IS_XMLFOREST:
 						case IS_XMLPI:
-						case IS_DOCUMENT:
 							/* no extra decoration needed */
 							get_rule_expr((Node *) xexpr->args, context, true);
 							break;
@@ -3942,6 +3941,9 @@ get_rule_expr(Node *node, deparse_context *context,
 							else
 								appendStringInfoString(buf,
 													   ", STANDALONE NO");
+							break;
+						case IS_DOCUMENT:
+							get_rule_expr_paren((Node *) xexpr->args, context, false, node);
 							break;
 					}
 
