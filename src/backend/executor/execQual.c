@@ -2808,6 +2808,25 @@ ExecEvalXml(XmlExprState *xmlExpr, ExprContext *econtext,
 											   standalone));
 			}
 			break;
+
+		case IS_DOCUMENT:
+			{
+				ExprState 	*e;
+
+				/* optional argument is known to be xml */
+				Assert(list_length(xmlExpr->args) == 1);
+
+				e = (ExprState *) linitial(xmlExpr->args);
+				value = ExecEvalExpr(e, econtext, &isnull, NULL);
+				if (isnull)
+					return (Datum) 0;
+				else
+				{
+					*isNull = false;
+					return BoolGetDatum(xml_is_document(DatumGetXmlP(value)));
+				}
+			}
+			break;
 	}
 
 	if (*isNull)

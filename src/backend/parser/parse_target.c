@@ -1337,6 +1337,9 @@ FigureColnameInternal(Node *node, char **name)
 				case IS_XMLROOT:
 					*name = "xmlroot";
 					return 2;
+				case IS_DOCUMENT:
+					/* nothing */
+					break;
 			} 
 			break;
 		default:

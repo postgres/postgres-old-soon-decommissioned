@@ -37,6 +37,7 @@ extern xmltype *xmlelement(XmlExprState *xmlExpr, ExprContext *econtext);
 extern xmltype *xmlparse(text *data, bool is_doc, bool preserve_whitespace);
 extern xmltype *xmlpi(char *target, text *arg, bool arg_is_null, bool *result_is_null);
 extern xmltype *xmlroot(xmltype *data, text *version, int standalone);
+extern bool xml_is_document(xmltype *arg);
 
 extern char *map_sql_identifier_to_xml_name(char *ident, bool fully_escaped);
 extern char *map_xml_name_to_sql_identifier(char *name);

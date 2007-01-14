@@ -725,7 +725,8 @@ typedef enum XmlExprOp
 	IS_XMLFOREST,				/* XMLFOREST(xml_attributes) */
 	IS_XMLPARSE,				/* XMLPARSE(text, is_doc, preserve_ws) */
 	IS_XMLPI,					/* XMLPI(name [, args]) */
-	IS_XMLROOT					/* XMLROOT(xml, version, standalone) */
+	IS_XMLROOT,					/* XMLROOT(xml, version, standalone) */
+	IS_DOCUMENT					/* xmlval IS DOCUMENT */
 } XmlExprOp;
 
 typedef struct XmlExpr

@@ -1483,6 +1483,10 @@ transformXmlExpr(ParseState *pstate, XmlExpr *x)
 				else
 					newe = coerce_to_boolean(pstate, newe, "XMLROOT");
 				break;
+			case IS_DOCUMENT:
+				newe = coerce_to_specific_type(pstate, newe, XMLOID,
+											   "IS DOCUMENT");
+				break;
 		}
 		newx->args = lappend(newx->args, newe);
 		i++;
@@ -1782,7 +1786,10 @@ exprType(Node *expr)
 			type = ((MinMaxExpr *) expr)->minmaxtype;
 			break;
 		case T_XmlExpr:
-			type = XMLOID;
+			if (((XmlExpr *) expr)->op == IS_DOCUMENT)
+				type = BOOLOID;
+			else
+				type = XMLOID;
 			break;
 		case T_NullIfExpr:
 			type = exprType((Node *) linitial(((NullIfExpr *) expr)->args));

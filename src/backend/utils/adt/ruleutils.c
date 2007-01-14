@@ -3847,6 +3847,8 @@ get_rule_expr(Node *node, deparse_context *context,
 					case IS_XMLROOT:
 						appendStringInfoString(buf, "XMLROOT(");
 						break;
+					case IS_DOCUMENT:
+						break;
 				}
 				if (xexpr->name)
 				{
@@ -3888,6 +3890,7 @@ get_rule_expr(Node *node, deparse_context *context,
 						case IS_XMLELEMENT:
 						case IS_XMLFOREST:
 						case IS_XMLPI:
+						case IS_DOCUMENT:
 							/* no extra decoration needed */
 							get_rule_expr((Node *) xexpr->args, context, true);
 							break;
@@ -3943,7 +3946,10 @@ get_rule_expr(Node *node, deparse_context *context,
 					}
 
 				}
-				appendStringInfoChar(buf, ')');
+				if (xexpr->op == IS_DOCUMENT)
+					appendStringInfoString(buf, " IS DOCUMENT");
+				else
+					appendStringInfoChar(buf, ')');
 			}
 			break;
 

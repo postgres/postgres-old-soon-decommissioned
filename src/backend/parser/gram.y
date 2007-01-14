@@ -7147,6 +7147,16 @@ a_expr:		c_expr									{ $$ = $1; }
 							(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 							 errmsg("UNIQUE predicate is not yet implemented")));
 				}
+			| a_expr IS DOCUMENT_P					%prec IS
+				{
+					$$ = makeXmlExpr(IS_DOCUMENT, NULL, NIL, list_make1($1));
+				}
+			| a_expr IS NOT DOCUMENT_P				%prec IS
+				{
+					$$ = (Node *) makeA_Expr(AEXPR_NOT, NIL, NULL,
+											 makeXmlExpr(IS_DOCUMENT, NULL, NIL, list_make1($1)),
+											 @2);
+				}
 		;
 
 /*
@@ -7206,6 +7216,16 @@ b_expr:		c_expr
 			| b_expr IS NOT OF '(' type_list ')'	%prec IS
 				{
 					$$ = (Node *) makeSimpleA_Expr(AEXPR_OF, "<>", $1, (Node *) $6, @2);
+				}
+			| b_expr IS DOCUMENT_P					%prec IS
+				{
+					$$ = makeXmlExpr(IS_DOCUMENT, NULL, NIL, list_make1($1));
+				}
+			| b_expr IS NOT DOCUMENT_P				%prec IS
+				{
+					$$ = (Node *) makeA_Expr(AEXPR_NOT, NIL, NULL,
+											 makeXmlExpr(IS_DOCUMENT, NULL, NIL, list_make1($1)),
+											 @2);
 				}
 		;
 

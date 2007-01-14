@@ -515,6 +515,50 @@ xmlvalidate(PG_FUNCTION_ARGS)
 }
 
 
+bool
+xml_is_document(xmltype *arg)
+{
+#ifdef USE_LIBXML
+	bool		result;
+	xmlDocPtr	doc = NULL;
+	MemoryContext ccxt = CurrentMemoryContext;
+
+	PG_TRY();
+	{
+		doc = xml_parse((text *) arg, true, true);
+		result = true;
+	}
+	PG_CATCH();
+	{
+		ErrorData *errdata;
+		MemoryContext ecxt;
+
+		ecxt = MemoryContextSwitchTo(ccxt);
+		errdata = CopyErrorData();
+		if (errdata->sqlerrcode == ERRCODE_INVALID_XML_DOCUMENT)
+		{
+			FlushErrorState();
+			result = false;
+		}
+		else
+		{
+			MemoryContextSwitchTo(ecxt);
+			PG_RE_THROW();
+		}
+	}
+	PG_END_TRY();
+
+	if (doc)
+		xmlFreeDoc(doc);
+
+	return result;
+#else /* not USE_LIBXML */
+	NO_XML_SUPPORT();
+	return false;
+#endif /* not USE_LIBXML */
+}
+
+
 #ifdef USE_LIBXML
 
 /*
