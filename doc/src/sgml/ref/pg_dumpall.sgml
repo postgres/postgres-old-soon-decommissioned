@@ -134,7 +134,7 @@ PostgreSQL documentation
       <term><option>--globals-only</option></term>
       <listitem>
        <para>
-        Dump only global objects (users and groups), no databases.
+        Dump only global objects (roles and tablespaces), no databases.
        </para>
       </listitem>
      </varlistentry>
