@@ -711,7 +711,7 @@ static struct config_bool ConfigureNamesBool[] =
 			NULL
 		},
 		&pgstat_collect_tuplelevel,
-		false, NULL, NULL
+		true, NULL, NULL
 	},
 	{
 		{"stats_block_level", PGC_SUSET, STATS_COLLECTOR,
@@ -748,7 +748,7 @@ static struct config_bool ConfigureNamesBool[] =
 			NULL
 		},
 		&autovacuum_start_daemon,
-		false, NULL, NULL
+		true, NULL, NULL
 	},
 
 	{

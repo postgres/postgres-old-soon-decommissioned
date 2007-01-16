@@ -3043,7 +3043,8 @@ SELECT * FROM parent WHERE key = 2400;
       <listitem>
        <para>
         Enables the collection of row-level statistics on database
-        activity. This parameter is off by default.
+        activity. This parameter is on by default, because the autovacuum
+        daemon needs the collected information.
         Only superusers can change this setting.
        </para>
       </listitem>

@@ -477,7 +477,9 @@ HINT:  Stop the postmaster and use a standalone backend to VACUUM in "mydb".
     linkend="guc-stats-start-collector"> and <xref
     linkend="guc-stats-row-level"> are set to <literal>true</literal>.  Also,
     it's important to allow a slot for the autovacuum process when choosing
-    the value of <xref linkend="guc-superuser-reserved-connections">.
+    the value of <xref linkend="guc-superuser-reserved-connections">.  In
+    the default configuration, autovacuuming is enabled and the related
+    configuration parameters are appropriately set.
    </para>
 
    <para>
