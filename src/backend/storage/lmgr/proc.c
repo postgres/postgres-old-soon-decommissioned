@@ -38,6 +38,7 @@
 #include "access/transam.h"
 #include "access/xact.h"
 #include "miscadmin.h"
+#include "postmaster/autovacuum.h"
 #include "storage/ipc.h"
 #include "storage/proc.h"
 #include "storage/procarray.h"
@@ -258,6 +259,7 @@ InitProcess(void)
 	MyProc->databaseId = InvalidOid;
 	MyProc->roleId = InvalidOid;
 	MyProc->inVacuum = false;
+	MyProc->isAutovacuum = IsAutoVacuumProcess();
 	MyProc->lwWaiting = false;
 	MyProc->lwExclusive = false;
 	MyProc->lwWaitLink = NULL;
@@ -390,6 +392,7 @@ InitDummyProcess(void)
 	MyProc->databaseId = InvalidOid;
 	MyProc->roleId = InvalidOid;
 	MyProc->inVacuum = false;
+	MyProc->isAutovacuum = false;
 	MyProc->lwWaiting = false;
 	MyProc->lwExclusive = false;
 	MyProc->lwWaitLink = NULL;

@@ -3298,6 +3298,10 @@ SubPostmasterMain(int argc, char *argv[])
 		strcmp(argv[1], "--forkboot") == 0)
 		PGSharedMemoryReAttach();
 
+	/* autovacuum needs this set before calling InitProcess */
+	if (strcmp(argv[1], "--forkautovac") == 0)
+		AutovacuumIAm();
+
 	/*
 	 * Start our win32 signal implementation. This has to be done after we
 	 * read the backend variables, because we need to pick up the signal pipe

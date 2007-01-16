@@ -280,6 +280,7 @@ MarkAsPreparing(TransactionId xid, const char *gid,
 	gxact->proc.databaseId = databaseid;
 	gxact->proc.roleId = owner;
 	gxact->proc.inVacuum = false;
+	gxact->proc.isAutovacuum = false;
 	gxact->proc.lwWaiting = false;
 	gxact->proc.lwExclusive = false;
 	gxact->proc.lwWaitLink = NULL;

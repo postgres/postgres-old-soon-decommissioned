@@ -29,7 +29,7 @@ extern TransactionId GetOldestXmin(bool allDbs, bool ignoreVacuum);
 extern PGPROC *BackendPidGetProc(int pid);
 extern int	BackendXidGetPid(TransactionId xid);
 extern bool IsBackendPid(int pid);
-extern bool DatabaseHasActiveBackends(Oid databaseId, bool ignoreMyself);
+extern bool DatabaseCancelAutovacuumActivity(Oid databaseId, bool ignoreMyself);
 
 extern int	CountActiveBackends(void);
 extern int	CountDBBackends(Oid databaseid);

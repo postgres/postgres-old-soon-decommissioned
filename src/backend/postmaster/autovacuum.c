@@ -216,6 +216,15 @@ autovac_forkexec(void)
 
 	return postmaster_forkexec(ac, av);
 }
+
+/*
+ * We need this set from the outside, before InitProcess is called
+ */
+void
+AutovacuumIAm(void)
+{
+	am_autovacuum = true;
+}
 #endif   /* EXEC_BACKEND */
 
 /*
@@ -307,8 +316,8 @@ AutoVacMain(int argc, char *argv[])
 		EmitErrorReport();
 
 		/*
-		 * We can now go away.	Note that because we'll call InitProcess, a
-		 * callback will be registered to do ProcKill, which will clean up
+		 * We can now go away.	Note that because we called InitProcess, a
+		 * callback was registered to do ProcKill, which will clean up
 		 * necessary state.
 		 */
 		proc_exit(0);

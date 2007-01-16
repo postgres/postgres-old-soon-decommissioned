@@ -36,6 +36,7 @@ extern void autovac_stopped(void);
 
 #ifdef EXEC_BACKEND
 extern void AutoVacMain(int argc, char *argv[]);
+extern void AutovacuumIAm(void);
 #endif
 
 #endif   /* AUTOVACUUM_H */
