@@ -106,6 +106,8 @@ extern void mdimmedsync(SMgrRelation reln);
 extern void mdsync(void);
 
 extern void RememberFsyncRequest(RelFileNode rnode, BlockNumber segno);
+extern void ForgetRelationFsyncRequests(RelFileNode rnode);
+extern void ForgetDatabaseFsyncRequests(Oid dbid);
 
 /* smgrtype.c */
 extern Datum smgrout(PG_FUNCTION_ARGS);
