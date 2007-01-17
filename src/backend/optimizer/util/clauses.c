@@ -1073,6 +1073,12 @@ is_strict_saop(ScalarArrayOpExpr *expr, bool falseOK)
  *	  may vary from one statement to the next.	However, the expr's value
  *	  will be constant over any one scan of the current query, so it can be
  *	  used as, eg, an indexscan key.
+ *
+ * CAUTION: this function omits to test for one very important class of
+ * not-constant expressions, namely aggregates (Aggrefs).  In current usage
+ * this is only applied to WHERE clauses and so a check for Aggrefs would be
+ * a waste of cycles; but be sure to also check contain_agg_clause() if you
+ * want to know about pseudo-constness in other contexts.
  */
 bool
 is_pseudo_constant_clause(Node *clause)
