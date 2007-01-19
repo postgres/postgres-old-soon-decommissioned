@@ -43,4 +43,12 @@ extern char *map_sql_identifier_to_xml_name(char *ident, bool fully_escaped);
 extern char *map_xml_name_to_sql_identifier(char *name);
 extern char *map_sql_value_to_xml_value(Datum value, Oid type);
 
+typedef enum
+{
+	XMLBINARY_BASE64,
+	XMLBINARY_HEX
+} XmlBinaryType;
+
+extern XmlBinaryType xmlbinary;
+
 #endif /* XML_H */

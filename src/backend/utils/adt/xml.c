@@ -73,6 +73,8 @@ static xmlDocPtr xml_parse(text *data, bool is_document, bool preserve_whitespac
 
 #endif /* USE_LIBXML */
 
+XmlBinaryType xmlbinary;
+
 #define NO_XML_SUPPORT() \
 	ereport(ERROR, \
 			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED), \
@@ -1499,6 +1501,28 @@ map_sql_value_to_xml_value(Datum value, Oid type)
 
 		if (type == XMLOID)
 			return str;
+
+#ifdef USE_LIBXML
+		if (type == BYTEAOID)
+		{
+			xmlBufferPtr buf;
+			xmlTextWriterPtr writer;
+			char *result;
+
+			buf = xmlBufferCreate();
+			writer = xmlNewTextWriterMemory(buf, 0);
+
+			if (xmlbinary == XMLBINARY_BASE64)
+				xmlTextWriterWriteBase64(writer, VARDATA(value), 0, VARSIZE(value) - VARHDRSZ);
+			else
+				xmlTextWriterWriteBinHex(writer, VARDATA(value), 0, VARSIZE(value) - VARHDRSZ);
+
+			xmlFreeTextWriter(writer);
+			result = pstrdup((const char *) xmlBufferContent(buf));
+			xmlBufferFree(buf);
+			return result;
+		}
+#endif /* USE_LIBXML */
 
 		for (p = str; *p; p += pg_mblen(p))
 		{
