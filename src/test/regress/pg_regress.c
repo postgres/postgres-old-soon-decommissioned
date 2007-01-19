@@ -478,11 +478,20 @@ convert_sourcefiles_in(char *source, char *dest, char *suffix)
     pgfnames_cleanup(names);
 }
 
+/* Create the .sql and .out files from the .source files, if any */
 static void
 convert_sourcefiles(void)
 {
-	convert_sourcefiles_in("input", "sql", "sql");
-	convert_sourcefiles_in("output", "expected", "out");
+	struct stat	st;
+	int		ret;
+
+	ret = stat("input", &st);
+	if (ret == 0 && S_ISDIR(st.st_mode))
+		convert_sourcefiles_in("input", "sql", "sql");
+
+	ret = stat("output", &st);
+	if (ret == 0 && S_ISDIR(st.st_mode))
+		convert_sourcefiles_in("output", "expected", "out");
 }
 
 /*
