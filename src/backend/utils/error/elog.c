@@ -121,7 +121,7 @@ static char *expand_fmt_string(const char *fmt, ErrorData *edata);
 static const char *useful_strerror(int errnum);
 static const char *error_severity(int elevel);
 static void append_with_tabs(StringInfo buf, const char *str);
-static int is_log_level_output(int elevel, int log_min_level);
+static bool is_log_level_output(int elevel, int log_min_level);
 
 
 /*
@@ -2052,8 +2052,8 @@ write_stderr(const char *fmt,...)
 	va_end(ap);
 }
 
-
-static int is_log_level_output(int elevel, int log_min_level)
+static bool
+is_log_level_output(int elevel, int log_min_level)
 {
 	/*
 	 *	Complicated because LOG is sorted out-of-order here, between
