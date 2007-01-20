@@ -1251,7 +1251,7 @@ setup_config(void)
 	conflines = replace_token(conflines, "#shared_buffers = 32MB", repltok);
 
 	snprintf(repltok, sizeof(repltok), "max_fsm_pages = %d", n_fsm_pages);
-	conflines = replace_token(conflines, "#max_fsm_pages = 1638400", repltok);
+	conflines = replace_token(conflines, "#max_fsm_pages = 204800", repltok);
 
 #if DEF_PGPORT != 5432
 	snprintf(repltok, sizeof(repltok), "#port = %d", DEF_PGPORT);
