@@ -102,6 +102,7 @@ test: sequence
 test: polymorphism
 test: rowtypes
 test: returning
+test: largeobject
 test: xml
 test: stats
 test: tablespace
