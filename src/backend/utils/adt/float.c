@@ -1787,7 +1787,7 @@ setseed(PG_FUNCTION_ARGS)
 
 	srandom((unsigned int) iseed);
 
-	PG_RETURN_INT32(iseed);
+	PG_RETURN_VOID();
 }
 
 

@@ -2134,7 +2134,7 @@ DESCR("compare");
 
 DATA(insert OID = 1598 (  random			PGNSP PGUID 12 f f t f v 0 701 "" _null_ _null_ _null_	drandom - _null_ ));
 DESCR("random value");
-DATA(insert OID = 1599 (  setseed			PGNSP PGUID 12 f f t f v 1	23 "701" _null_ _null_ _null_ setseed - _null_ ));
+DATA(insert OID = 1599 (  setseed			PGNSP PGUID 12 f f t f v 1 2278 "701" _null_ _null_ _null_ setseed - _null_ ));
 DESCR("set random seed");
 
 /* OIDS 1600 - 1699 */
