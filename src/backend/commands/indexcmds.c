@@ -295,8 +295,7 @@ DefineIndex(RangeVar *heapRelation,
 		  errmsg("access method \"%s\" does not support multicolumn indexes",
 				 accessMethodName)));
 
-	amcanorder = (accessMethodForm->amorderstrategy > 0);
-
+	amcanorder = accessMethodForm->amcanorder;
 	amoptions = accessMethodForm->amoptions;
 
 	ReleaseSysCache(tuple);

@@ -767,7 +767,7 @@ pg_get_indexdef_worker(Oid indexrelid, int colno, int prettyFlags)
 							 &buf);
 
 		/* Add options if relevant */
-		if (amrec->amorderstrategy > 0)
+		if (amrec->amcanorder)
 		{
 			/* if it supports sort ordering, report DESC and NULLS opts */
 			if (opt & INDOPTION_DESC)
