@@ -71,9 +71,6 @@ extern MergePath *create_mergejoin_path(PlannerInfo *root,
 					  List *restrict_clauses,
 					  List *pathkeys,
 					  List *mergeclauses,
-					  Oid *mergefamilies,
-					  int *mergestrategies,
-					  bool *mergenullsfirst,
 					  List *outersortkeys,
 					  List *innersortkeys);
 

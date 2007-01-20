@@ -404,7 +404,7 @@ print_expr(Node *expr, List *rtable)
 
 /*
  * print_pathkeys -
- *	  pathkeys list of list of PathKeyItems
+ *	  pathkeys list of PathKeys
  */
 void
 print_pathkeys(List *pathkeys, List *rtable)
@@ -414,17 +414,26 @@ print_pathkeys(List *pathkeys, List *rtable)
 	printf("(");
 	foreach(i, pathkeys)
 	{
-		List	   *pathkey = (List *) lfirst(i);
+		PathKey	   *pathkey = (PathKey *) lfirst(i);
+		EquivalenceClass *eclass;
 		ListCell   *k;
+		bool		first = true;
+
+		eclass = pathkey->pk_eclass;
+		/* chase up, in case pathkey is non-canonical */
+		while (eclass->ec_merged)
+			eclass = eclass->ec_merged;
 
 		printf("(");
-		foreach(k, pathkey)
+		foreach(k, eclass->ec_members)
 		{
-			PathKeyItem *item = (PathKeyItem *) lfirst(k);
+			EquivalenceMember *mem = (EquivalenceMember *) lfirst(k);
 
-			print_expr(item->key, rtable);
-			if (lnext(k))
+			if (first)
+				first = false;
+			else
 				printf(", ");
+			print_expr((Node *) mem->em_expr, rtable);
 		}
 		printf(")");
 		if (lnext(i))

@@ -326,6 +326,16 @@ set_append_rel_pathlist(PlannerInfo *root, RelOptInfo *rel,
 								   appinfo);
 
 		/*
+		 * We have to make child entries in the EquivalenceClass data
+		 * structures as well.
+		 */
+		if (rel->has_eclass_joins)
+		{
+			add_child_rel_equivalences(root, appinfo, rel, childrel);
+			childrel->has_eclass_joins = true;
+		}
+
+		/*
 		 * Copy the parent's attr_needed data as well, with appropriate
 		 * adjustment of relids and attribute numbers.
 		 */

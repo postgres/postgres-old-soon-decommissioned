@@ -1195,10 +1195,8 @@ adjust_appendrel_attrs_mutator(Node *node, AppendRelInfo *context)
 		 */
 		newinfo->eval_cost.startup = -1;
 		newinfo->this_selec = -1;
-		newinfo->left_pathkey = NIL;
-		newinfo->right_pathkey = NIL;
-		newinfo->left_mergescansel = -1;
-		newinfo->right_mergescansel = -1;
+		newinfo->left_ec = NULL;
+		newinfo->right_ec = NULL;
 		newinfo->left_bucketsize = -1;
 		newinfo->right_bucketsize = -1;
 

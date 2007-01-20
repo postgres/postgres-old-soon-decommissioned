@@ -596,11 +596,27 @@ _equalFromExpr(FromExpr *a, FromExpr *b)
  */
 
 static bool
-_equalPathKeyItem(PathKeyItem *a, PathKeyItem *b)
+_equalPathKey(PathKey *a, PathKey *b)
 {
-	COMPARE_NODE_FIELD(key);
-	COMPARE_SCALAR_FIELD(sortop);
-	COMPARE_SCALAR_FIELD(nulls_first);
+	/*
+	 * This is normally used on non-canonicalized PathKeys, so must chase
+	 * up to the topmost merged EquivalenceClass and see if those are the
+	 * same (by pointer equality).
+	 */
+	EquivalenceClass *a_eclass;
+	EquivalenceClass *b_eclass;
+
+	a_eclass = a->pk_eclass;
+	while (a_eclass->ec_merged)
+		a_eclass = a_eclass->ec_merged;
+	b_eclass = b->pk_eclass;
+	while (b_eclass->ec_merged)
+		b_eclass = b_eclass->ec_merged;
+	if (a_eclass != b_eclass)
+		return false;
+	COMPARE_SCALAR_FIELD(pk_opfamily);
+	COMPARE_SCALAR_FIELD(pk_strategy);
+	COMPARE_SCALAR_FIELD(pk_nulls_first);
 
 	return true;
 }
@@ -2016,8 +2032,8 @@ equal(void *a, void *b)
 			/*
 			 * RELATION NODES
 			 */
-		case T_PathKeyItem:
-			retval = _equalPathKeyItem(a, b);
+		case T_PathKey:
+			retval = _equalPathKey(a, b);
 			break;
 		case T_RestrictInfo:
 			retval = _equalRestrictInfo(a, b);
