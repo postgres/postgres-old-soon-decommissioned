@@ -1245,7 +1245,7 @@ su - postgres
 <userinput>gmake</userinput>
 </screen>
     (Remember to use <acronym>GNU</> <application>make</>.) The build
-    may take anywhere from 5 minutes to half an hour depending on your
+    will take a few minutes depending on your
     hardware. The last line displayed should be
 <screen>
 All of PostgreSQL is successfully made. Ready to install.
