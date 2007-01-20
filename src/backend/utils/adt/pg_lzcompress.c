@@ -164,6 +164,8 @@
  *
  *			Jan Wieck
  *
+ * Copyright (c) 1999-2007, PostgreSQL Global Development Group
+ *
  * $PostgreSQL$
  * ----------
  */
