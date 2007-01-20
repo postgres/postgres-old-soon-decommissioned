@@ -53,13 +53,3 @@ clean:
 	rm -f SUBSYS.o $(OBJS)
 # And the garbage that might have been left behind by partial build:
 	@rm -f y.tab.h y.tab.c y.output lex.yy.c
-
-
-# This is unusual:  We actually have to build some of the parts before
-# we know what the header file dependencies are.  
-dep depend: bootparse.c bootscanner.c bootstrap_tokens.h
-	$(CC) -MM $(CFLAGS) *.c >depend
-
-ifeq (depend,$(wildcard depend))
-include depend
-endif

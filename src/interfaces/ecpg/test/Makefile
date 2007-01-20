@@ -23,7 +23,7 @@ else
 abs_builddir := $(shell pwd -W)
 endif
 
-all install installdirs uninstall dep depend distprep:
+all install installdirs uninstall distprep:
 	$(MAKE) -C connect $@
 	$(MAKE) -C expected $@
 	$(MAKE) -C sql $@

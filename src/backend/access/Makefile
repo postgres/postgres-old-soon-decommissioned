@@ -25,6 +25,3 @@ $(SUBDIRS:%=%-recursive):
 clean:
 	for dir in $(SUBDIRS); do $(MAKE) -C $$dir $@ || exit; done
 	rm -f SUBSYS.o
-
-dep depend:
-	for dir in $(SUBDIRS); do $(MAKE) -C $$dir $@ || exit; done

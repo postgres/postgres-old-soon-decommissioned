@@ -39,10 +39,3 @@ uninstall: uninstall-lib
 
 clean distclean maintainer-clean: clean-lib
 	rm -f $(OBJS)
-
-depend dep:
-	$(CC) -MM $(CFLAGS) *.c >depend
-
-ifeq (depend,$(wildcard depend))
-include depend
-endif

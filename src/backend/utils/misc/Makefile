@@ -43,10 +43,3 @@ endif
 clean: 
 	rm -f SUBSYS.o $(OBJS)
 	@rm -f lex.yy.c
-
-depend dep:
-	$(CC) -MM $(CFLAGS) *.c >depend
-
-ifeq (depend,$(wildcard depend))
-include depend
-endif

@@ -30,12 +30,5 @@ s_lock_test: s_lock.c $(top_builddir)/src/port/libpgport.a
 check: s_lock_test
 	./s_lock_test
 
-depend dep:
-	$(CC) -MM $(CFLAGS) *.c >depend
-
 clean distclean maintainer-clean: 
 	rm -f SUBSYS.o $(OBJS) s_lock_test
-
-ifeq (depend,$(wildcard depend))
-include depend
-endif

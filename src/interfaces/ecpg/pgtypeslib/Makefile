@@ -53,10 +53,3 @@ uninstall: uninstall-lib
 
 clean distclean maintainer-clean: clean-lib
 	rm -f $(OBJS) pgstrcasecmp.c rint.c snprintf.c
-
-depend dep:
-	$(CC) -MM $(CFLAGS) *.c >depend
-
-ifeq (depend,$(wildcard depend))
-include depend
-endif

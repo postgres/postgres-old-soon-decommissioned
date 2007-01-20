@@ -261,6 +261,3 @@ maintainer-clean: distclean
 .PHONY: quick
 quick: $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(export_dynamic) $^ $(LIBS) -o postgres
-
-depend dep: $(top_srcdir)/src/include/parser/parse.h $(top_builddir)/src/include/utils/fmgroids.h
-	for i in $(DIRS); do $(MAKE) -C $$i $@; done

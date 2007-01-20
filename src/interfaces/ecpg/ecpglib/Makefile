@@ -68,10 +68,3 @@ uninstall: uninstall-lib
 
 clean distclean maintainer-clean: clean-lib
 	rm -f $(OBJS) path.c snprintf.c strlcpy.c thread.c
-
-depend dep:
-	$(CC) -MM $(CFLAGS) *.c >depend
-
-ifeq (depend,$(wildcard depend))
-include depend
-endif

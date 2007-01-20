@@ -19,7 +19,7 @@ ifeq ($(PORTNAME), win32)
 DIRS+=pgevent
 endif
 
-all install installdirs uninstall depend distprep:
+all install installdirs uninstall distprep:
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
 
 clean distclean maintainer-clean:

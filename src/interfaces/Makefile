@@ -16,7 +16,7 @@ DIRS := libpq ecpg
 
 ALLDIRS := $(DIRS) 
 
-all install installdirs uninstall dep depend distprep:
+all install installdirs uninstall distprep:
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
 
 clean:

@@ -13,7 +13,7 @@ top_builddir = ..
 include Makefile.global
 
 
-all install installdirs uninstall dep depend distprep:
+all install installdirs uninstall distprep:
 	$(MAKE) -C port $@
 	$(MAKE) -C timezone $@
 	$(MAKE) -C backend $@
