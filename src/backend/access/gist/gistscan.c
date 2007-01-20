@@ -42,12 +42,6 @@ gistrescan(PG_FUNCTION_ARGS)
 	GISTScanOpaque so;
 	int			i;
 
-	/*
-	 * Clear all the pointers.
-	 */
-	ItemPointerSetInvalid(&scan->currentItemData);
-	ItemPointerSetInvalid(&scan->currentMarkData);
-
 	so = (GISTScanOpaque) scan->opaque;
 	if (so != NULL)
 	{
@@ -82,6 +76,12 @@ gistrescan(PG_FUNCTION_ARGS)
 		scan->opaque = so;
 	}
 
+	/*
+	 * Clear all the pointers.
+	 */
+	ItemPointerSetInvalid(&so->curpos);
+	ItemPointerSetInvalid(&so->markpos);
+
 	/* Update scan key, if a new one is given */
 	if (key && scan->numberOfKeys > 0)
 	{
@@ -111,8 +111,8 @@ gistmarkpos(PG_FUNCTION_ARGS)
 			   *n,
 			   *tmp;
 
-	scan->currentMarkData = scan->currentItemData;
 	so = (GISTScanOpaque) scan->opaque;
+	so->markpos = so->curpos;
 	if (so->flags & GS_CURBEFORE)
 		so->flags |= GS_MRKBEFORE;
 	else
@@ -160,8 +160,8 @@ gistrestrpos(PG_FUNCTION_ARGS)
 			   *n,
 			   *tmp;
 
-	scan->currentItemData = scan->currentMarkData;
 	so = (GISTScanOpaque) scan->opaque;
+	so->curpos = so->markpos;
 	if (so->flags & GS_MRKBEFORE)
 		so->flags |= GS_CURBEFORE;
 	else

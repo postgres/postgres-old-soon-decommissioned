@@ -92,9 +92,6 @@ RelationGetIndexScan(Relation indexRelation,
 
 	scan->opaque = NULL;
 
-	ItemPointerSetInvalid(&scan->currentItemData);
-	ItemPointerSetInvalid(&scan->currentMarkData);
-
 	ItemPointerSetInvalid(&scan->xs_ctup.t_self);
 	scan->xs_ctup.t_data = NULL;
 	scan->xs_cbuf = InvalidBuffer;

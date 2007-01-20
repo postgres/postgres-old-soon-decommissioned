@@ -390,9 +390,6 @@ typedef BTStackData *BTStack;
  * items were killed, we re-lock the page to mark them killed, then unlock.
  * Finally we drop the pin and step to the next page in the appropriate
  * direction.
- *
- * NOTE: in this implementation, btree does not use or set the
- * currentItemData and currentMarkData fields of IndexScanDesc at all.
  */
 
 typedef struct BTScanPosItem	/* what we remember about each match */

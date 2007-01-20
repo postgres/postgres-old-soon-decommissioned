@@ -72,7 +72,9 @@ typedef struct GISTScanOpaqueData
 	GISTSTATE  *giststate;
 	MemoryContext tempCxt;
 	Buffer		curbuf;
+	ItemPointerData curpos;
 	Buffer		markbuf;
+	ItemPointerData markpos;
 } GISTScanOpaqueData;
 
 typedef GISTScanOpaqueData *GISTScanOpaque;

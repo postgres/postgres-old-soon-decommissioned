@@ -97,6 +97,10 @@ typedef struct HashScanOpaqueData
 	 */
 	Buffer		hashso_curbuf;
 	Buffer		hashso_mrkbuf;
+
+	/* Current and marked position of the scan */
+	ItemPointerData hashso_curpos;
+	ItemPointerData hashso_mrkpos;
 } HashScanOpaqueData;
 
 typedef HashScanOpaqueData *HashScanOpaque;
