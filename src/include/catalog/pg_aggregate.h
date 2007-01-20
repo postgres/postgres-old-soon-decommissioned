@@ -221,6 +221,9 @@ DATA(insert ( 2241 int8or		  -					0	20		_null_ ));
 DATA(insert ( 2242 bitand		  -					0	1560	_null_ ));
 DATA(insert ( 2243 bitor		  -					0	1560	_null_ ));
 
+/* xml */
+DATA(insert ( 2901 xmlconcat2	  -					0	142		_null_ ));
+
 /*
  * prototypes for functions in pg_aggregate.c
  */
