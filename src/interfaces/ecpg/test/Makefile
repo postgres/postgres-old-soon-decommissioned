@@ -55,7 +55,6 @@ pg_regress: pg_regress.sh $(top_builddir)/src/Makefile.global
 	    -e 's/@host_tuple@/$(host_tuple)/g' \
 	    -e 's,@GMAKE@,$(MAKE),g' \
 	    -e 's/@enable_shared@/$(enable_shared)/g' \
-	    -e 's/@GCC@/$(GCC)/g' \
 	  $< >$@
 
 # When doing a VPATH build, copy over the .pgc, .stdout and .stderr
