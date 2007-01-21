@@ -35,6 +35,8 @@ extern void get_op_opfamily_properties(Oid opno, Oid opfamily,
 						  bool *recheck);
 extern Oid	get_opfamily_member(Oid opfamily, Oid lefttype, Oid righttype,
 								int16 strategy);
+extern bool get_ordering_op_properties(Oid opno,
+						   Oid *opfamily, Oid *opcintype, int16 *strategy);
 extern bool get_compare_function_for_ordering_op(Oid opno,
 												 Oid *cmpfunc, bool *reverse);
 extern Oid	get_equality_op_for_ordering_op(Oid opno);
