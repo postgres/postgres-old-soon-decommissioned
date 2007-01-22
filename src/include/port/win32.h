@@ -143,7 +143,7 @@ int			semop(int semId, struct sembuf * sops, int flag);
  *	Some day we might want to print descriptions for the most common
  *	exceptions, rather than printing a URL.
  */
-#define WIFEXITED(w)    (((w) & 0xffffff00) == 0)
+#define WIFEXITED(w)    (((w) & 0XFFFFFF00) == 0)
 #define WIFSIGNALED(w)  (!WIFEXITED(w))
 #define WEXITSTATUS(w)  (w)
 #define WTERMSIG(w)     (w)
