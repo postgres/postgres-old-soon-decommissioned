@@ -1295,6 +1295,48 @@ func_volatile(Oid funcid)
 	return result;
 }
 
+/*
+ * get_func_cost
+ *		Given procedure id, return the function's procost field.
+ */
+float4
+get_func_cost(Oid funcid)
+{
+	HeapTuple	tp;
+	float4		result;
+
+	tp = SearchSysCache(PROCOID,
+						ObjectIdGetDatum(funcid),
+						0, 0, 0);
+	if (!HeapTupleIsValid(tp))
+		elog(ERROR, "cache lookup failed for function %u", funcid);
+
+	result = ((Form_pg_proc) GETSTRUCT(tp))->procost;
+	ReleaseSysCache(tp);
+	return result;
+}
+
+/*
+ * get_func_rows
+ *		Given procedure id, return the function's prorows field.
+ */
+float4
+get_func_rows(Oid funcid)
+{
+	HeapTuple	tp;
+	float4		result;
+
+	tp = SearchSysCache(PROCOID,
+						ObjectIdGetDatum(funcid),
+						0, 0, 0);
+	if (!HeapTupleIsValid(tp))
+		elog(ERROR, "cache lookup failed for function %u", funcid);
+
+	result = ((Form_pg_proc) GETSTRUCT(tp))->prorows;
+	ReleaseSysCache(tp);
+	return result;
+}
+
 /*				---------- RELATION CACHE ----------					 */
 
 /*

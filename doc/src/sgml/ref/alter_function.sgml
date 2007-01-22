@@ -34,6 +34,8 @@ where <replaceable class="PARAMETER">action</replaceable> is one of:
     CALLED ON NULL INPUT | RETURNS NULL ON NULL INPUT | STRICT
     IMMUTABLE | STABLE | VOLATILE
     [ EXTERNAL ] SECURITY INVOKER | [ EXTERNAL ] SECURITY DEFINER
+    COST <replaceable class="parameter">execution_cost</replaceable>
+    ROWS <replaceable class="parameter">result_rows</replaceable>
 </synopsis>
  </refsynopsisdiv>
   
@@ -184,6 +186,30 @@ where <replaceable class="PARAMETER">action</replaceable> is one of:
       this capability.
      </para>
     </listitem>
+   </varlistentry>
+
+    <varlistentry>
+     <term><literal>COST</literal> <replaceable class="parameter">execution_cost</replaceable></term>
+
+     <listitem>
+      <para>
+       Change the estimated execution cost of the function.
+       See <xref linkend="sql-createfunction"
+       endterm="sql-createfunction-title"> for more information.
+      </para>
+     </listitem>
+   </varlistentry>
+
+    <varlistentry>
+     <term><literal>ROWS</literal> <replaceable class="parameter">result_rows</replaceable></term>
+
+     <listitem>
+      <para>
+       Change the estimated number of rows returned by a set-returning
+       function.  See <xref linkend="sql-createfunction"
+       endterm="sql-createfunction-title"> for more information.
+      </para>
+     </listitem>
    </varlistentry>
 
    <varlistentry>

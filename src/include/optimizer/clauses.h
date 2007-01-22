@@ -51,6 +51,7 @@ extern bool contain_agg_clause(Node *clause);
 extern void count_agg_clauses(Node *clause, AggClauseCounts *counts);
 
 extern bool expression_returns_set(Node *clause);
+extern double expression_returns_set_rows(Node *clause);
 
 extern bool contain_subplans(Node *clause);
 

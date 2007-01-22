@@ -93,6 +93,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"conversion", CONVERSION_P},
 	{"convert", CONVERT},
 	{"copy", COPY},
+	{"cost", COST},
 	{"create", CREATE},
 	{"createdb", CREATEDB},
 	{"createrole", CREATEROLE},

@@ -3376,6 +3376,22 @@
      </row>
 
      <row>
+      <entry><structfield>procost</structfield></entry>
+      <entry><type>float4</type></entry>
+      <entry></entry>
+      <entry>Estimated execution cost (in units of
+       <xref linkend="guc-cpu-operator-cost">); if <structfield>proretset</>,
+       this is cost per row returned</entry>
+     </row>
+
+     <row>
+      <entry><structfield>prorows</structfield></entry>
+      <entry><type>float4</type></entry>
+      <entry></entry>
+      <entry>Estimated number of result rows (zero if not <structfield>proretset</>)</entry>
+     </row>
+
+     <row>
       <entry><structfield>proisagg</structfield></entry>
       <entry><type>bool</type></entry>
       <entry></entry>

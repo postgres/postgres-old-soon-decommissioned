@@ -97,5 +97,6 @@ extern List *set_returning_clause_references(List *rlist,
 								Index resultRelation);
 extern void fix_opfuncids(Node *node);
 extern void set_opfuncid(OpExpr *opexpr);
+extern void set_sa_opfuncid(ScalarArrayOpExpr *opexpr);
 
 #endif   /* PLANMAIN_H */
