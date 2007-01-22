@@ -258,7 +258,7 @@ createdb -T template0 <replaceable>dbname</>
     <literal>template0</> without any ill effects.  This course of action
     might be advisable if one has carelessly added a bunch of junk in
     <literal>template1</>. (To delete <literal>template1</literal>,
-    it must have <literal>datistemplate = false</>.)
+    it must have <literal>pg_database.datistemplate = false</>.)
    </para>
 
    <para>
