@@ -1197,6 +1197,9 @@ adjust_appendrel_attrs_mutator(Node *node, AppendRelInfo *context)
 		newinfo->this_selec = -1;
 		newinfo->left_ec = NULL;
 		newinfo->right_ec = NULL;
+		newinfo->left_em = NULL;
+		newinfo->right_em = NULL;
+		newinfo->scansel_cache = NIL;
 		newinfo->left_bucketsize = -1;
 		newinfo->right_bucketsize = -1;
 

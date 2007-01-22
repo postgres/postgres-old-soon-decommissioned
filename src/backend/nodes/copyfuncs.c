@@ -1326,6 +1326,10 @@ _copyRestrictInfo(RestrictInfo *from)
 	/* EquivalenceClasses are never copied, so shallow-copy the pointers */
 	COPY_SCALAR_FIELD(left_ec);
 	COPY_SCALAR_FIELD(right_ec);
+	COPY_SCALAR_FIELD(left_em);
+	COPY_SCALAR_FIELD(right_em);
+	/* MergeScanSelCache isn't a Node, so hard to copy; just reset cache */
+	newnode->scansel_cache = NIL;
 	COPY_SCALAR_FIELD(outer_is_left);
 	COPY_SCALAR_FIELD(hashjoinoperator);
 	COPY_SCALAR_FIELD(left_bucketsize);

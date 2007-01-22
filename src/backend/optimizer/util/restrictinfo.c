@@ -344,6 +344,9 @@ make_restrictinfo_internal(Expr *clause,
 
 	restrictinfo->left_ec = NULL;
 	restrictinfo->right_ec = NULL;
+	restrictinfo->left_em = NULL;
+	restrictinfo->right_em = NULL;
+	restrictinfo->scansel_cache = NIL;
 
 	restrictinfo->outer_is_left = false;
 

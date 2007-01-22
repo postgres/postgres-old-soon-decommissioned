@@ -1304,6 +1304,7 @@ _outEquivalenceClass(StringInfo str, EquivalenceClass *node)
 	WRITE_NODE_FIELD(ec_opfamilies);
 	WRITE_NODE_FIELD(ec_members);
 	WRITE_NODE_FIELD(ec_sources);
+	WRITE_NODE_FIELD(ec_derives);
 	WRITE_BITMAPSET_FIELD(ec_relids);
 	WRITE_BOOL_FIELD(ec_has_const);
 	WRITE_BOOL_FIELD(ec_has_volatile);
@@ -1354,6 +1355,8 @@ _outRestrictInfo(StringInfo str, RestrictInfo *node)
 	WRITE_NODE_FIELD(mergeopfamilies);
 	WRITE_NODE_FIELD(left_ec);
 	WRITE_NODE_FIELD(right_ec);
+	WRITE_NODE_FIELD(left_em);
+	WRITE_NODE_FIELD(right_em);
 	WRITE_BOOL_FIELD(outer_is_left);
 	WRITE_OID_FIELD(hashjoinoperator);
 }
