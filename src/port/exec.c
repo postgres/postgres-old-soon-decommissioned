@@ -586,7 +586,7 @@ pclose_check(FILE *stream)
 		log_error(_("child process was terminated by signal %d"),
 				  WTERMSIG(exitstatus));
 #else
-		log_error(_("child process was terminated by exception %X\nSee /include/ntstatus.h for a description\nof the hex value."),
+		log_error(_("child process was terminated by exception %X\nSee /include/ntstatus.h for a description of the hex value."),
 				  WTERMSIG(exitstatus));
 #endif
 	else
