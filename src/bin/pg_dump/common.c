@@ -77,6 +77,7 @@ getSchemaData(int *numTablesPtr)
 	ProcLangInfo *proclanginfo;
 	CastInfo   *castinfo;
 	OpclassInfo *opcinfo;
+	OpfamilyInfo *opfinfo;
 	ConvInfo   *convinfo;
 	int			numNamespaces;
 	int			numAggregates;
@@ -85,6 +86,7 @@ getSchemaData(int *numTablesPtr)
 	int			numProcLangs;
 	int			numCasts;
 	int			numOpclasses;
+	int			numOpfamilies;
 	int			numConversions;
 
 	if (g_verbose)
@@ -116,6 +118,10 @@ getSchemaData(int *numTablesPtr)
 	if (g_verbose)
 		write_msg(NULL, "reading user-defined operator classes\n");
 	opcinfo = getOpclasses(&numOpclasses);
+
+	if (g_verbose)
+		write_msg(NULL, "reading user-defined operator families\n");
+	opfinfo = getOpfamilies(&numOpfamilies);
 
 	if (g_verbose)
 		write_msg(NULL, "reading user-defined conversions\n");
