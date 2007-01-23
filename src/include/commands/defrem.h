@@ -79,13 +79,18 @@ extern void AlterAggregateOwner(List *name, List *args, Oid newOwnerId);
 
 /* commands/opclasscmds.c */
 extern void DefineOpClass(CreateOpClassStmt *stmt);
+extern void DefineOpFamily(CreateOpFamilyStmt *stmt);
+extern void AlterOpFamily(AlterOpFamilyStmt *stmt);
 extern void RemoveOpClass(RemoveOpClassStmt *stmt);
+extern void RemoveOpFamily(RemoveOpFamilyStmt *stmt);
 extern void RemoveOpClassById(Oid opclassOid);
 extern void RemoveOpFamilyById(Oid opfamilyOid);
 extern void RemoveAmOpEntryById(Oid entryOid);
 extern void RemoveAmProcEntryById(Oid entryOid);
 extern void RenameOpClass(List *name, const char *access_method, const char *newname);
+extern void RenameOpFamily(List *name, const char *access_method, const char *newname);
 extern void AlterOpClassOwner(List *name, const char *access_method, Oid newOwnerId);
+extern void AlterOpFamilyOwner(List *name, const char *access_method, Oid newOwnerId);
 
 /* support routines in commands/define.c */
 

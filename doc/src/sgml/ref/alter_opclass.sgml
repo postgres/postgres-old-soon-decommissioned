@@ -102,6 +102,7 @@ ALTER OPERATOR CLASS <replaceable>name</replaceable> USING <replaceable class="p
   <simplelist type="inline">
    <member><xref linkend="sql-createopclass" endterm="sql-createopclass-title"></member>
    <member><xref linkend="sql-dropopclass" endterm="sql-dropopclass-title"></member>
+   <member><xref linkend="sql-alteropfamily" endterm="sql-alteropfamily-title"></member>
   </simplelist>
  </refsect1>
 </refentry>

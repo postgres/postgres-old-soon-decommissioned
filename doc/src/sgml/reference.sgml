@@ -44,6 +44,7 @@
    &alterLanguage;
    &alterOperator;
    &alterOperatorClass;
+   &alterOperatorFamily;
    &alterRole;
    &alterSchema;
    &alterSequence;
@@ -73,6 +74,7 @@
    &createLanguage;
    &createOperator;
    &createOperatorClass;
+   &createOperatorFamily;
    &createRole;
    &createRule;
    &createSchema;
@@ -98,6 +100,7 @@
    &dropLanguage;
    &dropOperator;
    &dropOperatorClass;
+   &dropOperatorFamily;
    &dropOwned;
    &dropRole;
    &dropRule;

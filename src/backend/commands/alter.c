@@ -66,6 +66,10 @@ ExecRenameStmt(RenameStmt *stmt)
 			RenameOpClass(stmt->object, stmt->subname, stmt->newname);
 			break;
 
+		case OBJECT_OPFAMILY:
+			RenameOpFamily(stmt->object, stmt->subname, stmt->newname);
+			break;
+
 		case OBJECT_ROLE:
 			RenameRole(stmt->subname, stmt->newname);
 			break;
@@ -209,6 +213,10 @@ ExecAlterOwnerStmt(AlterOwnerStmt *stmt)
 
 		case OBJECT_OPCLASS:
 			AlterOpClassOwner(stmt->object, stmt->addname, newowner);
+			break;
+
+		case OBJECT_OPFAMILY:
+			AlterOpFamilyOwner(stmt->object, stmt->addname, newowner);
 			break;
 
 		case OBJECT_SCHEMA:

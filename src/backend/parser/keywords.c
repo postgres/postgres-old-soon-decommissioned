@@ -145,6 +145,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"external", EXTERNAL},
 	{"extract", EXTRACT},
 	{"false", FALSE_P},
+	{"family", FAMILY},
 	{"fetch", FETCH},
 	{"first", FIRST_P},
 	{"float", FLOAT_P},
