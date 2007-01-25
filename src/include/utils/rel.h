@@ -137,6 +137,7 @@ typedef struct RelationData
 	char		rd_indexvalid;	/* state of rd_indexlist: 0 = not valid, 1 =
 								 * valid, 2 = temporarily forced */
 	SubTransactionId rd_createSubid;	/* rel was created in current xact */
+	SubTransactionId rd_newRelfilenodeSubid;	/* rel had new relfilenode in current xact */
 
 	/*
 	 * rd_createSubid is the ID of the highest subtransaction the rel has

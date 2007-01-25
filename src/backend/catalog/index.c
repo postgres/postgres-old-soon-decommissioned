@@ -1245,6 +1245,9 @@ setNewRelfilenode(Relation relation)
 
 	heap_close(pg_class, RowExclusiveLock);
 
+	/* Remember we did this in current transaction, to allow later optimisations */
+	relation->rd_newRelfilenodeSubid = GetCurrentSubTransactionId();
+
 	/* Make sure the relfilenode change is visible */
 	CommandCounterIncrement();
 }
