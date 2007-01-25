@@ -1579,9 +1579,15 @@ PLy_typeinfo_dealloc(PLyTypeInfo * arg)
 static PyObject *
 PLyBool_FromString(const char *src)
 {
+	/*
+	 *	We would like to use Py_RETURN_TRUE and Py_RETURN_FALSE here for
+	 *	generating SQL from trigger functions, but those are only
+	 *	supported in Python >= 2.3, and we support older
+	 *	versions.  http://docs.python.org/api/boolObjects.html
+	 */
 	if (src[0] == 't')
-		Py_RETURN_TRUE;
-	Py_RETURN_FALSE;
+		return PyInt_FromLong(1);
+	return PyInt_FromLong(0);
 }
 
 static PyObject *
