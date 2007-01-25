@@ -66,7 +66,7 @@ ECPGtype_name(enum ECPGttype typ)
 	return NULL;
 }
 
-unsigned int
+int
 ECPGDynamicType(Oid type)
 {
 	switch (type)

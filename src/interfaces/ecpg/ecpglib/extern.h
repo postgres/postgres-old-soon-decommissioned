@@ -40,7 +40,7 @@ void		ECPGfree(void *);
 bool		ECPGinit(const struct connection *, const char *, const int);
 char	   *ECPGstrdup(const char *, int);
 const char *ECPGtype_name(enum ECPGttype);
-unsigned int ECPGDynamicType(Oid);
+int ECPGDynamicType(Oid);
 void		ECPGfree_auto_mem(void);
 void		ECPGclear_auto_mem(void);
 
