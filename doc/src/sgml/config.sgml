@@ -3398,6 +3398,35 @@ SELECT * FROM parent WHERE key = 2400;
       </listitem>
      </varlistentry>
 
+     <varlistentry id="guc-temp-tablespaces" xreflabel="temp_tablespaces">
+      <term><varname>temp_tablespaces</varname> (<type>string</type>)</term>
+      <indexterm>
+       <primary><varname>temp_tablespaces</> configuration parameter</primary>
+      </indexterm>
+      <indexterm><primary>tablespace</><secondary>temp</></>
+      <listitem>
+       <para>
+        This variable specifies tablespaces in which to create temp
+        objects (temp tables and indexes on temp tables) when a 
+        <command>CREATE</> command does not explicitly specify a tablespace 
+        and temp files when necessary (eg. for sorting operations).
+       </para>
+
+       <para>
+        The value is either a list of names of tablespaces, or an empty 
+        string to specify using the default tablespace of the current database.
+        If the value does not match the name of any existing tablespace,
+        <productname>PostgreSQL</> will automatically use the default
+        tablespace of the current database.
+       </para>
+
+       <para>
+        For more information on tablespaces,
+        see <xref linkend="manage-ag-tablespaces">.
+       </para>
+      </listitem>
+     </varlistentry>
+
      <varlistentry id="guc-check-function-bodies" xreflabel="check_function_bodies">
       <term><varname>check_function_bodies</varname> (<type>boolean</type>)</term>
       <indexterm>

@@ -238,4 +238,8 @@ extern const char *assign_search_path(const char *newval,
 extern const char *assign_xlog_sync_method(const char *method,
 						bool doit, GucSource source);
 
+/* in commands/tablespace.c */
+extern const char *assign_temp_tablespaces(const char *newval,
+						  bool doit, GucSource source);
+
 #endif   /* GUC_H */

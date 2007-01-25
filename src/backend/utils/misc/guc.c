@@ -99,6 +99,7 @@ extern bool Log_disconnections;
 extern int	CommitDelay;
 extern int	CommitSiblings;
 extern char *default_tablespace;
+extern char *temp_tablespaces;
 extern bool fullPageWrites;
 
 #ifdef TRACE_SORT
@@ -2289,6 +2290,16 @@ static struct config_string ConfigureNamesString[] =
 		},
 		&xmlbinary_string,
 		"base64", assign_xmlbinary, NULL
+	},
+
+	{
+		{"temp_tablespaces", PGC_USERSET, PGC_S_FILE,
+			gettext_noop("Sets the tablespaces suitable for creating new objects and sort files."),
+			NULL,
+			GUC_LIST_INPUT | GUC_LIST_QUOTE 
+		},
+		&temp_tablespaces,
+		NULL, assign_temp_tablespaces, NULL
 	},
 
 	/* End-of-list marker */

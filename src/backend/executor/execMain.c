@@ -2409,6 +2409,10 @@ OpenIntoRel(QueryDesc *queryDesc)
 					 errmsg("tablespace \"%s\" does not exist",
 							parseTree->intoTableSpaceName)));
 	}
+	else if (parseTree->into->istemp)
+	{
+		tablespaceId = GetTempTablespace();
+	}
 	else
 	{
 		tablespaceId = GetDefaultTablespace();
