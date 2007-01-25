@@ -1580,8 +1580,8 @@ static PyObject *
 PLyBool_FromString(const char *src)
 {
 	if (src[0] == 't')
-		return PyInt_FromLong(1);
-	return PyInt_FromLong(0);
+		Py_RETURN_TRUE;
+	Py_RETURN_FALSE;
 }
 
 static PyObject *
