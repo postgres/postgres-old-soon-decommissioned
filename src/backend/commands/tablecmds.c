@@ -1790,8 +1790,7 @@ update_ri_trigger_args(Oid relid,
 		 * line; so does trigger.c ...
 		 */
 		tgnargs = pg_trigger->tgnargs;
-		val = (bytea *)
-			DatumGetPointer(fastgetattr(tuple,
+		val = DatumGetByteaP(fastgetattr(tuple,
 										Anum_pg_trigger_tgargs,
 										tgrel->rd_att, &isnull));
 		if (isnull || tgnargs < RI_FIRST_ATTNAME_ARGNO ||
