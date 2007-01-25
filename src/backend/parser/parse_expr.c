@@ -1481,7 +1481,8 @@ transformXmlExpr(ParseState *pstate, XmlExpr *x)
 					newe = coerce_to_specific_type(pstate, newe, TEXTOID,
 												   "XMLROOT");
 				else
-					newe = coerce_to_boolean(pstate, newe, "XMLROOT");
+					newe = coerce_to_specific_type(pstate, newe, INT4OID,
+												   "XMLROOT");
 				break;
 			case IS_DOCUMENT:
 				newe = coerce_to_specific_type(pstate, newe, XMLOID,

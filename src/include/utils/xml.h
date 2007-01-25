@@ -34,6 +34,14 @@ extern Datum xmlconcat2(PG_FUNCTION_ARGS);
 extern Datum texttoxml(PG_FUNCTION_ARGS);
 extern Datum xmlvalidate(PG_FUNCTION_ARGS);
 
+typedef enum
+{
+	XML_STANDALONE_YES,
+	XML_STANDALONE_NO,
+	XML_STANDALONE_NO_VALUE,
+	XML_STANDALONE_OMITTED
+} XmlStandaloneType;
+
 extern xmltype *xmlconcat(List *args);
 extern xmltype *xmlelement(XmlExprState *xmlExpr, ExprContext *econtext);
 extern xmltype *xmlparse(text *data, bool is_doc, bool preserve_whitespace);
@@ -52,5 +60,13 @@ typedef enum
 } XmlBinaryType;
 
 extern XmlBinaryType xmlbinary;
+
+typedef enum
+{
+	XMLOPTION_DOCUMENT,
+	XMLOPTION_CONTENT
+} XmlOptionType;
+
+extern XmlOptionType xmloption;
 
 #endif /* XML_H */

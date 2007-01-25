@@ -3558,6 +3558,38 @@ SELECT * FROM parent WHERE key = 2400;
       </listitem>
      </varlistentry>
      
+     <varlistentry id="guc-xmloption" xreflabel="xmloption">
+      <term><varname>xmloption</varname> (<type>string</type>)</term>
+      <indexterm>
+       <primary><varname>xmloption</> configuration parameter</primary>
+      </indexterm>
+      <indexterm>
+       <primary><varname>SET XML OPTION</></primary>
+      </indexterm>
+      <indexterm>
+       <primary><varname>XML option</></primary>
+      </indexterm>
+      <listitem>
+       <para>
+        Sets whether <literal>DOCUMENT</literal> or
+        <literal>CONTENT</literal> is implicit when converting between
+        XML and character string values.  See <xref
+        linkend="datatype-xml"> for a description of this.  Valid
+        values are <literal>DOCUMENT</literal> and
+        <literal>CONTENT</literal>.  The default is
+        <literal>CONTENT</literal>.
+       </para>
+
+       <para>
+        According to the SQL standard, the command to set this option is
+<synopsis>
+SET XML OPTION { DOCUMENT | CONTENT };
+</synopsis>
+        This syntax is also available in PostgreSQL.
+       </para>
+      </listitem>
+     </varlistentry>
+     
      </variablelist>
     </sect2>
      <sect2 id="runtime-config-client-format">

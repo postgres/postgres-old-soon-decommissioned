@@ -2797,10 +2797,7 @@ ExecEvalXml(XmlExprState *xmlExpr, ExprContext *econtext,
 
 				e = (ExprState *) lthird(xmlExpr->args);
 				value = ExecEvalExpr(e, econtext, &isnull, NULL);
-				if (isnull)
-					standalone = 0;
-				else
-					standalone = (DatumGetBool(value) ? 1 : -1);
+				standalone = DatumGetInt32(value);
 
 				*isNull = false;
 

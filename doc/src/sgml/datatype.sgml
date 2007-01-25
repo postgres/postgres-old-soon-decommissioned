@@ -3475,6 +3475,24 @@ XMLSERIALIZE ( { DOCUMENT | CONTENT } <replaceable>value</replaceable> AS <repla
    </para>
 
    <para>
+    When character string values are cast to or from type
+    <type>xml</type> without going through <type>XMLPARSE</type> or
+    <type>XMLSERIALIZE</type>, respectively, the choice of
+    <literal>DOCUMENT</literal> versus <literal>CONTENT</literal> is
+    determined by the <quote>XML option</quote> session configuration
+    parameter, which can be set using the standard command
+<synopsis>
+SET XML OPTION { DOCUMENT | CONTENT };
+</synopsis>
+    or the more PostgreSQL-like syntax
+<synopsis>
+SET xmloption TO { DOCUMENT | CONTENT };
+</synopsis>
+    The default is <literal>CONTENT</literal>, so all forms of XML
+    data are allowed.
+   </para>
+
+   <para>
     Care must be taken when dealing with multiple character encodings
     on the client, server, and in the XML data passed through them.
     When using the text mode to pass queries to the server and query

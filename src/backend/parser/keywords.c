@@ -380,6 +380,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"without", WITHOUT},
 	{"work", WORK},
 	{"write", WRITE},
+	{"xml", XML_P},
 	{"xmlattributes", XMLATTRIBUTES},
 	{"xmlconcat", XMLCONCAT},
 	{"xmlelement", XMLELEMENT},
