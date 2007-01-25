@@ -906,8 +906,7 @@ RelationBuildTriggers(Relation relation)
 			char	   *p;
 			int			i;
 
-			val = (bytea *)
-				DatumGetPointer(fastgetattr(htup,
+			val = DatumGetByteaP(fastgetattr(htup,
 											Anum_pg_trigger_tgargs,
 											tgrel->rd_att, &isnull));
 			if (isnull)

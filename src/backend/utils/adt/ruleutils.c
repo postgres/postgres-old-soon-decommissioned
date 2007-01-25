@@ -529,8 +529,7 @@ pg_get_triggerdef(PG_FUNCTION_ARGS)
 		char	   *p;
 		int			i;
 
-		val = (bytea *)
-			DatumGetPointer(fastgetattr(ht_trig,
+		val = DatumGetByteaP(fastgetattr(ht_trig,
 										Anum_pg_trigger_tgargs,
 										tgrel->rd_att, &isnull));
 		if (isnull)
