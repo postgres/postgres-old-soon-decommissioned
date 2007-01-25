@@ -122,12 +122,6 @@ typedef void (*PrintTocDataPtr) (struct _archiveHandle * AH, struct _tocEntry * 
 
 typedef size_t (*CustomOutPtr) (struct _archiveHandle * AH, const void *buf, size_t len);
 
-typedef enum _archiveMode
-{
-	archModeWrite,
-	archModeRead
-} ArchiveMode;
-
 typedef struct _outputContext
 {
 	void	   *OF;

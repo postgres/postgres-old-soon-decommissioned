@@ -128,6 +128,18 @@ PostgreSQL documentation
        </para>
       </listitem>
      </varlistentry>
+	 
+     <varlistentry>
+      <term><option>-f <replaceable class="parameter">filename</replaceable></option></term>
+      <term><option>--file=<replaceable class="parameter">filename</replaceable></option></term>
+      <listitem>
+       <para>
+        Write the output to the specified file.  This is particularly useful
+        on Windows because output redirection does not work for child
+        processes.
+       </para>
+      </listitem>
+     </varlistentry>
 
      <varlistentry>
       <term><option>-g</option></term>

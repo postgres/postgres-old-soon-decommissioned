@@ -46,6 +46,13 @@ typedef enum _archiveFormat
 	archNull = 4
 } ArchiveFormat;
 
+typedef enum _archiveMode
+{
+	archModeAppend,
+	archModeWrite,
+	archModeRead
+} ArchiveMode;
+
 /*
  *	We may want to have some more user-readable data, but in the mean
  *	time this gives us some abstraction and type checking.
@@ -166,7 +173,7 @@ extern Archive *OpenArchive(const char *FileSpec, const ArchiveFormat fmt);
 
 /* Create a new archive */
 extern Archive *CreateArchive(const char *FileSpec, const ArchiveFormat fmt,
-			  const int compression);
+			  const int compression, ArchiveMode mode);
 
 /* The --list option */
 extern void PrintTOCSummary(Archive *AH, RestoreOptions *ropt);
