@@ -155,8 +155,10 @@ int			semop(int semId, struct sembuf * sops, int flag);
  *		NTSTATUS.H from the Windows NT DDK.
  *                                               
  *	Some day we might want to print descriptions for the most common
- *	exceptions, rather than printing a URL.  FormatMessage() can print
- *	the text of error values, but not exception values.
+ *	exceptions, rather than printing an include file name.  We could use
+ *	RtlNtStatusToDosError() and pass to FormatMessage(), which can print
+ *	the text of error values, but MinGW does not support
+ *	RtlNtStatusToDosError().
  */
 #define WIFEXITED(w)    (((w) & 0XFFFFFF00) == 0)
 #define WIFSIGNALED(w)  (!WIFEXITED(w))
