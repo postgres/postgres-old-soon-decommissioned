@@ -114,7 +114,7 @@ isDataGram(SOCKET s) {
 }
 
 int
-pgwin32_waitforsinglesocket(SOCKET s, int what)
+pgwin32_waitforsinglesocket(SOCKET s, int what, int timeout)
 {
 	static HANDLE waitevent = INVALID_HANDLE_VALUE;
 	static SOCKET current_socket = -1;
@@ -195,7 +195,7 @@ pgwin32_waitforsinglesocket(SOCKET s, int what)
 		}
 	}
 	else
-		r = WaitForMultipleObjectsEx(2, events, FALSE, INFINITE, TRUE);
+		r = WaitForMultipleObjectsEx(2, events, FALSE, timeout, TRUE);
 
 	if (r == WAIT_OBJECT_0 || r == WAIT_IO_COMPLETION)
 	{
@@ -205,6 +205,8 @@ pgwin32_waitforsinglesocket(SOCKET s, int what)
 	}
 	if (r == WAIT_OBJECT_0 + 1)
 		return 1;
+	if (r == WAIT_TIMEOUT)
+		return 0;
 	ereport(ERROR,
 			(errmsg_internal("Bad return from WaitForMultipleObjects: %i (%i)", r, (int) GetLastError())));
 	return 0;
@@ -274,7 +276,7 @@ pgwin32_connect(SOCKET s, const struct sockaddr * addr, int addrlen)
 		return -1;
 	}
 
-	while (pgwin32_waitforsinglesocket(s, FD_CONNECT) == 0)
+	while (pgwin32_waitforsinglesocket(s, FD_CONNECT, INFINITE) == 0)
 	{
 		/* Loop endlessly as long as we are just delivering signals */
 	}
@@ -310,7 +312,8 @@ pgwin32_recv(SOCKET s, char *buf, int len, int f)
 
 	/* No error, zero bytes (win2000+) or error+WSAEWOULDBLOCK (<=nt4) */
 
-	if (pgwin32_waitforsinglesocket(s, FD_READ | FD_CLOSE | FD_ACCEPT) == 0)
+	if (pgwin32_waitforsinglesocket(s, FD_READ | FD_CLOSE | FD_ACCEPT,
+									INFINITE) == 0)
 		return -1;
 
 	r = WSARecv(s, &wbuf, 1, &b, &flags, NULL, NULL);
@@ -355,7 +358,7 @@ pgwin32_send(SOCKET s, char *buf, int len, int flags)
 
 		/* No error, zero bytes (win2000+) or error+WSAEWOULDBLOCK (<=nt4) */
 
-		if (pgwin32_waitforsinglesocket(s, FD_WRITE | FD_CLOSE) == 0)
+		if (pgwin32_waitforsinglesocket(s, FD_WRITE | FD_CLOSE, INFINITE) == 0)
 			return -1;
 	}
 

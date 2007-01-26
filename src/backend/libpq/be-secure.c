@@ -275,7 +275,8 @@ rloop:
 #ifdef WIN32
 				pgwin32_waitforsinglesocket(SSL_get_fd(port->ssl),
 											(err == SSL_ERROR_WANT_READ) ?
-								   FD_READ | FD_CLOSE : FD_WRITE | FD_CLOSE);
+								   FD_READ | FD_CLOSE : FD_WRITE | FD_CLOSE,
+											INFINITE);
 #endif
 				goto rloop;
 			case SSL_ERROR_SYSCALL:
@@ -374,7 +375,8 @@ wloop:
 #ifdef WIN32
 				pgwin32_waitforsinglesocket(SSL_get_fd(port->ssl),
 											(err == SSL_ERROR_WANT_READ) ?
-								   FD_READ | FD_CLOSE : FD_WRITE | FD_CLOSE);
+								   FD_READ | FD_CLOSE : FD_WRITE | FD_CLOSE,
+											INFINITE);
 #endif
 				goto wloop;
 			case SSL_ERROR_SYSCALL:
@@ -889,7 +891,8 @@ aloop:
 #ifdef WIN32
 				pgwin32_waitforsinglesocket(SSL_get_fd(port->ssl),
 											(err == SSL_ERROR_WANT_READ) ?
-					   FD_READ | FD_CLOSE | FD_ACCEPT : FD_WRITE | FD_CLOSE);
+					   FD_READ | FD_CLOSE | FD_ACCEPT : FD_WRITE | FD_CLOSE,
+											INFINITE);
 #endif
 				goto aloop;
 			case SSL_ERROR_SYSCALL:
