@@ -53,7 +53,7 @@ CATALOG = -c $(DOCBOOKSTYLE)/catalog
 endif
 
 # Enable draft mode during development
-ifneq (,$(findstring devel, $(VERSION)))
+ifeq ($(DRAFT), Y)
 override JADEFLAGS += -V draft-mode
 endif
 
