@@ -38,11 +38,6 @@
 #include <signal.h>
 #endif
 
-#ifdef WIN32_ONLY_COMPILER
-typedef int ssize_t;			/* ssize_t doesn't exist in VC (at least not
-								 * VC6) */
-#endif
-
 /* include stuff common to fe and be */
 #include "getaddrinfo.h"
 #include "libpq/pqcomm.h"

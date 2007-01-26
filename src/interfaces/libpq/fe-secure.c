@@ -575,7 +575,6 @@ client_cert_cb(SSL *ssl, X509 **x509, EVP_PKEY **pkey)
 	char		fnbuf[MAXPGPATH];
 	FILE	   *fp;
 	PGconn	   *conn = (PGconn *) SSL_get_app_data(ssl);
-	int			(*cb) () = NULL;	/* how to read user password */
 	char		sebuf[256];
 
 	if (!pqGetHomeDirectory(homedir, sizeof(homedir)))
@@ -642,7 +641,7 @@ client_cert_cb(SSL *ssl, X509 **x509, EVP_PKEY **pkey)
 		return 0;
 	}
 #endif
-	if (PEM_read_PrivateKey(fp, pkey, cb, NULL) == NULL)
+	if (PEM_read_PrivateKey(fp, pkey, NULL, NULL) == NULL)
 	{
 		char	   *err = SSLerrmessage();
 

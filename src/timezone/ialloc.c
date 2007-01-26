@@ -14,7 +14,7 @@
 #define nonzero(n)	(((n) == 0) ? 1 : (n))
 
 char *
-imalloc(const int n)
+imalloc(int n)
 {
 	return malloc((size_t) nonzero(n));
 }
@@ -28,7 +28,7 @@ icalloc(int nelem, int elsize)
 }
 
 void *
-irealloc(void *pointer, const int size)
+irealloc(void *pointer, int size)
 {
 	if (pointer == NULL)
 		return imalloc(size);
