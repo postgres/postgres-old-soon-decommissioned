@@ -1341,7 +1341,7 @@ map_sql_identifier_to_xml_name(char *ident, bool fully_escaped)
 static char *
 unicode_to_sqlchar(pg_wchar c)
 {
-	static unsigned char utf8string[4];
+	static unsigned char utf8string[5];	/* need trailing zero */
 
 	if (c <= 0x7F)
 	{
