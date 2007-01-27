@@ -99,6 +99,12 @@ ifneq ($(DRAFT), Y)
 endif
 
 
+# The draft rule calls gmake again and sets the DRAFT variable.
+# This seems to be the only way to set gmake variables in a rule.
+draft:
+	@$(MAKE) DRAFT="Y" html
+
+
 COLLATEINDEX := LC_ALL=C $(PERL) $(COLLATEINDEX) -f -g
 
 # bookindex.sgml is required so there is a proper index for all output formats
