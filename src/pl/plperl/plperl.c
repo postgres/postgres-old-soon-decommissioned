@@ -2142,8 +2142,7 @@ plperl_spi_prepare(char *query, int argc, SV **argv)
 			getTypeInputInfo(typId, &typInput, &typIOParam);
 
 			qdesc->argtypes[i] = typId;
-			perm_fmgr_info((Form_pg_type) typInput,
-						   &(qdesc->arginfuncs[i]));
+			perm_fmgr_info(typInput, &(qdesc->arginfuncs[i]));
 			qdesc->argtypioparams[i] = typIOParam;
 		}
 
