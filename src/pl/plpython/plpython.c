@@ -15,9 +15,14 @@
 #include <Python.h>
 #undef errcode
 #define _DEBUG
+#elif defined (_MSC_VER)
+#define errcode __msvc_errcode
+#include <Python.h>
+#undef errcode
 #else
 #include <Python.h>
 #endif
+
 #include "postgres.h"
 
 /* system stuff */
