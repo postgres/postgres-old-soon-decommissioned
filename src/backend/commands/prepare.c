@@ -781,12 +781,7 @@ build_regtype_array(List *oid_list)
 	i = 0;
 	foreach(lc, oid_list)
 	{
-		Oid			oid;
-		Datum		oid_str;
-
-		oid = lfirst_oid(lc);
-		oid_str = DirectFunctionCall1(oidout, ObjectIdGetDatum(oid));
-		tmp_ary[i++] = DirectFunctionCall1(regtypein, oid_str);
+		tmp_ary[i++] = ObjectIdGetDatum(lfirst_oid(lc));
 	}
 
 	/* XXX: this hardcodes assumptions about the regtype type */
