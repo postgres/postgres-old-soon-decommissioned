@@ -926,4 +926,20 @@ extern Datum pg_prepared_statement(PG_FUNCTION_ARGS);
 /* utils/mmgr/portalmem.c */
 extern Datum pg_cursor(PG_FUNCTION_ARGS);
 
+/* uuid.c */
+extern Datum uuid_in(PG_FUNCTION_ARGS);
+extern Datum uuid_out(PG_FUNCTION_ARGS);
+extern Datum uuid_send(PG_FUNCTION_ARGS);
+extern Datum uuid_recv(PG_FUNCTION_ARGS);
+extern Datum uuid_lt(PG_FUNCTION_ARGS);
+extern Datum uuid_le(PG_FUNCTION_ARGS);
+extern Datum uuid_eq(PG_FUNCTION_ARGS);
+extern Datum uuid_ge(PG_FUNCTION_ARGS);
+extern Datum uuid_gt(PG_FUNCTION_ARGS);
+extern Datum uuid_ne(PG_FUNCTION_ARGS);
+extern Datum uuid_cmp(PG_FUNCTION_ARGS);
+extern Datum uuid_hash(PG_FUNCTION_ARGS);
+extern Datum text_uuid(PG_FUNCTION_ARGS);
+extern Datum uuid_text(PG_FUNCTION_ARGS);
+
 #endif   /* BUILTINS_H */

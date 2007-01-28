@@ -895,6 +895,14 @@ DATA(insert OID = 2875 (  "@"	   PGNSP PGUID b f f 601 628 16	  0  0 on_sl - - )
 DATA(insert OID = 2876 (  "@"	   PGNSP PGUID b f f 601 603 16	  0  0 on_sb - - ));
 DATA(insert OID = 2877 (  "~"	   PGNSP PGUID b f f 1034 1033	 16 0 0 aclcontains - - ));
 
+/* uuid operators */ 
+DATA(insert OID = 2972 (  "="      PGNSP PGUID b t t 2950 2950 16 2972 2973 uuid_eq eqsel eqjoinsel ));
+DATA(insert OID = 2973 (  "<>"	   PGNSP PGUID b f f 2950 2950 16 2973 2972 uuid_ne neqsel neqjoinsel ));
+DATA(insert OID = 2974 (  "<"	   PGNSP PGUID b f f 2950 2950 16 2975 2977 uuid_lt scalarltsel scalarltjoinsel ));
+DATA(insert OID = 2975 (  ">"	   PGNSP PGUID b f f 2950 2950 16 2974 2976 uuid_gt scalargtsel scalargtjoinsel ));
+DATA(insert OID = 2976 (  "<="	   PGNSP PGUID b f f 2950 2950 16 2977 2975 uuid_le scalarltsel scalarltjoinsel ));
+DATA(insert OID = 2977 (  ">="	   PGNSP PGUID b f f 2950 2950 16 2976 2974 uuid_ge scalargtsel scalargtjoinsel ));
+
 
 /*
  * function prototypes

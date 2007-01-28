@@ -561,6 +561,11 @@ DATA(insert OID = 2282 ( opaque			PGNSP PGUID  4 t p t \054 0 0 opaque_in opaque
 DATA(insert OID = 2283 ( anyelement		PGNSP PGUID  4 t p t \054 0 0 anyelement_in anyelement_out - - - - - i p f 0 -1 0 _null_ _null_ ));
 #define ANYELEMENTOID	2283
 
+/* uuid */ 
+DATA(insert OID = 2950 ( uuid			PGNSP PGUID 16 f b t \054 0 0 uuid_in uuid_out uuid_recv uuid_send - - - c p f 0 -1 0 _null_ _null_ ));
+DESCR("UUID datatype");
+DATA(insert OID = 2951 ( _uuid			PGNSP PGUID -1 f b t \054 0 2950 array_in array_out array_recv array_send - - - i x f 0 -1 0 _null_ _null_ ));
+
 /*
  * prototypes for functions in pg_type.c
  */

@@ -200,5 +200,7 @@ DATA(insert (	2742	_timestamp_ops		PGNSP PGUID 2745  1115 t 1114 ));
 DATA(insert (	2742	_money_ops			PGNSP PGUID 2745  791 t 790 ));
 DATA(insert (	2742	_reltime_ops		PGNSP PGUID 2745  1024 t 703 ));
 DATA(insert (	2742	_tinterval_ops		PGNSP PGUID 2745  1025 t 704 ));
+DATA(insert (   403     uuid_ops			PGNSP PGUID 2968  2950 t 0 ));
+DATA(insert (   405     uuid_ops			PGNSP PGUID 2969  2950 t 0 ));
 
 #endif   /* PG_OPCLASS_H */
