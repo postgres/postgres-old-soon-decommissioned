@@ -2430,7 +2430,7 @@ LogChildExit(int lev, const char *procname, int pid, int exitstatus)
 				(errmsg("%s (PID %d) was terminated by exception %X",
 						procname, pid, WTERMSIG(exitstatus)),
 				 errhint("See C include file \"ntstatus.h\" for a description of the hex value.")));
-#elif defined(HAVE_SYS_SIGLIST)
+#elif defined(HAVE_DECL_SYS_SIGLIST)
 		ereport(lev,
 
 		/*------

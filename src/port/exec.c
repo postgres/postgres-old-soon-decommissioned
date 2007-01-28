@@ -586,7 +586,7 @@ pclose_check(FILE *stream)
 #if defined(WIN32)
 		log_error(_("child process was terminated by exception %X\nSee C include file \"ntstatus.h\" for a description of the hex value."),
 				  WTERMSIG(exitstatus));
-#elif defined(HAVE_SYS_SIGLIST)
+#elif defined(HAVE_DECL_SYS_SIGLIST)
 		log_error(_("child process was terminated by signal: %s"),
 					WTERMSIG(exitstatus) < NSIG ?
 					sys_siglist[WTERMSIG(exitstatus)] : "unknown signal");

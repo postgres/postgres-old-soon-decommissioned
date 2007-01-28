@@ -1059,14 +1059,7 @@ AC_TRY_LINK([#include <setjmp.h>],
 AC_MSG_RESULT(yes)],
             [AC_MSG_RESULT(no)])
 
-AC_CACHE_CHECK([for sys_siglist], pgac_cv_var_sys_siglist,
-[AC_TRY_LINK([#include <signal.h>],
-  [extern char *sys_siglist[]; (void)sys_siglist[0];],
-  [pgac_cv_var_sys_siglist=yes],
-  [pgac_cv_var_sys_siglist=no])])
-if test x"$pgac_cv_var_sys_siglist" = x"yes"; then
-  AC_DEFINE(HAVE_SYS_SIGLIST, 1, [Define to 1 if you have the global variable 'char *sys_siglist[]'.])
-fi
+AC_DECL_SYS_SIGLIST
 
 AC_CHECK_FUNC(syslog,
               [AC_CHECK_HEADER(syslog.h,
