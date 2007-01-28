@@ -22,6 +22,7 @@
 
 #include <grp.h>
 #include <pwd.h>
+#include <signal.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
 #include <unistd.h>
