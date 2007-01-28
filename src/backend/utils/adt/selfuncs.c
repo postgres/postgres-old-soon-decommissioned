@@ -1700,6 +1700,9 @@ scalararraysel(PlannerInfo *root,
 int
 estimate_array_length(Node *arrayexpr)
 {
+	/* look through any binary-compatible relabeling of arrayexpr */
+	arrayexpr = strip_array_coercion(arrayexpr);
+
 	if (arrayexpr && IsA(arrayexpr, Const))
 	{
 		Datum		arraydatum = ((Const *) arrayexpr)->constvalue;
