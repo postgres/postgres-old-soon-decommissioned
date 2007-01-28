@@ -46,6 +46,7 @@ _PG_init(void)
 
 	plpgsql_HashTableInit();
 	RegisterXactCallback(plpgsql_xact_cb, NULL);
+	RegisterSubXactCallback(plpgsql_subxact_cb, NULL);
 
 	/* Set up a rendezvous point with optional instrumentation plugin */
 	plugin_ptr = (PLpgSQL_plugin **) find_rendezvous_variable("PLpgSQL_plugin");
