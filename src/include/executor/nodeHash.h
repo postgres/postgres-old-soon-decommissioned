@@ -28,9 +28,11 @@ extern void ExecHashTableDestroy(HashJoinTable hashtable);
 extern void ExecHashTableInsert(HashJoinTable hashtable,
 					TupleTableSlot *slot,
 					uint32 hashvalue);
-extern uint32 ExecHashGetHashValue(HashJoinTable hashtable,
+extern bool ExecHashGetHashValue(HashJoinTable hashtable,
 					 ExprContext *econtext,
-					 List *hashkeys);
+					 List *hashkeys,
+					 bool keep_nulls,
+					 uint32 *hashvalue);
 extern void ExecHashGetBucketAndBatch(HashJoinTable hashtable,
 						  uint32 hashvalue,
 						  int *bucketno,
