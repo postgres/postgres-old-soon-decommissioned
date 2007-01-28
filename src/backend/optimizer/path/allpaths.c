@@ -394,6 +394,12 @@ set_append_rel_pathlist(PlannerInfo *root, RelOptInfo *rel,
 	}
 
 	/*
+	 * Set "raw tuples" count equal to "rows" for the appendrel; needed
+	 * because some places assume rel->tuples is valid for any baserel.
+	 */
+	rel->tuples = rel->rows;
+
+	/*
 	 * Finally, build Append path and install it as the only access path for
 	 * the parent rel.	(Note: this is correct even if we have zero or one
 	 * live subpath due to constraint exclusion.)
