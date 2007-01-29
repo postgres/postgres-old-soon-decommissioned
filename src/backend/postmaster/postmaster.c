@@ -2436,11 +2436,10 @@ LogChildExit(int lev, const char *procname, int pid, int exitstatus)
 		/*------
 		  translator: %s is a noun phrase describing a child process, such as
 		  "server process" */
-				(errmsg("%s (PID %d) was terminated by signal %s (%d)",
-						procname, pid,
+				(errmsg("%s (PID %d) was terminated by signal %d: %s",
+						procname, pid, WTERMSIG(exitstatus),
 						WTERMSIG(exitstatus) < NSIG ?
-						sys_siglist[WTERMSIG(exitstatus)] : "(unknown)",
-						WTERMSIG(exitstatus))));
+						sys_siglist[WTERMSIG(exitstatus)] : "(unknown)")));
 #else
 		ereport(lev,
 

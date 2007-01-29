@@ -587,9 +587,14 @@ pclose_check(FILE *stream)
 		log_error(_("child process was terminated by exception 0x%X"),
 				  WTERMSIG(exitstatus));
 #elif defined(HAVE_DECL_SYS_SIGLIST) && HAVE_DECL_SYS_SIGLIST
-		log_error(_("child process was terminated by signal %s"),
-				  WTERMSIG(exitstatus) < NSIG ?
-				  sys_siglist[WTERMSIG(exitstatus)] : "(unknown)");
+	{
+		char str[256];
+
+		snprintf(str, 256, "%d: %s", WTERMSIG(exitstatus),
+			  WTERMSIG(exitstatus) < NSIG ?
+			  sys_siglist[WTERMSIG(exitstatus)] : "(unknown)");
+		log_error(_("child process was terminated by signal %s"), str);
+	}
 #else
 		log_error(_("child process was terminated by signal %d"),
 				  WTERMSIG(exitstatus));
