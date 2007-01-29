@@ -275,6 +275,11 @@ _hash_metapinit(Relation rel)
 	metap->hashm_bmshift = i + BYTE_TO_BIT;
 	Assert((1 << BMPG_SHIFT(metap)) == (BMPG_MASK(metap) + 1));
 
+	/*
+	 * Label the index with its primary hash support function's OID.  This is
+	 * pretty useless for normal operation (in fact, hashm_procid is not used
+	 * anywhere), but it might be handy for forensic purposes so we keep it.
+	 */
 	metap->hashm_procid = index_getprocid(rel, 1, HASHPROC);
 
 	/*
