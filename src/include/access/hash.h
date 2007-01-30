@@ -308,6 +308,7 @@ extern bool _hash_step(IndexScanDesc scan, Buffer *bufP, ScanDirection dir);
 /* hashutil.c */
 extern bool _hash_checkqual(IndexScanDesc scan, IndexTuple itup);
 extern uint32 _hash_datum2hashkey(Relation rel, Datum key);
+extern uint32 _hash_datum2hashkey_type(Relation rel, Datum key, Oid keytype);
 extern Bucket _hash_hashkey2bucket(uint32 hashkey, uint32 maxbucket,
 					 uint32 highmask, uint32 lowmask);
 extern uint32 _hash_log2(uint32 num);

@@ -102,12 +102,11 @@ typedef struct HashJoinTableData
 
 	/*
 	 * Info about the datatype-specific hash functions for the datatypes being
-	 * hashed.	We assume that the inner and outer sides of each hashclause
-	 * are the same type, or at least share the same hash function. This is an
-	 * array of the same length as the number of hash keys.
+	 * hashed. These are arrays of the same length as the number of hash join
+	 * clauses (hash keys).
 	 */
-	FmgrInfo   *hashfunctions;	/* lookup data for hash functions */
-
+	FmgrInfo   *outer_hashfunctions;	/* lookup data for hash functions */
+	FmgrInfo   *inner_hashfunctions;	/* lookup data for hash functions */
 	bool	   *hashStrict;		/* is each hash join operator strict? */
 
 	Size		spaceUsed;		/* memory space currently used by tuples */

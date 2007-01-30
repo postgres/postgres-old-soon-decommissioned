@@ -569,6 +569,7 @@ ExecHashJoinOuterGetTuple(PlanState *outerNode,
 			econtext->ecxt_outertuple = slot;
 			if (ExecHashGetHashValue(hashtable, econtext,
 									 hjstate->hj_OuterHashKeys,
+									 true, /* outer tuple */
 									 (hjstate->js.jointype == JOIN_LEFT),
 									 hashvalue))
 			{

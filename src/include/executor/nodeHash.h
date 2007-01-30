@@ -31,6 +31,7 @@ extern void ExecHashTableInsert(HashJoinTable hashtable,
 extern bool ExecHashGetHashValue(HashJoinTable hashtable,
 					 ExprContext *econtext,
 					 List *hashkeys,
+					 bool outer_tuple,
 					 bool keep_nulls,
 					 uint32 *hashvalue);
 extern void ExecHashGetBucketAndBatch(HashJoinTable hashtable,

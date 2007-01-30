@@ -792,7 +792,8 @@ ExecInitSubPlan(SubPlanState *node, EState *estate, int eflags)
 			Expr	   *expr;
 			TargetEntry *tle;
 			GenericExprState *tlestate;
-			Oid			hashfn;
+			Oid			left_hashfn;
+			Oid			right_hashfn;
 
 			Assert(IsA(fstate, FuncExprState));
 			Assert(IsA(opexpr, OpExpr));
@@ -830,12 +831,14 @@ ExecInitSubPlan(SubPlanState *node, EState *estate, int eflags)
 			fmgr_info(opexpr->opfuncid, &node->eqfunctions[i - 1]);
 			node->eqfunctions[i - 1].fn_expr = (Node *) opexpr;
 
-			/* Lookup the associated hash function */
-			hashfn = get_op_hash_function(opexpr->opno);
-			if (!OidIsValid(hashfn))
+			/* Lookup the associated hash functions */
+			if (!get_op_hash_functions(opexpr->opno,
+									   &left_hashfn, &right_hashfn))
 				elog(ERROR, "could not find hash function for hash operator %u",
 					 opexpr->opno);
-			fmgr_info(hashfn, &node->hashfunctions[i - 1]);
+			/* For the moment, not supporting cross-type cases */
+			Assert(left_hashfn == right_hashfn);
+			fmgr_info(right_hashfn, &node->hashfunctions[i - 1]);
 
 			i++;
 		}
