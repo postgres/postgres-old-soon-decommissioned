@@ -580,6 +580,8 @@ typedef struct PLpgSQL_function
 	int			ndatums;
 	PLpgSQL_datum **datums;
 	PLpgSQL_stmt_block *action;
+
+	unsigned long use_count;
 } PLpgSQL_function;
 
 
