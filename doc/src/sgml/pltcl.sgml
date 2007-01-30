@@ -387,11 +387,11 @@ CREATE FUNCTION t1_count(integer, integer) RETURNS integer AS $$
 $$ LANGUAGE pltcl;
 </programlisting>
 
-    We need backslashes inside the query string given to
-    <function>spi_prepare</> to ensure that the
-    <literal>$<replaceable>n</replaceable></> markers will be passed
-    through to <function>spi_prepare</> as-is, and not replaced by Tcl
-    variable substitution.
+        We need backslashes inside the query string given to
+        <function>spi_prepare</> to ensure that the
+        <literal>$<replaceable>n</replaceable></> markers will be passed
+        through to <function>spi_prepare</> as-is, and not replaced by Tcl
+        variable substitution.
 
        </para>
       </listitem>
