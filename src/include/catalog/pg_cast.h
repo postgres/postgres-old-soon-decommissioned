@@ -400,5 +400,7 @@ DATA(insert ( 1700 1700 1703 i ));
 /* casts to and from uuid */ 
 DATA(insert (   25 2950 2964 a ));
 DATA(insert ( 2950   25 2965 a ));
+DATA(insert ( 1043 2950 2964 a ));
+DATA(insert ( 2950 1043 2965 a ));
 
 #endif   /* PG_CAST_H */
