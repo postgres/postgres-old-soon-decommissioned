@@ -243,7 +243,7 @@ SELECT schedule[1:2][1:1] FROM sal_emp WHERE name = 'Bill';
 (1 row)
 </programlisting>
 
-  We could also have written
+  We could also have written:
 
 <programlisting>
 SELECT schedule[1:2][1] FROM sal_emp WHERE name = 'Bill';
