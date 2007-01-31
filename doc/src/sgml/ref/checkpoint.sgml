@@ -42,7 +42,7 @@ CHECKPOINT
   </para>
 
   <para>
-   Only superusers may call <command>CHECKPOINT</command>.  The command is
+   Only superusers can call <command>CHECKPOINT</command>.  The command is
    not intended for use during normal operation.
   </para>
  </refsect1>

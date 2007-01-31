@@ -76,7 +76,7 @@ where <replaceable class="PARAMETER">constraint</replaceable> is:
       <term><replaceable class="PARAMETER">data_type</replaceable></term>
       <listitem>
        <para>
-        The underlying data type of the domain. This may include array
+        The underlying data type of the domain. This can include array
         specifiers.
        </para>
       </listitem>

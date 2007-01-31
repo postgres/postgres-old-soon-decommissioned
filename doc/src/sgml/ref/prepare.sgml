@@ -138,7 +138,7 @@ PREPARE <replaceable class="PARAMETER">name</replaceable> [ (<replaceable class=
    constant values in a statement to make guesses about the likely
    result of executing the statement. Since this data is unavailable
    when planning prepared statements with parameters, the chosen plan
-   may be suboptimal. To examine the query plan
+   might be suboptimal. To examine the query plan
    <productname>PostgreSQL</productname> has chosen for a prepared
    statement, use <xref linkend="sql-explain"
    endterm="sql-explain-title">.

@@ -109,7 +109,7 @@ where <replaceable class="parameter">transaction_mode</replaceable> is one of:
 
   <para>
    For reasons of backwards compatibility, the commas between successive
-   <replaceable class="parameter">transaction_modes</replaceable> may be
+   <replaceable class="parameter">transaction_modes</replaceable> can be
    omitted.
   </para>
  </refsect1>

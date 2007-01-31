@@ -33,7 +33,7 @@ DROP FUNCTION [ IF EXISTS ] <replaceable class="parameter">name</replaceable> ( 
    function. To execute this command the user must be the
    owner of the function. The argument types to the
    function must be specified, since several different functions
-   may exist with the same name and different argument lists.
+   can exist with the same name and different argument lists.
   </para>
  </refsect1>
 

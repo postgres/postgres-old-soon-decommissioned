@@ -74,7 +74,7 @@ UNLISTEN { <replaceable class="PARAMETER">name</replaceable> | * }
   <title>Notes</title>
 
   <para>
-   You may unlisten something you were not listening for; no warning or error
+   You can unlisten something you were not listening for; no warning or error
    will appear.
   </para>
 

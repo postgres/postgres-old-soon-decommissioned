@@ -136,7 +136,7 @@ ALTER SEQUENCE <replaceable class="parameter">name</replaceable> SET SCHEMA <rep
       <term><literal>CYCLE</literal></term>
       <listitem>
        <para>
-        The optional <literal>CYCLE</literal> key word may be used to enable
+        The optional <literal>CYCLE</literal> key word can be used to enable
         the sequence to wrap around when the
         <replaceable class="parameter">maxvalue</replaceable> or
         <replaceable class="parameter">minvalue</replaceable> has been

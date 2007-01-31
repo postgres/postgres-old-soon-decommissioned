@@ -75,7 +75,7 @@ TRUNCATE [ TABLE ] <replaceable class="PARAMETER">name</replaceable> [, ...] [ C
   <title>Notes</title>
 
   <para>
-   Only the owner of a table may <command>TRUNCATE</> it.
+   Only the owner of a table can <command>TRUNCATE</> it.
   </para>
 
   <para>

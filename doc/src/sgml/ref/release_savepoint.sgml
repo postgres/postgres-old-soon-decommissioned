@@ -43,7 +43,7 @@ RELEASE [ SAVEPOINT ] <replaceable>savepoint_name</replaceable>
    effects of commands executed after the savepoint was established.
    (To do that, see <xref linkend="sql-rollback-to"
    endterm="sql-rollback-to-title">.)  Destroying a savepoint when
-   it is no longer needed may allow the system to reclaim some resources
+   it is no longer needed allows the system to reclaim some resources
    earlier than transaction end.
   </para>
 

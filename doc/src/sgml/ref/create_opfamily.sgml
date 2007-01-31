@@ -83,7 +83,7 @@ CREATE OPERATOR FAMILY <replaceable class="parameter">name</replaceable> USING <
     <term><replaceable class="parameter">name</replaceable></term>
     <listitem>
      <para>
-      The name of the operator family to be created.  The name may be
+      The name of the operator family to be created.  The name can be
       schema-qualified.
      </para>
     </listitem>

@@ -93,7 +93,7 @@ COMMENT ON
      <para>
       The name of the object to be commented.  Names of tables,
       aggregates, domains, functions, indexes, operators, operator classes,
-      operator families, sequences, types, and views may be schema-qualified.
+      operator families, sequences, types, and views can be schema-qualified.
      </para>
     </listitem>
    </varlistentry>

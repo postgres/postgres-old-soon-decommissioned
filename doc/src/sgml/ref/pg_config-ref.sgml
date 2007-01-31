@@ -106,7 +106,7 @@
       <para>
        Print the location of dynamically loadable modules, or where
        the server would search for them.  (Other
-       architecture-dependent data files may also be installed in this
+       architecture-dependent data files might also be installed in this
        directory.)
       </para>
      </listitem>

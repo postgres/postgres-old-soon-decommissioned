@@ -64,7 +64,7 @@ ALTER DOMAIN <replaceable class="PARAMETER">name</replaceable>
     <listitem>
      <para>
       These forms change whether a domain is marked to allow NULL
-      values or to reject NULL values.  You may only <literal>SET NOT NULL</>
+      values or to reject NULL values.  You can only <literal>SET NOT NULL</>
       when the columns using the domain contain no null values.
      </para>
     </listitem>

@@ -67,7 +67,7 @@ ALTER INDEX <replaceable class="PARAMETER">name</replaceable> RESET ( <replaceab
       <xref linkend="SQL-CREATEINDEX" endterm="sql-createindex-title">
       for details on the available parameters.  Note that the index contents
       will not be modified immediately by this command; depending on the
-      parameter you may need to rebuild the index with
+      parameter you might need to rebuild the index with
       <xref linkend="SQL-REINDEX" endterm="sql-reindex-title">
       to get the desired effects.
      </para>
@@ -80,7 +80,7 @@ ALTER INDEX <replaceable class="PARAMETER">name</replaceable> RESET ( <replaceab
      <para>
       This form resets one or more index-method-specific storage parameters to
       their defaults.  As with <literal>SET</>, a <literal>REINDEX</literal>
-      may be needed to update the index entirely.
+      might be needed to update the index entirely.
      </para>
     </listitem>
    </varlistentry>

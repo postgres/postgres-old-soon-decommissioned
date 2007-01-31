@@ -60,7 +60,7 @@ CREATE DATABASE <replaceable class="PARAMETER">name</replaceable>
    database containing only the standard objects predefined by your
    version of <productname>PostgreSQL</productname>.  This is useful
    if you wish to avoid copying
-   any installation-local objects that may have been added to
+   any installation-local objects that might have been added to
    <literal>template1</>.
   </para>
  </refsect1>

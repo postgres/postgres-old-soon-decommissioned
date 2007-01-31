@@ -108,7 +108,7 @@ CREATE OPERATOR <replaceable>name</replaceable> (
       <listitem>
        <para>
         The name of the operator to be defined. See above for allowable
-        characters.  The name may be schema-qualified, for example
+        characters.  The name can be schema-qualified, for example
         <literal>CREATE OPERATOR myschema.+ (...)</>.  If not, then
         the operator is created in the current schema.  Two operators
         in the same schema can have the same name if they operate on

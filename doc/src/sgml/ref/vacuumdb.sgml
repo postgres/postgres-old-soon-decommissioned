@@ -130,7 +130,7 @@ PostgreSQL documentation
       <listitem>
        <para>
         Clean or analyze <replaceable class="parameter">table</replaceable> only.
-        Column names may be specified only in conjunction with
+        Column names can be specified only in conjunction with
         the <option>--analyze</option> option.
        </para>
        <tip>
