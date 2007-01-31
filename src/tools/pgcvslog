@@ -8,7 +8,7 @@
 # Usage $0 file
 
 # All branches:	
-# cvs log -d '>1999-06-14 00:00:00 GMT' . > log
+# cvs log -d'>1999-06-14 00:00:00 GMT' . > log
 #
 # HEAD:
 # cvs log -d'>2000-05-29 00:00:00 GMT' -b .
