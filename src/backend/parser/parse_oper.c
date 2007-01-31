@@ -771,7 +771,7 @@ op_error(ParseState *pstate, List *op, char oprkind,
 				 errmsg("operator is not unique: %s",
 						op_signature_string(op, oprkind, arg1, arg2)),
 				 errhint("Could not choose a best candidate operator. "
-						 "You might need to add explicit type casts."),
+						 "You may need to add explicit type casts."),
 				 parser_errposition(pstate, location)));
 	else
 		ereport(ERROR,
@@ -779,7 +779,7 @@ op_error(ParseState *pstate, List *op, char oprkind,
 				 errmsg("operator does not exist: %s",
 						op_signature_string(op, oprkind, arg1, arg2)),
 		  errhint("No operator matches the given name and argument type(s). "
-				  "You might need to add explicit type casts."),
+				  "You may need to add explicit type casts."),
 				 parser_errposition(pstate, location)));
 }
 

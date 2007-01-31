@@ -95,7 +95,7 @@ ereport(ERROR,
                 func_signature_string(funcname, nargs,
                                       actual_arg_types)),
          errhint("Unable to choose a best candidate function. "
-                 "You might need to add explicit typecasts.")));
+                 "You may need to add explicit typecasts.")));
 </programlisting>
     This illustrates the use of format codes to embed run-time values into
     a message text.  Also, an optional <quote>hint</> message is provided.
