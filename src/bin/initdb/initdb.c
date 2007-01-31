@@ -1041,10 +1041,26 @@ check_input(char *path)
 {
 	struct stat statbuf;
 
-	if (stat(path, &statbuf) != 0 || !S_ISREG(statbuf.st_mode))
+	if (stat(path, &statbuf) != 0)
+	{
+		if (errno == ENOENT)
+			fprintf(stderr,
+					_("%s: file \"%s\" does not exist\n"
+					  "This means you have a corrupted installation or identified\n"
+					  "the wrong directory with the invocation option -L.\n"),
+					progname, path);
+		else
+			fprintf(stderr,
+					_("%s: could not access file \"%s\": %s\n"
+					  "This may mean you have a corrupted installation or identified\n"
+					  "the wrong directory with the invocation option -L.\n"),
+					progname, path, strerror(errno));
+		exit(1);
+	}
+	if (!S_ISREG(statbuf.st_mode))
 	{
 		fprintf(stderr,
-				_("%s: file \"%s\" does not exist\n"
+				_("%s: file \"%s\" is not a regular file\n"
 			   "This means you have a corrupted installation or identified\n"
 				  "the wrong directory with the invocation option -L.\n"),
 				progname, path);
