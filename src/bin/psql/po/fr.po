@@ -2191,7 +2191,7 @@ msgstr ""
 
 #: sql_help.h:205
 msgid "delete rows of a table"
-msgstr "supprime des colonnes dans une table"
+msgstr "supprime des lignes dans une table"
 
 #: sql_help.h:206
 msgid "DELETE FROM [ ONLY ] table [ WHERE condition ]"
