@@ -191,13 +191,13 @@ ginChooseElem(BuildAccumulator *accum, ItemPointer heapptr, Datum *entries, uint
  * next middle on left part and middle of right part.
  */
 void
-ginInsertRecordBA(BuildAccumulator *accum, ItemPointer heapptr, Datum *entries, uint32 nentry)
+ginInsertRecordBA(BuildAccumulator *accum, ItemPointer heapptr, Datum *entries, int32 nentry)
 {
 	uint32		i,
 				nbit = 0,
 				offset;
 
-	if (nentry == 0)
+	if (nentry <= 0)
 		return;
 
 	i = nentry - 1;

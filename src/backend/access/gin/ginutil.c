@@ -148,7 +148,7 @@ cmpEntries(const Datum *a, const Datum *b, cmpEntriesData *arg)
 }
 
 Datum *
-extractEntriesS(GinState *ginstate, Datum value, uint32 *nentries,
+extractEntriesS(GinState *ginstate, Datum value, int32 *nentries,
 				bool *needUnique)
 {
 	Datum	   *entries;
@@ -178,7 +178,7 @@ extractEntriesS(GinState *ginstate, Datum value, uint32 *nentries,
 
 
 Datum *
-extractEntriesSU(GinState *ginstate, Datum value, uint32 *nentries)
+extractEntriesSU(GinState *ginstate, Datum value, int32 *nentries)
 {
 	bool		needUnique;
 	Datum	   *entries = extractEntriesS(ginstate, value, nentries,

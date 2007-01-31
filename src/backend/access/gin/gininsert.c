@@ -203,7 +203,7 @@ static uint32
 ginHeapTupleBulkInsert(GinBuildState *buildstate, Datum value, ItemPointer heapptr)
 {
 	Datum	   *entries;
-	uint32		nentries;
+	int32		nentries;
 	MemoryContext oldCtx;
 
 	oldCtx = MemoryContextSwitchTo(buildstate->funcCtx);
@@ -356,7 +356,7 @@ static uint32
 ginHeapTupleInsert(Relation index, GinState *ginstate, Datum value, ItemPointer item)
 {
 	Datum	   *entries;
-	uint32		i,
+	int32		i,
 				nentries;
 
 	entries = extractEntriesSU(ginstate, value, &nentries);
