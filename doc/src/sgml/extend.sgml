@@ -145,7 +145,7 @@
 
     <para>
      A domain is based on a particular base type and for many purposes
-     is interchangeable with its base type.  However, a domain may
+     is interchangeable with its base type.  However, a domain can
      have constraints that restrict its valid values to a subset of
      what the underlying base type would allow.
     </para>

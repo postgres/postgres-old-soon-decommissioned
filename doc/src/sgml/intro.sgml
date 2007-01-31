@@ -74,7 +74,7 @@
 
    <listitem>
     <para>
-     <xref linkend="internals"> contains assorted information that may be of
+     <xref linkend="internals"> contains assorted information that might be of
      use to <productname>PostgreSQL</> developers.
     </para>
    </listitem>

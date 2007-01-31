@@ -223,7 +223,7 @@
 
   <partintro>
    <para>
-    This part contains assorted information that can be of use to
+    This part contains assorted information that might be of use to
     <productname>PostgreSQL</> developers.
    </para>
   </partintro>

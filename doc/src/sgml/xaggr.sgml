@@ -28,7 +28,7 @@
   <para>
    Thus, in addition to the argument and result data types seen by a user
    of the aggregate, there is an internal state-value data type that
-   may be different from both the argument and result types.
+   might be different from both the argument and result types.
   </para>
 
   <para>
@@ -112,12 +112,12 @@ CREATE AGGREGATE avg (float8)
   </para>
 
   <para>
-   Aggregate functions may use polymorphic
+   Aggregate functions can use polymorphic
    state transition functions or final functions, so that the same functions
    can be used to implement multiple aggregates.
    See <xref linkend="extend-types-polymorphic">
    for an explanation of polymorphic functions.
-   Going a step further, the aggregate function itself may be specified
+   Going a step further, the aggregate function itself can be specified
    with polymorphic input type(s) and state type, allowing a single
    aggregate definition to serve for multiple input data types.
    Here is an example of a polymorphic aggregate:

@@ -27,7 +27,7 @@
   According to the standard, the first two characters of an error code
   denote a class of errors, while the last three characters indicate
   a specific condition within that class.  Thus, an application that
-  does not recognize the specific error code may still be able to infer
+  does not recognize the specific error code can still be able to infer
   what to do from the error class.
  </para>
 
