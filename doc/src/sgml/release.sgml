@@ -518,7 +518,8 @@ do it for earlier branch release files.
         <literal>-t</> options.  (Greg Sabino Mullane)
        </para>
        <para>
-        See the <command>pg_dump</> manual page for more details.
+        See the <command>pg_dump</> manual page for details.
+       </para>
       </listitem>
 
       <listitem>
