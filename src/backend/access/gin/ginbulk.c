@@ -187,7 +187,7 @@ ginChooseElem(BuildAccumulator *accum, ItemPointer heapptr, Datum *entries, uint
 
 /*
  * Insert one heap pointer. Suppose entries is sorted.
- * Insertion order trys to get binary tree balanced: first insert middle value,
+ * Insertion order tries to get binary tree balanced: first insert middle value,
  * next middle on left part and middle of right part.
  */
 void

@@ -466,7 +466,7 @@ ginVacuumPostingTree(GinVacuumState *gvs, BlockNumber rootBlkno)
 
 /*
  * returns modified page or NULL if page isn't modified.
- * Function works with original page until first change is occured,
+ * Function works with original page until first change is occurred,
  * then page is copied into temporary one.
  */
 static Page

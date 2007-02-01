@@ -197,7 +197,7 @@ ginEntryInsert(Relation index, GinState *ginstate, Datum value, ItemPointerData 
 
 /*
  * Saves indexed value in memory accumulator during index creation
- * Function isnt use during normal insert
+ * Function isn't use during normal insert
  */
 static uint32
 ginHeapTupleBulkInsert(GinBuildState *buildstate, Datum value, ItemPointer heapptr)

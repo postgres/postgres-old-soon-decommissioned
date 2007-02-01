@@ -168,7 +168,7 @@ startScanKey(Relation index, GinState *ginstate, GinScanKey key)
 		if (GinFuzzySearchLimit > 0)
 		{
 			/*
-			 * If all of keys more than treshold we will try to reduce result,
+			 * If all of keys more than threshold we will try to reduce result,
 			 * we hope (and only hope, for intersection operation of array our
 			 * supposition isn't true), that total result will not more than
 			 * minimal predictNumberResult.
