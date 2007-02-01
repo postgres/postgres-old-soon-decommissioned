@@ -514,6 +514,15 @@ do it for earlier branch release files.
 
       <listitem>
        <para>
+        Change behavior of <command>pg_dump</> <literal>-n</> and
+        <literal>-t</> options.  (Greg Sabino Mullane)
+       </para>
+       <para>
+        See the <command>pg_dump</> manual page for more details.
+      </listitem>
+
+      <listitem>
+       <para>
         Change <link linkend="libpq"><application>libpq</></link>
         <function>PQdsplen()</> to return a useful value (Martijn
         van Oosterhout)
