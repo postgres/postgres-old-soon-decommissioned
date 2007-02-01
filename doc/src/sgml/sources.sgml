@@ -605,6 +605,30 @@ BETTER: unrecognized node type: 42
    </para>
   </formalpara>
 
+  <formalpara>
+    <title>May/Can/Might</title>
+   <para>
+    <quote>May</quote> suggests permission (e.g. "You may borrow my rake.")
+    and has little use in documentation or error messages.
+    <quote>Can</quote> suggests ability (e.g. "I can lift that log."),
+    and <quote>might</quote> suggests possibility (e.g. "It might rain
+    today.").
+   </para>
+
+   <para>
+    Rationale: Using the proper word clarifies meaning and assists
+    translation.
+   </para>
+  </formalpara>
+
+  <formalpara>
+    <title>Contractions</title>
+   <para>
+    Avoid contractions, like <quote>can't</quote>;  use
+    <quote>cannot</quote> instead.
+   </para>
+  </formalpara>
+
   </simplesect>
 
   <simplesect>
