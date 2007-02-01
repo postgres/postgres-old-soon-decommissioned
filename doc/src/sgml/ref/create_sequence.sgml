@@ -288,7 +288,18 @@ SELECT nextval('serial');
 
  nextval
 ---------
-     114
+     101
+</programlisting>
+  </para>
+
+  <para>
+   Select the next number from this sequence:
+<programlisting>
+SELECT nextval('serial');
+
+ nextval
+---------
+     102
 </programlisting>
   </para>
 
