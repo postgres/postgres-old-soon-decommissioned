@@ -99,7 +99,7 @@ _hash_dropscan(IndexScanDesc scan)
 		last = chk;
 
 	if (chk == NULL)
-		elog(ERROR, "hash scan list trashed; can't find 0x%p", (void *) scan);
+		elog(ERROR, "hash scan list trashed; cannot find 0x%p", (void *) scan);
 
 	if (last == NULL)
 		HashScans = chk->hashsl_next;

@@ -2582,7 +2582,7 @@ RequireTransactionChain(void *stmtNode, const char *stmtType)
 	ereport(ERROR,
 			(errcode(ERRCODE_NO_ACTIVE_SQL_TRANSACTION),
 	/* translator: %s represents an SQL statement name */
-			 errmsg("%s may only be used in transaction blocks",
+			 errmsg("%s can only be used in transaction blocks",
 					stmtType)));
 }
 

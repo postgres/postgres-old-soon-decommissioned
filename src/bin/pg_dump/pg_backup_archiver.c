@@ -2701,7 +2701,7 @@ ReadHead(ArchiveHandle *AH)
 						 (unsigned long) AH->intSize);
 
 		if (AH->intSize > sizeof(int))
-			write_msg(modulename, "WARNING: archive was made on a machine with larger integers, some operations may fail\n");
+			write_msg(modulename, "WARNING: archive was made on a machine with larger integers, some operations might fail\n");
 
 		if (AH->version >= K_VERS_1_7)
 			AH->offSize = (*AH->ReadBytePtr) (AH);

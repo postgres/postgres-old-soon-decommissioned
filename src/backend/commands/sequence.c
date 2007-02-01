@@ -1121,7 +1121,7 @@ init_params(List *options, bool isInit,
 		snprintf(bufm, sizeof(bufm), INT64_FORMAT, new->min_value);
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("START value (%s) can't be less than MINVALUE (%s)",
+				 errmsg("START value (%s) cannot be less than MINVALUE (%s)",
 						bufs, bufm)));
 	}
 	if (new->last_value > new->max_value)
@@ -1133,7 +1133,7 @@ init_params(List *options, bool isInit,
 		snprintf(bufm, sizeof(bufm), INT64_FORMAT, new->max_value);
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-			   errmsg("START value (%s) can't be greater than MAXVALUE (%s)",
+			   errmsg("START value (%s) cannot be greater than MAXVALUE (%s)",
 					  bufs, bufm)));
 	}
 

@@ -790,7 +790,7 @@ process_matched_tle(TargetEntry *src_tle,
 	}
 	else
 	{
-		elog(ERROR, "can't happen");
+		elog(ERROR, "cannot happen");
 		newexpr = NULL;
 	}
 

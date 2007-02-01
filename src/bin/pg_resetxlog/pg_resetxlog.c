@@ -341,7 +341,7 @@ main(int argc, char *argv[])
 	if (ControlFile.state != DB_SHUTDOWNED && !force)
 	{
 		printf(_("The database server was not shut down cleanly.\n"
-				 "Resetting the transaction log may cause data to be lost.\n"
+				 "Resetting the transaction log might cause data to be lost.\n"
 				 "If you want to proceed anyway, use -f to force reset.\n"));
 		exit(1);
 	}

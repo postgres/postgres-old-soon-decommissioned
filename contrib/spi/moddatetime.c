@@ -43,7 +43,7 @@ moddatetime(PG_FUNCTION_ARGS)
 
 	if (TRIGGER_FIRED_FOR_STATEMENT(trigdata->tg_event))
 		/* internal error */
-		elog(ERROR, "moddatetime: can't process STATEMENT events");
+		elog(ERROR, "moddatetime: cannot process STATEMENT events");
 
 	if (TRIGGER_FIRED_AFTER(trigdata->tg_event))
 		/* internal error */
@@ -56,7 +56,7 @@ moddatetime(PG_FUNCTION_ARGS)
 		rettuple = trigdata->tg_newtuple;
 	else
 		/* internal error */
-		elog(ERROR, "moddatetime: can't process DELETE events");
+		elog(ERROR, "moddatetime: cannot process DELETE events");
 
 	rel = trigdata->tg_relation;
 	relname = SPI_getrelname(rel);

@@ -187,7 +187,7 @@ main(int argc, char *argv[])
 #if !defined(HAVE_GETADDRINFO) && !defined(HAVE_GETHOSTBYNAME_R)
 	if (gethostname(myhostname, MAXHOSTNAMELEN) != 0)
 	{
-		fprintf(stderr, "Can not get local hostname **\nexiting\n");
+		fprintf(stderr, "Cannot get local hostname **\nexiting\n");
 		exit(1);
 	}
 #endif

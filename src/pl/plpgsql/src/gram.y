@@ -478,7 +478,7 @@ decl_aliasitem	: T_WORD
 
 						plpgsql_convert_ident(yytext, &name, 1);
 						if (name[0] != '$')
-							yyerror("only positional parameters may be aliased");
+							yyerror("only positional parameters can be aliased");
 
 						plpgsql_ns_setlocal(false);
 						nsi = plpgsql_ns_lookup(name, NULL);

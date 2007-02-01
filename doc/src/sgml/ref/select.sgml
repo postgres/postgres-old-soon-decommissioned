@@ -892,8 +892,8 @@ FOR SHARE [ OF <replaceable class="parameter">table_name</replaceable> [, ...] ]
 
    <para>
     <literal>FOR UPDATE</literal> and <literal>FOR SHARE</literal> cannot be
-    used in contexts where returned rows can't be clearly identified with
-    individual table rows; for example they can't be used with aggregation.
+    used in contexts where returned rows cannot be clearly identified with
+    individual table rows; for example they cannot be used with aggregation.
    </para>
 
   <caution>

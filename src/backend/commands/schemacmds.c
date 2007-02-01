@@ -159,7 +159,7 @@ RemoveSchema(List *names, DropBehavior behavior, bool missing_ok)
 	if (list_length(names) != 1)
 		ereport(ERROR,
 				(errcode(ERRCODE_SYNTAX_ERROR),
-				 errmsg("schema name may not be qualified")));
+				 errmsg("schema name cannot be qualified")));
 	namespaceName = strVal(linitial(names));
 
 	namespaceId = GetSysCacheOid(NAMESPACENAME,

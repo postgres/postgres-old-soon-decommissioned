@@ -61,7 +61,7 @@ CREATE [ OR REPLACE ] FUNCTION
    Also, <command>CREATE OR REPLACE FUNCTION</command> will not let
    you change the return type of an existing function.  To do that,
    you must drop and recreate the function.  (When using <literal>OUT</>
-   parameters, that means you can't change the names or types of any
+   parameters, that means you cannot change the names or types of any
    <literal>OUT</> parameters except by dropping the function.)
   </para>
 

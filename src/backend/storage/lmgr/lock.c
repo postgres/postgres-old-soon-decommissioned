@@ -581,7 +581,7 @@ LockAcquire(const LOCKTAG *locktag,
 		ereport(ERROR,
 				(errcode(ERRCODE_OUT_OF_MEMORY),
 				 errmsg("out of shared memory"),
-			errhint("You may need to increase max_locks_per_transaction.")));
+			errhint("You might need to increase max_locks_per_transaction.")));
 	}
 	locallock->lock = lock;
 
@@ -647,7 +647,7 @@ LockAcquire(const LOCKTAG *locktag,
 		ereport(ERROR,
 				(errcode(ERRCODE_OUT_OF_MEMORY),
 				 errmsg("out of shared memory"),
-			errhint("You may need to increase max_locks_per_transaction.")));
+			errhint("You might need to increase max_locks_per_transaction.")));
 	}
 	locallock->proclock = proclock;
 
@@ -2272,7 +2272,7 @@ lock_twophase_recover(TransactionId xid, uint16 info,
 		ereport(ERROR,
 				(errcode(ERRCODE_OUT_OF_MEMORY),
 				 errmsg("out of shared memory"),
-			errhint("You may need to increase max_locks_per_transaction.")));
+			errhint("You might need to increase max_locks_per_transaction.")));
 	}
 
 	/*
@@ -2337,7 +2337,7 @@ lock_twophase_recover(TransactionId xid, uint16 info,
 		ereport(ERROR,
 				(errcode(ERRCODE_OUT_OF_MEMORY),
 				 errmsg("out of shared memory"),
-			errhint("You may need to increase max_locks_per_transaction.")));
+			errhint("You might need to increase max_locks_per_transaction.")));
 	}
 
 	/*

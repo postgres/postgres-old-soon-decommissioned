@@ -70,7 +70,7 @@ transformAggregateCall(ParseState *pstate, Aggref *agg)
 		if (checkExprHasAggs((Node *) agg->args))
 			ereport(ERROR,
 					(errcode(ERRCODE_GROUPING_ERROR),
-					 errmsg("aggregate function calls may not be nested")));
+					 errmsg("aggregate function calls cannot be nested")));
 	}
 
 	if (min_varlevel < 0)

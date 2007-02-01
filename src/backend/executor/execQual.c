@@ -3465,7 +3465,7 @@ ExecInitExpr(Expr *node, PlanState *parent)
 					if (naggs != aggstate->numaggs)
 						ereport(ERROR,
 								(errcode(ERRCODE_GROUPING_ERROR),
-								 errmsg("aggregate function calls may not be nested")));
+								 errmsg("aggregate function calls cannot be nested")));
 				}
 				else
 				{

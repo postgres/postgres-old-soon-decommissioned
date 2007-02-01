@@ -1078,7 +1078,7 @@ INSERT INTO shoelace_log VALUES (
   FROM shoelace_data *NEW*, shoelace_data *OLD*;
 </programlisting>
 
-    (This looks a little strange since you can't normally write
+    (This looks a little strange since you cannot normally write
     <literal>INSERT ... VALUES ... FROM</>.  The <literal>FROM</>
     clause here is just to indicate that there are range-table entries
     in the query tree for <literal>*NEW*</> and <literal>*OLD*</>.

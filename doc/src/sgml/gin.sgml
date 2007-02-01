@@ -209,7 +209,7 @@
   <acronym>GIN</acronym> will emit an error.  Depending on the operator,
   a void query might match all, some, or none of the indexed values (for
   example, every array contains the empty array, but does not overlap the
-  empty array), and <acronym>GIN</acronym> can't determine the correct
+  empty array), and <acronym>GIN</acronym> cannot determine the correct
   answer, nor produce a full-index-scan result if it could determine that
   that was correct.
  </para>

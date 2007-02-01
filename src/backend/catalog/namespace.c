@@ -236,7 +236,7 @@ RangeVarGetCreationNamespace(const RangeVar *newRelation)
 		if (newRelation->schemaname)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_TABLE_DEFINITION),
-				  errmsg("temporary tables may not specify a schema name")));
+				  errmsg("temporary tables cannot specify a schema name")));
 		/* Initialize temp namespace if first time through */
 		if (!OidIsValid(myTempNamespace))
 			InitTempTableNamespace();

@@ -687,7 +687,7 @@ gistContinueInsert(gistIncompleteInsert *insert)
 			}
 
 			if (ntodelete == 0)
-				elog(PANIC, "gistContinueInsert: can't find pointer to page(s)");
+				elog(PANIC, "gistContinueInsert: cannot find pointer to page(s)");
 
 			/*
 			 * we check space with subtraction only first tuple to delete,

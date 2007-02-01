@@ -142,7 +142,7 @@ _bt_restore_page(Page page, char *from, int len)
 		itemsz = MAXALIGN(itemsz);
 		if (PageAddItem(page, (Item) from, itemsz,
 						FirstOffsetNumber, LP_USED) == InvalidOffsetNumber)
-			elog(PANIC, "_bt_restore_page: can't add item to page");
+			elog(PANIC, "_bt_restore_page: cannot add item to page");
 		from += itemsz;
 	}
 }

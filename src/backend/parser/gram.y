@@ -2266,7 +2266,7 @@ CreateAsStmt:
 					if (n->into != NULL)
 						ereport(ERROR,
 								(errcode(ERRCODE_SYNTAX_ERROR),
-								 errmsg("CREATE TABLE AS may not specify INTO")));
+								 errmsg("CREATE TABLE AS cannot specify INTO")));
 					$4->istemp = $2;
 					n->into = $4;
 					n->intoColNames = $5;

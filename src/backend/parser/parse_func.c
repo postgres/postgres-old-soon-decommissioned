@@ -213,7 +213,7 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 							func_signature_string(funcname, nargs,
 												  actual_arg_types)),
 					 errhint("Could not choose a best candidate function. "
-							 "You may need to add explicit type casts."),
+							 "You might need to add explicit type casts."),
 					 parser_errposition(pstate, location)));
 		else
 			ereport(ERROR,
@@ -222,7 +222,7 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 							func_signature_string(funcname, nargs,
 												  actual_arg_types)),
 			errhint("No function matches the given name and argument types. "
-					"You may need to add explicit type casts."),
+					"You might need to add explicit type casts."),
 					 parser_errposition(pstate, location)));
 	}
 
@@ -282,7 +282,7 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 		if (retset)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
-					 errmsg("aggregates may not return sets"),
+					 errmsg("aggregates cannot return sets"),
 					 parser_errposition(pstate, location)));
 	}
 

@@ -755,7 +755,7 @@ checkWin32Codepage(void)
 	if (wincp != concp)
 	{
 		printf(_("Warning: Console code page (%u) differs from Windows code page (%u)\n"
-				 "         8-bit characters may not work correctly. See psql reference\n"
+				 "         8-bit characters might not work correctly. See psql reference\n"
 			   "         page \"Notes for Windows users\" for details.\n\n"),
 			   concp, wincp);
 	}

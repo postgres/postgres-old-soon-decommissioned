@@ -1040,7 +1040,7 @@ su - postgres
        <listitem>
         <para>
          Enables <firstterm>assertion</> checks in the server, which test for
-         many <quote>can't happen</> conditions.  This is invaluable for
+         many <quote>cannot happen</> conditions.  This is invaluable for
          code development purposes, but the tests slow things down a little.
          Also, having the tests turned on won't necessarily enhance the
          stability of your server!  The assertion checks are not categorized

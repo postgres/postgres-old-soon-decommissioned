@@ -1557,7 +1557,7 @@ SELECT *
 
        <para>
         If we want to know the highest average part price among all our
-	suppliers, we can't write MAX(AVG(PRICE)), but we can write:
+	suppliers, we cannot write MAX(AVG(PRICE)), but we can write:
 
 	<programlisting>
 SELECT MAX(subtable.avgprice)

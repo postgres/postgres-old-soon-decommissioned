@@ -59,7 +59,7 @@
 },
 
 {
-	REG_ASSERT, "REG_ASSERT", "\"can't happen\" -- you found a bug"
+	REG_ASSERT, "REG_ASSERT", "\"cannot happen\" -- you found a bug"
 },
 
 {

@@ -37,7 +37,7 @@ insert_username(PG_FUNCTION_ARGS)
 		elog(ERROR, "insert_username: not fired by trigger manager");
 	if (TRIGGER_FIRED_FOR_STATEMENT(trigdata->tg_event))
 		/* internal error */
-		elog(ERROR, "insert_username: can't process STATEMENT events");
+		elog(ERROR, "insert_username: cannot process STATEMENT events");
 	if (TRIGGER_FIRED_AFTER(trigdata->tg_event))
 		/* internal error */
 		elog(ERROR, "insert_username: must be fired before event");
@@ -48,7 +48,7 @@ insert_username(PG_FUNCTION_ARGS)
 		rettuple = trigdata->tg_newtuple;
 	else
 		/* internal error */
-		elog(ERROR, "insert_username: can't process DELETE events");
+		elog(ERROR, "insert_username: cannot process DELETE events");
 
 	rel = trigdata->tg_relation;
 	relname = SPI_getrelname(rel);

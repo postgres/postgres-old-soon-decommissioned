@@ -186,7 +186,7 @@ thesaurusRead(char *filename, DictThesaurus * d)
 
 	fh = fopen(to_absfilename(filename), "r");
 	if (!fh)
-		elog(ERROR, "Thesaurus: can't open '%s' file", filename);
+		elog(ERROR, "Thesaurus: cannot open '%s' file", filename);
 
 	while (fgets(str, sizeof(str), fh))
 	{

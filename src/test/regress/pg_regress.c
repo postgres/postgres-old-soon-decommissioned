@@ -630,7 +630,7 @@ initialize_environment(void)
 	unsetenv("LC_ALL");
 	unsetenv("LANG");
 	unsetenv("LANGUAGE");
-	/* On Windows the default locale may not be English, so force it */
+	/* On Windows the default locale cannot be English, so force it */
 #if defined(WIN32) || defined(__CYGWIN__)
 	putenv("LANG=en");
 #endif
@@ -1486,7 +1486,7 @@ help(void)
 	printf(_("  --multibyte=ENCODING      use ENCODING as the multibyte encoding\n"));
 	printf(_("  --outputdir=DIR           place output files in DIR (default \".\")\n"));
 	printf(_("  --schedule=FILE           use test ordering schedule from FILE\n"));
-	printf(_("                            (may be used multiple times to concatenate)\n"));
+	printf(_("                            (can be used multiple times to concatenate)\n"));
 	printf(_("  --srcdir=DIR              absolute path to source directory (for VPATH builds)\n"));
 	printf(_("  --temp-install=DIR        create a temporary installation in DIR\n"));
 	printf(_("  --no-locale               use C locale\n"));

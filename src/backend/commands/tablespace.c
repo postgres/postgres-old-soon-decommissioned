@@ -228,7 +228,7 @@ CreateTableSpace(CreateTableSpaceStmt *stmt)
 	if (strchr(location, '\''))
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_NAME),
-			   errmsg("tablespace location may not contain single quotes")));
+			   errmsg("tablespace location cannot contain single quotes")));
 
 	/*
 	 * Allowing relative paths seems risky

@@ -482,7 +482,7 @@ count_agg_clauses_walker(Node *node, AggClauseCounts *counts)
 		if (contain_agg_clause((Node *) aggref->args))
 			ereport(ERROR,
 					(errcode(ERRCODE_GROUPING_ERROR),
-					 errmsg("aggregate function calls may not be nested")));
+					 errmsg("aggregate function calls cannot be nested")));
 
 		/*
 		 * Having checked that, we need not recurse into the argument.

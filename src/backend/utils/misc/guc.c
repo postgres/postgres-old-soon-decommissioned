@@ -1196,7 +1196,7 @@ static struct config_int ConfigureNamesInt[] =
 	{
 		{"work_mem", PGC_USERSET, RESOURCES_MEM,
 			gettext_noop("Sets the maximum memory to be used for query workspaces."),
-			gettext_noop("This much memory may be used by each internal "
+			gettext_noop("This much memory can be used by each internal "
 						 "sort operation and hash table before switching to "
 						 "temporary disk files."),
 			GUC_UNIT_KB
@@ -2120,7 +2120,7 @@ static struct config_string ConfigureNamesString[] =
 	{
 		{"log_directory", PGC_SIGHUP, LOGGING_WHERE,
 			gettext_noop("Sets the destination directory for log files."),
-			gettext_noop("May be specified as relative to the data directory "
+			gettext_noop("Can be specified as relative to the data directory "
 						 "or as absolute path."),
 			GUC_SUPERUSER_ONLY
 		},

@@ -667,7 +667,7 @@ index_create(Oid heapRelationId,
 
 			/* Shouldn't have any expressions */
 			if (indexInfo->ii_Expressions)
-				elog(ERROR, "constraints can't have index expressions");
+				elog(ERROR, "constraints cannot have index expressions");
 
 			conOid = CreateConstraintEntry(indexRelationName,
 										   namespaceId,

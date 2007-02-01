@@ -1007,11 +1007,11 @@ RenameRole(const char *oldname, const char *newname)
 	if (roleid == GetSessionUserId())
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("session user may not be renamed")));
+				 errmsg("session user cannot be renamed")));
 	if (roleid == GetOuterUserId())
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("current user may not be renamed")));
+				 errmsg("current user cannot be renamed")));
 
 	/* make sure the new name doesn't exist */
 	if (SearchSysCacheExists(AUTHNAME,

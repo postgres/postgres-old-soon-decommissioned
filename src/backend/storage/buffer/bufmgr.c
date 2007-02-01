@@ -2126,7 +2126,7 @@ AbortBufferIO(void)
 								buf->tag.rnode.spcNode,
 								buf->tag.rnode.dbNode,
 								buf->tag.rnode.relNode),
-						 errdetail("Multiple failures --- write error may be permanent.")));
+						 errdetail("Multiple failures --- write error might be permanent.")));
 			}
 		}
 		TerminateBufferIO(buf, false, BM_IO_ERROR);

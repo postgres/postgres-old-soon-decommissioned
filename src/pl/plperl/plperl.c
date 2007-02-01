@@ -350,7 +350,7 @@ check_interp(bool trusted)
 	else
 	{
 		elog(ERROR, 
-			 "can not allocate second Perl interpreter on this platform");
+			 "cannot allocate second Perl interpreter on this platform");
 
 	}
 	
@@ -1538,7 +1538,7 @@ compile_plperl_function(Oid fn_oid, bool is_trigger)
 					free(prodesc);
 					ereport(ERROR,
 							(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-							 errmsg("trigger functions may only be called "
+							 errmsg("trigger functions can only be called "
 									"as triggers")));
 				}
 				else

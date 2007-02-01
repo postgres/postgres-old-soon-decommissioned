@@ -82,7 +82,7 @@ ROLLBACK [ WORK | TRANSACTION ] TO [ SAVEPOINT ] <replaceable>savepoint_name</re
    left it pointing to (that is, <command>FETCH</> is not rolled back).
    Closing a cursor is not undone by rolling back, either.
    A cursor whose execution causes a transaction to abort is put in a
-   can't-execute state, so while the transaction can be restored using
+   cannot-execute state, so while the transaction can be restored using
    <command>ROLLBACK TO SAVEPOINT</>, the cursor can no longer be used.
   </para>
  </refsect1>

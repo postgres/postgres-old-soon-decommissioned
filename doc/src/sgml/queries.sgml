@@ -591,7 +591,7 @@ FROM (SELECT * FROM table1) AS alias_name
 
     <para>
      This example is equivalent to <literal>FROM table1 AS
-     alias_name</literal>.  More interesting cases, which can't be
+     alias_name</literal>.  More interesting cases, which cannot be
      reduced to a plain join, arise when the subquery involves
      grouping or aggregation.
     </para>

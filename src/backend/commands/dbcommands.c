@@ -707,7 +707,7 @@ RenameDatabase(const char *oldname, const char *newname)
 	if (db_id == MyDatabaseId)
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("current database may not be renamed")));
+				 errmsg("current database cannot be renamed")));
 
 	/*
 	 * Make sure the database does not have active sessions.  This is the same

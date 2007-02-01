@@ -349,7 +349,7 @@ DefineQueryRewrite(RuleStmt *stmt)
 						(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
 						 errmsg("could not convert table \"%s\" to a view because it has triggers",
 								event_obj->relname),
-						 errhint("In particular, the table may not be involved in any foreign key relationships.")));
+						 errhint("In particular, the table cannot be involved in any foreign key relationships.")));
 
 			if (event_relation->rd_rel->relhasindex)
 				ereport(ERROR,

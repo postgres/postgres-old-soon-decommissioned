@@ -1209,7 +1209,7 @@ generate_series_step_int8(PG_FUNCTION_ARGS)
 		if (step == 0)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-					 errmsg("step size may not equal zero")));
+					 errmsg("step size cannot equal zero")));
 
 		/* create a function context for cross-call persistence */
 		funcctx = SRF_FIRSTCALL_INIT();

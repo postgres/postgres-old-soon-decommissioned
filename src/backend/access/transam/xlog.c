@@ -4670,8 +4670,8 @@ StartupXLOG(void)
 		ereport(LOG,
 				(errmsg("database system was interrupted while in recovery at log time %s",
 						str_time(ControlFile->checkPointCopy.time)),
-				 errhint("If this has occurred more than once some data may be corrupted"
-				" and you may need to choose an earlier recovery target.")));
+				 errhint("If this has occurred more than once some data might be corrupted"
+				" and you might need to choose an earlier recovery target.")));
 	else if (ControlFile->state == DB_IN_PRODUCTION)
 		ereport(LOG,
 				(errmsg("database system was interrupted; last known up at %s",

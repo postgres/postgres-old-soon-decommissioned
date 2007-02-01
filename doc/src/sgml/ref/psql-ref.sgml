@@ -543,7 +543,7 @@ PostgreSQL documentation
     determined at compile time.
     Since the database server uses the same default, you will not have
     to specify the port in most cases. The default user name is your
-    Unix user name, as is the default database name. Note that you can't
+    Unix user name, as is the default database name. Note that you cannot
     just connect to any database under any user name. Your database
     administrator should have informed you about your access rights.
     </para>

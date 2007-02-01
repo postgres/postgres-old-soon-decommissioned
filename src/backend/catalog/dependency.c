@@ -607,7 +607,7 @@ recursiveDeletion(const ObjectAddress *object,
 							(errcode(ERRCODE_DEPENDENT_OBJECTS_STILL_EXIST),
 							 errmsg("cannot drop %s because %s requires it",
 									objDescription, otherObjDesc),
-							 errhint("You may drop %s instead.",
+							 errhint("You can drop %s instead.",
 									 otherObjDesc)));
 				}
 

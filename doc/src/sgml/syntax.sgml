@@ -1425,7 +1425,7 @@ CAST ( <replaceable>expression</replaceable> AS <replaceable>type</replaceable> 
 </synopsis>
     However, this only works for types whose names are also valid as
     function names.  For example, <literal>double precision</literal>
-    can't be used this way, but the equivalent <literal>float8</literal>
+    cannot be used this way, but the equivalent <literal>float8</literal>
     can.  Also, the names <literal>interval</>, <literal>time</>, and
     <literal>timestamp</> can only be used in this fashion if they are
     double-quoted, because of syntactic conflicts.  Therefore, the use of

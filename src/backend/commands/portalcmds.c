@@ -88,7 +88,7 @@ PerformCursorOpen(DeclareCursorStmt *stmt, ParamListInfo params)
 	if (query->into)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_CURSOR_DEFINITION),
-				 errmsg("DECLARE CURSOR may not specify INTO")));
+				 errmsg("DECLARE CURSOR cannot specify INTO")));
 	if (query->rowMarks != NIL)
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),

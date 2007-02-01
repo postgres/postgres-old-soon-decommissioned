@@ -99,7 +99,7 @@ init_MultiFuncCall(PG_FUNCTION_ARGS)
 	else
 	{
 		/* second and subsequent calls */
-		elog(ERROR, "init_MultiFuncCall may not be called more than once");
+		elog(ERROR, "init_MultiFuncCall cannot be called more than once");
 
 		/* never reached, but keep compiler happy */
 		retval = NULL;

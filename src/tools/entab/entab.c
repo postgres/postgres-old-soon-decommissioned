@@ -102,7 +102,7 @@ main(int argc, char **argv)
 		else
 		{
 			if ((in_file = fopen(*argv, PG_BINARY_R)) == NULL)
-				halt("PERROR:  Can not open file %s\n", argv[0]);
+				halt("PERROR:  Cannot open file %s\n", argv[0]);
 			argv++;
 		}
 

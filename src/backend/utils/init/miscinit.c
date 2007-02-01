@@ -1079,7 +1079,7 @@ ValidatePgVersion(const char *path)
 						path),
 				 errdetail("File \"%s\" does not contain valid data.",
 						   full_path),
-				 errhint("You may need to initdb.")));
+				 errhint("You might need to initdb.")));
 
 	FreeFile(file);
 

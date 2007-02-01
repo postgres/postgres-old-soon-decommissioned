@@ -636,9 +636,9 @@ distribute_qual_to_rels(PlannerInfo *root, Node *clause,
 	 * Otherwise the parser messed up.
 	 */
 	if (!bms_is_subset(relids, qualscope))
-		elog(ERROR, "JOIN qualification may not refer to other relations");
+		elog(ERROR, "JOIN qualification cannot refer to other relations");
 	if (ojscope && !bms_is_subset(relids, ojscope))
-		elog(ERROR, "JOIN qualification may not refer to other relations");
+		elog(ERROR, "JOIN qualification cannot refer to other relations");
 
 	/*
 	 * If the clause is variable-free, our normal heuristic for pushing it
