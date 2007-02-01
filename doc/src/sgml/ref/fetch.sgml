@@ -343,7 +343,7 @@ FETCH <replaceable class="parameter">count</replaceable>
   <title>Examples</title>
 
   <para>
-   The following example traverses a table using a cursor.
+   The following example traverses a table using a cursor:
 
 <programlisting>
 BEGIN WORK;

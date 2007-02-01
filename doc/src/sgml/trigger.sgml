@@ -282,11 +282,11 @@
     any normal arguments, but it is passed a <quote>context</>
     pointer pointing to a <structname>TriggerData</> structure.  C
     functions can check whether they were called from the trigger
-    manager or not by executing the macro
+    manager or not by executing the macro:
 <programlisting>
 CALLED_AS_TRIGGER(fcinfo)
 </programlisting>
-    which expands to
+    which expands to:
 <programlisting>
 ((fcinfo)-&gt;context != NULL && IsA((fcinfo)-&gt;context, TriggerData))
 </programlisting>

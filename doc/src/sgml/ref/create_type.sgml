@@ -591,7 +591,7 @@ CREATE TABLE myboxes (
 
   <para>
    If the internal structure of <type>box</type> were an array of four
-   <type>float4</> elements, we might instead use
+   <type>float4</> elements, we might instead use:
 <programlisting>
 CREATE TYPE box (
     INTERNALLENGTH = 16,

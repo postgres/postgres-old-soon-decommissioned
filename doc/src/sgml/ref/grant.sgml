@@ -436,7 +436,7 @@ GRANT <replaceable class="PARAMETER">role</replaceable> [, ...] TO <replaceable 
 </programlisting>
 
     The above example display would be seen by user <literal>miriam</> after
-    creating table <literal>mytable</> and doing
+    creating table <literal>mytable</> and doing:
 
 <programlisting>
 GRANT SELECT ON mytable TO PUBLIC;

@@ -145,11 +145,11 @@ CREATE AGGREGATE <replaceable class="PARAMETER">name</replaceable> (
    input row.  If this aggregate can be so optimized, indicate it by
    specifying a <firstterm>sort operator</>.  The basic requirement is that
    the aggregate must yield the first element in the sort ordering induced by
-   the operator; in other words
+   the operator; in other words:
 <programlisting>
 SELECT agg(col) FROM tab;
 </programlisting>
-   must be equivalent to
+   must be equivalent to:
 <programlisting>
 SELECT col FROM tab ORDER BY col USING sortop LIMIT 1;
 </programlisting>

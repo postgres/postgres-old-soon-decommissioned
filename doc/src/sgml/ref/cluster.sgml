@@ -144,7 +144,7 @@ CLUSTER
     entries are on random pages, so there is one disk page
     retrieved for every row moved. (<productname>PostgreSQL</productname> has
     a cache, but the majority of a big table will not fit in the cache.)
-    The other way to cluster a table is to use
+    The other way to cluster a table is to use:
 
 <programlisting>
 CREATE TABLE <replaceable class="parameter">newtable</replaceable> AS

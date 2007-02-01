@@ -222,7 +222,7 @@ SELECT (a + b) AS c FROM test_complex;
     name, not an operator name.)  <literal>RESTRICT</> clauses only make sense for
     binary operators that return <type>boolean</>.  The idea behind a restriction
     selectivity estimator is to guess what fraction of the rows in a
-    table will satisfy a <literal>WHERE</literal>-clause condition of the form
+    table will satisfy a <literal>WHERE</literal>-clause condition of the form:
 <programlisting>
 column OP constant
 </programlisting>
@@ -294,7 +294,7 @@ column OP constant
      name, not an operator name.)  <literal>JOIN</> clauses only make sense for
      binary operators that return <type>boolean</type>.  The idea behind a join
      selectivity estimator is to guess what fraction of the rows in a
-     pair of tables will satisfy a <literal>WHERE</>-clause condition of the form
+     pair of tables will satisfy a <literal>WHERE</>-clause condition of the form:
 <programlisting>
 table1.column1 OP table2.column2
 </programlisting>

@@ -636,7 +636,7 @@ where <replaceable class="PARAMETER">action</replaceable> is one of:
     The fact that <literal>ALTER TYPE</> requires rewriting the whole table
     is sometimes an advantage, because the rewriting process eliminates
     any dead space in the table.  For example, to reclaim the space occupied
-    by a dropped column immediately, the fastest way is
+    by a dropped column immediately, the fastest way is:
 <programlisting>
 ALTER TABLE table ALTER COLUMN anycol TYPE anytype;
 </programlisting>

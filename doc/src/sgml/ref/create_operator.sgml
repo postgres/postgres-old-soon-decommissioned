@@ -205,7 +205,7 @@ CREATE OPERATOR <replaceable>name</replaceable> (
   <para>
    To give a schema-qualified operator name in <replaceable
    class="parameter">com_op</replaceable> or the other optional
-   arguments, use the <literal>OPERATOR()</> syntax, for example
+   arguments, use the <literal>OPERATOR()</> syntax, for example:
 <programlisting>
 COMMUTATOR = OPERATOR(myschema.===) ,
 </programlisting>  

@@ -126,13 +126,13 @@ CREATE [ OR REPLACE ] [ TEMP | TEMPORARY ] VIEW <replaceable class="PARAMETER">n
 
    <para>
     Be careful that the names and types of the view's columns will be
-    assigned the way you want.  For example,
+    assigned the way you want.  For example:
 <programlisting>
 CREATE VIEW vista AS SELECT 'Hello World';
 </programlisting>
     is bad form in two ways: the column name defaults to <literal>?column?</>,
     and the column data type defaults to <type>unknown</>.  If you want a
-    string literal in a view's result, use something like
+    string literal in a view's result, use something like:
 <programlisting>
 CREATE VIEW vista AS SELECT text 'Hello World' AS hello;
 </programlisting>

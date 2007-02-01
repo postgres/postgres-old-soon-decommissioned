@@ -408,7 +408,7 @@
     appearing in that database &mdash; it is just the minimum of the
     per-table <structfield>relfrozenxid</> values within the database.
     A convenient way to
-    examine this information is to execute queries such as
+    examine this information is to execute queries such as:
 
 <programlisting>
 SELECT relname, age(relfrozenxid) FROM pg_class WHERE relkind = 'r';
@@ -511,7 +511,7 @@ vacuum threshold = vacuum base threshold + vacuum scale factor * number of tuple
     collector; it is a semi-accurate count updated by each
     <command>UPDATE</command> and <command>DELETE</command> operation.  (It
     is only semi-accurate because some information might be lost under heavy
-    load.)  For analyze, a similar condition is used: the threshold, defined as
+    load.)  For analyze, a similar condition is used: the threshold, defined as:
 <programlisting>
 analyze threshold = analyze base threshold + analyze scale factor * number of tuples
 </programlisting>

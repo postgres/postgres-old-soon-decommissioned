@@ -248,7 +248,7 @@ SELECT * FROM t1;
    command, the <command>NOTIFY</command> command will be executed
    unconditionally, that is, the <command>NOTIFY</command> will be
    issued even if there are not any rows that the rule should apply
-   to.  For example, in
+   to.  For example, in:
 <programlisting>
 CREATE RULE notify_me AS ON UPDATE TO mytable DO ALSO NOTIFY mytable;
 

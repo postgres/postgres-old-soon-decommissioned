@@ -792,7 +792,7 @@ CREATE TABLE array_int (
   <para>
    Define a unique table constraint for the table
    <literal>films</literal>.  Unique table constraints can be defined
-   on one or more columns of the table.
+   on one or more columns of the table:
 
 <programlisting>
 CREATE TABLE films (
