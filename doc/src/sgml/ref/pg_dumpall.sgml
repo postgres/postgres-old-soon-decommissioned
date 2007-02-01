@@ -374,7 +374,7 @@ PostgreSQL documentation
 
      <varlistentry>
       <term>-W</term>
-	    <term>--password</term>
+      <term>--password</term>
       <listitem>
        <para>
         Force a password prompt.  This should happen automatically if

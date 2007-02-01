@@ -454,15 +454,17 @@
 
      <varlistentry>
       <term><option>-U <replaceable>username</replaceable></option></term>
+      <term><option>--username=<replaceable class="parameter">username</replaceable></option></term>
       <listitem>
        <para>
-        Connect as the given user
+        Connect as the given user.
        </para>
       </listitem>
      </varlistentry>
 
      <varlistentry>
       <term><option>-W</option></term>
+      <term><option>--password</option></term>
       <listitem>
        <para>
         Force a password prompt.  This should happen automatically if
