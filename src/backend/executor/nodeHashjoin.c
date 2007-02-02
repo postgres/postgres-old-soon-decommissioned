@@ -426,7 +426,7 @@ ExecInitHashJoin(HashJoin *node, EState *estate)
 	 * initialize tuple type and projection info
 	 */
 	ExecAssignResultTypeFromTL(&hjstate->js.ps);
-	ExecAssignProjectionInfo(&hjstate->js.ps);
+	ExecAssignProjectionInfo(&hjstate->js.ps, NULL);
 
 	ExecSetSlotDescriptor(hjstate->hj_OuterTupleSlot,
 						  ExecGetResultType(outerPlanState(hjstate)),

@@ -339,7 +339,7 @@ ExecInitNestLoop(NestLoop *node, EState *estate)
 	 * initialize tuple type and projection info
 	 */
 	ExecAssignResultTypeFromTL(&nlstate->js.ps);
-	ExecAssignProjectionInfo(&nlstate->js.ps);
+	ExecAssignProjectionInfo(&nlstate->js.ps, NULL);
 
 	/*
 	 * finally, wipe the current outer tuple clean.
