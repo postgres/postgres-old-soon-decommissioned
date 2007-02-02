@@ -47,7 +47,7 @@ $PostgreSQL$
   C++</productname>, change into the <filename>src</filename> directory
   and type the command
 <screen>
-<userinput>make -DCFG=Release /f bcc32.mak</userinput>
+<userinput>make -N -DCFG=Release /f bcc32.mak</userinput>
 </screen>
  </para>
 
@@ -94,10 +94,11 @@ $PostgreSQL$
  </para>
 
  <para>
-  The only file that really needs to be installed is the
-  <filename>libpq.dll</filename> library.  This file should in most
-  cases be placed in the <filename>WINNT\SYSTEM32</filename> directory
-  (or in <filename>WINDOWS\SYSTEM</filename> on a Windows 95/98/ME
+  Normally you do not need to install any of the client files. You should
+  place the <filename>libpq.dll</filename> file in the same directory
+  as your applications .EXE-file. Only if this is for some reason not
+  possible should you install it in the <filename>WINNT\SYSTEM32</filename>
+  directory (or in <filename>WINDOWS\SYSTEM</filename> on a Windows 95/98/ME
   system).  If this file is installed using a setup program, it should
   be installed with version checking using the
   <symbol>VERSIONINFO</symbol> resource included in the file, to
@@ -118,6 +119,20 @@ $PostgreSQL$
   C++, just right-click on the project and choose to add it.)
  </para>
 
+ <para>
+  Free development tools from <productname>Microsoft</productname>
+  can be downloaded from
+  <ulink url="http://msdn.microsoft.com/visualc/vctoolkit2003/"></>.
+  You will also need <filename>MSVCRT.lib</> from the platform SDK from
+  <ulink url="http://www.microsoft.com/msdownload/platformsdk/sdkupdate/"></>.
+  You can also download the <application>.NET</> framework from
+  <ulink url="http://msdn.microsoft.com/netframework/downloads/updates/default.aspx"></>.
+  Once installed, the toolkit binaries must be in your path, and you might
+  need to add a <literal>/lib:&lt;libpath&gt;</> to point to <filename>MSVCRT.lib</>.
+  Free <productname>Borland C++</productname> compiler tools can be downloaded from
+  <ulink url="http://www.borland.com/products/downloads/download_cbuilder.html#"></>,
+  and require similar setup.
+ </para>
 </chapter>
 
 <!-- Keep this comment at the end of the file
