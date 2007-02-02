@@ -96,6 +96,6 @@ ECPGDynamicType(Oid type)
 		case NUMERICOID:
 			return SQL3_NUMERIC;	/* numeric */
 		default:
-			return -type;
+			return -(int)type;
 	}
 }
