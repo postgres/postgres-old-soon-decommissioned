@@ -205,7 +205,7 @@ ExecInitGroup(Group *node, EState *estate, int eflags)
 	 * Initialize result tuple type and projection info.
 	 */
 	ExecAssignResultTypeFromTL(&grpstate->ss.ps);
-	ExecAssignProjectionInfo(&grpstate->ss.ps);
+	ExecAssignProjectionInfo(&grpstate->ss.ps, NULL);
 
 	/*
 	 * Precompute fmgr lookup data for inner loop

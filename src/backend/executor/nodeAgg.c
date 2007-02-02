@@ -1243,7 +1243,7 @@ ExecInitAgg(Agg *node, EState *estate, int eflags)
 	 * Initialize result tuple type and projection info.
 	 */
 	ExecAssignResultTypeFromTL(&aggstate->ss.ps);
-	ExecAssignProjectionInfo(&aggstate->ss.ps);
+	ExecAssignProjectionInfo(&aggstate->ss.ps, NULL);
 
 	/*
 	 * get the count of aggregates in targetlist and quals
