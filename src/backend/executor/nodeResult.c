@@ -235,7 +235,7 @@ ExecInitResult(Result *node, EState *estate, int eflags)
 	 * initialize tuple type and projection info
 	 */
 	ExecAssignResultTypeFromTL(&resstate->ps);
-	ExecAssignProjectionInfo(&resstate->ps);
+	ExecAssignProjectionInfo(&resstate->ps, NULL);
 
 	return resstate;
 }

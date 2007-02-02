@@ -804,7 +804,8 @@ InitPlan(QueryDesc *queryDesc, int eflags)
 
 			rliststate = (List *) ExecInitExpr((Expr *) rlist, planstate);
 			resultRelInfo->ri_projectReturning =
-				ExecBuildProjectionInfo(rliststate, econtext, slot);
+				ExecBuildProjectionInfo(rliststate, econtext, slot,
+									   resultRelInfo->ri_RelationDesc->rd_att);
 			resultRelInfo++;
 		}
 
