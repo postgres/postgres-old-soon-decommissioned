@@ -1365,6 +1365,8 @@ All of PostgreSQL is successfully made. Ready to install.
 <userinput>gmake -C src/interfaces install</>
 <userinput>gmake -C doc install</>
 </screen>
+    <filename>src/bin</> has a few binaries for server-only use,
+    but they are small.
     </para>
    </formalpara>
   </step>
