@@ -485,6 +485,17 @@ typedef struct LockingClause
 	bool		noWait;			/* NOWAIT option */
 } LockingClause;
 
+/*
+ * XMLSERIALIZE
+ */
+typedef struct XmlSerialize
+{
+	NodeTag		type;
+	XmlOptionType xmloption;
+	Node	   *expr;
+	TypeName   *typename;
+} XmlSerialize;
+
 
 /****************************************************************************
  *	Nodes for a Query tree

@@ -726,8 +726,15 @@ typedef enum XmlExprOp
 	IS_XMLPARSE,				/* XMLPARSE(text, is_doc, preserve_ws) */
 	IS_XMLPI,					/* XMLPI(name [, args]) */
 	IS_XMLROOT,					/* XMLROOT(xml, version, standalone) */
+	IS_XMLSERIALIZE,			/* XMLSERIALIZE(is_document, xmlval) */
 	IS_DOCUMENT					/* xmlval IS DOCUMENT */
 } XmlExprOp;
+
+typedef enum
+{
+	XMLOPTION_DOCUMENT,
+	XMLOPTION_CONTENT
+} XmlOptionType;
 
 typedef struct XmlExpr
 {
@@ -737,6 +744,9 @@ typedef struct XmlExpr
 	List	   *named_args;		/* non-XML expressions for xml_attributes */
 	List	   *arg_names;		/* parallel list of Value strings */
 	List	   *args;			/* list of expressions */
+	XmlOptionType xmloption;	/* DOCUMENT or CONTENT */
+	Oid			type;			/* target type for XMLSERIALIZE */
+	int32		typmod;
 } XmlExpr;
 
 /*

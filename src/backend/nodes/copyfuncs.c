@@ -1116,6 +1116,9 @@ _copyXmlExpr(XmlExpr *from)
 	COPY_NODE_FIELD(named_args);
 	COPY_NODE_FIELD(arg_names);
 	COPY_NODE_FIELD(args);
+	COPY_SCALAR_FIELD(xmloption);
+	COPY_SCALAR_FIELD(type);
+	COPY_SCALAR_FIELD(typmod);
 
 	return newnode;
 }
@@ -1719,6 +1722,18 @@ _copyLockingClause(LockingClause *from)
 	COPY_NODE_FIELD(lockedRels);
 	COPY_SCALAR_FIELD(forUpdate);
 	COPY_SCALAR_FIELD(noWait);
+
+	return newnode;
+}
+
+static XmlSerialize *
+_copyXmlSerialize(XmlSerialize *from)
+{
+	XmlSerialize *newnode = makeNode(XmlSerialize);
+
+	COPY_SCALAR_FIELD(xmloption);
+	COPY_NODE_FIELD(expr);
+	COPY_NODE_FIELD(typename);
 
 	return newnode;
 }
@@ -3429,6 +3444,9 @@ copyObject(void *from)
 			break;
 		case T_FuncWithArgs:
 			retval = _copyFuncWithArgs(from);
+			break;
+		case T_XmlSerialize:
+			retval = _copyXmlSerialize(from);
 			break;
 
 		default:

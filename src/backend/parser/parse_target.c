@@ -1337,11 +1337,17 @@ FigureColnameInternal(Node *node, char **name)
 				case IS_XMLROOT:
 					*name = "xmlroot";
 					return 2;
+				case IS_XMLSERIALIZE:
+					*name = "xmlserialize";
+					return 2;
 				case IS_DOCUMENT:
 					/* nothing */
 					break;
 			} 
 			break;
+		case T_XmlSerialize:
+			*name = "xmlserialize";
+			return 2;
 		default:
 			break;
 	}

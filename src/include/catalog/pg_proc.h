@@ -4045,6 +4045,8 @@ DATA(insert OID = 2900 (  xmlconcat2       PGNSP PGUID 12 1 0 f f f f i 2 142 "1
 DESCR("aggregate transition function");
 DATA(insert OID = 2901 (  xmlagg           PGNSP PGUID 12 1 0 t f f f i 1 142 "142" _null_ _null_ _null_ aggregate_dummy - _null_ ));
 DESCR("concatenate XML values");
+DATA(insert OID = 2922 (  text             PGNSP PGUID 12 1 0 f f t f s 1 25 "142" _null_ _null_ _null_ xmltotext - _null_ ));
+DESCR("serialize an XML value to a character string");
 
 /* uuid */ 
 DATA(insert OID = 2952 (  uuid_in		   PGNSP PGUID 12 1 0 f f t f i 1 2950 "2275" _null_ _null_ _null_ uuid_in - _null_ ));

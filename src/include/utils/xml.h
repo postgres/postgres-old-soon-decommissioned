@@ -17,10 +17,12 @@
 
 #include "fmgr.h"
 #include "nodes/execnodes.h"
+#include "nodes/primnodes.h"
 
 typedef struct varlena xmltype;
 
 #define DatumGetXmlP(X)		((xmltype *) PG_DETOAST_DATUM(X))
+#define XmlPGetDatum(X)		PointerGetDatum(X)
 
 #define PG_GETARG_XML_P(n)	DatumGetXmlP(PG_GETARG_DATUM(n))
 #define PG_RETURN_XML_P(x)	PG_RETURN_POINTER(x)
@@ -32,6 +34,7 @@ extern Datum xml_send(PG_FUNCTION_ARGS);
 extern Datum xmlcomment(PG_FUNCTION_ARGS);
 extern Datum xmlconcat2(PG_FUNCTION_ARGS);
 extern Datum texttoxml(PG_FUNCTION_ARGS);
+extern Datum xmltotext(PG_FUNCTION_ARGS);
 extern Datum xmlvalidate(PG_FUNCTION_ARGS);
 
 typedef enum
@@ -44,10 +47,11 @@ typedef enum
 
 extern xmltype *xmlconcat(List *args);
 extern xmltype *xmlelement(XmlExprState *xmlExpr, ExprContext *econtext);
-extern xmltype *xmlparse(text *data, bool is_doc, bool preserve_whitespace);
+extern xmltype *xmlparse(text *data, XmlOptionType xmloption, bool preserve_whitespace);
 extern xmltype *xmlpi(char *target, text *arg, bool arg_is_null, bool *result_is_null);
 extern xmltype *xmlroot(xmltype *data, text *version, int standalone);
 extern bool xml_is_document(xmltype *arg);
+extern text *xmltotext_with_xmloption(xmltype *data, XmlOptionType xmloption_arg);
 
 extern char *map_sql_identifier_to_xml_name(char *ident, bool fully_escaped);
 extern char *map_xml_name_to_sql_identifier(char *name);
@@ -60,12 +64,6 @@ typedef enum
 } XmlBinaryType;
 
 extern XmlBinaryType xmlbinary;
-
-typedef enum
-{
-	XMLOPTION_DOCUMENT,
-	XMLOPTION_CONTENT
-} XmlOptionType;
 
 extern XmlOptionType xmloption;
 
