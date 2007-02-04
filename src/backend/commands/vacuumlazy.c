@@ -513,7 +513,7 @@ lazy_scan_heap(Relation onerel, LVRelStats *vacrelstats,
 				(errmsg("relation \"%s.%s\" contains more than \"max_fsm_pages\" pages with useful free space",
 						get_namespace_name(RelationGetNamespace(onerel)),
 						relname),
-				 errhint("Consider compacting this relation or increasing the configuration parameter \"max_fsm_pages\".")));
+				 errhint("Consider using VACUUM FULL on this relation or increasing the configuration parameter \"max_fsm_pages\".")));
 }
 
 
