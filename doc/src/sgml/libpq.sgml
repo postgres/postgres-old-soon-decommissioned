@@ -4357,12 +4357,11 @@ installs too. The file's location can also be specified by the
 <envar>PGSYSCONFDIR</envar> environment variable.
 </para>
 
+<hint>
 <para>
-To set an environment variable on Windows, from <literal>My Computer</>,
-choose <literal>View System Information</>, and from the <literal>Advanced</>
-tab, choose <literal>Environment Variables</>, then add a user or system
-variable.
+Environment variables on Windows are set as a property of <literal>My Computer</>.
 </para>
+</hint>
 </sect1>
 
 
