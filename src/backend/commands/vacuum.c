@@ -1236,7 +1236,7 @@ scan_heap(VRelStats *vacrelstats, Relation onerel,
 				nunused;
 	double		free_space,
 				usable_free_space;
-	Size		min_tlen = MaxTupleSize;
+	Size		min_tlen = MaxHeapTupleSize;
 	Size		max_tlen = 0;
 	bool		do_shrinking = true;
 	VTupleLink	vtlinks = (VTupleLink) palloc(100 * sizeof(VTupleLinkData));

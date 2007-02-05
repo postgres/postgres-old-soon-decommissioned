@@ -99,13 +99,18 @@ typedef struct BTMetaPageData
 #define BTREE_VERSION	2		/* current version number */
 
 /*
+ * Maximum size of a btree index entry, including its tuple header.
+ *
  * We actually need to be able to fit three items on every page,
  * so restrict any one item to 1/3 the per-page available space.
+ *
+ * Note: sizeof(PageHeaderData) includes the first ItemId, but we have
+ * to allow for 2 more, as well as the end-of-page special space.
  */
 #define BTMaxItemSize(page) \
-	((PageGetPageSize(page) - \
-	  sizeof(PageHeaderData) - \
-	  MAXALIGN(sizeof(BTPageOpaqueData))) / 3 - sizeof(ItemIdData))
+	MAXALIGN_DOWN((PageGetPageSize(page) - \
+				   MAXALIGN(sizeof(PageHeaderData) + 2*sizeof(ItemIdData)) - \
+				   MAXALIGN(sizeof(BTPageOpaqueData))) / 3)
 
 /*
  * The leaf-page fillfactor defaults to 90% but is user-adjustable.
