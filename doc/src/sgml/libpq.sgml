@@ -4350,12 +4350,6 @@ service names and parameters. This file can be used for client-only
 installs too. The file's location can also be specified by the
 <envar>PGSYSCONFDIR</envar> environment variable.
 </para>
-
-<hint>
-<para>
-Environment variables on Windows are set as a property of <literal>My Computer</>.
-</para>
-</hint>
 </sect1>
 
 
