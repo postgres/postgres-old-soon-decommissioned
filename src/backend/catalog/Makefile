@@ -45,8 +45,7 @@ postgres.description: postgres.bki ;
 
 postgres.shdescription: postgres.bki ;
 
-postgres.bki: genbki.sh $(POSTGRES_BKI_SRCS) \
-    $(top_srcdir)/src/include/postgres_ext.h $(top_builddir)/src/include/pg_config_manual.h
+postgres.bki: genbki.sh $(POSTGRES_BKI_SRCS) $(top_builddir)/src/include/pg_config_manual.h
 	AWK='$(AWK)' $(SHELL) $< $(pg_includes) --set-version=$(VERSION) -o postgres $(POSTGRES_BKI_SRCS)
 
 .PHONY: install-data

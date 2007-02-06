@@ -39,16 +39,6 @@ typedef unsigned int Oid;
 
 
 /*
- * NAMEDATALEN is the max length for system identifiers (e.g. table names,
- * attribute names, function names, etc).  It must be a multiple of
- * sizeof(int) (typically 4).
- *
- * NOTE that databases with different NAMEDATALEN's cannot interoperate!
- */
-#define NAMEDATALEN 64
-
-
-/*
  * Identifiers of error message fields.  Kept here to keep common
  * between frontend and backend, and also to export them to libpq
  * applications.

@@ -136,7 +136,7 @@ INSERT INTO MY_TABLE VALUES (3, 'hi there');
     <symbol>NAMEDATALEN</symbol> is 64 so the maximum identifier
     length is 63. If this limit is problematic, it can be raised by
     changing the <symbol>NAMEDATALEN</symbol> constant in
-    <filename>src/include/postgres_ext.h</filename>.
+    <filename>src/include/pg_config_manual.h</filename>.
    </para>
 
    <para>

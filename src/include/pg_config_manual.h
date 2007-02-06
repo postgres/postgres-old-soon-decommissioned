@@ -63,6 +63,15 @@
 #define XLOG_SEG_SIZE	(16*1024*1024)
 
 /*
+ * Maximum length for identifiers (e.g. table names, column names,
+ * function names).  It must be a multiple of sizeof(int) (typically
+ * 4).
+ *
+ * Changing this requires an initdb.
+ */
+#define NAMEDATALEN 64
+
+/*
  * Maximum number of arguments to a function.
  *
  * The minimum value is 8 (index cost estimation uses 8-argument functions).
