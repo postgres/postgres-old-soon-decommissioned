@@ -203,7 +203,7 @@ PGSharedMemoryIsInUse(unsigned long id1, unsigned long id2)
 
 	/*
 	 * We detect whether a shared memory segment is in use by seeing whether
-	 * it (a) exists and (b) has any processes are attached to it.
+	 * it (a) exists and (b) has any processes attached to it.
 	 */
 	if (shmctl(shmId, IPC_STAT, &shmStat) < 0)
 	{
