@@ -855,22 +855,17 @@ _bt_split(Relation rel, Buffer buf, OffsetNumber firstright,
 	/* cope with possibility that newitem goes at the end */
 	if (i <= newitemoff)
 	{
-		if (newitemonleft)
-		{
-			_bt_pgaddtup(rel, leftpage, newitemsz, newitem, leftoff,
-						 "left sibling");
-			itup_off = leftoff;
-			itup_blkno = BufferGetBlockNumber(buf);
-			leftoff = OffsetNumberNext(leftoff);
-		}
-		else
-		{
-			_bt_pgaddtup(rel, rightpage, newitemsz, newitem, rightoff,
-						 "right sibling");
-			itup_off = rightoff;
-			itup_blkno = BufferGetBlockNumber(rbuf);
-			rightoff = OffsetNumberNext(rightoff);
-		}
+		/*
+		 * Can't have newitemonleft here; that would imply we were told to put
+		 * *everything* on the left page, which cannot fit (if it could, we'd
+		 * not be splitting the page).
+		 */
+		Assert(!newitemonleft);
+		_bt_pgaddtup(rel, rightpage, newitemsz, newitem, rightoff,
+					 "right sibling");
+		itup_off = rightoff;
+		itup_blkno = BufferGetBlockNumber(rbuf);
+		rightoff = OffsetNumberNext(rightoff);
 	}
 
 	/*
