@@ -5168,9 +5168,6 @@ StartupXLOG(void)
 	/* Reload shared-memory state for prepared transactions */
 	RecoverPreparedTransactions();
 
-	ereport(LOG,
-			(errmsg("database system is ready")));
-
 	/* Shut down readFile facility, free space */
 	if (readFile >= 0)
 	{

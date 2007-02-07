@@ -2083,6 +2083,9 @@ reaper(SIGNAL_ARGS)
 					PgArchPID = pgarch_start();
 				if (PgStatPID == 0)
 					PgStatPID = pgstat_start();
+				/* at this point we are really open for business */
+				ereport(LOG,
+						(errmsg("database system is ready to accept connections")));
 			}
 
 			continue;
