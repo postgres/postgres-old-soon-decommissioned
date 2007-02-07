@@ -343,6 +343,10 @@ extern int	inet_aton(const char *cp, struct in_addr * addr);
 extern char *strdup(const char *str);
 #endif
 
+#if !HAVE_DECL_STRLCAT
+extern size_t strlcat(char *dst, const char *src, size_t siz);
+#endif
+
 #if !HAVE_DECL_STRLCPY
 extern size_t strlcpy(char *dst, const char *src, size_t siz);
 #endif
