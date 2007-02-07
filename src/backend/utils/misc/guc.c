@@ -5729,8 +5729,7 @@ ParseLongOption(const char *string, char **name, char **value)
 	if (string[equal_pos] == '=')
 	{
 		*name = guc_malloc(FATAL, equal_pos + 1);
-		strncpy(*name, string, equal_pos);
-		(*name)[equal_pos] = '\0';
+		strlcpy(*name, string, equal_pos + 1);
 
 		*value = guc_strdup(FATAL, &string[equal_pos + 1]);
 	}

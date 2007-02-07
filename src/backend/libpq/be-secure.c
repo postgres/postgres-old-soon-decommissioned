@@ -933,8 +933,8 @@ aloop:
 	port->peer = SSL_get_peer_certificate(port->ssl);
 	if (port->peer == NULL)
 	{
-		strncpy(port->peer_dn, "(anonymous)", sizeof(port->peer_dn));
-		strncpy(port->peer_cn, "(anonymous)", sizeof(port->peer_cn));
+		strlcpy(port->peer_dn, "(anonymous)", sizeof(port->peer_dn));
+		strlcpy(port->peer_cn, "(anonymous)", sizeof(port->peer_cn));
 	}
 	else
 	{

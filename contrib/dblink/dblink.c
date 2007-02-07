@@ -2248,7 +2248,7 @@ createNewConnection(const char *name, remoteConn * rconn)
 				 errmsg("duplicate connection name")));
 
 	hentry->rconn = rconn;
-	strncpy(hentry->name, name, NAMEDATALEN - 1);
+	strlcpy(hentry->name, name, sizeof(hentry->name));
 }
 
 static void

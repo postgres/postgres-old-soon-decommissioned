@@ -2389,9 +2389,7 @@ previous_word(int point, int skip)
 
 	/* make a copy */
 	s = pg_malloc(end - start + 2);
-
-	strncpy(s, &rl_line_buffer[start], end - start + 1);
-	s[end - start + 1] = '\0';
+	strlcpy(s, &rl_line_buffer[start], end - start + 2);
 
 	return s;
 }
@@ -2460,8 +2458,7 @@ dequote_file_name(char *text, char quote_char)
 
 	length = strlen(text);
 	s = pg_malloc(length - 2 + 1);
-	strncpy(s, text +1, length - 2);
-	s[length] = '\0';
+	strlcpy(s, text +1, length - 2 + 1);
 
 	return s;
 }

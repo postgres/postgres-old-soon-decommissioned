@@ -323,7 +323,6 @@ descriptor_variable(const char *name, int input)
 		{descriptor_names[1], (struct ECPGtype *) & descriptor_type, 0, NULL}
 	};
 
-	strncpy(descriptor_names[input], name, MAX_DESCRIPTOR_NAMELEN);
-	descriptor_names[input][MAX_DESCRIPTOR_NAMELEN - 1] = 0;
+	strlcpy(descriptor_names[input], name, sizeof(descriptor_names[input]));
 	return (struct variable *) & varspace[input];
 }

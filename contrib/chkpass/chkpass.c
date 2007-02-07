@@ -76,8 +76,7 @@ chkpass_in(PG_FUNCTION_ARGS)
 	if (*str == ':')
 	{
 		result = (chkpass *) palloc(sizeof(chkpass));
-		strncpy(result->password, str + 1, 13);
-		result->password[13] = 0;
+		strlcpy(result->password, str + 1, 13 + 1);
 		PG_RETURN_POINTER(result);
 	}
 
@@ -150,8 +149,7 @@ chkpass_eq(PG_FUNCTION_ARGS)
 
 	if (a2->vl_len < 12)
 		sz = a2->vl_len - 4;
-	strncpy(str, a2->vl_dat, sz);
-	str[sz] = 0;
+	strlcpy(str, a2->vl_dat, sz + 1);
 	PG_RETURN_BOOL(strcmp(a1->password, crypt(str, a1->password)) == 0);
 }
 
@@ -166,7 +164,6 @@ chkpass_ne(PG_FUNCTION_ARGS)
 
 	if (a2->vl_len < 12)
 		sz = a2->vl_len - 4;
-	strncpy(str, a2->vl_dat, sz);
-	str[sz] = 0;
+	strlcpy(str, a2->vl_dat, sz + 1);
 	PG_RETURN_BOOL(strcmp(a1->password, crypt(str, a1->password)) != 0);
 }

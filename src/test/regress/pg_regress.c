@@ -349,8 +349,7 @@ replace_string(char *string, char *replace, char *replacement)
 	{
 		char *dup = strdup(string);
 
-		strncpy(string, dup, ptr - string);
-		string[ptr - string] = 0;
+		strlcpy(string, dup, ptr - string + 1);
 		strcat(string, replacement);
 		strcat(string, dup + (ptr - string) + strlen(replace));
 		free(dup);

@@ -539,8 +539,7 @@ find_in_dynamic_libpath(const char *basename)
 			len = piece - p;
 
 		piece = palloc(len + 1);
-		strncpy(piece, p, len);
-		piece[len] = '\0';
+		strlcpy(piece, p, len + 1);
 
 		mangled = substitute_libpath_macro(piece);
 		pfree(piece);
