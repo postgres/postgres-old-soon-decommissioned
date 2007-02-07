@@ -1628,6 +1628,7 @@ CommitTransaction(void)
 	AtEOXact_Namespace(true);
 	/* smgrcommit already done */
 	AtEOXact_Files();
+	pgstat_clear_snapshot();
 	pgstat_count_xact_commit();
 	pgstat_report_txn_timestamp(0);
 
@@ -1844,6 +1845,7 @@ PrepareTransaction(void)
 	AtEOXact_Namespace(true);
 	/* smgrcommit already done */
 	AtEOXact_Files();
+	pgstat_clear_snapshot();
 
 	CurrentResourceOwner = NULL;
 	ResourceOwnerDelete(TopTransactionResourceOwner);
@@ -1995,6 +1997,7 @@ AbortTransaction(void)
 	AtEOXact_Namespace(false);
 	smgrabort();
 	AtEOXact_Files();
+	pgstat_clear_snapshot();
 	pgstat_count_xact_rollback();
 	pgstat_report_txn_timestamp(0);
 

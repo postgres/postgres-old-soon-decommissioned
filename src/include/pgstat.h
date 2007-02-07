@@ -380,6 +380,7 @@ extern void pgstat_report_tabstat(void);
 extern void pgstat_vacuum_tabstat(void);
 extern void pgstat_drop_relation(Oid relid);
 
+extern void pgstat_clear_snapshot(void);
 extern void pgstat_reset_counters(void);
 
 extern void pgstat_report_autovac(Oid dboid);
