@@ -3333,6 +3333,15 @@ SubPostmasterMain(int argc, char *argv[])
 #endif
 
 		/*
+		 * process any libraries that should be preloaded at postmaster start
+		 *
+		 * NOTE: we have to re-load the shared_preload_libraries here because
+		 * 		 this backend is not fork()ed so we can't inherit any shared
+		 *		 libraries / DLL's from our parent (the postmaster).
+		 */
+		process_shared_preload_libraries();
+
+		/*
 		 * Perform additional initialization and client authentication.
 		 *
 		 * We want to do this before InitProcess() for a couple of reasons: 1.
