@@ -1385,6 +1385,7 @@ SET ENABLE_SEQSCAN TO OFF;
         Not all of these choices are available on all platforms.
         The default is the first method in the above list that is supported
         by the platform.
+        The <literal>open_</>* options also use <literal>O_DIRECT</> if available.
         This parameter can only be set in the <filename>postgresql.conf</>
         file or on the server command line.
        </para>
