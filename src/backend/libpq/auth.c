@@ -216,6 +216,9 @@ pg_krb5_recvauth(Port *port)
 	krb5_ticket *ticket;
 	char	   *kusername;
 
+	if (get_role_line(port->user_name) == NULL)
+		return STATUS_ERROR;
+	
 	ret = pg_krb5_init();
 	if (ret != STATUS_OK)
 		return ret;
