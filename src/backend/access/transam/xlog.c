@@ -3374,7 +3374,7 @@ readTimeLineHistory(TimeLineID targetTLI)
 	/*
 	 * Parse the file...
 	 */
-	while (fgets(fline, MAXPGPATH, fd) != NULL)
+	while (fgets(fline, sizeof(fline), fd) != NULL)
 	{
 		/* skip leading whitespace and check for # comment */
 		char	   *ptr;
@@ -4248,7 +4248,7 @@ readRecoveryCommandFile(void)
 	/*
 	 * Parse the file...
 	 */
-	while (fgets(cmdline, MAXPGPATH, fd) != NULL)
+	while (fgets(cmdline, sizeof(cmdline), fd) != NULL)
 	{
 		/* skip leading whitespace and check for # comment */
 		char	   *ptr;

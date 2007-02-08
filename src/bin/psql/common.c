@@ -1497,7 +1497,7 @@ expand_tilde(char **filename)
 		if (*(fn + 1) == '\0')
 			get_home_path(home);	/* ~ or ~/ only */
 		else if ((pw = getpwnam(fn + 1)) != NULL)
-			StrNCpy(home, pw->pw_dir, MAXPGPATH);		/* ~user */
+			strlcpy(home, pw->pw_dir, sizeof(home));		/* ~user */
 
 		*p = oldp;
 		if (strlen(home) != 0)

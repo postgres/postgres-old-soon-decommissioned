@@ -101,7 +101,7 @@ syn_init(PG_FUNCTION_ARGS)
 	}
 	memset(d, 0, sizeof(DictSyn));
 
-	while (fgets(buf, SYNBUFLEN, fin))
+	while (fgets(buf, sizeof(buf), fin))
 	{
 		slen = strlen(buf) - 1;
 		buf[slen] = '\0';

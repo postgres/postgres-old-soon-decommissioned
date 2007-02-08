@@ -2845,11 +2845,11 @@ parseServiceInfo(PQconninfoOption *options, PQExpBuffer errorMessage)
 			return 1;
 		}
 
-		while ((line = fgets(buf, MAXBUFSIZE - 1, f)) != NULL)
+		while ((line = fgets(buf, sizeof(buf), f)) != NULL)
 		{
 			linenr++;
 
-			if (strlen(line) >= MAXBUFSIZE - 2)
+			if (strlen(line) >= sizeof(buf) - 1)
 			{
 				fclose(f);
 				printfPQExpBuffer(errorMessage,
@@ -3654,7 +3654,7 @@ PasswordFromFile(char *hostname, char *port, char *dbname, char *username)
 				   *ret;
 		int			len;
 
-		fgets(buf, LINELEN - 1, fp);
+		fgets(buf, sizeof(buf), fp);
 
 		len = strlen(buf);
 		if (len == 0)

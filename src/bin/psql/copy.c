@@ -801,7 +801,7 @@ handleCopyIn(PGconn *conn, FILE *copystream, bool isbinary)
 				/* enable longjmp while waiting for input */
 				sigint_interrupt_enabled = true;
 
-				fgresult = fgets(buf, COPYBUFSIZ, copystream);
+				fgresult = fgets(buf, sizeof(buf), copystream);
 
 				sigint_interrupt_enabled = false;
 

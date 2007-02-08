@@ -1018,8 +1018,7 @@ SSLerrmessage(void)
 	errreason = ERR_reason_error_string(errcode);
 	if (errreason != NULL)
 	{
-		strncpy(errbuf, errreason, SSL_ERR_LEN - 1);
-		errbuf[SSL_ERR_LEN - 1] = '\0';
+		strlcpy(errbuf, errreason, SSL_ERR_LEN);
 		return errbuf;
 	}
 	snprintf(errbuf, SSL_ERR_LEN, libpq_gettext("SSL error code %lu"), errcode);

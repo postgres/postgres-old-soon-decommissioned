@@ -108,7 +108,7 @@ main(int argc, char **argv)
 
 		escaped = FALSE;
 
-		while (fgets(in_line, BUFSIZ, in_file) != NULL)
+		while (fgets(in_line, sizeof(in_line), in_file) != NULL)
 		{
 			col_in_tab = 0;
 			prv_spaces = 0;
