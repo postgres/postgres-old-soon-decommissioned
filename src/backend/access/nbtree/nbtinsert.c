@@ -953,7 +953,7 @@ _bt_split(Relation rel, Buffer buf, OffsetNumber firstright,
 		xlrec.rightsib = BufferGetBlockNumber(rbuf);
 		xlrec.firstright = firstright;
 		xlrec.rnext = ropaque->btpo_next;
-		xlrec.level = lopaque->btpo.level;
+		xlrec.level = ropaque->btpo.level;
 
 		rdata[0].data = (char *) &xlrec;
 		rdata[0].len = SizeOfBtreeSplit;
@@ -962,7 +962,7 @@ _bt_split(Relation rel, Buffer buf, OffsetNumber firstright,
 		lastrdata = &rdata[0];
 
 		/* Log downlink on non-leaf pages. */
-		if (lopaque->btpo.level > 0)
+		if (ropaque->btpo.level > 0)
 		{
 			lastrdata->next = lastrdata + 1;
 			lastrdata++;
@@ -1040,8 +1040,8 @@ _bt_split(Relation rel, Buffer buf, OffsetNumber firstright,
 
 		recptr = XLogInsert(RM_BTREE_ID, xlinfo, rdata);
 
-		PageSetLSN(leftpage, recptr);
-		PageSetTLI(leftpage, ThisTimeLineID);
+		PageSetLSN(origpage, recptr);
+		PageSetTLI(origpage, ThisTimeLineID);
 		PageSetLSN(rightpage, recptr);
 		PageSetTLI(rightpage, ThisTimeLineID);
 		if (!P_RIGHTMOST(ropaque))
