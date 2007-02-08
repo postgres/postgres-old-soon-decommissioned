@@ -667,11 +667,6 @@ do_compile(FunctionCallInfo fcinfo,
 	function->found_varno = var->dno;
 
 	/*
-	 * Forget about the above created variables
-	 */
-	plpgsql_add_initdatums(NULL);
-
-	/*
 	 * Now parse the function's text
 	 */
 	parse_rc = plpgsql_yyparse();
@@ -1893,11 +1888,17 @@ plpgsql_adddatum(PLpgSQL_datum *new)
 
 
 /* ----------
- * plpgsql_add_initdatums		Put all datum entries created
- *					since the last call into the
- *					finishing code block so the
- *					block knows which variables to
- *					reinitialize when entered.
+ * plpgsql_add_initdatums		Make an array of the datum numbers of
+ *					all the simple VAR datums created since the last call
+ *					to this function.
+ *
+ * If varnos is NULL, we just forget any datum entries created since the
+ * last call.
+ *
+ * This is used around a DECLARE section to create a list of the VARs
+ * that have to be initialized at block entry.  Note that VARs can also
+ * be created elsewhere than DECLARE, eg by a FOR-loop, but it is then
+ * the responsibility of special-purpose code to initialize them.
  * ----------
  */
 int
