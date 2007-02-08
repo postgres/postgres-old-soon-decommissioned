@@ -263,7 +263,6 @@ decl_sect		: opt_label
 						$$.label	  = $1;
 						$$.n_initvars = 0;
 						$$.initvarnos = NULL;
-						plpgsql_add_initdatums(NULL);
 					}
 				| opt_label decl_start
 					{
@@ -271,7 +270,6 @@ decl_sect		: opt_label
 						$$.label	  = $1;
 						$$.n_initvars = 0;
 						$$.initvarnos = NULL;
-						plpgsql_add_initdatums(NULL);
 					}
 				| opt_label decl_start decl_stmts
 					{
@@ -280,12 +278,16 @@ decl_sect		: opt_label
 							$$.label = $3;
 						else
 							$$.label = $1;
+						/* Remember variables declared in decl_stmts */
 						$$.n_initvars = plpgsql_add_initdatums(&($$.initvarnos));
 					}
 				;
 
 decl_start		: K_DECLARE
 					{
+						/* Forget any variables created before block */
+						plpgsql_add_initdatums(NULL);
+						/* Make variable names be local to block */
 						plpgsql_ns_setlocal(true);
 					}
 				;
@@ -1032,8 +1034,6 @@ fori_var		: fori_varname
 						plpgsql_adddatum((PLpgSQL_datum *)new);
 						plpgsql_ns_additem(PLPGSQL_NSTYPE_VAR, new->varno,
 												$1.name);
-
-						plpgsql_add_initdatums(NULL);
 
 						$$ = new;
 					}
