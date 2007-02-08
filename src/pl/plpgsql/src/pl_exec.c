@@ -799,29 +799,29 @@ exec_stmt_block(PLpgSQL_execstate * estate, PLpgSQL_stmt_block * block)
 				{
 					PLpgSQL_var *var = (PLpgSQL_var *) (estate->datums[n]);
 
+					/* free any old value, in case re-entering block */
 					if (var->freeval)
 					{
 						pfree((void *) (var->value));
 						var->freeval = false;
 					}
 
-					if (!var->isconst || var->isnull)
+					/* Initially it contains a NULL */
+					var->value = (Datum) 0;
+					var->isnull = true;
+
+					if (var->default_val == NULL)
 					{
-						if (var->default_val == NULL)
-						{
-							var->value = (Datum) 0;
-							var->isnull = true;
-							if (var->notnull)
-								ereport(ERROR,
-								(errcode(ERRCODE_NULL_VALUE_NOT_ALLOWED),
-								 errmsg("variable \"%s\" declared NOT NULL cannot default to NULL",
-										var->refname)));
-						}
-						else
-						{
-							exec_assign_expr(estate, (PLpgSQL_datum *) var,
-											 var->default_val);
-						}
+						if (var->notnull)
+							ereport(ERROR,
+									(errcode(ERRCODE_NULL_VALUE_NOT_ALLOWED),
+									 errmsg("variable \"%s\" declared NOT NULL cannot default to NULL",
+											var->refname)));
+					}
+					else
+					{
+						exec_assign_expr(estate, (PLpgSQL_datum *) var,
+										 var->default_val);
 					}
 				}
 				break;
