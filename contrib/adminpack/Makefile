@@ -1,3 +1,5 @@
+# $PostgreSQL$
+
 MODULE_big = adminpack
 PG_CPPFLAGS = -I$(libpq_srcdir)
 DATA_built = adminpack.sql

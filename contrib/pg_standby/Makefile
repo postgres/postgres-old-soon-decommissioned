@@ -1,3 +1,4 @@
+# $PostgreSQL$
 
 PROGRAM = pg_standby
 OBJS	= pg_standby.o

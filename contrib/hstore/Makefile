@@ -1,3 +1,5 @@
+# $PostgreSQL$
+
 subdir = contrib/hstore
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
@@ -14,5 +16,3 @@ DOCS = README.hstore
 REGRESS = hstore
 
 include $(top_srcdir)/contrib/contrib-global.mk
-# DO NOT DELETE
-

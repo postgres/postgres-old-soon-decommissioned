@@ -1,3 +1,5 @@
+# $PostgreSQL$
+
 MODULES = tablefunc
 DATA_built = tablefunc.sql
 DATA = uninstall_tablefunc.sql

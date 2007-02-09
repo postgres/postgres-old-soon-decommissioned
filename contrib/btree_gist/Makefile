@@ -1,3 +1,4 @@
+# $PostgreSQL$
 
 MODULE_big  = btree_gist
 

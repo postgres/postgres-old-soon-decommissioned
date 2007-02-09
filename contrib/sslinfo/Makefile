@@ -1,3 +1,5 @@
+# $PostgreSQL$
+
 MODULE_big = sslinfo
 OBJS = sslinfo.o
 DATA_built = sslinfo.sql
