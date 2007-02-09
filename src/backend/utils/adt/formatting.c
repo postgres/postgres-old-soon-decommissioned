@@ -3858,7 +3858,6 @@ NUM_prepare_locale(NUMProc *Np)
 		else
 			Np->L_currency_symbol = " ";
 
-
 		if (!IS_LDECIMAL(Np->Num))
 			Np->decimal = ".";
 	}
@@ -3870,7 +3869,6 @@ NUM_prepare_locale(NUMProc *Np)
 		Np->L_negative_sign = "-";
 		Np->L_positive_sign = "+";
 		Np->decimal = ".";
-
 		Np->L_thousands_sep = ",";
 		Np->L_currency_symbol = " ";
 	}
