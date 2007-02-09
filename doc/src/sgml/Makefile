@@ -105,7 +105,7 @@ draft:
 	@$(MAKE) DRAFT="Y" html
 
 
-COLLATEINDEX = LC_ALL=C $(PERL) $(COLLATEINDEX) -f -g
+COLLATEINDEX := LC_ALL=C $(PERL) $(COLLATEINDEX) -f -g
 
 # bookindex.sgml is required so there is a proper index for all output formats
 bookindex.sgml: HTML.index
