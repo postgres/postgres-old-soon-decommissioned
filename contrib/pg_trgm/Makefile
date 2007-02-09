@@ -1,7 +1,5 @@
 # $PostgreSQL$
 
-PG_CPPFLAGS = -I.
-
 MODULE_big = pg_trgm
 OBJS = trgm_op.o trgm_gist.o 
 

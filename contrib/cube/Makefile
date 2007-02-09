@@ -10,8 +10,6 @@ REGRESS = cube
 
 EXTRA_CLEAN = y.tab.c y.tab.h
 
-PG_CPPFLAGS = -I.
-
 SHLIB_LINK += $(filter -lm, $(LIBS))
 
 ifdef USE_PGXS
