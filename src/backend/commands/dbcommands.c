@@ -37,6 +37,7 @@
 #include "commands/tablespace.h"
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"
+#include "pgstat.h"
 #include "postmaster/bgwriter.h"
 #include "storage/freespace.h"
 #include "storage/procarray.h"
@@ -643,6 +644,11 @@ dropdb(const char *dbname, bool missing_ok)
 	 * Also, clean out any entries in the shared free space map.
 	 */
 	FreeSpaceMapForgetDatabase(db_id);
+
+	/*
+	 * Tell the stats collector to forget it immediately, too.
+	 */
+	pgstat_drop_database(db_id);
 
 	/*
 	 * Tell bgwriter to forget any pending fsync requests for files in the

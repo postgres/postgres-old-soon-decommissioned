@@ -153,7 +153,6 @@ static void force_statwrite(SIGNAL_ARGS);
 static void pgstat_beshutdown_hook(int code, Datum arg);
 
 static PgStat_StatDBEntry *pgstat_get_db_entry(Oid databaseid, bool create);
-static void pgstat_drop_database(Oid databaseid);
 static void pgstat_write_statsfile(void);
 static HTAB *pgstat_read_statsfile(Oid onlydb);
 static void backend_read_statsfile(void);
@@ -820,7 +819,7 @@ pgstat_collect_oids(Oid catalogid)
  *	via future invocations of pgstat_vacuum_tabstat().)
  * ----------
  */
-static void
+void
 pgstat_drop_database(Oid databaseid)
 {
 	PgStat_MsgDropdb msg;
