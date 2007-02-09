@@ -3847,7 +3847,6 @@ NUM_prepare_locale(NUMProc *Np)
 		 */
 		if (lconv->decimal_point && *lconv->decimal_point)
 			Np->decimal = lconv->decimal_point;
-
 		else
 			Np->decimal = ".";
 
