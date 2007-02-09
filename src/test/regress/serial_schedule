@@ -88,6 +88,7 @@ test: foreign_key
 test: cluster
 test: dependency
 test: guc
+test: combocid
 test: limit
 test: plpgsql
 test: copy2
