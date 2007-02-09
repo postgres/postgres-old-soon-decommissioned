@@ -27,7 +27,7 @@ override CPPFLAGS := -I$(top_builddir)/src/port -DFRONTEND $(CPPFLAGS)
 LIBS += $(PTHREAD_LIBS)
 
 # Replace all object files so they use FRONTEND define
-LIBOBJS_SRV := $(LIBOBJS:%.o=%_srv.o)
+LIBOBJS_SRV = $(LIBOBJS:%.o=%_srv.o)
 
 all: libpgport.a libpgport_srv.a
 

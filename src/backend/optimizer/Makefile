@@ -8,8 +8,8 @@ subdir = src/backend/optimizer
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-SUBDIRS     := geqo path plan prep util
-SUBDIROBJS  := $(SUBDIRS:%=%/SUBSYS.o)
+SUBDIRS     = geqo path plan prep util
+SUBDIROBJS  = $(SUBDIRS:%=%/SUBSYS.o)
 
 all: SUBSYS.o
 

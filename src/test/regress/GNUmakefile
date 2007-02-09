@@ -14,7 +14,7 @@ subdir = src/test/regress
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-contribdir := $(top_builddir)/contrib
+contribdir = $(top_builddir)/contrib
 
 # port number for temp-installation test postmaster
 TEMP_PORT = 5$(DEF_PGPORT)
@@ -26,13 +26,13 @@ PSQLDIR = $(bindir)
 MULTIBYTE = SQL_ASCII
 
 # maximum simultaneous connections for parallel tests
-MAXCONNOPT :=
+MAXCONNOPT =
 ifdef MAX_CONNECTIONS
 MAXCONNOPT += --max-connections=$(MAX_CONNECTIONS)
 endif
 
 # locale
-NOLOCALE :=
+NOLOCALE =
 ifdef NO_LOCALE
 NOLOCALE += --no-locale
 endif

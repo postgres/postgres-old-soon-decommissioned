@@ -66,7 +66,7 @@ override SPFLAGS += -wall -wno-unused-param -wno-empty
 
 .PHONY: html man draft clean
 
-DEFAULTSECTION := $(sqlmansect_dummy)
+DEFAULTSECTION = $(sqlmansect_dummy)
 
 fix_man_xrefs = $(PERL) -npi -e 's{\[XRef to GUC-([A-Z0-9-]*)\]}{($$l = $$1) =~ tr/A-Z-/a-z_/, $$l}ge || s{\[XRef to [A-Z0-9-]*\]}{in the documentation}g'
 
@@ -105,7 +105,7 @@ draft:
 	@$(MAKE) DRAFT="Y" html
 
 
-COLLATEINDEX := LC_ALL=C $(PERL) $(COLLATEINDEX) -f -g
+COLLATEINDEX = LC_ALL=C $(PERL) $(COLLATEINDEX) -f -g
 
 # bookindex.sgml is required so there is a proper index for all output formats
 bookindex.sgml: HTML.index

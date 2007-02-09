@@ -9,8 +9,8 @@ OBJS = dict_ex.o dict.o snmap.o stopword.o common.o prs_dcfg.o \
        query_util.o query_support.o query_rewrite.o query_gist.o \
        ts_locale.o ts_lexize.o ginidx.o
 
-SUBDIRS     := snowball ispell wordparser
-SUBDIROBJS  := $(SUBDIRS:%=%/SUBSYS.o)
+SUBDIRS     = snowball ispell wordparser
+SUBDIROBJS  = $(SUBDIRS:%=%/SUBSYS.o)
 
 OBJS	+= $(SUBDIROBJS)
 

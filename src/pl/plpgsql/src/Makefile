@@ -17,7 +17,7 @@ SO_MINOR_VERSION= 0
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 SHLIB_LINK = $(filter -lintl, $(LIBS)) $(BE_DLLLIBS)
-rpath :=
+rpath =
 
 OBJS = pl_gram.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o
 

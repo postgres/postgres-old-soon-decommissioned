@@ -27,14 +27,14 @@ include $(top_builddir)/src/Makefile.global
 
 ifneq ($(wildcard $(srcdir)/postgres.tar.gz),)
 ifneq (,$(docdir))
-found_html := yes
+found_html = yes
 endif
 endif
 
 ifneq ($(wildcard $(srcdir)/man.tar.gz),)
 # SCO OpenServer's man system is sufficiently different to not bother.
 ifneq ($(PORTNAME), sco)
-found_man := yes
+found_man = yes
 endif
 endif
 

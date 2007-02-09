@@ -12,9 +12,9 @@ subdir = src/interfaces
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
-DIRS := libpq ecpg 
+DIRS = libpq ecpg 
 
-ALLDIRS := $(DIRS) 
+ALLDIRS = $(DIRS) 
 
 all install installdirs uninstall distprep:
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done

@@ -26,7 +26,7 @@ SUBSYS.o: $(OBJS)
 # the catalog header files are assembled into postgres.bki.  In particular,
 # indexing.h had better be last, and toasting.h just before it.
 
-POSTGRES_BKI_SRCS := $(addprefix $(top_srcdir)/src/include/catalog/,\
+POSTGRES_BKI_SRCS = $(addprefix $(top_srcdir)/src/include/catalog/,\
 	pg_proc.h pg_type.h pg_attribute.h pg_class.h pg_autovacuum.h \
 	pg_attrdef.h pg_constraint.h pg_inherits.h pg_index.h pg_operator.h \
 	pg_opfamily.h pg_opclass.h pg_am.h pg_amop.h pg_amproc.h \
@@ -38,7 +38,7 @@ POSTGRES_BKI_SRCS := $(addprefix $(top_srcdir)/src/include/catalog/,\
 	toasting.h indexing.h \
     )
 
-pg_includes := $(sort -I$(top_srcdir)/src/include -I$(top_builddir)/src/include)
+pg_includes = $(sort -I$(top_srcdir)/src/include -I$(top_builddir)/src/include)
 
 # see explanation in ../parser/Makefile
 postgres.description: postgres.bki ;

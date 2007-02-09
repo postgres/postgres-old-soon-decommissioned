@@ -12,8 +12,6 @@ subdir = src/timezone
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
-override CPPFLAGS := $(CPPFLAGS)
-
 # files to build into backend
 OBJS= localtime.o strftime.o pgtz.o
 
@@ -21,9 +19,9 @@ OBJS= localtime.o strftime.o pgtz.o
 ZICOBJS= zic.o ialloc.o scheck.o localtime.o
 
 # timezone data files
-TZDATA := africa antarctica asia australasia europe northamerica southamerica \
+TZDATA = africa antarctica asia australasia europe northamerica southamerica \
 	pacificnew etcetera factory backward systemv solar87 solar88 solar89
-TZDATAFILES := $(TZDATA:%=$(srcdir)/data/%)
+TZDATAFILES = $(TZDATA:%=$(srcdir)/data/%)
 
 all: SUBSYS.o submake-libpgport zic
 

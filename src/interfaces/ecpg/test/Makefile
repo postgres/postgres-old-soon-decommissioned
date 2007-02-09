@@ -12,7 +12,7 @@ TEMP_PORT = 5$(DEF_PGPORT)
 MULTIBYTE = SQL_ASCII
 
 # locale
-NOLOCALE :=
+NOLOCALE =
 ifdef NO_LOCALE
 NOLOCALE += --no-locale
 endif

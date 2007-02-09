@@ -341,7 +341,7 @@ endif
 
 # This macro is for use by libraries linking to libpq.  (Because libpgport
 # isn't created with the same link flags as libpq, it can't be used.)
-libpq := -L$(libpq_builddir) -lpq
+libpq = -L$(libpq_builddir) -lpq
   
 # If doing static linking, shared library dependency info isn't available,
 # so add in the libraries that libpq depends on.

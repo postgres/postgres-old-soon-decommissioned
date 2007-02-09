@@ -13,11 +13,11 @@ subdir = src/backend
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
-DIRS := access bootstrap catalog parser commands executor lib libpq \
+DIRS = access bootstrap catalog parser commands executor lib libpq \
 	main nodes optimizer port postmaster regex rewrite \
 	storage tcop utils $(top_builddir)/src/timezone
 
-SUBSYSOBJS := $(DIRS:%=%/SUBSYS.o)
+SUBSYSOBJS = $(DIRS:%=%/SUBSYS.o)
 
 ifeq ($(enable_dtrace), yes)
 LOCALOBJS += utils/probes.o
