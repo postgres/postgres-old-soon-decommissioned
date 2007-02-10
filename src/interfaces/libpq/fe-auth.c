@@ -418,7 +418,7 @@ pg_password_sendauth(PGconn *conn, const char *password, AuthRequest areq)
 			{
 				char		salt[3];
 
-				StrNCpy(salt, conn->cryptSalt, 3);
+				strlcpy(salt, conn->cryptSalt, sizeof(salt));
 				crypt_pwd = crypt(password, salt);
 				break;
 			}

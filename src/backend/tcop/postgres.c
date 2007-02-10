@@ -2846,7 +2846,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 			case 'r':
 				/* send output (stdout and stderr) to the given file */
 				if (secure)
-					StrNCpy(OutputFileName, optarg, MAXPGPATH);
+					strlcpy(OutputFileName, optarg, MAXPGPATH);
 				break;
 
 			case 'S':

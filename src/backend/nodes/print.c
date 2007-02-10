@@ -574,28 +574,28 @@ print_plan_recursive(Plan *p, Query *parsetree, int indentLevel, char *label)
 		RangeTblEntry *rte;
 
 		rte = rt_fetch(((Scan *) p)->scanrelid, parsetree->rtable);
-		StrNCpy(extraInfo, rte->eref->aliasname, NAMEDATALEN);
+		strlcpy(extraInfo, rte->eref->aliasname, NAMEDATALEN);
 	}
 	else if (IsA(p, IndexScan))
 	{
 		RangeTblEntry *rte;
 
 		rte = rt_fetch(((IndexScan *) p)->scan.scanrelid, parsetree->rtable);
-		StrNCpy(extraInfo, rte->eref->aliasname, NAMEDATALEN);
+		strlcpy(extraInfo, rte->eref->aliasname, NAMEDATALEN);
 	}
 	else if (IsA(p, FunctionScan))
 	{
 		RangeTblEntry *rte;
 
 		rte = rt_fetch(((FunctionScan *) p)->scan.scanrelid, parsetree->rtable);
-		StrNCpy(extraInfo, rte->eref->aliasname, NAMEDATALEN);
+		strlcpy(extraInfo, rte->eref->aliasname, NAMEDATALEN);
 	}
 	else if (IsA(p, ValuesScan))
 	{
 		RangeTblEntry *rte;
 
 		rte = rt_fetch(((ValuesScan *) p)->scan.scanrelid, parsetree->rtable);
-		StrNCpy(extraInfo, rte->eref->aliasname, NAMEDATALEN);
+		strlcpy(extraInfo, rte->eref->aliasname, NAMEDATALEN);
 	}
 	else
 		extraInfo[0] = '\0';

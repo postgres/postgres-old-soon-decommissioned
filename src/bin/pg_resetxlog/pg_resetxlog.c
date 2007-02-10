@@ -498,14 +498,14 @@ GuessControlValues(void)
 		fprintf(stderr, _("%s: invalid LC_COLLATE setting\n"), progname);
 		exit(1);
 	}
-	StrNCpy(ControlFile.lc_collate, localeptr, LOCALE_NAME_BUFLEN);
+	strlcpy(ControlFile.lc_collate, localeptr, sizeof(ControlFile.lc_collate));
 	localeptr = setlocale(LC_CTYPE, "");
 	if (!localeptr)
 	{
 		fprintf(stderr, _("%s: invalid LC_CTYPE setting\n"), progname);
 		exit(1);
 	}
-	StrNCpy(ControlFile.lc_ctype, localeptr, LOCALE_NAME_BUFLEN);
+	strlcpy(ControlFile.lc_ctype, localeptr, sizeof(ControlFile.lc_ctype));
 
 	/*
 	 * XXX eventually, should try to grovel through old XLOG to develop more

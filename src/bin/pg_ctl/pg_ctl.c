@@ -416,7 +416,7 @@ test_postmaster_connection(void)
 			/* advance past whitespace/quoting */
 			while (isspace((unsigned char) *p) || *p == '\'' || *p == '"')
 				p++;
-			StrNCpy(portstr, p, Min(strcspn(p, "\"'" WHITESPACE) + 1,
+			strlcpy(portstr, p, Min(strcspn(p, "\"'" WHITESPACE) + 1,
 									sizeof(portstr)));
 			/* keep looking, maybe there is another -p */
 		}
@@ -449,7 +449,7 @@ test_postmaster_connection(void)
 				p++;
 				while (isspace((unsigned char) *p))
 					p++;
-				StrNCpy(portstr, p, Min(strcspn(p, "#" WHITESPACE) + 1,
+				strlcpy(portstr, p, Min(strcspn(p, "#" WHITESPACE) + 1,
 										sizeof(portstr)));
 				/* keep looking, maybe there is another */
 			}
@@ -458,7 +458,7 @@ test_postmaster_connection(void)
 
 	/* environment */
 	if (!*portstr && getenv("PGPORT") != NULL)
-		StrNCpy(portstr, getenv("PGPORT"), sizeof(portstr));
+		strlcpy(portstr, getenv("PGPORT"), sizeof(portstr));
 
 	/* default */
 	if (!*portstr)
@@ -594,7 +594,7 @@ do_start(void)
 			char		full_path[MAXPGPATH];
 
 			if (find_my_exec(argv0, full_path) < 0)
-				StrNCpy(full_path, progname, MAXPGPATH);
+				strlcpy(full_path, progname, sizeof(full_path));
 
 			if (ret == -1)
 				write_stderr(_("The program \"postgres\" is needed by %s "

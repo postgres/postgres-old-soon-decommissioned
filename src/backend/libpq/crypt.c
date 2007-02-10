@@ -110,7 +110,7 @@ md5_crypt_verify(const Port *port, const char *role, char *client_pass)
 			{
 				char		salt[3];
 
-				StrNCpy(salt, port->cryptSalt, 3);
+				strlcpy(salt, port->cryptSalt, sizeof(salt));
 				crypt_pwd = crypt(shadow_pass, salt);
 				break;
 			}

@@ -277,7 +277,7 @@ BootstrapMain(int argc, char *argv[])
 				SetConfigOption("fsync", "false", PGC_POSTMASTER, PGC_S_ARGV);
 				break;
 			case 'r':
-				StrNCpy(OutputFileName, optarg, MAXPGPATH);
+				strlcpy(OutputFileName, optarg, MAXPGPATH);
 				break;
 			case 'x':
 				xlogop = atoi(optarg);

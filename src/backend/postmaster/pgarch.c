@@ -429,14 +429,14 @@ pgarch_archiveXlog(char *xlog)
 				case 'p':
 					/* %p: relative path of source file */
 					sp++;
-					StrNCpy(dp, pathname, endp - dp);
+					strlcpy(dp, pathname, endp - dp);
 					make_native_path(dp);
 					dp += strlen(dp);
 					break;
 				case 'f':
 					/* %f: filename of source file */
 					sp++;
-					StrNCpy(dp, xlog, endp - dp);
+					strlcpy(dp, xlog, endp - dp);
 					dp += strlen(dp);
 					break;
 				case '%':

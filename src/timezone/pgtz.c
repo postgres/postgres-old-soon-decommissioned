@@ -566,7 +566,7 @@ scan_available_timezones(char *tzdir, char *tzdirsub, struct tztry * tt,
 			if (score > *bestscore)
 			{
 				*bestscore = score;
-				StrNCpy(bestzonename, tzdirsub, TZ_STRLEN_MAX + 1);
+				strlcpy(bestzonename, tzdirsub, TZ_STRLEN_MAX + 1);
 			}
 			else if (score == *bestscore)
 			{
@@ -574,7 +574,7 @@ scan_available_timezones(char *tzdir, char *tzdirsub, struct tztry * tt,
 				if (strlen(tzdirsub) < strlen(bestzonename) ||
 					(strlen(tzdirsub) == strlen(bestzonename) &&
 					 strcmp(tzdirsub, bestzonename) < 0))
-					StrNCpy(bestzonename, tzdirsub, TZ_STRLEN_MAX + 1);
+					strlcpy(bestzonename, tzdirsub, TZ_STRLEN_MAX + 1);
 			}
 		}
 

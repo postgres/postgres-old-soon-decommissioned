@@ -175,9 +175,9 @@ pg_getnameinfo_all(const struct sockaddr_storage * addr, int salen,
 	if (rc != 0)
 	{
 		if (node)
-			StrNCpy(node, "???", nodelen);
+			strlcpy(node, "???", nodelen);
 		if (service)
-			StrNCpy(service, "???", servicelen);
+			strlcpy(service, "???", servicelen);
 	}
 
 	return rc;

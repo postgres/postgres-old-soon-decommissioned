@@ -218,7 +218,7 @@ ParseConfigFile(const char *config_file, const char *calling_file,
 	if (!is_absolute_path(config_file))
 	{
 		Assert(calling_file != NULL);
-		StrNCpy(abs_path, calling_file, MAXPGPATH);
+		strlcpy(abs_path, calling_file, sizeof(abs_path));
 		get_parent_directory(abs_path);
 		join_path_components(abs_path, abs_path, config_file);
 		canonicalize_path(abs_path);
