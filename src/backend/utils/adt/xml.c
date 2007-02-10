@@ -1482,6 +1482,14 @@ map_sql_value_to_xml_value(Datum value, Oid type)
 		bool isvarlena;
 		char *p, *str;
 
+		if (type == BOOLOID)
+		{
+			if (DatumGetBool(value))
+				return "true";
+			else
+				return "false";
+		}
+
 		getTypeOutputInfo(type, &typeOut, &isvarlena);
 		str = OidOutputFunctionCall(typeOut, value);
 
