@@ -67,7 +67,8 @@ SET CONSTRAINTS { ALL | <replaceable class="parameter">name</replaceable> [, ...
   <para>
    Currently, only foreign key constraints are affected by this
    setting. Check and unique constraints are always effectively
-   not deferrable.
+   not deferrable. Triggers that are declared as <quote>constraint
+   triggers</> are also affected.
   </para>
  </refsect1>
 
