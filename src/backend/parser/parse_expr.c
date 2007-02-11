@@ -1389,7 +1389,7 @@ transformXmlExpr(ParseState *pstate, XmlExpr *x)
 
 	newx->op = x->op;
 	if (x->name)
-		newx->name = map_sql_identifier_to_xml_name(x->name, false);
+		newx->name = map_sql_identifier_to_xml_name(x->name, false, false);
 	else
 		newx->name = NULL;
 
@@ -1411,10 +1411,10 @@ transformXmlExpr(ParseState *pstate, XmlExpr *x)
 		expr = transformExpr(pstate, r->val);
 
 		if (r->name)
-			argname = map_sql_identifier_to_xml_name(r->name, false);
+			argname = map_sql_identifier_to_xml_name(r->name, false, false);
 		else if (IsA(r->val, ColumnRef))
 			argname = map_sql_identifier_to_xml_name(FigureColname(r->val),
-													 true);
+													 true, false);
 		else
 		{
 			ereport(ERROR,

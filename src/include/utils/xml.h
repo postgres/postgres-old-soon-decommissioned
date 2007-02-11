@@ -53,7 +53,7 @@ extern xmltype *xmlroot(xmltype *data, text *version, int standalone);
 extern bool xml_is_document(xmltype *arg);
 extern text *xmltotext_with_xmloption(xmltype *data, XmlOptionType xmloption_arg);
 
-extern char *map_sql_identifier_to_xml_name(char *ident, bool fully_escaped);
+extern char *map_sql_identifier_to_xml_name(char *ident, bool fully_escaped, bool escape_period);
 extern char *map_xml_name_to_sql_identifier(char *name);
 extern char *map_sql_value_to_xml_value(Datum value, Oid type);
 

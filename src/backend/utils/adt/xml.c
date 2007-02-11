@@ -1318,8 +1318,14 @@ is_valid_xml_namechar(pg_wchar c)
  * Map SQL identifier to XML name; see SQL/XML:2003 section 9.1.
  */
 char *
-map_sql_identifier_to_xml_name(char *ident, bool fully_escaped)
+map_sql_identifier_to_xml_name(char *ident, bool fully_escaped, bool escape_period)
 {
+	/*
+	 * SQL/XML doesn't make use of this case anywhere, so it's
+	 * probably a mistake.
+	 */
+	Assert(fully_escaped || !escape_period);
+
 #ifdef USE_LIBXML
 	StringInfoData buf;
 	char *p;
@@ -1340,6 +1346,8 @@ map_sql_identifier_to_xml_name(char *ident, bool fully_escaped)
 			else
 				appendStringInfo(&buf, "_x0058_");
 		}
+		else if (escape_period && *p == '.')
+			appendStringInfo(&buf, "_x002E_");
 		else
 		{
 			pg_wchar u = sqlchar_to_unicode(p);
