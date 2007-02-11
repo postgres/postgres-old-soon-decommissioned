@@ -75,6 +75,8 @@ ErrorContextCallback *error_context_stack = NULL;
 
 sigjmp_buf *PG_exception_stack = NULL;
 
+extern pid_t SysLoggerPID;
+
 /* GUC parameters */
 PGErrorVerbosity Log_error_verbosity = PGERROR_VERBOSE;
 char	   *Log_line_prefix = NULL;		/* format for extra log line info */
@@ -1701,9 +1703,10 @@ send_message_to_server_log(ErrorData *edata)
 		 * anything going there and write it to the eventlog instead.
 		 *
 		 * If stderr redirection is active, it's ok to write to stderr because
-		 * that's really a pipe to the syslogger process.
+		 * that's really a pipe to the syslogger process. Unless we're in the
+		 * postmaster, and the syslogger process isn't started yet.
 		 */
-		if ((!Redirect_stderr || am_syslogger) && pgwin32_is_service())
+		if ((!Redirect_stderr || am_syslogger || (!IsUnderPostmaster && SysLoggerPID==0)) && pgwin32_is_service())
 			write_eventlog(edata->elevel, buf.data);
 		else
 #endif
