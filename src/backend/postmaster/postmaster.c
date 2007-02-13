@@ -1710,7 +1710,8 @@ ConnCreate(int serverFd)
 
 	if (StreamConnection(serverFd, port) != STATUS_OK)
 	{
-		StreamClose(port->sock);
+		if (port->sock >= 0)
+			StreamClose(port->sock);
 		ConnFree(port);
 		port = NULL;
 	}
