@@ -1320,15 +1320,15 @@ is_valid_xml_namechar(pg_wchar c)
 char *
 map_sql_identifier_to_xml_name(char *ident, bool fully_escaped, bool escape_period)
 {
+#ifdef USE_LIBXML
+	StringInfoData buf;
+	char *p;
+
 	/*
 	 * SQL/XML doesn't make use of this case anywhere, so it's
 	 * probably a mistake.
 	 */
 	Assert(fully_escaped || !escape_period);
-
-#ifdef USE_LIBXML
-	StringInfoData buf;
-	char *p;
 
 	initStringInfo(&buf);
 
