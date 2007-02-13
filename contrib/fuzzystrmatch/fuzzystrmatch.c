@@ -88,7 +88,7 @@ levenshtein(PG_FUNCTION_ARGS)
 	if ((cols > MAX_LEVENSHTEIN_STRLEN + 1) || (rows > MAX_LEVENSHTEIN_STRLEN + 1))
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("argument exceeds max length: %d",
+				 errmsg("argument exceeds the maximum length of %d bytes",
 						MAX_LEVENSHTEIN_STRLEN)));
 
 	/*
@@ -224,7 +224,7 @@ metaphone(PG_FUNCTION_ARGS)
 	if (str_i_len > MAX_METAPHONE_STRLEN)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("argument exceeds max length: %d",
+				 errmsg("argument exceeds the maximum length of %d bytes",
 						MAX_METAPHONE_STRLEN)));
 
 	if (!(str_i_len > 0))
@@ -236,7 +236,7 @@ metaphone(PG_FUNCTION_ARGS)
 	if (reqlen > MAX_METAPHONE_STRLEN)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("output length exceeds max length: %d",
+				 errmsg("output exceeds the maximum length of %d bytes",
 						MAX_METAPHONE_STRLEN)));
 
 	if (!(reqlen > 0))
