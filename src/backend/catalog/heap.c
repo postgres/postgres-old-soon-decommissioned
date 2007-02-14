@@ -1463,6 +1463,9 @@ StoreRelCheck(Relation rel, char *ccname, char *ccbin)
 						  InvalidOid,	/* not a domain constraint */
 						  InvalidOid,	/* Foreign key fields */
 						  NULL,
+						  NULL,
+						  NULL,
+						  NULL,
 						  0,
 						  ' ',
 						  ' ',

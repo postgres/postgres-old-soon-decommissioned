@@ -214,9 +214,6 @@ DECLARE_UNIQUE_INDEX(pg_tablespace_spcname_index, 2698, on pg_tablespace using b
 /* This following index is not used for a cache and is not unique */
 DECLARE_INDEX(pg_trigger_tgconstrname_index, 2699, on pg_trigger using btree(tgconstrname name_ops));
 #define TriggerConstrNameIndexId  2699
-/* This following index is not used for a cache and is not unique */
-DECLARE_INDEX(pg_trigger_tgconstrrelid_index, 2700, on pg_trigger using btree(tgconstrrelid oid_ops));
-#define TriggerConstrRelidIndexId  2700
 DECLARE_UNIQUE_INDEX(pg_trigger_tgrelid_tgname_index, 2701, on pg_trigger using btree(tgrelid oid_ops, tgname name_ops));
 #define TriggerRelidNameIndexId  2701
 DECLARE_UNIQUE_INDEX(pg_trigger_oid_index, 2702, on pg_trigger using btree(oid oid_ops));

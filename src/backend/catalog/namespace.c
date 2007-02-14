@@ -1199,7 +1199,7 @@ ConversionIsVisible(Oid conid)
 	Oid			connamespace;
 	bool		visible;
 
-	contup = SearchSysCache(CONOID,
+	contup = SearchSysCache(CONVOID,
 							ObjectIdGetDatum(conid),
 							0, 0, 0);
 	if (!HeapTupleIsValid(contup))

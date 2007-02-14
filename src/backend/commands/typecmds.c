@@ -1966,6 +1966,9 @@ domainAddConstraint(Oid domainOid, Oid domainNamespace, Oid baseTypeOid,
 						  domainOid,	/* domain constraint */
 						  InvalidOid,	/* Foreign key fields */
 						  NULL,
+						  NULL,
+						  NULL,
+						  NULL,
 						  0,
 						  ' ',
 						  ' ',

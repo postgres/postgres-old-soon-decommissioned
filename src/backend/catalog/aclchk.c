@@ -2314,7 +2314,7 @@ pg_conversion_ownercheck(Oid conv_oid, Oid roleid)
 	if (superuser_arg(roleid))
 		return true;
 
-	tuple = SearchSysCache(CONOID,
+	tuple = SearchSysCache(CONVOID,
 						   ObjectIdGetDatum(conv_oid),
 						   0, 0, 0);
 	if (!HeapTupleIsValid(tuple))

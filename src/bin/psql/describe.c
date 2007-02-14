@@ -1128,12 +1128,8 @@ describeOneTableDetails(const char *schemaname,
 							  "FROM pg_catalog.pg_trigger t\n"
 							  "WHERE t.tgrelid = '%s' "
 							  "AND t.tgenabled "
-							  "AND (NOT t.tgisconstraint "
-							  " OR NOT EXISTS"
-							  "  (SELECT 1 FROM pg_catalog.pg_depend d "
-							  "   JOIN pg_catalog.pg_constraint c ON (d.refclassid = c.tableoid AND d.refobjid = c.oid) "
-							  "   WHERE d.classid = t.tableoid AND d.objid = t.oid AND d.deptype = 'i' AND c.contype = 'f'))"
-							  "   ORDER BY 1",
+							  "AND t.tgconstraint = 0\n"
+							  "ORDER BY 1",
 							  oid);
 			result4 = PSQLexec(buf.data, false);
 			if (!result4)
@@ -1152,12 +1148,8 @@ describeOneTableDetails(const char *schemaname,
 							  "FROM pg_catalog.pg_trigger t\n"
 							  "WHERE t.tgrelid = '%s' "
 							  "AND NOT t.tgenabled "
-							  "AND (NOT t.tgisconstraint "
-							  " OR NOT EXISTS"
-							  "  (SELECT 1 FROM pg_catalog.pg_depend d "
-							  "   JOIN pg_catalog.pg_constraint c ON (d.refclassid = c.tableoid AND d.refobjid = c.oid) "
-							  "   WHERE d.classid = t.tableoid AND d.objid = t.oid AND d.deptype = 'i' AND c.contype = 'f'))"
-							  "   ORDER BY 1",
+							  "AND t.tgconstraint = 0\n"
+							  "ORDER BY 1",
 							  oid);
 			result7 = PSQLexec(buf.data, false);
 			if (!result7)

@@ -327,8 +327,8 @@ ExplainOnePlan(QueryDesc *queryDesc, ExplainStmt *stmt,
 				if (instr->ntuples == 0)
 					continue;
 
-				if (trig->tgisconstraint &&
-				(conname = GetConstraintNameForTrigger(trig->tgoid)) != NULL)
+				if (OidIsValid(trig->tgconstraint) &&
+					(conname = get_constraint_name(trig->tgconstraint)) != NULL)
 				{
 					appendStringInfo(&buf, "Trigger for constraint %s",
 									 conname);

@@ -28,6 +28,7 @@
 #include "catalog/pg_auth_members.h"
 #include "catalog/pg_authid.h"
 #include "catalog/pg_cast.h"
+#include "catalog/pg_constraint.h"
 #include "catalog/pg_conversion.h"
 #include "catalog/pg_database.h"
 #include "catalog/pg_language.h"
@@ -298,7 +299,19 @@ static const struct cachedesc cacheinfo[] = {
 		},
 		128
 	},
-	{ConversionRelationId,		/* CONOID */
+	{ConstraintRelationId,		/* CONSTROID */
+		ConstraintOidIndexId,
+		0,
+		1,
+		{
+			ObjectIdAttributeNumber,
+			0,
+			0,
+			0
+		},
+		1024
+	},
+	{ConversionRelationId,		/* CONVOID */
 		ConversionOidIndexId,
 		0,
 		1,

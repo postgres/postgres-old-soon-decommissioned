@@ -146,7 +146,7 @@ RenameConversion(List *name, const char *newname)
 				 errmsg("conversion \"%s\" does not exist",
 						NameListToString(name))));
 
-	tup = SearchSysCacheCopy(CONOID,
+	tup = SearchSysCacheCopy(CONVOID,
 							 ObjectIdGetDatum(conversionOid),
 							 0, 0, 0);
 	if (!HeapTupleIsValid(tup)) /* should not happen */
@@ -236,7 +236,7 @@ AlterConversionOwner_internal(Relation rel, Oid conversionOid, Oid newOwnerId)
 
 	Assert(RelationGetRelid(rel) == ConversionRelationId);
 
-	tup = SearchSysCacheCopy(CONOID,
+	tup = SearchSysCacheCopy(CONVOID,
 							 ObjectIdGetDatum(conversionOid),
 							 0, 0, 0);
 	if (!HeapTupleIsValid(tup)) /* should not happen */

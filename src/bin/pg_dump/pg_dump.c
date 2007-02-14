@@ -3841,10 +3841,29 @@ getTriggers(TableInfo tblinfo[], int numTables)
 		selectSourceSchema(tbinfo->dobj.namespace->dobj.name);
 
 		resetPQExpBuffer(query);
-		if (g_fout->remoteVersion >= 70300)
+		if (g_fout->remoteVersion >= 80300)
 		{
 			/*
 			 * We ignore triggers that are tied to a foreign-key constraint
+			 */
+			appendPQExpBuffer(query,
+							  "SELECT tgname, "
+							  "tgfoid::pg_catalog.regproc as tgfname, "
+							  "tgtype, tgnargs, tgargs, tgenabled, "
+							  "tgisconstraint, tgconstrname, tgdeferrable, "
+							  "tgconstrrelid, tginitdeferred, tableoid, oid, "
+					 "tgconstrrelid::pg_catalog.regclass as tgconstrrelname "
+							  "from pg_catalog.pg_trigger t "
+							  "where tgrelid = '%u'::pg_catalog.oid "
+							  "and tgconstraint = 0",
+							  tbinfo->dobj.catId.oid);
+		}
+		else if (g_fout->remoteVersion >= 70300)
+		{
+			/*
+			 * We ignore triggers that are tied to a foreign-key constraint,
+			 * but in these versions we have to grovel through pg_constraint
+			 * to find out
 			 */
 			appendPQExpBuffer(query,
 							  "SELECT tgname, "

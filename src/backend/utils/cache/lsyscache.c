@@ -20,6 +20,7 @@
 #include "bootstrap/bootstrap.h"
 #include "catalog/pg_amop.h"
 #include "catalog/pg_amproc.h"
+#include "catalog/pg_constraint.h"
 #include "catalog/pg_namespace.h"
 #include "catalog/pg_opclass.h"
 #include "catalog/pg_operator.h"
@@ -897,10 +898,37 @@ get_atttypetypmod(Oid relid, AttrNumber attnum,
 	ReleaseSysCache(tp);
 }
 
-/*				---------- INDEX CACHE ----------						 */
+/*				---------- CONSTRAINT CACHE ----------					 */
 
-/*		watch this space...
+/*
+ * get_constraint_name
+ *		Returns the name of a given pg_constraint entry.
+ *
+ * Returns a palloc'd copy of the string, or NULL if no such constraint.
+ *
+ * NOTE: since constraint name is not unique, be wary of code that uses this
+ * for anything except preparing error messages.
  */
+char *
+get_constraint_name(Oid conoid)
+{
+	HeapTuple	tp;
+
+	tp = SearchSysCache(CONSTROID,
+						ObjectIdGetDatum(conoid),
+						0, 0, 0);
+	if (HeapTupleIsValid(tp))
+	{
+		Form_pg_constraint contup = (Form_pg_constraint) GETSTRUCT(tp);
+		char	   *result;
+
+		result = pstrdup(NameStr(contup->conname));
+		ReleaseSysCache(tp);
+		return result;
+	}
+	else
+		return NULL;
+}
 
 /*				---------- OPCLASS CACHE ----------						 */
 

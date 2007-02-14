@@ -146,7 +146,7 @@ ConversionDrop(Oid conversionOid, DropBehavior behavior)
 	HeapTuple	tuple;
 	ObjectAddress object;
 
-	tuple = SearchSysCache(CONOID,
+	tuple = SearchSysCache(CONVOID,
 						   ObjectIdGetDatum(conversionOid),
 						   0, 0, 0);
 	if (!HeapTupleIsValid(tuple))
@@ -313,7 +313,7 @@ pg_convert_using(PG_FUNCTION_ARGS)
 				 errmsg("conversion \"%s\" does not exist",
 						NameListToString(parsed_name))));
 
-	tuple = SearchSysCache(CONOID,
+	tuple = SearchSysCache(CONVOID,
 						   ObjectIdGetDatum(convoid),
 						   0, 0, 0);
 	if (!HeapTupleIsValid(tuple))

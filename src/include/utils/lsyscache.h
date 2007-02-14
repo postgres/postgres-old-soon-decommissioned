@@ -58,6 +58,7 @@ extern Oid	get_atttype(Oid relid, AttrNumber attnum);
 extern int32 get_atttypmod(Oid relid, AttrNumber attnum);
 extern void get_atttypetypmod(Oid relid, AttrNumber attnum,
 				  Oid *typid, int32 *typmod);
+extern char *get_constraint_name(Oid conoid);
 extern Oid	get_opclass_family(Oid opclass);
 extern Oid	get_opclass_input_type(Oid opclass);
 extern RegProcedure get_opcode(Oid opno);
