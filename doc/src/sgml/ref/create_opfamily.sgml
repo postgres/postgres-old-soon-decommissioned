@@ -63,14 +63,6 @@ CREATE OPERATOR FAMILY <replaceable class="parameter">name</replaceable> USING <
   </para>
 
   <para>
-   <command>CREATE OPERATOR FAMILY</command> does not presently check
-   whether the operator family definition includes all the operators and
-   functions required by the index method, nor whether the operators and
-   functions form a self-consistent set.  It is the user's
-   responsibility to define a valid operator family.
-  </para>
-
-  <para>
    Refer to <xref linkend="xindex"> for further information.
   </para>
  </refsect1>
