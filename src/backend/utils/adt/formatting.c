@@ -2484,6 +2484,7 @@ dch_date(int arg, char *inout, int suf, bool is_to_char, bool is_interval,
 			else
 			{
 				sscanf(inout, "%1d", &tmfc->d);
+				tmfc->d--;
 				return strspace_len(inout) + 1 + SKIP_THth(suf);
 			}
 			break;
