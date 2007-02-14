@@ -1311,7 +1311,7 @@ static struct config_int ConfigureNamesInt[] =
 #ifdef LOCK_DEBUG
 	{
 		{"trace_lock_oidmin", PGC_SUSET, DEVELOPER_OPTIONS,
-			gettext_noop("no description available"),
+			gettext_noop("No description available."),
 			NULL,
 			GUC_NOT_IN_SAMPLE
 		},
@@ -1320,7 +1320,7 @@ static struct config_int ConfigureNamesInt[] =
 	},
 	{
 		{"trace_lock_table", PGC_SUSET, DEVELOPER_OPTIONS,
-			gettext_noop("no description available"),
+			gettext_noop("No description available."),
 			NULL,
 			GUC_NOT_IN_SAMPLE
 		},
