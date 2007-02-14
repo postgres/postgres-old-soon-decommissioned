@@ -11037,7 +11037,7 @@ SELECT xmlforest(table_name, column_name) FROM information_schema.columns WHERE 
     <para>
      The <function>xmlpi</function> expression creates an XML
      processing instruction.  The content, if present, must not
-     contain the character sequence <literal>?&lt;</literal>.
+     contain the character sequence <literal>?&gt;</literal>.
     </para>
 
     <para>
