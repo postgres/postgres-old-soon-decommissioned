@@ -20,6 +20,8 @@ extern int	ExecCountSlotsResult(Result *node);
 extern ResultState *ExecInitResult(Result *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecResult(ResultState *node);
 extern void ExecEndResult(ResultState *node);
+extern void ExecResultMarkPos(ResultState *node);
+extern void ExecResultRestrPos(ResultState *node);
 extern void ExecReScanResult(ResultState *node, ExprContext *exprCtxt);
 
 #endif   /* NODERESULT_H */
