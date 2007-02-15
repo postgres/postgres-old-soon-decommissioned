@@ -243,6 +243,10 @@ ExecMarkPos(PlanState *node)
 			ExecSortMarkPos((SortState *) node);
 			break;
 
+		case T_ResultState:
+			ExecResultMarkPos((ResultState *) node);
+			break;
+
 		default:
 			/* don't make hard error unless caller asks to restore... */
 			elog(DEBUG2, "unrecognized node type: %d", (int) nodeTag(node));
@@ -296,6 +300,10 @@ ExecRestrPos(PlanState *node)
 			ExecSortRestrPos((SortState *) node);
 			break;
 
+		case T_ResultState:
+			ExecResultRestrPos((ResultState *) node);
+			break;
+
 		default:
 			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(node));
 			break;
@@ -327,6 +335,16 @@ ExecSupportsMarkRestore(NodeTag plantype)
 		case T_Material:
 		case T_Sort:
 			return true;
+
+		case T_Result:
+			/*
+			 * T_Result only supports mark/restore if it has a child plan
+			 * that does, so we do not have enough information to give a
+			 * really correct answer.  However, for current uses it's
+			 * enough to always say "false", because this routine is not
+			 * asked about gating Result plans, only base-case Results.
+			 */
+			return false;
 
 		default:
 			break;
