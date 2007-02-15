@@ -3139,7 +3139,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	 */
 	ereport(DEBUG3,
 			(errmsg_internal("InitPostgres")));
-	am_superuser = InitPostgres(dbname, username);
+	am_superuser = InitPostgres(dbname, InvalidOid, username, NULL);
 
 	SetProcessingMode(NormalProcessing);
 

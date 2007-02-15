@@ -302,7 +302,8 @@ extern ProcessingMode Mode;
  *****************************************************************************/
 
 /* in utils/init/postinit.c */
-extern bool InitPostgres(const char *dbname, const char *username);
+extern bool InitPostgres(const char *in_dbname, Oid dboid, const char *username,
+			 char **out_dbname);
 extern void BaseInit(void);
 
 /* in utils/init/miscinit.c */

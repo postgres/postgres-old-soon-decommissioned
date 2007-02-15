@@ -121,7 +121,7 @@ typedef struct PROC_HDR
  * We set aside some extra PGPROC structures for "dummy" processes,
  * ie things that aren't full-fledged backends but need shmem access.
  */
-#define NUM_DUMMY_PROCS		2
+#define NUM_DUMMY_PROCS		3
 
 
 /* configurable options */

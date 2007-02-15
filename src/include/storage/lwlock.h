@@ -61,6 +61,8 @@ typedef enum LWLockId
 	TablespaceCreateLock,
 	BtreeVacuumLock,
 	AddinShmemInitLock,
+	AutovacuumLock,
+	/* Individual lock IDs end here */
 	FirstBufMappingLock,
 	FirstLockMgrLock = FirstBufMappingLock + NUM_BUFFER_PARTITIONS,
 

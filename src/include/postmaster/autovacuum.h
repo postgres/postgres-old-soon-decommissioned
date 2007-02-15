@@ -27,16 +27,23 @@ extern int	autovacuum_vac_cost_limit;
 
 /* Status inquiry functions */
 extern bool AutoVacuumingActive(void);
-extern bool IsAutoVacuumProcess(void);
+extern bool IsAutoVacuumLauncherProcess(void);
+extern bool IsAutoVacuumWorkerProcess(void);
 
 /* Functions to start autovacuum process, called from postmaster */
 extern void autovac_init(void);
-extern int	autovac_start(void);
-extern void autovac_stopped(void);
+extern int	StartAutoVacLauncher(void);
+extern int	StartAutoVacWorker(void);
 
 #ifdef EXEC_BACKEND
-extern void AutoVacMain(int argc, char *argv[]);
-extern void AutovacuumIAm(void);
+extern void AutoVacLauncherMain(int argc, char *argv[]);
+extern void AutoVacWorkerMain(int argc, char *argv[]);
+extern void AutovacuumWorkerIAm(void);
+extern void AutovacuumLauncherIAm(void);
 #endif
+
+/* shared memory stuff */
+extern Size AutoVacuumShmemSize(void);
+extern void AutoVacuumShmemInit(void);
 
 #endif   /* AUTOVACUUM_H */

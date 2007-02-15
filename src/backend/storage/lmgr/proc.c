@@ -259,7 +259,7 @@ InitProcess(void)
 	MyProc->databaseId = InvalidOid;
 	MyProc->roleId = InvalidOid;
 	MyProc->inVacuum = false;
-	MyProc->isAutovacuum = IsAutoVacuumProcess();
+	MyProc->isAutovacuum = IsAutoVacuumWorkerProcess();
 	MyProc->lwWaiting = false;
 	MyProc->lwExclusive = false;
 	MyProc->lwWaitLink = NULL;
@@ -392,7 +392,7 @@ InitDummyProcess(void)
 	MyProc->databaseId = InvalidOid;
 	MyProc->roleId = InvalidOid;
 	MyProc->inVacuum = false;
-	MyProc->isAutovacuum = false;
+	MyProc->isAutovacuum = IsAutoVacuumLauncherProcess(); /* is this needed? */
 	MyProc->lwWaiting = false;
 	MyProc->lwExclusive = false;
 	MyProc->lwWaitLink = NULL;

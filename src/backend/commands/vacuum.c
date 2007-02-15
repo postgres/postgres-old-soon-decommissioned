@@ -303,7 +303,7 @@ vacuum(VacuumStmt *vacstmt, List *relids)
 	 * Send info about dead objects to the statistics collector, unless we are
 	 * in autovacuum --- autovacuum.c does this for itself.
 	 */
-	if (vacstmt->vacuum && !IsAutoVacuumProcess())
+	if (vacstmt->vacuum && !IsAutoVacuumWorkerProcess())
 		pgstat_vacuum_tabstat();
 
 	/*
@@ -472,7 +472,7 @@ vacuum(VacuumStmt *vacstmt, List *relids)
 		ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
 	}
 
-	if (vacstmt->vacuum && !IsAutoVacuumProcess())
+	if (vacstmt->vacuum && !IsAutoVacuumWorkerProcess())
 	{
 		/*
 		 * Update pg_database.datfrozenxid, and truncate pg_clog if possible.

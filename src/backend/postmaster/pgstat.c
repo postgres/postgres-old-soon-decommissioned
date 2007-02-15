@@ -930,7 +930,7 @@ pgstat_report_vacuum(Oid tableoid, bool shared,
 	msg.m_databaseid = shared ? InvalidOid : MyDatabaseId;
 	msg.m_tableoid = tableoid;
 	msg.m_analyze = analyze;
-	msg.m_autovacuum = IsAutoVacuumProcess();	/* is this autovacuum? */
+	msg.m_autovacuum = IsAutoVacuumWorkerProcess();	/* is this autovacuum? */
 	msg.m_vacuumtime = GetCurrentTimestamp();
 	msg.m_tuples = tuples;
 	pgstat_send(&msg, sizeof(msg));
@@ -955,7 +955,7 @@ pgstat_report_analyze(Oid tableoid, bool shared, PgStat_Counter livetuples,
 	pgstat_setheader(&msg.m_hdr, PGSTAT_MTYPE_ANALYZE);
 	msg.m_databaseid = shared ? InvalidOid : MyDatabaseId;
 	msg.m_tableoid = tableoid;
-	msg.m_autovacuum = IsAutoVacuumProcess();	/* is this autovacuum? */
+	msg.m_autovacuum = IsAutoVacuumWorkerProcess();	/* is this autovacuum? */
 	msg.m_analyzetime = GetCurrentTimestamp();
 	msg.m_live_tuples = livetuples;
 	msg.m_dead_tuples = deadtuples;
@@ -2280,8 +2280,8 @@ backend_read_statsfile(void)
 		return;
 	Assert(!pgStatRunningInCollector);
 
-	/* Autovacuum wants stats about all databases */
-	if (IsAutoVacuumProcess())
+	/* Autovacuum launcher wants stats about all databases */
+	if (IsAutoVacuumLauncherProcess())
 		pgStatDBHash = pgstat_read_statsfile(InvalidOid);
 	else
 		pgStatDBHash = pgstat_read_statsfile(MyDatabaseId);
@@ -2319,8 +2319,8 @@ pgstat_setup_memcxt(void)
 void
 pgstat_clear_snapshot(void)
 {
-	/* In an autovacuum process we keep the stats forever */
-	if (IsAutoVacuumProcess())
+	/* In an autovacuum worker process we keep the stats forever */
+	if (IsAutoVacuumWorkerProcess())
 		return;
 
 	/* Release memory, if any was allocated */
