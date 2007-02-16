@@ -83,6 +83,8 @@ extern RelOptInfo *make_jointree_rel(PlannerInfo *root, Node *jtnode);
 extern RelOptInfo *make_join_rel(PlannerInfo *root,
 			  RelOptInfo *rel1, RelOptInfo *rel2,
 			  JoinType jointype);
+extern bool have_join_order_restriction(PlannerInfo *root,
+										RelOptInfo *rel1, RelOptInfo *rel2);
 
 /*
  * pathkeys.c
