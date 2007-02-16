@@ -936,6 +936,14 @@ set_inner_join_references(Plan *inner_plan, indexed_tlist *outer_itlist)
 									  outer_itlist);
 		}
 	}
+	else if (IsA(inner_plan, Result))
+	{
+		/* Recurse through a gating Result node (similar to Append case) */
+		Result	   *result = (Result *) inner_plan;
+
+		if (result->plan.lefttree)
+			set_inner_join_references(result->plan.lefttree, outer_itlist);
+	}
 	else if (IsA(inner_plan, TidScan))
 	{
 		TidScan    *innerscan = (TidScan *) inner_plan;
