@@ -88,6 +88,8 @@ extern void add_paths_to_joinrel(PlannerInfo *root, RelOptInfo *joinrel,
 extern List *make_rels_by_joins(PlannerInfo *root, int level, List **joinrels);
 extern RelOptInfo *make_join_rel(PlannerInfo *root,
 			  RelOptInfo *rel1, RelOptInfo *rel2);
+extern bool have_join_order_restriction(PlannerInfo *root,
+							RelOptInfo *rel1, RelOptInfo *rel2);
 
 /*
  * pathkeys.c
