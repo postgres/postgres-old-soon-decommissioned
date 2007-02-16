@@ -37,6 +37,15 @@ extern Datum texttoxml(PG_FUNCTION_ARGS);
 extern Datum xmltotext(PG_FUNCTION_ARGS);
 extern Datum xmlvalidate(PG_FUNCTION_ARGS);
 
+extern Datum table_to_xml(PG_FUNCTION_ARGS);
+extern Datum query_to_xml(PG_FUNCTION_ARGS);
+extern Datum cursor_to_xml(PG_FUNCTION_ARGS);
+extern Datum table_to_xmlschema(PG_FUNCTION_ARGS);
+extern Datum query_to_xmlschema(PG_FUNCTION_ARGS);
+extern Datum cursor_to_xmlschema(PG_FUNCTION_ARGS);
+extern Datum table_to_xml_and_xmlschema(PG_FUNCTION_ARGS);
+extern Datum query_to_xml_and_xmlschema(PG_FUNCTION_ARGS);
+
 typedef enum
 {
 	XML_STANDALONE_YES,
