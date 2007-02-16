@@ -50,7 +50,7 @@
     <productname>PostgreSQL</productname>) to process individual joins
     and a diversity of <firstterm>indexes</firstterm> (e.g.,
     B-tree, hash, GiST and GIN in <productname>PostgreSQL</productname>) as 
-	access paths for relations.
+    access paths for relations.
    </para>
 
    <para>
