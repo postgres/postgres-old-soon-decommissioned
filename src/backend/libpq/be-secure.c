@@ -95,8 +95,7 @@
 #if SSLEAY_VERSION_NUMBER >= 0x0907000L
 #include <openssl/conf.h>
 #endif
-
-#endif
+#endif /* USE_SSL */
 
 #include "libpq/libpq.h"
 #include "tcop/tcopprot.h"
@@ -130,8 +129,8 @@ static const char *SSLerrmessage(void);
 
 static SSL_CTX *SSL_context = NULL;
 
-/* GUC variable controlling SSL cipher list*/
-extern char *SSLCipherSuites;
+/* GUC variable controlling SSL cipher list */
+char *SSLCipherSuites = NULL;
 
 #endif
 

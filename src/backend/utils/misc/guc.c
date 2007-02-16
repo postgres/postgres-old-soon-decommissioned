@@ -106,6 +106,11 @@ extern bool fullPageWrites;
 extern bool trace_sort;
 #endif
 
+#ifdef USE_SSL
+extern char *SSLCipherSuites;
+#endif
+
+
 static const char *assign_log_destination(const char *value,
 					   bool doit, GucSource source);
 
@@ -2314,6 +2319,7 @@ static struct config_string ConfigureNamesString[] =
 		NULL, assign_temp_tablespaces, NULL
 	},
 
+#ifdef USE_SSL
 	{
 		{"ssl_ciphers", PGC_POSTMASTER, CONN_AUTH_SECURITY,
 			gettext_noop("Sets the list of allowed SSL ciphers."),
@@ -2323,7 +2329,8 @@ static struct config_string ConfigureNamesString[] =
 		&SSLCipherSuites,
 		"ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH", NULL, NULL
 	},
-			
+#endif /* USE_SSL */
+
 	/* End-of-list marker */
 	{
 		{NULL, 0, 0, NULL, NULL}, NULL, NULL, NULL, NULL
