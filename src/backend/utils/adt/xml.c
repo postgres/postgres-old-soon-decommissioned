@@ -40,10 +40,6 @@
 
 #include "postgres.h"
 
-#ifdef HAVE_STDINT_H
-#include <stdint.h>
-#endif
-
 #ifdef USE_LIBXML
 #include <libxml/chvalid.h>
 #include <libxml/parser.h>
@@ -2189,7 +2185,8 @@ map_sql_type_to_xmlschema_type(Oid typeoid, int typmod)
 								 "    <xsd:maxInclusive value=\"" INT64_FORMAT "\"/>\n"
 								 "    <xsd:minInclusive value=\"" INT64_FORMAT "\"/>\n"
 								 "  </xsd:restriction>\n",
-								 INT64_MAX, INT64_MIN);
+								 -((INT64CONST(1) << (sizeof(int64) * 8 - 1)) + 1),
+								 (INT64CONST(1) << (sizeof(int64) * 8 - 1)));
 				break;
 
 			case FLOAT4OID:
