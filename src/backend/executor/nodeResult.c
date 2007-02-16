@@ -309,10 +309,12 @@ ExecReScanResult(ResultState *node, ExprContext *exprCtxt)
 	node->rs_checkqual = (node->resconstantqual == NULL) ? false : true;
 
 	/*
-	 * if chgParam of subnode is not null then plan will be re-scanned by
-	 * first ExecProcNode.
+	 * If chgParam of subnode is not null then plan will be re-scanned by
+	 * first ExecProcNode.  However, if caller is passing us an exprCtxt
+	 * then forcibly rescan the subnode now, so that we can pass the
+	 * exprCtxt down to the subnode (needed for gated indexscan).
 	 */
-	if (((PlanState *) node)->lefttree &&
-		((PlanState *) node)->lefttree->chgParam == NULL)
-		ExecReScan(((PlanState *) node)->lefttree, exprCtxt);
+	if (node->ps.lefttree &&
+		(node->ps.lefttree->chgParam == NULL || exprCtxt != NULL))
+		ExecReScan(node->ps.lefttree, exprCtxt);
 }
