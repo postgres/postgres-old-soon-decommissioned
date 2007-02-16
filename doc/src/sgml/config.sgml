@@ -569,15 +569,15 @@ SET ENABLE_SEQSCAN TO OFF;
       </listitem>
      </varlistentry>
 
-     <varlistentry id="guc-ssl-ciphers" xreflabel="ssl-ciphers">
-      <term><varname>ssl_ciphers> (<type>string</type>)</term>
+     <varlistentry id="guc-ssl-ciphers" xreflabel="ssl_ciphers">
+      <term><varname>ssl_ciphers</varname> (<type>string</type>)</term>
       <indexterm>
        <primary><varname>ssl_ciphers</> configuration parameter</primary>
       </indexterm>
       <listitem>
        <para>
-        Specifies a list of <acronym>SSL</> ciphers which can be used to
-        establish secure connections. See the <application>openssl</>
+        Specifies a list of <acronym>SSL</> ciphers that are allowed to be
+        used on secure connections. See the <application>openssl</>
         manual page for a list of supported ciphers.
        </para>
       </listitem>
