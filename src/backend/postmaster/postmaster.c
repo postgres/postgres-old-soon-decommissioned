@@ -187,6 +187,7 @@ static int	SendStop = false;
 
 /* still more option variables */
 bool		EnableSSL = false;
+char	   *SSLCipherSuites;
 bool		SilentMode = false; /* silent mode (-S) */
 
 int			PreAuthDelay = 0;
