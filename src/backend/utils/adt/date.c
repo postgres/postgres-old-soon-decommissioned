@@ -1748,6 +1748,7 @@ time_part(PG_FUNCTION_ARGS)
 			case DTK_DECADE:
 			case DTK_CENTURY:
 			case DTK_MILLENNIUM:
+			case DTK_ISOYEAR:
 			default:
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
