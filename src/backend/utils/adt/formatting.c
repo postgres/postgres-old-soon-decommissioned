@@ -3561,7 +3561,7 @@ do_to_timestamp(text *date_txt, text *fmt,
 		 */
 		if (tmfc.iyear)
 		{
-			int j0;		// zeroth day of the ISO year, in Julian
+			int j0;		/* zeroth day of the ISO year, in Julian */
 			j0 = isoweek2j(tmfc.iyear, 1) - 1;
 
 			j2date(j0 + tmfc.ddd, &tm->tm_year, &tm->tm_mon, &tm->tm_mday);
