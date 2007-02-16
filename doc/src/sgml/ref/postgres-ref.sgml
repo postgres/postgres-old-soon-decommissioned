@@ -475,17 +475,6 @@ PostgreSQL documentation
        </para>
       </listitem>
      </varlistentry>
-
-     <varlistentry>
-      <term><option>-y</option> <replaceable class="parameter">database</replaceable></term>
-      <listitem>
-       <para>
-        Indicates that this is a subprocess started by a parent
-        <command>postgres</command> process, and specifies the database to
-        use.  This option is for internal use only.
-       </para>
-      </listitem>
-     </varlistentry>
     </variablelist>
    </refsect2>
 

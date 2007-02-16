@@ -3729,9 +3729,6 @@ StartChildProcess(int xlop)
 	snprintf(xlbuf, sizeof(xlbuf), "-x%d", xlop);
 	av[ac++] = xlbuf;
 
-	av[ac++] = "-y";
-	av[ac++] = "template1";
-
 	av[ac] = NULL;
 	Assert(ac < lengthof(av));
 
