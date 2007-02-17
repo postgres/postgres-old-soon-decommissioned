@@ -16,8 +16,9 @@
  *	 Cache & Memory:
  *	Routines use (itself) internal cache for format pictures.
  *
- *	The cache uses a static buffers and is persistent across transactions.
- *	If format-picture is bigger than cache buffer, parser is called always.
+ *	The cache uses a static buffer and is persistent across transactions.  If
+ *	the format-picture is bigger than the cache buffer, the parser is called
+ *	always.
  *
  *	 NOTE for Number version:
  *	All in this version is implemented as keywords ( => not used
