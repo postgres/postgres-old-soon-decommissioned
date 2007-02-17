@@ -965,9 +965,7 @@ su - postgres
          the full range (see
          <![%standalone-include[the documentation about datetime datatypes]]>
          <![%standalone-ignore[<xref linkend="datatype-datetime">]]>
-         for more information).  Note also that the integer datetimes code is
-         newer than the floating-point code, and we still find bugs in it from
-         time to time.
+         for more information).
         </para>
        </listitem>
       </varlistentry>
