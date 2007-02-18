@@ -37,6 +37,7 @@ static void ProcessQuery(Query *parsetree,
 			 ParamListInfo params,
 			 DestReceiver *dest,
 			 char *completionTag);
+static void FillPortalStore(Portal portal);
 static uint32 RunFromStore(Portal portal, ScanDirection direction, long count,
 			 DestReceiver *dest);
 static long PortalRunSelect(Portal portal, bool forward, long count,
@@ -580,16 +581,7 @@ PortalRun(Portal portal, long count,
 				 * storing its results in the portal's tuplestore.
 				 */
 				if (!portal->portalUtilReady)
-				{
-					DestReceiver *treceiver;
-
-					PortalCreateHoldStore(portal);
-					treceiver = CreateDestReceiver(Tuplestore, portal);
-					PortalRunUtility(portal, linitial(portal->parseTrees),
-									 treceiver, NULL);
-					(*treceiver->rDestroy) (treceiver);
-					portal->portalUtilReady = true;
-				}
+					FillPortalStore(portal);
 
 				/*
 				 * Now fetch desired portion of results.
@@ -820,6 +812,35 @@ PortalRunSelect(Portal portal,
 }
 
 /*
+ * FillPortalStore
+ *		Run the query and load result tuples into the portal's tuple store.
+ *
+ * This is used for PORTAL_UTIL_SELECT cases only.
+ */
+static void
+FillPortalStore(Portal portal)
+{
+	DestReceiver *treceiver;
+	char		completionTag[COMPLETION_TAG_BUFSIZE];
+
+	PortalCreateHoldStore(portal);
+	treceiver = CreateDestReceiver(Tuplestore, portal);
+
+	completionTag[0] = '\0';
+
+	PortalRunUtility(portal, linitial(portal->parseTrees),
+					 treceiver, completionTag);
+
+	/* Override default completion tag with actual command result */
+	if (completionTag[0] != '\0')
+		portal->commandTag = pstrdup(completionTag);
+
+	(*treceiver->rDestroy) (treceiver);
+
+	portal->portalUtilReady = true;
+}
+
+/*
  * RunFromStore
  *		Fetch tuples from the portal's tuple store.
  *
@@ -1033,7 +1054,7 @@ PortalRunMulti(Portal portal,
 		 * Increment command counter between queries, but not after the
 		 * last one.
 		 */
-		if (planlist_item != NULL)
+		if (lnext(planlist_item) != NULL)
 			CommandCounterIncrement();
 
 		/*
@@ -1120,6 +1141,21 @@ PortalRunFetch(Portal portal,
 				result = DoPortalRunFetch(portal, fdirection, count, dest);
 				break;
 
+			case PORTAL_UTIL_SELECT:
+
+				/*
+				 * If we have not yet run the utility statement, do so,
+				 * storing its results in the portal's tuplestore.
+				 */
+				if (!portal->portalUtilReady)
+					FillPortalStore(portal);
+
+				/*
+				 * Now fetch desired portion of results.
+				 */
+				result = DoPortalRunFetch(portal, fdirection, count, dest);
+				break;
+
 			default:
 				elog(ERROR, "unsupported portal strategy");
 				result = 0;		/* keep compiler quiet */
@@ -1170,7 +1206,8 @@ DoPortalRunFetch(Portal portal,
 {
 	bool		forward;
 
-	Assert(portal->strategy == PORTAL_ONE_SELECT);
+	Assert(portal->strategy == PORTAL_ONE_SELECT ||
+		   portal->strategy == PORTAL_UTIL_SELECT);
 
 	switch (fdirection)
 	{
