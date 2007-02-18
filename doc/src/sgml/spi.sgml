@@ -321,7 +321,8 @@ SPI_execute("INSERT INTO foo SELECT * FROM bar", false, 5);
   </para>
 
   <para>
-   You can pass multiple commands in one string.
+   You can pass multiple commands in one string, but later commands cannot
+   depend on the creation of objects earlier in the string.
    <function>SPI_execute</function> returns the
    result for the command executed last.  The <parameter>count</parameter>
    limit applies to each command separately, but it is not applied to
