@@ -2611,9 +2611,13 @@ void PQfreemem(void *ptr);
    <function>PQescapeBytea</function>,
    <function>PQunescapeBytea</function>,
    and <function>PQnotifies</function>.
-   It is needed by Microsoft Windows, which cannot free memory across
-   DLLs, unless multithreaded DLLs (<option>/MD</option> in VC6) are used.
-   On other platforms, this function is the same as the standard library function <function>free()</>.
+   It is particularly important that this function, rather than
+   <function>free()</>, be used on Microsoft Windows.  This is because
+   allocating memory in a DLL and releasing it in the application works
+   only if multithreaded/single-threaded, release/debug, and static/dynamic
+   flags are the same for the DLL and the application.  On non-Microsoft
+   Windows platforms, this function is the same as the standard library
+   function <function>free()</>.
   </para>
   </listitem>
   </varlistentry>
