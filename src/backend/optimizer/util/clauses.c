@@ -49,6 +49,7 @@
 
 typedef struct
 {
+	ParamListInfo boundParams;
 	List	   *active_fns;
 	Node	   *case_val;
 	bool		estimate;
@@ -1578,6 +1579,7 @@ eval_const_expressions(Node *node)
 {
 	eval_const_expressions_context context;
 
+	context.boundParams = NULL;	/* don't use any bound params */
 	context.active_fns = NIL;	/* nothing being recursively simplified */
 	context.case_val = NULL;	/* no CASE being examined */
 	context.estimate = false;	/* safe transformations only */
@@ -1601,10 +1603,11 @@ eval_const_expressions(Node *node)
  *--------------------
  */
 Node *
-estimate_expression_value(Node *node)
+estimate_expression_value(PlannerInfo *root, Node *node)
 {
 	eval_const_expressions_context context;
 
+	context.boundParams = root->glob->boundParams;	/* bound Params */
 	context.active_fns = NIL;	/* nothing being recursively simplified */
 	context.case_val = NULL;	/* no CASE being examined */
 	context.estimate = true;	/* unsafe transformations OK */
@@ -1623,11 +1626,11 @@ eval_const_expressions_mutator(Node *node,
 
 		/* Look to see if we've been given a value for this Param */
 		if (param->paramkind == PARAM_EXTERN &&
-			PlannerBoundParamList != NULL &&
+			context->boundParams != NULL &&
 			param->paramid > 0 &&
-			param->paramid <= PlannerBoundParamList->numParams)
+			param->paramid <= context->boundParams->numParams)
 		{
-			ParamExternData *prm = &PlannerBoundParamList->params[param->paramid - 1];
+			ParamExternData *prm = &context->boundParams->params[param->paramid - 1];
 
 			if (OidIsValid(prm->ptype))
 			{

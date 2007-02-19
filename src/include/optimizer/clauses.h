@@ -77,7 +77,7 @@ extern void set_coercionform_dontcare(Node *node);
 
 extern Node *eval_const_expressions(Node *node);
 
-extern Node *estimate_expression_value(Node *node);
+extern Node *estimate_expression_value(PlannerInfo *root, Node *node);
 
 extern bool expression_tree_walker(Node *node, bool (*walker) (),
 											   void *context);

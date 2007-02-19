@@ -442,10 +442,9 @@ typedef struct SubPlan
 	List	   *paramIds;		/* IDs of Params embedded in the above */
 	/* The subselect, transformed to a Plan: */
 	struct Plan *plan;			/* subselect plan itself */
-	int			plan_id;		/* dummy thing because of we haven't equal
-								 * funcs for plan nodes... actually, we could
-								 * put *plan itself somewhere else (TopPlan
-								 * node ?)... */
+	int			plan_id;		/* kluge because we haven't equal-funcs for
+								 * plan nodes... we compare this instead of
+								 * subselect plan */
 	List	   *rtable;			/* range table for subselect */
 	/* Information about execution strategy: */
 	bool		useHashTable;	/* TRUE to store subselect output in a hash

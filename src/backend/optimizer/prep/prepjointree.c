@@ -292,7 +292,10 @@ pull_up_simple_subquery(PlannerInfo *root, Node *jtnode, RangeTblEntry *rte,
 	 */
 	subroot = makeNode(PlannerInfo);
 	subroot->parse = subquery;
+	subroot->glob = root->glob;
+	subroot->query_level = root->query_level;
 	subroot->planner_cxt = CurrentMemoryContext;
+	subroot->init_plans = NIL;
 	subroot->in_info_list = NIL;
 	subroot->append_rel_list = NIL;
 

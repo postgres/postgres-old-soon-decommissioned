@@ -124,7 +124,7 @@ preprocess_targetlist(PlannerInfo *root, List *tlist)
 		/*
 		 * Currently the executor only supports FOR UPDATE/SHARE at top level
 		 */
-		if (PlannerQueryLevel > 1)
+		if (root->query_level > 1)
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 			errmsg("SELECT FOR UPDATE/SHARE is not allowed in subqueries")));

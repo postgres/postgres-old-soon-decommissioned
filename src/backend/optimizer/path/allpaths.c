@@ -517,7 +517,9 @@ set_subquery_pathlist(PlannerInfo *root, RelOptInfo *rel,
 		tuple_fraction = root->tuple_fraction;
 
 	/* Generate the plan for the subquery */
-	rel->subplan = subquery_planner(subquery, tuple_fraction,
+	rel->subplan = subquery_planner(root->glob, subquery,
+									root->query_level + 1,
+									tuple_fraction,
 									&subquery_pathkeys);
 
 	/* Copy number of output rows from subplan */

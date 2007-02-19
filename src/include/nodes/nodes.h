@@ -175,6 +175,7 @@ typedef enum NodeTag
 	 * TAGS FOR PLANNER NODES (relation.h)
 	 */
 	T_PlannerInfo = 500,
+	T_PlannerGlobal,
 	T_RelOptInfo,
 	T_IndexOptInfo,
 	T_Path,
@@ -198,6 +199,7 @@ typedef enum NodeTag
 	T_OuterJoinInfo,
 	T_InClauseInfo,
 	T_AppendRelInfo,
+	T_PlannerParamItem,
 
 	/*
 	 * TAGS FOR MEMORY NODES (memnodes.h)

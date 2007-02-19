@@ -177,7 +177,10 @@ recurse_set_operations(Node *setOp, PlannerInfo *root,
 		/*
 		 * Generate plan for primitive subquery
 		 */
-		subplan = subquery_planner(subquery, tuple_fraction, NULL);
+		subplan = subquery_planner(root->glob, subquery,
+								   root->query_level + 1,
+								   tuple_fraction,
+								   NULL);
 
 		/*
 		 * Add a SubqueryScan with the caller-requested targetlist

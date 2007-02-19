@@ -537,7 +537,7 @@ clause_selectivity(PlannerInfo *root,
 	else if (IsA(clause, Param))
 	{
 		/* see if we can replace the Param */
-		Node	   *subst = estimate_expression_value(clause);
+		Node	   *subst = estimate_expression_value(root, clause);
 
 		if (IsA(subst, Const))
 		{
