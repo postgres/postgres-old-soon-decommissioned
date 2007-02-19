@@ -80,6 +80,9 @@ foreach my $line (split /\n/, $indata) {
 	   if ($#fields >=4 && $fields[0] eq "insert" && $fields[1] eq "OID" && $fields[2] eq "=") {
 	       $oid = $fields[3];
 	   }
+	   else {
+          $oid = 0;
+      }
 	   $data =~ s/\s{2,}/ /g;
 	   $bki .= $data . "\n";
 	}
