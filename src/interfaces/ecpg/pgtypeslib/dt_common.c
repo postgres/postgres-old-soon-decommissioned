@@ -214,6 +214,7 @@ static datetkn datetktbl[] = {
 	{"irkst", DTZ, POS(36)},	/* Irkutsk Summer Time */
 	{"irkt", TZ, POS(32)},		/* Irkutsk Time */
 	{"irt", TZ, POS(14)},		/* Iran Time */
+	{"isodow", RESERV, DTK_ISODOW},	/* ISO day of week, Sunday == 7 */
 #if 0
 	isst
 #endif

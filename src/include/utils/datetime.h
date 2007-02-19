@@ -166,6 +166,7 @@
 #define DTK_TZ_HOUR		34
 #define DTK_TZ_MINUTE	35
 #define DTK_ISOYEAR		36
+#define DTK_ISODOW		37
 
 
 /*
