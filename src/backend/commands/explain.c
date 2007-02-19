@@ -640,6 +640,7 @@ explain_outNode(StringInfo str,
 			{
 				RangeTblEntry *rte = rt_fetch(((Scan *) plan)->scanrelid,
 											  es->rtable);
+				Node	   *funcexpr;
 				char	   *proname;
 
 				/* Assert it's on a RangeFunction */
@@ -651,10 +652,10 @@ explain_outNode(StringInfo str,
 				 * happen if the optimizer simplified away the function call,
 				 * for example).
 				 */
-				if (rte->funcexpr && IsA(rte->funcexpr, FuncExpr))
+				funcexpr = ((FunctionScan *) plan)->funcexpr;
+				if (funcexpr && IsA(funcexpr, FuncExpr))
 				{
-					FuncExpr   *funcexpr = (FuncExpr *) rte->funcexpr;
-					Oid			funcid = funcexpr->funcid;
+					Oid			funcid = ((FuncExpr *) funcexpr)->funcid;
 
 					/* We only show the func name, not schema name */
 					proname = get_func_name(funcid);

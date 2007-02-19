@@ -444,11 +444,14 @@ ExecMayReturnRawTuples(PlanState *node)
 		case T_IndexScanState:
 		case T_BitmapHeapScanState:
 		case T_TidScanState:
-		case T_SubqueryScanState:
-		case T_FunctionScanState:
-		case T_ValuesScanState:
 			if (node->ps_ProjInfo == NULL)
 				return true;
+			break;
+
+		case T_SubqueryScanState:
+			/* If not projecting, look at input plan */
+			if (node->ps_ProjInfo == NULL)
+				return ExecMayReturnRawTuples(((SubqueryScanState *) node)->subplan);
 			break;
 
 			/* Non-projecting nodes */

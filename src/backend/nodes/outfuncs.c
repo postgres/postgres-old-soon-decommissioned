@@ -408,6 +408,11 @@ _outFunctionScan(StringInfo str, FunctionScan *node)
 	WRITE_NODE_TYPE("FUNCTIONSCAN");
 
 	_outScanInfo(str, (Scan *) node);
+
+	WRITE_NODE_FIELD(funcexpr);
+	WRITE_NODE_FIELD(funccolnames);
+	WRITE_NODE_FIELD(funccoltypes);
+	WRITE_NODE_FIELD(funccoltypmods);
 }
 
 static void
@@ -416,6 +421,8 @@ _outValuesScan(StringInfo str, ValuesScan *node)
 	WRITE_NODE_TYPE("VALUESSCAN");
 
 	_outScanInfo(str, (Scan *) node);
+
+	WRITE_NODE_FIELD(values_lists);
 }
 
 static void
