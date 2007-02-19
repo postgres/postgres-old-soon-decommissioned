@@ -51,7 +51,7 @@ static void _EndBlobs(ArchiveHandle *AH, TocEntry *te);
 typedef struct
 {
 	int			hasSeek;
-	off_t		filePos;
+	pgoff_t		filePos;
 	FILE	   *blobToc;
 } lclContext;
 
