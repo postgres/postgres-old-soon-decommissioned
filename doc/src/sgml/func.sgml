@@ -4641,7 +4641,7 @@ SELECT SUBSTRING('XY1234Z', 'Y*?([0-9]{1,3})');
        </row>
        <row>
         <entry><literal>J</literal></entry>
-        <entry>Julian Day (days since January 1, 4712 BC)</entry>
+        <entry>Julian Day (days since midnight, January 1, 4712 BC)</entry>
        </row>
        <row>
         <entry><literal>Q</literal></entry>
