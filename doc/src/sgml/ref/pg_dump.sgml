@@ -860,17 +860,6 @@ CREATE DATABASE foo WITH TEMPLATE template0;
  </refsect1>
 
  <refsect1>
-  <title>History</title>
-
-  <para>
-   The <application>pg_dump</application> utility first appeared in
-   <application>Postgres95</application> release 0.02.  The
-   non-plain-text output formats were introduced in
-   <productname>PostgreSQL</productname> release 7.1.
-  </para>
- </refsect1>
-
- <refsect1>
   <title>See Also</title>
 
   <simplelist type="inline">

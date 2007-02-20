@@ -310,12 +310,4 @@ eval ./configure `pg_config --configure`
   </para>
  </refsect1>
 
- <refsect1>
-  <title>History</title>
-
-  <para>
-   The <command>pg_config</command> utility first appeared in
-   <productname>PostgreSQL</> 7.1.
-  </para>
- </refsect1>
 </refentry>
