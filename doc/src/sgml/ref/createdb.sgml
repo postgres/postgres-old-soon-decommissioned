@@ -241,6 +241,13 @@ PostgreSQL documentation
     </listitem>
    </varlistentry>
   </variablelist>
+
+  <para>
+   This utility, like most other <productname>PostgreSQL</> utilities,
+   also uses the environment variables supported by <xref 
+   linkend="libpq-envars" endterm="libpq">.
+  </para>
+
  </refsect1>
 
 
@@ -294,7 +301,6 @@ PostgreSQL documentation
   <simplelist type="inline">
    <member><xref linkend="app-dropdb"></member>
    <member><xref linkend="sql-createdatabase" endterm="sql-createdatabase-title"></member>
-   <member>Environment Variables (<xref linkend="libpq-envars">)</member>
   </simplelist>
  </refsect1>
 

@@ -355,6 +355,13 @@ PostgreSQL documentation
     </listitem>
    </varlistentry>
   </variablelist>
+
+  <para>
+   This utility, like most other <productname>PostgreSQL</> utilities,
+   also uses the environment variables supported by <xref 
+   linkend="libpq-envars" endterm="libpq">.
+  </para>
+
  </refsect1>
 
 
@@ -410,9 +417,8 @@ PostgreSQL documentation
   <title>See Also</title>
 
   <para>
-    <xref linkend="app-pgdump">.  Check there for details on possible
-    error conditions.  Also see supported environment variables
-    (<xref linkend="libpq-envars">).
+    Check <xref linkend="app-pgdump"> for details on possible
+    error conditions.
   </para>
  </refsect1>   
 
