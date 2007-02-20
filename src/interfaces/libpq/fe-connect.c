@@ -3642,6 +3642,8 @@ PasswordFromFile(char *hostname, char *port, char *dbname, char *username)
 				pgpassfile);
 		return NULL;
 	}
+#else
+	/* On Win32, the directory is protected, so we don't have to check the file. */
 #endif
 
 	fp = fopen(pgpassfile, "r");
