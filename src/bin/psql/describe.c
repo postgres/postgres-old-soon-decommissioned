@@ -1188,7 +1188,7 @@ describeOneTableDetails(const char *schemaname,
 		}
 
 		/* count inherited tables */
-		printfPQExpBuffer(&buf, "SELECT c.relname FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i WHERE c.oid=i.inhparent AND i.inhrelid = '%s' ORDER BY inhseqno ASC", oid);
+		printfPQExpBuffer(&buf, "SELECT c.oid::regclass FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i WHERE c.oid=i.inhparent AND i.inhrelid = '%s' ORDER BY inhseqno ASC", oid);
 
 		result6 = PSQLexec(buf.data, false);
 		if (!result6)
