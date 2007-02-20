@@ -4337,12 +4337,12 @@ default socket directory) connections coming from the local machine.
 </para>
 
 <para>
-The permissions on <filename>.pgpass</filename> must disallow any
-access to world or group; achieve this by the command
+On Unix systems, the permissions on <filename>.pgpass</filename> must disallow
+any access to world or group; achieve this by the command
 <command>chmod 0600 ~/.pgpass</command>.
 If the permissions are less strict than this, the file will be ignored.
-(The file permissions are not currently checked on Microsoft Windows,
-however.)
+On Microsoft Windows, the file is stored in a directory that is secure by
+default, so no special permissions check is made.
 </para>
 </sect1>
 
