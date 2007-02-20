@@ -1356,8 +1356,10 @@
        </entry>
        <entry><type>text</type></entry>
        <entry>
-        Encode binary data to <acronym>ASCII</acronym>-only representation.  Supported
+        Encode binary data to different representation.  Supported
         types are: <literal>base64</>, <literal>hex</>, <literal>escape</>.
+        <literal>Escape</> merely outputs null bytes as <literal>\000</> and
+        doubles backslashes.
        </entry>
        <entry><literal>encode( E'123\\000\\001', 'base64')</literal></entry>
        <entry><literal>MTIzAAE=</literal></entry>
