@@ -357,6 +357,9 @@ PostgreSQL documentation
 
   <para>
    For additional server variables, see <xref linkend="app-postgres">.
+   This utility, like most other <productname>PostgreSQL</> utilities,
+   also uses the environment variables supported by <xref 
+   linkend="libpq-envars" endterm="libpq">.
   </para>
  </refsect1>
 

@@ -2697,10 +2697,9 @@ $endif
   </variablelist>
 
   <para>
-   Because <application>psql</application> uses <application>libpq</application>
-   internally, all <application>libpq</application> environment variables are
-   also honored by <application>psql</application>.  For a complete list of those
-   variables, see <xref linkend="libpq-envars">.
+   This utility, like most other <productname>PostgreSQL</> utilities,
+   also uses the environment variables supported by <xref 
+   linkend="libpq-envars" endterm="libpq">.
   </para>
 
  </refsect1>
