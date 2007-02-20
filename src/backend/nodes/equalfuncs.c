@@ -102,6 +102,18 @@ _equalRangeVar(RangeVar *a, RangeVar *b)
 	return true;
 }
 
+static bool
+_equalIntoClause(IntoClause *a, IntoClause *b)
+{
+	COMPARE_NODE_FIELD(rel);
+	COMPARE_NODE_FIELD(colNames);
+	COMPARE_NODE_FIELD(options);
+	COMPARE_SCALAR_FIELD(onCommit);
+	COMPARE_STRING_FIELD(tableSpaceName);
+
+	return true;
+}
+
 /*
  * We don't need an _equalExpr because Expr is an abstract supertype which
  * should never actually get instantiated.	Also, since it has no common
@@ -690,9 +702,6 @@ _equalQuery(Query *a, Query *b)
 	COMPARE_NODE_FIELD(utilityStmt);
 	COMPARE_SCALAR_FIELD(resultRelation);
 	COMPARE_NODE_FIELD(into);
-	COMPARE_NODE_FIELD(intoOptions);
-	COMPARE_SCALAR_FIELD(intoOnCommit);
-	COMPARE_STRING_FIELD(intoTableSpaceName);
 	COMPARE_SCALAR_FIELD(hasAggs);
 	COMPARE_SCALAR_FIELD(hasSubLinks);
 	COMPARE_NODE_FIELD(rtable);
@@ -707,8 +716,6 @@ _equalQuery(Query *a, Query *b)
 	COMPARE_NODE_FIELD(limitCount);
 	COMPARE_NODE_FIELD(rowMarks);
 	COMPARE_NODE_FIELD(setOperations);
-	COMPARE_NODE_FIELD(resultRelations);
-	COMPARE_NODE_FIELD(returningLists);
 
 	return true;
 }
@@ -752,10 +759,6 @@ _equalSelectStmt(SelectStmt *a, SelectStmt *b)
 {
 	COMPARE_NODE_FIELD(distinctClause);
 	COMPARE_NODE_FIELD(into);
-	COMPARE_NODE_FIELD(intoColNames);
-	COMPARE_NODE_FIELD(intoOptions);
-	COMPARE_SCALAR_FIELD(intoOnCommit);
-	COMPARE_STRING_FIELD(intoTableSpaceName);
 	COMPARE_NODE_FIELD(targetList);
 	COMPARE_NODE_FIELD(fromClause);
 	COMPARE_NODE_FIELD(whereClause);
@@ -1545,9 +1548,6 @@ _equalExecuteStmt(ExecuteStmt *a, ExecuteStmt *b)
 {
 	COMPARE_STRING_FIELD(name);
 	COMPARE_NODE_FIELD(into);
-	COMPARE_NODE_FIELD(intoOptions);
-	COMPARE_SCALAR_FIELD(into_on_commit);
-	COMPARE_STRING_FIELD(into_tbl_space);
 	COMPARE_NODE_FIELD(params);
 
 	return true;
@@ -1966,6 +1966,9 @@ equal(void *a, void *b)
 			break;
 		case T_RangeVar:
 			retval = _equalRangeVar(a, b);
+			break;
+		case T_IntoClause:
+			retval = _equalIntoClause(a, b);
 			break;
 		case T_Var:
 			retval = _equalVar(a, b);

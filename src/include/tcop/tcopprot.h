@@ -20,6 +20,7 @@
 #define TCOPPROT_H
 
 #include "executor/execdesc.h"
+#include "nodes/parsenodes.h"
 #include "utils/guc.h"
 
 
@@ -50,7 +51,7 @@ extern List *pg_parse_and_rewrite(const char *query_string,
 extern List *pg_parse_query(const char *query_string);
 extern List *pg_analyze_and_rewrite(Node *parsetree, const char *query_string,
 					   Oid *paramTypes, int numParams);
-extern Plan *pg_plan_query(Query *querytree, ParamListInfo boundParams);
+extern PlannedStmt *pg_plan_query(Query *querytree, ParamListInfo boundParams);
 extern List *pg_plan_queries(List *querytrees, ParamListInfo boundParams,
 				bool needSnapshot);
 

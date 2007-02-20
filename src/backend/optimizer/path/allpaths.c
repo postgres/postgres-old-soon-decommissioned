@@ -444,8 +444,8 @@ set_subquery_pathlist(PlannerInfo *root, RelOptInfo *rel,
 	Query	   *subquery = rte->subquery;
 	bool	   *differentTypes;
 	double		tuple_fraction;
+	PlannerInfo *subroot;
 	List	   *pathkeys;
-	List	   *subquery_pathkeys;
 
 	/* We need a workspace for keeping track of set-op type coercions */
 	differentTypes = (bool *)
@@ -520,7 +520,7 @@ set_subquery_pathlist(PlannerInfo *root, RelOptInfo *rel,
 	rel->subplan = subquery_planner(root->glob, subquery,
 									root->query_level + 1,
 									tuple_fraction,
-									&subquery_pathkeys);
+									&subroot);
 
 	/* Copy number of output rows from subplan */
 	rel->tuples = rel->subplan->plan_rows;
@@ -529,7 +529,7 @@ set_subquery_pathlist(PlannerInfo *root, RelOptInfo *rel,
 	set_baserel_size_estimates(root, rel);
 
 	/* Convert subquery pathkeys to outer representation */
-	pathkeys = convert_subquery_pathkeys(root, rel, subquery_pathkeys);
+	pathkeys = convert_subquery_pathkeys(root, rel, subroot->query_pathkeys);
 
 	/* Generate appropriate path */
 	add_path(rel, create_subqueryscan_path(rel, pathkeys));

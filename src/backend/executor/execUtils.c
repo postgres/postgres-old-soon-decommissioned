@@ -242,7 +242,7 @@ InternalCreateExecutorState(MemoryContext qcontext, bool is_subquery)
 
 	estate->es_per_tuple_exprcontext = NULL;
 
-	estate->es_topPlan = NULL;
+	estate->es_plannedstmt = NULL;
 	estate->es_evalPlanQual = NULL;
 	estate->es_evTupleNull = NULL;
 	estate->es_evTuple = NULL;

@@ -110,6 +110,10 @@ typedef struct PlannerInfo
 	List	   *join_rel_list;	/* list of join-relation RelOptInfos */
 	struct HTAB *join_rel_hash; /* optional hashtable for join relations */
 
+	List	   *resultRelations;	/* integer list of RT indexes, or NIL */
+
+	List	   *returningLists;		/* list of lists of TargetEntry, or NIL */
+
 	List	   *init_plans;				/* init subplans for query */
 
 	List	   *eq_classes;				/* list of active EquivalenceClasses */

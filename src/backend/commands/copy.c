@@ -986,10 +986,11 @@ DoCopy(const CopyStmt *stmt)
 	{
 		Query	   *query = stmt->query;
 		List	   *rewritten;
-		Plan	   *plan;
+		PlannedStmt *plan;
 		DestReceiver *dest;
 
 		Assert(query);
+		Assert(query->commandType == CMD_SELECT);
 		Assert(!is_from);
 		cstate->rel = NULL;
 
@@ -999,6 +1000,7 @@ DoCopy(const CopyStmt *stmt)
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 					 errmsg("COPY (SELECT) WITH OIDS is not supported")));
 
+		/* Query mustn't use INTO, either */
 		if (query->into)
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
@@ -1016,7 +1018,6 @@ DoCopy(const CopyStmt *stmt)
 		 * shouldn't modify its input ... FIXME someday.
 		 */
 		query = copyObject(query);
-		Assert(query->commandType == CMD_SELECT);
 
 		/*
 		 * Must acquire locks in case we didn't come fresh from the parser.
@@ -1051,7 +1052,7 @@ DoCopy(const CopyStmt *stmt)
 		((DR_copy *) dest)->cstate = cstate;
 
 		/* Create a QueryDesc requesting no output */
-		cstate->queryDesc = CreateQueryDesc(query, plan,
+		cstate->queryDesc = CreateQueryDesc(plan,
 											ActiveSnapshot, InvalidSnapshot,
 											dest, NULL, false);
 

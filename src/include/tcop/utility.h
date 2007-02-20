@@ -26,15 +26,9 @@ extern TupleDesc UtilityTupleDescriptor(Node *parsetree);
 
 extern const char *CreateCommandTag(Node *parsetree);
 
-extern const char *CreateQueryTag(Query *parsetree);
-
 extern LogStmtLevel GetCommandLogLevel(Node *parsetree);
 
-extern LogStmtLevel GetQueryLogLevel(Query *parsetree);
-
-extern bool QueryReturnsTuples(Query *parsetree);
-
-extern bool QueryIsReadOnly(Query *parsetree);
+extern bool CommandIsReadOnly(Node *parsetree);
 
 extern void CheckRelationOwnership(RangeVar *rel, bool noCatalogs);
 

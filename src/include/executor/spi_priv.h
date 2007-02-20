@@ -35,10 +35,11 @@ typedef struct
 	MemoryContext plancxt;
 	/* Original query string (used for error reporting) */
 	const char *query;
-	/* List of List of querytrees; one sublist per original parsetree */
-	List	   *qtlist;
-	/* List of plan trees --- length == # of querytrees, but flat list */
-	List	   *ptlist;
+	/*
+	 * List of List of PlannedStmts and utility stmts; one sublist per
+	 * original parsetree
+	 */
+	List	   *stmt_list_list;
 	/* Argument types, if a prepared plan */
 	int			nargs;
 	Oid		   *argtypes;
