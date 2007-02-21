@@ -331,9 +331,6 @@ spi_exec -array C "SELECT * FROM pg_class" {
         If the query uses parameters, the names of the parameter types
         must be given as a Tcl list.  (Write an empty list for
         <replaceable>typelist</replaceable> if no parameters are used.)
-        Presently, the parameter types must be identified by the internal
-        type names shown in the system table <literal>pg_type</>; for example <literal>int4</> not
-        <literal>integer</>.
        </para>
        <para>
         The return value from <function>spi_prepare</function> is a query ID
