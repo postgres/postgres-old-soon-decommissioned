@@ -1041,6 +1041,18 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
+       <term><option>--enable-profiling</option></term>
+       <listitem>
+        <para>
+         If using GCC, all programs and libraries are compiled so they
+         can be profiled.  On backend exit, a subdirectory will be created
+         that contains the <filename>gmon.out</> file for use in profiling.
+         This option is for use only with GCC and when doing development work.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
        <term><option>--enable-cassert</option></term>
        <listitem>
         <para>
