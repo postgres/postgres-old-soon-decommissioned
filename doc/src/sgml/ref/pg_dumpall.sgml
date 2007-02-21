@@ -128,7 +128,7 @@ PostgreSQL documentation
        </para>
       </listitem>
      </varlistentry>
-	 
+ 
      <varlistentry>
       <term><option>-f <replaceable class="parameter">filename</replaceable></option></term>
       <term><option>--file=<replaceable class="parameter">filename</replaceable></option></term>
@@ -335,7 +335,7 @@ PostgreSQL documentation
        </para>
       </listitem>
      </varlistentry>
-	 
+ 
      <varlistentry>
       <term>-l <replaceable>dbname</replaceable></term>
       <term>--database=<replaceable>dbname</replaceable></term>
