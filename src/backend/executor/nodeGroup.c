@@ -72,9 +72,14 @@ ExecGroup(GroupState *node)
 			node->grp_done = TRUE;
 			return NULL;
 		}
-		/* Copy tuple, set up as input for qual test and projection */
+		/* Copy tuple into firsttupleslot */
 		ExecCopySlot(firsttupleslot, outerslot);
-		econtext->ecxt_scantuple = firsttupleslot;
+
+		/*
+		 * Set it up as input for qual test and projection.  The expressions
+		 * will access the input tuple as varno OUTER.
+		 */
+		econtext->ecxt_outertuple = firsttupleslot;
 
 		/*
 		 * Check the qual (HAVING clause); if the group does not match, ignore
@@ -126,7 +131,7 @@ ExecGroup(GroupState *node)
 		 */
 		/* Copy tuple, set up as input for qual test and projection */
 		ExecCopySlot(firsttupleslot, outerslot);
-		econtext->ecxt_scantuple = firsttupleslot;
+		econtext->ecxt_outertuple = firsttupleslot;
 
 		/*
 		 * Check the qual (HAVING clause); if the group does not match, ignore
