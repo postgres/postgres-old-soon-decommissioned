@@ -731,7 +731,10 @@ ExecHashGetHashValue(HashJoinTable hashtable,
 		if (isNull)
 		{
 			if (hashtable->hashStrict[i] && !keep_nulls)
-				return false;	/* cannot match */
+			{
+				MemoryContextSwitchTo(oldContext);
+				return false;							/* cannot match */
+			}
 			/* else, leave hashkey unmodified, equivalent to hashcode 0 */
 		}
 		else
