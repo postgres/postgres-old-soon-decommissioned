@@ -24,7 +24,6 @@
 
 #include "executor/nodeFunctionscan.h"
 #include "funcapi.h"
-#include "parser/parsetree.h"
 #include "utils/builtins.h"
 
 

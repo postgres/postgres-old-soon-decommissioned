@@ -4964,7 +4964,7 @@ genericcostestimate(PlannerInfo *root,
 	 * more expensive than it's worth, though, considering all the other
 	 * inaccuracies here ...
 	 */
-	cost_qual_eval(&index_qual_cost, indexQuals);
+	cost_qual_eval(&index_qual_cost, indexQuals, root);
 	qual_op_cost = cpu_operator_cost * list_length(indexQuals);
 	qual_arg_cost = index_qual_cost.startup +
 		index_qual_cost.per_tuple - qual_op_cost;

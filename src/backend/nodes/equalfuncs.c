@@ -306,9 +306,8 @@ _equalSubPlan(SubPlan *a, SubPlan *b)
 	COMPARE_SCALAR_FIELD(subLinkType);
 	COMPARE_NODE_FIELD(testexpr);
 	COMPARE_NODE_FIELD(paramIds);
-	/* should compare plans, but have to settle for comparing plan IDs */
 	COMPARE_SCALAR_FIELD(plan_id);
-	COMPARE_NODE_FIELD(rtable);
+	COMPARE_SCALAR_FIELD(firstColType);
 	COMPARE_SCALAR_FIELD(useHashTable);
 	COMPARE_SCALAR_FIELD(unknownEqFalse);
 	COMPARE_NODE_FIELD(setParam);

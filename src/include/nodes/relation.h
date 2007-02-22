@@ -64,8 +64,16 @@ typedef struct PlannerGlobal
 
 	List	   *paramlist;		/* to keep track of cross-level Params */
 
-	int			next_plan_id;	/* hack for distinguishing SubPlans */
+	List	   *subplans;		/* Plans for SubPlan nodes */
+
+	List	   *subrtables;		/* Rangetables for SubPlan nodes */
+
+	List	   *finalrtable;	/* "flat" rangetable for executor */
 } PlannerGlobal;
+
+/* macro for fetching the Plan associated with a SubPlan node */
+#define planner_subplan_get_plan(root, subplan) \
+	((Plan *) list_nth((root)->glob->subplans, (subplan)->plan_id - 1))
 
 
 /*----------
@@ -228,6 +236,7 @@ typedef struct PlannerInfo
  *		pages - number of disk pages in relation (zero if not a table)
  *		tuples - number of tuples in relation (not considering restrictions)
  *		subplan - plan for subquery (NULL if it's not a subquery)
+ *		subrtable - rangetable for subquery (NIL if it's not a subquery)
  *
  *		Note: for a subquery, tuples and subplan are not set immediately
  *		upon creation of the RelOptInfo object; they are filled in when
@@ -310,6 +319,7 @@ typedef struct RelOptInfo
 	BlockNumber pages;
 	double		tuples;
 	struct Plan *subplan;		/* if subquery */
+	List	   *subrtable;		/* if subquery */
 
 	/* used by various scans and joins: */
 	List	   *baserestrictinfo;		/* RestrictInfo structures (if base

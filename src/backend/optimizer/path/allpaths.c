@@ -521,6 +521,7 @@ set_subquery_pathlist(PlannerInfo *root, RelOptInfo *rel,
 									root->query_level + 1,
 									tuple_fraction,
 									&subroot);
+	rel->subrtable = subroot->parse->rtable;
 
 	/* Copy number of output rows from subplan */
 	rel->tuples = rel->subplan->plan_rows;

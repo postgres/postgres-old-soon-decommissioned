@@ -2989,7 +2989,7 @@ inline_function(Oid funcid, Oid result_type, List *args,
 			 */
 			if (contain_subplans(param))
 				goto fail;
-			cost_qual_eval(&eval_cost, list_make1(param));
+			cost_qual_eval(&eval_cost, list_make1(param), NULL);
 			if (eval_cost.startup + eval_cost.per_tuple >
 				10 * cpu_operator_cost)
 				goto fail;
