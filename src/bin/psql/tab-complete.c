@@ -542,7 +542,7 @@ psql_completion(char *text, int start, int end)
 		"\\e", "\\echo", "\\encoding",
 		"\\f", "\\g", "\\h", "\\help", "\\H", "\\i", "\\l",
 		"\\lo_import", "\\lo_export", "\\lo_list", "\\lo_unlink",
-		"\\o", "\\p", "\\password", "\\pset", "\\q", "\\qecho", "\\r",
+		"\\o", "\\p", "\\password", "\\prompt", "\\pset", "\\q", "\\qecho", "\\r",
 		"\\set", "\\t", "\\T",
 		"\\timing", "\\unset", "\\x", "\\w", "\\z", "\\!", NULL
 	};

@@ -1430,6 +1430,24 @@ lo_import 152801
       </varlistentry>
 
       <varlistentry>
+        <term><literal>\prompt [ <replaceable class="parameter">text</replaceable> ] <replaceable class="parameter">name</replaceable></literal></term>
+        <listitem>
+        <para>
+         Prompts the user to set variable <replaceable
+         class="parameter">name</>.  An optional prompt, <replaceable
+         class="parameter">text</>, can be specified.  (For multi-word
+         prompts, use single-quotes.)
+        </para>
+
+        <para>
+         By default, <literal>\prompt</> uses the terminal for input and
+         output.  However, if the <option>-f</> command line switch is
+         used, <literal>\prompt</> uses standard input and standard output.
+        </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term><literal>\pset <replaceable class="parameter">parameter</replaceable> [ <replaceable class="parameter">value</replaceable> ]</literal></term>
 
         <listitem>

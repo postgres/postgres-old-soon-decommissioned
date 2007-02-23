@@ -161,7 +161,7 @@ slashUsage(unsigned short int pager)
 {
 	FILE	   *output;
 
-	output = PageOutput(67, pager);
+	output = PageOutput(69, pager);
 
 	/* if you add/remove a line here, change the row count above */
 
@@ -184,6 +184,8 @@ slashUsage(unsigned short int pager)
 	fprintf(output, _("  \\timing        toggle timing of commands (currently %s)\n"),
 			ON(pset.timing));
 	fprintf(output, _("  \\unset NAME    unset (delete) internal variable\n"));
+	fprintf(output, _("  \\prompt [TEXT] NAME\n"
+					  "                 prompt user to set internal variable\n"));
 	fprintf(output, _("  \\! [COMMAND]   execute command in shell or start interactive shell\n"));
 	fprintf(output, "\n");
 

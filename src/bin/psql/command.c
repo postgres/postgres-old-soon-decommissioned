@@ -712,6 +712,57 @@ exec_command(const char *cmd,
 		free(pw2);
 	}
 
+	/* \prompt -- prompt and set variable */
+	else if (strcmp(cmd, "prompt") == 0)
+	{
+		char	   *opt, *prompt_text = NULL;
+		char	   *arg1, *arg2;
+
+		arg1 = psql_scan_slash_option(scan_state, OT_NORMAL, NULL, false);
+		arg2 = psql_scan_slash_option(scan_state, OT_NORMAL, NULL, false);
+
+		if (!arg1)
+		{
+			psql_error("\\%s: missing required argument\n", cmd);
+			success = false;
+		}
+		else
+		{
+ 			char	   *result;
+
+			if (arg2)
+			{
+				prompt_text = arg1;
+				opt = arg2;
+			}
+			else
+				opt = arg1;
+
+			if (!pset.inputfile)
+				result = simple_prompt(prompt_text, 4096, true);
+			else
+			{
+				if (prompt_text)
+				{
+					fputs(prompt_text, stdout);
+					fflush(stdout);
+				}
+				result = gets_fromFile(stdin);
+			}
+
+			if (!SetVariable(pset.vars, opt, result))
+			{
+				psql_error("\\%s: error\n", cmd);
+				success = false;
+			}
+
+			free(result);
+			if (prompt_text)
+				free(prompt_text);
+			free(opt);
+		}
+	}
+
 	/* \pset -- set printing parameters */
 	else if (strcmp(cmd, "pset") == 0)
 	{
