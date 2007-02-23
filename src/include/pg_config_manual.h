@@ -25,10 +25,6 @@
  */
 #define BLCKSZ	8192
 
-#if BLCKSZ < 1024
-#error BLCKSZ must be >= 1024
-#endif
-
 /*
  * RELSEG_SIZE is the maximum number of blocks allowed in one disk
  * file.  Thus, the maximum size of a single file is RELSEG_SIZE *

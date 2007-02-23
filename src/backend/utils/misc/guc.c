@@ -3713,6 +3713,10 @@ parse_int(const char *value, int *result, int flags)
 			endptr += 2;
 		}
 
+#if BLCKSZ < 1024
+#error BLCKSZ must be >= 1024
+#endif
+
 		if (used)
 		{
 			switch (flags & GUC_UNIT_MEMORY)
