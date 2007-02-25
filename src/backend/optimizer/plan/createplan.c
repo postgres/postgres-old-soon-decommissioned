@@ -2740,7 +2740,11 @@ make_sort_from_pathkeys(PlannerInfo *root, Plan *lefttree, List *pathkeys)
 			 * Do we need to insert a Result node?
 			 */
 			if (!is_projection_capable_plan(lefttree))
+			{
+				/* copy needed so we don't modify input's tlist below */
+				tlist = copyObject(tlist);
 				lefttree = (Plan *) make_result(root, tlist, NULL, lefttree);
+			}
 
 			/*
 			 * Add resjunk entry to input's tlist
