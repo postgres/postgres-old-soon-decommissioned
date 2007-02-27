@@ -16,12 +16,12 @@
 
 #include "nodes/execnodes.h"
 
-extern void ExecInitSubPlan(SubPlanState *node, EState *estate, int eflags);
+extern SubPlanState *ExecInitSubPlan(SubPlan *subplan, PlanState *parent);
 extern Datum ExecSubPlan(SubPlanState *node,
 			ExprContext *econtext,
 			bool *isNull,
 			ExprDoneCond *isDone);
-extern void ExecEndSubPlan(SubPlanState *node);
+
 extern void ExecReScanSetParamPlan(SubPlanState *node, PlanState *parent);
 
 extern void ExecSetParamPlan(SubPlanState *node, ExprContext *econtext);

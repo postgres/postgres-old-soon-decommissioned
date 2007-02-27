@@ -246,6 +246,7 @@ _outPlannedStmt(StringInfo str, PlannedStmt *node)
 	WRITE_NODE_FIELD(resultRelations);
 	WRITE_NODE_FIELD(into);
 	WRITE_NODE_FIELD(subplans);
+	WRITE_BITMAPSET_FIELD(rewindPlanIDs);
 	WRITE_NODE_FIELD(returningLists);
 	WRITE_NODE_FIELD(rowMarks);
 	WRITE_INT_FIELD(nParamExec);
@@ -1262,6 +1263,7 @@ _outPlannerGlobal(StringInfo str, PlannerGlobal *node)
 	WRITE_NODE_FIELD(paramlist);
 	WRITE_NODE_FIELD(subplans);
 	WRITE_NODE_FIELD(subrtables);
+	WRITE_BITMAPSET_FIELD(rewindPlanIDs);
 	WRITE_NODE_FIELD(finalrtable);
 }
 

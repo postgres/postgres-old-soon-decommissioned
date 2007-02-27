@@ -68,6 +68,8 @@ typedef struct PlannerGlobal
 
 	List	   *subrtables;		/* Rangetables for SubPlan nodes */
 
+	Bitmapset  *rewindPlanIDs;	/* indices of subplans that require REWIND */
+
 	List	   *finalrtable;	/* "flat" rangetable for executor */
 } PlannerGlobal;
 
