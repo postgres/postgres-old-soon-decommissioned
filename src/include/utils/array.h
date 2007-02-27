@@ -4,7 +4,7 @@
  *	  Declarations for Postgres arrays.
  *
  * A standard varlena array has the following internal structure:
- *	  <size>		- total number of bytes (also, TOAST info flags)
+ *	  <vl_len_>		- standard varlena header word
  *	  <ndim>		- number of dimensions of the array
  *	  <dataoffset>	- offset to stored data, or 0 if no nulls bitmap
  *	  <elemtype>	- element type OID
@@ -61,18 +61,22 @@
 /*
  * Arrays are varlena objects, so must meet the varlena convention that
  * the first int32 of the object contains the total object size in bytes.
+ * Be sure to use VARSIZE() and SET_VARSIZE() to access it, though!
  *
  * CAUTION: if you change the header for ordinary arrays you will also
  * need to change the headers for oidvector and int2vector!
  */
 typedef struct
 {
-	int32		size;			/* total array size (varlena requirement) */
+	int32		vl_len_;		/* varlena header (do not touch directly!) */
 	int			ndim;			/* # of dimensions */
 	int32		dataoffset;		/* offset to data, or 0 if no bitmap */
 	Oid			elemtype;		/* element type OID */
 } ArrayType;
 
+/*
+ * working state for accumArrayResult() and friends
+ */
 typedef struct ArrayBuildState
 {
 	MemoryContext mcontext;		/* where all the temp stuff is kept */
@@ -132,7 +136,7 @@ typedef struct ArrayMapState
  *
  * Unlike C, the default lower bound is 1.
  */
-#define ARR_SIZE(a)				((a)->size)
+#define ARR_SIZE(a)				VARSIZE(a)
 #define ARR_NDIM(a)				((a)->ndim)
 #define ARR_HASNULL(a)			((a)->dataoffset != 0)
 #define ARR_ELEMTYPE(a)			((a)->elemtype)

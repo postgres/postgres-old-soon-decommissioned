@@ -532,7 +532,7 @@ like_escape_bytea(PG_FUNCTION_ARGS)
 		}
 	}
 
-	VARATT_SIZEP(result) = r - ((char *) result);
+	SET_VARSIZE(result, r - ((char *) result));
 
 	PG_RETURN_BYTEA_P(result);
 }

@@ -5298,7 +5298,7 @@ string_to_text(char *str)
 
 	tlen = slen + VARHDRSZ;
 	result = (text *) palloc(tlen);
-	VARATT_SIZEP(result) = tlen;
+	SET_VARSIZE(result, tlen);
 	memcpy(VARDATA(result), str, slen);
 
 	pfree(str);

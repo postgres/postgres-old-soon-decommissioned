@@ -396,7 +396,7 @@ pg_size_pretty(PG_FUNCTION_ARGS)
 		}
 	}
 
-	VARATT_SIZEP(result) = strlen(VARDATA(result)) + VARHDRSZ;
+	SET_VARSIZE(result, strlen(VARDATA(result)) + VARHDRSZ);
 
 	PG_RETURN_TEXT_P(result);
 }

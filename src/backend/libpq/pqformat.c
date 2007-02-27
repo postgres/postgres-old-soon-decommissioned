@@ -386,7 +386,7 @@ pq_endtypsend(StringInfo buf)
 
 	/* Insert correct length into bytea length word */
 	Assert(buf->len >= VARHDRSZ);
-	VARATT_SIZEP(result) = buf->len;
+	SET_VARSIZE(result, buf->len);
 
 	return result;
 }

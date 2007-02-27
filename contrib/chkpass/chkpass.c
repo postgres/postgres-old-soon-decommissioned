@@ -125,10 +125,12 @@ chkpass_rout(PG_FUNCTION_ARGS)
 {
 	chkpass    *password = (chkpass *) PG_GETARG_POINTER(0);
 	text	   *result;
+	int			slen;
 
-	result = (text *) palloc(VARHDRSZ + 16);
-	result->vl_len = VARHDRSZ + strlen(password->password);
-	memcpy(result->vl_dat, password->password, strlen(password->password));
+	slen = strlen(password->password);
+	result = (text *) palloc(VARHDRSZ + slen);
+	SET_VARSIZE(result, VARHDRSZ + slen);
+	memcpy(VARDATA(result), password->password, slen);
 
 	PG_RETURN_TEXT_P(result);
 }
@@ -145,11 +147,11 @@ chkpass_eq(PG_FUNCTION_ARGS)
 	chkpass    *a1 = (chkpass *) PG_GETARG_POINTER(0);
 	text	   *a2 = (text *) PG_GETARG_TEXT_P(1);
 	char		str[10];
-	int			sz = 8;
+	int			sz;
 
-	if (a2->vl_len < 12)
-		sz = a2->vl_len - 4;
-	strlcpy(str, a2->vl_dat, sz + 1);
+	sz = Min(VARSIZE(a2) - VARHDRSZ, 8);
+	memcpy(str, VARDATA(a2), sz);
+	str[sz] = '\0';
 	PG_RETURN_BOOL(strcmp(a1->password, crypt(str, a1->password)) == 0);
 }
 
@@ -160,10 +162,10 @@ chkpass_ne(PG_FUNCTION_ARGS)
 	chkpass    *a1 = (chkpass *) PG_GETARG_POINTER(0);
 	text	   *a2 = (text *) PG_GETARG_TEXT_P(1);
 	char		str[10];
-	int			sz = 8;
+	int			sz;
 
-	if (a2->vl_len < 12)
-		sz = a2->vl_len - 4;
-	strlcpy(str, a2->vl_dat, sz + 1);
+	sz = Min(VARSIZE(a2) - VARHDRSZ, 8);
+	memcpy(str, VARDATA(a2), sz);
+	str[sz] = '\0';
 	PG_RETURN_BOOL(strcmp(a1->password, crypt(str, a1->password)) != 0);
 }

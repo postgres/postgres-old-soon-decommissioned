@@ -376,7 +376,7 @@ array_cat(PG_FUNCTION_ARGS)
 		nbytes = ndatabytes + ARR_OVERHEAD_NONULLS(ndims);
 	}
 	result = (ArrayType *) palloc(nbytes);
-	result->size = nbytes;
+	SET_VARSIZE(result, nbytes);
 	result->ndim = ndims;
 	result->dataoffset = dataoffset;
 	result->elemtype = element_type;

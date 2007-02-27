@@ -63,7 +63,7 @@ binary_encode(PG_FUNCTION_ARGS)
 	if (res > resultlen)
 		elog(FATAL, "overflow - encode estimate too small");
 
-	VARATT_SIZEP(result) = VARHDRSZ + res;
+	SET_VARSIZE(result, VARHDRSZ + res);
 
 	PG_RETURN_TEXT_P(result);
 }
@@ -99,7 +99,7 @@ binary_decode(PG_FUNCTION_ARGS)
 	if (res > resultlen)
 		elog(FATAL, "overflow - decode estimate too small");
 
-	VARATT_SIZEP(result) = VARHDRSZ + res;
+	SET_VARSIZE(result, VARHDRSZ + res);
 
 	PG_RETURN_BYTEA_P(result);
 }

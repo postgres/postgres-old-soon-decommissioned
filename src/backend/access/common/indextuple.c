@@ -84,7 +84,7 @@ index_form_tuple(TupleDesc tupleDescriptor,
 		 * If value is above size target, and is of a compressible datatype,
 		 * try to compress it in-line.
 		 */
-		if (VARATT_SIZE(untoasted_values[i]) > TOAST_INDEX_TARGET &&
+		if (VARSIZE(untoasted_values[i]) > TOAST_INDEX_TARGET &&
 			!VARATT_IS_EXTENDED(untoasted_values[i]) &&
 			(att->attstorage == 'x' || att->attstorage == 'm'))
 		{

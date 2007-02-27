@@ -62,7 +62,7 @@
  */
 typedef struct NumericData
 {
-	int32		varlen;			/* Variable size (std varlena header) */
+	int32		vl_len_;		/* varlena header (do not touch directly!) */
 	int16		n_weight;		/* Weight of 1st digit	*/
 	uint16		n_sign_dscale;	/* Sign + display scale */
 	char		n_data[1];		/* Digits (really array of NumericDigit) */
@@ -70,7 +70,7 @@ typedef struct NumericData
 
 typedef NumericData *Numeric;
 
-#define NUMERIC_HDRSZ	(sizeof(int32) + sizeof(int16) + sizeof(uint16))
+#define NUMERIC_HDRSZ	(VARHDRSZ + sizeof(int16) + sizeof(uint16))
 
 
 /*

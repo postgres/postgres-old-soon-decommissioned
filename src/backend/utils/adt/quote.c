@@ -39,7 +39,7 @@ quote_ident(PG_FUNCTION_ARGS)
 
 	len = strlen(qstr);
 	result = (text *) palloc(len + VARHDRSZ);
-	VARATT_SIZEP(result) = len + VARHDRSZ;
+	SET_VARSIZE(result, len + VARHDRSZ);
 	memcpy(VARDATA(result), qstr, len);
 
 	PG_RETURN_TEXT_P(result);
@@ -92,7 +92,7 @@ quote_literal(PG_FUNCTION_ARGS)
 	}
 	*cp2++ = '\'';
 
-	VARATT_SIZEP(result) = cp2 - ((char *) result);
+	SET_VARSIZE(result, cp2 - ((char *) result));
 
 	PG_RETURN_TEXT_P(result);
 }

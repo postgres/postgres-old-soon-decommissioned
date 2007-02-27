@@ -2991,7 +2991,7 @@ datetime_to_char_body(TmToChar *tmtc, text *fmt, bool is_interval)
 	reslen = strlen(result);
 	res = (text *) palloc(reslen + VARHDRSZ);
 	memcpy(VARDATA(res), result, reslen);
-	VARATT_SIZEP(res) = reslen + VARHDRSZ;
+	SET_VARSIZE(res, reslen + VARHDRSZ);
 
 	pfree(result);
 	return res;
@@ -4829,10 +4829,10 @@ do { \
 	}								\
 									\
 	result_tmp	= result;					\
-	result		= (text *) palloc( len + 1 + VARHDRSZ);		\
+	result		= (text *) palloc(len + VARHDRSZ);		\
 									\
-	strcpy( VARDATA(result), VARDATA(result_tmp));			\
-	VARATT_SIZEP(result) = len + VARHDRSZ;				\
+	memcpy(VARDATA(result), VARDATA(result_tmp), len);	\
+	SET_VARSIZE(result, len + VARHDRSZ);				\
 	pfree(result_tmp);						\
 } while(0)
 

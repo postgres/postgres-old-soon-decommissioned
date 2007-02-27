@@ -88,7 +88,7 @@ GetPGArray(PGARRAY * p, AggState *aggstate, bool fAdd)
 		int			cb = PGARRAY_SIZE(START_NUM);
 
 		p = (PGARRAY *) MemoryContextAlloc(aggstate->aggcontext, cb);
-		p->a.size = cb;
+		SET_VARSIZE(p, cb);
 		p->a.ndim = 1;
 		p->a.dataoffset = 0;	/* we don't support nulls, for now */
 		p->a.elemtype = INT4OID;
@@ -105,8 +105,8 @@ GetPGArray(PGARRAY * p, AggState *aggstate, bool fAdd)
 			int			cbNew = PGARRAY_SIZE(n);
 
 			pn = (PGARRAY *) MemoryContextAlloc(aggstate->aggcontext, cbNew);
-			memcpy(pn, p, p->a.size);
-			pn->a.size = cbNew;
+			memcpy(pn, p, VARSIZE(p));
+			SET_VARSIZE(pn, cbNew);
 			pn->lower = n;
 			/* do not pfree(p), because nodeAgg.c will */
 			p = pn;
@@ -132,7 +132,7 @@ ShrinkPGArray(PGARRAY * p)
 	memcpy(pnew, p, cb);
 
 	/* fix up the fields in the new array to match normal conventions */
-	pnew->a.size = cb;
+	SET_VARSIZE(pnew, cb);
 	pnew->lower = 1;
 
 	/* do not pfree(p), because nodeAgg.c will */

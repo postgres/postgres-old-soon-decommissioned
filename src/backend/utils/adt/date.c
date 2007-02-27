@@ -891,8 +891,8 @@ date_text(PG_FUNCTION_ARGS)
 
 	result = palloc(len);
 
-	VARATT_SIZEP(result) = len;
-	memmove(VARDATA(result), str, (len - VARHDRSZ));
+	SET_VARSIZE(result, len);
+	memcpy(VARDATA(result), str, (len - VARHDRSZ));
 
 	pfree(str);
 
@@ -1634,8 +1634,8 @@ time_text(PG_FUNCTION_ARGS)
 
 	result = palloc(len);
 
-	VARATT_SIZEP(result) = len;
-	memmove(VARDATA(result), str, (len - VARHDRSZ));
+	SET_VARSIZE(result, len);
+	memcpy(VARDATA(result), str, (len - VARHDRSZ));
 
 	pfree(str);
 
@@ -2420,8 +2420,8 @@ timetz_text(PG_FUNCTION_ARGS)
 
 	result = palloc(len);
 
-	VARATT_SIZEP(result) = len;
-	memmove(VARDATA(result), str, (len - VARHDRSZ));
+	SET_VARSIZE(result, len);
+	memcpy(VARDATA(result), str, (len - VARHDRSZ));
 
 	pfree(str);
 

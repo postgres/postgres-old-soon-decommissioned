@@ -1596,7 +1596,7 @@ timeofday(PG_FUNCTION_ARGS)
 
 	len = VARHDRSZ + strlen(buf);
 	result = (text *) palloc(len);
-	VARATT_SIZEP(result) = len;
-	memcpy(VARDATA(result), buf, strlen(buf));
+	SET_VARSIZE(result, len);
+	memcpy(VARDATA(result), buf, len - VARHDRSZ);
 	PG_RETURN_TEXT_P(result);
 }

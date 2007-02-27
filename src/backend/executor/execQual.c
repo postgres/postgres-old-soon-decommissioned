@@ -2533,7 +2533,7 @@ ExecEvalArray(ArrayExprState *astate, ExprContext *econtext,
 		}
 
 		result = (ArrayType *) palloc(nbytes);
-		result->size = nbytes;
+		SET_VARSIZE(result, nbytes);
 		result->ndim = ndims;
 		result->dataoffset = dataoffset;
 		result->elemtype = element_type;
@@ -2967,7 +2967,7 @@ ExecEvalXml(XmlExprState *xmlExpr, ExprContext *econtext,
 		int		len = buf.len + VARHDRSZ;
 
 		result = palloc(len);
-		VARATT_SIZEP(result) = len;
+		SET_VARSIZE(result, len);
 		memcpy(VARDATA(result), buf.data, buf.len);
 	}
 

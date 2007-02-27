@@ -304,7 +304,7 @@ loread(PG_FUNCTION_ARGS)
 
 	retval = (bytea *) palloc(VARHDRSZ + len);
 	totalread = lo_read(fd, VARDATA(retval), len);
-	VARATT_SIZEP(retval) = totalread + VARHDRSZ;
+	SET_VARSIZE(retval, totalread + VARHDRSZ);
 
 	PG_RETURN_BYTEA_P(retval);
 }

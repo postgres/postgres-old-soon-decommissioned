@@ -620,7 +620,7 @@ similar_escape(PG_FUNCTION_ARGS)
 	*r++ = ')';
 	*r++ = '$';
 
-	VARATT_SIZEP(result) = r - ((char *) result);
+	SET_VARSIZE(result, r - ((char *) result));
 
 	PG_RETURN_TEXT_P(result);
 }

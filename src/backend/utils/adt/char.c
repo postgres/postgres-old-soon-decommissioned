@@ -203,11 +203,11 @@ char_text(PG_FUNCTION_ARGS)
 	 */
 	if (arg1 != '\0')
 	{
-		VARATT_SIZEP(result) = VARHDRSZ + 1;
+		SET_VARSIZE(result, VARHDRSZ + 1);
 		*(VARDATA(result)) = arg1;
 	}
 	else
-		VARATT_SIZEP(result) = VARHDRSZ;
+		SET_VARSIZE(result, VARHDRSZ);
 
 	PG_RETURN_TEXT_P(result);
 }

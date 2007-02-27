@@ -15,13 +15,11 @@
  * PGLZ_Header -
  *
  *		The information at the top of the compressed data.
- *		The varsize must be kept the same data type as the value
- *		in front of all variable size data types in PostgreSQL.
  * ----------
  */
 typedef struct PGLZ_Header
 {
-	int32		varsize;
+	int32		vl_len_;		/* varlena header (do not touch directly!) */
 	int32		rawsize;
 } PGLZ_Header;
 

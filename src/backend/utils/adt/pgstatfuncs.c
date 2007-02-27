@@ -398,7 +398,7 @@ pg_stat_get_backend_activity(PG_FUNCTION_ARGS)
 
 	len = strlen(activity);
 	result = palloc(VARHDRSZ + len);
-	VARATT_SIZEP(result) = VARHDRSZ + len;
+	SET_VARSIZE(result, VARHDRSZ + len);
 	memcpy(VARDATA(result), activity, len);
 
 	PG_RETURN_TEXT_P(result);

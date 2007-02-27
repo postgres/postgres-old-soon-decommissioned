@@ -557,7 +557,7 @@ ltree2text(PG_FUNCTION_ARGS)
 		curlevel = LEVEL_NEXT(curlevel);
 	}
 
-	VARATT_SIZEP(out) = VARHDRSZ + (ptr - VARDATA(out));
+	SET_VARSIZE(out, ptr - ((char *) out));
 	PG_FREE_IF_COPY(in, 0);
 
 	PG_RETURN_POINTER(out);

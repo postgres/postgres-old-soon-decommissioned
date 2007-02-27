@@ -165,10 +165,9 @@ dmetaphone(PG_FUNCTION_ARGS)
 		code = "";
 	rsize = VARHDRSZ + strlen(code);
 	result = (text *) palloc(rsize);
-	memset(result, 0, rsize);
 	rptr = VARDATA(result);
-	memcpy(rptr, code, strlen(code));
-	VARATT_SIZEP(result) = rsize;
+	memcpy(rptr, code, rsize - VARHDRSZ);
+	SET_VARSIZE(result, rsize);
 	PG_RETURN_TEXT_P(result);
 }
 
@@ -206,10 +205,9 @@ dmetaphone_alt(PG_FUNCTION_ARGS)
 		code = "";
 	rsize = VARHDRSZ + strlen(code);
 	result = (text *) palloc(rsize);
-	memset(result, 0, rsize);
 	rptr = VARDATA(result);
-	memcpy(rptr, code, strlen(code));
-	VARATT_SIZEP(result) = rsize;
+	memcpy(rptr, code, rsize - VARHDRSZ);
+	SET_VARSIZE(result, rsize);
 	PG_RETURN_TEXT_P(result);
 }
 

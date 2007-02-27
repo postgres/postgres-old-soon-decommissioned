@@ -165,9 +165,8 @@ write_box(unsigned int dim, char *str1, char *str2)
   int i; 
   int size = offsetof(NDBOX, x[0]) + sizeof(double) * dim * 2;
 	    
-  bp = palloc(size);
-  memset(bp, 0, size);
-  bp->size = size;
+  bp = palloc0(size);
+  SET_VARSIZE(bp, size);
   bp->dim = dim;
 	    
   s = str1;
@@ -198,9 +197,8 @@ write_point_as_box(char *str, int dim)
   
   size = offsetof(NDBOX, x[0]) + sizeof(double) * dim * 2;
 
-  bp = palloc(size);
-  memset(bp, 0, size);
-  bp->size = size;
+  bp = palloc0(size);
+  SET_VARSIZE(bp, size);
   bp->dim = dim;
   
   i = 0;

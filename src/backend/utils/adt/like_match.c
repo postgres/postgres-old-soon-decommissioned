@@ -332,7 +332,7 @@ do_like_escape(text *pat, text *esc)
 		}
 	}
 
-	VARATT_SIZEP(result) = r - ((char *) result);
+	SET_VARSIZE(result, r - ((char *) result));
 
 	return result;
 }

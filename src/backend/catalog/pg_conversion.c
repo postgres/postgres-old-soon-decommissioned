@@ -338,7 +338,7 @@ pg_convert_using(PG_FUNCTION_ARGS)
 	 */
 	len = strlen(result) + VARHDRSZ;
 	retval = palloc(len);
-	VARATT_SIZEP(retval) = len;
+	SET_VARSIZE(retval, len);
 	memcpy(VARDATA(retval), result, len - VARHDRSZ);
 
 	pfree(result);

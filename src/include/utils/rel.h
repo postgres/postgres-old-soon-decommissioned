@@ -222,7 +222,7 @@ typedef Relation *RelationPtr;
  */
 typedef struct StdRdOptions
 {
-	int32		vl_len;			/* required to be a bytea */
+	int32		vl_len_;		/* varlena header (do not touch directly!) */
 	int			fillfactor;		/* page fill factor in percent (0..100) */
 } StdRdOptions;
 

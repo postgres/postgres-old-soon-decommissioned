@@ -1214,7 +1214,7 @@ float8_text(PG_FUNCTION_ARGS)
 
 	result = (text *) palloc(len);
 
-	VARATT_SIZEP(result) = len;
+	SET_VARSIZE(result, len);
 	memcpy(VARDATA(result), str, (len - VARHDRSZ));
 
 	pfree(str);
@@ -1265,7 +1265,7 @@ float4_text(PG_FUNCTION_ARGS)
 
 	result = (text *) palloc(len);
 
-	VARATT_SIZEP(result) = len;
+	SET_VARSIZE(result, len);
 	memcpy(VARDATA(result), str, (len - VARHDRSZ));
 
 	pfree(str);
