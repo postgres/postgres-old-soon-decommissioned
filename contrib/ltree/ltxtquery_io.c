@@ -337,7 +337,7 @@ queryin(char *buf)
 	/* make finish struct */
 	commonlen = COMPUTESIZE(state.num, state.sumlen);
 	query = (ltxtquery *) palloc(commonlen);
-	query->len = commonlen;
+	SET_VARSIZE(query, commonlen);
 	query->size = state.num;
 	ptr = GETQUERY(query);
 
