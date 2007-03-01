@@ -1716,7 +1716,7 @@ PgstatCollectorMain(int argc, char *argv[])
 	/* Preset the delay between status file writes */
 	MemSet(&write_timeout, 0, sizeof(struct itimerval));
 	write_timeout.it_value.tv_sec = PGSTAT_STAT_INTERVAL / 1000;
-	write_timeout.it_value.tv_usec = PGSTAT_STAT_INTERVAL % 1000;
+	write_timeout.it_value.tv_usec = (PGSTAT_STAT_INTERVAL % 1000) * 1000;
 
 	/*
 	 * Read in an existing statistics stats file or initialize the stats to
