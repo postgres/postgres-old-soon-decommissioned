@@ -137,6 +137,8 @@ errcontext(const char *fmt,...)
    the supplied arguments. */
 __attribute__((format(printf, 1, 2)));
 
+extern int	errhidestmt(bool hide_stmt);
+
 extern int	errfunction(const char *funcname);
 extern int	errposition(int cursorpos);
 
@@ -240,6 +242,7 @@ typedef struct ErrorData
 	bool		output_to_server;		/* will report to server log? */
 	bool		output_to_client;		/* will report to client? */
 	bool		show_funcname;	/* true to force funcname inclusion */
+	bool		hide_stmt;		/* true to prevent STATEMENT: inclusion */
 	const char *filename;		/* __FILE__ of ereport() call */
 	int			lineno;			/* __LINE__ of ereport() call */
 	const char *funcname;		/* __func__ of ereport() call */

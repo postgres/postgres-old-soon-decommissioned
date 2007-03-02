@@ -732,6 +732,25 @@ errcontext(const char *fmt,...)
 
 
 /*
+ * errhidestmt --- optionally suppress STATEMENT: field of log entry
+ *
+ * This should be called if the message text already includes the statement.
+ */
+int
+errhidestmt(bool hide_stmt)
+{
+	ErrorData  *edata = &errordata[errordata_stack_depth];
+
+	/* we don't bother incrementing recursion_depth */
+	CHECK_STACK_DEPTH();
+
+	edata->hide_stmt = hide_stmt;
+
+	return 0;					/* return value does not matter */
+}
+
+
+/*
  * errfunction --- add reporting function name to the current error
  *
  * This is used when backwards compatibility demands that the function
@@ -1629,7 +1648,9 @@ send_message_to_server_log(ErrorData *edata)
 	/*
 	 * If the user wants the query that generated this error logged, do it.
 	 */
-	if (edata->elevel >= log_min_error_statement && debug_query_string != NULL)
+	if (is_log_level_output(edata->elevel, log_min_error_statement) &&
+		debug_query_string != NULL &&
+		!edata->hide_stmt)
 	{
 		log_line_prefix(&buf);
 		appendStringInfoString(&buf, _("STATEMENT:  "));
@@ -2046,7 +2067,7 @@ write_stderr(const char *fmt,...)
 
 		vsnprintf(errbuf, sizeof(errbuf), fmt, ap);
 
-		write_eventlog(EVENTLOG_ERROR_TYPE, errbuf);
+		write_eventlog(ERROR, errbuf);
 	}
 	else
 		/* Not running as service, write to stderr */
@@ -2055,13 +2076,18 @@ write_stderr(const char *fmt,...)
 	va_end(ap);
 }
 
+
+/*
+ * is_log_level_output -- is elevel logically >= log_min_level?
+ *
+ * We use this for tests that should consider LOG to sort out-of-order,
+ * between ERROR and FATAL.  Generally this is the right thing for testing
+ * whether a message should go to the postmaster log, whereas a simple >=
+ * test is correct for testing whether the message should go to the client.
+ */
 static bool
 is_log_level_output(int elevel, int log_min_level)
 {
-	/*
-	 *	Complicated because LOG is sorted out-of-order here, between
-	 *	ERROR and FATAL.
-	 */
 	if (elevel == LOG || elevel == COMMERROR)
 	{
 		if (log_min_level == LOG || log_min_level <= ERROR)

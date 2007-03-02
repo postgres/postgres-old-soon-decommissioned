@@ -206,6 +206,14 @@ ereport(ERROR,
      socket-related system call.
     </para>
    </listitem>
+   <listitem>
+    <para>
+     <function>errhidestmt(bool hide_stmt)</function> can be called to specify
+     suppression of the <literal>STATEMENT:</> portion of a message in the
+     postmaster log.  Generally this is appropriate if the message text
+     includes the current statement already.
+    </para>
+   </listitem>
   </itemizedlist>
    </para>
 
