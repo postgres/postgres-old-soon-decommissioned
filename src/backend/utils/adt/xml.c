@@ -835,8 +835,7 @@ xml_init(void)
 	else
 	{
 		/* Reset pre-existing buffer to empty */
-		xml_err_buf->data[0] = '\0';
-		xml_err_buf->len = 0;
+		resetStringInfo(xml_err_buf);
 	}
 	/* Now that xml_err_buf exists, safe to call xml_errorHandler */
 	xmlSetGenericErrorFunc(NULL, xml_errorHandler);
@@ -1197,8 +1196,7 @@ xml_ereport(int level, int sqlcode,
 	if (xml_err_buf->len > 0)
 	{
 		detail = pstrdup(xml_err_buf->data);
-		xml_err_buf->data[0] = '\0';
-		xml_err_buf->len = 0;
+		resetStringInfo(xml_err_buf);
 	}
 	else
 		detail = NULL;

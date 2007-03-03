@@ -49,8 +49,20 @@ initStringInfo(StringInfo str)
 
 	str->data = (char *) palloc(size);
 	str->maxlen = size;
-	str->len = 0;
+	resetStringInfo(str);
+}
+
+/*
+ * resetStringInfo
+ *
+ * Reset the StringInfo: the data buffer remains valid, but its
+ * previous content, if any, is cleared.
+ */
+void
+resetStringInfo(StringInfo str)
+{
 	str->data[0] = '\0';
+	str->len = 0;
 	str->cursor = 0;
 }
 

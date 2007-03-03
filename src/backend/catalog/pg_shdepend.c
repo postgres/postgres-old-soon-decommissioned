@@ -588,8 +588,7 @@ checkSharedDependencies(Oid classId, Oid objectId)
 		 * Note: we don't ever suppress per-database totals, which should be
 		 * OK as long as there aren't too many databases ...
 		 */
-		descs.len = 0;			/* reset to empty */
-		descs.data[0] = '\0';
+		resetStringInfo(&descs);
 
 		if (numLocalDeps > 0)
 		{

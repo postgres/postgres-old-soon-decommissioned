@@ -480,10 +480,7 @@ parse_fcall_arguments(StringInfo msgBuf, struct fp_info * fip,
 						 argsize)));
 
 			/* Reset abuf to empty, and insert raw data into it */
-			abuf.len = 0;
-			abuf.data[0] = '\0';
-			abuf.cursor = 0;
-
+			resetStringInfo(&abuf);
 			appendBinaryStringInfo(&abuf,
 								   pq_getmsgbytes(msgBuf, argsize),
 								   argsize);
@@ -613,10 +610,7 @@ parse_fcall_arguments_20(StringInfo msgBuf, struct fp_info * fip,
 						 argsize)));
 
 		/* Reset abuf to empty, and insert raw data into it */
-		abuf.len = 0;
-		abuf.data[0] = '\0';
-		abuf.cursor = 0;
-
+		resetStringInfo(&abuf);
 		appendBinaryStringInfo(&abuf,
 							   pq_getmsgbytes(msgBuf, argsize),
 							   argsize);

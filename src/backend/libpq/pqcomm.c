@@ -860,10 +860,7 @@ pq_getstring(StringInfo s)
 {
 	int			i;
 
-	/* Reset string to empty */
-	s->len = 0;
-	s->data[0] = '\0';
-	s->cursor = 0;
+	resetStringInfo(s);
 
 	/* Read until we get the terminating '\0' */
 	for (;;)
@@ -915,10 +912,7 @@ pq_getmessage(StringInfo s, int maxlen)
 {
 	int32		len;
 
-	/* Reset message buffer to empty */
-	s->len = 0;
-	s->data[0] = '\0';
-	s->cursor = 0;
+	resetStringInfo(s);
 
 	/* Read message length word */
 	if (pq_getbytes((char *) &len, 4) == EOF)

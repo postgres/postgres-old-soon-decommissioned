@@ -168,8 +168,7 @@ record_in(PG_FUNCTION_ARGS)
 			/* Extract string for this column */
 			bool		inquote = false;
 
-			buf.len = 0;
-			buf.data[0] = '\0';
+			resetStringInfo(&buf);
 			while (inquote || !(*ptr == ',' || *ptr == ')'))
 			{
 				char		ch = *ptr++;

@@ -933,8 +933,7 @@ DeadLockReport(void)
 			appendStringInfoChar(&buf, '\n');
 
 		/* reset buf2 to hold next object description */
-		buf2.len = 0;
-		buf2.data[0] = '\0';
+		resetStringInfo(&buf2);
 
 		DescribeLockTag(&buf2, &info->locktag);
 

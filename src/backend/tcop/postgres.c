@@ -205,10 +205,7 @@ InteractiveBackend(StringInfo inBuf)
 	printf("backend> ");
 	fflush(stdout);
 
-	/* Reset inBuf to empty */
-	inBuf->len = 0;
-	inBuf->data[0] = '\0';
-	inBuf->cursor = 0;
+	resetStringInfo(inBuf);
 
 	for (;;)
 	{
