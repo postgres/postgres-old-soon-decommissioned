@@ -394,6 +394,13 @@ typedef enum
 	LOCKACQUIRE_ALREADY_HELD	/* incremented count for lock already held */
 } LockAcquireResult;
 
+/* Deadlock states identified by DeadlockCheck() */
+typedef enum
+{
+	DS_DEADLOCK_NOT_FOUND,		/* no deadlock found within database server */
+	DS_SOFT_DEADLOCK,			/* deadlock, but lock queues rearrangeable */
+	DS_HARD_DEADLOCK			/* deadlock, no way out but ERROR */
+} DeadlockState;
 
 /*
  * The lockmgr's shared hash tables are partitioned to reduce contention.
@@ -442,7 +449,7 @@ extern void lock_twophase_postcommit(TransactionId xid, uint16 info,
 extern void lock_twophase_postabort(TransactionId xid, uint16 info,
 						void *recdata, uint32 len);
 
-extern bool DeadLockCheck(PGPROC *proc);
+extern DeadlockState DeadLockCheck(PGPROC *proc);
 extern void DeadLockReport(void);
 extern void RememberSimpleDeadLock(PGPROC *proc1,
 					   LOCKMODE lockmode,

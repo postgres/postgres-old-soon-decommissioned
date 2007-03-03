@@ -812,6 +812,14 @@ static struct config_bool ConfigureNamesBool[] =
 #endif
 
 	{
+		{"log_lock_waits", PGC_SIGHUP, LOGGING_WHAT,
+			gettext_noop("Logs long lock wait events."),
+			NULL
+		},
+		&log_lock_waits,
+		false, NULL, NULL
+	},
+	{
 		{"log_hostname", PGC_SIGHUP, LOGGING_WHAT,
 			gettext_noop("Logs the host name in the connection logs."),
 			gettext_noop("By default, connection logs only show the IP address "
