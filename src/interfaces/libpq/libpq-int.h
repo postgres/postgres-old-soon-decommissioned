@@ -239,6 +239,7 @@ typedef struct pgLobjfuncs
 	Oid			fn_lo_unlink;	/* OID of backend function lo_unlink	*/
 	Oid			fn_lo_lseek;	/* OID of backend function lo_lseek		*/
 	Oid			fn_lo_tell;		/* OID of backend function lo_tell		*/
+	Oid			fn_lo_truncate;	/* OID of backend function lo_truncate	*/
 	Oid			fn_lo_read;		/* OID of backend function LOread		*/
 	Oid			fn_lo_write;	/* OID of backend function LOwrite		*/
 } PGlobjfuncs;
