@@ -60,6 +60,8 @@ extern void RelationCacheInvalidateEntry(Oid relationId);
 
 extern void RelationCacheInvalidate(void);
 
+extern void RelationCacheResetAtEOXact(void);
+
 extern void AtEOXact_RelationCache(bool isCommit);
 extern void AtEOSubXact_RelationCache(bool isCommit, SubTransactionId mySubid,
 						  SubTransactionId parentSubid);
