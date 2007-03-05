@@ -1851,8 +1851,8 @@ _bt_vacuum_one_page(Relation rel, Buffer buffer)
 	BTPageOpaque opaque = (BTPageOpaque) PageGetSpecialPointer(page);
 
 	/*
-	 * Scan over all items to see which ones need deleted according to
-	 * LP_DELETE flags.
+	 * Scan over all items to see which ones need to be deleted 
+	 * according to LP_DELETE flags.
 	 */
 	minoff = P_FIRSTDATAKEY(opaque);
 	maxoff = PageGetMaxOffsetNumber(page);
