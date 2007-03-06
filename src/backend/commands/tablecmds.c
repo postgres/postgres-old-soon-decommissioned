@@ -330,10 +330,6 @@ DefineRelation(CreateStmt *stmt, char relkind)
 					 errmsg("tablespace \"%s\" does not exist",
 							stmt->tablespacename)));
 	}
-	else if (stmt->relation->istemp)
-	{
-		tablespaceId = GetTempTablespace();
-	}
 	else
 	{
 		tablespaceId = GetDefaultTablespace();

@@ -209,13 +209,7 @@ DefineIndex(RangeVar *heapRelation,
 	}
 	else
 	{
- 		/*
- 		 * if the target table is temporary then use a temp_tablespace
- 		 */
- 		if (!rel->rd_istemp)
-			tablespaceId = GetDefaultTablespace();
- 		else
- 			tablespaceId = GetTempTablespace();
+		tablespaceId = GetDefaultTablespace();
 		/* note InvalidOid is OK in this case */
 	}
 
