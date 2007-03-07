@@ -235,10 +235,7 @@ Boot_InsertStmt:
 						elog(ERROR, "incorrect number of columns in row (expected %d, got %d)",
 							 numattr, num_columns_read);
 					if (boot_reldesc == NULL)
-					{
-						elog(ERROR, "relation not open");
-						err_out();
-					}
+						elog(FATAL, "relation not open");
 					InsertOneTuple($2);
 					do_end();
 				}

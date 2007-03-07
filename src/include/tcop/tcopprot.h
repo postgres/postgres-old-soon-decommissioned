@@ -44,8 +44,6 @@ typedef enum
 
 extern LogStmtLevel log_statement;
 
-#ifndef BOOTSTRAP_INCLUDE
-
 extern List *pg_parse_and_rewrite(const char *query_string,
 					 Oid *paramTypes, int numParams);
 extern List *pg_parse_query(const char *query_string);
@@ -56,7 +54,6 @@ extern List *pg_plan_queries(List *querytrees, ParamListInfo boundParams,
 				bool needSnapshot);
 
 extern bool assign_max_stack_depth(int newval, bool doit, GucSource source);
-#endif   /* BOOTSTRAP_INCLUDE */
 
 extern void die(SIGNAL_ARGS);
 extern void quickdie(SIGNAL_ARGS);

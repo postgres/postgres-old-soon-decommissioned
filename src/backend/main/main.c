@@ -177,7 +177,7 @@ main(int argc, char *argv[])
 #endif
 
 	if (argc > 1 && strcmp(argv[1], "--boot") == 0)
-		exit(BootstrapMain(argc, argv));
+		AuxiliaryProcessMain(argc, argv);	/* does not return */
 
 	if (argc > 1 && strcmp(argv[1], "--describe-config") == 0)
 		exit(GucInfoMain());

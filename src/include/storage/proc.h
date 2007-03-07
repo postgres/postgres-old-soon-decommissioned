@@ -118,10 +118,10 @@ typedef struct PROC_HDR
 } PROC_HDR;
 
 /*
- * We set aside some extra PGPROC structures for "dummy" processes,
+ * We set aside some extra PGPROC structures for auxiliary processes,
  * ie things that aren't full-fledged backends but need shmem access.
  */
-#define NUM_DUMMY_PROCS		3
+#define NUM_AUXILIARY_PROCS		3
 
 
 /* configurable options */
@@ -140,7 +140,7 @@ extern Size ProcGlobalShmemSize(void);
 extern void InitProcGlobal(void);
 extern void InitProcess(void);
 extern void InitProcessPhase2(void);
-extern void InitDummyProcess(void);
+extern void InitAuxiliaryProcess(void);
 extern bool HaveNFreeProcs(int n);
 extern void ProcReleaseLocks(bool isCommit);
 

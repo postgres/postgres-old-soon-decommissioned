@@ -32,7 +32,7 @@ typedef struct hashnode
 extern Relation boot_reldesc;
 extern Form_pg_attribute attrtypes[MAXATTR];
 extern int	numattr;
-extern int	BootstrapMain(int argc, char *argv[]);
+extern void	AuxiliaryProcessMain(int argc, char *argv[]);
 
 extern void index_register(Oid heap, Oid ind, IndexInfo *indexInfo);
 
@@ -64,9 +64,12 @@ extern int	boot_yyparse(void);
 extern int	boot_yylex(void);
 extern void boot_yyerror(const char *str);
 
-#define BS_XLOG_NOP			0
-#define BS_XLOG_BOOTSTRAP	1
-#define BS_XLOG_STARTUP		2
-#define BS_XLOG_BGWRITER	3
+typedef enum
+{
+	CheckerProcess,
+	BootstrapProcess,
+	StartupProcess,
+	BgWriterProcess
+} AuxProcType;
 
 #endif   /* BOOTSTRAP_H */
