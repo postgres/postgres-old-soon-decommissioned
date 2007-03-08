@@ -715,10 +715,20 @@ vac_update_relstats(Oid relid, BlockNumber num_pages, double num_tuples,
 	}
 
 	/*
-	 * If anything changed, write out the tuple
+	 * If anything changed, write out the tuple.  Even if nothing changed,
+	 * force relcache invalidation so all backends reset their rd_targblock
+	 * --- otherwise it might point to a page we truncated away.
 	 */
 	if (dirty)
+	{
 		heap_inplace_update(rd, ctup);
+		/* the above sends a cache inval message */
+	}
+	else
+	{
+		/* no need to change tuple, but force relcache inval anyway */
+		CacheInvalidateRelcacheByTuple(ctup);
+	}
 
 	heap_close(rd, RowExclusiveLock);
 }
