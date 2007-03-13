@@ -1184,6 +1184,11 @@ main(int argc, char **argv)
 
 	char		val[64];
 
+#ifdef WIN32
+	/* stderr is buffered on Win32. */
+	setvbuf(stderr, NULL, _IONBF, 0);
+#endif
+
 	if ((env = getenv("PGHOST")) != NULL && *env != '\0')
 		pghost = env;
 	if ((env = getenv("PGPORT")) != NULL && *env != '\0')
