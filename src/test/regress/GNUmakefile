@@ -86,9 +86,10 @@ $(NAME)$(DLSUFFIX): $(shlib)
 
 # Test input and expected files.  These are created by pg_regress itself, so we
 # don't have a rule to create them.  We do need rules to clean them however.
-file_list := $(subst .source,, $(notdir $(wildcard $(top_srcdir)/$(subdir)/input/*.source)))
-input_files  := $(foreach file, $(file_list), sql/$(file).sql)
-output_files := $(foreach file, $(file_list), expected/$(file).out)
+ifile_list := $(subst .source,, $(notdir $(wildcard $(top_srcdir)/$(subdir)/input/*.source)))
+input_files  := $(foreach file, $(ifile_list), sql/$(file).sql)
+ofile_list := $(subst .source,, $(notdir $(wildcard $(top_srcdir)/$(subdir)/output/*.source)))
+output_files := $(foreach file, $(ofile_list), expected/$(file).out)
 
 ifneq ($(PORTNAME),win32)
 abs_srcdir := $(shell cd $(srcdir) && pwd)
