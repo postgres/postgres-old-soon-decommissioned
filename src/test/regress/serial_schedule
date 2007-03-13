@@ -89,6 +89,7 @@ test: cluster
 test: dependency
 test: guc
 test: combocid
+test: plancache
 test: limit
 test: plpgsql
 test: copy2

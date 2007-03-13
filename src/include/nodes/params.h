@@ -82,4 +82,7 @@ typedef struct ParamExecData
 /* Functions found in src/backend/nodes/params.c */
 extern ParamListInfo copyParamList(ParamListInfo from);
 
+extern void getParamListTypes(ParamListInfo params,
+							  Oid **param_types, int *num_params);
+
 #endif   /* PARAMS_H */

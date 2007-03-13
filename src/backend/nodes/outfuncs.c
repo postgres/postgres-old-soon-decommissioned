@@ -1505,7 +1505,6 @@ _outIndexStmt(StringInfo str, IndexStmt *node)
 	WRITE_NODE_FIELD(indexParams);
 	WRITE_NODE_FIELD(options);
 	WRITE_NODE_FIELD(whereClause);
-	WRITE_NODE_FIELD(rangetable);
 	WRITE_BOOL_FIELD(unique);
 	WRITE_BOOL_FIELD(primary);
 	WRITE_BOOL_FIELD(isconstraint);

@@ -17,8 +17,9 @@
 #include "tcop/tcopprot.h"
 
 
-extern void ProcessUtility(Node *parsetree, ParamListInfo params,
-			   DestReceiver *dest, char *completionTag);
+extern void ProcessUtility(Node *parsetree, const char *queryString,
+						   ParamListInfo params, bool isTopLevel,
+						   DestReceiver *dest, char *completionTag);
 
 extern bool UtilityReturnsTuples(Node *parsetree);
 

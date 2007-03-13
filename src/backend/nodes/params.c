@@ -60,3 +60,34 @@ copyParamList(ParamListInfo from)
 
 	return retval;
 }
+
+/*
+ * Extract an array of parameter type OIDs from a ParamListInfo.
+ *
+ * The result is allocated in CurrentMemoryContext.
+ */
+void
+getParamListTypes(ParamListInfo params,
+				  Oid **param_types, int *num_params)
+{
+	Oid		   *ptypes;
+	int			i;
+
+	if (params == NULL || params->numParams <= 0)
+	{
+		*param_types = NULL;
+		*num_params = 0;
+		return;
+	}
+
+	ptypes = (Oid *) palloc(params->numParams * sizeof(Oid));
+	*param_types = ptypes;
+	*num_params = params->numParams;
+
+	for (i = 0; i < params->numParams; i++)
+	{
+		ParamExternData *prm = &params->params[i];
+
+		ptypes[i] = prm->ptype;
+	}
+}

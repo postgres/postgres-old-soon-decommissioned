@@ -110,7 +110,7 @@ extern int	vacuum_freeze_min_age;
 
 
 /* in commands/vacuum.c */
-extern void vacuum(VacuumStmt *vacstmt, List *relids);
+extern void vacuum(VacuumStmt *vacstmt, List *relids, bool isTopLevel);
 extern void vac_open_indexes(Relation relation, LOCKMODE lockmode,
 				 int *nindexes, Relation **Irel);
 extern void vac_close_indexes(int nindexes, Relation *Irel, LOCKMODE lockmode);

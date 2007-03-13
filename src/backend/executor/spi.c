@@ -927,7 +927,7 @@ SPI_cursor_open(const char *name, void *plan,
 					  spiplan->query,
 					  CreateCommandTag(PortalListGetPrimaryStmt(stmt_list)),
 					  stmt_list,
-					  PortalGetHeapMemory(portal));
+					  NULL);
 
 	MemoryContextSwitchTo(oldcontext);
 
@@ -1471,7 +1471,12 @@ _SPI_execute_plan(_SPI_plan *plan, Datum *Values, const char *Nulls,
 				}
 				else
 				{
-					ProcessUtility(stmt, paramLI, dest, NULL);
+					ProcessUtility(stmt,
+								   NULL, /* XXX provide query string? */
+								   paramLI,
+								   false,				/* not top level */
+								   dest,
+								   NULL);
 					/* Update "processed" if stmt returned tuples */
 					if (_SPI_current->tuptable)
 						_SPI_current->processed = _SPI_current->tuptable->alloced - _SPI_current->tuptable->free;

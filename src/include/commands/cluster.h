@@ -17,7 +17,7 @@
 #include "utils/rel.h"
 
 
-extern void cluster(ClusterStmt *stmt);
+extern void cluster(ClusterStmt *stmt, bool isTopLevel);
 
 extern void check_index_is_clusterable(Relation OldHeap, Oid indexOid,
 						   bool recheck);

@@ -75,8 +75,7 @@ extern DLLIMPORT MemoryContext MessageContext;
 extern DLLIMPORT MemoryContext TopTransactionContext;
 extern DLLIMPORT MemoryContext CurTransactionContext;
 
-/* These two are transient links to contexts owned by other objects: */
-extern DLLIMPORT MemoryContext QueryContext;
+/* This is a transient link to the active portal's memory context: */
 extern DLLIMPORT MemoryContext PortalContext;
 
 

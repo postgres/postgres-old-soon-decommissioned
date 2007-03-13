@@ -3603,38 +3603,6 @@ query_tree_walker(Query *query,
 		return true;
 	if (range_table_walker(query->rtable, walker, context, flags))
 		return true;
-	if (query->utilityStmt)
-	{
-		/*
-		 * Certain utility commands contain general-purpose Querys embedded in
-		 * them --- if this is one, invoke the walker on the sub-Query.
-		 */
-		if (IsA(query->utilityStmt, CopyStmt))
-		{
-			if (walker(((CopyStmt *) query->utilityStmt)->query, context))
-				return true;
-		}
-		if (IsA(query->utilityStmt, DeclareCursorStmt))
-		{
-			if (walker(((DeclareCursorStmt *) query->utilityStmt)->query, context))
-				return true;
-		}
-		if (IsA(query->utilityStmt, ExplainStmt))
-		{
-			if (walker(((ExplainStmt *) query->utilityStmt)->query, context))
-				return true;
-		}
-		if (IsA(query->utilityStmt, PrepareStmt))
-		{
-			if (walker(((PrepareStmt *) query->utilityStmt)->query, context))
-				return true;
-		}
-		if (IsA(query->utilityStmt, ViewStmt))
-		{
-			if (walker(((ViewStmt *) query->utilityStmt)->query, context))
-				return true;
-		}
-	}
 	return false;
 }
 

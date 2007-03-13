@@ -2142,7 +2142,6 @@ _copyIndexStmt(IndexStmt *from)
 	COPY_NODE_FIELD(indexParams);
 	COPY_NODE_FIELD(options);
 	COPY_NODE_FIELD(whereClause);
-	COPY_NODE_FIELD(rangetable);
 	COPY_SCALAR_FIELD(unique);
 	COPY_SCALAR_FIELD(primary);
 	COPY_SCALAR_FIELD(isconstraint);
@@ -2785,7 +2784,6 @@ _copyPrepareStmt(PrepareStmt *from)
 
 	COPY_STRING_FIELD(name);
 	COPY_NODE_FIELD(argtypes);
-	COPY_NODE_FIELD(argtype_oids);
 	COPY_NODE_FIELD(query);
 
 	return newnode;

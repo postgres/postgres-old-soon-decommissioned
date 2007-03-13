@@ -97,9 +97,6 @@ createdb(const CreatedbStmt *stmt)
 	int			encoding = -1;
 	int			dbconnlimit = -1;
 
-	/* don't call this in a transaction block */
-	PreventTransactionChain((void *) stmt, "CREATE DATABASE");
-
 	/* Extract options from the statement node tree */
 	foreach(option, stmt->options)
 	{
@@ -544,8 +541,6 @@ dropdb(const char *dbname, bool missing_ok)
 	bool		db_istemplate;
 	Relation	pgdbrel;
 	HeapTuple	tup;
-
-	PreventTransactionChain((void *) dbname, "DROP DATABASE");
 
 	AssertArg(dbname);
 

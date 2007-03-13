@@ -18,7 +18,7 @@
 #include "tcop/dest.h"
 
 
-extern uint64 DoCopy(const CopyStmt *stmt);
+extern uint64 DoCopy(const CopyStmt *stmt, const char *queryString);
 
 extern DestReceiver *CreateCopyDestReceiver(void);
 

@@ -21,6 +21,10 @@ extern List *parse_analyze(Node *parseTree, const char *sourceText,
 extern List *parse_analyze_varparams(Node *parseTree, const char *sourceText,
 						Oid **paramTypes, int *numParams);
 extern List *parse_sub_analyze(Node *parseTree, ParseState *parentParseState);
+
+extern IndexStmt *analyzeIndexStmt(IndexStmt *stmt, const char *queryString);
+extern void analyzeRuleStmt(RuleStmt *stmt, const char *queryString,
+				List **actions, Node **whereClause);
 extern List *analyzeCreateSchemaStmt(CreateSchemaStmt *stmt);
 extern void CheckSelectLocking(Query *qry);
 extern void applyLockingClause(Query *qry, Index rtindex,

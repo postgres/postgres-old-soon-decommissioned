@@ -198,11 +198,6 @@ CreateTableSpace(CreateTableSpaceStmt *stmt)
 	char	   *linkloc;
 	Oid			ownerId;
 
-	/* validate */
-
-	/* don't call this in a transaction block */
-	PreventTransactionChain((void *) stmt, "CREATE TABLESPACE");
-
 	/* Must be super user */
 	if (!superuser())
 		ereport(ERROR,
@@ -384,9 +379,6 @@ DropTableSpace(DropTableSpaceStmt *stmt)
 	HeapTuple	tuple;
 	ScanKeyData entry[1];
 	Oid			tablespaceoid;
-
-	/* don't call this in a transaction block */
-	PreventTransactionChain((void *) stmt, "DROP TABLESPACE");
 
 	/*
 	 * Find the target tuple

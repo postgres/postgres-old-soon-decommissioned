@@ -1248,13 +1248,6 @@ autovacuum_do_vac_analyze(Oid relid, bool dovacuum, bool doanalyze,
 
 	vacstmt = makeNode(VacuumStmt);
 
-	/*
-	 * Point QueryContext to the autovac memory context to fake out the
-	 * PreventTransactionChain check inside vacuum().  Note that this is also
-	 * why we palloc vacstmt instead of just using a local variable.
-	 */
-	QueryContext = CurrentMemoryContext;
-
 	/* Set up command parameters */
 	vacstmt->vacuum = dovacuum;
 	vacstmt->full = false;
@@ -1267,7 +1260,7 @@ autovacuum_do_vac_analyze(Oid relid, bool dovacuum, bool doanalyze,
 	/* Let pgstat know what we're doing */
 	autovac_report_activity(vacstmt, relid);
 
-	vacuum(vacstmt, list_make1_oid(relid));
+	vacuum(vacstmt, list_make1_oid(relid), true);
 
 	pfree(vacstmt);
 	MemoryContextSwitchTo(old_cxt);

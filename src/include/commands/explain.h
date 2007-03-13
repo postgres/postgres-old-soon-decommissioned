@@ -16,10 +16,15 @@
 #include "executor/executor.h"
 
 
-extern void ExplainQuery(ExplainStmt *stmt, ParamListInfo params,
-			 DestReceiver *dest);
+extern void ExplainQuery(ExplainStmt *stmt, const char *queryString,
+						 ParamListInfo params, DestReceiver *dest);
 
 extern TupleDesc ExplainResultDesc(ExplainStmt *stmt);
+
+extern void ExplainOneUtility(Node *utilityStmt, ExplainStmt *stmt,
+							  const char *queryString,
+							  ParamListInfo params,
+							  TupOutputState *tstate);
 
 extern void ExplainOnePlan(QueryDesc *queryDesc, ExplainStmt *stmt,
 			   TupOutputState *tstate);
