@@ -2639,7 +2639,7 @@ guc_get_index(const char *name)
 	int i;
 
 	for (i = 0; i < num_guc_variables; i++)
-		if (strcasecmp(name, guc_variables[i]->name) == 0)
+		if (pg_strcasecmp(name, guc_variables[i]->name) == 0)
 			return i;
 
 	return -1;
