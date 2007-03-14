@@ -331,6 +331,7 @@ int lo_truncate(PGcon *conn, int fd, size_t len);
      8.3; if this function is run against an older server version, it will
      fail and return a negative value.
 </para>
+</sect2>
 
 <sect2>
 <title>Closing a Large Object Descriptor</title>
