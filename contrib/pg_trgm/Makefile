@@ -1,7 +1,7 @@
 # $PostgreSQL$
 
 MODULE_big = pg_trgm
-OBJS = trgm_op.o trgm_gist.o 
+OBJS = trgm_op.o trgm_gist.o trgm_gin.o
 
 DATA_built = pg_trgm.sql
 DATA = uninstall_pg_trgm.sql
