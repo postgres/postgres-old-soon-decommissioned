@@ -1800,7 +1800,7 @@ query_to_xmlschema(PG_FUNCTION_ARGS)
 	const char *targetns = _textout(PG_GETARG_TEXT_P(3));
 
 	const char *result;
-	void	   *plan;
+	SPIPlanPtr	plan;
 	Portal		portal;
 
 	SPI_connect();
@@ -1871,7 +1871,7 @@ query_to_xml_and_xmlschema(PG_FUNCTION_ARGS)
 	const char *targetns = _textout(PG_GETARG_TEXT_P(3));
 
 	const char *xmlschema;
-	void	   *plan;
+	SPIPlanPtr	plan;
 	Portal		portal;
 
 	SPI_connect();

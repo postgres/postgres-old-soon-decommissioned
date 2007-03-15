@@ -451,7 +451,7 @@ extern Datum set_ttdummy(PG_FUNCTION_ARGS);
 
 #define TTDUMMY_INFINITY	999999
 
-static void *splan = NULL;
+static SPIPlanPtr splan = NULL;
 static bool ttoff = false;
 
 PG_FUNCTION_INFO_V1(ttdummy);
@@ -599,7 +599,7 @@ ttdummy(PG_FUNCTION_ARGS)
 	/* if there is no plan ... */
 	if (splan == NULL)
 	{
-		void	   *pplan;
+		SPIPlanPtr	pplan;
 		Oid		   *ctypes;
 		char	   *query;
 
