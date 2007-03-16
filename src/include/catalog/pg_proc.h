@@ -2974,6 +2974,16 @@ DATA(insert OID = 1944 (  pg_stat_get_db_blocks_fetched PGNSP PGUID 12 1 0 f f t
 DESCR("Statistics: Blocks fetched for database");
 DATA(insert OID = 1945 (  pg_stat_get_db_blocks_hit		PGNSP PGUID 12 1 0 f f t f s 1 20 "26" _null_ _null_ _null_ pg_stat_get_db_blocks_hit - _null_ ));
 DESCR("Statistics: Blocks found in cache for database");
+DATA(insert OID = 2758 (  pg_stat_get_db_tuples_returned PGNSP PGUID 12 1 0 f f t f s 1 20 "26" _null_ _null_ _null_ pg_stat_get_db_tuples_returned - _null_ ));
+DESCR("Statistics: Tuples returned for database");
+DATA(insert OID = 2759 (  pg_stat_get_db_tuples_fetched PGNSP PGUID 12 1 0 f f t f s 1 20 "26" _null_ _null_ _null_ pg_stat_get_db_tuples_fetched - _null_ ));
+DESCR("Statistics: Tuples fetched for database");
+DATA(insert OID = 2760 (  pg_stat_get_db_tuples_inserted PGNSP PGUID 12 1 0 f f t f s 1 20 "26" _null_ _null_ _null_ pg_stat_get_db_tuples_inserted - _null_ ));
+DESCR("Statistics: Tuples inserted in database");
+DATA(insert OID = 2761 (  pg_stat_get_db_tuples_updated PGNSP PGUID 12 1 0 f f t f s 1 20 "26" _null_ _null_ _null_ pg_stat_get_db_tuples_updated - _null_ ));
+DESCR("Statistics: Tuples updated in database");
+DATA(insert OID = 2762 (  pg_stat_get_db_tuples_deleted PGNSP PGUID 12 1 0 f f t f s 1 20 "26" _null_ _null_ _null_ pg_stat_get_db_tuples_deleted - _null_ ));
+DESCR("Statistics: Tuples deleted in database");
 DATA(insert OID = 2230 (  pg_stat_clear_snapshot		PGNSP PGUID 12 1 0 f f f f v 0 2278  "" _null_ _null_ _null_	pg_stat_clear_snapshot - _null_ ));
 DESCR("Statistics: Discard current transaction's statistics snapshot");
 DATA(insert OID = 2274 (  pg_stat_reset					PGNSP PGUID 12 1 0 f f f f v 0 2278  "" _null_ _null_ _null_	pg_stat_reset - _null_ ));

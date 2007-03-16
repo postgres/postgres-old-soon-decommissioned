@@ -357,5 +357,10 @@ CREATE VIEW pg_stat_database AS
             pg_stat_get_db_xact_rollback(D.oid) AS xact_rollback, 
             pg_stat_get_db_blocks_fetched(D.oid) - 
                     pg_stat_get_db_blocks_hit(D.oid) AS blks_read, 
-            pg_stat_get_db_blocks_hit(D.oid) AS blks_hit 
+            pg_stat_get_db_blocks_hit(D.oid) AS blks_hit,
+            pg_stat_get_db_tuples_returned(D.oid) AS tup_returned,
+            pg_stat_get_db_tuples_fetched(D.oid) AS tup_fetched,
+            pg_stat_get_db_tuples_inserted(D.oid) AS tup_inserted,
+            pg_stat_get_db_tuples_updated(D.oid) AS tup_updated,
+            pg_stat_get_db_tuples_deleted(D.oid) AS tup_deleted
     FROM pg_database D;

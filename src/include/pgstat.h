@@ -251,6 +251,11 @@ typedef struct PgStat_StatDBEntry
 	PgStat_Counter n_xact_rollback;
 	PgStat_Counter n_blocks_fetched;
 	PgStat_Counter n_blocks_hit;
+	PgStat_Counter n_tuples_returned;
+	PgStat_Counter n_tuples_fetched;
+	PgStat_Counter n_tuples_inserted;
+	PgStat_Counter n_tuples_updated;
+	PgStat_Counter n_tuples_deleted;
 	TimestampTz last_autovac_time;
 
 	/*
