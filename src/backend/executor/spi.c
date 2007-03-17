@@ -860,6 +860,16 @@ SPI_cursor_open(const char *name, void *plan,
 			break;
 	}
 
+	/*
+	 * If told to be read-only, we'd better check for read-only queries.
+	 */
+	if (read_only && !QueryIsReadOnly(queryTree))
+		ereport(ERROR,
+				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+				 /* translator: %s is a SQL statement name */
+				 errmsg("%s is not allowed in a non-volatile function",
+						CreateQueryTag(queryTree))));
+
 	/* Reset SPI result (note we deliberately don't touch lastoid) */
 	SPI_processed = 0;
 	SPI_tuptable = NULL;
