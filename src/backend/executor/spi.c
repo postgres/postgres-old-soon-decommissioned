@@ -870,6 +870,26 @@ SPI_cursor_open(const char *name, void *plan,
 	if (list_length(qtlist) != list_length(ptlist))
 		elog(ERROR, "corrupted SPI plan lists");
 
+	/*
+	 * If told to be read-only, we'd better check for read-only queries.
+	 */
+	if (read_only)
+	{
+		ListCell   *lc;
+
+		foreach(lc, qtlist)
+		{
+			Query  *qry = (Query *) lfirst(lc);
+
+			if (!QueryIsReadOnly(qry))
+				ereport(ERROR,
+						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+						 /* translator: %s is a SQL statement name */
+						 errmsg("%s is not allowed in a non-volatile function",
+								CreateQueryTag(qry))));
+		}
+	}
+
 	/* Reset SPI result (note we deliberately don't touch lastoid) */
 	SPI_processed = 0;
 	SPI_tuptable = NULL;
