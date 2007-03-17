@@ -965,6 +965,30 @@ SPI_cursor_open(const char *name, SPIPlanPtr plan,
 		portal->cursorOptions |= CURSOR_OPT_NO_SCROLL;
 
 	/*
+	 * If told to be read-only, we'd better check for read-only queries.
+	 * This can't be done earlier because we need to look at the finished,
+	 * planned queries.  (In particular, we don't want to do it between
+	 * RevalidateCachedPlan and PortalDefineQuery, because throwing an error
+	 * between those steps would result in leaking our plancache refcount.)
+	 */
+	if (read_only)
+	{
+		ListCell   *lc;
+
+		foreach(lc, stmt_list)
+		{
+			Node   *pstmt = (Node *) lfirst(lc);
+
+			if (!CommandIsReadOnly(pstmt))
+				ereport(ERROR,
+						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+						 /* translator: %s is a SQL statement name */
+						 errmsg("%s is not allowed in a non-volatile function",
+								CreateCommandTag(pstmt))));
+		}
+	}
+
+	/*
 	 * Set up the snapshot to use.	(PortalStart will do CopySnapshot, so we
 	 * skip that here.)
 	 */
