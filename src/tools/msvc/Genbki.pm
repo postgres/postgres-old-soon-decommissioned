@@ -240,12 +240,6 @@ sub genbki
     close(O);
 }
 
-sub Usage
-{
-    print "Usage: genbki.pl <version> <prefix> <input1> [<input2> <input3>...]\n";
-    exit(1);
-}
-
 sub read_file
 {
     my $filename = shift;
