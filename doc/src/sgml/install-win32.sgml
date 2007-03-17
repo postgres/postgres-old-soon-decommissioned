@@ -100,8 +100,8 @@
       <productname>Flex</productname></term>
      <listitem><para>
       Bison and Flex are required to build from CVS, but not required when
-      building from a release file. Note that Bison version 2.0 will not
-      work, but both earlier and later versions do. Bison and Flex can be
+      building from a release file. Note that only Bison 1.875 or versions
+      2.2 and later will work. Bison and Flex can be
       downloaded from <ulink url="http://gnuwin32.sourceforge.net"></>.
      </para></listitem>
     </varlistentry>
