@@ -442,7 +442,7 @@ main(int argc, char *const argv[])
 				output_line_number();
 
 				/* and parse the source */
-				yyparse();
+				base_yyparse();
 
 				/* check if all cursors were indeed opened */
 				for (ptr = cur; ptr != NULL;)

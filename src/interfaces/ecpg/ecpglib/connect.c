@@ -473,7 +473,7 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 	if (PQstatus(this->connection) == CONNECTION_BAD)
 	{
 		const char *errmsg = PQerrorMessage(this->connection);
-		char	   *db = realname ? realname : "<DEFAULT>";
+		const char *db = realname ? realname : "<DEFAULT>";
 
 		ECPGlog("connect: could not open database %s on %s port %s %s%s%s%s in line %d\n\t%s\n",
 				db,

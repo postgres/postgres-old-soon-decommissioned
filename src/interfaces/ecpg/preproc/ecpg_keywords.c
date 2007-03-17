@@ -50,7 +50,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"key_member", SQL_KEY_MEMBER},
 	{"length", SQL_LENGTH},
 	{"long", SQL_LONG},
-	{"name", SQL_NAME},
 	{"nullable", SQL_NULLABLE},
 	{"octet_length", SQL_OCTET_LENGTH},
 	{"open", SQL_OPEN},
@@ -70,7 +69,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"stop", SQL_STOP},
 	{"struct", SQL_STRUCT},
 	{"unsigned", SQL_UNSIGNED},
-	{"value", SQL_VALUE},
 	{"var", SQL_VAR},
 	{"whenever", SQL_WHENEVER},
 };
