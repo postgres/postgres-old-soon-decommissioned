@@ -685,6 +685,7 @@ _outConst(StringInfo str, Const *node)
 	WRITE_NODE_TYPE("CONST");
 
 	WRITE_OID_FIELD(consttype);
+	WRITE_INT_FIELD(consttypmod);
 	WRITE_INT_FIELD(constlen);
 	WRITE_BOOL_FIELD(constbyval);
 	WRITE_BOOL_FIELD(constisnull);
@@ -725,9 +726,9 @@ _outArrayRef(StringInfo str, ArrayRef *node)
 {
 	WRITE_NODE_TYPE("ARRAYREF");
 
-	WRITE_OID_FIELD(refrestype);
 	WRITE_OID_FIELD(refarraytype);
 	WRITE_OID_FIELD(refelemtype);
+	WRITE_INT_FIELD(reftypmod);
 	WRITE_NODE_FIELD(refupperindexpr);
 	WRITE_NODE_FIELD(reflowerindexpr);
 	WRITE_NODE_FIELD(refexpr);

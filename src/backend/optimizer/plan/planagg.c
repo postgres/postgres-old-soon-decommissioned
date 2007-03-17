@@ -477,7 +477,7 @@ make_agg_subplan(PlannerInfo *root, MinMaxAggInfo *info)
 
 	/* set up LIMIT 1 */
 	subparse->limitOffset = NULL;
-	subparse->limitCount = (Node *) makeConst(INT8OID, sizeof(int64),
+	subparse->limitCount = (Node *) makeConst(INT8OID, -1, sizeof(int64),
 											  Int64GetDatum(1),
 											  false, false /* not by val */ );
 

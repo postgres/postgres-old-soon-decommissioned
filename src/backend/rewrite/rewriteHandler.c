@@ -643,6 +643,7 @@ rewriteTargetList(Query *parsetree, Relation target_relation,
 				else
 				{
 					new_expr = (Node *) makeConst(att_tup->atttypid,
+												  -1,
 												  att_tup->attlen,
 												  (Datum) 0,
 												  true, /* isnull */
@@ -981,6 +982,7 @@ rewriteValuesRTE(RangeTblEntry *rte, Relation target_relation, List *attrnos)
 				if (!new_expr)
 				{
 					new_expr = (Node *) makeConst(att_tup->atttypid,
+												  -1,
 												  att_tup->attlen,
 												  (Datum) 0,
 												  true, /* isnull */

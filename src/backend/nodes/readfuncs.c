@@ -324,6 +324,7 @@ _readConst(void)
 	READ_LOCALS(Const);
 
 	READ_OID_FIELD(consttype);
+	READ_INT_FIELD(consttypmod);
 	READ_INT_FIELD(constlen);
 	READ_BOOL_FIELD(constbyval);
 	READ_BOOL_FIELD(constisnull);
@@ -379,9 +380,9 @@ _readArrayRef(void)
 {
 	READ_LOCALS(ArrayRef);
 
-	READ_OID_FIELD(refrestype);
 	READ_OID_FIELD(refarraytype);
 	READ_OID_FIELD(refelemtype);
+	READ_INT_FIELD(reftypmod);
 	READ_NODE_FIELD(refupperindexpr);
 	READ_NODE_FIELD(reflowerindexpr);
 	READ_NODE_FIELD(refexpr);

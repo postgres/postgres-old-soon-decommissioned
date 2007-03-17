@@ -1964,6 +1964,7 @@ get_typdefault(Oid typid)
 										 getTypeIOParam(typeTuple), -1);
 			/* Build a Const node containing the value */
 			expr = (Node *) makeConst(typid,
+									  -1,
 									  type->typlen,
 									  datum,
 									  false,

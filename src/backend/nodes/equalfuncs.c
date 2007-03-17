@@ -139,6 +139,7 @@ static bool
 _equalConst(Const *a, Const *b)
 {
 	COMPARE_SCALAR_FIELD(consttype);
+	COMPARE_SCALAR_FIELD(consttypmod);
 	COMPARE_SCALAR_FIELD(constlen);
 	COMPARE_SCALAR_FIELD(constisnull);
 	COMPARE_SCALAR_FIELD(constbyval);
@@ -180,9 +181,9 @@ _equalAggref(Aggref *a, Aggref *b)
 static bool
 _equalArrayRef(ArrayRef *a, ArrayRef *b)
 {
-	COMPARE_SCALAR_FIELD(refrestype);
 	COMPARE_SCALAR_FIELD(refarraytype);
 	COMPARE_SCALAR_FIELD(refelemtype);
+	COMPARE_SCALAR_FIELD(reftypmod);
 	COMPARE_NODE_FIELD(refupperindexpr);
 	COMPARE_NODE_FIELD(reflowerindexpr);
 	COMPARE_NODE_FIELD(refexpr);

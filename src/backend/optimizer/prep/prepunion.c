@@ -545,6 +545,7 @@ generate_setop_tlist(List *colTypes, int flag,
 		/* Add a resjunk flag column */
 		/* flag value is the given constant */
 		expr = (Node *) makeConst(INT4OID,
+								  -1,
 								  sizeof(int4),
 								  Int32GetDatum(flag),
 								  false,

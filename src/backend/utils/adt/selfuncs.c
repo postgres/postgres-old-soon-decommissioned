@@ -1599,6 +1599,7 @@ scalararraysel(PlannerInfo *root,
 
 			args = list_make2(leftop,
 							  makeConst(nominal_element_type,
+										-1,
 										elmlen,
 										elem_values[i],
 										elem_nulls[i],
@@ -4717,7 +4718,8 @@ string_to_const(const char *str, Oid datatype)
 {
 	Datum		conval = string_to_datum(str, datatype);
 
-	return makeConst(datatype, ((datatype == NAMEOID) ? NAMEDATALEN : -1),
+	return makeConst(datatype, -1,
+					 ((datatype == NAMEOID) ? NAMEDATALEN : -1),
 					 conval, false, false);
 }
 
@@ -4734,7 +4736,7 @@ string_to_bytea_const(const char *str, size_t str_len)
 	SET_VARSIZE(bstr, VARHDRSZ + str_len);
 	conval = PointerGetDatum(bstr);
 
-	return makeConst(BYTEAOID, -1, conval, false, false);
+	return makeConst(BYTEAOID, -1, -1, conval, false, false);
 }
 
 /*-------------------------------------------------------------------------

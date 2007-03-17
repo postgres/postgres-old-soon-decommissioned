@@ -37,6 +37,7 @@ extern TargetEntry *makeTargetEntry(Expr *expr,
 extern TargetEntry *flatCopyTargetEntry(TargetEntry *src_tle);
 
 extern Const *makeConst(Oid consttype,
+		  int32 consttypmod,
 		  int constlen,
 		  Datum constvalue,
 		  bool constisnull,
