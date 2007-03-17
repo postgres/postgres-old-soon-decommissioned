@@ -107,6 +107,14 @@
     </varlistentry>
 
     <varlistentry>
+     <term><productname>Diff</productname></term>
+     <listitem><para>
+      Diff is required to run the regression tests, and can be downloaded
+      from <ulink url="http://gnuwin32.sourceforge.net"></>.
+     </para></listitem>
+    </varlistentry>
+
+    <varlistentry>
      <term><productname>Microsoft Platform SDK</productname></term>
      <listitem><para>
       It is recommended that you upgrade to the latest available version
