@@ -1,5 +1,9 @@
 package Mkvcbuild;
-
+#
+# Package that generates build files for msvc build
+#
+# $PostgreSQL$
+#
 use Carp;
 use Win32;
 use strict;

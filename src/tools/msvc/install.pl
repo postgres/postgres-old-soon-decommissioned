@@ -1,3 +1,8 @@
+#
+# Script that provides 'make install' functionality for msvc builds
+#
+# $PostgreSQL$
+#
 use strict;
 use warnings;
 

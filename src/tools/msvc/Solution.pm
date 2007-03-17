@@ -1,4 +1,9 @@
 package Solution;
+#
+# Package that encapsulates a Visual C++ solution file generation
+# 
+# $PostgreSQL$
+#
 use Carp;
 use strict;
 use warnings;

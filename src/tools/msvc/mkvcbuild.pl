@@ -1,3 +1,9 @@
+#
+# Script that parses Unix style build environment and generates build files
+# for building with Visual Studio.
+#
+# $PostgreSQL$
+#
 use strict;
 use warnings;
 

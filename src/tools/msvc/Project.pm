@@ -1,5 +1,9 @@
 package Project;
-
+#
+# Package that encapsulates a Visual C++ project file generation
+#
+# $PostgreSQL$
+#
 use Carp;
 use strict;
 use warnings;

@@ -1,6 +1,8 @@
 @echo off
 REM Adjust path for your docbook installation in buildenv.bat
 
+REM $PostgreSQL$
+
 SETLOCAL
 SET STARTDIR=%CD%
 SET OPENJADE=openjade-1.3.1

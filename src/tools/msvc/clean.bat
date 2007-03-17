@@ -1,4 +1,5 @@
 @echo off
+REM $PostgreSQL$
 
 set D=%CD%
 if exist ..\msvc if exist ..\..\..\src cd ..\..\..

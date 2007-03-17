@@ -1,4 +1,6 @@
 @echo off
+REM $PostgreSQL$
+
 SETLOCAL
 SET STARTDIR=%CD%
 if exist ..\..\..\src\tools\msvc\vcregress.bat cd ..\..\..

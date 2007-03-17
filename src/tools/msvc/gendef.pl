@@ -1,4 +1,9 @@
 my @def;
+#
+# Script that generates a .DEF file for all objects in a directory
+# 
+# $PostgreSQL$
+#
 
 die "Usage: gendef.pl <modulepath>\n" unless ($ARGV[0] =~ /\\([^\\]+$)/);
 my $defname = uc $1;
