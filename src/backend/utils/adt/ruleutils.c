@@ -4427,8 +4427,11 @@ get_const_expr(Const *constval, deparse_context *context, bool showtype)
 			needlabel = false;
 			break;
 		case NUMERICOID:
-			/* Float-looking constants will be typed as numeric */
-			needlabel = !isfloat;
+			/*
+			 * Float-looking constants will be typed as numeric, but if
+			 * there's a specific typmod we need to show it.
+			 */
+			needlabel = !isfloat || (constval->consttypmod >= 0);
 			break;
 		default:
 			needlabel = true;
