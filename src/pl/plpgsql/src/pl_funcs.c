@@ -474,7 +474,7 @@ plpgsql_stmt_typename(PLpgSQL_stmt *stmt)
  **********************************************************************/
 static int	dump_indent;
 
-static void dump_ind();
+static void dump_ind(void);
 static void dump_stmt(PLpgSQL_stmt *stmt);
 static void dump_block(PLpgSQL_stmt_block *block);
 static void dump_assign(PLpgSQL_stmt_assign *stmt);
