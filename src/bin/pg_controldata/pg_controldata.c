@@ -72,7 +72,7 @@ main(int argc, char *argv[])
 	char		pgctime_str[128];
 	char		ckpttime_str[128];
 	char		sysident_str[32];
-	char	   *strftime_fmt = "%c";
+	const char *strftime_fmt = "%c";
 	const char *progname;
 
 	set_pglocale_pgservice(argv[0], "pg_controldata");

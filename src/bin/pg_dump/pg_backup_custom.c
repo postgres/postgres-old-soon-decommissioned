@@ -91,7 +91,7 @@ static void _EndDataCompressor(ArchiveHandle *AH, TocEntry *te);
 static pgoff_t _getFilePos(ArchiveHandle *AH, lclContext *ctx);
 static int	_DoDeflate(ArchiveHandle *AH, lclContext *ctx, int flush);
 
-static char *modulename = gettext_noop("custom archiver");
+static const char *modulename = gettext_noop("custom archiver");
 
 
 

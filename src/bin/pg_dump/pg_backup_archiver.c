@@ -37,7 +37,7 @@
 
 const char *progname;
 
-static char *modulename = gettext_noop("archiver");
+static const char *modulename = gettext_noop("archiver");
 
 
 static ArchiveHandle *_allocAH(const char *FileSpec, const ArchiveFormat fmt,

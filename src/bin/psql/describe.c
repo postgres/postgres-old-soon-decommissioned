@@ -1360,7 +1360,7 @@ describeOneTableDetails(const char *schemaname,
 		/* print inherits */
 		for (i = 0; i < inherits_count; i++)
 		{
-			char	   *s = _("Inherits");
+			const char   *s = _("Inherits");
 
 			if (i == 0)
 				printfPQExpBuffer(&buf, "%s: %s", s, PQgetvalue(result6, i, 0));
@@ -1374,7 +1374,7 @@ describeOneTableDetails(const char *schemaname,
 
 		if (verbose)
 		{
-			char	   *s = _("Has OIDs");
+			const char   *s = _("Has OIDs");
 
 			printfPQExpBuffer(&buf, "%s: %s", s,
 							  (tableinfo.hasoids ? _("yes") : _("no")));

@@ -102,7 +102,7 @@ typedef struct
 	char	   *filename;
 } lclTocEntry;
 
-static char *modulename = gettext_noop("tar archiver");
+static const char *modulename = gettext_noop("tar archiver");
 
 static void _LoadBlobs(ArchiveHandle *AH, RestoreOptions *ropt);
 

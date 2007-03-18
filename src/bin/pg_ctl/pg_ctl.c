@@ -91,7 +91,7 @@ static char *post_opts = NULL;
 static const char *progname;
 static char *log_file = NULL;
 static char *postgres_path = NULL;
-static char *register_servicename = "PostgreSQL";		/* FIXME: + version ID? */
+static const char *register_servicename = "PostgreSQL";		/* FIXME: + version ID? */
 static char *register_username = NULL;
 static char *register_password = NULL;
 static char *argv0 = NULL;

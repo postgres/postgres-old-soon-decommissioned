@@ -106,9 +106,9 @@ typedef struct
  * ----------
  */
 static SPIPlanPtr plan_getrulebyoid = NULL;
-static char *query_getrulebyoid = "SELECT * FROM pg_catalog.pg_rewrite WHERE oid = $1";
+static const char *query_getrulebyoid = "SELECT * FROM pg_catalog.pg_rewrite WHERE oid = $1";
 static SPIPlanPtr plan_getviewrule = NULL;
-static char *query_getviewrule = "SELECT * FROM pg_catalog.pg_rewrite WHERE ev_class = $1 AND rulename = $2";
+static const char *query_getviewrule = "SELECT * FROM pg_catalog.pg_rewrite WHERE ev_class = $1 AND rulename = $2";
 
 
 /* ----------

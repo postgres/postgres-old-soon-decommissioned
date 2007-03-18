@@ -16,7 +16,7 @@
 #include "pg_backup_archiver.h"
 
 
-static char *modulename = gettext_noop("sorter");
+static const char *modulename = gettext_noop("sorter");
 
 /*
  * Sort priority for object types when dumping a pre-7.3 database.

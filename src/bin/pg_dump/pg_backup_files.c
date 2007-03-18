@@ -65,7 +65,7 @@ typedef struct
 	char	   *filename;
 } lclTocEntry;
 
-static char *modulename = gettext_noop("file archiver");
+static const char *modulename = gettext_noop("file archiver");
 static void _LoadBlobs(ArchiveHandle *AH, RestoreOptions *ropt);
 static void _getBlobTocEntry(ArchiveHandle *AH, Oid *oid, char *fname);
 
