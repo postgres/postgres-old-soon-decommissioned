@@ -57,7 +57,7 @@ else
 	@$(missing) flex $< $@
 endif
 
-c_keywords.o ecpg_keywords.o keywords.o preproc.o: preproc.h
+c_keywords.o ecpg_keywords.o keywords.o preproc.o parser.o: preproc.h
 
 parser.c: $(top_srcdir)/src/backend/parser/parser.c
 	rm -f $@ && $(LN_S) $< .
