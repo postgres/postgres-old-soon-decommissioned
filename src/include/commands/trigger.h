@@ -78,6 +78,18 @@ typedef struct TriggerData
 #define TRIGGER_FIRED_AFTER(event)				\
 		(!TRIGGER_FIRED_BEFORE (event))
 
+/*
+ * Definitions for the replication role based firing.
+ */
+#define SESSION_REPLICATION_ROLE_ORIGIN		0
+#define SESSION_REPLICATION_ROLE_REPLICA	1
+#define SESSION_REPLICATION_ROLE_LOCAL		2
+extern int	SessionReplicationRole;
+
+#define	TRIGGER_FIRES_ON_ORIGIN				'O'
+#define	TRIGGER_FIRES_ALWAYS				'A'
+#define	TRIGGER_FIRES_ON_REPLICA			'R'
+#define	TRIGGER_DISABLED					'D'
 
 extern Oid	CreateTrigger(CreateTrigStmt *stmt, Oid constraintOid);
 
@@ -88,7 +100,7 @@ extern void RemoveTriggerById(Oid trigOid);
 extern void renametrig(Oid relid, const char *oldname, const char *newname);
 
 extern void EnableDisableTrigger(Relation rel, const char *tgname,
-					 bool enable, bool skip_system);
+					 char fires_when, bool skip_system);
 
 extern void RelationBuildTriggers(Relation relation);
 

@@ -28,6 +28,7 @@ typedef struct RewriteRule
 	AttrNumber	attrno;
 	Node	   *qual;
 	List	   *actions;
+	char		enabled;
 	bool		isInstead;
 } RewriteRule;
 

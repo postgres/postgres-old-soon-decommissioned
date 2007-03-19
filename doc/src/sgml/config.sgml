@@ -3523,6 +3523,23 @@ SELECT * FROM parent WHERE key = 2400;
       </listitem>
      </varlistentry>
 
+     <varlistentry id="guc-session-replication-role" xreflabel="session_replication_role">
+      <term><varname>session_replication_role</varname> (<type>string</type>)</term>
+      <indexterm>
+       <primary><varname>session_replication_role</> configuration parameter</primary>
+      </indexterm>
+      <listitem>
+       <para>
+		Controls the trigger and rule firing for the current session.
+		See <xref linkend="sql-altertable"> for the different options to
+		enable or disable triggers and rules. Setting the variable requires
+		superuser privilege and can only be done before any query plans have
+		been cached. Possible values are <literal>origin</>,
+		<literal>replica</> and <literal>local</>.
+       </para>
+      </listitem>
+     </varlistentry>
+
      <varlistentry id="guc-vacuum-freeze-min-age" xreflabel="vacuum_freeze_min_age">
       <term><varname>vacuum_freeze_min_age</varname> (<type>integer</type>)</term>
       <indexterm>

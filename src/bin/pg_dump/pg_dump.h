@@ -314,6 +314,7 @@ typedef struct _ruleInfo
 	TableInfo  *ruletable;		/* link to table the rule is for */
 	char		ev_type;
 	bool		is_instead;
+	char		ev_enabled;
 	bool		separate;		/* TRUE if must dump as separate item */
 	/* separate is always true for non-ON SELECT rules */
 } RuleInfo;
@@ -330,7 +331,7 @@ typedef struct _triggerInfo
 	char	   *tgconstrname;
 	Oid			tgconstrrelid;
 	char	   *tgconstrrelname;
-	bool		tgenabled;
+	char		tgenabled;
 	bool		tgdeferrable;
 	bool		tginitdeferred;
 } TriggerInfo;

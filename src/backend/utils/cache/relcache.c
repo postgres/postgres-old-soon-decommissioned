@@ -651,6 +651,7 @@ RelationBuildRuleLock(Relation relation)
 
 		rule->event = rewrite_form->ev_type - '0';
 		rule->attrno = rewrite_form->ev_attr;
+		rule->enabled = rewrite_form->ev_enabled;
 		rule->isInstead = rewrite_form->is_instead;
 
 		/*
