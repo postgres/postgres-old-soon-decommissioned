@@ -140,7 +140,7 @@ sub mkvcbuild
         $libecpg->AddIncludeDir('src\port');
         $libecpg->AddLibrary('wsock32.lib');
         $libecpg->AddLibrary($config->{'pthread'} . '\pthreadVC2.lib');
-        $libecpg->AddReference($libpq,$pgtypes);
+        $libecpg->AddReference($libpq,$pgtypes,$libpgport);
 
         my $libecpgcompat =
           $solution->AddProject('libecpg_compat','dll','interfaces',
