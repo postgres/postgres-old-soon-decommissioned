@@ -478,6 +478,12 @@ extern Datum textregexsubstr(PG_FUNCTION_ARGS);
 extern Datum textregexreplace_noopt(PG_FUNCTION_ARGS);
 extern Datum textregexreplace(PG_FUNCTION_ARGS);
 extern Datum similar_escape(PG_FUNCTION_ARGS);
+extern Datum regexp_matches(PG_FUNCTION_ARGS);
+extern Datum regexp_matches_no_flags(PG_FUNCTION_ARGS);
+extern Datum regexp_split_to_table(PG_FUNCTION_ARGS);
+extern Datum regexp_split_to_table_no_flags(PG_FUNCTION_ARGS);
+extern Datum regexp_split_to_array(PG_FUNCTION_ARGS);
+extern Datum regexp_split_to_array_no_flags(PG_FUNCTION_ARGS);
 extern bool regex_flavor_is_basic(void);
 
 /* regproc.c */
