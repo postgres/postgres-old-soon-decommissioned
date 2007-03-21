@@ -249,6 +249,42 @@
  </sect2>
 
  <sect2>
+  <title>Running the regression tests</title>
+
+  <para>
+   To run the regression tests, make sure you have completed the build of all
+   required parts first. Also, make sure that the DLLs required to load all
+   parts of the system (such as the perl and python DLLs for the procedural
+   languages) are present in the system PATH. If they are not, set it through
+   the <filename>buildenv.bat</filename> file. To run the tests, run one of
+   the following commands from the <filename>src\tools\msvc</filename>
+   directory:
+   <screen>
+    <userinput>
+     vcregress check
+    </userinput>
+    <userinput>
+     vcregress installcheck
+    </userinput>
+    <userinput>
+     vcregress plcheck
+    </userinput>
+   </screen>
+
+   To change the schedule used (default is the parallel), append it to the
+   commandline like:
+   <screen>
+    <userinput>
+     vcregress check serial
+    </userinput>
+   </screen>
+
+   For more information about the regression tests, see
+   <xref linkend="regress">.
+  </para>
+ </sect2>
+
+ <sect2>
   <title>Building the documentation</title>
 
   <para>
