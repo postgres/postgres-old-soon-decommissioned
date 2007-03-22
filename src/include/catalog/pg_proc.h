@@ -4095,6 +4095,10 @@ DESCR("map table contents and structure to XML and XML Schema");
 DATA(insert OID = 2930 (  query_to_xml_and_xmlschema  PGNSP PGUID 12 100 0 f f t f s 4 142 "25 16 16 25" _null_ _null_ "{query,nulls,tableforest,targetns}" query_to_xml_and_xmlschema - _null_ ));
 DESCR("map query result and structure to XML and XML Schema");
 
+DATA(insert OID = 2931 (  xmlpath      PGNSP PGUID 12 1 0 f f f f i 3 143 "25 142 1009" _null_ _null_ _null_ xmlpath - _null_ ));
+DESCR("evaluate XPath expression, with namespaces support");
+DATA(insert OID = 2932 (  xmlpath      PGNSP PGUID 14 1 0 f f f f i 2 143 "25 142" _null_ _null_ _null_ "select pg_catalog.xmlpath($1, $2, NULL)" - _null_ ));
+DESCR("evaluate XPath expression");
 
 /* uuid */ 
 DATA(insert OID = 2952 (  uuid_in		   PGNSP PGUID 12 1 0 f f t f i 1 2950 "2275" _null_ _null_ _null_ uuid_in - _null_ ));

@@ -36,6 +36,7 @@ extern Datum xmlconcat2(PG_FUNCTION_ARGS);
 extern Datum texttoxml(PG_FUNCTION_ARGS);
 extern Datum xmltotext(PG_FUNCTION_ARGS);
 extern Datum xmlvalidate(PG_FUNCTION_ARGS);
+extern Datum xmlpath(PG_FUNCTION_ARGS);
 
 extern Datum table_to_xml(PG_FUNCTION_ARGS);
 extern Datum query_to_xml(PG_FUNCTION_ARGS);
