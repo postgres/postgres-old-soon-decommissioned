@@ -117,7 +117,7 @@ p_isalnum(TParser *prs)
 	{
 		if (lc_ctype_is_c())
 		{
-			unsigned int c = *(unsigned int*)(prs->wstr + prs->state->poschar);
+			unsigned int c = *(prs->wstr + prs->state->poschar);
 
 			/*
 			 * any non-ascii symbol with multibyte encoding
