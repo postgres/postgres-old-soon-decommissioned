@@ -572,6 +572,10 @@ pgstat_start(void)
 	return 0;
 }
 
+void allow_immediate_pgstat_restart(void)
+{
+		last_pgstat_start_time = 0;
+}
 
 /* ------------------------------------------------------------
  * Public functions used by backends follow
