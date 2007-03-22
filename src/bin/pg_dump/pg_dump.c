@@ -478,7 +478,7 @@ main(int argc, char **argv)
 	/* open the output file */
 	if (pg_strcasecmp(format, "a") == 0 || pg_strcasecmp(format, "append") == 0)
 	{
-		/* not documented */
+		/* This is used by pg_dumpall, and is not documented */
 		plainText = 1;
 		g_fout = CreateArchive(filename, archNull, 0, archModeAppend);
 	}
