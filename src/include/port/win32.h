@@ -76,42 +76,6 @@
 #define SETVAL 131072
 #define GETPID 262144
 
-/*
- *	Shared memory
- */
-struct shmid_ds
-{
-	int			dummy;
-	int			shm_nattch;
-};
-
-int			shmdt(const void *shmaddr);
-void	   *shmat(int memId, void *shmaddr, int flag);
-int			shmctl(int shmid, int flag, struct shmid_ds * dummy);
-int			shmget(int memKey, int size, int flag);
-
-
-/*
- *	Semaphores
- */
-union semun
-{
-	int			val;
-	struct semid_ds *buf;
-	unsigned short *array;
-};
-
-struct sembuf
-{
-	int			sem_flg;
-	int			sem_op;
-	int			sem_num;
-};
-
-int			semctl(int semId, int semNum, int flag, union semun);
-int			semget(int semKey, int semNum, int flags);
-int			semop(int semId, struct sembuf * sops, int flag);
-
 
 /*
  *	Signal stuff
