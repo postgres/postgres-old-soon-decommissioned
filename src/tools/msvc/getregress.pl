@@ -18,5 +18,29 @@ if ($m =~ /^REGRESS\s*=\s*(.*)$/gm)
 {
     my $t = $1;
     $t =~ s/\s+/ /g;
+
+    if ($m =~ /contrib\/pgcrypto/)
+    {
+
+        # pgcrypto is special since the tests depend on the configuration of the build
+        our $config;
+        require '../../src/tools/msvc/config.pl';
+
+        my $cftests = $config->{openssl}?GetTests("OSSL_TESTS",$m):GetTests("INT_TESTS",$m);
+        my $pgptests = $config->{zlib}?GetTests("ZLIB_TST",$m):GetTests("ZLIB_OFF_TST",$m);
+        $t =~ s/\$\(CF_TESTS\)/$cftests/;
+        $t =~ s/\$\(CF_PGP_TESTS\)/$pgptests/;
+    }
     print "SET TESTS=$t";
+}
+
+sub GetTests
+{
+    my $testname = shift;
+    my $m = shift;
+    if ($m =~ /^$testname\s*=\s*(.*)$/gm)
+    {
+        return $1;
+    }
+    return "";
 }
