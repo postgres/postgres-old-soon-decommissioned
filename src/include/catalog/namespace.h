@@ -32,6 +32,16 @@ typedef struct _FuncCandidateList
 	Oid			args[1];		/* arg types --- VARIABLE LENGTH ARRAY */
 }	*FuncCandidateList;	/* VARIABLE LENGTH STRUCT */
 
+/*
+ *	Structure for xxxOverrideSearchPath functions
+ */
+typedef struct OverrideSearchPath
+{
+	List	   *schemas;		/* OIDs of explicitly named schemas */
+	bool		addCatalog;		/* implicitly prepend pg_catalog? */
+	bool		addTemp;		/* implicitly prepend temp schema? */
+} OverrideSearchPath;
+
 
 extern Oid	RangeVarGetRelid(const RangeVar *relation, bool failOK);
 extern Oid	RangeVarGetCreationNamespace(const RangeVar *newRelation);
@@ -72,8 +82,9 @@ extern bool isTempNamespace(Oid namespaceId);
 extern bool isAnyTempNamespace(Oid namespaceId);
 extern bool isOtherTempNamespace(Oid namespaceId);
 
-extern void PushSpecialNamespace(Oid namespaceId);
-extern void PopSpecialNamespace(Oid namespaceId);
+extern OverrideSearchPath *GetOverrideSearchPath(MemoryContext context);
+extern void PushOverrideSearchPath(OverrideSearchPath *newpath);
+extern void PopOverrideSearchPath(void);
 
 extern Oid	FindConversionByName(List *conname);
 extern Oid	FindDefaultConversionProc(int4 for_encoding, int4 to_encoding);

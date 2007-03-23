@@ -53,6 +53,7 @@ typedef struct CachedPlanSource
 	int			num_params;		/* length of param_types array */
 	bool		fully_planned;	/* do we cache planner or rewriter output? */
 	bool		fixed_result;	/* disallow change in result tupdesc? */
+	struct OverrideSearchPath *search_path;		/* saved search_path */
 	int			generation;		/* counter, starting at 1, for replans */
 	TupleDesc	resultDesc;		/* result type; NULL = doesn't return tuples */
 	struct CachedPlan *plan;	/* link to plan, or NULL if not valid */
