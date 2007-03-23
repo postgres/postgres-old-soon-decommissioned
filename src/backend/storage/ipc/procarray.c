@@ -590,6 +590,11 @@ GetSnapshotData(Snapshot snapshot, bool serializable)
 
 	xmax = ReadNewTransactionId();
 
+	/*
+	 * Spin over procArray checking xid, xmin, and subxids.  The goal is
+	 * to gather all active xids, find the lowest xmin, and try to record
+	 * subxids.
+	 */
 	for (index = 0; index < arrayP->numProcs; index++)
 	{
 		PGPROC	   *proc = arrayP->procs[index];
@@ -614,8 +619,7 @@ GetSnapshotData(Snapshot snapshot, bool serializable)
 
 		if (TransactionIdPrecedes(xid, xmin))
 			xmin = xid;
-		snapshot->xip[count] = xid;
-		count++;
+		snapshot->xip[count++] = xid;
 
 		/* Update globalxmin to be the smallest valid xmin */
 		xid = proc->xmin;
