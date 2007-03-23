@@ -51,6 +51,13 @@ call :del contrib\spi\refint.dll
 call :del contrib\spi\autoinc.dll
 call :del src\test\regress\regress.dll
 
+REM Clean up datafiles built with contrib
+cd contrib
+for /r %%f in (*.sql) do if exist %%f.in del %%f
+REM Clean up tsearch2 which uses inconsistent names
+call :del tsearch2\tsearch2.sql
+call :del tsearch2\uninstall_tsearch2.sql
+
 cd %D%
 goto :eof
 
