@@ -269,6 +269,9 @@
     <userinput>
      vcregress plcheck
     </userinput>
+    <userinput>
+     vcregress contribcheck
+    </userinput>
    </screen>
 
    To change the schedule used (default is the parallel), append it to the
