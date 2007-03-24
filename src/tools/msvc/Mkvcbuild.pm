@@ -205,13 +205,13 @@ sub mkvcbuild
 
     if ($solution->{options}->{xml})
     {
-        $contrib_extraincludes->{'xml2'} = [
+        $contrib_extraincludes->{'pgxml'} = [
             $solution->{options}->{xml} . '\include',
             $solution->{options}->{xslt} . '\include',
             $solution->{options}->{iconv} . '\include'
         ];
 
-        $contrib_extralibs->{'xml2'} = [
+        $contrib_extralibs->{'pgxml'} = [
             $solution->{options}->{xml} . '\lib\libxml2.lib',
             $solution->{options}->{xslt} . '\lib\libxslt.lib'
         ];
@@ -264,7 +264,7 @@ sub mkvcbuild
     }
     closedir($D);
 
-    my $mf = Project::read_file('src\backend\utils\mb\conversion_procs\Makefile');
+    $mf = Project::read_file('src\backend\utils\mb\conversion_procs\Makefile');
     $mf =~ s{\\s*[\r\n]+}{}mg;
     $mf =~ m{DIRS\s*=\s*(.*)$}m || die 'Could not match in conversion makefile' . "\n";
     foreach my $sub (split /\s+/,$1)
@@ -360,10 +360,11 @@ sub AddContrib
     my $n = shift;
     my $mf = Project::read_file('contrib\\' . $n . '\Makefile');
 
-    if ($mf =~ /^MODULE_big/mg)
+    if ($mf =~ /^MODULE_big\s*=\s*(.*)$/mg)
     {
+        my $dn = $1;
         $mf =~ s{\\\s*[\r\n]+}{}mg;
-        my $proj = $solution->AddProject($n, 'dll', 'contrib');
+        my $proj = $solution->AddProject($dn, 'dll', 'contrib');
         $mf =~ /^OBJS\s*=\s*(.*)$/gm || croak "Could not find objects in MODULE_big for $n\n";
         foreach my $o (split /\s+/, $1)
         {
@@ -456,7 +457,9 @@ sub GenerateContribSqlFiles
             {
                 print "Building $out from $in (contrib/$n)...\n";
                 my $cont = Project::read_file("contrib/$n/$in");
-                $cont =~ s/MODULE_PATHNAME/\$libdir\/$n/g;
+                my $dn = $n;
+                if ($mf =~ /^MODULE_big\s*=\s*(.*)$/m) { $dn = $1 }
+                $cont =~ s/MODULE_PATHNAME/\$libdir\/$dn/g;
                 my $o;
                 open($o,">contrib/$n/$out") || croak "Could not write to contrib/$n/$d";
                 print $o $cont;
