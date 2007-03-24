@@ -2094,8 +2094,6 @@ ORDER BY c.ordinal_position;
       <entry><type>cardinal_number</type></entry>
       <entry>Always null, because arrays always have unlimited maximum cardinality in <productname>PostgreSQL</></entry>
      </row>
-
-     </row>
     </tbody>
    </tgroup>
   </table>
