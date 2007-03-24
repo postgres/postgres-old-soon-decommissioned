@@ -313,7 +313,7 @@ sub AddProject
     if ($self->{options}->{nls})
     {
         $proj->AddIncludeDir($self->{options}->{nls} . '\include');
-        $proj->AddLibrary($self->{options}->{nls} . '\lib\intl.lib');
+        $proj->AddLibrary($self->{options}->{nls} . '\lib\libintl.lib');
     }
     if ($self->{options}->{krb5})
     {

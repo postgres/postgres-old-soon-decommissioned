@@ -115,6 +115,15 @@
     </varlistentry>
 
     <varlistentry>
+     <term><productname>Gettext</productname></term>
+     <listitem><para>
+      Gettext is required to build with NLS support, and can be downloaded
+      from <ulink url="http://gnuwin32.sourceforge.net"></>. Note that binaries,
+      dependencies and developer files are all needed.
+     </para></listitem>
+    </varlistentry>
+
+    <varlistentry>
      <term><productname>Microsoft Platform SDK</productname></term>
      <listitem><para>
       It is recommended that you upgrade to the latest available version
