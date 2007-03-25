@@ -2394,6 +2394,42 @@
        <entry><literal>UTF8</literal></entry>
       </row>
 
+      <row>
+       <entry><literal>euc_jis_2004_to_utf8</literal></entry>
+       <entry><literal>EUC_JIS_2004</literal></entry>
+       <entry><literal>UTF8</literal></entry>
+      </row>
+
+      <row>
+       <entry><literal>ut8_to_euc_jis_2004</literal></entry>
+       <entry><literal>UTF8</literal></entry>
+       <entry><literal>EUC_JIS_2004</literal></entry>
+      </row>
+
+      <row>
+       <entry><literal>shift_jis_2004_to_utf8</literal></entry>
+       <entry><literal>SHIFT_JIS_2004</literal></entry>
+       <entry><literal>UTF8</literal></entry>
+      </row>
+
+      <row>
+       <entry><literal>ut8_to_shift_jis_2004</literal></entry>
+       <entry><literal>UTF8</literal></entry>
+       <entry><literal>SHIFT_JIS_2004</literal></entry>
+      </row>
+
+      <row>
+       <entry><literal>euc_jis_2004_to_shift_jis_2004</literal></entry>
+       <entry><literal>EUC_JIS_2004</literal></entry>
+       <entry><literal>SHIFT_JIS_2004</literal></entry>
+      </row>
+
+      <row>
+       <entry><literal>shift_jis_2004_to_euc_jis_2004</literal></entry>
+       <entry><literal>SHIFT_JIS_2004</literal></entry>
+       <entry><literal>EUC_JIS_2004</literal></entry>
+      </row>
+
      </tbody>
     </tgroup>
    </table>

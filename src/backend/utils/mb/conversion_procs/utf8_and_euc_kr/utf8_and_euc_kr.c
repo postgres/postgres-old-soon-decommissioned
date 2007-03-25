@@ -46,8 +46,8 @@ euc_kr_to_utf8(PG_FUNCTION_ARGS)
 	Assert(PG_GETARG_INT32(1) == PG_UTF8);
 	Assert(len >= 0);
 
-	LocalToUtf(src, dest, LUmapEUC_KR,
-			   sizeof(LUmapEUC_KR) / sizeof(pg_local_to_utf), PG_EUC_KR, len);
+	LocalToUtf(src, dest, LUmapEUC_KR, NULL,
+			   sizeof(LUmapEUC_KR) / sizeof(pg_local_to_utf), 0, PG_EUC_KR, len);
 
 	PG_RETURN_VOID();
 }
@@ -63,8 +63,8 @@ utf8_to_euc_kr(PG_FUNCTION_ARGS)
 	Assert(PG_GETARG_INT32(1) == PG_EUC_KR);
 	Assert(len >= 0);
 
-	UtfToLocal(src, dest, ULmapEUC_KR,
-			   sizeof(ULmapEUC_KR) / sizeof(pg_utf_to_local), PG_EUC_KR, len);
+	UtfToLocal(src, dest, ULmapEUC_KR, NULL,
+			   sizeof(ULmapEUC_KR) / sizeof(pg_utf_to_local), 0, PG_EUC_KR, len);
 
 	PG_RETURN_VOID();
 }

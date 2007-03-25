@@ -46,8 +46,8 @@ sjis_to_utf8(PG_FUNCTION_ARGS)
 	Assert(PG_GETARG_INT32(1) == PG_UTF8);
 	Assert(len >= 0);
 
-	LocalToUtf(src, dest, LUmapSJIS,
-			   sizeof(LUmapSJIS) / sizeof(pg_local_to_utf), PG_SJIS, len);
+	LocalToUtf(src, dest, LUmapSJIS, NULL,
+			   sizeof(LUmapSJIS) / sizeof(pg_local_to_utf), 0, PG_SJIS, len);
 
 	PG_RETURN_VOID();
 }
@@ -63,8 +63,8 @@ utf8_to_sjis(PG_FUNCTION_ARGS)
 	Assert(PG_GETARG_INT32(1) == PG_SJIS);
 	Assert(len >= 0);
 
-	UtfToLocal(src, dest, ULmapSJIS,
-			   sizeof(ULmapSJIS) / sizeof(pg_utf_to_local), PG_SJIS, len);
+	UtfToLocal(src, dest, ULmapSJIS, NULL,
+			   sizeof(ULmapSJIS) / sizeof(pg_utf_to_local), 0, PG_SJIS, len);
 
 	PG_RETURN_VOID();
 }
