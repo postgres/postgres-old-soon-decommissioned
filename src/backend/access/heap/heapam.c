@@ -1706,7 +1706,7 @@ l1:
 	if (crosscheck != InvalidSnapshot && result == HeapTupleMayBeUpdated)
 	{
 		/* Perform additional check for serializable RI updates */
-		if (!HeapTupleSatisfiesSnapshot(tp.t_data, crosscheck, buffer))
+		if (!HeapTupleSatisfiesVisibility(&tp, crosscheck, buffer))
 			result = HeapTupleUpdated;
 	}
 
@@ -2025,7 +2025,7 @@ l2:
 	if (crosscheck != InvalidSnapshot && result == HeapTupleMayBeUpdated)
 	{
 		/* Perform additional check for serializable RI updates */
-		if (!HeapTupleSatisfiesSnapshot(oldtup.t_data, crosscheck, buffer))
+		if (!HeapTupleSatisfiesVisibility(&oldtup, crosscheck, buffer))
 			result = HeapTupleUpdated;
 	}
 

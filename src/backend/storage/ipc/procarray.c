@@ -484,7 +484,7 @@ GetOldestXmin(bool allDbs, bool ignoreVacuum)
  * limited cache area for subxact XIDs, full information may not be
  * available.  If we find any overflowed subxid arrays, we have to mark
  * the snapshot's subxid data as overflowed, and extra work will need to
- * be done to determine what's running (see XidInSnapshot() in tqual.c).
+ * be done to determine what's running (see XidInMVCCSnapshot() in tqual.c).
  *
  * We also update the following backend-global variables:
  *		TransactionXmin: the oldest xmin of any snapshot in use in the

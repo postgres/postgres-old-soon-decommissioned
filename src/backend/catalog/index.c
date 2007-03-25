@@ -1828,10 +1828,11 @@ validate_index_heapscan(Relation heapRelation,
 			 */
 			if (indexInfo->ii_Unique)
 			{
-				/* must hold a buffer lock to call HeapTupleSatisfiesNow */
+				/* must lock buffer to call HeapTupleSatisfiesVisibility */
 				LockBuffer(scan->rs_cbuf, BUFFER_LOCK_SHARE);
 
-				if (HeapTupleSatisfiesNow(heapTuple->t_data, scan->rs_cbuf))
+				if (HeapTupleSatisfiesVisibility(heapTuple, SnapshotNow,
+												 scan->rs_cbuf))
 					check_unique = true;
 				else
 					check_unique = false;
