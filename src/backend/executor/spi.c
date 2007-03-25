@@ -1548,7 +1548,7 @@ _SPI_execute_plan(SPIPlanPtr plan, Datum *Values, const char *Nulls,
 				else
 				{
 					ProcessUtility(stmt,
-								   NULL, /* XXX provide query string? */
+								   plansource->query_string,
 								   paramLI,
 								   false,				/* not top level */
 								   dest,
