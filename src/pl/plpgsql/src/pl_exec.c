@@ -2327,11 +2327,6 @@ exec_prepare_plan(PLpgSQL_execstate *estate,
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 						 errmsg("cannot COPY to/from client in PL/pgSQL")));
-			case SPI_ERROR_CURSOR:
-				ereport(ERROR,
-						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					errmsg("cannot manipulate cursors directly in PL/pgSQL"),
-						 errhint("Use PL/pgSQL's cursor features instead.")));
 			case SPI_ERROR_TRANSACTION:
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
@@ -2631,11 +2626,6 @@ exec_stmt_dynexecute(PLpgSQL_execstate *estate,
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 					 errmsg("cannot COPY to/from client in PL/pgSQL")));
-		case SPI_ERROR_CURSOR:
-			ereport(ERROR,
-					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("cannot manipulate cursors directly in PL/pgSQL"),
-					 errhint("Use PL/pgSQL's cursor features instead.")));
 		case SPI_ERROR_TRANSACTION:
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),

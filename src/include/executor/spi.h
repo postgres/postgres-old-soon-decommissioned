@@ -61,7 +61,7 @@ typedef struct _SPI_plan *SPIPlanPtr;
 #define SPI_ERROR_COPY			(-2)
 #define SPI_ERROR_OPUNKNOWN		(-3)
 #define SPI_ERROR_UNCONNECTED	(-4)
-#define SPI_ERROR_CURSOR		(-5)
+#define SPI_ERROR_CURSOR		(-5)			/* not used anymore */
 #define SPI_ERROR_ARGUMENT		(-6)
 #define SPI_ERROR_PARAM			(-7)
 #define SPI_ERROR_TRANSACTION	(-8)
