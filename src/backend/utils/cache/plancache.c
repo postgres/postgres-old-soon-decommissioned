@@ -812,6 +812,9 @@ PlanCacheComputeResultDesc(List *stmt_list)
 /*
  * PlanCacheCallback
  *		Relcache inval callback function
+ *
+ * Invalidate all plans mentioning the given rel, or all plans mentioning
+ * any rel at all if relid == InvalidOid.
  */
 static void
 PlanCacheCallback(Datum arg, Oid relid)
@@ -843,7 +846,7 @@ PlanCacheCallback(Datum arg, Oid relid)
 
 					if (rte->rtekind != RTE_RELATION)
 						continue;
-					if (relid == rte->relid)
+					if (relid == rte->relid || relid == InvalidOid)
 					{
 						/* Invalidate the plan! */
 						plan->dead = true;
@@ -883,9 +886,10 @@ PlanCacheCallback(Datum arg, Oid relid)
 static void
 InvalRelid(Oid relid, LOCKMODE lockmode, InvalRelidContext *context)
 {
-	if (relid == context->inval_relid)
+	if (relid == context->inval_relid || context->inval_relid == InvalidOid)
 		context->plan->dead = true;
 }
+
 
 /*
  * HaveCachedPlans 
@@ -896,4 +900,3 @@ HaveCachedPlans(void)
 {
 	return (cached_plans_list != NIL);
 }
-
