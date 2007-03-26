@@ -40,7 +40,7 @@ findwrd(char *in, char **end)
 	while (*in && isspace((unsigned char) *in))
 		in++;
 
-	if (!in)
+	if (*in=='\0')
 		return NULL;
 	start = in;
 
@@ -103,10 +103,7 @@ syn_init(PG_FUNCTION_ARGS)
 
 	while (fgets(buf, sizeof(buf), fin))
 	{
-		slen = strlen(buf) - 1;
-		buf[slen] = '\0';
-		if (*buf == '\0')
-			continue;
+		pg_verifymbstr(buf, strlen(buf), false);
 		if (cur == d->len)
 		{
 			d->len = (d->len) ? 2 * d->len : 16;
