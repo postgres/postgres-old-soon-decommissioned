@@ -1551,6 +1551,9 @@ CreateCommandTag(Node *parsetree)
 				case OBJECT_FUNCTION:
 					tag = "ALTER FUNCTION";
 					break;
+				case OBJECT_LANGUAGE:
+					tag = "ALTER LANGUAGE";
+					break;
 				case OBJECT_OPERATOR:
 					tag = "ALTER OPERATOR";
 					break;

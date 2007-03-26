@@ -4447,12 +4447,12 @@ RenameStmt: ALTER AGGREGATE func_name aggr_args RENAME TO name
 					n->newname = $6;
 					$$ = (Node *)n;
 				}
-			| ALTER LANGUAGE name RENAME TO name
+			| ALTER opt_procedural LANGUAGE name RENAME TO name
 				{
 					RenameStmt *n = makeNode(RenameStmt);
 					n->renameType = OBJECT_LANGUAGE;
-					n->subname = $3;
-					n->newname = $6;
+					n->subname = $4;
+					n->newname = $7;
 					$$ = (Node *)n;
 				}
 			| ALTER OPERATOR CLASS any_name USING access_method RENAME TO name
@@ -4651,6 +4651,14 @@ AlterOwnerStmt: ALTER AGGREGATE func_name aggr_args OWNER TO RoleId
 					n->objectType = OBJECT_FUNCTION;
 					n->object = $3;
 					n->objarg = extractArgTypes($4);
+					n->newowner = $7;
+					$$ = (Node *)n;
+				}
+			| ALTER opt_procedural LANGUAGE name OWNER TO RoleId
+				{
+					AlterOwnerStmt *n = makeNode(AlterOwnerStmt);
+					n->objectType = OBJECT_LANGUAGE;
+					n->object = list_make1($4);
 					n->newowner = $7;
 					$$ = (Node *)n;
 				}

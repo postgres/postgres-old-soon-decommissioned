@@ -203,6 +203,10 @@ ExecAlterOwnerStmt(AlterOwnerStmt *stmt)
 			AlterFunctionOwner(stmt->object, stmt->objarg, newowner);
 			break;
 
+		case OBJECT_LANGUAGE:
+			AlterLanguageOwner((char *) linitial(stmt->object), newowner);
+			break;
+
 		case OBJECT_OPERATOR:
 			Assert(list_length(stmt->objarg) == 2);
 			AlterOperatorOwner(stmt->object,
