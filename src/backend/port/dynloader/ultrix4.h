@@ -16,21 +16,6 @@
  *
  *	dl.h
  *		header file for the Dynamic Loader Library
- *
- *
- *	Copyright (c) 1993 Andrew K. Yu, University of California at Berkeley
- *	All rights reserved.
- *
- *	Permission to use, copy, modify, and distribute this software and its
- *	documentation for educational, research, and non-profit purposes and
- *	without fee is hereby granted, provided that the above copyright
- *	notice appear in all copies and that both that copyright notice and
- *	this permission notice appear in supporting documentation. Permission
- *	to incorporate this software into commercial products can be obtained
- *	from the author. The University of California and the author make
- *	no representations about the suitability of this software for any
- *	purpose. It is provided "as is" without express or implied warranty.
- *
  */
 #ifndef _DL_HEADER_
 #define _DL_HEADER_
