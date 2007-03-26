@@ -1328,7 +1328,7 @@ AC_CHECK_TYPES([int8, uint8, int64, uint64], [], [],
 AC_CHECK_TYPES(sig_atomic_t, [], [], [#include <signal.h>])
 
 
-if test x"$template" != x"win32"
+if "$PORTNAME" != "win32"
 then
 PGAC_FUNC_POSIX_SIGNALS
 if test "$pgac_cv_func_posix_signals" != yes -a "$enable_thread_safety" = yes; then
@@ -1415,7 +1415,7 @@ AC_CHECK_PROGS(SGMLSPL, sgmlspl)
 # defined.  Cross compiling throws a warning.
 #
 if test "$enable_thread_safety_force" = yes; then
-if test x"$template" != x"win32"
+if "$PORTNAME" != "win32"
 then
   AC_MSG_WARN([
 *** Skipping thread test program.  --enable-thread-safety-force was used.
@@ -1426,7 +1426,7 @@ else
 AC_MSG_WARN([*** skipping thread test on Win32])
 fi
 elif test "$enable_thread_safety" = yes; then
-if test x"$template" != x"win32"
+if "$PORTNAME" != "win32"
 then
 AC_MSG_CHECKING([thread safety of required library functions])
 
