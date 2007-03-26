@@ -511,8 +511,8 @@
 
   <para>
    This utility, like most other <productname>PostgreSQL</> utilities,
-   also uses the environment variables supported by <xref 
-   linkend="libpq-envars" endterm="libpq">.
+   also uses the environment variables supported by <application>libpq</>
+   (see <xref linkend="libpq-envars">).
   </para>
 
  </refsect1>
