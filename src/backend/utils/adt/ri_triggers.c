@@ -3871,6 +3871,7 @@ ri_HashCompareOp(Oid eq_opr, Oid typeid)
 		Oid		lefttype,
 				righttype,
 				castfunc;
+		bool	arrayCoerce;
 
 		/* We always need to know how to call the equality operator */
 		fmgr_info_cxt(get_opcode(eq_opr), &entry->eq_opr_finfo,
@@ -3879,13 +3880,19 @@ ri_HashCompareOp(Oid eq_opr, Oid typeid)
 		/*
 		 * If we chose to use a cast from FK to PK type, we may have to
 		 * apply the cast function to get to the operator's input type.
+		 *
+		 * XXX eventually it would be good to support array-coercion cases
+		 * here and in ri_AttributesEqual().  At the moment there is no
+		 * point because cases involving nonidentical array types will
+		 * be rejected at constraint creation time.
 		 */
 		op_input_types(eq_opr, &lefttype, &righttype);
 		Assert(lefttype == righttype);
 		if (typeid == lefttype)
 			castfunc = InvalidOid;				/* simplest case */
 		else if (!find_coercion_pathway(lefttype, typeid, COERCION_IMPLICIT,
-										&castfunc))
+										&castfunc, &arrayCoerce)
+				 || arrayCoerce)				/* XXX fixme */
 		{
 			/* If target is ANYARRAY, assume it's OK, else punt. */
 			if (lefttype != ANYARRAYOID)

@@ -77,7 +77,8 @@ extern Oid resolve_generic_type(Oid declared_type,
 
 extern bool find_coercion_pathway(Oid targetTypeId, Oid sourceTypeId,
 					  CoercionContext ccontext,
-					  Oid *funcid);
-extern Oid	find_typmod_coercion_function(Oid typeId);
+					  Oid *funcid, bool *arrayCoerce);
+extern bool find_typmod_coercion_function(Oid typeId,
+					  Oid *funcid, bool *arrayCoerce);
 
 #endif   /* PARSE_COERCE_H */

@@ -626,6 +626,20 @@ typedef struct FieldStoreState
 } FieldStoreState;
 
 /* ----------------
+ *		ArrayCoerceExprState node
+ * ----------------
+ */
+typedef struct ArrayCoerceExprState
+{
+	ExprState	xprstate;
+	ExprState  *arg;			/* input array value */
+	Oid			resultelemtype;	/* element type of result array */
+	FmgrInfo	elemfunc;		/* lookup info for element coercion function */
+	/* use struct pointer to avoid including array.h here */
+	struct ArrayMapState *amstate;	/* workspace for array_map */
+} ArrayCoerceExprState;
+
+/* ----------------
  *		ConvertRowtypeExprState node
  * ----------------
  */

@@ -3123,6 +3123,9 @@ isSimpleNode(Node *node, Node *parentNode, int prettyFlags)
 		case T_RelabelType:
 			return isSimpleNode((Node *) ((RelabelType *) node)->arg,
 								node, prettyFlags);
+		case T_ArrayCoerceExpr:
+			return isSimpleNode((Node *) ((ArrayCoerceExpr *) node)->arg,
+								node, prettyFlags);
 		case T_ConvertRowtypeExpr:
 			return isSimpleNode((Node *) ((ConvertRowtypeExpr *) node)->arg,
 								node, prettyFlags);
@@ -3583,6 +3586,27 @@ get_rule_expr(Node *node, deparse_context *context,
 					get_coercion_expr(arg, context,
 									  relabel->resulttype,
 									  relabel->resulttypmod,
+									  node);
+				}
+			}
+			break;
+
+		case T_ArrayCoerceExpr:
+			{
+				ArrayCoerceExpr *acoerce = (ArrayCoerceExpr *) node;
+				Node	   *arg = (Node *) acoerce->arg;
+
+				if (acoerce->coerceformat == COERCE_IMPLICIT_CAST &&
+					!showimplicit)
+				{
+					/* don't show the implicit cast */
+					get_rule_expr_paren(arg, context, false, node);
+				}
+				else
+				{
+					get_coercion_expr(arg, context,
+									  acoerce->resulttype,
+									  acoerce->resulttypmod,
 									  node);
 				}
 			}

@@ -756,13 +756,15 @@ func_get_detail(List *funcname,
 				Oid			sourceType = argtypes[0];
 				Node	   *arg1 = linitial(fargs);
 				Oid			cfuncid;
+				bool		arrayCoerce;
 
 				if ((sourceType == UNKNOWNOID && IsA(arg1, Const)) ||
 					(find_coercion_pathway(targetType, sourceType,
-										   COERCION_EXPLICIT, &cfuncid) &&
-					 cfuncid == InvalidOid))
+										   COERCION_EXPLICIT,
+										   &cfuncid, &arrayCoerce) &&
+					 cfuncid == InvalidOid && !arrayCoerce))
 				{
-					/* Yup, it's a type coercion */
+					/* Yup, it's a trivial type coercion */
 					*funcid = InvalidOid;
 					*rettype = targetType;
 					*retset = false;

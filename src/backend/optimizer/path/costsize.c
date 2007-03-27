@@ -1891,6 +1891,15 @@ cost_qual_eval_walker(Node *node, cost_qual_eval_context *context)
 		context->total.per_tuple += get_func_cost(saop->opfuncid) *
 			cpu_operator_cost * estimate_array_length(arraynode) * 0.5;
 	}
+	else if (IsA(node, ArrayCoerceExpr))
+	{
+		ArrayCoerceExpr *acoerce = (ArrayCoerceExpr *) node;
+		Node	   *arraynode = (Node *) acoerce->arg;
+
+		if (OidIsValid(acoerce->elemfuncid))
+			context->total.per_tuple += get_func_cost(acoerce->elemfuncid) *
+				cpu_operator_cost * estimate_array_length(arraynode);
+	}
 	else if (IsA(node, RowCompareExpr))
 	{
 		/* Conservatively assume we will check all the columns */

@@ -870,6 +870,19 @@ _outRelabelType(StringInfo str, RelabelType *node)
 }
 
 static void
+_outArrayCoerceExpr(StringInfo str, ArrayCoerceExpr *node)
+{
+	WRITE_NODE_TYPE("ARRAYCOERCEEXPR");
+
+	WRITE_NODE_FIELD(arg);
+	WRITE_OID_FIELD(elemfuncid);
+	WRITE_OID_FIELD(resulttype);
+	WRITE_INT_FIELD(resulttypmod);
+	WRITE_BOOL_FIELD(isExplicit);
+	WRITE_ENUM_FIELD(coerceformat, CoercionForm);
+}
+
+static void
 _outConvertRowtypeExpr(StringInfo str, ConvertRowtypeExpr *node)
 {
 	WRITE_NODE_TYPE("CONVERTROWTYPEEXPR");
@@ -2148,6 +2161,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_RelabelType:
 				_outRelabelType(str, obj);
+				break;
+			case T_ArrayCoerceExpr:
+				_outArrayCoerceExpr(str, obj);
 				break;
 			case T_ConvertRowtypeExpr:
 				_outConvertRowtypeExpr(str, obj);

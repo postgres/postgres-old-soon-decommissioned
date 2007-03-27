@@ -551,6 +551,29 @@ typedef struct RelabelType
 } RelabelType;
 
 /* ----------------
+ * ArrayCoerceExpr
+ *
+ * ArrayCoerceExpr represents a type coercion from one array type to another,
+ * which is implemented by applying the indicated element-type coercion
+ * function to each element of the source array.  If elemfuncid is InvalidOid
+ * then the element types are binary-compatible, but the coercion still
+ * requires some effort (we have to fix the element type ID stored in the
+ * array header).
+ * ----------------
+ */
+
+typedef struct ArrayCoerceExpr
+{
+	Expr		xpr;
+	Expr	   *arg;			/* input expression (yields an array) */
+	Oid			elemfuncid;		/* OID of element coercion function, or 0 */
+	Oid			resulttype;		/* output type of coercion (an array type) */
+	int32		resulttypmod;	/* output typmod (also element typmod) */
+	bool		isExplicit;		/* conversion semantics flag to pass to func */
+	CoercionForm coerceformat;	/* how to display this node */
+} ArrayCoerceExpr;
+
+/* ----------------
  * ConvertRowtypeExpr
  *
  * ConvertRowtypeExpr represents a type coercion from one composite type

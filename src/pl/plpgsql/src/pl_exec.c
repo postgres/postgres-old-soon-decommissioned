@@ -4563,6 +4563,9 @@ exec_simple_check_node(Node *node)
 		case T_RelabelType:
 			return exec_simple_check_node((Node *) ((RelabelType *) node)->arg);
 
+		case T_ArrayCoerceExpr:
+			return exec_simple_check_node((Node *) ((ArrayCoerceExpr *) node)->arg);
+
 		case T_ConvertRowtypeExpr:
 			return exec_simple_check_node((Node *) ((ConvertRowtypeExpr *) node)->arg);
 

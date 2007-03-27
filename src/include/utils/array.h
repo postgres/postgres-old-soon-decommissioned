@@ -198,9 +198,6 @@ extern Datum arraycontained(PG_FUNCTION_ARGS);
 extern Datum array_dims(PG_FUNCTION_ARGS);
 extern Datum array_lower(PG_FUNCTION_ARGS);
 extern Datum array_upper(PG_FUNCTION_ARGS);
-extern Datum array_type_coerce(PG_FUNCTION_ARGS);
-extern Datum array_type_length_coerce(PG_FUNCTION_ARGS);
-extern Datum array_length_coerce(PG_FUNCTION_ARGS);
 extern Datum array_larger(PG_FUNCTION_ARGS);
 extern Datum array_smaller(PG_FUNCTION_ARGS);
 
