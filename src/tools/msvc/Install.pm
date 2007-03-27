@@ -43,6 +43,11 @@ sub Install
     CopySolutionOutput($conf, $target);
     copy($target . '/lib/libpq.dll', $target . '/bin/libpq.dll');
     CopySetOfFiles('config files', "*.sample", $target . '/share/');
+    CopyFiles(
+        'Import libraries', $target .'/lib/',
+        "$conf\\", "postgres\\postgres.lib",
+        "libpq\\libpq.lib", "libecpg\\libecpg.lib"
+    );
     CopySetOfFiles('timezone names', 'src\timezone\tznames\*.txt',$target . '/share/timezonesets/');
     CopyFiles(
         'timezone sets',
