@@ -2328,10 +2328,6 @@ pgstat_setup_memcxt(void)
 void
 pgstat_clear_snapshot(void)
 {
-	/* In an autovacuum worker process we keep the stats forever */
-	if (IsAutoVacuumWorkerProcess())
-		return;
-
 	/* Release memory, if any was allocated */
 	if (pgStatLocalContext)
 		MemoryContextDelete(pgStatLocalContext);
