@@ -1239,12 +1239,24 @@ exec_parse_message(const char *query_string,	/* string to execute */
 	}
 	else
 	{
-		/* query_string needs to be copied into unnamed_stmt_context */
-		/* the rest is there already */
+		/*
+		 * paramTypes and query_string need to be copied into
+		 * unnamed_stmt_context.  The rest is there already
+		 */
+		Oid	   *newParamTypes;
+
+		if (numParams > 0)
+		{
+			newParamTypes = (Oid *) palloc(numParams * sizeof(Oid));
+			memcpy(newParamTypes, paramTypes, numParams * sizeof(Oid));
+		}
+		else
+			newParamTypes = NULL;
+
 		unnamed_stmt_psrc = FastCreateCachedPlan(raw_parse_tree,
 												 pstrdup(query_string),
 												 commandTag,
-												 paramTypes,
+												 newParamTypes,
 												 numParams,
 												 stmt_list,
 												 fully_planned,
