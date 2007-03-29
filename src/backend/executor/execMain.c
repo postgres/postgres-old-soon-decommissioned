@@ -2541,14 +2541,8 @@ CloseIntoRel(QueryDesc *queryDesc)
 	/* OpenIntoRel might never have gotten called */
 	if (estate->es_into_relation_descriptor)
 	{
-		/*
-		 * If we skipped using WAL, and it's not a temp relation, we must
-		 * force the relation down to disk before it's safe to commit the
-		 * transaction.  This requires forcing out any dirty buffers and then
-		 * doing a forced fsync.
-		 */
-		if (!estate->es_into_relation_use_wal &&
-			!estate->es_into_relation_descriptor->rd_istemp)
+		/* If we skipped using WAL, must heap_sync before commit */
+		if (!estate->es_into_relation_use_wal)
 			heap_sync(estate->es_into_relation_descriptor);
 
 		/* close rel, but keep lock until commit */
