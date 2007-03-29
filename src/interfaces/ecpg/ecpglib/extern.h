@@ -6,6 +6,7 @@
 #include "postgres_fe.h"
 #include "libpq-fe.h"
 #include "sqlca.h"
+#include "ecpg_config.h"
 
 enum COMPAT_MODE
 {

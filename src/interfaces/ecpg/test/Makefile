@@ -11,6 +11,9 @@ TEMP_PORT = 5$(DEF_PGPORT)
 # default encoding
 MULTIBYTE = SQL_ASCII
 
+# threading
+THREAD := $(shell grep -q "define ENABLE_THREAD_SAFETY" ../include/ecpg_config.h && echo "--enable-threading")
+
 # locale
 NOLOCALE =
 ifdef NO_LOCALE
@@ -75,11 +78,11 @@ endif
 
 
 check: all
-	sh ./pg_regress  --dbname=regress1 --temp-install --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE)
+	sh ./pg_regress  --dbname=regress1 --temp-install --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE) $(THREAD)
 
 # the same options, but with --listen-on-tcp
 checktcp: all
-	sh ./pg_regress  --dbname=regress1 --temp-install --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE) --listen-on-tcp
+	sh ./pg_regress  --dbname=regress1 --temp-install --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE) --listen-on-tcp $(THREAD)
 
 installcheck: all
 	sh ./pg_regress  --dbname=regress1 --top-builddir=$(top_builddir) --load-language=plpgsql $(NOLOCALE)
