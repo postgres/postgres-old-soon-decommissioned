@@ -162,15 +162,6 @@
     </varlistentry>
 
     <varlistentry>
-     <term><productname>pthreads</productname></term>
-     <listitem><para>
-      Required for building the <application>ECPG</application> libraries.
-      Binaries can be downloaded from
-      <ulink url="ftp://sources.redhat.com/pub/pthreads-win32"></>.
-     </para></listitem>
-    </varlistentry>
-
-    <varlistentry>
      <term><productname>Python</productname></term>
      <listitem><para>
       Required for building <application>PL/Python</application>. Binaries can
