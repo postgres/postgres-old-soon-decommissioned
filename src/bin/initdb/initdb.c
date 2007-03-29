@@ -709,8 +709,7 @@ get_encoding_id(char *encoding_name)
 
 	if (encoding_name && *encoding_name)
 	{
-		if ((enc = pg_char_to_encoding(encoding_name)) >= 0 &&
-			pg_valid_server_encoding(encoding_name) >= 0)
+		if ((enc = pg_valid_server_encoding(encoding_name)) >= 0)
 			return encodingid_to_string(enc);
 	}
 	fprintf(stderr, _("%s: \"%s\" is not a valid server encoding name\n"),
