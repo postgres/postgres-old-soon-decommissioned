@@ -4458,7 +4458,7 @@ ldap://ldap.mycompany.com/dc=mycompany,dc=com?uniqueMember?one?(cn=mydatabase)
    <filename>%APPDATA%\postgresql\root.crt</filename>.)
    The SSL connection will
    fail if the server does not present a certificate; therefore, to
-   use this feature the server must also have a <filename>root.crt</> file.
+   use this feature the server must have a <filename>server.crt</> file.
    Certificate Revocation List (CRL) entries are also checked if the file
    <filename>~/.postgresql/root.crl</filename> exists (<filename>%APPDATA%\postgresql\root.crl</filename>
    on Microsoft Windows).
