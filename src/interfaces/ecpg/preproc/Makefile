@@ -74,7 +74,7 @@ uninstall:
 	rm -f '$(DESTDIR)$(bindir)/ecpg$(X)'
 
 clean distclean:
-	rm -f *.o ecpg$(X)
+	rm -f *.o ecpg$(X) parser.c
 # garbage from partial builds
 	@rm -f y.tab.c y.tab.h
 # garbage from development
