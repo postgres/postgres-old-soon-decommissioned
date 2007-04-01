@@ -4100,6 +4100,20 @@ DESCR("map table contents and structure to XML and XML Schema");
 DATA(insert OID = 2930 (  query_to_xml_and_xmlschema  PGNSP PGUID 12 100 0 f f t f s 4 142 "25 16 16 25" _null_ _null_ "{query,nulls,tableforest,targetns}" query_to_xml_and_xmlschema - _null_ ));
 DESCR("map query result and structure to XML and XML Schema");
 
+DATA(insert OID = 2933 (  schema_to_xml               PGNSP PGUID 12 100 0 f f t f s 4 142 "19 16 16 25" _null_ _null_ "{schema,nulls,tableforest,targetns}" schema_to_xml - _null_ ));
+DESCR("map schema contents to XML");
+DATA(insert OID = 2934 (  schema_to_xmlschema         PGNSP PGUID 12 100 0 f f t f s 4 142 "19 16 16 25" _null_ _null_ "{schema,nulls,tableforest,targetns}" schema_to_xmlschema - _null_ ));
+DESCR("map schema structure to XML Schema");
+DATA(insert OID = 2935 (  schema_to_xml_and_xmlschema PGNSP PGUID 12 100 0 f f t f s 4 142 "19 16 16 25" _null_ _null_ "{schema,nulls,tableforest,targetns}" schema_to_xml_and_xmlschema - _null_ ));
+DESCR("map schema contents and structure to XML and XML Schema");
+
+DATA(insert OID = 2936 (  database_to_xml             PGNSP PGUID 12 100 0 f f t f s 3 142 "16 16 25" _null_ _null_ "{nulls,tableforest,targetns}" database_to_xml - _null_ ));
+DESCR("map database contents to XML");
+DATA(insert OID = 2937 (  database_to_xmlschema       PGNSP PGUID 12 100 0 f f t f s 3 142 "16 16 25" _null_ _null_ "{nulls,tableforest,targetns}" database_to_xmlschema - _null_ ));
+DESCR("map database structure to XML Schema");
+DATA(insert OID = 2938 (  database_to_xml_and_xmlschema PGNSP PGUID 12 100 0 f f t f s 3 142 "16 16 25" _null_ _null_ "{nulls,tableforest,targetns}" database_to_xml_and_xmlschema - _null_ ));
+DESCR("map database contents and structure to XML and XML Schema");
+
 DATA(insert OID = 2931 (  xmlpath      PGNSP PGUID 12 1 0 f f f f i 3 143 "25 142 1009" _null_ _null_ _null_ xmlpath - _null_ ));
 DESCR("evaluate XPath expression, with namespaces support");
 DATA(insert OID = 2932 (  xmlpath      PGNSP PGUID 14 1 0 f f f f i 2 143 "25 142" _null_ _null_ _null_ "select pg_catalog.xmlpath($1, $2, NULL)" - _null_ ));
