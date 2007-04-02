@@ -67,6 +67,8 @@ sub Install
     CopyIncludeFiles($target);
 
     GenerateNLSFiles($target,$config->{nls}) if ($config->{nls});
+
+    print "Installation complete.\n";
 }
 
 sub EnsureDirectories
@@ -336,7 +338,7 @@ sub CopyIncludeFiles
 
         EnsureDirectories($target . '/include/postgresql/server', $d);
         system(
-            "xcopy /s /i /q /r /y src\\include\\$d\\*.h $target\\include\\postgresql\\server\\$d\\")
+            "xcopy /s /i /q /r /y src\\include\\$d\\*.h \"$target\\include\\postgresql\\server\\$d\\\"")
           && croak("Failed to copy include directory $d\n");
     }
     closedir($D);
