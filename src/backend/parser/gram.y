@@ -4834,27 +4834,33 @@ DropRuleStmt:
  *
  *****************************************************************************/
 
-NotifyStmt: NOTIFY qualified_name
+NotifyStmt: NOTIFY ColId
 				{
 					NotifyStmt *n = makeNode(NotifyStmt);
-					n->relation = $2;
+					n->relation = makeNode(RangeVar);
+					n->relation->relname = $2;
+					n->relation->schemaname = NULL;
 					$$ = (Node *)n;
 				}
 		;
 
-ListenStmt: LISTEN qualified_name
+ListenStmt: LISTEN ColId
 				{
 					ListenStmt *n = makeNode(ListenStmt);
-					n->relation = $2;
+					n->relation = makeNode(RangeVar);
+					n->relation->relname = $2;
+					n->relation->schemaname = NULL;
 					$$ = (Node *)n;
 				}
 		;
 
 UnlistenStmt:
-			UNLISTEN qualified_name
+			UNLISTEN ColId
 				{
 					UnlistenStmt *n = makeNode(UnlistenStmt);
-					n->relation = $2;
+					n->relation = makeNode(RangeVar);
+					n->relation->relname = $2;
+					n->relation->schemaname = NULL;
 					$$ = (Node *)n;
 				}
 			| UNLISTEN '*'
