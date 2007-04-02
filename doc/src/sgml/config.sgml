@@ -3591,7 +3591,7 @@ SELECT * FROM parent WHERE key = 2400;
        <primary><varname>SET XML OPTION</></primary>
       </indexterm>
       <indexterm>
-       <primary><varname>XML option</></primary>
+       <primary>XML option</primary>
       </indexterm>
       <listitem>
        <para>
