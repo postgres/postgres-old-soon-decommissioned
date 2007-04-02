@@ -45,6 +45,15 @@ cstring_enum(char *name, Oid enumtypoid)
 	HeapTuple tup;
 	Oid enumoid;
 
+	/* must check length to prevent Assert failure within SearchSysCache */
+
+	if (strlen(name) >= NAMEDATALEN)
+        ereport(ERROR,
+                (errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+                 errmsg("invalid input value for enum %s: \"%s\"",
+						format_type_be(enumtypoid),
+                        name)));
+
 	tup = SearchSysCache(ENUMTYPOIDNAME,
 						 ObjectIdGetDatum(enumtypoid),
 						 CStringGetDatum(name),
