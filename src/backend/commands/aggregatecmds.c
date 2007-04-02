@@ -176,9 +176,8 @@ DefineAggregate(List *name, List *args, bool oldstyle, List *parameters)
 	 * in some cases (AggregateCreate will check).
 	 */
 	transTypeId = typenameTypeId(NULL, transType);
-	if (get_typtype(transTypeId) == 'p' &&
-		transTypeId != ANYARRAYOID &&
-		transTypeId != ANYELEMENTOID)
+	if (get_typtype(transTypeId) == TYPTYPE_PSEUDO &&
+		!IsPolymorphicType(transTypeId))
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
 				 errmsg("aggregate transition data type cannot be %s",

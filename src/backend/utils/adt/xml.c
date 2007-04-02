@@ -2648,7 +2648,7 @@ map_sql_type_to_xml_name(Oid typeoid, int typmod)
 			Form_pg_type typtuple = (Form_pg_type) GETSTRUCT(tuple);
 
 			appendStringInfoString(&result,
-								   map_multipart_sql_identifier_to_xml_name((typtuple->typtype == 'd') ? "Domain" : "UDT",
+								   map_multipart_sql_identifier_to_xml_name((typtuple->typtype == TYPTYPE_DOMAIN) ? "Domain" : "UDT",
 																			get_database_name(MyDatabaseId),
 																			get_namespace_name(typtuple->typnamespace),
 																			NameStr(typtuple->typname)));
@@ -2877,7 +2877,7 @@ map_sql_type_to_xmlschema_type(Oid typeoid, int typmod)
 								 break;
 
 			default:
-				if (get_typtype(typeoid) == 'd')
+				if (get_typtype(typeoid) == TYPTYPE_DOMAIN)
 				{
 					Oid base_typeoid;
 					int32 base_typmod = -1;

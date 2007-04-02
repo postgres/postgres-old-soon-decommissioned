@@ -73,6 +73,12 @@ hashoid(PG_FUNCTION_ARGS)
 }
 
 Datum
+hashenum(PG_FUNCTION_ARGS)
+{
+    PG_RETURN_UINT32(~((uint32) PG_GETARG_OID(0)));
+}
+
+Datum
 hashfloat4(PG_FUNCTION_ARGS)
 {
 	float4		key = PG_GETARG_FLOAT4(0);

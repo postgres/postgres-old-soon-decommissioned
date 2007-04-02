@@ -4149,6 +4149,46 @@ DESCR("convert text to uuid");
 DATA(insert OID = 2965 (  text PGNSP	   PGUID 12 1 0 f f t f i 1 25 "2950" _null_ _null_ _null_ uuid_text - _null_ ));
 DESCR("convert uuid to text");
 
+/* enum related procs */
+DATA(insert OID = 3504 (  anyenum_in	PGNSP PGUID 12 1 0 f f t f i 1 3500 "2275" _null_ _null_ _null_ anyenum_in - _null_ ));
+DESCR("I/O");
+DATA(insert OID = 3505 (  anyenum_out	PGNSP PGUID 12 1 0 f f t f s 1 2275 "3500" _null_ _null_ _null_ anyenum_out - _null_ ));
+DESCR("I/O");
+DATA(insert OID = 3506 (  enum_in		PGNSP PGUID 12 1 0 f f t f s 2 3500 "2275 26" _null_ _null_ _null_ enum_in - _null_ ));
+DESCR("I/O");
+DATA(insert OID = 3507 (  enum_out		PGNSP PGUID 12 1 0 f f t f s 1 2275 "3500" _null_ _null_ _null_ enum_out - _null_ ));
+DESCR("I/O");
+DATA(insert OID = 3508 (  enum_eq		PGNSP PGUID 12 1 0 f f t f i 2 16 "3500 3500" _null_ _null_ _null_ enum_eq - _null_ ));
+DESCR("equal");
+DATA(insert OID = 3509 (  enum_ne		PGNSP PGUID 12 1 0 f f t f i 2 16 "3500 3500" _null_ _null_ _null_ enum_ne - _null_ ));
+DESCR("not equal");
+DATA(insert OID = 3510 (  enum_lt		PGNSP PGUID 12 1 0 f f t f i 2 16 "3500 3500" _null_ _null_ _null_ enum_lt - _null_ ));
+DESCR("less-than");
+DATA(insert OID = 3511 (  enum_gt		PGNSP PGUID 12 1 0 f f t f i 2 16 "3500 3500" _null_ _null_ _null_ enum_gt - _null_ ));
+DESCR("greater-than");
+DATA(insert OID = 3512 (  enum_le		PGNSP PGUID 12 1 0 f f t f i 2 16 "3500 3500" _null_ _null_ _null_ enum_le - _null_ ));
+DESCR("less-than-or-equal");
+DATA(insert OID = 3513 (  enum_ge		PGNSP PGUID 12 1 0 f f t f i 2 16 "3500 3500" _null_ _null_ _null_ enum_ge - _null_ ));
+DESCR("greater-than-or-equal");
+DATA(insert OID = 3514 (  enum_cmp		PGNSP PGUID 12 1 0 f f t f i 2 23 "3500 3500" _null_ _null_ _null_ enum_cmp - _null_ ));
+DESCR("btree-less-equal-greater");
+DATA(insert OID = 3515 (  hashenum		PGNSP PGUID 12 1 0 f f t f i 1 23 "3500" _null_ _null_ _null_ hashenum - _null_ ));
+DESCR("hash");
+DATA(insert OID = 3524 (  enum_smaller	PGNSP PGUID 12 1 0 f f t f i 2 3500 "3500 3500" _null_ _null_ _null_ enum_smaller - _null_ ));
+DESCR("smaller of two");
+DATA(insert OID = 3525 (  enum_larger	PGNSP PGUID 12 1 0 f f t f i 2 3500 "3500 3500" _null_ _null_ _null_ enum_larger - _null_ ));
+DESCR("larger of two");
+DATA(insert OID = 3526 (  max			PGNSP PGUID 12 1 0 t f f f i 1 3500 "3500" _null_ _null_ _null_ aggregate_dummy - _null_ ));
+DATA(insert OID = 3527 (  min			PGNSP PGUID 12 1 0 t f f f i 1 3500 "3500" _null_ _null_ _null_ aggregate_dummy - _null_ ));
+DATA(insert OID = 3528 (  enum_first	PGNSP PGUID 12 1 0 f f f f s 1 3500 "3500" _null_ _null_ _null_ enum_first - _null_ ));
+DATA(insert OID = 3529 (  enum_last		PGNSP PGUID 12 1 0 f f f f s 1 3500 "3500" _null_ _null_ _null_ enum_last - _null_ ));
+DATA(insert OID = 3530 (  enum_range	PGNSP PGUID 12 1 0 f f f f s 2 2277 "3500 3500" _null_ _null_ _null_ enum_range_bounds - _null_ ));
+DATA(insert OID = 3531 (  enum_range	PGNSP PGUID 12 1 0 f f f f s 1 2277 "3500" _null_ _null_ _null_ enum_range_all - _null_ ));
+DATA(insert OID = 3532 (  text			PGNSP PGUID 12 1 0 f f t f s 1 25 "3500" _null_ _null_ _null_ enum_text - _null_ ));
+DESCR("convert enum to text");
+DATA(insert OID = 3533 (  enum			PGNSP PGUID 12 1 0 f f t f s 1 3500 "25" _null_ _null_ _null_ text_enum - _null_ ));
+DESCR("convert text to enum");
+
 /*
  * Symbolic values for provolatile column: these indicate whether the result
  * of a function is dependent *only* on the values of its explicit arguments,

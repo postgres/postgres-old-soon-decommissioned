@@ -1363,8 +1363,8 @@ ExecInitAgg(Agg *node, EState *estate, int eflags)
 
 		/*
 		 * Get actual datatypes of the inputs.	These could be different from
-		 * the agg's declared input types, when the agg accepts ANY, ANYARRAY
-		 * or ANYELEMENT.
+		 * the agg's declared input types, when the agg accepts ANY or
+		 * a polymorphic type.
 		 */
 		i = 0;
 		foreach(lc, aggref->args)
@@ -1421,7 +1421,7 @@ ExecInitAgg(Agg *node, EState *estate, int eflags)
 
 		/* resolve actual type of transition state, if polymorphic */
 		aggtranstype = aggform->aggtranstype;
-		if (aggtranstype == ANYARRAYOID || aggtranstype == ANYELEMENTOID)
+		if (IsPolymorphicType(aggtranstype))
 		{
 			/* have to fetch the agg's declared input types... */
 			Oid		   *declaredArgTypes;

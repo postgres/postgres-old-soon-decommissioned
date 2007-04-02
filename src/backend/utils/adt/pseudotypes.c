@@ -164,6 +164,31 @@ anyarray_send(PG_FUNCTION_ARGS)
 
 
 /*
+ * anyenum_in		- input routine for pseudo-type ANYENUM.
+ */
+Datum
+anyenum_in(PG_FUNCTION_ARGS)
+{
+	ereport(ERROR,
+			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+			 errmsg("cannot accept a value of type anyenum")));
+
+	PG_RETURN_VOID();			/* keep compiler quiet */
+}
+
+/*
+ * anyenum_out		- output routine for pseudo-type ANYENUM.
+ *
+ * We may as well allow this, since enum_out will in fact work.
+ */
+Datum
+anyenum_out(PG_FUNCTION_ARGS)
+{
+	return enum_out(fcinfo);
+}
+
+
+/*
  * void_in		- input routine for pseudo-type VOID.
  *
  * We allow this so that PL functions can return VOID without any special

@@ -148,7 +148,7 @@ format_type_internal(Oid type_oid, int32 typemod,
 
 	if (array_base_type != InvalidOid &&
 		typeform->typstorage != 'p' &&
-		typeform->typtype != 'd')
+		typeform->typtype != TYPTYPE_DOMAIN)
 	{
 		/* Switch our attention to the array element type */
 		ReleaseSysCache(tuple);

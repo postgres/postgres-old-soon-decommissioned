@@ -435,7 +435,7 @@ count_agg_clauses_walker(Node *node, AggClauseCounts *counts)
 		ReleaseSysCache(aggTuple);
 
 		/* resolve actual type of transition state, if polymorphic */
-		if (aggtranstype == ANYARRAYOID || aggtranstype == ANYELEMENTOID)
+		if (IsPolymorphicType(aggtranstype))
 		{
 			/* have to fetch the agg's declared input types... */
 			Oid		   *declaredArgTypes;
@@ -2907,8 +2907,7 @@ inline_function(Oid funcid, Oid result_type, List *args,
 		   funcform->pronargs * sizeof(Oid));
 	for (i = 0; i < funcform->pronargs; i++)
 	{
-		if (argtypes[i] == ANYARRAYOID ||
-			argtypes[i] == ANYELEMENTOID)
+		if (IsPolymorphicType(argtypes[i]))
 		{
 			argtypes[i] = exprType((Node *) list_nth(args, i));
 		}

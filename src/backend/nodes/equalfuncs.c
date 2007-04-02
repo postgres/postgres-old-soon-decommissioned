@@ -1187,6 +1187,15 @@ _equalCompositeTypeStmt(CompositeTypeStmt *a, CompositeTypeStmt *b)
 }
 
 static bool
+_equalCreateEnumStmt(CreateEnumStmt *a, CreateEnumStmt *b)
+{
+	COMPARE_NODE_FIELD(typename);
+	COMPARE_NODE_FIELD(vals);
+
+	return true;
+}
+
+static bool
 _equalViewStmt(ViewStmt *a, ViewStmt *b)
 {
 	COMPARE_NODE_FIELD(view);
@@ -2246,6 +2255,9 @@ equal(void *a, void *b)
 			break;
 		case T_CompositeTypeStmt:
 			retval = _equalCompositeTypeStmt(a, b);
+			break;
+		case T_CreateEnumStmt:
+			retval = _equalCreateEnumStmt(a, b);
 			break;
 		case T_ViewStmt:
 			retval = _equalViewStmt(a, b);

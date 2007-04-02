@@ -136,6 +136,8 @@ DATA(insert OID = 2595 (	783		circle_ops		PGNSP PGUID ));
 DATA(insert OID = 2745 (	2742	array_ops		PGNSP PGUID ));
 DATA(insert OID = 2968 (	403		uuid_ops		PGNSP PGUID ));
 DATA(insert OID = 2969 (	405		uuid_ops		PGNSP PGUID ));
+DATA(insert OID = 3522 (	403		enum_ops		PGNSP PGUID ));
+DATA(insert OID = 3523 (	405		enum_ops		PGNSP PGUID ));
 
 
 #endif   /* PG_OPFAMILY_H */

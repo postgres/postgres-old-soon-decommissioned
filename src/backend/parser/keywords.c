@@ -136,6 +136,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"encoding", ENCODING},
 	{"encrypted", ENCRYPTED},
 	{"end", END_P},
+	{"enum", ENUM_P},
 	{"escape", ESCAPE},
 	{"except", EXCEPT},
 	{"excluding", EXCLUDING},

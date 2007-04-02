@@ -403,4 +403,10 @@ DATA(insert ( 2950   25 2965 a ));
 DATA(insert ( 1043 2950 2964 a ));
 DATA(insert ( 2950 1043 2965 a ));
 
+/*
+ * enums
+ */
+DATA(insert ( 3500   25 3532 e ));
+DATA(insert (   25 3500 3533 e ));
+
 #endif   /* PG_CAST_H */

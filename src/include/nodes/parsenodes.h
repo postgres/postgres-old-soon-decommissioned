@@ -1706,6 +1706,17 @@ typedef struct CompositeTypeStmt
 	List	   *coldeflist;		/* list of ColumnDef nodes */
 } CompositeTypeStmt;
 
+/* ----------------------
+ *		Create Type Statement, enum types
+ * ----------------------
+ */
+typedef struct CreateEnumStmt
+{
+	NodeTag		type;
+	List	   *typename;		/* qualified name (list of Value strings) */
+	List	   *vals;			/* enum values (list of Value strings) */
+} CreateEnumStmt;
+
 
 /* ----------------------
  *		Create View Statement

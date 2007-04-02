@@ -275,7 +275,7 @@ lookup_type_cache(Oid type_id, int flags)
 	 */
 	if ((flags & TYPECACHE_TUPDESC) &&
 		typentry->tupDesc == NULL &&
-		typentry->typtype == 'c')
+		typentry->typtype == TYPTYPE_COMPOSITE)
 	{
 		Relation	rel;
 

@@ -1259,13 +1259,13 @@ CreateCast(CreateCastStmt *stmt)
 	targettypeid = typenameTypeId(NULL, stmt->targettype);
 
 	/* No pseudo-types allowed */
-	if (get_typtype(sourcetypeid) == 'p')
+	if (get_typtype(sourcetypeid) == TYPTYPE_PSEUDO)
 		ereport(ERROR,
 				(errcode(ERRCODE_WRONG_OBJECT_TYPE),
 				 errmsg("source data type %s is a pseudo-type",
 						TypeNameToString(stmt->sourcetype))));
 
-	if (get_typtype(targettypeid) == 'p')
+	if (get_typtype(targettypeid) == TYPTYPE_PSEUDO)
 		ereport(ERROR,
 				(errcode(ERRCODE_WRONG_OBJECT_TYPE),
 				 errmsg("target data type %s is a pseudo-type",

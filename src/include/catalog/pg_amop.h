@@ -636,4 +636,18 @@ DATA(insert (	2745   2277 2277 2  f	2751	2742 ));
 DATA(insert (	2745   2277 2277 3  t	2752	2742 ));
 DATA(insert (	2745   2277 2277 4  t	1070	2742 ));
 
+/*
+ * btree enum_ops
+ */
+DATA(insert (   3522   3500 3500 1  f	3518	403 ));
+DATA(insert (   3522   3500 3500 2  f	3520	403 ));
+DATA(insert (   3522   3500 3500 3  f	3516	403 ));
+DATA(insert (   3522   3500 3500 4  f	3521	403 ));
+DATA(insert (   3522   3500 3500 5  f	3519	403 ));
+
+/*
+ * hash enum_ops
+ */
+DATA(insert (   3523   3500 3500 1  f	3516	405 ));
+
 #endif   /* PG_AMOP_H */

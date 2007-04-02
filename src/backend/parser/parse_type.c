@@ -398,16 +398,6 @@ typeByVal(Type t)
 	return typ->typbyval;
 }
 
-/* given type (as type struct), return the value of its 'typtype' attribute.*/
-char
-typeTypType(Type t)
-{
-	Form_pg_type typ;
-
-	typ = (Form_pg_type) GETSTRUCT(t);
-	return typ->typtype;
-}
-
 /* given type (as type struct), return the name of type */
 char *
 typeTypeName(Type t)

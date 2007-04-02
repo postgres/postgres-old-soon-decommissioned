@@ -1627,7 +1627,7 @@ transformWholeRowRef(ParseState *pstate, char *schemaname, char *relname,
 			break;
 		case RTE_FUNCTION:
 			toid = exprType(rte->funcexpr);
-			if (toid == RECORDOID || get_typtype(toid) == 'c')
+			if (type_is_rowtype(toid))
 			{
 				/* func returns composite; same as relation case */
 				result = (Node *) makeVar(vnum,
