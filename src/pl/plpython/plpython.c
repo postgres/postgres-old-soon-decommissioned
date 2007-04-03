@@ -32,6 +32,14 @@ typedef int Py_ssize_t;
 #define PY_SSIZE_T_MIN INT_MIN
 #endif
 
+/*
+ * PyBool_FromLong is supported from 2.3.
+ */
+#if PY_VERSION_HEX < 0x02030000
+#define PyBool_FromLong(x) PyInt_FromLong(x)
+#endif
+
+
 #include "postgres.h"
 
 /* system stuff */
@@ -1600,8 +1608,8 @@ PLyBool_FromString(const char *src)
 	 *	versions.  http://docs.python.org/api/boolObjects.html
 	 */
 	if (src[0] == 't')
-		return PyInt_FromLong(1);
-	return PyInt_FromLong(0);
+		return PyBool_FromLong(1);
+	return PyBool_FromLong(0);
 }
 
 static PyObject *
