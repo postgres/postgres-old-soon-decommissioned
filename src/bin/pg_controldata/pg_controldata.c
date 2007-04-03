@@ -199,6 +199,8 @@ main(int argc, char *argv[])
 		   ControlFile.nameDataLen);
 	printf(_("Maximum columns in an index:          %u\n"),
 		   ControlFile.indexMaxKeys);
+	printf(_("Maximum size of a TOAST chunk:        %u\n"),
+		   ControlFile.toast_max_chunk_size);
 	printf(_("Date/time type storage:               %s\n"),
 		   (ControlFile.enableIntTimes ? _("64-bit integers") : _("floating-point numbers")));
 	printf(_("Maximum length of locale name:        %u\n"),

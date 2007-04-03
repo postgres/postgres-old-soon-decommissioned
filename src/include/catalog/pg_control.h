@@ -22,7 +22,7 @@
 
 
 /* Version identifier for this pg_control format */
-#define PG_CONTROL_VERSION	832
+#define PG_CONTROL_VERSION	833
 
 /*
  * Body of CheckPoint XLOG records.  This is declared here because we keep
@@ -134,6 +134,8 @@ typedef struct ControlFileData
 
 	uint32		nameDataLen;	/* catalog name field width */
 	uint32		indexMaxKeys;	/* max number of columns in an index */
+
+	uint32		toast_max_chunk_size;	/* chunk size in TOAST tables */
 
 	/* flag indicating internal format of timestamp, interval, time */
 	uint32		enableIntTimes; /* int64 storage enabled? */
