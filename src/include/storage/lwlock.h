@@ -49,7 +49,6 @@ typedef enum LWLockId
 	WALWriteLock,
 	ControlFileLock,
 	CheckpointLock,
-	CheckpointStartLock,
 	CLogControlLock,
 	SubtransControlLock,
 	MultiXactGenLock,

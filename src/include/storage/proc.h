@@ -74,6 +74,8 @@ struct PGPROC
 	Oid			databaseId;		/* OID of database this backend is using */
 	Oid			roleId;			/* OID of role using this backend */
 
+	bool		inCommit;		/* true if within commit critical section */
+
 	bool		inVacuum;		/* true if current xact is a LAZY VACUUM */
 	bool		isAutovacuum;	/* true if it's autovacuum */
 

@@ -26,6 +26,9 @@ extern bool TransactionIdIsInProgress(TransactionId xid);
 extern bool TransactionIdIsActive(TransactionId xid);
 extern TransactionId GetOldestXmin(bool allDbs, bool ignoreVacuum);
 
+extern int	GetTransactionsInCommit(TransactionId **xids_p);
+extern bool HaveTransactionsInCommit(TransactionId *xids, int nxids);
+
 extern PGPROC *BackendPidGetProc(int pid);
 extern int	BackendXidGetPid(TransactionId xid);
 extern bool IsBackendPid(int pid);

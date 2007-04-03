@@ -259,6 +259,7 @@ InitProcess(void)
 	/* databaseId and roleId will be filled in later */
 	MyProc->databaseId = InvalidOid;
 	MyProc->roleId = InvalidOid;
+	MyProc->inCommit = false;
 	MyProc->inVacuum = false;
 	MyProc->isAutovacuum = IsAutoVacuumWorkerProcess();
 	MyProc->lwWaiting = false;
@@ -392,6 +393,7 @@ InitAuxiliaryProcess(void)
 	MyProc->xmin = InvalidTransactionId;
 	MyProc->databaseId = InvalidOid;
 	MyProc->roleId = InvalidOid;
+	MyProc->inCommit = false;
 	MyProc->inVacuum = false;
 	MyProc->isAutovacuum = IsAutoVacuumLauncherProcess(); /* is this needed? */
 	MyProc->lwWaiting = false;
