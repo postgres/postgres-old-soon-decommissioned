@@ -226,6 +226,7 @@ sub CopyContribFiles
         next if ($d =~ /^\./);
         next unless (-f "contrib/$d/Makefile");
         next if ($d eq "sslinfo" && !defined($config->{openssl}));
+        next if ($d eq "xml2" && !defined($config->{xml}));
 
         my $mf = read_file("contrib/$d/Makefile");
         $mf =~ s{\\s*[\r\n]+}{}mg;
