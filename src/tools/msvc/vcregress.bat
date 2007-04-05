@@ -78,10 +78,12 @@ exit /b %E%
 REM Check contrib modules
 :contribcheck
 cd ..\..\..\contrib
+set CONTRIBERROR=0
 for /d %%d IN (*) do if exist %%d\sql if exist %%d\expected (
    call :onecontribcheck %%d
-   if errorlevel 1 exit /b 1
+   if errorlevel 1 set CONTRIBERROR=1
 )
+if %CONTRIBERROR%==1 exit /b 1
 goto :eof
 
 REM Check a single contrib module
