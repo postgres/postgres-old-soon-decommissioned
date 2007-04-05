@@ -112,7 +112,9 @@ XmlOptionType xmloption;
 #define NO_XML_SUPPORT() \
 	ereport(ERROR, \
 			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED), \
-			 errmsg("feature not supported;  no libxml support in this installation")))
+			 errmsg("unsupported XML feature"), \
+			 errdetail("This functionality requires libxml support."), \
+			 errhint("You need to re-compile PostgreSQL using --with-libxml.")))
 
 
 #define _textin(str) DirectFunctionCall1(textin, CStringGetDatum(str))
