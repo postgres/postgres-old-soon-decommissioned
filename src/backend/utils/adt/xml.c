@@ -112,7 +112,7 @@ XmlOptionType xmloption;
 #define NO_XML_SUPPORT() \
 	ereport(ERROR, \
 			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED), \
-			 errmsg("no XML support in this installation")))
+			 errmsg("feature not supported;  no libxml support in this installation")))
 
 
 #define _textin(str) DirectFunctionCall1(textin, CStringGetDatum(str))
