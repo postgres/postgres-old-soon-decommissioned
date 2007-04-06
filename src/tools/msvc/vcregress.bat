@@ -79,7 +79,7 @@ REM Check contrib modules
 :contribcheck
 cd ..\..\..\contrib
 set CONTRIBERROR=0
-for /d %%d IN (*) do if exist %%d\sql if exist %%d\expected (
+for /d %%d IN (*) do if exist %%d\sql if exist %%d\expected if exist %%d\Makefile (
    call :onecontribcheck %%d
    if errorlevel 1 set CONTRIBERROR=1
 )
