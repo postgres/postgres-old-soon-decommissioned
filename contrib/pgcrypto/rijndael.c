@@ -47,12 +47,6 @@ Mean:		   500 cycles =    51.2 mbits/sec
 #include "px.h"
 #include "rijndael.h"
 
-/* sanity check */
-#if !defined(BYTE_ORDER) || (BYTE_ORDER != LITTLE_ENDIAN && BYTE_ORDER != BIG_ENDIAN)
-#error Define BYTE_ORDER to be equal to either LITTLE_ENDIAN or BIG_ENDIAN
-#endif
-
-
 #define PRE_CALC_TABLES
 #define LARGE_TABLES
 
@@ -73,11 +67,7 @@ static void gen_tabs(void);
 
 #define byte(x,n)	((u1byte)((x) >> (8 * (n))))
 
-#if BYTE_ORDER != LITTLE_ENDIAN
-#define BYTE_SWAP
-#endif
-
-#ifdef	BYTE_SWAP
+#ifdef WORDS_BIGENDIAN
 #define io_swap(x)	bswap(x)
 #else
 #define io_swap(x)	(x)

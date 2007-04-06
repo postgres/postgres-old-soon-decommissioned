@@ -34,13 +34,6 @@
 
 #include <sys/types.h>
 #include <sys/param.h>
-#ifdef HAVE_ENDIAN_H
-#include <endian.h>
-#endif
-
-#ifndef BYTE_ORDER
-#error BYTE_ORDER must be defined as LITTLE_ENDIAN or BIG_ENDIAN
-#endif
 
 /* keep debug messages? */
 #define PX_DEBUG

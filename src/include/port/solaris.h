@@ -25,28 +25,6 @@
 #include <sys/isa_defs.h>
 #endif
 
-#ifndef			BIG_ENDIAN
-#define			BIG_ENDIAN		4321
-#endif
-#ifndef			LITTLE_ENDIAN
-#define			LITTLE_ENDIAN	1234
-#endif
-#ifndef			PDP_ENDIAN
-#define			PDP_ENDIAN		3412
-#endif
-
-#ifndef			BYTE_ORDER
-#ifdef __sparc__
-#define		  BYTE_ORDER	  BIG_ENDIAN
-#endif
-#ifdef __i386__
-#define		 BYTE_ORDER		 LITTLE_ENDIAN
-#endif
-#if defined(__amd64___) || defined(__x86_64__)
-#define		 BYTE_ORDER		 LITTLE_ENDIAN
-#endif
-#endif
-
 /*
  * Many versions of Solaris have broken strtod() --- see bug #4751182.
  * This has been fixed in current versions of Solaris:

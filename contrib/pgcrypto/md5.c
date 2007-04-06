@@ -38,11 +38,6 @@
 #include "px.h"
 #include "md5.h"
 
-/* sanity check */
-#if !defined(BYTE_ORDER) || (BYTE_ORDER != LITTLE_ENDIAN && BYTE_ORDER != BIG_ENDIAN)
-#error Define BYTE_ORDER to be equal to either LITTLE_ENDIAN or BIG_ENDIAN
-#endif
-
 #define SHIFT(X, s) (((X) << (s)) | ((X) >> (32 - (s))))
 
 #define F(X, Y, Z) (((X) & (Y)) | ((~X) & (Z)))
@@ -201,10 +196,9 @@ md5_pad(md5_ctxt * ctxt)
 	}
 
 	/* 8 byte word */
-#if BYTE_ORDER == LITTLE_ENDIAN
+#ifndef WORDS_BIGENDIAN
 	memmove(&ctxt->md5_buf[56], &ctxt->md5_n8[0], 8);
-#endif
-#if BYTE_ORDER == BIG_ENDIAN
+#else
 	ctxt->md5_buf[56] = ctxt->md5_n8[7];
 	ctxt->md5_buf[57] = ctxt->md5_n8[6];
 	ctxt->md5_buf[58] = ctxt->md5_n8[5];
@@ -222,10 +216,9 @@ void
 md5_result(uint8 *digest, md5_ctxt * ctxt)
 {
 	/* 4 byte words */
-#if BYTE_ORDER == LITTLE_ENDIAN
+#ifndef WORDS_BIGENDIAN
 	memmove(digest, &ctxt->md5_st8[0], 16);
-#endif
-#if BYTE_ORDER == BIG_ENDIAN
+#else
 	digest[0] = ctxt->md5_st8[3];
 	digest[1] = ctxt->md5_st8[2];
 	digest[2] = ctxt->md5_st8[1];
@@ -245,7 +238,7 @@ md5_result(uint8 *digest, md5_ctxt * ctxt)
 #endif
 }
 
-#if BYTE_ORDER == BIG_ENDIAN
+#ifdef WORDS_BIGENDIAN
 static uint32 X[16];
 #endif
 
@@ -257,10 +250,9 @@ md5_calc(uint8 *b64, md5_ctxt * ctxt)
 	uint32		C = ctxt->md5_stc;
 	uint32		D = ctxt->md5_std;
 
-#if BYTE_ORDER == LITTLE_ENDIAN
+#ifndef WORDS_BIGENDIAN
 	uint32	   *X = (uint32 *) b64;
-#endif
-#if BYTE_ORDER == BIG_ENDIAN
+#else
 	/* 4 byte words */
 	/* what a brute force but fast! */
 	uint8	   *y = (uint8 *) X;
