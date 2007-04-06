@@ -1896,8 +1896,8 @@ ExecEvalScalarArrayOp(ScalarArrayOpExprState *sstate,
 		else
 		{
 			elt = fetch_att(s, typbyval, typlen);
-			s = att_addlength(s, typlen, PointerGetDatum(s));
-			s = (char *) att_align(s, typalign);
+			s = att_addlength_pointer(s, typlen, s);
+			s = (char *) att_align_nominal(s, typalign);
 			fcinfo.arg[1] = elt;
 			fcinfo.argnull[1] = false;
 		}

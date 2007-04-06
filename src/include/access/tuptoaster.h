@@ -111,7 +111,7 @@ extern void toast_delete(Relation rel, HeapTuple oldtup);
  *		in compressed format.
  * ----------
  */
-extern varattrib *heap_tuple_fetch_attr(varattrib *attr);
+extern struct varlena *heap_tuple_fetch_attr(struct varlena *attr);
 
 /* ----------
  * heap_tuple_untoast_attr() -
@@ -120,7 +120,7 @@ extern varattrib *heap_tuple_fetch_attr(varattrib *attr);
  *		it as needed.
  * ----------
  */
-extern varattrib *heap_tuple_untoast_attr(varattrib *attr);
+extern struct varlena *heap_tuple_untoast_attr(struct varlena *attr);
 
 /* ----------
  * heap_tuple_untoast_attr_slice() -
@@ -129,7 +129,7 @@ extern varattrib *heap_tuple_untoast_attr(varattrib *attr);
  *		(Handles all cases for attribute storage)
  * ----------
  */
-extern varattrib *heap_tuple_untoast_attr_slice(varattrib *attr,
+extern struct varlena *heap_tuple_untoast_attr_slice(struct varlena *attr,
 							  int32 sliceoffset,
 							  int32 slicelength);
 

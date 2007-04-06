@@ -47,7 +47,7 @@
  * Find the "real" size of a datum, given the datum value,
  * whether it is a "by value", and the declared type length.
  *
- * This is essentially an out-of-line version of the att_addlength()
+ * This is essentially an out-of-line version of the att_addlength_datum()
  * macro in access/tupmacs.h.  We do a tad more error checking though.
  *-------------------------------------------------------------------------
  */
@@ -79,7 +79,7 @@ datumGetSize(Datum value, bool typByVal, int typLen)
 						(errcode(ERRCODE_DATA_EXCEPTION),
 						 errmsg("invalid Datum pointer")));
 
-			size = (Size) VARSIZE(s);
+			size = (Size) VARSIZE_ANY(s);
 		}
 		else if (typLen == -2)
 		{

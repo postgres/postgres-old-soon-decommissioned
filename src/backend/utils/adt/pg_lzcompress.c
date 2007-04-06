@@ -618,7 +618,7 @@ pglz_compress(const char *source, int32 slen, PGLZ_Header *dest,
 	/*
 	 * Success - need only fill in the actual length of the compressed datum.
 	 */
-	SET_VARSIZE(dest, result_size + sizeof(PGLZ_Header));
+	SET_VARSIZE_COMPRESSED(dest, result_size + sizeof(PGLZ_Header));
 
 	return true;
 }

@@ -1478,7 +1478,7 @@ compute_minimal_stats(VacAttrStatsP stats,
 		 */
 		if (is_varlena)
 		{
-			total_width += VARSIZE(DatumGetPointer(value));
+			total_width += VARSIZE_ANY(DatumGetPointer(value));
 
 			/*
 			 * If the value is toasted, we want to detoast it just once to
@@ -1792,7 +1792,7 @@ compute_scalar_stats(VacAttrStatsP stats,
 		 */
 		if (is_varlena)
 		{
-			total_width += VARSIZE(DatumGetPointer(value));
+			total_width += VARSIZE_ANY(DatumGetPointer(value));
 
 			/*
 			 * If the value is toasted, we want to detoast it just once to

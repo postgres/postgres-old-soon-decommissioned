@@ -314,7 +314,7 @@ needs_toast_table(Relation rel)
 	{
 		if (att[i]->attisdropped)
 			continue;
-		data_length = att_align(data_length, att[i]->attalign);
+		data_length = att_align_nominal(data_length, att[i]->attalign);
 		if (att[i]->attlen > 0)
 		{
 			/* Fixed-length types are never toastable */

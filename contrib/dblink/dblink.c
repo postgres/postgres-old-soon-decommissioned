@@ -1752,8 +1752,8 @@ get_text_array_contents(ArrayType *array, int *numitems)
 		{
 			values[i] = DatumGetCString(DirectFunctionCall1(textout,
 													  PointerGetDatum(ptr)));
-			ptr = att_addlength(ptr, typlen, PointerGetDatum(ptr));
-			ptr = (char *) att_align(ptr, typalign);
+			ptr = att_addlength_pointer(ptr, typlen, ptr);
+			ptr = (char *) att_align_nominal(ptr, typalign);
 		}
 
 		/* advance bitmap pointer if any */

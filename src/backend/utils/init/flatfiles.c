@@ -467,7 +467,7 @@ write_auth_file(Relation rel_authid, Relation rel_authmem)
 				auth_info[curr_role].rolpassword = DatumGetCString(DirectFunctionCall1(textout, datum));
 
 			/* assume passwd has attlen -1 */
-			off = att_addlength(off, -1, tp + off);
+			off = att_addlength_pointer(off, -1, tp + off);
 		}
 
 		if (HeapTupleHasNulls(tuple) &&
@@ -482,7 +482,7 @@ write_auth_file(Relation rel_authid, Relation rel_authmem)
 			 * rolvaliduntil is timestamptz, which we assume is double
 			 * alignment and pass-by-reference.
 			 */
-			off = att_align(off, 'd');
+			off = att_align_nominal(off, 'd');
 			datum = PointerGetDatum(tp + off);
 			auth_info[curr_role].rolvaliduntil = DatumGetCString(DirectFunctionCall1(timestamptz_out, datum));
 		}
