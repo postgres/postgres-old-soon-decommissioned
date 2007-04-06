@@ -156,7 +156,8 @@ set_plan_references(PlannerGlobal *glob, Plan *plan, List *rtable)
 	/*
 	 * In the flat rangetable, we zero out substructure pointers that are
 	 * not needed by the executor; this reduces the storage space and
-	 * copying cost for cached plans.
+	 * copying cost for cached plans.  We keep only the alias and eref
+	 * Alias fields, which are needed by EXPLAIN.
 	 */
 	foreach(lc, rtable)
 	{
@@ -167,14 +168,13 @@ set_plan_references(PlannerGlobal *glob, Plan *plan, List *rtable)
 		newrte = (RangeTblEntry *) palloc(sizeof(RangeTblEntry));
 		memcpy(newrte, rte, sizeof(RangeTblEntry));
 
-		/* zap unneeded sub-structure (we keep only the eref Alias) */
+		/* zap unneeded sub-structure */
 		newrte->subquery = NULL;
 		newrte->funcexpr = NULL;
 		newrte->funccoltypes = NIL;
 		newrte->funccoltypmods = NIL;
 		newrte->values_lists = NIL;
 		newrte->joinaliasvars = NIL;
-		newrte->alias = NULL;
 
 		glob->finalrtable = lappend(glob->finalrtable, newrte);
 	}
