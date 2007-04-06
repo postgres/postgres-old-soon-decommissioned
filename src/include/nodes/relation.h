@@ -397,6 +397,7 @@ typedef struct IndexOptInfo
 	bool		predOK;			/* true if predicate matches query */
 	bool		unique;			/* true if a unique index */
 	bool		amoptionalkey;	/* can query omit key for the first column? */
+	bool		amsearchnulls;	/* can AM search for NULL index entries? */
 } IndexOptInfo;
 
 

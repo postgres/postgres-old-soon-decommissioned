@@ -746,8 +746,6 @@ _bt_first(IndexScanDesc scan, ScanDirection dir)
 	 *
 	 * If goback = true, we will then step back one item, while if
 	 * goback = false, we will start the scan on the located item.
-	 *
-	 * it's yet other place to add some code later for is(not)null ...
 	 *----------
 	 */
 	switch (strat_total)
