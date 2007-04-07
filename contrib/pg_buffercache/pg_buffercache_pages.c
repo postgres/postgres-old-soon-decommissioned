@@ -16,7 +16,7 @@
 #include "utils/relcache.h"
 
 
-#define NUM_BUFFERCACHE_PAGES_ELEM	6
+#define NUM_BUFFERCACHE_PAGES_ELEM	7
 
 PG_MODULE_MAGIC;
 
@@ -35,6 +35,7 @@ typedef struct
 	BlockNumber blocknum;
 	bool		isvalid;
 	bool		isdirty;
+	uint16		usagecount;
 }	BufferCachePagesRec;
 
 
@@ -91,6 +92,8 @@ pg_buffercache_pages(PG_FUNCTION_ARGS)
 						   INT8OID, -1, 0);
 		TupleDescInitEntry(tupledesc, (AttrNumber) 6, "isdirty",
 						   BOOLOID, -1, 0);
+		TupleDescInitEntry(tupledesc, (AttrNumber) 7, "usage_count",
+						   INT2OID, -1, 0);
 
 		fctx->tupdesc = BlessTupleDesc(tupledesc);
 
@@ -126,6 +129,7 @@ pg_buffercache_pages(PG_FUNCTION_ARGS)
 			fctx->record[i].reltablespace = bufHdr->tag.rnode.spcNode;
 			fctx->record[i].reldatabase = bufHdr->tag.rnode.dbNode;
 			fctx->record[i].blocknum = bufHdr->tag.blockNum;
+			fctx->record[i].usagecount = bufHdr->usage_count;
 
 			if (bufHdr->flags & BM_DIRTY)
 				fctx->record[i].isdirty = true;
@@ -172,6 +176,7 @@ pg_buffercache_pages(PG_FUNCTION_ARGS)
 			nulls[3] = true;
 			nulls[4] = true;
 			nulls[5] = true;
+			nulls[6] = true;
 		}
 		else
 		{
@@ -185,6 +190,8 @@ pg_buffercache_pages(PG_FUNCTION_ARGS)
 			nulls[4] = false;
 			values[5] = BoolGetDatum(fctx->record[i].isdirty);
 			nulls[5] = false;
+			values[6] = Int16GetDatum(fctx->record[i].usagecount);
+			nulls[6] = false;
 		}
 
 		/* Build and return the tuple. */
