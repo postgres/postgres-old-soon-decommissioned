@@ -520,14 +520,8 @@ GRANT admins TO joe;
    </para>
 
    <para>
-    The SQL standard allows setting privileges for individual columns
-    within a table:
-
-<synopsis>
-GRANT <replaceable class="PARAMETER">privileges</replaceable>
-    ON <replaceable class="PARAMETER">table</replaceable> [ ( <replaceable class="PARAMETER">column</replaceable> [, ...] ) ] [, ...]
-    TO { PUBLIC | <replaceable class="PARAMETER">username</replaceable> [, ...] } [ WITH GRANT OPTION ]
-</synopsis>
+    <productname>PostgreSQL</productname> does not support the SQL-standard 
+    functionality of setting privileges for individual columns.
    </para>
 
    <para>
