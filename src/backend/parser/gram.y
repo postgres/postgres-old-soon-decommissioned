@@ -209,7 +209,7 @@ static Node *makeXmlExpr(XmlExprOp op, char *name, List *named_args, List *args)
 
 %type <str>		relation_name copy_file_name
 				database_name access_method_clause access_method attr_name
-				index_name name file_name
+				index_name name file_name cluster_index_specification
 
 %type <list>	func_name handler_name qual_Op qual_all_Op subquery_Op
 				opt_class opt_validator
@@ -5084,7 +5084,7 @@ opt_check_option:
 /*****************************************************************************
  *
  *		QUERY:
- *				load "filename"
+ *				LOAD "filename"
  *
  *****************************************************************************/
 
@@ -5346,25 +5346,18 @@ CreateConversionStmt:
 /*****************************************************************************
  *
  *		QUERY:
- *				cluster <index_name> on <qualified_name>
- *				cluster <qualified_name>
- *				cluster
+ *				CLUSTER <qualified_name> [ USING <index_name> ]
+ *				CLUSTER
+ *				CLUSTER <index_name> ON <qualified_name> (for pre-8.3)
  *
  *****************************************************************************/
 
 ClusterStmt:
-			CLUSTER index_name ON qualified_name
-				{
-				   ClusterStmt *n = makeNode(ClusterStmt);
-				   n->relation = $4;
-				   n->indexname = $2;
-				   $$ = (Node*)n;
-				}
-			| CLUSTER qualified_name
+			CLUSTER qualified_name cluster_index_specification
 				{
 			       ClusterStmt *n = makeNode(ClusterStmt);
 				   n->relation = $2;
-				   n->indexname = NULL;
+				   n->indexname = $3;
 				   $$ = (Node*)n;
 				}
 			| CLUSTER
@@ -5374,13 +5367,27 @@ ClusterStmt:
 				   n->indexname = NULL;
 				   $$ = (Node*)n;
 				}
+			/* kept for pre-8.3 compatibility */
+			| CLUSTER index_name ON qualified_name
+				{
+				   ClusterStmt *n = makeNode(ClusterStmt);
+				   n->relation = $4;
+				   n->indexname = $2;
+				   $$ = (Node*)n;
+				}
 		;
+
+cluster_index_specification:
+			USING index_name		{ $$ = $2; }
+			| /*EMPTY*/				{ $$ = NULL; }
+		;
+
 
 /*****************************************************************************
  *
  *		QUERY:
- *				vacuum
- *				analyze
+ *				VACUUM
+ *				ANALYZE
  *
  *****************************************************************************/
 
