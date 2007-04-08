@@ -12,7 +12,7 @@ subdir = src/backend/access/heap
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = heapam.o hio.o tuptoaster.o
+OBJS = heapam.o hio.o rewriteheap.o tuptoaster.o
 
 all: SUBSYS.o
 

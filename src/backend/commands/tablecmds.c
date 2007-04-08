@@ -5857,34 +5857,7 @@ copy_relation_data(Relation rel, SMgrRelation dst)
 
 		/* XLOG stuff */
 		if (use_wal)
-		{
-			xl_heap_newpage xlrec;
-			XLogRecPtr	recptr;
-			XLogRecData rdata[2];
-
-			/* NO ELOG(ERROR) from here till newpage op is logged */
-			START_CRIT_SECTION();
-
-			xlrec.node = dst->smgr_rnode;
-			xlrec.blkno = blkno;
-
-			rdata[0].data = (char *) &xlrec;
-			rdata[0].len = SizeOfHeapNewpage;
-			rdata[0].buffer = InvalidBuffer;
-			rdata[0].next = &(rdata[1]);
-
-			rdata[1].data = (char *) page;
-			rdata[1].len = BLCKSZ;
-			rdata[1].buffer = InvalidBuffer;
-			rdata[1].next = NULL;
-
-			recptr = XLogInsert(RM_HEAP_ID, XLOG_HEAP_NEWPAGE, rdata);
-
-			PageSetLSN(page, recptr);
-			PageSetTLI(page, ThisTimeLineID);
-
-			END_CRIT_SECTION();
-		}
+			log_newpage(&dst->smgr_rnode, blkno, page);
 
 		/*
 		 * Now write the page.	We say isTemp = true even if it's not a temp
