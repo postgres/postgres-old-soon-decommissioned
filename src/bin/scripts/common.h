@@ -35,6 +35,11 @@ extern PGresult *executeQuery(PGconn *conn, const char *query,
 extern void executeCommand(PGconn *conn, const char *query,
 			   const char *progname, bool echo);
 
+extern bool executeMaintenanceCommand(PGconn *conn, const char *query,
+							   bool echo);
+
 extern bool yesno_prompt(const char *question);
+
+extern void setup_cancel_handler(void);
 
 #endif   /* COMMON_H */
