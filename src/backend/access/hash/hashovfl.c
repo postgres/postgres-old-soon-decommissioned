@@ -141,7 +141,7 @@ _hash_addovflpage(Relation rel, Buffer metabuf, Buffer buf)
 	ovflopaque->hasho_nextblkno = InvalidBlockNumber;
 	ovflopaque->hasho_bucket = pageopaque->hasho_bucket;
 	ovflopaque->hasho_flag = LH_OVERFLOW_PAGE;
-	ovflopaque->hasho_filler = HASHO_FILL;
+	ovflopaque->hasho_page_id = HASHO_PAGE_ID;
 
 	MarkBufferDirty(ovflbuf);
 
@@ -529,7 +529,7 @@ _hash_initbitmap(Relation rel, HashMetaPage metap, BlockNumber blkno)
 	op->hasho_nextblkno = InvalidBlockNumber;
 	op->hasho_bucket = -1;
 	op->hasho_flag = LH_BITMAP_PAGE;
-	op->hasho_filler = HASHO_FILL;
+	op->hasho_page_id = HASHO_PAGE_ID;
 
 	/* set all of the bits to 1 */
 	freep = HashPageGetBitmap(pg);

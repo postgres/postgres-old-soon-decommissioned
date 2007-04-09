@@ -559,10 +559,11 @@ GISTInitBuffer(Buffer b, uint32 f)
 	PageInit(page, pageSize, sizeof(GISTPageOpaqueData));
 
 	opaque = GistPageGetOpaque(page);
-	opaque->flags = f;
-	opaque->rightlink = InvalidBlockNumber;
 	/* page was already zeroed by PageInit, so this is not needed: */
 	/* memset(&(opaque->nsn), 0, sizeof(GistNSN)); */
+	opaque->rightlink = InvalidBlockNumber;
+	opaque->flags = f;
+	opaque->gist_page_id = GIST_PAGE_ID;
 }
 
 /*

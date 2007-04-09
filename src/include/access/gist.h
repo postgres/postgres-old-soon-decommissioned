@@ -56,24 +56,29 @@
 /*
  * Page opaque data in a GiST index page.
  */
-#define F_LEAF			(1 << 0)
-#define F_DELETED		(1 << 1)
+#define F_LEAF				(1 << 0)
+#define F_DELETED			(1 << 1)
 #define F_TUPLES_DELETED	(1 << 2)
 
 typedef XLogRecPtr GistNSN;
 
 typedef struct GISTPageOpaqueData
 {
-	uint32		flags;			/* 29 bits are unused for now */
-	BlockNumber rightlink;
-
-	/*
-	 * the only meaning - change this value if page split.
-	 */
-	GistNSN		nsn;
+	GistNSN		nsn;			/* this value must change on page split */
+	BlockNumber rightlink;		/* next page if any */
+	uint16		flags;			/* see bit definitions above */
+	uint16		gist_page_id;	/* for identification of GiST indexes */
 } GISTPageOpaqueData;
 
 typedef GISTPageOpaqueData *GISTPageOpaque;
+
+/*
+ * The page ID is for the convenience of pg_filedump and similar utilities,
+ * which otherwise would have a hard time telling pages of different index
+ * types apart.  It should be the last 2 bytes on the page.  This is more or
+ * less "free" due to alignment considerations.
+ */
+#define GIST_PAGE_ID		0xFF81
 
 /*
  * This is the Split Vector to be returned by the PickSplit method.
