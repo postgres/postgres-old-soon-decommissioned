@@ -38,7 +38,7 @@ sub Install
     print "Installing for $conf\n";
 
     EnsureDirectories($target, 'bin','lib','share','share/timezonesets','share/contrib','doc',
-        'doc/contrib');
+        'doc/contrib', 'symbols');
 
     CopySolutionOutput($conf, $target);
     copy($target . '/lib/libpq.dll', $target . '/bin/libpq.dll');
@@ -162,6 +162,7 @@ sub CopySolutionOutput
             next;
         }
         copy("$conf\\$pf\\$pf.$ext","$target\\$dir\\$pf.$ext") || croak "Could not copy $pf.$ext\n";
+        copy("$conf\\$pf\\$pf.pdb","$target\\symbols\\$pf.pdb") || croak "Could not copy $pf.pdb\n";
         print ".";
     }
     print "\n";
