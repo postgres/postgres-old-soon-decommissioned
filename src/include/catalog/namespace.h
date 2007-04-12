@@ -81,6 +81,7 @@ extern char *NameListToQuotedString(List *names);
 extern bool isTempNamespace(Oid namespaceId);
 extern bool isAnyTempNamespace(Oid namespaceId);
 extern bool isOtherTempNamespace(Oid namespaceId);
+extern void ResetTempTableNamespace(void);
 
 extern OverrideSearchPath *GetOverrideSearchPath(MemoryContext context);
 extern void PushOverrideSearchPath(OverrideSearchPath *newpath);
@@ -99,7 +100,5 @@ extern void AtEOSubXact_Namespace(bool isCommit, SubTransactionId mySubid,
 extern char *namespace_search_path;
 
 extern List *fetch_search_path(bool includeImplicit);
-
-extern void ResetTempTableNamespace(void);
 
 #endif   /* NAMESPACE_H */

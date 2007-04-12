@@ -1946,18 +1946,8 @@ InitTempTableNamespace(void)
 void
 ResetTempTableNamespace(void)
 {
-	char		namespaceName[NAMEDATALEN];
-	Oid			namespaceId;
-
-	/* find oid */
-	snprintf(namespaceName, sizeof(namespaceName), "pg_temp_%d", MyBackendId);
-	namespaceId = GetSysCacheOid(NAMESPACENAME,
-								 CStringGetDatum(namespaceName),
-								 0, 0, 0);
-
-	/* clean if exists */
-	if (OidIsValid(namespaceId))
-		RemoveTempRelations(namespaceId);
+	if (OidIsValid(myTempNamespace))
+		RemoveTempRelations(myTempNamespace);
 }
 
 /*
