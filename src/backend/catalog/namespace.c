@@ -1941,6 +1941,26 @@ InitTempTableNamespace(void)
 }
 
 /*
+ * Remove all temp tables from the temporary namespace.
+ */
+void
+ResetTempTableNamespace(void)
+{
+	char		namespaceName[NAMEDATALEN];
+	Oid			namespaceId;
+
+	/* find oid */
+	snprintf(namespaceName, sizeof(namespaceName), "pg_temp_%d", MyBackendId);
+	namespaceId = GetSysCacheOid(NAMESPACENAME,
+								 CStringGetDatum(namespaceName),
+								 0, 0, 0);
+
+	/* clean if exists */
+	if (OidIsValid(namespaceId))
+		RemoveTempRelations(namespaceId);
+}
+
+/*
  * End-of-transaction cleanup for namespaces.
  */
 void

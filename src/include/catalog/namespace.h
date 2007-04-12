@@ -100,4 +100,6 @@ extern char *namespace_search_path;
 
 extern List *fetch_search_path(bool includeImplicit);
 
+extern void ResetTempTableNamespace(void);
+
 #endif   /* NAMESPACE_H */

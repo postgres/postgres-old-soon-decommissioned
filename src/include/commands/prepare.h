@@ -59,4 +59,6 @@ extern void DropPreparedStatement(const char *stmt_name, bool showError);
 extern TupleDesc FetchPreparedStatementResultDesc(PreparedStatement *stmt);
 extern List *FetchPreparedStatementTargetList(PreparedStatement *stmt);
 
+void DropAllPreparedStatements(void);
+
 #endif   /* PREPARE_H */

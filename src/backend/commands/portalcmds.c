@@ -236,11 +236,18 @@ PerformPortalClose(const char *name)
 {
 	Portal		portal;
 
+	/* NULL means CLOSE ALL */
+	if (name == NULL)
+	{
+		PortalHashTableDeleteAll();
+		return;
+	}
+
 	/*
 	 * Disallow empty-string cursor name (conflicts with protocol-level
 	 * unnamed portal).
 	 */
-	if (!name || name[0] == '\0')
+	if (name[0] == '\0')
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_CURSOR_NAME),
 				 errmsg("invalid cursor name: must not be empty")));

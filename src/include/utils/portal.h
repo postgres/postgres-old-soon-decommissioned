@@ -212,5 +212,6 @@ extern void PortalDefineQuery(Portal portal,
 				  CachedPlan *cplan);
 extern Node *PortalListGetPrimaryStmt(List *stmts);
 extern void PortalCreateHoldStore(Portal portal);
+extern void PortalHashTableDeleteAll(void);
 
 #endif   /* PORTAL_H */

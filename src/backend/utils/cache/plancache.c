@@ -881,6 +881,15 @@ PlanCacheCallback(Datum arg, Oid relid)
 }
 
 /*
+ * ResetPlanCache: drop all cached plans.
+ */
+void
+ResetPlanCache(void)
+{
+	PlanCacheCallback((Datum) 0, InvalidOid);
+}
+
+/*
  * ScanQueryForRelids callback function for PlanCacheCallback
  */
 static void

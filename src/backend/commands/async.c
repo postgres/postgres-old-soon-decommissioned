@@ -127,7 +127,6 @@ static bool unlistenExitRegistered = false;
 bool		Trace_notify = false;
 
 
-static void Async_UnlistenAll(void);
 static void Async_UnlistenOnExit(int code, Datum arg);
 static void ProcessIncomingNotify(void);
 static void NotifyMyFrontEnd(char *relname, int32 listenerPID);
@@ -335,7 +334,7 @@ Async_Unlisten(const char *relname)
  *
  *--------------------------------------------------------------
  */
-static void
+void
 Async_UnlistenAll(void)
 {
 	Relation	lRel;

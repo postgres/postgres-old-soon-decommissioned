@@ -452,6 +452,29 @@ PortalDrop(Portal portal, bool isTopCommit)
 	pfree(portal);
 }
 
+/*
+ * Delete all declared cursors.
+ *
+ * Used by commands: CLOSE ALL, RESET SESSION
+ */
+void
+PortalHashTableDeleteAll(void)
+{
+	HASH_SEQ_STATUS status;
+	PortalHashEnt *hentry;
+
+	if (PortalHashTable == NULL)
+		return;
+
+	hash_seq_init(&status, PortalHashTable);
+	while ((hentry = hash_seq_search(&status)) != NULL)
+	{
+		Portal portal = hentry->portal;
+		if (portal->status != PORTAL_ACTIVE)
+			PortalDrop(portal, false);
+	}
+}
+
 
 /*
  * Pre-commit processing for portals.
