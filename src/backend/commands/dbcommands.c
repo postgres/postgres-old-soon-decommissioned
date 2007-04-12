@@ -1375,6 +1375,12 @@ dbase_redo(XLogRecPtr lsn, XLogRecord *record)
 		 */
 		DropBuffers(xlrec->db_id);
 
+		/* Also, clean out any entries in the shared free space map */
+		FreeSpaceMapForgetDatabase(xlrec->db_id);
+
+		/* Also, clean out any fsync requests that might be pending in md.c */
+		ForgetDatabaseFsyncRequests(xlrec->db_id);
+
 		if (!rmtree(dst_path, true))
 			ereport(WARNING,
 					(errmsg("could not remove database directory \"%s\"",
