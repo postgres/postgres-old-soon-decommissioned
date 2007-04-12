@@ -156,6 +156,7 @@ sub mkvcbuild
 
     # src/bin
     my $initdb = AddSimpleFrontend('initdb', 1);
+    $initdb->AddLibrary('wsock32.lib ws2_32.lib');
 
     my $pgconfig = AddSimpleFrontend('pg_config');
 
