@@ -577,6 +577,7 @@ if test "$with_libxml" = yes ; then
   fi
 fi
 
+AC_SUBST(with_libxml)
 
 #
 # Zlib

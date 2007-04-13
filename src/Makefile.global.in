@@ -152,6 +152,7 @@ with_perl	= @with_perl@
 with_python	= @with_python@
 with_tcl	= @with_tcl@
 with_openssl	= @with_openssl@
+with_libxml	= @with_libxml@
 with_zlib	= @with_zlib@
 enable_shared	= @enable_shared@
 enable_rpath	= @enable_rpath@
