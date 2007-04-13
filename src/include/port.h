@@ -277,6 +277,7 @@ extern bool rmtree(char *path, bool rmtopdir);
 /* open() and fopen() replacements to allow deletion of open files and
  * passing of other special options.
  */
+#define		O_DIRECT	0x80000000
 extern int	pgwin32_open(const char *, int,...);
 extern FILE *pgwin32_fopen(const char *, const char *);
 
