@@ -176,5 +176,6 @@ extern int	pathkeys_useful_for_ordering(PlannerInfo *root, List *pathkeys);
 extern List *truncate_useless_pathkeys(PlannerInfo *root,
 						  RelOptInfo *rel,
 						  List *pathkeys);
+extern bool has_useful_pathkeys(PlannerInfo *root, RelOptInfo *rel);
 
 #endif   /* PATHS_H */
