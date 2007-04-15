@@ -37,9 +37,15 @@ ifeq ($(with_openssl),yes)
 WANTED_DIRS += sslinfo
 endif
 
+ifeq ($(with_libxml),yes)
+ifeq ($(with_libxslt),yes)
+WANTED_DIRS += xml2
+endif
+endif
+
 # Missing:
 #		start-scripts	\ (does not have a makefile)
-#		xml2		\ (requires libxml and libxslt installed)
+
 
 all install installdirs uninstall distprep clean distclean maintainer-clean:
 	@for dir in $(WANTED_DIRS); do \
