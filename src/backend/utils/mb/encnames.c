@@ -314,9 +314,6 @@ pg_enc2name pg_enc2name_tbl[] =
 		"EUC_TW", PG_EUC_TW
 	},
 	{
-		"JOHAB", PG_JOHAB
-	},
-	{
 		"UTF8", PG_UTF8
 	},
 	{
@@ -414,6 +411,9 @@ pg_enc2name pg_enc2name_tbl[] =
 	},
 	{
 		"UHC", PG_UHC
+	},
+	{
+		"JOHAB", PG_JOHAB
 	},
 	{
 		"GB18030", PG_GB18030
