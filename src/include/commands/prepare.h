@@ -51,6 +51,7 @@ extern void StorePreparedStatement(const char *stmt_name,
 					   const char *commandTag,
 					   Oid *param_types,
 					   int num_params,
+					   int cursor_options,
 					   List *stmt_list,
 					   bool from_sql);
 extern PreparedStatement *FetchPreparedStatement(const char *stmt_name,

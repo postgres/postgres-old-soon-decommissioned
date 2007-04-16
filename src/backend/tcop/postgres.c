@@ -1237,6 +1237,7 @@ exec_parse_message(const char *query_string,	/* string to execute */
 							   commandTag,
 							   paramTypes,
 							   numParams,
+							   0,				/* default cursor options */
 							   stmt_list,
 							   false);
 	}
@@ -1261,6 +1262,7 @@ exec_parse_message(const char *query_string,	/* string to execute */
 												 commandTag,
 												 newParamTypes,
 												 numParams,
+												 0,	/* cursor options */
 												 stmt_list,
 												 fully_planned,
 												 true,

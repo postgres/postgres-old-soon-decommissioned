@@ -171,6 +171,7 @@ PrepareQuery(PrepareStmt *stmt, const char *queryString)
 						   commandTag,
 						   argtypes,
 						   nargs,
+						   0,				/* default cursor options */
 						   plan_list,
 						   true);
 }
@@ -435,6 +436,7 @@ StorePreparedStatement(const char *stmt_name,
 					   const char *commandTag,
 					   Oid *param_types,
 					   int num_params,
+					   int cursor_options,
 					   List *stmt_list,
 					   bool from_sql)
 {
@@ -461,6 +463,7 @@ StorePreparedStatement(const char *stmt_name,
 								  commandTag,
 								  param_types,
 								  num_params,
+								  cursor_options,
 								  stmt_list,
 								  true,
 								  true);

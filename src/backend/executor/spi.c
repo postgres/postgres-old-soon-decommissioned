@@ -2032,6 +2032,7 @@ _SPI_save_plan(SPIPlanPtr plan)
 									 plansource->commandTag,
 									 newplan->argtypes,
 									 newplan->nargs,
+									 newplan->cursor_options,
 									 cplan->stmt_list,
 									 true,
 									 false);
