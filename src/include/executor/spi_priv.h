@@ -65,6 +65,7 @@ typedef struct _SPI_plan
 	bool		saved;			/* saved or unsaved plan? */
 	List	   *plancache_list;	/* one CachedPlanSource per parsetree */
 	MemoryContext plancxt;		/* Context containing _SPI_plan and data */
+	int			cursor_options;	/* Cursor options used for planning */
 	int			nargs;			/* number of plan arguments */
 	Oid		   *argtypes;		/* Argument types (NULL if nargs is 0) */
 } _SPI_plan;
