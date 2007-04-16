@@ -3504,6 +3504,9 @@ vacuum_delay_point(void)
 
 		VacuumCostBalance = 0;
 
+		/* update balance values for workers */
+		AutoVacuumUpdateDelay();
+
 		/* Might have gotten an interrupt while sleeping */
 		CHECK_FOR_INTERRUPTS();
 	}

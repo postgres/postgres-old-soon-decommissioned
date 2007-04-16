@@ -129,6 +129,7 @@ extern DLLIMPORT char *DataDir;
 
 extern DLLIMPORT int NBuffers;
 extern int	MaxBackends;
+extern int	MaxConnections;
 
 extern DLLIMPORT int MyProcPid;
 extern DLLIMPORT struct Port *MyProcPort;

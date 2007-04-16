@@ -115,6 +115,8 @@ typedef struct PROC_HDR
 {
 	/* Head of list of free PGPROC structures */
 	SHMEM_OFFSET freeProcs;
+	/* Head of list of autovacuum's free PGPROC structures */
+	SHMEM_OFFSET autovacFreeProcs;
 	/* Current shared estimate of appropriate spins_per_delay value */
 	int			spins_per_delay;
 } PROC_HDR;
