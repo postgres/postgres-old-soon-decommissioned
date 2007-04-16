@@ -458,10 +458,13 @@ RevalidateCachedPlan(CachedPlanSource *plansource, bool useResOwner)
 		if (plansource->fully_planned)
 		{
 			/*
-			 * Generate plans for queries.	Assume snapshot is not set yet
+			 * Generate plans for queries.  We don't need any boundParams, and
+			 * currently we don't need to worry about cursor options because
+			 * cursor plans are never saved in the plancache (that might have
+			 * to change someday).  Also, assume snapshot is not set yet
 			 * (XXX this may be wasteful, won't all callers have done that?)
 			 */
-			slist = pg_plan_queries(slist, NULL, true);
+			slist = pg_plan_queries(slist, 0, NULL, true);
 		}
 
 		/*

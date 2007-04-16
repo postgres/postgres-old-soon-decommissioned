@@ -160,7 +160,7 @@ PrepareQuery(PrepareStmt *stmt, const char *queryString)
 	query_list = QueryRewrite(query);
 
 	/* Generate plans for queries.	Snapshot is already set. */
-	plan_list = pg_plan_queries(query_list, NULL, false);
+	plan_list = pg_plan_queries(query_list, 0, NULL, false);
 
 	/*
 	 * Save the results.

@@ -80,8 +80,7 @@ static List *postprocess_setop_tlist(List *new_tlist, List *orig_tlist);
  *
  *****************************************************************************/
 PlannedStmt *
-planner(Query *parse, bool isCursor, int cursorOptions,
-		ParamListInfo boundParams)
+planner(Query *parse, int cursorOptions, ParamListInfo boundParams)
 {
 	PlannedStmt *result;
 	PlannerGlobal *glob;
@@ -107,7 +106,7 @@ planner(Query *parse, bool isCursor, int cursorOptions,
 	glob->finalrtable = NIL;
 
 	/* Determine what fraction of the plan is likely to be scanned */
-	if (isCursor)
+	if (cursorOptions & CURSOR_OPT_FAST_PLAN)
 	{
 		/*
 		 * We have no real idea how many tuples the user will ultimately FETCH
@@ -130,7 +129,7 @@ planner(Query *parse, bool isCursor, int cursorOptions,
 	 * If creating a plan for a scrollable cursor, make sure it can run
 	 * backwards on demand.  Add a Material node at the top at need.
 	 */
-	if (isCursor && (cursorOptions & CURSOR_OPT_SCROLL))
+	if (cursorOptions & CURSOR_OPT_SCROLL)
 	{
 		if (!ExecSupportsBackwardScan(top_plan))
 			top_plan = materialize_finished_plan(top_plan);

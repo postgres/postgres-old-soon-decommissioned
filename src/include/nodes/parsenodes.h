@@ -1429,11 +1429,12 @@ typedef struct CommentStmt
  *		Declare Cursor Statement
  * ----------------------
  */
-#define CURSOR_OPT_BINARY		0x0001
-#define CURSOR_OPT_SCROLL		0x0002
-#define CURSOR_OPT_NO_SCROLL	0x0004
-#define CURSOR_OPT_INSENSITIVE	0x0008
-#define CURSOR_OPT_HOLD			0x0010
+#define CURSOR_OPT_BINARY		0x0001		/* BINARY */
+#define CURSOR_OPT_SCROLL		0x0002		/* SCROLL explicitly given */
+#define CURSOR_OPT_NO_SCROLL	0x0004		/* NO SCROLL explicitly given */
+#define CURSOR_OPT_INSENSITIVE	0x0008		/* INSENSITIVE (unimplemented) */
+#define CURSOR_OPT_HOLD			0x0010		/* WITH HOLD */
+#define CURSOR_OPT_FAST_PLAN	0x0020		/* prefer fast-start plan */
 
 typedef struct DeclareCursorStmt
 {

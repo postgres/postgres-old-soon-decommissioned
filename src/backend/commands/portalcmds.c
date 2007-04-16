@@ -111,7 +111,7 @@ PerformCursorOpen(DeclareCursorStmt *stmt, ParamListInfo params,
 				 errdetail("Cursors must be READ ONLY.")));
 
 	/* plan the query */
-	plan = planner(query, true, stmt->options, params);
+	plan = planner(query, stmt->options, params);
 
 	/*
 	 * Create a portal and copy the plan into its memory context.

@@ -18,7 +18,7 @@
 #include "nodes/relation.h"
 
 
-extern PlannedStmt *planner(Query *parse, bool isCursor, int cursorOptions,
+extern PlannedStmt *planner(Query *parse, int cursorOptions,
 		ParamListInfo boundParams);
 extern Plan *subquery_planner(PlannerGlobal *glob, Query *parse,
 							  Index level, double tuple_fraction,

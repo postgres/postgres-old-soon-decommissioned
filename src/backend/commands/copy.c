@@ -1023,7 +1023,7 @@ DoCopy(const CopyStmt *stmt, const char *queryString)
 					 errmsg("COPY (SELECT INTO) is not supported")));
 
 		/* plan the query */
-		plan = planner(query, false, 0, NULL);
+		plan = planner(query, 0, NULL);
 
 		/*
 		 * Update snapshot command ID to ensure this query sees results of any
