@@ -112,7 +112,6 @@ s{PG_VERSION_STR "[^"]+"}{__STRINGIFY(x) #x\n#define __STRINGIFY2(z) __STRINGIFY
         print O "#define HAVE_LIBZ 1\n" if ($self->{options}->{zlib});
         print O "#define USE_SSL 1\n" if ($self->{options}->{openssl});
         print O "#define ENABLE_NLS 1\n" if ($self->{options}->{nls});
-        print O "#define HAVE_IPV6 1\n";
 
         if ($self->{options}->{xml})
         {
