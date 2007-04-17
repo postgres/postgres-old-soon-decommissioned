@@ -1938,7 +1938,7 @@ January 8 04:05:06 1999 PST
 
       <table id="datatype-datetime-special-table">
        <title>Special Date/Time Inputs</title>
-       <tgroup cols="2">
+       <tgroup cols="3">
         <thead>
          <row>
           <entry>Input String</entry>

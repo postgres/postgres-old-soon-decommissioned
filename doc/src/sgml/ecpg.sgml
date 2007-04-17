@@ -1485,7 +1485,7 @@ int PGTYPESdate_defmt_asc(date *d, char *fmt, char *str);
         you an idea of how to use this function.
         <table>
          <title>Valid input formats for <function>rdefmtdate</function></title>
-         <tgroup cols="2">
+         <tgroup cols="3">
           <thead>
            <row>
             <entry>fmt</entry>
