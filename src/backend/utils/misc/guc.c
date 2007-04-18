@@ -1506,6 +1506,17 @@ static struct config_int ConfigureNamesInt[] =
 	},
 
 	{
+		{"log_autovacuum", PGC_BACKEND, LOGGING_WHAT,
+			gettext_noop("Sets the minimum execution time above which autovacuum actions "
+						 "will be logged."),
+			gettext_noop("Zero prints all actions.  The default is -1 (turning this feature off)."),
+			GUC_UNIT_MS
+		},
+		&Log_autovacuum,
+		-1, -1, INT_MAX / 1000, NULL, NULL
+	},
+
+	{
 		{"bgwriter_delay", PGC_SIGHUP, RESOURCES,
 			gettext_noop("Background writer sleep time between rounds."),
 			NULL,

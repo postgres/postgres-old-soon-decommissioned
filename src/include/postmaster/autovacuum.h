@@ -31,6 +31,8 @@ extern int	autovacuum_vac_cost_limit;
 /* autovacuum launcher PID, only valid when worker is shutting down */
 extern int	AutovacuumLauncherPid;
 
+extern int	Log_autovacuum;
+
 /* Status inquiry functions */
 extern bool AutoVacuumingActive(void);
 extern bool IsAutoVacuumLauncherProcess(void);
