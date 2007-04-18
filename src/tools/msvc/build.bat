@@ -3,6 +3,7 @@ REM $PostgreSQL$
 
 SETLOCAL
 SET STARTDIR=%CD%
+SET CONFIG=
 if exist src\tools\msvc\buildenv.bat call src\tools\msvc\buildenv.bat
 if exist buildenv.bat call buildenv.bat
 
@@ -10,12 +11,20 @@ perl mkvcbuild.pl
 if errorlevel 1 goto :eof
 
 if exist ..\msvc if exist ..\..\..\src cd ..\..\..
-SET CONFIG=
-if "%1" == "" set CONFIG=Debug
-if "%CONFIG%" == "" if "%1" == "DEBUG" set CONFIG=Debug
-if "%CONFIG%" == "" if "%1" == "RELEASE" set CONFIG=Release
-if not "%CONFIG%" == "" shift
-if "%CONFIG%" == "" set CONFIG=Debug
+set CFG=
+if "%1" == "DEBUG" (
+ set CONFIG=Debug
+ set CFG=1
+)
+if "%1" == "RELEASE" (
+ set CONFIG=Release
+ set CFG=1
+)
+if "%CONFIG%" == "" set CONFIG=Release
+
+if "%CFG%" == "1" shift
+
+echo Building %CONFIG%
 
 if "%1" == "" msbuild pgsql.sln /verbosity:detailed /p:Configuration=%CONFIG%
 if not "%1" == "" vcbuild %1.vcproj %CONFIG%
