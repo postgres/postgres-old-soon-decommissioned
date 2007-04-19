@@ -987,6 +987,25 @@ exec_stmt_block(PLpgSQL_execstate *estate, PLpgSQL_stmt_block *block)
 
 			estate->err_text = gettext_noop("during statement block exit");
 
+			/*
+			 * If the block ended with RETURN, we may need to copy the return
+			 * value out of the subtransaction eval_context.  This is currently
+			 * only needed for scalar result types --- rowtype values will
+			 * always exist in the function's own memory context.
+			 */
+			if (rc == PLPGSQL_RC_RETURN &&
+				!estate->retisset &&
+				!estate->retisnull &&
+				estate->rettupdesc == NULL)
+			{
+				int16		resTypLen;
+				bool		resTypByVal;
+
+				get_typlenbyval(estate->rettype, &resTypLen, &resTypByVal);
+				estate->retval = datumCopy(estate->retval,
+										   resTypByVal, resTypLen);
+			}
+
 			/* Commit the inner transaction, return to outer xact context */
 			ReleaseCurrentSubTransaction();
 			MemoryContextSwitchTo(oldcontext);
