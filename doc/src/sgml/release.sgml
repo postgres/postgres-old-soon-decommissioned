@@ -14,7 +14,7 @@ $PostgreSQL$
    </note>
 
    <para>
-    This release contains fixes from 8.0.12, including a security fix.
+    This release contains fixes from 8.0.12.
    </para>
 
    <sect2>
@@ -3504,8 +3504,7 @@ typedefs (Michael)</para></listitem>
    </note>
 
    <para>
-    This release contains a variety of fixes from 7.4.16, including
-    a security fix.
+    This release contains a variety of fixes from 7.4.16.
    </para>
 
    <sect2>
@@ -6665,8 +6664,7 @@ DROP SCHEMA information_schema CASCADE;
    </note>
 
    <para>
-    This release contains a variety of fixes from 7.3.18, including
-    a security fix.
+    This release contains a variety of fixes from 7.3.18.
    </para>
 
    <sect2>
