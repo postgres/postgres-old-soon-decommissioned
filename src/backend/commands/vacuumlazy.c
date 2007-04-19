@@ -217,7 +217,7 @@ lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt)
 	/* and log the action if appropriate */
 	if (IsAutoVacuumWorkerProcess() && Log_autovacuum >= 0)
 	{
-		long	diff;
+		long	diff = 0L;
 
 		if (Log_autovacuum > 0)
 		{
