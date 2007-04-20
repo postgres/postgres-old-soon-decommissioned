@@ -45,8 +45,7 @@ $PostgreSQL$
       truly secure value of <varname>search_path</>.  Without it,
       an unprivileged SQL user can use temporary objects to execute code
       with the privileges of the security-definer function (CVE-2007-2138).
-      See <xref linkend="sql-createfunction"
-      endterm="sql-createfunction-title"> for more information.
+      See <command>CREATE FUNCTION</> for more information.
      </para>
      </listitem>
 
@@ -3554,8 +3553,7 @@ typedefs (Michael)</para></listitem>
       truly secure value of <varname>search_path</>.  Without it,
       an unprivileged SQL user can use temporary objects to execute code
       with the privileges of the security-definer function (CVE-2007-2138).
-      See <xref linkend="sql-createfunction"
-      endterm="sql-createfunction-title"> for more information.
+      See <command>CREATE FUNCTION</> for more information.
      </para>
      </listitem>
 
@@ -6739,8 +6737,7 @@ DROP SCHEMA information_schema CASCADE;
       truly secure value of <varname>search_path</>.  Without it,
       an unprivileged SQL user can use temporary objects to execute code
       with the privileges of the security-definer function (CVE-2007-2138).
-      See <xref linkend="sql-createfunction"
-      endterm="sql-createfunction-title"> for more information.
+      See <command>CREATE FUNCTION</> for more information.
      </para>
      </listitem>
 
