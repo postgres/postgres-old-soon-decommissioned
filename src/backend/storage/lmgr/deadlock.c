@@ -836,6 +836,8 @@ PrintLockQueue(LOCK *lock, const char *info)
  * Append a description of a lockable object to buf.
  *
  * XXX probably this should be exported from lmgr.c or some such place.
+ * Ideally we would print names for the numeric values, but that requires
+ * getting locks on system tables, which might cause problems.
  */
 static void
 DescribeLockTag(StringInfo buf, const LOCKTAG *lock)
