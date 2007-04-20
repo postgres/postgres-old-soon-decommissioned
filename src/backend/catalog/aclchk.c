@@ -1833,7 +1833,7 @@ pg_namespace_aclmask(Oid nsp_oid, Oid roleid,
 	 */
 	if (isTempNamespace(nsp_oid))
 	{
-		if (pg_database_aclcheck(MyDatabaseId, GetUserId(),
+		if (pg_database_aclcheck(MyDatabaseId, roleid,
 								 ACL_CREATE_TEMP) == ACLCHECK_OK)
 			return mask & ACL_ALL_RIGHTS_NAMESPACE;
 		else
