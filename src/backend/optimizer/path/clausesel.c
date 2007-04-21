@@ -500,7 +500,7 @@ clause_selectivity(PlannerInfo *root,
 		if (var->varlevelsup == 0 &&
 			(varRelid == 0 || varRelid == (int) var->varno))
 		{
-			RangeTblEntry *rte = rt_fetch(var->varno, root->parse->rtable);
+			RangeTblEntry *rte = planner_rt_fetch(var->varno, root);
 
 			if (rte->rtekind == RTE_SUBQUERY)
 			{

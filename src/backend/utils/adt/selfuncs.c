@@ -3487,7 +3487,7 @@ examine_variable(PlannerInfo *root, Node *node, int varRelid,
 		vardata->atttype = var->vartype;
 		vardata->atttypmod = var->vartypmod;
 
-		rte = rt_fetch(var->varno, root->parse->rtable);
+		rte = root->simple_rte_array[var->varno];
 
 		if (rte->inh)
 		{

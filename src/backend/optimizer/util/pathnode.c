@@ -800,7 +800,7 @@ create_unique_path(PlannerInfo *root, RelOptInfo *rel, Path *subpath)
 	 */
 	if (sub_targetlist && rel->rtekind == RTE_SUBQUERY)
 	{
-		RangeTblEntry *rte = rt_fetch(rel->relid, root->parse->rtable);
+		RangeTblEntry *rte = planner_rt_fetch(rel->relid, root);
 		List	   *sub_tlist_colnos;
 
 		sub_tlist_colnos = translate_sub_tlist(sub_targetlist, rel->relid);

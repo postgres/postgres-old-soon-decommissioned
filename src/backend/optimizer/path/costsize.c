@@ -856,7 +856,7 @@ cost_functionscan(Path *path, PlannerInfo *root, RelOptInfo *baserel)
 
 	/* Should only be applied to base relations that are functions */
 	Assert(baserel->relid > 0);
-	rte = rt_fetch(baserel->relid, root->parse->rtable);
+	rte = planner_rt_fetch(baserel->relid, root);
 	Assert(rte->rtekind == RTE_FUNCTION);
 
 	/* Estimate costs of executing the function expression */
@@ -2297,7 +2297,7 @@ set_function_size_estimates(PlannerInfo *root, RelOptInfo *rel)
 
 	/* Should only be applied to base relations that are functions */
 	Assert(rel->relid > 0);
-	rte = rt_fetch(rel->relid, root->parse->rtable);
+	rte = planner_rt_fetch(rel->relid, root);
 	Assert(rte->rtekind == RTE_FUNCTION);
 
 	/* Estimate number of rows the function itself will return */
@@ -2323,7 +2323,7 @@ set_values_size_estimates(PlannerInfo *root, RelOptInfo *rel)
 
 	/* Should only be applied to base relations that are values lists */
 	Assert(rel->relid > 0);
-	rte = rt_fetch(rel->relid, root->parse->rtable);
+	rte = planner_rt_fetch(rel->relid, root);
 	Assert(rte->rtekind == RTE_VALUES);
 
 	/*

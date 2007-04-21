@@ -1353,7 +1353,7 @@ create_functionscan_plan(PlannerInfo *root, Path *best_path,
 
 	/* it should be a function base rel... */
 	Assert(scan_relid > 0);
-	rte = rt_fetch(scan_relid, root->parse->rtable);
+	rte = planner_rt_fetch(scan_relid, root);
 	Assert(rte->rtekind == RTE_FUNCTION);
 
 	/* Sort clauses into best execution order */
@@ -1388,7 +1388,7 @@ create_valuesscan_plan(PlannerInfo *root, Path *best_path,
 
 	/* it should be a values base rel... */
 	Assert(scan_relid > 0);
-	rte = rt_fetch(scan_relid, root->parse->rtable);
+	rte = planner_rt_fetch(scan_relid, root);
 	Assert(rte->rtekind == RTE_VALUES);
 
 	/* Sort clauses into best execution order */
