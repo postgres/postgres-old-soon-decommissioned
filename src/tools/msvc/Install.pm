@@ -210,7 +210,7 @@ sub GenerateTimezoneFiles
     my @tzfiles = split /\s+/,$1;
     unshift @tzfiles,'';
     print "Generating timezone files...";
-    system("$conf\\zic\\zic -d $target/share/timezone " . join(" src/timezone/data/", @tzfiles));
+    system("$conf\\zic\\zic -d \"$target/share/timezone\" " . join(" src/timezone/data/", @tzfiles));
     print "\n";
 }
 
