@@ -556,6 +556,13 @@ PGAC_ARG_BOOL(with, libedit-preferred, no,
 
 
 #
+# OSSP UUID library
+#
+PGAC_ARG_BOOL(with, ossp-uuid, no, [  --with-ossp-uuid        build with OSSP UUID library for UUID generation])
+AC_SUBST(with_ossp_uuid)
+
+
+#
 # XML
 #
 PGAC_ARG_BOOL(with, libxml, no, [  --with-libxml           build with XML support],
