@@ -934,6 +934,17 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
+       <term><option>--with-libxslt</option></term>
+       <listitem>
+        <para>
+         Build with libxslt. The <filename>contrib/xml2</> module 
+		 relies on this library to perform Stylesheet transformations of
+		 XML. 
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
        <term><option>--enable-integer-datetimes</option></term>
        <listitem>
         <para>
