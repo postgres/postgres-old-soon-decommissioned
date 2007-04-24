@@ -82,7 +82,7 @@ PGSemaphoreCreate(PGSemaphore sema)
 	sec_attrs.bInheritHandle = TRUE;
 
 	/* We don't need a named semaphore */
-	cur_handle = CreateSemaphore(&sec_attrs, 1, 1, NULL);
+	cur_handle = CreateSemaphore(&sec_attrs, 1, 32767, NULL);
 	if (cur_handle)
 	{
 		/* Successfully done */
