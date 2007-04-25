@@ -951,8 +951,8 @@ su - postgres
        <listitem>
         <para>
          Build with libxslt. The <filename>contrib/xml2</> module 
-		 relies on this library to perform Stylesheet transformations of
-		 XML. 
+         relies on this library to perform Stylesheet transformations of
+         XML. 
         </para>
        </listitem>
       </varlistentry>
