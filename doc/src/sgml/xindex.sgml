@@ -326,7 +326,7 @@
        <entry>
         Compare two keys and return an integer less than zero, zero, or
         greater than zero, indicating whether the first key is less than,
-        equal to, or greater than the second.
+        equal to, or greater than the second
        </entry>
        <entry>1</entry>
       </row>
