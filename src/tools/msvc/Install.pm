@@ -46,7 +46,7 @@ sub Install
     CopyFiles(
         'Import libraries',
         $target .'/lib/',
-        "$conf\\", "postgres\\postgres.lib","libpq\\libpq.lib", "libecpg\\libecpg.lib"
+        "$conf\\", "postgres\\postgres.lib","libpq\\libpq.lib", "libecpg\\libecpg.lib", "libpgport\\libpgport.lib"
     );
     CopySetOfFiles('timezone names', 'src\timezone\tznames\*.txt',$target . '/share/timezonesets/');
     CopyFiles(
@@ -265,7 +265,7 @@ sub CopyContribFiles
             foreach my $f (split /\s+/,$flist)
             {
                 copy('contrib/' . $d . '/' . $f, $target . '/doc/contrib/' . $f)
-                  || croak("Coud not copy file $f in contrib $d");
+                  || croak("Could not copy file $f in contrib $d");
                 print '.';
             }
         }
