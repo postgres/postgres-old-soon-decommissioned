@@ -569,7 +569,7 @@ findPartialMatch(TupleHashTable hashtable, TupleTableSlot *slot)
 	TupleHashIterator hashiter;
 	TupleHashEntry entry;
 
-	ResetTupleHashIterator(hashtable, &hashiter);
+	InitTupleHashIterator(hashtable, &hashiter);
 	while ((entry = ScanTupleHashTable(&hashiter)) != NULL)
 	{
 		ExecStoreMinimalTuple(entry->firstTuple, hashtable->tableslot, false);
@@ -577,8 +577,12 @@ findPartialMatch(TupleHashTable hashtable, TupleTableSlot *slot)
 							   numCols, keyColIdx,
 							   hashtable->eqfunctions,
 							   hashtable->tempcxt))
+		{
+			TermTupleHashIterator(&hashiter);
 			return true;
+		}
 	}
+	/* No TermTupleHashIterator call needed here */
 	return false;
 }
 

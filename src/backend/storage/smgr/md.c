@@ -919,6 +919,7 @@ mdsync(void)
 									entry->tag.rnode.spcNode,
 									entry->tag.rnode.dbNode,
 									entry->tag.rnode.relNode)));
+					hash_seq_term(&hstat);
 					return false;
 				}
 				else

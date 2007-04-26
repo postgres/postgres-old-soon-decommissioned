@@ -907,7 +907,11 @@ tbm_lossify(TIDBitmap *tbm)
 		tbm_mark_page_lossy(tbm, page->blockno);
 
 		if (tbm->nentries <= tbm->maxentries)
-			return;				/* we have done enough */
+		{
+			/* we have done enough */
+			hash_seq_term(&status);
+			break;
+		}
 
 		/*
 		 * Note: tbm_mark_page_lossy may have inserted a lossy chunk into the
