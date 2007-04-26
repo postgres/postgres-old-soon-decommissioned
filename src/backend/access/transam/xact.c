@@ -1011,6 +1011,7 @@ CommitTransaction(void)
 	AtEOXact_Namespace(true);
 	AtEOXact_CatCache(true);
 	AtEOXact_Files();
+	AtEOXact_HashTables(true);
 	pgstat_count_xact_commit();
 	AtCommit_Memory();
 
@@ -1126,6 +1127,7 @@ AbortTransaction(void)
 	AtEOXact_Namespace(false);
 	AtEOXact_CatCache(false);
 	AtEOXact_Files();
+	AtEOXact_HashTables(false);
 	SetReindexProcessing(InvalidOid, InvalidOid);
 	pgstat_count_xact_rollback();
 
