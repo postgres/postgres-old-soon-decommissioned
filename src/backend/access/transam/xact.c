@@ -1631,6 +1631,7 @@ CommitTransaction(void)
 	/* smgrcommit already done */
 	AtEOXact_Files();
 	AtEOXact_ComboCid();
+	AtEOXact_HashTables(true);
 	pgstat_clear_snapshot();
 	pgstat_count_xact_commit();
 	pgstat_report_txn_timestamp(0);
@@ -1849,6 +1850,7 @@ PrepareTransaction(void)
 	/* smgrcommit already done */
 	AtEOXact_Files();
 	AtEOXact_ComboCid();
+	AtEOXact_HashTables(true);
 	pgstat_clear_snapshot();
 
 	CurrentResourceOwner = NULL;
@@ -2003,6 +2005,7 @@ AbortTransaction(void)
 	smgrabort();
 	AtEOXact_Files();
 	AtEOXact_ComboCid();
+	AtEOXact_HashTables(false);
 	pgstat_clear_snapshot();
 	pgstat_count_xact_rollback();
 	pgstat_report_txn_timestamp(0);
@@ -3716,6 +3719,7 @@ CommitSubTransaction(void)
 						  s->parent->subTransactionId);
 	AtEOSubXact_Files(true, s->subTransactionId,
 					  s->parent->subTransactionId);
+	AtEOSubXact_HashTables(true, s->nestingLevel);
 
 	/*
 	 * We need to restore the upper transaction's read-only state, in case the
@@ -3827,6 +3831,7 @@ AbortSubTransaction(void)
 							  s->parent->subTransactionId);
 		AtEOSubXact_Files(false, s->subTransactionId,
 						  s->parent->subTransactionId);
+		AtEOSubXact_HashTables(false, s->nestingLevel);
 	}
 
 	/*
