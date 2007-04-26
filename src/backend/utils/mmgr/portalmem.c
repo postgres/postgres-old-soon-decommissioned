@@ -548,7 +548,9 @@ AtCommit_Portals(void)
 		/* Zap all non-holdable portals */
 		PortalDrop(portal, true);
 
-		/* Restart the iteration */
+		/* Restart the iteration in case that led to other drops */
+		/* XXX is this really necessary? */
+		hash_seq_term(&status);
 		hash_seq_init(&status, PortalHashTable);
 	}
 }
