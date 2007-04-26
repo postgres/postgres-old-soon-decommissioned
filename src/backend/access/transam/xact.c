@@ -1440,16 +1440,32 @@ CommitTransaction(void)
 	/*
 	 * Do pre-commit processing (most of this stuff requires database
 	 * access, and in fact could still cause an error...)
+	 *
+	 * It is possible for CommitHoldablePortals to invoke functions that
+	 * queue deferred triggers, and it's also possible that triggers create
+	 * holdable cursors.  So we have to loop until there's nothing left to
+	 * do.
 	 */
+	for (;;)
+	{
+		/*
+		 * Fire all currently pending deferred triggers.
+		 */
+		AfterTriggerFireDeferred();
 
-	/*
-	 * Tell the trigger manager that this transaction is about to be
-	 * committed. He'll invoke all trigger deferred until XACT before we
-	 * really start on committing the transaction.
-	 */
-	AfterTriggerEndXact();
+		/*
+		 * Convert any open holdable cursors into static portals.  If there
+		 * weren't any, we are done ... otherwise loop back to check if they
+		 * queued deferred triggers.  Lather, rinse, repeat.
+		 */
+		if (!CommitHoldablePortals())
+			break;
+	}
 
-	/* Close open cursors */
+	/* Now we can shut down the deferred-trigger manager */
+	AfterTriggerEndXact(true);
+
+	/* Close any open regular cursors */
 	AtCommit_Portals();
 
 	/*
@@ -1563,6 +1579,7 @@ CommitTransaction(void)
 	AtEOXact_Namespace(true);
 	/* smgrcommit already done */
 	AtEOXact_Files();
+	AtEOXact_HashTables(true);
 	pgstat_count_xact_commit();
 
 	CurrentResourceOwner = NULL;
@@ -1650,7 +1667,7 @@ AbortTransaction(void)
 	/*
 	 * do abort processing
 	 */
-	AfterTriggerAbortXact();
+	AfterTriggerEndXact(false);
 	AtAbort_Portals();
 	AtEOXact_LargeObject(false);	/* 'false' means it's abort */
 	AtAbort_Notify();
@@ -1704,6 +1721,7 @@ AbortTransaction(void)
 	AtEOXact_Namespace(false);
 	smgrabort();
 	AtEOXact_Files();
+	AtEOXact_HashTables(false);
 	pgstat_count_xact_rollback();
 
 	/*
@@ -3314,6 +3332,7 @@ CommitSubTransaction(void)
 						  s->parent->subTransactionId);
 	AtEOSubXact_Files(true, s->subTransactionId,
 					  s->parent->subTransactionId);
+	AtEOSubXact_HashTables(true, s->nestingLevel);
 
 	/*
 	 * We need to restore the upper transaction's read-only state, in case
@@ -3423,6 +3442,7 @@ AbortSubTransaction(void)
 							  s->parent->subTransactionId);
 		AtEOSubXact_Files(false, s->subTransactionId,
 						  s->parent->subTransactionId);
+		AtEOSubXact_HashTables(false, s->nestingLevel);
 	}
 
 	/*
