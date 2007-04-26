@@ -11,7 +11,7 @@ PostgreSQL documentation
 
  <refnamediv>
   <refname>DISCARD</refname>
-  <refpurpose>Discard internal server state</refpurpose>
+  <refpurpose>discard session state</refpurpose>
  </refnamediv>
 
  <indexterm zone="sql-discard">
