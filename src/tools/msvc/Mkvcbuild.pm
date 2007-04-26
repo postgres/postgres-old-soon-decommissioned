@@ -128,7 +128,7 @@ sub mkvcbuild
     my $pgtypes =
       $solution->AddProject('libpgtypes','dll','interfaces','src\interfaces\ecpg\pgtypeslib');
     $pgtypes->AddDefine('FRONTEND');
-    $pgtypes->AddReference($postgres,$libpgport);
+    $pgtypes->AddReference($libpgport);
     $pgtypes->AddIncludeDir('src\interfaces\ecpg\include');
 
     my $libecpg =$solution->AddProject('libecpg','dll','interfaces','src\interfaces\ecpg\ecpglib');
