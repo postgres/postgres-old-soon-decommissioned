@@ -1107,11 +1107,16 @@ psql_completion(char *text, int start, int end)
 		COMPLETE_WITH_SCHEMA_QUERY(Query_for_list_of_tables, NULL);
 
 /* CREATE TABLE */
-	/* Complete CREATE TEMP/TEMPORARY with "TABLE" */
+	/* Complete "CREATE TEMP/TEMPORARY" with the possible temp objects */
 	else if (pg_strcasecmp(prev2_wd, "CREATE") == 0 &&
 			 (pg_strcasecmp(prev_wd, "TEMP") == 0 ||
 			  pg_strcasecmp(prev_wd, "TEMPORARY") == 0))
-		COMPLETE_WITH_CONST("TABLE");
+	{
+		static const char *const list_TEMP[] =
+		{ "SEQUENCE", "TABLE", "VIEW", NULL };
+
+		COMPLETE_WITH_LIST(list_TEMP);
+	}
 
 /* CREATE TABLESPACE */
 	else if (pg_strcasecmp(prev3_wd, "CREATE") == 0 &&
