@@ -158,7 +158,7 @@ static Node *makeXmlExpr(XmlExprOp op, char *name, List *named_args, List *args)
 		CreateOpFamilyStmt AlterOpFamilyStmt CreatePLangStmt
 		CreateSchemaStmt CreateSeqStmt CreateStmt CreateTableSpaceStmt
 		CreateAssertStmt CreateTrigStmt CreateUserStmt CreateRoleStmt
-		CreatedbStmt DeclareCursorStmt DefineStmt DeleteStmt
+		CreatedbStmt DeclareCursorStmt DefineStmt DeleteStmt DiscardStmt
 		DropGroupStmt DropOpClassStmt DropOpFamilyStmt DropPLangStmt DropStmt
 		DropAssertStmt DropTrigStmt DropRuleStmt DropCastStmt DropRoleStmt
 		DropUserStmt DropdbStmt DropTableSpaceStmt ExplainStmt FetchStmt
@@ -382,7 +382,7 @@ static Node *makeXmlExpr(XmlExprOp op, char *name, List *named_args, List *args)
 
 	DATABASE DAY_P DEALLOCATE DEC DECIMAL_P DECLARE DEFAULT DEFAULTS
 	DEFERRABLE DEFERRED DEFINER DELETE_P DELIMITER DELIMITERS
-	DESC DISABLE_P DISTINCT DO DOCUMENT_P DOMAIN_P DOUBLE_P DROP
+	DESC DISABLE_P DISCARD DISTINCT DO DOCUMENT_P DOMAIN_P DOUBLE_P DROP
 
 	EACH ELSE ENABLE_P ENCODING ENCRYPTED END_P ENUM_P ESCAPE EXCEPT EXCLUDING
 	EXCLUSIVE EXECUTE EXISTS EXPLAIN EXTERNAL EXTRACT
@@ -416,7 +416,7 @@ static Node *makeXmlExpr(XmlExprOp op, char *name, List *named_args, List *args)
 	OBJECT_P OF OFF OFFSET OIDS OLD ON ONLY OPERATOR OPTION OR
 	ORDER OUT_P OUTER_P OVERLAPS OVERLAY OWNED OWNER
 
-	PARTIAL PASSWORD PLACING POSITION
+	PARTIAL PASSWORD PLACING PLANS POSITION
 	PRECISION PRESERVE PREPARE PREPARED PRIMARY
 	PRIOR PRIVILEGES PROCEDURAL PROCEDURE
 
@@ -569,6 +569,7 @@ stmt :
 			| DeclareCursorStmt
 			| DefineStmt
 			| DeleteStmt
+			| DiscardStmt
 			| DropAssertStmt
 			| DropCastStmt
 			| DropGroupStmt
@@ -1324,6 +1325,40 @@ CheckPointStmt:
 				{
 					CheckPointStmt *n = makeNode(CheckPointStmt);
 					$$ = (Node *)n;
+				}
+		;
+
+
+/*****************************************************************************
+ *
+ * DISCARD { ALL | TEMP | PLANS }
+ *
+ *****************************************************************************/
+
+DiscardStmt:
+			DISCARD ALL
+				{
+					DiscardStmt *n = makeNode(DiscardStmt);
+					n->target = DISCARD_ALL;
+					$$ = (Node *) n;
+				}
+			| DISCARD TEMP
+				{
+					DiscardStmt *n = makeNode(DiscardStmt);
+					n->target = DISCARD_TEMP;
+					$$ = (Node *) n;
+				}
+			| DISCARD TEMPORARY
+				{
+					DiscardStmt *n = makeNode(DiscardStmt);
+					n->target = DISCARD_TEMP;
+					$$ = (Node *) n;
+				}
+			| DISCARD PLANS
+				{
+					DiscardStmt *n = makeNode(DiscardStmt);
+					n->target = DISCARD_PLANS;
+					$$ = (Node *) n;
 				}
 		;
 
@@ -8796,6 +8831,7 @@ unreserved_keyword:
 			| DELIMITER
 			| DELIMITERS
 			| DISABLE_P
+			| DISCARD
 			| DOCUMENT_P
 			| DOMAIN_P
 			| DOUBLE_P
@@ -8881,6 +8917,7 @@ unreserved_keyword:
 			| OWNER
 			| PARTIAL
 			| PASSWORD
+			| PLANS
 			| PREPARE
 			| PREPARED
 			| PRESERVE

@@ -1871,6 +1871,24 @@ typedef struct VariableResetStmt
 } VariableResetStmt;
 
 /* ----------------------
+ * Discard Statement
+ * ----------------------
+ */
+
+typedef enum DiscardMode
+{
+	DISCARD_ALL,
+	DISCARD_PLANS,
+	DISCARD_TEMP
+} DiscardMode;
+
+typedef struct DiscardStmt
+{
+	NodeTag		type;
+	DiscardMode	target;
+} DiscardStmt;
+
+/* ----------------------
  *		LOCK Statement
  * ----------------------
  */

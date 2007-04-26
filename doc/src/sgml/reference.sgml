@@ -89,6 +89,7 @@
    &deallocate;
    &declare;
    &delete;
+   &discard;
    &dropAggregate;
    &dropCast;
    &dropConversion;

@@ -273,6 +273,7 @@ typedef enum NodeTag
 	T_VariableSetStmt,
 	T_VariableShowStmt,
 	T_VariableResetStmt,
+	T_DiscardStmt,
 	T_CreateTrigStmt,
 	T_DropPropertyStmt,
 	T_CreatePLangStmt,

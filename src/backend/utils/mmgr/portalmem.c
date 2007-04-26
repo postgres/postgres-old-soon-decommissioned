@@ -455,7 +455,7 @@ PortalDrop(Portal portal, bool isTopCommit)
 /*
  * Delete all declared cursors.
  *
- * Used by commands: CLOSE ALL, RESET SESSION
+ * Used by commands: CLOSE ALL, DISCARD ALL
  */
 void
 PortalHashTableDeleteAll(void)

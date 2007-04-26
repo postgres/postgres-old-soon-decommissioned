@@ -61,6 +61,7 @@ Complete list of usable sgml source files in this directory.
 <!entity deallocate         system "deallocate.sgml">
 <!entity declare            system "declare.sgml">
 <!entity delete             system "delete.sgml">
+<!entity discard            system "discard.sgml">
 <!entity dropAggregate      system "drop_aggregate.sgml">
 <!entity dropCast           system "drop_cast.sgml">
 <!entity dropConversion     system "drop_conversion.sgml">
