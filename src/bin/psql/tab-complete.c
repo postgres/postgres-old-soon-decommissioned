@@ -1107,9 +1107,10 @@ psql_completion(char *text, int start, int end)
 		COMPLETE_WITH_SCHEMA_QUERY(Query_for_list_of_tables, NULL);
 
 /* CREATE TABLE */
-	/* Complete CREATE TEMP with "TABLE" */
+	/* Complete CREATE TEMP/TEMPORARY with "TABLE" */
 	else if (pg_strcasecmp(prev2_wd, "CREATE") == 0 &&
-			 pg_strcasecmp(prev_wd, "TEMP") == 0)
+			 (pg_strcasecmp(prev_wd, "TEMP") == 0 ||
+			  pg_strcasecmp(prev_wd, "TEMPORARY") == 0))
 		COMPLETE_WITH_CONST("TABLE");
 
 /* CREATE TABLESPACE */
