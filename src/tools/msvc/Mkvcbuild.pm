@@ -448,7 +448,8 @@ sub GenerateContribSqlFiles
             {
                 print "Building $out from $in (contrib/$n)...\n";
                 my $cont = Project::read_file("contrib/$n/$in");
-                my $dn = $n;
+                my $dn = $out;
+                $dn =~ s/\.sql$//;
                 if ($mf =~ /^MODULE_big\s*=\s*(.*)$/m) { $dn = $1 }
                 $cont =~ s/MODULE_PATHNAME/\$libdir\/$dn/g;
                 my $o;
