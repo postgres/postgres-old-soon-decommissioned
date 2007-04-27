@@ -1015,9 +1015,10 @@ DoCopy(const CopyStmt *stmt, const char *queryString)
 
 		query = (Query *) linitial(rewritten);
 		Assert(query->commandType == CMD_SELECT);
+		Assert(query->utilityStmt == NULL);
 
 		/* Query mustn't use INTO, either */
-		if (query->into)
+		if (query->intoClause)
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 					 errmsg("COPY (SELECT INTO) is not supported")));

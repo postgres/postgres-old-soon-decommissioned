@@ -447,9 +447,10 @@ transformRangeSubselect(ParseState *pstate, RangeSubselect *r)
 	if (query == NULL || !IsA(query, Query))
 		elog(ERROR, "unexpected parse analysis result for subquery in FROM");
 
-	if (query->commandType != CMD_SELECT)
+	if (query->commandType != CMD_SELECT ||
+		query->utilityStmt != NULL)
 		elog(ERROR, "expected SELECT query from subquery in FROM");
-	if (query->into != NULL)
+	if (query->intoClause != NULL)
 		ereport(ERROR,
 				(errcode(ERRCODE_SYNTAX_ERROR),
 				 errmsg("subquery in FROM cannot have SELECT INTO")));

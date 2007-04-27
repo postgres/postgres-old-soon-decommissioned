@@ -1581,7 +1581,8 @@ _SPI_execute_plan(SPIPlanPtr plan, Datum *Values, const char *Nulls,
 						ActiveSnapshot->curcid = GetCurrentCommandId();
 				}
 
-				if (IsA(stmt, PlannedStmt))
+				if (IsA(stmt, PlannedStmt) &&
+					((PlannedStmt *) stmt)->utilityStmt == NULL)
 				{
 					qdesc = CreateQueryDesc((PlannedStmt *) stmt,
 											ActiveSnapshot,
@@ -1687,7 +1688,8 @@ _SPI_pquery(QueryDesc *queryDesc, long tcount)
 	switch (operation)
 	{
 		case CMD_SELECT:
-			if (queryDesc->plannedstmt->into)		/* select into table? */
+			Assert(queryDesc->plannedstmt->utilityStmt == NULL);
+			if (queryDesc->plannedstmt->intoClause)	/* select into table? */
 				res = SPI_OK_SELINTO;
 			else if (queryDesc->dest->mydest != DestSPI)
 			{

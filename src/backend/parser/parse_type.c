@@ -519,7 +519,7 @@ parseTypeString(const char *str, Oid *type_id, int32 *typmod)
 	if (stmt == NULL ||
 		!IsA(stmt, SelectStmt) ||
 		stmt->distinctClause != NIL ||
-		stmt->into != NULL ||
+		stmt->intoClause != NULL ||
 		stmt->fromClause != NIL ||
 		stmt->whereClause != NULL ||
 		stmt->groupClause != NIL ||

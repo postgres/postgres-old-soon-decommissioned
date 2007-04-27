@@ -15,10 +15,11 @@
 #define PORTALCMDS_H
 
 #include "nodes/parsenodes.h"
+#include "nodes/plannodes.h"
 #include "utils/portal.h"
 
 
-extern void PerformCursorOpen(DeclareCursorStmt *stmt, ParamListInfo params,
+extern void PerformCursorOpen(PlannedStmt *stmt, ParamListInfo params,
 							  const char *queryString, bool isTopLevel);
 
 extern void PerformPortalFetch(FetchStmt *stmt, DestReceiver *dest,

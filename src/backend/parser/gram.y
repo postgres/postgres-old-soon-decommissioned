@@ -2355,12 +2355,12 @@ CreateAsStmt:
 					 * be attached to that Select's target list.
 					 */
 					SelectStmt *n = findLeftmostSelect((SelectStmt *) $6);
-					if (n->into != NULL)
+					if (n->intoClause != NULL)
 						ereport(ERROR,
 								(errcode(ERRCODE_SYNTAX_ERROR),
 								 errmsg("CREATE TABLE AS cannot specify INTO")));
 					$4->rel->istemp = $2;
-					n->into = $4;
+					n->intoClause = $4;
 					$$ = $6;
 				}
 		;
@@ -5993,7 +5993,7 @@ simple_select:
 					SelectStmt *n = makeNode(SelectStmt);
 					n->distinctClause = $2;
 					n->targetList = $3;
-					n->into = $4;
+					n->intoClause = $4;
 					n->fromClause = $5;
 					n->whereClause = $6;
 					n->groupClause = $7;

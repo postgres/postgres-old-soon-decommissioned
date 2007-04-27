@@ -244,7 +244,8 @@ _outPlannedStmt(StringInfo str, PlannedStmt *node)
 	WRITE_NODE_FIELD(planTree);
 	WRITE_NODE_FIELD(rtable);
 	WRITE_NODE_FIELD(resultRelations);
-	WRITE_NODE_FIELD(into);
+	WRITE_NODE_FIELD(utilityStmt);
+	WRITE_NODE_FIELD(intoClause);
 	WRITE_NODE_FIELD(subplans);
 	WRITE_BITMAPSET_FIELD(rewindPlanIDs);
 	WRITE_NODE_FIELD(returningLists);
@@ -1549,7 +1550,7 @@ _outSelectStmt(StringInfo str, SelectStmt *node)
 	WRITE_NODE_TYPE("SELECT");
 
 	WRITE_NODE_FIELD(distinctClause);
-	WRITE_NODE_FIELD(into);
+	WRITE_NODE_FIELD(intoClause);
 	WRITE_NODE_FIELD(targetList);
 	WRITE_NODE_FIELD(fromClause);
 	WRITE_NODE_FIELD(whereClause);
@@ -1694,7 +1695,7 @@ _outQuery(StringInfo str, Query *node)
 		appendStringInfo(str, " :utilityStmt <>");
 
 	WRITE_INT_FIELD(resultRelation);
-	WRITE_NODE_FIELD(into);
+	WRITE_NODE_FIELD(intoClause);
 	WRITE_BOOL_FIELD(hasAggs);
 	WRITE_BOOL_FIELD(hasSubLinks);
 	WRITE_NODE_FIELD(rtable);
