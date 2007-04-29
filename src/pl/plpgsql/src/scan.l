@@ -142,6 +142,7 @@ into			{ return K_INTO;			}
 is				{ return K_IS;				}
 log				{ return K_LOG;				}
 loop			{ return K_LOOP;			}
+move			{ return K_MOVE;			}
 next			{ return K_NEXT;			}
 no{space}+scroll { return K_NOSCROLL;		}
 not				{ return K_NOT;				}

@@ -446,7 +446,7 @@ typedef struct
 
 
 typedef struct
-{								/* FETCH statement */
+{								/* FETCH or MOVE statement */
 	int			cmd_type;
 	int			lineno;
 	PLpgSQL_rec *rec;			/* target, as record or row */
@@ -455,6 +455,7 @@ typedef struct
 	FetchDirection direction;	/* fetch direction */
 	int			how_many;		/* count, if constant (expr is NULL) */
 	PLpgSQL_expr *expr;			/* count, if expression */
+	bool		is_move;		/* is this a fetch or move? */
 } PLpgSQL_stmt_fetch;
 
 
