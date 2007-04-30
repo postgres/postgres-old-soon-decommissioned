@@ -615,7 +615,7 @@ void allow_immediate_pgstat_restart(void)
  * ----------
  */
 void
-pgstat_report_tabstat(void)
+pgstat_report_tabstat(bool force)
 {
 	static TimestampTz last_report = 0;	
 	TimestampTz now;
@@ -627,10 +627,11 @@ pgstat_report_tabstat(void)
 
 	/*
 	 * Don't send a message unless it's been at least PGSTAT_STAT_INTERVAL
-	 * msec since we last sent one.
+	 * msec since we last sent one, or the caller wants to force stats out.
 	 */
 	now = GetCurrentTransactionStopTimestamp();
-	if (!TimestampDifferenceExceeds(last_report, now, PGSTAT_STAT_INTERVAL))
+	if (!force &&
+		!TimestampDifferenceExceeds(last_report, now, PGSTAT_STAT_INTERVAL))
 		return;
 	last_report = now;
 
@@ -1491,7 +1492,7 @@ pgstat_beshutdown_hook(int code, Datum arg)
 {
 	volatile PgBackendStatus *beentry = MyBEEntry;
 
-	pgstat_report_tabstat();
+	pgstat_report_tabstat(true);
 
 	/*
 	 * Clear my status entry, following the protocol of bumping st_changecount

@@ -416,7 +416,7 @@ extern void PgstatCollectorMain(int argc, char *argv[]);
  */
 extern void pgstat_ping(void);
 
-extern void pgstat_report_tabstat(void);
+extern void pgstat_report_tabstat(bool force);
 extern void pgstat_vacuum_tabstat(void);
 extern void pgstat_drop_database(Oid databaseid);
 extern void pgstat_drop_relation(Oid relid);
