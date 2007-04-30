@@ -1301,6 +1301,33 @@ timestamptz_to_time_t(TimestampTz t)
 	return result;
 }
 
+/*
+ * Produce a C-string representation of a TimestampTz.
+ *
+ * This is mostly for use in emitting messages.  The primary difference
+ * from timestamptz_out is that we force the output format to ISO.  Note
+ * also that the result is in a static buffer, not pstrdup'd.
+ */
+const char *
+timestamptz_to_str(TimestampTz t)
+{
+	static char	buf[MAXDATELEN + 1];
+	int			tz;
+	struct pg_tm tt,
+			   *tm = &tt;
+	fsec_t		fsec;
+	char	   *tzn;
+
+	if (TIMESTAMP_NOT_FINITE(t))
+		EncodeSpecialTimestamp(t, buf);
+	else if (timestamp2tm(t, &tz, tm, &fsec, &tzn, NULL) == 0)
+		EncodeDateTime(tm, fsec, &tz, &tzn, USE_ISO_DATES, buf);
+	else
+		strlcpy(buf, "(timestamp out of range)", sizeof(buf));
+
+	return buf;
+}
+
 
 void
 dt2time(Timestamp jd, int *hour, int *min, int *sec, fsec_t *fsec)
