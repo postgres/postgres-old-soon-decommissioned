@@ -1239,6 +1239,27 @@ TimestampDifference(TimestampTz start_time, TimestampTz stop_time,
 }
 
 /*
+ * TimestampDifferenceExceeds -- report whether the difference between two
+ *		timestamps is >= a threshold (expressed in milliseconds)
+ *
+ * Both inputs must be ordinary finite timestamps (in current usage,
+ * they'll be results from GetCurrentTimestamp()).
+ */
+bool
+TimestampDifferenceExceeds(TimestampTz start_time,
+						   TimestampTz stop_time,
+						   int msec)
+{
+	TimestampTz diff = stop_time - start_time;
+
+#ifdef HAVE_INT64_TIMESTAMP
+	return (diff >= msec * INT64CONST(1000));
+#else
+	return (diff * 1000.0 >= msec);
+#endif
+}
+
+/*
  * Convert a time_t to TimestampTz.
  *
  * We do not use time_t internally in Postgres, but this is provided for use

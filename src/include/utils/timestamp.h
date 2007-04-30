@@ -311,6 +311,9 @@ extern TimestampTz GetCurrentTimestamp(void);
 
 extern void TimestampDifference(TimestampTz start_time, TimestampTz stop_time,
 					long *secs, int *microsecs);
+extern bool TimestampDifferenceExceeds(TimestampTz start_time,
+									   TimestampTz stop_time,
+									   int msec);
 
 extern TimestampTz time_t_to_timestamptz(time_t tm);
 extern time_t timestamptz_to_time_t(TimestampTz t);

@@ -468,29 +468,15 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt)
 	/* Log the action if appropriate */
 	if (IsAutoVacuumWorkerProcess() && Log_autovacuum >= 0)
 	{
-		long	diff = 0L;
-
-		if (Log_autovacuum > 0)
-		{
-			TimestampTz	endtime;
-			int		usecs;
-			long	secs;
-
-			endtime = GetCurrentTimestamp();
-			TimestampDifference(starttime, endtime, &secs, &usecs);
-
-			diff = secs * 1000 + usecs / 1000;
-		}
-		
-		if (Log_autovacuum == 0 || diff >= Log_autovacuum)
-		{
+		if (Log_autovacuum == 0 ||
+			TimestampDifferenceExceeds(starttime, GetCurrentTimestamp(),
+									   Log_autovacuum))
 			ereport(LOG,
 					(errmsg("automatic analyze of table \"%s.%s.%s\" system usage: %s",
 							get_database_name(MyDatabaseId),
 							get_namespace_name(RelationGetNamespace(onerel)),
 							RelationGetRelationName(onerel),
 							pg_rusage_show(&ru0))));
-		}
 	}
 }
 
