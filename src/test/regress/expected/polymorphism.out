@@ -349,184 +349,219 @@ insert into t values(3,array[3],'b');
 select f3, myaggp01a(*) from t group by f3;
  f3 | myaggp01a 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggp03a(*) from t group by f3;
  f3 | myaggp03a 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggp03b(*) from t group by f3;
  f3 | myaggp03b 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggp05a(f1) from t group by f3;
  f3 | myaggp05a 
 ----+-----------
+ b  | {1,2,3}
  c  | {1,2}
  a  | {1,2,3}
- b  | {1,2,3}
 (3 rows)
 
 select f3, myaggp06a(f1) from t group by f3;
  f3 | myaggp06a 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggp08a(f1) from t group by f3;
  f3 | myaggp08a 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggp09a(f1) from t group by f3;
  f3 | myaggp09a 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggp09b(f1) from t group by f3;
  f3 | myaggp09b 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggp10a(f1) from t group by f3;
  f3 | myaggp10a 
 ----+-----------
+ b  | {1,2,3}
  c  | {1,2}
  a  | {1,2,3}
- b  | {1,2,3}
 (3 rows)
 
 select f3, myaggp10b(f1) from t group by f3;
  f3 | myaggp10b 
 ----+-----------
+ b  | {1,2,3}
  c  | {1,2}
  a  | {1,2,3}
- b  | {1,2,3}
 (3 rows)
 
 select f3, myaggp20a(f1) from t group by f3;
  f3 | myaggp20a 
 ----+-----------
+ b  | {1,2,3}
  c  | {1,2}
  a  | {1,2,3}
- b  | {1,2,3}
 (3 rows)
 
 select f3, myaggp20b(f1) from t group by f3;
  f3 | myaggp20b 
 ----+-----------
+ b  | {1,2,3}
  c  | {1,2}
  a  | {1,2,3}
- b  | {1,2,3}
 (3 rows)
 
 select f3, myaggn01a(*) from t group by f3;
  f3 | myaggn01a 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggn01b(*) from t group by f3;
  f3 | myaggn01b 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggn03a(*) from t group by f3;
  f3 | myaggn03a 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggn05a(f1) from t group by f3;
  f3 | myaggn05a 
 ----+-----------
+ b  | {1,2,3}
  c  | {1,2}
  a  | {1,2,3}
- b  | {1,2,3}
 (3 rows)
 
 select f3, myaggn05b(f1) from t group by f3;
  f3 | myaggn05b 
 ----+-----------
+ b  | {1,2,3}
  c  | {1,2}
  a  | {1,2,3}
- b  | {1,2,3}
 (3 rows)
 
 select f3, myaggn06a(f1) from t group by f3;
  f3 | myaggn06a 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggn06b(f1) from t group by f3;
  f3 | myaggn06b 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggn08a(f1) from t group by f3;
  f3 | myaggn08a 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggn08b(f1) from t group by f3;
  f3 | myaggn08b 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggn09a(f1) from t group by f3;
  f3 | myaggn09a 
 ----+-----------
+ b  | {}
  c  | {}
  a  | {}
- b  | {}
 (3 rows)
 
 select f3, myaggn10a(f1) from t group by f3;
  f3 | myaggn10a 
 ----+-----------
+ b  | {1,2,3}
  c  | {1,2}
  a  | {1,2,3}
- b  | {1,2,3}
 (3 rows)
+
+-- test inlining of polymorphic SQL functions
+create function bleat(int) returns int as $$
+begin
+  raise notice 'bleat %', $1;
+  return $1;
+end$$ language plpgsql;
+create function sql_if(bool, anyelement, anyelement) returns anyelement as $$
+select case when $1 then $2 else $3 end $$ language sql;
+-- Note this would fail with integer overflow, never mind wrong bleat() output,
+-- if the CASE expression were not successfully inlined
+select f1, sql_if(f1 > 0, bleat(f1), bleat(f1 + 1)) from int4_tbl;
+NOTICE:  bleat 1
+NOTICE:  bleat 123456
+NOTICE:  bleat -123455
+NOTICE:  bleat 2147483647
+NOTICE:  bleat -2147483646
+     f1      |   sql_if    
+-------------+-------------
+           0 |           1
+      123456 |      123456
+     -123456 |     -123455
+  2147483647 |  2147483647
+ -2147483647 | -2147483646
+(5 rows)
+
+select q2, sql_if(q2 > 0, q2, q2 + 1) from int8_tbl;
+        q2         |      sql_if       
+-------------------+-------------------
+               456 |               456
+  4567890123456789 |  4567890123456789
+               123 |               123
+  4567890123456789 |  4567890123456789
+ -4567890123456789 | -4567890123456788
+(5 rows)
 
