@@ -1987,11 +1987,11 @@ inline_function(Oid funcid, Oid result_type, List *args,
 	 * compatible with the original expression result type.  To avoid
 	 * confusing matters, insert a RelabelType in such cases.
 	 */
-	if (exprType(newexpr) != funcform->prorettype)
+	if (exprType(newexpr) != result_type)
 	{
-		Assert(IsBinaryCoercible(exprType(newexpr), funcform->prorettype));
+		Assert(IsBinaryCoercible(exprType(newexpr), result_type));
 		newexpr = (Node *) makeRelabelType((Expr *) newexpr,
-										   funcform->prorettype,
+										   result_type,
 										   -1,
 										   COERCE_IMPLICIT_CAST);
 	}
