@@ -223,7 +223,7 @@ extern DLLIMPORT ErrorContextCallback *error_context_stack;
 	} while (0)
 
 #define PG_RE_THROW()  \
-	siglongjmp(*PG_exception_stack, 1)
+	pg_re_throw()
 
 extern DLLIMPORT sigjmp_buf *PG_exception_stack;
 
@@ -262,6 +262,7 @@ extern ErrorData *CopyErrorData(void);
 extern void FreeErrorData(ErrorData *edata);
 extern void FlushErrorState(void);
 extern void ReThrowError(ErrorData *edata);
+extern void pg_re_throw(void);
 
 
 /* GUC-configurable parameters */
