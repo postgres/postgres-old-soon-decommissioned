@@ -111,6 +111,7 @@ extern DLLIMPORT int32 *LocalRefCount;
  * prototypes for functions in bufmgr.c
  */
 extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
+extern Buffer ReadOrZeroBuffer(Relation reln, BlockNumber blockNum);
 extern void ReleaseBuffer(Buffer buffer);
 extern void UnlockReleaseBuffer(Buffer buffer);
 extern void MarkBufferDirty(Buffer buffer);
