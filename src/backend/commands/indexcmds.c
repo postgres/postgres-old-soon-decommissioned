@@ -41,6 +41,7 @@
 #include "utils/acl.h"
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"
+#include "utils/inval.h"
 #include "utils/lsyscache.h"
 #include "utils/memutils.h"
 #include "utils/relcache.h"
@@ -514,7 +515,9 @@ DefineIndex(RangeVar *heapRelation,
 	for (ixcnt = 0; ixcnt < snapshot->xcnt; ixcnt++)
 		XactLockTableWait(snapshot->xip[ixcnt]);
 
-	/* Index can now be marked valid -- update its pg_index entry */
+	/*
+	 * Index can now be marked valid -- update its pg_index entry
+	 */
 	pg_index = heap_open(IndexRelationId, RowExclusiveLock);
 
 	indexTuple = SearchSysCacheCopy(INDEXRELID,
@@ -533,6 +536,15 @@ DefineIndex(RangeVar *heapRelation,
 	CatalogUpdateIndexes(pg_index, indexTuple);
 
 	heap_close(pg_index, RowExclusiveLock);
+
+	/*
+	 * The pg_index update will cause backends (including this one) to update
+	 * relcache entries for the index itself, but we should also send a
+	 * relcache inval on the parent table to force replanning of cached plans.
+	 * Otherwise existing sessions might fail to use the new index where it
+	 * would be useful.
+	 */
+	CacheInvalidateRelcacheByRelid(heaprelid.relId);
 
 	/*
 	 * Last thing to do is release the session-level lock on the parent table.
