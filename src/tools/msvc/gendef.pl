@@ -36,6 +36,7 @@ while (<$ARGV[0]/*.obj>)
         next if $pieces[6] =~ /NULL_THUNK_DATA$/;
         next if $pieces[6] =~ /^__IMPORT_DESCRIPTOR/;
         next if $pieces[6] =~ /^__NULL_IMPORT/;
+        next if $pieces[6] =~ /^\?\?_C/;
 
         push @def, $pieces[6];
     }
