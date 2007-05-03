@@ -283,8 +283,10 @@ extern void _hash_squeezebucket(Relation rel,
 extern void _hash_getlock(Relation rel, BlockNumber whichlock, int access);
 extern bool _hash_try_getlock(Relation rel, BlockNumber whichlock, int access);
 extern void _hash_droplock(Relation rel, BlockNumber whichlock, int access);
-extern Buffer _hash_getbuf(Relation rel, BlockNumber blkno, int access);
-extern Buffer _hash_getnewbuf(Relation rel, BlockNumber blkno, int access);
+extern Buffer _hash_getbuf(Relation rel, BlockNumber blkno,
+						   int access, int flags);
+extern Buffer _hash_getinitbuf(Relation rel, BlockNumber blkno);
+extern Buffer _hash_getnewbuf(Relation rel, BlockNumber blkno);
 extern void _hash_relbuf(Relation rel, Buffer buf);
 extern void _hash_dropbuf(Relation rel, Buffer buf);
 extern void _hash_wrtbuf(Relation rel, Buffer buf);
