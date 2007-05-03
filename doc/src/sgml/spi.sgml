@@ -1904,7 +1904,7 @@ char * SPI_getvalue(HeapTuple <parameter>row</parameter>, TupleDesc <parameter>r
    Column value, or <symbol>NULL</symbol> if the column is null,
    <parameter>colnumber</parameter> is out of range
    (<varname>SPI_result</varname> is set to
-   <symbol>SPI_ERROR_NOATTRIBUTE</symbol>), or no no output function
+   <symbol>SPI_ERROR_NOATTRIBUTE</symbol>), or no output function is
    available (<varname>SPI_result</varname> is set to
    <symbol>SPI_ERROR_NOOUTFUNC</symbol>).
   </para>
