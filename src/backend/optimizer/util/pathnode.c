@@ -842,7 +842,8 @@ create_unique_path(PlannerInfo *root, RelOptInfo *rel, Path *subpath)
 	cost_sort(&sort_path, root, NIL,
 			  subpath->total_cost,
 			  rel->rows,
-			  rel->width);
+			  rel->width,
+			  -1.0);
 
 	/*
 	 * Charge one cpu_operator_cost per comparison per input tuple. We assume
