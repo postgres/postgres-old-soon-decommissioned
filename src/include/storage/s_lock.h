@@ -556,6 +556,18 @@ do \
 #endif /* __mips__ && !__sgi */
 
 
+#if defined(__m32r__) && defined(HAVE_SYS_TAS_H)	/* Renesas' M32R */
+#define HAS_TEST_AND_SET
+
+#include <sys/tas.h>
+
+typedef int slock_t;
+
+#define TAS(lock) tas(lock)
+
+#endif /* __m32r__ */
+
+
 /* These live in s_lock.c, but only for gcc */
 
 
