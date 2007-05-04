@@ -1151,6 +1151,16 @@ pg_re_throw(void)
 
 		errfinish(0);
 	}
+
+	/* We mustn't return... */
+	ExceptionalCondition("pg_re_throw tried to return", "FailedAssertion",
+						 __FILE__, __LINE__);
+
+	/*
+	 * Since ExceptionalCondition isn't declared noreturn because of
+	 * TrapMacro(), we need this to keep gcc from complaining.
+	 */
+	abort();
 }
 
 

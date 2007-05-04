@@ -21,11 +21,14 @@
 
 /*
  * ExceptionalCondition - Handles the failure of an Assert()
+ *
+ * Note: this can't actually return, but we declare it as returning int
+ * because the TrapMacro() macro might get wonky otherwise.
  */
 int
-ExceptionalCondition(char *conditionName,
-					 char *errorType,
-					 char *fileName,
+ExceptionalCondition(const char *conditionName,
+					 const char *errorType,
+					 const char *fileName,
 					 int lineNumber)
 {
 	if (!PointerIsValid(conditionName)
@@ -38,6 +41,9 @@ ExceptionalCondition(char *conditionName,
 					 errorType, conditionName,
 					 fileName, lineNumber);
 	}
+
+	/* Usually this shouldn't be needed, but make sure the msg went out */
+	fflush(stderr);
 
 #ifdef SLEEP_ON_ASSERT
 
