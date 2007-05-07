@@ -7931,7 +7931,7 @@ cursor_to_xml(cursor refcursor, count int, nulls boolean, tableforest boolean, t
    </para>
 
    <para>
-    The data values are mapping in the same way as described for the
+    The data values are mapped in the same way as described for the
     function <function>xmlelement</function> above.
    </para>
 
