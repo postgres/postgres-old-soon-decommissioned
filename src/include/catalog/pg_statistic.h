@@ -184,7 +184,9 @@ typedef FormData_pg_statistic *Form_pg_statistic;
  *				(values in this range will be documented in this file)
  *	100-199:	reserved for assignment by the PostGIS project
  *				(values to be documented in PostGIS documentation)
- *	200-9999:	reserved for future public assignments
+ *	200-299:	reserved for assignment by the ESRI ST_Geometry project
+ *				(values to be documented in ESRI ST_Geometry documentation)
+ *	300-9999:	reserved for future public assignments
  *
  * For private use you may choose a "kind" code at random in the range
  * 10000-30000.  However, for code that is to be widely disseminated it is
