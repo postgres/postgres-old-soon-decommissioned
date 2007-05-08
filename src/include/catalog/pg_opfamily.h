@@ -93,6 +93,7 @@ DATA(insert OID = 1986 (	403		name_ops		PGNSP PGUID ));
 #define NAME_BTREE_FAM_OID 1986
 DATA(insert OID = 1987 (	405		name_ops		PGNSP PGUID ));
 DATA(insert OID = 1988 (	403		numeric_ops		PGNSP PGUID ));
+DATA(insert OID = 1998 (	405		numeric_ops		PGNSP PGUID ));
 DATA(insert OID = 1989 (	403		oid_ops			PGNSP PGUID ));
 #define OID_BTREE_FAM_OID 1989
 DATA(insert OID = 1990 (	405		oid_ops			PGNSP PGUID ));

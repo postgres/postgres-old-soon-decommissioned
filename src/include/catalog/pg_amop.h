@@ -568,6 +568,8 @@ DATA(insert (	2232   19 19 1 f 2334	405 ));
 DATA(insert (	2235   1033 1033 1 f  974	405 ));
 /* uuid_ops */ 
 DATA(insert (	2969   2950 2950 1 f 2972 405 ));
+/* numeric_ops */
+DATA(insert (	1998   1700 1700 1 f 1752 405 ));
 
 
 /*

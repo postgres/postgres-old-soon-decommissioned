@@ -148,6 +148,7 @@ DATA(insert (	1990   26 26 1 453 ));
 DATA(insert (	1992   30 30 1 457 ));
 DATA(insert (	1995   25 25 1 400 ));
 DATA(insert (	1997   1083 1083 1 452 ));
+DATA(insert (	1998   1700 1700 1 432 ));
 DATA(insert (	1999   1184 1184 1 452 ));
 DATA(insert (	2001   1266 1266 1 1696 ));
 DATA(insert (	2040   1114 1114 1 452 ));

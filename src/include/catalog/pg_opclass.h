@@ -129,6 +129,7 @@ DATA(insert (	405		macaddr_ops			PGNSP PGUID 1985  829 t 0 ));
 DATA(insert (	403		name_ops			PGNSP PGUID 1986   19 t 0 ));
 DATA(insert (	405		name_ops			PGNSP PGUID 1987   19 t 0 ));
 DATA(insert (	403		numeric_ops			PGNSP PGUID 1988 1700 t 0 ));
+DATA(insert (	405		numeric_ops			PGNSP PGUID 1998 1700 t 0 ));
 DATA(insert OID = 1981 ( 403	oid_ops		PGNSP PGUID 1989   26 t 0 ));
 #define OID_BTREE_OPS_OID 1981
 DATA(insert (	405		oid_ops				PGNSP PGUID 1990   26 t 0 ));
