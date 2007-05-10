@@ -40,7 +40,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"describe", SQL_DESCRIBE},
 	{"descriptor", SQL_DESCRIPTOR},
 	{"disconnect", SQL_DISCONNECT},
-	{"enum", SQL_ENUM},
 	{"found", SQL_FOUND},
 	{"free", SQL_FREE},
 	{"go", SQL_GO},
