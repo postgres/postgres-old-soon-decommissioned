@@ -45,6 +45,10 @@ extern void renameatt(Oid myrelid,
 extern void renamerel(Oid myrelid,
 		  const char *newrelname);
 
+extern void find_composite_type_dependencies(Oid typeOid,
+											 const char *origTblName,
+											 const char *origTypeName);
+
 extern AttrNumber *varattnos_map(TupleDesc old, TupleDesc new);
 extern AttrNumber *varattnos_map_schema(TupleDesc old, List *schema);
 extern void change_varattnos_of_a_node(Node *node, const AttrNumber *newattno);
