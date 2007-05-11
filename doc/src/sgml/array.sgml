@@ -10,8 +10,9 @@
  <para>
   <productname>PostgreSQL</productname> allows columns of a table to be
   defined as variable-length multidimensional arrays. Arrays of any
-  built-in or user-defined base type or enum type can be created.
-  (Arrays of composite types or domains are not yet supported, however.)
+  built-in or user-defined base type, enum type, or composite type
+  can be created.
+  Arrays of domains are not yet supported.
  </para>
 
  <sect2>

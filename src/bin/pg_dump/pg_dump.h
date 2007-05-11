@@ -164,7 +164,7 @@ typedef struct _typeInfo
 	Oid			typrelid;
 	char		typrelkind;		/* 'r', 'v', 'c', etc */
 	char		typtype;		/* 'b', 'c', etc */
-	bool		isArray;		/* true if user-defined array type */
+	bool		isArray;		/* true if auto-generated array type */
 	bool		isDefined;		/* true if typisdefined */
 	/* If it's a dumpable base type, we create a "shell type" entry for it */
 	struct _shellTypeInfo *shellType;	/* shell-type entry, or NULL */

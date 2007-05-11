@@ -1254,7 +1254,7 @@ shdepReassignOwned(List *roleids, Oid newrole)
 					break;
 
 				case TypeRelationId:
-					AlterTypeOwnerInternal(sdepForm->objid, newrole);
+					AlterTypeOwnerInternal(sdepForm->objid, newrole, true);
 					break;
 
 				case OperatorRelationId:

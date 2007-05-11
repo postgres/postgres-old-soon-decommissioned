@@ -2203,50 +2203,24 @@ get_element_type(Oid typid)
 /*
  * get_array_type
  *
- *		Given the type OID, get the corresponding array type.
+ *		Given the type OID, get the corresponding "true" array type.
  *		Returns InvalidOid if no array type can be found.
- *
- * NB: this only considers varlena arrays to be true arrays.
  */
 Oid
 get_array_type(Oid typid)
 {
 	HeapTuple	tp;
+	Oid result = InvalidOid;
 
 	tp = SearchSysCache(TYPEOID,
 						ObjectIdGetDatum(typid),
 						0, 0, 0);
 	if (HeapTupleIsValid(tp))
 	{
-		Form_pg_type typtup = (Form_pg_type) GETSTRUCT(tp);
-		char	   *array_typename;
-		Oid			namespaceId;
-
-		array_typename = makeArrayTypeName(NameStr(typtup->typname));
-		namespaceId = typtup->typnamespace;
+		result = ((Form_pg_type) GETSTRUCT(tp))->typarray;
 		ReleaseSysCache(tp);
-
-		tp = SearchSysCache(TYPENAMENSP,
-							PointerGetDatum(array_typename),
-							ObjectIdGetDatum(namespaceId),
-							0, 0);
-
-		pfree(array_typename);
-
-		if (HeapTupleIsValid(tp))
-		{
-			Oid			result;
-
-			typtup = (Form_pg_type) GETSTRUCT(tp);
-			if (typtup->typlen == -1 && typtup->typelem == typid)
-				result = HeapTupleGetOid(tp);
-			else
-				result = InvalidOid;
-			ReleaseSysCache(tp);
-			return result;
-		}
 	}
-	return InvalidOid;
+	return result;
 }
 
 /*

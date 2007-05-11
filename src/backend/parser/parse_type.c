@@ -116,10 +116,6 @@ LookupTypeName(ParseState *pstate, const TypeName *typename)
 		/* deconstruct the name list */
 		DeconstructQualifiedName(typename->names, &schemaname, &typname);
 
-		/* If an array reference, look up the array type instead */
-		if (typename->arrayBounds != NIL)
-			typname = makeArrayTypeName(typname);
-
 		if (schemaname)
 		{
 			/* Look in specific schema only */
@@ -136,6 +132,10 @@ LookupTypeName(ParseState *pstate, const TypeName *typename)
 			/* Unqualified type name, so search the search path */
 			restype = TypenameGetTypid(typname);
 		}
+
+		/* If an array reference, return the array type instead */
+		if (typename->arrayBounds != NIL)
+			restype = get_array_type(restype);
 	}
 
 	return restype;
