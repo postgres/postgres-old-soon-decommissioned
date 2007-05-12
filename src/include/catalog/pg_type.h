@@ -645,9 +645,12 @@ extern void GenerateTypeDependencies(Oid typeNamespace,
 						 Node *defaultExpr,
 						 bool rebuild);
 
-extern void TypeRename(const char *oldTypeName, Oid typeNamespace,
-		   const char *newTypeName);
+extern void TypeRename(Oid typeOid, const char *newTypeName,
+					   Oid typeNamespace);
 
 extern char *makeArrayTypeName(const char *typeName, Oid typeNamespace);
+
+extern bool moveArrayTypeName(Oid typeOid, const char *typeName,
+							  Oid typeNamespace);
 
 #endif   /* PG_TYPE_H */
