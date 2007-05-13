@@ -35,7 +35,7 @@ sub Install
         $conf = "release";
     }
     die "Could not find debug or release binaries" if ($conf eq "");
-    print "Installing for $conf\n";
+    print "Installing for $conf in $target\n";
 
     EnsureDirectories($target, 'bin','lib','share','share/timezonesets','share/contrib','doc',
         'doc/contrib', 'symbols');
