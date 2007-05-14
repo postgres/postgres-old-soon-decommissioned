@@ -958,10 +958,14 @@ heap_create_with_catalog(const char *relname,
 	 * namespace is.  Also make a dependency link to its owner.
 	 *
 	 * For composite types, these dependencies are tracked for the pg_type
-	 * entry, so we needn't record them here.  Also, skip this in bootstrap
-	 * mode, since we don't make dependencies while bootstrapping.
+	 * entry, so we needn't record them here.  Likewise, TOAST tables don't
+	 * need a namespace dependency (they live in a pinned namespace) nor an
+	 * owner dependency (they depend indirectly through the parent table).
+	 * Also, skip this in bootstrap mode, since we don't make dependencies
+	 * while bootstrapping.
 	 */
 	if (relkind != RELKIND_COMPOSITE_TYPE &&
+		relkind != RELKIND_TOASTVALUE &&
 		!IsBootstrapProcessingMode())
 	{
 		ObjectAddress myself,

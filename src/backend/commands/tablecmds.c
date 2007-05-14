@@ -5478,10 +5478,11 @@ ATExecChangeOwner(Oid relationOid, Oid newOwnerId, bool recursing)
 		/*
 		 * Update owner dependency reference, if any.  A composite type has
 		 * none, because it's tracked for the pg_type entry instead of here;
-		 * indexes don't have their own entries either.
+		 * indexes and TOAST tables don't have their own entries either.
 		 */
 		if (tuple_class->relkind != RELKIND_COMPOSITE_TYPE &&
-			tuple_class->relkind != RELKIND_INDEX)
+			tuple_class->relkind != RELKIND_INDEX &&
+			tuple_class->relkind != RELKIND_TOASTVALUE)
 			changeDependencyOnOwner(RelationRelationId, relationOid,
 									newOwnerId);
 
