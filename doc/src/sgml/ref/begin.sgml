@@ -133,8 +133,8 @@ BEGIN;
    <command>BEGIN</command> is a <productname>PostgreSQL</productname>
    language extension.  It is equivalent to the SQL-standard command
    <xref linkend="sql-start-transaction"
-   endterm="sql-start-transaction-title">, which see for additional
-   compatibility information.
+   endterm="sql-start-transaction-title">, whose reference page
+   contains additional compatibility information.
   </para>
 
   <para>

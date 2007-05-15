@@ -29,8 +29,7 @@ DROP GROUP [ IF EXISTS ] <replaceable class="PARAMETER">name</replaceable> [, ..
 
   <para>
    <command>DROP GROUP</command> is now an alias for
-   <xref linkend="sql-droprole" endterm="sql-droprole-title">,
-   which see for more information.
+   <xref linkend="sql-droprole" endterm="sql-droprole-title">.
   </para>
  </refsect1>
 

@@ -46,8 +46,7 @@ where <replaceable class="PARAMETER">option</replaceable> can be:
 
   <para>
    <command>CREATE GROUP</command> is now an alias for
-   <xref linkend="sql-createrole" endterm="sql-createrole-title">,
-   which see for more information.
+   <xref linkend="sql-createrole" endterm="sql-createrole-title">.
   </para>
  </refsect1> 
  
