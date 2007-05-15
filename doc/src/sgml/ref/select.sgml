@@ -354,7 +354,7 @@ where <replaceable class="parameter">from_item</replaceable> can be one of:
      </varlistentry>
      
      <varlistentry>
-      <term><literal>USING (<replaceable class="parameter">join_column</replaceable> [, ...])</literal></term>
+      <term><literal>USING ( <replaceable class="parameter">join_column</replaceable> [, ...] )</literal></term>
       <listitem>
        <para>
         A clause of the form <literal>USING ( a, b, ... )</literal> is

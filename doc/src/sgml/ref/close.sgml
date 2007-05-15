@@ -88,8 +88,8 @@ CLOSE { <replaceable class="PARAMETER">name</replaceable> | ALL }
   </para>
 
   <para>
-   You can see all available cursors by querying the
-   <structname>pg_cursors</structname> system view.
+   You can see all available cursors by querying the <link
+   linkend="view-pg-cursors"><structname>pg_cursors</></> system view.
   </para>
  </refsect1>
 

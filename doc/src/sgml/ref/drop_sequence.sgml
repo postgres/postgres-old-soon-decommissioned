@@ -28,7 +28,8 @@ DROP SEQUENCE [ IF EXISTS ] <replaceable class="PARAMETER">name</replaceable> [,
   <title>Description</title>
 
   <para>
-   <command>DROP SEQUENCE</command> removes sequence number generators.
+   <command>DROP SEQUENCE</command> removes sequence number
+   generators. A sequence can only be dropped by its owner or a superuser.
   </para>
  </refsect1>
   

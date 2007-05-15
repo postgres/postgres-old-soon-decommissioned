@@ -109,7 +109,7 @@ ALTER INDEX <replaceable class="PARAMETER">name</replaceable> RESET ( <replaceab
       <term><replaceable class="PARAMETER">new_name</replaceable></term>
       <listitem>
        <para>
-        New name for the index.
+        The new name for the index.
        </para>
       </listitem>
      </varlistentry>

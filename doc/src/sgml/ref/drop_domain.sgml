@@ -20,7 +20,7 @@ PostgreSQL documentation
 
  <refsynopsisdiv>
 <synopsis>
-DROP DOMAIN [IF EXISTS ] <replaceable class="PARAMETER">name</replaceable> [, ...]  [ CASCADE | RESTRICT ]
+DROP DOMAIN [ IF EXISTS ] <replaceable class="PARAMETER">name</replaceable> [, ...] [ CASCADE | RESTRICT ]
 </synopsis>
  </refsynopsisdiv>
 
@@ -28,8 +28,8 @@ DROP DOMAIN [IF EXISTS ] <replaceable class="PARAMETER">name</replaceable> [, ..
   <title>Description</title>
 
   <para>
-   <command>DROP DOMAIN</command> will remove a domain.  Only the
-   owner of a domain can remove it.
+   <command>DROP DOMAIN</command> removes a domain.  Only the owner of
+   a domain can remove it.
   </para>
  </refsect1>
 

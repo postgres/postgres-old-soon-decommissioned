@@ -28,7 +28,7 @@ DROP TRIGGER [ IF EXISTS ] <replaceable class="PARAMETER">name</replaceable> ON 
   <title>Description</title>
 
   <para>
-   <command>DROP TRIGGER</command> will remove an existing
+   <command>DROP TRIGGER</command> removes an existing
    trigger definition. To execute this command, the current
    user must be the owner of the table for which the trigger is defined.
   </para>

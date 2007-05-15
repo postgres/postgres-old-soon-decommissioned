@@ -28,7 +28,7 @@ DROP AGGREGATE [ IF EXISTS ] <replaceable class="PARAMETER">name</replaceable> (
   <title>Description</title>
 
   <para>
-   <command>DROP AGGREGATE</command> will delete an existing
+   <command>DROP AGGREGATE</command> removes an existing
    aggregate function. To execute this command the current
    user must be the owner of the aggregate function.
   </para>

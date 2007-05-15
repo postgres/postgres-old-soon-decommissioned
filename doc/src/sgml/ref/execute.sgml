@@ -25,7 +25,7 @@ PostgreSQL documentation
 
  <refsynopsisdiv>
 <synopsis>
-EXECUTE <replaceable class="PARAMETER">name</replaceable> [ (<replaceable class="PARAMETER">parameter</replaceable> [, ...] ) ]
+EXECUTE <replaceable class="PARAMETER">name</replaceable> [ ( <replaceable class="PARAMETER">parameter</replaceable> [, ...] ) ]
 </synopsis>
  </refsynopsisdiv>
 

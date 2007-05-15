@@ -28,7 +28,7 @@ DROP TYPE [ IF EXISTS ] <replaceable class="PARAMETER">name</replaceable> [, ...
   <title>Description</title>
 
   <para>
-   <command>DROP TYPE</command> will remove a user-defined data type.
+   <command>DROP TYPE</command> removes a user-defined data type.
    Only the owner of a type can remove it.
   </para>
  </refsect1>
