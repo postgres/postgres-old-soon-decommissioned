@@ -14,7 +14,7 @@
 #include "utils/builtins.h"
 #include "utils/uuid.h"
 
-#include <ossp/uuid.h>
+#include <uuid.h>
 
 
 /* better both be 16 */
