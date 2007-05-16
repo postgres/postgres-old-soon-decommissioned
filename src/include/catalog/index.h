@@ -53,7 +53,7 @@ extern void FormIndexDatum(IndexInfo *indexInfo,
 			   Datum *values,
 			   bool *isnull);
 
-extern void setNewRelfilenode(Relation relation);
+extern void setNewRelfilenode(Relation relation, TransactionId freezeXid);
 
 extern void index_build(Relation heapRelation,
 			Relation indexRelation,
