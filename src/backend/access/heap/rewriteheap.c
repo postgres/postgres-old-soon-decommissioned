@@ -538,6 +538,8 @@ raw_heap_insert(RewriteState state, HeapTuple tup)
 	OffsetNumber	newoff;
 	HeapTuple		heaptup;
 
+	heap_freeze_tuple(tup->t_data, state->rs_oldest_xmin, InvalidBuffer);
+
 	/*
 	 * If the new tuple is too big for storage or contains already toasted
 	 * out-of-line attributes from some other relation, invoke the toaster.
