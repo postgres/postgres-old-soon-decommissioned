@@ -767,6 +767,7 @@ extern Datum inetor(PG_FUNCTION_ARGS);
 extern Datum inetpl(PG_FUNCTION_ARGS);
 extern Datum inetmi_int8(PG_FUNCTION_ARGS);
 extern Datum inetmi(PG_FUNCTION_ARGS);
+extern void clean_ipv6_addr(int addr_family, char *addr);
 
 /* mac.c */
 extern Datum macaddr_in(PG_FUNCTION_ARGS);
