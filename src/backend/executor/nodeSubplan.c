@@ -242,6 +242,9 @@ ExecScanSubPlan(SubPlanState *node,
 		planstate->chgParam = bms_add_member(planstate->chgParam, paramid);
 	}
 
+	/*
+	 * Now that we've set up its parameters, we can reset the subplan.
+	 */
 	ExecReScan(planstate, NULL);
 
 	/*
@@ -901,6 +904,10 @@ ExecSetParamPlan(SubPlanState *node, ExprContext *econtext)
 		subLinkType == ALL_SUBLINK)
 		elog(ERROR, "ANY/ALL subselect unsupported as initplan");
 
+	/*
+	 * By definition, an initplan has no parameters from our query level,
+	 * but it could have some from an outer level.  Rescan it if needed.
+	 */
 	if (planstate->chgParam != NULL)
 		ExecReScan(planstate, NULL);
 

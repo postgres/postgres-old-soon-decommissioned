@@ -1416,6 +1416,7 @@ typedef struct SetOpState
 typedef enum
 {
 	LIMIT_INITIAL,				/* initial state for LIMIT node */
+	LIMIT_RESCAN,				/* rescan after recomputing parameters */
 	LIMIT_EMPTY,				/* there are no returnable rows */
 	LIMIT_INWINDOW,				/* have returned a row in the window */
 	LIMIT_SUBPLANEOF,			/* at EOF of subplan (within window) */
