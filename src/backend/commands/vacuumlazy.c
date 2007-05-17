@@ -158,7 +158,7 @@ lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt)
 	else
 		elevel = DEBUG2;
 
-	vacuum_set_xid_limits(vacstmt, onerel->rd_rel->relisshared,
+	vacuum_set_xid_limits(vacstmt->freeze_min_age, onerel->rd_rel->relisshared,
 						  &OldestXmin, &FreezeLimit);
 
 	vacrelstats = (LVRelStats *) palloc0(sizeof(LVRelStats));

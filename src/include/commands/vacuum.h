@@ -119,7 +119,7 @@ extern void vac_update_relstats(Oid relid,
 					double num_tuples,
 					bool hasindex,
 					TransactionId frozenxid);
-extern void vacuum_set_xid_limits(VacuumStmt *vacstmt, bool sharedRel,
+extern void vacuum_set_xid_limits(int freeze_min_age, bool sharedRel,
 					  TransactionId *oldestXmin,
 					  TransactionId *freezeLimit);
 extern void vac_update_datfrozenxid(void);
