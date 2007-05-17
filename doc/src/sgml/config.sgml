@@ -3576,7 +3576,7 @@ SELECT * FROM parent WHERE key = 2400;
       <listitem>
        <para>
         Controls the trigger and rule firing for the current session.
-        See <xref linkend="sql-altertable"> for the different options to
+        See <xref linkend="sql-altertable" endterm="sql-altertable-title"> for the different options to
         enable or disable triggers and rules. Setting the variable requires
         superuser privilege and can only be done before any query plans have
         been cached. Possible values are <literal>origin</>,
