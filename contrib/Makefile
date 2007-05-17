@@ -19,6 +19,7 @@ WANTED_DIRS = \
 		lo		\
 		ltree		\
 		oid2name	\
+		pageinspect	\
 		pg_buffercache	\
 		pg_freespacemap \
 		pg_standby	\
