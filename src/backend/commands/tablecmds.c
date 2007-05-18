@@ -2285,8 +2285,13 @@ ATRewriteTables(List **wqueue)
 			 */
 			ATRewriteTable(tab, OIDNewHeap);
 
-			/* Swap the physical files of the old and new heaps. */
-			swap_relation_files(tab->relid, OIDNewHeap);
+			/*
+			 * Swap the physical files of the old and new heaps.  Since we are
+			 * generating a new heap, we can use RecentXmin for the table's new
+			 * relfrozenxid because we rewrote all the tuples on
+			 * ATRewriteTable, so no older Xid remains on the table.
+			 */
+			swap_relation_files(tab->relid, OIDNewHeap, RecentXmin);
 
 			CommandCounterIncrement();
 
