@@ -280,15 +280,9 @@ rloop:
 #endif
 				goto rloop;
 			case SSL_ERROR_SYSCALL:
-				if (n == -1)
-					ereport(COMMERROR,
-							(errcode_for_socket_access(),
-							 errmsg("SSL SYSCALL error: %m")));
-				else
+				/* leave it to caller to ereport the value of errno */
+				if (n != -1)
 				{
-					ereport(COMMERROR,
-							(errcode(ERRCODE_PROTOCOL_VIOLATION),
-							 errmsg("SSL SYSCALL error: EOF detected")));
 					errno = ECONNRESET;
 					n = -1;
 				}
@@ -380,15 +374,9 @@ wloop:
 #endif
 				goto wloop;
 			case SSL_ERROR_SYSCALL:
-				if (n == -1)
-					ereport(COMMERROR,
-							(errcode_for_socket_access(),
-							 errmsg("SSL SYSCALL error: %m")));
-				else
+				/* leave it to caller to ereport the value of errno */
+				if (n != -1)
 				{
-					ereport(COMMERROR,
-							(errcode(ERRCODE_PROTOCOL_VIOLATION),
-							 errmsg("SSL SYSCALL error: EOF detected")));
 					errno = ECONNRESET;
 					n = -1;
 				}
