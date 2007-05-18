@@ -11,6 +11,7 @@ top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 .NOTPARALLEL:
+.PRECIOUS: %-A4.tex-ps %-US.tex-ps %-A4.tex-pdf %-US.tex-pdf
 
 ifndef COLLATEINDEX
 COLLATEINDEX = $(DOCBOOKSTYLE)/bin/collateindex.pl
