@@ -2538,7 +2538,9 @@ DecodeDateTime(char **field, int *ftype, int nf,
 			if (fmask & DTK_M(DTZMOD))
 				return -1;
 
-			*tzp = DetermineLocalTimeZone(tm);
+			/* test to see if this is the reason for the error on Vista
+			 * doesn't seem to be used anyway
+			 * *tzp = DetermineLocalTimeZone(tm); */
 		}
 	}
 
