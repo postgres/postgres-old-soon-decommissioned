@@ -66,8 +66,7 @@ typedef struct XLogRecord
 /*
  * If we backed up any disk blocks with the XLOG record, we use flag bits in
  * xl_info to signal it.  We support backup of up to 3 disk blocks per XLOG
- * record.	(Could support 4 if we cared to dedicate all the xl_info bits for
- * this purpose; currently bit 0 of xl_info is unused and available.)
+ * record.
  */
 #define XLR_BKP_BLOCK_MASK		0x0E	/* all info bits used for bkp blocks */
 #define XLR_MAX_BKP_BLOCKS		3
@@ -75,6 +74,15 @@ typedef struct XLogRecord
 #define XLR_BKP_BLOCK_1			XLR_SET_BKP_BLOCK(0)	/* 0x08 */
 #define XLR_BKP_BLOCK_2			XLR_SET_BKP_BLOCK(1)	/* 0x04 */
 #define XLR_BKP_BLOCK_3			XLR_SET_BKP_BLOCK(2)	/* 0x02 */
+
+/*
+ * Bit 0 of xl_info is set if the backed-up blocks could safely be removed
+ * from a compressed version of XLOG (that is, they are backed up only to
+ * prevent partial-page-write problems, and not to ensure consistency of PITR
+ * recovery).  The compression algorithm would need to extract data from the
+ * blocks to create an equivalent non-full-page XLOG record.
+ */
+#define XLR_BKP_REMOVABLE		0x01
 
 /*
  * Sometimes we log records which are out of transaction control.
