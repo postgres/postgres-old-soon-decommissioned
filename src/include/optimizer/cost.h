@@ -75,6 +75,7 @@ extern void cost_valuesscan(Path *path, PlannerInfo *root,
 extern void cost_sort(Path *path, PlannerInfo *root,
 		  List *pathkeys, Cost input_cost, double tuples, int width,
 		  double limit_tuples);
+extern bool sort_exceeds_work_mem(Sort *sort);
 extern void cost_material(Path *path,
 			  Cost input_cost, double tuples, int width);
 extern void cost_agg(Path *path, PlannerInfo *root,

@@ -1180,6 +1180,7 @@ typedef struct NestLoopState
  *		NumClauses		   number of mergejoinable join clauses
  *		Clauses			   info for each mergejoinable clause
  *		JoinState		   current "state" of join.  see execdefs.h
+ *		ExtraMarks		   true to issue extra Mark operations on inner scan
  *		FillOuter		   true if should emit unjoined outer tuples anyway
  *		FillInner		   true if should emit unjoined inner tuples anyway
  *		MatchedOuter	   true if found a join match for current outer tuple
@@ -1202,6 +1203,7 @@ typedef struct MergeJoinState
 	int			mj_NumClauses;
 	MergeJoinClause mj_Clauses; /* array of length mj_NumClauses */
 	int			mj_JoinState;
+	bool		mj_ExtraMarks;
 	bool		mj_FillOuter;
 	bool		mj_FillInner;
 	bool		mj_MatchedOuter;
@@ -1281,7 +1283,7 @@ typedef struct HashJoinState
 typedef struct MaterialState
 {
 	ScanState	ss;				/* its first field is NodeTag */
-	bool		randomAccess;	/* need random access to subplan output? */
+	int			eflags;			/* capability flags to pass to tuplestore */
 	bool		eof_underlying; /* reached end of underlying plan? */
 	void	   *tuplestorestate;	/* private state of tuplestore.c */
 } MaterialState;

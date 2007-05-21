@@ -1039,6 +1039,23 @@ cost_sort(Path *path, PlannerInfo *root,
 }
 
 /*
+ * sort_exceeds_work_mem
+ *	  Given a finished Sort plan node, detect whether it is expected to
+ *	  spill to disk (ie, will need more than work_mem workspace)
+ *
+ * This assumes there will be no available LIMIT.
+ */
+bool
+sort_exceeds_work_mem(Sort *sort)
+{
+	double		input_bytes = relation_byte_size(sort->plan.plan_rows,
+												 sort->plan.plan_width);
+	long		work_mem_bytes = work_mem * 1024L;
+
+	return (input_bytes > work_mem_bytes);
+}
+
+/*
  * cost_material
  *	  Determines and returns the cost of materializing a relation, including
  *	  the cost of reading the input data.
