@@ -1440,7 +1440,8 @@ _outInnerIndexscanInfo(StringInfo str, InnerIndexscanInfo *node)
 	WRITE_NODE_TYPE("INNERINDEXSCANINFO");
 	WRITE_BITMAPSET_FIELD(other_relids);
 	WRITE_BOOL_FIELD(isouterjoin);
-	WRITE_NODE_FIELD(best_innerpath);
+	WRITE_NODE_FIELD(cheapest_startup_innerpath);
+	WRITE_NODE_FIELD(cheapest_total_innerpath);
 }
 
 static void
