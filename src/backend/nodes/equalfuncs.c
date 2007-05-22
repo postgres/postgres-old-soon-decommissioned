@@ -680,6 +680,7 @@ _equalOuterJoinInfo(OuterJoinInfo *a, OuterJoinInfo *b)
 	COMPARE_BITMAPSET_FIELD(min_righthand);
 	COMPARE_SCALAR_FIELD(is_full_join);
 	COMPARE_SCALAR_FIELD(lhs_strict);
+	COMPARE_SCALAR_FIELD(delay_upper_joins);
 
 	return true;
 }

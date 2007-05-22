@@ -1453,6 +1453,7 @@ _outOuterJoinInfo(StringInfo str, OuterJoinInfo *node)
 	WRITE_BITMAPSET_FIELD(min_righthand);
 	WRITE_BOOL_FIELD(is_full_join);
 	WRITE_BOOL_FIELD(lhs_strict);
+	WRITE_BOOL_FIELD(delay_upper_joins);
 }
 
 static void
