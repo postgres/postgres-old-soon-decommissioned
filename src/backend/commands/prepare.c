@@ -678,8 +678,6 @@ ExplainExecuteQuery(ExecuteStmt *execstmt, ExplainStmt *stmt,
 
 		if (IsA(pstmt, PlannedStmt))
 		{
-			QueryDesc  *qdesc;
-
 			if (execstmt->into)
 			{
 				if (pstmt->commandType != CMD_SELECT ||
@@ -694,22 +692,7 @@ ExplainExecuteQuery(ExecuteStmt *execstmt, ExplainStmt *stmt,
 				pstmt->intoClause = execstmt->into;
 			}
 
-			/*
-			 * Update snapshot command ID to ensure this query sees results of
-			 * any previously executed queries.  (It's a bit cheesy to modify
-			 * ActiveSnapshot without making a copy, but for the limited ways
-			 * in which EXPLAIN can be invoked, I think it's OK, because the
-			 * active snapshot shouldn't be shared with anything else anyway.)
-			 */
-			ActiveSnapshot->curcid = GetCurrentCommandId();
-
-			/* Create a QueryDesc requesting no output */
-			qdesc = CreateQueryDesc(pstmt,
-									ActiveSnapshot, InvalidSnapshot,
-									None_Receiver,
-									paramLI, stmt->analyze);
-
-			ExplainOnePlan(qdesc, stmt, tstate);
+			ExplainOnePlan(pstmt, paramLI, stmt, tstate);
 		}
 		else
 		{
