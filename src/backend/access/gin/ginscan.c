@@ -189,7 +189,7 @@ newScanKey(IndexScanDesc scan)
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 				 errmsg("GIN index does not support search with void query")));
 
-	pgstat_count_index_scan(&scan->xs_pgstat_info);
+	pgstat_count_index_scan(scan->indexRelation);
 }
 
 Datum

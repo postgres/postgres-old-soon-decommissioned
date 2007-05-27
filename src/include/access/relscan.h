@@ -37,8 +37,6 @@ typedef struct HeapScanDescData
 	/* NB: if rs_cbuf is not InvalidBuffer, we hold a pin on that buffer */
 	ItemPointerData rs_mctid;	/* marked scan position, if any */
 
-	PgStat_Info rs_pgstat_info; /* statistics collector hook */
-
 	/* these fields only used in page-at-a-time mode */
 	int			rs_cindex;		/* current tuple's index in vistuples */
 	int			rs_mindex;		/* marked tuple's saved index */
@@ -78,8 +76,6 @@ typedef struct IndexScanDescData
 	HeapTupleData xs_ctup;		/* current heap tuple, if any */
 	Buffer		xs_cbuf;		/* current heap buffer in scan, if any */
 	/* NB: if xs_cbuf is not InvalidBuffer, we hold a pin on that buffer */
-
-	PgStat_Info xs_pgstat_info; /* statistics collector hook */
 } IndexScanDescData;
 
 typedef IndexScanDescData *IndexScanDesc;

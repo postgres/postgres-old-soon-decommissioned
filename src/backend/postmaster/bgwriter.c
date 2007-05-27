@@ -126,13 +126,6 @@ typedef struct
 static BgWriterShmemStruct *BgWriterShmem;
 
 /*
- * BgWriter statistics counters.
- * Stored directly in a stats message structure so it can be sent
- * without needing to copy things around.
- */
-PgStat_MsgBgWriter BgWriterStats;
-
-/*
  * GUC parameters
  */
 int			BgWriterDelay = 200;
@@ -249,11 +242,6 @@ BackgroundWriterMain(void)
 											 ALLOCSET_DEFAULT_INITSIZE,
 											 ALLOCSET_DEFAULT_MAXSIZE);
 	MemoryContextSwitchTo(bgwriter_context);
-
-	/*
-	 * Initialize statistics counters to zero
-	 */
-	memset(&BgWriterStats, 0, sizeof(BgWriterStats));
 
 	/*
 	 * If an exception is encountered, processing resumes here.

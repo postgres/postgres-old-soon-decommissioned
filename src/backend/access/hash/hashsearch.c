@@ -127,7 +127,7 @@ _hash_first(IndexScanDesc scan, ScanDirection dir)
 	ItemPointer current;
 	OffsetNumber offnum;
 
-	pgstat_count_index_scan(&scan->xs_pgstat_info);
+	pgstat_count_index_scan(rel);
 
 	current = &(so->hashso_curpos);
 	ItemPointerSetInvalid(current);

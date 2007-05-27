@@ -96,8 +96,6 @@ RelationGetIndexScan(Relation indexRelation,
 	scan->xs_ctup.t_data = NULL;
 	scan->xs_cbuf = InvalidBuffer;
 
-	pgstat_initstats(&scan->xs_pgstat_info, indexRelation);
-
 	/*
 	 * Let the AM fill in the key and any opaque data it wants.
 	 */

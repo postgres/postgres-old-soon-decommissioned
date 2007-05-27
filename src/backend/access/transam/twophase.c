@@ -1211,7 +1211,8 @@ FinishPreparedTransaction(const char *gid, bool isCommit)
 	else
 		ProcessRecords(bufptr, xid, twophase_postabort_callbacks);
 
-	pgstat_count_xact_commit();
+	/* Count the prepared xact as committed or aborted */
+	AtEOXact_PgStat(isCommit);
 
 	/*
 	 * And now we can clean up our mess.

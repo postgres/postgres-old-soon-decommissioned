@@ -145,8 +145,6 @@ index_open(Oid relationId, LOCKMODE lockmode)
 				 errmsg("\"%s\" is not an index",
 						RelationGetRelationName(r))));
 
-	pgstat_initstats(&r->pgstat_info, r);
-
 	return r;
 }
 
@@ -433,14 +431,14 @@ index_getnext(IndexScanDesc scan, ScanDirection direction)
 			return NULL;		/* failure exit */
 		}
 
-		pgstat_count_index_tuples(&scan->xs_pgstat_info, 1);
+		pgstat_count_index_tuples(scan->indexRelation, 1);
 
 		/*
 		 * Fetch the heap tuple and see if it matches the snapshot.
 		 */
 		if (heap_release_fetch(scan->heapRelation, scan->xs_snapshot,
 							   heapTuple, &scan->xs_cbuf, true,
-							   &scan->xs_pgstat_info))
+							   scan->indexRelation))
 			break;
 
 		/* Skip if no undeleted tuple at this location */
@@ -502,7 +500,7 @@ index_getnext_indexitem(IndexScanDesc scan,
 									   Int32GetDatum(direction)));
 
 	if (found)
-		pgstat_count_index_tuples(&scan->xs_pgstat_info, 1);
+		pgstat_count_index_tuples(scan->indexRelation, 1);
 
 	return found;
 }
@@ -543,7 +541,7 @@ index_getmulti(IndexScanDesc scan,
 									   Int32GetDatum(max_tids),
 									   PointerGetDatum(returned_tids)));
 
-	pgstat_count_index_tuples(&scan->xs_pgstat_info, *returned_tids);
+	pgstat_count_index_tuples(scan->indexRelation, *returned_tids);
 
 	return found;
 }

@@ -90,15 +90,6 @@ typedef struct TriggerDesc
 
 
 /*
- * Same for the statistics collector data in Relation and scan data.
- */
-typedef struct PgStat_Info
-{
-	void	   *tabentry;
-} PgStat_Info;
-
-
-/*
  * Cached lookup information for the index access method functions defined
  * by the pg_am row associated with an index relation.
  */
@@ -200,8 +191,8 @@ typedef struct RelationData
 	List	   *rd_indpred;		/* index predicate tree, if any */
 	void	   *rd_amcache;		/* available for use by index AM */
 
-	/* statistics collection area */
-	PgStat_Info pgstat_info;
+	/* use "struct" here to avoid needing to include pgstat.h: */
+	struct PgStat_TableStatus *pgstat_info;	/* statistics collection area */
 } RelationData;
 
 typedef RelationData *Relation;

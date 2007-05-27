@@ -453,7 +453,7 @@ _bt_first(IndexScanDesc scan, ScanDirection dir)
 	int			i;
 	StrategyNumber strat_total;
 
-	pgstat_count_index_scan(&scan->xs_pgstat_info);
+	pgstat_count_index_scan(rel);
 
 	/*
 	 * Examine the scan keys and eliminate any redundant keys; also mark the
