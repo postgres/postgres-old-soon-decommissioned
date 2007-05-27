@@ -501,7 +501,9 @@ extern void pgstat_report_analyze(Oid tableoid, bool shared,
 					  PgStat_Counter livetuples,
 					  PgStat_Counter deadtuples);
 
+extern void pgstat_initialize(void);
 extern void pgstat_bestart(void);
+
 extern void pgstat_report_activity(const char *what);
 extern void pgstat_report_txn_timestamp(TimestampTz tstamp);
 extern void pgstat_report_waiting(bool waiting);

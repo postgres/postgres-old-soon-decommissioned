@@ -435,6 +435,10 @@ InitPostgres(const char *in_dbname, Oid dboid, const char *username,
 	/* Initialize portal manager */
 	EnablePortalManager();
 
+	/* Initialize stats collection --- must happen before first xact */
+	if (!bootstrap)
+		pgstat_initialize();
+
 	/*
 	 * Set up process-exit callback to do pre-shutdown cleanup.  This has to
 	 * be after we've initialized all the low-level modules like the buffer
@@ -587,7 +591,7 @@ InitPostgres(const char *in_dbname, Oid dboid, const char *username,
 	/* initialize client encoding */
 	InitializeClientEncoding();
 
-	/* initialize statistics collection for this backend */
+	/* report this backend in the PgBackendStatus array */
 	if (!bootstrap)
 		pgstat_bestart();
 
