@@ -58,6 +58,7 @@ typedef int64 PgStat_Counter;
  * tuples_inserted/tuples_updated/tuples_deleted count attempted actions,
  * regardless of whether the transaction committed.  new_live_tuples and
  * new_dead_tuples are properly adjusted depending on commit or abort.
+ * Note that new_live_tuples can be negative!
  * ----------
  */
 typedef struct PgStat_TableCounts
