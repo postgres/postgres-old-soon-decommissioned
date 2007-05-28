@@ -28,11 +28,11 @@ typedef long int int64;
 #define INT64_IS_BUSTED
 #endif   /* not HAVE_LONG_INT_64 and not
 								 * HAVE_LONG_LONG_INT_64 */
+#endif   /* C_H */
 
 #if defined(USE_INTEGER_DATETIMES) && !defined(INT64_IS_BUSTED)
 #define HAVE_INT64_TIMESTAMP
 #endif
-#endif   /* C_H */
 
 typedef struct
 {
