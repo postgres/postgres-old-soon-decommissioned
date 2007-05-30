@@ -10176,6 +10176,13 @@ select current_date + s.a as dates from generate_series(0,14,7) as s(a);
    functions that extract session and system information.
   </para>
 
+  <para>
+   In addition to the functions listed in this section, there are a number of
+   functions related to the statistics system that also provide system
+   information. See <xref linkend="monitoring-stats-views"> for more
+   information.
+  </para>
+
    <table id="functions-info-session-table">
     <title>Session Information Functions</title>
     <tgroup cols="3">
