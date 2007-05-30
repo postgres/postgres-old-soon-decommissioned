@@ -394,7 +394,7 @@ typedef enum
 	LOCKACQUIRE_ALREADY_HELD	/* incremented count for lock already held */
 } LockAcquireResult;
 
-/* Deadlock states identified by DeadlockCheck() */
+/* Deadlock states identified by DeadLockCheck() */
 typedef enum
 {
 	DS_DEADLOCK_NOT_FOUND,		/* no deadlock found within database server */
