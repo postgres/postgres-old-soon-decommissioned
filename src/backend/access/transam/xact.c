@@ -2935,9 +2935,10 @@ RollbackToSavepoint(List *options)
 /*
  * BeginInternalSubTransaction
  *		This is the same as DefineSavepoint except it allows TBLOCK_STARTED
- *		state, and therefore it can safely be used in a function that might
- *		be called when not inside a BEGIN block.  Also, we automatically
- *		cycle through CommitTransactionCommand/StartTransactionCommand
+ *		and TBLOCK_END states, and therefore it can safely be
+ *		used in functions that might be called when not inside a BEGIN block
+ *		or when running deferred triggers at COMMIT time.  Also, it
+ *		automatically does CommitTransactionCommand/StartTransactionCommand
  *		instead of expecting the caller to do it.
  */
 void
@@ -2949,6 +2950,7 @@ BeginInternalSubTransaction(char *name)
 	{
 		case TBLOCK_STARTED:
 		case TBLOCK_INPROGRESS:
+		case TBLOCK_END:
 		case TBLOCK_SUBINPROGRESS:
 			/* Normal subtransaction start */
 			PushTransaction();
@@ -2966,7 +2968,6 @@ BeginInternalSubTransaction(char *name)
 		case TBLOCK_DEFAULT:
 		case TBLOCK_BEGIN:
 		case TBLOCK_SUBBEGIN:
-		case TBLOCK_END:
 		case TBLOCK_SUBEND:
 		case TBLOCK_ABORT:
 		case TBLOCK_SUBABORT:
