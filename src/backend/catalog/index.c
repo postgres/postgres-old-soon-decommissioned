@@ -1658,6 +1658,7 @@ validate_index(Oid heapId, Oid indexId, Snapshot snapshot)
 	ivinfo.vacuum_full = false;
 	ivinfo.message_level = DEBUG2;
 	ivinfo.num_heap_tuples = -1;
+	ivinfo.strategy = NULL;
 
 	state.tuplesort = tuplesort_begin_datum(TIDOID,
 											TIDLessOperator, false,

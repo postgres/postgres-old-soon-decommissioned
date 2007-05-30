@@ -1800,6 +1800,36 @@ XLogFlush(XLogRecPtr record)
 }
 
 /*
+ * Test whether XLOG data has been flushed up to (at least) the given position.
+ *
+ * Returns true if a flush is still needed.  (It may be that someone else
+ * is already in process of flushing that far, however.)
+ */
+bool
+XLogNeedsFlush(XLogRecPtr record)
+{
+	/* Quick exit if already known flushed */
+	if (XLByteLE(record, LogwrtResult.Flush))
+		return false;
+
+	/* read LogwrtResult and update local state */
+	{
+		/* use volatile pointer to prevent code rearrangement */
+		volatile XLogCtlData *xlogctl = XLogCtl;
+
+		SpinLockAcquire(&xlogctl->info_lck);
+		LogwrtResult = xlogctl->LogwrtResult;
+		SpinLockRelease(&xlogctl->info_lck);
+	}
+
+	/* check again */
+	if (XLByteLE(record, LogwrtResult.Flush))
+		return false;
+
+	return true;
+}
+
+/*
  * Create a new XLOG file segment, or open a pre-existing one.
  *
  * log, seg: identify segment to be created/opened.

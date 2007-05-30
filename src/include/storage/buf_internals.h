@@ -167,9 +167,6 @@ extern DLLIMPORT BufferDesc *BufferDescriptors;
 /* in localbuf.c */
 extern BufferDesc *LocalBufferDescriptors;
 
-/* in freelist.c */
-extern bool strategy_hint_vacuum;
-
 /* event counters in buf_init.c */
 extern long int ReadBufferCount;
 extern long int ReadLocalBufferCount;
@@ -184,8 +181,12 @@ extern long int LocalBufferFlushCount;
  */
 
 /* freelist.c */
-extern volatile BufferDesc *StrategyGetBuffer(void);
-extern void StrategyFreeBuffer(volatile BufferDesc *buf, bool at_head);
+extern volatile BufferDesc *StrategyGetBuffer(BufferAccessStrategy strategy,
+											  bool *lock_held);
+extern void StrategyFreeBuffer(volatile BufferDesc *buf);
+extern bool StrategyRejectBuffer(BufferAccessStrategy strategy,
+								 volatile BufferDesc *buf);
+
 extern int	StrategySyncStart(void);
 extern Size StrategyShmemSize(void);
 extern void StrategyInitialize(bool init);

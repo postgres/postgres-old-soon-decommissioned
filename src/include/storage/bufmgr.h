@@ -19,6 +19,14 @@
 
 typedef void *Block;
 
+/* Possible arguments for GetAccessStrategy() */
+typedef enum BufferAccessStrategyType
+{
+	BAS_NORMAL,		/* Normal random access */
+	BAS_BULKREAD,	/* Large read-only scan (hint bit updates are ok) */
+	BAS_VACUUM		/* VACUUM */
+} BufferAccessStrategyType;
+
 /* in globals.c ... this duplicates miscadmin.h */
 extern DLLIMPORT int NBuffers;
 
@@ -111,6 +119,8 @@ extern DLLIMPORT int32 *LocalRefCount;
  * prototypes for functions in bufmgr.c
  */
 extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
+extern Buffer ReadBufferWithStrategy(Relation reln, BlockNumber blockNum,
+									 BufferAccessStrategy strategy);
 extern Buffer ReadOrZeroBuffer(Relation reln, BlockNumber blockNum);
 extern void ReleaseBuffer(Buffer buffer);
 extern void UnlockReleaseBuffer(Buffer buffer);
@@ -157,6 +167,7 @@ extern void BgBufferSync(void);
 extern void AtProcExit_LocalBuffers(void);
 
 /* in freelist.c */
-extern void StrategyHintVacuum(bool vacuum_active);
+extern BufferAccessStrategy GetAccessStrategy(BufferAccessStrategyType btype);
+extern void FreeAccessStrategy(BufferAccessStrategy strategy);
 
 #endif

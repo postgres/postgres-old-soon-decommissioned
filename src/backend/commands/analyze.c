@@ -63,9 +63,12 @@ typedef struct AnlIndexData
 /* Default statistics target (GUC parameter) */
 int			default_statistics_target = 10;
 
+/* A few variables that don't seem worth passing around as parameters */
 static int	elevel = -1;
 
 static MemoryContext anl_context = NULL;
+
+static BufferAccessStrategy vac_strategy;
 
 
 static void BlockSampler_Init(BlockSampler bs, BlockNumber nblocks,
@@ -94,7 +97,8 @@ static bool std_typanalyze(VacAttrStats *stats);
  *	analyze_rel() -- analyze one relation
  */
 void
-analyze_rel(Oid relid, VacuumStmt *vacstmt)
+analyze_rel(Oid relid, VacuumStmt *vacstmt,
+			BufferAccessStrategy bstrategy)
 {
 	Relation	onerel;
 	int			attr_cnt,
@@ -119,6 +123,8 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt)
 		elevel = INFO;
 	else
 		elevel = DEBUG2;
+
+	vac_strategy = bstrategy;
 
 	/*
 	 * Use the current context for storing analysis info.  vacuum.c ensures
@@ -845,7 +851,7 @@ acquire_sample_rows(Relation onerel, HeapTuple *rows, int targrows,
 		 * looking at it.  We don't maintain a lock on the page, so tuples
 		 * could get added to it, but we ignore such tuples.
 		 */
-		targbuffer = ReadBuffer(onerel, targblock);
+		targbuffer = ReadBufferWithStrategy(onerel, targblock, vac_strategy);
 		LockBuffer(targbuffer, BUFFER_LOCK_SHARE);
 		targpage = BufferGetPage(targbuffer);
 		maxoffset = PageGetMaxOffsetNumber(targpage);

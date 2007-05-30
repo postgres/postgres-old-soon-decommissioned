@@ -27,6 +27,7 @@ typedef struct HeapScanDescData
 	int			rs_nkeys;		/* number of scan keys */
 	ScanKey		rs_key;			/* array of scan key descriptors */
 	BlockNumber rs_nblocks;		/* number of blocks to scan */
+	BufferAccessStrategy rs_strategy;	/* access strategy for reads */
 	bool		rs_pageatatime; /* verify visibility page-at-a-time? */
 
 	/* scan current state */

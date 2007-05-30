@@ -36,4 +36,11 @@ typedef int Buffer;
  */
 #define BufferIsLocal(buffer)	((buffer) < 0)
 
+/*
+ * Buffer access strategy objects.
+ *
+ * BufferAccessStrategyData is private to freelist.c
+ */
+typedef struct BufferAccessStrategyData *BufferAccessStrategy;
+
 #endif   /* BUF_H */

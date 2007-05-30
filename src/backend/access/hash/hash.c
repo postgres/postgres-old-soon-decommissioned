@@ -547,8 +547,9 @@ loop_top:
 
 			vacuum_delay_point();
 
-			buf = _hash_getbuf(rel, blkno, HASH_WRITE,
-							   LH_BUCKET_PAGE | LH_OVERFLOW_PAGE);
+			buf = _hash_getbuf_with_strategy(rel, blkno, HASH_WRITE,
+											 LH_BUCKET_PAGE | LH_OVERFLOW_PAGE,
+											 info->strategy);
 			page = BufferGetPage(buf);
 			opaque = (HashPageOpaque) PageGetSpecialPointer(page);
 			Assert(opaque->hasho_bucket == cur_bucket);
@@ -596,7 +597,8 @@ loop_top:
 
 		/* If we deleted anything, try to compact free space */
 		if (bucket_dirty)
-			_hash_squeezebucket(rel, cur_bucket, bucket_blkno);
+			_hash_squeezebucket(rel, cur_bucket, bucket_blkno,
+								info->strategy);
 
 		/* Release bucket lock */
 		_hash_droplock(rel, bucket_blkno, HASH_EXCLUSIVE);

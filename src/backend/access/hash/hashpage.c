@@ -215,6 +215,34 @@ _hash_getnewbuf(Relation rel, BlockNumber blkno)
 }
 
 /*
+ *	_hash_getbuf_with_strategy() -- Get a buffer with nondefault strategy.
+ *
+ *		This is identical to _hash_getbuf() but also allows a buffer access
+ *		strategy to be specified.  We use this for VACUUM operations.
+ */
+Buffer
+_hash_getbuf_with_strategy(Relation rel, BlockNumber blkno,
+						   int access, int flags,
+						   BufferAccessStrategy bstrategy)
+{
+	Buffer		buf;
+
+	if (blkno == P_NEW)
+		elog(ERROR, "hash AM does not use P_NEW");
+
+	buf = ReadBufferWithStrategy(rel, blkno, bstrategy);
+
+	if (access != HASH_NOLOCK)
+		LockBuffer(buf, access);
+
+	/* ref count and lock type are correct */
+
+	_hash_checkpage(rel, buf, flags);
+
+	return buf;
+}
+
+/*
  *	_hash_relbuf() -- release a locked buffer.
  *
  * Lock and pin (refcount) are both dropped.
@@ -840,5 +868,5 @@ _hash_splitbucket(Relation rel,
 	_hash_wrtbuf(rel, obuf);
 	_hash_wrtbuf(rel, nbuf);
 
-	_hash_squeezebucket(rel, obucket, start_oblkno);
+	_hash_squeezebucket(rel, obucket, start_oblkno, NULL);
 }
