@@ -484,7 +484,7 @@ PLy_modify_tuple(PLyProcedure * proc, PyObject * pltd, TriggerData *tdata,
 	PG_TRY();
 	{
 		if ((plntup = PyDict_GetItemString(pltd, "new")) == NULL)
-			elog(ERROR, "TD[\"new\"] deleted, unable to modify tuple");
+			elog(ERROR, "TD[\"new\"] deleted, cannot modify tuple");
 		if (!PyDict_Check(plntup))
 			elog(ERROR, "TD[\"new\"] is not a dictionary object");
 		Py_INCREF(plntup);
@@ -2822,7 +2822,7 @@ PLy_output(volatile int level, PyObject * self, PyObject * args)
 	if (so == NULL || ((sv = PyString_AsString(so)) == NULL))
 	{
 		level = ERROR;
-		sv = "Unable to parse error message in `plpy.elog'";
+		sv = "could not parse error message in `plpy.elog'";
 	}
 
 	oldcontext = CurrentMemoryContext;

@@ -455,7 +455,7 @@ identify_system_timezone(void)
 	if (std_zone_name[0] == '\0')
 	{
 		ereport(LOG,
-				(errmsg("unable to determine system timezone, defaulting to \"%s\"", "GMT"),
+				(errmsg("could not determine system time zone, defaulting to \"%s\"", "GMT"),
 		errhint("You can specify the correct timezone in postgresql.conf.")));
 		return NULL;			/* go to GMT */
 	}

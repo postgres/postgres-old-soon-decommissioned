@@ -886,14 +886,14 @@ spawn_process(const char *cmdline)
    {
       if (Advapi32Handle != NULL)
       	FreeLibrary(Advapi32Handle);
-      fprintf(stderr, "ERROR: Unable to create restricted tokens on this platform\n");
+      fprintf(stderr, "ERROR: cannot create restricted tokens on this platform\n");
       exit_nicely(2);
    }
 
    /* Open the current token to use as base for the restricted one */
    if (!OpenProcessToken(GetCurrentProcess(), TOKEN_ALL_ACCESS, &origToken))
    {
-      fprintf(stderr, "Failed to open process token: %lu\n", GetLastError());
+      fprintf(stderr, "could not open process token: %lu\n", GetLastError());
       exit_nicely(2);
    }
 
@@ -904,7 +904,7 @@ spawn_process(const char *cmdline)
 		 !AllocateAndInitializeSid(&NtAuthority, 2,
 		   SECURITY_BUILTIN_DOMAIN_RID, DOMAIN_ALIAS_RID_POWER_USERS, 0, 0, 0, 0, 0, 0, &dropSids[1].Sid))
    {
-      fprintf(stderr, "Failed to allocate SIDs: %lu\n", GetLastError());
+      fprintf(stderr, "could not allocate SIDs: %lu\n", GetLastError());
       exit_nicely(2);
    }
 	
@@ -923,7 +923,7 @@ spawn_process(const char *cmdline)
    
    if (!b)
    {
-      fprintf(stderr, "Failed to create restricted token: %lu\n", GetLastError());
+      fprintf(stderr, "could not create restricted token: %lu\n", GetLastError());
       exit_nicely(2);
    }
 

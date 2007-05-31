@@ -62,7 +62,7 @@ ECPGraise(int line, int code, const char *sqlstate, const char *str)
 
 		case ECPG_CONVERT_BOOL:
 			snprintf(sqlca->sqlerrm.sqlerrmc, sizeof(sqlca->sqlerrm.sqlerrmc),
-					 "Unable to convert %s to bool on line %d.", str, line);
+					 "Could not convert %s to bool on line %d.", str, line);
 			break;
 
 		case ECPG_EMPTY:

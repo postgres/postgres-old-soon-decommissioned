@@ -570,7 +570,7 @@ remove_tablespace_directories(Oid tablespaceoid, bool redo)
 		if (rmdir(subfile) < 0)
 			ereport(ERROR,
 					(errcode_for_file_access(),
-					 errmsg("could not delete directory \"%s\": %m",
+					 errmsg("could not remove directory \"%s\": %m",
 							subfile)));
 
 		pfree(subfile);

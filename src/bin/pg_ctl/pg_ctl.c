@@ -1257,7 +1257,7 @@ CreateRestrictedProcess(char *cmd, PROCESS_INFORMATION * processInfo)
 		 * NT4 doesn't have CreateRestrictedToken, so just call ordinary
 		 * CreateProcess
 		 */
-		write_stderr("WARNING: Unable to create restricted tokens on this platform\n");
+		write_stderr("WARNING: cannot create restricted tokens on this platform\n");
 		if (Advapi32Handle != NULL)
 			FreeLibrary(Advapi32Handle);
 		return CreateProcess(NULL, cmd, NULL, NULL, FALSE, 0, NULL, NULL, &si, processInfo);
@@ -1332,7 +1332,7 @@ CreateRestrictedProcess(char *cmd, PROCESS_INFORMATION * processInfo)
 			 * Log error if we can't get version, or if we're on WinXP/2003 or
 			 * newer
 			 */
-			write_stderr("WARNING: Unable to locate all job object functions in system API!\n");
+			write_stderr("WARNING: could not locate all job object functions in system API\n");
 	}
 	else
 	{

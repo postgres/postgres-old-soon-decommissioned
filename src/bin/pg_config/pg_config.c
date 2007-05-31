@@ -469,7 +469,7 @@ main(int argc, char **argv)
 
 	if (ret)
 	{
-		fprintf(stderr, _("%s: could not find own executable\n"), progname);
+		fprintf(stderr, _("%s: could not find own program executable\n"), progname);
 		exit(1);
 	}
 
