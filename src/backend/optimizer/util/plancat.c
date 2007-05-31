@@ -171,20 +171,23 @@ get_relation_info(PlannerInfo *root, Oid relationObjectId, bool inhparent,
 			info->ncolumns = ncolumns = index->indnatts;
 
 			/*
-			 * Need to make opfamily array large enough to put a terminating
-			 * zero at the end.
+			 * Allocate per-column info arrays.  To save a few palloc cycles
+			 * we allocate all the Oid-type arrays in one request.  Note that
+			 * the opfamily array needs an extra, terminating zero at the end.
+			 * We pre-zero the ordering info in case the index is unordered.
 			 */
 			info->indexkeys = (int *) palloc(sizeof(int) * ncolumns);
-			info->opfamily = (Oid *) palloc0(sizeof(Oid) * (ncolumns + 1));
-			/* initialize these to zeroes in case index is unordered */
-			info->fwdsortop = (Oid *) palloc0(sizeof(Oid) * ncolumns);
-			info->revsortop = (Oid *) palloc0(sizeof(Oid) * ncolumns);
+			info->opfamily = (Oid *) palloc0(sizeof(Oid) * (4 * ncolumns + 1));
+			info->opcintype = info->opfamily + (ncolumns + 1);
+			info->fwdsortop = info->opcintype + ncolumns;
+			info->revsortop = info->fwdsortop + ncolumns;
 			info->nulls_first = (bool *) palloc0(sizeof(bool) * ncolumns);
 
 			for (i = 0; i < ncolumns; i++)
 			{
-				info->opfamily[i] = indexRelation->rd_opfamily[i];
 				info->indexkeys[i] = index->indkey.values[i];
+				info->opfamily[i] = indexRelation->rd_opfamily[i];
+				info->opcintype[i] = indexRelation->rd_opcintype[i];
 			}
 
 			info->relam = indexRelation->rd_rel->relam;
