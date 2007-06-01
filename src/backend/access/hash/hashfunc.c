@@ -267,6 +267,31 @@ hash_any(register const unsigned char *k, register int keylen)
 			/* case 0: nothing left to add */
 	}
 	mix(a, b, c);
+
+	/* report the result */
+	return UInt32GetDatum(c);
+}
+
+/*
+ * hash_uint32() -- hash a 32-bit value
+ *
+ * This has the same result (at least on little-endian machines) as
+ *		hash_any(&k, sizeof(uint32))
+ * but is faster and doesn't force the caller to store k into memory.
+ */
+Datum
+hash_uint32(uint32 k)
+{
+	register uint32 a,
+				b,
+				c;
+
+	a = 0x9e3779b9 + k;
+	b = 0x9e3779b9;
+	c = 3923095 + (uint32) sizeof(uint32);
+
+	mix(a, b, c);
+
 	/* report the result */
 	return UInt32GetDatum(c);
 }
