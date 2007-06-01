@@ -263,6 +263,7 @@ extern Datum hashname(PG_FUNCTION_ARGS);
 extern Datum hashtext(PG_FUNCTION_ARGS);
 extern Datum hashvarlena(PG_FUNCTION_ARGS);
 extern Datum hash_any(register const unsigned char *k, register int keylen);
+extern Datum hash_uint32(uint32 k);
 
 /* private routines */
 
