@@ -76,6 +76,8 @@ typedef struct HashJoinTupleData
 typedef struct HashJoinTableData
 {
 	int			nbuckets;		/* # buckets in the in-memory hash table */
+	int			log2_nbuckets;	/* its log2 (nbuckets must be a power of 2) */
+
 	/* buckets[i] is head of list of tuples in i'th in-memory bucket */
 	struct HashJoinTupleData **buckets;
 	/* buckets array is per-batch storage, as are all the tuples */
