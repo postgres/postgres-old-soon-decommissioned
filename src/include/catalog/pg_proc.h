@@ -3221,6 +3221,10 @@ DESCR("List all files in a directory");
 DATA(insert OID = 2626 ( pg_sleep			PGNSP PGUID 12 1 0 f f t f v 1 2278 "701" _null_ _null_ _null_ pg_sleep - _null_ ));
 DESCR("Sleep for the specified time in seconds");
 
+DATA(insert OID = 2970 (  boolean			PGNSP PGUID 12 1 0 f f t f i 1 16 "25" _null_ _null_ _null_	textbool - _null_ ));
+DESCR("text to boolean");
+DATA(insert OID = 2971 (  text				PGNSP PGUID 12 1 0 f f t f i 1 25 "16" _null_ _null_ _null_	booltext - _null_ ));
+DESCR("boolean to text");
 
 /* Aggregates (moved here from pg_aggregate for 7.3) */
 
