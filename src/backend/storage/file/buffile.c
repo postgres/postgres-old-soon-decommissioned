@@ -291,7 +291,7 @@ BufFileDumpBuffer(BufFile *file)
 				return;			/* seek failed, give up */
 			file->offsets[file->curFile] = file->curOffset;
 		}
-		bytestowrite = FileWrite(thisfile, file->buffer, bytestowrite);
+		bytestowrite = FileWrite(thisfile, file->buffer + wpos, bytestowrite);
 		if (bytestowrite <= 0)
 			return;				/* failed to write */
 		file->offsets[file->curFile] += bytestowrite;
