@@ -381,7 +381,7 @@ ParseTzFile(const char *filename, int depth,
 			{
 				ereport(tz_elevel,
 						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-						 errmsg("@INCLUDE without filename in time zone file \"%s\", line %d",
+						 errmsg("@INCLUDE without file name in time zone file \"%s\", line %d",
 								filename, lineno)));
 				return -1;
 			}
