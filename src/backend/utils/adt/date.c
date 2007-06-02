@@ -864,8 +864,9 @@ text_date(PG_FUNCTION_ARGS)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_DATETIME_FORMAT),
 				 errmsg("invalid input syntax for type date: \"%s\"",
-						VARDATA(str))));
-
+						DatumGetCString(DirectFunctionCall1(textout,
+													PointerGetDatum(str))))));
+	
 	sp = VARDATA(str);
 	dp = dstr;
 	for (i = 0; i < (VARSIZE(str) - VARHDRSZ); i++)
@@ -1591,7 +1592,8 @@ text_time(PG_FUNCTION_ARGS)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_DATETIME_FORMAT),
 				 errmsg("invalid input syntax for type time: \"%s\"",
-						VARDATA(str))));
+						DatumGetCString(DirectFunctionCall1(textout, 
+													PointerGetDatum(str))))));
 
 	sp = VARDATA(str);
 	dp = dstr;
@@ -2360,7 +2362,8 @@ text_timetz(PG_FUNCTION_ARGS)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_DATETIME_FORMAT),
 		  errmsg("invalid input syntax for type time with time zone: \"%s\"",
-				 VARDATA(str))));
+				 DatumGetCString(DirectFunctionCall1(textout, 
+													 PointerGetDatum(str))))));
 
 	sp = VARDATA(str);
 	dp = dstr;
