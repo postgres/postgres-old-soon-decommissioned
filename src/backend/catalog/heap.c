@@ -375,7 +375,7 @@ CheckAttributeNamesTypes(TupleDesc tupdesc, char relkind)
 					   NameStr(tupdesc->attrs[i]->attname)) == 0)
 				ereport(ERROR,
 						(errcode(ERRCODE_DUPLICATE_COLUMN),
-						 errmsg("column name \"%s\" is duplicated",
+						 errmsg("column name \"%s\" specified more than once",
 								NameStr(tupdesc->attrs[j]->attname))));
 		}
 	}
