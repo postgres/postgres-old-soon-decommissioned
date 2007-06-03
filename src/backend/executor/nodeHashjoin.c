@@ -223,7 +223,8 @@ ExecHashJoin(HashJoinState *node)
 				 * in the corresponding outer-batch file.
 				 */
 				Assert(batchno > hashtable->curbatch);
-				ExecHashJoinSaveTuple(ExecFetchSlotMinimalTuple(outerTupleSlot),
+				ExecHashJoinSaveTuple(hashtable,
+									  ExecFetchSlotMinimalTuple(outerTupleSlot),
 									  hashvalue,
 									  &hashtable->outerBatchFile[batchno]);
 				node->hj_NeedNewOuter = true;
@@ -754,7 +755,8 @@ start_over:
  * will get messed up.
  */
 void
-ExecHashJoinSaveTuple(MinimalTuple tuple, uint32 hashvalue,
+ExecHashJoinSaveTuple(HashJoinTable hashtable,
+					  MinimalTuple tuple, uint32 hashvalue,
 					  BufFile **fileptr)
 {
 	BufFile    *file = *fileptr;
@@ -763,7 +765,7 @@ ExecHashJoinSaveTuple(MinimalTuple tuple, uint32 hashvalue,
 	if (file == NULL)
 	{
 		/* First write to this batch file, so open it. */
-		file = BufFileCreateTemp(false);
+		file = BufFileCreateTemp(false, hashtable->hashTblSpc);
 		*fileptr = file;
 	}
 

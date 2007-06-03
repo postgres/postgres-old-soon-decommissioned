@@ -225,6 +225,8 @@ extern void read_nondefault_variables(void);
 /* in commands/tablespace.c */
 extern const char *assign_default_tablespace(const char *newval,
 						  bool doit, GucSource source);
+extern const char *assign_temp_tablespaces(const char *newval,
+						  bool doit, GucSource source);
 
 /* in utils/adt/regexp.c */
 extern const char *assign_regex_flavor(const char *value,

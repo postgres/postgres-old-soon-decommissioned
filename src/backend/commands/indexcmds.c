@@ -194,7 +194,7 @@ DefineIndex(RangeVar *heapRelation,
 	}
 
 	/*
-	 * Select tablespace to use.  If not specified, use default_tablespace
+	 * Select tablespace to use.  If not specified, use default tablespace
 	 * (which may in turn default to database's default).
 	 */
 	if (tableSpaceName)
@@ -208,7 +208,7 @@ DefineIndex(RangeVar *heapRelation,
 	}
 	else
 	{
-		tablespaceId = GetDefaultTablespace();
+		tablespaceId = GetDefaultTablespace(rel->rd_istemp);
 		/* note InvalidOid is OK in this case */
 	}
 

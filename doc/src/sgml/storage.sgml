@@ -170,6 +170,17 @@ tablespace is not accessed through <filename>pg_tblspc</>, but corresponds to
 <varname>PGDATA</><filename>/global</>.
 </para>
 
+<para>
+Temporary files (for operations such as sorting more data than can fit in
+memory) are created within <varname>PGDATA</><filename>/base/pgsql_tmp</>,
+or within a <filename>pgsql_tmp</> subdirectory of a tablespace directory
+if a tablespace other than <literal>pg_default</> is specified for them.
+The name of a temporary file has the form
+<filename>pgsql_tmp<replaceable>PPP</>.<replaceable>NNN</></filename>,
+where <replaceable>PPP</> is the PID of the owning backend and
+<replaceable>NNN</> distinguishes different files of that backend.
+</para>
+
 </sect1>
 
 <sect1 id="storage-toast">

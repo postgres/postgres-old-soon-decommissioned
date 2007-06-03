@@ -2430,7 +2430,7 @@ OpenIntoRel(QueryDesc *queryDesc)
 					   get_namespace_name(namespaceId));
 
 	/*
-	 * Select tablespace to use.  If not specified, use default_tablespace
+	 * Select tablespace to use.  If not specified, use default tablespace
 	 * (which may in turn default to database's default).
 	 */
 	if (into->tableSpaceName)
@@ -2444,7 +2444,7 @@ OpenIntoRel(QueryDesc *queryDesc)
 	}
 	else
 	{
-		tablespaceId = GetDefaultTablespace();
+		tablespaceId = GetDefaultTablespace(into->rel->istemp);
 		/* note InvalidOid is OK in this case */
 	}
 
