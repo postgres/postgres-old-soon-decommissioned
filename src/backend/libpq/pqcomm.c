@@ -338,6 +338,16 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 			continue;
 		}
 
+#ifndef WIN32
+		/*
+		 * Without the SO_REUSEADDR flag, a new postmaster can't be started right away after
+		 * a stop or crash, giving "address already in use" error on TCP ports.
+		 *
+		 * On win32, however, this behavior only happens if the SO_EXLUSIVEADDRUSE is set.
+		 * With SO_REUSEADDR, win32 allows multiple servers to listen on the same address,
+		 * resulting in unpredictable behavior. With no flags at all, win32 behaves as
+		 * Unix with SO_REUSEADDR.
+		 */
 		if (!IS_AF_UNIX(addr->ai_family))
 		{
 			if ((setsockopt(fd, SOL_SOCKET, SO_REUSEADDR,
@@ -350,6 +360,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 				continue;
 			}
 		}
+#endif
 
 #ifdef IPV6_V6ONLY
 		if (addr->ai_family == AF_INET6)
