@@ -289,7 +289,6 @@ pgwin32_recv(SOCKET s, char *buf, int len, int f)
 	int			r;
 	DWORD		b;
 	DWORD		flags = f;
-	int		n;
 
 	if (pgwin32_poll_signals())
 		return -1;
