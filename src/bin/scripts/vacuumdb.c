@@ -18,7 +18,7 @@ static void vacuum_one_database(const char *dbname, bool full, bool verbose, boo
 					const char *table,
 					const char *host, const char *port,
 					const char *username, bool password,
-					const char *progname, bool echo, bool quiet);
+					const char *progname, bool echo);
 static void vacuum_all_databases(bool full, bool verbose, bool analyze,
 					 const char *host, const char *port,
 					 const char *username, bool password,
@@ -163,7 +163,7 @@ main(int argc, char *argv[])
 
 		vacuum_one_database(dbname, full, verbose, analyze, table,
 							host, port, username, password,
-							progname, echo, quiet);
+							progname, echo);
 	}
 
 	exit(0);
@@ -175,7 +175,7 @@ vacuum_one_database(const char *dbname, bool full, bool verbose, bool analyze,
 					const char *table,
 					const char *host, const char *port,
 					const char *username, bool password,
-					const char *progname, bool echo, bool quiet)
+					const char *progname, bool echo)
 {
 	PQExpBufferData sql;
 
@@ -208,12 +208,6 @@ vacuum_one_database(const char *dbname, bool full, bool verbose, bool analyze,
 	}
 	PQfinish(conn);
 	termPQExpBuffer(&sql);
-
-	if (!quiet)
-	{
-		puts("VACUUM");
-		fflush(stdout);
-	}
 }
 
 
@@ -236,11 +230,14 @@ vacuum_all_databases(bool full, bool verbose, bool analyze,
 		char	   *dbname = PQgetvalue(result, i, 0);
 
 		if (!quiet)
-			fprintf(stderr, _("%s: vacuuming database \"%s\"\n"), progname, dbname);
+		{
+			printf(_("%s: vacuuming database \"%s\"\n"), progname, dbname);
+			fflush(stdout);
+		}
 
 		vacuum_one_database(dbname, full, verbose, analyze, NULL,
 							host, port, username, password,
-							progname, echo, quiet);
+							progname, echo);
 	}
 
 	PQclear(result);

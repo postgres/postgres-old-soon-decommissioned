@@ -17,7 +17,7 @@
 static void cluster_one_database(const char *dbname, const char *table,
 					 const char *host, const char *port,
 					 const char *username, bool password,
-					 const char *progname, bool echo, bool quiet);
+					 const char *progname, bool echo);
 static void cluster_all_databases(const char *host, const char *port,
 					  const char *username, bool password,
 					  const char *progname, bool echo, bool quiet);
@@ -145,7 +145,7 @@ main(int argc, char *argv[])
 
 		cluster_one_database(dbname, table,
 							 host, port, username, password,
-							 progname, echo, quiet);
+							 progname, echo);
 	}
 
 	exit(0);
@@ -156,7 +156,7 @@ static void
 cluster_one_database(const char *dbname, const char *table,
 					 const char *host, const char *port,
 					 const char *username, bool password,
-					 const char *progname, bool echo, bool quiet)
+					 const char *progname, bool echo)
 {
 	PQExpBufferData sql;
 
@@ -183,12 +183,6 @@ cluster_one_database(const char *dbname, const char *table,
 	}
 	PQfinish(conn);
 	termPQExpBuffer(&sql);
-
-	if (!quiet)
-	{
-		puts("CLUSTER");
-		fflush(stdout);
-	}
 }
 
 
@@ -210,11 +204,14 @@ cluster_all_databases(const char *host, const char *port,
 		char	   *dbname = PQgetvalue(result, i, 0);
 
 		if (!quiet)
-			fprintf(stderr, _("%s: clustering database \"%s\"\n"), progname, dbname);
+		{
+			printf(_("%s: clustering database \"%s\"\n"), progname, dbname);
+			fflush(stdout);
+		}
 
 		cluster_one_database(dbname, NULL,
 							 host, port, username, password,
-							 progname, echo, quiet);
+							 progname, echo);
 	}
 
 	PQclear(result);

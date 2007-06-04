@@ -85,16 +85,6 @@ PostgreSQL documentation
        </para>
       </listitem>
      </varlistentry>
-
-     <varlistentry>
-      <term><option>-q</></term>
-      <term><option>--quiet</></term>
-      <listitem>
-       <para>
-        Do not display a response.
-       </para>
-      </listitem>
-     </varlistentry>
     </variablelist>
   </para>
 

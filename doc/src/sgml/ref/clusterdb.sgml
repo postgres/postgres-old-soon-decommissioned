@@ -102,7 +102,7 @@ PostgreSQL documentation
       <term><option>--quiet</></term>
       <listitem>
        <para>
-        Do not display a response.
+        Do not display progress messages.
        </para>
       </listitem>
      </varlistentry>
