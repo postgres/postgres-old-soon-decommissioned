@@ -944,14 +944,3 @@ InvalRelid(Oid relid, LOCKMODE lockmode, InvalRelidContext *context)
 	if (relid == context->inval_relid || context->inval_relid == InvalidOid)
 		context->plan->dead = true;
 }
-
-
-/*
- * HaveCachedPlans 
- *		Check if the plancache has stored any plans at all.
- */
-bool
-HaveCachedPlans(void)
-{
-	return (cached_plans_list != NIL);
-}

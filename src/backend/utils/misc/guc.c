@@ -6270,24 +6270,29 @@ assign_defaultxactisolevel(const char *newval, bool doit, GucSource source)
 static const char *
 assign_session_replication_role(const char *newval, bool doit, GucSource source)
 {
-	if (HaveCachedPlans())
-		elog(ERROR, "session_replication_role cannot be changed "
-					"after prepared plans have been cached");
-
 	if (pg_strcasecmp(newval, "origin") == 0)
 	{
 		if (doit)
+		{
+			ResetPlanCache();
 			SessionReplicationRole = SESSION_REPLICATION_ROLE_ORIGIN;
+		}
 	}
 	else if (pg_strcasecmp(newval, "replica") == 0)
 	{
 		if (doit)
+		{
+			ResetPlanCache();
 			SessionReplicationRole = SESSION_REPLICATION_ROLE_REPLICA;
+		}
 	}
 	else if (pg_strcasecmp(newval, "local") == 0)
 	{
 		if (doit)
+		{
+			ResetPlanCache();
 			SessionReplicationRole = SESSION_REPLICATION_ROLE_LOCAL;
+		}
 	}
 	else
 		return NULL;

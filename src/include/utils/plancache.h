@@ -106,7 +106,6 @@ extern CachedPlan *RevalidateCachedPlan(CachedPlanSource *plansource,
 										bool useResOwner);
 extern void ReleaseCachedPlan(CachedPlan *plan, bool useResOwner);
 extern TupleDesc PlanCacheComputeResultDesc(List *stmt_list);
-extern bool HaveCachedPlans(void);
 
 extern void ResetPlanCache(void);
 
