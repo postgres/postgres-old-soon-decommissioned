@@ -638,6 +638,19 @@ typedef struct FieldStoreState
 } FieldStoreState;
 
 /* ----------------
+ *		CoerceViaIOState node
+ * ----------------
+ */
+typedef struct CoerceViaIOState
+{
+	ExprState	xprstate;
+	ExprState  *arg;			/* input expression */
+	FmgrInfo	outfunc;		/* lookup info for source output function */
+	FmgrInfo	infunc;			/* lookup info for result input function */
+	Oid			intypioparam;	/* argument needed for input function */
+} CoerceViaIOState;
+
+/* ----------------
  *		ArrayCoerceExprState node
  * ----------------
  */

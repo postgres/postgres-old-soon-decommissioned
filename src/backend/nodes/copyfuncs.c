@@ -1022,6 +1022,21 @@ _copyRelabelType(RelabelType *from)
 }
 
 /*
+ * _copyCoerceViaIO
+ */
+static CoerceViaIO *
+_copyCoerceViaIO(CoerceViaIO *from)
+{
+	CoerceViaIO   *newnode = makeNode(CoerceViaIO);
+
+	COPY_NODE_FIELD(arg);
+	COPY_SCALAR_FIELD(resulttype);
+	COPY_SCALAR_FIELD(coerceformat);
+
+	return newnode;
+}
+
+/*
  * _copyArrayCoerceExpr
  */
 static ArrayCoerceExpr *
@@ -3107,6 +3122,9 @@ copyObject(void *from)
 			break;
 		case T_RelabelType:
 			retval = _copyRelabelType(from);
+			break;
+		case T_CoerceViaIO:
+			retval = _copyCoerceViaIO(from);
 			break;
 		case T_ArrayCoerceExpr:
 			retval = _copyArrayCoerceExpr(from);

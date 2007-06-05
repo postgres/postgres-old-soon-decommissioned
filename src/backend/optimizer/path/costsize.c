@@ -70,6 +70,7 @@
 #include "optimizer/pathnode.h"
 #include "optimizer/planmain.h"
 #include "parser/parsetree.h"
+#include "parser/parse_expr.h"
 #include "utils/lsyscache.h"
 #include "utils/selfuncs.h"
 #include "utils/tuplesort.h"
@@ -1950,6 +1951,22 @@ cost_qual_eval_walker(Node *node, cost_qual_eval_context *context)
 		set_sa_opfuncid(saop);
 		context->total.per_tuple += get_func_cost(saop->opfuncid) *
 			cpu_operator_cost * estimate_array_length(arraynode) * 0.5;
+	}
+	else if (IsA(node, CoerceViaIO))
+	{
+		CoerceViaIO *iocoerce = (CoerceViaIO *) node;
+		Oid		iofunc;
+		Oid		typioparam;
+		bool	typisvarlena;
+
+		/* check the result type's input function */
+		getTypeInputInfo(iocoerce->resulttype,
+						 &iofunc, &typioparam);
+		context->total.per_tuple += get_func_cost(iofunc) * cpu_operator_cost;
+		/* check the input type's output function */
+		getTypeOutputInfo(exprType((Node *) iocoerce->arg),
+						  &iofunc, &typisvarlena);
+		context->total.per_tuple += get_func_cost(iofunc) * cpu_operator_cost;
 	}
 	else if (IsA(node, ArrayCoerceExpr))
 	{

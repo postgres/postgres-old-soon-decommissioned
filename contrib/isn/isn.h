@@ -38,13 +38,6 @@ extern Datum ismn_in(PG_FUNCTION_ARGS);
 extern Datum issn_in(PG_FUNCTION_ARGS);
 extern Datum upc_in(PG_FUNCTION_ARGS);
 
-extern Datum ean13_cast_to_text(PG_FUNCTION_ARGS);
-extern Datum isn_cast_to_text(PG_FUNCTION_ARGS);
-extern Datum ean13_cast_from_text(PG_FUNCTION_ARGS);
-extern Datum isbn_cast_from_text(PG_FUNCTION_ARGS);
-extern Datum ismn_cast_from_text(PG_FUNCTION_ARGS);
-extern Datum issn_cast_from_text(PG_FUNCTION_ARGS);
-extern Datum upc_cast_from_text(PG_FUNCTION_ARGS);
 extern Datum isbn_cast_from_ean13(PG_FUNCTION_ARGS);
 extern Datum ismn_cast_from_ean13(PG_FUNCTION_ARGS);
 extern Datum issn_cast_from_ean13(PG_FUNCTION_ARGS);

@@ -1070,6 +1070,10 @@ regtypesend(PG_FUNCTION_ARGS)
 
 /*
  * text_regclass: convert text to regclass
+ *
+ * This could be replaced by CoerceViaIO, except that we need to treat
+ * text-to-regclass as an implicit cast to support legacy forms of nextval()
+ * and related functions.
  */
 Datum
 text_regclass(PG_FUNCTION_ARGS)

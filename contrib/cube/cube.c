@@ -173,18 +173,6 @@ cube_in(PG_FUNCTION_ARGS)
 	PG_RETURN_NDBOX(result);
 }
 
-/* Allow conversion from text to cube to allow input of computed strings */
-/* There may be issues with toasted data here. I don't know enough to be sure.*/
-Datum
-cube(PG_FUNCTION_ARGS)
-{
-	char	   *cstring;
-
-	cstring = DatumGetCString(DirectFunctionCall1(textout, PointerGetDatum(PG_GETARG_TEXT_P(0))));
-
-	PG_RETURN_DATUM(DirectFunctionCall1(cube_in, PointerGetDatum(cstring)));
-}
-
 
 /*
 ** Allows the construction of a cube from 2 float[]'s

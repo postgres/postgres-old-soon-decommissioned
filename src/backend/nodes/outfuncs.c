@@ -871,6 +871,16 @@ _outRelabelType(StringInfo str, RelabelType *node)
 }
 
 static void
+_outCoerceViaIO(StringInfo str, CoerceViaIO *node)
+{
+	WRITE_NODE_TYPE("COERCEVIAIO");
+
+	WRITE_NODE_FIELD(arg);
+	WRITE_OID_FIELD(resulttype);
+	WRITE_ENUM_FIELD(coerceformat, CoercionForm);
+}
+
+static void
 _outArrayCoerceExpr(StringInfo str, ArrayCoerceExpr *node)
 {
 	WRITE_NODE_TYPE("ARRAYCOERCEEXPR");
@@ -2164,6 +2174,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_RelabelType:
 				_outRelabelType(str, obj);
+				break;
+			case T_CoerceViaIO:
+				_outCoerceViaIO(str, obj);
 				break;
 			case T_ArrayCoerceExpr:
 				_outArrayCoerceExpr(str, obj);

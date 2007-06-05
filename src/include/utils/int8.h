@@ -111,9 +111,6 @@ extern Datum ftoi8(PG_FUNCTION_ARGS);
 extern Datum i8tooid(PG_FUNCTION_ARGS);
 extern Datum oidtoi8(PG_FUNCTION_ARGS);
 
-extern Datum int8_text(PG_FUNCTION_ARGS);
-extern Datum text_int8(PG_FUNCTION_ARGS);
-
 extern Datum generate_series_int8(PG_FUNCTION_ARGS);
 extern Datum generate_series_step_int8(PG_FUNCTION_ARGS);
 

@@ -1137,48 +1137,6 @@ oidtoi8(PG_FUNCTION_ARGS)
 	PG_RETURN_INT64((int64) arg);
 }
 
-Datum
-text_int8(PG_FUNCTION_ARGS)
-{
-	text	   *str = PG_GETARG_TEXT_P(0);
-	int			len;
-	char	   *s;
-	Datum		result;
-
-	len = (VARSIZE(str) - VARHDRSZ);
-	s = palloc(len + 1);
-	memcpy(s, VARDATA(str), len);
-	*(s + len) = '\0';
-
-	result = DirectFunctionCall1(int8in, CStringGetDatum(s));
-
-	pfree(s);
-
-	return result;
-}
-
-Datum
-int8_text(PG_FUNCTION_ARGS)
-{
-	/* arg is int64, but easier to leave it as Datum */
-	Datum		arg = PG_GETARG_DATUM(0);
-	char	   *s;
-	int			len;
-	text	   *result;
-
-	s = DatumGetCString(DirectFunctionCall1(int8out, arg));
-	len = strlen(s);
-
-	result = (text *) palloc(VARHDRSZ + len);
-
-	SET_VARSIZE(result, VARHDRSZ + len);
-	memcpy(VARDATA(result), s, len);
-
-	pfree(s);
-
-	PG_RETURN_TEXT_P(result);
-}
-
 /*
  * non-persistent numeric series generator
  */

@@ -252,10 +252,6 @@ extern Datum interval_justify_interval(PG_FUNCTION_ARGS);
 extern Datum interval_justify_hours(PG_FUNCTION_ARGS);
 extern Datum interval_justify_days(PG_FUNCTION_ARGS);
 
-extern Datum timestamp_text(PG_FUNCTION_ARGS);
-extern Datum text_timestamp(PG_FUNCTION_ARGS);
-extern Datum interval_text(PG_FUNCTION_ARGS);
-extern Datum text_interval(PG_FUNCTION_ARGS);
 extern Datum timestamp_trunc(PG_FUNCTION_ARGS);
 extern Datum interval_trunc(PG_FUNCTION_ARGS);
 extern Datum timestamp_part(PG_FUNCTION_ARGS);
@@ -291,8 +287,6 @@ extern Datum timestamp_mi_interval(PG_FUNCTION_ARGS);
 extern Datum timestamp_age(PG_FUNCTION_ARGS);
 extern Datum overlaps_timestamp(PG_FUNCTION_ARGS);
 
-extern Datum timestamptz_text(PG_FUNCTION_ARGS);
-extern Datum text_timestamptz(PG_FUNCTION_ARGS);
 extern Datum timestamptz_pl_interval(PG_FUNCTION_ARGS);
 extern Datum timestamptz_mi_interval(PG_FUNCTION_ARGS);
 extern Datum timestamptz_age(PG_FUNCTION_ARGS);

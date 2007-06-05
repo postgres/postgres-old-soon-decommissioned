@@ -265,6 +265,7 @@ transformExpr(ParseState *pstate, Node *expr)
 		case T_FieldSelect:
 		case T_FieldStore:
 		case T_RelabelType:
+		case T_CoerceViaIO:
 		case T_ArrayCoerceExpr:
 		case T_ConvertRowtypeExpr:
 		case T_CaseTestExpr:
@@ -1805,6 +1806,9 @@ exprType(Node *expr)
 			break;
 		case T_RelabelType:
 			type = ((RelabelType *) expr)->resulttype;
+			break;
+		case T_CoerceViaIO:
+			type = ((CoerceViaIO *) expr)->resulttype;
 			break;
 		case T_ArrayCoerceExpr:
 			type = ((ArrayCoerceExpr *) expr)->resulttype;

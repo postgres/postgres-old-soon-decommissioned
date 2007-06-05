@@ -238,32 +238,3 @@ uuid_hash(PG_FUNCTION_ARGS)
 	pg_uuid_t	*key = PG_GETARG_UUID_P(0);
 	return hash_any(key->data, UUID_LEN);
 }
-
-/* cast text to uuid */
-Datum
-text_uuid(PG_FUNCTION_ARGS)
-{
-	text 		*input = PG_GETARG_TEXT_P(0);
-	int		 	 length;
-	char		*str;
-	Datum	 	 result;
-
-	length = VARSIZE(input) - VARHDRSZ;
-	str = palloc(length + 1);
-	memcpy(str, VARDATA(input), length);
-	*(str + length) = '\0';
-
-	result = DirectFunctionCall1(uuid_in, CStringGetDatum(str));
-	pfree(str);
-	PG_RETURN_DATUM(result);
-}
-
-/* cast uuid to text */
-Datum
-uuid_text(PG_FUNCTION_ARGS)
-{
-	pg_uuid_t 	*uuid 	  = PG_GETARG_UUID_P(0);
-	Datum 		 uuid_str = DirectFunctionCall1(uuid_out, UUIDPGetDatum(uuid));
-
-	PG_RETURN_DATUM(DirectFunctionCall1(textin, uuid_str));
-}

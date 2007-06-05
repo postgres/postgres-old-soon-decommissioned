@@ -1315,6 +1315,14 @@ find_expr_references_walker(Node *node,
 		add_object_address(OCLASS_TYPE, relab->resulttype, 0,
 						   context->addrs);
 	}
+	if (IsA(node, CoerceViaIO))
+	{
+		CoerceViaIO *iocoerce = (CoerceViaIO *) node;
+
+		/* since there is no exposed function, need to depend on type */
+		add_object_address(OCLASS_TYPE, iocoerce->resulttype, 0,
+						   context->addrs);
+	}
 	if (IsA(node, ArrayCoerceExpr))
 	{
 		ArrayCoerceExpr *acoerce = (ArrayCoerceExpr *) node;
