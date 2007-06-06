@@ -130,7 +130,7 @@ extern char *get_namespace_name(Oid nspid);
 extern Oid	get_roleid(const char *rolname);
 extern Oid	get_roleid_checked(const char *rolname);
 
-#define is_array_type(typid)  (get_element_type(typid) != InvalidOid)
+#define type_is_array(typid)  (get_element_type(typid) != InvalidOid)
 
 #define TypeIsToastable(typid)	(get_typstorage(typid) != 'p')
 

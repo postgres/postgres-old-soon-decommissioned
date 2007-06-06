@@ -575,6 +575,8 @@ DATA(insert OID = 2282 ( opaque			PGNSP PGUID  4 t p t \054 0 0 0 opaque_in opaq
 #define OPAQUEOID		2282
 DATA(insert OID = 2283 ( anyelement		PGNSP PGUID  4 t p t \054 0 0 0 anyelement_in anyelement_out - - - - - i p f 0 -1 0 _null_ _null_ ));
 #define ANYELEMENTOID	2283
+DATA(insert OID = 2776 ( anynonarray	PGNSP PGUID  4 t p t \054 0 0 0 anynonarray_in anynonarray_out - - - - - i p f 0 -1 0 _null_ _null_ ));
+#define ANYNONARRAYOID	2776
 DATA(insert OID = 3500 ( anyenum		PGNSP PGUID  4 t p t \054 0 0 0 anyenum_in anyenum_out - - - - - i p f 0 -1 0 _null_ _null_ ));
 #define ANYENUMOID		3500
 
@@ -592,6 +594,7 @@ DATA(insert OID = 3500 ( anyenum		PGNSP PGUID  4 t p t \054 0 0 0 anyenum_in any
 #define IsPolymorphicType(typid)  \
 	((typid) == ANYELEMENTOID || \
 	 (typid) == ANYARRAYOID || \
+	 (typid) == ANYNONARRAYOID || \
 	 (typid) == ANYENUMOID)
 
 /*

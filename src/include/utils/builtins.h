@@ -458,6 +458,8 @@ extern Datum anyarray_in(PG_FUNCTION_ARGS);
 extern Datum anyarray_out(PG_FUNCTION_ARGS);
 extern Datum anyarray_recv(PG_FUNCTION_ARGS);
 extern Datum anyarray_send(PG_FUNCTION_ARGS);
+extern Datum anynonarray_in(PG_FUNCTION_ARGS);
+extern Datum anynonarray_out(PG_FUNCTION_ARGS);
 extern Datum anyenum_in(PG_FUNCTION_ARGS);
 extern Datum anyenum_out(PG_FUNCTION_ARGS);
 extern Datum void_in(PG_FUNCTION_ARGS);

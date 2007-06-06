@@ -227,9 +227,9 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 	}
 
 	/*
-	 * enforce consistency with ANYARRAY and ANYELEMENT argument and return
-	 * types, possibly adjusting return type or declared_arg_types (which will
-	 * be used as the cast destination by make_fn_arguments)
+	 * enforce consistency with polymorphic argument and return types,
+	 * possibly adjusting return type or declared_arg_types (which will be
+	 * used as the cast destination by make_fn_arguments)
 	 */
 	rettype = enforce_generic_type_consistency(actual_arg_types,
 											   declared_arg_types,

@@ -1481,7 +1481,7 @@ map_sql_value_to_xml_value(Datum value, Oid type)
 
 	initStringInfo(&buf);
 
-	if (is_array_type(type))
+	if (type_is_array(type))
 	{
 		int i;
 		ArrayType *array;

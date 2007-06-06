@@ -147,6 +147,7 @@ ProcedureCreate(const char *procedureName,
 		{
 			case ANYARRAYOID:
 			case ANYELEMENTOID:
+			case ANYNONARRAYOID:
 			case ANYENUMOID:
 				genericInParam = true;
 				break;
@@ -170,6 +171,7 @@ ProcedureCreate(const char *procedureName,
 			{
 				case ANYARRAYOID:
 				case ANYELEMENTOID:
+				case ANYNONARRAYOID:
 				case ANYENUMOID:
 					genericOutParam = true;
 					break;
