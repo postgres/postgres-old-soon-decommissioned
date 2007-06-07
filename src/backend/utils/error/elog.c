@@ -1593,12 +1593,7 @@ log_line_prefix(StringInfo buf)
 				break;
 			case 'x':
 				if (MyProcPort)
-				{
-					if (IsTransactionState())
-						appendStringInfo(buf, "%u", GetTopTransactionId());
-					else
-						appendStringInfo(buf, "%u", InvalidTransactionId);
-				}
+					appendStringInfo(buf, "%u", GetTopTransactionId());
 				break;
 			case '%':
 				appendStringInfoChar(buf, '%');

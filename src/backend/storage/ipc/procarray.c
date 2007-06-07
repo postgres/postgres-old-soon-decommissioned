@@ -422,9 +422,8 @@ GetOldestXmin(bool allDbs, bool ignoreVacuum)
 	 * are no xacts running at all, that will be the subtrans truncation
 	 * point!)
 	 */
-	if (IsTransactionState())
-		result = GetTopTransactionId();
-	else
+	result = GetTopTransactionId();
+	if (!TransactionIdIsValid(result))
 		result = ReadNewTransactionId();
 
 	LWLockAcquire(ProcArrayLock, LW_SHARED);
