@@ -919,7 +919,9 @@ pgstat_vacuum_tabstat(void)
 
 		CHECK_FOR_INTERRUPTS();
 
-		if (hash_search(htab, (void *) &dbid, HASH_FIND, NULL) == NULL)
+		/* the DB entry for shared tables (with InvalidOid) is never dropped */
+		if (OidIsValid(dbid) &&
+			hash_search(htab, (void *) &dbid, HASH_FIND, NULL) == NULL)
 			pgstat_drop_database(dbid);
 	}
 
