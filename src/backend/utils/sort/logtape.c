@@ -77,7 +77,6 @@
 
 #include "postgres.h"
 
-#include "commands/tablespace.h"
 #include "storage/buffile.h"
 #include "utils/logtape.h"
 
@@ -529,7 +528,7 @@ LogicalTapeSetCreate(int ntapes)
 	Assert(ntapes > 0);
 	lts = (LogicalTapeSet *) palloc(sizeof(LogicalTapeSet) +
 									(ntapes - 1) *sizeof(LogicalTape));
-	lts->pfile = BufFileCreateTemp(false, GetTempTablespace());
+	lts->pfile = BufFileCreateTemp(false);
 	lts->nFileBlocks = 0L;
 	lts->forgetFreeSpace = false;
 	lts->blocksSorted = true;	/* a zero-length array is sorted ... */

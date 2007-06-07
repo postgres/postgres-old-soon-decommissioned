@@ -23,8 +23,7 @@ extern TupleTableSlot *ExecHashJoin(HashJoinState *node);
 extern void ExecEndHashJoin(HashJoinState *node);
 extern void ExecReScanHashJoin(HashJoinState *node, ExprContext *exprCtxt);
 
-extern void ExecHashJoinSaveTuple(HashJoinTable hashtable,
-								  MinimalTuple tuple, uint32 hashvalue,
-								  BufFile **fileptr);
+extern void ExecHashJoinSaveTuple(MinimalTuple tuple, uint32 hashvalue,
+					  BufFile **fileptr);
 
 #endif   /* NODEHASHJOIN_H */

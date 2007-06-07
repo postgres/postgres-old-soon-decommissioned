@@ -41,7 +41,8 @@ extern void AlterTableSpaceOwner(const char *name, Oid newOwnerId);
 extern void TablespaceCreateDbspace(Oid spcNode, Oid dbNode, bool isRedo);
 
 extern Oid	GetDefaultTablespace(bool forTemp);
-extern Oid	GetTempTablespace(void);
+
+extern void PrepareTempTablespaces(void);
 
 extern Oid	get_tablespace_oid(const char *tablespacename);
 extern char *get_tablespace_name(Oid spc_oid);

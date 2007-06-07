@@ -424,15 +424,11 @@ tuplestore_puttuple_common(Tuplestorestate *state, void *tuple)
 				return;
 
 			/*
-			 * Nope; time to switch to tape-based operation.
-			 *
-			 * If the temp table is slated to outlive the current transaction,
-			 * force it into my database's default tablespace, so that it will
-			 * not pose a threat to possible tablespace drop attempts.
+			 * Nope; time to switch to tape-based operation.  Make sure that
+			 * the temp file(s) are created in suitable temp tablespaces.
 			 */
-			state->myfile = BufFileCreateTemp(state->interXact,
-											  state->interXact ? InvalidOid :
-											  GetTempTablespace());
+			PrepareTempTablespaces();
+			state->myfile = BufFileCreateTemp(state->interXact);
 			state->status = TSS_WRITEFILE;
 			dumptuples(state);
 			break;
