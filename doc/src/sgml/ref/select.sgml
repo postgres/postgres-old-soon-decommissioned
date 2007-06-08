@@ -810,6 +810,14 @@ OFFSET <replaceable class="parameter">start</replaceable>
     to deliver the results of a query in any particular order unless
     <literal>ORDER BY</> is used to constrain the order.
    </para>
+
+   <para>
+    It is even possible for repeated executions of the same <literal>LIMIT</>
+    query to return different subsets of the rows of a table, if there
+    is not an <literal>ORDER BY</> to enforce selection of a deterministic
+    subset.  Again, this is not a bug; determinism of the results is
+    simply not guaranteed in such a case.
+   </para>
   </refsect2>
 
   <refsect2 id="SQL-FOR-UPDATE-SHARE">
