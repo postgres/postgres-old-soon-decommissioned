@@ -250,6 +250,11 @@
 #define TRACE_SORT 1
 
 /*
+ * Enable tracing of syncscan operations (see also the trace_syncscan GUC var).
+ */
+/* #define TRACE_SYNCSCAN */
+
+/*
  * Other debug #defines (documentation, anyone?)
  */
 /* #define HEAPDEBUGALL */

@@ -15,6 +15,7 @@
 #include "postgres.h"
 
 #include "access/clog.h"
+#include "access/heapam.h"
 #include "access/multixact.h"
 #include "access/nbtree.h"
 #include "access/subtrans.h"
@@ -112,6 +113,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int port)
 		size = add_size(size, BgWriterShmemSize());
 		size = add_size(size, AutoVacuumShmemSize());
 		size = add_size(size, BTreeShmemSize());
+		size = add_size(size, SyncScanShmemSize());
 #ifdef EXEC_BACKEND
 		size = add_size(size, ShmemBackendArraySize());
 #endif
@@ -216,6 +218,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int port)
 	 * Set up other modules that need some shared memory space
 	 */
 	BTreeShmemInit();
+	SyncScanShmemInit();
 
 #ifdef EXEC_BACKEND
 

@@ -26,9 +26,13 @@ typedef struct HeapScanDescData
 	Snapshot	rs_snapshot;	/* snapshot to see */
 	int			rs_nkeys;		/* number of scan keys */
 	ScanKey		rs_key;			/* array of scan key descriptors */
+
+	/* state set up at initscan time */
 	BlockNumber rs_nblocks;		/* number of blocks to scan */
+	BlockNumber	rs_startblock;	/* block # to start at */
 	BufferAccessStrategy rs_strategy;	/* access strategy for reads */
 	bool		rs_pageatatime; /* verify visibility page-at-a-time? */
+	bool		rs_syncscan;	/* report location to syncscan logic? */
 
 	/* scan current state */
 	bool		rs_inited;		/* false = scan not init'd yet */
