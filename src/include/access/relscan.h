@@ -26,12 +26,13 @@ typedef struct HeapScanDescData
 	Snapshot	rs_snapshot;	/* snapshot to see */
 	int			rs_nkeys;		/* number of scan keys */
 	ScanKey		rs_key;			/* array of scan key descriptors */
+	bool		rs_bitmapscan;	/* true if this is really a bitmap scan */
+	bool		rs_pageatatime;	/* verify visibility page-at-a-time? */
 
 	/* state set up at initscan time */
 	BlockNumber rs_nblocks;		/* number of blocks to scan */
 	BlockNumber	rs_startblock;	/* block # to start at */
 	BufferAccessStrategy rs_strategy;	/* access strategy for reads */
-	bool		rs_pageatatime; /* verify visibility page-at-a-time? */
 	bool		rs_syncscan;	/* report location to syncscan logic? */
 
 	/* scan current state */
@@ -42,7 +43,7 @@ typedef struct HeapScanDescData
 	/* NB: if rs_cbuf is not InvalidBuffer, we hold a pin on that buffer */
 	ItemPointerData rs_mctid;	/* marked scan position, if any */
 
-	/* these fields only used in page-at-a-time mode */
+	/* these fields only used in page-at-a-time mode and for bitmap scans */
 	int			rs_cindex;		/* current tuple's index in vistuples */
 	int			rs_mindex;		/* marked tuple's saved index */
 	int			rs_ntuples;		/* number of visible tuples on page */

@@ -518,12 +518,6 @@ extern void pgstat_initstats(Relation rel);
 		if (pgstat_collect_tuplelevel && (rel)->pgstat_info != NULL)	\
 			(rel)->pgstat_info->t_counts.t_numscans++;					\
 	} while (0)
-/* kluge for bitmap scans: */
-#define pgstat_discount_heap_scan(rel)									\
-	do {																\
-		if (pgstat_collect_tuplelevel && (rel)->pgstat_info != NULL)	\
-			(rel)->pgstat_info->t_counts.t_numscans--;					\
-	} while (0)
 #define pgstat_count_heap_getnext(rel)									\
 	do {																\
 		if (pgstat_collect_tuplelevel && (rel)->pgstat_info != NULL)	\
