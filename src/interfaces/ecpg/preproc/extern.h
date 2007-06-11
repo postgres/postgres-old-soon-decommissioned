@@ -37,6 +37,7 @@ extern int	yylineno,
 			yyleng;
 extern FILE *yyin,
 		   *yyout;
+extern char *output_filename;
 
 extern struct _include_path *include_paths;
 extern struct cursor *cur;
@@ -93,7 +94,7 @@ extern ScanKeyword *ScanKeywordLookup(char *text);
 extern void scanner_init(const char *);
 extern void parser_init(void);
 extern void scanner_finish(void);
-int filtered_base_yylex(void);
+extern int filtered_base_yylex(void);
 
 /* return codes */
 

@@ -99,6 +99,10 @@ mmerror(int error_code, enum errortype type, char * error, ...)
 			ret_value = error_code;
 			break;
 		case ET_FATAL:
+			fclose(yyin);
+			fclose(yyout);
+			if (unlink(output_filename) != 0)
+				fprintf(stderr, "Could not remove ourput file %s!\n", output_filename);
 			exit(error_code);
 	}
 }

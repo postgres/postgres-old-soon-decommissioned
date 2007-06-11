@@ -547,7 +547,7 @@ ECPGset_desc(int lineno, const char *desc_name, int index,...)
 						ECPGfree(var);
 						return false;
 					}
-
+					ECPGfree(desc_item->data); /* free() takes care of a potential NULL value */
 					desc_item->data = (char *) tobeinserted;
 					tobeinserted = NULL;
 					break;
@@ -607,6 +607,18 @@ ECPGdeallocate_desc(int line, const char *name)
 	{
 		if (!strcmp(name, i->name))
 		{
+			struct descriptor_item *desc_item;
+
+			for (desc_item = i->items; desc_item;)
+			{
+				struct descriptor_item *di;
+
+				ECPGfree(desc_item->data);
+				di = desc_item;
+				desc_item = desc_item->next;
+				ECPGfree(di);
+			}
+
 			*lastptr = i->next;
 			ECPGfree(i->name);
 			PQclear(i->result);

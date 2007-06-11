@@ -48,7 +48,7 @@ quote_postgres(char *arg, bool quote, int lineno)
 	 * will be quoted once they are inserted in a statement
 	 */
 	if (!quote)
-		return res = ECPGstrdup(arg, lineno);
+		return arg;
 	else
 	{
 		length = strlen(arg);
