@@ -915,6 +915,21 @@ typedef struct SetToDefault
 	int32		typeMod;		/* typemod for substituted value */
 } SetToDefault;
 
+/*
+ * Node representing [WHERE] CURRENT OF cursor_name
+ *
+ * CURRENT OF is a bit like a Var, in that it carries the rangetable index
+ * of the target relation being constrained; this aids placing the expression
+ * correctly during planning.  We can assume however that its "levelsup" is
+ * always zero, due to the syntactic constraints on where it can appear.
+ */
+typedef struct CurrentOfExpr
+{
+	Expr		xpr;
+	Index		cvarno;			/* RT index of target relation */
+	char	   *cursor_name;	/* name of referenced cursor */
+} CurrentOfExpr;
+
 /*--------------------
  * TargetEntry -
  *	   a target entry (used in query target lists)

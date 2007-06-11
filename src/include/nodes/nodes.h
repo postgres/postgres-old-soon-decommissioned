@@ -139,6 +139,7 @@ typedef enum NodeTag
 	T_CoerceToDomain,
 	T_CoerceToDomainValue,
 	T_SetToDefault,
+	T_CurrentOfExpr,
 	T_TargetEntry,
 	T_RangeTblRef,
 	T_JoinExpr,

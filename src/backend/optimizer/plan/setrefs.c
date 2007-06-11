@@ -618,6 +618,15 @@ fix_scan_expr_mutator(Node *node, fix_scan_expr_context *context)
 			var->varnoold += context->rtoffset;
 		return (Node *) var;
 	}
+	if (IsA(node, CurrentOfExpr))
+	{
+		CurrentOfExpr *cexpr = (CurrentOfExpr *) copyObject(node);
+
+		Assert(cexpr->cvarno != INNER);
+		Assert(cexpr->cvarno != OUTER);
+		cexpr->cvarno += context->rtoffset;
+		return (Node *) cexpr;
+	}
 	/*
 	 * Since we update opcode info in-place, this part could possibly
 	 * scribble on the planner's input data structures, but it's OK.

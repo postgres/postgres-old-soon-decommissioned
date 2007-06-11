@@ -71,6 +71,12 @@ extern bool ExecSupportsBackwardScan(Plan *node);
 extern bool ExecMayReturnRawTuples(PlanState *node);
 
 /*
+ * prototypes from functions in execCurrent.c
+ */
+extern bool execCurrentOf(char *cursor_name, Oid table_oid,
+						  ItemPointer current_tid);
+
+/*
  * prototypes from functions in execGrouping.c
  */
 extern bool execTuplesMatch(TupleTableSlot *slot1,
@@ -135,6 +141,7 @@ extern void ExecConstraints(ResultRelInfo *resultRelInfo,
 				TupleTableSlot *slot, EState *estate);
 extern TupleTableSlot *EvalPlanQual(EState *estate, Index rti,
 			 ItemPointer tid, TransactionId priorXmax, CommandId curCid);
+extern PlanState *ExecGetActivePlanTree(QueryDesc *queryDesc);
 extern DestReceiver *CreateIntoRelDestReceiver(void);
 
 /*

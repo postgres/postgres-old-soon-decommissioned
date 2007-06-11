@@ -2368,6 +2368,24 @@ EvalPlanQualStop(evalPlanQual *epq)
 	epq->planstate = NULL;
 }
 
+/*
+ * ExecGetActivePlanTree --- get the active PlanState tree from a QueryDesc
+ *
+ * Ordinarily this is just the one mentioned in the QueryDesc, but if we
+ * are looking at a row returned by the EvalPlanQual machinery, we need
+ * to look at the subsidiary state instead.
+ */
+PlanState *
+ExecGetActivePlanTree(QueryDesc *queryDesc)
+{
+	EState	   *estate = queryDesc->estate;
+
+	if (estate && estate->es_useEvalPlan && estate->es_evalPlanQual != NULL)
+		return estate->es_evalPlanQual->planstate;
+	else
+		return queryDesc->planstate;
+}
+
 
 /*
  * Support for SELECT INTO (a/k/a CREATE TABLE AS)

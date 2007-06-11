@@ -874,6 +874,20 @@ _readSetToDefault(void)
 }
 
 /*
+ * _readCurrentOfExpr
+ */
+static CurrentOfExpr *
+_readCurrentOfExpr(void)
+{
+	READ_LOCALS(CurrentOfExpr);
+
+	READ_UINT_FIELD(cvarno);
+	READ_STRING_FIELD(cursor_name);
+
+	READ_DONE();
+}
+
+/*
  * _readTargetEntry
  */
 static TargetEntry *
@@ -1093,6 +1107,8 @@ parseNodeString(void)
 		return_value = _readCoerceToDomainValue();
 	else if (MATCH("SETTODEFAULT", 12))
 		return_value = _readSetToDefault();
+	else if (MATCH("CURRENTOFEXPR", 13))
+		return_value = _readCurrentOfExpr();
 	else if (MATCH("TARGETENTRY", 11))
 		return_value = _readTargetEntry();
 	else if (MATCH("RANGETBLREF", 11))

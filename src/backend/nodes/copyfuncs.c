@@ -1300,6 +1300,20 @@ _copySetToDefault(SetToDefault *from)
 }
 
 /*
+ * _copyCurrentOfExpr
+ */
+static CurrentOfExpr *
+_copyCurrentOfExpr(CurrentOfExpr *from)
+{
+	CurrentOfExpr *newnode = makeNode(CurrentOfExpr);
+
+	COPY_SCALAR_FIELD(cvarno);
+	COPY_STRING_FIELD(cursor_name);
+
+	return newnode;
+}
+
+/*
  * _copyTargetEntry
  */
 static TargetEntry *
@@ -3176,6 +3190,9 @@ copyObject(void *from)
 			break;
 		case T_SetToDefault:
 			retval = _copySetToDefault(from);
+			break;
+		case T_CurrentOfExpr:
+			retval = _copyCurrentOfExpr(from);
 			break;
 		case T_TargetEntry:
 			retval = _copyTargetEntry(from);

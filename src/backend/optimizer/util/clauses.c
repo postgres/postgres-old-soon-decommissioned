@@ -3407,6 +3407,7 @@ expression_tree_walker(Node *node,
 		case T_CoerceToDomainValue:
 		case T_CaseTestExpr:
 		case T_SetToDefault:
+		case T_CurrentOfExpr:
 		case T_RangeTblRef:
 		case T_OuterJoinInfo:
 			/* primitive node types with no expression subnodes */
@@ -3873,6 +3874,7 @@ expression_tree_mutator(Node *node,
 		case T_CoerceToDomainValue:
 		case T_CaseTestExpr:
 		case T_SetToDefault:
+		case T_CurrentOfExpr:
 		case T_RangeTblRef:
 		case T_OuterJoinInfo:
 			return (Node *) copyObject(node);

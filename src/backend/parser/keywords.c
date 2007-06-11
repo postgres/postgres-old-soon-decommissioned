@@ -101,6 +101,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"createuser", CREATEUSER},
 	{"cross", CROSS},
 	{"csv", CSV},
+	{"current", CURRENT_P},
 	{"current_date", CURRENT_DATE},
 	{"current_role", CURRENT_ROLE},
 	{"current_time", CURRENT_TIME},

@@ -18,6 +18,7 @@
 #include "nodes/makefuncs.h"
 #include "optimizer/clauses.h"
 #include "optimizer/cost.h"
+#include "optimizer/pathnode.h"
 #include "optimizer/plancat.h"
 #include "parser/parsetree.h"
 #include "utils/fmgroids.h"
@@ -711,6 +712,15 @@ clause_selectivity(PlannerInfo *root,
 						 (Node *) ((BooleanTest *) clause)->arg,
 						 varRelid,
 						 jointype);
+	}
+	else if (IsA(clause, CurrentOfExpr))
+	{
+		/* CURRENT OF selects at most one row of its table */
+		CurrentOfExpr *cexpr = (CurrentOfExpr *) clause;
+		RelOptInfo *crel = find_base_rel(root, cexpr->cvarno);
+
+		if (crel->tuples > 0)
+			s1 = 1.0 / crel->tuples;
 	}
 	else if (IsA(clause, RelabelType))
 	{

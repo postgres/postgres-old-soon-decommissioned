@@ -1059,6 +1059,15 @@ _outSetToDefault(StringInfo str, SetToDefault *node)
 }
 
 static void
+_outCurrentOfExpr(StringInfo str, CurrentOfExpr *node)
+{
+	WRITE_NODE_TYPE("CURRENTOFEXPR");
+
+	WRITE_UINT_FIELD(cvarno);
+	WRITE_STRING_FIELD(cursor_name);
+}
+
+static void
 _outTargetEntry(StringInfo str, TargetEntry *node)
 {
 	WRITE_NODE_TYPE("TARGETENTRY");
@@ -2228,6 +2237,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_SetToDefault:
 				_outSetToDefault(str, obj);
+				break;
+			case T_CurrentOfExpr:
+				_outCurrentOfExpr(str, obj);
 				break;
 			case T_TargetEntry:
 				_outTargetEntry(str, obj);

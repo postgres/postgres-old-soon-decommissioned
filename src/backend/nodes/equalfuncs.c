@@ -599,6 +599,15 @@ _equalSetToDefault(SetToDefault *a, SetToDefault *b)
 }
 
 static bool
+_equalCurrentOfExpr(CurrentOfExpr *a, CurrentOfExpr *b)
+{
+	COMPARE_SCALAR_FIELD(cvarno);
+	COMPARE_STRING_FIELD(cursor_name);
+
+	return true;
+}
+
+static bool
 _equalTargetEntry(TargetEntry *a, TargetEntry *b)
 {
 	COMPARE_NODE_FIELD(expr);
@@ -2123,6 +2132,9 @@ equal(void *a, void *b)
 			break;
 		case T_SetToDefault:
 			retval = _equalSetToDefault(a, b);
+			break;
+		case T_CurrentOfExpr:
+			retval = _equalCurrentOfExpr(a, b);
 			break;
 		case T_TargetEntry:
 			retval = _equalTargetEntry(a, b);
