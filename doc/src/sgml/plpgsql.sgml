@@ -2619,6 +2619,31 @@ MOVE RELATIVE -2 FROM curs4;
      </sect3>
 
     <sect3>
+     <title><literal>UPDATE/DELETE WHERE CURRENT OF</></title>
+
+<synopsis>
+UPDATE <replaceable>table</replaceable> SET ... WHERE CURRENT OF <replaceable>cursor</replaceable>;
+DELETE FROM <replaceable>table</replaceable> WHERE CURRENT OF <replaceable>cursor</replaceable>;
+</synopsis>
+
+       <para>
+        When a cursor is positioned on a table row, that row can be updated
+        or deleted using the cursor to identify the row.  Note that this
+        only works for simple (non-join, non-grouping) cursor queries.
+        For additional information see the
+        <xref linkend="sql-declare" endterm="sql-declare-title">
+        reference page.
+       </para>
+
+       <para>
+        An example:
+<programlisting>
+UPDATE foo SET dataval = myval WHERE CURRENT OF curs1;
+</programlisting>
+       </para>
+     </sect3>
+
+    <sect3>
      <title><literal>CLOSE</></title>
 
 <synopsis>

@@ -1065,6 +1065,7 @@ _outCurrentOfExpr(StringInfo str, CurrentOfExpr *node)
 
 	WRITE_UINT_FIELD(cvarno);
 	WRITE_STRING_FIELD(cursor_name);
+	WRITE_INT_FIELD(cursor_param);
 }
 
 static void

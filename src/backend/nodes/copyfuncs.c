@@ -1309,6 +1309,7 @@ _copyCurrentOfExpr(CurrentOfExpr *from)
 
 	COPY_SCALAR_FIELD(cvarno);
 	COPY_STRING_FIELD(cursor_name);
+	COPY_SCALAR_FIELD(cursor_param);
 
 	return newnode;
 }

@@ -153,7 +153,7 @@ TidListCreate(TidScanState *tidstate)
 			CurrentOfExpr *cexpr = (CurrentOfExpr *) expr;
 			ItemPointerData cursor_tid;
 
-			if (execCurrentOf(cexpr->cursor_name,
+			if (execCurrentOf(cexpr, econtext,
 						  RelationGetRelid(tidstate->ss.ss_currentRelation),
 							  &cursor_tid))
 			{

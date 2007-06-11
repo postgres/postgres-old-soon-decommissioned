@@ -4136,8 +4136,16 @@ get_rule_expr(Node *node, deparse_context *context,
 			break;
 
 		case T_CurrentOfExpr:
-			appendStringInfo(buf, "CURRENT OF %s",
-					quote_identifier(((CurrentOfExpr *) node)->cursor_name));
+			{
+				CurrentOfExpr *cexpr = (CurrentOfExpr *) node;
+
+				if (cexpr->cursor_name)
+					appendStringInfo(buf, "CURRENT OF %s",
+									 quote_identifier(cexpr->cursor_name));
+				else
+					appendStringInfo(buf, "CURRENT OF $%d",
+									 cexpr->cursor_param);
+			}
 			break;
 
 		case T_List:
