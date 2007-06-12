@@ -33,7 +33,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"connect", SQL_CONNECT},
 	{"continue", SQL_CONTINUE},
 	{"count", SQL_COUNT},
-	{"current", SQL_CURRENT},
 	{"data", SQL_DATA},
 	{"datetime_interval_code", SQL_DATETIME_INTERVAL_CODE},
 	{"datetime_interval_precision", SQL_DATETIME_INTERVAL_PRECISION},
