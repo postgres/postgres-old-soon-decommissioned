@@ -1554,9 +1554,9 @@ static void
 run_single_test(const char *test, test_function tfunc)
 {
 	PID_TYPE	pid;
-	_stringlist *resultfiles;
-	_stringlist *expectfiles;
-	_stringlist *tags;
+	_stringlist *resultfiles = NULL;
+	_stringlist *expectfiles = NULL;
+	_stringlist *tags = NULL;
 	_stringlist *rl, *el, *tl;
 	bool		differ = false;
 
