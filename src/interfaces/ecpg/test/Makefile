@@ -32,7 +32,7 @@ EXTRADEFS = '-DHOST_TUPLE="$(host_tuple)"' \
 	'-DSHELLPROG="$(SHELL)"' \
 	'-DDLSUFFIX="$(DLSUFFIX)"'
 
-REGRESSINCLUDES = "-I$(top_builddir)/src/test/regress"
+REGRESSINCLUDES = "-I$(top_srcdir)/src/test/regress"
 REGRESSDRIVER = "$(top_builddir)/src/test/regress/pg_regress.o"
 
 all install installdirs uninstall distprep:
@@ -61,7 +61,7 @@ clean distclean maintainer-clean:
 all: pg_regress$(X)
 
 pg_regress$(X): pg_regress_ecpg.o
-	$(CC) $(CFLAGS) $^ $(REGRESSDRIVER) $(LDFLAGS) $(LIBS) -o $@
+	$(CC) $(CFLAGS) $^ $(REGRESSDRIVER) $(REGRESSINCLUDES) $(LDFLAGS) $(LIBS) -o $@
 
 # dependencies ensure that path changes propagate
 pg_regress_ecpg.o: pg_regress_ecpg.c $(top_builddir)/src/port/pg_config_paths.h
