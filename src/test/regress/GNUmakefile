@@ -51,7 +51,7 @@ EXTRADEFS = '-DHOST_TUPLE="$(host_tuple)"' \
 
 all: submake-libpgport pg_regress$(X)
 
-pg_regress$(X): pg_regress.o
+pg_regress$(X): pg_regress.o pg_regress_main.o
 	$(CC) $(CFLAGS) $^ $(LDFLAGS) $(LIBS) -o $@
 
 # dependencies ensure that path changes propagate
@@ -165,7 +165,7 @@ clean distclean maintainer-clean: clean-lib
 # things built by `all' target
 	rm -f $(NAME)$(DLSUFFIX) $(OBJS)
 	$(MAKE) -C $(contribdir)/spi clean
-	rm -f $(output_files) $(input_files) pg_regress.o pg_regress$(X)
+	rm -f $(output_files) $(input_files) pg_regress_main.o pg_regress.o pg_regress$(X)
 # things created by various check targets
 	rm -rf testtablespace
 	rm -rf results tmp_check log

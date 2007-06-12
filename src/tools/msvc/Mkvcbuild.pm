@@ -154,6 +154,15 @@ sub mkvcbuild
     $ecpg->AddDefine('PATCHLEVEL=1');
     $ecpg->AddReference($libpgport);
 
+    my $pgregress_ecpg = $solution->AddProject('pg_regress_ecpg','exe','misc');
+    $pgregress_ecpg->AddFile('src\interfaces\ecpg\test\pg_regress_ecpg.c');
+    $pgregress_ecpg->AddFile('src\test\regress\pg_regress.c');
+    $pgregress_ecpg->AddIncludeDir('src\port');
+    $pgregress_ecpg->AddIncludeDir('src\test\regress');
+    $pgregress_ecpg->AddDefine('HOST_TUPLE="i686-pc-win32vc"');
+    $pgregress_ecpg->AddDefine('FRONTEND');
+    $pgregress_ecpg->AddReference($libpgport);
+
     # src/bin
     my $initdb = AddSimpleFrontend('initdb', 1);
     $initdb->AddLibrary('wsock32.lib ws2_32.lib');
@@ -315,6 +324,7 @@ sub mkvcbuild
 
     my $pgregress = $solution->AddProject('pg_regress','exe','misc');
     $pgregress->AddFile('src\test\regress\pg_regress.c');
+    $pgregress->AddFile('src\test\regress\pg_regress_main.c');
     $pgregress->AddIncludeDir('src\port');
     $pgregress->AddDefine('HOST_TUPLE="i686-pc-win32vc"');
     $pgregress->AddDefine('FRONTEND');
