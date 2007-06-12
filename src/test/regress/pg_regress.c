@@ -1794,6 +1794,10 @@ regression_main(int argc, char *argv[], init_function ifunc, test_function tfunc
 				printf("pg_regress (PostgreSQL %s)\n", PG_VERSION);
 				exit_nicely(0);
 			case 1:
+				/* If a default database was specified, we need to remove it before we add
+				 * the specified one.
+				 */
+				free_stringlist(&dblist);
 				split_to_stringlist(strdup(optarg), ", ", &dblist);
 				break;
 			case 2:
