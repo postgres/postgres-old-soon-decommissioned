@@ -159,11 +159,11 @@ static void
 ecpg_init(void)
 {
 	/* no reason to set -w for ecpg checks, except for when on windows */
-	if (strstr(host_platform, "-win32"))
+	if (strstr(host_platform, "-win32") || strstr(host_platform, "-mingw32"))
 		basic_diff_opts = "-w";
 	else 
 		basic_diff_opts = "";
-	if (strstr(host_platform, "-win32"))
+	if (strstr(host_platform, "-win32") || strstr(host_platform, "-mingw32"))
 		pretty_diff_opts = "-C3 -w";
 	else 
 		pretty_diff_opts = "-C3";
