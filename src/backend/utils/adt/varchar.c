@@ -31,7 +31,7 @@ anychar_typmodin(ArrayType *ta, const char *typename)
 	int32	*tl;
 	int		n;
 
-	tl = ArrayGetTypmods(ta, &n);
+	tl = ArrayGetIntegerTypmods(ta, &n);
 
 	/*
 	 * we're not too tense about good error message here because grammar

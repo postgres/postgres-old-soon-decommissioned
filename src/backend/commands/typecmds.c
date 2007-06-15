@@ -1270,9 +1270,9 @@ findTypeTypmodinFunction(List *procname)
 	Oid			procOid;
 
 	/*
-	 * typmodin functions always take one int4[] argument and return int4.
+	 * typmodin functions always take one cstring[] argument and return int4.
 	 */
-	argList[0] = INT4ARRAYOID;
+	argList[0] = CSTRINGARRAYOID;
 
 	procOid = LookupFuncName(procname, 1, argList, true);
 	if (!OidIsValid(procOid))

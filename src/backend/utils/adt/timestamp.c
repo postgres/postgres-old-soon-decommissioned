@@ -64,7 +64,7 @@ anytimestamp_typmodin(bool istz, ArrayType *ta)
 	int32    *tl;
 	int		n;
 
-	tl = ArrayGetTypmods(ta, &n);
+	tl = ArrayGetIntegerTypmods(ta, &n);
 
 	/*
 	 * we're not too tense about good error message here because grammar
@@ -719,7 +719,7 @@ intervaltypmodin(PG_FUNCTION_ARGS)
     int    		n;
 	int32		typmod;
 
-	tl = ArrayGetTypmods(ta, &n);
+	tl = ArrayGetIntegerTypmods(ta, &n);
 
 	/*
 	 * tl[0] - opt_interval

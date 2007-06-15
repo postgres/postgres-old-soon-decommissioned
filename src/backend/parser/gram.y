@@ -6695,7 +6695,7 @@ ConstTypename:
  * by the standard, including qualified names.  We also allow type modifiers.
  * To avoid parsing conflicts against function invocations, the modifiers
  * have to be shown as expr_list here, but parse analysis will only accept
- * integer constants for them.
+ * constants for them.
  */
 GenericType:
 			type_function_name opt_type_modifiers

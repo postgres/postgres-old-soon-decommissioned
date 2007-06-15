@@ -547,7 +547,7 @@ numerictypmodin(PG_FUNCTION_ARGS)
 	int			n;
 	int32		typmod;
 
-	tl = ArrayGetTypmods(ta, &n);
+	tl = ArrayGetIntegerTypmods(ta, &n);
 
 	if (n == 2)
 	{
