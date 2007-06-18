@@ -5175,15 +5175,16 @@ quote_identifier(const char *ident)
 	if (safe)
 	{
 		/*
-		 * Check for keyword.  This test is overly strong, since many of the
-		 * "keywords" known to the parser are usable as column names, but the
-		 * parser doesn't provide any easy way to test for whether an
-		 * identifier is safe or not... so be safe not sorry.
+		 * Check for keyword.  We quote keywords except for unreserved ones.
+		 * (In some cases we could avoid quoting a col_name or type_func_name
+		 * keyword, but it seems much harder than it's worth to tell that.)
 		 *
 		 * Note: ScanKeywordLookup() does case-insensitive comparison, but
 		 * that's fine, since we already know we have all-lower-case.
 		 */
-		if (ScanKeywordLookup(ident) != NULL)
+		const ScanKeyword *keyword = ScanKeywordLookup(ident);
+
+		if (keyword != NULL && keyword->category != UNRESERVED_KEYWORD)
 			safe = false;
 	}
 
