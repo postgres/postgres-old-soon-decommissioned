@@ -635,3 +635,79 @@ LockTagIsTemp(const LOCKTAG *tag)
 	}
 	return false;				/* default case */
 }
+
+
+/*
+ * Append a description of a lockable object to buf.
+ *
+ * Ideally we would print names for the numeric values, but that requires
+ * getting locks on system tables, which might cause problems since this is
+ * typically used to report deadlock situations.
+ */
+void
+DescribeLockTag(StringInfo buf, const LOCKTAG *tag)
+{
+	switch (tag->locktag_type)
+	{
+		case LOCKTAG_RELATION:
+			appendStringInfo(buf,
+							 _("relation %u of database %u"),
+							 tag->locktag_field2,
+							 tag->locktag_field1);
+			break;
+		case LOCKTAG_RELATION_EXTEND:
+			appendStringInfo(buf,
+							 _("extension of relation %u of database %u"),
+							 tag->locktag_field2,
+							 tag->locktag_field1);
+			break;
+		case LOCKTAG_PAGE:
+			appendStringInfo(buf,
+							 _("page %u of relation %u of database %u"),
+							 tag->locktag_field3,
+							 tag->locktag_field2,
+							 tag->locktag_field1);
+			break;
+		case LOCKTAG_TUPLE:
+			appendStringInfo(buf,
+							 _("tuple (%u,%u) of relation %u of database %u"),
+							 tag->locktag_field3,
+							 tag->locktag_field4,
+							 tag->locktag_field2,
+							 tag->locktag_field1);
+			break;
+		case LOCKTAG_TRANSACTION:
+			appendStringInfo(buf,
+							 _("transaction %u"),
+							 tag->locktag_field1);
+			break;
+		case LOCKTAG_OBJECT:
+			appendStringInfo(buf,
+							 _("object %u of class %u of database %u"),
+							 tag->locktag_field3,
+							 tag->locktag_field2,
+							 tag->locktag_field1);
+			break;
+		case LOCKTAG_USERLOCK:
+			/* reserved for old contrib code, now on pgfoundry */
+			appendStringInfo(buf,
+							 _("user lock [%u,%u,%u]"),
+							 tag->locktag_field1,
+							 tag->locktag_field2,
+							 tag->locktag_field3);
+			break;
+		case LOCKTAG_ADVISORY:
+			appendStringInfo(buf,
+							 _("advisory lock [%u,%u,%u,%u]"),
+							 tag->locktag_field1,
+							 tag->locktag_field2,
+							 tag->locktag_field3,
+							 tag->locktag_field4);
+			break;
+		default:
+			appendStringInfo(buf,
+							 _("unrecognized locktag type %d"),
+							 tag->locktag_type);
+			break;
+	}
+}

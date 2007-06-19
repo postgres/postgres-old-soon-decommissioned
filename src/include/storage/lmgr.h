@@ -14,6 +14,7 @@
 #ifndef LMGR_H
 #define LMGR_H
 
+#include "lib/stringinfo.h"
 #include "storage/lock.h"
 #include "utils/rel.h"
 
@@ -68,5 +69,8 @@ extern void UnlockSharedObject(Oid classid, Oid objid, uint16 objsubid,
 
 /* Knowledge about which locktags describe temp objects */
 extern bool LockTagIsTemp(const LOCKTAG *tag);
+
+/* Describe a locktag for error messages */
+extern void DescribeLockTag(StringInfo buf, const LOCKTAG *tag);
 
 #endif   /* LMGR_H */
