@@ -887,7 +887,7 @@ ProcSleep(LOCALLOCK *locallock, LockMethod lockMethodTable)
 			switch (deadlock_state)
 			{
 				case DS_NOT_YET_CHECKED:
-					/* Spurious wakeup as described above */
+					/* Lock granted, or spurious wakeup as described above */
 					break; 
 				case DS_NO_DEADLOCK:
 				case DS_SOFT_DEADLOCK:
@@ -918,16 +918,17 @@ ProcSleep(LOCALLOCK *locallock, LockMethod lockMethodTable)
 								(errmsg("process %d still waiting for %s on %s after %ld.%03d ms",
 										MyProcPid, modename, buf.data,
 										msecs, usecs)));
-					else
+					else if (MyProc->waitStatus == STATUS_OK)
 						ereport(LOG,
 								(errmsg("process %d acquired %s on %s after %ld.%03d ms",
 										MyProcPid, modename, buf.data,
 										msecs, usecs)));
+					/* ERROR will be reported later, so no message here */
 					pfree(buf.data);
 					break;
 				}
 				case DS_HARD_DEADLOCK:
-					/* ERROR will be reported below, so no message here */
+					/* ERROR will be reported later, so no message here */
 					break; 
 			}
 		}
