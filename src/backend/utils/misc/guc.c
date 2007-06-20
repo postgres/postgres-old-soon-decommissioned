@@ -1173,7 +1173,7 @@ static struct config_int ConfigureNamesInt[] =
 			GUC_UNIT_MS
 		},
 		&DeadlockTimeout,
-		1000, 0, INT_MAX, NULL, NULL
+		1000, 1, INT_MAX/1000, NULL, NULL
 	},
 
 	/*
