@@ -1223,12 +1223,9 @@ DoCopyTo(CopyState cstate)
 
 		fstat(fileno(cstate->copy_file), &st);
 		if (S_ISDIR(st.st_mode))
-		{
-			FreeFile(cstate->copy_file);
 			ereport(ERROR,
 					(errcode(ERRCODE_WRONG_OBJECT_TYPE),
 					 errmsg("\"%s\" is a directory", cstate->filename)));
-		}
 	}
 
 	PG_TRY();
@@ -1728,12 +1725,9 @@ CopyFrom(CopyState cstate)
 
 		fstat(fileno(cstate->copy_file), &st);
 		if (S_ISDIR(st.st_mode))
-		{
-			FreeFile(cstate->copy_file);
 			ereport(ERROR,
 					(errcode(ERRCODE_WRONG_OBJECT_TYPE),
 					 errmsg("\"%s\" is a directory", cstate->filename)));
-		}
 	}
 
 	tupDesc = RelationGetDescr(cstate->rel);
