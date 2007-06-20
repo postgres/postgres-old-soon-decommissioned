@@ -497,9 +497,9 @@ DefineDomain(CreateDomainStmt *stmt)
 	char		typtype;
 	Datum		datum;
 	bool		isnull;
-	Node	   *defaultExpr = NULL;
 	char	   *defaultValue = NULL;
 	char	   *defaultValueBin = NULL;
+	bool		saw_default = false;
 	bool		typNotNull = false;
 	bool		nullDefined = false;
 	Oid			basetypelem;
@@ -608,7 +608,6 @@ DefineDomain(CreateDomainStmt *stmt)
 	{
 		Node	   *newConstraint = lfirst(listptr);
 		Constraint *constr;
-		ParseState *pstate;
 
 		/* Check for unsupported constraint types */
 		if (IsA(newConstraint, FkConstraint))
@@ -629,35 +628,49 @@ DefineDomain(CreateDomainStmt *stmt)
 
 				/*
 				 * The inherited default value may be overridden by the
-				 * user with the DEFAULT <expr> statement.
+				 * with the DEFAULT <expr> clause ... but only once.
 				 */
-				if (defaultExpr)
+				if (saw_default)
 					ereport(ERROR,
 							(errcode(ERRCODE_SYNTAX_ERROR),
 							 errmsg("multiple default expressions")));
+				saw_default = true;
 
-				/* Create a dummy ParseState for transformExpr */
-				pstate = make_parsestate(NULL);
+				if (constr->raw_expr)
+				{
+					ParseState *pstate;
+					Node	   *defaultExpr;
 
-				/*
-				 * Cook the constr->raw_expr into an expression. Note:
-				 * Name is strictly for error message
-				 */
-				defaultExpr = cookDefault(pstate, constr->raw_expr,
-										  basetypeoid,
-										  stmt->typename->typmod,
-										  domainName);
+					/* Create a dummy ParseState for transformExpr */
+					pstate = make_parsestate(NULL);
 
-				/*
-				 * Expression must be stored as a nodeToString result, but
-				 * we also require a valid textual representation (mainly
-				 * to make life easier for pg_dump).
-				 */
-				defaultValue = deparse_expression(defaultExpr,
-										  deparse_context_for(domainName,
-															  InvalidOid),
-												  false, false);
-				defaultValueBin = nodeToString(defaultExpr);
+					/*
+					 * Cook the constr->raw_expr into an expression.
+					 * Note: name is strictly for error message
+					 */
+					defaultExpr = cookDefault(pstate, constr->raw_expr,
+											  basetypeoid,
+											  stmt->typename->typmod,
+											  domainName);
+
+					/*
+					 * Expression must be stored as a nodeToString result, but
+					 * we also require a valid textual representation (mainly
+					 * to make life easier for pg_dump).
+					 */
+					defaultValue =
+						deparse_expression(defaultExpr,
+										   deparse_context_for(domainName,
+															   InvalidOid),
+										   false, false);
+					defaultValueBin = nodeToString(defaultExpr);
+				}
+				else
+				{
+					/* DEFAULT NULL is same as not having a default */
+					defaultValue = NULL;
+					defaultValueBin = NULL;
+				}
 				break;
 
 			case CONSTR_NOTNULL:
@@ -1929,6 +1942,9 @@ domainAddConstraint(Oid domainOid, Oid domainNamespace, Oid baseTypeOid,
  * This is called by the executor during plan startup for a CoerceToDomain
  * expression node.  The given constraints will be checked for each value
  * passed through the node.
+ *
+ * We allow this to be called for non-domain types, in which case the result
+ * is always NIL.
  */
 List *
 GetDomainConstraints(Oid typeOid)
@@ -1953,6 +1969,13 @@ GetDomainConstraints(Oid typeOid)
 		if (!HeapTupleIsValid(tup))
 			elog(ERROR, "cache lookup failed for type %u", typeOid);
 		typTup = (Form_pg_type) GETSTRUCT(tup);
+
+		if (typTup->typtype != 'd')
+		{
+			/* Not a domain, so done */
+			ReleaseSysCache(tup);
+			break;
+		}
 
 		/* Test for NOT NULL Constraint */
 		if (typTup->typnotnull)
@@ -2010,14 +2033,7 @@ GetDomainConstraints(Oid typeOid)
 
 		systable_endscan(scan);
 
-		if (typTup->typtype != 'd')
-		{
-			/* Not a domain, so done */
-			ReleaseSysCache(tup);
-			break;
-		}
-
-		/* else loop to next domain in stack */
+		/* loop to next domain in stack */
 		typeOid = typTup->typbasetype;
 		ReleaseSysCache(tup);
 	}
