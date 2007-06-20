@@ -1037,7 +1037,7 @@
   <table>
    <title><structname>pg_authid</> Columns</title>
 
-   <tgroup cols=4>
+   <tgroup cols=3>
     <thead>
      <row>
       <entry>Name</entry>
@@ -2816,7 +2816,7 @@
   <table>
    <title><structname>pg_largeobject</> Columns</title>
 
-   <tgroup cols=4>
+   <tgroup cols=3>
     <thead>
      <row>
       <entry>Name</entry>
@@ -4928,7 +4928,7 @@
   <table>
    <title><structname>pg_cursors</> Columns</title>
 
-   <tgroup cols=4>
+   <tgroup cols=3>
     <thead>
      <row>
       <entry>Name</entry>
@@ -5385,7 +5385,7 @@
   <table>
    <title><structname>pg_prepared_statements</> Columns</title>
 
-   <tgroup cols=4>
+   <tgroup cols=3>
     <thead>
      <row>
       <entry>Name</entry>
@@ -5751,7 +5751,7 @@
   <table>
    <title><structname>pg_settings</> Columns</title>
 
-   <tgroup cols=4>
+   <tgroup cols=3>
     <thead>
      <row>
       <entry>Name</entry>
@@ -6286,7 +6286,7 @@
   <table>
    <title><structname>pg_user</> Columns</title>
 
-   <tgroup cols=4>
+   <tgroup cols=3>
     <thead>
      <row>
       <entry>Name</entry>
