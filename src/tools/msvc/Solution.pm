@@ -127,6 +127,8 @@ s{PG_VERSION_STR "[^"]+"}{__STRINGIFY(x) #x\n#define __STRINGIFY2(z) __STRINGIFY
         }
 		if (my $port = $self->{options}->{"--with-pgport"})
 		{
+			print O "#undef DEF_PGPORT\n";
+			print O "#undef DEF_PGPORT_STR\n";
 			print O "#define DEF_PGPORT $port\n";
 			print O "#define DEF_PGPORT_STR \"$port\"\n";
 		}
