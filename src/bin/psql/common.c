@@ -1076,6 +1076,12 @@ ExecQueryUsingCursor(const char *query, double *elapsed_msec)
 
 		printQuery(results, &my_popt, pset.queryFout, pset.logfile);
 
+		/*
+		 * Make sure to flush the output stream, so intermediate
+		 * results are visible to the client immediately.
+		 */
+		fflush(pset.queryFout);
+
 		/* after the first result set, disallow header decoration */
 		my_popt.topt.start_table = false;
 		my_popt.topt.prior_records += ntuples;
