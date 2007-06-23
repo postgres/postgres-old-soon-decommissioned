@@ -1120,19 +1120,15 @@ transformCaseExpr(ParseState *pstate, CaseExpr *c)
 static Node *
 transformSubLink(ParseState *pstate, SubLink *sublink)
 {
-	List	   *qtrees;
-	Query	   *qtree;
 	Node	   *result = (Node *) sublink;
+	Query	   *qtree;
 
 	/* If we already transformed this node, do nothing */
 	if (IsA(sublink->subselect, Query))
 		return result;
 
 	pstate->p_hasSubLinks = true;
-	qtrees = parse_sub_analyze(sublink->subselect, pstate);
-	if (list_length(qtrees) != 1)
-		elog(ERROR, "bad query in sub-select");
-	qtree = (Query *) linitial(qtrees);
+	qtree = parse_sub_analyze(sublink->subselect, pstate);
 	if (qtree->commandType != CMD_SELECT ||
 		qtree->utilityStmt != NULL ||
 		qtree->intoClause != NULL)

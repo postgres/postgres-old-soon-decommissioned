@@ -55,7 +55,6 @@ PrepareQuery(PrepareStmt *stmt, const char *queryString)
 {
 	Oid		   *argtypes = NULL;
 	int			nargs;
-	List	   *queries;
 	Query	   *query;
 	List	   *query_list,
 			   *plan_list;
@@ -105,9 +104,9 @@ PrepareQuery(PrepareStmt *stmt, const char *queryString)
 	 * Because parse analysis scribbles on the raw querytree, we must make
 	 * a copy to ensure we have a pristine raw tree to cache.  FIXME someday.
 	 */
-	queries = parse_analyze_varparams((Node *) copyObject(stmt->query),
-									  queryString,
-									  &argtypes, &nargs);
+	query = parse_analyze_varparams((Node *) copyObject(stmt->query),
+									queryString,
+									&argtypes, &nargs);
 
 	/*
 	 * Check that all parameter types were determined.
@@ -124,15 +123,8 @@ PrepareQuery(PrepareStmt *stmt, const char *queryString)
 	}
 
 	/*
-	 * Shouldn't get any extra statements, since grammar only allows
-	 * OptimizableStmt
+	 * grammar only allows OptimizableStmt, so this check should be redundant
 	 */
-	if (list_length(queries) != 1)
-		elog(ERROR, "unexpected extra stuff in prepared statement");
-
-	query = (Query *) linitial(queries);
-	Assert(IsA(query, Query));
-
 	switch (query->commandType)
 	{
 		case CMD_SELECT:

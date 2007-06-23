@@ -20,8 +20,8 @@
 #include "catalog/pg_rewrite.h"
 #include "miscadmin.h"
 #include "optimizer/clauses.h"
-#include "parser/analyze.h"
 #include "parser/parse_expr.h"
+#include "parser/parse_utilcmd.h"
 #include "rewrite/rewriteDefine.h"
 #include "rewrite/rewriteManip.h"
 #include "rewrite/rewriteSupport.h"
@@ -191,7 +191,7 @@ DefineRule(RuleStmt *stmt, const char *queryString)
 	Node	   *whereClause;
 
 	/* Parse analysis ... */
-	analyzeRuleStmt(stmt, queryString, &actions, &whereClause);
+	transformRuleStmt(stmt, queryString, &actions, &whereClause);
 
 	/* ... and execution */
 	DefineQueryRewrite(stmt->rulename,

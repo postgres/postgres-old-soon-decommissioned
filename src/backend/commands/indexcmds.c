@@ -367,7 +367,7 @@ DefineIndex(RangeVar *heapRelation,
 				/*
 				 * This shouldn't happen during CREATE TABLE, but can happen
 				 * during ALTER TABLE.	Keep message in sync with
-				 * transformIndexConstraints() in parser/analyze.c.
+				 * transformIndexConstraints() in parser/parse_utilcmd.c.
 				 */
 				ereport(ERROR,
 						(errcode(ERRCODE_UNDEFINED_COLUMN),

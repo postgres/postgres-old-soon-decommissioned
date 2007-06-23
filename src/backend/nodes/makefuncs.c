@@ -135,6 +135,20 @@ flatCopyTargetEntry(TargetEntry *src_tle)
 }
 
 /*
+ * makeFromExpr -
+ *	  creates a FromExpr node
+ */
+FromExpr *
+makeFromExpr(List *fromlist, Node *quals)
+{
+	FromExpr   *f = makeNode(FromExpr);
+
+	f->fromlist = fromlist;
+	f->quals = quals;
+	return f;
+}
+
+/*
  * makeConst -
  *	  creates a Const node
  */

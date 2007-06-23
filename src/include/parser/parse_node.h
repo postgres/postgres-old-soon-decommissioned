@@ -83,6 +83,7 @@ typedef struct ParseState
 } ParseState;
 
 extern ParseState *make_parsestate(ParseState *parentParseState);
+extern void free_parsestate(ParseState *pstate);
 extern int	parser_errposition(ParseState *pstate, int location);
 
 extern Var *make_var(ParseState *pstate, RangeTblEntry *rte, int attrno);

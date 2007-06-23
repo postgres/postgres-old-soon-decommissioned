@@ -36,6 +36,8 @@ extern TargetEntry *makeTargetEntry(Expr *expr,
 
 extern TargetEntry *flatCopyTargetEntry(TargetEntry *src_tle);
 
+extern FromExpr *makeFromExpr(List *fromlist, Node *quals);
+
 extern Const *makeConst(Oid consttype,
 		  int32 consttypmod,
 		  int constlen,
