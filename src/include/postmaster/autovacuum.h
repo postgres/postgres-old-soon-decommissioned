@@ -42,6 +42,8 @@ extern bool IsAutoVacuumWorkerProcess(void);
 extern void autovac_init(void);
 extern int	StartAutoVacLauncher(void);
 extern int	StartAutoVacWorker(void);
+/* called from postmaster when a worker could not be forked */
+extern void AutoVacWorkerFailed(void);
 
 /* autovacuum cost-delay balancer */
 extern void AutoVacuumUpdateDelay(void);
