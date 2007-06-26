@@ -9,7 +9,8 @@ PG_LIBS = $(libpq_pgport)
 DOCS = README.vacuumlo
 
 ifdef USE_PGXS
-PGXS := $(shell pg_config --pgxs)
+PG_CONFIG = pg_config
+PGXS := $(shell $(PG_CONFIG) --pgxs)
 include $(PGXS)
 else
 subdir = contrib/vacuumlo

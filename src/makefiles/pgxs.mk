@@ -11,7 +11,8 @@
 #   [variable assignments, see below]
 #   [custom rules, rarely necessary]
 #
-#   PGXS := $(shell pg_config --pgxs)
+#   PG_CONFIG = pg_config
+#   PGXS := $(shell $(PG_CONFIG) --pgxs)
 #   include $(PGXS)
 #
 # The following variables can be set:
@@ -38,6 +39,9 @@
 #   PG_CPPFLAGS -- will be added to CPPFLAGS
 #   PG_LIBS -- will be added to PROGRAM link line
 #   SHLIB_LINK -- will be added to MODULE_big link line
+#   PG_CONFIG -- path to pg_config program for the PostgreSQL installation
+#     to build against (typically just "pg_config" to use the first one in
+#     your PATH)
 #
 # Better look at some of the existing uses for examples...
 
