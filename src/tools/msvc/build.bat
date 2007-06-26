@@ -32,4 +32,6 @@ SET E=%ERRORLEVEL%
 
 cd %STARTDIR%
 
+REM exit fix for pre-2003 shell especially if used on buildfarm
+if "%XP_EXIT_FIX%" == "yes" exit %E%
 exit /b %E%
