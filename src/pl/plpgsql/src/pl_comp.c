@@ -1340,8 +1340,7 @@ plpgsql_parse_tripwordtype(char *word)
 	memcpy(cp[1], &word[i + 1], (qualified_att_len - i - 1) * sizeof(char));
 	cp[1][qualified_att_len - i - 1] = '\0';
 
-	relvar = makeRangeVarFromNameList(stringToQualifiedNameList(cp[0],
-											  "plpgsql_parse_tripwordtype"));
+	relvar = makeRangeVarFromNameList(stringToQualifiedNameList(cp[0]));
 	classOid = RangeVarGetRelid(relvar, true);
 	if (!OidIsValid(classOid))
 		goto done;
@@ -1465,7 +1464,7 @@ plpgsql_parse_dblwordrowtype(char *word)
 	word[i] = '%';
 
 	/* Lookup the relation */
-	relvar = makeRangeVarFromNameList(stringToQualifiedNameList(cp, "plpgsql_parse_dblwordrowtype"));
+	relvar = makeRangeVarFromNameList(stringToQualifiedNameList(cp));
 	classOid = RangeVarGetRelid(relvar, true);
 	if (!OidIsValid(classOid))
 		ereport(ERROR,
