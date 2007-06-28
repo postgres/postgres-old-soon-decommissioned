@@ -205,11 +205,16 @@ describeFunctions(const char *pattern, bool verbose)
 
 	if (verbose)
 		appendPQExpBuffer(&buf,
+						  ",\n CASE\n"
+						  "  WHEN p.provolatile = 'i' THEN 'immutable'\n"
+						  "  WHEN p.provolatile = 's' THEN 'stable'\n"
+						  "  WHEN p.provolatile = 'v' THEN 'volatile'\n"
+						  "END as \"%s\""
 						  ",\n  r.rolname as \"%s\",\n"
 						  "  l.lanname as \"%s\",\n"
 						  "  p.prosrc as \"%s\",\n"
 				  "  pg_catalog.obj_description(p.oid, 'pg_proc') as \"%s\"",
-						  _("Owner"), _("Language"),
+						  _("Volatility"), _("Owner"), _("Language"),
 						  _("Source code"), _("Description"));
 
 	if (!verbose)

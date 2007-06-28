@@ -976,7 +976,7 @@ testdb=&gt;
         class="parameter">pattern</replaceable>
         is specified, only functions whose names match the pattern are shown.
         If the form <literal>\df+</literal> is used, additional information about
-        each function, including language and description, is shown.
+        each function, including volatility, language, source code and description, is shown.
         </para>
 
         <note>
