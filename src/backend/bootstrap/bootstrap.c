@@ -489,7 +489,7 @@ BootstrapModeMain(void)
 
 	/* Perform a checkpoint to ensure everything's down to disk */
 	SetProcessingMode(NormalProcessing);
-	CreateCheckPoint(true, true);
+	CreateCheckPoint(CHECKPOINT_IS_SHUTDOWN | CHECKPOINT_IMMEDIATE);
 
 	/* Clean up and exit */
 	cleanup();

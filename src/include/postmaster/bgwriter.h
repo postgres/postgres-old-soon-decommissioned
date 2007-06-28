@@ -20,10 +20,12 @@
 extern int	BgWriterDelay;
 extern int	CheckPointTimeout;
 extern int	CheckPointWarning;
+extern double CheckPointCompletionTarget;
 
 extern void BackgroundWriterMain(void);
 
-extern void RequestCheckpoint(bool waitforit, bool warnontime);
+extern void RequestCheckpoint(int flags);
+extern void CheckpointWriteDelay(int flags, double progress);
 
 extern bool ForwardFsyncRequest(RelFileNode rnode, BlockNumber segno);
 extern void AbsorbFsyncRequests(void);

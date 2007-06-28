@@ -3174,8 +3174,6 @@ pgstat_recv_bgwriter(PgStat_MsgBgWriter *msg, int len)
 	globalStats.timed_checkpoints += msg->m_timed_checkpoints;
 	globalStats.requested_checkpoints += msg->m_requested_checkpoints;
 	globalStats.buf_written_checkpoints += msg->m_buf_written_checkpoints;
-	globalStats.buf_written_lru += msg->m_buf_written_lru;
-	globalStats.buf_written_all += msg->m_buf_written_all;
-	globalStats.maxwritten_lru += msg->m_maxwritten_lru;
-	globalStats.maxwritten_all += msg->m_maxwritten_all;
+	globalStats.buf_written_clean += msg->m_buf_written_clean;
+	globalStats.maxwritten_clean += msg->m_maxwritten_clean;
 }

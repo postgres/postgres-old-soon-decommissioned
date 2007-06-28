@@ -291,10 +291,8 @@ typedef struct PgStat_MsgBgWriter
 	PgStat_Counter  m_timed_checkpoints;
 	PgStat_Counter	m_requested_checkpoints;
 	PgStat_Counter	m_buf_written_checkpoints;
-	PgStat_Counter	m_buf_written_lru;
-	PgStat_Counter	m_buf_written_all;
-	PgStat_Counter	m_maxwritten_lru;
-	PgStat_Counter	m_maxwritten_all;
+	PgStat_Counter	m_buf_written_clean;
+	PgStat_Counter	m_maxwritten_clean;
 } PgStat_MsgBgWriter;
 
 
@@ -392,10 +390,8 @@ typedef struct PgStat_GlobalStats
 	PgStat_Counter  timed_checkpoints;
 	PgStat_Counter  requested_checkpoints;
 	PgStat_Counter  buf_written_checkpoints;
-	PgStat_Counter  buf_written_lru;
-	PgStat_Counter  buf_written_all;
-	PgStat_Counter  maxwritten_lru;
-	PgStat_Counter  maxwritten_all;
+	PgStat_Counter  buf_written_clean;
+	PgStat_Counter  maxwritten_clean;
 } PgStat_GlobalStats;
 
 

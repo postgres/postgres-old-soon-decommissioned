@@ -33,9 +33,7 @@ extern DLLIMPORT int NBuffers;
 /* in bufmgr.c */
 extern bool zero_damaged_pages;
 extern double bgwriter_lru_percent;
-extern double bgwriter_all_percent;
 extern int	bgwriter_lru_maxpages;
-extern int	bgwriter_all_maxpages;
 
 /* in buf_init.c */
 extern DLLIMPORT char *BufferBlocks;
@@ -136,11 +134,12 @@ extern char *ShowBufferUsage(void);
 extern void ResetBufferUsage(void);
 extern void AtEOXact_Buffers(bool isCommit);
 extern void PrintBufferLeakWarning(Buffer buffer);
-extern void FlushBufferPool(void);
+extern void CheckPointBuffers(int flags);
 extern BlockNumber BufferGetBlockNumber(Buffer buffer);
 extern BlockNumber RelationGetNumberOfBlocks(Relation relation);
 extern void RelationTruncate(Relation rel, BlockNumber nblocks);
 extern void FlushRelationBuffers(Relation rel);
+extern void FlushDatabaseBuffers(Oid dbid);
 extern void DropRelFileNodeBuffers(RelFileNode rnode, bool istemp,
 					   BlockNumber firstDelBlock);
 extern void DropDatabaseBuffers(Oid dbid);
@@ -161,7 +160,6 @@ extern void LockBufferForCleanup(Buffer buffer);
 extern void AbortBufferIO(void);
 
 extern void BufmgrCommit(void);
-extern void BufferSync(void);
 extern void BgBufferSync(void);
 
 extern void AtProcExit_LocalBuffers(void);

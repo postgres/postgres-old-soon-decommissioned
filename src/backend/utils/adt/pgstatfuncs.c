@@ -64,10 +64,8 @@ extern Datum pg_stat_get_db_tuples_deleted(PG_FUNCTION_ARGS);
 extern Datum pg_stat_get_bgwriter_timed_checkpoints(PG_FUNCTION_ARGS);
 extern Datum pg_stat_get_bgwriter_requested_checkpoints(PG_FUNCTION_ARGS);
 extern Datum pg_stat_get_bgwriter_buf_written_checkpoints(PG_FUNCTION_ARGS);
-extern Datum pg_stat_get_bgwriter_buf_written_lru(PG_FUNCTION_ARGS);
-extern Datum pg_stat_get_bgwriter_buf_written_all(PG_FUNCTION_ARGS);
-extern Datum pg_stat_get_bgwriter_maxwritten_lru(PG_FUNCTION_ARGS);
-extern Datum pg_stat_get_bgwriter_maxwritten_all(PG_FUNCTION_ARGS);
+extern Datum pg_stat_get_bgwriter_buf_written_clean(PG_FUNCTION_ARGS);
+extern Datum pg_stat_get_bgwriter_maxwritten_clean(PG_FUNCTION_ARGS);
 
 extern Datum pg_stat_clear_snapshot(PG_FUNCTION_ARGS);
 extern Datum pg_stat_reset(PG_FUNCTION_ARGS);
@@ -787,27 +785,15 @@ pg_stat_get_bgwriter_buf_written_checkpoints(PG_FUNCTION_ARGS)
 }
 
 Datum
-pg_stat_get_bgwriter_buf_written_lru(PG_FUNCTION_ARGS)
+pg_stat_get_bgwriter_buf_written_clean(PG_FUNCTION_ARGS)
 {
-	PG_RETURN_INT64(pgstat_fetch_global()->buf_written_lru);
+	PG_RETURN_INT64(pgstat_fetch_global()->buf_written_clean);
 }
 
 Datum
-pg_stat_get_bgwriter_buf_written_all(PG_FUNCTION_ARGS)
+pg_stat_get_bgwriter_maxwritten_clean(PG_FUNCTION_ARGS)
 {
-	PG_RETURN_INT64(pgstat_fetch_global()->buf_written_all);
-}
-
-Datum
-pg_stat_get_bgwriter_maxwritten_lru(PG_FUNCTION_ARGS)
-{
-	PG_RETURN_INT64(pgstat_fetch_global()->maxwritten_lru);
-}
-
-Datum
-pg_stat_get_bgwriter_maxwritten_all(PG_FUNCTION_ARGS)
-{
-	PG_RETURN_INT64(pgstat_fetch_global()->maxwritten_all);
+	PG_RETURN_INT64(pgstat_fetch_global()->maxwritten_clean);
 }
 
 
