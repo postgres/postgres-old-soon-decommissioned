@@ -73,6 +73,7 @@
 #include <unistd.h>
 #include <math.h>
 #include <float.h>
+#include <limits.h>
 
 #include "utils/builtins.h"
 #include "utils/date.h"
@@ -107,8 +108,8 @@
  * More is in float.c
  * ----------
  */
-#define MAXFLOATWIDTH	64
-#define MAXDOUBLEWIDTH	128
+#define MAXFLOATWIDTH	60
+#define MAXDOUBLEWIDTH	500
 
 /* ----------
  * External (defined in PgSQL datetime.c (timestamp utils))
@@ -133,18 +134,19 @@ typedef struct FormatNode FormatNode;
 
 typedef struct
 {
-	char	   *name;			/* keyword			*/
-	/* action for keyword		*/
-	int			len,			/* keyword length		*/
-				(*action) (int arg, char *inout, int suf, int flag, FormatNode *node, void *data),
-				id;				/* keyword id			*/
+	const char *name;			/* keyword			*/
+	int			len;			/* keyword length		*/
+	int (*action) (int arg, char *inout,	/* action for keyword */
+				   int suf, int flag,
+				   FormatNode *node, void *data);
+	int			id;				/* keyword id			*/
 	bool		isitdigit;		/* is expected output/input digit */
 } KeyWord;
 
 struct FormatNode
 {
 	int			type;			/* node type			*/
-	KeyWord    *key;			/* if node type is KEYWORD	*/
+	const KeyWord *key;			/* if node type is KEYWORD	*/
 	int			character,		/* if node type is CHAR		*/
 				suffix;			/* keyword suffix		*/
 };
@@ -379,7 +381,8 @@ typedef struct
 				cc,
 				q,
 				j,
-				us;
+				us,
+				yysz;		/* is it YY or YYYY ? */
 } TmFromChar;
 
 #define ZERO_tmfc( _X ) memset(_X, 0, sizeof(TmFromChar))
@@ -390,11 +393,11 @@ typedef struct
  */
 #ifdef DEBUG_TO_FROM_CHAR
 #define DEBUG_TMFC( _X ) \
-		elog(DEBUG_elog_output, "TMFC:\nhh %d\nam %d\npm %d\nmi %d\nss %d\nssss %d\nd %d\ndd %d\nddd %d\nmm %d\nms: %d\nyear %d\nbc %d\niw %d\nww %d\nw %d\ncc %d\nq %d\nj %d\nus: %d", \
+		elog(DEBUG_elog_output, "TMFC:\nhh %d\nam %d\npm %d\nmi %d\nss %d\nssss %d\nd %d\ndd %d\nddd %d\nmm %d\nms: %d\nyear %d\nbc %d\niw %d\nww %d\nw %d\ncc %d\nq %d\nj %d\nus: %d\nyysz: %d", \
 			(_X)->hh, (_X)->am, (_X)->pm, (_X)->mi, (_X)->ss, \
 			(_X)->ssss, (_X)->d, (_X)->dd, (_X)->ddd, (_X)->mm, (_X)->ms, \
 			(_X)->year, (_X)->bc, (_X)->iw, (_X)->ww, (_X)->w, \
-			(_X)->cc, (_X)->q, (_X)->j, (_X)->us);
+			(_X)->cc, (_X)->q, (_X)->j, (_X)->us, (_X)->yysz);
 #define DEBUG_TM( _X ) \
 		elog(DEBUG_elog_output, "TM:\nsec %d\nyear %d\nmin %d\nwday %d\nhour %d\nyday %d\nmday %d\nnisdst %d\nmon %d\n",\
 			(_X)->tm_sec, (_X)->tm_year,\
@@ -647,7 +650,7 @@ typedef enum
  * KeyWords for DATE-TIME version
  * ----------
  */
-static KeyWord DCH_keywords[] = {
+static const KeyWord DCH_keywords[] = {
 /*	keyword, len, func, type, isitdigit			 is in Index */
 	{"A.D.", 4, dch_date, DCH_A_D, FALSE},		/* A */
 	{"A.M.", 4, dch_time, DCH_A_M, FALSE},
@@ -744,7 +747,7 @@ static KeyWord DCH_keywords[] = {
  * KeyWords for NUMBER version (now, isitdigit info is not needful here..)
  * ----------
  */
-static KeyWord NUM_keywords[] = {
+static const KeyWord NUM_keywords[] = {
 /*	keyword,	len, func.	type			   is in Index */
 	{",", 1, NULL, NUM_COMMA},	/* , */
 	{".", 1, NULL, NUM_DEC},	/* . */
@@ -791,7 +794,7 @@ static KeyWord NUM_keywords[] = {
  * KeyWords index for DATE-TIME version
  * ----------
  */
-static int	DCH_index[KeyWord_INDEX_SIZE] = {
+static const int	DCH_index[KeyWord_INDEX_SIZE] = {
 /*
 0	1	2	3	4	5	6	7	8	9
 */
@@ -815,7 +818,7 @@ static int	DCH_index[KeyWord_INDEX_SIZE] = {
  * KeyWords index for NUMBER version
  * ----------
  */
-static int	NUM_index[KeyWord_INDEX_SIZE] = {
+static const int	NUM_index[KeyWord_INDEX_SIZE] = {
 /*
 0	1	2	3	4	5	6	7	8	9
 */
@@ -875,15 +878,16 @@ typedef struct NUMProc
  * Functions
  * ----------
  */
-static KeyWord *index_seq_search(char *str, KeyWord *kw, int *index);
+static const KeyWord *index_seq_search(char *str, const KeyWord *kw,
+									   const int *index);
 static KeySuffix *suff_search(char *str, KeySuffix *suf, int type);
 static void NUMDesc_prepare(NUMDesc *num, FormatNode *n);
-static void parse_format(FormatNode *node, char *str, KeyWord *kw,
-			 KeySuffix *suf, int *index, int ver, NUMDesc *Num);
+static void parse_format(FormatNode *node, char *str, const KeyWord *kw,
+			 KeySuffix *suf, const int *index, int ver, NUMDesc *Num);
 static char *DCH_processor(FormatNode *node, char *inout, int flag, void *data);
 
 #ifdef DEBUG_TO_FROM_CHAR
-static void dump_index(KeyWord *k, int *index);
+static void dump_index(const KeyWord *k, const int *index);
 static void dump_node(FormatNode *node, int max);
 #endif
 
@@ -923,8 +927,8 @@ static void NUM_cache_remove(NUMCacheEntry *ent);
  * (can't be used binary search in format parsing)
  * ----------
  */
-static KeyWord *
-index_seq_search(char *str, KeyWord *kw, int *index)
+static const KeyWord *
+index_seq_search(char *str, const KeyWord *kw, const int *index)
 {
 	int			poz;
 
@@ -933,8 +937,7 @@ index_seq_search(char *str, KeyWord *kw, int *index)
 
 	if ((poz = *(index + (*str - ' '))) > -1)
 	{
-
-		KeyWord    *k = kw + poz;
+		const KeyWord *k = kw + poz;
 
 		do
 		{
@@ -1166,8 +1169,8 @@ NUMDesc_prepare(NUMDesc *num, FormatNode *n)
  * ----------
  */
 static void
-parse_format(FormatNode *node, char *str, KeyWord *kw,
-			 KeySuffix *suf, int *index, int ver, NUMDesc *Num)
+parse_format(FormatNode *node, char *str, const KeyWord *kw,
+			 KeySuffix *suf, const int *index, int ver, NUMDesc *Num)
 {
 	KeySuffix  *s;
 	FormatNode *n;
@@ -1469,7 +1472,7 @@ str_numth(char *dest, char *num, int type)
 }
 
 /* ----------
- * Convert string to upper-string. Input string is modified in place.
+ * Convert string to upper case. Input string is modified in place.
  * ----------
  */
 static char *
@@ -1489,7 +1492,7 @@ str_toupper(char *buff)
 }
 
 /* ----------
- * Convert string to lower-string. Input string is modified in place.
+ * Convert string to lower case. Input string is modified in place.
  * ----------
  */
 static char *
@@ -1593,7 +1596,7 @@ seq_search(char *name, char **array, int type, int max, int *len)
  * ----------
  */
 static void
-dump_index(KeyWord *k, int *index)
+dump_index(const KeyWord *k, const int *index)
 {
 	int			i,
 				count = 0,
@@ -2017,19 +2020,16 @@ dch_time(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 		case DCH_TZ:
 			if (flag == TO_CHAR && tmtcTzn(tmtc))
 			{
-				int			siz = strlen(tmtcTzn(tmtc));
-
 				if (arg == DCH_TZ)
 					strcpy(inout, tmtcTzn(tmtc));
 				else
 				{
-					char	   *p = palloc(siz);
+					char	   *p = pstrdup(tmtcTzn(tmtc));
 
-					strcpy(p, tmtcTzn(tmtc));
 					strcpy(inout, str_tolower(p));
 					pfree(p);
 				}
-				return siz - 1;
+				return strlen(inout) - 1;
 			}
 			else if (flag == FROM_CHAR)
 				ereport(ERROR,
@@ -2181,6 +2181,8 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 			}
 			break;
 		case DCH_MONTH:
+			if (!tm->tm_mon)
+				return -1;
 			strcpy(workbuff, months_full[tm->tm_mon - 1]);
 			sprintf(inout, "%*s", S_FM(suf) ? 0 : -9, str_toupper(workbuff));
 			if (S_FM(suf))
@@ -2189,6 +2191,8 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 				return 8;
 
 		case DCH_Month:
+			if (!tm->tm_mon)
+				return -1;
 			sprintf(inout, "%*s", S_FM(suf) ? 0 : -9, months_full[tm->tm_mon - 1]);
 			if (S_FM(suf))
 				return strlen(p_inout) - 1;
@@ -2196,6 +2200,8 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 				return 8;
 
 		case DCH_month:
+			if (!tm->tm_mon)
+				return -1;
 			sprintf(inout, "%*s", S_FM(suf) ? 0 : -9, months_full[tm->tm_mon - 1]);
 			*inout = pg_tolower((unsigned char) *inout);
 			if (S_FM(suf))
@@ -2204,15 +2210,21 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 				return 8;
 
 		case DCH_MON:
+			if (!tm->tm_mon)
+				return -1;
 			strcpy(inout, months[tm->tm_mon - 1]);
 			inout = str_toupper(inout);
 			return 2;
 
 		case DCH_Mon:
+			if (!tm->tm_mon)
+				return -1;
 			strcpy(inout, months[tm->tm_mon - 1]);
 			return 2;
 
 		case DCH_mon:
+			if (!tm->tm_mon)
+				return -1;
 			strcpy(inout, months[tm->tm_mon - 1]);
 			*inout = pg_tolower((unsigned char) *inout);
 			return 2;
@@ -2227,7 +2239,6 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 					return strlen(p_inout) - 1;
 				else
 					return 1;
-
 			}
 			else if (flag == FROM_CHAR)
 			{
@@ -2387,7 +2398,6 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 					return strlen(p_inout) - 1;
 				else
 					return 1;
-
 			}
 			else if (flag == FROM_CHAR)
 			{
@@ -2406,6 +2416,8 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 		case DCH_Q:
 			if (flag == TO_CHAR)
 			{
+				if (!tm->tm_mon)
+					return -1;
 				sprintf(inout, "%d", (tm->tm_mon - 1) / 3 + 1);
 				if (S_THth(suf))
 				{
@@ -2413,7 +2425,6 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 					return 2;
 				}
 				return 0;
-
 			}
 			else if (flag == FROM_CHAR)
 			{
@@ -2463,7 +2474,7 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 
 				sscanf(inout, "%d,%03d", &cc, &tmfc->year);
 				tmfc->year += (cc * 1000);
-
+				tmfc->yysz = 4;
 				return strdigits_len(inout) + 3 + SKIP_THth(suf);
 			}
 			break;
@@ -2497,11 +2508,13 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 				if (S_FM(suf) || is_next_separator(node))
 				{
 					sscanf(inout, "%d", &tmfc->year);
+					tmfc->yysz = 4;
 					return strdigits_len(inout) - 1 + SKIP_THth(suf);
 				}
 				else
 				{
 					sscanf(inout, "%04d", &tmfc->year);
+					tmfc->yysz = 4;
 					return 3 + SKIP_THth(suf);
 				}
 			}
@@ -2537,7 +2550,7 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 					tmfc->year += 1000;
 				else
 					tmfc->year += 2000;
-
+				tmfc->yysz = 3;
 				return 2 + SKIP_THth(suf);
 			}
 			break;
@@ -2572,7 +2585,7 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 					tmfc->year += 2000;
 				else
 					tmfc->year += 1900;
-
+				tmfc->yysz = 2;
 				return 1 + SKIP_THth(suf);
 			}
 			break;
@@ -2603,13 +2616,15 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 				 * 1-digit year: always +2000
 				 */
 				tmfc->year += 2000;
-
+				tmfc->yysz = 1;
 				return 0 + SKIP_THth(suf);
 			}
 			break;
 		case DCH_RM:
 			if (flag == TO_CHAR)
 			{
+				if (!tm->tm_mon)
+					return -1;
 				sprintf(inout, "%*s", S_FM(suf) ? 0 : -4,
 						rm_months_upper[12 - tm->tm_mon]);
 				if (S_FM(suf))
@@ -2631,6 +2646,8 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 		case DCH_rm:
 			if (flag == TO_CHAR)
 			{
+				if (!tm->tm_mon)
+					return -1;
 				sprintf(inout, "%*s", S_FM(suf) ? 0 : -4,
 						rm_months_lower[12 - tm->tm_mon]);
 				if (S_FM(suf))
@@ -3171,8 +3188,24 @@ do_to_timestamp(text *date_txt, text *fmt,
 	}
 
 	if (tmfc.year)
-		tm->tm_year = tmfc.year;
-
+	{
+		if (tmfc.yysz==2 && tmfc.cc)
+		{
+			/* CC and YY defined 
+			 * why -[2000|1900]? See dch_date() DCH_YY code.
+			 */
+			tm->tm_year = (tmfc.cc-1)*100 + (tmfc.year >= 2000 ? tmfc.year-2000 : tmfc.year-1900);
+		}
+		else if (tmfc.yysz==1 && tmfc.cc)
+		{
+			/* CC and Y defined 
+			 */
+			tm->tm_year = (tmfc.cc-1)*100 + tmfc.year-2000;
+		}
+		else
+			/* set year (and ignore CC if defined) */
+			tm->tm_year = tmfc.year;
+	}
 	if (tmfc.bc)
 	{
 		if (tm->tm_year > 0)
@@ -3257,7 +3290,7 @@ static char *
 fill_str(char *str, int c, int max)
 {
 	memset(str, c, max);
-	*(str + max + 1) = '\0';
+	*(str + max) = '\0';
 	return str;
 }
 
@@ -4463,10 +4496,9 @@ NUM_processor(FormatNode *node, NUMDesc *Num, char *inout, char *number,
 #define NUM_TOCHAR_prepare \
 do { \
 	len = VARSIZE(fmt) - VARHDRSZ;					\
-	if (len <= 0)							\
+	if (len <= 0 || len >= (INT_MAX-VARHDRSZ)/NUM_MAX_ITEM_SIZ)		\
 		return DirectFunctionCall1(textin, CStringGetDatum(""));	\
-	result	= (text *) palloc( (len * NUM_MAX_ITEM_SIZ) + 1 + VARHDRSZ); \
-	memset(result, 0,  (len * NUM_MAX_ITEM_SIZ) + 1 + VARHDRSZ ); \
+	result	= (text *) palloc0((len * NUM_MAX_ITEM_SIZ) + 1 + VARHDRSZ);	\
 	format	= NUM_cache(len, &Num, VARDATA(fmt), &shouldFree);		\
 } while (0)
 
@@ -4478,28 +4510,18 @@ do { \
 do { \
 	NUM_processor(format, &Num, VARDATA(result),			\
 		numstr, plen, sign, TO_CHAR);				\
-	pfree(orgnum);							\
 									\
-	if (shouldFree)							\
-		pfree(format);						\
+	if (shouldFree)					\
+		pfree(format);				\
 									\
-	/*
-	 * for result is allocated max memory, which current format-picture\
-	 * needs, now it must be re-allocate to result real size	\
+	/*								\
+	 * Convert null-terminated representation of result to standard text. \
+	 * The result is usually much bigger than it needs to be, but there \
+	 * seems little point in realloc'ing it smaller. \
 	 */								\
-	if (!(len = strlen(VARDATA(result))))				\
-	{								\
-		pfree(result);						\
-		PG_RETURN_NULL();					\
-	}								\
-									\
-	result_tmp	= result;					\
-	result		= (text *) palloc( len + 1 + VARHDRSZ);		\
-									\
-	strcpy( VARDATA(result), VARDATA(result_tmp));			\
-	VARATT_SIZEP(result) = len + VARHDRSZ;				\
-	pfree(result_tmp);						\
-} while(0)
+	len = strlen(VARDATA(result));	\
+	VARATT_SIZEP(result) = len + VARHDRSZ;	\
+} while (0)
 
 /* -------------------
  * NUMERIC to_number() (convert string to numeric)
@@ -4521,7 +4543,7 @@ numeric_to_number(PG_FUNCTION_ARGS)
 
 	len = VARSIZE(fmt) - VARHDRSZ;
 
-	if (len <= 0)
+	if (len <= 0 || len >= INT_MAX/NUM_MAX_ITEM_SIZ)
 		PG_RETURN_NULL();
 
 	format = NUM_cache(len, &Num, VARDATA(fmt), &shouldFree);
@@ -4556,8 +4578,7 @@ numeric_to_char(PG_FUNCTION_ARGS)
 	text	   *fmt = PG_GETARG_TEXT_P(1);
 	NUMDesc		Num;
 	FormatNode *format;
-	text	   *result,
-			   *result_tmp;
+	text	   *result;
 	bool		shouldFree;
 	int			len = 0,
 				plen = 0,
@@ -4580,7 +4601,6 @@ numeric_to_char(PG_FUNCTION_ARGS)
 		numstr = orgnum =
 			int_to_roman(DatumGetInt32(DirectFunctionCall1(numeric_int4,
 												   NumericGetDatum(x))));
-		pfree(x);
 	}
 	else
 	{
@@ -4599,9 +4619,6 @@ numeric_to_char(PG_FUNCTION_ARGS)
 			val = DatumGetNumeric(DirectFunctionCall2(numeric_mul,
 												  NumericGetDatum(value),
 													NumericGetDatum(x)));
-			pfree(x);
-			pfree(a);
-			pfree(b);
 			Num.pre += Num.multi;
 		}
 
@@ -4610,10 +4627,9 @@ numeric_to_char(PG_FUNCTION_ARGS)
 												Int32GetDatum(Num.post)));
 		orgnum = DatumGetCString(DirectFunctionCall1(numeric_out,
 													 NumericGetDatum(x)));
-		pfree(x);
 
 		if (*orgnum == '-')
-		{						/* < 0 */
+		{
 			sign = '-';
 			numstr = orgnum + 1;
 		}
@@ -4632,13 +4648,10 @@ numeric_to_char(PG_FUNCTION_ARGS)
 
 		else if (len > Num.pre)
 		{
-			fill_str(numstr, '#', Num.pre);
+			numstr = (char *) palloc(Num.pre + Num.post + 2);
+			fill_str(numstr, '#', Num.pre + Num.post + 1);
 			*(numstr + Num.pre) = '.';
-			fill_str(numstr + 1 + Num.pre, '#', Num.post);
 		}
-
-		if (IS_MULTI(&Num))
-			pfree(val);
 	}
 
 	NUM_TOCHAR_finish;
@@ -4656,8 +4669,7 @@ int4_to_char(PG_FUNCTION_ARGS)
 	text	   *fmt = PG_GETARG_TEXT_P(1);
 	NUMDesc		Num;
 	FormatNode *format;
-	text	   *result,
-			   *result_tmp;
+	text	   *result;
 	bool		shouldFree;
 	int			len = 0,
 				plen = 0,
@@ -4685,40 +4697,34 @@ int4_to_char(PG_FUNCTION_ARGS)
 			orgnum = DatumGetCString(DirectFunctionCall1(int4out,
 												  Int32GetDatum(value)));
 		}
-		len = strlen(orgnum);
 
 		if (*orgnum == '-')
-		{						/* < 0 */
+		{
 			sign = '-';
-			--len;
+			orgnum++;
 		}
 		else
 			sign = '+';
+		len = strlen(orgnum);
 
 		if (Num.post)
 		{
-			int			i;
-
 			numstr = (char *) palloc(len + Num.post + 2);
-			strcpy(numstr, orgnum + (*orgnum == '-' ? 1 : 0));
+			strcpy(numstr, orgnum);
 			*(numstr + len) = '.';
-
-			for (i = len + 1; i <= len + Num.post; i++)
-				*(numstr + i) = '0';
+			memset(numstr + len + 1, '0', Num.post);
 			*(numstr + len + Num.post + 1) = '\0';
-			pfree(orgnum);
-			orgnum = numstr;
 		}
 		else
-			numstr = orgnum + (*orgnum == '-' ? 1 : 0);
+			numstr = orgnum;
 
 		if (Num.pre > len)
 			plen = Num.pre - len;
 		else if (len > Num.pre)
 		{
-			fill_str(numstr, '#', Num.pre);
+			numstr = (char *) palloc(Num.pre + Num.post + 2);
+			fill_str(numstr, '#', Num.pre + Num.post + 1);
 			*(numstr + Num.pre) = '.';
-			fill_str(numstr + 1 + Num.pre, '#', Num.post);
 		}
 	}
 
@@ -4737,8 +4743,7 @@ int8_to_char(PG_FUNCTION_ARGS)
 	text	   *fmt = PG_GETARG_TEXT_P(1);
 	NUMDesc		Num;
 	FormatNode *format;
-	text	   *result,
-			   *result_tmp;
+	text	   *result;
 	bool		shouldFree;
 	int			len = 0,
 				plen = 0,
@@ -4772,40 +4777,34 @@ int8_to_char(PG_FUNCTION_ARGS)
 
 		orgnum = DatumGetCString(DirectFunctionCall1(int8out,
 												  Int64GetDatum(value)));
-		len = strlen(orgnum);
 
 		if (*orgnum == '-')
-		{						/* < 0 */
+		{
 			sign = '-';
-			--len;
+			orgnum++;
 		}
 		else
 			sign = '+';
+		len = strlen(orgnum);
 
 		if (Num.post)
 		{
-			int			i;
-
 			numstr = (char *) palloc(len + Num.post + 2);
-			strcpy(numstr, orgnum + (*orgnum == '-' ? 1 : 0));
+			strcpy(numstr, orgnum);
 			*(numstr + len) = '.';
-
-			for (i = len + 1; i <= len + Num.post; i++)
-				*(numstr + i) = '0';
+			memset(numstr + len + 1, '0', Num.post);
 			*(numstr + len + Num.post + 1) = '\0';
-			pfree(orgnum);
-			orgnum = numstr;
 		}
 		else
-			numstr = orgnum + (*orgnum == '-' ? 1 : 0);
+			numstr = orgnum;
 
 		if (Num.pre > len)
 			plen = Num.pre - len;
 		else if (len > Num.pre)
 		{
-			fill_str(numstr, '#', Num.pre);
+			numstr = (char *) palloc(Num.pre + Num.post + 2);
+			fill_str(numstr, '#', Num.pre + Num.post + 1);
 			*(numstr + Num.pre) = '.';
-			fill_str(numstr + 1 + Num.pre, '#', Num.post);
 		}
 	}
 
@@ -4824,8 +4823,7 @@ float4_to_char(PG_FUNCTION_ARGS)
 	text	   *fmt = PG_GETARG_TEXT_P(1);
 	NUMDesc		Num;
 	FormatNode *format;
-	text	   *result,
-			   *result_tmp;
+	text	   *result;
 	bool		shouldFree;
 	int			len = 0,
 				plen = 0,
@@ -4884,9 +4882,9 @@ float4_to_char(PG_FUNCTION_ARGS)
 
 		else if (len > Num.pre)
 		{
-			fill_str(numstr, '#', Num.pre);
+			numstr = (char *) palloc(Num.pre + Num.post + 2);
+			fill_str(numstr, '#', Num.pre + Num.post + 1);
 			*(numstr + Num.pre) = '.';
-			fill_str(numstr + 1 + Num.pre, '#', Num.post);
 		}
 	}
 
@@ -4905,8 +4903,7 @@ float8_to_char(PG_FUNCTION_ARGS)
 	text	   *fmt = PG_GETARG_TEXT_P(1);
 	NUMDesc		Num;
 	FormatNode *format;
-	text	   *result,
-			   *result_tmp;
+	text	   *result;
 	bool		shouldFree;
 	int			len = 0,
 				plen = 0,
@@ -4963,9 +4960,9 @@ float8_to_char(PG_FUNCTION_ARGS)
 
 		else if (len > Num.pre)
 		{
-			fill_str(numstr, '#', Num.pre);
+			numstr = (char *) palloc(Num.pre + Num.post + 2);
+			fill_str(numstr, '#', Num.pre + Num.post + 1);
 			*(numstr + Num.pre) = '.';
-			fill_str(numstr + 1 + Num.pre, '#', Num.post);
 		}
 	}
 
