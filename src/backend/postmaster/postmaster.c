@@ -1875,7 +1875,7 @@ pmdie(SIGNAL_ARGS)
 
 			/* autovacuum workers are shut down immediately */
 			if (DLGetHead(BackendList))
-				SignalSomeChildren(SIGINT, true);
+				SignalSomeChildren(SIGTERM, true);
 
 			if (DLGetHead(BackendList))
 				break;			/* let reaper() handle this */

@@ -1008,7 +1008,7 @@ CheckOtherDBBackends(Oid databaseId)
 				 */
 				LWLockRelease(ProcArrayLock);
 
-				(void) kill(autopid, SIGINT);		/* ignore any error */
+				(void) kill(autopid, SIGTERM);		/* ignore any error */
 
 				break;
 			}
