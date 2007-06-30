@@ -587,6 +587,14 @@ static struct config_bool ConfigureNamesBool[] =
 		false, NULL, NULL
 	},
 	{
+		{"log_checkpoints", PGC_SIGHUP, LOGGING_WHAT,
+			gettext_noop("Logs each checkpoint."),
+			NULL
+		},
+		&log_checkpoints,
+		false, NULL, NULL
+	},
+	{
 		{"log_connections", PGC_BACKEND, LOGGING_WHAT,
 			gettext_noop("Logs each successful connection."),
 			NULL
