@@ -1776,7 +1776,7 @@ do_autovacuum(void)
 	List	   *table_oids = NIL;
 	List	   *toast_oids = NIL;
 	List	   *table_toast_list = NIL;
-	ListCell   *cell;
+	ListCell   * volatile cell;
 	PgStat_StatDBEntry *shared;
 	PgStat_StatDBEntry *dbentry;
 	BufferAccessStrategy bstrategy;
