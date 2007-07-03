@@ -226,6 +226,7 @@ CREATE VIEW <replaceable class="parameter">name</replaceable> [ ( <replaceable c
   <title>See Also</title>
 
   <simplelist type="inline">
+   <member><xref linkend="sql-alterview" endterm="sql-alterview-title"></member>
    <member><xref linkend="sql-dropview" endterm="sql-dropview-title"></member>
   </simplelist>
  </refsect1>

@@ -43,7 +43,8 @@ extern void renameatt(Oid myrelid,
 		  bool recursing);
 
 extern void renamerel(Oid myrelid,
-		  const char *newrelname);
+		  const char *newrelname,
+		  ObjectType reltype);
 
 extern void find_composite_type_dependencies(Oid typeOid,
 											 const char *origTblName,

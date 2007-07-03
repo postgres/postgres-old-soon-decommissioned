@@ -53,6 +53,7 @@
    &alterTrigger;
    &alterType;
    &alterUser;
+   &alterView;
    &analyze;
    &begin;
    &checkpoint;

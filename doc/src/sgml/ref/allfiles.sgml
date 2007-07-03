@@ -25,6 +25,7 @@ Complete list of usable sgml source files in this directory.
 <!entity alterTrigger       system "alter_trigger.sgml">
 <!entity alterType          system "alter_type.sgml">
 <!entity alterUser          system "alter_user.sgml">
+<!entity alterView          system "alter_view.sgml">
 <!entity analyze            system "analyze.sgml">
 <!entity begin              system "begin.sgml">
 <!entity checkpoint         system "checkpoint.sgml">
