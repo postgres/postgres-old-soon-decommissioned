@@ -2474,6 +2474,8 @@ DESCR("greater-than-or-equal");
 DATA(insert OID = 1693 (  btboolcmp			PGNSP PGUID 12 1 0 f f t f i 2 23 "16 16" _null_ _null_ _null_	btboolcmp - _null_ ));
 DESCR("btree less-equal-greater");
 
+DATA(insert OID = 1688 (  time_hash			PGNSP PGUID 12 1 0 f f t f i 1 23 "1083" _null_ _null_ _null_ time_hash - _null_ ));
+DESCR("hash");
 DATA(insert OID = 1696 (  timetz_hash		PGNSP PGUID 12 1 0 f f t f i 1 23 "1266" _null_ _null_ _null_ timetz_hash - _null_ ));
 DESCR("hash");
 DATA(insert OID = 1697 (  interval_hash		PGNSP PGUID 12 1 0 f f t f i 1 23 "1186" _null_ _null_ _null_ interval_hash - _null_ ));
@@ -3043,6 +3045,8 @@ DATA(insert OID = 2037 (  timezone			PGNSP PGUID 12 1 0 f f t f v 2 1266 "25 126
 DESCR("adjust time with time zone to new zone");
 DATA(insert OID = 2038 (  timezone			PGNSP PGUID 12 1 0 f f t f i 2 1266 "1186 1266" _null_ _null_ _null_	timetz_izone - _null_ ));
 DESCR("adjust time with time zone to new zone");
+DATA(insert OID = 2039 (  timestamp_hash	PGNSP PGUID 12 1 0 f f t f i 1	23 "1114" _null_ _null_ _null_ timestamp_hash - _null_ ));
+DESCR("hash");
 DATA(insert OID = 2041 ( overlaps			PGNSP PGUID 12 1 0 f f f f i 4 16 "1114 1114 1114 1114" _null_ _null_ _null_	overlaps_timestamp - _null_ ));
 DESCR("SQL92 interval comparison");
 DATA(insert OID = 2042 ( overlaps			PGNSP PGUID 14 1 0 f f f f i 4 16 "1114 1186 1114 1186" _null_ _null_ _null_	"select ($1, ($1 + $2)) overlaps ($3, ($3 + $4))" - _null_ ));

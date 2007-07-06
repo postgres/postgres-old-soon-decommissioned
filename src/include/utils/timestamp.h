@@ -211,6 +211,7 @@ extern Datum timestamp_ge(PG_FUNCTION_ARGS);
 extern Datum timestamp_gt(PG_FUNCTION_ARGS);
 extern Datum timestamp_finite(PG_FUNCTION_ARGS);
 extern Datum timestamp_cmp(PG_FUNCTION_ARGS);
+extern Datum timestamp_hash(PG_FUNCTION_ARGS);
 extern Datum timestamp_smaller(PG_FUNCTION_ARGS);
 extern Datum timestamp_larger(PG_FUNCTION_ARGS);
 

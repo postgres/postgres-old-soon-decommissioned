@@ -148,6 +148,7 @@ extern Datum time_le(PG_FUNCTION_ARGS);
 extern Datum time_gt(PG_FUNCTION_ARGS);
 extern Datum time_ge(PG_FUNCTION_ARGS);
 extern Datum time_cmp(PG_FUNCTION_ARGS);
+extern Datum time_hash(PG_FUNCTION_ARGS);
 extern Datum overlaps_time(PG_FUNCTION_ARGS);
 extern Datum time_larger(PG_FUNCTION_ARGS);
 extern Datum time_smaller(PG_FUNCTION_ARGS);
