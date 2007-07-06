@@ -231,6 +231,16 @@ o -f option
 
   Variables can also be defined by using -D option.
 
+  \usleep usec
+
+	causes script execution to sleep for the specified duration in
+	microseconds.
+
+  example:
+
+  \setrandom usec 1000000 3000000
+  \usleep :usec
+
   Example, TPC-B like benchmark can be defined as follows(scaling
   factor = 1):
 
