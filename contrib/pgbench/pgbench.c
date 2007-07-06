@@ -727,7 +727,7 @@ top:
 
 			st->listen = 1;
 		}
-		else if (pg_strcasecmp(argv[0], "usleep") == 0)
+		else if (pg_strcasecmp(argv[0], "sleep") == 0)
 		{
 			char	   *var;
 			int			usec;
@@ -745,6 +745,16 @@ top:
 			}
 			else
 				usec = atoi(argv[1]);
+
+			if (argc > 2)
+			{
+				if (pg_strcasecmp(argv[2], "ms") == 0)
+					usec *= 1000;
+				else if (pg_strcasecmp(argv[2], "s") == 0)
+					usec *= 1000000;
+			}
+			else
+				usec *= 1000000;
 
 			gettimeofday(&now, NULL);
 			st->until.tv_sec = now.tv_sec + (now.tv_usec + usec) / 1000000;
@@ -963,7 +973,7 @@ process_commands(char *buf)
 				fprintf(stderr, "%s: extra argument \"%s\" ignored\n",
 						my_commands->argv[0], my_commands->argv[j]);
 		}
-		else if (pg_strcasecmp(my_commands->argv[0], "usleep") == 0)
+		else if (pg_strcasecmp(my_commands->argv[0], "sleep") == 0)
 		{
 			if (my_commands->argc < 2)
 			{
@@ -971,7 +981,19 @@ process_commands(char *buf)
 				return NULL;
 			}
 
-			for (j = 2; j < my_commands->argc; j++)
+			if (my_commands->argc >= 3)
+			{
+				if (pg_strcasecmp(my_commands->argv[2], "us") != 0 &&
+					pg_strcasecmp(my_commands->argv[2], "ms") != 0 &&
+					pg_strcasecmp(my_commands->argv[2], "s"))
+				{
+					fprintf(stderr, "%s: unknown time unit '%s' - must be us, ms or s\n", 
+							my_commands->argv[0], my_commands->argv[2]);
+					return NULL;
+				}
+			}
+
+			for (j = 3; j < my_commands->argc; j++)
 				fprintf(stderr, "%s: extra argument \"%s\" ignored\n",
 						my_commands->argv[0], my_commands->argv[j]);
 		}
