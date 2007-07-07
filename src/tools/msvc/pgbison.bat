@@ -11,7 +11,7 @@ if %BV% GEQ 2.2 goto bisonok
 goto nobison
 :bisonok
 
-if "%1" == "src\backend\parser\gram.y" call :generate %1 src\backend\parser\gram.c src\include\parser\parse.h
+if "%1" == "src\backend\parser\gram.y" call :generate %1 src\backend\parser\gram.c src\backend\parser\parse.h
 if "%1" == "src\backend\bootstrap\bootparse.y" call :generate %1 src\backend\bootstrap\bootparse.c src\backend\bootstrap\bootstrap_tokens.h
 if "%1" == "src\pl\plpgsql\src\gram.y" call :generate %1 src\pl\plpgsql\src\pl_gram.c src\pl\plpgsql\src\pl.tab.h
 if "%1" == "src\interfaces\ecpg\preproc\preproc.y" call :generate %1 src\interfaces\ecpg\preproc\preproc.c src\interfaces\ecpg\preproc\preproc.h

@@ -16,7 +16,7 @@ call :del src\backend\win32ver.rc
 REM Delete files created with GenerateFiles() in Solution.pm
 call :del src\include\pg_config.h
 call :del src\include\pg_config_os.h
-call :del src\include\parser\parse.h
+call :del src\backend\parser\parse.h
 call :del src\include\utils\fmgroids.h
 
 call :del src\backend\utils\fmgrtab.c
