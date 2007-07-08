@@ -480,15 +480,18 @@ test_postmaster_connection(bool do_checkpoint)
 	if (!*portstr)
 		snprintf(portstr, sizeof(portstr), "%d", DEF_PGPORT);
 
-	/* We need to set a connect timeout otherwise on Windows the SCM will probably timeout first */
-	snprintf(connstr, sizeof(connstr), "dbname=postgres port=%s connect_timeout=5", portstr);
+	/*
+	 * We need to set a connect timeout otherwise on Windows the SCM will
+	 * probably timeout first
+	 */
+	snprintf(connstr, sizeof(connstr),
+			 "dbname=postgres port=%s connect_timeout=5", portstr);
 
 	for (i = 0; i < wait_seconds; i++)
 	{
 		if ((conn = PQconnectdb(connstr)) != NULL &&
 			(PQstatus(conn) == CONNECTION_OK ||
-			 (strcmp(PQerrorMessage(conn),
-					 PQnoPasswordSupplied) == 0)))
+			 PQconnectionUsedPassword(conn)))
 		{
 			PQfinish(conn);
 			success = true;

@@ -100,7 +100,7 @@ connectDatabase(const char *dbname, const char *pghost, const char *pgport,
 {
 	PGconn	   *conn;
 	char	   *password = NULL;
-	bool		need_pass = false;
+	bool		new_pass;
 
 	if (require_password)
 		password = simple_prompt("Password: ", 100, false);
@@ -111,7 +111,7 @@ connectDatabase(const char *dbname, const char *pghost, const char *pgport,
 	 */
 	do
 	{
-		need_pass = false;
+		new_pass = false;
 		conn = PQsetdbLogin(pghost, pgport, NULL, NULL, dbname, pguser, password);
 
 		if (!conn)
@@ -122,16 +122,15 @@ connectDatabase(const char *dbname, const char *pghost, const char *pgport,
 		}
 
 		if (PQstatus(conn) == CONNECTION_BAD &&
-			strcmp(PQerrorMessage(conn), PQnoPasswordSupplied) == 0 &&
+			PQconnectionUsedPassword(conn) &&
+			password == NULL &&
 			!feof(stdin))
 		{
 			PQfinish(conn);
-			need_pass = true;
-			free(password);
-			password = NULL;
 			password = simple_prompt("Password: ", 100, false);
+			new_pass = true;
 		}
-	} while (need_pass);
+	} while (new_pass);
 
 	if (password)
 		free(password);
