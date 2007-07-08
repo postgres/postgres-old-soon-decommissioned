@@ -23,11 +23,10 @@ extern		"C"
 #include <stdio.h>
 
 /*
- * defines the backend's externally visible types,
+ * postgres_ext.h defines the backend's externally visible types,
  * such as Oid.
  */
 #include "postgres_ext.h"
-#include "postgres_fe.h"
 
 /* Application-visible enum types */
 
@@ -264,9 +263,9 @@ extern int	PQserverVersion(const PGconn *conn);
 extern char *PQerrorMessage(const PGconn *conn);
 extern int	PQsocket(const PGconn *conn);
 extern int	PQbackendPID(const PGconn *conn);
+extern int	PQconnectionUsedPassword(const PGconn *conn);
 extern int	PQclientEncoding(const PGconn *conn);
 extern int	PQsetClientEncoding(PGconn *conn, const char *encoding);
-extern bool	PQconnectionUsedPassword(const PGconn *conn);
 
 /* Get the OpenSSL structure associated with a connection. Returns NULL for
  * unencrypted connections or if any other TLS library is in use. */
@@ -426,7 +425,8 @@ extern void PQfreemem(void *ptr);
 /* Exists for backward compatibility.  bjm 2003-03-24 */
 #define PQfreeNotify(ptr) PQfreemem(ptr)
 
-/* Define the string so all uses are consistent. */
+/* Error when no password was given. */
+/* Note: depending on this is deprecated; use PQconnectionUsedPassword(). */
 #define PQnoPasswordSupplied	"fe_sendauth: no password supplied\n"
 
 /*

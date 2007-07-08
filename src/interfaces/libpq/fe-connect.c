@@ -1641,10 +1641,6 @@ keep_going:						/* We will come back to here until there is
 					return PGRES_POLLING_READING;
 				}
 
-				/* save the authentication request type */
-				if (conn->areq == AUTH_REQ_UNK)
-					conn->areq = areq;
-
 				/* Get the password salt if there is one. */
 				if (areq == AUTH_REQ_MD5)
 				{
@@ -1669,6 +1665,10 @@ keep_going:						/* We will come back to here until there is
 				 * OK, we successfully read the message; mark data consumed
 				 */
 				conn->inStart = conn->inCursor;
+
+				/* Save the authentication request type, if first one. */
+				if (conn->areq == AUTH_REQ_OK)
+					conn->areq = areq;
 
 				/* Respond to the request if necessary. */
 
@@ -1877,7 +1877,7 @@ makeEmptyPGconn(void)
 	conn->std_strings = false;	/* unless server says differently */
 	conn->verbosity = PQERRORS_DEFAULT;
 	conn->sock = -1;
-	conn->areq = AUTH_REQ_UNK;
+	conn->areq = AUTH_REQ_OK;	/* until we receive something else */
 #ifdef USE_SSL
 	conn->allow_ssl_try = true;
 	conn->wait_ssl_try = false;
@@ -3397,6 +3397,19 @@ PQbackendPID(const PGconn *conn)
 }
 
 int
+PQconnectionUsedPassword(const PGconn *conn)
+{
+	if (!conn)
+		return false;
+	if (conn->areq == AUTH_REQ_MD5 ||
+		conn->areq == AUTH_REQ_CRYPT ||
+		conn->areq == AUTH_REQ_PASSWORD)
+		return true;
+	else
+		return false;
+}
+
+int
 PQclientEncoding(const PGconn *conn)
 {
 	if (!conn || conn->status != CONNECTION_OK)
@@ -3444,17 +3457,6 @@ PQsetClientEncoding(PGconn *conn, const char *encoding)
 	}
 	PQclear(res);
 	return status;
-}
-
-bool
-PQconnectionUsedPassword(const PGconn *conn)
-{
-	if (conn->areq == AUTH_REQ_MD5 ||
-		conn->areq == AUTH_REQ_CRYPT ||
-		conn->areq == AUTH_REQ_PASSWORD)
-		return true;
-	else
-		return false;
 }
 
 PGVerbosity
