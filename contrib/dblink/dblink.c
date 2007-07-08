@@ -37,6 +37,7 @@
 #include "libpq-fe.h"
 #include "fmgr.h"
 #include "funcapi.h"
+#include "miscadmin.h"
 #include "access/heapam.h"
 #include "access/tupdesc.h"
 #include "catalog/namespace.h"
@@ -243,6 +244,22 @@ dblink_connect(PG_FUNCTION_ARGS)
 				(errcode(ERRCODE_SQLCLIENT_UNABLE_TO_ESTABLISH_SQLCONNECTION),
 				 errmsg("could not establish connection"),
 				 errdetail("%s", msg)));
+	}
+
+	if (!superuser())
+	{
+		if (!PQconnectionUsedPassword(conn))
+		{
+			PQfinish(conn);
+			if (rconn)
+				pfree(rconn);
+
+			ereport(ERROR,
+					(errcode(ERRCODE_S_R_E_PROHIBITED_SQL_STATEMENT_ATTEMPTED),
+					 errmsg("password is required"),
+					 errdetail("Non-superuser cannot connect if the server does not request a password."),
+					 errhint("Target server's authentication method must be changed.")));
+		}
 	}
 
 	if (connname)
