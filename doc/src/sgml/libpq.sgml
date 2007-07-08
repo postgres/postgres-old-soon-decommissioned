@@ -1059,6 +1059,20 @@ SSL *PQgetssl(const PGconn *conn);
      </listitem>
     </varlistentry>
 
+    <varlistentry>
+     <term><function>PQconnectionUsedPassword</function><indexterm><primary>PQconnectionUsedPassword</></></term>
+     <listitem>
+      <para>
+       Returns true (1) if the connection authentication method
+       required a password to be supplied. Returns false (0)
+       otherwise.
+       <synopsis>
+       bool PQconnectionUsedPassword(const PGconn *conn);
+       </synopsis>
+      </para>
+     </listitem>
+    </varlistentry>
+
 </variablelist>
 </para>
 

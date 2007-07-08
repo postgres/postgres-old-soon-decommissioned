@@ -137,3 +137,4 @@ PQdescribePortal          134
 PQsendDescribePrepared    135
 PQsendDescribePortal      136
 lo_truncate               137
+PQconnectionUsedPassword  138

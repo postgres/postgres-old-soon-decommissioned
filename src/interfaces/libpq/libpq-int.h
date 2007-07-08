@@ -299,6 +299,7 @@ struct pg_conn
 	SockAddr	raddr;			/* Remote address */
 	ProtocolVersion pversion;	/* FE/BE protocol version in use */
 	int			sversion;		/* server version, e.g. 70401 for 7.4.1 */
+	AuthRequest	areq;			/* server demanded password during auth */
 
 	/* Transient state needed while establishing connection */
 	struct addrinfo *addrlist;	/* list of possible backend addresses */

@@ -156,6 +156,7 @@ extern bool Db_user_namespace;
 #define AUTH_REQ_CRYPT		4	/* crypt password */
 #define AUTH_REQ_MD5		5	/* md5 password */
 #define AUTH_REQ_SCM_CREDS	6	/* transfer SCM credentials */
+#define AUTH_REQ_UNK		7	/* User has not yet attempted to authenticate */
 
 typedef uint32 AuthRequest;
 

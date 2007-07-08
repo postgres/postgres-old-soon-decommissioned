@@ -23,10 +23,11 @@ extern		"C"
 #include <stdio.h>
 
 /*
- * postgres_ext.h defines the backend's externally visible types,
+ * defines the backend's externally visible types,
  * such as Oid.
  */
 #include "postgres_ext.h"
+#include "postgres_fe.h"
 
 /* Application-visible enum types */
 
@@ -265,6 +266,7 @@ extern int	PQsocket(const PGconn *conn);
 extern int	PQbackendPID(const PGconn *conn);
 extern int	PQclientEncoding(const PGconn *conn);
 extern int	PQsetClientEncoding(PGconn *conn, const char *encoding);
+extern bool	PQconnectionUsedPassword(const PGconn *conn);
 
 /* Get the OpenSSL structure associated with a connection. Returns NULL for
  * unencrypted connections or if any other TLS library is in use. */
