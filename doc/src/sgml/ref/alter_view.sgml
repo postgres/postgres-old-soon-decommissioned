@@ -67,6 +67,7 @@ ALTER VIEW <replaceable>name</replaceable> RENAME TO <replaceable>newname</repla
 ALTER VIEW foo RENAME TO bar;
 </programlisting>
   </para>
+ </refsect1>
 
  <refsect1>
   <title>Compatibility</title>
