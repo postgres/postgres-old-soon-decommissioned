@@ -1070,8 +1070,12 @@ pgstat_drop_database(Oid databaseid)
  *	Tell the collector that we just dropped a relation.
  *	(If the message gets lost, we will still clean the dead entry eventually
  *	via future invocations of pgstat_vacuum_tabstat().)
+ *
+ *	Currently not used for lack of any good place to call it; we rely
+ *	entirely on pgstat_vacuum_tabstat() to clean out stats for dead rels.
  * ----------
  */
+#ifdef NOT_USED
 void
 pgstat_drop_relation(Oid relid)
 {
@@ -1090,6 +1094,7 @@ pgstat_drop_relation(Oid relid)
 	msg.m_databaseid = MyDatabaseId;
 	pgstat_send(&msg, len);
 }
+#endif /* NOT_USED */
 
 
 /* ----------

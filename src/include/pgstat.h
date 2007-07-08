@@ -412,7 +412,6 @@ extern void pgstat_report_analyze(Oid tableoid, bool shared,
 					  PgStat_Counter livetuples,
 					  PgStat_Counter deadtuples);
 extern void pgstat_vacuum_tabstat(void);
-extern void pgstat_drop_relation(Oid relid);
 
 extern void pgstat_reset_counters(void);
 

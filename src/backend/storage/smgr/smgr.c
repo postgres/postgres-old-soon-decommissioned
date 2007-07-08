@@ -19,7 +19,6 @@
 
 #include "access/xact.h"
 #include "commands/tablespace.h"
-#include "pgstat.h"
 #include "storage/bufmgr.h"
 #include "storage/freespace.h"
 #include "storage/ipc.h"
@@ -471,13 +470,11 @@ smgr_internal_unlink(RelFileNode rnode, int which, bool isTemp, bool isRedo)
 	FreeSpaceMapForgetRel(&rnode);
 
 	/*
-	 * Tell the stats collector to forget it immediately, too.  Skip this
-	 * in recovery mode, since the stats collector likely isn't running
-	 * (and if it is, pgstats.c will get confused because we aren't a real
-	 * backend process).
+	 * It'd be nice to tell the stats collector to forget it immediately, too.
+	 * But we can't because we don't know the OID (and in cases involving
+	 * relfilenode swaps, it's not always clear which table OID to forget,
+	 * anyway).
 	 */
-	if (!InRecovery)
-		pgstat_drop_relation(rnode.relNode);
 
 	/*
 	 * And delete the physical files.
