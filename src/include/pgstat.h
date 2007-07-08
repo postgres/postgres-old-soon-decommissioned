@@ -377,7 +377,6 @@ extern void pgstat_ping(void);
 
 extern void pgstat_report_tabstat(void);
 extern void pgstat_vacuum_tabstat(void);
-extern void pgstat_drop_relation(Oid relid);
 
 extern void pgstat_reset_counters(void);
 
