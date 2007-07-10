@@ -173,6 +173,16 @@ pq_close(int code, Datum arg)
 {
 	if (MyProcPort != NULL)
 	{
+#ifdef ENABLE_GSS
+		OM_uint32	min_s;
+		/* Shutdown GSSAPI layer */
+		if (MyProcPort->gss->ctx)
+			gss_delete_sec_context(&min_s, MyProcPort->gss->ctx, NULL);
+
+		if (MyProcPort->gss->cred)
+			gss_release_cred(&min_s, MyProcPort->gss->cred);
+#endif
+
 		/* Cleanly shut down SSL layer */
 		secure_close(MyProcPort);
 

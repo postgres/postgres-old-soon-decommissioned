@@ -44,6 +44,10 @@
 /* include stuff found in fe only */
 #include "pqexpbuffer.h"
 
+#ifdef ENABLE_GSS
+#include <gssapi/gssapi.h>
+#endif
+
 #ifdef USE_SSL
 #include <openssl/ssl.h>
 #include <openssl/err.h>
@@ -268,7 +272,7 @@ struct pg_conn
 	char	   *pguser;			/* Postgres username and password, if any */
 	char	   *pgpass;
 	char	   *sslmode;		/* SSL mode (require,prefer,allow,disable) */
-#ifdef KRB5
+#if defined(KRB5) || defined(ENABLE_GSS)
 	char	   *krbsrvname;		/* Kerberos service name */
 #endif
 
@@ -350,6 +354,14 @@ struct pg_conn
 	char		peer_cn[SM_USER + 1];	/* peer common name */
 #endif
 
+#ifdef ENABLE_GSS
+	gss_ctx_id_t	gctx;		/* GSS context */
+	gss_name_t		gtarg_nam;	/* GSS target name */
+	OM_uint32		gflags;		/* GSS service request flags */
+	gss_buffer_desc	ginbuf;		/* GSS input token */
+	gss_buffer_desc	goutbuf;	/* GSS output token */
+#endif
+
 	/* Buffer for current error message */
 	PQExpBufferData errorMessage;		/* expansible string */
 
@@ -399,6 +411,11 @@ extern pgthreadlock_t pg_g_threadlock;
 #define pgunlock_thread()	((void) 0)
 #endif
 
+/* === in fe-auth.c === */
+#ifdef ENABLE_GSS
+extern void pg_GSS_error(char *mprefix, char *msg, int msglen,
+        OM_uint32 maj_stat, OM_uint32 min_stat);
+#endif
 
 /* === in fe-exec.c === */
 

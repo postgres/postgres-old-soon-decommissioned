@@ -156,6 +156,8 @@ extern bool Db_user_namespace;
 #define AUTH_REQ_CRYPT		4	/* crypt password */
 #define AUTH_REQ_MD5		5	/* md5 password */
 #define AUTH_REQ_SCM_CREDS	6	/* transfer SCM credentials */
+#define AUTH_REQ_GSS		7	/* GSSAPI without wrap() */
+#define AUTH_REQ_GSS_CONT	8	/* Continue GSS exchanges */
 
 typedef uint32 AuthRequest;
 
