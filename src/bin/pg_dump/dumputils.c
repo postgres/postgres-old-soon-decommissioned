@@ -872,6 +872,18 @@ processSQLNamePattern(PGconn *conn, PQExpBuffer buf, const char *pattern,
 			appendPQExpBufferStr(&namebuf, "^(");
 			cp++;
 		}
+		else if (ch == '$')
+		{
+			/*
+			 * Dollar is always quoted, whether inside quotes or not.
+			 * The reason is that it's allowed in SQL identifiers, so
+			 * there's a significant use-case for treating it literally,
+			 * while because we anchor the pattern automatically there is
+			 * no use-case for having it possess its regexp meaning.
+			 */
+			appendPQExpBufferStr(&namebuf, "\\$");
+			cp++;
+		}
 		else
 		{
 			/*
