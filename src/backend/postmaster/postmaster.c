@@ -1732,6 +1732,13 @@ ConnCreate(int serverFd)
 	 */
 #ifdef ENABLE_GSS
 	port->gss = (pg_gssinfo *)calloc(1, sizeof(pg_gssinfo));
+	if (!port->gss)
+	{
+		ereport(LOG,
+				(errcode(ERRCODE_OUT_OF_MEMORY),
+				 errmsg("out of memory")));
+		ExitPostmaster(1);
+	}
 #endif
 
 	return port;

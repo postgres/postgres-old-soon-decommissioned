@@ -1689,6 +1689,13 @@ keep_going:						/* We will come back to here until there is
 
 						conn->ginbuf.length = llen;
 						conn->ginbuf.value = malloc(llen);
+						if (!conn->ginbuf.value)
+						{
+							printfPQExpBuffer(&conn->errorMessage,
+											  libpq_gettext("out of memory allocating GSSAPI buffer (%i)"),
+											  llen);
+							goto error_return;
+						}
 					}
 
 					if (pqGetnchar(conn->ginbuf.value, llen, conn))
