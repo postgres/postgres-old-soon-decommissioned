@@ -2155,6 +2155,13 @@ escape_quotes(const char *src)
 	return result;
 }
 
+/* Hack to suppress a warning about %x from some versions of gcc */
+static inline size_t
+my_strftime(char *s, size_t max, const char *fmt, const struct tm *tm)
+{
+	return strftime(s, max, fmt, tm);
+}
+
 /*
  * Determine likely date order from locale
  */
@@ -2184,7 +2191,7 @@ locale_date_order(const char *locale)
 	testtime.tm_mon = 10;		/* November, should come out as "11" */
 	testtime.tm_year = 133;		/* 2033 */
 
-	res = strftime(buf, sizeof(buf), "%x", &testtime);
+	res = my_strftime(buf, sizeof(buf), "%x", &testtime);
 
 	setlocale(LC_TIME, save);
 	free(save);
