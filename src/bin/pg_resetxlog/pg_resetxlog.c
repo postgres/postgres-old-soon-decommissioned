@@ -73,11 +73,11 @@ main(int argc, char *argv[])
 	int			c;
 	bool		force = false;
 	bool		noupdate = false;
-	uint32		set_xid_epoch = -1;
+	uint32		set_xid_epoch = (uint32) -1;
 	TransactionId set_xid = 0;
 	Oid			set_oid = 0;
 	MultiXactId set_mxid = 0;
-	MultiXactOffset set_mxoff = -1;
+	MultiXactOffset set_mxoff = (MultiXactOffset) -1;
 	uint32		minXlogTli = 0,
 				minXlogId = 0,
 				minXlogSeg = 0;
