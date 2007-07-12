@@ -335,9 +335,9 @@ pg_krb5_sendauth(char *PQerrormsg, int sock, const char *hostname, const char *s
 #include <gssapi/gssapi.h>
 #endif
 
-#ifdef WIN32
+#if defined(WIN32) && !defined(WIN32_ONLY_COMPILER)
 /*
- * MIT Kerberos GSSAPI DLL doesn't properly export the symbols
+ * MIT Kerberos GSSAPI DLL doesn't properly export the symbols for MingW
  * that contain the OIDs required. Redefine here, values copied
  * from src/athena/auth/krb5/src/lib/gssapi/generic/gssapi_generic.c
  */

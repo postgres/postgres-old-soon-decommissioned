@@ -308,9 +308,9 @@ pg_krb5_recvauth(Port *port)
 #include <gssapi/gssapi.h>
 #endif
 
-#ifdef WIN32
+#if defined(WIN32) && !defined(WIN32_ONLY_COMPILER)
 /*
- * MIT Kerberos GSSAPI DLL doesn't properly export the symbols
+ * MIT Kerberos GSSAPI DLL doesn't properly export the symbols for MingW
  * that contain the OIDs required. Redefine here, values copied
  * from src/athena/auth/krb5/src/lib/gssapi/generic/gssapi_generic.c
  */
@@ -381,8 +381,8 @@ pg_GSS_recvauth(Port *port)
 		 */
 		if (!getenv("KRB5_KTNAME"))
 		{
-			kt_path = palloc(PATH_MAX + 13);
-			snprintf(kt_path, PATH_MAX + 13,
+			kt_path = palloc(MAXPGPATH + 13);
+			snprintf(kt_path, MAXPGPATH + 13,
 					"KRB5_KTNAME=%s", pg_krb_server_keyfile);
 			putenv(kt_path);
 		}
