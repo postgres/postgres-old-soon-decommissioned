@@ -45,7 +45,11 @@
 #include "pqexpbuffer.h"
 
 #ifdef ENABLE_GSS
+#if defined(HAVE_GSSAPI_H)
+#include <gssapi.h>
+#else
 #include <gssapi/gssapi.h>
+#endif
 #endif
 
 #ifdef USE_SSL

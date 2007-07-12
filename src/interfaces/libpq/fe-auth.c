@@ -329,7 +329,11 @@ pg_krb5_sendauth(char *PQerrormsg, int sock, const char *hostname, const char *s
 /*
  * GSSAPI authentication system.
  */
+#if defined(HAVE_GSSAPI_H)
+#include <gssapi.h>
+#else
 #include <gssapi/gssapi.h>
+#endif
 
 #ifdef WIN32
 /*

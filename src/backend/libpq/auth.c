@@ -302,7 +302,11 @@ pg_krb5_recvauth(Port *port)
  *----------------------------------------------------------------
  */
 
+#if defined(HAVE_GSSAPI_H)
+#include <gssapi.h>
+#else
 #include <gssapi/gssapi.h>
+#endif
 
 #ifdef WIN32
 /*
