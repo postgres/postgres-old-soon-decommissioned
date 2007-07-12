@@ -280,7 +280,7 @@ static int	pg_euctw2wchar_with_len
 		if (*from == SS2 && len >= 4)	/* code set 2 */
 		{
 			from++;
-			*to = (SS2 << 24) | (*from++ << 16);
+			*to = (((uint32) SS2) << 24) | (*from++ << 16);
 			*to |= *from++ << 8;
 			*to |= *from++;
 			len -= 4;
