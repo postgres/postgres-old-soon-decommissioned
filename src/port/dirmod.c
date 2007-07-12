@@ -103,6 +103,7 @@ fe_repalloc(void *pointer, Size size)
 	}
 	return res;
 }
+
 #endif   /* FRONTEND */
 
 
@@ -169,8 +170,14 @@ pgunlink(const char *path)
 	return 0;
 }
 
+/* We undefined these above; now redefine for possible use below */
+#define rename(from, to)		pgrename(from, to)
+#define unlink(path)			pgunlink(path)
 
-#ifdef WIN32					/* Cygwin has its own symlinks */
+#endif   /* defined(WIN32) || defined(__CYGWIN__) */
+
+
+#if defined(WIN32) && !defined(__CYGWIN__)	/* Cygwin has its own symlinks */
 
 /*
  *	pgsymlink support:
@@ -276,14 +283,8 @@ pgsymlink(const char *oldpath, const char *newpath)
 
 	return 0;
 }
-#endif   /* WIN32 */
-#endif   /* defined(WIN32) || defined(__CYGWIN__) */
 
-
-/* We undefined this above, so we redefine it */
-#if defined(WIN32) || defined(__CYGWIN__)
-#define unlink(path)	pgunlink(path)
-#endif
+#endif /* defined(WIN32) && !defined(__CYGWIN__) */
 
 
 /*
