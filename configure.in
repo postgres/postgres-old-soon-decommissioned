@@ -859,6 +859,15 @@ if test "$with_krb5" = yes; then
                                      [AC_MSG_ERROR([could not determine how to extract Kerberos 5 error messages])],
                                      [#include <krb5.h>])],
                    [#include <krb5.h>])
+
+# Win32 requires headers to be loaded for __stdcall, so can't use
+# AC_CHECK_FUNCS here.
+  AC_MSG_CHECKING(for krb5_free_unparsed_name)
+  AC_TRY_LINK([#include <krb5.h>],
+              [krb5_free_unparsed_name(NULL,NULL);],
+              [AC_DEFINE(HAVE_KRB5_FREE_UNPARSED_NAME, 1, [Define to 1 if you have krb5_free_unparsed_name]) 
+AC_MSG_RESULT(yes)],
+              [AC_MSG_RESULT(no)])
 fi
 
 

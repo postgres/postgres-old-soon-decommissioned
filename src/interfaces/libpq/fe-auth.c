@@ -64,6 +64,18 @@
 #endif
 
 /*
+ * Heimdal doesn't have a free function for unparsed names. Just pass it to
+ * standard free() which should work in these cases.
+ */
+#ifndef HAVE_KRB5_FREE_UNPARSED_NAME
+static void
+krb5_free_unparsed_name(krb5_context context, char *val)
+{
+	free(val);
+}
+#endif
+
+/*
  * pg_an_to_ln -- return the local name corresponding to an authentication
  *				  name
  *
@@ -180,8 +192,8 @@ pg_krb5_destroy(struct krb5_info * info)
 {
 	krb5_free_principal(info->pg_krb5_context, info->pg_krb5_client);
 	krb5_cc_close(info->pg_krb5_context, info->pg_krb5_ccache);
+	krb5_free_unparsed_name(info->pg_krb5_context, info->pg_krb5_name);
 	krb5_free_context(info->pg_krb5_context);
-	free(info->pg_krb5_name);
 }
 
 
