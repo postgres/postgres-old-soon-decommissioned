@@ -240,8 +240,9 @@ cash_in(PG_FUNCTION_ARGS)
 		}
 	}
 
-	/* should only be trailing digits followed by whitespace or closing paren */
-	while (isdigit(*s)) s++;
+	/* should only be trailing digits followed by whitespace or right paren */
+	while (isdigit((unsigned char) *s))
+		s++;
 	while (isspace((unsigned char) *s) || *s == ')')
 		s++;
 
