@@ -114,7 +114,7 @@ load_external_function(char *filename, char *funcname,
 		*filehandle = lib_handle;
 
 	/* Look up the function within the library */
-	retval = pg_dlsym(lib_handle, funcname);
+	retval = (PGFunction) pg_dlsym(lib_handle, funcname);
 
 	if (retval == NULL && signalNotFound)
 		ereport(ERROR,
@@ -162,7 +162,7 @@ load_file(const char *filename, bool restricted)
 PGFunction
 lookup_external_function(void *filehandle, char *funcname)
 {
-	return pg_dlsym(filehandle, funcname);
+	return (PGFunction) pg_dlsym(filehandle, funcname);
 }
 
 
