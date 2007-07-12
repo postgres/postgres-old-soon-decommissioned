@@ -1288,8 +1288,6 @@ adjust_appendrel_attr_needed(RelOptInfo *oldrel, AppendRelInfo *appinfo,
 	ListCell   *lm;
 
 	/* Create empty result array */
-	Assert(new_min_attr <= oldrel->min_attr);
-	Assert(new_max_attr >= oldrel->max_attr);
 	new_attr_needed = (Relids *)
 		palloc0((new_max_attr - new_min_attr + 1) * sizeof(Relids));
 	/* Process user attributes, with appropriate attno mapping */
@@ -1312,6 +1310,7 @@ adjust_appendrel_attr_needed(RelOptInfo *oldrel, AppendRelInfo *appinfo,
 		parent_attr++;
 	}
 	/* Process system attributes, including whole-row references */
+	Assert(new_min_attr <= oldrel->min_attr);
 	for (parent_attr = oldrel->min_attr; parent_attr <= 0; parent_attr++)
 	{
 		Relids		attrneeded;
