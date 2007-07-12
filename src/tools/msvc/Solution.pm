@@ -123,6 +123,7 @@ s{PG_VERSION_STR "[^"]+"}{__STRINGIFY(x) #x\n#define __STRINGIFY2(z) __STRINGIFY
             print O "#define KRB5 1\n";
             print O "#define HAVE_KRB5_ERROR_TEXT_DATA 1\n";
             print O "#define HAVE_KRB5_TICKET_ENC_PART2 1\n";
+            print O "#define HAVE_KRB5_FREE_UNPARSED_NAME 1\n";
             print O "#define PG_KRB_SRVNAM \"postgres\"\n";
         }
 		if (my $port = $self->{options}->{"--with-pgport"})
