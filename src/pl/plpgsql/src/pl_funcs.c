@@ -701,8 +701,8 @@ dump_fori(PLpgSQL_stmt_fori *stmt)
 	dump_expr(stmt->upper);
 	printf("\n");
 	dump_ind();
-	printf("    by = ");
-	dump_expr(stmt->by);
+	printf("    step = ");
+	dump_expr(stmt->step);
 	printf("\n");
 	dump_indent -= 2;
 
