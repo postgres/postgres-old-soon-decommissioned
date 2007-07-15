@@ -575,5 +575,5 @@ main(int argc, char **argv)
 	sql_exec_dumpalldbs(pgconn, my_opts);
 
 	PQfinish(pgconn);
-	exit(0);
+	return 0;
 }
