@@ -67,9 +67,13 @@ else
 	@$(missing) bison $< $@
 endif
 
+# Because we use %option case-insensitive, flex's results could vary
+# depending on what the compile-time locale setting is.  Hence, force
+# it to see LC_CTYPE=C to ensure consistent build results.
+
 $(srcdir)/pl_scan.c: scan.l
 ifdef FLEX
-	$(FLEX) $(FLEXFLAGS) -o'$@' $<
+	LC_CTYPE=C $(FLEX) $(FLEXFLAGS) -o'$@' $<
 else
 	@$(missing) flex $< $@
 endif
