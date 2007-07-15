@@ -1442,7 +1442,7 @@ main(int argc, char **argv)
 	{
 		char		logpath[64];
 
-		snprintf(logpath, 64, "pgbench_log.%d", getpid());
+		snprintf(logpath, 64, "pgbench_log.%d", (int) getpid());
 		LOGFILE = fopen(logpath, "w");
 
 		if (LOGFILE == NULL)
