@@ -3199,7 +3199,7 @@ s_norm(mp_int a, mp_int b)
 	mp_digit	d = b->digits[MP_USED(b) - 1];
 	int			k = 0;
 
-	while (d < (mp_digit) (1 << (MP_DIGIT_BIT - 1)))
+	while (d < (mp_digit) ((mp_digit) 1 << (MP_DIGIT_BIT - 1)))
 	{							/* d < (MP_RADIX / 2) */
 		d <<= 1;
 		++k;
