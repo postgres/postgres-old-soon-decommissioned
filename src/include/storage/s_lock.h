@@ -754,8 +754,8 @@ typedef abilock_t slock_t;
 
 typedef unsigned int slock_t;
 
-#define TAS(lock)			_check_lock(lock, 0, 1)
-#define S_UNLOCK(lock)		_clear_lock(lock, 0)
+#define TAS(lock)			_check_lock((slock_t *) (lock), 0, 1)
+#define S_UNLOCK(lock)		_clear_lock((slock_t *) (lock), 0)
 #endif	 /* _AIX */
 
 
