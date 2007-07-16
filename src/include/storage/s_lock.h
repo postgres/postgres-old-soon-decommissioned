@@ -750,6 +750,8 @@ typedef abilock_t slock_t;
  */
 #define HAS_TEST_AND_SET
 
+#include <sys/atomic_op.h>
+
 typedef unsigned int slock_t;
 
 #define TAS(lock)			_check_lock(lock, 0, 1)
