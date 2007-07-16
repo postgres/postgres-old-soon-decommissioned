@@ -752,7 +752,7 @@ typedef abilock_t slock_t;
 
 #include <sys/atomic_op.h>
 
-typedef unsigned int slock_t;
+typedef int slock_t;
 
 #define TAS(lock)			_check_lock((slock_t *) (lock), 0, 1)
 #define S_UNLOCK(lock)		_clear_lock((slock_t *) (lock), 0)
