@@ -366,7 +366,7 @@ decl_statement	: decl_varname decl_const decl_datatype decl_notnull decl_defval
 						plpgsql_ns_rename($2, $4);
 					}
 				| decl_varname opt_scrollable K_CURSOR
-					{ plpgsql_ns_push(NULL); }
+					{ plpgsql_ns_push($1.name); }
 				  decl_cursor_args decl_is_for decl_cursor_query
 					{
 						PLpgSQL_var *new;
