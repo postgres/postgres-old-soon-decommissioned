@@ -1407,6 +1407,10 @@ _outValue(StringInfo str, Value *value)
 			/* internal representation already has leading 'b' */
 			appendStringInfo(str, "%s", value->val.str);
 			break;
+		case T_Null:
+			/* this is seen only within A_Const, not in transformed trees */
+			appendStringInfoString(str, "NULL");
+			break;
 		default:
 			elog(ERROR, "unrecognized node type: %d", (int) value->type);
 			break;
@@ -1435,8 +1439,9 @@ _outParamRef(StringInfo str, ParamRef *node)
 static void
 _outAConst(StringInfo str, A_Const *node)
 {
-	WRITE_NODE_TYPE("CONST ");
+	WRITE_NODE_TYPE("A_CONST");
 
+	appendStringInfo(str, " :val ");
 	_outValue(str, &(node->val));
 	WRITE_NODE_FIELD(typename);
 }
