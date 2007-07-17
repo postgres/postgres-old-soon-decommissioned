@@ -377,12 +377,13 @@ RI_FKey_check(PG_FUNCTION_ARGS)
 
 	/*
 	 * No need to check anything if old and new references are the same on
-	 * UPDATE.
+	 * UPDATE; unless the updated row was inserted by our own transaction.
+	 * This is because the UPDATE invalidated the INSERT, so the INSERT
+	 * trigger won't have checked.
 	 */
 	if (TRIGGER_FIRED_BY_UPDATE(trigdata->tg_event))
 	{
-		if (HeapTupleHeaderGetXmin(old_row->t_data) !=
-			GetCurrentTransactionId() &&
+		if (!TransactionIdIsCurrentTransactionId(HeapTupleHeaderGetXmin(old_row->t_data)) &&
 			ri_KeysEqual(fk_rel, old_row, new_row, &qkey,
 						 RI_KEYPAIR_FK_IDX))
 		{
