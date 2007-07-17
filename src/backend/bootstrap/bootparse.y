@@ -252,7 +252,7 @@ Boot_DeclareIndexStmt:
 								LexIDStr($8),
 								NULL,
 								$10,
-								NULL, NIL,
+								NULL, NIL, NULL,
 								false, false, false,
 								false, false, true, false, false);
 					do_end();
@@ -270,7 +270,7 @@ Boot_DeclareUniqueIndexStmt:
 								LexIDStr($9),
 								NULL,
 								$11,
-								NULL, NIL,
+								NULL, NIL, NULL,
 								true, false, false,
 								false, false, true, false, false);
 					do_end();

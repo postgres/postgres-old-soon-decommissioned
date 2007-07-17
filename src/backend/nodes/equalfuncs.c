@@ -1044,6 +1044,7 @@ _equalIndexStmt(IndexStmt *a, IndexStmt *b)
 	COMPARE_STRING_FIELD(tableSpace);
 	COMPARE_NODE_FIELD(indexParams);
 	COMPARE_NODE_FIELD(options);
+	COMPARE_STRING_FIELD(src_options);
 	COMPARE_NODE_FIELD(whereClause);
 	COMPARE_SCALAR_FIELD(unique);
 	COMPARE_SCALAR_FIELD(primary);

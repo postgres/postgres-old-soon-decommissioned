@@ -2192,6 +2192,7 @@ _copyIndexStmt(IndexStmt *from)
 	COPY_STRING_FIELD(tableSpace);
 	COPY_NODE_FIELD(indexParams);
 	COPY_NODE_FIELD(options);
+	COPY_STRING_FIELD(src_options);
 	COPY_NODE_FIELD(whereClause);
 	COPY_SCALAR_FIELD(unique);
 	COPY_SCALAR_FIELD(primary);
