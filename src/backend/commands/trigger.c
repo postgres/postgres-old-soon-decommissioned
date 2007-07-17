@@ -3396,8 +3396,7 @@ AfterTriggerSaveEvent(ResultRelInfo *relinfo, int event, bool row_trigger,
 					 * anything, so we have to do the check for the UPDATE
 					 * anyway.
 					 */
-					if (HeapTupleHeaderGetXmin(oldtup->t_data) !=
-						GetCurrentTransactionId() &&
+					if (!TransactionIdIsCurrentTransactionId(HeapTupleHeaderGetXmin(oldtup->t_data)) &&
 						RI_FKey_keyequal_upd_fk(trigger, rel, oldtup, newtup))
 					{
 						continue;
