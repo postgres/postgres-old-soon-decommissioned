@@ -5895,6 +5895,17 @@ SELECT (DATE '2001-02-16', INTERVAL '100 days') OVERLAPS
    <literal>CST7CDT</literal>.
   </para>
 
+  <para>
+   Note that when the <function>age</> function operates on multi-month
+   intervals, <productname>PostgreSQL</> adds days to the earlier date
+   until full months can be added.  This yields a different result than
+   adding full months first if the interval crosses from one month to the
+   next.  For example, <literal>age('2004-06-01', '2004-04-30')</> yeilds
+   <literal>1 mon 1 day</> using the <productname>PostgreSQL</> method,
+   while adding the month first would yield <literal>1 mon 2 days</>
+   because May has 31 days, while April has only 30.
+  </para>
+
   <sect2 id="functions-datetime-extract">
    <title><function>EXTRACT</function>, <function>date_part</function></title>
 
