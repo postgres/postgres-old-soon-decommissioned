@@ -75,6 +75,8 @@ ErrorContextCallback *error_context_stack = NULL;
 
 sigjmp_buf *PG_exception_stack = NULL;
 
+extern bool redirection_done;
+
 /* GUC parameters */
 PGErrorVerbosity Log_error_verbosity = PGERROR_VERBOSE;
 char	   *Log_line_prefix = NULL;		/* format for extra log line info */
@@ -1670,11 +1672,11 @@ send_message_to_server_log(ErrorData *edata)
 		 * If stderr redirection is active, it's ok to write to stderr
 		 * because that's really a pipe to the syslogger process.
 		 */
-		if ((!Redirect_stderr || am_syslogger) && pgwin32_is_service())
+		if (pgwin32_is_service() && (!redirection_done || am_syslogger) )
 			write_eventlog(edata->elevel, buf.data);
 		else
 #endif
-			if (Redirect_stderr)
+			if (redirection_done && !am_syslogger)
 				write_pipe_chunks(fileno(stderr), buf.data, buf.len);
 			else
 				write(fileno(stderr), buf.data, buf.len);

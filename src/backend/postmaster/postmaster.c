@@ -221,6 +221,7 @@ static bool FatalError = false; /* T if recovering from backend crash */
 
 bool		ClientAuthInProgress = false;		/* T during new-client
 												 * authentication */
+bool redirection_done = false; 
 
 /*
  * State for assigning random salts and cancel keys.
@@ -330,6 +331,7 @@ typedef struct
 	InheritableSocket pgStatPipe0;
 	InheritableSocket pgStatPipe1;
 	pid_t PostmasterPid;
+	bool redirection_done;
 #ifdef WIN32
 	HANDLE PostmasterHandle;
 	HANDLE initial_signal_pipe;
@@ -3718,6 +3720,8 @@ save_backend_variables(BackendParameters *param, Port *port,
 
 	param->PostmasterPid = PostmasterPid;
 
+	param->redirection_done = redirection_done;
+
 #ifdef WIN32
 	param->PostmasterHandle = PostmasterHandle;
 	write_duplicated_handle(&param->initial_signal_pipe,
@@ -3919,6 +3923,8 @@ restore_backend_variables(BackendParameters *param, Port *port)
 	read_inheritable_socket(&pgStatPipe[1], &param->pgStatPipe1);
 
 	PostmasterPid = param->PostmasterPid;
+
+	redirection_done = param->redirection_done;
 
 #ifdef WIN32
 	PostmasterHandle = param->PostmasterHandle;
