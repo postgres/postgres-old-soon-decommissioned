@@ -57,7 +57,6 @@ typedef int ssize_t;			/* ssize_t doesn't exist in VC (at least not
 /*
  * POSTGRES backend dependent Constants.
  */
-#define PQERRORMSG_LENGTH 1024
 #define CMDSTATUS_LEN 40
 
 /*
