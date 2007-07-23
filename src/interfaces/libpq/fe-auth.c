@@ -933,7 +933,7 @@ pg_fe_sendauth(AuthRequest areq, PGconn *conn, const char *hostname,
 			break;
 #else
 		case AUTH_REQ_SSPI:
-			snpritnf(PQerrormsg, PQERRORMSG_LENGTH,
+			snprintf(PQerrormsg, PQERRORMSG_LENGTH,
 					libpq_gettext("SSPI authentication not supported\n"));
 			return STATUS_ERROR;
 #endif
