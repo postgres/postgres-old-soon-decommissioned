@@ -291,6 +291,17 @@ PGconn *PQconnectdb(const char *conninfo);
     </varlistentry>
 
     <varlistentry>
+     <term><literal>gsslib</literal></term>
+     <listitem>
+      <para>
+       GSS library to use for GSSAPI authentication. Only used on Windows.
+       Set to <literal>gssapi</literal> to force libpq to use the GSSAPI
+       library for authentication instead of the default SSPI.
+      </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry>
      <term><literal>service</literal></term>
      <listitem>
      <para>
@@ -4216,6 +4227,15 @@ set, the secret key must be kept in a file.
 </indexterm>
 <envar>PGKRBSRVNAME</envar> sets the Kerberos service name to use when
 authenticating with Kerberos 5 or GSSAPI.
+</para>
+</listitem>
+<listitem>
+<para>
+<indexterm>
+ <primary><envar>PGGSSLIB</envar></primary>
+</indexterm>
+<envar>PGGSSLIB</envar> sets the GSS library to use for GSSAPI 
+authentication. 
 </para>
 </listitem>
 <listitem>

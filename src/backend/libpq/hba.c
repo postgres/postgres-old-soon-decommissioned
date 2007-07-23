@@ -604,6 +604,8 @@ parse_hba_auth(ListCell **line_item, UserAuth *userauth_p,
 		*userauth_p = uaKrb5;
 	else if (strcmp(token, "gss") == 0)
 		*userauth_p = uaGSS;
+	else if (strcmp(token, "sspi") == 0)
+		*userauth_p = uaSSPI;
 	else if (strcmp(token, "reject") == 0)
 		*userauth_p = uaReject;
 	else if (strcmp(token, "md5") == 0)

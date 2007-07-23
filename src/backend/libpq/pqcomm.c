@@ -173,15 +173,21 @@ pq_close(int code, Datum arg)
 {
 	if (MyProcPort != NULL)
 	{
+#if defined(ENABLE_GSS) || defined(ENABLE_SSPI)
 #ifdef ENABLE_GSS
 		OM_uint32	min_s;
+
 		/* Shutdown GSSAPI layer */
 		if (MyProcPort->gss->ctx)
 			gss_delete_sec_context(&min_s, MyProcPort->gss->ctx, NULL);
 
 		if (MyProcPort->gss->cred)
 			gss_release_cred(&min_s, MyProcPort->gss->cred);
-#endif
+#endif /* ENABLE_GSS */
+		/* GSS and SSPI share the port->gss struct */
+
+		free(MyProcPort->gss);
+#endif /* ENABLE_GSS || ENABLE_SSPI */
 
 		/* Cleanly shut down SSL layer */
 		secure_close(MyProcPort);
