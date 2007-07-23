@@ -76,7 +76,7 @@ typedef struct {
 /*
  * POSTGRES backend dependent Constants.
  */
-#define CMDSTATUS_LEN 40
+#define CMDSTATUS_LEN 64		/* should match COMPLETION_TAG_BUFSIZE */
 
 /*
  * PGresult and the subsidiary types PGresAttDesc, PGresAttValue
