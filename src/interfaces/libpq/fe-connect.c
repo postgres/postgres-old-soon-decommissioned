@@ -1723,12 +1723,7 @@ keep_going:						/* We will come back to here until there is
 				 * avoid the Kerberos code doing a hostname look-up.
 				 */
 
-				/*
-				 * XXX fe-auth.c has not been fixed to support PQExpBuffers,
-				 * so:
-				 */
-				if (pg_fe_sendauth(areq, conn, conn->pghost, conn->pgpass,
-								   conn->errorMessage.data) != STATUS_OK)
+				if (pg_fe_sendauth(areq, conn) != STATUS_OK)
 				{
 					conn->errorMessage.len = strlen(conn->errorMessage.data);
 					goto error_return;
@@ -3074,7 +3069,6 @@ conninfo_parse(const char *conninfo, PQExpBuffer errorMessage)
 	char	   *cp2;
 	PQconninfoOption *options;
 	PQconninfoOption *option;
-	char		errortmp[PQERRORMSG_LENGTH];
 
 	/* Make a working copy of PQconninfoOptions */
 	options = malloc(sizeof(PQconninfoOptions));
@@ -3297,8 +3291,7 @@ conninfo_parse(const char *conninfo, PQExpBuffer errorMessage)
 		 */
 		if (strcmp(option->keyword, "user") == 0)
 		{
-			option->val = pg_fe_getauthname(errortmp);
-			/* note any error message is thrown away */
+			option->val = pg_fe_getauthname(errorMessage);
 			continue;
 		}
 	}

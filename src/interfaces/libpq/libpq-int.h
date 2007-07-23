@@ -76,7 +76,6 @@ typedef struct {
 /*
  * POSTGRES backend dependent Constants.
  */
-#define PQERRORMSG_LENGTH 1024
 #define CMDSTATUS_LEN 40
 
 /*

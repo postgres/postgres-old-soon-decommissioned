@@ -49,7 +49,7 @@ typedef PQExpBufferData *PQExpBuffer;
 /*------------------------
  * Initial size of the data buffer in a PQExpBuffer.
  * NB: this must be large enough to hold error messages that might
- * be returned by PQrequestCancel() or any routine in fe-auth.c.
+ * be returned by PQrequestCancel().
  *------------------------
  */
 #define INITIAL_EXPBUFFER_SIZE	256
