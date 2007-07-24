@@ -64,6 +64,7 @@ libpostgres.a: postgres.def
 endif # cygwin
 
 ifeq ($(PORTNAME), win32)
+LIBS += -lsecur32
 
 postgres: $(OBJS) postgres.def libpostgres.a $(WIN32RES)
 	$(DLLTOOL) --dllname $@$(X) --output-exp $@.exp --def postgres.def
