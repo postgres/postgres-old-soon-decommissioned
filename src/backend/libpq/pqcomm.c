@@ -245,7 +245,6 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 	int			fd,
 				err;
 	int			maxconn;
-	int			one = 1;
 	int			ret;
 	char		portNumberStr[32];
 	const char *familyDesc;
@@ -256,6 +255,9 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 	struct addrinfo hint;
 	int			listen_index = 0;
 	int			added = 0;
+#if !defined(WIN32) || defined(IPV6_V6ONLY)
+	int			one = 1;
+#endif
 
 	/* Initialize hint structure */
 	MemSet(&hint, 0, sizeof(hint));
