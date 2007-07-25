@@ -30,7 +30,7 @@ sub new
         prefixincludes  => '',
         defines         => ';',
         solution        => $solution,
-        disablewarnings => '4018;4244;4273;4102',
+        disablewarnings => '4018;4244;4273;4102;4090',
         disablelinkerwarnings => ''
     };
 
