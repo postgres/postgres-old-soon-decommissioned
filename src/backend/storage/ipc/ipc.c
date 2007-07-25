@@ -21,6 +21,7 @@
 
 #include <signal.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
 #include "miscadmin.h"
 #include "storage/ipc.h"
