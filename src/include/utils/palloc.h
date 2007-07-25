@@ -40,7 +40,7 @@ typedef struct MemoryContextData *MemoryContext;
  * We declare it here so that palloc() can be a macro.	Avoid accessing it
  * directly!  Instead, use MemoryContextSwitchTo() to change the setting.
  */
-extern DLLIMPORT MemoryContext CurrentMemoryContext;
+extern PGDLLIMPORT MemoryContext CurrentMemoryContext;
 
 /*
  * Fundamental memory-allocation operations (more are in utils/memutils.h)

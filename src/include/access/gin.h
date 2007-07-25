@@ -414,7 +414,7 @@ extern Datum ginrestrpos(PG_FUNCTION_ARGS);
 extern void newScanKey(IndexScanDesc scan);
 
 /* ginget.c */
-extern DLLIMPORT int GinFuzzySearchLimit;
+extern PGDLLIMPORT int GinFuzzySearchLimit;
 
 #define ItemPointerSetMax(p)	ItemPointerSet( (p), (BlockNumber)0xffffffff, (OffsetNumber)0xffff )
 #define ItemPointerIsMax(p) ( ItemPointerGetBlockNumber(p) == (BlockNumber)0xffffffff && ItemPointerGetOffsetNumber(p) == (OffsetNumber)0xffff )

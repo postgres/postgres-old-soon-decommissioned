@@ -105,7 +105,7 @@ struct PGPROC
 /* NOTE: "typedef struct PGPROC PGPROC" appears in storage/lock.h. */
 
 
-extern DLLIMPORT PGPROC *MyProc;
+extern PGDLLIMPORT PGPROC *MyProc;
 
 
 /*

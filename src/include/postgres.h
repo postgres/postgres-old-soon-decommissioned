@@ -650,7 +650,7 @@ extern Datum Float8GetDatum(float8 X);
  * ----------------------------------------------------------------
  */
 
-extern DLLIMPORT bool assert_enabled;
+extern PGDLLIMPORT bool assert_enabled;
 
 /*
  * USE_ASSERT_CHECKING, if defined, turns on all the assertions.

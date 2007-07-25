@@ -107,7 +107,7 @@ typedef struct VacAttrStats
 
 
 /* GUC parameters */
-extern DLLIMPORT int default_statistics_target; /* DLLIMPORT for PostGIS */
+extern PGDLLIMPORT int default_statistics_target; /* PGDLLIMPORT for PostGIS */
 extern int	vacuum_freeze_min_age;
 
 

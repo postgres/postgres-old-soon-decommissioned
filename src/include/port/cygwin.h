@@ -14,8 +14,8 @@
 #endif
 
 #ifdef BUILDING_DLL
-#define DLLIMPORT __declspec (dllexport)
+#define PGDLLIMPORT __declspec (dllexport)
 #else
-#define DLLIMPORT __declspec (dllimport)
+#define PGDLLIMPORT __declspec (dllimport)
 
 #endif

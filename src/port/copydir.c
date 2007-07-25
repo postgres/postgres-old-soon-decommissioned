@@ -26,7 +26,7 @@
 
 /*
  *	On Windows, call non-macro versions of palloc; we can't reference
- *	CurrentMemoryContext in this file because of DLLIMPORT conflict.
+ *	CurrentMemoryContext in this file because of PGDLLIMPORT conflict.
  */
 #if defined(WIN32) || defined(__CYGWIN__)
 #undef palloc

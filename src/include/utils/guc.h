@@ -115,7 +115,7 @@ extern bool log_executor_stats;
 extern bool log_statement_stats;
 extern bool log_btree_build_stats;
 
-extern DLLIMPORT bool check_function_bodies;
+extern PGDLLIMPORT bool check_function_bodies;
 extern bool default_with_oids;
 extern bool SQL_inheritance;
 

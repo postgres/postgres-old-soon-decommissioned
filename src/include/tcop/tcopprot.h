@@ -28,7 +28,7 @@
 #define STACK_DEPTH_SLOP (512 * 1024L)
 
 extern CommandDest whereToSendOutput;
-extern DLLIMPORT const char *debug_query_string;
+extern PGDLLIMPORT const char *debug_query_string;
 extern int	max_stack_depth;
 extern int	PostAuthDelay;
 

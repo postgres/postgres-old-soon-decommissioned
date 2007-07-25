@@ -84,10 +84,10 @@ typedef struct _SPI_plan *SPIPlanPtr;
 #define SPI_OK_DELETE_RETURNING 12
 #define SPI_OK_UPDATE_RETURNING 13
 
-extern DLLIMPORT uint32 SPI_processed;
-extern DLLIMPORT Oid SPI_lastoid;
-extern DLLIMPORT SPITupleTable *SPI_tuptable;
-extern DLLIMPORT int SPI_result;
+extern PGDLLIMPORT uint32 SPI_processed;
+extern PGDLLIMPORT Oid SPI_lastoid;
+extern PGDLLIMPORT SPITupleTable *SPI_tuptable;
+extern PGDLLIMPORT int SPI_result;
 
 extern int	SPI_connect(void);
 extern int	SPI_finish(void);

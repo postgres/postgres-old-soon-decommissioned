@@ -22,7 +22,7 @@
 typedef PlannedStmt * (*planner_hook_type) (Query *parse,
 											int cursorOptions,
 											ParamListInfo boundParams);
-extern DLLIMPORT planner_hook_type planner_hook;
+extern PGDLLIMPORT planner_hook_type planner_hook;
 
 
 extern PlannedStmt *planner(Query *parse, int cursorOptions,

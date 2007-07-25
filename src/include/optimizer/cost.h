@@ -36,12 +36,12 @@
  */
 
 /* parameter variables and flags */
-extern DLLIMPORT double seq_page_cost;
-extern DLLIMPORT double random_page_cost;
-extern DLLIMPORT double cpu_tuple_cost;
-extern DLLIMPORT double cpu_index_tuple_cost;
-extern DLLIMPORT double cpu_operator_cost;
-extern DLLIMPORT int effective_cache_size;
+extern PGDLLIMPORT double seq_page_cost;
+extern PGDLLIMPORT double random_page_cost;
+extern PGDLLIMPORT double cpu_tuple_cost;
+extern PGDLLIMPORT double cpu_index_tuple_cost;
+extern PGDLLIMPORT double cpu_operator_cost;
+extern PGDLLIMPORT int effective_cache_size;
 extern Cost disable_cost;
 extern bool enable_seqscan;
 extern bool enable_indexscan;

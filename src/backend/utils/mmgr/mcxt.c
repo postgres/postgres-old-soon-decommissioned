@@ -662,8 +662,8 @@ MemoryContextStrdup(MemoryContext context, const char *string)
 /*
  *	Memory support routines for libpgport on Win32
  *
- *	Win32 can't load a library that DLLIMPORTs a variable
- *	if the link object files also DLLIMPORT the same variable.
+ *	Win32 can't load a library that PGDLLIMPORTs a variable
+ *	if the link object files also PGDLLIMPORT the same variable.
  *	For this reason, libpgport can't reference CurrentMemoryContext
  *	in the palloc macro calls.
  *
@@ -684,7 +684,7 @@ pgport_pstrdup(const char *str)
 }
 
 
-/* Doesn't reference a DLLIMPORT variable, but here for completeness. */
+/* Doesn't reference a PGDLLIMPORT variable, but here for completeness. */
 void
 pgport_pfree(void *pointer)
 {

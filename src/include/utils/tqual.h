@@ -61,10 +61,10 @@ typedef struct SnapshotData
 #define InvalidSnapshot		((Snapshot) NULL)
 
 /* Static variables representing various special snapshot semantics */
-extern DLLIMPORT SnapshotData SnapshotNowData;
-extern DLLIMPORT SnapshotData SnapshotSelfData;
-extern DLLIMPORT SnapshotData SnapshotAnyData;
-extern DLLIMPORT SnapshotData SnapshotToastData;
+extern PGDLLIMPORT SnapshotData SnapshotNowData;
+extern PGDLLIMPORT SnapshotData SnapshotSelfData;
+extern PGDLLIMPORT SnapshotData SnapshotAnyData;
+extern PGDLLIMPORT SnapshotData SnapshotToastData;
 
 #define SnapshotNow			(&SnapshotNowData)
 #define SnapshotSelf		(&SnapshotSelfData)
@@ -84,9 +84,9 @@ extern DLLIMPORT SnapshotData SnapshotToastData;
 	((snapshot)->satisfies == HeapTupleSatisfiesMVCC)
 
 
-extern DLLIMPORT Snapshot SerializableSnapshot;
-extern DLLIMPORT Snapshot LatestSnapshot;
-extern DLLIMPORT Snapshot ActiveSnapshot;
+extern PGDLLIMPORT Snapshot SerializableSnapshot;
+extern PGDLLIMPORT Snapshot LatestSnapshot;
+extern PGDLLIMPORT Snapshot ActiveSnapshot;
 
 extern TransactionId TransactionXmin;
 extern TransactionId RecentXmin;
