@@ -21,6 +21,9 @@ perl_archlibexp := $(subst \,/,$(perl_archlibexp))
 perl_privlibexp := $(subst \,/,$(perl_privlibexp))
 perl_embed_ldflags = -L$(perl_archlibexp)/CORE -lperl58
 override CPPFLAGS += -DPLPERL_HAVE_UID_GID
+# Perl on win32 contains /* within comment all over the header file,
+# so disable this warning.
+override CFLAGS += -Wno-comment
 endif
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -I$(perl_archlibexp)/CORE
