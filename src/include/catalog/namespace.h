@@ -79,8 +79,11 @@ extern char *NameListToString(List *names);
 extern char *NameListToQuotedString(List *names);
 
 extern bool isTempNamespace(Oid namespaceId);
+extern bool isTempToastNamespace(Oid namespaceId);
+extern bool isTempOrToastNamespace(Oid namespaceId);
 extern bool isAnyTempNamespace(Oid namespaceId);
 extern bool isOtherTempNamespace(Oid namespaceId);
+extern Oid	GetTempToastNamespace(void);
 extern void ResetTempTableNamespace(void);
 
 extern OverrideSearchPath *GetOverrideSearchPath(MemoryContext context);

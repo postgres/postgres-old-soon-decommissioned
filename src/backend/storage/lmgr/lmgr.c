@@ -619,7 +619,7 @@ LockTagIsTemp(const LOCKTAG *tag)
 			/* field1 is dboid, field2 is reloid for all of these */
 			if ((Oid) tag->locktag_field1 == InvalidOid)
 				return false;	/* shared, so not temp */
-			if (isTempNamespace(get_rel_namespace((Oid) tag->locktag_field2)))
+			if (isTempOrToastNamespace(get_rel_namespace((Oid) tag->locktag_field2)))
 				return true;
 			break;
 		case LOCKTAG_TRANSACTION:
