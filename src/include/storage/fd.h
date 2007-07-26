@@ -62,7 +62,6 @@ extern int	max_files_per_process;
 extern File PathNameOpenFile(FileName fileName, int fileFlags, int fileMode);
 extern File OpenTemporaryFile(bool interXact);
 extern void FileClose(File file);
-extern void FileUnlink(File file);
 extern int	FileRead(File file, char *buffer, int amount);
 extern int	FileWrite(File file, char *buffer, int amount);
 extern int	FileSync(File file);
