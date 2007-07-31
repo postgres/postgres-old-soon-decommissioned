@@ -515,6 +515,8 @@ build_joinrel_restrictlist(PlannerInfo *root,
 	 * omit the redundant clause from the result list.
 	 */
 	result = remove_redundant_join_clauses(root, rlist,
+										   outer_rel->relids,
+										   inner_rel->relids,
 										   IS_OUTER_JOIN(jointype));
 
 	list_free(rlist);

@@ -1755,6 +1755,8 @@ find_clauses_for_join(PlannerInfo *root, RelOptInfo *rel,
 	{
 		clause_list = remove_redundant_join_clauses(root,
 													clause_list,
+													outer_relids,
+													rel->relids,
 													isouterjoin);
 	}
 
