@@ -30,10 +30,14 @@ extern void get_actual_join_clauses(List *restrictinfo_list,
 						List **joinquals, List **otherquals);
 extern List *remove_redundant_join_clauses(PlannerInfo *root,
 							  List *restrictinfo_list,
+							  Relids outer_relids,
+							  Relids inner_relids,
 							  bool isouterjoin);
 extern List *select_nonredundant_join_clauses(PlannerInfo *root,
 								 List *restrictinfo_list,
 								 List *reference_list,
+								 Relids outer_relids,
+								 Relids inner_relids,
 								 bool isouterjoin);
 
 #endif   /* RESTRICTINFO_H */

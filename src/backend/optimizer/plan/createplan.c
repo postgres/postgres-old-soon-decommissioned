@@ -1290,7 +1290,9 @@ create_nestloop_plan(PlannerInfo *root,
 				select_nonredundant_join_clauses(root,
 												 joinrestrictclauses,
 												 innerpath->indexclauses,
-										 IS_OUTER_JOIN(best_path->jointype));
+									best_path->outerjoinpath->parent->relids,
+									best_path->innerjoinpath->parent->relids,
+									IS_OUTER_JOIN(best_path->jointype));
 		}
 	}
 	else if (IsA(best_path->innerjoinpath, BitmapHeapPath))
@@ -1322,7 +1324,9 @@ create_nestloop_plan(PlannerInfo *root,
 				select_nonredundant_join_clauses(root,
 												 joinrestrictclauses,
 												 bitmapclauses,
-										 IS_OUTER_JOIN(best_path->jointype));
+									best_path->outerjoinpath->parent->relids,
+									best_path->innerjoinpath->parent->relids,
+									IS_OUTER_JOIN(best_path->jointype));
 		}
 	}
 
