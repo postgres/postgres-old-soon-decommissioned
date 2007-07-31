@@ -386,6 +386,8 @@ group_clauses_by_indexkey_for_join(Query *root,
 		{
 			clausegroup = remove_redundant_join_clauses(root,
 														clausegroup,
+														outer_relids,
+														rel->relids,
 														jointype);
 		}
 
