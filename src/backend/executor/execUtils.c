@@ -816,15 +816,14 @@ ExecOpenScanRelation(EState *estate, Index scanrelid)
 	LOCKMODE	lockmode;
 
 	/*
-	 * Determine the lock type we need.  First, scan to see if target
-	 * relation is a result relation.
+	 * Determine the lock type we need.  First, scan to see if target relation
+	 * is a result relation.  If not, check if it's a FOR UPDATE/FOR SHARE
+	 * relation.  In either of those cases, we got the lock already.
 	 */
 	lockmode = AccessShareLock;
 	if (ExecRelationIsTargetRelation(estate, scanrelid))
 		lockmode = NoLock;
-
-	/* If not, check if it's a FOR UPDATE/FOR SHARE relation */
-	if (lockmode == AccessShareLock)
+	else
 	{
 		ListCell   *l;
 
