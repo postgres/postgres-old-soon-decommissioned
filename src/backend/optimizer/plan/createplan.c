@@ -927,6 +927,8 @@ create_nestloop_plan(Query *root,
 				select_nonredundant_join_clauses(root,
 												 joinrestrictclauses,
 												 lfirst(indexjoinclauses),
+									best_path->outerjoinpath->parent->relids,
+									best_path->innerjoinpath->parent->relids,
 												 best_path->jointype);
 		}
 	}

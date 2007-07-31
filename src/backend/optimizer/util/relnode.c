@@ -466,7 +466,10 @@ build_joinrel_restrictlist(Query *root,
 	 * previous clauses (see optimizer/README for discussion).	We detect
 	 * that case and omit the redundant clause from the result list.
 	 */
-	result = remove_redundant_join_clauses(root, rlist, jointype);
+	result = remove_redundant_join_clauses(root, rlist,
+										   outer_rel->relids,
+										   inner_rel->relids,
+										   jointype);
 
 	freeList(rlist);
 
