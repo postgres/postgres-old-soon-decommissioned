@@ -33,6 +33,8 @@ typedef struct XLogRecPtr
 	uint32		xrecoff;		/* byte offset of location in log file */
 } XLogRecPtr;
 
+#define XLogRecPtrIsInvalid(r)	((r).xrecoff == 0)
+
 
 /*
  * Macros for comparing XLogRecPtrs

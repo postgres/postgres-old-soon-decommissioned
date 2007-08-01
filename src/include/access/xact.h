@@ -41,6 +41,9 @@ extern int	XactIsoLevel;
 extern bool DefaultXactReadOnly;
 extern bool XactReadOnly;
 
+/* Asynchronous commits */
+extern bool XactSyncCommit;
+
 /*
  *	start- and end-of-transaction callbacks for dynamically loaded modules
  */
@@ -147,6 +150,7 @@ extern void SetCurrentStatementStartTimestamp(void);
 extern int	GetCurrentTransactionNestLevel(void);
 extern bool TransactionIdIsCurrentTransactionId(TransactionId xid);
 extern void CommandCounterIncrement(void);
+extern void ForceSyncCommit(void);
 extern void StartTransactionCommand(void);
 extern void CommitTransactionCommand(void);
 extern void AbortCurrentTransaction(void);

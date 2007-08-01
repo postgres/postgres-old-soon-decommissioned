@@ -515,7 +515,11 @@ createdb(const CreatedbStmt *stmt)
 		heap_close(pg_database_rel, NoLock);
 
 		/*
-		 * Set flag to update flat database file at commit.
+		 * Set flag to update flat database file at commit.  Note: this also
+		 * forces synchronous commit, which minimizes the window between
+		 * creation of the database files and commital of the transaction.
+		 * If we crash before committing, we'll have a DB that's taking up
+		 * disk space but is not in pg_database, which is not good.
 		 */
 		database_file_update_needed();
 	}
@@ -675,7 +679,11 @@ dropdb(const char *dbname, bool missing_ok)
 	heap_close(pgdbrel, NoLock);
 
 	/*
-	 * Set flag to update flat database file at commit.
+	 * Set flag to update flat database file at commit.  Note: this also
+	 * forces synchronous commit, which minimizes the window between
+	 * removal of the database files and commital of the transaction.
+	 * If we crash before committing, we'll have a DB that's gone on disk
+	 * but still there according to pg_database, which is not good.
 	 */
 	database_file_update_needed();
 }

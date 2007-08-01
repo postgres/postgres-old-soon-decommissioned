@@ -855,6 +855,14 @@ AtEOXact_UpdateFlatFiles(bool isCommit)
 	 * Signal the postmaster to reload its caches.
 	 */
 	SendPostmasterSignal(PMSIGNAL_PASSWORD_CHANGE);
+
+	/*
+	 * Force synchronous commit, to minimize the window between changing
+	 * the flat files on-disk and marking the transaction committed.  It's
+	 * not great that there is any window at all, but definitely we don't
+	 * want to make it larger than necessary.
+	 */
+	ForceSyncCommit();
 }
 
 

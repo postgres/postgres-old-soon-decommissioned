@@ -1706,7 +1706,11 @@ RecordTransactionCommitPrepared(TransactionId xid,
 						XLOG_XACT_COMMIT_PREPARED | XLOG_NO_TRAN,
 						rdata);
 
-	/* we don't currently try to sleep before flush here ... */
+	/*
+	 * We don't currently try to sleep before flush here ... nor is there
+	 * any support for async commit of a prepared xact (the very idea is
+	 * probably a contradiction)
+	 */
 
 	/* Flush XLOG to disk */
 	XLogFlush(recptr);

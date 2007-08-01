@@ -200,8 +200,6 @@ typedef struct GistSplitVector
 								 * distributed between left and right pages */
 } GistSplitVector;
 
-#define XLogRecPtrIsInvalid( r )	( (r).xlogid == 0 && (r).xrecoff == 0 )
-
 typedef struct
 {
 	Relation	r;

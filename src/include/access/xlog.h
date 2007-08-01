@@ -197,7 +197,10 @@ extern CheckpointStatsData CheckpointStats;
 extern XLogRecPtr XLogInsert(RmgrId rmid, uint8 info, XLogRecData *rdata);
 extern void XLogFlush(XLogRecPtr RecPtr);
 extern void XLogBackgroundFlush(void);
+extern void XLogAsyncCommitFlush(void);
 extern bool XLogNeedsFlush(XLogRecPtr RecPtr);
+
+extern void XLogSetAsyncCommitLSN(XLogRecPtr record);
 
 extern void xlog_redo(XLogRecPtr lsn, XLogRecord *record);
 extern void xlog_desc(StringInfo buf, uint8 xl_info, char *rec);

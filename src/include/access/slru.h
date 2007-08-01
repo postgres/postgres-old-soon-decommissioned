@@ -13,6 +13,7 @@
 #ifndef SLRU_H
 #define SLRU_H
 
+#include "access/xlogdefs.h"
 #include "storage/lwlock.h"
 
 
@@ -51,6 +52,17 @@ typedef struct SlruSharedData
 	int		   *page_lru_count;
 	LWLockId   *buffer_locks;
 
+	/*
+	 * Optional array of WAL flush LSNs associated with entries in the SLRU
+	 * pages.  If not zero/NULL, we must flush WAL before writing pages (true
+	 * for pg_clog, false for multixact and pg_subtrans).  group_lsn[] has
+	 * lsn_groups_per_page entries per buffer slot, each containing the
+	 * highest LSN known for a contiguous group of SLRU entries on that slot's
+	 * page.
+	 */
+	XLogRecPtr *group_lsn;
+	int			lsn_groups_per_page;
+
 	/*----------
 	 * We mark a page "most recently used" by setting
 	 *		page_lru_count[slotno] = ++cur_lru_count;
@@ -81,8 +93,8 @@ typedef struct SlruCtlData
 	SlruShared	shared;
 
 	/*
-	 * This flag tells whether to fsync writes (true for pg_clog, false for
-	 * pg_subtrans).
+	 * This flag tells whether to fsync writes (true for pg_clog and multixact
+	 * stuff, false for pg_subtrans).
 	 */
 	bool		do_fsync;
 
@@ -106,11 +118,12 @@ typedef SlruCtlData *SlruCtl;
 typedef struct SlruFlushData *SlruFlush;
 
 
-extern Size SimpleLruShmemSize(int nslots);
-extern void SimpleLruInit(SlruCtl ctl, const char *name, int nslots,
+extern Size SimpleLruShmemSize(int nslots, int nlsns);
+extern void SimpleLruInit(SlruCtl ctl, const char *name, int nslots, int nlsns,
 			  LWLockId ctllock, const char *subdir);
 extern int	SimpleLruZeroPage(SlruCtl ctl, int pageno);
-extern int	SimpleLruReadPage(SlruCtl ctl, int pageno, TransactionId xid);
+extern int	SimpleLruReadPage(SlruCtl ctl, int pageno, bool write_ok,
+							  TransactionId xid);
 extern int SimpleLruReadPage_ReadOnly(SlruCtl ctl, int pageno,
 						   TransactionId xid);
 extern void SimpleLruWritePage(SlruCtl ctl, int slotno, SlruFlush fdata);
