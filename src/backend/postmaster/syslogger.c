@@ -162,6 +162,8 @@ SysLoggerMain(int argc, char *argv[])
 
 	MyProcPid = getpid();		/* reset MyProcPid */
 
+	MyStartTime = time(NULL);   /* set our start time in case we call elog */
+
 #ifdef EXEC_BACKEND
 	syslogger_parseArgs(argc, argv);
 #endif   /* EXEC_BACKEND */

@@ -386,6 +386,8 @@ PostmasterMain(int argc, char *argv[])
 
 	MyProcPid = PostmasterPid = getpid();
 
+	MyStartTime = time(NULL);
+
 	IsPostmasterEnvironment = true;
 
 	/*
@@ -1102,6 +1104,8 @@ pmdaemonize(void)
 	}
 
 	MyProcPid = PostmasterPid = getpid();		/* reset PID vars to child */
+
+	MyStartTime = time(NULL);
 
 /* GH: If there's no setsid(), we hopefully don't need silent mode.
  * Until there's a better solution.
@@ -2661,6 +2665,8 @@ BackendStartup(Port *port)
 
 		MyProcPid = getpid();	/* reset MyProcPid */
 
+		MyStartTime = time(NULL);
+
 		/* We don't want the postmaster's proc_exit() handlers */
 		on_exit_reset();
 
@@ -2803,7 +2809,7 @@ BackendInitialize(Port *port)
 
 	/* save process start time */
 	port->SessionStartTime = GetCurrentTimestamp();
-	port->session_start = timestamptz_to_time_t(port->SessionStartTime);
+	MyStartTime = timestamptz_to_time_t(port->SessionStartTime);
 
 	/* set these to empty in case they are needed before we set them up */
 	port->remote_host = "";
@@ -3384,6 +3390,8 @@ SubPostmasterMain(int argc, char *argv[])
 	IsUnderPostmaster = true;	/* we are a postmaster subprocess now */
 
 	MyProcPid = getpid();		/* reset MyProcPid */
+
+	MyStartTime = time(NULL);
 
 	/* make sure stderr is in binary mode before anything can
 	 * possibly be written to it, in case it's actually the syslogger pipe,

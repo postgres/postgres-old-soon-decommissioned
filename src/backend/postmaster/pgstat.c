@@ -2168,6 +2168,8 @@ PgstatCollectorMain(int argc, char *argv[])
 
 	MyProcPid = getpid();		/* reset MyProcPid */
 
+	MyStartTime = time(NULL);  	/* record Start Time for logging */
+
 	/*
 	 * If possible, make this process a group leader, so that the postmaster
 	 * can signal any child processes too.  (pgstat probably never has

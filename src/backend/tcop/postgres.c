@@ -2786,6 +2786,8 @@ PostgresMain(int argc, char *argv[], const char *username)
 	 */
 	MyProcPid = getpid();
 
+	MyStartTime = time(NULL);
+
 	/*
 	 * Fire up essential subsystems: error and memory management
 	 *

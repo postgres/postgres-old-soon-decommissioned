@@ -385,6 +385,9 @@ AutoVacLauncherMain(int argc, char *argv[])
 	/* reset MyProcPid */
 	MyProcPid = getpid();
 
+	/* record Start Time for logging */
+	MyStartTime = time(NULL);
+
 	/* Identify myself via ps */
 	init_ps_display("autovacuum launcher process", "", "", "");
 
@@ -1402,6 +1405,9 @@ AutoVacWorkerMain(int argc, char *argv[])
 
 	/* reset MyProcPid */
 	MyProcPid = getpid();
+
+	/* record Start Time for logging */
+	MyStartTime = time(NULL);
 
 	/* Identify myself via ps */
 	init_ps_display("autovacuum worker process", "", "", "");

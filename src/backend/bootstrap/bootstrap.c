@@ -213,6 +213,8 @@ AuxiliaryProcessMain(int argc, char *argv[])
 	 */
 	MyProcPid = getpid();
 
+	MyStartTime = time(NULL);
+
 	/*
 	 * Fire up essential subsystems: error and memory management
 	 *

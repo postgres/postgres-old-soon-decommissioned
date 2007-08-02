@@ -130,7 +130,6 @@ typedef struct Port
 	 * other members of this struct, we may as well keep it here.
 	 */
 	TimestampTz SessionStartTime;		/* backend start time */
-	time_t		session_start;	/* same, in time_t format */
 
 	/*
 	 * TCP keepalive settings.
