@@ -3201,6 +3201,15 @@ SubPostmasterMain(int argc, char *argv[])
 
 	MyProcPid = getpid();		/* reset MyProcPid */
 
+ 	/* make sure stderr is in binary mode before anything can
+ 	 * possibly be written to it, in case it's actually the syslogger pipe,
+ 	 * so the pipe chunking protocol isn't disturbed. Non-logpipe data
+ 	 * gets translated on redirection (e.g. via pg_ctl -l) anyway.
+ 	 */
+#ifdef WIN32
+ 	_setmode(fileno(stderr),_O_BINARY);
+#endif
+ 
 	/* In EXEC_BACKEND case we will not have inherited these settings */
 	IsPostmasterEnvironment = true;
 	whereToSendOutput = None;
