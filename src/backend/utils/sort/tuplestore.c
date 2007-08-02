@@ -284,6 +284,7 @@ tuplestore_end(Tuplestorestate *state)
 			pfree(state->memtuples[i]);
 		pfree(state->memtuples);
 	}
+	pfree(state);
 }
 
 /*
