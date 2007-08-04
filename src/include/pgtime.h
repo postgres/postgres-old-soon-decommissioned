@@ -52,6 +52,7 @@ extern int pg_next_dst_boundary(const pg_time_t *timep,
 extern size_t pg_strftime(char *s, size_t max, const char *format,
 			const struct pg_tm * tm);
 
+extern void pg_timezone_pre_initialize(void);
 extern void pg_timezone_initialize(void);
 extern pg_tz *pg_tzset(const char *tzname);
 extern bool tz_acceptable(pg_tz *tz);
@@ -64,6 +65,7 @@ extern void pg_tzenumerate_end(pg_tzenum *dir);
 
 extern pg_tz *session_timezone;
 extern pg_tz *log_timezone;
+extern pg_tz *gmt_timezone;
 
 /* Maximum length of a timezone name (not including trailing null) */
 #define TZ_STRLEN_MAX 255
