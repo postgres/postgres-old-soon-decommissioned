@@ -3625,7 +3625,12 @@ str_time(time_t tnow)
 	static char buf[128];
 
 	strftime(buf, sizeof(buf),
+			 /* Win32 timezone names are too long so don't print them */
+#ifndef WIN32
 			 "%Y-%m-%d %H:%M:%S %Z",
+#else
+			 "%Y-%m-%d %H:%M:%S",
+#endif
 			 localtime(&tnow));
 
 	return buf;
