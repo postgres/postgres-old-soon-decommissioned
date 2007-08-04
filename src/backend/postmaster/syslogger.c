@@ -1038,7 +1038,6 @@ logfile_getname(pg_time_t timestamp)
 {
 	char	   *filename;
 	int			len;
-	struct pg_tm *tm;
 
 	filename = palloc(MAXPGPATH);
 
@@ -1049,8 +1048,8 @@ logfile_getname(pg_time_t timestamp)
 	if (strchr(Log_filename, '%'))
 	{
 		/* treat it as a strftime pattern */
-		tm = pg_localtime(&timestamp, global_timezone);
-		pg_strftime(filename + len, MAXPGPATH - len, Log_filename, tm);
+		pg_strftime(filename + len, MAXPGPATH - len, Log_filename,
+					pg_localtime(&timestamp, log_timezone));
 	}
 	else
 	{
@@ -1079,12 +1078,12 @@ set_next_rotation_time(void)
 	/*
 	 * The requirements here are to choose the next time > now that is a
 	 * "multiple" of the log rotation interval.  "Multiple" can be interpreted
-	 * fairly loosely.	In this version we align to local time rather than
+	 * fairly loosely.	In this version we align to log_timezone rather than
 	 * GMT.
 	 */
 	rotinterval = Log_RotationAge * SECS_PER_MINUTE;	/* convert to seconds */
-	now = time(NULL);
-	tm = pg_localtime(&now, global_timezone);
+	now = (pg_time_t) time(NULL);
+	tm = pg_localtime(&now, log_timezone);
 	now += tm->tm_gmtoff;
 	now -= now % rotinterval;
 	now += rotinterval;

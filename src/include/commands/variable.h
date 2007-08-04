@@ -18,6 +18,9 @@ extern const char *assign_datestyle(const char *value,
 extern const char *assign_timezone(const char *value,
 				bool doit, GucSource source);
 extern const char *show_timezone(void);
+extern const char *assign_log_timezone(const char *value,
+				bool doit, GucSource source);
+extern const char *show_log_timezone(void);
 extern const char *assign_XactIsoLevel(const char *value,
 					bool doit, GucSource source);
 extern const char *show_XactIsoLevel(void);

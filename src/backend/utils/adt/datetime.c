@@ -1325,7 +1325,7 @@ DecodeDateTime(char **field, int *ftype, int nf,
 			if (fmask & DTK_M(DTZMOD))
 				return DTERR_BAD_FORMAT;
 
-			*tzp = DetermineTimeZoneOffset(tm, global_timezone);
+			*tzp = DetermineTimeZoneOffset(tm, session_timezone);
 		}
 	}
 
@@ -1361,7 +1361,7 @@ DetermineTimeZoneOffset(struct pg_tm * tm, pg_tz *tzp)
 				after_isdst;
 	int			res;
 
-	if (tzp == global_timezone && HasCTZSet)
+	if (tzp == session_timezone && HasCTZSet)
 	{
 		tm->tm_isdst = 0;		/* for lack of a better idea */
 		return CTimeZone;
@@ -2033,7 +2033,7 @@ DecodeTimeOnly(char **field, int *ftype, int nf,
 		tmp->tm_hour = tm->tm_hour;
 		tmp->tm_min = tm->tm_min;
 		tmp->tm_sec = tm->tm_sec;
-		*tzp = DetermineTimeZoneOffset(tmp, global_timezone);
+		*tzp = DetermineTimeZoneOffset(tmp, session_timezone);
 		tm->tm_isdst = tmp->tm_isdst;
 	}
 
