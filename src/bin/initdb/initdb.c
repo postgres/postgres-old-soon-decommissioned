@@ -2583,6 +2583,7 @@ main(int argc, char *argv[])
 				progname, argv[optind + 1]);
 		fprintf(stderr, _("Try \"%s --help\" for more information.\n"),
 				progname);
+		exit(1);
 	}
 
 	if (pwprompt && pwfilename)
