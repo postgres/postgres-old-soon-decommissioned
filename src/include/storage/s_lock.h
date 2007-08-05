@@ -78,7 +78,7 @@
 #ifdef HAVE_SPINLOCKS	/* skip spinlocks if requested */
 
 
-#if defined(__GNUC__) || defined(__ICC)
+#if defined(__GNUC__) || defined(__INTEL_COMPILER)
 /*************************************************************************
  * All the gcc inlines
  * Gcc consistently defines the CPU as __cpu__.
