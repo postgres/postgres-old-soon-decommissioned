@@ -442,7 +442,7 @@ _PrintTocData(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt)
 
 		while (id != te->dumpId)
 		{
-			if ((TocIDRequired(AH, id, ropt) & 2) != 0)
+			if ((TocIDRequired(AH, id, ropt) & REQ_DATA) != 0)
 				die_horribly(AH, modulename,
 							 "Dumping a specific TOC data block out of order is not supported"
 				  " without ID on this input stream (fseek required)\n");
@@ -712,7 +712,7 @@ _WriteByte(ArchiveHandle *AH, const int i)
  *
  * Called by the archiver to read bytes & integers from the archive.
  * These routines are only used to read & write headers & TOC.
- *
+ * EOF should be treated as a fatal error.
  */
 static int
 _ReadByte(ArchiveHandle *AH)
@@ -720,9 +720,10 @@ _ReadByte(ArchiveHandle *AH)
 	lclContext *ctx = (lclContext *) AH->formatData;
 	int			res;
 
-	res = fgetc(AH->FH);
-	if (res != EOF)
-		ctx->filePos += 1;
+	res = getc(AH->FH);
+	if (res == EOF)
+		die_horribly(AH, modulename, "unexpected end of file\n");
+	ctx->filePos += 1;
 	return res;
 }
 
