@@ -49,6 +49,8 @@ MemoryContext CurTransactionContext = NULL;
 /* This is a transient link to the active portal's memory context: */
 MemoryContext PortalContext = NULL;
 
+static void MemoryContextStatsInternal(MemoryContext context, int level);
+
 
 /*****************************************************************************
  *	  EXPORTED ROUTINES														 *
@@ -321,15 +323,20 @@ MemoryContextIsEmpty(MemoryContext context)
 void
 MemoryContextStats(MemoryContext context)
 {
+	MemoryContextStatsInternal(context, 0);
+}
+
+static void
+MemoryContextStatsInternal(MemoryContext context, int level)
+{
 	MemoryContext child;
 
 	AssertArg(MemoryContextIsValid(context));
 
-	(*context->methods->stats) (context);
+	(*context->methods->stats) (context, level);
 	for (child = context->firstchild; child != NULL; child = child->nextchild)
-		MemoryContextStats(child);
+		MemoryContextStatsInternal(child, level + 1);
 }
-
 
 /*
  * MemoryContextCheck

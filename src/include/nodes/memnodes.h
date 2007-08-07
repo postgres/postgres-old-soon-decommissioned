@@ -44,7 +44,7 @@ typedef struct MemoryContextMethods
 	void		(*delete) (MemoryContext context);
 	Size		(*get_chunk_space) (MemoryContext context, void *pointer);
 	bool		(*is_empty) (MemoryContext context);
-	void		(*stats) (MemoryContext context);
+	void		(*stats) (MemoryContext context, int level);
 #ifdef MEMORY_CONTEXT_CHECKING
 	void		(*check) (MemoryContext context);
 #endif
