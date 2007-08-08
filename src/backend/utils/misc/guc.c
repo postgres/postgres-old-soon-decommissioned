@@ -6956,13 +6956,11 @@ show_tcp_keepalives_count(void)
 static bool
 assign_maxconnections(int newval, bool doit, GucSource source)
 {
-	if (doit)
-	{
-		if (newval + autovacuum_max_workers > INT_MAX / 4)
-			return false;
+	if (newval + autovacuum_max_workers > INT_MAX / 4)
+		return false;
 
+	if (doit)
 		MaxBackends = newval + autovacuum_max_workers;
-	}
 
 	return true;
 }
@@ -6970,13 +6968,11 @@ assign_maxconnections(int newval, bool doit, GucSource source)
 static bool
 assign_autovacuum_max_workers(int newval, bool doit, GucSource source)
 {
-	if (doit)
-	{
-		if (newval + MaxConnections > INT_MAX / 4)
-			return false;
+	if (newval + MaxConnections > INT_MAX / 4)
+		return false;
 
+	if (doit)
 		MaxBackends = newval + MaxConnections;
-	}
 
 	return true;
 }
