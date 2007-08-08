@@ -1641,8 +1641,14 @@ ExecReScanAgg(AggState *node, ExprContext *exprCtxt)
 	MemSet(econtext->ecxt_aggvalues, 0, sizeof(Datum) * node->numaggs);
 	MemSet(econtext->ecxt_aggnulls, 0, sizeof(bool) * node->numaggs);
 
-	/* Release all temp storage */
-	MemoryContextReset(node->aggcontext);
+	/*
+	 * Release all temp storage. Note that with AGG_HASHED, the hash table
+	 * is allocated in a sub-context of the aggcontext. We're going to
+	 * rebuild the hash table from scratch, so we need to use
+	 * MemoryContextResetAndDeleteChildren() to avoid leaking the old hash
+	 * table's memory context header.
+	 */
+	MemoryContextResetAndDeleteChildren(node->aggcontext);
 
 	if (((Agg *) node->ss.ps.plan)->aggstrategy == AGG_HASHED)
 	{
