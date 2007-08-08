@@ -55,6 +55,7 @@
 #include "access/heapam.h"
 #include "catalog/pg_aggregate.h"
 #include "catalog/pg_operator.h"
+#include "catalog/pg_proc.h"
 #include "executor/executor.h"
 #include "executor/nodeAgg.h"
 #include "miscadmin.h"
@@ -601,6 +602,26 @@ build_hash_table(AggState *aggstate)
 											  entrysize,
 											  aggstate->aggcontext,
 											  tmpmem);
+}
+
+/*
+ * Estimate per-hash-table-entry overhead for the planner.
+ *
+ * Note that the estimate does not include space for pass-by-reference
+ * transition data values.
+ */
+Size
+hash_agg_entry_size(int numAggs)
+{
+	Size		entrysize;
+
+	/* This must match build_hash_table */
+	entrysize = sizeof(AggHashEntryData) +
+		(numAggs - 1) *sizeof(AggStatePerGroupData);
+	/* Account for hashtable overhead */
+	entrysize += 2 * sizeof(void *);
+	entrysize = MAXALIGN(entrysize);
+	return entrysize;
 }
 
 /*
@@ -1260,6 +1281,35 @@ ExecInitAgg(Agg *node, EState *estate)
 		peraggstate->transfn_oid = transfn_oid = aggform->aggtransfn;
 		peraggstate->finalfn_oid = finalfn_oid = aggform->aggfinalfn;
 
+		/* Check that aggregate owner has permission to call component fns */
+		{
+			HeapTuple	procTuple;
+			AclId		aggOwner;
+
+			procTuple = SearchSysCache(PROCOID,
+									   ObjectIdGetDatum(aggref->aggfnoid),
+									   0, 0, 0);
+			if (!HeapTupleIsValid(procTuple))
+				elog(ERROR, "cache lookup failed for function %u",
+					 aggref->aggfnoid);
+			aggOwner = ((Form_pg_proc) GETSTRUCT(procTuple))->proowner;
+			ReleaseSysCache(procTuple);
+
+			aclresult = pg_proc_aclcheck(transfn_oid, aggOwner,
+										 ACL_EXECUTE);
+			if (aclresult != ACLCHECK_OK)
+				aclcheck_error(aclresult, ACL_KIND_PROC,
+							   get_func_name(transfn_oid));
+			if (OidIsValid(finalfn_oid))
+			{
+				aclresult = pg_proc_aclcheck(finalfn_oid, aggOwner,
+											 ACL_EXECUTE);
+				if (aclresult != ACLCHECK_OK)
+					aclcheck_error(aclresult, ACL_KIND_PROC,
+								   get_func_name(finalfn_oid));
+			}
+		}
+
 		/* resolve actual type of transition state, if polymorphic */
 		aggtranstype = aggform->aggtranstype;
 		if (aggtranstype == ANYARRAYOID || aggtranstype == ANYELEMENTOID)
@@ -1467,8 +1517,14 @@ ExecReScanAgg(AggState *node, ExprContext *exprCtxt)
 	MemSet(econtext->ecxt_aggvalues, 0, sizeof(Datum) * node->numaggs);
 	MemSet(econtext->ecxt_aggnulls, 0, sizeof(bool) * node->numaggs);
 
-	/* Release all temp storage */
-	MemoryContextReset(node->aggcontext);
+	/*
+	 * Release all temp storage. Note that with AGG_HASHED, the hash table
+	 * is allocated in a sub-context of the aggcontext. We're going to
+	 * rebuild the hash table from scratch, so we need to use
+	 * MemoryContextResetAndDeleteChildren() to avoid leaking the old hash
+	 * table's memory context header.
+	 */
+	MemoryContextResetAndDeleteChildren(node->aggcontext);
 
 	if (((Agg *) node->ss.ps.plan)->aggstrategy == AGG_HASHED)
 	{
