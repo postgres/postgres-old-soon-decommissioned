@@ -60,7 +60,8 @@ else
       for pgac_postfix in \
         sgml/stylesheets/nwalsh-modular \
         sgml/stylesheets/docbook \
-		sgml/docbook-dsssl \
+        sgml/stylesheets/dsssl/docbook \
+        sgml/docbook-dsssl \
         sgml/docbook/dsssl/modular \
         sgml/docbook/stylesheet/dsssl/modular \
         sgml/docbook/dsssl-stylesheets
