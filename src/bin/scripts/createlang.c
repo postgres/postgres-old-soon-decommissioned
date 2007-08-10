@@ -138,6 +138,8 @@ main(int argc, char *argv[])
 		memset(&popt, 0, sizeof(popt));
 		popt.topt.format = PRINT_ALIGNED;
 		popt.topt.border = 1;
+		popt.topt.start_table = true;
+		popt.topt.stop_table = true;
 		popt.topt.encoding = PQclientEncoding(conn);
 		popt.title = _("Procedural Languages");
 		printQuery(result, &popt, stdout, NULL);
