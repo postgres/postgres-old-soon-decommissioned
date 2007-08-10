@@ -1237,6 +1237,7 @@ PLy_procedure_create(FunctionCallInfo fcinfo, Oid tgreloid,
 						 "proargnames must have the same number of elements "
 						 "as the function has arguments");
 				proc->argnames = (char **) PLy_malloc(sizeof(char *) * proc->nargs);
+				memset(proc->argnames, 0, sizeof(char *) * proc->nargs);
 			}
 		}
 		for (i = 0; i < fcinfo->nargs; i++)
