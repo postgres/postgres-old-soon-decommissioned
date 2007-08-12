@@ -820,7 +820,7 @@ scanner_init(const char *str)
 	scanbufhandle = yy_scan_buffer(scanbuf, slen + 2);
 
 	/* initialize literal buffer to a reasonable but expansible size */
-	literalalloc = 128;
+	literalalloc = 1024;
 	literalbuf = (char *) palloc(literalalloc);
 	startlit();
 
