@@ -1858,6 +1858,10 @@ XLogBackgroundFlush(void)
 
 /*
  * Flush any previous asynchronously-committed transactions' commit records.
+ *
+ * NOTE: it is unwise to assume that this provides any strong guarantees.
+ * In particular, because of the inexact LSN bookkeeping used by clog.c,
+ * we cannot assume that hint bits will be settable for these transactions.
  */
 void
 XLogAsyncCommitFlush(void)
