@@ -560,7 +560,8 @@ static struct config_bool ConfigureNamesBool[] =
 			NULL
 		},
 		&XactSyncCommit,
-		true, NULL, NULL
+		/* XXX TEMPORARY FOR TESTING: sync commit should default to TRUE! */
+		false, NULL, NULL
 	},
 	{
 		{"zero_damaged_pages", PGC_SUSET, DEVELOPER_OPTIONS,
