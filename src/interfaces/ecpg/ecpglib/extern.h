@@ -7,6 +7,9 @@
 #include "libpq-fe.h"
 #include "sqlca.h"
 #include "ecpg_config.h"
+#ifndef CHAR_BIT
+#include <limits.h>
+#endif
 
 enum COMPAT_MODE
 {

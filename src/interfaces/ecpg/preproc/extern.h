@@ -6,6 +6,9 @@
 #include "type.h"
 
 #include <errno.h>
+#ifndef CHAR_BIT
+#include <limits.h>
+#endif
 
 /* defines */
 
