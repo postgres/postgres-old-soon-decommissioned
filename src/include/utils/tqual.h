@@ -145,6 +145,9 @@ extern HTSU_Result HeapTupleSatisfiesUpdate(HeapTupleHeader tuple,
 extern HTSV_Result HeapTupleSatisfiesVacuum(HeapTupleHeader tuple,
 						 TransactionId OldestXmin, Buffer buffer);
 
+extern void HeapTupleSetHintBits(HeapTupleHeader tuple, Buffer buffer,
+								 uint16 infomask, TransactionId xid);
+
 extern Snapshot GetTransactionSnapshot(void);
 extern Snapshot GetLatestSnapshot(void);
 extern Snapshot CopySnapshot(Snapshot snapshot);
