@@ -9,7 +9,6 @@
 #include "extern.h"
 #include "sqlca.h"
 
-
 void
 ECPGraise(int line, int code, const char *sqlstate, const char *str)
 {
@@ -194,6 +193,59 @@ ECPGraise_backend(int line, PGresult *result, PGconn *conn, int compat)
 
 	/* free all memory we have allocated for the user */
 	ECPGfree_auto_mem();
+}
+
+/* filter out all error codes */
+bool
+ECPGcheck_PQresult(PGresult *results, int lineno, PGconn *connection, enum COMPAT_MODE compat) 
+{
+	if (results == NULL)
+	{
+		ECPGlog("ECPGcheck_PQresult line %d: error: %s", lineno, PQerrorMessage(connection));
+		ECPGraise_backend(lineno, NULL, connection, compat);
+		return (false);
+	}
+
+	switch (PQresultStatus(results))
+	{
+
+		case PGRES_TUPLES_OK:
+			return (true);
+			break;
+		case PGRES_EMPTY_QUERY:
+			/* do nothing */
+			ECPGraise(lineno, ECPG_EMPTY, ECPG_SQLSTATE_ECPG_INTERNAL_ERROR, NULL);
+			PQclear(results);
+			return (false);
+			break;
+		case PGRES_COMMAND_OK:
+			return (true);
+			break;
+		case PGRES_NONFATAL_ERROR:
+		case PGRES_FATAL_ERROR:
+		case PGRES_BAD_RESPONSE:
+			ECPGlog("ECPGcheck_PQresult line %d: Error: %s", lineno, PQresultErrorMessage(results));
+			ECPGraise_backend(lineno, results, connection, compat);
+			PQclear(results);
+			return (false);
+			break;
+		case PGRES_COPY_OUT:
+			return(true);
+			break;
+		case PGRES_COPY_IN:
+			ECPGlog("ECPGcheck_PQresult line %d: Got PGRES_COPY_IN ... tossing.\n", lineno);
+			PQendcopy(connection);
+			PQclear(results);
+			return(false);
+			break;
+		default:
+			ECPGlog("ECPGcheck_PQresult line %d: Got something else, postgres error.\n",
+					lineno);
+			ECPGraise_backend(lineno, results, connection, compat);
+			PQclear(results);
+			return(false);
+			break;
+	}
 }
 
 /* print out an error message */

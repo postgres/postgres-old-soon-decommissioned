@@ -331,7 +331,7 @@ bool		CheckDateTokenTables(void);
 int			EncodeDateOnly(struct tm *, int, char *, bool);
 void		GetEpochTime(struct tm *);
 int			ParseDateTime(char *, char *, char **, int *, int, int *, char **);
-int			DecodeDateTime(char **, int *, int, int *, struct tm *, fsec_t *, int *, bool);
+int			DecodeDateTime(char **, int *, int, int *, struct tm *, fsec_t *, bool);
 void		j2date(int, int *, int *, int *);
 void		GetCurrentDateTime(struct tm *);
 int			date2j(int, int, int);

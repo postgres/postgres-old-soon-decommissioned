@@ -202,10 +202,11 @@ deccvasc(char *cp, int len, decimal *np)
 		}
 		else
 		{
-			if (PGTYPESnumeric_to_decimal(result, np) != 0)
-				ret = ECPG_INFORMIX_NUM_OVERFLOW;
+			int i = PGTYPESnumeric_to_decimal(result, np);
 
 			free(result);
+			if (i != 0)
+				ret = ECPG_INFORMIX_NUM_OVERFLOW;
 		}
 	}
 

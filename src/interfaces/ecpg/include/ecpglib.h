@@ -44,14 +44,14 @@ bool		ECPGstatus(int, const char *);
 bool		ECPGsetcommit(int, const char *, const char *);
 bool		ECPGsetconn(int, const char *);
 bool		ECPGconnect(int, int, const char *, const char *, const char *, const char *, int);
-bool		ECPGdo(int, int, int, const char *, const char *,...);
+bool		ECPGdo(const int, const int, const int, const char *, const char, const enum ECPG_statement_type, const char *,...);
 bool		ECPGtrans(int, const char *, const char *);
 bool		ECPGdisconnect(int, const char *);
-bool		ECPGprepare(int, const char *, const char *);
+bool		ECPGprepare(int, const char *, const int, const char *, const char *);
+bool		ECPGauto_prepare(int, const char *, const int, char **, const char *);
 bool		ECPGdeallocate(int, int, const char *);
-bool		ECPGdeallocate_one(int, const char *);
-bool		ECPGdeallocate_all(int);
-char	   *ECPGprepared_statement(const char *);
+bool		ECPGdeallocate_all(int, int);
+char	   *ECPGprepared_statement(const char *, int);
 
 void		ECPGlog(const char *format,...);
 char	   *ECPGerrmsg(void);
@@ -69,8 +69,6 @@ bool ECPGdo_descriptor(int line, const char *connection,
 				  const char *descriptor, const char *query);
 bool		ECPGdeallocate_desc(int line, const char *name);
 bool		ECPGallocate_desc(int line, const char *name);
-void		ECPGraise(int line, int code, const char *sqlstate, const char *str);
-void		ECPGraise_backend(int line, PGresult *result, PGconn *conn, int compat);
 bool		ECPGget_desc_header(int, const char *, int *);
 bool		ECPGget_desc(int, const char *, int,...);
 bool		ECPGset_desc_header(int, const char *, int);

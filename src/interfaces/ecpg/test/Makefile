@@ -6,7 +6,7 @@ include $(top_builddir)/src/Makefile.global
 
 # port number for temp-installation test postmaster
 # this is also defined in test/connect/Makefile
-TEMP_PORT = 5$(DEF_PGPORT)
+TEMP_PORT = 4$(DEF_PGPORT)
 
 # where to find psql for testing an existing installation
 PSQLDIR = $(bindir)

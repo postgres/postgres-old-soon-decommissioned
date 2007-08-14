@@ -19,10 +19,12 @@ extern int	braces_open,
 			auto_create_c,
 			system_includes,
 			force_indicator,
+			questionmarks,
 			ret_value,
 			struct_level,
 			ecpg_informix_var,
-			regression_mode;
+			regression_mode,
+			auto_prepare;
 extern char *descriptor_index;
 extern char *descriptor_name;
 extern char *connection;
@@ -58,7 +60,9 @@ extern const char *get_dtype(enum ECPGdtype);
 extern void lex_init(void);
 extern char *make_str(const char *);
 extern void output_line_number(void);
-extern void output_statement(char *, int, char *);
+extern void output_statement(char *, int, enum ECPG_statement_type);
+extern void output_prepare_statement(char *, char *);
+extern void output_deallocate_prepare_statement(char *);
 extern void output_simple_statement(char *);
 extern char *hashline_number(void);
 extern int	base_yyparse(void);
