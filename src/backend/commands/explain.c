@@ -52,6 +52,8 @@ typedef struct ExplainState
 static void ExplainOneQuery(Query *query, ExplainStmt *stmt,
 							const char *queryString,
 							ParamListInfo params, TupOutputState *tstate);
+static void report_triggers(ResultRelInfo *rInfo, bool show_relname,
+							StringInfo buf);
 static double elapsed_time(instr_time *starttime);
 static void explain_outNode(StringInfo str,
 				Plan *plan, PlanState *planstate,
@@ -310,50 +312,21 @@ ExplainOnePlan(PlannedStmt *plannedstmt, ParamListInfo params,
 	if (es->printAnalyze)
 	{
 		ResultRelInfo *rInfo;
+		bool		show_relname;
 		int			numrels = queryDesc->estate->es_num_result_relations;
+		List	   *targrels = queryDesc->estate->es_trig_target_relations;
 		int			nr;
+		ListCell   *l;
 
+		show_relname = (numrels > 1 || targrels != NIL);
 		rInfo = queryDesc->estate->es_result_relations;
 		for (nr = 0; nr < numrels; rInfo++, nr++)
+			report_triggers(rInfo, show_relname, &buf);
+
+		foreach(l, targrels)
 		{
-			int			nt;
-
-			if (!rInfo->ri_TrigDesc || !rInfo->ri_TrigInstrument)
-				continue;
-			for (nt = 0; nt < rInfo->ri_TrigDesc->numtriggers; nt++)
-			{
-				Trigger    *trig = rInfo->ri_TrigDesc->triggers + nt;
-				Instrumentation *instr = rInfo->ri_TrigInstrument + nt;
-				char	   *conname;
-
-				/* Must clean up instrumentation state */
-				InstrEndLoop(instr);
-
-				/*
-				 * We ignore triggers that were never invoked; they likely
-				 * aren't relevant to the current query type.
-				 */
-				if (instr->ntuples == 0)
-					continue;
-
-				if (OidIsValid(trig->tgconstraint) &&
-					(conname = get_constraint_name(trig->tgconstraint)) != NULL)
-				{
-					appendStringInfo(&buf, "Trigger for constraint %s",
-									 conname);
-					pfree(conname);
-				}
-				else
-					appendStringInfo(&buf, "Trigger %s", trig->tgname);
-
-				if (numrels > 1)
-					appendStringInfo(&buf, " on %s",
-							RelationGetRelationName(rInfo->ri_RelationDesc));
-
-				appendStringInfo(&buf, ": time=%.3f calls=%.0f\n",
-								 1000.0 * instr->total,
-								 instr->ntuples);
-			}
+			rInfo = (ResultRelInfo *) lfirst(l);
+			report_triggers(rInfo, show_relname, &buf);
 		}
 	}
 
@@ -380,6 +353,51 @@ ExplainOnePlan(PlannedStmt *plannedstmt, ParamListInfo params,
 
 	pfree(buf.data);
 	pfree(es);
+}
+
+/*
+ * report_triggers -
+ *		report execution stats for a single relation's triggers
+ */
+static void
+report_triggers(ResultRelInfo *rInfo, bool show_relname, StringInfo buf)
+{
+	int			nt;
+
+	if (!rInfo->ri_TrigDesc || !rInfo->ri_TrigInstrument)
+		return;
+	for (nt = 0; nt < rInfo->ri_TrigDesc->numtriggers; nt++)
+	{
+		Trigger    *trig = rInfo->ri_TrigDesc->triggers + nt;
+		Instrumentation *instr = rInfo->ri_TrigInstrument + nt;
+		char	   *conname;
+
+		/* Must clean up instrumentation state */
+		InstrEndLoop(instr);
+
+		/*
+		 * We ignore triggers that were never invoked; they likely
+		 * aren't relevant to the current query type.
+		 */
+		if (instr->ntuples == 0)
+			continue;
+
+		if (OidIsValid(trig->tgconstraint) &&
+			(conname = get_constraint_name(trig->tgconstraint)) != NULL)
+		{
+			appendStringInfo(buf, "Trigger for constraint %s", conname);
+			pfree(conname);
+		}
+		else
+			appendStringInfo(buf, "Trigger %s", trig->tgname);
+
+		if (show_relname)
+			appendStringInfo(buf, " on %s",
+							 RelationGetRelationName(rInfo->ri_RelationDesc));
+
+		appendStringInfo(buf, ": time=%.3f calls=%.0f\n",
+						 1000.0 * instr->total, instr->ntuples);
+	}
 }
 
 /* Compute elapsed time in seconds since given timestamp */

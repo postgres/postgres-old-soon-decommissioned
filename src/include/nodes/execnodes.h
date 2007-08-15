@@ -310,9 +310,12 @@ typedef struct EState
 	ResultRelInfo *es_result_relation_info;		/* currently active array elt */
 	JunkFilter *es_junkFilter;	/* currently active junk filter */
 
+	/* Stuff used for firing triggers: */
+	List	   *es_trig_target_relations;	/* trigger-only ResultRelInfos */
 	TupleTableSlot *es_trig_tuple_slot; /* for trigger output tuples */
 
-	Relation	es_into_relation_descriptor;	/* for SELECT INTO */
+	/* Stuff used for SELECT INTO: */
+	Relation	es_into_relation_descriptor;
 	bool		es_into_relation_use_wal;
 
 	/* Parameter info: */

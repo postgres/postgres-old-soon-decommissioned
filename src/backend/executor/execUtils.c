@@ -184,6 +184,7 @@ CreateExecutorState(void)
 
 	estate->es_junkFilter = NULL;
 
+	estate->es_trig_target_relations = NIL;
 	estate->es_trig_tuple_slot = NULL;
 
 	estate->es_into_relation_descriptor = NULL;
