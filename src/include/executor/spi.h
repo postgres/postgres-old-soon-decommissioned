@@ -104,7 +104,7 @@ extern int	SPI_execute_snapshot(SPIPlanPtr plan,
 					 Datum *Values, const char *Nulls,
 					 Snapshot snapshot,
 					 Snapshot crosscheck_snapshot,
-					 bool read_only, long tcount);
+					 bool read_only, bool fire_triggers, long tcount);
 extern SPIPlanPtr SPI_prepare(const char *src, int nargs, Oid *argtypes);
 extern SPIPlanPtr SPI_prepare_cursor(const char *src, int nargs, Oid *argtypes,
 									 int cursorOptions);

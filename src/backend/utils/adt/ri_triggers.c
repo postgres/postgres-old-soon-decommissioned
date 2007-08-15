@@ -2774,7 +2774,7 @@ RI_Initial_Check(Trigger *trigger, Relation fk_rel, Relation pk_rel)
 									  NULL, NULL,
 									  CopySnapshot(GetLatestSnapshot()),
 									  InvalidSnapshot,
-									  true, 1);
+									  true, false, 1);
 
 	/* Check result */
 	if (spi_result != SPI_OK_SELECT)
@@ -3308,7 +3308,7 @@ ri_PerformCheck(RI_QueryKey *qkey, SPIPlanPtr qplan,
 	spi_result = SPI_execute_snapshot(qplan,
 									  vals, nulls,
 									  test_snapshot, crosscheck_snapshot,
-									  false, limit);
+									  false, false, limit);
 
 	/* Restore UID */
 	SetUserId(save_uid);
