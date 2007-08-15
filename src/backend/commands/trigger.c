@@ -2340,10 +2340,12 @@ AfterTriggerEndQuery(void)
 	 * SET CONSTRAINTS ... IMMEDIATE: all events we have decided to defer
 	 * will be available for it to fire.
 	 *
+	 * We loop in case a trigger queues more events.
+	 *
 	 * If we find no firable events, we don't have to increment firing_counter.
 	 */
 	events = &afterTriggers->query_stack[afterTriggers->query_depth];
-	if (afterTriggerMarkEvents(events, &afterTriggers->events, true))
+	while (afterTriggerMarkEvents(events, &afterTriggers->events, true))
 	{
 		CommandId		firing_id = afterTriggers->firing_counter++;
 
@@ -2834,7 +2836,7 @@ AfterTriggerSetState(ConstraintsSetStmt *stmt)
 	{
 		AfterTriggerEventList *events = &afterTriggers->events;
 
-		if (afterTriggerMarkEvents(events, NULL, true))
+		while (afterTriggerMarkEvents(events, NULL, true))
 		{
 			CommandId		firing_id = afterTriggers->firing_counter++;
 

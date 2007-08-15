@@ -2709,7 +2709,7 @@ RI_Initial_Check(FkConstraint *fkconstraint, Relation rel, Relation pkrel)
 									  NULL, NULL,
 									  CopySnapshot(GetLatestSnapshot()),
 									  InvalidSnapshot,
-									  true, 1);
+									  true, false, 1);
 
 	/* Check result */
 	if (spi_result != SPI_OK_SELECT)
@@ -3139,7 +3139,7 @@ ri_PerformCheck(RI_QueryKey *qkey, void *qplan,
 	spi_result = SPI_execute_snapshot(qplan,
 									  vals, nulls,
 									  test_snapshot, crosscheck_snapshot,
-									  false, limit);
+									  false, false, limit);
 
 	/* Restore UID */
 	SetUserId(save_uid);

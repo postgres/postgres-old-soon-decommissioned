@@ -92,7 +92,7 @@ extern int	SPI_execute_snapshot(void *plan,
 								 Datum *Values, const char *Nulls,
 								 Snapshot snapshot,
 								 Snapshot crosscheck_snapshot,
-								 bool read_only, int tcount);
+								 bool read_only, bool fire_triggers, int tcount);
 extern void *SPI_prepare(const char *src, int nargs, Oid *argtypes);
 extern void *SPI_saveplan(void *plan);
 extern int	SPI_freeplan(void *plan);
