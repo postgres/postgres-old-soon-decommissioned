@@ -2295,7 +2295,7 @@ SELECT * FROM parent WHERE key = 2400;
          might not appear in <application>syslog</> output (a common example
          is dynamic-linker failure messages).
          This parameter can only be set at server start.
-		 <varname>start_log_collector</varname> must be enabled to generate 
+		 <varname>logging_collector</varname> must be enabled to generate 
 		 CSV logs.
        </para>
       </listitem>
