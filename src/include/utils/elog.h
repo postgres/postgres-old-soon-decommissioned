@@ -291,6 +291,7 @@ extern int	Log_destination;
 #define LOG_DESTINATION_STDERR	 1
 #define LOG_DESTINATION_SYSLOG	 2
 #define LOG_DESTINATION_EVENTLOG 4
+#define LOG_DESTINATION_CSVLOG   8
 
 /* Other exported functions */
 extern void DebugFileOpen(void);
