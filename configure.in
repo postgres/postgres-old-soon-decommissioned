@@ -607,6 +607,13 @@ PGAC_ARG_BOOL(with, libxslt, no, [  --with-libxslt          build with XSLT supp
 AC_SUBST(with_libxslt)
 
 #
+# tzdata
+#
+PGAC_ARG_REQ(with, system-tzdata,
+             [  --with-system-tzdata=DIR  use system time zone data in DIR])
+AC_SUBST(with_system_tzdata)
+
+#
 # Zlib
 #
 PGAC_ARG_BOOL(with, zlib, yes,

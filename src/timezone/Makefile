@@ -32,11 +32,17 @@ all: SUBSYS.o submake-libpgport zic
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
+ifeq (,$(with_system_tzdata))
 zic: $(ZICOBJS)
 	$(CC) $(CFLAGS) $(ZICOBJS) $(LDFLAGS) $(LIBS) -o $@$(X)
+endif
 
 install: all installdirs
+ifeq (,$(with_system_tzdata))
 	./zic -d '$(DESTDIR)$(datadir)/timezone' -p '$(POSIXRULES)' $(TZDATAFILES)
+else
+	ln -s '$(with_system_tzdata)' '$(DESTDIR)$(datadir)/timezone'
+endif
 	$(MAKE) -C tznames $@
 
 installdirs:
