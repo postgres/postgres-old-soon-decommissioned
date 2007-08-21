@@ -1007,7 +1007,7 @@ static void
 logfile_rotate(bool time_based_rotation, int size_rotation_for)
 {
 	char	   *filename;
-	char       *csvfilename;
+	char       *csvfilename = NULL;
 	FILE	   *fh;
 
 	rotation_requested = false;
