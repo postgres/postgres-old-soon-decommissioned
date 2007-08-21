@@ -101,6 +101,7 @@
   &func;
   &typeconv;
   &indices;
+  &textsearch;
   &mvcc;
   &perform;
 

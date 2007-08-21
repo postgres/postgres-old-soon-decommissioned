@@ -50,6 +50,10 @@
    &alterSequence;
    &alterTable;
    &alterTableSpace;
+   &alterTSConfig;
+   &alterTSDictionary;
+   &alterTSParser;
+   &alterTSTemplate;
    &alterTrigger;
    &alterType;
    &alterUser;
@@ -83,6 +87,10 @@
    &createTable;
    &createTableAs;
    &createTableSpace;
+   &createTSConfig;
+   &createTSDictionary;
+   &createTSParser;
+   &createTSTemplate;
    &createTrigger;
    &createType;
    &createUser;
@@ -110,6 +118,10 @@
    &dropSequence;
    &dropTable;
    &dropTableSpace;
+   &dropTSConfig;
+   &dropTSDictionary;
+   &dropTSParser;
+   &dropTSTemplate;
    &dropTrigger;
    &dropType;
    &dropUser;
