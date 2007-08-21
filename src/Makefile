@@ -18,6 +18,7 @@ all install installdirs uninstall distprep:
 	$(MAKE) -C timezone $@
 	$(MAKE) -C backend $@
 	$(MAKE) -C backend/utils/mb/conversion_procs $@
+	$(MAKE) -C backend/snowball $@
 	$(MAKE) -C include $@
 	$(MAKE) -C interfaces $@
 	$(MAKE) -C bin $@
@@ -47,6 +48,7 @@ clean:
 	$(MAKE) -C port $@
 	$(MAKE) -C timezone $@
 	$(MAKE) -C backend $@
+	$(MAKE) -C backend/snowball $@
 	$(MAKE) -C include $@
 	$(MAKE) -C interfaces $@
 	$(MAKE) -C bin $@
@@ -60,6 +62,7 @@ distclean maintainer-clean:
 	-$(MAKE) -C port $@
 	-$(MAKE) -C timezone $@
 	-$(MAKE) -C backend $@
+	-$(MAKE) -C backend/snowball $@
 	-$(MAKE) -C include $@
 	-$(MAKE) -C interfaces $@
 	-$(MAKE) -C bin $@

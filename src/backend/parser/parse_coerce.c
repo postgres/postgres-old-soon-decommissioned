@@ -1554,6 +1554,8 @@ TypeCategory(Oid inType)
 		case (REGOPERATOROID):
 		case (REGCLASSOID):
 		case (REGTYPEOID):
+		case (REGCONFIGOID):
+		case (REGDICTIONARYOID):
 		case (INT2OID):
 		case (INT4OID):
 		case (INT8OID):
@@ -1672,7 +1674,9 @@ IsPreferredType(CATEGORY category, Oid type)
 				type == REGOPEROID ||
 				type == REGOPERATOROID ||
 				type == REGCLASSOID ||
-				type == REGTYPEOID)
+				type == REGTYPEOID ||
+				type == REGCONFIGOID ||
+				type == REGDICTIONARYOID)
 				preftype = OIDOID;
 			else
 				preftype = FLOAT8OID;

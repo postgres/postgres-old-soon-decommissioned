@@ -30,7 +30,7 @@ typedef struct _FuncCandidateList
 	Oid			oid;			/* the function or operator's OID */
 	int			nargs;			/* number of arg types returned */
 	Oid			args[1];		/* arg types --- VARIABLE LENGTH ARRAY */
-}	*FuncCandidateList;	/* VARIABLE LENGTH STRUCT */
+} *FuncCandidateList;	/* VARIABLE LENGTH STRUCT */
 
 /*
  *	Structure for xxxOverrideSearchPath functions
@@ -66,6 +66,18 @@ extern bool OpfamilyIsVisible(Oid opfid);
 
 extern Oid	ConversionGetConid(const char *conname);
 extern bool ConversionIsVisible(Oid conid);
+
+extern Oid	TSParserGetPrsid(List *names, bool failOK);
+extern bool TSParserIsVisible(Oid prsId);
+
+extern Oid	TSDictionaryGetDictid(List *names, bool failOK);
+extern bool TSDictionaryIsVisible(Oid dictId);
+
+extern Oid	TSTemplateGetTmplid(List *names, bool failOK);
+extern bool TSTemplateIsVisible(Oid tmplId);
+
+extern Oid	TSConfigGetCfgid(List *names, bool failOK);
+extern bool TSConfigIsVisible(Oid cfgid);
 
 extern void DeconstructQualifiedName(List *names,
 						 char **nspname_p,

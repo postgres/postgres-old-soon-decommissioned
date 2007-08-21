@@ -92,6 +92,35 @@ extern void RenameOpFamily(List *name, const char *access_method, const char *ne
 extern void AlterOpClassOwner(List *name, const char *access_method, Oid newOwnerId);
 extern void AlterOpFamilyOwner(List *name, const char *access_method, Oid newOwnerId);
 
+/* commands/tsearchcmds.c */
+extern void DefineTSParser(List *names, List *parameters);
+extern void RenameTSParser(List *oldname, const char *newname);
+extern void RemoveTSParser(List *names, DropBehavior behavior,
+						   bool missing_ok);
+extern void RemoveTSParserById(Oid prsId);
+
+extern void DefineTSDictionary(List *names, List *parameters);
+extern void RenameTSDictionary(List *oldname, const char *newname);
+extern void RemoveTSDictionary(List *names, DropBehavior behavior,
+							   bool missing_ok);
+extern void RemoveTSDictionaryById(Oid dictId);
+extern void AlterTSDictionary(AlterTSDictionaryStmt *stmt);
+extern void AlterTSDictionaryOwner(List *name, Oid newOwnerId);
+
+extern void DefineTSTemplate(List *names, List *parameters);
+extern void RenameTSTemplate(List *oldname, const char *newname);
+extern void RemoveTSTemplate(List *names, DropBehavior behavior,
+							 bool missing_ok);
+extern void RemoveTSTemplateById(Oid tmplId);
+
+extern void DefineTSConfiguration(List *names, List *parameters);
+extern void RenameTSConfiguration(List *oldname, const char *newname);
+extern void RemoveTSConfiguration(List *names, DropBehavior behavior,
+								  bool missing_ok);
+extern void RemoveTSConfigurationById(Oid cfgId);
+extern void AlterTSConfiguration(AlterTSConfigurationStmt *stmt);
+extern void AlterTSConfigurationOwner(List *name, Oid newOwnerId);
+
 /* support routines in commands/define.c */
 
 extern char *case_translate_language_name(const char *input);

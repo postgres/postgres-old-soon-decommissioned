@@ -2419,7 +2419,9 @@ _getObjectDescription(PQExpBuffer buf, TocEntry *te, ArchiveHandle *AH)
 	if (strcmp(type, "CONVERSION") == 0 ||
 		strcmp(type, "DOMAIN") == 0 ||
 		strcmp(type, "TABLE") == 0 ||
-		strcmp(type, "TYPE") == 0)
+		strcmp(type, "TYPE") == 0 ||
+		strcmp(type, "TEXT SEARCH DICTIONARY") == 0 ||
+		strcmp(type, "TEXT SEARCH CONFIGURATION") == 0)
 	{
 		appendPQExpBuffer(buf, "%s ", type);
 		if (te->namespace && te->namespace[0])	/* is null pre-7.3 */
@@ -2591,7 +2593,9 @@ _printTocEntry(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt, bool isDat
 			strcmp(te->desc, "TABLE") == 0 ||
 			strcmp(te->desc, "TYPE") == 0 ||
 			strcmp(te->desc, "VIEW") == 0 ||
-			strcmp(te->desc, "SEQUENCE") == 0)
+			strcmp(te->desc, "SEQUENCE") == 0 ||
+			strcmp(te->desc, "TEXT SEARCH DICTIONARY") == 0 ||
+			strcmp(te->desc, "TEXT SEARCH CONFIGURATION") == 0)
 		{
 			PQExpBuffer temp = createPQExpBuffer();
 

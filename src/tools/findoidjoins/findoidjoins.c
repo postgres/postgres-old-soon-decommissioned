@@ -83,7 +83,9 @@ main(int argc, char **argv)
 					  " 'pg_catalog.regoperator'::regtype, "
 					  " 'pg_catalog.regproc'::regtype, "
 					  " 'pg_catalog.regprocedure'::regtype, "
-					  " 'pg_catalog.regtype'::regtype) "
+					  " 'pg_catalog.regtype'::regtype, "
+					  " 'pg_catalog.regconfig'::regtype, "
+					  " 'pg_catalog.regdictionary'::regtype) "
 					  "ORDER BY nspname, c.relname, a.attnum"
 		);
 

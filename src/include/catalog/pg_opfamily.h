@@ -27,7 +27,7 @@
  */
 
 /* ----------------
- *		pg_opfamily definition.	cpp turns this into
+ *		pg_opfamily definition. cpp turns this into
  *		typedef struct FormData_pg_opfamily
  * ----------------
  */
@@ -139,6 +139,10 @@ DATA(insert OID = 2968 (	403		uuid_ops		PGNSP PGUID ));
 DATA(insert OID = 2969 (	405		uuid_ops		PGNSP PGUID ));
 DATA(insert OID = 3522 (	403		enum_ops		PGNSP PGUID ));
 DATA(insert OID = 3523 (	405		enum_ops		PGNSP PGUID ));
-
+DATA(insert OID = 3626 (	403		tsvector_ops	PGNSP PGUID ));
+DATA(insert OID = 3655 (	783		tsvector_ops	PGNSP PGUID ));
+DATA(insert OID = 3659 (	2742	tsvector_ops	PGNSP PGUID ));
+DATA(insert OID = 3683 (	403		tsquery_ops		PGNSP PGUID ));
+DATA(insert OID = 3702 (	783		tsquery_ops		PGNSP PGUID ));
 
 #endif   /* PG_OPFAMILY_H */

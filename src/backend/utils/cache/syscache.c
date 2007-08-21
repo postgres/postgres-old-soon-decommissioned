@@ -40,6 +40,11 @@
 #include "catalog/pg_proc.h"
 #include "catalog/pg_rewrite.h"
 #include "catalog/pg_statistic.h"
+#include "catalog/pg_ts_config.h"
+#include "catalog/pg_ts_config_map.h"
+#include "catalog/pg_ts_dict.h"
+#include "catalog/pg_ts_parser.h"
+#include "catalog/pg_ts_template.h"
 #include "catalog/pg_type.h"
 #include "utils/syscache.h"
 
@@ -539,6 +544,114 @@ static const struct cachedesc cacheinfo[] = {
 			0
 		},
 		1024
+	},
+	{TSConfigMapRelationId,		/* TSCONFIGMAP */
+		TSConfigMapIndexId,
+		0,
+		3,
+		{
+			Anum_pg_ts_config_map_mapcfg,
+			Anum_pg_ts_config_map_maptokentype,
+			Anum_pg_ts_config_map_mapseqno,
+			0
+		},
+		4
+	},
+	{TSConfigRelationId,		/* TSCONFIGNAMENSP */
+		TSConfigNameNspIndexId,
+		0,
+		2,
+		{
+			Anum_pg_ts_config_cfgname,
+			Anum_pg_ts_config_cfgnamespace,
+			0,
+			0
+		},
+		16
+	},
+	{TSConfigRelationId,		/* TSCONFIGOID */
+		TSConfigOidIndexId,
+		0,
+		1,
+		{
+			ObjectIdAttributeNumber,
+			0,
+			0,
+			0
+		},
+		16
+	},
+	{TSDictionaryRelationId,	/* TSDICTNAMENSP */
+		TSDictionaryNameNspIndexId,
+		0,
+		2,
+		{
+			Anum_pg_ts_dict_dictname,
+			Anum_pg_ts_dict_dictnamespace,
+			0,
+			0
+		},
+		16
+	},
+	{TSDictionaryRelationId,	/* TSDICTOID */
+		TSDictionaryOidIndexId,
+		0,
+		1,
+		{
+			ObjectIdAttributeNumber,
+			0,
+			0,
+			0
+		},
+		16
+	},
+	{TSParserRelationId,		/* TSPARSERNAMENSP */
+		TSParserNameNspIndexId,
+		0,
+		2,
+		{
+			Anum_pg_ts_parser_prsname,
+			Anum_pg_ts_parser_prsnamespace,
+			0,
+			0
+		},
+		4
+	},
+	{TSParserRelationId,		/* TSPARSEROID */
+		TSParserOidIndexId,
+		0,
+		1,
+		{
+			ObjectIdAttributeNumber,
+			0,
+			0,
+			0
+		},
+		4
+	},
+	{TSTemplateRelationId,		/* TSTEMPLATENAMENSP */
+		TSTemplateNameNspIndexId,
+		0,
+		2,
+		{
+			Anum_pg_ts_template_tmplname,
+			Anum_pg_ts_template_tmplnamespace,
+			0,
+			0
+		},
+		16
+	},
+	{TSTemplateRelationId,		/* TSTEMPLATEOID */
+		TSTemplateOidIndexId,
+		0,
+		1,
+		{
+			ObjectIdAttributeNumber,
+			0,
+			0,
+			0
+		},
+		16
 	},
 	{TypeRelationId,			/* TYPENAMENSP */
 		TypeNameNspIndexId,

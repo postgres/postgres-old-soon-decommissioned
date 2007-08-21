@@ -33,12 +33,13 @@ test: abstime
 test: reltime
 test: tinterval
 test: inet
+test: tstypes
 test: comments
+test: geometry
+test: horology
 test: oidjoins
 test: type_sanity
 test: opr_sanity
-test: geometry
-test: horology
 test: insert
 test: create_function_1
 test: create_type
@@ -90,6 +91,7 @@ test: cluster
 test: dependency
 test: guc
 test: combocid
+test: tsearch
 test: plancache
 test: limit
 test: plpgsql

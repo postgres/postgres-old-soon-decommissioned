@@ -836,6 +836,10 @@ typedef enum ObjectType
 	OBJECT_TABLE,
 	OBJECT_TABLESPACE,
 	OBJECT_TRIGGER,
+	OBJECT_TSCONFIGURATION,
+	OBJECT_TSDICTIONARY,
+	OBJECT_TSPARSER,
+	OBJECT_TSTEMPLATE,
 	OBJECT_TYPE,
 	OBJECT_VIEW
 } ObjectType;
@@ -2032,5 +2036,36 @@ typedef struct ReassignOwnedStmt
 	List	   *roles;
 	char	   *newrole;
 } ReassignOwnedStmt;
+
+/*
+ * TS Dictionary stmts: DefineStmt, RenameStmt and DropStmt are default
+ */
+typedef struct AlterTSDictionaryStmt
+{
+	NodeTag		type;
+	List	   *dictname;		/* qualified name (list of Value strings) */
+	List	   *options;		/* List of DefElem nodes */
+} AlterTSDictionaryStmt;
+
+/*
+ * TS Configuration stmts: DefineStmt, RenameStmt and DropStmt are default
+ */
+typedef struct AlterTSConfigurationStmt
+{
+	NodeTag		type;
+	List	   *cfgname;		/* qualified name (list of Value strings) */
+	List	   *options;		/* List of DefElem nodes */
+
+	/*
+	 * These fields are used for ADD/ALTER/DROP MAPPING variants.
+	 * dicts will be non-NIL if ADD/ALTER MAPPING was specified.
+	 * If dicts is NIL, but tokentype isn't, DROP MAPPING was specified.
+	 */
+	List		*tokentype;		/* list of Value strings */
+	List		*dicts;			/* list of list of Value strings */
+	bool		 override;		/* if true - remove old variant */
+	bool		 replace;		/* if true - replace dictionary by another */
+	bool		 missing_ok;	/* for DROP - skip error if missing? */
+} AlterTSConfigurationStmt;
 
 #endif   /* PARSENODES_H */

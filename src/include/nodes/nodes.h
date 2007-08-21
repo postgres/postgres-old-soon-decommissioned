@@ -312,6 +312,8 @@ typedef enum NodeTag
 	T_ReassignOwnedStmt,
 	T_CompositeTypeStmt,
 	T_CreateEnumStmt,
+	T_AlterTSDictionaryStmt,
+	T_AlterTSConfigurationStmt,
 
 	/*
 	 * TAGS FOR PARSE TREE NODES (parsenodes.h)

@@ -405,6 +405,27 @@ exec_command(const char *cmd,
 			case 'u':
 				success = describeRoles(pattern, show_verbose);
 				break;
+			case 'F':			/* text search subsystem */
+				switch (cmd[2])
+				{
+					case '\0':
+					case '+':
+						success = listTSConfigs(pattern, show_verbose);
+						break;
+					case 'p':
+						success = listTSParsers(pattern, show_verbose);
+						break;
+					case 'd':
+						success = listTSDictionaries(pattern, show_verbose);
+						break;
+					case 't':
+						success = listTSTemplates(pattern, show_verbose);
+						break;
+					default:
+						status = PSQL_CMD_UNKNOWN;
+						break;
+				}
+				break;
 
 			default:
 				status = PSQL_CMD_UNKNOWN;

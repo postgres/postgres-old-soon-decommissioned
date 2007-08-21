@@ -65,8 +65,17 @@
 #define RELOID				34
 #define RULERELNAME			35
 #define STATRELATT			36
-#define TYPENAMENSP			37
-#define TYPEOID				38
+#define TSCONFIGMAP			37
+#define TSCONFIGNAMENSP		38
+#define TSCONFIGOID			39
+#define TSDICTNAMENSP		40
+#define TSDICTOID			41
+#define TSPARSERNAMENSP		42
+#define TSPARSEROID			43
+#define TSTEMPLATENAMENSP	44
+#define TSTEMPLATEOID		45
+#define TYPENAMENSP			46
+#define TYPEOID				47
 
 extern void InitCatalogCache(void);
 extern void InitCatalogCachePhase2(void);

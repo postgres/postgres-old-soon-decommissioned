@@ -62,7 +62,7 @@ ginarrayextract(PG_FUNCTION_ARGS)
 
 	if ( *nentries == 0 && PG_NARGS() == 3 )
 	{
-		switch( PG_GETARG_UINT16(2) )
+		switch( PG_GETARG_UINT16(2) ) /* StrategyNumber */
 		{
 			case GinOverlapStrategy:
 					*nentries = -1; /* nobody can be found */
@@ -77,6 +77,15 @@ ginarrayextract(PG_FUNCTION_ARGS)
 
 	/* we should not free array, entries[i] points into it */
 	PG_RETURN_POINTER(entries);
+}
+
+Datum
+ginqueryarrayextract(PG_FUNCTION_ARGS)
+{
+	PG_RETURN_DATUM(DirectFunctionCall3(ginarrayextract,
+										PG_GETARG_DATUM(0),
+										PG_GETARG_DATUM(1),
+										PG_GETARG_DATUM(2)));
 }
 
 Datum
