@@ -350,7 +350,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"temp", TEMP, UNRESERVED_KEYWORD},
 	{"template", TEMPLATE, UNRESERVED_KEYWORD},
 	{"temporary", TEMPORARY, UNRESERVED_KEYWORD},
-	{"text", TEXT, UNRESERVED_KEYWORD},
+	{"text", TEXT_P, UNRESERVED_KEYWORD},
 	{"then", THEN, RESERVED_KEYWORD},
 	{"time", TIME, COL_NAME_KEYWORD},
 	{"timestamp", TIMESTAMP, COL_NAME_KEYWORD},
