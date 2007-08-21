@@ -8,6 +8,7 @@ package Project;
 use Carp;
 use strict;
 use warnings;
+use File::Basename;
 
 sub new
 {
@@ -94,6 +95,18 @@ sub RemoveFile
         return;
     }
     confess("Could not find file $filename to remove\n");
+}
+
+sub RelocateFiles
+{
+    my ($self, $targetdir, $proc) = @_;
+    foreach my $f (keys %{$self->{files}}) {
+        my $r = &$proc($f);
+        if ($r) {
+           $self->RemoveFile($f);
+           $self->AddFile($targetdir . '\\' . basename($f));
+        }
+    }
 }
 
 sub AddReference

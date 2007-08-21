@@ -70,6 +70,13 @@ sub mkvcbuild
     $postgres->AddLibrary('wldap32.lib') if ($solution->{options}->{ldap});
     $postgres->FullExportDLL('postgres.lib');
 
+    my $snowball = $solution->AddProject('dict_snowball','dll','','src\backend\snowball');
+    $snowball->RelocateFiles('src\backend\snowball\libstemmer', sub {
+        return shift !~ /dict_snowball.c$/;
+    });
+    $snowball->AddIncludeDir('src\include\snowball');
+    $snowball->AddReference($postgres);
+
     my $plpgsql = $solution->AddProject('plpgsql','dll','PLs','src\pl\plpgsql\src');
     $plpgsql->AddFiles('src\pl\plpgsql\src','scan.l','gram.y');
     $plpgsql->AddReference($postgres);
