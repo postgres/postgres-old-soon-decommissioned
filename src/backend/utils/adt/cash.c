@@ -372,7 +372,7 @@ cash_recv(PG_FUNCTION_ARGS)
 {
 	StringInfo	buf = (StringInfo) PG_GETARG_POINTER(0);
 
-	PG_RETURN_CASH((Cash) pq_getmsgint(buf, sizeof(Cash)));
+	PG_RETURN_CASH((Cash) pq_getmsgint64(buf));
 }
 
 /*
@@ -385,7 +385,7 @@ cash_send(PG_FUNCTION_ARGS)
 	StringInfoData buf;
 
 	pq_begintypsend(&buf);
-	pq_sendint(&buf, arg1, sizeof(Cash));
+	pq_sendint64(&buf, arg1);
 	PG_RETURN_BYTEA_P(pq_endtypsend(&buf));
 }
 
