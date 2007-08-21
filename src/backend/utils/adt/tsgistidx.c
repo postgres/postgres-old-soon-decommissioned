@@ -52,7 +52,7 @@ typedef char *BITVECP;
 
 typedef struct
 {
-	int32		vl_len_; /* varlena header (do not touch directly!) */ ;
+	int32		vl_len_; /* varlena header (do not touch directly!) */
 	int4		flag;
 	char		data[1];
 } SignTSVector;
