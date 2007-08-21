@@ -31,7 +31,6 @@ WANTED_DIRS = \
 		seg		\
 		spi		\
 		tablefunc	\
-		tsearch2	\
 		vacuumlo
 
 ifeq ($(with_openssl),yes)
