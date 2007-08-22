@@ -59,16 +59,6 @@ typedef struct
 /*
  * Common useful things for tsearch subsystem
  */
-
-/* simple parser of cfg string looking like "key=val, key='val'" */
-typedef struct
-{
-	char	   *key;
-	char	   *value;
-} Map;
-
-extern void parse_keyvalpairs(text *in, Map ** m);
-
 extern char *get_tsearch_config_filename(const char *basename,
 										 const char *extension);
 

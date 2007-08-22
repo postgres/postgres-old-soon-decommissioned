@@ -3,7 +3,7 @@
 -- text search configuration for _CFGNAME_ language
 CREATE TEXT SEARCH DICTIONARY _DICTNAME_
 	(TEMPLATE = snowball,
-	OPTION = 'Language=_DICTNAME__STOPWORDS_');
+	Language = _DICTNAME_ _STOPWORDS_);
 
 COMMENT ON TEXT SEARCH DICTIONARY _DICTNAME_ IS 'Snowball stemmer for _DICTNAME_ language';
 

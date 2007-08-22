@@ -8288,11 +8288,9 @@ dumpTSDictionary(Archive *fout, TSDictInfo * dictinfo)
 
 	PQclear(res);
 
+	/* the dictinitoption can be dumped straight into the command */
 	if (dictinfo->dictinitoption)
-	{
-		appendPQExpBuffer(q, ",\n    OPTION = ");
-		appendStringLiteralConn(q, dictinfo->dictinitoption, g_conn);
-	}
+		appendPQExpBuffer(q, ",\n    %s", dictinfo->dictinitoption);
 
 	appendPQExpBuffer(q, " );\n");
 

@@ -121,6 +121,9 @@ extern void RemoveTSConfigurationById(Oid cfgId);
 extern void AlterTSConfiguration(AlterTSConfigurationStmt *stmt);
 extern void AlterTSConfigurationOwner(List *name, Oid newOwnerId);
 
+extern text *serialize_deflist(List *deflist);
+extern List *deserialize_deflist(Datum txt);
+
 /* support routines in commands/define.c */
 
 extern char *case_translate_language_name(const char *input);

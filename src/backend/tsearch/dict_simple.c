@@ -13,6 +13,7 @@
  */
 #include "postgres.h"
 
+#include "commands/defrem.h"
 #include "tsearch/ts_locale.h"
 #include "tsearch/ts_public.h"
 #include "tsearch/ts_utils.h"
@@ -28,18 +29,34 @@ typedef struct
 Datum
 dsimple_init(PG_FUNCTION_ARGS)
 {
+	List	   *dictoptions = (List *) PG_GETARG_POINTER(0);
 	DictExample *d = (DictExample *) palloc0(sizeof(DictExample));
+	bool		stoploaded = false;
+	ListCell   *l;
 
 	d->stoplist.wordop = recode_and_lowerstr;
 
-	if (!PG_ARGISNULL(0) && PG_GETARG_POINTER(0) != NULL)
+	foreach(l, dictoptions)
 	{
-		text   *in = PG_GETARG_TEXT_P(0);
-		char   *filename = TextPGetCString(in);
+		DefElem    *defel = (DefElem *) lfirst(l);
 
-		readstoplist(filename, &d->stoplist);
-		sortstoplist(&d->stoplist);
-		pfree(filename);
+		if (pg_strcasecmp("StopWords", defel->defname) == 0)
+		{
+			if (stoploaded)
+				ereport(ERROR,
+						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+						 errmsg("multiple StopWords parameters")));
+			readstoplist(defGetString(defel), &d->stoplist);
+			sortstoplist(&d->stoplist);
+			stoploaded = true;
+		}
+		else
+		{
+			ereport(ERROR,
+					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+					 errmsg("unrecognized simple dictionary parameter: \"%s\"",
+							defel->defname)));
+		}
 	}
 
 	PG_RETURN_POINTER(d);
