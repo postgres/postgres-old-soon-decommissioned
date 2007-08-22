@@ -81,7 +81,7 @@ int			remains;			/* number of remaining clients */
 int			is_connect;			/* establish connection  for each transaction */
 
 char	   *pghost = "";
-char	   *pgport = NULL;
+char	   *pgport = "";
 char	   *pgoptions = NULL;
 char	   *pgtty = NULL;
 char	   *login = NULL;
