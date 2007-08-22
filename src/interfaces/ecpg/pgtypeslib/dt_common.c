@@ -743,7 +743,7 @@ EncodeDateOnly(struct tm * tm, int style, char *str, bool EuroDates)
 	return TRUE;
 }	/* EncodeDateOnly() */
 
-static void
+void
 TrimTrailingZeros(char *str)
 {
 	int			len = strlen(str);
@@ -1090,7 +1090,7 @@ GetCurrentDateTime(struct tm * tm)
 	abstime2tm(time(NULL), &tz, tm, NULL);
 }
 
-static void
+void
 dt2time(double jd, int *hour, int *min, int *sec, fsec_t *fsec)
 {
 #ifdef HAVE_INT64_TIMESTAMP
@@ -1469,7 +1469,7 @@ DecodeDate(char *str, int fmask, int *tmask, struct tm * tm, bool EuroDates)
  * Only check the lower limit on hours, since this same code
  *	can be used to represent time spans.
  */
-static int
+int
 DecodeTime(char *str, int fmask, int *tmask, struct tm * tm, fsec_t *fsec)
 {
 	char	   *cp;

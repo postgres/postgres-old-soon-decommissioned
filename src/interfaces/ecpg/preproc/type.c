@@ -80,7 +80,7 @@ ECPGmake_struct_member(char *name, struct ECPGtype * type, struct ECPGstruct_mem
 			   *ne =
 	(struct ECPGstruct_member *) mm_alloc(sizeof(struct ECPGstruct_member));
 
-	ne->name = strdup(name);
+	ne->name = mm_strdup(name);
 	ne->type = type;
 	ne->next = NULL;
 
