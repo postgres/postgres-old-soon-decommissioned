@@ -31,7 +31,7 @@ depend dep:
 .PHONY: install-data
 install-data: $(DICTFILES) installdirs
 	for i in $(DICTFILES); \
-		do $(INSTALL_DATA) $$i '$(DESTDIR)$(datadir)/$(DICTDIR)/'$$i; \
+		do $(INSTALL_DATA) $(srcdir)/$$i '$(DESTDIR)$(datadir)/$(DICTDIR)/'$$i; \
 	done
 
 installdirs:
