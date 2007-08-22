@@ -2227,18 +2227,28 @@ listTSTemplates(const char *pattern, bool verbose)
 
 	initPQExpBuffer(&buf);
 
-	printfPQExpBuffer(&buf,
-					  "SELECT \n"
-					  "  n.nspname AS \"%s\",\n"
-					  "  t.tmplname AS \"%s\",\n"
-					  "  t.tmplinit::pg_catalog.regproc AS \"%s\",\n"
-					  "  t.tmpllexize::pg_catalog.regproc AS \"%s\",\n"
-					  "  pg_catalog.obj_description(t.oid, 'pg_ts_template') AS \"%s\"\n",
-					  _("Schema"),
-					  _("Name"),
-					  _("Init"),
-					  _("Lexize"),
-					  _("Description"));
+	if (verbose)
+		printfPQExpBuffer(&buf,
+						  "SELECT \n"
+						  "  n.nspname AS \"%s\",\n"
+						  "  t.tmplname AS \"%s\",\n"
+						  "  t.tmplinit::pg_catalog.regproc AS \"%s\",\n"
+						  "  t.tmpllexize::pg_catalog.regproc AS \"%s\",\n"
+						  "  pg_catalog.obj_description(t.oid, 'pg_ts_template') AS \"%s\"\n",
+						  _("Schema"),
+						  _("Name"),
+						  _("Init"),
+						  _("Lexize"),
+						  _("Description"));
+	else
+		printfPQExpBuffer(&buf,
+						  "SELECT \n"
+						  "  n.nspname AS \"%s\",\n"
+						  "  t.tmplname AS \"%s\",\n"
+						  "  pg_catalog.obj_description(t.oid, 'pg_ts_template') AS \"%s\"\n",
+						  _("Schema"),
+						  _("Name"),
+						  _("Description"));
 
 	appendPQExpBuffer(&buf, "FROM pg_catalog.pg_ts_template t\n"
 		"LEFT JOIN pg_catalog.pg_namespace n ON n.oid = t.tmplnamespace\n");
