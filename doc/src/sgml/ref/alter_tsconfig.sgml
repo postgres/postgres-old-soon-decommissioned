@@ -96,7 +96,7 @@ ALTER TEXT SEARCH CONFIGURATION <replaceable>name</replaceable> OWNER TO <replac
    </varlistentry>
 
    <varlistentry>
-    <term><replaceable class="parameter">old_dictionary</replaceable></term>
+    <term><replaceable class="parameter">new_dictionary</replaceable></term>
     <listitem>
      <para>
       The name of a text search dictionary to be substituted for
