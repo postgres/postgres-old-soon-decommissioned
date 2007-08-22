@@ -2054,10 +2054,8 @@ typedef struct AlterTSConfigurationStmt
 {
 	NodeTag		type;
 	List	   *cfgname;		/* qualified name (list of Value strings) */
-	List	   *options;		/* List of DefElem nodes */
 
 	/*
-	 * These fields are used for ADD/ALTER/DROP MAPPING variants.
 	 * dicts will be non-NIL if ADD/ALTER MAPPING was specified.
 	 * If dicts is NIL, but tokentype isn't, DROP MAPPING was specified.
 	 */
