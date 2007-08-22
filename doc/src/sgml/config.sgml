@@ -4106,6 +4106,26 @@ SET XML OPTION { DOCUMENT | CONTENT };
       </listitem>
      </varlistentry>
 
+     <varlistentry id="guc-default-text-search-config" xreflabel="default_text_search_config">
+      <term><varname>default_text_search_config</varname> (<type>string</type>)</term>
+      <indexterm>
+       <primary><varname>default_text_search_config</> configuration parameter</primary>
+      </indexterm>
+      <listitem>
+       <para>
+        Selects the text search configuration that is used by those variants
+        of the text search functions that do not have an explicit argument
+        specifying the configuration.
+        See <xref linkend="textsearch"> for further information.
+        The built-in default is <literal>pg_catalog.simple</>, but
+        <application>initdb</application> will initialize the
+        configuration file with a setting that corresponds to the
+        chosen <varname>lc_ctype</varname> locale, if a configuration
+        matching that locale can be identified.
+       </para>
+      </listitem>
+     </varlistentry>
+
      </variablelist>
 
     </sect2>
