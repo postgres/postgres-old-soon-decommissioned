@@ -78,6 +78,7 @@ void		px_free(void *p);
 #define PXE_BAD_SALT_ROUNDS			-15
 #define PXE_MCRYPT_INTERNAL			-16
 #define PXE_NO_RANDOM				-17
+#define PXE_DECRYPT_FAILED			-18
 
 #define PXE_MBUF_SHORT_READ			-50
 
