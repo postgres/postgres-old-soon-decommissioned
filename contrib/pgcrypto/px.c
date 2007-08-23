@@ -185,6 +185,18 @@ combo_decrypt(PX_Combo * cx, const uint8 *data, unsigned dlen,
 
 	PX_Cipher  *c = cx->cipher;
 
+	/* decide whether zero-length input is allowed */
+	if (dlen == 0)
+	{
+		/* with padding, empty ciphertext is not allowed */
+		if (cx->padding)
+			return -1;
+		
+		/* without padding, report empty result */
+		*rlen = 0;
+		return 0;
+	}
+
 	bs = px_cipher_block_size(c);
 	if (bs > 1 && (dlen % bs) != 0)
 		goto block_error;
