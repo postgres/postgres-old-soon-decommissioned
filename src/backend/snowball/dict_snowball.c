@@ -192,7 +192,6 @@ dsnowball_init(PG_FUNCTION_ARGS)
 	ListCell   *l;
 
 	d = (DictSnowball *) palloc0(sizeof(DictSnowball));
-	d->stoplist.wordop = recode_and_lowerstr;
 
 	foreach(l, dictoptions)
 	{
@@ -204,8 +203,7 @@ dsnowball_init(PG_FUNCTION_ARGS)
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 						 errmsg("multiple StopWords parameters")));
-			readstoplist(defGetString(defel), &d->stoplist);
-			sortstoplist(&d->stoplist);
+			readstoplist(defGetString(defel), &d->stoplist, lowerstr);
 			stoploaded = true;
 		}
 		else if (pg_strcasecmp("Language", defel->defname) == 0)

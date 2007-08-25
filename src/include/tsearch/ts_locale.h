@@ -38,11 +38,11 @@
 
 #ifdef TS_USE_WIDE
 
-size_t		char2wchar(wchar_t *to, const char *from, size_t len);
+extern size_t char2wchar(wchar_t *to, const char *from, size_t len);
 
 #ifdef WIN32
 
-size_t		wchar2char(char *to, const wchar_t *from, size_t len);
+extern size_t wchar2char(char *to, const wchar_t *from, size_t len);
 #else							/* WIN32 */
 
 /* correct wcstombs */
@@ -81,8 +81,8 @@ extern int	_t_isprint(const char *ptr);
 #define COPYCHAR(d,s)	TOUCHAR(d) = TOUCHAR(s)
 #endif
 
-char	   *lowerstr(char *str);
-char	   *lowerstr_with_len(char *str, int len);
-char	   *recode_and_lowerstr(char *str);
+extern char *lowerstr(char *str);
+extern char *lowerstr_with_len(char *str, int len);
+extern char *t_readline(FILE *fp);
 
 #endif   /* __TSLOCALE_H__ */
