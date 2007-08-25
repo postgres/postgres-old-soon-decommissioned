@@ -112,8 +112,6 @@ DefineIndex(RangeVar *heapRelation,
 	relationId = RelationGetRelid(rel);
 	namespaceId = RelationGetNamespace(rel);
 
-	heap_close(rel, NoLock);
-
 	/*
 	 * Verify we (still) have CREATE rights in the rel's namespace.
 	 * (Presumably we did when the rel was created, but maybe not
@@ -250,6 +248,8 @@ DefineIndex(RangeVar *heapRelation,
 	classObjectId = (Oid *) palloc(numberOfAttributes * sizeof(Oid));
 	ComputeIndexAttrs(indexInfo, classObjectId, attributeList,
 					  relationId, accessMethodName, accessMethodId);
+
+	heap_close(rel, NoLock);
 
 	index_create(relationId, indexRelationName,
 				 indexInfo, accessMethodId, classObjectId,
