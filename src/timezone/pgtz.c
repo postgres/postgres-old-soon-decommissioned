@@ -38,9 +38,6 @@ pg_tz	   *gmt_timezone = NULL;
 static pg_tz gmt_timezone_data;
 
 
-static char tzdir[MAXPGPATH];
-static bool done_tzdir = false;
-
 static bool scan_directory_ci(const char *dirname,
 							  const char *fname, int fnamelen,
 							  char *canonname, int canonnamelen);
@@ -52,9 +49,14 @@ static pg_tz *select_default_timezone(void);
 /*
  * Return full pathname of timezone data directory
  */
-static char *
+static const char *
 pg_TZDIR(void)
 {
+#ifndef SYSTEMTZDIR
+	/* normal case: timezone stuff is under our share dir */
+	static bool done_tzdir = false;
+	static char tzdir[MAXPGPATH];
+
 	if (done_tzdir)
 		return tzdir;
 
@@ -63,6 +65,10 @@ pg_TZDIR(void)
 
 	done_tzdir = true;
 	return tzdir;
+#else
+	/* we're configured to use system's timezone database */
+	return SYSTEMTZDIR;
+#endif
 }
 
 
