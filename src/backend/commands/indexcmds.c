@@ -423,8 +423,6 @@ DefineIndex(RangeVar *heapRelation,
 					  relationId, accessMethodName, accessMethodId,
 					  isconstraint);
 
-	heap_close(rel, NoLock);
-
 	/*
 	 * Report index creation if appropriate (delay this till after most of the
 	 * error checks)
@@ -435,6 +433,10 @@ DefineIndex(RangeVar *heapRelation,
 				  is_alter_table ? "ALTER TABLE / ADD" : "CREATE TABLE /",
 				  primary ? "PRIMARY KEY" : "UNIQUE",
 				  indexRelationName, RelationGetRelationName(rel))));
+
+	/* save lockrelid for below, then close rel */
+	heaprelid = rel->rd_lockInfo.lockRelId;
+	heap_close(rel, NoLock);
 
 	indexRelationId =
 		index_create(relationId, indexRelationName, indexRelationId,
@@ -463,7 +465,6 @@ DefineIndex(RangeVar *heapRelation,
 	 * because there are no operations that could change its state while we
 	 * hold lock on the parent table.  This might need to change later.
 	 */
-	heaprelid = rel->rd_lockInfo.lockRelId;
 	LockRelationIdForSession(&heaprelid, ShareUpdateExclusiveLock);
 
 	CommitTransactionCommand();
