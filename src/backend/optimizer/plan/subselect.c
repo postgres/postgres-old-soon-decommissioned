@@ -208,10 +208,10 @@ generate_new_param(PlannerInfo *root, Oid paramtype, int32 paramtypmod)
 /*
  * Get the datatype of the first column of the plan's output.
  *
- * This is a hack to support exprType(), which doesn't have any way to get
- * at the plan associated with a SubPlan node.  We really only need the value
- * for EXPR_SUBLINK and ARRAY_SUBLINK subplans, but for consistency we set
- * it always.
+ * This is stored for ARRAY_SUBLINK and for exprType(), which doesn't have any
+ * way to get at the plan associated with a SubPlan node.  We really only need
+ * the value for EXPR_SUBLINK and ARRAY_SUBLINK subplans, but for consistency
+ * we set it always.
  */
 static Oid
 get_first_col_type(Plan *plan)
