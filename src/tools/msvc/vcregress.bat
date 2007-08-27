@@ -110,6 +110,8 @@ goto :eof
 
 REM Check a single contrib module
 :onecontribcheck
+REM Temporarily exclude tsearch2 tests
+if %1==tsearch2 goto :eof
 cd %1
 
 echo ==========================================================================
