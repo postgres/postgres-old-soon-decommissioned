@@ -418,10 +418,6 @@ extern Datum pg_tablespace_databases(PG_FUNCTION_ARGS);
 extern Datum pg_rotate_logfile(PG_FUNCTION_ARGS);
 extern Datum pg_sleep(PG_FUNCTION_ARGS);
 
-/* not_in.c */
-extern Datum int4notin(PG_FUNCTION_ARGS);
-extern Datum oidnotin(PG_FUNCTION_ARGS);
-
 /* oid.c */
 extern Datum oidin(PG_FUNCTION_ARGS);
 extern Datum oidout(PG_FUNCTION_ARGS);
