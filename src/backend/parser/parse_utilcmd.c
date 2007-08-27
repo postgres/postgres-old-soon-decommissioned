@@ -143,6 +143,20 @@ transformCreateStmt(CreateStmt *stmt, const char *queryString)
 	 */
 	stmt = (CreateStmt *) copyObject(stmt);
 
+	/*
+	 * If the target relation name isn't schema-qualified, make it so.  This
+	 * prevents some corner cases in which added-on rewritten commands might
+	 * think they should apply to other relations that have the same name
+	 * and are earlier in the search path.  "istemp" is equivalent to a
+	 * specification of pg_temp, so no need for anything extra in that case.
+	 */
+	if (stmt->relation->schemaname == NULL && !stmt->relation->istemp)
+	{
+		Oid		namespaceid = RangeVarGetCreationNamespace(stmt->relation);
+
+		stmt->relation->schemaname = get_namespace_name(namespaceid);
+	}
+
 	/* Set up pstate */
 	pstate = make_parsestate(NULL);
 	pstate->p_sourcetext = queryString;

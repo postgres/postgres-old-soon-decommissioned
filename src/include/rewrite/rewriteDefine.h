@@ -24,7 +24,7 @@
 extern void DefineRule(RuleStmt *stmt, const char *queryString);
 
 extern void DefineQueryRewrite(char *rulename,
-				   RangeVar *event_obj,
+				   Oid event_relid,
 				   Node *event_qual,
 				   CmdType event_type,
 				   bool is_instead,

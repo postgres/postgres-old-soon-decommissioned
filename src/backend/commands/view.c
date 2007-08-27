@@ -260,14 +260,14 @@ checkViewTupleDesc(TupleDesc newdesc, TupleDesc olddesc)
 }
 
 static void
-DefineViewRules(const RangeVar *view, Query *viewParse, bool replace)
+DefineViewRules(Oid viewOid, Query *viewParse, bool replace)
 {
 	/*
 	 * Set up the ON SELECT rule.  Since the query has already been through
 	 * parse analysis, we use DefineQueryRewrite() directly.
 	 */
 	DefineQueryRewrite(pstrdup(ViewSelectRuleName),
-					   (RangeVar *) copyObject((RangeVar *) view),
+					   viewOid,
 					   NULL,
 					   CMD_SELECT,
 					   true,
@@ -404,7 +404,9 @@ DefineView(ViewStmt *stmt, const char *queryString)
 
 	/*
 	 * If the user didn't explicitly ask for a temporary view, check whether
-	 * we need one implicitly.
+	 * we need one implicitly.  We allow TEMP to be inserted automatically
+	 * as long as the CREATE command is consistent with that --- no explicit
+	 * schema name.
 	 */
 	view = stmt->view;
 	if (!view->istemp && isViewOnTempTable(viewParse))
@@ -441,7 +443,7 @@ DefineView(ViewStmt *stmt, const char *queryString)
 	/*
 	 * Now create the rules associated with the view.
 	 */
-	DefineViewRules(view, viewParse, stmt->replace);
+	DefineViewRules(viewOid, viewParse, stmt->replace);
 }
 
 /*
