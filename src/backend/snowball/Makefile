@@ -64,7 +64,7 @@ LANGUAGES=  \
 	russian 	english		\
 	spanish 	spanish		\
 	swedish 	swedish		\
-	turkish		turkish		\
+	turkish		turkish
 
 
 SQLSCRIPT= snowball_create.sql
