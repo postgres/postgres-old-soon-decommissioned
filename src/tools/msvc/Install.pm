@@ -39,7 +39,7 @@ sub Install
     print "Installing for $conf in $target\n";
 
     EnsureDirectories($target, 'bin','lib','share','share/timezonesets','share/contrib','doc',
-        'doc/contrib', 'symbols');
+        'doc/contrib', 'symbols', 'share/tsearch_data');
 
     CopySolutionOutput($conf, $target);
     copy($target . '/lib/libpq.dll', $target . '/bin/libpq.dll');
@@ -65,6 +65,7 @@ sub Install
     GenerateConversionScript($target);
     GenerateTimezoneFiles($target,$conf);
     GenerateTsearchFiles($target);
+    CopySetOfFiles('Stopword files', "src\\backend\\snowball\\stopwords\\*.stop", $target . '/share/tsearch_data/');
     CopyContribFiles($config,$target);
     CopyIncludeFiles($target);
 
