@@ -5923,7 +5923,13 @@ RecoveryRestartPoint(const CheckPoint *checkPoint)
 	{
 		if (RmgrTable[rmid].rm_safe_restartpoint != NULL)
 			if (!(RmgrTable[rmid].rm_safe_restartpoint()))
+			{
+				elog(DEBUG2, "RM %d not safe to record restart point at %X/%X",
+					 rmid,
+					 checkPoint->redo.xlogid,
+					 checkPoint->redo.xrecoff);
 				return;
+			}
 	}
 
 	/*
