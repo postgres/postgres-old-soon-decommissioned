@@ -212,11 +212,6 @@ main(int argc, char *const argv[])
 					char		informix_path[MAXPGPATH];
 
 					compat = (strcmp(optarg, "INFORMIX") == 0) ? ECPG_COMPAT_INFORMIX : ECPG_COMPAT_INFORMIX_SE;
-					/* system_includes = true; */
-					add_preprocessor_define("dec_t=decimal");
-					add_preprocessor_define("intrvl_t=interval");
-					add_preprocessor_define("dtime_t=timestamp");
-
 					get_pkginclude_path(my_exec_path, pkginclude_path);
 					snprintf(informix_path, MAXPGPATH, "%s/informix/esql", pkginclude_path);
 					add_include_path(informix_path);
