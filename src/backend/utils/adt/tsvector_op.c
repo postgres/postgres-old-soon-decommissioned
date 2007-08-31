@@ -19,6 +19,7 @@
 #include "executor/spi.h"
 #include "funcapi.h"
 #include "mb/pg_wchar.h"
+#include "miscadmin.h"
 #include "tsearch/ts_type.h"
 #include "tsearch/ts_utils.h"
 #include "utils/builtins.h"
@@ -525,14 +526,18 @@ checkcondition_str(void *checkval, QueryItem * val)
  * check for boolean condition
  */
 bool
-TS_execute(QueryItem * curitem, void *checkval, bool calcnot, bool (*chkcond) (void *checkval, QueryItem * val))
+TS_execute(QueryItem * curitem, void *checkval, bool calcnot,
+		   bool (*chkcond) (void *checkval, QueryItem * val))
 {
+	/* since this function recurses, it could be driven to stack overflow */
+	check_stack_depth();
+
 	if (curitem->type == VAL)
 		return chkcond(checkval, curitem);
 	else if (curitem->val == (int4) '!')
 	{
 		return (calcnot) ?
-			((TS_execute(curitem + 1, checkval, calcnot, chkcond)) ? false : true)
+			!TS_execute(curitem + 1, checkval, calcnot, chkcond)
 			: true;
 	}
 	else if (curitem->val == (int4) '&')
