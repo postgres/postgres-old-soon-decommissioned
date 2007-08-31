@@ -1453,6 +1453,8 @@ _copyOuterJoinInfo(OuterJoinInfo *from)
 
 	COPY_BITMAPSET_FIELD(min_lefthand);
 	COPY_BITMAPSET_FIELD(min_righthand);
+	COPY_BITMAPSET_FIELD(syn_lefthand);
+	COPY_BITMAPSET_FIELD(syn_righthand);
 	COPY_SCALAR_FIELD(is_full_join);
 	COPY_SCALAR_FIELD(lhs_strict);
 	COPY_SCALAR_FIELD(delay_upper_joins);
