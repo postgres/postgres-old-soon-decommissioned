@@ -219,7 +219,9 @@ clauselist_selectivity(PlannerInfo *root,
 				s2 = rqlist->hibound + rqlist->lobound - 1.0;
 
 				/* Adjust for double-exclusion of NULLs */
-				s2 += nulltestsel(root, IS_NULL, rqlist->var, varRelid);
+				/* HACK: disable nulltestsel's special outer-join logic */
+				s2 += nulltestsel(root, IS_NULL, rqlist->var,
+								  varRelid, JOIN_INNER);
 
 				/*
 				 * A zero or slightly negative s2 should be converted into a
@@ -702,7 +704,8 @@ clause_selectivity(PlannerInfo *root,
 		s1 = nulltestsel(root,
 						 ((NullTest *) clause)->nulltesttype,
 						 (Node *) ((NullTest *) clause)->arg,
-						 varRelid);
+						 varRelid,
+						 jointype);
 	}
 	else if (IsA(clause, BooleanTest))
 	{
