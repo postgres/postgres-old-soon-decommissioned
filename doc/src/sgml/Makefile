@@ -59,7 +59,7 @@ override JADEFLAGS += -V draft-mode
 endif
 
 # Enable some extra warnings
-override SPFLAGS += -wall -wno-unused-param -wno-empty
+override SPFLAGS += -wall -wno-unused-param -wno-empty -wfully-tagged
 
 ##
 ## Man pages
