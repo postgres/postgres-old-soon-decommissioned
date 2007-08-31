@@ -3,9 +3,9 @@
  <chapter id="extend">
   <title>Extending <acronym>SQL</acronym></title>
 
-   <indexterm zone="extend">
-    <primary>extending SQL</primary>
-   </indexterm>
+  <indexterm zone="extend">
+   <primary>extending SQL</primary>
+  </indexterm>
 
   <para>
    In  the  sections  that follow, we will discuss how you
