@@ -1068,8 +1068,7 @@ tuplesort_performsort(Tuplesortstate *state)
 			 * in memory, using a heap to eliminate excess tuples.  Now we have
 			 * to transform the heap to a properly-sorted array.
 			 */
-			if (state->memtupcount > 1)
-				sort_bounded_heap(state);
+			sort_bounded_heap(state);
 			state->current = 0;
 			state->eof_reached = false;
 			state->markpos_offset = 0;
