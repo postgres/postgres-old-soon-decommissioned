@@ -354,7 +354,7 @@ interpret_func_volatility(DefElem *defel)
 }
 
 /*
- * Update a proconfig value according to a list of SET and RESET items.
+ * Update a proconfig value according to a list of VariableSetStmt items.
  *
  * The input and result may be NULL to signify a null entry.
  */
@@ -365,33 +365,20 @@ update_proconfig_value(ArrayType *a, List *set_items)
 
 	foreach(l, set_items)
 	{
-		Node   *sitem = (Node *) lfirst(l);
+		VariableSetStmt *sstmt = (VariableSetStmt *) lfirst(l);
 
-		if (IsA(sitem, VariableSetStmt))
+		Assert(IsA(sstmt, VariableSetStmt));
+		if (sstmt->kind == VAR_RESET_ALL)
+			a = NULL;
+		else
 		{
-			VariableSetStmt *sstmt = (VariableSetStmt *) sitem;
+			char	   *valuestr = ExtractSetVariableArgs(sstmt);
 
-			if (sstmt->args)
-			{
-				char	   *valuestr;
-
-				valuestr = flatten_set_variable_args(sstmt->name, sstmt->args);
+			if (valuestr)
 				a = GUCArrayAdd(a, sstmt->name, valuestr);
-			}
-			else				/* SET TO DEFAULT */
+			else				/* RESET */
 				a = GUCArrayDelete(a, sstmt->name);
 		}
-		else if (IsA(sitem, VariableResetStmt))
-		{
-			VariableResetStmt *rstmt = (VariableResetStmt *) sitem;
-
-			if (strcmp(rstmt->name, "all") == 0)
-				a = NULL;	/* RESET ALL */
-			else
-				a = GUCArrayDelete(a, rstmt->name);
-		}
-		else
-			elog(ERROR, "unexpected node type: %d", nodeTag(sitem));
 	}
 
 	return a;

@@ -13,6 +13,7 @@
 #ifndef GUC_H
 #define GUC_H
 
+#include "nodes/parsenodes.h"
 #include "tcop/dest.h"
 #include "utils/array.h"
 
@@ -203,9 +204,9 @@ extern int	GetNumConfigOptions(void);
 extern void SetPGVariable(const char *name, List *args, bool is_local);
 extern void GetPGVariable(const char *name, DestReceiver *dest);
 extern TupleDesc GetPGVariableResultDesc(const char *name);
-extern void ResetPGVariable(const char *name, bool isTopLevel);
 
-extern char *flatten_set_variable_args(const char *name, List *args);
+extern void ExecSetVariableStmt(VariableSetStmt *stmt);
+extern char *ExtractSetVariableArgs(VariableSetStmt *stmt);
 
 extern void ProcessGUCArray(ArrayType *array,
 						GucContext context, GucSource source, bool isLocal);
