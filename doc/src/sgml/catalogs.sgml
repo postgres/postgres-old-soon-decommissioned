@@ -3636,6 +3636,13 @@
      </row>
 
      <row>
+      <entry><structfield>proconfig</structfield></entry>
+      <entry><type>text[]</type></entry>
+      <entry></entry>
+      <entry>Function's local settings for run-time configuration variables</entry>
+     </row>
+
+     <row>
       <entry><structfield>proacl</structfield></entry>
       <entry><type>aclitem[]</type></entry>
       <entry></entry>
