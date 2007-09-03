@@ -14,5 +14,5 @@ CREATE TEXT SEARCH TEMPLATE snowball
 	(INIT = dsnowball_init,
 	LEXIZE = dsnowball_lexize);
 
-COMMENT ON TEXT SEARCH TEMPLATE snowball IS 'Snowball stemmer';
+COMMENT ON TEXT SEARCH TEMPLATE snowball IS 'snowball stemmer';
 

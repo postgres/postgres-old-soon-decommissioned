@@ -70,10 +70,10 @@ typedef FormData_pg_language *Form_pg_language;
  */
 
 DATA(insert OID = 12 ( "internal" PGUID f f 0 2246 _null_ ));
-DESCR("Built-in functions");
+DESCR("built-in functions");
 #define INTERNALlanguageId 12
 DATA(insert OID = 13 ( "c" PGUID f f 0 2247 _null_ ));
-DESCR("Dynamically-loaded C functions");
+DESCR("dynamically-loaded C functions");
 #define ClanguageId 13
 DATA(insert OID = 14 ( "sql" PGUID f t 0 2248 _null_ ));
 DESCR("SQL-language functions");
