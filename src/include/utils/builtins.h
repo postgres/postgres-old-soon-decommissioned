@@ -107,6 +107,8 @@ extern Datum domain_recv(PG_FUNCTION_ARGS);
 /* enum.c */
 extern Datum enum_in(PG_FUNCTION_ARGS);
 extern Datum enum_out(PG_FUNCTION_ARGS);
+extern Datum enum_recv(PG_FUNCTION_ARGS);
+extern Datum enum_send(PG_FUNCTION_ARGS);
 extern Datum enum_lt(PG_FUNCTION_ARGS);
 extern Datum enum_le(PG_FUNCTION_ARGS);
 extern Datum enum_eq(PG_FUNCTION_ARGS);

@@ -1039,8 +1039,8 @@ DefineEnum(CreateEnumStmt *stmt)
 				   DEFAULT_TYPDELIM,	/* array element delimiter */
 				   F_ENUM_IN,		/* input procedure */
 				   F_ENUM_OUT,		/* output procedure */
-				   InvalidOid,		/* receive procedure - none */
-				   InvalidOid,		/* send procedure - none */
+				   F_ENUM_RECV,		/* receive procedure */
+				   F_ENUM_SEND,		/* send procedure */
 				   InvalidOid,		/* typmodin procedure - none */
 				   InvalidOid,		/* typmodout procedure - none */
 				   InvalidOid,		/* analyze procedure - default */
