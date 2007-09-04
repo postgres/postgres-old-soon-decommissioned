@@ -1152,7 +1152,7 @@ lex_init(void)
 	/* initialize literal buffer to a reasonable but expansible size */
 	if (literalbuf == NULL)
 	{
-		literalalloc = 128;
+		literalalloc = 1024;
 		literalbuf = (char *) malloc(literalalloc);
 	}
 	startlit();
