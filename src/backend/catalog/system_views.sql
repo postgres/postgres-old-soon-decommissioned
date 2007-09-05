@@ -145,8 +145,8 @@ CREATE VIEW pg_locks AS
     SELECT * 
     FROM pg_lock_status() AS L
     (locktype text, database oid, relation oid, page int4, tuple int2,
-     transactionid xid, classid oid, objid oid, objsubid int2,
-     transaction xid, pid int4, mode text, granted boolean);
+     virtualxid text, transactionid xid, classid oid, objid oid, objsubid int2,
+     virtualtransaction text, pid int4, mode text, granted boolean);
 
 CREATE VIEW pg_cursors AS
     SELECT C.name, C.statement, C.is_holdable, C.is_binary,

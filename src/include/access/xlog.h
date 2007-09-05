@@ -85,12 +85,6 @@ typedef struct XLogRecord
  */
 #define XLR_BKP_REMOVABLE		0x01
 
-/*
- * Sometimes we log records which are out of transaction control.
- * Rmgr may "or" XLOG_NO_TRAN into info passed to XLogInsert to indicate this.
- */
-#define XLOG_NO_TRAN			XLR_INFO_MASK
-
 /* Sync methods */
 #define SYNC_METHOD_FSYNC		0
 #define SYNC_METHOD_FDATASYNC	1
@@ -139,10 +133,7 @@ typedef struct XLogRecData
 
 extern TimeLineID ThisTimeLineID;		/* current TLI */
 extern bool InRecovery;
-extern XLogRecPtr MyLastRecPtr;
-extern bool MyXactMadeXLogEntry;
-extern bool MyXactMadeTempRelUpdate;
-extern XLogRecPtr ProcLastRecEnd;
+extern XLogRecPtr XactLastRecEnd;
 
 /* these variables are GUC parameters related to XLOG */
 extern int	CheckPointSegments;

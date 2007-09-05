@@ -62,8 +62,13 @@ struct PGPROC
 	PGSemaphoreData sem;		/* ONE semaphore to sleep on */
 	int			waitStatus;		/* STATUS_WAITING, STATUS_OK or STATUS_ERROR */
 
-	TransactionId xid;			/* transaction currently being executed by
-								 * this proc */
+	LocalTransactionId lxid;	/* local id of top-level transaction currently
+								 * being executed by this proc, if running;
+								 * else InvalidLocalTransactionId */
+
+	TransactionId xid;			/* id of top-level transaction currently being
+								 * executed by this proc, if running and XID
+								 * is assigned; else InvalidTransactionId */
 
 	TransactionId xmin;			/* minimal running XID as it was when we were
 								 * starting our xact, excluding LAZY VACUUM:
@@ -71,6 +76,7 @@ struct PGPROC
 								 * xid >= xmin ! */
 
 	int			pid;			/* This backend's process id, or 0 */
+	BackendId	backendId;		/* This backend's backend ID (if assigned) */
 	Oid			databaseId;		/* OID of database this backend is using */
 	Oid			roleId;			/* OID of role using this backend */
 

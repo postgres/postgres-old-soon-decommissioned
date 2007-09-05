@@ -1842,9 +1842,6 @@ MultiXactOffsetPrecedes(MultiXactOffset offset1, MultiXactOffset offset2)
 /*
  * Write an xlog record reflecting the zeroing of either a MEMBERs or
  * OFFSETs page (info shows which)
- *
- * Note: xlog record is marked as outside transaction control, since we
- * want it to be redone whether the invoking transaction commits or not.
  */
 static void
 WriteMZeroPageXlogRec(int pageno, uint8 info)
@@ -1855,7 +1852,7 @@ WriteMZeroPageXlogRec(int pageno, uint8 info)
 	rdata.len = sizeof(int);
 	rdata.buffer = InvalidBuffer;
 	rdata.next = NULL;
-	(void) XLogInsert(RM_MULTIXACT_ID, info | XLOG_NO_TRAN, &rdata);
+	(void) XLogInsert(RM_MULTIXACT_ID, info, &rdata);
 }
 
 /*

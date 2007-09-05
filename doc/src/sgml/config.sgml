@@ -2940,9 +2940,14 @@ SELECT * FROM parent WHERE key = 2400;
              <entry>no</entry>
             </row>
             <row>
+             <entry><literal>%v</literal></entry>
+             <entry>Virtual transaction ID (backendID/localXID)</entry>
+             <entry>no</entry>
+            </row>
+            <row>
              <entry><literal>%x</literal></entry>
-             <entry>Transaction ID</entry>
-             <entry>yes</entry>
+             <entry>Transaction ID (0 if none is assigned)</entry>
+             <entry>no</entry>
             </row>
             <row>
              <entry><literal>%q</literal></entry>

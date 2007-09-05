@@ -658,11 +658,6 @@ lazy_vacuum_page(Relation onerel, BlockNumber blkno, Buffer buffer,
 		PageSetLSN(page, recptr);
 		PageSetTLI(page, ThisTimeLineID);
 	}
-	else
-	{
-		/* No XLOG record, but still need to flag that XID exists on disk */
-		MyXactMadeTempRelUpdate = true;
-	}
 
 	END_CRIT_SECTION();
 

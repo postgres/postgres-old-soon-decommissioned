@@ -370,6 +370,8 @@ typedef regproc RegProcedure;
 
 typedef uint32 TransactionId;
 
+typedef uint32 LocalTransactionId;
+
 typedef uint32 SubTransactionId;
 
 #define InvalidSubTransactionId		((SubTransactionId) 0)
