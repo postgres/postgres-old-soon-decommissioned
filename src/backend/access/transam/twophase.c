@@ -274,7 +274,8 @@ MarkAsPreparing(TransactionId xid, const char *gid,
 	MemSet(&gxact->proc, 0, sizeof(PGPROC));
 	SHMQueueElemInit(&(gxact->proc.links));
 	gxact->proc.waitStatus = STATUS_OK;
-	gxact->proc.lxid = InvalidLocalTransactionId;
+	/* We set up the gxact's VXID as InvalidBackendId/XID */
+	gxact->proc.lxid = (LocalTransactionId) xid;
 	gxact->proc.xid = xid;
 	gxact->proc.xmin = InvalidTransactionId;
 	gxact->proc.pid = 0;
