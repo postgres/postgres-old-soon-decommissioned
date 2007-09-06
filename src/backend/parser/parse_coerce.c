@@ -816,7 +816,7 @@ coerce_record_to_complex(ParseState *pstate, Node *node,
 			 * can't use atttypid here, but it doesn't really matter what type
 			 * the Const claims to be.
 			 */
-			newargs = lappend(newargs, makeNullConst(INT4OID));
+			newargs = lappend(newargs, makeNullConst(INT4OID, -1));
 			continue;
 		}
 

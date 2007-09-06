@@ -896,7 +896,8 @@ resolve_one_var(Var *var, ResolveNew_context *context)
 		{
 			/* Otherwise replace unmatched var with a null */
 			/* need coerce_to_domain in case of NOT NULL domain constraint */
-			return coerce_to_domain((Node *) makeNullConst(var->vartype),
+			return coerce_to_domain((Node *) makeNullConst(var->vartype,
+														   var->vartypmod),
 									InvalidOid, -1,
 									var->vartype,
 									COERCE_IMPLICIT_CAST,

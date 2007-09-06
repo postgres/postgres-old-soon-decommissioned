@@ -174,19 +174,20 @@ makeConst(Oid consttype,
 
 /*
  * makeNullConst -
- *	  creates a Const node representing a NULL of the specified type
+ *	  creates a Const node representing a NULL of the specified type/typmod
  *
- * Note: for all current uses, OK to set typmod of the Const to -1.
+ * This is a convenience routine that just saves a lookup of the type's
+ * storage properties.
  */
 Const *
-makeNullConst(Oid consttype)
+makeNullConst(Oid consttype, int32 consttypmod)
 {
 	int16		typLen;
 	bool		typByVal;
 
 	get_typlenbyval(consttype, &typLen, &typByVal);
 	return makeConst(consttype,
-					 -1,
+					 consttypmod,
 					 (int) typLen,
 					 (Datum) 0,
 					 true,

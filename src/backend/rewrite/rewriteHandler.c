@@ -193,7 +193,7 @@ AcquireRewriteLocks(Query *parsetree)
 							 * now-dropped type OID, but it doesn't really
 							 * matter what type the Const claims to be.
 							 */
-							aliasvar = (Var *) makeNullConst(INT4OID);
+							aliasvar = (Var *) makeNullConst(INT4OID, -1);
 						}
 					}
 					newaliasvars = lappend(newaliasvars, aliasvar);

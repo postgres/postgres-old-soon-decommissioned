@@ -4159,7 +4159,7 @@ ExecInitExpr(Expr *node, PlanState *parent)
 						 * don't really care what type of NULL it is, so
 						 * always make an int4 NULL.
 						 */
-						e = (Expr *) makeNullConst(INT4OID);
+						e = (Expr *) makeNullConst(INT4OID, -1);
 					}
 					estate = ExecInitExpr(e, parent);
 					outlist = lappend(outlist, estate);

@@ -3179,12 +3179,15 @@ ATExecAddColumn(AlteredTableInfo *tab, Relation rel,
 
 	if (!defval && GetDomainConstraints(typeOid) != NIL)
 	{
-		Oid			basetype = getBaseType(typeOid);
+		Oid			baseTypeId;
+		int32		baseTypeMod;
 
-		defval = (Expr *) makeNullConst(basetype);
+		baseTypeMod = typmod;
+		baseTypeId = getBaseTypeAndTypmod(typeOid, &baseTypeMod);
+		defval = (Expr *) makeNullConst(baseTypeId, baseTypeMod);
 		defval = (Expr *) coerce_to_target_type(NULL,
 												(Node *) defval,
-												basetype,
+												baseTypeId,
 												typeOid,
 												typmod,
 												COERCION_ASSIGNMENT,
