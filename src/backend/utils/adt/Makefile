@@ -28,7 +28,7 @@ OBJS = acl.o arrayfuncs.o array_userfuncs.o arrayutils.o bool.o \
 	ascii.o quote.o pgstatfuncs.o encode.o dbsize.o genfile.o \
 	tsginidx.o tsgistidx.o tsquery.o tsquery_cleanup.o tsquery_gist.o \
 	tsquery_op.o tsquery_rewrite.o tsquery_util.o tsrank.o \
-	tsvector.o tsvector_op.o \
+	tsvector.o tsvector_op.o tsvector_parser.o\
 	uuid.o xml.o
 
 like.o: like.c like_match.c

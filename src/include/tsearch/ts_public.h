@@ -42,7 +42,7 @@ typedef struct
 				type:8,
 				len:16;
 	char	   *word;
-	QueryItem  *item;
+	QueryOperand  *item;
 } HeadlineWordEntry;
 
 typedef struct
