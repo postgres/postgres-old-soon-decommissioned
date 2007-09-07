@@ -22,7 +22,7 @@ Datum
 gin_extract_tsvector(PG_FUNCTION_ARGS)
 {
 	TSVector	vector = PG_GETARG_TSVECTOR(0);
-	uint32	   *nentries = (uint32 *) PG_GETARG_POINTER(1);
+	int32	   *nentries = (int32 *) PG_GETARG_POINTER(1);
 	Datum	   *entries = NULL;
 
 	*nentries = 0;
@@ -55,7 +55,7 @@ Datum
 gin_extract_query(PG_FUNCTION_ARGS)
 {
 	TSQuery		query = PG_GETARG_TSQUERY(0);
-	uint32	   *nentries = (uint32 *) PG_GETARG_POINTER(1);
+	int32	   *nentries = (int32 *) PG_GETARG_POINTER(1);
 	StrategyNumber strategy = PG_GETARG_UINT16(2);
 	Datum	   *entries = NULL;
 

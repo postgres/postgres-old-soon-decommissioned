@@ -16,6 +16,7 @@
 
 #include "tsearch/ts_type.h"
 #include "tsearch/ts_utils.h"
+#include "miscadmin.h"
 
 QTNode *
 QT2QTN(QueryItem * in, char *operand)

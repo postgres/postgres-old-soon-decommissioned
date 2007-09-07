@@ -17,6 +17,7 @@
 #include "executor/spi.h"
 #include "tsearch/ts_type.h"
 #include "tsearch/ts_utils.h"
+#include "miscadmin.h"
 
 
 static int
