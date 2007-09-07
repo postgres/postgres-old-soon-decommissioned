@@ -1678,13 +1678,6 @@ CopyFrom(CopyState cstate)
 	 * rd_newRelfilenodeSubid can be cleared before the end of the transaction.
 	 * However this is OK since at worst we will fail to make the optimization.
 	 *
-	 * When skipping WAL it's entirely possible that COPY itself will write no
-	 * WAL records at all.  This is of concern because RecordTransactionCommit
-	 * might decide it doesn't need to log our eventual commit, which we
-	 * certainly need it to do.  However, we need no special action here for
-	 * that, because if we have a new table or new relfilenode then there
-	 * must have been a WAL-logged pg_class update earlier in the transaction.
-	 *
 	 * Also, if the target file is new-in-transaction, we assume that checking
 	 * FSM for free space is a waste of time, even if we must use WAL because
 	 * of archiving.  This could possibly be wrong, but it's unlikely.
