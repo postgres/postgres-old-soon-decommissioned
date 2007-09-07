@@ -508,6 +508,10 @@ Cover(DocRepresentation *doc, int len, TSQuery query, Extention *ext)
 	int			i;
 	bool		found = false;
 
+	/* since this function recurses, it could be driven to stack overflow.
+	 * (though any decent compiler will optimize away the tail-recursion.   */
+	check_stack_depth();
+
 	reset_istrue_flag(query);
 
 	ext->p = 0x7fffffff;

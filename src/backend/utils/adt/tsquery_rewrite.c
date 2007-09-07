@@ -22,6 +22,9 @@
 static int
 addone(int *counters, int last, int total)
 {
+	/* since this function recurses, it could be driven to stack overflow. */
+	check_stack_depth();
+
 	counters[last]++;
 	if (counters[last] >= total)
 	{
@@ -173,6 +176,9 @@ findeq(QTNode *node, QTNode *ex, QTNode *subs, bool *isfind)
 static QTNode *
 dofindsubquery(QTNode *root, QTNode *ex, QTNode *subs, bool *isfind)
 {
+	/* since this function recurses, it could be driven to stack overflow. */
+	check_stack_depth();
+
 	root = findeq(root, ex, subs, isfind);
 
 	if (root && (root->flags & QTN_NOCHANGE) == 0 && root->valnode->type == QI_OPR)
