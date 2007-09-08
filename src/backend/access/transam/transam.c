@@ -432,6 +432,33 @@ TransactionIdFollowsOrEquals(TransactionId id1, TransactionId id2)
 	return (diff >= 0);
 }
 
+
+/*
+ * TransactionIdLatest --- get latest XID among a main xact and its children
+ */
+TransactionId
+TransactionIdLatest(TransactionId mainxid,
+					int nxids, const TransactionId *xids)
+{
+	TransactionId	result;
+
+	/*
+	 * In practice it is highly likely that the xids[] array is sorted, and
+	 * so we could save some cycles by just taking the last child XID, but
+	 * this probably isn't so performance-critical that it's worth depending
+	 * on that assumption.  But just to show we're not totally stupid, scan
+	 * the array back-to-front to avoid useless assignments.
+	 */
+	result = mainxid;
+	while (--nxids >= 0)
+	{
+		if (TransactionIdPrecedes(result, xids[nxids]))
+			result = xids[nxids];
+	}
+	return result;
+}
+
+
 /*
  * TransactionIdGetCommitLSN
  *

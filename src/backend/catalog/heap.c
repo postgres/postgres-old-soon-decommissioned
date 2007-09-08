@@ -704,10 +704,7 @@ AddNewRelationTuple(Relation pg_class_desc,
 		 * We know that no xacts older than RecentXmin are still running,
 		 * so that will do.
 		 */
-		if (!IsBootstrapProcessingMode())
-			new_rel_reltup->relfrozenxid = RecentXmin;
-		else
-			new_rel_reltup->relfrozenxid = FirstNormalTransactionId;
+		new_rel_reltup->relfrozenxid = RecentXmin;
 	}
 	else
 	{

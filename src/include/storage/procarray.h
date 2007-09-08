@@ -20,7 +20,10 @@
 extern Size ProcArrayShmemSize(void);
 extern void CreateSharedProcArray(void);
 extern void ProcArrayAdd(PGPROC *proc);
-extern void ProcArrayRemove(PGPROC *proc);
+extern void ProcArrayRemove(PGPROC *proc, TransactionId latestXid);
+
+extern void ProcArrayEndTransaction(PGPROC *proc, TransactionId latestXid);
+extern void ProcArrayClearTransaction(PGPROC *proc);
 
 extern bool TransactionIdIsInProgress(TransactionId xid);
 extern bool TransactionIdIsActive(TransactionId xid);
@@ -41,6 +44,7 @@ extern int	CountUserBackends(Oid roleid);
 extern bool CheckOtherDBBackends(Oid databaseId);
 
 extern void XidCacheRemoveRunningXids(TransactionId xid,
-						  int nxids, TransactionId *xids);
+									  int nxids, const TransactionId *xids,
+									  TransactionId latestXid);
 
 #endif   /* PROCARRAY_H */

@@ -1127,6 +1127,7 @@ FinishPreparedTransaction(const char *gid, bool isCommit)
 	char	   *buf;
 	char	   *bufptr;
 	TwoPhaseFileHeader *hdr;
+	TransactionId latestXid;
 	TransactionId *children;
 	RelFileNode *commitrels;
 	RelFileNode *abortrels;
@@ -1162,6 +1163,9 @@ FinishPreparedTransaction(const char *gid, bool isCommit)
 	abortrels = (RelFileNode *) bufptr;
 	bufptr += MAXALIGN(hdr->nabortrels * sizeof(RelFileNode));
 
+	/* compute latestXid among all children */
+	latestXid = TransactionIdLatest(xid, hdr->nsubxacts, children);
+
 	/*
 	 * The order of operations here is critical: make the XLOG entry for
 	 * commit or abort, then mark the transaction committed or aborted in
@@ -1179,7 +1183,7 @@ FinishPreparedTransaction(const char *gid, bool isCommit)
 									   hdr->nsubxacts, children,
 									   hdr->nabortrels, abortrels);
 
-	ProcArrayRemove(&gxact->proc);
+	ProcArrayRemove(&gxact->proc, latestXid);
 
 	/*
 	 * In case we fail while running the callbacks, mark the gxact invalid so

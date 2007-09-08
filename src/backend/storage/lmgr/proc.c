@@ -581,7 +581,7 @@ static void
 RemoveProcFromArray(int code, Datum arg)
 {
 	Assert(MyProc != NULL);
-	ProcArrayRemove(MyProc);
+	ProcArrayRemove(MyProc, InvalidTransactionId);
 }
 
 /*

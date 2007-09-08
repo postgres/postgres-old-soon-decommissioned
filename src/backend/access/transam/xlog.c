@@ -5196,6 +5196,10 @@ StartupXLOG(void)
 	XLogCtl->ckptXidEpoch = ControlFile->checkPointCopy.nextXidEpoch;
 	XLogCtl->ckptXid = ControlFile->checkPointCopy.nextXid;
 
+	/* also initialize latestCompletedXid, to nextXid - 1 */
+	ShmemVariableCache->latestCompletedXid = ShmemVariableCache->nextXid;
+	TransactionIdRetreat(ShmemVariableCache->latestCompletedXid);
+
 	/* Start up the commit log and related stuff, too */
 	StartupCLOG();
 	StartupSUBTRANS(oldestActiveXID);
