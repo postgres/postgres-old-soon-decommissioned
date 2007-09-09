@@ -22,7 +22,7 @@ TEMP_PORT = 5$(DEF_PGPORT)
 # file with extra config for temp build
 TEMP_CONF =
 ifdef TEMP_CONFIG
-TEMP_CONF += --temp-config=S(TEMP_CONFIG)
+TEMP_CONF += --temp-config=$(TEMP_CONFIG)
 endif
 
 # where to find psql for testing an existing installation
