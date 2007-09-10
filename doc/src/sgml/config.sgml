@@ -1352,14 +1352,6 @@ SET ENABLE_SEQSCAN TO OFF;
         commits.  It is therefore possible, and useful, to have some
         transactions commit synchronously and others asynchronously.
        </para>
-
-<!-- this note should go away before release!! -->
-<note>
-       <para>
-        For testing purposes, <varname>synchronous_commit</varname> will
-        default to <literal>off</> until 8.3 release approaches.
-       </para>
-</note>
       </listitem>
      </varlistentry>
      
