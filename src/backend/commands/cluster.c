@@ -102,6 +102,15 @@ cluster(ClusterStmt *stmt)
 			aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_CLASS,
 						   RelationGetRelationName(rel));
 
+		/*
+		 * Reject clustering a remote temp table ... their local buffer manager
+		 * is not going to cope.
+		 */
+		if (isOtherTempNamespace(RelationGetNamespace(rel)))
+			ereport(ERROR,
+					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+					 errmsg("cannot cluster temporary tables of other sessions")));
+
 		if (stmt->indexname == NULL)
 		{
 			ListCell   *index;
@@ -266,6 +275,21 @@ cluster_rel(RelToCluster *rvtc, bool recheck)
 
 		/* Check that the user still owns the relation */
 		if (!pg_class_ownercheck(rvtc->tableOid, GetUserId()))
+		{
+			relation_close(OldHeap, AccessExclusiveLock);
+			return;
+		}
+
+		/*
+		 * Silently skip a temp table for a remote session.  Only doing this
+		 * check in the "recheck" case is appropriate (which currently means
+		 * somebody is executing a database-wide CLUSTER), because there is
+		 * another check in cluster() which will stop any attempt to cluster
+		 * remote temp tables by name.  There is another check in
+		 * check_index_is_clusterable which is redundant, but we leave it for
+		 * extra safety.
+		 */
+		if (isOtherTempNamespace(RelationGetNamespace(OldHeap)))
 		{
 			relation_close(OldHeap, AccessExclusiveLock);
 			return;
