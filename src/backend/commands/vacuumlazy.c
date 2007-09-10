@@ -827,7 +827,11 @@ count_nondeletable_pages(Relation onerel, LVRelStats *vacrelstats)
 		bool		tupgone,
 					hastup;
 
-		vacuum_delay_point();
+		/*
+		 * We don't insert a vacuum delay point here, because we have an
+		 * exclusive lock on the table which we want to hold for as short
+		 * a time as possible.
+		 */
 
 		blkno--;
 
