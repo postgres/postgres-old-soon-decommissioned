@@ -1573,10 +1573,10 @@ static struct config_int ConfigureNamesInt[] =
 	},
 
 	{
-		{"log_autovacuum", PGC_BACKEND, LOGGING_WHAT,
+		{"log_autovacuum", PGC_SIGHUP, LOGGING_WHAT,
 			gettext_noop("Sets the minimum execution time above which autovacuum actions "
 						 "will be logged."),
-			gettext_noop("Zero prints all actions.  The default is -1 (turning this feature off)."),
+			gettext_noop("Zero prints all actions.  The default is -1 (disabling autovacuum logging)."),
 			GUC_UNIT_MS
 		},
 		&Log_autovacuum,
