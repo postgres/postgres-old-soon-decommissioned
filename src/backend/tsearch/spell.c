@@ -896,7 +896,7 @@ mkSPNode(IspellDict * Conf, int low, int high, int level)
 	if (!nchar)
 		return NULL;
 
-	rs = (SPNode *) palloc0(SPNHRDSZ + nchar * sizeof(SPNodeData));
+	rs = (SPNode *) palloc0(SPNHDRSZ + nchar * sizeof(SPNodeData));
 	rs->length = nchar;
 	data = rs->data;
 
