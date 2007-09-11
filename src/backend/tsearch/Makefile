@@ -13,7 +13,8 @@ include $(top_builddir)/src/Makefile.global
 
 DICTDIR=tsearch_data
 
-DICTFILES=synonym.syn.sample thesaurus.ths.sample 
+DICTFILES=synonym_sample.syn thesaurus_sample.ths hunspell_sample.affix \
+	ispell_sample.affix ispell_sample.dict
 
 OBJS = ts_locale.o ts_parse.o wparser.o wparser_def.o dict.o \
 	dict_simple.o dict_synonym.o dict_thesaurus.o \

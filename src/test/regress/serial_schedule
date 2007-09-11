@@ -102,6 +102,7 @@ test: rangefuncs
 test: prepare
 test: without_oid
 test: conversion
+test: tsdicts
 test: truncate
 test: alter_table
 test: sequence
