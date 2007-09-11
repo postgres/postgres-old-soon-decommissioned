@@ -784,8 +784,6 @@ tsquerysend(PG_FUNCTION_ARGS)
 			case QI_VAL:
 				pq_sendint(&buf, item->operand.weight, sizeof(uint8));
 				pq_sendstring(&buf, GETOPERAND(query) + item->operand.distance);
-				/* istrue flag is just for temporary use in tsrank.c/Cover,
-				 * so we don't need to transfer that */
 				break;
 			case QI_OPR:
 				pq_sendint(&buf, item->operator.oper, sizeof(item->operator.oper));

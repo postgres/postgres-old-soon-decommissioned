@@ -187,8 +187,7 @@ typedef struct
 
 	/* pointer to text value of operand, must correlate with WordEntry */
 	uint32
-				istrue:1,		/* use for ranking in Cover */
-				length:11,
+				length:12,
 				distance:20;
 } QueryOperand;
 
