@@ -430,7 +430,7 @@ typedef struct PgBackendStatus
 
 	/* Times when current backend, transaction, and activity started */
 	TimestampTz st_proc_start_timestamp;
-	TimestampTz st_txn_start_timestamp;
+	TimestampTz st_xact_start_timestamp;
 	TimestampTz st_activity_start_timestamp;
 
 	/* Database OID, owning user's OID, connection client address */
@@ -501,7 +501,7 @@ extern void pgstat_initialize(void);
 extern void pgstat_bestart(void);
 
 extern void pgstat_report_activity(const char *what);
-extern void pgstat_report_txn_timestamp(TimestampTz tstamp);
+extern void pgstat_report_xact_timestamp(TimestampTz tstamp);
 extern void pgstat_report_waiting(bool waiting);
 
 extern void pgstat_initstats(Relation rel);

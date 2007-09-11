@@ -2899,7 +2899,7 @@ DATA(insert OID = 2853 (  pg_stat_get_backend_waiting	PGNSP PGUID 12 1 0 f f t f
 DESCR("statistics: is backend currently waiting for a lock");
 DATA(insert OID = 2094 (  pg_stat_get_backend_activity_start PGNSP PGUID 12 1 0 f f t f s 1 1184 "23" _null_ _null_ _null_	pg_stat_get_backend_activity_start - _null_ _null_ ));
 DESCR("statistics: start time for current query of backend");
-DATA(insert OID = 2857 (  pg_stat_get_backend_txn_start PGNSP PGUID 12 1 0 f f t f s 1 1184 "23" _null_ _null_ _null_	pg_stat_get_backend_txn_start - _null_ _null_ ));
+DATA(insert OID = 2857 (  pg_stat_get_backend_xact_start PGNSP PGUID 12 1 0 f f t f s 1 1184 "23" _null_ _null_ _null_	pg_stat_get_backend_xact_start - _null_ _null_ ));
 DESCR("statistics: start time for backend's current transaction");
 DATA(insert OID = 1391 ( pg_stat_get_backend_start PGNSP PGUID 12 1 0 f f t f s 1 1184 "23" _null_ _null_ _null_ pg_stat_get_backend_start - _null_ _null_ ));
 DESCR("statistics: start time for current backend session");
