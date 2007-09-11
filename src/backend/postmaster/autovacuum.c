@@ -472,6 +472,7 @@ AutoVacLauncherMain(int argc, char *argv[])
 		 */
 		LWLockReleaseAll();
 		AtEOXact_Files();
+		AtEOXact_HashTables(false);
 
 		/*
 		 * Now return to normal top-level context and clear ErrorContext for
