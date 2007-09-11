@@ -453,7 +453,7 @@ InitializeSessionUserId(const char *rolename)
 		 * right to insert an option into pg_authid was checked when it was
 		 * inserted.
 		 */
-		ProcessGUCArray(a, PGC_SUSET, PGC_S_USER, false);
+		ProcessGUCArray(a, PGC_SUSET, PGC_S_USER, GUC_ACTION_SET);
 	}
 
 	ReleaseSysCache(roleTup);

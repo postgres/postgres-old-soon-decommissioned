@@ -255,7 +255,7 @@ CheckMyDatabase(const char *name, bool am_superuser)
 			 * right to insert an option into pg_database was checked when it
 			 * was inserted.
 			 */
-			ProcessGUCArray(a, PGC_SUSET, PGC_S_DATABASE, false);
+			ProcessGUCArray(a, PGC_SUSET, PGC_S_DATABASE, GUC_ACTION_SET);
 		}
 	}
 
