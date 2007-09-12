@@ -1062,6 +1062,10 @@ ReindexDatabase(const char *databaseName, bool do_system, bool do_user)
 		if (classtuple->relkind != RELKIND_RELATION)
 			continue;
 
+		/* Skip temp tables of other backends; we can't reindex them at all */
+		if (isOtherTempNamespace(classtuple->relnamespace))
+			continue;
+
 		/* Check user/system classification, and optionally skip */
 		if (IsSystemClass(classtuple))
 		{
