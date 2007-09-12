@@ -870,8 +870,10 @@ count_nondeletable_pages(Relation onerel, LVRelStats *vacrelstats)
 		/*
 		 * We don't insert a vacuum delay point here, because we have an
 		 * exclusive lock on the table which we want to hold for as short
-		 * a time as possible.
+		 * a time as possible.  We still need to check for interrupts
+		 * however.
 		 */
+		CHECK_FOR_INTERRUPTS();
 
 		blkno--;
 
