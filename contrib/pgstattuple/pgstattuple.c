@@ -477,7 +477,7 @@ pgstat_index_page(pgstattuple_type * stat, Page page,
 	{
 		ItemId		itemid = PageGetItemId(page, i);
 
-		if (ItemIdDeleted(itemid))
+		if (ItemIdIsDead(itemid))
 		{
 			stat->dead_tuple_count++;
 			stat->dead_tuple_len += ItemIdGetLength(itemid);

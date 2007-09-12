@@ -400,7 +400,7 @@ _bt_sortaddtup(Page page,
 	}
 
 	if (PageAddItem(page, (Item) itup, itemsize, itup_off,
-					LP_USED) == InvalidOffsetNumber)
+					false) == InvalidOffsetNumber)
 		elog(ERROR, "failed to add item to the index page");
 }
 
@@ -521,7 +521,7 @@ _bt_buildadd(BTWriteState *wstate, BTPageState *state, IndexTuple itup)
 		 */
 		hii = PageGetItemId(opage, P_HIKEY);
 		*hii = *ii;
-		ii->lp_flags &= ~LP_USED;
+		ItemIdSetUnused(ii);	/* redundant */
 		((PageHeader) opage)->pd_lower -= sizeof(ItemIdData);
 
 		/*

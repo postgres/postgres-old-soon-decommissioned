@@ -193,11 +193,11 @@ hashgettuple(PG_FUNCTION_ARGS)
 		if (scan->kill_prior_tuple)
 		{
 			/*
-			 * Yes, so mark it by setting the LP_DELETE bit in the item flags.
+			 * Yes, so mark it by setting the LP_DEAD state in the item flags.
 			 */
 			offnum = ItemPointerGetOffsetNumber(&(so->hashso_curpos));
 			page = BufferGetPage(so->hashso_curbuf);
-			PageGetItemId(page, offnum)->lp_flags |= LP_DELETE;
+			ItemIdMarkDead(PageGetItemId(page, offnum));
 
 			/*
 			 * Since this can be redone later if needed, it's treated the same
@@ -224,7 +224,7 @@ hashgettuple(PG_FUNCTION_ARGS)
 		{
 			offnum = ItemPointerGetOffsetNumber(&(so->hashso_curpos));
 			page = BufferGetPage(so->hashso_curbuf);
-			if (!ItemIdDeleted(PageGetItemId(page, offnum)))
+			if (!ItemIdIsDead(PageGetItemId(page, offnum)))
 				break;
 			res = _hash_next(scan, dir);
 		}
@@ -286,7 +286,7 @@ hashgetmulti(PG_FUNCTION_ARGS)
 
 				offnum = ItemPointerGetOffsetNumber(&(so->hashso_curpos));
 				page = BufferGetPage(so->hashso_curbuf);
-				if (!ItemIdDeleted(PageGetItemId(page, offnum)))
+				if (!ItemIdIsDead(PageGetItemId(page, offnum)))
 					break;
 				res = _hash_next(scan, ForwardScanDirection);
 			}

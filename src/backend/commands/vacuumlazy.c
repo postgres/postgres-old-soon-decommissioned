@@ -642,7 +642,7 @@ lazy_vacuum_page(Relation onerel, BlockNumber blkno, Buffer buffer,
 			break;				/* past end of tuples for this block */
 		toff = ItemPointerGetOffsetNumber(&vacrelstats->dead_tuples[tupindex]);
 		itemid = PageGetItemId(page, toff);
-		itemid->lp_flags &= ~LP_USED;
+		ItemIdSetUnused(itemid);
 	}
 
 	uncnt = PageRepairFragmentation(page, unused);

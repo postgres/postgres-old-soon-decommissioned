@@ -544,7 +544,7 @@ ginVacuumEntryPage(GinVacuumState *gvs, Buffer buffer, BlockNumber *roots, uint3
 				itup = GinFormTuple(&gvs->ginstate, value, GinGetPosting(itup), newN);
 				PageIndexTupleDelete(tmppage, i);
 
-				if (PageAddItem(tmppage, (Item) itup, IndexTupleSize(itup), i, LP_USED) != i)
+				if (PageAddItem(tmppage, (Item) itup, IndexTupleSize(itup), i, false) != i)
 					elog(ERROR, "failed to add item to index page in \"%s\"",
 						 RelationGetRelationName(gvs->index));
 

@@ -936,7 +936,7 @@ read_info(SeqTable elm, Relation rel, Buffer *buf)
 			 RelationGetRelationName(rel), sm->magic);
 
 	lp = PageGetItemId(page, FirstOffsetNumber);
-	Assert(ItemIdIsUsed(lp));
+	Assert(ItemIdIsNormal(lp));
 	tuple.t_data = (HeapTupleHeader) PageGetItem((Page) page, lp);
 
 	seq = (Form_pg_sequence) GETSTRUCT(&tuple);
@@ -1281,7 +1281,7 @@ seq_redo(XLogRecPtr lsn, XLogRecord *record)
 	itemsz = record->xl_len - sizeof(xl_seq_rec);
 	itemsz = MAXALIGN(itemsz);
 	if (PageAddItem(page, (Item) item, itemsz,
-					FirstOffsetNumber, LP_USED) == InvalidOffsetNumber)
+					FirstOffsetNumber, false) == InvalidOffsetNumber)
 		elog(PANIC, "seq_redo: failed to add item to page");
 
 	PageSetLSN(page, lsn);

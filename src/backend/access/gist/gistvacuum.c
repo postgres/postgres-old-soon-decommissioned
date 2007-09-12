@@ -201,7 +201,7 @@ vacuumSplitPage(GistVacuum *gv, Page tempPage, Buffer buffer, IndexTuple *addon,
 		data = (char *) (ptr->list);
 		for (i = 0; i < ptr->block.num; i++)
 		{
-			if (PageAddItem(ptr->page, (Item) data, IndexTupleSize((IndexTuple) data), i + FirstOffsetNumber, LP_USED) == InvalidOffsetNumber)
+			if (PageAddItem(ptr->page, (Item) data, IndexTupleSize((IndexTuple) data), i + FirstOffsetNumber, false) == InvalidOffsetNumber)
 				elog(ERROR, "failed to add item to index page in \"%s\"", RelationGetRelationName(gv->index));
 			data += IndexTupleSize((IndexTuple) data);
 		}

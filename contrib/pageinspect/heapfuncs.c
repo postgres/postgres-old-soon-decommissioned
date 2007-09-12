@@ -156,15 +156,15 @@ heap_page_items(PG_FUNCTION_ARGS)
 		 * could be corrupt in many other ways, but at least we won't 
 		 * crash.
 		 */
-		if ((lp_len >= sizeof(HeapTupleHeader)) &&
-			(lp_offset == MAXALIGN(lp_offset)) &&
-			(lp_offset + lp_len <= raw_page_size) &&
-			ItemIdIsUsed(id))
+		if (ItemIdHasStorage(id) &&
+			lp_len >= sizeof(HeapTupleHeader) &&
+			lp_offset == MAXALIGN(lp_offset) &&
+			lp_offset + lp_len <= raw_page_size)
 		{
 			HeapTupleHeader	tuphdr;
 			int				bits_len;
 
-			/* Extract infromation from the tuple header */
+			/* Extract information from the tuple header */
 
 			tuphdr = (HeapTupleHeader) PageGetItem(page, id);
 		
