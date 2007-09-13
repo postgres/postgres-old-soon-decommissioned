@@ -4,7 +4,7 @@
 #
 # $PostgreSQL$
 #
-# Use these quotes: «%s»
+# Use these quotes: « %s »
 # Loïc Hennequin <loic.hennequin@wanadoo.fr>, 2002.
 # Guillaume Lelarge <gleu@wanadoo.fr>, 2003, 2004, 2005.
 #
