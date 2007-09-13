@@ -707,7 +707,7 @@ calc_rank_cd(float4 *arrdata, TSVector txt, TSQuery query, int method)
 	}
 
 	qr.query = query;
-	qr.operandexist = (int*)palloc0(sizeof(bool) * query->size);
+	qr.operandexist = (bool*)palloc0(sizeof(bool) * query->size);
 
 	doc = get_docrep(txt, &qr, &doclen);
 	if (!doc)
