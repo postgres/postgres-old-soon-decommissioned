@@ -2047,7 +2047,7 @@ msgstr "Argumenttyp %s ist nur eine Hülle"
 #: commands/functioncmds.c:175 parser/parse_oper.c:113 parser/parse_oper.c:124
 #, c-format
 msgid "type %s does not exist"
-msgstr "Typ %s existiert bereits"
+msgstr "Typ %s existiert nicht"
 
 #: commands/functioncmds.c:182
 msgid "functions cannot accept set arguments"
