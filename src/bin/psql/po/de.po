@@ -607,7 +607,7 @@ msgid ""
 "  \\encoding [ENCODING]\n"
 "                 show or set client encoding\n"
 msgstr ""
-" \\encoding [KODIERUNG]\n"
+"  \\encoding [KODIERUNG]\n"
 "                 zeige oder setze Client-Kodierung\n"
 
 #: help.c:183
@@ -715,7 +715,7 @@ msgid ""
 "  \\qecho [STRING]\n"
 "                 write string to query output stream (see \\o)\n"
 msgstr ""
-" \\qecho [TEXT]   schreibe Text auf Ausgabestrom für Anfrageergebnisse "
+"  \\qecho [TEXT]  schreibe Text auf Ausgabestrom für Anfrageergebnisse "
 "(siehe \\o)\n"
 
 #: help.c:212
