@@ -493,7 +493,7 @@ pg_GSS_recvauth(Port *port)
 		/*
 		 * Release service principal credentials
 		 */
-		gss_release_cred(&min_stat, port->gss->cred);
+		gss_release_cred(&min_stat, &port->gss->cred);
 	}
 
 	/*
