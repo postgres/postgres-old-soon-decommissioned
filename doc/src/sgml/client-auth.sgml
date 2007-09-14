@@ -1067,6 +1067,16 @@ ldap[<replaceable>s</>]://<replaceable>servername</>[:<replaceable>port</>]/<rep
     and the <ulink url="http://www.sun.com/software/solaris/pam/">
     <systemitem class="osname">Solaris</> PAM Page</ulink>.
    </para>
+
+   <note>
+    <para>
+     PAM does work authenticating against Unix system authentication
+     because the postgres server is started by a non-root user.  In order
+     to enable this functionality, the root user must provide additional
+     permissions to the postgres user (for reading
+     <filename>/etc/shadow</>).
+    </para>
+   </note>
   </sect2>
  </sect1>
 
