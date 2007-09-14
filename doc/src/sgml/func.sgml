@@ -948,10 +948,10 @@
       </row>
 
       <row>
-       <entry><literal><function>atan2</function>(<replaceable>x</replaceable>,
-        <replaceable>y</replaceable>)</literal></entry>
+       <entry><literal><function>atan2</function>(<replaceable>y</replaceable>,
+        <replaceable>x</replaceable>)</literal></entry>
        <entry>inverse tangent of
-        <literal><replaceable>x</replaceable>/<replaceable>y</replaceable></literal></entry>
+        <literal><replaceable>y</replaceable>/<replaceable>x</replaceable></literal></entry>
       </row>
 
       <row>
