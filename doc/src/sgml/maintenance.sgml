@@ -436,7 +436,7 @@ HINT:  To avoid a database shutdown, execute a full-database VACUUM in "mydb".
     until wraparound:
 
 <programlisting>
-ERROR:  database is shut down to avoid wraparound data loss in database "mydb"
+ERROR:  database is not accepting commands to avoid wraparound data loss in database "mydb"
 HINT:  Stop the postmaster and use a standalone backend to VACUUM in "mydb".
 </programlisting>
 
