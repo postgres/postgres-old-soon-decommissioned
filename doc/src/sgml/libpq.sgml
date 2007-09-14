@@ -5097,7 +5097,8 @@ defaultNoticeProcessor(void *arg, const char *message)
     user=appuser
     ldap://ldap.acme.com/cn=dbserver,cn=hosts?pgconnectinfo?base?(objectclass=*)
    </synopsis>
-  <para>
+  </para>
+
  </sect1>
 
 
