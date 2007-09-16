@@ -3979,9 +3979,9 @@ interval_part(PG_FUNCTION_ARGS)
 #else
 		result = interval->time;
 #endif
-		result += (DAYS_PER_YEAR * SECS_PER_DAY) * (interval->month / MONTHS_PER_YEAR);
+		result += ((double) DAYS_PER_YEAR * SECS_PER_DAY) * (interval->month / MONTHS_PER_YEAR);
 		result += ((double) DAYS_PER_MONTH * SECS_PER_DAY) * (interval->month % MONTHS_PER_YEAR);
-		result += interval->day * SECS_PER_DAY;
+		result += ((double) SECS_PER_DAY) * interval->day;
 	}
 	else
 	{
