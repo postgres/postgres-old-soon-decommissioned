@@ -189,7 +189,6 @@ BackgroundWriterMain(void)
 	sigjmp_buf	local_sigjmp_buf;
 	MemoryContext bgwriter_context;
 
-	Assert(BgWriterShmem != NULL);
 	BgWriterShmem->bgwriter_pid = MyProcPid;
 	am_bg_writer = true;
 
@@ -987,7 +986,6 @@ ForwardFsyncRequest(RelFileNode rnode, BlockNumber segno)
 
 	if (!IsUnderPostmaster)
 		return false;			/* probably shouldn't even get here */
-	Assert(BgWriterShmem != NULL);
 
 	LWLockAcquire(BgWriterCommLock, LW_EXCLUSIVE);
 	if (BgWriterShmem->bgwriter_pid == 0 ||
