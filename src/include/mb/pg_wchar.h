@@ -372,6 +372,8 @@ extern void UtfToLocal(const unsigned char *utf, unsigned char *iso,
 extern bool pg_verifymbstr(const char *mbstr, int len, bool noError);
 extern bool pg_verify_mbstr(int encoding, const char *mbstr, int len,
 				bool noError);
+extern int pg_verify_mbstr_len(int encoding, const char *mbstr, int len,
+				bool noError);
 
 extern void report_invalid_encoding(int encoding, const char *mbstr, int len);
 extern void report_untranslatable_char(int src_encoding, int dest_encoding,
