@@ -653,10 +653,13 @@ thesaurus_init(PG_FUNCTION_ARGS)
 static LexemeInfo *
 findTheLexeme(DictThesaurus * d, char *lexeme)
 {
-	TheLexeme	key = {lexeme, NULL}, *res;
+	TheLexeme	key, *res;
 
 	if (d->nwrds == 0)
 		return NULL;
+
+	key.lexeme = lexeme;
+	key.entries = NULL;
 
 	res = bsearch(&key, d->wrds, d->nwrds, sizeof(TheLexeme), cmpLexemeQ);
 
