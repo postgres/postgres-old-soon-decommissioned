@@ -2274,8 +2274,7 @@ float8_corr(PG_FUNCTION_ARGS)
 	if (numeratorX <= 0 || numeratorY <= 0)
 		PG_RETURN_NULL();
 
-	PG_RETURN_FLOAT8(sqrt((numeratorXY * numeratorXY) /
-						  (numeratorX * numeratorY)));
+	PG_RETURN_FLOAT8(numeratorXY / sqrt(numeratorX * numeratorY));
 }
 
 Datum
