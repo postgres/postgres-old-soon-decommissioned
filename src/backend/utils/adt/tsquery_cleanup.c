@@ -194,6 +194,9 @@ clean_NOT(QueryItem * ptr, int *len)
 #ifdef V_UNKNOWN				/* exists in Windows headers */
 #undef V_UNKNOWN
 #endif
+#ifdef V_FALSE					/* exists in Solaris headers */
+#undef V_FALSE
+#endif
 
 /*
  * output values for result output parameter of clean_fakeval_intree
