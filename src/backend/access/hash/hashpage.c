@@ -830,7 +830,7 @@ _hash_splitbucket(Relation rel,
 			}
 
 			noffnum = OffsetNumberNext(PageGetMaxOffsetNumber(npage));
-			if (PageAddItem(npage, (Item) itup, itemsz, noffnum, false)
+			if (PageAddItem(npage, (Item) itup, itemsz, noffnum, false, false)
 				== InvalidOffsetNumber)
 				elog(ERROR, "failed to add index item to \"%s\"",
 					 RelationGetRelationName(rel));

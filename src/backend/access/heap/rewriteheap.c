@@ -320,12 +320,14 @@ rewrite_heap_tuple(RewriteState state,
 	 * Copy the original tuple's visibility information into new_tuple.
 	 *
 	 * XXX we might later need to copy some t_infomask2 bits, too?
+	 * Right now, we intentionally clear the HOT status bits.
 	 */
 	memcpy(&new_tuple->t_data->t_choice.t_heap,
 		   &old_tuple->t_data->t_choice.t_heap,
 		   sizeof(HeapTupleFields));
 
 	new_tuple->t_data->t_infomask &= ~HEAP_XACT_MASK;
+	new_tuple->t_data->t_infomask2 &= ~HEAP2_XACT_MASK;
 	new_tuple->t_data->t_infomask |=
 		old_tuple->t_data->t_infomask & HEAP_XACT_MASK;
 
@@ -593,7 +595,7 @@ raw_heap_insert(RewriteState state, HeapTuple tup)
 	/* Now we can check to see if there's enough free space already. */
 	if (state->rs_buffer_valid)
 	{
-		pageFreeSpace = PageGetFreeSpace(page);
+		pageFreeSpace = PageGetHeapFreeSpace(page);
 
 		if (len + saveFreeSpace > pageFreeSpace)
 		{
@@ -628,7 +630,7 @@ raw_heap_insert(RewriteState state, HeapTuple tup)
 
 	/* And now we can insert the tuple into the page */
 	newoff = PageAddItem(page, (Item) heaptup->t_data, len,
-						 InvalidOffsetNumber, false);
+						 InvalidOffsetNumber, false, true);
 	if (newoff == InvalidOffsetNumber)
 		elog(ERROR, "failed to add tuple");
 

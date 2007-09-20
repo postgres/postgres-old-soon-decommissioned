@@ -400,7 +400,7 @@ _bt_sortaddtup(Page page,
 	}
 
 	if (PageAddItem(page, (Item) itup, itemsize, itup_off,
-					false) == InvalidOffsetNumber)
+					false, false) == InvalidOffsetNumber)
 		elog(ERROR, "failed to add item to the index page");
 }
 

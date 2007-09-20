@@ -42,7 +42,7 @@ gistfillbuffer(Relation r, Page page, IndexTuple *itup,
 	for (i = 0; i < len; i++)
 	{
 		l = PageAddItem(page, (Item) itup[i], IndexTupleSize(itup[i]),
-						off, false);
+						off, false, false);
 		if (l == InvalidOffsetNumber)
 			elog(ERROR, "failed to add item to index page in \"%s\"",
 				 RelationGetRelationName(r));

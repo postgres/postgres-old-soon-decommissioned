@@ -18,6 +18,7 @@
 
 
 extern Relids pull_varnos(Node *node);
+extern void pull_varattnos(Node *node, Bitmapset **varattnos);
 extern bool contain_var_reference(Node *node, int varno, int varattno,
 					  int levelsup);
 extern bool contain_var_clause(Node *node);

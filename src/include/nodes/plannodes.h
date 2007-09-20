@@ -39,6 +39,8 @@ typedef struct PlannedStmt
 
 	bool		canSetTag;		/* do I set the command result tag? */
 
+	bool		transientPlan;	/* redo plan when TransactionXmin changes? */
+
 	struct Plan *planTree;		/* tree of Plan nodes */
 
 	List	   *rtable;			/* list of RangeTblEntry nodes */

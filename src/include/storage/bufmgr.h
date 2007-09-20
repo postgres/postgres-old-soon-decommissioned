@@ -156,6 +156,7 @@ extern void UnlockBuffers(void);
 extern void LockBuffer(Buffer buffer, int mode);
 extern bool ConditionalLockBuffer(Buffer buffer);
 extern void LockBufferForCleanup(Buffer buffer);
+extern bool ConditionalLockBufferForCleanup(Buffer buffer);
 
 extern void AbortBufferIO(void);
 

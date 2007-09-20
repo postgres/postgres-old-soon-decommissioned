@@ -2873,6 +2873,8 @@ DATA(insert OID = 1932 (  pg_stat_get_tuples_updated	PGNSP PGUID 12 1 0 f f t f 
 DESCR("statistics: number of tuples updated");
 DATA(insert OID = 1933 (  pg_stat_get_tuples_deleted	PGNSP PGUID 12 1 0 f f t f s 1 20 "26" _null_ _null_ _null_ pg_stat_get_tuples_deleted - _null_ _null_ ));
 DESCR("statistics: number of tuples deleted");
+DATA(insert OID = 1972 (  pg_stat_get_tuples_hot_updated PGNSP PGUID 12 1 0 f f t f s 1 20 "26" _null_ _null_ _null_ pg_stat_get_tuples_hot_updated - _null_ _null_ ));
+DESCR("statistics: number of tuples hot updated");
 DATA(insert OID = 2878 (  pg_stat_get_live_tuples	PGNSP PGUID 12 1 0 f f t f s 1 20 "26" _null_ _null_ _null_ pg_stat_get_live_tuples - _null_ _null_ ));
 DESCR("statistics: number of live tuples");
 DATA(insert OID = 2879 (  pg_stat_get_dead_tuples	PGNSP PGUID 12 1 0 f f t f s 1 20 "26" _null_ _null_ _null_ pg_stat_get_dead_tuples - _null_ _null_ ));

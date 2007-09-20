@@ -684,7 +684,7 @@ _hash_squeezebucket(Relation rel,
 			 * we have found room so insert on the "write" page.
 			 */
 			woffnum = OffsetNumberNext(PageGetMaxOffsetNumber(wpage));
-			if (PageAddItem(wpage, (Item) itup, itemsz, woffnum, false)
+			if (PageAddItem(wpage, (Item) itup, itemsz, woffnum, false, false)
 				== InvalidOffsetNumber)
 				elog(ERROR, "failed to add index item to \"%s\"",
 					 RelationGetRelationName(rel));

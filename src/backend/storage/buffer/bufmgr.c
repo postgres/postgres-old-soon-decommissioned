@@ -2067,6 +2067,55 @@ LockBufferForCleanup(Buffer buffer)
 }
 
 /*
+ * ConditionalLockBufferForCleanup - as above, but don't wait to get the lock
+ *
+ * We won't loop, but just check once to see if the pin count is OK.  If
+ * not, return FALSE with no lock held.
+ */ 
+bool
+ConditionalLockBufferForCleanup(Buffer buffer)
+{
+	volatile BufferDesc *bufHdr;
+
+	Assert(BufferIsValid(buffer));
+
+	if (BufferIsLocal(buffer))
+	{
+		/* There should be exactly one pin */
+		Assert(LocalRefCount[-buffer - 1] > 0);
+		if (LocalRefCount[-buffer - 1] != 1)
+			return false;
+		/* Nobody else to wait for */
+		return true;
+	}
+
+	/* There should be exactly one local pin */
+	Assert(PrivateRefCount[buffer - 1] > 0);
+	if (PrivateRefCount[buffer - 1] != 1)
+		return false;
+
+	/* Try to acquire lock */
+	if (!ConditionalLockBuffer(buffer))
+		return false;
+
+	bufHdr = &BufferDescriptors[buffer - 1];
+	LockBufHdr(bufHdr);
+	Assert(bufHdr->refcount > 0);
+	if (bufHdr->refcount == 1)
+	{
+		/* Successfully acquired exclusive lock with pincount 1 */
+		UnlockBufHdr(bufHdr);
+		return true;
+	}
+
+	/* Failed, so release the lock */
+	UnlockBufHdr(bufHdr);
+	LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
+	return false;
+}
+
+
+/*
  *	Functions for buffer I/O handling
  *
  *	Note: We assume that nested buffer I/O never occurs.

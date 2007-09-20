@@ -75,6 +75,8 @@ typedef struct CachedPlan
 	List	   *stmt_list;		/* list of statement or Query nodes */
 	bool		fully_planned;	/* do we cache planner or rewriter output? */
 	bool		dead;			/* if true, do not use */
+	TransactionId saved_xmin;	/* if valid, replan when TransactionXmin
+								 * changes from this value */
 	int			refcount;		/* count of live references to this struct */
 	int			generation;		/* counter, starting at 1, for replans */
 	MemoryContext context;		/* context containing this CachedPlan */

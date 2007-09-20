@@ -134,6 +134,7 @@ standard_planner(Query *parse, int cursorOptions, ParamListInfo boundParams)
 	glob->subrtables = NIL;
 	glob->rewindPlanIDs = NULL;
 	glob->finalrtable = NIL;
+	glob->transientPlan = false;
 
 	/* Determine what fraction of the plan is likely to be scanned */
 	if (cursorOptions & CURSOR_OPT_FAST_PLAN)
@@ -183,6 +184,7 @@ standard_planner(Query *parse, int cursorOptions, ParamListInfo boundParams)
 
 	result->commandType = parse->commandType;
 	result->canSetTag = parse->canSetTag;
+	result->transientPlan = glob->transientPlan;
 	result->planTree = top_plan;
 	result->rtable = glob->finalrtable;
 	result->resultRelations = root->resultRelations;

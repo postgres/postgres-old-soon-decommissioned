@@ -71,6 +71,8 @@ typedef struct PlannerGlobal
 	Bitmapset  *rewindPlanIDs;	/* indices of subplans that require REWIND */
 
 	List	   *finalrtable;	/* "flat" rangetable for executor */
+
+	bool		transientPlan;	/* redo plan when TransactionXmin changes? */
 } PlannerGlobal;
 
 /* macro for fetching the Plan associated with a SubPlan node */

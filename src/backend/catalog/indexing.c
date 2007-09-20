@@ -78,6 +78,10 @@ CatalogIndexInsert(CatalogIndexState indstate, HeapTuple heapTuple)
 	Datum		values[INDEX_MAX_KEYS];
 	bool		isnull[INDEX_MAX_KEYS];
 
+	/* HOT update does not require index inserts */
+	if (HeapTupleIsHeapOnly(heapTuple))
+		return;
+
 	/*
 	 * Get information from the state structure.  Fall out if nothing to do.
 	 */
@@ -100,6 +104,10 @@ CatalogIndexInsert(CatalogIndexState indstate, HeapTuple heapTuple)
 		IndexInfo  *indexInfo;
 
 		indexInfo = indexInfoArray[i];
+
+		/* If the index is marked as read-only, ignore it */
+		if (!indexInfo->ii_ReadyForInserts)
+			continue;
 
 		/*
 		 * Expressional and partial indexes on system catalogs are not

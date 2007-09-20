@@ -329,7 +329,10 @@ CREATE [ UNIQUE ] INDEX [ CONCURRENTLY ] <replaceable class="parameter">name</re
    </para>
 
    <para>
-    If a problem arises during the second scan of the table, such as a
+    In a concurrent index build, the index is actually entered into the
+    system catalogs in one transaction, then the two table scans occur in a
+    second and third transaction.
+    If a problem arises while scanning the table, such as a
     uniqueness violation in a unique index, the <command>CREATE INDEX</>
     command will fail but leave behind an <quote>invalid</> index. This index
     will be ignored for querying purposes because it might be incomplete;

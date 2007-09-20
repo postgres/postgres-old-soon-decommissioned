@@ -200,7 +200,7 @@ _hash_pgaddtup(Relation rel,
 	page = BufferGetPage(buf);
 
 	itup_off = OffsetNumberNext(PageGetMaxOffsetNumber(page));
-	if (PageAddItem(page, (Item) itup, itemsize, itup_off, false)
+	if (PageAddItem(page, (Item) itup, itemsize, itup_off, false, false)
 		== InvalidOffsetNumber)
 		elog(ERROR, "failed to add index item to \"%s\"",
 			 RelationGetRelationName(rel));

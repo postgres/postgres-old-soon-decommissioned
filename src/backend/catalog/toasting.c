@@ -225,7 +225,9 @@ create_toast_table(Relation rel, Oid toastOid, Oid toastIndexOid)
 	indexInfo->ii_Predicate = NIL;
 	indexInfo->ii_PredicateState = NIL;
 	indexInfo->ii_Unique = true;
+	indexInfo->ii_ReadyForInserts = true;
 	indexInfo->ii_Concurrent = false;
+	indexInfo->ii_BrokenHotChain = false;
 
 	classObjectId[0] = OID_BTREE_OPS_OID;
 	classObjectId[1] = INT4_BTREE_OPS_OID;

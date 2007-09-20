@@ -40,6 +40,7 @@
 #include "postgres.h"
 
 #include "utils/plancache.h"
+#include "access/transam.h"
 #include "catalog/namespace.h"
 #include "executor/executor.h"
 #include "optimizer/clauses.h"
@@ -79,6 +80,7 @@ static void ScanQueryForRelids(Query *parsetree,
 							   void *arg);
 static bool ScanQueryWalker(Node *node, ScanQueryWalkerContext *context);
 static bool rowmark_member(List *rowMarks, int rt_index);
+static bool plan_list_is_transient(List *stmt_list);
 static void PlanCacheCallback(Datum arg, Oid relid);
 static void InvalRelid(Oid relid, LOCKMODE lockmode,
 					   InvalRelidContext *context);
@@ -322,6 +324,13 @@ StoreCachedPlan(CachedPlanSource *plansource,
 	plan->stmt_list = stmt_list;
 	plan->fully_planned = plansource->fully_planned;
 	plan->dead = false;
+	if (plansource->fully_planned && plan_list_is_transient(stmt_list))
+	{
+		Assert(TransactionIdIsNormal(TransactionXmin));
+		plan->saved_xmin = TransactionXmin;
+	}
+	else
+		plan->saved_xmin = InvalidTransactionId;
 	plan->refcount = 1;			/* for the parent's link */
 	plan->generation = ++(plansource->generation);
 	plan->context = plan_context;
@@ -410,6 +419,15 @@ RevalidateCachedPlan(CachedPlanSource *plansource, bool useResOwner)
 			AcquireExecutorLocks(plan->stmt_list, true);
 		else
 			AcquirePlannerLocks(plan->stmt_list, true);
+
+		/*
+		 * If plan was transient, check to see if TransactionXmin has
+		 * advanced, and if so invalidate it.
+		 */
+		if (!plan->dead &&
+			TransactionIdIsValid(plan->saved_xmin) &&
+			!TransactionIdEquals(plan->saved_xmin, TransactionXmin))
+			plan->dead = true;
 
 		/*
 		 * By now, if any invalidation has happened, PlanCacheCallback
@@ -786,6 +804,28 @@ rowmark_member(List *rowMarks, int rt_index)
 		if (rc->rti == rt_index)
 			return true;
 	}
+	return false;
+}
+
+/*
+ * plan_list_is_transient: check if any of the plans in the list are transient.
+ */
+static bool
+plan_list_is_transient(List *stmt_list)
+{
+	ListCell   *lc;
+
+	foreach(lc, stmt_list)
+	{
+		PlannedStmt *plannedstmt = (PlannedStmt *) lfirst(lc);
+		
+		if (!IsA(plannedstmt, PlannedStmt))
+			continue;			/* Ignore utility statements */
+
+		if (plannedstmt->transientPlan)
+			return true;
+	}	
+
 	return false;
 }
 
