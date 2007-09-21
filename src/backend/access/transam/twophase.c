@@ -353,7 +353,7 @@ MarkAsPrepared(GlobalTransaction gxact)
 	LWLockRelease(TwoPhaseStateLock);
 
 	/*
-	 * Put it into the global ProcArray so TransactionIdInProgress considers
+	 * Put it into the global ProcArray so TransactionIdIsInProgress considers
 	 * the XID as still running.
 	 */
 	ProcArrayAdd(&gxact->proc);
@@ -979,8 +979,8 @@ EndPrepare(GlobalTransaction gxact)
 	 * NB: a side effect of this is to make a dummy ProcArray entry for the
 	 * prepared XID.  This must happen before we clear the XID from MyProc,
 	 * else there is a window where the XID is not running according to
-	 * TransactionIdInProgress, and onlookers would be entitled to assume the
-	 * xact crashed.  Instead we have a window where the same XID appears
+	 * TransactionIdIsInProgress, and onlookers would be entitled to assume
+	 * the xact crashed.  Instead we have a window where the same XID appears
 	 * twice in ProcArray, which is OK.
 	 */
 	MarkAsPrepared(gxact);
