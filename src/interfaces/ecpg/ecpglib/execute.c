@@ -1492,7 +1492,6 @@ ECPGdo(const int lineno, const int compat, const int force_indicator, const char
 	{
 		setlocale(LC_NUMERIC, oldlocale);
 		ECPGfree(oldlocale);
-		ECPGfree(prepname);
 		va_end(args);
 		return false;
 	}
