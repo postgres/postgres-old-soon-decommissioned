@@ -157,7 +157,7 @@ hashname(PG_FUNCTION_ARGS)
 Datum
 hashtext(PG_FUNCTION_ARGS)
 {
-	text	   *key = PG_GETARG_TEXT_P(0);
+	text	   *key = PG_GETARG_TEXT_PP(0);
 	Datum		result;
 
 	/*
@@ -165,8 +165,8 @@ hashtext(PG_FUNCTION_ARGS)
 	 * it as a separate function in case we someday want to do something
 	 * different in non-C locales.	(See also hashbpchar, if so.)
 	 */
-	result = hash_any((unsigned char *) VARDATA(key),
-					  VARSIZE(key) - VARHDRSZ);
+	result = hash_any((unsigned char *) VARDATA_ANY(key),
+					  VARSIZE_ANY_EXHDR(key));
 
 	/* Avoid leaking memory for toasted inputs */
 	PG_FREE_IF_COPY(key, 0);
@@ -181,11 +181,11 @@ hashtext(PG_FUNCTION_ARGS)
 Datum
 hashvarlena(PG_FUNCTION_ARGS)
 {
-	struct varlena *key = PG_GETARG_VARLENA_P(0);
+	struct varlena *key = PG_GETARG_VARLENA_PP(0);
 	Datum		result;
 
-	result = hash_any((unsigned char *) VARDATA(key),
-					  VARSIZE(key) - VARHDRSZ);
+	result = hash_any((unsigned char *) VARDATA_ANY(key),
+					  VARSIZE_ANY_EXHDR(key));
 
 	/* Avoid leaking memory for toasted inputs */
 	PG_FREE_IF_COPY(key, 0);
