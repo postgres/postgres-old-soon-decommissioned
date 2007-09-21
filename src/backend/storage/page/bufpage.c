@@ -40,11 +40,12 @@ PageInit(Page page, Size pageSize, Size specialSize)
 	/* Make sure all fields of page are zero, as well as unused space */
 	MemSet(p, 0, pageSize);
 
-	/* p->pd_flags = 0; 					done by above MemSet */
+	/* p->pd_flags = 0;								done by above MemSet */
 	p->pd_lower = SizeOfPageHeaderData;
 	p->pd_upper = pageSize - specialSize;
 	p->pd_special = pageSize - specialSize;
 	PageSetPageSizeAndVersion(page, pageSize, PG_PAGE_LAYOUT_VERSION);
+	/* p->pd_prune_xid = InvalidTransactionId;		done by above MemSet */
 }
 
 
