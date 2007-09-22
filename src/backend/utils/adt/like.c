@@ -36,6 +36,8 @@ static text *MB_do_like_escape(text *, text *);
 
 static int	UTF8_MatchText(char *t, int tlen, char *p, int plen);
 
+static int	SB_IMatchText(char *t, int tlen, char *p, int plen);
+
 static int	GenericMatchText(char *s, int slen, char* p, int plen);
 static int	Generic_Text_IC_like(text *str, text *pat);
 
@@ -104,6 +106,12 @@ wchareq(char *p1, char *p2)
 
 #include "like_match.c"
 
+/* setup to compile like_match.c for single byte case insensitive matches */
+#define MATCH_LOWER
+#define NextChar(p, plen) NextByte((p), (plen))
+#define MatchText SB_IMatchText
+
+#include "like_match.c"
 
 /* setup to compile like_match.c for UTF8 encoding, using fast NextChar */
 
@@ -132,16 +140,33 @@ Generic_Text_IC_like(text *str, text *pat)
 	int			slen,
 				plen;
 
-	/* Force inputs to lower case to achieve case insensitivity */
-	str = DatumGetTextP(DirectFunctionCall1(lower, PointerGetDatum(str)));
-	pat = DatumGetTextP(DirectFunctionCall1(lower, PointerGetDatum(pat)));
-	/* lower's result is never packed, so OK to use old macros here */
-	s = VARDATA(str);
-	slen = (VARSIZE(str) - VARHDRSZ);
-	p = VARDATA(pat);
-	plen = (VARSIZE(pat) - VARHDRSZ);
+	/* For efficiency reasons, in the single byte case we don't call
+	 * lower() on the pattern and text, but instead call to_lower on each
+	 * character.  In the multi-byte case we don't have much choice :-(
+	 */
 
-	return GenericMatchText(s, slen, p, plen);
+	if (pg_database_encoding_max_length() > 1)
+	{
+		/* lower's result is never packed, so OK to use old macros here */
+		pat = DatumGetTextP(DirectFunctionCall1(lower, PointerGetDatum(pat)));
+		p = VARDATA(pat);
+		plen = (VARSIZE(pat) - VARHDRSZ);
+		str = DatumGetTextP(DirectFunctionCall1(lower, PointerGetDatum(str)));
+		s = VARDATA(str);
+		slen = (VARSIZE(str) - VARHDRSZ);
+		if (GetDatabaseEncoding() == PG_UTF8)
+			return UTF8_MatchText(s, slen, p, plen);
+		else
+			return MB_MatchText(s, slen, p, plen);
+	}
+	else
+	{
+		p = VARDATA_ANY(pat);
+		plen = VARSIZE_ANY_EXHDR(pat);
+		s = VARDATA_ANY(str);
+		slen = VARSIZE_ANY_EXHDR(str);
+		return SB_IMatchText(s, slen, p, plen);
+	}
 }
 
 /*
