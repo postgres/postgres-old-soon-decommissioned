@@ -92,6 +92,7 @@ extern void cost_mergejoin(MergePath *path, PlannerInfo *root);
 extern void cost_hashjoin(HashPath *path, PlannerInfo *root);
 extern void cost_qual_eval(QualCost *cost, List *quals, PlannerInfo *root);
 extern void cost_qual_eval_node(QualCost *cost, Node *qual, PlannerInfo *root);
+extern Cost get_initplan_cost(PlannerInfo *root, SubPlan *subplan);
 extern void set_baserel_size_estimates(PlannerInfo *root, RelOptInfo *rel);
 extern void set_joinrel_size_estimates(PlannerInfo *root, RelOptInfo *rel,
 						   RelOptInfo *outer_rel,
