@@ -179,7 +179,7 @@ extern struct varlena *pg_detoast_datum_packed(struct varlena * datum);
 	pg_detoast_datum_copy((struct varlena *) DatumGetPointer(datum))
 #define PG_DETOAST_DATUM_SLICE(datum,f,c) \
 		pg_detoast_datum_slice((struct varlena *) DatumGetPointer(datum), \
-		(int32) f, (int32) c)
+		(int32) (f), (int32) (c))
 /* WARNING -- unaligned pointer */
 #define PG_DETOAST_DATUM_PACKED(datum) \
 	pg_detoast_datum_packed((struct varlena *) DatumGetPointer(datum))
