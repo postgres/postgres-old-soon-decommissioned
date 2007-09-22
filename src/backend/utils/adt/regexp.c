@@ -195,10 +195,12 @@ RE_compile_and_cache(text *text_re, int cflags)
 	}
 
 	/*
-	 * use malloc/free for the cre_pat field because the storage has to
-	 * persist across transactions
+	 * We use malloc/free for the cre_pat field because the storage has to
+	 * persist across transactions, and because we want to get control back
+	 * on out-of-memory.  The Max() is because some malloc implementations
+	 * return NULL for malloc(0).
 	 */
-	re_temp.cre_pat = malloc(text_re_len);
+	re_temp.cre_pat = malloc(Max(text_re_len, 1));
 	if (re_temp.cre_pat == NULL)
 	{
 		pg_regfree(&re_temp.cre_re);
