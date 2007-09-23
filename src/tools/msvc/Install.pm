@@ -50,7 +50,7 @@ sub Install
 									push(@$sample_files, $File::Find::name); 
 							} 
 				  }, 
-					 "../.." );
+					 "src" );
     CopySetOfFiles('config files', $sample_files , $target . '/share/');
     CopyFiles(
         'Import libraries',
@@ -81,7 +81,7 @@ sub Install
 				   [ glob ("src\\backend\\snowball\\stopwords\\*.stop") ], 
 				   $target . '/share/tsearch_data/');
     CopySetOfFiles('Dictionaries sample files', 
-				   [ glob ("src\\backend\\tsearch\\\*_sample.*" ) ], 
+				   [ glob ("src\\backend\\tsearch\\*_sample.*" ) ], 
 				   $target . '/share/tsearch_data/');
     CopyContribFiles($config,$target);
     CopyIncludeFiles($target);
@@ -424,7 +424,6 @@ sub GenerateNLSFiles
 {
     my $target = shift;
     my $nlspath = shift;
-    my $D;
 
     print "Installing NLS files...";
     EnsureDirectories($target, "share/locale");
@@ -433,7 +432,7 @@ sub GenerateNLSFiles
 						  sub { /^nls\.mk\z/s && 
 									!                                                                       push(@flist, $File::Find::name); 	
 							} 
-				  }, ".");
+				  }, "src");
     foreach (@flist)
     {
         s/nls.mk/po/;
