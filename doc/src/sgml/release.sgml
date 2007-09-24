@@ -1475,8 +1475,7 @@ do it for earlier branch release files.
       <listitem>
        <para>
         Improve performance of statistics monitoring, especially
-        <link
-        linkend="guc-stats-command-string"><varname>stats_command_string</></link>
+        <varname>stats_command_string</>
         (Tom, Bruce)
        </para>
 
