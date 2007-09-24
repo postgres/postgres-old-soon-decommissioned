@@ -93,7 +93,6 @@ static const ScanKeyword ScanKeywords[] = {
 	{"constraints", CONSTRAINTS, UNRESERVED_KEYWORD},
 	{"content", CONTENT_P, UNRESERVED_KEYWORD},
 	{"conversion", CONVERSION_P, UNRESERVED_KEYWORD},
-	{"convert", CONVERT, COL_NAME_KEYWORD},
 	{"copy", COPY, UNRESERVED_KEYWORD},
 	{"cost", COST, UNRESERVED_KEYWORD},
 	{"create", CREATE, RESERVED_KEYWORD},
