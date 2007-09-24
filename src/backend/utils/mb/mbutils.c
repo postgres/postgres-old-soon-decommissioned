@@ -305,6 +305,10 @@ pg_convert_to(PG_FUNCTION_ARGS)
 							namein, CStringGetDatum(DatabaseEncoding->name));
 	Datum		result;
 
+	/* pg_convert expects a bytea as its first argument. We're passing it
+	 * a text argument here, relying on the fact that they are both in fact
+	 * varlena types, and thus structurally identical.
+	 */
 	result = DirectFunctionCall3(
 				 pg_convert, string, src_encoding_name, dest_encoding_name);
 
@@ -334,6 +338,12 @@ pg_convert_from(PG_FUNCTION_ARGS)
 	/* free memory allocated by namein */
 	pfree((void *) src_encoding_name);
 
+	/* pg_convert returns a bytea, which we in turn return as text, relying 
+	 * on the fact that they are both in fact varlena types, and thus 
+	 * structurally identical. Although not all bytea values are valid text,
+	 * in this case it will be because we've told pg_convert to return one
+	 * that is valid as text in the current database encoding.
+	 */
 	PG_RETURN_TEXT_P(result);
 }
 
