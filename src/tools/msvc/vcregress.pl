@@ -188,7 +188,9 @@ sub contribcheck
     my $mstat = 0;
     foreach my $module (glob("*"))
     {
-        next unless -d "$module/sql" && -d "$module/expected" && -f "Makefile";
+        next unless -d "$module/sql" && 
+			-d "$module/expected" && 
+			(-f "$module/Makefile" || -f "$module/GNUmakefile");
         chdir $module;
 		print "============================================================\n";
         print "Checking $module\n";
@@ -211,7 +213,7 @@ sub fetchTests
 
     my $handle;
     open($handle,"<Makefile")
-      || open($handle,"<GNUMakefile")
+      || open($handle,"<GNUmakefile")
       || die "Could not open Makefile";
     local($/) = undef;
     my $m = <$handle>;
