@@ -349,7 +349,7 @@ handle_sigint(SIGNAL_ARGS)
 		if (PQcancel(cancelConn, errbuf, sizeof(errbuf)))
 			fprintf(stderr, _("Cancel request sent\n"));
 		else
-			fprintf(stderr, _("Could not send cancel request: %s\n"), errbuf);
+			fprintf(stderr, _("Could not send cancel request: %s"), errbuf);
 	}
 
 	errno = save_errno;			/* just in case the write changed it */

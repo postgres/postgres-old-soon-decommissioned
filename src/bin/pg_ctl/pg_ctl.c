@@ -535,7 +535,7 @@ unlimit_core_size(void)
 	getrlimit(RLIMIT_CORE,&lim);
 	if (lim.rlim_max == 0)
 	{
-			write_stderr(_("%s: cannot set core size, disallowed by hard limit.\n"), 
+			write_stderr(_("%s: cannot set core size, disallowed by hard limit\n"), 
 						 progname);
 			return;
 	}
