@@ -32,8 +32,8 @@ extern PGDLLIMPORT int NBuffers;
 
 /* in bufmgr.c */
 extern bool zero_damaged_pages;
-extern double bgwriter_lru_percent;
 extern int	bgwriter_lru_maxpages;
+extern double bgwriter_lru_multiplier;
 
 /* in buf_init.c */
 extern PGDLLIMPORT char *BufferBlocks;

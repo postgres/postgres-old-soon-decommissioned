@@ -188,7 +188,7 @@ extern void StrategyFreeBuffer(volatile BufferDesc *buf);
 extern bool StrategyRejectBuffer(BufferAccessStrategy strategy,
 								 volatile BufferDesc *buf);
 
-extern int	StrategySyncStart(void);
+extern int	StrategySyncStart(uint32 *complete_passes, uint32 *num_buf_alloc);
 extern Size StrategyShmemSize(void);
 extern void StrategyInitialize(bool init);
 
