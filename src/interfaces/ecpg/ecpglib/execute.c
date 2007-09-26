@@ -1515,7 +1515,7 @@ ECPGdo(const int lineno, const int compat, const int force_indicator, const char
 	if (statement_type == ECPGst_execute)
 	{
 		/* if we have an EXECUTE command, only the name is send */
-		char *command = ECPGprepared(stmt->command, lineno);
+		char *command = ECPGprepared(stmt->command, con, lineno);
 
 		if (command)
 		{

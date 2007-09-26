@@ -49,9 +49,9 @@ bool		ECPGtrans(int, const char *, const char *);
 bool		ECPGdisconnect(int, const char *);
 bool		ECPGprepare(int, const char *, const int, const char *, const char *);
 bool		ECPGauto_prepare(int, const char *, const int, char **, const char *);
-bool		ECPGdeallocate(int, int, const char *);
-bool		ECPGdeallocate_all(int, int);
-char	   *ECPGprepared_statement(const char *, int);
+bool		ECPGdeallocate(int, int, const char *connection_name, const char *name);
+bool		ECPGdeallocate_all(int, int, const char *connection_name);
+char	   *ECPGprepared_statement(const char *connection_name, const char *name, int);
 
 void		ECPGlog(const char *format,...);
 char	   *ECPGerrmsg(void);
