@@ -2092,7 +2092,9 @@ PGresult *PQdescribePortal(PGconn *conn, const char *portalName);
 
      <listitem>
       <para>
-       Returns the number of rows (tuples) in the query result.
+       Returns the number of rows (tuples) in the query result.  Because
+       it returns an integer result, large result sets might overflow the
+       return value on 32-bit operating systems.
 
        <synopsis>
         int PQntuples(const PGresult *res);
