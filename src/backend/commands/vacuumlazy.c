@@ -75,7 +75,7 @@
  * provide an upper limit to memory allocated when vacuuming small
  * tables.
  */
-#define LAZY_ALLOC_TUPLES		200
+#define LAZY_ALLOC_TUPLES		MaxHeapTuplesPerPage
 
 typedef struct LVRelStats
 {
