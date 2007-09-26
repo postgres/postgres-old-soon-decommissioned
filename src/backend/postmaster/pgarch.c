@@ -314,8 +314,6 @@ pgarch_MainLoop(void)
 		{
 			got_SIGHUP = false;
 			ProcessConfigFile(PGC_SIGHUP);
-			if (!XLogArchivingActive())
-				break;			/* user wants us to shut down */
 		}
 
 		/* Do what we're here for */
@@ -358,6 +356,14 @@ static void
 pgarch_ArchiverCopyLoop(void)
 {
 	char		xlog[MAX_XFN_CHARS + 1];
+
+	if (!XLogArchiveCommandSet())
+	{
+		ereport(WARNING,
+				(errmsg("archive_mode enabled, yet archive_command is not set")));
+		/* can't do anything if no command ... */
+		return;
+	}
 
 	/*
 	 * loop through all xlogs with archive_status of .ready and archive

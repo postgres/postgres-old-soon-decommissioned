@@ -171,7 +171,7 @@ SHOW ALL;
               name              |            setting             |                                         description                                          
 --------------------------------+--------------------------------+----------------------------------------------------------------------------------------------
  add_missing_from               | off                            | Automatically adds missing table references to FROM clauses.
- archive_command                | unset                          | WAL archiving command.
+ allow_system_table_mods        | off                            | Allows modifications of the structure of system tables.
     .
     .
     .
