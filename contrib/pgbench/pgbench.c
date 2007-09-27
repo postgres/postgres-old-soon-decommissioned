@@ -24,10 +24,11 @@
 #include <ctype.h>
 
 #ifdef WIN32
-#include "win32.h"
+#include <win32.h>
 #else
 #include <sys/time.h>
 #include <unistd.h>
+#endif   /* ! WIN32 */
 
 #ifdef HAVE_GETOPT_H
 #include <getopt.h>
@@ -40,14 +41,9 @@
 #ifdef HAVE_SYS_RESOURCE_H
 #include <sys/resource.h>		/* for getrlimit */
 #endif
-#endif   /* ! WIN32 */
 
 extern char *optarg;
 extern int	optind;
-
-#ifdef WIN32
-#undef select
-#endif
 
 
 /********************************************************************
