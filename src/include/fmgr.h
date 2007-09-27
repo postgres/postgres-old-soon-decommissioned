@@ -158,7 +158,7 @@ extern void fmgr_info_copy(FmgrInfo *dstinfo, FmgrInfo *srcinfo,
  * The resulting datum can be accessed using VARSIZE_ANY() and VARDATA_ANY()
  * (beware of multiple evaluations in those macros!)
  *
- * WARNING: It is only safe to use PG_DETOAST_DATUM_UNPACKED() and
+ * WARNING: It is only safe to use pg_detoast_datum_packed() and
  * VARDATA_ANY() if you really don't care about the alignment. Either because
  * you're working with something like text where the alignment doesn't matter
  * or because you're not going to access its constituent parts and just use

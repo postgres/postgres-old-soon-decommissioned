@@ -237,7 +237,7 @@ typedef struct
  * code that specifically wants to work with still-toasted Datums.
  *
  * WARNING: It is only safe to use VARDATA_ANY() -- typically with
- * PG_DETOAST_DATUM_UNPACKED() -- if you really don't care about the alignment.
+ * PG_DETOAST_DATUM_PACKED() -- if you really don't care about the alignment.
  * Either because you're working with something like text where the alignment
  * doesn't matter or because you're not going to access its constituent parts
  * and just use things like memcpy on it anyways.
