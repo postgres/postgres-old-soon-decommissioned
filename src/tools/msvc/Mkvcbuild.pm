@@ -341,7 +341,6 @@ sub mkvcbuild
     $pgregress->AddFile('src\test\regress\pg_regress_main.c');
     $pgregress->AddIncludeDir('src\port');
     $pgregress->AddDefine('HOST_TUPLE="i686-pc-win32vc"');
-    $pgregress->AddDefine('FRONTEND');
     $pgregress->AddReference($libpgport);
 
     $solution->Save();
@@ -359,7 +358,6 @@ sub AddSimpleFrontend
 
     my $p = $solution->AddProject($n,'exe','bin');
     $p->AddDir('src\bin\\' . $n);
-    $p->AddDefine('FRONTEND');
     $p->AddReference($libpgport);
     if ($uselibpq)
     {

@@ -19,7 +19,6 @@ OBJS=   pg_config.o $(WIN32RES)
 STD_CPPFLAGS := $(filter-out -I$(top_srcdir)/src/include -I$(top_builddir)/src/include,$(CPPFLAGS))
 STD_LDFLAGS := $(filter-out -L$(top_builddir)/src/port,$(LDFLAGS))
 
-override CPPFLAGS += -DFRONTEND
 override CPPFLAGS += -DVAL_CONFIGURE="\"$(configure_args)\""
 override CPPFLAGS += -DVAL_CC="\"$(CC)\""
 override CPPFLAGS += -DVAL_CPPFLAGS="\"$(STD_CPPFLAGS)\""

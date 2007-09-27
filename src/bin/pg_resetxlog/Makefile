@@ -13,8 +13,6 @@ subdir = src/bin/pg_resetxlog
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-override CPPFLAGS += -DFRONTEND
-
 OBJS= pg_resetxlog.o pg_crc.o $(WIN32RES)
 
 all: submake-libpgport pg_resetxlog

@@ -18,6 +18,10 @@
 #ifndef POSTGRES_FE_H
 #define POSTGRES_FE_H
 
+#ifndef FRONTEND
+#define FRONTEND 1
+#endif
+
 #include "c.h"
 
 #endif   /* POSTGRES_FE_H */
