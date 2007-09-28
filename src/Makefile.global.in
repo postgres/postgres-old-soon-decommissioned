@@ -423,7 +423,7 @@ endif
 #
 # substitute implementations of C library routines (see src/port/)
 
-LIBOBJS = @LIBOBJS@ copydir.o dirmod.o exec.o noblock.o path.o pipe.o pgsleep.o pgstrcasecmp.o qsort.o qsort_arg.o sprompt.o thread.o
+LIBOBJS = @LIBOBJS@
 
 LIBS := -lpgport $(LIBS)
 # add location of libpgport.a to LDFLAGS
