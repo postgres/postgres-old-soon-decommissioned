@@ -176,9 +176,9 @@ static void pltcl_build_tuple_argument(HeapTuple tuple, TupleDesc tupdesc,
  * from Postgres, so the notifier capabilities are initialized, but never
  * used.  Only InitNotifier and DeleteFileHandler ever seem to get called
  * within Postgres, but we implement all the functions for completeness.
- * We can only fix this with Tcl >= 8.2, when Tcl_SetNotifier() appeared.
+ * We can only fix this with Tcl >= 8.4, when Tcl_SetNotifier() appeared.
  */
-#if HAVE_TCL_VERSION(8,2)
+#if HAVE_TCL_VERSION(8,4)
 
 static ClientData
 pltcl_InitNotifier(void)
@@ -262,7 +262,7 @@ _PG_init(void)
 	Tcl_FindExecutable("");
 #endif
 
-#if HAVE_TCL_VERSION(8,2)
+#if HAVE_TCL_VERSION(8,4)
 	/*
 	 * Override the functions in the Notifier subsystem.  See comments above.
 	 */
