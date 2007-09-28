@@ -971,7 +971,7 @@ find_matching_ts_config(const char *lc_type)
 			   *ptr;
 
 	/*
-	 * Convert lc_ctype to a language name by stripping ".utf8" or
+	 * Convert lc_ctype to a language name by stripping ".utf8", "@euro", or
 	 * what-have-you
 	 */
 	if (lc_type == NULL)
@@ -979,7 +979,7 @@ find_matching_ts_config(const char *lc_type)
 	else
 	{
 		ptr = langname = xstrdup(lc_type);
-		while (*ptr && *ptr != '.')
+		while (*ptr && *ptr != '.' && *ptr != '@')
 			ptr++;
 		*ptr = '\0';
 	}
