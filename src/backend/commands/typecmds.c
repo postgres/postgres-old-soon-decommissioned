@@ -2355,8 +2355,9 @@ AlterTypeOwner(List *names, Oid newOwnerId)
 		get_rel_relkind(typTup->typrelid) != RELKIND_COMPOSITE_TYPE)
 		ereport(ERROR,
 				(errcode(ERRCODE_WRONG_OBJECT_TYPE),
-				 errmsg("\"%s\" is a table's row type",
-						TypeNameToString(typename))));
+				 errmsg("%s is a table's row type",
+						format_type_be(typeOid)),
+				 errhint("Use ALTER TABLE instead.")));
 
 	/* don't allow direct alteration of array types, either */
 	if (OidIsValid(typTup->typelem) &&
@@ -2592,7 +2593,7 @@ AlterTypeNamespaceInternal(Oid typeOid, Oid nspOid,
 				(errcode(ERRCODE_WRONG_OBJECT_TYPE),
 				 errmsg("%s is a table's row type",
 						format_type_be(typeOid)),
-				 errhint("Use ALTER TABLE SET SCHEMA instead.")));
+				 errhint("Use ALTER TABLE instead.")));
 
 	/* OK, modify the pg_type row */
 
