@@ -422,6 +422,20 @@ check_index_is_clusterable(Relation OldHeap, Oid indexOid, bool recheck)
 	}
 
 	/*
+	 * Disallow if index is left over from a failed CREATE INDEX CONCURRENTLY;
+	 * it might well not contain entries for every heap row, or might not even
+	 * be internally consistent.  (But note that we don't check indcheckxmin;
+	 * the worst consequence of following broken HOT chains would be that we
+	 * might put recently-dead tuples out-of-order in the new table, and there
+	 * is little harm in that.)
+	 */
+	if (!OldIndex->rd_index->indisvalid)
+		ereport(ERROR,
+				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+				 errmsg("cannot cluster on invalid index \"%s\"",
+						RelationGetRelationName(OldIndex))));
+
+	/*
 	 * Disallow clustering system relations.  This will definitely NOT work
 	 * for shared relations (we have no way to update pg_class rows in other
 	 * databases), nor for nailed-in-cache relations (the relfilenode values
