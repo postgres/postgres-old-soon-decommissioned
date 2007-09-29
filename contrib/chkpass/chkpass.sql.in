@@ -53,17 +53,13 @@ CREATE FUNCTION ne(chkpass, text)
 	LANGUAGE C STRICT;
 
 --
---	Now the operators.  Note how some of the parameters to some
---	of the 'create operator' commands are commented out.  This
---	is because they reference as yet undefined operators, and
---	will be implicitly defined when those are, further down.
+--	Now the operators.
 --
 
 CREATE OPERATOR = (
 	leftarg = chkpass,
 	rightarg = text,
-	commutator = =,
---	negator = <>,
+	negator = <>,
 	procedure = eq
 );
 
