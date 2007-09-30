@@ -146,6 +146,7 @@ bool ECPGcheck_PQresult(PGresult *, int, PGconn *, enum COMPAT_MODE);
 void ECPGraise(int line, int code, const char *sqlstate, const char *str);
 void ECPGraise_backend(int line, PGresult *result, PGconn *conn, int compat);
 char *ECPGprepared(const char *, struct connection *, int);
+bool ECPGdeallocate_all_conn(int lineno, enum COMPAT_MODE c, struct connection *conn);
 
 /* SQLSTATE values generated or processed by ecpglib (intentionally
  * not exported -- users should refer to the codes directly) */

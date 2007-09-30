@@ -496,8 +496,8 @@ static datetkn deltatktbl[] = {
 	{"yrs", UNITS, DTK_YEAR},	/* "years" relative */
 };
 
-static unsigned int szdatetktbl = sizeof datetktbl / sizeof datetktbl[0];
-static unsigned int szdeltatktbl = sizeof deltatktbl / sizeof deltatktbl[0];
+static const unsigned int szdatetktbl = lengthof(datetktbl);
+static const unsigned int szdeltatktbl = lengthof(deltatktbl);
 
 static datetkn *datecache[MAXDATEFIELDS] = {NULL};
 
