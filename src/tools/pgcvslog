@@ -107,7 +107,7 @@ awk '	BEGIN	{html="'"$HTML"'"; lineno = 0;}
 	# mark back branches
 	$1 == "revision" \
 	{
-		if ($2 ~ /\..*\./ && del == "Y")
+		if ($2 ~ /\..*\./)
 			back_branch=" <back-patch>"
 		else	back_branch = ""
 	}
