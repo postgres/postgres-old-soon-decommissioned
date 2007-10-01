@@ -21,6 +21,36 @@ The encryption uses the standard Unix function crypt(), and so it suffers
 from all the usual limitations of that function; notably that only the
 first eight characters of a password are considered.
 
+Here is some sample usage:
+
+test=# create table test (p chkpass);
+CREATE TABLE
+test=# insert into test values ('hello');
+INSERT 0 1
+test=# select * from test;
+       p
+----------------
+ :dVGkpXdOrE3ko
+(1 row)
+
+test=# select raw(p) from test;
+      raw
+---------------
+ dVGkpXdOrE3ko
+(1 row)
+
+test=# select p = 'hello' from test;
+ ?column?
+----------
+ t
+(1 row)
+
+test=# select p = 'goodbye' from test;
+ ?column?
+----------
+ f
+(1 row)
+
 D'Arcy J.M. Cain
 darcy@druid.net
 
