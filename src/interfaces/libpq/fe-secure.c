@@ -588,9 +588,9 @@ client_cert_cb(SSL *ssl, X509 **x509, EVP_PKEY **pkey)
 
 #ifndef WIN32
 	struct stat buf2;
+	FILE		*fp;
 #endif
 	char		fnbuf[MAXPGPATH];
-	FILE		*fp;
 	BIO			*bio;
 	PGconn		*conn = (PGconn *) SSL_get_app_data(ssl);
 	char		sebuf[256];
