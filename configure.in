@@ -865,6 +865,7 @@ fi
 if test "$with_openssl" = yes ; then
   AC_CHECK_HEADER(openssl/ssl.h, [], [AC_MSG_ERROR([header file <openssl/ssl.h> is required for OpenSSL])])
   AC_CHECK_HEADER(openssl/err.h, [], [AC_MSG_ERROR([header file <openssl/err.h> is required for OpenSSL])])
+  AC_CHECK_FUNCS([ERR_set_mark])
 fi
 
 if test "$with_pam" = yes ; then

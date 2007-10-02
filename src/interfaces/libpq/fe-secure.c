@@ -136,6 +136,12 @@
 #define ROOT_CRL_FILE		"root.crl"
 #endif
 
+#ifndef HAVE_ERR_SET_MARK
+/* These don't exist in OpenSSL before 0.9.8 */
+#define ERR_set_mark()		((void) 0)
+#define ERR_pop_to_mark()	((void) 0)
+#endif
+
 #ifdef NOT_USED
 static int	verify_peer(PGconn *);
 #endif
