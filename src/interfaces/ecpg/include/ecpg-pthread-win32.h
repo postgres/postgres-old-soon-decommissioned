@@ -47,6 +47,7 @@ extern pthread_mutex_t	debug_init_mutex;
 extern void auto_mem_key_init(void);
 extern void ecpg_actual_connection_init(void);
 extern void ecpg_sqlca_key_init(void);
+extern void descriptor_key_init(void);
 extern BOOL WINAPI DllMain(HANDLE module, DWORD reason, LPVOID reserved);
 
 #endif	/* WIN32 */
