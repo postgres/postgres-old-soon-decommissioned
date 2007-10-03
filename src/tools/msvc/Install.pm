@@ -22,9 +22,14 @@ sub lcopy
 	my $src = shift;
 	my $target = shift;
 
-	unlink $target if -f $target;
+        if (-f $target)
+        {
+           unlink $target || confess "Could not delete $target\n";
+        }
 
-	copy($src,$target);
+	copy($src,$target)
+          || confess "Could not copy $src to $target\n";
+
 }
 
 sub Install
@@ -123,8 +128,7 @@ sub CopyFiles
         print ".";
         $f = $basedir . $f;
         die "No file $f\n" if (!-f $f);
-        lcopy($f, $target . basename($f))
-          || croak "Could not copy $f to $target". basename($f). " to $target". basename($f) . "\n";
+        lcopy($f, $target . basename($f));
     }
     print "\n";
 }
