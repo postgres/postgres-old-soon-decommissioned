@@ -1,5 +1,5 @@
 # $PostgreSQL$
-# Functions to be exported by libpq DLLs
+# Functions to be exported by ecpglib DLL
 ECPGallocate_desc		1
 ECPGconnect			2
 ECPGdeallocate			3
