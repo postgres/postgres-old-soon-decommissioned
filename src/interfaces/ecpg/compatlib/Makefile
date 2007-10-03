@@ -37,6 +37,9 @@ all: all-lib
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib
 
+snprintf.c: $(top_srcdir)/src/port/%
+	rm -f $@ && $(LN_S) $< .
+
 # We need several not-quite-identical variants of .DEF files to build libecpg
 # DLLs for Windows.  These are made from the single source file exports.txt.
 # Since we can't assume that Windows boxes will have sed, the .DEF files are
