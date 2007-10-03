@@ -45,8 +45,9 @@ include $(top_srcdir)/src/Makefile.shlib
 # always built and included in distribution tarballs.
 
 .PHONY: def-files
-def-files: $(srcdir)/libpgtypes.def $(srcdir)/blibpgtypesdll.def
-$(srcdir)/libpgtypes.def: exports.txt
+def-files: $(srcdir)/libpgtypesdll.def $(srcdir)/blibpgtypesdll.def
+
+$(srcdir)/libpgtypesdll.def: exports.txt
 	echo '; DEF file for MS VC++' > $@
 	echo 'LIBRARY LIBPGTYPES' >> $@
 	echo 'EXPORTS' >> $@
