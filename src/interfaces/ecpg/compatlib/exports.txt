@@ -39,4 +39,6 @@ rtypalign		36
 rtypmsize		37
 rtypwidth		38
 rupshift		39
+ldchar			40
+byleng			41
 
