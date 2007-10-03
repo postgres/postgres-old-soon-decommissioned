@@ -31,7 +31,10 @@ call :del src\bin\psql\sql_help.h
 
 call :del src\interfaces\libpq\libpq.rc
 call :del src\interfaces\libpq\libpqdll.def
+call :del src\interfaces\ecpg\compatlib\compatlib.def
+call :del src\interfaces\ecpg\ecpglib\ecpglib.def
 call :del src\interfaces\ecpg\include\ecpg_config.h
+call :del src\interfaces\ecpg\pgtypeslib\pgtypeslib.def
 call :del src\interfaces\ecpg\preproc\preproc.c
 call :del src\interfaces\ecpg\preproc\preproc.h
 

@@ -141,6 +141,8 @@ s{PG_VERSION_STR "[^"]+"}{__STRINGIFY(x) #x\n#define __STRINGIFY2(z) __STRINGIFY
 
     $self->GenerateDefFile("src\\interfaces\\libpq\\libpqdll.def","src\\interfaces\\libpq\\exports.txt","LIBPQ");
     $self->GenerateDefFile("src\\interfaces\\ecpg\\ecpglib\\ecpglib.def","src\\interfaces\\ecpg\\ecpglib\\exports.txt","LIBECPG");
+    $self->GenerateDefFile("src\\interfaces\\ecpg\\compatlib\\compatlib.def","src\\interfaces\\ecpg\\compatlib\\exports.txt","LIBECPG_COMPAT");
+    $self->GenerateDefFile("src\\interfaces\\ecpg\\pgtypeslib\\pgtypeslib.def","src\\interfaces\\ecpg\\pgtypeslib\\exports.txt","LIBPGTYPES");
 
     if (IsNewer("src\\backend\\utils\\fmgrtab.c","src\\include\\catalog\\pg_proc.h"))
     {
