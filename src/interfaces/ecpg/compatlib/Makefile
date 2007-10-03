@@ -20,6 +20,7 @@ DLTYPE= library
 override CPPFLAGS := -I../include -I$(top_srcdir)/src/interfaces/ecpg/include \
 	-I$(libpq_srcdir) -I$(top_srcdir)/src/include/utils $(CPPFLAGS)
 override CFLAGS += $(PTHREAD_CFLAGS)
+
 SHLIB_LINK = -L../ecpglib -lecpg -L../pgtypeslib -lpgtypes $(libpq) -lm \
 	$(PTHREAD_LIBS)
 
@@ -37,7 +38,7 @@ all: all-lib
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib
 
-snprintf.c: $(top_srcdir)/src/port/%
+snprintf.c: % : $(top_srcdir)/src/port/%
 	rm -f $@ && $(LN_S) $< .
 
 # We need several not-quite-identical variants of .DEF files to build libecpg
