@@ -21,9 +21,7 @@ static void descriptor_deallocate_all(struct descriptor *list);
 /* We manage descriptors separately for each thread. */
 #ifdef ENABLE_THREAD_SAFETY
 static pthread_key_t	descriptor_key;
-#ifndef WIN32
 static pthread_once_t	descriptor_once = PTHREAD_ONCE_INIT;
-#endif
 
 static void
 descriptor_destructor(void *arg)
@@ -31,7 +29,7 @@ descriptor_destructor(void *arg)
 	descriptor_deallocate_all(arg);
 }
 
-NON_EXEC_STATIC void
+static void
 descriptor_key_init(void)
 {
 	pthread_key_create(&descriptor_key, descriptor_destructor);
