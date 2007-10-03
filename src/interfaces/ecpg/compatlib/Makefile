@@ -23,6 +23,9 @@ override CFLAGS += $(PTHREAD_CFLAGS)
 SHLIB_LINK = -L../ecpglib -lecpg -L../pgtypeslib -lpgtypes $(libpq) -lm \
 	$(PTHREAD_LIBS)
 
+# Need to recompile any libpgport object files
+LIBS := $(filter-out -lpgport, $(LIBS))
+
 OBJS= informix.o $(filter snprintf.o, $(LIBOBJS))
 
 ifneq ($(PORTNAME), win32)
