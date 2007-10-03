@@ -427,7 +427,7 @@ ECPGdump_a_simple(FILE *o, const char *name, enum ECPGttype type,
 				else
 					sprintf(variable, "&(%s%s)", prefix ? prefix : "", name);
 
-				sprintf(offset, "sizeof(%s)", ECPGtype_name(type));
+				sprintf(offset, "sizeof(%s)", ecpg_type_name(type));
 				break;
 		}
 

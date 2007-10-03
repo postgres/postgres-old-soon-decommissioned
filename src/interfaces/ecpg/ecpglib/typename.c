@@ -14,7 +14,7 @@
  * This function is used to generate the correct type names.
  */
 const char *
-ECPGtype_name(enum ECPGttype typ)
+ecpg_type_name(enum ECPGttype typ)
 {
 	switch (typ)
 	{
@@ -67,7 +67,7 @@ ECPGtype_name(enum ECPGttype typ)
 }
 
 int
-ECPGDynamicType(Oid type)
+ecpg_dynamic_type(Oid type)
 {
 	switch (type)
 	{
