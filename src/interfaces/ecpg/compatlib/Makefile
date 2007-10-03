@@ -87,4 +87,4 @@ installdirs:
 uninstall: uninstall-lib
 
 clean distclean maintainer-clean: clean-lib
-	rm -f $(OBJS) snprintf.c
+	rm -f $(OBJS) snprintf.c exports.list
