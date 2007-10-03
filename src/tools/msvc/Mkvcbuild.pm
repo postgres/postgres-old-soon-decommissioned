@@ -144,6 +144,7 @@ sub mkvcbuild
     $libecpg->AddIncludeDir('src\interfaces\ecpg\include');
     $libecpg->AddIncludeDir('src\interfaces\libpq');
     $libecpg->AddIncludeDir('src\port');
+    $libecpg->UseDef('src\interfaces\ecpg\ecpglib\ecpglib.def');
     $libecpg->AddLibrary('wsock32.lib');
     $libecpg->AddReference($libpq,$pgtypes,$libpgport);
 
