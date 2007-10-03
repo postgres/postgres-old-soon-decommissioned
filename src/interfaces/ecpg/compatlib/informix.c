@@ -1,14 +1,11 @@
 /* $PostgreSQL$ */
 
-#include <stdlib.h>
-#include <string.h>
-#include <errno.h>
 #include <math.h>
 #include <ctype.h>
 #include <limits.h>
 
 #define POSTGRES_ECPG_INTERNAL
-#include <postgres_fe.h>
+#include "postgres_fe.h"
 #include <ecpgtype.h>
 #include <ecpg_informix.h>
 #include <pgtypes_error.h>
