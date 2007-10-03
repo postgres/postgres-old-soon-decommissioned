@@ -139,7 +139,7 @@ sub ecpgcheck
         "../../../../$Config/pg_regress_ecpg/pg_regress_ecpg",
         "--psqldir=../../../$Config/psql",
         "--dbname=regress1,connectdb",
-        "--createrole=connectuser,connectdb",
+        "--create-role=connectuser,connectdb",
         "--schedule=${schedule}_schedule",
         "--multibyte=SQL_ASCII",
         "--load-language=plpgsql",
