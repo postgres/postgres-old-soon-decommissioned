@@ -16,12 +16,13 @@
 #include "sql3types.h"
 
 static void descriptor_free(struct descriptor *desc);
-static void descriptor_deallocate_all(struct descriptor *list);
 
 /* We manage descriptors separately for each thread. */
 #ifdef ENABLE_THREAD_SAFETY
 static pthread_key_t	descriptor_key;
 static pthread_once_t	descriptor_once = PTHREAD_ONCE_INIT;
+
+static void descriptor_deallocate_all(struct descriptor *list);
 
 static void
 descriptor_destructor(void *arg)
@@ -653,6 +654,8 @@ ECPGdeallocate_desc(int line, const char *name)
 	return false;
 }
 
+#ifdef ENABLE_THREAD_SAFETY
+
 /* Deallocate all descriptors in the list */
 static void
 descriptor_deallocate_all(struct descriptor *list)
@@ -664,6 +667,8 @@ descriptor_deallocate_all(struct descriptor *list)
 		list = next;
 	}
 }
+
+#endif /* ENABLE_THREAD_SAFETY */
 
 bool
 ECPGallocate_desc(int line, const char *name)
