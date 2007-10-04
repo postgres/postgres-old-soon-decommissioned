@@ -212,6 +212,13 @@ query_planner(PlannerInfo *root, List *tlist,
 	joinlist = deconstruct_jointree(root);
 
 	/*
+	 * Vars mentioned in InClauseInfo items also have to be added to baserel
+	 * targetlists.  Nearly always, they'd have got there from the original
+	 * WHERE qual, but in corner cases maybe not.
+	 */
+	add_IN_vars_to_tlists(root);
+
+	/*
 	 * Reconsider any postponed outer-join quals now that we have built up
 	 * equivalence classes.  (This could result in further additions or
 	 * mergings of classes.)
