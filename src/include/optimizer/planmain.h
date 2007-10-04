@@ -67,6 +67,7 @@ extern bool is_projection_capable_plan(Plan *plan);
  */
 extern void add_base_rels_to_query(PlannerInfo *root, Node *jtnode);
 extern void build_base_rel_tlists(PlannerInfo *root, List *final_tlist);
+extern void add_IN_vars_to_tlists(PlannerInfo *root);
 extern Relids distribute_quals_to_rels(PlannerInfo *root, Node *jtnode,
 						 bool below_outer_join);
 extern void process_implied_equality(PlannerInfo *root,
