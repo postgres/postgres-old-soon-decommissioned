@@ -996,7 +996,8 @@ ForwardFsyncRequest(RelFileNode rnode, BlockNumber segno)
 	if (!IsUnderPostmaster)
 		return false;			/* probably shouldn't even get here */
 
-	Assert(!am_bg_writer);
+	if (am_bg_writer)
+		elog(ERROR, "ForwardFsyncRequest must not be called in bgwriter");
 
 	LWLockAcquire(BgWriterCommLock, LW_EXCLUSIVE);
 
