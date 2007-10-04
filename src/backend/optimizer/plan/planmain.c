@@ -136,6 +136,13 @@ query_planner(Query *root, List *tlist, double tuple_fraction,
 	(void) distribute_quals_to_rels(root, (Node *) root->jointree, false);
 
 	/*
+	 * Vars mentioned in InClauseInfo items also have to be added to baserel
+	 * targetlists.  Nearly always, they'd have got there from the original
+	 * WHERE qual, but in corner cases maybe not.
+	 */
+	add_IN_vars_to_tlists(root);
+
+	/*
 	 * Use the completed lists of equijoined keys to deduce any implied
 	 * but unstated equalities (for example, A=B and B=C imply A=C).
 	 */
