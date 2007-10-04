@@ -57,6 +57,7 @@ extern Result *make_result(List *tlist, Node *resconstantqual, Plan *subplan);
  */
 extern void add_base_rels_to_query(Query *root, Node *jtnode);
 extern void build_base_rel_tlists(Query *root, List *final_tlist);
+extern void add_IN_vars_to_tlists(Query *root);
 extern Relids distribute_quals_to_rels(Query *root, Node *jtnode,
 									   bool below_outer_join);
 extern void process_implied_equality(Query *root,
