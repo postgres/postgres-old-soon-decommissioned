@@ -33,7 +33,7 @@ ifneq ($(PORTNAME), win32)
 DLL_DEFFILE=libecpg_compatdll.def
 endif
 
-all: all-lib
+all: def-files all-lib
 
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib

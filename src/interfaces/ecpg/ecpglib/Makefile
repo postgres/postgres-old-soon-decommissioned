@@ -41,7 +41,7 @@ ifeq ($(PORTNAME), win32)
 SHLIB_LINK += -lshfolder
 endif
 
-all: all-lib
+all: def-files all-lib
 
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib
