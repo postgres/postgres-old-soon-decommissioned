@@ -29,7 +29,7 @@ LIBS := $(filter-out -lpgport, $(LIBS))
 
 OBJS= informix.o $(filter snprintf.o, $(LIBOBJS))
 
-ifneq ($(PORTNAME), win32)
+ifeq ($(PORTNAME), win32)
 DLL_DEFFILE=libecpg_compatdll.def
 endif
 

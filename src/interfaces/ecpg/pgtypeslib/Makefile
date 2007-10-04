@@ -30,7 +30,7 @@ OBJS= numeric.o datetime.o common.o dt_common.o timestamp.o interval.o \
 	pgstrcasecmp.o \
 	$(filter rint.o snprintf.o, $(LIBOBJS))
 
-ifneq ($(PORTNAME), win32)
+ifeq ($(PORTNAME), win32)
 DLL_DEFFILE=libpgtypesdll.def
 endif
 
