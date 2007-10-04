@@ -139,6 +139,40 @@ build_base_rel_tlists(PlannerInfo *root, List *final_tlist)
 }
 
 /*
+ * add_IN_vars_to_tlists
+ *	  Add targetlist entries for each var needed in InClauseInfo entries
+ *	  to the appropriate base relations.
+ *
+ * Normally this is a waste of time because scanning of the WHERE clause
+ * will have added them.  But it is possible that eval_const_expressions()
+ * simplified away all references to the vars after the InClauseInfos were
+ * made.  We need the IN's righthand-side vars to be available at the join
+ * anyway, in case we try to unique-ify the subselect's outputs.  (The only
+ * known case that provokes this is "WHERE false AND foo IN (SELECT ...)".
+ * We don't try to be very smart about such cases, just correct.)
+ */
+void
+add_IN_vars_to_tlists(PlannerInfo *root)
+{
+	ListCell   *l;
+
+	foreach(l, root->in_info_list)
+	{
+		InClauseInfo *ininfo = (InClauseInfo *) lfirst(l);
+		List	   *in_vars;
+
+		in_vars = pull_var_clause((Node *) ininfo->sub_targetlist, false);
+		if (in_vars != NIL)
+		{
+			add_vars_to_targetlist(root, in_vars,
+								   bms_union(ininfo->lefthand,
+											 ininfo->righthand));
+			list_free(in_vars);
+		}
+	}
+}
+
+/*
  * add_vars_to_targetlist
  *	  For each variable appearing in the list, add it to the owning
  *	  relation's targetlist if not already present, and mark the variable
