@@ -41,4 +41,3 @@ rtypwidth		38
 rupshift		39
 ldchar			40
 byleng			41
-
