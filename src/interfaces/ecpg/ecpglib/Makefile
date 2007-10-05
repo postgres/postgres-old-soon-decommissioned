@@ -2,7 +2,8 @@
 #
 # Makefile for ecpg library
 #
-# Copyright (c) 1994, Regents of the University of California
+# Portions Copyright (c) 1996-2007, PostgreSQL Global Development Group
+# Portions Copyright (c) 1994, Regents of the University of California
 #
 # $PostgreSQL$
 #
@@ -64,7 +65,10 @@ $(top_builddir)/src/port/pg_config_paths.h:
 # Since we can't assume that Windows boxes will have sed, the .DEF files are
 # always built and included in distribution tarballs.
 
+distprep: def-files
+
 .PHONY: def-files
+
 def-files: $(srcdir)/libecpgdll.def $(srcdir)/blibecpgdll.def
 
 $(srcdir)/libecpgdll.def: exports.txt
@@ -112,6 +116,9 @@ installdirs:
 
 uninstall: uninstall-lib
 
-clean distclean maintainer-clean: clean-lib
+clean distclean: clean-lib
 	rm -f $(OBJS)
 	rm -f path.c pgstrcasecmp.c snprintf.c strlcpy.c thread.c exports.list
+
+maintainer-clean: distclean
+	rm -f $(srcdir)/libecpgdll.def $(srcdir)/blibecpgdll.def
