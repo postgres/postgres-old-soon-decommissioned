@@ -129,6 +129,7 @@ awk '	BEGIN	{html="'"$HTML"'"; lineno = 0;}
 	# mark back branches
 	$1 == "revision" \
 	{
+		# back branches have +2 periods in revision number
 		if ($2 ~ /\..*\./)
 			back_branch=" <branch>"
 		else	back_branch = ""
