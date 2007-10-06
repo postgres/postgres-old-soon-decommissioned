@@ -41,7 +41,8 @@
 #define FUNCPTR(name, args) (*name) args
 #define MALLOC(n)		malloc(n)
 #define FREE(p)			free(VS(p))
-#define REALLOC(p,n)		realloc(VS(p),n)
+#define REALLOC(p,n)	realloc(VS(p),n)
+#define assert(x)		Assert(x)
 
 /* internal character type and related */
 typedef pg_wchar chr;			/* the type itself */
