@@ -60,7 +60,7 @@
 
   <para>
    <productname>PostgreSQL</productname>'s <command>VACUUM</> (<xref
-   linkend="sql-vacuum"> command has to run on a regular basis for several
+   linkend="sql-vacuum">) command has to run on a regular basis for several
    reasons:
 
     <orderedlist>
