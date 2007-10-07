@@ -30,6 +30,7 @@ WANTED_DIRS = \
 		pgstattuple	\
 		seg		\
 		spi		\
+		txid		\
 		tablefunc	\
 		vacuumlo
 
