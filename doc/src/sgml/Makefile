@@ -311,3 +311,6 @@ clean distclean maintainer-clean:
 	rm -f postgres.xml htmlhelp.hhp toc.hhc index.hhk *.fo
 # Texinfo
 	rm -f *.texixml *.texi *.info db2texi.refs
+ifeq ($(vpath_build), yes)
+	rm -f stylesheet.css
+endif
