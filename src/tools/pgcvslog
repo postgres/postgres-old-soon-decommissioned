@@ -8,6 +8,7 @@
 # Usage:  pgcvslog [-d] [-h]
 # -d delete commits that include back branches
 # -h is HTML output
+# "-d" is useful for generating release notes for major releases
 
 # This program basically takes a cvs log, groups it by commit timestamp
 # and line number, then compares adjacent messages.  If they have the same
