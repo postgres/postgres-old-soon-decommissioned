@@ -3723,7 +3723,6 @@ PasswordFromFile(char *hostname, char *port, char *dbname, char *username)
 		fprintf(stderr,
 		libpq_gettext("WARNING: password file \"%s\" is not a plain file\n"),
 				pgpassfile);
-		free(pgpassfile);
 		return NULL;
 	}
 
