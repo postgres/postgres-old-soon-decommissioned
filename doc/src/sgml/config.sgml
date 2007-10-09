@@ -2637,7 +2637,7 @@ SELECT * FROM parent WHERE key = 2400;
         The server's standard output and standard error are redirected
         to <literal>/dev/null</>, so any messages sent to them will be lost.
         Unless <application>syslog</> logging is selected or
-        <varname>start_log_collector</> is enabled, using this parameter
+        <varname>logging_collector</> is enabled, using this parameter
         is discouraged because it makes it impossible to see error messages.
         This parameter can only be set at server start.
        </para>
