@@ -92,7 +92,6 @@ static const ScanKeyword ScanPGSQLKeywords[] = {
 	{"constraints", CONSTRAINTS},
 	{"content", CONTENT_P},
 	{"conversion", CONVERSION_P},
-	{"convert", CONVERT},
 	{"copy", COPY},
 	{"cost", COST},
 	{"create", CREATE},
