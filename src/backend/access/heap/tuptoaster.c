@@ -811,9 +811,7 @@ toast_insert_or_update(Relation rel, HeapTuple newtup, HeapTuple oldtup,
 										   use_wal, use_fsm);
 		if (toast_free[i])
 			pfree(DatumGetPointer(old_value));
-
 		toast_free[i] = true;
-		toast_sizes[i] = VARSIZE(toast_values[i]);
 
 		need_change = true;
 		need_free = true;
