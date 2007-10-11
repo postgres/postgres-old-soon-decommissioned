@@ -150,7 +150,7 @@ do it for earlier branch release files.
        </para>
 
        <para>
-        Previously PL/pgSQL functions that referenced temporary tables
+        Previously PL/PgSQL functions that referenced temporary tables
         would fail if the temporary table was dropped and recreated
         between function invocations, unless <literal>EXECUTE</> was
         used.
@@ -206,8 +206,8 @@ do it for earlier branch release files.
 
     </itemizedlist>
 
-    Major performance improvements are listed below. Fortunately, most
-    of these enhancements are automatic and require user changes or
+    Major performance improvements are listed below. Fortunately, most of
+    these enhancements are automatic and do not require user changes or
     tuning:
 
     <itemizedlist>
