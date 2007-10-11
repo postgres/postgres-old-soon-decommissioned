@@ -250,6 +250,7 @@ _outPlannedStmt(StringInfo str, PlannedStmt *node)
 	WRITE_BITMAPSET_FIELD(rewindPlanIDs);
 	WRITE_NODE_FIELD(returningLists);
 	WRITE_NODE_FIELD(rowMarks);
+	WRITE_NODE_FIELD(relationOids);
 	WRITE_INT_FIELD(nParamExec);
 }
 
@@ -1300,6 +1301,7 @@ _outPlannerGlobal(StringInfo str, PlannerGlobal *node)
 	WRITE_NODE_FIELD(subrtables);
 	WRITE_BITMAPSET_FIELD(rewindPlanIDs);
 	WRITE_NODE_FIELD(finalrtable);
+	WRITE_NODE_FIELD(relationOids);
 }
 
 static void

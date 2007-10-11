@@ -72,6 +72,8 @@ typedef struct PlannerGlobal
 
 	List	   *finalrtable;	/* "flat" rangetable for executor */
 
+	List	   *relationOids;	/* OIDs of relations the plan depends on */
+
 	bool		transientPlan;	/* redo plan when TransactionXmin changes? */
 } PlannerGlobal;
 

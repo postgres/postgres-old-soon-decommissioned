@@ -83,6 +83,7 @@ _copyPlannedStmt(PlannedStmt *from)
 	COPY_BITMAPSET_FIELD(rewindPlanIDs);
 	COPY_NODE_FIELD(returningLists);
 	COPY_NODE_FIELD(rowMarks);
+	COPY_NODE_FIELD(relationOids);
 	COPY_SCALAR_FIELD(nParamExec);
 
 	return newnode;

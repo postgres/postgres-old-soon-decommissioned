@@ -70,6 +70,8 @@ typedef struct PlannedStmt
 
 	List	   *rowMarks;		/* a list of RowMarkClause's */
 
+	List	   *relationOids;	/* OIDs of relations the plan depends on */
+
 	int			nParamExec;		/* number of PARAM_EXEC Params used */
 } PlannedStmt;
 

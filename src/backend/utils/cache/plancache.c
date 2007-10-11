@@ -921,26 +921,17 @@ PlanCacheCallback(Datum arg, Oid relid)
 			foreach(lc2, plan->stmt_list)
 			{
 				PlannedStmt *plannedstmt = (PlannedStmt *) lfirst(lc2);
-				ListCell   *lc3;
 
 				Assert(!IsA(plannedstmt, Query));
 				if (!IsA(plannedstmt, PlannedStmt))
 					continue;			/* Ignore utility statements */
-				foreach(lc3, plannedstmt->rtable)
+				if ((relid == InvalidOid) ? plannedstmt->relationOids != NIL :
+					list_member_oid(plannedstmt->relationOids, relid))
 				{
-					RangeTblEntry *rte = (RangeTblEntry *) lfirst(lc3);
-
-					if (rte->rtekind != RTE_RELATION)
-						continue;
-					if (relid == rte->relid || relid == InvalidOid)
-					{
-						/* Invalidate the plan! */
-						plan->dead = true;
-						break;		/* out of rangetable scan */
-					}
-				}
-				if (plan->dead)
+					/* Invalidate the plan! */
+					plan->dead = true;
 					break;			/* out of stmt_list scan */
+				}
 			}
 		}
 		else
