@@ -1905,14 +1905,7 @@ pg_tablespace_aclmask(Oid spc_oid, Oid roleid,
 	Acl		   *acl;
 	Oid			ownerId;
 
-	/*
-	 * Only shared relations can be stored in global space; don't let even
-	 * superusers override this
-	 */
-	if (spc_oid == GLOBALTABLESPACE_OID && !IsBootstrapProcessingMode())
-		return 0;
-
-	/* Otherwise, superusers bypass all permission checking. */
+	/* Superusers bypass all permission checking. */
 	if (superuser_arg(roleid))
 		return mask;
 

@@ -302,6 +302,12 @@ createdb(const CreatedbStmt *stmt)
 			aclcheck_error(aclresult, ACL_KIND_TABLESPACE,
 						   tablespacename);
 
+		/* pg_global must never be the default tablespace */
+		if (dst_deftablespace == GLOBALTABLESPACE_OID)
+			ereport(ERROR,
+					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+					 errmsg("pg_global cannot be used as default tablespace")));
+
 		/*
 		 * If we are trying to change the default tablespace of the template,
 		 * we require that the template not have any files in the new default
