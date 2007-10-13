@@ -1112,7 +1112,11 @@ PQenv2encoding(void)
 
 	str = getenv("PGCLIENTENCODING");
 	if (str && *str != '\0')
+	{
 		encoding = pg_char_to_encoding(str);
+		if (encoding < 0)
+			encoding = PG_SQL_ASCII;
+	}
 	return encoding;
 }
 

@@ -45,7 +45,6 @@
 #include "psqlscan.h"
 #include "settings.h"
 #include "variables.h"
-#include "mb/pg_wchar.h"
 
 
 /* functions for use in this file */
@@ -295,7 +294,7 @@ exec_command(const char *cmd,
 		}
 
 		if (pset.dirname)
-			pfree(pset.dirname);
+			free(pset.dirname);
 		pset.dirname = pg_strdup(dir);
 		canonicalize_path(pset.dirname);
 

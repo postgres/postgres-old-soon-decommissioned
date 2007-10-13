@@ -27,7 +27,6 @@ int			optreset;
 #endif
 
 #include "dumputils.h"
-#include "mb/pg_wchar.h"
 
 
 /* version string we expect back from pg_dump */

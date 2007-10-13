@@ -47,7 +47,6 @@ int			optreset;
 #include "catalog/pg_type.h"
 #include "commands/sequence.h"
 #include "libpq/libpq-fs.h"
-#include "mb/pg_wchar.h"
 
 #include "pg_backup_archiver.h"
 #include "dumputils.h"

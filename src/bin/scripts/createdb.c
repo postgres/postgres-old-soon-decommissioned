@@ -9,12 +9,10 @@
  *
  *-------------------------------------------------------------------------
  */
-
 #include "postgres_fe.h"
+
 #include "common.h"
 #include "dumputils.h"
-
-#include "mb/pg_wchar.h"
 
 
 static void help(const char *progname);

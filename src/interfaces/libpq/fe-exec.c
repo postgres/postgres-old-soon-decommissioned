@@ -630,11 +630,14 @@ pqSaveParameterStatus(PGconn *conn, const char *name, const char *value)
 	 * standard_conforming_strings, and convert server version to a numeric
 	 * form.  We keep the first two of these in static variables as well, so
 	 * that PQescapeString and PQescapeBytea can behave somewhat sanely (at
-	 * least in single- connection-using programs).
+	 * least in single-connection-using programs).
 	 */
 	if (strcmp(name, "client_encoding") == 0)
 	{
 		conn->client_encoding = pg_char_to_encoding(value);
+		/* if we don't recognize the encoding name, fall back to SQL_ASCII */
+		if (conn->client_encoding < 0)
+			conn->client_encoding = PG_SQL_ASCII;
 		static_client_encoding = conn->client_encoding;
 	}
 	else if (strcmp(name, "standard_conforming_strings") == 0)

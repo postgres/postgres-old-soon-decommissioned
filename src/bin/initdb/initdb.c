@@ -2808,7 +2808,7 @@ main(int argc, char *argv[])
 					progname);
 			exit(1);
 		}
-		else if (!PG_VALID_BE_ENCODING(ctype_enc))
+		else if (!pg_valid_server_encoding_id(ctype_enc))
 		{
 			/* We recognized it, but it's not a legal server encoding */
 			fprintf(stderr,
@@ -2968,7 +2968,7 @@ main(int argc, char *argv[])
 	{
 		char	*linkloc;
 
-		linkloc = (char *) palloc(strlen(pg_data) + 8 + 2);
+		linkloc = (char *) pg_malloc(strlen(pg_data) + 8 + 2);
 		sprintf(linkloc, "%s/pg_xlog", pg_data);
 
 		/* check if the specified xlog directory is empty */

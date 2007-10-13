@@ -421,6 +421,12 @@ length_in_encoding(PG_FUNCTION_ARGS)
 	int         len = VARSIZE(string) - VARHDRSZ;
 	int         retval;
 
+	if (src_encoding < 0)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+				 errmsg("invalid encoding name \"%s\"",
+						src_encoding_name)));
+
 	retval = pg_verify_mbstr_len(src_encoding, VARDATA(string), len, false);
 	PG_RETURN_INT32(retval);
 	

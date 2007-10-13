@@ -43,8 +43,6 @@
 
 #include <ctype.h>
 
-#include "mb/pg_wchar.h"
-
 #include "common.h"
 #include "settings.h"
 #include "variables.h"
@@ -1021,7 +1019,7 @@ psql_scan_setup(PsqlScanState state,
 
 	/* Do we need to hack the character set encoding? */
 	state->encoding = pset.encoding;
-	state->safe_encoding = PG_VALID_BE_ENCODING(state->encoding);
+	state->safe_encoding = pg_valid_server_encoding_id(state->encoding);
 
 	/* needed for prepare_buffer */
 	cur_state = state;

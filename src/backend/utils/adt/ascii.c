@@ -117,7 +117,13 @@ Datum
 to_ascii_encname(PG_FUNCTION_ARGS)
 {
 	text	   *data = PG_GETARG_TEXT_P_COPY(0);
-	int			enc = pg_char_to_encoding(NameStr(*PG_GETARG_NAME(1)));
+	char	   *encname = NameStr(*PG_GETARG_NAME(1));
+	int			enc = pg_char_to_encoding(encname);
+
+	if (enc < 0)
+		ereport(ERROR,
+				(errcode(ERRCODE_UNDEFINED_OBJECT),
+				 errmsg("%s is not a valid encoding name", encname)));
 
 	PG_RETURN_TEXT_P(encode_to_ascii(data, enc));
 }
@@ -131,6 +137,11 @@ to_ascii_enc(PG_FUNCTION_ARGS)
 {
 	text	   *data = PG_GETARG_TEXT_P_COPY(0);
 	int			enc = PG_GETARG_INT32(1);
+
+	if (!PG_VALID_ENCODING(enc))
+		ereport(ERROR,
+				(errcode(ERRCODE_UNDEFINED_OBJECT),
+				 errmsg("%d is not a valid encoding code", enc)));
 
 	PG_RETURN_TEXT_P(encode_to_ascii(data, enc));
 }

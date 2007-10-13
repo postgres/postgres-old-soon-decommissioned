@@ -22,7 +22,6 @@
 #include "settings.h"
 #include "command.h"
 #include "copy.h"
-#include "mb/pg_wchar.h"
 #include "mbprint.h"
 
 
