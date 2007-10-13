@@ -72,6 +72,7 @@ extern char *get_rel_name(Oid relid);
 extern Oid	get_rel_namespace(Oid relid);
 extern Oid	get_rel_type_id(Oid relid);
 extern char get_rel_relkind(Oid relid);
+extern Oid	get_rel_tablespace(Oid relid);
 extern bool get_typisdefined(Oid typid);
 extern int16 get_typlen(Oid typid);
 extern bool get_typbyval(Oid typid);
