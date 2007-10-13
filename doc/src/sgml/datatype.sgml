@@ -247,6 +247,12 @@
       </row>
 
       <row>
+       <entry><type>txid_snapshot</type></entry>
+       <entry></entry>
+       <entry>user-level transaction ID snapshot</entry>
+      </row>
+
+      <row>
        <entry><type>uuid</type></entry>
        <entry></entry>
        <entry>universally unique identifier</entry>

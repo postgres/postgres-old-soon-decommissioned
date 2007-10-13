@@ -572,6 +572,10 @@ DATA(insert OID = 3645 ( _tsquery		PGNSP PGUID -1 f b t \054 0	3615 0 array_in a
 DATA(insert OID = 3735 ( _regconfig		PGNSP PGUID -1 f b t \054 0 3734 0 array_in array_out array_recv array_send - - - i x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 3770 ( _regdictionary	PGNSP PGUID -1 f b t \054 0 3769 0 array_in array_out array_recv array_send - - - i x f 0 -1 0 _null_ _null_ ));
 
+DATA(insert OID = 2970 ( txid_snapshot	PGNSP PGUID -1 f b t \054 0 0 2949 txid_snapshot_in txid_snapshot_out txid_snapshot_recv txid_snapshot_send - - - d x f 0 -1 0 _null_ _null_ ));
+DESCR("txid snapshot");
+DATA(insert OID = 2949 ( _txid_snapshot	PGNSP PGUID -1 f b t \054 0	2970 0 array_in array_out array_recv array_send - - - d x f 0 -1 0 _null_ _null_ ));
+
 /*
  * pseudo-types
  *

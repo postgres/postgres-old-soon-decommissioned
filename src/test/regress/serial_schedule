@@ -13,6 +13,7 @@ test: float4
 test: float8
 test: bit
 test: numeric
+test: txid
 test: uuid
 test: enum
 test: strings
