@@ -178,6 +178,7 @@ sub mkvcbuild
     # src/bin
     my $initdb = AddSimpleFrontend('initdb');
     $initdb->AddIncludeDir('src\interfaces\libpq');
+    $initdb->AddDefine('FRONTEND');
     $initdb->AddLibrary('wsock32.lib ws2_32.lib');
 
     my $pgconfig = AddSimpleFrontend('pg_config');
