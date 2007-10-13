@@ -1040,6 +1040,35 @@ get_rel_relkind(Oid relid)
 		return '\0';
 }
 
+/*
+ * get_rel_tablespace
+ *
+ *		Returns the pg_tablespace OID associated with a given relation.
+ *
+ * Note: InvalidOid might mean either that we couldn't find the relation,
+ * or that it is in the database's default tablespace.
+ */
+Oid
+get_rel_tablespace(Oid relid)
+{
+	HeapTuple	tp;
+
+	tp = SearchSysCache(RELOID,
+						ObjectIdGetDatum(relid),
+						0, 0, 0);
+	if (HeapTupleIsValid(tp))
+	{
+		Form_pg_class reltup = (Form_pg_class) GETSTRUCT(tp);
+		Oid			result;
+
+		result = reltup->reltablespace;
+		ReleaseSysCache(tp);
+		return result;
+	}
+	else
+		return InvalidOid;
+}
+
 
 /*				---------- TYPE CACHE ----------						 */
 
