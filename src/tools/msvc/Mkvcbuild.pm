@@ -176,7 +176,8 @@ sub mkvcbuild
     $pgregress_ecpg->AddReference($libpgport);
 
     # src/bin
-    my $initdb = AddSimpleFrontend('initdb', 1);
+    my $initdb = AddSimpleFrontend('initdb');
+    $initdb->AddIncludeDir('src\interfaces\libpq');
     $initdb->AddLibrary('wsock32.lib ws2_32.lib');
 
     my $pgconfig = AddSimpleFrontend('pg_config');

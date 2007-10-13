@@ -30,7 +30,7 @@ initdb: $(OBJS)
 encnames.c: % : $(top_srcdir)/src/backend/utils/mb/%
 	rm -f $@ && $(LN_S) $< .
 
-pqsignal.c: % : $(libpq_srcdir)/%
+pqsignal.c: % : $(top_srcdir)/src/interfaces/libpq/%
 	rm -f $@ && $(LN_S) $< .
 
 install: all installdirs
