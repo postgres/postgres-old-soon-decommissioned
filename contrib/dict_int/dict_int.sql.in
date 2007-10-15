@@ -1,0 +1,29 @@
+-- $PostgreSQL$
+
+-- Adjust this setting to control where the objects get created.
+SET search_path = public;
+
+BEGIN;
+
+CREATE FUNCTION dintdict_init(internal)
+        RETURNS internal
+        AS 'MODULE_PATHNAME'
+        LANGUAGE C STRICT;
+
+CREATE FUNCTION dintdict_lexize(internal, internal, internal, internal)
+        RETURNS internal
+        AS 'MODULE_PATHNAME'
+        LANGUAGE C STRICT;
+
+CREATE TEXT SEARCH TEMPLATE intdict_template (
+        LEXIZE = dintdict_lexize,
+	INIT   = dintdict_init
+);
+
+CREATE TEXT SEARCH DICTIONARY intdict (
+	TEMPLATE = intdict_template
+);
+
+COMMENT ON TEXT SEARCH DICTIONARY intdict IS 'dictionary for integers';
+
+END;

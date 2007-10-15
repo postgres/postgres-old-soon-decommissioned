@@ -10,6 +10,8 @@ WANTED_DIRS = \
 		chkpass		\
 		cube		\
 		dblink		\
+		dict_int	\
+		dict_xsyn	\
 		earthdistance	\
 		fuzzystrmatch	\
 		hstore		\
@@ -31,6 +33,7 @@ WANTED_DIRS = \
 		seg		\
 		spi		\
 		tablefunc	\
+		test_parser	\
 		vacuumlo
 
 ifeq ($(with_openssl),yes)
