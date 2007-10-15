@@ -294,7 +294,7 @@ sizeof(pg_encname_tbl) / sizeof(pg_encname_tbl[0]) - 1;
 
 /* ----------
  * These are "official" encoding names.
- * XXX must be sorted by the same order as pg_enc type (see mb/pg_wchar.h)
+ * XXX must be sorted by the same order as enum pg_enc (in mb/pg_wchar.h)
  * ----------
  */
 pg_enc2name pg_enc2name_tbl[] =
