@@ -318,6 +318,20 @@ sub CopyContribFiles
         }
 
         $flist = '';
+        if ($mf =~ /^DATA_TSEARCH\s*=\s*(.*)$/m) {$flist .= $1}
+        if ($flist ne '')
+        {
+            $flist = ParseAndCleanRule($flist, $mf);
+
+            foreach my $f (split /\s+/,$flist)
+            {
+                lcopy('contrib/' . $d . '/' . $f,$target . '/share/tsearch_data/' . basename($f))
+                  || croak("Could not copy file $f in contrib $d");
+                print '.';
+            }
+        }
+
+        $flist = '';
         if ($mf =~ /^DOCS\s*=\s*(.*)$/mg) {$flist .= $1}
         if ($flist ne '')
         {
