@@ -2101,7 +2101,7 @@ describeOneTSParser(const char *oid, const char *nspname, const char *prsname)
 					  _("Get next token"), oid,
 					  _("End parse"), oid,
 					  _("Get headline"), oid,
-					  _("Get lexeme types"), oid
+					  _("Get token types"), oid
 		);
 
 	res = PSQLexec(buf.data, false);
