@@ -123,6 +123,10 @@ static const struct encoding_match encoding_match_list[] = {
 	{PG_KOI8R, "KOI8-R"},
 	{PG_KOI8R, "CP20866"},
 
+	{PG_WIN866, "CP866"},
+	{PG_WIN874, "CP874"},
+	{PG_WIN1250, "CP1250"},
+	{PG_WIN1251, "CP1251"},
 	{PG_WIN1252, "CP1252"},
 	{PG_WIN1253, "CP1253"},
 	{PG_WIN1254, "CP1254"},
@@ -130,11 +134,6 @@ static const struct encoding_match encoding_match_list[] = {
 	{PG_WIN1256, "CP1256"},
 	{PG_WIN1257, "CP1257"},
 	{PG_WIN1258, "CP1258"},
-#ifdef NOT_VERIFIED
-	{PG_WIN874, "???"},
-#endif
-	{PG_WIN1251, "CP1251"},
-	{PG_WIN866, "CP866"},
 
 	{PG_ISO_8859_5, "ISO-8859-5"},
 	{PG_ISO_8859_5, "ISO8859-5"},
