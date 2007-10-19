@@ -4260,7 +4260,7 @@ DESCR("show real useful query for GiST index");
 
 DATA(insert OID = 3684 (  ts_rewrite		PGNSP PGUID 12 1 0 f f t f i 3 3615 "3615 3615 3615" _null_ _null_ _null_ tsquery_rewrite_query - _null_ _null_ ));
 DESCR("rewrite tsquery");
-DATA(insert OID = 3685 (  ts_rewrite		PGNSP PGUID 12 1 1000 f f t t v 2 3615 "3615 25" _null_ _null_ _null_ tsquery_rewrite - _null_ _null_ ));
+DATA(insert OID = 3685 (  ts_rewrite		PGNSP PGUID 12 1 0 f f t f v 2 3615 "3615 25" _null_ _null_ _null_ tsquery_rewrite - _null_ _null_ ));
 DESCR("rewrite tsquery");
 DATA(insert OID = 3686 (  ts_rewrite_accum	PGNSP PGUID 12 1 0 f f f f i 2 3615 "3615 3645" _null_ _null_ _null_ ts_rewrite_accum - _null_ _null_ ));
 DESCR("rewrite tsquery accumulator");
