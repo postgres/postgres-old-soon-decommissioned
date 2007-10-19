@@ -222,8 +222,7 @@ extern Datum prsd_lextype(PG_FUNCTION_ARGS);
 /*
  * Dictionary interface to SQL
  */
-extern Datum ts_lexize_byid(PG_FUNCTION_ARGS);
-extern Datum ts_lexize_byname(PG_FUNCTION_ARGS);
+extern Datum ts_lexize(PG_FUNCTION_ARGS);
 
 /*
  * Simple built-in dictionary
