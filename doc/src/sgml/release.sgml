@@ -696,7 +696,7 @@ do it for earlier branch release files.
       </para>
 
       <para>
-       This also adds support for the <acryonym>GSSAPI</> authentication
+       This also adds support for the <acronym>GSSAPI</> authentication
        <acronym>API</>.
       </para>
      </listitem>
