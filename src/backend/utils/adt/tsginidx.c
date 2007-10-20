@@ -97,7 +97,7 @@ gin_extract_query(PG_FUNCTION_ARGS)
 				if (strategy != TSearchWithClassStrategyNumber && val->weight != 0)
 					ereport(ERROR,
 							(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-							 errmsg("@@ operator does not support lexeme class restrictions"),
+							 errmsg("@@ operator does not support lexeme weight restrictions in GIN index searches"),
 							 errhint("Use the @@@ operator instead.")));
 			}
 	}
