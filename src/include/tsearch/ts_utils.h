@@ -22,10 +22,12 @@
 
 /* tsvector parser support. */
 
-struct TSVectorParseStateData;
+struct TSVectorParseStateData;	/* opaque struct in tsvector_parser.c */
 typedef struct TSVectorParseStateData *TSVectorParseState;
 
-extern TSVectorParseState init_tsvector_parser(char *input, bool oprisdelim);
+extern TSVectorParseState init_tsvector_parser(char *input,
+											   bool oprisdelim,
+											   bool is_tsquery);
 extern void reset_tsvector_parser(TSVectorParseState state, char *input);
 extern bool gettoken_tsvector(TSVectorParseState state, 
 							  char **token, int *len,
