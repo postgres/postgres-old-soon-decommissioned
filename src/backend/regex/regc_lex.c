@@ -1071,6 +1071,7 @@ brenext(struct vars * v,
 	}
 
 	assert(NOTREACHED);
+	return 0;
 }
 
 /*
