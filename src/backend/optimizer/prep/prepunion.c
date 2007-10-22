@@ -111,7 +111,6 @@ plan_set_operations(PlannerInfo *root, double tuple_fraction,
 	Assert(topop && IsA(topop, SetOperationStmt));
 
 	/* check for unsupported stuff */
-	Assert(parse->utilityStmt == NULL);
 	Assert(parse->jointree->fromlist == NIL);
 	Assert(parse->jointree->quals == NULL);
 	Assert(parse->groupClause == NIL);
