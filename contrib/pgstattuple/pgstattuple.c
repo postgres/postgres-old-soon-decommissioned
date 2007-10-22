@@ -291,8 +291,7 @@ pgstat_heap(Relation rel, FunctionCallInfo fcinfo)
 			buffer = ReadBuffer(rel, block);
 			LockBuffer(buffer, BUFFER_LOCK_SHARE);
 			stat.free_space += PageGetHeapFreeSpace((Page) BufferGetPage(buffer));
-			LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
-			ReleaseBuffer(buffer);
+			UnlockReleaseBuffer(buffer);
 			block++;
 		}
 	}
@@ -301,8 +300,9 @@ pgstat_heap(Relation rel, FunctionCallInfo fcinfo)
 	while (block < nblocks)
 	{
 		buffer = ReadBuffer(rel, block);
+		LockBuffer(buffer, BUFFER_LOCK_SHARE);
 		stat.free_space += PageGetHeapFreeSpace((Page) BufferGetPage(buffer));
-		ReleaseBuffer(buffer);
+		UnlockReleaseBuffer(buffer);
 		block++;
 	}
 
