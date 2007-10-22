@@ -24,6 +24,8 @@
 #include <ctype.h>
 
 #ifdef WIN32
+#undef FD_SETSIZE
+#define FD_SETSIZE 1024
 #include <win32.h>
 #else
 #include <sys/time.h>
