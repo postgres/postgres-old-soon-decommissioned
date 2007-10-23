@@ -172,6 +172,7 @@ typedef struct QTNode
 	struct QTNode **child;
 } QTNode;
 
+/* bits in QTNode.flags */
 #define QTN_NEEDFREE	0x01
 #define QTN_NOCHANGE	0x02
 #define QTN_WORDFREE	0x04
@@ -189,6 +190,7 @@ extern void QTNTernary(QTNode * in);
 extern void QTNBinary(QTNode * in);
 extern int	QTNodeCompare(QTNode * an, QTNode * bn);
 extern QTNode *QTNCopy(QTNode *in);
+extern void QTNClearFlags(QTNode *in, uint32 flags);
 extern bool QTNEq(QTNode * a, QTNode * b);
 extern TSQuerySign makeTSQuerySign(TSQuery a);
 

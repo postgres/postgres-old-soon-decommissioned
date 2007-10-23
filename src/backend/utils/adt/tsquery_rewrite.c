@@ -467,6 +467,13 @@ tsquery_rewrite(PG_FUNCTION_ARGS)
 				QTNFree(qsubs);
 				if (qtsubs != (TSQuery) DatumGetPointer(sdata))
 					pfree(qtsubs);
+
+				if (tree)
+				{
+					/* ready the tree for another pass */
+					QTNClearFlags(tree, QTN_NOCHANGE);
+					QTNSort(tree);
+				}
 			}
 		}
 
