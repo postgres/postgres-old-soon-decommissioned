@@ -628,10 +628,14 @@ get_home_path(char *ret_path)
 	strlcpy(ret_path, pwd->pw_dir, MAXPGPATH);
 	return true;
 #else
-	char		tmppath[MAX_PATH];
+	char		*tmppath;
 
-	ZeroMemory(tmppath, sizeof(tmppath));
-	if (SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, 0, tmppath) != S_OK)
+    /*
+     * Note: We use getenv here because the more modern SHGetSpecialFolderPath()
+     * will force us to link with shell32.lib which eats valuable desktop heap.
+     */
+    tmppath = getenv("APPDATA");
+	if (!tmppath)
 		return false;
 	snprintf(ret_path, MAXPGPATH, "%s/postgresql", tmppath);
 	return true;

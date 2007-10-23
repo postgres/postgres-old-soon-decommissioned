@@ -38,7 +38,7 @@ pgkill(int pid, int sig)
 		errno = EINVAL;
 		return -1;
 	}
-	wsprintf(pipename, "\\\\.\\pipe\\pgsignal_%i", pid);
+	snprintf(pipename, sizeof(pipename), "\\\\.\\pipe\\pgsignal_%u", pid);
 	if (!CallNamedPipe(pipename, &sigData, 1, &sigRet, 1, &bytes, 1000))
 	{
 		if (GetLastError() == ERROR_FILE_NOT_FOUND)
