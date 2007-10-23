@@ -258,7 +258,7 @@ sub GenerateTsearchFiles
     while ($#pieces > 0)
     {
         my $lang = shift @pieces || last;
-        my $latlang = shift @pieces || last;
+        my $asclang = shift @pieces || last;
         my $txt = $tmpl;
         my $stop = '';
 
@@ -269,8 +269,8 @@ sub GenerateTsearchFiles
         $txt =~ s#_LANGNAME_#${lang}#gs;
         $txt =~ s#_DICTNAME_#${lang}_stem#gs;
         $txt =~ s#_CFGNAME_#${lang}#gs;
-        $txt =~ s#_LATDICTNAME_#${latlang}_stem#gs;
-        $txt =~ s#_NONLATDICTNAME_#${lang}_stem#gs;
+        $txt =~ s#_ASCDICTNAME_#${asclang}_stem#gs;
+        $txt =~ s#_NONASCDICTNAME_#${lang}_stem#gs;
         $txt =~ s#_STOPWORDS_#$stop#gs;
         print $F $txt;
         print ".";
