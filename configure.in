@@ -899,6 +899,13 @@ if test "$with_bonjour" = yes ; then
   AC_CHECK_HEADER(DNSServiceDiscovery/DNSServiceDiscovery.h, [], [AC_MSG_ERROR([header file <DNSServiceDiscovery/DNSServiceDiscovery.h> is required for Bonjour])])
 fi
 
+# for contrib/uuid-ossp
+if test "$with_ossp_uuid" = yes ; then
+  AC_CHECK_HEADERS(ossp/uuid.h, [], [
+    AC_CHECK_HEADERS(uuid.h, [],
+      [AC_MSG_ERROR([header file <ossp/uuid.h> or <uuid.h> is required for OSSP-UUID])])])
+fi
+
 
 ##
 ## Types, structures, compiler characteristics
