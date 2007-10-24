@@ -285,8 +285,6 @@ extern Datum tsquery_not(PG_FUNCTION_ARGS);
 
 extern Datum tsquery_rewrite(PG_FUNCTION_ARGS);
 extern Datum tsquery_rewrite_query(PG_FUNCTION_ARGS);
-extern Datum ts_rewrite_accum(PG_FUNCTION_ARGS);
-extern Datum ts_rewrite_finish(PG_FUNCTION_ARGS);
 
 extern Datum tsq_mcontains(PG_FUNCTION_ARGS);
 extern Datum tsq_mcontained(PG_FUNCTION_ARGS);

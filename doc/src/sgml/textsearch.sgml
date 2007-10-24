@@ -1460,33 +1460,6 @@ SELECT ts_rewrite('a &amp; b'::tsquery, 'a'::tsquery, 'c'::tsquery);
 
       <term>
        <synopsis>
-        ts_rewrite(ARRAY[<replaceable class="PARAMETER">query</replaceable> <type>tsquery</>, <replaceable class="PARAMETER">target</replaceable> <type>tsquery</>, <replaceable class="PARAMETER">substitute</replaceable> <type>tsquery</>]) returns <type>tsquery</>
-       </synopsis>
-      </term>
-
-      <listitem>
-       <para>
-        Aggregate form.  XXX if we choose not to remove this, it needs to
-        be documented better.  Note it is not listed in
-        textsearch-functions-table at the moment.
-
-<programlisting>
-CREATE TABLE aliases (t tsquery PRIMARY KEY, s tsquery);
-INSERT INTO aliases VALUES('a', 'c');
-
-SELECT ts_rewrite(ARRAY['a &amp; b'::tsquery, t,s]) FROM aliases;
- ts_rewrite
-------------
- 'b' &amp; 'c'
-</programlisting>
-       </para>
-      </listitem>
-     </varlistentry>
-
-     <varlistentry>
-
-      <term>
-       <synopsis>
         ts_rewrite (<replaceable class="PARAMETER">query</> <type>tsquery</>, <replaceable class="PARAMETER">select</> <type>text</>) returns <type>tsquery</>
        </synopsis>
       </term>
