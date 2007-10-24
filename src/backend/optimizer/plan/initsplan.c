@@ -625,6 +625,7 @@ make_outerjoininfo(PlannerInfo *root,
 		 * rel in the lower OJ's min_righthand, not its whole syn_righthand.
 		 */
 		if (bms_overlap(left_rels, otherinfo->syn_righthand) &&
+			bms_overlap(clause_relids, otherinfo->syn_righthand) &&
 			!bms_overlap(strict_relids, otherinfo->min_righthand))
 		{
 			min_lefthand = bms_add_members(min_lefthand,
