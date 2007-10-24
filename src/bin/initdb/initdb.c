@@ -730,7 +730,7 @@ struct tsearch_config_match
 static const struct tsearch_config_match tsearch_config_languages[] =
 {
 	{"danish", "da_DK"},
-	{"danish", "Danish_Danmark"},
+	{"danish", "Danish_Denmark"},
 	{"dutch", "nl_NL"},
 	{"dutch", "Dutch_Netherlands"},
 	{"english", "C"},
