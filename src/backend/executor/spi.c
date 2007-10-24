@@ -975,10 +975,27 @@ SPI_cursor_open(const char *name, SPIPlanPtr plan,
 	{
 		if (list_length(stmt_list) == 1 &&
 			IsA((Node *) linitial(stmt_list), PlannedStmt) &&
+			((PlannedStmt *) linitial(stmt_list))->rowMarks == NIL &&
 			ExecSupportsBackwardScan(((PlannedStmt *) linitial(stmt_list))->planTree))
 			portal->cursorOptions |= CURSOR_OPT_SCROLL;
 		else
 			portal->cursorOptions |= CURSOR_OPT_NO_SCROLL;
+	}
+
+	/*
+	 * Disallow SCROLL with SELECT FOR UPDATE.  This is not redundant with
+	 * the check in transformDeclareCursorStmt because the cursor options
+	 * might not have come through there.
+	 */
+	if (portal->cursorOptions & CURSOR_OPT_SCROLL)
+	{
+		if (list_length(stmt_list) == 1 &&
+			IsA((Node *) linitial(stmt_list), PlannedStmt) &&
+			((PlannedStmt *) linitial(stmt_list))->rowMarks != NIL)
+			ereport(ERROR,
+					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+					 errmsg("DECLARE CURSOR SCROLL ... FOR UPDATE/SHARE is not supported"),
+					 errdetail("Scrollable cursors must be READ ONLY.")));
 	}
 
 	/*
