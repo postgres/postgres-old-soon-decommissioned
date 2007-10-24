@@ -38,6 +38,15 @@ struct XidCache
 	TransactionId xids[PGPROC_MAX_CACHED_SUBXIDS];
 };
 
+/* Flags for PGPROC->vacuumFlags */
+#define		PROC_IS_AUTOVACUUM	0x01	/* is it an autovac worker? */
+#define		PROC_IN_VACUUM		0x02	/* currently running lazy vacuum */
+#define		PROC_IN_ANALYZE		0x04	/* currently running analyze */
+#define		PROC_VACUUM_FOR_WRAPAROUND 0x08 /* set by autovac only */
+
+/* flags reset at EOXact */
+#define		PROC_VACUUM_STATE_MASK (0x0E)
+
 /*
  * Each backend has a PGPROC struct in shared memory.  There is also a list of
  * currently-unused PGPROC structs that will be reallocated to new backends.
@@ -82,8 +91,7 @@ struct PGPROC
 
 	bool		inCommit;		/* true if within commit critical section */
 
-	bool		inVacuum;		/* true if current xact is a LAZY VACUUM */
-	bool		isAutovacuum;	/* true if it's autovacuum */
+	uint8		vacuumFlags;	/* vacuum-related flags, see above */
 
 	/* Info about LWLock the process is currently waiting for, if any. */
 	bool		lwWaiting;		/* true if waiting for an LW lock */

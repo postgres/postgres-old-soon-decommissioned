@@ -31,6 +31,7 @@
 #include "parser/parse_relation.h"
 #include "pgstat.h"
 #include "postmaster/autovacuum.h"
+#include "storage/proc.h"
 #include "utils/acl.h"
 #include "utils/datum.h"
 #include "utils/lsyscache.h"
@@ -200,6 +201,11 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt,
 		relation_close(onerel, ShareUpdateExclusiveLock);
 		return;
 	}
+
+	/* let others know what I'm doing */
+	LWLockAcquire(ProcArrayLock, LW_EXCLUSIVE);
+	MyProc->vacuumFlags |= PROC_IN_ANALYZE;
+	LWLockRelease(ProcArrayLock);
 
 	/* measure elapsed time iff autovacuum logging requires it */
 	if (IsAutoVacuumWorkerProcess() && Log_autovacuum_min_duration >= 0)
@@ -484,6 +490,14 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt,
 							RelationGetRelationName(onerel),
 							pg_rusage_show(&ru0))));
 	}
+
+	/*
+	 * Reset my PGPROC flag.  Note: we need this here, and not in vacuum_rel,
+	 * because the vacuum flag is cleared by the end-of-xact code.
+	 */
+	LWLockAcquire(ProcArrayLock, LW_EXCLUSIVE);
+	MyProc->vacuumFlags &= ~PROC_IN_ANALYZE;
+	LWLockRelease(ProcArrayLock);
 }
 
 /*
