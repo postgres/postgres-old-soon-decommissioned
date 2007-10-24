@@ -327,11 +327,6 @@ FETCH <replaceable class="parameter">count</replaceable>
   </para>
 
   <para>
-   Updating data via a cursor is currently not supported by
-   <productname>PostgreSQL</productname>.
-  </para>
-
-  <para>
    <xref linkend="sql-declare" endterm="sql-declare-title">
    is used to define a cursor.  Use
    <xref linkend="sql-move" endterm="sql-move-title">
