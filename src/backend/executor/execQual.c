@@ -3694,45 +3694,17 @@ ExecEvalArrayCoerceExpr(ArrayCoerceExprState *astate,
 /* ----------------------------------------------------------------
  *		ExecEvalCurrentOfExpr
  *
- * Normally, the planner will convert CURRENT OF into a TidScan qualification,
- * but we have plain execQual support in case it doesn't.
+ * The planner must convert CURRENT OF into a TidScan qualification.
+ * So, we have to be able to do ExecInitExpr on a CurrentOfExpr,
+ * but we shouldn't ever actually execute it.
  * ----------------------------------------------------------------
  */
 static Datum
 ExecEvalCurrentOfExpr(ExprState *exprstate, ExprContext *econtext,
 					  bool *isNull, ExprDoneCond *isDone)
 {
-	CurrentOfExpr *cexpr = (CurrentOfExpr *) exprstate->expr;
-	bool	result;
-	bool	lisnull;
-	Oid		tableoid;
-	ItemPointer tuple_tid;
-	ItemPointerData cursor_tid;
-
-	if (isDone)
-		*isDone = ExprSingleResult;
-	*isNull = false;
-
-	Assert(cexpr->cvarno != INNER);
-	Assert(cexpr->cvarno != OUTER);
-	Assert(!TupIsNull(econtext->ecxt_scantuple));
-	/* Use slot_getattr to catch any possible mistakes */
-	tableoid = DatumGetObjectId(slot_getattr(econtext->ecxt_scantuple,
-											 TableOidAttributeNumber,
-											 &lisnull));
-	Assert(!lisnull);
-	tuple_tid = (ItemPointer)
-		DatumGetPointer(slot_getattr(econtext->ecxt_scantuple,
-									 SelfItemPointerAttributeNumber,
-									 &lisnull));
-	Assert(!lisnull);
-
-	if (execCurrentOf(cexpr, econtext, tableoid, &cursor_tid))
-		result = ItemPointerEquals(&cursor_tid, tuple_tid);
-	else
-		result = false;
-
-	return BoolGetDatum(result);
+	elog(ERROR, "CURRENT OF cannot be executed");
+	return 0;					/* keep compiler quiet */
 }
 
 
