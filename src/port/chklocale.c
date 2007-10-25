@@ -127,6 +127,7 @@ static const struct encoding_match encoding_match_list[] = {
 	{PG_WIN874, "CP874"},
 	{PG_WIN1250, "CP1250"},
 	{PG_WIN1251, "CP1251"},
+	{PG_WIN1251, "ansi-1251"},
 	{PG_WIN1252, "CP1252"},
 	{PG_WIN1253, "CP1253"},
 	{PG_WIN1254, "CP1254"},
@@ -161,6 +162,7 @@ static const struct encoding_match encoding_match_list[] = {
 
 	{PG_BIG5, "BIG5"},
 	{PG_BIG5, "BIG5HKSCS"},
+	{PG_BIG5, "Big5-HKSCS"},
 	{PG_BIG5, "CP950"},
 
 	{PG_GBK, "GBK"},
