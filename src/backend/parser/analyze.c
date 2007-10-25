@@ -1627,14 +1627,14 @@ transformDeclareCursorStmt(ParseState *pstate, DeclareCursorStmt *stmt)
 	if (result->rowMarks != NIL && (stmt->options & CURSOR_OPT_SCROLL))
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-			  errmsg("DECLARE CURSOR SCROLL ... FOR UPDATE/SHARE is not supported"),
+			  errmsg("DECLARE SCROLL CURSOR ... FOR UPDATE/SHARE is not supported"),
 				 errdetail("Scrollable cursors must be READ ONLY.")));
 
 	/* FOR UPDATE and INSENSITIVE are not compatible */
 	if (result->rowMarks != NIL && (stmt->options & CURSOR_OPT_INSENSITIVE))
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-			  errmsg("DECLARE CURSOR INSENSITIVE ... FOR UPDATE/SHARE is not supported"),
+			  errmsg("DECLARE INSENSITIVE CURSOR ... FOR UPDATE/SHARE is not supported"),
 				 errdetail("Insensitive cursors must be READ ONLY.")));
 
 	/* We won't need the raw querytree any more */

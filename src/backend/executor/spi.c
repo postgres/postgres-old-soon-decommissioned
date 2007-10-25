@@ -994,7 +994,7 @@ SPI_cursor_open(const char *name, SPIPlanPtr plan,
 			((PlannedStmt *) linitial(stmt_list))->rowMarks != NIL)
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("DECLARE CURSOR SCROLL ... FOR UPDATE/SHARE is not supported"),
+					 errmsg("DECLARE SCROLL CURSOR ... FOR UPDATE/SHARE is not supported"),
 					 errdetail("Scrollable cursors must be READ ONLY.")));
 	}
 
