@@ -4,6 +4,7 @@
 #define WIN32_ONLY_COMPILER
 #endif
 
+#define _WIN32_WINNT 0x0500
 /*
  * Always build with SSPI support. Keep it as a #define in case 
  * we want a switch to disable it sometime in the future.
