@@ -442,7 +442,9 @@ typedef enum
 	DS_NOT_YET_CHECKED,			/* no deadlock check has run yet */
 	DS_NO_DEADLOCK,				/* no deadlock detected */
 	DS_SOFT_DEADLOCK,			/* deadlock avoided by queue rearrangement */
-	DS_HARD_DEADLOCK			/* deadlock, no way out but ERROR */
+	DS_HARD_DEADLOCK,			/* deadlock, no way out but ERROR */
+	DS_BLOCKED_BY_AUTOVACUUM	/* no deadlock; queue blocked by autovacuum
+								   worker */
 } DeadLockState;
 
 
@@ -495,6 +497,7 @@ extern void lock_twophase_postabort(TransactionId xid, uint16 info,
 						void *recdata, uint32 len);
 
 extern DeadLockState DeadLockCheck(PGPROC *proc);
+extern PGPROC *GetBlockingAutoVacuumPgproc(void);
 extern void DeadLockReport(void);
 extern void RememberSimpleDeadLock(PGPROC *proc1,
 					   LOCKMODE lockmode,

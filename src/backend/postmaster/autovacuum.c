@@ -2120,6 +2120,14 @@ next_worker:
 									  tab->at_doanalyze,
 									  tab->at_freeze_min_age,
 									  bstrategy);
+
+			/*
+			 * Clear a possible query-cancel signal, to avoid a late reaction
+			 * to an automatically-sent signal because of vacuuming the current
+			 * table (we're done with it, so it would make no sense to cancel
+			 * at this point.)
+			 */
+			QueryCancelPending = false;
 		}
 		PG_CATCH();
 		{
