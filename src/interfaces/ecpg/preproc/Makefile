@@ -59,9 +59,6 @@ endif
 
 c_keywords.o keywords.o preproc.o parser.o: preproc.h
 
-parser.c: $(top_srcdir)/src/backend/parser/parser.c
-	rm -f $@ && $(LN_S) $< .
-
 distprep: $(srcdir)/preproc.c $(srcdir)/preproc.h $(srcdir)/pgc.c
 
 install: all installdirs
@@ -74,7 +71,7 @@ uninstall:
 	rm -f '$(DESTDIR)$(bindir)/ecpg$(X)'
 
 clean distclean:
-	rm -f *.o ecpg$(X) parser.c
+	rm -f *.o ecpg$(X)
 # garbage from partial builds
 	@rm -f y.tab.c y.tab.h
 # garbage from development
