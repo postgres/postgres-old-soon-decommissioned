@@ -12,7 +12,8 @@
  * (guy@auspex.com).
  */
 
-#include "postgres.h"
+/* this file needs to build in both frontend and backend contexts */
+#include "c.h"
 
 #include <fcntl.h>
 

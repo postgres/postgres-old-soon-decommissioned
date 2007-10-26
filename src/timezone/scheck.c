@@ -6,7 +6,7 @@
  *	  $PostgreSQL$
  */
 
-#include "postgres.h"
+#include "postgres_fe.h"
 
 #include "private.h"
 
