@@ -398,8 +398,8 @@ main(int argc, char *argv[])
 		OPF = fopen(filename, PG_BINARY_W);
 		if (!OPF)
 		{
-			fprintf(stderr, _("%s: could not open the output file \"%s\"\n"),
-					progname, filename);
+			fprintf(stderr, _("%s: could not open the output file \"%s\": %s\n"),
+					progname, filename, strerror(errno));
 			exit(1);
 		}
 	}
@@ -1210,8 +1210,8 @@ dumpDatabases(PGconn *conn)
 			OPF = fopen(filename, PG_BINARY_A);
 			if (!OPF)
 			{
-				fprintf(stderr, _("%s: could not re-open the output file \"%s\"\n"),
-						progname, filename);
+				fprintf(stderr, _("%s: could not re-open the output file \"%s\": %s\n"),
+						progname, filename, strerror(errno));
 				exit(1);
 			}
 		}
