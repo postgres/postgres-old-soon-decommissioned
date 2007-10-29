@@ -2100,7 +2100,8 @@ next_worker:
 		/*
 		 * Save the relation name for a possible error message, to avoid a
 		 * catalog lookup in case of an error.  Note: they must live in a
-		 * long-lived memory context.
+		 * long-lived memory context because we call vacuum and analyze in
+		 * different transactions.
 		 */
 		datname = get_database_name(MyDatabaseId);
 		nspname = get_namespace_name(get_rel_namespace(tab->at_relid));
