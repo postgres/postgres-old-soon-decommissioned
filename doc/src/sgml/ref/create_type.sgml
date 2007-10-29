@@ -612,7 +612,7 @@ $$ LANGUAGE SQL;
 CREATE TYPE bug_status AS ENUM ('new', 'open', 'closed');
 
 CREATE TABLE bug (
-    serial id,
+    id serial,
     description text,
     status bug_status
 );
