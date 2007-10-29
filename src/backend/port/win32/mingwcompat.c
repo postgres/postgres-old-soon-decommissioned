@@ -46,7 +46,7 @@ LoadKernel32()
  */
 typedef BOOL (WINAPI * __RegisterWaitForSingleObject)
 	(PHANDLE, HANDLE, WAITORTIMERCALLBACK, PVOID, ULONG, ULONG);
-__RegisterWaitForSingleObject _RegisterWaitForSingleObject = NULL;
+static __RegisterWaitForSingleObject _RegisterWaitForSingleObject = NULL;
 
 BOOL WINAPI 
 RegisterWaitForSingleObject(PHANDLE phNewWaitObject,
