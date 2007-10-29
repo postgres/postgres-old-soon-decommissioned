@@ -606,6 +606,21 @@ transformParamRef(ParseState *pstate, ParamRef *pref)
 	return (Node *) param;
 }
 
+/* Test whether an a_expr is a plain NULL constant or not */
+static bool
+exprIsNullConstant(Node *arg)
+{
+	if (arg && IsA(arg, A_Const))
+	{
+		A_Const *con = (A_Const *) arg;
+
+		if (con->val.type == T_Null &&
+			con->typename == NULL)
+			return true;
+	}
+	return false;
+}
+
 static Node *
 transformAExprOp(ParseState *pstate, A_Expr *a)
 {

@@ -1722,6 +1722,21 @@ AddRelationRawConstraints(Relation rel,
 						   atp->atttypid, atp->atttypmod,
 						   NameStr(atp->attname));
 
+		/*
+		 * If the expression is just a NULL constant, we do not bother
+		 * to make an explicit pg_attrdef entry, since the default behavior
+		 * is equivalent.
+		 *
+		 * Note a nonobvious property of this test: if the column is of a
+		 * domain type, what we'll get is not a bare null Const but a
+		 * CoerceToDomain expr, so we will not discard the default.  This is
+		 * critical because the column default needs to be retained to
+		 * override any default that the domain might have.
+		 */
+		if (expr == NULL ||
+			(IsA(expr, Const) && ((Const *) expr)->constisnull))
+			continue;
+
 		StoreAttrDefault(rel, colDef->attnum, nodeToString(expr));
 
 		cooked = (CookedConstraint *) palloc(sizeof(CookedConstraint));
