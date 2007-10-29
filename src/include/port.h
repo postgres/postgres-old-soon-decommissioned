@@ -296,8 +296,11 @@ extern FILE *pgwin32_fopen(const char *, const char *);
 extern long lrand48(void);
 extern void srand48(long seed);
 
+/* New versions of MingW have gettimeofday, old mingw and msvc don't */
+#ifndef HAVE_GETTIMEOFDAY
 /* Last parameter not used */
 extern int	gettimeofday(struct timeval * tp, struct timezone * tzp);
+#endif
 #else							/* !WIN32 */
 
 /*
