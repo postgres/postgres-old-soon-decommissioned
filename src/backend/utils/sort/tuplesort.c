@@ -2720,7 +2720,8 @@ comparetup_index(const SortTuple *a, const SortTuple *b, Tuplesortstate *state)
 	if (state->enforceUnique && !equal_hasnull && tuple1 != tuple2)
 		ereport(ERROR,
 				(errcode(ERRCODE_UNIQUE_VIOLATION),
-				 errmsg("could not create unique index"),
+				 errmsg("could not create unique index \"%s\"",
+						RelationGetRelationName(state->indexRel)),
 				 errdetail("Table contains duplicated values.")));
 
 	/*
