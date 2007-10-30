@@ -9016,7 +9016,9 @@ SELECT NULLIF(value, '(none)') ...
 
    <para>
     Note that <function>GREATEST</> and <function>LEAST</> are not in
-    the SQL standard, but are a common extension.
+    the SQL standard, but are a common extension.  Some other databases
+    make them return NULL if any argument is NULL, rather than only when
+    all are NULL.
    </para>
   </sect2>
  </sect1>
