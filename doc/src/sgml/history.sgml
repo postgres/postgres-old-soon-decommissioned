@@ -196,6 +196,14 @@
   </para>
 
   <para>
+   Many people continue to refer to
+   <productname>PostgreSQL</productname> as <quote>Postgres</quote>
+   (now rarely in all capital letters) because of tradition or because
+   it is easier to pronounce.  This usage is widely accepted as a
+   nickname or alias.
+  </para>
+
+  <para>
    The emphasis during development of
    <productname>Postgres95</productname> was on identifying and
    understanding existing problems in the server code.  With
