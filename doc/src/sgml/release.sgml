@@ -452,6 +452,18 @@ do it for earlier branch release files.
 
     <listitem>
      <para>
+      Internal hashing functions are now more uniformly-distributed (Tom)
+     </para>
+
+     <para>
+      If application code was calling and storing hash values using
+      internal <productname>PostgreSQL</> hashing functions, the hash
+      values must be regenerated.
+     </para>
+    </listitem>
+
+    <listitem>
+     <para>
       Add C macros for handling variable-length data values (Greg
       Stark, Tom)
      </para>
