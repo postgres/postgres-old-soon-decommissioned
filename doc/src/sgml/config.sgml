@@ -891,7 +891,7 @@ SET ENABLE_SEQSCAN TO OFF;
 
      <para>
       These parameters control the size of the shared <firstterm>free space
-      map</>, which tracks the locations of unused space in the database.
+      map</> (<acronym>FSM</>), which tracks the locations of unused space in the database.
       An undersized free space map can cause the database to consume
       increasing amounts of disk space over time, because free space that
       is not in the map cannot be re-used; instead <productname>PostgreSQL</>
