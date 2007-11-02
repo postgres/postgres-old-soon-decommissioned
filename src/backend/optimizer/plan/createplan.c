@@ -2756,11 +2756,29 @@ make_sort_from_pathkeys(PlannerInfo *root, Plan *lefttree, List *pathkeys,
 
 			if (em->em_is_const || em->em_is_child)
 				continue;
+
 			tle = tlist_member((Node *) em->em_expr, tlist);
 			if (tle)
 			{
 				pk_datatype = em->em_datatype;
 				break;			/* found expr already in tlist */
+			}
+
+			/*
+			 * We can also use it if the pathkey expression is a relabel
+			 * of the tlist entry.  This is needed for binary-compatible
+			 * cases (cf. make_pathkey_from_sortinfo).
+			 */
+			if (IsA(em->em_expr, RelabelType))
+			{
+				Expr	   *rtarg = ((RelabelType *) em->em_expr)->arg;
+
+				tle = tlist_member((Node *) rtarg, tlist);
+				if (tle)
+				{
+					pk_datatype = em->em_datatype;
+					break;			/* found expr already in tlist */
+				}
 			}
 		}
 		if (!tle)
