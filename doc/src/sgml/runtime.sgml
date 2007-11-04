@@ -161,7 +161,7 @@ postgres$ <userinput>initdb -D /usr/local/pgsql/data</userinput>
   </para>
 
   <para>
-   If using a non-local (network) file system, see <xref
+   If using non-local (network) file systems, see <xref
    linkend="manage-ag-tablespaces-nfs">.
   </para>
 
