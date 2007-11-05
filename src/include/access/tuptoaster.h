@@ -40,7 +40,8 @@
  *
  * XXX while these can be modified without initdb, some thought needs to be
  * given to needs_toast_table() in toasting.c before unleashing random
- * changes.
+ * changes.  Also see LOBLKSIZE in large_object.h, which can *not* be
+ * changed without initdb.
  */
 #define TOAST_TUPLES_PER_PAGE	4
 
