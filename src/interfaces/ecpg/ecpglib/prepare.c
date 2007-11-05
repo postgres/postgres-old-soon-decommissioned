@@ -31,8 +31,8 @@ typedef struct
 } stmtCacheEntry;
 
 static int             nextStmtID               = 1;
-const static int       stmtCacheNBuckets        = 2039;     /* # buckets - a prime # */
-const static int       stmtCacheEntPerBucket    = 8;        /* # entries/bucket     */
+static const int       stmtCacheNBuckets        = 2039;     /* # buckets - a prime # */
+static const int       stmtCacheEntPerBucket    = 8;        /* # entries/bucket     */
 static stmtCacheEntry  stmtCacheEntries[16384] = {{0,{0},0,0,0}};
 
 static struct prepared_statement *find_prepared_statement(const char *name,
