@@ -11490,11 +11490,6 @@ SELECT pg_type_is_visible('myschema.widget'::regtype);
     as well.
    </para>
 
-  </sect1>
-
-  <sect1 id="functions-txid">
-   <title>Transaction ID and Snapshot Functions</title>
-
    <indexterm>
     <primary>txid_current</primary>
    </indexterm>
