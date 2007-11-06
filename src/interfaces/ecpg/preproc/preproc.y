@@ -1881,6 +1881,10 @@ ConstraintAttributeSpec: ConstraintDeferrabilitySpec	{ $$ = $1; }
 
 			$$ = cat2_str($1, $2);
 		}
+		| /* EMPTY */
+		{
+			$$ = EMPTY;
+		}
 		;
 
 ConstraintDeferrabilitySpec: NOT DEFERRABLE
@@ -3037,7 +3041,7 @@ DeleteStmt:  DELETE_P FROM relation_expr using_clause where_clause
 			{ $$ = cat_str(4, make_str("delete from"), $3, $4, $5); }
 		;
 
-using_clause: USING from_list	{ cat2_str(make_str("using"), $2); }
+using_clause: USING from_list	{ $$ = cat2_str(make_str("using"), $2); }
 			| /* EMPTY */		{ $$ = EMPTY; }
 		;
 
