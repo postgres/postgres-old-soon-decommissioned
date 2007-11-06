@@ -1813,6 +1813,10 @@ ConstraintAttributeSpec: ConstraintDeferrabilitySpec	{ $$ = $1; }
 
 			$$ = cat2_str($1, $2);
 		}
+		| /* EMPTY */
+		{
+			$$ = EMPTY;
+		}
 		;
 
 ConstraintDeferrabilitySpec: NOT DEFERRABLE
