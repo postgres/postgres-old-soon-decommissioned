@@ -375,7 +375,9 @@ Hint:       the addendum
 
    <para>
     Detail and hint messages: Use complete sentences, and end each with
-    a period.  Capitalize the first word of sentences.
+    a period.  Capitalize the first word of sentences.  Put two spaces after
+    the period if another sentence follows (for English text; might be
+    inappropriate in other languages).
    </para>
 
    <para>
