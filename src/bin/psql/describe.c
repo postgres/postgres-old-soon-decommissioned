@@ -1339,7 +1339,7 @@ describeOneTableDetails(const char *schemaname,
 								printfPQExpBuffer(&buf, _("Rules:"));
 								break;
 							case 1:
-								printfPQExpBuffer(&buf, _("Disabled Rules:"));
+								printfPQExpBuffer(&buf, _("Disabled rules:"));
 								break;
 							case 2:
 								printfPQExpBuffer(&buf, _("Rules firing always:"));
@@ -1411,7 +1411,7 @@ describeOneTableDetails(const char *schemaname,
 								printfPQExpBuffer(&buf, _("Triggers:"));
 								break;
 							case 1:
-								printfPQExpBuffer(&buf, _("Disabled Triggers:"));
+								printfPQExpBuffer(&buf, _("Disabled triggers:"));
 								break;
 							case 2:
 								printfPQExpBuffer(&buf, _("Triggers firing always:"));
