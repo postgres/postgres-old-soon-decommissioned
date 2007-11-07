@@ -538,9 +538,9 @@ PrintControlValues(bool guessed)
 	snprintf(sysident_str, sizeof(sysident_str), UINT64_FORMAT,
 			 ControlFile.system_identifier);
 
-	printf(_("First log file ID for new XLOG:       %u\n"),
+	printf(_("First log file ID after reset:        %u\n"),
 		   newXlogId);
-	printf(_("First log file segment for new XLOG:  %u\n"),
+	printf(_("First log file segment after reset:   %u\n"),
 		   newXlogSeg);
 	printf(_("pg_control version number:            %u\n"),
 		   ControlFile.pg_control_version);
