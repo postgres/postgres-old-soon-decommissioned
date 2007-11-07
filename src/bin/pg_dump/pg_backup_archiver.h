@@ -225,7 +225,7 @@ typedef struct _archiveHandle
 	StartBlobPtr StartBlobPtr;
 	EndBlobPtr EndBlobPtr;
 
-	CustomOutPtr CustomOutPtr;	/* Alternate script output routine */
+	CustomOutPtr CustomOutPtr;	/* Alternative script output routine */
 
 	/* Stuff for direct DB connection */
 	char	   *archdbname;		/* DB name *read* from archive */

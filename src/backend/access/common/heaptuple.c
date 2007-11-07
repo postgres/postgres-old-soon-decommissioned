@@ -489,7 +489,7 @@ heap_attisnull(HeapTuple tup, int attnum)
  *
  *		This caches attribute offsets in the attribute descriptor.
  *
- *		An alternate way to speed things up would be to cache offsets
+ *		An alternative way to speed things up would be to cache offsets
  *		with the tuple, but that seems more difficult unless you take
  *		the storage hit of actually putting those offsets into the
  *		tuple you send to disk.  Yuck.

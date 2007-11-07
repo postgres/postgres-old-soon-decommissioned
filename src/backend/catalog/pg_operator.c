@@ -597,7 +597,7 @@ OperatorCreate(const char *operatorName,
 	/*
 	 * If a commutator and/or negator link is provided, update the other
 	 * operator(s) to point at this one, if they don't already have a link.
-	 * This supports an alternate style of operator definition wherein the
+	 * This supports an alternative style of operator definition wherein the
 	 * user first defines one operator without giving negator or commutator,
 	 * then defines the other operator of the pair with the proper commutator
 	 * or negator attribute.  That style doesn't require creation of a shell,

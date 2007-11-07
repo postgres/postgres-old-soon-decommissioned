@@ -63,12 +63,12 @@ Name
 
 dblink_build_sql_insert -- builds an insert statement using a local
                            tuple, replacing the selection key field
-                           values with alternate supplied values
+                           values with alternative supplied values
 dblink_build_sql_delete -- builds a delete statement using supplied
                            values for selection key field values
 dblink_build_sql_update -- builds an update statement using a local
                            tuple, replacing the selection key field
-                           values with alternate supplied values
+                           values with alternative supplied values
 
 
 Synopsis

@@ -167,7 +167,7 @@ where <replaceable class="PARAMETER">option</replaceable> can be:
         privileges, but are not users in the usual sense of the word.
         If not specified,
         <literal>NOLOGIN</literal> is the default, except when
-        <command>CREATE ROLE</> is invoked through its alternate spelling
+        <command>CREATE ROLE</> is invoked through its alternative spelling
         <command>CREATE USER</>.
        </para>
       </listitem>

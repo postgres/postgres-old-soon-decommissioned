@@ -406,7 +406,7 @@ do { \
 
 
 /*
- * MinimalTuple is an alternate representation that is used for transient
+ * MinimalTuple is an alternative representation that is used for transient
  * tuples inside the executor, in places where transaction status information
  * is not required, the tuple rowtype is known, and shaving off a few bytes
  * is worthwhile because we need to store many tuples.	The representation

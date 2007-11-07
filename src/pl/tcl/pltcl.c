@@ -505,7 +505,7 @@ pltcl_call_handler(PG_FUNCTION_ARGS)
 
 
 /*
- * Alternate handler for unsafe functions
+ * Alternative handler for unsafe functions
  */
 PG_FUNCTION_INFO_V1(pltclu_call_handler);
 

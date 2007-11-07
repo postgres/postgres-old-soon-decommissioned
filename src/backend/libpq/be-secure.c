@@ -151,7 +151,7 @@ char *SSLCipherSuites = NULL;
  *	unsecured connection without fully informing the user.
  *	Very uncool.
  *
- *	Alternately, the backend could attempt to load these files
+ *	Alternatively, the backend could attempt to load these files
  *	on startup if SSL is enabled - and refuse to start if any
  *	do not exist - but this would tend to piss off DBAs.
  *
