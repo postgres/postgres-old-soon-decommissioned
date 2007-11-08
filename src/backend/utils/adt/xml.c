@@ -123,8 +123,8 @@ static void SPI_sql_row_to_xmlelement(int rownum, StringInfo result,
 	ereport(ERROR, \
 			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED), \
 			 errmsg("unsupported XML feature"), \
-			 errdetail("This functionality requires libxml support."), \
-			 errhint("You need to re-compile PostgreSQL using --with-libxml.")))
+			 errdetail("This functionality requires libxml."), \
+			 errhint("You need to rebuild PostgreSQL using --with-libxml.")))
 
 
 #define _textin(str) DirectFunctionCall1(textin, CStringGetDatum(str))
