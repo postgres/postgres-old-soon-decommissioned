@@ -292,13 +292,14 @@ make_pathkey_from_sortinfo(PlannerInfo *root,
 	if (exprType((Node *) expr) != opcintype &&
 		!IsPolymorphicType(opcintype))
 	{
-		/* Strip any existing RelabelType, and add a new one */
+		/* Strip any existing RelabelType, and add a new one if needed */
 		while (expr && IsA(expr, RelabelType))
 			expr = (Expr *) ((RelabelType *) expr)->arg;
-		expr = (Expr *) makeRelabelType(expr,
-										opcintype,
-										-1,
-										COERCE_DONTCARE);
+		if (exprType((Node *) expr) != opcintype)
+			expr = (Expr *) makeRelabelType(expr,
+											opcintype,
+											-1,
+											COERCE_DONTCARE);
 	}
 
 	/* Now find or create a matching EquivalenceClass */
