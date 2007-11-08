@@ -3662,7 +3662,7 @@ SET xmloption TO { DOCUMENT | CONTENT };
    </para>
 
    <para>
-    The full-text search module Tsearch2 could also be used to speed
+    The text-search functionality in PostgreSQL could also be used to speed
     up full-document searches in XML data.  The necessary
     preprocessing support is, however, not available in the PostgreSQL
     distribution in this release.
