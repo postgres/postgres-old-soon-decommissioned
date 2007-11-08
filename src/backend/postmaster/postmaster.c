@@ -2201,7 +2201,7 @@ reaper(SIGNAL_ARGS)
 			WalWriterPID = 0;
 			if (!EXIT_STATUS_0(exitstatus))
 				HandleChildCrash(pid, exitstatus,
-								 _("wal writer process"));
+								 _("WAL writer process"));
 			continue;
 		}
 
@@ -2492,7 +2492,7 @@ LogChildExit(int lev, const char *procname, int pid, int exitstatus)
 		  "server process" */
 				(errmsg("%s (PID %d) was terminated by exception 0x%X",
 						procname, pid, WTERMSIG(exitstatus)),
-				 errhint("See C include file \"ntstatus.h\" for a description of the hex value.")));
+				 errhint("See C include file \"ntstatus.h\" for a description of the hexadecimal value.")));
 #elif defined(HAVE_DECL_SYS_SIGLIST) && HAVE_DECL_SYS_SIGLIST
 		ereport(lev,
 
@@ -4014,7 +4014,7 @@ StartChildProcess(AuxProcType type)
 				break;
 			case WalWriterProcess:
 				ereport(LOG,
-				   (errmsg("could not fork wal writer process: %m")));
+				   (errmsg("could not fork WAL writer process: %m")));
 				break;
 			default:
 				ereport(LOG,
