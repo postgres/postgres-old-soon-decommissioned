@@ -136,7 +136,7 @@ PGSharedMemoryCreate(Size size, bool makePrivate, int port)
 	if (!hmap)
 		ereport(FATAL,
 				(errmsg("could not create shared memory segment: %lu", GetLastError()),
-				 errdetail("Failed system call was CreateFileMapping(size=%lu, name=%s)",
+				 errdetail("Failed system call was CreateFileMapping(size=%lu, name=%s).",
 						   (unsigned long) size, szShareMem)));
 
 	/*
@@ -159,7 +159,7 @@ PGSharedMemoryCreate(Size size, bool makePrivate, int port)
 		if (!hmap)
 			ereport(FATAL,
 					(errmsg("could not create shared memory segment: %lu", GetLastError()),
-					 errdetail("Failed system call was CreateFileMapping(size=%lu, name=%s)",
+					 errdetail("Failed system call was CreateFileMapping(size=%lu, name=%s).",
 							   (unsigned long) size, szShareMem)));
 
 		if (GetLastError() == ERROR_ALREADY_EXISTS)
@@ -176,7 +176,7 @@ PGSharedMemoryCreate(Size size, bool makePrivate, int port)
 	if (!DuplicateHandle(GetCurrentProcess(), hmap, GetCurrentProcess(), &hmap2, 0, TRUE, DUPLICATE_SAME_ACCESS))
 		ereport(FATAL,
 				(errmsg("could not create shared memory segment: %lu", GetLastError()),
-				 errdetail("Failed system call was DuplicateHandle")));
+				 errdetail("Failed system call was DuplicateHandle.")));
 
 	/*
 	 * Close the old, non-inheritable handle. If this fails we don't really
@@ -197,7 +197,7 @@ PGSharedMemoryCreate(Size size, bool makePrivate, int port)
 	if (!memAddress)
 		ereport(FATAL,
 				(errmsg("could not create shared memory segment: %lu", GetLastError()),
-				 errdetail("Failed system call was MapViewOfFileEx")));
+				 errdetail("Failed system call was MapViewOfFileEx.")));
 
 
 
