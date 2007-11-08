@@ -106,7 +106,7 @@
   </varlistentry>
 
   <varlistentry>
-   <term>File System Replication</term>
+   <term>File System (Block-Device) Replication</term>
    <listitem>
 
     <para>
@@ -192,7 +192,8 @@ protocol to make nodes agree on a serializable transactional order.
      using two-phase commit (<xref linkend="sql-prepare-transaction"
      endterm="sql-prepare-transaction-title"> and <xref
      linkend="sql-commit-prepared" endterm="sql-commit-prepared-title">.
-     Pgpool and Sequoia are an example of this type of replication.
+     Pgpool and Sequoia are an example of this type of replication. 
+     This can be implemented using the PL/Proxy toolset as well.
     </para>
    </listitem>
   </varlistentry>
