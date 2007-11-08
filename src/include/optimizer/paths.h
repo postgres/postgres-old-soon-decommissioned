@@ -115,7 +115,8 @@ extern void reconsider_outer_join_clauses(PlannerInfo *root);
 extern EquivalenceClass *get_eclass_for_sort_expr(PlannerInfo *root,
 						 Expr *expr,
 						 Oid expr_datatype,
-						 List *opfamilies);
+						 List *opfamilies,
+						 Index sortref);
 extern void generate_base_implied_equalities(PlannerInfo *root);
 extern List *generate_join_implied_equalities(PlannerInfo *root,
 											  RelOptInfo *joinrel,

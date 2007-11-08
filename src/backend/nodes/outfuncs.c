@@ -1405,6 +1405,7 @@ _outEquivalenceClass(StringInfo str, EquivalenceClass *node)
 	WRITE_BOOL_FIELD(ec_has_volatile);
 	WRITE_BOOL_FIELD(ec_below_outer_join);
 	WRITE_BOOL_FIELD(ec_broken);
+	WRITE_UINT_FIELD(ec_sortref);
 }
 
 static void

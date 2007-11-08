@@ -23,6 +23,8 @@ extern TargetEntry *tlist_member_ignore_relabel(Node *node, List *targetlist);
 extern List *flatten_tlist(List *tlist);
 extern List *add_to_flat_tlist(List *tlist, List *vars);
 
+extern TargetEntry *get_sortgroupref_tle(Index sortref,
+						List *targetList);
 extern TargetEntry *get_sortgroupclause_tle(SortClause *sortClause,
 						List *targetList);
 extern Node *get_sortgroupclause_expr(SortClause *sortClause,

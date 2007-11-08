@@ -449,7 +449,10 @@ typedef struct IndexOptInfo
  * which is a case that can't arise otherwise since clauses containing
  * volatile functions are never considered mergejoinable.  We mark such
  * EquivalenceClasses specially to prevent them from being merged with
- * ordinary EquivalenceClasses.
+ * ordinary EquivalenceClasses.  Also, for volatile expressions we have
+ * to be careful to match the EquivalenceClass to the correct targetlist
+ * entry: consider SELECT random() AS a, random() AS b ... ORDER BY b,a.
+ * So we record the SortGroupRef of the originating sort clause.
  *
  * We allow equality clauses appearing below the nullable side of an outer join
  * to form EquivalenceClasses, but these have a slightly different meaning:
@@ -472,6 +475,7 @@ typedef struct EquivalenceClass
 	bool		ec_has_volatile;	/* the (sole) member is a volatile expr */
 	bool		ec_below_outer_join;	/* equivalence applies below an OJ */
 	bool		ec_broken;			/* failed to generate needed clauses? */
+	Index		ec_sortref;			/* originating sortclause label, or 0 */
 	struct EquivalenceClass *ec_merged;		/* set if merged into another EC */
 } EquivalenceClass;
 
