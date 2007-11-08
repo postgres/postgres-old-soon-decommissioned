@@ -123,7 +123,7 @@ static void SPI_sql_row_to_xmlelement(int rownum, StringInfo result,
 	ereport(ERROR, \
 			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED), \
 			 errmsg("unsupported XML feature"), \
-			 errdetail("This functionality requires libxml."), \
+			 errdetail("This functionality requires the server to be built with libxml support."), \
 			 errhint("You need to rebuild PostgreSQL using --with-libxml.")))
 
 
