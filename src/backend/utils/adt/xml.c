@@ -676,11 +676,11 @@ xmlpi(char *target, text *arg, bool arg_is_null, bool *result_is_null)
 	xmltype *result;
 	StringInfoData buf;
 
-	if (pg_strncasecmp(target, "xml", 3) == 0)
+	if (pg_strcasecmp(target, "xml") == 0)
 		ereport(ERROR,
 				(errcode(ERRCODE_SYNTAX_ERROR),	/* really */
 				 errmsg("invalid XML processing instruction"),
-				 errdetail("XML processing instruction target name cannot start with \"xml\".")));
+				 errdetail("XML processing instruction target name cannot be \"%s\".", target)));
 
 	/*
 	 * Following the SQL standard, the null check comes after the
@@ -997,6 +997,14 @@ xml_init(void)
 #define SKIP_XML_SPACE(p) \
 	while (xmlIsBlank_ch(*(p))) (p)++
 
+/* Letter | Digit | '.' | '-' | '_' | ':' | CombiningChar | Extender */
+#define pg_xmlIsNameChar(c) \
+	(xmlIsBaseChar_ch(c) || xmlIsIdeographicQ(c) \
+			|| xmlIsDigit_ch(c) \
+			|| c == '.' || c == '-' || c == '_' || c == ':' \
+			|| xmlIsCombiningQ(c) \
+			|| xmlIsExtender_ch(c))
+
 static int
 parse_xml_decl(const xmlChar *str,size_t *lenp,
 			   xmlChar **version, xmlChar **encoding, int *standalone)
@@ -1004,6 +1012,7 @@ parse_xml_decl(const xmlChar *str,size_t *lenp,
 	const xmlChar *p;
 	const xmlChar *save_p;
 	size_t		len;
+	int			utf8len;
 
 	xml_init();
 
@@ -1017,6 +1026,10 @@ parse_xml_decl(const xmlChar *str,size_t *lenp,
 	p = str;
 
 	if (xmlStrncmp(p, (xmlChar *)"<?xml", 5) != 0)
+		goto finished;
+
+	/* This means it's a PI like <?xml-stylesheet ...?>. */
+	if (pg_xmlIsNameChar(xmlGetUTF8Char(&p[5], &utf8len)))
 		goto finished;
 
 	p += 5;
