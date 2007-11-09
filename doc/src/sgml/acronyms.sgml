@@ -701,8 +701,7 @@
     <term><acronym>UUID</acronym></term>
     <listitem>
      <para>
-      <ulink url="http://en.wikipedia.org/wiki/Uuid">Universally Unique
-      Identifier</ulink>
+      <link linkend="datatype-uuid">Universally Unique Identifier</link>
      </para>
     </listitem>
    </varlistentry>
