@@ -74,7 +74,7 @@ typedef struct
 } StopList;
 
 extern void readstoplist(const char *fname, StopList *s,
-						 char *(*wordop) (char *));
+						 char *(*wordop) (const char *));
 extern bool searchstoplist(StopList *s, char *key);
 
 /*

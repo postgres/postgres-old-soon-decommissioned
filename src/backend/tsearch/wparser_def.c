@@ -294,12 +294,12 @@ TParserInit(char *str, int len)
 	/*
 	 * Use wide char code only when max encoding length > 1.
 	 */
-
 	if (prs->charmaxlen > 1)
 	{
 		prs->usewide = true;
 		prs->wstr = (wchar_t *) palloc(sizeof(wchar_t) * (prs->lenstr + 1));
-		prs->lenwstr = char2wchar(prs->wstr, prs->str, prs->lenstr);
+		prs->lenwstr = char2wchar(prs->wstr, prs->lenstr + 1,
+								  prs->str, prs->lenstr);
 	}
 	else
 #endif

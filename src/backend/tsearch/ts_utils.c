@@ -75,7 +75,7 @@ comparestr(const void *a, const void *b)
  * or palloc a new version.
  */
 void
-readstoplist(const char *fname, StopList *s, char *(*wordop) (char *))
+readstoplist(const char *fname, StopList *s, char *(*wordop) (const char *))
 {
 	char	  **stop = NULL;
 
