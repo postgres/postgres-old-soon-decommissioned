@@ -774,9 +774,9 @@ local   db1,db2,@demodbs  all                         md5
     Client principals must have their <productname>PostgreSQL</> database user
     name as their first component, for example
     <literal>pgusername@realm</>. By default, the realm of the client is
-	not checked by <productname>PostgreSQL</>. If you have cross-realm
-	authentication enabled and need to verify the realm, use the
-	<xref linkend="guc-krb-realm"> parameter.
+    not checked by <productname>PostgreSQL</>. If you have cross-realm
+    authentication enabled and need to verify the realm, use the
+    <xref linkend="guc-krb-realm"> parameter.
    </para>
 
    <para>
