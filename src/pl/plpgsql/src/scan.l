@@ -143,7 +143,6 @@ is				{ return K_IS;				}
 log				{ return K_LOG;				}
 loop			{ return K_LOOP;			}
 move			{ return K_MOVE;			}
-next			{ return K_NEXT;			}
 no{space}+scroll { return K_NOSCROLL;		}
 not				{ return K_NOT;				}
 notice			{ return K_NOTICE;			}
@@ -151,7 +150,6 @@ null			{ return K_NULL;			}
 open			{ return K_OPEN;			}
 or				{ return K_OR;				}
 perform			{ return K_PERFORM;			}
-query			{ return K_QUERY;			}
 raise			{ return K_RAISE;			}
 rename			{ return K_RENAME;			}
 result_oid		{ return K_RESULT_OID;		}

@@ -181,14 +181,12 @@ static	void			 check_labels(const char *start_label,
 %token	K_LOG
 %token	K_LOOP
 %token	K_MOVE
-%token	K_NEXT
 %token	K_NOSCROLL
 %token	K_NOT
 %token	K_NOTICE
 %token	K_NULL
 %token	K_OPEN
 %token	K_OR
-%token	K_QUERY
 %token	K_PERFORM
 %token	K_ROW_COUNT
 %token	K_RAISE
@@ -1169,11 +1167,19 @@ stmt_return		: K_RETURN lno
 						int	tok;
 
 						tok = yylex();
-						if (tok == K_NEXT)
+						if (tok == 0)
+							yyerror("unexpected end of function definition");
+
+						/*
+						 * To avoid making NEXT and QUERY effectively be
+						 * reserved words within plpgsql, recognize them
+						 * via yytext.
+						 */
+						if (pg_strcasecmp(yytext, "next") == 0)
 						{
 							$$ = make_return_next_stmt($2);
 						}
-						else if (tok == K_QUERY)
+						else if (pg_strcasecmp(yytext, "query") == 0)
 						{
 							$$ = make_return_query_stmt($2);
 						}
