@@ -418,14 +418,13 @@ compileTheLexeme(DictThesaurus * d)
 									Int32GetDatum(strlen(d->wrds[i].lexeme)),
 													 PointerGetDatum(NULL)));
 
-		if (!(ptr && ptr->lexeme))
+		if (!ptr)
+			elog(ERROR, "thesaurus word-sample \"%s\" isn't recognized by subdictionary (rule %d)",
+				 d->wrds[i].lexeme, d->wrds[i].entries->idsubst + 1);
+		else if (!(ptr->lexeme))
 		{
-			if (!ptr)
-				elog(ERROR, "thesaurus word-sample \"%s\" isn't recognized by subdictionary (rule %d)",
-					 d->wrds[i].lexeme, d->wrds[i].entries->idsubst + 1);
-			else
-				elog(NOTICE, "thesaurus word-sample \"%s\" is recognized as stop-word, assign any stop-word (rule %d)",
-					 d->wrds[i].lexeme, d->wrds[i].entries->idsubst + 1);
+			elog(NOTICE, "thesaurus word-sample \"%s\" is recognized as stop-word, assign any stop-word (rule %d)",
+				 d->wrds[i].lexeme, d->wrds[i].entries->idsubst + 1);
 
 			newwrds = addCompiledLexeme(newwrds, &nnw, &tnm, NULL, d->wrds[i].entries, 0);
 		}
