@@ -5,7 +5,6 @@ OBJS= cube.o cubeparse.o
 
 DATA_built = cube.sql
 DATA = uninstall_cube.sql
-DOCS = README.cube
 REGRESS = cube
 
 EXTRA_CLEAN = y.tab.c y.tab.h

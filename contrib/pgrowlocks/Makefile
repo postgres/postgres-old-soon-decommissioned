@@ -8,7 +8,6 @@
 
 MODULE_big	= pgrowlocks
 OBJS		= pgrowlocks.o
-DOCS		= README.pgrowlocks README.pgrowlocks.euc_jp
 DATA_built	= pgrowlocks.sql
 DATA		= uninstall_pgrowlocks.sql
 

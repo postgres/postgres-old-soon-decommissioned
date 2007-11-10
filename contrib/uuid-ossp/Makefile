@@ -4,7 +4,6 @@ MODULE_big = uuid-ossp
 OBJS = uuid-ossp.o
 DATA_built = uuid-ossp.sql
 DATA = uninstall_uuid-ossp.sql
-DOCS = README.uuid-ossp
 
 SHLIB_LINK += -lossp-uuid
 

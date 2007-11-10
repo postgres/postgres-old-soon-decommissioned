@@ -26,7 +26,6 @@ SRCS		= pgcrypto.c px.c px-hmac.c px-crypt.c \
 
 MODULE_big	= pgcrypto
 OBJS		= $(SRCS:.c=.o)
-DOCS		= README.pgcrypto
 DATA_built	= pgcrypto.sql
 DATA		= uninstall_pgcrypto.sql
 EXTRA_CLEAN	= gen-rtab

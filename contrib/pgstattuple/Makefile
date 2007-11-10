@@ -8,7 +8,6 @@
 
 MODULE_big	= pgstattuple
 OBJS		= pgstattuple.o pgstatindex.o
-DOCS		= README.pgstattuple README.pgstattuple.euc_jp
 DATA_built	= pgstattuple.sql
 DATA      	= uninstall_pgstattuple.sql
 

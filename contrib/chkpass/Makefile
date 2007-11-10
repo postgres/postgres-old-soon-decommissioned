@@ -5,7 +5,6 @@ OBJS = chkpass.o
 SHLIB_LINK = $(filter -lcrypt, $(LIBS))
 DATA_built = chkpass.sql
 DATA = uninstall_chkpass.sql
-DOCS = README.chkpass
 
 ifdef USE_PGXS
 PG_CONFIG = pg_config

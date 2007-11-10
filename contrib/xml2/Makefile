@@ -10,7 +10,6 @@ SHLIB_LINK = -lxslt -lxml2
 
 DATA_built = pgxml.sql
 DATA = uninstall_pgxml.sql
-DOCS = README.xml2
 
 override CFLAGS += $(shell xml2-config --cflags)
 

@@ -8,7 +8,6 @@
 
 MODULE_big	= pageinspect
 OBJS		= rawpage.o heapfuncs.o btreefuncs.o
-DOCS		= README.pageinspect
 DATA_built	= pageinspect.sql
 DATA      	= uninstall_pageinspect.sql
 

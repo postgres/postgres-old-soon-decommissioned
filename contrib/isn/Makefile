@@ -3,7 +3,6 @@
 MODULES = isn
 DATA_built = isn.sql
 DATA = uninstall_isn.sql
-DOCS = README.isn
 
 ifdef USE_PGXS
 PG_CONFIG = pg_config

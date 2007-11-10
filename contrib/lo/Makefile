@@ -3,7 +3,6 @@
 MODULES = lo
 DATA_built = lo.sql
 DATA = uninstall_lo.sql
-DOCS = README.lo
 
 ifdef USE_PGXS
 PG_CONFIG = pg_config

@@ -6,8 +6,6 @@ OBJS	= pgbench.o
 PG_CPPFLAGS = -I$(libpq_srcdir)
 PG_LIBS = $(libpq_pgport)
 
-DOCS = README.pgbench README.pgbench_jis
-
 ifdef USE_PGXS
 PG_CONFIG = pg_config
 PGXS := $(shell $(PG_CONFIG) --pgxs)

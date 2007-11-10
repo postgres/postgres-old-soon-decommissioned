@@ -9,7 +9,6 @@ OBJS        = btree_gist.o btree_utils_num.o btree_utils_var.o btree_int2.o btre
 
 DATA_built  = btree_gist.sql
 DATA        = uninstall_btree_gist.sql
-DOCS        = README.btree_gist
 
 REGRESS     = init int2 int4 int8 float4 float8 cash oid timestamp timestamptz time timetz \
               date interval macaddr inet cidr text varchar char bytea bit varbit numeric

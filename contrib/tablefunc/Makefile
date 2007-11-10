@@ -3,7 +3,6 @@
 MODULES = tablefunc
 DATA_built = tablefunc.sql
 DATA = uninstall_tablefunc.sql
-DOCS = README.tablefunc
 REGRESS = tablefunc
 
 SHLIB_LINK += $(filter -lm, $(LIBS))

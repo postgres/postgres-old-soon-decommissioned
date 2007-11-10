@@ -3,7 +3,6 @@
 MODULES = earthdistance
 DATA_built = earthdistance.sql
 DATA = uninstall_earthdistance.sql
-DOCS = README.earthdistance
 REGRESS = earthdistance
 
 SHLIB_LINK += $(filter -lm, $(LIBS))

@@ -4,7 +4,6 @@ MODULE_big = seg
 OBJS = seg.o segparse.o
 DATA_built = seg.sql
 DATA = uninstall_seg.sql
-DOCS = README.seg
 REGRESS = seg
 
 EXTRA_CLEAN = y.tab.c y.tab.h

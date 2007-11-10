@@ -7,7 +7,6 @@ SHLIB_LINK = $(libpq)
 
 DATA_built = dblink.sql 
 DATA = uninstall_dblink.sql 
-DOCS = README.dblink
 REGRESS = dblink
 
 
