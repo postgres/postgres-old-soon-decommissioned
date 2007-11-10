@@ -102,6 +102,7 @@
   &typeconv;
   &indices;
   &textsearch;
+  &contrib;
   &mvcc;
   &perform;
 
