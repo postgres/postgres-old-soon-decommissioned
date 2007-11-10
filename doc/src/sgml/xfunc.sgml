@@ -662,6 +662,22 @@ SELECT * FROM getfoo(1) AS t1;
     </para>
 
     <para>
+     It is also possible to return multiple rows with the columns defined by
+     output parameters, like this:
+
+<programlisting>
+CREATE FUNCTION sum_n_product_with_tab (x int, OUT sum int, OUT product int) RETURNS SETOF record AS $$
+    SELECT x + tab.y, x * tab.y FROM tab;
+$$ LANGUAGE SQL;
+</programlisting>
+
+     The key point here is that you must write <literal>RETURNS SETOF record</>
+     to indicate that the function returns multiple rows instead of just one.
+     If there is only one output parameter, write that parameter's type
+     instead of <type>record</>.
+    </para>
+
+    <para>
      Currently, functions returning sets can also be called in the select list
      of a query.  For each row that the query
      generates by itself, the function returning set is invoked, and an output
