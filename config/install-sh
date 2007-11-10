@@ -56,7 +56,13 @@ cpprog="${CPPROG-cp}"
 chmodprog="${CHMODPROG-chmod}"
 chownprog="${CHOWNPROG-chown}"
 chgrpprog="${CHGRPPROG-chgrp}"
-stripprog="${STRIPPROG-strip}"
+# Darwin normal strip removes symbols from shared libraries
+# that are later needed for dynamic linking, so use strip -x.
+# http://archives.postgresql.org/pgsql-hackers/2007-10/msg01470.php
+if test "$template" = "darwin"
+then	stripprog="${STRIPPROG-strip -x}"
+else	stripprog="${STRIPPROG-strip}"
+fi
 rmprog="${RMPROG-rm}"
 mkdirprog="${MKDIRPROG-mkdir}"
 
