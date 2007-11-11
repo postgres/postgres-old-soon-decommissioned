@@ -829,7 +829,7 @@ transformAExprOf(ParseState *pstate, A_Expr *a)
 	ltype = exprType(lexpr);
 	foreach(telem, (List *) a->rexpr)
 	{
-		rtype = typenameTypeId(pstate, lfirst(telem));
+		rtype = typenameTypeId(pstate, lfirst(telem), NULL);
 		matched = (rtype == ltype);
 		if (matched)
 			break;
@@ -1550,8 +1550,7 @@ transformXmlSerialize(ParseState *pstate, XmlSerialize *xs)
 													 XMLOID,
 													 "XMLSERIALIZE"));
 
-	targetType = typenameTypeId(pstate, xs->typename);
-	targetTypmod = typenameTypeMod(pstate, xs->typename, targetType);
+	targetType = typenameTypeId(pstate, xs->typename, &targetTypmod);
 
 	xexpr->xmloption = xs->xmloption;
 	/* We actually only need these to be able to parse back the expression. */
@@ -2227,8 +2226,7 @@ typecast_expression(ParseState *pstate, Node *expr, TypeName *typename)
 	Oid			targetType;
 	int32		targetTypmod;
 
-	targetType = typenameTypeId(pstate, typename);
-	targetTypmod = typenameTypeMod(pstate, typename, targetType);
+	targetType = typenameTypeId(pstate, typename, &targetTypmod);
 
 	if (inputType == InvalidOid)
 		return expr;			/* do nothing if NULL input */

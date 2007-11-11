@@ -1955,7 +1955,7 @@ transformColumnType(ParseState *pstate, ColumnDef *column)
 	/*
 	 * All we really need to do here is verify that the type is valid.
 	 */
-	Type		ctype = typenameType(pstate, column->typename);
+	Type		ctype = typenameType(pstate, column->typename, NULL);
 
 	ReleaseSysCache(ctype);
 }

@@ -149,9 +149,9 @@ DefineOperator(List *names, List *parameters)
 
 	/* Transform type names to type OIDs */
 	if (typeName1)
-		typeId1 = typenameTypeId(NULL, typeName1);
+		typeId1 = typenameTypeId(NULL, typeName1, NULL);
 	if (typeName2)
-		typeId2 = typenameTypeId(NULL, typeName2);
+		typeId2 = typenameTypeId(NULL, typeName2, NULL);
 
 	/*
 	 * now have OperatorCreate do all the work..

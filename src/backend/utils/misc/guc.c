@@ -4872,11 +4872,13 @@ flatten_set_variable_args(const char *name, List *args)
 					 * to interval and back to normalize the value and account
 					 * for any typmod.
 					 */
+					Oid			typoid;
 					int32		typmod;
 					Datum		interval;
 					char	   *intervalout;
 
-					typmod = typenameTypeMod(NULL, arg->typename, INTERVALOID);
+					typoid = typenameTypeId(NULL, arg->typename, &typmod);
+					Assert(typoid == INTERVALOID);
 
 					interval =
 						DirectFunctionCall3(interval_in,

@@ -90,7 +90,7 @@ PrepareQuery(PrepareStmt *stmt, const char *queryString)
 		foreach(l, stmt->argtypes)
 		{
 			TypeName   *tn = lfirst(l);
-			Oid			toid = typenameTypeId(pstate, tn);
+			Oid			toid = typenameTypeId(pstate, tn, NULL);
 
 			argtypes[i++] = toid;
 		}

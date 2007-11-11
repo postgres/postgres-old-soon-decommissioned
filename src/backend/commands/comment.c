@@ -874,7 +874,7 @@ CommentType(List *typename, char *comment)
 
 	/* Find the type's oid */
 
-	oid = typenameTypeId(NULL, tname);
+	oid = typenameTypeId(NULL, tname, NULL);
 
 	/* Check object security */
 
@@ -1451,8 +1451,8 @@ CommentCast(List *qualname, List *arguments, char *comment)
 	targettype = (TypeName *) linitial(arguments);
 	Assert(IsA(targettype, TypeName));
 
-	sourcetypeid = typenameTypeId(NULL, sourcetype);
-	targettypeid = typenameTypeId(NULL, targettype);
+	sourcetypeid = typenameTypeId(NULL, sourcetype, NULL);
+	targettypeid = typenameTypeId(NULL, targettype, NULL);
 
 	tuple = SearchSysCache(CASTSOURCETARGET,
 						   ObjectIdGetDatum(sourcetypeid),

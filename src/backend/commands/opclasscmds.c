@@ -327,7 +327,7 @@ DefineOpClass(CreateOpClassStmt *stmt)
 				 errmsg("must be superuser to create an operator class")));
 
 	/* Look up the datatype */
-	typeoid = typenameTypeId(NULL, stmt->datatype);
+	typeoid = typenameTypeId(NULL, stmt->datatype, NULL);
 
 #ifdef NOT_USED
 	/* XXX this is unnecessary given the superuser check above */
@@ -481,7 +481,7 @@ DefineOpClass(CreateOpClassStmt *stmt)
 					ereport(ERROR,
 							(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),
 						   errmsg("storage type specified more than once")));
-				storageoid = typenameTypeId(NULL, item->storedtype);
+				storageoid = typenameTypeId(NULL, item->storedtype, NULL);
 
 #ifdef NOT_USED
 				/* XXX this is unnecessary given the superuser check above */
@@ -1035,12 +1035,12 @@ processTypesSpec(List *args, Oid *lefttype, Oid *righttype)
 	Assert(args != NIL);
 
 	typeName = (TypeName *) linitial(args);
-	*lefttype = typenameTypeId(NULL, typeName);
+	*lefttype = typenameTypeId(NULL, typeName, NULL);
 
 	if (list_length(args) > 1)
 	{
 		typeName = (TypeName *) lsecond(args);
-		*righttype = typenameTypeId(NULL, typeName);
+		*righttype = typenameTypeId(NULL, typeName, NULL);
 	}
 	else
 		*righttype = *lefttype;

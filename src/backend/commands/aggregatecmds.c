@@ -142,7 +142,7 @@ DefineAggregate(List *name, List *args, bool oldstyle, List *parameters)
 		{
 			numArgs = 1;
 			aggArgTypes = (Oid *) palloc(sizeof(Oid));
-			aggArgTypes[0] = typenameTypeId(NULL, baseType);
+			aggArgTypes[0] = typenameTypeId(NULL, baseType, NULL);
 		}
 	}
 	else
@@ -164,7 +164,7 @@ DefineAggregate(List *name, List *args, bool oldstyle, List *parameters)
 		{
 			TypeName   *curTypeName = (TypeName *) lfirst(lc);
 
-			aggArgTypes[i++] = typenameTypeId(NULL, curTypeName);
+			aggArgTypes[i++] = typenameTypeId(NULL, curTypeName, NULL);
 		}
 	}
 
@@ -175,7 +175,7 @@ DefineAggregate(List *name, List *args, bool oldstyle, List *parameters)
 	 * values of the transtype.  However, we can allow polymorphic transtype
 	 * in some cases (AggregateCreate will check).
 	 */
-	transTypeId = typenameTypeId(NULL, transType);
+	transTypeId = typenameTypeId(NULL, transType, NULL);
 	if (get_typtype(transTypeId) == TYPTYPE_PSEUDO &&
 		!IsPolymorphicType(transTypeId))
 		ereport(ERROR,

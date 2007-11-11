@@ -901,8 +901,7 @@ addRangeTableEntryForFunction(ParseState *pstate,
 						(errcode(ERRCODE_INVALID_TABLE_DEFINITION),
 						 errmsg("column \"%s\" cannot be declared SETOF",
 								attrname)));
-			attrtype = typenameTypeId(pstate, n->typename);
-			attrtypmod = typenameTypeMod(pstate, n->typename, attrtype);
+			attrtype = typenameTypeId(pstate, n->typename, &attrtypmod);
 			eref->colnames = lappend(eref->colnames, makeString(attrname));
 			rte->funccoltypes = lappend_oid(rte->funccoltypes, attrtype);
 			rte->funccoltypmods = lappend_int(rte->funccoltypmods, attrtypmod);
