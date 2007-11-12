@@ -318,12 +318,12 @@ protocol to make nodes agree on a serializable transactional order.
     </row>
 
     <row>
-     <entry>No inter-server locking delay</entry>
+     <entry>No waiting for multiple servers</entry>
+     <entry align="center">&bull;</entry>
+     <entry align="center"></entry>
      <entry align="center">&bull;</entry>
      <entry align="center">&bull;</entry>
-     <entry align="center">&bull;</entry>
-     <entry align="center">&bull;</entry>
-     <entry align="center">&bull;</entry>
+     <entry align="center"></entry>
      <entry align="center">&bull;</entry>
      <entry align="center"></entry>
     </row>
