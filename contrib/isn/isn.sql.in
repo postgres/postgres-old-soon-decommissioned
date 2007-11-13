@@ -1,3 +1,5 @@
+/* $PostgreSQL$ */
+
 -- Adjust this setting to control where the objects get created.
 SET search_path = public;
 
