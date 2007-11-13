@@ -793,6 +793,16 @@ if test "$with_libxslt" = yes ; then
   AC_CHECK_LIB(xslt, xsltLibxmlVersion, [], [AC_MSG_ERROR([library 'xslt' is required for XSLT support])])
 fi
 
+# for contrib/uuid-ossp
+if test "$with_ossp_uuid" = yes ; then
+  AC_CHECK_LIB(ossp-uuid, uuid_export,
+    [OSSP_UUID_LIBS="-lossp-uuid"],
+    [AC_CHECK_LIB(uuid, uuid_export,
+      [OSSP_UUID_LIBS="-luuid"],
+      [AC_MSG_ERROR([library 'ossp-uuid' or 'uuid' is required for OSSP-UUID])])])
+fi
+AC_SUBST(OSSP_UUID_LIBS)
+
 
 ##
 ## Header files

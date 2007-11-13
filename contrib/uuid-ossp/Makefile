@@ -5,7 +5,7 @@ OBJS = uuid-ossp.o
 DATA_built = uuid-ossp.sql
 DATA = uninstall_uuid-ossp.sql
 
-SHLIB_LINK += -lossp-uuid
+SHLIB_LINK += $(OSSP_UUID_LIBS)
 
 ifdef USE_PGXS
 PG_CONFIG = pg_config
