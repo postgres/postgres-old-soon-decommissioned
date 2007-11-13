@@ -468,9 +468,6 @@ sub GenerateContribSqlFiles
             my $in = "$d.in";
             my $out = "$d";
 
-            # tsearch2 uses inconsistent naming
-            $in = "tsearch.sql.in" if ($in eq "tsearch2.sql.in");
-            $in = "untsearch.sql.in" if ($in eq "uninstall_tsearch2.sql.in");
             if (Solution::IsNewer("contrib/$n/$out", "contrib/$n/$in"))
             {
                 print "Building $out from $in (contrib/$n)...\n";
