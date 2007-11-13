@@ -193,6 +193,8 @@ extern QTNode *QTNCopy(QTNode *in);
 extern void QTNClearFlags(QTNode *in, uint32 flags);
 extern bool QTNEq(QTNode * a, QTNode * b);
 extern TSQuerySign makeTSQuerySign(TSQuery a);
+extern QTNode *findsubquery(QTNode *root, QTNode *ex, QTNode *subs,
+							bool *isfind);
 
 /*
  * TSQuery GiST support

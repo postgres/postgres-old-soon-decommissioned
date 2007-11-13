@@ -233,7 +233,7 @@ dropvoidsubtree(QTNode * root)
 	return root;
 }
 
-static QTNode *
+QTNode *
 findsubquery(QTNode *root, QTNode *ex, QTNode *subs, bool *isfind)
 {
 	bool		DidFind = false;

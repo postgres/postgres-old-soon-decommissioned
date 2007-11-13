@@ -206,9 +206,9 @@ CREATE FUNCTION set_curcfg(text)
 
 CREATE FUNCTION show_curcfg()
 	RETURNS oid
-	as 'MODULE_PATHNAME', 'tsa_show_curcfg'
-	LANGUAGE C
-	RETURNS NULL ON NULL INPUT;
+	AS 'get_current_ts_config'
+	LANGUAGE INTERNAL
+	RETURNS NULL ON NULL INPUT STABLE;
 
 CREATE FUNCTION length(tsvector)
 	RETURNS int4
