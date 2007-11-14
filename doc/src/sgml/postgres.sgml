@@ -102,7 +102,6 @@
   &typeconv;
   &indices;
   &textsearch;
-  &contrib;
   &mvcc;
   &perform;
 
@@ -254,9 +253,10 @@
   &keywords;
   &features;
   &release;
+  &contrib;
+  &external-projects;
   &cvs;
   &docguide;
-  &external-projects;
   &acronyms;
 
  </part>
