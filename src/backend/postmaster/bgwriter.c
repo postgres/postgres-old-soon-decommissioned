@@ -718,7 +718,7 @@ IsCheckpointOnSchedule(double progress)
 	recptr = GetInsertRecPtr();
 	elapsed_xlogs =
 		(((double) (int32) (recptr.xlogid - ckpt_start_recptr.xlogid)) * XLogSegsPerFile +
-		 ((double) (int32) (recptr.xrecoff - ckpt_start_recptr.xrecoff)) / XLogSegSize) /
+		 ((double) recptr.xrecoff - (double) ckpt_start_recptr.xrecoff) / XLogSegSize) /
 		CheckPointSegments;
 
 	if (progress < elapsed_xlogs)
