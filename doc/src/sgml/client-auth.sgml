@@ -722,6 +722,15 @@ local   db1,db2,@demodbs  all                         md5
     <primary>Kerberos</primary>
    </indexterm>
 
+   <note>
+    <para>
+     Native Kerberos authentication has been deprecated and should be used
+     only for backward compatibility. New and upgraded installations are
+     encouraged to use the industry-standard <productname>GSSAPI</productname>
+     authentication (see <xref linkend="gssapi-auth">) instead.
+    </para>
+   </note>
+
    <para>
     <productname>Kerberos</productname> is an industry-standard secure
     authentication system suitable for distributed computing over a public
