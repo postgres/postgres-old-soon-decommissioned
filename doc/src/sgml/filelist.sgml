@@ -117,6 +117,7 @@
 <!entity seg             SYSTEM "seg.sgml">
 <!entity sslinfo         SYSTEM "sslinfo.sgml">
 <!entity tablefunc       SYSTEM "tablefunc.sgml">
+<!entity tsearch2        SYSTEM "tsearch2.sgml">
 <!entity uuid-ossp       SYSTEM "uuid-ossp.sgml">
 <!entity vacuumlo        SYSTEM "vacuumlo.sgml">
 <!entity xml2            SYSTEM "xml2.sgml"> 
