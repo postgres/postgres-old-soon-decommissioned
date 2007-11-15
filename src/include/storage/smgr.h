@@ -83,7 +83,9 @@ extern void AtSubAbort_smgr(void);
 extern void PostPrepare_smgr(void);
 extern void smgrcommit(void);
 extern void smgrabort(void);
+extern void smgrpreckpt(void);
 extern void smgrsync(void);
+extern void smgrpostckpt(void);
 
 extern void smgr_redo(XLogRecPtr lsn, XLogRecord *record);
 extern void smgr_desc(StringInfo buf, uint8 xl_info, char *rec);
@@ -104,7 +106,9 @@ extern void mdwrite(SMgrRelation reln, BlockNumber blocknum, char *buffer,
 extern BlockNumber mdnblocks(SMgrRelation reln);
 extern void mdtruncate(SMgrRelation reln, BlockNumber nblocks, bool isTemp);
 extern void mdimmedsync(SMgrRelation reln);
+extern void mdpreckpt(void);
 extern void mdsync(void);
+extern void mdpostckpt(void);
 
 extern void RememberFsyncRequest(RelFileNode rnode, BlockNumber segno);
 extern void ForgetRelationFsyncRequests(RelFileNode rnode);
