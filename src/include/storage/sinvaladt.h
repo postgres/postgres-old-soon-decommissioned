@@ -90,7 +90,7 @@ typedef struct SISeg
 	 * this here because it is indexed by BackendId and it is convenient to
 	 * copy the value to and from local memory when MyBackendId is set.
 	 */
-	LocalTransactionId *nextLXID; /* array of maxBackends entries */
+	LocalTransactionId *nextLXID;		/* array of maxBackends entries */
 
 	/*
 	 * Circular buffer holding shared-inval messages

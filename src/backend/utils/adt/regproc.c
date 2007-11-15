@@ -1207,7 +1207,7 @@ regdictionaryin(PG_FUNCTION_ARGS)
 		strspn(dict_name_or_oid, "0123456789") == strlen(dict_name_or_oid))
 	{
 		result = DatumGetObjectId(DirectFunctionCall1(oidin,
-										  CStringGetDatum(dict_name_or_oid)));
+										 CStringGetDatum(dict_name_or_oid)));
 		PG_RETURN_OID(result);
 	}
 
@@ -1249,8 +1249,8 @@ regdictionaryout(PG_FUNCTION_ARGS)
 		char	   *nspname;
 
 		/*
-		 * Would this dictionary be found by regdictionaryin?
-		 * If not, qualify it.
+		 * Would this dictionary be found by regdictionaryin? If not, qualify
+		 * it.
 		 */
 		if (TSDictionaryIsVisible(dictid))
 			nspname = NULL;

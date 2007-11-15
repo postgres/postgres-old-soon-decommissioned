@@ -139,7 +139,7 @@ ProcedureCreate(const char *procedureName,
 
 	/*
 	 * Do not allow polymorphic return type unless at least one input argument
-	 * is polymorphic.  Also, do not allow return type INTERNAL unless at
+	 * is polymorphic.	Also, do not allow return type INTERNAL unless at
 	 * least one input argument is INTERNAL.
 	 */
 	for (i = 0; i < parameterCount; i++)

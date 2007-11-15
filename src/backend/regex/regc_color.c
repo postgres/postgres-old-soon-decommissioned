@@ -722,13 +722,14 @@ dumpcolors(struct colormap * cm,
 			else
 				fprintf(f, "#%2ld%s(%2d): ", (long) co,
 						has, cd->nchrs);
+
 			/*
 			 * Unfortunately, it's hard to do this next bit more efficiently.
 			 *
 			 * Spencer's original coding has the loop iterating from CHR_MIN
-			 * to CHR_MAX, but that's utterly unusable for 32-bit chr.
-			 * For debugging purposes it seems fine to print only chr
-			 * codes up to 1000 or so.
+			 * to CHR_MAX, but that's utterly unusable for 32-bit chr. For
+			 * debugging purposes it seems fine to print only chr codes up to
+			 * 1000 or so.
 			 */
 			for (c = CHR_MIN; c < 1000; c++)
 				if (GETCOLOR(cm, c) == co)

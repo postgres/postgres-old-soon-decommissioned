@@ -474,4 +474,3 @@ ScanKeywordLookup(char *text)
 
 	return DoLookup(word, &ScanECPGKeywords[0], endof(ScanECPGKeywords) - 1);
 }
-

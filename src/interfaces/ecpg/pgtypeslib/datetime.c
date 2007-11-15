@@ -75,7 +75,7 @@ PGTYPESdate_from_asc(char *str, char **endptr)
 	}
 
 	if (ParseDateTime(str, lowstr, field, ftype, MAXDATEFIELDS, &nf, ptr) != 0 ||
-	DecodeDateTime(field, ftype, nf, &dtype, tm, &fsec, EuroDates) != 0)
+		DecodeDateTime(field, ftype, nf, &dtype, tm, &fsec, EuroDates) != 0)
 	{
 		errno = PGTYPES_DATE_BAD_DATE;
 		return INT_MIN;

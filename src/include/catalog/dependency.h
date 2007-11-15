@@ -181,8 +181,8 @@ extern bool object_address_present(const ObjectAddress *object,
 					   ObjectAddresses *addrs);
 
 extern void record_object_address_dependencies(const ObjectAddress *depender,
-											   ObjectAddresses *referenced,
-											   DependencyType behavior);
+								   ObjectAddresses *referenced,
+								   DependencyType behavior);
 
 extern void free_object_addresses(ObjectAddresses *addrs);
 

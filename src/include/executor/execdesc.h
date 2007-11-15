@@ -35,7 +35,7 @@ typedef struct QueryDesc
 {
 	/* These fields are provided by CreateQueryDesc */
 	CmdType		operation;		/* CMD_SELECT, CMD_UPDATE, etc. */
-	PlannedStmt	*plannedstmt;	/* planner's output, or null if utility */
+	PlannedStmt *plannedstmt;	/* planner's output, or null if utility */
 	Node	   *utilitystmt;	/* utility statement, or null */
 	Snapshot	snapshot;		/* snapshot to use for query */
 	Snapshot	crosscheck_snapshot;	/* crosscheck for RI update/delete */
@@ -50,7 +50,7 @@ typedef struct QueryDesc
 } QueryDesc;
 
 /* in pquery.c */
-extern QueryDesc *CreateQueryDesc(PlannedStmt *plannedstmt,
+extern QueryDesc *CreateQueryDesc(PlannedStmt * plannedstmt,
 				Snapshot snapshot,
 				Snapshot crosscheck_snapshot,
 				DestReceiver *dest,
@@ -58,9 +58,9 @@ extern QueryDesc *CreateQueryDesc(PlannedStmt *plannedstmt,
 				bool doInstrument);
 
 extern QueryDesc *CreateUtilityQueryDesc(Node *utilitystmt,
-				Snapshot snapshot,
-				DestReceiver *dest,
-				ParamListInfo params);
+					   Snapshot snapshot,
+					   DestReceiver *dest,
+					   ParamListInfo params);
 
 extern void FreeQueryDesc(QueryDesc *qdesc);
 

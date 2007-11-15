@@ -154,7 +154,7 @@ extern void fmgr_info_copy(FmgrInfo *dstinfo, FmgrInfo *srcinfo,
  * checked for null inputs first, if necessary.
  *
  * pg_detoast_datum_packed() will return packed (1-byte header) datums
- * unmodified.  It will still expand an externally toasted or compressed datum.
+ * unmodified.	It will still expand an externally toasted or compressed datum.
  * The resulting datum can be accessed using VARSIZE_ANY() and VARDATA_ANY()
  * (beware of multiple evaluations in those macros!)
  *

@@ -202,7 +202,7 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 
 	/*
 	 * Setup the output file if necessary.
-	 */	
+	 */
 	if (ropt->filename || ropt->compression)
 		sav = SetOutput(AH, ropt->filename, ropt->compression);
 
@@ -1334,7 +1334,7 @@ WriteOffset(ArchiveHandle *AH, pgoff_t o, int wasSet)
 }
 
 int
-ReadOffset(ArchiveHandle *AH, pgoff_t *o)
+ReadOffset(ArchiveHandle *AH, pgoff_t * o)
 {
 	int			i;
 	int			off;
@@ -2813,8 +2813,8 @@ dumpTimestamp(ArchiveHandle *AH, const char *msg, time_t tim)
 	/*
 	 * We don't print the timezone on Win32, because the names are long and
 	 * localized, which means they may contain characters in various random
-	 * encodings; this has been seen to cause encoding errors when reading
-	 * the dump script.
+	 * encodings; this has been seen to cause encoding errors when reading the
+	 * dump script.
 	 */
 	if (strftime(buf, sizeof(buf),
 #ifndef WIN32

@@ -53,13 +53,13 @@ typedef struct f_smgr
 										   char *buffer, bool isTemp);
 	BlockNumber (*smgr_nblocks) (SMgrRelation reln);
 	void		(*smgr_truncate) (SMgrRelation reln, BlockNumber nblocks,
-								  bool isTemp);
+											  bool isTemp);
 	void		(*smgr_immedsync) (SMgrRelation reln);
-	void		(*smgr_commit) (void);		/* may be NULL */
-	void		(*smgr_abort) (void);		/* may be NULL */
-	void		(*smgr_pre_ckpt) (void);	/* may be NULL */
-	void		(*smgr_sync) (void);		/* may be NULL */
-	void		(*smgr_post_ckpt) (void);	/* may be NULL */
+	void		(*smgr_commit) (void);	/* may be NULL */
+	void		(*smgr_abort) (void);	/* may be NULL */
+	void		(*smgr_pre_ckpt) (void);		/* may be NULL */
+	void		(*smgr_sync) (void);	/* may be NULL */
+	void		(*smgr_post_ckpt) (void);		/* may be NULL */
 } f_smgr;
 
 
@@ -848,8 +848,8 @@ smgr_redo(XLogRecPtr lsn, XLogRecord *record)
 		/*
 		 * Forcibly create relation if it doesn't exist (which suggests that
 		 * it was dropped somewhere later in the WAL sequence).  As in
-		 * XLogOpenRelation, we prefer to recreate the rel and replay the
-		 * log as best we can until the drop is seen.
+		 * XLogOpenRelation, we prefer to recreate the rel and replay the log
+		 * as best we can until the drop is seen.
 		 */
 		smgrcreate(reln, false, true);
 

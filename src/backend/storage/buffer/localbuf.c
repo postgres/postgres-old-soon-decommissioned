@@ -139,7 +139,7 @@ LocalBufferAlloc(Relation reln, BlockNumber blockNum, bool *foundPtr)
 				/* Found a usable buffer */
 				LocalRefCount[b]++;
 				ResourceOwnerRememberBuffer(CurrentResourceOwner,
-											BufferDescriptorGetBuffer(bufHdr));
+										  BufferDescriptorGetBuffer(bufHdr));
 				break;
 			}
 		}
@@ -364,7 +364,7 @@ GetLocalBufferStorage(void)
 	if (next_buf_in_block >= num_bufs_in_block)
 	{
 		/* Need to make a new request to memmgr */
-		int		num_bufs;
+		int			num_bufs;
 
 		/* Start with a 16-buffer request; subsequent ones double each time */
 		num_bufs = Max(num_bufs_in_block * 2, 16);

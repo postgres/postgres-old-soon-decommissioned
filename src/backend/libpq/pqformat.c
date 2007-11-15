@@ -318,7 +318,7 @@ pq_sendfloat8(StringInfo buf, float8 f)
 	appendBinaryStringInfo(buf, (char *) &swap.h[1], 4);
 	appendBinaryStringInfo(buf, (char *) &swap.h[0], 4);
 #endif
-#else  /* INT64 works */
+#else							/* INT64 works */
 	union
 	{
 		float8		f;
@@ -552,7 +552,7 @@ pq_getmsgfloat8(StringInfo msg)
 	swap.h[0] = pq_getmsgint(msg, 4);
 #endif
 	return swap.f;
-#else  /* INT64 works */
+#else							/* INT64 works */
 	union
 	{
 		float8		f;

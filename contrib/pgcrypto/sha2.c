@@ -78,7 +78,7 @@
 	(x) = ((tmp & 0xffff0000ffff0000ULL) >> 16) | \
 		  ((tmp & 0x0000ffff0000ffffULL) << 16); \
 }
-#endif /* not bigendian */
+#endif   /* not bigendian */
 
 /*
  * Macro for incrementally adding the unsigned 64-bit integer n to the

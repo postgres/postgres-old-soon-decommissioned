@@ -89,7 +89,7 @@ typedef enum
 	GUC_SET,					/* entry caused by plain SET command */
 	GUC_LOCAL,					/* entry caused by SET LOCAL command */
 	GUC_SET_LOCAL				/* entry caused by SET then SET LOCAL */
-} GucStackState;
+}	GucStackState;
 
 typedef struct guc_stack
 {
@@ -97,8 +97,8 @@ typedef struct guc_stack
 	int			nest_level;		/* nesting depth at which we made entry */
 	GucStackState state;		/* see enum above */
 	GucSource	source;			/* source of the prior value */
-	union config_var_value prior;	/* previous value of variable */
-	union config_var_value masked;	/* SET value in a GUC_SET_LOCAL entry */
+	union config_var_value prior;		/* previous value of variable */
+	union config_var_value masked;		/* SET value in a GUC_SET_LOCAL entry */
 	/* masked value's source must be PGC_S_SESSION, so no need to store it */
 } GucStack;
 

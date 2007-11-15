@@ -65,7 +65,7 @@ DefineOperator(List *names, List *parameters)
 	Oid			oprNamespace;
 	AclResult	aclresult;
 	bool		canMerge = false;		/* operator merges */
-	bool		canHash = false;		/* operator hashes */
+	bool		canHash = false;	/* operator hashes */
 	List	   *functionName = NIL;		/* function for operator */
 	TypeName   *typeName1 = NULL;		/* first type name */
 	TypeName   *typeName2 = NULL;		/* second type name */

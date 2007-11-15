@@ -122,7 +122,7 @@ detzcode(const char *codep)
 }
 
 int
-tzload(const char *name, char *canonname, struct state *sp)
+tzload(const char *name, char *canonname, struct state * sp)
 {
 	const char *p;
 	int			i;
@@ -549,10 +549,11 @@ tzparse(const char *name, struct state * sp, int lastditch)
 		if (stdlen >= sizeof sp->chars)
 			stdlen = (sizeof sp->chars) - 1;
 		stdoffset = 0;
+
 		/*
-		 * Unlike the original zic library, do NOT invoke tzload() here;
-		 * we can't assume pg_open_tzfile() is sane yet, and we don't
-		 * care about leap seconds anyway.
+		 * Unlike the original zic library, do NOT invoke tzload() here; we
+		 * can't assume pg_open_tzfile() is sane yet, and we don't care about
+		 * leap seconds anyway.
 		 */
 		load_result = -1;
 	}
@@ -1081,7 +1082,7 @@ pg_get_timezone_offset(const pg_tz *tz, long int *gmtoff)
 {
 	/*
 	 * The zone could have more than one ttinfo, if it's historically used
-	 * more than one abbreviation.  We return TRUE as long as they all have
+	 * more than one abbreviation.	We return TRUE as long as they all have
 	 * the same gmtoff.
 	 */
 	const struct state *sp;

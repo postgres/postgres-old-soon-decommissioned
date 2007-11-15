@@ -61,7 +61,7 @@ tlist_member_ignore_relabel(Node *node, List *targetlist)
 	foreach(temp, targetlist)
 	{
 		TargetEntry *tlentry = (TargetEntry *) lfirst(temp);
-		Expr   *tlexpr = tlentry->expr;
+		Expr	   *tlexpr = tlentry->expr;
 
 		while (tlexpr && IsA(tlexpr, RelabelType))
 			tlexpr = ((RelabelType *) tlexpr)->arg;

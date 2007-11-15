@@ -275,4 +275,3 @@ FindConversion(const char *conname, Oid connamespace)
 
 	return conoid;
 }
-

@@ -38,7 +38,7 @@ const TwoPhaseCallback twophase_postcommit_callbacks[TWOPHASE_RM_MAX_ID + 1] =
 	lock_twophase_postcommit,	/* Lock */
 	inval_twophase_postcommit,	/* Inval */
 	flatfile_twophase_postcommit,		/* flat file update */
-	notify_twophase_postcommit,	/* notify/listen */
+	notify_twophase_postcommit, /* notify/listen */
 	pgstat_twophase_postcommit	/* pgstat */
 };
 

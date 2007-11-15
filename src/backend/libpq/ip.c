@@ -79,6 +79,7 @@ pg_getaddrinfo_all(const char *hostname, const char *servname,
 					 servname, hintp, result);
 
 #ifdef _AIX
+
 	/*
 	 * It seems some versions of AIX's getaddrinfo don't reliably zero
 	 * sin_port when servname is NULL, so clean up after it.

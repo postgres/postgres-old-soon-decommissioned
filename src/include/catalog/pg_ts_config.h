@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * pg_ts_config.h
- * 	definition of configuration of tsearch 
+ *	definition of configuration of tsearch
  *
  *
  * Portions Copyright (c) 1996-2007, PostgreSQL Global Development Group

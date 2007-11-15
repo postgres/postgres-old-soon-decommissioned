@@ -185,7 +185,7 @@ slashUsage(unsigned short int pager)
 			ON(pset.timing));
 	fprintf(output, _("  \\unset NAME    unset (delete) internal variable\n"));
 	fprintf(output, _("  \\prompt [TEXT] NAME\n"
-					  "                 prompt user to set internal variable\n"));
+				 "                 prompt user to set internal variable\n"));
 	fprintf(output, _("  \\! [COMMAND]   execute command in shell or start interactive shell\n"));
 	fprintf(output, "\n");
 

@@ -19,18 +19,18 @@
 
 
 /* Hook for plugins to get control in planner() */
-typedef PlannedStmt * (*planner_hook_type) (Query *parse,
-											int cursorOptions,
-											ParamListInfo boundParams);
+typedef PlannedStmt *(*planner_hook_type) (Query *parse,
+													   int cursorOptions,
+												  ParamListInfo boundParams);
 extern PGDLLIMPORT planner_hook_type planner_hook;
 
 
 extern PlannedStmt *planner(Query *parse, int cursorOptions,
 		ParamListInfo boundParams);
 extern PlannedStmt *standard_planner(Query *parse, int cursorOptions,
-		ParamListInfo boundParams);
-extern Plan *subquery_planner(PlannerGlobal *glob, Query *parse,
-							  Index level, double tuple_fraction,
-							  PlannerInfo **subroot);
+				 ParamListInfo boundParams);
+extern Plan *subquery_planner(PlannerGlobal * glob, Query *parse,
+				 Index level, double tuple_fraction,
+				 PlannerInfo **subroot);
 
 #endif   /* PLANNER_H */

@@ -337,12 +337,13 @@ ExecSupportsMarkRestore(NodeTag plantype)
 			return true;
 
 		case T_Result:
+
 			/*
-			 * T_Result only supports mark/restore if it has a child plan
-			 * that does, so we do not have enough information to give a
-			 * really correct answer.  However, for current uses it's
-			 * enough to always say "false", because this routine is not
-			 * asked about gating Result plans, only base-case Results.
+			 * T_Result only supports mark/restore if it has a child plan that
+			 * does, so we do not have enough information to give a really
+			 * correct answer.	However, for current uses it's enough to
+			 * always say "false", because this routine is not asked about
+			 * gating Result plans, only base-case Results.
 			 */
 			return false;
 

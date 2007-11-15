@@ -29,6 +29,7 @@ int			optreset;
 #endif
 
 static PGcancel *volatile cancelConn = NULL;
+
 #ifdef WIN32
 static CRITICAL_SECTION cancelConnLock;
 #endif
@@ -360,7 +361,6 @@ setup_cancel_handler(void)
 {
 	pqsignal(SIGINT, handle_sigint);
 }
-
 #else							/* WIN32 */
 
 /*
@@ -403,4 +403,3 @@ setup_cancel_handler(void)
 }
 
 #endif   /* WIN32 */
-

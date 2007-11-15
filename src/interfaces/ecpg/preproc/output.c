@@ -130,7 +130,7 @@ output_statement(char *stmt, int whenever_mode, enum ECPG_statement_type st)
 	fputs("ECPGt_EORT);", yyout);
 	reset_variables();
 
-	whenever_action(whenever_mode|2);
+	whenever_action(whenever_mode | 2);
 	free(stmt);
 	if (connection != NULL)
 		free(connection);
@@ -153,7 +153,8 @@ output_prepare_statement(char *name, char *stmt)
 void
 output_deallocate_prepare_statement(char *name)
 {
-	const char* con = connection ? connection : "NULL";
+	const char *con = connection ? connection : "NULL";
+
 	if (strcmp(name, "all"))
 	{
 		fprintf(yyout, "{ ECPGdeallocate(__LINE__, %d, %s, ", compat, con);
@@ -172,10 +173,12 @@ output_deallocate_prepare_statement(char *name)
 static void
 output_escaped_str(char *str, bool quoted)
 {
-	int i = 0;
-	int len = strlen(str);
-	
-	if (quoted && str[0] == '\"' && str[len-1] == '\"') /* do not escape quotes at beginning and end if quoted string */
+	int			i = 0;
+	int			len = strlen(str);
+
+	if (quoted && str[0] == '\"' && str[len - 1] == '\"')		/* do not escape quotes
+																 * at beginning and end
+																 * if quoted string */
 	{
 		i = 1;
 		len--;
@@ -200,6 +203,6 @@ output_escaped_str(char *str, bool quoted)
 			fputc(str[i], yyout);
 	}
 
-	if (quoted && str[0] == '\"' && str[len] == '\"') 
+	if (quoted && str[0] == '\"' && str[len] == '\"')
 		fputs("\"", yyout);
 }

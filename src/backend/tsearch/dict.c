@@ -40,7 +40,7 @@ ts_lexize(PG_FUNCTION_ARGS)
 											 PointerGetDatum(dict->dictData),
 												PointerGetDatum(VARDATA(in)),
 									   Int32GetDatum(VARSIZE(in) - VARHDRSZ),
-												 PointerGetDatum(&dstate)));
+												  PointerGetDatum(&dstate)));
 
 	if (dstate.getnext)
 	{
@@ -49,7 +49,7 @@ ts_lexize(PG_FUNCTION_ARGS)
 											 PointerGetDatum(dict->dictData),
 												PointerGetDatum(VARDATA(in)),
 									   Int32GetDatum(VARSIZE(in) - VARHDRSZ),
-												 PointerGetDatum(&dstate)));
+												  PointerGetDatum(&dstate)));
 		if (ptr != NULL)
 			res = ptr;
 	}

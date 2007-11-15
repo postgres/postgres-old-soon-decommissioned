@@ -486,7 +486,7 @@ static void dump_fors(PLpgSQL_stmt_fors *stmt);
 static void dump_exit(PLpgSQL_stmt_exit *stmt);
 static void dump_return(PLpgSQL_stmt_return *stmt);
 static void dump_return_next(PLpgSQL_stmt_return_next *stmt);
-static void dump_return_query(PLpgSQL_stmt_return_query *stmt);
+static void dump_return_query(PLpgSQL_stmt_return_query * stmt);
 static void dump_raise(PLpgSQL_stmt_raise *stmt);
 static void dump_execsql(PLpgSQL_stmt_execsql *stmt);
 static void dump_dynexecute(PLpgSQL_stmt_dynexecute *stmt);
@@ -766,7 +766,7 @@ static void
 dump_fetch(PLpgSQL_stmt_fetch *stmt)
 {
 	dump_ind();
-	
+
 	if (!stmt->is_move)
 	{
 		printf("FETCH curvar=%d\n", stmt->curvar);
@@ -814,7 +814,7 @@ dump_cursor_direction(PLpgSQL_stmt_fetch *stmt)
 		default:
 			printf("??? unknown cursor direction %d", stmt->direction);
 	}
-	
+
 	if (stmt->expr)
 	{
 		dump_expr(stmt->expr);
@@ -822,7 +822,7 @@ dump_cursor_direction(PLpgSQL_stmt_fetch *stmt)
 	}
 	else
 		printf("%d\n", stmt->how_many);
-		
+
 	dump_indent -= 2;
 }
 
@@ -885,7 +885,7 @@ dump_return_next(PLpgSQL_stmt_return_next *stmt)
 }
 
 static void
-dump_return_query(PLpgSQL_stmt_return_query *stmt)
+dump_return_query(PLpgSQL_stmt_return_query * stmt)
 {
 	dump_ind();
 	printf("RETURN QUERY ");
@@ -1124,4 +1124,3 @@ plpgsql_dumptree(PLpgSQL_function *func)
 	printf("\nEnd of execution tree of function %s\n\n", func->fn_name);
 	fflush(stdout);
 }
-

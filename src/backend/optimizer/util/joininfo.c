@@ -56,8 +56,8 @@ have_relevant_joinclause(PlannerInfo *root,
 	}
 
 	/*
-	 * We also need to check the EquivalenceClass data structure, which
-	 * might contain relationships not emitted into the joininfo lists.
+	 * We also need to check the EquivalenceClass data structure, which might
+	 * contain relationships not emitted into the joininfo lists.
 	 */
 	if (!result && rel1->has_eclass_joins && rel2->has_eclass_joins)
 		result = have_relevant_eclass_joinclause(root, rel1, rel2);

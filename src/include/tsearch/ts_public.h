@@ -27,7 +27,7 @@ typedef struct
 	int			lexid;
 	char	   *alias;
 	char	   *descr;
-} LexDescr;
+}	LexDescr;
 
 /*
  * Interface to headline generator
@@ -42,8 +42,8 @@ typedef struct
 				type:8,
 				len:16;
 	char	   *word;
-	QueryOperand  *item;
-} HeadlineWordEntry;
+	QueryOperand *item;
+}	HeadlineWordEntry;
 
 typedef struct
 {
@@ -54,13 +54,13 @@ typedef struct
 	char	   *stopsel;
 	int2		startsellen;
 	int2		stopsellen;
-} HeadlineParsedText;
+}	HeadlineParsedText;
 
 /*
  * Common useful things for tsearch subsystem
  */
 extern char *get_tsearch_config_filename(const char *basename,
-										 const char *extension);
+							const char *extension);
 
 extern char *pnstrdup(const char *in, int len);
 
@@ -71,11 +71,11 @@ typedef struct
 {
 	int			len;
 	char	  **stop;
-} StopList;
+}	StopList;
 
-extern void readstoplist(const char *fname, StopList *s,
-						 char *(*wordop) (const char *));
-extern bool searchstoplist(StopList *s, char *key);
+extern void readstoplist(const char *fname, StopList * s,
+			 char *(*wordop) (const char *));
+extern bool searchstoplist(StopList * s, char *key);
 
 /*
  * Interface with dictionaries
@@ -96,7 +96,7 @@ typedef struct
 
 	/* C-string */
 	char	   *lexeme;
-} TSLexeme;
+}	TSLexeme;
 
 #define TSL_ADDPOS		0x01
 
@@ -111,6 +111,6 @@ typedef struct
 	bool		getnext;		/* out: dict wants next lexeme */
 	void	   *private;		/* internal dict state between calls with
 								 * getnext == true */
-} DictSubState;
+}	DictSubState;
 
 #endif   /* _PG_TS_PUBLIC_H_ */

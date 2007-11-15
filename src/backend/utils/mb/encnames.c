@@ -47,8 +47,8 @@ pg_encname	pg_encname_tbl[] =
 								 * Chinese */
 	{
 		"eucjis2004", PG_EUC_JIS_2004
-	},							/* EUC-JIS-2004; Extended UNIX Code fixed Width for
-								 * Japanese, standard JIS X 0213 */
+	},							/* EUC-JIS-2004; Extended UNIX Code fixed
+								 * Width for Japanese, standard JIS X 0213 */
 	{
 		"eucjp", PG_EUC_JP
 	},							/* EUC-JP; Extended UNIX Code fixed Width for
@@ -164,8 +164,8 @@ pg_encname	pg_encname_tbl[] =
 
 	{
 		"shiftjis2004", PG_SHIFT_JIS_2004
-	},							/* SHIFT-JIS-2004; Shift JIS for
-								 * Japanese, standard JIS X 0213 */
+	},							/* SHIFT-JIS-2004; Shift JIS for Japanese,
+								 * standard JIS X 0213 */
 	{
 		"sjis", PG_SJIS
 	},							/* alias for Shift_JIS */
@@ -470,7 +470,7 @@ static char *
 clean_encoding_name(const char *key, char *newkey)
 {
 	const char *p;
-	char 	   *np;
+	char	   *np;
 
 	for (p = key, np = newkey; *p != '\0'; p++)
 	{

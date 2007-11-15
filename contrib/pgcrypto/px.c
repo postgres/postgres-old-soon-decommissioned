@@ -286,7 +286,7 @@ combo_decrypt(PX_Combo * cx, const uint8 *data, unsigned dlen,
 		/* with padding, empty ciphertext is not allowed */
 		if (cx->padding)
 			return PXE_DECRYPT_FAILED;
-		
+
 		/* without padding, report empty result */
 		*rlen = 0;
 		return 0;

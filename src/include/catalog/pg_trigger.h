@@ -46,8 +46,8 @@ CATALOG(pg_trigger,2620)
 	Oid			tgfoid;			/* OID of function to be called */
 	int2		tgtype;			/* BEFORE/AFTER UPDATE/DELETE/INSERT
 								 * ROW/STATEMENT; see below */
-	char		tgenabled;		/* trigger's firing configuration
-								 * WRT session_replication_role */
+	char		tgenabled;		/* trigger's firing configuration WRT
+								 * session_replication_role */
 	bool		tgisconstraint; /* trigger is a constraint trigger */
 	NameData	tgconstrname;	/* constraint name */
 	Oid			tgconstrrelid;	/* constraint's FROM table, if any */

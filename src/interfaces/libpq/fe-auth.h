@@ -18,7 +18,7 @@
 #include "libpq-int.h"
 
 
-extern int pg_fe_sendauth(AuthRequest areq, PGconn *conn);
+extern int	pg_fe_sendauth(AuthRequest areq, PGconn *conn);
 extern char *pg_fe_getauthname(PQExpBuffer errorMessage);
 
 #endif   /* FE_AUTH_H */

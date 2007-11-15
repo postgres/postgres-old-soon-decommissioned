@@ -1145,8 +1145,8 @@ init_params(List *options, bool isInit,
 		snprintf(bufm, sizeof(bufm), INT64_FORMAT, new->max_value);
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-			   errmsg("START value (%s) cannot be greater than MAXVALUE (%s)",
-					  bufs, bufm)));
+			  errmsg("START value (%s) cannot be greater than MAXVALUE (%s)",
+					 bufs, bufm)));
 	}
 
 	/* CACHE */
@@ -1221,7 +1221,7 @@ process_owned_by(Relation seqrel, List *owned_by)
 		if (seqrel->rd_rel->relowner != tablerel->rd_rel->relowner)
 			ereport(ERROR,
 					(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
-			errmsg("sequence must have same owner as table it is linked to")));
+					 errmsg("sequence must have same owner as table it is linked to")));
 		if (RelationGetNamespace(seqrel) != RelationGetNamespace(tablerel))
 			ereport(ERROR,
 					(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),

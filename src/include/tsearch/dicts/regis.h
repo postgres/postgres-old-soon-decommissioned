@@ -22,7 +22,7 @@ typedef struct RegisNode
 				unused:14;
 	struct RegisNode *next;
 	unsigned char data[1];
-} RegisNode;
+}	RegisNode;
 
 #define  RNHDRSZ	(offsetof(RegisNode,data))
 
@@ -36,7 +36,7 @@ typedef struct Regis
 				issuffix:1,
 				nchar:16,
 				unused:15;
-} Regis;
+}	Regis;
 
 bool		RS_isRegis(const char *str);
 

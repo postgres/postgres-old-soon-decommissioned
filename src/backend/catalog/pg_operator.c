@@ -868,7 +868,7 @@ makeOperatorDependencies(HeapTuple tuple)
 	 * operators oprcom and oprnegate. We would not want to delete this
 	 * operator if those go away, but only reset the link fields; which is not
 	 * a function that the dependency code can presently handle.  (Something
-	 * could perhaps be done with objectSubId though.)  For now, it's okay to
+	 * could perhaps be done with objectSubId though.)	For now, it's okay to
 	 * let those links dangle if a referenced operator is removed.
 	 */
 

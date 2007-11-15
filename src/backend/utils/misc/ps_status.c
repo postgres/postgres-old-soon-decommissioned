@@ -155,7 +155,7 @@ save_ps_display_args(int argc, char **argv)
 
 		ps_buffer = argv[0];
 		last_status_len = ps_buffer_size = end_of_area - argv[0];
-		
+
 		/*
 		 * move the environment out of the way
 		 */

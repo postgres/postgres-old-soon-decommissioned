@@ -334,7 +334,7 @@ format_type_internal(Oid type_oid, int32 typemod,
 static char *
 printTypmod(const char *typname, int32 typmod, Oid typmodout)
 {
-	char	*res;
+	char	   *res;
 
 	/* Shouldn't be called if typmod is -1 */
 	Assert(typmod >= 0);
@@ -348,7 +348,7 @@ printTypmod(const char *typname, int32 typmod, Oid typmodout)
 	else
 	{
 		/* Use the type-specific typmodout procedure */
-		char *tmstr;
+		char	   *tmstr;
 
 		tmstr = DatumGetCString(OidFunctionCall1(typmodout,
 												 Int32GetDatum(typmod)));

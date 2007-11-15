@@ -28,16 +28,16 @@
 #define AutovacuumRelationId	1248
 CATALOG(pg_autovacuum,1248) BKI_WITHOUT_OIDS
 {
-	Oid			vacrelid;			/* OID of table */
-	bool		enabled;			/* enabled for this table? */
+	Oid			vacrelid;		/* OID of table */
+	bool		enabled;		/* enabled for this table? */
 	int4		vac_base_thresh;	/* base threshold value */
-	float4		vac_scale_factor;	/* reltuples scaling factor */
+	float4		vac_scale_factor;		/* reltuples scaling factor */
 	int4		anl_base_thresh;	/* base threshold value */
-	float4		anl_scale_factor;	/* reltuples scaling factor */
-	int4		vac_cost_delay;		/* vacuum cost-based delay */
-	int4		vac_cost_limit;		/* vacuum cost limit */
-	int4		freeze_min_age;		/* vacuum min freeze age */
-	int4		freeze_max_age;		/* max age before forcing vacuum */
+	float4		anl_scale_factor;		/* reltuples scaling factor */
+	int4		vac_cost_delay; /* vacuum cost-based delay */
+	int4		vac_cost_limit; /* vacuum cost limit */
+	int4		freeze_min_age; /* vacuum min freeze age */
+	int4		freeze_max_age; /* max age before forcing vacuum */
 } FormData_pg_autovacuum;
 
 /* ----------------

@@ -39,7 +39,7 @@ typedef struct TypeCacheEntry
 	 * information hasn't yet been requested.
 	 */
 	Oid			btree_opf;		/* the default btree opclass' family */
-	Oid			btree_opintype;	/* the default btree opclass' opcintype */
+	Oid			btree_opintype; /* the default btree opclass' opcintype */
 	Oid			hash_opf;		/* the default hash opclass' family */
 	Oid			hash_opintype;	/* the default hash opclass' opcintype */
 	Oid			eq_opr;			/* the equality operator */

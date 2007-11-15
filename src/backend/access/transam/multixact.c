@@ -380,9 +380,9 @@ MultiXactIdIsRunning(MultiXactId multi)
 	}
 
 	/*
-	 * Checking for myself is cheap compared to looking in shared memory,
-	 * so first do the equivalent of MultiXactIdIsCurrent().  This is not
-	 * needed for correctness, it's just a fast path.
+	 * Checking for myself is cheap compared to looking in shared memory, so
+	 * first do the equivalent of MultiXactIdIsCurrent().  This is not needed
+	 * for correctness, it's just a fast path.
 	 */
 	for (i = 0; i < nmembers; i++)
 	{

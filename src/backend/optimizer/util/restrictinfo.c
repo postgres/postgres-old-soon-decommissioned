@@ -534,7 +534,7 @@ extract_actual_join_clauses(List *restrictinfo_list,
  *
  * Given a list of RestrictInfo clauses that are to be applied in a join,
  * select the ones that are not redundant with any clause in the
- * reference_list.  This is used only for nestloop-with-inner-indexscan
+ * reference_list.	This is used only for nestloop-with-inner-indexscan
  * joins: any clauses being checked by the index should be removed from
  * the qpquals list.
  *

@@ -312,7 +312,6 @@ pgp_decompress_filter(PullFilter ** res, PGP_Context * ctx, PullFilter * src)
 {
 	return pullf_create(res, &decompress_filter, ctx, src);
 }
-
 #else							/* !HAVE_ZLIB */
 
 int

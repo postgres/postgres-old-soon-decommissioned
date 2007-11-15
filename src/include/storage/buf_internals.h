@@ -183,10 +183,10 @@ extern long int LocalBufferFlushCount;
 
 /* freelist.c */
 extern volatile BufferDesc *StrategyGetBuffer(BufferAccessStrategy strategy,
-											  bool *lock_held);
+				  bool *lock_held);
 extern void StrategyFreeBuffer(volatile BufferDesc *buf);
 extern bool StrategyRejectBuffer(BufferAccessStrategy strategy,
-								 volatile BufferDesc *buf);
+					 volatile BufferDesc *buf);
 
 extern int	StrategySyncStart(uint32 *complete_passes, uint32 *num_buf_alloc);
 extern Size StrategyShmemSize(void);

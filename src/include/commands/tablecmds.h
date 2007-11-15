@@ -47,8 +47,8 @@ extern void renamerel(Oid myrelid,
 		  ObjectType reltype);
 
 extern void find_composite_type_dependencies(Oid typeOid,
-											 const char *origTblName,
-											 const char *origTypeName);
+								 const char *origTblName,
+								 const char *origTypeName);
 
 extern AttrNumber *varattnos_map(TupleDesc old, TupleDesc new);
 extern AttrNumber *varattnos_map_schema(TupleDesc old, List *schema);

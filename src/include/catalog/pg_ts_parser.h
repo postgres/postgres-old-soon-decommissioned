@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * pg_ts_parser.h
- * 	definition of parsers for tsearch
+ *	definition of parsers for tsearch
  *
  *
  * Portions Copyright (c) 1996-2007, PostgreSQL Global Development Group

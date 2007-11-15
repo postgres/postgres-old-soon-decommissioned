@@ -166,9 +166,9 @@ get_relation_info(PlannerInfo *root, Oid relationObjectId, bool inhparent,
 			}
 
 			/*
-			 * If the index is valid, but cannot yet be used, ignore it;
-			 * but mark the plan we are generating as transient.
-			 * See src/backend/access/heap/README.HOT for discussion.
+			 * If the index is valid, but cannot yet be used, ignore it; but
+			 * mark the plan we are generating as transient. See
+			 * src/backend/access/heap/README.HOT for discussion.
 			 */
 			if (index->indcheckxmin &&
 				!TransactionIdPrecedes(HeapTupleHeaderGetXmin(indexRelation->rd_indextuple->t_data),
@@ -187,7 +187,7 @@ get_relation_info(PlannerInfo *root, Oid relationObjectId, bool inhparent,
 
 			/*
 			 * Allocate per-column info arrays.  To save a few palloc cycles
-			 * we allocate all the Oid-type arrays in one request.  Note that
+			 * we allocate all the Oid-type arrays in one request.	Note that
 			 * the opfamily array needs an extra, terminating zero at the end.
 			 * We pre-zero the ordering info in case the index is unordered.
 			 */
@@ -221,9 +221,9 @@ get_relation_info(PlannerInfo *root, Oid relationObjectId, bool inhparent,
 
 				for (i = 0; i < ncolumns; i++)
 				{
-					int16	opt = indexRelation->rd_indoption[i];
-					int		fwdstrat;
-					int		revstrat;
+					int16		opt = indexRelation->rd_indoption[i];
+					int			fwdstrat;
+					int			revstrat;
 
 					if (opt & INDOPTION_DESC)
 					{
@@ -235,10 +235,11 @@ get_relation_info(PlannerInfo *root, Oid relationObjectId, bool inhparent,
 						fwdstrat = BTLessStrategyNumber;
 						revstrat = BTGreaterStrategyNumber;
 					}
+
 					/*
-					 * Index AM must have a fixed set of strategies for it
-					 * to make sense to specify amcanorder, so we
-					 * need not allow the case amstrategies == 0.
+					 * Index AM must have a fixed set of strategies for it to
+					 * make sense to specify amcanorder, so we need not allow
+					 * the case amstrategies == 0.
 					 */
 					if (fwdstrat > 0)
 					{

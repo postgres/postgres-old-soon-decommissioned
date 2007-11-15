@@ -354,7 +354,7 @@ entryPlaceToPage(GinBtree btree, Buffer buf, OffsetNumber off, XLogRecData **prd
 	static XLogRecData rdata[3];
 	OffsetNumber placed;
 	static ginxlogInsert data;
-	int 	cnt=0;
+	int			cnt = 0;
 
 	*prdata = rdata;
 	data.updateBlkno = entryPreparePage(btree, page, off);
@@ -372,14 +372,14 @@ entryPlaceToPage(GinBtree btree, Buffer buf, OffsetNumber off, XLogRecData **prd
 	data.isData = false;
 	data.isLeaf = GinPageIsLeaf(page) ? TRUE : FALSE;
 
-    /*
-	 * Prevent full page write if child's split occurs. That is needed
-	 * to remove incomplete splits while replaying WAL
+	/*
+	 * Prevent full page write if child's split occurs. That is needed to
+	 * remove incomplete splits while replaying WAL
 	 *
-	 * data.updateBlkno contains new block number (of newly created right page)
-	 * for recently splited page.
+	 * data.updateBlkno contains new block number (of newly created right
+	 * page) for recently splited page.
 	 */
-	if ( data.updateBlkno == InvalidBlockNumber ) 
+	if (data.updateBlkno == InvalidBlockNumber)
 	{
 		rdata[0].buffer = buf;
 		rdata[0].buffer_std = TRUE;
@@ -392,7 +392,7 @@ entryPlaceToPage(GinBtree btree, Buffer buf, OffsetNumber off, XLogRecData **prd
 	rdata[cnt].buffer = InvalidBuffer;
 	rdata[cnt].data = (char *) &data;
 	rdata[cnt].len = sizeof(ginxlogInsert);
-	rdata[cnt].next = &rdata[cnt+1];
+	rdata[cnt].next = &rdata[cnt + 1];
 	cnt++;
 
 	rdata[cnt].buffer = InvalidBuffer;

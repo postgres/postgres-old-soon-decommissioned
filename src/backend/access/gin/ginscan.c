@@ -164,13 +164,13 @@ newScanKey(IndexScanDesc scan)
 									   UInt16GetDatum(scankey[i].sk_strategy)
 															  )
 			);
-		if ( nEntryValues < 0 )
+		if (nEntryValues < 0)
 		{
 			/*
-			 * extractQueryFn signals that nothing will be found,
-			 * so we can just set isVoidRes flag...
+			 * extractQueryFn signals that nothing will be found, so we can
+			 * just set isVoidRes flag...
 			 */
-			so->isVoidRes = true;	
+			so->isVoidRes = true;
 			break;
 		}
 		if (entryValues == NULL || nEntryValues == 0)
@@ -187,7 +187,7 @@ newScanKey(IndexScanDesc scan)
 	if (so->nkeys == 0 && !so->isVoidRes)
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("GIN index does not support search with void query")));
+			   errmsg("GIN index does not support search with void query")));
 
 	pgstat_count_index_scan(scan->indexRelation);
 }

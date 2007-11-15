@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * pg_ts_template.h
- * 	definition of dictionary templates for tsearch
+ *	definition of dictionary templates for tsearch
  *
  *
  * Portions Copyright (c) 1996-2007, PostgreSQL Global Development Group
@@ -29,7 +29,7 @@
  */
 
 /* ----------------
- *		pg_ts_template definition.  cpp turns this into
+ *		pg_ts_template definition.	cpp turns this into
  *		typedef struct FormData_pg_ts_template
  * ----------------
  */

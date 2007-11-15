@@ -84,7 +84,7 @@ typedef void (*SubXactCallback) (SubXactEvent event, SubTransactionId mySubid,
 
 typedef struct xl_xact_commit
 {
-	TimestampTz	xact_time;		/* time of commit */
+	TimestampTz xact_time;		/* time of commit */
 	int			nrels;			/* number of RelFileNodes */
 	int			nsubxacts;		/* number of subtransaction XIDs */
 	/* Array of RelFileNode(s) to drop at commit */
@@ -96,7 +96,7 @@ typedef struct xl_xact_commit
 
 typedef struct xl_xact_abort
 {
-	TimestampTz	xact_time;		/* time of abort */
+	TimestampTz xact_time;		/* time of abort */
 	int			nrels;			/* number of RelFileNodes */
 	int			nsubxacts;		/* number of subtransaction XIDs */
 	/* Array of RelFileNode(s) to drop at abort */

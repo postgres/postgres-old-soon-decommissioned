@@ -35,7 +35,7 @@ typedef struct
 	Relation	index;
 	MemoryContext opCtx;
 	GistBulkDeleteResult *result;
-	BufferAccessStrategy	strategy;
+	BufferAccessStrategy strategy;
 } GistVacuum;
 
 typedef struct

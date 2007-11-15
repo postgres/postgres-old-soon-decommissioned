@@ -98,7 +98,7 @@ ExecInitSubqueryScan(SubqueryScan *node, EState *estate, int eflags)
 	Assert(!(eflags & EXEC_FLAG_MARK));
 
 	/*
-	 * SubqueryScan should not have any "normal" children.  Also, if planner
+	 * SubqueryScan should not have any "normal" children.	Also, if planner
 	 * left anything in subrtable, it's fishy.
 	 */
 	Assert(outerPlan(node) == NULL);

@@ -28,7 +28,7 @@ typedef struct
 {
 	/* dynahash.c requires key to be first field */
 	char		stmt_name[NAMEDATALEN];
-	CachedPlanSource *plansource;	/* the actual cached plan */
+	CachedPlanSource *plansource;		/* the actual cached plan */
 	bool		from_sql;		/* prepared via SQL, not FE/BE protocol? */
 	TimestampTz prepare_time;	/* the time when the stmt was prepared */
 } PreparedStatement;
@@ -41,8 +41,8 @@ extern void ExecuteQuery(ExecuteStmt *stmt, const char *queryString,
 			 DestReceiver *dest, char *completionTag);
 extern void DeallocateQuery(DeallocateStmt *stmt);
 extern void ExplainExecuteQuery(ExecuteStmt *execstmt, ExplainStmt *stmt,
-								const char *queryString,
-								ParamListInfo params, TupOutputState *tstate);
+					const char *queryString,
+					ParamListInfo params, TupOutputState *tstate);
 
 /* Low-level access to stored prepared statements */
 extern void StorePreparedStatement(const char *stmt_name,
@@ -60,6 +60,6 @@ extern void DropPreparedStatement(const char *stmt_name, bool showError);
 extern TupleDesc FetchPreparedStatementResultDesc(PreparedStatement *stmt);
 extern List *FetchPreparedStatementTargetList(PreparedStatement *stmt);
 
-void DropAllPreparedStatements(void);
+void		DropAllPreparedStatements(void);
 
 #endif   /* PREPARE_H */

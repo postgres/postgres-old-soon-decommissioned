@@ -45,7 +45,7 @@ makeStringInfo(void)
 void
 initStringInfo(StringInfo str)
 {
-	int			size = 1024;		/* initial default buffer size */
+	int			size = 1024;	/* initial default buffer size */
 
 	str->data = (char *) palloc(size);
 	str->maxlen = size;
@@ -234,7 +234,7 @@ enlargeStringInfo(StringInfo str, int needed)
 	int			newlen;
 
 	/*
-	 * Guard against out-of-range "needed" values.  Without this, we can get
+	 * Guard against out-of-range "needed" values.	Without this, we can get
 	 * an overflow or infinite loop in the following.
 	 */
 	if (needed < 0)				/* should not happen */

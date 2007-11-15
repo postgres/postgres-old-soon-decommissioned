@@ -65,7 +65,7 @@ CATALOG(pg_class,1259) BKI_BOOTSTRAP
 	bool		relhaspkey;		/* has PRIMARY KEY index */
 	bool		relhasrules;	/* has associated rules */
 	bool		relhassubclass; /* has derived classes */
-	TransactionId relfrozenxid;	/* all Xids < this are frozen in this rel */
+	TransactionId relfrozenxid; /* all Xids < this are frozen in this rel */
 
 	/*
 	 * VARIABLE LENGTH FIELDS start here.  These fields may be NULL, too.

@@ -205,7 +205,7 @@ AuxiliaryProcessMain(int argc, char *argv[])
 {
 	char	   *progname = argv[0];
 	int			flag;
-	AuxProcType	auxType = CheckerProcess;
+	AuxProcType auxType = CheckerProcess;
 	char	   *userDoption = NULL;
 
 	/*
@@ -431,7 +431,7 @@ AuxiliaryProcessMain(int argc, char *argv[])
 			InitXLOGAccess();
 			WalWriterMain();
 			proc_exit(1);		/* should never return */
-			
+
 		default:
 			elog(PANIC, "unrecognized process type: %d", auxType);
 			proc_exit(1);
@@ -568,7 +568,7 @@ bootstrap_signals(void)
 }
 
 /*
- * Begin shutdown of an auxiliary process.  This is approximately the equivalent
+ * Begin shutdown of an auxiliary process.	This is approximately the equivalent
  * of ShutdownPostgres() in postinit.c.  We can't run transactions in an
  * auxiliary process, so most of the work of AbortTransaction() is not needed,
  * but we do need to make sure we've released any LWLocks we are holding.

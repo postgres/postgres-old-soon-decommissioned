@@ -569,7 +569,7 @@ ExecHashJoinOuterGetTuple(PlanState *outerNode,
 			econtext->ecxt_outertuple = slot;
 			if (ExecHashGetHashValue(hashtable, econtext,
 									 hjstate->hj_OuterHashKeys,
-									 true, /* outer tuple */
+									 true,		/* outer tuple */
 									 (hjstate->js.jointype == JOIN_LEFT),
 									 hashvalue))
 			{
@@ -580,8 +580,8 @@ ExecHashJoinOuterGetTuple(PlanState *outerNode,
 			}
 
 			/*
-			 * That tuple couldn't match because of a NULL, so discard it
-			 * and continue with the next one.
+			 * That tuple couldn't match because of a NULL, so discard it and
+			 * continue with the next one.
 			 */
 			slot = ExecProcNode(outerNode);
 		}

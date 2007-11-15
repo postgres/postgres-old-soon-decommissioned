@@ -149,9 +149,9 @@ pg_buffercache_pages(PG_FUNCTION_ARGS)
 		/*
 		 * And release locks.  We do this in reverse order for two reasons:
 		 * (1) Anyone else who needs more than one of the locks will be trying
-		 * to lock them in increasing order; we don't want to release the other
-		 * process until it can get all the locks it needs.
-		 * (2) This avoids O(N^2) behavior inside LWLockRelease.
+		 * to lock them in increasing order; we don't want to release the
+		 * other process until it can get all the locks it needs. (2) This
+		 * avoids O(N^2) behavior inside LWLockRelease.
 		 */
 		for (i = NUM_BUFFER_PARTITIONS; --i >= 0;)
 			LWLockRelease(FirstBufMappingLock + i);

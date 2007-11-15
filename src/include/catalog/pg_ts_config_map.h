@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * pg_ts_config_map.h
- * 	definition of token mappings for configurations of tsearch 
+ *	definition of token mappings for configurations of tsearch
  *
  *
  * Portions Copyright (c) 1996-2007, PostgreSQL Global Development Group
@@ -37,7 +37,7 @@
 
 CATALOG(pg_ts_config_map,3603) BKI_WITHOUT_OIDS
 {
-	Oid			mapcfg;			/* OID of configuration owning this entry */ 
+	Oid			mapcfg;			/* OID of configuration owning this entry */
 	int4		maptokentype;	/* token type from parser */
 	int4		mapseqno;		/* order in which to consult dictionaries */
 	Oid			mapdict;		/* dictionary to consult */
@@ -80,4 +80,4 @@ DATA(insert ( 3748	20	1	3765 ));
 DATA(insert ( 3748	21	1	3765 ));
 DATA(insert ( 3748	22	1	3765 ));
 
-#endif /* PG_TS_CONFIG_MAP_H */
+#endif   /* PG_TS_CONFIG_MAP_H */

@@ -60,17 +60,18 @@ ginarrayextract(PG_FUNCTION_ARGS)
 					  elmlen, elmbyval, elmalign,
 					  &entries, NULL, (int *) nentries);
 
-	if ( *nentries == 0 && PG_NARGS() == 3 )
+	if (*nentries == 0 && PG_NARGS() == 3)
 	{
-		switch( PG_GETARG_UINT16(2) ) /* StrategyNumber */
+		switch (PG_GETARG_UINT16(2))	/* StrategyNumber */
 		{
 			case GinOverlapStrategy:
-					*nentries = -1; /* nobody can be found */
-					break;
+				*nentries = -1; /* nobody can be found */
+				break;
 			case GinContainsStrategy:
 			case GinContainedStrategy:
 			case GinEqualStrategy:
-			default:	/* require fullscan: GIN can't find void arrays */
+			default:			/* require fullscan: GIN can't find void
+								 * arrays */
 				break;
 		}
 	}

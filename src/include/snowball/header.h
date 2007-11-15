@@ -59,4 +59,4 @@
 #endif
 #define free(a)			pfree(a)
 
-#endif /* SNOWBALL_HEADR_H */
+#endif   /* SNOWBALL_HEADR_H */

@@ -28,7 +28,7 @@ static void DiscardAll(bool isTopLevel);
  * DISCARD { ALL | TEMP | PLANS }
  */
 void
-DiscardCommand(DiscardStmt *stmt, bool isTopLevel)
+DiscardCommand(DiscardStmt * stmt, bool isTopLevel)
 {
 	switch (stmt->target)
 	{
@@ -54,10 +54,10 @@ DiscardAll(bool isTopLevel)
 {
 	/*
 	 * Disallow DISCARD ALL in a transaction block. This is arguably
-	 * inconsistent (we don't make a similar check in the command
-	 * sequence that DISCARD ALL is equivalent to), but the idea is
-	 * to catch mistakes: DISCARD ALL inside a transaction block
-	 * would leave the transaction still uncommitted.
+	 * inconsistent (we don't make a similar check in the command sequence
+	 * that DISCARD ALL is equivalent to), but the idea is to catch mistakes:
+	 * DISCARD ALL inside a transaction block would leave the transaction
+	 * still uncommitted.
 	 */
 	PreventTransactionChain(isTopLevel, "DISCARD ALL");
 

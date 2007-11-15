@@ -487,7 +487,7 @@ checkSharedDependencies(Oid classId, Oid objectId)
 	/*
 	 * We limit the number of dependencies reported to the client to
 	 * MAX_REPORTED_DEPS, since client software may not deal well with
-	 * enormous error strings.  The server log always gets a full report,
+	 * enormous error strings.	The server log always gets a full report,
 	 * which is collected in a separate StringInfo if and only if we detect
 	 * that the client report is going to be truncated.
 	 */
@@ -662,7 +662,7 @@ checkSharedDependencies(Oid classId, Oid objectId)
 
 	if (numNotReportedDeps > 0 || numNotReportedDbs > 0)
 	{
-		ObjectAddress	obj;
+		ObjectAddress obj;
 
 		obj.classId = classId;
 		obj.objectId = objectId;

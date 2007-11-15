@@ -18,7 +18,7 @@
 #include "nodes/parsenodes.h"
 
 extern void CreateSchemaCommand(CreateSchemaStmt *parsetree,
-								const char *queryString);
+					const char *queryString);
 
 extern void RemoveSchema(List *names, DropBehavior behavior, bool missing_ok);
 extern void RemoveSchemaById(Oid schemaOid);

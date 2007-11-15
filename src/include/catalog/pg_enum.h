@@ -35,7 +35,7 @@
  *		typedef struct FormData_pg_enum
  * ----------------
  */
-#define EnumRelationId  3501
+#define EnumRelationId	3501
 
 CATALOG(pg_enum,3501)
 {

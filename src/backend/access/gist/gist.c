@@ -360,8 +360,8 @@ gistplacetopage(GISTInsertState *state, GISTSTATE *giststate)
 			ptr->block.blkno = BufferGetBlockNumber(ptr->buffer);
 
 			/*
-			 * fill page, we can do it because all these pages are new
-			 * (ie not linked in tree or masked by temp page
+			 * fill page, we can do it because all these pages are new (ie not
+			 * linked in tree or masked by temp page
 			 */
 			data = (char *) (ptr->list);
 			for (i = 0; i < ptr->block.num; i++)

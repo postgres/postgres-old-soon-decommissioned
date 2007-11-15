@@ -40,7 +40,7 @@ typedef struct IndexVacuumInfo
 	bool		vacuum_full;	/* VACUUM FULL (we have exclusive lock) */
 	int			message_level;	/* ereport level for progress messages */
 	double		num_heap_tuples;	/* tuples remaining in heap */
-	BufferAccessStrategy strategy;	/* access strategy for reads */
+	BufferAccessStrategy strategy;		/* access strategy for reads */
 } IndexVacuumInfo;
 
 /*

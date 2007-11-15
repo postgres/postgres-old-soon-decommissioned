@@ -83,6 +83,6 @@ typedef struct ParamExecData
 extern ParamListInfo copyParamList(ParamListInfo from);
 
 extern void getParamListTypes(ParamListInfo params,
-							  Oid **param_types, int *num_params);
+				  Oid **param_types, int *num_params);
 
 #endif   /* PARAMS_H */

@@ -394,7 +394,8 @@ GetNextLocalTransactionId(void)
 	LocalTransactionId result;
 
 	/* loop to avoid returning InvalidLocalTransactionId at wraparound */
-	do {
+	do
+	{
 		result = nextLocalTransactionId++;
 	} while (!LocalTransactionIdIsValid(result));
 

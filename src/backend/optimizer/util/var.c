@@ -166,7 +166,7 @@ pull_varattnos_walker(Node *node, Bitmapset **varattnos)
 
 		Assert(var->varno == 1);
 		*varattnos = bms_add_member(*varattnos,
-						var->varattno - FirstLowInvalidHeapAttributeNumber);
+						 var->varattno - FirstLowInvalidHeapAttributeNumber);
 		return false;
 	}
 	/* Should not find a subquery or subplan */

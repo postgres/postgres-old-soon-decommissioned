@@ -24,13 +24,13 @@ typedef struct
 {
 	char	   *in;
 	char	   *out;
-} Syn;
+}	Syn;
 
 typedef struct
 {
-	int			len;	/* length of syn array */
+	int			len;			/* length of syn array */
 	Syn		   *syn;
-} DictSyn;
+}	DictSyn;
 
 /*
  * Finds the next whitespace-delimited word within the 'in' string.
@@ -136,8 +136,8 @@ dsynonym_init(PG_FUNCTION_ARGS)
 		*end = '\0';
 
 		/*
-		 * starti now points to the first word, and starto to the second
-		 * word on the line, with a \0 terminator at the end of both words.
+		 * starti now points to the first word, and starto to the second word
+		 * on the line, with a \0 terminator at the end of both words.
 		 */
 
 		if (cur >= d->len)
@@ -159,7 +159,7 @@ dsynonym_init(PG_FUNCTION_ARGS)
 
 		cur++;
 
-	skipline:
+skipline:
 		pfree(line);
 	}
 
@@ -176,7 +176,7 @@ dsynonym_lexize(PG_FUNCTION_ARGS)
 {
 	DictSyn    *d = (DictSyn *) PG_GETARG_POINTER(0);
 	char	   *in = (char *) PG_GETARG_POINTER(1);
-	int32	   len = PG_GETARG_INT32(2);
+	int32		len = PG_GETARG_INT32(2);
 	Syn			key,
 			   *found;
 	TSLexeme   *res;

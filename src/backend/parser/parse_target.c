@@ -827,8 +827,8 @@ ExpandColumnRefStar(ParseState *pstate, ColumnRef *cref,
 		 *
 		 * Since the grammar only accepts bare '*' at top level of SELECT, we
 		 * need not handle the targetlist==false case here.  However, we must
-		 * test for it because the grammar currently fails to distinguish
-		 * a quoted name "*" from a real asterisk.
+		 * test for it because the grammar currently fails to distinguish a
+		 * quoted name "*" from a real asterisk.
 		 */
 		if (!targetlist)
 			elog(ERROR, "invalid use of *");
@@ -1320,8 +1320,8 @@ FigureColnameInternal(Node *node, char **name)
 			break;
 		case T_XmlExpr:
 			/* make SQL/XML functions act like a regular function */
-			switch (((XmlExpr*) node)->op)
-			{		
+			switch (((XmlExpr *) node)->op)
+			{
 				case IS_XMLCONCAT:
 					*name = "xmlconcat";
 					return 2;
@@ -1346,7 +1346,7 @@ FigureColnameInternal(Node *node, char **name)
 				case IS_DOCUMENT:
 					/* nothing */
 					break;
-			} 
+			}
 			break;
 		case T_XmlSerialize:
 			*name = "xmlserialize";

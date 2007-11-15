@@ -49,8 +49,7 @@ extern int	t_isprint(const char *ptr);
 #define t_iseq(x,c)		(TOUCHAR(x) == (unsigned char) (c))
 
 #define COPYCHAR(d,s)	memcpy(d, s, pg_mblen(s))
-
-#else  /* not TS_USE_WIDE */
+#else							/* not TS_USE_WIDE */
 
 #define t_isdigit(x)	isdigit(TOUCHAR(x))
 #define t_isspace(x)	isspace(TOUCHAR(x))
@@ -59,8 +58,7 @@ extern int	t_isprint(const char *ptr);
 #define t_iseq(x,c)		(TOUCHAR(x) == (unsigned char) (c))
 
 #define COPYCHAR(d,s)	(*((unsigned char *) (d)) = TOUCHAR(s))
-
-#endif /* TS_USE_WIDE */
+#endif   /* TS_USE_WIDE */
 
 extern char *lowerstr(const char *str);
 extern char *lowerstr_with_len(const char *str, int len);

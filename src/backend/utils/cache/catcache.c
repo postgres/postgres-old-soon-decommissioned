@@ -1043,10 +1043,10 @@ IndexScanOK(CatCache *cache, ScanKey cur_skey)
 	if (cache->id == INDEXRELID)
 	{
 		/*
-		 * Rather than tracking exactly which indexes have to be loaded
-		 * before we can use indexscans (which changes from time to time),
-		 * just force all pg_index searches to be heap scans until we've
-		 * built the critical relcaches.
+		 * Rather than tracking exactly which indexes have to be loaded before
+		 * we can use indexscans (which changes from time to time), just force
+		 * all pg_index searches to be heap scans until we've built the
+		 * critical relcaches.
 		 */
 		if (!criticalRelcachesBuilt)
 			return false;

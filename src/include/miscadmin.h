@@ -23,7 +23,7 @@
 #ifndef MISCADMIN_H
 #define MISCADMIN_H
 
-#include <time.h> /* for time_t */
+#include <time.h>				/* for time_t */
 
 
 #define PG_VERSIONSTR "postgres (PostgreSQL) " PG_VERSION "\n"

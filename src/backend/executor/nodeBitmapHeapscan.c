@@ -277,7 +277,7 @@ bitgetpage(HeapScanDesc scan, TBMIterateResult *tbmres)
 		 * tbmres; but we have to follow any HOT chain starting at each such
 		 * offset.
 		 */
-		int curslot;
+		int			curslot;
 
 		for (curslot = 0; curslot < tbmres->ntuples; curslot++)
 		{

@@ -79,10 +79,10 @@ extern void AlterAggregateOwner(List *name, List *args, Oid newOwnerId);
 
 /* commands/opclasscmds.c */
 extern void DefineOpClass(CreateOpClassStmt *stmt);
-extern void DefineOpFamily(CreateOpFamilyStmt *stmt);
-extern void AlterOpFamily(AlterOpFamilyStmt *stmt);
+extern void DefineOpFamily(CreateOpFamilyStmt * stmt);
+extern void AlterOpFamily(AlterOpFamilyStmt * stmt);
 extern void RemoveOpClass(RemoveOpClassStmt *stmt);
-extern void RemoveOpFamily(RemoveOpFamilyStmt *stmt);
+extern void RemoveOpFamily(RemoveOpFamilyStmt * stmt);
 extern void RemoveOpClassById(Oid opclassOid);
 extern void RemoveOpFamilyById(Oid opfamilyOid);
 extern void RemoveAmOpEntryById(Oid entryOid);
@@ -96,29 +96,29 @@ extern void AlterOpFamilyOwner(List *name, const char *access_method, Oid newOwn
 extern void DefineTSParser(List *names, List *parameters);
 extern void RenameTSParser(List *oldname, const char *newname);
 extern void RemoveTSParser(List *names, DropBehavior behavior,
-						   bool missing_ok);
+			   bool missing_ok);
 extern void RemoveTSParserById(Oid prsId);
 
 extern void DefineTSDictionary(List *names, List *parameters);
 extern void RenameTSDictionary(List *oldname, const char *newname);
 extern void RemoveTSDictionary(List *names, DropBehavior behavior,
-							   bool missing_ok);
+				   bool missing_ok);
 extern void RemoveTSDictionaryById(Oid dictId);
-extern void AlterTSDictionary(AlterTSDictionaryStmt *stmt);
+extern void AlterTSDictionary(AlterTSDictionaryStmt * stmt);
 extern void AlterTSDictionaryOwner(List *name, Oid newOwnerId);
 
 extern void DefineTSTemplate(List *names, List *parameters);
 extern void RenameTSTemplate(List *oldname, const char *newname);
 extern void RemoveTSTemplate(List *names, DropBehavior behavior,
-							 bool missing_ok);
+				 bool missing_ok);
 extern void RemoveTSTemplateById(Oid tmplId);
 
 extern void DefineTSConfiguration(List *names, List *parameters);
 extern void RenameTSConfiguration(List *oldname, const char *newname);
 extern void RemoveTSConfiguration(List *names, DropBehavior behavior,
-								  bool missing_ok);
+					  bool missing_ok);
 extern void RemoveTSConfigurationById(Oid cfgId);
-extern void AlterTSConfiguration(AlterTSConfigurationStmt *stmt);
+extern void AlterTSConfiguration(AlterTSConfigurationStmt * stmt);
 extern void AlterTSConfigurationOwner(List *name, Oid newOwnerId);
 
 extern text *serialize_deflist(List *deflist);

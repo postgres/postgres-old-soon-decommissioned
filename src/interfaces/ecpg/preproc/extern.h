@@ -97,11 +97,11 @@ extern void remove_typedefs(int);
 extern void remove_variables(int);
 extern struct variable *new_variable(const char *, struct ECPGtype *, int);
 extern const ScanKeyword *ScanKeywordLookup(char *text);
-extern const ScanKeyword *DoLookup(char *, const ScanKeyword *,const ScanKeyword *);
+extern const ScanKeyword *DoLookup(char *, const ScanKeyword *, const ScanKeyword *);
 extern void scanner_init(const char *);
 extern void parser_init(void);
 extern void scanner_finish(void);
-extern int filtered_base_yylex(void);
+extern int	filtered_base_yylex(void);
 
 /* return codes */
 

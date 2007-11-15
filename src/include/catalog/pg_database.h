@@ -42,7 +42,7 @@ CATALOG(pg_database,1262) BKI_SHARED_RELATION
 	bool		datallowconn;	/* new connections allowed? */
 	int4		datconnlimit;	/* max connections allowed (-1=no limit) */
 	Oid			datlastsysoid;	/* highest OID to consider a system OID */
-	TransactionId datfrozenxid;	/* all Xids < this are frozen in this DB */
+	TransactionId datfrozenxid; /* all Xids < this are frozen in this DB */
 	Oid			dattablespace;	/* default table space for this DB */
 	text		datconfig[1];	/* database-specific GUC (VAR LENGTH) */
 	aclitem		datacl[1];		/* access permissions (VAR LENGTH) */

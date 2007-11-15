@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * pg_ts_dict.h
- * 	definition of dictionaries for tsearch
+ *	definition of dictionaries for tsearch
  *
  *
  * Portions Copyright (c) 1996-2007, PostgreSQL Global Development Group
@@ -29,7 +29,7 @@
  */
 
 /* ----------------
- *		pg_ts_dict definition.  cpp turns this into
+ *		pg_ts_dict definition.	cpp turns this into
  *		typedef struct FormData_pg_ts_dict
  * ----------------
  */
@@ -41,7 +41,7 @@ CATALOG(pg_ts_dict,3600)
 	Oid			dictnamespace;	/* name space */
 	Oid			dictowner;		/* owner */
 	Oid			dicttemplate;	/* dictionary's template */
-	text		dictinitoption;	/* options passed to dict_init() */
+	text		dictinitoption; /* options passed to dict_init() */
 } FormData_pg_ts_dict;
 
 typedef FormData_pg_ts_dict *Form_pg_ts_dict;

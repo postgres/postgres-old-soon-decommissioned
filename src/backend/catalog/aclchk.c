@@ -2348,8 +2348,8 @@ pg_ts_config_ownercheck(Oid cfg_oid, Oid roleid)
 	if (!HeapTupleIsValid(tuple))
 		ereport(ERROR,
 				(errcode(ERRCODE_UNDEFINED_OBJECT),
-				 errmsg("text search configuration with OID %u does not exist",
-						cfg_oid)));
+			   errmsg("text search configuration with OID %u does not exist",
+					  cfg_oid)));
 
 	ownerId = ((Form_pg_ts_config) GETSTRUCT(tuple))->cfgowner;
 

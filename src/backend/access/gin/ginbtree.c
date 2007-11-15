@@ -317,8 +317,8 @@ ginInsertValue(GinBtree btree, GinBtreeStack *stack)
 			Page		newlpage;
 
 			/*
-			 * newlpage is a pointer to memory page, it doesn't associate
-			 * with buffer, stack->buffer should be untouched
+			 * newlpage is a pointer to memory page, it doesn't associate with
+			 * buffer, stack->buffer should be untouched
 			 */
 			newlpage = btree->splitPage(btree, stack->buffer, rbuffer, stack->off, &rdata);
 

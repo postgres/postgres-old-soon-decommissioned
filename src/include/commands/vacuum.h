@@ -107,13 +107,14 @@ typedef struct VacAttrStats
 
 
 /* GUC parameters */
-extern PGDLLIMPORT int default_statistics_target; /* PGDLLIMPORT for PostGIS */
+extern PGDLLIMPORT int default_statistics_target;		/* PGDLLIMPORT for
+														 * PostGIS */
 extern int	vacuum_freeze_min_age;
 
 
 /* in commands/vacuum.c */
 extern void vacuum(VacuumStmt *vacstmt, List *relids,
-				   BufferAccessStrategy bstrategy, bool isTopLevel);
+	   BufferAccessStrategy bstrategy, bool isTopLevel);
 extern void vac_open_indexes(Relation relation, LOCKMODE lockmode,
 				 int *nindexes, Relation **Irel);
 extern void vac_close_indexes(int nindexes, Relation *Irel, LOCKMODE lockmode);
@@ -131,10 +132,10 @@ extern void vacuum_delay_point(void);
 
 /* in commands/vacuumlazy.c */
 extern void lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt,
-							BufferAccessStrategy bstrategy);
+				BufferAccessStrategy bstrategy);
 
 /* in commands/analyze.c */
 extern void analyze_rel(Oid relid, VacuumStmt *vacstmt,
-						BufferAccessStrategy bstrategy);
+			BufferAccessStrategy bstrategy);
 
 #endif   /* VACUUM_H */

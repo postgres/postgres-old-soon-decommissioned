@@ -42,7 +42,7 @@ struct XidCache
 #define		PROC_IS_AUTOVACUUM	0x01	/* is it an autovac worker? */
 #define		PROC_IN_VACUUM		0x02	/* currently running lazy vacuum */
 #define		PROC_IN_ANALYZE		0x04	/* currently running analyze */
-#define		PROC_VACUUM_FOR_WRAPAROUND 0x08 /* set by autovac only */
+#define		PROC_VACUUM_FOR_WRAPAROUND 0x08		/* set by autovac only */
 
 /* flags reset at EOXact */
 #define		PROC_VACUUM_STATE_MASK (0x0E)
@@ -145,7 +145,7 @@ typedef struct PROC_HDR
 /* configurable options */
 extern int	DeadlockTimeout;
 extern int	StatementTimeout;
-extern bool	log_lock_waits;
+extern bool log_lock_waits;
 
 extern volatile bool cancel_from_timeout;
 

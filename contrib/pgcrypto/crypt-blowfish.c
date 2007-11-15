@@ -436,7 +436,7 @@ BF_encode(char *dst, const BF_word * src, int size)
 }
 
 static void
-BF_swap(BF_word *x, int count)
+BF_swap(BF_word * x, int count)
 {
 	/* Swap on little-endian hardware, else do nothing */
 #ifndef WORDS_BIGENDIAN

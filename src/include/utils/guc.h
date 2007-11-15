@@ -106,7 +106,7 @@ typedef enum
 	GUC_ACTION_SET,				/* regular SET command */
 	GUC_ACTION_LOCAL,			/* SET LOCAL command */
 	GUC_ACTION_SAVE				/* function SET option */
-} GucAction;
+}	GucAction;
 
 #define GUC_QUALIFIER_SEPARATOR '.'
 
@@ -238,7 +238,7 @@ extern void read_nondefault_variables(void);
 extern const char *assign_default_tablespace(const char *newval,
 						  bool doit, GucSource source);
 extern const char *assign_temp_tablespaces(const char *newval,
-						  bool doit, GucSource source);
+						bool doit, GucSource source);
 
 /* in utils/adt/regexp.c */
 extern const char *assign_regex_flavor(const char *value,

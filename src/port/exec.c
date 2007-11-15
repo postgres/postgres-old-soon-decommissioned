@@ -588,11 +588,11 @@ pclose_check(FILE *stream)
 				  WTERMSIG(exitstatus));
 #elif defined(HAVE_DECL_SYS_SIGLIST) && HAVE_DECL_SYS_SIGLIST
 	{
-		char str[256];
+		char		str[256];
 
 		snprintf(str, sizeof(str), "%d: %s", WTERMSIG(exitstatus),
-			  WTERMSIG(exitstatus) < NSIG ?
-			  sys_siglist[WTERMSIG(exitstatus)] : "(unknown)");
+				 WTERMSIG(exitstatus) < NSIG ?
+				 sys_siglist[WTERMSIG(exitstatus)] : "(unknown)");
 		log_error(_("child process was terminated by signal %s"), str);
 	}
 #else

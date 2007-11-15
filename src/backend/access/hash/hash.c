@@ -548,7 +548,7 @@ loop_top:
 			vacuum_delay_point();
 
 			buf = _hash_getbuf_with_strategy(rel, blkno, HASH_WRITE,
-											 LH_BUCKET_PAGE | LH_OVERFLOW_PAGE,
+										   LH_BUCKET_PAGE | LH_OVERFLOW_PAGE,
 											 info->strategy);
 			page = BufferGetPage(buf);
 			opaque = (HashPageOpaque) PageGetSpecialPointer(page);

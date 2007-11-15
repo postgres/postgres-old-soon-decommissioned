@@ -286,10 +286,10 @@ CreateConstraintEntry(const char *constraintName,
 	if (foreignNKeys > 0)
 	{
 		/*
-		 * Register normal dependencies on the equality operators that
-		 * support a foreign-key constraint.  If the PK and FK types
-		 * are the same then all three operators for a column are the
-		 * same; otherwise they are different.
+		 * Register normal dependencies on the equality operators that support
+		 * a foreign-key constraint.  If the PK and FK types are the same then
+		 * all three operators for a column are the same; otherwise they are
+		 * different.
 		 */
 		ObjectAddress oprobject;
 

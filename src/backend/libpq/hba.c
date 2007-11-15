@@ -1595,7 +1595,7 @@ authident(hbaPort *port)
 
 	if (get_role_line(port->user_name) == NULL)
 		return STATUS_ERROR;
-	
+
 	switch (port->raddr.addr.ss_family)
 	{
 		case AF_INET:

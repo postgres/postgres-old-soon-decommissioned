@@ -162,8 +162,9 @@ calculate_tablespace_size(Oid tblspcOid)
 	AclResult	aclresult;
 
 	/*
-	 * User must have CREATE privilege for target tablespace, either explicitly
-	 * granted or implicitly because it is default for current database.
+	 * User must have CREATE privilege for target tablespace, either
+	 * explicitly granted or implicitly because it is default for current
+	 * database.
 	 */
 	if (tblspcOid != MyDatabaseTableSpace)
 	{

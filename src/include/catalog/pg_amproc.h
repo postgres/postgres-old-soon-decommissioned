@@ -49,11 +49,11 @@
 
 CATALOG(pg_amproc,2603)
 {
-	Oid			amprocfamily;		/* the index opfamily this entry is for */
-	Oid			amproclefttype;		/* procedure's left input data type */
+	Oid			amprocfamily;	/* the index opfamily this entry is for */
+	Oid			amproclefttype; /* procedure's left input data type */
 	Oid			amprocrighttype;	/* procedure's right input data type */
-	int2		amprocnum;			/* support procedure index */
-	regproc		amproc;				/* OID of the proc */
+	int2		amprocnum;		/* support procedure index */
+	regproc		amproc;			/* OID of the proc */
 } FormData_pg_amproc;
 
 /* ----------------
@@ -206,15 +206,15 @@ DATA(insert (	3702   3615 3615 7 3699 ));
 
 
 /* gin */
-DATA(insert (	2745   1007 1007 1  351 ));
+DATA(insert (	2745   1007 1007 1	351 ));
 DATA(insert (	2745   1007 1007 2 2743 ));
 DATA(insert (	2745   1007 1007 3 2774 ));
 DATA(insert (	2745   1007 1007 4 2744 ));
-DATA(insert (	2745   1009 1009 1  360 ));
+DATA(insert (	2745   1009 1009 1	360 ));
 DATA(insert (	2745   1009 1009 2 2743 ));
 DATA(insert (	2745   1009 1009 3 2774 ));
 DATA(insert (	2745   1009 1009 4 2744 ));
-DATA(insert (	2745   1015 1015 1  360 ));
+DATA(insert (	2745   1015 1015 1	360 ));
 DATA(insert (	2745   1015 1015 2 2743 ));
 DATA(insert (	2745   1015 1015 3 2774 ));
 DATA(insert (	2745   1015 1015 4 2744 ));

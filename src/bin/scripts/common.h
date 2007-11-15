@@ -36,7 +36,7 @@ extern void executeCommand(PGconn *conn, const char *query,
 			   const char *progname, bool echo);
 
 extern bool executeMaintenanceCommand(PGconn *conn, const char *query,
-							   bool echo);
+						  bool echo);
 
 extern bool yesno_prompt(const char *question);
 

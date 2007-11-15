@@ -50,9 +50,9 @@ extern List *pg_parse_query(const char *query_string);
 extern List *pg_analyze_and_rewrite(Node *parsetree, const char *query_string,
 					   Oid *paramTypes, int numParams);
 extern PlannedStmt *pg_plan_query(Query *querytree, int cursorOptions,
-								  ParamListInfo boundParams);
+			  ParamListInfo boundParams);
 extern List *pg_plan_queries(List *querytrees, int cursorOptions,
-							 ParamListInfo boundParams, bool needSnapshot);
+				ParamListInfo boundParams, bool needSnapshot);
 
 extern bool assign_max_stack_depth(int newval, bool doit, GucSource source);
 

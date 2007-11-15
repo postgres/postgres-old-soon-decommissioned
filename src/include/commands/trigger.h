@@ -86,10 +86,10 @@ typedef struct TriggerData
 #define SESSION_REPLICATION_ROLE_LOCAL		2
 extern int	SessionReplicationRole;
 
-#define	TRIGGER_FIRES_ON_ORIGIN				'O'
-#define	TRIGGER_FIRES_ALWAYS				'A'
-#define	TRIGGER_FIRES_ON_REPLICA			'R'
-#define	TRIGGER_DISABLED					'D'
+#define TRIGGER_FIRES_ON_ORIGIN				'O'
+#define TRIGGER_FIRES_ALWAYS				'A'
+#define TRIGGER_FIRES_ON_REPLICA			'R'
+#define TRIGGER_DISABLED					'D'
 
 extern Oid	CreateTrigger(CreateTrigStmt *stmt, Oid constraintOid);
 
@@ -162,7 +162,7 @@ extern bool RI_FKey_keyequal_upd_pk(Trigger *trigger, Relation pk_rel,
 extern bool RI_FKey_keyequal_upd_fk(Trigger *trigger, Relation fk_rel,
 						HeapTuple old_row, HeapTuple new_row);
 extern bool RI_Initial_Check(Trigger *trigger,
-							 Relation fk_rel, Relation pk_rel);
+				 Relation fk_rel, Relation pk_rel);
 
 /* result values for RI_FKey_trigger_type: */
 #define RI_TRIGGER_PK	1		/* is a trigger on the PK relation */

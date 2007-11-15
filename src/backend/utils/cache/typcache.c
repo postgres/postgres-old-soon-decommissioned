@@ -169,7 +169,7 @@ lookup_type_cache(Oid type_id, int flags)
 				  TYPECACHE_BTREE_OPFAMILY)) &&
 		typentry->btree_opf == InvalidOid)
 	{
-		Oid		opclass;
+		Oid			opclass;
 
 		opclass = GetDefaultOpClass(type_id, BTREE_AM_OID);
 		if (OidIsValid(opclass))

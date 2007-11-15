@@ -1493,7 +1493,7 @@ CommentTSParser(List *qualname, char *comment)
 	if (!superuser())
 		ereport(ERROR,
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-				 errmsg("must be superuser to comment on text search parser")));
+			  errmsg("must be superuser to comment on text search parser")));
 
 	CreateComments(prsId, TSParserRelationId, 0, comment);
 }
@@ -1522,7 +1522,7 @@ CommentTSTemplate(List *qualname, char *comment)
 	if (!superuser())
 		ereport(ERROR,
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-				 errmsg("must be superuser to comment on text search template")));
+			errmsg("must be superuser to comment on text search template")));
 
 	CreateComments(tmplId, TSTemplateRelationId, 0, comment);
 }

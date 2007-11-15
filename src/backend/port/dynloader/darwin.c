@@ -43,8 +43,7 @@ pg_dlerror(void)
 {
 	return dlerror();
 }
-
-#else /* !HAVE_DLOPEN */
+#else							/* !HAVE_DLOPEN */
 
 /*
  * These routines were taken from the Apache source, but were made
@@ -132,4 +131,4 @@ pg_dlerror(void)
 	return (char *) errorString;
 }
 
-#endif /* HAVE_DLOPEN */
+#endif   /* HAVE_DLOPEN */

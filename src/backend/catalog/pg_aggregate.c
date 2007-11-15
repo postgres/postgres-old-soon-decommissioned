@@ -172,8 +172,8 @@ AggregateCreate(const char *aggName,
 		ereport(ERROR,
 				(errcode(ERRCODE_DATATYPE_MISMATCH),
 				 errmsg("cannot determine result data type"),
-		   errdetail("An aggregate returning a polymorphic type "
-					 "must have at least one polymorphic argument.")));
+				 errdetail("An aggregate returning a polymorphic type "
+						   "must have at least one polymorphic argument.")));
 
 	/* handle sortop, if supplied */
 	if (aggsortopName)
@@ -213,8 +213,8 @@ AggregateCreate(const char *aggName,
 							  PointerGetDatum(NULL),	/* parameterModes */
 							  PointerGetDatum(NULL),	/* parameterNames */
 							  PointerGetDatum(NULL),	/* proconfig */
-							  1,				/* procost */
-							  0);				/* prorows */
+							  1,	/* procost */
+							  0);		/* prorows */
 
 	/*
 	 * Okay to create the pg_aggregate entry.

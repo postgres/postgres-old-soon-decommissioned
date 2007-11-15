@@ -63,4 +63,3 @@ static const ScanKeyword ScanECPGKeywords[] = {
 	{"var", SQL_VAR},
 	{"whenever", SQL_WHENEVER},
 };
-

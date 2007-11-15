@@ -47,7 +47,7 @@ euc_tw_to_utf8(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	LocalToUtf(src, dest, LUmapEUC_TW, NULL,
-			   sizeof(LUmapEUC_TW) / sizeof(pg_local_to_utf), 0, PG_EUC_TW, len);
+		   sizeof(LUmapEUC_TW) / sizeof(pg_local_to_utf), 0, PG_EUC_TW, len);
 
 	PG_RETURN_VOID();
 }
@@ -64,7 +64,7 @@ utf8_to_euc_tw(PG_FUNCTION_ARGS)
 	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapEUC_TW, NULL,
-			   sizeof(ULmapEUC_TW) / sizeof(pg_utf_to_local), 0, PG_EUC_TW, len);
+		   sizeof(ULmapEUC_TW) / sizeof(pg_utf_to_local), 0, PG_EUC_TW, len);
 
 	PG_RETURN_VOID();
 }

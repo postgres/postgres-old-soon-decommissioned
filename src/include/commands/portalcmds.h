@@ -19,8 +19,8 @@
 #include "utils/portal.h"
 
 
-extern void PerformCursorOpen(PlannedStmt *stmt, ParamListInfo params,
-							  const char *queryString, bool isTopLevel);
+extern void PerformCursorOpen(PlannedStmt * stmt, ParamListInfo params,
+				  const char *queryString, bool isTopLevel);
 
 extern void PerformPortalFetch(FetchStmt *stmt, DestReceiver *dest,
 				   char *completionTag);

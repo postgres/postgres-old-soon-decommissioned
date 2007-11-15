@@ -32,7 +32,7 @@ typedef struct hashnode
 extern Relation boot_reldesc;
 extern Form_pg_attribute attrtypes[MAXATTR];
 extern int	numattr;
-extern void	AuxiliaryProcessMain(int argc, char *argv[]);
+extern void AuxiliaryProcessMain(int argc, char *argv[]);
 
 extern void index_register(Oid heap, Oid ind, IndexInfo *indexInfo);
 
@@ -71,6 +71,6 @@ typedef enum
 	StartupProcess,
 	BgWriterProcess,
 	WalWriterProcess
-} AuxProcType;
+}	AuxProcType;
 
 #endif   /* BOOTSTRAP_H */

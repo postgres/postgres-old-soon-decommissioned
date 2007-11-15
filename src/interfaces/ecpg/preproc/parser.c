@@ -25,8 +25,8 @@
 #include "preproc.h"
 
 
-static bool have_lookahead;			/* is lookahead info valid? */
-static int	lookahead_token;		/* one-token lookahead */
+static bool have_lookahead;		/* is lookahead info valid? */
+static int	lookahead_token;	/* one-token lookahead */
 static YYSTYPE lookahead_yylval;	/* yylval for lookahead token */
 static YYLTYPE lookahead_yylloc;	/* yylloc for lookahead token */
 
@@ -67,6 +67,7 @@ filtered_base_yylex(void)
 	switch (cur_token)
 	{
 		case NULLS_P:
+
 			/*
 			 * NULLS FIRST and NULLS LAST must be reduced to one token
 			 */
@@ -95,6 +96,7 @@ filtered_base_yylex(void)
 			break;
 
 		case WITH:
+
 			/*
 			 * WITH CASCADED, LOCAL, or CHECK must be reduced to one token
 			 *

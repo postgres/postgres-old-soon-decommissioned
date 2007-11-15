@@ -312,9 +312,10 @@ exec_command(const char *cmd,
 
 		char	   *opt = psql_scan_slash_option(scan_state,
 												 OT_WHOLE_LINE, NULL, false);
+
 		if (pset.timing)
 			GETTIMEOFDAY(&before);
-		
+
 		success = do_copy(opt);
 
 		if (pset.timing && success)
@@ -735,8 +736,10 @@ exec_command(const char *cmd,
 	/* \prompt -- prompt and set variable */
 	else if (strcmp(cmd, "prompt") == 0)
 	{
-		char	   *opt, *prompt_text = NULL;
-		char	   *arg1, *arg2;
+		char	   *opt,
+				   *prompt_text = NULL;
+		char	   *arg1,
+				   *arg2;
 
 		arg1 = psql_scan_slash_option(scan_state, OT_NORMAL, NULL, false);
 		arg2 = psql_scan_slash_option(scan_state, OT_NORMAL, NULL, false);
@@ -748,7 +751,7 @@ exec_command(const char *cmd,
 		}
 		else
 		{
- 			char	   *result;
+			char	   *result;
 
 			if (arg2)
 			{
@@ -1132,9 +1135,9 @@ do_connect(char *dbname, char *user, char *host, char *port)
 	 * has not changed. Otherwise, try to connect without a password first,
 	 * and then ask for a password if needed.
 	 *
-	 * XXX: this behavior leads to spurious connection attempts recorded
-	 * in the postmaster's log.  But libpq offers no API that would let us
-	 * obtain a password and then continue with the first connection attempt.
+	 * XXX: this behavior leads to spurious connection attempts recorded in
+	 * the postmaster's log.  But libpq offers no API that would let us obtain
+	 * a password and then continue with the first connection attempt.
 	 */
 	if (pset.getPassword)
 	{

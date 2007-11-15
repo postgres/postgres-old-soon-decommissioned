@@ -506,7 +506,7 @@ ean2UPC(char *isn)
  * Returns the ean13 value of the string.
  */
 static
-ean13
+			ean13
 str2ean(const char *num)
 {
 	ean13		ean = 0;		/* current ean */

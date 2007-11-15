@@ -247,7 +247,7 @@ PGSharedMemoryIsInUse(unsigned long id1, unsigned long id2)
 	/*
 	 * Try to attach to the segment and see if it matches our data directory.
 	 * This avoids shmid-conflict problems on machines that are running
-	 * several postmasters under the same userid. 
+	 * several postmasters under the same userid.
 	 */
 	if (stat(DataDir, &statbuf) < 0)
 		return true;			/* if can't stat, be conservative */

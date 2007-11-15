@@ -254,8 +254,8 @@ desirable_join(PlannerInfo *root,
 			   RelOptInfo *outer_rel, RelOptInfo *inner_rel)
 {
 	/*
-	 * Join if there is an applicable join clause, or if there is a join
-	 * order restriction forcing these rels to be joined.
+	 * Join if there is an applicable join clause, or if there is a join order
+	 * restriction forcing these rels to be joined.
 	 */
 	if (have_relevant_joinclause(root, outer_rel, inner_rel) ||
 		have_join_order_restriction(root, outer_rel, inner_rel))

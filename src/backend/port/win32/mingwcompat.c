@@ -14,7 +14,7 @@
 #include "postgres.h"
 
 /*
- * This file contains loaders for functions that are missing in the MinGW 
+ * This file contains loaders for functions that are missing in the MinGW
  * import libraries. It's only for actual Win32 API functions, so they are
  * all present in proper Win32 compilers.
  */
@@ -36,7 +36,7 @@ LoadKernel32()
 	if (kernel32 == NULL)
 		ereport(FATAL,
 				(errmsg_internal("could not load kernel32.dll: %d",
-								 (int)GetLastError())));
+								 (int) GetLastError())));
 }
 
 
@@ -44,11 +44,12 @@ LoadKernel32()
  * Replacement for RegisterWaitForSingleObject(), which lives in
  * kernel32.dll·
  */
-typedef BOOL (WINAPI * __RegisterWaitForSingleObject)
-	(PHANDLE, HANDLE, WAITORTIMERCALLBACK, PVOID, ULONG, ULONG);
+typedef
+BOOL(WINAPI * __RegisterWaitForSingleObject)
+(PHANDLE, HANDLE, WAITORTIMERCALLBACK, PVOID, ULONG, ULONG);
 static __RegisterWaitForSingleObject _RegisterWaitForSingleObject = NULL;
 
-BOOL WINAPI 
+BOOL		WINAPI
 RegisterWaitForSingleObject(PHANDLE phNewWaitObject,
 							HANDLE hObject,
 							WAITORTIMERCALLBACK Callback,
@@ -66,7 +67,7 @@ RegisterWaitForSingleObject(PHANDLE phNewWaitObject,
 		if (_RegisterWaitForSingleObject == NULL)
 			ereport(FATAL,
 					(errmsg_internal("could not locate RegisterWaitForSingleObject in kernel32.dll: %d",
-									 (int)GetLastError())));
+									 (int) GetLastError())));
 	}
 
 	return (_RegisterWaitForSingleObject)
@@ -74,4 +75,3 @@ RegisterWaitForSingleObject(PHANDLE phNewWaitObject,
 }
 
 #endif
-

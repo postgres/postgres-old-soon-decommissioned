@@ -190,32 +190,32 @@ pg_stat_get_tuples_hot_updated(PG_FUNCTION_ARGS)
 
 Datum
 pg_stat_get_live_tuples(PG_FUNCTION_ARGS)
-{ 
-	Oid		relid = PG_GETARG_OID(0);
-	int64	result;
-	PgStat_StatTabEntry	*tabentry;
- 
+{
+	Oid			relid = PG_GETARG_OID(0);
+	int64		result;
+	PgStat_StatTabEntry *tabentry;
+
 	if ((tabentry = pgstat_fetch_stat_tabentry(relid)) == NULL)
 		result = 0;
 	else
 		result = (int64) (tabentry->n_live_tuples);
-        
+
 	PG_RETURN_INT64(result);
 }
 
-        
+
 Datum
 pg_stat_get_dead_tuples(PG_FUNCTION_ARGS)
 {
-	Oid		relid = PG_GETARG_OID(0);
-	int64	result;
-	PgStat_StatTabEntry	*tabentry;
+	Oid			relid = PG_GETARG_OID(0);
+	int64		result;
+	PgStat_StatTabEntry *tabentry;
 
 	if ((tabentry = pgstat_fetch_stat_tabentry(relid)) == NULL)
 		result = 0;
 	else
 		result = (int64) (tabentry->n_dead_tuples);
-        
+
 	PG_RETURN_INT64(result);
 }
 

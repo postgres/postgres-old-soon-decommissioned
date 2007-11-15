@@ -16,10 +16,10 @@
 
 #include "nodes/parsenodes.h"
 
-#define	RULE_FIRES_ON_ORIGIN	'O'
-#define	RULE_FIRES_ALWAYS		'A'
-#define	RULE_FIRES_ON_REPLICA	'R'
-#define	RULE_DISABLED			'D'
+#define RULE_FIRES_ON_ORIGIN	'O'
+#define RULE_FIRES_ALWAYS		'A'
+#define RULE_FIRES_ON_REPLICA	'R'
+#define RULE_DISABLED			'D'
 
 extern void DefineRule(RuleStmt *stmt, const char *queryString);
 

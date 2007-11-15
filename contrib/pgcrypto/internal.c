@@ -251,7 +251,7 @@ struct int_ctx
 	uint8		iv[INT_MAX_IV];
 	union
 	{
-		BlowfishContext		bf;
+		BlowfishContext bf;
 		rijndael_ctx rj;
 	}			ctx;
 	unsigned	keylen;
@@ -426,7 +426,7 @@ bf_block_size(PX_Cipher * c)
 static unsigned
 bf_key_size(PX_Cipher * c)
 {
-	return 448/8;
+	return 448 / 8;
 }
 
 static unsigned
