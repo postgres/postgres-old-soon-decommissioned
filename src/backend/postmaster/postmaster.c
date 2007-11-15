@@ -4524,7 +4524,7 @@ pgwin32_deadchild_callback(PVOID lpParameter, BOOLEAN TimerOrWaitFired)
 		/*
 		 * Should never happen. Inform user and set a fixed exitcode.
 		 */
-		write_stderr("could not read exitcode for process\n");
+		write_stderr("could not read exit code for process\n");
 		exitcode = 255;
 	}
 
