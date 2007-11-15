@@ -21,7 +21,7 @@
  * To avoid version-skew problems, this file must not use declarations
  * from pg_wchar.h: the encoding IDs we are dealing with are determined
  * by the libpq.so we are linked with, and that might not match the
- * numbers we see at compile time.  (If this file were inside libpq,
+ * numbers we see at compile time.	(If this file were inside libpq,
  * the problem would go away...)
  *
  * Hence, we have our own definition of pg_wchar, and we get the values
@@ -246,7 +246,7 @@ pg_wcssize(unsigned char *pwcs, size_t len, int encoding, int *result_width,
 				linewidth += 4;
 				format_size += 4;
 			}
-			else				/* Output it as-is */
+			else	/*  Output it as-is */
 			{
 				linewidth += w;
 				format_size += 1;
@@ -257,7 +257,7 @@ pg_wcssize(unsigned char *pwcs, size_t len, int encoding, int *result_width,
 			linewidth += 6;		/* \u0000 */
 			format_size += 6;
 		}
-		else					/* All other chars */
+		else	/*  All other chars */
 		{
 			linewidth += w;
 			format_size += chlen;
@@ -321,7 +321,7 @@ pg_wcsformat(unsigned char *pwcs, size_t len, int encoding,
 				linewidth += 4;
 				ptr += 4;
 			}
-			else				/* Output it as-is */
+			else	/*  Output it as-is */
 			{
 				linewidth += w;
 				*ptr++ = *pwcs;
@@ -343,7 +343,7 @@ pg_wcsformat(unsigned char *pwcs, size_t len, int encoding,
 			ptr += 6;
 			linewidth += 6;
 		}
-		else					/* All other chars */
+		else	/*  All other chars */
 		{
 			int			i;
 
