@@ -658,7 +658,7 @@ typedef struct CoerceViaIOState
 	FmgrInfo	outfunc;		/* lookup info for source output function */
 	FmgrInfo	infunc;			/* lookup info for result input function */
 	Oid			intypioparam;	/* argument needed for input function */
-}	CoerceViaIOState;
+} CoerceViaIOState;
 
 /* ----------------
  *		ArrayCoerceExprState node
@@ -672,7 +672,7 @@ typedef struct ArrayCoerceExprState
 	FmgrInfo	elemfunc;		/* lookup info for element coercion function */
 	/* use struct pointer to avoid including array.h here */
 	struct ArrayMapState *amstate;		/* workspace for array_map */
-}	ArrayCoerceExprState;
+} ArrayCoerceExprState;
 
 /* ----------------
  *		ConvertRowtypeExprState node
@@ -784,7 +784,7 @@ typedef struct XmlExprState
 	List	   *named_args;		/* ExprStates for named arguments */
 	FmgrInfo   *named_outfuncs; /* array of output fns for named arguments */
 	List	   *args;			/* ExprStates for other arguments */
-}	XmlExprState;
+} XmlExprState;
 
 /* ----------------
  *		NullTestState node

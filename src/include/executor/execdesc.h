@@ -50,7 +50,7 @@ typedef struct QueryDesc
 } QueryDesc;
 
 /* in pquery.c */
-extern QueryDesc *CreateQueryDesc(PlannedStmt * plannedstmt,
+extern QueryDesc *CreateQueryDesc(PlannedStmt *plannedstmt,
 				Snapshot snapshot,
 				Snapshot crosscheck_snapshot,
 				DestReceiver *dest,

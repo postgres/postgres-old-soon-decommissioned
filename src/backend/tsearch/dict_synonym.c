@@ -24,13 +24,13 @@ typedef struct
 {
 	char	   *in;
 	char	   *out;
-}	Syn;
+} Syn;
 
 typedef struct
 {
 	int			len;			/* length of syn array */
 	Syn		   *syn;
-}	DictSyn;
+} DictSyn;
 
 /*
  * Finds the next whitespace-delimited word within the 'in' string.

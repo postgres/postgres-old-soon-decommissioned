@@ -36,7 +36,7 @@ static ScanState *search_plan_tree(PlanState *node, Oid table_oid);
  * valid updatable scan of the specified table.
  */
 bool
-execCurrentOf(CurrentOfExpr * cexpr,
+execCurrentOf(CurrentOfExpr *cexpr,
 			  ExprContext *econtext,
 			  Oid table_oid,
 			  ItemPointer current_tid)

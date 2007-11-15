@@ -43,7 +43,7 @@ typedef struct process_sublinks_context
 {
 	PlannerInfo *root;
 	bool		isTopQual;
-}	process_sublinks_context;
+} process_sublinks_context;
 
 typedef struct finalize_primnode_context
 {
@@ -63,7 +63,7 @@ static bool subplan_is_hashable(SubLink *slink, SubPlan *node, Plan *plan);
 static bool hash_ok_operator(OpExpr *expr);
 static Node *replace_correlation_vars_mutator(Node *node, PlannerInfo *root);
 static Node *process_sublinks_mutator(Node *node,
-						 process_sublinks_context * context);
+						 process_sublinks_context *context);
 static Bitmapset *finalize_plan(PlannerInfo *root,
 			  Plan *plan,
 			  Bitmapset *outer_params,
@@ -865,7 +865,7 @@ SS_process_sublinks(PlannerInfo *root, Node *expr, bool isQual)
 }
 
 static Node *
-process_sublinks_mutator(Node *node, process_sublinks_context * context)
+process_sublinks_mutator(Node *node, process_sublinks_context *context)
 {
 	process_sublinks_context locContext;
 

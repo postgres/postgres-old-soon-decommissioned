@@ -35,7 +35,7 @@ typedef struct
 	int			lexid;
 	char	   *alias;
 	char	   *descr;
-}	LexDescr;
+} LexDescr;
 
 /*
  * prototypes

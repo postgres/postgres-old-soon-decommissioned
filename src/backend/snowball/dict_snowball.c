@@ -78,7 +78,7 @@ typedef struct stemmer_module
 	struct SN_env *(*create) (void);
 	void		(*close) (struct SN_env *);
 	int			(*stem) (struct SN_env *);
-}	stemmer_module;
+} stemmer_module;
 
 static const stemmer_module stemmer_modules[] =
 {
@@ -140,11 +140,11 @@ typedef struct DictSnowball
 	 * context, so we just remember CurrentMemoryContext
 	 */
 	MemoryContext dictCtx;
-}	DictSnowball;
+} DictSnowball;
 
 
 static void
-locate_stem_module(DictSnowball * d, char *lang)
+locate_stem_module(DictSnowball *d, char *lang)
 {
 	const stemmer_module *m;
 

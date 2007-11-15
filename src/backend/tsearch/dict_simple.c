@@ -24,7 +24,7 @@ typedef struct
 {
 	StopList	stoplist;
 	bool		accept;
-}	DictSimple;
+} DictSimple;
 
 
 Datum

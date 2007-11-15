@@ -42,7 +42,7 @@ typedef enum CoercionPathType
 	COERCION_PATH_RELABELTYPE,	/* binary-compatible cast, no function */
 	COERCION_PATH_ARRAYCOERCE,	/* need an ArrayCoerceExpr node */
 	COERCION_PATH_COERCEVIAIO	/* need a CoerceViaIO node */
-}	CoercionPathType;
+} CoercionPathType;
 
 
 extern bool IsBinaryCoercible(Oid srctype, Oid targettype);

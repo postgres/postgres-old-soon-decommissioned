@@ -62,7 +62,7 @@ typedef struct
 	BackendId	backendId;		/* determined at backend startup */
 	LocalTransactionId localTransactionId;		/* backend-local transaction
 												 * id */
-}	VirtualTransactionId;
+} VirtualTransactionId;
 
 #define InvalidLocalTransactionId		0
 #define LocalTransactionIdIsValid(lxid) ((lxid) != InvalidLocalTransactionId)
@@ -446,7 +446,7 @@ typedef enum
 	DS_HARD_DEADLOCK,			/* deadlock, no way out but ERROR */
 	DS_BLOCKED_BY_AUTOVACUUM	/* no deadlock; queue blocked by autovacuum
 								 * worker */
-}	DeadLockState;
+} DeadLockState;
 
 
 /*

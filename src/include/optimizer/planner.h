@@ -29,7 +29,7 @@ extern PlannedStmt *planner(Query *parse, int cursorOptions,
 		ParamListInfo boundParams);
 extern PlannedStmt *standard_planner(Query *parse, int cursorOptions,
 				 ParamListInfo boundParams);
-extern Plan *subquery_planner(PlannerGlobal * glob, Query *parse,
+extern Plan *subquery_planner(PlannerGlobal *glob, Query *parse,
 				 Index level, double tuple_fraction,
 				 PlannerInfo **subroot);
 

@@ -74,7 +74,7 @@ comparestr(const void *a, const void *b)
  * or palloc a new version.
  */
 void
-readstoplist(const char *fname, StopList * s, char *(*wordop) (const char *))
+readstoplist(const char *fname, StopList *s, char *(*wordop) (const char *))
 {
 	char	  **stop = NULL;
 
@@ -147,7 +147,7 @@ readstoplist(const char *fname, StopList * s, char *(*wordop) (const char *))
 }
 
 bool
-searchstoplist(StopList * s, char *key)
+searchstoplist(StopList *s, char *key)
 {
 	return (s->stop && s->len > 0 &&
 			bsearch(&key, s->stop, s->len,

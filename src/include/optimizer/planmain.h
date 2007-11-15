@@ -93,10 +93,10 @@ extern RestrictInfo *build_implied_join_equality(Oid opno,
 /*
  * prototypes for plan/setrefs.c
  */
-extern Plan *set_plan_references(PlannerGlobal * glob,
+extern Plan *set_plan_references(PlannerGlobal *glob,
 					Plan *plan,
 					List *rtable);
-extern List *set_returning_clause_references(PlannerGlobal * glob,
+extern List *set_returning_clause_references(PlannerGlobal *glob,
 								List *rlist,
 								Plan *topplan,
 								Index resultRelation);

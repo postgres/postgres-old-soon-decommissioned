@@ -40,9 +40,9 @@ typedef struct SnapshotData
 	 * specially by HeapTupleSatisfiesDirty.)
 	 *
 	 * An MVCC snapshot can never see the effects of XIDs >= xmax. It can see
-	 * the effects of all older XIDs except those listed in the snapshot.
-	 * xmin is stored as an optimization to avoid needing to search the XID
-	 * arrays for most tuples.
+	 * the effects of all older XIDs except those listed in the snapshot. xmin
+	 * is stored as an optimization to avoid needing to search the XID arrays
+	 * for most tuples.
 	 */
 	TransactionId xmin;			/* all XID < xmin are visible to me */
 	TransactionId xmax;			/* all XID >= xmax are invisible to me */

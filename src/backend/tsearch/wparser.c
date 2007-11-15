@@ -37,7 +37,7 @@ typedef struct
 {
 	int			cur;
 	LexDescr   *list;
-}	TSTokenTypeStorage;
+} TSTokenTypeStorage;
 
 static void
 tt_setup_firstcall(FuncCallContext *funcctx, Oid prsid)
@@ -150,14 +150,14 @@ typedef struct
 {
 	int			type;
 	char	   *lexeme;
-}	LexemeEntry;
+} LexemeEntry;
 
 typedef struct
 {
 	int			cur;
 	int			len;
 	LexemeEntry *list;
-}	PrsStorage;
+} PrsStorage;
 
 
 static void

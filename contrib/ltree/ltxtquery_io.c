@@ -32,7 +32,7 @@ typedef struct NODE
 	int2		length;
 	uint16		flag;
 	struct NODE *next;
-}	NODE;
+} NODE;
 
 typedef struct
 {
@@ -384,7 +384,7 @@ typedef struct
 	char	   *cur;
 	char	   *op;
 	int4		buflen;
-}	INFIX;
+} INFIX;
 
 #define RESIZEBUF(inf,addsize) \
 while( ( (inf)->cur - (inf)->buf ) + (addsize) + 1 >= (inf)->buflen ) \
@@ -400,7 +400,7 @@ while( ( (inf)->cur - (inf)->buf ) + (addsize) + 1 >= (inf)->buflen ) \
  * infix (human-readable) view
  */
 static void
-infix(INFIX * in, bool first)
+infix(INFIX *in, bool first)
 {
 	if (in->curpol->type == VAL)
 	{

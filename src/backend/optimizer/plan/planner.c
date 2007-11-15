@@ -229,7 +229,7 @@ standard_planner(Query *parse, int cursorOptions, ParamListInfo boundParams)
  *--------------------
  */
 Plan *
-subquery_planner(PlannerGlobal * glob, Query *parse,
+subquery_planner(PlannerGlobal *glob, Query *parse,
 				 Index level, double tuple_fraction,
 				 PlannerInfo **subroot)
 {

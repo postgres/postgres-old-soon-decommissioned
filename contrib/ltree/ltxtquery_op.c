@@ -45,7 +45,7 @@ typedef struct
 {
 	ltree	   *node;
 	char	   *operand;
-}	CHKVAL;
+} CHKVAL;
 
 static bool
 checkcondition_str(void *checkval, ITEM * val)

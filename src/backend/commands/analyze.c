@@ -1346,7 +1346,7 @@ typedef struct
 	FmgrInfo   *cmpFn;
 	int			cmpFlags;
 	int		   *tupnoLink;
-}	CompareScalarsContext;
+} CompareScalarsContext;
 
 
 static void compute_minimal_stats(VacAttrStatsP stats,

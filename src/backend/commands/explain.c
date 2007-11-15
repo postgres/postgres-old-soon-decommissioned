@@ -216,7 +216,7 @@ ExplainOneUtility(Node *utilityStmt, ExplainStmt *stmt,
  * to call it.
  */
 void
-ExplainOnePlan(PlannedStmt * plannedstmt, ParamListInfo params,
+ExplainOnePlan(PlannedStmt *plannedstmt, ParamListInfo params,
 			   ExplainStmt *stmt, TupOutputState *tstate)
 {
 	QueryDesc  *queryDesc;

@@ -52,7 +52,7 @@ compareWORD(const void *a, const void *b)
 }
 
 static int
-uniqueWORD(ParsedWord * a, int4 l)
+uniqueWORD(ParsedWord *a, int4 l)
 {
 	ParsedWord *ptr,
 			   *res;
@@ -138,7 +138,7 @@ uniqueWORD(ParsedWord * a, int4 l)
  * make value of tsvector, given parsed text
  */
 TSVector
-make_tsvector(ParsedText * prs)
+make_tsvector(ParsedText *prs)
 {
 	int			i,
 				j,

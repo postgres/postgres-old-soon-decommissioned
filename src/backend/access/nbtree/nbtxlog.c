@@ -40,7 +40,7 @@ typedef struct bt_incomplete_action
 	BlockNumber rightblk;		/* right half of split */
 	/* these fields are for a delete: */
 	BlockNumber delblk;			/* parent block to be deleted */
-}	bt_incomplete_action;
+} bt_incomplete_action;
 
 static List *incomplete_actions;
 

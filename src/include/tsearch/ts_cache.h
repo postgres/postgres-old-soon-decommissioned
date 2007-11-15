@@ -25,7 +25,7 @@ typedef struct TSAnyCacheEntry
 {
 	Oid			objId;
 	bool		isvalid;
-}	TSAnyCacheEntry;
+} TSAnyCacheEntry;
 
 
 typedef struct TSParserCacheEntry
@@ -47,7 +47,7 @@ typedef struct TSParserCacheEntry
 	FmgrInfo	prstoken;
 	FmgrInfo	prsend;
 	FmgrInfo	prsheadline;
-}	TSParserCacheEntry;
+} TSParserCacheEntry;
 
 typedef struct TSDictionaryCacheEntry
 {
@@ -61,13 +61,13 @@ typedef struct TSDictionaryCacheEntry
 
 	MemoryContext dictCtx;		/* memory context to store private data */
 	void	   *dictData;
-}	TSDictionaryCacheEntry;
+} TSDictionaryCacheEntry;
 
 typedef struct
 {
 	int			len;
 	Oid		   *dictIds;
-}	ListDictionary;
+} ListDictionary;
 
 typedef struct
 {
@@ -79,7 +79,7 @@ typedef struct
 
 	int			lenmap;
 	ListDictionary *map;
-}	TSConfigCacheEntry;
+} TSConfigCacheEntry;
 
 
 /*

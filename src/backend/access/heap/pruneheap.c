@@ -75,11 +75,11 @@ heap_page_prune_opt(Relation relation, Buffer buffer, TransactionId OldestXmin)
 	 * fill-factor target (but not less than 10%).
 	 *
 	 * Checking free space here is questionable since we aren't holding any
-	 * lock on the buffer; in the worst case we could get a bogus answer.
-	 * It's unlikely to be *seriously* wrong, though, since reading either
-	 * pd_lower or pd_upper is probably atomic.  Avoiding taking a lock seems
-	 * better than sometimes getting a wrong answer in what is after all just
-	 * a heuristic estimate.
+	 * lock on the buffer; in the worst case we could get a bogus answer. It's
+	 * unlikely to be *seriously* wrong, though, since reading either pd_lower
+	 * or pd_upper is probably atomic.	Avoiding taking a lock seems better
+	 * than sometimes getting a wrong answer in what is after all just a
+	 * heuristic estimate.
 	 */
 	minfree = RelationGetTargetPageFreeSpace(relation,
 											 HEAP_DEFAULT_FILLFACTOR);

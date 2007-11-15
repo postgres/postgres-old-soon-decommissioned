@@ -499,7 +499,7 @@ typedef struct
 	int			cmd_type;
 	int			lineno;
 	PLpgSQL_expr *query;
-}	PLpgSQL_stmt_return_query;
+} PLpgSQL_stmt_return_query;
 
 typedef struct
 {								/* RAISE statement			*/

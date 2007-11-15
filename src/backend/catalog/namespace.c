@@ -147,7 +147,7 @@ typedef struct
 	List	   *searchPath;		/* the desired search path */
 	Oid			creationNamespace;		/* the desired creation namespace */
 	int			nestLevel;		/* subtransaction nesting level */
-}	OverrideStackEntry;
+} OverrideStackEntry;
 
 static List *overrideStack = NIL;
 
@@ -2266,7 +2266,7 @@ GetOverrideSearchPath(MemoryContext context)
  * search_path variable is ignored while an override is active.
  */
 void
-PushOverrideSearchPath(OverrideSearchPath * newpath)
+PushOverrideSearchPath(OverrideSearchPath *newpath)
 {
 	OverrideStackEntry *entry;
 	List	   *oidlist;

@@ -110,9 +110,9 @@ extern void ResourceOwnerForgetRelationRef(ResourceOwner owner,
 /* support for plancache refcount management */
 extern void ResourceOwnerEnlargePlanCacheRefs(ResourceOwner owner);
 extern void ResourceOwnerRememberPlanCacheRef(ResourceOwner owner,
-								  CachedPlan * plan);
+								  CachedPlan *plan);
 extern void ResourceOwnerForgetPlanCacheRef(ResourceOwner owner,
-								CachedPlan * plan);
+								CachedPlan *plan);
 
 /* support for tupledesc refcount management */
 extern void ResourceOwnerEnlargeTupleDescs(ResourceOwner owner);

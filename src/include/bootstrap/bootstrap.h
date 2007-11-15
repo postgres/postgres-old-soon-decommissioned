@@ -71,6 +71,6 @@ typedef enum
 	StartupProcess,
 	BgWriterProcess,
 	WalWriterProcess
-}	AuxProcType;
+} AuxProcType;
 
 #endif   /* BOOTSTRAP_H */

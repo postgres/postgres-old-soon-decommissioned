@@ -26,7 +26,7 @@ typedef struct
 {
 	StopList	stoplist;
 	IspellDict	obj;
-}	DictISpell;
+} DictISpell;
 
 Datum
 dispell_init(PG_FUNCTION_ARGS)

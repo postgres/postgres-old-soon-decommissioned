@@ -73,7 +73,7 @@ typedef struct PlannedStmt
 	List	   *relationOids;	/* OIDs of relations the plan depends on */
 
 	int			nParamExec;		/* number of PARAM_EXEC Params used */
-}	PlannedStmt;
+} PlannedStmt;
 
 /* macro for fetching the Plan associated with a SubPlan node */
 #define exec_subplan_get_plan(plannedstmt, subplan) \

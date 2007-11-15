@@ -714,7 +714,7 @@ typedef struct xl_heap_freeze
 	BlockNumber block;
 	TransactionId cutoff_xid;
 	/* TUPLE OFFSET NUMBERS FOLLOW AT THE END */
-}	xl_heap_freeze;
+} xl_heap_freeze;
 
 #define SizeOfHeapFreeze (offsetof(xl_heap_freeze, cutoff_xid) + sizeof(TransactionId))
 

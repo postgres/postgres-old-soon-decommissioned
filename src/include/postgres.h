@@ -95,20 +95,20 @@ typedef union
 		uint32		va_rawsize; /* Original data size (excludes header) */
 		char		va_data[1]; /* Compressed data */
 	}			va_compressed;
-}	varattrib_4b;
+} varattrib_4b;
 
 typedef struct
 {
 	uint8		va_header;
 	char		va_data[1];		/* Data begins here */
-}	varattrib_1b;
+} varattrib_1b;
 
 typedef struct
 {
 	uint8		va_header;		/* Always 0x80 or 0x01 */
 	uint8		va_len_1be;		/* Physical length of datum */
 	char		va_data[1];		/* Data (for now always a TOAST pointer) */
-}	varattrib_1b_e;
+} varattrib_1b_e;
 
 /*
  * Bit layouts for varlena headers on big-endian machines:

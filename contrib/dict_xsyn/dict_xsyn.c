@@ -27,7 +27,7 @@ typedef struct
 	char	   *key;			/* Word */
 	char	   *value;			/* Unparsed list of synonyms, including the
 								 * word itself */
-}	Syn;
+} Syn;
 
 typedef struct
 {
@@ -35,7 +35,7 @@ typedef struct
 	Syn		   *syn;
 
 	bool		keeporig;
-}	DictSyn;
+} DictSyn;
 
 
 PG_FUNCTION_INFO_V1(dxsyn_init);
@@ -72,7 +72,7 @@ compare_syn(const void *a, const void *b)
 }
 
 static void
-read_dictionary(DictSyn * d, char *filename)
+read_dictionary(DictSyn *d, char *filename)
 {
 	char	   *real_filename = get_tsearch_config_filename(filename, "rules");
 	FILE	   *fin;

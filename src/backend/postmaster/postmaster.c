@@ -257,7 +257,7 @@ typedef enum
 	PM_SHUTDOWN,				/* waiting for bgwriter to do shutdown ckpt */
 	PM_WAIT_DEAD_END,			/* waiting for dead_end children to exit */
 	PM_NO_CHILDREN				/* all important children have exited */
-}	PMState;
+} PMState;
 
 static PMState pmState = PM_INIT;
 

@@ -133,10 +133,10 @@ typedef struct
 {
 	FmgrInfo   *cmpDatumFunc;
 	bool	   *needUnique;
-}	cmpEntriesData;
+} cmpEntriesData;
 
 static int
-cmpEntries(const Datum *a, const Datum *b, cmpEntriesData * arg)
+cmpEntries(const Datum *a, const Datum *b, cmpEntriesData *arg)
 {
 	int			res = DatumGetInt32(FunctionCall2(arg->cmpDatumFunc,
 												  *a, *b));

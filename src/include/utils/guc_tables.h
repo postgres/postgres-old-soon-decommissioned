@@ -89,7 +89,7 @@ typedef enum
 	GUC_SET,					/* entry caused by plain SET command */
 	GUC_LOCAL,					/* entry caused by SET LOCAL command */
 	GUC_SET_LOCAL				/* entry caused by SET then SET LOCAL */
-}	GucStackState;
+} GucStackState;
 
 typedef struct guc_stack
 {

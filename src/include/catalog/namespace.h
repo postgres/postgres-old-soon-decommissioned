@@ -40,7 +40,7 @@ typedef struct OverrideSearchPath
 	List	   *schemas;		/* OIDs of explicitly named schemas */
 	bool		addCatalog;		/* implicitly prepend pg_catalog? */
 	bool		addTemp;		/* implicitly prepend temp schema? */
-}	OverrideSearchPath;
+} OverrideSearchPath;
 
 
 extern Oid	RangeVarGetRelid(const RangeVar *relation, bool failOK);
@@ -99,7 +99,7 @@ extern Oid	GetTempToastNamespace(void);
 extern void ResetTempTableNamespace(void);
 
 extern OverrideSearchPath *GetOverrideSearchPath(MemoryContext context);
-extern void PushOverrideSearchPath(OverrideSearchPath * newpath);
+extern void PushOverrideSearchPath(OverrideSearchPath *newpath);
 extern void PopOverrideSearchPath(void);
 
 extern Oid	FindConversionByName(List *conname);

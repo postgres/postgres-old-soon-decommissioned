@@ -38,7 +38,7 @@ extern void ExplainOneUtility(Node *utilityStmt, ExplainStmt *stmt,
 				  ParamListInfo params,
 				  TupOutputState *tstate);
 
-extern void ExplainOnePlan(PlannedStmt * plannedstmt, ParamListInfo params,
+extern void ExplainOnePlan(PlannedStmt *plannedstmt, ParamListInfo params,
 			   ExplainStmt *stmt, TupOutputState *tstate);
 
 #endif   /* EXPLAIN_H */

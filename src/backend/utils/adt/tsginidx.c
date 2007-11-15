@@ -113,10 +113,10 @@ typedef struct
 {
 	QueryItem  *frst;
 	bool	   *mapped_check;
-}	GinChkVal;
+} GinChkVal;
 
 static bool
-checkcondition_gin(void *checkval, QueryOperand * val)
+checkcondition_gin(void *checkval, QueryOperand *val)
 {
 	GinChkVal  *gcv = (GinChkVal *) checkval;
 

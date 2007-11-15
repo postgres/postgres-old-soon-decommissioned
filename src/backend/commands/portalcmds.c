@@ -39,7 +39,7 @@
  * utilityStmt field is set.
  */
 void
-PerformCursorOpen(PlannedStmt * stmt, ParamListInfo params,
+PerformCursorOpen(PlannedStmt *stmt, ParamListInfo params,
 				  const char *queryString, bool isTopLevel)
 {
 	DeclareCursorStmt *cstmt = (DeclareCursorStmt *) stmt->utilityStmt;

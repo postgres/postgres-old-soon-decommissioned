@@ -103,7 +103,7 @@ typedef struct
 {
 	int32		pid;			/* PID of source process */
 	StringInfoData data;		/* accumulated data, as a StringInfo */
-}	save_buffer;
+} save_buffer;
 
 #define CHUNK_SLOTS 20
 static save_buffer saved_chunks[CHUNK_SLOTS];

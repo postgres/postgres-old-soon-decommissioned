@@ -26,7 +26,7 @@ typedef enum BufferAccessStrategyType
 	BAS_BULKREAD,				/* Large read-only scan (hint bit updates are
 								 * ok) */
 	BAS_VACUUM					/* VACUUM */
-}	BufferAccessStrategyType;
+} BufferAccessStrategyType;
 
 /* in globals.c ... this duplicates miscadmin.h */
 extern PGDLLIMPORT int NBuffers;

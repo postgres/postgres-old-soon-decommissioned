@@ -292,7 +292,7 @@ PortalDefineQuery(Portal portal,
 				  const char *sourceText,
 				  const char *commandTag,
 				  List *stmts,
-				  CachedPlan * cplan)
+				  CachedPlan *cplan)
 {
 	AssertArg(PortalIsValid(portal));
 	AssertState(portal->status == PORTAL_NEW);

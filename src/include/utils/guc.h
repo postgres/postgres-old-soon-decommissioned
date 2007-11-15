@@ -106,7 +106,7 @@ typedef enum
 	GUC_ACTION_SET,				/* regular SET command */
 	GUC_ACTION_LOCAL,			/* SET LOCAL command */
 	GUC_ACTION_SAVE				/* function SET option */
-}	GucAction;
+} GucAction;
 
 #define GUC_QUALIFIER_SEPARATOR '.'
 

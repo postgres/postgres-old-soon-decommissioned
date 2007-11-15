@@ -56,7 +56,7 @@ typedef struct
 {
 	CommandId	cmin;
 	CommandId	cmax;
-}	ComboCidKeyData;
+} ComboCidKeyData;
 
 typedef ComboCidKeyData *ComboCidKey;
 
@@ -64,7 +64,7 @@ typedef struct
 {
 	ComboCidKeyData key;
 	CommandId	combocid;
-}	ComboCidEntryData;
+} ComboCidEntryData;
 
 typedef ComboCidEntryData *ComboCidEntry;
 

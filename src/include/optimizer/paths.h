@@ -62,8 +62,8 @@ extern List *group_clauses_by_indexkey(IndexOptInfo *index,
 						  Relids outer_relids,
 						  SaOpControl saop_control,
 						  bool *found_clause);
-extern bool eclass_matches_any_index(EquivalenceClass * ec,
-						 EquivalenceMember * em,
+extern bool eclass_matches_any_index(EquivalenceClass *ec,
+						 EquivalenceMember *em,
 						 RelOptInfo *rel);
 extern bool match_index_to_operand(Node *operand, int indexcol,
 					   IndexOptInfo *index);
@@ -134,7 +134,7 @@ extern bool have_relevant_eclass_joinclause(PlannerInfo *root,
 								RelOptInfo *rel1, RelOptInfo *rel2);
 extern bool has_relevant_eclass_joinclause(PlannerInfo *root,
 							   RelOptInfo *rel1);
-extern bool eclass_useful_for_merging(EquivalenceClass * eclass,
+extern bool eclass_useful_for_merging(EquivalenceClass *eclass,
 						  RelOptInfo *rel);
 
 /*

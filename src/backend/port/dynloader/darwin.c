@@ -75,13 +75,14 @@ pg_dlclose(void *handle)
 PGFunction
 pg_dlsym(void *handle, char *funcname)
 {
-	NSSymbol	symbol;
+	NSSymbol symbol;
 	char	   *symname = (char *) malloc(strlen(funcname) + 2);
 
 	sprintf(symname, "_%s", funcname);
 	if (NSIsSymbolNameDefined(symname))
 	{
 		symbol = NSLookupAndBindSymbol(symname);
+
 		free(symname);
 		return (PGFunction) NSAddressOfSymbol(symbol);
 	}

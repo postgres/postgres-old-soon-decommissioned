@@ -165,7 +165,7 @@ uuid_generate_v1mc(PG_FUNCTION_ARGS)
 
 
 static Datum
-uuid_generate_v35_internal(int mode, pg_uuid_t * ns, text *name)
+uuid_generate_v35_internal(int mode, pg_uuid_t *ns, text *name)
 {
 	uuid_t	   *ns_uuid;
 	Datum		result;

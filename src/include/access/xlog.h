@@ -182,7 +182,7 @@ typedef struct CheckpointStatsData
 	int			ckpt_segs_added;	/* # of new xlog segments created */
 	int			ckpt_segs_removed;		/* # of xlog segments deleted */
 	int			ckpt_segs_recycled;		/* # of xlog segments recycled */
-}	CheckpointStatsData;
+} CheckpointStatsData;
 
 extern CheckpointStatsData CheckpointStats;
 

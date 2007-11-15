@@ -1345,8 +1345,8 @@ static bool
 XLogCheckpointNeeded(void)
 {
 	/*
-	 * A straight computation of segment number could overflow 32 bits.
-	 * Rather than assuming we have working 64-bit arithmetic, we compare the
+	 * A straight computation of segment number could overflow 32 bits. Rather
+	 * than assuming we have working 64-bit arithmetic, we compare the
 	 * highest-order bits separately, and force a checkpoint immediately when
 	 * they change.
 	 */

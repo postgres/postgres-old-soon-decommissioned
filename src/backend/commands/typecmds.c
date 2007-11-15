@@ -995,7 +995,7 @@ RemoveDomain(List *names, DropBehavior behavior, bool missing_ok)
  *		Registers a new enum.
  */
 void
-DefineEnum(CreateEnumStmt * stmt)
+DefineEnum(CreateEnumStmt *stmt)
 {
 	char	   *enumName;
 	char	   *enumArrayName;

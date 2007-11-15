@@ -28,7 +28,7 @@ typedef struct
 	char	   *ecpgQuery;
 	long		execs;			/* # of executions		*/
 	char	   *connection;		/* connection for the statement		*/
-}	stmtCacheEntry;
+} stmtCacheEntry;
 
 static int	nextStmtID = 1;
 static const int stmtCacheNBuckets = 2039;		/* # buckets - a prime # */

@@ -2141,7 +2141,7 @@ order_qual_clauses(PlannerInfo *root, List *clauses)
 	{
 		Node	   *clause;
 		Cost		cost;
-	}			QualItem;
+	} QualItem;
 	int			nitems = list_length(clauses);
 	QualItem   *items;
 	ListCell   *lc;
