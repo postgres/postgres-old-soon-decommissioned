@@ -316,7 +316,23 @@ mdunlink(RelFileNode rnode, bool isRedo)
 	if (isRedo)
 		ret = unlink(path);
 	else
-		ret = truncate(path, 0);
+	{
+		/* truncate(2) would be easier here, but Windows hasn't got it */
+		int		fd;
+
+		fd = BasicOpenFile(path, O_RDWR | PG_BINARY, 0);
+		if (fd >= 0)
+		{
+			int		save_errno;
+
+			ret = ftruncate(fd, 0);
+			save_errno = errno;
+			close(fd);
+			errno = save_errno;
+		}
+		else
+			ret = -1;
+	}
 	if (ret < 0)
 	{
 		if (!isRedo || errno != ENOENT)
