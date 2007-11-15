@@ -508,7 +508,7 @@ help(void)
 
 	printf(_("\nConnection options:\n"));
 	printf(_("  -h, --host=HOSTNAME      database server host or socket directory\n"));
-	printf(_("  -l, --database=dbname    specify an alternative default database\n"));
+	printf(_("  -l, --database=DBNAME    specify an alternative default database\n"));
 	printf(_("  -p, --port=PORT          database server port number\n"));
 	printf(_("  -U, --username=NAME      connect as specified database user\n"));
 	printf(_("  -W, --password           force password prompt (should happen automatically)\n"));
