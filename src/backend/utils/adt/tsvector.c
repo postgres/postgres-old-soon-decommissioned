@@ -345,6 +345,8 @@ tsvectorout(PG_FUNCTION_ARGS)
 
 			if (t_iseq(curin, '\''))
 				*curout++ = '\'';
+			else if (t_iseq(curin, '\\'))
+				*curout++ = '\\';
 
 			while (len--)
 				*curout++ = *curin++;
