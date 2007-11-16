@@ -289,8 +289,15 @@ typedef struct xl_btree_split
 	 * than BlockNumber for alignment reasons: SizeOfBtreeSplit is only 16-bit
 	 * aligned.)
 	 *
+	 * If level > 0, an IndexTuple representing the HIKEY of the left page 
+	 * follows.  We don't need this on leaf pages, because it's the same
+	 * as the leftmost key in the new right page.  Also, it's suppressed if
+	 * XLogInsert chooses to store the left page's whole page image.
+	 *
 	 * In the _L variants, next are OffsetNumber newitemoff and the new item.
 	 * (In the _R variants, the new item is one of the right page's tuples.)
+	 * The new item, but not newitemoff, is suppressed if XLogInsert chooses
+	 * to store the left page's whole page image.
 	 *
 	 * Last are the right page's tuples in the form used by _bt_restore_page.
 	 */
