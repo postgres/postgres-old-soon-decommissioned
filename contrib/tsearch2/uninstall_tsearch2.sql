@@ -34,6 +34,7 @@ DROP FUNCTION snb_en_init(internal);
 DROP FUNCTION snb_lexize(internal,internal,int4);
 DROP FUNCTION snb_ru_init_koi8(internal);
 DROP FUNCTION snb_ru_init_utf8(internal);
+DROP FUNCTION snb_ru_init(internal);
 DROP FUNCTION spell_init(internal);
 DROP FUNCTION spell_lexize(internal,internal,int4);
 DROP FUNCTION syn_init(internal);

@@ -122,6 +122,7 @@ UNSUPPORTED_FUNCTION(tsa_snb_en_init);
 UNSUPPORTED_FUNCTION(tsa_snb_lexize);
 UNSUPPORTED_FUNCTION(tsa_snb_ru_init_koi8);
 UNSUPPORTED_FUNCTION(tsa_snb_ru_init_utf8);
+UNSUPPORTED_FUNCTION(tsa_snb_ru_init);
 
 UNSUPPORTED_FUNCTION(tsa_spell_init);
 UNSUPPORTED_FUNCTION(tsa_spell_lexize);

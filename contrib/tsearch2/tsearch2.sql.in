@@ -74,6 +74,11 @@ CREATE FUNCTION snb_ru_init_utf8(internal)
 	as 'MODULE_PATHNAME', 'tsa_snb_ru_init_utf8'
 	LANGUAGE C;
 
+CREATE FUNCTION snb_ru_init(internal)
+	RETURNS internal
+	as 'MODULE_PATHNAME', 'tsa_snb_ru_init'
+	LANGUAGE C;
+
 CREATE FUNCTION spell_init(internal)
 	RETURNS internal
 	as 'MODULE_PATHNAME', 'tsa_spell_init' 
