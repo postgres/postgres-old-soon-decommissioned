@@ -2219,6 +2219,13 @@ substr(current_date::text, 1, 1);
       </para>
      </listitem>
 
+     <listitem>
+      <para>
+       "Postgres" is now documented as an accepted alias for
+       "PostgreSQL" (Peter)
+      </para>
+     </listitem>
+
     </itemizedlist>
 
    </sect3>
