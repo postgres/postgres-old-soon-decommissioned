@@ -178,10 +178,8 @@ ltree	   *lca_inner(ltree ** a, int len);
 typedef unsigned char BITVEC[SIGLEN];
 typedef unsigned char *BITVECP;
 
-#define LOOPBYTE(a) \
-	for(i=0;i<SIGLEN;i++) {\
-		a;\
-	}
+#define LOOPBYTE \
+			for(i=0;i<SIGLEN;i++)
 
 #define GETBYTE(x,i) ( *( (BITVECP)(x) + (int)( (i) / BITBYTE ) ) )
 #define GETBITBYTE(x,i) ( ((unsigned char)(x)) >> i & 0x01 )
@@ -235,10 +233,8 @@ typedef struct
 #define ASIGLENBIT (ASIGLEN*BITBYTE)
 typedef unsigned char ABITVEC[ASIGLEN];
 
-#define ALOOPBYTE(a) \
-	for(i=0;i<ASIGLEN;i++) {\
-		a;\
-	}
+#define ALOOPBYTE \
+			for(i=0;i<ASIGLEN;i++)
 
 #define AHASHVAL(val) (((unsigned int)(val)) % ASIGLENBIT)
 #define AHASH(sign, val) SETBIT((sign), AHASHVAL(val))
