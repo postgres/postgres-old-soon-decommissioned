@@ -450,7 +450,7 @@ typedef struct
 	uint32		maxdepth;
 	EntryAccumulator **stack;
 	uint32		stackpos;
-	uint32		allocatedMemory;
+	long		allocatedMemory;
 
 	uint32		length;
 	EntryAccumulator *entryallocator;
