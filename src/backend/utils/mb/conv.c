@@ -461,7 +461,7 @@ UtfToLocal(const unsigned char *utf, unsigned char *iso,
 				code = p->code;
 			}
 		}
-		else	/*  no cmap or no remaining data */
+		else	/* no cmap or no remaining data */
 		{
 			p = bsearch(&iutf, map, size1,
 						sizeof(pg_utf_to_local), compare1);
