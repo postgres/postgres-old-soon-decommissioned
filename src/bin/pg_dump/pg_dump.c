@@ -1530,7 +1530,7 @@ dumpDatabase(Archive *AH)
 		if (comment && strlen(comment))
 		{
 			resetPQExpBuffer(dbQry);
-			/* This will fail when loaded into a database with a different name. */
+			/* Generates warning when loaded into a differently-named database.*/
 			appendPQExpBuffer(dbQry, "COMMENT ON DATABASE %s IS ", fmtId(datname));
 			appendStringLiteralAH(dbQry, comment, AH);
 			appendPQExpBuffer(dbQry, ";\n");
