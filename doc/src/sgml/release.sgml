@@ -2355,14 +2355,15 @@ current_date &lt; 2017-11-17
 
      <listitem>
       <para>
-       Allow <application>pgbench</> to set the fillfactor (Pavan Deolasee)
+       Allow <application>contrib/pgbench</> to set the fillfactor (Pavan
+       Deolasee)
       </para>
      </listitem>
 
      <listitem>
       <para>
-       Add timestamps to <application>pgbench</> <literal>-l</> (Greg
-       Smith)
+       Add timestamps to <application>contrib/pgbench</> <literal>-l</>
+       (Greg Smith)
       </para>
      </listitem>
 
@@ -2375,13 +2376,13 @@ current_date &lt; 2017-11-17
 
      <listitem>
       <para>
-       Add GIN support for <filename>hstore</> (Teodor)
+       Add GIN support for <filename>contrib/hstore</> (Teodor)
       </para>
      </listitem>
 
      <listitem>
       <para>
-       Add GIN support for <filename>pg_trgm</> (Guillaume Smet, Teodor)
+       Add GIN support for <filename>contrib/pg_trgm</> (Guillaume Smet, Teodor)
       </para>
      </listitem>
 
