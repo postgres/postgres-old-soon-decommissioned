@@ -1913,7 +1913,7 @@ current_date &lt; 2017-11-17
 
      <listitem>
       <para>
-       Add <application>pg_ctl</> <literal> option to control generation
+       Add <application>pg_ctl</> option to control generation
        of core dumps (Andrew)
       </para>
      </listitem>
