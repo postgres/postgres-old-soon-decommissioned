@@ -76,6 +76,11 @@
 #define pTHX void
 #endif
 
+/* perl may have a different width of "bool", don't buy it */
+#ifdef bool
+#undef bool
+#endif
+
 
 /**********************************************************************
  * The information we cache about loaded procedures
