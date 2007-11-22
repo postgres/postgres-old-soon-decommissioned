@@ -3926,6 +3926,7 @@ NUM_prepare_locale(NUMProc *Np)
 		 *
 		 * Some locales (e.g. broken glibc pt_BR), have a comma for decimal,
 		 * but "" for thousands_sep, so we set the thousands_sep too.
+		 * http://archives.postgresql.org/pgsql-hackers/2007-11/msg00772.php
 		 */
 		if (lconv->thousands_sep && *lconv->thousands_sep)
 			Np->L_thousands_sep = lconv->thousands_sep;

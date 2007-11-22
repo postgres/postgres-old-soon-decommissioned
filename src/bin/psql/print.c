@@ -2037,6 +2037,8 @@ setDecimalLocale(void)
 		grouping = strdup(extlconv->grouping);
 	else
 		grouping = "3";			/* most common */
+
+	/* similar code exists in formatting.c */
 	if (*extlconv->thousands_sep)
 		thousands_sep = strdup(extlconv->thousands_sep);
 	/* Make sure thousands separator doesn't match decimal point symbol. */
