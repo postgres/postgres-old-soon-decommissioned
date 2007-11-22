@@ -38,6 +38,11 @@
 #define pTHX void
 #endif
 
+/* perl may have a different width of "bool", don't buy it */
+#ifdef bool
+#undef bool
+#endif
+
 /* routines from spi_internal.c */
 int			spi_DEBUG(void);
 int			spi_LOG(void);
