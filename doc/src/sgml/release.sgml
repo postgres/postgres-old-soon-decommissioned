@@ -2231,6 +2231,11 @@ current_date &lt; 2017-11-17
        Support <command>gmake draft</command> when building the
        <acronym>SGML</> documentation (Bruce)
       </para>
+
+      <para>
+       Documentions builds will now build indexes by default, unless
+       <literal>draft</> is used.
+      </para>
      </listitem>
 
     </itemizedlist>
