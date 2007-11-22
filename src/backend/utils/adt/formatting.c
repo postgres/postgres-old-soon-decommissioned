@@ -3925,10 +3925,11 @@ NUM_prepare_locale(NUMProc *Np)
 		 * Number thousands separator
 		 *
 		 * Some locales (e.g. broken glibc pt_BR), have a comma for decimal,
-		 * but "" for thousands_sep, so we set the thousands_sep too. 2007-02-12
+		 * but "" for thousands_sep, so we set the thousands_sep too.
 		 */
 		if (lconv->thousands_sep && *lconv->thousands_sep)
 			Np->L_thousands_sep = lconv->thousands_sep;
+		/* Make sure thousands separator doesn't match decimal point symbol. */
 		else if (strcmp(Np->decimal, ",") != 0)
 			Np->L_thousands_sep = ",";
 		else

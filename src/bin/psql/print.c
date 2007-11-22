@@ -2039,6 +2039,7 @@ setDecimalLocale(void)
 		grouping = "3";			/* most common */
 	if (*extlconv->thousands_sep)
 		thousands_sep = strdup(extlconv->thousands_sep);
+	/* Make sure thousands separator doesn't match decimal point symbol. */
 	else if (strcmp(decimal_point, ",") != 0)
 		thousands_sep = ",";
 	else
