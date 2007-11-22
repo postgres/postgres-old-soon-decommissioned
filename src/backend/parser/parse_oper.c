@@ -939,7 +939,7 @@ make_scalar_array_op(ParseState *pstate, List *opname,
 	/* and build the expression node */
 	result = makeNode(ScalarArrayOpExpr);
 	result->opno = oprid(tup);
-	result->opfuncid = InvalidOid;
+	result->opfuncid = opform->oprcode;
 	result->useOr = useOr;
 	result->args = args;
 
@@ -1011,7 +1011,7 @@ make_op_expr(ParseState *pstate, Operator op,
 	/* and build the expression node */
 	result = makeNode(OpExpr);
 	result->opno = oprid(op);
-	result->opfuncid = InvalidOid;
+	result->opfuncid = opform->oprcode;
 	result->opresulttype = rettype;
 	result->opretset = get_func_retset(opform->oprcode);
 	result->args = args;
