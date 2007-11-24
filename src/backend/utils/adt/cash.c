@@ -337,9 +337,13 @@ cash_out(PG_FUNCTION_ARGS)
 	strncpy((buf + count - strlen(csymbol) + 1), csymbol, strlen(csymbol));
 	count -= strlen(csymbol) - 1;
 
-	/* XXX What does this do?  It seems to duplicate the last character. */
+	/*
+	 *	If points == 0 and the number of digits % mon_group == 0,
+	 *	the code above adds a trailing ssymbol on the far right,
+	 *	so remove it.
+	 */
 	if (buf[LAST_DIGIT] == ssymbol)
-		buf[LAST_DIGIT] = buf[LAST_PAREN];
+		buf[LAST_DIGIT] = '\0';
 
 	/* see if we need to signify negative amount */
 	if (minus)
