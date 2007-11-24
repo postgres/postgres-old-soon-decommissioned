@@ -16,6 +16,7 @@ test: numeric
 test: txid
 test: uuid
 test: enum
+test: money
 test: strings
 test: numerology
 test: point
