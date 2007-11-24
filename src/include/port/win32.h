@@ -280,8 +280,8 @@ extern void _dosmaperr(unsigned long);
 
 /* Things that exist in MingW headers, but need to be added to MSVC */
 #ifdef WIN32_ONLY_COMPILER
-#ifndef __BORLANDC__
 typedef long ssize_t;
+#ifndef __BORLANDC__
 typedef unsigned short mode_t;
 #endif
 
