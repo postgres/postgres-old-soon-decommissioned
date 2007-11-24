@@ -9,8 +9,9 @@
  * Always build with SSPI support. Keep it as a #define in case
  * we want a switch to disable it sometime in the future.
  */
+#ifndef __BORLANDC__
 #define ENABLE_SSPI 1
-
+#endif
 
 /* undefine and redefine after #include */
 #undef mkdir
