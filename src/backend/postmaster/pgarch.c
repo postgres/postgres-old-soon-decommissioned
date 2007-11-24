@@ -492,7 +492,7 @@ pgarch_archiveXlog(char *xlog)
 
 		return false;
 	}
-	ereport(LOG,
+	ereport(DEBUG1,
 			(errmsg("archived transaction log file \"%s\"", xlog)));
 
 	return true;
