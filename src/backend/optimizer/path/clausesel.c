@@ -101,6 +101,14 @@ clauselist_selectivity(PlannerInfo *root,
 	ListCell   *l;
 
 	/*
+	 * If there's exactly one clause, then no use in trying to match up
+	 * pairs, so just go directly to clause_selectivity().
+	 */
+	if (list_length(clauses) == 1)
+		return clause_selectivity(root, (Node *) linitial(clauses),
+								  varRelid, jointype);
+
+	/*
 	 * Initial scan over clauses.  Anything that doesn't look like a potential
 	 * rangequery clause gets multiplied into s1 and forgotten. Anything that
 	 * does gets inserted into an rqlist entry.
