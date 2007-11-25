@@ -2643,7 +2643,7 @@ InitTempTableNamespace(void)
 	}
 
 	/*
-	 * If the corresponding temp-table namespace doesn't exist yet, create it.
+	 * If the corresponding toast-table namespace doesn't exist yet, create it.
 	 * (We assume there is no need to clean it out if it does exist, since
 	 * dropping a parent table should make its toast table go away.)
 	 */
