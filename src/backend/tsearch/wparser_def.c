@@ -836,6 +836,7 @@ static const TParserStateActionItem actionTPS_InXMLEntity[] = {
 static const TParserStateActionItem actionTPS_InXMLEntityNumFirst[] = {
 	{p_isEOF, 0, A_POP, TPS_Null, 0, NULL},
 	{p_iseqC, 'x', A_NEXT, TPS_InXMLEntityHexNumFirst, 0, NULL},
+	{p_iseqC, 'X', A_NEXT, TPS_InXMLEntityHexNumFirst, 0, NULL},
 	{p_isdigit, 0, A_NEXT, TPS_InXMLEntityNum, 0, NULL},
 	{NULL, 0, A_POP, TPS_Null, 0, NULL}
 };
