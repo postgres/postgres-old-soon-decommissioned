@@ -3019,7 +3019,7 @@ map_sql_type_to_xmlschema_type(Oid typeoid, int typmod)
 
 			case INT4OID:
 				appendStringInfo(&result,
-								 "  <xsd:restriction base='xsd:int'>\n"
+								 "  <xsd:restriction base=\"xsd:int\">\n"
 								 "    <xsd:maxInclusive value=\"%d\"/>\n"
 								 "    <xsd:minInclusive value=\"%d\"/>\n"
 								 "  </xsd:restriction>\n",
@@ -3168,7 +3168,7 @@ SPI_sql_row_to_xmlelement(int rownum, StringInfo result, char *tablename,
 		if (isnull)
 		{
 			if (nulls)
-				appendStringInfo(result, "  <%s xsi:nil='true'/>\n", colname);
+				appendStringInfo(result, "  <%s xsi:nil=\"true\"/>\n", colname);
 		}
 		else
 			appendStringInfo(result, "  <%s>%s</%s>\n",
