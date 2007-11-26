@@ -33,7 +33,7 @@ CREATE [ UNIQUE ] INDEX [ CONCURRENTLY ] <replaceable class="parameter">name</re
 
   <para>
    <command>CREATE INDEX</command> constructs an index <replaceable
-   class="parameter">index_name</replaceable> on the specified table.
+   class="parameter">name</replaceable> on the specified table.
    Indexes are primarily used to enhance database performance (though
    inappropriate use can result in slower performance).
   </para>
