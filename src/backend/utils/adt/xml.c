@@ -535,7 +535,8 @@ xmltotext(PG_FUNCTION_ARGS)
 {
 	xmltype    *data = PG_GETARG_XML_P(0);
 
-	PG_RETURN_TEXT_P(xmltotext_with_xmloption(data, xmloption));
+	/* It's actually binary compatible. */
+	return (text *) data;
 }
 
 
