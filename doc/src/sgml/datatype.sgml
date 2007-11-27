@@ -848,8 +848,8 @@ ALTER SEQUENCE <replaceable class="parameter">tablename</replaceable>_<replaceab
 <programlisting>
 SELECT 1234::text::money;
 </programlisting>
-    There is no simple way of doing the reverse;  casting a <type>money</type> value to a
-    numeric type.
+    There is no simple way of doing the reverse using a locale-neutral
+    method, namely casting a <type>money</type> value to a numeric type.
    </para>
 
    <para>
