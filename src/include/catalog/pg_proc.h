@@ -2631,6 +2631,8 @@ DATA(insert OID =  1282 ( quote_ident	   PGNSP PGUID 12 1 0 f f t f i 1 25 "25" 
 DESCR("quote an identifier for usage in a querystring");
 DATA(insert OID =  1283 ( quote_literal    PGNSP PGUID 12 1 0 f f t f i 1 25 "25" _null_ _null_ _null_ quote_literal - _null_ _null_ ));
 DESCR("quote a literal for usage in a querystring");
+DATA(insert OID =  1285 ( quote_literal    PGNSP PGUID 14 1 0 f f t f v 1 25 "2283" _null_ _null_ _null_ "select pg_catalog.quote_literal($1::pg_catalog.text)" - _null_ _null_ ));
+DESCR("quote a data value for usage in a querystring");
 
 DATA(insert OID = 1798 (  oidin			   PGNSP PGUID 12 1 0 f f t f i 1 26 "2275" _null_ _null_ _null_ oidin - _null_ _null_ ));
 DESCR("I/O");
