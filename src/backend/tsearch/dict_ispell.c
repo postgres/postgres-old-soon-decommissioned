@@ -79,7 +79,7 @@ dispell_init(PG_FUNCTION_ARGS)
 		{
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-					 errmsg("unrecognized ISpell parameter: \"%s\"",
+					 errmsg("unrecognized Ispell parameter: \"%s\"",
 							defel->defname)));
 		}
 	}
