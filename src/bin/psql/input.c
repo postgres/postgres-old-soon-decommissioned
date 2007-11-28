@@ -147,7 +147,7 @@ pg_send_history(PQExpBuffer history_buf)
  * gets_fromFile
  *
  * Gets a line of noninteractive input from a file (which could be stdin).
- * The result is a malloc'd string.
+ * The result is a malloc'd string, or NULL on EOF or input error.
  *
  * Caller *must* have set up sigint_interrupt_jmp before calling.
  *
@@ -179,9 +179,16 @@ gets_fromFile(FILE *source)
 		/* Disable SIGINT again */
 		sigint_interrupt_enabled = false;
 
-		/* EOF? */
+		/* EOF or error? */
 		if (result == NULL)
+		{
+			if (ferror(source))
+			{
+				psql_error("could not read from input file: %s\n", strerror(errno));
+				return NULL;
+			}
 			break;
+		}
 
 		appendPQExpBufferStr(buffer, line);
 

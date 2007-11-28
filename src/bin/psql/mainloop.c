@@ -129,7 +129,11 @@ MainLoop(FILE *source)
 			line = gets_interactive(get_prompt(prompt_status));
 		}
 		else
+		{
 			line = gets_fromFile(source);
+			if (!line && ferror(source))
+				successResult = EXIT_FAILURE;
+		}
 
 		/*
 		 * query_buf holds query already accumulated.  line is the malloc'd
