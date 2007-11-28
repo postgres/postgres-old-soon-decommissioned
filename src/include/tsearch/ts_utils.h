@@ -148,8 +148,8 @@ extern Datum gtsvectorout(PG_FUNCTION_ARGS);
  */
 
 extern Datum gin_extract_tsvector(PG_FUNCTION_ARGS);
-extern Datum gin_extract_query(PG_FUNCTION_ARGS);
-extern Datum gin_ts_consistent(PG_FUNCTION_ARGS);
+extern Datum gin_extract_tsquery(PG_FUNCTION_ARGS);
+extern Datum gin_tsquery_consistent(PG_FUNCTION_ARGS);
 
 /*
  * Possible strategy numbers for indexes
