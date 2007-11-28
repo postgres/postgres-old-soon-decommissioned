@@ -2984,12 +2984,14 @@ map_sql_type_to_xmlschema_type(Oid typeoid, int typmod)
 			case BPCHAROID:
 			case VARCHAROID:
 			case TEXTOID:
+				appendStringInfo(&result,
+								 "  <xsd:restriction base=\"xsd:string\">\n");
 				if (typmod != -1)
 					appendStringInfo(&result,
-								  "  <xsd:restriction base=\"xsd:string\">\n"
-									 "    <xsd:maxLength value=\"%d\"/>\n"
-									 "  </xsd:restriction>\n",
+									 "    <xsd:maxLength value=\"%d\"/>\n",
 									 typmod - VARHDRSZ);
+				appendStringInfo(&result,
+								 "  </xsd:restriction>\n");
 				break;
 
 			case BYTEAOID:
@@ -2997,6 +2999,7 @@ map_sql_type_to_xmlschema_type(Oid typeoid, int typmod)
 								 "  <xsd:restriction base=\"xsd:%s\">\n"
 								 "  </xsd:restriction>\n",
 				xmlbinary == XMLBINARY_BASE64 ? "base64Binary" : "hexBinary");
+				break;
 
 			case NUMERICOID:
 				if (typmod != -1)
