@@ -962,7 +962,16 @@ SET ENABLE_SEQSCAN TO OFF;
      </varlistentry>
 
      </variablelist>
+
+     <note>
+      <para>
+       See the <xref linkend="sql-vacuum" endterm="sql-vacuum-title">
+       command for information on setting this parameter.
+      </para>
+     </note>
+
      </sect2>
+
      <sect2 id="runtime-config-resource-kernel">
      <title>Kernel Resource Usage</title>
      <variablelist>

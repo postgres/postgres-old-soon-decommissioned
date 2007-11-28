@@ -96,7 +96,10 @@ VACUUM [ FULL ] [ FREEZE ] [ VERBOSE ] ANALYZE [ <replaceable class="PARAMETER">
     <term><literal>VERBOSE</literal></term>
     <listitem>
      <para>
-      Prints a detailed vacuum activity report for each table.
+      Prints a detailed vacuum activity report for each table. Can be used
+      to help determine appropriate settings for
+      <literal>max_fsm_pages</literal>, <literal>max_fsm_pages</literal>,
+      and <literal>default_statistics_target</literal>.
      </para>
     </listitem>
    </varlistentry>
