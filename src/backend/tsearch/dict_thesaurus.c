@@ -570,7 +570,7 @@ compileTheSubstitute(DictThesaurus *d)
 			}
 			else if (lexized)
 			{
-				elog(NOTICE, "thesaurus word \"%s\" in substitution is a stop-word, ignored (rule %d)", inptr->lexeme, i + 1);
+				elog(ERROR, "thesaurus word \"%s\" in substitution is a stop-word (rule %d)", inptr->lexeme, i + 1);
 			}
 			else
 			{
