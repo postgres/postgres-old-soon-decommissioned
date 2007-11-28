@@ -3007,6 +3007,40 @@ fetch_search_path(bool includeImplicit)
 }
 
 /*
+ * Fetch the active search path into a caller-allocated array of OIDs.
+ * Returns the number of path entries.  (If this is more than sarray_len,
+ * then the data didn't fit and is not all stored.)
+ *
+ * The returned list always includes the implicitly-prepended namespaces,
+ * but never includes the temp namespace.  (This is suitable for existing
+ * users, which would want to ignore the temp namespace anyway.)  This
+ * definition allows us to not worry about initializing the temp namespace.
+ */
+int
+fetch_search_path_array(Oid *sarray, int sarray_len)
+{
+	int			count = 0;
+	ListCell   *l;
+
+	recomputeNamespacePath();
+
+	foreach(l, activeSearchPath)
+	{
+		Oid			namespaceId = lfirst_oid(l);
+
+		if (namespaceId == myTempNamespace)
+			continue;			/* do not include temp namespace */
+
+		if (count < sarray_len)
+			sarray[count] = namespaceId;
+		count++;
+	}
+
+	return count;
+}
+
+
+/*
  * Export the FooIsVisible functions as SQL-callable functions.
  */
 
