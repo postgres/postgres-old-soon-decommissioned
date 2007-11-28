@@ -359,7 +359,8 @@ gettoken_tsvector(TSVectorParseState state,
 				PRSSYNTAXERROR;
 		}
 		else	/* internal error */
-			elog(ERROR, "internal error in gettoken_tsvector");
+			elog(ERROR, "unrecognized state in gettoken_tsvector: %d",
+				 statecode);
 
 		/* get next char */
 		state->prsbuf += pg_mblen(state->prsbuf);

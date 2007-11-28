@@ -95,7 +95,8 @@ get_ts_parser_func(DefElem *defel, int attnum)
 			break;
 		default:
 			/* should not be here */
-			elog(ERROR, "unknown attribute for text search parser: %d", attnum);
+			elog(ERROR, "unrecognized attribute for text search parser: %d",
+				 attnum);
 			nargs = 0;			/* keep compiler quiet */
 	}
 
@@ -895,7 +896,7 @@ get_ts_template_func(DefElem *defel, int attnum)
 			break;
 		default:
 			/* should not be here */
-			elog(ERROR, "unknown attribute for text search template: %d",
+			elog(ERROR, "unrecognized attribute for text search template: %d",
 				 attnum);
 			nargs = 0;			/* keep compiler quiet */
 	}

@@ -380,15 +380,17 @@ parsetext(Oid cfgId, ParsedText *prs, char *buf, int buflen)
 		{
 #ifdef IGNORE_LONGLEXEME
 			ereport(NOTICE,
-					(errcode(ERRCODE_SYNTAX_ERROR),
+					(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
 					 errmsg("word is too long to be indexed"),
 					 errdetail("Words longer than %d characters are ignored.",
 							   MAXSTRLEN)));
 			continue;
 #else
 			ereport(ERROR,
-					(errcode(ERRCODE_SYNTAX_ERROR),
-					 errmsg("word is too long to be indexed")));
+					(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
+					 errmsg("word is too long to be indexed"),
+					 errdetail("Words longer than %d characters are ignored.",
+							   MAXSTRLEN)));
 #endif
 		}
 
@@ -547,15 +549,17 @@ hlparsetext(Oid cfgId, HeadlineParsedText *prs, TSQuery query, char *buf, int bu
 		{
 #ifdef IGNORE_LONGLEXEME
 			ereport(NOTICE,
-					(errcode(ERRCODE_SYNTAX_ERROR),
+					(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
 					 errmsg("word is too long to be indexed"),
 					 errdetail("Words longer than %d characters are ignored.",
 							   MAXSTRLEN)));
 			continue;
 #else
 			ereport(ERROR,
-					(errcode(ERRCODE_SYNTAX_ERROR),
-					 errmsg("word is too long to be indexed")));
+					(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
+					 errmsg("word is too long to be indexed"),
+					 errdetail("Words longer than %d characters are ignored.",
+							   MAXSTRLEN)));
 #endif
 		}
 

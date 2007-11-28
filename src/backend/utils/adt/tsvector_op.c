@@ -226,9 +226,9 @@ tsvector_setweight(PG_FUNCTION_ARGS)
 		case 'd':
 			w = 0;
 			break;
-			/* internal error */
 		default:
-			elog(ERROR, "unrecognized weight");
+			/* internal error */
+			elog(ERROR, "unrecognized weight: %d", cw);
 	}
 
 	out = (TSVector) palloc(VARSIZE(in));
@@ -609,7 +609,7 @@ TS_execute(QueryItem *curitem, void *checkval, bool calcnot,
 				return TS_execute(curitem + 1, checkval, calcnot, chkcond);
 
 		default:
-			elog(ERROR, "unknown operator %d", curitem->operator.oper);
+			elog(ERROR, "unrecognized operator: %d", curitem->operator.oper);
 	}
 
 	/* not reachable, but keep compiler quiet */

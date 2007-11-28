@@ -281,7 +281,8 @@ clean_fakeval(QueryItem *ptr, int *len)
 	resroot = clean_fakeval_intree(root, &result);
 	if (result != V_UNKNOWN)
 	{
-		elog(NOTICE, "query contains only stopword(s) or doesn't contain lexeme(s), ignored");
+		ereport(NOTICE,
+				(errmsg("query contains only stopword(s) or doesn't contain lexeme(s), ignored")));
 		*len = 0;
 		return NULL;
 	}

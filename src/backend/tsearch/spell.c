@@ -501,7 +501,7 @@ parse_affentry(char *str, char *mask, char *find, char *repl,
 							  lineno, filename)));
 		}
 		else
-			elog(ERROR, "unknown state in parse_affentry: %d", state);
+			elog(ERROR, "unrecognized state in parse_affentry: %d", state);
 
 		str += pg_mblen(str);
 	}
