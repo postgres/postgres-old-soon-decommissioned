@@ -150,7 +150,7 @@ DELETE FROM [ ONLY ] <replaceable class="PARAMETER">table</replaceable> [ [ AS ]
       from this cursor.  The cursor must be a simple (non-join, non-aggregate)
       query on the <command>DELETE</>'s target table.
       Note that <literal>WHERE CURRENT OF</> cannot be
-      specified together with a boolean condition.
+      specified together with a Boolean condition.
      </para>
     </listitem>
    </varlistentry>

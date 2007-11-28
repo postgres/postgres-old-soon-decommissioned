@@ -222,9 +222,9 @@ COMMUTATOR = OPERATOR(myschema.===) ,
   <para>
    The obsolete options <literal>SORT1</>, <literal>SORT2</>,
    <literal>LTCMP</>, and <literal>GTCMP</> were formerly used to
-   specify the names of sort operators associated with a mergejoinable
+   specify the names of sort operators associated with a merge-joinable
    operator.  This is no longer necessary, since information about
-   associated operators is found by looking at btree operator families
+   associated operators is found by looking at B-tree operator families
    instead.  If one of these options is given, it is ignored except
    for implicitly setting <literal>MERGES</> true.
   </para>

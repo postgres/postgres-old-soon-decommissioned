@@ -4976,7 +4976,7 @@ defaultNoticeProcessor(void *arg, const char *message)
    used.  (Therefore, put more-specific entries first when you are using
    wildcards.) If an entry needs to contain <literal>:</literal> or
    <literal>\</literal>, escape this character with <literal>\</literal>.
-   A host name of <literal>localhost</> matches both TCP (hostname
+   A host name of <literal>localhost</> matches both TCP (host name
    <literal>localhost</>) and Unix domain socket (<literal>pghost</> empty
    or the default socket directory) connections coming from the local
    machine.

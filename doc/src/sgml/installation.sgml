@@ -1308,7 +1308,7 @@ su - postgres
        <term><envar>TCLSH</envar></term>
        <listitem>
         <para>
-         Full path to the Tcl interpreter.  This wil be used to
+         Full path to the Tcl interpreter.  This will be used to
          determine the dependencies for building PL/Tcl.
         </para>
        </listitem>

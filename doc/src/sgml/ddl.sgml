@@ -2793,7 +2793,7 @@ EXPLAIN SELECT count(*) FROM measurement WHERE logdate &gt;= DATE '2006-01-01';
       range tests for range partitioning, as illustrated in the preceding
       examples.  A good rule of thumb is that partitioning constraints should
       contain only comparisons of the partitioning column(s) to constants
-      using btree-indexable operators.
+      using B-tree-indexable operators.
      </para>
     </listitem>
 

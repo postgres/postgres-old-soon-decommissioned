@@ -3348,7 +3348,7 @@ SELECT * INTO myrec FROM dictionary WHERE word LIKE search_term;
     where <literal>search_term</> is a <application>PL/pgSQL</application>
     variable.  The cached plan for this query will never use an index on
     <structfield>word</>, since the planner cannot assume that the
-    <literal>LIKE</> pattern will be left-anchored at runtime.  To use
+    <literal>LIKE</> pattern will be left-anchored at run time.  To use
     an index the query must be planned with a specific constant
     <literal>LIKE</> pattern provided.  This is another situation where
     <command>EXECUTE</command> can be used to force a new plan to be

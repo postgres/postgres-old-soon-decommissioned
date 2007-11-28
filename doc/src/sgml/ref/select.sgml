@@ -698,7 +698,7 @@ SELECT name FROM distributors ORDER BY code;
     assumed by default.  Alternatively, a specific ordering operator
     name can be specified in the <literal>USING</> clause.
     An ordering operator must be a less-than or greater-than
-    member of some btree operator family.
+    member of some B-tree operator family.
     <literal>ASC</> is usually equivalent to <literal>USING &lt;</> and
     <literal>DESC</> is usually equivalent to <literal>USING &gt;</>.
     (But the creator of a user-defined data type can define exactly what the
