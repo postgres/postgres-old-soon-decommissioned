@@ -156,11 +156,17 @@ int			semop(int semId, struct sembuf * sops, int flag);
 #define SIGUSR2				31
 #endif
 
+/*
+ * New versions of mingw have gettimeofday() and also declare
+ * struct timezone to support it.
+ */
+#ifndef HAVE_GETTIMEOFDAY
 struct timezone
 {
 	int			tz_minuteswest; /* Minutes west of GMT.  */
 	int			tz_dsttime;		/* Nonzero if DST is ever in effect.  */
 };
+#endif
 
 /* for setitimer in backend/port/win32/timer.c */
 #define ITIMER_REAL 0
