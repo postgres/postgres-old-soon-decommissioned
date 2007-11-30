@@ -1086,7 +1086,7 @@ toast_save_datum(Relation rel, Datum value,
 	TupleDesc	toasttupDesc;
 	Datum		t_values[3];
 	bool		t_isnull[3];
-	CommandId	mycid = GetCurrentCommandId();
+	CommandId	mycid = GetCurrentCommandId(true);
 	struct varlena *result;
 	struct varatt_external toast_pointer;
 	struct

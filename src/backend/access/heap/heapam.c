@@ -1891,7 +1891,7 @@ heap_insert(Relation relation, HeapTuple tup, CommandId cid,
 Oid
 simple_heap_insert(Relation relation, HeapTuple tup)
 {
-	return heap_insert(relation, tup, GetCurrentCommandId(), true, true);
+	return heap_insert(relation, tup, GetCurrentCommandId(true), true, true);
 }
 
 /*
@@ -2174,7 +2174,7 @@ simple_heap_delete(Relation relation, ItemPointer tid)
 
 	result = heap_delete(relation, tid,
 						 &update_ctid, &update_xmax,
-						 GetCurrentCommandId(), InvalidSnapshot,
+						 GetCurrentCommandId(true), InvalidSnapshot,
 						 true /* wait for commit */ );
 	switch (result)
 	{
@@ -2817,7 +2817,7 @@ simple_heap_update(Relation relation, ItemPointer otid, HeapTuple tup)
 
 	result = heap_update(relation, otid, tup,
 						 &update_ctid, &update_xmax,
-						 GetCurrentCommandId(), InvalidSnapshot,
+						 GetCurrentCommandId(true), InvalidSnapshot,
 						 true /* wait for commit */ );
 	switch (result)
 	{

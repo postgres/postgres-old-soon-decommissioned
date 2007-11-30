@@ -1593,7 +1593,7 @@ _SPI_execute_plan(SPIPlanPtr plan, Datum *Values, const char *Nulls,
 					 */
 					ActiveSnapshot = CopySnapshot(snapshot);
 					if (!read_only)
-						ActiveSnapshot->curcid = GetCurrentCommandId();
+						ActiveSnapshot->curcid = GetCurrentCommandId(false);
 				}
 
 				if (IsA(stmt, PlannedStmt) &&

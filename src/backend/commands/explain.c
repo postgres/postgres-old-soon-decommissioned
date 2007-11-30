@@ -233,7 +233,7 @@ ExplainOnePlan(PlannedStmt *plannedstmt, ParamListInfo params,
 	 * EXPLAIN can be invoked, I think it's OK, because the active snapshot
 	 * shouldn't be shared with anything else anyway.)
 	 */
-	ActiveSnapshot->curcid = GetCurrentCommandId();
+	ActiveSnapshot->curcid = GetCurrentCommandId(false);
 
 	/* Create a QueryDesc requesting no output */
 	queryDesc = CreateQueryDesc(plannedstmt,

@@ -814,7 +814,7 @@ GetSnapshotData(Snapshot snapshot, bool serializable)
 	snapshot->xcnt = count;
 	snapshot->subxcnt = subcount;
 
-	snapshot->curcid = GetCurrentCommandId();
+	snapshot->curcid = GetCurrentCommandId(false);
 
 	return snapshot;
 }

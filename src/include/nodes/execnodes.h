@@ -311,6 +311,9 @@ typedef struct EState
 	Snapshot	es_crosscheck_snapshot; /* crosscheck time qual for RI */
 	List	   *es_range_table; /* List of RangeTblEntry */
 
+	/* If query can insert/delete tuples, the command ID to mark them with */
+	CommandId	es_output_cid;
+
 	/* Info about target table for insert/update/delete queries: */
 	ResultRelInfo *es_result_relations; /* array of ResultRelInfos */
 	int			es_num_result_relations;		/* length of array */

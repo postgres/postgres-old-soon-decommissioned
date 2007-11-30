@@ -562,7 +562,8 @@ AtCommit_Notify(void)
 				 */
 				result = heap_update(lRel, &lTuple->t_self, rTuple,
 									 &update_ctid, &update_xmax,
-									 GetCurrentCommandId(), InvalidSnapshot,
+									 GetCurrentCommandId(true),
+									 InvalidSnapshot,
 									 false /* no wait for commit */ );
 				switch (result)
 				{

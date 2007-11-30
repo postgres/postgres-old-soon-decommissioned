@@ -124,8 +124,7 @@ extern void ExecASDeleteTriggers(EState *estate,
 					 ResultRelInfo *relinfo);
 extern bool ExecBRDeleteTriggers(EState *estate,
 					 ResultRelInfo *relinfo,
-					 ItemPointer tupleid,
-					 CommandId cid);
+					 ItemPointer tupleid);
 extern void ExecARDeleteTriggers(EState *estate,
 					 ResultRelInfo *relinfo,
 					 ItemPointer tupleid);
@@ -136,8 +135,7 @@ extern void ExecASUpdateTriggers(EState *estate,
 extern HeapTuple ExecBRUpdateTriggers(EState *estate,
 					 ResultRelInfo *relinfo,
 					 ItemPointer tupleid,
-					 HeapTuple newtuple,
-					 CommandId cid);
+					 HeapTuple newtuple);
 extern void ExecARUpdateTriggers(EState *estate,
 					 ResultRelInfo *relinfo,
 					 ItemPointer tupleid,
