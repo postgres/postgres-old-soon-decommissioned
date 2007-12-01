@@ -27,7 +27,6 @@ override CFLAGS += -Wno-comment
 endif
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -I$(perl_archlibexp)/CORE
-override CFLAGS += -fPIC
 
 rpathdir = $(perl_archlibexp)/CORE
 
