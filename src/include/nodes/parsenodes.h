@@ -1540,7 +1540,6 @@ typedef struct IndexStmt
 	char	   *tableSpace;		/* tablespace, or NULL to use parent's */
 	List	   *indexParams;	/* a list of IndexElem */
 	List	   *options;		/* options from WITH clause */
-	char	   *src_options;	/* relopts inherited from source index */
 	Node	   *whereClause;	/* qualification (partial-index predicate) */
 	bool		unique;			/* is index unique? */
 	bool		primary;		/* is index on primary key? */

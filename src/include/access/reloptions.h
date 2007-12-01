@@ -23,6 +23,8 @@
 extern Datum transformRelOptions(Datum oldOptions, List *defList,
 					bool ignoreOids, bool isReset);
 
+extern List *untransformRelOptions(Datum options);
+
 extern void parseRelOptions(Datum options, int numkeywords,
 				const char *const * keywords,
 				char **values, bool validate);

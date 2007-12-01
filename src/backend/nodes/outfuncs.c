@@ -1546,7 +1546,6 @@ _outIndexStmt(StringInfo str, IndexStmt *node)
 	WRITE_STRING_FIELD(tableSpace);
 	WRITE_NODE_FIELD(indexParams);
 	WRITE_NODE_FIELD(options);
-	WRITE_STRING_FIELD(src_options);
 	WRITE_NODE_FIELD(whereClause);
 	WRITE_BOOL_FIELD(unique);
 	WRITE_BOOL_FIELD(primary);

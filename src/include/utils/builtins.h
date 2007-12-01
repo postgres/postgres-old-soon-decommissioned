@@ -566,8 +566,6 @@ extern List *deparse_context_for_plan(Node *outer_plan, Node *inner_plan,
 extern const char *quote_identifier(const char *ident);
 extern char *quote_qualified_identifier(const char *namespace,
 						   const char *ident);
-extern char *flatten_reloptions(Oid relid);
-extern Datum unflatten_reloptions(char *reloptstring);
 
 /* tid.c */
 extern Datum tidin(PG_FUNCTION_ARGS);
