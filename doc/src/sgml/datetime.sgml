@@ -20,7 +20,7 @@
    dates and times.
   </para>
 
-  <sect1>
+  <sect1 id="datetime-input-rules">
    <title>Date/Time Input Interpretation</title>
 
    <para>

@@ -95,13 +95,13 @@ psql -d dbname -f <replaceable>SHAREDIR</>/contrib/<replaceable>module</>.sql
  &oid2name;
  &pageinspect;
  &pgbench;
- &buffercache;
+ &pgbuffercache;
  &pgcrypto;
- &freespacemap;
+ &pgfreespacemap;
  &pgrowlocks;
- &standby;
+ &pgstandby;
  &pgstattuple;
- &trgm;
+ &pgtrgm;
  &seg;
  &sslinfo;
  &tablefunc;

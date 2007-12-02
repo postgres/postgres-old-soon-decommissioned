@@ -40,7 +40,7 @@
   <productname>Windows 98</productname>.
  </para>
 
- <sect1>
+ <sect1 id="install-win32-full">
   <title>Building with <productname>Visual C++ 2005</productname></title>
 
  <para>
@@ -354,7 +354,7 @@
 
  </sect1>
 
- <sect1>
+ <sect1 id="install-win32-libpq">
   <title>Building <application>libpq</application> with
   <productname>Visual C++</productname> or
   <productname>Borland C++</productname></title>
