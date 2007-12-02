@@ -5,7 +5,6 @@ OBJS = dict_xsyn.o
 DATA_built = dict_xsyn.sql
 DATA = uninstall_dict_xsyn.sql
 DATA_TSEARCH = xsyn_sample.rules
-DOCS = README.dict_xsyn
 REGRESS = dict_xsyn
 
 ifdef USE_PGXS
