@@ -4695,7 +4695,7 @@ cc -o myprog prog1.o prog2.o ... -lecpg
 ECPG = ecpg
 
 %.c: %.pgc
-        $(ECPG) $<
+        $(ECPG) $&lt;
 </programlisting>
   </para>
 

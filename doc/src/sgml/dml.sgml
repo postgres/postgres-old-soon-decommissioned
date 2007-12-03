@@ -135,7 +135,7 @@ INSERT INTO products (product_no, name, price) VALUES
 
   <para>
    To perform an update, you need three pieces of information:
-   <orderedlist spacing=compact>
+   <orderedlist spacing="compact">
     <listitem>
      <para>The name of the table and column to update,</para>
     </listitem>

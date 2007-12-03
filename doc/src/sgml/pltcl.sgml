@@ -164,7 +164,7 @@ CREATE FUNCTION overpaid(employee) RETURNS boolean AS $$
     if {200000.0 &lt; $1(salary)} {
         return "t"
     }
-    if {$1(age) &lt; 30 && 100000.0 &lt; $1(salary)} {
+    if {$1(age) &lt; 30 &amp;&amp; 100000.0 &lt; $1(salary)} {
         return "t"
     }
     return "f"
