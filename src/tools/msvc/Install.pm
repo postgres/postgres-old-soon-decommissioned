@@ -339,7 +339,7 @@ sub CopyContribFiles
 
             # Special case for contrib/spi
             $flist =
-"README.spi autoinc.example insert_username.example moddatetime.example refint.example timetravel.example"
+"autoinc.example insert_username.example moddatetime.example refint.example timetravel.example"
               if ($d eq 'spi');
             foreach my $f (split /\s+/,$flist)
             {
