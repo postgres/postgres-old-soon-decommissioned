@@ -368,7 +368,9 @@ build_minmax_path(PlannerInfo *root, RelOptInfo *rel, MinMaxAggInfo *info)
 				RestrictInfo *rinfo = (RestrictInfo *) lfirst(ll);
 				int			strategy;
 
-				Assert(is_opclause(rinfo->clause));
+				/* Could be an IS_NULL test, if so ignore */
+				if (!is_opclause(rinfo->clause))
+					continue;
 				strategy =
 					get_op_opfamily_strategy(((OpExpr *) rinfo->clause)->opno,
 											 index->opfamily[prevcol]);
