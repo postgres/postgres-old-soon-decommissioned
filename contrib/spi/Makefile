@@ -2,7 +2,7 @@
 
 MODULES = autoinc insert_username moddatetime refint timetravel
 DATA_built = $(addsuffix .sql, $(MODULES))
-DOCS	= README.spi $(addsuffix .example, $(MODULES))
+DOCS = $(addsuffix .example, $(MODULES))
 
 # this is needed for the regression tests;
 # comment out if you want a quieter refint package for other uses
