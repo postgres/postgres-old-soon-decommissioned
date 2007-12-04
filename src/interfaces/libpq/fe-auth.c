@@ -618,11 +618,18 @@ pg_SSPI_continue(PGconn *conn)
 			return STATUS_ERROR;
 		}
 
-		if (pqPacketSend(conn, 'p',
-				   outbuf.pBuffers[0].pvBuffer, outbuf.pBuffers[0].cbBuffer))
+		/*
+		 * If the negotiation is complete, there may be zero bytes to send. The server is
+		 * at this point not expecting any more data, so don't send it.
+		 */
+		if (outbuf.pBuffers[0].cbBuffer > 0)
 		{
-			FreeContextBuffer(outbuf.pBuffers[0].pvBuffer);
-			return STATUS_ERROR;
+			if (pqPacketSend(conn, 'p',
+					   outbuf.pBuffers[0].pvBuffer, outbuf.pBuffers[0].cbBuffer))
+			{
+				FreeContextBuffer(outbuf.pBuffers[0].pvBuffer);
+				return STATUS_ERROR;
+			}
 		}
 		FreeContextBuffer(outbuf.pBuffers[0].pvBuffer);
 	}
