@@ -8614,6 +8614,12 @@ table2-mapping
         <function>nextval</function> for specified sequence</entry>
       </row>
       <row>
+        <entry><literal><function>lastval</function>()</literal></entry>
+        <entry><type>bigint</type></entry>
+        <entry>Return value most recently obtained with
+        <function>nextval</function> for any sequence</entry>
+      </row>
+      <row>
         <entry><literal><function>nextval</function>(<type>regclass</type>)</literal></entry>
         <entry><type>bigint</type></entry>
         <entry>Advance sequence and return new value</entry>
