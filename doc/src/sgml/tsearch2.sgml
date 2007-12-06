@@ -1,6 +1,8 @@
+<!-- $PostgreSQL$ -->
+
 <sect1 id="tsearch2">
  <title>tsearch2</title>
- 
+
  <indexterm zone="tsearch2">
   <primary>tsearch2</primary>
  </indexterm>
