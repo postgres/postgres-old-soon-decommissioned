@@ -2578,6 +2578,10 @@ ProcessInterrupts(void)
 			ereport(ERROR,
 					(errcode(ERRCODE_QUERY_CANCELED),
 					 errmsg("canceling statement due to statement timeout")));
+		else if (IsAutoVacuumWorkerProcess())
+			ereport(ERROR,
+					(errcode(ERRCODE_QUERY_CANCELED),
+					 errmsg("canceling autovacuum task")));
 		else
 			ereport(ERROR,
 					(errcode(ERRCODE_QUERY_CANCELED),
