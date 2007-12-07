@@ -703,13 +703,13 @@ current_date &lt; 2017-11-17
       </para>
 
       <para>
-       <command>UPDATE</>s and <command>DELETE</>s leave dead tuples behind,
-       as do failed <command>INSERT</>s.  Previously only
+       <command>UPDATE</>s and <command>DELETE</>s leave dead tuples
+       behind, as do failed <command>INSERT</>s.  Previously only
        <command>VACUUM</> could reclaim space taken by dead tuples. With
        <acronym>HOT</> dead tuple space can be reclaimed at the time of
-       <command>UPDATE</> or <command>INSERT</>.  This allows for more
-       consistent performance.  Also, <acronym>HOT</> avoids making duplicate
-       index entries when an <command>UPDATE</> changes no indexed columns.
+       <command>UPDATE</> or <command>INSERT</> if no changes are made to
+       indexed columns.  This allows for more consistent performance.
+       Also, <acronym>HOT</> avoids adding duplicate index entries.
       </para>
      </listitem>
 
