@@ -172,7 +172,7 @@ do it for earlier branch release files.
     <listitem>
      <para>
       Heap-Only Tuples (<acronym>HOT</>) accelerate space reuse for
-      <command>UPDATE</>s
+      most <command>UPDATE</>s
      </para>
     </listitem>
 
@@ -698,7 +698,7 @@ current_date &lt; 2017-11-17
 
      <listitem>
       <para>
-       Heap-Only Tuples (<acronym>HOT</>) accelerate space reuse for
+       Heap-Only Tuples (<acronym>HOT</>) accelerate space reuse for most
        <command>UPDATE</>s (Pavan Deolasee, with ideas from many others)
       </para>
 
