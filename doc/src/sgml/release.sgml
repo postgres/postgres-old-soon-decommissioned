@@ -165,7 +165,7 @@ do it for earlier branch release files.
 
     <listitem>
      <para>
-      Distributed checkpoints prevent checkpoint I/O spikes
+      Smoothed checkpoints prevent checkpoint I/O spikes
      </para>
     </listitem>
 
@@ -682,7 +682,7 @@ current_date &lt; 2017-11-17
 
      <listitem>
       <para>
-       Distributed checkpoints prevent checkpoint I/O spikes (Itagaki
+       Smoothed checkpoints prevent checkpoint I/O spikes (Itagaki
        Takahiro and Heikki Linnakangas)
       </para>
 
