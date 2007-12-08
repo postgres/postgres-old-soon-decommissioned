@@ -993,8 +993,10 @@ typedef struct MergeScanSelCache
 	int			strategy;		/* sort direction (ASC or DESC) */
 	bool		nulls_first;	/* do NULLs come before normal values? */
 	/* Results */
-	Selectivity leftscansel;	/* scan fraction for clause left side */
-	Selectivity rightscansel;	/* scan fraction for clause right side */
+	Selectivity leftstartsel;	/* first-join fraction for clause left side */
+	Selectivity leftendsel;		/* last-join fraction for clause left side */
+	Selectivity rightstartsel;	/* first-join fraction for clause right side */
+	Selectivity rightendsel;	/* last-join fraction for clause right side */
 } MergeScanSelCache;
 
 /*
