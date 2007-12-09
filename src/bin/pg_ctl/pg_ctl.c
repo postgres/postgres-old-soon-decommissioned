@@ -492,7 +492,7 @@ test_postmaster_connection(bool do_checkpoint)
 	{
 		if ((conn = PQconnectdb(connstr)) != NULL &&
 			(PQstatus(conn) == CONNECTION_OK ||
-			 PQconnectionUsedPassword(conn)))
+			 PQconnectionNeedsPassword(conn)))
 		{
 			PQfinish(conn);
 			success = true;

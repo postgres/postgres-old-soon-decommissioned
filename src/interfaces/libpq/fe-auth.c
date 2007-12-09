@@ -954,7 +954,8 @@ pg_fe_sendauth(AuthRequest areq, PGconn *conn)
 		case AUTH_REQ_MD5:
 		case AUTH_REQ_CRYPT:
 		case AUTH_REQ_PASSWORD:
-			if (conn->pgpass == NULL || *conn->pgpass == '\0')
+			conn->password_needed = true;
+			if (conn->pgpass == NULL || conn->pgpass[0] == '\0')
 			{
 				printfPQExpBuffer(&conn->errorMessage,
 								  PQnoPasswordSupplied);

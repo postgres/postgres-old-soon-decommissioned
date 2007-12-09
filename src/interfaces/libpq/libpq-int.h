@@ -291,6 +291,7 @@ struct pg_conn
 	char	   *dbName;			/* database name */
 	char	   *pguser;			/* Postgres username and password, if any */
 	char	   *pgpass;
+	bool		pgpass_from_client;	/* did password come from connect args? */
 	char	   *sslmode;		/* SSL mode (require,prefer,allow,disable) */
 #if defined(KRB5) || defined(ENABLE_GSS) || defined(ENABLE_SSPI)
 	char	   *krbsrvname;		/* Kerberos service name */
@@ -323,7 +324,7 @@ struct pg_conn
 	SockAddr	raddr;			/* Remote address */
 	ProtocolVersion pversion;	/* FE/BE protocol version in use */
 	int			sversion;		/* server version, e.g. 70401 for 7.4.1 */
-	AuthRequest areq;			/* auth type demanded by server */
+	bool		password_needed;	/* true if server demanded a password */
 
 	/* Transient state needed while establishing connection */
 	struct addrinfo *addrlist;	/* list of possible backend addresses */

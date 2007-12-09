@@ -211,7 +211,7 @@ main(int argc, char *argv[])
 							   username, password);
 
 		if (PQstatus(pset.db) == CONNECTION_BAD &&
-			PQconnectionUsedPassword(pset.db) &&
+			PQconnectionNeedsPassword(pset.db) &&
 			password == NULL &&
 			!feof(stdin))
 		{

@@ -263,6 +263,7 @@ extern int	PQserverVersion(const PGconn *conn);
 extern char *PQerrorMessage(const PGconn *conn);
 extern int	PQsocket(const PGconn *conn);
 extern int	PQbackendPID(const PGconn *conn);
+extern int	PQconnectionNeedsPassword(const PGconn *conn);
 extern int	PQconnectionUsedPassword(const PGconn *conn);
 extern int	PQclientEncoding(const PGconn *conn);
 extern int	PQsetClientEncoding(PGconn *conn, const char *encoding);
@@ -426,7 +427,7 @@ extern void PQfreemem(void *ptr);
 #define PQfreeNotify(ptr) PQfreemem(ptr)
 
 /* Error when no password was given. */
-/* Note: depending on this is deprecated; use PQconnectionUsedPassword(). */
+/* Note: depending on this is deprecated; use PQconnectionNeedsPassword(). */
 #define PQnoPasswordSupplied	"fe_sendauth: no password supplied\n"
 
 /*

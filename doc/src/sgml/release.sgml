@@ -2184,8 +2184,9 @@ current_date &lt; 2017-11-17
 
      <listitem>
       <para>
-       Add <function>PQconnectionUsedPassword()</function> that returns
-       true if the server required a password (Joe Conway)
+       Add <function>PQconnectionNeedsPassword()</function> that returns
+       true if the server required a password but none was supplied
+       (Joe Conway, Tom)
       </para>
 
       <para>
@@ -2194,6 +2195,19 @@ current_date &lt; 2017-11-17
        applications have had to check for a specific error message string to
        decide whether a password is needed; that approach is now
        deprecated.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+       Add <function>PQconnectionUsedPassword()</function> that returns
+       true if the supplied password was actually used
+       (Joe Conway, Tom)
+      </para>
+
+      <para>
+       This is useful in some security contexts where it is important
+       to know whether a user-supplied password is actually valid.
       </para>
      </listitem>
 

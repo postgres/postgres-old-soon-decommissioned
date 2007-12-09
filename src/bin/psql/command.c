@@ -1164,7 +1164,7 @@ do_connect(char *dbname, char *user, char *host, char *port)
 		 * Connection attempt failed; either retry the connection attempt with
 		 * a new password, or give up.
 		 */
-		if (!password && PQconnectionUsedPassword(n_conn))
+		if (!password && PQconnectionNeedsPassword(n_conn))
 		{
 			PQfinish(n_conn);
 			password = prompt_for_password(user);

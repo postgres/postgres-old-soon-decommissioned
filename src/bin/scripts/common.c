@@ -123,7 +123,7 @@ connectDatabase(const char *dbname, const char *pghost, const char *pgport,
 		}
 
 		if (PQstatus(conn) == CONNECTION_BAD &&
-			PQconnectionUsedPassword(conn) &&
+			PQconnectionNeedsPassword(conn) &&
 			password == NULL &&
 			!feof(stdin))
 		{
