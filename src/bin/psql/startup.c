@@ -194,8 +194,8 @@ main(int argc, char *argv[])
 	else
 	{
 		password_prompt = malloc(strlen(_("Password for user %s: ")) - 2 +
-								 strlen(options.username) + 1);
-		sprintf(password_prompt, _("Password for user %s: "), options.username);
+								 strlen(username) + 1);
+		sprintf(password_prompt, _("Password for user %s: "), username);
 	}
 
 	if (pset.getPassword)
