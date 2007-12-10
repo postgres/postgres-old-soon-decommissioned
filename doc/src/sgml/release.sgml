@@ -1256,7 +1256,7 @@ current_date &lt; 2017-11-17
      <listitem>
       <para>
        Full text search is integrated into the core database
-       system (Teodor, Oleg)
+       system (Teodor, Oleg, Stefan Kaltenbrunner)
       </para>
 
       <para>
