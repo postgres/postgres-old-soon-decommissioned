@@ -282,11 +282,6 @@ pgbench <optional> <replaceable>options</> </optional> <replaceable>dbname</>
       <entry><literal>-U</literal> <replaceable>login</></entry>
       <entry>username to connect as</entry>
      </row>
-     <row>
-      <entry><literal>-P</literal> <replaceable>password</></entry>
-      <entry>password (deprecated &mdash; putting this on the command line
-       is a security hazard)</entry>
-     </row>
     </tbody>
    </tgroup>
   </table>
