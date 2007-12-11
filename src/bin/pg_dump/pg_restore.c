@@ -137,7 +137,7 @@ main(int argc, char **argv)
 		}
 	}
 
-	while ((c = getopt_long(argc, argv, "acCd:ef:F:h:iI:lL:n:Op:P:RsS:t:T:uU:vWxX:1",
+	while ((c = getopt_long(argc, argv, "acCd:ef:F:h:iI:lL:n:Op:P:RsS:t:T:U:vWxX:1",
 							cmdopts, NULL)) != -1)
 	{
 		switch (c)
@@ -221,11 +221,6 @@ main(int argc, char **argv)
 				opts->selTypes = 1;
 				opts->selTable = 1;
 				opts->tableNames = strdup(optarg);
-				break;
-
-			case 'u':
-				opts->requirePassword = true;
-				opts->username = simple_prompt("User name: ", 100, true);
 				break;
 
 			case 'U':

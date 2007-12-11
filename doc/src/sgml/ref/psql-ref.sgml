@@ -363,24 +363,6 @@ PostgreSQL documentation
     </varlistentry>
 
     <varlistentry>
-      <term><option>-u</></term>
-      <listitem>
-      <para>
-      Forces <application>psql</application> to prompt for the user name and
-      password before connecting to the database.
-      </para>
-
-      <para>
-      This option is deprecated, as it is conceptually flawed.
-      (Prompting for a non-default user name and prompting for a
-      password because the server requires it are really two different
-      things.) You are encouraged to look at the <option>-U</option> and
-      <option>-W</option> options instead.
-      </para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
       <term><option>-U <replaceable class="parameter">username</replaceable></></term>
       <term><option>--username <replaceable class="parameter">username</replaceable></></term>
       <listitem>

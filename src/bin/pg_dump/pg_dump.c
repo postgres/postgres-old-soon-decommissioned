@@ -302,7 +302,7 @@ main(int argc, char **argv)
 		}
 	}
 
-	while ((c = getopt_long(argc, argv, "abcCdDE:f:F:h:in:N:oOp:RsS:t:T:uU:vWxX:Z:",
+	while ((c = getopt_long(argc, argv, "abcCdDE:f:F:h:in:N:oOp:RsS:t:T:U:vWxX:Z:",
 							long_options, &optindex)) != -1)
 	{
 		switch (c)
@@ -393,11 +393,6 @@ main(int argc, char **argv)
 
 			case 'T':			/* exclude table(s) */
 				simple_string_list_append(&table_exclude_patterns, optarg);
-				break;
-
-			case 'u':
-				force_password = true;
-				username = simple_prompt("User name: ", 100, true);
 				break;
 
 			case 'U':
