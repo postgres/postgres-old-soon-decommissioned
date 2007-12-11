@@ -218,7 +218,7 @@ help(const char *progname)
 	printf(_("  -h, --host=HOSTNAME          database server host or socket directory\n"));
 	printf(_("  -p, --port=PORT              database server port\n"));
 	printf(_("  -U, --username=USERNAME      user name to connect as\n"));
-	printf(_("  -W, --password               prompt for password\n"));
+	printf(_("  -W, --password               force password prompt\n"));
 	printf(_("\nBy default, a database with the same name as the current user is created.\n"));
 	printf(_("\nReport bugs to <pgsql-bugs@postgresql.org>.\n"));
 }

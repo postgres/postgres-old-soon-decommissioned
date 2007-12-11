@@ -132,7 +132,7 @@ usage(void)
 	if (!env)
 		env = user;
 	printf(_("  -U NAME         database user name (default: \"%s\")\n"), env);
-	puts(_("  -W              prompt for password (should happen automatically)"));
+	puts(_("  -W              force password prompt (should happen automatically)"));
 
 	puts(_(
 		   "\nFor more information, type \"\\?\" (for internal commands) or \"\\help\"\n"
