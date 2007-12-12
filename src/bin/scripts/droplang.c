@@ -136,6 +136,7 @@ main(int argc, char *argv[])
 	if (listlangs)
 	{
 		printQueryOpt popt;
+		static const bool trans_columns[] = {false, true};
 
 		conn = connectDatabase(dbname, host, port, username, password,
 							   progname);
@@ -143,7 +144,9 @@ main(int argc, char *argv[])
 		printfPQExpBuffer(&sql, "SELECT lanname as \"%s\", "
 				"(CASE WHEN lanpltrusted THEN '%s' ELSE '%s' END) as \"%s\" "
 						  "FROM pg_catalog.pg_language WHERE lanispl;",
-						  _("Name"), _("yes"), _("no"), _("Trusted?"));
+						  gettext_noop("Name"),
+						  gettext_noop("yes"), gettext_noop("no"),
+						  gettext_noop("Trusted?"));
 		result = executeQuery(conn, sql.data, progname, echo);
 
 		memset(&popt, 0, sizeof(popt));
@@ -153,6 +156,8 @@ main(int argc, char *argv[])
 		popt.topt.stop_table = true;
 		popt.topt.encoding = PQclientEncoding(conn);
 		popt.title = _("Procedural Languages");
+		popt.trans_headers = true;
+		popt.trans_columns = trans_columns;
 		printQuery(result, &popt, stdout, NULL);
 
 		PQfinish(conn);

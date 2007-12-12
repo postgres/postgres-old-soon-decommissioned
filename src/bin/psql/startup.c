@@ -140,6 +140,7 @@ main(int argc, char *argv[])
 	pset.cur_cmd_source = stdin;
 	pset.cur_cmd_interactive = false;
 
+	/* We rely on unmentioned fields of pset.popt to start out 0/false/NULL */
 	pset.popt.topt.format = PRINT_ALIGNED;
 	pset.popt.topt.border = 1;
 	pset.popt.topt.pager = 1;

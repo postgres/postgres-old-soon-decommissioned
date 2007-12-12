@@ -279,11 +279,12 @@ do_lo_list(void)
 	printQueryOpt myopt = pset.popt;
 
 	snprintf(buf, sizeof(buf),
-			 "SELECT loid as \"ID\",\n"
+			 "SELECT loid as \"%s\",\n"
 		   "  pg_catalog.obj_description(loid, 'pg_largeobject') as \"%s\"\n"
 			 "FROM (SELECT DISTINCT loid FROM pg_catalog.pg_largeobject) x\n"
 			 "ORDER BY 1",
-			 _("Description"));
+			 gettext_noop("ID"),
+			 gettext_noop("Description"));
 
 	res = PSQLexec(buf, false);
 	if (!res)
@@ -292,6 +293,7 @@ do_lo_list(void)
 	myopt.topt.tuples_only = false;
 	myopt.nullPrint = NULL;
 	myopt.title = _("Large objects");
+	myopt.trans_headers = true;
 
 	printQuery(res, &myopt, pset.queryFout, pset.logfile);
 
