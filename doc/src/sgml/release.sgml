@@ -49,7 +49,7 @@ do it for earlier branch release files.
 
   <para>
    A complete list of changes for each release can be obtained by
-   viewing the <link linkend="cvs">CVS</> logs for each release.  The <ulink
+   viewing the <link linkend="cvs">CVS</link> logs for each release.  The <ulink
    url="http://archives.postgresql.org/pgsql-committers/">committers email
    list</ulink> contains all source code changes as well.   There is also
    a <ulink url="http://developer.postgresql.org/cvsweb.cgi/pgsql/">web
