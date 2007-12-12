@@ -489,29 +489,42 @@ pgarch_archiveXlog(char *xlog)
 		if (WIFEXITED(rc))
 		{
 			ereport(lev,
-					(errmsg("archive command failed with exit code %d", WEXITSTATUS(rc)),
-					 errdetail("The failed archive command was: %s", xlogarchcmd)));
+					(errmsg("archive command failed with exit code %d",
+							WEXITSTATUS(rc)),
+					 errdetail("The failed archive command was: %s",
+							   xlogarchcmd)));
 		}
 		else if (WIFSIGNALED(rc))
 		{
-			ereport(lev, (
 #if defined(WIN32)
-						errmsg("archive command was terminated by exception 0x%X", WTERMSIG(rc)),
-						errhint("See C include file \"ntstatus.h\" for a description of the hexadecimal value."),
+			ereport(lev,
+					(errmsg("archive command was terminated by exception 0x%X",
+							WTERMSIG(rc)),
+					 errhint("See C include file \"ntstatus.h\" for a description of the hexadecimal value."),
+					 errdetail("The failed archive command was: %s",
+							   xlogarchcmd)));
 #elif defined(HAVE_DECL_SYS_SIGLIST) && HAVE_DECL_SYS_SIGLIST
-						errmsg("archive command was terminated by signal %d: %s",
-							   WTERMSIG(rc),
-							   WTERMSIG(rc) < NSIG ? sys_siglist[WTERMSIG(rc)] : "(unknown)"),
+			ereport(lev,
+					(errmsg("archive command was terminated by signal %d: %s",
+							WTERMSIG(rc),
+							WTERMSIG(rc) < NSIG ? sys_siglist[WTERMSIG(rc)] : "(unknown)"),
+					 errdetail("The failed archive command was: %s",
+							   xlogarchcmd)));
 #else
-						errmsg("archive command was terminated by signal %d", WTERMSIG(exitstatus)),
+			ereport(lev,
+					(errmsg("archive command was terminated by signal %d",
+							WTERMSIG(rc)),
+					 errdetail("The failed archive command was: %s",
+							   xlogarchcmd)));
 #endif
-						errdetail("The failed archive command was: %s", xlogarchcmd)));
 		}
 		else
 		{
 			ereport(lev,
-					(errmsg("archive command exited with unrecognized status %d", rc),
-					 errdetail("The failed archive command was: %s", xlogarchcmd)));
+					(errmsg("archive command exited with unrecognized status %d",
+							rc),
+					 errdetail("The failed archive command was: %s",
+							   xlogarchcmd)));
 		}
 
 		return false;
