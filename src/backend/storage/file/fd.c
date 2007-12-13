@@ -1003,7 +1003,7 @@ FileClose(File file)
 			{
 				if (filestats.st_size >= log_temp_files)
 					ereport(LOG,
-							(errmsg("temp file: path \"%s\" size %lu",
+							(errmsg("temporary file: path \"%s\", size %lu",
 									vfdP->fileName,
 									(unsigned long) filestats.st_size)));
 			}

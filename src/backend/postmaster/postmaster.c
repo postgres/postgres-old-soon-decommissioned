@@ -1712,7 +1712,7 @@ processCancelRequest(Port *port, void *pkt)
 			else
 				/* Right PID, wrong key: no way, Jose */
 				ereport(LOG,
-						(errmsg("bad key in cancel request for process %d",
+						(errmsg("wrong key in cancel request for process %d",
 								backendPID)));
 			return;
 		}
@@ -1720,7 +1720,7 @@ processCancelRequest(Port *port, void *pkt)
 
 	/* No matching backend */
 	ereport(LOG,
-			(errmsg("bad pid in cancel request for process %d",
+			(errmsg("PID %d in cancel request did not match any process",
 					backendPID)));
 }
 
