@@ -162,13 +162,13 @@ JADE.tex.call = $(JADE) $(JADEFLAGS) $(SGMLINCLUDE) $(CATALOG) -d $(srcdir)/styl
 
 # PostScript from TeX
 postgres.ps:
-	$(error Use 'gmake postgres-US.ps' or 'gmake postgres-A4.ps')
+	$(error Use "$(MAKE) postgres-A4.ps" or "$(MAKE) postgres-US.ps")
 	
 %.ps: %.dvi
 	dvips -o $@ $<
 
 postgres.pdf:
-	$(error Use 'gmake postgres-US.pdf' or 'gmake postgres-A4.pdf')
+	$(error Use "$(MAKE) postgres-A4.pdf" or "$(MAKE) postgres-US.pdf")
 	
 %.pdf: %.tex-pdf
 	@rm -f $*.aux $*.log $*.out
