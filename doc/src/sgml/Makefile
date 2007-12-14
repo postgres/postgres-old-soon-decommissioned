@@ -161,9 +161,15 @@ JADE.tex.call = $(JADE) $(JADEFLAGS) $(SGMLINCLUDE) $(CATALOG) -d $(srcdir)/styl
 	jadetex $<
 
 # PostScript from TeX
+postgres.ps:
+	$(error Use 'gmake postgres-US.ps' or 'gmake postgres-A4.ps')
+	
 %.ps: %.dvi
 	dvips -o $@ $<
 
+postgres.pdf:
+	$(error Use 'gmake postgres-US.pdf' or 'gmake postgres-A4.pdf')
+	
 %.pdf: %.tex-pdf
 	@rm -f $*.aux $*.log $*.out
 # multiple runs are necessary to create proper intra-document links
