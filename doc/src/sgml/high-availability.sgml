@@ -195,7 +195,7 @@ protocol to make nodes agree on a serializable transactional order.
      using two-phase commit (<xref linkend="sql-prepare-transaction"
      endterm="sql-prepare-transaction-title"> and <xref
      linkend="sql-commit-prepared" endterm="sql-commit-prepared-title">.
-     <productname>Pgpool</> and <productname>Sequoia</> are examples of
+     <productname>Pgpool-II</> and <productname>Sequoia</> are examples of
      this type of replication.
     </para>
    </listitem>
