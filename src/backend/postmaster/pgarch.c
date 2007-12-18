@@ -414,6 +414,7 @@ pgarch_archiveXlog(char *xlog)
 {
 	char		xlogarchcmd[MAXPGPATH];
 	char		pathname[MAXPGPATH];
+	char		activitymsg[MAXFNAMELEN + 16];
 	char	   *dp;
 	char	   *endp;
 	const char *sp;
@@ -471,6 +472,11 @@ pgarch_archiveXlog(char *xlog)
 	ereport(DEBUG3,
 			(errmsg_internal("executing archive command \"%s\"",
 							 xlogarchcmd)));
+
+	/* Report archive activity in PS display */
+	snprintf(activitymsg, sizeof(activitymsg), "archiving %s", xlog);
+	set_ps_display(activitymsg, false);
+
 	rc = system(xlogarchcmd);
 	if (rc != 0)
 	{
@@ -527,10 +533,16 @@ pgarch_archiveXlog(char *xlog)
 							   xlogarchcmd)));
 		}
 
+		snprintf(activitymsg, sizeof(activitymsg), "failed on %s", xlog);
+		set_ps_display(activitymsg, false);
+
 		return false;
 	}
 	ereport(DEBUG1,
 			(errmsg("archived transaction log file \"%s\"", xlog)));
+
+	snprintf(activitymsg, sizeof(activitymsg), "last was %s", xlog);
+	set_ps_display(activitymsg, false);
 
 	return true;
 }
