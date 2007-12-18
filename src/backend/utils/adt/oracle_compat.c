@@ -1423,7 +1423,7 @@ chr			(PG_FUNCTION_ARGS)
 
 		is_mb = pg_encoding_max_length(encoding) > 1;
 
-		if ((is_mb && (cvalue > 255)) || (!is_mb && (cvalue > 127)))
+		if ((is_mb && (cvalue > 127)) || (!is_mb && (cvalue > 255)))
 			ereport(ERROR,
 					(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
 					 errmsg("requested character too large for encoding: %d",
