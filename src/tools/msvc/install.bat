@@ -13,7 +13,12 @@ exit /b 1
 :RUN_INSTALL
 
 SETLOCAL
-if exist buildenv.bat call buildenv.bat
+
+IF NOT EXIST buildenv.pl goto nobuildenv
+perl -e "require 'buildenv.pl'; while(($k,$v) = each %ENV) { print qq[\@SET $k=$v\n]; }" > bldenv.bat
+CALL bldenv.bat
+del bldenv.bat
+:nobuildenv 
 
 perl install.pl "%1"
 
