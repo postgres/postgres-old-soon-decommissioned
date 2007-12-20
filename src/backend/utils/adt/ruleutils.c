@@ -769,25 +769,28 @@ pg_get_indexdef_worker(Oid indexrelid, int colno, bool showTblSpc,
 			keycoltype = exprType(indexkey);
 		}
 
-		/* Add the operator class name */
+		/* Provide decoration only in the colno=0 case */
 		if (!colno)
+		{
+			/* Add the operator class name, if not default */
 			get_opclass_name(indclass->values[keyno], keycoltype, &buf);
 
-		/* Add options if relevant */
-		if (amrec->amcanorder)
-		{
-			/* if it supports sort ordering, report DESC and NULLS opts */
-			if (opt & INDOPTION_DESC)
+			/* Add options if relevant */
+			if (amrec->amcanorder)
 			{
-				appendStringInfo(&buf, " DESC");
-				/* NULLS FIRST is the default in this case */
-				if (!(opt & INDOPTION_NULLS_FIRST))
-					appendStringInfo(&buf, " NULLS LAST");
-			}
-			else
-			{
-				if (opt & INDOPTION_NULLS_FIRST)
-					appendStringInfo(&buf, " NULLS FIRST");
+				/* if it supports sort ordering, report DESC and NULLS opts */
+				if (opt & INDOPTION_DESC)
+				{
+					appendStringInfo(&buf, " DESC");
+					/* NULLS FIRST is the default in this case */
+					if (!(opt & INDOPTION_NULLS_FIRST))
+						appendStringInfo(&buf, " NULLS LAST");
+				}
+				else
+				{
+					if (opt & INDOPTION_NULLS_FIRST)
+						appendStringInfo(&buf, " NULLS FIRST");
+				}
 			}
 		}
 	}
