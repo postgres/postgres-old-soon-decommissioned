@@ -8127,7 +8127,7 @@ SELECT xmlelement(name foo, xmlattributes('xyz' as bar),
      <type>bytea</type>) will be represented in base64 or hex
      encoding, depending on the setting of the configuration parameter
      <xref linkend="guc-xmlbinary">.  The particular behavior for
-     individual data types is expected evolve in order to align the
+     individual data types is expected to evolve in order to align the
      SQL and PostgreSQL data types with the XML Schema specification,
      at which point a more precise description will appear.
     </para>
