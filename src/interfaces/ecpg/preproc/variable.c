@@ -4,7 +4,7 @@
 
 #include "extern.h"
 
-struct variable *allvariables = NULL;
+static struct variable *allvariables = NULL;
 
 struct variable *
 new_variable(const char *name, struct ECPGtype * type, int brace_level)

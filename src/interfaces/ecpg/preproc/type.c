@@ -6,7 +6,7 @@
 
 #define indicator_set ind_type != NULL && ind_type->type != ECPGt_NO_INDICATOR
 
-struct ECPGstruct_member struct_no_indicator = {"no_indicator", &ecpg_no_indicator, NULL};
+static struct ECPGstruct_member struct_no_indicator = {"no_indicator", &ecpg_no_indicator, NULL};
 
 /* malloc + error check */
 void *

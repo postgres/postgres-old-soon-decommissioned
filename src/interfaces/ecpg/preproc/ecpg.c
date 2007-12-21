@@ -18,7 +18,6 @@ int			ret_value = 0,
 			system_includes = false,
 			force_indicator = true,
 			questionmarks = false,
-			header_mode = false,
 			regression_mode = false,
 			auto_prepare = false;
 
@@ -132,6 +131,7 @@ main(int argc, char *const argv[])
 	int			fnr,
 				c,
 				verbose = false,
+				header_mode = false,
 				out_option = 0;
 	struct _include_path *ip;
 	const char *progname;
@@ -200,7 +200,7 @@ main(int argc, char *const argv[])
 			case 'h':
 				header_mode = true;
 				/* this must include "-c" to make sense */
-				/* so do not place a break; here */
+				/* so do not place a "break;" here */
 			case 'c':
 				auto_create_c = true;
 				break;

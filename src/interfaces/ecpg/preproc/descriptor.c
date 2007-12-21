@@ -15,7 +15,7 @@
  * assignment handling function (descriptor)
  */
 
-struct assignment *assignments;
+static struct assignment *assignments;
 
 void
 push_assignment(char *var, enum ECPGdtype value)
@@ -43,7 +43,7 @@ drop_assignments(void)
 }
 
 static void
-ECPGnumeric_lvalue(FILE *f, char *name)
+ECPGnumeric_lvalue(char *name)
 {
 	const struct variable *v = find_variable(name);
 
@@ -156,7 +156,7 @@ output_get_descr_header(char *desc_name)
 	for (results = assignments; results != NULL; results = results->next)
 	{
 		if (results->value == ECPGd_count)
-			ECPGnumeric_lvalue(yyout, results->variable);
+			ECPGnumeric_lvalue(results->variable);
 		else
 			mmerror(PARSE_ERROR, ET_WARNING, "unknown descriptor header item '%d'", results->value);
 	}
@@ -205,7 +205,7 @@ output_set_descr_header(char *desc_name)
 	for (results = assignments; results != NULL; results = results->next)
 	{
 		if (results->value == ECPGd_count)
-			ECPGnumeric_lvalue(yyout, results->variable);
+			ECPGnumeric_lvalue(results->variable);
 		else
 			mmerror(PARSE_ERROR, ET_WARNING, "unknown descriptor header item '%d'", results->value);
 	}
@@ -317,7 +317,7 @@ struct variable *
 descriptor_variable(const char *name, int input)
 {
 	static char descriptor_names[2][MAX_DESCRIPTOR_NAMELEN];
-	static const struct ECPGtype descriptor_type = {ECPGt_descriptor, NULL};
+	static const struct ECPGtype descriptor_type = {ECPGt_descriptor, NULL, NULL, {NULL}, 0};
 	static const struct variable varspace[2] = {
 		{descriptor_names[0], (struct ECPGtype *) & descriptor_type, 0, NULL},
 		{descriptor_names[1], (struct ECPGtype *) & descriptor_type, 0, NULL}

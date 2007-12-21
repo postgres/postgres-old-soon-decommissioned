@@ -47,10 +47,10 @@ static char *ECPGstruct_sizeof = NULL;
 /* for forward declarations we have to store some data as well */
 static char *forward_name = NULL;
 
-struct ECPGtype ecpg_no_indicator = {ECPGt_NO_INDICATOR, 0L, NULL, {NULL}};
+struct ECPGtype ecpg_no_indicator = {ECPGt_NO_INDICATOR, NULL, NULL, {NULL}, 0};
 struct variable no_indicator = {"no_indicator", &ecpg_no_indicator, 0, NULL};
 
-struct ECPGtype ecpg_query = {ECPGt_char_variable, 0L, NULL, {NULL}};
+struct ECPGtype ecpg_query = {ECPGt_char_variable, NULL, NULL, {NULL}, 0};
 
 /*
  * Handle parsing errors and warnings
