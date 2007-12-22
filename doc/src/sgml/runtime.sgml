@@ -1256,14 +1256,11 @@ Out of Memory: Killed process 12345 (postgres).
    <para>
     On Linux 2.6 and later, an additional measure is to modify the
     kernel's behavior so that it will not <quote>overcommit</> memory.
-    Although this setting will not prevent the OOM killer from
-    being invoked altogether, it will lower the chances significantly and
-    will therefore lead to more robust system behavior.  (It might also
-    cause <function>fork()</> to fail when the machine appears to have
-    available memory but it is actually reserved
-    to other applications with careless memory allocation.) This
-    is done by selecting strict overcommit mode via
-    <command>sysctl</command>:
+    Although this setting will not prevent the <ulink
+    url="http://lwn.net/Articles/104179/">OOM killer</> from being invoked
+    altogether, it will lower the chances significantly and will therefore
+    lead to more robust system behavior.  This is done by selecting strict
+    overcommit mode via <command>sysctl</command>:
 <programlisting>
 sysctl -w vm.overcommit_memory=2
 </programlisting>
