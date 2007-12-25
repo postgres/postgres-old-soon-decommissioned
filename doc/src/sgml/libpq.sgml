@@ -5222,7 +5222,8 @@ defaultNoticeProcessor(void *arg, const char *message)
      <row>
       <entry><filename>~/.postgresql/postgresql.key</></entry>
       <entry>client private key</entry>
-      <entry>used to authenticate client certificate</entry>
+      <entry>proves client certificate sent by owner; does not indicate
+      certificate owner is trustworthy</entry>
      </row>
 
      <row>

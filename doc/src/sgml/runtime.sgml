@@ -1663,7 +1663,8 @@ $ <userinput>kill -INT `head -1 /usr/local/pgsql/data/postmaster.pid`</userinput
      <row>
       <entry><filename>server.key</></entry>
       <entry>server private key</entry>
-      <entry>used to authenticate server certificate</entry>
+      <entry>proves server certificate sent by owner; does not indicate
+      certificate owner is trustworthy</entry>
      </row>
 
      <row>
