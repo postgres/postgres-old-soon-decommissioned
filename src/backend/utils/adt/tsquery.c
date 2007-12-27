@@ -498,7 +498,7 @@ parse_tsquery(char *buf,
 	if (list_length(state.polstr) == 0)
 	{
 		ereport(NOTICE,
-				(errmsg("tsearch query doesn't contain lexeme(s): \"%s\"",
+				(errmsg("text-search query doesn't contain lexemes: \"%s\"",
 						state.buffer)));
 		query = (TSQuery) palloc(HDRSIZETQ);
 		SET_VARSIZE(query, HDRSIZETQ);

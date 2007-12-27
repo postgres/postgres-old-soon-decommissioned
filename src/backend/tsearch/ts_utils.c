@@ -69,7 +69,7 @@ comparestr(const void *a, const void *b)
 }
 
 /*
- * Reads a stopword file. Each word is run through 'wordop'
+ * Reads a stop-word file. Each word is run through 'wordop'
  * function, if given.	wordop may either modify the input in-place,
  * or palloc a new version.
  */
@@ -89,7 +89,7 @@ readstoplist(const char *fname, StopList *s, char *(*wordop) (const char *))
 		if ((hin = AllocateFile(filename, "r")) == NULL)
 			ereport(ERROR,
 					(errcode(ERRCODE_CONFIG_FILE_ERROR),
-					 errmsg("could not open stopword file \"%s\": %m",
+					 errmsg("could not open stop-word file \"%s\": %m",
 							filename)));
 
 		while ((line = t_readline(hin)) != NULL)
