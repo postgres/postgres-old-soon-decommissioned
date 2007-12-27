@@ -872,11 +872,22 @@ DoCopy(const CopyStmt *stmt, const char *queryString)
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 				 errmsg("COPY null representation cannot use newline or carriage return")));
 
-	/* Disallow backslash in non-CSV mode */
-	if (!cstate->csv_mode && strchr(cstate->delim, '\\') != NULL)
+	/*
+	 * Disallow unsafe delimiter characters in non-CSV mode.  We can't allow
+	 * backslash because it would be ambiguous.  We can't allow the other
+	 * cases because data characters matching the delimiter must be
+	 * backslashed, and certain backslash combinations are interpreted
+	 * non-literally by COPY IN.  Disallowing all lower case ASCII letters
+	 * is more than strictly necessary, but seems best for consistency and
+	 * future-proofing.  Likewise we disallow all digits though only octal
+	 * digits are actually dangerous.
+	 */
+	if (!cstate->csv_mode &&
+		strchr("\\.abcdefghijklmnopqrstuvwxyz0123456789",
+			   cstate->delim[0]) != NULL)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("COPY delimiter cannot be backslash")));
+				 errmsg("COPY delimiter cannot be \"%s\"", cstate->delim)));
 
 	/* Check header */
 	if (!cstate->csv_mode && cstate->header_line)
