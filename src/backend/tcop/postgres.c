@@ -2644,7 +2644,7 @@ assign_max_stack_depth(int newval, bool doit, GucSource source)
 
 	if (stack_rlimit > 0 && newval_bytes > stack_rlimit - STACK_DEPTH_SLOP)
 	{
-		ereport((source >= PGC_S_INTERACTIVE) ? ERROR : LOG,
+		ereport(GUC_complaint_elevel(source),
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 				 errmsg("\"max_stack_depth\" must not exceed %ldkB",
 						(stack_rlimit - STACK_DEPTH_SLOP) / 1024L),

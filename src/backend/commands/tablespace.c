@@ -923,11 +923,10 @@ assign_default_tablespace(const char *newval, bool doit, GucSource source)
 		if (newval[0] != '\0' &&
 			!OidIsValid(get_tablespace_oid(newval)))
 		{
-			if (source >= PGC_S_INTERACTIVE)
-				ereport(ERROR,
-						(errcode(ERRCODE_UNDEFINED_OBJECT),
-						 errmsg("tablespace \"%s\" does not exist",
-								newval)));
+			ereport(GUC_complaint_elevel(source),
+					(errcode(ERRCODE_UNDEFINED_OBJECT),
+					 errmsg("tablespace \"%s\" does not exist",
+							newval)));
 			return NULL;
 		}
 	}
