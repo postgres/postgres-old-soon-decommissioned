@@ -5114,7 +5114,7 @@ user_name: RoleId
 		{
 			if ($1[0] == '\"')
 				$$ = $1;
-			else if (strcmp($1, " ?") == 0) /* variable */
+			else if ($1[1] == '$') /* variable */
 			{
 				enum ECPGttype type = argsinsert->variable->type->type;
 
