@@ -111,7 +111,7 @@ pgwin32_open(const char *fileName, int fileFlags,...)
 				    (errmsg("could not open file \"%s\": %s", fileName, 
 					  (err == ERROR_SHARING_VIOLATION)?_("sharing violation"):_("lock violation")),
 					 errdetail("Continuing to retry for 30 seconds."),
-					 errhint("You may have antivirus, backup, or similar software interfering with the database system.")));
+					 errhint("You might have antivirus, backup, or similar software interfering with the database system.")));
 #endif
 
 			if (loops < 300)
