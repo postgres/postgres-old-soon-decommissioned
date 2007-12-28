@@ -280,6 +280,10 @@
 (define %refentry-new-page%     #t)
 (define %refentry-keep%         #f)
 
+;; Disabled because of TeX problems
+;; (http://archives.postgresql.org/pgsql-docs/2007-12/msg00056.php)
+(define ($generate-book-lot-list$) '())
+
 ;; Indentation of verbatim environments.  (This should really be done
 ;; with start-indent in DSSSL.)
 ;; Use of indentation in this area exposes a bug in openjade,
