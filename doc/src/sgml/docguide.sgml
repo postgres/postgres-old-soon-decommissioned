@@ -649,8 +649,8 @@ string_vacancies.jadetex = 150000
 string_vacancies.pdfjadetex = 150000
 max_strings.jadetex = 300000
 max_strings.pdfjadetex = 300000
-save_size.jadetex = 10000
-save_size.pdfjadetex = 10000
+save_size.jadetex = 15000
+save_size.pdfjadetex = 15000
 </programlisting>
    </para>
   </sect2>
