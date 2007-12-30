@@ -906,6 +906,11 @@ DoCopy(const CopyStmt *stmt, const char *queryString)
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 				 errmsg("COPY quote must be a single ASCII character")));
 
+	if (cstate->csv_mode && cstate->delim[0] == cstate->quote[0])
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+				 errmsg("COPY delimiter and quote must be different")));
+
 	/* Check escape */
 	if (!cstate->csv_mode && cstate->escape != NULL)
 		ereport(ERROR,
