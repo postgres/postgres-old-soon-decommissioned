@@ -6,7 +6,7 @@
  * These definitions are used by both frontend and backend code.  Be careful
  * what you include here!
  *
- * Copyright (c) 2003-2007, PostgreSQL Global Development Group
+ * Copyright (c) 2003-2008, PostgreSQL Global Development Group
  *
  * $PostgreSQL$
  *

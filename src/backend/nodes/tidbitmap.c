@@ -20,7 +20,7 @@
  * point, but for now that seems useless complexity.
  *
  *
- * Copyright (c) 2003-2007, PostgreSQL Global Development Group
+ * Copyright (c) 2003-2008, PostgreSQL Global Development Group
  *
  * IDENTIFICATION
  *	  $PostgreSQL$

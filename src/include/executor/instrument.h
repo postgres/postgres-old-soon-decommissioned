@@ -4,7 +4,7 @@
  *	  definitions for run-time statistics collection
  *
  *
- * Copyright (c) 2001-2007, PostgreSQL Global Development Group
+ * Copyright (c) 2001-2008, PostgreSQL Global Development Group
  *
  * $PostgreSQL$
  *

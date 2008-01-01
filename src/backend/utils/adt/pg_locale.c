@@ -2,7 +2,7 @@
  *
  * PostgreSQL locale utilities
  *
- * Portions Copyright (c) 2002-2007, PostgreSQL Global Development Group
+ * Portions Copyright (c) 2002-2008, PostgreSQL Global Development Group
  *
  * $PostgreSQL$
  *

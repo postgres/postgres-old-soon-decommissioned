@@ -11,7 +11,7 @@
  *			- Add a pgstat config column to pg_database, so this
  *			  entire thing can be enabled/disabled on a per db basis.
  *
- *	Copyright (c) 2001-2007, PostgreSQL Global Development Group
+ *	Copyright (c) 2001-2008, PostgreSQL Global Development Group
  *
  *	$PostgreSQL$
  * ----------

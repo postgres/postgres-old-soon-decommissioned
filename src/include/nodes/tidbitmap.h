@@ -13,7 +13,7 @@
  * fact that a particular page needs to be visited.
  *
  *
- * Copyright (c) 2003-2007, PostgreSQL Global Development Group
+ * Copyright (c) 2003-2008, PostgreSQL Global Development Group
  *
  * $PostgreSQL$
  *

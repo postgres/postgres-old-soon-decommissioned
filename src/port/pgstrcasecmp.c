@@ -14,7 +14,7 @@
  * NB: this code should match downcase_truncate_identifier() in scansup.c.
  *
  *
- * Portions Copyright (c) 1996-2007, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2008, PostgreSQL Global Development Group
  *
  * $PostgreSQL$
  *

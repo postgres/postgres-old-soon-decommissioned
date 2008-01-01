@@ -4,7 +4,7 @@
  *
  * Declarations for for fast regex subset, used by ISpell
  *
- * Portions Copyright (c) 1996-2007, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2008, PostgreSQL Global Development Group
  *
  * $PostgreSQL$
  *
