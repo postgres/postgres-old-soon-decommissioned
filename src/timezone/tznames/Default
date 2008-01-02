@@ -55,7 +55,18 @@ AKST   -32400    # Alaska Standard Time
                  #     (America/Juneau)
                  #     (America/Nome)
                  #     (America/Yakutat)
-ART    -10800    # Argentina Time (not in zic)
+ART    -10800    # Argentina Time
+                 #     (America/Argentina/Buenos_Aires)
+                 #     (America/Argentina/Cordoba)
+                 #     (America/Argentina/Tucuman)
+                 #     (America/Argentina/La_Rioja)
+                 #     (America/Argentina/San_Juan)
+                 #     (America/Argentina/Jujuy)
+                 #     (America/Argentina/Catamarca)
+                 #     (America/Argentina/Mendoza)
+                 #     (America/Argentina/Rio_Gallegos)
+                 #     (America/Argentina/Ushuaia)
+ARST    -7200 D  # Argentina Summer Time
 BOT    -14400    # Bolivia Time
                  #     (America/La_Paz)
 BRA    -10800    # Brazil Time (not in zic)
