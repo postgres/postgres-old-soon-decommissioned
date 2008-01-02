@@ -1,7 +1,7 @@
 /* ----------
  *	DTrace probes for PostgreSQL backend
  *
- *	Copyright (c) 2006, PostgreSQL Global Development Group
+ *	Copyright (c) 2006-2008, PostgreSQL Global Development Group
  *
  *	$PostgreSQL$
  * ----------

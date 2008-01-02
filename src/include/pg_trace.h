@@ -3,7 +3,7 @@
  *
  *	Definitions for the PostgreSQL tracing framework
  *
- *	Copyright (c) 2006, PostgreSQL Global Development Group
+ *	Copyright (c) 2006-2008, PostgreSQL Global Development Group
  *
  *	$PostgreSQL$
  * ----------
