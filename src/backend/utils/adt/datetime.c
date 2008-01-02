@@ -124,8 +124,8 @@ static datetkn datetktbl[] = {
 #if 0
 	aqtst
 	aqtt
-	arst
 #endif
+	{"arst", DTZ, NEG(8)},		/* Argentina Summer Time */
 	{"art", TZ, NEG(12)},		/* Argentina Time */
 #if 0
 	ashst
