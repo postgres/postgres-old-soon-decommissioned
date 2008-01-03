@@ -234,12 +234,13 @@ extern void SetDatabasePath(const char *path);
 
 extern char *GetUserNameFromId(Oid roleid);
 extern Oid	GetUserId(void);
-extern void SetUserId(Oid userid);
 extern Oid	GetOuterUserId(void);
 extern Oid	GetSessionUserId(void);
+extern void GetUserIdAndContext(Oid *userid, bool *sec_def_context);
+extern void SetUserIdAndContext(Oid userid, bool sec_def_context);
+extern bool InSecurityDefinerContext(void);
 extern void InitializeSessionUserId(const char *rolename);
 extern void InitializeSessionUserIdStandalone(void);
-extern void AtAbort_UserId(void);
 extern void SetSessionAuthorization(Oid userid, bool is_superuser);
 extern Oid	GetCurrentRoleId(void);
 extern void SetCurrentRoleId(Oid roleid, bool is_superuser);
