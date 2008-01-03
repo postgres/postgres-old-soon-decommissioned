@@ -104,8 +104,7 @@ SHOW ALL
         <term><literal>IS_SUPERUSER</literal></term>
         <listitem>
          <para>
-          True if the current session authorization identifier has
-          superuser privileges.
+          True if the current role has superuser privileges.
          </para>
         </listitem>
        </varlistentry>
