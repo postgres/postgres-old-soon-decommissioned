@@ -220,9 +220,10 @@ extern void SetDatabasePath(const char *path);
 
 extern char *GetUserNameFromId(AclId userid);
 extern AclId GetUserId(void);
-extern void SetUserId(AclId userid);
 extern AclId GetSessionUserId(void);
-extern void SetSessionUserId(AclId userid);
+extern void GetUserIdAndContext(AclId *userid, bool *sec_def_context);
+extern void SetUserIdAndContext(AclId userid, bool sec_def_context);
+extern bool InSecurityDefinerContext(void);
 extern void InitializeSessionUserId(const char *username);
 extern void InitializeSessionUserIdStandalone(void);
 extern void SetSessionAuthorization(AclId userid, bool is_superuser);
