@@ -73,3 +73,7 @@
 {
 	REG_BADOPT, "REG_BADOPT", "invalid embedded option"
 },
+
+{
+	REG_ETOOBIG, "REG_ETOOBIG", "nfa has too many states"
+},

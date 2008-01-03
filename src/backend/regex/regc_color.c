@@ -569,12 +569,9 @@ okcolors(struct nfa * nfa,
 			while ((a = cd->arcs) != NULL)
 			{
 				assert(a->co == co);
-				/* uncolorchain(cm, a); */
-				cd->arcs = a->colorchain;
+				uncolorchain(cm, a);
 				a->co = sco;
-				/* colorchain(cm, a); */
-				a->colorchain = scd->arcs;
-				scd->arcs = a;
+				colorchain(cm, a);
 			}
 			freecolor(cm, co);
 		}
@@ -604,7 +601,10 @@ colorchain(struct colormap * cm,
 {
 	struct colordesc *cd = &cm->cd[a->co];
 
+	if (cd->arcs != NULL)
+		cd->arcs->colorchainRev = a;
 	a->colorchain = cd->arcs;
+	a->colorchainRev = NULL;
 	cd->arcs = a;
 }
 
@@ -616,19 +616,22 @@ uncolorchain(struct colormap * cm,
 			 struct arc * a)
 {
 	struct colordesc *cd = &cm->cd[a->co];
-	struct arc *aa;
+	struct arc *aa = a->colorchainRev;
 
-	aa = cd->arcs;
-	if (aa == a)				/* easy case */
+	if (aa == NULL)
+	{
+		assert(cd->arcs == a);
 		cd->arcs = a->colorchain;
+	}
 	else
 	{
-		for (; aa != NULL && aa->colorchain != a; aa = aa->colorchain)
-			continue;
-		assert(aa != NULL);
+		assert(aa->colorchain == a);
 		aa->colorchain = a->colorchain;
 	}
+	if (a->colorchain != NULL)
+		a->colorchain->colorchainRev = aa;
 	a->colorchain = NULL;		/* paranoia */
+	a->colorchainRev = NULL;
 }
 
 /*
