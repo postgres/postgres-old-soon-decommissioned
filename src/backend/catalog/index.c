@@ -1361,6 +1361,8 @@ index_build(Relation heapRelation,
 			IndexInfo *indexInfo)
 {
 	RegProcedure procedure;
+	Oid			save_userid;
+	bool		save_secdefcxt;
 
 	/*
 	 * sanity checks
@@ -1372,12 +1374,22 @@ index_build(Relation heapRelation,
 	Assert(RegProcedureIsValid(procedure));
 
 	/*
+	 * Switch to the table owner's userid, so that any index functions are
+	 * run as that user.
+	 */
+	GetUserIdAndContext(&save_userid, &save_secdefcxt);
+	SetUserIdAndContext(heapRelation->rd_rel->relowner, true);
+
+	/*
 	 * Call the access method's build procedure
 	 */
 	OidFunctionCall3(procedure,
 					 PointerGetDatum(heapRelation),
 					 PointerGetDatum(indexRelation),
 					 PointerGetDatum(indexInfo));
+
+	/* Restore userid */
+	SetUserIdAndContext(save_userid, save_secdefcxt);
 }
 
 
