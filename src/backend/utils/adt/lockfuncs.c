@@ -206,7 +206,7 @@ pg_lock_status(PG_FUNCTION_ARGS)
 		MemSet(values, 0, sizeof(values));
 		MemSet(nulls, ' ', sizeof(nulls));
 
-		if (lock->tag.locktag_type <= LOCKTAG_ADVISORY)
+		if (lock->tag.locktag_type <= LOCKTAG_LAST_TYPE)
 			locktypename = LockTagTypeNames[lock->tag.locktag_type];
 		else
 		{
@@ -217,7 +217,7 @@ pg_lock_status(PG_FUNCTION_ARGS)
 		values[0] = DirectFunctionCall1(textin,
 										CStringGetDatum(locktypename));
 
-		switch (lock->tag.locktag_type)
+		switch ((LockTagType) lock->tag.locktag_type)
 		{
 			case LOCKTAG_RELATION:
 			case LOCKTAG_RELATION_EXTEND:

@@ -186,6 +186,8 @@ typedef enum LockTagType
 	LOCKTAG_ADVISORY			/* advisory user locks */
 } LockTagType;
 
+#define LOCKTAG_LAST_TYPE	LOCKTAG_ADVISORY
+
 /*
  * The LOCKTAG struct is defined with malice aforethought to fit into 16
  * bytes with no padding.  Note that this would need adjustment if we were
