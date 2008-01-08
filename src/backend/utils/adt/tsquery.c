@@ -105,7 +105,7 @@ typedef enum
 	PT_VAL = 2,
 	PT_OPR = 3,
 	PT_OPEN = 4,
-	PT_CLOSE = 5,
+	PT_CLOSE = 5
 } ts_tokentype;
 
 /*
