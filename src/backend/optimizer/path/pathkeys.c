@@ -30,13 +30,6 @@
 #include "utils/lsyscache.h"
 
 
-/*
- * If an EC contains a const and isn't below-outer-join, any PathKey depending
- * on it must be redundant, since there's only one possible value of the key.
- */
-#define MUST_BE_REDUNDANT(eclass)  \
-	((eclass)->ec_has_const && !(eclass)->ec_below_outer_join)
-
 static PathKey *makePathKey(EquivalenceClass *eclass, Oid opfamily,
 			int strategy, bool nulls_first);
 static PathKey *make_canonical_pathkey(PlannerInfo *root,
@@ -164,7 +157,7 @@ pathkey_is_redundant(PathKey *new_pathkey, List *pathkeys)
 	Assert(!new_ec->ec_merged);
 
 	/* Check for EC containing a constant --- unconditionally redundant */
-	if (MUST_BE_REDUNDANT(new_ec))
+	if (EC_MUST_BE_REDUNDANT(new_ec))
 		return true;
 
 	/* If same EC already used in list, then redundant */
@@ -211,7 +204,7 @@ canonicalize_pathkeys(PlannerInfo *root, List *pathkeys)
 		 * pathkey_is_redundant would notice that, but we needn't even bother
 		 * constructing the node...
 		 */
-		if (MUST_BE_REDUNDANT(eclass))
+		if (EC_MUST_BE_REDUNDANT(eclass))
 			continue;
 
 		/* OK, build a canonicalized PathKey struct */
