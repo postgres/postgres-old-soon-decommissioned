@@ -3,6 +3,11 @@
 <chapter id="protocol">
  <title>Frontend/Backend Protocol</title>
 
+ <indexterm zone="protocol">
+  <primary>protocol</primary>
+  <secondary>frontend-backend</secondary>
+ </indexterm>
+
  <para>
   <productname>PostgreSQL</productname> uses a message-based protocol
   for communication between frontends and backends (clients and servers).
