@@ -19,16 +19,6 @@
    </varlistentry>
 
    <varlistentry>
-    <term>READMEs</term>
-    <listitem>
-     <para>
-      <filename>README</filename> files are available for most
-      contributed packages.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
     <term>Web Site</term>
     <listitem>
      <para>
