@@ -301,8 +301,8 @@ pg_convert_to(PG_FUNCTION_ARGS)
 {
 	Datum		string = PG_GETARG_DATUM(0);
 	Datum		dest_encoding_name = PG_GETARG_DATUM(1);
-	Datum		src_encoding_name = DirectFunctionCall1(
-							namein, CStringGetDatum(DatabaseEncoding->name));
+	Datum		src_encoding_name = DirectFunctionCall1(namein,
+									CStringGetDatum(DatabaseEncoding->name));
 	Datum		result;
 
 	/*
@@ -310,11 +310,8 @@ pg_convert_to(PG_FUNCTION_ARGS)
 	 * text argument here, relying on the fact that they are both in fact
 	 * varlena types, and thus structurally identical.
 	 */
-	result = DirectFunctionCall3(
-				  pg_convert, string, src_encoding_name, dest_encoding_name);
-
-	/* free memory allocated by namein */
-	pfree((void *) src_encoding_name);
+	result = DirectFunctionCall3(pg_convert, string,
+								 src_encoding_name, dest_encoding_name);
 
 	PG_RETURN_BYTEA_P(result);
 }
@@ -329,15 +326,12 @@ pg_convert_from(PG_FUNCTION_ARGS)
 {
 	Datum		string = PG_GETARG_DATUM(0);
 	Datum		src_encoding_name = PG_GETARG_DATUM(1);
-	Datum		dest_encoding_name = DirectFunctionCall1(
-							namein, CStringGetDatum(DatabaseEncoding->name));
+	Datum		dest_encoding_name = DirectFunctionCall1(namein,
+									CStringGetDatum(DatabaseEncoding->name));
 	Datum		result;
 
-	result = DirectFunctionCall3(
-				  pg_convert, string, src_encoding_name, dest_encoding_name);
-
-	/* free memory allocated by namein */
-	pfree((void *) src_encoding_name);
+	result = DirectFunctionCall3(pg_convert, string,
+								 src_encoding_name, dest_encoding_name);
 
 	/*
 	 * pg_convert returns a bytea, which we in turn return as text, relying on
