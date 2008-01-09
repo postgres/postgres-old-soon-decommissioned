@@ -50,7 +50,7 @@
  * On Mingw/Msys, that should always be the case, but MSVC++ defaults
  * to 64 bits. We set that for our own build in the project files
  */
-#ifdef WIN32_ONLY_COMPILER
+#if defined(WIN32_ONLY_COMPILER) && !defined(FRONTEND)
 #ifndef _USE_32BIT_TIME_T
 #error "Postgres uses 32 bit time_t - add #define _USE_32BIT_TIME_T on Windows"
 #endif
