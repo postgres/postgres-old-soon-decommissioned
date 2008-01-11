@@ -674,7 +674,12 @@ make_rel_from_joinlist(PlannerInfo *root, List *joinlist)
 		/*
 		 * Consider the different orders in which we could join the rels,
 		 * using a plugin, GEQO, or the regular join search code.
+		 *
+		 * We put the initial_rels list into a PlannerInfo field because
+		 * has_legal_joinclause() needs to look at it (ugly :-().
 		 */
+		root->initial_rels = initial_rels;
+
 		if (join_search_hook)
 			return (*join_search_hook) (root, levels_needed, initial_rels);
 		else if (enable_geqo && levels_needed >= geqo_threshold)

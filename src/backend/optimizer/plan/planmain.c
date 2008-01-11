@@ -142,6 +142,7 @@ query_planner(PlannerInfo *root, List *tlist,
 	root->right_join_clauses = NIL;
 	root->full_join_clauses = NIL;
 	root->oj_info_list = NIL;
+	root->initial_rels = NIL;
 
 	/*
 	 * Make a flattened version of the rangetable for faster access (this is

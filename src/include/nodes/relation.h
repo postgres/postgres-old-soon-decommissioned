@@ -165,6 +165,8 @@ typedef struct PlannerInfo
 	List	   *group_pathkeys; /* groupClause pathkeys, if any */
 	List	   *sort_pathkeys;	/* sortClause pathkeys, if any */
 
+	List	   *initial_rels;	/* RelOptInfos we are now trying to join */
+
 	MemoryContext planner_cxt;	/* context holding PlannerInfo */
 
 	double		total_table_pages;		/* # of pages in all tables of query */
