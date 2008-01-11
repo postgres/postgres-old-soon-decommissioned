@@ -118,6 +118,9 @@ typedef struct PlannerInfo
 	bool		hasHavingQual;	/* true if havingQual was non-null */
 	bool		hasPseudoConstantQuals; /* true if any RestrictInfo has
 										 * pseudoconstant = true */
+
+	/* At the end to avoid breaking existing 8.2 add-ons */
+	List	   *initial_rels;	/* RelOptInfos we are now trying to join */
 } PlannerInfo;
 
 
