@@ -448,7 +448,8 @@ count_agg_clauses_walker(Node *node, AggClauseCounts *counts)
 			aggtranstype = enforce_generic_type_consistency(inputTypes,
 															declaredArgTypes,
 															agg_nargs,
-															aggtranstype);
+															aggtranstype,
+															false);
 			pfree(declaredArgTypes);
 		}
 

@@ -235,7 +235,8 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 	rettype = enforce_generic_type_consistency(actual_arg_types,
 											   declared_arg_types,
 											   nargs,
-											   rettype);
+											   rettype,
+											   false);
 
 	/* perform the necessary typecasting of arguments */
 	make_fn_arguments(pstate, fargs, actual_arg_types, declared_arg_types);

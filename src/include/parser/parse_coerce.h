@@ -81,7 +81,8 @@ extern bool check_generic_type_consistency(Oid *actual_arg_types,
 extern Oid enforce_generic_type_consistency(Oid *actual_arg_types,
 								 Oid *declared_arg_types,
 								 int nargs,
-								 Oid rettype);
+								 Oid rettype,
+								 bool allow_poly);
 extern Oid resolve_generic_type(Oid declared_type,
 					 Oid context_actual_type,
 					 Oid context_declared_type);

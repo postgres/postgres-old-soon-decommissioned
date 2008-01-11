@@ -1006,7 +1006,8 @@ make_scalar_array_op(ParseState *pstate, List *opname,
 	rettype = enforce_generic_type_consistency(actual_arg_types,
 											   declared_arg_types,
 											   2,
-											   opform->oprresult);
+											   opform->oprresult,
+											   false);
 
 	/*
 	 * Check that operator result is boolean
@@ -1116,7 +1117,8 @@ make_op_expr(ParseState *pstate, Operator op,
 	rettype = enforce_generic_type_consistency(actual_arg_types,
 											   declared_arg_types,
 											   nargs,
-											   opform->oprresult);
+											   opform->oprresult,
+											   false);
 
 	/* perform the necessary typecasting of arguments */
 	make_fn_arguments(pstate, args, actual_arg_types, declared_arg_types);

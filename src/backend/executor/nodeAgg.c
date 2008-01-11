@@ -1433,7 +1433,8 @@ ExecInitAgg(Agg *node, EState *estate, int eflags)
 			aggtranstype = enforce_generic_type_consistency(inputTypes,
 															declaredArgTypes,
 															agg_nargs,
-															aggtranstype);
+															aggtranstype,
+															false);
 			pfree(declaredArgTypes);
 		}
 
