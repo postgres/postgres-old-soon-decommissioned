@@ -958,6 +958,9 @@ xml_init(void)
 		/* Check library compatibility */
 		LIBXML_TEST_VERSION;
 
+		/* The above calls xmlInitParser(); must clean up dangling pointers */
+		xmlCleanupParser();
+
 		first_time = false;
 	}
 	else
