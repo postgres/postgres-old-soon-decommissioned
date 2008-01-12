@@ -1821,9 +1821,10 @@ map_sql_value_to_xml_value(Datum value, Oid type)
 static char *
 _SPI_strdup(const char *s)
 {
-	char	   *ret = SPI_palloc(strlen(s) + 1);
+	size_t		len = strlen(s) + 1;
+	char	   *ret = SPI_palloc(len);
 
-	strcpy(ret, s);
+	memcpy(ret, s, len);
 	return ret;
 }
 
