@@ -43,7 +43,7 @@ bool		ECPGstatus(int, const char *);
 bool		ECPGsetcommit(int, const char *, const char *);
 bool		ECPGsetconn(int, const char *);
 bool		ECPGconnect(int, int, const char *, const char *, const char *, const char *, int);
-bool		ECPGdo(const int, const int, const int, const char *, const char, const enum ECPG_statement_type, const char *,...);
+bool		ECPGdo(const int, const int, const int, const char *, const bool, const int, const char *,...);
 bool		ECPGtrans(int, const char *, const char *);
 bool		ECPGdisconnect(int, const char *);
 bool		ECPGprepare(int, const char *, const int, const char *, const char *);
