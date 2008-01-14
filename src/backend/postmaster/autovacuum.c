@@ -2658,11 +2658,11 @@ autovac_report_activity(VacuumStmt *vacstmt, Oid relid)
 	/* Report the command and possible options */
 	if (vacstmt->vacuum)
 		snprintf(activity, MAX_AUTOVAC_ACTIV_LEN,
-				 "VACUUM%s",
+				 "autovacuum: VACUUM%s",
 				 vacstmt->analyze ? " ANALYZE" : "");
 	else
 		snprintf(activity, MAX_AUTOVAC_ACTIV_LEN,
-				 "ANALYZE");
+				 "autovacuum: ANALYZE");
 
 	/*
 	 * Report the qualified name of the relation.
