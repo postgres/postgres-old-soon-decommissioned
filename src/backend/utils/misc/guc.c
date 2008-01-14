@@ -4829,6 +4829,16 @@ GUC_complaint_elevel(GucSource source)
 		 */
 		elevel = IsUnderPostmaster ? DEBUG3 : LOG;
 	}
+	else if (source == PGC_S_OVERRIDE)
+	{
+		/*
+		 * If we're a postmaster child, this is probably "undo" during
+		 * transaction abort, so we don't want to clutter the log.  There's
+		 * a small chance of a real problem with an OVERRIDE setting,
+		 * though, so suppressing the message entirely wouldn't be desirable.
+		 */
+		elevel = IsUnderPostmaster ? DEBUG5 : LOG;
+	}
 	else if (source < PGC_S_INTERACTIVE)
 		elevel = LOG;
 	else
