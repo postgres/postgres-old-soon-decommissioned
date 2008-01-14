@@ -28,6 +28,8 @@ typedef struct HeapScanDescData
 	ScanKey		rs_key;			/* array of scan key descriptors */
 	bool		rs_bitmapscan;	/* true if this is really a bitmap scan */
 	bool		rs_pageatatime; /* verify visibility page-at-a-time? */
+	bool		rs_allow_strat; /* allow or disallow use of access strategy */
+	bool		rs_allow_sync;	/* allow or disallow use of syncscan */
 
 	/* state set up at initscan time */
 	BlockNumber rs_nblocks;		/* number of blocks to scan */

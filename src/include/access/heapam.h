@@ -141,6 +141,9 @@ extern Relation heap_openrv(const RangeVar *relation, LOCKMODE lockmode);
 
 extern HeapScanDesc heap_beginscan(Relation relation, Snapshot snapshot,
 			   int nkeys, ScanKey key);
+extern HeapScanDesc heap_beginscan_strat(Relation relation, Snapshot snapshot,
+					 int nkeys, ScanKey key,
+					 bool allow_strat, bool allow_sync);
 extern HeapScanDesc heap_beginscan_bm(Relation relation, Snapshot snapshot,
 				  int nkeys, ScanKey key);
 extern void heap_rescan(HeapScanDesc scan, ScanKey key);
