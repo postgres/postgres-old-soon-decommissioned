@@ -255,7 +255,8 @@ pgstat_heap(Relation rel, FunctionCallInfo fcinfo)
 	Buffer		buffer;
 	pgstattuple_type stat = {0};
 
-	scan = heap_beginscan(rel, SnapshotAny, 0, NULL);
+	/* Disable syncscan because we assume we scan from block zero upwards */
+	scan = heap_beginscan_strat(rel, SnapshotAny, 0, NULL, true, false);
 
 	nblocks = scan->rs_nblocks; /* # blocks to be scanned */
 
