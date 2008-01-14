@@ -2528,11 +2528,17 @@ _printTocEntry(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt, bool isDat
 	/*
 	 * Avoid dumping the public schema, as it will already be created ...
 	 * unless we are using --clean mode, in which case it's been deleted and
-	 * we'd better recreate it.
+	 * we'd better recreate it.  Likewise for its comment, if any.
 	 */
-	if (!ropt->dropSchema &&
-		strcmp(te->desc, "SCHEMA") == 0 && strcmp(te->tag, "public") == 0)
-		return;
+	if (!ropt->dropSchema)
+	{
+		if (strcmp(te->desc, "SCHEMA") == 0 &&
+			strcmp(te->tag, "public") == 0)
+			return;
+		if (strcmp(te->desc, "COMMENT") == 0 &&
+			strcmp(te->tag, "SCHEMA public") == 0)
+			return;
+	}
 
 	/* Select owner, schema, and tablespace as necessary */
 	_becomeOwner(AH, te);
