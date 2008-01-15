@@ -75,6 +75,8 @@ extern char *map_sql_identifier_to_xml_name(char *ident, bool fully_escaped, boo
 extern char *map_xml_name_to_sql_identifier(char *name);
 extern char *map_sql_value_to_xml_value(Datum value, Oid type);
 
+extern void AtEOXact_xml(void);
+
 typedef enum
 {
 	XMLBINARY_BASE64,
