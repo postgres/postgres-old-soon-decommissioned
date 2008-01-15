@@ -28,7 +28,6 @@ extern YYSTYPE yylval;
 
 static int		xcdepth = 0;	/* depth of nesting in slash-star comments */
 static char	   *dolqstart;      /* current $foo$ quote start string */
-static bool		escape_string_warning;
 static YY_BUFFER_STATE scanbufhandle;
 static char *scanbuf;
 

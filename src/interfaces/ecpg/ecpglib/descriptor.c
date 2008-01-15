@@ -529,7 +529,7 @@ ECPGset_desc(int lineno, const char *desc_name, int index,...)
 	for (;;)
 	{
 		enum ECPGdtype itemtype;
-		const char *tobeinserted = NULL;
+		char *tobeinserted = NULL;
 
 		itemtype = va_arg(args, enum ECPGdtype);
 
