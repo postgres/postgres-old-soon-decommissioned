@@ -1310,9 +1310,8 @@ getCopyDataMessage(PGconn *conn)
 		/*
 		 * If it's a legitimate async message type, process it.  (NOTIFY
 		 * messages are not currently possible here, but we handle them for
-		 * completeness.  NOTICE is definitely possible, and ParameterStatus
-		 * could probably be made to happen.)  Otherwise, if it's anything
-		 * except Copy Data, report end-of-copy.
+		 * completeness.)  Otherwise, if it's anything except Copy Data,
+		 * report end-of-copy.
 		 */
 		switch (id)
 		{
