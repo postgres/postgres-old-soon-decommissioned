@@ -244,6 +244,10 @@
 },
 
 {
+	"not_an_xml_document", ERRCODE_NOT_AN_XML_DOCUMENT
+},
+
+{
 	"invalid_xml_document", ERRCODE_INVALID_XML_DOCUMENT
 },
 
