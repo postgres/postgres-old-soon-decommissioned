@@ -9,7 +9,7 @@
 #	y = (int) x *y;
 
 if [ "$#" -lt 2 ]
-then	echo "Usage:  $0 typedefs file [...]" 1>&2
+then	echo "Usage:  `basename $0` typedefs file [...]" 1>&2
 	exit 1
 fi
 
