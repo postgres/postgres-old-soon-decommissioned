@@ -659,7 +659,7 @@
 
    <para>
     Which compression algorithm to use.  Only available if
-    <productname>PostgreSQL<productname/> was built with zlib.
+    <productname>PostgreSQL</productname> was built with zlib.
    </para>
    <programlisting>
     Values:
