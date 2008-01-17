@@ -1305,7 +1305,24 @@ getCopyDataMessage(PGconn *conn)
 		}
 		avail = conn->inEnd - conn->inCursor;
 		if (avail < msgLength - 4)
+		{
+			/*
+			 * Before returning, enlarge the input buffer if needed to hold
+			 * the whole message.  See notes in parseInput.
+			 */
+			if (pqCheckInBufferSpace(conn->inCursor + msgLength - 4, conn))
+			{
+				/*
+				 * XXX add some better recovery code... plan is to skip over
+				 * the message using its length, then report an error. For the
+				 * moment, just treat this like loss of sync (which indeed it
+				 * might be!)
+				 */
+				handleSyncLoss(conn, id, msgLength);
+				return -2;
+			}
 			return 0;
+		}
 
 		/*
 		 * If it's a legitimate async message type, process it.  (NOTIFY
