@@ -201,6 +201,7 @@ extern Oid CreateConstraintEntry(const char *constraintName,
 					  const char *conSrc);
 
 extern void RemoveConstraintById(Oid conId);
+extern void RenameConstraintById(Oid conId, const char *newname);
 
 extern bool ConstraintNameIsUsed(ConstraintCategory conCat, Oid objId,
 					 Oid objNamespace, const char *conname);

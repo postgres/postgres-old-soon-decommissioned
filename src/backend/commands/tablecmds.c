@@ -1659,13 +1659,13 @@ renamerel(Oid myrelid, const char *newrelname, ObjectType reltype)
 	 * or ALTER INDEX is used to rename a sequence or view.
 	 */
 	relkind = targetrelation->rd_rel->relkind;
-	if (reltype == OBJECT_SEQUENCE && relkind != 'S')
+	if (reltype == OBJECT_SEQUENCE && relkind != RELKIND_SEQUENCE)
 		ereport(ERROR,
 				(errcode(ERRCODE_WRONG_OBJECT_TYPE),
 				 errmsg("\"%s\" is not a sequence",
 						RelationGetRelationName(targetrelation))));
 
-	if (reltype == OBJECT_VIEW && relkind != 'v')
+	if (reltype == OBJECT_VIEW && relkind != RELKIND_VIEW)
 		ereport(ERROR,
 				(errcode(ERRCODE_WRONG_OBJECT_TYPE),
 				 errmsg("\"%s\" is not a view",
@@ -1710,6 +1710,17 @@ renamerel(Oid myrelid, const char *newrelname, ObjectType reltype)
 	 */
 	if (OidIsValid(targetrelation->rd_rel->reltype))
 		TypeRename(targetrelation->rd_rel->reltype, newrelname, namespaceId);
+
+	/*
+	 * Also rename the associated constraint, if any.
+	 */
+	if (relkind == RELKIND_INDEX)
+	{
+		Oid			constraintId = get_index_constraint(myrelid);
+
+		if (OidIsValid(constraintId))
+			RenameConstraintById(constraintId, newrelname);
+	}
 
 	/*
 	 * Close rel, but keep exclusive lock!
