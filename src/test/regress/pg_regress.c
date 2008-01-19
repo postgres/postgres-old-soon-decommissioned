@@ -102,10 +102,8 @@ static int	success_count = 0;
 static int	fail_count = 0;
 static int	fail_ignore_count = 0;
 
-static bool
-			directory_exists(const char *dir);
-static void
-			make_directory(const char *dir);
+static bool directory_exists(const char *dir);
+static void make_directory(const char *dir);
 
 static void
 header(const char *fmt,...)
@@ -453,11 +451,23 @@ convert_sourcefiles_in(char *source, char *dest, char *suffix)
 			*c = '/';
 #endif
 
-	/* try to create the test tablespace dir if it doesn't exist */
 	snprintf(testtablespace, MAXPGPATH, "%s/testtablespace", abs_builddir);
+
+#ifdef WIN32
+	/*
+	 * On Windows only, clean out the test tablespace dir, or create it if it
+	 * doesn't exist.  On other platforms we expect the Makefile to take
+	 * care of that.  (We don't migrate that functionality in here because
+	 * it'd be harder to cope with platform-specific issues such as SELinux.)
+	 *
+	 * XXX it would be better if pg_regress.c had nothing at all to do with
+	 * testtablespace, and this were handled by a .BAT file or similar on
+	 * Windows.  See pgsql-hackers discussion of 2008-01-18.
+	 */
 	if (directory_exists(testtablespace))
 		rmtree(testtablespace, true);
 	make_directory(testtablespace);
+#endif
 
 	/* finally loop on each file and do the replacement */
 	for (name = names; *name; name++)
