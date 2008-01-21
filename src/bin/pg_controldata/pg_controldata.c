@@ -151,6 +151,11 @@ main(int argc, char *argv[])
 
 	printf(_("pg_control version number:            %u\n"),
 		   ControlFile.pg_control_version);
+	if (ControlFile.pg_control_version % 65536 == 0 && ControlFile.pg_control_version / 65536 != 0)
+		printf(_("WARNING: possible byte ordering mismatch\n"
+				 "The byte ordering used to store the pg_control file might not match the one\n"
+				 "used by this program.  In that case the results below would be incorrect, and\n"
+				 "the PostgreSQL installation would be incompatible with this data directory.\n"));
 	printf(_("Catalog version number:               %u\n"),
 		   ControlFile.catalog_version_no);
 	printf(_("Database system identifier:           %s\n"),

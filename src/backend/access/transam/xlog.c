@@ -3888,6 +3888,16 @@ ReadControlFile(void)
 	 * of bytes.  Complaining about wrong version will probably be more
 	 * enlightening than complaining about wrong CRC.
 	 */
+
+	if (ControlFile->pg_control_version != PG_CONTROL_VERSION && ControlFile->pg_control_version % 65536 == 0 && ControlFile->pg_control_version / 65536 != 0)
+		ereport(FATAL,
+				(errmsg("database files are incompatible with server"),
+				 errdetail("The database cluster was initialized with PG_CONTROL_VERSION %d (0x%08x),"
+						   " but the server was compiled with PG_CONTROL_VERSION %d (0x%08x).",
+						   ControlFile->pg_control_version, ControlFile->pg_control_version,
+						   PG_CONTROL_VERSION, PG_CONTROL_VERSION),
+				 errhint("This could be a problem of mismatched byte ordering.  It looks like you need to initdb.")));
+
 	if (ControlFile->pg_control_version != PG_CONTROL_VERSION)
 		ereport(FATAL,
 				(errmsg("database files are incompatible with server"),
@@ -3895,6 +3905,7 @@ ReadControlFile(void)
 				  " but the server was compiled with PG_CONTROL_VERSION %d.",
 						ControlFile->pg_control_version, PG_CONTROL_VERSION),
 				 errhint("It looks like you need to initdb.")));
+
 	/* Now check the CRC. */
 	INIT_CRC32(crc);
 	COMP_CRC32(crc,
