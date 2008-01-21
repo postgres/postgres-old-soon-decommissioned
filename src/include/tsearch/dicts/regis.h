@@ -40,7 +40,7 @@ typedef struct Regis
 
 bool		RS_isRegis(const char *str);
 
-void		RS_compile(Regis *r, bool issuffix, char *str);
+void		RS_compile(Regis *r, bool issuffix, const char *str);
 void		RS_free(Regis *r);
 
 /*returns true if matches */
