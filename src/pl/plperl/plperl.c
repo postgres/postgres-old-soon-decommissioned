@@ -257,8 +257,8 @@ plperl_init_all(void)
 	"sub ::mksafefunc {" \
 	"      my $ret = $PLContainer->reval(qq[sub { $_[0] $_[1] }]); " \
 	"      $@ =~ s/\\(eval \\d+\\) //g if $@; return $ret; }" \
-	"$PLContainer->permit('require'); $PLContainer->reval('use strict;');" \
-	"$PLContainer->deny('require');" \
+	"$PLContainer->permit(qw[require caller]); $PLContainer->reval('use strict;');" \
+	"$PLContainer->deny(qw[require caller]); " \
 	"sub ::mk_strict_safefunc {" \
 	"      my $ret = $PLContainer->reval(qq[sub { BEGIN { strict->import(); } $_[0] $_[1] }]); " \
 	"      $@ =~ s/\\(eval \\d+\\) //g if $@; return $ret; }"
