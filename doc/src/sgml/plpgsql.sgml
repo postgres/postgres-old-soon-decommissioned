@@ -3474,7 +3474,7 @@ $$ LANGUAGE plpgsql;
     Another good way to develop in <application>PL/pgSQL</> is with a
     GUI database access tool that facilitates development in a
     procedural language. One example of such as a tool is
-    <application>PgAccess</>, although others exist. These tools often
+    <application>pgAdmin</>, although others exist. These tools often
     provide convenient features such as escaping single quotes and
     making it easier to recreate and debug functions.
    </para>

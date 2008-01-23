@@ -298,7 +298,7 @@ createdb: database creation failed: ERROR:  permission denied to create database
      <listitem>
       <para>
        Using an existing graphical frontend tool like
-       <application>PgAccess</application> or an office suite with
+       <application>pgAdmin</application> or an office suite with
        <acronym>ODBC</acronym> support to create and manipulate a
        database.  These possibilities are not covered in this
        tutorial.
