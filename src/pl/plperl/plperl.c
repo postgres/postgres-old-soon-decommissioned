@@ -260,6 +260,13 @@ _PG_init(void)
 #define SAFE_MODULE \
 	"require Safe; $Safe::VERSION"
 
+/* 
+ * The temporary enabling of the caller opcode here is to work around a
+ * bug in perl 5.10, which unkindly changed the way its Safe.pm works, without
+ * notice. It is quite safe, as caller is informational only, and in any case
+ * we only enable it while we load the 'strict' module.
+ */
+
 #define SAFE_OK \
 	"use vars qw($PLContainer); $PLContainer = new Safe('PLPerl');" \
 	"$PLContainer->permit_only(':default');" \
