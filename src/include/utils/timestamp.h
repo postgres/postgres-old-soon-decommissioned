@@ -182,7 +182,7 @@ typedef double fsec_t;
 #define INTERVAL_RANGE(t) (((t) >> 16) & INTERVAL_RANGE_MASK)
 
 #ifdef HAVE_INT64_TIMESTAMP
-#define TimestampTzPlusMilliseconds(tz,ms) ((tz) + ((ms) * 1000))
+#define TimestampTzPlusMilliseconds(tz,ms) ((tz) + ((ms) * (int64) 1000))
 #else
 #define TimestampTzPlusMilliseconds(tz,ms) ((tz) + ((ms) / 1000.0))
 #endif
