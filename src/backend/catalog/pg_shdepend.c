@@ -1110,7 +1110,12 @@ shdepDropOwned(List *roleids, DropBehavior behavior)
 
 	deleteobjs = new_object_addresses();
 
-	sdepRel = heap_open(SharedDependRelationId, AccessExclusiveLock);
+	/*
+	 * We don't need this strong a lock here, but we'll call routines that
+	 * acquire RowExclusiveLock.  Better get that right now to avoid potential
+	 * deadlock failures.
+	 */
+	sdepRel = heap_open(SharedDependRelationId, RowExclusiveLock);
 
 	/*
 	 * For each role, find the dependent objects and drop them using the
@@ -1224,7 +1229,7 @@ shdepDropOwned(List *roleids, DropBehavior behavior)
 	/* the dependency mechanism does the actual work */
 	performMultipleDeletions(deleteobjs, behavior);
 
-	heap_close(sdepRel, AccessExclusiveLock);
+	heap_close(sdepRel, RowExclusiveLock);
 
 	free_object_addresses(deleteobjs);
 }
@@ -1241,7 +1246,12 @@ shdepReassignOwned(List *roleids, Oid newrole)
 	Relation	sdepRel;
 	ListCell   *cell;
 
-	sdepRel = heap_open(SharedDependRelationId, AccessShareLock);
+	/*
+	 * We don't need this strong a lock here, but we'll call routines that
+	 * acquire RowExclusiveLock.  Better get that right now to avoid potential
+	 * deadlock problems.
+	 */
+	sdepRel = heap_open(SharedDependRelationId, RowExclusiveLock);
 
 	foreach(cell, roleids)
 	{
@@ -1343,5 +1353,5 @@ shdepReassignOwned(List *roleids, Oid newrole)
 		systable_endscan(scan);
 	}
 
-	heap_close(sdepRel, AccessShareLock);
+	heap_close(sdepRel, RowExclusiveLock);
 }
