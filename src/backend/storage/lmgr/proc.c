@@ -486,20 +486,18 @@ HaveNFreeProcs(int n)
 /*
  * Cancel any pending wait for lock, when aborting a transaction.
  *
- * Returns true if we had been waiting for a lock, else false.
- *
  * (Normally, this would only happen if we accept a cancel/die
  * interrupt while waiting; but an ereport(ERROR) while waiting is
  * within the realm of possibility, too.)
  */
-bool
+void
 LockWaitCancel(void)
 {
 	LWLockId	partitionLock;
 
 	/* Nothing to do if we weren't waiting for a lock */
 	if (lockAwaited == NULL)
-		return false;
+		return;
 
 	/* Turn off the deadlock timer, if it's still running (see ProcSleep) */
 	disable_sig_alarm(false);
@@ -538,12 +536,6 @@ LockWaitCancel(void)
 	 * wakeup signal isn't harmful, and it seems not worth expending cycles to
 	 * get rid of a signal that most likely isn't there.
 	 */
-
-	/*
-	 * Return true even if we were kicked off the lock before we were able to
-	 * remove ourselves.
-	 */
-	return true;
 }
 
 

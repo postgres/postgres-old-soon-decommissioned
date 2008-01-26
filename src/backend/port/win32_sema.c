@@ -124,6 +124,12 @@ PGSemaphoreLock(PGSemaphore sema, bool interruptOK)
 	wh[0] = *sema;
 	wh[1] = pgwin32_signal_event;
 
+	/*
+	 * As in other implementations of PGSemaphoreLock, we need to check
+	 * for cancel/die interrupts each time through the loop.  But here,
+	 * there is no hidden magic about whether the syscall will internally
+	 * service a signal --- we do that ourselves.
+	 */
 	do
 	{
 		ImmediateInterruptOK = interruptOK;
