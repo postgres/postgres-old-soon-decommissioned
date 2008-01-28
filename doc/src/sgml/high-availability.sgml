@@ -374,6 +374,17 @@ protocol to make nodes agree on a serializable transactional order.
      <entry align="center">&bull;</entry>
     </row>
 
+    <row>
+     <entry>Communication Method</entry>
+     <entry align="center">shared disk</entry>
+     <entry align="center">disk blocks</entry>
+     <entry align="center">WAL</entry>
+     <entry align="center">table rows</entry>
+     <entry align="center">SQL</entry>
+     <entry align="center">table rows</entry>
+     <entry align="center">table rows and row locks</entry>
+    </row>
+
    </tbody>
   </tgroup>
  </table>
