@@ -1400,7 +1400,7 @@
   </para>
 
   <table>
-   <title><structfield>pg_cast</> Columns</title>
+   <title><structname>pg_cast</> Columns</title>
 
    <tgroup cols=4>
     <thead>
