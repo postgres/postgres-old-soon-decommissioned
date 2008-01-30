@@ -59,6 +59,10 @@
 #include "utils/syscache.h"
 
 
+/* GUC variable */
+bool	synchronize_seqscans = true;
+
+
 static HeapScanDesc heap_beginscan_internal(Relation relation,
 						Snapshot snapshot,
 						int nkeys, ScanKey key,
@@ -104,7 +108,8 @@ initscan(HeapScanDesc scan, ScanKey key)
 	 * the thresholds for these features could be different, we make them the
 	 * same so that there are only two behaviors to tune rather than four.
 	 * (However, some callers need to be able to disable one or both of
-	 * these behaviors, independently of the size of the table.)
+	 * these behaviors, independently of the size of the table; also there
+	 * is a GUC variable that can disable synchronized scanning.)
 	 *
 	 * During a rescan, don't make a new strategy object if we don't have to.
 	 */
@@ -129,7 +134,7 @@ initscan(HeapScanDesc scan, ScanKey key)
 		scan->rs_strategy = NULL;
 	}
 
-	if (allow_sync)
+	if (allow_sync && synchronize_seqscans)
 	{
 		scan->rs_syncscan = true;
 		scan->rs_startblock = ss_get_location(scan->rs_rd, scan->rs_nblocks);

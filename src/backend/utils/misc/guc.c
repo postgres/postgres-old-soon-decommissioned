@@ -110,6 +110,7 @@ extern int	CommitDelay;
 extern int	CommitSiblings;
 extern char *default_tablespace;
 extern char *temp_tablespaces;
+extern bool synchronize_seqscans;
 extern bool fullPageWrites;
 
 #ifdef TRACE_SORT
@@ -1050,6 +1051,15 @@ static struct config_bool ConfigureNamesBool[] =
 		},
 		&standard_conforming_strings,
 		false, NULL, NULL
+	},
+
+	{
+		{"synchronize_seqscans", PGC_USERSET, COMPAT_OPTIONS_PREVIOUS,
+			gettext_noop("Enable synchronized sequential scans."),
+			NULL
+		},
+		&synchronize_seqscans,
+		true, NULL, NULL
 	},
 
 	{
