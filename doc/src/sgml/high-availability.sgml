@@ -264,7 +264,7 @@ protocol to make nodes agree on a serializable transactional order.
  </variablelist>
 
  <para>
-  The table below (<xref linkend="high-availability-matrix">) summarizes
+  <xref linkend="high-availability-matrix"> summarizes
   the capabilities of the various solutions listed above.
  </para>
 
