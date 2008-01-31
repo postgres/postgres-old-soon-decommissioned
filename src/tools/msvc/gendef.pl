@@ -18,14 +18,16 @@ print "Generating $defname.DEF from directory $ARGV[0]\n";
 
 while (<$ARGV[0]/*.obj>)
 {
+    my $symfile = $_;
+    $symfile=~ s/\.obj$/.sym/i;
     print ".";
     system("dumpbin /symbols /out:symbols.out $_ >NUL") && die "Could not call dumpbin";
     open(F, "<symbols.out") || die "Could not open symbols.out for $_\n";
     while (<F>)
     {
         s/\(\)//g;
-        next unless /^\d/;
         my @pieces = split;
+        next unless $pieces[0] =~ /^[A-F0-9]{3}$/;
         next unless $pieces[6];
         next if ($pieces[2] eq "UNDEF");
         next unless ($pieces[4] eq "External");
@@ -41,7 +43,7 @@ while (<$ARGV[0]/*.obj>)
         push @def, $pieces[6];
     }
     close(F);
-    unlink("symbols.out");
+    rename("symbols.out",$symfile);
 }
 print "\n";
 
