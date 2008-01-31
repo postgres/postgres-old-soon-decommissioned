@@ -27,7 +27,7 @@ while (<$ARGV[0]/*.obj>)
     {
         s/\(\)//g;
         my @pieces = split;
-        next unless $pieces[0] =~ /^[A-F0-9]{3}$/;
+        next unless $pieces[0] =~ /^[A-F0-9]{3,}$/;
         next unless $pieces[6];
         next if ($pieces[2] eq "UNDEF");
         next unless ($pieces[4] eq "External");
