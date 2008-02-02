@@ -1343,9 +1343,7 @@ SET ENABLE_SEQSCAN TO OFF;
         In many situations, turning off <xref linkend="guc-synchronous-commit">
         for noncritical transactions can provide much of the potential
         performance benefit of turning off <varname>fsync</varname>, without
-        the attendant risks of data corruption.  It can even be turned
-        off in a single multi-statement transaction using <command>SET
-        LOCAL synchronous_commit TO OFF;</>.
+        the attendant risks of data corruption.
        </para>
 
        <para>
@@ -1385,6 +1383,9 @@ SET ENABLE_SEQSCAN TO OFF;
         one transaction is determined by the setting in effect when it
         commits.  It is therefore possible, and useful, to have some
         transactions commit synchronously and others asynchronously.
+        For example, to make a single multi-statement transaction commit
+        asynchronously when the default is the opposite, issue <command>SET
+        LOCAL synchronous_commit TO OFF</> within the transaction.
        </para>
       </listitem>
      </varlistentry>
