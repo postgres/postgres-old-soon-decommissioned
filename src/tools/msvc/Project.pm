@@ -123,6 +123,11 @@ sub AddReference
 sub AddLibrary
 {
     my ($self, $lib, $dbgsuffix) = @_;
+    
+    if ($lib =~ m/\s/)
+    {
+    	$lib = '&quot;' . $lib . "&quot;";
+    }
 
     push @{$self->{libraries}}, $lib;
     if ($dbgsuffix)
