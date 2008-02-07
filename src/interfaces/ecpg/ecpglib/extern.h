@@ -146,7 +146,7 @@ void		ecpg_raise_backend(int line, PGresult *result, PGconn *conn, int compat);
 char	   *ecpg_prepared(const char *, struct connection *, int);
 bool		ecpg_deallocate_all_conn(int lineno, enum COMPAT_MODE c, struct connection * conn);
 void		ecpg_log(const char *format,...);
-bool		ecpg_auto_prepare(int, const char *, const int, char **, const char *);
+bool		ecpg_auto_prepare(int, const char *, int, const int, char **, const char *);
 void		ecpg_init_sqlca(struct sqlca_t * sqlca);
 
 /* SQLSTATE values generated or processed by ecpglib (intentionally

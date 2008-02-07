@@ -1489,7 +1489,7 @@ ECPGdo(const int lineno, const int compat, const int force_indicator, const char
 	 */
 	if (statement_type == ECPGst_prepnormal)
 	{
-		if (!ecpg_auto_prepare(lineno, connection_name, questionmarks, &prepname, query))
+		if (!ecpg_auto_prepare(lineno, connection_name, compat, questionmarks, &prepname, query))
 			return (false);
 
 		/*

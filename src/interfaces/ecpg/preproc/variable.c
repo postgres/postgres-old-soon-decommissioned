@@ -237,7 +237,7 @@ find_variable(char *name)
 					case ECPGt_union:
 						return (new_variable(name, ECPGmake_struct_type(p->type->u.element->u.members, p->type->u.element->type, p->type->u.element->struct_sizeof), p->brace_level));
 					default:
-						return (new_variable(name, ECPGmake_simple_type(p->type->u.element->type, p->type->u.element->size, p->type->u.element->u.element->lineno), p->brace_level));
+						return (new_variable(name, ECPGmake_simple_type(p->type->u.element->type, p->type->u.element->size, p->type->u.element->lineno), p->brace_level));
 				}
 			}
 		}
