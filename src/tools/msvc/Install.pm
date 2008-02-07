@@ -456,27 +456,27 @@ sub GenerateNLSFiles
     print "Installing NLS files...";
     EnsureDirectories($target, "share/locale");
 	my @flist;
-	File::Find::find({wanted => 
-						  sub { /^nls\.mk\z/s && 
-									!                                                                       push(@flist, $File::Find::name); 	
-							} 
+	File::Find::find({wanted =>
+						  sub { /^nls\.mk\z/s &&
+									!push(@flist, $File::Find::name);
+							}
 				  }, "src");
     foreach (@flist)
     {
         s/nls.mk/po/;
         my $dir = $_;
-        next unless ($dir =~ /([^\\]+)\\po$/);
+        next unless ($dir =~ /([^\/]+)\/po$/);
         my $prgm = $1;
         $prgm = 'postgres' if ($prgm eq 'backend');
         foreach (glob("$dir/*.po"))
         {
             my $lang;
-            next unless /^(.*)\.po/;
+            next unless /([^\/]+)\.po/;
             $lang = $1;
 
             EnsureDirectories($target, "share/locale/$lang", "share/locale/$lang/LC_MESSAGES");
             system(
-"$nlspath\\bin\\msgfmt -o $target\\share\\locale\\$lang\\LC_MESSAGES\\$prgm.mo $dir\\$_"
+"$nlspath\\bin\\msgfmt -o $target\\share\\locale\\$lang\\LC_MESSAGES\\$prgm.mo $_"
               )
               && croak("Could not run msgfmt on $dir\\$_");
             print ".";
