@@ -2594,7 +2594,7 @@ OpenIntoRel(QueryDesc *queryDesc)
 	}
 
 	/* Check permissions except when using the database's default space */
-	if (OidIsValid(tablespaceId))
+	if (OidIsValid(tablespaceId) && tablespaceId != MyDatabaseTableSpace)
 	{
 		AclResult	aclresult;
 

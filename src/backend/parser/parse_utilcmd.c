@@ -767,7 +767,10 @@ generateClonedIndexStmt(CreateStmtContext *cxt, Relation source_idx,
 	index = makeNode(IndexStmt);
 	index->relation = cxt->relation;
 	index->accessMethod = pstrdup(NameStr(amrec->amname));
-	index->tableSpace = get_tablespace_name(source_idx->rd_node.spcNode);
+	if (OidIsValid(idxrelrec->reltablespace))
+		index->tableSpace = get_tablespace_name(idxrelrec->reltablespace);
+	else
+		index->tableSpace = NULL;
 	index->unique = idxrec->indisunique;
 	index->primary = idxrec->indisprimary;
 	index->concurrent = false;
