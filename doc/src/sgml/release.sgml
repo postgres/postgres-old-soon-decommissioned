@@ -741,10 +741,11 @@ current_date &lt; 2017-11-17
        <command>UPDATE</>s and <command>DELETE</>s leave dead tuples
        behind, as do failed <command>INSERT</>s.  Previously only
        <command>VACUUM</> could reclaim space taken by dead tuples. With
-       <acronym>HOT</> dead tuple space can be reclaimed at the time of
-       <command>INSERT</> or <command>UPDATE</> if no changes are made to
-       indexed columns.  This allows for more consistent performance.
-       Also, <acronym>HOT</> avoids adding duplicate index entries.
+       <acronym>HOT</> dead tuple space can be automatically reclaimed at
+       the time of <command>INSERT</> or <command>UPDATE</> if no changes
+       are made to indexed columns.  This allows for more consistent
+       performance.  Also, <acronym>HOT</> avoids adding duplicate index
+       entries.
       </para>
      </listitem>
 
