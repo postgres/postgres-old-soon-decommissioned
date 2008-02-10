@@ -489,6 +489,9 @@ PageGetExactFreeSpace(Page page)
 	space = (int) ((PageHeader) page)->pd_upper -
 		(int) ((PageHeader) page)->pd_lower;
 
+	if (space < 0)
+		return 0;
+
 	return (Size) space;
 }
 
