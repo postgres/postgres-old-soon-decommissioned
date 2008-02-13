@@ -14,7 +14,7 @@ top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
 MAJOR_VERSION= 4
-MINOR_VERSION= 4
+MINOR_VERSION= 5
 PATCHLEVEL=0
 
 override CPPFLAGS := -I../include -I$(top_srcdir)/src/interfaces/ecpg/include \
