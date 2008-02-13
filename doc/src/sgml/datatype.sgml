@@ -3544,7 +3544,7 @@ XMLPARSE ( { DOCUMENT | CONTENT } <replaceable>value</replaceable>)
 </synopsis>
     Examples:
 <programlisting><![CDATA[
-XMLPARSE (DOCUMENT '<?xml version="1.0"?><book><title>Manual</title><chapter>...</chapter><book>')
+XMLPARSE (DOCUMENT '<?xml version="1.0"?><book><title>Manual</title><chapter>...</chapter></book>')
 XMLPARSE (CONTENT 'abc<foo>bar</foo><bar>foo</bar>')
 ]]></programlisting>
     While this is the only way to convert character strings into XML
