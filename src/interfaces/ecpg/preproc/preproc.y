@@ -815,7 +815,7 @@ stmt:  AlterDatabaseStmt		{ output_statement($1, 0, connection); }
 		}
 		| ECPGExecute
 		{
-			output_statement($1, 0, connection);
+			output_statement($1, 1, connection);
 		}
 		| ECPGFree
 		{
