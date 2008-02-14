@@ -5,6 +5,6 @@
 
 #include <ecpg_informix.h>
 
-/* typedef decimal dec_t; */
+typedef decimal dec_t;
 
 #endif   /* ndef _ECPG_DECIMAL_H */

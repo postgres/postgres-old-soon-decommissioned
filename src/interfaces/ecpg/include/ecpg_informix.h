@@ -82,11 +82,6 @@ extern int	dttofmtasc(timestamp *, char *, int, char *);
 extern int	intoasc(interval *, char *);
 extern int	dtcvfmtasc(char *, char *, timestamp *);
 
-/* we also define Informix datatypes here */
-typedef timestamp dtime_t;
-typedef interval intrvl_t;
-typedef decimal dec_t;
-
 #ifdef __cplusplus
 }
 #endif

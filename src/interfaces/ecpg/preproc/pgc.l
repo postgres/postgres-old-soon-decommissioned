@@ -1320,7 +1320,7 @@ static bool isdefine(void)
 
 static bool isinformixdefine(void)
 {
-/*	const char *new = NULL;
+	const char *new = NULL;
 
 	if (strcmp(yytext, "dec_t") == 0)
 		new = "decimal";
@@ -1344,7 +1344,7 @@ static bool isinformixdefine(void)
 		yy_scan_string(new);
 		return true;
 	}
-*/
+
 	return false;
 }
 
