@@ -807,7 +807,7 @@ stmt:  AlterDatabaseStmt		{ output_statement($1, 0, ECPGst_normal); }
 		| DropUserStmt		{ output_statement($1, 0, ECPGst_normal); }
 		| DropdbStmt		{ output_statement($1, 0, ECPGst_normal); }
 		| ExplainStmt		{ output_statement($1, 0, ECPGst_normal); }
-		| ExecuteStmt		{ output_statement($1, 0, ECPGst_execute); }
+		| ExecuteStmt		{ output_statement($1, 1, ECPGst_execute); }
 		| FetchStmt		{ output_statement($1, 1, ECPGst_normal); }
 		| GrantStmt		{ output_statement($1, 0, ECPGst_normal); }
 		| GrantRoleStmt		{ output_statement($1, 0, ECPGst_normal); }
