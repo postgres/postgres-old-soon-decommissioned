@@ -61,7 +61,8 @@ void		sqlprint(void);
 
 /* define this for simplicity as well as compatibility */
 
-#define		  SQLCODE	 sqlca.sqlcode
+#define		SQLCODE		sqlca.sqlcode
+#define		SQLSTATE	sqlca.sqlstate
 
 /* dynamic SQL */
 
