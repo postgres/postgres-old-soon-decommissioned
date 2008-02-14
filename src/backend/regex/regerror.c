@@ -40,8 +40,8 @@ static char unk[] = "*** unknown regex error code 0x%x ***";
 static struct rerr
 {
 	int			code;
-	char	   *name;
-	char	   *explain;
+	const char *name;
+	const char *explain;
 }	rerrs[] =
 
 {
@@ -63,7 +63,7 @@ pg_regerror(int errcode,		/* error code, or REG_ATOI or REG_ITOA */
 			size_t errbuf_size) /* available space in errbuf, can be 0 */
 {
 	struct rerr *r;
-	char	   *msg;
+	const char *msg;
 	char		convbuf[sizeof(unk) + 50];		/* 50 = plenty for int */
 	size_t		len;
 	int			icode;

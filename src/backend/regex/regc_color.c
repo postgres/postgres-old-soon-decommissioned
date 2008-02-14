@@ -222,7 +222,6 @@ static color					/* COLORLESS for error */
 newcolor(struct colormap * cm)
 {
 	struct colordesc *cd;
-	struct colordesc *new;
 	size_t		n;
 
 	if (CISERR())
@@ -245,24 +244,25 @@ newcolor(struct colormap * cm)
 	else
 	{
 		/* oops, must allocate more */
+		struct colordesc *newCd;
+
 		n = cm->ncds * 2;
 		if (cm->cd == cm->cdspace)
 		{
-			new = (struct colordesc *) MALLOC(n *
-											  sizeof(struct colordesc));
-			if (new != NULL)
-				memcpy(VS(new), VS(cm->cdspace), cm->ncds *
+			newCd = (struct colordesc *) MALLOC(n * sizeof(struct colordesc));
+			if (newCd != NULL)
+				memcpy(VS(newCd), VS(cm->cdspace), cm->ncds *
 					   sizeof(struct colordesc));
 		}
 		else
-			new = (struct colordesc *) REALLOC(cm->cd,
-											   n * sizeof(struct colordesc));
-		if (new == NULL)
+			newCd = (struct colordesc *)
+				REALLOC(cm->cd, n * sizeof(struct colordesc));
+		if (newCd == NULL)
 		{
 			CERR(REG_ESPACE);
 			return COLORLESS;
 		}
-		cm->cd = new;
+		cm->cd = newCd;
 		cm->ncds = n;
 		assert(cm->max < cm->ncds - 1);
 		cm->max++;
@@ -632,21 +632,6 @@ uncolorchain(struct colormap * cm,
 		a->colorchain->colorchainRev = aa;
 	a->colorchain = NULL;		/* paranoia */
 	a->colorchainRev = NULL;
-}
-
-/*
- * singleton - is this character in its own color?
- */
-static int						/* predicate */
-singleton(struct colormap * cm,
-		  chr c)
-{
-	color		co;				/* color of c */
-
-	co = GETCOLOR(cm, c);
-	if (cm->cd[co].nchrs == 1 && cm->cd[co].sub == NOSUB)
-		return 1;
-	return 0;
 }
 
 /*
