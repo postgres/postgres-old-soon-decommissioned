@@ -22,7 +22,7 @@ PostgreSQL documentation
 <synopsis>
 INSERT INTO <replaceable class="PARAMETER">table</replaceable> [ ( <replaceable class="PARAMETER">column</replaceable> [, ...] ) ]
     { DEFAULT VALUES | VALUES ( { <replaceable class="PARAMETER">expression</replaceable> | DEFAULT } [, ...] ) [, ...] | <replaceable class="PARAMETER">query</replaceable> }
-    [ RETURNING * | <replaceable class="parameter">output_expression</replaceable> [ AS <replaceable class="parameter">output_name</replaceable> ] [, ...] ]
+    [ RETURNING * | <replaceable class="parameter">output_expression</replaceable> [ [ AS ] <replaceable class="parameter">output_name</replaceable> ] [, ...] ]
 </synopsis>
  </refsynopsisdiv>
 
