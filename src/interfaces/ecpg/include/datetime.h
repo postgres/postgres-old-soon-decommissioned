@@ -5,7 +5,8 @@
 
 #include <ecpg_informix.h>
 
-typedef timestamp dtime_t;
-typedef interval intrvl_t;
+/* brought in by ecpg_informix.h nowadays
+ * typedef timestamp dtime_t;
+ * typedef interval intrvl_t; */
 
 #endif   /* ndef _ECPG_DATETIME_H */
