@@ -743,11 +743,7 @@ cppline			{space}*#(.*\\{space})*.*{newline}
 <C>{identifier} 	{
 						const ScanKeyword		*keyword;
 							
-<<<<<<< pgc.l
-						if (!INFORMIX_MODE && !isdefine())
-=======
 						if (!isdefine())
->>>>>>> 1.162
 						{
 							keyword = ScanCKeywordLookup(yytext);
 							if (keyword != NULL)
