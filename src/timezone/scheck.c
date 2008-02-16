@@ -1,6 +1,6 @@
 /*
  * This file is in the public domain, so clarified as of
- * 1996-06-05 by Arthur David Olson (arthur_david_olson@nih.gov).
+ * 2006-07-17 by Arthur David Olson.
  *
  * IDENTIFICATION
  *	  $PostgreSQL$
@@ -11,18 +11,17 @@
 #include "private.h"
 
 
-char *
+const char *
 scheck(const char *string, const char *format)
 {
 	char	   *fbuf;
 	const char *fp;
 	char	   *tp;
 	int			c;
-	char	   *result;
+	const char *result;
 	char		dummy;
-	static char nada;
 
-	result = &nada;
+	result = "";
 	if (string == NULL || format == NULL)
 		return result;
 	fbuf = imalloc((int) (2 * strlen(format) + 4));
