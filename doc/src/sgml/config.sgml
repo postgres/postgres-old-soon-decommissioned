@@ -1638,9 +1638,6 @@ SET ENABLE_SEQSCAN TO OFF;
         30 seconds (<literal>30s</>).  Zero disables the warning.
         This parameter can only be set in the <filename>postgresql.conf</>
         file or on the server command line.
-        (Set it to a value greater than <varname>checkpoint_timeout</> to
-        log all checkpoints.  Of course, the warning suggesting increasing
-        <varname>checkpoint_segments</> should be ignored.)
        </para>
       </listitem>
      </varlistentry>
