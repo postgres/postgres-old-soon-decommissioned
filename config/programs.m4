@@ -201,10 +201,6 @@ AC_DEFUN([PGAC_CHECK_GETTEXT],
   AC_CHECK_PROGS(MSGMERGE, msgmerge)
 dnl FIXME: We should probably check for version >=0.10.36.
   AC_CHECK_PROGS(XGETTEXT, xgettext)
-
-  # Note: share/locale is always the default, independent of $datadir
-  localedir='${prefix}/share/locale'
-  AC_SUBST(localedir)
 ])# PGAC_CHECK_GETTEXT
 
 
