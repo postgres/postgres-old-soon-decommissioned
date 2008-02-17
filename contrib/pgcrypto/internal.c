@@ -649,7 +649,8 @@ system_reseed(void)
 		skip = 1;
 	else if ((t - seed_time) > SYSTEM_RESEED_MAX)
 		skip = 0;
-	else if (!check_time || (t - check_time) > SYSTEM_RESEED_CHECK_TIME)
+	else if (check_time == 0 ||
+			 (t - check_time) > SYSTEM_RESEED_CHECK_TIME)
 	{
 		check_time = t;
 

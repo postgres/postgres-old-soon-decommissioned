@@ -16,10 +16,9 @@
 #ifndef XLOG_INTERNAL_H
 #define XLOG_INTERNAL_H
 
-#include <time.h>
-
 #include "access/xlog.h"
 #include "fmgr.h"
+#include "pgtime.h"
 #include "storage/block.h"
 #include "storage/relfilenode.h"
 
@@ -71,7 +70,7 @@ typedef struct XLogContRecord
 /*
  * Each page of XLOG file has a header like this:
  */
-#define XLOG_PAGE_MAGIC 0xD062	/* can be used as WAL version indicator */
+#define XLOG_PAGE_MAGIC 0xD063	/* can be used as WAL version indicator */
 
 typedef struct XLogPageHeaderData
 {
@@ -242,7 +241,7 @@ extern const RmgrData RmgrTable[];
 /*
  * Exported to support xlog switching from bgwriter
  */
-extern time_t GetLastSegSwitchTime(void);
+extern pg_time_t GetLastSegSwitchTime(void);
 extern XLogRecPtr RequestXLogSwitch(void);
 
 /*

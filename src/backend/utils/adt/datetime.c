@@ -650,9 +650,11 @@ ParseDateTime(const char *timestr, char *workbuf, size_t buflen,
  *				"20011225T040506.789-07"
  *
  * Use the system-provided functions to get the current time zone
- *	if not specified in the input string.
- * If the date is outside the time_t system-supported time range,
- *	then assume UTC time zone. - thomas 1997-05-27
+ * if not specified in the input string.
+ *
+ * If the date is outside the range of pg_time_t (in practice that could only
+ * happen if pg_time_t is just 32 bits), then assume UTC time zone - thomas
+ * 1997-05-27
  */
 int
 DecodeDateTime(char **field, int *ftype, int nf,
