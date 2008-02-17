@@ -439,7 +439,7 @@ main(int argc, char *const argv[])
 
 				if (header_mode == false)
 				{
-					fprintf(yyout, "/* These include files are added by the preprocessor */\n#include <ecpgtype.h>\n#include <ecpglib.h>\n#include <ecpgerrno.h>\n#include <sqlca.h>\n");
+					fprintf(yyout, "/* These include files are added by the preprocessor */\n#include <ecpglib.h>\n#include <ecpgerrno.h>\n#include <sqlca.h>\n");
 
 					/* add some compatibility headers */
 					if (INFORMIX_MODE)
