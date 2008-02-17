@@ -19,6 +19,7 @@
 
 #include "postgres.h"
 
+#include <time.h>
 #include <unistd.h>
 #include <signal.h>
 #include <fcntl.h>

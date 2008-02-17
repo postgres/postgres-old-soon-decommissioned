@@ -14,6 +14,7 @@
  */
 #include "postgres.h"
 
+#include <time.h>
 #include <unistd.h>
 #include <signal.h>
 #ifdef HAVE_GETOPT_H
