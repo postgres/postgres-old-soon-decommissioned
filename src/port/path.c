@@ -600,6 +600,15 @@ get_doc_path(const char *my_exec_path, char *ret_path)
 }
 
 /*
+ *	get_html_path
+ */
+void
+get_html_path(const char *my_exec_path, char *ret_path)
+{
+	make_relative_path(ret_path, HTMLDIR, PGBINDIR, my_exec_path);
+}
+
+/*
  *	get_man_path
  */
 void

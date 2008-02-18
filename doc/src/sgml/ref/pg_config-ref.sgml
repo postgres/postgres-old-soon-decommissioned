@@ -57,9 +57,16 @@
      <term><option>--docdir</option></>
      <listitem>
       <para>
-       Print the location of documentation files.  (This will be an empty
-       string if <literal>--without-docdir</> was specified when
-       <productname>PostgreSQL</> was built.)
+       Print the location of documentation files.
+      </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry>
+     <term><option>--htmldir</option></>
+     <listitem>
+      <para>
+       Print the location of HTML documentation files.
       </para>
      </listitem>
     </varlistentry>
@@ -284,6 +291,7 @@
    <option>--cflags</option>, <option>--cflags_sl</option>,
    <option>--ldflags</option>, <option>--ldflags_sl</option>,
    and <option>--libs</option> are new in <productname>PostgreSQL</> 8.1.
+   The option <option>--htmldir</option> is new in <productname>PostgreSQL</> 8.4.
   </para>
 
   <para>

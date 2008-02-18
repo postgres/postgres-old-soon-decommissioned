@@ -98,6 +98,18 @@ show_docdir(bool all)
 }
 
 static void
+show_htmldir(bool all)
+{
+	char		path[MAXPGPATH];
+
+	if (all)
+		printf("HTMLDIR = ");
+	get_html_path(mypath, path);
+	cleanup_path(path);
+	printf("%s\n", path);
+}
+
+static void
 show_includedir(bool all)
 {
 	char		path[MAXPGPATH];
@@ -369,6 +381,7 @@ typedef struct
 static const InfoItem info_items[] = {
 	{"--bindir", show_bindir},
 	{"--docdir", show_docdir},
+	{"--htmldir", show_htmldir},
 	{"--includedir", show_includedir},
 	{"--pkgincludedir", show_pkgincludedir},
 	{"--includedir-server", show_includedir_server},
@@ -401,6 +414,7 @@ help(void)
 	printf(_("Options:\n"));
 	printf(_("  --bindir              show location of user executables\n"));
 	printf(_("  --docdir              show location of documentation files\n"));
+	printf(_("  --htmldir             show location of HTML documentation files\n"));
 	printf(_("  --includedir          show location of C header files of the client\n"
 			 "                        interfaces\n"));
 	printf(_("  --pkgincludedir       show location of other C header files\n"));

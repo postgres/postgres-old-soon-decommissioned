@@ -84,6 +84,7 @@ pg_config_paths.h: $(top_builddir)/src/Makefile.global
 	echo "#define PKGLIBDIR \"$(pkglibdir)\"" >>$@
 	echo "#define LOCALEDIR \"$(localedir)\"" >>$@
 	echo "#define DOCDIR \"$(docdir)\"" >>$@
+	echo "#define HTMLDIR \"$(htmldir)\"" >>$@
 	echo "#define MANDIR \"$(mandir)\"" >>$@
 
 clean distclean maintainer-clean:
