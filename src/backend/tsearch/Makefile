@@ -32,7 +32,7 @@ depend dep:
 .PHONY: install-data
 install-data: $(DICTFILES) installdirs
 	for i in $(DICTFILES); \
-		do $(INSTALL_DATA) $(srcdir)/$$i '$(DESTDIR)$(datadir)/$(DICTDIR)/'$$i; \
+		do $(INSTALL_DATA) $(srcdir)/$$i '$(DESTDIR)$(datadir)/$(DICTDIR)/'$$i || exit; \
 	done
 
 installdirs:
@@ -41,7 +41,7 @@ installdirs:
 .PHONY: uninstall-data
 uninstall-data:
 	for i in $(DICTFILES); \
-		do rm -rf '$(DESTDIR)$(datadir)/$(DICTDIR)/'$$i ; \
+		do rm -rf '$(DESTDIR)$(datadir)/$(DICTDIR)/'$$i || exit; \
 	done
 
 clean distclean maintainer-clean: 
