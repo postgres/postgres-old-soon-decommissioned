@@ -92,7 +92,8 @@ static char *_add(const char *, char *, const char *);
 static char *_conv(int, const char *, char *, const char *);
 static char *_fmt(const char *, const struct pg_tm *, char *,
 	 const char *, int *);
-static char * _yconv(int, int, int, int, char *, const char *);
+static char * _yconv(const int, const int, const int, const int, 
+	 char *, const char * const);
 
 #define IN_NONE 0
 #define IN_SOME 1
