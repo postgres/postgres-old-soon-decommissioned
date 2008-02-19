@@ -18,11 +18,7 @@ OBJS= analyze.o gram.o keywords.o parser.o parse_agg.o parse_clause.o \
 
 FLEXFLAGS = -CF
 
-
-all: SUBSYS.o
-
-SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) $(LDOUT) $@ $^
+include $(top_srcdir)/src/backend/common.mk
 
 
 # scan is compiled as part of gram
@@ -63,6 +59,5 @@ gram.o keywords.o parser.o: $(srcdir)/parse.h
 # gram.c, parse.h, and scan.c are in the distribution tarball, so they
 # are not cleaned here.
 clean: 
-	rm -f SUBSYS.o $(OBJS)
 # And the garbage that might have been left behind by partial build:
 	@rm -f y.tab.h y.tab.c y.output lex.yy.c

@@ -32,10 +32,7 @@ ifeq ($(PORTNAME), win32)
 OBJS+=win32/SUBSYS.o
 endif
 
-all: SUBSYS.o
-
-SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) $(LDOUT) $@ $^
+include $(top_srcdir)/src/backend/common.mk
 
 darwin/SUBSYS.o: darwin.dir
 
@@ -62,6 +59,6 @@ ipc_test: ipc_test.o pg_sema.o pg_shmem.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $(export_dynamic) $^ $(LIBS) -o $@
 
 distclean clean:
-	rm -f SUBSYS.o $(OBJS) ipc_test ipc_test.o tas_cpp.s
+	rm -f ipc_test ipc_test.o tas_cpp.s
 	$(MAKE) -C darwin clean
 	$(MAKE) -C win32 clean

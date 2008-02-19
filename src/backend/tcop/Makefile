@@ -18,10 +18,4 @@ ifneq (,$(filter $(PORTNAME),cygwin win32))
 override CPPFLAGS += -DWIN32_STACK_RLIMIT=$(WIN32_STACK_RLIMIT)
 endif
 
-all: SUBSYS.o
-
-SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
-
-clean: 
-	rm -f SUBSYS.o $(OBJS) 
+include $(top_srcdir)/src/backend/common.mk

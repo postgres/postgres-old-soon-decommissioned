@@ -9,19 +9,5 @@ top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 SUBDIRS	    = common gist hash heap index nbtree transam gin
-SUBDIROBJS  = $(SUBDIRS:%=%/SUBSYS.o)
 
-all: SUBSYS.o
-
-SUBSYS.o: $(SUBDIROBJS)
-	$(LD) $(LDREL) $(LDOUT) $@ $^
-
-$(SUBDIROBJS): $(SUBDIRS:%=%-recursive) ;
-
-.PHONY: $(SUBDIRS:%=%-recursive)
-$(SUBDIRS:%=%-recursive):
-	$(MAKE) -C $(subst -recursive,,$@) SUBSYS.o
-
-clean:
-	for dir in $(SUBDIRS); do $(MAKE) -C $$dir $@ || exit; done
-	rm -f SUBSYS.o
+include $(top_srcdir)/src/backend/common.mk

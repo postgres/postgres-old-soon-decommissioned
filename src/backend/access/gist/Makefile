@@ -15,10 +15,4 @@ include $(top_builddir)/src/Makefile.global
 OBJS = gist.o gistutil.o gistxlog.o gistvacuum.o gistget.o gistscan.o \
        gistproc.o gistsplit.o
 
-all: SUBSYS.o
-
-SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
-
-clean: 
-	rm -f SUBSYS.o $(OBJS)
+include $(top_srcdir)/src/backend/common.mk

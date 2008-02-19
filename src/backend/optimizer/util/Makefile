@@ -15,10 +15,4 @@ include $(top_builddir)/src/Makefile.global
 OBJS = clauses.o joininfo.o pathnode.o plancat.o predtest.o \
        relnode.o restrictinfo.o tlist.o var.o
 
-all: SUBSYS.o
-
-SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
-
-clean: 
-	rm -f SUBSYS.o $(OBJS)
+include $(top_srcdir)/src/backend/common.mk

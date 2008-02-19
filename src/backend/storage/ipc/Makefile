@@ -18,10 +18,4 @@ endif
 OBJS = ipc.o ipci.o pmsignal.o procarray.o shmem.o shmqueue.o \
 	sinval.o sinvaladt.o
 
-all: SUBSYS.o
-
-SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
-
-clean: 
-	rm -f SUBSYS.o $(OBJS)
+include $(top_srcdir)/src/backend/common.mk

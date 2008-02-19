@@ -16,8 +16,4 @@ OBJS = heaptuple.o indextuple.o printtup.o reloptions.o scankey.o tupdesc.o
 
 all: SUBSYS.o
 
-SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
-
-clean: 
-	rm -f SUBSYS.o $(OBJS)
+include $(top_srcdir)/src/backend/common.mk

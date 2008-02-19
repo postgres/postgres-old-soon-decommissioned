@@ -14,10 +14,7 @@ override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 
 OBJS= bootparse.o bootstrap.o 
 
-all: SUBSYS.o
-
-SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) $(LDOUT) $@ $^
+include $(top_srcdir)/src/backend/common.mk
 
 
 # bootscanner is compiled as part of bootparse
@@ -50,6 +47,5 @@ bootstrap.o bootparse.o: $(srcdir)/bootstrap_tokens.h
 # bootparse.c, bootstrap_tokens.h, and bootscanner.c are in the distribution
 # tarball, so they are not cleaned here.
 clean:
-	rm -f SUBSYS.o $(OBJS)
 # And the garbage that might have been left behind by partial build:
 	@rm -f y.tab.h y.tab.c y.output lex.yy.c

@@ -21,13 +21,7 @@ OBJS = ts_locale.o ts_parse.o wparser.o wparser_def.o dict.o \
 	dict_ispell.o regis.o spell.o \
 	to_tsany.o ts_utils.o
 
-all: SUBSYS.o 
-
-SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $^
-
-depend dep:
-	$(CC) -MM $(CFLAGS) *.c >depend
+include $(top_srcdir)/src/backend/common.mk
 
 .PHONY: install-data
 install-data: $(DICTFILES) installdirs
@@ -43,10 +37,3 @@ uninstall-data:
 	for i in $(DICTFILES); \
 		do rm -rf '$(DESTDIR)$(datadir)/$(DICTDIR)/'$$i || exit; \
 	done
-
-clean distclean maintainer-clean: 
-	rm -f SUBSYS.o $(OBJS)
-
-ifeq (depend,$(wildcard depend))
-include depend
-endif

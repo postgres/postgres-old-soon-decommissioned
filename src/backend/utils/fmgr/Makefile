@@ -16,11 +16,4 @@ OBJS = dfmgr.o fmgr.o funcapi.o
 
 override CPPFLAGS += -DDLSUFFIX=\"$(DLSUFFIX)\"
 
-
-all: SUBSYS.o
-
-SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
-
-clean: 
-	rm -f SUBSYS.o $(OBJS)
+include $(top_srcdir)/src/backend/common.mk

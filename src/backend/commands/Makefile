@@ -21,10 +21,4 @@ OBJS = aggregatecmds.o alter.o analyze.o async.o cluster.o comment.o  \
 	tsearchcmds.o typecmds.o user.o vacuum.o vacuumlazy.o \
 	variable.o view.o
 
-all: SUBSYS.o
-
-SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
-
-clean: 
-	rm -f SUBSYS.o $(OBJS) 
+include $(top_srcdir)/src/backend/common.mk
