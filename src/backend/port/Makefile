@@ -21,28 +21,16 @@ subdir = src/backend/port
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS+=dynloader.o pg_sema.o pg_shmem.o
-
-OBJS+=$(TAS)
+OBJS = dynloader.o pg_sema.o pg_shmem.o $(TAS)
 
 ifeq ($(PORTNAME), darwin)
-OBJS+=darwin/SUBSYS.o
+SUBDIRS += darwin
 endif
 ifeq ($(PORTNAME), win32)
-OBJS+=win32/SUBSYS.o
+SUBDIRS += win32
 endif
 
 include $(top_srcdir)/src/backend/common.mk
-
-darwin/SUBSYS.o: darwin.dir
-
-darwin.dir:
-	$(MAKE) -C darwin all
-
-win32/SUBSYS.o: win32.dir
-
-win32.dir:
-	$(MAKE) -C win32 all
 
 tas.o: tas.s
 ifeq ($(PORTNAME), solaris)

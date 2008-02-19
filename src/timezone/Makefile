@@ -32,14 +32,11 @@ ifneq (,$(with_system_tzdata))
 override CPPFLAGS += '-DSYSTEMTZDIR="$(with_system_tzdata)"'
 endif
 
-all: SUBSYS.o
+include $(top_srcdir)/src/backend/common.mk
 
 ifeq (,$(with_system_tzdata))
 all: submake-libpgport zic
 endif
-
-SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
 zic: $(ZICOBJS)
 	$(CC) $(CFLAGS) $(ZICOBJS) $(LDFLAGS) $(LIBS) -o $@$(X)
@@ -60,4 +57,4 @@ endif
 	$(MAKE) -C tznames $@
 
 clean distclean maintainer-clean:
-	rm -f SUBSYS.o zic$(X) $(OBJS) $(ZICOBJS)
+	rm -f zic$(X) $(ZICOBJS)
