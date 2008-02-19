@@ -260,6 +260,7 @@ EOF
 #define PKGLIBDIR "/lib"
 #define LOCALEDIR "/share/locale"
 #define DOCDIR "/doc"
+#define HTMLDIR "/doc"
 #define MANDIR "/man"
 EOF
         close(O);
