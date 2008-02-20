@@ -1826,7 +1826,7 @@ regression_main(int argc, char *argv[], init_function ifunc, test_function tfunc
 				help();
 				exit_nicely(0);
 			case 'V':
-				printf("pg_regress (PostgreSQL %s)\n", PG_VERSION);
+				puts("pg_regress (PostgreSQL) " PG_VERSION);
 				exit_nicely(0);
 			case 1:
 
