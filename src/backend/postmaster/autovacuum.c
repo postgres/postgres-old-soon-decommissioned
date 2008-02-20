@@ -352,7 +352,7 @@ StartAutoVacLauncher(void)
 	{
 		case -1:
 			ereport(LOG,
-					(errmsg("could not fork autovacuum process: %m")));
+					(errmsg("could not fork autovacuum launcher process: %m")));
 			return 0;
 
 #ifndef EXEC_BACKEND
@@ -1400,7 +1400,7 @@ StartAutoVacWorker(void)
 	{
 		case -1:
 			ereport(LOG,
-					(errmsg("could not fork autovacuum process: %m")));
+					(errmsg("could not fork autovacuum worker process: %m")));
 			return 0;
 
 #ifndef EXEC_BACKEND
