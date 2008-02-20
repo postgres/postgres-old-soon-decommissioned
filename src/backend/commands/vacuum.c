@@ -30,6 +30,7 @@
 #include "access/xlog.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_database.h"
+#include "catalog/pg_namespace.h"
 #include "commands/dbcommands.h"
 #include "commands/vacuum.h"
 #include "executor/executor.h"
@@ -1048,9 +1049,18 @@ vacuum_rel(Oid relid, VacuumStmt *vacstmt, char expected_relkind)
 	if (!(pg_class_ownercheck(RelationGetRelid(onerel), GetUserId()) ||
 		  (pg_database_ownercheck(MyDatabaseId, GetUserId()) && !onerel->rd_rel->relisshared)))
 	{
-		ereport(WARNING,
-				(errmsg("skipping \"%s\" --- only table or database owner can vacuum it",
-						RelationGetRelationName(onerel))));
+		if (onerel->rd_rel->relisshared)
+			ereport(WARNING,
+					(errmsg("skipping \"%s\" --- only superuser can vacuum it",
+							RelationGetRelationName(onerel))));
+		else if (onerel->rd_rel->relnamespace == PG_CATALOG_NAMESPACE)
+			ereport(WARNING,
+					(errmsg("skipping \"%s\" --- only superuser or database owner can vacuum it",
+							RelationGetRelationName(onerel))));
+		else
+			ereport(WARNING,
+					(errmsg("skipping \"%s\" --- only table or database owner can vacuum it",
+							RelationGetRelationName(onerel))));
 		relation_close(onerel, lmode);
 		CommitTransactionCommand();
 		return;

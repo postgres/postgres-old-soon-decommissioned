@@ -22,6 +22,7 @@
 #include "catalog/index.h"
 #include "catalog/indexing.h"
 #include "catalog/namespace.h"
+#include "catalog/pg_namespace.h"
 #include "commands/dbcommands.h"
 #include "commands/vacuum.h"
 #include "executor/executor.h"
@@ -161,9 +162,20 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt,
 	{
 		/* No need for a WARNING if we already complained during VACUUM */
 		if (!vacstmt->vacuum)
-			ereport(WARNING,
-					(errmsg("skipping \"%s\" --- only table or database owner can analyze it",
-							RelationGetRelationName(onerel))));
+		{
+			if (onerel->rd_rel->relisshared)
+				ereport(WARNING,
+						(errmsg("skipping \"%s\" --- only superuser can analyze it",
+								RelationGetRelationName(onerel))));
+			else if (onerel->rd_rel->relnamespace == PG_CATALOG_NAMESPACE)
+				ereport(WARNING,
+						(errmsg("skipping \"%s\" --- only superuser or database owner can analyze it",
+								RelationGetRelationName(onerel))));
+			else
+				ereport(WARNING,
+						(errmsg("skipping \"%s\" --- only table or database owner can analyze it",
+								RelationGetRelationName(onerel))));
+		}
 		relation_close(onerel, ShareUpdateExclusiveLock);
 		return;
 	}
