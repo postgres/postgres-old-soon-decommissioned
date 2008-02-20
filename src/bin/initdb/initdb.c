@@ -67,9 +67,6 @@ int			optreset;
 #endif
 
 
-/* version string we expect back from postgres */
-#define PG_VERSIONSTR "postgres (PostgreSQL) " PG_VERSION "\n"
-
 /*
  * these values are passed in by makefile defines
  */
@@ -2666,7 +2663,7 @@ main(int argc, char *argv[])
 	sprintf(pgdenv, "PGDATA=%s", pg_data);
 	putenv(pgdenv);
 
-	if ((ret = find_other_exec(argv[0], "postgres", PG_VERSIONSTR,
+	if ((ret = find_other_exec(argv[0], "postgres", PG_BACKEND_VERSIONSTR,
 							   backend_exec)) < 0)
 	{
 		char		full_path[MAXPGPATH];

@@ -26,7 +26,7 @@
 #include "pgtime.h"				/* for pg_time_t */
 
 
-#define PG_VERSIONSTR "postgres (PostgreSQL) " PG_VERSION "\n"
+#define PG_BACKEND_VERSIONSTR "postgres (PostgreSQL) " PG_VERSION "\n"
 
 
 /*****************************************************************************
