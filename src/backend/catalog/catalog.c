@@ -368,6 +368,8 @@ GetNewOidWithIndex(Relation relation, Relation indexrel)
 	/* Generate new OIDs until we find one not in the table */
 	do
 	{
+		CHECK_FOR_INTERRUPTS();
+
 		newOid = GetNewObjectId();
 
 		ScanKeyInit(&key,
@@ -417,6 +419,8 @@ GetNewRelFileNode(Oid reltablespace, bool relisshared, Relation pg_class)
 
 	do
 	{
+		CHECK_FOR_INTERRUPTS();
+
 		/* Generate the OID */
 		if (pg_class)
 			rnode.relNode = GetNewOid(pg_class);
