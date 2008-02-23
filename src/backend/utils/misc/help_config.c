@@ -118,7 +118,7 @@ printMixedStruct(mixedStruct *structToPrint)
 
 		case PGC_STRING:
 			printf("STRING\t%s\t\t\t",
-				   structToPrint->string.boot_val);
+				   structToPrint->string.boot_val ? structToPrint->string.boot_val : "");
 			break;
 
 		default:
