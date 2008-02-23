@@ -49,7 +49,7 @@ typedef struct
  */
 typedef struct
 {
-	int32		vl_len_;		/* Do not touch this field directly! */
+	char		vl_len_[4];		/* Do not touch this field directly! */
 	inet_struct inet_data;
 } inet;
 
