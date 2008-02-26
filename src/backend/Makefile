@@ -137,7 +137,7 @@ $(top_builddir)/src/include/utils/fmgroids.h: utils/fmgroids.h
 
 
 utils/probes.o: utils/probes.d $(SUBDIROBJS)
-	$(DTRACE) $(DTRACEFLAGS) -G -s $^ -o $@
+	$(DTRACE) $(DTRACEFLAGS) -G -s $(call expand_subsys,$^) -o $@
 
 
 ##########################################################################
