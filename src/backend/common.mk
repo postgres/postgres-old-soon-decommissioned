@@ -26,7 +26,7 @@ endif
 SUBSYS.o: $(SUBDIROBJS) $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) $@ $^
 
-objfiles.txt:: $(MAKEFILE_LIST)
+objfiles.txt:: $(MAKEFILE_LIST) | $(SUBDIROBJS) $(OBJS)
 	( $(if $(SUBDIROBJS),cat $(SUBDIROBJS); )echo $(addprefix $(subdir)/,$(OBJS)) ) >$@
 
 objfiles.txt:: $(SUBDIROBJS) $(OBJS)
