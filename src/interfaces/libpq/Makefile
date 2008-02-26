@@ -66,7 +66,7 @@ endif
 
 SHLIB_EXPORTS = exports.txt
 
-all: $(srcdir)/libpq-dist.rc all-lib
+all: all-lib
 
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib

@@ -363,13 +363,7 @@ endif # enable_shared
 # tarballs.
 
 ifneq (,$(SHLIB_EXPORTS))
-all: def-files
-
-distprep: def-files
-
-.PHONY: def-files
-
-def-files: $(srcdir)/lib$(NAME)dll.def $(srcdir)/lib$(NAME)ddll.def $(srcdir)/blib$(NAME)dll.def
+distprep: $(srcdir)/lib$(NAME)dll.def $(srcdir)/lib$(NAME)ddll.def $(srcdir)/blib$(NAME)dll.def
 
 UC_NAME = $(shell echo $(NAME) | tr 'abcdefghijklmnopqrstuvwxyz' 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')
 
