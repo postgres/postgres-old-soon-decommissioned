@@ -26,8 +26,11 @@ endif
 SUBSYS.o: $(SUBDIROBJS) $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) $@ $^
 
-objfiles.txt: $(SUBDIROBJS) $(OBJS)
+objfiles.txt:: $(MAKEFILE_LIST)
 	( $(if $(SUBDIROBJS),cat $(SUBDIROBJS); )echo $(addprefix $(subdir)/,$(OBJS)) ) >$@
+
+objfiles.txt:: $(SUBDIROBJS) $(OBJS)
+	touch $@
 
 # make function to expand objfiles.txt contents
 expand_subsys = $(foreach file,$(filter %/objfiles.txt,$(1)),$(patsubst ../../src/backend/%,%,$(addprefix $(top_builddir)/,$(shell cat $(file))))) $(filter-out %/objfiles.txt,$(1))
