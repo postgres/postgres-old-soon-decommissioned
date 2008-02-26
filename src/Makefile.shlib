@@ -116,7 +116,7 @@ ifeq ($(PORTNAME), darwin)
   endif
   shlib			= lib$(NAME).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)$(DLSUFFIX)
   shlib_major		= lib$(NAME).$(SO_MAJOR_VERSION)$(DLSUFFIX)
-  BUILD.exports		= $(AWK) '/^[^#]/ {printf "_%s\n",$$1}' $< >$@
+  BUILD.exports		= $(AWK) '/^[^\#]/ {printf "_%s\n",$$1}' $< >$@
   ifneq (,$(SHLIB_EXPORTS))
     exported_symbols_list = -exported_symbols_list $(SHLIB_EXPORTS:%.txt=%.list)
   endif
