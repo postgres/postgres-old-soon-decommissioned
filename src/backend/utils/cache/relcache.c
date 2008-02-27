@@ -2550,7 +2550,10 @@ RelationCacheInitializePhase2(void)
 
 #define LOAD_CRIT_INDEX(indexoid) \
 		do { \
-			ird = RelationBuildDesc((indexoid), NULL); \
+			ird = RelationBuildDesc(indexoid, NULL); \
+			if (ird == NULL) \
+				elog(PANIC, "could not open critical system index %u", \
+					 indexoid); \
 			ird->rd_isnailed = true; \
 			ird->rd_refcnt = 1; \
 		} while (0)
