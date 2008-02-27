@@ -33,7 +33,7 @@ objfiles.txt:: $(SUBDIROBJS) $(OBJS)
 	touch $@
 
 # make function to expand objfiles.txt contents
-expand_subsys = $(foreach file,$(filter %/objfiles.txt,$(1)),$(patsubst ../../src/backend/%,%,$(addprefix $(top_builddir)/,$(shell cat $(file))))) $(filter-out %/objfiles.txt,$(1))
+expand_subsys = $(foreach file,$(1),$(if $(filter %/objfiles.txt,$(file)),$(patsubst ../../src/backend/%,%,$(addprefix $(top_builddir)/,$(shell cat $(file)))),$(file)))
 
 # Parallel make trickery
 $(SUBDIROBJS): $(SUBDIRS:%=%-recursive) ;
