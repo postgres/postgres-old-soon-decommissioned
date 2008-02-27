@@ -2381,6 +2381,9 @@ RelationCacheInitializePhase2(void)
 			buildinfo.infotype = INFO_RELNAME; \
 			buildinfo.i.info_name = (indname); \
 			ird = RelationBuildDesc(buildinfo, NULL); \
+			if (ird == NULL) \
+				elog(PANIC, "could not open critical system index \"%s\"", \
+					 indname); \
 			ird->rd_isnailed = 1; \
 			RelationSetReferenceCount(ird, 1); \
 		} while (0)
