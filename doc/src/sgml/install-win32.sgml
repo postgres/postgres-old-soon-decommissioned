@@ -161,6 +161,15 @@
     </varlistentry>
 
     <varlistentry>
+     <term><productname>ossp-uuid</productname></term>
+     <listitem><para>
+      Required for UUID-OSSP support (contrib only). Source can be 
+      downloaded from
+      <ulink url="http://www.ossp.org/pkg/lib/uuid/"></>.
+     </para></listitem>
+    </varlistentry>
+
+    <varlistentry>
      <term><productname>Python</productname></term>
      <listitem><para>
       Required for building <application>PL/Python</application>. Binaries can
