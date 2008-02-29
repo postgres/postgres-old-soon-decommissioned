@@ -1030,9 +1030,7 @@ array_out(PG_FUNCTION_ARGS)
 				if (ch == '"' || ch == '\\')
 				{
 					needquote = true;
-#ifndef TCL_ARRAYS
 					overall_length += 1;
-#endif
 				}
 				else if (ch == '{' || ch == '}' || ch == typdelim ||
 						 isspace((unsigned char) ch))
@@ -1103,7 +1101,6 @@ array_out(PG_FUNCTION_ARGS)
 		if (needquotes[k])
 		{
 			APPENDCHAR('"');
-#ifndef TCL_ARRAYS
 			for (tmp = values[k]; *tmp; tmp++)
 			{
 				char		ch = *tmp;
@@ -1113,9 +1110,6 @@ array_out(PG_FUNCTION_ARGS)
 				*p++ = ch;
 			}
 			*p = '\0';
-#else
-			APPENDSTR(values[k]);
-#endif
 			APPENDCHAR('"');
 		}
 		else
