@@ -78,7 +78,17 @@ FunctionNext(FunctionScanState *node)
 		 * do it always.
 		 */
 		if (funcTupdesc)
+		{
 			tupledesc_match(node->tupdesc, funcTupdesc);
+
+			/*
+			 * If it is a dynamically-allocated TupleDesc, free it: it is
+			 * typically allocated in the EState's per-query context, so we
+			 * must avoid leaking it on rescan.
+			 */
+			if (funcTupdesc->tdrefcount == -1)
+				FreeTupleDesc(funcTupdesc);
+		}
 	}
 
 	/*
