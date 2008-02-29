@@ -26,11 +26,9 @@ endif
 SUBSYS.o: $(SUBDIROBJS) $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) $@ $^
 
-objfiles.txt:: $(MAKEFILE_LIST) | $(SUBDIROBJS) $(OBJS)
-	( $(if $(SUBDIROBJS),cat $(SUBDIROBJS); )echo $(addprefix $(subdir)/,$(OBJS)) ) >$@
-
-objfiles.txt:: $(SUBDIROBJS) $(OBJS)
-	touch $@
+objfiles.txt: Makefile $(SUBDIROBJS) $(OBJS)
+# Only rebuild the list if it does not exist or the Makefile has changed.
+	$(if $(filter $<,$?),( $(if $(SUBDIROBJS),cat $(SUBDIROBJS); )echo $(addprefix $(subdir)/,$(OBJS)) ) >$@,touch $@)
 
 # make function to expand objfiles.txt contents
 expand_subsys = $(foreach file,$(1),$(if $(filter %/objfiles.txt,$(file)),$(patsubst ../../src/backend/%,%,$(addprefix $(top_builddir)/,$(shell cat $(file)))),$(file)))
