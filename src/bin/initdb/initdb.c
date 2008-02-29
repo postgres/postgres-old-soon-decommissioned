@@ -2324,7 +2324,26 @@ CreateRestrictedProcess(char *cmd, PROCESS_INFORMATION * processInfo)
 		return 0;
 	}
 
-	return CreateProcessAsUser(restrictedToken, NULL, cmd, NULL, NULL, TRUE, 0, NULL, NULL, &si, processInfo);
+	if (!CreateProcessAsUser(restrictedToken,
+						NULL,
+						cmd,
+						NULL,
+						NULL,
+						TRUE,
+						CREATE_SUSPENDED,
+						NULL,
+						NULL,
+						&si,
+						processInfo))
+
+	{
+		fprintf(stderr, "CreateProcessAsUser failed: %lu\n", GetLastError());
+		return 0;
+	}
+
+	AddUserToDacl(processInfo->hProcess);
+
+	return ResumeThread(processInfo->hThread);
 }
 #endif
 
