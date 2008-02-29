@@ -1093,7 +1093,8 @@ toast_save_datum(Relation rel, Datum value,
 	struct
 	{
 		struct varlena hdr;
-		char		data[TOAST_MAX_CHUNK_SIZE];
+		char		data[TOAST_MAX_CHUNK_SIZE];	/* make struct big enough */
+		int32		align_it;	/* ensure struct is aligned well enough */
 	}			chunk_data;
 	int32		chunk_size;
 	int32		chunk_seq = 0;
