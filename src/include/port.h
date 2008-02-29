@@ -78,6 +78,12 @@ extern int	find_my_exec(const char *argv0, char *retpath);
 extern int find_other_exec(const char *argv0, const char *target,
 				const char *versionstr, char *retpath);
 
+/* Windows security token manipulation (in exec.c) */
+#ifdef WIN32
+extern BOOL AddUserToDacl(HANDLE hProcess);
+#endif
+
+
 #if defined(WIN32) || defined(__CYGWIN__)
 #define EXE ".exe"
 #else

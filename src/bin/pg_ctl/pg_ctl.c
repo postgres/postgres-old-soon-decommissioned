@@ -1471,6 +1471,8 @@ CreateRestrictedProcess(char *cmd, PROCESS_INFORMATION * processInfo)
 		}
 	}
 
+    AddUserToDacl(processInfo->hProcess);
+    
 	CloseHandle(restrictedToken);
 
 	ResumeThread(processInfo->hThread);
