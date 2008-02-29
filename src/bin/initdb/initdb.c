@@ -2341,7 +2341,9 @@ CreateRestrictedProcess(char *cmd, PROCESS_INFORMATION * processInfo)
 		return 0;
 	}
 
+#ifndef __CYGWIN__
 	AddUserToDacl(processInfo->hProcess);
+#endif
 
 	return ResumeThread(processInfo->hThread);
 }
