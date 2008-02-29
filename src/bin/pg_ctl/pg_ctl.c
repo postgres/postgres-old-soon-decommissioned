@@ -1471,7 +1471,9 @@ CreateRestrictedProcess(char *cmd, PROCESS_INFORMATION * processInfo)
 		}
 	}
 
+#ifndef __CYGWIN__
     AddUserToDacl(processInfo->hProcess);
+#endif
     
 	CloseHandle(restrictedToken);
 
