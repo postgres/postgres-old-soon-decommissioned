@@ -5847,7 +5847,7 @@ prepared_name: name	 	{
 						int i;
 
 						for (i = 0; i< strlen($1); i++)
-							$1[i] = tolower($1[i]);
+							$1[i] = tolower((unsigned char) $1[i]);
 
 						$$ = make3_str(make_str("\""), $1, make_str("\""));
 					}

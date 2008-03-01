@@ -71,7 +71,7 @@
  */
 
 #ifdef MATCH_LOWER
-#define TCHAR(t) tolower((t))
+#define TCHAR(t) ((char) tolower((unsigned char) (t)))
 #else
 #define TCHAR(t) (t)
 #endif
