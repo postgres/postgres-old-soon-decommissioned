@@ -516,7 +516,8 @@ inv_write(LargeObjectDesc *obj_desc, const char *buf, int nbytes)
 	struct
 	{
 		bytea		hdr;
-		char		data[LOBLKSIZE];
+		char		data[LOBLKSIZE];	/* make struct big enough */
+		int32		align_it;	/* ensure struct is aligned well enough */
 	}			workbuf;
 	char	   *workb = VARDATA(&workbuf.hdr);
 	HeapTuple	newtup;
@@ -707,7 +708,8 @@ inv_truncate(LargeObjectDesc *obj_desc, int len)
 	struct
 	{
 		bytea		hdr;
-		char		data[LOBLKSIZE];
+		char		data[LOBLKSIZE];	/* make struct big enough */
+		int32		align_it;	/* ensure struct is aligned well enough */
 	}			workbuf;
 	char	   *workb = VARDATA(&workbuf.hdr);
 	HeapTuple	newtup;
