@@ -296,7 +296,7 @@ SRT    -10800    # Suriname Time
                  #     (America/Paramaribo)
 UYST    -7200 D  # Uruguay Summer Time (not in zic)
 UYT    -10800    # Uruguay Time (not in zic)
-VET    -14400    # Venezuela Time
+VET    -16200    # Venezuela Time (caution: this used to mean -14400)
                  #     (America/Caracas)
 WGST    -7200 D  # Western Greenland Summer Time
                  #     (America/Godthab)
