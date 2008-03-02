@@ -259,7 +259,7 @@ ECPGdump_a_type(FILE *o, const char *name, struct ECPGtype * type,
 
 					ECPGdump_a_simple(o, name,
 									  type->u.element->type,
-									  type->u.element->size, type->size, NULL, prefix, type->lineno);
+									  type->u.element->size, type->size, NULL, prefix, type->u.element->lineno);
 
 					if (ind_type != NULL)
 					{
