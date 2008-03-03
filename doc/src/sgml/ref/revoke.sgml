@@ -92,7 +92,10 @@ REVOKE [ ADMIN OPTION FOR ]
    <literal>PUBLIC</literal>.  Thus, for example, revoking <literal>SELECT</> privilege
    from <literal>PUBLIC</literal> does not necessarily mean that all roles
    have lost <literal>SELECT</> privilege on the object: those who have it granted
-   directly or via another role will still have it.
+   directly or via another role will still have it.  Similarly, revoking
+   <literal>SELECT</> from a user might not prevent that user from using
+   <literal>SELECT</> if <literal>PUBLIC</literal> or another membership
+   role still has <literal>SELECT</> rights.
   </para>
 
   <para>
