@@ -44,6 +44,9 @@ extern bool XactReadOnly;
 /* Asynchronous commits */
 extern bool XactSyncCommit;
 
+/* Kluge for 2PC support */
+extern bool MyXactAccessedTempRel;
+
 /*
  *	start- and end-of-transaction callbacks for dynamically loaded modules
  */
