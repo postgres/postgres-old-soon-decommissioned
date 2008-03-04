@@ -37,7 +37,6 @@
 #include "access/twophase_rmgr.h"
 #include "miscadmin.h"
 #include "pgstat.h"
-#include "storage/lmgr.h"
 #include "utils/memutils.h"
 #include "utils/ps_status.h"
 #include "utils/resowner.h"
@@ -1870,12 +1869,6 @@ AtPrepare_Locks(void)
 			if (lockOwners[i].owner == NULL)
 				elog(ERROR, "cannot PREPARE when session locks exist");
 		}
-
-		/* Can't handle it if the lock is on a temporary object */
-		if (LockTagIsTemp(&locallock->tag.lock))
-			ereport(ERROR,
-					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("cannot PREPARE a transaction that has operated on temporary tables")));
 
 		/*
 		 * Create a 2PC record.

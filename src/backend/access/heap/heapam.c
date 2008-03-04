@@ -868,6 +868,10 @@ relation_open(Oid relationId, LOCKMODE lockmode)
 	if (!RelationIsValid(r))
 		elog(ERROR, "could not open relation with OID %u", relationId);
 
+	/* Make note that we've accessed a temporary relation */
+	if (r->rd_istemp)
+		MyXactAccessedTempRel = true;
+
 	pgstat_initstats(r);
 
 	return r;
@@ -911,6 +915,10 @@ try_relation_open(Oid relationId, LOCKMODE lockmode)
 
 	if (!RelationIsValid(r))
 		elog(ERROR, "could not open relation with OID %u", relationId);
+
+	/* Make note that we've accessed a temporary relation */
+	if (r->rd_istemp)
+		MyXactAccessedTempRel = true;
 
 	pgstat_initstats(r);
 
@@ -957,6 +965,10 @@ relation_open_nowait(Oid relationId, LOCKMODE lockmode)
 
 	if (!RelationIsValid(r))
 		elog(ERROR, "could not open relation with OID %u", relationId);
+
+	/* Make note that we've accessed a temporary relation */
+	if (r->rd_istemp)
+		MyXactAccessedTempRel = true;
 
 	pgstat_initstats(r);
 
