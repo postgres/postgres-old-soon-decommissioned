@@ -66,7 +66,4 @@ extern void LockSharedObject(Oid classid, Oid objid, uint16 objsubid,
 extern void UnlockSharedObject(Oid classid, Oid objid, uint16 objsubid,
 				   LOCKMODE lockmode);
 
-/* Knowledge about which locktags describe temp objects */
-extern bool LockTagIsTemp(const LOCKTAG *tag);
-
 #endif   /* LMGR_H */

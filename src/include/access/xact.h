@@ -41,6 +41,9 @@ extern int	XactIsoLevel;
 extern bool DefaultXactReadOnly;
 extern bool XactReadOnly;
 
+/* Kluge for 2PC support */
+extern bool MyXactAccessedTempRel;
+
 /*
  *	start- and end-of-transaction callbacks for dynamically loaded modules
  */
