@@ -1781,12 +1781,12 @@ PrepareToInvalidateCacheTuple(Relation relation,
 
 	for (ccp = CacheHdr->ch_caches; ccp; ccp = ccp->cc_next)
 	{
+		if (ccp->cc_reloid != reloid)
+			continue;
+
 		/* Just in case cache hasn't finished initialization yet... */
 		if (ccp->cc_tupdesc == NULL)
 			CatalogCacheInitializeCache(ccp);
-
-		if (ccp->cc_reloid != reloid)
-			continue;
 
 		(*function) (ccp->id,
 					 CatalogCacheComputeTupleHashValue(ccp, tuple),
