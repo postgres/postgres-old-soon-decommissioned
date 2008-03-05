@@ -99,8 +99,7 @@ BSD44_derived_dlsym(void *handle, const char *name)
 void
 BSD44_derived_dlclose(void *handle)
 {
-#if !defined(HAVE_DLOPEN)
-#else
+#if defined(HAVE_DLOPEN)
 	dlclose(handle);
 #endif
 }
