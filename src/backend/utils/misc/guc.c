@@ -1841,7 +1841,7 @@ static struct config_real ConfigureNamesReal[] =
 
 	{
 		{"bgwriter_lru_multiplier", PGC_SIGHUP, RESOURCES,
-			gettext_noop("Background writer multiplier on average buffers to scan per round."),
+			gettext_noop("Multiple of the average buffer usage to free per round."),
 			NULL
 		},
 		&bgwriter_lru_multiplier,
