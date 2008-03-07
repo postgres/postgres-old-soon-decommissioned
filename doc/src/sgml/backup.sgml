@@ -1814,7 +1814,7 @@ if (!triggered)
    </para>
 
    <para>
-    If we take a backup of the standby server's files while it is following
+    If we take a backup of the standby server's data directory while it is processing
     logs shipped from the primary, we will be able to reload that data and
     restart the standby's recovery process from the last restart point.
     We no longer need to keep WAL files from before the restart point.
