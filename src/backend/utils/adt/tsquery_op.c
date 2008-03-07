@@ -141,27 +141,14 @@ tsquery_not(PG_FUNCTION_ARGS)
 static int
 CompareTSQ(TSQuery a, TSQuery b)
 {
-	if (a->size != b->size)
-	{
-		return (a->size < b->size) ? -1 : 1;
-	}
-	else if (VARSIZE(a) != VARSIZE(b))
-	{
-		return (VARSIZE(a) < VARSIZE(b)) ? -1 : 1;
-	}
-	else
-	{
-		QTNode	   *an = QT2QTN(GETQUERY(a), GETOPERAND(a));
-		QTNode	   *bn = QT2QTN(GETQUERY(b), GETOPERAND(b));
-		int			res = QTNodeCompare(an, bn);
+	QTNode	   *an = QT2QTN(GETQUERY(a), GETOPERAND(a));
+	QTNode	   *bn = QT2QTN(GETQUERY(b), GETOPERAND(b));
+	int			res = QTNodeCompare(an, bn);
 
-		QTNFree(an);
-		QTNFree(bn);
+	QTNFree(an);
+	QTNFree(bn);
 
-		return res;
-	}
-
-	return 0;
+	return res;
 }
 
 Datum
