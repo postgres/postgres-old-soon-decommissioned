@@ -258,6 +258,11 @@ extern void heap_page_prune_opt(Relation relation, Buffer buffer,
 extern int heap_page_prune(Relation relation, Buffer buffer,
 				TransactionId OldestXmin,
 				bool redirect_move, bool report_stats);
+extern void heap_page_prune_execute(Relation reln, Buffer buffer,
+						OffsetNumber *redirected, int nredirected,
+						OffsetNumber *nowdead, int ndead,
+						OffsetNumber *nowunused, int nunused,
+						bool redirect_move);
 extern void heap_get_root_tuples(Page page, OffsetNumber *root_offsets);
 
 /* in heap/syncscan.c */
