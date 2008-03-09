@@ -609,6 +609,7 @@ ltreeparentsel(PG_FUNCTION_ARGS)
 		double		mcvsum;
 		double		mcvsel;
 		double		nullfrac;
+		int			hist_size;
 
 		fmgr_info(get_opcode(operator), &contproc);
 
@@ -626,20 +627,30 @@ ltreeparentsel(PG_FUNCTION_ARGS)
 		 */
 		selec = histogram_selectivity(&vardata, &contproc,
 									  constval, varonleft,
-									  100, 1);
+									  10, 1, &hist_size);
 		if (selec < 0)
 		{
 			/* Nope, fall back on default */
 			selec = DEFAULT_PARENT_SEL;
 		}
-		else
+		else if (hist_size < 100)
 		{
-			/* Yes, but don't believe extremely small or large estimates. */
-			if (selec < 0.0001)
-				selec = 0.0001;
-			else if (selec > 0.9999)
-				selec = 0.9999;
+			/*
+			 * For histogram sizes from 10 to 100, we combine the
+			 * histogram and default selectivities, putting increasingly
+			 * more trust in the histogram for larger sizes.
+			 */
+			double	hist_weight = hist_size / 100.0;
+
+			selec = selec * hist_weight +
+				DEFAULT_PARENT_SEL * (1.0 - hist_weight);
 		}
+
+		/* In any case, don't believe extremely small or large estimates. */
+		if (selec < 0.0001)
+			selec = 0.0001;
+		else if (selec > 0.9999)
+			selec = 0.9999;
 
 		if (HeapTupleIsValid(vardata.statsTuple))
 			nullfrac = ((Form_pg_statistic) GETSTRUCT(vardata.statsTuple))->stanullfrac;

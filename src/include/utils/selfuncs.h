@@ -112,7 +112,8 @@ extern double mcv_selectivity(VariableStatData *vardata, FmgrInfo *opproc,
 				double *sumcommonp);
 extern double histogram_selectivity(VariableStatData *vardata, FmgrInfo *opproc,
 					  Datum constval, bool varonleft,
-					  int min_hist_size, int n_skip);
+					  int min_hist_size, int n_skip,
+					  int *hist_size);
 
 extern Pattern_Prefix_Status pattern_fixed_prefix(Const *patt,
 					 Pattern_Type ptype,
