@@ -246,7 +246,9 @@ recompute_limits(LimitState *node)
 		{
 			node->offset = DatumGetInt64(val);
 			if (node->offset < 0)
-				node->offset = 0;
+				ereport(ERROR,
+						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+						 errmsg("OFFSET must not be negative")));
 		}
 	}
 	else
@@ -271,7 +273,9 @@ recompute_limits(LimitState *node)
 		{
 			node->count = DatumGetInt64(val);
 			if (node->count < 0)
-				node->count = 0;
+				ereport(ERROR,
+						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+						 errmsg("LIMIT must not be negative")));
 			node->noCount = false;
 		}
 	}
