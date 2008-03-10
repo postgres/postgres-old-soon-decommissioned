@@ -299,7 +299,6 @@ typedef struct XLogCtlData
 	 */
 	char	   *pages;			/* buffers for unwritten XLOG pages */
 	XLogRecPtr *xlblocks;		/* 1st byte ptr-s + XLOG_BLCKSZ */
-	Size		XLogCacheByte;	/* # bytes in xlog buffers */
 	int			XLogCacheBlck;	/* highest allocated xlog buffer index */
 	TimeLineID	ThisTimeLineID;
 
@@ -4152,8 +4151,6 @@ XLOGShmemInit(void)
 	 * Do basic initialization of XLogCtl shared data. (StartupXLOG will fill
 	 * in additional info.)
 	 */
-	XLogCtl->XLogCacheByte = (Size) XLOG_BLCKSZ *XLOGbuffers;
-
 	XLogCtl->XLogCacheBlck = XLOGbuffers - 1;
 	XLogCtl->Insert.currpage = (XLogPageHeader) (XLogCtl->pages);
 	SpinLockInit(&XLogCtl->info_lck);
