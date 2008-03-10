@@ -2582,7 +2582,7 @@ local0.*    /var/log/postgresql
         <literal>ERROR</>, <literal>LOG</>, <literal>FATAL</>, and
         <literal>PANIC</>.  Each level includes all the levels that
         follow it.  The later the level, the fewer messages are sent
-        to the log.  The default is <literal>NOTICE</>.  Note that
+        to the log.  The default is <literal>WARNING</>.  Note that
         <literal>LOG</> has a different rank here than in
         <varname>client_min_messages</>.
         Only superusers can change this setting.

@@ -209,7 +209,7 @@ bool		SQL_inheritance = true;
 bool		Password_encryption = true;
 
 int			log_min_error_statement = ERROR;
-int			log_min_messages = NOTICE;
+int			log_min_messages = WARNING;
 int			client_min_messages = NOTICE;
 int			log_min_duration_statement = -1;
 int			log_temp_files = -1;
@@ -1935,7 +1935,7 @@ static struct config_string ConfigureNamesString[] =
 						 "includes all the levels that follow it.")
 		},
 		&log_min_messages_str,
-		"notice", assign_log_min_messages, NULL
+		"warning", assign_log_min_messages, NULL
 	},
 
 	{
