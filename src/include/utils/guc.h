@@ -97,6 +97,7 @@ typedef const char *(*GucStringAssignHook) (const char *newval, bool doit, GucSo
 typedef bool (*GucBoolAssignHook) (bool newval, bool doit, GucSource source);
 typedef bool (*GucIntAssignHook) (int newval, bool doit, GucSource source);
 typedef bool (*GucRealAssignHook) (double newval, bool doit, GucSource source);
+typedef bool (*GucEnumAssignHook) (int newval, bool doit, GucSource source);
 
 typedef const char *(*GucShowHook) (void);
 

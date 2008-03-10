@@ -42,7 +42,7 @@ typedef enum
 	LOGSTMT_ALL					/* log all statements */
 } LogStmtLevel;
 
-extern LogStmtLevel log_statement;
+extern int log_statement;
 
 extern List *pg_parse_and_rewrite(const char *query_string,
 					 Oid *paramTypes, int numParams);

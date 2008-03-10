@@ -162,7 +162,8 @@ SET ENABLE_SEQSCAN TO OFF;
     displaying and updating session run-time parameters.  It is equivalent
     to <command>SHOW</> and <command>SET</>, but can be more convenient
     to use because it can be joined with other tables, or selected from using
-    any desired selection condition.
+    any desired selection condition. It also contains more information about
+    what values are allowed for the parameters.
    </para>
   </sect1>
 

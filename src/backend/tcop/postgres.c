@@ -85,7 +85,7 @@ CommandDest whereToSendOutput = DestDebug;
 /* flag for logging end of session */
 bool		Log_disconnections = false;
 
-LogStmtLevel log_statement = LOGSTMT_NONE;
+int			log_statement = LOGSTMT_NONE;
 
 /* GUC variable for maximum stack depth (measured in kilobytes) */
 int			max_stack_depth = 100;

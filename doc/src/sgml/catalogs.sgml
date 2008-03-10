@@ -6260,8 +6260,8 @@
      <row>
       <entry><structfield>vartype</structfield></entry>
       <entry><type>text</type></entry>
-      <entry>Parameter type (<literal>bool</>, <literal>integer</>,
-       <literal>real</>, or <literal>string</>)
+      <entry>Parameter type (<literal>bool</>, <literal>enum</>,
+       <literal>integer</>, <literal>real</>, or <literal>string</>)
       </entry>
      </row>
      <row>
@@ -6279,6 +6279,12 @@
       <entry><structfield>max_val</structfield></entry>
       <entry><type>text</type></entry>
       <entry>Maximum allowed value of the parameter (NULL for non-numeric
+      values)</entry>
+     </row>
+     <row>
+      <entry><structfield>enumvals</structfield></entry>
+      <entry><type>text</type></entry>
+      <entry>Allowed values in enum parameters (NULL for non-enum
       values)</entry>
      </row>
     </tbody>

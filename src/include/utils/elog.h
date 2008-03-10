@@ -283,7 +283,7 @@ typedef enum
 	PGERROR_VERBOSE				/* all the facts, ma'am */
 } PGErrorVerbosity;
 
-extern PGErrorVerbosity Log_error_verbosity;
+extern int	Log_error_verbosity;
 extern char *Log_line_prefix;
 extern int	Log_destination;
 
