@@ -65,8 +65,8 @@ extern void FileClose(File file);
 extern int	FileRead(File file, char *buffer, int amount);
 extern int	FileWrite(File file, char *buffer, int amount);
 extern int	FileSync(File file);
-extern long FileSeek(File file, long offset, int whence);
-extern int	FileTruncate(File file, long offset);
+extern off_t FileSeek(File file, off_t offset, int whence);
+extern int	FileTruncate(File file, off_t offset);
 
 /* Operations that allow use of regular stdio --- USE WITH CAUTION */
 extern FILE *AllocateFile(const char *name, const char *mode);

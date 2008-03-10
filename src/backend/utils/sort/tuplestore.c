@@ -134,14 +134,14 @@ struct Tuplestorestate
 	bool		eof_reached;	/* read reached EOF (always valid) */
 	int			current;		/* next array index (valid if INMEM) */
 	int			readpos_file;	/* file# (valid if WRITEFILE and not eof) */
-	long		readpos_offset; /* offset (valid if WRITEFILE and not eof) */
+	off_t		readpos_offset; /* offset (valid if WRITEFILE and not eof) */
 	int			writepos_file;	/* file# (valid if READFILE) */
-	long		writepos_offset;	/* offset (valid if READFILE) */
+	off_t		writepos_offset; /* offset (valid if READFILE) */
 
 	/* markpos_xxx holds marked position for mark and restore */
 	int			markpos_current;	/* saved "current" */
 	int			markpos_file;	/* saved "readpos_file" */
-	long		markpos_offset; /* saved "readpos_offset" */
+	off_t		markpos_offset; /* saved "readpos_offset" */
 };
 
 #define COPYTUP(state,tup)	((*(state)->copytup) (state, tup))

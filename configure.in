@@ -218,6 +218,12 @@ AC_SUBST(DTRACEFLAGS)])
 AC_SUBST(enable_dtrace)
 
 #
+# Data file segmentation
+#
+PGAC_ARG_BOOL(enable, segmented-files, yes,
+              [  --disable-segmented-files disable data file segmentation (requires largefile support)])
+
+#
 # C compiler
 #
 
@@ -1409,6 +1415,13 @@ fi
 
 if test $ac_cv_func_fseeko = yes; then
 AC_SYS_LARGEFILE
+fi
+
+# Check for largefile support (must be after AC_SYS_LARGEFILE)
+AC_CHECK_SIZEOF([off_t])
+
+if test "$ac_cv_sizeof_off_t" -lt 8 -o "$enable_segmented_files" = "yes"; then 
+  AC_DEFINE([USE_SEGMENTED_FILES], 1, [Define to split data files into 1GB segments.]) 
 fi
 
 # SunOS doesn't handle negative byte comparisons properly with +/- return

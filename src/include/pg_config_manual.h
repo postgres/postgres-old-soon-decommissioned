@@ -27,8 +27,9 @@
 
 /*
  * RELSEG_SIZE is the maximum number of blocks allowed in one disk
- * file.  Thus, the maximum size of a single file is RELSEG_SIZE *
- * BLCKSZ; relations bigger than that are divided into multiple files.
+ * file when USE_SEGMENTED_FILES is defined.  Thus, the maximum size 
+ * of a single file is RELSEG_SIZE * BLCKSZ; relations bigger than that 
+ * are divided into multiple files.
  *
  * RELSEG_SIZE * BLCKSZ must be less than your OS' limit on file size.
  * This is often 2 GB or 4GB in a 32-bit operating system, unless you
@@ -39,9 +40,16 @@
  * in the direction of a small limit.  (Besides, a power-of-2 value
  * saves a few cycles in md.c.)
  *
+ * When not using segmented files, RELSEG_SIZE is set to zero so that
+ * this behavior can be distinguished in pg_control.
+ *
  * Changing RELSEG_SIZE requires an initdb.
  */
+#ifdef USE_SEGMENTED_FILES
 #define RELSEG_SIZE (0x40000000 / BLCKSZ)
+#else
+#define RELSEG_SIZE 0
+#endif
 
 /*
  * Size of a WAL file block.  This need have no particular relation to BLCKSZ.

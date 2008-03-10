@@ -1026,6 +1026,20 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
+       <term><option>--disable-segmented-files</option></term>
+       <listitem>
+        <para>
+         Store large tables as single operating-system files, rather than
+         dividing them into 1GB segments as is the default.  This option
+         is ignored unless the operating system has <quote>largefile</>
+         support (which most do, nowadays).  It can be helpful to reduce
+         the number of file descriptors consumed when working with very
+         large tables.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
        <term><option>--disable-spinlocks</option></term>
        <listitem>
         <para>
