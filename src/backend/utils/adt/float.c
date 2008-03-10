@@ -1684,8 +1684,12 @@ Datum
 setseed(PG_FUNCTION_ARGS)
 {
 	float8		seed = PG_GETARG_FLOAT8(0);
-	int			iseed = (int) (seed * MAX_RANDOM_VALUE);
+	int			iseed;
 
+	if (seed < -1 || seed > 1)
+		elog(ERROR, "setseed parameter %f out of range [-1,1]", seed);
+
+	iseed = (int) (seed * MAX_RANDOM_VALUE);
 	srandom((unsigned int) iseed);
 
 	PG_RETURN_VOID();

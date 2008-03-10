@@ -828,7 +828,7 @@
       <row>
        <entry><literal><function>setseed</function>(<type>dp</type>)</literal></entry>
        <entry><type>void</type></entry>
-       <entry>set seed for subsequent <literal>random()</literal> calls (value between 0 and 1.0)</entry>
+       <entry>set seed for subsequent <literal>random()</literal> calls (value between -1.0 and 1.0)</entry>
        <entry><literal>setseed(0.54823)</literal></entry>
        <entry></entry>
       </row>
