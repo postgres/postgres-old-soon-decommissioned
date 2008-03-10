@@ -224,7 +224,8 @@ tsvectorin(PG_FUNCTION_ARGS)
 		if (cur - tmpbuf > MAXSTRPOS)
 			ereport(ERROR,
 					(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
-				 	 errmsg("string is too long for tsvector (%d bytes, max %d bytes)", cur - tmpbuf, MAXSTRPOS)));
+				 	 errmsg("string is too long for tsvector (%ld bytes, max %ld bytes)",
+							(long) (cur - tmpbuf), (long) MAXSTRPOS)));
 
 		/*
 		 * Enlarge buffers if needed
