@@ -18,16 +18,6 @@
 #include "storage/itemptr.h"
 
 
-/*
- * exported types
- */
-typedef struct PageFreeSpaceInfo
-{
-	BlockNumber blkno;			/* which page in relation */
-	Size		avail;			/* space available on this page */
-} PageFreeSpaceInfo;
-
-
 /* Initial value for average-request moving average */
 #define INITIAL_AVERAGE ((Size) (BLCKSZ / 32))
 
@@ -144,7 +134,7 @@ extern Size GetAvgFSMRequestSize(RelFileNode *rel);
 extern void RecordRelationFreeSpace(RelFileNode *rel,
 						BlockNumber interestingPages,
 						int nPages,
-						PageFreeSpaceInfo *pageSpaces);
+						FSMPageData *pageSpaces);
 
 extern BlockNumber GetFreeIndexPage(RelFileNode *rel);
 extern void RecordIndexFreeSpace(RelFileNode *rel,

@@ -3461,7 +3461,7 @@ vac_update_fsm(Relation onerel, VacPageList fraged_pages,
 	int			nPages = fraged_pages->num_pages;
 	VacPage    *pagedesc = fraged_pages->pagedesc;
 	Size		threshold;
-	PageFreeSpaceInfo *pageSpaces;
+	FSMPageData *pageSpaces;
 	int			outPages;
 	int			i;
 
@@ -3477,8 +3477,7 @@ vac_update_fsm(Relation onerel, VacPageList fraged_pages,
 	 */
 	threshold = GetAvgFSMRequestSize(&onerel->rd_node);
 
-	pageSpaces = (PageFreeSpaceInfo *)
-		palloc(nPages * sizeof(PageFreeSpaceInfo));
+	pageSpaces = (FSMPageData *) palloc(nPages * sizeof(FSMPageData));
 	outPages = 0;
 
 	for (i = 0; i < nPages; i++)
@@ -3493,8 +3492,8 @@ vac_update_fsm(Relation onerel, VacPageList fraged_pages,
 
 		if (pagedesc[i]->free >= threshold)
 		{
-			pageSpaces[outPages].blkno = pagedesc[i]->blkno;
-			pageSpaces[outPages].avail = pagedesc[i]->free;
+			FSMPageSetPageNum(&pageSpaces[outPages], pagedesc[i]->blkno);
+			FSMPageSetSpace(&pageSpaces[outPages], pagedesc[i]->free);
 			outPages++;
 		}
 	}
