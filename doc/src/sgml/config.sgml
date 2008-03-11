@@ -3877,12 +3877,6 @@ COPY postgres_log FROM '/full/path/to/logfile.csv' WITH csv;
         logged.  A value of zero (the default) turns off the 
         limitation.
        </para>
-
-       <para>
-        Setting <varname>statement_timeout</> in
-        <filename>postgresql.conf</> is not recommended because it
-        affects all sessions, including autovacuum.
-       </para>
       </listitem>
      </varlistentry>
 
