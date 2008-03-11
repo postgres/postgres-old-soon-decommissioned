@@ -138,6 +138,7 @@ extern VariableCache ShmemVariableCache;
  */
 extern bool TransactionIdDidCommit(TransactionId transactionId);
 extern bool TransactionIdDidAbort(TransactionId transactionId);
+extern bool TransactionIdIsKnownCompleted(TransactionId transactionId);
 extern void TransactionIdCommit(TransactionId transactionId);
 extern void TransactionIdAsyncCommit(TransactionId transactionId, XLogRecPtr lsn);
 extern void TransactionIdAbort(TransactionId transactionId);
