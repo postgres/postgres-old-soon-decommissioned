@@ -811,6 +811,16 @@ init(void)
 {
 	PGconn	   *con;
 	PGresult   *res;
+	/*
+	 * Note: TPC-B requires at least 100 bytes per row, and the "filler"
+	 * fields in these table declarations were intended to comply with that.
+	 * But because they default to NULLs, they don't actually take any
+	 * space.  We could fix that by giving them non-null default values.
+	 * However, that would completely break comparability of pgbench
+	 * results with prior versions.  Since pgbench has never pretended
+	 * to be fully TPC-B compliant anyway, we stick with the historical
+	 * behavior.
+	 */
 	static char *DDLs[] = {
 		"drop table if exists branches",
 		"create table branches(bid int not null,bbalance int,filler char(88)) with (fillfactor=%d)",
