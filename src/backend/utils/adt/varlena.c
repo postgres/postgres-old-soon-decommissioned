@@ -1003,6 +1003,19 @@ varstr_cmp(char *arg1, int len1, char *arg2, int len2)
 				ereport(ERROR,
 						(errmsg("could not compare Unicode strings: %m")));
 
+			/*
+			 * In some locales wcscoll() can claim that nonidentical strings
+			 * are equal.  Believing that would be bad news for a number of
+			 * reasons, so we follow Perl's lead and sort "equal" strings
+			 * according to strcmp (on the UTF-8 representation).
+			 */
+			if (result == 0)
+			{
+				result = strncmp(arg1, arg2, Min(len1, len2));
+				if ((result == 0) && (len1 != len2))
+					result = (len1 < len2) ? -1 : 1;
+			}
+
 			if (a1p != a1buf)
 				pfree(a1p);
 			if (a2p != a2buf)
