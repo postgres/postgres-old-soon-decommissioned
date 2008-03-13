@@ -37,6 +37,10 @@ extern void PostPrepare_Inval(void);
 
 extern void CommandEndInvalidationMessages(void);
 
+extern void BeginNonTransactionalInvalidation(void);
+
+extern void EndNonTransactionalInvalidation(void);
+
 extern void CacheInvalidateHeapTuple(Relation relation, HeapTuple tuple);
 
 extern void CacheInvalidateRelcache(Relation relation);
