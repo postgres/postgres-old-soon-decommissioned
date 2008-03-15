@@ -298,7 +298,7 @@ extern void _hash_dropbuf(Relation rel, Buffer buf);
 extern void _hash_wrtbuf(Relation rel, Buffer buf);
 extern void _hash_chgbufaccess(Relation rel, Buffer buf, int from_access,
 				   int to_access);
-extern void _hash_metapinit(Relation rel);
+extern void _hash_metapinit(Relation rel, double num_tuples);
 extern void _hash_pageinit(Page page, Size size);
 extern void _hash_expandtable(Relation rel, Buffer metabuf);
 
