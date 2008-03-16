@@ -36,7 +36,7 @@
 #include "storage/ipc.h"
 #include "storage/proc.h"
 #include "storage/procarray.h"
-#include "storage/sinval.h"
+#include "storage/sinvaladt.h"
 #include "storage/smgr.h"
 #include "utils/acl.h"
 #include "utils/flatfiles.h"
@@ -411,7 +411,7 @@ InitPostgres(const char *in_dbname, Oid dboid, const char *username,
 	 */
 	MyBackendId = InvalidBackendId;
 
-	InitBackendSharedInvalidationState();
+	SharedInvalBackendInit();
 
 	if (MyBackendId > MaxBackends || MyBackendId <= 0)
 		elog(FATAL, "bad backend id: %d", MyBackendId);

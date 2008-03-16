@@ -83,10 +83,6 @@ typedef union
 } SharedInvalidationMessage;
 
 
-extern Size SInvalShmemSize(void);
-extern void CreateSharedInvalidationState(void);
-extern void InitBackendSharedInvalidationState(void);
-
 extern void SendSharedInvalidMessage(SharedInvalidationMessage *msg);
 extern void ReceiveSharedInvalidMessages(
 					  void (*invalFunction) (SharedInvalidationMessage *msg),

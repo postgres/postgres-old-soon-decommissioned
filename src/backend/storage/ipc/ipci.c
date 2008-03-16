@@ -30,7 +30,7 @@
 #include "storage/pg_shmem.h"
 #include "storage/pmsignal.h"
 #include "storage/procarray.h"
-#include "storage/sinval.h"
+#include "storage/sinvaladt.h"
 #include "storage/spin.h"
 
 
