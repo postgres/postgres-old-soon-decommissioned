@@ -4,7 +4,7 @@ $PostgreSQL$
 GUC IMPLEMENTATION NOTES
 
 The GUC (Grand Unified Configuration) module implements configuration
-variables of multiple types (currently boolean, int, float, and string).
+variables of multiple types (currently boolean, enum, int, float, and string).
 Variable settings can come from various places, with a priority ordering
 determining which setting is used.
 

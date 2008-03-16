@@ -38,15 +38,6 @@ union config_var_value
 };
 
 /*
- * Enum values are made up of an array of name-value pairs
- */
-struct config_enum_entry
-{
-	const char *name;
-	int			val;
-};
-
-/*
  * Groupings to help organize all the run-time options for display
  */
 enum config_group
