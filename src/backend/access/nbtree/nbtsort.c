@@ -158,8 +158,8 @@ _bt_spoolinit(Relation index, bool isunique, bool isdead)
 	 * work_mem.
 	 */
 	btKbytes = isdead ? work_mem : maintenance_work_mem;
-	btspool->sortstate = tuplesort_begin_index(index, isunique,
-											   btKbytes, false);
+	btspool->sortstate = tuplesort_begin_index_btree(index, isunique,
+													 btKbytes, false);
 
 	return btspool;
 }
