@@ -40,6 +40,7 @@
 #include "utils/memutils.h"
 #include "utils/ps_status.h"
 #include "utils/resowner.h"
+#include "pg_trace.h"
 
 
 /* This configuration variable is used to set the lock table size */
@@ -786,11 +787,11 @@ LockAcquire(const LOCKTAG *locktag,
 		 * Sleep till someone wakes me up.
 		 */
 
-		PG_TRACE2(lock__startwait, locktag->locktag_field2, lockmode);
+		TRACE_POSTGRESQL_LOCK_STARTWAIT(locktag->locktag_field2, lockmode);
 
 		WaitOnLock(locallock, owner);
 
-		PG_TRACE2(lock__endwait, locktag->locktag_field2, lockmode);
+		TRACE_POSTGRESQL_LOCK_ENDWAIT(locktag->locktag_field2, lockmode);
 
 		/*
 		 * NOTE: do not do any material change of state between here and
