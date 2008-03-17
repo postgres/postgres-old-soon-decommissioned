@@ -827,7 +827,6 @@ StartPrepare(GlobalTransaction gxact)
 		save_state_data(children, hdr.nsubxacts * sizeof(TransactionId));
 		/* While we have the child-xact data, stuff it in the gxact too */
 		GXactLoadSubxactData(gxact, hdr.nsubxacts, children);
-		pfree(children);
 	}
 	if (hdr.ncommitrels > 0)
 	{
