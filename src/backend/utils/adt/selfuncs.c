@@ -4531,16 +4531,16 @@ prefix_selectivity(VariableStatData *vardata,
 	 *	"x < greaterstr".
 	 *-------
 	 */
+	cmpopr = get_opfamily_member(opfamily, vartype, vartype,
+								 BTLessStrategyNumber);
+	if (cmpopr == InvalidOid)
+		elog(ERROR, "no < operator for opfamily %u", opfamily);
+	fmgr_info(get_opcode(cmpopr), &opproc);
+
 	greaterstrcon = make_greater_string(prefixcon, &opproc);
 	if (greaterstrcon)
 	{
 		Selectivity topsel;
-
-		cmpopr = get_opfamily_member(opfamily, vartype, vartype,
-									 BTLessStrategyNumber);
-		if (cmpopr == InvalidOid)
-			elog(ERROR, "no < operator for opfamily %u", opfamily);
-		fmgr_info(get_opcode(cmpopr), &opproc);
 
 		topsel = ineq_histogram_selectivity(vardata, &opproc, false,
 											greaterstrcon->constvalue,
