@@ -14,8 +14,6 @@
  */
 #include "postgres.h"
 
-#include <signal.h>
-
 #include "access/xact.h"
 #include "commands/async.h"
 #include "miscadmin.h"

@@ -64,6 +64,13 @@
 #define MAXNUMMESSAGES 4096
 #define MSGNUMWRAPAROUND (MAXNUMMESSAGES * 4096)
 
+/* Per-backend state in shared invalidation structure */
+typedef struct ProcState
+{
+	/* nextMsgNum is -1 in an inactive ProcState array entry. */
+	int			nextMsgNum;		/* next message number to read, or -1 */
+	bool		resetState;		/* true, if backend has to reset its state */
+} ProcState;
 
 /* Shared cache invalidation memory segment */
 typedef struct SISeg
