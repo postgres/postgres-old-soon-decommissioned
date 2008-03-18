@@ -330,12 +330,8 @@ SIInsertDataEntry(SharedInvalidationMessage *data)
 	 * queries, but if a backend is sitting idle then it won't be starting
 	 * transactions and so won't be reading SI entries.
 	 */
-	if (numMsgs == (MAXNUMMESSAGES * 70 / 100) &&
-		IsUnderPostmaster)
-	{
-		elog(DEBUG4, "SI table is 70%% full, signaling postmaster");
+	if (numMsgs == (MAXNUMMESSAGES * 70 / 100) && IsUnderPostmaster)
 		signal_postmaster = true;
-	}
 
 	/*
 	 * Insert new message into proper slot of circular buffer
@@ -346,7 +342,10 @@ SIInsertDataEntry(SharedInvalidationMessage *data)
 	LWLockRelease(SInvalLock);
 
 	if (signal_postmaster)
+	{
+		elog(DEBUG4, "SI table is 70%% full, signaling postmaster");
 		SendPostmasterSignal(PMSIGNAL_WAKEN_CHILDREN);
+	}
 
 	return true;
 }
