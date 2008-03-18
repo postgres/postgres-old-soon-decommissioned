@@ -26,11 +26,8 @@ ifeq ($(with_tcl), yes)
 DIRS += tcl
 endif
 
-all install installdirs uninstall distprep:
-	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit 1; done
-
-clean distclean maintainer-clean:
-	@for dir in $(DIRS); do $(MAKE) -C $$dir $@; done
+all install installdirs uninstall distprep clean distclean maintainer-clean:
+	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
 
 # We'd like check operations to run all the subtests before failing.
 check installcheck:

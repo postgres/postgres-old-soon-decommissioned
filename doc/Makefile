@@ -90,10 +90,10 @@ endif
 
 uninstall:
 ifdef found_html
-	-rm -f $(addprefix $(DESTDIR)$(htmldir)/html/, $(shell gunzip -c $(srcdir)/postgres.tar.gz | tar tf -))
+	rm -f $(addprefix $(DESTDIR)$(htmldir)/html/, $(shell gunzip -c $(srcdir)/postgres.tar.gz | tar tf -))
 endif
 ifdef found_man
-	-rm -f $(addprefix $(DESTDIR)$(mandir)/, $(shell gunzip -c $(srcdir)/man.tar.gz | tar tf - | sed -e 's,man$(sqlmansect_dummy)/,man$(sqlmansectnum)/,' -e 's/.$(sqlmansect_dummy)$$/.$(sqlmansect)/'))
+	rm -f $(addprefix $(DESTDIR)$(mandir)/, $(shell gunzip -c $(srcdir)/man.tar.gz | tar tf - | sed -e 's,man$(sqlmansect_dummy)/,man$(sqlmansectnum)/,' -e 's/.$(sqlmansect_dummy)$$/.$(sqlmansect)/'))
 endif
 
 

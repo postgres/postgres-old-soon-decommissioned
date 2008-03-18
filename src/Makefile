@@ -59,18 +59,18 @@ clean:
 	$(MAKE) -C test/thread $@
 
 distclean maintainer-clean:
-	-$(MAKE) -C port $@
-	-$(MAKE) -C timezone $@
-	-$(MAKE) -C backend $@
-	-$(MAKE) -C backend/snowball $@
-	-$(MAKE) -C include $@
-	-$(MAKE) -C interfaces $@
-	-$(MAKE) -C bin $@
-	-$(MAKE) -C pl $@
-	-$(MAKE) -C makefiles $@
-	-$(MAKE) -C test $@
-	-$(MAKE) -C tutorial NO_PGXS=1 $@
-	-$(MAKE) -C test/thread $@
+	$(MAKE) -C port $@
+	$(MAKE) -C timezone $@
+	$(MAKE) -C backend $@
+	$(MAKE) -C backend/snowball $@
+	$(MAKE) -C include $@
+	$(MAKE) -C interfaces $@
+	$(MAKE) -C bin $@
+	$(MAKE) -C pl $@
+	$(MAKE) -C makefiles $@
+	$(MAKE) -C test $@
+	$(MAKE) -C tutorial NO_PGXS=1 $@
+	$(MAKE) -C test/thread $@
 	rm -f Makefile.port Makefile.global
 
 

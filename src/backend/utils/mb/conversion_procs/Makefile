@@ -164,7 +164,8 @@ all: $(SQLSCRIPT)
 
 $(SQLSCRIPT): Makefile
 ifeq ($(enable_shared), yes)
-	@set $(CONVERSIONS) ; \
+	@set -e; \
+	set $(CONVERSIONS) ; \
 	while [ "$$#" -gt 0 ] ; \
 	do \
 		name=$$1;shift; \
@@ -182,7 +183,8 @@ else
 endif
 
 $(REGRESSION_SCRIPT): Makefile
-	@cp regress_prolog $@; \
+	@set -e; \
+	cp regress_prolog $@; \
 	set $(CONVERSIONS) ; \
 	while [ "$$#" -gt 0 ] ; \
 	do \
@@ -210,5 +212,5 @@ uninstall:
 
 clean distclean maintainer-clean:
 	rm -f $(SQLSCRIPT)
-	@for dir in $(DIRS); do $(MAKE) -C $$dir $@; done
+	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
 

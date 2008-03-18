@@ -13,7 +13,7 @@ all: $(PROGS)
 clean: 
 	rm -f $(PROGS)
 	for d in $(DIRS); do \
-		$(MAKE) -C $$d clean; \
+		$(MAKE) -C $$d clean || exit; \
 	done
 
 check-%: all

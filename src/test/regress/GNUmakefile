@@ -133,7 +133,7 @@ all-spi:
 # Tablespace setup
 .PHONY: tablespace-setup
 tablespace-setup:
-	-rm -rf ./testtablespace
+	rm -rf ./testtablespace
 	mkdir ./testtablespace
 
 ##
