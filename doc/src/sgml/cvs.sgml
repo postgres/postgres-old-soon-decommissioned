@@ -36,7 +36,7 @@
   are available to pull the <productname>CVS</productname> code tree from the
   <productname>PostgreSQL</productname> server to your local machine. 
   Our CVS Wiki, <ulink
-  url="http://developer.postgresql.org/index.php/Working_with_CVS"></ulink>,
+  url="http://wiki.postgresql.org/index.php/Working_with_CVS"></ulink>,
   has additional details on working with CVS.
  </para>
 
