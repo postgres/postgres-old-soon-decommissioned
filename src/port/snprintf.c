@@ -565,7 +565,10 @@ nextch2:
 					{
 						precision = starval;
 						if (precision < 0)
+						{
 							precision = 0;
+							pointflag = 0;
+						}
 					}
 					else
 					{
@@ -590,7 +593,10 @@ nextch2:
 					{
 						precision = starval;
 						if (precision < 0)
+						{
 							precision = 0;
+							pointflag = 0;
+						}
 					}
 					else
 					{
