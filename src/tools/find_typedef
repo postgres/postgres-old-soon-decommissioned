@@ -36,7 +36,7 @@ then	echo "Usage:  $0 postgres_binary_directory [...]" 1>&2
 fi
 
 for DIR
-do
+do	# if objdump -W is recognized, only one line of error should appear
 	if [ `objdump -W 2>&1 | wc -l` -eq 1 ]
 	then	# Linux
 		# unfortunately the Linux version doesn't show unreferenced typedefs
