@@ -79,6 +79,8 @@ extern Node *eval_const_expressions(Node *node);
 
 extern Node *estimate_expression_value(PlannerInfo *root, Node *node);
 
+extern Query *inline_set_returning_function(PlannerInfo *root, Node *node);
+
 extern bool expression_tree_walker(Node *node, bool (*walker) (),
 											   void *context);
 extern Node *expression_tree_mutator(Node *node, Node *(*mutator) (),
