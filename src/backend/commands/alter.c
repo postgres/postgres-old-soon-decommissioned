@@ -117,7 +117,7 @@ ExecRenameStmt(RenameStmt *stmt)
 								aclcheck_error(aclresult, ACL_KIND_NAMESPACE,
 											get_namespace_name(namespaceId));
 
-							renamerel(relid, stmt->newname, stmt->renameType);
+							RenameRelation(relid, stmt->newname, stmt->renameType);
 							break;
 						}
 					case OBJECT_COLUMN:
@@ -152,6 +152,10 @@ ExecRenameStmt(RenameStmt *stmt)
 
 		case OBJECT_TSCONFIGURATION:
 			RenameTSConfiguration(stmt->object, stmt->newname);
+			break;
+
+		case OBJECT_TYPE:
+			RenameType(stmt->object, stmt->newname);
 			break;
 
 		default:

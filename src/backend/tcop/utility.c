@@ -1613,6 +1613,9 @@ CreateCommandTag(Node *parsetree)
 				case OBJECT_TSCONFIGURATION:
 					tag = "ALTER TEXT SEARCH CONFIGURATION";
 					break;
+				case OBJECT_TYPE:
+					tag = "ALTER TYPE";
+					break;
 				default:
 					tag = "???";
 					break;
