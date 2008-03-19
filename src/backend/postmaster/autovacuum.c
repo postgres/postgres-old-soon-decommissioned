@@ -1850,9 +1850,6 @@ do_autovacuum(void)
 	/* Start a transaction so our commands have one to play into. */
 	StartTransactionCommand();
 
-	/* functions in indexes may want a snapshot set */
-	ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
-
 	/*
 	 * Clean up any dead statistics collector entries for this DB. We always
 	 * want to do this exactly once per DB-processing cycle, even if we find
