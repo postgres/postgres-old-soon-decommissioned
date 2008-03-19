@@ -140,3 +140,4 @@ lo_truncate               137
 PQconnectionUsedPassword  138
 pg_valid_server_encoding_id 139
 PQconnectionNeedsPassword 140
+lo_import_with_oid		  141

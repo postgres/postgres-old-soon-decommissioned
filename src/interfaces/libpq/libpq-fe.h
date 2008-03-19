@@ -495,6 +495,7 @@ extern int	lo_tell(PGconn *conn, int fd);
 extern int	lo_truncate(PGconn *conn, int fd, size_t len);
 extern int	lo_unlink(PGconn *conn, Oid lobjId);
 extern Oid	lo_import(PGconn *conn, const char *filename);
+extern Oid	lo_import_with_oid(PGconn *conn, const char *filename, Oid lobjId);
 extern int	lo_export(PGconn *conn, Oid lobjId, const char *filename);
 
 /* === in fe-misc.c === */
