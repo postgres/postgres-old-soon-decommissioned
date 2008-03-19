@@ -174,6 +174,23 @@ pgbench <optional> <replaceable>options</> </optional> <replaceable>dbname</>
       </entry>
      </row>
      <row>
+      <entry><literal>-M</literal> <replaceable>querymode</></entry>
+      <entry>
+       Choose the query mode from the follows. default is simple.
+         <itemizedlist>
+          <listitem>
+           <para>simple: using simple query protocol.</para>
+          </listitem>
+          <listitem>
+           <para>extended: using extended protocol.</para>
+          </listitem>
+          <listitem>
+           <para>prepared: using extended protocol with prepared statements.</para>
+          </listitem>
+         </itemizedlist>
+      </entry>
+     </row>
+     <row>
       <entry><literal>-N</literal></entry>
       <entry>
        Do not update <structname>tellers</> and <structname>branches</>.
