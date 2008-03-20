@@ -1020,7 +1020,7 @@ dumpCreateDB(PGconn *conn)
 			 * would be to use 'SET default_tablespace' like we do in pg_dump
 			 * for setting non-default database locations.
 			 */
-			if (strcmp(dbtablespace, "pg_default") != 0)
+			if (strcmp(dbtablespace, "pg_default") != 0 && !no_tablespaces)
 				appendPQExpBuffer(buf, " TABLESPACE = %s",
 								  fmtId(dbtablespace));
 
