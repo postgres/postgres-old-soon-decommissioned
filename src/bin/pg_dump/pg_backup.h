@@ -83,6 +83,7 @@ typedef struct _restoreOptions
 {
 	int			create;			/* Issue commands to create the database */
 	int			noOwner;		/* Don't try to match original object owner */
+	int			noTablespace;   /* Don't issue tablespace-related commands */
 	int			disable_triggers;		/* disable triggers during data-only
 										 * restore */
 	int			use_setsessauth;/* Use SET SESSION AUTHORIZATION commands

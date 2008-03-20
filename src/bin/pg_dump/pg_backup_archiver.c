@@ -2378,6 +2378,10 @@ _selectTablespace(ArchiveHandle *AH, const char *tablespace)
 	const char *want,
 			   *have;
 
+	/* do nothing in --no-tablespaces mode */
+	if (AH->ropt->noTablespace)
+		return;
+
 	have = AH->currTablespace;
 	want = tablespace;
 
@@ -2578,7 +2582,7 @@ _printTocEntry(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt, bool isDat
 				 pfx, te->tag, te->desc,
 				 te->namespace ? te->namespace : "-",
 				 ropt->noOwner ? "-" : te->owner);
-		if (te->tablespace)
+		if (te->tablespace && !ropt->noTablespace)
 			ahprintf(AH, "; Tablespace: %s", te->tablespace);
 		ahprintf(AH, "\n");
 

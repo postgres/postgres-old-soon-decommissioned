@@ -274,6 +274,17 @@
      </varlistentry>
 
      <varlistentry>
+      <term><option>--no-tablespaces</option></term>
+      <listitem>
+       <para>
+        Do not output commands to select tablespaces.
+        With this option, all objects will be created in whichever
+        tablespace is the default during restore.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term><option>-P <replaceable class="parameter">function-name(argtype [, ...])</replaceable></option></term>
       <term><option>--function=<replaceable class="parameter">function-name(argtype [, ...])</replaceable></option></term>
       <listitem>
