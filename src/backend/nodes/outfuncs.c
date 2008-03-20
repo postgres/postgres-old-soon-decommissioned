@@ -1972,6 +1972,14 @@ _outA_Indirection(StringInfo str, A_Indirection *node)
 }
 
 static void
+_outA_ArrayExpr(StringInfo str, A_ArrayExpr *node)
+{
+	WRITE_NODE_TYPE("A_ARRAYEXPR");
+
+	WRITE_NODE_FIELD(elements);
+}
+
+static void
 _outResTarget(StringInfo str, ResTarget *node)
 {
 	WRITE_NODE_TYPE("RESTARGET");
@@ -2416,6 +2424,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_A_Indirection:
 				_outA_Indirection(str, obj);
+				break;
+			case T_A_ArrayExpr:
+				_outA_ArrayExpr(str, obj);
 				break;
 			case T_ResTarget:
 				_outResTarget(str, obj);
