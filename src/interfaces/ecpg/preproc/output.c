@@ -193,7 +193,18 @@ output_escaped_str(char *str, bool quoted)
 		else if (str[i] == '\n')
 			fputs("\\\n", yyout);
 		else if (str[i] == '\\')
-			fputs("\\\\", yyout);
+		{
+			int j = i;
+			
+			/* check whether this is a continuation line 
+			 * if it is, do not output anything because newlines are escaped anyway */
+
+			/* accept blanks after the '\' as some other compilers do too */
+			do { j++; } while (str[j] == ' ' || str[j] == '\t');
+
+			if ((str[j] != '\n') && (str[j] != '\r' || str[j + 1] != '\n')) /* not followed by a newline */
+				fputs("\\\\", yyout);
+		}
 		else if (str[i] == '\r' && str[i + 1] == '\n')
 		{
 			fputs("\\\r\n", yyout);
