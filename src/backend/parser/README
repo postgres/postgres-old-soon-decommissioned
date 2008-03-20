@@ -1,3 +1,8 @@
+$PostgreSQL$
+
+Parser
+------
+
 This directory does more than tokenize and parse SQL queries.  It also
 creates Query structures for the various complex queries that are passed
 to the optimizer and then executor.

@@ -1,8 +1,9 @@
 $PostgreSQL$
-Mon Jul 18 11:09:22 PDT 1988  W.KLAS
 
-Cache invalidation synchronization routines:
+Cache Invalidation Synchronization Routines
 ===========================================
+
+Mon Jul 18 11:09:22 PDT 1988  W.KLAS
 
 The cache synchronization is done using a message queue. Every
 backend can register a message which then has to be read by
