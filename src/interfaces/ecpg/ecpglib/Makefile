@@ -15,7 +15,7 @@ include $(top_builddir)/src/Makefile.global
 
 NAME= ecpg
 SO_MAJOR_VERSION= 6
-SO_MINOR_VERSION= 1
+SO_MINOR_VERSION= 2
 DLTYPE= library
 
 override CPPFLAGS := -I../include -I$(top_srcdir)/src/interfaces/ecpg/include \

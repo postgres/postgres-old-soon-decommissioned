@@ -565,3 +565,13 @@ ECPGdisconnect(int lineno, const char *connection_name)
 
 	return true;
 }
+
+PGconn* ECPGget_PGconn(const char *connection_name)
+{
+	struct connection * con;
+
+	con=ecpg_get_connection(connection_name);
+	if (con==NULL) return NULL;    
+
+	return con->connection;
+}
