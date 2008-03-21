@@ -831,12 +831,7 @@ interval_reltime(PG_FUNCTION_ARGS)
 	int			year,
 				month,
 				day;
-
-#ifdef HAVE_INT64_TIMESTAMP
-	int64		span;
-#else
-	double		span;
-#endif
+	TimeOffset	span;
 
 	year = interval->month / MONTHS_PER_YEAR;
 	month = interval->month % MONTHS_PER_YEAR;
