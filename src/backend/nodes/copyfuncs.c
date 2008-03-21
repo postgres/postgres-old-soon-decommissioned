@@ -1714,7 +1714,6 @@ _copyTypeName(TypeName *from)
 
 	COPY_NODE_FIELD(names);
 	COPY_SCALAR_FIELD(typeid);
-	COPY_SCALAR_FIELD(timezone);
 	COPY_SCALAR_FIELD(setof);
 	COPY_SCALAR_FIELD(pct_type);
 	COPY_NODE_FIELD(typmods);

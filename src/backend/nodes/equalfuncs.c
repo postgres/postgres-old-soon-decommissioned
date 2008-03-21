@@ -1753,7 +1753,6 @@ _equalTypeName(TypeName *a, TypeName *b)
 {
 	COMPARE_NODE_FIELD(names);
 	COMPARE_SCALAR_FIELD(typeid);
-	COMPARE_SCALAR_FIELD(timezone);
 	COMPARE_SCALAR_FIELD(setof);
 	COMPARE_SCALAR_FIELD(pct_type);
 	COMPARE_NODE_FIELD(typmods);

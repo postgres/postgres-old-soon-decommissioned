@@ -165,7 +165,6 @@ typedef struct TypeName
 	NodeTag		type;
 	List	   *names;			/* qualified name (list of Value strings) */
 	Oid			typeid;			/* type identified by OID */
-	bool		timezone;		/* timezone specified? */
 	bool		setof;			/* is a set? */
 	bool		pct_type;		/* %TYPE specified? */
 	List	   *typmods;		/* type modifier expression(s) */
