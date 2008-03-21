@@ -1,7 +1,7 @@
 $PostgreSQL$
 
 The Transaction System
-----------------------
+======================
 
 PostgreSQL's transaction system is a three-layer system.  The bottom layer
 implements low-level transactions and subtransactions, on top of which rests

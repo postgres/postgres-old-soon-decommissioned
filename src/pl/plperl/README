@@ -1,3 +1,5 @@
+$PostgreSQL$
+
 PL/Perl allows you to write PostgreSQL functions and procedures in
 Perl.  To include PL/Perl in the build use './configure --with-perl'.
 To build from this directory use 'gmake all; gmake install'.  libperl

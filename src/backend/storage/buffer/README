@@ -1,7 +1,7 @@
 $PostgreSQL$
 
 Notes About Shared Buffer Access Rules
---------------------------------------
+======================================
 
 There are two separate access control mechanisms for shared disk buffers:
 reference counts (a/k/a pin counts) and buffer content locks.  (Actually,

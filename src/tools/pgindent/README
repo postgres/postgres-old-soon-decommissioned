@@ -1,3 +1,8 @@
+$PostgreSQL$
+
+pgindent
+========
+
 This can format all PostgreSQL *.c and *.h files, but excludes *.y, and *.l
 files.
 

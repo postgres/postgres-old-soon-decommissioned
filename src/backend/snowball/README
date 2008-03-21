@@ -1,7 +1,7 @@
 $PostgreSQL$
 
 Snowball-Based Stemming
------------------------
+=======================
 
 This module uses the word stemming code developed by the Snowball project,
 http://snowball.tartarus.org/

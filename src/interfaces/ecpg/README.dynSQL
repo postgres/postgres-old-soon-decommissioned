@@ -1,3 +1,5 @@
+$PostgreSQL$
+
 descriptor statements have the following shortcomings
 
 - input descriptors (USING DESCRIPTOR <name>) are not supported

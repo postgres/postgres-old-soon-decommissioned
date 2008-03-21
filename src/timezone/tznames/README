@@ -1,3 +1,8 @@
+$PostgreSQL$
+
+tznames
+=======
+
 This directory contains files with timezone sets for PostgreSQL.  The problem
 is that time zone abbreviations are not unique throughout the world and you
 might find out that a time zone abbreviation in the `Default' set collides

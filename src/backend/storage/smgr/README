@@ -1,7 +1,7 @@
-# $PostgreSQL$
+$PostgreSQL$
 
 Storage Manager
----------------
+===============
 
 In the original Berkeley Postgres system, there were several storage managers,
 of which only the "magnetic disk" manager remains.  (At Berkeley there were

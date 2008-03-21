@@ -1,7 +1,7 @@
 $PostgreSQL$
 
 The Postgres Executor
----------------------
+=====================
 
 The executor processes a tree of "plan nodes".  The plan tree is essentially
 a demand-pull pipeline of tuple processing operations.  Each node, when

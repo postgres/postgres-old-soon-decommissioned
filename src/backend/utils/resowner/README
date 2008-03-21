@@ -1,7 +1,7 @@
 $PostgreSQL$
 
 Notes About Resource Owners
----------------------------
+===========================
 
 ResourceOwner objects are a concept invented to simplify management of
 query-related resources, such as buffer pins and table locks.  These

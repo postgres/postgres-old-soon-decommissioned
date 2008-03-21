@@ -1,6 +1,7 @@
 $PostgreSQL$
 
-   			      findoidjoins
+findoidjoins
+============
 
 This program scans a database and prints oid fields (also reg* fields)
 and the tables they join to.  We don't really recommend running it on

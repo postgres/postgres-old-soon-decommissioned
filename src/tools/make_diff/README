@@ -1,6 +1,7 @@
 $PostgreSQL$
 
-Bruce Momjian <pgman@candle.pha.pa.us>
+scripts
+=======
 
 Here are some of the scripts I use to make development easier.
 
@@ -34,4 +35,6 @@ it processes appear on my screen.  It creates a nice patch for me of all
 the files I used with cporig.
 
 Finally, I remove my old copies with 'rmorig'.
+
+Bruce Momjian
 

@@ -1,3 +1,5 @@
+$PostgreSQL$
+
 Programs in this directory test all sorts of connections.
 
 All other programs just use one standard connection method.
