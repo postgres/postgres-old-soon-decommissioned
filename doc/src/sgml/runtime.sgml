@@ -183,7 +183,8 @@ postgres$ <userinput>initdb -D /usr/local/pgsql/data</userinput>
     Specifically, delayed (asynchronous) writes to the <acronym>NFS</>
     server can cause reliability problems;   if possible, mount
     <acronym>NFS</> file systems synchronously (without caching) to avoid
-    this.  (Storage Area Networks (<acronym>SAN</>) use a low-level
+    this.  Also, soft-mounting <acronym>NFS</> is not recommended.
+    (Storage Area Networks (<acronym>SAN</>) use a low-level
     communication protocol rather than <acronym>NFS</>.)
    </para>
 
