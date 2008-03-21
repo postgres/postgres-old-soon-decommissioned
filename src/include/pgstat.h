@@ -507,6 +507,7 @@ extern void pgstat_bestart(void);
 extern void pgstat_report_activity(const char *what);
 extern void pgstat_report_xact_timestamp(TimestampTz tstamp);
 extern void pgstat_report_waiting(bool waiting);
+extern const char *pgstat_get_backend_current_activity(int pid);
 
 extern void pgstat_initstats(Relation rel);
 

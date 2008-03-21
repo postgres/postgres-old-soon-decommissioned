@@ -2036,6 +2036,80 @@ pgstat_read_current_status(void)
 }
 
 
+/* ----------
+ * pgstat_get_backend_current_activity() -
+ *
+ *	Return a string representing the current activity of the backend with
+ *	the specified PID.  This looks directly at the BackendStatusArray,
+ *	and so will provide current information regardless of the age of our
+ *	transaction's snapshot of the status array.
+ *
+ *	It is the caller's responsibility to invoke this only for backends whose
+ *	state is expected to remain stable while the result is in use.  The
+ *	only current use is in deadlock reporting, where we can expect that
+ *	the target backend is blocked on a lock.  (There are corner cases
+ *	where the target's wait could get aborted while we are looking at it,
+ *	but the very worst consequence is to return a pointer to a string
+ *	that's been changed, so we won't worry too much.)
+ *
+ *	Note: return strings for special cases match pg_stat_get_backend_activity.
+ * ----------
+ */
+const char *
+pgstat_get_backend_current_activity(int pid)
+{
+	PgBackendStatus *beentry;
+	int			i;
+
+	beentry = BackendStatusArray;
+	for (i = 1; i <= MaxBackends; i++)
+	{
+		/*
+		 * Although we expect the target backend's entry to be stable, that
+		 * doesn't imply that anyone else's is.  To avoid identifying the
+		 * wrong backend, while we check for a match to the desired PID we
+		 * must follow the protocol of retrying if st_changecount changes
+		 * while we examine the entry, or if it's odd.  (This might be
+		 * unnecessary, since fetching or storing an int is almost certainly
+		 * atomic, but let's play it safe.)  We use a volatile pointer here
+		 * to ensure the compiler doesn't try to get cute.
+		 */
+		volatile PgBackendStatus *vbeentry = beentry;
+		bool	found;
+
+		for (;;)
+		{
+			int			save_changecount = vbeentry->st_changecount;
+
+			found = (vbeentry->st_procpid == pid);
+
+			if (save_changecount == vbeentry->st_changecount &&
+				(save_changecount & 1) == 0)
+				break;
+
+			/* Make sure we can break out of loop if stuck... */
+			CHECK_FOR_INTERRUPTS();
+		}
+
+		if (found)
+		{
+			/* Now it is safe to use the non-volatile pointer */
+			if (!superuser() && beentry->st_userid != GetUserId())
+				return "<insufficient privilege>";
+			else if (*(beentry->st_activity) == '\0')
+				return "<command string not enabled>";
+			else
+				return beentry->st_activity;
+		}
+
+		beentry++;
+	}
+
+	/* If we get here, caller is in error ... */
+	return "<backend information not available>";
+}
+
+
 /* ------------------------------------------------------------
  * Local support functions follow
  * ------------------------------------------------------------
