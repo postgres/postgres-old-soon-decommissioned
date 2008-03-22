@@ -1027,6 +1027,8 @@ DESCR("storage manager");
 
 DATA(insert OID = 764 (  lo_import		   PGNSP PGUID 12 1 0 f f t f v 1 26 "25" _null_ _null_ _null_	lo_import - _null_ _null_ ));
 DESCR("large object import");
+DATA(insert OID = 767 (  lo_import		   PGNSP PGUID 12 1 0 f f t f v 2 26 "25 26" _null_ _null_ _null_	lo_import_with_oid - _null_ _null_ ));
+DESCR("large object import");
 DATA(insert OID = 765 (  lo_export		   PGNSP PGUID 12 1 0 f f t f v 2 23 "26 25" _null_ _null_ _null_ lo_export - _null_ _null_ ));
 DESCR("large object export");
 

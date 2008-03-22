@@ -20,6 +20,7 @@
  * LO functions available via pg_proc entries
  */
 extern Datum lo_import(PG_FUNCTION_ARGS);
+extern Datum lo_import_with_oid(PG_FUNCTION_ARGS);
 extern Datum lo_export(PG_FUNCTION_ARGS);
 
 extern Datum lo_creat(PG_FUNCTION_ARGS);

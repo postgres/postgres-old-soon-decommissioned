@@ -79,6 +79,7 @@ static MemoryContext fscxt = NULL;
 
 static int	newLOfd(LargeObjectDesc *lobjCookie);
 static void deleteLOfd(int fd);
+static Oid lo_import_internal(text *filename, Oid lobjOid);
 
 
 /*****************************************************************************
@@ -320,14 +321,34 @@ Datum
 lo_import(PG_FUNCTION_ARGS)
 {
 	text	   *filename = PG_GETARG_TEXT_P(0);
+
+	PG_RETURN_OID(lo_import_internal(filename, InvalidOid));
+}
+
+/*
+ * lo_import_with_oid -
+ *	  imports a file as an (inversion) large object specifying oid.
+ */
+Datum
+lo_import_with_oid(PG_FUNCTION_ARGS)
+{
+	text	   *filename = PG_GETARG_TEXT_P(0);
+	Oid		   oid = PG_GETARG_OID(1);
+
+	PG_RETURN_OID(lo_import_internal(filename, oid));
+}
+
+static Oid
+lo_import_internal(text *filename, Oid lobjOid)
+{
 	File		fd;
 	int			nbytes,
 				tmp;
 	char		buf[BUFSIZE];
 	char		fnamebuf[MAXPGPATH];
 	LargeObjectDesc *lobj;
-	Oid			lobjOid;
-
+	Oid	oid;
+	
 #ifndef ALLOW_DANGEROUS_LO_FUNCTIONS
 	if (!superuser())
 		ereport(ERROR,
@@ -356,12 +377,12 @@ lo_import(PG_FUNCTION_ARGS)
 	/*
 	 * create an inversion object
 	 */
-	lobjOid = inv_create(InvalidOid);
+	oid = inv_create(lobjOid);
 
 	/*
 	 * read in from the filesystem and write to the inversion object
 	 */
-	lobj = inv_open(lobjOid, INV_WRITE, fscxt);
+	lobj = inv_open(oid, INV_WRITE, fscxt);
 
 	while ((nbytes = FileRead(fd, buf, BUFSIZE)) > 0)
 	{
@@ -378,7 +399,7 @@ lo_import(PG_FUNCTION_ARGS)
 	inv_close(lobj);
 	FileClose(fd);
 
-	PG_RETURN_OID(lobjOid);
+	return oid;
 }
 
 /*
