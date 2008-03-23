@@ -124,18 +124,17 @@ ExecMaterial(MaterialState *node)
 		}
 
 		/*
-		 * Append returned tuple to tuplestore.  NOTE: because the tuplestore
-		 * is certainly in EOF state, its read position will move forward over
-		 * the added tuple.  This is what we want.
+		 * Append a copy of the returned tuple to tuplestore.  NOTE: because
+		 * the tuplestore is certainly in EOF state, its read position will
+		 * move forward over the added tuple.  This is what we want.
 		 */
 		if (tuplestorestate)
 			tuplestore_puttupleslot(tuplestorestate, outerslot);
 
 		/*
-		 * And return a copy of the tuple.	(XXX couldn't we just return the
-		 * outerslot?)
+		 * We can just return the subplan's returned tuple, without copying.
 		 */
-		return ExecCopySlot(slot, outerslot);
+		return outerslot;
 	}
 
 	/*
