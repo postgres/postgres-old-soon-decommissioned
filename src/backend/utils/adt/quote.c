@@ -96,3 +96,19 @@ quote_literal(PG_FUNCTION_ARGS)
 
 	PG_RETURN_TEXT_P(result);
 }
+
+/*
+ * quote_nullable -
+ *    Returns a properly quoted literal, with null values returned
+ *    as the text string 'NULL'.
+ */
+Datum
+quote_nullable(PG_FUNCTION_ARGS)
+{
+	if (PG_ARGISNULL(0))
+		PG_RETURN_DATUM(DirectFunctionCall1(textin,
+											CStringGetDatum("NULL")));
+	else
+		PG_RETURN_DATUM(DirectFunctionCall1(quote_literal,
+											PG_GETARG_DATUM(0)));
+}

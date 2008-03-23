@@ -914,6 +914,7 @@ extern int32 type_maximum_size(Oid type_oid, int32 typemod);
 /* quote.c */
 extern Datum quote_ident(PG_FUNCTION_ARGS);
 extern Datum quote_literal(PG_FUNCTION_ARGS);
+extern Datum quote_nullable(PG_FUNCTION_ARGS);
 
 /* guc.c */
 extern Datum show_config_by_name(PG_FUNCTION_ARGS);
