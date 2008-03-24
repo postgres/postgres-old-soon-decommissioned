@@ -670,7 +670,7 @@ checkSharedDependencies(Oid classId, Oid objectId)
 		ereport(LOG,
 				(errmsg("there are objects dependent on %s",
 						getObjectDescription(&obj)),
-				 errdetail(alldescs.data)));
+				 errdetail("%s", alldescs.data)));
 	}
 
 	pfree(alldescs.data);
