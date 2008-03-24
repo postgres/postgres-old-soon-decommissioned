@@ -186,6 +186,13 @@ errdetail(const char *fmt,...)
 }
 
 int
+errdetail_log(const char *fmt,...)
+{
+	fprintf(stderr, "DETAIL: %s\n", fmt);
+	return 0;					/* return value does not matter */
+}
+
+int
 errhint(const char *fmt,...)
 {
 	fprintf(stderr, "HINT: %s\n", fmt);

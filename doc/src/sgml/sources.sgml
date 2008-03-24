@@ -160,6 +160,17 @@ ereport(ERROR,
    </listitem>
    <listitem>
     <para>
+     <function>errdetail_log(const char *msg, ...)</function> is the same as
+     <function>errdetail</> except that this string goes only to the server
+     log, never to the client.  If both <function>errdetail</> and
+     <function>errdetail_log</> are used then one string goes to the client
+     and the other to the log.  This is useful for error details that are
+     too security-sensitive or too bulky to include in the report
+     sent to the client.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
      <function>errhint(const char *msg, ...)</function> supplies an optional
      <quote>hint</> message; this is to be used when offering suggestions
      about how to fix the problem, as opposed to factual details about

@@ -126,6 +126,12 @@ errdetail(const char *fmt,...)
 __attribute__((format(printf, 1, 2)));
 
 extern int
+errdetail_log(const char *fmt,...)
+/* This extension allows gcc to check the format string for consistency with
+   the supplied arguments. */
+__attribute__((format(printf, 1, 2)));
+
+extern int
 errhint(const char *fmt,...)
 /* This extension allows gcc to check the format string for consistency with
    the supplied arguments. */
@@ -258,6 +264,7 @@ typedef struct ErrorData
 	int			sqlerrcode;		/* encoded ERRSTATE */
 	char	   *message;		/* primary error message */
 	char	   *detail;			/* detail error message */
+	char	   *detail_log;		/* detail error message for server log only */
 	char	   *hint;			/* hint message */
 	char	   *context;		/* context message */
 	int			cursorpos;		/* cursor index into query string */
