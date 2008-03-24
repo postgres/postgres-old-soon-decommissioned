@@ -879,15 +879,16 @@ PrintLockQueue(LOCK *lock, const char *info)
 void
 DeadLockReport(void)
 {
-	StringInfoData detailbuf;
-	StringInfoData contextbuf;
+	StringInfoData clientbuf;	/* errdetail for client */
+	StringInfoData logbuf;		/* errdetail for server log */
 	StringInfoData locktagbuf;
 	int			i;
 
-	initStringInfo(&detailbuf);
-	initStringInfo(&contextbuf);
+	initStringInfo(&clientbuf);
+	initStringInfo(&logbuf);
 	initStringInfo(&locktagbuf);
 
+	/* Generate the "waits for" lines sent to the client */
 	for (i = 0; i < nDeadlockDetails; i++)
 	{
 		DEADLOCK_INFO *info = &deadlockDetails[i];
@@ -905,30 +906,39 @@ DeadLockReport(void)
 		DescribeLockTag(&locktagbuf, &info->locktag);
 
 		if (i > 0)
-			appendStringInfoChar(&detailbuf, '\n');
+			appendStringInfoChar(&clientbuf, '\n');
 
-		appendStringInfo(&detailbuf,
+		appendStringInfo(&clientbuf,
 				  _("Process %d waits for %s on %s; blocked by process %d."),
 						 info->pid,
 						 GetLockmodeName(info->locktag.locktag_lockmethodid,
 										 info->lockmode),
 						 locktagbuf.data,
 						 nextpid);
+	}
 
-		if (i > 0)
-			appendStringInfoChar(&contextbuf, '\n');
+	/* Duplicate all the above for the server ... */
+	appendStringInfoString(&logbuf, clientbuf.data);
 
-		appendStringInfo(&contextbuf,
+	/* ... and add info about query strings */
+	for (i = 0; i < nDeadlockDetails; i++)
+	{
+		DEADLOCK_INFO *info = &deadlockDetails[i];
+
+		appendStringInfoChar(&logbuf, '\n');
+
+		appendStringInfo(&logbuf,
 						 _("Process %d: %s"),
 						 info->pid,
-						 pgstat_get_backend_current_activity(info->pid));
+						 pgstat_get_backend_current_activity(info->pid, false));
 	}
 
 	ereport(ERROR,
 			(errcode(ERRCODE_T_R_DEADLOCK_DETECTED),
 			 errmsg("deadlock detected"),
-			 errdetail("%s", detailbuf.data),
-			 errcontext("%s", contextbuf.data)));
+			 errdetail("%s", clientbuf.data),
+			 errdetail_log("%s", logbuf.data),
+			 errhint("See server log for query details.")));
 }
 
 /*
