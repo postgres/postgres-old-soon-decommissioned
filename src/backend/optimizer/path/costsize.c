@@ -1385,6 +1385,12 @@ cost_mergejoin(MergePath *path, PlannerInfo *root)
 	Selectivity joininfactor;
 	Path		sort_path;		/* dummy for result of cost_sort */
 
+	/* Protect some assumptions below that rowcounts aren't zero */
+	if (outer_path_rows <= 0)
+		outer_path_rows = 1;
+	if (inner_path_rows <= 0)
+		inner_path_rows = 1;
+
 	if (!enable_mergejoin)
 		startup_cost += disable_cost;
 

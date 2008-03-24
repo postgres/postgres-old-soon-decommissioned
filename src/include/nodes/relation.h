@@ -693,12 +693,17 @@ typedef struct TidPath
  *
  * Note: it is possible for "subpaths" to contain only one, or even no,
  * elements.  These cases are optimized during create_append_plan.
+ * In particular, an AppendPath with no subpaths is a "dummy" path that
+ * is created to represent the case that a relation is provably empty.
  */
 typedef struct AppendPath
 {
 	Path		path;
 	List	   *subpaths;		/* list of component Paths */
 } AppendPath;
+
+#define IS_DUMMY_PATH(p) \
+	(IsA((p), AppendPath) && ((AppendPath *) (p))->subpaths == NIL)
 
 /*
  * ResultPath represents use of a Result plan node to compute a variable-free
