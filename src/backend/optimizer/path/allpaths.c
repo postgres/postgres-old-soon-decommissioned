@@ -428,7 +428,7 @@ set_append_rel_pathlist(PlannerInfo *root, RelOptInfo *rel,
  *	  Build a dummy path for a relation that's been excluded by constraints
  *
  * Rather than inventing a special "dummy" path type, we represent this as an
- * AppendPath with no members.
+ * AppendPath with no members (see also IS_DUMMY_PATH macro).
  */
 static void
 set_dummy_rel_pathlist(RelOptInfo *rel)
