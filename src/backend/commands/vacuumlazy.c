@@ -212,10 +212,10 @@ lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt,
 				(errmsg("relation \"%s.%s\" contains more than \"max_fsm_pages\" pages with useful free space",
 						get_namespace_name(RelationGetNamespace(onerel)),
 						RelationGetRelationName(onerel)),
-		errhint((vacrelstats->tot_free_pages > vacrelstats->rel_pages * 0.20 ?
-		/* Only suggest VACUUM FULL if 20% free */
-				 "Consider using VACUUM FULL on this relation or increasing the configuration parameter \"max_fsm_pages\"." :
-				 "Consider increasing the configuration parameter \"max_fsm_pages\"."))));
+				 /* Only suggest VACUUM FULL if > 20% free */
+				 (vacrelstats->tot_free_pages > vacrelstats->rel_pages * 0.20) ?
+				 errhint("Consider using VACUUM FULL on this relation or increasing the configuration parameter \"max_fsm_pages\".") :
+				 errhint("Consider increasing the configuration parameter \"max_fsm_pages\".")));
 
 	/* Update statistics in pg_class */
 	vac_update_relstats(RelationGetRelid(onerel),
