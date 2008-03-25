@@ -1193,8 +1193,8 @@ su - postgres
           <primary>DTrace</primary>
          </indexterm>
          Compiles with support for the dynamic tracing tool DTrace.
-         Operating system support for DTrace is currently only
-         available in Solaris.
+         Operating system support for DTrace is currently available in
+         Solaris and Mac OS X Leopard.
         </para>
 
         <para>
