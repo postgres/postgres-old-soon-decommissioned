@@ -25,3 +25,4 @@ ECPGsetconn                      22
 ECPGstatus                       23
 ECPGtrans                        24
 sqlprint                         25
+ECPGget_PGconn			 26
