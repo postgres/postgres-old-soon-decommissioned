@@ -273,7 +273,7 @@ tsquery_rewrite_query(PG_FUNCTION_ARGS)
 	QTNTernary(tree);
 	QTNSort(tree);
 
-	buf = TextPGetCString(in);
+	buf = text_to_cstring(in);
 
 	SPI_connect();
 

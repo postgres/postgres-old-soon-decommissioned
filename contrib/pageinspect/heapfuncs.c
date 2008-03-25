@@ -36,8 +36,6 @@
 
 Datum		heap_page_items(PG_FUNCTION_ARGS);
 
-#define GET_TEXT(str_) \
-		DirectFunctionCall1(textin, CStringGetDatum(str_))
 
 /*
  * bits_to_text
@@ -190,8 +188,8 @@ heap_page_items(PG_FUNCTION_ARGS)
 					bits_len = tuphdr->t_hoff -
 						(((char *) tuphdr->t_bits) -((char *) tuphdr));
 
-					values[11] = GET_TEXT(
-								 bits_to_text(tuphdr->t_bits, bits_len * 8));
+					values[11] = CStringGetTextDatum(
+						bits_to_text(tuphdr->t_bits, bits_len * 8));
 				}
 				else
 					nulls[11] = true;

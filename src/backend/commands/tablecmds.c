@@ -6183,7 +6183,7 @@ decompile_conbin(HeapTuple contup, TupleDesc tupdesc)
 
 	expr = DirectFunctionCall2(pg_get_expr, attr,
 							   ObjectIdGetDatum(con->conrelid));
-	return DatumGetCString(DirectFunctionCall1(textout, expr));
+	return TextDatumGetCString(expr);
 }
 
 /*

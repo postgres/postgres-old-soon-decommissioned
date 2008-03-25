@@ -2711,8 +2711,7 @@ prefix_quals(Node *leftop, Oid opfamily,
 		switch (prefix_const->consttype)
 		{
 			case TEXTOID:
-				prefix = DatumGetCString(DirectFunctionCall1(textout,
-												  prefix_const->constvalue));
+				prefix = TextDatumGetCString(prefix_const->constvalue);
 				break;
 			case BYTEAOID:
 				prefix = DatumGetCString(DirectFunctionCall1(byteaout,
@@ -2868,15 +2867,15 @@ static Datum
 string_to_datum(const char *str, Oid datatype)
 {
 	/*
-	 * We cheat a little by assuming that textin() will do for bpchar and
-	 * varchar constants too...
+	 * We cheat a little by assuming that CStringGetTextDatum() will do for
+	 * bpchar and varchar constants too...
 	 */
 	if (datatype == NAMEOID)
 		return DirectFunctionCall1(namein, CStringGetDatum(str));
 	else if (datatype == BYTEAOID)
 		return DirectFunctionCall1(byteain, CStringGetDatum(str));
 	else
-		return DirectFunctionCall1(textin, CStringGetDatum(str));
+		return CStringGetTextDatum(str);
 }
 
 /*

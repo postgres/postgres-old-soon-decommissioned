@@ -282,7 +282,7 @@ CreateTableSpace(CreateTableSpaceStmt *stmt)
 	values[Anum_pg_tablespace_spcowner - 1] =
 		ObjectIdGetDatum(ownerId);
 	values[Anum_pg_tablespace_spclocation - 1] =
-		DirectFunctionCall1(textin, CStringGetDatum(location));
+		CStringGetTextDatum(location);
 	nulls[Anum_pg_tablespace_spcacl - 1] = 'n';
 
 	tuple = heap_formtuple(rel->rd_att, values, nulls);

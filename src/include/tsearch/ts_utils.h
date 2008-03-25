@@ -107,12 +107,6 @@ extern bool TS_execute(QueryItem *curitem, void *checkval, bool calcnot,
 		   bool (*chkcond) (void *checkval, QueryOperand *val));
 
 /*
- * Useful conversion macros
- */
-#define TextPGetCString(t) DatumGetCString(DirectFunctionCall1(textout, PointerGetDatum(t)))
-#define CStringGetTextP(c) DatumGetTextP(DirectFunctionCall1(textin, CStringGetDatum(c)))
-
-/*
  * to_ts* - text transformation to tsvector, tsquery
  */
 extern TSVector make_tsvector(ParsedText *prs);

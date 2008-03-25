@@ -811,7 +811,7 @@ generateClonedIndexStmt(CreateStmtContext *cxt, Relation source_idx,
 	{
 		char	   *exprsString;
 
-		exprsString = DatumGetCString(DirectFunctionCall1(textout, datum));
+		exprsString = TextDatumGetCString(datum);
 		indexprs = (List *) stringToNode(exprsString);
 	}
 	else
@@ -904,7 +904,7 @@ generateClonedIndexStmt(CreateStmtContext *cxt, Relation source_idx,
 		char	   *pred_str;
 
 		/* Convert text string to node tree */
-		pred_str = DatumGetCString(DirectFunctionCall1(textout, datum));
+		pred_str = TextDatumGetCString(datum);
 		index->whereClause = (Node *) stringToNode(pred_str);
 		/* Adjust attribute numbers */
 		change_varattnos_of_a_node(index->whereClause, attmap);

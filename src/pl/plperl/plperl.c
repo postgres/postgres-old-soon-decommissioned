@@ -542,7 +542,7 @@ plperl_safe_init(void)
 			desc.arg_is_rowtype[0] = false;
 			fmgr_info(F_TEXTOUT, &(desc.arg_out_func[0]));
 
-			fcinfo.arg[0] = DirectFunctionCall1(textin, CStringGetDatum("a"));
+			fcinfo.arg[0] = CStringGetTextDatum("a");
 			fcinfo.argnull[0] = false;
 			
 			/* and make the call */
@@ -1668,8 +1668,7 @@ compile_plperl_function(Oid fn_oid, bool is_trigger)
 									  Anum_pg_proc_prosrc, &isnull);
 		if (isnull)
 			elog(ERROR, "null prosrc");
-		proc_source = DatumGetCString(DirectFunctionCall1(textout,
-														  prosrcdatum));
+		proc_source = TextDatumGetCString(prosrcdatum);
 
 		/************************************************************
 		 * Create the procedure in the interpreter

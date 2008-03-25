@@ -215,7 +215,7 @@ CreateComments(Oid oid, Oid classoid, int32 subid, char *comment)
 		values[i++] = ObjectIdGetDatum(oid);
 		values[i++] = ObjectIdGetDatum(classoid);
 		values[i++] = Int32GetDatum(subid);
-		values[i++] = DirectFunctionCall1(textin, CStringGetDatum(comment));
+		values[i++] = CStringGetTextDatum(comment);
 	}
 
 	/* Use the index to search for a matching old tuple */
@@ -314,7 +314,7 @@ CreateSharedComments(Oid oid, Oid classoid, char *comment)
 		i = 0;
 		values[i++] = ObjectIdGetDatum(oid);
 		values[i++] = ObjectIdGetDatum(classoid);
-		values[i++] = DirectFunctionCall1(textin, CStringGetDatum(comment));
+		values[i++] = CStringGetTextDatum(comment);
 	}
 
 	/* Use the index to search for a matching old tuple */

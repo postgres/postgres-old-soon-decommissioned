@@ -24,6 +24,7 @@
 #include <locale.h>
 
 #include "libpq/pqformat.h"
+#include "utils/builtins.h"
 #include "utils/cash.h"
 #include "utils/pg_locale.h"
 
@@ -796,7 +797,6 @@ cash_words(PG_FUNCTION_ARGS)
 	Cash		m4;
 	Cash		m5;
 	Cash		m6;
-	text	   *result;
 
 	/* work with positive numbers */
 	if (value < 0)
@@ -862,10 +862,6 @@ cash_words(PG_FUNCTION_ARGS)
 	/* capitalize output */
 	buf[0] = pg_toupper((unsigned char) buf[0]);
 
-	/* make a text type for output */
-	result = (text *) palloc(strlen(buf) + VARHDRSZ);
-	SET_VARSIZE(result, strlen(buf) + VARHDRSZ);
-	memcpy(VARDATA(result), buf, strlen(buf));
-
-	PG_RETURN_TEXT_P(result);
+	/* return as text datum */
+	PG_RETURN_TEXT_P(cstring_to_text(buf));
 }

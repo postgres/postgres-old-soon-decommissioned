@@ -360,20 +360,17 @@ find_language_template(const char *languageName)
 		datum = heap_getattr(tup, Anum_pg_pltemplate_tmplhandler,
 							 RelationGetDescr(rel), &isnull);
 		if (!isnull)
-			result->tmplhandler =
-				DatumGetCString(DirectFunctionCall1(textout, datum));
+			result->tmplhandler = TextDatumGetCString(datum);
 
 		datum = heap_getattr(tup, Anum_pg_pltemplate_tmplvalidator,
 							 RelationGetDescr(rel), &isnull);
 		if (!isnull)
-			result->tmplvalidator =
-				DatumGetCString(DirectFunctionCall1(textout, datum));
+			result->tmplvalidator = TextDatumGetCString(datum);
 
 		datum = heap_getattr(tup, Anum_pg_pltemplate_tmpllibrary,
 							 RelationGetDescr(rel), &isnull);
 		if (!isnull)
-			result->tmpllibrary =
-				DatumGetCString(DirectFunctionCall1(textout, datum));
+			result->tmpllibrary = TextDatumGetCString(datum);
 
 		/* Ignore template if handler or library info is missing */
 		if (!result->tmplhandler || !result->tmpllibrary)

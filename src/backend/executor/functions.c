@@ -244,7 +244,7 @@ init_sql_fcache(FmgrInfo *finfo)
 						  &isNull);
 	if (isNull)
 		elog(ERROR, "null prosrc for function %u", foid);
-	fcache->src = DatumGetCString(DirectFunctionCall1(textout, tmp));
+	fcache->src = TextDatumGetCString(tmp);
 
 	/*
 	 * Parse and rewrite the queries in the function text.
@@ -777,7 +777,7 @@ sql_exec_error_callback(void *arg)
 							  &isnull);
 		if (isnull)
 			elog(ERROR, "null prosrc");
-		prosrc = DatumGetCString(DirectFunctionCall1(textout, tmp));
+		prosrc = TextDatumGetCString(tmp);
 		errposition(0);
 		internalerrposition(syntaxerrposition);
 		internalerrquery(prosrc);

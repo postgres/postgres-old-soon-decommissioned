@@ -1533,39 +1533,33 @@ Datum
 array_dims(PG_FUNCTION_ARGS)
 {
 	ArrayType  *v = PG_GETARG_ARRAYTYPE_P(0);
-	text	   *result;
 	char	   *p;
-	int			nbytes,
-				i;
+	int			i;
 	int		   *dimv,
 			   *lb;
+
+	/*
+	 * 33 since we assume 15 digits per number + ':' +'[]'
+	 *
+	 * +1 for trailing null
+	 */
+	char		buf[MAXDIM * 33 + 1];
 
 	/* Sanity check: does it look like an array at all? */
 	if (ARR_NDIM(v) <= 0 || ARR_NDIM(v) > MAXDIM)
 		PG_RETURN_NULL();
 
-	nbytes = ARR_NDIM(v) * 33 + 1;
-
-	/*
-	 * 33 since we assume 15 digits per number + ':' +'[]'
-	 *
-	 * +1 allows for temp trailing null
-	 */
-
-	result = (text *) palloc(nbytes + VARHDRSZ);
-	p = VARDATA(result);
-
 	dimv = ARR_DIMS(v);
 	lb = ARR_LBOUND(v);
 
+	p = buf;
 	for (i = 0; i < ARR_NDIM(v); i++)
 	{
 		sprintf(p, "[%d:%d]", lb[i], dimv[i] + lb[i] - 1);
 		p += strlen(p);
 	}
-	SET_VARSIZE(result, strlen(VARDATA(result)) + VARHDRSZ);
 
-	PG_RETURN_TEXT_P(result);
+	PG_RETURN_TEXT_P(cstring_to_text(buf));
 }
 
 /*

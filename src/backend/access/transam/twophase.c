@@ -623,7 +623,7 @@ pg_prepared_xact(PG_FUNCTION_ARGS)
 		MemSet(nulls, 0, sizeof(nulls));
 
 		values[0] = TransactionIdGetDatum(gxact->proc.xid);
-		values[1] = DirectFunctionCall1(textin, CStringGetDatum(gxact->gid));
+		values[1] = CStringGetTextDatum(gxact->gid);
 		values[2] = TimestampTzGetDatum(gxact->prepared_at);
 		values[3] = ObjectIdGetDatum(gxact->owner);
 		values[4] = ObjectIdGetDatum(gxact->proc.databaseId);

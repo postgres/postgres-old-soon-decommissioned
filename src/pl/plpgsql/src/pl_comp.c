@@ -292,7 +292,7 @@ do_compile(FunctionCallInfo fcinfo,
 								  Anum_pg_proc_prosrc, &isnull);
 	if (isnull)
 		elog(ERROR, "null prosrc");
-	proc_source = DatumGetCString(DirectFunctionCall1(textout, prosrcdatum));
+	proc_source = TextDatumGetCString(prosrcdatum);
 	plpgsql_scanner_init(proc_source, functype);
 
 	plpgsql_error_funcname = pstrdup(NameStr(procStruct->proname));

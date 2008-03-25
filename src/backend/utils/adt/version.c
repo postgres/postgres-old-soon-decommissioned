@@ -20,11 +20,5 @@
 Datum
 pgsql_version(PG_FUNCTION_ARGS)
 {
-	int			n = strlen(PG_VERSION_STR);
-	text	   *ret = (text *) palloc(n + VARHDRSZ);
-
-	SET_VARSIZE(ret, n + VARHDRSZ);
-	memcpy(VARDATA(ret), PG_VERSION_STR, n);
-
-	PG_RETURN_TEXT_P(ret);
+	PG_RETURN_TEXT_P(cstring_to_text(PG_VERSION_STR));
 }

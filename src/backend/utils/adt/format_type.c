@@ -26,7 +26,6 @@
 #include "mb/pg_wchar.h"
 
 #define MAX_INT32_LEN 11
-#define _textin(str) DirectFunctionCall1(textin, CStringGetDatum(str))
 
 static char *format_type_internal(Oid type_oid, int32 typemod,
 					 bool typemod_given, bool allow_invalid);
@@ -84,7 +83,7 @@ format_type(PG_FUNCTION_ARGS)
 		result = format_type_internal(type_oid, typemod, true, true);
 	}
 
-	PG_RETURN_DATUM(_textin(result));
+	PG_RETURN_TEXT_P(cstring_to_text(result));
 }
 
 /*
@@ -454,7 +453,7 @@ oidvectortypes(PG_FUNCTION_ARGS)
 		left -= slen;
 	}
 
-	PG_RETURN_DATUM(_textin(result));
+	PG_RETURN_TEXT_P(cstring_to_text(result));
 }
 
 

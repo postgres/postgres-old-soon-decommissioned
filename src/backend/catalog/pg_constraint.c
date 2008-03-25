@@ -174,8 +174,7 @@ CreateConstraintEntry(const char *constraintName,
 	 * initialize the binary form of the check constraint.
 	 */
 	if (conBin)
-		values[Anum_pg_constraint_conbin - 1] = DirectFunctionCall1(textin,
-													CStringGetDatum(conBin));
+		values[Anum_pg_constraint_conbin - 1] = CStringGetTextDatum(conBin);
 	else
 		nulls[Anum_pg_constraint_conbin - 1] = 'n';
 
@@ -183,8 +182,7 @@ CreateConstraintEntry(const char *constraintName,
 	 * initialize the text form of the check constraint
 	 */
 	if (conSrc)
-		values[Anum_pg_constraint_consrc - 1] = DirectFunctionCall1(textin,
-													CStringGetDatum(conSrc));
+		values[Anum_pg_constraint_consrc - 1] = CStringGetTextDatum(conSrc);
 	else
 		nulls[Anum_pg_constraint_consrc - 1] = 'n';
 

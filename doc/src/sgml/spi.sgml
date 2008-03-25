@@ -3343,8 +3343,7 @@ execq(text *sql, int cnt)
     int proc;
 
     /* Convert given text object to a C string */
-    command = DatumGetCString(DirectFunctionCall1(textout,
-                                                  PointerGetDatum(sql)));
+    command = text_to_cstring(sql);
 
     SPI_connect();
     

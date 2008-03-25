@@ -150,8 +150,7 @@ fetch_param_value(ExprContext *econtext, int paramId)
 		{
 			Assert(prm->ptype == REFCURSOROID);
 			/* We know that refcursor uses text's I/O routines */
-			return DatumGetCString(DirectFunctionCall1(textout,
-													   prm->value));
+			return TextDatumGetCString(prm->value);
 		}
 	}
 

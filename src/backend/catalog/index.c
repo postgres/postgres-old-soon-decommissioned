@@ -374,8 +374,7 @@ UpdateIndexRelation(Oid indexoid,
 		char	   *exprsString;
 
 		exprsString = nodeToString(indexInfo->ii_Expressions);
-		exprsDatum = DirectFunctionCall1(textin,
-										 CStringGetDatum(exprsString));
+		exprsDatum = CStringGetTextDatum(exprsString);
 		pfree(exprsString);
 	}
 	else
@@ -390,8 +389,7 @@ UpdateIndexRelation(Oid indexoid,
 		char	   *predString;
 
 		predString = nodeToString(make_ands_explicit(indexInfo->ii_Predicate));
-		predDatum = DirectFunctionCall1(textin,
-										CStringGetDatum(predString));
+		predDatum = CStringGetTextDatum(predString);
 		pfree(predString);
 	}
 	else

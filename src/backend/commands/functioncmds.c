@@ -237,8 +237,7 @@ examine_parameter_list(List *parameters, Oid languageOid,
 
 		if (fp->name && fp->name[0])
 		{
-			paramNames[i] = DirectFunctionCall1(textin,
-												CStringGetDatum(fp->name));
+			paramNames[i] = CStringGetTextDatum(fp->name);
 			have_names = true;
 		}
 
@@ -269,8 +268,7 @@ examine_parameter_list(List *parameters, Oid languageOid,
 		for (i = 0; i < parameterCount; i++)
 		{
 			if (paramNames[i] == PointerGetDatum(NULL))
-				paramNames[i] = DirectFunctionCall1(textin,
-													CStringGetDatum(""));
+				paramNames[i] = CStringGetTextDatum("");
 		}
 		*parameterNames = construct_array(paramNames, parameterCount, TEXTOID,
 										  -1, false, 'i');

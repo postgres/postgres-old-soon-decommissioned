@@ -275,8 +275,7 @@ TypeCreate(Oid newTypeOid,
 	 * course.
 	 */
 	if (defaultTypeBin)
-		values[i] = DirectFunctionCall1(textin,
-										CStringGetDatum(defaultTypeBin));
+		values[i] = CStringGetTextDatum(defaultTypeBin);
 	else
 		nulls[i] = 'n';
 	i++;						/* typdefaultbin */
@@ -285,8 +284,7 @@ TypeCreate(Oid newTypeOid,
 	 * initialize the default value for this type.
 	 */
 	if (defaultTypeValue)
-		values[i] = DirectFunctionCall1(textin,
-										CStringGetDatum(defaultTypeValue));
+		values[i] = CStringGetTextDatum(defaultTypeValue);
 	else
 		nulls[i] = 'n';
 	i++;						/* typdefault */

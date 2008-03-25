@@ -214,7 +214,7 @@ uuid_generate_v35_internal(int mode, pg_uuid_t *ns, text *name)
 
 	result = uuid_generate_internal(mode,
 									ns_uuid,
-	   DatumGetCString(DirectFunctionCall1(textout, PointerGetDatum(name))));
+									text_to_cstring(name));
 
 	rc = uuid_destroy(ns_uuid);
 	if (rc != UUID_RC_OK)

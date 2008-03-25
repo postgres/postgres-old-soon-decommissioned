@@ -601,8 +601,6 @@ Datum
 network_host(PG_FUNCTION_ARGS)
 {
 	inet	   *ip = PG_GETARG_INET_P(0);
-	text	   *ret;
-	int			len;
 	char	   *ptr;
 	char		tmp[sizeof("xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:255.255.255.255/128")];
 
@@ -617,12 +615,7 @@ network_host(PG_FUNCTION_ARGS)
 	if ((ptr = strchr(tmp, '/')) != NULL)
 		*ptr = '\0';
 
-	/* Return string as a text datum */
-	len = strlen(tmp);
-	ret = (text *) palloc(len + VARHDRSZ);
-	SET_VARSIZE(ret, len + VARHDRSZ);
-	memcpy(VARDATA(ret), tmp, len);
-	PG_RETURN_TEXT_P(ret);
+	PG_RETURN_TEXT_P(cstring_to_text(tmp));
 }
 
 /*
@@ -634,7 +627,6 @@ Datum
 network_show(PG_FUNCTION_ARGS)
 {
 	inet	   *ip = PG_GETARG_INET_P(0);
-	text	   *ret;
 	int			len;
 	char		tmp[sizeof("xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:255.255.255.255/128")];
 
@@ -651,21 +643,14 @@ network_show(PG_FUNCTION_ARGS)
 		snprintf(tmp + len, sizeof(tmp) - len, "/%u", ip_bits(ip));
 	}
 
-	/* Return string as a text datum */
-	len = strlen(tmp);
-	ret = (text *) palloc(len + VARHDRSZ);
-	SET_VARSIZE(ret, len + VARHDRSZ);
-	memcpy(VARDATA(ret), tmp, len);
-	PG_RETURN_TEXT_P(ret);
+	PG_RETURN_TEXT_P(cstring_to_text(tmp));
 }
 
 Datum
 inet_abbrev(PG_FUNCTION_ARGS)
 {
 	inet	   *ip = PG_GETARG_INET_P(0);
-	text	   *ret;
 	char	   *dst;
-	int			len;
 	char		tmp[sizeof("xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:255.255.255.255/128")];
 
 	dst = inet_net_ntop(ip_family(ip), ip_addr(ip),
@@ -676,21 +661,14 @@ inet_abbrev(PG_FUNCTION_ARGS)
 				(errcode(ERRCODE_INVALID_BINARY_REPRESENTATION),
 				 errmsg("could not format inet value: %m")));
 
-	/* Return string as a text datum */
-	len = strlen(tmp);
-	ret = (text *) palloc(len + VARHDRSZ);
-	SET_VARSIZE(ret, len + VARHDRSZ);
-	memcpy(VARDATA(ret), tmp, len);
-	PG_RETURN_TEXT_P(ret);
+	PG_RETURN_TEXT_P(cstring_to_text(tmp));
 }
 
 Datum
 cidr_abbrev(PG_FUNCTION_ARGS)
 {
 	inet	   *ip = PG_GETARG_INET_P(0);
-	text	   *ret;
 	char	   *dst;
-	int			len;
 	char		tmp[sizeof("xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:255.255.255.255/128")];
 
 	dst = inet_cidr_ntop(ip_family(ip), ip_addr(ip),
@@ -701,12 +679,7 @@ cidr_abbrev(PG_FUNCTION_ARGS)
 				(errcode(ERRCODE_INVALID_BINARY_REPRESENTATION),
 				 errmsg("could not format cidr value: %m")));
 
-	/* Return string as a text datum */
-	len = strlen(tmp);
-	ret = (text *) palloc(len + VARHDRSZ);
-	SET_VARSIZE(ret, len + VARHDRSZ);
-	memcpy(VARDATA(ret), tmp, len);
-	PG_RETURN_TEXT_P(ret);
+	PG_RETURN_TEXT_P(cstring_to_text(tmp));
 }
 
 Datum

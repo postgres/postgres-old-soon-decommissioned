@@ -1576,8 +1576,6 @@ timeofday(PG_FUNCTION_ARGS)
 	struct timeval tp;
 	char		templ[128];
 	char		buf[128];
-	text	   *result;
-	int			len;
 	pg_time_t	tt;
 
 	gettimeofday(&tp, NULL);
@@ -1586,9 +1584,5 @@ timeofday(PG_FUNCTION_ARGS)
 				pg_localtime(&tt, session_timezone));
 	snprintf(buf, sizeof(buf), templ, tp.tv_usec);
 
-	len = VARHDRSZ + strlen(buf);
-	result = (text *) palloc(len);
-	SET_VARSIZE(result, len);
-	memcpy(VARDATA(result), buf, len - VARHDRSZ);
-	PG_RETURN_TEXT_P(result);
+	PG_RETURN_TEXT_P(cstring_to_text(buf));
 }

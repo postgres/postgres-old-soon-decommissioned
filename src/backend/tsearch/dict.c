@@ -64,7 +64,7 @@ ts_lexize(PG_FUNCTION_ARGS)
 	ptr = res;
 	while (ptr->lexeme)
 	{
-		da[ptr - res] = DirectFunctionCall1(textin, CStringGetDatum(ptr->lexeme));
+		da[ptr - res] = CStringGetTextDatum(ptr->lexeme);
 		ptr++;
 	}
 

@@ -556,16 +556,9 @@ ttdummy(PG_FUNCTION_ARGS)
 		return PointerGetDatum(NULL);
 	}
 
-	{
-		text	   *seqname = DatumGetTextP(DirectFunctionCall1(textin,
-											CStringGetDatum("ttdummy_seq")));
-
-		newoff = DirectFunctionCall1(nextval,
-									 PointerGetDatum(seqname));
-		/* nextval now returns int64; coerce down to int32 */
-		newoff = Int32GetDatum((int32) DatumGetInt64(newoff));
-		pfree(seqname);
-	}
+	newoff = DirectFunctionCall1(nextval, CStringGetTextDatum("ttdummy_seq"));
+	/* nextval now returns int64; coerce down to int32 */
+	newoff = Int32GetDatum((int32) DatumGetInt64(newoff));
 
 	/* Connect to SPI manager */
 	if ((ret = SPI_connect()) < 0)

@@ -180,7 +180,7 @@ untransformRelOptions(Datum options)
 		char	   *p;
 		Node	   *val = NULL;
 
-		s = DatumGetCString(DirectFunctionCall1(textout, optiondatums[i]));
+		s = TextDatumGetCString(optiondatums[i]);
 		p = strchr(s, '=');
 		if (p)
 		{
@@ -266,7 +266,7 @@ parseRelOptions(Datum options, int numkeywords, const char *const * keywords,
 			char	   *s;
 			char	   *p;
 
-			s = DatumGetCString(DirectFunctionCall1(textout, optiondatums[i]));
+			s = TextDatumGetCString(optiondatums[i]);
 			p = strchr(s, '=');
 			if (p)
 				*p = '\0';

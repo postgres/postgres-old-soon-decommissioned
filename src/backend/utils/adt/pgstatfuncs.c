@@ -414,9 +414,7 @@ Datum
 pg_stat_get_backend_activity(PG_FUNCTION_ARGS)
 {
 	int32		beid = PG_GETARG_INT32(0);
-	text	   *result;
 	PgBackendStatus *beentry;
-	int			len;
 	const char *activity;
 
 	if ((beentry = pgstat_fetch_stat_beentry(beid)) == NULL)
@@ -428,12 +426,7 @@ pg_stat_get_backend_activity(PG_FUNCTION_ARGS)
 	else
 		activity = beentry->st_activity;
 
-	len = strlen(activity);
-	result = palloc(VARHDRSZ + len);
-	SET_VARSIZE(result, VARHDRSZ + len);
-	memcpy(VARDATA(result), activity, len);
-
-	PG_RETURN_TEXT_P(result);
+	PG_RETURN_TEXT_P(cstring_to_text(activity));
 }
 
 

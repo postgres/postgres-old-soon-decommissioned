@@ -617,6 +617,14 @@ extern Datum varchartypmodout(PG_FUNCTION_ARGS);
 extern Datum varchar(PG_FUNCTION_ARGS);
 
 /* varlena.c */
+extern text *cstring_to_text(const char *s);
+extern text *cstring_to_text_with_len(const char *s, int len);
+extern char *text_to_cstring(const text *t);
+extern void text_to_cstring_buffer(const text *src, char *dst, size_t dst_len);
+
+#define CStringGetTextDatum(s) PointerGetDatum(cstring_to_text(s))
+#define TextDatumGetCString(d) text_to_cstring((text *) DatumGetPointer(d))
+
 extern Datum textin(PG_FUNCTION_ARGS);
 extern Datum textout(PG_FUNCTION_ARGS);
 extern Datum textrecv(PG_FUNCTION_ARGS);

@@ -1082,7 +1082,7 @@ ts_process_call(FuncCallContext *funcctx)
 static tsstat *
 ts_stat_sql(text *txt, text *ws)
 {
-	char	   *query = TextPGetCString(txt);
+	char	   *query = text_to_cstring(txt);
 	int			i;
 	tsstat	   *newstat,
 			   *stat;

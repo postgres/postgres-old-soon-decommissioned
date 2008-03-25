@@ -69,8 +69,6 @@ extern Datum difference(PG_FUNCTION_ARGS);
 static void _soundex(const char *instr, char *outstr);
 
 #define SOUNDEX_LEN 4
-#define _textin(str) DirectFunctionCall1(textin, CStringGetDatum(str))
-#define _textout(str) DatumGetPointer(DirectFunctionCall1(textout, PointerGetDatum(str)))
 
 /*									ABCDEFGHIJKLMNOPQRSTUVWXYZ */
 static const char *soundex_table = "01230120022455012623010202";

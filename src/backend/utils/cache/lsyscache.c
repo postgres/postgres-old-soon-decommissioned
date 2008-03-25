@@ -1971,8 +1971,7 @@ get_typdefault(Oid typid)
 	if (!isNull)
 	{
 		/* We have an expression default */
-		expr = stringToNode(DatumGetCString(DirectFunctionCall1(textout,
-																datum)));
+		expr = stringToNode(TextDatumGetCString(datum));
 	}
 	else
 	{
@@ -1987,8 +1986,7 @@ get_typdefault(Oid typid)
 			char	   *strDefaultVal;
 
 			/* Convert text datum to C string */
-			strDefaultVal = DatumGetCString(DirectFunctionCall1(textout,
-																datum));
+			strDefaultVal = TextDatumGetCString(datum);
 			/* Convert C string to a value of the given type */
 			datum = OidInputFunctionCall(type->typinput, strDefaultVal,
 										 getTypeIOParam(typeTuple), -1);

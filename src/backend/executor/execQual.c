@@ -3039,13 +3039,7 @@ ExecEvalXml(XmlExprState *xmlExpr, ExprContext *econtext,
 	if (*isNull)
 		result = NULL;
 	else
-	{
-		int			len = buf.len + VARHDRSZ;
-
-		result = palloc(len);
-		SET_VARSIZE(result, len);
-		memcpy(VARDATA(result), buf.data, buf.len);
-	}
+		result = cstring_to_text_with_len(buf.data, buf.len);
 
 	pfree(buf.data);
 	return PointerGetDatum(result);

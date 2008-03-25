@@ -1298,7 +1298,7 @@ PLy_procedure_create(HeapTuple procTup, Oid tgreloid, char *key)
 
 			/* Fetch argument name */
 			if (proc->argnames)
-				proc->argnames[i] = PLy_strdup(DatumGetCString(DirectFunctionCall1(textout, elems[i])));
+				proc->argnames[i] = PLy_strdup(TextDatumGetCString(elems[i]));
 		}
 
 		/*
@@ -1308,8 +1308,7 @@ PLy_procedure_create(HeapTuple procTup, Oid tgreloid, char *key)
 									  Anum_pg_proc_prosrc, &isnull);
 		if (isnull)
 			elog(ERROR, "null prosrc");
-		procSource = DatumGetCString(DirectFunctionCall1(textout,
-														 prosrcdatum));
+		procSource = TextDatumGetCString(prosrcdatum);
 
 		PLy_procedure_compile(proc, procSource);
 

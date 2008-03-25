@@ -697,13 +697,13 @@ DefineDomain(CreateDomainStmt *stmt)
 	datum = SysCacheGetAttr(TYPEOID, typeTup,
 							Anum_pg_type_typdefault, &isnull);
 	if (!isnull)
-		defaultValue = DatumGetCString(DirectFunctionCall1(textout, datum));
+		defaultValue = TextDatumGetCString(datum);
 
 	/* Inherited default binary value */
 	datum = SysCacheGetAttr(TYPEOID, typeTup,
 							Anum_pg_type_typdefaultbin, &isnull);
 	if (!isnull)
-		defaultValueBin = DatumGetCString(DirectFunctionCall1(textout, datum));
+		defaultValueBin = TextDatumGetCString(datum);
 
 	/*
 	 * Run through constraints manually to avoid the additional processing
@@ -1497,12 +1497,10 @@ AlterDomainDefault(List *names, Node *defaultRaw)
 			/*
 			 * Form an updated tuple with the new default and write it back.
 			 */
-			new_record[Anum_pg_type_typdefaultbin - 1] = DirectFunctionCall1(textin,
-								 CStringGetDatum(nodeToString(defaultExpr)));
+			new_record[Anum_pg_type_typdefaultbin - 1] = CStringGetTextDatum(nodeToString(defaultExpr));
 
 			new_record_repl[Anum_pg_type_typdefaultbin - 1] = 'r';
-			new_record[Anum_pg_type_typdefault - 1] = DirectFunctionCall1(textin,
-											  CStringGetDatum(defaultValue));
+			new_record[Anum_pg_type_typdefault - 1] = CStringGetTextDatum(defaultValue);
 			new_record_repl[Anum_pg_type_typdefault - 1] = 'r';
 		}
 	}
@@ -2292,9 +2290,7 @@ GetDomainConstraints(Oid typeOid)
 				elog(ERROR, "domain \"%s\" constraint \"%s\" has NULL conbin",
 					 NameStr(typTup->typname), NameStr(c->conname));
 
-			check_expr = (Expr *)
-				stringToNode(DatumGetCString(DirectFunctionCall1(textout,
-																 val)));
+			check_expr = (Expr *) stringToNode(TextDatumGetCString(val));
 
 			/* ExecInitExpr assumes we already fixed opfuncids */
 			fix_opfuncids((Node *) check_expr);

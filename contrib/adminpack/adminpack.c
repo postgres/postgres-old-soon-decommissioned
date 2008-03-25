@@ -23,6 +23,7 @@
 #include "miscadmin.h"
 #include "postmaster/syslogger.h"
 #include "storage/fd.h"
+#include "utils/builtins.h"
 #include "utils/datetime.h"
 
 
@@ -68,11 +69,7 @@ typedef struct
 static char *
 convert_and_check_filename(text *arg, bool logAllowed)
 {
-	int			input_len = VARSIZE(arg) - VARHDRSZ;
-	char	   *filename = palloc(input_len + 1);
-
-	memcpy(filename, VARDATA(arg), input_len);
-	filename[input_len] = '\0';
+	char	   *filename = text_to_cstring(arg);
 
 	canonicalize_path(filename);	/* filename can change length here */
 
