@@ -45,6 +45,7 @@
 #include "utils/inval.h"
 #include "utils/memutils.h"
 #include "utils/relcache.h"
+#include "utils/snapmgmt.h"
 #include "utils/xml.h"
 #include "pg_trace.h"
 

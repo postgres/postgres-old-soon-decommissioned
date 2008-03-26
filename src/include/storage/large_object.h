@@ -15,7 +15,7 @@
 #ifndef LARGE_OBJECT_H
 #define LARGE_OBJECT_H
 
-#include "utils/tqual.h"
+#include "utils/snapshot.h"
 
 
 /*----------

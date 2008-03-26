@@ -28,6 +28,7 @@
 #include "storage/freespace.h"
 #include "storage/lmgr.h"
 #include "utils/inval.h"
+#include "utils/snapmgmt.h"
 
 
 /*

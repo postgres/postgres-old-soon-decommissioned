@@ -51,6 +51,7 @@
 #include "utils/inval.h"
 #include "utils/memutils.h"
 #include "utils/resowner.h"
+#include "utils/snapmgmt.h"
 
 
 typedef struct

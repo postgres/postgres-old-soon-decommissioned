@@ -32,6 +32,7 @@
 #include "tcop/utility.h"
 #include "utils/builtins.h"
 #include "utils/memutils.h"
+#include "utils/snapmgmt.h"
 
 
 /*

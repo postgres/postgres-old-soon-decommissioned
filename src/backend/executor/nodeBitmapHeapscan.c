@@ -40,6 +40,7 @@
 #include "executor/nodeBitmapHeapscan.h"
 #include "pgstat.h"
 #include "utils/memutils.h"
+#include "utils/snapmgmt.h"
 
 
 static TupleTableSlot *BitmapHeapNext(BitmapHeapScanState *node);

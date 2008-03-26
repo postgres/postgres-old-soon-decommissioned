@@ -28,6 +28,7 @@
 #include "executor/executor.h"
 #include "tcop/pquery.h"
 #include "utils/memutils.h"
+#include "utils/snapmgmt.h"
 
 
 /*

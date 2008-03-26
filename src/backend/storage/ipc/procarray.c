@@ -37,7 +37,7 @@
 #include "access/twophase.h"
 #include "miscadmin.h"
 #include "storage/procarray.h"
-#include "utils/tqual.h"
+#include "utils/snapmgmt.h"
 
 
 /* Our shared memory area */

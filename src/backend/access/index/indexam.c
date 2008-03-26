@@ -67,6 +67,7 @@
 #include "access/transam.h"
 #include "pgstat.h"
 #include "utils/relcache.h"
+#include "utils/snapmgmt.h"
 
 
 /* ----------------------------------------------------------------

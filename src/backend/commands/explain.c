@@ -31,6 +31,7 @@
 #include "utils/guc.h"
 #include "utils/lsyscache.h"
 #include "utils/tuplesort.h"
+#include "utils/snapmgmt.h"
 
 
 /* Hook for plugins to get control in ExplainOneQuery() */

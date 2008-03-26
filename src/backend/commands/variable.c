@@ -25,7 +25,7 @@
 #include "utils/acl.h"
 #include "utils/builtins.h"
 #include "utils/syscache.h"
-#include "utils/tqual.h"
+#include "utils/snapmgmt.h"
 #include "mb/pg_wchar.h"
 
 /*

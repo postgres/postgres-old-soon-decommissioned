@@ -23,6 +23,7 @@
 #include "tcop/tcopprot.h"
 #include "tcop/utility.h"
 #include "utils/memutils.h"
+#include "utils/snapmgmt.h"
 
 
 /*

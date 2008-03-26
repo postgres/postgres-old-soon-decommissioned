@@ -26,6 +26,7 @@
 #include "funcapi.h"
 #include "libpq/pqformat.h"
 #include "utils/builtins.h"
+#include "utils/snapmgmt.h"
 
 
 #ifndef INT64_IS_BUSTED

@@ -15,6 +15,7 @@
 #define PROCARRAY_H
 
 #include "storage/lock.h"
+#include "utils/snapshot.h"
 
 
 extern Size ProcArrayShmemSize(void);
@@ -24,6 +25,8 @@ extern void ProcArrayRemove(PGPROC *proc, TransactionId latestXid);
 
 extern void ProcArrayEndTransaction(PGPROC *proc, TransactionId latestXid);
 extern void ProcArrayClearTransaction(PGPROC *proc);
+
+extern Snapshot GetSnapshotData(Snapshot snapshot, bool serializable);
 
 extern bool TransactionIdIsInProgress(TransactionId xid);
 extern bool TransactionIdIsActive(TransactionId xid);

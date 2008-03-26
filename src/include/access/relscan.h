@@ -14,9 +14,10 @@
 #ifndef RELSCAN_H
 #define RELSCAN_H
 
+#include "access/htup.h"
 #include "access/skey.h"
 #include "storage/bufpage.h"
-#include "utils/tqual.h"
+#include "utils/snapshot.h"
 
 
 typedef struct HeapScanDescData
