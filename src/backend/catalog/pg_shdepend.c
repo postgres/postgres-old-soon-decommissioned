@@ -39,6 +39,7 @@
 #include "utils/acl.h"
 #include "utils/fmgroids.h"
 #include "utils/syscache.h"
+#include "utils/tqual.h"
 
 
 typedef enum

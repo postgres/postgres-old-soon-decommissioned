@@ -19,6 +19,7 @@
 #include "miscadmin.h"
 #include "pgstat.h"
 #include "utils/inval.h"
+#include "utils/tqual.h"
 
 
 /* Working data for heap_page_prune and subroutines */

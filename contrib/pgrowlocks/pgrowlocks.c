@@ -33,6 +33,7 @@
 #include "storage/procarray.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
+#include "utils/tqual.h"
 
 
 PG_MODULE_MAGIC;

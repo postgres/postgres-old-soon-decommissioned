@@ -53,6 +53,7 @@
 #include "utils/guc.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
+#include "utils/tqual.h"
 
 
 static void AlterFunctionOwner_internal(Relation rel, HeapTuple tup,

@@ -37,7 +37,6 @@
 #include "libpq-fe.h"
 #include "fmgr.h"
 #include "funcapi.h"
-#include "miscadmin.h"
 #include "access/genam.h"
 #include "access/heapam.h"
 #include "access/tupdesc.h"
@@ -48,6 +47,7 @@
 #include "executor/executor.h"
 #include "executor/spi.h"
 #include "lib/stringinfo.h"
+#include "miscadmin.h"
 #include "nodes/execnodes.h"
 #include "nodes/nodes.h"
 #include "nodes/pg_list.h"
@@ -60,8 +60,9 @@
 #include "utils/fmgroids.h"
 #include "utils/hsearch.h"
 #include "utils/lsyscache.h"
-#include "utils/syscache.h"
 #include "utils/memutils.h"
+#include "utils/syscache.h"
+#include "utils/tqual.h"
 
 #include "dblink.h"
 

@@ -38,6 +38,7 @@
 #include "utils/fmgroids.h"
 #include "utils/pg_lzcompress.h"
 #include "utils/typcache.h"
+#include "utils/tqual.h"
 
 
 #undef TOAST_DEBUG

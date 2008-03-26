@@ -24,6 +24,7 @@
 #include "access/transam.h"
 #include "miscadmin.h"
 #include "pgstat.h"
+#include "utils/tqual.h"
 
 
 /* ----------------------------------------------------------------

@@ -20,6 +20,7 @@
 #include "access/transam.h"
 #include "miscadmin.h"
 #include "utils/inval.h"
+#include "utils/tqual.h"
 
 
 typedef struct

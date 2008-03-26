@@ -20,6 +20,7 @@
 #include "catalog/pg_largeobject.h"
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"
+#include "utils/tqual.h"
 
 
 /*

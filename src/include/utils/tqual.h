@@ -54,16 +54,6 @@ extern PGDLLIMPORT SnapshotData SnapshotToastData;
 #define HeapTupleSatisfiesVisibility(tuple, snapshot, buffer) \
 	((*(snapshot)->satisfies) ((tuple)->t_data, snapshot, buffer))
 
-/* Result codes for HeapTupleSatisfiesUpdate */
-typedef enum
-{
-	HeapTupleMayBeUpdated,
-	HeapTupleInvisible,
-	HeapTupleSelfUpdated,
-	HeapTupleUpdated,
-	HeapTupleBeingUpdated
-} HTSU_Result;
-
 /* Result codes for HeapTupleSatisfiesVacuum */
 typedef enum
 {

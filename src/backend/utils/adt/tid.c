@@ -28,6 +28,7 @@
 #include "parser/parsetree.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
+#include "utils/tqual.h"
 
 
 #define DatumGetItemPointer(X)	 ((ItemPointer) DatumGetPointer(X))

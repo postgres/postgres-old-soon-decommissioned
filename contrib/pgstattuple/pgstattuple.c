@@ -32,6 +32,7 @@
 #include "funcapi.h"
 #include "miscadmin.h"
 #include "utils/builtins.h"
+#include "utils/tqual.h"
 
 
 PG_MODULE_MAGIC;

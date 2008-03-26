@@ -59,4 +59,17 @@ typedef struct SnapshotData
 	CommandId	curcid;			/* in my xact, CID < curcid are visible */
 } SnapshotData;
 
+/*
+ * Result codes for HeapTupleSatisfiesUpdate.  This should really be in
+ * tqual.h, but we want to avoid including that file elsewhere.
+ */
+typedef enum
+{
+	HeapTupleMayBeUpdated,
+	HeapTupleInvisible,
+	HeapTupleSelfUpdated,
+	HeapTupleUpdated,
+	HeapTupleBeingUpdated
+} HTSU_Result;
+
 #endif /* SNAPSHOT_H */

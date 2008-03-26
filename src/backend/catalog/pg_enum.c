@@ -20,6 +20,7 @@
 #include "catalog/pg_enum.h"
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"
+#include "utils/tqual.h"
 
 static int	oid_cmp(const void *p1, const void *p2);
 

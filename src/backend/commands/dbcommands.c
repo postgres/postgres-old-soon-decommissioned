@@ -50,6 +50,7 @@
 #include "utils/guc.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
+#include "utils/tqual.h"
 
 
 /* non-export function prototypes */

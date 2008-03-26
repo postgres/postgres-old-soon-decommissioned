@@ -43,6 +43,7 @@
 #include "utils/fmgroids.h"
 #include "utils/resowner.h"
 #include "utils/snapmgr.h"
+#include "utils/tqual.h"
 
 
 /*

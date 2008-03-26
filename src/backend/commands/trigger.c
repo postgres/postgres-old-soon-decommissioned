@@ -40,6 +40,7 @@
 #include "utils/memutils.h"
 #include "utils/snapmgr.h"
 #include "utils/syscache.h"
+#include "utils/tqual.h"
 
 
 /* GUC variables */

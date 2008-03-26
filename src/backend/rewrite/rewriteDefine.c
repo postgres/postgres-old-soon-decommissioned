@@ -29,9 +29,10 @@
 #include "storage/smgr.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
+#include "utils/inval.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
-#include "utils/inval.h"
+#include "utils/tqual.h"
 
 
 static void checkRuleResultList(List *targetList, TupleDesc resultDesc,

@@ -63,6 +63,7 @@
 #include "utils/relcache.h"
 #include "utils/resowner.h"
 #include "utils/syscache.h"
+#include "utils/tqual.h"
 #include "utils/typcache.h"
 
 

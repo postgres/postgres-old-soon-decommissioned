@@ -35,6 +35,7 @@
 #include "commands/vacuum.h"
 #include "executor/executor.h"
 #include "miscadmin.h"
+#include "pgstat.h"
 #include "postmaster/autovacuum.h"
 #include "storage/freespace.h"
 #include "storage/proc.h"
@@ -50,7 +51,7 @@
 #include "utils/relcache.h"
 #include "utils/snapmgr.h"
 #include "utils/syscache.h"
-#include "pgstat.h"
+#include "utils/tqual.h"
 
 
 /*

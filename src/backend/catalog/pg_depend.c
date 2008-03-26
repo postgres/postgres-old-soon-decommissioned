@@ -23,6 +23,7 @@
 #include "miscadmin.h"
 #include "utils/fmgroids.h"
 #include "utils/lsyscache.h"
+#include "utils/tqual.h"
 
 
 static bool isObjectPinned(const ObjectAddress *object, Relation rel);

@@ -22,11 +22,12 @@
 #include "catalog/pg_namespace.h"
 #include "catalog/pg_proc.h"
 #include "mb/pg_wchar.h"
+#include "miscadmin.h"
+#include "utils/acl.h"
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"
 #include "utils/syscache.h"
-#include "utils/acl.h"
-#include "miscadmin.h"
+#include "utils/tqual.h"
 
 /*
  * ConversionCreate

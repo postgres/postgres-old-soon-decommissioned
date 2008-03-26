@@ -61,6 +61,7 @@
 #include "utils/lsyscache.h"
 #include "utils/memutils.h"
 #include "utils/syscache.h"
+#include "utils/tqual.h"
 
 
 /* result structure for get_rels_with_domain() */

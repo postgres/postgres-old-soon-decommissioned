@@ -23,7 +23,7 @@
 #include "storage/block.h"
 #include "storage/lmgr.h"
 #include "utils/rel.h"
-#include "utils/tqual.h"
+#include "utils/snapshot.h"
 
 /* ----------------
  *		fastgetattr

@@ -45,6 +45,7 @@
 #include "rewrite/rewriteSupport.h"
 #include "utils/fmgroids.h"
 #include "utils/lsyscache.h"
+#include "utils/tqual.h"
 #include "utils/typcache.h"
 #include "utils/xml.h"
 

@@ -58,6 +58,7 @@
 #include "utils/guc.h"
 #include "utils/memutils.h"
 #include "utils/ps_status.h"
+#include "utils/tqual.h"
 
 
 /* ----------

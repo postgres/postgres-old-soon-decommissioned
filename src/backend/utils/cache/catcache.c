@@ -30,6 +30,7 @@
 #include "utils/relcache.h"
 #include "utils/resowner.h"
 #include "utils/syscache.h"
+#include "utils/tqual.h"
 
 
  /* #define CACHEDEBUG */	/* turns DEBUG elogs on */

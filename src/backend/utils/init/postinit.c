@@ -45,6 +45,7 @@
 #include "utils/portal.h"
 #include "utils/relcache.h"
 #include "utils/syscache.h"
+#include "utils/tqual.h"
 
 
 static bool FindMyDatabase(const char *name, Oid *db_id, Oid *db_tablespace);

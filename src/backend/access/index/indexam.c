@@ -68,6 +68,7 @@
 #include "pgstat.h"
 #include "utils/relcache.h"
 #include "utils/snapmgr.h"
+#include "utils/tqual.h"
 
 
 /* ----------------------------------------------------------------

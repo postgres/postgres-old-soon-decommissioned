@@ -42,6 +42,7 @@
 #include "utils/lsyscache.h"
 #include "utils/memutils.h"
 #include "utils/snapmgr.h"
+#include "utils/tqual.h"
 
 
 /* ----------

@@ -97,6 +97,7 @@
 #include "utils/memutils.h"
 #include "utils/ps_status.h"
 #include "utils/syscache.h"
+#include "utils/tqual.h"
 
 
 /*

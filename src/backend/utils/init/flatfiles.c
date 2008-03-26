@@ -50,6 +50,7 @@
 #include "utils/flatfiles.h"
 #include "utils/relcache.h"
 #include "utils/resowner.h"
+#include "utils/tqual.h"
 
 
 /* Actual names of the flat files (within $PGDATA) */

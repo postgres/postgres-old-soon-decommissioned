@@ -49,6 +49,7 @@
 #include "parser/parsetree.h"
 #include "utils/memutils.h"
 #include "utils/relcache.h"
+#include "utils/tqual.h"
 
 
 /* ----------------------------------------------------------------

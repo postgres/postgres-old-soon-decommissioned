@@ -52,6 +52,7 @@
 #include "utils/acl.h"
 #include "utils/lsyscache.h"
 #include "utils/memutils.h"
+#include "utils/tqual.h"
 
 
 typedef struct evalPlanQual
