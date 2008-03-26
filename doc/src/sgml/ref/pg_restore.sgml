@@ -200,7 +200,8 @@
       <term><option>--ignore-version</option></term>
       <listitem>
        <para>
-        Ignore database version checks.
+        Ignore version mismatch between
+        <application>pg_restore</application> and the database server.
        </para>
       </listitem>
      </varlistentry>
