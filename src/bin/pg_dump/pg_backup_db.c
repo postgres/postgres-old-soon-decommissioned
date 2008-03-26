@@ -72,9 +72,10 @@ _check_database_version(ArchiveHandle *AH, bool ignoreVersion)
 		write_msg(NULL, "server version: %s; %s version: %s\n",
 				  remoteversion_str, progname, PG_VERSION);
 		if (ignoreVersion)
-			write_msg(NULL, "proceeding despite version mismatch\n");
+			write_msg(NULL, "ignoring server version mismatch\n");
 		else
-			die_horribly(AH, NULL, "aborting because of version mismatch  (Use the -i option to proceed anyway.)\n");
+			die_horribly(AH, NULL, "aborting because of server version mismatch\n"
+			"Use the -i option to bypass server version check, but be prepared for failure.\n");
 	}
 }
 
