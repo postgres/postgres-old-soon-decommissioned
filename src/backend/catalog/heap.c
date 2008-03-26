@@ -60,7 +60,7 @@
 #include "utils/lsyscache.h"
 #include "utils/relcache.h"
 #include "utils/syscache.h"
-#include "utils/snapmgmt.h"
+#include "utils/snapmgr.h"
 
 
 static void AddNewRelationTuple(Relation pg_class_desc,

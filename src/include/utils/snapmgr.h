@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
- * snapmgmt.h
- *	  POSTGRES snapshot management definitions
+ * snapmgr.h
+ *	  POSTGRES snapshot manager
  *
  * Portions Copyright (c) 1996-2008, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
@@ -10,8 +10,8 @@
  *
  *-------------------------------------------------------------------------
  */
-#ifndef SNAPMGMT_H
-#define SNAPMGMT_H
+#ifndef SNAPMGR_H
+#define SNAPMGR_H
 
 #include "utils/snapshot.h"
 
@@ -30,4 +30,4 @@ extern Snapshot CopySnapshot(Snapshot snapshot);
 extern void FreeSnapshot(Snapshot snapshot);
 extern void FreeXactSnapshot(void);
 
-#endif /* SNAPMGMT_H */
+#endif /* SNAPMGR_H */

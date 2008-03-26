@@ -66,7 +66,7 @@
 #include "utils/lsyscache.h"
 #include "utils/memutils.h"
 #include "utils/ps_status.h"
-#include "utils/snapmgmt.h"
+#include "utils/snapmgr.h"
 #include "mb/pg_wchar.h"
 
 #include "pgstat.h"

@@ -55,7 +55,7 @@
 #include "utils/relcache.h"
 #include "utils/syscache.h"
 #include "utils/tuplesort.h"
-#include "utils/snapmgmt.h"
+#include "utils/snapmgr.h"
 
 
 /* state info for validate_index bulkdelete callback */

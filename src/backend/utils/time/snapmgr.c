@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
- * snapmgmt.c
- *		PostgreSQL snapshot management code.
+ * snapmgr.c
+ *		PostgreSQL snapshot manager
  *
  * Portions Copyright (c) 1996-2008, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
@@ -15,7 +15,7 @@
 #include "access/xact.h"
 #include "access/transam.h"
 #include "storage/procarray.h"
-#include "utils/snapmgmt.h"
+#include "utils/snapmgr.h"
 #include "utils/tqual.h"
 
 

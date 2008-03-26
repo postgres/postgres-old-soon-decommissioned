@@ -40,7 +40,7 @@
 #include "utils/builtins.h"
 #include "utils/lsyscache.h"
 #include "utils/memutils.h"
-#include "utils/snapmgmt.h"
+#include "utils/snapmgr.h"
 
 
 #define ISOCTAL(c) (((c) >= '0') && ((c) <= '7'))
