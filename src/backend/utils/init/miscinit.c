@@ -841,8 +841,7 @@ CreateLockFile(const char *filename, bool amPostmaster,
 										id1, id2),
 								 errhint("If you're sure there are no old "
 									"server processes still running, remove "
-										 "the shared memory block with "
-									  "the command \"ipcclean\", \"ipcrm\", "
+										 "the shared memory block "
 										 "or just delete the file \"%s\".",
 										 filename)));
 				}
