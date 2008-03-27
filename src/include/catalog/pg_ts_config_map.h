@@ -21,12 +21,7 @@
 #ifndef PG_TS_CONFIG_MAP_H
 #define PG_TS_CONFIG_MAP_H
 
-/* ----------------
- *		postgres.h contains the system type definitions and the
- *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
- *		can be read by both genbki.sh and the C compiler.
- * ----------------
- */
+#include "catalog/genbki.h"
 
 /* ----------------
  *		pg_ts_config_map definition.  cpp turns this into

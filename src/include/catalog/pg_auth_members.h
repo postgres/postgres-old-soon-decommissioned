@@ -19,6 +19,8 @@
 #ifndef PG_AUTH_MEMBERS_H
 #define PG_AUTH_MEMBERS_H
 
+#include "catalog/genbki.h"
+
 /* ----------------
  *		pg_auth_members definition.  cpp turns this into
  *		typedef struct FormData_pg_auth_members

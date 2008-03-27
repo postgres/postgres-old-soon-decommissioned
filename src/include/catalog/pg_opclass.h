@@ -39,12 +39,7 @@
 #ifndef PG_OPCLASS_H
 #define PG_OPCLASS_H
 
-/* ----------------
- *		postgres.h contains the system type definitions and the
- *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
- *		can be read by both genbki.sh and the C compiler.
- * ----------------
- */
+#include "catalog/genbki.h"
 
 /* ----------------
  *		pg_opclass definition.	cpp turns this into

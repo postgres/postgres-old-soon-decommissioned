@@ -22,14 +22,8 @@
 #ifndef PG_OPERATOR_H
 #define PG_OPERATOR_H
 
+#include "catalog/genbki.h"
 #include "nodes/pg_list.h"
-
-/* ----------------
- *		postgres.h contains the system type definitions and the
- *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
- *		can be read by both genbki.sh and the C compiler.
- * ----------------
- */
 
 /* ----------------
  *		pg_operator definition.  cpp turns this into

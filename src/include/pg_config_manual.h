@@ -103,6 +103,17 @@
 #define INDEX_MAX_KEYS		32
 
 /*
+ * Set the upper and lower bounds of sequence values.
+ */
+#ifndef INT64_IS_BUSTED
+#define SEQ_MAXVALUE	INT64CONST(0x7FFFFFFFFFFFFFFF)
+#else							/* INT64_IS_BUSTED */
+#define SEQ_MAXVALUE	((int64) 0x7FFFFFFF)
+#endif   /* INT64_IS_BUSTED */
+
+#define SEQ_MINVALUE	(-SEQ_MAXVALUE)
+
+/*
  * Number of spare LWLocks to allocate for user-defined add-on code.
  */
 #define NUM_USER_DEFINED_LWLOCKS	4

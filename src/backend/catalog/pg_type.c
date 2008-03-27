@@ -21,6 +21,7 @@
 #include "catalog/pg_namespace.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
+#include "catalog/pg_type_fn.h"
 #include "commands/typecmds.h"
 #include "miscadmin.h"
 #include "parser/scansup.h"

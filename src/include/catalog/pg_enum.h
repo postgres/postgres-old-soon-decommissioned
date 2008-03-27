@@ -21,14 +21,8 @@
 #ifndef PG_ENUM_H
 #define PG_ENUM_H
 
+#include "catalog/genbki.h"
 #include "nodes/pg_list.h"
-
-/* ----------------
- *		postgres.h contains the system type definitions and the
- *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
- *		can be read by both genbki.sh and the C compiler.
- * ----------------
- */
 
 /* ----------------
  *		pg_enum definition.  cpp turns this into

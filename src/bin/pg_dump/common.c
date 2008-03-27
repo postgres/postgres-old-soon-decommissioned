@@ -15,14 +15,13 @@
  *
  *-------------------------------------------------------------------------
  */
-
 #include "postgres_fe.h"
-#include "pg_backup_archiver.h"
-
-#include "postgres.h"
-#include "catalog/pg_class.h"
 
 #include <ctype.h>
+
+#include "catalog/pg_class.h"
+
+#include "pg_backup_archiver.h"
 
 
 /*

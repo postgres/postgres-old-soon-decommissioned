@@ -4,11 +4,9 @@
  * Copyright (c) 2000-2008, PostgreSQL Global Development Group
  *
  * $PostgreSQL$
- *
- * Note: we include postgres.h not postgres_fe.h so that we can include
- * catalog/pg_type.h, and thereby have access to INT4OID and similar macros.
  */
-#include "postgres.h"
+#include "postgres_fe.h"
+
 #include "print.h"
 #include "catalog/pg_type.h"
 

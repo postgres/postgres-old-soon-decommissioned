@@ -19,12 +19,7 @@
 #ifndef PG_SHDEPEND_H
 #define PG_SHDEPEND_H
 
-/* ----------------
- *		postgres.h contains the system type definitions and the
- *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
- *		can be read by both genbki.sh and the C compiler.
- * ----------------
- */
+#include "catalog/genbki.h"
 
 /* ----------------
  *		pg_shdepend definition.  cpp turns this into
@@ -32,6 +27,7 @@
  * ----------------
  */
 #define SharedDependRelationId	1214
+
 CATALOG(pg_shdepend,1214) BKI_SHARED_RELATION BKI_WITHOUT_OIDS
 {
 	/*

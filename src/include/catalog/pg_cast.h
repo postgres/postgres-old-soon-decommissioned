@@ -21,6 +21,13 @@
 #ifndef PG_CAST_H
 #define PG_CAST_H
 
+#include "catalog/genbki.h"
+
+/* ----------------
+ *		pg_cast definition.  cpp turns this into
+ *		typedef struct FormData_pg_cast
+ * ----------------
+ */
 #define CastRelationId	2605
 
 CATALOG(pg_cast,2605)

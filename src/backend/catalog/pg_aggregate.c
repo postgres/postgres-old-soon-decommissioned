@@ -21,6 +21,7 @@
 #include "catalog/pg_language.h"
 #include "catalog/pg_operator.h"
 #include "catalog/pg_proc.h"
+#include "catalog/pg_proc_fn.h"
 #include "catalog/pg_type.h"
 #include "miscadmin.h"
 #include "parser/parse_coerce.h"

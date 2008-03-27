@@ -13,12 +13,7 @@
 #ifndef PG_AUTOVACUUM_H
 #define PG_AUTOVACUUM_H
 
-/* ----------------
- *		postgres.h contains the system type definitions and the
- *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
- *		can be read by both genbki.sh and the C compiler.
- * ----------------
- */
+#include "catalog/genbki.h"
 
 /* ----------------
  *		pg_autovacuum definition.	cpp turns this into
@@ -26,6 +21,7 @@
  * ----------------
  */
 #define AutovacuumRelationId	1248
+
 CATALOG(pg_autovacuum,1248) BKI_WITHOUT_OIDS
 {
 	Oid			vacrelid;		/* OID of table */

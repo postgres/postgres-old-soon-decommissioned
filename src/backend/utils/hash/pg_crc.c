@@ -23,8 +23,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "postgres.h"
 
+/* Use c.h so that this file can be built in either frontend or backend */
+#include "c.h"
 
 
 /*

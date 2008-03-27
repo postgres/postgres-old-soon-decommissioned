@@ -3,6 +3,9 @@
  * keywords.c
  *	  lexical token lookup for key words in PostgreSQL
  *
+ * NB: This file is also used by pg_dump.
+ *
+ *
  * Portions Copyright (c) 1996-2008, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
@@ -12,16 +15,22 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "postgres.h"
+
+/* Use c.h so that this file can be built in either frontend or backend */
+#include "c.h"
 
 #include <ctype.h>
 
-#include "nodes/parsenodes.h"
-#include "parser/gramparse.h"	/* required before parser/parse.h! */
+/*
+ * This macro definition overrides the YYSTYPE union definition in parse.h.
+ * We don't need that struct in this file, and including the real definition
+ * would require sucking in some backend-only include files.
+ */
+#define YYSTYPE int
+
 #include "parser/keywords.h"
 #include "parser/parse.h"
 
-/* NB: This file is also used by pg_dump. */
 
 /*
  * List of keyword (name, token-value, category) entries.

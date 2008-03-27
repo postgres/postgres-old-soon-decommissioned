@@ -29,6 +29,7 @@
 #include "catalog/pg_cast.h"
 #include "catalog/pg_constraint.h"
 #include "catalog/pg_conversion.h"
+#include "catalog/pg_conversion_fn.h"
 #include "catalog/pg_database.h"
 #include "catalog/pg_depend.h"
 #include "catalog/pg_language.h"

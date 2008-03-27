@@ -19,12 +19,7 @@
 #ifndef PG_DATABASE_H
 #define PG_DATABASE_H
 
-/* ----------------
- *		postgres.h contains the system type definitions and the
- *		CATALOG(), BKI_BOOTSTRAP and DATA() sugar words so this file
- *		can be read by both genbki.sh and the C compiler.
- * ----------------
- */
+#include "catalog/genbki.h"
 
 /* ----------------
  *		pg_database definition.  cpp turns this into

@@ -94,13 +94,4 @@ extern void AlterSequence(AlterSeqStmt *stmt);
 extern void seq_redo(XLogRecPtr lsn, XLogRecord *rptr);
 extern void seq_desc(StringInfo buf, uint8 xl_info, char *rec);
 
-/* Set the upper and lower bounds of a sequence */
-#ifndef INT64_IS_BUSTED
-#define SEQ_MAXVALUE	INT64CONST(0x7FFFFFFFFFFFFFFF)
-#else							/* INT64_IS_BUSTED */
-#define SEQ_MAXVALUE	((int64) 0x7FFFFFFF)
-#endif   /* INT64_IS_BUSTED */
-
-#define SEQ_MINVALUE	(-SEQ_MAXVALUE)
-
 #endif   /* SEQUENCE_H */
