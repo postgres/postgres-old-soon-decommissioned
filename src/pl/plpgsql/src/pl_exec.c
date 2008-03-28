@@ -538,8 +538,10 @@ plpgsql_exec_trigger(PLpgSQL_function *func,
 		var->value = CStringGetTextDatum("UPDATE");
 	else if (TRIGGER_FIRED_BY_DELETE(trigdata->tg_event))
 		var->value = CStringGetTextDatum("DELETE");
+	else if (TRIGGER_FIRED_BY_TRUNCATE(trigdata->tg_event))
+		var->value = CStringGetTextDatum("TRUNCATE");
 	else
-		elog(ERROR, "unrecognized trigger action: not INSERT, DELETE, or UPDATE");
+		elog(ERROR, "unrecognized trigger action: not INSERT, DELETE, UPDATE, or TRUNCATE");
 	var->isnull = false;
 	var->freeval = true;
 

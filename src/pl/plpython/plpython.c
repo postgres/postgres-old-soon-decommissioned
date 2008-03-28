@@ -714,6 +714,8 @@ PLy_trigger_build_args(FunctionCallInfo fcinfo, PLyProcedure * proc, HeapTuple *
 				pltevent = PyString_FromString("DELETE");
 			else if (TRIGGER_FIRED_BY_UPDATE(tdata->tg_event))
 				pltevent = PyString_FromString("UPDATE");
+			else if (TRIGGER_FIRED_BY_TRUNCATE(tdata->tg_event))
+				pltevent = PyString_FromString("TRUNCATE");
 			else
 			{
 				elog(ERROR, "unrecognized OP tg_event: %u", tdata->tg_event);

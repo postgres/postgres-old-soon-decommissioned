@@ -2785,9 +2785,9 @@ RAISE EXCEPTION 'Nonexistent ID --> %', user_id;
      <listitem>
       <para>
        Data type <type>text</type>; a string of
-       <literal>INSERT</literal>, <literal>UPDATE</literal>, or
-       <literal>DELETE</literal> telling for which operation the
-       trigger was fired.
+       <literal>INSERT</literal>, <literal>UPDATE</literal>,
+       <literal>DELETE</literal>, or <literal>TRUNCATE</>
+       telling for which operation the trigger was fired.
       </para>
      </listitem>
     </varlistentry>

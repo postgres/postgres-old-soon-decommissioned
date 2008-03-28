@@ -824,6 +824,8 @@ pltcl_trigger_handler(PG_FUNCTION_ARGS)
 				Tcl_DStringAppendElement(&tcl_cmd, "DELETE");
 			else if (TRIGGER_FIRED_BY_UPDATE(trigdata->tg_event))
 				Tcl_DStringAppendElement(&tcl_cmd, "UPDATE");
+			else if (TRIGGER_FIRED_BY_TRUNCATE(trigdata->tg_event))
+				Tcl_DStringAppendElement(&tcl_cmd, "TRUNCATE");
 			else
 				elog(ERROR, "unrecognized OP tg_event: %u", trigdata->tg_event);
 

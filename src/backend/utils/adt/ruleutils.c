@@ -499,6 +499,13 @@ pg_get_triggerdef(PG_FUNCTION_ARGS)
 		else
 			appendStringInfo(&buf, " UPDATE");
 	}
+	if (TRIGGER_FOR_TRUNCATE(trigrec->tgtype))
+	{
+		if (findx > 0)
+			appendStringInfo(&buf, " OR TRUNCATE");
+		else
+			appendStringInfo(&buf, " TRUNCATE");
+	}
 	appendStringInfo(&buf, " ON %s ",
 					 generate_relation_name(trigrec->tgrelid));
 

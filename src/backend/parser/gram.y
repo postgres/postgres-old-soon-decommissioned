@@ -2719,6 +2719,7 @@ TriggerOneEvent:
 			INSERT									{ $$ = 'i'; }
 			| DELETE_P								{ $$ = 'd'; }
 			| UPDATE								{ $$ = 'u'; }
+			| TRUNCATE								{ $$ = 't'; }
 		;
 
 TriggerForSpec:

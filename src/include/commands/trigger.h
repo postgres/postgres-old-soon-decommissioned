@@ -38,11 +38,18 @@ typedef struct TriggerData
 	Buffer		tg_newtuplebuf;
 } TriggerData;
 
-/* TriggerEvent bit flags */
-
+/*
+ * TriggerEvent bit flags 
+ *
+ * Note that we assume different event types (INSERT/DELETE/UPDATE/TRUNCATE)
+ * can't be OR'd together in a single TriggerEvent.  This is unlike the
+ * situation for pg_trigger rows, so pg_trigger.tgtype uses a different
+ * representation!
+ */
 #define TRIGGER_EVENT_INSERT			0x00000000
 #define TRIGGER_EVENT_DELETE			0x00000001
 #define TRIGGER_EVENT_UPDATE			0x00000002
+#define TRIGGER_EVENT_TRUNCATE			0x00000003
 #define TRIGGER_EVENT_OPMASK			0x00000003
 #define TRIGGER_EVENT_ROW				0x00000004
 #define TRIGGER_EVENT_BEFORE			0x00000008
@@ -65,6 +72,10 @@ typedef struct TriggerData
 #define TRIGGER_FIRED_BY_UPDATE(event)	\
 		(((TriggerEvent) (event) & TRIGGER_EVENT_OPMASK) == \
 												TRIGGER_EVENT_UPDATE)
+
+#define TRIGGER_FIRED_BY_TRUNCATE(event) \
+		(((TriggerEvent) (event) & TRIGGER_EVENT_OPMASK) == \
+												TRIGGER_EVENT_TRUNCATE)
 
 #define TRIGGER_FIRED_FOR_ROW(event)			\
 		((TriggerEvent) (event) & TRIGGER_EVENT_ROW)
@@ -140,6 +151,10 @@ extern void ExecARUpdateTriggers(EState *estate,
 					 ResultRelInfo *relinfo,
 					 ItemPointer tupleid,
 					 HeapTuple newtuple);
+extern void ExecBSTruncateTriggers(EState *estate,
+					 ResultRelInfo *relinfo);
+extern void ExecASTruncateTriggers(EState *estate,
+					 ResultRelInfo *relinfo);
 
 extern void AfterTriggerBeginXact(void);
 extern void AfterTriggerBeginQuery(void);

@@ -89,6 +89,7 @@ typedef FormData_pg_trigger *Form_pg_trigger;
 #define TRIGGER_TYPE_INSERT				(1 << 2)
 #define TRIGGER_TYPE_DELETE				(1 << 3)
 #define TRIGGER_TYPE_UPDATE				(1 << 4)
+#define TRIGGER_TYPE_TRUNCATE			(1 << 5)
 
 /* Macros for manipulating tgtype */
 #define TRIGGER_CLEAR_TYPE(type)		((type) = 0)
@@ -98,11 +99,13 @@ typedef FormData_pg_trigger *Form_pg_trigger;
 #define TRIGGER_SETT_INSERT(type)		((type) |= TRIGGER_TYPE_INSERT)
 #define TRIGGER_SETT_DELETE(type)		((type) |= TRIGGER_TYPE_DELETE)
 #define TRIGGER_SETT_UPDATE(type)		((type) |= TRIGGER_TYPE_UPDATE)
+#define TRIGGER_SETT_TRUNCATE(type)		((type) |= TRIGGER_TYPE_TRUNCATE)
 
 #define TRIGGER_FOR_ROW(type)			((type) & TRIGGER_TYPE_ROW)
 #define TRIGGER_FOR_BEFORE(type)		((type) & TRIGGER_TYPE_BEFORE)
 #define TRIGGER_FOR_INSERT(type)		((type) & TRIGGER_TYPE_INSERT)
 #define TRIGGER_FOR_DELETE(type)		((type) & TRIGGER_TYPE_DELETE)
 #define TRIGGER_FOR_UPDATE(type)		((type) & TRIGGER_TYPE_UPDATE)
+#define TRIGGER_FOR_TRUNCATE(type)		((type) & TRIGGER_TYPE_TRUNCATE)
 
 #endif   /* PG_TRIGGER_H */
