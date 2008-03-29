@@ -224,13 +224,13 @@ slashUsage(unsigned short int pager)
 	fprintf(output, _("  \\dFd [PATTERN] list text search dictionaries (add \"+\" for more detail)\n"));
 	fprintf(output, _("  \\dFt [PATTERN] list text search templates\n"));
 	fprintf(output, _("  \\dFp [PATTERN] list text search parsers (add \"+\" for more detail)\n"));
-	fprintf(output, _("  \\dg [PATTERN]  list groups\n"));
+	fprintf(output, _("  \\dg [PATTERN]  list roles (groups)\n"));
 	fprintf(output, _("  \\dn [PATTERN]  list schemas (add \"+\" for more detail)\n"));
 	fprintf(output, _("  \\do [NAME]     list operators\n"));
 	fprintf(output, _("  \\dl            list large objects, same as \\lo_list\n"));
 	fprintf(output, _("  \\dp [PATTERN]  list table, view, and sequence access privileges\n"));
 	fprintf(output, _("  \\dT [PATTERN]  list data types (add \"+\" for more detail)\n"));
-	fprintf(output, _("  \\du [PATTERN]  list users\n"));
+	fprintf(output, _("  \\du [PATTERN]  list roles (users)\n"));
 	fprintf(output, _("  \\l             list all databases (add \"+\" for more detail)\n"));
 	fprintf(output, _("  \\z [PATTERN]   list table, view, and sequence access privileges (same as \\dp)\n"));
 	fprintf(output, "\n");
