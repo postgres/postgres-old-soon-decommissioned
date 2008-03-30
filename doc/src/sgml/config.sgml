@@ -4740,11 +4740,11 @@ dynamic_library_path = 'C:\tools\postgresql;H:\my_project\lib;$libdir'
       </indexterm>
       <listitem>
        <para>
-        Reports whether <productname>PostgreSQL</productname> was built
-        with support for 64-bit-integer dates and times.  It is set by
-        configuring with <literal>--enable-integer-datetimes</literal>
-        when building <productname>PostgreSQL</productname>.  The
-        default value is <literal>off</literal>.
+        Reports whether <productname>PostgreSQL</> was built with
+        support for 64-bit-integer dates and times.  This can be
+        disabled by configuring with <literal>--disable-integer-datetimes</>
+        when building <productname>PostgreSQL</>.  The default value is
+        <literal>on</literal>.
        </para>
       </listitem>
      </varlistentry>
