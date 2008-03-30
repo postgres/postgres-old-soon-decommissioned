@@ -1328,9 +1328,12 @@ Tue Oct 26 21:40:57 CEST 1999
         <term><literal>\l+</literal> (or <literal>\list+</literal>)</term>
         <listitem>
         <para>
-        List the names, owners, and character set encodings of all the databases in
-        the server. If <literal>+</literal> is appended to the command
-        name, database descriptions are also displayed.
+        List the names, owners, character set encodings, and access privileges
+        of all the databases in the server.
+        If <literal>+</literal> is appended to the command name, database
+        sizes, default tablespaces, and descriptions are also displayed.
+        (Size information is only available for databases that the current
+        user can connect to.)
         </para>
         </listitem>
       </varlistentry>

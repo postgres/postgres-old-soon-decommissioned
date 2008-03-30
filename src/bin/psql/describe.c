@@ -417,12 +417,20 @@ listAllDbs(bool verbose)
 	printfPQExpBuffer(&buf,
 					  "SELECT d.datname as \"%s\",\n"
 					  "       r.rolname as \"%s\",\n"
-					  "       pg_catalog.pg_encoding_to_char(d.encoding) as \"%s\"",
+					  "       pg_catalog.pg_encoding_to_char(d.encoding) as \"%s\",\n"
+					  "       d.datacl as \"%s\"",
 					  gettext_noop("Name"),
 					  gettext_noop("Owner"),
-					  gettext_noop("Encoding"));
+					  gettext_noop("Encoding"),
+					  gettext_noop("Access Privileges"));
 	if (verbose)
 	{
+		appendPQExpBuffer(&buf,
+						  ",\n       CASE WHEN pg_catalog.has_database_privilege(d.datname, 'CONNECT')\n"
+						  "            THEN pg_catalog.pg_size_pretty(pg_catalog.pg_database_size(d.datname))\n"
+						  "            ELSE 'No Access'\n"
+						  "       END as \"%s\"",
+						  gettext_noop("Size"));
 		appendPQExpBuffer(&buf,
 						  ",\n       t.spcname as \"%s\"",
 						  gettext_noop("Tablespace"));
