@@ -784,7 +784,7 @@ directory_exists(const char *dir)
 
 	if (stat(dir, &st) != 0)
 		return false;
-	if (st.st_mode & S_IFDIR)
+	if (S_ISDIR(st.st_mode))
 		return true;
 	return false;
 }
