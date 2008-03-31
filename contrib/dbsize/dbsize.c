@@ -169,7 +169,7 @@ pg_tablespace_size(PG_FUNCTION_ARGS)
 					 errmsg("could not stat \"%s\": %m", pathname)));
 		totalsize += fst.st_size;
 
-		if (fst.st_mode & S_IFDIR)
+		if (S_ISDIR(fst.st_mode))
 		    totalsize += db_dir_size(pathname);
 	}
 
