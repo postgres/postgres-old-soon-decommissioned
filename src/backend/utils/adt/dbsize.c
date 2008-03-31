@@ -186,7 +186,7 @@ calculate_tablespace_size(Oid tblspcOid)
 						 errmsg("could not stat file \"%s\": %m", pathname)));
 		}
 
-		if (fst.st_mode & S_IFDIR)
+		if (S_ISDIR(fst.st_mode))
 			totalsize += db_dir_size(pathname);
 
 		totalsize += fst.st_size;
