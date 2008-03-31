@@ -5223,11 +5223,13 @@ defaultNoticeProcessor(void *arg, const char *message)
    authorities (<acronym>CA</acronym>) trusted by the server.  A matching
    private key file <filename>~/.postgresql/postgresql.key</> must also
    be present, unless the secret key for the certificate is stored in a
-   hardware token, as specified by <envar>PGSSLKEY</envar>.  (On Microsoft
-   Windows these files are named
+   hardware token, as specified by <envar>PGSSLKEY</envar>.  The private
+   key file must not allow any access to world or group; achieve this by the
+   command <command>chmod 0600 ~/.postgresql/postgresql.key</command>.
+   On Microsoft Windows these files are named
    <filename>%APPDATA%\postgresql\postgresql.crt</filename> and
-   <filename>%APPDATA%\postgresql\postgresql.key</filename>.) The private
-   key file must not be world-readable.
+   <filename>%APPDATA%\postgresql\postgresql.key</filename>, and there
+   is no special permissions check since the directory is presumed secure.
   </para>
 
   <para>

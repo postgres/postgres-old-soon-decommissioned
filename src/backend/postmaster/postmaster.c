@@ -1053,6 +1053,13 @@ checkDataDir(void)
 						DataDir)));
 	}
 
+	/* eventual chdir would fail anyway, but let's test ... */
+	if (!S_ISDIR(stat_buf.st_mode))
+		ereport(FATAL,
+				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
+				 errmsg("specified data directory \"%s\" is not a directory",
+						DataDir)));
+
 	/*
 	 * Check that the directory belongs to my userid; if not, reject.
 	 *
