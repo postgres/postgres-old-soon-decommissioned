@@ -662,8 +662,6 @@ ExecuteTruncate(TruncateStmt *stmt)
 		heap_relid = RelationGetRelid(rel);
 		toast_relid = rel->rd_rel->reltoastrelid;
 
-		heap_close(rel, NoLock);
-
 		/*
 		 * The same for the toast table, if any.
 		 */
@@ -696,6 +694,14 @@ ExecuteTruncate(TruncateStmt *stmt)
 
 	/* We can clean up the EState now */
 	FreeExecutorState(estate);
+
+	/* And close the rels (can't do this while EState still holds refs) */
+	foreach(cell, rels)
+	{
+		Relation	rel = (Relation) lfirst(cell);
+
+		heap_close(rel, NoLock);
+	}
 }
 
 /*
