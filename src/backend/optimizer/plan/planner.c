@@ -503,7 +503,7 @@ preprocess_expression(PlannerInfo *root, Node *expr, int kind)
 		(root->parse->jointree->fromlist != NIL ||
 		 kind == EXPRKIND_QUAL ||
 		 root->query_level > 1))
-		expr = eval_const_expressions(expr);
+		expr = eval_const_expressions(root, expr);
 
 	/*
 	 * If it's a qual or havingQual, canonicalize it.
