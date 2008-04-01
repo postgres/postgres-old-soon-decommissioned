@@ -205,7 +205,7 @@ set_plain_rel_pathlist(PlannerInfo *root, RelOptInfo *rel, RangeTblEntry *rte)
 	 * set_append_rel_pathlist().
 	 */
 	if (rel->reloptkind == RELOPT_BASEREL &&
-		relation_excluded_by_constraints(rel, rte))
+		relation_excluded_by_constraints(root, rel, rte))
 	{
 		set_dummy_rel_pathlist(rel);
 		return;
@@ -321,7 +321,7 @@ set_append_rel_pathlist(PlannerInfo *root, RelOptInfo *rel,
 			adjust_appendrel_attrs((Node *) rel->baserestrictinfo,
 								   appinfo);
 
-		if (relation_excluded_by_constraints(childrel, childRTE))
+		if (relation_excluded_by_constraints(root, childrel, childRTE))
 		{
 			/*
 			 * This child need not be scanned, so we can omit it from the

@@ -27,8 +27,8 @@ extern PGDLLIMPORT get_relation_info_hook_type get_relation_info_hook;
 extern void get_relation_info(PlannerInfo *root, Oid relationObjectId,
 				  bool inhparent, RelOptInfo *rel);
 
-extern bool relation_excluded_by_constraints(RelOptInfo *rel,
-								 RangeTblEntry *rte);
+extern bool relation_excluded_by_constraints(PlannerInfo *root,
+								 RelOptInfo *rel, RangeTblEntry *rte);
 
 extern List *build_physical_tlist(PlannerInfo *root, RelOptInfo *rel);
 
