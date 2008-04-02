@@ -77,6 +77,9 @@ PerformCursorOpen(PlannedStmt *stmt, ParamListInfo params,
 	stmt = copyObject(stmt);
 	stmt->utilityStmt = NULL;	/* make it look like plain SELECT */
 
+	if (queryString)			/* copy the source text too for safety */
+		queryString = pstrdup(queryString);
+
 	PortalDefineQuery(portal,
 					  NULL,
 					  queryString,
