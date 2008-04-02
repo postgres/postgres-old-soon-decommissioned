@@ -249,9 +249,13 @@ ExecuteQuery(ExecuteStmt *stmt, const char *queryString,
 		plan_list = cplan->stmt_list;
 	}
 
+	/*
+	 * Note: we don't bother to copy the source query string into the portal.
+	 * Any errors it might be useful for will already have been reported.
+	 */
 	PortalDefineQuery(portal,
 					  NULL,
-					  entry->plansource->query_string,
+					  NULL,
 					  entry->plansource->commandTag,
 					  plan_list,
 					  cplan);
