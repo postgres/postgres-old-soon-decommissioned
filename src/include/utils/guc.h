@@ -263,10 +263,6 @@ extern const char *assign_default_tablespace(const char *newval,
 extern const char *assign_temp_tablespaces(const char *newval,
 						bool doit, GucSource source);
 
-/* in utils/adt/regexp.c */
-extern const char *assign_regex_flavor(const char *value,
-					bool doit, GucSource source);
-
 /* in catalog/namespace.c */
 extern const char *assign_search_path(const char *newval,
 				   bool doit, GucSource source);
