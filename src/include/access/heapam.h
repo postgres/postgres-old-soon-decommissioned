@@ -153,9 +153,6 @@ extern HeapTuple heap_getnext(HeapScanDesc scan, ScanDirection direction);
 extern bool heap_fetch(Relation relation, Snapshot snapshot,
 		   HeapTuple tuple, Buffer *userbuf, bool keep_buf,
 		   Relation stats_relation);
-extern bool heap_release_fetch(Relation relation, Snapshot snapshot,
-				   HeapTuple tuple, Buffer *userbuf, bool keep_buf,
-				   Relation stats_relation);
 extern bool heap_hot_search_buffer(ItemPointer tid, Buffer buffer,
 					   Snapshot snapshot, bool *all_dead);
 extern bool heap_hot_search(ItemPointer tid, Relation relation,
