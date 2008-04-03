@@ -497,7 +497,7 @@ extern void pgstat_reset_counters(void);
 extern void pgstat_report_autovac(Oid dboid);
 extern void pgstat_report_vacuum(Oid tableoid, bool shared,
 					 bool analyze, PgStat_Counter tuples);
-extern void pgstat_report_analyze(Oid tableoid, bool shared,
+extern void pgstat_report_analyze(Relation rel,
 					  PgStat_Counter livetuples,
 					  PgStat_Counter deadtuples);
 
