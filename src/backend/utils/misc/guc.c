@@ -229,6 +229,7 @@ static const struct config_enum_entry session_replication_role_options[] = {
 	{NULL, 0}
 };
 
+#ifdef HAVE_SYSLOG
 static const struct config_enum_entry syslog_facility_options[] = {
 	{"local0", LOG_LOCAL0},
 	{"local1", LOG_LOCAL1},
@@ -240,6 +241,7 @@ static const struct config_enum_entry syslog_facility_options[] = {
 	{"local7", LOG_LOCAL7},
 	{NULL, 0}
 };
+#endif
 
 
 /*
