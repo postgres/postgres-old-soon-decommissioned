@@ -15,4 +15,6 @@ DROP FUNCTION soundex(text);
 
 DROP FUNCTION metaphone (text,int);
 
+DROP FUNCTION levenshtein (text,text,int,int,int);
+
 DROP FUNCTION levenshtein (text,text);
