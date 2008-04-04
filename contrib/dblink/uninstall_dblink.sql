@@ -3,8 +3,6 @@
 -- Adjust this setting to control where the objects get dropped.
 SET search_path = public;
 
-DROP FUNCTION dblink_current_query ();
-
 DROP FUNCTION dblink_build_sql_update (text, int2vector, int4, _text, _text);
 
 DROP FUNCTION dblink_build_sql_delete (text, int2vector, int4, _text);

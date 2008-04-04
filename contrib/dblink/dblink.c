@@ -1631,23 +1631,6 @@ dblink_build_sql_update(PG_FUNCTION_ARGS)
 	PG_RETURN_TEXT_P(cstring_to_text(sql));
 }
 
-/*
- * dblink_current_query
- * return the current query string
- * to allow its use in (among other things)
- * rewrite rules
- */
-PG_FUNCTION_INFO_V1(dblink_current_query);
-Datum
-dblink_current_query(PG_FUNCTION_ARGS)
-{
-	if (debug_query_string)
-		PG_RETURN_TEXT_P(cstring_to_text(debug_query_string));
-	else
-		PG_RETURN_NULL();
-}
-
-
 /*************************************************************
  * internal functions
  */
