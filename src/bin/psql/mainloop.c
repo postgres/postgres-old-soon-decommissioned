@@ -11,7 +11,6 @@
 
 #include "command.h"
 #include "common.h"
-#include "help.h"
 #include "input.h"
 #include "settings.h"
 
@@ -172,13 +171,16 @@ MainLoop(FILE *source)
 			continue;
 		}
 
-		/* A request for help? Be friendly and show them the slash way of doing things */
+		/* A request for help? Be friendly and give them some guidance */
 		if (pset.cur_cmd_interactive && query_buf->len == 0 &&
 			pg_strncasecmp(line, "help", 4) == 0 &&
 			(line[4] == '\0' || line[4] == ';' || isspace(line[4])))
 		{
 			free(line);
-			slashUsage(pset.popt.topt.pager);
+			puts("You are using psql, the command-line interface to PostgreSQL.");
+			puts("Enter SQL commands, or type \\? for a list of backslash options.");
+			puts("Use \\h for SQL command help.");
+			puts("Use \\q to quit.");
 			continue;
 		}
 

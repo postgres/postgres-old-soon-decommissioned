@@ -188,7 +188,6 @@ slashUsage(unsigned short int pager)
 			ON(pset.timing));
 	fprintf(output, _("  \\unset NAME    unset (delete) internal variable\n"));
 	fprintf(output, _("  \\! [COMMAND]   execute command in shell or start interactive shell\n"));
-	fprintf(output, _("  \\?             display this help output\n"));
 	fprintf(output, "\n");
 
 	fprintf(output, _("Query Buffer\n"));
