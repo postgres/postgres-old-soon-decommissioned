@@ -7112,31 +7112,6 @@ assign_canonical_path(const char *newval, bool doit, GucSource source)
 }
 
 static const char *
-assign_backslash_quote(const char *newval, bool doit, GucSource source)
-{
-	BackslashQuoteType bq;
-	bool		bqbool;
-
-	/*
-	 * Although only "on", "off", and "safe_encoding" are documented, we use
-	 * parse_bool so we can accept all the likely variants of "on" and "off".
-	 */
-	if (pg_strcasecmp(newval, "safe_encoding") == 0)
-		bq = BACKSLASH_QUOTE_SAFE_ENCODING;
-	else if (parse_bool(newval, &bqbool))
-	{
-		bq = bqbool ? BACKSLASH_QUOTE_ON : BACKSLASH_QUOTE_OFF;
-	}
-	else
-		return NULL;			/* reject */
-
-	if (doit)
-		backslash_quote = bq;
-
-	return newval;
-}
-
-static const char *
 assign_timezone_abbreviations(const char *newval, bool doit, GucSource source)
 {
 	/*
