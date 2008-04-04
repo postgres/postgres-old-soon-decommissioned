@@ -845,6 +845,7 @@ extern Datum numeric_add(PG_FUNCTION_ARGS);
 extern Datum numeric_sub(PG_FUNCTION_ARGS);
 extern Datum numeric_mul(PG_FUNCTION_ARGS);
 extern Datum numeric_div(PG_FUNCTION_ARGS);
+extern Datum numeric_div_trunc(PG_FUNCTION_ARGS);
 extern Datum numeric_mod(PG_FUNCTION_ARGS);
 extern Datum numeric_inc(PG_FUNCTION_ARGS);
 extern Datum numeric_smaller(PG_FUNCTION_ARGS);

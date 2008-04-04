@@ -618,6 +618,9 @@
     <primary>degrees</primary>
    </indexterm>
    <indexterm>
+    <primary>div</primary>
+   </indexterm>
+   <indexterm>
     <primary>exp</primary>
    </indexterm>
    <indexterm>
@@ -715,6 +718,15 @@
        <entry>radians to degrees</entry>
        <entry><literal>degrees(0.5)</literal></entry>
        <entry><literal>28.6478897565412</literal></entry>
+      </row>
+
+      <row>
+       <entry><literal><function>div</function>(<parameter>y</parameter> <type>numeric</>,
+        <parameter>x</parameter> <type>numeric</>)</literal></entry>
+       <entry><type>numeric</></entry>
+       <entry>integer quotient of <parameter>y</parameter>/<parameter>x</parameter></entry>
+       <entry><literal>div(9,4)</literal></entry>
+       <entry><literal>2</literal></entry>
       </row>
 
       <row>
