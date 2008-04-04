@@ -35,7 +35,7 @@ typedef enum
 } BackslashQuoteType;
 
 /* GUC variables in scan.l (every one of these is a bad idea :-() */
-extern BackslashQuoteType backslash_quote;
+extern int backslash_quote;
 extern bool escape_string_warning;
 extern bool standard_conforming_strings;
 
