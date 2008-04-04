@@ -86,8 +86,8 @@
 
 
 /* GUC variables */
-XmlBinaryType xmlbinary;
-XmlOptionType xmloption;
+int xmlbinary;
+int xmloption;
 
 #ifdef USE_LIBXML
 
