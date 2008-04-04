@@ -55,7 +55,7 @@ static char    *dolqstart;      /* current $foo$ quote start string */
  * But we shall have to live with it as a short-term thing until the switch
  * to SQL-standard string syntax is complete.
  */
-BackslashQuoteType backslash_quote = BACKSLASH_QUOTE_SAFE_ENCODING;
+int				backslash_quote = BACKSLASH_QUOTE_SAFE_ENCODING;
 bool			escape_string_warning = true;
 bool			standard_conforming_strings = false;
 
