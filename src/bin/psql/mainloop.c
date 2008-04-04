@@ -11,6 +11,7 @@
 
 #include "command.h"
 #include "common.h"
+#include "help.h"
 #include "input.h"
 #include "settings.h"
 
@@ -168,6 +169,16 @@ MainLoop(FILE *source)
 		if (line[0] == '\0' && !psql_scan_in_quote(scan_state))
 		{
 			free(line);
+			continue;
+		}
+
+		/* A request for help? Be friendly and show them the slash way of doing things */
+		if (pset.cur_cmd_interactive && query_buf->len == 0 &&
+			pg_strncasecmp(line, "help", 4) == 0 &&
+			(line[4] == '\0' || line[4] == ';' || isspace(line[4])))
+		{
+			free(line);
+			slashUsage(pset.popt.topt.pager);
 			continue;
 		}
 
