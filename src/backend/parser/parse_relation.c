@@ -1114,6 +1114,16 @@ addRangeTableEntryForJoin(ParseState *pstate,
 	Alias	   *eref;
 	int			numaliases;
 
+	/*
+	 * Fail if join has too many columns --- we must be able to reference
+	 * any of the columns with an AttrNumber.
+	 */
+	if (list_length(aliasvars) > MaxAttrNumber)
+		ereport(ERROR,
+				(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
+				 errmsg("joins can have at most %d columns",
+						MaxAttrNumber)));
+
 	rte->rtekind = RTE_JOIN;
 	rte->relid = InvalidOid;
 	rte->subquery = NULL;
@@ -1374,7 +1384,7 @@ expandRTE(List *rtable, int rtindex, int sublevels_up,
 							varnode = makeVar(rtindex,
 											  attnum,
 											  atttypid,
-											  -1,
+											  colDef->typename->typmod,
 											  sublevels_up);
 
 							*colvars = lappend(*colvars, varnode);
@@ -1715,7 +1725,7 @@ get_rte_attribute_type(RangeTblEntry *rte, AttrNumber attnum,
 					ColumnDef  *colDef = list_nth(coldeflist, attnum - 1);
 
 					*vartype = typenameTypeId(colDef->typename);
-					*vartypmod = -1;
+					*vartypmod = colDef->typename->typmod;
 				}
 				else
 				{
