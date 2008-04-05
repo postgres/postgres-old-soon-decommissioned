@@ -163,6 +163,11 @@ RETURNS text
 AS 'MODULE_PATHNAME','dblink_build_sql_update'
 LANGUAGE C STRICT;
 
+CREATE OR REPLACE FUNCTION dblink_current_query ()
+RETURNS text
+AS 'SELECT current_query()'
+LANGUAGE SQL;
+
 CREATE OR REPLACE FUNCTION dblink_send_query(text, text)
 RETURNS int4
 AS 'MODULE_PATHNAME', 'dblink_send_query'
