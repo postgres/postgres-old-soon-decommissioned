@@ -1025,6 +1025,16 @@ addRangeTableEntryForJoin(ParseState *pstate,
 	Alias	   *eref;
 	int			numaliases;
 
+	/*
+	 * Fail if join has too many columns --- we must be able to reference
+	 * any of the columns with an AttrNumber.
+	 */
+	if (list_length(aliasvars) > MaxAttrNumber)
+		ereport(ERROR,
+				(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
+				 errmsg("joins can have at most %d columns",
+						MaxAttrNumber)));
+
 	rte->rtekind = RTE_JOIN;
 	rte->relid = InvalidOid;
 	rte->subquery = NULL;
