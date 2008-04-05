@@ -174,13 +174,14 @@ MainLoop(FILE *source)
 		/* A request for help? Be friendly and give them some guidance */
 		if (pset.cur_cmd_interactive && query_buf->len == 0 &&
 			pg_strncasecmp(line, "help", 4) == 0 &&
-			(line[4] == '\0' || line[4] == ';' || isspace(line[4])))
+			(line[4] == '\0' || line[4] == ';' || isspace((unsigned char) line[4])))
 		{
 			free(line);
-			puts("You are using psql, the command-line interface to PostgreSQL.");
-			puts("Enter SQL commands, or type \\? for a list of backslash options.");
-			puts("Use \\h for SQL command help.");
-			puts("Use \\q to quit.");
+			puts(_("You are using psql, the command-line interface to PostgreSQL."));
+			puts(_("Enter SQL commands, or type \\? for a list of backslash options."));
+			puts(_("Use \\h for SQL command help."));
+			puts(_("Use \\q to quit."));
+			fflush(stdout);
 			continue;
 		}
 
