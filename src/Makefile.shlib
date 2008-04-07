@@ -94,13 +94,13 @@ endif
 # Testing the soname variable is a reliable way to determine whether a
 # linkable library is being built.
 soname		= $(shlib_major)
-stlib		= lib$(NAME).a
 else
 # Naming convention for dynamically loadable modules
 ifeq ($(enable_shared), yes)
 shlib		= $(NAME)$(DLSUFFIX)
 endif
 endif
+stlib		= lib$(NAME).a
 
 ifndef soname
 # additional flags for backend modules
