@@ -16,7 +16,6 @@ include $(top_builddir)/src/Makefile.global
 NAME= ecpg_compat
 SO_MAJOR_VERSION= 3
 SO_MINOR_VERSION= 1
-DLTYPE= library
 
 override CPPFLAGS := -I../include -I$(top_srcdir)/src/interfaces/ecpg/include \
 	-I$(libpq_srcdir) -I$(top_srcdir)/src/include/utils $(CPPFLAGS)
@@ -42,8 +41,7 @@ snprintf.c: % : $(top_srcdir)/src/port/%
 
 install: all installdirs install-lib
 
-installdirs:
-	$(mkinstalldirs) '$(DESTDIR)$(libdir)'
+installdirs: installdirs-lib
 
 uninstall: uninstall-lib
 

@@ -29,15 +29,12 @@ endif
 endif
 
 
+SHLIB_LINK = $(TCL_LIB_SPEC)
 ifneq ($(PORTNAME), win32)
-SHLIB_LINK = $(BE_DLLLIBS) $(TCL_LIB_SPEC) $(TCL_LIBS) -lc
-else
-SHLIB_LINK = $(TCL_LIB_SPEC) $(BE_DLLLIBS)
+SHLIB_LINK += $(TCL_LIBS) -lc
 endif
 
 NAME = pltcl
-SO_MAJOR_VERSION = 2
-SO_MINOR_VERSION = 0
 OBJS = pltcl.o
 
 REGRESS_OPTS = --dbname=$(PL_TESTDB) --load-language=pltcl
@@ -73,22 +70,13 @@ $(test_files_build): $(abs_builddir)/%: $(srcdir)/%
 
 endif
 
-install: all installdirs
-ifeq ($(enable_shared), yes)
-	$(INSTALL_SHLIB) $(shlib) '$(DESTDIR)$(pkglibdir)/$(NAME)$(DLSUFFIX)'
-else
-	@echo "*****"; \
-	 echo "* PL/Tcl was not installed due to lack of shared library support."; \
-	 echo "*****"
-endif
+install: all installdirs install-lib
 	$(MAKE) -C modules $@
 
-installdirs:
-	$(mkinstalldirs) '$(DESTDIR)$(pkglibdir)'
+installdirs: installdirs-lib
 	$(MAKE) -C modules $@
 
-uninstall:
-	rm -f '$(DESTDIR)$(pkglibdir)/$(NAME)$(DLSUFFIX)'
+uninstall: uninstall-lib
 	$(MAKE) -C modules $@
 
 installcheck: submake

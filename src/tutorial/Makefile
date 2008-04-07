@@ -16,8 +16,6 @@
 MODULES = complex funcs
 DATA_built = advanced.sql basics.sql complex.sql funcs.sql syscat.sql
 
-SHLIB_LINK = $(BE_DLLLIBS)
-
 ifdef NO_PGXS
 subdir = src/tutorial
 top_builddir = ../..
