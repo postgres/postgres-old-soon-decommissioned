@@ -311,12 +311,16 @@ ifeq ($(PORTNAME), unixware)
 endif
 
 ifeq ($(PORTNAME), cygwin)
-  shlib			= cyg$(NAME)$(DLSUFFIX)
+  ifdef SO_MAJOR_VERSION
+    shlib		= cyg$(NAME)$(DLSUFFIX)
+  endif
   haslibarule   = yes
 endif
 
 ifeq ($(PORTNAME), win32)
-  shlib			= lib$(NAME)$(DLSUFFIX)
+  ifdef SO_MAJOR_VERSION
+    shlib		= lib$(NAME)$(DLSUFFIX)
+  endif
   haslibarule   = yes
 endif
 
