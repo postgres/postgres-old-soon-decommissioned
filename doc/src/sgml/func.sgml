@@ -10747,6 +10747,15 @@ select current_date + s.a as dates from generate_series(0,14,7) as s(a);
       </row>  
 
       <row>
+       <!-- See also the entry for this in monitoring.sgml -->
+       <entry><literal><function>pg_backend_pid</function>()</literal></entry>
+       <entry><type>int</type></entry>
+       <entry>
+        Process ID of the server process attached to the current session
+       </entry>
+      </row>
+
+      <row>
        <entry><literal><function>inet_client_addr</function>()</literal></entry>
        <entry><type>inet</type></entry>
        <entry>address of the remote connection</entry>

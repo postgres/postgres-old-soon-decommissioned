@@ -664,6 +664,7 @@ postgres: <replaceable>user</> <replaceable>database</> <replaceable>host</> <re
      </row>
 
      <row>
+       <!-- See also the entry for this in func.sgml -->
       <entry><literal><function>pg_backend_pid</function>()</literal></entry>
       <entry><type>integer</type></entry>
       <entry>
