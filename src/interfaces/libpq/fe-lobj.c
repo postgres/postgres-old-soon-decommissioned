@@ -505,7 +505,7 @@ lo_import_with_oid(PGconn *conn, const char *filename, Oid lobjId)
 }
 
 static Oid
-lo_import_internal(PGconn *conn, const char *filename, Oid oid)
+lo_import_internal(PGconn *conn, const char *filename, const Oid oid)
 {
 	int			fd;
 	int			nbytes,
