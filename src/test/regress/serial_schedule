@@ -92,6 +92,7 @@ test: foreign_key
 test: cluster
 test: dependency
 test: guc
+test: bitmapops
 test: combocid
 test: tsearch
 test: plancache

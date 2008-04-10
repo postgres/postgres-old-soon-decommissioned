@@ -206,7 +206,7 @@ BitmapHeapNext(BitmapHeapScanState *node)
 		 * If we are using lossy info, we have to recheck the qual conditions
 		 * at every tuple.
 		 */
-		if (tbmres->ntuples < 0)
+		if (tbmres->recheck)
 		{
 			econtext->ecxt_scantuple = slot;
 			ResetExprContext(econtext);

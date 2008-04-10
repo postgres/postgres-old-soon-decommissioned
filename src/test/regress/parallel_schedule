@@ -77,7 +77,7 @@ test: misc
 # ----------
 # Another group of parallel tests
 # ----------
-test: select_views portals_p2 rules foreign_key cluster dependency guc combocid tsearch tsdicts
+test: select_views portals_p2 rules foreign_key cluster dependency guc bitmapops combocid tsearch tsdicts
 
 # ----------
 # Another group of parallel tests

@@ -17,6 +17,7 @@
 #include "access/relscan.h"
 #include "access/sdir.h"
 #include "nodes/primnodes.h"
+#include "nodes/tidbitmap.h"
 #include "storage/lock.h"
 
 /*
@@ -99,7 +100,7 @@ extern IndexScanDesc index_beginscan(Relation heapRelation,
 				Relation indexRelation,
 				Snapshot snapshot,
 				int nkeys, ScanKey key);
-extern IndexScanDesc index_beginscan_multi(Relation indexRelation,
+extern IndexScanDesc index_beginscan_bitmap(Relation indexRelation,
 					  Snapshot snapshot,
 					  int nkeys, ScanKey key);
 extern void index_rescan(IndexScanDesc scan, ScanKey key);
@@ -109,9 +110,7 @@ extern void index_restrpos(IndexScanDesc scan);
 extern HeapTuple index_getnext(IndexScanDesc scan, ScanDirection direction);
 extern bool index_getnext_indexitem(IndexScanDesc scan,
 						ScanDirection direction);
-extern bool index_getmulti(IndexScanDesc scan,
-			   ItemPointer tids, int32 max_tids,
-			   int32 *returned_tids);
+extern int64 index_getbitmap(IndexScanDesc scan, TIDBitmap *bitmap);
 
 extern IndexBulkDeleteResult *index_bulk_delete(IndexVacuumInfo *info,
 				  IndexBulkDeleteResult *stats,

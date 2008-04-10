@@ -473,10 +473,10 @@
      </row>
 
      <row>
-      <entry><structfield>amgetmulti</structfield></entry>
+      <entry><structfield>amgetbitmap</structfield></entry>
       <entry><type>regproc</type></entry>
       <entry><literal><link linkend="catalog-pg-proc"><structname>pg_proc</structname></link>.oid</literal></entry>
-      <entry><quote>Fetch multiple tuples</quote> function</entry>
+      <entry><quote>Fetch all valid tuples</quote> function</entry>
      </row>
 
      <row>
