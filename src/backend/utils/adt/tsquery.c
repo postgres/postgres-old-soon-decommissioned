@@ -223,7 +223,7 @@ pushOperator(TSQueryParserState state, int8 oper)
 
 	Assert(oper == OP_NOT || oper == OP_AND || oper == OP_OR);
 
-	tmp = (QueryOperator *) palloc(sizeof(QueryOperator));
+	tmp = (QueryOperator *) palloc0(sizeof(QueryOperator));
 	tmp->type = QI_OPR;
 	tmp->oper = oper;
 	/* left is filled in later with findoprnd */
@@ -247,7 +247,7 @@ pushValue_internal(TSQueryParserState state, pg_crc32 valcrc, int distance, int 
 				 errmsg("operand is too long in tsquery: \"%s\"",
 						state->buffer)));
 
-	tmp = (QueryOperand *) palloc(sizeof(QueryOperand));
+	tmp = (QueryOperand *) palloc0(sizeof(QueryOperand));
 	tmp->type = QI_VAL;
 	tmp->weight = weight;
 	tmp->valcrc = (int32) valcrc;
@@ -304,7 +304,7 @@ pushStop(TSQueryParserState state)
 {
 	QueryOperand *tmp;
 
-	tmp = (QueryOperand *) palloc(sizeof(QueryOperand));
+	tmp = (QueryOperand *) palloc0(sizeof(QueryOperand));
 	tmp->type = QI_VALSTOP;
 
 	state->polstr = lcons(tmp, state->polstr);
