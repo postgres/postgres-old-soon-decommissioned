@@ -449,13 +449,15 @@ report_and_fail:
 }
 
 
-#ifdef WIN32
+#if defined(WIN32) && !defined(__CYGWIN__)
+
+#undef stat
+
 /*
  * The stat() function in win32 is not guaranteed to update the st_size
  * field when run. So we define our own version that uses the Win32 API
  * to update this field.
  */
-#undef stat
 int 
 pgwin32_safestat(const char *path, struct stat *buf)
 {
@@ -480,4 +482,5 @@ pgwin32_safestat(const char *path, struct stat *buf)
 
 	return 0;
 }
+
 #endif
