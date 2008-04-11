@@ -1375,6 +1375,8 @@ path_in(PG_FUNCTION_ARGS)
 			 errmsg("invalid input syntax for type path: \"%s\"", str)));
 
 	path->closed = (!isopen);
+	/* prevent instability in unused pad bytes */
+	path->dummy = 0;
 
 	PG_RETURN_PATH_P(path);
 }
