@@ -313,7 +313,7 @@ pg_convert_to(PG_FUNCTION_ARGS)
 	result = DirectFunctionCall3(pg_convert, string,
 								 src_encoding_name, dest_encoding_name);
 
-	PG_RETURN_BYTEA_P(result);
+	PG_RETURN_DATUM(result);
 }
 
 /*
@@ -340,7 +340,7 @@ pg_convert_from(PG_FUNCTION_ARGS)
 	 * in this case it will be because we've told pg_convert to return one
 	 * that is valid as text in the current database encoding.
 	 */
-	PG_RETURN_TEXT_P(result);
+	PG_RETURN_DATUM(result);
 }
 
 /*
