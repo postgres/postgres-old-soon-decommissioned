@@ -419,7 +419,7 @@ lookup_ts_config_cache(Oid cfgId)
 		Relation	maprel;
 		Relation	mapidx;
 		ScanKeyData mapskey;
-		IndexScanDesc mapscan;
+		SysScanDesc mapscan;
 		HeapTuple	maptup;
 		ListDictionary maplists[MAXTOKENTYPE + 1];
 		Oid			mapdicts[MAXDICTSPERTT];
@@ -488,9 +488,10 @@ lookup_ts_config_cache(Oid cfgId)
 
 		maprel = heap_open(TSConfigMapRelationId, AccessShareLock);
 		mapidx = index_open(TSConfigMapIndexId, AccessShareLock);
-		mapscan = index_beginscan(maprel, mapidx, SnapshotNow, 1, &mapskey);
+		mapscan = systable_beginscan_ordered(maprel, mapidx,
+											 SnapshotNow, 1, &mapskey);
 
-		while ((maptup = index_getnext(mapscan, ForwardScanDirection)) != NULL)
+		while ((maptup = systable_getnext_ordered(mapscan, ForwardScanDirection)) != NULL)
 		{
 			Form_pg_ts_config_map cfgmap = (Form_pg_ts_config_map) GETSTRUCT(maptup);
 			int			toktype = cfgmap->maptokentype;
@@ -524,7 +525,7 @@ lookup_ts_config_cache(Oid cfgId)
 			}
 		}
 
-		index_endscan(mapscan);
+		systable_endscan_ordered(mapscan);
 		index_close(mapidx, AccessShareLock);
 		heap_close(maprel, AccessShareLock);
 
