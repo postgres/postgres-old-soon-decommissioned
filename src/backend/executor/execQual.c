@@ -4175,14 +4175,12 @@ ExecInitExpr(Expr *node, PlanState *parent)
 					int			strategy;
 					Oid			lefttype;
 					Oid			righttype;
-					bool		recheck;
 					Oid			proc;
 
 					get_op_opfamily_properties(opno, opfamily,
 											   &strategy,
 											   &lefttype,
-											   &righttype,
-											   &recheck);
+											   &righttype);
 					proc = get_opfamily_proc(opfamily,
 											 lefttype,
 											 righttype,

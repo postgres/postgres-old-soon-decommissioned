@@ -31,8 +31,7 @@ extern int	get_op_opfamily_strategy(Oid opno, Oid opfamily);
 extern void get_op_opfamily_properties(Oid opno, Oid opfamily,
 						   int *strategy,
 						   Oid *lefttype,
-						   Oid *righttype,
-						   bool *recheck);
+						   Oid *righttype);
 extern Oid get_opfamily_member(Oid opfamily, Oid lefttype, Oid righttype,
 					int16 strategy);
 extern bool get_ordering_op_properties(Oid opno,

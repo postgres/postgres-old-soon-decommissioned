@@ -276,8 +276,6 @@ ExecInitBitmapIndexScan(BitmapIndexScan *node, EState *estate, int eflags)
 	ExecIndexBuildScanKeys((PlanState *) indexstate,
 						   indexstate->biss_RelationDesc,
 						   node->indexqual,
-						   node->indexstrategy,
-						   node->indexsubtype,
 						   &indexstate->biss_ScanKeys,
 						   &indexstate->biss_NumScanKeys,
 						   &indexstate->biss_RuntimeKeys,

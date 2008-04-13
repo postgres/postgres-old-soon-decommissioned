@@ -2275,7 +2275,6 @@ mergejoinscansel(PlannerInfo *root, Node *clause,
 	int			op_strategy;
 	Oid			op_lefttype;
 	Oid			op_righttype;
-	bool		op_recheck;
 	Oid			opno,
 				lsortop,
 				rsortop,
@@ -2314,10 +2313,8 @@ mergejoinscansel(PlannerInfo *root, Node *clause,
 	get_op_opfamily_properties(opno, opfamily,
 							   &op_strategy,
 							   &op_lefttype,
-							   &op_righttype,
-							   &op_recheck);
+							   &op_righttype);
 	Assert(op_strategy == BTEqualStrategyNumber);
-	Assert(!op_recheck);
 
 	/*
 	 * Look up the various operators we need.  If we don't find them all, it

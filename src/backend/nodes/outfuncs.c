@@ -372,8 +372,6 @@ _outIndexScan(StringInfo str, IndexScan *node)
 	WRITE_OID_FIELD(indexid);
 	WRITE_NODE_FIELD(indexqual);
 	WRITE_NODE_FIELD(indexqualorig);
-	WRITE_NODE_FIELD(indexstrategy);
-	WRITE_NODE_FIELD(indexsubtype);
 	WRITE_ENUM_FIELD(indexorderdir, ScanDirection);
 }
 
@@ -387,8 +385,6 @@ _outBitmapIndexScan(StringInfo str, BitmapIndexScan *node)
 	WRITE_OID_FIELD(indexid);
 	WRITE_NODE_FIELD(indexqual);
 	WRITE_NODE_FIELD(indexqualorig);
-	WRITE_NODE_FIELD(indexstrategy);
-	WRITE_NODE_FIELD(indexsubtype);
 }
 
 static void

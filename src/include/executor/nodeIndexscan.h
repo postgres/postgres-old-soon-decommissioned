@@ -26,8 +26,7 @@ extern void ExecIndexReScan(IndexScanState *node, ExprContext *exprCtxt);
 
 /* routines exported to share code with nodeBitmapIndexscan.c */
 extern void ExecIndexBuildScanKeys(PlanState *planstate, Relation index,
-					   List *quals, List *strategies, List *subtypes,
-					   ScanKey *scanKeys, int *numScanKeys,
+					   List *quals, ScanKey *scanKeys, int *numScanKeys,
 					   IndexRuntimeKeyInfo **runtimeKeys, int *numRuntimeKeys,
 					   IndexArrayKeyInfo **arrayKeys, int *numArrayKeys);
 extern void ExecIndexEvalRuntimeKeys(ExprContext *econtext,

@@ -2465,7 +2465,6 @@ expand_indexqual_rowcompare(RestrictInfo *rinfo,
 	int			op_strategy;
 	Oid			op_lefttype;
 	Oid			op_righttype;
-	bool		op_recheck;
 	int			matching_cols;
 	Oid			expr_op;
 	List	   *opfamilies;
@@ -2488,8 +2487,7 @@ expand_indexqual_rowcompare(RestrictInfo *rinfo,
 	get_op_opfamily_properties(expr_op, index->opfamily[indexcol],
 							   &op_strategy,
 							   &op_lefttype,
-							   &op_righttype,
-							   &op_recheck);
+							   &op_righttype);
 	/* Build lists of the opfamilies and operator datatypes in case needed */
 	opfamilies = list_make1_oid(index->opfamily[indexcol]);
 	lefttypes = list_make1_oid(op_lefttype);
@@ -2557,8 +2555,7 @@ expand_indexqual_rowcompare(RestrictInfo *rinfo,
 		get_op_opfamily_properties(expr_op, index->opfamily[i],
 								   &op_strategy,
 								   &op_lefttype,
-								   &op_righttype,
-								   &op_recheck);
+								   &op_righttype);
 		opfamilies = lappend_oid(opfamilies, index->opfamily[i]);
 		lefttypes = lappend_oid(lefttypes, op_lefttype);
 		righttypes = lappend_oid(righttypes, op_righttype);

@@ -241,10 +241,6 @@ typedef Scan SeqScan;
  * table).	This is a bit hokey ... would be cleaner to use a special-purpose
  * node type that could not be mistaken for a regular Var.	But it will do
  * for now.
- *
- * indexstrategy and indexsubtype are lists corresponding one-to-one with
- * indexqual; they give information about the indexable operators that appear
- * at the top of each indexqual.
  * ----------------
  */
 typedef struct IndexScan
@@ -253,8 +249,6 @@ typedef struct IndexScan
 	Oid			indexid;		/* OID of index to scan */
 	List	   *indexqual;		/* list of index quals (OpExprs) */
 	List	   *indexqualorig;	/* the same in original form */
-	List	   *indexstrategy;	/* integer list of strategy numbers */
-	List	   *indexsubtype;	/* OID list of strategy subtypes */
 	ScanDirection indexorderdir;	/* forward or backward or don't care */
 } IndexScan;
 
@@ -281,8 +275,6 @@ typedef struct BitmapIndexScan
 	Oid			indexid;		/* OID of index to scan */
 	List	   *indexqual;		/* list of index quals (OpExprs) */
 	List	   *indexqualorig;	/* the same in original form */
-	List	   *indexstrategy;	/* integer list of strategy numbers */
-	List	   *indexsubtype;	/* OID list of strategy subtypes */
 } BitmapIndexScan;
 
 /* ----------------
