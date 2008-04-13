@@ -116,7 +116,6 @@ typedef struct _restoreOptions
 	char	   *pgport;
 	char	   *pghost;
 	char	   *username;
-	int			ignoreVersion;
 	int			noDataForFailedTables;
 	int			requirePassword;
 	int			exit_on_error;
@@ -144,9 +143,7 @@ PGconn *ConnectDatabase(Archive *AH,
 				const char *pghost,
 				const char *pgport,
 				const char *username,
-				const int reqPwd,
-				const int ignoreVersion);
-
+				int reqPwd);
 
 /* Called to add a TOC entry */
 extern void ArchiveEntry(Archive *AHX,

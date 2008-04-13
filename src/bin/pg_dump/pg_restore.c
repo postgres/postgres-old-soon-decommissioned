@@ -171,7 +171,7 @@ main(int argc, char **argv)
 					opts->pghost = strdup(optarg);
 				break;
 			case 'i':
-				opts->ignoreVersion = 1;
+				/* ignored, deprecated option */
 				break;
 
 			case 'l':			/* Dump the TOC summary */
@@ -378,7 +378,6 @@ usage(const char *progname)
 	printf(_("  -d, --dbname=NAME        connect to database name\n"));
 	printf(_("  -f, --file=FILENAME      output file name\n"));
 	printf(_("  -F, --format=c|t         specify backup file format\n"));
-	printf(_("  -i, --ignore-version     ignore server version mismatch\n"));
 	printf(_("  -l, --list               print summarized TOC of the archive\n"));
 	printf(_("  -v, --verbose            verbose mode\n"));
 	printf(_("  --help                   show this help, then exit\n"));

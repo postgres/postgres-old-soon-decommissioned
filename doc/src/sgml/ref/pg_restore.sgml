@@ -200,8 +200,7 @@
       <term><option>--ignore-version</option></term>
       <listitem>
        <para>
-        Ignore version mismatch between
-        <application>pg_restore</application> and the database server.
+        A deprecated option that is now ignored.
        </para>
       </listitem>
      </varlistentry>
