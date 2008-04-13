@@ -240,6 +240,9 @@ btgettuple(PG_FUNCTION_ARGS)
 	BTScanOpaque so = (BTScanOpaque) scan->opaque;
 	bool		res;
 
+	/* btree indexes are never lossy */
+	scan->xs_recheck = false;
+
 	/*
 	 * If we've already initialized this scan, we can just advance it in the
 	 * appropriate direction.  If we haven't done so yet, we call a routine to

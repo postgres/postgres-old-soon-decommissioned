@@ -210,6 +210,9 @@ hashgettuple(PG_FUNCTION_ARGS)
 	OffsetNumber offnum;
 	bool		res;
 
+	/* Hash indexes are never lossy (at the moment anyway) */
+	scan->xs_recheck = false;
+
 	/*
 	 * We hold pin but not lock on current buffer while outside the hash AM.
 	 * Reacquire the read lock here.

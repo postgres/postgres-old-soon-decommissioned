@@ -776,6 +776,10 @@ copy_heap_data(Oid OIDNewHeap, Oid OIDOldHeap, Oid OIDOldIndex)
 
 		CHECK_FOR_INTERRUPTS();
 
+		/* Since we used no scan keys, should never need to recheck */
+		if (scan->xs_recheck)
+			elog(ERROR, "CLUSTER does not support lossy index conditions");
+
 		LockBuffer(scan->xs_cbuf, BUFFER_LOCK_SHARE);
 
 		switch (HeapTupleSatisfiesVacuum(tuple->t_data, OldestXmin,
