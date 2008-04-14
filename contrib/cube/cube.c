@@ -381,7 +381,12 @@ g_cube_consistent(PG_FUNCTION_ARGS)
 	GISTENTRY  *entry = (GISTENTRY *) PG_GETARG_POINTER(0);
 	NDBOX	   *query = PG_GETARG_NDBOX(1);
 	StrategyNumber strategy = (StrategyNumber) PG_GETARG_UINT16(2);
+	/* Oid		subtype = PG_GETARG_OID(3); */
+	bool	   *recheck = (bool *) PG_GETARG_POINTER(4);
 	bool		res;
+
+	/* All cases served by this function are exact */
+	*recheck = false;
 
 	/*
 	 * if entry is not leaf, use g_cube_internal_consistent, else use

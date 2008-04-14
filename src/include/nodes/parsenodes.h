@@ -1390,7 +1390,6 @@ typedef struct CreateOpClassItem
 	List	   *name;			/* operator or function name */
 	List	   *args;			/* argument types */
 	int			number;			/* strategy num or support proc num */
-	bool		recheck;		/* only used for operators */
 	List	   *class_args;		/* only used for functions */
 	/* fields used for a storagetype item: */
 	TypeName   *storedtype;		/* datatype stored in index */

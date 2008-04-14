@@ -3107,7 +3107,6 @@ opclass_item:
 					n->name = $3;
 					n->args = NIL;
 					n->number = $2;
-					n->recheck = $4;
 					$$ = (Node *) n;
 				}
 			| OPERATOR Iconst any_operator '(' oper_argtypes ')' opt_recheck
@@ -3117,7 +3116,6 @@ opclass_item:
 					n->name = $3;
 					n->args = $5;
 					n->number = $2;
-					n->recheck = $7;
 					$$ = (Node *) n;
 				}
 			| FUNCTION Iconst func_name func_args
@@ -3156,7 +3154,14 @@ opt_opfamily:	FAMILY any_name				{ $$ = $2; }
 			| /*EMPTY*/						{ $$ = NIL; }
 		;
 
-opt_recheck:	RECHECK						{ $$ = TRUE; }
+opt_recheck:	RECHECK
+				{
+					ereport(ERROR,
+							(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+							 errmsg("RECHECK is no longer supported"),
+							 errhint("Update your data type.")));
+					$$ = TRUE;
+				}
 			| /*EMPTY*/						{ $$ = FALSE; }
 		;
 

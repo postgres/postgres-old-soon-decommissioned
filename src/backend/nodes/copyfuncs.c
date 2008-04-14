@@ -2471,7 +2471,6 @@ _copyCreateOpClassItem(CreateOpClassItem *from)
 	COPY_NODE_FIELD(name);
 	COPY_NODE_FIELD(args);
 	COPY_SCALAR_FIELD(number);
-	COPY_SCALAR_FIELD(recheck);
 	COPY_NODE_FIELD(class_args);
 	COPY_NODE_FIELD(storedtype);
 

@@ -7738,7 +7738,7 @@ CREATE TYPE rainbow AS ENUM ('red', 'orange', 'yellow', 'green', 'blue', 'purple
        </row>
        <row>
         <entry> <literal>@@@</literal> </entry>
-        <entry>same as <literal>@@</>, but see <xref linkend="textsearch-indexes"></entry>
+        <entry>deprecated synonym for <literal>@@</></entry>
         <entry><literal>to_tsvector('fat cats ate rats') @@@ to_tsquery('cat &amp; rat')</literal></entry>
         <entry><literal>t</literal></entry>
        </row>

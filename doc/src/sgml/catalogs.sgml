@@ -607,13 +607,6 @@
      </row>
 
      <row>
-      <entry><structfield>amopreqcheck</structfield></entry>
-      <entry><type>bool</type></entry>
-      <entry></entry>
-      <entry>Index hit must be rechecked</entry>
-     </row>
-
-     <row>
       <entry><structfield>amopopr</structfield></entry>
       <entry><type>oid</type></entry>
       <entry><literal><link linkend="catalog-pg-operator"><structname>pg_operator</structname></link>.oid</literal></entry>

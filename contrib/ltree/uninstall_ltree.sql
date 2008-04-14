@@ -15,7 +15,7 @@ DROP FUNCTION _ltree_penalty(internal,internal,internal);
 
 DROP FUNCTION _ltree_compress(internal);
 
-DROP FUNCTION _ltree_consistent(internal,internal,int2);
+DROP FUNCTION _ltree_consistent(internal,internal,int2,oid,internal);
 
 DROP OPERATOR ?@ (_ltree, ltxtquery);
 
@@ -107,7 +107,7 @@ DROP FUNCTION ltree_decompress(internal);
 
 DROP FUNCTION ltree_compress(internal);
 
-DROP FUNCTION ltree_consistent(internal,internal,int2);
+DROP FUNCTION ltree_consistent(internal,internal,int2,oid,internal);
 
 DROP TYPE ltree_gist CASCADE;
   

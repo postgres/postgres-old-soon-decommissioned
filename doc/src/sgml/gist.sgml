@@ -103,7 +103,10 @@
        Given a predicate <literal>p</literal> on a tree page, and a user
        query, <literal>q</literal>, this method will return false if it is
        certain that both <literal>p</literal> and <literal>q</literal> cannot
-       be true for a given data item.
+       be true for a given data item.  For a true result, a
+       <literal>recheck</> flag must also be returned; this indicates whether
+       the predicate implies the query (<literal>recheck</> = false) or
+       not (<literal>recheck</> = true).
       </para>
      </listitem>
     </varlistentry>

@@ -19,7 +19,7 @@ DROP FUNCTION gseg_decompress(internal);
 
 DROP FUNCTION gseg_compress(internal);
 
-DROP FUNCTION gseg_consistent(internal,seg,int4);
+DROP FUNCTION gseg_consistent(internal,seg,int,oid,internal);
 
 DROP OPERATOR <@ (seg, seg);
 
