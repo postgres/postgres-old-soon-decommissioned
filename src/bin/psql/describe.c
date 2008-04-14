@@ -1373,7 +1373,7 @@ describeOneTableDetails(const char *schemaname,
 			footers[count_footers++] = pg_strdup(buf.data);
 			for (i = 0; i < referencedby_count; i++)
 			{
-				printfPQExpBuffer(&buf, _("  \"%s\" IN %s %s"),
+				printfPQExpBuffer(&buf, _("    \"%s\" IN %s %s"),
 								  PQgetvalue(result6, i, 0),
 								  PQgetvalue(result6, i, 1),
 								  PQgetvalue(result6, i, 2));
