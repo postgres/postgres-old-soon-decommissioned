@@ -91,6 +91,8 @@ struct PGPROC
 
 	bool		inCommit;		/* true if within commit critical section */
 
+	bool		terminate;		/* admin requested termination */
+
 	uint8		vacuumFlags;	/* vacuum-related flags, see above */
 
 	/* Info about LWLock the process is currently waiting for, if any. */
