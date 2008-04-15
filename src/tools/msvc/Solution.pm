@@ -22,6 +22,9 @@ sub new
         strver   => '',
     };
     bless $self;
+	# integer_datetimes is now the default
+	$options->{integer_datetimes} = 1 
+		unless exists $options->{integer_datetimes};
     if ($options->{xml})
     {
         if (!($options->{xslt} && $options->{iconv}))
