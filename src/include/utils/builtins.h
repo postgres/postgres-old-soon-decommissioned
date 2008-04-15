@@ -416,7 +416,6 @@ extern Datum nonnullvalue(PG_FUNCTION_ARGS);
 extern Datum current_database(PG_FUNCTION_ARGS);
 extern Datum current_query(PG_FUNCTION_ARGS);
 extern Datum pg_cancel_backend(PG_FUNCTION_ARGS);
-extern Datum pg_terminate_backend(PG_FUNCTION_ARGS);
 extern Datum pg_reload_conf(PG_FUNCTION_ARGS);
 extern Datum pg_tablespace_databases(PG_FUNCTION_ARGS);
 extern Datum pg_rotate_logfile(PG_FUNCTION_ARGS);
