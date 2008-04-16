@@ -251,7 +251,7 @@ pg_signal_thread(LPVOID param)
 	char		pipename[128];
 	HANDLE		pipe = pgwin32_initial_signal_pipe;
 
-	snprintf(pipename, sizeof(pipename), "\\\\.\\pipe\\pgsignal_%u", GetCurrentProcessId());
+	snprintf(pipename, sizeof(pipename), "\\\\.\\pipe\\pgsignal_%lu", GetCurrentProcessId());
 
 	for (;;)
 	{
