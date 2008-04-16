@@ -205,7 +205,7 @@ pg_wcswidth(const unsigned char *pwcs, size_t len, int encoding)
  * pg_wcssize takes the given string in the given encoding and returns three
  * values:
  *	  result_width: Width in display character of longest line in string
- *	  result_hieght: Number of lines in display output
+ *	  result_height: Number of lines in display output
  *	  result_format_size: Number of bytes required to store formatted representation of string
  */
 int
