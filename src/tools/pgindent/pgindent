@@ -133,7 +133,7 @@ do
 # We get the list of typedef's from /src/tools/find_typedef
 	indent -bad -bap -bc -bl -d0 -cdb -nce -nfc1 -di12 -i4 -l79 \
 		-lp -nip -npro -bbb $EXTRA_OPTS \
-		`cat "$TYPEDEFS" | sed 's/.*/-T& /'` \
+		`cat "$TYPEDEFS" | sed -e '/^$/d' -e 's/.*/-T& /'` \
 		/tmp/$$a >/tmp/$$ 2>&1
 
 	if [ "$?" -ne 0 -o -s /tmp/$$ ]
