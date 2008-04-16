@@ -127,6 +127,7 @@ sub mkvcbuild
 
     $libpq = $solution->AddProject('libpq','dll','interfaces','src\interfaces\libpq');
     $libpq->AddDefine('FRONTEND');
+	$libpq->AddDefine('UNSAFE_STAT_OK');
     $libpq->AddIncludeDir('src\port');
     $libpq->AddLibrary('wsock32.lib');
     $libpq->AddLibrary('secur32.lib');
