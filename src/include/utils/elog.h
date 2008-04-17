@@ -196,6 +196,13 @@ extern DLLIMPORT ErrorContextCallback *error_context_stack;
  * of levels this will work for.  It's best to keep the error recovery
  * section simple enough that it can't generate any new errors, at least
  * not before popping the error stack.
+ *
+ * Note: an ereport(FATAL) will not be caught by this construct; control will
+ * exit straight through proc_exit().  Therefore, do NOT put any cleanup
+ * of non-process-local resources into the error recovery section, at least
+ * not without taking thought for what will happen during ereport(FATAL).
+ * The PG_ENSURE_ERROR_CLEANUP macros provided by storage/ipc.h may be
+ * helpful in such cases.
  *----------
  */
 #define PG_TRY()  \
