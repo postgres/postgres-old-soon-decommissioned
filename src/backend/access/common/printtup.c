@@ -340,7 +340,7 @@ printtup(TupleTableSlot *slot, DestReceiver *self)
 		}
 
 		/* Clean up detoasted copy, if any */
-		if (attr != origattr)
+		if (DatumGetPointer(attr) != DatumGetPointer(origattr))
 			pfree(DatumGetPointer(attr));
 	}
 
@@ -423,7 +423,7 @@ printtup_20(TupleTableSlot *slot, DestReceiver *self)
 		pfree(outputstr);
 
 		/* Clean up detoasted copy, if any */
-		if (attr != origattr)
+		if (DatumGetPointer(attr) != DatumGetPointer(origattr))
 			pfree(DatumGetPointer(attr));
 	}
 
@@ -537,7 +537,7 @@ debugtup(TupleTableSlot *slot, DestReceiver *self)
 		pfree(value);
 
 		/* Clean up detoasted copy, if any */
-		if (attr != origattr)
+		if (DatumGetPointer(attr) != DatumGetPointer(origattr))
 			pfree(DatumGetPointer(attr));
 	}
 	printf("\t----\n");
@@ -627,7 +627,7 @@ printtup_internal_20(TupleTableSlot *slot, DestReceiver *self)
 		pfree(outputbytes);
 
 		/* Clean up detoasted copy, if any */
-		if (attr != origattr)
+		if (DatumGetPointer(attr) != DatumGetPointer(origattr))
 			pfree(DatumGetPointer(attr));
 	}
 

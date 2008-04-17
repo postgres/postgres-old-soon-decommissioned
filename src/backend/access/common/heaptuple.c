@@ -890,7 +890,7 @@ heap_form_tuple(TupleDesc tupleDescriptor,
 		else if (att[i]->attlen == -1 &&
 				 att[i]->attalign == 'd' &&
 				 att[i]->attndims == 0 &&
-				 !VARATT_IS_EXTENDED(values[i]))
+				 !VARATT_IS_EXTENDED(DatumGetPointer(values[i])))
 		{
 			values[i] = toast_flatten_tuple_attribute(values[i],
 													  att[i]->atttypid,
@@ -1001,7 +1001,7 @@ heap_formtuple(TupleDesc tupleDescriptor,
 		else if (att[i]->attlen == -1 &&
 				 att[i]->attalign == 'd' &&
 				 att[i]->attndims == 0 &&
-				 !VARATT_IS_EXTENDED(values[i]))
+				 !VARATT_IS_EXTENDED(DatumGetPointer(values[i])))
 		{
 			values[i] = toast_flatten_tuple_attribute(values[i],
 													  att[i]->atttypid,
