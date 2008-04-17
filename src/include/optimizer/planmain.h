@@ -53,7 +53,6 @@ extern Group *make_group(PlannerInfo *root, List *tlist, List *qual,
 		   int numGroupCols, AttrNumber *grpColIdx, Oid *grpOperators,
 		   double numGroups,
 		   Plan *lefttree);
-extern Material *make_material(Plan *lefttree);
 extern Plan *materialize_finished_plan(Plan *subplan);
 extern Unique *make_unique(Plan *lefttree, List *distinctList);
 extern Limit *make_limit(Plan *lefttree, Node *limitOffset, Node *limitCount,
