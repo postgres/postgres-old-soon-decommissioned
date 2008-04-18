@@ -51,6 +51,8 @@ DROP OPERATOR <= (seg, seg);
 
 DROP OPERATOR < (seg, seg);
 
+DROP FUNCTION seq_center(seg);
+
 DROP FUNCTION seg_lower(seg);
 
 DROP FUNCTION seg_upper(seg);

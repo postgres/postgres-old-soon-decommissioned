@@ -62,7 +62,7 @@ AC_COMPILE_IFELSE([AC_LANG_BOOL_COMPILE_TRY([], [sizeof($1) == 8])],
 
 Ac_define=$Ac_cachevar
 if test x"$Ac_cachevar" = xyes ; then
-  AC_DEFINE(Ac_define,, [Define to 1 if `]$1[' works and is 64 bits.])
+  AC_DEFINE(Ac_define, 1, [Define to 1 if `]$1[' works and is 64 bits.])
 fi
 undefine([Ac_define])dnl
 undefine([Ac_cachevar])dnl
