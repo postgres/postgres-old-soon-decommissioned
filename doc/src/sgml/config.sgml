@@ -4187,20 +4187,6 @@ SET XML OPTION { DOCUMENT | CONTENT };
 
      <variablelist>
 
-     <varlistentry id="guc-explain-pretty-print" xreflabel="explain_pretty_print">
-      <term><varname>explain_pretty_print</varname> (<type>boolean</type>)</term>
-      <indexterm>
-       <primary><varname>explain_pretty_print</> configuration parameter</primary>
-      </indexterm>
-      <listitem>
-       <para>
-        Determines whether <command>EXPLAIN VERBOSE</> uses the
-        indented or non-indented format for displaying detailed
-        query-tree dumps. The default is <literal>on</>.
-       </para>
-      </listitem>
-     </varlistentry>
-
      <varlistentry id="guc-dynamic-library-path" xreflabel="dynamic_library_path">
       <term><varname>dynamic_library_path</varname> (<type>string</type>)</term>
       <indexterm>
