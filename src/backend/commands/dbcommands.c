@@ -1321,7 +1321,7 @@ remove_dbtablespaces(Oid db_id)
 
 		if (!rmtree(dstpath, true))
 			ereport(WARNING,
-					(errmsg("could not remove database directory \"%s\"",
+					(errmsg("some useless files may be left behind in old database directory \"%s\"",
 							dstpath)));
 
 		/* Record the filesystem change in XLOG */
@@ -1490,7 +1490,7 @@ dbase_redo(XLogRecPtr lsn, XLogRecord *record)
 		{
 			if (!rmtree(dst_path, true))
 				ereport(WARNING,
-						(errmsg("could not remove database directory \"%s\"",
+						(errmsg("some useless files may be left behind in old database directory \"%s\"",
 								dst_path)));
 		}
 
@@ -1529,7 +1529,7 @@ dbase_redo(XLogRecPtr lsn, XLogRecord *record)
 		/* And remove the physical files */
 		if (!rmtree(dst_path, true))
 			ereport(WARNING,
-					(errmsg("could not remove database directory \"%s\"",
+					(errmsg("some useless files may be left behind in old database directory \"%s\"",
 							dst_path)));
 	}
 	else
