@@ -2,6 +2,7 @@
 
 # $PostgreSQL$:
 
-# Converts FAQ.html and FAQ_DEV.html to text files
+# Converts doc/src/FAQ/FAQ.html to text file doc/FAQ and
+# converts doc/src/FAQ/FAQ_DEV.html to text file doc/FAQ_DEV
 
 lynx -force_html -dont_wrap_pre -dump -hiddenlinks=ignore -nolist "$@"

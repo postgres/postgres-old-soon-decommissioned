@@ -2,7 +2,7 @@
 
 # $PostgreSQL$:
 
-# Converts TODO text file to HTML
+# Converts doc/TODO text file to doc/src/FAQ/TODO.html HTML file
 
 [ ! -f COPYRIGHT ] && echo "Run from top of source tree" 1>&2 && exit 1
 
