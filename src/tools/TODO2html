@@ -2,6 +2,8 @@
 
 # $PostgreSQL$:
 
+# Converts TODO text file to HTML
+
 [ ! -f COPYRIGHT ] && echo "Run from top of source tree" 1>&2 && exit 1
 
 # check if txt2html is installed
