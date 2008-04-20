@@ -101,8 +101,11 @@ gtsquery_same(PG_FUNCTION_ARGS)
 {
 	TSQuerySign *a = (TSQuerySign *) PG_GETARG_POINTER(0);
 	TSQuerySign *b = (TSQuerySign *) PG_GETARG_POINTER(1);
+	bool		*result = (bool *) PG_GETARG_POINTER(2);
 
-	PG_RETURN_POINTER(*a == *b);
+	*result = (*a == *b) ? true : false;
+
+	PG_RETURN_POINTER(result);
 }
 
 static int
