@@ -898,7 +898,7 @@ create_unique_path(PlannerInfo *root, RelOptInfo *rel, Path *subpath)
 /*
  * translate_sub_tlist - get subquery column numbers represented by tlist
  *
- * The given targetlist should contain only Vars referencing the given relid.
+ * The given targetlist usually contains only Vars referencing the given relid.
  * Extract their varattnos (ie, the column numbers of the subquery) and return
  * as an integer List.
  *
