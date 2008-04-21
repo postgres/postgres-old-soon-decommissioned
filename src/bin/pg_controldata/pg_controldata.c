@@ -216,6 +216,10 @@ main(int argc, char *argv[])
 		   ControlFile.toast_max_chunk_size);
 	printf(_("Date/time type storage:               %s\n"),
 		   (ControlFile.enableIntTimes ? _("64-bit integers") : _("floating-point numbers")));
+	printf(_("Float4 argument passing:              %s\n"),
+		   (ControlFile.float4ByVal ? _("by value") : _("by reference")));
+	printf(_("Float8 argument passing:              %s\n"),
+		   (ControlFile.float8ByVal ? _("by value") : _("by reference")));
 	printf(_("Maximum length of locale name:        %u\n"),
 		   ControlFile.localeBuflen);
 	printf(_("LC_COLLATE:                           %s\n"),

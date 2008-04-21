@@ -1033,6 +1033,40 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
+       <term><option>--disable-float4-byval</option></term>
+       <listitem>
+        <para>
+         Disable passing float4 values <quote>by value</>, causing them
+         to be passed <quote>by reference</> instead.  This option costs
+         performance, but may be needed for compatibility with old
+         user-defined functions that are written in C and use the
+         <quote>version 0</> calling convention.  A better long-term
+         solution is to update any such functions to use the
+         <quote>version 1</> calling convention.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
+       <term><option>--disable-float8-byval</option></term>
+       <listitem>
+        <para>
+         Disable passing float8 values <quote>by value</>, causing them
+         to be passed <quote>by reference</> instead.  This option costs
+         performance, but may be needed for compatibility with old
+         user-defined functions that are written in C and use the
+         <quote>version 0</> calling convention.  A better long-term
+         solution is to update any such functions to use the
+         <quote>version 1</> calling convention.
+         Note that this option affects not only float8, but also int8 and some
+         related types such as timestamp.
+         On 32-bit platforms, <option>--disable-float8-byval</> is the default
+         and it is not allowed to select <option>--enable-float8-byval</>.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
        <term><option>--disable-segmented-files</option></term>
        <listitem>
         <para>

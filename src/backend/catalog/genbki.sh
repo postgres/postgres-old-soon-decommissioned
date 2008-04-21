@@ -114,6 +114,15 @@ for dir in $INCLUDE_DIRS; do
     fi
 done
 
+# Get FLOAT4PASSBYVAL and FLOAT8PASSBYVAL from pg_config.h
+for dir in $INCLUDE_DIRS; do
+    if [ -f "$dir/pg_config.h" ]; then
+        FLOAT4PASSBYVAL=`grep '^#define[ 	]*FLOAT4PASSBYVAL' $dir/pg_config.h | $AWK '{ print $3 }'`
+        FLOAT8PASSBYVAL=`grep '^#define[ 	]*FLOAT8PASSBYVAL' $dir/pg_config.h | $AWK '{ print $3 }'`
+        break
+    fi
+done
+
 # Get BOOTSTRAP_SUPERUSERID from catalog/pg_authid.h
 for dir in $INCLUDE_DIRS; do
     if [ -f "$dir/catalog/pg_authid.h" ]; then
@@ -164,6 +173,8 @@ sed -e "s/;[ 	]*$//g" \
     -e "s/(TransactionId/(xid/g" \
     -e "s/PGUID/$BOOTSTRAP_SUPERUSERID/g" \
     -e "s/NAMEDATALEN/$NAMEDATALEN/g" \
+    -e "s/FLOAT4PASSBYVAL/$FLOAT4PASSBYVAL/g" \
+    -e "s/FLOAT8PASSBYVAL/$FLOAT8PASSBYVAL/g" \
     -e "s/PGNSP/$PG_CATALOG_NAMESPACE/g" \
 | $AWK '
 # ----------------

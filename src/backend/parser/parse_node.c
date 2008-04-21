@@ -375,7 +375,7 @@ make_const(Value *value)
 
 					typeid = INT8OID;
 					typelen = sizeof(int64);
-					typebyval = false;	/* XXX might change someday */
+					typebyval = FLOAT8PASSBYVAL;	/* int8 and float8 alike */
 				}
 			}
 			else

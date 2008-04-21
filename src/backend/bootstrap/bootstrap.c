@@ -122,7 +122,7 @@ static const struct typinfo TypInfo[] = {
 	F_INT2IN, F_INT2OUT},
 	{"int4", INT4OID, 0, 4, true, 'i', 'p',
 	F_INT4IN, F_INT4OUT},
-	{"float4", FLOAT4OID, 0, 4, true, 'i', 'p',
+	{"float4", FLOAT4OID, 0, 4, FLOAT4PASSBYVAL, 'i', 'p',
 	F_FLOAT4IN, F_FLOAT4OUT},
 	{"name", NAMEOID, CHAROID, NAMEDATALEN, false, 'i', 'p',
 	F_NAMEIN, F_NAMEOUT},

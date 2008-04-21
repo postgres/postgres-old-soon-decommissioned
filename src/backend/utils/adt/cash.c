@@ -34,14 +34,6 @@
 #define LAST_PAREN		(TERMINATOR - 1)
 #define LAST_DIGIT		(LAST_PAREN - 1)
 
-/*
- * Cash is a pass-by-ref SQL type, so we must pass and return pointers.
- * These macros and support routine hide the pass-by-refness.
- */
-#define PG_GETARG_CASH(n)  (* ((Cash *) PG_GETARG_POINTER(n)))
-#define PG_RETURN_CASH(x)  return CashGetDatum(x)
-
-
 
 /*************************************************************************
  * Private routines
@@ -98,15 +90,6 @@ num_word(Cash value)
 
 	return buf;
 }	/* num_word() */
-
-static Datum
-CashGetDatum(Cash value)
-{
-	Cash	   *result = (Cash *) palloc(sizeof(Cash));
-
-	*result = value;
-	return PointerGetDatum(result);
-}
 
 
 /* cash_in()
