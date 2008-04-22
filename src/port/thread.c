@@ -16,11 +16,6 @@
 
 #include <pwd.h>
 #if defined(FRONTEND) && defined(ENABLE_THREAD_SAFETY)
-#ifdef WIN32
-#include "pthread-win32.h"
-#else
-#include <pthread.h>
-#endif
 #endif
 
 
@@ -50,7 +45,7 @@
  *	The current setup is to try threading in this order:
  *
  *		use *_r function names if they exit
- *			(*_THREADSAFE=ye)
+ *			(*_THREADSAFE=yes)
  *		use non-*_r functions if they are thread-safe
  *
  *	One thread-safe solution for gethostbyname() might be to use getaddrinfo().
