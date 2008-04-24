@@ -767,8 +767,8 @@ do_stop(void)
 	{
 		if ((shutdown_mode == SMART_MODE) && (stat(backup_file, &statbuf) == 0))
 		{
-			print_msg(_("WARNING: online backup mode is active; must be ended\n"
-						"   with pg_stop_backup() for shutdown to complete\n\n"));
+			print_msg(_("WARNING: online backup mode is active.\n"
+						"Shutdown will not complete until pg_stop_backup() is called.\n\n"));
 		}
 
 		print_msg(_("waiting for server to shut down..."));
@@ -844,8 +844,8 @@ do_restart(void)
 
 		if ((shutdown_mode == SMART_MODE) && (stat(backup_file, &statbuf) == 0))
 		{
-			print_msg(_("WARNING: online backup mode is active; must be ended\n"
-						"   with pg_stop_backup() for shutdown to complete\n\n"));
+			print_msg(_("WARNING: online backup mode is active.\n"
+						"Shutdown will not complete until pg_stop_backup() is called.\n\n"));
 		}
 
 		print_msg(_("waiting for server to shut down..."));

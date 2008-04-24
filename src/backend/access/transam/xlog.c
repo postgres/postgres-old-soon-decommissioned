@@ -7101,14 +7101,15 @@ CancelBackup(void)
 	{
 		ereport(LOG,
 				(errmsg("online backup mode cancelled"),
-				 errdetail("\"%s\" renamed to \"%s\"",
+				 errdetail("\"%s\" was renamed to \"%s\".",
 						BACKUP_LABEL_FILE, BACKUP_LABEL_OLD)));
 	}
 	else
 	{
 		ereport(WARNING,
 				(errcode_for_file_access(),
-				 errmsg("could not rename \"%s\" to \"%s\", backup mode not cancelled: %m",
+				 errmsg("online backup mode was not cancelled"),
+				 errdetail("Could not rename \"%s\" to \"%s\": %m.",
 						BACKUP_LABEL_FILE, BACKUP_LABEL_OLD)));
 	}
 }
