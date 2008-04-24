@@ -318,7 +318,7 @@ drop table atacc3;
 drop table atacc2;
 drop table atacc1;
 -- test unique constraint adding
-create table atacc1 ( test int );
+create table atacc1 ( test int ) with oids;
 -- add a unique constraint
 alter table atacc1 add constraint atacc_test1 unique (test);
 NOTICE:  ALTER TABLE / ADD UNIQUE will create implicit index "atacc_test1" for table "atacc1"
@@ -378,7 +378,7 @@ insert into atacc1 (test2, test) values (2, 3);
 ERROR:  duplicate key violates unique constraint "atacc1_test_key"
 drop table atacc1;
 -- test primary key constraint adding
-create table atacc1 ( test int );
+create table atacc1 ( test int ) with oids;
 -- add a primary key constraint
 alter table atacc1 add constraint atacc_test1 primary key (test);
 NOTICE:  ALTER TABLE / ADD PRIMARY KEY will create implicit index "atacc_test1" for table "atacc1"
@@ -429,6 +429,18 @@ create table atacc1 ( test int );
 alter table atacc1 add constraint atacc_test1 primary key (test1);
 ERROR:  column "test1" named in key does not exist
 drop table atacc1;
+-- adding a new column as primary key to a non-empty table.
+-- should fail unless the column has a non-null default value.
+create table atacc1 ( test int );
+insert into atacc1 (test) values (0);
+-- add a primary key column without a default (fails).
+alter table atacc1 add column test2 int primary key;
+NOTICE:  ALTER TABLE / ADD PRIMARY KEY will create implicit index "atacc1_pkey" for table "atacc1"
+ERROR:  column "test2" contains null values
+-- now add a primary key column with a default (succeeds).
+alter table atacc1 add column test2 int default 0 primary key;
+NOTICE:  ALTER TABLE / ADD PRIMARY KEY will create implicit index "atacc1_pkey" for table "atacc1"
+drop table atacc1;
 -- something a little more complicated
 create table atacc1 ( test int, test2 int);
 -- add a primary key constraint
@@ -476,7 +488,7 @@ alter table non_existent alter column bar drop not null;
 ERROR:  relation "non_existent" does not exist
 -- test setting columns to null and not null and vice versa
 -- test checking for null values and primary key
-create table atacc1 (test int not null);
+create table atacc1 (test int not null) with oids;
 alter table atacc1 add constraint "atacc1_pkey" primary key (test);
 NOTICE:  ALTER TABLE / ADD PRIMARY KEY will create implicit index "atacc1_pkey" for table "atacc1"
 alter table atacc1 alter column test drop not null;
@@ -598,7 +610,7 @@ ERROR:  permission denied: "pg_class" is a system catalog
 alter table nosuchtable drop column bar;
 ERROR:  relation "nosuchtable" does not exist
 -- test dropping columns
-create table atacc1 (a int4 not null, b int4, c int4 not null, d int4);
+create table atacc1 (a int4 not null, b int4, c int4 not null, d int4) with oids;
 insert into atacc1 values (1, 2, 3, 4);
 alter table atacc1 drop a;
 alter table atacc1 drop a;
