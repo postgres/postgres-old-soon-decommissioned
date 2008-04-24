@@ -3333,6 +3333,11 @@ ATExecAddColumn(AlteredTableInfo *tab, Relation rel,
 	}
 
 	/*
+	 * If the new column is NOT NULL, tell Phase 3 it needs to test that.
+	 */
+	tab->new_notnull |= colDef->is_not_null;
+
+	/*
 	 * Add needed dependency entries for the new column.
 	 */
 	add_column_datatype_dependency(myrelid, i, attribute->atttypid);
