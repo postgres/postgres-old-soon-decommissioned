@@ -26,6 +26,7 @@
 #include "catalog/pg_database.h"
 #include "catalog/pg_tablespace.h"
 #include "libpq/hba.h"
+#include "libpq/libpq-be.h"
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"
 #include "pgstat.h"
@@ -576,6 +577,16 @@ InitPostgres(const char *in_dbname, Oid dboid, const char *username,
 	 */
 	if (!bootstrap)
 		CheckMyDatabase(dbname, am_superuser);
+
+	/*
+	 * If we're trying to shut down, only superusers can connect.
+	 */
+	if (!am_superuser &&
+		MyProcPort != NULL &&
+		MyProcPort->canAcceptConnections == CAC_WAITBACKUP)
+		ereport(FATAL,
+				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
+				 errmsg("must be superuser to connect during database shutdown")));
 
 	/*
 	 * Check a normal user hasn't connected to a superuser reserved slot.
