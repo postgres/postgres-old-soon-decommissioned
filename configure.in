@@ -789,7 +789,7 @@ if test "$with_libxml" = yes ; then
 fi
 
 if test "$with_libxslt" = yes ; then
-  AC_CHECK_LIB(xslt, xsltLibxmlVersion, [], [AC_MSG_ERROR([library 'xslt' is required for XSLT support])])
+  AC_CHECK_LIB(xslt, xsltCleanupGlobals, [], [AC_MSG_ERROR([library 'xslt' is required for XSLT support])])
 fi
 
 # for contrib/uuid-ossp
