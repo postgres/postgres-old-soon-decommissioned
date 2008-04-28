@@ -200,6 +200,8 @@ extern Datum array_lower(PG_FUNCTION_ARGS);
 extern Datum array_upper(PG_FUNCTION_ARGS);
 extern Datum array_larger(PG_FUNCTION_ARGS);
 extern Datum array_smaller(PG_FUNCTION_ARGS);
+extern Datum generate_subscripts(PG_FUNCTION_ARGS);
+extern Datum generate_subscripts_nodir(PG_FUNCTION_ARGS);
 
 extern Datum array_ref(ArrayType *array, int nSubscripts, int *indx,
 		  int arraytyplen, int elmlen, bool elmbyval, char elmalign,

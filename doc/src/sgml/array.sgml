@@ -542,6 +542,21 @@ SELECT * FROM sal_emp WHERE 10000 = ALL (pay_by_quarter);
 
  </para>
 
+ <para>
+  Alternatively, the <function>generate_subscripts</> function can be used.
+  For example:
+
+<programlisting>
+SELECT * FROM
+   (SELECT pay_by_quarter,
+           generate_subscripts(pay_by_quarter, 1) AS s
+      FROM sal_emp) AS foo
+ WHERE pay_by_quarter[s] = 10000;
+</programlisting>
+
+  This function is described in <xref linkend="functions-srf-subscripts">.
+ </para>
+
  <tip>
   <para>
    Arrays are not sets; searching for specific array elements
