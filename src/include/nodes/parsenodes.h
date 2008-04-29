@@ -228,12 +228,12 @@ typedef struct A_Expr
 } A_Expr;
 
 /*
- * A_Const - a constant expression
+ * A_Const - a literal constant
  */
 typedef struct A_Const
 {
 	NodeTag		type;
-	Value		val;			/* the value (with the tag) */
+	Value		val;			/* value (includes type info, see value.h) */
 } A_Const;
 
 /*
