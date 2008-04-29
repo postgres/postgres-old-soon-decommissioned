@@ -48,6 +48,8 @@ typedef struct
 static void create_proc_lang(const char *languageName,
 				 Oid languageOwner, Oid handlerOid, Oid valOid, bool trusted);
 static PLTemplate *find_language_template(const char *languageName);
+static void AlterLanguageOwner_internal(HeapTuple tup, Relation rel,
+							Oid newOwnerId);
 
 
 /* ---------------------------------------------------------------------
@@ -529,7 +531,6 @@ AlterLanguageOwner(const char *name, Oid newOwnerId)
 {
 	HeapTuple	tup;
 	Relation	rel;
-	Form_pg_language lanForm;
 
 	/* Translate name for consistency with CREATE */
 	name = case_translate_language_name(name);
@@ -543,6 +544,47 @@ AlterLanguageOwner(const char *name, Oid newOwnerId)
 		ereport(ERROR,
 				(errcode(ERRCODE_UNDEFINED_OBJECT),
 				 errmsg("language \"%s\" does not exist", name)));
+
+	AlterLanguageOwner_internal(tup, rel, newOwnerId);
+	
+	ReleaseSysCache(tup);
+	
+	heap_close(rel, RowExclusiveLock);
+
+}
+
+/*
+ * Change language owner, specified by OID
+ */
+void
+AlterLanguageOwner_oid(Oid oid, Oid newOwnerId)
+{
+	HeapTuple	tup;
+	Relation	rel;
+
+	rel = heap_open(LanguageRelationId, RowExclusiveLock);
+
+	tup = SearchSysCache(LANGOID,
+						 ObjectIdGetDatum(oid),
+						 0, 0, 0);
+	if (!HeapTupleIsValid(tup))
+		elog(ERROR, "cache lookup failed for language %u", oid);
+
+	AlterLanguageOwner_internal(tup, rel, newOwnerId);
+
+	ReleaseSysCache(tup);
+
+	heap_close(rel, RowExclusiveLock);
+}
+
+/*
+ * Workhorse for AlterLanguageOwner variants
+ */
+static void
+AlterLanguageOwner_internal(HeapTuple tup, Relation rel, Oid newOwnerId)
+{
+	Form_pg_language lanForm;
+
 	lanForm = (Form_pg_language) GETSTRUCT(tup);
 
 	/*
@@ -600,7 +642,4 @@ AlterLanguageOwner(const char *name, Oid newOwnerId)
 		changeDependencyOnOwner(LanguageRelationId, HeapTupleGetOid(tup),
 								newOwnerId);
 	}
-
-	ReleaseSysCache(tup);
-	heap_close(rel, RowExclusiveLock);
 }

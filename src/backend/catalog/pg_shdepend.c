@@ -32,6 +32,7 @@
 #include "catalog/pg_type.h"
 #include "commands/conversioncmds.h"
 #include "commands/defrem.h"
+#include "commands/proclang.h"
 #include "commands/schemacmds.h"
 #include "commands/tablecmds.h"
 #include "commands/typecmds.h"
@@ -1340,6 +1341,10 @@ shdepReassignOwned(List *roleids, Oid newrole)
 
 				case ProcedureRelationId:
 					AlterFunctionOwner_oid(sdepForm->objid, newrole);
+					break;
+
+				case LanguageRelationId:
+					AlterLanguageOwner_oid(sdepForm->objid, newrole);
 					break;
 
 				default:
