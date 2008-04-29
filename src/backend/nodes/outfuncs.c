@@ -1945,7 +1945,6 @@ _outAConst(StringInfo str, A_Const *node)
 
 	appendStringInfo(str, " :val ");
 	_outValue(str, &(node->val));
-	WRITE_NODE_FIELD(typename);
 }
 
 static void

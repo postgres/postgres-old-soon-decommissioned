@@ -234,17 +234,10 @@ typedef struct A_Const
 {
 	NodeTag		type;
 	Value		val;			/* the value (with the tag) */
-	TypeName   *typename;		/* typecast, or NULL if none */
 } A_Const;
 
 /*
  * TypeCast - a CAST expression
- *
- * NOTE: for mostly historical reasons, A_Const parsenodes contain
- * room for a TypeName, allowing a constant to be marked as being of a given
- * type without a separate TypeCast node.  Either representation will work,
- * but the combined representation saves a bit of code in many
- * productions in gram.y.
  */
 typedef struct TypeCast
 {

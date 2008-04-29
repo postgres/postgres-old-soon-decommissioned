@@ -5207,29 +5207,48 @@ flatten_set_variable_args(const char *name, List *args)
 
 	initStringInfo(&buf);
 
+	/*
+	 * Each list member may be a plain A_Const node, or an A_Const within a
+	 * TypeCast, as produced by makeFloatConst() et al in gram.y.
+	 */
 	foreach(l, args)
 	{
-		A_Const    *arg = (A_Const *) lfirst(l);
+		Node       *arg = (Node *) lfirst(l);
 		char	   *val;
+		TypeName   *typename = NULL;
+		A_Const	   *con;
 
 		if (l != list_head(args))
 			appendStringInfo(&buf, ", ");
 
+		if (IsA(arg, TypeCast))
+		{
+			TypeCast *tc = (TypeCast *) arg;
+
+			arg = tc->arg;
+			typename = tc->typename;
+		}
+
 		if (!IsA(arg, A_Const))
 			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(arg));
 
-		switch (nodeTag(&arg->val))
+		con = (A_Const *) arg;
+		switch (nodeTag(&con->val))
 		{
 			case T_Integer:
-				appendStringInfo(&buf, "%ld", intVal(&arg->val));
+				appendStringInfo(&buf, "%ld", intVal(&con->val));
 				break;
 			case T_Float:
 				/* represented as a string, so just copy it */
-				appendStringInfoString(&buf, strVal(&arg->val));
+				appendStringInfoString(&buf, strVal(&con->val));
 				break;
 			case T_String:
-				val = strVal(&arg->val);
-				if (arg->typename != NULL)
+				/*
+				 * Plain string literal or identifier.	For quote mode,
+				 * quote it if it's not a vanilla identifier.
+				 */
+				val = strVal(&con->val);
+				if (typename != NULL)
 				{
 					/*
 					 * Must be a ConstInterval argument for TIME ZONE. Coerce
@@ -5241,7 +5260,7 @@ flatten_set_variable_args(const char *name, List *args)
 					Datum		interval;
 					char	   *intervalout;
 
-					typoid = typenameTypeId(NULL, arg->typename, &typmod);
+					typoid = typenameTypeId(NULL, typename, &typmod);
 					Assert(typoid == INTERVALOID);
 
 					interval =
@@ -5254,13 +5273,12 @@ flatten_set_variable_args(const char *name, List *args)
 						DatumGetCString(DirectFunctionCall1(interval_out,
 															interval));
 					appendStringInfo(&buf, "INTERVAL '%s'", intervalout);
+
+					/* don't leave this set */
+					typename = NULL;
 				}
 				else
 				{
-					/*
-					 * Plain string literal or identifier.	For quote mode,
-					 * quote it if it's not a vanilla identifier.
-					 */
 					if (flags & GUC_LIST_QUOTE)
 						appendStringInfoString(&buf, quote_identifier(val));
 					else
@@ -5269,7 +5287,7 @@ flatten_set_variable_args(const char *name, List *args)
 				break;
 			default:
 				elog(ERROR, "unrecognized node type: %d",
-					 (int) nodeTag(&arg->val));
+					 (int) nodeTag(&con->val));
 				break;
 		}
 	}

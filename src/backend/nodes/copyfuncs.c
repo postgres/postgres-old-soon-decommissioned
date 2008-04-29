@@ -1639,8 +1639,6 @@ _copyAConst(A_Const *from)
 			break;
 	}
 
-	COPY_NODE_FIELD(typename);
-
 	return newnode;
 }
 

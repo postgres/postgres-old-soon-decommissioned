@@ -308,6 +308,7 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 		char	   *sname;
 		char	   *qstring;
 		A_Const    *snamenode;
+		TypeCast   *castnode;
 		FuncCall   *funccallnode;
 		CreateSeqStmt *seqstmt;
 		AlterSeqStmt *altseqstmt;
@@ -379,10 +380,12 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 		snamenode = makeNode(A_Const);
 		snamenode->val.type = T_String;
 		snamenode->val.val.str = qstring;
-		snamenode->typename = SystemTypeName("regclass");
+		castnode = makeNode(TypeCast);
+		castnode->typename = SystemTypeName("regclass");
+		castnode->arg = (Node *) snamenode;
 		funccallnode = makeNode(FuncCall);
 		funccallnode->funcname = SystemFuncName("nextval");
-		funccallnode->args = list_make1(snamenode);
+		funccallnode->args = list_make1(castnode);
 		funccallnode->agg_star = false;
 		funccallnode->agg_distinct = false;
 		funccallnode->location = -1;
