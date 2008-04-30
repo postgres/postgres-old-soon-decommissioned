@@ -218,6 +218,14 @@ ALTER ROLE davide WITH PASSWORD 'hu8jmn3';
   </para>
 
   <para>
+   Remove a role's password:
+
+<programlisting>
+ALTER ROLE davide WITH PASSWORD NULL;
+</programlisting>
+  </para>
+
+  <para>
    Change a password expiration date, specifying that the password
    should expire at midday on 4th May 2015 using
    the time zone which is one hour ahead of <acronym>UTC</>:
