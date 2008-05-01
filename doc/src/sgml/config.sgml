@@ -826,7 +826,7 @@ SET ENABLE_SEQSCAN TO OFF;
       <listitem>
        <para>
         Specifies the amount of memory to be used by internal sort operations
-        and hash tables before switching to temporary disk files. The value is
+        and hash tables before switching to temporary disk files. The value
         defaults to one megabyte (<literal>1MB</>).
         Note that for a complex query, several sort or hash operations might be
         running in parallel; each one will be allowed to use as much memory
