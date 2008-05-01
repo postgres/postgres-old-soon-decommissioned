@@ -334,6 +334,8 @@ PETT    43200    # Petropavlovsk-Kamchatski Time
                  #     (Asia/Kamchatka)
 PHT     28800    # Phillipine Time (not in zic)
 PKT     18000    # Pakistan Time (not in zic)
+SGT     28800    # Singapore Time
+                 #     (Asia/Singapore)
 TJT     18000    # Tajikistan Time
                  #     (Asia/Dushanbe)
 TMT     18000    # Turkmenistan Time
