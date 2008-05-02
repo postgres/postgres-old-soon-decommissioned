@@ -15,7 +15,9 @@
 
 CMDNAME=`basename $0`
 
-: ${AWK='awk'}
+if [ x"$AWK" = x"" ]; then
+	AWK=awk
+fi
 
 cleanup(){
     [ x"$noclean" != x"t" ] && rm -f "$SORTEDFILE" "$$-$OIDSFILE" "$$-$TABLEFILE"
