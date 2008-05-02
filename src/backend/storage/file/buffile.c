@@ -38,9 +38,9 @@
 #include "storage/buffile.h"
 
 /*
- * We break BufFiles into gigabyte-sized segments, whether or not
- * USE_SEGMENTED_FILES is defined.  The reason is that we'd like large
- * temporary BufFiles to be spread across multiple tablespaces when available.
+ * We break BufFiles into gigabyte-sized segments, regardless of RELSEG_SIZE.
+ * The reason is that we'd like large temporary BufFiles to be spread across
+ * multiple tablespaces when available.
  */
 #define MAX_PHYSICAL_FILESIZE	0x40000000
 #define BUFFILE_SEG_SIZE		(MAX_PHYSICAL_FILESIZE / BLCKSZ)
