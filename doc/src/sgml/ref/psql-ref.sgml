@@ -1068,7 +1068,7 @@ testdb=&gt;
         the listing to system objects; without <literal>S</literal>,
         only non-system objects are shown.  If <literal>+</literal> is
         appended to the command name, each object is listed with its
-        associated description, if any.
+        physical size on disk and its associated description, if any.
         </para>
 
         <para>
