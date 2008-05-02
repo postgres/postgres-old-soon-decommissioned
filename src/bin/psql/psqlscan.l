@@ -1525,22 +1525,6 @@ psql_scan_slash_command_end(PsqlScanState state)
 	/* There are no possible errors in this lex state... */
 }
 
-/*
- * "Push back" the passed string so that it will be rescanned by subsequent
- * psql_scan_slash_option calls.  This is presently only used in the case
- * where a single-letter command has been concatenated with its argument.
- *
- * We use the same buffer stack mechanism as for variable expansion.
- */
-void
-psql_scan_slash_pushback(PsqlScanState state, const char *str)
-{
-	/* needed for push_new_buffer */
-	cur_state = state;
-
-	push_new_buffer(str);
-}
-
 
 /*
  * Push the given string onto the stack of stuff to scan.
