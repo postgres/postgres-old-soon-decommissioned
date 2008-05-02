@@ -1892,6 +1892,16 @@ static struct config_real ConfigureNamesReal[] =
 	},
 
 	{
+		{"cursor_tuple_fraction", PGC_USERSET, QUERY_TUNING_OTHER,
+			gettext_noop("Sets the planner's estimate of the fraction of "
+						 "a cursor's rows that will be retrieved."),
+			NULL
+		},
+		&cursor_tuple_fraction,
+		DEFAULT_CURSOR_TUPLE_FRACTION, 0.0, 1.0, NULL, NULL
+	},
+
+	{
 		{"geqo_selection_bias", PGC_USERSET, QUERY_TUNING_GEQO,
 			gettext_noop("GEQO: selective pressure within the population."),
 			NULL

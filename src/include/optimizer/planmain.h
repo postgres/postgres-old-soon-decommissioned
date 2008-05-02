@@ -17,6 +17,10 @@
 #include "nodes/plannodes.h"
 #include "nodes/relation.h"
 
+/* GUC parameters */
+#define DEFAULT_CURSOR_TUPLE_FRACTION 0.1
+extern double cursor_tuple_fraction;
+
 /*
  * prototypes for plan/planmain.c
  */
