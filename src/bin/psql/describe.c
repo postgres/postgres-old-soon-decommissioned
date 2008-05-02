@@ -1766,9 +1766,14 @@ listTables(const char *tabtypes, const char *pattern, bool verbose)
 						  gettext_noop("Table"));
 
 	if (verbose)
+	{
+		appendPQExpBuffer(&buf,
+						  ",\n  pg_catalog.pg_size_pretty(pg_catalog.pg_relation_size(c.oid)) as \"%s\"",
+					  	  gettext_noop("Size"));
 		appendPQExpBuffer(&buf,
 			  ",\n  pg_catalog.obj_description(c.oid, 'pg_class') as \"%s\"",
 						  gettext_noop("Description"));
+	}
 
 	appendPQExpBuffer(&buf,
 					  "\nFROM pg_catalog.pg_class c"
