@@ -257,7 +257,8 @@ PGAC_ARG_REQ(with, segsize, [  --with-segsize=SEGSIZE  set table segment size in
              [segsize=$withval],
              [segsize=1])
 # this expression is set up to avoid unnecessary integer overflow
-RELSEG_SIZE=`expr '(' 1024 '*' ${segsize} / ${blocksize} ')' '*' 1024`
+# blocksize is already guaranteed to be a factor of 1024
+RELSEG_SIZE=`expr '(' 1024 / ${blocksize} ')' '*' ${segsize} '*' 1024`
 test $? -eq 0 || exit 1
 AC_MSG_RESULT([${segsize}GB])
 
