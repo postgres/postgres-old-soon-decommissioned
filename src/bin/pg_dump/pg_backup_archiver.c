@@ -220,6 +220,11 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 	}
 
 	/*
+	 * Disable statement_timeout in archive for pg_restore/psql
+	 */
+	ahprintf(AH, "SET statement_timeout = 0;\n");
+
+	/*
 	 * Establish important parameter values right away.
 	 */
 	_doSetFixedOutputState(AH);

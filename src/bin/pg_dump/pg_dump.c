@@ -571,6 +571,12 @@ main(int argc, char **argv)
 		do_sql_command(g_conn, "SET synchronize_seqscans TO off");
 
 	/*
+	 * Disable timeouts if supported.
+	 */
+	if (g_fout->remoteVersion >= 70300)
+		do_sql_command(g_conn, "SET statement_timeout = 0");
+         
+	/*
 	 * Start serializable transaction to dump consistent data.
 	 */
 	do_sql_command(g_conn, "BEGIN");
