@@ -529,7 +529,9 @@ typedef struct
 {								/* RETURN QUERY statement */
 	int			cmd_type;
 	int			lineno;
-	PLpgSQL_expr *query;
+	PLpgSQL_expr *query;		/* if static query */
+	PLpgSQL_expr *dynquery;		/* if dynamic query (RETURN QUERY EXECUTE) */
+	List	   *params;			/* USING arguments for dynamic query */
 } PLpgSQL_stmt_return_query;
 
 typedef struct
