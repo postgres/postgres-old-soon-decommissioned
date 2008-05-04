@@ -220,11 +220,6 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 	}
 
 	/*
-	 * Disable statement_timeout in archive for pg_restore/psql
-	 */
-	ahprintf(AH, "SET statement_timeout = 0;\n");
-
-	/*
 	 * Establish important parameter values right away.
 	 */
 	_doSetFixedOutputState(AH);
@@ -2140,6 +2135,9 @@ _tocEntryRequired(TocEntry *te, RestoreOptions *ropt, bool include_acls)
 static void
 _doSetFixedOutputState(ArchiveHandle *AH)
 {
+	/* Disable statement_timeout in archive for pg_restore/psql	 */
+	ahprintf(AH, "SET statement_timeout = 0;\n")
+
 	/* Select the correct character set encoding */
 	ahprintf(AH, "SET client_encoding = '%s';\n",
 			 pg_encoding_to_char(AH->public.encoding));
