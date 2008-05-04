@@ -309,6 +309,9 @@ ProcessConfigFile(GucContext context)
 						  PGC_S_FILE, GUC_ACTION_SET, true);
 	}
 
+	/* Remember when we last successfully loaded the config file. */
+	PgReloadTime = GetCurrentTimestamp();
+
  cleanup_list:
 	free_name_value_list(head);
 	if (cvc)

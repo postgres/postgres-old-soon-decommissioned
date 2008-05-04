@@ -42,6 +42,8 @@
 
 /* Set at postmaster start */
 TimestampTz PgStartTime;
+/* Set at configuration reload */
+TimestampTz PgReloadTime;
 
 
 static TimeOffset time2t(const int hour, const int min, const int sec, const fsec_t fsec);
@@ -1157,9 +1159,15 @@ clock_timestamp(PG_FUNCTION_ARGS)
 }
 
 Datum
-pgsql_postmaster_start_time(PG_FUNCTION_ARGS)
+pg_postmaster_start_time(PG_FUNCTION_ARGS)
 {
 	PG_RETURN_TIMESTAMPTZ(PgStartTime);
+}
+
+Datum
+pg_conf_load_time(PG_FUNCTION_ARGS)
+{
+	PG_RETURN_TIMESTAMPTZ(PgReloadTime);
 }
 
 /*

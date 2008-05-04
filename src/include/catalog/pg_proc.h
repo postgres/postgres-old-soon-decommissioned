@@ -3922,8 +3922,11 @@ DATA(insert OID = 2559 ( lastval			   PGNSP PGUID 12 1 0 f f t f v 0 20 "" _null
 DESCR("current value from last used sequence");
 
 /* start time function */
-DATA(insert OID = 2560 (  pg_postmaster_start_time PGNSP PGUID 12 1 0 f f t f s 0 1184 "" _null_ _null_ _null_ pgsql_postmaster_start_time - _null_ _null_ ));
+DATA(insert OID = 2560 (  pg_postmaster_start_time	PGNSP PGUID 12 1 0 f f t f s 0 1184 "" _null_ _null_ _null_ pg_postmaster_start_time - _null_ _null_ ));
 DESCR("postmaster start time");
+/* config reload time function */
+DATA(insert OID = 2034 (  pg_conf_load_time			PGNSP PGUID 12 1 0 f f t f s 0 1184 "" _null_ _null_ _null_ pg_conf_load_time - _null_ _null_ ));
+DESCR("configuration load time");
 
 /* new functions for Y-direction rtree opclasses */
 DATA(insert OID = 2562 (  box_below		   PGNSP PGUID 12 1 0 f f t f i 2 16 "603 603" _null_ _null_ _null_ box_below - _null_ _null_ ));

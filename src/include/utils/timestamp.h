@@ -195,6 +195,8 @@ typedef struct
 
 /* Set at postmaster start */
 extern TimestampTz PgStartTime;
+/* Set at configuration reload */
+extern TimestampTz PgReloadTime;
 
 
 /*
@@ -303,7 +305,8 @@ extern Datum now(PG_FUNCTION_ARGS);
 extern Datum statement_timestamp(PG_FUNCTION_ARGS);
 extern Datum clock_timestamp(PG_FUNCTION_ARGS);
 
-extern Datum pgsql_postmaster_start_time(PG_FUNCTION_ARGS);
+extern Datum pg_postmaster_start_time(PG_FUNCTION_ARGS);
+extern Datum pg_conf_load_time(PG_FUNCTION_ARGS);
 
 /* Internal routines (not fmgr-callable) */
 
