@@ -3872,6 +3872,10 @@ DATA(insert OID = 1068 (  generate_series PGNSP PGUID 12 1 1000 f f t t i 3 20 "
 DESCR("non-persistent series generator");
 DATA(insert OID = 1069 (  generate_series PGNSP PGUID 12 1 1000 f f t t i 2 20 "20 20" _null_ _null_ _null_ generate_series_int8 - _null_ _null_ ));
 DESCR("non-persistent series generator");
+DATA(insert OID = 938  (  generate_series PGNSP PGUID 12 1 1000 f f t t i 3 1114 "1114 1114 1186" _null_ _null_ _null_ generate_series_timestamp - _null_ _null_ ));
+DESCR("non-persistent series generator");
+DATA(insert OID = 939  (  generate_series PGNSP PGUID 12 1 1000 f f t t s 3 1184 "1184 1184 1186" _null_ _null_ _null_ generate_series_timestamptz - _null_ _null_ ));
+DESCR("non-persistent series generator");
 
 /* boolean aggregates */
 DATA(insert OID = 2515 ( booland_statefunc			   PGNSP PGUID 12 1 0 f f t f i 2 16 "16 16" _null_ _null_ _null_ booland_statefunc - _null_ _null_ ));
