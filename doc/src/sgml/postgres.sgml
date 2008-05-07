@@ -146,9 +146,9 @@
   &installw;
   &runtime;
   &config;
+  &client-auth;
   &user-manag;
   &manage-ag;
-  &client-auth;
   &charset;
   &maintenance;
   &backup;
