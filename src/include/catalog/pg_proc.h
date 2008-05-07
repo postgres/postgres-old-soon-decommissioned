@@ -2904,6 +2904,8 @@ DATA(insert OID = 2784 (  pg_stat_get_last_autoanalyze_time PGNSP PGUID 12 1 0 f
 DESCR("statistics: last auto analyze time for a table");
 DATA(insert OID = 1936 (  pg_stat_get_backend_idset		PGNSP PGUID 12 1 100 f f t t s 0 23 "" _null_ _null_ _null_ pg_stat_get_backend_idset - _null_ _null_ ));
 DESCR("statistics: currently active backend IDs");
+DATA(insert OID = 2022 (  pg_stat_get_activity			PGNSP PGUID 12 1 100 f f f t s 1 2249 "23" _null_ _null_ _null_ pg_stat_get_activity - _null_ _null_ ));
+DESCR("statistics: information about currently active backends");
 DATA(insert OID = 2026 (  pg_backend_pid				PGNSP PGUID 12 1 0 f f t f s 0 23 "" _null_ _null_ _null_ pg_backend_pid - _null_ _null_ ));
 DESCR("statistics: current backend PID");
 DATA(insert OID = 1937 (  pg_stat_get_backend_pid		PGNSP PGUID 12 1 0 f f t f s 1 23 "23" _null_ _null_ _null_ pg_stat_get_backend_pid - _null_ _null_ ));
