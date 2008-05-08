@@ -321,6 +321,14 @@ pg_wcsformat(unsigned char *pwcs, size_t len, int encoding,
 				linewidth += 2;
 				ptr += 2;
 			}
+			else if (*pwcs == '\t')		/* Tab */
+			{
+				do
+				{
+					*ptr++ = ' ';
+					linewidth++;
+				} while (linewidth % 8 != 0);
+			}
 			else if (w < 0)		/* Other control char */
 			{
 				sprintf((char *) ptr, "\\x%02X", *pwcs);
