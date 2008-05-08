@@ -46,9 +46,7 @@ WANTED_DIRS += uuid-ossp
 endif
 
 ifeq ($(with_libxml),yes)
-ifeq ($(with_libxslt),yes)
 WANTED_DIRS += xml2
-endif
 endif
 
 # Missing:

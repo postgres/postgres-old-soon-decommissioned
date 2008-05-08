@@ -374,9 +374,7 @@ WHERE t.author_id = p.person_id;
   <title>XSLT functions</title>
 
   <para>
-   The following functions are available if libxslt is installed (this is
-   not currently detected automatically, so you will have to amend the
-   Makefile):
+   The following functions are available if libxslt is installed:
   </para>
 
   <sect3>
