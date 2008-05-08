@@ -353,12 +353,7 @@ CREATE VIEW pg_stat_activity AS
             S.backend_start,
             S.client_addr,
             S.client_port
-    FROM pg_database D, 
-            pg_stat_get_activity(NULL) AS S(datid oid, procpid int,
-               usesysid oid, current_query text, waiting boolean,
-               xact_start timestamptz, query_start timestamptz,
-               backend_start timestamptz, client_addr inet, client_port int),
-            pg_authid U 
+    FROM pg_database D, pg_stat_get_activity(NULL) AS S, pg_authid U
     WHERE S.datid = D.oid AND 
             S.usesysid = U.oid;
 
