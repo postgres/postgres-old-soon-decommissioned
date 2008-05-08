@@ -2,16 +2,12 @@
 
 MODULE_big = pgxml
 
-# Remove xslt_proc.o from the following line if you don't have libxslt
-OBJS = xpath.o xslt_proc.o
+OBJS = $(if $(filter -lxslt, $(LIBS)), xpath.o xslt_proc.o, xpath.o)
 
-# Remove -lxslt from the following line if you don't have libxslt.
-SHLIB_LINK = -lxslt -lxml2
+SHLIB_LINK += $(filter -lxslt, $(LIBS)) $(filter -lxml2, $(LIBS))
 
 DATA_built = pgxml.sql
 DATA = uninstall_pgxml.sql
-
-override CFLAGS += $(shell xml2-config --cflags)
 
 ifdef USE_PGXS
 PG_CONFIG = pg_config
