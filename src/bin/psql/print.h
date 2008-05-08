@@ -21,6 +21,7 @@ enum printFormat
 	PRINT_NOTHING = 0,			/* to make sure someone initializes this */
 	PRINT_UNALIGNED,
 	PRINT_ALIGNED,
+	PRINT_WRAPPED,
 	PRINT_HTML,
 	PRINT_LATEX,
 	PRINT_TROFF_MS
@@ -47,6 +48,8 @@ typedef struct _printTableOpt
 								 * decimal marker */
 	char	   *tableAttr;		/* attributes for HTML <table ...> */
 	int			encoding;		/* character encoding */
+	int			env_columns;	/* $COLUMNS on psql start, 0 is unset */
+	int			columns;		/* target width for wrapped format */
 } printTableOpt;
 
 

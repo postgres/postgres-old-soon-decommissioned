@@ -147,6 +147,8 @@ main(int argc, char *argv[])
 	pset.popt.topt.start_table = true;
 	pset.popt.topt.stop_table = true;
 	pset.popt.default_footer = true;
+	/* We must get COLUMNS here before readline() sets it */
+	pset.popt.topt.env_columns = getenv("COLUMNS") ? atoi(getenv("COLUMNS")) : 0;
 
 	pset.notty = (!isatty(fileno(stdin)) || !isatty(fileno(stdout)));
 
