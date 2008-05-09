@@ -398,8 +398,10 @@ sub AddContrib
         $mf =~ s{\\\s*[\r\n]+}{}mg;
         my $proj = $solution->AddProject($dn, 'dll', 'contrib');
         $mf =~ /^OBJS\s*=\s*(.*)$/gm || croak "Could not find objects in MODULE_big for $n\n";
-        foreach my $o (split /\s+/, $1)
+		my $objs = $1;
+        while ($objs =~ /\b([\w-]+\.o)\b/g)
         {
+			my $o = $1;
             $o =~ s/\.o$/.c/;
             $proj->AddFile('contrib\\' . $n . '\\' . $o);
         }
