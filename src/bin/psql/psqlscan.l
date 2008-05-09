@@ -125,6 +125,7 @@ static void emit(const char *txt, int len);
 %option 8bit
 %option never-interactive
 %option nodefault
+%option noinput
 %option nounput
 %option noyywrap
 

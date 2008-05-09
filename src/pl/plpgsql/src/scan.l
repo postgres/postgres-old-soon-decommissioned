@@ -47,6 +47,7 @@ bool plpgsql_SpaceScanned = false;
 %option 8bit
 %option never-interactive
 %option nodefault
+%option noinput
 %option nounput
 %option noyywrap
 %option prefix="plpgsql_base_yy"
