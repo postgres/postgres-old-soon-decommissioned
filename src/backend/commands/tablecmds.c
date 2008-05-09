@@ -1184,7 +1184,7 @@ change_varattnos_walker(Node *node, const AttrNumber *newattno)
 			 * currently.
 			 */
 			Assert(newattno[var->varattno - 1] > 0);
-			var->varattno = newattno[var->varattno - 1];
+			var->varattno = var->varoattno = newattno[var->varattno - 1];
 		}
 		return false;
 	}
