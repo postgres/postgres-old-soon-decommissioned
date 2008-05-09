@@ -2507,7 +2507,7 @@ RestoreArchivedFile(char *path, const char *xlogfname,
 					 ControlFile->checkPointCopy.ThisTimeLineID,
 					 restartLog, restartSeg);
 		/* we shouldn't need anything earlier than last restart point */
-		Assert(strcmp(lastRestartPointFname, xlogfname) < 0);
+		Assert(strcmp(lastRestartPointFname, xlogfname) <= 0);
 	}
 	else
 		XLogFileName(lastRestartPointFname, 0, 0, 0);
