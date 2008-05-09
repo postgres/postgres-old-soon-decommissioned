@@ -2206,7 +2206,9 @@ domainAddConstraint(Oid domainOid, Oid domainNamespace, Oid baseTypeOid,
 						  InvalidOid,
 						  expr, /* Tree form check constraint */
 						  ccbin,	/* Binary form check constraint */
-						  ccsrc);		/* Source form check constraint */
+						  ccsrc,	/* Source form check constraint */
+						  true, /* is local */
+						  0);	/* inhcount */
 
 	/*
 	 * Return the compiled constraint expression so the calling routine can

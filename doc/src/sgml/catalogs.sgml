@@ -1908,6 +1908,26 @@
      </row>
 
      <row>
+      <entry><structfield>conislocal</structfield></entry>
+      <entry><type>bool</type></entry>
+      <entry></entry>
+      <entry>
+       This constraint is defined locally in the relation.  Note that a
+       constraint can be locally defined and inherited simultaneously
+      </entry>
+     </row>
+
+     <row>
+      <entry><structfield>coninhcount</structfield></entry>
+      <entry><type>int4</type></entry>
+      <entry></entry>
+      <entry>
+       The number of direct ancestors this constraint has.  A constraint with
+       a nonzero number of ancestors cannot be dropped nor renamed
+      </entry>
+     </row>
+
+     <row>
       <entry><structfield>conkey</structfield></entry>
       <entry><type>int2[]</type></entry>
       <entry><literal><link linkend="catalog-pg-attribute"><structname>pg_attribute</structname></link>.attnum</></entry>

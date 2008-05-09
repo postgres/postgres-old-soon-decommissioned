@@ -639,9 +639,12 @@ make_new_heap(Oid OIDOldHeap, const char *NewName, Oid NewTableSpace)
 
 	/*
 	 * Need to make a copy of the tuple descriptor, since
-	 * heap_create_with_catalog modifies it.
+	 * heap_create_with_catalog modifies it.  Note that the NewHeap will
+	 * not receive any of the defaults or constraints associated with the
+	 * OldHeap; we don't need 'em, and there's no reason to spend cycles
+	 * inserting them into the catalogs only to delete them.
 	 */
-	tupdesc = CreateTupleDescCopyConstr(OldHeapDesc);
+	tupdesc = CreateTupleDescCopy(OldHeapDesc);
 
 	/*
 	 * Use options of the old heap for new heap.
@@ -662,6 +665,7 @@ make_new_heap(Oid OIDOldHeap, const char *NewName, Oid NewTableSpace)
 										  InvalidOid,
 										  OldHeap->rd_rel->relowner,
 										  tupdesc,
+										  NIL,
 										  OldHeap->rd_rel->relkind,
 										  OldHeap->rd_rel->relisshared,
 										  true,

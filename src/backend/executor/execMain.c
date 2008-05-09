@@ -2626,7 +2626,7 @@ OpenIntoRel(QueryDesc *queryDesc)
 									 false);
 	(void) heap_reloptions(RELKIND_RELATION, reloptions, true);
 
-	/* have to copy the actual tupdesc to get rid of any constraints */
+	/* Copy the tupdesc because heap_create_with_catalog modifies it */
 	tupdesc = CreateTupleDescCopy(queryDesc->tupDesc);
 
 	/* Now we can actually create the new relation */
@@ -2636,6 +2636,7 @@ OpenIntoRel(QueryDesc *queryDesc)
 											  InvalidOid,
 											  GetUserId(),
 											  tupdesc,
+											  NIL,
 											  RELKIND_RELATION,
 											  false,
 											  true,

@@ -206,6 +206,7 @@ Boot_CreateStmt:
 													  $6,
 													  BOOTSTRAP_SUPERUSERID,
 													  tupdesc,
+													  NIL,
 													  RELKIND_RELATION,
 													  $3,
 													  true,

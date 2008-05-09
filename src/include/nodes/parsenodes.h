@@ -892,11 +892,11 @@ typedef enum AlterTableType
 	AT_AddIndex,				/* add index */
 	AT_ReAddIndex,				/* internal to commands/tablecmds.c */
 	AT_AddConstraint,			/* add constraint */
+	AT_AddConstraintRecurse,	/* internal to commands/tablecmds.c */
 	AT_ProcessedConstraint,		/* pre-processed add constraint (local in
 								 * parser/parse_utilcmd.c) */
 	AT_DropConstraint,			/* drop constraint */
-	AT_DropConstraintQuietly,	/* drop constraint, no error/warning (local in
-								 * commands/tablecmds.c) */
+	AT_DropConstraintRecurse,	/* internal to commands/tablecmds.c */
 	AT_AlterColumnType,			/* alter column type */
 	AT_ChangeOwner,				/* change owner */
 	AT_ClusterOn,				/* CLUSTER ON */

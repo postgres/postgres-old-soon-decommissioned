@@ -193,6 +193,7 @@ create_toast_table(Relation rel, Oid toastOid, Oid toastIndexOid)
 										   toastOid,
 										   rel->rd_rel->relowner,
 										   tupdesc,
+										   NIL,
 										   RELKIND_TOASTVALUE,
 										   shared_relation,
 										   true,

@@ -353,7 +353,7 @@ typedef struct _constraintInfo
 	char		contype;
 	char	   *condef;			/* definition, if CHECK or FOREIGN KEY */
 	DumpId		conindex;		/* identifies associated index if any */
-	bool		coninherited;	/* TRUE if appears to be inherited */
+	bool		conislocal;		/* TRUE if constraint has local definition */
 	bool		separate;		/* TRUE if must dump as separate item */
 } ConstraintInfo;
 

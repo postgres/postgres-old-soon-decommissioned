@@ -29,6 +29,8 @@ typedef struct CookedConstraint
 	char	   *name;			/* name, or NULL if none */
 	AttrNumber	attnum;			/* which attr (only for DEFAULT) */
 	Node	   *expr;			/* transformed default or check expr */
+	bool		is_local;		/* constraint has local (non-inherited) def */
+	int			inhcount;		/* number of times constraint is inherited */
 } CookedConstraint;
 
 extern Relation heap_create(const char *relname,
@@ -46,6 +48,7 @@ extern Oid heap_create_with_catalog(const char *relname,
 						 Oid relid,
 						 Oid ownerid,
 						 TupleDesc tupdesc,
+						 List *cooked_constraints,
 						 char relkind,
 						 bool shared_relation,
 						 bool oidislocal,
@@ -67,20 +70,19 @@ extern void InsertPgClassTuple(Relation pg_class_desc,
 				   Oid new_rel_oid,
 				   Datum reloptions);
 
-extern List *AddRelationRawConstraints(Relation rel,
-						  List *rawColDefaults,
-						  List *rawConstraints);
+extern List *AddRelationNewConstraints(Relation rel,
+						  List *newColDefaults,
+						  List *newConstraints,
+						  bool allow_merge,
+						  bool is_local);
 
-extern void StoreAttrDefault(Relation rel, AttrNumber attnum, char *adbin);
+extern void StoreAttrDefault(Relation rel, AttrNumber attnum, Node *expr);
 
 extern Node *cookDefault(ParseState *pstate,
 			Node *raw_default,
 			Oid atttypid,
 			int32 atttypmod,
 			char *attname);
-
-extern int RemoveRelConstraints(Relation rel, const char *constrName,
-					 DropBehavior behavior);
 
 extern void DeleteRelationTuple(Oid relid);
 extern void DeleteAttributeTuples(Oid relid);
