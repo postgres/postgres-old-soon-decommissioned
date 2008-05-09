@@ -1331,7 +1331,8 @@ dpow(PG_FUNCTION_ARGS)
 
 	/*
 	 * The SQL spec requires that we emit a particular SQLSTATE error code for
-	 * certain error conditions.
+	 * certain error conditions.  Specifically, we don't return a divide-by-zero
+	 * error code for 0 ^ -1.
 	 */
 	if ((arg1 == 0 && arg2 < 0) ||
 		(arg1 < 0 && floor(arg2) != arg2))

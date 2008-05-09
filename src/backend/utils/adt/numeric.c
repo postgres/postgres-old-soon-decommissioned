@@ -1893,8 +1893,9 @@ numeric_power(PG_FUNCTION_ARGS)
 	trunc_var(&arg2_trunc, 0);
 
 	/*
-	 * Return special SQLSTATE error codes for a few conditions mandated by
-	 * the standard.
+	 * The SQL spec requires that we emit a particular SQLSTATE error code for
+	 * certain error conditions.  Specifically, we don't return a divide-by-zero
+	 * error code for 0 ^ -1.
 	 */
 	if ((cmp_var(&arg1, &const_zero) == 0 &&
 		 cmp_var(&arg2, &const_zero) < 0) ||
@@ -5283,6 +5284,7 @@ power_var_int(NumericVar *base, int exp, NumericVar *result, int rscale)
 			/*
 			 *	While 0 ^ 0 can be either 1 or indeterminate (error), we
 			 *	treat it as 1 because most programming languages do this.
+			 *	SQL:2003 also requires a return value of 1.
 			 *	http://en.wikipedia.org/wiki/Exponentiation#Zero_to_the_zero_power
 			 */
 			set_var_from_var(&const_one, result);
