@@ -414,8 +414,10 @@ sub AddContrib
                 $mf2 =~ s{\\\s*[\r\n]+}{}mg;
                 $mf2 =~ /^SUBOBJS\s*=\s*(.*)$/gm
                   || croak "Could not find objects in MODULE_big for $n, subdir $d\n";
-                foreach my $o (split /\s+/, $1)
-                {
+                $objs = $1;
+				while ($objs =~ /\b([\w-]+\.o)\b/g)
+				{
+					my $o = $1;
                     $o =~ s/\.o$/.c/;
                     $proj->AddFile('contrib\\' . $n . '\\' . $d . '\\' . $o);
                 }
@@ -437,8 +439,10 @@ sub AddContrib
     {
         my $proj = $solution->AddProject($1, 'exe', 'contrib');
         $mf =~ /^OBJS\s*=\s*(.*)$/gm || croak "Could not find objects in MODULE_big for $n\n";
-        foreach my $o (split /\s+/, $1)
+        my $objs = $1;
+        while ($objs =~ /\b([\w-]+\.o)\b/g)
         {
+			my $o = $1;
             $o =~ s/\.o$/.c/;
             $proj->AddFile('contrib\\' . $n . '\\' . $o);
         }
