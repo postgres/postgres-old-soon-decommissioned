@@ -6365,7 +6365,7 @@ assign_xlog_sync_method(int new_sync_method, bool doit, GucSource source)
 			 * new_sync_method are controlled by the available enum
 			 * options.
 			 */
-			elog(PANIC, "unrecognized wal_sync_method: %d", sync_method);
+			elog(PANIC, "unrecognized wal_sync_method: %d", new_sync_method);
 			break;
 	}
 
