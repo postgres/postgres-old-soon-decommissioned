@@ -1,6 +1,12 @@
-#include "hstore.h"
+/*
+ * $PostgreSQL$
+ */
+#include "postgres.h"
 
 #include "access/gin.h"
+
+#include "hstore.h"
+
 
 #define KEYFLAG		'K'
 #define VALFLAG		'V'

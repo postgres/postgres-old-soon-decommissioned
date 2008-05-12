@@ -15,6 +15,7 @@
 #include "postgres.h"
 
 #include "access/printtup.h"
+#include "access/sysattr.h"
 #include "catalog/heap.h"
 #include "commands/trigger.h"
 #include "executor/spi_priv.h"

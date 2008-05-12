@@ -14,9 +14,10 @@
 #include "postgres.h"
 
 #include "access/gist_private.h"
-#include "access/heapam.h"
 #include "access/reloptions.h"
 #include "storage/freespace.h"
+#include "storage/lmgr.h"
+#include "storage/bufmgr.h"
 
 /*
  * static *S used for temrorary storage (saves stack and palloc() call)

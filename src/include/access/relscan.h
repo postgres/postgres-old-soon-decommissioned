@@ -17,6 +17,7 @@
 #include "access/htup.h"
 #include "access/skey.h"
 #include "storage/bufpage.h"
+#include "utils/rel.h"
 #include "utils/snapshot.h"
 
 

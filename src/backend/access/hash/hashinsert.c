@@ -16,6 +16,7 @@
 #include "postgres.h"
 
 #include "access/hash.h"
+#include "storage/bufmgr.h"
 
 
 static OffsetNumber _hash_pgaddtup(Relation rel, Buffer buf,

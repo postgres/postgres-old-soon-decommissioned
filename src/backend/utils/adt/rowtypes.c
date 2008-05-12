@@ -16,7 +16,6 @@
 
 #include <ctype.h>
 
-#include "access/heapam.h"
 #include "catalog/pg_type.h"
 #include "libpq/pqformat.h"
 #include "utils/builtins.h"

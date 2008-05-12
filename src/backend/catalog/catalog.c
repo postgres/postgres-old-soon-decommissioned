@@ -21,6 +21,7 @@
 #include <unistd.h>
 
 #include "access/genam.h"
+#include "access/sysattr.h"
 #include "access/transam.h"
 #include "catalog/catalog.h"
 #include "catalog/indexing.h"

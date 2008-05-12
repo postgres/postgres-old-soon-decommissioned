@@ -102,7 +102,6 @@
 
 #include "access/genam.h"
 #include "access/hash.h"
-#include "access/heapam.h"
 #include "access/nbtree.h"
 #include "catalog/pg_amop.h"
 #include "catalog/pg_operator.h"

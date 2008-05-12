@@ -14,9 +14,7 @@
 #ifndef LOCK_H_
 #define LOCK_H_
 
-#include "nodes/pg_list.h"
 #include "storage/backendid.h"
-#include "storage/itemptr.h"
 #include "storage/lwlock.h"
 #include "storage/shmem.h"
 

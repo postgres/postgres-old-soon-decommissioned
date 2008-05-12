@@ -18,6 +18,7 @@
 #include "access/genam.h"
 #include "access/nbtree.h"
 #include "pgstat.h"
+#include "storage/bufmgr.h"
 #include "utils/lsyscache.h"
 
 

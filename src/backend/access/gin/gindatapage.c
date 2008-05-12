@@ -13,7 +13,9 @@
  */
 
 #include "postgres.h"
+
 #include "access/gin.h"
+#include "storage/bufmgr.h"
 
 int
 compareItemPointers(ItemPointer a, ItemPointer b)

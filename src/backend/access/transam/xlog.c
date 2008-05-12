@@ -24,7 +24,6 @@
 #include <unistd.h>
 
 #include "access/clog.h"
-#include "access/heapam.h"
 #include "access/multixact.h"
 #include "access/subtrans.h"
 #include "access/transam.h"
@@ -41,6 +40,7 @@
 #include "miscadmin.h"
 #include "pgstat.h"
 #include "postmaster/bgwriter.h"
+#include "storage/bufmgr.h"
 #include "storage/bufpage.h"
 #include "storage/fd.h"
 #include "storage/ipc.h"

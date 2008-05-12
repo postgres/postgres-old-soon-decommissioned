@@ -16,9 +16,10 @@
 
 #include "access/relscan.h"
 #include "access/sdir.h"
-#include "nodes/primnodes.h"
 #include "nodes/tidbitmap.h"
+#include "storage/buf.h"
 #include "storage/lock.h"
+#include "utils/rel.h"
 
 /*
  * Struct for statistics returned by ambuild

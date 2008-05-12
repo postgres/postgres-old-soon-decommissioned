@@ -14,7 +14,7 @@
  */
 #include "postgres.h"
 
-#include "access/htup.h"
+#include "access/sysattr.h"
 #include "optimizer/clauses.h"
 #include "optimizer/prep.h"
 #include "optimizer/var.h"

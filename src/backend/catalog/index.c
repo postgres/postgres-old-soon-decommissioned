@@ -25,6 +25,7 @@
 
 #include "access/genam.h"
 #include "access/heapam.h"
+#include "access/sysattr.h"
 #include "access/transam.h"
 #include "access/xact.h"
 #include "bootstrap/bootstrap.h"
@@ -45,6 +46,8 @@
 #include "optimizer/clauses.h"
 #include "optimizer/var.h"
 #include "parser/parse_expr.h"
+#include "storage/bufmgr.h"
+#include "storage/lmgr.h"
 #include "storage/procarray.h"
 #include "storage/smgr.h"
 #include "utils/builtins.h"

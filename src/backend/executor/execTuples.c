@@ -92,9 +92,9 @@
 #include "postgres.h"
 
 #include "funcapi.h"
-#include "access/heapam.h"
 #include "catalog/pg_type.h"
 #include "parser/parse_expr.h"
+#include "storage/bufmgr.h"
 #include "utils/lsyscache.h"
 #include "utils/typcache.h"
 

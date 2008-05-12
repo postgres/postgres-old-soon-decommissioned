@@ -20,7 +20,6 @@
 
 #include <math.h>
 
-#include "access/heapam.h"
 #include "executor/executor.h"
 #include "executor/nodeSubplan.h"
 #include "nodes/makefuncs.h"

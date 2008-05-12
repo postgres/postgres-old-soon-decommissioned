@@ -14,6 +14,8 @@
 #ifndef PARSER_H
 #define PARSER_H
 
+#include "nodes/pg_list.h"
+
 extern List *raw_parser(const char *str);
 
 #endif   /* PARSER_H */

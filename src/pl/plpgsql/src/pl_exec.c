@@ -18,7 +18,6 @@
 
 #include <ctype.h>
 
-#include "access/heapam.h"
 #include "access/transam.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"

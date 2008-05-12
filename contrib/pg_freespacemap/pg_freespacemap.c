@@ -8,10 +8,11 @@
  */
 #include "postgres.h"
 
-#include "funcapi.h"
-#include "access/heapam.h"
+#include "access/htup.h"
 #include "catalog/pg_type.h"
+#include "funcapi.h"
 #include "storage/freespace.h"
+#include "storage/lmgr.h"
 
 
 #define		NUM_FREESPACE_PAGES_ELEM	5

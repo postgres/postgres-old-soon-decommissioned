@@ -15,6 +15,7 @@
 #define REWRITEDEFINE_H
 
 #include "nodes/parsenodes.h"
+#include "utils/rel.h"
 
 #define RULE_FIRES_ON_ORIGIN	'O'
 #define RULE_FIRES_ALWAYS		'A'

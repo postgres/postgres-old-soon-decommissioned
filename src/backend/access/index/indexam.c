@@ -66,6 +66,8 @@
 #include "access/heapam.h"
 #include "access/transam.h"
 #include "pgstat.h"
+#include "storage/bufmgr.h"
+#include "storage/lmgr.h"
 #include "utils/relcache.h"
 #include "utils/snapmgr.h"
 #include "utils/tqual.h"

@@ -15,7 +15,6 @@
 
 #include "funcapi.h"
 #include "access/genam.h"
-#include "access/heapam.h"
 #include "access/skey.h"
 #include "catalog/indexing.h"
 #include "catalog/namespace.h"

@@ -16,10 +16,11 @@
 
 #include "access/genam.h"
 #include "access/gist_private.h"
-#include "access/heapam.h"
 #include "commands/vacuum.h"
 #include "miscadmin.h"
+#include "storage/bufmgr.h"
 #include "storage/freespace.h"
+#include "storage/lmgr.h"
 #include "utils/memutils.h"
 
 

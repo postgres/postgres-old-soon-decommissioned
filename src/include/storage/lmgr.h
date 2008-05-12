@@ -15,6 +15,7 @@
 #define LMGR_H
 
 #include "lib/stringinfo.h"
+#include "storage/itemptr.h"
 #include "storage/lock.h"
 #include "utils/rel.h"
 

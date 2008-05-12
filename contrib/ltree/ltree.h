@@ -3,9 +3,7 @@
 #ifndef __LTREE_H__
 #define __LTREE_H__
 
-#include "postgres.h"
-
-#include "utils/builtins.h"
+#include "fmgr.h"
 
 typedef struct
 {

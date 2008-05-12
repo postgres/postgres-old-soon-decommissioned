@@ -55,6 +55,7 @@
 #include "postmaster/syslogger.h"
 #include "postmaster/walwriter.h"
 #include "regex/regex.h"
+#include "storage/bufmgr.h"
 #include "storage/fd.h"
 #include "storage/freespace.h"
 #include "tcop/tcopprot.h"

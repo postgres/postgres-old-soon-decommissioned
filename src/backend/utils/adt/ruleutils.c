@@ -19,6 +19,7 @@
 #include <fcntl.h>
 
 #include "access/genam.h"
+#include "access/sysattr.h"
 #include "catalog/dependency.h"
 #include "catalog/indexing.h"
 #include "catalog/pg_authid.h"

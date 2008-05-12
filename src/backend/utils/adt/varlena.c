@@ -16,7 +16,6 @@
 
 #include <ctype.h>
 
-#include "access/tupmacs.h"
 #include "access/tuptoaster.h"
 #include "catalog/pg_type.h"
 #include "libpq/md5.h"

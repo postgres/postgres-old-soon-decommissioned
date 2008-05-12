@@ -18,7 +18,6 @@
 #include "miscadmin.h"
 #include "pgstat.h"
 #include "catalog/pg_type.h"
-#include "access/heapam.h"
 #include "utils/builtins.h"
 #include "utils/inet.h"
 #include "libpq/ip.h"

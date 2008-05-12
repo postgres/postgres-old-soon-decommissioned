@@ -18,7 +18,6 @@
 #define CONST84
 #endif
 
-#include "access/heapam.h"
 #include "catalog/pg_language.h"
 #include "catalog/pg_proc.h"
 #include "commands/trigger.h"

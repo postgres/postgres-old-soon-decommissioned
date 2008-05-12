@@ -19,8 +19,6 @@
 #include <ctype.h>
 #include <sys/types.h>
 
-#include "access/heapam.h"
-#include "access/tupmacs.h"
 #include "access/xact.h"
 #include "catalog/indexing.h"
 #include "catalog/pg_proc.h"

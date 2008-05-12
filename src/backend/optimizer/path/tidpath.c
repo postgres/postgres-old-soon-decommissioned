@@ -36,7 +36,7 @@
  */
 #include "postgres.h"
 
-#include "access/htup.h"
+#include "access/sysattr.h"
 #include "catalog/pg_operator.h"
 #include "catalog/pg_type.h"
 #include "optimizer/clauses.h"

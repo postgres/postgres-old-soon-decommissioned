@@ -1,8 +1,14 @@
-#include "hstore.h"
+/*
+ * $PostgreSQL$
+ */
+#include "postgres.h"
 
 #include "access/gist.h"
 #include "access/itup.h"
+#include "access/skey.h"
 #include "crc32.h"
+
+#include "hstore.h"
 
 /* bigint defines */
 #define BITBYTE 8

@@ -3,10 +3,12 @@
  * Teodor Sigaev <teodor@stack.net>
  * $PostgreSQL$
  */
+#include "postgres.h"
 
-#include "ltree.h"
 #include <ctype.h>
+
 #include "utils/array.h"
+#include "ltree.h"
 
 PG_FUNCTION_INFO_V1(ltq_regex);
 PG_FUNCTION_INFO_V1(ltq_rregex);

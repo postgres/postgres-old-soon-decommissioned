@@ -45,7 +45,6 @@
 
 #include "postgres.h"
 
-#include "access/heapam.h"
 #include "commands/tablespace.h"
 #include "executor/executor.h"
 #include "storage/buffile.h"

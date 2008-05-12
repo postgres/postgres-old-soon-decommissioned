@@ -19,7 +19,6 @@
 #include "access/xlog.h"
 #include "access/xlogdefs.h"
 #include "storage/bufpage.h"
-#include "storage/off.h"
 #include "utils/rel.h"
 
 /*

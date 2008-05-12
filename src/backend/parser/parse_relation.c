@@ -17,6 +17,7 @@
 #include <ctype.h>
 
 #include "access/heapam.h"
+#include "access/sysattr.h"
 #include "catalog/heap.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_type.h"

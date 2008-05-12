@@ -23,6 +23,7 @@
 #include "commands/user.h"
 #include "libpq/md5.h"
 #include "miscadmin.h"
+#include "storage/lmgr.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
 #include "utils/flatfiles.h"

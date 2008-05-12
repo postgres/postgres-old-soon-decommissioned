@@ -14,7 +14,8 @@
 #include "postgres.h"
 
 #include "access/gin.h"
-#include "access/heapam.h"
+#include "access/xlogutils.h"
+#include "storage/bufmgr.h"
 #include "utils/memutils.h"
 
 static MemoryContext opCtx;		/* working memory for operations */

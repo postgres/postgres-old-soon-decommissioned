@@ -18,6 +18,7 @@
 #include "executor/execdebug.h"
 #include "miscadmin.h"
 #include "pgstat.h"
+#include "storage/bufmgr.h"
 #include "utils/memutils.h"
 
 

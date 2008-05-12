@@ -18,6 +18,7 @@
 #include "postgres.h"
 
 #include "access/hash.h"
+#include "storage/bufmgr.h"
 
 
 static Buffer _hash_getovflpage(Relation rel, Buffer metabuf);

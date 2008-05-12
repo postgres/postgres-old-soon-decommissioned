@@ -20,7 +20,7 @@
  */
 #include "postgres.h"
 
-#include "access/heapam.h"
+#include "access/sysattr.h"
 #include "catalog/indexing.h"
 #include "catalog/pg_aggregate.h"
 #include "catalog/pg_amop.h"

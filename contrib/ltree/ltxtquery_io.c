@@ -3,10 +3,12 @@
  * Teodor Sigaev <teodor@stack.net>
  * $PostgreSQL$
  */
+#include "postgres.h"
 
-#include "ltree.h"
 #include <ctype.h>
+
 #include "crc32.h"
+#include "ltree.h"
 
 PG_FUNCTION_INFO_V1(ltxtq_in);
 Datum		ltxtq_in(PG_FUNCTION_ARGS);

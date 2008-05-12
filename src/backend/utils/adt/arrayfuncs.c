@@ -16,7 +16,6 @@
 
 #include <ctype.h>
 
-#include "access/tupmacs.h"
 #include "funcapi.h"
 #include "libpq/pqformat.h"
 #include "parser/parse_coerce.h"

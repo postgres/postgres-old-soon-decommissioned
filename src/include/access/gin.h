@@ -12,15 +12,13 @@
 #ifndef GIN_H
 #define GIN_H
 
-#include "access/relscan.h"
-#include "access/skey.h"
-#include "access/xlog.h"
-#include "access/xlogdefs.h"
-#include "storage/bufpage.h"
-#include "storage/off.h"
-#include "utils/rel.h"
 #include "access/itup.h"
+#include "access/relscan.h"
 #include "fmgr.h"
+#include "storage/block.h"
+#include "storage/buf.h"
+#include "storage/off.h"
+#include "storage/relfilenode.h"
 
 
 /*

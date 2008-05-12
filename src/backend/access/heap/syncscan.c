@@ -48,6 +48,9 @@
 
 #include "access/heapam.h"
 #include "miscadmin.h"
+#include "storage/block.h"
+#include "storage/relfilenode.h"
+#include "utils/rel.h"
 
 
 /* GUC variables */

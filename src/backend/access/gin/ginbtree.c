@@ -13,8 +13,10 @@
  */
 
 #include "postgres.h"
+
 #include "access/gin.h"
 #include "miscadmin.h"
+#include "storage/bufmgr.h"
 
 /*
  * Locks buffer by needed method for search.

@@ -16,6 +16,7 @@
 
 #include "access/nbtree.h"
 #include "access/transam.h"
+#include "storage/bufmgr.h"
 
 /*
  * We must keep track of expected insertions due to page splits, and apply

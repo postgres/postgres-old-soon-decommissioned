@@ -3,9 +3,11 @@
  * Teodor Sigaev <teodor@stack.net>
  * $PostgreSQL$
  */
+#include "postgres.h"
+
+#include <ctype.h>
 
 #include "ltree.h"
-#include <ctype.h>
 
 PG_FUNCTION_INFO_V1(ltxtq_exec);
 PG_FUNCTION_INFO_V1(ltxtq_rexec);

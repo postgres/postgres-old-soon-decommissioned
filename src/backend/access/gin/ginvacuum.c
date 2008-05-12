@@ -13,13 +13,14 @@
  */
 
 #include "postgres.h"
+
 #include "access/genam.h"
 #include "access/gin.h"
-#include "access/heapam.h"
-#include "miscadmin.h"
-#include "storage/freespace.h"
-#include "storage/freespace.h"
 #include "commands/vacuum.h"
+#include "miscadmin.h"
+#include "storage/bufmgr.h"
+#include "storage/freespace.h"
+#include "storage/lmgr.h"
 
 typedef struct
 {

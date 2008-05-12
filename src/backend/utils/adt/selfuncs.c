@@ -76,6 +76,7 @@
 #include <ctype.h>
 #include <math.h>
 
+#include "access/sysattr.h"
 #include "catalog/pg_opfamily.h"
 #include "catalog/pg_statistic.h"
 #include "catalog/pg_type.h"

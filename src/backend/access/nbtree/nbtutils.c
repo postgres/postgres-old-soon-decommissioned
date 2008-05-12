@@ -22,6 +22,7 @@
 #include "access/reloptions.h"
 #include "executor/execdebug.h"
 #include "miscadmin.h"
+#include "storage/bufmgr.h"
 #include "storage/lwlock.h"
 #include "storage/shmem.h"
 #include "utils/lsyscache.h"

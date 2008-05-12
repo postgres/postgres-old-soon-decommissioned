@@ -1,5 +1,11 @@
-#include "hstore.h"
+/*
+ * $PostgreSQL$
+ */
+#include "postgres.h"
+
 #include <ctype.h>
+
+#include "hstore.h"
 
 PG_MODULE_MAGIC;
 

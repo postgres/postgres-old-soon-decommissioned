@@ -18,6 +18,7 @@
 #include "access/hash.h"
 #include "access/reloptions.h"
 #include "executor/execdebug.h"
+#include "storage/bufmgr.h"
 #include "utils/lsyscache.h"
 
 

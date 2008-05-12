@@ -14,10 +14,9 @@
 #ifndef BUFPAGE_H
 #define BUFPAGE_H
 
-#include "storage/bufmgr.h"
+#include "access/xlog.h"
 #include "storage/item.h"
 #include "storage/off.h"
-#include "access/xlog.h"
 
 /*
  * A postgres disk page is an abstraction layered on top of a postgres

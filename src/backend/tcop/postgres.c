@@ -54,6 +54,7 @@
 #include "parser/parser.h"
 #include "postmaster/autovacuum.h"
 #include "rewrite/rewriteHandler.h"
+#include "storage/bufmgr.h"
 #include "storage/freespace.h"
 #include "storage/ipc.h"
 #include "storage/proc.h"

@@ -17,6 +17,7 @@
 #include "access/genam.h"
 #include "access/gist_private.h"
 #include "access/gistscan.h"
+#include "storage/bufmgr.h"
 #include "utils/memutils.h"
 
 static void gistfreestack(GISTSearchStack *s);

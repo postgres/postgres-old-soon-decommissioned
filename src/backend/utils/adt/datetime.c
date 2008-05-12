@@ -19,7 +19,6 @@
 #include <limits.h>
 #include <math.h>
 
-#include "access/heapam.h"
 #include "access/xact.h"
 #include "catalog/pg_type.h"
 #include "funcapi.h"

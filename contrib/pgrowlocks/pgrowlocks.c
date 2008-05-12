@@ -30,6 +30,7 @@
 #include "catalog/namespace.h"
 #include "funcapi.h"
 #include "miscadmin.h"
+#include "storage/bufmgr.h"
 #include "storage/procarray.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"

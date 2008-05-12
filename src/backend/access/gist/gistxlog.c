@@ -14,8 +14,9 @@
 #include "postgres.h"
 
 #include "access/gist_private.h"
-#include "access/heapam.h"
+#include "access/xlogutils.h"
 #include "miscadmin.h"
+#include "storage/bufmgr.h"
 #include "utils/memutils.h"
 
 
