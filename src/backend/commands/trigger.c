@@ -2976,6 +2976,7 @@ void
 AfterTriggerFireDeferred(void)
 {
 	AfterTriggerEventList *events;
+	bool		snap_pushed = false;
 
 	/* Must be inside a transaction */
 	Assert(afterTriggers != NULL);
@@ -2990,7 +2991,10 @@ AfterTriggerFireDeferred(void)
 	 */
 	events = &afterTriggers->events;
 	if (events->head != NULL)
-		ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
+	{
+		PushActiveSnapshot(GetTransactionSnapshot());
+		snap_pushed = true;
+	}
 
 	/*
 	 * Run all the remaining triggers.	Loop until they are all gone, in case
@@ -3002,6 +3006,9 @@ AfterTriggerFireDeferred(void)
 
 		afterTriggerInvokeEvents(events, firing_id, NULL, true);
 	}
+
+	if (snap_pushed)
+		PopActiveSnapshot();
 
 	Assert(events->head == NULL);
 }

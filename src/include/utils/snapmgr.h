@@ -16,9 +16,7 @@
 #include "utils/snapshot.h"
 
 
-extern PGDLLIMPORT Snapshot SerializableSnapshot;
-extern PGDLLIMPORT Snapshot LatestSnapshot;
-extern PGDLLIMPORT Snapshot ActiveSnapshot;
+extern bool FirstSnapshotSet;
 
 extern TransactionId TransactionXmin;
 extern TransactionId RecentXmin;
@@ -26,8 +24,19 @@ extern TransactionId RecentGlobalXmin;
 
 extern Snapshot GetTransactionSnapshot(void);
 extern Snapshot GetLatestSnapshot(void);
-extern Snapshot CopySnapshot(Snapshot snapshot);
-extern void FreeSnapshot(Snapshot snapshot);
-extern void FreeXactSnapshot(void);
+extern void SnapshotSetCommandId(CommandId curcid);
+
+extern void PushActiveSnapshot(Snapshot snapshot);
+extern void PushUpdatedSnapshot(Snapshot snapshot);
+extern void PopActiveSnapshot(void);
+extern Snapshot GetActiveSnapshot(void);
+extern bool ActiveSnapshotSet(void);
+
+extern Snapshot RegisterSnapshot(Snapshot snapshot);
+extern void UnregisterSnapshot(Snapshot snapshot);
+
+extern void AtSubCommit_Snapshot(int level);
+extern void AtSubAbort_Snapshot(int level);
+extern void AtEOXact_Snapshot(bool isCommit);
 
 #endif /* SNAPMGR_H */

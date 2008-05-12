@@ -246,12 +246,8 @@ inv_open(Oid lobjId, int flags, MemoryContext mcxt)
 	}
 	else if (flags & INV_READ)
 	{
-		/* be sure to copy snap into mcxt */
-		MemoryContext oldContext = MemoryContextSwitchTo(mcxt);
-
-		retval->snapshot = CopySnapshot(ActiveSnapshot);
+		retval->snapshot = RegisterSnapshot(GetActiveSnapshot());
 		retval->flags = IFS_RDLOCK;
-		MemoryContextSwitchTo(oldContext);
 	}
 	else
 		elog(ERROR, "invalid flags: %d", flags);
@@ -274,7 +270,7 @@ inv_close(LargeObjectDesc *obj_desc)
 {
 	Assert(PointerIsValid(obj_desc));
 	if (obj_desc->snapshot != SnapshotNow)
-		FreeSnapshot(obj_desc->snapshot);
+		UnregisterSnapshot(obj_desc->snapshot);
 	pfree(obj_desc);
 }
 

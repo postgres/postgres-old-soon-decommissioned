@@ -550,7 +550,7 @@ show_log_timezone(void)
 const char *
 assign_XactIsoLevel(const char *value, bool doit, GucSource source)
 {
-	if (SerializableSnapshot != NULL)
+	if (FirstSnapshotSet)
 	{
 		ereport(GUC_complaint_elevel(source),
 				(errcode(ERRCODE_ACTIVE_SQL_TRANSACTION),

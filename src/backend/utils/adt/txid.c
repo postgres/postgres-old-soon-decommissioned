@@ -362,9 +362,9 @@ txid_current_snapshot(PG_FUNCTION_ARGS)
 	TxidEpoch	state;
 	Snapshot	cur;
 
-	cur = ActiveSnapshot;
+	cur = GetActiveSnapshot();
 	if (cur == NULL)
-		elog(ERROR, "txid_current_snapshot: ActiveSnapshot == NULL");
+		elog(ERROR, "no active snapshot set");
 
 	load_xid_epoch(&state);
 

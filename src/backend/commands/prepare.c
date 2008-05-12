@@ -263,7 +263,7 @@ ExecuteQuery(ExecuteStmt *stmt, const char *queryString,
 	/*
 	 * Run the portal to completion.
 	 */
-	PortalStart(portal, paramLI, ActiveSnapshot);
+	PortalStart(portal, paramLI, GetActiveSnapshot());
 
 	(void) PortalRun(portal, FETCH_ALL, false, dest, dest, completionTag);
 

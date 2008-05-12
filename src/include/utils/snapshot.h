@@ -57,6 +57,9 @@ typedef struct SnapshotData
 	 * out any that are >= xmax
 	 */
 	CommandId	curcid;			/* in my xact, CID < curcid are visible */
+	uint32		active_count;	/* refcount on ActiveSnapshot stack */
+	uint32		regd_count;		/* refcount on RegisteredSnapshotList */
+	bool		copied;			/* false if it's a static snapshot */
 } SnapshotData;
 
 /*

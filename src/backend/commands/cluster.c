@@ -212,6 +212,7 @@ cluster(ClusterStmt *stmt, bool isTopLevel)
 		rvs = get_tables_to_cluster(cluster_context);
 
 		/* Commit to get out of starting transaction */
+		PopActiveSnapshot();
 		CommitTransactionCommand();
 
 		/* Ok, now that we've got them all, cluster them one by one */
@@ -222,8 +223,9 @@ cluster(ClusterStmt *stmt, bool isTopLevel)
 			/* Start a new transaction for each relation. */
 			StartTransactionCommand();
 			/* functions in indexes may want a snapshot set */
-			ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
+			PushActiveSnapshot(GetTransactionSnapshot());
 			cluster_rel(rvtc, true);
+			PopActiveSnapshot();
 			CommitTransactionCommand();
 		}
 

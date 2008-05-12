@@ -1507,7 +1507,7 @@ IndexBuildHeapScan(Relation heapRelation,
 	}
 	else if (indexInfo->ii_Concurrent)
 	{
-		snapshot = CopySnapshot(GetTransactionSnapshot());
+		snapshot = RegisterSnapshot(GetTransactionSnapshot());
 		OldestXmin = InvalidTransactionId;		/* not used */
 	}
 	else
@@ -1517,10 +1517,7 @@ IndexBuildHeapScan(Relation heapRelation,
 		OldestXmin = GetOldestXmin(heapRelation->rd_rel->relisshared, true);
 	}
 
-	scan = heap_beginscan(heapRelation, /* relation */
-						  snapshot,		/* seeself */
-						  0,	/* number of keys */
-						  NULL);	/* scan key */
+	scan = heap_beginscan(heapRelation, snapshot, 0, NULL);
 
 	reltuples = 0;
 
@@ -1792,6 +1789,10 @@ IndexBuildHeapScan(Relation heapRelation,
 	}
 
 	heap_endscan(scan);
+
+	/* we can now forget our snapshot, if set */
+	if (indexInfo->ii_Concurrent)
+		UnregisterSnapshot(snapshot);
 
 	ExecDropSingleTupleTableSlot(slot);
 
