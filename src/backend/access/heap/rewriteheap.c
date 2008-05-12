@@ -106,7 +106,6 @@
 #include "access/rewriteheap.h"
 #include "access/transam.h"
 #include "access/tuptoaster.h"
-#include "storage/bufmgr.h"
 #include "storage/smgr.h"
 #include "utils/memutils.h"
 

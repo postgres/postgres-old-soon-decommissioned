@@ -15,7 +15,6 @@
 #include "postgres.h"
 #include "access/gin.h"
 #include "access/tuptoaster.h"
-#include "storage/bufmgr.h"
 
 /*
  * forms tuple for entry tree. On leaf page, Index tuple has

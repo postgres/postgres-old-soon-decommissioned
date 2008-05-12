@@ -18,7 +18,6 @@
 #include "postgres.h"
 
 #include "access/xlogutils.h"
-#include "storage/bufmgr.h"
 #include "storage/bufpage.h"
 #include "storage/smgr.h"
 #include "utils/hsearch.h"

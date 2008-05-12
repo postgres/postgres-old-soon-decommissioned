@@ -36,7 +36,6 @@
 #include "miscadmin.h"
 #include "postmaster/bgwriter.h"
 #include "storage/buf_internals.h"
-#include "storage/bufmgr.h"
 #include "storage/bufpage.h"
 #include "storage/ipc.h"
 #include "storage/proc.h"

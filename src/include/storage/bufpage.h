@@ -15,6 +15,7 @@
 #define BUFPAGE_H
 
 #include "access/xlog.h"
+#include "storage/bufmgr.h"
 #include "storage/item.h"
 #include "storage/off.h"
 

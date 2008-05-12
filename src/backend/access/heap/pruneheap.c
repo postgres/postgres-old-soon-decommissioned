@@ -19,7 +19,6 @@
 #include "access/transam.h"
 #include "miscadmin.h"
 #include "pgstat.h"
-#include "storage/bufmgr.h"
 #include "storage/bufpage.h"
 #include "storage/off.h"
 #include "utils/inval.h"
