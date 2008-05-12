@@ -267,7 +267,7 @@ extern const char *assign_search_path(const char *newval,
 				   bool doit, GucSource source);
 
 /* in access/transam/xlog.c */
-extern const char *assign_xlog_sync_method(const char *method,
-						bool doit, GucSource source);
+extern bool assign_xlog_sync_method(int newval,
+				bool doit, GucSource source);
 
 #endif   /* GUC_H */

@@ -271,6 +271,11 @@ static const struct config_enum_entry backslash_quote_options[] = {
 };
 
 /*
+ * Options for enum values stored in other modules
+ */
+extern const struct config_enum_entry sync_method_options[];
+
+/*
  * GUC option variables that are exported from this module
  */
 #ifdef USE_ASSERT_CHECKING
@@ -2328,15 +2333,6 @@ static struct config_string ConfigureNamesString[] =
 	},
 
 	{
-		{"wal_sync_method", PGC_SIGHUP, WAL_SETTINGS,
-			gettext_noop("Selects the method used for forcing WAL updates to disk."),
-			NULL
-		},
-		&XLOG_sync_method,
-		XLOG_sync_method_default, assign_xlog_sync_method, NULL
-	},
-
-	{
 		{"custom_variable_classes", PGC_SIGHUP, CUSTOM_OPTIONS,
 			gettext_noop("Sets the list of known custom variable classes."),
 			NULL,
@@ -2526,6 +2522,16 @@ static struct config_enum ConfigureNamesEnum[] =
 		&SessionReplicationRole,
 		SESSION_REPLICATION_ROLE_ORIGIN, session_replication_role_options,
 		assign_session_replication_role, NULL
+	},
+
+	{
+		{"wal_sync_method", PGC_SIGHUP, WAL_SETTINGS,
+			gettext_noop("Selects the method used for forcing WAL updates to disk."),
+			NULL
+		},
+		&sync_method,
+		DEFAULT_SYNC_METHOD, sync_method_options, 
+		assign_xlog_sync_method, NULL
 	},
 
 	{

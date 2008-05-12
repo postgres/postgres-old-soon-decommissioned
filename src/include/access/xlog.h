@@ -88,8 +88,9 @@ typedef struct XLogRecord
 /* Sync methods */
 #define SYNC_METHOD_FSYNC		0
 #define SYNC_METHOD_FDATASYNC	1
-#define SYNC_METHOD_OPEN		2		/* for O_SYNC and O_DSYNC */
+#define SYNC_METHOD_OPEN		2		/* for O_SYNC */
 #define SYNC_METHOD_FSYNC_WRITETHROUGH	3
+#define SYNC_METHOD_OPEN_DSYNC	4		/* for O_DSYNC */
 extern int	sync_method;
 
 /*
@@ -141,8 +142,6 @@ extern int	XLOGbuffers;
 extern bool XLogArchiveMode;
 extern char *XLogArchiveCommand;
 extern int	XLogArchiveTimeout;
-extern char *XLOG_sync_method;
-extern const char XLOG_sync_method_default[];
 extern bool log_checkpoints;
 
 #define XLogArchivingActive()	(XLogArchiveMode)
