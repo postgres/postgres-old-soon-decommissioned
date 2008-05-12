@@ -229,6 +229,27 @@ executeMaintenanceCommand(PGconn *conn, const char *query, bool echo)
 	return r;
 }
 
+/*
+ * "Safe" wrapper around strdup().  Pulled from psql/common.c
+ */
+char *
+pg_strdup(const char *string)
+{
+	char	   *tmp;
+
+	if (!string)
+	{
+		fprintf(stderr, _("pg_strdup: cannot duplicate null pointer (internal error)\n"));
+		exit(EXIT_FAILURE);
+	}
+	tmp = strdup(string);
+	if (!tmp)
+	{
+		fprintf(stderr, _("out of memory\n"));
+		exit(EXIT_FAILURE);
+	}
+	return tmp;
+}
 
 /*
  * Check yes/no answer in a localized way.	1=yes, 0=no, -1=neither.
@@ -273,7 +294,6 @@ yesno_prompt(const char *question)
 			   _(PG_YESLETTER), _(PG_NOLETTER));
 	}
 }
-
 
 /*
  * SetCancelConn
