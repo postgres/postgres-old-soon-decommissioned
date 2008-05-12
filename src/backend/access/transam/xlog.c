@@ -6431,6 +6431,7 @@ issue_xlog_fsync(void)
 			break;
 #endif
 		case SYNC_METHOD_OPEN:
+		case SYNC_METHOD_OPEN_DSYNC:
 			/* write synced it already */
 			break;
 		default:
