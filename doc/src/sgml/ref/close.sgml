@@ -91,6 +91,12 @@ CLOSE { <replaceable class="PARAMETER">name</replaceable> | ALL }
    You can see all available cursors by querying the <link
    linkend="view-pg-cursors"><structname>pg_cursors</></> system view.
   </para>
+
+  <para>
+   If a cursor is closed after a savepoint which is later rolled back,
+   the <command>CLOSE</command> is not rolled back; that is, the cursor
+   remains closed.
+  </para>
  </refsect1>
 
  <refsect1>
