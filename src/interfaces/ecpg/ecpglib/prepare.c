@@ -120,9 +120,10 @@ ECPGprepare(int lineno, const char *connection_name, const int questionmarks, co
 	struct sqlca_t *sqlca = ECPGget_sqlca();
 	PGresult   *query;
 
-	ecpg_init_sqlca(sqlca);
-
 	con = ecpg_get_connection(connection_name);
+
+	if (!ecpg_init(con, connection_name, lineno))
+		return false;
 
 	/* check if we already have prepared this statement */
 	this = find_prepared_statement(name, con, &prev);
@@ -255,6 +256,9 @@ ECPGdeallocate(int lineno, int c, const char *connection_name, const char *name)
 			   *prev;
 
 	con = ecpg_get_connection(connection_name);
+
+	if (!ecpg_init(con, connection_name, lineno))
+		return false;
 
 	this = find_prepared_statement(name, con, &prev);
 	if (this)
