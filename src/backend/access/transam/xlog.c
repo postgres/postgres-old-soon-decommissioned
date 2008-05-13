@@ -2056,8 +2056,11 @@ got_record:;
 	return (XLogRecord *) buffer;
 
 next_record_is_invalid:;
-	close(readFile);
-	readFile = -1;
+	if (readFile >= 0)
+	{
+		close(readFile);
+		readFile = -1;
+	}
 	nextRecord = NULL;
 	return NULL;
 }
