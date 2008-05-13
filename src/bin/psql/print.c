@@ -1918,8 +1918,10 @@ ClosePager(FILE *pagerpipe)
 
 /*
  * Initialise a table contents struct.
+ *		Must be called before any other printTable method is used.
  *
- * Must be called before any other printTable method is used.
+ * The title is not duplicated; the caller must ensure that the buffer
+ * is available for the lifetime of the printTableContent struct.
  *
  * If you call this, you must call printTableCleanup once you're done with the
  * table.
