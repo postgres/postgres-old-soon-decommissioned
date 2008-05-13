@@ -792,7 +792,7 @@ heap_get_root_tuples(Page page, OffsetNumber *root_offsets)
 	MemSet(root_offsets, 0, MaxHeapTuplesPerPage * sizeof(OffsetNumber));
 
 	maxoff = PageGetMaxOffsetNumber(page);
-	for (offnum = FirstOffsetNumber; offnum <= maxoff; offnum++)
+	for (offnum = FirstOffsetNumber; offnum <= maxoff; offnum = OffsetNumberNext(offnum))
 	{
 		ItemId		lp = PageGetItemId(page, offnum);
 		HeapTupleHeader htup;
