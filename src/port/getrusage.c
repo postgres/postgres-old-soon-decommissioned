@@ -41,6 +41,13 @@ getrusage(int who, struct rusage * rusage)
 	FILETIME	usertime;
 	ULARGE_INTEGER li;
 
+	if (who != RUSAGE_SELF)
+	{
+		/* Only RUSAGE_SELF is supported in this implementation for now */
+		errno = EINVAL;
+		return -1;
+	}
+	
 	if (rusage == (struct rusage *) NULL)
 	{
 		errno = EFAULT;
