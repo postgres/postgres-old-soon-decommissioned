@@ -42,4 +42,6 @@ extern bool yesno_prompt(const char *question);
 
 extern void setup_cancel_handler(void);
 
+extern char *pg_strdup(const char *string);
+
 #endif   /* COMMON_H */

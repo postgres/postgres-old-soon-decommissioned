@@ -117,7 +117,6 @@ ECPGprepare(int lineno, const char *connection_name, const int questionmarks, co
 	struct statement *stmt;
 	struct prepared_statement *this,
 			   *prev;
-	struct sqlca_t *sqlca = ECPGget_sqlca();
 	PGresult   *query;
 
 	con = ecpg_get_connection(connection_name);
