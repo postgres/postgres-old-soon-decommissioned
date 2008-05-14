@@ -30,6 +30,8 @@
 #include <sys/stat.h>			/* for stat() */
 #endif
 
+#include "portability/instr_time.h"
+
 #include "libpq-fe.h"
 #include "pqexpbuffer.h"
 #include "dumputils.h"
@@ -282,24 +284,22 @@ exec_command(const char *cmd,
 	else if (pg_strcasecmp(cmd, "copy") == 0)
 	{
 		/* Default fetch-it-all-and-print mode */
-		TimevalStruct before,
+		instr_time	before,
 					after;
-		double		elapsed_msec = 0;
 
 		char	   *opt = psql_scan_slash_option(scan_state,
 												 OT_WHOLE_LINE, NULL, false);
 
 		if (pset.timing)
-			GETTIMEOFDAY(&before);
+			INSTR_TIME_SET_CURRENT(before);
 
 		success = do_copy(opt);
 
 		if (pset.timing && success)
 		{
-			GETTIMEOFDAY(&after);
-			elapsed_msec = DIFF_MSEC(&after, &before);
-			printf(_("Time: %.3f ms\n"), elapsed_msec);
-
+			INSTR_TIME_SET_CURRENT(after);
+			INSTR_TIME_SUBTRACT(after, before);
+			printf(_("Time: %.3f ms\n"), INSTR_TIME_GET_MILLISEC(after));
 		}
 
 		free(opt);

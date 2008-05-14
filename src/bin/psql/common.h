@@ -63,36 +63,4 @@ extern const char *session_username(void);
 
 extern char *expand_tilde(char **filename);
 
-#ifndef WIN32
-
-#include <sys/time.h>
-
-typedef struct timeval TimevalStruct;
-
-#define GETTIMEOFDAY(T) gettimeofday(T, NULL)
-#define DIFF_MSEC(T, U) \
-	((((int) ((T)->tv_sec - (U)->tv_sec)) * 1000000.0 + \
-	  ((int) ((T)->tv_usec - (U)->tv_usec))) / 1000.0)
-#else
-/*
- * To get good resolution (better than ~15ms) on Windows, use
- * the high resolution performance counters. They can't be used
- * to get absolute times, but are good for measuring differences.
- */
-static __inline__ double
-GetTimerFrequency(void)
-{
-	LARGE_INTEGER f;
-
-	QueryPerformanceFrequency(&f);
-	return (double) f.QuadPart;
-}
-
-typedef LARGE_INTEGER TimevalStruct;
-
-#define GETTIMEOFDAY(T) QueryPerformanceCounter((T))
-#define DIFF_MSEC(T, U) \
-	(((T)->QuadPart - (U)->QuadPart) * 1000.0 / GetTimerFrequency())
-#endif   /* WIN32 */
-
 #endif   /* COMMON_H */
