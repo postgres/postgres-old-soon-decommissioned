@@ -3502,7 +3502,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 			}
 			else
 			{
-				pgstat_report_tabstat(false);
+				pgstat_report_stat(false);
 
 				set_ps_display("idle", false);
 				pgstat_report_activity("<IDLE>");

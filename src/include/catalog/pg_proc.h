@@ -2963,6 +2963,13 @@ DESCR("statistics: number of buffers written by backends");
 DATA(insert OID = 2859 ( pg_stat_get_buf_alloc			PGNSP PGUID 12 1 0 f f t f s 0 20 "" _null_ _null_ _null_ pg_stat_get_buf_alloc - _null_ _null_ ));
 DESCR("statistics: number of buffer allocations");
 
+DATA(insert OID = 2978 (  pg_stat_get_function_calls		PGNSP PGUID 12 1 0 f f t f s 1 20 "26" _null_ _null_ _null_ pg_stat_get_function_calls - _null_ _null_ ));
+DESCR("statistics: number of function calls");
+DATA(insert OID = 2979 (  pg_stat_get_function_time			PGNSP PGUID 12 1 0 f f t f s 1 20 "26" _null_ _null_ _null_ pg_stat_get_function_time - _null_ _null_ ));
+DESCR("statistics: execution time of function");
+DATA(insert OID = 2980 (  pg_stat_get_function_self_time	PGNSP PGUID 12 1 0 f f t f s 1 20 "26" _null_ _null_ _null_ pg_stat_get_function_self_time - _null_ _null_ ));
+DESCR("statistics: self execution time of function");
+
 DATA(insert OID = 2230 (  pg_stat_clear_snapshot		PGNSP PGUID 12 1 0 f f f f v 0 2278  "" _null_ _null_ _null_	pg_stat_clear_snapshot - _null_ _null_ ));
 DESCR("statistics: discard current transaction's statistics snapshot");
 DATA(insert OID = 2274 (  pg_stat_reset					PGNSP PGUID 12 1 0 f f f f v 0 2278  "" _null_ _null_ _null_	pg_stat_reset - _null_ _null_ ));

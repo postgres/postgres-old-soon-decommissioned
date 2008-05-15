@@ -1857,7 +1857,7 @@ do_autovacuum(void)
 	 * want to do this exactly once per DB-processing cycle, even if we find
 	 * nothing worth vacuuming in the database.
 	 */
-	pgstat_vacuum_tabstat();
+	pgstat_vacuum_stat();
 
 	/*
 	 * Find the pg_database entry and select the default freeze_min_age. We

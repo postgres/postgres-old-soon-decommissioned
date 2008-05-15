@@ -3342,6 +3342,22 @@ COPY postgres_log FROM '/full/path/to/logfile.csv' WITH csv;
       </listitem>
      </varlistentry>
 
+     <varlistentry id="guc-track-functions" xreflabel="track_functions">
+      <term><varname>track_functions</varname> (<type>string</type>)</term>
+      <indexterm>
+       <primary><varname>track_functions</> configuration parameter</primary>
+      </indexterm>
+      <listitem>
+       <para>
+        Enables tracking of function call counts and time used. Specify
+        <literal>pl</literal> to count only procedural language functions,
+        <literal>all</literal> to also track SQL and C language functions.
+        The default is <literal>none</literal>.
+        Only superusers can change this setting.
+       </para>
+      </listitem>
+     </varlistentry>
+
      <varlistentry id="guc-update-process-title" xreflabel="update_process_title">
       <term><varname>update_process_title</varname> (<type>boolean</type>)</term>
       <indexterm>

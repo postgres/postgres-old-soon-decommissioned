@@ -323,7 +323,7 @@ vacuum(VacuumStmt *vacstmt, List *relids,
 	 * in autovacuum --- autovacuum.c does this for itself.
 	 */
 	if (vacstmt->vacuum && !IsAutoVacuumWorkerProcess())
-		pgstat_vacuum_tabstat();
+		pgstat_vacuum_stat();
 
 	/*
 	 * Create special memory context for cross-transaction storage.

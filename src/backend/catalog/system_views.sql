@@ -374,6 +374,18 @@ CREATE VIEW pg_stat_database AS
             pg_stat_get_db_tuples_deleted(D.oid) AS tup_deleted
     FROM pg_database D;
 
+CREATE VIEW pg_stat_user_functions AS 
+    SELECT
+            P.oid AS funcid, 
+            N.nspname AS schemaname,
+            P.proname AS funcname,
+            pg_stat_get_function_calls(P.oid) AS calls,
+            pg_stat_get_function_time(P.oid) / 1000 AS total_time,
+            pg_stat_get_function_self_time(P.oid) / 1000 AS self_time
+    FROM pg_proc P LEFT JOIN pg_namespace N ON (N.oid = P.pronamespace)
+    WHERE P.prolang != 12  -- fast check to eliminate built-in functions   
+          AND pg_stat_get_function_calls(P.oid) IS NOT NULL;
+
 CREATE VIEW pg_stat_bgwriter AS
     SELECT
         pg_stat_get_bgwriter_timed_checkpoints() AS checkpoints_timed,
