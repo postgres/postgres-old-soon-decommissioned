@@ -101,6 +101,9 @@
 /* Class 0P - Invalid Role Specification */
 #define ERRCODE_INVALID_ROLE_SPECIFICATION	MAKE_SQLSTATE('0','P', '0','0','0')
 
+/* Class 20 - Case Not Found */
+#define ERRCODE_CASE_NOT_FOUND				MAKE_SQLSTATE('2','0', '0','0','0')
+
 /* Class 21 - Cardinality Violation */
 /* (this means something returned the wrong number of rows) */
 #define ERRCODE_CARDINALITY_VIOLATION		MAKE_SQLSTATE('2','1', '0','0','0')

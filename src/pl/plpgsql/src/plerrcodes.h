@@ -80,6 +80,10 @@
 },
 
 {
+	"case_not_found", ERRCODE_CASE_NOT_FOUND
+},
+
+{
 	"cardinality_violation", ERRCODE_CARDINALITY_VIOLATION
 },
 

@@ -116,6 +116,7 @@ dolqinside		[^$]+
 alias			{ return K_ALIAS;			}
 begin			{ return K_BEGIN;			}
 by				{ return K_BY;   			}
+case			{ return K_CASE;			}
 close			{ return K_CLOSE;			}
 constant		{ return K_CONSTANT;		}
 continue		{ return K_CONTINUE;		}
