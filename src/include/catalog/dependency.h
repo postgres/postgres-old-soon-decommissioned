@@ -207,6 +207,8 @@ extern bool sequenceIsOwned(Oid seqId, Oid *tableId, int32 *colId);
 
 extern void markSequenceUnowned(Oid seqId);
 
+extern List *getOwnedSequences(Oid relid);
+
 extern Oid	get_constraint_index(Oid constraintId);
 
 extern Oid	get_index_constraint(Oid indexId);
