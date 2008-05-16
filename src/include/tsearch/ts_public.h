@@ -99,6 +99,7 @@ typedef struct
 } TSLexeme;
 
 #define TSL_ADDPOS		0x01
+#define TSL_PREFIX		0x02
 
 /*
  * Struct for supporting complex dictionaries like thesaurus.

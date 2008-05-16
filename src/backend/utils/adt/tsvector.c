@@ -85,14 +85,9 @@ compareentry(const void *va, const void *vb, void *arg)
 	const WordEntryIN *b = (const WordEntryIN *) vb;
 	char	   *BufferStr = (char *) arg;
 
-	if (a->entry.len == b->entry.len)
-	{
-		return strncmp(&BufferStr[a->entry.pos],
-					   &BufferStr[b->entry.pos],
-					   a->entry.len);
-	}
-
-	return (a->entry.len > b->entry.len) ? 1 : -1;
+	return tsCompareString( &BufferStr[a->entry.pos], a->entry.len,
+							&BufferStr[b->entry.pos], b->entry.len,
+							false );
 }
 
 /*

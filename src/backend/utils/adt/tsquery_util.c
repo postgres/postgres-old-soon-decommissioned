@@ -125,10 +125,7 @@ QTNodeCompare(QTNode *an, QTNode *bn)
 			return (ao->valcrc > bo->valcrc) ? -1 : 1;
 		}
 
-		if (ao->length == bo->length)
-			return strncmp(an->word, bn->word, ao->length);
-		else
-			return (ao->length > bo->length) ? -1 : 1;
+		return tsCompareString( an->word, ao->length, bn->word, bo->length, false);
 	}
 }
 

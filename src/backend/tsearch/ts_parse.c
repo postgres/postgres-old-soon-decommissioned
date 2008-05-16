@@ -415,6 +415,7 @@ parsetext(Oid cfgId, ParsedText *prs, char *buf, int buflen)
 				prs->words[prs->curwords].len = strlen(ptr->lexeme);
 				prs->words[prs->curwords].word = ptr->lexeme;
 				prs->words[prs->curwords].nvariant = ptr->nvariant;
+				prs->words[prs->curwords].flags = ptr->flags & TSL_PREFIX;
 				prs->words[prs->curwords].alen = 0;
 				prs->words[prs->curwords].pos.pos = LIMITPOS(prs->pos);
 				ptr++;
@@ -463,8 +464,8 @@ hlfinditem(HeadlineParsedText *prs, TSQuery query, char *buf, int buflen)
 	for (i = 0; i < query->size; i++)
 	{
 		if (item->type == QI_VAL &&
-			item->operand.length == buflen &&
-		strncmp(GETOPERAND(query) + item->operand.distance, buf, buflen) == 0)
+			tsCompareString( GETOPERAND(query) + item->operand.distance, item->operand.length,
+							 buf, buflen, item->operand.prefix ) == 0 )
 		{
 			if (word->item)
 			{

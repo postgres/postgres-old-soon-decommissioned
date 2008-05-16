@@ -41,6 +41,22 @@ initGinState(GinState *state, Relation index)
 	fmgr_info_copy(&(state->consistentFn),
 				   index_getprocinfo(index, 1, GIN_CONSISTENT_PROC),
 				   CurrentMemoryContext);
+	
+	/*
+	 * Check opclass capability to do partial match. 
+	 */
+	if ( index_getprocid(index, 1, GIN_COMPARE_PARTIAL_PROC) != InvalidOid )
+	{
+		fmgr_info_copy(&(state->comparePartialFn),
+					   index_getprocinfo(index, 1, GIN_COMPARE_PARTIAL_PROC),
+					   CurrentMemoryContext);
+
+		state->canPartialMatch = true;
+	}
+	else
+	{
+		state->canPartialMatch = false;
+	}
 }
 
 /*

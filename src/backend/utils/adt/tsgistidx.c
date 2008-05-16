@@ -307,6 +307,12 @@ checkcondition_arr(void *checkval, QueryOperand *val)
 
 	/* Loop invariant: StopLow <= val < StopHigh */
 
+	/* 
+	 * we are not able to find a a prefix by hash value 
+	 */
+	if ( val->prefix )
+		return true;
+
 	while (StopLow < StopHigh)
 	{
 		StopMiddle = StopLow + (StopHigh - StopLow) / 2;
@@ -324,6 +330,11 @@ checkcondition_arr(void *checkval, QueryOperand *val)
 static bool
 checkcondition_bit(void *checkval, QueryOperand *val)
 {
+	/* 
+	 * we are not able to find a a prefix in signature tree 
+	 */
+	if ( val->prefix )
+		return true; 
 	return GETBIT(checkval, HASHVAL(val->valcrc));
 }
 

@@ -179,6 +179,7 @@ typedef struct
 								 * bitmask of allowed weights. if it =0 then
 								 * any weight are allowed. Weights and bit
 								 * map: A: 1<<3 B: 1<<2 C: 1<<1 D: 1<<0 */
+	bool		prefix;			/* true if it's a prefix search */
 	int32		valcrc;			/* XXX: pg_crc32 would be a more appropriate
 								 * data type, but we use comparisons to signed
 								 * integers in the code. They would need to be
