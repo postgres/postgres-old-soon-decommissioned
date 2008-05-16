@@ -1004,7 +1004,7 @@ ECPG_informix_set_var(int number, void *pointer, int lineno)
 
 		sqlca->sqlcode = ECPG_OUT_OF_MEMORY;
 		strncpy(sqlca->sqlstate, "YE001", sizeof("YE001"));
-		snprintf(sqlca->sqlerrm.sqlerrmc, sizeof(sqlca->sqlerrm.sqlerrmc), "Out of memory in line %d.", lineno);
+		snprintf(sqlca->sqlerrm.sqlerrmc, sizeof(sqlca->sqlerrm.sqlerrmc), _("out of memory on line %d"), lineno);
 		sqlca->sqlerrm.sqlerrml = strlen(sqlca->sqlerrm.sqlerrmc);
 		/* free all memory we have allocated for the user */
 		ECPGfree_auto_mem();

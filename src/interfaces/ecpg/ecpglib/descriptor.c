@@ -99,7 +99,7 @@ ECPGget_desc_header(int lineno, const char *desc_name, int *count)
 
 	*count = PQnfields(ECPGresult);
 	sqlca->sqlerrd[2] = 1;
-	ecpg_log("ECPGget_desc_header: found %d attributes.\n", *count);
+	ecpg_log("ECPGget_desc_header: found %d attributes\n", *count);
 	return true;
 }
 
@@ -381,7 +381,7 @@ ECPGget_desc(int lineno, const char *desc_name, int index,...)
 				 */
 				if (arrsize > 0 && ntuples > arrsize)
 				{
-					ecpg_log("ECPGget_desc line %d: Incorrect number of matches: %d don't fit into array of %d\n",
+					ecpg_log("ECPGget_desc on line %d: incorrect number of matches; %d don't fit into array of %d\n",
 							 lineno, ntuples, arrsize);
 					ecpg_raise(lineno, ECPG_TOO_MANY_MATCHES, ECPG_SQLSTATE_CARDINALITY_VIOLATION, NULL);
 					return false;
@@ -450,7 +450,7 @@ ECPGget_desc(int lineno, const char *desc_name, int index,...)
 		 */
 		if (data_var.ind_arrsize > 0 && ntuples > data_var.ind_arrsize)
 		{
-			ecpg_log("ECPGget_desc line %d: Incorrect number of matches (indicator): %d don't fit into array of %d\n",
+			ecpg_log("ECPGget_desc on line %d: incorrect number of matches (indicator); %d don't fit into array of %d\n",
 					 lineno, ntuples, data_var.ind_arrsize);
 			ecpg_raise(lineno, ECPG_TOO_MANY_MATCHES, ECPG_SQLSTATE_CARDINALITY_VIOLATION, NULL);
 			return false;
@@ -724,6 +724,6 @@ ecpg_find_desc(int line, const char *name)
 bool
 ECPGdescribe(int line, bool input, const char *statement,...)
 {
-	ecpg_log("ECPGdescribe called on line %d for %s in %s\n", line, (input) ? "input" : "output", statement);
+	ecpg_log("ECPGdescribe called on line %d for %s: %s\n", line, (input) ? _("input") : _("output"), statement);
 	return false;
 }
