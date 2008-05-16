@@ -329,13 +329,8 @@ createdb: database creation failed: ERROR:  permission denied to create database
     In <command>psql</command>, you will be greeted with the following
     message:
 <screen>
-Welcome to psql &version;, the PostgreSQL interactive terminal.
- 
-Type:  \copyright for distribution terms
-       \h for help with SQL commands
-       \? for help with psql commands
-       \g or terminate with semicolon to execute query
-       \q to quit
+psql (&version;)
+Type "help" for help.
  
 mydb=&gt;
 </screen>

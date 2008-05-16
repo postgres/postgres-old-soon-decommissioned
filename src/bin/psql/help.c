@@ -170,13 +170,13 @@ slashUsage(unsigned short int pager)
 	 */
 	fprintf(output, _("General\n"));
 	fprintf(output, _("  \\copyright     show PostgreSQL usage and distribution terms\n"));
+	fprintf(output, _("  \\g [FILE] or ; execute query (and send results to file or |pipe)\n"));
 	fprintf(output, _("  \\h [NAME]      help on syntax of SQL commands, * for all commands\n"));
 	fprintf(output, _("  \\q             quit psql\n"));
 	fprintf(output, "\n");
 
 	fprintf(output, _("Query Buffer\n"));
 	fprintf(output, _("  \\e [FILE]      edit the query buffer (or file) with external editor\n"));
-	fprintf(output, _("  \\g [FILE]      send query buffer to server (and results to file or |pipe)\n"));
 	fprintf(output, _("  \\p             show the contents of the query buffer\n"));
 	fprintf(output, _("  \\r             reset (clear) the query buffer\n"));
 #ifdef USE_READLINE
