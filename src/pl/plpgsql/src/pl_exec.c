@@ -4047,7 +4047,7 @@ exec_eval_expr(PLpgSQL_execstate *estate,
 			   bool *isNull,
 			   Oid *rettype)
 {
-	Datum		result;
+	Datum		result = 0;
 	int			rc;
 
 	/*
