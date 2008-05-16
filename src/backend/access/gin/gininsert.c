@@ -246,7 +246,11 @@ ginBuildCallback(Relation index, HeapTuple htup, Datum *values,
 		uint32		nlist;
 
 		while ((list = ginGetEntry(&buildstate->accum, &entry, &nlist)) != NULL)
+		{
+			/* there could be many entries, so be willing to abort here */
+			CHECK_FOR_INTERRUPTS();
 			ginEntryInsert(index, &buildstate->ginstate, entry, list, nlist, TRUE);
+		}
 
 		MemoryContextReset(buildstate->tmpCtx);
 		ginInitBA(&buildstate->accum);
@@ -331,9 +335,14 @@ ginbuild(PG_FUNCTION_ARGS)
 	reltuples = IndexBuildHeapScan(heap, index, indexInfo,
 								   ginBuildCallback, (void *) &buildstate);
 
+	/* dump remaining entries to the index */
 	oldCtx = MemoryContextSwitchTo(buildstate.tmpCtx);
 	while ((list = ginGetEntry(&buildstate.accum, &entry, &nlist)) != NULL)
+	{
+		/* there could be many entries, so be willing to abort here */
+		CHECK_FOR_INTERRUPTS();
 		ginEntryInsert(index, &buildstate.ginstate, entry, list, nlist, TRUE);
+	}
 	MemoryContextSwitchTo(oldCtx);
 
 	MemoryContextDelete(buildstate.tmpCtx);
