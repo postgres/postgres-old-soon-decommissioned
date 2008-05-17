@@ -15,7 +15,6 @@
 #include "postgres.h"
 
 #include <ctype.h>
-#include <fcntl.h>
 #include <signal.h>
 #include <time.h>
 #include <sys/stat.h>
@@ -31,7 +30,6 @@
 #include "access/twophase.h"
 #include "access/xact.h"
 #include "access/xlog_internal.h"
-#include "access/xlogdefs.h"
 #include "access/xlogutils.h"
 #include "catalog/catversion.h"
 #include "catalog/pg_control.h"

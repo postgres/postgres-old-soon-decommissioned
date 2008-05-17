@@ -12,6 +12,8 @@
 #ifndef XLOG_DEFS_H
 #define XLOG_DEFS_H
 
+#include <fcntl.h>				/* need open() flags */
+
 /*
  * Pointer to a location in the XLOG.  These pointers are 64 bits wide,
  * because we don't want them ever to overflow.
