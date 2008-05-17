@@ -1,3 +1,6 @@
+/*
+ * $PostgreSQL:$ 
+ */
 #include "postgres.h"
 
 #include "lib/stringinfo.h"

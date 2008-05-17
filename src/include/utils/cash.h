@@ -1,4 +1,7 @@
 /*
+ * $PostgreSQL:$ 
+ *
+ *
  * cash.h
  * Written by D'Arcy J.M. Cain
  *

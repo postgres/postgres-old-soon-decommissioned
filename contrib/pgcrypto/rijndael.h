@@ -1,4 +1,7 @@
-/*	$OpenBSD$ */
+/*
+ * $PostgreSQL:$ 
+ *
+ *	$OpenBSD$ */
 
 /* This is an independent implementation of the encryption algorithm:	*/
 /*																		*/

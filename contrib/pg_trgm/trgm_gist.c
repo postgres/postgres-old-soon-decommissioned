@@ -1,3 +1,6 @@
+/*
+ * $PostgreSQL:$ 
+ */
 #include "trgm.h"
 
 #include "access/gist.h"

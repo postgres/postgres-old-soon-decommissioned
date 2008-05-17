@@ -1,4 +1,7 @@
 /*
+ * $PostgreSQL:$ 
+ *
+ *
  *	test_fsync.c
  *		test various fsync() methods
  */

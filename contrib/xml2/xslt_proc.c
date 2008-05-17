@@ -1,4 +1,7 @@
-/* XSLT processing functions (requiring libxslt) */
+/*
+ * $PostgreSQL:$ 
+ *
+ * XSLT processing functions (requiring libxslt) */
 /* John Gray, for Torchbox 2003-04-01 */
 
 #include "postgres.h"

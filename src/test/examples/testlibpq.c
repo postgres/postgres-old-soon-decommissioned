@@ -1,4 +1,7 @@
 /*
+ * $PostgreSQL:$ 
+ *
+ *
  * testlibpq.c
  *
  *		Test the C version of libpq, the PostgreSQL frontend library.

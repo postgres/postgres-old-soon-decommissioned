@@ -1,3 +1,6 @@
+/*
+ * $PostgreSQL:$ 
+ */
 typedef struct SEG
 {
 	float4		lower;

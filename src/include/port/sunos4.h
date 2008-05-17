@@ -1,2 +1,5 @@
-/* sprintf() returns char *, not int, on SunOS 4.1.x */
+/*
+ * $PostgreSQL:$ 
+ *
+ * sprintf() returns char *, not int, on SunOS 4.1.x */
 #define SPRINTF_CHAR

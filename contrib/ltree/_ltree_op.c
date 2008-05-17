@@ -1,4 +1,7 @@
 /*
+ * $PostgreSQL:$ 
+ *
+ *
  * op function for ltree[]
  * Teodor Sigaev <teodor@stack.net>
  */

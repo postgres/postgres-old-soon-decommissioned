@@ -1,3 +1,6 @@
+/*
+ * $PostgreSQL:$ 
+ */
 #include "btree_gist.h"
 
 #include <math.h>

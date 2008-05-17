@@ -1,4 +1,7 @@
 /*
+ * $PostgreSQL:$ 
+ *
+ *
  *	FILE
  *		win32.c
  *

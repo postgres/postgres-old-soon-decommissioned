@@ -1,4 +1,7 @@
 /*
+ * $PostgreSQL:$ 
+ *
+ *
  * tablefunc
  *
  * Sample to demonstrate C functions which return setof scalar

@@ -1,3 +1,6 @@
+/*
+ * $PostgreSQL:$ 
+ */
 #ifndef _CRC32_H
 #define _CRC32_H
 

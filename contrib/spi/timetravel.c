@@ -1,4 +1,7 @@
 /*
+ * $PostgreSQL:$ 
+ *
+ *
  * timetravel.c --	function to get time travel feature
  *		using general triggers.
  */

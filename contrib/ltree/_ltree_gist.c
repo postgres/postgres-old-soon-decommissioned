@@ -1,4 +1,7 @@
 /*
+ * $PostgreSQL:$ 
+ *
+ *
  * GiST support for ltree[]
  * Teodor Sigaev <teodor@stack.net>
  */

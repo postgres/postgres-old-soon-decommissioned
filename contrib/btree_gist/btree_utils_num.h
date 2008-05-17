@@ -1,3 +1,6 @@
+/*
+ * $PostgreSQL:$ 
+ */
 #ifndef __BTREE_UTILS_NUM_H__
 #define __BTREE_UTILS_NUM_H__
 

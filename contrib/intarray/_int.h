@@ -1,3 +1,6 @@
+/*
+ * $PostgreSQL:$ 
+ */
 #ifndef ___INT_H__
 #define ___INT_H__
 

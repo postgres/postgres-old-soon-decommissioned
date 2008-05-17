@@ -1,3 +1,6 @@
+/*
+ * $PostgreSQL:$ 
+ */
 #include "postgres_fe.h"
 
 #include <time.h>

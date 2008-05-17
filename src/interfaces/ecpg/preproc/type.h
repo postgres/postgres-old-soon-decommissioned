@@ -1,3 +1,6 @@
+/*
+ * $PostgreSQL:$ 
+ */
 #ifndef _ECPG_PREPROC_TYPE_H
 #define _ECPG_PREPROC_TYPE_H
 

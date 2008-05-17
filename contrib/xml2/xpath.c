@@ -1,4 +1,7 @@
-/* Parser interface for DOM-based parser (libxml) rather than
+/*
+ * $PostgreSQL:$ 
+ *
+ * Parser interface for DOM-based parser (libxml) rather than
    stream-based SAX-type parser */
 
 #include "postgres.h"

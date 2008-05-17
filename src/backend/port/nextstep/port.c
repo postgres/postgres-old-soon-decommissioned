@@ -1,3 +1,6 @@
+/*
+ * $PostgreSQL:$ 
+ */
 #include "postgres.h"
 
 #ifndef _POSIX_SOURCE

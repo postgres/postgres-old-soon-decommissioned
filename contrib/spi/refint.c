@@ -1,4 +1,7 @@
 /*
+ * $PostgreSQL:$ 
+ *
+ *
  * refint.c --	set of functions to define referential integrity
  *		constraints using general triggers.
  */

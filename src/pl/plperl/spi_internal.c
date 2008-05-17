@@ -1,4 +1,7 @@
 /*
+ * $PostgreSQL:$ 
+ *
+ *
  * This kludge is necessary because of the conflicting
  * definitions of 'DEBUG' between postgres and perl.
  * we'll live.

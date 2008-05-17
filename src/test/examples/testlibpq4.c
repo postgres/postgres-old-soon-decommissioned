@@ -1,4 +1,7 @@
 /*
+ * $PostgreSQL:$ 
+ *
+ *
  * testlibpq4.c
  *		this test program shows to use LIBPQ to make multiple backend
  * connections

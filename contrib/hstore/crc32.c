@@ -1,4 +1,7 @@
-/* Both POSIX and CRC32 checksums */
+/*
+ * $PostgreSQL:$ 
+ *
+ * Both POSIX and CRC32 checksums */
 
 #include <sys/types.h>
 #include <stdio.h>

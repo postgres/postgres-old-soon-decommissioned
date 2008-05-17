@@ -1,3 +1,6 @@
+/*
+ * $PostgreSQL:$ 
+ */
 #include "trgm.h"
 #include <ctype.h>
 #include "utils/array.h"

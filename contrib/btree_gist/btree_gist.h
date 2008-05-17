@@ -1,3 +1,6 @@
+/*
+ * $PostgreSQL:$ 
+ */
 #ifndef __BTREE_GIST_H__
 #define __BTREE_GIST_H__
 

@@ -1,4 +1,7 @@
 /*
+ * $PostgreSQL:$ 
+ *
+ *
  * testlibpq2.c
  *		Test of the asynchronous notification interface
  *

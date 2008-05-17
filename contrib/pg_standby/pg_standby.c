@@ -1,4 +1,7 @@
 /*
+ * $PostgreSQL:$ 
+ *
+ *
  * pg_standby.c
  *
  * Production-ready example of how to create a Warm Standby
