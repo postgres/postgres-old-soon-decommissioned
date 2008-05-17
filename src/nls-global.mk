@@ -78,7 +78,7 @@ uninstall-po:
 
 clean-po:
 	$(if $(MO_FILES),rm -f $(MO_FILES))
-	@rm -f $(addsuffix .old, $(PO_FILES))
+	@$(if $(PO_FILES),rm -f $(addsuffix .old, $(PO_FILES)))
 	rm -f po/$(CATALOG_NAME).pot
 
 
