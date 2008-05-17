@@ -634,7 +634,7 @@ print_aligned_text(const printTableContent *cont, FILE *fout)
 	}
 
 	/* If we wrapped beyond the display width, use the pager */
-	if (!is_pager && output_columns > 0 &&
+	if (!is_pager && fout == stdout && output_columns > 0 &&
 		(output_columns < total_header_width || output_columns < width_total))
 	{
 		fout = PageOutput(INT_MAX, cont->opt->pager);	/* force pager */
