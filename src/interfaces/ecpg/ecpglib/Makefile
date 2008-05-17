@@ -33,7 +33,7 @@ ifneq ($(PORTNAME), win32)
 OBJS += thread.o
 endif
 
-SHLIB_LINK = -L../pgtypeslib -lpgtypes $(libpq) -lm $(PTHREAD_LIBS)
+SHLIB_LINK = -L../pgtypeslib -lpgtypes $(libpq) $(filter -lintl -lm, $(LIBS)) $(PTHREAD_LIBS)
 
 SHLIB_EXPORTS = exports.txt
 
