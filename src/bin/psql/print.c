@@ -1912,13 +1912,7 @@ FILE *
 PageOutput(int lines, unsigned short int pager)
 {
 	/* check whether we need / can / are supposed to use pager */
-	if (pager
-#ifndef WIN32
-		&&
-		isatty(fileno(stdin)) &&
-		isatty(fileno(stdout))
-#endif
-		)
+	if (pager && isatty(fileno(stdin)) && isatty(fileno(stdout)))
 	{
 		const char *pagerprog;
 		FILE	   *pagerpipe;

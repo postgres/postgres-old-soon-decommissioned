@@ -147,13 +147,8 @@ PQprint(FILE *fout, const PGresult *res, const PQprintOpt *po)
 
 		if (fout == NULL)
 			fout = stdout;
-		if (po->pager && fout == stdout
-#ifndef WIN32
-			&&
-			isatty(fileno(stdin)) &&
-			isatty(fileno(stdout))
-#endif
-			)
+		if (po->pager && fout == stdout && isatty(fileno(stdin)) &&
+			isatty(fileno(stdout)))
 		{
 			/*
 			 * If we think there'll be more than one screen of output, try to
