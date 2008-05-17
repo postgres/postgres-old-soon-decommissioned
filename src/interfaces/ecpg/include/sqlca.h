@@ -1,6 +1,3 @@
-/*
- * $PostgreSQL:$ 
- */
 #ifndef POSTGRES_SQLCA_H
 #define POSTGRES_SQLCA_H
 
