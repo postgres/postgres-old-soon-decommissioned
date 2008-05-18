@@ -918,13 +918,7 @@ print_aligned_text(const printTableContent *cont, FILE *fout)
 				fprintf(fout, "%s\n", f->data);
 		}
 
-		/*
-		 * for some reason MinGW (and MSVC) outputs an extra newline, so this
-		 * suppresses it
-		 */
-#ifndef WIN32
 		fputc('\n', fout);
-#endif
 	}
 
 	/* clean up */
