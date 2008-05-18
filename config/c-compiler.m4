@@ -110,3 +110,19 @@ _AC_COMPILE_IFELSE([AC_LANG_PROGRAM()],
                    [CFLAGS="$pgac_save_CFLAGS"
                     AC_MSG_RESULT(no)])
 ])# PGAC_PROG_CC_CFLAGS_OPT
+
+
+
+# PGAC_PROG_CC_LDFLAGS_OPT
+# ------------------------
+# Given a string, check if the compiler supports the string as a
+# command-line option. If it does, add the string to LDFLAGS.
+AC_DEFUN([PGAC_PROG_CC_LDFLAGS_OPT],
+[AC_MSG_CHECKING([if $CC supports $1])
+pgac_save_LDFLAGS=$LDFLAGS
+LDFLAGS="$pgac_save_LDFLAGS $1"
+AC_LINK_IFELSE([AC_LANG_PROGRAM()],
+               AC_MSG_RESULT(yes),
+               [LDFLAGS="$pgac_save_LDFLAGS"
+                AC_MSG_RESULT(no)])
+])# PGAC_PROG_CC_LDFLAGS_OPT

@@ -450,6 +450,16 @@ fi
 AC_PROG_CPP
 AC_SUBST(GCC)
 
+# If compiler will take -Wl,--as-needed then add that to LDFLAGS.
+# This is much easier than trying to filter LIBS to the minimum for each
+# executable.  (Note that shared libraries won't use this switch, though.)
+# On Darwin it's spelled -Wl,-dead_strip_dylibs, but don't try that elsewhere
+if test "$PORTNAME" != "darwin"; then
+  PGAC_PROG_CC_LDFLAGS_OPT([-Wl,--as-needed])
+else
+  PGAC_PROG_CC_LDFLAGS_OPT([-Wl,-dead_strip_dylibs])
+fi
+
 # Create compiler version string
 if test x"$GCC" = x"yes" ; then
   cc_string="GCC `${CC} --version | sed q`"
