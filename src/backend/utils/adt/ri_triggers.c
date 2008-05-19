@@ -3933,8 +3933,12 @@ ri_HashCompareOp(Oid eq_opr, Oid typeid)
 			if (pathtype != COERCION_PATH_FUNC &&
 				pathtype != COERCION_PATH_RELABELTYPE)
 			{
-				/* If target is ANYARRAY, assume it's OK, else punt. */
-				if (lefttype != ANYARRAYOID)
+				/*
+				 * The declared input type of the eq_opr might be a
+				 * polymorphic type such as ANYARRAY or ANYENUM.  If so,
+				 * assume the coercion is valid; otherwise complain.
+				 */
+				if (!IsPolymorphicType(lefttype))
 					elog(ERROR, "no conversion function from %s to %s",
 						 format_type_be(typeid),
 						 format_type_be(lefttype));
