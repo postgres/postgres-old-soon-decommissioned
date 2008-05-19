@@ -17,10 +17,18 @@
 #include "utils/guc.h"
 
 
+/* GUC settings */
 extern char *locale_messages;
 extern char *locale_monetary;
 extern char *locale_numeric;
 extern char *locale_time;
+
+/* lc_time localization cache */
+extern char *localized_abbrev_days[];
+extern char *localized_full_days[];
+extern char *localized_abbrev_months[];
+extern char *localized_full_months[];
+
 
 extern const char *locale_messages_assign(const char *value,
 					   bool doit, GucSource source);
@@ -41,5 +49,7 @@ extern bool lc_ctype_is_c(void);
  * information) with locale information for all categories.
  */
 extern struct lconv *PGLC_localeconv(void);
+
+extern void cache_locale_time(void);
 
 #endif   /* _PG_LOCALE_ */

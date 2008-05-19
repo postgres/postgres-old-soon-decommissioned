@@ -4184,9 +4184,9 @@ SET XML OPTION { DOCUMENT | CONTENT };
       </indexterm>
       <listitem>
        <para>
-        Sets the locale to use for formatting date and time values.
-        (Currently, this setting does nothing, but it might in the
-        future.)  Acceptable values are system-dependent; see <xref
+        Sets the locale to use for formatting dates and times, for example
+        with the <function>to_char</function> family of
+        functions. Acceptable values are system-dependent; see <xref
         linkend="locale"> for more information.  If this variable is
         set to the empty string (which is the default) then the value
         is inherited from the execution environment of the server in a
