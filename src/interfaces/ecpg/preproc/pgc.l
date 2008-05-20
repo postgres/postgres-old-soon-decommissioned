@@ -680,7 +680,7 @@ cppline			{space}*#(.*\\{space})*.*{newline}
 						if (!isdefine())
 						{
 							/* Is it an SQL/ECPG keyword? */
-							keyword = ScanKeywordLookup(yytext);
+							keyword = ScanECPGKeywordLookup(yytext);
 							if (keyword != NULL)
 								return keyword->value;
 
