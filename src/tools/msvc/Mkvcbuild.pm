@@ -162,6 +162,7 @@ sub mkvcbuild
     my $ecpg = $solution->AddProject('ecpg','exe','interfaces','src\interfaces\ecpg\preproc');
     $ecpg->AddIncludeDir('src\interfaces\ecpg\include');
     $ecpg->AddIncludeDir('src\interfaces\libpq');
+    $ecpg->AddIncludeDir('src\backend'); # needed for parse.h
     $ecpg->AddPrefixInclude('src\interfaces\ecpg\preproc');
     $ecpg->AddFiles('src\interfaces\ecpg\preproc','pgc.l','preproc.y');
     $ecpg->AddDefine('MAJOR_VERSION=4');
