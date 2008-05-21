@@ -29,8 +29,11 @@
 #define YYSTYPE int
 
 #include "parser/keywords.h"
+#ifndef ECPG_COMPILE
 #include "parser/parse.h"
-
+#else
+#include "preproc.h"
+#endif
 
 /*
  * List of keyword (name, token-value, category) entries.
