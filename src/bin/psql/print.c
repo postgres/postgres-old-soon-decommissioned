@@ -1978,7 +1978,7 @@ ClosePager(FILE *pagerpipe)
  */
 void
 printTableInit(printTableContent *const content, const printTableOpt *opt,
-			   const char *title, int ncolumns, int nrows)
+			   const char *title, const int ncolumns, const int nrows)
 {
 	content->opt = opt;
 	content->title = title;
@@ -2016,7 +2016,7 @@ printTableInit(printTableContent *const content, const printTableOpt *opt,
  */
 void
 printTableAddHeader(printTableContent *const content, const char *header,
-					bool translate, char align)
+					const bool translate, const char align)
 {
 #ifndef ENABLE_NLS
 	(void) translate;		/* unused parameter */
@@ -2053,7 +2053,7 @@ printTableAddHeader(printTableContent *const content, const char *header,
  */
 void
 printTableAddCell(printTableContent *const content, const char *cell,
-				  bool translate)
+				  const bool translate)
 {
 #ifndef ENABLE_NLS
 	(void) translate;		/* unused parameter */
@@ -2133,7 +2133,7 @@ printTableSetFooter(printTableContent *const content, const char *footer)
  * printTableInit() again.
  */
 void
-printTableCleanup(printTableContent *content)
+printTableCleanup(printTableContent *const content)
 {
 	free(content->headers);
 	free(content->cells);
