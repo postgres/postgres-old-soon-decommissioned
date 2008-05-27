@@ -15,6 +15,7 @@
 #define TABLECMDS_H
 
 #include "nodes/parsenodes.h"
+#include "utils/rel.h"
 
 
 extern Oid	DefineRelation(CreateStmt *stmt, char relkind);
@@ -26,6 +27,8 @@ extern void AlterTable(AlterTableStmt *stmt);
 extern void AlterTableInternal(Oid relid, List *cmds, bool recurse);
 
 extern void AlterTableCreateToastTable(Oid relOid, bool silent);
+
+extern void CheckTableNotInUse(Relation rel, const char *stmt);
 
 extern void TruncateRelation(const RangeVar *relation);
 

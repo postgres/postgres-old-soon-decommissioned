@@ -157,12 +157,12 @@ extern void ExecARUpdateTriggers(EState *estate,
 extern void AfterTriggerBeginXact(void);
 extern void AfterTriggerBeginQuery(void);
 extern void AfterTriggerEndQuery(void);
-extern void AfterTriggerEndXact(void);
-extern void AfterTriggerAbortXact(void);
+extern void AfterTriggerFireDeferred(void);
+extern void AfterTriggerEndXact(bool isCommit);
 extern void AfterTriggerBeginSubXact(void);
 extern void AfterTriggerEndSubXact(bool isCommit);
-
 extern void AfterTriggerSetState(ConstraintsSetStmt *stmt);
+extern bool AfterTriggerPendingOnRel(Oid relid);
 
 
 /*

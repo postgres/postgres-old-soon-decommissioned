@@ -405,6 +405,12 @@ check_index_is_clusterable(Relation OldHeap, Oid indexOid)
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 		   errmsg("cannot cluster temporary tables of other sessions")));
 
+	/*
+	 * Also check for active uses of the relation in the current transaction,
+	 * including open scans and pending AFTER trigger events.
+	 */
+	CheckTableNotInUse(OldHeap, "CLUSTER");
+
 	/* Drop relcache refcnt on OldIndex, but keep lock */
 	index_close(OldIndex);
 }
