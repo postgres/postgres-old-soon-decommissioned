@@ -886,3 +886,112 @@ hashbpchar(PG_FUNCTION_ARGS)
 
 	return result;
 }
+
+
+/*
+ * The following operators support character-by-character comparison
+ * of bpchar datums, to allow building indexes suitable for LIKE clauses.
+ * Note that the regular bpchareq/bpcharne comparison operators are assumed
+ * to be compatible with these!
+ */
+
+static int
+internal_bpchar_pattern_compare(BpChar *arg1, BpChar *arg2)
+{
+	int			result;
+	int			len1,
+				len2;
+
+	len1 = bcTruelen(arg1);
+	len2 = bcTruelen(arg2);
+
+	result = strncmp(VARDATA_ANY(arg1), VARDATA_ANY(arg2), Min(len1, len2));
+	if (result != 0)
+		return result;
+	else if (len1 < len2)
+		return -1;
+	else if (len1 > len2)
+		return 1;
+	else
+		return 0;
+}
+
+
+Datum
+bpchar_pattern_lt(PG_FUNCTION_ARGS)
+{
+	BpChar	   *arg1 = PG_GETARG_BPCHAR_PP(0);
+	BpChar	   *arg2 = PG_GETARG_BPCHAR_PP(1);
+	int			result;
+
+	result = internal_bpchar_pattern_compare(arg1, arg2);
+
+	PG_FREE_IF_COPY(arg1, 0);
+	PG_FREE_IF_COPY(arg2, 1);
+
+	PG_RETURN_BOOL(result < 0);
+}
+
+
+Datum
+bpchar_pattern_le(PG_FUNCTION_ARGS)
+{
+	BpChar	   *arg1 = PG_GETARG_BPCHAR_PP(0);
+	BpChar	   *arg2 = PG_GETARG_BPCHAR_PP(1);
+	int			result;
+
+	result = internal_bpchar_pattern_compare(arg1, arg2);
+
+	PG_FREE_IF_COPY(arg1, 0);
+	PG_FREE_IF_COPY(arg2, 1);
+
+	PG_RETURN_BOOL(result <= 0);
+}
+
+
+Datum
+bpchar_pattern_ge(PG_FUNCTION_ARGS)
+{
+	BpChar	   *arg1 = PG_GETARG_BPCHAR_PP(0);
+	BpChar	   *arg2 = PG_GETARG_BPCHAR_PP(1);
+	int			result;
+
+	result = internal_bpchar_pattern_compare(arg1, arg2);
+
+	PG_FREE_IF_COPY(arg1, 0);
+	PG_FREE_IF_COPY(arg2, 1);
+
+	PG_RETURN_BOOL(result >= 0);
+}
+
+
+Datum
+bpchar_pattern_gt(PG_FUNCTION_ARGS)
+{
+	BpChar	   *arg1 = PG_GETARG_BPCHAR_PP(0);
+	BpChar	   *arg2 = PG_GETARG_BPCHAR_PP(1);
+	int			result;
+
+	result = internal_bpchar_pattern_compare(arg1, arg2);
+
+	PG_FREE_IF_COPY(arg1, 0);
+	PG_FREE_IF_COPY(arg2, 1);
+
+	PG_RETURN_BOOL(result > 0);
+}
+
+
+Datum
+btbpchar_pattern_cmp(PG_FUNCTION_ARGS)
+{
+	BpChar	   *arg1 = PG_GETARG_BPCHAR_PP(0);
+	BpChar	   *arg2 = PG_GETARG_BPCHAR_PP(1);
+	int			result;
+
+	result = internal_bpchar_pattern_compare(arg1, arg2);
+
+	PG_FREE_IF_COPY(arg1, 0);
+	PG_FREE_IF_COPY(arg2, 1);
+
+	PG_RETURN_INT32(result);
+}
