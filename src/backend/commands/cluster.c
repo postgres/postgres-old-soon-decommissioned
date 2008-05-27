@@ -398,6 +398,12 @@ cluster_rel(RelToCluster *rvtc, bool recheck)
 				 errmsg("\"%s\" is a system catalog",
 						RelationGetRelationName(OldHeap))));
 
+	/*
+	 * Also check for active uses of the relation in the current transaction,
+	 * including open scans and pending AFTER trigger events.
+	 */
+	CheckTableNotInUse(OldHeap, "CLUSTER");
+
 	/* Drop relcache refcnt on OldIndex, but keep lock */
 	index_close(OldIndex);
 

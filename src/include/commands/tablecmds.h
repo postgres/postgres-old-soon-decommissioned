@@ -15,6 +15,7 @@
 #define TABLECMDS_H
 
 #include "nodes/parsenodes.h"
+#include "utils/rel.h"
 
 extern void AlterTableAddColumn(Oid myrelid, bool recurse, ColumnDef *colDef);
 
@@ -54,6 +55,8 @@ extern void AlterTableAlterOids(Oid myrelid, bool recurse, bool setOid);
 extern Oid	DefineRelation(CreateStmt *stmt, char relkind);
 
 extern void RemoveRelation(const RangeVar *relation, DropBehavior behavior);
+
+extern void CheckTableNotInUse(Relation rel, const char *stmt);
 
 extern void TruncateRelation(const RangeVar *relation);
 

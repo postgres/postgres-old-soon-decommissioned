@@ -192,6 +192,8 @@ extern void DeferredTriggerAbortXact(void);
 
 extern void DeferredTriggerSetState(ConstraintsSetStmt *stmt);
 
+extern bool AfterTriggerPendingOnRel(Oid relid);
+
 
 /*
  * in utils/adt/ri_triggers.c
