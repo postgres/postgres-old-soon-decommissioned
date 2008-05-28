@@ -100,6 +100,7 @@ struct config_enum_entry
 {
 	const char *name;
 	int         val;
+	bool		hidden;
 };
 
 
