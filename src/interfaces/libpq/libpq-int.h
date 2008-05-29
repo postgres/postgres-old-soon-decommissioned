@@ -511,8 +511,8 @@ extern PGresult *pqFunctionCall3(PGconn *conn, Oid fnid,
   * Get, EOF merely means the buffer is exhausted, not that there is
   * necessarily any error.
   */
-extern int	pqCheckOutBufferSpace(int bytes_needed, PGconn *conn);
-extern int	pqCheckInBufferSpace(int bytes_needed, PGconn *conn);
+extern int	pqCheckOutBufferSpace(size_t bytes_needed, PGconn *conn);
+extern int	pqCheckInBufferSpace(size_t bytes_needed, PGconn *conn);
 extern int	pqGetc(char *result, PGconn *conn);
 extern int	pqPutc(char c, PGconn *conn);
 extern int	pqGets(PQExpBuffer buf, PGconn *conn);

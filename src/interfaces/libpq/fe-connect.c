@@ -1581,7 +1581,8 @@ keep_going:						/* We will come back to here until there is
 					 * needed to hold the whole message; see notes in
 					 * pqParseInput3.
 					 */
-					if (pqCheckInBufferSpace(conn->inCursor + msgLength, conn))
+					if (pqCheckInBufferSpace(conn->inCursor + (size_t) msgLength,
+											 conn))
 						goto error_return;
 					/* We'll come back when there is more data */
 					return PGRES_POLLING_READING;
