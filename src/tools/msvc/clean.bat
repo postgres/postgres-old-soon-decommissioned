@@ -65,6 +65,8 @@ if exist src\test\regress\tmp_check rd /s /q src\test\regress\tmp_check
 if exist contrib\spi\refint.dll del /q contrib\spi\refint.dll
 if exist contrib\spi\autoinc.dll del /q contrib\spi\autoinc.dll
 if exist src\test\regress\regress.dll del /q src\test\regress\regress.dll
+if exist src\test\regress\refint.dll del /q src\test\regress\refint.dll
+if exist src\test\regress\autoinc.dll del /q src\test\regress\autoinc.dll
 
 REM Clean up datafiles built with contrib
 REM cd contrib

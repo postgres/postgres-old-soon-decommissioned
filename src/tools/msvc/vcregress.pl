@@ -36,8 +36,8 @@ else
 # use a capital C here because config.pl has $config
 my $Config = -e "release/postgres/postgres.exe" ? "Release" : "Debug";
 
-copy("$Config/refint/refint.dll","contrib/spi");
-copy("$Config/autoinc/autoinc.dll","contrib/spi");
+copy("$Config/refint/refint.dll","src/test/regress");
+copy("$Config/autoinc/autoinc.dll","src/test/regress");
 copy("$Config/regress/regress.dll","src/test/regress");
 
 $ENV{PATH} = "../../../$Config/libpq;../../$Config/libpq;$ENV{PATH}";

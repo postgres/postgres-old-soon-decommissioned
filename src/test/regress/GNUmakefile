@@ -14,8 +14,6 @@ subdir = src/test/regress
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-contribdir = $(top_builddir)/contrib
-
 # port number for temp-installation test postmaster
 TEMP_PORT = 5$(DEF_PGPORT)
 
@@ -115,19 +113,32 @@ $(remaining_files_build): $(abs_builddir)/%: $(srcdir)/%
 endif
 
 
-# And finally some extra C modules...
+# Get some extra C modules from contrib/spi...
 
-all: all-spi tablespace-setup
+all: refint$(DLSUFFIX) autoinc$(DLSUFFIX)
 
-.PHONY: all-spi
-all-spi:
-	$(MAKE) -C $(contribdir)/spi refint$(DLSUFFIX) autoinc$(DLSUFFIX)
+refint$(DLSUFFIX): $(top_builddir)/contrib/spi/refint$(DLSUFFIX)
+	cp $< $@
+
+autoinc$(DLSUFFIX): $(top_builddir)/contrib/spi/autoinc$(DLSUFFIX)
+	cp $< $@
+
+$(top_builddir)/contrib/spi/refint$(DLSUFFIX): $(top_srcdir)/contrib/spi/refint.c
+	$(MAKE) -C $(top_builddir)/contrib/spi refint$(DLSUFFIX)
+
+$(top_builddir)/contrib/spi/autoinc$(DLSUFFIX): $(top_srcdir)/contrib/spi/autoinc.c
+	$(MAKE) -C $(top_builddir)/contrib/spi autoinc$(DLSUFFIX)
+
 
 # Tablespace setup
+
+all: tablespace-setup
+
 .PHONY: tablespace-setup
 tablespace-setup:
 	rm -rf ./testtablespace
 	mkdir ./testtablespace
+
 
 ##
 ## Run tests
@@ -162,8 +173,7 @@ bigcheck: all
 
 clean distclean maintainer-clean: clean-lib
 # things built by `all' target
-	rm -f $(OBJS)
-	$(MAKE) -C $(contribdir)/spi clean
+	rm -f $(OBJS) refint$(DLSUFFIX) autoinc$(DLSUFFIX)
 	rm -f $(output_files) $(input_files) pg_regress_main.o pg_regress.o pg_regress$(X)
 # things created by various check targets
 	rm -rf testtablespace

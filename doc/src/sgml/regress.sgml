@@ -48,9 +48,9 @@ gmake check
    script.  At the end you should see something like
 <screen>
 <computeroutput>
-======================
- All 100 tests passed.
-======================
+=======================
+ All 115 tests passed.
+=======================
 </computeroutput>
 </screen>
    or otherwise a note about which tests failed.  See <xref
@@ -67,7 +67,6 @@ gmake check
     For example
 <screen>
 <prompt>root# </prompt><userinput>chmod -R a+w src/test/regress</userinput>
-<prompt>root# </prompt><userinput>chmod -R a+w contrib/spi</userinput>
 <prompt>root# </prompt><userinput>su - joeuser</userinput>
 <prompt>joeuser$ </prompt><userinput>cd <replaceable>top-level build directory</></userinput>
 <prompt>joeuser$ </prompt><userinput>gmake check</userinput>
