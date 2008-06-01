@@ -4838,8 +4838,12 @@ defaultNoticeProcessor(void *arg, const char *message)
       <indexterm>
        <primary><envar>PGOPTIONS</envar></primary>
       </indexterm>
-      <envar>PGOPTIONS</envar> sets additional run-time  options  for the
-      <productname>PostgreSQL</productname> server.
+      <envar>PGOPTIONS</envar> sets additional run-time options for the
+      <productname>PostgreSQL</productname> server.  For example, setting
+      <envar>PGOPTIONS</envar> to <literal>-c geqo=off</> sets the session's
+      value of the <varname>geqo</> parameter to <literal>off</>.
+      For a detailed discussion of the available options consult <xref
+      linkend="runtime-config">.
      </para>
     </listitem>
 

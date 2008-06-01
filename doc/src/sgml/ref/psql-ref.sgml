@@ -2754,22 +2754,13 @@ $endif
 
    <varlistentry>
     <term><envar>PGDATABASE</envar></term>
-
-    <listitem>
-     <para>
-      Default connection database
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
     <term><envar>PGHOST</envar></term>
     <term><envar>PGPORT</envar></term>
     <term><envar>PGUSER</envar></term>
 
     <listitem>
      <para>
-      Default connection parameters
+      Default connection parameters (see <xref linkend="libpq-envars">).
      </para>
     </listitem>
    </varlistentry>
