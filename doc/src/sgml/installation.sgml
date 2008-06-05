@@ -368,7 +368,7 @@ su - postgres
   <procedure>
    <step>
     <para>
-     If making a backup, make sure that your database is being updated.
+     If making a backup, make sure that your database is not being updated.
      This does not affect the integrity of the backup, but the changed
      data would of course not be included. If necessary, edit the
      permissions in the file <filename>/usr/local/pgsql/data/pg_hba.conf</>
