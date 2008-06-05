@@ -619,7 +619,7 @@ msgstr ""
 #: help.c:184
 #, c-format
 msgid "  \\q             quit psql\n"
-msgstr "  \\q           beende psql\n"
+msgstr "  \\q             beende psql\n"
 
 #: help.c:185
 #, c-format
