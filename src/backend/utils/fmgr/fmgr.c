@@ -19,6 +19,7 @@
 #include "catalog/pg_language.h"
 #include "catalog/pg_proc.h"
 #include "executor/functions.h"
+#include "lib/stringinfo.h"
 #include "miscadmin.h"
 #include "parser/parse_expr.h"
 #include "pgstat.h"

@@ -17,6 +17,7 @@
 #include "access/htup.h"
 #include "access/relscan.h"
 #include "access/sdir.h"
+#include "access/xlog.h"
 #include "nodes/primnodes.h"
 #include "storage/lock.h"
 #include "utils/snapshot.h"

@@ -14,6 +14,7 @@
 
 #include "access/itup.h"
 #include "access/relscan.h"
+#include "access/xlog.h"
 #include "fmgr.h"
 #include "nodes/tidbitmap.h"
 #include "storage/block.h"
