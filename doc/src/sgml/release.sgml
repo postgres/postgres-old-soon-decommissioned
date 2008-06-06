@@ -47,7 +47,7 @@ do it for earlier branch release files.
 
   <para>
    A complete list of changes for each release can be obtained by
-   viewing the <link linkend="cvs">CVS</link> logs for each release.
+   viewing the CVS logs for each release.
    The <ulink
    url="http://archives.postgresql.org/pgsql-committers/">pgsql-committers
    email list</ulink> contains all source code changes as well.  There is also
