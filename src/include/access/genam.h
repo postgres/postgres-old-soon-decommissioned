@@ -138,6 +138,7 @@ extern SysScanDesc systable_beginscan(Relation heapRelation,
 				   Snapshot snapshot,
 				   int nkeys, ScanKey key);
 extern HeapTuple systable_getnext(SysScanDesc sysscan);
+extern bool systable_recheck_tuple(SysScanDesc sysscan, HeapTuple tup);
 extern void systable_endscan(SysScanDesc sysscan);
 extern SysScanDesc systable_beginscan_ordered(Relation heapRelation,
 											  Relation indexRelation,

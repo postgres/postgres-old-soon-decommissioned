@@ -252,6 +252,47 @@ systable_getnext(SysScanDesc sysscan)
 }
 
 /*
+ * systable_recheck_tuple --- recheck visibility of most-recently-fetched tuple
+ *
+ * This is useful to test whether an object was deleted while we waited to
+ * acquire lock on it.
+ *
+ * Note: we don't actually *need* the tuple to be passed in, but it's a
+ * good crosscheck that the caller is interested in the right tuple.
+ */
+bool
+systable_recheck_tuple(SysScanDesc sysscan, HeapTuple tup)
+{
+	bool		result;
+
+	if (sysscan->irel)
+	{
+		IndexScanDesc scan = sysscan->iscan;
+
+		Assert(tup == &scan->xs_ctup);
+		Assert(BufferIsValid(scan->xs_cbuf));
+		/* must hold a buffer lock to call HeapTupleSatisfiesVisibility */
+		LockBuffer(scan->xs_cbuf, BUFFER_LOCK_SHARE);
+		result = HeapTupleSatisfiesVisibility(tup, scan->xs_snapshot,
+											  scan->xs_cbuf);
+		LockBuffer(scan->xs_cbuf, BUFFER_LOCK_UNLOCK);
+	}
+	else
+	{
+		HeapScanDesc scan = sysscan->scan;
+
+		Assert(tup == &scan->rs_ctup);
+		Assert(BufferIsValid(scan->rs_cbuf));
+		/* must hold a buffer lock to call HeapTupleSatisfiesVisibility */
+		LockBuffer(scan->rs_cbuf, BUFFER_LOCK_SHARE);
+		result = HeapTupleSatisfiesVisibility(tup, scan->rs_snapshot,
+											  scan->rs_cbuf);
+		LockBuffer(scan->rs_cbuf, BUFFER_LOCK_UNLOCK);
+	}
+	return result;
+}
+
+/*
  * systable_endscan --- close scan, release resources
  *
  * Note that it's still up to the caller to close the heap relation.
