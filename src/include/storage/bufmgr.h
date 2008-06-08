@@ -15,6 +15,7 @@
 #define BUFMGR_H
 
 #include "storage/buf.h"
+#include "storage/bufpage.h"
 #include "utils/rel.h"
 
 typedef void *Block;
@@ -113,6 +114,29 @@ extern PGDLLIMPORT int32 *LocalRefCount;
 	: \
 		(Block) (BufferBlocks + ((Size) ((buffer) - 1)) * BLCKSZ) \
 )
+
+/*
+ * BufferGetPageSize
+ *		Returns the page size within a buffer.
+ *
+ * Notes:
+ *		Assumes buffer is valid.
+ *
+ *		The buffer can be a raw disk block and need not contain a valid
+ *		(formatted) disk page.
+ */
+/* XXX should dig out of buffer descriptor */
+#define BufferGetPageSize(buffer) \
+( \
+	AssertMacro(BufferIsValid(buffer)), \
+	(Size)BLCKSZ \
+)
+
+/*
+ * BufferGetPage
+ *		Returns the page associated with a buffer.
+ */
+#define BufferGetPage(buffer) ((Page)BufferGetBlock(buffer))
 
 /*
  * prototypes for functions in bufmgr.c

@@ -16,7 +16,7 @@
 #include "postgres.h"
 
 #include "access/hio.h"
-#include "storage/bufpage.h"
+#include "storage/bufmgr.h"
 #include "storage/freespace.h"
 #include "storage/lmgr.h"
 
