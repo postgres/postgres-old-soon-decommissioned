@@ -256,6 +256,23 @@ static const datetkn *deltacache[MAXDATEFIELDS] = {NULL};
 
 
 /*
+ * strtoi --- just like strtol, but returns int not long
+ */
+static int
+strtoi(const char *nptr, char **endptr, int base)
+{
+	long	val;
+
+	val = strtol(nptr, endptr, base);
+#ifdef HAVE_LONG_INT_64
+	if (val != (long) ((int32) val))
+		errno = ERANGE;
+#endif
+	return (int) val;
+}
+
+
+/*
  * Calendar time to Julian date conversions.
  * Julian date is commonly used in astronomical applications,
  *	since it is numerically accurate and computationally simple.
@@ -708,7 +725,7 @@ DecodeDateTime(char **field, int *ftype, int nf,
 						return DTERR_BAD_FORMAT;
 
 					errno = 0;
-					val = strtol(field[i], &cp, 10);
+					val = strtoi(field[i], &cp, 10);
 					if (errno == ERANGE)
 						return DTERR_FIELD_OVERFLOW;
 
@@ -856,7 +873,7 @@ DecodeDateTime(char **field, int *ftype, int nf,
 					int			val;
 
 					errno = 0;
-					val = strtol(field[i], &cp, 10);
+					val = strtoi(field[i], &cp, 10);
 					if (errno == ERANGE)
 						return DTERR_FIELD_OVERFLOW;
 
@@ -1591,7 +1608,7 @@ DecodeTimeOnly(char **field, int *ftype, int nf,
 					}
 
 					errno = 0;
-					val = strtol(field[i], &cp, 10);
+					val = strtoi(field[i], &cp, 10);
 					if (errno == ERANGE)
 						return DTERR_FIELD_OVERFLOW;
 
@@ -2214,14 +2231,14 @@ DecodeTime(char *str, int fmask, int *tmask, struct pg_tm * tm, fsec_t *fsec)
 	*tmask = DTK_TIME_M;
 
 	errno = 0;
-	tm->tm_hour = strtol(str, &cp, 10);
+	tm->tm_hour = strtoi(str, &cp, 10);
 	if (errno == ERANGE)
 		return DTERR_FIELD_OVERFLOW;
 	if (*cp != ':')
 		return DTERR_BAD_FORMAT;
 	str = cp + 1;
 	errno = 0;
-	tm->tm_min = strtol(str, &cp, 10);
+	tm->tm_min = strtoi(str, &cp, 10);
 	if (errno == ERANGE)
 		return DTERR_FIELD_OVERFLOW;
 	if (*cp == '\0')
@@ -2235,7 +2252,7 @@ DecodeTime(char *str, int fmask, int *tmask, struct pg_tm * tm, fsec_t *fsec)
 	{
 		str = cp + 1;
 		errno = 0;
-		tm->tm_sec = strtol(str, &cp, 10);
+		tm->tm_sec = strtoi(str, &cp, 10);
 		if (errno == ERANGE)
 			return DTERR_FIELD_OVERFLOW;
 		if (*cp == '\0')
@@ -2289,7 +2306,7 @@ DecodeNumber(int flen, char *str, bool haveTextMonth, int fmask,
 	*tmask = 0;
 
 	errno = 0;
-	val = strtol(str, &cp, 10);
+	val = strtoi(str, &cp, 10);
 	if (errno == ERANGE)
 		return DTERR_FIELD_OVERFLOW;
 	if (cp == str)
@@ -2580,7 +2597,7 @@ DecodeTimezone(char *str, int *tzp)
 		return DTERR_BAD_FORMAT;
 
 	errno = 0;
-	hr = strtol(str + 1, &cp, 10);
+	hr = strtoi(str + 1, &cp, 10);
 	if (errno == ERANGE)
 		return DTERR_TZDISP_OVERFLOW;
 
@@ -2588,13 +2605,13 @@ DecodeTimezone(char *str, int *tzp)
 	if (*cp == ':')
 	{
 		errno = 0;
-		min = strtol(cp + 1, &cp, 10);
+		min = strtoi(cp + 1, &cp, 10);
 		if (errno == ERANGE)
 			return DTERR_TZDISP_OVERFLOW;
 		if (*cp == ':')
 		{
 			errno = 0;
-			sec = strtol(cp + 1, &cp, 10);
+			sec = strtoi(cp + 1, &cp, 10);
 			if (errno == ERANGE)
 				return DTERR_TZDISP_OVERFLOW;
 		}
@@ -2784,7 +2801,7 @@ DecodeInterval(char **field, int *ftype, int nf, int *dtype, struct pg_tm * tm, 
 			case DTK_DATE:
 			case DTK_NUMBER:
 				errno = 0;
-				val = strtol(field[i], &cp, 10);
+				val = strtoi(field[i], &cp, 10);
 				if (errno == ERANGE)
 					return DTERR_FIELD_OVERFLOW;
 
