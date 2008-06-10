@@ -177,12 +177,12 @@ MainLoop(FILE *source)
 			(line[4] == '\0' || line[4] == ';' || isspace((unsigned char) line[4])))
 		{
 			free(line);
-			puts(_("\nYou are using psql, the command-line interface to PostgreSQL."));
-			puts(_("\t\\? for psql help"));
-			puts(_("\t\\h or \\help for SQL help\n"));
-			puts(_("\t\\g or \";\" to execute a query"));
-			puts(_("\t\\q to quit psql\n"));
-			puts(_("\t\\copyright to view the copyright\n"));
+			puts(_("You are using psql, the command-line interface to PostgreSQL."));
+			printf(_("Type:  \\copyright for distribution terms\n"
+					 "       \\h for help with SQL commands\n"
+					 "       \\? for help with psql commands\n"
+					 "       \\g or terminate with semicolon to execute query\n"
+					 "       \\q to quit\n"));
 
 			fflush(stdout);
 			continue;
