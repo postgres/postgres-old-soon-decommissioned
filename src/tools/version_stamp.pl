@@ -22,7 +22,7 @@
 
 # Major version is hard-wired into the script.  We update it when we branch
 # a new development version.
-$major1 = 8;
+$major1 = 7;
 $major2 = 4;
 
 # Validate argument and compute derived variables
@@ -52,8 +52,6 @@ if ($dotneeded) {
 } else {
     $fullversion = $majorversion . $minor;
 }
-$numericversion = $majorversion . "." . $numericminor;
-$padnumericversion = sprintf("%d%02d%02d", $major1, $major2, $numericminor);
 
 # Get the autoconf version number for eventual nag message
 # (this also ensures we're in the right directory)
@@ -80,20 +78,14 @@ sed_file("doc/bug.template",
 	 "-e 's/PostgreSQL version (example: PostgreSQL .*) *:  PostgreSQL .*/PostgreSQL version (example: PostgreSQL $fullversion):  PostgreSQL $fullversion/'");
 
 sed_file("src/include/pg_config.h.win32",
-	"-e 's/#define PACKAGE_STRING \"PostgreSQL .*\"/#define PACKAGE_STRING \"PostgreSQL $fullversion\"/' " .
-	"-e 's/#define PACKAGE_VERSION \".*\"/#define PACKAGE_VERSION \"$fullversion\"/' " .
 	 "-e 's/#define PG_VERSION \".*\"/#define PG_VERSION \"$fullversion\"/' " .
-	 "-e 's/#define PG_VERSION_NUM .*/#define PG_VERSION_NUM $padnumericversion/'");
+	 "-e 's/#define PG_VERSION_STR \".* (win32)\"/#define PG_VERSION_STR \"$fullversion (win32)\"/'");
 
-sed_file("src/interfaces/libpq/libpq.rc.in",
+sed_file("src/interfaces/libpq/libpq.rc",
 	 "-e 's/FILEVERSION [0-9]*,[0-9]*,[0-9]*,0/FILEVERSION $major1,$major2,$numericminor,0/' " .
 	 "-e 's/PRODUCTVERSION [0-9]*,[0-9]*,[0-9]*,0/PRODUCTVERSION $major1,$major2,$numericminor,0/' " .
-	 "-e 's/VALUE \"FileVersion\", \"[0-9.]*/VALUE \"FileVersion\", \"$numericversion/' " .
-	 "-e 's/VALUE \"ProductVersion\", \"[0-9.]*/VALUE \"ProductVersion\", \"$numericversion/'");
-
-sed_file("src/port/win32ver.rc",
-	 "-e 's/FILEVERSION    [0-9]*,[0-9]*,[0-9]*,0/FILEVERSION    $major1,$major2,$numericminor,0/' " .
-	 "-e 's/PRODUCTVERSION [0-9]*,[0-9]*,[0-9]*,0/PRODUCTVERSION $major1,$major2,$numericminor,0/'");
+	 "-e 's/VALUE \"FileVersion\", \"[0-9]*, [0-9]*, [0-9]*/VALUE \"FileVersion\", \"$major1, $major2, $numericminor/' " .
+	 "-e 's/VALUE \"ProductVersion\", \"[0-9]*, [0-9]*, [0-9]*/VALUE \"ProductVersion\", \"$major1, $major2, $numericminor/'");
 
 print "Stamped these files with version number $fullversion:\n$fixedfiles";
 print "Don't forget to run autoconf $aconfver before committing.\n";
