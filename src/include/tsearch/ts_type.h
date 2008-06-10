@@ -238,10 +238,10 @@ typedef TSQueryData *TSQuery;
  */
 #define COMPUTESIZE(size, lenofoperand) ( HDRSIZETQ + (size) * sizeof(QueryItem) + (lenofoperand) )
 
-/* Returns a pointer to the first QueryItem in a TSVector */
+/* Returns a pointer to the first QueryItem in a TSQuery */
 #define GETQUERY(x)  ((QueryItem*)( (char*)(x)+HDRSIZETQ ))
 
-/* Returns a pointer to the beginning of operands in a TSVector */
+/* Returns a pointer to the beginning of operands in a TSQuery */
 #define GETOPERAND(x)	( (char*)GETQUERY(x) + ((TSQuery)(x))->size * sizeof(QueryItem) )
 
 /*
