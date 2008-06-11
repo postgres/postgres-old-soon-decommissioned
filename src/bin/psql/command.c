@@ -884,7 +884,12 @@ exec_command(const char *cmd,
 	/* \timing -- toggle timing of queries */
 	else if (strcmp(cmd, "timing") == 0)
 	{
-		pset.timing = !pset.timing;
+		char	   *opt = psql_scan_slash_option(scan_state,
+											     OT_NORMAL, NULL, false);
+		if (opt)
+			pset.timing = ParseVariableBool(opt);
+		else
+			pset.timing = !pset.timing;
 		if (!pset.quiet)
 		{
 			if (pset.timing)
@@ -892,6 +897,7 @@ exec_command(const char *cmd,
 			else
 				puts(_("Timing is off."));
 		}
+		free(opt);
 	}
 
 	/* \unset */

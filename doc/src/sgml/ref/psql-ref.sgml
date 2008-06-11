@@ -1861,10 +1861,11 @@ lo_import 152801
 
 
       <varlistentry>
-       <term><literal>\timing</literal></term>
+       <term><literal>\timing [ <replaceable class="parameter">on</replaceable> | <replaceable class="parameter">off</replaceable> ]</literal></term>
         <listitem>
         <para>
-         Toggles a display of how long each SQL statement takes, in milliseconds.
+         Without parameter, toggles a display of how long each SQL statement
+         takes, in milliseconds.  With parameter, sets same.
         </para>
        </listitem>
       </varlistentry>
