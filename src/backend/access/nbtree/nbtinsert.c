@@ -744,7 +744,8 @@ _bt_insertonpg(Relation rel,
 		/* release buffers; send out relcache inval if metapage changed */
 		if (BufferIsValid(metabuf))
 		{
-			CacheInvalidateRelcache(rel);
+			if (!InRecovery)
+				CacheInvalidateRelcache(rel);
 			_bt_relbuf(rel, metabuf);
 		}
 
@@ -1789,7 +1790,8 @@ _bt_newroot(Relation rel, Buffer lbuf, Buffer rbuf)
 	END_CRIT_SECTION();
 
 	/* send out relcache inval for metapage change */
-	CacheInvalidateRelcache(rel);
+	if (!InRecovery)
+		CacheInvalidateRelcache(rel);
 
 	/* done with metapage */
 	_bt_relbuf(rel, metabuf);
