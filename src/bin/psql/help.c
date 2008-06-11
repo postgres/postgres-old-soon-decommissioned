@@ -244,10 +244,10 @@ slashUsage(unsigned short int pager)
 	fprintf(output, "\n");
 
 	fprintf(output, _("External\n"));
-	fprintf(output, _("  \\cd [DIR]      change the current working directory\n"));
-	fprintf(output, _("  \\timing        toggle timing of commands (currently %s)\n"),
+	fprintf(output, _("  \\cd [DIR]         change the current working directory\n"));
+	fprintf(output, _("  \\timing [on|off]  toggle timing of commands (currently %s)\n"),
 			ON(pset.timing));
-	fprintf(output, _("  \\! [COMMAND]   execute command in shell or start interactive shell\n"));
+	fprintf(output, _("  \\! [COMMAND]      execute command in shell or start interactive shell\n"));
 	fprintf(output, "\n");
 
 	fprintf(output, _("Variable\n"));
