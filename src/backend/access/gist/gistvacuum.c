@@ -403,7 +403,7 @@ gistVacuumUpdate(GistVacuum *gv, BlockNumber blkno, bool needunion)
 			}
 			else
 				/* enough free space */
-				gistfillbuffer(gv->index, tempPage, addon, curlenaddon, InvalidOffsetNumber);
+				gistfillbuffer(tempPage, addon, curlenaddon, InvalidOffsetNumber);
 		}
 	}
 

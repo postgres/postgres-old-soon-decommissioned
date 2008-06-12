@@ -15,15 +15,15 @@
 #include "utils/rel.h"
 
 
-extern void XLogInitRelationCache(void);
 extern void XLogCheckInvalidPages(void);
-extern void XLogCloseRelationCache(void);
 
-extern Relation XLogOpenRelation(RelFileNode rnode);
 extern void XLogDropRelation(RelFileNode rnode);
 extern void XLogDropDatabase(Oid dbid);
 extern void XLogTruncateRelation(RelFileNode rnode, BlockNumber nblocks);
 
-extern Buffer XLogReadBuffer(Relation reln, BlockNumber blkno, bool init);
+extern Buffer XLogReadBuffer(RelFileNode rnode, BlockNumber blkno, bool init);
+
+extern Relation CreateFakeRelcacheEntry(RelFileNode rnode);
+extern void FreeFakeRelcacheEntry(Relation fakerel);
 
 #endif

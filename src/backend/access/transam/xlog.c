@@ -2840,7 +2840,6 @@ CleanupBackupHistory(void)
 static void
 RestoreBkpBlocks(XLogRecord *record, XLogRecPtr lsn)
 {
-	Relation	reln;
 	Buffer		buffer;
 	Page		page;
 	BkpBlock	bkpb;
@@ -2856,8 +2855,7 @@ RestoreBkpBlocks(XLogRecord *record, XLogRecPtr lsn)
 		memcpy(&bkpb, blk, sizeof(BkpBlock));
 		blk += sizeof(BkpBlock);
 
-		reln = XLogOpenRelation(bkpb.node);
-		buffer = XLogReadBuffer(reln, bkpb.block, true);
+		buffer = XLogReadBuffer(bkpb.node, bkpb.block, true);
 		Assert(BufferIsValid(buffer));
 		page = (Page) BufferGetPage(buffer);
 
@@ -5064,9 +5062,7 @@ StartupXLOG(void)
 								BACKUP_LABEL_FILE, BACKUP_LABEL_OLD)));
 		}
 
-		/* Start up the recovery environment */
-		XLogInitRelationCache();
-
+		/* Initialize resource managers */
 		for (rmid = 0; rmid <= RM_MAX_ID; rmid++)
 		{
 			if (RmgrTable[rmid].rm_startup != NULL)
@@ -5330,11 +5326,6 @@ StartupXLOG(void)
 		 * allows some extra error checking in xlog_redo.
 		 */
 		CreateCheckPoint(CHECKPOINT_IS_SHUTDOWN | CHECKPOINT_IMMEDIATE);
-
-		/*
-		 * Close down recovery environment
-		 */
-		XLogCloseRelationCache();
 	}
 
 	/*

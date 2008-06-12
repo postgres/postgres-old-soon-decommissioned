@@ -145,6 +145,8 @@ extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
 extern Buffer ReadBufferWithStrategy(Relation reln, BlockNumber blockNum,
 					   BufferAccessStrategy strategy);
 extern Buffer ReadOrZeroBuffer(Relation reln, BlockNumber blockNum);
+extern Buffer ReadBufferWithoutRelcache(RelFileNode rnode, bool isTemp,
+							 BlockNumber blockNum, bool zeroPage);
 extern void ReleaseBuffer(Buffer buffer);
 extern void UnlockReleaseBuffer(Buffer buffer);
 extern void MarkBufferDirty(Buffer buffer);

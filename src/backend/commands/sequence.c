@@ -1332,7 +1332,6 @@ void
 seq_redo(XLogRecPtr lsn, XLogRecord *record)
 {
 	uint8		info = record->xl_info & ~XLR_INFO_MASK;
-	Relation	reln;
 	Buffer		buffer;
 	Page		page;
 	char	   *item;
@@ -1343,8 +1342,7 @@ seq_redo(XLogRecPtr lsn, XLogRecord *record)
 	if (info != XLOG_SEQ_LOG)
 		elog(PANIC, "seq_redo: unknown op code %u", info);
 
-	reln = XLogOpenRelation(xlrec->node);
-	buffer = XLogReadBuffer(reln, 0, true);
+	buffer = XLogReadBuffer(xlrec->node, 0, true);
 	Assert(BufferIsValid(buffer));
 	page = (Page) BufferGetPage(buffer);
 

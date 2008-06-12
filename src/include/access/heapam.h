@@ -124,7 +124,7 @@ extern void heap_page_prune_opt(Relation relation, Buffer buffer,
 extern int heap_page_prune(Relation relation, Buffer buffer,
 				TransactionId OldestXmin,
 				bool redirect_move, bool report_stats);
-extern void heap_page_prune_execute(Relation reln, Buffer buffer,
+extern void heap_page_prune_execute(Buffer buffer,
 						OffsetNumber *redirected, int nredirected,
 						OffsetNumber *nowdead, int ndead,
 						OffsetNumber *nowunused, int nunused,

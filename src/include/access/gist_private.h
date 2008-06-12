@@ -284,8 +284,8 @@ extern bool gistfitpage(IndexTuple *itvec, int len);
 extern bool gistnospace(Page page, IndexTuple *itvec, int len, OffsetNumber todelete, Size freespace);
 extern void gistcheckpage(Relation rel, Buffer buf);
 extern Buffer gistNewBuffer(Relation r);
-extern OffsetNumber gistfillbuffer(Relation r, Page page, IndexTuple *itup,
-			   int len, OffsetNumber off);
+extern void gistfillbuffer(Page page, IndexTuple *itup, int len,
+						   OffsetNumber off);
 extern IndexTuple *gistextractpage(Page page, int *len /* out */ );
 extern IndexTuple *gistjoinvector(
 			   IndexTuple *itvec, int *len,

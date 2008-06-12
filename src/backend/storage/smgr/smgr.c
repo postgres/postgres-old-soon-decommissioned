@@ -331,6 +331,13 @@ smgrcreate(SMgrRelation reln, bool isTemp, bool isRedo)
 	PendingRelDelete *pending;
 
 	/*
+	 * Exit quickly in WAL replay mode if we've already opened the file. 
+	 * If it's open, it surely must exist.
+	 */ 
+	if (isRedo && reln->md_fd != NULL)
+		return;
+
+	/*
 	 * We may be using the target table space for the first time in this
 	 * database, so create a per-database subdirectory if needed.
 	 *
