@@ -4061,7 +4061,7 @@ struct
     struct
     {
         int sqlerrml;
-        char sqlerrmc[70];
+        char sqlerrmc[SQLERRMC_LEN];
     } sqlerrm;
     char sqlerrp[8];
     long sqlerrd[6];
