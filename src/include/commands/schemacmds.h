@@ -20,7 +20,7 @@
 extern void CreateSchemaCommand(CreateSchemaStmt *parsetree,
 					const char *queryString);
 
-extern void RemoveSchema(List *names, DropBehavior behavior, bool missing_ok);
+extern void RemoveSchemas(DropStmt *drop);
 extern void RemoveSchemaById(Oid schemaOid);
 
 extern void RenameSchema(const char *oldname, const char *newname);

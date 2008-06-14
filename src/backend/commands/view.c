@@ -16,7 +16,6 @@
 
 #include "access/heapam.h"
 #include "access/xact.h"
-#include "catalog/dependency.h"
 #include "catalog/namespace.h"
 #include "commands/defrem.h"
 #include "commands/tablecmds.h"
@@ -445,27 +444,4 @@ DefineView(ViewStmt *stmt, const char *queryString)
 	 * Now create the rules associated with the view.
 	 */
 	DefineViewRules(viewOid, viewParse, stmt->replace);
-}
-
-/*
- * RemoveView
- *
- * Remove a view given its name
- *
- * We just have to drop the relation; the associated rules will be
- * cleaned up automatically.
- */
-void
-RemoveView(const RangeVar *view, DropBehavior behavior)
-{
-	Oid			viewOid;
-	ObjectAddress object;
-
-	viewOid = RangeVarGetRelid(view, false);
-
-	object.classId = RelationRelationId;
-	object.objectId = viewOid;
-	object.objectSubId = 0;
-
-	performDeletion(&object, behavior);
 }

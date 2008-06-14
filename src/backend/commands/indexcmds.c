@@ -21,7 +21,6 @@
 #include "access/transam.h"
 #include "access/xact.h"
 #include "catalog/catalog.h"
-#include "catalog/dependency.h"
 #include "catalog/heap.h"
 #include "catalog/index.h"
 #include "catalog/indexing.h"
@@ -1254,33 +1253,6 @@ relationHasPrimaryKey(Relation rel)
 	list_free(indexoidlist);
 
 	return result;
-}
-
-
-/*
- * RemoveIndex
- *		Deletes an index.
- */
-void
-RemoveIndex(RangeVar *relation, DropBehavior behavior)
-{
-	Oid			indOid;
-	char		relkind;
-	ObjectAddress object;
-
-	indOid = RangeVarGetRelid(relation, false);
-	relkind = get_rel_relkind(indOid);
-	if (relkind != RELKIND_INDEX)
-		ereport(ERROR,
-				(errcode(ERRCODE_WRONG_OBJECT_TYPE),
-				 errmsg("\"%s\" is not an index",
-						relation->relname)));
-
-	object.classId = RelationRelationId;
-	object.objectId = indOid;
-	object.objectSubId = 0;
-
-	performDeletion(&object, behavior);
 }
 
 /*
