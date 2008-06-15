@@ -45,7 +45,7 @@ gistfillbuffer(Page page, IndexTuple *itup, int len, OffsetNumber off)
 		l = PageAddItem(page, (Item) itup[i], sz, off, false, false);
 		if (l == InvalidOffsetNumber)
 			elog(ERROR, "failed to add item to GiST index page, item %d out of %d, size %d bytes",
-				 i, len, sz);
+				 i, len, (int) sz);
 		off++;
 	}
 }
