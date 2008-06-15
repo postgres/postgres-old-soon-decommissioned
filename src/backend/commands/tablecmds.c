@@ -676,6 +676,28 @@ RemoveRelations(DropStmt *drop)
 			continue;
 		}
 
+		/*
+		 * In DROP INDEX, attempt to acquire lock on the parent table before
+		 * locking the index.  index_drop() will need this anyway, and since
+		 * regular queries lock tables before their indexes, we risk deadlock
+		 * if we do it the other way around.  No error if we don't find a
+		 * pg_index entry, though --- that most likely means it isn't an
+		 * index, and we'll fail below.
+		 */
+		if (relkind == RELKIND_INDEX)
+		{
+			tuple = SearchSysCache(INDEXRELID,
+								   ObjectIdGetDatum(relOid),
+								   0, 0, 0);
+			if (HeapTupleIsValid(tuple))
+			{
+				Form_pg_index index = (Form_pg_index) GETSTRUCT(tuple);
+
+				LockRelationOid(index->indrelid, AccessExclusiveLock);
+				ReleaseSysCache(tuple);
+			}
+		}
+
 		/* Get the lock before trying to fetch the syscache entry */
 		LockRelationOid(relOid, AccessExclusiveLock);
 
