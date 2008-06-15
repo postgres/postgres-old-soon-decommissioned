@@ -185,8 +185,10 @@ ExecAlterObjectSchemaStmt(AlterObjectSchemaStmt *stmt)
 
 		case OBJECT_SEQUENCE:
 		case OBJECT_TABLE:
+		case OBJECT_VIEW:
 			CheckRelationOwnership(stmt->relation, true);
-			AlterTableNamespace(stmt->relation, stmt->newschema);
+			AlterTableNamespace(stmt->relation, stmt->newschema,
+								stmt->objectType);
 			break;
 
 		case OBJECT_TYPE:
