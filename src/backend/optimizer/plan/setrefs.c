@@ -63,6 +63,17 @@ typedef struct
 	int			rtoffset;
 } fix_upper_expr_context;
 
+/*
+ * Check if a Const node is a regclass value.  We accept plain OID too,
+ * since a regclass Const will get folded to that type if it's an argument
+ * to oideq or similar operators.  (This might result in some extraneous
+ * values in a plan's list of relation dependencies, but the worst result
+ * would be occasional useless replans.)
+ */
+#define ISREGCLASSCONST(con) \
+	(((con)->consttype == REGCLASSOID || (con)->consttype == OIDOID) && \
+	 !(con)->constisnull)
+
 #define fix_scan_list(glob, lst, rtoffset) \
 	((List *) fix_scan_expr(glob, (Node *) (lst), rtoffset))
 
@@ -694,7 +705,7 @@ fix_scan_expr_mutator(Node *node, fix_scan_expr_context *context)
 		Const	   *con = (Const *) node;
 
 		/* Check for regclass reference */
-		if (con->consttype == REGCLASSOID && !con->constisnull)
+		if (ISREGCLASSCONST(con))
 			context->glob->relationOids =
 				lappend_oid(context->glob->relationOids,
 							DatumGetObjectId(con->constvalue));
@@ -722,7 +733,7 @@ fix_scan_expr_walker(Node *node, fix_scan_expr_context *context)
 		Const	   *con = (Const *) node;
 
 		/* Check for regclass reference */
-		if (con->consttype == REGCLASSOID && !con->constisnull)
+		if (ISREGCLASSCONST(con))
 			context->glob->relationOids =
 				lappend_oid(context->glob->relationOids,
 							DatumGetObjectId(con->constvalue));
@@ -1391,7 +1402,7 @@ fix_join_expr_mutator(Node *node, fix_join_expr_context *context)
 		Const	   *con = (Const *) node;
 
 		/* Check for regclass reference */
-		if (con->consttype == REGCLASSOID && !con->constisnull)
+		if (ISREGCLASSCONST(con))
 			context->glob->relationOids =
 				lappend_oid(context->glob->relationOids,
 							DatumGetObjectId(con->constvalue));
@@ -1489,7 +1500,7 @@ fix_upper_expr_mutator(Node *node, fix_upper_expr_context *context)
 		Const	   *con = (Const *) node;
 
 		/* Check for regclass reference */
-		if (con->consttype == REGCLASSOID && !con->constisnull)
+		if (ISREGCLASSCONST(con))
 			context->glob->relationOids =
 				lappend_oid(context->glob->relationOids,
 							DatumGetObjectId(con->constvalue));
