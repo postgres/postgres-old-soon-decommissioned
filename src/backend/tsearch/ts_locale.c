@@ -17,7 +17,7 @@
 #include "tsearch/ts_public.h"
 
 
-#ifdef TS_USE_WIDE
+#ifdef USE_WIDE_UPPER_LOWER
 
 /*
  * wchar2char --- convert wide characters to multibyte format
@@ -190,7 +190,7 @@ t_isprint(const char *ptr)
 
 	return iswprint((wint_t) character[0]);
 }
-#endif   /* TS_USE_WIDE */
+#endif   /* USE_WIDE_UPPER_LOWER */
 
 
 /*
@@ -260,7 +260,7 @@ lowerstr_with_len(const char *str, int len)
 	if (len == 0)
 		return pstrdup("");
 
-#ifdef TS_USE_WIDE
+#ifdef USE_WIDE_UPPER_LOWER
 
 	/*
 	 * Use wide char code only when max encoding length > 1 and ctype != C.
@@ -307,7 +307,7 @@ lowerstr_with_len(const char *str, int len)
 		Assert(wlen < len);
 	}
 	else
-#endif   /* TS_USE_WIDE */
+#endif   /* USE_WIDE_UPPER_LOWER */
 	{
 		const char *ptr = str;
 		char	   *outptr;

@@ -178,7 +178,7 @@ RS_free(Regis *r)
 	r->node = NULL;
 }
 
-#ifdef TS_USE_WIDE
+#ifdef USE_WIDE_UPPER_LOWER
 static bool
 mb_strchr(char *str, char *c)
 {
