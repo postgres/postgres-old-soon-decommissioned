@@ -190,8 +190,6 @@ extern Datum int42mul(PG_FUNCTION_ARGS);
 extern Datum int42div(PG_FUNCTION_ARGS);
 extern Datum int4mod(PG_FUNCTION_ARGS);
 extern Datum int2mod(PG_FUNCTION_ARGS);
-extern Datum int24mod(PG_FUNCTION_ARGS);
-extern Datum int42mod(PG_FUNCTION_ARGS);
 extern Datum int2larger(PG_FUNCTION_ARGS);
 extern Datum int2smaller(PG_FUNCTION_ARGS);
 extern Datum int4larger(PG_FUNCTION_ARGS);
