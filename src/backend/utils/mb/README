@@ -14,3 +14,7 @@ wstrncmp.c:	strncmp for mb
 win866.c:	a tool to generate KOI8 <--> CP866 conversion table
 iso.c:		a tool to generate KOI8 <--> ISO8859-5 conversion table
 win1251.c:	a tool to generate KOI8 <--> CP1251 conversion table
+
+Introduction
+------------
+	http://www.cprogramming.com/tutorial/unicode.html
