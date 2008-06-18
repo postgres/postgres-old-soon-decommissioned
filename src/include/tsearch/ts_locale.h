@@ -33,6 +33,16 @@
 #define TS_USE_WIDE
 #endif
 
+/* working state for tsearch_readline (should be a local var in caller) */
+typedef struct
+{
+	FILE	   *fp;
+	const char *filename;
+	int			lineno;
+	char	   *curline;
+	ErrorContextCallback cb;
+} tsearch_readline_state;
+
 #define TOUCHAR(x)	(*((const unsigned char *) (x)))
 
 #ifdef TS_USE_WIDE
@@ -62,6 +72,12 @@ extern int	t_isprint(const char *ptr);
 
 extern char *lowerstr(const char *str);
 extern char *lowerstr_with_len(const char *str, int len);
+
+extern bool tsearch_readline_begin(tsearch_readline_state *stp,
+								   const char *filename);
+extern char *tsearch_readline(tsearch_readline_state *stp);
+extern void tsearch_readline_end(tsearch_readline_state *stp);
+
 extern char *t_readline(FILE *fp);
 
 #endif   /* __TSLOCALE_H__ */
