@@ -70,6 +70,8 @@ extern void pfree(void *pointer);
 
 extern void *repalloc(void *pointer, Size size);
 
+extern char *pnstrdup(const char *in, int len);
+
 /*
  * MemoryContextSwitchTo can't be a macro in standard C compilers.
  * But we can make it an inline function when using GCC.

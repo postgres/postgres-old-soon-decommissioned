@@ -153,13 +153,3 @@ searchstoplist(StopList *s, char *key)
 			bsearch(&key, s->stop, s->len,
 					sizeof(char *), comparestr)) ? true : false;
 }
-
-char *
-pnstrdup(const char *in, int len)
-{
-	char	   *out = palloc(len + 1);
-
-	memcpy(out, in, len);
-	out[len] = '\0';
-	return out;
-}

@@ -62,8 +62,6 @@ typedef struct
 extern char *get_tsearch_config_filename(const char *basename,
 							const char *extension);
 
-extern char *pnstrdup(const char *in, int len);
-
 /*
  * Often useful stopword list management
  */

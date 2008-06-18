@@ -362,6 +362,11 @@ extern int	pg_mbcharcliplen(const char *mbstr, int len, int imit);
 extern int	pg_encoding_max_length(int encoding);
 extern int	pg_database_encoding_max_length(void);
 
+#ifdef USE_WIDE_UPPER_LOWER
+extern size_t wchar2char(char *to, const wchar_t *from, size_t tolen);
+extern size_t char2wchar(wchar_t *to, size_t tolen, const char *from, size_t fromlen);
+#endif
+
 extern void SetDefaultClientEncoding(void);
 extern int	SetClientEncoding(int encoding, bool doit);
 extern void InitializeClientEncoding(void);

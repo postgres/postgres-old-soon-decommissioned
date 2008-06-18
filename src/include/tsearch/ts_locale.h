@@ -33,9 +33,6 @@
 
 #ifdef USE_WIDE_UPPER_LOWER
 
-extern size_t wchar2char(char *to, const wchar_t *from, size_t tolen);
-extern size_t char2wchar(wchar_t *to, size_t tolen, const char *from, size_t fromlen);
-
 extern int	t_isdigit(const char *ptr);
 extern int	t_isspace(const char *ptr);
 extern int	t_isalpha(const char *ptr);
