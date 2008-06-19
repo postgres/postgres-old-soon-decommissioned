@@ -14,9 +14,9 @@
  */
 #include "postgres.h"
 
-#include "access/genam.h"
 #include "access/hash.h"
 #include "access/reloptions.h"
+#include "access/relscan.h"
 #include "executor/execdebug.h"
 #include "storage/bufmgr.h"
 #include "utils/lsyscache.h"

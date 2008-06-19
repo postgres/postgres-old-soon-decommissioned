@@ -1,10 +1,11 @@
 /*
- * $PostgreSQL:$ 
+ * $PostgreSQL$ 
  */
 #ifndef __BTREE_UTILS_NUM_H__
 #define __BTREE_UTILS_NUM_H__
 
 #include "btree_gist.h"
+#include "utils/rel.h"
 
 #include <math.h>
 #include <float.h>

@@ -23,7 +23,7 @@
 #include "access/htup.h"
 #include "access/skey.h"
 #include "lib/dllist.h"
-#include "utils/rel.h"
+#include "utils/relcache.h"
 
 /*
  *		struct catctup:			individual tuple in the cache.

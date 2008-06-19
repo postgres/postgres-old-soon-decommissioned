@@ -34,6 +34,7 @@
 #include "rewrite/rewriteManip.h"
 #include "utils/guc.h"
 #include "utils/lsyscache.h"
+#include "utils/rel.h"
 
 
 #define ORDER_CLAUSE 0

@@ -12,8 +12,8 @@
 #ifndef GIN_H
 #define GIN_H
 
+#include "access/genam.h"
 #include "access/itup.h"
-#include "access/relscan.h"
 #include "access/xlog.h"
 #include "fmgr.h"
 #include "nodes/tidbitmap.h"

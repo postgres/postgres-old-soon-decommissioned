@@ -17,9 +17,11 @@
 
 #include "access/genam.h"
 #include "access/nbtree.h"
+#include "access/relscan.h"
 #include "pgstat.h"
 #include "storage/bufmgr.h"
 #include "utils/lsyscache.h"
+#include "utils/rel.h"
 
 
 static bool _bt_readpage(IndexScanDesc scan, ScanDirection dir,

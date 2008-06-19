@@ -16,9 +16,7 @@
 
 #include "access/gist.h"
 #include "access/itup.h"
-#include "access/xlog.h"
-#include "access/xlogdefs.h"
-#include "fmgr.h"
+#include "storage/bufmgr.h"
 
 #define GIST_UNLOCK BUFFER_LOCK_UNLOCK
 #define GIST_SHARE	BUFFER_LOCK_SHARE

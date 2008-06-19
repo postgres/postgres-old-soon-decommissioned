@@ -16,6 +16,7 @@
 
 #include "access/heapam.h"
 #include "catalog/indexing.h"
+#include "catalog/pg_class.h"
 #include "rewrite/rewriteSupport.h"
 #include "utils/inval.h"
 #include "utils/syscache.h"

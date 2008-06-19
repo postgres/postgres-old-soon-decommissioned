@@ -36,6 +36,7 @@
 #include "parser/parse_relation.h"
 #include "parser/parse_target.h"
 #include "parser/parsetree.h"
+#include "utils/rel.h"
 
 
 typedef struct

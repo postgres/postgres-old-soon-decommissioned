@@ -40,6 +40,7 @@
 #include "storage/ipc.h"
 #include "storage/proc.h"
 #include "storage/smgr.h"
+#include "utils/rel.h"
 #include "utils/resowner.h"
 #include "pgstat.h"
 

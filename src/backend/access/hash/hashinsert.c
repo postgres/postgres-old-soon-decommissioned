@@ -17,6 +17,7 @@
 
 #include "access/hash.h"
 #include "storage/bufmgr.h"
+#include "utils/rel.h"
 
 
 static OffsetNumber _hash_pgaddtup(Relation rel, Buffer buf,

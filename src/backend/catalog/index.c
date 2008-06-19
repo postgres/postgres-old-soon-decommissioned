@@ -25,6 +25,7 @@
 
 #include "access/genam.h"
 #include "access/heapam.h"
+#include "access/relscan.h"
 #include "access/sysattr.h"
 #include "access/transam.h"
 #include "access/xact.h"

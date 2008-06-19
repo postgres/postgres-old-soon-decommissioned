@@ -44,6 +44,7 @@
 #include "parser/parse_expr.h"
 #include "parser/parsetree.h"
 #include "utils/lsyscache.h"
+#include "utils/rel.h"
 
 
 static Plan *recurse_set_operations(Node *setOp, PlannerInfo *root,

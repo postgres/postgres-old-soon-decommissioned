@@ -15,7 +15,7 @@
 #define PRINT_H
 
 #include "nodes/parsenodes.h"
-#include "nodes/execnodes.h"
+#include "executor/tuptable.h"
 
 
 #define nodeDisplay(x)		pprint(x)

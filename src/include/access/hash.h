@@ -17,12 +17,13 @@
 #ifndef HASH_H
 #define HASH_H
 
+#include "access/genam.h"
 #include "access/itup.h"
-#include "access/relscan.h"
 #include "access/sdir.h"
 #include "access/xlog.h"
 #include "fmgr.h"
 #include "storage/lock.h"
+#include "utils/relcache.h"
 
 /*
  * Mapping from hash bucket number to physical block number of bucket's

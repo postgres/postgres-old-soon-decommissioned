@@ -112,6 +112,7 @@
 #include "utils/lsyscache.h"
 #include "utils/memutils.h"
 #include "utils/pg_rusage.h"
+#include "utils/rel.h"
 #include "utils/syscache.h"
 #include "utils/tuplesort.h"
 

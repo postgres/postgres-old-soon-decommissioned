@@ -22,6 +22,7 @@
 #include "storage/bufmgr.h"
 #include "storage/off.h"
 #include "utils/inval.h"
+#include "utils/rel.h"
 #include "utils/tqual.h"
 
 

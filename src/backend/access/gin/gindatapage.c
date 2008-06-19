@@ -16,6 +16,7 @@
 
 #include "access/gin.h"
 #include "storage/bufmgr.h"
+#include "utils/rel.h"
 
 int
 compareItemPointers(ItemPointer a, ItemPointer b)

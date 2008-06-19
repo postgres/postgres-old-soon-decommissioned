@@ -23,6 +23,7 @@
 #include "rewrite/prs2lock.h"
 #include "storage/block.h"
 #include "storage/relfilenode.h"
+#include "utils/relcache.h"
 
 
 /*
@@ -197,18 +198,6 @@ typedef struct RelationData
 	/* use "struct" here to avoid needing to include pgstat.h: */
 	struct PgStat_TableStatus *pgstat_info;		/* statistics collection area */
 } RelationData;
-
-typedef RelationData *Relation;
-
-
-/* ----------------
- *		RelationPtr is used in the executor to support index scans
- *		where we have to keep track of several index relations in an
- *		array.	-cim 9/10/89
- * ----------------
- */
-typedef Relation *RelationPtr;
-
 
 /*
  * StdRdOptions

@@ -34,6 +34,7 @@
 #include "parser/analyze.h"
 #include "parser/parsetree.h"
 #include "parser/parse_coerce.h"
+#include "utils/rel.h"
 
 
 static List *expand_targetlist(List *tlist, int command_type,

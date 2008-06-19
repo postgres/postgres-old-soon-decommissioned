@@ -20,7 +20,7 @@
 #include "nodes/parsenodes.h"
 #include "storage/buf.h"
 #include "storage/lock.h"
-#include "utils/rel.h"
+#include "utils/relcache.h"
 
 
 /*----------

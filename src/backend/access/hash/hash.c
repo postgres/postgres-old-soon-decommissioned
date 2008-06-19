@@ -18,8 +18,8 @@
 
 #include "postgres.h"
 
-#include "access/genam.h"
 #include "access/hash.h"
+#include "access/relscan.h"
 #include "catalog/index.h"
 #include "commands/vacuum.h"
 #include "miscadmin.h"

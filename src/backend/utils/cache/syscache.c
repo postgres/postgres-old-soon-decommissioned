@@ -46,6 +46,7 @@
 #include "catalog/pg_ts_parser.h"
 #include "catalog/pg_ts_template.h"
 #include "catalog/pg_type.h"
+#include "utils/rel.h"
 #include "utils/syscache.h"
 
 

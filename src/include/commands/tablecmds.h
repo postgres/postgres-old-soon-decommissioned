@@ -15,7 +15,7 @@
 #define TABLECMDS_H
 
 #include "nodes/parsenodes.h"
-#include "utils/rel.h"
+#include "utils/relcache.h"
 
 
 extern Oid	DefineRelation(CreateStmt *stmt, char relkind);

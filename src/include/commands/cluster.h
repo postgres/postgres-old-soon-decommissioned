@@ -14,7 +14,7 @@
 #define CLUSTER_H
 
 #include "nodes/parsenodes.h"
-#include "utils/rel.h"
+#include "utils/relcache.h"
 
 
 extern void cluster(ClusterStmt *stmt, bool isTopLevel);

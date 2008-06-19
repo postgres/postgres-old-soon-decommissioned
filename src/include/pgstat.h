@@ -14,7 +14,7 @@
 #include "libpq/pqcomm.h"
 #include "portability/instr_time.h"
 #include "utils/hsearch.h"
-#include "utils/rel.h"
+#include "utils/relcache.h"
 #include "utils/timestamp.h"
 
 

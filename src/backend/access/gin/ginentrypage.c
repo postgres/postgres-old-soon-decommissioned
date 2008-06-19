@@ -17,6 +17,7 @@
 #include "access/gin.h"
 #include "access/tuptoaster.h"
 #include "storage/bufmgr.h"
+#include "utils/rel.h"
 
 /*
  * forms tuple for entry tree. On leaf page, Index tuple has

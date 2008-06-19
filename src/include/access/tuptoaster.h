@@ -15,7 +15,7 @@
 
 #include "access/htup.h"
 #include "storage/bufpage.h"
-#include "utils/rel.h"
+#include "utils/relcache.h"
 
 /*
  * This enables de-toasting of index entries.  Needed until VACUUM is

@@ -14,7 +14,7 @@
 #define REWRITE_HEAP_H
 
 #include "access/htup.h"
-#include "utils/rel.h"
+#include "utils/relcache.h"
 
 /* struct definition is private to rewriteheap.c */
 typedef struct RewriteStateData *RewriteState;

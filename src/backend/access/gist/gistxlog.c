@@ -18,6 +18,7 @@
 #include "miscadmin.h"
 #include "storage/bufmgr.h"
 #include "utils/memutils.h"
+#include "utils/rel.h"
 
 
 typedef struct

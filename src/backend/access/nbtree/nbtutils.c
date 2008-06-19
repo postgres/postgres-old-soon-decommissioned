@@ -20,6 +20,7 @@
 #include "access/genam.h"
 #include "access/nbtree.h"
 #include "access/reloptions.h"
+#include "access/relscan.h"
 #include "executor/execdebug.h"
 #include "miscadmin.h"
 #include "storage/bufmgr.h"

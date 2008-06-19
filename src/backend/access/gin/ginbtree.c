@@ -17,6 +17,7 @@
 #include "access/gin.h"
 #include "miscadmin.h"
 #include "storage/bufmgr.h"
+#include "utils/rel.h"
 
 /*
  * Locks buffer by needed method for search.

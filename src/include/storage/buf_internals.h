@@ -20,7 +20,7 @@
 #include "storage/shmem.h"
 #include "storage/smgr.h"
 #include "storage/spin.h"
-#include "utils/rel.h"
+#include "utils/relcache.h"
 
 
 /*

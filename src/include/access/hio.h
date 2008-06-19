@@ -15,7 +15,7 @@
 #define HIO_H
 
 #include "access/htup.h"
-#include "utils/rel.h"
+#include "utils/relcache.h"
 #include "storage/buf.h"
 
 extern void RelationPutHeapTuple(Relation relation, Buffer buffer,

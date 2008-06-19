@@ -16,7 +16,9 @@
 #include "postgres.h"
 
 #include "access/hash.h"
+#include "access/relscan.h"
 #include "utils/memutils.h"
+#include "utils/rel.h"
 #include "utils/resowner.h"
 
 

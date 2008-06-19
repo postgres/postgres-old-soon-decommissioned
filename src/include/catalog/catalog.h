@@ -14,7 +14,9 @@
 #ifndef CATALOG_H
 #define CATALOG_H
 
-#include "utils/rel.h"
+#include "catalog/pg_class.h"
+#include "storage/relfilenode.h"
+#include "utils/relcache.h"
 
 
 extern char *relpath(RelFileNode rnode);

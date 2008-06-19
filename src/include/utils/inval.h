@@ -15,7 +15,7 @@
 #define INVAL_H
 
 #include "access/htup.h"
-#include "utils/rel.h"
+#include "utils/relcache.h"
 
 
 typedef void (*CacheCallbackFunction) (Datum arg, Oid relid);

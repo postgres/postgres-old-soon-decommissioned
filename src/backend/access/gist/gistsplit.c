@@ -15,6 +15,7 @@
 #include "postgres.h"
 
 #include "access/gist_private.h"
+#include "utils/rel.h"
 
 typedef struct
 {

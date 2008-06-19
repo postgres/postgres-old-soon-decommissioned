@@ -18,8 +18,9 @@
 
 #include "access/xlog.h"
 #include "access/xlogdefs.h"
+#include "storage/block.h"
 #include "storage/bufpage.h"
-#include "utils/rel.h"
+#include "utils/relcache.h"
 
 /*
  * amproc indexes for GiST indexes.

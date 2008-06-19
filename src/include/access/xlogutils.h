@@ -12,7 +12,9 @@
 #define XLOG_UTILS_H
 
 #include "storage/buf.h"
-#include "utils/rel.h"
+#include "storage/relfilenode.h"
+#include "storage/block.h"
+#include "utils/relcache.h"
 
 
 extern void XLogCheckInvalidPages(void);

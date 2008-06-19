@@ -1,5 +1,5 @@
 /*
- * $PostgreSQL:$ 
+ * $PostgreSQL$ 
  */
 #include "btree_gist.h"
 
@@ -10,6 +10,7 @@
 #include "btree_utils_var.h"
 #include "utils/pg_locale.h"
 #include "utils/builtins.h"
+#include "utils/rel.h"
 
 PG_FUNCTION_INFO_V1(gbt_var_decompress);
 Datum		gbt_var_decompress(PG_FUNCTION_ARGS);

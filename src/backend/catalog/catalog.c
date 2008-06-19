@@ -38,7 +38,7 @@
 #include "miscadmin.h"
 #include "storage/fd.h"
 #include "utils/fmgroids.h"
-#include "utils/relcache.h"
+#include "utils/rel.h"
 #include "utils/tqual.h"
 
 

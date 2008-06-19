@@ -15,7 +15,7 @@
 #define PARSE_NODE_H
 
 #include "nodes/parsenodes.h"
-#include "utils/rel.h"
+#include "utils/relcache.h"
 
 /*
  * State information used during parse analysis

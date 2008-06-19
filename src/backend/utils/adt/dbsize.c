@@ -24,8 +24,8 @@
 #include "storage/fd.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
+#include "utils/rel.h"
 #include "utils/syscache.h"
-#include "utils/relcache.h"
 
 
 /* Return physical size of directory contents, or 0 if dir doesn't exist */

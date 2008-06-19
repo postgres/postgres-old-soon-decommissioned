@@ -19,6 +19,7 @@
 
 #include "access/hash.h"
 #include "storage/bufmgr.h"
+#include "utils/rel.h"
 
 
 static Buffer _hash_getovflpage(Relation rel, Buffer metabuf);

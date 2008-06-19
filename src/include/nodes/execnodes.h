@@ -14,11 +14,15 @@
 #ifndef EXECNODES_H
 #define EXECNODES_H
 
-#include "access/relscan.h"
+#include "access/genam.h"
+#include "access/heapam.h"
+#include "access/skey.h"
 #include "nodes/params.h"
-#include "nodes/plannodes.h"
-#include "nodes/tidbitmap.h"
+#include "nodes/plannodes.h"    
+#include "nodes/tidbitmap.h"    
 #include "utils/hsearch.h"
+#include "utils/rel.h"
+#include "utils/snapshot.h"
 #include "utils/tuplestore.h"
 
 

@@ -15,6 +15,7 @@
 #include "postgres.h"
 
 #include "access/gist_private.h"
+#include "access/relscan.h"
 #include "executor/execdebug.h"
 #include "miscadmin.h"
 #include "pgstat.h"

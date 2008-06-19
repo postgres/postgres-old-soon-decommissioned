@@ -42,6 +42,7 @@
 #include "access/heapam.h"
 #include "access/hio.h"
 #include "access/multixact.h"
+#include "access/relscan.h"
 #include "access/sysattr.h"
 #include "access/transam.h"
 #include "access/tuptoaster.h"
