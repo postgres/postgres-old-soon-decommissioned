@@ -3829,16 +3829,6 @@ sigusr1_handler(SIGNAL_ARGS)
 		load_role();
 	}
 
-	if (CheckPostmasterSignal(PMSIGNAL_WAKEN_CHILDREN))
-	{
-		/*
-		 * Send SIGUSR1 to all children (triggers CatchupInterruptHandler).
-		 * See storage/ipc/sinval[adt].c for the use of this.
-		 */
-		if (Shutdown <= SmartShutdown)
-			SignalChildren(SIGUSR1);
-	}
-
 	if (CheckPostmasterSignal(PMSIGNAL_WAKEN_ARCHIVER) &&
 		PgArchPID != 0)
 	{
