@@ -930,7 +930,7 @@ SELECT pg_stop_backup();
    </listitem>
    <listitem>
     <para>
-     Restore the database files from your backup dump.  Be careful that they
+     Restore the database files from your base backup.  Be careful that they
      are restored with the right ownership (the database system user, not
      <literal>root</>!) and with the right permissions.  If you are using
      tablespaces,
