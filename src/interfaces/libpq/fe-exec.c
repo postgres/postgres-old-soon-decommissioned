@@ -976,12 +976,13 @@ PQsendQueryGuts(PGconn *conn,
 			goto sendFailed;
 	}
 
-	/* construct the Bind message */
+	/* Construct the Bind message */
 	if (pqPutMsgStart('B', false, conn) < 0 ||
 		pqPuts("", conn) < 0 ||
 		pqPuts(stmtName, conn) < 0)
 		goto sendFailed;
 
+	/* Send parameter formats */
 	if (nParams > 0 && paramFormats)
 	{
 		if (pqPutInt(nParams, 2, conn) < 0)
@@ -1001,6 +1002,7 @@ PQsendQueryGuts(PGconn *conn,
 	if (pqPutInt(nParams, 2, conn) < 0)
 		goto sendFailed;
 
+	/* Send parameters */
 	for (i = 0; i < nParams; i++)
 	{
 		if (paramValues && paramValues[i])

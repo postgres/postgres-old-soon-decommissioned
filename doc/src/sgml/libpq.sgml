@@ -1397,6 +1397,14 @@ PGresult *PQexecParams(PGconn *conn,
             If the array pointer is null then all parameters are presumed
             to be text strings.
            </para>
+           <para>
+            Values passed in binary format require knowlege of
+            the internal representation expected by the backend.
+            For example, integers must be passed in network byte
+            order.  Passing <type>numeric</> values requires
+            knowledge of the server storage format, as implemented
+            in <filename>src/backend/utils/adt/numeric.c</>.
+           </para>
           </listitem>
          </varlistentry>
 
