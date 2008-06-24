@@ -204,6 +204,7 @@ s{PG_VERSION_STR "[^"]+"}{__STRINGIFY(x) #x\n#define __STRINGIFY2(z) __STRINGIFY
         chdir('src\backend\utils');
         system("perl Gen_fmgrtab.pl ../../../src/include/catalog/pg_proc.h");
         chdir('..\..\..');
+        copyFile('src\backend\utils\fmgroids.h','src\include\utils\fmgroids.h');
     }
 
     if (IsNewer('src\include\utils\probes.h','src\backend\utils\pg_trace.d'))
