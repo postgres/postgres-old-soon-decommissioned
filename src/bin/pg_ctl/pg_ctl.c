@@ -573,11 +573,11 @@ read_post_opts(void)
 {
 	if (post_opts == NULL)
 	{
-		char	  **optlines;
-
 		post_opts = "";		/* defatult */
 		if (ctl_command == RESTART_COMMAND)
 		{
+			char	  **optlines;
+
 			optlines = readfile(postopts_file);
 			if (optlines == NULL)
 			{
@@ -593,20 +593,26 @@ read_post_opts(void)
 			else
 			{
 				int			len;
-				char	   *optline = NULL;
+				char	   *optline;
 				char	   *arg1;
 
 				optline = optlines[0];
+				/* trim off line endings */
 				len = strcspn(optline, "\r\n");
 				optline[len] = '\0';
 
-				arg1 = strchr(optline, *SYSTEMQUOTE);
-				if (arg1 == NULL || arg1 == optline)
-					post_opts = "";
-				else
+				for (arg1 = optline; *arg1; arg1++)
 				{
-					*(arg1 - 1) = '\0'; /* this should be a space */
-					post_opts = arg1;
+					/*
+					 * Are we at the first option, as defined by space,
+					 * double-quote, and a dash?
+					 */
+					if (*arg1 == ' ' && *(arg1+1) == '"' && *(arg1+2) == '-')
+					{
+						*arg1 = '\0';	/* terminate so we get only program name */
+						post_opts = arg1 + 1; /* point past whitespace */
+						break;
+					}
 				}
 				if (postgres_path != NULL)
 					postgres_path = optline;
