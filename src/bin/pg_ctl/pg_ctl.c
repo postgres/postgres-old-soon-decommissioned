@@ -361,13 +361,12 @@ start_postmaster(void)
 	 * everything to a shell to process them.
 	 */
 	if (log_file != NULL)
-		snprintf(cmd, MAXPGPATH, "%s\"%s\" %s%s < \"%s\" >> \"%s\" 2>&1 &%s",
-				 SYSTEMQUOTE, postgres_path, pgdata_opt, post_opts,
-				 DEVNULL, log_file, SYSTEMQUOTE);
+		snprintf(cmd, MAXPGPATH, SYSTEMQUOTE "\"%s\" %s%s < \"%s\" >> \"%s\" 2>&1 &" SYSTEMQUOTE,
+				 postgres_path, pgdata_opt, post_opts,
+				 DEVNULL, log_file);
 	else
-		snprintf(cmd, MAXPGPATH, "%s\"%s\" %s%s < \"%s\" 2>&1 &%s",
-				 SYSTEMQUOTE, postgres_path, pgdata_opt, post_opts,
-				 DEVNULL, SYSTEMQUOTE);
+		snprintf(cmd, MAXPGPATH, SYSTEMQUOTE "\"%s\" %s%s < \"%s\" 2>&1 &" SYSTEMQUOTE,
+				 postgres_path, pgdata_opt, post_opts, DEVNULL);
 
 	return system(cmd);
 #else							/* WIN32 */
@@ -380,13 +379,11 @@ start_postmaster(void)
 	PROCESS_INFORMATION pi;
 
 	if (log_file != NULL)
-		snprintf(cmd, MAXPGPATH, "CMD /C %s\"%s\" %s%s < \"%s\" >> \"%s\" 2>&1%s",
-				 SYSTEMQUOTE, postgres_path, pgdata_opt, post_opts,
-				 DEVNULL, log_file, SYSTEMQUOTE);
+		snprintf(cmd, MAXPGPATH, "CMD /C " SYSTEMQUOTE "\"%s\" %s%s < \"%s\" >> \"%s\" 2>&1" SYSTEMQUOTE,
+				 postgres_path, pgdata_opt, post_opts, DEVNULL, log_file);
 	else
-		snprintf(cmd, MAXPGPATH, "CMD /C %s\"%s\" %s%s < \"%s\" 2>&1%s",
-				 SYSTEMQUOTE, postgres_path, pgdata_opt, post_opts,
-				 DEVNULL, SYSTEMQUOTE);
+		snprintf(cmd, MAXPGPATH, "CMD /C " SYSTEMQUOTE "\"%s\" %s%s < \"%s\" 2>&1" SYSTEMQUOTE,
+				 postgres_path, pgdata_opt, post_opts, DEVNULL);
 
 	if (!CreateRestrictedProcess(cmd, &pi))
 		return GetLastError();

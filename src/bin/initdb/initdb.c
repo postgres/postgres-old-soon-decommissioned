@@ -1078,14 +1078,14 @@ test_config_settings(void)
 		test_max_fsm = FSM_FOR_BUFS(test_buffs);
 
 		snprintf(cmd, sizeof(cmd),
-				 "%s\"%s\" --boot -x0 %s "
+				 SYSTEMQUOTE "\"%s\" --boot -x0 %s "
 				 "-c max_connections=%d "
 				 "-c shared_buffers=%d "
 				 "-c max_fsm_pages=%d "
-				 "< \"%s\" > \"%s\" 2>&1%s",
-				 SYSTEMQUOTE, backend_exec, boot_options,
+				 "< \"%s\" > \"%s\" 2>&1" SYSTEMQUOTE,
+				 backend_exec, boot_options,
 				 test_conns, test_buffs, test_max_fsm,
-				 DEVNULL, DEVNULL, SYSTEMQUOTE);
+				 DEVNULL, DEVNULL);
 		status = system(cmd);
 		if (status == 0)
 		{
@@ -1114,14 +1114,14 @@ test_config_settings(void)
 		test_max_fsm = FSM_FOR_BUFS(test_buffs);
 
 		snprintf(cmd, sizeof(cmd),
-				 "%s\"%s\" --boot -x0 %s "
+				 SYSTEMQUOTE "\"%s\" --boot -x0 %s "
 				 "-c max_connections=%d "
 				 "-c shared_buffers=%d "
 				 "-c max_fsm_pages=%d "
-				 "< \"%s\" > \"%s\" 2>&1%s",
-				 SYSTEMQUOTE, backend_exec, boot_options,
+				 "< \"%s\" > \"%s\" 2>&1" SYSTEMQUOTE,
+				 backend_exec, boot_options,
 				 n_connections, test_buffs, test_max_fsm,
-				 DEVNULL, DEVNULL, SYSTEMQUOTE);
+				 DEVNULL, DEVNULL);
 		status = system(cmd);
 		if (status == 0)
 			break;

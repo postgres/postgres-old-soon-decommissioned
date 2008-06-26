@@ -1248,18 +1248,18 @@ runPgDump(const char *dbname)
 	if (filename)
 	{
 #ifndef WIN32
-		appendPQExpBuffer(cmd, "%s\"%s\" %s -Fa '", SYSTEMQUOTE, pg_dump_bin,
+		appendPQExpBuffer(cmd, SYSTEMQUOTE"\"%s\" %s -Fa '", pg_dump_bin,
 #else
-		appendPQExpBuffer(cmd, "%s\"%s\" %s -Fa \"", SYSTEMQUOTE, pg_dump_bin,
+		appendPQExpBuffer(cmd, SYSTEMQUOTE"\"%s\" %s -Fa \"", pg_dump_bin,
 #endif
 						  pgdumpopts->data);
 	}
 	else
 	{
 #ifndef WIN32
-		appendPQExpBuffer(cmd, "%s\"%s\" %s -Fp '", SYSTEMQUOTE, pg_dump_bin,
+		appendPQExpBuffer(cmd, SYSTEMQUOTE "\"%s\" %s -Fp '", pg_dump_bin,
 #else
-		appendPQExpBuffer(cmd, "%s\"%s\" %s -Fp \"", SYSTEMQUOTE, pg_dump_bin,
+		appendPQExpBuffer(cmd, SYSTEMQUOTE "\"%s\" %s -Fp \"", pg_dump_bin,
 #endif
 						  pgdumpopts->data);
 	}
