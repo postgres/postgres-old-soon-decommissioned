@@ -601,18 +601,14 @@ read_post_opts(void)
 				len = strcspn(optline, "\r\n");
 				optline[len] = '\0';
 
-				for (arg1 = optline; *arg1; arg1++)
+				/*
+				 * Are we at the first option, as defined by space and
+				 * double-quote?
+				 */
+				if ((arg1 = strstr(optline, " \"")) != NULL)
 				{
-					/*
-					 * Are we at the first option, as defined by space,
-					 * double-quote, and a dash?
-					 */
-					if (*arg1 == ' ' && *(arg1+1) == '"' && *(arg1+2) == '-')
-					{
-						*arg1 = '\0';	/* terminate so we get only program name */
-						post_opts = arg1 + 1; /* point past whitespace */
-						break;
-					}
+					*arg1 = '\0';	/* terminate so we get only program name */
+					post_opts = arg1 + 1; /* point past whitespace */
 				}
 				if (postgres_path != NULL)
 					postgres_path = optline;
