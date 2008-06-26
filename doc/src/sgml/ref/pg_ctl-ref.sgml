@@ -406,20 +406,6 @@ PostgreSQL documentation
    </varlistentry>
 
    <varlistentry>
-    <term><filename>postmaster.opts.default</filename></term>
-
-    <listitem>
-     <para>
-      If this file exists in the data directory,
-      <application>pg_ctl</application> (in <option>start</option>
-      mode) will pass the contents of the file as options to the
-      <command>postgres</command> command, unless overridden by the
-      <option>-o</option> option.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
     <term><filename>postmaster.opts</filename></term>
 
     <listitem>
