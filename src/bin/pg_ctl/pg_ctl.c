@@ -535,15 +535,18 @@ do_start(void)
 			{
 				char	   *arg1;
 
-				arg1 = strchr(optline, *SYSTEMQUOTE);
-				if (arg1 == NULL || arg1 == optline)
-					post_opts = "";
-				else
+				/*
+				 * Are we at the first option, as defined by space and
+				 * double-quote?
+				 */
+				if ((arg1 = strstr(optline, " \"")) != NULL ||
+					/* check in case this is an older server */
+				    (arg1 = strstr(optline, " -")) != NULL)
 				{
-					*(arg1 - 1) = '\0'; /* this should be a space */
-					post_opts = arg1;
+					*arg1 = '\0';	/* terminate so we get only program name */
+					post_opts = arg1 + 1; /* point past whitespace */
 				}
-				if (postgres_path != NULL)
+				if (postgres_path == NULL)
 					postgres_path = optline;
 			}
 			else

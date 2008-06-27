@@ -3655,7 +3655,7 @@ CreateOptsFile(int argc, char *argv[], char *fullprogname)
 
 	fprintf(fp, "%s", fullprogname);
 	for (i = 1; i < argc; i++)
-		fprintf(fp, " %s%s%s", SYSTEMQUOTE, argv[i], SYSTEMQUOTE);
+		fprintf(fp, " \"%s\"", argv[i]);
 	fputs("\n", fp);
 
 	if (fclose(fp))
