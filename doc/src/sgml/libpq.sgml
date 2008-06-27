@@ -1403,7 +1403,9 @@ PGresult *PQexecParams(PGconn *conn,
             For example, integers must be passed in network byte
             order.  Passing <type>numeric</> values requires
             knowledge of the server storage format, as implemented
-            in <filename>src/backend/utils/adt/numeric.c</>.
+            in
+            <filename>src/backend/utils/adt/numeric.c::numeric_send()</> and
+            <filename>src/backend/utils/adt/numeric.c::numeric_recv()</>.
            </para>
           </listitem>
          </varlistentry>
