@@ -624,18 +624,6 @@ repalloc(void *pointer, Size size)
 												 pointer, size);
 }
 
-/* Like pstrdup(), but append null byte */
-char *
-pnstrdup(const char *in, int len)
-{
-	char	   *out = palloc(len + 1);
-
-	memcpy(out, in, len);
-	out[len] = '\0';
-	return out;
-}
-
-
 /*
  * MemoryContextSwitchTo
  *		Returns the current context; installs the given context.
@@ -674,6 +662,21 @@ MemoryContextStrdup(MemoryContext context, const char *string)
 	memcpy(nstr, string, len);
 
 	return nstr;
+}
+
+/*
+ * pnstrdup
+ *		Like pstrdup(), but append null byte to a
+ *		not-necessarily-null-terminated input string.
+ */
+char *
+pnstrdup(const char *in, Size len)
+{
+	char	   *out = palloc(len + 1);
+
+	memcpy(out, in, len);
+	out[len] = '\0';
+	return out;
 }
 
 

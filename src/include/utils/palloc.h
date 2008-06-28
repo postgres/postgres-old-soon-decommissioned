@@ -70,8 +70,6 @@ extern void pfree(void *pointer);
 
 extern void *repalloc(void *pointer, Size size);
 
-extern char *pnstrdup(const char *in, int len);
-
 /*
  * MemoryContextSwitchTo can't be a macro in standard C compilers.
  * But we can make it an inline function when using GCC.
@@ -98,6 +96,8 @@ extern MemoryContext MemoryContextSwitchTo(MemoryContext context);
 extern char *MemoryContextStrdup(MemoryContext context, const char *string);
 
 #define pstrdup(str)  MemoryContextStrdup(CurrentMemoryContext, (str))
+
+extern char *pnstrdup(const char *in, Size len);
 
 #if defined(WIN32) || defined(__CYGWIN__)
 extern void *pgport_palloc(Size sz);
