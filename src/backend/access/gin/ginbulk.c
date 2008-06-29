@@ -78,8 +78,8 @@ ginInsertData(BuildAccumulator *accum, EntryAccumulator *entry, ItemPointer heap
 }
 
 /*
- * This is basically the same as datumCopy(), but we duplicate some code
- * to avoid computing the datum size twice.
+ * This is basically the same as datumCopy(), but modified to count
+ * palloc'd space in accum.
  */
 static Datum
 getDatumCopy(BuildAccumulator *accum, Datum value)
@@ -91,16 +91,8 @@ getDatumCopy(BuildAccumulator *accum, Datum value)
 		res = value;
 	else
 	{
-		Size		realSize;
-		char	   *s;
-
-		realSize = datumGetSize(value, false, att[0]->attlen);
-
-		s = (char *) palloc(realSize);
-		accum->allocatedMemory += GetMemoryChunkSpace(s);
-
-		memcpy(s, DatumGetPointer(value), realSize);
-		res = PointerGetDatum(s);
+		res = datumCopy(value, false, att[0]->attlen);
+		accum->allocatedMemory += GetMemoryChunkSpace(DatumGetPointer(res));
 	}
 	return res;
 }
