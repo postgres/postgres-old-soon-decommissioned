@@ -4523,13 +4523,10 @@ readRecoveryCommandFile(void)
 			/*
 			 * does nothing if a recovery_target is not also set
 			 */
-			if (strcmp(tok2, "true") == 0)
-				recoveryTargetInclusive = true;
-			else
-			{
-				recoveryTargetInclusive = false;
-				tok2 = "false";
-			}
+			if (!parse_bool(tok2, &recoveryTargetInclusive))
+				  ereport(ERROR,
+							(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+					  errmsg("parameter \"recovery_target_inclusive\" requires a Boolean value")));
 			ereport(LOG,
 					(errmsg("recovery_target_inclusive = %s", tok2)));
 		}
@@ -4538,13 +4535,10 @@ readRecoveryCommandFile(void)
 			/*
 			 * does nothing if a recovery_target is not also set
 			 */
-			if (strcmp(tok2, "true") == 0)
-				recoveryLogRestartpoints = true;
-			else
-			{
-				recoveryLogRestartpoints = false;
-				tok2 = "false";
-			}
+			if (!parse_bool(tok2, &recoveryLogRestartpoints))
+				  ereport(ERROR,
+							(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+					  errmsg("parameter \"log_restartpoints\" requires a Boolean value")));
 			ereport(LOG,
 					(errmsg("log_restartpoints = %s", tok2)));
 		}

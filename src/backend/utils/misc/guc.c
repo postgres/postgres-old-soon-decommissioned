@@ -3991,7 +3991,7 @@ ReportGUCOption(struct config_generic * record)
  * If the string parses okay, return true, else false.
  * If okay and result is not NULL, return the value in *result.
  */
-static bool
+bool
 parse_bool(const char *value, bool *result)
 {
 	size_t		len = strlen(value);
