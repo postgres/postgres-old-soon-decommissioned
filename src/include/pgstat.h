@@ -509,9 +509,6 @@ typedef struct PgStat_GlobalStats
  * ----------
  */
 
-/* Max length of st_activity string ... perhaps replace with a GUC var? */
-#define PGBE_ACTIVITY_SIZE	1024
-
 /* ----------
  * PgBackendStatus
  *
@@ -551,7 +548,7 @@ typedef struct PgBackendStatus
 	bool		st_waiting;
 
 	/* current command string; MUST be null-terminated */
-	char		st_activity[PGBE_ACTIVITY_SIZE];
+	char	   *st_activity;
 } PgBackendStatus;
 
 /*
@@ -578,6 +575,7 @@ typedef struct PgStat_FunctionCallUsage
 extern bool pgstat_track_activities;
 extern bool pgstat_track_counts;
 extern int	pgstat_track_functions;
+extern int	pgstat_track_activity_query_size;
 
 /*
  * BgWriter statistics counters are updated directly by bgwriter and bufmgr
