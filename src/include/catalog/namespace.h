@@ -95,6 +95,7 @@ extern bool isTempToastNamespace(Oid namespaceId);
 extern bool isTempOrToastNamespace(Oid namespaceId);
 extern bool isAnyTempNamespace(Oid namespaceId);
 extern bool isOtherTempNamespace(Oid namespaceId);
+extern int	GetTempNamespaceBackendId(Oid namespaceId);
 extern Oid	GetTempToastNamespace(void);
 extern void ResetTempTableNamespace(void);
 
