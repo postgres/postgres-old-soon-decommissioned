@@ -178,7 +178,7 @@ static char *config_enum_get_options(struct config_enum *record,
  * they sort slightly different (see "log" level)
  */
 static const struct config_enum_entry client_message_level_options[] = {
-	{"debug", DEBUG2, false},
+	{"debug", DEBUG2, true},
 	{"debug5", DEBUG5, false},
 	{"debug4", DEBUG4, false},
 	{"debug3", DEBUG3, false},
@@ -195,7 +195,7 @@ static const struct config_enum_entry client_message_level_options[] = {
 };
 
 static const struct config_enum_entry server_message_level_options[] = {
-	{"debug", DEBUG2, false},
+	{"debug", DEBUG2, true},
 	{"debug5", DEBUG5, false},
 	{"debug4", DEBUG4, false},
 	{"debug3", DEBUG3, false},
