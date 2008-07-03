@@ -3160,6 +3160,7 @@ xml_xmlnodetoxmltype(xmlNodePtr cur)
 	{
 		str = xmlXPathCastNodeToString(cur);
 		result = (xmltype *) cstring_to_text((char *) str);
+		xmlFree(str);
 	}
 
 	return result;
