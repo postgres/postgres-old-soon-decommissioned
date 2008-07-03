@@ -41,7 +41,7 @@
  * !!WARNING!!: This list must be sorted by ASCII name, because binary
  *		 search is used to locate entries.
  */
-static const ScanKeyword ScanKeywords[] = {
+const ScanKeyword ScanKeywords[] = {
 	/* name, value, category */
 	{"abort", ABORT_P, UNRESERVED_KEYWORD},
 	{"absolute", ABSOLUTE_P, UNRESERVED_KEYWORD},
@@ -427,6 +427,9 @@ static const ScanKeyword ScanKeywords[] = {
 	{"yes", YES_P, UNRESERVED_KEYWORD},
 	{"zone", ZONE, UNRESERVED_KEYWORD},
 };
+
+/* End of ScanKeywords, for use elsewhere */
+const ScanKeyword *LastScanKeyword = endof(ScanKeywords);
 
 /*
  * ScanKeywordLookup - see if a given word is a keyword

@@ -28,6 +28,9 @@ typedef struct ScanKeyword
 	int16		category;		/* see codes above */
 } ScanKeyword;
 
+extern const ScanKeyword ScanKeywords[];
+extern const ScanKeyword *LastScanKeyword;
+
 extern const ScanKeyword *ScanKeywordLookup(const char *text);
 
 #endif   /* KEYWORDS_H */
