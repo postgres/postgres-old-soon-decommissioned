@@ -419,7 +419,7 @@ GRANT <replaceable class="PARAMETER">role</replaceable> [, ...] TO <replaceable 
     to obtain information about existing privileges, for example:
 <programlisting>
 =&gt; \z mytable
-   Access privileges for database "lusitania"
+                Access privileges
  Schema |  Name   | Type  |  Access privileges   
 --------+---------+-------+----------------------
  public | mytable | table | miriam=arwdxt/miriam

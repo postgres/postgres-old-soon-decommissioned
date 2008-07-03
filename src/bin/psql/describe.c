@@ -544,8 +544,7 @@ permissionsList(const char *pattern)
 	}
 
 	myopt.nullPrint = NULL;
-	printfPQExpBuffer(&buf, _("Access privileges for database \"%s\""),
-					  PQdb(pset.db));
+	printfPQExpBuffer(&buf, _("Access privileges"));
 	myopt.title = buf.data;
 	myopt.trans_headers = true;
 	myopt.trans_columns = trans_columns;
