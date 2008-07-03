@@ -99,8 +99,12 @@
 #endif
 
 /*
- *	Use this to mark strings to be translated by gettext, in places where
- *	you don't want an actual function call to occur (eg, constant tables).
+ *	Use this to mark string constants as needing translation at some later
+ *	time, rather than immediately.  This is useful for cases where you need
+ *	access to the original string and translated string, and for cases where
+ *	immediate translation is not possible, like when initializing global
+ *	variables.
+ *		http://www.gnu.org/software/autoconf/manual/gettext/Special-cases.html
  */
 #define gettext_noop(x) (x)
 
