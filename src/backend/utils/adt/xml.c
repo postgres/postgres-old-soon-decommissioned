@@ -3201,6 +3201,7 @@ xml_xmlnodetoxmltype(xmlNodePtr cur)
 		result = (text *) palloc(len + VARHDRSZ);
 		SET_VARSIZE(result, len + VARHDRSZ);
 		memcpy(VARDATA(result), str, len);
+		xmlFree(str);
 	}
 
 	return result;
