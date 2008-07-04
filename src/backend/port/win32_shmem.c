@@ -47,18 +47,17 @@ GetSharedMemName(void)
 		elog(FATAL, "could not get size for full pathname of datadir %s: %lu",
 			 DataDir, GetLastError());
 
-	retptr = malloc(bufsize + 1 + 18);	/* 1 NULL and 18 for
-										 * Global\PostgreSQL: */
+	retptr = malloc(bufsize + 18);		/* 18 for Global\PostgreSQL: */
 	if (retptr == NULL)
 		elog(FATAL, "could not allocate memory for shared memory name");
 
 	strcpy(retptr, "Global\\PostgreSQL:");
-	r = GetFullPathName(DataDir, bufsize, retptr + 11, NULL);
+	r = GetFullPathName(DataDir, bufsize, retptr + 18, NULL);
 	if (r == 0 || r > bufsize)
 		elog(FATAL, "could not generate full pathname for datadir %s: %lu",
 			 DataDir, GetLastError());
 
-	for (cp = retptr; *cp; cp++)
+	for (cp = retptr + 18; *cp; cp++)
 		if (*cp == '\\')
 			*cp = '/';
 
