@@ -58,6 +58,7 @@ fillScanKey(GinState *ginstate, GinScanKey key, Datum query,
 		ItemPointerSet(&(key->scanEntry[i].curItem), InvalidBlockNumber, InvalidOffsetNumber);
 		key->scanEntry[i].offset = InvalidOffsetNumber;
 		key->scanEntry[i].buffer = InvalidBuffer;
+		key->scanEntry[i].partialMatch = NULL;
 		key->scanEntry[i].list = NULL;
 		key->scanEntry[i].nlist = 0;
 		key->scanEntry[i].isPartialMatch = ( ginstate->canPartialMatch && partial_matches ) 
