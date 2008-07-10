@@ -459,7 +459,7 @@ subquery_planner(PlannerGlobal *glob, Query *parse,
 	 */
 	if (list_length(glob->subplans) != num_old_subplans ||
 		root->query_level > 1)
-		SS_finalize_plan(root, plan);
+		SS_finalize_plan(root, plan, true);
 
 	/* Return internal info if caller wants it */
 	if (subroot)

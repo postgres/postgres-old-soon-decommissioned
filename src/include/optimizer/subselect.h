@@ -18,7 +18,8 @@
 extern Node *convert_IN_to_join(PlannerInfo *root, SubLink *sublink);
 extern Node *SS_replace_correlation_vars(PlannerInfo *root, Node *expr);
 extern Node *SS_process_sublinks(PlannerInfo *root, Node *expr, bool isQual);
-extern void SS_finalize_plan(PlannerInfo *root, Plan *plan);
+extern void SS_finalize_plan(PlannerInfo *root, Plan *plan,
+							 bool attach_initplans);
 extern Param *SS_make_initplan_from_plan(PlannerInfo *root, Plan *plan,
 						   Oid resulttype, int32 resulttypmod);
 
