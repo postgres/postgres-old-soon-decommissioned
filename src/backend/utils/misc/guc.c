@@ -377,6 +377,9 @@ static int	max_function_args;
 static int	max_index_keys;
 static int	max_identifier_length;
 static int	block_size;
+static int	segment_size;
+static int	wal_block_size;
+static int	wal_segment_size;
 static bool integer_datetimes;
 
 /* should be static, but commands/variable.c needs to get at these */
@@ -1751,6 +1754,39 @@ static struct config_int ConfigureNamesInt[] =
 		},
 		&block_size,
 		BLCKSZ, BLCKSZ, BLCKSZ, NULL, NULL
+	},
+
+	{
+		{"segment_size", PGC_INTERNAL, PRESET_OPTIONS,
+		    gettext_noop("Shows the number of pages per disk file."),
+		    NULL,
+		    GUC_UNIT_BLOCKS | GUC_NOT_IN_SAMPLE | GUC_DISALLOW_IN_FILE
+		},
+		&segment_size,
+		RELSEG_SIZE, RELSEG_SIZE, RELSEG_SIZE, NULL, NULL
+	},
+
+	{
+		{"wal_block_size", PGC_INTERNAL, PRESET_OPTIONS,
+			gettext_noop("Shows the block size in the write ahead log."),
+			NULL,
+			GUC_NOT_IN_SAMPLE | GUC_DISALLOW_IN_FILE
+		},
+		&wal_block_size,
+		XLOG_BLCKSZ, XLOG_BLCKSZ, XLOG_BLCKSZ, NULL, NULL
+	},
+
+	{
+		{"wal_segment_size", PGC_INTERNAL, PRESET_OPTIONS,
+			gettext_noop("Shows the number of pages per write ahead log segment."),
+			NULL,
+			GUC_UNIT_XBLOCKS | GUC_NOT_IN_SAMPLE | GUC_DISALLOW_IN_FILE
+		},
+		&wal_segment_size,
+		(XLOG_SEG_SIZE / XLOG_BLCKSZ), 
+		(XLOG_SEG_SIZE / XLOG_BLCKSZ), 
+		(XLOG_SEG_SIZE / XLOG_BLCKSZ),
+		NULL, NULL
 	},
 
 	{
