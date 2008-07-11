@@ -1440,7 +1440,7 @@
       <entry><literal><link linkend="catalog-pg-proc"><structname>pg_proc</structname></link>.oid</literal></entry>
       <entry>
        The OID of the function to use to perform this cast.  Zero is
-       stored if the data types are binary compatible (that is, no
+       stored if the data types are binary coercible (that is, no
        run-time operation is needed to perform the cast)
       </entry>
      </row>
