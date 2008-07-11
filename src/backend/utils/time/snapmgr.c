@@ -29,14 +29,14 @@
  */
 #include "postgres.h"
 
-#include "access/xact.h"
 #include "access/transam.h"
+#include "access/xact.h"
 #include "storage/proc.h"
 #include "storage/procarray.h"
 #include "utils/memutils.h"
+#include "utils/memutils.h"
 #include "utils/snapmgr.h"
 #include "utils/tqual.h"
-#include "utils/memutils.h"
 
 
 /*
@@ -70,7 +70,7 @@ TransactionId RecentGlobalXmin = FirstNormalTransactionId;
  *
  * Note that we keep refcounts both here and in SnapshotData.  This is because
  * the same snapshot may be registered more than once in a subtransaction, and
- * if a subxact aborts we want to be able to substract the correct amount of
+ * if a subxact aborts we want to be able to subtract the correct amount of
  * counts from SnapshotData.  (Another approach would be keeping one
  * RegdSnapshotElt each time a snapshot is registered, but that seems
  * unnecessary wastage.)
@@ -350,7 +350,7 @@ GetActiveSnapshot(void)
 
 /*
  * ActiveSnapshotSet
- * 		Return whether there is at least one snapsho in the Active stack
+ * 		Return whether there is at least one snapshot in the Active stack
  */
 bool
 ActiveSnapshotSet(void)
@@ -628,7 +628,7 @@ AtEOXact_Snapshot(bool isCommit)
 	}
 
 	/*
-	 * And reset our state.  We don't need to free the memory explicitely --
+	 * And reset our state.  We don't need to free the memory explicitly --
 	 * it'll go away with TopTransactionContext.
 	 */
 	ActiveSnapshot = NULL;
