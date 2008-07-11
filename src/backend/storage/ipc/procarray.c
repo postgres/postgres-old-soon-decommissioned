@@ -666,6 +666,9 @@ GetOldestXmin(bool allDbs, bool ignoreVacuum)
  *		RecentGlobalXmin: the global xmin (oldest TransactionXmin across all
  *			running transactions, except those running LAZY VACUUM).  This is
  *			the same computation done by GetOldestXmin(true, true).
+ *
+ * Note: this function should probably not be called with an argument that's
+ * not statically allocated (see xip allocation below).
  */
 Snapshot
 GetSnapshotData(Snapshot snapshot)

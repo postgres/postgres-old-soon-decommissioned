@@ -3,10 +3,9 @@
  *		PostgreSQL snapshot manager
  *
  * We keep track of snapshots in two ways: the "registered snapshots" list,
- * and the "active snapshot" stack.  All snapshots in any of them is supposed
- * to be in persistent memory.  When a snapshot is no longer in any of these
- * lists (tracked by separate refcounts of each snapshot), its memory can be
- * freed.
+ * and the "active snapshot" stack.  All snapshots in either of them live in
+ * persistent memory.  When a snapshot is no longer in any of these lists
+ * (tracked by separate refcounts on each snapshot), its memory can be freed.
  *
  * These arrangements let us reset MyProc->xmin when there are no snapshots
  * referenced by this transaction.  (One possible improvement would be to be
@@ -261,6 +260,7 @@ FreeSnapshot(Snapshot snapshot)
 {
 	Assert(snapshot->regd_count == 0);
 	Assert(snapshot->active_count == 0);
+	Assert(snapshot->copied);
 
 	pfree(snapshot);
 }
