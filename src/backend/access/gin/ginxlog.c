@@ -549,7 +549,7 @@ ginContinueSplit(ginIncompleteSplit *split)
 
 	if (split->rootBlkno == GIN_ROOT_BLKNO)
 	{
-		prepareEntryScan(&btree, reln, (Datum) 0, NULL);
+		prepareEntryScan(&btree, reln, InvalidOffsetNumber, (Datum) 0, NULL);
 		btree.entry = ginPageGetLinkItup(buffer);
 	}
 	else
