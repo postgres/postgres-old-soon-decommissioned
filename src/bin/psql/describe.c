@@ -2002,14 +2002,14 @@ listCasts(const char *pattern)
 	initPQExpBuffer(&buf);
 	/*
 	 * We need left join here for binary casts.  Also note that we don't
-	 * attempt to localize '(binary compatible)', because there's too much
+	 * attempt to localize '(binary coercible)', because there's too much
 	 * risk of gettext translating a function name that happens to match
 	 * some string in the PO database.
 	 */
 	printfPQExpBuffer(&buf,
 			   "SELECT pg_catalog.format_type(castsource, NULL) AS \"%s\",\n"
 			   "       pg_catalog.format_type(casttarget, NULL) AS \"%s\",\n"
-					  "       CASE WHEN castfunc = 0 THEN '(binary compatible)'\n"
+					  "       CASE WHEN castfunc = 0 THEN '(binary coercible)'\n"
 					  "            ELSE p.proname\n"
 					  "       END as \"%s\",\n"
 					  "       CASE WHEN c.castcontext = 'e' THEN '%s'\n"

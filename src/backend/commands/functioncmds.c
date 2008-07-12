@@ -1407,7 +1407,7 @@ CreateCast(CreateCastStmt *stmt)
 		if (!IsBinaryCoercible(sourcetypeid, procstruct->proargtypes.values[0]))
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),
-			errmsg("argument of cast function must match or be binary-compatible with source data type")));
+			errmsg("argument of cast function must match or be binary-coercible from source data type")));
 		if (nargs > 1 && procstruct->proargtypes.values[1] != INT4OID)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),
@@ -1419,7 +1419,7 @@ CreateCast(CreateCastStmt *stmt)
 		if (!IsBinaryCoercible(procstruct->prorettype, targettypeid))
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),
-					 errmsg("return data type of cast function must match or be binary-compatible with target data type")));
+					 errmsg("return data type of cast function must match or be binary-coercible to target data type")));
 
 		/*
 		 * Restricting the volatility of a cast function may or may not be a
