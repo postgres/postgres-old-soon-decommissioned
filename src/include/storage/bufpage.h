@@ -206,9 +206,13 @@ typedef PageHeaderData *PageHeader;
 /*
  * PageGetContents
  *		To be used in case the page does not contain item pointers.
+ *
+ * Note: prior to 8.3 this was not guaranteed to yield a MAXALIGN'd result.
+ * Now it is.  Beware of old code that might think the offset to the contents
+ * is just SizeOfPageHeaderData rather than MAXALIGN(SizeOfPageHeaderData).
  */
 #define PageGetContents(page) \
-	((char *) (&((PageHeader) (page))->pd_linp[0]))
+	((char *) (page) + MAXALIGN(SizeOfPageHeaderData))
 
 /* ----------------
  *		macros to access page size info
