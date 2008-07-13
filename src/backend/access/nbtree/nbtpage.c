@@ -436,8 +436,7 @@ _bt_checkpage(Relation rel, Buffer buf)
 	/*
 	 * Additionally check that the special area looks sane.
 	 */
-	if (((PageHeader) (page))->pd_special !=
-		(BLCKSZ - MAXALIGN(sizeof(BTPageOpaqueData))))
+	if (PageGetSpecialSize(page) != MAXALIGN(sizeof(BTPageOpaqueData)))
 		ereport(ERROR,
 				(errcode(ERRCODE_INDEX_CORRUPTED),
 				 errmsg("index \"%s\" contains corrupted page at block %u",
@@ -555,7 +554,7 @@ _bt_getbuf(Relation rel, BlockNumber blkno, int access)
 
 		/* Initialize the new page before returning it */
 		page = BufferGetPage(buf);
-		Assert(PageIsNew((PageHeader) page));
+		Assert(PageIsNew(page));
 		_bt_pageinit(page, BufferGetPageSize(buf));
 	}
 

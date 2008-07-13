@@ -134,7 +134,7 @@ typedef IndexAttributeBitMapData *IndexAttributeBitMap;
  * must be maxaligned, and it must have an associated item pointer.
  */
 #define MaxIndexTuplesPerPage	\
-	((int) ((BLCKSZ - offsetof(PageHeaderData, pd_linp)) / \
+	((int) ((BLCKSZ - SizeOfPageHeaderData) / \
 			(MAXALIGN(sizeof(IndexTupleData) + 1) + sizeof(ItemIdData))))
 
 

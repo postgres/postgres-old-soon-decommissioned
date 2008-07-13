@@ -113,13 +113,10 @@ typedef struct BTMetaPageData
  *
  * We actually need to be able to fit three items on every page,
  * so restrict any one item to 1/3 the per-page available space.
- *
- * Note: sizeof(PageHeaderData) includes the first ItemId, but we have
- * to allow for 2 more, as well as the end-of-page special space.
  */
 #define BTMaxItemSize(page) \
 	MAXALIGN_DOWN((PageGetPageSize(page) - \
-				   MAXALIGN(sizeof(PageHeaderData) + 2*sizeof(ItemIdData)) - \
+				   MAXALIGN(SizeOfPageHeaderData + 3*sizeof(ItemIdData)) - \
 				   MAXALIGN(sizeof(BTPageOpaqueData))) / 3)
 
 /*

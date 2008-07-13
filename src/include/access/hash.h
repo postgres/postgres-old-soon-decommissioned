@@ -166,10 +166,10 @@ typedef HashMetaPageData *HashMetaPage;
  * Maximum size of a hash index item (it's okay to have only one per page)
  */
 #define HashMaxItemSize(page) \
-	(PageGetPageSize(page) - \
-	 sizeof(PageHeaderData) - \
-	 MAXALIGN(sizeof(HashPageOpaqueData)) - \
-	 sizeof(ItemIdData))
+	MAXALIGN_DOWN(PageGetPageSize(page) - \
+				  SizeOfPageHeaderData - \
+				  sizeof(ItemIdData) - \
+				  MAXALIGN(sizeof(HashPageOpaqueData)))
 
 #define HASH_MIN_FILLFACTOR			10
 #define HASH_DEFAULT_FILLFACTOR		75

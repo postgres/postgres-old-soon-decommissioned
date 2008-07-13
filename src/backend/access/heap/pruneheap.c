@@ -72,7 +72,7 @@ static void heap_prune_record_unused(PruneState *prstate, OffsetNumber offnum);
 void
 heap_page_prune_opt(Relation relation, Buffer buffer, TransactionId OldestXmin)
 {
-	PageHeader	dp = (PageHeader) BufferGetPage(buffer);
+	Page		page = BufferGetPage(buffer);
 	Size		minfree;
 
 	/*
@@ -81,7 +81,7 @@ heap_page_prune_opt(Relation relation, Buffer buffer, TransactionId OldestXmin)
 	 * Forget it if page is not hinted to contain something prunable that's
 	 * older than OldestXmin.
 	 */
-	if (!PageIsPrunable(dp, OldestXmin))
+	if (!PageIsPrunable(page, OldestXmin))
 		return;
 
 	/*
@@ -100,7 +100,7 @@ heap_page_prune_opt(Relation relation, Buffer buffer, TransactionId OldestXmin)
 											 HEAP_DEFAULT_FILLFACTOR);
 	minfree = Max(minfree, BLCKSZ / 10);
 
-	if (PageIsFull(dp) || PageGetHeapFreeSpace((Page) dp) < minfree)
+	if (PageIsFull(page) || PageGetHeapFreeSpace(page) < minfree)
 	{
 		/* OK, try to get exclusive buffer lock */
 		if (!ConditionalLockBufferForCleanup(buffer))
@@ -112,7 +112,7 @@ heap_page_prune_opt(Relation relation, Buffer buffer, TransactionId OldestXmin)
 		 * prune. (We needn't recheck PageIsPrunable, since no one else could
 		 * have pruned while we hold pin.)
 		 */
-		if (PageIsFull(dp) || PageGetHeapFreeSpace((Page) dp) < minfree)
+		if (PageIsFull(page) || PageGetHeapFreeSpace(page) < minfree)
 		{
 			/* OK to prune (though not to remove redirects) */
 			(void) heap_page_prune(relation, buffer, OldestXmin, false, true);

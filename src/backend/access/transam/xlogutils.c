@@ -279,7 +279,7 @@ XLogReadBuffer(RelFileNode rnode, BlockNumber blkno, bool init)
 		/* check that page has been initialized */
 		Page		page = (Page) BufferGetPage(buffer);
 
-		if (PageIsNew((PageHeader) page))
+		if (PageIsNew(page))
 		{
 			UnlockReleaseBuffer(buffer);
 			log_invalid_page(rnode, blkno, true);
