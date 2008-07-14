@@ -19,7 +19,7 @@ DICTFILES=synonym_sample.syn thesaurus_sample.ths hunspell_sample.affix \
 OBJS = ts_locale.o ts_parse.o wparser.o wparser_def.o dict.o \
 	dict_simple.o dict_synonym.o dict_thesaurus.o \
 	dict_ispell.o regis.o spell.o \
-	to_tsany.o ts_utils.o
+	to_tsany.o ts_typanalyze.o ts_utils.o
 
 include $(top_srcdir)/src/backend/common.mk
 

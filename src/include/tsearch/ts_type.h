@@ -153,6 +153,8 @@ extern Datum ts_rankcd_wtt(PG_FUNCTION_ARGS);
 extern Datum ts_rankcd_ttf(PG_FUNCTION_ARGS);
 extern Datum ts_rankcd_wttf(PG_FUNCTION_ARGS);
 
+extern Datum ts_typanalyze(PG_FUNCTION_ARGS);
+
 
 /*
  * TSQuery

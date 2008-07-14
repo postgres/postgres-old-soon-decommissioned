@@ -543,7 +543,7 @@ DESCR("UUID datatype");
 DATA(insert OID = 2951 ( _uuid			PGNSP PGUID -1 f b t \054 0 2950 0 array_in array_out array_recv array_send - - - i x f 0 -1 0 _null_ _null_ ));
 
 /* text search */
-DATA(insert OID = 3614 ( tsvector		PGNSP PGUID -1 f b t \054 0 0 3643 tsvectorin tsvectorout tsvectorrecv tsvectorsend - - - i x f 0 -1 0 _null_ _null_ ));
+DATA(insert OID = 3614 ( tsvector		PGNSP PGUID -1 f b t \054 0 0 3643 tsvectorin tsvectorout tsvectorrecv tsvectorsend - - ts_typanalyze i x f 0 -1 0 _null_ _null_ ));
 DESCR("text representation for text search");
 #define TSVECTOROID		3614
 DATA(insert OID = 3642 ( gtsvector		PGNSP PGUID -1 f b t \054 0 0 3644 gtsvectorin gtsvectorout - - - - - i p f 0 -1 0 _null_ _null_ ));
