@@ -179,9 +179,9 @@ typedef PageHeaderData *PageHeader;
 #define PageIsValid(page) PointerIsValid(page)
 
 /*
- * line pointer does not count as part of header
+ * line pointer(s) do not count as part of header
  */
-#define SizeOfPageHeaderData (offsetof(PageHeaderData, pd_linp[0]))
+#define SizeOfPageHeaderData (offsetof(PageHeaderData, pd_linp))
 
 /*
  * PageIsEmpty
