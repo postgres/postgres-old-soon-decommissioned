@@ -90,8 +90,8 @@ typedef struct printQueryOpt
 	char	   *title;			/* override title */
 	char	  **footers;		/* override footer (default is "(xx rows)") */
 	bool		default_footer; /* print default footer if footers==NULL */
-	bool		trans_headers;	/* do gettext on column headers */
-	const bool *trans_columns;	/* trans_columns[i-1] => do gettext on col i */
+	bool		translate_header;	/* do gettext on column headers */
+	const bool *translate_columns;	/* translate_columns[i-1] => do gettext on col i */
 } printQueryOpt;
 
 

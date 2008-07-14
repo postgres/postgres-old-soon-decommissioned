@@ -2313,7 +2313,7 @@ printQuery(const PGresult *result, const printQueryOpt *opt, FILE *fout, FILE *f
 		}
 
 		printTableAddHeader(&cont, PQfname(result, i),
-							opt->trans_headers, align);
+							opt->translate_header, align);
 	}
 
 	/* set cells */
@@ -2329,7 +2329,7 @@ printQuery(const PGresult *result, const printQueryOpt *opt, FILE *fout, FILE *f
 			else
 				cell = PQgetvalue(result, r, c);
 
-			translate = (opt->trans_columns && opt->trans_columns[c]);
+			translate = (opt->translate_columns && opt->translate_columns[c]);
 			printTableAddCell(&cont, cell, translate);
 		}
 	}

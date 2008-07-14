@@ -293,7 +293,7 @@ do_lo_list(void)
 	myopt.topt.tuples_only = false;
 	myopt.nullPrint = NULL;
 	myopt.title = _("Large objects");
-	myopt.trans_headers = true;
+	myopt.translate_header = true;
 
 	printQuery(res, &myopt, pset.queryFout, pset.logfile);
 
