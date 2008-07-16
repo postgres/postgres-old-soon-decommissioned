@@ -101,8 +101,9 @@ CREATE [ OR REPLACE ] FUNCTION
 
      <listitem>
       <para>
-       The mode of an argument: either <literal>IN</>, <literal>OUT</>,
-       or <literal>INOUT</>.  If omitted, the default is <literal>IN</>.
+       The mode of an argument: <literal>IN</>, <literal>OUT</>,
+       <literal>INOUT</>, or <literal>VARIADIC</>.
+       If omitted, the default is <literal>IN</>.
       </para>
      </listitem>
     </varlistentry>

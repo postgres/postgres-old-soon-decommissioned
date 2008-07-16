@@ -1610,6 +1610,7 @@ _outFuncCall(StringInfo str, FuncCall *node)
 	WRITE_NODE_FIELD(args);
 	WRITE_BOOL_FIELD(agg_star);
 	WRITE_BOOL_FIELD(agg_distinct);
+	WRITE_BOOL_FIELD(func_variadic);
 	WRITE_INT_FIELD(location);
 }
 

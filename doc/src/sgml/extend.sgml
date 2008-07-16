@@ -254,6 +254,16 @@
      is equivalent to declaring it as <literal>f(anyenum, anyenum)</>:
      both actual arguments have to be the same enum type.
     </para>
+
+    <para>
+     A variadic function (one taking a variable number of arguments, as in
+     <xref linkend="xfunc-sql-variadic-functions">) can be
+     polymorphic: this is accomplished by declaring its last parameter as
+     <literal>VARIADIC</> <type>anyarray</>.  For purposes of argument
+     matching and determining the actual result type, such a function behaves
+     the same as if you had written the appropriate number of
+     <type>anynonarray</> parameters.
+    </para>
    </sect2>
   </sect1>
 

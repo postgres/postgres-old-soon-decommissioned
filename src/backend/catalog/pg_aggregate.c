@@ -293,6 +293,7 @@ lookup_agg_function(List *fnName,
 {
 	Oid			fnOid;
 	bool		retset;
+	int			nvargs;
 	Oid		   *true_oid_array;
 	FuncDetailCode fdresult;
 	AclResult	aclresult;
@@ -305,8 +306,8 @@ lookup_agg_function(List *fnName,
 	 * function's return value.  it also returns the true argument types to
 	 * the function.
 	 */
-	fdresult = func_get_detail(fnName, NIL, nargs, input_types,
-							   &fnOid, rettype, &retset,
+	fdresult = func_get_detail(fnName, NIL, nargs, input_types, false,
+							   &fnOid, rettype, &retset, &nvargs,
 							   &true_oid_array);
 
 	/* only valid case is a normal function not returning a set */

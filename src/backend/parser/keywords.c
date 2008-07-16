@@ -393,6 +393,7 @@ const ScanKeyword ScanKeywords[] = {
 	{"value", VALUE_P, UNRESERVED_KEYWORD},
 	{"values", VALUES, COL_NAME_KEYWORD},
 	{"varchar", VARCHAR, COL_NAME_KEYWORD},
+	{"variadic", VARIADIC, RESERVED_KEYWORD},
 	{"varying", VARYING, UNRESERVED_KEYWORD},
 	{"verbose", VERBOSE, TYPE_FUNC_NAME_KEYWORD},
 	{"version", VERSION_P, UNRESERVED_KEYWORD},

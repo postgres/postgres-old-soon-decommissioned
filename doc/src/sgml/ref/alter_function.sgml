@@ -81,13 +81,14 @@ where <replaceable class="PARAMETER">action</replaceable> is one of:
 
     <listitem>
      <para>
-      The mode of an argument: either <literal>IN</>, <literal>OUT</>,
-      or <literal>INOUT</>.  If omitted, the default is <literal>IN</>.
+      The mode of an argument: <literal>IN</>, <literal>OUT</>,
+      <literal>INOUT</>, or <literal>VARIADIC</>.
+      If omitted, the default is <literal>IN</>.
       Note that <command>ALTER FUNCTION</command> does not actually pay
       any attention to <literal>OUT</> arguments, since only the input
       arguments are needed to determine the function's identity.
-      So it is sufficient to list the <literal>IN</> and <literal>INOUT</>
-      arguments.
+      So it is sufficient to list the <literal>IN</>, <literal>INOUT</>,
+      and <literal>VARIADIC</> arguments.
      </para>
     </listitem>
    </varlistentry>

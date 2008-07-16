@@ -122,6 +122,13 @@
     </para>
 
     <para>
+     <application>PL/pgSQL</> functions can be declared to accept a variable
+     number of arguments by using the <literal>VARIADIC</> marker.  This
+     works exactly the same way as for SQL functions, as discussed in
+     <xref linkend="xfunc-sql-variadic-functions">.
+    </para>
+
+    <para>
      <application>PL/pgSQL</> functions can also be declared to accept
      and return the polymorphic types
      <type>anyelement</type>, <type>anyarray</type>, <type>anynonarray</type>,

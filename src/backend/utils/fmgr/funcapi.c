@@ -844,7 +844,8 @@ get_func_result_name(Oid functionId)
 		numoutargs = 0;
 		for (i = 0; i < numargs; i++)
 		{
-			if (argmodes[i] == PROARGMODE_IN)
+			if (argmodes[i] == PROARGMODE_IN ||
+				argmodes[i] == PROARGMODE_VARIADIC)
 				continue;
 			Assert(argmodes[i] == PROARGMODE_OUT ||
 				   argmodes[i] == PROARGMODE_INOUT);
@@ -994,7 +995,8 @@ build_function_result_tupdesc_d(Datum proallargtypes,
 	{
 		char	   *pname;
 
-		if (argmodes[i] == PROARGMODE_IN)
+		if (argmodes[i] == PROARGMODE_IN ||
+			argmodes[i] == PROARGMODE_VARIADIC)
 			continue;
 		Assert(argmodes[i] == PROARGMODE_OUT ||
 			   argmodes[i] == PROARGMODE_INOUT);

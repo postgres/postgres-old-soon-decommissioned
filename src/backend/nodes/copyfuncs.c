@@ -1651,6 +1651,7 @@ _copyFuncCall(FuncCall *from)
 	COPY_NODE_FIELD(args);
 	COPY_SCALAR_FIELD(agg_star);
 	COPY_SCALAR_FIELD(agg_distinct);
+	COPY_SCALAR_FIELD(func_variadic);
 	COPY_SCALAR_FIELD(location);
 
 	return newnode;

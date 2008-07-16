@@ -489,7 +489,7 @@ add_typedef(char *name, char * dimension, char * length, enum ECPGttype type_enu
 	UNCOMMITTED UNENCRYPTED UNION UNIQUE UNKNOWN UNLISTEN UNTIL
 	UPDATE USER USING
 
-	VACUUM VALID VALIDATOR VALUE_P VALUES VARCHAR VARYING
+	VACUUM VALID VALIDATOR VALUE_P VALUES VARCHAR VARIADIC VARYING
 	VERBOSE VERSION_P VIEW VOLATILE
 	WHEN WHERE WHITESPACE_P WITH WITHOUT WORK WRITE
 
@@ -2629,6 +2629,7 @@ arg_class:  IN_P		{ $$ = make_str("in"); }
 		| OUT_P 	{ $$ = make_str("out"); }
 		| INOUT 	{ $$ = make_str("inout"); }
 		| IN_P OUT_P 	{ $$ = make_str("in out"); }
+		| VARIADIC 	{ $$ = make_str("variadic"); }
 		;
 
 func_as: StringConst
@@ -6857,6 +6858,7 @@ reserved_keyword:
 		| UNIQUE			{ $$ = make_str("unique"); }
 		| USER				{ $$ = make_str("user"); }
 		| USING				{ $$ = make_str("using"); }
+		| VARIADIC			{ $$ = make_str("variadic"); }
 		| WHEN				{ $$ = make_str("when"); }
 		| WHERE				{ $$ = make_str("where"); }
 		;

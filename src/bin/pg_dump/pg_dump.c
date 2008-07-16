@@ -6435,14 +6435,17 @@ format_function_arguments(FuncInfo *finfo, int nallargs,
 		{
 			switch (argmodes[j][0])
 			{
-				case 'i':
+				case PROARGMODE_IN:
 					argmode = "";
 					break;
-				case 'o':
+				case PROARGMODE_OUT:
 					argmode = "OUT ";
 					break;
-				case 'b':
+				case PROARGMODE_INOUT:
 					argmode = "INOUT ";
+					break;
+				case PROARGMODE_VARIADIC:
+					argmode = "VARIADIC ";
 					break;
 				default:
 					write_msg(NULL, "WARNING: bogus value in proargmodes array\n");

@@ -4474,5 +4474,6 @@ DESCR("is txid visible in snapshot?");
 #define PROARGMODE_IN		'i'
 #define PROARGMODE_OUT		'o'
 #define PROARGMODE_INOUT	'b'
+#define PROARGMODE_VARIADIC	'v'
 
 #endif   /* PG_PROC_H */
