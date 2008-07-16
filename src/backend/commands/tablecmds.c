@@ -762,6 +762,9 @@ ExecuteTruncate(TruncateStmt *stmt)
 	ResultRelInfo *resultRelInfo;
 	ListCell   *cell;
 
+	/* make list unique */
+	stmt->relations = list_union(NIL, stmt->relations);
+
 	/*
 	 * Open, exclusive-lock, and check all the explicitly-specified relations
 	 */
