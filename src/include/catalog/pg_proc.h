@@ -1010,8 +1010,10 @@ DATA(insert OID = 1191 (  generate_subscripts PGNSP PGUID 12 1 1000 f f t t i 3 
 DESCR("array subscripts generator");
 DATA(insert OID = 1192 (  generate_subscripts PGNSP PGUID 12 1 1000 f f t t i 2 23 "2277 23" _null_ _null_ _null_ generate_subscripts_nodir - _null_ _null_ ));
 DESCR("array subscripts generator");
-
-
+DATA(insert OID = 1193 (  array_fill PGNSP PGUID 12 1 0 f f f f i 2 2277 "2283 1007" _null_ _null_ _null_ array_fill - _null_ _null_ ));
+DESCR("array constructor with value");
+DATA(insert OID = 1286 (  array_fill PGNSP PGUID 12 1 0 f f f f i 3 2277 "2283 1007 1007" _null_ _null_ _null_ array_fill_with_lower_bounds - _null_ _null_ ));
+DESCR("array constructor with value");
 DATA(insert OID = 760 (  smgrin			   PGNSP PGUID 12 1 0 f f t f s 1 210 "2275" _null_ _null_ _null_  smgrin - _null_ _null_ ));
 DESCR("I/O");
 DATA(insert OID = 761 (  smgrout		   PGNSP PGUID 12 1 0 f f t f s 1 2275 "210" _null_ _null_ _null_  smgrout - _null_ _null_ ));

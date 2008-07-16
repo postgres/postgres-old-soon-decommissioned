@@ -9374,6 +9374,19 @@ SELECT NULLIF(value, '(none)') ...
        <row>
         <entry>
          <literal>
+          <function>array_fill</function>(<type>anyelement</type>, <type>anyarray</type>,
+          <optional>, <type>anyarray</type></optional>)
+         </literal>
+        </entry>
+        <entry><type>anyarray</type></entry>
+        <entry>returns an array initialized with supplied value,
+        dimensions, and lower bounds</entry>
+        <entry><literal>array_fill(7, ARRAY[3], ARRAY[2])</literal></entry>
+        <entry><literal>[2:4]={7,7,7}</literal></entry>
+       </row>
+       <row>
+        <entry>
+         <literal>
           <function>array_lower</function>(<type>anyarray</type>, <type>int</type>)
          </literal>
         </entry>
