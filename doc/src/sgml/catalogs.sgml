@@ -3570,6 +3570,14 @@
      </row>
 
      <row>
+      <entry><structfield>provariadic</structfield></entry>
+      <entry><type>oid</type></entry>
+      <entry><literal><link linkend="catalog-pg-type"><structname>pg_type</structname></link>.oid</literal></entry>
+      <entry>Data type of the variadic array parameter's elements,
+       or zero if the function does not have a variadic parameter</entry>
+     </row>
+
+     <row>
       <entry><structfield>proisagg</structfield></entry>
       <entry><type>bool</type></entry>
       <entry></entry>

@@ -6671,10 +6671,12 @@ dumpFunc(Archive *fout, FuncInfo *finfo)
 	lanname = PQgetvalue(res, 0, PQfnumber(res, "lanname"));
 
 	/*
-	 * See backend/commands/define.c for details of how the 'AS' clause is
-	 * used.
+	 * See backend/commands/functioncmds.c for details of how the 'AS' clause
+	 * is used.  In 8.4 and up, an unused probin is NULL (here ""); previous
+	 * versions would set it to "-".  There are no known cases in which prosrc
+	 * is unused, so the tests below for "-" are probably useless.
 	 */
-	if (strcmp(probin, "-") != 0)
+	if (probin[0] != '\0' && strcmp(probin, "-") != 0)
 	{
 		appendPQExpBuffer(asPart, "AS ");
 		appendStringLiteralAH(asPart, probin, fout);

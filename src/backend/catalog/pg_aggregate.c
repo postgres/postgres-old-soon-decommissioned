@@ -202,7 +202,7 @@ AggregateCreate(const char *aggName,
 							  INTERNALlanguageId,		/* languageObjectId */
 							  InvalidOid,		/* no validator */
 							  "aggregate_dummy",		/* placeholder proc */
-							  "-",		/* probin */
+							  NULL,		/* probin */
 							  true,		/* isAgg */
 							  false,	/* security invoker (currently not
 										 * definable for agg) */
