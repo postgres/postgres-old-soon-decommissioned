@@ -2098,13 +2098,16 @@ do_autovacuum(void)
 
 		/*
 		 * Save the relation name for a possible error message, to avoid a
-		 * catalog lookup in case of an error.	Note: they must live in a
-		 * long-lived memory context because we call vacuum and analyze in
-		 * different transactions.
+		 * catalog lookup in case of an error.  If any of these return NULL,
+		 * then the relation has been dropped since last we checked; skip it.
+		 * Note: they must live in a long-lived memory context because we call
+		 * vacuum and analyze in different transactions.
 		 */
 		datname = get_database_name(MyDatabaseId);
 		nspname = get_namespace_name(get_rel_namespace(tab->at_relid));
 		relname = get_rel_name(tab->at_relid);
+		if (!datname || !nspname || !relname)
+			goto deleted;
 
 		/*
 		 * We will abort vacuuming the current table if something errors out,
@@ -2158,11 +2161,15 @@ do_autovacuum(void)
 
 		/* the PGPROC flags are reset at the next end of transaction */
 
+deleted:
 		/* be tidy */
 		pfree(tab);
-		pfree(datname);
-		pfree(nspname);
-		pfree(relname);
+		if (datname)
+			pfree(datname);
+		if (nspname)
+			pfree(nspname);
+		if (relname)
+			pfree(relname);
 
 		/* remove my info from shared memory */
 		LWLockAcquire(AutovacuumLock, LW_EXCLUSIVE);
