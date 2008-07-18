@@ -441,7 +441,9 @@ do_compile(FunctionCallInfo fcinfo,
 					argmode == PROARGMODE_INOUT ||
 					argmode == PROARGMODE_VARIADIC)
 					in_arg_varnos[num_in_args++] = argvariable->dno;
-				if (argmode == PROARGMODE_OUT || argmode == PROARGMODE_INOUT)
+				if (argmode == PROARGMODE_OUT ||
+					argmode == PROARGMODE_INOUT ||
+					argmode == PROARGMODE_TABLE)
 					out_arg_variables[num_out_args++] = argvariable;
 
 				/* Add to namespace under the $n name */

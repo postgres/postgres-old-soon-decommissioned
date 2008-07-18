@@ -242,6 +242,7 @@ ProcedureCreate(const char *procedureName,
 						elog(ERROR, "variadic parameter must be last");
 					break;
 				case PROARGMODE_OUT:
+				case PROARGMODE_TABLE:
 					/* okay */
 					break;
 				case PROARGMODE_VARIADIC:

@@ -1007,6 +1007,7 @@ CREATE VIEW parameters AS
                 WHEN proargmodes[(ss.x).n] = 'o' THEN 'OUT'
                 WHEN proargmodes[(ss.x).n] = 'b' THEN 'INOUT'
                 WHEN proargmodes[(ss.x).n] = 'v' THEN 'IN'
+                WHEN proargmodes[(ss.x).n] = 't' THEN 'OUT'
              END AS character_data) AS parameter_mode,
            CAST('NO' AS character_data) AS is_result,
            CAST('NO' AS character_data) AS as_locator,

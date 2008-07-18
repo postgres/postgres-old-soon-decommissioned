@@ -1570,7 +1570,8 @@ typedef enum FunctionParameterMode
 	FUNC_PARAM_IN = 'i',		/* input only */
 	FUNC_PARAM_OUT = 'o',		/* output only */
 	FUNC_PARAM_INOUT = 'b',		/* both */
-	FUNC_PARAM_VARIADIC = 'v'	/* variadic */
+	FUNC_PARAM_VARIADIC = 'v',	/* variadic */
+	FUNC_PARAM_TABLE = 't'		/* table function output column */
 } FunctionParameterMode;
 
 typedef struct FunctionParameter

@@ -3680,7 +3680,8 @@
         <literal>i</literal> for <literal>IN</> arguments,
         <literal>o</literal> for <literal>OUT</> arguments,
         <literal>b</literal> for <literal>INOUT</> arguments,
-        <literal>v</literal> for <literal>VARIADIC</> arguments.
+        <literal>v</literal> for <literal>VARIADIC</> arguments,
+        <literal>t</literal> for <literal>TABLE</> arguments.
         If all the arguments are <literal>IN</literal> arguments,
         this field will be null.
         Note that subscripts correspond to positions of

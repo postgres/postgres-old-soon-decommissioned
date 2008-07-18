@@ -550,7 +550,7 @@ resolve_polymorphic_argtypes(int numargs, Oid *argtypes, char *argmodes,
 			case ANYELEMENTOID:
 			case ANYNONARRAYOID:
 			case ANYENUMOID:
-				if (argmode == PROARGMODE_OUT)
+				if (argmode == PROARGMODE_OUT || argmode == PROARGMODE_TABLE)
 					have_anyelement_result = true;
 				else
 				{
@@ -565,7 +565,7 @@ resolve_polymorphic_argtypes(int numargs, Oid *argtypes, char *argmodes,
 				}
 				break;
 			case ANYARRAYOID:
-				if (argmode == PROARGMODE_OUT)
+				if (argmode == PROARGMODE_OUT || argmode == PROARGMODE_TABLE)
 					have_anyarray_result = true;
 				else
 				{
@@ -582,7 +582,7 @@ resolve_polymorphic_argtypes(int numargs, Oid *argtypes, char *argmodes,
 			default:
 				break;
 		}
-		if (argmode != PROARGMODE_OUT)
+		if (argmode != PROARGMODE_OUT && argmode != PROARGMODE_TABLE)
 			inargno++;
 	}
 
@@ -848,7 +848,8 @@ get_func_result_name(Oid functionId)
 				argmodes[i] == PROARGMODE_VARIADIC)
 				continue;
 			Assert(argmodes[i] == PROARGMODE_OUT ||
-				   argmodes[i] == PROARGMODE_INOUT);
+				   argmodes[i] == PROARGMODE_INOUT ||
+				   argmodes[i] == PROARGMODE_TABLE);
 			if (++numoutargs > 1)
 			{
 				/* multiple out args, so forget it */
@@ -999,7 +1000,8 @@ build_function_result_tupdesc_d(Datum proallargtypes,
 			argmodes[i] == PROARGMODE_VARIADIC)
 			continue;
 		Assert(argmodes[i] == PROARGMODE_OUT ||
-			   argmodes[i] == PROARGMODE_INOUT);
+			   argmodes[i] == PROARGMODE_INOUT ||
+			   argmodes[i] == PROARGMODE_TABLE);
 		outargtypes[numoutargs] = argtypes[i];
 		if (argnames)
 			pname = TextDatumGetCString(argnames[i]);
