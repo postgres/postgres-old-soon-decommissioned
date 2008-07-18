@@ -281,12 +281,14 @@ main(int argc, char *argv[])
 	 */
 	else
 	{
-		if (!options.no_psqlrc)
-			process_psqlrc(argv[0]);
-
 		connection_warnings();
 		if (!pset.quiet && !pset.notty)
-			printf(_("Type \"help\" for help.\n\n"));
+			printf(_("Type \"help\" for help.\n"));
+		if (!options.no_psqlrc)
+			process_psqlrc(argv[0]);
+		/* output newline here because .psqlrc might output something */
+		if (!pset.quiet && !pset.notty)
+			printf("\n");
 		if (!pset.notty)
 			initializeInput(options.no_readline ? 0 : 1);
 		if (options.action_string)		/* -f - was used */
