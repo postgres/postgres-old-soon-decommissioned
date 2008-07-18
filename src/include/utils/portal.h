@@ -123,7 +123,7 @@ typedef struct PortalData
 	 */
 
 	/* The query or queries the portal will execute */
-	const char *sourceText;		/* text of query, if known (may be NULL) */
+	const char *sourceText;		/* text of query (as of 8.4, never NULL) */
 	const char *commandTag;		/* command tag for original query */
 	List	   *stmts;			/* PlannedStmts and/or utility statements */
 	CachedPlan *cplan;			/* CachedPlan, if stmts are from one */

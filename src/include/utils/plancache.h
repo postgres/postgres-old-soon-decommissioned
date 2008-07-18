@@ -20,8 +20,7 @@
 /*
  * CachedPlanSource represents the portion of a cached plan that persists
  * across invalidation/replan cycles.  It stores a raw parse tree (required),
- * the original source text (optional, but highly recommended to improve
- * error reports), and adjunct data.
+ * the original source text (also required, as of 8.4), and adjunct data.
  *
  * Normally, both the struct itself and the subsidiary data live in the
  * context denoted by the context field, while the linked-to CachedPlan, if
@@ -47,7 +46,7 @@
 typedef struct CachedPlanSource
 {
 	Node	   *raw_parse_tree; /* output of raw_parser() */
-	char	   *query_string;	/* text of query, or NULL */
+	char	   *query_string;	/* text of query (as of 8.4, never NULL) */
 	const char *commandTag;		/* command tag (a constant!), or NULL */
 	Oid		   *param_types;	/* array of parameter type OIDs, or NULL */
 	int			num_params;		/* length of param_types array */
