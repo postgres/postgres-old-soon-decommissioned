@@ -1591,14 +1591,14 @@ error_return:
 	termPQExpBuffer(&title);
 	termPQExpBuffer(&tmpbuf);
 	
-	if (tableinfo.relkind == 'S')
+	if (seq_values)
 	{
 		for (ptr = seq_values; *ptr; ptr++)
 			free(*ptr);
 		free(seq_values);
 	}
     
-	if (show_modifiers)
+	if (modifiers)
 	{
 		for (ptr = modifiers; *ptr; ptr++)
 			free(*ptr);
