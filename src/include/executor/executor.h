@@ -60,6 +60,13 @@
 	((*(expr)->evalfunc) (expr, econtext, isNull, isDone))
 
 
+/* Hook for plugins to get control in ExecutorRun() */
+typedef TupleTableSlot *(*ExecutorRun_hook_type) (QueryDesc *queryDesc,
+												  ScanDirection direction,
+												  long count);
+extern PGDLLIMPORT ExecutorRun_hook_type ExecutorRun_hook;
+
+
 /*
  * prototypes from functions in execAmi.c
  */
@@ -135,6 +142,8 @@ extern HeapTuple ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot);
  */
 extern void ExecutorStart(QueryDesc *queryDesc, int eflags);
 extern TupleTableSlot *ExecutorRun(QueryDesc *queryDesc,
+			ScanDirection direction, long count);
+extern TupleTableSlot *standard_ExecutorRun(QueryDesc *queryDesc,
 			ScanDirection direction, long count);
 extern void ExecutorEnd(QueryDesc *queryDesc);
 extern void ExecutorRewind(QueryDesc *queryDesc);
