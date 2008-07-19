@@ -1313,6 +1313,7 @@ bootstrap_template1(char *short_version)
 	char	   *talkargs = "";
 	char	  **bki_lines;
 	char		headerline[MAXPGPATH];
+	char		buf[64];
 
 	printf(_("creating template1 database in %s/base/1 ... "), pg_data);
 	fflush(stdout);
@@ -1336,6 +1337,17 @@ bootstrap_template1(char *short_version)
 				progname, bki_file, PG_VERSION);
 		exit_nicely();
 	}
+
+	/* Substitute for various symbols used in the BKI file */
+
+	sprintf(buf, "%d", NAMEDATALEN);
+	bki_lines = replace_token(bki_lines, "NAMEDATALEN", buf);
+
+	bki_lines = replace_token(bki_lines, "FLOAT4PASSBYVAL",
+							  FLOAT4PASSBYVAL ? "true" : "false");
+
+	bki_lines = replace_token(bki_lines, "FLOAT8PASSBYVAL",
+							  FLOAT8PASSBYVAL ? "true" : "false");
 
 	bki_lines = replace_token(bki_lines, "POSTGRES", username);
 
