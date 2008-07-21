@@ -2657,8 +2657,9 @@ autovac_report_activity(autovac_table *tab)
 	/* Report the command and possible options */
 	if (tab->at_dovacuum)
 		snprintf(activity, MAX_AUTOVAC_ACTIV_LEN,
-				 "autovacuum: VACUUM%s",
-				 tab->at_doanalyze ? " ANALYZE" : "");
+				 "autovacuum: VACUUM%s%s",
+				 tab->at_doanalyze ? " ANALYZE" : "",
+				 tab->at_wraparound ? " (to prevent wraparound)" : "");
 	else
 		snprintf(activity, MAX_AUTOVAC_ACTIV_LEN,
 				 "autovacuum: ANALYZE");
