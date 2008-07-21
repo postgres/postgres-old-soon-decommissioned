@@ -162,6 +162,12 @@ PrepareQuery(PrepareStmt *stmt, const char *queryString)
 
 /*
  * Implements the 'EXECUTE' utility statement.
+ *
+ * Note: this is one of very few places in the code that needs to deal with
+ * two query strings at once.  The passed-in queryString is that of the
+ * EXECUTE, which we might need for error reporting while processing the
+ * parameter expressions.  The query_string that we copy from the plan
+ * source is that of the original PREPARE.
  */
 void
 ExecuteQuery(ExecuteStmt *stmt, const char *queryString,
