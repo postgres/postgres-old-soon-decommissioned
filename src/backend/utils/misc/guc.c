@@ -4115,7 +4115,7 @@ parse_bool(const char *value, bool *result)
  * If not okay and hintmsg is not NULL, *hintmsg is set to a suitable
  *	HINT message, or NULL if no hint provided.
  */
-static bool
+bool
 parse_int(const char *value, int *result, int flags, const char **hintmsg)
 {
 	int64		val;
@@ -4322,7 +4322,7 @@ parse_int(const char *value, int *result, int flags, const char **hintmsg)
  * If the string parses okay, return true, else false.
  * If okay and result is not NULL, return the value in *result.
  */
-static bool
+bool
 parse_real(const char *value, double *result)
 {
 	double		val;
