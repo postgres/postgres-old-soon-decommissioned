@@ -2655,15 +2655,14 @@ autovac_report_activity(VacuumStmt *vacstmt, Oid relid, bool for_wraparound)
 	char	   *relname = get_rel_name(relid);
 	char	   *nspname = get_namespace_name(get_rel_namespace(relid));
 
-#define MAX_AUTOVAC_ACTIV_LEN (NAMEDATALEN * 2 + 32)
+#define MAX_AUTOVAC_ACTIV_LEN (NAMEDATALEN * 2 + 56)
 	char		activity[MAX_AUTOVAC_ACTIV_LEN];
 
 	/* Report the command and possible options */
 	if (vacstmt->vacuum)
 		snprintf(activity, MAX_AUTOVAC_ACTIV_LEN,
-				 "autovacuum: VACUUM%s%s",
-				 vacstmt->analyze ? " ANALYZE" : "",
-				 for_wraparound ? " (to prevent wraparound)" : "");
+				 "autovacuum: VACUUM%s",
+				 vacstmt->analyze ? " ANALYZE" : "");
 	else
 		snprintf(activity, MAX_AUTOVAC_ACTIV_LEN,
 				 "autovacuum: ANALYZE");
@@ -2680,7 +2679,8 @@ autovac_report_activity(VacuumStmt *vacstmt, Oid relid, bool for_wraparound)
 		int			len = strlen(activity);
 
 		snprintf(activity + len, MAX_AUTOVAC_ACTIV_LEN - len,
-				 " %s.%s", nspname, relname);
+				 " %s.%s%s", nspname, relname,
+				 for_wraparound ? " (to prevent wraparound)" : "");
 	}
 
 	/* Set statement_timestamp() to current time for pg_stat_activity */
