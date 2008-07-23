@@ -1447,7 +1447,8 @@ su - postgres
        <listitem>
         <para>
          Full path to the Tcl interpreter.  This will be used to
-         determine the dependencies for building PL/Tcl.
+         determine the dependencies for building PL/Tcl, and it will
+         be substituted into Tcl scripts.
         </para>
        </listitem>
       </varlistentry>

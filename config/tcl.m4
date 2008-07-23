@@ -4,7 +4,11 @@
 
 
 AC_DEFUN([PGAC_PATH_TCLSH],
-         [AC_PATH_PROGS(TCLSH, [tclsh tcl])])
+[AC_PATH_PROGS(TCLSH, [tclsh tcl])
+if test x"$TCLSH" = x""; then
+  AC_MSG_ERROR([Tcl shell not found])
+fi
+])
 
 
 # PGAC_PATH_TCLCONFIGSH([SEARCH-PATH])
