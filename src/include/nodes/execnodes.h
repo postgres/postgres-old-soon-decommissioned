@@ -328,10 +328,6 @@ typedef struct EState
 	List	   *es_trig_target_relations;		/* trigger-only ResultRelInfos */
 	TupleTableSlot *es_trig_tuple_slot; /* for trigger output tuples */
 
-	/* Stuff used for SELECT INTO: */
-	Relation	es_into_relation_descriptor;
-	bool		es_into_relation_use_wal;
-
 	/* Parameter info: */
 	ParamListInfo es_param_list_info;	/* values of external params */
 	ParamExecData *es_param_exec_vals;	/* values of internal params */

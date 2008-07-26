@@ -75,7 +75,6 @@ extern void ExecMarkPos(PlanState *node);
 extern void ExecRestrPos(PlanState *node);
 extern bool ExecSupportsMarkRestore(NodeTag plantype);
 extern bool ExecSupportsBackwardScan(Plan *node);
-extern bool ExecMayReturnRawTuples(PlanState *node);
 
 /*
  * prototypes from functions in execCurrent.c
