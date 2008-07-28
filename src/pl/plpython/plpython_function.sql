@@ -58,7 +58,6 @@ CREATE FUNCTION import_succeed() returns text
   import sha
   import string
   import time
-  import whrandom
 except Exception, ex:
 	plpy.notice("import failed -- %s" % str(ex))
 	return "failed, that wasn''t supposed to happen"
@@ -306,3 +305,19 @@ CREATE OR REPLACE FUNCTION write_file(text,text) RETURNS text AS '
   open(args[0],"w").write(args[1])
   return "Wrote to file: %s" % args[0]
 ' LANGUAGE plpythonu;
+
+--
+-- Universal Newline Support
+-- 
+
+CREATE OR REPLACE FUNCTION newline_lf() RETURNS integer AS
+'x = 100\ny = 23\nreturn x + y\n'
+LANGUAGE plpythonu;
+
+CREATE OR REPLACE FUNCTION newline_cr() RETURNS integer AS
+'x = 100\ry = 23\rreturn x + y\r'
+LANGUAGE plpythonu;
+
+CREATE OR REPLACE FUNCTION newline_crlf() RETURNS integer AS
+'x = 100\r\ny = 23\r\nreturn x + y\r\n'
+LANGUAGE plpythonu;
