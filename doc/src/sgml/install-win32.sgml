@@ -73,7 +73,7 @@
    or the free Express edition of
    <productname>Visual Studio 2005</productname>. The following additional products
    are required to build the complete package. Use the
-   <filename>config.pl</filename> to specify which directories the libraries
+   <filename>config.pl</filename> file to specify which directories the libraries
    are available in.
 
    <variablelist>
