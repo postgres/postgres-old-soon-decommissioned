@@ -8,6 +8,7 @@ WANTED_DIRS = \
 		adminpack	\
 		btree_gist	\
 		chkpass		\
+		citext		\
 		cube		\
 		dblink		\
 		dict_int	\
