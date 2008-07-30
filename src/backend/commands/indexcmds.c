@@ -1012,7 +1012,7 @@ GetDefaultOpClass(Oid type_id, Oid am_id)
 	ScanKeyData skey[1];
 	SysScanDesc scan;
 	HeapTuple	tup;
-	CATEGORY	tcategory;
+	TYPCATEGORY	tcategory;
 
 	/* If it's a domain, look at the base type instead */
 	type_id = getBaseType(type_id);

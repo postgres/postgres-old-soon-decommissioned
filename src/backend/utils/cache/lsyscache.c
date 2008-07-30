@@ -2168,6 +2168,29 @@ type_is_enum(Oid typid)
 }
 
 /*
+ * get_type_category_preferred
+ *
+ *		Given the type OID, fetch its category and preferred-type status.
+ *		Throws error on failure.
+ */
+void
+get_type_category_preferred(Oid typid, char *typcategory, bool *typispreferred)
+{
+	HeapTuple	tp;
+	Form_pg_type typtup;
+
+	tp = SearchSysCache(TYPEOID,
+						ObjectIdGetDatum(typid),
+						0, 0, 0);
+	if (!HeapTupleIsValid(tp))
+		elog(ERROR, "cache lookup failed for type %u", typid);
+	typtup = (Form_pg_type) GETSTRUCT(tp);
+	*typcategory = typtup->typcategory;
+	*typispreferred = typtup->typispreferred;
+	ReleaseSysCache(tp);
+}
+
+/*
  * get_typ_typrelid
  *
  *		Given the type OID, get the typrelid (InvalidOid if not a complex
