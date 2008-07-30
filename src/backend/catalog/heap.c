@@ -762,7 +762,7 @@ AddNewRelationType(const char *typeName,
 				   -1,			/* internal size (varlena) */
 				   TYPTYPE_COMPOSITE,	/* type-type (composite) */
 				   TYPCATEGORY_COMPOSITE, /* type-category (ditto) */
-				   true,		/* all composite types are preferred */
+				   false,		/* composite types are never preferred */
 				   DEFAULT_TYPDELIM,	/* default array delimiter */
 				   F_RECORD_IN, /* input procedure */
 				   F_RECORD_OUT,	/* output procedure */
@@ -941,7 +941,7 @@ heap_create_with_catalog(const char *relname,
 				   -1,			/* Internal size (varlena) */
 				   TYPTYPE_BASE,	/* Not composite - typelem is */
 				   TYPCATEGORY_ARRAY, /* type-category (array) */
-				   true,		/* all array types are preferred */
+				   false,		/* array types are never preferred */
 				   DEFAULT_TYPDELIM,	/* default array delimiter */
 				   F_ARRAY_IN,	/* array input proc */
 				   F_ARRAY_OUT, /* array output proc */
