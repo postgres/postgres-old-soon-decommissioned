@@ -711,6 +711,8 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 	/*
 	 * Transform sorting/grouping stuff.  Do ORDER BY first because both
 	 * transformGroupClause and transformDistinctClause need the results.
+	 * Note that these functions can also change the targetList, so it's
+	 * passed to them by reference.
 	 */
 	qry->sortClause = transformSortClause(pstate,
 										  stmt->sortClause,
@@ -725,8 +727,9 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 	qry->distinctClause = transformDistinctClause(pstate,
 												  stmt->distinctClause,
 												  &qry->targetList,
-												  &qry->sortClause);
+												  qry->sortClause);
 
+	/* transform LIMIT */
 	qry->limitOffset = transformLimitClause(pstate, stmt->limitOffset,
 											"OFFSET");
 	qry->limitCount = transformLimitClause(pstate, stmt->limitCount,

@@ -31,11 +31,8 @@ extern List *transformGroupClause(ParseState *pstate, List *grouplist,
 extern List *transformSortClause(ParseState *pstate, List *orderlist,
 					List **targetlist, bool resolveUnknown);
 extern List *transformDistinctClause(ParseState *pstate, List *distinctlist,
-						List **targetlist, List **sortClause);
+						List **targetlist, List *sortClause);
 
-extern List *addAllTargetsToSortList(ParseState *pstate,
-						List *sortlist, List *targetlist,
-						bool resolveUnknown);
 extern List *addTargetToSortList(ParseState *pstate, TargetEntry *tle,
 					List *sortlist, List *targetlist,
 					SortByDir sortby_dir, SortByNulls sortby_nulls,
