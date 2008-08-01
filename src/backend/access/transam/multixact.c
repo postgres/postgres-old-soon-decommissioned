@@ -53,10 +53,11 @@
 #include "access/transam.h"
 #include "access/xact.h"
 #include "miscadmin.h"
+#include "pg_trace.h"
 #include "storage/backendid.h"
 #include "storage/lmgr.h"
-#include "utils/memutils.h"
 #include "storage/procarray.h"
+#include "utils/memutils.h"
 
 
 /*
@@ -1497,8 +1498,10 @@ void
 ShutdownMultiXact(void)
 {
 	/* Flush dirty MultiXact pages to disk */
+	TRACE_POSTGRESQL_MULTIXACT_CHECKPOINT_START(false);
 	SimpleLruFlush(MultiXactOffsetCtl, false);
 	SimpleLruFlush(MultiXactMemberCtl, false);
+	TRACE_POSTGRESQL_MULTIXACT_CHECKPOINT_DONE(false);
 }
 
 /*
@@ -1526,6 +1529,8 @@ MultiXactGetCheckptMulti(bool is_shutdown,
 void
 CheckPointMultiXact(void)
 {
+	TRACE_POSTGRESQL_MULTIXACT_CHECKPOINT_START(true);
+
 	/* Flush dirty MultiXact pages to disk */
 	SimpleLruFlush(MultiXactOffsetCtl, true);
 	SimpleLruFlush(MultiXactMemberCtl, true);
@@ -1540,6 +1545,8 @@ CheckPointMultiXact(void)
 	 */
 	if (!InRecovery)
 		TruncateMultiXact();
+
+	TRACE_POSTGRESQL_MULTIXACT_CHECKPOINT_DONE(true);
 }
 
 /*

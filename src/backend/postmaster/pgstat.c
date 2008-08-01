@@ -48,6 +48,7 @@
 #include "libpq/pqsignal.h"
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"
+#include "pg_trace.h"
 #include "postmaster/autovacuum.h"
 #include "postmaster/fork_process.h"
 #include "postmaster/postmaster.h"
@@ -2201,6 +2202,8 @@ pgstat_report_activity(const char *cmd_str)
 	volatile PgBackendStatus *beentry = MyBEEntry;
 	TimestampTz start_timestamp;
 	int			len;
+
+	TRACE_POSTGRESQL_STATEMENT_STATUS(cmd_str);
 
 	if (!pgstat_track_activities || !beentry)
 		return;

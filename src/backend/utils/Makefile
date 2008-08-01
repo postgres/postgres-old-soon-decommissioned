@@ -20,9 +20,13 @@ $(SUBDIRS:%=%-recursive): fmgroids.h
 fmgroids.h fmgrtab.c: Gen_fmgrtab.sh $(top_srcdir)/src/include/catalog/pg_proc.h
 	AWK='$(AWK)' $(SHELL) $< $(top_srcdir)/src/include/catalog/pg_proc.h
 
+ifneq ($(enable_dtrace), yes)
+probes.h: Gen_dummy_probes.sed
+endif
+
 probes.h: probes.d
 ifeq ($(enable_dtrace), yes)
-	$(DTRACE) -h -s $< -o $@.tmp
+	$(DTRACE) -C -h -s $< -o $@.tmp
 	sed -e 's/POSTGRESQL_/TRACE_POSTGRESQL_/g' $@.tmp >$@
 	rm $@.tmp
 else

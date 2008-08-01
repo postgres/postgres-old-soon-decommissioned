@@ -36,11 +36,11 @@
 #include "access/twophase.h"
 #include "access/twophase_rmgr.h"
 #include "miscadmin.h"
+#include "pg_trace.h"
 #include "pgstat.h"
 #include "utils/memutils.h"
 #include "utils/ps_status.h"
 #include "utils/resowner.h"
-#include "pg_trace.h"
 
 
 /* This configuration variable is used to set the lock table size */
@@ -787,11 +787,11 @@ LockAcquire(const LOCKTAG *locktag,
 		 * Sleep till someone wakes me up.
 		 */
 
-		TRACE_POSTGRESQL_LOCK_STARTWAIT(locktag->locktag_field2, lockmode);
+		TRACE_POSTGRESQL_LOCK_WAIT_START(locktag->locktag_field2, lockmode);
 
 		WaitOnLock(locallock, owner);
 
-		TRACE_POSTGRESQL_LOCK_ENDWAIT(locktag->locktag_field2, lockmode);
+		TRACE_POSTGRESQL_LOCK_WAIT_DONE(locktag->locktag_field2, lockmode);
 
 		/*
 		 * NOTE: do not do any material change of state between here and

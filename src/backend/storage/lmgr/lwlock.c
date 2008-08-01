@@ -25,10 +25,10 @@
 #include "access/multixact.h"
 #include "access/subtrans.h"
 #include "miscadmin.h"
+#include "pg_trace.h"
 #include "storage/ipc.h"
 #include "storage/proc.h"
 #include "storage/spin.h"
-#include "pg_trace.h"
 
 
 /* We use the ShmemLock spinlock to protect LWLockAssign */
@@ -448,7 +448,7 @@ LWLockAcquire(LWLockId lockid, LWLockMode mode)
 		block_counts[lockid]++;
 #endif
 
-		TRACE_POSTGRESQL_LWLOCK_STARTWAIT(lockid, mode);
+		TRACE_POSTGRESQL_LWLOCK_WAIT_START(lockid, mode);
 
 		for (;;)
 		{
@@ -459,7 +459,7 @@ LWLockAcquire(LWLockId lockid, LWLockMode mode)
 			extraWaits++;
 		}
 
-		TRACE_POSTGRESQL_LWLOCK_ENDWAIT(lockid, mode);
+		TRACE_POSTGRESQL_LWLOCK_WAIT_DONE(lockid, mode);
 
 		LOG_LWDEBUG("LWLockAcquire", lockid, "awakened");
 

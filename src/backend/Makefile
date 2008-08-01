@@ -147,7 +147,7 @@ $(top_builddir)/src/include/utils/probes.h: utils/probes.h
 
 ifeq ($(PORTNAME), solaris)
 utils/probes.o: utils/probes.d $(SUBDIROBJS)
-	$(DTRACE) $(DTRACEFLAGS) -G -s $(call expand_subsys,$^) -o $@
+	$(DTRACE) $(DTRACEFLAGS) -C -G -s $(call expand_subsys,$^) -o $@
 endif
 
 

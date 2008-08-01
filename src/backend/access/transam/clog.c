@@ -35,6 +35,7 @@
 #include "access/clog.h"
 #include "access/slru.h"
 #include "access/transam.h"
+#include "pg_trace.h"
 #include "postmaster/bgwriter.h"
 
 /*
@@ -313,7 +314,9 @@ void
 ShutdownCLOG(void)
 {
 	/* Flush dirty CLOG pages to disk */
+	TRACE_POSTGRESQL_CLOG_CHECKPOINT_START(false);
 	SimpleLruFlush(ClogCtl, false);
+	TRACE_POSTGRESQL_CLOG_CHECKPOINT_DONE(false);
 }
 
 /*
@@ -323,7 +326,9 @@ void
 CheckPointCLOG(void)
 {
 	/* Flush dirty CLOG pages to disk */
+	TRACE_POSTGRESQL_CLOG_CHECKPOINT_START(true);
 	SimpleLruFlush(ClogCtl, true);
+	TRACE_POSTGRESQL_CLOG_CHECKPOINT_DONE(true);
 }
 
 
