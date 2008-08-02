@@ -131,7 +131,7 @@ parseCheckAggregates(ParseState *pstate, Query *qry)
 	 */
 	foreach(l, qry->groupClause)
 	{
-		GroupClause *grpcl = (GroupClause *) lfirst(l);
+		SortGroupClause *grpcl = (SortGroupClause *) lfirst(l);
 		Node	   *expr;
 
 		expr = get_sortgroupclause_expr(grpcl, qry->targetList);

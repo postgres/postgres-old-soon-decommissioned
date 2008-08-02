@@ -756,6 +756,7 @@ _equalQuery(Query *a, Query *b)
 	COMPARE_NODE_FIELD(intoClause);
 	COMPARE_SCALAR_FIELD(hasAggs);
 	COMPARE_SCALAR_FIELD(hasSubLinks);
+	COMPARE_SCALAR_FIELD(hasDistinctOn);
 	COMPARE_NODE_FIELD(rtable);
 	COMPARE_NODE_FIELD(jointree);
 	COMPARE_NODE_FIELD(targetList);
@@ -1885,9 +1886,10 @@ _equalRangeTblEntry(RangeTblEntry *a, RangeTblEntry *b)
 }
 
 static bool
-_equalSortClause(SortClause *a, SortClause *b)
+_equalSortGroupClause(SortGroupClause *a, SortGroupClause *b)
 {
 	COMPARE_SCALAR_FIELD(tleSortGroupRef);
+	COMPARE_SCALAR_FIELD(eqop);
 	COMPARE_SCALAR_FIELD(sortop);
 	COMPARE_SCALAR_FIELD(nulls_first);
 
@@ -2515,12 +2517,8 @@ equal(void *a, void *b)
 		case T_RangeTblEntry:
 			retval = _equalRangeTblEntry(a, b);
 			break;
-		case T_SortClause:
-			retval = _equalSortClause(a, b);
-			break;
-		case T_GroupClause:
-			/* GroupClause is equivalent to SortClause */
-			retval = _equalSortClause(a, b);
+		case T_SortGroupClause:
+			retval = _equalSortGroupClause(a, b);
 			break;
 		case T_RowMarkClause:
 			retval = _equalRowMarkClause(a, b);

@@ -63,9 +63,6 @@ extern Relids find_nonnullable_rels(Node *clause);
 extern bool is_pseudo_constant_clause(Node *clause);
 extern bool is_pseudo_constant_clause_relids(Node *clause, Relids relids);
 
-extern bool has_distinct_clause(Query *query);
-extern bool has_distinct_on_clause(Query *query);
-
 extern int	NumRelids(Node *clause);
 
 extern void CommuteOpExpr(OpExpr *clause);

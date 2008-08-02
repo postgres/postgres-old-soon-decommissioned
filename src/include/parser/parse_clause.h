@@ -30,13 +30,14 @@ extern List *transformGroupClause(ParseState *pstate, List *grouplist,
 					 List **targetlist, List *sortClause);
 extern List *transformSortClause(ParseState *pstate, List *orderlist,
 					List **targetlist, bool resolveUnknown);
-extern List *transformDistinctClause(ParseState *pstate, List *distinctlist,
+extern List *transformDistinctClause(ParseState *pstate,
+						List **targetlist, List *sortClause);
+extern List *transformDistinctOnClause(ParseState *pstate, List *distinctlist,
 						List **targetlist, List *sortClause);
 
-extern List *addTargetToSortList(ParseState *pstate, TargetEntry *tle,
-					List *sortlist, List *targetlist,
-					SortByDir sortby_dir, SortByNulls sortby_nulls,
-					List *sortby_opname, bool resolveUnknown);
+extern List *addTargetToGroupList(ParseState *pstate, TargetEntry *tle,
+					 List *grouplist, List *targetlist,
+					 bool requireSortOp, bool resolveUnknown);
 extern Index assignSortGroupRef(TargetEntry *tle, List *tlist);
 extern bool targetIsInSortList(TargetEntry *tle, Oid sortop, List *sortList);
 

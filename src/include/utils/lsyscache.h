@@ -38,7 +38,7 @@ extern bool get_ordering_op_properties(Oid opno,
 						   Oid *opfamily, Oid *opcintype, int16 *strategy);
 extern bool get_compare_function_for_ordering_op(Oid opno,
 									 Oid *cmpfunc, bool *reverse);
-extern Oid	get_equality_op_for_ordering_op(Oid opno);
+extern Oid	get_equality_op_for_ordering_op(Oid opno, bool *reverse);
 extern Oid	get_ordering_op_for_equality_op(Oid opno, bool use_lhs_type);
 extern List *get_mergejoin_opfamilies(Oid opno);
 extern bool get_compatible_hash_operators(Oid opno,
@@ -47,7 +47,7 @@ extern bool get_op_hash_functions(Oid opno,
 					  RegProcedure *lhs_procno, RegProcedure *rhs_procno);
 extern void get_op_btree_interpretation(Oid opno,
 							List **opfamilies, List **opstrats);
-extern bool ops_in_same_btree_opfamily(Oid opno1, Oid opno2);
+extern bool equality_ops_are_compatible(Oid opno1, Oid opno2);
 extern Oid get_opfamily_proc(Oid opfamily, Oid lefttype, Oid righttype,
 				  int16 procnum);
 extern char *get_attname(Oid relid, AttrNumber attnum);
