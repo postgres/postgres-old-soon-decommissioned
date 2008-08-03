@@ -1351,15 +1351,11 @@ transformGroupClause(ParseState *pstate, List *grouplist,
 		/*
 		 * If no match in ORDER BY, just add it to the result using
 		 * default sort/group semantics.
-		 *
-		 * XXX for now, the planner requires groupClause to be sortable,
-		 * so we have to insist on that here.
 		 */
 		if (!found)
 			result = addTargetToGroupList(pstate, tle,
 										  result, *targetlist,
-										  true,	/* XXX for now */
-										  true);
+										  false, true);
 	}
 
 	return result;
