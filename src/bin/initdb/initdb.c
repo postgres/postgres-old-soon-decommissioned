@@ -2461,7 +2461,8 @@ main(int argc, char *argv[])
 		"pg_multixact/offsets",
 		"base",
 		"base/1",
-		"pg_tblspc"
+		"pg_tblspc",
+		"pg_stat_tmp"
 	};
 
 	progname = get_progname(argv[0]);
