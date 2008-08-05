@@ -338,9 +338,6 @@ ExecSupportsBackwardScan(Plan *node)
 		case T_Sort:
 			return true;
 
-		case T_Unique:
-			return ExecSupportsBackwardScan(outerPlan(node));
-
 		case T_Limit:
 			return ExecSupportsBackwardScan(outerPlan(node));
 
