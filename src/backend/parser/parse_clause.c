@@ -1447,9 +1447,6 @@ transformDistinctClause(ParseState *pstate,
 	/*
 	 * Now add any remaining non-resjunk tlist items, using default
 	 * sort/group semantics for their data types.
-	 *
-	 * XXX for now, the planner requires distinctClause to be sortable,
-	 * so we have to insist on that here.
 	 */
 	foreach(tlitem, *targetlist)
 	{
@@ -1459,8 +1456,7 @@ transformDistinctClause(ParseState *pstate,
 			continue;			/* ignore junk */
 		result = addTargetToGroupList(pstate, tle,
 									  result, *targetlist,
-									  true,	/* XXX for now */
-									  true);
+									  false, true);
 	}
 
 	return result;
@@ -1555,8 +1551,7 @@ transformDistinctOnClause(ParseState *pstate, List *distinctlist,
 					 errmsg("SELECT DISTINCT ON expressions must match initial ORDER BY expressions")));
 		result = addTargetToGroupList(pstate, tle,
 									  result, *targetlist,
-									  true,	/* someday allow hash-only? */
-									  true);
+									  false, true);
 	}
 
 	return result;
