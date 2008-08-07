@@ -599,6 +599,7 @@ _outSetOp(StringInfo str, SetOp *node)
 	_outPlanInfo(str, (Plan *) node);
 
 	WRITE_ENUM_FIELD(cmd, SetOpCmd);
+	WRITE_ENUM_FIELD(strategy, SetOpStrategy);
 	WRITE_INT_FIELD(numCols);
 
 	appendStringInfo(str, " :dupColIdx");
@@ -610,6 +611,7 @@ _outSetOp(StringInfo str, SetOp *node)
 		appendStringInfo(str, " %u", node->dupOperators[i]);
 
 	WRITE_INT_FIELD(flagColIdx);
+	WRITE_LONG_FIELD(numGroups);
 }
 
 static void

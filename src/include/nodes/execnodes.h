@@ -1414,21 +1414,31 @@ typedef struct HashState
 /* ----------------
  *	 SetOpState information
  *
- *		SetOp nodes are used "on top of" sort nodes to discard
- *		duplicate tuples returned from the sort phase.	These are
- *		more complex than a simple Unique since we have to count
- *		how many duplicates to return.
+ *		Even in "sorted" mode, SetOp nodes are more complex than a simple
+ *		Unique, since we have to count how many duplicates to return.  But
+ *		we also support hashing, so this is really more like a cut-down
+ *		form of Agg.
  * ----------------
  */
+/* this struct is private in nodeSetOp.c: */
+typedef struct SetOpStatePerGroupData *SetOpStatePerGroup;
+
 typedef struct SetOpState
 {
 	PlanState	ps;				/* its first field is NodeTag */
-	FmgrInfo   *eqfunctions;	/* per-field lookup data for equality fns */
-	bool		subplan_done;	/* has subplan returned EOF? */
-	long		numLeft;		/* number of left-input dups of cur group */
-	long		numRight;		/* number of right-input dups of cur group */
+	FmgrInfo   *eqfunctions;	/* per-grouping-field equality fns */
+	FmgrInfo   *hashfunctions;	/* per-grouping-field hash fns */
+	bool		setop_done;		/* indicates completion of output scan */
 	long		numOutput;		/* number of dups left to output */
 	MemoryContext tempContext;	/* short-term context for comparisons */
+	/* these fields are used in SETOP_SORTED mode: */
+	SetOpStatePerGroup pergroup;	/* per-group working state */
+	HeapTuple	grp_firstTuple; /* copy of first tuple of current group */
+	/* these fields are used in SETOP_HASHED mode: */
+	TupleHashTable hashtable;	/* hash table with one entry per group */
+	MemoryContext tableContext;	/* memory context containing hash table */
+	bool		table_filled;	/* hash table filled yet? */
+	TupleHashIterator hashiter; /* for iterating through hash table */
 } SetOpState;
 
 /* ----------------
