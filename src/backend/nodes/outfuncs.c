@@ -611,6 +611,7 @@ _outSetOp(StringInfo str, SetOp *node)
 		appendStringInfo(str, " %u", node->dupOperators[i]);
 
 	WRITE_INT_FIELD(flagColIdx);
+	WRITE_INT_FIELD(firstFlag);
 	WRITE_LONG_FIELD(numGroups);
 }
 

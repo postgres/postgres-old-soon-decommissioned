@@ -657,6 +657,7 @@ _copySetOp(SetOp *from)
 	COPY_POINTER_FIELD(dupColIdx, from->numCols * sizeof(AttrNumber));
 	COPY_POINTER_FIELD(dupOperators, from->numCols * sizeof(Oid));
 	COPY_SCALAR_FIELD(flagColIdx);
+	COPY_SCALAR_FIELD(firstFlag);
 	COPY_SCALAR_FIELD(numGroups);
 
 	return newnode;

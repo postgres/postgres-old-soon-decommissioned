@@ -541,6 +541,7 @@ typedef struct SetOp
 	AttrNumber *dupColIdx;		/* their indexes in the target list */
 	Oid		   *dupOperators;	/* equality operators to compare with */
 	AttrNumber	flagColIdx;		/* where is the flag column, if any */
+	int			firstFlag;		/* flag value for first input relation */
 	long		numGroups;		/* estimated number of groups in input */
 } SetOp;
 
