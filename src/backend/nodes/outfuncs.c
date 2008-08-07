@@ -1780,6 +1780,7 @@ _outSetOperationStmt(StringInfo str, SetOperationStmt *node)
 	WRITE_NODE_FIELD(rarg);
 	WRITE_NODE_FIELD(colTypes);
 	WRITE_NODE_FIELD(colTypmods);
+	WRITE_NODE_FIELD(groupClauses);
 }
 
 static void

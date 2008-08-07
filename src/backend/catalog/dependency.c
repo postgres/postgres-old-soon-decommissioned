@@ -1597,6 +1597,15 @@ find_expr_references_walker(Node *node,
 		context->rtables = list_delete_first(context->rtables);
 		return result;
 	}
+	else if (IsA(node, SetOperationStmt))
+	{
+		SetOperationStmt *setop = (SetOperationStmt *) node;
+
+		/* we need to look at the groupClauses for operator references */
+		find_expr_references_walker((Node *) setop->groupClauses, context);
+		/* fall through to examine child nodes */
+	}
+
 	return expression_tree_walker(node, find_expr_references_walker,
 								  (void *) context);
 }
