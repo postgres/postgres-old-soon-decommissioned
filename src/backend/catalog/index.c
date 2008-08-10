@@ -2373,9 +2373,13 @@ reindex_relation(Oid relid, bool toast_too)
 	 * problem.
 	 */
 	is_pg_class = (RelationGetRelid(rel) == RelationRelationId);
-	doneIndexes = NIL;
+
+	/* Ensure rd_indexattr is valid; see comments for RelationSetIndexList */
+	if (is_pg_class)
+		(void) RelationGetIndexAttrBitmap(rel);
 
 	/* Reindex all the indexes. */
+	doneIndexes = NIL;
 	foreach(indexId, indexIds)
 	{
 		Oid			indexOid = lfirst_oid(indexId);
