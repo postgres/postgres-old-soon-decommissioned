@@ -270,10 +270,11 @@ end_heap_rewrite(RewriteState state)
 	{
 		if (state->rs_use_wal)
 			log_newpage(&state->rs_new_rel->rd_node,
+						MAIN_FORKNUM,
 						state->rs_blockno,
 						state->rs_buffer);
 		RelationOpenSmgr(state->rs_new_rel);
-		smgrextend(state->rs_new_rel->rd_smgr, state->rs_blockno,
+		smgrextend(state->rs_new_rel->rd_smgr, MAIN_FORKNUM, state->rs_blockno,
 				   (char *) state->rs_buffer, true);
 	}
 
@@ -606,6 +607,7 @@ raw_heap_insert(RewriteState state, HeapTuple tup)
 			/* XLOG stuff */
 			if (state->rs_use_wal)
 				log_newpage(&state->rs_new_rel->rd_node,
+							MAIN_FORKNUM,
 							state->rs_blockno,
 							page);
 
@@ -616,8 +618,8 @@ raw_heap_insert(RewriteState state, HeapTuple tup)
 			 * end_heap_rewrite.
 			 */
 			RelationOpenSmgr(state->rs_new_rel);
-			smgrextend(state->rs_new_rel->rd_smgr, state->rs_blockno,
-					   (char *) page, true);
+			smgrextend(state->rs_new_rel->rd_smgr, MAIN_FORKNUM,
+					   state->rs_blockno, (char *) page, true);
 
 			state->rs_blockno++;
 			state->rs_buffer_valid = false;

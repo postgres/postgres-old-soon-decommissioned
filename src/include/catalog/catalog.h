@@ -19,7 +19,7 @@
 #include "utils/relcache.h"
 
 
-extern char *relpath(RelFileNode rnode);
+extern char *relpath(RelFileNode rnode, ForkNumber forknum);
 extern char *GetDatabasePath(Oid dbNode, Oid spcNode);
 
 extern bool IsSystemRelation(Relation relation);

@@ -127,7 +127,8 @@ extern XLogRecPtr log_heap_clean(Relation reln, Buffer buffer,
 extern XLogRecPtr log_heap_freeze(Relation reln, Buffer buffer,
 				TransactionId cutoff_xid,
 				OffsetNumber *offsets, int offcnt);
-extern XLogRecPtr log_newpage(RelFileNode *rnode, BlockNumber blk, Page page);
+extern XLogRecPtr log_newpage(RelFileNode *rnode, ForkNumber forkNum,
+							  BlockNumber blk, Page page);
 
 /* in heap/pruneheap.c */
 extern void heap_page_prune_opt(Relation relation, Buffer buffer,

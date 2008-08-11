@@ -19,11 +19,14 @@
 
 extern void XLogCheckInvalidPages(void);
 
-extern void XLogDropRelation(RelFileNode rnode);
+extern void XLogDropRelation(RelFileNode rnode, ForkNumber forknum);
 extern void XLogDropDatabase(Oid dbid);
-extern void XLogTruncateRelation(RelFileNode rnode, BlockNumber nblocks);
+extern void XLogTruncateRelation(RelFileNode rnode, ForkNumber forkNum,
+								 BlockNumber nblocks);
 
 extern Buffer XLogReadBuffer(RelFileNode rnode, BlockNumber blkno, bool init);
+extern Buffer XLogReadBufferWithFork(RelFileNode rnode, ForkNumber forknum,
+									 BlockNumber blkno, bool init);
 
 extern Relation CreateFakeRelcacheEntry(RelFileNode rnode);
 extern void FreeFakeRelcacheEntry(Relation fakerel);

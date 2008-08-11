@@ -27,7 +27,8 @@ extern void BackgroundWriterMain(void);
 extern void RequestCheckpoint(int flags);
 extern void CheckpointWriteDelay(int flags, double progress);
 
-extern bool ForwardFsyncRequest(RelFileNode rnode, BlockNumber segno);
+extern bool ForwardFsyncRequest(RelFileNode rnode, ForkNumber forknum,
+								BlockNumber segno);
 extern void AbsorbFsyncRequests(void);
 
 extern Size BgWriterShmemSize(void);

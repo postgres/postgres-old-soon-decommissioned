@@ -670,6 +670,7 @@ typedef struct xl_heap_clean
 typedef struct xl_heap_newpage
 {
 	RelFileNode node;
+	ForkNumber	forknum;
 	BlockNumber blkno;			/* location of new page */
 	/* entire page contents follow at end of record */
 } xl_heap_newpage;

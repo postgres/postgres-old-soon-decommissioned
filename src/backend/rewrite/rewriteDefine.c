@@ -482,8 +482,14 @@ DefineQueryRewrite(char *rulename,
 	 */
 	if (RelisBecomingView)
 	{
+		ForkNumber forknum;
+
 		RelationOpenSmgr(event_relation);
-		smgrscheduleunlink(event_relation->rd_smgr, event_relation->rd_istemp);
+		for (forknum = 0; forknum <= MAX_FORKNUM; forknum++)
+			if (smgrexists(event_relation->rd_smgr, forknum))
+				smgrscheduleunlink(event_relation->rd_smgr, forknum,
+								   event_relation->rd_istemp);
+		RelationCloseSmgr(event_relation);
 	}
 
 	/* Close rel, but keep lock till commit... */

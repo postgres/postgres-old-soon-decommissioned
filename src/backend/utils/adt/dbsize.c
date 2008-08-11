@@ -255,7 +255,8 @@ calculate_relation_size(RelFileNode *rfn)
 	char		pathname[MAXPGPATH];
 	unsigned int segcount = 0;
 
-	relationpath = relpath(*rfn);
+	/* XXX: This ignores the other forks. */
+	relationpath = relpath(*rfn, MAIN_FORKNUM);
 
 	for (segcount = 0;; segcount++)
 	{

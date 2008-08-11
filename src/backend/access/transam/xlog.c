@@ -1034,8 +1034,7 @@ XLogCheckBuffer(XLogRecData *rdata, bool doPageWrites,
 		/*
 		 * The page needs to be backed up, so set up *bkpb
 		 */
-		bkpb->node = BufferGetFileNode(rdata->buffer);
-		bkpb->block = BufferGetBlockNumber(rdata->buffer);
+		BufferGetTag(rdata->buffer, &bkpb->node, &bkpb->fork, &bkpb->block);
 
 		if (rdata->buffer_std)
 		{
@@ -2855,7 +2854,8 @@ RestoreBkpBlocks(XLogRecord *record, XLogRecPtr lsn)
 		memcpy(&bkpb, blk, sizeof(BkpBlock));
 		blk += sizeof(BkpBlock);
 
-		buffer = XLogReadBuffer(bkpb.node, bkpb.block, true);
+		buffer = XLogReadBufferWithFork(bkpb.node, bkpb.fork, bkpb.block,
+										true);
 		Assert(BufferIsValid(buffer));
 		page = (Page) BufferGetPage(buffer);
 

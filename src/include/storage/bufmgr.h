@@ -144,11 +144,13 @@ extern PGDLLIMPORT int32 *LocalRefCount;
  * prototypes for functions in bufmgr.c
  */
 extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
+extern Buffer ReadBufferWithFork(Relation reln, ForkNumber forkNum, BlockNumber blockNum);
 extern Buffer ReadBufferWithStrategy(Relation reln, BlockNumber blockNum,
 					   BufferAccessStrategy strategy);
-extern Buffer ReadOrZeroBuffer(Relation reln, BlockNumber blockNum);
+extern Buffer ReadOrZeroBuffer(Relation reln, ForkNumber forkNum,
+							   BlockNumber blockNum);
 extern Buffer ReadBufferWithoutRelcache(RelFileNode rnode, bool isTemp,
-							 BlockNumber blockNum, bool zeroPage);
+					ForkNumber forkNum, BlockNumber blockNum, bool zeroPage);
 extern void ReleaseBuffer(Buffer buffer);
 extern void UnlockReleaseBuffer(Buffer buffer);
 extern void MarkBufferDirty(Buffer buffer);
@@ -169,15 +171,16 @@ extern BlockNumber RelationGetNumberOfBlocks(Relation relation);
 extern void RelationTruncate(Relation rel, BlockNumber nblocks);
 extern void FlushRelationBuffers(Relation rel);
 extern void FlushDatabaseBuffers(Oid dbid);
-extern void DropRelFileNodeBuffers(RelFileNode rnode, bool istemp,
-					   BlockNumber firstDelBlock);
+extern void DropRelFileNodeBuffers(RelFileNode rnode, ForkNumber forkNum,
+					   bool istemp, BlockNumber firstDelBlock);
 extern void DropDatabaseBuffers(Oid dbid);
 
 #ifdef NOT_USED
 extern void PrintPinnedBufs(void);
 #endif
 extern Size BufferShmemSize(void);
-extern RelFileNode BufferGetFileNode(Buffer buffer);
+extern void BufferGetTag(Buffer buffer, RelFileNode *rnode, 
+						 ForkNumber *forknum, BlockNumber *blknum);
 
 extern void SetBufferCommitInfoNeedsSave(Buffer buffer);
 
