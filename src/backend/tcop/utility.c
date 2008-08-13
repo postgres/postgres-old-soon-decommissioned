@@ -836,7 +836,7 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_VacuumStmt:
-			vacuum((VacuumStmt *) parsetree, InvalidOid, NULL, false,
+			vacuum((VacuumStmt *) parsetree, InvalidOid, true, NULL, false,
 				   isTopLevel);
 			break;
 
