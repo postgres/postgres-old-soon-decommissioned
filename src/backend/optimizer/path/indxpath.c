@@ -1631,16 +1631,16 @@ best_inner_indexscan(PlannerInfo *root, RelOptInfo *rel,
 	*cheapest_startup = *cheapest_total = NULL;
 
 	/*
-	 * Nestloop only supports inner, left, and IN joins.
+	 * Nestloop only supports inner, left, semi, and anti joins.
 	 */
 	switch (jointype)
 	{
 		case JOIN_INNER:
-		case JOIN_IN:
-		case JOIN_UNIQUE_OUTER:
 			isouterjoin = false;
 			break;
 		case JOIN_LEFT:
+		case JOIN_SEMI:
+		case JOIN_ANTI:
 			isouterjoin = true;
 			break;
 		default:

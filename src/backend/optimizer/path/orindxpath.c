@@ -169,11 +169,11 @@ create_or_index_quals(PlannerInfo *root, RelOptInfo *rel)
 	 * selectivity will stay cached ...)
 	 */
 	or_selec = clause_selectivity(root, (Node *) or_rinfo,
-								  0, JOIN_INNER);
+								  0, JOIN_INNER, NULL);
 	if (or_selec > 0 && or_selec < 1)
 	{
 		orig_selec = clause_selectivity(root, (Node *) bestrinfo,
-										0, JOIN_INNER);
+										0, JOIN_INNER, NULL);
 		bestrinfo->this_selec = orig_selec / or_selec;
 		/* clamp result to sane range */
 		if (bestrinfo->this_selec > 1)

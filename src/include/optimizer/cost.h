@@ -87,9 +87,12 @@ extern void cost_group(Path *path, PlannerInfo *root,
 		   int numGroupCols, double numGroups,
 		   Cost input_startup_cost, Cost input_total_cost,
 		   double input_tuples);
-extern void cost_nestloop(NestPath *path, PlannerInfo *root);
-extern void cost_mergejoin(MergePath *path, PlannerInfo *root);
-extern void cost_hashjoin(HashPath *path, PlannerInfo *root);
+extern void cost_nestloop(NestPath *path, PlannerInfo *root,
+						  SpecialJoinInfo *sjinfo);
+extern void cost_mergejoin(MergePath *path, PlannerInfo *root,
+						   SpecialJoinInfo *sjinfo);
+extern void cost_hashjoin(HashPath *path, PlannerInfo *root,
+						  SpecialJoinInfo *sjinfo);
 extern void cost_qual_eval(QualCost *cost, List *quals, PlannerInfo *root);
 extern void cost_qual_eval_node(QualCost *cost, Node *qual, PlannerInfo *root);
 extern Cost get_initplan_cost(PlannerInfo *root, SubPlan *subplan);
@@ -97,7 +100,7 @@ extern void set_baserel_size_estimates(PlannerInfo *root, RelOptInfo *rel);
 extern void set_joinrel_size_estimates(PlannerInfo *root, RelOptInfo *rel,
 						   RelOptInfo *outer_rel,
 						   RelOptInfo *inner_rel,
-						   JoinType jointype,
+						   SpecialJoinInfo *sjinfo,
 						   List *restrictlist);
 extern void set_function_size_estimates(PlannerInfo *root, RelOptInfo *rel);
 extern void set_values_size_estimates(PlannerInfo *root, RelOptInfo *rel);
@@ -109,10 +112,12 @@ extern void set_values_size_estimates(PlannerInfo *root, RelOptInfo *rel);
 extern Selectivity clauselist_selectivity(PlannerInfo *root,
 					   List *clauses,
 					   int varRelid,
-					   JoinType jointype);
+					   JoinType jointype,
+					   SpecialJoinInfo *sjinfo);
 extern Selectivity clause_selectivity(PlannerInfo *root,
 				   Node *clause,
 				   int varRelid,
-				   JoinType jointype);
+				   JoinType jointype,
+				   SpecialJoinInfo *sjinfo);
 
 #endif   /* COST_H */

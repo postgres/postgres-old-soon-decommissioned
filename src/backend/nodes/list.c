@@ -784,6 +784,42 @@ list_union_oid(List *list1, List *list2)
 }
 
 /*
+ * Return a list that contains all the cells that are in both list1 and
+ * list2.  The returned list is freshly allocated via palloc(), but the
+ * cells themselves point to the same objects as the cells of the
+ * input lists.
+ *
+ * Duplicate entries in list1 will not be suppressed, so it's only a true
+ * "intersection" if list1 is known unique beforehand.
+ *
+ * This variant works on lists of pointers, and determines list
+ * membership via equal().  Note that the list1 member will be pointed
+ * to in the result.
+ */
+List *
+list_intersection(List *list1, List *list2)
+{
+	List	   *result;
+	ListCell   *cell;
+
+	if (list1 == NIL || list2 == NIL)
+		return NIL;
+
+	Assert(IsPointerList(list1));
+	Assert(IsPointerList(list2));
+
+	result = NIL;
+	foreach(cell, list1)
+	{
+		if (list_member(list2, lfirst(cell)))
+			result = lappend(result, lfirst(cell));
+	}
+
+	check_list_invariants(result);
+	return result;
+}
+
+/*
  * Return a list that contains all the cells in list1 that are not in
  * list2. The returned list is freshly allocated via palloc(), but the
  * cells themselves point to the same objects as the cells of the
