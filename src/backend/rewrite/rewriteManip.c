@@ -509,6 +509,25 @@ IncrementVarSublevelsUp(Node *node, int delta_sublevels_up,
 									0);
 }
 
+/*
+ * IncrementVarSublevelsUp_rtable -
+ *	Same as IncrementVarSublevelsUp, but to be invoked on a range table.
+ */
+void
+IncrementVarSublevelsUp_rtable(List *rtable, int delta_sublevels_up,
+							   int min_sublevels_up)
+{
+	IncrementVarSublevelsUp_context context;
+
+	context.delta_sublevels_up = delta_sublevels_up;
+	context.min_sublevels_up = min_sublevels_up;
+
+	range_table_walker(rtable,
+					   IncrementVarSublevelsUp_walker,
+					   (void *) &context,
+					   0);
+}
+
 
 /*
  * rangeTableEntry_used - detect whether an RTE is referenced somewhere
