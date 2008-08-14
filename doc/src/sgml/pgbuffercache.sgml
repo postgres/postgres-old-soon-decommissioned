@@ -81,6 +81,13 @@
      </row>
 
      <row>
+      <entry><structfield>relforknumber</structfield></entry>
+      <entry><type>smallint</type></entry>
+      <entry></entry>
+      <entry>Fork number within the relation</entry>
+     </row>
+
+     <row>
       <entry><structfield>isdirty</structfield></entry>
       <entry><type>boolean</type></entry>
       <entry></entry>
