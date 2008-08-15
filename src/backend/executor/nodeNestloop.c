@@ -226,35 +226,36 @@ ExecNestLoop(NestLoopState *node)
 
 			/* In an antijoin, we never return a matched tuple */
 			if (node->js.jointype == JOIN_ANTI)
+			{
 				node->nl_NeedNewOuter = true;
-			else
+				continue;		/* return to top of loop */
+			}
+
+			/*
+			 * In a semijoin, we'll consider returning the first match,
+			 * but after that we're done with this outer tuple.
+			 */
+			if (node->js.jointype == JOIN_SEMI)
+				node->nl_NeedNewOuter = true;
+
+			if (otherqual == NIL || ExecQual(otherqual, econtext, false))
 			{
 				/*
-				 * In a semijoin, we'll consider returning the first match,
-				 * but after that we're done with this outer tuple.
+				 * qualification was satisfied so we project and return the
+				 * slot containing the result tuple using ExecProject().
 				 */
-				if (node->js.jointype == JOIN_SEMI)
-					node->nl_NeedNewOuter = true;
-				if (otherqual == NIL || ExecQual(otherqual, econtext, false))
+				TupleTableSlot *result;
+				ExprDoneCond isDone;
+
+				ENL1_printf("qualification succeeded, projecting tuple");
+
+				result = ExecProject(node->js.ps.ps_ProjInfo, &isDone);
+
+				if (isDone != ExprEndResult)
 				{
-					/*
-					 * qualification was satisfied so we project and return
-					 * the slot containing the result tuple using
-					 * ExecProject().
-					 */
-					TupleTableSlot *result;
-					ExprDoneCond isDone;
-
-					ENL1_printf("qualification succeeded, projecting tuple");
-
-					result = ExecProject(node->js.ps.ps_ProjInfo, &isDone);
-
-					if (isDone != ExprEndResult)
-					{
-						node->js.ps.ps_TupFromTlist =
-							(isDone == ExprMultipleResult);
-						return result;
-					}
+					node->js.ps.ps_TupFromTlist =
+						(isDone == ExprMultipleResult);
+					return result;
 				}
 			}
 		}
