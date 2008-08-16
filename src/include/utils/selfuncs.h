@@ -104,8 +104,10 @@ extern bool get_restriction_variable(PlannerInfo *root, List *args,
 						 VariableStatData *vardata, Node **other,
 						 bool *varonleft);
 extern void get_join_variables(PlannerInfo *root, List *args,
+				   SpecialJoinInfo *sjinfo,
 				   VariableStatData *vardata1,
-				   VariableStatData *vardata2);
+				   VariableStatData *vardata2,
+				   bool *join_is_reversed);
 extern double get_variable_numdistinct(VariableStatData *vardata);
 extern double mcv_selectivity(VariableStatData *vardata, FmgrInfo *opproc,
 				Datum constval, bool varonleft,

@@ -50,6 +50,7 @@ extern Selectivity restriction_selectivity(PlannerInfo *root,
 extern Selectivity join_selectivity(PlannerInfo *root,
 				 Oid operator,
 				 List *args,
-				 JoinType jointype);
+				 JoinType jointype,
+				 SpecialJoinInfo *sjinfo);
 
 #endif   /* PLANCAT_H */
