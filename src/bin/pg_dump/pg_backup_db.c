@@ -303,8 +303,6 @@ _executeSqlCommand(ArchiveHandle *AH, PGconn *conn, PQExpBuffer qry, char *desc)
 
 	/* fprintf(stderr, "Executing: '%s'\n\n", qry->data); */
 	res = PQexec(conn, qry->data);
-	if (!res)
-		die_horribly(AH, modulename, "%s: no result from server\n", desc);
 
 	if (PQresultStatus(res) != PGRES_COMMAND_OK && PQresultStatus(res) != PGRES_TUPLES_OK)
 	{
@@ -317,7 +315,7 @@ _executeSqlCommand(ArchiveHandle *AH, PGconn *conn, PQExpBuffer qry, char *desc)
 		}
 		else
 			die_horribly(AH, modulename, "%s: %s",
-						 desc, PQerrorMessage(AH->connection));
+						 desc, PQerrorMessage(conn));
 	}
 
 	PQclear(res);
