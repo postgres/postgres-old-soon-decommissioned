@@ -1197,10 +1197,10 @@ do_connect(char *dbname, char *user, char *host, char *port)
 	 * Replace the old connection with the new one, and update
 	 * connection-dependent variables.
 	 */
-	connection_warnings();
 	PQsetNoticeProcessor(n_conn, NoticeProcessor, NULL);
 	pset.db = n_conn;
 	SyncVariables();
+	connection_warnings(); /* Must be after SyncVariables */
 
 	/* Tell the user about the new connection */
 	if (!pset.quiet)
