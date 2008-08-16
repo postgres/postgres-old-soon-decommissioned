@@ -309,8 +309,6 @@ _executeSqlCommand(ArchiveHandle *AH, PGconn *conn, PQExpBuffer qry, char *desc)
 
 	/* fprintf(stderr, "Executing: '%s'\n\n", qry->data); */
 	res = PQexec(conn, qry->data);
-	if (!res)
-		die_horribly(AH, modulename, "%s: no result from server\n", desc);
 
 	if (PQresultStatus(res) != PGRES_COMMAND_OK && PQresultStatus(res) != PGRES_TUPLES_OK)
 	{
@@ -332,8 +330,7 @@ _executeSqlCommand(ArchiveHandle *AH, PGconn *conn, PQExpBuffer qry, char *desc)
 				errStmt[DB_MAX_ERR_STMT - 1] = '\0';
 			}
 			warn_or_die_horribly(AH, modulename, "%s: %s    Command was: %s\n",
-								 desc, PQerrorMessage(AH->connection),
-								 errStmt);
+								 desc, PQerrorMessage(conn), errStmt);
 		}
 	}
 
