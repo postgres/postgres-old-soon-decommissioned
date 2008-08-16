@@ -2577,11 +2577,11 @@ exec_query(const char *query)
 
 	result = PQexec(pset.db, query);
 
-	if (result != NULL && PQresultStatus(result) != PGRES_TUPLES_OK)
+	if (PQresultStatus(result) != PGRES_TUPLES_OK)
 	{
 #if 0
-		psql_error("tab completion: %s failed - %s\n",
-				   query, PQresStatus(PQresultStatus(result)));
+		psql_error("tab completion query failed: %s\nQuery was:\n%s\n",
+				   PQerrorMessage(pset.db), query);
 #endif
 		PQclear(result);
 		result = NULL;
