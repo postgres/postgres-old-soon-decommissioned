@@ -970,14 +970,6 @@ convert_EXISTS_sublink_to_join(PlannerInfo *root, SubLink *sublink,
 		return false;
 
 	/*
-	 * Also disallow SubLinks within the WHERE clause.  (XXX this could
-	 * probably be supported, but it would complicate the transformation
-	 * below, and it doesn't seem worth worrying about in a first pass.)
-	 */
-	if (contain_subplans(whereClause))
-		return false;
-
-	/*
 	 * Prepare to pull up the sub-select into top range table.
 	 *
 	 * We rely here on the assumption that the outer query has no references
