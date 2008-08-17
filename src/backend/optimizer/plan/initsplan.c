@@ -778,7 +778,9 @@ distribute_qual_to_rels(PlannerInfo *root, Node *clause,
 				root->hasPseudoConstantQuals = true;
 				/* if not below outer join, push it to top of tree */
 				if (!below_outer_join)
-					relids = get_relids_in_jointree((Node *) root->parse->jointree);
+					relids =
+						get_relids_in_jointree((Node *) root->parse->jointree,
+											   false);
 			}
 		}
 	}

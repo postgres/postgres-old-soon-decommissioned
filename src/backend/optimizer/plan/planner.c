@@ -268,14 +268,13 @@ subquery_planner(PlannerGlobal *glob, Query *parse,
 	root->append_rel_list = NIL;
 
 	/*
-	 * Look for ANY and EXISTS SubLinks at the top level of WHERE, and try to
-	 * transform them into joins.  Note that this step only handles SubLinks
-	 * originally at top level of WHERE; if we pull up any subqueries below,
-	 * their SubLinks are processed just before pulling them up.
+	 * Look for ANY and EXISTS SubLinks in WHERE and JOIN/ON clauses, and try
+	 * to transform them into joins.  Note that this step does not descend
+	 * into subqueries; if we pull up any subqueries below, their SubLinks are
+	 * processed just before pulling them up.
 	 */
 	if (parse->hasSubLinks)
-		parse->jointree->quals = pull_up_sublinks(root,
-												  parse->jointree->quals);
+		pull_up_sublinks(root);
 
 	/*
 	 * Scan the rangetable for set-returning functions, and inline them

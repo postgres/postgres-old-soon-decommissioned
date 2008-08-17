@@ -21,12 +21,12 @@
 /*
  * prototypes for prepjointree.c
  */
-extern Node *pull_up_sublinks(PlannerInfo *root, Node *node);
+extern void pull_up_sublinks(PlannerInfo *root);
 extern void inline_set_returning_functions(PlannerInfo *root);
 extern Node *pull_up_subqueries(PlannerInfo *root, Node *jtnode,
 				   bool below_outer_join, bool append_rel_member);
 extern void reduce_outer_joins(PlannerInfo *root);
-extern Relids get_relids_in_jointree(Node *jtnode);
+extern Relids get_relids_in_jointree(Node *jtnode, bool include_joins);
 extern Relids get_relids_for_join(PlannerInfo *root, int joinrelid);
 
 /*
