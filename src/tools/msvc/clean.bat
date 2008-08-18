@@ -20,6 +20,7 @@ if exist src\include\pg_config.h del /q src\include\pg_config.h
 if exist src\include\pg_config_os.h del /q src\include\pg_config_os.h
 if %DIST%==1 if exist src\backend\parser\parse.h del /q src\backend\parser\parse.h
 if exist src\include\utils\fmgroids.h del /q src\include\utils\fmgroids.h
+if exist src\include\utils\probes.h del /q src\include\utils\probes.h
 
 if exist src\backend\utils\fmgroids.h del /q src\backend\utils\fmgroids.h
 if exist src\backend\utils\fmgrtab.c del /q src\backend\utils\fmgrtab.c
