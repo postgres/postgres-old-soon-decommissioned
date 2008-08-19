@@ -1247,7 +1247,16 @@ iso_level:	READ UNCOMMITTED	{ $$ = make_str("read uncommitted"); }
 		;
 
 var_value:	opt_boolean		{ $$ = $1; }
-		| AllConst			{ $$ = $1; }
+		| AllConst			{ 	/* we have to check for a variable here because it has to be
+						     	replaced with its value on the client side */
+							if ($1[1] == '$')
+							{
+								$$ = make_str("$0");
+								free($1);
+							}
+							else
+								$$ = $1;
+						}
 		| ColId				{ $$ = $1; }
 		;
 
