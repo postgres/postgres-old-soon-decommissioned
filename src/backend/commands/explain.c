@@ -169,7 +169,7 @@ ExplainOneQuery(Query *query, ExplainStmt *stmt, const char *queryString,
 		PlannedStmt *plan;
 
 		/* plan the query */
-		plan = planner(query, 0, params);
+		plan = pg_plan_query(query, 0, params);
 
 		/* run it (if needed) and produce output */
 		ExplainOnePlan(plan, params, stmt, tstate);
