@@ -752,7 +752,16 @@ pqSendSome(PGconn *conn, int len)
 		int			sent;
 		char		sebuf[256];
 
+#ifndef WIN32
 		sent = pqsecure_write(conn, ptr, len);
+#else
+		/*
+		 * Windows can fail on large sends, per KB article Q201213. The failure-point
+		 * appears to be different in different versions of Windows, but 64k should
+		 * always be safe.
+		 */
+		sent = pqsecure_write(conn, ptr, Min(len, 65536));
+#endif
 
 		if (sent < 0)
 		{
