@@ -3197,9 +3197,7 @@ do_to_timestamp(text *date_txt, text *fmt,
 		 * ISO week (Monday).
 		 */
 		if (tmfc.d)
-		{
 			isoweekdate2date(tmfc.iw, tmfc.d, &tm->tm_year, &tm->tm_mon, &tm->tm_mday);
-		}
 		else
 			isoweek2date(tmfc.iw, &tm->tm_year, &tm->tm_mon, &tm->tm_mday);
 	}
