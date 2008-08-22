@@ -1901,7 +1901,7 @@ static struct config_int ConfigureNamesInt[] =
 	},
 
 	{
-		{"log_temp_files", PGC_USERSET, LOGGING_WHAT,
+		{"log_temp_files", PGC_SUSET, LOGGING_WHAT,
 			gettext_noop("Log the use of temporary files larger than this number of kilobytes."),
 			gettext_noop("Zero logs all files. The default is -1 (turning this feature off)."),
 			GUC_UNIT_KB

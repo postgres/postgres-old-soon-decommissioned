@@ -3175,6 +3175,7 @@ local0.*    /var/log/postgresql
         values log only files whose size is equal or greater than
         the specified number of kilobytes.  The
         default is <literal>-1</>, which disables this logging.
+        Only superusers can change this setting.
        </para>
       </listitem>
      </varlistentry>
