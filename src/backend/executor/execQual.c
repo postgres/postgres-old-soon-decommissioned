@@ -3957,6 +3957,19 @@ ExecInitExpr(Expr *node, PlanState *parent)
 				state = (ExprState *) sstate;
 			}
 			break;
+		case T_AlternativeSubPlan:
+			{
+				AlternativeSubPlan *asplan = (AlternativeSubPlan *) node;
+				AlternativeSubPlanState *asstate;
+
+				if (!parent)
+					elog(ERROR, "AlternativeSubPlan found with no parent plan");
+
+				asstate = ExecInitAlternativeSubPlan(asplan, parent);
+
+				state = (ExprState *) asstate;
+			}
+			break;
 		case T_FieldSelect:
 			{
 				FieldSelect *fselect = (FieldSelect *) node;

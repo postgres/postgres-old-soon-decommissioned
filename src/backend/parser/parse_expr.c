@@ -1980,6 +1980,15 @@ exprType(Node *expr)
 				}
 			}
 			break;
+		case T_AlternativeSubPlan:
+			{
+				/* As above, supported for the convenience of ruleutils.c */
+				AlternativeSubPlan *asplan = (AlternativeSubPlan *) expr;
+
+				/* subplans should all return the same thing */
+				type = exprType((Node *) linitial(asplan->subplans));
+			}
+			break;
 		case T_FieldSelect:
 			type = ((FieldSelect *) expr)->resulttype;
 			break;

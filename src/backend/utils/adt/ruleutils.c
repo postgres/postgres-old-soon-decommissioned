@@ -3732,6 +3732,11 @@ get_rule_expr(Node *node, deparse_context *context,
 			}
 			break;
 
+		case T_AlternativeSubPlan:
+			/* As above, just punt */
+			appendStringInfo(buf, "(alternative subplans)");
+			break;
+
 		case T_FieldSelect:
 			{
 				FieldSelect *fselect = (FieldSelect *) node;
