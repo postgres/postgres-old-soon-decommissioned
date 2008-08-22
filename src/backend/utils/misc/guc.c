@@ -4598,16 +4598,18 @@ set_config_option(const char *name, const char *value,
 				if (changeVal && !is_newvalue_equal(record, value))
 					ereport(elevel,
 							(errcode(ERRCODE_CANT_CHANGE_RUNTIME_PARAM),
-							 errmsg("parameter \"%s\" cannot be changed after server start; configuration file change ignored",
-									name)));
+							 errmsg("attempted change of parameter \"%s\" ignored",
+									name),
+							 errdetail("This parameter cannot be changed after server start.")));
 				return true;
 			}
 			if (context != PGC_POSTMASTER)
 			{
 				ereport(elevel,
 						(errcode(ERRCODE_CANT_CHANGE_RUNTIME_PARAM),
-						 errmsg("parameter \"%s\" cannot be changed after server start",
-								name)));
+						 errmsg("attempted change of parameter \"%s\" ignored",
+								name),
+						 errdetail("This parameter cannot be changed after server start.")));
 				return false;
 			}
 			break;

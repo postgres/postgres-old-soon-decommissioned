@@ -258,8 +258,9 @@ ProcessConfigFile(GucContext context)
 		{
 			ereport(elevel,
 					(errcode(ERRCODE_CANT_CHANGE_RUNTIME_PARAM),
-					 errmsg("parameter \"%s\" cannot be changed after server start; configuration file change ignored",
-							gconf->name)));
+					 errmsg("attempted change of parameter \"%s\" ignored",
+							gconf->name),
+					 errdetail("This parameter cannot be changed after server start.")));
 			continue;
 		}
 
