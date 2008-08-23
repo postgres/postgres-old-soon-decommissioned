@@ -58,6 +58,12 @@ typedef struct GISTSTATE
 	TupleDesc	tupdesc;
 } GISTSTATE;
 
+typedef struct ItemResult
+{
+	ItemPointerData		iptr;
+	bool				recheck;
+} ItemResult;
+
 /*
  *	When we're doing a scan, we need to keep track of the parent stack
  *	for the marked and current items.
@@ -73,6 +79,13 @@ typedef struct GISTScanOpaqueData
 	ItemPointerData curpos;
 	Buffer		markbuf;
 	ItemPointerData markpos;
+
+	ItemResult		pageData[BLCKSZ/sizeof(IndexTupleData)];
+	OffsetNumber	nPageData;
+	OffsetNumber	curPageData;
+	ItemResult		markPageData[BLCKSZ/sizeof(IndexTupleData)];
+	OffsetNumber	markNPageData;
+	OffsetNumber	markCurPageData;
 } GISTScanOpaqueData;
 
 typedef GISTScanOpaqueData *GISTScanOpaque;
