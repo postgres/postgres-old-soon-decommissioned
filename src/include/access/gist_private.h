@@ -73,6 +73,13 @@ typedef struct GISTScanOpaqueData
 	MemoryContext tempCxt;
 	Buffer		curbuf;
 	Buffer		markbuf;
+
+	ItemPointerData pageData[BLCKSZ/sizeof(IndexTupleData)];
+	OffsetNumber    nPageData;
+	OffsetNumber    curPageData;
+	ItemPointerData markPageData[BLCKSZ/sizeof(IndexTupleData)];
+	OffsetNumber    markNPageData;
+	OffsetNumber    markCurPageData;
 } GISTScanOpaqueData;
 
 typedef GISTScanOpaqueData *GISTScanOpaque;
