@@ -175,8 +175,10 @@ ifeq ($(enable_shared), yes)
 		obj=$$1; shift; \
 		echo "-- $$se --> $$de"; \
 		echo "CREATE OR REPLACE FUNCTION $$func (INTEGER, INTEGER, CSTRING, INTERNAL, INTEGER) RETURNS VOID AS '$$"libdir"/$$obj', '$$func' LANGUAGE C STRICT;"; \
+	        echo "COMMENT ON FUNCTION $$func(INTEGER, INTEGER, CSTRING, INTERNAL, INTEGER) IS 'internal conversion function for $$se to $$de';"; \
 		echo "DROP CONVERSION pg_catalog.$$name;"; \
 		echo "CREATE DEFAULT CONVERSION pg_catalog.$$name FOR '$$se' TO '$$de' FROM $$func;"; \
+	        echo "COMMENT ON CONVERSION pg_catalog.$$name IS 'conversion for $$se to $$de';"; \
 	done > $@
 else
 	echo "-- No conversion support, for lack of shared library support" > $@
