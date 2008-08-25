@@ -29,6 +29,7 @@ void cube_scanner_finish(void);
 %option 8bit
 %option never-interactive
 %option nodefault
+%option noinput
 %option nounput
 %option noyywrap
 %option prefix="cube_yy"
