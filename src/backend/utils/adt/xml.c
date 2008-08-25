@@ -74,7 +74,7 @@
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"
 #include "nodes/execnodes.h"
-#include "parser/parse_expr.h"
+#include "nodes/nodeFuncs.h"
 #include "utils/array.h"
 #include "utils/builtins.h"
 #include "utils/date.h"

@@ -17,10 +17,10 @@
 
 #include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
+#include "nodes/nodeFuncs.h"
 #include "optimizer/clauses.h"
 #include "optimizer/planmain.h"
 #include "optimizer/tlist.h"
-#include "parser/parse_expr.h"
 #include "parser/parsetree.h"
 #include "utils/lsyscache.h"
 

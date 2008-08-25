@@ -20,7 +20,7 @@
 #include "catalog/pg_type.h"
 #include "commands/defrem.h"
 #include "nodes/makefuncs.h"
-#include "optimizer/clauses.h"
+#include "nodes/nodeFuncs.h"
 #include "optimizer/tlist.h"
 #include "optimizer/var.h"
 #include "parser/analyze.h"

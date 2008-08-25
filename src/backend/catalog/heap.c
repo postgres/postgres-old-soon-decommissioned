@@ -50,7 +50,7 @@
 #include "commands/tablecmds.h"
 #include "commands/typecmds.h"
 #include "miscadmin.h"
-#include "optimizer/clauses.h"
+#include "nodes/nodeFuncs.h"
 #include "optimizer/var.h"
 #include "parser/parse_coerce.h"
 #include "parser/parse_expr.h"

@@ -43,7 +43,7 @@
 #include "access/transam.h"
 #include "catalog/namespace.h"
 #include "executor/executor.h"
-#include "optimizer/clauses.h"
+#include "nodes/nodeFuncs.h"
 #include "storage/lmgr.h"
 #include "tcop/pquery.h"
 #include "tcop/tcopprot.h"

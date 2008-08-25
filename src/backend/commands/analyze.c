@@ -28,7 +28,7 @@
 #include "commands/vacuum.h"
 #include "executor/executor.h"
 #include "miscadmin.h"
-#include "parser/parse_expr.h"
+#include "nodes/nodeFuncs.h"
 #include "parser/parse_oper.h"
 #include "parser/parse_relation.h"
 #include "pgstat.h"

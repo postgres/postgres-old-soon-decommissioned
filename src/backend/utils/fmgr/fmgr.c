@@ -21,7 +21,7 @@
 #include "executor/functions.h"
 #include "lib/stringinfo.h"
 #include "miscadmin.h"
-#include "parser/parse_expr.h"
+#include "nodes/nodeFuncs.h"
 #include "pgstat.h"
 #include "utils/builtins.h"
 #include "utils/fmgrtab.h"

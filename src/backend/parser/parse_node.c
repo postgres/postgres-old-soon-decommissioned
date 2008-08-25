@@ -18,6 +18,7 @@
 #include "catalog/pg_type.h"
 #include "mb/pg_wchar.h"
 #include "nodes/makefuncs.h"
+#include "nodes/nodeFuncs.h"
 #include "parser/parsetree.h"
 #include "parser/parse_coerce.h"
 #include "parser/parse_expr.h"

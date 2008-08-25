@@ -15,9 +15,9 @@
 #include "postgres.h"
 
 #include "nodes/makefuncs.h"
+#include "nodes/nodeFuncs.h"
 #include "optimizer/tlist.h"
 #include "optimizer/var.h"
-#include "parser/parse_expr.h"
 #include "utils/lsyscache.h"
 
 

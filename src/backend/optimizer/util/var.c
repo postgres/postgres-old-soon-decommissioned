@@ -15,7 +15,7 @@
 #include "postgres.h"
 
 #include "access/sysattr.h"
-#include "optimizer/clauses.h"
+#include "nodes/nodeFuncs.h"
 #include "optimizer/prep.h"
 #include "optimizer/var.h"
 #include "parser/parsetree.h"

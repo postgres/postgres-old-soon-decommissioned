@@ -40,7 +40,7 @@
 #include "commands/tablespace.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
-#include "optimizer/clauses.h"
+#include "nodes/nodeFuncs.h"
 #include "parser/analyze.h"
 #include "parser/gramparse.h"
 #include "parser/parse_clause.h"

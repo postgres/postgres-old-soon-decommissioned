@@ -20,13 +20,13 @@
 #include "access/skey.h"
 #include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
+#include "nodes/nodeFuncs.h"
 #include "nodes/plannodes.h"
 #include "optimizer/clauses.h"
 #include "optimizer/pathnode.h"
 #include "optimizer/paths.h"
 #include "optimizer/tlist.h"
 #include "parser/parsetree.h"
-#include "parser/parse_expr.h"
 #include "utils/lsyscache.h"
 
 

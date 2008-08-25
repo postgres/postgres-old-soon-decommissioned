@@ -21,6 +21,7 @@
 #include "commands/explain.h"
 #include "commands/prepare.h"
 #include "miscadmin.h"
+#include "nodes/nodeFuncs.h"
 #include "parser/analyze.h"
 #include "parser/parse_coerce.h"
 #include "parser/parse_expr.h"
