@@ -1923,7 +1923,8 @@ SIGHUP_handler(SIGNAL_ARGS)
 			signal_child(PgArchPID, SIGHUP);
 		if (SysLoggerPID != 0)
 			signal_child(SysLoggerPID, SIGHUP);
-		/* PgStatPID does not currently need SIGHUP */
+		if (PgStatPID != 0)
+			signal_child(PgStatPID, SIGHUP);
 
 		/* Reload authentication config files too */
 		load_hba();

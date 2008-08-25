@@ -2470,7 +2470,7 @@ static struct config_string ConfigureNamesString[] =
 	},
 
 	{
-		{"stats_temp_directory", PGC_POSTMASTER, STATS_COLLECTOR,
+		{"stats_temp_directory", PGC_SIGHUP, STATS_COLLECTOR,
 			gettext_noop("Writes temporary statistics files to the specified directory."),
 			NULL,
 			GUC_SUPERUSER_ONLY
