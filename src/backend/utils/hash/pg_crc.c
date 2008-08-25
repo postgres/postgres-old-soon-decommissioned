@@ -5,7 +5,7 @@
  *
  * See Ross Williams' excellent introduction
  * A PAINLESS GUIDE TO CRC ERROR DETECTION ALGORITHMS, available from
- * ftp://ftp.rocksoft.com/papers/crc_v3.txt or several other net sites.
+ * http://www.ross.net/crc/download/crc_v3.txt or several other net sites.
  *
  * We use a normal (not "reflected", in Williams' terms) CRC, using initial
  * all-ones register contents and a final bit inversion.
