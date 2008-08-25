@@ -3419,8 +3419,8 @@ COPY postgres_log FROM '/full/path/to/logfile.csv' WITH csv;
         <filename>pg_stat_tmp</filename>. Pointing this at a RAM based filesystem
         will decrease physical I/O requirements and can lead to increased 
         performance. If this parameter is changed when the system is running,
-        the statistics functions might return no information until a new 
-        file has been written, which typically happens twice per second.
+		there is a small window of time until the new file has been written 
+		during which the statistics functions might return no information.
        </para>
       </listitem>
      </varlistentry>
