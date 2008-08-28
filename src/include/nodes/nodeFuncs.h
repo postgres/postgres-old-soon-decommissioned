@@ -27,6 +27,8 @@ extern int32 exprTypmod(Node *expr);
 extern bool exprIsLengthCoercion(Node *expr, int32 *coercedTypmod);
 extern bool expression_returns_set(Node *clause);
 
+extern int	exprLocation(Node *expr);
+
 extern bool expression_tree_walker(Node *node, bool (*walker) (),
 											   void *context);
 extern Node *expression_tree_mutator(Node *node, Node *(*mutator) (),

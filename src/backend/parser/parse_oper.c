@@ -857,6 +857,7 @@ make_op(ParseState *pstate, List *opname, Node *ltree, Node *rtree,
 	result->opresulttype = rettype;
 	result->opretset = get_func_retset(opform->oprcode);
 	result->args = args;
+	result->location = location;
 
 	ReleaseSysCache(tup);
 
@@ -984,6 +985,7 @@ make_scalar_array_op(ParseState *pstate, List *opname,
 	result->opfuncid = opform->oprcode;
 	result->useOr = useOr;
 	result->args = args;
+	result->location = location;
 
 	ReleaseSysCache(tup);
 

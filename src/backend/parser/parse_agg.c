@@ -396,6 +396,7 @@ build_aggregate_fnexprs(Oid *agg_input_types,
 	argp->paramid = -1;
 	argp->paramtype = agg_state_type;
 	argp->paramtypmod = -1;
+	argp->location = -1;
 
 	args = list_make1(argp);
 
@@ -406,6 +407,7 @@ build_aggregate_fnexprs(Oid *agg_input_types,
 		argp->paramid = -1;
 		argp->paramtype = agg_input_types[i];
 		argp->paramtypmod = -1;
+		argp->location = -1;
 		args = lappend(args, argp);
 	}
 
@@ -429,6 +431,7 @@ build_aggregate_fnexprs(Oid *agg_input_types,
 	argp->paramid = -1;
 	argp->paramtype = agg_state_type;
 	argp->paramtypmod = -1;
+	argp->location = -1;
 	args = list_make1(argp);
 
 	*finalfnexpr = (Expr *) makeFuncExpr(finalfn_oid,

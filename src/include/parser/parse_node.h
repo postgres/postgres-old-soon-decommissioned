@@ -86,7 +86,8 @@ extern ParseState *make_parsestate(ParseState *parentParseState);
 extern void free_parsestate(ParseState *pstate);
 extern int	parser_errposition(ParseState *pstate, int location);
 
-extern Var *make_var(ParseState *pstate, RangeTblEntry *rte, int attrno);
+extern Var *make_var(ParseState *pstate, RangeTblEntry *rte, int attrno,
+					 int location);
 extern Oid	transformArrayType(Oid arrayType);
 extern ArrayRef *transformArraySubscripts(ParseState *pstate,
 						 Node *arrayBase,
@@ -95,6 +96,6 @@ extern ArrayRef *transformArraySubscripts(ParseState *pstate,
 						 int32 elementTypMod,
 						 List *indirection,
 						 Node *assignFrom);
-extern Const *make_const(Value *value);
+extern Const *make_const(Value *value, int location);
 
 #endif   /* PARSE_NODE_H */

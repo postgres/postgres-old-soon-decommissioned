@@ -84,6 +84,9 @@ makeVar(Index varno,
 	var->varnoold = varno;
 	var->varoattno = varattno;
 
+	/* Likewise, we just set location to "unknown" here */
+	var->location = -1;
+
 	return var;
 }
 
@@ -168,6 +171,7 @@ makeConst(Oid consttype,
 	cnst->constvalue = constvalue;
 	cnst->constisnull = constisnull;
 	cnst->constbyval = constbyval;
+	cnst->location = -1;		/* "unknown" */
 
 	return cnst;
 }
@@ -211,12 +215,13 @@ makeBoolConst(bool value, bool isnull)
  *	  creates a BoolExpr node
  */
 Expr *
-makeBoolExpr(BoolExprType boolop, List *args)
+makeBoolExpr(BoolExprType boolop, List *args, int location)
 {
 	BoolExpr   *b = makeNode(BoolExpr);
 
 	b->boolop = boolop;
 	b->args = args;
+	b->location = location;
 
 	return (Expr *) b;
 }
@@ -251,6 +256,7 @@ makeRelabelType(Expr *arg, Oid rtype, int32 rtypmod, CoercionForm rformat)
 	r->resulttype = rtype;
 	r->resulttypmod = rtypmod;
 	r->relabelformat = rformat;
+	r->location = -1;
 
 	return r;
 }
@@ -336,6 +342,7 @@ makeFuncExpr(Oid funcid, Oid rettype, List *args, CoercionForm fformat)
 	funcexpr->funcretset = false;		/* only allowed case here */
 	funcexpr->funcformat = fformat;
 	funcexpr->args = args;
+	funcexpr->location = -1;
 
 	return funcexpr;
 }

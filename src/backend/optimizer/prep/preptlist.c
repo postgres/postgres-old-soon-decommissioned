@@ -292,6 +292,7 @@ expand_targetlist(List *tlist, int command_type,
 													InvalidOid, -1,
 													atttype,
 													COERCE_IMPLICIT_CAST,
+													-1,
 													false,
 													false);
 					}

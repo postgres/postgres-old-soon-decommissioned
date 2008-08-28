@@ -380,9 +380,11 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 		snamenode = makeNode(A_Const);
 		snamenode->val.type = T_String;
 		snamenode->val.val.str = qstring;
+		snamenode->location = -1;
 		castnode = makeNode(TypeCast);
 		castnode->typename = SystemTypeName("regclass");
 		castnode->arg = (Node *) snamenode;
+		castnode->location = -1;
 		funccallnode = makeNode(FuncCall);
 		funccallnode->funcname = SystemFuncName("nextval");
 		funccallnode->args = list_make1(castnode);

@@ -2135,6 +2135,7 @@ domainAddConstraint(Oid domainOid, Oid domainNamespace, Oid baseTypeOid,
 	domVal = makeNode(CoerceToDomainValue);
 	domVal->typeId = baseTypeOid;
 	domVal->typeMod = typMod;
+	domVal->location = -1;		/* will be set when/if used */
 
 	pstate->p_value_substitute = (Node *) domVal;
 

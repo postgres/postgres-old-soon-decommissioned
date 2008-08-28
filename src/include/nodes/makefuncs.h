@@ -49,7 +49,7 @@ extern Const *makeNullConst(Oid consttype, int32 consttypmod);
 
 extern Node *makeBoolConst(bool value, bool isnull);
 
-extern Expr *makeBoolExpr(BoolExprType boolop, List *args);
+extern Expr *makeBoolExpr(BoolExprType boolop, List *args, int location);
 
 extern Alias *makeAlias(const char *aliasname, List *colnames);
 

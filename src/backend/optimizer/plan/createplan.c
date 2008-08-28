@@ -1949,6 +1949,7 @@ get_switched_clauses(List *clauses, Relids outerrelids)
 			temp->opresulttype = clause->opresulttype;
 			temp->opretset = clause->opretset;
 			temp->args = list_copy(clause->args);
+			temp->location = clause->location;
 			/* Commute it --- note this modifies the temp node in-place. */
 			CommuteOpExpr(temp);
 			t_list = lappend(t_list, temp);

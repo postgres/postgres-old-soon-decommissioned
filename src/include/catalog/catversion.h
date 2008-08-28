@@ -53,6 +53,6 @@
  */
 
 /*							yyyymmddN */
-#define CATALOG_VERSION_NO	200808251
+#define CATALOG_VERSION_NO	200808281
 
 #endif
