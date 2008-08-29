@@ -36,13 +36,11 @@ ecpg: $(OBJS)
 # pgc is compiled as part of preproc
 preproc.o: $(srcdir)/pgc.c
 
-$(srcdir)/preproc.c: $(srcdir)/preproc.h ;
+$(srcdir)/preproc.h: $(srcdir)/preproc.c ;
 
-$(srcdir)/preproc.h: preproc.y
-ifdef YACC
-	$(YACC) -d $(YFLAGS) $<
-	mv -f y.tab.c $(srcdir)/preproc.c
-	mv -f y.tab.h $(srcdir)/preproc.h
+$(srcdir)/preproc.c: preproc.y
+ifdef BISON
+	$(BISON) -d $(BISONFLAGS) -o $@ $<
 else
 	@$(missing) bison $< $@
 endif
@@ -74,10 +72,8 @@ uninstall:
 
 clean distclean:
 	rm -f keywords.c *.o ecpg$(X)
-# garbage from partial builds
-	@rm -f y.tab.c y.tab.h
 # garbage from development
-	@rm -f core a.out *.output *.tab.c
+	@rm -f core a.out
 
 # `make clean' does not remove preproc.c, preproc.h, or pgc.c since we
 # want to ship those files in the distribution for people with

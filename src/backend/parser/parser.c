@@ -21,8 +21,8 @@
 
 #include "postgres.h"
 
-#include "parser/gramparse.h"	/* required before parser/parse.h! */
-#include "parser/parse.h"
+#include "parser/gramparse.h"	/* required before parser/gram.h! */
+#include "parser/gram.h"
 #include "parser/parser.h"
 
 

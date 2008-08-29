@@ -14,7 +14,6 @@
  */
 
 #include "plpgsql.h"
-#include "pl.tab.h"
 
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"

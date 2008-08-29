@@ -36,7 +36,7 @@
 #include "parser/gramparse.h"
 #include "parser/keywords.h"
 /* Not needed now that this file is compiled as part of gram.y */
-/* #include "parser/parse.h" */
+/* #include "parser/gram.h" */
 #include "parser/scansup.h"
 #include "mb/pg_wchar.h"
 

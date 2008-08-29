@@ -14,7 +14,6 @@
  */
 
 #include "plpgsql.h"
-#include "pl.tab.h"
 
 #include <ctype.h>
 

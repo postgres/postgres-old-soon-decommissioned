@@ -26,15 +26,9 @@ endif
 # cubescan is compiled as part of cubeparse
 cubeparse.o: $(srcdir)/cubescan.c
 
-# See notes in src/backend/parser/Makefile about the following two rules
-
-$(srcdir)/cubeparse.c: $(srcdir)/cubeparse.h ;
-
-$(srcdir)/cubeparse.h: cubeparse.y
-ifdef YACC
-	$(YACC) -d $(YFLAGS) $<
-	mv -f y.tab.c $(srcdir)/cubeparse.c
-	mv -f y.tab.h $(srcdir)/cubeparse.h
+$(srcdir)/cubeparse.c: cubeparse.y
+ifdef BISON
+	$(BISON) $(BISONFLAGS) -o $@ $<
 else
 	@$(missing) bison $< $@
 endif
@@ -46,7 +40,7 @@ else
 	@$(missing) flex $< $@
 endif
 
-distprep: $(srcdir)/cubeparse.c $(srcdir)/cubeparse.h $(srcdir)/cubescan.c
+distprep: $(srcdir)/cubeparse.c $(srcdir)/cubescan.c
 
 maintainer-clean:
-	rm -f $(srcdir)/cubeparse.c $(srcdir)/cubeparse.h $(srcdir)/cubescan.c
+	rm -f $(srcdir)/cubeparse.c $(srcdir)/cubescan.c

@@ -23,15 +23,9 @@ endif
 # segscan is compiled as part of segparse
 segparse.o: $(srcdir)/segscan.c
 
-# See notes in src/backend/parser/Makefile about the following two rules
-
-$(srcdir)/segparse.c: $(srcdir)/segparse.h ;
-
-$(srcdir)/segparse.h: segparse.y
-ifdef YACC
-	$(YACC) -d $(YFLAGS) $<
-	mv -f y.tab.c $(srcdir)/segparse.c
-	mv -f y.tab.h $(srcdir)/segparse.h
+$(srcdir)/segparse.c: segparse.y
+ifdef BISON
+	$(BISON) $(BISONFLAGS) -o $@ $<
 else
 	@$(missing) bison $< $@
 endif
@@ -43,7 +37,7 @@ else
 	@$(missing) flex $< $@
 endif
 
-distprep: $(srcdir)/segparse.c $(srcdir)/segparse.h $(srcdir)/segscan.c
+distprep: $(srcdir)/segparse.c $(srcdir)/segscan.c
 
 maintainer-clean:
-	rm -f $(srcdir)/segparse.c $(srcdir)/segparse.h $(srcdir)/segscan.c
+	rm -f $(srcdir)/segparse.c $(srcdir)/segscan.c
