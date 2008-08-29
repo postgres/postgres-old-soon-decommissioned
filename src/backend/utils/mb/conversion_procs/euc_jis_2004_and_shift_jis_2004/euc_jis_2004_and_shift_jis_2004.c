@@ -210,6 +210,7 @@ get_ten(int b, int *ku)
 	else
 	{
 		ten = -1;				/* error */
+		*ku = 0;				/* keep compiler quiet */
 	}
 	return ten;
 }
