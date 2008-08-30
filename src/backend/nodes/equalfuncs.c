@@ -1766,6 +1766,12 @@ _equalFuncCall(FuncCall *a, FuncCall *b)
 }
 
 static bool
+_equalAStar(A_Star *a, A_Star *b)
+{
+	return true;
+}
+
+static bool
 _equalAIndices(A_Indices *a, A_Indices *b)
 {
 	COMPARE_NODE_FIELD(lidx);
@@ -2530,6 +2536,9 @@ equal(void *a, void *b)
 			break;
 		case T_FuncCall:
 			retval = _equalFuncCall(a, b);
+			break;
+		case T_A_Star:
+			retval = _equalAStar(a, b);
 			break;
 		case T_A_Indices:
 			retval = _equalAIndices(a, b);

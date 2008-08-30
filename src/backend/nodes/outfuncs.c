@@ -1990,6 +1990,12 @@ _outAConst(StringInfo str, A_Const *node)
 }
 
 static void
+_outA_Star(StringInfo str, A_Star *node)
+{
+	WRITE_NODE_TYPE("A_STAR");
+}
+
+static void
 _outA_Indices(StringInfo str, A_Indices *node)
 {
 	WRITE_NODE_TYPE("A_INDICES");
@@ -2466,6 +2472,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_A_Const:
 				_outAConst(str, obj);
+				break;
+			case T_A_Star:
+				_outA_Star(str, obj);
 				break;
 			case T_A_Indices:
 				_outA_Indices(str, obj);

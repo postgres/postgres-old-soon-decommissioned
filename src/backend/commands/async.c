@@ -274,24 +274,16 @@ Async_Listen(const char *relname)
 void
 Async_Unlisten(const char *relname)
 {
-	/* Handle specially the `unlisten "*"' command */
-	if ((!relname) || (*relname == '\0') || (strcmp(relname, "*") == 0))
-	{
-		Async_UnlistenAll();
-	}
-	else
-	{
-		if (Trace_notify)
-			elog(DEBUG1, "Async_Unlisten(%s,%d)", relname, MyProcPid);
+	if (Trace_notify)
+		elog(DEBUG1, "Async_Unlisten(%s,%d)", relname, MyProcPid);
 
-		queue_listen(LISTEN_UNLISTEN, relname);
-	}
+	queue_listen(LISTEN_UNLISTEN, relname);
 }
 
 /*
  * Async_UnlistenAll
  *
- *		This is invoked by UNLISTEN "*" command, and also at backend exit.
+ *		This is invoked by UNLISTEN * command, and also at backend exit.
  */
 void
 Async_UnlistenAll(void)

@@ -817,7 +817,10 @@ ProcessUtility(Node *parsetree,
 			{
 				UnlistenStmt *stmt = (UnlistenStmt *) parsetree;
 
-				Async_Unlisten(stmt->relation->relname);
+				if (stmt->relation)
+					Async_Unlisten(stmt->relation->relname);
+				else
+					Async_UnlistenAll();
 			}
 			break;
 

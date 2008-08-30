@@ -305,7 +305,8 @@ typenameTypeMod(ParseState *pstate, const TypeName *typename, Type typ)
 		{
 			ColumnRef  *cr = (ColumnRef *) tm;
 
-			if (list_length(cr->fields) == 1)
+			if (list_length(cr->fields) == 1 &&
+				IsA(linitial(cr->fields), String))
 				cstr = strVal(linitial(cr->fields));
 		}
 		if (!cstr)

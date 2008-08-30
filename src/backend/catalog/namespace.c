@@ -2189,6 +2189,9 @@ makeRangeVarFromNameList(List *names)
  *
  * This is used primarily to form error messages, and so we do not quote
  * the list elements, for the sake of legibility.
+ *
+ * In most scenarios the list elements should always be Value strings,
+ * but we also allow A_Star for the convenience of ColumnRef processing.
  */
 char *
 NameListToString(List *names)
@@ -2200,9 +2203,18 @@ NameListToString(List *names)
 
 	foreach(l, names)
 	{
+		Node	   *name = (Node *) lfirst(l);
+
 		if (l != list_head(names))
 			appendStringInfoChar(&string, '.');
-		appendStringInfoString(&string, strVal(lfirst(l)));
+
+		if (IsA(name, String))
+			appendStringInfoString(&string, strVal(name));
+		else if (IsA(name, A_Star))
+			appendStringInfoString(&string, "*");
+		else
+			elog(ERROR, "unexpected node type in name list: %d",
+				 (int) nodeTag(name));
 	}
 
 	return string.data;
