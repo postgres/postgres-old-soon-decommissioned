@@ -155,7 +155,7 @@ HeapTupleHeaderAdjustCmax(HeapTupleHeader tup,
 	if (!(tup->t_infomask & HEAP_XMIN_COMMITTED) &&
 		TransactionIdIsCurrentTransactionId(HeapTupleHeaderGetXmin(tup)))
 	{
-		CommandId	cmin = HeapTupleHeaderGetRawCommandId(tup);
+		CommandId	cmin = HeapTupleHeaderGetCmin(tup);
 
 		*cmax = GetComboCommandId(cmin, *cmax);
 		*iscombo = true;
