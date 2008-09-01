@@ -358,10 +358,11 @@ typedef struct ResTarget
 typedef struct SortBy
 {
 	NodeTag		type;
-	SortByDir	sortby_dir;		/* ASC/DESC/USING */
+	Node	   *node;			/* expression to sort on */
+	SortByDir	sortby_dir;		/* ASC/DESC/USING/default */
 	SortByNulls sortby_nulls;	/* NULLS FIRST/LAST */
 	List	   *useOp;			/* name of op to use, if SORTBY_USING */
-	Node	   *node;			/* expression to sort on */
+	int			location;		/* operator location, or -1 if none/unknown */
 } SortBy;
 
 /*
@@ -466,7 +467,9 @@ typedef struct DefElem
  * LockingClause - raw representation of FOR UPDATE/SHARE options
  *
  * Note: lockedRels == NIL means "all relations in query".	Otherwise it
- * is a list of String nodes giving relation eref names.
+ * is a list of RangeVar nodes.  (We use RangeVar mainly because it carries
+ * a location field --- currently, parse analysis insists on unqualified
+ * names in LockingClause.)
  */
 typedef struct LockingClause
 {
@@ -1742,7 +1745,7 @@ typedef struct RuleStmt
 typedef struct NotifyStmt
 {
 	NodeTag		type;
-	RangeVar   *relation;		/* qualified name to notify */
+	char	   *conditionname;	/* condition name to notify */
 } NotifyStmt;
 
 /* ----------------------
@@ -1752,7 +1755,7 @@ typedef struct NotifyStmt
 typedef struct ListenStmt
 {
 	NodeTag		type;
-	RangeVar   *relation;		/* name to listen on */
+	char	   *conditionname;	/* condition name to listen on */
 } ListenStmt;
 
 /* ----------------------
@@ -1762,7 +1765,7 @@ typedef struct ListenStmt
 typedef struct UnlistenStmt
 {
 	NodeTag		type;
-	RangeVar   *relation;		/* name to unlisten on, or NULL for all */
+	char	   *conditionname;	/* name to unlisten on, or NULL for all */
 } UnlistenStmt;
 
 /* ----------------------

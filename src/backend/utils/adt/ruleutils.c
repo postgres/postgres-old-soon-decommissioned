@@ -2713,8 +2713,7 @@ get_utility_query_def(Query *query, deparse_context *context)
 		appendContextKeyword(context, "",
 							 0, PRETTYINDENT_STD, 1);
 		appendStringInfo(buf, "NOTIFY %s",
-					   quote_qualified_identifier(stmt->relation->schemaname,
-												  stmt->relation->relname));
+						 quote_identifier(stmt->conditionname));
 	}
 	else
 	{

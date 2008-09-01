@@ -655,7 +655,7 @@ ConvertTriggerToFK(CreateTrigStmt *stmt, Oid funcoid)
 			else
 			{
 				/* Work around ancient pg_dump bug that omitted constrrel */
-				fkcon->pktable = makeRangeVar(NULL, pk_table_name);
+				fkcon->pktable = makeRangeVar(NULL, pk_table_name, -1);
 			}
 		}
 		else
@@ -667,7 +667,7 @@ ConvertTriggerToFK(CreateTrigStmt *stmt, Oid funcoid)
 			else
 			{
 				/* Work around ancient pg_dump bug that omitted constrrel */
-				atstmt->relation = makeRangeVar(NULL, fk_table_name);
+				atstmt->relation = makeRangeVar(NULL, fk_table_name, -1);
 			}
 		}
 		atstmt->cmds = list_make1(atcmd);

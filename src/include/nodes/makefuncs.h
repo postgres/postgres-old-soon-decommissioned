@@ -56,7 +56,7 @@ extern Alias *makeAlias(const char *aliasname, List *colnames);
 extern RelabelType *makeRelabelType(Expr *arg, Oid rtype, int32 rtypmod,
 				CoercionForm rformat);
 
-extern RangeVar *makeRangeVar(char *schemaname, char *relname);
+extern RangeVar *makeRangeVar(char *schemaname, char *relname, int location);
 
 extern TypeName *makeTypeName(char *typnam);
 extern TypeName *makeTypeNameFromNameList(List *names);

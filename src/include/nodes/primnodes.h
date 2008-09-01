@@ -76,6 +76,7 @@ typedef struct RangeVar
 								 * on children? */
 	bool		istemp;			/* is this a temp relation/sequence? */
 	Alias	   *alias;			/* table alias & optional column aliases */
+	int			location;		/* token location, or -1 if unknown */
 } RangeVar;
 
 /*

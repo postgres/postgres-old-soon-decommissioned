@@ -151,6 +151,7 @@ extern int	errposition(int cursorpos);
 extern int	internalerrposition(int cursorpos);
 extern int	internalerrquery(const char *query);
 
+extern int	geterrcode(void);
 extern int	geterrposition(void);
 extern int	getinternalerrposition(void);
 

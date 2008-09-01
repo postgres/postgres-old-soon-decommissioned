@@ -346,7 +346,7 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 		 * TABLE.
 		 */
 		seqstmt = makeNode(CreateSeqStmt);
-		seqstmt->sequence = makeRangeVar(snamespace, sname);
+		seqstmt->sequence = makeRangeVar(snamespace, sname, -1);
 		seqstmt->options = NIL;
 
 		cxt->blist = lappend(cxt->blist, seqstmt);
@@ -357,7 +357,7 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 		 * done after this CREATE/ALTER TABLE.
 		 */
 		altseqstmt = makeNode(AlterSeqStmt);
-		altseqstmt->sequence = makeRangeVar(snamespace, sname);
+		altseqstmt->sequence = makeRangeVar(snamespace, sname, -1);
 		attnamelist = list_make3(makeString(snamespace),
 								 makeString(cxt->relation->relname),
 								 makeString(column->colname));
@@ -548,7 +548,7 @@ transformInhRelation(ParseState *pstate, CreateStmtContext *cxt,
 	bool		including_indexes = false;
 	ListCell   *elem;
 
-	relation = heap_openrv(inhRelation->relation, AccessShareLock);
+	relation = parserOpenTable(pstate, inhRelation->relation, AccessShareLock);
 
 	if (relation->rd_rel->relkind != RELKIND_RELATION)
 		ereport(ERROR,

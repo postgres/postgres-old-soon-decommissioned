@@ -2156,7 +2156,7 @@ QualifiedNameGetCreationNamespace(List *names, char **objname_p)
 RangeVar *
 makeRangeVarFromNameList(List *names)
 {
-	RangeVar   *rel = makeRangeVar(NULL, NULL);
+	RangeVar   *rel = makeRangeVar(NULL, NULL, -1);
 
 	switch (list_length(names))
 	{

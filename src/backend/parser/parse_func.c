@@ -270,7 +270,8 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 			ereport(ERROR,
 					(errcode(ERRCODE_UNDEFINED_OBJECT),
 					 errmsg("could not find array type for data type %s",
-							format_type_be(newa->element_typeid))));
+							format_type_be(newa->element_typeid)),
+					 parser_errposition(pstate, exprLocation((Node *) vargs))));
 		newa->multidims = false;
 		newa->location = exprLocation((Node *) vargs);
 

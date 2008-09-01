@@ -73,7 +73,7 @@ BootstrapToastTable(char *relName, Oid toastOid, Oid toastIndexOid)
 {
 	Relation	rel;
 
-	rel = heap_openrv(makeRangeVar(NULL, relName), AccessExclusiveLock);
+	rel = heap_openrv(makeRangeVar(NULL, relName, -1), AccessExclusiveLock);
 
 	/* Note: during bootstrap may see uncataloged relation */
 	if (rel->rd_rel->relkind != RELKIND_RELATION &&

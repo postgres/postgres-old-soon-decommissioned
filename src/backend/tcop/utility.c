@@ -801,7 +801,7 @@ ProcessUtility(Node *parsetree,
 			{
 				NotifyStmt *stmt = (NotifyStmt *) parsetree;
 
-				Async_Notify(stmt->relation->relname);
+				Async_Notify(stmt->conditionname);
 			}
 			break;
 
@@ -809,7 +809,7 @@ ProcessUtility(Node *parsetree,
 			{
 				ListenStmt *stmt = (ListenStmt *) parsetree;
 
-				Async_Listen(stmt->relation->relname);
+				Async_Listen(stmt->conditionname);
 			}
 			break;
 
@@ -817,8 +817,8 @@ ProcessUtility(Node *parsetree,
 			{
 				UnlistenStmt *stmt = (UnlistenStmt *) parsetree;
 
-				if (stmt->relation)
-					Async_Unlisten(stmt->relation->relname);
+				if (stmt->conditionname)
+					Async_Unlisten(stmt->conditionname);
 				else
 					Async_UnlistenAll();
 			}

@@ -880,6 +880,23 @@ internalerrquery(const char *query)
 }
 
 /*
+ * geterrcode --- return the currently set SQLSTATE error code
+ *
+ * This is only intended for use in error callback subroutines, since there
+ * is no other place outside elog.c where the concept is meaningful.
+ */
+int
+geterrcode(void)
+{
+	ErrorData  *edata = &errordata[errordata_stack_depth];
+
+	/* we don't bother incrementing recursion_depth */
+	CHECK_STACK_DEPTH();
+
+	return edata->sqlerrcode;
+}
+
+/*
  * geterrposition --- return the currently set error position (0 if none)
  *
  * This is only intended for use in error callback subroutines, since there

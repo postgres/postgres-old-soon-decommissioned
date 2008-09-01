@@ -266,7 +266,7 @@ makeRelabelType(Expr *arg, Oid rtype, int32 rtypmod, CoercionForm rformat)
  *	  creates a RangeVar node (rather oversimplified case)
  */
 RangeVar *
-makeRangeVar(char *schemaname, char *relname)
+makeRangeVar(char *schemaname, char *relname, int location)
 {
 	RangeVar   *r = makeNode(RangeVar);
 
@@ -276,6 +276,7 @@ makeRangeVar(char *schemaname, char *relname)
 	r->inhOpt = INH_DEFAULT;
 	r->istemp = false;
 	r->alias = NULL;
+	r->location = location;
 
 	return r;
 }

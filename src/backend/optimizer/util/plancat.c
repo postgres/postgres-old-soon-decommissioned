@@ -733,7 +733,7 @@ build_physical_tlist(PlannerInfo *root, RelOptInfo *rel)
 			break;
 
 		case RTE_FUNCTION:
-			expandRTE(rte, varno, 0, true /* include dropped */ ,
+			expandRTE(rte, varno, 0, -1, true /* include dropped */ ,
 					  NULL, &colvars);
 			foreach(l, colvars)
 			{
@@ -758,7 +758,7 @@ build_physical_tlist(PlannerInfo *root, RelOptInfo *rel)
 			break;
 
 		case RTE_VALUES:
-			expandRTE(rte, varno, 0, false /* dropped not applicable */ ,
+			expandRTE(rte, varno, 0, -1, false /* dropped not applicable */ ,
 					  NULL, &colvars);
 			foreach(l, colvars)
 			{

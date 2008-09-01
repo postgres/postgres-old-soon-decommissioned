@@ -1272,7 +1272,7 @@ plpgsql_parse_tripwordtype(char *word)
 	word[i] = '%';
 	pfree(cp[3]);
 
-	relvar = makeRangeVar(cp[0], cp[1]);
+	relvar = makeRangeVar(cp[0], cp[1], -1);
 	classOid = RangeVarGetRelid(relvar, true);
 	if (!OidIsValid(classOid))
 		goto done;
@@ -1393,7 +1393,7 @@ plpgsql_parse_dblwordrowtype(char *word)
 	word[i] = '%';
 
 	/* Lookup the relation */
-	relvar = makeRangeVar(cp[0], cp[1]);
+	relvar = makeRangeVar(cp[0], cp[1], -1);
 	classOid = RangeVarGetRelid(relvar, true);
 	if (!OidIsValid(classOid))
 		ereport(ERROR,

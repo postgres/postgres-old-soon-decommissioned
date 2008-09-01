@@ -637,7 +637,7 @@ boot_openrel(char *relname)
 	elog(DEBUG4, "open relation %s, attrsize %d",
 		 relname, (int) ATTRIBUTE_TUPLE_SIZE);
 
-	boot_reldesc = heap_openrv(makeRangeVar(NULL, relname), NoLock);
+	boot_reldesc = heap_openrv(makeRangeVar(NULL, relname, -1), NoLock);
 	numattr = boot_reldesc->rd_rel->relnatts;
 	for (i = 0; i < numattr; i++)
 	{

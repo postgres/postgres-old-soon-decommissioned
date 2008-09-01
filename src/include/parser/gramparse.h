@@ -47,6 +47,7 @@ extern int	filtered_base_yylex(void);
 extern void scanner_init(const char *str);
 extern void scanner_finish(void);
 extern int	base_yylex(void);
+extern int	scanner_errposition(int location);
 extern void base_yyerror(const char *message);
 
 /* from gram.y */
