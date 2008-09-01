@@ -256,10 +256,9 @@ endif
 
 ifeq ($(PORTNAME), solaris)
   ifeq ($(GCC), yes)
-    LINK.shared		= $(COMPILER) -shared # $(COMPILER) needed for -m64
+    LINK.shared		= $(COMPILER) -shared
   else
-# CFLAGS added for X86_64
-    LINK.shared		= $(CC) -G $(CFLAGS)
+    LINK.shared		= $(COMPILER) -G
   endif
   ifdef soname
     ifeq ($(with_gnu_ld), yes)

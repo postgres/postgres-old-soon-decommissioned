@@ -17,6 +17,10 @@ CFLAGS_SL = -KPIC
 endif
 
 %.so: %.o
-	$(LD) -G -Bdynamic -o $@ $<
+ifeq ($(GCC), yes)
+	$(CC) $(CFLAGS) -shared -o $@ $<
+else
+	$(CC) $(CFLAGS) -G -o $@ $<
+endif
 
 sqlmansect = 5sql
