@@ -357,6 +357,9 @@ extern int no_such_variable
  *
  * Note: we compare magic blocks with memcmp(), so there had better not be
  * any alignment pad bytes in them.
+ *
+ * Note: when changing the contents of magic blocks, be sure to adjust the
+ * incompatible_module_error() function in dfmgr.c.
  *-------------------------------------------------------------------------
  */
 
