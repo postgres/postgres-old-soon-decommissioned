@@ -61,6 +61,7 @@ fillScanKey(GinState *ginstate, GinScanKey key, OffsetNumber attnum, Datum query
 		key->scanEntry[i].offset = InvalidOffsetNumber;
 		key->scanEntry[i].buffer = InvalidBuffer;
 		key->scanEntry[i].partialMatch = NULL;
+		key->scanEntry[i].strategy = strategy;
 		key->scanEntry[i].list = NULL;
 		key->scanEntry[i].nlist = 0;
 		key->scanEntry[i].isPartialMatch = ( ginstate->canPartialMatch[attnum - 1] && partial_matches ) 

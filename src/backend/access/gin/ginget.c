@@ -395,14 +395,7 @@ startScanKey(Relation index, GinState *ginstate, GinScanKey key)
 		return;
 
 	for (i = 0; i < key->nentries; i++)
-	{
 		startScanEntry(index, ginstate, key->scanEntry + i);
-		/*
-		 * Copy strategy number to each entry of key to
-		 * use in comparePartialFn call
-		 */
-		key->scanEntry[i].strategy = key->strategy;
-	}
 
 	memset(key->entryRes, TRUE, sizeof(bool) * key->nentries);
 	key->isFinished = FALSE;
