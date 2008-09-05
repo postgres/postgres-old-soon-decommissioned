@@ -1545,7 +1545,8 @@ create_mergejoin_plan(PlannerInfo *root,
 
 		/*
 		 * We assume the materialize will not spill to disk, and therefore
-		 * charge just cpu_tuple_cost per tuple.
+		 * charge just cpu_tuple_cost per tuple.  (Keep this estimate in sync
+		 * with similar ones in cost_mergejoin and create_mergejoin_path.)
 		 */
 		copy_plan_costsize(matplan, inner_plan);
 		matplan->total_cost += cpu_tuple_cost * matplan->plan_rows;

@@ -1584,6 +1584,19 @@ cost_mergejoin(MergePath *path, PlannerInfo *root, SpecialJoinInfo *sjinfo)
 			* innerstartsel * rescanratio;
 		run_cost += (sort_path.total_cost - sort_path.startup_cost)
 			* (innerendsel - innerstartsel) * rescanratio;
+
+		/*
+		 * If the inner sort is expected to spill to disk, we want to add a
+		 * materialize node to shield it from the need to handle mark/restore.
+		 * This will allow it to perform the last merge pass on-the-fly, while
+		 * in most cases not requiring the materialize to spill to disk.
+		 * Charge an extra cpu_tuple_cost per tuple to account for the
+		 * materialize node.  (Keep this estimate in sync with similar ones in
+		 * create_mergejoin_path and create_mergejoin_plan.)
+		 */
+		if (relation_byte_size(inner_path_rows, inner_path->parent->width) >
+			(work_mem * 1024L))
+			run_cost += cpu_tuple_cost * inner_path_rows;
 	}
 	else
 	{
