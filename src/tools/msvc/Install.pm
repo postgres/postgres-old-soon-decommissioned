@@ -216,8 +216,11 @@ sub GenerateConversionScript
         $sql .= "-- $se --> $de\n";
         $sql .=
 "CREATE OR REPLACE FUNCTION $func (INTEGER, INTEGER, CSTRING, INTERNAL, INTEGER) RETURNS VOID AS '\$libdir/$obj', '$func' LANGUAGE C STRICT;\n";
+        $sql .=
+"COMMENT ON FUNCTION $func(INTEGER, INTEGER, CSTRING, INTERNAL, INTEGER) IS 'internal conversion function for $se to $de';\n";
         $sql .= "DROP CONVERSION pg_catalog.$name;\n";
         $sql .= "CREATE DEFAULT CONVERSION pg_catalog.$name FOR '$se' TO '$de' FROM $func;\n";
+        $sql .= "COMMENT ON CONVERSION pg_catalog.$name IS 'conversion for $se to $de';\n";
     }
     open($F,">$target/share/conversion_create.sql")
       || die "Could not write to conversion_create.sql\n";
