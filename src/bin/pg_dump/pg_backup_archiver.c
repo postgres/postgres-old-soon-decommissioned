@@ -2542,6 +2542,7 @@ _printTocEntry(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt, bool isDat
 		if (strcmp(te->desc, "SCHEMA") == 0 &&
 			strcmp(te->tag, "public") == 0)
 			return;
+		/* The comment restore would require super-user privs, so avoid it. */
 		if (strcmp(te->desc, "COMMENT") == 0 &&
 			strcmp(te->tag, "SCHEMA public") == 0)
 			return;
