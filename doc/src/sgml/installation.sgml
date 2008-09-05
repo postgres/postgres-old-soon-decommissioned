@@ -1234,6 +1234,21 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
+       <term><option>--enable-coverage</option></term>
+       <listitem>
+        <para>
+         If using GCC, all programs and libraries are compiled with
+         code coverage testing instrumentation.  When run, they
+         generate files in the build directory with code coverage
+         metrics.
+         <![%standalone-ignore[See <xref linkend="regress-coverage">
+         for more information.]]> This option is for use only with GCC
+         and when doing development work.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
        <term><option>--enable-profiling</option></term>
        <listitem>
         <para>

@@ -63,6 +63,25 @@ GNUmakefile: GNUmakefile.in $(top_builddir)/config.status
 
 ##########################################################################
 
+coverage:
+	$(MAKE) -C src/backend $@
+
+.PHONY: coverage-html
+coverage-html: coverage
+	rm -rf coverage
+	mkdir coverage
+	$(GENHTML) --show-details --legend --output-directory=coverage --title=PostgreSQL --num-spaces=4 `find src/backend -name lcov.info -print`
+
+ifeq ($(enable_coverage),yes)
+clean distclean maintainer-clean: clean-coverage-local
+.PHONY: clean-coverage-local
+clean-coverage-local:
+	rm -rf coverage
+endif
+
+
+##########################################################################
+
 distdir	= postgresql-$(VERSION)
 dummy	= =install=
 garbage = =*  "#"*  ."#"*  *~*  *.orig  *.rej  core  postgresql-*
