@@ -54,7 +54,7 @@ LockTableCommand(LockStmt *lockstmt)
 										  ACL_SELECT);
 		else
 			aclresult = pg_class_aclcheck(reloid, GetUserId(),
-										  ACL_UPDATE | ACL_DELETE);
+										  ACL_UPDATE | ACL_DELETE | ACL_TRUNCATE);
 
 		if (aclresult != ACLCHECK_OK)
 			aclcheck_error(aclresult, ACL_KIND_CLASS,

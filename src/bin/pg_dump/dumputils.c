@@ -659,6 +659,8 @@ do { \
 				CONVERT_PRIV('x', "REFERENCES");
 				CONVERT_PRIV('t', "TRIGGER");
 			}
+			if (remoteVersion >= 80400)
+				CONVERT_PRIV('D', "TRUNCATE");
 		}
 
 		/* UPDATE */

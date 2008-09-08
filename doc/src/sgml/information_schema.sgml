@@ -2820,9 +2820,9 @@ ORDER BY c.ordinal_position;
       <entry><type>character_data</type></entry>
       <entry>
        Type of the privilege: <literal>SELECT</literal>,
-       <literal>DELETE</literal>, <literal>INSERT</literal>,
-       <literal>UPDATE</literal>, <literal>REFERENCES</literal>,
-       or <literal>TRIGGER</literal>
+       <literal>INSERT</literal>, <literal>UPDATE</literal>,
+       <literal>DELETE</literal>, <literal>TRUNCATE</literal>,
+       <literal>REFERENCES</literal>, or <literal>TRIGGER</literal>
       </entry>
      </row>
 
@@ -4406,9 +4406,9 @@ ORDER BY c.ordinal_position;
       <entry><type>character_data</type></entry>
       <entry>
        Type of the privilege: <literal>SELECT</literal>,
-       <literal>DELETE</literal>, <literal>INSERT</literal>,
-       <literal>UPDATE</literal>, <literal>REFERENCES</literal>,
-       or <literal>TRIGGER</literal>
+       <literal>INSERT</literal>, <literal>UPDATE</literal>,
+       <literal>DELETE</literal>, <literal>TRUNCATE</literal>,
+       <literal>REFERENCES</literal>, or <literal>TRIGGER</literal>
       </entry>
      </row>
 

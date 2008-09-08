@@ -1610,9 +1610,9 @@ psql_completion(char *text, int start, int end)
 			 pg_strcasecmp(prev_wd, "REVOKE") == 0)
 	{
 		static const char *const list_privileg[] =
-		{"SELECT", "INSERT", "UPDATE", "DELETE", "RULE", "REFERENCES",
-			"TRIGGER", "CREATE", "CONNECT", "TEMPORARY", "EXECUTE", "USAGE",
-		"ALL", NULL};
+		{"SELECT", "INSERT", "UPDATE", "DELETE", "TRUNCATE", "REFERENCES",
+		 "TRIGGER", "CREATE", "CONNECT", "TEMPORARY", "EXECUTE", "USAGE",
+		 "ALL", NULL};
 
 		COMPLETE_WITH_LIST(list_privileg);
 	}

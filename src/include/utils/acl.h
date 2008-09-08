@@ -128,6 +128,7 @@ typedef ArrayType Acl;
 #define ACL_SELECT_CHR			'r'		/* formerly known as "read" */
 #define ACL_UPDATE_CHR			'w'		/* formerly known as "write" */
 #define ACL_DELETE_CHR			'd'
+#define ACL_TRUNCATE_CHR		'D'		/* super-delete, as it were */
 #define ACL_REFERENCES_CHR		'x'
 #define ACL_TRIGGER_CHR			't'
 #define ACL_EXECUTE_CHR			'X'
@@ -137,12 +138,12 @@ typedef ArrayType Acl;
 #define ACL_CONNECT_CHR			'c'
 
 /* string holding all privilege code chars, in order by bitmask position */
-#define ACL_ALL_RIGHTS_STR	"arwdRxtXUCTc"
+#define ACL_ALL_RIGHTS_STR	"arwdDxtXUCTc"
 
 /*
  * Bitmasks defining "all rights" for each supported object type
  */
-#define ACL_ALL_RIGHTS_RELATION		(ACL_INSERT|ACL_SELECT|ACL_UPDATE|ACL_DELETE|ACL_REFERENCES|ACL_TRIGGER)
+#define ACL_ALL_RIGHTS_RELATION		(ACL_INSERT|ACL_SELECT|ACL_UPDATE|ACL_DELETE|ACL_TRUNCATE|ACL_REFERENCES|ACL_TRIGGER)
 #define ACL_ALL_RIGHTS_SEQUENCE		(ACL_USAGE|ACL_SELECT|ACL_UPDATE)
 #define ACL_ALL_RIGHTS_DATABASE		(ACL_CREATE|ACL_CREATE_TEMP|ACL_CONNECT)
 #define ACL_ALL_RIGHTS_FUNCTION		(ACL_EXECUTE)
