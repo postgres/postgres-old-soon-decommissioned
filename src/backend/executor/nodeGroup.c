@@ -50,6 +50,23 @@ ExecGroup(GroupState *node)
 	grpColIdx = ((Group *) node->ss.ps.plan)->grpColIdx;
 
 	/*
+	 * Check to see if we're still projecting out tuples from a previous group
+	 * tuple (because there is a function-returning-set in the projection
+	 * expressions).  If so, try to project another one.
+	 */
+	if (node->ss.ps.ps_TupFromTlist)
+	{
+		TupleTableSlot *result;
+		ExprDoneCond isDone;
+
+		result = ExecProject(node->ss.ps.ps_ProjInfo, &isDone);
+		if (isDone == ExprMultipleResult)
+			return result;
+		/* Done with that source tuple... */
+		node->ss.ps.ps_TupFromTlist = false;
+	}
+
+	/*
 	 * The ScanTupleSlot holds the (copied) first tuple of each group.
 	 */
 	firsttupleslot = node->ss.ss_ScanTupleSlot;
@@ -90,7 +107,16 @@ ExecGroup(GroupState *node)
 			/*
 			 * Form and return a projection tuple using the first input tuple.
 			 */
-			return ExecProject(node->ss.ps.ps_ProjInfo, NULL);
+			TupleTableSlot *result;
+			ExprDoneCond isDone;
+
+			result = ExecProject(node->ss.ps.ps_ProjInfo, &isDone);
+
+			if (isDone != ExprEndResult)
+			{
+				node->ss.ps.ps_TupFromTlist = (isDone == ExprMultipleResult);
+				return result;
+			}
 		}
 	}
 
@@ -142,7 +168,16 @@ ExecGroup(GroupState *node)
 			/*
 			 * Form and return a projection tuple using the first input tuple.
 			 */
-			return ExecProject(node->ss.ps.ps_ProjInfo, NULL);
+			TupleTableSlot *result;
+			ExprDoneCond isDone;
+
+			result = ExecProject(node->ss.ps.ps_ProjInfo, &isDone);
+
+			if (isDone != ExprEndResult)
+			{
+				node->ss.ps.ps_TupFromTlist = (isDone == ExprMultipleResult);
+				return result;
+			}
 		}
 	}
 
