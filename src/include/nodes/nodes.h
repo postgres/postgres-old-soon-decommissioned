@@ -67,6 +67,8 @@ typedef enum NodeTag
 	T_Hash,
 	T_SetOp,
 	T_Limit,
+	/* this one isn't a subclass of Plan: */
+	T_PlanInvalItem,
 
 	/*
 	 * TAGS FOR PLAN STATE NODES (execnodes.h)

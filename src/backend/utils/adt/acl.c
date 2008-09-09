@@ -92,7 +92,7 @@ static AclMode convert_tablespace_priv_string(text *priv_type_text);
 static AclMode convert_role_priv_string(text *priv_type_text);
 static AclResult pg_role_aclcheck(Oid role_oid, Oid roleid, AclMode mode);
 
-static void RoleMembershipCacheCallback(Datum arg, Oid relid);
+static void RoleMembershipCacheCallback(Datum arg, int cacheid, ItemPointer tuplePtr);
 
 
 /*
@@ -2822,7 +2822,7 @@ initialize_acl(void)
  *		Syscache inval callback function
  */
 static void
-RoleMembershipCacheCallback(Datum arg, Oid relid)
+RoleMembershipCacheCallback(Datum arg, int cacheid, ItemPointer tuplePtr)
 {
 	/* Force membership caches to be recomputed on next use */
 	cached_privs_role = InvalidOid;

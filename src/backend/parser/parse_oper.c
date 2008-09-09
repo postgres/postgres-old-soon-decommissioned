@@ -79,7 +79,7 @@ static bool make_oper_cache_key(OprCacheKey *key, List *opname,
 								Oid ltypeId, Oid rtypeId);
 static Oid	find_oper_cache_entry(OprCacheKey *key);
 static void make_oper_cache_entry(OprCacheKey *key, Oid opr_oid);
-static void InvalidateOprCacheCallBack(Datum arg, Oid relid);
+static void InvalidateOprCacheCallBack(Datum arg, int cacheid, ItemPointer tuplePtr);
 
 
 /*
@@ -1130,7 +1130,7 @@ make_oper_cache_entry(OprCacheKey *key, Oid opr_oid)
  * Callback for pg_operator and pg_cast inval events
  */
 static void
-InvalidateOprCacheCallBack(Datum arg, Oid relid)
+InvalidateOprCacheCallBack(Datum arg, int cacheid, ItemPointer tuplePtr)
 {
 	HASH_SEQ_STATUS status;
 	OprCacheEntry *hentry;

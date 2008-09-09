@@ -88,6 +88,7 @@ _copyPlannedStmt(PlannedStmt *from)
 	COPY_NODE_FIELD(returningLists);
 	COPY_NODE_FIELD(rowMarks);
 	COPY_NODE_FIELD(relationOids);
+	COPY_NODE_FIELD(invalItems);
 	COPY_SCALAR_FIELD(nParamExec);
 
 	return newnode;
@@ -685,6 +686,21 @@ _copyLimit(Limit *from)
 	 */
 	COPY_NODE_FIELD(limitOffset);
 	COPY_NODE_FIELD(limitCount);
+
+	return newnode;
+}
+
+/*
+ * _copyPlanInvalItem
+ */
+static PlanInvalItem *
+_copyPlanInvalItem(PlanInvalItem *from)
+{
+	PlanInvalItem *newnode = makeNode(PlanInvalItem);
+
+	COPY_SCALAR_FIELD(cacheId);
+	/* tupleId isn't really a "scalar", but this works anyway */
+	COPY_SCALAR_FIELD(tupleId);
 
 	return newnode;
 }
@@ -3156,6 +3172,9 @@ copyObject(void *from)
 			break;
 		case T_Limit:
 			retval = _copyLimit(from);
+			break;
+		case T_PlanInvalItem:
+			retval = _copyPlanInvalItem(from);
 			break;
 
 			/*

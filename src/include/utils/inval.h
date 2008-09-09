@@ -18,7 +18,8 @@
 #include "utils/relcache.h"
 
 
-typedef void (*CacheCallbackFunction) (Datum arg, Oid relid);
+typedef void (*SyscacheCallbackFunction) (Datum arg, int cacheid, ItemPointer tuplePtr);
+typedef void (*RelcacheCallbackFunction) (Datum arg, Oid relid);
 
 
 extern void AcceptInvalidationMessages(void);
@@ -50,10 +51,10 @@ extern void CacheInvalidateRelcacheByTuple(HeapTuple classTuple);
 extern void CacheInvalidateRelcacheByRelid(Oid relid);
 
 extern void CacheRegisterSyscacheCallback(int cacheid,
-							  CacheCallbackFunction func,
+							  SyscacheCallbackFunction func,
 							  Datum arg);
 
-extern void CacheRegisterRelcacheCallback(CacheCallbackFunction func,
+extern void CacheRegisterRelcacheCallback(RelcacheCallbackFunction func,
 							  Datum arg);
 
 extern void inval_twophase_postcommit(TransactionId xid, uint16 info,

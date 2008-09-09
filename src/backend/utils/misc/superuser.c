@@ -36,7 +36,7 @@ static Oid	last_roleid = InvalidOid;	/* InvalidOid == cache not valid */
 static bool last_roleid_is_super = false;
 static bool roleid_callback_registered = false;
 
-static void RoleidCallback(Datum arg, Oid relid);
+static void RoleidCallback(Datum arg, int cacheid, ItemPointer tuplePtr);
 
 
 /*
@@ -102,7 +102,7 @@ superuser_arg(Oid roleid)
  *		Syscache inval callback function
  */
 static void
-RoleidCallback(Datum arg, Oid relid)
+RoleidCallback(Datum arg, int cacheid, ItemPointer tuplePtr)
 {
 	/* Invalidate our local cache in case role's superuserness changed */
 	last_roleid = InvalidOid;

@@ -17,6 +17,7 @@
 #include "access/sdir.h"
 #include "nodes/bitmapset.h"
 #include "nodes/primnodes.h"
+#include "storage/itemptr.h"
 
 
 /* ----------------------------------------------------------------
@@ -71,6 +72,8 @@ typedef struct PlannedStmt
 	List	   *rowMarks;		/* a list of RowMarkClause's */
 
 	List	   *relationOids;	/* OIDs of relations the plan depends on */
+
+	List	   *invalItems;		/* other dependencies, as PlanInvalItems */
 
 	int			nParamExec;		/* number of PARAM_EXEC Params used */
 } PlannedStmt;
@@ -558,5 +561,22 @@ typedef struct Limit
 	Node	   *limitOffset;	/* OFFSET parameter, or NULL if none */
 	Node	   *limitCount;		/* COUNT parameter, or NULL if none */
 } Limit;
+
+
+/*
+ * Plan invalidation info
+ *
+ * We track the objects on which a PlannedStmt depends in two ways:
+ * relations are recorded as a simple list of OIDs, and everything else
+ * is represented as a list of PlanInvalItems.  A PlanInvalItem is designed
+ * to be used with the syscache invalidation mechanism, so it identifies a
+ * system catalog entry by cache ID and tuple TID.
+ */
+typedef struct PlanInvalItem
+{
+	NodeTag		type;
+	int			cacheId;		/* a syscache ID, see utils/syscache.h */
+	ItemPointerData tupleId;	/* TID of the object's catalog tuple */
+} PlanInvalItem;
 
 #endif   /* PLANNODES_H */

@@ -79,6 +79,9 @@ typedef struct CachedPlan
 	int			refcount;		/* count of live references to this struct */
 	int			generation;		/* counter, starting at 1, for replans */
 	MemoryContext context;		/* context containing this CachedPlan */
+	/* These fields are used only in the not-fully-planned case: */
+	List	   *relationOids;	/* OIDs of relations the stmts depend on */
+	List	   *invalItems;		/* other dependencies, as PlanInvalItems */
 } CachedPlan;
 
 

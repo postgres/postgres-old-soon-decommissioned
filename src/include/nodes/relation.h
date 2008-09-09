@@ -74,6 +74,8 @@ typedef struct PlannerGlobal
 
 	List	   *relationOids;	/* OIDs of relations the plan depends on */
 
+	List	   *invalItems;		/* other dependencies, as PlanInvalItems */
+
 	bool		transientPlan;	/* redo plan when TransactionXmin changes? */
 } PlannerGlobal;
 
