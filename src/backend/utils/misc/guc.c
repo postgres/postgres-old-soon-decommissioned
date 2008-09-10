@@ -5128,9 +5128,10 @@ set_config_sourcefile(const char *name, char *sourcefile, int sourceline)
 	if (record == NULL)
 		elog(ERROR, "unrecognized configuration parameter \"%s\"", name);
 
+	sourcefile = guc_strdup(elevel, sourcefile);
 	if (record->sourcefile)
 		free(record->sourcefile);
-	record->sourcefile = guc_strdup(elevel, sourcefile);
+	record->sourcefile = sourcefile;
 	record->sourceline = sourceline;
 }
 
