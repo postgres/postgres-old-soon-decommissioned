@@ -741,6 +741,18 @@ getdiag_target	: T_SCALAR
 						check_assignable(yylval.scalar);
 						$$ = yylval.scalar->dno;
 					}
+				| T_ROW
+					{
+						yyerror("expected an integer variable");
+					}
+				| T_RECORD
+					{
+						yyerror("expected an integer variable");
+					}
+				| T_WORD
+					{
+						yyerror("expected an integer variable");
+					}
 				;
 
 
@@ -1668,6 +1680,18 @@ cursor_variable	: T_SCALAR
 											((PLpgSQL_var *) yylval.scalar)->refname)));
 						}
 						$$ = (PLpgSQL_var *) yylval.scalar;
+					}
+				| T_ROW
+					{
+						yyerror("expected a cursor or refcursor variable");
+					}
+				| T_RECORD
+					{
+						yyerror("expected a cursor or refcursor variable");
+					}
+				| T_WORD
+					{
+						yyerror("expected a cursor or refcursor variable");
 					}
 				;
 
