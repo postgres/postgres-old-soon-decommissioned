@@ -126,6 +126,8 @@ struct config_generic
 	GucSource	reset_source;	/* source of the reset_value */
 	GucSource	source;			/* source of the current actual value */
 	GucStack   *stack;			/* stacked prior values */
+	char	   *sourcefile;		/* file this settings is from (NULL if not file) */
+	int			sourceline;		/* line in source file */
 };
 
 /* bit values in flags field */
