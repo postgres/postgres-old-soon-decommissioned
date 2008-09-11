@@ -212,6 +212,7 @@ heapgetpage(HeapScanDesc scan, BlockNumber page)
 	/*
 	 * Prune and repair fragmentation for the whole page, if possible.
 	 */
+	Assert(TransactionIdIsValid(RecentGlobalXmin));
 	heap_page_prune_opt(scan->rs_rd, buffer, RecentGlobalXmin);
 
 	/*
@@ -1487,6 +1488,8 @@ heap_hot_search_buffer(ItemPointer tid, Buffer buffer, Snapshot snapshot,
 
 	if (all_dead)
 		*all_dead = true;
+
+	Assert(TransactionIdIsValid(RecentGlobalXmin));
 
 	Assert(ItemPointerGetBlockNumber(tid) == BufferGetBlockNumber(buffer));
 	offnum = ItemPointerGetOffsetNumber(tid);

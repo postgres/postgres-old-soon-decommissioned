@@ -419,6 +419,8 @@ index_getnext(IndexScanDesc scan, ScanDirection direction)
 	SCAN_CHECKS;
 	GET_SCAN_PROCEDURE(amgettuple);
 
+	Assert(TransactionIdIsValid(RecentGlobalXmin));
+
 	/*
 	 * We always reset xs_hot_dead; if we are here then either we are just
 	 * starting the scan, or we previously returned a visible tuple, and in

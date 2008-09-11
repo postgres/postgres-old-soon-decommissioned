@@ -75,10 +75,14 @@ Snapshot	ActiveSnapshot = NULL;
  * These are updated by GetSnapshotData.  We initialize them this way
  * for the convenience of TransactionIdIsInProgress: even in bootstrap
  * mode, we don't want it to say that BootstrapTransactionId is in progress.
+ *
+ * RecentGlobalXmin is initialized to InvalidTransactionId, to ensure that no
+ * one tries to use a stale value.  Readers should ensure that it has been set
+ * to something else before using it.
  */
 TransactionId TransactionXmin = FirstNormalTransactionId;
 TransactionId RecentXmin = FirstNormalTransactionId;
-TransactionId RecentGlobalXmin = FirstNormalTransactionId;
+TransactionId RecentGlobalXmin = InvalidTransactionId;
 
 /* local functions */
 static bool XidInMVCCSnapshot(TransactionId xid, Snapshot snapshot);
