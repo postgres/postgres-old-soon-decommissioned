@@ -37,6 +37,7 @@
 
 #include "access/heapam.h"
 #include "access/relscan.h"
+#include "access/transam.h"
 #include "executor/execdebug.h"
 #include "executor/nodeBitmapHeapscan.h"
 #include "pgstat.h"
@@ -262,6 +263,7 @@ bitgetpage(HeapScanDesc scan, TBMIterateResult *tbmres)
 	/*
 	 * Prune and repair fragmentation for the whole page, if possible.
 	 */
+	Assert(TransactionIdIsValid(RecentGlobalXmin));
 	heap_page_prune_opt(scan->rs_rd, buffer, RecentGlobalXmin);
 
 	/*
