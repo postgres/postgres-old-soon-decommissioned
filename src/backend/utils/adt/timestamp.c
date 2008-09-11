@@ -744,7 +744,7 @@ intervaltypmodin(PG_FUNCTION_ARGS)
 	tl = ArrayGetIntegerTypmods(ta, &n);
 
 	/*
-	 * tl[0] - opt_interval tl[1] - Iconst (optional)
+	 * tl[0] - interval range (fields bitmask)  tl[1] - precision (optional)
 	 *
 	 * Note we must validate tl[0] even though it's normally guaranteed
 	 * correct by the grammar --- consider SELECT 'foo'::"interval"(1000).
@@ -881,7 +881,7 @@ intervaltypmodout(PG_FUNCTION_ARGS)
 	}
 
 	if (precision != INTERVAL_FULL_PRECISION)
-		snprintf(res, 64, "(%d)%s", precision, fieldstr);
+		snprintf(res, 64, "%s(%d)", fieldstr, precision);
 	else
 		snprintf(res, 64, "%s", fieldstr);
 
