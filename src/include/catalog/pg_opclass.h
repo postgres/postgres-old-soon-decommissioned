@@ -123,13 +123,13 @@ DATA(insert (	403		macaddr_ops			PGNSP PGUID 1984  829 t 0 ));
 DATA(insert (	405		macaddr_ops			PGNSP PGUID 1985  829 t 0 ));
 /*
  * Here's an ugly little hack to save space in the system catalog indexes.
- * btree and hash don't ordinarily allow a storage type different from input
- * type; but cstring and name are the same thing except for trailing padding,
+ * btree doesn't ordinarily allow a storage type different from input type;
+ * but cstring and name are the same thing except for trailing padding,
  * and we can safely omit that within an index entry.  So we declare the
- * opclasses for name as using cstring storage type.
+ * btree opclass for name as using cstring storage type.
  */
 DATA(insert (	403		name_ops			PGNSP PGUID 1986   19 t 2275 ));
-DATA(insert (	405		name_ops			PGNSP PGUID 1987   19 t 2275 ));
+DATA(insert (	405		name_ops			PGNSP PGUID 1987   19 t 0 ));
 DATA(insert (	403		numeric_ops			PGNSP PGUID 1988 1700 t 0 ));
 DATA(insert (	405		numeric_ops			PGNSP PGUID 1998 1700 t 0 ));
 DATA(insert OID = 1981 ( 403	oid_ops		PGNSP PGUID 1989   26 t 0 ));

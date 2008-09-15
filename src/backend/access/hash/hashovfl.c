@@ -187,7 +187,7 @@ _hash_getovflpage(Relation rel, Buffer metabuf)
 	_hash_chgbufaccess(rel, metabuf, HASH_NOLOCK, HASH_WRITE);
 
 	_hash_checkpage(rel, metabuf, LH_META_PAGE);
-	metap = (HashMetaPage) BufferGetPage(metabuf);
+	metap = HashPageGetMeta(BufferGetPage(metabuf));
 
 	/* start search at hashm_firstfree */
 	orig_firstfree = metap->hashm_firstfree;
@@ -450,7 +450,7 @@ _hash_freeovflpage(Relation rel, Buffer ovflbuf,
 
 	/* Read the metapage so we can determine which bitmap page to use */
 	metabuf = _hash_getbuf(rel, HASH_METAPAGE, HASH_READ, LH_META_PAGE);
-	metap = (HashMetaPage) BufferGetPage(metabuf);
+	metap = HashPageGetMeta(BufferGetPage(metabuf));
 
 	/* Identify which bit to set */
 	ovflbitno = blkno_to_bitno(metap, ovflblkno);

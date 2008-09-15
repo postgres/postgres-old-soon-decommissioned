@@ -452,6 +452,13 @@
      </row>
 
      <row>
+      <entry><structfield>amkeytype</structfield></entry>
+      <entry><type>oid</type></entry>
+      <entry><literal><link linkend="catalog-pg-type"><structname>pg_type</structname></link>.oid</literal></entry>
+      <entry>Type of data stored in index, or zero if not a fixed type</entry>
+     </row>
+
+     <row>
       <entry><structfield>aminsert</structfield></entry>
       <entry><type>regproc</type></entry>
       <entry><literal><link linkend="catalog-pg-proc"><structname>pg_proc</structname></link>.oid</literal></entry>
@@ -6424,7 +6431,7 @@
      <row>
       <entry><structfield>sourceline</structfield></entry>
       <entry><type>text</type></entry>
-      <entry>Line number within the sourcefile the current value was set 
+      <entry>Line number within the sourcefile the current value was set
       from (NULL for values set in sources other than configuration files)
       </entry>
      </row>
