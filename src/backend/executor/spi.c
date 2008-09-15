@@ -1368,6 +1368,36 @@ SPI_is_cursor_plan(SPIPlanPtr plan)
 }
 
 /*
+ * SPI_plan_is_valid --- test whether a SPI plan is currently valid
+ * (that is, not marked as being in need of revalidation).
+ *
+ * See notes for CachedPlanIsValid before using this.
+ */
+bool
+SPI_plan_is_valid(SPIPlanPtr plan)
+{
+	Assert(plan->magic == _SPI_PLAN_MAGIC);
+	if (plan->saved)
+	{
+		ListCell   *lc;
+
+		foreach(lc, plan->plancache_list)
+		{
+			CachedPlanSource *plansource = (CachedPlanSource *) lfirst(lc);
+
+			if (!CachedPlanIsValid(plansource))
+				return false;
+		}
+		return true;
+	}
+	else
+	{
+		/* An unsaved plan is assumed valid for its (short) lifetime */
+		return true;
+	}
+}
+
+/*
  * SPI_result_code_string --- convert any SPI return code to a string
  *
  * This is often useful in error messages.	Most callers will probably

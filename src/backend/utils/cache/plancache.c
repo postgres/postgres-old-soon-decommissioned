@@ -572,6 +572,44 @@ ReleaseCachedPlan(CachedPlan *plan, bool useResOwner)
 }
 
 /*
+ * CachedPlanIsValid: test whether the plan within a CachedPlanSource is
+ * currently valid (that is, not marked as being in need of revalidation).
+ *
+ * This result is only trustworthy (ie, free from race conditions) if
+ * the caller has acquired locks on all the relations used in the plan.
+ */
+bool
+CachedPlanIsValid(CachedPlanSource *plansource)
+{
+	CachedPlan *plan;
+
+	/* Validity check that we were given a CachedPlanSource */
+	Assert(list_member_ptr(cached_plans_list, plansource));
+
+	plan = plansource->plan;
+	if (plan && !plan->dead)
+	{
+		/*
+		 * Plan must have positive refcount because it is referenced by
+		 * plansource; so no need to fear it disappears under us here.
+		 */
+		Assert(plan->refcount > 0);
+
+		/*
+		 * Although we don't want to acquire locks here, it still seems
+		 * useful to check for expiration of a transient plan.
+		 */
+		if (TransactionIdIsValid(plan->saved_xmin) &&
+			!TransactionIdEquals(plan->saved_xmin, TransactionXmin))
+			plan->dead = true;
+		else
+			return true;
+	}
+
+	return false;
+}
+
+/*
  * AcquireExecutorLocks: acquire locks needed for execution of a fully-planned
  * cached plan; or release them if acquire is false.
  */
