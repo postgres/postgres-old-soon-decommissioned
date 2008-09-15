@@ -121,8 +121,7 @@ typedef struct Port
 	/*
 	 * Information that needs to be held during the authentication cycle.
 	 */
-	UserAuth	auth_method;
-	char	   *auth_arg;
+	HbaLine	   *hba;
 	char		md5Salt[4];		/* Password salt */
 	char		cryptSalt[2];	/* Password salt */
 
