@@ -470,7 +470,7 @@ exec_command(const char *cmd,
 		else
 		{
 			char	   *func;
-			Oid			foid;
+			Oid			foid = InvalidOid;
 
 			func = psql_scan_slash_option(scan_state,
 										  OT_WHOLE_LINE, NULL, true);
