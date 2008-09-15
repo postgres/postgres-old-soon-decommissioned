@@ -114,6 +114,7 @@ extern int	SPI_freeplan(SPIPlanPtr plan);
 extern Oid	SPI_getargtypeid(SPIPlanPtr plan, int argIndex);
 extern int	SPI_getargcount(SPIPlanPtr plan);
 extern bool SPI_is_cursor_plan(SPIPlanPtr plan);
+extern bool SPI_plan_is_valid(SPIPlanPtr plan);
 extern const char *SPI_result_code_string(int code);
 
 extern HeapTuple SPI_copytuple(HeapTuple tuple);
