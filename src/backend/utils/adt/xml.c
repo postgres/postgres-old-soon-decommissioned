@@ -208,7 +208,6 @@ xml_out_internal(xmltype *x, pg_enc target_encoding)
 
 #ifdef USE_LIBXML
 	xmlChar    *version;
-	xmlChar    *encoding;
 	int			standalone;
 	int			res_code;
 #endif
@@ -220,7 +219,7 @@ xml_out_internal(xmltype *x, pg_enc target_encoding)
 
 #ifdef USE_LIBXML
 	if ((res_code = parse_xml_decl((xmlChar *) str,
-							   &len, &version, &encoding, &standalone)) == 0)
+								   &len, &version, NULL, &standalone)) == 0)
 	{
 		StringInfoData buf;
 
@@ -237,6 +236,10 @@ xml_out_internal(xmltype *x, pg_enc target_encoding)
 				len += 1;
 		}
 		appendStringInfoString(&buf, str + len);
+
+		if (version)
+			xmlFree(version);
+		pfree(str);
 
 		return buf.data;
 	}
