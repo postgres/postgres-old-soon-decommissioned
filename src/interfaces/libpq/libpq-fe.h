@@ -28,6 +28,14 @@ extern		"C"
  */
 #include "postgres_ext.h"
 
+/*
+ * Option flags for PQcopyResult
+ */
+#define PG_COPYRES_ATTRS          0x01
+#define PG_COPYRES_TUPLES         0x02		/* Implies PG_COPYRES_ATTRS */
+#define PG_COPYRES_EVENTS         0x04
+#define PG_COPYRES_NOTICEHOOKS    0x08
+
 /* Application-visible enum types */
 
 typedef enum
@@ -191,6 +199,21 @@ typedef struct
 		int			integer;
 	}			u;
 } PQArgBlock;
+
+/* ----------------
+ * PGresAttDesc -- Data about a single attribute (column) of a query result
+ * ----------------
+ */
+typedef struct pgresAttDesc
+{
+	char	   *name;			/* column name */
+	Oid			tableid;		/* source table, if known */
+	int			columnid;		/* source column, if known */
+	int			format;			/* format code for value (text/binary) */
+	Oid			typid;			/* type id */
+	int			typlen;			/* type size */
+	int			atttypmod;		/* type-specific modifier info */
+} PGresAttDesc;
 
 /* ----------------
  * Exported functions of libpq
@@ -430,13 +453,12 @@ extern void PQfreemem(void *ptr);
 /* Note: depending on this is deprecated; use PQconnectionNeedsPassword(). */
 #define PQnoPasswordSupplied	"fe_sendauth: no password supplied\n"
 
-/*
- * Make an empty PGresult with given status (some apps find this
- * useful). If conn is not NULL and status indicates an error, the
- * conn's errorMessage is copied.
- */
+/* Create and manipulate PGresults */
 extern PGresult *PQmakeEmptyPGresult(PGconn *conn, ExecStatusType status);
-
+extern PGresult *PQcopyResult(const PGresult *src, int flags);
+extern int PQsetResultAttrs(PGresult *res, int numAttributes, PGresAttDesc *attDescs);
+extern void *PQresultAlloc(PGresult *res, size_t nBytes);
+extern int PQsetvalue(PGresult *res, int tup_num, int field_num, char *value, int len);
 
 /* Quoting strings before inclusion in queries. */
 extern size_t PQescapeStringConn(PGconn *conn,

@@ -393,7 +393,9 @@ sub CopyIncludeFiles
     lcopy('src/include/libpq/libpq-fs.h', $target . '/include/libpq/')
       || croak 'Could not copy libpq-fs.h';
 
-    CopyFiles('Libpq headers', $target . '/include/', 'src/interfaces/libpq/', 'libpq-fe.h');
+    CopyFiles('Libpq headers',
+	      $target . '/include/', 'src/interfaces/libpq/',
+	      'libpq-fe.h', 'libpq-events.h');
     CopyFiles(
         'Libpq internal headers',
         $target .'/include/internal/',
