@@ -36,6 +36,7 @@
 
 #include "storage/fd.h"
 #include "storage/buffile.h"
+#include "storage/buf_internals.h"
 
 /*
  * We break BufFiles into gigabyte-sized segments, regardless of RELSEG_SIZE.
@@ -238,6 +239,8 @@ BufFileLoadBuffer(BufFile *file)
 		file->nbytes = 0;
 	file->offsets[file->curFile] += file->nbytes;
 	/* we choose not to advance curOffset here */
+
+	BufFileReadCount++;
 }
 
 /*
@@ -300,6 +303,8 @@ BufFileDumpBuffer(BufFile *file)
 		file->offsets[file->curFile] += bytestowrite;
 		file->curOffset += bytestowrite;
 		wpos += bytestowrite;
+
+		BufFileWriteCount++;
 	}
 	file->dirty = false;
 

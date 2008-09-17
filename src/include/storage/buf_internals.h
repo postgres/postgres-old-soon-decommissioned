@@ -180,6 +180,8 @@ extern long int BufferHitCount;
 extern long int LocalBufferHitCount;
 extern long int BufferFlushCount;
 extern long int LocalBufferFlushCount;
+extern long int BufFileReadCount;
+extern long int BufFileWriteCount;
 
 
 /*

@@ -29,6 +29,8 @@ long int	BufferHitCount;
 long int	LocalBufferHitCount;
 long int	BufferFlushCount;
 long int	LocalBufferFlushCount;
+long int	BufFileReadCount;
+long int	BufFileWriteCount;
 
 
 /*
