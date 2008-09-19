@@ -156,6 +156,7 @@ typedef struct PGEvent
 	char	   *name;			/* used only for error messages */
 	void	   *passThrough;	/* pointer supplied at registration time */
 	void	   *data;			/* optional state (instance) data */
+	bool		resultInitialized;	/* T if RESULTCREATE/COPY succeeded */
 } PGEvent;
 
 struct pg_result

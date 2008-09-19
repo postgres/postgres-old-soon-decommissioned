@@ -76,6 +76,7 @@ PQregisterEventProc(PGconn *conn, PGEventProc proc,
 		return FALSE;
 	conn->events[conn->nEvents].passThrough = passThrough;
 	conn->events[conn->nEvents].data = NULL;
+	conn->events[conn->nEvents].resultInitialized = FALSE;
 	conn->nEvents++;
 
 	regevt.conn = conn;
