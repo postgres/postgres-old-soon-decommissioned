@@ -4434,7 +4434,11 @@ DESCR("GiST tsquery support");
 DATA(insert OID = 3701 (  gtsquery_consistent			PGNSP PGUID 12 1 0 0 f f t f i 5 16 "2281 2281 23 26 2281" _null_ _null_ _null_ gtsquery_consistent _null_ _null_ _null_ ));
 DESCR("GiST tsquery support");
 
-DATA(insert OID = 3688 (  ts_typanalyze	PGNSP PGUID 12 1 0 0 f f t f s 1 16 "2281" _null_ _null_ _null_ ts_typanalyze _null_ _null_ _null_ ));
+DATA(insert OID = 3686 (  tsmatchsel		PGNSP PGUID 12 1 0 0 f f t f s 4 701 "2281 26 2281 23" _null_ _null_ _null_ tsmatchsel _null_ _null_ _null_ ));
+DESCR("restriction selectivity of tsvector @@ tsquery");
+DATA(insert OID = 3687 (  tsmatchjoinsel	PGNSP PGUID 12 1 0 0 f f t f s 5 701 "2281 26 2281 21 2281" _null_ _null_ _null_ tsmatchjoinsel _null_ _null_ _null_ ));
+DESCR("join selectivity of tsvector @@ tsquery");
+DATA(insert OID = 3688 (  ts_typanalyze		PGNSP PGUID 12 1 0 0 f f t f s 1 16 "2281" _null_ _null_ _null_ ts_typanalyze _null_ _null_ _null_ ));
 DESCR("tsvector typanalyze");
 
 DATA(insert OID = 3689 (  ts_stat		PGNSP PGUID 12 10 10000 0 f f t t v 1 2249 "25" "{25,25,23,23}" "{i,o,o,o}" "{query,word,ndoc,nentry}" ts_stat1 _null_ _null_ _null_ ));

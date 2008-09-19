@@ -243,8 +243,12 @@ typedef FormData_pg_statistic *Form_pg_statistic;
  * values.  This is useful when the column datatype is an array or some other
  * type with identifiable elements (for instance, tsvector).  staop contains
  * the equality operator appropriate to the element type.  stavalues contains
- * the most common element values, and stanumbers their frequencies, with the
- * same rules as for MCV slots.
+ * the most common element values, and stanumbers their frequencies.  Unlike
+ * MCV slots, the values are sorted into order (to support binary search
+ * for a particular value).  Since this puts the minimum and maximum
+ * frequencies at unpredictable spots in stanumbers, there are two extra
+ * members of stanumbers, holding copies of the minimum and maximum
+ * frequencies.
  *
  * Note: in current usage for tsvector columns, the stavalues elements are of
  * type text, even though their representation within tsvector is not

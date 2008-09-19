@@ -6664,6 +6664,9 @@
        A list of the frequencies of the most common values or elements,
        i.e., number of occurrences of each divided by total number of rows.
        (NULL when <structfield>most_common_vals</structfield> is.)
+       For some datatypes such as <type>tsvector</>, it can also store some
+       additional information, making it longer than the
+       <structfield>most_common_vals</> array.
       </entry>
      </row>
 
