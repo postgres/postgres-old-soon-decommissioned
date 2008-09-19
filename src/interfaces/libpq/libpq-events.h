@@ -36,22 +36,22 @@ typedef enum
 
 typedef struct
 {
-	const PGconn *conn;
+	PGconn *conn;
 } PGEventRegister;
 
 typedef struct
 {
-	const PGconn *conn;
+	PGconn *conn;
 } PGEventConnReset;
 
 typedef struct
 {
-	const PGconn *conn;
+	PGconn *conn;
 } PGEventConnDestroy;
 
 typedef struct
 {
-	const PGconn *conn;
+	PGconn *conn;
 	PGresult *result;
 } PGEventResultCreate;
 
@@ -63,7 +63,7 @@ typedef struct
 
 typedef struct
 {
-	const PGresult *result;
+	PGresult *result;
 } PGEventResultDestroy;
 
 typedef int (*PGEventProc) (PGEventId evtId, void *evtInfo, void *passThrough);
@@ -83,6 +83,9 @@ extern int	PQresultSetInstanceData(PGresult *result, PGEventProc proc, void *dat
 
 /* Gets the PGresult instance data for the provided proc. */
 extern void *PQresultInstanceData(const PGresult *result, PGEventProc proc);
+
+/* Fires RESULTCREATE events for an application-created PGresult. */
+extern int	PQfireResultCreateEvents(PGconn *conn, PGresult *res);
 
 #ifdef __cplusplus
 }
