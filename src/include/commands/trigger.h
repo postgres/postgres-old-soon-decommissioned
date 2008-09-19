@@ -84,7 +84,7 @@ typedef struct TriggerData
 #define SESSION_REPLICATION_ROLE_ORIGIN		0
 #define SESSION_REPLICATION_ROLE_REPLICA	1
 #define SESSION_REPLICATION_ROLE_LOCAL		2
-extern int	SessionReplicationRole;
+extern PGDLLIMPORT int	SessionReplicationRole;
 
 #define TRIGGER_FIRES_ON_ORIGIN				'O'
 #define TRIGGER_FIRES_ALWAYS				'A'
