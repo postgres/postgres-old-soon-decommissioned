@@ -164,6 +164,7 @@ typedef struct _PQprintOpt
 
 /* ----------------
  * Structure for the conninfo parameter definitions returned by PQconndefaults
+ * or PQconninfoParse.
  *
  * All fields except "val" point at static strings which must not be altered.
  * "val" is either NULL or a malloc'd current-value string.  PQconninfoFree()
@@ -177,7 +178,7 @@ typedef struct _PQconninfoOption
 	char	   *compiled;		/* Fallback compiled in default value	*/
 	char	   *val;			/* Option's current value, or NULL		 */
 	char	   *label;			/* Label for field in connect dialog	*/
-	char	   *dispchar;		/* Character to display for this field in a
+	char	   *dispchar;		/* Indicates how to display this field in a
 								 * connect dialog. Values are: "" Display
 								 * entered value as is "*" Password field -
 								 * hide value "D"  Debug option - don't show
@@ -243,7 +244,10 @@ extern void PQfinish(PGconn *conn);
 /* get info about connection options known to PQconnectdb */
 extern PQconninfoOption *PQconndefaults(void);
 
-/* free the data structure returned by PQconndefaults() */
+/* parse connection options in same way as PQconnectdb */
+extern PQconninfoOption *PQconninfoParse(const char *conninfo, char **errmsg);
+
+/* free the data structure returned by PQconndefaults() or PQconninfoParse() */
 extern void PQconninfoFree(PQconninfoOption *connOptions);
 
 /*
