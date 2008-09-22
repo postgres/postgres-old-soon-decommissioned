@@ -290,7 +290,6 @@ struct pg_conn
 	char	   *dbName;			/* database name */
 	char	   *pguser;			/* Postgres username and password, if any */
 	char	   *pgpass;
-	bool		pgpass_from_client;	/* did password come from connect args? */
 	char	   *sslmode;		/* SSL mode (require,prefer,allow,disable) */
 #if defined(KRB5) || defined(ENABLE_GSS) || defined(ENABLE_SSPI)
 	char	   *krbsrvname;		/* Kerberos service name */
