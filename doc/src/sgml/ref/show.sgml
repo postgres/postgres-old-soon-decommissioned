@@ -82,8 +82,8 @@ SHOW ALL
          <para>
           Shows the database's locale setting for collation (text
           ordering).  At present, this parameter can be shown but not
-          set, because the setting is determined at
-          <command>initdb</> time.
+          set, because the setting is determined at database creation
+          time.
          </para>
         </listitem>
        </varlistentry>
@@ -94,8 +94,8 @@ SHOW ALL
          <para>
           Shows the database's locale setting for character
           classification.  At present, this parameter can be shown but
-          not set, because the setting is determined at
-          <command>initdb</> time.
+          not set, because the setting is determined at database creation
+          time.
          </para>
         </listitem>
        </varlistentry>

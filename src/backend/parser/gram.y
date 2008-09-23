@@ -398,7 +398,7 @@ static TypeName *TableFuncTypeName(List *columns);
 	CLUSTER COALESCE COLLATE COLUMN COMMENT COMMIT
 	COMMITTED CONCURRENTLY CONFIGURATION CONNECTION CONSTRAINT CONSTRAINTS
 	CONTENT_P CONTINUE_P CONVERSION_P COPY COST CREATE CREATEDB
-	CREATEROLE CREATEUSER CROSS CSV CURRENT_P CURRENT_DATE CURRENT_ROLE
+	CREATEROLE CREATEUSER CROSS CSV CTYPE CURRENT_P CURRENT_DATE CURRENT_ROLE
 	CURRENT_TIME CURRENT_TIMESTAMP CURRENT_USER CURSOR CYCLE
 
 	DATABASE DAY_P DEALLOCATE DEC DECIMAL_P DECLARE DEFAULT DEFAULTS
@@ -5458,6 +5458,22 @@ createdb_opt_item:
 				{
 					$$ = makeDefElem("encoding", NULL);
 				}
+			| COLLATE opt_equal Sconst
+				{
+					$$ = makeDefElem("collate", (Node *)makeString($3));
+				}
+			| COLLATE opt_equal DEFAULT
+				{
+					$$ = makeDefElem("collate", NULL);
+				}
+			| CTYPE opt_equal Sconst
+				{
+					$$ = makeDefElem("ctype", (Node *)makeString($3));
+				}
+			| CTYPE opt_equal DEFAULT
+				{
+					$$ = makeDefElem("ctype", NULL);
+				}
 			| CONNECTION LIMIT opt_equal SignedIconst
 				{
 					$$ = makeDefElem("connectionlimit", (Node *)makeInteger($4));
@@ -9216,6 +9232,7 @@ unreserved_keyword:
 			| CREATEROLE
 			| CREATEUSER
 			| CSV
+			| CTYPE
 			| CURRENT_P
 			| CURSOR
 			| CYCLE

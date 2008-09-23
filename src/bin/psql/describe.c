@@ -454,11 +454,18 @@ listAllDbs(bool verbose)
 	printfPQExpBuffer(&buf,
 					  "SELECT d.datname as \"%s\",\n"
 					  "       pg_catalog.pg_get_userbyid(d.datdba) as \"%s\",\n"
-					  "       pg_catalog.pg_encoding_to_char(d.encoding) as \"%s\",\n"
-					  "       d.datacl as \"%s\"",
+					  "       pg_catalog.pg_encoding_to_char(d.encoding) as \"%s\",\n",
 					  gettext_noop("Name"),
 					  gettext_noop("Owner"),
-					  gettext_noop("Encoding"),
+					  gettext_noop("Encoding"));
+	if (pset.sversion >= 80400)
+		appendPQExpBuffer(&buf,
+						  "       d.datcollate as \"%s\",\n"
+						  "       d.datctype as \"%s\",\n",
+						  gettext_noop("Collation"),
+						  gettext_noop("Ctype"));
+	appendPQExpBuffer(&buf,
+					  "       d.datacl as \"%s\"",
 					  gettext_noop("Access Privileges"));
 	if (verbose && pset.sversion >= 80200)
 		appendPQExpBuffer(&buf,

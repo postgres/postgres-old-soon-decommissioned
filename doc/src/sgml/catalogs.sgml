@@ -2150,6 +2150,20 @@
      </row>
 
      <row>
+      <entry><structfield>datcollate</structfield></entry>
+      <entry><type>name</type></entry>
+      <entry></entry>
+      <entry>LC_COLLATE for this database</entry>
+     </row>
+
+     <row>
+      <entry><structfield>datctype</structfield></entry>
+      <entry><type>name</type></entry>
+      <entry></entry>
+      <entry>LC_CTYPE for this database</entry>
+     </row>
+
+     <row>
       <entry><structfield>datistemplate</structfield></entry>
       <entry><type>bool</type></entry>
       <entry></entry>

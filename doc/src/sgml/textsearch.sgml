@@ -1896,7 +1896,7 @@ LIMIT 10;
 
   <note>
    <para>
-    The parser's notion of a <quote>letter</> is determined by the server's
+    The parser's notion of a <quote>letter</> is determined by the database's
     locale setting, specifically <varname>lc_ctype</>.  Words containing
     only the basic ASCII letters are reported as a separate token type,
     since it is sometimes useful to distinguish them.  In most European
