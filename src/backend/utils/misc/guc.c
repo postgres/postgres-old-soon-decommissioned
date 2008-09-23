@@ -6176,8 +6176,12 @@ GetConfigOptionByNum(int varnum, const char **values, bool *noshow)
 			break;
 	}
 
-	/* If the setting came from a config file, set the source location */
-	if (conf->source == PGC_S_FILE)
+	/* 
+	 * If the setting came from a config file, set the source location.
+	 * For security reasons, we don't show source file/line number for
+	 * non-superusers.
+	 */
+	if (conf->source == PGC_S_FILE && superuser())
 	{
 		values[12] = conf->sourcefile;
 		snprintf(buffer, sizeof(buffer), "%d", conf->sourceline);
