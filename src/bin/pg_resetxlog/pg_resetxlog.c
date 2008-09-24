@@ -442,7 +442,6 @@ GuessControlValues(void)
 {
 	uint64		sysidentifier;
 	struct timeval tv;
-	char	   *localeptr;
 
 	/*
 	 * Set up a completely default set of pg_control values.
