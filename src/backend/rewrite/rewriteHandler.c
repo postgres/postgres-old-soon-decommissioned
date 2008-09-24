@@ -335,6 +335,33 @@ rewriteRuleAction(Query *parsetree,
 									 sub_action->rtable);
 
 	/*
+	 * There could have been some SubLinks in parsetree's rtable, in which
+	 * case we'd better mark the sub_action correctly.
+	 */
+	if (parsetree->hasSubLinks && !sub_action->hasSubLinks)
+	{
+		ListCell   *lc;
+
+		foreach(lc, parsetree->rtable)
+		{
+			RangeTblEntry *rte = (RangeTblEntry *) lfirst(lc);
+
+			switch (rte->rtekind)
+			{
+				case RTE_FUNCTION:
+					sub_action->hasSubLinks =
+						checkExprHasSubLink(rte->funcexpr);
+					break;
+				default:
+					/* other RTE types don't contain bare expressions */
+					break;
+			}
+			if (sub_action->hasSubLinks)
+				break;		/* no need to keep scanning rtable */
+		}
+	}
+
+	/*
 	 * Each rule action's jointree should be the main parsetree's jointree
 	 * plus that rule's jointree, but usually *without* the original rtindex
 	 * that we're replacing (if present, which it won't be for INSERT). Note
