@@ -373,7 +373,7 @@ ReadControlFile(void)
 	char	   *buffer;
 	pg_crc32	crc;
 
-	if ((fd = open(XLOG_CONTROL_FILE, O_RDONLY, 0)) < 0)
+	if ((fd = open(XLOG_CONTROL_FILE, O_RDONLY | PG_BINARY, 0)) < 0)
 	{
 		/*
 		 * If pg_control is not there at all, or we can't read it, the odds
