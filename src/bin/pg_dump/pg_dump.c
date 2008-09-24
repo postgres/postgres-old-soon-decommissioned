@@ -1653,8 +1653,8 @@ dumpDatabase(Archive *AH)
 	i_oid = PQfnumber(res, "oid");
 	i_dba = PQfnumber(res, "dba");
 	i_encoding = PQfnumber(res, "encoding");
-	i_collate = PQfnumber(res, "collate");
-	i_ctype = PQfnumber(res, "ctype");
+	i_collate = PQfnumber(res, "datcollate");
+	i_ctype = PQfnumber(res, "datctype");
 	i_tablespace = PQfnumber(res, "tablespace");
 
 	dbCatId.tableoid = atooid(PQgetvalue(res, 0, i_tableoid));
