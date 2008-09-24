@@ -5149,7 +5149,7 @@ static void
 validate_tupdesc_compat(TupleDesc expected, TupleDesc returned, const char *msg)
 {
 	int		   i;
-	const char dropped_column_type[] = gettext_noop("n/a (dropped column)");
+	const char *dropped_column_type = gettext_noop("n/a (dropped column)");
 
 	if (!expected || !returned)
 		ereport(ERROR,
