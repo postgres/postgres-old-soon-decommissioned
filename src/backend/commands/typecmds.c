@@ -497,7 +497,7 @@ DefineType(List *names, List *parameters)
 			   TYPTYPE_BASE,	/* type-type (base type) */
 			   TYPCATEGORY_ARRAY, /* type-category (array) */
 			   false,			/* array types are never preferred */
-			   DEFAULT_TYPDELIM,	/* array element delimiter */
+			   delimiter,		/* array element delimiter */
 			   F_ARRAY_IN,		/* input procedure */
 			   F_ARRAY_OUT,		/* output procedure */
 			   F_ARRAY_RECV,	/* receive procedure */
