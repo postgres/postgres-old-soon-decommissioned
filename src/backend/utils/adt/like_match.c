@@ -103,7 +103,7 @@ MatchText(char *t, int tlen, char *p, int plen)
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_ESCAPE_SEQUENCE),
 						 errmsg("LIKE pattern must not end with escape character")));
-			if (*p != *t)
+			if (TCHAR(*p) != TCHAR(*t))
 				return LIKE_FALSE;
 		}
 		else if (*p == '%')
