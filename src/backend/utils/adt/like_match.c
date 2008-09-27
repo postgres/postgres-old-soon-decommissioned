@@ -98,7 +98,7 @@ MatchText(char *t, int tlen, char *p, int plen)
 		{
 			/* Next byte must match literally, whatever it is */
 			NextByte(p, plen);
-			if ((plen <= 0) || *p != *t)
+			if ((plen <= 0) || TCHAR(*p) != TCHAR(*t))
 				return LIKE_FALSE;
 		}
 		else if (*p == '%')
