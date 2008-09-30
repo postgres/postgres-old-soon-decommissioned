@@ -573,7 +573,7 @@ read_post_opts(void)
 {
 	if (post_opts == NULL)
 	{
-		post_opts = "";		/* defatult */
+		post_opts = "";		/* default */
 		if (ctl_command == RESTART_COMMAND)
 		{
 			char	  **optlines;
