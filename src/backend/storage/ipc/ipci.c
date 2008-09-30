@@ -26,7 +26,6 @@
 #include "postmaster/bgwriter.h"
 #include "postmaster/postmaster.h"
 #include "storage/bufmgr.h"
-#include "storage/freespace.h"
 #include "storage/ipc.h"
 #include "storage/pg_shmem.h"
 #include "storage/pmsignal.h"
@@ -110,7 +109,6 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int port)
 		size = add_size(size, ProcArrayShmemSize());
 		size = add_size(size, BackendStatusShmemSize());
 		size = add_size(size, SInvalShmemSize());
-		size = add_size(size, FreeSpaceShmemSize());
 		size = add_size(size, BgWriterShmemSize());
 		size = add_size(size, AutoVacuumShmemSize());
 		size = add_size(size, BTreeShmemSize());
@@ -202,11 +200,6 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int port)
 	 * Set up shared-inval messaging
 	 */
 	CreateSharedInvalidationState();
-
-	/*
-	 * Set up free-space map
-	 */
-	InitFreeSpaceMap();
 
 	/*
 	 * Set up interprocess signaling mechanisms

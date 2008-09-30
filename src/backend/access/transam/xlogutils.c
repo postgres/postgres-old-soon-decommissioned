@@ -359,6 +359,7 @@ CreateFakeRelcacheEntry(RelFileNode rnode)
 	rel->rd_lockInfo.lockRelId.relId = rnode.relNode;
 
 	rel->rd_targblock = InvalidBlockNumber;
+	rel->rd_fsm_nblocks_cache = InvalidBlockNumber;
 	rel->rd_smgr = NULL;
 
 	return rel;

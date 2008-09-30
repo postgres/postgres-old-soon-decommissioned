@@ -19,6 +19,7 @@
 #include "catalog/index.h"
 #include "miscadmin.h"
 #include "storage/bufmgr.h"
+#include "storage/indexfsm.h"
 #include "utils/memutils.h"
 
 const XLogRecPtr XLogRecPtrForTemp = {1, 1};
@@ -101,6 +102,9 @@ gistbuild(PG_FUNCTION_ARGS)
 	if (RelationGetNumberOfBlocks(index) != 0)
 		elog(ERROR, "index \"%s\" already contains data",
 			 RelationGetRelationName(index));
+
+	/* Initialize FSM */
+	InitIndexFreeSpaceMap(index);
 
 	/* no locking is needed */
 	initGISTstate(&buildstate.giststate, index);

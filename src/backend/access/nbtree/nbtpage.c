@@ -27,6 +27,7 @@
 #include "miscadmin.h"
 #include "storage/bufmgr.h"
 #include "storage/freespace.h"
+#include "storage/indexfsm.h"
 #include "storage/lmgr.h"
 #include "utils/inval.h"
 #include "utils/snapmgr.h"
@@ -501,7 +502,7 @@ _bt_getbuf(Relation rel, BlockNumber blkno, int access)
 		 */
 		for (;;)
 		{
-			blkno = GetFreeIndexPage(&rel->rd_node);
+			blkno = GetFreeIndexPage(rel);
 			if (blkno == InvalidBlockNumber)
 				break;
 			buf = ReadBuffer(rel, blkno);

@@ -1118,16 +1118,6 @@ set semsys:seminfo_semmsl=32
       </row>
 
       <row>
-       <entry><xref linkend="guc-max-fsm-relations"></>
-       <entry>70</>
-      </row>
-
-      <row>
-       <entry><xref linkend="guc-max-fsm-pages"></>
-       <entry>6</>
-      </row>
-
-      <row>
        <entry>Fixed space requirements</>
        <entry>770 kB</entry>
       </row>

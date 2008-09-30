@@ -33,7 +33,6 @@
 #include "postmaster/bgwriter.h"
 #include "postmaster/walwriter.h"
 #include "storage/bufmgr.h"
-#include "storage/freespace.h"
 #include "storage/ipc.h"
 #include "storage/proc.h"
 #include "tcop/tcopprot.h"
@@ -419,7 +418,6 @@ AuxiliaryProcessMain(int argc, char *argv[])
 		case StartupProcess:
 			bootstrap_signals();
 			StartupXLOG();
-			LoadFreeSpaceMap();
 			BuildFlatFiles(false);
 			proc_exit(0);		/* startup done */
 

@@ -16,6 +16,7 @@
 #include "access/gist_private.h"
 #include "access/reloptions.h"
 #include "storage/freespace.h"
+#include "storage/indexfsm.h"
 #include "storage/lmgr.h"
 #include "storage/bufmgr.h"
 #include "utils/rel.h"
@@ -617,7 +618,7 @@ gistNewBuffer(Relation r)
 	/* First, try to get a page from FSM */
 	for (;;)
 	{
-		BlockNumber blkno = GetFreeIndexPage(&r->rd_node);
+		BlockNumber blkno = GetFreeIndexPage(r);
 
 		if (blkno == InvalidBlockNumber)
 			break;				/* nothing left in FSM */

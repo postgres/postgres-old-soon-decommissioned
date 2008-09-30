@@ -6004,8 +6004,7 @@ current_date &lt; 2017-11-17
       <para>
        Increase default values for <link
        linkend="guc-shared-buffers"><varname>shared_buffers</></link>
-       and <link
-       linkend="guc-max-fsm-pages"><varname>max_fsm_pages</></link>
+       and <varname>max_fsm_pages</>
        (Andrew)
       </para>
      </listitem>

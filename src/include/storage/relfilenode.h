@@ -23,11 +23,12 @@
 typedef enum ForkNumber
 {
 	InvalidForkNumber = -1,
-	MAIN_FORKNUM = 0
-	/* NOTE: change NUM_FORKS below when you add new forks */
+	MAIN_FORKNUM = 0,
+	FSM_FORKNUM
+	/* NOTE: change MAX_FORKNUM below when you add new forks */
 } ForkNumber;
 
-#define MAX_FORKNUM		MAIN_FORKNUM
+#define MAX_FORKNUM		FSM_FORKNUM
 
 /*
  * RelFileNode must provide all that we need to know to physically access

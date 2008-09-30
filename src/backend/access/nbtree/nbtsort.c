@@ -52,6 +52,8 @@
  * we log the completed index pages to WAL if and only if WAL archiving is
  * active.
  *
+ * This code isn't concerned about the FSM at all. The caller is responsible
+ * for initializing that.
  *
  * Portions Copyright (c) 1996-2008, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California

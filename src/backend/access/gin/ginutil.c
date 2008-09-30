@@ -19,6 +19,7 @@
 #include "catalog/pg_type.h" 
 #include "storage/bufmgr.h"
 #include "storage/freespace.h"
+#include "storage/indexfsm.h"
 #include "storage/lmgr.h"
 
 void
@@ -151,7 +152,7 @@ GinNewBuffer(Relation index)
 	/* First, try to get a page from FSM */
 	for (;;)
 	{
-		BlockNumber blkno = GetFreeIndexPage(&index->rd_node);
+		BlockNumber blkno = GetFreeIndexPage(index);
 
 		if (blkno == InvalidBlockNumber)
 			break;
