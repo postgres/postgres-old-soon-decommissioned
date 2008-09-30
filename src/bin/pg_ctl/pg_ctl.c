@@ -546,8 +546,13 @@ do_start(void)
 					*arg1 = '\0';	/* terminate so we get only program name */
 					post_opts = arg1 + 1; /* point past whitespace */
 				}
+				else
+					post_opts = "";
+#ifdef NOT_USED
+				/* this never actually worked pre-8.2 */
 				if (postgres_path == NULL)
 					postgres_path = optline;
+#endif
 			}
 			else
 				post_opts = optline;
