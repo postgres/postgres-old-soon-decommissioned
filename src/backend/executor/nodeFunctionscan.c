@@ -131,6 +131,9 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate, int eflags)
 	TypeFuncClass functypclass;
 	TupleDesc	tupdesc = NULL;
 
+	/* check for unsupported flags */
+	Assert(!(eflags & EXEC_FLAG_MARK));
+
 	/*
 	 * FunctionScan should not have any children.
 	 */
@@ -271,42 +274,6 @@ ExecEndFunctionScan(FunctionScanState *node)
 	if (node->tuplestorestate != NULL)
 		tuplestore_end(node->tuplestorestate);
 	node->tuplestorestate = NULL;
-}
-
-/* ----------------------------------------------------------------
- *		ExecFunctionMarkPos
- *
- *		Calls tuplestore to save the current position in the stored file.
- * ----------------------------------------------------------------
- */
-void
-ExecFunctionMarkPos(FunctionScanState *node)
-{
-	/*
-	 * if we haven't materialized yet, just return.
-	 */
-	if (!node->tuplestorestate)
-		return;
-
-	tuplestore_markpos(node->tuplestorestate);
-}
-
-/* ----------------------------------------------------------------
- *		ExecFunctionRestrPos
- *
- *		Calls tuplestore to restore the last saved file position.
- * ----------------------------------------------------------------
- */
-void
-ExecFunctionRestrPos(FunctionScanState *node)
-{
-	/*
-	 * if we haven't materialized yet, just return.
-	 */
-	if (!node->tuplestorestate)
-		return;
-
-	tuplestore_restorepos(node->tuplestorestate);
 }
 
 /* ----------------------------------------------------------------

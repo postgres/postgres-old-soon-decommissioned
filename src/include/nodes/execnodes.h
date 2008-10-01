@@ -1324,7 +1324,7 @@ typedef struct MaterialState
 	ScanState	ss;				/* its first field is NodeTag */
 	int			eflags;			/* capability flags to pass to tuplestore */
 	bool		eof_underlying; /* reached end of underlying plan? */
-	void	   *tuplestorestate;	/* private state of tuplestore.c */
+	Tuplestorestate *tuplestorestate;
 } MaterialState;
 
 /* ----------------
