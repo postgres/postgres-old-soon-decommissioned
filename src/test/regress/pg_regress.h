@@ -57,3 +57,4 @@ void		add_stringlist_item(_stringlist ** listhead, const char *str);
 PID_TYPE	spawn_process(const char *cmdline);
 void		exit_nicely(int code);
 void		replace_string(char *string, char *replace, char *replacement);
+bool		file_exists(const char *file);

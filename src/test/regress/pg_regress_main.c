@@ -34,12 +34,26 @@ psql_start_test(const char *testname,
 	char		expectfile[MAXPGPATH];
 	char		psql_cmd[MAXPGPATH * 3];
 
+	/*
+	 * Look for files in the output dir first, consistent with a vpath
+	 * search.  This is mainly to create more reasonable error
+	 * messages if the file is not found.  It also allows local test
+	 * overrides when running pg_regress outside of the source tree.
+	 */
 	snprintf(infile, sizeof(infile), "%s/sql/%s.sql",
-			 inputdir, testname);
+			 outputdir, testname);
+	if (!file_exists(infile))
+		snprintf(infile, sizeof(infile), "%s/sql/%s.sql",
+				 inputdir, testname);
+
 	snprintf(outfile, sizeof(outfile), "%s/results/%s.out",
 			 outputdir, testname);
+
 	snprintf(expectfile, sizeof(expectfile), "%s/expected/%s.out",
-			 inputdir, testname);
+			 outputdir, testname);
+	if (!file_exists(expectfile))
+		snprintf(expectfile, sizeof(expectfile), "%s/expected/%s.out",
+				 inputdir, testname);
 
 	add_stringlist_item(resultfiles, outfile);
 	add_stringlist_item(expectfiles, expectfile);
