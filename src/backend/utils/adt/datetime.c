@@ -3959,7 +3959,7 @@ EncodeInterval(struct pg_tm * tm, fsec_t fsec, int style, char *str)
 					is_before = TRUE;
 				}
 				sprintf(cp, "%s%d.%02d secs", (is_nonzero ? " " : ""),
-						tm->tm_sec, (((int) sec) / 10000));
+						tm->tm_sec, abs((int) rint(sec / 10000.0)));
 				cp += strlen(cp);
 #else
 				fsec += tm->tm_sec;
