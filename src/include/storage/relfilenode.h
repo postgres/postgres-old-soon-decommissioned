@@ -25,7 +25,10 @@ typedef enum ForkNumber
 	InvalidForkNumber = -1,
 	MAIN_FORKNUM = 0,
 	FSM_FORKNUM
-	/* NOTE: change MAX_FORKNUM below when you add new forks */
+	/*
+	 * NOTE: if you add a new fork, change MAX_FORKNUM below and update the
+	 * name to number mapping in utils/adt/dbsize.c
+	 */
 } ForkNumber;
 
 #define MAX_FORKNUM		FSM_FORKNUM
