@@ -183,6 +183,20 @@ typedef struct Append
 } Append;
 
 /* ----------------
+ *	RecursiveUnion node -
+ *		Generate a recursive union of two subplans.
+ *
+ * The "outer" subplan is always the non-recursive term, and the "inner"
+ * subplan is the recursive term.
+ * ----------------
+ */
+typedef struct RecursiveUnion
+{
+	Plan		plan;
+	int			wtParam;		/* ID of Param representing work table */
+} RecursiveUnion;
+
+/* ----------------
  *	 BitmapAnd node -
  *		Generate the intersection of the results of sub-plans.
  *
@@ -357,6 +371,28 @@ typedef struct ValuesScan
 	Scan		scan;
 	List	   *values_lists;	/* list of expression lists */
 } ValuesScan;
+
+/* ----------------
+ *		CteScan node
+ * ----------------
+ */
+typedef struct CteScan
+{
+	Scan		scan;
+	int			ctePlanId;		/* ID of init SubPlan for CTE */
+	int			cteParam;		/* ID of Param representing CTE output */
+} CteScan;
+
+/* ----------------
+ *		WorkTableScan node
+ * ----------------
+ */
+typedef struct WorkTableScan
+{
+	Scan		scan;
+	int			wtParam;		/* ID of Param representing work table */
+} WorkTableScan;
+
 
 /*
  * ==========

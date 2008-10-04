@@ -728,15 +728,23 @@ ScanQueryForLocks(Query *parsetree, bool acquire)
 		}
 	}
 
+	/* Recurse into subquery-in-WITH */
+	foreach(lc, parsetree->cteList)
+	{
+		CommonTableExpr *cte = (CommonTableExpr *) lfirst(lc);
+
+		ScanQueryForLocks((Query *) cte->ctequery, acquire);
+	}
+
 	/*
 	 * Recurse into sublink subqueries, too.  But we already did the ones in
-	 * the rtable.
+	 * the rtable and cteList.
 	 */
 	if (parsetree->hasSubLinks)
 	{
 		query_tree_walker(parsetree, ScanQueryWalker,
 						  (void *) &acquire,
-						  QTW_IGNORE_RT_SUBQUERIES);
+						  QTW_IGNORE_RC_SUBQUERIES);
 	}
 }
 

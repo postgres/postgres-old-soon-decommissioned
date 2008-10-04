@@ -991,6 +991,12 @@
 </row>
 
 <row>
+<entry><literal>42P19</literal></entry>
+<entry>INVALID RECURSION</entry>
+<entry>invalid_recursion</entry>
+</row>
+
+<row>
 <entry><literal>42830</literal></entry>
 <entry>INVALID FOREIGN KEY</entry>
 <entry>invalid_foreign_key</entry>

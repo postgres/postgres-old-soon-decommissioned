@@ -305,6 +305,7 @@ const ScanKeyword ScanKeywords[] = {
 	{"real", REAL, COL_NAME_KEYWORD},
 	{"reassign", REASSIGN, UNRESERVED_KEYWORD},
 	{"recheck", RECHECK, UNRESERVED_KEYWORD},
+	{"recursive", RECURSIVE, UNRESERVED_KEYWORD},
 	{"references", REFERENCES, RESERVED_KEYWORD},
 	{"reindex", REINDEX, UNRESERVED_KEYWORD},
 	{"relative", RELATIVE_P, UNRESERVED_KEYWORD},
@@ -403,15 +404,6 @@ const ScanKeyword ScanKeywords[] = {
 	{"when", WHEN, RESERVED_KEYWORD},
 	{"where", WHERE, RESERVED_KEYWORD},
 	{"whitespace", WHITESPACE_P, UNRESERVED_KEYWORD},
-
-	/*
-	 * XXX we mark WITH as reserved to force it to be quoted in dumps, even
-	 * though it is currently unreserved according to gram.y.  This is because
-	 * we expect we'll have to make it reserved to implement SQL WITH clauses.
-	 * If that patch manages to do without reserving WITH, adjust this entry
-	 * at that time; in any case this should be back in sync with gram.y after
-	 * WITH clauses are implemented.
-	 */
 	{"with", WITH, RESERVED_KEYWORD},
 	{"without", WITHOUT, UNRESERVED_KEYWORD},
 	{"work", WORK, UNRESERVED_KEYWORD},

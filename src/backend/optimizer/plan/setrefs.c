@@ -201,11 +201,13 @@ set_plan_references(PlannerGlobal *glob, Plan *plan, List *rtable)
 
 		/* zap unneeded sub-structure */
 		newrte->subquery = NULL;
+		newrte->joinaliasvars = NIL;
 		newrte->funcexpr = NULL;
 		newrte->funccoltypes = NIL;
 		newrte->funccoltypmods = NIL;
 		newrte->values_lists = NIL;
-		newrte->joinaliasvars = NIL;
+		newrte->ctecoltypes = NIL;
+		newrte->ctecoltypmods = NIL;
 
 		glob->finalrtable = lappend(glob->finalrtable, newrte);
 
@@ -343,7 +345,28 @@ set_plan_refs(PlannerGlobal *glob, Plan *plan, int rtoffset)
 					fix_scan_list(glob, splan->values_lists, rtoffset);
 			}
 			break;
+		case T_CteScan:
+			{
+				CteScan *splan = (CteScan *) plan;
 
+				splan->scan.scanrelid += rtoffset;
+				splan->scan.plan.targetlist =
+					fix_scan_list(glob, splan->scan.plan.targetlist, rtoffset);
+				splan->scan.plan.qual =
+					fix_scan_list(glob, splan->scan.plan.qual, rtoffset);
+			}
+			break;
+		case T_WorkTableScan:
+			{
+				WorkTableScan *splan = (WorkTableScan *) plan;
+
+				splan->scan.scanrelid += rtoffset;
+				splan->scan.plan.targetlist =
+					fix_scan_list(glob, splan->scan.plan.targetlist, rtoffset);
+				splan->scan.plan.qual =
+					fix_scan_list(glob, splan->scan.plan.qual, rtoffset);
+			}
+			break;
 		case T_NestLoop:
 		case T_MergeJoin:
 		case T_HashJoin:
@@ -433,6 +456,11 @@ set_plan_refs(PlannerGlobal *glob, Plan *plan, int rtoffset)
 											  rtoffset);
 				}
 			}
+			break;
+		case T_RecursiveUnion:
+			/* This doesn't evaluate targetlist or check quals either */
+			set_dummy_tlist_references(plan, rtoffset);
+			Assert(plan->qual == NIL);
 			break;
 		case T_BitmapAnd:
 			{

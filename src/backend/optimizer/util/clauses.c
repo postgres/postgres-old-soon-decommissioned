@@ -3361,6 +3361,7 @@ inline_function(Oid funcid, Oid result_type, List *args,
 		querytree->intoClause ||
 		querytree->hasAggs ||
 		querytree->hasSubLinks ||
+		querytree->cteList ||
 		querytree->rtable ||
 		querytree->jointree->fromlist ||
 		querytree->jointree->quals ||

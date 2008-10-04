@@ -74,6 +74,8 @@ extern bool tuplestore_ateof(Tuplestorestate *state);
 
 extern void tuplestore_rescan(Tuplestorestate *state);
 
+extern void tuplestore_clear(Tuplestorestate *state);
+
 extern void tuplestore_end(Tuplestorestate *state);
 
 #endif   /* TUPLESTORE_H */

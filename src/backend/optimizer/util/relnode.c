@@ -101,6 +101,7 @@ build_simple_rel(PlannerInfo *root, int relid, RelOptKind reloptkind)
 		case RTE_SUBQUERY:
 		case RTE_FUNCTION:
 		case RTE_VALUES:
+		case RTE_CTE:
 
 			/*
 			 * Subquery, function, or values list --- set up attr range and

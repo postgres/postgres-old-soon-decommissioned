@@ -484,6 +484,10 @@
 },
 
 {
+	"invalid_recursion", ERRCODE_INVALID_RECURSION
+},
+
+{
 	"invalid_foreign_key", ERRCODE_INVALID_FOREIGN_KEY
 },
 

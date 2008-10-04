@@ -31,6 +31,7 @@ extern int RTERangeTablePosn(ParseState *pstate,
 extern RangeTblEntry *GetRTEByRangeTablePosn(ParseState *pstate,
 					   int varno,
 					   int sublevels_up);
+extern CommonTableExpr *GetCTEForRTE(ParseState *pstate, RangeTblEntry *rte);
 extern Node *scanRTEForColumn(ParseState *pstate, RangeTblEntry *rte,
 				 char *colname, int location);
 extern Node *colNameToVar(ParseState *pstate, char *colname, bool localonly,
@@ -72,6 +73,11 @@ extern RangeTblEntry *addRangeTableEntryForJoin(ParseState *pstate,
 						  List *aliasvars,
 						  Alias *alias,
 						  bool inFromCl);
+extern RangeTblEntry *addRangeTableEntryForCTE(ParseState *pstate,
+						 CommonTableExpr *cte,
+						 Index levelsup,
+						 Alias *alias,
+						 bool inFromCl);
 extern void addRTEtoQuery(ParseState *pstate, RangeTblEntry *rte,
 			  bool addToJoinList,
 			  bool addToRelNameSpace, bool addToVarNameSpace);

@@ -1220,6 +1220,45 @@ create_valuesscan_path(PlannerInfo *root, RelOptInfo *rel)
 }
 
 /*
+ * create_ctescan_path
+ *	  Creates a path corresponding to a scan of a non-self-reference CTE,
+ *	  returning the pathnode.
+ */
+Path *
+create_ctescan_path(PlannerInfo *root, RelOptInfo *rel)
+{
+	Path	   *pathnode = makeNode(Path);
+
+	pathnode->pathtype = T_CteScan;
+	pathnode->parent = rel;
+	pathnode->pathkeys = NIL;	/* XXX for now, result is always unordered */
+
+	cost_ctescan(pathnode, root, rel);
+
+	return pathnode;
+}
+
+/*
+ * create_worktablescan_path
+ *	  Creates a path corresponding to a scan of a self-reference CTE,
+ *	  returning the pathnode.
+ */
+Path *
+create_worktablescan_path(PlannerInfo *root, RelOptInfo *rel)
+{
+	Path	   *pathnode = makeNode(Path);
+
+	pathnode->pathtype = T_WorkTableScan;
+	pathnode->parent = rel;
+	pathnode->pathkeys = NIL;	/* result is always unordered */
+
+	/* Cost is the same as for a regular CTE scan */
+	cost_ctescan(pathnode, root, rel);
+
+	return pathnode;
+}
+
+/*
  * create_nestloop_path
  *	  Creates a pathnode corresponding to a nestloop join between two
  *	  relations.

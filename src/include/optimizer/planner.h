@@ -30,7 +30,8 @@ extern PlannedStmt *planner(Query *parse, int cursorOptions,
 extern PlannedStmt *standard_planner(Query *parse, int cursorOptions,
 				 ParamListInfo boundParams);
 extern Plan *subquery_planner(PlannerGlobal *glob, Query *parse,
-				 Index level, double tuple_fraction,
+				 PlannerInfo *parent_root,
+				 bool hasRecursion, double tuple_fraction,
 				 PlannerInfo **subroot);
 
 #endif   /* PLANNER_H */

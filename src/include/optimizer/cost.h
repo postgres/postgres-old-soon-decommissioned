@@ -72,6 +72,8 @@ extern void cost_functionscan(Path *path, PlannerInfo *root,
 				  RelOptInfo *baserel);
 extern void cost_valuesscan(Path *path, PlannerInfo *root,
 				RelOptInfo *baserel);
+extern void cost_ctescan(Path *path, PlannerInfo *root, RelOptInfo *baserel);
+extern void cost_recursive_union(Plan *runion, Plan *nrterm, Plan *rterm);
 extern void cost_sort(Path *path, PlannerInfo *root,
 		  List *pathkeys, Cost input_cost, double tuples, int width,
 		  double limit_tuples);
@@ -104,6 +106,8 @@ extern void set_joinrel_size_estimates(PlannerInfo *root, RelOptInfo *rel,
 						   List *restrictlist);
 extern void set_function_size_estimates(PlannerInfo *root, RelOptInfo *rel);
 extern void set_values_size_estimates(PlannerInfo *root, RelOptInfo *rel);
+extern void set_cte_size_estimates(PlannerInfo *root, RelOptInfo *rel,
+								   Plan *cteplan);
 
 /*
  * prototypes for clausesel.c
