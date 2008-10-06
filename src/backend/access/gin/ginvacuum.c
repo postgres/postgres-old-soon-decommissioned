@@ -744,6 +744,9 @@ ginvacuumcleanup(PG_FUNCTION_ARGS)
 		totFreePages = totFreePages - stats->pages_removed;
 	}
 
+	/* Finally, vacuum the FSM */
+	IndexFreeSpaceMapVacuum(info->index);
+
 	stats->pages_free = totFreePages;
 
 	if (needLock)

@@ -90,3 +90,12 @@ IndexFreeSpaceMapTruncate(Relation rel, BlockNumber nblocks)
 {
 	FreeSpaceMapTruncateRel(rel, nblocks);
 }
+
+/*
+ * IndexFreeSpaceMapVacuum - scan and fix any inconsistencies in the FSM
+ */
+void
+IndexFreeSpaceMapVacuum(Relation rel)
+{
+	FreeSpaceMapVacuum(rel);
+}

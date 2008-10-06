@@ -16,12 +16,12 @@
 
 #include "utils/rel.h"
 
-extern void InitIndexFreeSpaceMap(Relation rel);
-
 extern BlockNumber GetFreeIndexPage(Relation rel);
 extern void RecordFreeIndexPage(Relation rel, BlockNumber page);
 extern void RecordUsedIndexPage(Relation rel, BlockNumber page);
 
+extern void InitIndexFreeSpaceMap(Relation rel);
 extern void IndexFreeSpaceMapTruncate(Relation rel, BlockNumber nblocks);
+extern void IndexFreeSpaceMapVacuum(Relation rel);
 
 #endif   /* INDEXFSM_H */

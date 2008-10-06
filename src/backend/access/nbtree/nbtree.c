@@ -574,6 +574,9 @@ btvacuumcleanup(PG_FUNCTION_ARGS)
 		btvacuumscan(info, stats, NULL, NULL, 0);
 	}
 
+	/* Finally, vacuum the FSM */
+	IndexFreeSpaceMapVacuum(info->index);
+
 	/*
 	 * During a non-FULL vacuum it's quite possible for us to be fooled by
 	 * concurrent page splits into double-counting some index tuples, so
