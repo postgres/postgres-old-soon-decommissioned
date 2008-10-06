@@ -6436,6 +6436,18 @@
       values)</entry>
      </row>
      <row>
+      <entry><structfield>boot_val</structfield></entry>
+      <entry><type>text</type></entry>
+      <entry>Parameter value assumed at server startup if the parameter is
+      not otherwise set</entry>
+     </row>
+     <row>
+      <entry><structfield>reset_val</structfield></entry>
+      <entry><type>text</type></entry>
+      <entry>Default run-time session value for the parameter that it will
+      revert to if <command>RESET</command></entry>
+     </row>
+     <row>
       <entry><structfield>sourcefile</structfield></entry>
       <entry><type>text</type></entry>
       <entry>Input file the current value was set from (NULL for values set in
