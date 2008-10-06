@@ -34,7 +34,8 @@ extern int RTERangeTablePosn(ParseState *pstate,
 extern RangeTblEntry *GetRTEByRangeTablePosn(ParseState *pstate,
 					   int varno,
 					   int sublevels_up);
-extern CommonTableExpr *GetCTEForRTE(ParseState *pstate, RangeTblEntry *rte);
+extern CommonTableExpr *GetCTEForRTE(ParseState *pstate, RangeTblEntry *rte,
+									 int rtelevelsup);
 extern Node *scanRTEForColumn(ParseState *pstate, RangeTblEntry *rte,
 				 char *colname, int location);
 extern Node *colNameToVar(ParseState *pstate, char *colname, bool localonly,

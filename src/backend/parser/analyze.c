@@ -1896,7 +1896,7 @@ transformLockingClause(ParseState *pstate, Query *qry, LockingClause *lc)
 							ereport(ERROR,
 									(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 									 errmsg("SELECT FOR UPDATE/SHARE cannot be applied to an outer-level WITH query")));
-						cte = GetCTEForRTE(pstate, rte);
+						cte = GetCTEForRTE(pstate, rte, -1);
 						/* should be analyzed by now */
 						Assert(IsA(cte->ctequery, Query));
 						transformLockingClause(pstate,
@@ -1989,7 +1989,7 @@ transformLockingClause(ParseState *pstate, Query *qry, LockingClause *lc)
 											(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 											 errmsg("SELECT FOR UPDATE/SHARE cannot be applied to an outer-level WITH query"),
 											 parser_errposition(pstate, thisrel->location)));
-								cte = GetCTEForRTE(pstate, rte);
+								cte = GetCTEForRTE(pstate, rte, -1);
 								/* should be analyzed by now */
 								Assert(IsA(cte->ctequery, Query));
 								transformLockingClause(pstate,
