@@ -1549,7 +1549,7 @@ char *
 str_initcap(const char *buff, size_t nbytes)
 {
 	char		*result;
-	bool		wasalnum = false;
+	int			wasalnum = false;
 
 	if (!buff)
 		return NULL;
