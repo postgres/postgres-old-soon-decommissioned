@@ -95,6 +95,7 @@ sub installcheck
 {
     my @args = (
         "../../../$Config/pg_regress/pg_regress",
+        "--dlpath=.",
         "--psqldir=../../../$Config/psql",
         "--schedule=${schedule}_schedule",
         "--multibyte=SQL_ASCII",
@@ -111,6 +112,7 @@ sub check
 {
     my @args = (
         "../../../$Config/pg_regress/pg_regress",
+        "--dlpath=.",
         "--psqldir=../../../$Config/psql",
         "--schedule=${schedule}_schedule",
         "--multibyte=SQL_ASCII",
