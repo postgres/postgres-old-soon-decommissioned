@@ -631,34 +631,15 @@ transformFromClauseItem(ParseState *pstate, Node *n,
 		RangeTblEntry *rte = NULL;
 		int			rtindex;
 
-		/*
-		 * If it is an unqualified name, it might be a reference to some
-		 * CTE visible in this or a parent query.
-		 */
+		/* if it is an unqualified name, it might be a CTE reference */
 		if (!rv->schemaname)
 		{
-			ParseState *ps;
+			CommonTableExpr *cte;
 			Index	levelsup;
 
-			for (ps = pstate, levelsup = 0;
-				 ps != NULL;
-				 ps = ps->parentParseState, levelsup++)
-			{
-				ListCell *lc;
-
-				foreach(lc, ps->p_ctenamespace)
-				{
-					CommonTableExpr *cte = (CommonTableExpr *) lfirst(lc);
-
-					if (strcmp(rv->relname, cte->ctename) == 0)
-					{
-						rte = transformCTEReference(pstate, rv, cte, levelsup);
-						break;
-					}
-				}
-				if (rte)
-					break;
-			}
+			cte = scanNameSpaceForCTE(pstate, rv->relname, &levelsup);
+			if (cte)
+				rte = transformCTEReference(pstate, rv, cte, levelsup);
 		}
 
 		/* if not found as a CTE, must be a table reference */

@@ -23,6 +23,9 @@ extern RangeTblEntry *refnameRangeTblEntry(ParseState *pstate,
 					 const char *refname,
 					 int location,
 					 int *sublevels_up);
+extern CommonTableExpr *scanNameSpaceForCTE(ParseState *pstate,
+											const char *refname,
+											Index *ctelevelsup);
 extern void checkNameSpaceConflicts(ParseState *pstate, List *namespace1,
 						List *namespace2);
 extern int RTERangeTablePosn(ParseState *pstate,
