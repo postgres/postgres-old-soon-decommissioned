@@ -926,6 +926,7 @@ coerce_record_to_complex(ParseState *pstate, Node *node,
 	rowexpr->args = newargs;
 	rowexpr->row_typeid = targetTypeId;
 	rowexpr->row_format = cformat;
+	rowexpr->colnames = NIL;	/* not needed for named target type */
 	rowexpr->location = location;
 	return (Node *) rowexpr;
 }

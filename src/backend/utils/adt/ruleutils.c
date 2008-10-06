@@ -3237,6 +3237,18 @@ get_name_for_var_field(Var *var, int fieldno,
 	Node	   *expr;
 
 	/*
+	 * If it's a RowExpr that was expanded from a whole-row Var, use the
+	 * column names attached to it.
+	 */
+	if (IsA(var, RowExpr))
+	{
+		RowExpr	   *r = (RowExpr *) var;
+
+		if (fieldno > 0 && fieldno <= list_length(r->colnames))
+			return strVal(list_nth(r->colnames, fieldno - 1));
+	}
+
+	/*
 	 * If it's a Var of type RECORD, we have to find what the Var refers to;
 	 * if not, we can use get_expr_result_type. If that fails, we try
 	 * lookup_rowtype_tupdesc, which will probably fail too, but will ereport

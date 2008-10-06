@@ -1493,6 +1493,7 @@ adjust_appendrel_attrs_mutator(Node *node, AppendRelInfo *context)
 					rowexpr->args = fields;
 					rowexpr->row_typeid = var->vartype;
 					rowexpr->row_format = COERCE_IMPLICIT_CAST;
+					rowexpr->colnames = NIL;
 					rowexpr->location = -1;
 
 					return (Node *) rowexpr;

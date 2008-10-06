@@ -1037,6 +1037,7 @@ _outRowExpr(StringInfo str, RowExpr *node)
 	WRITE_NODE_FIELD(args);
 	WRITE_OID_FIELD(row_typeid);
 	WRITE_ENUM_FIELD(row_format, CoercionForm);
+	WRITE_NODE_FIELD(colnames);
 	WRITE_LOCATION_FIELD(location);
 }
 

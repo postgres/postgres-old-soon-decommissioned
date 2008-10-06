@@ -663,6 +663,7 @@ flatten_join_alias_vars_mutator(Node *node,
 			rowexpr->args = fields;
 			rowexpr->row_typeid = var->vartype;
 			rowexpr->row_format = COERCE_IMPLICIT_CAST;
+			rowexpr->colnames = NIL;
 			rowexpr->location = -1;
 
 			return (Node *) rowexpr;

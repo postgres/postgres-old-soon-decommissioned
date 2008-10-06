@@ -744,6 +744,7 @@ _readRowExpr(void)
 	READ_NODE_FIELD(args);
 	READ_OID_FIELD(row_typeid);
 	READ_ENUM_FIELD(row_format, CoercionForm);
+	READ_NODE_FIELD(colnames);
 	READ_LOCATION_FIELD(location);
 
 	READ_DONE();

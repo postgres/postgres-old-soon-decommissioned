@@ -1257,6 +1257,7 @@ _copyRowExpr(RowExpr *from)
 	COPY_NODE_FIELD(args);
 	COPY_SCALAR_FIELD(row_typeid);
 	COPY_SCALAR_FIELD(row_format);
+	COPY_NODE_FIELD(colnames);
 	COPY_LOCATION_FIELD(location);
 
 	return newnode;

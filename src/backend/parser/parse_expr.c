@@ -1534,6 +1534,7 @@ transformRowExpr(ParseState *pstate, RowExpr *r)
 	/* Barring later casting, we consider the type RECORD */
 	newr->row_typeid = RECORDOID;
 	newr->row_format = COERCE_IMPLICIT_CAST;
+	newr->colnames = NIL;		/* ROW() has anonymous columns */
 	newr->location = r->location;
 
 	return (Node *) newr;

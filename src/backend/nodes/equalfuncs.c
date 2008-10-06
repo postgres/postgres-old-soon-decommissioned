@@ -511,6 +511,7 @@ _equalRowExpr(RowExpr *a, RowExpr *b)
 		b->row_format != COERCE_DONTCARE)
 		return false;
 
+	COMPARE_NODE_FIELD(colnames);
 	COMPARE_LOCATION_FIELD(location);
 
 	return true;
