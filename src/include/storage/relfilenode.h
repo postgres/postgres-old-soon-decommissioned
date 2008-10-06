@@ -27,7 +27,7 @@ typedef enum ForkNumber
 	FSM_FORKNUM
 	/*
 	 * NOTE: if you add a new fork, change MAX_FORKNUM below and update the
-	 * name to number mapping in utils/adt/dbsize.c
+	 * forkNames array in catalog.c
 	 */
 } ForkNumber;
 

@@ -19,6 +19,9 @@
 #include "utils/relcache.h"
 
 
+extern const char *forkNames[];
+extern ForkNumber forkname_to_number(char *forkName);
+
 extern char *relpath(RelFileNode rnode, ForkNumber forknum);
 extern char *GetDatabasePath(Oid dbNode, Oid spcNode);
 

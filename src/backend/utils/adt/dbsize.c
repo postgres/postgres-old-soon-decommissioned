@@ -283,35 +283,6 @@ calculate_relation_size(RelFileNode *rfn, ForkNumber forknum)
 	return totalsize;
 }
 
-
-/*
- * XXX: Consider making this global and moving elsewhere. But currently
- * there's no other users for this.
- *
- * Remember to also update the errhint below if you add entries, and the
- * documentation for pg_relation_size().
- */
-static char *forkNames[] = {
-	"main", /* MAIN_FORKNUM */
-	"fsm"   /* FSM_FORKNUM */
-};
-
-static ForkNumber
-forkname_to_number(char *forkName)
-{
-	ForkNumber forkNum;
-
-	for (forkNum = 0; forkNum <= MAX_FORKNUM; forkNum++)
-		if (strcmp(forkNames[forkNum], forkName) == 0)
-			return forkNum;
-
-	ereport(ERROR,
-			(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-			 errmsg("invalid fork name"),
-			 errhint("Valid fork names are 'main' and 'fsm'")));
-	return InvalidForkNumber; /* keep compiler quiet */
-}
-
 Datum
 pg_relation_size(PG_FUNCTION_ARGS)
 {
