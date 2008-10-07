@@ -964,6 +964,12 @@ typedef struct RecursiveUnionState
 	bool		intermediate_empty;
 	Tuplestorestate *working_table;
 	Tuplestorestate *intermediate_table;
+	/* Remaining fields are unused in UNION ALL case */
+	FmgrInfo   *eqfunctions;	/* per-grouping-field equality fns */
+	FmgrInfo   *hashfunctions;	/* per-grouping-field hash fns */
+	MemoryContext tempContext;	/* short-term context for comparisons */
+	TupleHashTable hashtable;	/* hash table for tuples already seen */
+	MemoryContext tableContext;	/* memory context containing hash table */
 } RecursiveUnionState;
 
 /* ----------------

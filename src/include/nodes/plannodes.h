@@ -194,6 +194,12 @@ typedef struct RecursiveUnion
 {
 	Plan		plan;
 	int			wtParam;		/* ID of Param representing work table */
+	/* Remaining fields are zero/null in UNION ALL case */
+	int			numCols;		/* number of columns to check for
+								 * duplicate-ness */
+	AttrNumber *dupColIdx;		/* their indexes in the target list */
+	Oid		   *dupOperators;	/* equality operators to compare with */
+	long		numGroups;		/* estimated number of groups in input */
 } RecursiveUnion;
 
 /* ----------------

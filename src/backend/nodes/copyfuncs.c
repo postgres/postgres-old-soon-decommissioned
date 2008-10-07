@@ -193,6 +193,13 @@ _copyRecursiveUnion(RecursiveUnion *from)
 	 * copy remainder of node
 	 */
 	COPY_SCALAR_FIELD(wtParam);
+	COPY_SCALAR_FIELD(numCols);
+	if (from->numCols > 0)
+	{
+		COPY_POINTER_FIELD(dupColIdx, from->numCols * sizeof(AttrNumber));
+		COPY_POINTER_FIELD(dupOperators, from->numCols * sizeof(Oid));
+	}
+	COPY_SCALAR_FIELD(numGroups);
 
 	return newnode;
 }
