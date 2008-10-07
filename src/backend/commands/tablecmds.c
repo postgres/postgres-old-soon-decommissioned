@@ -6488,6 +6488,7 @@ ATExecSetTableSpace(Oid tableOid, Oid newTableSpace)
 	Oid			oldTableSpace;
 	Oid			reltoastrelid;
 	Oid			reltoastidxid;
+	Oid			newrelfilenode;
 	RelFileNode newrnode;
 	SMgrRelation dstrel;
 	Relation	pg_class;
@@ -6557,8 +6558,17 @@ ATExecSetTableSpace(Oid tableOid, Oid newTableSpace)
 	 */
 	FlushRelationBuffers(rel);
 
+	/*
+	 * Relfilenodes are not unique across tablespaces, so we need to allocate
+	 * a new one in the new tablespace.
+	 */
+	newrelfilenode = GetNewRelFileNode(newTableSpace,
+									   rel->rd_rel->relisshared,
+									   NULL);
+
 	/* Open old and new relation */
 	newrnode = rel->rd_node;
+	newrnode.relNode = newrelfilenode;
 	newrnode.spcNode = newTableSpace;
 	dstrel = smgropen(newrnode);
 
@@ -6588,6 +6598,7 @@ ATExecSetTableSpace(Oid tableOid, Oid newTableSpace)
 
 	/* update the pg_class row */
 	rd_rel->reltablespace = (newTableSpace == MyDatabaseTableSpace) ? InvalidOid : newTableSpace;
+	rd_rel->relfilenode = newrelfilenode;
 	simple_heap_update(pg_class, &tuple->t_self, tuple);
 	CatalogUpdateIndexes(pg_class, tuple);
 
