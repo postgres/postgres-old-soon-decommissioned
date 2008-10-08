@@ -215,6 +215,29 @@ scanNameSpaceForCTE(ParseState *pstate, const char *refname,
 }
 
 /*
+ * Search for a possible "future CTE", that is one that is not yet in scope
+ * according to the WITH scoping rules.  This has nothing to do with valid
+ * SQL semantics, but it's important for error reporting purposes.
+ */
+static bool
+isFutureCTE(ParseState *pstate, const char *refname)
+{
+	for (; pstate != NULL; pstate = pstate->parentParseState)
+	{
+		ListCell *lc;
+
+		foreach(lc, pstate->p_future_ctes)
+		{
+			CommonTableExpr *cte = (CommonTableExpr *) lfirst(lc);
+
+			if (strcmp(cte->ctename, refname) == 0)
+				return true;
+		}
+	}
+	return false;
+}
+
+/*
  * searchRangeTable
  *	  See if any RangeTblEntry could possibly match the RangeVar.
  *	  If so, return a pointer to the RangeTblEntry; else return NULL.
@@ -702,8 +725,9 @@ buildScalarFunctionAlias(Node *funcexpr, char *funcname,
 /*
  * Open a table during parse analysis
  *
- * This is essentially just the same as heap_openrv(), except that it
- * arranges to include the RangeVar's parse location in any resulting error.
+ * This is essentially just the same as heap_openrv(), except that it caters
+ * to some parser-specific error reporting needs, notably that it arranges
+ * to include the RangeVar's parse location in any resulting error.
  *
  * Note: properly, lockmode should be declared LOCKMODE not int, but that
  * would require importing storage/lock.h into parse_relation.h.  Since
@@ -716,7 +740,37 @@ parserOpenTable(ParseState *pstate, const RangeVar *relation, int lockmode)
 	ParseCallbackState pcbstate;
 
 	setup_parser_errposition_callback(&pcbstate, pstate, relation->location);
-	rel = heap_openrv(relation, lockmode);
+	rel = try_heap_openrv(relation, lockmode);
+	if (rel == NULL)
+	{
+		if (relation->schemaname)
+			ereport(ERROR,
+					(errcode(ERRCODE_UNDEFINED_TABLE),
+					 errmsg("relation \"%s.%s\" does not exist",
+							relation->schemaname, relation->relname)));
+		else
+		{
+			/*
+			 * An unqualified name might have been meant as a reference to
+			 * some not-yet-in-scope CTE.  The bare "does not exist" message
+			 * has proven remarkably unhelpful for figuring out such problems,
+			 * so we take pains to offer a specific hint.
+			 */
+			if (isFutureCTE(pstate, relation->relname))
+				ereport(ERROR,
+						(errcode(ERRCODE_UNDEFINED_TABLE),
+						 errmsg("relation \"%s\" does not exist",
+								relation->relname),
+						 errdetail("There is a WITH item named \"%s\", but it cannot be referenced from this part of the query.",
+								   relation->relname),
+						 errhint("Use WITH RECURSIVE, or re-order the WITH items to remove forward references.")));
+			else
+				ereport(ERROR,
+						(errcode(ERRCODE_UNDEFINED_TABLE),
+						 errmsg("relation \"%s\" does not exist",
+								relation->relname)));
+		}
+	}
 	cancel_parser_errposition_callback(&pcbstate);
 	return rel;
 }

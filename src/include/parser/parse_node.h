@@ -54,6 +54,9 @@
  * at the moment.  This is different from p_relnamespace because you have
  * to make an RTE before you can access a CTE.
  *
+ * p_future_ctes: list of CommonTableExprs (WITH items) that are not yet
+ * visible due to scope rules.  This is used to help improve error messages.
+ *
  * p_paramtypes: an array of p_numparams type OIDs for $n parameter symbols
  * (zeroth entry in array corresponds to $1).  If p_variableparams is true, the
  * set of param types is not predetermined; in that case, a zero array entry
@@ -73,6 +76,7 @@ typedef struct ParseState
 	List	   *p_relnamespace; /* current namespace for relations */
 	List	   *p_varnamespace; /* current namespace for columns */
 	List	   *p_ctenamespace; /* current namespace for common table exprs */
+	List	   *p_future_ctes;	/* common table exprs not yet in namespace */
 	Oid		   *p_paramtypes;	/* OIDs of types for $n parameter symbols */
 	int			p_numparams;	/* allocated size of p_paramtypes[] */
 	int			p_next_resno;	/* next targetlist resno to assign */
