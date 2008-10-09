@@ -97,7 +97,7 @@
  * wish to use a different message catalog from the backend's.	To avoid having
  * one copy of the default text domain per .o file, we define it as NULL here
  * and have errstart insert the default text domain.  Modules can either use
- * ereport_domain() directly, or preferrably they can override the TEXTDOMAIN
+ * ereport_domain() directly, or preferably they can override the TEXTDOMAIN
  * macro.
  *----------
  */
@@ -281,7 +281,7 @@ typedef struct ErrorData
 	const char *filename;		/* __FILE__ of ereport() call */
 	int			lineno;			/* __LINE__ of ereport() call */
 	const char *funcname;		/* __func__ of ereport() call */
-	const char *domain;			/* message domain, NULL if default */
+	const char *domain;			/* message domain */
 	int			sqlerrcode;		/* encoded ERRSTATE */
 	char	   *message;		/* primary error message */
 	char	   *detail;			/* detail error message */
