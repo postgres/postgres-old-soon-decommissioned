@@ -41,6 +41,10 @@
 #define Tcl_GetStringResult(interp)  ((interp)->result)
 #endif
 
+/* define our text domain for translations */
+#undef TEXTDOMAIN
+#define TEXTDOMAIN "pltcl"
+
 #if defined(UNICODE_CONVERSION) && HAVE_TCL_VERSION(8,1)
 
 #include "mb/pg_wchar.h"
@@ -262,6 +266,8 @@ _PG_init(void)
 	/* Be sure we do initialization only once (should be redundant now) */
 	if (pltcl_pm_init_done)
 		return;
+
+	set_text_domain(TEXTDOMAIN);
 
 #ifdef WIN32
 	/* Required on win32 to prevent error loading init.tcl */

@@ -1212,3 +1212,17 @@ process_local_preload_libraries(void)
 				   "local_preload_libraries",
 				   true);
 }
+
+void
+set_text_domain(const char *domain)
+{
+#ifdef ENABLE_NLS
+	if (my_exec_path[0] != '\0')
+	{
+		char	locale_path[MAXPGPATH];
+
+		get_locale_path(my_exec_path, locale_path);
+		bindtextdomain(domain, locale_path);
+	}
+#endif
+}

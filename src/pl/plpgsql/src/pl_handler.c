@@ -42,6 +42,8 @@ _PG_init(void)
 	if (inited)
 		return;
 
+	set_text_domain(TEXTDOMAIN);
+
 	plpgsql_HashTableInit();
 	RegisterXactCallback(plpgsql_xact_cb, NULL);
 	RegisterSubXactCallback(plpgsql_subxact_cb, NULL);

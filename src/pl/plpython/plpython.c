@@ -63,6 +63,10 @@ typedef int Py_ssize_t;
 #include "utils/syscache.h"
 #include "utils/typcache.h"
 
+/* define our text domain for translations */
+#undef TEXTDOMAIN
+#define TEXTDOMAIN "plpython"
+
 #include <compile.h>
 #include <eval.h>
 
@@ -2744,6 +2748,8 @@ _PG_init(void)
 
 	if (inited)
 		return;
+
+	set_text_domain(TEXTDOMAIN);
 
 	Py_Initialize();
 	PLy_init_interp();

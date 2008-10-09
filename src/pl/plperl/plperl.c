@@ -30,6 +30,10 @@
 #include "utils/typcache.h"
 #include "utils/hsearch.h"
 
+/* define our text domain for translations */
+#undef TEXTDOMAIN
+#define TEXTDOMAIN "plperl"
+
 /* perl stuff */
 #include "plperl.h"
 
@@ -186,8 +190,10 @@ _PG_init(void)
 	if (inited)
 		return;
 
+	set_text_domain(TEXTDOMAIN);
+
 	DefineCustomBoolVariable("plperl.use_strict",
-	  "If true, will compile trusted and untrusted perl code in strict mode",
+	  gettext_noop("If true, will compile trusted and untrusted perl code in strict mode"),
 							 NULL,
 							 &plperl_use_strict,
 							 PGC_USERSET,

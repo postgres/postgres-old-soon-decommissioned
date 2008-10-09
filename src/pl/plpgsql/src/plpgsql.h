@@ -28,6 +28,10 @@
  * Definitions
  **********************************************************************/
 
+/* define our text domain for translations */
+#undef TEXTDOMAIN
+#define TEXTDOMAIN "plpgsql"
+
 /* ----------
  * Compiler's namestack item types
  * ----------
