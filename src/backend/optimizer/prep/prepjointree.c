@@ -383,7 +383,7 @@ inline_set_returning_functions(PlannerInfo *root)
 			Query  *funcquery;
 
 			/* Check safety of expansion, and expand if possible */
-			funcquery = inline_set_returning_function(root, rte->funcexpr);
+			funcquery = inline_set_returning_function(root, rte);
 			if (funcquery)
 			{
 				/* Successful expansion, replace the rtable entry */

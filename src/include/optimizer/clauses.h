@@ -77,6 +77,7 @@ extern Node *eval_const_expressions(PlannerInfo *root, Node *node);
 
 extern Node *estimate_expression_value(PlannerInfo *root, Node *node);
 
-extern Query *inline_set_returning_function(PlannerInfo *root, Node *node);
+extern Query *inline_set_returning_function(PlannerInfo *root,
+											RangeTblEntry *rte);
 
 #endif   /* CLAUSES_H */
