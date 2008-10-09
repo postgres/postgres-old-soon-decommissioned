@@ -526,6 +526,10 @@ typedef struct PLpgSQL_func_hashkey
 {								/* Hash lookup key for functions */
 	Oid			funcOid;
 
+	bool		isTrigger;		/* true if called as a trigger */
+
+	/* be careful that pad bytes in this struct get zeroed! */
+
 	/*
 	 * For a trigger function, the OID of the relation triggered on is part of
 	 * the hashkey --- we want to compile the trigger separately for each
