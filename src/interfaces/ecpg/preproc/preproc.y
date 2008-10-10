@@ -1007,7 +1007,7 @@ stmt:  AlterDatabaseStmt		{ output_statement($1, 0, ECPGst_normal); }
  *****************************************************************************/
 
 CreateRoleStmt: CREATE ROLE RoleId opt_with OptRoleList
-			{ $$ = cat_str(4, make_str("create role"), $3, make_str("with"), $5); }
+			{ $$ = cat_str(4, make_str("create role"), $3, $4, $5); }
 		;
 
 opt_with:  WITH 		{ $$ = make_str("with"); }
