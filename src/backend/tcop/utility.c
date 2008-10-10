@@ -2368,6 +2368,10 @@ GetCommandLogLevel(Node *parsetree)
 			lev = LOGSTMT_ALL;
 			break;
 
+		case T_DiscardStmt:
+			lev = LOGSTMT_ALL;
+			break;
+
 		case T_CreateTrigStmt:
 			lev = LOGSTMT_DDL;
 			break;
