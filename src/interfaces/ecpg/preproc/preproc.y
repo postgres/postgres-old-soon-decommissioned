@@ -893,7 +893,7 @@ stmt:  AlterDatabaseSetStmt		{ output_statement($1, 0, connection); }
  *****************************************************************************/
 
 CreateUserStmt: CREATE USER UserId opt_with OptUserList
-			{ $$ = cat_str(4, make_str("create user"), $3, make_str("with"), $5); }
+			{ $$ = cat_str(4, make_str("create user"), $3, $4, $5); }
 		;
 
 opt_with:  WITH 		{ $$ = make_str("with"); }
