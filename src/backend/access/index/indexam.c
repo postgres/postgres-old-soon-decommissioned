@@ -655,6 +655,7 @@ index_getbitmap(IndexScanDesc scan, TIDBitmap *bitmap)
 {
 	FmgrInfo   *procedure;
 	int64		ntids;
+	Datum		d;
 
 	SCAN_CHECKS;
 	GET_SCAN_PROCEDURE(amgetbitmap);
@@ -665,9 +666,16 @@ index_getbitmap(IndexScanDesc scan, TIDBitmap *bitmap)
 	/*
 	 * have the am's getbitmap proc do all the work.
 	 */
-	ntids = DatumGetInt64(FunctionCall2(procedure,
-										PointerGetDatum(scan),
-										PointerGetDatum(bitmap)));
+	d = FunctionCall2(procedure,
+					  PointerGetDatum(scan),
+					  PointerGetDatum(bitmap));
+
+	ntids = DatumGetInt64(d);
+
+	/* If int8 is pass-by-ref, must free the result to avoid memory leak */
+#ifndef USE_FLOAT8_BYVAL
+	pfree(DatumGetPointer(d));
+#endif
 
 	pgstat_count_index_tuples(scan->indexRelation, ntids);
 
