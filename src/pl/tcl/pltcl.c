@@ -23,6 +23,7 @@
 #include "commands/trigger.h"
 #include "executor/spi.h"
 #include "fmgr.h"
+#include "miscadmin.h"
 #include "nodes/makefuncs.h"
 #include "parser/parse_type.h"
 #include "tcop/tcopprot.h"

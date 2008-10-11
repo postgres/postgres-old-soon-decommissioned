@@ -54,6 +54,7 @@ typedef int Py_ssize_t;
 #include "executor/spi.h"
 #include "funcapi.h"
 #include "fmgr.h"
+#include "miscadmin.h"
 #include "nodes/makefuncs.h"
 #include "parser/parse_type.h"
 #include "tcop/tcopprot.h"
