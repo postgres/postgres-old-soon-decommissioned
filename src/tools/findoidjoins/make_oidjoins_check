@@ -54,7 +54,7 @@ $AWK -F'[ \.]' '\
 	{
 		printf "\
 --\n\
--- This is created by pgsql/contrib/findoidjoins/make_oidjoin_check\n\
+-- This is created by pgsql/src/tools/findoidjoins/make_oidjoins_check\n\
 --\n";
 	}
 	{
