@@ -471,6 +471,16 @@ DATA(insert (	397   2277 2277 4 1075	403 ));
 DATA(insert (	397   2277 2277 5 1073	403 ));
 
 /*
+ *	btree record_ops
+ */
+
+DATA(insert (	2994  2249 2249 1 2990	403 ));
+DATA(insert (	2994  2249 2249 2 2992	403 ));
+DATA(insert (	2994  2249 2249 3 2988	403 ));
+DATA(insert (	2994  2249 2249 4 2993	403 ));
+DATA(insert (	2994  2249 2249 5 2991	403 ));
+
+/*
  * btree uuid_ops
  */
 

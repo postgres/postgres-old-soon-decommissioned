@@ -4560,6 +4560,22 @@ DESCR("get set of in-progress txids in snapshot");
 DATA(insert OID = 2948 (  txid_visible_in_snapshot	PGNSP PGUID 12 1  0 0 f f t f i 2 16 "20 2970" _null_ _null_ _null_ txid_visible_in_snapshot _null_ _null_ _null_ ));
 DESCR("is txid visible in snapshot?");
 
+/* record comparison */
+DATA(insert OID = 2981 (  record_eq		   PGNSP PGUID 12 1 0 0 f f t f i 2 16 "2249 2249" _null_ _null_ _null_ record_eq _null_ _null_ _null_ ));
+DESCR("record equal");
+DATA(insert OID = 2982 (  record_ne		   PGNSP PGUID 12 1 0 0 f f t f i 2 16 "2249 2249" _null_ _null_ _null_ record_ne _null_ _null_ _null_ ));
+DESCR("record not equal");
+DATA(insert OID = 2983 (  record_lt		   PGNSP PGUID 12 1 0 0 f f t f i 2 16 "2249 2249" _null_ _null_ _null_ record_lt _null_ _null_ _null_ ));
+DESCR("record less than");
+DATA(insert OID = 2984 (  record_gt		   PGNSP PGUID 12 1 0 0 f f t f i 2 16 "2249 2249" _null_ _null_ _null_ record_gt _null_ _null_ _null_ ));
+DESCR("record greater than");
+DATA(insert OID = 2985 (  record_le		   PGNSP PGUID 12 1 0 0 f f t f i 2 16 "2249 2249" _null_ _null_ _null_ record_le _null_ _null_ _null_ ));
+DESCR("record less than or equal");
+DATA(insert OID = 2986 (  record_ge		   PGNSP PGUID 12 1 0 0 f f t f i 2 16 "2249 2249" _null_ _null_ _null_ record_ge _null_ _null_ _null_ ));
+DESCR("record greater than or equal");
+DATA(insert OID = 2987 (  btrecordcmp	   PGNSP PGUID 12 1 0 0 f f t f i 2 23 "2249 2249" _null_ _null_ _null_ btrecordcmp _null_ _null_ _null_ ));
+DESCR("btree less-equal-greater");
+
 
 /*
  * Symbolic values for provolatile column: these indicate whether the result
