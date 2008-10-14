@@ -55,7 +55,6 @@ endif
 ecpg_keywords.o c_keywords.o keywords.o preproc.o parser.o: preproc.h
 
 # instead of maintaining our own list, take the one from the backend
-# we cannot just link it in, but must copy and make some minor changes
 keywords.c: % : $(top_srcdir)/src/backend/parser/%
 	rm -f $@ && $(LN_S) $< .
 
