@@ -1012,6 +1012,7 @@ ForwardFsyncRequest(RelFileNode rnode, ForkNumber forknum, BlockNumber segno)
 	}
 	request = &BgWriterShmem->requests[BgWriterShmem->num_requests++];
 	request->rnode = rnode;
+	request->forknum = forknum;
 	request->segno = segno;
 	LWLockRelease(BgWriterCommLock);
 	return true;
