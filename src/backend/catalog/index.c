@@ -236,6 +236,17 @@ ConstructTupleDescriptor(Relation heapRelation,
 			to->attislocal = true;
 
 			ReleaseSysCache(tuple);
+
+			/*
+			 * Make sure the expression yields a type that's safe to store in
+			 * an index.  We need this defense because we have index opclasses
+			 * for pseudo-types such as "record", and the actually stored type
+			 * had better be safe; eg, a named composite type is okay, an
+			 * anonymous record type is not.  The test is the same as for
+			 * whether a table column is of a safe type (which is why we
+			 * needn't check for the non-expression case).
+			 */
+			CheckAttributeType(NameStr(to->attname), to->atttypid);
 		}
 
 		/*
