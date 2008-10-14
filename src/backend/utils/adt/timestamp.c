@@ -64,7 +64,7 @@ typedef struct
 
 
 static TimeOffset time2t(const int hour, const int min, const int sec, const fsec_t fsec);
-static int	EncodeSpecialTimestamp(Timestamp dt, char *str);
+static void EncodeSpecialTimestamp(Timestamp dt, char *str);
 static Timestamp dt2local(Timestamp dt, int timezone);
 static void AdjustTimestampForTypmod(Timestamp *time, int32 typmod);
 static void AdjustIntervalForTypmod(Interval *interval, int32 typmod);
@@ -1150,18 +1150,16 @@ AdjustIntervalForTypmod(Interval *interval, int32 typmod)
 /* EncodeSpecialTimestamp()
  * Convert reserved timestamp data type to string.
  */
-static int
+static void
 EncodeSpecialTimestamp(Timestamp dt, char *str)
 {
 	if (TIMESTAMP_IS_NOBEGIN(dt))
 		strcpy(str, EARLY);
 	else if (TIMESTAMP_IS_NOEND(dt))
 		strcpy(str, LATE);
-	else
-		return FALSE;
-
-	return TRUE;
-}	/* EncodeSpecialTimestamp() */
+	else						/* shouldn't happen */
+		elog(ERROR, "invalid argument for EncodeSpecialTimestamp");
+}
 
 Datum
 now(PG_FUNCTION_ARGS)
