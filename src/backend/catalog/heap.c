@@ -551,7 +551,7 @@ AddNewAttributeTuples(Oid new_rel_oid,
 	if (relkind != RELKIND_VIEW && relkind != RELKIND_COMPOSITE_TYPE)
 	{
 		dpp = SysAtt;
-		for (i = 0; i < -1 - FirstLowInvalidHeapAttributeNumber; i++)
+		for (i = 0; i < (int) lengthof(SysAtt); i++, dpp++)
 		{
 			if (tupdesc->tdhasoid ||
 				(*dpp)->attnum != ObjectIdAttributeNumber)
@@ -587,7 +587,6 @@ AddNewAttributeTuples(Oid new_rel_oid,
 
 				heap_freetuple(tup);
 			}
-			dpp++;
 		}
 	}
 
