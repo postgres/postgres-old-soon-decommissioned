@@ -2032,12 +2032,12 @@ January 8 04:05:06 1999 PST
          </row>
          <row>
           <entry><literal>infinity</literal></entry>
-          <entry><type>timestamp</type></entry>
+          <entry><type>date</type>, <type>timestamp</type></entry>
           <entry>later than all other time stamps</entry>
          </row>
          <row>
           <entry><literal>-infinity</literal></entry>
-          <entry><type>timestamp</type></entry>
+          <entry><type>date</type>, <type>timestamp</type></entry>
           <entry>earlier than all other time stamps</entry>
          </row>
          <row>

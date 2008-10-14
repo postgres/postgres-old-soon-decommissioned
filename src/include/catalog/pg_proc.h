@@ -1772,6 +1772,8 @@ DESCR("date difference from today preserving months and years");
 DATA(insert OID = 1388 (  timetz	   PGNSP PGUID 12 1 0 0 f f t f s 1 1266 "1184" _null_ _null_ _null_	timestamptz_timetz _null_ _null_ _null_ ));
 DESCR("convert timestamptz to timetz");
 
+DATA(insert OID = 1373 (  isfinite	   PGNSP PGUID 12 1 0 0 f f t f i 1 16 "1082" _null_ _null_ _null_	date_finite _null_ _null_ _null_ ));
+DESCR("finite date?");
 DATA(insert OID = 1389 (  isfinite	   PGNSP PGUID 12 1 0 0 f f t f i 1 16 "1184" _null_ _null_ _null_	timestamp_finite _null_ _null_ _null_ ));
 DESCR("finite timestamp?");
 DATA(insert OID = 1390 (  isfinite	   PGNSP PGUID 12 1 0 0 f f t f i 1 16 "1186" _null_ _null_ _null_	interval_finite _null_ _null_ _null_ ));

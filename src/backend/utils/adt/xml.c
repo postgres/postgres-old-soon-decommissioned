@@ -1632,6 +1632,11 @@ map_sql_value_to_xml_value(Datum value, Oid type)
 					char		buf[MAXDATELEN + 1];
 
 					date = DatumGetDateADT(value);
+					/* XSD doesn't support infinite values */
+					if (DATE_NOT_FINITE(date))
+						ereport(ERROR,
+								(errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
+								 errmsg("date out of range")));
 					j2date(date + POSTGRES_EPOCH_JDATE,
 						   &(tm.tm_year), &(tm.tm_mon), &(tm.tm_mday));
 					EncodeDateOnly(&tm, USE_XSD_DATES, buf);

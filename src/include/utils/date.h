@@ -34,6 +34,20 @@ typedef struct
 } TimeTzADT;
 
 /*
+ * Infinity and minus infinity must be the max and min values of DateADT.
+ * We could use INT_MIN and INT_MAX here, but seems better to not assume that
+ * int32 == int.
+ */
+#define DATEVAL_NOBEGIN		((DateADT) (-0x7fffffff - 1))
+#define DATEVAL_NOEND		((DateADT) 0x7fffffff)
+
+#define DATE_NOBEGIN(j)		((j) = DATEVAL_NOBEGIN)
+#define DATE_IS_NOBEGIN(j)	((j) == DATEVAL_NOBEGIN)
+#define DATE_NOEND(j)		((j) = DATEVAL_NOEND)
+#define DATE_IS_NOEND(j)	((j) == DATEVAL_NOEND)
+#define DATE_NOT_FINITE(j)	(DATE_IS_NOBEGIN(j) || DATE_IS_NOEND(j))
+
+/*
  * Macros for fmgr-callable functions.
  *
  * For TimeADT, we make use of the same support routines as for float8 or int64.
@@ -90,6 +104,7 @@ extern Datum date_le(PG_FUNCTION_ARGS);
 extern Datum date_gt(PG_FUNCTION_ARGS);
 extern Datum date_ge(PG_FUNCTION_ARGS);
 extern Datum date_cmp(PG_FUNCTION_ARGS);
+extern Datum date_finite(PG_FUNCTION_ARGS);
 extern Datum date_larger(PG_FUNCTION_ARGS);
 extern Datum date_smaller(PG_FUNCTION_ARGS);
 extern Datum date_mi(PG_FUNCTION_ARGS);
