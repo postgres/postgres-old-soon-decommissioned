@@ -180,7 +180,7 @@ _dosmaperr(unsigned long e)
 			ereport(DEBUG5,
 					(errmsg_internal("mapped win32 error code %lu to %d",
 									 e, errno)));
-#else
+#elif FRONTEND_DEBUG
 			fprintf(stderr, _("mapped win32 error code %lu to %d"), e, errno);
 #endif
 			return;
