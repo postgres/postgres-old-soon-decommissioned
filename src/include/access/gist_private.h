@@ -73,6 +73,7 @@ typedef struct GISTScanOpaqueData
 	GISTSearchStack *stack;
 	GISTSearchStack *markstk;
 	uint16		flags;
+	bool        qual_ok;        /* false if qual can never be satisfied */
 	GISTSTATE  *giststate;
 	MemoryContext tempCxt;
 	Buffer		curbuf;

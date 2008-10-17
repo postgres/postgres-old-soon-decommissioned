@@ -134,6 +134,9 @@ gistnext(IndexScanDesc scan, ScanDirection dir, TIDBitmap *tbm)
 
 	so = (GISTScanOpaque) scan->opaque;
 
+	if ( so->qual_ok == false )
+		return 0;
+
 	if (ItemPointerIsValid(&so->curpos) == false)
 	{
 		/* Being asked to fetch the first entry, so start at the root */
