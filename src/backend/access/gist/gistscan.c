@@ -96,9 +96,19 @@ gistrescan(PG_FUNCTION_ARGS)
 		 * function in the form of its strategy number, which is available
 		 * from the sk_strategy field, and its subtype from the sk_subtype
 		 * field.
+		 *
+		 * Next, if any of keys is a NULL and that key is not marked with
+		 * SK_SEARCHNULL then nothing can be found.
 		 */
-		for (i = 0; i < scan->numberOfKeys; i++)
+		so->qual_ok = true;
+		for (i = 0; i < scan->numberOfKeys; i++) {
 			scan->keyData[i].sk_func = so->giststate->consistentFn[scan->keyData[i].sk_attno - 1];
+
+			if ( scan->keyData[i].sk_flags & SK_ISNULL ) {
+				if ( (scan->keyData[i].sk_flags & SK_SEARCHNULL) == 0 )
+					so->qual_ok = false;
+			}
+		}
 	}
 
 	PG_RETURN_VOID();
