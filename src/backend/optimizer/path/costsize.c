@@ -2608,24 +2608,14 @@ set_cte_size_estimates(PlannerInfo *root, RelOptInfo *rel, Plan *cteplan)
 static void
 set_rel_width(PlannerInfo *root, RelOptInfo *rel)
 {
+	Oid			reloid = planner_rt_fetch(rel->relid, root)->relid;
 	int32		tuple_width = 0;
 	ListCell   *tllist;
-	Oid			rel_reloid;
-
-	/*
-	 * Usually (perhaps always), all the Vars have the same reloid, so we can
-	 * save some redundant list-searching by doing getrelid just once.
-	 */
-	if (rel->relid > 0)
-		rel_reloid = getrelid(rel->relid, root->parse->rtable);
-	else
-		rel_reloid = InvalidOid;	/* probably can't happen */
 
 	foreach(tllist, rel->reltargetlist)
 	{
 		Var		   *var = (Var *) lfirst(tllist);
 		int			ndx;
-		Oid			var_reloid;
 		int32		item_width;
 
 		/* For now, punt on whole-row child Vars */
@@ -2634,6 +2624,10 @@ set_rel_width(PlannerInfo *root, RelOptInfo *rel)
 			tuple_width += 32;	/* arbitrary */
 			continue;
 		}
+
+		Assert(var->varno == rel->relid);
+		Assert(var->varattno >= rel->min_attr);
+		Assert(var->varattno <= rel->max_attr);
 
 		ndx = var->varattno - rel->min_attr;
 
@@ -2646,14 +2640,9 @@ set_rel_width(PlannerInfo *root, RelOptInfo *rel)
 			continue;
 		}
 
-		if (var->varno == rel->relid)
-			var_reloid = rel_reloid;
-		else
-			var_reloid = getrelid(var->varno, root->parse->rtable);
-
-		if (var_reloid != InvalidOid)
+		if (reloid != InvalidOid)
 		{
-			item_width = get_attavgwidth(var_reloid, var->varattno);
+			item_width = get_attavgwidth(reloid, var->varattno);
 			if (item_width > 0)
 			{
 				rel->attr_widths[ndx] = item_width;
