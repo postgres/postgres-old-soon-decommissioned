@@ -583,8 +583,11 @@ text *
 generateHeadline(HeadlineParsedText *prs)
 {
 	text	   *out;
-	int			len = 128;
 	char	   *ptr;
+	int			len          = 128;
+	int	   		numfragments = 0;
+	int2	   		infrag       = 0;
+
 	HeadlineWordEntry *wrd = prs->words;
 
 	out = (text *) palloc(len);
@@ -592,7 +595,7 @@ generateHeadline(HeadlineParsedText *prs)
 
 	while (wrd - prs->words < prs->curwords)
 	{
-		while (wrd->len + prs->stopsellen + prs->startsellen + (ptr - ((char *) out)) >= len)
+		while (wrd->len + prs->stopsellen + prs->startsellen + prs->fragdelimlen + (ptr - ((char *) out)) >= len)
 		{
 			int			dist = ptr - ((char *) out);
 
@@ -603,6 +606,20 @@ generateHeadline(HeadlineParsedText *prs)
 
 		if (wrd->in && !wrd->repeated)
 		{
+			if (!infrag)
+			{
+
+				/* start of a new fragment */
+				infrag = 1;
+				numfragments ++;
+				/* add a fragment delimitor if this is after the first one */ 
+				if (numfragments > 1)
+				{
+					memcpy(ptr, prs->fragdelim, prs->fragdelimlen);
+					ptr += prs->fragdelimlen;
+				}	
+
+			}	
 			if (wrd->replace)
 			{
 				*ptr = ' ';
@@ -625,7 +642,11 @@ generateHeadline(HeadlineParsedText *prs)
 			}
 		}
 		else if (!wrd->repeated)
+		{
+			if (infrag)
+				infrag = 0;
 			pfree(wrd->word);
+		}	
 
 		wrd++;
 	}

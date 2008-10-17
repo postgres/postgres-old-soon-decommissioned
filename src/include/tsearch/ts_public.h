@@ -52,8 +52,10 @@ typedef struct
 	int4		curwords;
 	char	   *startsel;
 	char	   *stopsel;
+	char	   *fragdelim;
 	int2		startsellen;
 	int2		stopsellen;
+	int2		fragdelimlen;         
 } HeadlineParsedText;
 
 /*
