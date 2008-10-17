@@ -402,6 +402,13 @@
      </row>
 
      <row>
+      <entry><structfield>amcanbackward</structfield></entry>
+      <entry><type>bool</type></entry>
+      <entry></entry>
+      <entry>Does the access method support backward scanning?</entry>
+     </row>
+
+     <row>
       <entry><structfield>amcanunique</structfield></entry>
       <entry><type>bool</type></entry>
       <entry></entry>
