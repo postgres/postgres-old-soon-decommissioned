@@ -30,6 +30,8 @@ while (<FEAT>) {
 
     $is_supported eq $yesno || next;
 
+    $feature_name =~ s/</&lt;/g;
+    $feature_name =~ s/>/&gt;/g;
     $subfeature_name =~ s/</&lt;/g;
     $subfeature_name =~ s/>/&gt;/g;
 
