@@ -1745,9 +1745,7 @@ RecordTransactionCommitPrepared(TransactionId xid,
 	XLogFlush(recptr);
 
 	/* Mark the transaction committed in pg_clog */
-	TransactionIdCommit(xid);
-	/* to avoid race conditions, the parent must commit first */
-	TransactionIdCommitTree(nchildren, children);
+	TransactionIdCommitTree(xid, nchildren, children);
 
 	/* Checkpoint can proceed now */
 	MyProc->inCommit = false;
@@ -1822,8 +1820,7 @@ RecordTransactionAbortPrepared(TransactionId xid,
 	 * Mark the transaction aborted in clog.  This is not absolutely necessary
 	 * but we may as well do it while we are here.
 	 */
-	TransactionIdAbort(xid);
-	TransactionIdAbortTree(nchildren, children);
+	TransactionIdAbortTree(xid, nchildren, children);
 
 	END_CRIT_SECTION();
 }

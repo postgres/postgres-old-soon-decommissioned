@@ -32,7 +32,8 @@ typedef int XidStatus;
 #define NUM_CLOG_BUFFERS	8
 
 
-extern void TransactionIdSetStatus(TransactionId xid, XidStatus status, XLogRecPtr lsn);
+extern void TransactionIdSetTreeStatus(TransactionId xid, int nsubxids, 
+					TransactionId *subxids, XidStatus status, XLogRecPtr lsn);
 extern XidStatus TransactionIdGetStatus(TransactionId xid, XLogRecPtr *lsn);
 
 extern Size CLOGShmemSize(void);
