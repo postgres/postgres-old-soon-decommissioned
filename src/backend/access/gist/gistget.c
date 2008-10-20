@@ -494,16 +494,6 @@ gistfindnext(IndexScanDesc scan, OffsetNumber n, ScanDirection dir)
 	 */
 	oldcxt = MemoryContextSwitchTo(so->tempCxt);
 
-	/*
-	 * If we modified the index during the scan, we may have a pointer to a
-	 * ghost tuple, before the scan.  If this is the case, back up one.
-	 */
-	if (so->flags & GS_CURBEFORE)
-	{
-		so->flags &= ~GS_CURBEFORE;
-		n = OffsetNumberPrev(n);
-	}
-
 	while (n >= FirstOffsetNumber && n <= maxoff)
 	{
 		it = (IndexTuple) PageGetItem(p, PageGetItemId(p, n));

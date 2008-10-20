@@ -583,54 +583,6 @@ entryGetItem(Relation index, GinScanEntry entry)
 }
 
 /*
- * restart from saved position. Actually it's needed only for
- * partial match. function is called only by ginrestpos()
- */
-void
-ginrestartentry(GinScanEntry entry)
-{
-	ItemPointerData stopItem = entry->curItem;
-	bool savedReduceResult;
-
-	if ( entry->master || entry->partialMatch == NULL )
-		return; /* entry is slave or not a partial match type*/
-
-	if ( entry->isFinished )
-		return; /* entry was finished before ginmarkpos() call */
-
-	if ( ItemPointerGetBlockNumber(&stopItem) == InvalidBlockNumber )
-		return; /* entry  wasn't began before ginmarkpos() call */
-
-	/*
-	 * Reset iterator
-	 */
-	tbm_begin_iterate( entry->partialMatch );
-	entry->partialMatchResult = NULL;
-	entry->offset = 0;
-
-	/*
-	 * Temporary reset reduceResult flag to guarantee refinding
-	 * of curItem
-	 */
-	savedReduceResult = entry->reduceResult;
-	entry->reduceResult = FALSE;
-
-	do
-	{
-		/*
-		 * We can use null instead of index because
-		 * partial match doesn't use it
-		 */
-		if ( entryGetItem( NULL, entry ) == false )
-			elog(ERROR, "cannot refind scan position"); /* must not be here! */
-	} while( compareItemPointers( &stopItem, &entry->curItem ) != 0 );
-
-	Assert( entry->isFinished == FALSE );
-
-	entry->reduceResult = savedReduceResult;
-}
-
-/*
  * Sets key->curItem to new found heap item pointer for one scan key
  * Returns isFinished, ie TRUE means we did NOT get a new item pointer!
  * Also, *keyrecheck is set true if recheck is needed for this scan key.

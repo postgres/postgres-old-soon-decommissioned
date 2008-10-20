@@ -426,8 +426,6 @@ typedef struct GinScanOpaqueData
 	uint32		nkeys;
 	bool		isVoidRes;		/* true if ginstate.extractQueryFn guarantees
 								 * that nothing will be found */
-
-	GinScanKey	markPos;
 } GinScanOpaqueData;
 
 typedef GinScanOpaqueData *GinScanOpaque;
@@ -449,7 +447,6 @@ extern PGDLLIMPORT int GinFuzzySearchLimit;
 
 extern Datum gingetbitmap(PG_FUNCTION_ARGS);
 extern Datum gingettuple(PG_FUNCTION_ARGS);
-extern void ginrestartentry(GinScanEntry entry);
 
 /* ginvacuum.c */
 extern Datum ginbulkdelete(PG_FUNCTION_ARGS);
