@@ -263,9 +263,9 @@ TransactionIdIsKnownCompleted(TransactionId transactionId)
 void
 TransactionIdCommitTree(TransactionId xid, int nxids, TransactionId *xids)
 {
-	return TransactionIdSetTreeStatus(xid, nxids, xids,
-									  TRANSACTION_STATUS_COMMITTED,
-									  InvalidXLogRecPtr);
+	TransactionIdSetTreeStatus(xid, nxids, xids,
+							   TRANSACTION_STATUS_COMMITTED,
+							   InvalidXLogRecPtr);
 }
 
 /*
@@ -276,8 +276,8 @@ void
 TransactionIdAsyncCommitTree(TransactionId xid, int nxids, TransactionId *xids,
 							 XLogRecPtr lsn)
 {
-	return TransactionIdSetTreeStatus(xid, nxids, xids,
-									  TRANSACTION_STATUS_COMMITTED, lsn);
+	TransactionIdSetTreeStatus(xid, nxids, xids,
+							   TRANSACTION_STATUS_COMMITTED, lsn);
 }
 
 /*
