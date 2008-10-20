@@ -2185,7 +2185,7 @@ ConstraintAttr:
  * tables completely decoupled except for the original commonality in definitions.
  *
  * This is very similar to CREATE TABLE AS except for the INCLUDING DEFAULTS extension
- * which is a part of SQL 200N
+ * which is a part of SQL:2003.
  */
 TableLikeClause:
 			LIKE qualified_name TableLikeOptionList
