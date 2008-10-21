@@ -168,13 +168,14 @@ preprocess_targetlist(PlannerInfo *root, List *tlist)
 		List	   *vars;
 		ListCell   *l;
 
-		vars = pull_var_clause((Node *) parse->returningList, false);
+		vars = pull_var_clause((Node *) parse->returningList, true);
 		foreach(l, vars)
 		{
 			Var		   *var = (Var *) lfirst(l);
 			TargetEntry *tle;
 
-			if (var->varno == result_relation)
+			if (IsA(var, Var) &&
+				var->varno == result_relation)
 				continue;		/* don't need it */
 
 			if (tlist_member((Node *) var, tlist))

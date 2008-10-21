@@ -1040,6 +1040,10 @@ convert_ANY_sublink_to_join(PlannerInfo *root, SubLink *sublink,
 
 	/*
 	 * And finally, build the FlattenedSubLink node.
+	 *
+	 * Note: at this point left_varnos may well contain join relids, since
+	 * the testexpr hasn't been run through flatten_join_alias_vars.  This
+	 * will get fixed when flatten_join_alias_vars is run.
 	 */
 	fslink = makeNode(FlattenedSubLink);
 	fslink->jointype = JOIN_SEMI;
@@ -1189,6 +1193,9 @@ convert_EXISTS_sublink_to_join(PlannerInfo *root, SubLink *sublink,
 
 	/*
 	 * And finally, build the FlattenedSubLink node.
+	 *
+	 * Note: at this point left_varnos and subselect_varnos may well contain
+	 * join relids.  This will get fixed when flatten_join_alias_vars is run.
 	 */
 	fslink = makeNode(FlattenedSubLink);
 	fslink->jointype = under_not ? JOIN_ANTI : JOIN_SEMI;

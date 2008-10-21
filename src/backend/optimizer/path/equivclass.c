@@ -687,7 +687,7 @@ generate_base_implied_equalities_no_const(PlannerInfo *root,
 	foreach(lc, ec->ec_members)
 	{
 		EquivalenceMember *cur_em = (EquivalenceMember *) lfirst(lc);
-		List	   *vars = pull_var_clause((Node *) cur_em->em_expr, false);
+		List	   *vars = pull_var_clause((Node *) cur_em->em_expr, true);
 
 		add_vars_to_targetlist(root, vars, ec->ec_relids);
 		list_free(vars);

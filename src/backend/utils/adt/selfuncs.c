@@ -2951,7 +2951,7 @@ estimate_num_groups(PlannerInfo *root, List *groupExprs, double input_rows)
 		/*
 		 * Else pull out the component Vars
 		 */
-		varshere = pull_var_clause(groupexpr, false);
+		varshere = pull_var_clause(groupexpr, true);
 
 		/*
 		 * If we find any variable-free GROUP BY item, then either it is a

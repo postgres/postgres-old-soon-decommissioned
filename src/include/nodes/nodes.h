@@ -213,8 +213,10 @@ typedef enum NodeTag
 	T_RestrictInfo,
 	T_InnerIndexscanInfo,
 	T_FlattenedSubLink,
+	T_PlaceHolderVar,
 	T_SpecialJoinInfo,
 	T_AppendRelInfo,
+	T_PlaceHolderInfo,
 	T_PlannerParamItem,
 
 	/*
