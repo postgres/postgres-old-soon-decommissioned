@@ -54,7 +54,7 @@ clean distclean maintainer-clean:
 	$(MAKE) -C compat_informix $@
 	$(MAKE) -C thread $@
 	rm -rf tmp_check results log
-	rm -f pg_regress regression.diffs pg_regress_ecpg.o
+	rm -f pg_regress regression.diffs regression.out pg_regress_ecpg.o
 
 # Build regression test driver
 
