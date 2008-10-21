@@ -581,7 +581,7 @@ RemoveTypes(DropStmt *drop)
 		if (!pg_type_ownercheck(typeoid, GetUserId()) &&
 			!pg_namespace_ownercheck(typ->typnamespace, GetUserId()))
 			aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_TYPE,
-						   TypeNameToString(typename));
+						   format_type_be(typeoid));
 
 		if (drop->removeType == OBJECT_DOMAIN)
 		{
@@ -2082,7 +2082,7 @@ checkDomainOwner(HeapTuple tup, TypeName *typename)
 	/* Permission check: must own type */
 	if (!pg_type_ownercheck(HeapTupleGetOid(tup), GetUserId()))
 		aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_TYPE,
-					   TypeNameToString(typename));
+					   format_type_be(HeapTupleGetOid(tup)));
 }
 
 /*
@@ -2487,7 +2487,7 @@ AlterTypeOwner(List *names, Oid newOwnerId)
 			/* Otherwise, must be owner of the existing object */
 			if (!pg_type_ownercheck(HeapTupleGetOid(tup), GetUserId()))
 				aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_TYPE,
-							   TypeNameToString(typename));
+							   format_type_be(HeapTupleGetOid(tup)));
 
 			/* Must be able to become new owner */
 			check_is_member_of_role(GetUserId(), newOwnerId);
