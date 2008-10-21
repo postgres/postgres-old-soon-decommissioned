@@ -123,6 +123,7 @@ const ScanKeyword ScanKeywords[] = {
 	{"current_user", CURRENT_USER, RESERVED_KEYWORD},
 	{"cursor", CURSOR, UNRESERVED_KEYWORD},
 	{"cycle", CYCLE, UNRESERVED_KEYWORD},
+	{"data", DATA_P, UNRESERVED_KEYWORD},
 	{"database", DATABASE, UNRESERVED_KEYWORD},
 	{"day", DAY_P, UNRESERVED_KEYWORD},
 	{"deallocate", DEALLOCATE, UNRESERVED_KEYWORD},

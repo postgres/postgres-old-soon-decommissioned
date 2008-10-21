@@ -34,7 +34,6 @@ static const ScanKeyword ScanECPGKeywords[] = {
 	{"cardinality", SQL_CARDINALITY, 0},
 	{"connect", SQL_CONNECT, 0},
 	{"count", SQL_COUNT, 0},
-	{"data", SQL_DATA, 0},
 	{"datetime_interval_code", SQL_DATETIME_INTERVAL_CODE, 0},
 	{"datetime_interval_precision", SQL_DATETIME_INTERVAL_PRECISION, 0},
 	{"describe", SQL_DESCRIBE, 0},
