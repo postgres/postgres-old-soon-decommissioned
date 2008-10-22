@@ -1599,26 +1599,10 @@ adjust_appendrel_attrs_mutator(Node *node, AppendRelInfo *context)
 										   context->child_relid);
 		return (Node *) phv;
 	}
-	if (IsA(node, PlaceHolderInfo))
-	{
-		/* Copy the PlaceHolderInfo node with correct mutation of subnodes */
-		PlaceHolderInfo *phinfo;
-
-		phinfo = (PlaceHolderInfo *) expression_tree_mutator(node,
-											  adjust_appendrel_attrs_mutator,
-															 (void *) context);
-		/* now fix PlaceHolderInfo's relid sets */
-		phinfo->ph_eval_at = adjust_relid_set(phinfo->ph_eval_at,
-											  context->parent_relid,
-											  context->child_relid);
-		phinfo->ph_needed = adjust_relid_set(phinfo->ph_needed,
-											 context->parent_relid,
-											 context->child_relid);
-		return (Node *) phinfo;
-	}
-	/* Shouldn't need to handle other planner auxiliary nodes here */
+	/* Shouldn't need to handle planner auxiliary nodes here */
 	Assert(!IsA(node, SpecialJoinInfo));
 	Assert(!IsA(node, AppendRelInfo));
+	Assert(!IsA(node, PlaceHolderInfo));
 
 	/*
 	 * We have to process RestrictInfo nodes specially.
