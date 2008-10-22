@@ -60,7 +60,8 @@ typedef struct GISTSTATE
 
 typedef struct ItemResult
 {
-	ItemPointerData		iptr;
+	ItemPointerData		heapPtr;
+	OffsetNumber		pageOffset; /* offset in index page */
 	bool				recheck;
 } ItemResult;
 
