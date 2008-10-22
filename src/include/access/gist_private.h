@@ -60,6 +60,12 @@ typedef struct GISTSTATE
 	TupleDesc	tupdesc;
 } GISTSTATE;
 
+typedef struct MatchedItemPtr 
+{
+	ItemPointerData		heapPtr;
+	OffsetNumber		pageOffset; /* offset in index page */
+} MatchedItemPtr;
+
 /*
  *	When we're doing a scan, we need to keep track of the parent stack
  *	for the marked and current items.
@@ -74,10 +80,10 @@ typedef struct GISTScanOpaqueData
 	Buffer		curbuf;
 	Buffer		markbuf;
 
-	ItemPointerData pageData[BLCKSZ/sizeof(IndexTupleData)];
+	MatchedItemPtr 	pageData[BLCKSZ/sizeof(IndexTupleData)];
 	OffsetNumber    nPageData;
 	OffsetNumber    curPageData;
-	ItemPointerData markPageData[BLCKSZ/sizeof(IndexTupleData)];
+	MatchedItemPtr 	markPageData[BLCKSZ/sizeof(IndexTupleData)];
 	OffsetNumber    markNPageData;
 	OffsetNumber    markCurPageData;
 } GISTScanOpaqueData;

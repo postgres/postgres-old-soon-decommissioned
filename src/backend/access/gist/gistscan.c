@@ -185,7 +185,7 @@ gistmarkpos(PG_FUNCTION_ARGS)
 	so->markNPageData = so->nPageData;
 	so->markCurPageData = so->curPageData;
 	if ( so->markNPageData > 0 )
-		memcpy( so->markPageData, so->pageData, sizeof(ItemPointerData) * so->markNPageData );		
+		memcpy( so->markPageData, so->pageData, sizeof(MatchedItemPtr) * so->markNPageData );		
 
 	PG_RETURN_VOID();
 }
@@ -239,7 +239,7 @@ gistrestrpos(PG_FUNCTION_ARGS)
 	so->nPageData = so->markNPageData;
 	so->curPageData = so->markNPageData;
 	if ( so->markNPageData > 0 )
-		memcpy( so->pageData, so->markPageData, sizeof(ItemPointerData) * so->markNPageData );		
+		memcpy( so->pageData, so->markPageData, sizeof(MatchedItemPtr) * so->markNPageData );		
 
 	PG_RETURN_VOID();
 }
