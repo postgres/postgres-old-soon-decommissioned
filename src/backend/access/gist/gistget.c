@@ -153,7 +153,11 @@ gistnext(IndexScanDesc scan, ScanDirection dir, ItemPointer tids, int maxtids, b
 	{
 		while( ntids < maxtids && so->curPageData < so->nPageData )
 		{
-			tids[ ntids ] = scan->xs_ctup.t_self = so->pageData[ so->curPageData ];
+			tids[ ntids ] = scan->xs_ctup.t_self = so->pageData[ so->curPageData ].heapPtr;
+			ItemPointerSet(&scan->currentItemData,
+							   BufferGetBlockNumber(so->curbuf), 
+							   so->pageData[ so->curPageData ].pageOffset);
+
 				
 			so->curPageData ++;
 			ntids++;
@@ -247,8 +251,13 @@ gistnext(IndexScanDesc scan, ScanDirection dir, ItemPointer tids, int maxtids, b
 			{
 				while( ntids < maxtids && so->curPageData < so->nPageData )
 				{
-					tids[ ntids ] = scan->xs_ctup.t_self = so->pageData[ so->curPageData ];
+					tids[ ntids ] = scan->xs_ctup.t_self = 
+						so->pageData[ so->curPageData ].heapPtr;
 				
+					ItemPointerSet(&scan->currentItemData,
+								   BufferGetBlockNumber(so->curbuf), 
+								   so->pageData[ so->curPageData ].pageOffset);
+
 					so->curPageData ++;
 					ntids++;
 				}
@@ -293,13 +302,11 @@ gistnext(IndexScanDesc scan, ScanDirection dir, ItemPointer tids, int maxtids, b
 				 * we can efficiently resume the index scan later.
 				 */
 
-				ItemPointerSet(&(scan->currentItemData),
-							   BufferGetBlockNumber(so->curbuf), n);
-
 				if (!(ignore_killed_tuples && ItemIdDeleted(PageGetItemId(p, n))))
 				{
 					it = (IndexTuple) PageGetItem(p, PageGetItemId(p, n));
-					so->pageData[ so->nPageData ] = it->t_tid;
+					so->pageData[ so->nPageData ].heapPtr = it->t_tid;
+					so->pageData[ so->nPageData ].pageOffset = n;
 					so->nPageData ++;
 				}
 			}
