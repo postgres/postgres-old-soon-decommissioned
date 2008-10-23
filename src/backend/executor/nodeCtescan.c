@@ -303,11 +303,10 @@ ExecEndCteScan(CteScanState *node)
 void
 ExecCteScanReScan(CteScanState *node, ExprContext *exprCtxt)
 {
-	Tuplestorestate *tuplestorestate;
-
-	tuplestorestate = node->leader->cte_table;
+	Tuplestorestate *tuplestorestate = node->leader->cte_table;
 
 	ExecClearTuple(node->ss.ps.ps_ResultTupleSlot);
+	node->ss.ps.ps_TupFromTlist = false;
 
 	if (node->leader == node)
 	{

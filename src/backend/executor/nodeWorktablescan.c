@@ -204,6 +204,8 @@ void
 ExecWorkTableScanReScan(WorkTableScanState *node, ExprContext *exprCtxt)
 {
 	ExecClearTuple(node->ss.ps.ps_ResultTupleSlot);
+	node->ss.ps.ps_TupFromTlist = false;
+
 	/* No need (or way) to rescan if ExecWorkTableScan not called yet */
 	if (node->rustate)
 		tuplestore_rescan(node->rustate->working_table);
