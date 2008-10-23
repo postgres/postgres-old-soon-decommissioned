@@ -1999,6 +1999,10 @@ freePGconn(PGconn *conn)
 	if (conn->krbsrvname)
 		free(conn->krbsrvname);
 #endif
+#if defined(ENABLE_GSS) && defined(ENABLE_SSPI)
+	if (conn->gsslib)
+		free(conn->gsslib);
+#endif
 	/* Note that conn->Pfdebug is not ours to close or free */
 	if (conn->last_query)
 		free(conn->last_query);
