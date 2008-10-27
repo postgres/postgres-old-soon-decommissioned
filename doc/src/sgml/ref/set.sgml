@@ -151,6 +151,17 @@ SET [ SESSION | LOCAL ] TIME ZONE { <replaceable class="PARAMETER">timezone</rep
 
    <variablelist>
     <varlistentry>
+     <term><literal>SCHEMA</literal></term>
+     <listitem>
+      <para>
+       <literal>SET SCHEMA '<replaceable>value</>'</> is an alias for
+       <literal>SET search_path TO <replaceable>value</></>.  Only one
+       schema can be specified using this syntax.
+      </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry>
      <term><literal>NAMES</literal></term>
      <listitem>
       <para>
