@@ -616,19 +616,14 @@ AtEOXact_Snapshot(bool isCommit)
 
 		/* complain about unpopped active snapshots */
 		for (active = ActiveSnapshot; active != NULL; active = active->as_next)
-		{
-			ereport(WARNING,
-					(errmsg("snapshot %p still active", active)));
-		}
+			elog(WARNING, "snapshot %p still active", active);
 
 		/* complain about any unregistered snapshot */
 		for (regd = RegisteredSnapshotList; regd != NULL; regd = regd->s_next)
-		{
-			ereport(WARNING,
-					(errmsg("snapshot %p not destroyed at commit (%d regd refs, %d active refs)",
-							regd->s_snap, regd->s_snap->regd_count,
-							regd->s_snap->active_count)));
-		}
+			elog(WARNING,
+				 "snapshot %p not destroyed at commit (%d regd refs, %d active refs)",
+				 regd->s_snap, regd->s_snap->regd_count,
+				 regd->s_snap->active_count);
 	}
 
 	/*
