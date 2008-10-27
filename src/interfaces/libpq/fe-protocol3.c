@@ -853,7 +853,6 @@ pqGetErrorNotice3(PGconn *conn, bool isError)
 			goto fail;
 		pqClearAsyncResult(conn);
 		conn->result = res;
-		resetPQExpBuffer(&conn->errorMessage);
 		appendPQExpBufferStr(&conn->errorMessage, workBuf.data);
 	}
 	else
