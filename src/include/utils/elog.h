@@ -179,5 +179,6 @@ extern int	Use_syslog;
 
 /* Other exported functions */
 extern void DebugFileOpen(void);
+extern bool in_error_recursion_trouble(void);
 
 #endif   /* ELOG_H */
