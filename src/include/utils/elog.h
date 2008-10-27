@@ -282,6 +282,7 @@ extern int	Log_destination;
 
 /* Other exported functions */
 extern void DebugFileOpen(void);
+extern bool in_error_recursion_trouble(void);
 
 /*
  * Write errors to stderr (or by equal means when stderr is
