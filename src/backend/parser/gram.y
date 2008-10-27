@@ -5898,6 +5898,7 @@ ExplainableStmt:
 			| UpdateStmt
 			| DeleteStmt
 			| DeclareCursorStmt
+			| CreateAsStmt
 			| ExecuteStmt					/* by default all are $$=$1 */
 		;
 
