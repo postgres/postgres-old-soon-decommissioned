@@ -1674,15 +1674,6 @@ keep_going:						/* We will come back to here until there is
 						return PGRES_POLLING_READING;
 					}
 				}
-				if (areq == AUTH_REQ_CRYPT)
-				{
-					if (pqGetnchar(conn->cryptSalt,
-								   sizeof(conn->cryptSalt), conn))
-					{
-						/* We'll come back when there are more data */
-						return PGRES_POLLING_READING;
-					}
-				}
 #if defined(ENABLE_GSS) || defined(ENABLE_SSPI)
 
 				/*

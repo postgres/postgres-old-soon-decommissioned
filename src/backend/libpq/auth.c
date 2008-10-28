@@ -230,7 +230,6 @@ auth_failed(Port *port, int status)
 			errstr = gettext_noop("Ident authentication failed for user \"%s\"");
 			break;
 		case uaMD5:
-		case uaCrypt:
 		case uaPassword:
 			errstr = gettext_noop("password authentication failed for user \"%s\"");
 			break;
@@ -373,11 +372,6 @@ ClientAuthentication(Port *port)
 			status = recv_and_check_password_packet(port);
 			break;
 
-		case uaCrypt:
-			sendAuthRequest(port, AUTH_REQ_CRYPT);
-			status = recv_and_check_password_packet(port);
-			break;
-
 		case uaPassword:
 			sendAuthRequest(port, AUTH_REQ_PASSWORD);
 			status = recv_and_check_password_packet(port);
@@ -426,8 +420,6 @@ sendAuthRequest(Port *port, AuthRequest areq)
 	/* Add the salt for encrypted passwords. */
 	if (areq == AUTH_REQ_MD5)
 		pq_sendbytes(&buf, port->md5Salt, 4);
-	else if (areq == AUTH_REQ_CRYPT)
-		pq_sendbytes(&buf, port->cryptSalt, 2);
 
 #if defined(ENABLE_GSS) || defined(ENABLE_SSPI)
 

@@ -53,14 +53,6 @@ md5_crypt_verify(const Port *port, const char *role, char *client_pass)
 	if (shadow_pass == NULL || *shadow_pass == '\0')
 		return STATUS_ERROR;
 
-	/* We can't do crypt with MD5 passwords */
-	if (isMD5(shadow_pass) && port->hba->auth_method == uaCrypt)
-	{
-		ereport(LOG,
-				(errmsg("cannot use authentication method \"crypt\" because password is MD5-encrypted")));
-		return STATUS_ERROR;
-	}
-
 	/*
 	 * Compare with the encrypted or plain password depending on the
 	 * authentication method being used for this connection.
@@ -106,14 +98,6 @@ md5_crypt_verify(const Port *port, const char *role, char *client_pass)
 				pfree(crypt_pwd2);
 			}
 			break;
-		case uaCrypt:
-			{
-				char		salt[3];
-
-				strlcpy(salt, port->cryptSalt, sizeof(salt));
-				crypt_pwd = crypt(shadow_pass, salt);
-				break;
-			}
 		default:
 			if (isMD5(shadow_pass))
 			{

@@ -123,7 +123,6 @@ typedef struct Port
 	 */
 	HbaLine	   *hba;
 	char		md5Salt[4];		/* Password salt */
-	char		cryptSalt[2];	/* Password salt */
 
 	/*
 	 * Information that really has no business at all being in struct Port,
