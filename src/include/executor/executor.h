@@ -176,16 +176,9 @@ extern Datum GetAttributeByNum(HeapTupleHeader tuple, AttrNumber attrno,
 				  bool *isNull);
 extern Datum GetAttributeByName(HeapTupleHeader tuple, const char *attname,
 				   bool *isNull);
-extern void init_fcache(Oid foid, FuncExprState *fcache,
-			MemoryContext fcacheCxt);
-extern Datum ExecMakeFunctionResult(FuncExprState *fcache,
-					   ExprContext *econtext,
-					   bool *isNull,
-					   ExprDoneCond *isDone);
 extern Tuplestorestate *ExecMakeTableFunctionResult(ExprState *funcexpr,
 							ExprContext *econtext,
-							TupleDesc expectedDesc,
-							TupleDesc *returnDesc);
+							TupleDesc expectedDesc);
 extern Datum ExecEvalExprSwitchContext(ExprState *expression, ExprContext *econtext,
 						  bool *isNull, ExprDoneCond *isDone);
 extern ExprState *ExecInitExpr(Expr *node, PlanState *parent);

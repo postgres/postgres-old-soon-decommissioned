@@ -1575,10 +1575,6 @@ LANGUAGE 'plpgsql' ;
 
 SELECT * FROM getallfoo();
 </programlisting>
-
-      Note that functions using <command>RETURN NEXT</command> or
-      <command>RETURN QUERY</command> must be called as a table source in
-      a <literal>FROM</literal> clause.
      </para>
 
      <note>

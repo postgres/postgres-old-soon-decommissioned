@@ -160,6 +160,7 @@ extern HeapTuple ExecCopySlotTuple(TupleTableSlot *slot);
 extern MinimalTuple ExecCopySlotMinimalTuple(TupleTableSlot *slot);
 extern HeapTuple ExecFetchSlotTuple(TupleTableSlot *slot);
 extern MinimalTuple ExecFetchSlotMinimalTuple(TupleTableSlot *slot);
+extern Datum ExecFetchSlotTupleDatum(TupleTableSlot *slot);
 extern HeapTuple ExecMaterializeSlot(TupleTableSlot *slot);
 extern TupleTableSlot *ExecCopySlot(TupleTableSlot *dstslot,
 			 TupleTableSlot *srcslot);
