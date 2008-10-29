@@ -379,6 +379,14 @@ AC_TRY_COMPILE([], [@%:@ifndef __INTEL_COMPILER
 choke me
 @%:@endif], [ICC=[yes]], [ICC=[no]])
 
+# Check if it's Sun Studio compiler. We assume that
+# __SUNPRO_C will be defined for Sun Studio compilers
+AC_TRY_COMPILE([], [@%:@ifndef __SUNPRO_C
+choke me
+@%:@endif], [SUN_STUDIO_CC=yes], [SUN_STUDIO_CC=no])
+
+AC_SUBST(SUN_STUDIO_CC)
+
 unset CFLAGS
 
 #

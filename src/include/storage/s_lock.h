@@ -578,7 +578,7 @@ typedef unsigned char slock_t;
 #endif
 
 
-#endif	/* __GNUC__ */
+#endif	/* defined(__GNUC__) || defined(__INTEL_COMPILER) */
 
 
 
@@ -782,7 +782,7 @@ typedef unsigned char slock_t;
 #endif
 
 
-#if defined(__sun) && (defined(__i386) || defined(__x86_64__) || defined(__sparc__) || defined(__sparc))
+#if defined(__SUNPRO_C) && (defined(__i386) || defined(__x86_64__) || defined(__sparc__) || defined(__sparc))
 #define HAS_TEST_AND_SET
 
 #if defined(__i386) || defined(__x86_64__) || defined(__sparcv9) || defined(__sparcv8plus)
