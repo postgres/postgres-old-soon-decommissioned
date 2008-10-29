@@ -1334,8 +1334,9 @@ esac
 if test "$enable_thread_safety" = yes -a "$PORTNAME" != "win32"; then
 ACX_PTHREAD	# set thread flags
 
-# Some platforms use these, so just defineed them.  They can't hurt if they
-# are not supported.
+# Some platforms use these, so just define them.  They can't hurt if they
+# are not supported.  For example, on Solaris -D_POSIX_PTHREAD_SEMANTICS
+# enables 5-arg getpwuid_r, among other things.
 PTHREAD_CFLAGS="$PTHREAD_CFLAGS -D_REENTRANT -D_THREAD_SAFE -D_POSIX_PTHREAD_SEMANTICS"
 
 
