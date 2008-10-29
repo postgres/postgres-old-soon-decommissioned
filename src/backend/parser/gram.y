@@ -7124,17 +7124,27 @@ Typename:	SimpleTypename opt_array_bounds
 					$$->arrayBounds = $3;
 					$$->setof = TRUE;
 				}
+			/* SQL standard syntax, currently only one-dimensional */
 			| SimpleTypename ARRAY '[' Iconst ']'
 				{
-					/* SQL99's redundant syntax */
 					$$ = $1;
 					$$->arrayBounds = list_make1(makeInteger($4));
 				}
 			| SETOF SimpleTypename ARRAY '[' Iconst ']'
 				{
-					/* SQL99's redundant syntax */
 					$$ = $2;
 					$$->arrayBounds = list_make1(makeInteger($5));
+					$$->setof = TRUE;
+				}
+			| SimpleTypename ARRAY
+				{
+					$$ = $1;
+					$$->arrayBounds = list_make1(makeInteger(-1));
+				}
+			| SETOF SimpleTypename ARRAY
+				{
+					$$ = $2;
+					$$->arrayBounds = list_make1(makeInteger(-1));
 					$$->setof = TRUE;
 				}
 		;

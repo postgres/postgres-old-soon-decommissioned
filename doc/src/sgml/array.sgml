@@ -76,9 +76,12 @@ CREATE TABLE tictactoe (
 <programlisting>
     pay_by_quarter  integer ARRAY[4],
 </programlisting>
-  This syntax requires an integer constant to denote the array size.
+  Or, if no array size is to be specified:
+<programlisting>
+    pay_by_quarter  integer ARRAY,
+</programlisting>
   As before, however, <productname>PostgreSQL</> does not enforce the
-  size restriction.
+  size restriction in any case.
  </para>
  </sect2>
 
