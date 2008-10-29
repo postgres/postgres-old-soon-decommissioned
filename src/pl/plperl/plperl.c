@@ -1922,7 +1922,8 @@ plperl_return_next(SV *sv)
 
 		current_call_data->ret_tdesc = CreateTupleDescCopy(tupdesc);
 		current_call_data->tuple_store =
-			tuplestore_begin_heap(true, false, work_mem);
+			tuplestore_begin_heap(rsi->allowedModes & SFRM_Materialize_Random,
+								  false, work_mem);
 		if (prodesc->fn_retistuple)
 		{
 			current_call_data->attinmeta =

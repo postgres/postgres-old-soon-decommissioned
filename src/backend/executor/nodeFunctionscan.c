@@ -64,7 +64,8 @@ FunctionNext(FunctionScanState *node)
 		node->tuplestorestate = tuplestorestate =
 			ExecMakeTableFunctionResult(node->funcexpr,
 										node->ss.ps.ps_ExprContext,
-										node->tupdesc);
+										node->tupdesc,
+										node->eflags & EXEC_FLAG_BACKWARD);
 	}
 
 	/*
@@ -123,6 +124,7 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate, int eflags)
 	scanstate = makeNode(FunctionScanState);
 	scanstate->ss.ps.plan = (Plan *) node;
 	scanstate->ss.ps.state = estate;
+	scanstate->eflags = eflags;
 
 	/*
 	 * Miscellaneous initialization

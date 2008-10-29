@@ -432,6 +432,10 @@ function is called in).  The function stores pointers to the Tuplestore and
 TupleDesc into ReturnSetInfo, sets returnMode to indicate materialize mode,
 and returns null.  isDone is not used and should be left at ExprSingleResult.
 
+The Tuplestore must be created with randomAccess = true if
+SFRM_Materialize_Random is set in allowedModes, but it can (and preferably
+should) be created with randomAccess = false if not.
+
 If available, the expected tuple descriptor is passed in ReturnSetInfo;
 in other contexts the expectedDesc field will be NULL.  The function need
 not pay attention to expectedDesc, but it may be useful in special cases.

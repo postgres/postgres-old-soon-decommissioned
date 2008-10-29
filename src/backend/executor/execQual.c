@@ -1429,6 +1429,7 @@ restart:
 		rsinfo.econtext = econtext;
 		rsinfo.expectedDesc = fcache->funcResultDesc;
 		rsinfo.allowedModes = (int) (SFRM_ValuePerCall | SFRM_Materialize);
+		/* note we do not set SFRM_Materialize_Random */
 		rsinfo.returnMode = SFRM_ValuePerCall;
 		/* isDone is filled below */
 		rsinfo.setResult = NULL;
@@ -1702,7 +1703,8 @@ ExecMakeFunctionResultNoSets(FuncExprState *fcache,
 Tuplestorestate *
 ExecMakeTableFunctionResult(ExprState *funcexpr,
 							ExprContext *econtext,
-							TupleDesc expectedDesc)
+							TupleDesc expectedDesc,
+							bool randomAccess)
 {
 	Tuplestorestate *tupstore = NULL;
 	TupleDesc	tupdesc = NULL;
@@ -1736,6 +1738,8 @@ ExecMakeTableFunctionResult(ExprState *funcexpr,
 	rsinfo.econtext = econtext;
 	rsinfo.expectedDesc = expectedDesc;
 	rsinfo.allowedModes = (int) (SFRM_ValuePerCall | SFRM_Materialize);
+	if (randomAccess)
+		rsinfo.allowedModes |= (int) SFRM_Materialize_Random;
 	rsinfo.returnMode = SFRM_ValuePerCall;
 	/* isDone is filled below */
 	rsinfo.setResult = NULL;
@@ -1909,7 +1913,7 @@ ExecMakeTableFunctionResult(ExprState *funcexpr,
 									   -1,
 									   0);
 				}
-				tupstore = tuplestore_begin_heap(true, false, work_mem);
+				tupstore = tuplestore_begin_heap(randomAccess, false, work_mem);
 				MemoryContextSwitchTo(oldcontext);
 				rsinfo.setResult = tupstore;
 				rsinfo.setDesc = tupdesc;
@@ -1976,7 +1980,7 @@ no_function_result:
 	if (rsinfo.setResult == NULL)
 	{
 		MemoryContextSwitchTo(econtext->ecxt_per_query_memory);
-		tupstore = tuplestore_begin_heap(true, false, work_mem);
+		tupstore = tuplestore_begin_heap(randomAccess, false, work_mem);
 		rsinfo.setResult = tupstore;
 		if (!returnsSet)
 		{

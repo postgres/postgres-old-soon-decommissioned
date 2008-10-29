@@ -1,5 +1,5 @@
 /*
- * $PostgreSQL:$ 
+ * $PostgreSQL$ 
  *
  * Parser interface for DOM-based parser (libxml) rather than
    stream-based SAX-type parser */
@@ -688,7 +688,9 @@ xpath_table(PG_FUNCTION_ARGS)
 	 * Create the tuplestore - work_mem is the max in-memory size before a
 	 * file is created on disk to hold it.
 	 */
-	tupstore = tuplestore_begin_heap(true, false, work_mem);
+	tupstore =
+		tuplestore_begin_heap(rsinfo->allowedModes & SFRM_Materialize_Random,
+							  false, work_mem);
 
 	MemoryContextSwitchTo(oldcontext);
 
