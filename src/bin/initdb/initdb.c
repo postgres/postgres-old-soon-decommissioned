@@ -3009,7 +3009,7 @@ main(int argc, char *argv[])
 		canonicalize_path(xlog_dir);
 		if (!is_absolute_path(xlog_dir))
 		{
-			fprintf(stderr, _("%s: xlog directory location must be an absolute path\n"), progname);
+			fprintf(stderr, _("%s: transaction log directory location must be an absolute path\n"), progname);
 			exit_nicely();
 		}
 
