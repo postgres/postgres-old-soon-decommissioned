@@ -270,12 +270,12 @@ msgstr "ung¸ltiger ExecStatusType-Kode"
 #: fe-exec.c:1918 fe-exec.c:1941
 #, c-format
 msgid "column number %d is out of range 0..%d"
-msgstr "Spaltennummer %d ist auﬂerhalb des zul‰ssigem Bereichs 0..%d"
+msgstr "Spaltennummer %d ist auﬂerhalb des zul‰ssigen Bereichs 0..%d"
 
 #: fe-exec.c:1934
 #, c-format
 msgid "row number %d is out of range 0..%d"
-msgstr "Zeilennummer %d ist auﬂerhalb des zul‰ssigem Bereichs 0..%d"
+msgstr "Zeilennummer %d ist auﬂerhalb des zul‰ssigen Bereichs 0..%d"
 
 #: fe-exec.c:2216
 #, c-format
@@ -326,7 +326,7 @@ msgstr "kann OID der Funktion lo_close nicht ermitteln\n"
 
 #: fe-lobj.c:653
 msgid "cannot determine OID of function lo_creat\n"
-msgstr "kann OID der Funktion lo_open nicht ermitteln\n"
+msgstr "kann OID der Funktion lo_creat nicht ermitteln\n"
 
 #: fe-lobj.c:660
 msgid "cannot determine OID of function lo_unlink\n"
