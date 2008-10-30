@@ -1329,8 +1329,8 @@ AC_TRY_RUN([#include "$srcdir/src/tools/thread/thread_test.c"],
   [AC_MSG_RESULT(yes)],
   [AC_MSG_RESULT(no)
   AC_MSG_ERROR([
-*** Thread test program failed.  Your platform is not thread-safe.  
-*** Check the file 'config.log'for the exact reason.
+*** Thread test program failed.  Your platform is not thread-safe.
+*** Check the file 'config.log' for the exact reason.
 ***
 *** You can use the configure option --enable-thread-safety-force
 *** to force threads to be enabled.  However, you must then run
