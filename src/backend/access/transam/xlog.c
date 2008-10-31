@@ -2897,8 +2897,8 @@ RestoreBkpBlocks(XLogRecord *record, XLogRecPtr lsn)
 		memcpy(&bkpb, blk, sizeof(BkpBlock));
 		blk += sizeof(BkpBlock);
 
-		buffer = XLogReadBufferWithFork(bkpb.node, bkpb.fork, bkpb.block,
-										true);
+		buffer = XLogReadBufferExtended(bkpb.node, bkpb.fork, bkpb.block,
+										RBM_ZERO);
 		Assert(BufferIsValid(buffer));
 		page = (Page) BufferGetPage(buffer);
 

@@ -12,6 +12,7 @@
 #define XLOG_UTILS_H
 
 #include "storage/buf.h"
+#include "storage/bufmgr.h"
 #include "storage/relfilenode.h"
 #include "storage/block.h"
 #include "utils/relcache.h"
@@ -25,8 +26,8 @@ extern void XLogTruncateRelation(RelFileNode rnode, ForkNumber forkNum,
 								 BlockNumber nblocks);
 
 extern Buffer XLogReadBuffer(RelFileNode rnode, BlockNumber blkno, bool init);
-extern Buffer XLogReadBufferWithFork(RelFileNode rnode, ForkNumber forknum,
-									 BlockNumber blkno, bool init);
+extern Buffer XLogReadBufferExtended(RelFileNode rnode, ForkNumber forknum,
+									 BlockNumber blkno, ReadBufferMode mode);
 
 extern Relation CreateFakeRelcacheEntry(RelFileNode rnode);
 extern void FreeFakeRelcacheEntry(Relation fakerel);

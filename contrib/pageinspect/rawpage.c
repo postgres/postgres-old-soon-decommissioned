@@ -85,7 +85,7 @@ get_raw_page(PG_FUNCTION_ARGS)
 
 	/* Take a verbatim copy of the page */
 
-	buf = ReadBufferWithFork(rel, forknum, blkno);
+	buf = ReadBufferExtended(rel, forknum, blkno, RBM_NORMAL, NULL);
 	LockBuffer(buf, BUFFER_LOCK_SHARE);
 
 	memcpy(raw_page_data, BufferGetPage(buf), BLCKSZ);

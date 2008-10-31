@@ -205,9 +205,8 @@ heapgetpage(HeapScanDesc scan, BlockNumber page)
 	}
 
 	/* read page using selected strategy */
-	scan->rs_cbuf = ReadBufferWithStrategy(scan->rs_rd,
-										   page,
-										   scan->rs_strategy);
+	scan->rs_cbuf = ReadBufferExtended(scan->rs_rd, MAIN_FORKNUM, page,
+									   RBM_NORMAL, scan->rs_strategy);
 	scan->rs_cblock = page;
 
 	if (!scan->rs_pageatatime)
