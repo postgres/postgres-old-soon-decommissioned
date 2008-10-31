@@ -2062,6 +2062,7 @@ typedef struct CreateCastStmt
 	TypeName   *targettype;
 	FuncWithArgs *func;
 	CoercionContext context;
+	bool		inout;
 } CreateCastStmt;
 
 /* ----------------------

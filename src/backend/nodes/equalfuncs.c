@@ -1666,6 +1666,7 @@ _equalCreateCastStmt(CreateCastStmt *a, CreateCastStmt *b)
 	COMPARE_NODE_FIELD(targettype);
 	COMPARE_NODE_FIELD(func);
 	COMPARE_SCALAR_FIELD(context);
+	COMPARE_SCALAR_FIELD(inout);
 
 	return true;
 }

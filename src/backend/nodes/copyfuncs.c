@@ -3042,6 +3042,7 @@ _copyCreateCastStmt(CreateCastStmt *from)
 	COPY_NODE_FIELD(targettype);
 	COPY_NODE_FIELD(func);
 	COPY_SCALAR_FIELD(context);
+	COPY_SCALAR_FIELD(inout);
 
 	return newnode;
 }

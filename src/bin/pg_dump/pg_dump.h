@@ -376,6 +376,7 @@ typedef struct _castInfo
 	Oid			casttarget;
 	Oid			castfunc;
 	char		castcontext;
+	char		castmethod;
 } CastInfo;
 
 /* InhInfo isn't a DumpableObject, just temporary state */
