@@ -151,13 +151,15 @@ typedef enum
 /*
  * Return modes for functions returning sets.  Note values must be chosen
  * as separate bits so that a bitmask can be formed to indicate supported
- * modes.
+ * modes.  SFRM_Materialize_Random and SFRM_Materialize_Preferred are
+ * auxiliary flags about SFRM_Materialize mode, rather than separate modes.
  */
 typedef enum
 {
 	SFRM_ValuePerCall = 0x01,	/* one value returned per call */
 	SFRM_Materialize = 0x02,	/* result set instantiated in Tuplestore */
-	SFRM_Materialize_Random = 0x04		/* Tuplestore needs randomAccess */
+	SFRM_Materialize_Random = 0x04,		/* Tuplestore needs randomAccess */
+	SFRM_Materialize_Preferred = 0x08	/* caller prefers Tuplestore */
 } SetFunctionReturnMode;
 
 /*
