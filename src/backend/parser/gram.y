@@ -6668,12 +6668,13 @@ select_offset_value2:
 row_or_rows:
 			ROW		{ $$ = 0; }
 			| ROWS		{ $$ = 0; }
+			;
 
 /* noise words */
 first_or_next:
 			FIRST_P		{ $$ = 0; }
 			| NEXT		{ $$ = 0; }
-
+			;
 
 group_clause:
 			GROUP_P BY expr_list					{ $$ = $3; }
