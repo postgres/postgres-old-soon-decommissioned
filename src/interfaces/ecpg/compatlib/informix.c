@@ -755,10 +755,16 @@ rfmtlong(long lng_val, char *fmt, char *outbuf)
 				fmtchar = ' ';
 
 	temp = (char *) malloc(fmt_len + 1);
+	if (!temp)
+	{
+		errno = ENOMEM;
+		return -1;
+	}
 
 	/* put all info about the long in a struct */
-	if (!temp || initValue(lng_val) == -1)
+	if (initValue(lng_val) == -1)
 	{
+		free(temp);
 		errno = ENOMEM;
 		return -1;
 	}
