@@ -128,9 +128,9 @@ extern PGDLLIMPORT PGPROC *MyProc;
 typedef struct PROC_HDR
 {
 	/* Head of list of free PGPROC structures */
-	SHMEM_OFFSET freeProcs;
+	PGPROC	   *freeProcs;
 	/* Head of list of autovacuum's free PGPROC structures */
-	SHMEM_OFFSET autovacFreeProcs;
+	PGPROC	   *autovacFreeProcs;
 	/* Current shared estimate of appropriate spins_per_delay value */
 	int			spins_per_delay;
 } PROC_HDR;
