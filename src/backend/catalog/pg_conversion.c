@@ -46,7 +46,7 @@ ConversionCreate(const char *conname, Oid connamespace,
 	Relation	rel;
 	TupleDesc	tupDesc;
 	HeapTuple	tup;
-	char		nulls[Natts_pg_conversion];
+	bool		nulls[Natts_pg_conversion];
 	Datum		values[Natts_pg_conversion];
 	NameData	cname;
 	Oid			oid;
@@ -89,7 +89,7 @@ ConversionCreate(const char *conname, Oid connamespace,
 	/* initialize nulls and values */
 	for (i = 0; i < Natts_pg_conversion; i++)
 	{
-		nulls[i] = ' ';
+		nulls[i] = false;
 		values[i] = (Datum) NULL;
 	}
 
@@ -103,7 +103,7 @@ ConversionCreate(const char *conname, Oid connamespace,
 	values[Anum_pg_conversion_conproc - 1] = ObjectIdGetDatum(conproc);
 	values[Anum_pg_conversion_condefault - 1] = BoolGetDatum(def);
 
-	tup = heap_formtuple(tupDesc, values, nulls);
+	tup = heap_form_tuple(tupDesc, values, nulls);
 
 	/* insert a new tuple */
 	oid = simple_heap_insert(rel, tup);

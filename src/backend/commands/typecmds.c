@@ -1436,8 +1436,8 @@ AlterDomainDefault(List *names, Node *defaultRaw)
 	char	   *defaultValue;
 	Node	   *defaultExpr = NULL;		/* NULL if no default specified */
 	Datum		new_record[Natts_pg_type];
-	char		new_record_nulls[Natts_pg_type];
-	char		new_record_repl[Natts_pg_type];
+	bool		new_record_nulls[Natts_pg_type];
+	bool		new_record_repl[Natts_pg_type];
 	HeapTuple	newtuple;
 	Form_pg_type typTup;
 
@@ -1460,8 +1460,8 @@ AlterDomainDefault(List *names, Node *defaultRaw)
 
 	/* Setup new tuple */
 	MemSet(new_record, (Datum) 0, sizeof(new_record));
-	MemSet(new_record_nulls, ' ', sizeof(new_record_nulls));
-	MemSet(new_record_repl, ' ', sizeof(new_record_repl));
+	MemSet(new_record_nulls, false, sizeof(new_record_nulls));
+	MemSet(new_record_repl, false, sizeof(new_record_repl));
 
 	/* Store the new default into the tuple */
 	if (defaultRaw)
@@ -1487,10 +1487,10 @@ AlterDomainDefault(List *names, Node *defaultRaw)
 			(IsA(defaultExpr, Const) &&((Const *) defaultExpr)->constisnull))
 		{
 			/* Default is NULL, drop it */
-			new_record_nulls[Anum_pg_type_typdefaultbin - 1] = 'n';
-			new_record_repl[Anum_pg_type_typdefaultbin - 1] = 'r';
-			new_record_nulls[Anum_pg_type_typdefault - 1] = 'n';
-			new_record_repl[Anum_pg_type_typdefault - 1] = 'r';
+			new_record_nulls[Anum_pg_type_typdefaultbin - 1] = true;
+			new_record_repl[Anum_pg_type_typdefaultbin - 1] = true;
+			new_record_nulls[Anum_pg_type_typdefault - 1] = true;
+			new_record_repl[Anum_pg_type_typdefault - 1] = true;
 		}
 		else
 		{
@@ -1509,21 +1509,21 @@ AlterDomainDefault(List *names, Node *defaultRaw)
 			 */
 			new_record[Anum_pg_type_typdefaultbin - 1] = CStringGetTextDatum(nodeToString(defaultExpr));
 
-			new_record_repl[Anum_pg_type_typdefaultbin - 1] = 'r';
+			new_record_repl[Anum_pg_type_typdefaultbin - 1] = true;
 			new_record[Anum_pg_type_typdefault - 1] = CStringGetTextDatum(defaultValue);
-			new_record_repl[Anum_pg_type_typdefault - 1] = 'r';
+			new_record_repl[Anum_pg_type_typdefault - 1] = true;
 		}
 	}
 	else
 	{
 		/* ALTER ... DROP DEFAULT */
-		new_record_nulls[Anum_pg_type_typdefaultbin - 1] = 'n';
-		new_record_repl[Anum_pg_type_typdefaultbin - 1] = 'r';
-		new_record_nulls[Anum_pg_type_typdefault - 1] = 'n';
-		new_record_repl[Anum_pg_type_typdefault - 1] = 'r';
+		new_record_nulls[Anum_pg_type_typdefaultbin - 1] = true;
+		new_record_repl[Anum_pg_type_typdefaultbin - 1] = true;
+		new_record_nulls[Anum_pg_type_typdefault - 1] = true;
+		new_record_repl[Anum_pg_type_typdefault - 1] = true;
 	}
 
-	newtuple = heap_modifytuple(tup, RelationGetDescr(rel),
+	newtuple = heap_modify_tuple(tup, RelationGetDescr(rel),
 								new_record, new_record_nulls,
 								new_record_repl);
 

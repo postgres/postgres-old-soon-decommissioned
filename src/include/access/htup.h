@@ -823,20 +823,21 @@ extern HeapTuple heap_copytuple(HeapTuple tuple);
 extern void heap_copytuple_with_tuple(HeapTuple src, HeapTuple dest);
 extern HeapTuple heap_form_tuple(TupleDesc tupleDescriptor,
 				Datum *values, bool *isnull);
-extern HeapTuple heap_formtuple(TupleDesc tupleDescriptor,
-			   Datum *values, char *nulls);
 extern HeapTuple heap_modify_tuple(HeapTuple tuple,
 				  TupleDesc tupleDesc,
 				  Datum *replValues,
 				  bool *replIsnull,
 				  bool *doReplace);
+extern void heap_deform_tuple(HeapTuple tuple, TupleDesc tupleDesc,
+				  Datum *values, bool *isnull);
+/* these three are deprecated versions of the three above: */
+extern HeapTuple heap_formtuple(TupleDesc tupleDescriptor,
+			   Datum *values, char *nulls);
 extern HeapTuple heap_modifytuple(HeapTuple tuple,
 				 TupleDesc tupleDesc,
 				 Datum *replValues,
 				 char *replNulls,
 				 char *replActions);
-extern void heap_deform_tuple(HeapTuple tuple, TupleDesc tupleDesc,
-				  Datum *values, bool *isnull);
 extern void heap_deformtuple(HeapTuple tuple, TupleDesc tupleDesc,
 				 Datum *values, char *nulls);
 extern void heap_freetuple(HeapTuple htup);

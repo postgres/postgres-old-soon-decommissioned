@@ -68,7 +68,7 @@ preprocess_targetlist(PlannerInfo *root, List *tlist)
 	}
 
 	/*
-	 * for heap_formtuple to work, the targetlist must match the exact order
+	 * for heap_form_tuple to work, the targetlist must match the exact order
 	 * of the attributes. We also need to fill in any missing attributes. -ay
 	 * 10/94
 	 */
