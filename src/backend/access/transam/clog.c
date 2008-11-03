@@ -324,7 +324,7 @@ TransactionIdSetStatusBit(TransactionId xid, XidStatus status, XLogRecPtr lsn, i
 	char		curval;
 
 	byteptr = ClogCtl->shared->page_buffer[slotno] + byteno;
-	curval = (*byteptr >> shift) & CLOG_XACT_BITMASK;
+	curval = (*byteptr >> bshift) & CLOG_XACT_BITMASK;
 
 	/*
 	 * When replaying transactions during recovery we still need to perform
