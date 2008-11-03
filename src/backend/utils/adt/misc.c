@@ -371,3 +371,13 @@ pg_get_keywords(PG_FUNCTION_ARGS)
 
 	SRF_RETURN_DONE(funcctx);
 }
+
+
+/*
+ * Return the type of the argument.
+ */
+Datum
+pg_typeof(PG_FUNCTION_ARGS)
+{
+	PG_RETURN_OID(get_fn_expr_argtype(fcinfo->flinfo, 0));
+}

@@ -2289,7 +2289,8 @@ DESCR("result type of a function");
 
 DATA(insert OID = 1686 (  pg_get_keywords		PGNSP PGUID 12 10 400 0 f f t t s 0 2249 "" "{25,18,25}" "{o,o,o}" "{word,catcode,catdesc}" pg_get_keywords _null_ _null_ _null_ ));
 DESCR("list of SQL keywords");
-
+DATA(insert OID = 1619 (  pg_typeof				PGNSP PGUID 12 1 0 0 f f f f i 1 2206  "2276" _null_ _null_ _null_  pg_typeof _null_ _null_ _null_ ));
+DESCR("returns the type of the argument");
 
 /* Generic referential integrity constraint triggers */
 DATA(insert OID = 1644 (  RI_FKey_check_ins		PGNSP PGUID 12 1 0 0 f f t f v 0 2279 "" _null_ _null_ _null_ RI_FKey_check_ins _null_ _null_ _null_ ));
