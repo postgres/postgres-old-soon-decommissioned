@@ -321,13 +321,29 @@ TransactionIdSetStatusBit(TransactionId xid, XidStatus status, XLogRecPtr lsn, i
 	int			bshift = TransactionIdToBIndex(xid) * CLOG_BITS_PER_XACT;
 	char	   *byteptr;
 	char		byteval;
+	char		curval;
 
 	byteptr = ClogCtl->shared->page_buffer[slotno] + byteno;
+	curval = (*byteptr >> shift) & CLOG_XACT_BITMASK;
 
-	/* Current state should be 0, subcommitted or target state */
-	Assert(((*byteptr >> bshift) & CLOG_XACT_BITMASK) == 0 ||
-		   ((*byteptr >> bshift) & CLOG_XACT_BITMASK) == TRANSACTION_STATUS_SUB_COMMITTED ||
-		   ((*byteptr >> bshift) & CLOG_XACT_BITMASK) == status);
+	/*
+	 * When replaying transactions during recovery we still need to perform
+	 * the two phases of subcommit and then commit. However, some transactions
+	 * are already correctly marked, so we just treat those as a no-op which
+	 * allows us to keep the following Assert as restrictive as possible.
+	 */
+	if (InRecovery && status == TRANSACTION_STATUS_SUB_COMMITTED &&
+		curval == TRANSACTION_STATUS_COMMITTED)
+		return;
+
+	/* 
+	 * Current state change should be from 0 or subcommitted to target state
+	 * or we should already be there when replaying changes during recovery.
+	 */
+	Assert(curval == 0 ||
+		   (curval == TRANSACTION_STATUS_SUB_COMMITTED &&
+			status != TRANSACTION_STATUS_IN_PROGRESS) ||
+		   curval == status);
 
 	/* note this assumes exclusive access to the clog page */
 	byteval = *byteptr;
