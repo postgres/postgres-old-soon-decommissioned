@@ -201,7 +201,7 @@ XLogCheckInvalidPages(void)
 }
 
 /*
- * XLogReadBufferExtended
+ * XLogReadBuffer
  *		A shorthand of XLogReadBufferExtended(), for reading from the main
  *		fork.
  *
@@ -216,7 +216,7 @@ XLogReadBuffer(RelFileNode rnode, BlockNumber blkno, bool init)
 }
 
 /*
- * XLogReadBuffer
+ * XLogReadBufferExtended
  *		Read a page during XLOG replay
  *
  * This is functionally comparable to ReadBuffer followed by
