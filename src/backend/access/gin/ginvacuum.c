@@ -546,7 +546,7 @@ ginVacuumEntryPage(GinVacuumState *gvs, Buffer buffer, BlockNumber *roots, uint3
 					 * On first difference we create temporary page in memory
 					 * and copies content in to it.
 					 */
-					tmppage = GinPageGetCopyPage(origpage);
+					tmppage = PageGetTempPageCopy(origpage);
 
 					if (newN > 0)
 					{

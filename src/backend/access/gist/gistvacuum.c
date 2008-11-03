@@ -144,18 +144,6 @@ gistDeleteSubtree(GistVacuum *gv, BlockNumber blkno)
 	UnlockReleaseBuffer(buffer);
 }
 
-static Page
-GistPageGetCopyPage(Page page)
-{
-	Size		pageSize = PageGetPageSize(page);
-	Page		tmppage;
-
-	tmppage = (Page) palloc(pageSize);
-	memcpy(tmppage, page, pageSize);
-
-	return tmppage;
-}
-
 static ArrayTuple
 vacuumSplitPage(GistVacuum *gv, Page tempPage, Buffer buffer, IndexTuple *addon, int curlenaddon)
 {
@@ -325,7 +313,7 @@ gistVacuumUpdate(GistVacuum *gv, BlockNumber blkno, bool needunion)
 		addon = (IndexTuple *) palloc(sizeof(IndexTuple) * lenaddon);
 
 		/* get copy of page to work */
-		tempPage = GistPageGetCopyPage(page);
+		tempPage = PageGetTempPageCopy(page);
 
 		for (i = FirstOffsetNumber; i <= maxoff; i = OffsetNumberNext(i))
 		{

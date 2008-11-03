@@ -445,7 +445,7 @@ dataSplitPage(GinBtree btree, Buffer lbuf, Buffer rbuf, OffsetNumber off, XLogRe
 	char	   *ptr;
 	OffsetNumber separator;
 	ItemPointer bound;
-	Page		lpage = GinPageGetCopyPage(BufferGetPage(lbuf));
+	Page		lpage = PageGetTempPageCopy(BufferGetPage(lbuf));
 	ItemPointerData oldbound = *GinDataPageGetRightBound(lpage);
 	int			sizeofitem = GinSizeOfItem(lpage);
 	OffsetNumber maxoff = GinPageGetOpaque(lpage)->maxoff;

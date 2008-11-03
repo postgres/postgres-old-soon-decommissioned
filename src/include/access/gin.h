@@ -246,7 +246,6 @@ extern int	compareAttEntries(GinState *ginstate, OffsetNumber attnum_a, Datum a,
 extern Datum *extractEntriesS(GinState *ginstate, OffsetNumber attnum, Datum value,
 				int32 *nentries, bool *needUnique);
 extern Datum *extractEntriesSU(GinState *ginstate, OffsetNumber attnum, Datum value, int32 *nentries);
-extern Page GinPageGetCopyPage(Page page);
 
 extern Datum gin_index_getattr(GinState *ginstate, IndexTuple tuple);
 extern OffsetNumber gintuple_get_attrnum(GinState *ginstate, IndexTuple tuple);

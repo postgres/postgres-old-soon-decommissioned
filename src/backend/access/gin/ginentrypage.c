@@ -458,7 +458,7 @@ entrySplitPage(GinBtree btree, Buffer lbuf, Buffer rbuf, OffsetNumber off, XLogR
 				leftrightmost = NULL;
 	static ginxlogSplit data;
 	Page		page;
-	Page		lpage = GinPageGetCopyPage(BufferGetPage(lbuf));
+	Page		lpage = PageGetTempPageCopy(BufferGetPage(lbuf));
 	Page		rpage = BufferGetPage(rbuf);
 	Size		pageSize = PageGetPageSize(lpage);
 

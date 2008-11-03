@@ -310,21 +310,6 @@ extractEntriesSU(GinState *ginstate, OffsetNumber attnum, Datum value, int32 *ne
 	return entries;
 }
 
-/*
- * It's analog of PageGetTempPage(), but copies whole page
- */
-Page
-GinPageGetCopyPage(Page page)
-{
-	Size		pageSize = PageGetPageSize(page);
-	Page		tmppage;
-
-	tmppage = (Page) palloc(pageSize);
-	memcpy(tmppage, page, pageSize);
-
-	return tmppage;
-}
-
 Datum
 ginoptions(PG_FUNCTION_ARGS)
 {

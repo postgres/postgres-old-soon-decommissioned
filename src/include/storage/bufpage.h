@@ -362,7 +362,9 @@ extern void PageInit(Page page, Size pageSize, Size specialSize);
 extern bool PageHeaderIsValid(PageHeader page);
 extern OffsetNumber PageAddItem(Page page, Item item, Size size,
 			OffsetNumber offsetNumber, bool overwrite, bool is_heap);
-extern Page PageGetTempPage(Page page, Size specialSize);
+extern Page PageGetTempPage(Page page);
+extern Page PageGetTempPageCopy(Page page);
+extern Page PageGetTempPageCopySpecial(Page page);
 extern void PageRestoreTempPage(Page tempPage, Page oldPage);
 extern void PageRepairFragmentation(Page page);
 extern Size PageGetFreeSpace(Page page);
