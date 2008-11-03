@@ -3347,9 +3347,6 @@ COPY postgres_log FROM '/full/path/to/logfile.csv' WITH csv;
         improved performance.
         This parameter can only be set in the <filename>postgresql.conf</>
         file or on the server command line.
-        If this parameter is changed while the server is running, there is a
-        small window of time until the new statistics file has been written
-        during which the statistics functions might return no information.
        </para>
       </listitem>
      </varlistentry>
