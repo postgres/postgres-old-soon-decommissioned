@@ -3405,7 +3405,7 @@ backend_read_statsfile(void)
 	 */
 	for (count = 0; count < PGSTAT_POLL_LOOP_COUNT; count++)
 	{
-		TimestampTz file_ts;
+		TimestampTz file_ts = 0;
 
 		CHECK_FOR_INTERRUPTS();
 
