@@ -270,6 +270,20 @@ MAKEINFO = makeinfo
 
 
 ##
+## Experimental man page building through docbook2x
+##
+
+# called docbook2man on non-Debian
+DOCBOOK2MAN = docbook2x-man
+
+manx: postgres.xml stylesheet-man.xsl
+	$(DOCBOOK2MAN) -s $(srcdir)/stylesheet-man.xsl --string-param default-manpage-section=$(DEFAULTSECTION)  $<
+	$(mkinstalldirs) man1 man$(DEFAULTSECTION)
+	mv *.1 man1/
+	mv *.$(DEFAULTSECTION) man$(DEFAULTSECTION)/
+
+
+##
 ## Check
 ##
 
