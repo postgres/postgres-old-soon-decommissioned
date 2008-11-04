@@ -938,6 +938,11 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_LockStmt:
+			/*
+			 * Since the lock would just get dropped immediately, LOCK TABLE
+			 * outside a transaction block is presumed to be user error.
+			 */
+			RequireTransactionChain(isTopLevel, "LOCK TABLE");
 			LockTableCommand((LockStmt *) parsetree);
 			break;
 
