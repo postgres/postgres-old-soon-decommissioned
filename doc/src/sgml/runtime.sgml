@@ -1743,7 +1743,7 @@ openssl req -x509 -in server.req -text -key server.key -out server.crt
 </programlisting>
     to turn the certificate into a self-signed certificate and to copy
     the key and certificate to where the server will look for them.
-    Finally do
+    Finally do:
 <programlisting>
 chmod og-rwx server.key
 </programlisting>
