@@ -1282,7 +1282,7 @@ PLy_procedure_create(HeapTuple procTup, Oid tgreloid, char *key)
 				}
 			}
 
-			proc->argnames = (char **) PLy_malloc(sizeof(char *) * proc->nargs);
+			proc->argnames = (char **) PLy_malloc0(sizeof(char *) * proc->nargs);
 			for (i = pos = 0; i < total; i++)
 			{
 				HeapTuple	argTypeTup;
