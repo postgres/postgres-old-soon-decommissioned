@@ -274,7 +274,6 @@ typedef struct
 typedef struct
 {								/* Field in record */
 	int			dtype;
-	int			rfno;
 	char	   *fieldname;
 	int			recparentno;	/* dno of parent record */
 } PLpgSQL_recfield;
