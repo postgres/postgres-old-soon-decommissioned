@@ -565,7 +565,8 @@ SET ENABLE_SEQSCAN TO OFF;
         Enables <acronym>SSL</> connections. Please read
         <xref linkend="ssl-tcp"> before using this. The default
         is <literal>off</>. This parameter can only be set at server
-        start.
+        start.  <acronym>SSL</> communication is only possible with
+        TCP/IP connections.
        </para>
       </listitem>
      </varlistentry>
