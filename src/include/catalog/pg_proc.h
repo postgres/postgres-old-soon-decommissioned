@@ -985,6 +985,7 @@ DATA(insert OID = 393 (  array_le		   PGNSP PGUID 12 1 0 0 f f t f i 2 16 "2277 
 DESCR("array less than or equal");
 DATA(insert OID = 396 (  array_ge		   PGNSP PGUID 12 1 0 0 f f t f i 2 16 "2277 2277" _null_ _null_ _null_ array_ge _null_ _null_ _null_ ));
 DESCR("array greater than or equal");
+DATA(insert OID = 748 (  array_ndims	   PGNSP PGUID 12 1 0 0 f f t f i 1 23 "2277" _null_ _null_ _null_ array_ndims _null_ _null_ _null_ ));
 DATA(insert OID = 747 (  array_dims		   PGNSP PGUID 12 1 0 0 f f t f i 1 25 "2277" _null_ _null_ _null_ array_dims _null_ _null_ _null_ ));
 DESCR("array dimensions");
 DATA(insert OID = 750 (  array_in		   PGNSP PGUID 12 1 0 0 f f t f s 3 2277 "2275 26 23" _null_ _null_ _null_	array_in _null_ _null_ _null_ ));

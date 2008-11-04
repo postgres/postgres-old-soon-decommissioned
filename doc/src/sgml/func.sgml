@@ -9376,6 +9376,17 @@ SELECT NULLIF(value, '(none)') ...
        <row>
         <entry>
          <literal>
+          <function>array_ndims</function>(<type>anyarray</type>)
+         </literal>
+        </entry>
+        <entry><type>int</type></entry>
+        <entry>returns the number of dimensions of the array</entry>
+        <entry><literal>array_ndims(ARRAY[[1,2,3], [4,5,6]])</literal></entry>
+        <entry><literal>2</literal></entry>
+       </row>
+       <row>
+        <entry>
+         <literal>
           <function>array_dims</function>(<type>anyarray</type>)
          </literal>
         </entry>

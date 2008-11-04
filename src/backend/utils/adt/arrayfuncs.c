@@ -1531,6 +1531,22 @@ array_send(PG_FUNCTION_ARGS)
 }
 
 /*
+ * array_ndims :
+ *        returns the number of dimensions of the array pointed to by "v"
+ */
+Datum
+array_ndims(PG_FUNCTION_ARGS)
+{
+	ArrayType  *v = PG_GETARG_ARRAYTYPE_P(0);
+
+	/* Sanity check: does it look like an array at all? */
+	if (ARR_NDIM(v) <= 0 || ARR_NDIM(v) > MAXDIM)
+		PG_RETURN_NULL();
+
+	PG_RETURN_INT32(ARR_NDIM(v));
+}
+
+/*
  * array_dims :
  *		  returns the dimensions of the array pointed to by "v", as a "text"
  */
