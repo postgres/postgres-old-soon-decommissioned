@@ -62,6 +62,12 @@ suppress_redundant_updates_trigger(PG_FUNCTION_ARGS)
 	newheader = newtuple->t_data;
 	oldheader = oldtuple->t_data;
 
+ 	if (oldheader->t_infomask & HEAP_HASOID)
+	{
+		Oid oldoid = HeapTupleHeaderGetOid(oldheader);
+		HeapTupleHeaderSetOid(newheader, oldoid);
+	}
+
 	/* if the tuple payload is the same ... */
     if (newtuple->t_len == oldtuple->t_len &&
 		newheader->t_hoff == oldheader->t_hoff &&
@@ -76,6 +82,7 @@ suppress_redundant_updates_trigger(PG_FUNCTION_ARGS)
 		/* ... then suppress the update */
 		rettuple = NULL;
 	}
+	
 	
     return PointerGetDatum(rettuple);
 }
