@@ -200,7 +200,7 @@ slashUsage(unsigned short int pager)
 	fprintf(output, _("  \\da [PATTERN]  list aggregate functions\n"));
 	fprintf(output, _("  \\db [PATTERN]  list tablespaces (add \"+\" for more detail)\n"));
 	fprintf(output, _("  \\dc [PATTERN]  list conversions\n"));
-	fprintf(output, _("  \\dC            list casts\n"));
+	fprintf(output, _("  \\dC [PATTERN]  list casts\n"));
 	fprintf(output, _("  \\dd [PATTERN]  show comment for object\n"));
 	fprintf(output, _("  \\dD [PATTERN]  list domains\n"));
 	fprintf(output, _("  \\df [PATTERN]  list functions (add \"+\" for more detail)\n"));
