@@ -194,16 +194,21 @@ systable_beginscan(Relation heapRelation,
 	{
 		int			i;
 
-		/*
-		 * Change attribute numbers to be index column numbers.
-		 *
-		 * This code could be generalized to search for the index key numbers
-		 * to substitute, but for now there's no need.
-		 */
+		/* Change attribute numbers to be index column numbers. */
 		for (i = 0; i < nkeys; i++)
 		{
-			Assert(key[i].sk_attno == irel->rd_index->indkey.values[i]);
-			key[i].sk_attno = i + 1;
+			int j;
+
+			for (j = 0; j < irel->rd_index->indnatts; j++)
+			{
+				if (key[i].sk_attno == irel->rd_index->indkey.values[j])
+				{
+					key[i].sk_attno = j + 1;
+					break;
+				}
+			}
+			if (j == irel->rd_index->indnatts)
+				elog(ERROR, "column is not in index");
 		}
 
 		sysscan->iscan = index_beginscan(heapRelation, irel,
@@ -352,16 +357,21 @@ systable_beginscan_ordered(Relation heapRelation,
 	sysscan->heap_rel = heapRelation;
 	sysscan->irel = indexRelation;
 
-	/*
-	 * Change attribute numbers to be index column numbers.
-	 *
-	 * This code could be generalized to search for the index key numbers
-	 * to substitute, but for now there's no need.
-	 */
+	/* Change attribute numbers to be index column numbers. */
 	for (i = 0; i < nkeys; i++)
 	{
-		Assert(key[i].sk_attno == indexRelation->rd_index->indkey.values[i]);
-		key[i].sk_attno = i + 1;
+		int j;
+
+		for (j = 0; j < indexRelation->rd_index->indnatts; j++)
+		{
+			if (key[i].sk_attno == indexRelation->rd_index->indkey.values[j])
+			{
+				key[i].sk_attno = j + 1;
+				break;
+			}
+		}
+		if (j == indexRelation->rd_index->indnatts)
+			elog(ERROR, "column is not in index");
 	}
 
 	sysscan->iscan = index_beginscan(heapRelation, indexRelation,
