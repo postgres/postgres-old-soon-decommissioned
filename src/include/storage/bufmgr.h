@@ -28,6 +28,7 @@ typedef enum BufferAccessStrategyType
 	BAS_NORMAL,					/* Normal random access */
 	BAS_BULKREAD,				/* Large read-only scan (hint bit updates are
 								 * ok) */
+	BAS_BULKWRITE,				/* Large multi-block write (e.g. COPY IN) */
 	BAS_VACUUM					/* VACUUM */
 } BufferAccessStrategyType;
 

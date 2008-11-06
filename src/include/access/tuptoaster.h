@@ -93,7 +93,7 @@
  */
 extern HeapTuple toast_insert_or_update(Relation rel,
 					   HeapTuple newtup, HeapTuple oldtup,
-					   bool use_wal, bool use_fsm);
+					   int options);
 
 /* ----------
  * toast_delete -
