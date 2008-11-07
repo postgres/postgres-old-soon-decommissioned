@@ -55,7 +55,7 @@ typedef struct xl_dbase_drop_rec
 extern void createdb(const CreatedbStmt *stmt);
 extern void dropdb(const char *dbname, bool missing_ok);
 extern void RenameDatabase(const char *oldname, const char *newname);
-extern void AlterDatabase(AlterDatabaseStmt *stmt);
+extern void AlterDatabase(AlterDatabaseStmt *stmt, bool isTopLevel);
 extern void AlterDatabaseSet(AlterDatabaseSetStmt *stmt);
 extern void AlterDatabaseOwner(const char *dbname, Oid newOwnerId);
 

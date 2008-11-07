@@ -660,6 +660,45 @@ UnlockSharedObject(Oid classid, Oid objid, uint16 objsubid,
 	LockRelease(&tag, lockmode, false);
 }
 
+/*
+ *		LockSharedObjectForSession
+ *
+ * Obtain a session-level lock on a shared-across-databases object.
+ * See LockRelationIdForSession for notes about session-level locks.
+ */
+void
+LockSharedObjectForSession(Oid classid, Oid objid, uint16 objsubid,
+						   LOCKMODE lockmode)
+{
+	LOCKTAG		tag;
+
+	SET_LOCKTAG_OBJECT(tag,
+					   InvalidOid,
+					   classid,
+					   objid,
+					   objsubid);
+
+	(void) LockAcquire(&tag, lockmode, true, false);
+}
+
+/*
+ *		UnlockSharedObjectForSession
+ */
+void
+UnlockSharedObjectForSession(Oid classid, Oid objid, uint16 objsubid,
+							 LOCKMODE lockmode)
+{
+	LOCKTAG		tag;
+
+	SET_LOCKTAG_OBJECT(tag,
+					   InvalidOid,
+					   classid,
+					   objid,
+					   objsubid);
+
+	LockRelease(&tag, lockmode, true);
+}
+
 
 /*
  * Append a description of a lockable object to buf.

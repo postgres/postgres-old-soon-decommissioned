@@ -5558,6 +5558,14 @@ AlterDatabaseStmt:
 					n->options = $5;
 					$$ = (Node *)n;
 				 }
+			| ALTER DATABASE database_name SET TABLESPACE name
+				 {
+					AlterDatabaseStmt *n = makeNode(AlterDatabaseStmt);
+					n->dbname = $3;
+					n->options = list_make1(makeDefElem("tablespace",
+													(Node *)makeString($6)));
+					$$ = (Node *)n;
+				 }
 		;
 
 AlterDatabaseSetStmt:
