@@ -2863,7 +2863,7 @@ DecodeInterval(char **field, int *ftype, int nf, int range,
 					if (*cp != '\0')
 						return DTERR_BAD_FORMAT;
 					type = DTK_MONTH;
-					if (val < 0)
+					if (*field[i] == '-')
 						val2 = -val2;
 					val = val * MONTHS_PER_YEAR + val2;
 					fval = 0;
