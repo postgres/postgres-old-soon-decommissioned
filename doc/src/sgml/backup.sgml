@@ -945,8 +945,6 @@ SELECT pg_stop_backup();
      If you didn't archive <filename>pg_xlog/</> at all, then recreate it,
      being careful to ensure that you re-establish it as a symbolic link
      if you had it set up that way before.
-     Be sure to recreate the subdirectory
-     <filename>pg_xlog/archive_status/</> as well.
     </para>
    </listitem>
    <listitem>
