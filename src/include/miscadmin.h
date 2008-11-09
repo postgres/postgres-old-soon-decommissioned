@@ -191,6 +191,18 @@ extern PGDLLIMPORT Oid MyDatabaseTableSpace;
 
 extern int	DateStyle;
 extern int	DateOrder;
+ 
+/*
+ * IntervalStyles
+ *   INTSTYLE_POSTGRES             Like Postgres < 8.4 when DateStyle = 'iso'
+ *   INTSTYLE_POSTGRES_VERBOSE     Like Postgres < 8.4 when DateStyle != 'iso'
+ *   INTSTYLE_SQL_STANDARD         SQL standard interval literals
+ */
+#define INTSTYLE_POSTGRES             0
+#define INTSTYLE_POSTGRES_VERBOSE     1
+#define INTSTYLE_SQL_STANDARD         2
+
+extern int	IntervalStyle;
 
 /*
  * HasCTZSet is true if user has set timezone as a numeric offset from UTC.

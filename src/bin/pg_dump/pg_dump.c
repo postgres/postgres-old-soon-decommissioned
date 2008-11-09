@@ -568,6 +568,10 @@ main(int argc, char **argv)
 	/* Set the datestyle to ISO to ensure the dump's portability */
 	do_sql_command(g_conn, "SET DATESTYLE = ISO");
 
+	/* Likewise, avoid using sql_standard intervalstyle */
+	if (g_fout->remoteVersion >= 80400)
+		do_sql_command(g_conn, "SET INTERVALSTYLE = POSTGRES");
+
 	/*
 	 * If supported, set extra_float_digits so that we can dump float data
 	 * exactly (given correctly implemented float I/O code, anyway)

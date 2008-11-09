@@ -708,6 +708,7 @@ initialize_environment(void)
 	 */
 	putenv("PGTZ=PST8PDT");
 	putenv("PGDATESTYLE=Postgres, MDY");
+	putenv("PGINTERVALSTYLE=postgres_verbose");
 
 	if (temp_install)
 	{

@@ -671,7 +671,7 @@ reltimeout(PG_FUNCTION_ARGS)
 	char		buf[MAXDATELEN + 1];
 
 	reltime2tm(time, tm);
-	EncodeInterval(tm, 0, DateStyle, buf);
+	EncodeInterval(tm, 0, IntervalStyle, buf);
 
 	result = pstrdup(buf);
 	PG_RETURN_CSTRING(result);

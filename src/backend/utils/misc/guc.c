@@ -213,6 +213,13 @@ static const struct config_enum_entry server_message_level_options[] = {
 	{NULL, 0, false}
 };
 
+static const struct config_enum_entry intervalstyle_options[] = {
+	{"postgres", INTSTYLE_POSTGRES, false},
+	{"postgres_verbose", INTSTYLE_POSTGRES_VERBOSE, false},
+	{"sql_standard", INTSTYLE_SQL_STANDARD, false},
+	{NULL, 0, false}
+};
+
 static const struct config_enum_entry log_error_verbosity_options[] = {
 	{"terse", PGERROR_TERSE, false},
 	{"default", PGERROR_DEFAULT, false},
@@ -2517,6 +2524,16 @@ static struct config_enum ConfigureNamesEnum[] =
 		},
 		&DefaultXactIsoLevel,
 		XACT_READ_COMMITTED, isolation_level_options, NULL, NULL
+	},
+
+ 	{
+		{"IntervalStyle", PGC_USERSET, CLIENT_CONN_LOCALE,
+			gettext_noop("Sets the display format for interval values."),
+			NULL,
+			GUC_REPORT
+		},
+		&IntervalStyle,
+		INTSTYLE_POSTGRES, intervalstyle_options, NULL, NULL
 	},
 
 	{

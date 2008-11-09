@@ -209,6 +209,9 @@ static const PQEnvironmentOption EnvironmentOptions[] =
 		"PGDATESTYLE", "datestyle"
 	},
 	{
+		"PGINTERVALSTYLE", "intervalstyle"
+	},
+	{
 		"PGTZ", "timezone"
 	},
 	{

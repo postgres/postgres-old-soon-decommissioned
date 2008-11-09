@@ -1956,6 +1956,13 @@ psql_completion(char *text, int start, int end)
 
 			COMPLETE_WITH_LIST(my_list);
 		}
+		else if (pg_strcasecmp(prev2_wd, "IntervalStyle") == 0)
+		{
+			static const char *const my_list[] =
+			{"postgres", "postgres_verbose", "sql_standard", NULL};
+
+			COMPLETE_WITH_LIST(my_list);
+		}
 		else if (pg_strcasecmp(prev2_wd, "GEQO") == 0)
 		{
 			static const char *const my_list[] =
