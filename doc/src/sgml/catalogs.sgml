@@ -4478,6 +4478,13 @@
    </para>
   </note>
 
+  <note>
+   <para>
+    <literal>pg_class.relhastriggers</literal>
+    must be true if a table has any triggers in this catalog.
+   </para>
+  </note>
+
  </sect1>
 
 

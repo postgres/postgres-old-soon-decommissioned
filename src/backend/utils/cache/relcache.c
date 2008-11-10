@@ -722,6 +722,17 @@ RelationBuildRuleLock(Relation relation)
 	heap_close(rewrite_desc, AccessShareLock);
 
 	/*
+	 * there might not be any rules (if relhasrules is out-of-date)
+	 */
+	if (numlocks == 0)
+	{
+		relation->rd_rules = NULL;
+		relation->rd_rulescxt = NULL;
+		MemoryContextDelete(rulescxt);
+		return;
+	}
+
+	/*
 	 * form a RuleLock and insert into relation
 	 */
 	rulelock = (RuleLock *) MemoryContextAlloc(rulescxt, sizeof(RuleLock));

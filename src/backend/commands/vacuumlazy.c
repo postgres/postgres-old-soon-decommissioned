@@ -186,11 +186,9 @@ lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt,
 	FreeSpaceMapVacuum(onerel);
 
 	/* Update statistics in pg_class */
-	vac_update_relstats(RelationGetRelid(onerel),
-						vacrelstats->rel_pages,
-						vacrelstats->rel_tuples,
-						vacrelstats->hasindex,
-						FreezeLimit);
+	vac_update_relstats(onerel,
+						vacrelstats->rel_pages, vacrelstats->rel_tuples,
+						vacrelstats->hasindex, FreezeLimit);
 
 	/* report results to the stats collector, too */
 	pgstat_report_vacuum(RelationGetRelid(onerel), onerel->rd_rel->relisshared,
@@ -757,9 +755,8 @@ lazy_cleanup_index(Relation indrel,
 		return;
 
 	/* now update statistics in pg_class */
-	vac_update_relstats(RelationGetRelid(indrel),
-						stats->num_pages,
-						stats->num_index_tuples,
+	vac_update_relstats(indrel,
+						stats->num_pages, stats->num_index_tuples,
 						false, InvalidTransactionId);
 
 	ereport(elevel,
