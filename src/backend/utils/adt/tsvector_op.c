@@ -1348,7 +1348,7 @@ tsvector_update_trigger(PG_FUNCTION_ARGS, bool config_column)
 		if (!is_text_type(SPI_gettypeid(rel->rd_att, numattr)))
 			ereport(ERROR,
 					(errcode(ERRCODE_DATATYPE_MISMATCH),
-					 errmsg("column \"%s\" is not of character type",
+					 errmsg("column \"%s\" is not of a character type",
 							trigger->tgargs[i])));
 
 		datum = SPI_getbinval(rettuple, rel->rd_att, numattr, &isnull);

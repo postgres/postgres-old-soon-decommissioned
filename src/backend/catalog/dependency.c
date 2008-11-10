@@ -2094,9 +2094,13 @@ getObjectDescription(const ObjectAddress *object)
 
 				if (OidIsValid(con->conrelid))
 				{
-					appendStringInfo(&buffer, _("constraint %s on "),
-									 NameStr(con->conname));
-					getRelationDescription(&buffer, con->conrelid);
+					StringInfoData	rel;
+
+					initStringInfo(&rel);
+					getRelationDescription(&rel, con->conrelid);
+					appendStringInfo(&buffer, _("constraint %s on %s"),
+									 NameStr(con->conname), rel.data);
+					pfree(rel.data);
 				}
 				else
 				{
