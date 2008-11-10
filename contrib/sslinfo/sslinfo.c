@@ -312,19 +312,14 @@ X509_NAME_to_text(X509_NAME *name)
 											size - 1,
 											PG_UTF8,
 											GetDatabaseEncoding());
-	BIO_free(membuf);
-
 	outlen = strlen(dp);
 	result = palloc(VARHDRSZ + outlen);
 	memcpy(VARDATA(result), dp, outlen);
 	SET_VARSIZE(result, VARHDRSZ + outlen);
 
-	/*
-	 * pg_do_encoding_conversion has annoying habit of returning source
-	 * pointer
-	 */
 	if (dp != sp)
 		pfree(dp);
+	BIO_free(membuf);
 
 	PG_RETURN_TEXT_P(result);
 }
