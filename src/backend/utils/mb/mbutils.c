@@ -381,8 +381,6 @@ pg_convert(PG_FUNCTION_ARGS)
 	*(str + len) = '\0';
 
 	result = pg_do_encoding_conversion(str, len, src_encoding, dest_encoding);
-	if (result == NULL)
-		elog(ERROR, "encoding conversion failed");
 
 	/*
 	 * build bytea data type structure.

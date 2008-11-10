@@ -204,10 +204,6 @@ t_readline(FILE *fp)
 												 len,
 												 PG_UTF8,
 												 GetDatabaseEncoding());
-
-	if (recoded == NULL)		/* should not happen */
-		elog(ERROR, "encoding conversion failed");
-
 	if (recoded == buf)
 	{
 		/*
