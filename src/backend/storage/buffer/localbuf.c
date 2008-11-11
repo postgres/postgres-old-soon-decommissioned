@@ -268,11 +268,9 @@ DropRelFileNodeLocalBuffers(RelFileNode rnode, ForkNumber forkNum,
 			bufHdr->tag.blockNum >= firstDelBlock)
 		{
 			if (LocalRefCount[i] != 0)
-				elog(ERROR, "block %u of %u/%u/%u is still referenced (local %u)",
+				elog(ERROR, "block %u of %s is still referenced (local %u)",
 					 bufHdr->tag.blockNum,
-					 bufHdr->tag.rnode.spcNode,
-					 bufHdr->tag.rnode.dbNode,
-					 bufHdr->tag.rnode.relNode,
+					 relpath(bufHdr->tag.rnode, bufHdr->tag.forkNum),
 					 LocalRefCount[i]);
 			/* Remove entry from hashtable */
 			hresult = (LocalBufferLookupEnt *)
