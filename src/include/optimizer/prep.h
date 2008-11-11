@@ -50,9 +50,4 @@ extern void expand_inherited_tables(PlannerInfo *root);
 
 extern Node *adjust_appendrel_attrs(Node *node, AppendRelInfo *appinfo);
 
-extern Relids *adjust_appendrel_attr_needed(RelOptInfo *oldrel,
-							 AppendRelInfo *appinfo,
-							 AttrNumber new_min_attr,
-							 AttrNumber new_max_attr);
-
 #endif   /* PREP_H */
