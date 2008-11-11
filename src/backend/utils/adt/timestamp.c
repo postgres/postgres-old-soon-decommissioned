@@ -626,7 +626,14 @@ interval_in(PG_FUNCTION_ARGS)
 	dterr = ParseDateTime(str, workbuf, sizeof(workbuf), field,
 						  ftype, MAXDATEFIELDS, &nf);
 	if (dterr == 0)
-		dterr = DecodeInterval(field, ftype, nf, range, &dtype, tm, &fsec);
+		dterr = DecodeInterval(field, ftype, nf, range,
+							   &dtype, tm, &fsec);
+
+	/* if those functions think it's a bad format, try ISO8601 style */
+	if (dterr == DTERR_BAD_FORMAT)
+	    dterr = DecodeISO8601Interval(str,
+									  &dtype, tm, &fsec);
+
 	if (dterr != 0)
 	{
 		if (dterr == DTERR_FIELD_OVERFLOW)

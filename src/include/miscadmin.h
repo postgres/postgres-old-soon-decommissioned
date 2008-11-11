@@ -197,10 +197,12 @@ extern int	DateOrder;
  *   INTSTYLE_POSTGRES             Like Postgres < 8.4 when DateStyle = 'iso'
  *   INTSTYLE_POSTGRES_VERBOSE     Like Postgres < 8.4 when DateStyle != 'iso'
  *   INTSTYLE_SQL_STANDARD         SQL standard interval literals
+ *   INTSTYLE_ISO_8601             ISO-8601-basic formatted intervals
  */
-#define INTSTYLE_POSTGRES             0
-#define INTSTYLE_POSTGRES_VERBOSE     1
-#define INTSTYLE_SQL_STANDARD         2
+#define INTSTYLE_POSTGRES			0
+#define INTSTYLE_POSTGRES_VERBOSE	1
+#define INTSTYLE_SQL_STANDARD		2
+#define INTSTYLE_ISO_8601			3
 
 extern int	IntervalStyle;
 

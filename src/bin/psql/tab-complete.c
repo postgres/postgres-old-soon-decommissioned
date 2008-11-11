@@ -1959,7 +1959,7 @@ psql_completion(char *text, int start, int end)
 		else if (pg_strcasecmp(prev2_wd, "IntervalStyle") == 0)
 		{
 			static const char *const my_list[] =
-			{"postgres", "postgres_verbose", "sql_standard", NULL};
+			{"postgres", "postgres_verbose", "sql_standard", "iso_8601", NULL};
 
 			COMPLETE_WITH_LIST(my_list);
 		}

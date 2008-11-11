@@ -4032,6 +4032,9 @@ SET XML OPTION { DOCUMENT | CONTENT };
         matching <productname>PostgreSQL</> releases prior to 8.4
         when the <varname>DateStyle</>
         parameter was set to non-<literal>ISO</> output.
+        The value <literal>iso_8601</> will produce output matching the time
+        interval <quote>format with designators</> defined in section
+        4.4.3.2 of ISO 8601.
        </para>
        <para>
         The <varname>IntervalStyle</> parameter also affects the

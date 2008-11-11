@@ -289,9 +289,11 @@ extern int DecodeDateTime(char **field, int *ftype,
 extern int DecodeTimeOnly(char **field, int *ftype,
 			   int nf, int *dtype,
 			   struct pg_tm * tm, fsec_t *fsec, int *tzp);
-extern int DecodeInterval(char **field, int *ftype,
-			   int nf, int range, int *dtype,
-			   struct pg_tm * tm, fsec_t *fsec);
+extern int DecodeInterval(char **field, int *ftype, int nf, int range,
+			   int *dtype, struct pg_tm * tm, fsec_t *fsec);
+extern int DecodeISO8601Interval(char *str,
+			   int *dtype, struct pg_tm * tm, fsec_t *fsec);
+
 extern void DateTimeParseError(int dterr, const char *str,
 				   const char *datatype);
 
