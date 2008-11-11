@@ -26,6 +26,7 @@
 #include "access/twophase.h"
 #include "access/xact.h"
 #include "access/xlogutils.h"
+#include "catalog/catalog.h"
 #include "catalog/namespace.h"
 #include "commands/async.h"
 #include "commands/tablecmds.h"
