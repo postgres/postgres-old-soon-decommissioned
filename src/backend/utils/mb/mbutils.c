@@ -221,7 +221,13 @@ pg_get_client_encoding_name(void)
  * it's taken from pg_catalog schema. If it even is not in the schema,
  * warn and return src.
  *
+ * If conversion occurs, a palloc'd null-terminated string is returned.
  * In the case of no conversion, src is returned.
+ *
+ * CAUTION: although the presence of a length argument means that callers
+ * can pass non-null-terminated strings, care is required because the same
+ * string will be passed back if no conversion occurs.  Such callers *must*
+ * check whether result == src and handle that case differently.
  *
  * Note: we try to avoid raising error, since that could get us into
  * infinite recursion when this function is invoked during error message
