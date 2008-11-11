@@ -1628,7 +1628,6 @@ _outAppendRelInfo(StringInfo str, AppendRelInfo *node)
 	WRITE_UINT_FIELD(child_relid);
 	WRITE_OID_FIELD(parent_reltype);
 	WRITE_OID_FIELD(child_reltype);
-	WRITE_NODE_FIELD(col_mappings);
 	WRITE_NODE_FIELD(translated_vars);
 	WRITE_OID_FIELD(parent_reloid);
 }

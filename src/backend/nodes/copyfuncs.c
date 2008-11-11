@@ -1640,7 +1640,6 @@ _copyAppendRelInfo(AppendRelInfo *from)
 	COPY_SCALAR_FIELD(child_relid);
 	COPY_SCALAR_FIELD(parent_reltype);
 	COPY_SCALAR_FIELD(child_reltype);
-	COPY_NODE_FIELD(col_mappings);
 	COPY_NODE_FIELD(translated_vars);
 	COPY_SCALAR_FIELD(parent_reloid);
 
