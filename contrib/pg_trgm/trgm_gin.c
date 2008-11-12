@@ -42,7 +42,7 @@ gin_extract_trgm(PG_FUNCTION_ARGS)
 		ptr = GETARR(trg);
 		while (ptr - GETARR(trg) < ARRNELEM(trg))
 		{
-			item = TRGMINT(ptr);
+			item = trgm2int(ptr);
 			entries[i++] = Int32GetDatum(item);
 
 			ptr++;
