@@ -215,7 +215,7 @@ typedef enum
 {
 	AutoVacForkFailed,			/* failed trying to start a worker */
 	AutoVacRebalance,			/* rebalance the cost limits */
-	AutoVacNumSignals = AutoVacRebalance		/* must be last */
+	AutoVacNumSignals			/* must be last */
 } AutoVacuumSignal;
 
 /*-------------
