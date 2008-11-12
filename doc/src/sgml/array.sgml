@@ -325,6 +325,18 @@ SELECT array_upper(schedule, 1) FROM sal_emp WHERE name = 'Carol';
            2
 (1 row)
 </programlisting>
+
+ <function>array_length</function> will return the length of a specified
+ array dimension:
+
+<programlisting>
+SELECT array_length(schedule, 1) FROM sal_emp WHERE name = 'Carol';
+
+ array_length
+--------------
+            2
+(1 row)
+</programlisting>
  </para>
  </sect2>
 

@@ -1641,6 +1641,34 @@ array_upper(PG_FUNCTION_ARGS)
 }
 
 /*
+ * array_length :
+ *		returns the length, of the dimension requested, for
+ *		the array pointed to by "v", as an int4
+ */
+Datum
+array_length(PG_FUNCTION_ARGS)
+{
+	ArrayType  *v = PG_GETARG_ARRAYTYPE_P(0);
+	int			reqdim = PG_GETARG_INT32(1);
+	int		   *dimv;
+	int			result;
+
+	/* Sanity check: does it look like an array at all? */
+	if (ARR_NDIM(v) <= 0 || ARR_NDIM(v) > MAXDIM)
+		PG_RETURN_NULL();
+
+	/* Sanity check: was the requested dim valid */
+	if (reqdim <= 0 || reqdim > ARR_NDIM(v))
+		PG_RETURN_NULL();
+
+	dimv = ARR_DIMS(v);
+
+	result = dimv[reqdim - 1];
+
+	PG_RETURN_INT32(result);
+}
+
+/*
  * array_ref :
  *	  This routine takes an array pointer and a subscript array and returns
  *	  the referenced item as a Datum.  Note that for a pass-by-reference
