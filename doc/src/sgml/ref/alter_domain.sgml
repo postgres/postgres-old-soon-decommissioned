@@ -10,9 +10,7 @@ PostgreSQL documentation
  </refmeta>
 
  <refnamediv>
-  <refname>
-   ALTER DOMAIN
-  </refname>
+  <refname>ALTER DOMAIN</refname>
   <refpurpose>
    change the definition of a domain
   </refpurpose>

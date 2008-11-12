@@ -10,9 +10,7 @@ PostgreSQL documentation
  </refmeta>
 
  <refnamediv>
-  <refname>
-   ALTER SEQUENCE
-  </refname>
+  <refname>ALTER SEQUENCE</refname>
   <refpurpose>
    change the definition of a sequence generator
   </refpurpose>

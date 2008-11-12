@@ -10,9 +10,7 @@ PostgreSQL documentation
  </refmeta>
 
  <refnamediv>
-  <refname>
-   ALTER TYPE
-  </refname>
+  <refname>ALTER TYPE</refname>
   <refpurpose>
    change the definition of a type
   </refpurpose>
