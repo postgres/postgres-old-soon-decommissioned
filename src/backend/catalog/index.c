@@ -1513,6 +1513,7 @@ double
 IndexBuildHeapScan(Relation heapRelation,
 				   Relation indexRelation,
 				   IndexInfo *indexInfo,
+				   bool allow_sync,
 				   IndexBuildCallback callback,
 				   void *callback_state)
 {
@@ -1575,7 +1576,12 @@ IndexBuildHeapScan(Relation heapRelation,
 		OldestXmin = GetOldestXmin(heapRelation->rd_rel->relisshared, true);
 	}
 
-	scan = heap_beginscan(heapRelation, snapshot, 0, NULL);
+	scan = heap_beginscan_strat(heapRelation,	/* relation */
+								snapshot,		/* snapshot */
+								0,				/* number of keys */
+								NULL,			/* scan key */
+								true,			/* buffer access strategy OK */
+								allow_sync);	/* syncscan OK? */
 
 	reltuples = 0;
 
