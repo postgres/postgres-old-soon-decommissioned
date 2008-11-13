@@ -1499,6 +1499,12 @@ pg_tzenumerate_next(pg_tzenum *dir)
 			continue;
 		}
 
+		if (!tz_acceptable(&dir->tz))
+		{
+			/* Ignore leap-second zones */
+			continue;
+		}
+
 		/* Timezone loaded OK. */
 		return &dir->tz;
 	}
