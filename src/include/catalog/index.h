@@ -63,6 +63,7 @@ extern void index_build(Relation heapRelation,
 extern double IndexBuildHeapScan(Relation heapRelation,
 				   Relation indexRelation,
 				   IndexInfo *indexInfo,
+				   bool allow_sync,
 				   IndexBuildCallback callback,
 				   void *callback_state);
 

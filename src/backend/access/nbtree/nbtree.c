@@ -117,7 +117,7 @@ btbuild(PG_FUNCTION_ARGS)
 		buildstate.spool2 = _bt_spoolinit(index, false, true);
 
 	/* do the heap scan */
-	reltuples = IndexBuildHeapScan(heap, index, indexInfo,
+	reltuples = IndexBuildHeapScan(heap, index, indexInfo, true,
 								   btbuildCallback, (void *) &buildstate);
 
 	/* okay, all heap tuples are indexed */

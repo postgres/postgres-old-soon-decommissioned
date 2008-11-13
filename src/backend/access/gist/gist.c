@@ -147,7 +147,7 @@ gistbuild(PG_FUNCTION_ARGS)
 	buildstate.tmpCtx = createTempGistContext();
 
 	/* do the heap scan */
-	reltuples = IndexBuildHeapScan(heap, index, indexInfo,
+	reltuples = IndexBuildHeapScan(heap, index, indexInfo, true,
 								   gistbuildCallback, (void *) &buildstate);
 
 	/* okay, all heap tuples are indexed */
