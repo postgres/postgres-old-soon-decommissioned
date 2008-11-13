@@ -1022,6 +1022,13 @@ DATA(insert OID = 1193 (  array_fill PGNSP PGUID 12 1 0 0 f f f f i 2 2277 "2283
 DESCR("array constructor with value");
 DATA(insert OID = 1286 (  array_fill PGNSP PGUID 12 1 0 0 f f f f i 3 2277 "2283 1007 1007" _null_ _null_ _null_ array_fill_with_lower_bounds _null_ _null_ _null_ ));
 DESCR("array constructor with value");
+DATA(insert OID = 2333 (  array_agg_transfn   PGNSP PGUID 12 1 0 0 f f f f i 2 2281 "2281 2283" _null_ _null_ _null_ array_agg_transfn _null_ _null_ _null_ ));
+DESCR("array_agg transition function");
+DATA(insert OID = 2334 (  array_agg_finalfn   PGNSP PGUID 12 1 0 0 f f f f i 1 2277 "2281" _null_ _null_ _null_ array_agg_finalfn _null_ _null_ _null_ ));
+DESCR("array_agg final function");
+DATA(insert OID = 2335 (  array_agg        PGNSP PGUID 12 1 0 0 t f f f i 1 2277 "2283" _null_ _null_ _null_ aggregate_dummy _null_ _null_ _null_ ));
+DESCR("concatenate aggregate input into an array");
+
 DATA(insert OID = 760 (  smgrin			   PGNSP PGUID 12 1 0 0 f f t f s 1 210 "2275" _null_ _null_ _null_  smgrin _null_ _null_ _null_ ));
 DESCR("I/O");
 DATA(insert OID = 761 (  smgrout		   PGNSP PGUID 12 1 0 0 f f t f s 1 2275 "210" _null_ _null_ _null_  smgrout _null_ _null_ _null_ ));

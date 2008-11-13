@@ -220,6 +220,9 @@ DATA(insert ( 2243 bitor		  -					0	1560	_null_ ));
 /* xml */
 DATA(insert ( 2901 xmlconcat2	  -					0	142		_null_ ));
 
+/* array */
+DATA(insert ( 2335	array_agg_transfn	array_agg_finalfn		0	2281	_null_ ));
+
 /*
  * prototypes for functions in pg_aggregate.c
  */

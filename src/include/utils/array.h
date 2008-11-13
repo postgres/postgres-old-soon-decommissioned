@@ -275,4 +275,7 @@ extern ArrayType *create_singleton_array(FunctionCallInfo fcinfo,
 					   Datum element,
 					   int ndims);
 
+extern Datum array_agg_transfn(PG_FUNCTION_ARGS);
+extern Datum array_agg_finalfn(PG_FUNCTION_ARGS);
+
 #endif   /* ARRAY_H */
