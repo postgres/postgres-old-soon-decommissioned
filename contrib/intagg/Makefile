@@ -4,9 +4,7 @@
 # by Mark L. Woodward
 # $PostgreSQL$
 
-MODULES = int_aggregate
-DATA_built = int_aggregate.sql
-DATA = uninstall_int_aggregate.sql
+DATA = int_aggregate.sql uninstall_int_aggregate.sql
 
 ifdef USE_PGXS
 PG_CONFIG = pg_config
