@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-VALUES">
  <refmeta>
   <refentrytitle id="SQL-VALUES-TITLE">VALUES</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

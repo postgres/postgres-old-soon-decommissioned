@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-ALTERVIEW">
  <refmeta>
   <refentrytitle id="SQL-ALTERVIEW-TITLE">ALTER VIEW</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

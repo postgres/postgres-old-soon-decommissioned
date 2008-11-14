@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-DROPOPFAMILY">
  <refmeta>
   <refentrytitle id="SQL-DROPOPFAMILY-TITLE">DROP OPERATOR FAMILY</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

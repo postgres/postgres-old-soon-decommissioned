@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-REVOKE">
  <refmeta>
   <refentrytitle id="sql-revoke-title">REVOKE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

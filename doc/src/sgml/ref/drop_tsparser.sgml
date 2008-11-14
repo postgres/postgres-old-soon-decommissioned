@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-DROPTSPARSER">
  <refmeta>
   <refentrytitle id="SQL-DROPTSPARSER-TITLE">DROP TEXT SEARCH PARSER</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

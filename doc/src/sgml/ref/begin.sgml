@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-BEGIN">
  <refmeta>
   <refentrytitle id="SQL-BEGIN-TITLE">BEGIN</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

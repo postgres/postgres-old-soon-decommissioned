@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-DROPINDEX">
  <refmeta>
   <refentrytitle id="SQL-DROPINDEX-TITLE">DROP INDEX</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

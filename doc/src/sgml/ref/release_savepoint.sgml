@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-RELEASE-SAVEPOINT">
  <refmeta>
   <refentrytitle id="SQL-RELEASE-SAVEPOINT-TITLE">RELEASE SAVEPOINT</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

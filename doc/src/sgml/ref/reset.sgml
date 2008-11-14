@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-RESET">
  <refmeta>
   <refentrytitle id="SQL-RESET-TITLE">RESET</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

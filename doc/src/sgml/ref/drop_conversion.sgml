@@ -3,6 +3,7 @@
 <refentry id="SQL-DROPCONVERSION">
  <refmeta>
   <refentrytitle id="SQL-DROPCONVERSION-TITLE">DROP CONVERSION</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

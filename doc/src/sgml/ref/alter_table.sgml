@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-ALTERTABLE">
  <refmeta>
   <refentrytitle id="sql-altertable-title">ALTER TABLE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

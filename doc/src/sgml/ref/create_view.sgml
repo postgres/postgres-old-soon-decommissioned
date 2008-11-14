@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-CREATEVIEW">
  <refmeta>
   <refentrytitle id="SQL-CREATEVIEW-TITLE">CREATE VIEW</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

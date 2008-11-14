@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-SHOW">
  <refmeta>
   <refentrytitle id="SQL-SHOW-TITLE">SHOW</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

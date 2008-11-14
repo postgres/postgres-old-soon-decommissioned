@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-REASSIGN-OWNED">
  <refmeta>
   <refentrytitle id="SQL-REASSIGN-OWNED-TITLE">REASSIGN OWNED</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

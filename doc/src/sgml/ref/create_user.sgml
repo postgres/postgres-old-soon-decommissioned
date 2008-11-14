@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-CREATEUSER">
  <refmeta>
   <refentrytitle id="sql-createuser-title">CREATE USER</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

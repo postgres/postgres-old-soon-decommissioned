@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-END">
  <refmeta>
   <refentrytitle id="SQL-END-TITLE">END</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

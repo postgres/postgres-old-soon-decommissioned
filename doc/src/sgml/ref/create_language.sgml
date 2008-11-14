@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-CREATELANGUAGE">
  <refmeta>
   <refentrytitle id="sql-createlanguage-title">CREATE LANGUAGE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

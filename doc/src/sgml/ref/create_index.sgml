@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-CREATEINDEX">
  <refmeta>
   <refentrytitle id="sql-createindex-title">CREATE INDEX</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

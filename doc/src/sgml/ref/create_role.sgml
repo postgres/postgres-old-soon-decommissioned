@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-CREATEROLE">
  <refmeta>
   <refentrytitle id="sql-createrole-title">CREATE ROLE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

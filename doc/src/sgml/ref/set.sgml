@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-SET">
  <refmeta>
   <refentrytitle id="SQL-SET-TITLE">SET</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

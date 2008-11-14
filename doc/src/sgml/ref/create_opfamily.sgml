@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-CREATEOPFAMILY">
  <refmeta>
   <refentrytitle id="sql-createopfamily-title">CREATE OPERATOR FAMILY</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

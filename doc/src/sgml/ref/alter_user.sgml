@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-ALTERUSER">
  <refmeta>
   <refentrytitle id="sql-alteruser-title">ALTER USER</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

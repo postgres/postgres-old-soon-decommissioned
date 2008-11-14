@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-CREATETRIGGER">
  <refmeta>
   <refentrytitle id="SQL-CREATETRIGGER-TITLE">CREATE TRIGGER</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

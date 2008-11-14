@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-DROPROLE">
  <refmeta>
   <refentrytitle id="SQL-DROPROLE-TITLE">DROP ROLE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

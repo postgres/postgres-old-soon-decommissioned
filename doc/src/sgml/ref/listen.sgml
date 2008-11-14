@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-LISTEN">
  <refmeta>
   <refentrytitle id="SQL-LISTEN-TITLE">LISTEN</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

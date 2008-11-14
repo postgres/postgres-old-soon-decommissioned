@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-SELECT">
  <refmeta>
   <refentrytitle id="sql-select-title">SELECT</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

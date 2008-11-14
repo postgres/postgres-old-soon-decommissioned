@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-DELETE">
  <refmeta>
   <refentrytitle id="SQL-DELETE-TITLE">DELETE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

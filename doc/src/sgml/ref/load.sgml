@@ -5,6 +5,7 @@ $PostgreSQL$
 <refentry id="SQL-LOAD">
  <refmeta>
   <refentrytitle id="SQL-LOAD-TITLE">LOAD</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

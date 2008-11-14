@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-ALTERTYPE">
  <refmeta>
   <refentrytitle id="sql-altertype-title">ALTER TYPE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

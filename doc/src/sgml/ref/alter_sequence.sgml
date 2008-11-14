@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-ALTERSEQUENCE">
  <refmeta>
   <refentrytitle id="SQL-ALTERSEQUENCE-TITLE">ALTER SEQUENCE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

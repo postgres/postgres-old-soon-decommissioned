@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-DROPUSER">
  <refmeta>
   <refentrytitle id="SQL-DROPUSER-TITLE">DROP USER</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

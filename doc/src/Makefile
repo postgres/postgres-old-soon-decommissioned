@@ -18,5 +18,4 @@ postgres.tar:
 
 man.tar:
 	$(MAKE) -C sgml man
-	rm sgml/man$(sqlmansect_dummy)/spi_*
-	$(TAR) -cf $@ -C sgml man1 man$(sqlmansect_dummy)
+	$(TAR) -cf $@ -C sgml man1 man7

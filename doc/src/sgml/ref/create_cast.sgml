@@ -3,6 +3,7 @@
 <refentry id="SQL-CREATECAST">
  <refmeta>
   <refentrytitle id="SQL-CREATECAST-TITLE">CREATE CAST</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

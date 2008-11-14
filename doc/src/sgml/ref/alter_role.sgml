@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-ALTERROLE">
  <refmeta>
   <refentrytitle id="sql-alterrole-title">ALTER ROLE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

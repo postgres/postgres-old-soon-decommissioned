@@ -5,6 +5,7 @@ $PostgreSQL$
 <refentry id="SQL-CREATEFUNCTION">
  <refmeta>
   <refentrytitle id="SQL-CREATEFUNCTION-TITLE">CREATE FUNCTION</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

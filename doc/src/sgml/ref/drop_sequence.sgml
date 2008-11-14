@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-DROPSEQUENCE">
  <refmeta>
   <refentrytitle id="SQL-DROPSEQUENCE-TITLE">DROP SEQUENCE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

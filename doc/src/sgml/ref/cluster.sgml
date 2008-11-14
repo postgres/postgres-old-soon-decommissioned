@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-CLUSTER">
  <refmeta>
   <refentrytitle id="sql-cluster-title">CLUSTER</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-ALTERTABLESPACE">
  <refmeta>
   <refentrytitle id="SQL-ALTERTABLESPACE-TITLE">ALTER TABLESPACE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

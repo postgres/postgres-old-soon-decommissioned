@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-ALTERTSPARSER">
  <refmeta>
   <refentrytitle id="SQL-ALTERTSPARSER-TITLE">ALTER TEXT SEARCH PARSER</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

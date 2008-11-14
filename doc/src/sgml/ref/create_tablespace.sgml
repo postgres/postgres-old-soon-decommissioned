@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-CREATETABLESPACE">
  <refmeta>
   <refentrytitle id="sql-createtablespace-title">CREATE TABLESPACE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-CREATEOPCLASS">
  <refmeta>
   <refentrytitle id="sql-createopclass-title">CREATE OPERATOR CLASS</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

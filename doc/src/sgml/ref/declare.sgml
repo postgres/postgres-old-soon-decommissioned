@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-DECLARE">
  <refmeta>
   <refentrytitle id="SQL-DECLARE-TITLE">DECLARE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

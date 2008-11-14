@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-CREATETYPE">
  <refmeta>
   <refentrytitle id="sql-createtype-title">CREATE TYPE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-DEALLOCATE">
  <refmeta>
   <refentrytitle id="sql-deallocate-title">DEALLOCATE</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 
