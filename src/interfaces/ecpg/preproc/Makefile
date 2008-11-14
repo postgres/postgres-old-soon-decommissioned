@@ -77,8 +77,8 @@ clean distclean:
 # garbage from development
 	@rm -f core a.out
 
-# `make clean' does not remove preproc.c, preproc.h, or pgc.c since we
-# want to ship those files in the distribution for people with
-# inadequate tools.
+# `make distclean' must not remove preproc.y, preproc.c, preproc.h, or pgc.c
+# since we want to ship those files in the distribution for people with
+# inadequate tools.  Instead, `make maintainer-clean' will remove them.
 maintainer-clean: distclean
 	rm -f $(srcdir)/preproc.y $(srcdir)/preproc.c $(srcdir)/preproc.h $(srcdir)/pgc.c
