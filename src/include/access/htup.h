@@ -847,7 +847,5 @@ extern void heap_free_minimal_tuple(MinimalTuple mtup);
 extern MinimalTuple heap_copy_minimal_tuple(MinimalTuple mtup);
 extern HeapTuple heap_tuple_from_minimal_tuple(MinimalTuple mtup);
 extern MinimalTuple minimal_tuple_from_heap_tuple(HeapTuple htup);
-extern HeapTuple heap_addheader(int natts, bool withoid,
-			   Size structlen, void *structure);
 
 #endif   /* HTUP_H */
