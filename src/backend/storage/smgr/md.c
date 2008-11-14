@@ -253,7 +253,6 @@ mdcreate(SMgrRelation reln, ForkNumber forkNum, bool isRedo)
 			fd = PathNameOpenFile(path, O_RDWR | PG_BINARY, 0600);
 		if (fd < 0)
 		{
-			pfree(path);
 			/* be sure to report the error reported by create, not open */
 			errno = save_errno;
 			ereport(ERROR,
@@ -499,10 +498,12 @@ mdopen(SMgrRelation reln, ForkNumber forknum, ExtensionBehavior behavior)
 			fd = PathNameOpenFile(path, O_RDWR | O_CREAT | O_EXCL | PG_BINARY, 0600);
 		if (fd < 0)
 		{
-			pfree(path);
 			if (behavior == EXTENSION_RETURN_NULL &&
 				FILE_POSSIBLY_DELETED(errno))
+			{
+				pfree(path);
 				return NULL;
+			}
 			ereport(ERROR,
 					(errcode_for_file_access(),
 					 errmsg("could not open relation %s: %m", path)));
