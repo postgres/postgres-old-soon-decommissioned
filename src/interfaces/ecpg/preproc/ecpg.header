@@ -94,7 +94,8 @@ mmerror(int error_code, enum errortype type, char * error, ...)
 				fclose(yyin);
 			if (yyout)
 				fclose(yyout);
-			if (unlink(output_filename) != 0 && *output_filename != '-')
+			
+			if (strcmp(output_filename, "-") != 0 && unlink(output_filename) != 0)
 			        fprintf(stderr, _("could not remove output file \"%s\"\n"), output_filename);
 			exit(error_code);
 	}

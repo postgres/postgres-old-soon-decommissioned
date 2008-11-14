@@ -95,7 +95,8 @@ mmerror(int error_code, enum errortype type, char * error, ...)
 				fclose(yyin);
 			if (yyout)
 				fclose(yyout);
-			if (unlink(output_filename) != 0 && *output_filename != '-')
+			
+			if (strcmp(output_filename, "-") != 0 && unlink(output_filename) != 0)
 			        fprintf(stderr, _("could not remove output file \"%s\"\n"), output_filename);
 			exit(error_code);
 	}
@@ -9343,6 +9344,8 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to backend\
 
 
 /* trailer */
+/* $PostgreSQL$ */
+
 statements: /*EMPTY*/
                 | statements statement
                 ;
