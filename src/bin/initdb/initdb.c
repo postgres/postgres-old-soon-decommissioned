@@ -1331,6 +1331,12 @@ bootstrap_template1(char *short_version)
 	sprintf(buf, "%d", NAMEDATALEN);
 	bki_lines = replace_token(bki_lines, "NAMEDATALEN", buf);
 
+	sprintf(buf, "%d", (int) sizeof(Pointer));
+	bki_lines = replace_token(bki_lines, "SIZEOF_POINTER", buf);
+
+	bki_lines = replace_token(bki_lines, "ALIGNOF_POINTER",
+							  (sizeof(Pointer) == 4) ? "i" : "d");
+
 	bki_lines = replace_token(bki_lines, "FLOAT4PASSBYVAL",
 							  FLOAT4PASSBYVAL ? "true" : "false");
 
