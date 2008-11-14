@@ -9482,6 +9482,17 @@ SELECT NULLIF(value, '(none)') ...
         <entry><literal>string_to_array('xx~^~yy~^~zz', '~^~')</literal></entry>
         <entry><literal>{xx,yy,zz}</literal></entry>
        </row>
+       <row>
+        <entry>
+         <literal>
+          <function>unnest</function>(<type>anyarray</type>)
+         </literal>
+        </entry>
+        <entry><type>setof anyelement</type></entry>
+        <entry>expand an array to a set of rows</entry>
+        <entry><literal>unnest(ARRAY[1,2])</literal></entry>
+        <entry><literal>1</literal><para><literal>2</literal></para> (2 rows)</entry>
+       </row>
       </tbody>
      </tgroup>
     </table>
