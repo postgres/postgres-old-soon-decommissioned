@@ -138,6 +138,11 @@ preprocess_targetlist(PlannerInfo *root, List *tlist)
 			char	   *resname;
 			TargetEntry *tle;
 
+			/* ignore child rels */
+			if (rc->rti != rc->prti)
+				continue;
+
+			/* always need the ctid */
 			var = makeVar(rc->rti,
 						  SelfItemPointerAttributeNumber,
 						  TIDOID,
@@ -153,6 +158,26 @@ preprocess_targetlist(PlannerInfo *root, List *tlist)
 								  true);
 
 			tlist = lappend(tlist, tle);
+
+			/* if parent of inheritance tree, need the tableoid too */
+			if (rc->isParent)
+			{
+				var = makeVar(rc->rti,
+							  TableOidAttributeNumber,
+							  OIDOID,
+							  -1,
+							  0);
+
+				resname = (char *) palloc(32);
+				snprintf(resname, 32, "tableoid%u", rc->rti);
+
+				tle = makeTargetEntry((Expr *) var,
+									  list_length(tlist) + 1,
+									  resname,
+									  true);
+
+				tlist = lappend(tlist, tle);
+			}
 		}
 	}
 

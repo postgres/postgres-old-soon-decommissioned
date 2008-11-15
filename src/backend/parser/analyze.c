@@ -2049,8 +2049,10 @@ applyLockingClause(Query *qry, Index rtindex, bool forUpdate, bool noWait)
 	/* Make a new RowMarkClause */
 	rc = makeNode(RowMarkClause);
 	rc->rti = rtindex;
+	rc->prti = rtindex;
 	rc->forUpdate = forUpdate;
 	rc->noWait = noWait;
+	rc->isParent = false;
 	qry->rowMarks = lappend(qry->rowMarks, rc);
 }
 

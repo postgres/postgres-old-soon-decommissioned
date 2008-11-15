@@ -1735,8 +1735,10 @@ _copyRowMarkClause(RowMarkClause *from)
 	RowMarkClause *newnode = makeNode(RowMarkClause);
 
 	COPY_SCALAR_FIELD(rti);
+	COPY_SCALAR_FIELD(prti);
 	COPY_SCALAR_FIELD(forUpdate);
 	COPY_SCALAR_FIELD(noWait);
+	COPY_SCALAR_FIELD(isParent);
 
 	return newnode;
 }
