@@ -1852,7 +1852,7 @@ ecpg_sconst:
 ecpg_xconst:	XCONST		{ $$ = make_name(); } ;
 
 ecpg_ident:	IDENT		{ $$ = make_name(); }
-		| CSTRING	{ $$ = make3_str(make_str("\""), $1, make_str("\"")) }
+		| CSTRING	{ $$ = make3_str(make_str("\""), $1, make_str("\"")); }
 		| UIDENT	{ $$ = $1; }
 		;
 
