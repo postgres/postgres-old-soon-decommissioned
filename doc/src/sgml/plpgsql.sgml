@@ -2674,9 +2674,10 @@ DELETE FROM <replaceable>table</replaceable> WHERE CURRENT OF <replaceable>curso
 
        <para>
         When a cursor is positioned on a table row, that row can be updated
-        or deleted using the cursor to identify the row.  Note that this
-        only works for simple (non-join, non-grouping) cursor queries.
-        For additional information see the
+        or deleted using the cursor to identify the row.  There are
+        restrictions on what the cursor's query can be (in particular,
+        no grouping) and it's best to use <literal>FOR UPDATE</> in the
+        cursor.  For additional information see the
         <xref linkend="sql-declare" endterm="sql-declare-title">
         reference page.
        </para>

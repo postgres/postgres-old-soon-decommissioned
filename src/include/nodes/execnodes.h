@@ -381,6 +381,7 @@ typedef struct ExecRowMark
 	bool		noWait;			/* NOWAIT option */
 	AttrNumber	ctidAttNo;		/* resno of its ctid junk attribute */
 	AttrNumber	toidAttNo;		/* resno of tableoid junk attribute, if any */
+	ItemPointerData curCtid;	/* ctid of currently locked tuple, if any */
 } ExecRowMark;
 
 
