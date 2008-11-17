@@ -212,6 +212,7 @@ protocol to make nodes agree on a serializable transactional order.
      server works independently, and periodically communicates with
      the other servers to identify conflicting transactions.  The
      conflicts can be resolved by users or conflict resolution rules.
+     Bucardo is an example of this type of replication.
     </para>
    </listitem>
   </varlistentry>
