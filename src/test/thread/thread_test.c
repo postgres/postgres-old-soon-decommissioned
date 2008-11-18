@@ -47,6 +47,10 @@ typedef char bool;
 #include <fcntl.h>
 #include <errno.h>
 
+/* CYGWIN requires this for MAXHOSTNAMELEN */
+#ifdef __CYGWIN__
+#include <sys/param.h>
+#endif
 
 /******************************************************************
  * Windows Hacks
