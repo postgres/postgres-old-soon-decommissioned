@@ -6,6 +6,7 @@ include $(top_builddir)/src/Makefile.global
 
 WANTED_DIRS = \
 		adminpack	\
+		auto_explain	\
 		btree_gist	\
 		chkpass		\
 		citext		\
