@@ -812,7 +812,7 @@ insertStatEntry(MemoryContext persistentContext, TSVectorStat *stat, TSVector tx
 	StatEntry	*node = stat->root, 
 				*pnode=NULL;
 	int			n,
-				res;
+				res = 0;
 	uint32		depth=1;
 
 	if (stat->weight == 0) 
