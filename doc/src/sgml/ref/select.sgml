@@ -12,11 +12,17 @@ PostgreSQL documentation
 
  <refnamediv>
   <refname>SELECT</refname>
+  <refname>WITH</refname>
   <refpurpose>retrieve rows from a table or view</refpurpose>
  </refnamediv>
 
  <indexterm zone="sql-select">
   <primary>SELECT</primary>
+ </indexterm>
+
+ <indexterm zone="sql-select">
+  <primary>WITH</primary>
+  <secondary>in SELECT</secondary>
  </indexterm>
 
  <refsynopsisdiv>
