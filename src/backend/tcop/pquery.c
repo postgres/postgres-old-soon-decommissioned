@@ -82,6 +82,7 @@ CreateQueryDesc(PlannedStmt *plannedstmt,
 	qd->tupDesc = NULL;
 	qd->estate = NULL;
 	qd->planstate = NULL;
+	qd->totaltime = NULL;
 
 	return qd;
 }
@@ -110,6 +111,7 @@ CreateUtilityQueryDesc(Node *utilitystmt,
 	qd->tupDesc = NULL;
 	qd->estate = NULL;
 	qd->planstate = NULL;
+	qd->totaltime = NULL;
 
 	return qd;
 }

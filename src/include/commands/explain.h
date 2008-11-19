@@ -41,4 +41,7 @@ extern void ExplainOneUtility(Node *utilityStmt, ExplainStmt *stmt,
 extern void ExplainOnePlan(PlannedStmt *plannedstmt, ParamListInfo params,
 			   ExplainStmt *stmt, TupOutputState *tstate);
 
+extern void ExplainPrintPlan(StringInfo str, QueryDesc *queryDesc,
+							 bool analyze, bool verbose);
+
 #endif   /* EXPLAIN_H */

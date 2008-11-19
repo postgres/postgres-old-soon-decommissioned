@@ -224,7 +224,6 @@ ExplainOnePlan(PlannedStmt *plannedstmt, ParamListInfo params,
 	QueryDesc  *queryDesc;
 	instr_time	starttime;
 	double		totaltime = 0;
-	ExplainState *es;
 	StringInfoData buf;
 	int			eflags;
 
@@ -265,17 +264,9 @@ ExplainOnePlan(PlannedStmt *plannedstmt, ParamListInfo params,
 		totaltime += elapsed_time(&starttime);
 	}
 
-	es = (ExplainState *) palloc0(sizeof(ExplainState));
-
-	es->printTList = stmt->verbose;
-	es->printAnalyze = stmt->analyze;
-	es->pstmt = queryDesc->plannedstmt;
-	es->rtable = queryDesc->plannedstmt->rtable;
-
+	/* Create textual dump of plan tree */
 	initStringInfo(&buf);
-	explain_outNode(&buf,
-					queryDesc->plannedstmt->planTree, queryDesc->planstate,
-					NULL, 0, es);
+	ExplainPrintPlan(&buf, queryDesc, stmt->analyze, stmt->verbose);
 
 	/*
 	 * If we ran the command, run any AFTER triggers it queued.  (Note this
@@ -290,7 +281,7 @@ ExplainOnePlan(PlannedStmt *plannedstmt, ParamListInfo params,
 	}
 
 	/* Print info about runtime of triggers */
-	if (es->printAnalyze)
+	if (stmt->analyze)
 	{
 		ResultRelInfo *rInfo;
 		bool		show_relname;
@@ -335,7 +326,34 @@ ExplainOnePlan(PlannedStmt *plannedstmt, ParamListInfo params,
 	do_text_output_multiline(tstate, buf.data);
 
 	pfree(buf.data);
-	pfree(es);
+}
+
+/*
+ * ExplainPrintPlan -
+ *	  convert a QueryDesc's plan tree to text and append it to 'str'
+ *
+ * 'analyze' means to include runtime instrumentation results
+ * 'verbose' means a verbose printout (currently, it shows targetlists)
+ *
+ * NB: will not work on utility statements
+ */
+void
+ExplainPrintPlan(StringInfo str, QueryDesc *queryDesc,
+				 bool analyze, bool verbose)
+{
+	ExplainState	es;
+
+	Assert(queryDesc->plannedstmt != NULL);
+
+	memset(&es, 0, sizeof(es));
+	es.printTList = verbose;
+	es.printAnalyze = analyze;
+	es.pstmt = queryDesc->plannedstmt;
+	es.rtable = queryDesc->plannedstmt->rtable;
+
+	explain_outNode(str,
+					queryDesc->plannedstmt->planTree, queryDesc->planstate,
+					NULL, 0, &es);
 }
 
 /*

@@ -196,7 +196,8 @@ _PG_init(void)
 	  gettext_noop("If true, will compile trusted and untrusted perl code in strict mode"),
 							 NULL,
 							 &plperl_use_strict,
-							 PGC_USERSET,
+							 false,
+							 PGC_USERSET, 0,
 							 NULL, NULL);
 
 	EmitWarningsOnPlaceholders("plperl");
