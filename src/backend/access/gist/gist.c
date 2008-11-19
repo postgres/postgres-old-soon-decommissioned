@@ -103,9 +103,6 @@ gistbuild(PG_FUNCTION_ARGS)
 		elog(ERROR, "index \"%s\" already contains data",
 			 RelationGetRelationName(index));
 
-	/* Initialize FSM */
-	InitIndexFreeSpaceMap(index);
-
 	/* no locking is needed */
 	initGISTstate(&buildstate.giststate, index);
 

@@ -78,13 +78,4 @@ typedef struct RelFileNode
 	 (node1).dbNode == (node2).dbNode && \
 	 (node1).spcNode == (node2).spcNode)
 
-/*
- * RelFileFork identifies a particular fork of a relation.
- */
-typedef struct RelFileFork
-{
-	RelFileNode rnode;
-	ForkNumber forknum;
-} RelFileFork;
-
 #endif   /* RELFILENODE_H */

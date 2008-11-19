@@ -4863,8 +4863,7 @@ heap_sync(Relation rel)
 	/* FlushRelationBuffers will have opened rd_smgr */
 	smgrimmedsync(rel->rd_smgr, MAIN_FORKNUM);
 
-	/* sync FSM as well */
-	smgrimmedsync(rel->rd_smgr, FSM_FORKNUM);
+	/* FSM is not critical, don't bother syncing it */
 
 	/* toast heap, if any */
 	if (OidIsValid(rel->rd_rel->reltoastrelid))
@@ -4874,7 +4873,6 @@ heap_sync(Relation rel)
 		toastrel = heap_open(rel->rd_rel->reltoastrelid, AccessShareLock);
 		FlushRelationBuffers(toastrel);
 		smgrimmedsync(toastrel->rd_smgr, MAIN_FORKNUM);
-		smgrimmedsync(toastrel->rd_smgr, FSM_FORKNUM);
 		heap_close(toastrel, AccessShareLock);
 	}
 }

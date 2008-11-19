@@ -40,6 +40,7 @@
 #include "access/genam.h"
 #include "access/heapam.h"
 #include "access/transam.h"
+#include "catalog/storage.h"
 #include "commands/dbcommands.h"
 #include "commands/vacuum.h"
 #include "miscadmin.h"
@@ -827,7 +828,6 @@ lazy_truncate_heap(Relation onerel, LVRelStats *vacrelstats)
 	/*
 	 * Okay to truncate.
 	 */
-	FreeSpaceMapTruncateRel(onerel, new_rel_pages);
 	RelationTruncate(onerel, new_rel_pages);
 
 	/*

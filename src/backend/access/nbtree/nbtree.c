@@ -22,6 +22,7 @@
 #include "access/nbtree.h"
 #include "access/relscan.h"
 #include "catalog/index.h"
+#include "catalog/storage.h"
 #include "commands/vacuum.h"
 #include "miscadmin.h"
 #include "storage/bufmgr.h"
@@ -108,9 +109,6 @@ btbuild(PG_FUNCTION_ARGS)
 	if (RelationGetNumberOfBlocks(index) != 0)
 		elog(ERROR, "index \"%s\" already contains data",
 			 RelationGetRelationName(index));
-
-	/* Initialize FSM */
-	InitIndexFreeSpaceMap(index);
 
 	buildstate.spool = _bt_spoolinit(index, indexInfo->ii_Unique, false);
 
@@ -696,7 +694,6 @@ btvacuumscan(IndexVacuumInfo *info, IndexBulkDeleteResult *stats,
 		/*
 		 * Okay to truncate.
 		 */
-		FreeSpaceMapTruncateRel(rel, new_pages);
 		RelationTruncate(rel, new_pages);
 
 		/* update statistics */

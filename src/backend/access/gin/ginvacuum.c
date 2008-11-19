@@ -16,6 +16,7 @@
 
 #include "access/genam.h"
 #include "access/gin.h"
+#include "catalog/storage.h"
 #include "commands/vacuum.h"
 #include "miscadmin.h"
 #include "storage/bufmgr.h"
@@ -757,7 +758,6 @@ ginvacuumcleanup(PG_FUNCTION_ARGS)
 	if (info->vacuum_full && lastBlock > lastFilledBlock)
 	{
 		/* try to truncate index */
-		FreeSpaceMapTruncateRel(index, lastFilledBlock + 1);
 		RelationTruncate(index, lastFilledBlock + 1);
 
 		stats->pages_removed = lastBlock - lastFilledBlock;

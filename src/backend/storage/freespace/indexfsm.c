@@ -31,20 +31,6 @@
  */
 
 /*
- * InitIndexFreeSpaceMap - Create or reset the FSM fork for relation.
- */
-void
-InitIndexFreeSpaceMap(Relation rel)
-{
-	/* Create FSM fork if it doesn't exist yet, or truncate it if it does */
-	RelationOpenSmgr(rel);
-	if (!smgrexists(rel->rd_smgr, FSM_FORKNUM))
-		smgrcreate(rel->rd_smgr, FSM_FORKNUM, rel->rd_istemp, false);
-	else
-		smgrtruncate(rel->rd_smgr, FSM_FORKNUM, 0, rel->rd_istemp);
-}
-
-/*
  * GetFreeIndexPage - return a free page from the FSM
  *
  * As a side effect, the page is marked as used in the FSM.
@@ -77,18 +63,6 @@ void
 RecordUsedIndexPage(Relation rel, BlockNumber usedBlock)
 {
 	RecordPageWithFreeSpace(rel, usedBlock, 0);
-}
-
-/*
- * IndexFreeSpaceMapTruncate - adjust for truncation of a relation.
- *
- * We need to delete any stored data past the new relation length, so that
- * we don't bogusly return removed block numbers.
- */
-void
-IndexFreeSpaceMapTruncate(Relation rel, BlockNumber nblocks)
-{
-	FreeSpaceMapTruncateRel(rel, nblocks);
 }
 
 /*

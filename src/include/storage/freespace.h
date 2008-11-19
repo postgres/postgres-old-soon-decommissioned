@@ -33,8 +33,4 @@ extern void XLogRecordPageWithFreeSpace(RelFileNode rnode, BlockNumber heapBlk,
 extern void FreeSpaceMapTruncateRel(Relation rel, BlockNumber nblocks);
 extern void FreeSpaceMapVacuum(Relation rel);
 
-/* WAL prototypes */
-extern void fsm_desc(StringInfo buf, uint8 xl_info, char *rec);
-extern void fsm_redo(XLogRecPtr lsn, XLogRecord *record);
-
 #endif   /* FREESPACE_H */

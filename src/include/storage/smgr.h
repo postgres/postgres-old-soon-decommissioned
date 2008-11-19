@@ -65,10 +65,7 @@ extern void smgrsetowner(SMgrRelation *owner, SMgrRelation reln);
 extern void smgrclose(SMgrRelation reln);
 extern void smgrcloseall(void);
 extern void smgrclosenode(RelFileNode rnode);
-extern void smgrcreate(SMgrRelation reln, ForkNumber forknum,
-					   bool isTemp, bool isRedo);
-extern void smgrscheduleunlink(SMgrRelation reln, ForkNumber forknum,
-							   bool isTemp);
+extern void smgrcreate(SMgrRelation reln, ForkNumber forknum, bool isRedo);
 extern void smgrdounlink(SMgrRelation reln, ForkNumber forknum,
 						 bool isTemp, bool isRedo);
 extern void smgrextend(SMgrRelation reln, ForkNumber forknum, 
@@ -81,20 +78,9 @@ extern BlockNumber smgrnblocks(SMgrRelation reln, ForkNumber forknum);
 extern void smgrtruncate(SMgrRelation reln, ForkNumber forknum,
 						 BlockNumber nblocks, bool isTemp);
 extern void smgrimmedsync(SMgrRelation reln, ForkNumber forknum);
-extern void smgrDoPendingDeletes(bool isCommit);
-extern int smgrGetPendingDeletes(bool forCommit, RelFileFork **ptr,
-					  bool *haveNonTemp);
-extern void AtSubCommit_smgr(void);
-extern void AtSubAbort_smgr(void);
-extern void PostPrepare_smgr(void);
-extern void smgrcommit(void);
-extern void smgrabort(void);
 extern void smgrpreckpt(void);
 extern void smgrsync(void);
 extern void smgrpostckpt(void);
-
-extern void smgr_redo(XLogRecPtr lsn, XLogRecord *record);
-extern void smgr_desc(StringInfo buf, uint8 xl_info, char *rec);
 
 
 /* internals: move me elsewhere -- ay 7/94 */

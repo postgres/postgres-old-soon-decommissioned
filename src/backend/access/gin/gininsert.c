@@ -284,9 +284,6 @@ ginbuild(PG_FUNCTION_ARGS)
 		elog(ERROR, "index \"%s\" already contains data",
 			 RelationGetRelationName(index));
 
-	/* Initialize FSM */
-	InitIndexFreeSpaceMap(index);
-
 	initGinState(&buildstate.ginstate, index);
 
 	/* initialize the root page */
