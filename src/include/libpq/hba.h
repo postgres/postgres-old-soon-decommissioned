@@ -26,7 +26,8 @@ typedef enum UserAuth
 	uaGSS,
 	uaSSPI,
 	uaPAM,
-	uaLDAP
+	uaLDAP,
+	uaCert
 } UserAuth;
 
 typedef enum ConnType
