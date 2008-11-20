@@ -54,6 +54,7 @@ typedef struct
 	int			ldapport;
 	char	   *ldapprefix;
 	char	   *ldapsuffix;
+	bool		clientcert;
 } HbaLine;
 
 typedef struct Port hbaPort;

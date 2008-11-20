@@ -927,6 +927,38 @@ parse_hba_line(List *line, int line_num, HbaLine *parsedline)
 					INVALID_AUTH_OPTION("map", "ident, krb5, gssapi and sspi");
 				parsedline->usermap = pstrdup(c);
 			}
+			else if (strcmp(token, "clientcert") == 0)
+			{
+				/*
+				 * Since we require ctHostSSL, this really can never happen on non-SSL-enabled
+				 * builds, so don't bother checking for USE_SSL.
+				 */
+				if (parsedline->conntype != ctHostSSL)
+				{
+					ereport(LOG,
+							(errcode(ERRCODE_CONFIG_FILE_ERROR),
+							 errmsg("clientcert can only be configured for \"hostssl\" rows"),
+							 errcontext("line %d of configuration file \"%s\"",
+										line_num, HbaFileName)));
+					return false;
+				}
+				if (strcmp(c, "1") == 0)
+				{
+					if (!secure_loaded_verify_locations())
+					{
+						ereport(LOG,
+								(errcode(ERRCODE_CONFIG_FILE_ERROR),
+								 errmsg("client certificates can only be checked if a root certificate store is available"),
+								 errdetail("make sure the root certificate store is present and readable"),
+								 errcontext("line %d of configuration file \"%s\"",
+											line_num, HbaFileName)));
+						return false;
+					}
+					parsedline->clientcert = true;
+				}
+				else
+					parsedline->clientcert = false;
+			}
 			else if (strcmp(token, "pamservice") == 0)
 			{
 				REQUIRE_AUTH_OPTION(uaPAM, "pamservice", "pam");

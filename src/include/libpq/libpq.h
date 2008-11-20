@@ -67,6 +67,7 @@ extern void pq_endcopyout(bool errorAbort);
  * prototypes for functions in be-secure.c
  */
 extern int	secure_initialize(void);
+extern bool secure_loaded_verify_locations(void);
 extern void secure_destroy(void);
 extern int	secure_open_server(Port *port);
 extern void secure_close(Port *port);
