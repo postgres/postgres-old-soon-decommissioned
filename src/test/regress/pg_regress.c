@@ -271,6 +271,7 @@ stop_postmaster(void)
 	{
 		/* We use pg_ctl to issue the kill and wait for stop */
 		char		buf[MAXPGPATH * 2];
+		int			r;
 
 		/* On Windows, system() seems not to force fflush, so... */
 		fflush(stdout);
@@ -279,7 +280,7 @@ stop_postmaster(void)
 		snprintf(buf, sizeof(buf),
 				 SYSTEMQUOTE "\"%s/pg_ctl\" stop -D \"%s/data\" -s -m fast" SYSTEMQUOTE,
 				 bindir, temp_install);
-		system(buf);			/* ignore exit status */
+		r = system(buf);			/* ignore exit status. Store in variable to silence gcc */
 		postmaster_running = false;
 	}
 }
