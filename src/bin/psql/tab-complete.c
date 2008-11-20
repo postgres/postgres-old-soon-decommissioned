@@ -615,7 +615,7 @@ psql_completion(char *text, int start, int end)
 		"DELETE FROM", "DISCARD", "DROP", "END", "EXECUTE", "EXPLAIN", "FETCH",
 		"GRANT", "INSERT", "LISTEN", "LOAD", "LOCK", "MOVE", "NOTIFY", "PREPARE",
 		"REASSIGN", "REINDEX", "RELEASE", "RESET", "REVOKE", "ROLLBACK",
-		"SAVEPOINT", "SELECT", "SET", "SHOW", "START", "TRUNCATE", "UNLISTEN",
+		"SAVEPOINT", "SELECT", "SET", "SHOW", "START", "TABLE", "TRUNCATE", "UNLISTEN",
 		"UPDATE", "VACUUM", "VALUES", "WITH", NULL
 	};
 
@@ -1694,24 +1694,24 @@ psql_completion(char *text, int start, int end)
 		COMPLETE_WITH_ATTR(prev_wd, "");
 
 	/*
-	 * Complete INSERT INTO <table> with "VALUES" or "SELECT" or "DEFAULT
-	 * VALUES"
+	 * Complete INSERT INTO <table> with "VALUES" or "SELECT" or
+	 * "TABLE" or "DEFAULT VALUES"
 	 */
 	else if (pg_strcasecmp(prev3_wd, "INSERT") == 0 &&
 			 pg_strcasecmp(prev2_wd, "INTO") == 0)
 	{
 		static const char *const list_INSERT[] =
-		{"DEFAULT VALUES", "SELECT", "VALUES", NULL};
+		{"DEFAULT VALUES", "SELECT", "TABLE", "VALUES", NULL};
 
 		COMPLETE_WITH_LIST(list_INSERT);
 	}
-	/* Complete INSERT INTO <table> (attribs) with "VALUES" or "SELECT" */
+	/* Complete INSERT INTO <table> (attribs) with "VALUES" or "SELECT" or "TABLE" */
 	else if (pg_strcasecmp(prev4_wd, "INSERT") == 0 &&
 			 pg_strcasecmp(prev3_wd, "INTO") == 0 &&
 			 prev_wd[strlen(prev_wd) - 1] == ')')
 	{
 		static const char *const list_INSERT[] =
-		{"SELECT", "VALUES", NULL};
+		{"SELECT", "TABLE", "VALUES", NULL};
 
 		COMPLETE_WITH_LIST(list_INSERT);
 	}

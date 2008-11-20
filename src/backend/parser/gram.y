@@ -6431,6 +6431,28 @@ simple_select:
 					$$ = (Node *)n;
 				}
 			| values_clause							{ $$ = $1; }
+			| TABLE qualified_name
+				{
+					/* same as SELECT * FROM qualified_name */
+					ColumnRef *cr = makeNode(ColumnRef);
+					ResTarget *rt = makeNode(ResTarget);
+					SelectStmt *n = makeNode(SelectStmt);
+
+					cr->fields = list_make1(makeNode(A_Star));
+					cr->location = -1;
+
+					rt->name = NULL;
+					rt->indirection = NIL;
+					rt->val = (Node *)cr;
+					rt->location = -1;
+
+					$2->inhOpt = INH_DEFAULT;
+					$2->alias = NULL;
+
+					n->targetList = list_make1(rt);
+					n->fromClause = list_make1($2);
+					$$ = (Node *)n;
+				}
 			| select_clause UNION opt_all select_clause
 				{
 					$$ = makeSetOp(SETOP_UNION, $3, $1, $4);
