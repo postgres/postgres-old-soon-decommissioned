@@ -712,6 +712,8 @@ omicron       bryanh            guest1
     If you are at all concerned about password
     <quote>sniffing</> attacks then <literal>md5</> is preferred.
     Plain <literal>password</> should always be avoided if possible.
+    <literal>md5</> cannot be used with <xref
+    linkend="guc-db-user-namespace">.
    </para>
 
    <para>

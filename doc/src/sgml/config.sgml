@@ -706,6 +706,17 @@ SET ENABLE_SEQSCAN TO OFF;
         before the user name is looked up by the server.
        </para>
 
+       <para>
+        <varname>db_user_namespace</> causes the client's and
+        server's user name representation to differ.
+        Authentication checks are always done with the server's user name
+        so authentication methods must be configured for the
+        server's user name, not the client's.  Because
+        <literal>md5</> uses the user name as salt on both the
+        client and server, <literal>md5</> cannot be used with
+        <varname>db_user_namespace</>.
+       </para>
+
        <note>
         <para>
          This feature is intended as a temporary measure until a
