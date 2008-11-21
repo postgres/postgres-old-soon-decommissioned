@@ -6429,7 +6429,7 @@
      </row>
      <row>
       <entry><structfield>enumvals</structfield></entry>
-      <entry><type>text</type></entry>
+      <entry><type>text[]</type></entry>
       <entry>Allowed values of an enum parameter (NULL for non-enum
       values)</entry>
      </row>
