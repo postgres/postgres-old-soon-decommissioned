@@ -308,7 +308,7 @@ main(int argc, char *argv[])
 
 			case 2:
 				appendPQExpBuffer(pgdumpopts, " --lock-wait-timeout=");
-				appendPQExpBuffer(pgdumpopts, optarg);
+				appendPQExpBuffer(pgdumpopts, "%s", optarg);
 				break;
 
 			default:

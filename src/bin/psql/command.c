@@ -2076,7 +2076,7 @@ minimal_error_message(PGresult *res)
 		appendPQExpBufferStr(msg, "(not available)");
 	appendPQExpBufferStr(msg, "\n");
 
-	psql_error(msg->data);
+	psql_error("%s", msg->data);
 
 	destroyPQExpBuffer(msg);
 }

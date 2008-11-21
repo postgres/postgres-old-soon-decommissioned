@@ -4789,7 +4789,7 @@ set_config_option(const char *name, const char *value,
 								(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 						 errmsg("invalid value for parameter \"%s\": \"%s\"",
 								name, value),
-								 hintmsg ? errhint(hintmsg) : 0));
+								 hintmsg ? errhint("%s", hintmsg) : 0));
 						return false;
 					}
 					if (newval < conf->min || newval > conf->max)
@@ -5053,7 +5053,7 @@ set_config_option(const char *name, const char *value,
 								(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 								 errmsg("invalid value for parameter \"%s\": \"%s\"",
 										name, value),
-								 hintmsg ? errhint(hintmsg) : 0));
+								 hintmsg ? errhint("%s", hintmsg) : 0));
 
 						if (hintmsg)
 							pfree(hintmsg);
