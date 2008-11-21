@@ -435,6 +435,7 @@ DATA(insert OID = 1007 (  _int4		 PGNSP PGUID -1 f b A f t \054 0	23 0 array_in 
 #define INT4ARRAYOID		1007
 DATA(insert OID = 1008 (  _regproc	 PGNSP PGUID -1 f b A f t \054 0	24 0 array_in array_out array_recv array_send - - - i x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 1009 (  _text		 PGNSP PGUID -1 f b A f t \054 0	25 0 array_in array_out array_recv array_send - - - i x f 0 -1 0 _null_ _null_ ));
+#define TEXTARRAYOID		1009
 DATA(insert OID = 1028 (  _oid		 PGNSP PGUID -1 f b A f t \054 0	26 0 array_in array_out array_recv array_send - - - i x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 1010 (  _tid		 PGNSP PGUID -1 f b A f t \054 0	27 0 array_in array_out array_recv array_send - - - i x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 1011 (  _xid		 PGNSP PGUID -1 f b A f t \054 0	28 0 array_in array_out array_recv array_send - - - i x f 0 -1 0 _null_ _null_ ));
