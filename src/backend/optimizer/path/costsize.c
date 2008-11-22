@@ -2481,7 +2481,7 @@ set_joinrel_size_estimates(PlannerInfo *root, RelOptInfo *rel,
 			break;
 		case JOIN_SEMI:
 			nrows = outer_rel->rows * jselec;
-			nrows *= pselec;
+			/* pselec not used */
 			break;
 		case JOIN_ANTI:
 			nrows = outer_rel->rows * (1.0 - jselec);

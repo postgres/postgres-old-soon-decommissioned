@@ -744,12 +744,12 @@ hash_inner_and_outer(PlannerInfo *root,
 	switch (jointype)
 	{
 		case JOIN_INNER:
+		case JOIN_SEMI:
 		case JOIN_UNIQUE_OUTER:
 		case JOIN_UNIQUE_INNER:
 			isouterjoin = false;
 			break;
 		case JOIN_LEFT:
-		case JOIN_SEMI:
 		case JOIN_ANTI:
 			isouterjoin = true;
 			break;
