@@ -1625,6 +1625,11 @@ fi
 # SunOS doesn't handle negative byte comparisons properly with +/- return
 AC_FUNC_MEMCMP
 
+# Check for fnmatch()
+AC_FUNC_FNMATCH
+if test x"$ac_cv_func_fnmatch_works" != x"yes"; then
+   AC_LIBOBJ(fnmatch)
+fi
 
 # Select semaphore implementation type.
 if test "$PORTNAME" != "win32"; then
