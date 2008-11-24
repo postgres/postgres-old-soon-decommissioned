@@ -472,7 +472,7 @@ verify_peer_name_matches_certificate(PGconn *conn)
 		if (pg_strcasecmp(conn->peer_cn, conn->pghost) == 0)
 			/* Exact name match */
 			return true;
-		else if (fnmatch(conn->peer_cn, conn->pghost, FNM_NOESCAPE | FNM_CASEFOLD) == 0)
+		else if (fnmatch(conn->peer_cn, conn->pghost, FNM_NOESCAPE/* | FNM_CASEFOLD*/) == 0)
 			/* Matched wildcard certificate */
 			return true;
 		else
