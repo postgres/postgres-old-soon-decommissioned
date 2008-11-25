@@ -22,6 +22,7 @@
 #include "storage/buf.h"
 #include "utils/catcache.h"
 #include "utils/plancache.h"
+#include "utils/snapshot.h"
 
 
 /*
@@ -120,5 +121,12 @@ extern void ResourceOwnerRememberTupleDesc(ResourceOwner owner,
 							   TupleDesc tupdesc);
 extern void ResourceOwnerForgetTupleDesc(ResourceOwner owner,
 							 TupleDesc tupdesc);
+
+/* support for snapshot refcount management */
+extern void ResourceOwnerEnlargeSnapshots(ResourceOwner owner);
+extern void ResourceOwnerRememberSnapshot(ResourceOwner owner,
+							  Snapshot snapshot);
+extern void ResourceOwnerForgetSnapshot(ResourceOwner owner,
+							Snapshot snapshot);
 
 #endif   /* RESOWNER_H */
