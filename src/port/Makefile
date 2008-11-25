@@ -15,7 +15,7 @@
 #		for use only by the backend binaries
 #
 # LIBOBJS is set by configure (via Makefile.global) to be the list of
-# object files that are conditionally needed depending on platform.
+# object files that are conditionally needed as determined by configure's probing.
 # OBJS adds additional object files that are always compiled.
 #
 # IDENTIFICATION
@@ -30,7 +30,11 @@ include $(top_builddir)/src/Makefile.global
 override CPPFLAGS := -I$(top_builddir)/src/port -DFRONTEND $(CPPFLAGS)
 LIBS += $(PTHREAD_LIBS)
 
-OBJS = $(LIBOBJS) chklocale.o copydir.o dirmod.o exec.o noblock.o path.o pipe.o pgsleep.o pgstrcasecmp.o qsort.o qsort_arg.o sprompt.o thread.o
+OBJS = $(LIBOBJS) chklocale.o copydir.o dirmod.o exec.o noblock.o path.o \
+	pgsleep.o pgstrcasecmp.o qsort.o qsort_arg.o sprompt.o thread.o
+ifneq (,$(filter $(PORTNAME),cygwin win32))
+OBJS += pipe.o
+endif
 
 # foo_srv.o and foo.o are both built from foo.c, but only foo.o has -DFRONTEND
 OBJS_SRV = $(OBJS:%.o=%_srv.o)
