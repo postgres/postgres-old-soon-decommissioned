@@ -716,7 +716,23 @@ initialize_environment(void)
 	 */
 	putenv("PGTZ=PST8PDT");
 	putenv("PGDATESTYLE=Postgres, MDY");
-	putenv("PGINTERVALSTYLE=postgres_verbose");
+
+	/*
+	 * Likewise set intervalstyle to ensure consistent results.  This is a
+	 * bit more painful because we must use PGOPTIONS, and we want to preserve
+	 * the user's ability to set other variables through that.
+	 */
+	{
+		const char *my_pgoptions = "--intervalstyle=postgres_verbose";
+		const char *old_pgoptions = getenv("PGOPTIONS");
+		char   *new_pgoptions;
+
+		if (!old_pgoptions)
+			old_pgoptions = "";
+		new_pgoptions = malloc(strlen(old_pgoptions) + strlen(my_pgoptions) + 12);
+		sprintf(new_pgoptions, "PGOPTIONS=%s %s", old_pgoptions, my_pgoptions);
+		putenv(new_pgoptions);
+	}
 
 	if (temp_install)
 	{

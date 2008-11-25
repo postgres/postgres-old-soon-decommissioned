@@ -5823,17 +5823,6 @@ myEventProc(PGEventId evtId, void *evtInfo, void *passThrough)
     <listitem>
      <para>
       <indexterm>
-       <primary><envar>PGINTERVALSTYLE</envar></primary>
-      </indexterm>
-      <envar>PGINTERVALSTYLE</envar> sets the default style of interval
-      representation.  (Equivalent to <literal>SET intervalstyle TO
-      ...</literal>.)
-     </para>
-    </listitem>
-
-    <listitem>
-     <para>
-      <indexterm>
        <primary><envar>PGTZ</envar></primary>
       </indexterm>
       <envar>PGTZ</envar> sets the default time zone.  (Equivalent to
