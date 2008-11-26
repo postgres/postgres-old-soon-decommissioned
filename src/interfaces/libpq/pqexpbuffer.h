@@ -57,7 +57,7 @@ typedef PQExpBufferData *PQExpBuffer;
  *------------------------
  */
 #define PQExpBufferBroken(str)  \
-	(!(str) || (str)->maxlen == 0)
+	((str) == NULL || (str)->maxlen == 0)
 
 /*------------------------
  * Initial size of the data buffer in a PQExpBuffer.
