@@ -3,6 +3,7 @@
 #include "postgres_fe.h"
 #include <time.h>
 #include <math.h>
+#include <limits.h>
 
 #ifdef __FAST_MATH__
 #error -ffast-math is known to break this code
