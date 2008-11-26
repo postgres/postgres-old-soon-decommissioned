@@ -91,6 +91,7 @@ int num_columns_read = 0;
 
 %}
 
+%expect 0
 %name-prefix="boot_yy"
 
 %union
