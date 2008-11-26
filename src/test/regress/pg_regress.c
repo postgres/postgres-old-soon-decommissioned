@@ -723,7 +723,7 @@ initialize_environment(void)
 	 * the user's ability to set other variables through that.
 	 */
 	{
-		const char *my_pgoptions = "--intervalstyle=postgres_verbose";
+		const char *my_pgoptions = "-c intervalstyle=postgres_verbose";
 		const char *old_pgoptions = getenv("PGOPTIONS");
 		char   *new_pgoptions;
 
