@@ -189,6 +189,7 @@ PTHREAD_LIBS		= @PTHREAD_LIBS@
 have_docbook	= @have_docbook@
 DOCBOOKSTYLE	= @DOCBOOKSTYLE@
 COLLATEINDEX	= @COLLATEINDEX@
+DOCBOOK2MAN	= @DOCBOOK2MAN@
 
 
 ##########################################################################

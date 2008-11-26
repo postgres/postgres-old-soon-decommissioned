@@ -37,6 +37,10 @@ ifndef SGMLSPL
 SGMLSPL = sgmlspl
 endif
 
+ifndef DOCBOOK2MAN
+DOCBOOK2MAN = docbook2man_is_missing
+endif
+
 # docbook2man generates man pages from docbook refentry source code.
 D2MSCRIPT= $(D2MDIR)/docbook2man-spec.pl
 D2MLINKS = $(D2MDIR)/docbook2man-spec_makelinks
@@ -275,9 +279,6 @@ MAKEINFO = makeinfo
 ##
 ## Experimental man page building through docbook2x
 ##
-
-# called docbook2man on non-Debian
-DOCBOOK2MAN = docbook2x-man
 
 manx: postgres.xml stylesheet-man.xsl
 	$(DOCBOOK2MAN) --solinks -s $(srcdir)/stylesheet-man.xsl --string-param default-manpage-section=$(DEFAULTSECTION)  $<
