@@ -184,13 +184,20 @@ gets_fromFile(FILE *source)
 		{
 			if (ferror(source))
 			{
-				psql_error("could not read from input file: %s\n", strerror(errno));
+				psql_error("could not read from input file: %s\n",
+						   strerror(errno));
 				return NULL;
 			}
 			break;
 		}
 
 		appendPQExpBufferStr(buffer, line);
+
+		if (PQExpBufferBroken(buffer))
+		{
+			psql_error("out of memory\n");
+			return NULL;
+		}
 
 		/* EOL? */
 		if (buffer->data[buffer->len - 1] == '\n')

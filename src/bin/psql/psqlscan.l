@@ -1453,6 +1453,12 @@ psql_scan_slash_option(PsqlScanState state,
 					error = true;
 				}
 
+				if (PQExpBufferBroken(&output))
+				{
+					psql_error("%s: out of memory\n", cmd);
+					error = true;
+				}
+
 				/* Now done with cmd, transfer result to mybuf */
 				resetPQExpBuffer(&mybuf);
 
