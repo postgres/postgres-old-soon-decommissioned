@@ -80,6 +80,7 @@ RESET ALL;
 DEALLOCATE ALL;
 CLOSE ALL;
 UNLISTEN *;
+SELECT pg_advisory_unlock_all();
 DISCARD PLANS;
 DISCARD TEMP;
 </programlisting>

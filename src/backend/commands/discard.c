@@ -66,6 +66,7 @@ DiscardAll(bool isTopLevel)
 	DropAllPreparedStatements();
 	PortalHashTableDeleteAll();
 	Async_UnlistenAll();
+	LockReleaseAll(USER_LOCKMETHOD, true);
 	ResetPlanCache();
 	ResetTempTableNamespace();
 }
