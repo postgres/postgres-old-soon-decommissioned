@@ -501,6 +501,8 @@ postquel_end(execution_state *es)
 		PopActiveSnapshot();
 	}
 
+	(*es->qd->dest->rDestroy) (es->qd->dest);
+
 	FreeQueryDesc(es->qd);
 	es->qd = NULL;
 }
