@@ -19,6 +19,7 @@
 #include "commands/discard.h"
 #include "commands/prepare.h"
 #include "commands/variable.h"
+#include "storage/lock.h"
 #include "utils/plancache.h"
 #include "utils/portal.h"
 
@@ -66,6 +67,7 @@ DiscardAll(bool isTopLevel)
 	DropAllPreparedStatements();
 	PortalHashTableDeleteAll();
 	Async_UnlistenAll();
+	LockReleaseAll(USER_LOCKMETHOD, true);
 	ResetPlanCache();
 	ResetTempTableNamespace();
 }
