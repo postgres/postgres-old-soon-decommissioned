@@ -638,13 +638,8 @@ fsm_search(Relation rel, uint8 min_cat)
 		Buffer buf;
 		uint8 max_avail = 0;
 
-		/*
-		 * Read the FSM page. The root page is created if it doesn't exist
-		 * yet, to save future searchers the effort of having to call
-		 * smgrnblocks() in fsm_readbuf(), only to see that the FSM is
-		 * completely empty.
-		 */
-		buf = fsm_readbuf(rel, addr, (addr.level != FSM_ROOT_LEVEL));
+		/* Read the FSM page. */
+		buf = fsm_readbuf(rel, addr, false);
 
 		/* Search within the page */
 		if (BufferIsValid(buf))
