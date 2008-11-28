@@ -14,9 +14,6 @@ subdir = src/test/regress
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-# port number for temp-installation test postmaster
-TEMP_PORT = 5$(DEF_PGPORT)
-
 # file with extra config for temp build
 TEMP_CONF =
 ifdef TEMP_CONFIG
@@ -144,7 +141,7 @@ tablespace-setup:
 pg_regress_call = ./pg_regress --inputdir=$(srcdir) --dlpath=. --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE)
 
 check: all
-	$(pg_regress_call) --temp-install=./tmp_check --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --schedule=$(srcdir)/parallel_schedule $(MAXCONNOPT) $(TEMP_CONF)
+	$(pg_regress_call) --temp-install=./tmp_check --top-builddir=$(top_builddir) --schedule=$(srcdir)/parallel_schedule $(MAXCONNOPT) $(TEMP_CONF)
 
 installcheck: all
 	$(pg_regress_call) --psqldir=$(PSQLDIR) --schedule=$(srcdir)/serial_schedule
@@ -163,7 +160,7 @@ bigtest: all
 	$(pg_regress_call) --psqldir=$(PSQLDIR) --schedule=$(srcdir)/serial_schedule numeric_big 
 
 bigcheck: all
-	$(pg_regress_call) --temp-install=./tmp_check --top-builddir=$(top_builddir) --temp-port=$(TEMP_PORT) --schedule=$(srcdir)/parallel_schedule $(MAXCONNOPT) numeric_big
+	$(pg_regress_call) --temp-install=./tmp_check --top-builddir=$(top_builddir) --schedule=$(srcdir)/parallel_schedule $(MAXCONNOPT) numeric_big
 
 
 ##
