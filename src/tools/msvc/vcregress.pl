@@ -119,8 +119,7 @@ sub check
         "--load-language=plpgsql",
         "--no-locale",
         "--temp-install=./tmp_check",
-        "--top-builddir=\"$topdir\"",
-        "--temp-port=$temp_port"
+        "--top-builddir=\"$topdir\""
     );
     push(@args,$maxconn) if $maxconn;
 	push(@args,$temp_config) if $temp_config;
@@ -148,7 +147,7 @@ sub ecpgcheck
         "--no-locale",
         "--temp-install=./tmp_chk",
         "--top-builddir=\"$topdir\"",
-        "--temp-port=$temp_port"
+        "--port=$temp_port"
     );
     push(@args,$maxconn) if $maxconn;
     system(@args);
