@@ -3,6 +3,10 @@
 -- Adjust this setting to control where the objects get dropped.
 SET search_path = public;
 
+-- Drop the operator families (which don't depend on the types)
+DROP OPERATOR FAMILY isn_ops USING btree CASCADE;
+DROP OPERATOR FAMILY isn_ops USING hash CASCADE;
+
 --
 --	Drop the actual types (in cascade):
 --
@@ -15,6 +19,6 @@ DROP TYPE ismn CASCADE;
 DROP TYPE issn CASCADE;
 DROP TYPE upc CASCADE;
 
+-- and clean up a couple miscellaneous functions
 DROP FUNCTION isn_weak();
 DROP FUNCTION isn_weak(boolean);
-
