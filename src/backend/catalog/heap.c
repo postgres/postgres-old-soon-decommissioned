@@ -1413,6 +1413,17 @@ heap_drop_with_catalog(Oid relid)
 	rel = relation_open(relid, AccessExclusiveLock);
 
 	/*
+	 * There can no longer be anyone *else* touching the relation, but we
+	 * might still have open queries or cursors in our own session.
+	 */
+	if (rel->rd_refcnt != 1)
+		ereport(ERROR,
+				(errcode(ERRCODE_OBJECT_IN_USE),
+				 errmsg("cannot drop \"%s\" because "
+						"it is being used by active queries in this session",
+						RelationGetRelationName(rel))));
+
+	/*
 	 * Schedule unlinking of the relation's physical files at commit.
 	 */
 	if (rel->rd_rel->relkind != RELKIND_VIEW &&
