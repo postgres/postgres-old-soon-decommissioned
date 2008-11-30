@@ -182,7 +182,6 @@ shutdown_MultiFuncCall(Datum arg)
 	 * Delete context that holds all multi-call data, including the
 	 * FuncCallContext itself
 	 */
-	MemoryContextSwitchTo(flinfo->fn_mcxt);
 	MemoryContextDelete(funcctx->multi_call_memory_ctx);
 }
 
