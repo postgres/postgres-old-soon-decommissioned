@@ -102,10 +102,7 @@ typedef enum PortalStatus
 	PORTAL_FAILED				/* portal got error (can't re-run it) */
 } PortalStatus;
 
-/*
- * Note: typedef Portal is declared in tcop/dest.h as
- *		typedef struct PortalData *Portal;
- */
+typedef struct PortalData *Portal;
 
 typedef struct PortalData
 {

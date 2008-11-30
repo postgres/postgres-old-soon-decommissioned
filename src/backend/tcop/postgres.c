@@ -979,7 +979,9 @@ exec_simple_query(const char *query_string)
 		/*
 		 * Now we can create the destination receiver object.
 		 */
-		receiver = CreateDestReceiver(dest, portal);
+		receiver = CreateDestReceiver(dest);
+		if (dest == DestRemote)
+			SetRemoteDestReceiverParams(receiver, portal);
 
 		/*
 		 * Switch back to transaction context for execution.
@@ -1835,7 +1837,9 @@ exec_execute_message(const char *portal_name, long max_rows)
 	 * Create dest receiver in MessageContext (we don't want it in transaction
 	 * context, because that may get deleted if portal contains VACUUM).
 	 */
-	receiver = CreateDestReceiver(dest, portal);
+	receiver = CreateDestReceiver(dest);
+	if (dest == DestRemoteExecute)
+		SetRemoteDestReceiverParams(receiver, portal);
 
 	/*
 	 * Ensure we are in a transaction command (this should normally be the

@@ -1050,7 +1050,7 @@ DoCopy(const CopyStmt *stmt, const char *queryString)
 		PushUpdatedSnapshot(GetActiveSnapshot());
 
 		/* Create dest receiver for COPY OUT */
-		dest = CreateDestReceiver(DestCopyOut, NULL);
+		dest = CreateDestReceiver(DestCopyOut);
 		((DR_copy *) dest)->cstate = cstate;
 
 		/* Create a QueryDesc requesting no output */

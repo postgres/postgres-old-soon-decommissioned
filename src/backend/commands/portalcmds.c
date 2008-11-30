@@ -26,6 +26,7 @@
 #include "access/xact.h"
 #include "commands/portalcmds.h"
 #include "executor/executor.h"
+#include "executor/tstoreReceiver.h"
 #include "tcop/pquery.h"
 #include "utils/memutils.h"
 #include "utils/snapmgr.h"
@@ -351,7 +352,10 @@ PersistHoldablePortal(Portal portal)
 		ExecutorRewind(queryDesc);
 
 		/* Change the destination to output to the tuplestore */
-		queryDesc->dest = CreateDestReceiver(DestTuplestore, portal);
+		queryDesc->dest = CreateDestReceiver(DestTuplestore);
+		SetTuplestoreDestReceiverParams(queryDesc->dest,
+										portal->holdStore,
+										portal->holdContext);
 
 		/* Fetch the result set into the tuplestore */
 		ExecutorRun(queryDesc, ForwardScanDirection, 0L);

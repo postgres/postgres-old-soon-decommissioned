@@ -14,9 +14,11 @@
 #ifndef PRINTTUP_H
 #define PRINTTUP_H
 
-#include "tcop/dest.h"
+#include "utils/portal.h"
 
-extern DestReceiver *printtup_create_DR(CommandDest dest, Portal portal);
+extern DestReceiver *printtup_create_DR(CommandDest dest);
+
+extern void SetRemoteDestReceiverParams(DestReceiver *self, Portal portal);
 
 extern void SendRowDescriptionMessage(TupleDesc typeinfo, List *targetlist,
 						  int16 *formats);

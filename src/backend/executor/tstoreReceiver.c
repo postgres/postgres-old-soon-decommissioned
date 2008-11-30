@@ -72,10 +72,9 @@ tstoreDestroyReceiver(DestReceiver *self)
  * Initially create a DestReceiver object.
  */
 DestReceiver *
-CreateTuplestoreDestReceiver(Tuplestorestate *tStore,
-							 MemoryContext tContext)
+CreateTuplestoreDestReceiver(void)
 {
-	TStoreState *self = (TStoreState *) palloc(sizeof(TStoreState));
+	TStoreState *self = (TStoreState *) palloc0(sizeof(TStoreState));
 
 	self->pub.receiveSlot = tstoreReceiveSlot;
 	self->pub.rStartup = tstoreStartupReceiver;
@@ -83,8 +82,22 @@ CreateTuplestoreDestReceiver(Tuplestorestate *tStore,
 	self->pub.rDestroy = tstoreDestroyReceiver;
 	self->pub.mydest = DestTuplestore;
 
-	self->tstore = tStore;
-	self->cxt = tContext;
+	/* private fields will be set by SetTuplestoreDestReceiverParams */
 
 	return (DestReceiver *) self;
+}
+
+/*
+ * Set parameters for a TuplestoreDestReceiver
+ */
+void
+SetTuplestoreDestReceiverParams(DestReceiver *self,
+								Tuplestorestate *tStore,
+								MemoryContext tContext)
+{
+	TStoreState *myState = (TStoreState *) self;
+
+	Assert(myState->pub.mydest == DestTuplestore);
+	myState->tstore = tStore;
+	myState->cxt = tContext;
 }
