@@ -1678,8 +1678,9 @@ is_next_separator(FormatNode *n)
 	 */
 	n++;
 
+	/* end of format string is treated like a non-digit separator */
 	if (n->type == NODE_TYPE_END)
-		return FALSE;
+		return TRUE;
 
 	if (n->type == NODE_TYPE_ACTION)
 	{
