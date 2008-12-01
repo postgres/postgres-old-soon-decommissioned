@@ -514,6 +514,12 @@ clause_selectivity(PlannerInfo *root,
 		}
 
 		/*
+		 * If the clause is marked redundant, always return 1.0.
+		 */
+		if (rinfo->this_selec > 1)
+			return (Selectivity) 1.0;
+
+		/*
 		 * If possible, cache the result of the selectivity calculation for
 		 * the clause.	We can cache if varRelid is zero or the clause
 		 * contains only vars of that relid --- otherwise varRelid will affect
