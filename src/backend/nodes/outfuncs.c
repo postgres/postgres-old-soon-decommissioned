@@ -1266,6 +1266,7 @@ _outRestrictInfo(StringInfo str, RestrictInfo *node)
 	WRITE_BITMAPSET_FIELD(left_relids);
 	WRITE_BITMAPSET_FIELD(right_relids);
 	WRITE_NODE_FIELD(orclause);
+	WRITE_FLOAT_FIELD(this_selec, "%.4f");
 	WRITE_OID_FIELD(mergejoinoperator);
 	WRITE_OID_FIELD(left_sortop);
 	WRITE_OID_FIELD(right_sortop);

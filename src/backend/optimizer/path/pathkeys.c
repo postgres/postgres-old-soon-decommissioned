@@ -428,11 +428,11 @@ sub_generate_join_implications(PlannerInfo *root,
 			 * its sides to the same value.  However, that fails in some
 			 * corner cases where lower outer joins could cause one of the
 			 * variables to go to NULL.  (BUG in 8.2 through 8.2.6.)
-			 * So now we just leave it in place, but mark it with selectivity
-			 * 1.0 so that we don't underestimate the join size output ---
+			 * So now we just leave it in place, but mark it as redundant
+			 * so that we don't underestimate the join size output ---
 			 * it's mostly redundant with the constant constraints.
 			 */
-			rinfo->this_selec = 1.0;
+			rinfo->this_selec = 2.0;
 
 			/*
 			 * And recurse to see if we can deduce anything from INNERVAR =
@@ -471,11 +471,11 @@ sub_generate_join_implications(PlannerInfo *root,
 			 * its sides to the same value.  However, that fails in some
 			 * corner cases where lower outer joins could cause one of the
 			 * variables to go to NULL.  (BUG in 8.2 through 8.2.6.)
-			 * So now we just leave it in place, but mark it with selectivity
-			 * 1.0 so that we don't underestimate the join size output ---
+			 * So now we just leave it in place, but mark it as redundant
+			 * so that we don't underestimate the join size output ---
 			 * it's mostly redundant with the constant constraints.
 			 */
-			rinfo->this_selec = 1.0;
+			rinfo->this_selec = 2.0;
 
 			/*
 			 * And recurse to see if we can deduce anything from INNERVAR =
@@ -551,15 +551,15 @@ sub_generate_join_implications(PlannerInfo *root,
 				 * of its sides to the same value.  However, that fails in
 				 * some corner cases where lower outer joins could cause one
 				 * of the variables to go to NULL.  (BUG in 8.2 through
-				 * 8.2.6.)  So now we just leave it in place, but mark it with
-				 * selectivity 1.0 so that we don't underestimate the join
+				 * 8.2.6.)  So now we just leave it in place, but mark it as
+				 * redundant so that we don't underestimate the join
 				 * size output --- it's mostly redundant with the constant
 				 * constraints.
 				 *
 				 * Ideally we'd do that for the COALESCE() = CONSTANT rinfo,
 				 * too, but we don't have easy access to that here.
 				 */
-				rinfo->this_selec = 1.0;
+				rinfo->this_selec = 2.0;
 
 				/*
 				 * And recurse to see if we can deduce anything from LEFTVAR =

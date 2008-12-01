@@ -777,7 +777,8 @@ typedef struct RestrictInfo
 
 	/* cache space for cost and selectivity */
 	QualCost	eval_cost;		/* eval cost of clause; -1 if not yet set */
-	Selectivity this_selec;		/* selectivity; -1 if not yet set */
+	Selectivity this_selec;		/* selectivity; -1 if not yet set; >1 means
+								 * a redundant clause */
 
 	/* valid if clause is mergejoinable, else InvalidOid: */
 	Oid			mergejoinoperator;		/* copy of clause operator */
