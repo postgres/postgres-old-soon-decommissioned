@@ -49,16 +49,6 @@ unless ($schedule)
 	$schedule = "parallel" if ($what eq 'CHECK' || $what =~ /PARALLEL/);
 }
 
-my $temp_port;
-if (-e "src/tools/msvc/config.pl")
-{
-    eval{
-        require "src/tools/msvc/config.pl";
-        $temp_port = $config->{'--with-pgport'};
-      }
-}
-$temp_port ||= 55432;
-
 my $topdir = getcwd();
 
 $ENV{PERL5LIB} = "$topdir/src/tools/msvc";
@@ -146,8 +136,7 @@ sub ecpgcheck
         "--load-language=plpgsql",
         "--no-locale",
         "--temp-install=./tmp_chk",
-        "--top-builddir=\"$topdir\"",
-        "--port=$temp_port"
+        "--top-builddir=\"$topdir\""
     );
     push(@args,$maxconn) if $maxconn;
     system(@args);
