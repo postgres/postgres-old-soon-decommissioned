@@ -574,8 +574,6 @@ $ <userinput>psql testdb</userinput>
 psql (&version;)
 Type "help" for help.
 
-test=>
-
 testdb=&gt;
 </programlisting>
     </para>
