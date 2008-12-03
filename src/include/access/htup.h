@@ -601,9 +601,10 @@ typedef struct xl_heaptid
 typedef struct xl_heap_delete
 {
 	xl_heaptid	target;			/* deleted tuple id */
+	bool all_visible_cleared;	/* PD_ALL_VISIBLE was cleared */
 } xl_heap_delete;
 
-#define SizeOfHeapDelete	(offsetof(xl_heap_delete, target) + SizeOfHeapTid)
+#define SizeOfHeapDelete	(offsetof(xl_heap_delete, all_visible_cleared) + sizeof(bool))
 
 /*
  * We don't store the whole fixed part (HeapTupleHeaderData) of an inserted
@@ -626,21 +627,24 @@ typedef struct xl_heap_header
 typedef struct xl_heap_insert
 {
 	xl_heaptid	target;			/* inserted tuple id */
+	bool all_visible_cleared;	/* PD_ALL_VISIBLE was cleared */
 	/* xl_heap_header & TUPLE DATA FOLLOWS AT END OF STRUCT */
 } xl_heap_insert;
 
-#define SizeOfHeapInsert	(offsetof(xl_heap_insert, target) + SizeOfHeapTid)
+#define SizeOfHeapInsert	(offsetof(xl_heap_insert, all_visible_cleared) + sizeof(bool))
 
 /* This is what we need to know about update|move|hot_update */
 typedef struct xl_heap_update
 {
 	xl_heaptid	target;			/* deleted tuple id */
 	ItemPointerData newtid;		/* new inserted tuple id */
+	bool all_visible_cleared;	/* PD_ALL_VISIBLE was cleared */
+	bool new_all_visible_cleared; /* same for the page of newtid */
 	/* NEW TUPLE xl_heap_header (PLUS xmax & xmin IF MOVE OP) */
 	/* and TUPLE DATA FOLLOWS AT END OF STRUCT */
 } xl_heap_update;
 
-#define SizeOfHeapUpdate	(offsetof(xl_heap_update, newtid) + SizeOfIptrData)
+#define SizeOfHeapUpdate	(offsetof(xl_heap_update, new_all_visible_cleared) + sizeof(bool))
 
 /*
  * This is what we need to know about vacuum page cleanup/redirect

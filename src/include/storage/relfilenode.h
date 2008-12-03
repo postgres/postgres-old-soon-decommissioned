@@ -24,14 +24,15 @@ typedef enum ForkNumber
 {
 	InvalidForkNumber = -1,
 	MAIN_FORKNUM = 0,
-	FSM_FORKNUM
+	FSM_FORKNUM,
+	VISIBILITYMAP_FORKNUM
 	/*
 	 * NOTE: if you add a new fork, change MAX_FORKNUM below and update the
 	 * forkNames array in catalog.c
 	 */
 } ForkNumber;
 
-#define MAX_FORKNUM		FSM_FORKNUM
+#define MAX_FORKNUM		VISIBILITYMAP_FORKNUM
 
 /*
  * RelFileNode must provide all that we need to know to physically access

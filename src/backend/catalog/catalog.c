@@ -54,7 +54,8 @@
  */
 const char *forkNames[] = {
 	"main", /* MAIN_FORKNUM */
-	"fsm"   /* FSM_FORKNUM */
+	"fsm",   /* FSM_FORKNUM */
+	"vm"   /* VISIBILITYMAP_FORKNUM */
 };
 
 /*

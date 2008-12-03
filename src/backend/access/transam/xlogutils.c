@@ -377,6 +377,7 @@ CreateFakeRelcacheEntry(RelFileNode rnode)
 
 	rel->rd_targblock = InvalidBlockNumber;
 	rel->rd_fsm_nblocks = InvalidBlockNumber;
+	rel->rd_vm_nblocks = InvalidBlockNumber;
 	rel->rd_smgr = NULL;
 
 	return rel;

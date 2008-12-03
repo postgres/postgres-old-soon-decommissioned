@@ -195,8 +195,12 @@ typedef struct RelationData
 	List	   *rd_indpred;		/* index predicate tree, if any */
 	void	   *rd_amcache;		/* available for use by index AM */
 
-	/* size of the FSM, or InvalidBlockNumber if not known yet */
+	/*
+	 * sizes of the free space and visibility map forks, or InvalidBlockNumber
+	 * if not known yet
+	 */
 	BlockNumber	rd_fsm_nblocks;
+	BlockNumber	rd_vm_nblocks;
 
 	/* use "struct" here to avoid needing to include pgstat.h: */
 	struct PgStat_TableStatus *pgstat_info;		/* statistics collection area */
