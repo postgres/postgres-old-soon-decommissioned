@@ -88,7 +88,6 @@ static DH  *tmp_dh_cb(SSL *s, int is_export, int keylength);
 static int	verify_cb(int, X509_STORE_CTX *);
 static void info_cb(const SSL *ssl, int type, int args);
 static void initialize_SSL(void);
-static void destroy_SSL(void);
 static int	open_server_SSL(Port *);
 static void close_SSL(Port *);
 static const char *SSLerrmessage(void);
@@ -190,17 +189,6 @@ secure_initialize(void)
 #endif
 
 	return 0;
-}
-
-/*
- *	Destroy global context
- */
-void
-secure_destroy(void)
-{
-#ifdef USE_SSL
-	destroy_SSL();
-#endif
 }
 
 /*
@@ -840,19 +828,6 @@ initialize_SSL(void)
 
 			ssl_loaded_verify_locations = true;
 		}
-	}
-}
-
-/*
- *	Destroy global SSL context.
- */
-static void
-destroy_SSL(void)
-{
-	if (SSL_context)
-	{
-		SSL_CTX_free(SSL_context);
-		SSL_context = NULL;
 	}
 }
 
