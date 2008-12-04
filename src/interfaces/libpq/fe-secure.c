@@ -918,8 +918,6 @@ destroy_ssl_system(void)
 			 * This means we leak a little memory on repeated load/unload
 			 * of the library.
 			 */
-			free(pq_lockarray);
-			pq_lockarray = NULL;
 		}
 	}
 
