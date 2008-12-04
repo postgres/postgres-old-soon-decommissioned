@@ -5837,6 +5837,7 @@ VacuumStmt: VACUUM opt_full opt_freeze opt_verbose
 					n->analyze = false;
 					n->full = $2;
 					n->freeze_min_age = $3 ? 0 : -1;
+					n->scan_all = $3;
 					n->verbose = $4;
 					n->relation = NULL;
 					n->va_cols = NIL;
@@ -5849,6 +5850,7 @@ VacuumStmt: VACUUM opt_full opt_freeze opt_verbose
 					n->analyze = false;
 					n->full = $2;
 					n->freeze_min_age = $3 ? 0 : -1;
+					n->scan_all = $3;
 					n->verbose = $4;
 					n->relation = $5;
 					n->va_cols = NIL;
@@ -5860,6 +5862,7 @@ VacuumStmt: VACUUM opt_full opt_freeze opt_verbose
 					n->vacuum = true;
 					n->full = $2;
 					n->freeze_min_age = $3 ? 0 : -1;
+					n->scan_all = $3;
 					n->verbose |= $4;
 					$$ = (Node *)n;
 				}

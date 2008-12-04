@@ -1966,6 +1966,7 @@ typedef struct VacuumStmt
 	bool		full;			/* do FULL (non-concurrent) vacuum */
 	bool		analyze;		/* do ANALYZE step */
 	bool		verbose;		/* print progress info */
+	bool		scan_all;		/* force scan of all pages */
 	int			freeze_min_age; /* min freeze age, or -1 to use default */
 	RangeVar   *relation;		/* single table to process, or NULL */
 	List	   *va_cols;		/* list of column names, or NIL for all */

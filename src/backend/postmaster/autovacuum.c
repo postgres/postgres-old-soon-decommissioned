@@ -2649,6 +2649,7 @@ autovacuum_do_vac_analyze(autovac_table *tab,
 	vacstmt.full = false;
 	vacstmt.analyze = tab->at_doanalyze;
 	vacstmt.freeze_min_age = tab->at_freeze_min_age;
+	vacstmt.scan_all = tab->at_wraparound;
 	vacstmt.verbose = false;
 	vacstmt.relation = NULL;	/* not used since we pass a relid */
 	vacstmt.va_cols = NIL;
