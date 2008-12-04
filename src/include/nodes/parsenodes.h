@@ -1686,6 +1686,7 @@ typedef struct FunctionParameter
 	char	   *name;			/* parameter name, or NULL if not given */
 	TypeName   *argType;		/* TypeName for parameter type */
 	FunctionParameterMode mode; /* IN/OUT/INOUT */
+	Node		*defexpr;	/* Default expression, or NULL if not given */
 } FunctionParameter;
 
 typedef struct AlterFunctionStmt

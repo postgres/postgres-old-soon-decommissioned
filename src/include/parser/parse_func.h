@@ -49,7 +49,8 @@ extern Node *ParseFuncOrColumn(ParseState *pstate,
 extern FuncDetailCode func_get_detail(List *funcname, List *fargs,
 				int nargs, Oid *argtypes, bool expand_variadic,
 				Oid *funcid, Oid *rettype,
-				bool *retset, int *nvargs, Oid **true_typeids);
+				bool *retset, int *nvargs, Oid **true_typeids,
+				List **argdefaults);
 
 extern int func_match_argtypes(int nargs,
 					Oid *input_typeids,
