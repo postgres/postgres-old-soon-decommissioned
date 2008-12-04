@@ -76,6 +76,8 @@ gistrescan(PG_FUNCTION_ARGS)
 	ItemPointerSetInvalid(&so->curpos);
 	so->nPageData = so->curPageData = 0;
 
+	so->qual_ok = true;
+
 	/* Update scan key, if a new one is given */
 	if (key && scan->numberOfKeys > 0)
 	{
@@ -92,7 +94,6 @@ gistrescan(PG_FUNCTION_ARGS)
 		 * Next, if any of keys is a NULL and that key is not marked with
 		 * SK_SEARCHNULL then nothing can be found.
 		 */
-		so->qual_ok = true;
 		for (i = 0; i < scan->numberOfKeys; i++) {
 			scan->keyData[i].sk_func = so->giststate->consistentFn[scan->keyData[i].sk_attno - 1];
 
