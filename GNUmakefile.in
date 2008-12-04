@@ -70,7 +70,7 @@ coverage:
 coverage-html: coverage
 	rm -rf coverage
 	mkdir coverage
-	$(GENHTML) --show-details --legend --output-directory=coverage --title=PostgreSQL --num-spaces=4 `find src/backend -name lcov.info -print`
+	$(GENHTML) --show-details --legend --output-directory=coverage --title=PostgreSQL --num-spaces=4 --prefix=$(abs_top_srcdir)/src `find src/backend -name lcov.info -print`
 
 ifeq ($(enable_coverage),yes)
 clean distclean maintainer-clean: clean-coverage-local
