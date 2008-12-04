@@ -13,6 +13,7 @@
 #ifndef SNAPMGR_H
 #define SNAPMGR_H
 
+#include "utils/resowner.h"
 #include "utils/snapshot.h"
 
 
@@ -34,9 +35,12 @@ extern bool ActiveSnapshotSet(void);
 
 extern Snapshot RegisterSnapshot(Snapshot snapshot);
 extern void UnregisterSnapshot(Snapshot snapshot);
+extern Snapshot RegisterSnapshotOnOwner(Snapshot snapshot, ResourceOwner owner);
+extern void UnregisterSnapshotFromOwner(Snapshot snapshot, ResourceOwner owner);
 
 extern void AtSubCommit_Snapshot(int level);
 extern void AtSubAbort_Snapshot(int level);
+extern void AtEarlyCommit_Snapshot(void);
 extern void AtEOXact_Snapshot(bool isCommit);
 
 #endif /* SNAPMGR_H */
