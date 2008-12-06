@@ -1721,6 +1721,7 @@ transformAlterTableStmt(AlterTableStmt *stmt, const char *queryString)
 		switch (cmd->subtype)
 		{
 			case AT_AddColumn:
+			case AT_AddColumnToView:
 				{
 					ColumnDef  *def = (ColumnDef *) cmd->def;
 
