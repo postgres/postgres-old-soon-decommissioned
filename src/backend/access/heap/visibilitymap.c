@@ -101,7 +101,7 @@
  * extra headers, so the whole page minus except for the standard page header
  * is used for the bitmap.
  */
-#define MAPSIZE (BLCKSZ - SizeOfPageHeaderData)
+#define MAPSIZE (BLCKSZ - MAXALIGN(SizeOfPageHeaderData))
 
 /* Number of bits allocated for each heap block. */
 #define BITS_PER_HEAPBLOCK 1
