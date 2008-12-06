@@ -135,6 +135,21 @@
     roll-forward recovery, also known as REDO.)
    </para>
 
+   <tip>
+    <para>
+     Because <acronym>WAL</acronym> restores database file
+     contents after a crash, it is not necessary to use a
+     journaled filesystem;  in fact, journaling overhead can
+     reduce performance.  For best performance, turn off
+     <emphasis>data</emphasis> journaling as a filesystem mount
+     option, e.g. use <literal>data=writeback</> on Linux.
+     Meta-data journaling (e.g.  file creation and directory
+     modification) is still desirable for faster rebooting after
+     a crash.
+    </para>
+   </tip>
+
+
    <para>
     Using <acronym>WAL</acronym> results in a
     significantly reduced number of disk writes, because only the log
