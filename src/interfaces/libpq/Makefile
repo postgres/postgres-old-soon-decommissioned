@@ -44,7 +44,7 @@ ifeq ($(PORTNAME), win32)
 OBJS += win32.o pgsleep.o libpqrc.o
 
 libpqrc.o: libpq.rc
-	windres -i $< -o $@
+	$(WINDRES) -i $< -o $@
 
 ifeq ($(enable_thread_safety), yes)
 OBJS += pthread-win32.o
