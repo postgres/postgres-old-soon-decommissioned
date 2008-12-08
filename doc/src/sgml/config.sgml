@@ -860,6 +860,11 @@ SET ENABLE_SEQSCAN TO OFF;
         than <varname>work_mem</varname>.  Larger settings might improve
         performance for vacuuming and for restoring database dumps.
        </para>
+       <para>
+        Note that when autovacuum runs, up to
+        <xref linkend="guc-autovacuum-max-workers"> times this memory may be
+        allocated, so be careful not to set the default value too high.
+       </para>
       </listitem>
      </varlistentry>
 
