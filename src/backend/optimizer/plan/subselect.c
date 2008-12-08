@@ -1098,6 +1098,12 @@ convert_EXISTS_sublink_to_join(PlannerInfo *root, SubLink *sublink,
 		return false;
 
 	/*
+	 * The subquery must have a nonempty jointree, else we won't have a join.
+	 */
+	if (subselect->jointree->fromlist == NIL)
+		return false;
+
+	/*
 	 * Separate out the WHERE clause.  (We could theoretically also remove
 	 * top-level plain JOIN/ON clauses, but it's probably not worth the
 	 * trouble.)
@@ -1180,6 +1186,7 @@ convert_EXISTS_sublink_to_join(PlannerInfo *root, SubLink *sublink,
 	/* Identify all the rels syntactically within the subselect */
 	subselect_varnos = get_relids_in_jointree((Node *) subselect->jointree,
 											  true);
+	Assert(!bms_is_empty(subselect_varnos));
 	Assert(bms_is_subset(right_varnos, subselect_varnos));
 
 	/* Now we can attach the modified subquery rtable to the parent */
