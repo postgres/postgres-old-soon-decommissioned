@@ -1477,7 +1477,7 @@ AutoVacWorkerMain(int argc, char *argv[])
 	pqsignal(SIGALRM, handle_sig_alarm);
 
 	pqsignal(SIGPIPE, SIG_IGN);
-	pqsignal(SIGUSR1, CatchupInterruptHandler);
+	pqsignal(SIGUSR1, proc_sigusr1_handler);
 	/* We don't listen for async notifies */
 	pqsignal(SIGUSR2, SIG_IGN);
 	pqsignal(SIGFPE, FloatExceptionHandler);

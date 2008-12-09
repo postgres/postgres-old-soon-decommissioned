@@ -2437,6 +2437,23 @@ drop_unnamed_stmt(void)
  */
 
 /*
+ * proc_sigusr1_handler - handle SIGUSR1 signal.
+ *
+ * SIGUSR1 is multiplexed to handle multiple different events. The signalFlags
+ * array in PGPROC indicates which events have been signaled.
+ */
+void
+proc_sigusr1_handler(SIGNAL_ARGS)
+{
+	int			save_errno = errno;
+
+	if (CheckProcSignal(PROCSIG_CATCHUP_INTERRUPT))
+		HandleCatchupInterrupt();
+
+	errno = save_errno;
+}
+
+/*
  * quickdie() occurs when signalled SIGQUIT by the postmaster.
  *
  * Some backend has bought the farm,
@@ -3180,7 +3197,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	 * of output during who-knows-what operation...
 	 */
 	pqsignal(SIGPIPE, SIG_IGN);
-	pqsignal(SIGUSR1, CatchupInterruptHandler);
+	pqsignal(SIGUSR1, proc_sigusr1_handler);
 	pqsignal(SIGUSR2, NotifyInterruptHandler);
 	pqsignal(SIGFPE, FloatExceptionHandler);
 
