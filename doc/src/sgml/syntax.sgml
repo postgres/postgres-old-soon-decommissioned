@@ -1387,7 +1387,18 @@ $1.somecolumn
 </programlisting>
 
     (Thus, a qualified column reference is actually just a special case
-    of the field selection syntax.)
+    of the field selection syntax.)  An important special case is
+    extracting a field from a table column that is of a composite type:
+
+<programlisting>
+(compositecol).somefield
+(mytable.compositecol).somefield
+</programlisting>
+
+    The parentheses are required here to show that
+    <structfield>compositecol</> is a column name not a table name,
+    or that <structname>mytable</> is a table name not a schema name
+    in the second case.
    </para>
   </sect2>
 
