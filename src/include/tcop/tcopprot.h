@@ -56,7 +56,6 @@ extern List *pg_plan_queries(List *querytrees, int cursorOptions,
 
 extern bool assign_max_stack_depth(int newval, bool doit, GucSource source);
 
-extern void proc_sigusr1_handler(SIGNAL_ARGS);
 extern void die(SIGNAL_ARGS);
 extern void quickdie(SIGNAL_ARGS);
 extern void authdie(SIGNAL_ARGS);

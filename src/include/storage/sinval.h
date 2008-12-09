@@ -90,7 +90,7 @@ extern void ReceiveSharedInvalidMessages(
 							 void (*resetFunction) (void));
 
 /* signal handler for catchup events (SIGUSR1) */
-extern void HandleCatchupInterrupt(void);
+extern void CatchupInterruptHandler(SIGNAL_ARGS);
 
 /*
  * enable/disable processing of catchup events directly from signal handler.

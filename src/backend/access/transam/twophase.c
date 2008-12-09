@@ -287,7 +287,6 @@ MarkAsPreparing(TransactionId xid, const char *gid,
 	gxact->proc.databaseId = databaseid;
 	gxact->proc.roleId = owner;
 	gxact->proc.inCommit = false;
-	MemSet(gxact->proc.signalFlags, 0, NUM_PROCSIGNALS * sizeof(sig_atomic_t));
 	gxact->proc.vacuumFlags = 0;
 	gxact->proc.lwWaiting = false;
 	gxact->proc.lwExclusive = false;
