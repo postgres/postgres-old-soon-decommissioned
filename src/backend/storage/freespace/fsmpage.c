@@ -243,17 +243,20 @@ fsm_search_avail(Buffer buf, uint8 minvalue, bool advancenext,
 	 */
 	while (nodeno < NonLeafNodesPerPage)
 	{
-		int leftnodeno = leftchild(nodeno);
-		int rightnodeno = leftnodeno + 1;
-		bool leftok = (leftnodeno < NodesPerPage) &&
-			(fsmpage->fp_nodes[leftnodeno] >= minvalue);
-		bool rightok = (rightnodeno < NodesPerPage) &&
-			(fsmpage->fp_nodes[rightnodeno] >= minvalue);
+		int childnodeno = leftchild(nodeno);
 
-		if (leftok)
-			nodeno = leftnodeno;
-		else if (rightok)
-			nodeno = rightnodeno;
+		if (childnodeno < NodesPerPage &&
+			fsmpage->fp_nodes[childnodeno] >= minvalue)
+		{
+			nodeno = childnodeno;
+			continue;
+		}
+		childnodeno++;			/* point to right child */
+		if (childnodeno < NodesPerPage &&
+			fsmpage->fp_nodes[childnodeno] >= minvalue)
+		{
+			nodeno = childnodeno;
+		}
 		else
 		{
 			/*
