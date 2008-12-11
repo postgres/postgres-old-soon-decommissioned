@@ -93,7 +93,7 @@ GetNewTransactionId(bool isSubXact)
 			(errmsg("database \"%s\" must be vacuumed within %u transactions",
 					NameStr(ShmemVariableCache->limit_datname),
 					ShmemVariableCache->xidWrapLimit - xid),
-			 errhint("To avoid a database shutdown, execute a full-database VACUUM in \"%s\".",
+			 errhint("To avoid a database shutdown, execute a database-wide VACUUM in \"%s\".",
 					 NameStr(ShmemVariableCache->limit_datname))));
 	}
 
@@ -299,7 +299,7 @@ SetTransactionIdLimit(TransactionId oldest_datfrozenxid,
 		   (errmsg("database \"%s\" must be vacuumed within %u transactions",
 				   NameStr(*oldest_datname),
 				   xidWrapLimit - curXid),
-			errhint("To avoid a database shutdown, execute a full-database VACUUM in \"%s\".",
+			errhint("To avoid a database shutdown, execute a database-wide VACUUM in \"%s\".",
 					NameStr(*oldest_datname))));
 }
 
