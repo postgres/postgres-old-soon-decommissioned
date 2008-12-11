@@ -465,7 +465,7 @@ main(int argc, char **argv)
 	int			j;
 	int			ret;
 
-	set_pglocale_pgservice(argv[0], "pg_config");
+	set_pglocale_pgservice(argv[0], PG_TEXTDOMAIN("pg_config"));
 
 	progname = get_progname(argv[0]);
 

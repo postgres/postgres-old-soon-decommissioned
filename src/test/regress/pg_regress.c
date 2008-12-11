@@ -1894,7 +1894,7 @@ regression_main(int argc, char *argv[], init_function ifunc, test_function tfunc
 	};
 
 	progname = get_progname(argv[0]);
-	set_pglocale_pgservice(argv[0], "pg_regress");
+	set_pglocale_pgservice(argv[0], PG_TEXTDOMAIN("pg_regress"));
 
 #ifndef HAVE_UNIX_SOCKETS
 	/* no unix domain sockets available, so change default */

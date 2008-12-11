@@ -343,7 +343,7 @@ extern void RecordSharedMemoryInLockFile(unsigned long id1,
 extern void ValidatePgVersion(const char *path);
 extern void process_shared_preload_libraries(void);
 extern void process_local_preload_libraries(void);
-extern void set_text_domain(const char *domain);
+extern void pg_bindtextdomain(const char *domain);
 
 /* in access/transam/xlog.c */
 extern bool BackupInProgress(void);

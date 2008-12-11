@@ -127,7 +127,7 @@ main(int argc, char *argv[])
 
 	int			optindex;
 
-	set_pglocale_pgservice(argv[0], "pg_dump");
+	set_pglocale_pgservice(argv[0], PG_TEXTDOMAIN("pg_dump"));
 
 	progname = get_progname(argv[0]);
 

@@ -96,7 +96,7 @@ main(int argc, char *argv[])
 	char	   *password_prompt = NULL;
 	bool		new_pass;
 
-	set_pglocale_pgservice(argv[0], "psql");
+	set_pglocale_pgservice(argv[0], PG_TEXTDOMAIN("psql"));
 
 	if (argc > 1)
 	{

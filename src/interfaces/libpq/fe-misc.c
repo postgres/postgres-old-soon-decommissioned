@@ -1166,7 +1166,7 @@ libpq_gettext(const char *msgid)
 		ldir = getenv("PGLOCALEDIR");
 		if (!ldir)
 			ldir = LOCALEDIR;
-		bindtextdomain("libpq", ldir);
+		bindtextdomain(PG_TEXTDOMAIN("libpq"), ldir);
 #ifdef WIN32
 		SetLastError(save_errno);
 #else
@@ -1174,7 +1174,7 @@ libpq_gettext(const char *msgid)
 #endif
 	}
 
-	return dgettext("libpq", msgid);
+	return dgettext(PG_TEXTDOMAIN("libpq"), msgid);
 }
 
 #endif   /* ENABLE_NLS */

@@ -62,10 +62,11 @@ else # not XGETTEXT
 endif # not XGETTEXT
 
 
+# catalog name extentions must match behavior of PG_TEXTDOMAIN() in c.h
 install-po: all-po installdirs-po
 ifneq (,$(LANGUAGES))
 	for lang in $(LANGUAGES); do \
-	  $(INSTALL_DATA) po/$$lang.mo '$(DESTDIR)$(localedir)'/$$lang/LC_MESSAGES/$(CATALOG_NAME).mo || exit 1; \
+	  $(INSTALL_DATA) po/$$lang.mo '$(DESTDIR)$(localedir)'/$$lang/LC_MESSAGES/$(CATALOG_NAME)$(SO_MAJOR_VERSION)-$(MAJORVERSION).mo || exit 1; \
 	done
 endif
 
@@ -73,7 +74,7 @@ installdirs-po:
 	$(mkinstalldirs) $(foreach lang, $(LANGUAGES), '$(DESTDIR)$(localedir)'/$(lang)/LC_MESSAGES)
 
 uninstall-po:
-	rm -f $(foreach lang, $(LANGUAGES), '$(DESTDIR)$(localedir)'/$(lang)/LC_MESSAGES/$(CATALOG_NAME).mo)
+	rm -f $(foreach lang, $(LANGUAGES), '$(DESTDIR)$(localedir)'/$(lang)/LC_MESSAGES/$(CATALOG_NAME)$(SO_MAJOR_VERSION)-$(MAJORVERSION).mo)
 
 
 clean-po:

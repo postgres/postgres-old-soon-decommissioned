@@ -30,7 +30,7 @@
 
 /* define our text domain for translations */
 #undef TEXTDOMAIN
-#define TEXTDOMAIN "plpgsql"
+#define TEXTDOMAIN PG_TEXTDOMAIN("plpgsql")
 
 /* ----------
  * Compiler's namestack item types

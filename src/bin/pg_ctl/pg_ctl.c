@@ -1648,7 +1648,7 @@ main(int argc, char **argv)
 #endif
 
 	progname = get_progname(argv[0]);
-	set_pglocale_pgservice(argv[0], "pg_ctl");
+	set_pglocale_pgservice(argv[0], PG_TEXTDOMAIN("pg_ctl"));
 
 	/*
 	 * save argv[0] so do_start() can look for the postmaster if necessary. we

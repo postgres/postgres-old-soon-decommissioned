@@ -76,7 +76,7 @@ main(int argc, char *argv[])
 	const char *strftime_fmt = "%c";
 	const char *progname;
 
-	set_pglocale_pgservice(argv[0], "pg_controldata");
+	set_pglocale_pgservice(argv[0], PG_TEXTDOMAIN("pg_controldata"));
 
 	progname = get_progname(argv[0]);
 

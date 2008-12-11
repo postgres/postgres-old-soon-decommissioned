@@ -1214,7 +1214,7 @@ process_local_preload_libraries(void)
 }
 
 void
-set_text_domain(const char *domain)
+pg_bindtextdomain(const char *domain)
 {
 #ifdef ENABLE_NLS
 	if (my_exec_path[0] != '\0')

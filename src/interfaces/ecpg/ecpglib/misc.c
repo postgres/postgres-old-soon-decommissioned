@@ -474,7 +474,7 @@ ecpg_gettext(const char *msgid)
 		ldir = getenv("PGLOCALEDIR");
 		if (!ldir)
 			ldir = LOCALEDIR;
-		bindtextdomain("ecpg", ldir);
+		bindtextdomain(PG_TEXTDOMAIN("ecpg"), ldir);
 #ifdef WIN32
 		SetLastError(save_errno);
 #else
@@ -482,7 +482,7 @@ ecpg_gettext(const char *msgid)
 #endif
 	}
 
-	return dgettext("ecpg", msgid);
+	return dgettext(PG_TEXTDOMAIN("ecpg"), msgid);
 }
 
 #endif   /* ENABLE_NLS */

@@ -87,7 +87,7 @@ main(int argc, char *argv[])
 	 * error messages to be localized.
 	 */
 
-	set_pglocale_pgservice(argv[0], "postgres");
+	set_pglocale_pgservice(argv[0], PG_TEXTDOMAIN("postgres"));
 
 #ifdef WIN32
 

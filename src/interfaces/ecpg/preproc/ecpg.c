@@ -138,7 +138,7 @@ main(int argc, char *const argv[])
 	char		my_exec_path[MAXPGPATH];
 	char		include_path[MAXPGPATH];
 
-	set_pglocale_pgservice(argv[0], "ecpg");
+	set_pglocale_pgservice(argv[0], PG_TEXTDOMAIN("ecpg"));
 
 	progname = get_progname(argv[0]);
 

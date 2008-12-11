@@ -126,7 +126,7 @@ HTML.index:
 version.sgml: $(top_builddir)/src/Makefile.global
 	{ \
 	  echo "<!entity version \"$(VERSION)\">"; \
-	  echo "<!entity majorversion \"`expr $(VERSION) : '\([0-9][0-9]*\.[0-9][0-9]*\)'`\">"; \
+	  echo "<!entity majorversion \"$(MAJORVERSION)\">"; \
 	} >$@
 
 features-supported.sgml: $(top_srcdir)/src/backend/catalog/sql_feature_packages.txt $(top_srcdir)/src/backend/catalog/sql_features.txt

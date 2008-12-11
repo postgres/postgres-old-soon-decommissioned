@@ -32,7 +32,7 @@
 
 /* define our text domain for translations */
 #undef TEXTDOMAIN
-#define TEXTDOMAIN "plperl"
+#define TEXTDOMAIN PG_TEXTDOMAIN("plperl")
 
 /* perl stuff */
 #include "plperl.h"
@@ -190,7 +190,7 @@ _PG_init(void)
 	if (inited)
 		return;
 
-	set_text_domain(TEXTDOMAIN);
+	pg_bindtextdomain(TEXTDOMAIN);
 
 	DefineCustomBoolVariable("plperl.use_strict",
 	  gettext_noop("If true, will compile trusted and untrusted perl code in strict mode"),

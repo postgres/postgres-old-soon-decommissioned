@@ -42,7 +42,7 @@ _PG_init(void)
 	if (inited)
 		return;
 
-	set_text_domain(TEXTDOMAIN);
+	pg_bindtextdomain(TEXTDOMAIN);
 
 	plpgsql_HashTableInit();
 	RegisterXactCallback(plpgsql_xact_cb, NULL);
