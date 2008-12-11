@@ -769,10 +769,6 @@ typedef NameData *Name;
 #define PG_BINARY_W "w"
 #endif
 
-#if defined(sun) && defined(__sparc__) && !defined(__SVR4)
-#include <unistd.h>
-#endif
-
 /* These are for things that are one way on Unix and another on NT */
 #define NULL_DEV		"/dev/null"
 
