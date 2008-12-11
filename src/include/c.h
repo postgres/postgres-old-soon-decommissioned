@@ -769,9 +769,6 @@ typedef NameData *Name;
 #define PG_BINARY_W "w"
 #endif
 
-/* These are for things that are one way on Unix and another on NT */
-#define NULL_DEV		"/dev/null"
-
 /*
  * Provide prototypes for routines not present in a particular machine's
  * standard C library.
