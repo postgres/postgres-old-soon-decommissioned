@@ -984,7 +984,11 @@ UsingValue: UsingConst
 		; 
 
 UsingConst: Iconst			{ $$ = $1; }
+		| '+' Iconst		{ $$ = cat_str(2, make_str("+"), $2); }
+                | '-' Iconst		{ $$ = cat_str(2, make_str("-"), $2); }
 		| ecpg_fconst		{ $$ = $1; }
+		| '+' ecpg_fconst	{ $$ = cat_str(2, make_str("+"), $2); }
+                | '-' ecpg_fconst	{ $$ = cat_str(2, make_str("-"), $2); }
 		| ecpg_sconst		{ $$ = $1; }
 		| ecpg_bconst		{ $$ = $1; }
 		| ecpg_xconst		{ $$ = $1; }
