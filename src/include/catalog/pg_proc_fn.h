@@ -14,6 +14,8 @@
 #ifndef PG_PROC_FN_H
 #define PG_PROC_FN_H
 
+#include "nodes/pg_list.h"
+
 extern Oid ProcedureCreate(const char *procedureName,
 				Oid procNamespace,
 				bool replace,

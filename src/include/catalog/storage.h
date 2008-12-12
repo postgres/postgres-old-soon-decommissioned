@@ -14,9 +14,11 @@
 #ifndef STORAGE_H
 #define STORAGE_H
 
+#include "access/xlog.h"
+#include "lib/stringinfo.h"
 #include "storage/block.h"
 #include "storage/relfilenode.h"
-#include "utils/rel.h"
+#include "utils/relcache.h"
 
 extern void RelationCreateStorage(RelFileNode rnode, bool istemp);
 extern void RelationDropStorage(Relation rel);

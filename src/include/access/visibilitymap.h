@@ -14,7 +14,7 @@
 #ifndef VISIBILITYMAP_H
 #define VISIBILITYMAP_H
 
-#include "utils/rel.h"
+#include "utils/relcache.h"
 #include "storage/buf.h"
 #include "storage/itemptr.h"
 #include "access/xlogdefs.h"

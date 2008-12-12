@@ -14,9 +14,10 @@
 #ifndef FREESPACE_H_
 #define FREESPACE_H_
 
-#include "utils/rel.h"
+#include "storage/block.h"
 #include "storage/bufpage.h"
-#include "access/xlog.h"
+#include "storage/relfilenode.h"
+#include "utils/relcache.h"
 
 /* prototypes for public functions in freespace.c */
 extern Size GetRecordedFreeSpace(Relation rel, BlockNumber heapBlk);
@@ -33,4 +34,4 @@ extern void XLogRecordPageWithFreeSpace(RelFileNode rnode, BlockNumber heapBlk,
 extern void FreeSpaceMapTruncateRel(Relation rel, BlockNumber nblocks);
 extern void FreeSpaceMapVacuum(Relation rel);
 
-#endif   /* FREESPACE_H */
+#endif   /* FREESPACE_H_ */

@@ -14,7 +14,8 @@
 #ifndef INDEXFSM_H_
 #define INDEXFSM_H_
 
-#include "utils/rel.h"
+#include "storage/block.h"
+#include "utils/relcache.h"
 
 extern BlockNumber GetFreeIndexPage(Relation rel);
 extern void RecordFreeIndexPage(Relation rel, BlockNumber page);
@@ -22,4 +23,4 @@ extern void RecordUsedIndexPage(Relation rel, BlockNumber page);
 
 extern void IndexFreeSpaceMapVacuum(Relation rel);
 
-#endif   /* INDEXFSM_H */
+#endif   /* INDEXFSM_H_ */
