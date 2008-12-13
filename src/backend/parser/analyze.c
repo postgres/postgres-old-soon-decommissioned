@@ -228,6 +228,55 @@ transformStmt(ParseState *pstate, Node *parseTree)
 }
 
 /*
+ * analyze_requires_snapshot
+ *		Returns true if a snapshot must be set before doing parse analysis
+ *		on the given raw parse tree.
+ *
+ * Classification here should match transformStmt().
+ */
+bool
+analyze_requires_snapshot(Node *parseTree)
+{
+	bool		result;
+
+	switch (nodeTag(parseTree))
+	{
+			/*
+			 * Optimizable statements
+			 */
+		case T_InsertStmt:
+		case T_DeleteStmt:
+		case T_UpdateStmt:
+		case T_SelectStmt:
+			result = true;
+			break;
+
+			/*
+			 * Special cases
+			 */
+		case T_DeclareCursorStmt:
+			/* yes, because it's analyzed just like SELECT */
+			result = true;
+			break;
+
+		case T_ExplainStmt:
+			/*
+			 * We only need a snapshot in varparams case, but it doesn't seem
+			 * worth complicating this function's API to distinguish that.
+			 */
+			result = true;
+			break;
+
+		default:
+			/* utility statements don't have any active parse analysis */
+			result = false;
+			break;
+	}
+
+	return result;
+}
+
+/*
  * transformDeleteStmt -
  *	  transforms a Delete Statement
  */
