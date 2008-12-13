@@ -503,8 +503,7 @@ RevalidateCachedPlan(CachedPlanSource *plansource, bool useResOwner)
 			/*
 			 * Generate plans for queries.
 			 */
-			slist = pg_plan_queries(slist, plansource->cursor_options,
-									NULL, false);
+			slist = pg_plan_queries(slist, plansource->cursor_options, NULL);
 		}
 
 		/*

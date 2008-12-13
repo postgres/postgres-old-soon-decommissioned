@@ -1606,8 +1606,7 @@ _SPI_prepare_plan(const char *src, SPIPlanPtr plan, ParamListInfo boundParams)
 		/* Need a copyObject here to keep parser from modifying raw tree */
 		stmt_list = pg_analyze_and_rewrite(copyObject(parsetree),
 										   src, argtypes, nargs);
-		stmt_list = pg_plan_queries(stmt_list, cursor_options,
-									boundParams, false);
+		stmt_list = pg_plan_queries(stmt_list, cursor_options, boundParams);
 
 		plansource = (CachedPlanSource *) palloc0(sizeof(CachedPlanSource));
 		cplan = (CachedPlan *) palloc0(sizeof(CachedPlan));
