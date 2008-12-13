@@ -432,6 +432,52 @@ transformStmt(ParseState *pstate, Node *parseTree,
 	return result;
 }
 
+/*
+ * analyze_requires_snapshot
+ *		Returns true if a snapshot must be set before doing parse analysis
+ *		on the given raw parse tree.
+ *
+ * Classification here should match transformStmt().
+ */
+bool
+analyze_requires_snapshot(Node *parseTree)
+{
+	bool		result;
+
+	switch (nodeTag(parseTree))
+	{
+			/*
+			 * Optimizable statements
+			 */
+		case T_InsertStmt:
+		case T_DeleteStmt:
+		case T_UpdateStmt:
+		case T_SelectStmt:
+			result = true;
+			break;
+
+			/*
+			 * Special cases
+			 */
+		case T_DeclareCursorStmt:
+			/* yes, because it's analyzed just like SELECT */
+			result = true;
+			break;
+
+		case T_ExplainStmt:
+			/* yes, because it's analyzed just like SELECT */
+			result = true;
+			break;
+
+		default:
+			/* other utility statements don't have any active parse analysis */
+			result = false;
+			break;
+	}
+
+	return result;
+}
+
 static Query *
 transformViewStmt(ParseState *pstate, ViewStmt *stmt,
 				  List **extras_before, List **extras_after)
