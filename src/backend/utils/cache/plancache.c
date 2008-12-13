@@ -463,6 +463,7 @@ RevalidateCachedPlan(CachedPlanSource *plansource, bool useResOwner)
 	 */
 	if (!plan)
 	{
+		bool		snapshot_set = false;
 		List	   *slist;
 		TupleDesc	resultDesc;
 
@@ -471,6 +472,19 @@ RevalidateCachedPlan(CachedPlanSource *plansource, bool useResOwner)
 		 * (XXX is there anything else we really need to restore?)
 		 */
 		PushOverrideSearchPath(plansource->search_path);
+
+		/*
+		 * If a snapshot is already set (the normal case), we can just use
+		 * that for parsing/planning.  But if it isn't, install one.  Note:
+		 * no point in checking whether parse analysis requires a snapshot;
+		 * utility commands don't have invalidatable plans, so we'd not get
+		 * here for such a command.
+		 */
+		if (!ActiveSnapshotSet())
+		{
+			PushActiveSnapshot(GetTransactionSnapshot());
+			snapshot_set = true;
+		}
 
 		/*
 		 * Run parse analysis and rule rewriting.  The parser tends to
@@ -488,13 +502,9 @@ RevalidateCachedPlan(CachedPlanSource *plansource, bool useResOwner)
 		{
 			/*
 			 * Generate plans for queries.
-			 *
-			 * If a snapshot is already set (the normal case), we can just use
-			 * that for planning.  But if it isn't, we have to tell
-			 * pg_plan_queries to make a snap if it needs one.
 			 */
 			slist = pg_plan_queries(slist, plansource->cursor_options,
-									NULL, !ActiveSnapshotSet());
+									NULL, false);
 		}
 
 		/*
@@ -524,6 +534,10 @@ RevalidateCachedPlan(CachedPlanSource *plansource, bool useResOwner)
 			plansource->resultDesc = resultDesc;
 			MemoryContextSwitchTo(oldcxt);
 		}
+
+		/* Release snapshot if we got one */
+		if (snapshot_set)
+			PopActiveSnapshot();
 
 		/* Now we can restore current search path */
 		PopOverrideSearchPath();

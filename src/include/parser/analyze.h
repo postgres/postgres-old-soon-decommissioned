@@ -25,6 +25,8 @@ extern Query *parse_analyze_varparams(Node *parseTree, const char *sourceText,
 extern Query *parse_sub_analyze(Node *parseTree, ParseState *parentParseState);
 extern Query *transformStmt(ParseState *pstate, Node *parseTree);
 
+extern bool analyze_requires_snapshot(Node *parseTree);
+
 extern void CheckSelectLocking(Query *qry);
 extern void applyLockingClause(Query *qry, Index rtindex,
 				   bool forUpdate, bool noWait);
