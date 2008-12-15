@@ -117,6 +117,7 @@ CustomizableInitialize(void)
 	{
 		case RESTORE_COMMAND_LINK:
 			SET_RESTORE_COMMAND("mklink", WALFilePath, xlogFilePath);
+			break;
 		case RESTORE_COMMAND_COPY:
 		default:
 			SET_RESTORE_COMMAND("copy", WALFilePath, xlogFilePath);
