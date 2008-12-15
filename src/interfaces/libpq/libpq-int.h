@@ -292,6 +292,11 @@ struct pg_conn
 	char	   *pgpass;
 	char	   *sslmode;		/* SSL mode (require,prefer,allow,disable) */
 	char	   *sslverify;		/* Verify server SSL certificate (none,chain,cn) */
+	char	   *sslkey;			/* client key filename */
+	char	   *sslcert;		/* client certificate filename */
+	char	   *sslrootcert;	/* root certificate filename */
+	char	   *sslcrl;			/* certificate revocation list filename */
+
 #if defined(KRB5) || defined(ENABLE_GSS) || defined(ENABLE_SSPI)
 	char	   *krbsrvname;		/* Kerberos service name */
 #endif
