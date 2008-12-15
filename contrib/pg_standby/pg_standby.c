@@ -183,7 +183,8 @@ CustomizableNextWALFileReady()
 			 * even though the file is still being copied and cannot be opened
 			 * by pg_standby yet. So we wait for sleeptime secs before
 			 * attempting to restore. If that is not enough, we will rely on
-			 * the retry/holdoff mechanism.
+			 * the retry/holdoff mechanism.  GNUWin32's cp does not have
+			 * this problem.
 			 */
 			pg_usleep(sleeptime * 1000000L);
 #endif
