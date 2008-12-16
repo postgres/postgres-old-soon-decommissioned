@@ -2058,6 +2058,7 @@ l2:
 	HeapTupleHeaderSetCmin(newtup->t_data, cid);
 	HeapTupleHeaderSetXmax(newtup->t_data, 0);	/* zero out Datum fields */
 	HeapTupleHeaderSetCmax(newtup->t_data, 0);	/* for cleanliness */
+	newtup->t_tableOid = RelationGetRelid(relation);
 
 	/*
 	 * If the toaster needs to be activated, OR if the new tuple will not fit
