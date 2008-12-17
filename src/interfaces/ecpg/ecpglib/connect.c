@@ -144,7 +144,7 @@ ecpg_finish(struct connection * act)
 		if (actual_connection == act)
 			actual_connection = all_connections;
 
-		ecpg_log("ecpg_finish: connection %s closed\n", act->name);
+		ecpg_log("ecpg_finish: connection %s closed\n", act->name ? act->name : "(null)");
 
 		for (cache = act->cache_head; cache; ptr = cache, cache = cache->next, ecpg_free(ptr));
 		ecpg_free(act->name);
