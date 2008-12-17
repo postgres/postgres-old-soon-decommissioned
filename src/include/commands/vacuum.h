@@ -144,10 +144,10 @@ extern void vacuum_delay_point(void);
 
 /* in commands/vacuumlazy.c */
 extern void lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt,
-				BufferAccessStrategy bstrategy);
+				BufferAccessStrategy bstrategy, bool *scanned_all);
 
 /* in commands/analyze.c */
 extern void analyze_rel(Oid relid, VacuumStmt *vacstmt,
-			BufferAccessStrategy bstrategy);
+			BufferAccessStrategy bstrategy, bool update_reltuples);
 
 #endif   /* VACUUM_H */
