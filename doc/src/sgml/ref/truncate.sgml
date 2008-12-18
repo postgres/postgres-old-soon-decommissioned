@@ -103,6 +103,13 @@ TRUNCATE [ TABLE ] <replaceable class="PARAMETER">name</replaceable> [, ... ]
   </para>
 
   <para>
+   <command>TRUNCATE</> acquires an access exclusive lock on the
+   tables in operates on, which blocks all other concurrent operations
+   on the table.  If concurrent access to a table is required, then
+   the <command>DELETE</> command should be used instead.
+  </para>
+
+  <para>
    <command>TRUNCATE</> cannot be used on a table that has foreign-key
    references from other tables, unless all such tables are also truncated
    in the same command.  Checking validity in such cases would require table
