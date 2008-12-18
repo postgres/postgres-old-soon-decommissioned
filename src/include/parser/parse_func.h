@@ -47,7 +47,8 @@ extern Node *ParseFuncOrColumn(ParseState *pstate,
 				  bool is_column, int location);
 
 extern FuncDetailCode func_get_detail(List *funcname, List *fargs,
-				int nargs, Oid *argtypes, bool expand_variadic,
+				int nargs, Oid *argtypes,
+				bool expand_variadic, bool expand_defaults,
 				Oid *funcid, Oid *rettype,
 				bool *retset, int *nvargs, Oid **true_typeids,
 				List **argdefaults);

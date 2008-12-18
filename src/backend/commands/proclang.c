@@ -147,10 +147,10 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 										 PointerGetDatum(NULL),
 										 PointerGetDatum(NULL),
 										 PointerGetDatum(NULL),
+										 NIL,
 										 PointerGetDatum(NULL),
 										 1,
-										 0,
-										 NULL);
+										 0);
 		}
 
 		/*
@@ -181,10 +181,10 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 										 PointerGetDatum(NULL),
 										 PointerGetDatum(NULL),
 										 PointerGetDatum(NULL),
+										 NIL,
 										 PointerGetDatum(NULL),
 										 1,
-										 0,
-										 NULL);
+										 0);
 			}
 		}
 		else
@@ -548,9 +548,9 @@ AlterLanguageOwner(const char *name, Oid newOwnerId)
 				 errmsg("language \"%s\" does not exist", name)));
 
 	AlterLanguageOwner_internal(tup, rel, newOwnerId);
-	
+
 	ReleaseSysCache(tup);
-	
+
 	heap_close(rel, RowExclusiveLock);
 
 }
