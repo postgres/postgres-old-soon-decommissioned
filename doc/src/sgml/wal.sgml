@@ -138,7 +138,7 @@
    <tip>
     <para>
      Because <acronym>WAL</acronym> restores database file
-     contents after a crash, journaled filesystems are necessary for
+     contents after a crash, journaled filesystems are not necessary for
      reliable storage of the data files or WAL files.  In fact, journaling
      overhead can reduce performance, especially if journaling
      causes file system <emphasis>data</emphasis> to be flushed
