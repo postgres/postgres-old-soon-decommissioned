@@ -67,4 +67,6 @@ extern FuncExpr *makeFuncExpr(Oid funcid, Oid rettype,
 
 extern DefElem *makeDefElem(char *name, Node *arg);
 
+extern OptionDefElem *makeOptionDefElem(int op, DefElem *def);
+
 #endif   /* MAKEFUNC_H */

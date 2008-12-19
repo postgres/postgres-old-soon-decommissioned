@@ -42,6 +42,18 @@ REVOKE [ GRANT OPTION FOR ]
     [ CASCADE | RESTRICT ]
 
 REVOKE [ GRANT OPTION FOR ]
+    { USAGE | ALL [ PRIVILEGES ] }
+    ON FOREIGN DATA WRAPPER <replaceable>fdwname</replaceable> [, ...]
+    FROM { [ GROUP ] <replaceable class="PARAMETER">rolename</replaceable> | PUBLIC } [, ...]
+    [ CASCADE | RESTRICT ]
+
+REVOKE [ GRANT OPTION FOR ]
+    { USAGE | ALL [ PRIVILEGES ] }
+    ON FOREIGN SERVER <replaceable>servername</replaceable> [, ...]
+    FROM { [ GROUP ] <replaceable class="PARAMETER">rolename</replaceable> | PUBLIC } [, ...]
+    [ CASCADE | RESTRICT ]
+
+REVOKE [ GRANT OPTION FOR ]
     { EXECUTE | ALL [ PRIVILEGES ] }
     ON FUNCTION <replaceable>funcname</replaceable> ( [ [ <replaceable class="parameter">argmode</replaceable> ] [ <replaceable class="parameter">argname</replaceable> ] <replaceable class="parameter">argtype</replaceable> [, ...] ] ) [, ...]
     FROM { [ GROUP ] <replaceable class="PARAMETER">rolename</replaceable> | PUBLIC } [, ...]

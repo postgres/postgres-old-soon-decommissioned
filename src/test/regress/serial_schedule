@@ -108,6 +108,7 @@ test: prepare
 test: without_oid
 test: conversion
 test: tsdicts
+test: foreign_data
 test: truncate
 test: alter_table
 test: sequence

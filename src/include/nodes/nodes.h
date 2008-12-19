@@ -325,6 +325,15 @@ typedef enum NodeTag
 	T_CreateEnumStmt,
 	T_AlterTSDictionaryStmt,
 	T_AlterTSConfigurationStmt,
+	T_CreateFdwStmt,
+	T_AlterFdwStmt,
+	T_DropFdwStmt,
+	T_CreateForeignServerStmt,
+	T_AlterForeignServerStmt,
+	T_DropForeignServerStmt,
+	T_CreateUserMappingStmt,
+	T_AlterUserMappingStmt,
+	T_DropUserMappingStmt,
 
 	/*
 	 * TAGS FOR PARSE TREE NODES (parsenodes.h)
@@ -348,6 +357,7 @@ typedef enum NodeTag
 	T_IndexElem,
 	T_Constraint,
 	T_DefElem,
+	T_OptionDefElem,
 	T_RangeTblEntry,
 	T_SortGroupClause,
 	T_FkConstraint,

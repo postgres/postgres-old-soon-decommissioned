@@ -361,3 +361,16 @@ makeDefElem(char *name, Node *arg)
 	res->arg = arg;
 	return res;
 }
+
+/*
+ * makeOptionDefElem -
+ *	build an OptionDefElem node
+ */
+OptionDefElem *
+makeOptionDefElem(int op, DefElem *def)
+{
+	OptionDefElem *res = makeNode(OptionDefElem);
+	res->alter_op = op;
+	res->def = def;
+	return res;
+}
