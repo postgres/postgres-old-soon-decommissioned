@@ -1318,14 +1318,14 @@ AdvanceXLInsertBuffer(bool new_segment)
 				 * Have to write buffers while holding insert lock. This is
 				 * not good, so only write as much as we absolutely must.
 				 */
-				TRACE_POSTGRESQL_WAL_BUFFER_WRITE_START();
+				TRACE_POSTGRESQL_WAL_BUFFER_WRITE_DIRTY_START();
 				WriteRqst.Write = OldPageRqstPtr;
 				WriteRqst.Flush.xlogid = 0;
 				WriteRqst.Flush.xrecoff = 0;
 				XLogWrite(WriteRqst, false, false);
 				LWLockRelease(WALWriteLock);
 				Insert->LogwrtResult = LogwrtResult;
-				TRACE_POSTGRESQL_WAL_BUFFER_WRITE_DONE();
+				TRACE_POSTGRESQL_WAL_BUFFER_WRITE_DIRTY_DONE();
 			}
 		}
 	}

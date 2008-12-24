@@ -89,6 +89,6 @@ provider postgresql {
 
 	probe xlog__insert(unsigned char, unsigned char);
 	probe xlog__switch();
-	probe wal__buffer__write__start();
-	probe wal__buffer__write__done();
+	probe wal__buffer__write__dirty__start();
+	probe wal__buffer__write__dirty__done();
 };
