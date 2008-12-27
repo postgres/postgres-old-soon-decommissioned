@@ -66,6 +66,8 @@ extern void tuplestore_select_read_pointer(Tuplestorestate *state, int ptr);
 extern void tuplestore_copy_read_pointer(Tuplestorestate *state,
 										 int srcptr, int destptr);
 
+extern void tuplestore_trim(Tuplestorestate *state);
+
 extern bool tuplestore_gettupleslot(Tuplestorestate *state, bool forward,
 						TupleTableSlot *slot);
 extern bool tuplestore_advance(Tuplestorestate *state, bool forward);
