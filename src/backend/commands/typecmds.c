@@ -2255,6 +2255,10 @@ domainAddConstraint(Oid domainOid, Oid domainNamespace, Oid baseTypeOid,
 		ereport(ERROR,
 				(errcode(ERRCODE_GROUPING_ERROR),
 			   errmsg("cannot use aggregate function in check constraint")));
+	if (pstate->p_hasWindowFuncs)
+		ereport(ERROR,
+				(errcode(ERRCODE_WINDOWING_ERROR),
+				 errmsg("cannot use window function in check constraint")));
 
 	/*
 	 * Convert to string form for storage.

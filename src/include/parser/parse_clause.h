@@ -27,9 +27,15 @@ extern Node *transformWhereClause(ParseState *pstate, Node *clause,
 extern Node *transformLimitClause(ParseState *pstate, Node *clause,
 					 const char *constructName);
 extern List *transformGroupClause(ParseState *pstate, List *grouplist,
-					 List **targetlist, List *sortClause);
+					 List **targetlist, List *sortClause,
+					 bool isPartition);
 extern List *transformSortClause(ParseState *pstate, List *orderlist,
 					List **targetlist, bool resolveUnknown);
+
+extern List *transformWindowDefinitions(ParseState *pstate,
+										List *windowdefs,
+										List **targetlist);
+
 extern List *transformDistinctClause(ParseState *pstate,
 						List **targetlist, List *sortClause);
 extern List *transformDistinctOnClause(ParseState *pstate, List *distinctlist,

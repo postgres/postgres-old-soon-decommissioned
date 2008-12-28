@@ -379,6 +379,18 @@
 </row>
 
 <row>
+<entry><literal>22014</literal></entry>
+<entry>INVALID ARGUMENT FOR NTILE FUNCTION</entry>
+<entry>invalid_argument_for_ntile_function</entry>
+</row>
+
+<row>
+<entry><literal>22016</literal></entry>
+<entry>INVALID ARGUMENT FOR NTH_VALUE FUNCTION</entry>
+<entry>invalid_argument_for_nth_value_function</entry>
+</row>
+
+<row>
 <entry><literal>2201F</literal></entry>
 <entry>INVALID ARGUMENT FOR POWER FUNCTION</entry>
 <entry>invalid_argument_for_power_function</entry>
@@ -988,6 +1000,12 @@
 <entry><literal>42803</literal></entry>
 <entry>GROUPING ERROR</entry>
 <entry>grouping_error</entry>
+</row>
+
+<row>
+<entry><literal>42P20</literal></entry>
+<entry>WINDOWING ERROR</entry>
+<entry>windowing_error</entry>
 </row>
 
 <row>

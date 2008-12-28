@@ -1148,6 +1148,19 @@ tuplestore_trim(Tuplestorestate *state)
 	state->truncated = true;
 }
 
+/*
+ * tuplestore_in_memory
+ *
+ * Returns true if the tuplestore has not spilled to disk.
+ *
+ * XXX exposing this is a violation of modularity ... should get rid of it.
+ */
+bool
+tuplestore_in_memory(Tuplestorestate *state)
+{
+	return (state->status == TSS_INMEM);
+}
+
 
 /*
  * Tape interface routines

@@ -1480,6 +1480,14 @@ find_expr_references_walker(Node *node,
 						   context->addrs);
 		/* fall through to examine arguments */
 	}
+	else if (IsA(node, WindowFunc))
+	{
+		WindowFunc *wfunc = (WindowFunc *) node;
+
+		add_object_address(OCLASS_PROC, wfunc->winfnoid, 0,
+						   context->addrs);
+		/* fall through to examine arguments */
+	}
 	else if (IsA(node, SubPlan))
 	{
 		/* Extra work needed here if we ever need this case */
@@ -1602,6 +1610,7 @@ find_expr_references_walker(Node *node,
 		/* query_tree_walker ignores ORDER BY etc, but we need those opers */
 		find_expr_references_walker((Node *) query->sortClause, context);
 		find_expr_references_walker((Node *) query->groupClause, context);
+		find_expr_references_walker((Node *) query->windowClause, context);
 		find_expr_references_walker((Node *) query->distinctClause, context);
 
 		/* Examine substructure of query */

@@ -321,6 +321,10 @@ examine_parameter_list(List *parameters, Oid languageOid,
 				ereport(ERROR,
 						(errcode(ERRCODE_GROUPING_ERROR),
 						 errmsg("cannot use aggregate function in parameter default value")));
+			if (pstate->p_hasWindowFuncs)
+				ereport(ERROR,
+						(errcode(ERRCODE_WINDOWING_ERROR),
+						 errmsg("cannot use window function in parameter default value")));
 
 			*parameterDefaults = lappend(*parameterDefaults, def);
 			have_defaults = true;
@@ -1538,6 +1542,10 @@ CreateCast(CreateCastStmt *stmt)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),
 				 errmsg("cast function must not be an aggregate function")));
+		if (procstruct->proiswindow)
+			ereport(ERROR,
+					(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),
+				 errmsg("cast function must not be a window function")));
 		if (procstruct->proretset)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),

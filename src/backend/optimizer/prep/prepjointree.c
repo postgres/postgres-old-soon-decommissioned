@@ -742,7 +742,10 @@ pull_up_simple_subquery(PlannerInfo *root, Node *jtnode, RangeTblEntry *rte,
 	 * Miscellaneous housekeeping.
 	 */
 	parse->hasSubLinks |= subquery->hasSubLinks;
-	/* subquery won't be pulled up if it hasAggs, so no work there */
+	/*
+	 * subquery won't be pulled up if it hasAggs or hasWindowFuncs, so no
+	 * work needed on those flags
+	 */
 
 	/*
 	 * Return the adjusted subquery jointree to replace the RangeTblRef entry
@@ -931,6 +934,7 @@ is_simple_subquery(Query *subquery)
 	 * limiting, or WITH.  (XXX WITH could possibly be allowed later)
 	 */
 	if (subquery->hasAggs ||
+		subquery->hasWindowFuncs ||
 		subquery->groupClause ||
 		subquery->havingQual ||
 		subquery->sortClause ||

@@ -250,7 +250,7 @@ extern ArrayBuildState *accumArrayResult(ArrayBuildState *astate,
 extern Datum makeArrayResult(ArrayBuildState *astate,
 				MemoryContext rcontext);
 extern Datum makeMdArrayResult(ArrayBuildState *astate, int ndims,
-				  int *dims, int *lbs, MemoryContext rcontext);
+				  int *dims, int *lbs, MemoryContext rcontext, bool release);
 
 /*
  * prototypes for functions defined in arrayutils.c

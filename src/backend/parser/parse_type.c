@@ -611,6 +611,7 @@ parseTypeString(const char *str, Oid *type_id, int32 *typmod_p)
 		stmt->whereClause != NULL ||
 		stmt->groupClause != NIL ||
 		stmt->havingClause != NULL ||
+		stmt->windowClause != NIL ||
 		stmt->withClause != NULL ||
 		stmt->valuesLists != NIL ||
 		stmt->sortClause != NIL ||

@@ -116,6 +116,7 @@ test: polymorphism
 test: rowtypes
 test: returning
 test: largeobject
+test: window
 test: with
 test: xml
 test: stats

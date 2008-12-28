@@ -222,6 +222,21 @@ typedef struct Aggref
 	int			location;		/* token location, or -1 if unknown */
 } Aggref;
 
+/*
+ * WindowFunc
+ */
+typedef struct WindowFunc
+{
+	Expr		xpr;
+	Oid			winfnoid;		/* pg_proc Oid of the function */
+	Oid			wintype;		/* type Oid of result of the window function */
+	List	   *args;			/* arguments to the window function */
+	Index		winref;			/* index of associated WindowClause */
+	bool		winstar;		/* TRUE if argument list was really '*' */
+	bool		winagg;			/* is function a simple aggregate? */
+	int			location;		/* token location, or -1 if unknown */
+} WindowFunc;
+
 /* ----------------
  *	ArrayRef: describes an array subscripting operation
  *

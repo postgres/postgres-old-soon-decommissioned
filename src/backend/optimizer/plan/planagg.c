@@ -95,11 +95,11 @@ optimize_minmax_aggregates(PlannerInfo *root, List *tlist, Path *best_path)
 	/*
 	 * Reject unoptimizable cases.
 	 *
-	 * We don't handle GROUP BY, because our current implementations of
-	 * grouping require looking at all the rows anyway, and so there's not
-	 * much point in optimizing MIN/MAX.
+	 * We don't handle GROUP BY or windowing, because our current
+	 * implementations of grouping require looking at all the rows anyway,
+	 * and so there's not much point in optimizing MIN/MAX.
 	 */
-	if (parse->groupClause)
+	if (parse->groupClause || parse->hasWindowFuncs)
 		return NULL;
 
 	/*

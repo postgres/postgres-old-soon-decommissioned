@@ -415,6 +415,7 @@ set_plan_refs(PlannerGlobal *glob, Plan *plan, int rtoffset)
 			}
 			break;
 		case T_Agg:
+		case T_WindowAgg:
 		case T_Group:
 			set_upper_references(glob, plan, rtoffset);
 			break;
@@ -678,6 +679,11 @@ fix_expr_common(PlannerGlobal *glob, Node *node)
 	{
 		record_plan_function_dependency(glob,
 										((Aggref *) node)->aggfnoid);
+	}
+	else if (IsA(node, WindowFunc))
+	{
+		record_plan_function_dependency(glob,
+										((WindowFunc *) node)->winfnoid);
 	}
 	else if (IsA(node, FuncExpr))
 	{

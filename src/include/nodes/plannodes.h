@@ -537,6 +537,21 @@ typedef struct Agg
 } Agg;
 
 /* ----------------
+ *		window aggregate node
+ * ----------------
+ */
+typedef struct WindowAgg
+{
+	Plan		plan;
+	int			partNumCols;	/* number of columns in partition clause */
+	AttrNumber *partColIdx;		/* their indexes in the target list */
+	Oid		   *partOperators;	/* equality operators for partition columns */
+	int			ordNumCols;		/* number of columns in ordering clause */
+	AttrNumber *ordColIdx;		/* their indexes in the target list */
+	Oid		   *ordOperators;	/* equality operators for ordering columns */
+} WindowAgg;
+
+/* ----------------
  *		unique node
  * ----------------
  */

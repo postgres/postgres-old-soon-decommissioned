@@ -22,6 +22,6 @@ OBJS = execAmi.o execCurrent.o execGrouping.o execJunk.o execMain.o \
        nodeSeqscan.o nodeSetOp.o nodeSort.o nodeUnique.o \
        nodeValuesscan.o nodeCtescan.o nodeWorktablescan.o \
        nodeLimit.o nodeGroup.o nodeSubplan.o nodeSubqueryscan.o nodeTidscan.o \
-       tstoreReceiver.o spi.o
+       nodeWindowAgg.o tstoreReceiver.o spi.o
 
 include $(top_srcdir)/src/backend/common.mk

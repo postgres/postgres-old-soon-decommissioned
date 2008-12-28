@@ -20,6 +20,7 @@
 #include "executor/nodeBitmapHeapscan.h"
 #include "executor/nodeBitmapIndexscan.h"
 #include "executor/nodeBitmapOr.h"
+#include "executor/nodeCtescan.h"
 #include "executor/nodeFunctionscan.h"
 #include "executor/nodeGroup.h"
 #include "executor/nodeGroup.h"
@@ -40,7 +41,7 @@
 #include "executor/nodeTidscan.h"
 #include "executor/nodeUnique.h"
 #include "executor/nodeValuesscan.h"
-#include "executor/nodeCtescan.h"
+#include "executor/nodeWindowAgg.h"
 #include "executor/nodeWorktablescan.h"
 #include "nodes/nodeFuncs.h"
 #include "utils/syscache.h"
@@ -208,6 +209,10 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 
 		case T_AggState:
 			ExecReScanAgg((AggState *) node, exprCtxt);
+			break;
+
+		case T_WindowAggState:
+			ExecReScanWindowAgg((WindowAggState *) node, exprCtxt);
 			break;
 
 		case T_UniqueState:

@@ -136,6 +136,7 @@ plan_set_operations(PlannerInfo *root, double tuple_fraction,
 	Assert(parse->jointree->quals == NULL);
 	Assert(parse->groupClause == NIL);
 	Assert(parse->havingQual == NULL);
+	Assert(parse->windowClause == NIL);
 	Assert(parse->distinctClause == NIL);
 
 	/*

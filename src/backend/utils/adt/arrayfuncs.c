@@ -4208,7 +4208,7 @@ makeArrayResult(ArrayBuildState *astate,
 	dims[0] = astate->nelems;
 	lbs[0] = 1;
 
-	return makeMdArrayResult(astate, 1, dims, lbs, rcontext);
+	return makeMdArrayResult(astate, 1, dims, lbs, rcontext, true);
 }
 
 /*
@@ -4219,13 +4219,15 @@ makeArrayResult(ArrayBuildState *astate,
  *
  *	astate is working state (not NULL)
  *	rcontext is where to construct result
+ *	release is true if okay to release working state
  */
 Datum
 makeMdArrayResult(ArrayBuildState *astate,
 				  int ndims,
 				  int *dims,
 				  int *lbs,
-				  MemoryContext rcontext)
+				  MemoryContext rcontext,
+				  bool release)
 {
 	ArrayType  *result;
 	MemoryContext oldcontext;
@@ -4246,7 +4248,8 @@ makeMdArrayResult(ArrayBuildState *astate,
 	MemoryContextSwitchTo(oldcontext);
 
 	/* Clean up all the junk */
-	MemoryContextDelete(astate->mcontext);
+	if (release)
+		MemoryContextDelete(astate->mcontext);
 
 	return PointerGetDatum(result);
 }

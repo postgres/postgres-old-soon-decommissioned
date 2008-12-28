@@ -590,6 +590,9 @@ explain_outNode(StringInfo str,
 					break;
 			}
 			break;
+		case T_WindowAgg:
+			pname = "WindowAgg";
+			break;
 		case T_Unique:
 			pname = "Unique";
 			break;

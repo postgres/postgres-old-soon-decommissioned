@@ -391,6 +391,7 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 		funccallnode->agg_star = false;
 		funccallnode->agg_distinct = false;
 		funccallnode->func_variadic = false;
+		funccallnode->over = NULL;
 		funccallnode->location = -1;
 
 		constraint = makeNode(Constraint);
@@ -1471,6 +1472,10 @@ transformRuleStmt(RuleStmt *stmt, const char *queryString,
 		ereport(ERROR,
 				(errcode(ERRCODE_GROUPING_ERROR),
 		   errmsg("cannot use aggregate function in rule WHERE condition")));
+	if (pstate->p_hasWindowFuncs)
+		ereport(ERROR,
+				(errcode(ERRCODE_WINDOWING_ERROR),
+				 errmsg("cannot use window function in rule WHERE condition")));
 
 	/*
 	 * 'instead nothing' rules with a qualification need a query rangetable so
