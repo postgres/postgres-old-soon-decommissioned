@@ -1458,7 +1458,7 @@ SELECT distributors.* WHERE distributors.name = 'Westward';
     in window definitions.  <productname>PostgreSQL</productname> does
     not yet implement framing clauses, and always follows the
     default framing behavior, which is equivalent to the framing clause
-    <literal>ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</>.
+    <literal>RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</>.
    </para>
   </refsect2>
 
