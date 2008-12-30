@@ -777,6 +777,8 @@ equalRuleLocks(RuleLock *rlock1, RuleLock *rlock2)
 				return false;
 			if (rule1->attrno != rule2->attrno)
 				return false;
+			if (rule1->enabled != rule2->enabled)
+				return false;
 			if (rule1->isInstead != rule2->isInstead)
 				return false;
 			if (!equal(rule1->qual, rule2->qual))
