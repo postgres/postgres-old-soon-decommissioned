@@ -72,7 +72,7 @@ typedef BTPageOpaqueData *BTPageOpaque;
 #define BTP_META		(1 << 3)	/* meta-page */
 #define BTP_HALF_DEAD	(1 << 4)	/* empty, but still in tree */
 #define BTP_SPLIT_END	(1 << 5)	/* rightmost page of split group */
-#define BTP_HAS_GARBAGE (1 << 6)	/* page has LP_DELETEd tuples */
+#define BTP_HAS_GARBAGE (1 << 6)	/* page has LP_DEAD tuples */
 
 /*
  * The max allowed value of a cycle ID is a bit less than 64K.	This is
