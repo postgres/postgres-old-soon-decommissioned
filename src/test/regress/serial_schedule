@@ -97,6 +97,9 @@ test: guc
 test: bitmapops
 test: combocid
 test: tsearch
+test: tsdicts
+test: foreign_data
+test: window
 test: plancache
 test: limit
 test: plpgsql
@@ -107,8 +110,6 @@ test: rangefuncs
 test: prepare
 test: without_oid
 test: conversion
-test: tsdicts
-test: foreign_data
 test: truncate
 test: alter_table
 test: sequence
@@ -116,7 +117,6 @@ test: polymorphism
 test: rowtypes
 test: returning
 test: largeobject
-test: window
 test: with
 test: xml
 test: stats
