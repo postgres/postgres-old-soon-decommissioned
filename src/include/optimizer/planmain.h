@@ -57,10 +57,10 @@ extern Agg *make_agg(PlannerInfo *root, List *tlist, List *qual,
 		 long numGroups, int numAggs,
 		 Plan *lefttree);
 extern WindowAgg *make_windowagg(PlannerInfo *root, List *tlist,
-			   int numWindowFuncs,
+			   int numWindowFuncs, Index winref,
 			   int partNumCols, AttrNumber *partColIdx, Oid *partOperators,
 			   int ordNumCols, AttrNumber *ordColIdx, Oid *ordOperators,
-			   Plan *lefttree);
+			   int frameOptions, Plan *lefttree);
 extern Group *make_group(PlannerInfo *root, List *tlist, List *qual,
 		   int numGroupCols, AttrNumber *grpColIdx, Oid *grpOperators,
 		   double numGroups,

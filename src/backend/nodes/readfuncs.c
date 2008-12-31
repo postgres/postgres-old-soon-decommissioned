@@ -231,6 +231,7 @@ _readWindowClause(void)
 	READ_STRING_FIELD(refname);
 	READ_NODE_FIELD(partitionClause);
 	READ_NODE_FIELD(orderClause);
+	READ_INT_FIELD(frameOptions);
 	READ_UINT_FIELD(winref);
 	READ_BOOL_FIELD(copiedOrder);
 

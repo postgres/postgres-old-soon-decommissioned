@@ -1533,12 +1533,14 @@ typedef struct WindowAggState
 									 * have been spooled into tuplestore */
 	bool		more_partitions;	/* true if there's more partitions after
 									 * this one */
+	bool		frametail_valid;	/* true if frametailpos is known up to date
+									 * for current row */
 
 	TupleTableSlot *first_part_slot;	/* first tuple of current or next
 										 * partition */
 
 	/* temporary slots for tuples fetched back from tuplestore */
-	TupleTableSlot *first_peer_slot;
+	TupleTableSlot *agg_row_slot;
 	TupleTableSlot *temp_slot_1;
 	TupleTableSlot *temp_slot_2;
 } WindowAggState;
