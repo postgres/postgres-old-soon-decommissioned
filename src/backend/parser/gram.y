@@ -4801,6 +4801,10 @@ createfunc_opt_item:
 				{
 					$$ = makeDefElem("language", (Node *)makeString($2));
 				}
+			| WINDOW
+				{
+					$$ = makeDefElem("window", (Node *)makeInteger(TRUE));
+				}
 			| common_func_opt_item
 				{
 					$$ = $1;

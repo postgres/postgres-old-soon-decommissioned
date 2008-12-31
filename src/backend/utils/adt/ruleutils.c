@@ -1466,6 +1466,8 @@ pg_get_functiondef(PG_FUNCTION_ARGS)
 	/* Emit some miscellaneous options on one line */
 	oldlen = buf.len;
 
+	if (proc->proiswindow)
+		appendStringInfoString(&buf, " WINDOW");
 	switch (proc->provolatile)
 	{
 		case PROVOLATILE_IMMUTABLE:

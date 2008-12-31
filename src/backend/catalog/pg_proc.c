@@ -53,7 +53,7 @@ static bool match_prosrc_to_literal(const char *prosrc, const char *literal,
  *
  * Note: allParameterTypes, parameterModes, parameterNames, and proconfig
  * are either arrays of the proper types or NULL.  We declare them Datum,
- * not "ArrayType *", to avoid importing array.h into pg_proc.h.
+ * not "ArrayType *", to avoid importing array.h into pg_proc_fn.h.
  * ----------------------------------------------------------------
  */
 Oid
@@ -67,6 +67,7 @@ ProcedureCreate(const char *procedureName,
 				const char *prosrc,
 				const char *probin,
 				bool isAgg,
+				bool isWindowFunc,
 				bool security_definer,
 				bool isStrict,
 				char volatility,
@@ -80,8 +81,6 @@ ProcedureCreate(const char *procedureName,
 				float4 prorows)
 {
 	Oid			retval;
-	/* XXX we don't currently have a way to make new window functions */
-	bool		isWindowFunc = false;
 	int			parameterCount;
 	int			allParamCount;
 	Oid		   *allParams;
