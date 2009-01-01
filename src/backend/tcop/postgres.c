@@ -1714,12 +1714,11 @@ exec_bind_message(StringInfo input_message)
 		cplan = NULL;
 	}
 
-	/* Done with the snapshot used for parameter I/O and parsing/planning */
-	if (snapshot_set)
-		PopActiveSnapshot();
-
 	/*
-	 * Define portal and start execution.
+	 * Now we can define the portal.
+	 *
+	 * DO NOT put any code that could possibly throw an error between the
+	 * above "RevalidateCachedPlan(psrc, false)" call and here.
 	 */
 	PortalDefineQuery(portal,
 					  saved_stmt_name,
@@ -1728,6 +1727,13 @@ exec_bind_message(StringInfo input_message)
 					  plan_list,
 					  cplan);
 
+	/* Done with the snapshot used for parameter I/O and parsing/planning */
+	if (snapshot_set)
+		PopActiveSnapshot();
+
+	/*
+	 * And we're ready to start portal execution.
+	 */
 	PortalStart(portal, params, InvalidSnapshot);
 
 	/*
