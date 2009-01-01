@@ -11,5 +11,5 @@ do
 	pipe sed 's/^\(.*Copyright (c) [12][0-9][0-9][0-9]\) \?\(,\? PostgreSQL Global Development Group.*\)$/\1-'`date '+%Y'`'\2/' $FILE
 done
 
-echo "Manually update doc/src/sgml/legal.sgml too" 1>&2
+echo "Manually update doc/src/sgml/legal.sgml and src/interfaces/libpq/libpq.rc.in too" 1>&2
 
