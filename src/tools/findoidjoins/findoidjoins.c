@@ -1,7 +1,7 @@
 /*
  * findoidjoins.c
  *
- * Copyright (c) 2002-2008, PostgreSQL Global Development Group
+ * Copyright (c) 2002-2009, PostgreSQL Global Development Group
  *
  * $PostgreSQL$
  */

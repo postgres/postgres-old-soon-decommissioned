@@ -3,7 +3,7 @@
  * dummy_fdw.c
  *        "dummy" foreign-data wrapper
  *
- * Portions Copyright (c) 1996-2008, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2009, PostgreSQL Global Development Group
  *
  * IDENTIFICATION
  *        $PostgreSQL$
