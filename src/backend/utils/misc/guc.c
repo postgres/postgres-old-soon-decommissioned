@@ -7283,11 +7283,11 @@ assign_custom_variable_classes(const char *newval, bool doit, GucSource source)
 			continue;
 		}
 
-		if (hasSpaceAfterToken || !isalnum((unsigned char) c))
+		if (hasSpaceAfterToken || !(isalnum((unsigned char) c) || c == '_'))
 		{
 			/*
-			 * Syntax error due to token following space after token or non
-			 * alpha numeric character
+			 * Syntax error due to token following space after token or
+			 * non-identifier character
 			 */
 			pfree(buf.data);
 			return NULL;
