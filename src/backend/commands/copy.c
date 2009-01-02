@@ -1054,7 +1054,8 @@ DoCopy(const CopyStmt *stmt, const char *queryString)
 		((DR_copy *) dest)->cstate = cstate;
 
 		/* Create a QueryDesc requesting no output */
-		cstate->queryDesc = CreateQueryDesc(plan, GetActiveSnapshot(),
+		cstate->queryDesc = CreateQueryDesc(plan, queryString,
+											GetActiveSnapshot(),
 											InvalidSnapshot,
 											dest, NULL, false);
 

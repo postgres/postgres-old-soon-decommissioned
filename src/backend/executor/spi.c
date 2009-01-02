@@ -1791,6 +1791,7 @@ _SPI_execute_plan(SPIPlanPtr plan, ParamListInfo paramLI,
 					snap = InvalidSnapshot;
 
 				qdesc = CreateQueryDesc((PlannedStmt *) stmt,
+										plansource->query_string,
 										snap, crosscheck_snapshot,
 										dest,
 										paramLI, false);

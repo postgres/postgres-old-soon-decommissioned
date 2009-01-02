@@ -411,11 +411,13 @@ postquel_start(execution_state *es, SQLFunctionCachePtr fcache)
 
 	if (IsA(es->stmt, PlannedStmt))
 		es->qd = CreateQueryDesc((PlannedStmt *) es->stmt,
+								 fcache->src,
 								 snapshot, InvalidSnapshot,
 								 dest,
 								 fcache->paramLI, false);
 	else
 		es->qd = CreateUtilityQueryDesc(es->stmt,
+										fcache->src,
 										snapshot,
 										dest,
 										fcache->paramLI);

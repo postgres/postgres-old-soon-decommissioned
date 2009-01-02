@@ -38,8 +38,10 @@ extern void ExplainOneUtility(Node *utilityStmt, ExplainStmt *stmt,
 				  ParamListInfo params,
 				  TupOutputState *tstate);
 
-extern void ExplainOnePlan(PlannedStmt *plannedstmt, ParamListInfo params,
-			   ExplainStmt *stmt, TupOutputState *tstate);
+extern void ExplainOnePlan(PlannedStmt *plannedstmt, ExplainStmt *stmt,
+						   const char *queryString,
+						   ParamListInfo params,
+						   TupOutputState *tstate);
 
 extern void ExplainPrintPlan(StringInfo str, QueryDesc *queryDesc,
 							 bool analyze, bool verbose);
