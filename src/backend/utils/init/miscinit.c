@@ -1131,6 +1131,9 @@ ValidatePgVersion(const char *path)
 char	   *shared_preload_libraries_string = NULL;
 char	   *local_preload_libraries_string = NULL;
 
+/* Flag telling that we are loading shared_preload_libraries */
+bool		process_shared_preload_libraries_in_progress = false;
+
 /*
  * load the shared libraries listed in 'libraries'
  *
@@ -1197,9 +1200,11 @@ load_libraries(const char *libraries, const char *gucname, bool restricted)
 void
 process_shared_preload_libraries(void)
 {
+	process_shared_preload_libraries_in_progress = true;
 	load_libraries(shared_preload_libraries_string,
 				   "shared_preload_libraries",
 				   false);
+	process_shared_preload_libraries_in_progress = false;
 }
 
 /*
