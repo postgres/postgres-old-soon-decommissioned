@@ -106,7 +106,7 @@ RelationCreateStorage(RelFileNode rnode, bool istemp)
 	srel = smgropen(rnode);
 	smgrcreate(srel, MAIN_FORKNUM, false);
 
-	if (istemp)
+	if (!istemp)
 	{
 		/*
 		 * Make an XLOG entry showing the file creation.  If we abort, the file
@@ -203,7 +203,7 @@ RelationTruncate(Relation rel, BlockNumber nblocks)
 	 * harmless failure to truncate, that could spell trouble at WAL replay,
 	 * into a certain PANIC.
 	 */
-	if (rel->rd_istemp)
+	if (!rel->rd_istemp)
 	{
 		/*
 		 * Make an XLOG entry showing the file truncation.
