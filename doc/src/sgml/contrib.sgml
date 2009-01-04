@@ -103,6 +103,7 @@ psql -d dbname -f <replaceable>SHAREDIR</>/contrib/<replaceable>module</>.sql
  &pgfreespacemap;
  &pgrowlocks;
  &pgstandby;
+ &pgstatstatements;
  &pgstattuple;
  &pgtrgm;
  &seg;

@@ -116,6 +116,7 @@
 <!entity pgfreespacemap  SYSTEM "pgfreespacemap.sgml">
 <!entity pgrowlocks      SYSTEM "pgrowlocks.sgml">
 <!entity pgstandby       SYSTEM "pgstandby.sgml">
+<!entity pgstatstatements SYSTEM "pgstatstatements.sgml">
 <!entity pgstattuple     SYSTEM "pgstattuple.sgml">
 <!entity pgtrgm          SYSTEM "pgtrgm.sgml">
 <!entity seg             SYSTEM "seg.sgml">

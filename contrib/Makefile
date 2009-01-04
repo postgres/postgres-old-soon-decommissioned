@@ -27,6 +27,7 @@ WANTED_DIRS = \
 		pg_buffercache	\
 		pg_freespacemap \
 		pg_standby	\
+		pg_stat_statements \
 		pg_trgm		\
 		pgbench		\
 		pgcrypto	\

@@ -2731,7 +2731,7 @@ PostmasterStateMachine(void)
 		ereport(LOG,
 				(errmsg("all server processes terminated; reinitializing")));
 
-		shmem_exit(0);
+		shmem_exit(1);
 		reset_shared(PostPortNumber);
 
 		StartupPID = StartupDataBase();
