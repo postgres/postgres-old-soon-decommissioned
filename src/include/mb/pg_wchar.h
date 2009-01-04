@@ -358,6 +358,8 @@ extern int	pg_mic_mblen(const unsigned char *mbstr);
 extern int	pg_mbstrlen(const char *mbstr);
 extern int	pg_mbstrlen_with_len(const char *mbstr, int len);
 extern int	pg_mbcliplen(const char *mbstr, int len, int limit);
+extern int	pg_encoding_mbcliplen(int encoding, const char *mbstr,
+								  int len, int limit);
 extern int	pg_mbcharcliplen(const char *mbstr, int len, int imit);
 extern int	pg_encoding_max_length(int encoding);
 extern int	pg_database_encoding_max_length(void);
