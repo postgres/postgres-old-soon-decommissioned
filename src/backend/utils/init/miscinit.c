@@ -1145,6 +1145,7 @@ load_libraries(const char *libraries, const char *gucname, bool restricted)
 {
 	char	   *rawstring;
 	List	   *elemlist;
+	int			elevel;
 	ListCell   *l;
 
 	if (libraries == NULL || libraries[0] == '\0')
@@ -1166,6 +1167,18 @@ load_libraries(const char *libraries, const char *gucname, bool restricted)
 		return;
 	}
 
+	/*
+	 * Choose notice level: avoid repeat messages when re-loading a library
+	 * that was preloaded into the postmaster.  (Only possible in EXEC_BACKEND
+	 * configurations)
+	 */
+#ifdef EXEC_BACKEND
+	if (IsUnderPostmaster && process_shared_preload_libraries_in_progress)
+		elevel = DEBUG2;
+	else
+#endif
+		elevel = LOG;
+
 	foreach(l, elemlist)
 	{
 		char	   *tok = (char *) lfirst(l);
@@ -1185,7 +1198,7 @@ load_libraries(const char *libraries, const char *gucname, bool restricted)
 			filename = expanded;
 		}
 		load_file(filename, restricted);
-		ereport(LOG,
+		ereport(elevel,
 				(errmsg("loaded library \"%s\"", filename)));
 		pfree(filename);
 	}
