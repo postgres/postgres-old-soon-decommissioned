@@ -51,6 +51,9 @@
 
 #include "getopt_long.h"
 
+extern char *optarg;
+extern int	optind;
+
 #ifndef HAVE_INT_OPTRESET
 int			optreset;
 #endif
@@ -72,8 +75,6 @@ main(int argc, char **argv)
 	int			exit_code;
 	Archive    *AH;
 	char	   *inputFileSpec;
-	extern int	optind;
-	extern char *optarg;
 	static int	disable_triggers = 0;
 	static int	no_data_for_failed_tables = 0;
 	static int  outputNoTablespaces = 0;
@@ -114,6 +115,7 @@ main(int argc, char **argv)
 		{"disable-triggers", no_argument, &disable_triggers, 1},
 		{"no-data-for-failed-tables", no_argument, &no_data_for_failed_tables, 1},
 		{"no-tablespaces", no_argument, &outputNoTablespaces, 1},
+		{"role", required_argument, NULL, 2},
 		{"use-set-session-authorization", no_argument, &use_setsessauth, 1},
 
 		{NULL, 0, NULL, 0}
@@ -261,13 +263,17 @@ main(int argc, char **argv)
 				}
 				break;
 
+			case '1':			/* Restore data in a single transaction */
+				opts->single_txn = true;
+				opts->exit_on_error = true;
+				break;
+
 			case 0:
 				/* This covers the long options equivalent to -X xxx. */
 				break;
 
-			case '1':			/* Restore data in a single transaction */
-				opts->single_txn = true;
-				opts->exit_on_error = true;
+			case 2:				/* SET ROLE */
+				opts->use_role = optarg;
 				break;
 
 			default:
@@ -405,6 +411,7 @@ usage(const char *progname)
 			 "                           do not restore data of tables that could not be\n"
 			 "                           created\n"));
 	printf(_("  --no-tablespaces         do not dump tablespace assignments\n"));
+	printf(_("  --role=ROLENAME          do SET ROLE before restore\n"));
 	printf(_("  --use-set-session-authorization\n"
 			 "                           use SESSION AUTHORIZATION commands instead of\n"
 			 "                           OWNER TO commands\n"));

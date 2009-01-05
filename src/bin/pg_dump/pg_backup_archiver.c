@@ -462,9 +462,8 @@ NewRestoreOptions(void)
 
 	opts = (RestoreOptions *) calloc(1, sizeof(RestoreOptions));
 
+	/* set any fields that shouldn't default to zeroes */
 	opts->format = archUnknown;
-	opts->suppressDumpWarnings = false;
-	opts->exit_on_error = false;
 
 	return opts;
 }
@@ -2145,6 +2144,10 @@ _doSetFixedOutputState(ArchiveHandle *AH)
 	/* Select the correct string literal syntax */
 	ahprintf(AH, "SET standard_conforming_strings = %s;\n",
 			 AH->public.std_strings ? "on" : "off");
+
+	/* Select the role to be used during restore */
+	if (AH->ropt && AH->ropt->use_role)
+		ahprintf(AH, "SET ROLE %s;\n", fmtId(AH->ropt->use_role));
 
 	/* Make sure function checking is disabled */
 	ahprintf(AH, "SET check_function_bodies = false;\n");
