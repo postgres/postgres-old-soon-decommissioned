@@ -670,9 +670,8 @@ gistoptions(PG_FUNCTION_ARGS)
 	bool		validate = PG_GETARG_BOOL(1);
 	bytea	   *result;
 
-	result = default_reloptions(reloptions, validate,
-								GIST_MIN_FILLFACTOR,
-								GIST_DEFAULT_FILLFACTOR);
+	result = default_reloptions(reloptions, validate, RELOPT_KIND_GIST);
+
 	if (result)
 		PG_RETURN_BYTEA_P(result);
 	PG_RETURN_NULL();
