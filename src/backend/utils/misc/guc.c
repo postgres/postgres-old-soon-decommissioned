@@ -5747,9 +5747,17 @@ define_custom_variable(struct config_generic * variable)
 	value = *pHolder->variable;
 
 	if (value)
-		set_config_option(name, value,
-						  phcontext, pHolder->gen.source,
-						  GUC_ACTION_SET, true);
+	{
+		if (set_config_option(name, value,
+							  phcontext, pHolder->gen.source,
+							  GUC_ACTION_SET, true))
+		{
+			/* Also copy over any saved source-location information */
+			if (pHolder->gen.sourcefile)
+				set_config_sourcefile(name, pHolder->gen.sourcefile,
+									  pHolder->gen.sourceline);
+		}
+	}
 
 	/*
 	 * Free up as much as we conveniently can of the placeholder structure
