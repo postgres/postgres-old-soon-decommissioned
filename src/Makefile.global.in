@@ -322,6 +322,8 @@ WANTED_LANGUAGES = @WANTED_LANGUAGES@
 # Name of the "template"
 PORTNAME= @PORTNAME@
 
+build_os = @build_os@
+
 host_tuple = @host@
 host_os = @host_os@
 host_cpu = @host_cpu@

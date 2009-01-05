@@ -16,7 +16,7 @@ ifdef NO_LOCALE
 NOLOCALE += --no-locale
 endif
 
-ifneq ($(PORTNAME),win32)
+ifneq ($(build_os),mingw32)
 abs_builddir := $(shell pwd)
 else
 abs_builddir := $(shell pwd -W)
