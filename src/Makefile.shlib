@@ -406,15 +406,16 @@ else # PORTNAME == cygwin || PORTNAME == win32
 
 # Cygwin or Win32 case
 
-DLL_DEFFILE = lib$(NAME)dll.def
-
 # If SHLIB_EXPORTS is set, the rules below will build a .def file from
 # that.  Else we build a temporary one here.
 ifeq (,$(SHLIB_EXPORTS))
+DLL_DEFFILE = lib$(NAME)dll.def
 exports_file = $(DLL_DEFFILE)
 
 $(exports_file): $(OBJS)
 	$(DLLTOOL) --export-all $(DLLTOOL_DEFFLAGS) --output-def $@ $^
+else
+DLL_DEFFILE = $(srcdir)/lib$(NAME)dll.def
 endif
 
 $(shlib): $(OBJS) $(DLL_DEFFILE)

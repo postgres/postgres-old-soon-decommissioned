@@ -67,4 +67,4 @@ win32ver.rc: $(top_srcdir)/src/port/win32ver.rc
 	sed -e 's;FILEDESC;$(PGFILEDESC);' -e 's;VFT_APP;$(PGFTYPE);' -e 's;_ICO_;$(PGICOSTR);' -e 's;\(VERSION.*\),0 *$$;\1,'`date '+%y%j' | sed 's/^0*//'`';' $< >$@
 
 win32ver.o: win32ver.rc
-	$(WINDRES) -i $< -o $@ --include-dir=$(top_builddir)/src/include
+	$(WINDRES) -i $< -o $@ --include-dir=$(top_builddir)/src/include --include-dir=$(srcdir)
