@@ -845,6 +845,16 @@ if test "$with_python" = yes; then
   PGAC_CHECK_PYTHON_EMBED_SETUP
 fi
 
+if test "$cross_compiling" = yes && test -z "$with_system_tzdata"; then
+  AC_PATH_PROG(ZIC, zic)
+  if test -z "$ZIC"; then
+    AC_MSG_ERROR([
+When cross-compiling, either use the option --with-system-tzdata to use
+existing time-zone data, or set the environment variable ZIC to a zic
+program to use during the build.])
+  fi
+fi
+
 # Supply a numeric version string for use by 3rd party add-ons
 # awk -F is a regex on some platforms, and not on others, so make "." a tab
 [PG_VERSION_NUM="`echo "$PACKAGE_VERSION" | sed 's/[A-Za-z].*$//' |
