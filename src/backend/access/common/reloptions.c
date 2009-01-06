@@ -667,7 +667,7 @@ parse_one_reloption(relopt_value *option, char *text_str, int text_len,
 {
 	char	   *value;
 	int			value_len;
-	bool		parsed;
+	bool		parsed = true;  /* quiet compiler */
 	bool		nofree = false;
 
 	if (option->isset && validate)
