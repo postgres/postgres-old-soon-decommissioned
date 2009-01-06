@@ -333,10 +333,10 @@ $Header$
    Please be specific about what part of the documentation you are unhappy
    with.
   </para>
- 
+
   <para>
    If your bug is a portability problem on a non-supported platform,
-   send mail to <email>pgsql-ports@postgresql.org</email>,
+   send mail to <email>pgsql-hackers@postgresql.org</email>,
    so we (and you) can work on
    porting <productname>PostgreSQL</productname> to your platform.
   </para>
