@@ -28,11 +28,12 @@
 #define COMMERROR	16			/* Client communication problems; same as LOG
 								 * for server reporting, but never sent to
 								 * client. */
-#define INFO		17			/* Informative messages that are always sent
-								 * to client;  is not affected by
-								 * client_min_messages */
+#define INFO		17			/* Messages specifically requested by user
+								 * (eg VACUUM VERBOSE output); always sent to
+								 * client regardless of client_min_messages,
+								 * but by default not sent to server log. */
 #define NOTICE		18			/* Helpful messages to users about query
-								 * operation;  sent to client and server log
+								 * operation; sent to client and server log
 								 * by default. */
 #define WARNING		19			/* Warnings.  NOTICE is for expected messages
 								 * like implicit sequence creation by SERIAL.

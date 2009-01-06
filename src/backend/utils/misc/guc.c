@@ -4541,7 +4541,7 @@ set_config_option(const char *name, const char *value,
 		elevel = IsUnderPostmaster ? DEBUG3 : LOG;
 	}
 	else if (source == PGC_S_DATABASE || source == PGC_S_USER)
-		elevel = INFO;
+		elevel = WARNING;
 	else
 		elevel = ERROR;
 
@@ -5904,22 +5904,21 @@ DefineCustomEnumVariable(const char *name,
 void
 EmitWarningsOnPlaceholders(const char *className)
 {
-	struct config_generic **vars = guc_variables;
-	struct config_generic **last = vars + num_guc_variables;
+	int			classLen = strlen(className);
+	int			i;
 
-	int			nameLen = strlen(className);
-
-	while (vars < last)
+	for (i = 0; i < num_guc_variables; i++)
 	{
-		struct config_generic *var = *vars++;
+		struct config_generic *var = guc_variables[i];
 
 		if ((var->flags & GUC_CUSTOM_PLACEHOLDER) != 0 &&
-			strncmp(className, var->name, nameLen) == 0 &&
-			var->name[nameLen] == GUC_QUALIFIER_SEPARATOR)
+			strncmp(className, var->name, classLen) == 0 &&
+			var->name[classLen] == GUC_QUALIFIER_SEPARATOR)
 		{
-			ereport(INFO,
+			ereport(WARNING,
 					(errcode(ERRCODE_UNDEFINED_OBJECT),
-					 errmsg("unrecognized configuration parameter \"%s\"", var->name)));
+					 errmsg("unrecognized configuration parameter \"%s\"",
+							var->name)));
 		}
 	}
 }
@@ -5952,7 +5951,6 @@ GetPGVariableResultDesc(const char *name)
 						   TEXTOID, -1, 0);
 		TupleDescInitEntry(tupdesc, (AttrNumber) 3, "description",
 						   TEXTOID, -1, 0);
-
 	}
 	else
 	{
