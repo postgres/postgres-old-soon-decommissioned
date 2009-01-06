@@ -428,7 +428,7 @@ describeOperators(const char *pattern, bool showSystem)
 					  gettext_noop("Description"));
 
  	if (!showSystem)
- 		appendPQExpBuffer(&buf, "      AND n.nspname <> 'pg_catalog'\n");
+ 		appendPQExpBuffer(&buf, "      WHERE n.nspname <> 'pg_catalog'\n");
 
 	processSQLNamePattern(pset.db, &buf, pattern, !showSystem, true,
 						  "n.nspname", "o.oprname", NULL,
@@ -743,7 +743,7 @@ objectDescription(const char *pattern, bool showSystem)
 	"       LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace\n",
 					  gettext_noop("trigger"));
  	if (!showSystem)
- 		appendPQExpBuffer(&buf, "      AND n.nspname <> 'pg_catalog'\n");
+ 		appendPQExpBuffer(&buf, "      WHERE n.nspname <> 'pg_catalog'\n");
 
 	/* XXX not sure what to do about visibility rule here? */
 	processSQLNamePattern(pset.db, &buf, pattern, !showSystem, false,
