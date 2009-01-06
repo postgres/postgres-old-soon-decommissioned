@@ -362,9 +362,9 @@ mydb=#
     <indexterm><primary>version</primary></indexterm>
 <screen>
 <prompt>mydb=&gt;</prompt> <userinput>SELECT version();</userinput>
-                            version
-----------------------------------------------------------------
- PostgreSQL &version; on i586-pc-linux-gnu, compiled by GCC 2.96
+                               version
+ -----------------------------------------------------------------------
+ PostgreSQL &version; on i586-pc-linux-gnu, compiled by GCC 2.96, 32-bit
 (1 row)
 
 <prompt>mydb=&gt;</prompt> <userinput>SELECT current_date;</userinput>
