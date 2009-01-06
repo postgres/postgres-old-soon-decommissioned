@@ -391,7 +391,7 @@ usage(const char *progname)
 
 	printf(_("\nOptions controlling the restore:\n"));
 	printf(_("  -a, --data-only          restore only the data, no schema\n"));
-	printf(_("  -c, --clean              clean (drop) schema prior to create\n"));
+	printf(_("  -c, --clean              clean (drop) database objects before recreating\n"));
 	printf(_("  -C, --create             create the target database\n"));
 	printf(_("  -I, --index=NAME         restore named index\n"));
 	printf(_("  -L, --use-list=FILENAME  use specified table of contents for ordering\n"
