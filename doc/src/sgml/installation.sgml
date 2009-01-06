@@ -2391,6 +2391,12 @@ hosts=local4,bind4
 
      <listitem>
       <para>
+       OpenSSL is not supported.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
        Start <command>cygserver</command> for shared memory support.
        To do this, enter the command <literal>/usr/sbin/cygserver
        &</literal>.  This program needs to be running anytime you
