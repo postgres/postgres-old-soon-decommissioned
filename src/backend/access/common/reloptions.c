@@ -769,7 +769,8 @@ default_reloptions(Datum reloptions, bool validate, relopt_kind kind)
 
 	for (i = 0; i < numoptions; i++)
 	{
-		HANDLE_INT_RELOPTION("fillfactor", lopts.fillfactor, options[i]);
+		HANDLE_INT_RELOPTION("fillfactor", lopts.fillfactor, options[i],
+							 (char *) NULL);
 	}
 
 	pfree(options);
