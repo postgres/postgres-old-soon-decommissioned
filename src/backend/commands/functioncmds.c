@@ -311,7 +311,15 @@ examine_parameter_list(List *parameters, Oid languageOid,
 						 errmsg("cannot use table references in parameter default value")));
 
 			/*
+			 * It can't return a set either --- but coerce_to_specific_type
+			 * already checked that for us.
+			 *
 			 * No subplans or aggregates, either...
+			 *
+			 * Note: the point of these restrictions is to ensure that an
+			 * expression that, on its face, hasn't got subplans, aggregates,
+			 * etc cannot suddenly have them after function default arguments
+			 * are inserted.
 			 */
 			if (pstate->p_hasSubLinks)
 				ereport(ERROR,
