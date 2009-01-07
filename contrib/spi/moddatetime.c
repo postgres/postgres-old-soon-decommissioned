@@ -13,9 +13,11 @@ not really know what I am doing.  I also had help from
 Jan Wieck <jwieck@debis.com> who told me about the timestamp_in("now") function.
 OH, me, I'm Terry Mackintosh <terry@terrym.com>
 */
+#include "postgres.h"
 
-#include "executor/spi.h"		/* this is what you need to work with SPI */
-#include "commands/trigger.h"	/* -"- and triggers */
+#include "catalog/pg_type.h"
+#include "executor/spi.h"
+#include "commands/trigger.h"
 
 PG_MODULE_MAGIC;
 

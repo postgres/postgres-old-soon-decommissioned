@@ -13,37 +13,10 @@
 #ifndef SPI_H
 #define SPI_H
 
-/*
- * This file may be used by client modules that haven't already
- * included postgres.h
- */
-#include "postgres.h"
-
-/*
- *	Most of these are not needed by this file, but may be used by
- *	user-written code that uses SPI
- */
-#include "access/heapam.h"
-#include "access/xact.h"
-#include "catalog/pg_language.h"
-#include "catalog/pg_proc.h"
-#include "catalog/pg_type.h"
-#include "executor/execdefs.h"
-#include "executor/executor.h"
-#include "nodes/execnodes.h"
-#include "nodes/params.h"
 #include "nodes/parsenodes.h"
-#include "nodes/plannodes.h"
-#include "nodes/primnodes.h"
-#include "nodes/relation.h"
-#include "tcop/dest.h"
-#include "tcop/pquery.h"
-#include "tcop/tcopprot.h"
-#include "tcop/utility.h"
-#include "utils/builtins.h"
-#include "utils/datum.h"
 #include "utils/portal.h"
-#include "utils/syscache.h"
+#include "utils/relcache.h"
+#include "utils/snapshot.h"
 
 
 typedef struct SPITupleTable

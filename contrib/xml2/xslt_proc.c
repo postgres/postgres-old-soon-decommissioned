@@ -1,14 +1,17 @@
 /*
- * $PostgreSQL:$ 
+ * $PostgreSQL$ 
  *
- * XSLT processing functions (requiring libxslt) */
-/* John Gray, for Torchbox 2003-04-01 */
-
+ * XSLT processing functions (requiring libxslt)
+ *
+ * John Gray, for Torchbox 2003-04-01
+ */
 #include "postgres.h"
-#include "fmgr.h"
+
 #include "executor/spi.h"
+#include "fmgr.h"
 #include "funcapi.h"
 #include "miscadmin.h"
+#include "utils/builtins.h"
 
 /* libxml includes */
 

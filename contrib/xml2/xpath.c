@@ -1,15 +1,17 @@
 /*
- * $PostgreSQL$ 
+ * $PostgreSQL$
  *
  * Parser interface for DOM-based parser (libxml) rather than
-   stream-based SAX-type parser */
-
+ * stream-based SAX-type parser
+ */
 #include "postgres.h"
-#include "fmgr.h"
+
 #include "executor/spi.h"
+#include "fmgr.h"
 #include "funcapi.h"
-#include "miscadmin.h"
 #include "lib/stringinfo.h"
+#include "miscadmin.h"
+#include "utils/builtins.h"
 
 /* libxml includes */
 

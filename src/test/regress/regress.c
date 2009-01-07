@@ -4,12 +4,19 @@
 
 #include "postgres.h"
 
-#include <float.h>				/* faked on sunos */
+#include <float.h>
+#include <math.h>
 
 #include "access/transam.h"
-#include "utils/geo_decls.h"	/* includes <math.h> */
-#include "executor/executor.h"	/* For GetAttributeByName */
-#include "commands/sequence.h"	/* for nextval() */
+#include "access/xact.h"
+#include "catalog/pg_type.h"
+#include "commands/sequence.h"
+#include "commands/trigger.h"
+#include "executor/executor.h"
+#include "executor/spi.h"
+#include "utils/builtins.h"
+#include "utils/geo_decls.h"
+
 
 #define P_MAXDIG 12
 #define LDELIM			'('
@@ -325,8 +332,6 @@ oldstyle_length(int n, text *t)
 	return n + len;
 }
 
-#include "executor/spi.h"		/* this is what you need to work with SPI */
-#include "commands/trigger.h"	/* -"- and triggers */
 
 static TransactionId fd17b_xid = InvalidTransactionId;
 static TransactionId fd17a_xid = InvalidTransactionId;

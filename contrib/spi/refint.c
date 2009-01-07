@@ -1,16 +1,17 @@
 /*
- * $PostgreSQL:$ 
+ * $PostgreSQL$ 
  *
  *
  * refint.c --	set of functions to define referential integrity
  *		constraints using general triggers.
  */
+#include "postgres.h"
 
-#include "executor/spi.h"		/* this is what you need to work with SPI */
-
-#include "commands/trigger.h"	/* -"- and triggers */
 #include <ctype.h>
 
+#include "commands/trigger.h"
+#include "executor/spi.h"
+#include "utils/builtins.h"
 
 PG_MODULE_MAGIC;
 

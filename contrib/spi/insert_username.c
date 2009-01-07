@@ -6,10 +6,13 @@
  * insert user name in response to a trigger
  * usage:  insert_username (column_name)
  */
+#include "postgres.h"
 
-#include "executor/spi.h"		/* this is what you need to work with SPI */
-#include "commands/trigger.h"	/* -"- and triggers */
-#include "miscadmin.h"			/* for GetUserName() */
+#include "catalog/pg_type.h"
+#include "commands/trigger.h"
+#include "executor/spi.h"
+#include "miscadmin.h"
+#include "utils/builtins.h"
 
 PG_MODULE_MAGIC;
 

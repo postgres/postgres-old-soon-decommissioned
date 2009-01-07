@@ -16,6 +16,7 @@
 
 #include "plpgsql.h"
 
+#include "catalog/pg_type.h"
 #include "parser/parser.h"
 
 

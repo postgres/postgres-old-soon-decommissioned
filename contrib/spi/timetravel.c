@@ -1,21 +1,22 @@
 /*
- * $PostgreSQL:$ 
+ * $PostgreSQL$ 
  *
  *
  * timetravel.c --	function to get time travel feature
  *		using general triggers.
+ *
+ * Modified by BÖJTHE Zoltán, Hungary, mailto:urdesobt@axelero.hu
  */
+#include "postgres.h"
 
-/* Modified by BÖJTHE Zoltán, Hungary, mailto:urdesobt@axelero.hu */
+#include <ctype.h>
 
-#include "executor/spi.h"		/* this is what you need to work with SPI */
-#include "commands/trigger.h"	/* -"- and triggers */
-#include "miscadmin.h"			/* for GetPgUserName() */
+#include "catalog/pg_type.h"
+#include "commands/trigger.h"
+#include "executor/spi.h"
+#include "miscadmin.h"
+#include "utils/builtins.h"
 #include "utils/nabstime.h"
-
-#include <ctype.h>				/* tolower () */
-
-#define ABSTIMEOID	702			/* it should be in pg_type.h */
 
 PG_MODULE_MAGIC;
 

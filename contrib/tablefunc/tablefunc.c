@@ -34,6 +34,7 @@
 
 #include <math.h>
 
+#include "catalog/pg_type.h"
 #include "fmgr.h"
 #include "funcapi.h"
 #include "executor/spi.h"
