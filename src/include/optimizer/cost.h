@@ -29,6 +29,13 @@
 
 #define DEFAULT_EFFECTIVE_CACHE_SIZE  16384		/* measured in pages */
 
+typedef enum
+{
+	CONSTRAINT_EXCLUSION_OFF,			/* do not use c_e */
+	CONSTRAINT_EXCLUSION_ON,			/* apply c_e to all rels */
+	CONSTRAINT_EXCLUSION_PARTITION		/* apply c_e to otherrels only */
+} ConstraintExclusionType;
+
 
 /*
  * prototypes for costsize.c
@@ -52,7 +59,7 @@ extern bool enable_hashagg;
 extern bool enable_nestloop;
 extern bool enable_mergejoin;
 extern bool enable_hashjoin;
-extern bool constraint_exclusion;
+extern int	constraint_exclusion;
 
 extern double clamp_row_est(double nrows);
 extern double index_pages_fetched(double tuples_fetched, BlockNumber pages,
