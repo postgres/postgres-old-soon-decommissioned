@@ -341,9 +341,13 @@ extern int	gettimeofday(struct timeval * tp, struct timezone * tzp);
 extern char *crypt(const char *key, const char *setting);
 #endif
 
+/* WIN32 handled in port/win32.h */
+#ifndef WIN32
+#define pgoff_t off_t
 #if defined(bsdi) || defined(netbsd)
 extern int	fseeko(FILE *stream, off_t offset, int whence);
 extern off_t ftello(FILE *stream);
+#endif
 #endif
 
 #ifndef HAVE_FSEEKO

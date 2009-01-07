@@ -190,6 +190,18 @@ struct itimerval
 
 int			setitimer(int which, const struct itimerval * value, struct itimerval * ovalue);
 
+/*
+ * WIN32 does not provide 64-bit off_t, but does provide the functions operating
+ * with 64-bit offsets.
+ */
+#define pgoff_t __int64
+#ifdef WIN32_ONLY_COMPILER
+#define fseeko(stream, offset, origin) _fseeki64(stream, offset, origin)
+#define ftello(stream) _ftelli64(stream)
+#else
+#define fseeko(stream, offset, origin) fseeko64(stream, offset, origin)
+#define ftello(stream) ftello64(stream)
+#endif
 
 /*
  * Supplement to <sys/types.h>.
