@@ -58,6 +58,7 @@ typedef struct
 	bool		clientcert;
 	char	   *krb_server_hostname;
 	char	   *krb_realm;
+	bool		include_realm;
 } HbaLine;
 
 typedef struct Port hbaPort;
