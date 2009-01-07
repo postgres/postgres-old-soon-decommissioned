@@ -1693,7 +1693,7 @@ log_line_prefix(StringInfo buf)
 				break;
 			case 'v':
 				/* keep VXID format in sync with lockfuncs.c */
-				if (MyProc != NULL)
+				if (MyProc != NULL && MyProc->backendId != InvalidBackendId)
 					appendStringInfo(buf, "%d/%u",
 									 MyProc->backendId, MyProc->lxid);
 				break;
