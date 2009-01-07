@@ -79,7 +79,7 @@ extern char *optarg;
  *		global variables
  * ----------------
  */
-const char *debug_query_string; /* for pgmonitor and log_min_error_statement */
+const char *debug_query_string; /* client-supplied query string */
 
 /* Note: whereToSendOutput is initialized for the bootstrap/standalone case */
 CommandDest whereToSendOutput = DestDebug;
