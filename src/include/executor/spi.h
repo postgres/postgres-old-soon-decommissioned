@@ -84,6 +84,8 @@ extern int	SPI_connect(void);
 extern int	SPI_finish(void);
 extern void SPI_push(void);
 extern void SPI_pop(void);
+extern bool SPI_push_conditional(void);
+extern void SPI_pop_conditional(bool pushed);
 extern void SPI_restore_connection(void);
 extern int	SPI_execute(const char *src, bool read_only, long tcount);
 extern int SPI_execute_plan(void *plan, Datum *Values, const char *Nulls,

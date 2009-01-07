@@ -284,6 +284,31 @@ SPI_pop(void)
 	_SPI_curid--;
 }
 
+/* Conditional push: push only if we're inside a SPI procedure */
+bool
+SPI_push_conditional(void)
+{
+	bool	pushed = (_SPI_curid != _SPI_connected);
+
+	if (pushed)
+	{
+		_SPI_curid++;
+		/* We should now be in a state where SPI_connect would succeed */
+		Assert(_SPI_curid == _SPI_connected);
+	}
+	return pushed;
+}
+
+/* Conditional pop: pop only if SPI_push_conditional pushed */
+void
+SPI_pop_conditional(bool pushed)
+{
+	/* We should be in a state where SPI_connect would succeed */
+	Assert(_SPI_curid == _SPI_connected);
+	if (pushed)
+		_SPI_curid--;
+}
+
 /* Restore state of SPI stack after aborting a subtransaction */
 void
 SPI_restore_connection(void)
