@@ -2137,6 +2137,23 @@ VALUES ('New York', NULL, NULL, 'NY');
   </para>
 
   <para>
+   More generally, note that not all SQL commands are able to work on
+   inheritance hierarchies.  Commands that are used for data querying,
+   data modification, or schema modification
+   (e.g., <literal>SELECT</literal>, <literal>UPDATE</literal>, <literal>DELETE</literal>,
+   most variants of <literal>ALTER TABLE</literal>, but
+   not <literal>INSERT</literal> and <literal>ALTER TABLE ...
+   RENAME</literal>) typically default to including child tables and
+   support the <literal>ONLY</literal> notation to exclude them.
+   Commands that do database maintenance and tuning
+   (e.g., <literal>REINDEX</literal>, <literal>VACUUM</literal>)
+   typically only work on individual, physical tables and do no
+   support recursing over inheritance hierarchies.  The respective
+   behavior of each individual command is documented in the reference
+   part (<xref linkend="sql-commands">).
+  </para>
+
+  <para>
    A serious limitation of the inheritance feature is that indexes (including
    unique constraints) and foreign key constraints only apply to single
    tables, not to their inheritance children. This is true on both the
