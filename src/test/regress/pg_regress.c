@@ -1134,7 +1134,11 @@ get_alternative_expectfile(const char *expectfile, int i)
 	strcpy(tmp, expectfile);
 	last_dot = strrchr(tmp, '.');
 	if (!last_dot)
+	{
+		free(tmp);
+		free(s);
 		return NULL;
+	}
 	*last_dot = '\0';
 	snprintf(s, ssize, "%s_%d.%s", tmp, i, last_dot + 1);
 	free(tmp);
