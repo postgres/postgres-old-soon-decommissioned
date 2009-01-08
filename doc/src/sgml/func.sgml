@@ -12473,7 +12473,7 @@ SELECT typlen FROM pg_type WHERE oid = pg_typeof(33);
       <row>
        <entry><literal><function>txid_visible_in_snapshot</function>(<parameter>bigint</parameter>, <parameter>txid_snapshot</parameter>)</literal></entry>
        <entry><type>boolean</type></entry>
-       <entry>is transaction ID visible in snapshot?</entry>
+       <entry>is transaction ID visible in snapshot? (do not use with subtransaction ids)</entry>
       </row>
      </tbody>
     </tgroup>
