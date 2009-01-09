@@ -96,8 +96,8 @@ init-po: po/$(CATALOG_NAME).pot
 # For performance reasons, only calculate these when the user actually
 # requested update-po or a specific file.
 ifneq (,$(filter update-po %.po.new,$(MAKECMDGOALS)))
-ALL_LANGUAGES := $(shell find $(top_srcdir) -name '*.po' -printf '%f\n' | sort -u | sed 's/\.po$$//')
-all_compendia := $(shell find $(top_srcdir) -name '*.po' -printf '%p ')
+ALL_LANGUAGES := $(shell find $(top_srcdir) -name '*.po' -print | sed 's,^.*/\([^/]*\).po$$,\1,' | sort -u)
+all_compendia := $(shell find $(top_srcdir) -name '*.po' -print)
 else
 ALL_LANGUAGES = $(AVAIL_LANGUAGES)
 all_compendia = FORCE
