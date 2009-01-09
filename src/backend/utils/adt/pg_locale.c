@@ -476,7 +476,7 @@ strftime_win32(char *dst, size_t dstlen, const wchar_t *format, const struct tm 
 
 	encoding = GetDatabaseEncoding();
 
-	len = wcsftime(wbuf, sizeof(wbuf), format, tm);
+	len = wcsftime(wbuf, MAX_L10N_DATA, format, tm);
 	if (len == 0)
 		/* strftime call failed - return 0 with the contents of dst unspecified */
 		return 0;
@@ -492,7 +492,7 @@ strftime_win32(char *dst, size_t dstlen, const wchar_t *format, const struct tm 
 		char *convstr = pg_do_encoding_conversion(dst, len, PG_UTF8, encoding);
 		if (dst != convstr)
 		{
-			StrNCpy(dst, convstr, dstlen);
+			strlcpy(dst, convstr, dstlen);
 			len = strlen(dst);
 		}
 	}
