@@ -2131,16 +2131,6 @@ static struct config_string ConfigureNamesString[] =
 	},
 
 	{
-		{"krb_realm", PGC_SIGHUP, CONN_AUTH_SECURITY,
-			gettext_noop("Sets realm to match Kerberos and GSSAPI users against."),
-			NULL,
-			GUC_SUPERUSER_ONLY
-		},
-		&pg_krb_realm,
-		NULL, NULL, NULL
-	},
-
-	{
 		{"krb_server_keyfile", PGC_SIGHUP, CONN_AUTH_SECURITY,
 			gettext_noop("Sets the location of the Kerberos server key file."),
 			NULL,
@@ -2157,15 +2147,6 @@ static struct config_string ConfigureNamesString[] =
 		},
 		&pg_krb_srvnam,
 		PG_KRB_SRVNAM, NULL, NULL
-	},
-
-	{
-		{"krb_server_hostname", PGC_SIGHUP, CONN_AUTH_SECURITY,
-			gettext_noop("Sets the hostname of the Kerberos server."),
-			NULL
-		},
-		&pg_krb_server_hostname,
-		NULL, NULL, NULL
 	},
 
 	{
