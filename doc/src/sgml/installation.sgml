@@ -2,7 +2,7 @@
 
 <chapter id="installation">
  <title><![%standalone-include[<productname>PostgreSQL</>]]>
-  Installation Instructions</title>
+  Installation from Source Code</title>
 
  <indexterm zone="installation">
   <primary>installation</primary>
