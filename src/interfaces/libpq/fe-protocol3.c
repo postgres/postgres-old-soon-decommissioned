@@ -297,19 +297,24 @@ pqParseInput3(PGconn *conn)
 					/*
 					 * NoData indicates that we will not be seeing a
 					 * RowDescription message because the statement or portal
-					 * inquired about doesn't return rows. Set up a COMMAND_OK
-					 * result, instead of TUPLES_OK.
-					 */
-					if (conn->result == NULL)
-						conn->result = PQmakeEmptyPGresult(conn,
-														   PGRES_COMMAND_OK);
-
-					/*
-					 * If we're doing a Describe, we're ready to pass the
-					 * result back to the client.
+					 * inquired about doesn't return rows.
+					 *
+					 * If we're doing a Describe, we have to pass something
+					 * back to the client, so set up a COMMAND_OK result,
+					 * instead of TUPLES_OK.  Otherwise we can just ignore
+					 * this message.
 					 */
 					if (conn->queryclass == PGQUERY_DESCRIBE)
+					{
+						if (conn->result == NULL)
+						{
+							conn->result = PQmakeEmptyPGresult(conn,
+															PGRES_COMMAND_OK);
+							if (!conn->result)
+								return;
+						}
 						conn->asyncStatus = PGASYNC_READY;
+					}
 					break;
 				case 't':		/* Parameter Description */
 					if (getParamDescriptions(conn))
