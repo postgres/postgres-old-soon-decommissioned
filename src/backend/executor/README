@@ -124,7 +124,8 @@ be hidden inside function calls).  This case has a flow of control like
 		creates per-tuple context
 
 	ExecPrepareExpr
-		switch to per-query context to run ExecInitExpr
+		temporarily switch to per-query context
+		run the expression through expression_planner
 		ExecInitExpr
 
 	Repeatedly do:

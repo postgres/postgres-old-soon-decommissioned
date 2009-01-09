@@ -2018,6 +2018,9 @@ rowtype_field_matches(Oid rowtypeid, int fieldnum,
  *
  * NOTE: the planner assumes that this will always flatten nested AND and
  * OR clauses into N-argument form.  See comments in prepqual.c.
+ *
+ * NOTE: another critical effect is that any function calls that require
+ * default arguments will be expanded.
  *--------------------
  */
 Node *
@@ -3854,10 +3857,14 @@ evaluate_expr(Expr *expr, Oid result_type, int32 result_typmod)
 	/* We can use the estate's working context to avoid memory leaks. */
 	oldcontext = MemoryContextSwitchTo(estate->es_query_cxt);
 
+	/* Make sure any opfuncids are filled in. */
+	fix_opfuncids((Node *) expr);
+
 	/*
-	 * Prepare expr for execution.
+	 * Prepare expr for execution.  (Note: we can't use ExecPrepareExpr
+	 * because it'd result in recursively invoking eval_const_expressions.)
 	 */
-	exprstate = ExecPrepareExpr(expr, estate);
+	exprstate = ExecInitExpr(expr, NULL);
 
 	/*
 	 * And evaluate it.

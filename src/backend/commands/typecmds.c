@@ -50,7 +50,7 @@
 #include "executor/executor.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
-#include "optimizer/planmain.h"
+#include "optimizer/planner.h"
 #include "optimizer/var.h"
 #include "parser/parse_coerce.h"
 #include "parser/parse_expr.h"
@@ -2390,8 +2390,8 @@ GetDomainConstraints(Oid typeOid)
 
 			check_expr = (Expr *) stringToNode(TextDatumGetCString(val));
 
-			/* ExecInitExpr assumes we already fixed opfuncids */
-			fix_opfuncids((Node *) check_expr);
+			/* ExecInitExpr assumes we've planned the expression */
+			check_expr = expression_planner(check_expr);
 
 			r = makeNode(DomainConstraintState);
 			r->constrainttype = DOM_CONSTRAINT_CHECK;

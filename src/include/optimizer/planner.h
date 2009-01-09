@@ -29,9 +29,12 @@ extern PlannedStmt *planner(Query *parse, int cursorOptions,
 		ParamListInfo boundParams);
 extern PlannedStmt *standard_planner(Query *parse, int cursorOptions,
 				 ParamListInfo boundParams);
+
 extern Plan *subquery_planner(PlannerGlobal *glob, Query *parse,
 				 PlannerInfo *parent_root,
 				 bool hasRecursion, double tuple_fraction,
 				 PlannerInfo **subroot);
+
+extern Expr *expression_planner(Expr *expr);
 
 #endif   /* PLANNER_H */

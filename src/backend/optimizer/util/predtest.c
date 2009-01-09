@@ -22,6 +22,7 @@
 #include "miscadmin.h"
 #include "nodes/nodeFuncs.h"
 #include "optimizer/clauses.h"
+#include "optimizer/planmain.h"
 #include "optimizer/predtest.h"
 #include "utils/array.h"
 #include "utils/inval.h"
@@ -1405,8 +1406,11 @@ btree_predicate_proof(Expr *predicate, Node *clause, bool refute_it)
 							  (Expr *) pred_const,
 							  (Expr *) clause_const);
 
+	/* Fill in opfuncids */
+	fix_opfuncids((Node *) test_expr);
+
 	/* Prepare it for execution */
-	test_exprstate = ExecPrepareExpr(test_expr, estate);
+	test_exprstate = ExecInitExpr(test_expr, NULL);
 
 	/* And execute it. */
 	test_result = ExecEvalExprSwitchContext(test_exprstate,
