@@ -200,9 +200,8 @@ gmake update-po
     which will create a new blank message catalog file (the pot file
     you started with) and will merge it with the existing PO files.
     If the merge algorithm is not sure about a particular message it
-    marks it <quote>fuzzy</quote> as explained above.  For the case
-    where something went really wrong, the old PO file is saved with a
-    <filename>.po.old</filename> extension.
+    marks it <quote>fuzzy</quote> as explained above.  The new PO file
+    is saved with a <filename>.po.new</filename> extension.
    </para>
   </sect2>
 
