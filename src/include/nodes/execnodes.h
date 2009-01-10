@@ -1152,6 +1152,7 @@ typedef struct BitmapIndexScanState
  *
  *		bitmapqualorig	   execution state for bitmapqualorig expressions
  *		tbm				   bitmap obtained from child index scan(s)
+ *		tbmiterator		   iterator for scanning current pages
  *		tbmres			   current-page data
  * ----------------
  */
@@ -1160,6 +1161,7 @@ typedef struct BitmapHeapScanState
 	ScanState	ss;				/* its first field is NodeTag */
 	List	   *bitmapqualorig;
 	TIDBitmap  *tbm;
+	TBMIterator *tbmiterator;
 	TBMIterateResult *tbmres;
 } BitmapHeapScanState;
 

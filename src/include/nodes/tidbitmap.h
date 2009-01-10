@@ -31,6 +31,9 @@
  */
 typedef struct TIDBitmap TIDBitmap;
 
+/* Likewise, TBMIterator is private */
+typedef struct TBMIterator TBMIterator;
+
 /* Result structure for tbm_iterate */
 typedef struct
 {
@@ -55,7 +58,8 @@ extern void tbm_intersect(TIDBitmap *a, const TIDBitmap *b);
 
 extern bool tbm_is_empty(const TIDBitmap *tbm);
 
-extern void tbm_begin_iterate(TIDBitmap *tbm);
-extern TBMIterateResult *tbm_iterate(TIDBitmap *tbm);
+extern TBMIterator *tbm_begin_iterate(TIDBitmap *tbm);
+extern TBMIterateResult *tbm_iterate(TBMIterator *iterator);
+extern void tbm_end_iterate(TBMIterator *iterator);
 
 #endif   /* TIDBITMAP_H */

@@ -61,6 +61,8 @@ fillScanKey(GinState *ginstate, GinScanKey key, OffsetNumber attnum, Datum query
 		key->scanEntry[i].offset = InvalidOffsetNumber;
 		key->scanEntry[i].buffer = InvalidBuffer;
 		key->scanEntry[i].partialMatch = NULL;
+		key->scanEntry[i].partialMatchIterator = NULL;
+		key->scanEntry[i].partialMatchResult = NULL;
 		key->scanEntry[i].strategy = strategy;
 		key->scanEntry[i].list = NULL;
 		key->scanEntry[i].nlist = 0;
@@ -107,6 +109,7 @@ resetScanKeys(GinScanKey keys, uint32 nkeys)
 			key->scanEntry[j].list = NULL;
 			key->scanEntry[j].nlist = 0;
 			key->scanEntry[j].partialMatch = NULL;
+			key->scanEntry[j].partialMatchIterator = NULL;
 			key->scanEntry[j].partialMatchResult = NULL;
 		}
 	}
@@ -132,6 +135,8 @@ freeScanKeys(GinScanKey keys, uint32 nkeys)
 				ReleaseBuffer(key->scanEntry[j].buffer);
 			if (key->scanEntry[j].list)
 				pfree(key->scanEntry[j].list);
+			if (key->scanEntry[j].partialMatchIterator)
+				tbm_end_iterate(key->scanEntry[j].partialMatchIterator);
 			if (key->scanEntry[j].partialMatch)
 				tbm_free(key->scanEntry[j].partialMatch);
 		}
