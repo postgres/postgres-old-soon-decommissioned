@@ -772,17 +772,41 @@ ExecuteTruncate(TruncateStmt *stmt)
 	{
 		RangeVar   *rv = lfirst(cell);
 		Relation	rel;
+		bool		recurse = interpretInhOption(rv->inhOpt);
+		Oid			myrelid;
 
 		rel = heap_openrv(rv, AccessExclusiveLock);
+		myrelid = RelationGetRelid(rel);
 		/* don't throw error for "TRUNCATE foo, foo" */
-		if (list_member_oid(relids, RelationGetRelid(rel)))
+		if (list_member_oid(relids, myrelid))
 		{
 			heap_close(rel, AccessExclusiveLock);
 			continue;
 		}
 		truncate_check_rel(rel);
 		rels = lappend(rels, rel);
-		relids = lappend_oid(relids, RelationGetRelid(rel));
+		relids = lappend_oid(relids, myrelid);
+
+		if (recurse)
+		{
+			ListCell   *child;
+			List	   *children;
+
+			children = find_all_inheritors(myrelid);
+
+			foreach(child, children)
+			{
+				Oid			childrelid = lfirst_oid(child);
+
+				if (list_member_oid(relids, childrelid))
+					continue;
+
+				rel = heap_open(childrelid, AccessExclusiveLock);
+				truncate_check_rel(rel);
+				rels = lappend(rels, rel);
+				relids = lappend_oid(relids, childrelid);
+			}
+		}
 	}
 
 	/*
