@@ -1458,6 +1458,19 @@ SELECT distributors.* WHERE distributors.name = 'Westward';
   </refsect2>
 
   <refsect2>
+   <title><literal>ONLY</literal> and Parentheses</title>
+
+   <para>
+    The SQL standard requires parentheses around the table name
+    after <literal>ONLY</literal>, as in <literal>SELECT * FROM ONLY
+    (tab1), ONLY (tab2) WHERE ...</literal>.  PostgreSQL supports that
+    as well, but the parentheses are optional.  (This point applies
+    equally to all SQL commands supporting the <literal>ONLY</literal>
+    option.)
+   </para>
+  </refsect2>
+
+  <refsect2>
    <title>Namespace Available to <literal>GROUP BY</literal> and <literal>ORDER BY</literal></title>
 
    <para>
