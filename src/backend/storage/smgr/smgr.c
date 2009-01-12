@@ -48,6 +48,8 @@ typedef struct f_smgr
 								bool isRedo);
 	void		(*smgr_extend) (SMgrRelation reln, ForkNumber forknum,
 							BlockNumber blocknum, char *buffer, bool isTemp);
+	void		(*smgr_prefetch) (SMgrRelation reln, ForkNumber forknum,
+								  BlockNumber blocknum);
 	void		(*smgr_read) (SMgrRelation reln, ForkNumber forknum,
 							  BlockNumber blocknum, char *buffer);
 	void		(*smgr_write) (SMgrRelation reln, ForkNumber forknum, 
@@ -65,7 +67,7 @@ typedef struct f_smgr
 static const f_smgr smgrsw[] = {
 	/* magnetic disk */
 	{mdinit, NULL, mdclose, mdcreate, mdexists, mdunlink, mdextend,
-		mdread, mdwrite, mdnblocks, mdtruncate, mdimmedsync,
+		mdprefetch, mdread, mdwrite, mdnblocks, mdtruncate, mdimmedsync,
 		mdpreckpt, mdsync, mdpostckpt
 	}
 };
@@ -373,6 +375,15 @@ smgrextend(SMgrRelation reln, ForkNumber forknum, BlockNumber blocknum,
 {
 	(*(smgrsw[reln->smgr_which].smgr_extend)) (reln, forknum, blocknum,
 											   buffer, isTemp);
+}
+
+/*
+ *	smgrprefetch() -- Initiate asynchronous read of the specified block of a relation.
+ */
+void
+smgrprefetch(SMgrRelation reln, ForkNumber forknum, BlockNumber blocknum)
+{
+	(*(smgrsw[reln->smgr_which].smgr_prefetch)) (reln, forknum, blocknum);
 }
 
 /*

@@ -1029,6 +1029,42 @@ FileClose(File file)
 	FreeVfd(file);
 }
 
+/*
+ * FilePrefetch - initiate asynchronous read of a given range of the file.
+ * The logical seek position is unaffected.
+ *
+ * Currently the only implementation of this function is using posix_fadvise
+ * which is the simplest standardized interface that accomplishes this.
+ * We could add an implementation using libaio in the future; but note that
+ * this API is inappropriate for libaio, which wants to have a buffer provided
+ * to read into.
+ */
+int
+FilePrefetch(File file, off_t offset, int amount)
+{
+#if defined(USE_POSIX_FADVISE) && defined(POSIX_FADV_WILLNEED)
+	int			returnCode;
+
+	Assert(FileIsValid(file));
+	
+	DO_DB(elog(LOG, "FilePrefetch: %d (%s) " INT64_FORMAT " %d",
+			   file, VfdCache[file].fileName,
+			   (int64) offset, amount));
+
+	returnCode = FileAccess(file);
+	if (returnCode < 0)
+		return returnCode;
+
+	returnCode = posix_fadvise(VfdCache[file].fd, offset, amount,
+							   POSIX_FADV_WILLNEED);
+
+	return returnCode;
+#else
+	Assert(FileIsValid(file));
+	return 0;
+#endif
+}
+
 int
 FileRead(File file, char *buffer, int amount)
 {

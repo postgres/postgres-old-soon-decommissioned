@@ -70,6 +70,8 @@ extern void smgrdounlink(SMgrRelation reln, ForkNumber forknum,
 						 bool isTemp, bool isRedo);
 extern void smgrextend(SMgrRelation reln, ForkNumber forknum, 
 					   BlockNumber blocknum, char *buffer, bool isTemp);
+extern void smgrprefetch(SMgrRelation reln, ForkNumber forknum,
+						 BlockNumber blocknum);
 extern void smgrread(SMgrRelation reln, ForkNumber forknum,
 					 BlockNumber blocknum, char *buffer);
 extern void smgrwrite(SMgrRelation reln, ForkNumber forknum,
@@ -93,6 +95,8 @@ extern bool mdexists(SMgrRelation reln, ForkNumber forknum);
 extern void mdunlink(RelFileNode rnode, ForkNumber forknum, bool isRedo);
 extern void mdextend(SMgrRelation reln, ForkNumber forknum,
 					 BlockNumber blocknum, char *buffer, bool isTemp);
+extern void mdprefetch(SMgrRelation reln, ForkNumber forknum,
+					   BlockNumber blocknum);
 extern void mdread(SMgrRelation reln, ForkNumber forknum, BlockNumber blocknum,
 				   char *buffer);
 extern void mdwrite(SMgrRelation reln, ForkNumber forknum,

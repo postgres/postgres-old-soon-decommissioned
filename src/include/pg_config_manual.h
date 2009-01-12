@@ -136,6 +136,15 @@
 #endif
 
 /*
+ * USE_PREFETCH code should be compiled only if we have a way to implement
+ * prefetching.  (This is decoupled from USE_POSIX_FADVISE because there
+ * might in future be support for alternative low-level prefetch APIs.)
+ */
+#ifdef USE_POSIX_FADVISE
+#define USE_PREFETCH
+#endif
+
+/*
  * This is the default directory in which AF_UNIX socket files are
  * placed.	Caution: changing this risks breaking your existing client
  * applications, which are likely to continue to look in the old

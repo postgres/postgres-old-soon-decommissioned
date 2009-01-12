@@ -47,6 +47,7 @@ extern PGDLLIMPORT int NBuffers;
 extern bool zero_damaged_pages;
 extern int	bgwriter_lru_maxpages;
 extern double bgwriter_lru_multiplier;
+extern int	target_prefetch_pages;
 
 /* in buf_init.c */
 extern PGDLLIMPORT char *BufferBlocks;
@@ -152,6 +153,8 @@ extern PGDLLIMPORT int32 *LocalRefCount;
 /*
  * prototypes for functions in bufmgr.c
  */
+extern void PrefetchBuffer(Relation reln, ForkNumber forkNum,
+						   BlockNumber blockNum);
 extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
 extern Buffer ReadBufferExtended(Relation reln, ForkNumber forkNum,
 								 BlockNumber blockNum, ReadBufferMode mode,

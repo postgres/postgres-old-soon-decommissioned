@@ -551,6 +551,26 @@ mdclose(SMgrRelation reln, ForkNumber forknum)
 }
 
 /*
+ *	mdprefetch() -- Initiate asynchronous read of the specified block of a relation
+ */
+void
+mdprefetch(SMgrRelation reln, ForkNumber forknum, BlockNumber blocknum)
+{
+#ifdef USE_PREFETCH
+	off_t		seekpos;
+	MdfdVec    *v;
+
+	v = _mdfd_getseg(reln, forknum, blocknum, false, EXTENSION_FAIL);
+
+	seekpos = (off_t) BLCKSZ * (blocknum % ((BlockNumber) RELSEG_SIZE));
+	Assert(seekpos < (off_t) BLCKSZ * RELSEG_SIZE);
+
+	(void) FilePrefetch(v->mdfd_vfd, seekpos, BLCKSZ);
+#endif /* USE_PREFETCH */
+}
+
+
+/*
  *	mdread() -- Read the specified block from a relation.
  */
 void

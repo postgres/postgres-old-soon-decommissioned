@@ -1154,6 +1154,9 @@ typedef struct BitmapIndexScanState
  *		tbm				   bitmap obtained from child index scan(s)
  *		tbmiterator		   iterator for scanning current pages
  *		tbmres			   current-page data
+ *		prefetch_iterator  iterator for prefetching ahead of current page
+ *		prefetch_pages	   # pages prefetch iterator is ahead of current
+ *		prefetch_target	   target prefetch distance
  * ----------------
  */
 typedef struct BitmapHeapScanState
@@ -1163,6 +1166,9 @@ typedef struct BitmapHeapScanState
 	TIDBitmap  *tbm;
 	TBMIterator *tbmiterator;
 	TBMIterateResult *tbmres;
+	TBMIterator *prefetch_iterator;
+	int			prefetch_pages;
+	int			prefetch_target;
 } BitmapHeapScanState;
 
 /* ----------------
