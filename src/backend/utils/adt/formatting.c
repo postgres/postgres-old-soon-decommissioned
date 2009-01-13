@@ -1444,7 +1444,9 @@ get_th(char *num, int type)
 static char *
 str_numth(char *dest, char *num, int type)
 {
-	sprintf(dest, "%s%s", num, get_th(num, type));
+	if (dest != num)
+		strcpy(dest, num);
+	strcat(dest, get_th(num, type));
 	return dest;
 }
 
@@ -2097,7 +2099,6 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 
 	switch (arg)
 	{
-
 		case DCH_A_D:
 		case DCH_B_C:
 			if (flag == TO_CHAR)
