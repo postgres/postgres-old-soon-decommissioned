@@ -2,7 +2,6 @@
 
 # $PostgreSQL$
 
-trap "rm -f /tmp/$$" 0 1 2 3 15
 rm -f ./TAGS
 find `pwd`/ -type f -name '*.[chyl]' -print | \
   xargs etags --append -o TAGS
