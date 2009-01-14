@@ -6,7 +6,7 @@ rm -f ./TAGS
 find `pwd`/ -type f -name '*.[chyl]' -print | \
   xargs etags --append -o TAGS
 
-find . -type d -print | \
+find . -type d \( -name CVS -o -name .git -prune -o -print \) | \
 while read DIR; do
   [ "$DIR" != "." ] && ln -f -s `pwd`/TAGS $DIR
 done
