@@ -1198,7 +1198,7 @@ compile_pltcl_function(Oid fn_oid, Oid tgreloid)
 					free(prodesc);
 					ereport(ERROR,
 							(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-							 errmsg("pltcl functions cannot return type %s",
+							 errmsg("PL/Tcl functions cannot return type %s",
 									format_type_be(procStruct->prorettype))));
 				}
 			}
@@ -1210,7 +1210,7 @@ compile_pltcl_function(Oid fn_oid, Oid tgreloid)
 				free(prodesc);
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-						 errmsg("pltcl functions cannot return tuples yet")));
+						 errmsg("PL/Tcl functions cannot return composite types")));
 			}
 
 			perm_fmgr_info(typeStruct->typinput, &(prodesc->result_in_func));
@@ -1250,7 +1250,7 @@ compile_pltcl_function(Oid fn_oid, Oid tgreloid)
 					free(prodesc);
 					ereport(ERROR,
 							(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-							 errmsg("pltcl functions cannot take type %s",
+							 errmsg("PL/Tcl functions cannot accept type %s",
 						format_type_be(procStruct->proargtypes.values[i]))));
 				}
 
