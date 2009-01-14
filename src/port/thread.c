@@ -15,8 +15,6 @@
 #include "c.h"
 
 #include <pwd.h>
-#if defined(FRONTEND) && defined(ENABLE_THREAD_SAFETY)
-#endif
 
 
 /*
