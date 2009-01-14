@@ -55,6 +55,7 @@ include $(top_srcdir)/src/Makefile.shlib
 path.c pgstrcasecmp.c snprintf.c strlcpy.c thread.c: % : $(top_srcdir)/src/port/%
 	rm -f $@ && $(LN_S) $< .
 
+misc.o: misc.c $(top_builddir)/src/port/pg_config_paths.h
 path.o: path.c $(top_builddir)/src/port/pg_config_paths.h
 
 $(top_builddir)/src/port/pg_config_paths.h:
