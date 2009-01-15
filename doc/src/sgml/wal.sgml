@@ -543,7 +543,8 @@
    then the checkpoint record; then it performs the REDO operation by
    scanning forward from the log position indicated in the checkpoint
    record.  Because the entire content of data pages is saved in the
-   log on the first page modification after a checkpoint, all pages
+   log on the first page modification after a checkpoint (assuming
+   <xref linkend="guc-full-page-writes"> is not disabled), all pages
    changed since the checkpoint will be restored to a consistent
    state.
   </para>
