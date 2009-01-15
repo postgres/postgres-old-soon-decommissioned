@@ -724,6 +724,6 @@ ecpg_find_desc(int line, const char *name)
 bool
 ECPGdescribe(int line, bool input, const char *statement,...)
 {
-	ecpg_log("ECPGdescribe called on line %d for %s: %s\n", line, (input) ? _("input") : _("output"), statement);
+	ecpg_log("ECPGdescribe called on line %d for %s: %s\n", line, input ? "input" : "output", statement);
 	return false;
 }
