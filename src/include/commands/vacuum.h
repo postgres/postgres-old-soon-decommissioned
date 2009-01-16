@@ -122,6 +122,7 @@ typedef struct VacAttrStats
 extern PGDLLIMPORT int default_statistics_target;		/* PGDLLIMPORT for
 														 * PostGIS */
 extern int	vacuum_freeze_min_age;
+extern int	vacuum_freeze_table_age;
 
 
 /* in commands/vacuum.c */
@@ -135,9 +136,11 @@ extern void vac_update_relstats(Relation relation,
 					double num_tuples,
 					bool hasindex,
 					TransactionId frozenxid);
-extern void vacuum_set_xid_limits(int freeze_min_age, bool sharedRel,
+extern void vacuum_set_xid_limits(int freeze_min_age, int freeze_table_age,
+					  bool sharedRel,
 					  TransactionId *oldestXmin,
-					  TransactionId *freezeLimit);
+					  TransactionId *freezeLimit,
+					  TransactionId *freezeTableLimit);
 extern void vac_update_datfrozenxid(void);
 extern bool vac_is_partial_index(Relation indrel);
 extern void vacuum_delay_point(void);

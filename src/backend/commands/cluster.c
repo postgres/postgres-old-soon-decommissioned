@@ -789,8 +789,8 @@ copy_heap_data(Oid OIDNewHeap, Oid OIDOldHeap, Oid OIDOldIndex)
 	 * freeze_min_age to avoid having CLUSTER freeze tuples earlier than a
 	 * plain VACUUM would.
 	 */
-	vacuum_set_xid_limits(-1, OldHeap->rd_rel->relisshared,
-						  &OldestXmin, &FreezeXid);
+	vacuum_set_xid_limits(-1, -1, OldHeap->rd_rel->relisshared,
+						  &OldestXmin, &FreezeXid, NULL);
 
 	/*
 	 * FreezeXid will become the table's new relfrozenxid, and that mustn't

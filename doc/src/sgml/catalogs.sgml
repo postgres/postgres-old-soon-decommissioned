@@ -1361,6 +1361,13 @@
       <entry></entry>
       <entry>Custom <varname>autovacuum_freeze_max_age</> parameter</entry>
      </row>
+
+     <row>
+      <entry><structfield>freeze_table_age</structfield></entry>
+      <entry><type>integer</type></entry>
+      <entry></entry>
+      <entry>Custom <varname>vacuum_freeze_table_age</> parameter</entry>
+     </row>
     </tbody>
    </tgroup>
   </table>

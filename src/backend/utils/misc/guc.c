@@ -1544,7 +1544,16 @@ static struct config_int ConfigureNamesInt[] =
 			NULL
 		},
 		&vacuum_freeze_min_age,
-		100000000, 0, 1000000000, NULL, NULL
+		50000000, 0, 1000000000, NULL, NULL
+	},
+
+	{
+		{"vacuum_freeze_table_age", PGC_USERSET, CLIENT_CONN_STATEMENT,
+			gettext_noop("Age at which VACUUM should scan whole table to freeze tuples."),
+			NULL
+		},
+		&vacuum_freeze_table_age,
+		150000000, 0, 2000000000, NULL, NULL
 	},
 
 	{
