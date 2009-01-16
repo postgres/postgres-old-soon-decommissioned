@@ -106,7 +106,7 @@ ecpg_raise(int line, int code, const char *sqlstate, const char *str)
 			snprintf(sqlca->sqlerrm.sqlerrmc, sizeof(sqlca->sqlerrm.sqlerrmc),
 				/* translator: this string will be truncated at 149 
 				   characters expanded.  */
-					 ecpg_gettext("variable is not an array on line %d"), line);
+					 ecpg_gettext("variable does not have an array type on line %d"), line);
 			break;
 
 		case ECPG_DATA_NOT_ARRAY:
@@ -120,7 +120,7 @@ ecpg_raise(int line, int code, const char *sqlstate, const char *str)
 			snprintf(sqlca->sqlerrm.sqlerrmc, sizeof(sqlca->sqlerrm.sqlerrmc),
 				/* translator: this string will be truncated at 149 
 				   characters expanded.  */
-				 ecpg_gettext("trying to insert an array of variables on line %d"), line);
+				 ecpg_gettext("inserting an array of variables is not supported on line %d"), line);
 			break;
 
 		case ECPG_NO_CONN:
@@ -134,7 +134,7 @@ ecpg_raise(int line, int code, const char *sqlstate, const char *str)
 			snprintf(sqlca->sqlerrm.sqlerrmc, sizeof(sqlca->sqlerrm.sqlerrmc),
 				/* translator: this string will be truncated at 149 
 				   characters expanded.  */
-				 ecpg_gettext("not connected to \"%s\" on line %d"), str, line);
+				 ecpg_gettext("not connected to connection \"%s\" on line %d"), str, line);
 			break;
 
 		case ECPG_INVALID_STMT:
@@ -169,14 +169,14 @@ ecpg_raise(int line, int code, const char *sqlstate, const char *str)
 			snprintf(sqlca->sqlerrm.sqlerrmc, sizeof(sqlca->sqlerrm.sqlerrmc),
 				/* translator: this string will be truncated at 149 
 				   characters expanded.  */
-				 ecpg_gettext("variable is not a numeric type on line %d"), line);
+				 ecpg_gettext("variable does not have a numeric type on line %d"), line);
 			break;
 
 		case ECPG_VAR_NOT_CHAR:
 			snprintf(sqlca->sqlerrm.sqlerrmc, sizeof(sqlca->sqlerrm.sqlerrmc),
 				/* translator: this string will be truncated at 149 
 				   characters expanded.  */
-				 ecpg_gettext("variable is not a character type on line %d"), line);
+				 ecpg_gettext("variable does not have a character type on line %d"), line);
 			break;
 
 		case ECPG_TRANS:
