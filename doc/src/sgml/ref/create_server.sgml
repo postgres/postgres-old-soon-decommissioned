@@ -35,7 +35,7 @@ CREATE SERVER <replaceable class="parameter">servername</replaceable> [ TYPE 'se
   </para>
 
   <para>
-   The server name must be unique within database.
+   The server name must be unique within the database.
   </para>
 
   <para>
