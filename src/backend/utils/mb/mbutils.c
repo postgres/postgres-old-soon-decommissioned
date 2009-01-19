@@ -873,7 +873,7 @@ SetDatabaseEncoding(int encoding)
 	 */
 #ifdef ENABLE_NLS
 	if (encoding == PG_UTF8)
-		if (bind_textdomain_codeset("postgres", "UTF-8") == NULL)
+		if (bind_textdomain_codeset(textdomain(NULL), "UTF-8") == NULL)
 			elog(LOG, "bind_textdomain_codeset failed");
 #endif
 }

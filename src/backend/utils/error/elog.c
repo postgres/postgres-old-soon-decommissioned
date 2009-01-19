@@ -308,7 +308,7 @@ errstart(int elevel, const char *filename, int lineno,
 	edata->lineno = lineno;
 	edata->funcname = funcname;
 	/* the default text domain is the backend's */
-	edata->domain = domain ? domain : "postgres";
+	edata->domain = domain ? domain : PG_TEXTDOMAIN("postgres");
 	/* Select default errcode based on elevel */
 	if (elevel >= ERROR)
 		edata->sqlerrcode = ERRCODE_INTERNAL_ERROR;
