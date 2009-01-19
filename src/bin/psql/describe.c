@@ -1962,7 +1962,7 @@ listTables(const char *tabtypes, const char *pattern, bool verbose, bool showSys
 	if (showSeq)
 		appendPQExpBuffer(&buf, "'S',");
 	if (showSystem && showTables)
-		appendPQExpBuffer(&buf, "'s',");
+		appendPQExpBuffer(&buf, "'s',");	/* was RELKIND_SPECIAL in <= 8.1.X */
 	appendPQExpBuffer(&buf, "''");		/* dummy */
 	appendPQExpBuffer(&buf, ")\n");
 
