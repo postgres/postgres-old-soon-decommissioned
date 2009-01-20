@@ -34,7 +34,7 @@ extern bool permissionsList(const char *pattern);
 extern bool objectDescription(const char *pattern, bool showSystem);
 
 /* \d foo */
-extern bool describeTableDetails(const char *pattern, bool verbose);
+extern bool describeTableDetails(const char *pattern, bool verbose, bool showSystem);
 
 /* \dF */
 extern bool listTSConfigs(const char *pattern, bool verbose);
