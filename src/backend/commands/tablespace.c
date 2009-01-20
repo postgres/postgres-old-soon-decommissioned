@@ -1276,6 +1276,9 @@ tblspc_redo(XLogRecPtr lsn, XLogRecord *record)
 {
 	uint8		info = record->xl_info & ~XLR_INFO_MASK;
 
+	/* Backup blocks are not used in tblspc records */
+	Assert(!(record->xl_info & XLR_BKP_BLOCK_MASK));
+
 	if (info == XLOG_TBLSPC_CREATE)
 	{
 		xl_tblspc_create_rec *xlrec = (xl_tblspc_create_rec *) XLogRecGetData(record);

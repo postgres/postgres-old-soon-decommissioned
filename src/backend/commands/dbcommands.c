@@ -1941,6 +1941,9 @@ dbase_redo(XLogRecPtr lsn, XLogRecord *record)
 {
 	uint8		info = record->xl_info & ~XLR_INFO_MASK;
 
+	/* Backup blocks are not used in dbase records */
+	Assert(!(record->xl_info & XLR_BKP_BLOCK_MASK));
+
 	if (info == XLOG_DBASE_CREATE)
 	{
 		xl_dbase_create_rec *xlrec = (xl_dbase_create_rec *) XLogRecGetData(record);

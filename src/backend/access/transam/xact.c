@@ -4308,6 +4308,9 @@ xact_redo(XLogRecPtr lsn, XLogRecord *record)
 {
 	uint8		info = record->xl_info & ~XLR_INFO_MASK;
 
+	/* Backup blocks are not used in xact records */
+	Assert(!(record->xl_info & XLR_BKP_BLOCK_MASK));
+
 	if (info == XLOG_XACT_COMMIT)
 	{
 		xl_xact_commit *xlrec = (xl_xact_commit *) XLogRecGetData(record);

@@ -714,6 +714,8 @@ btree_redo(XLogRecPtr lsn, XLogRecord *record)
 {
 	uint8		info = record->xl_info & ~XLR_INFO_MASK;
 
+	RestoreBkpBlocks(lsn, record, false);
+
 	switch (info)
 	{
 		case XLOG_BTREE_INSERT_LEAF:

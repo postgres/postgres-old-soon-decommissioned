@@ -394,8 +394,9 @@ void
 gist_redo(XLogRecPtr lsn, XLogRecord *record)
 {
 	uint8		info = record->xl_info & ~XLR_INFO_MASK;
-
 	MemoryContext oldCxt;
+
+	RestoreBkpBlocks(lsn, record, false);
 
 	oldCxt = MemoryContextSwitchTo(opCtx);
 	switch (info)

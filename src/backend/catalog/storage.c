@@ -401,6 +401,9 @@ smgr_redo(XLogRecPtr lsn, XLogRecord *record)
 {
 	uint8		info = record->xl_info & ~XLR_INFO_MASK;
 
+	/* Backup blocks are not used in smgr records */
+	Assert(!(record->xl_info & XLR_BKP_BLOCK_MASK));
+
 	if (info == XLOG_SMGR_CREATE)
 	{
 		xl_smgr_create *xlrec = (xl_smgr_create *) XLogRecGetData(record);

@@ -1870,6 +1870,9 @@ multixact_redo(XLogRecPtr lsn, XLogRecord *record)
 {
 	uint8		info = record->xl_info & ~XLR_INFO_MASK;
 
+	/* Backup blocks are not used in multixact records */
+	Assert(!(record->xl_info & XLR_BKP_BLOCK_MASK));
+
 	if (info == XLOG_MULTIXACT_ZERO_OFF_PAGE)
 	{
 		int			pageno;

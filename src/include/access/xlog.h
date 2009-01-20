@@ -194,6 +194,8 @@ extern bool XLogNeedsFlush(XLogRecPtr RecPtr);
 
 extern void XLogSetAsyncCommitLSN(XLogRecPtr record);
 
+extern void RestoreBkpBlocks(XLogRecPtr lsn, XLogRecord *record, bool cleanup);
+
 extern void xlog_redo(XLogRecPtr lsn, XLogRecord *record);
 extern void xlog_desc(StringInfo buf, uint8 xl_info, char *rec);
 

@@ -438,6 +438,8 @@ gin_redo(XLogRecPtr lsn, XLogRecord *record)
 {
 	uint8		info = record->xl_info & ~XLR_INFO_MASK;
 
+	RestoreBkpBlocks(lsn, record, false);
+
 	topCtx = MemoryContextSwitchTo(opCtx);
 	switch (info)
 	{

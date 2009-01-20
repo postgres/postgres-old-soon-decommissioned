@@ -1339,6 +1339,9 @@ seq_redo(XLogRecPtr lsn, XLogRecord *record)
 	xl_seq_rec *xlrec = (xl_seq_rec *) XLogRecGetData(record);
 	sequence_magic *sm;
 
+	/* Backup blocks are not used in seq records */
+	Assert(!(record->xl_info & XLR_BKP_BLOCK_MASK));
+
 	if (info != XLOG_SEQ_LOG)
 		elog(PANIC, "seq_redo: unknown op code %u", info);
 
