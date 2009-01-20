@@ -925,13 +925,12 @@ autovacuum_do_vac_analyze(List *relids, bool dovacuum, bool doanalyze,
 						  bool freeze)
 {
 	VacuumStmt *vacstmt;
-	MemoryContext old_cxt;
 
 	/*
 	 * The node must survive transaction boundaries, so make sure we create it
 	 * in a long-lived context
 	 */
-	old_cxt = MemoryContextSwitchTo(AutovacMemCxt);
+	MemoryContextSwitchTo(AutovacMemCxt);
 
 	vacstmt = makeNode(VacuumStmt);
 
@@ -957,7 +956,9 @@ autovacuum_do_vac_analyze(List *relids, bool dovacuum, bool doanalyze,
 	vacuum(vacstmt, relids);
 
 	pfree(vacstmt);
-	MemoryContextSwitchTo(old_cxt);
+
+	/* Make sure we end up pointing to the long-lived context at exit */
+	MemoryContextSwitchTo(AutovacMemCxt);
 }
 
 /*
