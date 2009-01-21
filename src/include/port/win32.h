@@ -291,6 +291,11 @@ extern int	pgwin32_is_service(void);
 /* in port/win32error.c */
 extern void _dosmaperr(unsigned long);
 
+/* in port/win32env.c */
+extern int pgwin32_putenv(const char *);
+extern void pgwin32_unsetenv(const char *);
+#define putenv(x) pgwin32_putenv(x)
+#define unsetenv(x) pgwin32_unsetenv(x)
 
 /* Things that exist in MingW headers, but need to be added to MSVC */
 #ifdef WIN32_ONLY_COMPILER
