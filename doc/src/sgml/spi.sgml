@@ -527,6 +527,16 @@ typedef struct
       </para>
      </listitem>
     </varlistentry>
+
+    <varlistentry>
+     <term><symbol>SPI_OK_REWRITTEN</symbol></term>
+     <listitem>
+      <para>
+       if the command was rewritten into another kind of command (e.g.,
+       <command>UPDATE</command> became an <command>INSERT</command>) by a <link linkend="rules">rule</link>.
+      </para>
+     </listitem>
+    </varlistentry>
    </variablelist>
   </para>
 

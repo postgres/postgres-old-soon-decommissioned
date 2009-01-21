@@ -56,6 +56,7 @@ typedef struct _SPI_plan *SPIPlanPtr;
 #define SPI_OK_INSERT_RETURNING 11
 #define SPI_OK_DELETE_RETURNING 12
 #define SPI_OK_UPDATE_RETURNING 13
+#define SPI_OK_REWRITTEN		14
 
 extern PGDLLIMPORT uint32 SPI_processed;
 extern PGDLLIMPORT Oid SPI_lastoid;
