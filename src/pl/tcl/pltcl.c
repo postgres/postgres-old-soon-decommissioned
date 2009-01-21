@@ -1825,6 +1825,7 @@ pltcl_process_SPI_result(Tcl_Interp *interp,
 			break;
 
 		case SPI_OK_UTILITY:
+		case SPI_OK_REWRITTEN:
 			if (tuptable == NULL)
 			{
 				Tcl_SetResult(interp, "0", TCL_STATIC);

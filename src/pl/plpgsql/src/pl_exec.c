@@ -2949,6 +2949,7 @@ exec_stmt_dynexecute(PLpgSQL_execstate *estate,
 		case SPI_OK_UPDATE_RETURNING:
 		case SPI_OK_DELETE_RETURNING:
 		case SPI_OK_UTILITY:
+		case SPI_OK_REWRITTEN:
 			break;
 
 		case 0:
