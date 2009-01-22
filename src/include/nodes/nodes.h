@@ -369,7 +369,7 @@ typedef enum NodeTag
 	T_FkConstraint,
 	T_PrivGrantee,
 	T_FuncWithArgs,
-	T_PrivTarget,
+	T_AccessPriv,
 	T_CreateOpClassItem,
 	T_InhRelation,
 	T_FunctionParameter,

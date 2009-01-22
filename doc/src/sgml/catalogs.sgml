@@ -1028,6 +1028,16 @@
       </entry>
      </row>
 
+     <row>
+      <entry><structfield>attacl</structfield></entry>
+      <entry><type>aclitem[]</type></entry>
+      <entry></entry>
+      <entry>
+       Column-level access privileges, if any have been granted specifically
+       on this column
+      </entry>
+     </row>
+
     </tbody>
    </tgroup>
   </table>
@@ -4248,6 +4258,17 @@
       <entry><type>oid</type></entry>
       <entry>any OID column</entry>
       <entry>The OID of the specific dependent object</entry>
+     </row>
+
+     <row>
+      <entry><structfield>objsubid</structfield></entry>
+      <entry><type>int4</type></entry>
+      <entry></entry>
+      <entry>
+       For a table column, this is the column number (the
+       <structfield>objid</> and <structfield>classid</> refer to the
+       table itself).  For all other object types, this column is zero
+      </entry>
      </row>
 
      <row>

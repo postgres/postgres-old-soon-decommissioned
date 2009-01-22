@@ -1977,6 +1977,9 @@ transformWholeRowRef(ParseState *pstate, char *schemaname, char *relname,
 	/* location is not filled in by makeVar */
 	result->location = location;
 
+	/* mark relation as requiring whole-row SELECT access */
+	markVarForSelectPriv(pstate, result, rte);
+
 	return (Node *) result;
 }
 

@@ -66,9 +66,10 @@ UPDATE [ ONLY ] <replaceable class="PARAMETER">table</replaceable> [ [ AS ] <rep
   </para>
 
   <para>
-   You must have the <literal>UPDATE</literal> privilege on the table
-   to update it, as well as the <literal>SELECT</literal>
-   privilege to any table whose values are read in the
+   You must have the <literal>UPDATE</literal> privilege on the table,
+   or at least on the column(s) that are listed to be updated.
+   You must also have the <literal>SELECT</literal>
+   privilege on any column whose values are read in the
    <replaceable class="parameter">expressions</replaceable> or
    <replaceable class="parameter">condition</replaceable>.
   </para>

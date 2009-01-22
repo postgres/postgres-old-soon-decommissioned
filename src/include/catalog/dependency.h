@@ -108,7 +108,7 @@ typedef struct ObjectAddress
 {
 	Oid			classId;		/* Class Id from pg_class */
 	Oid			objectId;		/* OID of the object */
-	int32		objectSubId;	/* Subitem within the object (column of table) */
+	int32		objectSubId;	/* Subitem within object (eg column), or 0 */
 } ObjectAddress;
 
 /* expansible list of ObjectAddresses (private in dependency.c) */
@@ -221,14 +221,15 @@ extern void recordSharedDependencyOn(ObjectAddress *depender,
 						 ObjectAddress *referenced,
 						 SharedDependencyType deptype);
 
-extern void deleteSharedDependencyRecordsFor(Oid classId, Oid objectId);
+extern void deleteSharedDependencyRecordsFor(Oid classId, Oid objectId,
+											 int32 objectSubId);
 
 extern void recordDependencyOnOwner(Oid classId, Oid objectId, Oid owner);
 
 extern void changeDependencyOnOwner(Oid classId, Oid objectId,
 						Oid newOwnerId);
 
-extern void updateAclDependencies(Oid classId, Oid objectId,
+extern void updateAclDependencies(Oid classId, Oid objectId, int32 objectSubId,
 					  Oid ownerId, bool isGrant,
 					  int noldmembers, Oid *oldmembers,
 					  int nnewmembers, Oid *newmembers);

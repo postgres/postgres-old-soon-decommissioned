@@ -455,7 +455,7 @@ DropTableSpace(DropTableSpaceStmt *stmt)
 	/*
 	 * Remove dependency on owner.
 	 */
-	deleteSharedDependencyRecordsFor(TableSpaceRelationId, tablespaceoid);
+	deleteSharedDependencyRecordsFor(TableSpaceRelationId, tablespaceoid, 0);
 
 	/*
 	 * Acquire TablespaceCreateLock to ensure that no TablespaceCreateDbspace

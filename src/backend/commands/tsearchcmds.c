@@ -1255,7 +1255,7 @@ makeConfigurationDependencies(HeapTuple tuple, bool removeOld,
 	if (removeOld)
 	{
 		deleteDependencyRecordsFor(myself.classId, myself.objectId);
-		deleteSharedDependencyRecordsFor(myself.classId, myself.objectId);
+		deleteSharedDependencyRecordsFor(myself.classId, myself.objectId, 0);
 	}
 
 	/*

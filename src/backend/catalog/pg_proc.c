@@ -499,7 +499,7 @@ ProcedureCreate(const char *procedureName,
 	if (is_update)
 	{
 		deleteDependencyRecordsFor(ProcedureRelationId, retval);
-		deleteSharedDependencyRecordsFor(ProcedureRelationId, retval);
+		deleteSharedDependencyRecordsFor(ProcedureRelationId, retval, 0);
 	}
 
 	myself.classId = ProcedureRelationId;

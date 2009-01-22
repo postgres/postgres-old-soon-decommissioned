@@ -977,6 +977,13 @@ deleteOneObject(const ObjectAddress *object, Relation depRel)
 	systable_endscan(scan);
 
 	/*
+	 * Delete shared dependency references related to this object.  Again,
+	 * if subId = 0, remove records for sub-objects too.
+	 */
+	deleteSharedDependencyRecordsFor(object->classId, object->objectId,
+									 object->objectSubId);
+
+	/*
 	 * Now delete the object itself, in an object-type-dependent way.
 	 */
 	doDeletion(object);
@@ -986,13 +993,6 @@ deleteOneObject(const ObjectAddress *object, Relation depRel)
 	 * place to do it instead of having every object type know to do it.)
 	 */
 	DeleteComments(object->objectId, object->classId, object->objectSubId);
-
-	/*
-	 * Delete shared dependency references related to this object. Sub-objects
-	 * (columns) don't have dependencies on global objects, so skip them.
-	 */
-	if (object->objectSubId == 0)
-		deleteSharedDependencyRecordsFor(object->classId, object->objectId);
 
 	/*
 	 * CommandCounterIncrement here to ensure that preceding changes are all

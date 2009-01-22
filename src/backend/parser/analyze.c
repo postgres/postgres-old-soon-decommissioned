@@ -24,6 +24,7 @@
 
 #include "postgres.h"
 
+#include "access/sysattr.h"
 #include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
 #include "nodes/nodeFuncs.h"
@@ -422,6 +423,7 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
 		 * bugs of just that nature...)
 		 */
 		sub_pstate->p_rtable = sub_rtable;
+		sub_pstate->p_joinexprs = NIL;			/* sub_rtable has no joins */
 		sub_pstate->p_relnamespace = sub_relnamespace;
 		sub_pstate->p_varnamespace = sub_varnamespace;
 
@@ -629,7 +631,9 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
 
 	/*
 	 * Generate query's target list using the computed list of expressions.
+	 * Also, mark all the target columns as needing insert permissions.
 	 */
+	rte = pstate->p_target_rangetblentry;
 	qry->targetList = NIL;
 	icols = list_head(icolumns);
 	attnos = list_head(attrnos);
@@ -637,16 +641,21 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
 	{
 		Expr	   *expr = (Expr *) lfirst(lc);
 		ResTarget  *col;
+		AttrNumber	attr_num;
 		TargetEntry *tle;
 
 		col = (ResTarget *) lfirst(icols);
 		Assert(IsA(col, ResTarget));
+		attr_num = (AttrNumber) lfirst_int(attnos);
 
 		tle = makeTargetEntry(expr,
-							  (AttrNumber) lfirst_int(attnos),
+							  attr_num,
 							  col->name,
 							  false);
 		qry->targetList = lappend(qry->targetList, tle);
+
+		rte->modifiedCols = bms_add_member(rte->modifiedCols,
+								attr_num - FirstLowInvalidHeapAttributeNumber);
 
 		icols = lnext(icols);
 		attnos = lnext(attnos);
@@ -1129,8 +1138,8 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 	List	   *targetvars,
 			   *targetnames,
 			   *sv_relnamespace,
-			   *sv_varnamespace,
-			   *sv_rtable;
+			   *sv_varnamespace;
+	int			sv_rtable_length;
 	RangeTblEntry *jrte;
 	int			tllen;
 
@@ -1254,15 +1263,14 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 	 * "ORDER BY upper(foo)" will draw the right error message rather than
 	 * "foo not found".
 	 */
-	jrte = addRangeTableEntryForJoin(NULL,
+	sv_rtable_length = list_length(pstate->p_rtable);
+
+	jrte = addRangeTableEntryForJoin(pstate,
 									 targetnames,
 									 JOIN_INNER,
 									 targetvars,
 									 NULL,
 									 false);
-
-	sv_rtable = pstate->p_rtable;
-	pstate->p_rtable = list_make1(jrte);
 
 	sv_relnamespace = pstate->p_relnamespace;
 	pstate->p_relnamespace = NIL;		/* no qualified names allowed */
@@ -1283,7 +1291,7 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 										  &qry->targetList,
 										  false /* no unknowns expected */ );
 
-	pstate->p_rtable = sv_rtable;
+	pstate->p_rtable = list_truncate(pstate->p_rtable, sv_rtable_length);
 	pstate->p_relnamespace = sv_relnamespace;
 	pstate->p_varnamespace = sv_varnamespace;
 
@@ -1618,6 +1626,7 @@ static Query *
 transformUpdateStmt(ParseState *pstate, UpdateStmt *stmt)
 {
 	Query	   *qry = makeNode(Query);
+	RangeTblEntry *target_rte;
 	Node	   *qual;
 	ListCell   *origTargetList;
 	ListCell   *tl;
@@ -1675,6 +1684,7 @@ transformUpdateStmt(ParseState *pstate, UpdateStmt *stmt)
 		pstate->p_next_resno = pstate->p_target_relation->rd_rel->relnatts + 1;
 
 	/* Prepare non-junk columns for assignment to target table */
+	target_rte = pstate->p_target_rangetblentry;
 	origTargetList = list_head(stmt->targetList);
 
 	foreach(tl, qry->targetList)
@@ -1714,6 +1724,10 @@ transformUpdateStmt(ParseState *pstate, UpdateStmt *stmt)
 							  attrno,
 							  origTarget->indirection,
 							  origTarget->location);
+
+		/* Mark the target column as requiring update permissions */
+		target_rte->modifiedCols = bms_add_member(target_rte->modifiedCols,
+								attrno - FirstLowInvalidHeapAttributeNumber);
 
 		origTargetList = lnext(origTargetList);
 	}

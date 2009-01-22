@@ -1014,6 +1014,15 @@ _equalFuncWithArgs(FuncWithArgs *a, FuncWithArgs *b)
 }
 
 static bool
+_equalAccessPriv(AccessPriv *a, AccessPriv *b)
+{
+	COMPARE_STRING_FIELD(priv_name);
+	COMPARE_NODE_FIELD(cols);
+
+	return true;
+}
+
+static bool
 _equalGrantRoleStmt(GrantRoleStmt *a, GrantRoleStmt *b)
 {
 	COMPARE_NODE_FIELD(granted_roles);
@@ -2122,6 +2131,8 @@ _equalRangeTblEntry(RangeTblEntry *a, RangeTblEntry *b)
 	COMPARE_SCALAR_FIELD(inFromCl);
 	COMPARE_SCALAR_FIELD(requiredPerms);
 	COMPARE_SCALAR_FIELD(checkAsUser);
+	COMPARE_BITMAPSET_FIELD(selectedCols);
+	COMPARE_BITMAPSET_FIELD(modifiedCols);
 
 	return true;
 }
@@ -2873,6 +2884,9 @@ equal(void *a, void *b)
 			break;
 		case T_FuncWithArgs:
 			retval = _equalFuncWithArgs(a, b);
+			break;
+		case T_AccessPriv:
+			retval = _equalAccessPriv(a, b);
 			break;
 		case T_XmlSerialize:
 			retval = _equalXmlSerialize(a, b);

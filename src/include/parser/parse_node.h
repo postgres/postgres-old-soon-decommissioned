@@ -33,6 +33,10 @@
  * Note that neither relname nor refname of these entries are necessarily
  * unique; searching the rtable by name is a bad idea.
  *
+ * p_joinexprs: list of JoinExpr nodes associated with p_rtable entries.
+ * This is one-for-one with p_rtable, but contains NULLs for non-join
+ * RTEs, and may be shorter than p_rtable if the last RTE(s) aren't joins.
+ *
  * p_joinlist: list of join items (RangeTblRef and JoinExpr nodes) that
  * will become the fromlist of the query's top-level FromExpr node.
  *
@@ -77,6 +81,7 @@ typedef struct ParseState
 	struct ParseState *parentParseState;		/* stack link */
 	const char *p_sourcetext;	/* source text, or NULL if not available */
 	List	   *p_rtable;		/* range table so far */
+	List	   *p_joinexprs;	/* JoinExprs for RTE_JOIN p_rtable entries */
 	List	   *p_joinlist;		/* join items so far (will become FromExpr
 								 * node's fromlist) */
 	List	   *p_relnamespace; /* current namespace for relations */

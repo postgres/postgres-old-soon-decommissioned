@@ -39,10 +39,12 @@ CATALOG(pg_shdepend,1214) BKI_SHARED_RELATION BKI_WITHOUT_OIDS
 	Oid			dbid;			/* OID of database containing object */
 	Oid			classid;		/* OID of table containing object */
 	Oid			objid;			/* OID of object itself */
+	int4		objsubid;		/* column number, or 0 if not used */
 
 	/*
 	 * Identification of the independent (referenced) object.  This is always
-	 * a shared object, so we need no database ID field.
+	 * a shared object, so we need no database ID field.  We don't bother
+	 * with a sub-object ID either.
 	 */
 	Oid			refclassid;		/* OID of table containing object */
 	Oid			refobjid;		/* OID of object itself */
@@ -65,13 +67,14 @@ typedef FormData_pg_shdepend *Form_pg_shdepend;
  *		compiler constants for pg_shdepend
  * ----------------
  */
-#define Natts_pg_shdepend			6
+#define Natts_pg_shdepend			7
 #define Anum_pg_shdepend_dbid		1
 #define Anum_pg_shdepend_classid	2
 #define Anum_pg_shdepend_objid		3
-#define Anum_pg_shdepend_refclassid 4
-#define Anum_pg_shdepend_refobjid	5
-#define Anum_pg_shdepend_deptype	6
+#define Anum_pg_shdepend_objsubid	4
+#define Anum_pg_shdepend_refclassid	5
+#define Anum_pg_shdepend_refobjid	6
+#define Anum_pg_shdepend_deptype	7
 
 
 /*

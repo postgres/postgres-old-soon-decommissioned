@@ -774,7 +774,7 @@ makeOperatorDependencies(HeapTuple tuple)
 
 	/* In case we are updating a shell, delete any existing entries */
 	deleteDependencyRecordsFor(myself.classId, myself.objectId);
-	deleteSharedDependencyRecordsFor(myself.classId, myself.objectId);
+	deleteSharedDependencyRecordsFor(myself.classId, myself.objectId, 0);
 
 	/* Dependency on namespace */
 	if (OidIsValid(oper->oprnamespace))

@@ -28,8 +28,8 @@ extern void appendStringLiteralDQ(PQExpBuffer buf, const char *str,
 					  const char *dqprefix);
 extern int	parse_version(const char *versionString);
 extern bool parsePGArray(const char *atext, char ***itemarray, int *nitems);
-extern bool buildACLCommands(const char *name, const char *type,
-				 const char *acls, const char *owner,
+extern bool buildACLCommands(const char *name, const char *subname,
+				 const char *type, const char *acls, const char *owner,
 				 int remoteVersion,
 				 PQExpBuffer sql);
 extern void processSQLNamePattern(PGconn *conn, PQExpBuffer buf,

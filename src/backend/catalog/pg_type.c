@@ -482,7 +482,7 @@ GenerateTypeDependencies(Oid typeNamespace,
 	if (rebuild)
 	{
 		deleteDependencyRecordsFor(TypeRelationId, typeObjectId);
-		deleteSharedDependencyRecordsFor(TypeRelationId, typeObjectId);
+		deleteSharedDependencyRecordsFor(TypeRelationId, typeObjectId, 0);
 	}
 
 	myself.classId = TypeRelationId;
