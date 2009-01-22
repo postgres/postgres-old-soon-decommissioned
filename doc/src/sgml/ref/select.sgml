@@ -941,6 +941,22 @@ ROLLBACK TO s;
     anymore, in which case it will not be returned.
    </para>
   </caution>
+
+  <caution>
+   <para>
+    Similarly, it is possible for a <command>SELECT</> command
+    using <literal>ORDER BY</literal> and <literal>FOR
+    UPDATE/SHARE</literal> to return rows out of order.  This is
+    because <literal>ORDER BY</> is applied first.  The command
+    orders the result, but might then block trying to obtain a lock
+    on one or more of the rows.  Once the <literal>SELECT</>
+    unblocks, one of the ordered columns might have been modified
+    and be returned out of order.  A workaround is to perform
+    <command>SELECT ... FOR UPDATE/SHARE</> and then <command>SELECT
+    ... ORDER BY</>.
+   </para>
+  </caution>
+
   </refsect2>
  </refsect1>
 
