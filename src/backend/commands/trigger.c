@@ -992,12 +992,14 @@ renametrig(Oid relid,
 /*
  * EnableDisableTrigger()
  *
- *	Called by ALTER TABLE ENABLE/DISABLE TRIGGER
+ *	Called by ALTER TABLE ENABLE/DISABLE [ REPLICA | ALWAYS ] TRIGGER
  *	to change 'tgenabled' field for the specified trigger(s)
  *
  * rel: relation to process (caller must hold suitable lock on it)
  * tgname: trigger to process, or NULL to scan all triggers
- * enable: new value for tgenabled field
+ * fires_when: new value for tgenabled field. In addition to generic
+ *			   enablement/disablement, this also defines when the trigger
+ *			   should be fired in session replication roles.
  * skip_system: if true, skip "system" triggers (constraint triggers)
  *
  * Caller should have checked permissions for the table; here we also

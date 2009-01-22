@@ -95,6 +95,10 @@ typedef struct TriggerData
 #define SESSION_REPLICATION_ROLE_LOCAL		2
 extern PGDLLIMPORT int	SessionReplicationRole;
 
+/*
+ * States at which a trigger can be fired. These are the
+ * possible values for pg_trigger.tgenabled.
+ */
 #define TRIGGER_FIRES_ON_ORIGIN				'O'
 #define TRIGGER_FIRES_ALWAYS				'A'
 #define TRIGGER_FIRES_ON_REPLICA			'R'
