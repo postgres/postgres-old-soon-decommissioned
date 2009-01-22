@@ -20,5 +20,6 @@
 extern void RemoveRewriteRule(Oid owningRel, const char *ruleName,
 				  DropBehavior behavior, bool missing_ok);
 extern void RemoveRewriteRuleById(Oid ruleOid);
+extern void RemoveAutomaticRulesOnEvent(Relation rel, CmdType event_type);
 
 #endif   /* REWRITEREMOVE_H */

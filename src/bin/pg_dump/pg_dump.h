@@ -304,7 +304,6 @@ typedef struct _ruleInfo
 	bool		is_instead;
 	char		ev_enabled;
 	bool		separate;		/* TRUE if must dump as separate item */
-	/* separate is always true for non-ON SELECT rules */
 } RuleInfo;
 
 typedef struct _triggerInfo

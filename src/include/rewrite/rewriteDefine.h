@@ -29,6 +29,7 @@ extern void DefineQueryRewrite(char *rulename,
 				   Node *event_qual,
 				   CmdType event_type,
 				   bool is_instead,
+				   bool is_auto,
 				   bool replace,
 				   List *action);
 

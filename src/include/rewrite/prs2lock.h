@@ -30,6 +30,7 @@ typedef struct RewriteRule
 	List	   *actions;
 	char		enabled;
 	bool		isInstead;
+	bool        is_auto;
 } RewriteRule;
 
 /*

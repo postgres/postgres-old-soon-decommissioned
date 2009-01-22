@@ -1895,20 +1895,20 @@ QueryRewrite(Query *parsetree)
 				{
 					case CMD_INSERT:
 						ereport(ERROR,
-								(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-								 errmsg("cannot insert into a view"),
+								(errcode(ERRCODE_WRONG_OBJECT_TYPE),
+								 errmsg("view is not updatable"),
 								 errhint("You need an unconditional ON INSERT DO INSTEAD rule.")));
 						break;
 					case CMD_UPDATE:
 						ereport(ERROR,
-								(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-								 errmsg("cannot update a view"),
+								(errcode(ERRCODE_WRONG_OBJECT_TYPE),
+								 errmsg("view is not updatable"),
 								 errhint("You need an unconditional ON UPDATE DO INSTEAD rule.")));
 						break;
 					case CMD_DELETE:
 						ereport(ERROR,
-								(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-								 errmsg("cannot delete from a view"),
+								(errcode(ERRCODE_WRONG_OBJECT_TYPE),
+								 errmsg("view is not updatable"),
 								 errhint("You need an unconditional ON DELETE DO INSTEAD rule.")));
 						break;
 					default:
