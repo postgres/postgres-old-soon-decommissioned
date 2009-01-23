@@ -74,36 +74,46 @@ pg_getaddrinfo_all(const char *hostname, const char *servname,
 		return getaddrinfo_unix(servname, hintp, result);
 #endif
 
+#ifndef _AIX
 	/* NULL has special meaning to getaddrinfo(). */
 	rc = getaddrinfo((!hostname || hostname[0] == '\0') ? NULL : hostname,
 					 servname, hintp, result);
 
-#ifdef _AIX
+#else /* _AIX */
 
 	/*
-	 * It seems some versions of AIX's getaddrinfo don't reliably zero
-	 * sin_port when servname is NULL, so clean up after it.
+	 * Various versions of AIX have various bugs in getaddrinfo()'s handling
+	 * of the servname parameter, including failing entirely if it's not NULL
+	 * and failing to zero sin_port when it is NULL :-(.  Avoid these by
+	 * always passing NULL and handling the port number for ourselves.
 	 */
-	if (servname == NULL && rc == 0)
+	rc = getaddrinfo((!hostname || hostname[0] == '\0') ? NULL : hostname,
+					 NULL, hintp, result);
+
+	if (rc == 0)
 	{
 		struct addrinfo *addr;
+		unsigned short port = 0;
+
+		if (servname && *servname)
+			port = atoi(servname);
 
 		for (addr = *result; addr; addr = addr->ai_next)
 		{
 			switch (addr->ai_family)
 			{
 				case AF_INET:
-					((struct sockaddr_in *) addr->ai_addr)->sin_port = htons(0);
+					((struct sockaddr_in *) addr->ai_addr)->sin_port = htons(port);
 					break;
 #ifdef HAVE_IPV6
 				case AF_INET6:
-					((struct sockaddr_in6 *) addr->ai_addr)->sin6_port = htons(0);
+					((struct sockaddr_in6 *) addr->ai_addr)->sin6_port = htons(port);
 					break;
 #endif
 			}
 		}
 	}
-#endif
+#endif /* _AIX */
 
 	return rc;
 }
