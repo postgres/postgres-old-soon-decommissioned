@@ -18,6 +18,7 @@
 #ifndef RELOPTIONS_H
 #define RELOPTIONS_H
 
+#include "access/htup.h"
 #include "nodes/pg_list.h"
 
 /* types supported by reloptions */
@@ -241,6 +242,8 @@ extern void add_string_reloption(int kind, char *name, char *desc,
 extern Datum transformRelOptions(Datum oldOptions, List *defList,
 					bool ignoreOids, bool isReset);
 extern List *untransformRelOptions(Datum options);
+extern bytea *extractRelOptions(HeapTuple tuple, TupleDesc tupdesc,
+				  Oid amoptions);
 extern relopt_value *parseRelOptions(Datum options, bool validate,
 				relopt_kind kind, int *numrelopts);
 extern void *allocateReloptStruct(Size base, relopt_value *options,
