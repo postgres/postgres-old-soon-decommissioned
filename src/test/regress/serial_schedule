@@ -100,7 +100,6 @@ test: tsearch
 test: tsdicts
 test: foreign_data
 test: window
-test: view_update
 test: plancache
 test: limit
 test: plpgsql

@@ -4003,17 +4003,7 @@ getRules(int *numRules)
 	/* Make sure we are in proper schema */
 	selectSourceSchema("pg_catalog");
 
-	if (g_fout->remoteVersion >= 80400)
-	{
-		appendPQExpBuffer(query, "SELECT "
-						  "tableoid, oid, rulename, "
-						  "ev_class as ruletable, ev_type, is_instead, "
-						  "ev_enabled "
-						  "FROM pg_rewrite "
-						  "WHERE NOT is_auto "
-						  "ORDER BY oid");
-	}
-	else if (g_fout->remoteVersion >= 80300)
+	if (g_fout->remoteVersion >= 80300)
 	{
 		appendPQExpBuffer(query, "SELECT "
 						  "tableoid, oid, rulename, "

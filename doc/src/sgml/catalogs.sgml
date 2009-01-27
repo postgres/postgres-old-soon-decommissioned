@@ -4155,13 +4155,6 @@
      </row>
 
      <row>
-      <entry><structfield>is_auto</structfield></entry>
-      <entry><type>bool</type></entry>
-      <entry></entry>
-      <entry>True if the rule was automatically generated</entry>
-     </row>
-
-     <row>
       <entry><structfield>ev_qual</structfield></entry>
       <entry><type>text</type></entry>
       <entry></entry>

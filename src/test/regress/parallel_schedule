@@ -79,8 +79,6 @@ test: misc
 # ----------
 test: select_views portals_p2 rules foreign_key cluster dependency guc bitmapops combocid tsearch tsdicts foreign_data window
 
-test: view_update
-
 # ----------
 # Another group of parallel tests
 # NB: temp.sql does a reconnect which transiently uses 2 connections,
