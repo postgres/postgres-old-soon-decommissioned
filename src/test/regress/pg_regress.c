@@ -1364,7 +1364,7 @@ wait_for_tests(PID_TYPE *pids, int *statuses, char **names, int num_tests)
 			if (p == pids[i])
 			{
 #ifdef WIN32
-				GetExitCodeProcess(pids[i], &exit_status);
+				GetExitCodeProcess(pids[i], (LPDWORD) &exit_status);
 				CloseHandle(pids[i]);
 #endif
 				pids[i] = INVALID_PID;
