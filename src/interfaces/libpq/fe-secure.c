@@ -861,7 +861,7 @@ client_cert_cb(SSL *ssl, X509 **x509, EVP_PKEY **pkey)
 	fclose(fp);
 
 	/* verify that the cert and key go together */
-	if (!X509_check_private_key(*x509, *pkey))
+	if (X509_check_private_key(*x509, *pkey) != 1)
 	{
 		char	   *err = SSLerrmessage();
 
@@ -986,7 +986,7 @@ initialize_SSL(PGconn *conn)
 		snprintf(fnbuf, sizeof(fnbuf), "%s/%s", homedir, ROOTCERTFILE);
 		if (stat(fnbuf, &buf) == 0)
 		{
-			if (!SSL_CTX_load_verify_locations(SSL_context, fnbuf, NULL))
+			if (SSL_CTX_load_verify_locations(SSL_context, fnbuf, NULL) != 1)
 			{
 				char	   *err = SSLerrmessage();
 
