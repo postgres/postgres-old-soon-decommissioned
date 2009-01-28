@@ -757,7 +757,7 @@ client_cert_cb(SSL *ssl, X509 **x509, EVP_PKEY **pkey)
 	}
 
 	/* verify that the cert and key go together */
-	if (!X509_check_private_key(*x509, *pkey))
+	if (X509_check_private_key(*x509, *pkey) != 1)
 	{
 		char	   *err = SSLerrmessage();
 
@@ -1004,7 +1004,7 @@ initialize_SSL(PGconn *conn)
 	{
 		X509_STORE *cvstore;
 
-		if (!SSL_CTX_load_verify_locations(SSL_context, fnbuf, NULL))
+		if (SSL_CTX_load_verify_locations(SSL_context, fnbuf, NULL) != 1)
 		{
 			char	   *err = SSLerrmessage();
 
@@ -1023,7 +1023,7 @@ initialize_SSL(PGconn *conn)
 				snprintf(fnbuf, sizeof(fnbuf), "%s/%s", homedir, ROOT_CRL_FILE);
 
 			/* setting the flags to check against the complete CRL chain */
-			if (X509_STORE_load_locations(cvstore, fnbuf, NULL) != 0)
+			if (X509_STORE_load_locations(cvstore, fnbuf, NULL) == 1)
 /* OpenSSL 0.96 does not support X509_V_FLAG_CRL_CHECK */
 #ifdef X509_V_FLAG_CRL_CHECK
 				X509_STORE_set_flags(cvstore,
