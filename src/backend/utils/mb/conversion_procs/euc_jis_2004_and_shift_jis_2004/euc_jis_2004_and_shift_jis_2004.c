@@ -43,9 +43,7 @@ euc_jis_2004_to_shift_jis_2004(PG_FUNCTION_ARGS)
 	unsigned char *dest = (unsigned char *) PG_GETARG_CSTRING(3);
 	int			len = PG_GETARG_INT32(4);
 
-	Assert(PG_GETARG_INT32(0) == PG_EUC_JIS_2004);
-	Assert(PG_GETARG_INT32(1) == PG_SHIFT_JIS_2004);
-	Assert(len >= 0);
+	CHECK_ENCODING_CONVERSION_ARGS(PG_EUC_JIS_2004, PG_SHIFT_JIS_2004);
 
 	euc_jis_20042shift_jis_2004(src, dest, len);
 
@@ -59,9 +57,7 @@ shift_jis_2004_to_euc_jis_2004(PG_FUNCTION_ARGS)
 	unsigned char *dest = (unsigned char *) PG_GETARG_CSTRING(3);
 	int			len = PG_GETARG_INT32(4);
 
-	Assert(PG_GETARG_INT32(0) == PG_SHIFT_JIS_2004);
-	Assert(PG_GETARG_INT32(1) == PG_EUC_JIS_2004);
-	Assert(len >= 0);
+	CHECK_ENCODING_CONVERSION_ARGS(PG_SHIFT_JIS_2004, PG_EUC_JIS_2004);
 
 	shift_jis_20042euc_jis_2004(src, dest, len);
 
