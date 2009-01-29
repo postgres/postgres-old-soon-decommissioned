@@ -371,7 +371,7 @@ sub dump_fields {
 	    # filter out ExecuteStmt: CREATE OptTemp TABLE ...
 	    # because the warning there is only valid in some situations
 	    if ($flds{0} ne 'create' || $flds{2} ne 'table') {
-		&add_to_buffer('rules', "mmerror(PARSE_ERROR, ET_WARNING, \"unsupported feature will be passed to backend\\n\");");
+		&add_to_buffer('rules', "mmerror(PARSE_ERROR, ET_WARNING, \"unsupported feature will be passed to server\");");
 	    }
 	    $feature_not_supported = 0;
 	}
