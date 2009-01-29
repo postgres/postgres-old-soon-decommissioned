@@ -132,8 +132,7 @@ iso8859_to_utf8(PG_FUNCTION_ARGS)
 	unsigned char *dest = PG_GETARG_CSTRING(3);
 	int			len = PG_GETARG_INT32(4);
 
-	Assert(PG_GETARG_INT32(1) == PG_UTF8);
-	Assert(len >= 0);
+	CHECK_ENCODING_CONVERSION_ARGS(-1, PG_UTF8);
 
 	LocalToUtf(src, dest, maps[encoding].map1, maps[encoding].size1, encoding, len);
 
@@ -148,8 +147,7 @@ utf8_to_iso8859(PG_FUNCTION_ARGS)
 	unsigned char *dest = PG_GETARG_CSTRING(3);
 	int			len = PG_GETARG_INT32(4);
 
-	Assert(PG_GETARG_INT32(0) == PG_UTF8);
-	Assert(len >= 0);
+	CHECK_ENCODING_CONVERSION_ARGS(PG_UTF8, -1);
 
 	UtfToLocal(src, dest, maps[encoding].map2, maps[encoding].size2, encoding, len);
 
