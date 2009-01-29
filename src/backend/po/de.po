@@ -5015,7 +5015,7 @@ msgstr ""
 
 #: scan.l:306
 msgid "unterminated /* comment"
-msgstr "/*-Kommentar nicht abgechlossen"
+msgstr "/*-Kommentar nicht abgeschlossen"
 
 #: scan.l:334
 msgid "unterminated bit string literal"
