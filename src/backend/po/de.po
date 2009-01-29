@@ -1267,7 +1267,7 @@ msgstr "Regel %s für "
 #: catalog/dependency.c:1697
 #, c-format
 msgid "trigger %s on "
-msgstr "Triger %s für "
+msgstr "Trigger %s für "
 
 #: catalog/dependency.c:1714
 #, c-format
@@ -6016,7 +6016,7 @@ msgstr ""
 
 #: scan.l:322
 msgid "unterminated /* comment"
-msgstr "/*-Kommentar nicht abgechlossen"
+msgstr "/*-Kommentar nicht abgeschlossen"
 
 #: scan.l:349
 msgid "unterminated bit string literal"
