@@ -40,9 +40,7 @@ win1258_to_utf8(PG_FUNCTION_ARGS)
 	unsigned char *dest = (unsigned char *) PG_GETARG_CSTRING(3);
 	int			len = PG_GETARG_INT32(4);
 
-	Assert(PG_GETARG_INT32(0) == PG_WIN1258);
-	Assert(PG_GETARG_INT32(1) == PG_UTF8);
-	Assert(len >= 0);
+	CHECK_ENCODING_CONVERSION_ARGS(PG_WIN1258, PG_UTF8);
 
 	LocalToUtf(src, dest, LUmapWIN1258,
 			sizeof(LUmapWIN1258) / sizeof(pg_local_to_utf), PG_WIN1258, len);
@@ -57,9 +55,7 @@ utf8_to_win1258(PG_FUNCTION_ARGS)
 	unsigned char *dest = (unsigned char *) PG_GETARG_CSTRING(3);
 	int			len = PG_GETARG_INT32(4);
 
-	Assert(PG_GETARG_INT32(0) == PG_UTF8);
-	Assert(PG_GETARG_INT32(1) == PG_WIN1258);
-	Assert(len >= 0);
+	CHECK_ENCODING_CONVERSION_ARGS(PG_UTF8, PG_WIN1258);
 
 	UtfToLocal(src, dest, ULmapWIN1258,
 			   sizeof(ULmapWIN1258) / sizeof(pg_utf_to_local), PG_WIN1258, len);
