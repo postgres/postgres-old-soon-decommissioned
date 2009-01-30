@@ -242,7 +242,13 @@ CreateRole(CreateRoleStmt *stmt)
 	if (dcanlogin)
 		canlogin = intVal(dcanlogin->arg) != 0;
 	if (dconnlimit)
+	{
 		connlimit = intVal(dconnlimit->arg);
+		if (connlimit < -1)
+			ereport(ERROR,
+					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+					 errmsg("invalid connection limit: %d", connlimit)));
+	}
 	if (daddroleto)
 		addroleto = (List *) daddroleto->arg;
 	if (drolemembers)
@@ -533,7 +539,13 @@ AlterRole(AlterRoleStmt *stmt)
 	if (dcanlogin)
 		canlogin = intVal(dcanlogin->arg);
 	if (dconnlimit)
+	{
 		connlimit = intVal(dconnlimit->arg);
+		if (connlimit < -1)
+			ereport(ERROR,
+					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+					 errmsg("invalid connection limit: %d", connlimit)));
+	}
 	if (drolemembers)
 		rolemembers = (List *) drolemembers->arg;
 	if (dvalidUntil)
