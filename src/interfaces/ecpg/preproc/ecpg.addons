@@ -369,10 +369,10 @@ ECPG: FetchStmtMOVEname rule
 		}
 ECPG: SpecialRuleRelationOLD addon
 		if (!QueryIsRule)
-			mmerror(PARSE_ERROR, ET_ERROR, "OLD used in a query that is not in a rule");
+			mmerror(PARSE_ERROR, ET_ERROR, "OLD used in query that is not in a rule");
 ECPG: SpecialRuleRelationNEW addon
 		if (!QueryIsRule)
-			mmerror(PARSE_ERROR, ET_ERROR, "NEW used in a query that is not in a rule");
+			mmerror(PARSE_ERROR, ET_ERROR, "NEW used in query that is not in a rule");
 ECPG: select_limitLIMITselect_limit_value','select_offset_value block
         {
                 mmerror(PARSE_ERROR, ET_WARNING, "no longer supported LIMIT #,# syntax passed to server");

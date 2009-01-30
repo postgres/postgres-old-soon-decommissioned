@@ -1277,7 +1277,7 @@ ECPGVar: SQL_VAR
 
 					default:
 						if (atoi(length) >= 0)
-							mmerror(PARSE_ERROR, ET_ERROR, "no multidimensional array support for simple data types");
+							mmerror(PARSE_ERROR, ET_ERROR, "multidimensional arrays for simple data types are not supported");
 
 						if (atoi(dimension) < 0)
 							type = ECPGmake_simple_type($5.type_enum, make_str("1"), 0);
@@ -1791,7 +1791,7 @@ cvariable:	CVARIABLE
 				{
 					case '[':
 							if (brace)
-								mmerror(PARSE_ERROR, ET_FATAL, "no multidimensional array support for simple data types");
+								mmerror(PARSE_ERROR, ET_FATAL, "multidimensional arrays for simple data types are not supported");
 							brace_open++;
 							break;
 					case ']':
