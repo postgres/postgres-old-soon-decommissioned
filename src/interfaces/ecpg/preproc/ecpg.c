@@ -52,7 +52,7 @@ help(const char *progname)
 	printf(_("  -I DIRECTORY   search DIRECTORY for include files\n"));
 	printf(_("  -o OUTFILE     write result to OUTFILE\n"));
 	printf(_("  -r OPTION      specify run-time behavior; OPTION can be:\n"
-			 "                  \"no_indicator\", \"prepare\", \"questionmarks\"\n"));
+			 "                 \"no_indicator\", \"prepare\", \"questionmarks\"\n"));
 	printf(_("  -t             turn on autocommit of transactions\n"));
 	printf(_("  --help         show this help, then exit\n"));
 	printf(_("  --regression   run in regression testing mode\n"));
