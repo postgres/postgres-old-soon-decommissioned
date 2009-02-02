@@ -374,3 +374,14 @@ makeOptionDefElem(int op, DefElem *def)
 	res->def = def;
 	return res;
 }
+
+ReloptElem *
+makeReloptElem(char *name, char *nmspc, Node *arg)
+{
+	ReloptElem *res = makeNode(ReloptElem);
+
+	res->optname = name;
+	res->nmspc = nmspc;
+	res->arg = arg;
+	return res;
+}

@@ -533,6 +533,17 @@ typedef struct OptionDefElem
 } OptionDefElem;
 
 /*
+ * Reloption definition.  As DefElem, with optional option namespace.
+ */
+typedef struct ReloptElem
+{
+	NodeTag		type;
+	char	   *nmspc;
+	char	   *optname;
+	Node	   *arg;
+} ReloptElem;
+
+/*
  * LockingClause - raw representation of FOR UPDATE/SHARE options
  *
  * Note: lockedRels == NIL means "all relations in query".	Otherwise it

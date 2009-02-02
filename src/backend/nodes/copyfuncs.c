@@ -2125,6 +2125,18 @@ _copyOptionDefElem(OptionDefElem *from)
 	return newnode;
 }
 
+static ReloptElem *
+_copyReloptElem(ReloptElem *from)
+{
+	ReloptElem	   *newnode = makeNode(ReloptElem);
+
+	COPY_STRING_FIELD(optname);
+	COPY_STRING_FIELD(nmspc);
+	COPY_NODE_FIELD(arg);
+
+	return newnode;
+}
+
 static LockingClause *
 _copyLockingClause(LockingClause *from)
 {
@@ -4078,6 +4090,9 @@ copyObject(void *from)
 			break;
 		case T_OptionDefElem:
 			retval = _copyOptionDefElem(from);
+			break;
+		case T_ReloptElem:
+			retval = _copyReloptElem(from);
 			break;
 		case T_LockingClause:
 			retval = _copyLockingClause(from);

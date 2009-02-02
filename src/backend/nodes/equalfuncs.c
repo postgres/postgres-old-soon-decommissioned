@@ -2099,6 +2099,16 @@ _equalOptionDefElem(OptionDefElem *a, OptionDefElem *b)
 }
 
 static bool
+_equalReloptElem(ReloptElem *a, ReloptElem *b)
+{
+	COMPARE_STRING_FIELD(nmspc);
+	COMPARE_STRING_FIELD(optname);
+	COMPARE_NODE_FIELD(arg);
+
+	return true;
+}
+
+static bool
 _equalLockingClause(LockingClause *a, LockingClause *b)
 {
 	COMPARE_NODE_FIELD(lockedRels);
@@ -2854,6 +2864,9 @@ equal(void *a, void *b)
 			break;
 		case T_OptionDefElem:
 			retval = _equalOptionDefElem(a, b);
+			break;
+		case T_ReloptElem:
+			retval = _equalReloptElem(a, b);
 			break;
 		case T_LockingClause:
 			retval = _equalLockingClause(a, b);

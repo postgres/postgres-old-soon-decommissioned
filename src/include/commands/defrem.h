@@ -145,6 +145,8 @@ extern int64 defGetInt64(DefElem *def);
 extern List *defGetQualifiedName(DefElem *def);
 extern TypeName *defGetTypeName(DefElem *def);
 extern int	defGetTypeLength(DefElem *def);
-extern DefElem *defWithOids(bool value);
+extern char *reloptGetString(ReloptElem *relopt);
+extern bool reloptGetBoolean(ReloptElem *relopt);
+extern ReloptElem *reloptWithOids(bool value);
 
 #endif   /* DEFREM_H */

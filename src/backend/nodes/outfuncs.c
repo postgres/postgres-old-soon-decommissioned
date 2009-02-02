@@ -1805,6 +1805,16 @@ _outDefElem(StringInfo str, DefElem *node)
 }
 
 static void
+_outReloptElem(StringInfo str, ReloptElem *node)
+{
+	WRITE_NODE_TYPE("RELOPTELEM");
+
+	WRITE_STRING_FIELD(nmspc);
+	WRITE_STRING_FIELD(optname);
+	WRITE_NODE_FIELD(arg);
+}
+
+static void
 _outLockingClause(StringInfo str, LockingClause *node)
 {
 	WRITE_NODE_TYPE("LOCKINGCLAUSE");
@@ -2769,6 +2779,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_DefElem:
 				_outDefElem(str, obj);
+				break;
+			case T_ReloptElem:
+				_outReloptElem(str, obj);
 				break;
 			case T_LockingClause:
 				_outLockingClause(str, obj);

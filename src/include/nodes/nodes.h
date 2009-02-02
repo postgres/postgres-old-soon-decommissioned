@@ -363,6 +363,7 @@ typedef enum NodeTag
 	T_Constraint,
 	T_DefElem,
 	T_OptionDefElem,
+	T_ReloptElem,
 	T_RangeTblEntry,
 	T_SortGroupClause,
 	T_WindowClause,

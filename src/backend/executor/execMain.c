@@ -2832,6 +2832,7 @@ OpenIntoRel(QueryDesc *queryDesc)
 	Oid			intoRelationId;
 	TupleDesc	tupdesc;
 	DR_intorel *myState;
+	static char	   *validnsps[] = HEAP_RELOPT_NAMESPACES;
 
 	Assert(into);
 
@@ -2890,6 +2891,8 @@ OpenIntoRel(QueryDesc *queryDesc)
 	/* Parse and validate any reloptions */
 	reloptions = transformRelOptions((Datum) 0,
 									 into->options,
+									 NULL,
+									 validnsps,
 									 true,
 									 false);
 	(void) heap_reloptions(RELKIND_RELATION, reloptions, true);
@@ -2926,7 +2929,16 @@ OpenIntoRel(QueryDesc *queryDesc)
 	 * AlterTableCreateToastTable ends with CommandCounterIncrement(), so that
 	 * the TOAST table will be visible for insertion.
 	 */
-	AlterTableCreateToastTable(intoRelationId);
+	reloptions = transformRelOptions((Datum) 0,
+									 into->options,
+									 "toast",
+									 validnsps,
+									 true,
+									 false);
+
+	(void) heap_reloptions(RELKIND_TOASTVALUE, reloptions, true);
+
+	AlterTableCreateToastTable(intoRelationId, reloptions);
 
 	/*
 	 * And open the constructed table for writing.

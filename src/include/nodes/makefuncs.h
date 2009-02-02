@@ -69,4 +69,6 @@ extern DefElem *makeDefElem(char *name, Node *arg);
 
 extern OptionDefElem *makeOptionDefElem(int op, DefElem *def);
 
+extern ReloptElem *makeReloptElem(char *name, char *namspc, Node *arg);
+
 #endif   /* MAKEFUNC_H */
