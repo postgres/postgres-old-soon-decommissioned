@@ -242,6 +242,28 @@
      </varlistentry>
 
      <varlistentry>
+      <term><option>-m <replaceable class="parameter">number-of-threads</replaceable></option></term>
+      <term><option>--multi-thread=<replaceable class="parameter">number-of-threads</replaceable></option></term>
+      <listitem>
+       <para>
+        Run the most time-consuming parts of <application>pg_restore</>
+        &mdash; those which load data, create indexes, or create
+        constraints &mdash; using multiple concurrent connections to the
+        database. This option can dramatically reduce the time to restore a
+        large database to a server running on a multi-processor machine.
+       </para>
+
+       <para>
+        This option is ignored when emitting a script rather than connecting
+        directly to a database server.  Multiple threads cannot be used
+        together with <option>--single-transaction</option>.  Also, the input
+        must be a plain file (not, for example, a pipe), and at present only
+        the custom archive format is supported.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term><option>-n <replaceable class="parameter">namespace</replaceable></option></term>
       <term><option>--schema=<replaceable class="parameter">schema</replaceable></option></term>
       <listitem>

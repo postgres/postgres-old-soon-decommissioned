@@ -143,6 +143,7 @@ InitArchiveFmt_Tar(ArchiveHandle *AH)
 	AH->WriteBufPtr = _WriteBuf;
 	AH->ReadBufPtr = _ReadBuf;
 	AH->ClosePtr = _CloseArchive;
+	AH->ReopenPtr = NULL;
 	AH->PrintTocDataPtr = _PrintTocData;
 	AH->ReadExtraTocPtr = _ReadExtraToc;
 	AH->WriteExtraTocPtr = _WriteExtraToc;
@@ -152,6 +153,8 @@ InitArchiveFmt_Tar(ArchiveHandle *AH)
 	AH->StartBlobPtr = _StartBlob;
 	AH->EndBlobPtr = _EndBlob;
 	AH->EndBlobsPtr = _EndBlobs;
+	AH->ClonePtr = NULL;
+	AH->DeClonePtr = NULL;
 
 	/*
 	 * Set up some special context used in compressing data.
@@ -1383,5 +1386,4 @@ _tarWriteHeader(TAR_MEMBER *th)
 
 	if (fwrite(h, 1, 512, th->tarFH) != 512)
 		die_horribly(th->AH, modulename, "could not write to output file: %s\n", strerror(errno));
-
 }

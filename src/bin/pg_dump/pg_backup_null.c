@@ -54,12 +54,15 @@ InitArchiveFmt_Null(ArchiveHandle *AH)
 	AH->WriteBytePtr = _WriteByte;
 	AH->WriteBufPtr = _WriteBuf;
 	AH->ClosePtr = _CloseArchive;
+	AH->ReopenPtr = NULL;
 	AH->PrintTocDataPtr = _PrintTocData;
 
 	AH->StartBlobsPtr = _StartBlobs;
 	AH->StartBlobPtr = _StartBlob;
 	AH->EndBlobPtr = _EndBlob;
 	AH->EndBlobsPtr = _EndBlobs;
+	AH->ClonePtr = NULL;
+	AH->DeClonePtr = NULL;
 
 	/* Initialize LO buffering */
 	AH->lo_buf_size = LOBBUFSIZE;

@@ -87,6 +87,7 @@ InitArchiveFmt_Files(ArchiveHandle *AH)
 	AH->WriteBufPtr = _WriteBuf;
 	AH->ReadBufPtr = _ReadBuf;
 	AH->ClosePtr = _CloseArchive;
+	AH->ReopenPtr = NULL;
 	AH->PrintTocDataPtr = _PrintTocData;
 	AH->ReadExtraTocPtr = _ReadExtraToc;
 	AH->WriteExtraTocPtr = _WriteExtraToc;
@@ -96,6 +97,8 @@ InitArchiveFmt_Files(ArchiveHandle *AH)
 	AH->StartBlobPtr = _StartBlob;
 	AH->EndBlobPtr = _EndBlob;
 	AH->EndBlobsPtr = _EndBlobs;
+	AH->ClonePtr = NULL;
+	AH->DeClonePtr = NULL;
 
 	/*
 	 * Set up some special context used in compressing data.
