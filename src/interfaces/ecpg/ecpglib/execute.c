@@ -393,7 +393,7 @@ ecpg_store_result(const PGresult *results, int act_field,
 		else
 		{
 			for (act_tuple = 0; act_tuple < ntuples; act_tuple++)
-				len += strlen(PQgetvalue(results, act_tuple, act_field)) + 1;
+				len += PQgetlength(results, act_tuple, act_field);
 		}
 
 		ecpg_log("ecpg_store_result on line %d: allocating memory for %d tuples\n", stmt->lineno, ntuples);
