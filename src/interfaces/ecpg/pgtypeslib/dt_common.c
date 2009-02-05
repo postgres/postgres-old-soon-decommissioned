@@ -2550,7 +2550,7 @@ pgtypes_defmt_scan(union un_fmt_comb * scan_val, int scan_type, char **pstr, cha
 			while (**pstr == ' ')
 				(*pstr)++;
 			errno = 0;
-			scan_val->uint_val = (unsigned long int) strtol(*pstr, &strtol_end, 10);
+			scan_val->luint_val = (unsigned long int) strtol(*pstr, &strtol_end, 10);
 			if (errno)
 				err = 1;
 			break;
