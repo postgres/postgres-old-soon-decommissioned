@@ -1356,6 +1356,14 @@ GET DIAGNOSTICS integer_var = ROW_COUNT;
             execution of other statements within the loop body.
            </para>
           </listitem>
+          <listitem>
+           <para>
+            A <command>RETURN QUERY</command> and <command>RETURN QUERY
+            EXECUTE</command> statements set <literal>FOUND</literal>
+            true if the query returns at least one row, false if no row
+            is returned.
+           </para>
+          </listitem>
          </itemizedlist>
 
      <literal>FOUND</literal> is a local variable within each
