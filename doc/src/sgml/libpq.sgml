@@ -67,7 +67,7 @@
    <note>
     <para>
      On Windows, there is a way to improve performance if a single
-     database connection is repeated started and shutdown.  Internally,
+     database connection is repeatedly started and shutdown.  Internally,
      libpq calls WSAStartup() and WSACleanup() for connection startup
      and shutdown, respectively.  WSAStartup() increments an internal
      Windows library reference count which is decremented by WSACleanup().
