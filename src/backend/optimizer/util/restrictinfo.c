@@ -338,7 +338,8 @@ make_restrictinfo_internal(Expr *clause,
 	restrictinfo->parent_ec = NULL;
 
 	restrictinfo->eval_cost.startup = -1;
-	restrictinfo->this_selec = -1;
+	restrictinfo->norm_selec = -1;
+	restrictinfo->outer_selec = -1;
 
 	restrictinfo->mergeopfamilies = NIL;
 

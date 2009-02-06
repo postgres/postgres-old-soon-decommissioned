@@ -1662,7 +1662,8 @@ adjust_appendrel_attrs_mutator(Node *node, AppendRelInfo *context)
 		 * different values when considering the child relation.
 		 */
 		newinfo->eval_cost.startup = -1;
-		newinfo->this_selec = -1;
+		newinfo->norm_selec = -1;
+		newinfo->outer_selec = -1;
 		newinfo->left_ec = NULL;
 		newinfo->right_ec = NULL;
 		newinfo->left_em = NULL;
