@@ -22,6 +22,24 @@
  */
 
 /* acl.c */
+extern Datum has_any_column_privilege_name_name(PG_FUNCTION_ARGS);
+extern Datum has_any_column_privilege_name_id(PG_FUNCTION_ARGS);
+extern Datum has_any_column_privilege_id_name(PG_FUNCTION_ARGS);
+extern Datum has_any_column_privilege_id_id(PG_FUNCTION_ARGS);
+extern Datum has_any_column_privilege_name(PG_FUNCTION_ARGS);
+extern Datum has_any_column_privilege_id(PG_FUNCTION_ARGS);
+extern Datum has_column_privilege_name_name_name(PG_FUNCTION_ARGS);
+extern Datum has_column_privilege_name_name_attnum(PG_FUNCTION_ARGS);
+extern Datum has_column_privilege_name_id_name(PG_FUNCTION_ARGS);
+extern Datum has_column_privilege_name_id_attnum(PG_FUNCTION_ARGS);
+extern Datum has_column_privilege_id_name_name(PG_FUNCTION_ARGS);
+extern Datum has_column_privilege_id_name_attnum(PG_FUNCTION_ARGS);
+extern Datum has_column_privilege_id_id_name(PG_FUNCTION_ARGS);
+extern Datum has_column_privilege_id_id_attnum(PG_FUNCTION_ARGS);
+extern Datum has_column_privilege_name_name(PG_FUNCTION_ARGS);
+extern Datum has_column_privilege_name_attnum(PG_FUNCTION_ARGS);
+extern Datum has_column_privilege_id_name(PG_FUNCTION_ARGS);
+extern Datum has_column_privilege_id_attnum(PG_FUNCTION_ARGS);
 extern Datum has_table_privilege_name_name(PG_FUNCTION_ARGS);
 extern Datum has_table_privilege_name_id(PG_FUNCTION_ARGS);
 extern Datum has_table_privilege_id_name(PG_FUNCTION_ARGS);
