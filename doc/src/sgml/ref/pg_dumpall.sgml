@@ -445,6 +445,7 @@ PostgreSQL documentation
   <variablelist>
    <varlistentry>
     <term><envar>PGHOST</envar></term>
+    <term><envar>PGOPTIONS</envar></term>
     <term><envar>PGPORT</envar></term>
     <term><envar>PGUSER</envar></term>
 
