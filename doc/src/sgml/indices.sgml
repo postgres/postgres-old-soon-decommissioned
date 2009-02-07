@@ -190,13 +190,10 @@ CREATE INDEX <replaceable>name</replaceable> ON <replaceable>table</replaceable>
 
   <note>
    <para>
-    Testing has shown <productname>PostgreSQL</productname>'s hash
-    indexes to perform no better than B-tree indexes, and the
-    index size and build time for hash indexes is much worse.
-    Furthermore, hash index operations are not presently WAL-logged,
+    Hash index operations are not presently WAL-logged,
     so hash indexes might need to be rebuilt with <command>REINDEX</>
     after a database crash.
-    For these reasons, hash index use is presently discouraged.
+    For this reason, hash index use is presently discouraged.
    </para>
   </note>
 
