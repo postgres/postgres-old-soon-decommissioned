@@ -42,7 +42,13 @@ ifeq ($(PORTNAME), win32)
 SHLIB_LINK += -lshfolder
 endif
 
-all: all-lib
+all: libpq pgtypeslib all-lib
+
+libpq:
+	$(MAKE) -C $(top_builddir)/src/interfaces/libpq all
+
+pgtypeslib:
+	$(MAKE) -C $(top_builddir)/src/interfaces/ecpg/pgtypeslib all
 
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib
