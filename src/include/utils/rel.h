@@ -214,10 +214,26 @@ typedef struct RelationData
  * be applied to relations that use this format or a superset for
  * private options data.
  */
+ /* autovacuum-related reloptions. */
+typedef struct AutoVacOpts
+{
+	bool    enabled;
+	int     vacuum_threshold;
+	int     analyze_threshold;
+	int     vacuum_cost_delay;
+	int     vacuum_cost_limit;
+	int     freeze_min_age;
+	int     freeze_max_age;
+	int		freeze_table_age;
+	float8  vacuum_scale_factor;
+	float8  analyze_scale_factor;
+} AutoVacOpts;
+
 typedef struct StdRdOptions
 {
 	int32		vl_len_;		/* varlena header (do not touch directly!) */
 	int			fillfactor;		/* page fill factor in percent (0..100) */
+	AutoVacOpts autovacuum;     /* autovacuum-related options */
 } StdRdOptions;
 
 #define HEAP_MIN_FILLFACTOR			10
