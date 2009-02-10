@@ -123,6 +123,9 @@ static const struct encoding_match encoding_match_list[] = {
 	{PG_KOI8R, "KOI8-R"},
 	{PG_KOI8R, "CP20866"},
 
+	{PG_KOI8U, "KOI8-U"},
+	{PG_KOI8U, "CP21866"},
+
 	{PG_WIN866, "CP866"},
 	{PG_WIN874, "CP874"},
 	{PG_WIN1250, "CP1250"},

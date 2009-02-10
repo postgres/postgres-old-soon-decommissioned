@@ -123,6 +123,9 @@ pg_encname	pg_encname_tbl[] =
 		"koi8r", PG_KOI8R
 	},							/* KOI8-R; RFC1489 */
 	{
+		"koi8u", PG_KOI8U
+	},							/* KOI8-U; RFC2319 */
+	{
 		"latin1", PG_LATIN1
 	},							/* alias for ISO-8859-1 */
 	{
@@ -366,7 +369,7 @@ pg_enc2name pg_enc2name_tbl[] =
 		"WIN874", PG_WIN874
 	},
 	{
-		"KOI8", PG_KOI8R
+		"KOI8R", PG_KOI8R
 	},
 	{
 		"WIN1251", PG_WIN1251
@@ -400,6 +403,9 @@ pg_enc2name pg_enc2name_tbl[] =
 	},
 	{
 		"WIN1257", PG_WIN1257
+	},
+	{
+		"KOI8U", PG_KOI8U
 	},
 	{
 		"SJIS", PG_SJIS

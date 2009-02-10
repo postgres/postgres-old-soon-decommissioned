@@ -1373,6 +1373,7 @@ pg_wchar_tbl pg_wchar_table[] = {
 	{pg_latin12wchar_with_len, pg_latin1_mblen, pg_latin1_dsplen, pg_latin1_verifier, 1},		/* PG_WIN1254 */
 	{pg_latin12wchar_with_len, pg_latin1_mblen, pg_latin1_dsplen, pg_latin1_verifier, 1},		/* PG_WIN1255 */
 	{pg_latin12wchar_with_len, pg_latin1_mblen, pg_latin1_dsplen, pg_latin1_verifier, 1},		/* PG_WIN1257 */
+	{pg_latin12wchar_with_len, pg_latin1_mblen, pg_latin1_dsplen, pg_latin1_verifier, 1},		/* PG_KOI8U */
 	{0, pg_sjis_mblen, pg_sjis_dsplen, pg_sjis_verifier, 2},	/* PG_SJIS */
 	{0, pg_big5_mblen, pg_big5_dsplen, pg_big5_verifier, 2},	/* PG_BIG5 */
 	{0, pg_gbk_mblen, pg_gbk_dsplen, pg_gbk_verifier, 2},		/* PG_GBK */

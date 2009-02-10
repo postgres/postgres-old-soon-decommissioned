@@ -202,6 +202,7 @@ typedef enum pg_enc
 	PG_WIN1254,					/* windows-1254 */
 	PG_WIN1255,					/* windows-1255 */
 	PG_WIN1257,					/* windows-1257 */
+	PG_KOI8U,					/* KOI8-U */
 	/* PG_ENCODING_BE_LAST points to the above entry */
 
 	/* followings are for client encoding only */
@@ -216,7 +217,7 @@ typedef enum pg_enc
 
 } pg_enc;
 
-#define PG_ENCODING_BE_LAST PG_WIN1257
+#define PG_ENCODING_BE_LAST PG_KOI8U
 
 /*
  * Please use these tests before access to pg_encconv_tbl[]
