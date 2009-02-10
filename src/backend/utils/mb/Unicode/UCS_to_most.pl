@@ -50,6 +50,7 @@ require "ucs2utf.pl";
 );
 
 @charsets = keys(filename);
+@charsets = @ARGV if scalar(@ARGV);
 foreach $charset (@charsets) {
 
 #
