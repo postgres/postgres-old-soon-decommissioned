@@ -1636,6 +1636,13 @@ alter_table_cmd:
 					n->behavior = $4;
 					$$ = (Node *)n;
 				}
+			/* ALTER TABLE <name> SET WITH OIDS  */
+			| SET WITH OIDS
+				{
+					AlterTableCmd *n = makeNode(AlterTableCmd);
+					n->subtype = AT_AddOids;
+					$$ = (Node *)n;
+				}
 			/* ALTER TABLE <name> SET WITHOUT OIDS  */
 			| SET WITHOUT OIDS
 				{
