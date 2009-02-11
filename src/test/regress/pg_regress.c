@@ -686,22 +686,25 @@ initialize_environment(void)
 {
 	char	   *tmp;
 
-	/*
-	 * Clear out any non-C locale settings
-	 */
-	unsetenv("LC_COLLATE");
-	unsetenv("LC_CTYPE");
-	unsetenv("LC_MONETARY");
-	unsetenv("LC_MESSAGES");
-	unsetenv("LC_NUMERIC");
-	unsetenv("LC_TIME");
-	unsetenv("LC_ALL");
-	unsetenv("LANG");
-	unsetenv("LANGUAGE");
-	/* On Windows the default locale cannot be English, so force it */
+	if (nolocale)
+	{
+		/*
+		 * Clear out any non-C locale settings
+		 */
+		unsetenv("LC_COLLATE");
+		unsetenv("LC_CTYPE");
+		unsetenv("LC_MONETARY");
+		unsetenv("LC_MESSAGES");
+		unsetenv("LC_NUMERIC");
+		unsetenv("LC_TIME");
+		unsetenv("LC_ALL");
+		unsetenv("LANG");
+		unsetenv("LANGUAGE");
+		/* On Windows the default locale cannot be English, so force it */
 #if defined(WIN32) || defined(__CYGWIN__)
-	putenv("LANG=en");
+		putenv("LANG=en");
 #endif
+	}
 
 	/*
 	 * Set multibyte as requested
