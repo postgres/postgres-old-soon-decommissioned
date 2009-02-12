@@ -697,9 +697,9 @@ and <replaceable class="PARAMETER">table_constraint</replaceable> is:
     endterm="sql-createindex-title">.  The storage parameters currently
     available for tables are listed below.  For each parameter, there is an
     additional, identically named parameter, prefixed with
-	<literal>toast.</literal> which can be used to control the behavior of the
+    <literal>toast.</literal> which can be used to control the behavior of the
     supplementary storage table, if any; see <xref linkend="storage-toast">.
-	Note that the supplementary storage table inherits the
+    Note that the supplementary storage table inherits the
     <literal>autovacuum</literal> values from its parent table, if there are
     no <literal>toast.autovacuum_*</literal> settings set.
    </para>
