@@ -694,17 +694,24 @@ initialize_environment(void)
 		unsetenv("LC_COLLATE");
 		unsetenv("LC_CTYPE");
 		unsetenv("LC_MONETARY");
-		unsetenv("LC_MESSAGES");
 		unsetenv("LC_NUMERIC");
 		unsetenv("LC_TIME");
-		unsetenv("LC_ALL");
 		unsetenv("LANG");
-		unsetenv("LANGUAGE");
 		/* On Windows the default locale cannot be English, so force it */
 #if defined(WIN32) || defined(__CYGWIN__)
 		putenv("LANG=en");
 #endif
 	}
+
+	/*
+	 * Set translation-related settings to English; otherwise psql
+	 * will produce translated messages and produce diffs.  (XXX If we
+	 * ever support translation of pg_regress, this needs to be moved
+	 * elsewhere, where psql is actually called.)
+	 */
+	unsetenv("LANGUAGE");
+	unsetenv("LC_ALL");
+	putenv("LC_MESSAGES=C");
 
 	/*
 	 * Set multibyte as requested
