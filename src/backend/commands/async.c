@@ -283,6 +283,10 @@ Async_Unlisten(const char *relname)
 		if (Trace_notify)
 			elog(DEBUG1, "Async_Unlisten(%s,%d)", relname, MyProcPid);
 
+		/* If we couldn't possibly be listening, no need to queue anything */
+		if (pendingActions == NIL && !unlistenExitRegistered)
+			return;
+
 		queue_listen(LISTEN_UNLISTEN, relname);
 	}
 }
@@ -297,6 +301,10 @@ Async_UnlistenAll(void)
 {
 	if (Trace_notify)
 		elog(DEBUG1, "Async_UnlistenAll(%d)", MyProcPid);
+
+	/* If we couldn't possibly be listening, no need to queue anything */
+	if (pendingActions == NIL && !unlistenExitRegistered)
+		return;
 
 	queue_listen(LISTEN_UNLISTEN_ALL, "");
 }
