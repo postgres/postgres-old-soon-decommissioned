@@ -225,19 +225,25 @@ set_plain_rel_pathlist(PlannerInfo *root, RelOptInfo *rel, RangeTblEntry *rte)
 		return;
 	}
 
+	/*
+	 * Test any partial indexes of rel for applicability.  We must do this
+	 * first since partial unique indexes can affect size estimates.
+	 */
+	check_partial_indexes(root, rel);
+
 	/* Mark rel with estimated output rows, width, etc */
 	set_baserel_size_estimates(root, rel);
-
-	/* Test any partial indexes of rel for applicability */
-	check_partial_indexes(root, rel);
 
 	/*
 	 * Check to see if we can extract any restriction conditions from join
 	 * quals that are OR-of-AND structures.  If so, add them to the rel's
-	 * restriction list, and recompute the size estimates.
+	 * restriction list, and redo the above steps.
 	 */
 	if (create_or_index_quals(root, rel))
+	{
+		check_partial_indexes(root, rel);
 		set_baserel_size_estimates(root, rel);
+	}
 
 	/*
 	 * Generate paths and add them to the rel's pathlist.

@@ -181,6 +181,6 @@ create_or_index_quals(PlannerInfo *root, RelOptInfo *rel)
 		/* It isn't an outer join clause, so no need to adjust outer_selec */
 	}
 
-	/* Tell caller to recompute rel's rows estimate */
+	/* Tell caller to recompute partial index status and rowcount estimate */
 	return true;
 }
