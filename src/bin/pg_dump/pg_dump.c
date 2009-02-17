@@ -9853,7 +9853,7 @@ dumpTableSchema(Archive *fout, TableInfo *tbinfo)
 										 "(SELECT oid FROM pg_namespace "
 										 "WHERE nspname = CURRENT_SCHEMA)\n"
 										 "			AND relname = '%s'\n"
-										 "	);",
+										 "	);\n",
 										 tbinfo->attlen[j],
 										 tbinfo->attalign[j],
 										 tbinfo->attnames[j],
