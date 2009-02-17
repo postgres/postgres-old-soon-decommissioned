@@ -33,6 +33,9 @@
 #undef TEXTDOMAIN
 #define TEXTDOMAIN PG_TEXTDOMAIN("plpgsql")
 
+#undef _
+#define _(x) dgettext(TEXTDOMAIN, x)
+
 /* ----------
  * Compiler's namestack item types
  * ----------
