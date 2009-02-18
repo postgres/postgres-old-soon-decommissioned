@@ -22,6 +22,9 @@
  */
 typedef enum
 {
+	PMSIGNAL_RECOVERY_STARTED,	/* recovery has started */
+	PMSIGNAL_RECOVERY_CONSISTENT, /* recovery has reached consistent state */
+	PMSIGNAL_RECOVERY_COMPLETED, /* recovery has completed */
 	PMSIGNAL_PASSWORD_CHANGE,	/* pg_auth file has changed */
 	PMSIGNAL_WAKEN_ARCHIVER,	/* send a NOTIFY signal to xlog archiver */
 	PMSIGNAL_ROTATE_LOGFILE,	/* send SIGUSR1 to syslogger to rotate logfile */

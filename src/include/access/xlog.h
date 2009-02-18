@@ -199,6 +199,8 @@ extern void RestoreBkpBlocks(XLogRecPtr lsn, XLogRecord *record, bool cleanup);
 extern void xlog_redo(XLogRecPtr lsn, XLogRecord *record);
 extern void xlog_desc(StringInfo buf, uint8 xl_info, char *rec);
 
+extern bool RecoveryInProgress(void);
+
 extern void UpdateControlFile(void);
 extern Size XLOGShmemSize(void);
 extern void XLOGShmemInit(void);
@@ -207,9 +209,12 @@ extern void StartupXLOG(void);
 extern void ShutdownXLOG(int code, Datum arg);
 extern void InitXLOGAccess(void);
 extern void CreateCheckPoint(int flags);
+extern bool CreateRestartPoint(int flags);
 extern void XLogPutNextOid(Oid nextOid);
 extern XLogRecPtr GetRedoRecPtr(void);
 extern XLogRecPtr GetInsertRecPtr(void);
 extern void GetNextXidAndEpoch(TransactionId *xid, uint32 *epoch);
+
+extern void StartupProcessMain(void);
 
 #endif   /* XLOG_H */
