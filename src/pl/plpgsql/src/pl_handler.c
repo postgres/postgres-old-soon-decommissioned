@@ -159,7 +159,7 @@ plpgsql_validator(PG_FUNCTION_ARGS)
 				 !IsPolymorphicType(proc->prorettype))
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("plpgsql functions cannot return type %s",
+					 errmsg("PL/pgSQL functions cannot return type %s",
 							format_type_be(proc->prorettype))));
 	}
 
@@ -174,7 +174,7 @@ plpgsql_validator(PG_FUNCTION_ARGS)
 			if (!IsPolymorphicType(argtypes[i]))
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-						 errmsg("plpgsql functions cannot take type %s",
+						 errmsg("PL/pgSQL functions cannot accept type %s",
 								format_type_be(argtypes[i]))));
 		}
 	}

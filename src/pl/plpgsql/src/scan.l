@@ -254,7 +254,7 @@ dump			{ return O_DUMP;			}
 				plpgsql_error_lineno = start_lineno;
 				ereport(ERROR,
 						(errcode(ERRCODE_DATATYPE_MISMATCH),
-						 errmsg("unterminated comment")));
+						 errmsg("unterminated /* comment")));
 			}
 
     /* ----------
@@ -293,7 +293,7 @@ dump			{ return O_DUMP;			}
 				plpgsql_error_lineno = start_lineno;
 				ereport(ERROR,
 						(errcode(ERRCODE_DATATYPE_MISMATCH),
-						 errmsg("unterminated string")));
+						 errmsg("unterminated quoted string")));
 			}
 
 {dolqdelim}		{

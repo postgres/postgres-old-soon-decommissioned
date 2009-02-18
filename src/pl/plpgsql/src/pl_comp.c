@@ -415,7 +415,7 @@ do_compile(FunctionCallInfo fcinfo,
 					argdtype->ttype != PLPGSQL_TTYPE_ROW)
 					ereport(ERROR,
 							(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-							 errmsg("plpgsql functions cannot take type %s",
+							 errmsg("PL/pgSQL functions cannot accept type %s",
 									format_type_be(argtypeid))));
 
 				/* Build variable and add to datum list */
@@ -534,7 +534,7 @@ do_compile(FunctionCallInfo fcinfo,
 				else
 					ereport(ERROR,
 							(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-							 errmsg("plpgsql functions cannot return type %s",
+							 errmsg("PL/pgSQL functions cannot return type %s",
 									format_type_be(rettypeid))));
 			}
 
@@ -576,7 +576,7 @@ do_compile(FunctionCallInfo fcinfo,
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
 				  errmsg("trigger functions cannot have declared arguments"),
-						 errhint("You probably want to use TG_NARGS and TG_ARGV instead.")));
+						 errhint("The arguments of the trigger can be accessed through TG_NARGS and TG_ARGV instead.")));
 
 			/* Add the record for referencing NEW */
 			rec = plpgsql_build_record("new", 0, true);
@@ -766,7 +766,7 @@ plpgsql_compile_error_callback(void *arg)
 	}
 
 	if (plpgsql_error_funcname)
-		errcontext("compile of PL/pgSQL function \"%s\" near line %d",
+		errcontext("compilation of PL/pgSQL function \"%s\" near line %d",
 				   plpgsql_error_funcname, plpgsql_error_lineno);
 }
 
