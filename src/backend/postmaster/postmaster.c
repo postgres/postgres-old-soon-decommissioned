@@ -2652,7 +2652,8 @@ PostmasterStateMachine(void)
 	if (pmState == PM_RECOVERY && RecoveryStatus >= RecoveryConsistent)
 	{
 		/*
-		 * Go to shutdown mode if a shutdown request was pending.
+		 * Recovery has reached a consistent recovery point. Go to shutdown
+		 * mode if a shutdown request was pending.
 		 */
 		if (Shutdown > NoShutdown)
 		{
@@ -2661,10 +2662,6 @@ PostmasterStateMachine(void)
 		}
 		else
 		{
-			/*
-			 * Startup process has entered recovery. We consider that good
-			 * enough to reset FatalError.
-			 */
 			pmState = PM_RECOVERY_CONSISTENT;
 
 			/*
