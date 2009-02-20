@@ -1446,7 +1446,7 @@ plperl_trigger_handler(PG_FUNCTION_ARGS)
 		{
 			ereport(ERROR,
 					(errcode(ERRCODE_E_R_I_E_TRIGGER_PROTOCOL_VIOLATED),
-					 errmsg("result of Perl trigger function must be undef, "
+					 errmsg("result of PL/Perl trigger function must be undef, "
 							"\"SKIP\", or \"MODIFY\"")));
 			trv = NULL;
 		}
