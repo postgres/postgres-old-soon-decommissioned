@@ -487,6 +487,7 @@ restore_toc_entry(ArchiveHandle *AH, TocEntry *te,
 		{
 			ahlog(AH, 1, "connecting to new database \"%s\"\n", te->tag);
 			_reconnectToDB(AH, te->tag);
+			ropt->dbname = strdup(te->tag);
 		}
 	}
 
