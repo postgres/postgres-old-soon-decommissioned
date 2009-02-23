@@ -138,12 +138,13 @@ typedef struct PROC_HDR
 /*
  * We set aside some extra PGPROC structures for auxiliary processes,
  * ie things that aren't full-fledged backends but need shmem access.
- * 
+ *
  * Background writer, WAL writer, and autovacuum launcher run during
- * normal operation. When recovery has just finished, the startup
- * process can co-exist with them for a brief period before it exits.
+ * normal operation. Startup process also consumes one slot, but WAL
+ * writer and autovacuum launcher are launched only after it has
+ * exited.
  */
-#define NUM_AUXILIARY_PROCS		4
+#define NUM_AUXILIARY_PROCS		3
 
 
 /* configurable options */
