@@ -5144,7 +5144,7 @@ validate_tupdesc_compat(TupleDesc expected, TupleDesc returned, const char *msg)
 					(errcode(ERRCODE_DATATYPE_MISMATCH),
 					 errmsg("%s", _(msg)),
 					 errdetail("Returned type %s does not match expected type "
-							   "%s in column %s.",
+							   "%s in column \"%s\".",
 							   OidIsValid(returned->attrs[i]->atttypid) ?
 							   format_type_be(returned->attrs[i]->atttypid) :
 							   _(dropped_column_type),
