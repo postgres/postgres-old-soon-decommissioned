@@ -17,13 +17,16 @@
 #include "nodes/nodes.h"
 
 
-extern Oid	TypeShellMake(const char *typeName, Oid typeNamespace);
+extern Oid	TypeShellMake(const char *typeName,
+						  Oid typeNamespace,
+						  Oid ownerId);
 
 extern Oid TypeCreate(Oid newTypeOid,
 		   const char *typeName,
 		   Oid typeNamespace,
 		   Oid relationOid,
 		   char relationKind,
+		   Oid ownerId,
 		   int16 internalSize,
 		   char typeType,
 		   char typeCategory,
