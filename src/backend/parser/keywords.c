@@ -230,7 +230,6 @@ const ScanKeyword ScanKeywords[] = {
 	{"least", LEAST, COL_NAME_KEYWORD},
 	{"left", LEFT, TYPE_FUNC_NAME_KEYWORD},
 	{"level", LEVEL, UNRESERVED_KEYWORD},
-	{"library", LIBRARY, UNRESERVED_KEYWORD},
 	{"like", LIKE, TYPE_FUNC_NAME_KEYWORD},
 	{"limit", LIMIT, RESERVED_KEYWORD},
 	{"listen", LISTEN, UNRESERVED_KEYWORD},

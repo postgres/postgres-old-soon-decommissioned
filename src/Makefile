@@ -19,7 +19,6 @@ all install installdirs uninstall distprep:
 	$(MAKE) -C backend $@
 	$(MAKE) -C backend/utils/mb/conversion_procs $@
 	$(MAKE) -C backend/snowball $@
-	$(MAKE) -C backend/foreign $@-fdw
 	$(MAKE) -C include $@
 	$(MAKE) -C interfaces $@
 	$(MAKE) -C bin $@

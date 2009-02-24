@@ -2894,10 +2894,10 @@ listForeignDataWrappers(const char *pattern, bool verbose)
 	printfPQExpBuffer(&buf,
 					  "SELECT fdwname AS \"%s\",\n"
 					  "  pg_catalog.pg_get_userbyid(fdwowner) AS \"%s\",\n"
-					  "  fdwlibrary AS \"%s\"",
+					  "  fdwvalidator::pg_catalog.regproc AS \"%s\"",
 					  gettext_noop("Name"),
 					  gettext_noop("Owner"),
-					  gettext_noop("Library"));
+					  gettext_noop("Validator"));
 
 	if (verbose)
 	{

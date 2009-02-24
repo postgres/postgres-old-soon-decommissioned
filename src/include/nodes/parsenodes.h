@@ -1468,7 +1468,7 @@ typedef struct CreateFdwStmt
 {
 	NodeTag		type;
 	char	   *fdwname;		/* foreign-data wrapper name */
-	char	   *library;		/* libray name */
+	List	   *validator;		/* optional validator function (qual. name) */
 	List	   *options;		/* generic options to FDW */
 } CreateFdwStmt;
 
@@ -1476,7 +1476,8 @@ typedef struct AlterFdwStmt
 {
 	NodeTag		type;
 	char	   *fdwname;		/* foreign-data wrapper name */
-	char	   *library;		/* libray name */
+	List	   *validator;		/* optional validator function (qual. name) */
+	bool		change_validator;
 	List	   *options;		/* generic options to FDW */
 } AlterFdwStmt;
 

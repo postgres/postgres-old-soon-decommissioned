@@ -3682,6 +3682,8 @@ DESCR("total disk space usage for the specified table and associated indexes and
 DATA(insert OID = 2288 ( pg_size_pretty			PGNSP PGUID 12 1 0 0 f f f t f v 1 0 25 "20" _null_ _null_ _null_ _null_ pg_size_pretty _null_ _null_ _null_ ));
 DESCR("convert a long int to a human readable text using size units");
 
+DATA(insert OID = 2316 ( postgresql_fdw_validator PGNSP PGUID 12 1 0 0 f f f t f i 2 0 16 "1009 26" _null_ _null_ _null_ _null_ postgresql_fdw_validator _null_ _null_ _null_));
+
 DATA(insert OID = 2290 (  record_in			PGNSP PGUID 12 1 0 0 f f f t f v 3 0 2249 "2275 26 23" _null_ _null_ _null_ _null_	record_in _null_ _null_ _null_ ));
 DESCR("I/O");
 DATA(insert OID = 2291 (  record_out		PGNSP PGUID 12 1 0 0 f f f t f v 1 0 2275 "2249" _null_ _null_ _null_ _null_ record_out _null_ _null_ _null_ ));

@@ -2994,7 +2994,7 @@ _copyCreateFdwStmt(CreateFdwStmt *from)
 	CreateFdwStmt *newnode = makeNode(CreateFdwStmt);
 
 	COPY_STRING_FIELD(fdwname);
-	COPY_STRING_FIELD(library);
+	COPY_NODE_FIELD(validator);
 	COPY_NODE_FIELD(options);
 
 	return newnode;
@@ -3006,7 +3006,8 @@ _copyAlterFdwStmt(AlterFdwStmt *from)
 	AlterFdwStmt *newnode = makeNode(AlterFdwStmt);
 
 	COPY_STRING_FIELD(fdwname);
-	COPY_STRING_FIELD(library);
+	COPY_NODE_FIELD(validator);
+	COPY_SCALAR_FIELD(change_validator);
 	COPY_NODE_FIELD(options);
 
 	return newnode;
