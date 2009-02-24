@@ -634,13 +634,16 @@ DATA(insert OID = 3500 ( anyenum		PGNSP PGUID  4 t p t \054 0 0 0 anyenum_in any
 /*
  * prototypes for functions in pg_type.c
  */
-extern Oid	TypeShellMake(const char *typeName, Oid typeNamespace);
+extern Oid	TypeShellMake(const char *typeName,
+						  Oid typeNamespace,
+						  Oid ownerId);
 
 extern Oid TypeCreate(Oid newTypeOid,
 		   const char *typeName,
 		   Oid typeNamespace,
 		   Oid relationOid,
 		   char relationKind,
+		   Oid ownerId,
 		   int16 internalSize,
 		   char typeType,
 		   char typDelim,
