@@ -1191,18 +1191,9 @@ logfile_getname(pg_time_t timestamp, char *suffix)
 
 	len = strlen(filename);
 
-	if (strchr(Log_filename, '%'))
-	{
-		/* treat it as a strftime pattern */
-		pg_strftime(filename + len, MAXPGPATH - len, Log_filename,
-					pg_localtime(&timestamp, log_timezone));
-	}
-	else
-	{
-		/* no strftime escapes, so append timestamp to new filename */
-		snprintf(filename + len, MAXPGPATH - len, "%s.%lu",
-				 Log_filename, (unsigned long) timestamp);
-	}
+	/* treat it as a strftime pattern */
+	pg_strftime(filename + len, MAXPGPATH - len, Log_filename,
+		pg_localtime(&timestamp, log_timezone));
 
 	if (suffix != NULL)
 	{
