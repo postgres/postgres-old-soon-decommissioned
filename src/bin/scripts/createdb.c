@@ -246,13 +246,13 @@ help(const char *progname)
 	printf(_("  %s [OPTION]... [DBNAME] [DESCRIPTION]\n"), progname);
 	printf(_("\nOptions:\n"));
 	printf(_("  -D, --tablespace=TABLESPACE  default tablespace for the database\n"));
+	printf(_("  -e, --echo                   show the commands being sent to the server\n"));
 	printf(_("  -E, --encoding=ENCODING      encoding for the database\n"));
 	printf(_("  -l, --locale=LOCALE          locale settings for the database\n"));
-	printf(_("  --lc-collate=LOCALE          LC_COLLATE setting for the database\n"));
-	printf(_("  --lc-ctype=LOCALE            LC_CTYPE setting for the database\n"));
+	printf(_("      --lc-collate=LOCALE      LC_COLLATE setting for the database\n"));
+	printf(_("      --lc-ctype=LOCALE        LC_CTYPE setting for the database\n"));
 	printf(_("  -O, --owner=OWNER            database user to own the new database\n"));
 	printf(_("  -T, --template=TEMPLATE      template database to copy\n"));
-	printf(_("  -e, --echo                   show the commands being sent to the server\n"));
 	printf(_("  --help                       show this help, then exit\n"));
 	printf(_("  --version                    output version information, then exit\n"));
 	printf(_("\nConnection options:\n"));

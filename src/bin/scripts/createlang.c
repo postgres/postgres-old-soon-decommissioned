@@ -214,11 +214,12 @@ help(const char *progname)
 	printf(_("  -d, --dbname=DBNAME       database to install language in\n"));
 	printf(_("  -e, --echo                show the commands being sent to the server\n"));
 	printf(_("  -l, --list                show a list of currently installed languages\n"));
+	printf(_("  --help                    show this help, then exit\n"));
+	printf(_("  --version                 output version information, then exit\n"));
+	printf(_("\nConnection options:\n"));
 	printf(_("  -h, --host=HOSTNAME       database server host or socket directory\n"));
 	printf(_("  -p, --port=PORT           database server port\n"));
 	printf(_("  -U, --username=USERNAME   user name to connect as\n"));
 	printf(_("  -W, --password            force password prompt\n"));
-	printf(_("  --help                    show this help, then exit\n"));
-	printf(_("  --version                 output version information, then exit\n"));
 	printf(_("\nReport bugs to <pgsql-bugs@postgresql.org>.\n"));
 }

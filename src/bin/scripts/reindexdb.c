@@ -310,12 +310,12 @@ help(const char *progname)
 	printf(_("  %s [OPTION]... [DBNAME]\n"), progname);
 	printf(_("\nOptions:\n"));
 	printf(_("  -a, --all                 reindex all databases\n"));
-	printf(_("  -s, --system              reindex system catalogs\n"));
 	printf(_("  -d, --dbname=DBNAME       database to reindex\n"));
-	printf(_("  -t, --table=TABLE         reindex specific table only\n"));
-	printf(_("  -i, --index=INDEX         recreate specific index only\n"));
 	printf(_("  -e, --echo                show the commands being sent to the server\n"));
+	printf(_("  -i, --index=INDEX         recreate specific index only\n"));
 	printf(_("  -q, --quiet               don't write any messages\n"));
+	printf(_("  -s, --system              reindex system catalogs\n"));
+	printf(_("  -t, --table=TABLE         reindex specific table only\n"));
 	printf(_("  --help                    show this help, then exit\n"));
 	printf(_("  --version                 output version information, then exit\n"));
 	printf(_("\nConnection options:\n"));

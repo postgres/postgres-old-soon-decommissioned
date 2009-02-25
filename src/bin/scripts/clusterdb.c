@@ -234,9 +234,9 @@ help(const char *progname)
 	printf(_("\nOptions:\n"));
 	printf(_("  -a, --all                 cluster all databases\n"));
 	printf(_("  -d, --dbname=DBNAME       database to cluster\n"));
-	printf(_("  -t, --table=TABLE         cluster specific table only\n"));
 	printf(_("  -e, --echo                show the commands being sent to the server\n"));
 	printf(_("  -q, --quiet               don't write any messages\n"));
+	printf(_("  -t, --table=TABLE         cluster specific table only\n"));
 	printf(_("  -v, --verbose             write a lot of output\n"));
 	printf(_("  --help                    show this help, then exit\n"));
 	printf(_("  --version                 output version information, then exit\n"));
