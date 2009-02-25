@@ -309,8 +309,7 @@ doConnect(void)
 
 		if (PQstatus(conn) == CONNECTION_BAD &&
 			PQconnectionNeedsPassword(conn) &&
-			password == NULL &&
-			!feof(stdin))
+			password == NULL)
 		{
 			PQfinish(conn);
 			password = simple_prompt("Password: ", 100, false);

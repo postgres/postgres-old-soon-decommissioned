@@ -189,8 +189,7 @@ main(int argc, char *argv[])
 
 		if (PQstatus(pset.db) == CONNECTION_BAD &&
 			PQconnectionNeedsPassword(pset.db) &&
-			password == NULL &&
-			!feof(stdin))
+			password == NULL)
 		{
 			PQfinish(pset.db);
 			password = simple_prompt(password_prompt, 100, false);

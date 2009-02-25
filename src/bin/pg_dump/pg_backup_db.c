@@ -241,8 +241,7 @@ ConnectDatabase(Archive *AHX,
 
 		if (PQstatus(AH->connection) == CONNECTION_BAD &&
 			PQconnectionNeedsPassword(AH->connection) &&
-			password == NULL &&
-			!feof(stdin))
+			password == NULL)
 		{
 			PQfinish(AH->connection);
 			password = simple_prompt("Password: ", 100, false);
