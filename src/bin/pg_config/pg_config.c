@@ -410,7 +410,7 @@ help(void)
 {
 	printf(_("\n%s provides information about the installed version of PostgreSQL.\n\n"), progname);
 	printf(_("Usage:\n"));
-	printf(_("  %s [ OPTION ... ]\n\n"), progname);
+	printf(_("  %s [OPTION]...\n\n"), progname);
 	printf(_("Options:\n"));
 	printf(_("  --bindir              show location of user executables\n"));
 	printf(_("  --docdir              show location of documentation files\n"));
