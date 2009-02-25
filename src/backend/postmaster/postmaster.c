@@ -2226,7 +2226,9 @@ reaper(SIGNAL_ARGS)
 
 			/* at this point we are really open for business */
 			ereport(LOG,
-				(errmsg("database system is ready to accept connections")));
+				 (errmsg("database system is ready to accept connections")));
+
+			continue;
 		}
 
 		/*
