@@ -1631,17 +1631,6 @@ _outInnerIndexscanInfo(StringInfo str, InnerIndexscanInfo *node)
 }
 
 static void
-_outFlattenedSubLink(StringInfo str, FlattenedSubLink *node)
-{
-	WRITE_NODE_TYPE("FLATTENEDSUBLINK");
-
-	WRITE_ENUM_FIELD(jointype, JoinType);
-	WRITE_BITMAPSET_FIELD(lefthand);
-	WRITE_BITMAPSET_FIELD(righthand);
-	WRITE_NODE_FIELD(quals);
-}
-
-static void
 _outPlaceHolderVar(StringInfo str, PlaceHolderVar *node)
 {
 	WRITE_NODE_TYPE("PLACEHOLDERVAR");
@@ -2659,9 +2648,6 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_InnerIndexscanInfo:
 				_outInnerIndexscanInfo(str, obj);
-				break;
-			case T_FlattenedSubLink:
-				_outFlattenedSubLink(str, obj);
 				break;
 			case T_PlaceHolderVar:
 				_outPlaceHolderVar(str, obj);

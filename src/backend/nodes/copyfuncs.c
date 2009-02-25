@@ -1625,22 +1625,6 @@ _copyRestrictInfo(RestrictInfo *from)
 }
 
 /*
- * _copyFlattenedSubLink
- */
-static FlattenedSubLink *
-_copyFlattenedSubLink(FlattenedSubLink *from)
-{
-	FlattenedSubLink *newnode = makeNode(FlattenedSubLink);
-
-	COPY_SCALAR_FIELD(jointype);
-	COPY_BITMAPSET_FIELD(lefthand);
-	COPY_BITMAPSET_FIELD(righthand);
-	COPY_NODE_FIELD(quals);
-
-	return newnode;
-}
-
-/*
  * _copyPlaceHolderVar
  */
 static PlaceHolderVar *
@@ -3709,9 +3693,6 @@ copyObject(void *from)
 			break;
 		case T_RestrictInfo:
 			retval = _copyRestrictInfo(from);
-			break;
-		case T_FlattenedSubLink:
-			retval = _copyFlattenedSubLink(from);
 			break;
 		case T_PlaceHolderVar:
 			retval = _copyPlaceHolderVar(from);

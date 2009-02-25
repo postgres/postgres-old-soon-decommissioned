@@ -1587,23 +1587,6 @@ adjust_appendrel_attrs_mutator(Node *node, AppendRelInfo *context)
 			j->rtindex = context->child_relid;
 		return (Node *) j;
 	}
-	if (IsA(node, FlattenedSubLink))
-	{
-		/* Copy the FlattenedSubLink node with correct mutation of subnodes */
-		FlattenedSubLink *fslink;
-
-		fslink = (FlattenedSubLink *) expression_tree_mutator(node,
-											  adjust_appendrel_attrs_mutator,
-															 (void *) context);
-		/* now fix FlattenedSubLink's relid sets */
-		fslink->lefthand = adjust_relid_set(fslink->lefthand,
-											context->parent_relid,
-											context->child_relid);
-		fslink->righthand = adjust_relid_set(fslink->righthand,
-											 context->parent_relid,
-											 context->child_relid);
-		return (Node *) fslink;
-	}
 	if (IsA(node, PlaceHolderVar))
 	{
 		/* Copy the PlaceHolderVar node with correct mutation of subnodes */

@@ -216,7 +216,6 @@ typedef enum NodeTag
 	T_PathKey,
 	T_RestrictInfo,
 	T_InnerIndexscanInfo,
-	T_FlattenedSubLink,
 	T_PlaceHolderVar,
 	T_SpecialJoinInfo,
 	T_AppendRelInfo,
