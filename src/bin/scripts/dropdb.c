@@ -28,7 +28,6 @@ main(int argc, char *argv[])
 		{"no-password", no_argument, NULL, 'w'},
 		{"password", no_argument, NULL, 'W'},
 		{"echo", no_argument, NULL, 'e'},
-		{"quiet", no_argument, NULL, 'q'},
 		{"interactive", no_argument, NULL, 'i'},
 		{NULL, 0, NULL, 0}
 	};
@@ -55,7 +54,7 @@ main(int argc, char *argv[])
 
 	handle_help_version_opts(argc, argv, "dropdb", help);
 
-	while ((c = getopt_long(argc, argv, "h:p:U:wWeqi", long_options, &optindex)) != -1)
+	while ((c = getopt_long(argc, argv, "h:p:U:wWei", long_options, &optindex)) != -1)
 	{
 		switch (c)
 		{
@@ -76,9 +75,6 @@ main(int argc, char *argv[])
 				break;
 			case 'e':
 				echo = true;
-				break;
-			case 'q':
-				/* obsolete; remove in 8.4 */
 				break;
 			case 'i':
 				interactive = true;
