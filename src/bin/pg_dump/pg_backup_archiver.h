@@ -238,7 +238,7 @@ typedef struct _archiveHandle
 
 	/* Stuff for direct DB connection */
 	char	   *archdbname;		/* DB name *read* from archive */
-	bool		requirePassword;
+	enum trivalue promptPassword;
 	char       *savedPassword;	/* password for ropt->username, if known */
 	PGconn	   *connection;
 	int			connectToDB;	/* Flag to indicate if direct DB connection is

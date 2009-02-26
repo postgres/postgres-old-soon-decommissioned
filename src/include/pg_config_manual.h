@@ -59,12 +59,6 @@
 #define NUM_USER_DEFINED_LWLOCKS	4
 
 /*
- * Define this if you want psql to _always_ ask for a username and a
- * password for password authentication.
- */
-/* #define PSQL_ALWAYS_GET_PASSWORDS */
-
-/*
  * Define this if you want to allow the lo_import and lo_export SQL
  * functions to be executed by ordinary users.	By default these
  * functions are only available to the Postgres superuser.	CAUTION:

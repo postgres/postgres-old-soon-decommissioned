@@ -55,6 +55,12 @@ typedef enum
 	hctl_ignoreboth = hctl_ignorespace | hctl_ignoredups
 } HistControl;
 
+enum trivalue
+{
+	TRI_DEFAULT,
+	TRI_NO,
+	TRI_YES
+};
 
 typedef struct _psqlSettings
 {
@@ -69,7 +75,7 @@ typedef struct _psqlSettings
 
 	bool		notty;			/* stdin or stdout is not a tty (as determined
 								 * on startup) */
-	bool		getPassword;	/* prompt the user for a username and password */
+	enum trivalue getPassword;	/* prompt the user for a username and password */
 	FILE	   *cur_cmd_source; /* describe the status of the current main
 								 * loop */
 	bool		cur_cmd_interactive;

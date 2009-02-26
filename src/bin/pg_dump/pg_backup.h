@@ -37,6 +37,13 @@
 #define oidge(x,y) ( (x) >= (y) )
 #define oidzero(x) ( (x) == 0 )
 
+enum trivalue
+{
+	TRI_DEFAULT,
+	TRI_NO,
+	TRI_YES
+};
+
 typedef enum _archiveFormat
 {
 	archUnknown = 0,
@@ -126,7 +133,7 @@ typedef struct _restoreOptions
 	char	   *pghost;
 	char	   *username;
 	int			noDataForFailedTables;
-	int			requirePassword;
+	enum trivalue promptPassword;
 	int			exit_on_error;
 	int			compression;
 	int			suppressDumpWarnings;	/* Suppress output of WARNING entries
@@ -153,7 +160,7 @@ PGconn *ConnectDatabase(Archive *AH,
 				const char *pghost,
 				const char *pgport,
 				const char *username,
-				int reqPwd);
+				enum trivalue prompt_password);
 
 /* Called to add a TOC entry */
 extern void ArchiveEntry(Archive *AHX,
