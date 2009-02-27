@@ -953,8 +953,10 @@ exec_stmt_block(PLpgSQL_execstate *estate, PLpgSQL_stmt_block *block)
 
 					free_var(state_var);
 					state_var->value = (Datum) 0;
+					state_var->isnull = true;
 					free_var(errm_var);
 					errm_var->value = (Datum) 0;
+					errm_var->isnull = true;
 					break;
 				}
 			}
