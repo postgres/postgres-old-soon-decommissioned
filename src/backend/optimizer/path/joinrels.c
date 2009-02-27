@@ -185,7 +185,7 @@ join_search_one_level(PlannerInfo *root, int level, List **joinrels)
 	 * Last-ditch effort: if we failed to find any usable joins so far, force
 	 * a set of cartesian-product joins to be generated.  This handles the
 	 * special case where all the available rels have join clauses but we
-	 * cannot use any of the joins yet.  An example is
+	 * cannot use any of those clauses yet.  An example is
 	 *
 	 * SELECT * FROM a,b,c WHERE (a.f1 + b.f2 + c.f3) = 0;
 	 *
@@ -737,7 +737,7 @@ make_join_rel(PlannerInfo *root, RelOptInfo *rel1, RelOptInfo *rel2)
  *
  * In practice this is always used with have_relevant_joinclause(), and so
  * could be merged with that function, but it seems clearer to separate the
- * two concerns.  We need these tests because there are degenerate cases where
+ * two concerns.  We need this test because there are degenerate cases where
  * a clauseless join must be performed to satisfy join-order restrictions.
  *
  * Note: this is only a problem if one side of a degenerate outer join
