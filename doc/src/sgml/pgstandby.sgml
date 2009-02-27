@@ -199,13 +199,6 @@ pg_standby <optional> <replaceable>option</> ... </optional> <replaceable>archiv
     </tbody>
    </tgroup>
   </table>
-  <note>
-   <para>
-    <literal>--help</literal> is not supported since
-    <application>pg_standby</application> is not intended for interactive use,
-    except during development and testing.
-   </para>
-  </note>
  </sect2>
 
  <sect2>
