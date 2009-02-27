@@ -69,7 +69,7 @@ CREATE USER MAPPING FOR { <replaceable class="parameter">username</replaceable> 
    </varlistentry>
 
    <varlistentry>
-    <term><literal>OPTIONS ( <replaceable class="PARAMETER">option</replaceable> ['<replaceable class="PARAMETER">value</replaceable>'] [, ... ] )</literal></term>
+    <term><literal>OPTIONS ( <replaceable class="PARAMETER">option</replaceable> '<replaceable class="PARAMETER">value</replaceable>' [, ... ] )</literal></term>
     <listitem>
      <para>
       This clause specifies the options of the user mapping.  The
