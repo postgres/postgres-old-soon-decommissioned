@@ -116,7 +116,7 @@ static relopt_int intRelOpts[] =
 			"Vacuum cost delay in milliseconds, for autovacuum",
 			RELOPT_KIND_HEAP
 		},
-		20, 0, 1000
+		20, 0, 100
 	},
 	{
 		{
