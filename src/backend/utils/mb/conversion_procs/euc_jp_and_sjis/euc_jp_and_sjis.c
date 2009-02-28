@@ -27,8 +27,6 @@
  */
 #include "sjis.map"
 
-#define ENCODING_GROWTH_RATE 4
-
 PG_FUNCTION_INFO_V1(euc_jp_to_sjis);
 PG_FUNCTION_INFO_V1(sjis_to_euc_jp);
 PG_FUNCTION_INFO_V1(euc_jp_to_mic);
