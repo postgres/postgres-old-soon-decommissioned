@@ -332,6 +332,14 @@ compare_pathkeys(List *keys1, List *keys2)
 	ListCell   *key1,
 			   *key2;
 
+	/*
+	 * Fall out quickly if we are passed two identical lists.  This mostly
+	 * catches the case where both are NIL, but that's common enough to
+	 * warrant the test.
+	 */
+	if (keys1 == keys2)
+		return PATHKEYS_EQUAL;
+
 	forboth(key1, keys1, key2, keys2)
 	{
 		PathKey    *pathkey1 = (PathKey *) lfirst(key1);
@@ -354,11 +362,11 @@ compare_pathkeys(List *keys1, List *keys2)
 	 * If we reached the end of only one list, the other is longer and
 	 * therefore not a subset.
 	 */
-	if (key1 == NULL && key2 == NULL)
-		return PATHKEYS_EQUAL;
 	if (key1 != NULL)
 		return PATHKEYS_BETTER1;	/* key1 is longer */
-	return PATHKEYS_BETTER2;	/* key2 is longer */
+	if (key2 != NULL)
+		return PATHKEYS_BETTER2;	/* key2 is longer */
+	return PATHKEYS_EQUAL;
 }
 
 /*
