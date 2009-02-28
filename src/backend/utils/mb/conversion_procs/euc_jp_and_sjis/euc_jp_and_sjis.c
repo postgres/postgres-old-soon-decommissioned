@@ -69,7 +69,7 @@ euc_jp_to_sjis(PG_FUNCTION_ARGS)
 
 	CHECK_ENCODING_CONVERSION_ARGS(PG_EUC_JP, PG_SJIS);
 
-	buf = palloc(len * ENCODING_GROWTH_RATE);
+	buf = palloc(len * ENCODING_GROWTH_RATE + 1);
 	euc_jp2mic(src, buf, len);
 	mic2sjis(buf, dest, strlen(buf));
 	pfree(buf);
@@ -87,7 +87,7 @@ sjis_to_euc_jp(PG_FUNCTION_ARGS)
 
 	CHECK_ENCODING_CONVERSION_ARGS(PG_SJIS, PG_EUC_JP);
 
-	buf = palloc(len * ENCODING_GROWTH_RATE);
+	buf = palloc(len * ENCODING_GROWTH_RATE + 1);
 	sjis2mic(src, buf, len);
 	mic2euc_jp(buf, dest, strlen(buf));
 	pfree(buf);
