@@ -138,12 +138,13 @@ typedef struct TParser
 	int			lenstr;			/* length of mbstring */
 #ifdef TS_USE_WIDE
 	wchar_t    *wstr;			/* wide character string */
+	pg_wchar   *pgwstr;			/* wide character string for C-locale */
 	int			lenwstr;		/* length of wsting */
+	bool		usewide;
 #endif
 
 	/* State of parse */
 	int			charmaxlen;
-	bool		usewide;
 	TParserPosition *state;
 	bool		ignore;
 	bool		wanthost;
