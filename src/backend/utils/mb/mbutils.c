@@ -601,7 +601,10 @@ wchar2char(char *to, const wchar_t *from, size_t tolen)
 	}
 	else
 #endif   /* WIN32 */
+	{
+		Assert( !lc_ctype_is_c() );
 		result = wcstombs(to, from, tolen);
+	}
 	return result;
 }
 
@@ -647,22 +650,12 @@ char2wchar(wchar_t *to, size_t tolen, const char *from, size_t fromlen)
 	else
 #endif   /* WIN32 */
 	{
-		if (lc_ctype_is_c())
-		{
-			/*
-			 * pg_mb2wchar_with_len always adds trailing '\0', so 'to' should be
-			 * allocated with sufficient space
-			 */
-			result = pg_mb2wchar_with_len(from, (pg_wchar *) to, fromlen);
-		}
-		else
-		{
-			/* mbstowcs requires ending '\0' */
-			char	   *str = pnstrdup(from, fromlen);
+		/* mbstowcs requires ending '\0' */
+		char	   *str = pnstrdup(from, fromlen);
 
-			result = mbstowcs(to, str, tolen);
-			pfree(str);
-		}
+		Assert( !lc_ctype_is_c() );
+		result = mbstowcs(to, str, tolen);
+		pfree(str);
 	}
 
 	if (result == -1)
