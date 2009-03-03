@@ -36,9 +36,9 @@
  * The extra value MaxDynamicLWLock is there to keep the compiler from
  * deciding that the enum can be represented as char or short ...
  *
- * If you remove a lock, please replace it with a placeholder like was done
- * for FreeSpaceMapLock. This retains the lock numbering, which is helpful for
- * DTrace and other external debugging scripts.
+ * If you remove a lock, please replace it with a placeholder. This retains
+ * the lock numbering, which is helpful for DTrace and other external
+ * debugging scripts.
  */
 typedef enum LWLockId
 {
@@ -49,7 +49,6 @@ typedef enum LWLockId
 	ProcArrayLock,
 	SInvalReadLock,
 	SInvalWriteLock,
-	UnusedLock1,				/* FreeSpaceMapLock used to be here */
 	WALInsertLock,
 	WALWriteLock,
 	ControlFileLock,
