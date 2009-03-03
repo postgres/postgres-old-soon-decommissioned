@@ -64,9 +64,6 @@
 #include "utils/guc.h"
 
 
-#undef _
-#define _(x) err_gettext(x)
-
 /* Global variables */
 ErrorContextCallback *error_context_stack = NULL;
 
@@ -183,6 +180,9 @@ err_gettext(const char *str)
 	return str;
 #endif
 }
+
+#undef gettext
+#define gettext(x) err_gettext(x)
 
 
 /*
@@ -666,7 +666,7 @@ errcode_for_socket_access(void)
 		char		   *fmtbuf; \
 		StringInfoData	buf; \
 		/* Internationalize the error format string */ \
-		if (translateit && !in_error_recursion_trouble()) \
+		if (translateit) \
 			fmt = gettext(fmt); \
 		/* Expand %m in format string */ \
 		fmtbuf = expand_fmt_string(fmt, edata); \
