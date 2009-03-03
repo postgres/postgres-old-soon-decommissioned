@@ -2500,7 +2500,7 @@ HandleChildCrash(int pid, int exitstatus, const char *procname)
 				(errmsg_internal("sending %s to process %d",
 								 (SendStop ? "SIGSTOP" : "SIGQUIT"),
 								 (int) StartupPID)));
-		signal_child(BgWriterPID, (SendStop ? SIGSTOP : SIGQUIT));
+		signal_child(StartupPID, (SendStop ? SIGSTOP : SIGQUIT));
 	}
 
 	/* Take care of the bgwriter too */
