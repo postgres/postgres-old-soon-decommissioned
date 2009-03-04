@@ -247,7 +247,7 @@ recompute_limits(LimitState *node)
 			node->offset = DatumGetInt64(val);
 			if (node->offset < 0)
 				ereport(ERROR,
-						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+						(errcode(ERRCODE_INVALID_ROW_COUNT_IN_RESULT_OFFSET_CLAUSE),
 						 errmsg("OFFSET must not be negative")));
 		}
 	}
@@ -274,7 +274,7 @@ recompute_limits(LimitState *node)
 			node->count = DatumGetInt64(val);
 			if (node->count < 0)
 				ereport(ERROR,
-						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+						(errcode(ERRCODE_INVALID_ROW_COUNT_IN_LIMIT_CLAUSE),
 						 errmsg("LIMIT must not be negative")));
 			node->noCount = false;
 		}

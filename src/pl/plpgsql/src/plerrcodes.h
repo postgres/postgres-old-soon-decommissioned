@@ -176,15 +176,19 @@
 },
 
 {
-	"invalid_limit_value", ERRCODE_INVALID_LIMIT_VALUE
-},
-
-{
 	"invalid_parameter_value", ERRCODE_INVALID_PARAMETER_VALUE
 },
 
 {
 	"invalid_regular_expression", ERRCODE_INVALID_REGULAR_EXPRESSION
+},
+
+{
+	"invalid_row_count_in_limit_clause", ERRCODE_INVALID_ROW_COUNT_IN_LIMIT_CLAUSE
+},
+
+{
+	"invalid_row_count_in_result_offset_clause", ERRCODE_INVALID_ROW_COUNT_IN_RESULT_OFFSET_CLAUSE
 },
 
 {
