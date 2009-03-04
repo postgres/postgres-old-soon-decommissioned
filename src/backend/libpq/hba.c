@@ -1306,12 +1306,19 @@ load_hba(void)
 	List *new_parsed_lines = NIL;
 
 	file = AllocateFile(HbaFileName, "r");
-	/* Failure is fatal since with no HBA entries we can do nothing... */
 	if (file == NULL)
-		ereport(FATAL,
+	{
+		ereport(WARNING,
 				(errcode_for_file_access(),
 				 errmsg("could not open configuration file \"%s\": %m",
 						HbaFileName)));
+		/*
+		 * Caller will take care of making this a FATAL error in case this is
+		 * the initial startup. If it happens on reload, we just keep the
+		 * old version around.
+		 */
+		return false;
+	}
 
 	tokenize_file(HbaFileName, file, &hba_lines, &hba_line_nums);
 	FreeFile(file);
