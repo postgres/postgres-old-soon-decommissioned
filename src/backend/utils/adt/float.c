@@ -110,6 +110,15 @@ static int	float4_cmp_internal(float4 a, float4 b);
 static int	float8_cmp_internal(float8 a, float8 b);
 
 #ifndef HAVE_CBRT
+/*
+ * Some machines (in particular, some versions of AIX) have an extern
+ * declaration for cbrt() in <math.h> but fail to provide the actual
+ * function, which causes configure to not set HAVE_CBRT.  Furthermore,
+ * their compilers spit up at the mismatch between extern declaration
+ * and static definition.  We work around that here by the expedient
+ * of a #define to make the actual name of the static function different.
+ */
+#define cbrt my_cbrt
 static double cbrt(double x);
 #endif   /* HAVE_CBRT */
 
