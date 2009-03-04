@@ -1308,7 +1308,7 @@ load_hba(void)
 	file = AllocateFile(HbaFileName, "r");
 	if (file == NULL)
 	{
-		ereport(WARNING,
+		ereport(LOG,
 				(errcode_for_file_access(),
 				 errmsg("could not open configuration file \"%s\": %m",
 						HbaFileName)));
