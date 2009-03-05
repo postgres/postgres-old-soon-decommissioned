@@ -3531,7 +3531,7 @@ mark_work_done(ArchiveHandle *AH, thandle worker, int status,
 	}
 
 	if (te == NULL)
-		die_horribly(AH, modulename, "failed to find slot for finished worker\n");
+		die_horribly(AH, modulename, "could not find slot of finished worker\n");
 
 	ahlog(AH, 1, "finished item %d %s %s\n",
 		  te->dumpId, te->desc, te->tag);
