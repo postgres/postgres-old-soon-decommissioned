@@ -441,6 +441,8 @@ typedef struct IndexOptInfo
 	bool		unique;			/* true if a unique index */
 	bool		amoptionalkey;	/* can query omit key for the first column? */
 	bool		amsearchnulls;	/* can AM search for NULL index entries? */
+	bool		amhasgettuple;	/* does AM have amgettuple interface? */
+	bool		amhasgetbitmap;	/* does AM have amgetbitmap interface? */
 } IndexOptInfo;
 
 

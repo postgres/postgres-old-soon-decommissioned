@@ -214,6 +214,8 @@ get_relation_info(PlannerInfo *root, Oid relationObjectId, bool inhparent,
 			info->amcostestimate = indexRelation->rd_am->amcostestimate;
 			info->amoptionalkey = indexRelation->rd_am->amoptionalkey;
 			info->amsearchnulls = indexRelation->rd_am->amsearchnulls;
+			info->amhasgettuple = OidIsValid(indexRelation->rd_am->amgettuple);
+			info->amhasgetbitmap = OidIsValid(indexRelation->rd_am->amgetbitmap);
 
 			/*
 			 * Fetch the ordering operators associated with the index, if any.
