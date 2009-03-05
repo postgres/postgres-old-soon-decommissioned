@@ -340,6 +340,7 @@ static datetkn datetktbl[] = {
 	{"msk", TZ, POS(12)},		/* Moscow Time */
 	{"mst", TZ, NEG(28)},		/* Mountain Standard Time */
 	{"mt", TZ, POS(34)},		/* Moluccas Time */
+	{"must", DTZ, POS(20)},		/* Mauritius Island Summer Time */
 	{"mut", TZ, POS(16)},		/* Mauritius Island Time */
 	{"mvt", TZ, POS(20)},		/* Maldives Island Time */
 	{"myt", TZ, POS(32)},		/* Malaysia Time */
