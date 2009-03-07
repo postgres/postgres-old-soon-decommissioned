@@ -23,17 +23,15 @@ all: submake-libpq $(PROGRAMS)
 %: %.o $(WIN32RES)
 	$(CC) $(CFLAGS) $^ $(libpq_pgport) $(LDFLAGS) $(LIBS) -o $@$(X)
 
-DUMPUTILSOBJS = dumputils.o kwlookup.o keywords.o
-
-createdb: createdb.o common.o $(DUMPUTILSOBJS)
+createdb: createdb.o common.o dumputils.o kwlookup.o keywords.o
 createlang: createlang.o common.o print.o mbprint.o
-createuser: createuser.o common.o $(DUMPUTILSOBJS)
-dropdb: dropdb.o common.o $(DUMPUTILSOBJS)
+createuser: createuser.o common.o dumputils.o kwlookup.o keywords.o
+dropdb: dropdb.o common.o dumputils.o kwlookup.o keywords.o
 droplang: droplang.o common.o print.o mbprint.o
-dropuser: dropuser.o common.o $(DUMPUTILSOBJS)
-clusterdb: clusterdb.o common.o $(DUMPUTILSOBJS)
+dropuser: dropuser.o common.o dumputils.o kwlookup.o keywords.o
+clusterdb: clusterdb.o common.o dumputils.o kwlookup.o keywords.o
 vacuumdb: vacuumdb.o common.o
-reindexdb: reindexdb.o common.o $(DUMPUTILSOBJS)
+reindexdb: reindexdb.o common.o dumputils.o kwlookup.o keywords.o
 
 dumputils.c keywords.c: % : $(top_srcdir)/src/bin/pg_dump/%
 	rm -f $@ && $(LN_S) $< .
@@ -64,5 +62,5 @@ uninstall:
 
 clean distclean maintainer-clean:
 	rm -f $(addsuffix $(X), $(PROGRAMS)) $(addsuffix .o, $(PROGRAMS))
-	rm -f common.o $(DUMPUTILSOBJS) print.o mbprint.o $(WIN32RES)
+	rm -f common.o dumputils.o kwlookup.o keywords.o print.o mbprint.o $(WIN32RES)
 	rm -f dumputils.c print.c mbprint.c kwlookup.c keywords.c
