@@ -423,7 +423,7 @@ static TypeName *TableFuncTypeName(List *columns);
 
 /*
  * If you make any token changes, update the keyword table in
- * parser/keywords.c and add new keywords to the appropriate one of
+ * src/include/parser/kwlist.h and add new keywords to the appropriate one of
  * the reserved-or-not-so-reserved keyword lists, below; search
  * this file for "Name classification hierarchy".
  */
@@ -516,7 +516,7 @@ static TypeName *TableFuncTypeName(List *columns);
 
 	ZONE
 
-/* The grammar thinks these are keywords, but they are not in the keywords.c
+/* The grammar thinks these are keywords, but they are not in the kwlist.h
  * list and so can never be entered directly.  The filter in parser.c
  * creates these tokens when required.
  */

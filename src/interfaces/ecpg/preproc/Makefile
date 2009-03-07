@@ -25,7 +25,7 @@ override CPPFLAGS := -I../include -I$(top_srcdir)/src/interfaces/ecpg/include \
 override CFLAGS += $(PTHREAD_CFLAGS) -DECPG_COMPILE
 
 OBJS=	preproc.o type.o ecpg.o output.o parser.o \
-	keywords.o c_keywords.o ecpg_keywords.o ../ecpglib/typename.o descriptor.o variable.o \
+	keywords.o c_keywords.o ecpg_keywords.o kwlookup.o ../ecpglib/typename.o descriptor.o variable.o \
 	$(WIN32RES)
 
 all: submake-libpgport ecpg
@@ -57,8 +57,7 @@ $(srcdir)/preproc.y: $(top_srcdir)/src/backend/parser/gram.y parse.pl ecpg.addon
 
 ecpg_keywords.o c_keywords.o keywords.o preproc.o parser.o: preproc.h
 
-# instead of maintaining our own list, take the one from the backend
-keywords.c: % : $(top_srcdir)/src/backend/parser/%
+kwlookup.c: % : $(top_srcdir)/src/backend/parser/%
 	rm -f $@ && $(LN_S) $< .
 
 distprep: $(srcdir)/preproc.y $(srcdir)/preproc.c $(srcdir)/preproc.h $(srcdir)/pgc.c
@@ -73,7 +72,7 @@ uninstall:
 	rm -f '$(DESTDIR)$(bindir)/ecpg$(X)'
 
 clean distclean:
-	rm -f keywords.c *.o ecpg$(X)
+	rm -f kwlookup.c *.o ecpg$(X)
 # garbage from development
 	@rm -f core a.out
 

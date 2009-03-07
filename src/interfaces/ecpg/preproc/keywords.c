@@ -13,12 +13,11 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "postgres.h"
+#include "postgres_fe.h"
 
-#include "nodes/nodes.h"
-#include "nodes/parsenodes.h"
 #include "parser/keywords.h"
-#include "parser/gram.h"
+#include "type.h"
+#include "preproc.h"
 
 #define PG_KEYWORD(a,b,c) {a,b,c},
 
