@@ -891,17 +891,20 @@ SetDatabaseEncoding(int encoding)
 	DatabaseEncoding = &pg_enc2name_tbl[encoding];
 	Assert(DatabaseEncoding->encoding == encoding);
 
+#ifdef ENABLE_NLS
 	pg_bind_textdomain_codeset(textdomain(NULL), encoding);
+#endif
 }
 
 /*
  * On Windows, we need to explicitly bind gettext to the correct
  * encoding, because gettext() tends to get confused.
  */
+#ifdef ENABLE_NLS
 void
 pg_bind_textdomain_codeset(const char *domainname, int encoding)
 {
-#if defined(ENABLE_NLS) && defined(WIN32)
+#ifdef WIN32
 	int     i;
 
 	for (i = 0; i < lengthof(codeset_map_array); i++)
@@ -916,6 +919,7 @@ pg_bind_textdomain_codeset(const char *domainname, int encoding)
 	}
 #endif
 }
+#endif
 
 void
 SetDefaultClientEncoding(void)
