@@ -891,22 +891,27 @@ SetDatabaseEncoding(int encoding)
 	DatabaseEncoding = &pg_enc2name_tbl[encoding];
 	Assert(DatabaseEncoding->encoding == encoding);
 
-	/*
-	 * On Windows, we need to explicitly bind gettext to the correct
-	 * encoding, because gettext() tends to get confused.
-	 */
-#if defined(ENABLE_NLS) && defined(WIN32)
-	{
-		int	i;
+	pg_bind_textdomain_codeset(textdomain(NULL), encoding);
+}
 
-		for (i = 0; i < sizeof(codeset_map_array) / sizeof(codeset_map_array[0]); i++)
+/*
+ * On Windows, we need to explicitly bind gettext to the correct
+ * encoding, because gettext() tends to get confused.
+ */
+void
+pg_bind_textdomain_codeset(const char *domainname, int encoding)
+{
+#if defined(ENABLE_NLS) && defined(WIN32)
+	int     i;
+
+	for (i = 0; i < lengthof(codeset_map_array); i++)
+	{
+		if (codeset_map_array[i].encoding == encoding)
 		{
-			if (codeset_map_array[i].encoding == encoding)
-			{
-				if (bind_textdomain_codeset(textdomain(NULL), codeset_map_array[i].codeset) == NULL)
-					elog(LOG, "bind_textdomain_codeset failed");
-				break;
-			}
+			if (bind_textdomain_codeset(domainname,
+										codeset_map_array[i].codeset) == NULL)
+				elog(LOG, "bind_textdomain_codeset failed");
+			break;
 		}
 	}
 #endif

@@ -30,6 +30,7 @@
 #endif
 
 #include "catalog/pg_authid.h"
+#include "mb/pg_wchar.h"
 #include "miscadmin.h"
 #include "postmaster/autovacuum.h"
 #include "storage/fd.h"
@@ -1241,6 +1242,7 @@ pg_bindtextdomain(const char *domain)
 
 		get_locale_path(my_exec_path, locale_path);
 		bindtextdomain(domain, locale_path);
+		pg_bind_textdomain_codeset(domain, GetDatabaseEncoding());
 	}
 #endif
 }
