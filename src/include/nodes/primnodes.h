@@ -504,6 +504,7 @@ typedef struct SubPlan
 	int			plan_id;		/* Index (from 1) in PlannedStmt.subplans */
 	/* Extra data useful for determining subplan's output type: */
 	Oid			firstColType;	/* Type of first column of subplan result */
+	int32		firstColTypmod;	/* Typmod of first column of subplan result */
 	/* Information about execution strategy: */
 	bool		useHashTable;	/* TRUE to store subselect output in a hash
 								 * table (implies we are doing "IN") */
