@@ -478,6 +478,13 @@ set_subquery_pathlist(PlannerInfo *root, RelOptInfo *rel,
 	PlannerInfo *subroot;
 	List	   *pathkeys;
 
+	/*
+	 * Must copy the Query so that planning doesn't mess up the RTE contents
+	 * (really really need to fix the planner to not scribble on its input,
+	 * someday).
+	 */
+	subquery = copyObject(subquery);
+
 	/* We need a workspace for keeping track of set-op type coercions */
 	differentTypes = (bool *)
 		palloc0((list_length(subquery->targetList) + 1) * sizeof(bool));
