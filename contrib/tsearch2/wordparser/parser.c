@@ -370,6 +370,8 @@ p_ishost(TParser * prs)
 	TParser    *tmpprs = TParserInit(prs->str + prs->state->posbyte, prs->lenstr - prs->state->posbyte);
 	int			res = 0;
 
+	tmpprs->wanthost = true;
+
 	if (TParserGet(tmpprs) && tmpprs->type == HOST)
 	{
 		prs->state->posbyte += tmpprs->lenbytelexeme;
@@ -801,6 +803,7 @@ static TParserStateActionItem actionTPS_InHost[] = {
 };
 
 static TParserStateActionItem actionTPS_InEmail[] = {
+	{p_isstophost, 0, A_POP, TPS_Null, 0, NULL},
 	{p_ishost, 0, A_BINGO | A_CLRALL, TPS_Base, EMAIL, NULL},
 	{NULL, 0, A_POP, TPS_Null, 0, NULL}
 };
