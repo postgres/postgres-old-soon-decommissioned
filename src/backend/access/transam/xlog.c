@@ -6384,10 +6384,11 @@ CreateCheckPoint(int flags)
 	if (log_checkpoints)
 		LogCheckpointEnd(false);
 
-        TRACE_POSTGRESQL_CHECKPOINT_DONE(CheckpointStats.ckpt_bufs_written,
-                                NBuffers, CheckpointStats.ckpt_segs_added,
-                                CheckpointStats.ckpt_segs_removed,
-                                CheckpointStats.ckpt_segs_recycled);
+	TRACE_POSTGRESQL_CHECKPOINT_DONE(CheckpointStats.ckpt_bufs_written,
+									 NBuffers,
+									 CheckpointStats.ckpt_segs_added,
+									 CheckpointStats.ckpt_segs_removed,
+									 CheckpointStats.ckpt_segs_recycled);
 
 	LWLockRelease(CheckpointLock);
 }
