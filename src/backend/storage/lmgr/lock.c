@@ -36,6 +36,7 @@
 #include "access/twophase.h"
 #include "access/twophase_rmgr.h"
 #include "miscadmin.h"
+#include "pg_trace.h"
 #include "pgstat.h"
 #include "utils/memutils.h"
 #include "utils/ps_status.h"

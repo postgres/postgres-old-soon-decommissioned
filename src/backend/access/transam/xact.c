@@ -33,6 +33,7 @@
 #include "executor/spi.h"
 #include "libpq/be-fsstubs.h"
 #include "miscadmin.h"
+#include "pg_trace.h"
 #include "pgstat.h"
 #include "storage/fd.h"
 #include "storage/lmgr.h"
