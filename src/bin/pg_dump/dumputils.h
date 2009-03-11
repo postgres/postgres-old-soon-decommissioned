@@ -19,6 +19,7 @@
 #include "libpq-fe.h"
 #include "pqexpbuffer.h"
 
+extern void init_parallel_dump_utils(void);
 extern const char *fmtId(const char *identifier);
 extern void appendStringLiteral(PQExpBuffer buf, const char *str,
 					int encoding, bool std_strings);

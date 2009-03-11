@@ -40,6 +40,7 @@
  */
 
 #include "pg_backup_archiver.h"
+#include "dumputils.h"
 
 #include <ctype.h>
 
@@ -124,6 +125,8 @@ main(int argc, char **argv)
 	};
 
 	set_pglocale_pgservice(argv[0], PG_TEXTDOMAIN("pg_dump"));
+
+	init_parallel_dump_utils();
 
 	opts = NewRestoreOptions();
 
