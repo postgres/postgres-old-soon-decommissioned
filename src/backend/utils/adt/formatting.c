@@ -357,7 +357,7 @@ static int	DCHCounter = 0;
 
 /* global cache for --- number part */
 static NUMCacheEntry NUMCache[NUM_CACHE_FIELDS + 1];
-static NUMCacheEntry *last_NUMCacheEntry;
+static NUMCacheEntry *last_NUMCacheEntry = NUMCache + 0;
 
 static int	n_NUMCache = 0;		/* number of entries */
 static int	NUMCounter = 0;
