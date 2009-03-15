@@ -3668,11 +3668,6 @@ isoweek2j(int year, int week)
 	int			day0,
 				day4;
 
-	if (!year)
-		ereport(ERROR,
-				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-		   errmsg("cannot calculate week number without year information")));
-
 	/* fourth day of current year */
 	day4 = date2j(year, 1, 4);
 
