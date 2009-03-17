@@ -2264,7 +2264,7 @@ ValidateDate(int fmask, bool is2digits, bool bc, struct pg_tm * tm)
 		}
 		else if (is2digits)
 		{
-			/* allow 2-digit input for 1970-2069 AD; 00 is allowed */
+			/* allow 2-digit input for 1970-2069 AD; '0' or '00' is allowed */
 			if (tm->tm_year < 0)				/* just paranoia */
 				return DTERR_FIELD_OVERFLOW;
 			if (tm->tm_year < 70)
