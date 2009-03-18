@@ -47,7 +47,6 @@ require "ucs2utf.pl";
 	'GBK' => 'CP936.TXT',
 	'UHC' => 'CP949.TXT',
 	'JOHAB' => 'JOHAB.TXT',
-	'BIG5' => 'BIG5.TXT',
 );
 
 @charsets = keys(filename);
