@@ -909,13 +909,14 @@ write_syslogger_file(const char *buffer, int count, int destination)
 	if (destination == LOG_DESTINATION_CSVLOG && csvlogFile == NULL)
 		open_csvlogfile();
 
-	logfile = destination == LOG_DESTINATION_CSVLOG ? csvlogFile : syslogFile;
-
-#ifndef WIN32
-	rc = fwrite(buffer, 1, count, logfile);
-#else
+#ifdef WIN32
 	EnterCriticalSection(&sysfileSection);
+#endif
+
+	logfile = destination == LOG_DESTINATION_CSVLOG ? csvlogFile : syslogFile;
 	rc = fwrite(buffer, 1, count, logfile);
+
+#ifdef WIN32
 	LeaveCriticalSection(&sysfileSection);
 #endif
 
