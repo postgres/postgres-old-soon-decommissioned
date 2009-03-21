@@ -1374,11 +1374,12 @@ typedef struct MergeJoinState
  *		hj_HashTable			hash table for the hashjoin
  *								(NULL if table not built yet)
  *		hj_CurHashValue			hash value for current outer tuple
- *		hj_CurBucketNo			bucket# for current outer tuple
+ *		hj_CurBucketNo			regular bucket# for current outer tuple
+ *		hj_CurSkewBucketNo		skew bucket# for current outer tuple
  *		hj_CurTuple				last inner tuple matched to current outer
  *								tuple, or NULL if starting search
- *								(CurHashValue, CurBucketNo and CurTuple are
- *								 undefined if OuterTupleSlot is empty!)
+ *								(hj_CurXXX variables are undefined if
+ *								OuterTupleSlot is empty!)
  *		hj_OuterHashKeys		the outer hash keys in the hashjoin condition
  *		hj_InnerHashKeys		the inner hash keys in the hashjoin condition
  *		hj_HashOperators		the join operators in the hashjoin condition
@@ -1403,6 +1404,7 @@ typedef struct HashJoinState
 	HashJoinTable hj_HashTable;
 	uint32		hj_CurHashValue;
 	int			hj_CurBucketNo;
+	int			hj_CurSkewBucketNo;
 	HashJoinTuple hj_CurTuple;
 	List	   *hj_OuterHashKeys;		/* list of ExprState nodes */
 	List	   *hj_InnerHashKeys;		/* list of ExprState nodes */

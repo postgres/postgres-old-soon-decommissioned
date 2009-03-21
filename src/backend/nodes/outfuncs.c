@@ -675,6 +675,11 @@ _outHash(StringInfo str, Hash *node)
 	WRITE_NODE_TYPE("HASH");
 
 	_outPlanInfo(str, (Plan *) node);
+
+	WRITE_OID_FIELD(skewTable);
+	WRITE_INT_FIELD(skewColumn);
+	WRITE_OID_FIELD(skewColType);
+	WRITE_INT_FIELD(skewColTypmod);
 }
 
 static void

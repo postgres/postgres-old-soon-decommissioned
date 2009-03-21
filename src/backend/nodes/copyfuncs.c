@@ -735,6 +735,10 @@ _copyHash(Hash *from)
 	/*
 	 * copy remainder of node
 	 */
+	COPY_SCALAR_FIELD(skewTable);
+	COPY_SCALAR_FIELD(skewColumn);
+	COPY_SCALAR_FIELD(skewColType);
+	COPY_SCALAR_FIELD(skewColTypmod);
 
 	return newnode;
 }
