@@ -30,12 +30,6 @@
 #define MIN_DAYNUM (-24856)		/* December 13, 1901 */
 #define MAX_DAYNUM 24854		/* January 18, 2038 */
 
-#define INVALID_RELTIME_STR		"Undefined RelTime"
-#define INVALID_RELTIME_STR_LEN (sizeof(INVALID_RELTIME_STR)-1)
-#define RELTIME_LABEL			'@'
-#define RELTIME_PAST			"ago"
-#define DIRMAXLEN				(sizeof(RELTIME_PAST)-1)
-
 /*
  * Unix epoch is Jan  1 00:00:00 1970.
  * Postgres knows about times sixty-eight years on either side of that
