@@ -99,38 +99,6 @@ PostgreSQL documentation
      </varlistentry>
 
      <varlistentry>
-      <term><option>-d</option></term>
-      <term><option>--inserts</option></term>
-      <listitem>
-       <para>
-        Dump data as <command>INSERT</command> commands (rather
-        than <command>COPY</command>).  This will make restoration very slow;
-        it is mainly useful for making dumps that can be loaded into
-        non-<productname>PostgreSQL</productname> databases.  Note that
-        the restore might fail altogether if you have rearranged column order.
-        The <option>-D</option> option is safer, though even slower.
-       </para>
-      </listitem>
-     </varlistentry>
-
-     <varlistentry>
-      <term><option>-D</option></term>
-      <term><option>--column-inserts</option></term>
-      <term><option>--attribute-inserts</option></term>
-      <listitem>
-       <para>
-        Dump data as <command>INSERT</command> commands with explicit
-        column names (<literal>INSERT INTO
-        <replaceable>table</replaceable>
-        (<replaceable>column</replaceable>, ...) VALUES
-        ...</literal>).  This will make restoration very slow; it is mainly
-        useful for making dumps that can be loaded into
-        non-<productname>PostgreSQL</productname> databases.
-       </para>
-      </listitem>
-     </varlistentry>
-
-     <varlistentry>
       <term><option>-f <replaceable class="parameter">filename</replaceable></option></term>
       <term><option>--file=<replaceable class="parameter">filename</replaceable></option></term>
       <listitem>
@@ -298,6 +266,37 @@ PostgreSQL documentation
         for other purposes is not recommended or supported.  The
         behavior of the option may change in future releases without
         notice.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term><option>--inserts</option></term>
+      <listitem>
+       <para>
+        Dump data as <command>INSERT</command> commands (rather
+        than <command>COPY</command>).  This will make restoration very slow;
+        it is mainly useful for making dumps that can be loaded into
+        non-<productname>PostgreSQL</productname> databases.  Note that
+        the restore might fail altogether if you have rearranged column order.
+        The <option>--column-inserts</option> option is safer, though even
+        slower.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term><option>--column-inserts</option></term>
+      <term><option>--attribute-inserts</option></term>
+      <listitem>
+       <para>
+        Dump data as <command>INSERT</command> commands with explicit
+        column names (<literal>INSERT INTO
+        <replaceable>table</replaceable>
+        (<replaceable>column</replaceable>, ...) VALUES
+        ...</literal>).  This will make restoration very slow; it is mainly
+        useful for making dumps that can be loaded into
+        non-<productname>PostgreSQL</productname> databases.
        </para>
       </listitem>
      </varlistentry>
@@ -511,7 +510,7 @@ PostgreSQL documentation
 
   <para>
    <application>pg_dumpall</application> requires all needed
-   tablespace directories to exist before the restore or
+   tablespace directories to exist before the restore, else
    database creation will fail for databases in non-default
    locations.
   </para>
