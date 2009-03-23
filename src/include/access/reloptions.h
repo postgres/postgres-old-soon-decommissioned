@@ -106,12 +106,12 @@ typedef struct relopt_string
 	char		default_val[1];	/* variable length, zero-terminated */
 } relopt_string;
 
-/* This is the input type for fillRelOptions */
+/* This is the table datatype for fillRelOptions */
 typedef struct
 {
-	char   *optname;
-	relopt_type	opttype;
-	int		offset;
+	const char *optname;		/* option's name */
+	relopt_type	opttype;		/* option's datatype */
+	int			offset;			/* offset of field in result struct */
 } relopt_parse_elt;
 
 
@@ -149,8 +149,8 @@ typedef struct
  * 	}
  *
  * 	Note that this is more or less the same that fillRelOptions does, so only
- * 	use this if you need to do something non-standard within some options'
- * 	block.
+ * 	use this if you need to do something non-standard within some option's
+ * 	code block.
  */
 #define HAVE_RELOPTION(optname, option) \
 	(pg_strncasecmp(option.gen->name, optname, option.gen->namelen + 1) == 0)
@@ -252,9 +252,10 @@ extern relopt_value *parseRelOptions(Datum options, bool validate,
 				relopt_kind kind, int *numrelopts);
 extern void *allocateReloptStruct(Size base, relopt_value *options,
 					 int numoptions);
-extern void fillRelOptions(void *rdopts, Size basesize, relopt_value *options,
-			   int numoptions, bool validate, relopt_parse_elt *elems,
-			   int nelems);
+extern void fillRelOptions(void *rdopts, Size basesize,
+						   relopt_value *options, int numoptions,
+						   bool validate,
+						   const relopt_parse_elt *elems, int nelems);
 
 extern bytea *default_reloptions(Datum reloptions, bool validate,
 				   relopt_kind kind);
