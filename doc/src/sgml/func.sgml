@@ -8447,6 +8447,11 @@ SELECT xmlagg(x) FROM (SELECT * FROM test ORDER BY y DESC) AS tab;
     corresponding to the node set produced by the XPath expression.
    </para>
 
+  <para>
+    The second argument must be a well formed XML document. In particular,
+    it must have a single root node element.
+  </para>
+
    <para>
     The third argument of the function is an array of namespace
     mappings.  This array should be a two-dimensional array with the
