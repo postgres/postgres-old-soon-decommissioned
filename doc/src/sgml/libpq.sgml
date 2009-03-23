@@ -285,11 +285,12 @@
            This option controls how libpq verifies the certificate on the
            server when performing an <acronym>SSL</> connection. There are
            three options: <literal>none</> disables verification completely
-           (not recommended!); <literal>cert</> enables verification that
-           the certificate chains to a known CA only; <literal>cn</> will
-           both verify that the certificate chains to a known CA and that
-           the <literal>cn</> attribute of the certificate matches the
-           hostname the connection is being made to (default).
+           (not recommended); <literal>cert</> enables verification that
+           the server certificate chains to a known certificate
+           authority (CA); <literal>cn</> will both verify that the
+           certificate chains to a known CA and that the <literal>cn</>
+           attribute of the server certificate matches the server's
+           hostname (default).
           </para>
 
           <para>
