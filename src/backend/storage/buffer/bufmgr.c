@@ -272,14 +272,7 @@ ReadBuffer_common(SMgrRelation smgr, bool isLocalBuf, ForkNumber forkNum,
 		ReadLocalBufferCount++;
 		bufHdr = LocalBufferAlloc(smgr, forkNum, blockNum, &found);
 		if (found)
-		{
 			LocalBufferHitCount++;
-			TRACE_POSTGRESQL_BUFFER_HIT(true);		/* true = local buffer */
-		}
-		else
-		{
-			TRACE_POSTGRESQL_BUFFER_MISS(true);		/* ditto */
-		}
 	}
 	else
 	{
@@ -291,14 +284,7 @@ ReadBuffer_common(SMgrRelation smgr, bool isLocalBuf, ForkNumber forkNum,
 		 */
 		bufHdr = BufferAlloc(smgr, forkNum, blockNum, strategy, &found);
 		if (found)
-		{
 			BufferHitCount++;
-			TRACE_POSTGRESQL_BUFFER_HIT(false);		/* false = shared buffer */
-		}
-		else
-		{
-			TRACE_POSTGRESQL_BUFFER_MISS(false);	/* ditto */
-		}
 	}
 
 	/* At this point we do NOT hold any locks. */

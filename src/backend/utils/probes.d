@@ -36,8 +36,8 @@ provider postgresql {
 	probe lwlock__condacquire(LWLockId, LWLockMode);
 	probe lwlock__condacquire__fail(LWLockId, LWLockMode);
 
-	probe lock__wait__start(unsigned int, LOCKMODE);
-	probe lock__wait__done(unsigned int, LOCKMODE);
+	probe lock__wait__start(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, LOCKMODE);
+	probe lock__wait__done(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, LOCKMODE);
 
 	probe query__parse__start(const char *);
 	probe query__parse__done(const char *);
@@ -59,8 +59,6 @@ provider postgresql {
 	probe buffer__flush__start(ForkNumber, BlockNumber, Oid, Oid, Oid);
 	probe buffer__flush__done(ForkNumber, BlockNumber, Oid, Oid, Oid);
 
-	probe buffer__hit(bool);
-	probe buffer__miss(bool);
 	probe buffer__checkpoint__start(int);
 	probe buffer__checkpoint__sync__start();
 	probe buffer__checkpoint__done();
