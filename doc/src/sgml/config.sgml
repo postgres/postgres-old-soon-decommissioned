@@ -2177,7 +2177,7 @@ archive_command = 'copy "%p" "C:\\server\\archivedir\\%f"'  # Windows
       </indexterm>
       <listitem>
        <para>
-        Enables or disables the query planner's use of table constraints to
+        Controls the query planner's use of table constraints to
         optimize queries.
         The allowed values of <varname>constraint_exclusion</> are
         <literal>on</> (examine constraints for all tables),
