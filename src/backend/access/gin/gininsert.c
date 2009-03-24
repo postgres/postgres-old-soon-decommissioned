@@ -245,7 +245,9 @@ ginBuildCallback(Relation index, HeapTuple htup, Datum *values,
 														&htup->t_self);
 
 	/* If we've maxed out our available memory, dump everything to the index */
-	if (buildstate->accum.allocatedMemory >= maintenance_work_mem * 1024L)
+	/* Also dump if the tree seems to be getting too unbalanced */
+	if (buildstate->accum.allocatedMemory >= maintenance_work_mem * 1024L ||
+		buildstate->accum.maxdepth > GIN_MAX_TREE_DEPTH)
 	{
 		ItemPointerData *list;
 		Datum		entry;

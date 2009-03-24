@@ -749,9 +749,10 @@ ginInsertCleanup(Relation index, GinState *ginstate,
 		 * XXX using up maintenance_work_mem here is probably unreasonably
 		 * much, since vacuum might already be using that much.
 		 */
-		if ( GinPageGetOpaque(page)->rightlink == InvalidBlockNumber ||
-			 ( GinPageHasFullRow(page) &&
-			   accum.allocatedMemory > maintenance_work_mem * 1024L ) )
+		if (GinPageGetOpaque(page)->rightlink == InvalidBlockNumber ||
+			(GinPageHasFullRow(page) &&
+			 (accum.allocatedMemory >= maintenance_work_mem * 1024L ||
+			  accum.maxdepth > GIN_MAX_TREE_DEPTH)))
 		{
 			ItemPointerData    *list;
 			uint32      		nlist;
