@@ -3224,12 +3224,14 @@ SELECT plainto_tsquery('supernovae stars');
     </listitem>
     <listitem>
      <para>
-      GIN indexes are about ten times slower to update than GiST
+      GIN indexes are moderately slower to update than GiST indexes, but
+      about 10 times slower if fast-update support was disabled
+      (see <xref linkend="gin-fast-update"> for details)
      </para>
     </listitem>
     <listitem>
      <para>
-      GIN indexes are two-to-three times larger than GiST
+      GIN indexes are two-to-three times larger than GiST indexes
      </para>
     </listitem>
    </itemizedlist>

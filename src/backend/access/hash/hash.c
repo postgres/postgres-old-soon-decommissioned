@@ -647,6 +647,7 @@ hashvacuumcleanup(PG_FUNCTION_ARGS)
 	BlockNumber num_pages;
 
 	/* If hashbulkdelete wasn't called, return NULL signifying no change */
+	/* Note: this covers the analyze_only case too */
 	if (stats == NULL)
 		PG_RETURN_POINTER(NULL);
 

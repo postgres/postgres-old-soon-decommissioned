@@ -875,6 +875,7 @@ lazy_vacuum_index(Relation indrel,
 
 	ivinfo.index = indrel;
 	ivinfo.vacuum_full = false;
+	ivinfo.analyze_only = false;
 	ivinfo.message_level = elevel;
 	/* We don't yet know rel_tuples, so pass -1 */
 	ivinfo.num_heap_tuples = -1;
@@ -906,6 +907,7 @@ lazy_cleanup_index(Relation indrel,
 
 	ivinfo.index = indrel;
 	ivinfo.vacuum_full = false;
+	ivinfo.analyze_only = false;
 	ivinfo.message_level = elevel;
 	ivinfo.num_heap_tuples = vacrelstats->rel_tuples;
 	ivinfo.strategy = vac_strategy;

@@ -496,6 +496,28 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt,
 	/* We skip to here if there were no analyzable columns */
 cleanup:
 
+	/* If this isn't part of VACUUM ANALYZE, let index AMs do cleanup */
+	if (!vacstmt->vacuum)
+	{
+		for (ind = 0; ind < nindexes; ind++)
+		{
+			IndexBulkDeleteResult *stats;
+			IndexVacuumInfo ivinfo;
+
+			ivinfo.index = Irel[ind];
+			ivinfo.vacuum_full = false;
+			ivinfo.analyze_only = true;
+			ivinfo.message_level = elevel;
+			ivinfo.num_heap_tuples = -1; /* not known for sure */
+			ivinfo.strategy = vac_strategy;
+
+			stats = index_vacuum_cleanup(&ivinfo, NULL);
+
+			if (stats)
+				pfree(stats);
+		}
+	}
+
 	/* Done with indexes */
 	vac_close_indexes(nindexes, Irel, NoLock);
 

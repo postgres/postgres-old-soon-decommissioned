@@ -41,6 +41,7 @@ typedef struct IndexVacuumInfo
 {
 	Relation	index;			/* the index being vacuumed */
 	bool		vacuum_full;	/* VACUUM FULL (we have exclusive lock) */
+	bool		analyze_only;	/* ANALYZE (without any actual vacuum) */
 	int			message_level;	/* ereport level for progress messages */
 	double		num_heap_tuples;	/* tuples remaining in heap */
 	BufferAccessStrategy strategy;		/* access strategy for reads */

@@ -161,6 +161,13 @@ VACUUM [ FULL ] [ FREEZE ] [ VERBOSE ] ANALYZE [ <replaceable class="PARAMETER">
    </para>
 
    <para>
+    For tables with <acronym>GIN</> indexes, <command>VACUUM</command> (in
+    any form) also completes any pending index insertions, by moving pending
+    index entries to the appropriate places in the main <acronym>GIN</> index
+    structure.  See <xref linkend="gin-fast-update"> for details.
+   </para>
+
+   <para>
     We recommend that active production databases be
     vacuumed frequently (at least nightly), in order to
     remove dead rows. After adding or deleting a large number

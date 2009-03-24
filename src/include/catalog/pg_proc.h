@@ -4184,8 +4184,6 @@ DATA(insert OID = 2592 (  gist_circle_compress	PGNSP PGUID 12 1 0 0 f f f t f i 
 DESCR("GiST support");
 
 /* GIN */
-DATA(insert OID = 2730 (  gingettuple	   PGNSP PGUID 12 1 0 0 f f f t f v 2 0 16 "2281 2281" _null_ _null_ _null_ _null_  gingettuple _null_ _null_ _null_ ));
-DESCR("gin(internal)");
 DATA(insert OID = 2731 (  gingetbitmap	   PGNSP PGUID 12 1 0 0 f f f t f v 2 0 20 "2281 2281" _null_ _null_ _null_ _null_  gingetbitmap _null_ _null_ _null_ ));
 DESCR("gin(internal)");
 DATA(insert OID = 2732 (  gininsert		   PGNSP PGUID 12 1 0 0 f f f t f v 6 0 16 "2281 2281 2281 2281 2281 2281" _null_ _null_ _null_ _null_	gininsert _null_ _null_ _null_ ));

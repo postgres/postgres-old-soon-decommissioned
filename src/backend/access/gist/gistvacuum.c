@@ -515,6 +515,10 @@ gistvacuumcleanup(PG_FUNCTION_ARGS)
 				lastFilledBlock = GIST_ROOT_BLKNO;
 	bool		needLock;
 
+	/* No-op in ANALYZE ONLY mode */
+	if (info->analyze_only)
+		PG_RETURN_POINTER(stats);
+
 	/* Set up all-zero stats if gistbulkdelete wasn't called */
 	if (stats == NULL)
 	{

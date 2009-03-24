@@ -56,6 +56,14 @@ static relopt_bool boolRelOpts[] =
 		},
 		true
 	},
+	{
+		{
+			"fastupdate",
+			"Enables \"fast update\" feature for this GIN index",
+			RELOPT_KIND_GIN
+		},
+		true
+	},
 	/* list terminator */
 	{ { NULL } }
 };

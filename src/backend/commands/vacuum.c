@@ -3388,6 +3388,7 @@ scan_index(Relation indrel, double num_tuples)
 
 	ivinfo.index = indrel;
 	ivinfo.vacuum_full = true;
+	ivinfo.analyze_only = false;
 	ivinfo.message_level = elevel;
 	ivinfo.num_heap_tuples = num_tuples;
 	ivinfo.strategy = vac_strategy;
@@ -3454,6 +3455,7 @@ vacuum_index(VacPageList vacpagelist, Relation indrel,
 
 	ivinfo.index = indrel;
 	ivinfo.vacuum_full = true;
+	ivinfo.analyze_only = false;
 	ivinfo.message_level = elevel;
 	ivinfo.num_heap_tuples = num_tuples + keep_tuples;
 	ivinfo.strategy = vac_strategy;

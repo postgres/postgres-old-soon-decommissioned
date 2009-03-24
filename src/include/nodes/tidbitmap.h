@@ -52,6 +52,7 @@ extern void tbm_free(TIDBitmap *tbm);
 extern void tbm_add_tuples(TIDBitmap *tbm,
 						   const ItemPointer tids, int ntids,
 						   bool recheck);
+extern void tbm_add_page(TIDBitmap *tbm, BlockNumber pageno);
 
 extern void tbm_union(TIDBitmap *a, const TIDBitmap *b);
 extern void tbm_intersect(TIDBitmap *a, const TIDBitmap *b);

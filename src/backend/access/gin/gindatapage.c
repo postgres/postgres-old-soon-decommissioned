@@ -43,8 +43,16 @@ MergeItemPointers(ItemPointerData *dst, ItemPointerData *a, uint32 na, ItemPoint
 
 	while (aptr - a < na && bptr - b < nb)
 	{
-		if (compareItemPointers(aptr, bptr) > 0)
+		int		cmp = compareItemPointers(aptr, bptr);
+
+		if (cmp > 0)
 			*dptr++ = *bptr++;
+		else if (cmp == 0)
+		{
+			/* we want only one copy of the identical items */
+			*dptr++ = *bptr++;
+			aptr++;
+		}
 		else
 			*dptr++ = *aptr++;
 	}
@@ -630,11 +638,16 @@ insertItemPointer(GinPostingTreeScan *gdi, ItemPointerData *items, uint32 nitem)
 		gdi->stack = ginFindLeafPage(&gdi->btree, gdi->stack);
 
 		if (gdi->btree.findItem(&(gdi->btree), gdi->stack))
-			elog(ERROR, "item pointer (%u,%d) already exists",
-			ItemPointerGetBlockNumber(gdi->btree.items + gdi->btree.curitem),
-				 ItemPointerGetOffsetNumber(gdi->btree.items + gdi->btree.curitem));
-
-		ginInsertValue(&(gdi->btree), gdi->stack);
+		{
+			/*
+			 * gdi->btree.items[gdi->btree.curitem] already exists in index
+			 */
+			gdi->btree.curitem++;
+			LockBuffer(gdi->stack->buffer, GIN_UNLOCK);
+			freeGinBtreeStack(gdi->stack);
+		}
+		else
+			ginInsertValue(&(gdi->btree), gdi->stack);
 
 		gdi->stack = NULL;
 	}

@@ -647,7 +647,8 @@ index_getnext(IndexScanDesc scan, ScanDirection direction)
  * item slot could have been replaced by a newer tuple by the time we get
  * to it.
  *
- * Returns the number of matching tuples found.
+ * Returns the number of matching tuples found.  (Note: this might be only
+ * approximate, so it should only be used for statistical purposes.)
  * ----------------
  */
 int64

@@ -197,6 +197,8 @@ ginInsertRecordBA(BuildAccumulator *accum, ItemPointer heapptr, OffsetNumber att
 	if (nentry <= 0)
 		return;
 
+	Assert(ItemPointerIsValid(heapptr) && attnum >= FirstOffsetNumber);
+
 	i = nentry - 1;
 	for (; i > 0; i >>= 1)
 		nbit++;
