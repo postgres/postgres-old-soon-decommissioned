@@ -93,7 +93,7 @@ usage(void)
 	if (!env)
 		env = user;
 	printf(_("  -c, --command=COMMAND    run only single command (SQL or internal) and exit\n"));
-	printf(_("  -d, --dbnme=DBNAME       database name to connect to (default: \"%s\")\n"), env);
+	printf(_("  -d, --dbname=DBNAME      database name to connect to (default: \"%s\")\n"), env);
 	printf(_("  -f, --file=FILENAME      execute commands from file, then exit\n"));
 	printf(_("  -l, --list               list available databases, then exit\n"));
 	printf(_("  -v, --set=, --variable=NAME=VALUE\n"
