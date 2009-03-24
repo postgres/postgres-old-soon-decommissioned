@@ -241,7 +241,8 @@ ginBuildCallback(Relation index, HeapTuple htup, Datum *values,
 	 * we use only half maintenance_work_mem, because there is some leaks
 	 * during insertion and extract values
 	 */
-	if (buildstate->accum.allocatedMemory >= maintenance_work_mem * 1024L / 2L)
+	if (buildstate->accum.allocatedMemory >= maintenance_work_mem * 1024L / 2L ||
+		buildstate->accum.maxdepth > GIN_MAX_TREE_DEPTH)
 	{
 		ItemPointerData *list;
 		Datum		entry;
