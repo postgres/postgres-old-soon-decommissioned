@@ -162,7 +162,7 @@ slashUsage(unsigned short int pager)
 {
 	FILE	   *output;
 
-	output = PageOutput(78, pager);
+	output = PageOutput(85, pager);
 
 	/* if you add/remove a line here, change the row count above */
 
