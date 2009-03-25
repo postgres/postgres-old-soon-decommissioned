@@ -521,7 +521,7 @@ exec_command(const char *cmd,
 			if (!do_edit(0, query_buf, &edited))
 				status = PSQL_CMD_ERROR;
 			else if (!edited)
-				puts(_("No changes."));
+				puts(_("No changes"));
 			else
 				status = PSQL_CMD_NEWEDIT;
 		}
