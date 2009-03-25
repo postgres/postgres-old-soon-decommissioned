@@ -38,9 +38,9 @@ DROP FUNCTION ghstore_picksplit(internal, internal);
 DROP FUNCTION ghstore_union(internal, internal);
 DROP FUNCTION ghstore_same(internal, internal, internal);
 DROP FUNCTION ghstore_consistent(internal,internal,int,oid,internal);
-DROP FUNCTION gin_consistent_hstore(internal, int2, internal, internal);
+DROP FUNCTION gin_consistent_hstore(internal, int2, internal, int4, internal, internal);
 DROP FUNCTION gin_extract_hstore(internal, internal);
-DROP FUNCTION gin_extract_hstore_query(internal, internal, smallint);
+DROP FUNCTION gin_extract_hstore_query(internal, internal, smallint, internal, internal);
 
 DROP TYPE hstore CASCADE;
 DROP TYPE ghstore CASCADE;

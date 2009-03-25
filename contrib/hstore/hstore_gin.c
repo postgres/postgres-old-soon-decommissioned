@@ -122,7 +122,9 @@ gin_consistent_hstore(PG_FUNCTION_ARGS)
 	bool	   *check = (bool *) PG_GETARG_POINTER(0);
 	StrategyNumber strategy = PG_GETARG_UINT16(1);
 	HStore	   *query = PG_GETARG_HS(2);
-	bool	   *recheck = (bool *) PG_GETARG_POINTER(3);
+	/* int32	nkeys = PG_GETARG_INT32(3); */
+	/* Pointer	   *extra_data = (Pointer *) PG_GETARG_POINTER(4); */
+	bool	   *recheck = (bool *) PG_GETARG_POINTER(5);
 	bool		res = true;
 
 	if (strategy == HStoreContainsStrategyNumber)

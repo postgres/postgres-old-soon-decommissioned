@@ -481,6 +481,7 @@ typedef struct GinScanEntryData
 	/* entry, got from extractQueryFn */
 	Datum		entry;
 	OffsetNumber	attnum;
+	Pointer			extra_data;
 
 	/* Current page in posting tree */
 	Buffer		buffer;
@@ -515,6 +516,7 @@ typedef struct GinScanKeyData
 
 	/* array of scans per entry */
 	GinScanEntry scanEntry;
+	Pointer		 *extra_data;
 
 	/* for calling consistentFn(GinScanKey->entryRes, strategy, query) */
 	StrategyNumber strategy;

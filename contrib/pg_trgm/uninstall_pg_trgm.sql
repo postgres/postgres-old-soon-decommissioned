@@ -25,9 +25,9 @@ DROP OPERATOR CLASS gin_trgm_ops USING gin;
 
 DROP FUNCTION gin_extract_trgm(text, internal);
 
-DROP FUNCTION gin_extract_trgm(text, internal, internal);
+DROP FUNCTION gin_extract_trgm(text, internal, int2, internal, internal);
 
-DROP FUNCTION gin_trgm_consistent(internal, int2, text, internal);
+DROP FUNCTION gin_trgm_consistent(internal, int2, text, int4, internal, internal);
 
 DROP OPERATOR % (text, text);
 
