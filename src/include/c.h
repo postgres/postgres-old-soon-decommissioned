@@ -97,6 +97,8 @@
 #else
 #define gettext(x) (x)
 #define dgettext(d,x) (x)
+#define ngettext(s,p,n) ((n) == 1 ? (s) : (p))
+#define dngettext(d,s,p,n) ((n) == 1 ? (s) : (p))
 #endif
 
 /*
