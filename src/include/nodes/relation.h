@@ -845,6 +845,7 @@ typedef struct HashPath
 {
 	JoinPath	jpath;
 	List	   *path_hashclauses;		/* join clauses used for hashing */
+	int			num_batches;			/* number of batches expected */
 } HashPath;
 
 /*

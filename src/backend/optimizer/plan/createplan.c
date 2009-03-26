@@ -1910,6 +1910,10 @@ create_hashjoin_plan(PlannerInfo *root,
 	/* We don't want any excess columns in the hashed tuples */
 	disuse_physical_tlist(inner_plan, best_path->jpath.innerjoinpath);
 
+	/* If we expect batching, suppress excess columns in outer tuples too */
+	if (best_path->num_batches > 1)
+		disuse_physical_tlist(outer_plan, best_path->jpath.outerjoinpath);
+
 	/*
 	 * If there is a single join clause and we can identify the outer
 	 * variable as a simple column reference, supply its identity for

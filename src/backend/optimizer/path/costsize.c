@@ -1880,6 +1880,8 @@ cost_hashjoin(HashPath *path, PlannerInfo *root, SpecialJoinInfo *sjinfo)
 							&numbatches,
 							&num_skew_mcvs);
 	virtualbuckets = (double) numbuckets *(double) numbatches;
+	/* mark the path with estimated # of batches */
+	path->num_batches = numbatches;
 
 	/*
 	 * Determine bucketsize fraction for inner relation.  We use the smallest
