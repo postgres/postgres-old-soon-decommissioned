@@ -4880,7 +4880,7 @@ dynamic_library_path = 'C:\tools\postgresql;H:\my_project\lib;$libdir'
        <para>
         Reports the locale in which sorting of textual data is done.
         See <xref linkend="locale"> for more information.
-        The value is determined when the database cluster is initialized.
+        This value is determined when a database is created.
        </para>
       </listitem>
      </varlistentry>
@@ -4894,7 +4894,7 @@ dynamic_library_path = 'C:\tools\postgresql;H:\my_project\lib;$libdir'
        <para>
         Reports the locale that determines character classifications.
         See <xref linkend="locale"> for more information.
-        The value is determined when the database cluster is initialized.
+        This value is determined when a database is created.
         Ordinarily this will be the same as <varname>lc_collate</varname>,
         but for special applications it might be set differently.
        </para>
