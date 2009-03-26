@@ -406,7 +406,7 @@ RestoreWALFileForRecovery(void)
 		fflush(stderr);
 	}
 
-	while (numretries < maxretries)
+	while (numretries <= maxretries)
 	{
 		rc = system(restoreCommand);
 		if (rc == 0)
