@@ -83,6 +83,8 @@ do it for earlier branch release files.
 
    <itemizedlist>
 
+    <!-- This list duplicates items below, but without authors or details-->
+
     <listitem>
      <para>
       *MAJOR ITEM LIST GOES HERE*
@@ -345,6 +347,13 @@ do it for earlier branch release files.
 
       <para>
        For example, input value 'AD' does not match format string 'A.D.'.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+       DateStyle no longer controls interval output (use new variable
+       IntervalStyle)
       </para>
      </listitem>
 
@@ -1428,7 +1437,7 @@ do it for earlier branch release files.
 
      <listitem>
       <para>
-       Support the IS0 8601 time interval syntax (Tom) bjm: sufficient?
+       Support the IS0 8601 time interval syntax (Ron Mayer) bjm: sufficient?
       </para>
 
       <para>
