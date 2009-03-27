@@ -690,6 +690,7 @@ do it for earlier branch release files.
       <para>
        Previously this was only supported for ident authentication.
       </para>
+     </listitem>
 
      <listitem>
       <para>
