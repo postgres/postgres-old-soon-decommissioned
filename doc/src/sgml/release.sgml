@@ -1181,7 +1181,7 @@ do it for earlier branch release files.
       </para>
 
       <para>
-       Previously EXPLAIN VERBOSE output an internal representation of the
+       Previously EXPLAIN VERBOSE had output an internal representation of the
        query plan.  (That behavior is now available via debug_print_plan.)
       </para>
      </listitem>
