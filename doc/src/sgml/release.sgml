@@ -1479,8 +1479,8 @@ do it for earlier branch release files.
 
      <listitem>
       <para>
-       Increase the number of fractional seconds digits displayed by intervals (Ron
-       Mayer)
+       Made interval seconds rounding more consistent across output
+       formats (Ron Mayer)
       </para>
      </listitem>
 
