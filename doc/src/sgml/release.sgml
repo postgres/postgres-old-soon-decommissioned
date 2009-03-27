@@ -469,7 +469,7 @@ do it for earlier branch release files.
      <listitem>
       <para>
        Increase the default value of default_statistics_target from 10 to 100
-       (Tom)
+       (Greg Sabino Mullane, Tom)
       </para>
 
       <para>
