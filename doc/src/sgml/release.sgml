@@ -1437,7 +1437,7 @@ do it for earlier branch release files.
 
      <listitem>
       <para>
-       Support the IS0 8601 time interval syntax (Ron Mayer) bjm: sufficient?
+       Support the IS0 8601 time interval syntax (Tom, Kevin Grittner)
       </para>
 
       <para>
