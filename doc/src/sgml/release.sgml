@@ -421,8 +421,8 @@ do it for earlier branch release files.
 
       <para>
        While semi-joins merely replace existing IN joins, anti-joins
-       are a new capability for NOT IN and NOT EXISTS clauses (Tom)
-       This improves optimization possibilities.
+       are a new capability for NOT EXISTS clauses (Tom) This improves
+       optimization possibilities.
       </para>
      </listitem>
 
