@@ -1627,7 +1627,8 @@ map_sql_value_to_xml_value(Datum value, Oid type)
 					if (DATE_NOT_FINITE(date))
 						ereport(ERROR,
 								(errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
-								 errmsg("date out of range")));
+								 errmsg("date out of range"),
+								 errdetail("XML does not support infinite date values.")));
 					j2date(date + POSTGRES_EPOCH_JDATE,
 						   &(tm.tm_year), &(tm.tm_mon), &(tm.tm_mday));
 					EncodeDateOnly(&tm, USE_XSD_DATES, buf);
@@ -1649,7 +1650,8 @@ map_sql_value_to_xml_value(Datum value, Oid type)
 					if (TIMESTAMP_NOT_FINITE(timestamp))
 						ereport(ERROR,
 								(errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
-								 errmsg("timestamp out of range")));
+								 errmsg("timestamp out of range"),
+								 errdetail("XML does not support infinite timestamp values.")));
 					else if (timestamp2tm(timestamp, NULL, &tm, &fsec, NULL, NULL) == 0)
 						EncodeDateTime(&tm, fsec, NULL, &tzn, USE_XSD_DATES, buf);
 					else
@@ -1675,7 +1677,8 @@ map_sql_value_to_xml_value(Datum value, Oid type)
 					if (TIMESTAMP_NOT_FINITE(timestamp))
 						ereport(ERROR,
 								(errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
-								 errmsg("timestamp out of range")));
+								 errmsg("timestamp out of range"),
+								 errdetail("XML does not support infinite timestamp values.")));
 					else if (timestamp2tm(timestamp, &tz, &tm, &fsec, &tzn, NULL) == 0)
 						EncodeDateTime(&tm, fsec, &tz, &tzn, USE_XSD_DATES, buf);
 					else
