@@ -1484,12 +1484,6 @@ do it for earlier branch release files.
       </para>
      </listitem>
 
-     <listitem>
-      <para>
-       Increase variability in the number of fractional seconds digits
-       displayed (Ron Mayer)
-      </para>
-     </listitem>
 
     </itemizedlist>
 
