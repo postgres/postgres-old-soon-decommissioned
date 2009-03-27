@@ -104,7 +104,7 @@ ExecMaterial(MaterialState *node)
 	slot = node->ss.ps.ps_ResultTupleSlot;
 	if (!eof_tuplestore)
 	{
-		if (tuplestore_gettupleslot(tuplestorestate, forward, slot))
+		if (tuplestore_gettupleslot(tuplestorestate, forward, false, slot))
 			return slot;
 		if (forward)
 			eof_tuplestore = true;

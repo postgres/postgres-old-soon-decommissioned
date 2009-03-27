@@ -74,6 +74,7 @@ FunctionNext(FunctionScanState *node)
 	slot = node->ss.ss_ScanTupleSlot;
 	(void) tuplestore_gettupleslot(tuplestorestate,
 								   ScanDirectionIsForward(direction),
+								   false,
 								   slot);
 	return slot;
 }

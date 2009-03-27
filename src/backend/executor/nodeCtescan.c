@@ -71,10 +71,14 @@ CteScanNext(CteScanState *node)
 
 	/*
 	 * If we can fetch another tuple from the tuplestore, return it.
+	 *
+	 * Note: we have to use copy=true in the tuplestore_gettupleslot call,
+	 * because we are sharing the tuplestore with other nodes that might
+	 * write into the tuplestore before we get called again.
 	 */
 	if (!eof_tuplestore)
 	{
-		if (tuplestore_gettupleslot(tuplestorestate, forward, slot))
+		if (tuplestore_gettupleslot(tuplestorestate, forward, true, slot))
 			return slot;
 		if (forward)
 			eof_tuplestore = true;

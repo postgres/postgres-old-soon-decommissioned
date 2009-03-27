@@ -71,7 +71,7 @@ extern void tuplestore_trim(Tuplestorestate *state);
 extern bool tuplestore_in_memory(Tuplestorestate *state);
 
 extern bool tuplestore_gettupleslot(Tuplestorestate *state, bool forward,
-						TupleTableSlot *slot);
+						bool copy, TupleTableSlot *slot);
 extern bool tuplestore_advance(Tuplestorestate *state, bool forward);
 
 extern bool tuplestore_ateof(Tuplestorestate *state);
