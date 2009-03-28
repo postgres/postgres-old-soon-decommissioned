@@ -92,6 +92,13 @@ RESET ROLE
   </para>
 
   <para>
+   <command>SET ROLE</> does not process session variables as specified by
+   the role's <xref linkend="sql-alterrole"
+   endterm="sql-alterrole-title"> settings;  this only happens during
+   login.
+  </para>
+
+  <para>
    <command>SET ROLE</> cannot be used within a
    <literal>SECURITY DEFINER</> function.
   </para>
