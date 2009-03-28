@@ -870,6 +870,7 @@ init_ssl_system(PGconn *conn)
 
 		if (ssl_open_connections++ == 0)
 		{
+			/* This is actually libcrypto, not libssl. */
 			/* These are only required for threaded SSL applications */
 			CRYPTO_set_id_callback(pq_threadidcallback);
 			CRYPTO_set_locking_callback(pq_lockingcallback);
@@ -934,6 +935,7 @@ destroy_ssl_system(void)
 
 		if (ssl_open_connections == 0)
 		{
+			/* This is actually libcrypto, not libssl. */
 			/* No connections left, unregister all callbacks */
 			CRYPTO_set_locking_callback(NULL);
 			CRYPTO_set_id_callback(NULL);
