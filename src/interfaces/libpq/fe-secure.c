@@ -98,7 +98,7 @@ static void close_SSL(PGconn *);
 static char *SSLerrmessage(void);
 static void SSLerrfree(char *buf);
 
-static bool pq_initssllib = true;
+static bool pq_init_ssl_lib = true;
 static SSL_CTX *SSL_context = NULL;
 
 #ifdef ENABLE_THREAD_SAFETY
@@ -173,7 +173,7 @@ void
 PQinitSSL(int do_init)
 {
 #ifdef USE_SSL
-	pq_initssllib = do_init;
+	pq_init_ssl_lib = do_init;
 #endif
 }
 
@@ -840,7 +840,7 @@ init_ssl_system(PGconn *conn)
 	if (pthread_mutex_lock(&ssl_config_mutex))
 		return -1;
 
-	if (pq_initssllib)
+	if (pq_init_ssl_lib)
 	{
 		/*
 		 * If necessary, set up an array to hold locks for OpenSSL. OpenSSL will
@@ -880,7 +880,7 @@ init_ssl_system(PGconn *conn)
 
 	if (!SSL_context)
 	{
-		if (pq_initssllib)
+		if (pq_init_ssl_lib)
 		{
 #if SSLEAY_VERSION_NUMBER >= 0x00907000L
 			OPENSSL_config(NULL);
@@ -928,7 +928,7 @@ destroy_ssl_system(void)
 	if (pthread_mutex_lock(&ssl_config_mutex))
 		return;
 
-	if (pq_initssllib)
+	if (pq_init_ssl_lib)
 	{
 		if (ssl_open_connections > 0)
 			--ssl_open_connections;
