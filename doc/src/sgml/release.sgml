@@ -2584,7 +2584,7 @@ do it for earlier branch release files.
 
      <listitem>
       <para>
-       Add /contrib/citext as a case-insensitive text data type (David Wheeler)
+       Add /contrib/citext as a case-insensitive, multibyte-capable text data type (David Wheeler)
       </para>
      </listitem>
 
