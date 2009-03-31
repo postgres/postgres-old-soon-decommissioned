@@ -115,6 +115,16 @@ pgstattuple_real(Relation rel, FunctionCallInfo fcinfo)
 	int			i;
 	Datum		result;
 
+	/*
+	 * Reject attempts to read non-local temporary relations; we would
+	 * be likely to get wrong data since we have no visibility into the
+	 * owning session's local buffers.
+	 */
+	if (isOtherTempNamespace(RelationGetNamespace(rel)))
+		ereport(ERROR,
+				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+				 errmsg("cannot access temporary tables of other sessions")));
+
 	/* Build a tuple descriptor for our result type */
 	if (get_call_result_type(fcinfo, NULL, &tupdesc) != TYPEFUNC_COMPOSITE)
 		elog(ERROR, "return type must be a row type");
