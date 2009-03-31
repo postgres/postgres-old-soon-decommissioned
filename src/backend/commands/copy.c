@@ -1001,8 +1001,7 @@ DoCopy(const CopyStmt *stmt, const char *queryString)
 		}
 
 		/* check read-only transaction */
-		if (XactReadOnly && is_from &&
-			!isTempNamespace(RelationGetNamespace(cstate->rel)))
+		if (XactReadOnly && is_from && !cstate->rel->rd_islocaltemp)
 			ereport(ERROR,
 					(errcode(ERRCODE_READ_ONLY_SQL_TRANSACTION),
 					 errmsg("transaction is read-only")));

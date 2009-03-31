@@ -1258,21 +1258,23 @@ expand_inherited_rtentry(PlannerInfo *root, RangeTblEntry *rte, Index rti)
 		Index		childRTindex;
 		AppendRelInfo *appinfo;
 
+		/* Open rel, acquire the appropriate lock type */
+		if (childOID != parentOID)
+			newrelation = heap_open(childOID, lockmode);
+		else
+			newrelation = oldrelation;
+
 		/*
 		 * It is possible that the parent table has children that are temp
 		 * tables of other backends.  We cannot safely access such tables
 		 * (because of buffering issues), and the best thing to do seems to be
 		 * to silently ignore them.
 		 */
-		if (childOID != parentOID &&
-			isOtherTempNamespace(get_rel_namespace(childOID)))
+		if (childOID != parentOID && RELATION_IS_OTHER_TEMP(newrelation))
+		{
+			heap_close(newrelation, lockmode);
 			continue;
-
-		/* Open rel, acquire the appropriate lock type */
-		if (childOID != parentOID)
-			newrelation = heap_open(childOID, lockmode);
-		else
-			newrelation = oldrelation;
+		}
 
 		/*
 		 * Build an RTE for the child, and attach to query's rangetable list.

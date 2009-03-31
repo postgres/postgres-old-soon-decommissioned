@@ -122,6 +122,12 @@ PrefetchBuffer(Relation reln, ForkNumber forkNum, BlockNumber blockNum)
 
 	if (reln->rd_istemp)
 	{
+		/* see comments in ReadBufferExtended */
+		if (RELATION_IS_OTHER_TEMP(reln))
+			ereport(ERROR,
+					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+					 errmsg("cannot access temporary tables of other sessions")));
+
 		/* pass it off to localbuf.c */
 		LocalPrefetchBuffer(reln->rd_smgr, forkNum, blockNum);
 	}
@@ -205,6 +211,16 @@ ReadBufferExtended(Relation reln, ForkNumber forkNum, BlockNumber blockNum,
 	RelationOpenSmgr(reln);
 
 	/*
+	 * Reject attempts to read non-local temporary relations; we would
+	 * be likely to get wrong data since we have no visibility into the
+	 * owning session's local buffers.
+	 */
+	if (RELATION_IS_OTHER_TEMP(reln))
+		ereport(ERROR,
+				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+				 errmsg("cannot access temporary tables of other sessions")));
+
+	/*
 	 * Read the buffer, and update pgstat counters to reflect a cache
 	 * hit or miss.
 	 */
@@ -220,6 +236,8 @@ ReadBufferExtended(Relation reln, ForkNumber forkNum, BlockNumber blockNum,
 /*
  * ReadBufferWithoutRelcache -- like ReadBufferExtended, but doesn't require
  *		a relcache entry for the relation.
+ *
+ * NB: caller is assumed to know what it's doing if isTemp is true.
  */
 Buffer
 ReadBufferWithoutRelcache(RelFileNode rnode, bool isTemp,

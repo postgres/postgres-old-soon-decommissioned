@@ -213,7 +213,7 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt,
 	 * probably not up-to-date on disk.  (We don't throw a warning here; it
 	 * would just lead to chatter during a database-wide ANALYZE.)
 	 */
-	if (isOtherTempNamespace(RelationGetNamespace(onerel)))
+	if (RELATION_IS_OTHER_TEMP(onerel))
 	{
 		relation_close(onerel, ShareUpdateExclusiveLock);
 		return;

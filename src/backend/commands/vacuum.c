@@ -1147,7 +1147,7 @@ vacuum_rel(Oid relid, VacuumStmt *vacstmt, bool do_toast, bool for_wraparound,
 	 * warning here; it would just lead to chatter during a database-wide
 	 * VACUUM.)
 	 */
-	if (isOtherTempNamespace(RelationGetNamespace(onerel)))
+	if (RELATION_IS_OTHER_TEMP(onerel))
 	{
 		relation_close(onerel, lmode);
 		PopActiveSnapshot();

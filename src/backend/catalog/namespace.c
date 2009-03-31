@@ -2389,6 +2389,9 @@ isAnyTempNamespace(Oid namespaceId)
 /*
  * isOtherTempNamespace - is the given namespace some other backend's
  * temporary-table namespace (including temporary-toast-table namespaces)?
+ *
+ * Note: for most purposes in the C code, this function is obsolete.  Use
+ * RELATION_IS_OTHER_TEMP() instead to detect non-local temp relations.
  */
 bool
 isOtherTempNamespace(Oid namespaceId)

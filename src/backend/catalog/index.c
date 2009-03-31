@@ -2264,7 +2264,7 @@ reindex_index(Oid indexId)
 	 * Don't allow reindex on temp tables of other backends ... their local
 	 * buffer manager is not going to cope.
 	 */
-	if (isOtherTempNamespace(RelationGetNamespace(iRel)))
+	if (RELATION_IS_OTHER_TEMP(iRel))
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 				 errmsg("cannot reindex temporary tables of other sessions")));
