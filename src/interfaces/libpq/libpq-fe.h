@@ -302,6 +302,9 @@ extern void *PQgetssl(PGconn *conn);
 /* Tell libpq whether it needs to initialize OpenSSL */
 extern void PQinitSSL(int do_init);
 
+/* More detailed way to tell libpq whether it needs to initialize OpenSSL */
+extern void PQinitOpenSSL(int do_ssl, int do_crypto);
+
 /* Set verbosity for PQerrorMessage and PQresultErrorMessage */
 extern PGVerbosity PQsetErrorVerbosity(PGconn *conn, PGVerbosity verbosity);
 
