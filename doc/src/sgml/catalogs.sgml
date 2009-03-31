@@ -1533,6 +1533,16 @@
      </row>
 
      <row>
+      <entry><structfield>relistemp</structfield></entry>
+      <entry><type>bool</type></entry>
+      <entry></entry>
+      <entry>
+       True if this table is a temporary relation.  If so, only the creating
+       session can safely access its contents
+      </entry>
+     </row>
+
+     <row>
       <entry><structfield>relkind</structfield></entry>
       <entry><type>char</type></entry>
       <entry></entry>
