@@ -68,6 +68,16 @@ get_raw_page(PG_FUNCTION_ARGS)
 				 errmsg("cannot get raw page from composite type \"%s\"",
 						RelationGetRelationName(rel))));
 
+	/*
+	 * Reject attempts to read non-local temporary relations; we would
+	 * be likely to get wrong data since we have no visibility into the
+	 * owning session's local buffers.
+	 */
+	if (isOtherTempNamespace(RelationGetNamespace(rel)))
+		ereport(ERROR,
+				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+				 errmsg("cannot access temporary tables of other sessions")));
+
 	if (blkno >= RelationGetNumberOfBlocks(rel))
 		elog(ERROR, "block number %u is out of range for relation \"%s\"",
 			 blkno, RelationGetRelationName(rel));
