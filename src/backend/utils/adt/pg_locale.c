@@ -11,9 +11,9 @@
 
 /*----------
  * Here is how the locale stuff is handled: LC_COLLATE and LC_CTYPE
- * are fixed by initdb, stored in pg_control, and cannot be changed.
- * Thus, the effects of strcoll(), strxfrm(), isupper(), toupper(),
- * etc. are always in the same fixed locale.
+ * are fixed at CREATE DATABASE time, stored in pg_database, and cannot 
+ * be changed. Thus, the effects of strcoll(), strxfrm(), isupper(),
+ * toupper(), etc. are always in the same fixed locale.
  *
  * LC_MESSAGES is settable at run time and will take effect
  * immediately.
