@@ -3368,6 +3368,8 @@ exec_stmt_fetch(PLpgSQL_execstate *estate, PLpgSQL_stmt_fetch *stmt)
 		exec_set_found(estate, n != 0);
 	}
 
+	estate->eval_processed = n;
+
 	return PLPGSQL_RC_OK;
 }
 
