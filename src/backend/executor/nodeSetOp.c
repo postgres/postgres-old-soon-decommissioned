@@ -46,6 +46,7 @@
 
 #include "executor/executor.h"
 #include "executor/nodeSetOp.h"
+#include "pg_trace.h"
 #include "utils/memutils.h"
 
 
@@ -195,6 +196,8 @@ ExecSetOp(SetOpState *node)
 {
 	SetOp	   *plannode = (SetOp *) node->ps.plan;
 	TupleTableSlot *resultTupleSlot = node->ps.ps_ResultTupleSlot;
+
+	TRACE_POSTGRESQL_EXECUTOR_SETOP((uintptr_t)node);
 
 	/*
 	 * If the previously-returned tuple needs to be returned more than once,

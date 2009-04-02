@@ -79,6 +79,7 @@
 #include "parser/parse_agg.h"
 #include "parser/parse_coerce.h"
 #include "parser/parse_oper.h"
+#include "pg_trace.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
 #include "utils/lsyscache.h"
@@ -813,6 +814,8 @@ ExecAgg(AggState *node)
 {
 	if (node->agg_done)
 		return NULL;
+
+	TRACE_POSTGRESQL_EXECUTOR_AGG((uintptr_t)node, ((Agg *) node->ss.ps.plan)->aggstrategy);
 
 	/*
 	 * Check to see if we're still projecting out tuples from a previous agg

@@ -24,6 +24,7 @@
 #include "executor/executor.h"
 #include "executor/nodeMaterial.h"
 #include "miscadmin.h"
+#include "pg_trace.h"
 
 /* ----------------------------------------------------------------
  *		ExecMaterial
@@ -44,6 +45,8 @@ ExecMaterial(MaterialState *node)
 	Tuplestorestate *tuplestorestate;
 	bool		eof_tuplestore;
 	TupleTableSlot *slot;
+
+	TRACE_POSTGRESQL_EXECUTOR_MATERIAL((uintptr_t)node);
 
 	/*
 	 * get state info from node

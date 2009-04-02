@@ -23,6 +23,7 @@
 
 #include "executor/executor.h"
 #include "executor/nodeLimit.h"
+#include "pg_trace.h"
 
 static void recompute_limits(LimitState *node);
 
@@ -40,6 +41,8 @@ ExecLimit(LimitState *node)
 	ScanDirection direction;
 	TupleTableSlot *slot;
 	PlanState  *outerPlan;
+
+	TRACE_POSTGRESQL_EXECUTOR_LIMIT((uintptr_t)node);
 
 	/*
 	 * get information from the node
