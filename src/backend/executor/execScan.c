@@ -20,7 +20,6 @@
 
 #include "executor/executor.h"
 #include "miscadmin.h"
-#include "pg_trace.h"
 #include "utils/memutils.h"
 
 
@@ -60,8 +59,6 @@ ExecScan(ScanState *node,
 	 */
 	qual = node->ps.qual;
 	projInfo = node->ps.ps_ProjInfo;
-
-	TRACE_POSTGRESQL_EXECUTOR_SCAN((uintptr_t)node, ((Scan *)node->ps.plan)->scanrelid, (uintptr_t)accessMtd);
 
 	/*
 	 * If we have neither a qual to check nor a projection to do, just skip
