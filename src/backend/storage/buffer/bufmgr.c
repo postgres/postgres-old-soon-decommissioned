@@ -153,6 +153,18 @@ PrefetchBuffer(Relation reln, ForkNumber forkNum, BlockNumber blockNum)
 		/* If not in buffers, initiate prefetch */
 		if (buf_id < 0)
 			smgrprefetch(reln->rd_smgr, forkNum, blockNum);
+
+		/*
+		 * If the block *is* in buffers, we do nothing.  This is not really
+		 * ideal: the block might be just about to be evicted, which would
+		 * be stupid since we know we are going to need it soon.  But the
+		 * only easy answer is to bump the usage_count, which does not seem
+		 * like a great solution: when the caller does ultimately touch the
+		 * block, usage_count would get bumped again, resulting in too much
+		 * favoritism for blocks that are involved in a prefetch sequence.
+		 * A real fix would involve some additional per-buffer state, and
+		 * it's not clear that there's enough of a problem to justify that.
+		 */
 	}
 #endif /* USE_PREFETCH */
 }
