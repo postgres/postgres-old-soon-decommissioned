@@ -420,20 +420,22 @@ get_progname(const char *argv0)
 
 
 /*
- * dir_strcmp: strcmp except any two DIR_SEP characters are considered equal
+ * dir_strcmp: strcmp except any two DIR_SEP characters are considered equal,
+ * and we honor filesystem case insensitivity if known
  */
 static int
 dir_strcmp(const char *s1, const char *s2)
 {
 	while (*s1 && *s2)
 	{
+		if (
 #ifndef WIN32
-		if (*s1 != *s2 &&
+			*s1 != *s2
 #else
 			/* On windows, paths are case-insensitive */
-		if (pg_tolower(*s1) != pg_tolower(*s2) &&
+			pg_tolower((unsigned char) *s1) != pg_tolower((unsigned char) *s2)
 #endif
-			!(IS_DIR_SEP(*s1) && IS_DIR_SEP(*s2)))
+			&& !(IS_DIR_SEP(*s1) && IS_DIR_SEP(*s2)))
 			return (int) *s1 - (int) *s2;
 		s1++, s2++;
 	}
