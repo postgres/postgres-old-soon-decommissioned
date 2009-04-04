@@ -14,7 +14,6 @@
 #define FOREIGN_H
 
 #include "nodes/parsenodes.h"
-#include "nodes/pg_list.h"
 
 
 /* Helper for obtaining username for user mapping */
@@ -27,10 +26,9 @@
  * NB! Thes are treated as flags, so use only powers of two here.
  */
 typedef enum {
-	InvalidOpt = 0,
 	ServerOpt = 1,				/* options applicable to SERVER */
 	UserMappingOpt = 2,			/* options for USER MAPPING */
-	FdwOpt = 4,					/* options for FOREIGN DATA WRAPPER */
+	FdwOpt = 4					/* options for FOREIGN DATA WRAPPER */
 } GenericOptionFlags;
 
 typedef struct ForeignDataWrapper
@@ -69,9 +67,5 @@ extern ForeignDataWrapper *GetForeignDataWrapper(Oid fdwid);
 extern ForeignDataWrapper *GetForeignDataWrapperByName(const char *name,
 													   bool missing_ok);
 extern Oid GetForeignDataWrapperOidByName(const char *name, bool missing_ok);
-
-/* Foreign data wrapper interface functions */
-extern void _pg_validateOptionList(ForeignDataWrapper *fdw,
-								   GenericOptionFlags flags, List *options);
 
 #endif /* FOREIGN_H */

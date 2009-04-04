@@ -66,9 +66,7 @@ extern FuncExpr *makeFuncExpr(Oid funcid, Oid rettype,
 			 List *args, CoercionForm fformat);
 
 extern DefElem *makeDefElem(char *name, Node *arg);
-
-extern OptionDefElem *makeOptionDefElem(int op, DefElem *def);
-
-extern ReloptElem *makeReloptElem(char *name, char *namspc, Node *arg);
+extern DefElem *makeDefElemExtended(char *namespace, char *name, Node *arg,
+									DefElemAction defaction);
 
 #endif   /* MAKEFUNC_H */

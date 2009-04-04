@@ -2098,31 +2098,10 @@ _copyDefElem(DefElem *from)
 {
 	DefElem    *newnode = makeNode(DefElem);
 
+	COPY_STRING_FIELD(defnamespace);
 	COPY_STRING_FIELD(defname);
 	COPY_NODE_FIELD(arg);
-
-	return newnode;
-}
-
-static OptionDefElem *
-_copyOptionDefElem(OptionDefElem *from)
-{
-	OptionDefElem    *newnode = makeNode(OptionDefElem);
-
-	COPY_SCALAR_FIELD(alter_op);
-	COPY_NODE_FIELD(def);
-
-	return newnode;
-}
-
-static ReloptElem *
-_copyReloptElem(ReloptElem *from)
-{
-	ReloptElem	   *newnode = makeNode(ReloptElem);
-
-	COPY_STRING_FIELD(optname);
-	COPY_STRING_FIELD(nmspc);
-	COPY_NODE_FIELD(arg);
+	COPY_SCALAR_FIELD(defaction);
 
 	return newnode;
 }
@@ -4075,12 +4054,6 @@ copyObject(void *from)
 			break;
 		case T_DefElem:
 			retval = _copyDefElem(from);
-			break;
-		case T_OptionDefElem:
-			retval = _copyOptionDefElem(from);
-			break;
-		case T_ReloptElem:
-			retval = _copyReloptElem(from);
 			break;
 		case T_LockingClause:
 			retval = _copyLockingClause(from);

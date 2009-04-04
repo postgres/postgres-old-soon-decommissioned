@@ -1797,18 +1797,10 @@ _outDefElem(StringInfo str, DefElem *node)
 {
 	WRITE_NODE_TYPE("DEFELEM");
 
+	WRITE_STRING_FIELD(defnamespace);
 	WRITE_STRING_FIELD(defname);
 	WRITE_NODE_FIELD(arg);
-}
-
-static void
-_outReloptElem(StringInfo str, ReloptElem *node)
-{
-	WRITE_NODE_TYPE("RELOPTELEM");
-
-	WRITE_STRING_FIELD(nmspc);
-	WRITE_STRING_FIELD(optname);
-	WRITE_NODE_FIELD(arg);
+	WRITE_ENUM_FIELD(defaction, DefElemAction);
 }
 
 static void
@@ -2773,9 +2765,6 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_DefElem:
 				_outDefElem(str, obj);
-				break;
-			case T_ReloptElem:
-				_outReloptElem(str, obj);
 				break;
 			case T_LockingClause:
 				_outLockingClause(str, obj);

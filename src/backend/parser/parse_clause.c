@@ -233,7 +233,7 @@ interpretInhOption(InhOption inhOpt)
 }
 
 /*
- * Given a relation-options list (of ReloptElems), return true iff the specified
+ * Given a relation-options list (of DefElems), return true iff the specified
  * table/result set should be created with OIDs. This needs to be done after
  * parsing the query string because the return value can depend upon the
  * default_with_oids GUC var.
@@ -246,10 +246,11 @@ interpretOidsOption(List *defList)
 	/* Scan list to see if OIDS was included */
 	foreach(cell, defList)
 	{
-		ReloptElem    *def = (ReloptElem *) lfirst(cell);
+		DefElem    *def = (DefElem *) lfirst(cell);
 
-		if (pg_strcasecmp(def->optname, "oids") == 0)
-			return reloptGetBoolean(def);
+		if (def->defnamespace == NULL &&
+			pg_strcasecmp(def->defname, "oids") == 0)
+			return defGetBoolean(def);
 	}
 
 	/* OIDS option was not specified, so use default. */

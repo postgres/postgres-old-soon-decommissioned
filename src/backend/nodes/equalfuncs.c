@@ -2074,27 +2074,10 @@ _equalConstraint(Constraint *a, Constraint *b)
 static bool
 _equalDefElem(DefElem *a, DefElem *b)
 {
+	COMPARE_STRING_FIELD(defnamespace);
 	COMPARE_STRING_FIELD(defname);
 	COMPARE_NODE_FIELD(arg);
-
-	return true;
-}
-
-static bool
-_equalOptionDefElem(OptionDefElem *a, OptionDefElem *b)
-{
-	COMPARE_SCALAR_FIELD(alter_op);
-	COMPARE_NODE_FIELD(def);
-
-	return true;
-}
-
-static bool
-_equalReloptElem(ReloptElem *a, ReloptElem *b)
-{
-	COMPARE_STRING_FIELD(nmspc);
-	COMPARE_STRING_FIELD(optname);
-	COMPARE_NODE_FIELD(arg);
+	COMPARE_SCALAR_FIELD(defaction);
 
 	return true;
 }
@@ -2849,12 +2832,6 @@ equal(void *a, void *b)
 			break;
 		case T_DefElem:
 			retval = _equalDefElem(a, b);
-			break;
-		case T_OptionDefElem:
-			retval = _equalOptionDefElem(a, b);
-			break;
-		case T_ReloptElem:
-			retval = _equalReloptElem(a, b);
 			break;
 		case T_LockingClause:
 			retval = _equalLockingClause(a, b);

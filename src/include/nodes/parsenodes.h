@@ -50,14 +50,6 @@ typedef enum SortByNulls
 	SORTBY_NULLS_LAST
 } SortByNulls;
 
-/* Alter operations for generic options */
-typedef enum AlterOptionOp
-{
-	ALTER_OPT_DROP = -1,
-	ALTER_OPT_SET,
-	ALTER_OPT_ADD
-} AlterOptionOp;
-
 /*
  * Grantable rights are encoded so that we can OR them together in a bitmask.
  * The present representation of AclItem limits us to 16 distinct rights,
@@ -511,37 +503,31 @@ typedef struct IndexElem
 } IndexElem;
 
 /*
- * DefElem -
- *	  a definition (used in definition lists in the form of defname = arg)
+ * DefElem - a generic "name = value" option definition
+ *
+ * In some contexts the name can be qualified.  Also, certain SQL commands
+ * allow a SET/ADD/DROP action to be attached to option settings, so it's
+ * convenient to carry a field for that too.  (Note: currently, it is our
+ * practice that the grammar allows namespace and action only in statements
+ * where they are relevant; C code can just ignore those fields in other
+ * statements.)
  */
+typedef enum DefElemAction
+{
+	DEFELEM_UNSPEC,				/* no action given */
+	DEFELEM_SET,
+	DEFELEM_ADD,
+	DEFELEM_DROP
+} DefElemAction;
+
 typedef struct DefElem
 {
 	NodeTag		type;
+	char	   *defnamespace;	/* NULL if unqualified name */
 	char	   *defname;
 	Node	   *arg;			/* a (Value *) or a (TypeName *) */
+	DefElemAction defaction;	/* unspecified action, or SET/ADD/DROP */
 } DefElem;
-
-/*
- * Option definition. Used in options definition lists, with optional alter
- * operation.
- */
-typedef struct OptionDefElem
-{
-	NodeTag			type;
-	AlterOptionOp	alter_op;		/* Alter operation: ADD/SET/DROP */
-	DefElem		   *def;			/* The actual definition */
-} OptionDefElem;
-
-/*
- * Reloption definition.  As DefElem, with optional option namespace.
- */
-typedef struct ReloptElem
-{
-	NodeTag		type;
-	char	   *nmspc;
-	char	   *optname;
-	Node	   *arg;
-} ReloptElem;
 
 /*
  * LockingClause - raw representation of FOR UPDATE/SHARE options

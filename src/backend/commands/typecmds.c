@@ -1496,7 +1496,7 @@ DefineCompositeType(const RangeVar *typevar, List *coldeflist)
 	createStmt->tableElts = coldeflist;
 	createStmt->inhRelations = NIL;
 	createStmt->constraints = NIL;
-	createStmt->options = list_make1(reloptWithOids(false));
+	createStmt->options = list_make1(defWithOids(false));
 	createStmt->oncommit = ONCOMMIT_NOOP;
 	createStmt->tablespacename = NULL;
 
