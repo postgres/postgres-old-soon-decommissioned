@@ -40,7 +40,8 @@ extern int	BackendXidGetPid(TransactionId xid);
 extern bool IsBackendPid(int pid);
 
 extern VirtualTransactionId *GetCurrentVirtualXIDs(TransactionId limitXmin,
-					  bool allDbs, int excludeVacuum);
+					  bool excludeXmin0, bool allDbs, int excludeVacuum,
+					  int *nvxids);
 extern int	CountActiveBackends(void);
 extern int	CountDBBackends(Oid databaseid);
 extern int	CountUserBackends(Oid roleid);
