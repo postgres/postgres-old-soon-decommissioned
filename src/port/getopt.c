@@ -50,10 +50,19 @@ int			opterr = 1,			/* if error message should be printed */
 			optopt;				/* character checked for validity */
 char	   *optarg;				/* argument associated with option */
 
+#else
+
+extern int	opterr;
+extern int	optind;
+extern int	optopt;
+extern char *optarg;
+
 #endif
 
 #ifndef HAVE_INT_OPTRESET
 int			optreset;			/* reset getopt */
+#else
+extern int	optreset;
 #endif
 
 #define BADCH	(int)'?'
