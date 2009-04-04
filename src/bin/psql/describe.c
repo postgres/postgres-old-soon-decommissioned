@@ -1944,15 +1944,15 @@ add_role_attribute(PQExpBuffer buf, const char *const str)
 /*
  * listTables()
  *
- * handler for \d, \dt, etc.
+ * handler for \dt, \di, etc.
  *
  * tabtypes is an array of characters, specifying what info is desired:
  * t - tables
  * i - indexes
  * v - views
  * s - sequences
- * S - system tables (pg_catalog)
  * (any order of the above is fine)
+ * If tabtypes is empty, we default to \dtvs.
  */
 bool
 listTables(const char *tabtypes, const char *pattern, bool verbose, bool showSystem)
