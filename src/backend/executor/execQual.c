@@ -4326,7 +4326,7 @@ ExecInitExpr(Expr *node, PlanState *parent)
 				sstate = ExecInitSubPlan(subplan, parent);
 
 				/* Add SubPlanState nodes to parent->subPlan */
-				parent->subPlan = lcons(sstate, parent->subPlan);
+				parent->subPlan = lappend(parent->subPlan, sstate);
 
 				state = (ExprState *) sstate;
 			}
