@@ -91,10 +91,6 @@ DROP FUNCTION icount(_int4);
 
 DROP FUNCTION intset(int4);
 
-DROP OPERATOR <@ (_int4, _int4);
-
-DROP OPERATOR @> (_int4, _int4);
-
 DROP OPERATOR ~ (_int4, _int4);
 
 DROP OPERATOR @ (_int4, _int4);
