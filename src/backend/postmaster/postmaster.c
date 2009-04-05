@@ -309,7 +309,7 @@ extern int	optind,
 			opterr;
 
 #ifdef HAVE_INT_OPTRESET
-extern int	optreset;
+extern int	optreset;			/* might not be declared by system headers */
 #endif
 
 /*

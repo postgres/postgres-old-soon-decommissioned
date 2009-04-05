@@ -24,10 +24,6 @@
 static void SetCancelConn(PGconn *conn);
 static void ResetCancelConn(void);
 
-#ifndef HAVE_INT_OPTRESET
-int			optreset;
-#endif
-
 static PGcancel *volatile cancelConn = NULL;
 
 #ifdef WIN32

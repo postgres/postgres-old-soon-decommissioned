@@ -55,10 +55,6 @@
 extern char *optarg;
 extern int	optind;
 
-#ifndef HAVE_INT_OPTRESET
-int			optreset;
-#endif
-
 #ifdef ENABLE_NLS
 #include <locale.h>
 #endif

@@ -22,10 +22,6 @@
 
 #include "getopt_long.h"
 
-#ifndef HAVE_INT_OPTRESET
-int			optreset;
-#endif
-
 #include "dumputils.h"
 #include "pg_backup.h"
 

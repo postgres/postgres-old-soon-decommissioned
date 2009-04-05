@@ -30,10 +30,6 @@
 
 #include "getopt_long.h"
 
-#ifndef HAVE_INT_OPTRESET
-int			optreset;
-#endif
-
 #include "access/attnum.h"
 #include "access/sysattr.h"
 #include "catalog/pg_cast.h"

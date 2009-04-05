@@ -18,8 +18,6 @@ extern int	opterr;
 extern int	optind;
 extern int	optopt;
 extern char *optarg;
-
-/* Some systems have this, otherwise you need to define it somewhere. */
 extern int	optreset;
 
 #ifndef HAVE_STRUCT_OPTION

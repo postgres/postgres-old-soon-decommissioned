@@ -62,10 +62,6 @@
 #include "getopt_long.h"
 #include "miscadmin.h"
 
-#ifndef HAVE_INT_OPTRESET
-int			optreset;
-#endif
-
 
 /*
  * these values are passed in by makefile defines

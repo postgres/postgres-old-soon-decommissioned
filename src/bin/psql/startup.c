@@ -18,12 +18,7 @@
 
 #include "getopt_long.h"
 
-#ifndef HAVE_INT_OPTRESET
-int			optreset;
-#endif
-
 #include <locale.h>
-
 
 #include "command.h"
 #include "common.h"

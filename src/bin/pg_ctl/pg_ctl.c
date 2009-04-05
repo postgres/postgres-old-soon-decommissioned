@@ -42,10 +42,6 @@
 #undef WIN32
 #endif
 
-#ifndef HAVE_INT_OPTRESET
-int			optreset;
-#endif
-
 /* PID can be negative for standalone backend */
 typedef long pgpid_t;
 
