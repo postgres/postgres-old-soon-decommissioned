@@ -175,12 +175,15 @@ newScanKey(IndexScanDesc scan)
 		bool		*partial_matches = NULL;
 		Pointer		*extra_data = NULL;
 
-		/* XXX can't we treat nulls by just setting isVoidRes? */
-		/* This would amount to assuming that all GIN operators are strict */
+		/*
+		 * Assume, that GIN-indexable operators are strict, so 
+		 * nothing could be found
+		 */
 		if (skey->sk_flags & SK_ISNULL)
-			ereport(ERROR,
-					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("GIN indexes do not support NULL scan keys")));
+		{
+			so->isVoidRes = true;
+			break;
+		}
 
 		entryValues = (Datum *)
 			DatumGetPointer(FunctionCall5(&so->ginstate.extractQueryFn[skey->sk_attno - 1],
