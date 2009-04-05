@@ -961,6 +961,7 @@ _outSubPlan(StringInfo str, SubPlan *node)
 	WRITE_NODE_FIELD(testexpr);
 	WRITE_NODE_FIELD(paramIds);
 	WRITE_INT_FIELD(plan_id);
+	WRITE_STRING_FIELD(plan_name);
 	WRITE_OID_FIELD(firstColType);
 	WRITE_INT_FIELD(firstColTypmod);
 	WRITE_BOOL_FIELD(useHashTable);

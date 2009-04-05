@@ -951,14 +951,14 @@ explain_outNode(StringInfo str,
 	{
 		ListCell   *lst;
 
-		for (i = 0; i < indent; i++)
-			appendStringInfo(str, "  ");
-		appendStringInfo(str, "  InitPlan\n");
 		foreach(lst, planstate->initPlan)
 		{
 			SubPlanState *sps = (SubPlanState *) lfirst(lst);
 			SubPlan    *sp = (SubPlan *) sps->xprstate.expr;
 
+			for (i = 0; i < indent; i++)
+				appendStringInfo(str, "  ");
+			appendStringInfo(str, "  %s\n", sp->plan_name);
 			for (i = 0; i < indent; i++)
 				appendStringInfo(str, "  ");
 			appendStringInfo(str, "    ->  ");
@@ -1099,14 +1099,14 @@ explain_outNode(StringInfo str,
 	{
 		ListCell   *lst;
 
-		for (i = 0; i < indent; i++)
-			appendStringInfo(str, "  ");
-		appendStringInfo(str, "  SubPlan\n");
 		foreach(lst, planstate->subPlan)
 		{
 			SubPlanState *sps = (SubPlanState *) lfirst(lst);
 			SubPlan    *sp = (SubPlan *) sps->xprstate.expr;
 
+			for (i = 0; i < indent; i++)
+				appendStringInfo(str, "  ");
+			appendStringInfo(str, "  %s\n", sp->plan_name);
 			for (i = 0; i < indent; i++)
 				appendStringInfo(str, "  ");
 			appendStringInfo(str, "    ->  ");

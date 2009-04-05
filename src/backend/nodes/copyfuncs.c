@@ -1116,6 +1116,7 @@ _copySubPlan(SubPlan *from)
 	COPY_NODE_FIELD(testexpr);
 	COPY_NODE_FIELD(paramIds);
 	COPY_SCALAR_FIELD(plan_id);
+	COPY_STRING_FIELD(plan_name);
 	COPY_SCALAR_FIELD(firstColType);
 	COPY_SCALAR_FIELD(firstColTypmod);
 	COPY_SCALAR_FIELD(useHashTable);

@@ -341,6 +341,7 @@ _equalSubPlan(SubPlan *a, SubPlan *b)
 	COMPARE_NODE_FIELD(testexpr);
 	COMPARE_NODE_FIELD(paramIds);
 	COMPARE_SCALAR_FIELD(plan_id);
+	COMPARE_STRING_FIELD(plan_name);
 	COMPARE_SCALAR_FIELD(firstColType);
 	COMPARE_SCALAR_FIELD(firstColTypmod);
 	COMPARE_SCALAR_FIELD(useHashTable);

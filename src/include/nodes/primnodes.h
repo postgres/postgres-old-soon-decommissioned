@@ -502,6 +502,8 @@ typedef struct SubPlan
 	List	   *paramIds;		/* IDs of Params embedded in the above */
 	/* Identification of the Plan tree to use: */
 	int			plan_id;		/* Index (from 1) in PlannedStmt.subplans */
+	/* Identification of the SubPlan for EXPLAIN and debugging purposes: */
+	char	   *plan_name;		/* A name assigned during planning */
 	/* Extra data useful for determining subplan's output type: */
 	Oid			firstColType;	/* Type of first column of subplan result */
 	int32		firstColTypmod;	/* Typmod of first column of subplan result */
