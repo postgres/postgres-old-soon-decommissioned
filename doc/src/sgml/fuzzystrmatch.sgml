@@ -12,6 +12,13 @@
   functions to determine similarities and distance between strings.
  </para>
 
+ <caution>
+  <para>
+   At present, <filename>fuzzystrmatch</> does not work well with
+   multi-byte encodings (such as UTF-8).
+  </para>
+ </caution>
+
  <sect2>
   <title>Soundex</title>
 
