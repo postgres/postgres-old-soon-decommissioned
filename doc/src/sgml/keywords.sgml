@@ -800,7 +800,7 @@
     <entry>non-reserved</entry>
    </row>
    <row>
-    <entry><token>LC_COLLATE</token></entry>
+    <entry><token>COLLATE</token></entry>
     <entry>reserved</entry>
     <entry>reserved</entry>
     <entry>reserved</entry>
@@ -1161,14 +1161,6 @@
    </row>
    <row>
     <entry><token>CSV</token></entry>
-    <entry>non-reserved</entry>
-    <entry></entry>
-    <entry></entry>
-    <entry></entry>
-    <entry></entry>
-   </row>
-   <row>
-    <entry><token>LC_CTYPE</token></entry>
     <entry>non-reserved</entry>
     <entry></entry>
     <entry></entry>
@@ -2629,6 +2621,22 @@
     <entry>reserved</entry>
     <entry>reserved</entry>
     <entry>reserved</entry>
+    <entry></entry>
+   </row>
+   <row>
+    <entry><token>LC_COLLATE</token></entry>
+    <entry>non-reserved</entry>
+    <entry></entry>
+    <entry></entry>
+    <entry></entry>
+    <entry></entry>
+   </row>
+   <row>
+    <entry><token>LC_CTYPE</token></entry>
+    <entry>non-reserved</entry>
+    <entry></entry>
+    <entry></entry>
+    <entry></entry>
     <entry></entry>
    </row>
    <row>
