@@ -800,7 +800,7 @@
     <entry>non-reserved</entry>
    </row>
    <row>
-    <entry><token>COLLATE</token></entry>
+    <entry><token>LC_COLLATE</token></entry>
     <entry>reserved</entry>
     <entry>reserved</entry>
     <entry>reserved</entry>
@@ -1168,7 +1168,7 @@
     <entry></entry>
    </row>
    <row>
-    <entry><token>CTYPE</token></entry>
+    <entry><token>LC_CTYPE</token></entry>
     <entry>non-reserved</entry>
     <entry></entry>
     <entry></entry>

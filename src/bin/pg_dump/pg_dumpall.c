@@ -1048,13 +1048,13 @@ dumpCreateDB(PGconn *conn)
 
 			if (strlen(dbcollate) != 0)
 			{
-				appendPQExpBuffer(buf, " COLLATE = ");
+				appendPQExpBuffer(buf, " LC_COLLATE = ");
 				appendStringLiteralConn(buf, dbcollate, conn);
 			}
 
 			if (strlen(dbctype) != 0)
 			{
-				appendPQExpBuffer(buf, " CTYPE = ");
+				appendPQExpBuffer(buf, " LC_CTYPE = ");
 				appendStringLiteralConn(buf, dbctype, conn);
 			}
 

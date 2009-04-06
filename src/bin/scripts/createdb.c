@@ -186,9 +186,9 @@ main(int argc, char *argv[])
 	if (template)
 		appendPQExpBuffer(&sql, " TEMPLATE %s", fmtId(template));
 	if (lc_collate)
-		appendPQExpBuffer(&sql, " COLLATE '%s'", lc_collate);
+		appendPQExpBuffer(&sql, " LC_COLLATE '%s'", lc_collate);
 	if (lc_ctype)
-		appendPQExpBuffer(&sql, " CTYPE '%s'", lc_ctype);
+		appendPQExpBuffer(&sql, " LC_CTYPE '%s'", lc_ctype);
 
 	appendPQExpBuffer(&sql, ";\n");
 

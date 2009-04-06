@@ -1716,12 +1716,12 @@ dumpDatabase(Archive *AH)
 	}
 	if (strlen(collate) > 0)
 	{
-		appendPQExpBuffer(creaQry, " COLLATE = ");
+		appendPQExpBuffer(creaQry, " LC_COLLATE = ");
 		appendStringLiteralAH(creaQry, collate, AH);
 	}
 	if (strlen(ctype) > 0)
 	{
-		appendPQExpBuffer(creaQry, " CTYPE = ");
+		appendPQExpBuffer(creaQry, " LC_CTYPE = ");
 		appendStringLiteralAH(creaQry, ctype, AH);
 	}
 	if (strlen(tablespace) > 0 && strcmp(tablespace, "pg_default") != 0)
