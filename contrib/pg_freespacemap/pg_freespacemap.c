@@ -94,6 +94,7 @@ pg_freespacemap_pages(PG_FUNCTION_ARGS)
 	if (SRF_IS_FIRSTCALL())
 	{
 		int			i;
+		int			nchunks;	/* Size of freespace.c's arena. */
 		int			numPages;	/* Max possible no. of pages in map. */
 		int			nPages;		/* Mapped pages for a relation. */
 
@@ -102,7 +103,10 @@ pg_freespacemap_pages(PG_FUNCTION_ARGS)
 		 */
 		FreeSpaceMap = GetFreeSpaceMap();
 
-		numPages = MaxFSMPages;
+		/* this must match calculation in InitFreeSpaceMap(): */
+		nchunks = (MaxFSMPages - 1) / CHUNKPAGES + 1;
+		/* Worst case (lots of indexes) could have this many pages: */
+		numPages = nchunks * INDEXCHUNKPAGES;
 
 		funcctx = SRF_FIRSTCALL_INIT();
 
