@@ -2726,6 +2726,16 @@ do it for earlier branch release files.
       </para>
      </listitem>
 
+     <listitem>
+      <para>
+       Add Japanese message translations
+      </para>
+
+      <para>
+       This used to be maintained as a separate project.
+      </para>
+     </listitem>
+
     </itemizedlist>
 
    </sect3>
