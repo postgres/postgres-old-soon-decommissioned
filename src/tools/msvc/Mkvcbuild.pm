@@ -104,7 +104,14 @@ sub mkvcbuild
             }
         }
         $plperl->AddReference($postgres);
-        $plperl->AddLibrary($solution->{options}->{perl} . '\lib\CORE\perl58.lib');
+        if (-e $solution->{options}->{perl} . '\lib\CORE\perl510.lib')
+        {
+            $plperl->AddLibrary($solution->{options}->{perl} . '\lib\CORE\perl510.lib');
+        }
+        else
+        {
+            $plperl->AddLibrary($solution->{options}->{perl} . '\lib\CORE\perl58.lib');
+        }
     }
 
     if ($solution->{options}->{python})
@@ -122,7 +129,14 @@ sub mkvcbuild
         my $pltcl = $solution->AddProject('pltcl','dll','PLs','src\pl\tcl');
         $pltcl->AddIncludeDir($solution->{options}->{tcl} . '\include');
         $pltcl->AddReference($postgres);
-        $pltcl->AddLibrary($solution->{options}->{tcl} . '\lib\tcl84.lib');
+        if (-e $solution->{options}->{tcl} . '\lib\tcl85.lib')
+        {
+            $pltcl->AddLibrary($solution->{options}->{tcl} . '\lib\tcl85.lib');
+        }
+        else
+        {
+            $pltcl->AddLibrary($solution->{options}->{tcl} . '\lib\tcl84.lib');
+        }
     }
 
     $libpq = $solution->AddProject('libpq','dll','interfaces','src\interfaces\libpq');
