@@ -403,6 +403,12 @@ CREATE VIEW pg_user_mappings AS
 
 REVOKE ALL on pg_user_mapping FROM public;
 
+--
+-- We have a few function definitions in here, too.
+-- At some point there might be enough to justify breaking them out into
+-- a separate "system_functions.sql" file.
+--
+
 -- Tsearch debug function.  Defined here because it'd be pretty unwieldy
 -- to put it into pg_proc.h
 
@@ -464,3 +470,16 @@ LANGUAGE SQL STRICT STABLE;
 
 COMMENT ON FUNCTION ts_debug(text) IS
     'debug function for current text search configuration';
+
+--
+-- Redeclare built-in functions that need default values attached to their
+-- arguments.  It's impractical to set those up directly in pg_proc.h because
+-- of the complexity and platform-dependency of the expression tree
+-- representation.  (Note that internal functions still have to have entries
+-- in pg_proc.h; we are merely causing their proargnames and proargdefaults
+-- to get filled in.)
+--
+
+CREATE OR REPLACE FUNCTION
+  pg_start_backup(label text, fast boolean DEFAULT false)
+  RETURNS text STRICT VOLATILE LANGUAGE internal AS 'pg_start_backup';

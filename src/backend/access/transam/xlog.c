@@ -6914,6 +6914,7 @@ Datum
 pg_start_backup(PG_FUNCTION_ARGS)
 {
 	text	   *backupid = PG_GETARG_TEXT_P(0);
+	bool		fast = PG_GETARG_BOOL(1);
 	char	   *backupidstr;
 	XLogRecPtr	checkpointloc;
 	XLogRecPtr	startpoint;
@@ -6983,9 +6984,11 @@ pg_start_backup(PG_FUNCTION_ARGS)
 		 * have different checkpoint positions and hence different history
 		 * file names, even if nothing happened in between.
 		 *
-		 * We don't use CHECKPOINT_IMMEDIATE, hence this can take awhile.
+		 * We use CHECKPOINT_IMMEDIATE only if requested by user (via
+		 * passing fast = true).  Otherwise this can take awhile.
 		 */
-		RequestCheckpoint(CHECKPOINT_FORCE | CHECKPOINT_WAIT);
+		RequestCheckpoint(CHECKPOINT_FORCE | CHECKPOINT_WAIT |
+						  (fast ? CHECKPOINT_IMMEDIATE : 0));
 
 		/*
 		 * Now we need to fetch the checkpoint record location, and also its
