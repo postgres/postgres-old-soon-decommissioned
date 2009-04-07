@@ -635,8 +635,8 @@ trigf(PG_FUNCTION_ARGS)
    </para>
 
    <para>
-    After you have compiled the source code, declare the function and
-    the triggers:
+    After you have compiled the source code (see <xref
+    linkend="dfunc">), declare the function and the triggers:
 <programlisting>
 CREATE FUNCTION trigf() RETURNS trigger
     AS '<replaceable>filename</>'
