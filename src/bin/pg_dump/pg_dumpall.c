@@ -1088,8 +1088,10 @@ dumpCreateDB(PGconn *conn)
 				appendPQExpBuffer(buf, "\n-- For binary upgrade, set datfrozenxid.\n");
 				appendPQExpBuffer(buf, "UPDATE pg_database\n"
 									 "SET datfrozenxid = '%u'\n"
-									 "WHERE	datname = '%s';\n",
-									 dbfrozenxid, fdbname);
+									 "WHERE	datname = ",
+									 dbfrozenxid);
+				appendStringLiteralConn(buf, dbname, conn);
+				appendPQExpBuffer(buf, ";\n");
 			}
 		}
 
