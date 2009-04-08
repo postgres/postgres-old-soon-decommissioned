@@ -266,7 +266,9 @@ CheckMyDatabase(const char *name, bool am_superuser)
 	SetConfigOption("lc_ctype", ctype, PGC_INTERNAL, PGC_S_OVERRIDE);
 
 	/* Use the right encoding in translated messages */
+#ifdef ENABLE_NLS
 	pg_bind_textdomain_codeset(textdomain(NULL));
+#endif
 
 	/*
 	 * Lastly, set up any database-specific configuration variables.
