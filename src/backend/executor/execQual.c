@@ -4671,27 +4671,16 @@ ExecInitExpr(Expr *node, PlanState *parent)
 				XmlExprState *xstate = makeNode(XmlExprState);
 				List	   *outlist;
 				ListCell   *arg;
-				int			i;
 
 				xstate->xprstate.evalfunc = (ExprStateEvalFunc) ExecEvalXml;
-				xstate->named_outfuncs = (FmgrInfo *)
-					palloc0(list_length(xexpr->named_args) * sizeof(FmgrInfo));
 				outlist = NIL;
-				i = 0;
 				foreach(arg, xexpr->named_args)
 				{
 					Expr	   *e = (Expr *) lfirst(arg);
 					ExprState  *estate;
-					Oid			typOutFunc;
-					bool		typIsVarlena;
 
 					estate = ExecInitExpr(e, parent);
 					outlist = lappend(outlist, estate);
-
-					getTypeOutputInfo(exprType((Node *) e),
-									  &typOutFunc, &typIsVarlena);
-					fmgr_info(typOutFunc, &xstate->named_outfuncs[i]);
-					i++;
 				}
 				xstate->named_args = outlist;
 
