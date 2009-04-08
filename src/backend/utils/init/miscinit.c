@@ -1242,7 +1242,7 @@ pg_bindtextdomain(const char *domain)
 
 		get_locale_path(my_exec_path, locale_path);
 		bindtextdomain(domain, locale_path);
-		pg_bind_textdomain_codeset(domain, GetDatabaseEncoding());
+		pg_bind_textdomain_codeset(domain);
 	}
 #endif
 }
