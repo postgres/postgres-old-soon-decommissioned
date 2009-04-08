@@ -274,13 +274,7 @@ describeFunctions(const char *pattern, bool verbose, bool showSystem)
 		appendPQExpBuffer(&buf,
 						  "     LEFT JOIN pg_catalog.pg_language l ON l.oid = p.prolang\n");
 
-	/*
-	 * we skip in/out funcs by excluding functions that take or return cstring
-	 */
-	appendPQExpBuffer(&buf,
-		   "WHERE p.prorettype <> 'pg_catalog.cstring'::pg_catalog.regtype\n"
-					  "      AND p.proargtypes[0] IS DISTINCT FROM 'pg_catalog.cstring'::pg_catalog.regtype\n"
-					  "      AND NOT p.proisagg\n");
+	appendPQExpBuffer(&buf, "WHERE NOT p.proisagg\n");
 
  	if (!showSystem && !pattern)
  		appendPQExpBuffer(&buf, "      AND n.nspname <> 'pg_catalog'\n"
@@ -643,7 +637,7 @@ objectDescription(const char *pattern, bool showSystem)
 						  "n.nspname", "p.proname", NULL,
 						  "pg_catalog.pg_function_is_visible(p.oid)");
 
-	/* Function descriptions (except in/outs for datatypes) */
+	/* Function descriptions */
 	appendPQExpBuffer(&buf,
 					  "UNION ALL\n"
 					  "  SELECT p.oid as oid, p.tableoid as tableoid,\n"
@@ -652,11 +646,7 @@ objectDescription(const char *pattern, bool showSystem)
 					  "  CAST('%s' AS pg_catalog.text) as object\n"
 					  "  FROM pg_catalog.pg_proc p\n"
 	 "       LEFT JOIN pg_catalog.pg_namespace n ON n.oid = p.pronamespace\n"
-
-		 "  WHERE p.prorettype <> 'pg_catalog.cstring'::pg_catalog.regtype\n"
-					  "      AND (p.proargtypes[0] IS NULL\n"
-					  "      OR   p.proargtypes[0] <> 'pg_catalog.cstring'::pg_catalog.regtype)\n"
-					  "      AND NOT p.proisagg\n",
+					  "  WHERE NOT p.proisagg\n",
 					  gettext_noop("function"));
 
  	if (!showSystem && !pattern)
