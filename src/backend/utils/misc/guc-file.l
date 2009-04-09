@@ -446,8 +446,13 @@ ParseConfigFile(const char *config_file, const char *calling_file,
 
 		/* now we'd like an end of line, or possibly EOF */
 		token = yylex();
-		if (token != GUC_EOL && token != 0)
-			goto parse_error;
+		if (token != GUC_EOL)
+		{
+			if (token != 0)
+				goto parse_error;
+			/* treat EOF like \n for line numbering purposes, cf bug 4752 */
+			ConfigFileLineno++;
+		}
 
 		/* OK, process the option name and value */
 		if (guc_name_compare(opt_name, "include") == 0)
