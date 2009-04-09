@@ -924,8 +924,8 @@ postgres: <replaceable>user</> <replaceable>database</> <replaceable>host</> <re
 
    <note>
     <para>
-     <function>blocks_fetched</function> minus
-     <function>blocks_hit</function> gives the number of kernel
+     <function>pg_stat_get_blocks_fetched</function> minus
+     <function>pg_stat_get_blocks_hit</function> gives the number of kernel
      <function>read()</> calls issued for the table, index, or
      database; but the actual number of physical reads is usually
      lower due to kernel-level buffering.
