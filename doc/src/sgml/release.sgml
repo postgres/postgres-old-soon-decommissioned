@@ -1624,11 +1624,6 @@ do it for earlier branch release files.
         of an array for the specified dimensions (Jim Nasby, Robert
         Haas, Peter Eisentraut)
        </para>
-
-       <para>
-        Also add identically-functioning <acronym>SQL</>-standard
-        function <function>cardinality()</>.
-       </para>
       </listitem>
 
       <listitem>

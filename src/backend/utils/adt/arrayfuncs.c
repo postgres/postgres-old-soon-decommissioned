@@ -1669,28 +1669,6 @@ array_length(PG_FUNCTION_ARGS)
 }
 
 /*
- * array_cardinality :
- *		SQL-spec alias for array_length(v, 1)
- */
-Datum
-array_cardinality(PG_FUNCTION_ARGS)
-{
-	ArrayType  *v = PG_GETARG_ARRAYTYPE_P(0);
-	int		   *dimv;
-	int			result;
-
-	/* Sanity check: does it look like an array at all? */
-	if (ARR_NDIM(v) <= 0 || ARR_NDIM(v) > MAXDIM)
-		PG_RETURN_NULL();
-
-	dimv = ARR_DIMS(v);
-
-	result = dimv[0];
-
-	PG_RETURN_INT32(result);
-}
-
-/*
  * array_ref :
  *	  This routine takes an array pointer and a subscript array and returns
  *	  the referenced item as a Datum.  Note that for a pass-by-reference
