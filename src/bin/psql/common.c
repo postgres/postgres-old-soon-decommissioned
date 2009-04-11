@@ -824,8 +824,8 @@ SendQuery(const char *query)
 	{
 		if (on_error_rollback_warning == false && pset.sversion < 80000)
 		{
-			fprintf(stderr, _("The server version (%d) does not support savepoints for ON_ERROR_ROLLBACK.\n"),
-					pset.sversion);
+			fprintf(stderr, _("The server (version %d.%d) does not support savepoints for ON_ERROR_ROLLBACK.\n"),
+					pset.sversion / 10000, (pset.sversion / 100) % 100);
 			on_error_rollback_warning = true;
 		}
 		else
