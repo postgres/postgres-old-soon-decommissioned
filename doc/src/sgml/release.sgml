@@ -161,7 +161,7 @@ do it for earlier branch release files.
 
     <listitem>
      <para>
-      Support SSL certificates for authentication
+      Support SSL certificates for user authentication
      </para>
     </listitem>
 
@@ -820,8 +820,9 @@ do it for earlier branch release files.
 
       <listitem>
        <para>
-        Add <literal>cert</> authentication method to allow user
-        authentication via <acronym>SSL</> certificates (Magnus)
+        Add <literal>cert</> authentication method to allow
+        <emphasis>user</> authentication via <acronym>SSL</> certificates
+        (Magnus)
        </para>
 
        <para>
