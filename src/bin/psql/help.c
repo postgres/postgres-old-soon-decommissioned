@@ -175,7 +175,7 @@ slashUsage(unsigned short int pager)
 
 	fprintf(output, _("Query Buffer\n"));
 	fprintf(output, _("  \\e [FILE]              edit the query buffer (or file) with external editor\n"));
-	fprintf(output, _("  \\ef [FUNCNAME]         edit a function definition with external editor\n"));
+	fprintf(output, _("  \\ef [FUNCNAME]         edit function definition with external editor\n"));
 	fprintf(output, _("  \\p                     show the contents of the query buffer\n"));
 	fprintf(output, _("  \\r                     reset (clear) the query buffer\n"));
 #ifdef USE_READLINE
