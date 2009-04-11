@@ -6131,9 +6131,9 @@ myEventProc(PGEventId evtId, void *evtInfo, void *passThrough)
 
   <para>
    When the <literal>sslverify</> parameter is set to <literal>cn</> or
-   <literal>cert</>, libpq will verify that the server certificate is
-   trustworthy by checking the certificate chain up to a <acronym>CA</>.
-   For this to work, place the certificate of a trusted <acronym>CA</>
+   <literal>cert</>, libpq requires a trustworthy server certificate by
+   checking the certificate chain up to a <acronym>CA</>.
+   To allow verification, place the certificate of a trusted <acronym>CA</>
    in the file <filename>~/.postgresql/root.crt</> in the user's home directory.
    (On Microsoft Windows the file is named
    <filename>%APPDATA%\postgresql\root.crt</filename>.)
