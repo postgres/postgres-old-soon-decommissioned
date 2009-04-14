@@ -316,7 +316,7 @@ main(int argc, char **argv)
 	/* Can't do single-txn mode with multiple connections */
 	if (opts->single_txn && opts->number_of_jobs > 1)
 	{
-		fprintf(stderr, _("%s: options -1/--single-transaction and -j/--jobs cannot be used together\n"),
+		fprintf(stderr, _("%s: cannot specify both --single-transaction and multiple jobs\n"),
 				progname);
 		exit(1);
 	}
