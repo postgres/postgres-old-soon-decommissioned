@@ -1067,7 +1067,8 @@ initialize_SSL(PGconn *conn)
 		if (strcmp(conn->sslverify, "none") != 0)
 		{
 			printfPQExpBuffer(&conn->errorMessage,
-							  libpq_gettext("root certificate file \"%s\" does not exist"), fnbuf);
+							  libpq_gettext("root certificate file \"%s\" does not exist\n"
+							  "Either supply the file or set sslverify to \"none\" to disable server certificate verification.\n"), fnbuf);
 			return -1;
 		}
 	}
