@@ -390,12 +390,12 @@ createdb(const CreatedbStmt *stmt)
 		if (strcmp(dbcollate, src_collate))
 			ereport(ERROR,
 					(errmsg("new collation is incompatible with the collation of the template database (%s)", src_collate),
-					 errhint("Use the same collation as in the template database, or use template0 as template")));
+					 errhint("Use the same collation as in the template database, or use template0 as template.")));
 
 		if (strcmp(dbctype, src_ctype))
 			ereport(ERROR,
 					(errmsg("new LC_CTYPE is incompatible with LC_CTYPE of the template database (%s)", src_ctype),
-					 errhint("Use the same LC_CTYPE as in the template database, or use template0 as template")));
+					 errhint("Use the same LC_CTYPE as in the template database, or use template0 as template.")));
 	}
 
 	/* Resolve default tablespace for new database */
