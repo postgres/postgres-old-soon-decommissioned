@@ -1738,8 +1738,8 @@ do it for earlier branch release files.
 
       <listitem>
        <para>
-        Support the <acronym>IS0 8601</> <type>interval</> syntax (Kevin
-        Grittner)
+        Support the <acronym>IS0 8601</> <type>interval</> syntax (Ron
+        Mayer, Kevin Grittner)
        </para>
 
        <para>
