@@ -162,7 +162,7 @@ fix_placeholder_eval_levels(PlannerInfo *root)
 		if (bms_membership(eval_at) == BMS_MULTIPLE)
 		{
 			List	   *vars = pull_var_clause((Node *) phinfo->ph_var->phexpr,
-											   true);
+											   PVC_INCLUDE_PLACEHOLDERS);
 
 			add_vars_to_targetlist(root, vars, eval_at);
 			list_free(vars);

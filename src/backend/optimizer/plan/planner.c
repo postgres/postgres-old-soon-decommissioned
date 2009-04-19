@@ -2236,7 +2236,7 @@ make_subplanTargetList(PlannerInfo *root,
 	 * and window specifications.
 	 */
 	sub_tlist = flatten_tlist(tlist);
-	extravars = pull_var_clause(parse->havingQual, true);
+	extravars = pull_var_clause(parse->havingQual, PVC_INCLUDE_PLACEHOLDERS);
 	sub_tlist = add_to_flat_tlist(sub_tlist, extravars);
 	list_free(extravars);
 	*need_tlist_eval = false;	/* only eval if not flat tlist */
