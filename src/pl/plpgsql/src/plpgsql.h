@@ -880,7 +880,6 @@ extern void plpgsql_ns_rename(char *oldname, char *newname);
  * ----------
  */
 extern void plpgsql_convert_ident(const char *s, char **output, int numidents);
-extern char *plpgsql_parse_string_token(const char *token);
 extern const char *plpgsql_stmt_typename(PLpgSQL_stmt *stmt);
 extern void plpgsql_dumptree(PLpgSQL_function *func);
 
