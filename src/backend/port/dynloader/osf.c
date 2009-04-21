@@ -1,5 +1,7 @@
-/* Dummy file used for nothing at this point
- *
- * see alpha.h
+/*
  * $PostgreSQL$
+ *
+ * Dummy file used for nothing at this point
+ *
+ * see osf.h
  */
