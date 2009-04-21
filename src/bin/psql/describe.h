@@ -15,8 +15,8 @@ extern bool describeAggregates(const char *pattern, bool verbose, bool showSyste
 /* \db */
 extern bool describeTablespaces(const char *pattern, bool verbose);
 
-/* \df */
-extern bool describeFunctions(const char *pattern, bool verbose, bool showSystem);
+/* \df, \dfa, \dfn, \dft, \dfw, etc. */
+extern bool describeFunctions(const char *functypes, const char *pattern, bool verbose, bool showSystem);
 
 /* \dT */
 extern bool describeTypes(const char *pattern, bool verbose, bool showSystem);

@@ -365,8 +365,22 @@ exec_command(const char *cmd,
 			case 'D':
 				success = listDomains(pattern, show_system);
 				break;
-			case 'f':
-				success = describeFunctions(pattern, show_verbose, show_system);
+			case 'f':			/* function subsystem */
+				switch (cmd[2])
+				{
+					case '\0':
+					case '+':
+					case 'S':
+					case 'a':
+					case 'n':
+					case 't':
+					case 'w':
+						success =  describeFunctions(&cmd[2], pattern, show_verbose, show_system);
+						break;
+					default:
+						status = PSQL_CMD_UNKNOWN;
+						break;
+				}
 				break;
 			case 'g':
 				/* no longer distinct from \du */
