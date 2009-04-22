@@ -4850,10 +4850,22 @@ exitArchiveRecovery(TimeLineID endTLI, uint32 endLogId, uint32 endLogSeg)
 		 * If we are establishing a new timeline, we have to copy data from
 		 * the last WAL segment of the old timeline to create a starting WAL
 		 * segment for the new timeline.
+		 *
+		 * Notify the archiver that the last WAL segment of the old timeline
+		 * is ready to copy to archival storage. Otherwise, it is not archived
+		 * for a while.
 		 */
 		if (endTLI != ThisTimeLineID)
+		{
 			XLogFileCopy(endLogId, endLogSeg,
 						 endTLI, endLogId, endLogSeg);
+
+			if (XLogArchivingActive())
+			{
+				XLogFileName(xlogpath, endTLI, endLogId, endLogSeg);
+				XLogArchiveNotify(xlogpath);
+			}
+		}
 	}
 
 	/*
