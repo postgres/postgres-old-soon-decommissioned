@@ -1138,7 +1138,8 @@ text_position_cleanup(TextPositionState *state)
  * Comparison function for text strings with given lengths.
  * Includes locale support, but must copy strings to temporary memory
  *	to allow null-termination for inputs to strcoll().
- * Returns -1, 0 or 1
+ * Returns an integer less than, equal to, or greater than zero, indicating
+ * whether arg1 is less than, equal to, or greater than arg2.
  */
 int
 varstr_cmp(char *arg1, int len1, char *arg2, int len2)
