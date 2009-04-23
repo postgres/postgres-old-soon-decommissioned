@@ -1504,7 +1504,7 @@ static struct config_int ConfigureNamesInt[] =
 			NULL
 		},
 		&max_prepared_xacts,
-		5, 0, INT_MAX, NULL, NULL
+		0, 0, INT_MAX / 4, NULL, NULL
 	},
 
 #ifdef LOCK_DEBUG
