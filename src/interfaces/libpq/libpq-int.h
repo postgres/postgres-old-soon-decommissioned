@@ -294,7 +294,6 @@ struct pg_conn
 	char	   *pguser;			/* Postgres username and password, if any */
 	char	   *pgpass;
 	char	   *sslmode;		/* SSL mode (require,prefer,allow,disable) */
-	char	   *sslverify;		/* Verify server SSL certificate (none,chain,cn) */
 	char	   *sslkey;			/* client key filename */
 	char	   *sslcert;		/* client certificate filename */
 	char	   *sslrootcert;	/* root certificate filename */
