@@ -262,6 +262,17 @@ typedef struct pg_enc2name
 extern pg_enc2name pg_enc2name_tbl[];
 
 /*
+ * Encoding names for gettext
+ */
+typedef struct pg_enc2gettext
+{
+	pg_enc		encoding;
+	const char *name;
+} pg_enc2gettext;
+
+extern pg_enc2gettext pg_enc2gettext_tbl[];
+
+/*
  * pg_wchar stuff
  */
 typedef int (*mb2wchar_with_len_converter) (const unsigned char *from,
