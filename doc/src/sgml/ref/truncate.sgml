@@ -106,8 +106,8 @@ TRUNCATE [ TABLE ] [ ONLY ] <replaceable class="PARAMETER">name</replaceable> [,
   </para>
 
   <para>
-   <command>TRUNCATE</> acquires an access exclusive lock on the
-   tables in operates on, which blocks all other concurrent operations
+   <command>TRUNCATE</> acquires an <literal>ACCESS EXCLUSIVE</> lock on each
+   table it operates on, which blocks all other concurrent operations
    on the table.  If concurrent access to a table is required, then
    the <command>DELETE</> command should be used instead.
   </para>
