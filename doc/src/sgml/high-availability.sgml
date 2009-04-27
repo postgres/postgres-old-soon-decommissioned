@@ -414,7 +414,7 @@ protocol to make nodes agree on a serializable transactional order.
     <para>
      Data partitioning splits tables into data sets.  Each set can
      be modified by only one server.  For example, data can be
-     partitioned by offices, e.g. London and Paris, with a server
+     partitioned by offices, e.g., London and Paris, with a server
      in each office.  If queries combining London and Paris data
      are necessary, an application can query both servers, or
      master/slave replication can be used to keep a read-only copy

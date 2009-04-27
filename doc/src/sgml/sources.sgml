@@ -661,10 +661,10 @@ BETTER: unrecognized node type: 42
   <formalpara>
     <title>May vs. Can vs. Might</title>
    <para>
-    <quote>May</quote> suggests permission (e.g. "You may borrow my rake."),
+    <quote>May</quote> suggests permission (e.g., "You may borrow my rake."),
     and has little use in documentation or error messages.
-    <quote>Can</quote> suggests ability (e.g. "I can lift that log."),
-    and <quote>might</quote> suggests possibility (e.g. "It might rain
+    <quote>Can</quote> suggests ability (e.g., "I can lift that log."),
+    and <quote>might</quote> suggests possibility (e.g., "It might rain
     today.").  Using the proper word clarifies meaning and assists
     translation.
    </para>

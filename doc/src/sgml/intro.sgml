@@ -5,7 +5,7 @@
 
  <para>
   This book is the official documentation of
-  <productname>PostgreSQL</productname>.  It is being written by the
+  <productname>PostgreSQL</productname>.  It has been written by the
   <productname>PostgreSQL</productname> developers and other
   volunteers in parallel to the development of the
   <productname>PostgreSQL</productname> software.  It describes all
@@ -58,7 +58,7 @@
     <para>
      <xref linkend="server-programming"> contains information for
      advanced users about the extensibility capabilities of the
-     server.  Topics are, for instance, user-defined data types and
+     server.  Topics include user-defined data types and
      functions.
     </para>
    </listitem>
@@ -148,7 +148,7 @@
   <para>
    And because of the liberal license,
    <productname>PostgreSQL</productname> can be used, modified, and
-   distributed by everyone free of charge for any purpose, be it
+   distributed by anyone free of charge for any purpose, be it
    private, commercial, or academic.
   </para>
  </sect1>

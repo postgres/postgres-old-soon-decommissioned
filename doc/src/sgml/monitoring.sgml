@@ -929,7 +929,7 @@ postgres: <replaceable>user</> <replaceable>database</> <replaceable>host</> <re
      <function>read()</> calls issued for the table, index, or
      database; the number of actual physical reads is usually
      lower due to kernel-level buffering.  The <literal>*_blks_read</>
-     statistics columns uses this subtraction, i.e. fetched minus hit.
+     statistics columns uses this subtraction, i.e., fetched minus hit.
     </para>
    </note>
 

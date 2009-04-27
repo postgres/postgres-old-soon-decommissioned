@@ -173,7 +173,7 @@
       <entry>
        <para>
         the name of the <quote>key</> field &mdash; this is just a field to be used as
-        the first column of the output table, i.e. it identifies the record from
+        the first column of the output table, i.e., it identifies the record from
         which each output row came (see note below about multiple values)
        </para>
       </entry>

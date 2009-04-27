@@ -12,7 +12,7 @@
   The object-relational database management system now known as
   <productname>PostgreSQL</productname> is derived from the
   <productname>POSTGRES</productname> package written at the
-  University of California at Berkeley.  With over a decade of
+  University of California at Berkeley.  With over two decades of
   development behind it, <productname>PostgreSQL</productname> is now
   the most advanced open-source database available anywhere.
  </para>
@@ -93,7 +93,7 @@
   </indexterm>
 
   <para>
-   In 1994, Andrew Yu and Jolly Chen added a SQL language interpreter
+   In 1994, Andrew Yu and Jolly Chen added an SQL language interpreter
    to <productname>POSTGRES</productname>.  Under a new name,
    <productname>Postgres95</productname> was subsequently released to
    the web to find its own way in the world as an open-source
