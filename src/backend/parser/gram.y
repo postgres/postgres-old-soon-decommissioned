@@ -10310,7 +10310,6 @@ unreserved_keyword:
 			| ROWS
 			| RULE
 			| SAVEPOINT
-			| SERVER
 			| SCHEMA
 			| SCROLL
 			| SEARCH
@@ -10318,6 +10317,7 @@ unreserved_keyword:
 			| SECURITY
 			| SEQUENCE
 			| SERIALIZABLE
+			| SERVER
 			| SESSION
 			| SET
 			| SHARE
