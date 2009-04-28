@@ -7,7 +7,6 @@ DATA_built = pg_trgm.sql
 DATA = uninstall_pg_trgm.sql
 REGRESS = pg_trgm
 
-
 ifdef USE_PGXS
 PG_CONFIG = pg_config
 PGXS := $(shell $(PG_CONFIG) --pgxs)
