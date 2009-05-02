@@ -163,13 +163,13 @@ JADE.tex.call = $(JADE) $(JADEFLAGS) $(SGMLINCLUDE) $(CATALOG) -d $(srcdir)/styl
 # PostScript from TeX
 postgres.ps:
 	$(error Invalid target;  use postgres-A4.ps or postgres-US.ps as targets)
-	
+
 %.ps: %.dvi
 	dvips -o $@ $<
 
 postgres.pdf:
 	$(error Invalid target;  use postgres-A4.pdf or postgres-US.pdf as targets)
-	
+
 %.pdf: %.tex-pdf
 	@rm -f $*.aux $*.log $*.out
 # multiple runs are necessary to create proper intra-document links
@@ -198,12 +198,8 @@ INSTALL HISTORY regress_README: % : %.html
 INSTALL.html: standalone-install.sgml installation.sgml version.sgml
 	$(JADE.text) -V nochunks standalone-install.sgml installation.sgml >$@
 
-# remove links to main documentation
-HISTORY.html: release.sgml
-	( echo '<!doctype appendix PUBLIC "-//OASIS//DTD DocBook V4.2//EN">'; \
-	  cat $< ) | \
-	$(PERL) -p -0 -e 's/<link\s+linkend[^>]*>//g' | \
-	$(PERL) -p -e 's/<\/link>//g' >tempfile_HISTORY.sgml
+HISTORY.html: generate_history.pl $(wildcard $(srcdir)/release*.sgml)
+	$(PERL) $< "$(srcdir)" release.sgml >tempfile_HISTORY.sgml
 	$(JADE.text) -V nochunks tempfile_HISTORY.sgml >$@
 	rm tempfile_HISTORY.sgml
 
