@@ -1145,11 +1145,15 @@ exec_stmt_block(PLpgSQL_execstate *estate, PLpgSQL_stmt_block *block)
 			return rc;
 
 		case PLPGSQL_RC_EXIT:
+			/*
+			 * This is intentionally different from the handling of RC_EXIT
+			 * for loops: to match a block, we require a match by label.
+			 */
 			if (estate->exitlabel == NULL)
-				return PLPGSQL_RC_OK;
+				return PLPGSQL_RC_EXIT;
 			if (block->label == NULL)
 				return PLPGSQL_RC_EXIT;
-			if (strcmp(block->label, estate->exitlabel))
+			if (strcmp(block->label, estate->exitlabel) != 0)
 				return PLPGSQL_RC_EXIT;
 			estate->exitlabel = NULL;
 			return PLPGSQL_RC_OK;
@@ -1604,7 +1608,7 @@ exec_stmt_while(PLpgSQL_execstate *estate, PLpgSQL_stmt_while *stmt)
 					return PLPGSQL_RC_OK;
 				if (stmt->label == NULL)
 					return PLPGSQL_RC_EXIT;
-				if (strcmp(stmt->label, estate->exitlabel))
+				if (strcmp(stmt->label, estate->exitlabel) != 0)
 					return PLPGSQL_RC_EXIT;
 				estate->exitlabel = NULL;
 				return PLPGSQL_RC_OK;
