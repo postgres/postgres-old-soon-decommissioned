@@ -94,7 +94,10 @@
 <!entity errcodes   SYSTEM "errcodes.sgml">
 <!entity features   SYSTEM "features.sgml">
 <!entity keywords   SYSTEM "keywords.sgml">
+
 <!entity release    SYSTEM "release.sgml">
+<!entity release-7.4    SYSTEM "release-7.4.sgml">
+<!entity release-old    SYSTEM "release-old.sgml">
 
 <!entity features-supported   SYSTEM "features-supported.sgml">
 <!entity features-unsupported SYSTEM "features-unsupported.sgml">

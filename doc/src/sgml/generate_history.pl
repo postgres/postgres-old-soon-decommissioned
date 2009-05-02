@@ -19,7 +19,7 @@ my($infile) = shift;
 defined($infile) || die "$0: missing required argument: inputfile\n";
 
 # Emit DOCTYPE header so that the output is a self-contained SGML document
-print "<!DOCTYPE appendix PUBLIC \"-//OASIS//DTD DocBook V4.2//EN\">\n";
+print "<!DOCTYPE appendix PUBLIC \"-//OASIS//DTD DocBook V3.1//EN\">\n";
 
 process_file($infile);
 
