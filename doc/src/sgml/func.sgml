@@ -8596,8 +8596,8 @@ cursor_to_xml(cursor refcursor, count int, nulls boolean,
    </para>
 
    <para>
-    The following functions return XML Schema documents similar to the
-    mappings produced by the corresponding functions above:
+    The following functions return XML Schema documents describing the
+    mappings performed by the corresponding functions above:
 <synopsis>
 table_to_xmlschema(tbl regclass, nulls boolean, tableforest boolean, targetns text)
 query_to_xmlschema(query text, nulls boolean, tableforest boolean, targetns text)
