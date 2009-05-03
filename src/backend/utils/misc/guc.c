@@ -7618,19 +7618,28 @@ assign_pgstat_temp_directory(const char *newval, bool doit, GucSource source)
 {
 	if (doit)
 	{
+		char	   *canon_val = guc_strdup(ERROR, newval);
+		char	   *tname;
+		char	   *fname;
+
+		canonicalize_path(canon_val);
+
+		tname = guc_malloc(ERROR, strlen(canon_val) + 12);	/* /pgstat.tmp */
+		sprintf(tname, "%s/pgstat.tmp", canon_val);
+		fname = guc_malloc(ERROR, strlen(canon_val) + 13);	/* /pgstat.stat */
+		sprintf(fname, "%s/pgstat.stat", canon_val);
+
 		if (pgstat_stat_tmpname)
 			free(pgstat_stat_tmpname);
+		pgstat_stat_tmpname = tname;
 		if (pgstat_stat_filename)
 			free(pgstat_stat_filename);
+		pgstat_stat_filename = fname;
 
-		pgstat_stat_tmpname = guc_malloc(FATAL, strlen(newval) + 12);  /* /pgstat.tmp */
-		pgstat_stat_filename = guc_malloc(FATAL, strlen(newval) + 13); /* /pgstat.stat */
-
-		sprintf(pgstat_stat_tmpname, "%s/pgstat.tmp", newval);
-		sprintf(pgstat_stat_filename, "%s/pgstat.stat", newval);
+		return canon_val;
 	}
-
-	return newval;
+	else
+		return newval;
 }
 
 #include "guc-file.c"
