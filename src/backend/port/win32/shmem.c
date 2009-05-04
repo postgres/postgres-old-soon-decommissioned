@@ -90,6 +90,7 @@ shmget(int memKey, int size, int flag)
 
 	if (flag & IPC_CREAT)
 	{
+		SetLastError(0);
 		hmap = CreateFileMapping((HANDLE) 0xFFFFFFFF,	/* Use the swap file	*/
 								 NULL,
 								 PAGE_READWRITE,		/* Memory is Read/Write */
@@ -99,6 +100,7 @@ shmget(int memKey, int size, int flag)
 	}
 	else
 	{
+		SetLastError(0);
 		hmap = OpenFileMapping(FILE_MAP_ALL_ACCESS,
 							   FALSE,
 							   szShareMem);
