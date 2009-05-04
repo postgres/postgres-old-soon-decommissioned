@@ -1049,7 +1049,7 @@ describeOneTableDetails(const char *schemaname,
 						  "%s, reltablespace\n"
 						  "FROM pg_catalog.pg_class WHERE oid = '%s'",
 						  (verbose ?
-						   "pg_catalog.array_to_string(reloptions, E', ')" : ",''"),
+						   "pg_catalog.array_to_string(reloptions, E', ')" : "''"),
 						  oid);
 	}
 	else if (pset.sversion >= 80000)
