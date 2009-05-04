@@ -143,7 +143,7 @@ typedef struct bkend
 	long		cancel_key;		/* cancel key for cancels for this backend */
 	bool		is_autovacuum;	/* is it an autovacuum process? */
 	bool		dead_end;		/* is it going to send an error and quit? */
-	Dlelem		elem;			/* self pointer into BackendList */
+	Dlelem		elem;			/* list link in BackendList */
 } Backend;
 
 static Dllist *BackendList;
@@ -4288,7 +4288,8 @@ StartAutovacuumWorker(void)
 				bn->cancel_key = MyCancelKey;
 				bn->is_autovacuum = true;
 				bn->dead_end = false;
-				DLAddHead(BackendList, DLNewElem(bn));
+				DLInitElem(&bn->elem, bn);
+				DLAddHead(BackendList, &bn->elem);
 #ifdef EXEC_BACKEND
 				ShmemBackendArrayAdd(bn);
 #endif
