@@ -469,12 +469,13 @@ other			.
 					startlit();
 				}
 {xusstart}		{
+					SET_YYLLOC();
 					if (!standard_conforming_strings)
 						ereport(ERROR,
 								(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 								 errmsg("unsafe use of string constant with Unicode escapes"),
-								 errdetail("String constants with Unicode escapes cannot be used when standard_conforming_strings is off.")));
-					SET_YYLLOC();
+								 errdetail("String constants with Unicode escapes cannot be used when standard_conforming_strings is off."),
+								 lexer_errposition()));
 					BEGIN(xus);
 					startlit();
 				}
