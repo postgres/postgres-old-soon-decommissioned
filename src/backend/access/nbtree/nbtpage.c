@@ -569,8 +569,12 @@ _bt_getbuf(Relation rel, BlockNumber blkno, int access)
  * This is equivalent to _bt_relbuf followed by _bt_getbuf, with the
  * exception that blkno may not be P_NEW.  Also, if obuf is InvalidBuffer
  * then it reduces to just _bt_getbuf; allowing this case simplifies some
- * callers. The motivation for using this is to avoid two entries to the
- * bufmgr when one will do.
+ * callers.
+ *
+ * The original motivation for using this was to avoid two entries to the
+ * bufmgr when one would do.  However, now it's mainly just a notational
+ * convenience.  The only case where it saves work over _bt_relbuf/_bt_getbuf
+ * is when the target page is the same one already in the buffer.
  */
 Buffer
 _bt_relandgetbuf(Relation rel, Buffer obuf, BlockNumber blkno, int access)
