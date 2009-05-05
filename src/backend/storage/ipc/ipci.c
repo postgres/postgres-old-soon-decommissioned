@@ -111,6 +111,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int port)
 		size = add_size(size, ProcArrayShmemSize());
 		size = add_size(size, BackendStatusShmemSize());
 		size = add_size(size, SInvalShmemSize());
+		size = add_size(size, PMSignalShmemSize());
 		size = add_size(size, BgWriterShmemSize());
 		size = add_size(size, AutoVacuumShmemSize());
 		size = add_size(size, BTreeShmemSize());
@@ -206,7 +207,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int port)
 	/*
 	 * Set up interprocess signaling mechanisms
 	 */
-	PMSignalInit();
+	PMSignalShmemInit();
 	BgWriterShmemInit();
 	AutoVacuumShmemInit();
 

@@ -33,12 +33,20 @@ typedef enum
 	NUM_PMSIGNALS				/* Must be last value of enum! */
 } PMSignalReason;
 
+/* PMSignalData is an opaque struct, details known only within pmsignal.c */
+typedef struct PMSignalData PMSignalData;
+
 /*
  * prototypes for functions in pmsignal.c
  */
-extern void PMSignalInit(void);
+extern Size PMSignalShmemSize(void);
+extern void PMSignalShmemInit(void);
 extern void SendPostmasterSignal(PMSignalReason reason);
 extern bool CheckPostmasterSignal(PMSignalReason reason);
+extern int	AssignPostmasterChildSlot(void);
+extern bool ReleasePostmasterChildSlot(int slot);
+extern void MarkPostmasterChildActive(void);
+extern void MarkPostmasterChildInactive(void);
 extern bool PostmasterIsAlive(bool amDirectChild);
 
 #endif   /* PMSIGNAL_H */
