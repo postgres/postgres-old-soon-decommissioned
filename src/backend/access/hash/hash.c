@@ -22,7 +22,6 @@
 #include "access/relscan.h"
 #include "catalog/index.h"
 #include "commands/vacuum.h"
-#include "miscadmin.h"
 #include "optimizer/cost.h"
 #include "optimizer/plancat.h"
 #include "storage/bufmgr.h"
@@ -296,8 +295,6 @@ hashgetbitmap(PG_FUNCTION_ARGS)
 	while (res)
 	{
 		bool	add_tuple;
-
-		CHECK_FOR_INTERRUPTS();
 
 		/*
 		 * Skip killed tuples if asked to.

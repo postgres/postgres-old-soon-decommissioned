@@ -16,6 +16,7 @@
 
 #include "access/hash.h"
 #include "access/relscan.h"
+#include "miscadmin.h"
 #include "pgstat.h"
 #include "storage/bufmgr.h"
 #include "utils/rel.h"
@@ -74,6 +75,8 @@ _hash_readnext(Relation rel,
 	blkno = (*opaquep)->hasho_nextblkno;
 	_hash_relbuf(rel, *bufp);
 	*bufp = InvalidBuffer;
+	/* check for interrupts while we're not holding any buffer lock */
+	CHECK_FOR_INTERRUPTS();
 	if (BlockNumberIsValid(blkno))
 	{
 		*bufp = _hash_getbuf(rel, blkno, HASH_READ, LH_OVERFLOW_PAGE);
@@ -94,6 +97,8 @@ _hash_readprev(Relation rel,
 	blkno = (*opaquep)->hasho_prevblkno;
 	_hash_relbuf(rel, *bufp);
 	*bufp = InvalidBuffer;
+	/* check for interrupts while we're not holding any buffer lock */
+	CHECK_FOR_INTERRUPTS();
 	if (BlockNumberIsValid(blkno))
 	{
 		*bufp = _hash_getbuf(rel, blkno, HASH_READ,
