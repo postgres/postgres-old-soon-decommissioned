@@ -15,7 +15,7 @@ if [ ! -d results ];then
 fi
 
 dropdb utf8
-createdb -E UTF8 utf8
+createdb -T template0 -l C -E UTF8 utf8
 
 PSQL="psql -n -e -q"
 tests="euc_jp sjis euc_kr euc_cn euc_tw big5 utf8 mule_internal"
@@ -36,7 +36,7 @@ do
 		unset PGCLIENTENCODING
 	else
 		dropdb $i >/dev/null 2>&1
-		createdb -E `echo $i | tr 'abcdefghijklmnopqrstuvwxyz' 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'` $i >/dev/null
+		createdb -T template0 -l C -E `echo $i | tr 'abcdefghijklmnopqrstuvwxyz' 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'` $i >/dev/null
 		$PSQL $i < sql/${i}.sql > results/${i}.out 2>&1
 	fi
 

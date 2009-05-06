@@ -7,4 +7,4 @@ README for multibyte regression test
 This directory contains a set of tests for multibyte supporting
 extentions for PostgreSQL. To run the test, simply type:
 
-% mbregress.sh
+% sh mbregress.sh
