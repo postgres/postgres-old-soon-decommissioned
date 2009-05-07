@@ -2953,7 +2953,7 @@ OpenIntoRel(QueryDesc *queryDesc)
 
 	(void) heap_reloptions(RELKIND_TOASTVALUE, reloptions, true);
 
-	AlterTableCreateToastTable(intoRelationId, reloptions);
+	AlterTableCreateToastTable(intoRelationId, reloptions, false);
 
 	/*
 	 * And open the constructed table for writing.

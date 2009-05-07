@@ -442,10 +442,13 @@ ProcessUtility(Node *parsetree,
 															"toast",
 															validnsps,
 															true, false);
-						(void) heap_reloptions(RELKIND_TOASTVALUE, toast_options,
+						(void) heap_reloptions(RELKIND_TOASTVALUE,
+											   toast_options,
 											   true);
 
-						AlterTableCreateToastTable(relOid, toast_options);
+						AlterTableCreateToastTable(relOid,
+												   toast_options,
+												   false);
 					}
 					else
 					{
