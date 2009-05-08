@@ -130,7 +130,7 @@ typedef VariableCacheData *VariableCache;
  */
 
 /* in transam/varsup.c */
-extern VariableCache ShmemVariableCache;
+extern PGDLLIMPORT VariableCache ShmemVariableCache;
 
 
 /*
