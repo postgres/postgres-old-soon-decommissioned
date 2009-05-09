@@ -39,6 +39,6 @@ extern void extract_actual_join_clauses(List *restrictinfo_list,
 							List **otherquals);
 extern List *select_nonredundant_join_clauses(PlannerInfo *root,
 								 List *restrictinfo_list,
-								 List *reference_list);
+								 Path *inner_path);
 
 #endif   /* RESTRICTINFO_H */
