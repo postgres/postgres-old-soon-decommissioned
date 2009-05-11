@@ -233,19 +233,6 @@
 
      <listitem>
       <para>
-       Remove support for the (insecure) <literal>crypt</> authentication method
-       (Magnus)
-      </para>
-
-      <para>
-       This effectively obsoletes pre-<productname>PostgreSQL</> 7.2 client
-       libraries, as there is no longer any non-plaintext password method that
-       they can use.
-      </para>
-     </listitem>
-
-     <listitem>
-      <para>
        Remove <varname>krb_realm</> and <varname>krb_server_hostname</>;
        these are now set in <filename>pg_hba.conf</> instead (Magnus)
       </para>
@@ -726,6 +713,19 @@
 
       <listitem>
        <para>
+        Remove support for the (insecure) <literal>crypt</> authentication method
+        (Magnus)
+       </para>
+
+       <para>
+        This effectively obsoletes pre-<productname>PostgreSQL</> 7.2 client
+        libraries, as there is no longer any non-plaintext password method that
+        they can use.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
         Support regular expressions in <filename>pg_ident.conf</>
         (Magnus)
        </para>
@@ -792,6 +792,13 @@
        <para>
         Change all authentication options to use <literal>name=value</>
         syntax (Magnus)
+       </para>
+
+       <para>
+        This makes incompatible changes to the <literal>ldap</>,
+        <literal>pam</> and <literal>ident</> authentication methods. All
+        <filename>pg_hba.conf</> entries with these methods need to be
+        rewritten using the new format.
        </para>
       </listitem>
 
