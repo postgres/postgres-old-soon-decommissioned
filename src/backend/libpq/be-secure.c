@@ -729,9 +729,8 @@ initialize_SSL(void)
 		/*
 		 * Load and verify certificate and private key
 		 */
-		if (SSL_CTX_use_certificate_file(SSL_context,
-										  SERVER_CERT_FILE,
-										  SSL_FILETYPE_PEM) != 1)
+		if (SSL_CTX_use_certificate_chain_file(SSL_context,
+										  SERVER_CERT_FILE) != 1)
 			ereport(FATAL,
 					(errcode(ERRCODE_CONFIG_FILE_ERROR),
 				  errmsg("could not load server certificate file \"%s\": %s",
