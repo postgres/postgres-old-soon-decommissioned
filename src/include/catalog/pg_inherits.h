@@ -20,7 +20,6 @@
 #define PG_INHERITS_H
 
 #include "catalog/genbki.h"
-#include "nodes/pg_list.h"
 
 /* ----------------
  *		pg_inherits definition.  cpp turns this into
@@ -56,13 +55,5 @@ typedef FormData_pg_inherits *Form_pg_inherits;
  *		pg_inherits has no initial contents
  * ----------------
  */
-
-/*
- * prototypes for functions in pg_inherits.c
- */
-extern List *find_inheritance_children(Oid parentrelId);
-extern List *find_all_inheritors(Oid parentrelId);
-extern bool has_subclass(Oid relationId);
-extern bool typeInheritsFrom(Oid subclassTypeId, Oid superclassTypeId);
 
 #endif   /* PG_INHERITS_H */
