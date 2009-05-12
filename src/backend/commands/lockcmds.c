@@ -16,9 +16,9 @@
 
 #include "access/heapam.h"
 #include "catalog/namespace.h"
+#include "catalog/pg_inherits.h"
 #include "commands/lockcmds.h"
 #include "miscadmin.h"
-#include "optimizer/prep.h"
 #include "parser/parse_clause.h"
 #include "utils/acl.h"
 #include "utils/lsyscache.h"

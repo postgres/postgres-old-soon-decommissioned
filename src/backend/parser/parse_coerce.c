@@ -15,6 +15,7 @@
 #include "postgres.h"
 
 #include "catalog/pg_cast.h"
+#include "catalog/pg_inherits.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"

@@ -63,8 +63,6 @@ extern FuncCandidateList func_select_candidate(int nargs,
 					  Oid *input_typeids,
 					  FuncCandidateList candidates);
 
-extern bool typeInheritsFrom(Oid subclassTypeId, Oid superclassTypeId);
-
 extern void make_fn_arguments(ParseState *pstate,
 				  List *fargs,
 				  Oid *actual_arg_types,

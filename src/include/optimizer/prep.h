@@ -46,8 +46,6 @@ extern List *preprocess_targetlist(PlannerInfo *root, List *tlist);
 extern Plan *plan_set_operations(PlannerInfo *root, double tuple_fraction,
 					List **sortClauses);
 
-extern List *find_all_inheritors(Oid parentrel);
-
 extern void expand_inherited_tables(PlannerInfo *root);
 
 extern Node *adjust_appendrel_attrs(Node *node, AppendRelInfo *appinfo);
