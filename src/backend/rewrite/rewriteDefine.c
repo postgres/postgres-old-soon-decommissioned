@@ -15,6 +15,7 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
+#include "catalog/catalog.h"
 #include "catalog/dependency.h"
 #include "catalog/indexing.h"
 #include "catalog/namespace.h"
@@ -241,6 +242,22 @@ DefineQueryRewrite(char *rulename,
 	 * let's just grab AccessExclusiveLock all the time.
 	 */
 	event_relation = heap_open(event_relid, AccessExclusiveLock);
+
+	/*
+	 * Verify relation is of a type that rules can sensibly be applied to.
+	 */
+	if (event_relation->rd_rel->relkind != RELKIND_RELATION &&
+		event_relation->rd_rel->relkind != RELKIND_VIEW)
+		ereport(ERROR,
+				(errcode(ERRCODE_WRONG_OBJECT_TYPE),
+				 errmsg("\"%s\" is not a table or view",
+						RelationGetRelationName(event_relation))));
+
+	if (!allowSystemTableMods && IsSystemRelation(event_relation))
+		ereport(ERROR,
+				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
+				 errmsg("permission denied: \"%s\" is a system catalog",
+						RelationGetRelationName(event_relation))));
 
 	/*
 	 * Check user has permission to apply rules to this relation.
