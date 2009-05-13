@@ -3445,7 +3445,7 @@ SELECT regexp_matches('foobarbequebaz', 'barbeque');
     Some examples:
 <programlisting>
 
-SELECT foo FROM regexp_split_to_table('the quick brown fox jumped over the lazy dog', E'\\\s+') AS foo;
+SELECT foo FROM regexp_split_to_table('the quick brown fox jumped over the lazy dog', E'\\s+') AS foo;
   foo   
 --------
  the    
