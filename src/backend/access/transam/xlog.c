@@ -2941,7 +2941,7 @@ ExecuteRecoveryEndCommand(void)
 							 xlogRecoveryEndCmd)));
 
 	/*
-	 * Copy xlog from archival storage to XLOGDIR
+	 * execute the constructed command
 	 */
 	rc = system(xlogRecoveryEndCmd);
 	if (rc != 0)
@@ -5740,6 +5740,9 @@ StartupXLOG(void)
 		 */
 		CreateCheckPoint(CHECKPOINT_IS_SHUTDOWN | CHECKPOINT_IMMEDIATE);
 
+		/*
+		 * And finally, execute the recovery_end_command, if any.
+		 */
 		if (recoveryEndCommand)
 			ExecuteRecoveryEndCommand();
 	}
