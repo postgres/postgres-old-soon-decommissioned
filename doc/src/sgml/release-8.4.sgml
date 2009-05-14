@@ -3317,6 +3317,19 @@
       </para>
      </listitem>
 
+     <listitem>
+      <para>
+       Make <filename>contrib/pg_standby</> recover all available WAL before
+       failover (Fujii Masao, Simon, Heikki)
+      </para>
+
+      <para>
+       To make this safe, you now need to set the new
+       <literal>recovery_end_command</> option in <filename>recovery.conf</> to
+       clean up the trigger fail after failover.
+      </para>
+     </listitem>
+
     </itemizedlist>
 
    </sect3>
