@@ -27,10 +27,10 @@
    named <structname>pg_stat_statements</>.  This view contains one row for
    each distinct query text, database ID, and user ID (up to the maximum
    number of distinct statements that the module can track).  The columns
-   of the view are:
+   of the view are shown in <xref linkend="pgstatstatements-columns">.
   </para>
 
-  <table>
+  <table id="pgstatstatements-columns">
    <title><structname>pg_stat_statements</> columns</title>
 
    <tgroup cols="4">

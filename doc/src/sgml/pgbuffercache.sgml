@@ -28,10 +28,10 @@
   <title>The <structname>pg_buffercache</structname> view</title>
 
   <para>
-   The definitions of the columns exposed by the view are:
+   The definitions of the columns exposed by the view are shown in <xref linkend="pgbuffercache-columns">.
   </para>
 
-  <table>
+  <table id="pgbuffercache-columns">
    <title><structname>pg_buffercache</> Columns</title>
 
    <tgroup cols="4">

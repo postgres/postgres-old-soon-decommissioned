@@ -34,11 +34,12 @@
   <title>Description of functions</title>
 
   <para>
+   <xref linkend="xml2-functions-table"> shows the functions provided by this module.
    These functions provide straightforward XML parsing and XPath queries.
    All arguments are of type <type>text</>, so for brevity that is not shown.
   </para>
 
-  <table>
+  <table id="xml2-functions-table">
    <title>Functions</title>
    <tgroup cols="2">
     <tbody>
