@@ -3779,7 +3779,7 @@ pwdfMatchesString(char *buf, char *token)
 		return NULL;
 	tbuf = buf;
 	ttok = token;
-	if (*tbuf == '*')
+	if (tbuf[0] == '*' && tbuf[1] == ':')
 		return tbuf + 2;
 	while (*tbuf != 0)
 	{
