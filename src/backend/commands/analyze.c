@@ -341,19 +341,10 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt,
 	}
 
 	/*
-	 * Quit if no analyzable columns
+	 * Quit if no analyzable columns and no pg_class update needed.
 	 */
-	if (attr_cnt <= 0 && !analyzableindex)
-	{
-		/*
-		 * We report that the table is empty; this is just so that the
-		 * autovacuum code doesn't go nuts trying to get stats about a
-		 * zero-column table.
-		 */
-		if (!vacstmt->vacuum)
-			pgstat_report_analyze(onerel, 0, 0);
+	if (attr_cnt <= 0 && !analyzableindex && vacstmt->vacuum)
 		goto cleanup;
-	}
 
 	/*
 	 * Determine how many rows we need to sample, using the worst case from
