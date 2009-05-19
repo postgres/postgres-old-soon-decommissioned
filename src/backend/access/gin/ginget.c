@@ -820,10 +820,11 @@ scanGetCandidate(IndexScanDesc scan, pendingPosition *pos)
 }
 
 /*
- * Scan page from current tuple (off) up to the first event:
- * - tuple's attribute number is not equal to entry's attrnum
- * - reach of last tuple
+ * Scan page from current tuple (off) up till the first of:
  * - match is found (then returns true)
+ * - no later match is possible
+ * - tuple's attribute number is not equal to entry's attrnum
+ * - reach end of page
  */
 static bool
 matchPartialInPendingList(GinState *ginstate, Page page,
@@ -849,13 +850,13 @@ matchPartialInPendingList(GinState *ginstate, Page page,
 		}
 
 		/*----------
-		 * Check of partial match.
+		 * Check partial match.
 		 * case cmp == 0 => match
-		 * case cmp > 0 => not match and finish scan
+		 * case cmp > 0 => not match and end scan (no later match possible)
 		 * case cmp < 0 => not match and continue scan
 		 *----------
 		 */
-		cmp = DatumGetInt32(FunctionCall4(&ginstate->comparePartialFn[attrnum],
+		cmp = DatumGetInt32(FunctionCall4(&ginstate->comparePartialFn[attrnum-1],
 										  value,
 										  datum[off-1],
 										  UInt16GetDatum(strategy),
