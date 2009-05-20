@@ -54,7 +54,7 @@ bool		ECPGconnect(int, int, const char *, const char *, const char *, const char
 bool		ECPGdo(const int, const int, const int, const char *, const bool, const int, const char *,...);
 bool		ECPGtrans(int, const char *, const char *);
 bool		ECPGdisconnect(int, const char *);
-bool		ECPGprepare(int, const char *, const int, const char *, const char *);
+bool		ECPGprepare(int, const char *, const bool, const char *, const char *);
 bool		ECPGdeallocate(int, int, const char *, const char *);
 bool		ECPGdeallocate_all(int, int, const char *);
 char	        *ECPGprepared_statement(const char *, const char *, int);
