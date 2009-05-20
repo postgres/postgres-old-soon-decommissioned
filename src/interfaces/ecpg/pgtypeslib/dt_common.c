@@ -2583,7 +2583,7 @@ PGTYPEStimestamp_defmt_scan(char **str, char *fmt, timestamp * d,
 			*pfmt,
 			*tmp;
 	int		err = 1;
-	int	j;
+	unsigned int	j;
 	struct tm	tm;
 
 	pfmt = fmt;

@@ -759,7 +759,7 @@ ecpg_store_input(const int lineno, const bool force_indicator, const struct vari
 			case ECPGt_unsigned_char:
 				{
 					/* set slen to string length if type is char * */
-					int			slen = (var->varcharsize == 0) ? strlen((char *) var->value) : var->varcharsize;
+					int			slen = (var->varcharsize == 0) ? strlen((char *) var->value) : (unsigned int)var->varcharsize;
 
 					if (!(newcopy = ecpg_alloc(slen + 1, lineno)))
 						return false;
