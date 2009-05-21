@@ -475,7 +475,7 @@ tsvectorrecv(PG_FUNCTION_ARGS)
 		/* sanity checks */
 
 		lex_len = strlen(lexeme);
-		if (lex_len < 0 || lex_len > MAXSTRLEN)
+		if (lex_len > MAXSTRLEN)
 			elog(ERROR, "invalid tsvector: lexeme too long");
 
 		if (datalen > MAXSTRPOS)

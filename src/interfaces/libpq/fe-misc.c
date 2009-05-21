@@ -178,7 +178,7 @@ pqPuts(const char *s, PGconn *conn)
 int
 pqGetnchar(char *s, size_t len, PGconn *conn)
 {
-	if (len < 0 || len > (size_t) (conn->inEnd - conn->inCursor))
+	if (len > (size_t) (conn->inEnd - conn->inCursor))
 		return EOF;
 
 	memcpy(s, conn->inBuffer + conn->inCursor, len);
