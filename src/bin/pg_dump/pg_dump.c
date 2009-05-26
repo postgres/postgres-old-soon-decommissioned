@@ -6186,13 +6186,14 @@ dumpBaseType(Archive *fout, TypeInfo *tinfo)
 						  "typanalyze::pg_catalog.oid AS typanalyzeoid, "
 						  "typcategory, typispreferred, "
 						  "typdelim, typbyval, typalign, typstorage, "
-						  "pg_catalog.pg_get_expr(typdefaultbin, 'pg_catalog.pg_type'::pg_catalog.regclass) AS typdefaultbin, typdefault "
+						  "pg_catalog.pg_get_expr(typdefaultbin, 0) AS typdefaultbin, typdefault "
 						  "FROM pg_catalog.pg_type "
 						  "WHERE oid = '%u'::pg_catalog.oid",
 						  tinfo->dobj.catId.oid);
 	}
 	else if (fout->remoteVersion >= 80300)
 	{
+		/* Before 8.4, pg_get_expr does not allow 0 for its second arg */
 		appendPQExpBuffer(query, "SELECT typlen, "
 						  "typinput, typoutput, typreceive, typsend, "
 						  "typmodin, typmodout, typanalyze, "

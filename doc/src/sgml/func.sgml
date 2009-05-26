@@ -12367,7 +12367,9 @@ SELECT pg_type_is_visible('myschema.widget'::regtype);
    is a decompiled reconstruction, not the original text of the command.)
    <function>pg_get_expr</function> decompiles the internal form of an
    individual expression, such as the default value for a column.  It can be
-   useful when examining the contents of system catalogs.
+   useful when examining the contents of system catalogs.  If the expression
+   might contain Vars, specify the OID of the relation they refer to as the
+   second parameter; if no Vars are expected, zero is sufficient.
    <function>pg_get_viewdef</function> reconstructs the <command>SELECT</>
    query that defines a view. Most of these functions come in two variants,
    one of which can optionally <quote>pretty-print</> the result.  The
