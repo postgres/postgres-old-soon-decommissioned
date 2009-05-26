@@ -684,8 +684,7 @@ interval_out(PG_FUNCTION_ARGS)
 	if (interval2tm(*span, tm, &fsec) != 0)
 		elog(ERROR, "could not convert interval to tm");
 
-	if (EncodeInterval(tm, fsec, IntervalStyle, buf) != 0)
-		elog(ERROR, "could not format interval");
+	EncodeInterval(tm, fsec, IntervalStyle, buf);
 
 	result = pstrdup(buf);
 	PG_RETURN_CSTRING(result);
