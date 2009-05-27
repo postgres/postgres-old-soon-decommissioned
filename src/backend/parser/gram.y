@@ -3639,9 +3639,14 @@ opt_opfamily:	FAMILY any_name				{ $$ = $2; }
 
 opt_recheck:	RECHECK
 				{
-					ereport(ERROR,
+					/*
+					 * RECHECK no longer does anything in opclass definitions,
+					 * but we still accept it to ease porting of old database
+					 * dumps.
+					 */
+					ereport(NOTICE,
 							(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-							 errmsg("RECHECK is no longer supported"),
+							 errmsg("RECHECK is no longer required"),
 							 errhint("Update your data type."),
 							 scanner_errposition(@1)));
 					$$ = TRUE;
