@@ -2036,7 +2036,7 @@ describeRoles(const char *pattern, bool verbose)
 			if (conns == 0)
 				appendPQExpBuffer(&buf, _("No connections"));
 			else
-				appendPQExpBuffer(&buf, ngettext("1 connection", "%d connections", conns), conns);
+				appendPQExpBuffer(&buf, ngettext("%d connection", "%d connections", conns), conns);
 		}
 
 		attr[i] = pg_strdup(buf.data);
