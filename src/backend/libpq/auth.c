@@ -1073,7 +1073,7 @@ pg_GSS_recvauth(Port *port)
 
 	gss_release_buffer(&lmin_s, &gbuf);
 
-	return STATUS_OK;
+	return ret;
 }
 #endif   /* ENABLE_GSS */
 
