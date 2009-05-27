@@ -250,6 +250,14 @@
    </para>
 
    <para>
+    If your trigger function is written in any of the standard procedural
+    languages, then the above statements apply only if the function is
+    declared <literal>VOLATILE</>.  Functions that are declared
+    <literal>STABLE</> or <literal>IMMUTABLE</> will not see changes made by
+    the calling command in any case.
+   </para>
+
+   <para>
     Further information about data visibility rules can be found in
     <xref linkend="spi-visibility">.  The example in <xref
     linkend="trigger-example"> contains a demonstration of these rules.
