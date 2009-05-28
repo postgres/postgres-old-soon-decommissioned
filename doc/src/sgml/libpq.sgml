@@ -64,6 +64,16 @@
    whether a connection was successfully made before queries are sent
    via the connection object.
 
+   <warning>
+    <para>
+     On Unix, forking a process with open libpq connections can lead to
+     unpredictable results because the parent and child processes share
+     the same sockets and operating system resources.  For this reason,
+     such usage is not recommended, though doing an <function>exec</> from
+     the child process to load a new executable is safe.
+    </para>
+   </warning>
+
    <note>
     <para>
      On Windows, there is a way to improve performance if a single
