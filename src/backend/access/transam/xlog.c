@@ -6085,7 +6085,18 @@ ShutdownXLOG(int code, Datum arg)
 	if (RecoveryInProgress())
 		CreateRestartPoint(CHECKPOINT_IS_SHUTDOWN | CHECKPOINT_IMMEDIATE);
 	else
+	{
+		/*
+		 * If archiving is enabled, rotate the last XLOG file so that all the
+		 * remaining records are archived (postmaster wakes up the archiver
+		 * process one more time at the end of shutdown). The checkpoint
+		 * record will go to the next XLOG file and won't be archived (yet).
+		 */
+		if (XLogArchivingActive() && XLogArchiveCommandSet())
+			RequestXLogSwitch();
+
 		CreateCheckPoint(CHECKPOINT_IS_SHUTDOWN | CHECKPOINT_IMMEDIATE);
+	}
 	ShutdownCLOG();
 	ShutdownSUBTRANS();
 	ShutdownMultiXact();
