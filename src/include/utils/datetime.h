@@ -114,6 +114,11 @@
 /* generic fields to help with parsing */
 #define ISODATE 22
 #define ISOTIME 23
+/* these are only for parsing intervals */
+#define WEEK		24
+#define DECADE		25
+#define CENTURY		26
+#define MILLENNIUM	27
 /* reserved for unrecognized string values */
 #define UNKNOWN_FIELD	31
 
