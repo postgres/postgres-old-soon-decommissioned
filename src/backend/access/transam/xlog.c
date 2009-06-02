@@ -2696,6 +2696,7 @@ RemoveOldXlogFiles(uint32 log, uint32 seg, XLogRecPtr endptr)
 	struct dirent *xlde;
 	char		lastoff[MAXFNAMELEN];
 	char		path[MAXPGPATH];
+	struct stat statbuf;
 
 	/*
 	 * Initialize info about where to try to recycle to.  We allow recycling
@@ -2736,11 +2737,13 @@ RemoveOldXlogFiles(uint32 log, uint32 seg, XLogRecPtr endptr)
 
 				/*
 				 * Before deleting the file, see if it can be recycled as a
-				 * future log segment.
+				 * future log segment. Only recycle normal files, pg_standby
+				 * for example can create symbolic links pointing to a
+				 * separate archive directory.
 				 */
-				if (InstallXLogFileSegment(&endlogId, &endlogSeg, path,
-										   true, &max_advance,
-										   true))
+				if (lstat(path, &statbuf) == 0 && S_ISREG(statbuf.st_mode) &&
+					InstallXLogFileSegment(&endlogId, &endlogSeg, path,
+										   true, &max_advance, true))
 				{
 					ereport(DEBUG2,
 							(errmsg("recycled transaction log file \"%s\"",
