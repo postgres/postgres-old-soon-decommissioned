@@ -175,7 +175,8 @@ typedef struct
 /*
  * These macros centralize code used to process line_buf and raw_buf buffers.
  * They are macros because they often do continue/break control and to avoid
- * function call overhead in tight COPY loops.
+ * function call overhead in tight COPY loops.  "((void) 0)" is used to silence
+ * compiler warnings.
  *
  * We must use "if (1)" because "do {} while(0)" overrides the continue/break
  * processing.	See http://www.cit.gu.edu.au/~anthony/info/C/C.macros.
