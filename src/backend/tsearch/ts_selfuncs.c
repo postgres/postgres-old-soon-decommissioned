@@ -146,18 +146,22 @@ static Selectivity
 tsquerysel(VariableStatData *vardata, Datum constval)
 {
 	Selectivity			selec;
+	TSQuery				query;
+
+	/* The caller made sure the const is a TSQuery, so get it now */
+	query = DatumGetTSQuery(constval);
+
+	/* Empty query matches nothing */
+	if (query->size == 0)
+		return (Selectivity) 0.0;
 
 	if (HeapTupleIsValid(vardata->statsTuple))
 	{
-		TSQuery				query;
 		Form_pg_statistic	stats;
 		Datum				*values;
 		int					nvalues;
 		float4				*numbers;
 		int					nnumbers;
-
-		/* The caller made sure the const is a TSQuery, so get it now */
-		query = DatumGetTSQuery(constval);
 
 		stats = (Form_pg_statistic) GETSTRUCT(vardata->statsTuple);
 
