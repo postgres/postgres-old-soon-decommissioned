@@ -654,8 +654,6 @@ get_id(void)
 
 	struct passwd *pw;
 
-	pw = getpwuid(geteuid());
-
 	if (geteuid() == 0)			/* 0 is root's uid */
 	{
 		fprintf(stderr,
@@ -666,6 +664,8 @@ get_id(void)
 				progname);
 		exit(1);
 	}
+
+	pw = getpwuid(geteuid());
 	if (!pw)
 	{
 		fprintf(stderr,
