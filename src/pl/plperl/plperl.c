@@ -214,12 +214,18 @@ plperl_init_interp(void)
 		"sub ::mkunsafefunc {return eval(qq[ sub { $_[0] } ]); }"
 	};
 
+	int nargs = 3;
+
+#ifdef PERL_SYS_INIT3
+	PERL_SYS_INIT3(&nargs, (char ***) &embedding, NULL);
+#endif
+
 	plperl_interp = perl_alloc();
 	if (!plperl_interp)
 		elog(ERROR, "could not allocate perl interpreter");
 
 	perl_construct(plperl_interp);
-	perl_parse(plperl_interp, plperl_init_shared_libs, 3, embedding, NULL);
+	perl_parse(plperl_interp, plperl_init_shared_libs, nargs, embedding, NULL);
 	perl_run(plperl_interp);
 
 	/************************************************************
