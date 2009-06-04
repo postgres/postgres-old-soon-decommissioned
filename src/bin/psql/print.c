@@ -2348,7 +2348,9 @@ printQuery(const PGresult *result, const printQueryOpt *opt, FILE *fout, FILE *f
 		char		default_footer[100];
 
 		total_records = opt->topt.prior_records + cont.nrows;
-		snprintf(default_footer, 100, ngettext("(%lu row)", "(%lu rows)", total_records), total_records);
+		snprintf(default_footer, sizeof(default_footer),
+				 ngettext("(%lu row)", "(%lu rows)", total_records),
+				 total_records);
 
 		printTableAddFooter(&cont, default_footer);
 	}
