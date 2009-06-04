@@ -1786,13 +1786,6 @@ _discoverArchiveFormat(ArchiveHandle *AH)
 	else
 		AH->lookaheadLen = 0;	/* Don't bother since we've reset the file */
 
-#if 0
-	write_msg(modulename, ngettext("read %lu byte into lookahead buffer\n",
-								   "read %lu bytes into lookahead buffer\n",
-								   AH->lookaheadLen),
-			  (unsigned long) AH->lookaheadLen);
-#endif
-
 	/* Close the file */
 	if (wantClose)
 		if (fclose(fh) != 0)

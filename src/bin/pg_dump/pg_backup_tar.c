@@ -549,13 +549,6 @@ _tarReadRaw(ArchiveHandle *AH, void *buf, size_t len, TAR_MEMBER *th, FILE *fh)
 			die_horribly(AH, modulename, "internal error -- neither th nor fh specified in tarReadRaw()\n");
 	}
 
-#if 0
-	write_msg(modulename, ngettext("requested %d byte, got %d from lookahead and %d from file\n",
-								   "requested %d bytes, got %d from lookahead and %d from file\n",
-								   reqLen),
-			  reqLen, used, res);
-#endif
-
 	ctx->tarFHpos += res + used;
 
 	return (res + used);
