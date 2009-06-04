@@ -4083,9 +4083,11 @@ exec_eval_expr(PLpgSQL_execstate *estate,
 	if (estate->eval_tuptable->tupdesc->natts != 1)
 		ereport(ERROR,
 				(errcode(ERRCODE_SYNTAX_ERROR),
-				 errmsg(dngettext(TEXTDOMAIN, "query \"%s\" returned %d column", "query \"%s\" returned %d columns", estate->eval_tuptable->tupdesc->natts),
-						expr->query,
-						estate->eval_tuptable->tupdesc->natts)));
+				 errmsg_plural("query \"%s\" returned %d column",
+							   "query \"%s\" returned %d columns",
+							   estate->eval_tuptable->tupdesc->natts,
+							   expr->query,
+							   estate->eval_tuptable->tupdesc->natts)));
 
 	/*
 	 * Return the result and its type

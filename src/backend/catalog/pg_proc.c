@@ -112,10 +112,10 @@ ProcedureCreate(const char *procedureName,
 	if (parameterCount < 0 || parameterCount > FUNC_MAX_ARGS)
 		ereport(ERROR,
 				(errcode(ERRCODE_TOO_MANY_ARGUMENTS),
-				 errmsg(ngettext("functions cannot have more than %d argument",
-								 "functions cannot have more than %d arguments",
-								 FUNC_MAX_ARGS),
-						FUNC_MAX_ARGS)));
+				 errmsg_plural("functions cannot have more than %d argument",
+							   "functions cannot have more than %d arguments",
+							   FUNC_MAX_ARGS,
+							   FUNC_MAX_ARGS)));
 	/* note: the above is correct, we do NOT count output arguments */
 
 	if (allParameterTypes != PointerGetDatum(NULL))

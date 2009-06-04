@@ -1049,7 +1049,10 @@ storeObjectDescription(StringInfo descs, objectType type,
 
 		case REMOTE_OBJECT:
 			/* translator: %s will always be "database %s" */
-			appendStringInfo(descs, ngettext("%d object in %s", "%d objects in %s", count), count, objdesc);
+			appendStringInfo(descs, ngettext("%d object in %s",
+											 "%d objects in %s",
+											 count),
+							 count, objdesc);
 			break;
 
 		default:

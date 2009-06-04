@@ -914,10 +914,10 @@ reportDependentObjects(const ObjectAddresses *targetObjects,
 	{
 		ereport(msglevel,
 				/* translator: %d always has a value larger than 1 */
-				(errmsg(ngettext("drop cascades to %d other object",
-								 "drop cascades to %d other objects",
-								 numReportedClient + numNotReportedClient),
-						numReportedClient + numNotReportedClient),
+				(errmsg_plural("drop cascades to %d other object",
+							   "drop cascades to %d other objects",
+							   numReportedClient + numNotReportedClient,
+							   numReportedClient + numNotReportedClient),
 				 errdetail("%s", clientdetail.data),
 				 errdetail_log("%s", logdetail.data)));
 	}
