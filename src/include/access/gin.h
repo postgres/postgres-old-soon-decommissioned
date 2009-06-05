@@ -423,9 +423,9 @@ extern void newScanKey(IndexScanDesc scan);
 extern DLLIMPORT int GinFuzzySearchLimit;
 
 #define ItemPointerSetMax(p)	ItemPointerSet( (p), (BlockNumber)0xffffffff, (OffsetNumber)0xffff )
-#define ItemPointerIsMax(p) ( ItemPointerGetBlockNumber(p) == (BlockNumber)0xffffffff && ItemPointerGetOffsetNumber(p) == (OffsetNumber)0xffff )
+#define ItemPointerIsMax(p) ( GinItemPointerGetBlockNumber(p) == (BlockNumber)0xffffffff && GinItemPointerGetOffsetNumber(p) == (OffsetNumber)0xffff )
 #define ItemPointerSetMin(p)	ItemPointerSet( (p), (BlockNumber)0, (OffsetNumber)0)
-#define ItemPointerIsMin(p) ( ItemPointerGetBlockNumber(p) == (BlockNumber)0 && ItemPointerGetOffsetNumber(p) == (OffsetNumber)0 )
+#define ItemPointerIsMin(p) ( GinItemPointerGetBlockNumber(p) == (BlockNumber)0 && GinItemPointerGetOffsetNumber(p) == (OffsetNumber)0 )
 
 extern Datum gingetmulti(PG_FUNCTION_ARGS);
 extern Datum gingettuple(PG_FUNCTION_ARGS);
