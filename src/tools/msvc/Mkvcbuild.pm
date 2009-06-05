@@ -104,7 +104,16 @@ sub mkvcbuild
             }
         }
         $plperl->AddReference($postgres);
-        $plperl->AddLibrary($solution->{options}->{perl} . '\lib\CORE\perl58.lib');
+		my @perl_libs = grep {/perl\d+.lib$/ }
+		   glob($solution->{options}->{perl} . '\lib\CORE\perl*.lib');
+		if (@perl_libs == 1)
+		{
+			$plperl->AddLibrary($perl_libs[0]);
+		}
+		else
+		{
+			die "could not identify perl library version";
+		}
     }
 
     if ($solution->{options}->{python})
