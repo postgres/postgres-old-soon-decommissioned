@@ -398,10 +398,7 @@ plperl_init_interp(void)
 	static char *embedding[3] = {
 		"", "-e", PERLBOOT
 	};
-
 	int nargs = 3;
-
-	char *dummy_perl_env[1] = { NULL }; 
 
 #ifdef WIN32
 
@@ -457,7 +454,11 @@ plperl_init_interp(void)
 #if defined(PERL_SYS_INIT3) && !defined(MYMALLOC)
 	/* only call this the first time through, as per perlembed man page */
 	if (interp_state == INTERP_NONE)
-		PERL_SYS_INIT3(&nargs, (char ***) &embedding, (char***)&dummy_perl_env);
+	{
+		char *dummy_env[1] = { NULL }; 
+
+		PERL_SYS_INIT3(&nargs, (char ***) &embedding, (char ***) &dummy_env);
+	}
 #endif
 
 	plperl_held_interp = perl_alloc();
