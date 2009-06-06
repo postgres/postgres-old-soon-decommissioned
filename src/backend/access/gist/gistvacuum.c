@@ -524,8 +524,8 @@ gistvacuumcleanup(PG_FUNCTION_ARGS)
 	{
 		stats = (GistBulkDeleteResult *) palloc0(sizeof(GistBulkDeleteResult));
 		/* use heap's tuple count */
-		Assert(info->num_heap_tuples >= 0);
 		stats->std.num_index_tuples = info->num_heap_tuples;
+		stats->std.estimated_count = info->estimated_count;
 
 		/*
 		 * XXX the above is wrong if index is partial.	Would it be OK to just
@@ -679,6 +679,7 @@ gistbulkdelete(PG_FUNCTION_ARGS)
 	if (stats == NULL)
 		stats = (GistBulkDeleteResult *) palloc0(sizeof(GistBulkDeleteResult));
 	/* we'll re-count the tuples each time */
+	stats->std.estimated_count = false;
 	stats->std.num_index_tuples = 0;
 
 	stack = (GistBDItem *) palloc0(sizeof(GistBDItem));

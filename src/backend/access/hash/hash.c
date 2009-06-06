@@ -610,6 +610,8 @@ loop_top:
 		/*
 		 * Otherwise, our count is untrustworthy since we may have
 		 * double-scanned tuples in split buckets.	Proceed by dead-reckoning.
+		 * (Note: we still return estimated_count = false, because using this
+		 * count is better than not updating reltuples at all.)
 		 */
 		if (metap->hashm_ntuples > tuples_removed)
 			metap->hashm_ntuples -= tuples_removed;
@@ -623,6 +625,7 @@ loop_top:
 	/* return statistics */
 	if (stats == NULL)
 		stats = (IndexBulkDeleteResult *) palloc0(sizeof(IndexBulkDeleteResult));
+	stats->estimated_count = false;
 	stats->num_index_tuples = num_index_tuples;
 	stats->tuples_removed += tuples_removed;
 	/* hashvacuumcleanup will fill in num_pages */

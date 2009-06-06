@@ -3774,6 +3774,13 @@ pgstat_recv_vacuum(PgStat_MsgVacuum *msg, int len)
 	{
 		if (msg->m_scanned_all)
 			tabentry->last_anl_tuples = msg->m_tuples;
+		else
+		{
+			/* last_anl_tuples must never exceed n_live_tuples+n_dead_tuples */
+			tabentry->last_anl_tuples = Min(tabentry->last_anl_tuples,
+											tabentry->n_live_tuples);
+		}
+
 		if (msg->m_autovacuum)
 			tabentry->autovac_analyze_timestamp = msg->m_vacuumtime;
 		else

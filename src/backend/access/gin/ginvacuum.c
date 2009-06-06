@@ -741,6 +741,7 @@ ginvacuumcleanup(PG_FUNCTION_ARGS)
 	 * tell how many distinct heap entries are referenced by a GIN index.
 	 */
 	stats->num_index_tuples = info->num_heap_tuples;
+	stats->estimated_count = info->estimated_count;
 
 	/*
 	 * If vacuum full, we already have exclusive lock on the index. Otherwise,
