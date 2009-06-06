@@ -435,6 +435,7 @@ extern void findParents(GinBtree btree, GinBtreeStack *stack, BlockNumber rootBl
 /* ginentrypage.c */
 extern IndexTuple GinFormTuple(GinState *ginstate, OffsetNumber attnum, Datum key,
 										ItemPointerData *ipd, uint32 nipd);
+extern void GinShortenTuple(IndexTuple itup, uint32 nipd);
 extern void prepareEntryScan(GinBtree btree, Relation index, OffsetNumber attnum,
 								Datum value, GinState *ginstate);
 extern void entryFillRoot(GinBtree btree, Buffer root, Buffer lbuf, Buffer rbuf);
@@ -442,7 +443,7 @@ extern IndexTuple ginPageGetLinkItup(Buffer buf);
 
 /* gindatapage.c */
 extern int	compareItemPointers(ItemPointer a, ItemPointer b);
-extern void MergeItemPointers(ItemPointerData *dst,
+extern uint32 MergeItemPointers(ItemPointerData *dst,
 				  ItemPointerData *a, uint32 na,
 				  ItemPointerData *b, uint32 nb);
 

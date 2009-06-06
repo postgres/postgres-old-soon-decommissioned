@@ -102,17 +102,19 @@ addItemPointersToTuple(Relation index, GinState *ginstate, GinBtreeStack *stack,
 {
 	Datum			key = gin_index_getattr(ginstate, old);
 	OffsetNumber	attnum = gintuple_get_attrnum(ginstate, old);
-	IndexTuple		res = GinFormTuple(ginstate, attnum, key, NULL, nitem + GinGetNPosting(old));
+	IndexTuple		res = GinFormTuple(ginstate, attnum, key,
+									   NULL, nitem + GinGetNPosting(old));
 
 	if (res)
 	{
 		/* good, small enough */
-		MergeItemPointers(GinGetPosting(res),
-						  GinGetPosting(old), GinGetNPosting(old),
-						  items, nitem
-			);
+		uint32 newnitem;
 
-		GinSetNPosting(res, nitem + GinGetNPosting(old));
+		newnitem = MergeItemPointers(GinGetPosting(res),
+									 GinGetPosting(old), GinGetNPosting(old),
+									 items, nitem);
+		/* merge might have eliminated some duplicate items */
+		GinShortenTuple(res, newnitem);
 	}
 	else
 	{
