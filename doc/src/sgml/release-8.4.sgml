@@ -3323,20 +3323,6 @@
 
      <listitem>
       <para>
-       Remove <filename>contrib/intarray</>'s definitions of the
-       <literal>&lt;@</> and <literal>@&gt;</> operators (Tom)
-      </para>
-
-      <para>
-       This avoids confusion with the equivalent built-in operators.
-       If needed, the <filename>contrib/intarray</> implementations
-       are still available under their historical names <literal>@</>
-       and <literal>~</>.
-      </para>
-     </listitem>
-
-     <listitem>
-      <para>
        Make <filename>contrib/pg_standby</> recover all available WAL before
        failover (Fujii Masao, Simon, Heikki)
       </para>
