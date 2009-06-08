@@ -6,15 +6,15 @@ SET search_path = public;
 --
 -- get_raw_page()
 --
-CREATE OR REPLACE FUNCTION get_raw_page(text, text, int4)
+CREATE OR REPLACE FUNCTION get_raw_page(text, int4)
 RETURNS bytea
 AS 'MODULE_PATHNAME', 'get_raw_page'
 LANGUAGE C STRICT;
 
-CREATE OR REPLACE FUNCTION get_raw_page(text, int4) 
+CREATE OR REPLACE FUNCTION get_raw_page(text, text, int4)
 RETURNS bytea
-AS $$ SELECT get_raw_page($1, 'main', $2); $$
-LANGUAGE SQL STRICT;
+AS 'MODULE_PATHNAME', 'get_raw_page_fork'
+LANGUAGE C STRICT;
 
 --
 -- page_header()
