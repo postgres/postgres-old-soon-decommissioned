@@ -2627,12 +2627,16 @@ map_sql_table_to_xmlschema(TupleDesc tupdesc, Oid relid, bool nulls,
 					 rowtypename);
 
 	for (i = 0; i < tupdesc->natts; i++)
+	{
+		if (tupdesc->attrs[i]->attisdropped)
+			continue;
 		appendStringInfo(&result,
 			   "    <xsd:element name=\"%s\" type=\"%s\"%s></xsd:element>\n",
 		  map_sql_identifier_to_xml_name(NameStr(tupdesc->attrs[i]->attname),
 										 true, false),
 				   map_sql_type_to_xml_name(tupdesc->attrs[i]->atttypid, -1),
 						 nulls ? " nillable=\"true\"" : " minOccurs=\"0\"");
+	}
 
 	appendStringInfoString(&result,
 						   "  </xsd:sequence>\n"
