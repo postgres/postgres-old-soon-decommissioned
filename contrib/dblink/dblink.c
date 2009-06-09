@@ -48,6 +48,7 @@
 #include "executor/spi.h"
 #include "foreign/foreign.h"
 #include "lib/stringinfo.h"
+#include "mb/pg_wchar.h"
 #include "miscadmin.h"
 #include "nodes/execnodes.h"
 #include "nodes/nodes.h"
@@ -185,6 +186,7 @@ typedef struct remoteConnHashEnt
 							 errdetail("%s", msg))); \
 				} \
 				dblink_security_check(conn, rconn); \
+				PQsetClientEncoding(conn, GetDatabaseEncodingName()); \
 				freeconn = true; \
 			} \
 	} while (0)
@@ -262,6 +264,9 @@ dblink_connect(PG_FUNCTION_ARGS)
 
 	/* check password actually used if not superuser */
 	dblink_security_check(conn, rconn);
+
+	/* attempt to set client encoding to match server encoding */
+	PQsetClientEncoding(conn, GetDatabaseEncodingName());
 
 	if (connname)
 	{
