@@ -73,7 +73,7 @@ extern text *xmltotext_with_xmloption(xmltype *data, XmlOptionType xmloption_arg
 
 extern char *map_sql_identifier_to_xml_name(char *ident, bool fully_escaped, bool escape_period);
 extern char *map_xml_name_to_sql_identifier(char *name);
-extern char *map_sql_value_to_xml_value(Datum value, Oid type);
+extern char *map_sql_value_to_xml_value(Datum value, Oid type, bool xml_escape_strings);
 
 typedef enum
 {

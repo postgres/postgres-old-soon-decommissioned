@@ -3243,7 +3243,7 @@ ExecEvalXml(XmlExprState *xmlExpr, ExprContext *econtext,
 				{
 					appendStringInfo(&buf, "<%s>%s</%s>",
 									 argname,
-									 map_sql_value_to_xml_value(value, exprType((Node *) e->expr)),
+									 map_sql_value_to_xml_value(value, exprType((Node *) e->expr), true),
 									 argname);
 					*isNull = false;
 				}
