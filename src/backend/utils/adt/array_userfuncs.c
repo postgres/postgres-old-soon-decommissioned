@@ -520,13 +520,18 @@ array_agg_finalfn(PG_FUNCTION_ARGS)
 	int			dims[1];
 	int			lbs[1];
 
+	/*
+	 * Test for null before Asserting we are in right context.  This is
+	 * to avoid possible Assert failure in 8.4beta installations, where
+	 * it is possible for users to create NULL constants of type internal.
+	 */
+	if (PG_ARGISNULL(0))
+		PG_RETURN_NULL();   /* returns null iff no input values */
+
 	/* cannot be called directly because of internal-type argument */
 	Assert(fcinfo->context &&
 		   (IsA(fcinfo->context, AggState) ||
 			IsA(fcinfo->context, WindowAggState)));
-
-	if (PG_ARGISNULL(0))
-		PG_RETURN_NULL();   /* returns null iff no input values */
 
 	state = (ArrayBuildState *) PG_GETARG_POINTER(0);
 
