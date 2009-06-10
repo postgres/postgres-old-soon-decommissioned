@@ -441,7 +441,7 @@ plpgsql_yyerror(const char *message)
 	{
 		ereport(ERROR,
 				(errcode(ERRCODE_SYNTAX_ERROR),
-				 /* translator: %s is typically "syntax error" */
+				 /* translator: %s is typically the translation of "syntax error" */
 				 errmsg("%s at end of input", _(message)),
 				 internalerrposition(cursorpos),
 				 internalerrquery(scanstr)));
@@ -450,7 +450,7 @@ plpgsql_yyerror(const char *message)
 	{
 		ereport(ERROR,
 				(errcode(ERRCODE_SYNTAX_ERROR),
-				 /* translator: first %s is typically "syntax error" */
+				 /* translator: first %s is typically the translation of "syntax error" */
 				 errmsg("%s at or near \"%s\"", _(message), loc),
 				 internalerrposition(cursorpos),
 				 internalerrquery(scanstr)));
