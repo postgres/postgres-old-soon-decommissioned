@@ -697,7 +697,7 @@ msgstr "instruction SQL dans la fonction PL/pgsql « %s » près de la ligne %d"
 #: gram.y:2792
 #, c-format
 msgid "string literal in PL/PgSQL function \"%s\" near line %d"
-msgstr "chaîne litérale dans la fonction PL/pgsql « %s » près de la ligne %d"
+msgstr "chaîne littérale dans la fonction PL/pgsql « %s » près de la ligne %d"
 
 #: gram.y:2805
 msgid "label does not exist"
