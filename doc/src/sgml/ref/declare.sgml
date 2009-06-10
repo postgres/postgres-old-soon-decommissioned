@@ -228,6 +228,20 @@ DECLARE <replaceable class="parameter">name</replaceable> [ BINARY ] [ INSENSITI
     <literal>SCROLL</literal> may not be specified in this case.
    </para>
 
+   <caution>
+    <para>
+     Scrollable and <literal>WITH HOLD</literal> cursors may give unexpected
+     results if they invoke any volatile functions (see <xref
+     linkend="xfunc-volatility">).  When a previously fetched row is
+     re-fetched, the functions might be re-executed, perhaps leading to
+     results different from the first time.  One workaround for such cases
+     is to declare the cursor <literal>WITH HOLD</literal> and commit the
+     transaction before reading any rows from it.  This will force the
+     entire output of the cursor to be materialized in temporary storage,
+     so that volatile functions are executed exactly once for each row.
+    </para>
+   </caution>
+
    <para>
     If the cursor's query includes <literal>FOR UPDATE</> or <literal>FOR
     SHARE</>, then returned rows are locked at the time they are first
