@@ -1325,7 +1325,9 @@ xml_repalloc(void *ptr, size_t size)
 static void
 xml_pfree(void *ptr)
 {
-	pfree(ptr);
+	/* At least some parts of libxml assume xmlFree(NULL) is allowed */
+	if (ptr)
+		pfree(ptr);
 }
 
 
