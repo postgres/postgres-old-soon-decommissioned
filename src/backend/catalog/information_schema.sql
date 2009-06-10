@@ -160,12 +160,12 @@ CREATE FUNCTION _pg_datetime_precision(typid oid, typmod int4) RETURNS integer
     RETURNS NULL ON NULL INPUT
     AS
 $$SELECT
-  CASE WHEN $2 = -1 /* default typmod */
-       THEN null
+  CASE WHEN $1 IN (1082) /* date */
+           THEN 0
        WHEN $1 IN (1083, 1114, 1184, 1266) /* time, timestamp, same + tz */
-       THEN $2
+           THEN CASE WHEN $2 < 0 THEN 6 ELSE $2 END
        WHEN $1 IN (1186) /* interval */
-       THEN $2 & 65535
+           THEN CASE WHEN $2 < 0 THEN 6 ELSE $2 & 65535 END
        ELSE null
   END$$;
 
