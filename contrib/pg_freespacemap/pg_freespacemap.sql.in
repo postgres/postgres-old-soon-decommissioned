@@ -8,7 +8,7 @@ SET search_path = public;
 CREATE OR REPLACE FUNCTION pg_freespace(regclass, bigint)
 RETURNS int2
 AS 'MODULE_PATHNAME', 'pg_freespace'
-LANGUAGE C;
+LANGUAGE C STRICT;
 
 -- pg_freespace shows the recorded space avail at each block in a relation
 CREATE OR REPLACE FUNCTION
