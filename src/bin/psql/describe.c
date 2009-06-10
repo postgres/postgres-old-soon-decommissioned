@@ -215,7 +215,7 @@ describeFunctions(const char *functypes, const char *pattern, bool verbose, bool
 
 	if (showWindow && pset.sversion < 80400)
 	{
-		fprintf(stderr, _("\\df does not take a \"w\" option in %d.%d.\n"),
+		fprintf(stderr, _("\\df does not take a \"w\" option with server version %d.%d\n"),
 				pset.sversion / 10000, (pset.sversion / 100) % 100);
 		return true;
 	}
