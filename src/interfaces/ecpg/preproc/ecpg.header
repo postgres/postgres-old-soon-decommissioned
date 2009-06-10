@@ -23,6 +23,12 @@
 #define base_yylex filtered_base_yylex
 
 /*
+ * This is only here so the string gets into the POT.  Bison uses it
+ * internally.
+ */
+#define bison_gettext_dummy gettext_noop("syntax error")
+
+/*
  * Variables containing simple states.
  */
 int struct_level = 0;
