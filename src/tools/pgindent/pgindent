@@ -4,9 +4,14 @@
 
 # Known bugs:
 #
-# Blank line is added after, seen as a function definition, no space
+# Blank line is added after parentheses; seen as a function definition, no space
 # after *:
 #	y = (int) x *y;
+#
+# Structure/union pointers in function prototypes and definitions have an extra
+# space after the asterisk:
+#
+#	void x(struct xxc * a);
 
 if [ "$#" -lt 2 ]
 then	echo "Usage:  $(basename $0) typedefs file [...]" 1>&2
