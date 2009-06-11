@@ -634,11 +634,11 @@ fmgr_sql(PG_FUNCTION_ARGS)
 		 * For simplicity, we require callers to support both set eval modes.
 		 * There are cases where we must use one or must use the other, and
 		 * it's not really worthwhile to postpone the check till we know.
+		 * But note we do not require caller to provide an expectedDesc.
 		 */
 		if (!rsi || !IsA(rsi, ReturnSetInfo) ||
 			(rsi->allowedModes & SFRM_ValuePerCall) == 0 ||
-			(rsi->allowedModes & SFRM_Materialize) == 0 ||
-			rsi->expectedDesc == NULL)
+			(rsi->allowedModes & SFRM_Materialize) == 0)
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 					 errmsg("set-valued function called in context that cannot accept a set")));
