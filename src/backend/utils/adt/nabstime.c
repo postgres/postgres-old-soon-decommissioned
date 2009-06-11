@@ -631,7 +631,7 @@ reltimein(PG_FUNCTION_ARGS)
 
 	/* if those functions think it's a bad format, try ISO8601 style */
 	if (dterr == DTERR_BAD_FORMAT)
-	    dterr = DecodeISO8601Interval(str,
+		dterr = DecodeISO8601Interval(str,
 									  &dtype, tm, &fsec);
 
 	if (dterr != 0)

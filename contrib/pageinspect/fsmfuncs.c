@@ -24,7 +24,7 @@
 #include "miscadmin.h"
 #include "funcapi.h"
 
-Datum fsm_page_contents(PG_FUNCTION_ARGS);
+Datum		fsm_page_contents(PG_FUNCTION_ARGS);
 
 /*
  * Dumps the contents of a FSM page.
@@ -50,7 +50,7 @@ fsm_page_contents(PG_FUNCTION_ARGS)
 
 	initStringInfo(&sinfo);
 
-	for(i=0; i < NodesPerPage; i++)
+	for (i = 0; i < NodesPerPage; i++)
 	{
 		if (fsmpage->fp_nodes[i] != 0)
 			appendStringInfo(&sinfo, "%d: %d\n", i, fsmpage->fp_nodes[i]);

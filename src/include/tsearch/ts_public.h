@@ -56,7 +56,7 @@ typedef struct
 	char	   *fragdelim;
 	int2		startsellen;
 	int2		stopsellen;
-	int2		fragdelimlen;         
+	int2		fragdelimlen;
 } HeadlineParsedText;
 
 /*

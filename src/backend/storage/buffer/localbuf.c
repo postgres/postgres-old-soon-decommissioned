@@ -85,7 +85,7 @@ LocalPrefetchBuffer(SMgrRelation smgr, ForkNumber forkNum,
 
 	/* Not in buffers, so initiate prefetch */
 	smgrprefetch(smgr, forkNum, blockNum);
-#endif /* USE_PREFETCH */
+#endif   /* USE_PREFETCH */
 }
 
 
@@ -149,7 +149,7 @@ LocalBufferAlloc(SMgrRelation smgr, ForkNumber forkNum, BlockNumber blockNum,
 
 #ifdef LBDEBUG
 	fprintf(stderr, "LB ALLOC (%u,%d,%d) %d\n",
-		smgr->smgr_rnode.relNode, forkNum, blockNum, -nextFreeLocalBuf - 1);
+		 smgr->smgr_rnode.relNode, forkNum, blockNum, -nextFreeLocalBuf - 1);
 #endif
 
 	/*

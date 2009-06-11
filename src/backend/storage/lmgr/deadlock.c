@@ -933,7 +933,7 @@ DeadLockReport(void)
 		appendStringInfo(&logbuf,
 						 _("Process %d: %s"),
 						 info->pid,
-						 pgstat_get_backend_current_activity(info->pid, false));
+					  pgstat_get_backend_current_activity(info->pid, false));
 	}
 
 	ereport(ERROR,

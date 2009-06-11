@@ -96,8 +96,8 @@ optimize_minmax_aggregates(PlannerInfo *root, List *tlist, Path *best_path)
 	 * Reject unoptimizable cases.
 	 *
 	 * We don't handle GROUP BY or windowing, because our current
-	 * implementations of grouping require looking at all the rows anyway,
-	 * and so there's not much point in optimizing MIN/MAX.
+	 * implementations of grouping require looking at all the rows anyway, and
+	 * so there's not much point in optimizing MIN/MAX.
 	 */
 	if (parse->groupClause || parse->hasWindowFuncs)
 		return NULL;
@@ -189,12 +189,12 @@ optimize_minmax_aggregates(PlannerInfo *root, List *tlist, Path *best_path)
 											 &aggs_list);
 
 	/*
-	 * We have to replace Aggrefs with Params in equivalence classes too,
-	 * else ORDER BY or DISTINCT on an optimized aggregate will fail.
+	 * We have to replace Aggrefs with Params in equivalence classes too, else
+	 * ORDER BY or DISTINCT on an optimized aggregate will fail.
 	 *
-	 * Note: at some point it might become necessary to mutate other
-	 * data structures too, such as the query's sortClause or distinctClause.
-	 * Right now, those won't be examined after this point.
+	 * Note: at some point it might become necessary to mutate other data
+	 * structures too, such as the query's sortClause or distinctClause. Right
+	 * now, those won't be examined after this point.
 	 */
 	mutate_eclass_expressions(root,
 							  replace_aggs_with_params_mutator,

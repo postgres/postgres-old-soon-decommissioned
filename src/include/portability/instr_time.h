@@ -10,8 +10,8 @@
  * high-precision-timing APIs on yet other platforms.
  *
  * The basic data type is instr_time, which all callers should treat as an
- * opaque typedef.  instr_time can store either an absolute time (of
- * unspecified reference time) or an interval.  The operations provided
+ * opaque typedef.	instr_time can store either an absolute time (of
+ * unspecified reference time) or an interval.	The operations provided
  * for it are:
  *
  * INSTR_TIME_IS_ZERO(t)			is t equal to zero?
@@ -113,8 +113,7 @@ typedef struct timeval instr_time;
 
 #define INSTR_TIME_GET_MICROSEC(t) \
 	(((uint64) (t).tv_sec * (uint64) 1000000) + (uint64) (t).tv_usec)
-
-#else	/* WIN32 */
+#else							/* WIN32 */
 
 typedef LARGE_INTEGER instr_time;
 
@@ -150,7 +149,6 @@ GetTimerFrequency(void)
 	QueryPerformanceFrequency(&f);
 	return (double) f.QuadPart;
 }
-
 #endif   /* WIN32 */
 
 #endif   /* INSTR_TIME_H */

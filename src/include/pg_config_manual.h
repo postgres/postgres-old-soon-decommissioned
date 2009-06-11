@@ -188,7 +188,7 @@
 /*
  * Define this to cause palloc()'d memory to be filled with random data, to
  * facilitate catching code that depends on the contents of uninitialized
- * memory.  Caution: this is horrendously expensive.
+ * memory.	Caution: this is horrendously expensive.
  */
 /* #define RANDOMIZE_ALLOCATED_MEMORY */
 

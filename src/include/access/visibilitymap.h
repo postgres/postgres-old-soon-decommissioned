@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * visibilitymap.h
- *      visibility map interface
+ *		visibility map interface
  *
  *
  * Portions Copyright (c) 2007-2009, PostgreSQL Global Development Group
@@ -21,9 +21,9 @@
 
 extern void visibilitymap_clear(Relation rel, BlockNumber heapBlk);
 extern void visibilitymap_pin(Relation rel, BlockNumber heapBlk,
-							  Buffer *vmbuf);
+				  Buffer *vmbuf);
 extern void visibilitymap_set(Relation rel, BlockNumber heapBlk,
-							  XLogRecPtr recptr, Buffer *vmbuf);
+				  XLogRecPtr recptr, Buffer *vmbuf);
 extern bool visibilitymap_test(Relation rel, BlockNumber heapBlk, Buffer *vmbuf);
 extern void visibilitymap_truncate(Relation rel, BlockNumber heapblk);
 

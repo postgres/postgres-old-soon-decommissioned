@@ -35,9 +35,10 @@ typedef enum BufferAccessStrategyType
 /* Possible modes for ReadBufferExtended() */
 typedef enum
 {
-	RBM_NORMAL,			/* Normal read */
-	RBM_ZERO,			/* Don't read from disk, caller will initialize */
-	RBM_ZERO_ON_ERROR	/* Read, but return an all-zeros page on error */
+	RBM_NORMAL,					/* Normal read */
+	RBM_ZERO,					/* Don't read from disk, caller will
+								 * initialize */
+	RBM_ZERO_ON_ERROR			/* Read, but return an all-zeros page on error */
 } ReadBufferMode;
 
 /* in globals.c ... this duplicates miscadmin.h */
@@ -154,14 +155,14 @@ extern PGDLLIMPORT int32 *LocalRefCount;
  * prototypes for functions in bufmgr.c
  */
 extern void PrefetchBuffer(Relation reln, ForkNumber forkNum,
-						   BlockNumber blockNum);
+			   BlockNumber blockNum);
 extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
 extern Buffer ReadBufferExtended(Relation reln, ForkNumber forkNum,
-								 BlockNumber blockNum, ReadBufferMode mode,
-								 BufferAccessStrategy strategy);
+				   BlockNumber blockNum, ReadBufferMode mode,
+				   BufferAccessStrategy strategy);
 extern Buffer ReadBufferWithoutRelcache(RelFileNode rnode, bool isTemp,
-						ForkNumber forkNum, BlockNumber blockNum,
-						ReadBufferMode mode, BufferAccessStrategy strategy);
+						  ForkNumber forkNum, BlockNumber blockNum,
+						  ReadBufferMode mode, BufferAccessStrategy strategy);
 extern void ReleaseBuffer(Buffer buffer);
 extern void UnlockReleaseBuffer(Buffer buffer);
 extern void MarkBufferDirty(Buffer buffer);
@@ -189,8 +190,8 @@ extern void DropDatabaseBuffers(Oid dbid);
 extern void PrintPinnedBufs(void);
 #endif
 extern Size BufferShmemSize(void);
-extern void BufferGetTag(Buffer buffer, RelFileNode *rnode, 
-						 ForkNumber *forknum, BlockNumber *blknum);
+extern void BufferGetTag(Buffer buffer, RelFileNode *rnode,
+			 ForkNumber *forknum, BlockNumber *blknum);
 
 extern void SetBufferCommitInfoNeedsSave(Buffer buffer);
 

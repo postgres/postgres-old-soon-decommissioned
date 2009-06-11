@@ -1,5 +1,5 @@
 /*
- * $PostgreSQL:$ 
+ * $PostgreSQL$
  *
  *
  * Copyright (c) 1989, 1993

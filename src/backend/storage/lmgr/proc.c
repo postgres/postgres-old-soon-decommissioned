@@ -277,8 +277,8 @@ InitProcess(void)
 
 	/*
 	 * Now that we have a PGPROC, mark ourselves as an active postmaster
-	 * child; this is so that the postmaster can detect it if we exit
-	 * without cleaning up.
+	 * child; this is so that the postmaster can detect it if we exit without
+	 * cleaning up.
 	 */
 	if (IsUnderPostmaster)
 		MarkPostmasterChildActive();
@@ -1184,8 +1184,8 @@ CheckDeadLock(void)
 	 * Check to see if we've been awoken by anyone in the interim.
 	 *
 	 * If we have, we can return and resume our transaction -- happy day.
-	 * Before we are awoken the process releasing the lock grants it to us
-	 * so we know that we don't have to wait anymore.
+	 * Before we are awoken the process releasing the lock grants it to us so
+	 * we know that we don't have to wait anymore.
 	 *
 	 * We check by looking to see if we've been unlinked from the wait queue.
 	 * This is quicker than checking our semaphore's state, since no kernel

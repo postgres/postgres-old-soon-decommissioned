@@ -56,8 +56,8 @@ extern void RequestAddinShmemSpace(Size size);
 typedef struct
 {
 	char		key[SHMEM_INDEX_KEYSIZE];		/* string name */
-	void	   *location;			/* location in shared mem */
-	Size		size;				/* # bytes allocated for the structure */
+	void	   *location;		/* location in shared mem */
+	Size		size;			/* # bytes allocated for the structure */
 } ShmemIndexEnt;
 
 /*

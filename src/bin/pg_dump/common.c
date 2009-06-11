@@ -91,7 +91,7 @@ getSchemaData(int *numTablesPtr)
 	TSTemplateInfo *tmplinfo;
 	TSDictInfo *dictinfo;
 	TSConfigInfo *cfginfo;
-	FdwInfo	   *fdwinfo;
+	FdwInfo    *fdwinfo;
 	ForeignServerInfo *srvinfo;
 	int			numNamespaces;
 	int			numAggregates;

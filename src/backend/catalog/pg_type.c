@@ -278,14 +278,14 @@ TypeCreate(Oid newTypeOid,
 		if (internalSize == -1 && !(alignment == 'i' || alignment == 'd'))
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),
-					 errmsg("alignment \"%c\" is invalid for variable-length type",
-							alignment)));
+			   errmsg("alignment \"%c\" is invalid for variable-length type",
+					  alignment)));
 		/* cstring must have char alignment */
 		if (internalSize == -2 && !(alignment == 'c'))
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),
-					 errmsg("alignment \"%c\" is invalid for variable-length type",
-							alignment)));
+			   errmsg("alignment \"%c\" is invalid for variable-length type",
+					  alignment)));
 	}
 
 	/* Only varlena types can be toasted */
@@ -392,10 +392,10 @@ TypeCreate(Oid newTypeOid,
 		 * Okay to update existing shell type tuple
 		 */
 		tup = heap_modify_tuple(tup,
-							   RelationGetDescr(pg_type_desc),
-							   values,
-							   nulls,
-							   replaces);
+								RelationGetDescr(pg_type_desc),
+								values,
+								nulls,
+								replaces);
 
 		simple_heap_update(pg_type_desc, &tup->t_self, tup);
 
@@ -406,8 +406,8 @@ TypeCreate(Oid newTypeOid,
 	else
 	{
 		tup = heap_form_tuple(RelationGetDescr(pg_type_desc),
-							 values,
-							 nulls);
+							  values,
+							  nulls);
 
 		/* Force the OID if requested by caller, else heap_insert does it */
 		if (OidIsValid(newTypeOid))

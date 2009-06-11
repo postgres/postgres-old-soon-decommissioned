@@ -1,5 +1,5 @@
 /*
- * $PostgreSQL$ 
+ * $PostgreSQL$
  */
 #ifndef __PTHREAD_H
 #define __PTHREAD_H

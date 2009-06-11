@@ -33,7 +33,7 @@ Datum		get_raw_page_fork(PG_FUNCTION_ARGS);
 Datum		page_header(PG_FUNCTION_ARGS);
 
 static bytea *get_raw_page_internal(text *relname, ForkNumber forknum,
-									BlockNumber blkno);
+					  BlockNumber blkno);
 
 
 /*
@@ -121,9 +121,9 @@ get_raw_page_internal(text *relname, ForkNumber forknum, BlockNumber blkno)
 						RelationGetRelationName(rel))));
 
 	/*
-	 * Reject attempts to read non-local temporary relations; we would
-	 * be likely to get wrong data since we have no visibility into the
-	 * owning session's local buffers.
+	 * Reject attempts to read non-local temporary relations; we would be
+	 * likely to get wrong data since we have no visibility into the owning
+	 * session's local buffers.
 	 */
 	if (RELATION_IS_OTHER_TEMP(rel))
 		ereport(ERROR,

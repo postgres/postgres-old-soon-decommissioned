@@ -74,7 +74,8 @@ extern int	base_yylex(void);
 extern void base_yyerror(const char *);
 extern void *mm_alloc(size_t), *mm_realloc(void *, size_t);
 extern char *mm_strdup(const char *);
-extern void mmerror(int, enum errortype, const char *, ...)
+extern void
+mmerror(int, enum errortype, const char *,...)
 /* This extension allows gcc to check the format string */
 __attribute__((format(printf, 3, 4)));
 extern void output_get_descr_header(char *);

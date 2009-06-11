@@ -1,5 +1,5 @@
 /*
- * $PostgreSQL:$ 
+ * $PostgreSQL$
  *
  *	$OpenBSD$ */
 
@@ -36,7 +36,7 @@ typedef struct _rijndael_ctx
 	int			decrypt;
 	u4byte		e_key[64];
 	u4byte		d_key[64];
-}	rijndael_ctx;
+} rijndael_ctx;
 
 
 /* 2. Standard interface for AES cryptographic routines				*/
@@ -51,10 +51,10 @@ void		rijndael_decrypt(rijndael_ctx *, const u4byte *, u4byte *);
 
 /* conventional interface */
 
-void		aes_set_key(rijndael_ctx * ctx, const uint8 *key, unsigned keybits, int enc);
-void		aes_ecb_encrypt(rijndael_ctx * ctx, uint8 *data, unsigned len);
-void		aes_ecb_decrypt(rijndael_ctx * ctx, uint8 *data, unsigned len);
-void		aes_cbc_encrypt(rijndael_ctx * ctx, uint8 *iva, uint8 *data, unsigned len);
-void		aes_cbc_decrypt(rijndael_ctx * ctx, uint8 *iva, uint8 *data, unsigned len);
+void		aes_set_key(rijndael_ctx *ctx, const uint8 *key, unsigned keybits, int enc);
+void		aes_ecb_encrypt(rijndael_ctx *ctx, uint8 *data, unsigned len);
+void		aes_ecb_decrypt(rijndael_ctx *ctx, uint8 *data, unsigned len);
+void		aes_cbc_encrypt(rijndael_ctx *ctx, uint8 *iva, uint8 *data, unsigned len);
+void		aes_cbc_decrypt(rijndael_ctx *ctx, uint8 *iva, uint8 *data, unsigned len);
 
 #endif   /* _RIJNDAEL_H_ */

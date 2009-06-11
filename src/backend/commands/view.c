@@ -185,14 +185,14 @@ DefineVirtualRelation(const RangeVar *relation, List *tlist, bool replace)
 		checkViewTupleDesc(descriptor, rel->rd_att);
 
 		/*
- 		 * If new attributes have been added, we must add pg_attribute entries
+		 * If new attributes have been added, we must add pg_attribute entries
 		 * for them.  It is convenient (although overkill) to use the ALTER
 		 * TABLE ADD COLUMN infrastructure for this.
 		 */
 		if (list_length(attrList) > rel->rd_att->natts)
 		{
-			List		*atcmds = NIL;
-			ListCell 	*c;
+			List	   *atcmds = NIL;
+			ListCell   *c;
 			int			skip = rel->rd_att->natts;
 
 			foreach(c, attrList)
@@ -273,9 +273,9 @@ checkViewTupleDesc(TupleDesc newdesc, TupleDesc olddesc)
 		if (strcmp(NameStr(newattr->attname), NameStr(oldattr->attname)) != 0)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_TABLE_DEFINITION),
-					 errmsg("cannot change name of view column \"%s\" to \"%s\"",
-							NameStr(oldattr->attname),
-							NameStr(newattr->attname))));
+				 errmsg("cannot change name of view column \"%s\" to \"%s\"",
+						NameStr(oldattr->attname),
+						NameStr(newattr->attname))));
 		/* XXX would it be safe to allow atttypmod to change?  Not sure */
 		if (newattr->atttypid != oldattr->atttypid ||
 			newattr->atttypmod != oldattr->atttypmod)

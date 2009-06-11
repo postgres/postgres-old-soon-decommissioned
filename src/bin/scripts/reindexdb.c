@@ -213,7 +213,7 @@ main(int argc, char *argv[])
 static void
 reindex_one_database(const char *name, const char *dbname, const char *type,
 					 const char *host, const char *port, const char *username,
-					 enum trivalue prompt_password, const char *progname, bool echo)
+			  enum trivalue prompt_password, const char *progname, bool echo)
 {
 	PQExpBufferData sql;
 

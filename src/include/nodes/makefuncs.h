@@ -67,6 +67,6 @@ extern FuncExpr *makeFuncExpr(Oid funcid, Oid rettype,
 
 extern DefElem *makeDefElem(char *name, Node *arg);
 extern DefElem *makeDefElemExtended(char *namespace, char *name, Node *arg,
-									DefElemAction defaction);
+					DefElemAction defaction);
 
 #endif   /* MAKEFUNC_H */

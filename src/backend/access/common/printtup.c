@@ -71,7 +71,7 @@ printtup_create_DR(CommandDest dest)
 {
 	DR_printtup *self = (DR_printtup *) palloc0(sizeof(DR_printtup));
 
-	self->pub.receiveSlot = printtup;			/* might get changed later */
+	self->pub.receiveSlot = printtup;	/* might get changed later */
 	self->pub.rStartup = printtup_startup;
 	self->pub.rShutdown = printtup_shutdown;
 	self->pub.rDestroy = printtup_destroy;

@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * pg_conversion_fn.h
- * 	 prototypes for functions in catalog/pg_conversion.c
+ *	 prototypes for functions in catalog/pg_conversion.c
  *
  *
  * Portions Copyright (c) 1996-2009, PostgreSQL Global Development Group

@@ -1,5 +1,5 @@
 /*
- * $PostgreSQL:$ 
+ * $PostgreSQL$
  *
  * Both POSIX and CRC32 checksums */
 

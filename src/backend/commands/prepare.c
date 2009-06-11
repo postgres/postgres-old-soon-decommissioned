@@ -350,7 +350,7 @@ EvaluateParams(PreparedStatement *pstmt, List *params,
 		if (pstate->p_hasWindowFuncs)
 			ereport(ERROR,
 					(errcode(ERRCODE_WINDOWING_ERROR),
-			  errmsg("cannot use window function in EXECUTE parameter")));
+				 errmsg("cannot use window function in EXECUTE parameter")));
 
 		given_type_id = exprType(expr);
 

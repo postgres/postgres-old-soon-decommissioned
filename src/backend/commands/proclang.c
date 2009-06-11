@@ -140,7 +140,7 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 										 pltemplate->tmplhandler,
 										 pltemplate->tmpllibrary,
 										 false, /* isAgg */
-										 false,	/* isWindowFunc */
+										 false, /* isWindowFunc */
 										 false, /* security_definer */
 										 false, /* isStrict */
 										 PROVOLATILE_VOLATILE,
@@ -175,7 +175,7 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 										 pltemplate->tmplvalidator,
 										 pltemplate->tmpllibrary,
 										 false, /* isAgg */
-										 false,	/* isWindowFunc */
+										 false, /* isWindowFunc */
 										 false, /* security_definer */
 										 false, /* isStrict */
 										 PROVOLATILE_VOLATILE,
@@ -635,7 +635,7 @@ AlterLanguageOwner_internal(HeapTuple tup, Relation rel, Oid newOwnerId)
 		}
 
 		newtuple = heap_modify_tuple(tup, RelationGetDescr(rel),
-									repl_val, repl_null, repl_repl);
+									 repl_val, repl_null, repl_repl);
 
 		simple_heap_update(rel, &newtuple->t_self, newtuple);
 		CatalogUpdateIndexes(rel, newtuple);

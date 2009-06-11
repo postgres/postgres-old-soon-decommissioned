@@ -84,7 +84,7 @@ string_to_uuid(const char *source, pg_uuid_t *uuid)
 {
 	const char *src = source;
 	bool		braces = false;
-	int	i;
+	int			i;
 
 	if (src[0] == '{')
 	{

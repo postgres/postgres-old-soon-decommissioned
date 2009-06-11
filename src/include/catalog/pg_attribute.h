@@ -157,7 +157,7 @@ CATALOG(pg_attribute,1249) BKI_BOOTSTRAP BKI_WITHOUT_OIDS
 
 /*
  * ATTRIBUTE_FIXED_PART_SIZE is the size of the fixed-layout,
- * guaranteed-not-null part of a pg_attribute row.  This is in fact as much
+ * guaranteed-not-null part of a pg_attribute row.	This is in fact as much
  * of the row as gets copied into tuple descriptors, so don't expect you
  * can access fields beyond attinhcount except in a real tuple!
  */
@@ -363,7 +363,7 @@ DATA(insert ( 1255 tableoid			26 0  4  -7 0 -1 -1 t p i t f f t 0 _null_));
 { 1249, {"attisdropped"}, 16, -1,	1, 15, 0, -1, -1, true, 'p', 'c', true, false, false, true, 0, { 0 } }, \
 { 1249, {"attislocal"},   16, -1,	1, 16, 0, -1, -1, true, 'p', 'c', true, false, false, true, 0, { 0 } }, \
 { 1249, {"attinhcount"},  23, -1,	4, 17, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0, { 0 } }, \
-{ 1249, {"attacl"},     1034, -1,  -1, 18, 1, -1, -1, false, 'x', 'i', false, false, false, true, 0, { 0 } }
+{ 1249, {"attacl"},		1034, -1,  -1, 18, 1, -1, -1, false, 'x', 'i', false, false, false, true, 0, { 0 } }
 
 DATA(insert ( 1249 attrelid			26 -1  4   1 0 -1 -1 t p i t f f t 0 _null_));
 DATA(insert ( 1249 attname			19 -1 NAMEDATALEN  2 0 -1 -1 f p c t f f t 0 _null_));
@@ -409,7 +409,7 @@ DATA(insert ( 1249 tableoid			26 0  4  -7 0 -1 -1 t p i t f f t 0 _null_));
 { 1259, {"reltoastidxid"}, 26, -1,	4, 11, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0, { 0 } }, \
 { 1259, {"relhasindex"},   16, -1,	1, 12, 0, -1, -1, true, 'p', 'c', true, false, false, true, 0, { 0 } }, \
 { 1259, {"relisshared"},   16, -1,	1, 13, 0, -1, -1, true, 'p', 'c', true, false, false, true, 0, { 0 } }, \
-{ 1259, {"relistemp"},     16, -1,	1, 14, 0, -1, -1, true, 'p', 'c', true, false, false, true, 0, { 0 } }, \
+{ 1259, {"relistemp"},	   16, -1,	1, 14, 0, -1, -1, true, 'p', 'c', true, false, false, true, 0, { 0 } }, \
 { 1259, {"relkind"},	   18, -1,	1, 15, 0, -1, -1, true, 'p', 'c', true, false, false, true, 0, { 0 } }, \
 { 1259, {"relnatts"},	   21, -1,	2, 16, 0, -1, -1, true, 'p', 's', true, false, false, true, 0, { 0 } }, \
 { 1259, {"relchecks"},	   21, -1,	2, 17, 0, -1, -1, true, 'p', 's', true, false, false, true, 0, { 0 } }, \

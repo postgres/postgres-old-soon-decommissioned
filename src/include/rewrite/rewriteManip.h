@@ -23,7 +23,7 @@ extern void ChangeVarNodes(Node *node, int old_varno, int new_varno,
 extern void IncrementVarSublevelsUp(Node *node, int delta_sublevels_up,
 						int min_sublevels_up);
 extern void IncrementVarSublevelsUp_rtable(List *rtable,
-							   int delta_sublevels_up,	int min_sublevels_up);
+							   int delta_sublevels_up, int min_sublevels_up);
 
 extern bool rangeTableEntry_used(Node *node, int rt_index,
 					 int sublevels_up);

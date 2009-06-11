@@ -43,4 +43,4 @@ extern void AtSubAbort_Snapshot(int level);
 extern void AtEarlyCommit_Snapshot(void);
 extern void AtEOXact_Snapshot(bool isCommit);
 
-#endif /* SNAPMGR_H */
+#endif   /* SNAPMGR_H */

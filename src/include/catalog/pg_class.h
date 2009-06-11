@@ -56,7 +56,7 @@ CATALOG(pg_class,1259) BKI_BOOTSTRAP
 	bool		relhasoids;		/* T if we generate OIDs for rows of rel */
 	bool		relhaspkey;		/* has (or has had) PRIMARY KEY index */
 	bool		relhasrules;	/* has (or has had) any rules */
-	bool		relhastriggers;	/* has (or has had) any TRIGGERs */
+	bool		relhastriggers; /* has (or has had) any TRIGGERs */
 	bool		relhassubclass; /* has (or has had) derived classes */
 	TransactionId relfrozenxid; /* all Xids < this are frozen in this rel */
 

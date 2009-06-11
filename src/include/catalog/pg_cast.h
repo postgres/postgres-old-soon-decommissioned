@@ -66,7 +66,7 @@ typedef enum CoercionMethod
 {
 	COERCION_METHOD_FUNCTION = 'f',		/* use a function */
 	COERCION_METHOD_BINARY = 'b',		/* types are binary-compatible */
-	COERCION_METHOD_INOUT = 'i'			/* use input/output functions */
+	COERCION_METHOD_INOUT = 'i' /* use input/output functions */
 } CoercionMethod;
 
 

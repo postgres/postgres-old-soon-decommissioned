@@ -55,8 +55,8 @@ CreateTemplateTupleDesc(int natts, bool hasoid)
 	 * pointers.
 	 *
 	 * Note: Only the fixed part of pg_attribute rows is included in tuple
-	 * descriptors, so we only need ATTRIBUTE_FIXED_PART_SIZE space
-	 * per attr.  That might need alignment padding, however.
+	 * descriptors, so we only need ATTRIBUTE_FIXED_PART_SIZE space per attr.
+	 * That might need alignment padding, however.
 	 */
 	attroffset = sizeof(struct tupleDesc) + natts * sizeof(Form_pg_attribute);
 	attroffset = MAXALIGN(attroffset);

@@ -1,5 +1,5 @@
 /*
- * $PostgreSQL$ 
+ * $PostgreSQL$
  *
  * XSLT processing functions (requiring libxslt)
  *

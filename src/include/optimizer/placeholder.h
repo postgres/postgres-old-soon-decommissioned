@@ -18,11 +18,11 @@
 
 
 extern PlaceHolderVar *make_placeholder_expr(PlannerInfo *root, Expr *expr,
-											 Relids phrels);
+					  Relids phrels);
 extern PlaceHolderInfo *find_placeholder_info(PlannerInfo *root,
-											  PlaceHolderVar *phv);
+					  PlaceHolderVar *phv);
 extern void fix_placeholder_eval_levels(PlannerInfo *root);
 extern void add_placeholders_to_joinrel(PlannerInfo *root,
-										RelOptInfo *joinrel);
+							RelOptInfo *joinrel);
 
 #endif   /* PLACEHOLDER_H */

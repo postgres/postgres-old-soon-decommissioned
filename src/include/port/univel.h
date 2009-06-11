@@ -1,5 +1,5 @@
 /*
- * $PostgreSQL:$ 
+ * $PostgreSQL$
  *
  ***************************************
  * Define this if you are compiling with

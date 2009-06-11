@@ -45,7 +45,7 @@ typedef void (*PushFunction) (Datum opaque, TSQueryParserState state,
 										  int2 tokenweights,	/* bitmap as described
 																 * in QueryOperand
 																 * struct */
-										  bool	prefix);
+										  bool prefix);
 
 extern TSQuery parse_tsquery(char *buf,
 			  PushFunction pushval,
@@ -75,7 +75,7 @@ typedef struct
 		 */
 		uint16	   *apos;
 	}			pos;
-	uint16		flags;  /* currently, only TSL_PREFIX */
+	uint16		flags;			/* currently, only TSL_PREFIX */
 	char	   *word;
 	uint32		alen;
 } ParsedWord;

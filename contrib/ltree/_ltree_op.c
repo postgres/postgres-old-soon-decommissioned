@@ -1,5 +1,5 @@
 /*
- * $PostgreSQL:$ 
+ * $PostgreSQL$
  *
  *
  * op function for ltree[]
@@ -43,7 +43,7 @@ typedef Datum (*PGCALL2) (PG_FUNCTION_ARGS);
 #define NEXTVAL(x) ( (ltree*)( (char*)(x) + INTALIGN( VARSIZE(x) ) ) )
 
 static bool
-array_iterator(ArrayType *la, PGCALL2 callback, void *param, ltree ** found)
+array_iterator(ArrayType *la, PGCALL2 callback, void *param, ltree **found)
 {
 	int			num = ArrayGetNItems(ARR_NDIM(la), ARR_DIMS(la));
 	ltree	   *item = (ltree *) ARR_DATA_PTR(la);

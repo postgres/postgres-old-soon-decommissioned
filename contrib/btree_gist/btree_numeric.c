@@ -1,5 +1,5 @@
 /*
- * $PostgreSQL$ 
+ * $PostgreSQL$
  */
 #include "btree_gist.h"
 
@@ -106,6 +106,7 @@ gbt_numeric_consistent(PG_FUNCTION_ARGS)
 	GISTENTRY  *entry = (GISTENTRY *) PG_GETARG_POINTER(0);
 	void	   *query = (void *) DatumGetNumeric(PG_GETARG_DATUM(1));
 	StrategyNumber strategy = (StrategyNumber) PG_GETARG_UINT16(2);
+
 	/* Oid		subtype = PG_GETARG_OID(3); */
 	bool	   *recheck = (bool *) PG_GETARG_POINTER(4);
 	bool		retval;

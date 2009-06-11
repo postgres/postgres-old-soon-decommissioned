@@ -61,7 +61,7 @@ typedef struct
 {
 	void	   *value;
 	int			length;
-}	gss_buffer_desc;
+} gss_buffer_desc;
 #endif
 #endif   /* ENABLE_SSPI */
 
@@ -89,7 +89,7 @@ typedef struct
 	gss_ctx_id_t ctx;			/* GSSAPI connection context */
 	gss_name_t	name;			/* GSSAPI client name */
 #endif
-}	pg_gssinfo;
+} pg_gssinfo;
 #endif
 
 /*
@@ -124,7 +124,7 @@ typedef struct Port
 	/*
 	 * Information that needs to be held during the authentication cycle.
 	 */
-	HbaLine	   *hba;
+	HbaLine    *hba;
 	char		md5Salt[4];		/* Password salt */
 
 	/*

@@ -3620,7 +3620,7 @@ static SPIPlanPtr
 ri_FetchPreparedPlan(RI_QueryKey *key)
 {
 	RI_QueryHashEntry *entry;
-	SPIPlanPtr		plan;
+	SPIPlanPtr	plan;
 
 	/*
 	 * On the first call initialize the hashtable
@@ -3638,11 +3638,11 @@ ri_FetchPreparedPlan(RI_QueryKey *key)
 		return NULL;
 
 	/*
-	 * Check whether the plan is still valid.  If it isn't, we don't want
-	 * to simply rely on plancache.c to regenerate it; rather we should
-	 * start from scratch and rebuild the query text too.  This is to cover
-	 * cases such as table/column renames.  We depend on the plancache
-	 * machinery to detect possible invalidations, though.
+	 * Check whether the plan is still valid.  If it isn't, we don't want to
+	 * simply rely on plancache.c to regenerate it; rather we should start
+	 * from scratch and rebuild the query text too.  This is to cover cases
+	 * such as table/column renames.  We depend on the plancache machinery to
+	 * detect possible invalidations, though.
 	 *
 	 * CAUTION: this check is only trustworthy if the caller has already
 	 * locked both FK and PK rels.
@@ -3652,8 +3652,8 @@ ri_FetchPreparedPlan(RI_QueryKey *key)
 		return plan;
 
 	/*
-	 * Otherwise we might as well flush the cached plan now, to free a
-	 * little memory space before we make a new one.
+	 * Otherwise we might as well flush the cached plan now, to free a little
+	 * memory space before we make a new one.
 	 */
 	entry->plan = NULL;
 	if (plan)
@@ -3682,8 +3682,8 @@ ri_HashPreparedPlan(RI_QueryKey *key, SPIPlanPtr plan)
 		ri_InitHashTables();
 
 	/*
-	 * Add the new plan.  We might be overwriting an entry previously
-	 * found invalid by ri_FetchPreparedPlan.
+	 * Add the new plan.  We might be overwriting an entry previously found
+	 * invalid by ri_FetchPreparedPlan.
 	 */
 	entry = (RI_QueryHashEntry *) hash_search(ri_query_cache,
 											  (void *) key,

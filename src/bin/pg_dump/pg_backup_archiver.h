@@ -85,7 +85,8 @@ typedef z_stream *z_streamp;
 #define K_VERS_1_9 (( (1 * 256 + 9) * 256 + 0) * 256 + 0)		/* add default_with_oids
 																 * tracking */
 #define K_VERS_1_10 (( (1 * 256 + 10) * 256 + 0) * 256 + 0)		/* add tablespace */
-#define K_VERS_1_11 (( (1 * 256 + 11) * 256 + 0) * 256 + 0)		/* add toc section indicator */
+#define K_VERS_1_11 (( (1 * 256 + 11) * 256 + 0) * 256 + 0)		/* add toc section
+																 * indicator */
 
 #define K_VERS_MAX (( (1 * 256 + 11) * 256 + 255) * 256 + 0)
 
@@ -231,15 +232,15 @@ typedef struct _archiveHandle
 	StartBlobPtr StartBlobPtr;
 	EndBlobPtr EndBlobPtr;
 
-	ClonePtr	ClonePtr;		/* Clone format-specific fields */
-	DeClonePtr	DeClonePtr;		/* Clean up cloned fields */
+	ClonePtr ClonePtr;			/* Clone format-specific fields */
+	DeClonePtr DeClonePtr;		/* Clean up cloned fields */
 
 	CustomOutPtr CustomOutPtr;	/* Alternative script output routine */
 
 	/* Stuff for direct DB connection */
 	char	   *archdbname;		/* DB name *read* from archive */
 	enum trivalue promptPassword;
-	char       *savedPassword;	/* password for ropt->username, if known */
+	char	   *savedPassword;	/* password for ropt->username, if known */
 	PGconn	   *connection;
 	int			connectToDB;	/* Flag to indicate if direct DB connection is
 								 * required */
@@ -292,7 +293,7 @@ typedef struct _tocEntry
 	struct _tocEntry *next;
 	CatalogId	catalogId;
 	DumpId		dumpId;
-	teSection   section;
+	teSection	section;
 	bool		hadDumper;		/* Archiver was passed a dumper routine (used
 								 * in restore) */
 	char	   *tag;			/* index tag */

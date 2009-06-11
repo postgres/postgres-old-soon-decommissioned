@@ -74,9 +74,9 @@ extern void UnlockSharedObject(Oid classid, Oid objid, uint16 objsubid,
 				   LOCKMODE lockmode);
 
 extern void LockSharedObjectForSession(Oid classid, Oid objid, uint16 objsubid,
-				 LOCKMODE lockmode);
+						   LOCKMODE lockmode);
 extern void UnlockSharedObjectForSession(Oid classid, Oid objid, uint16 objsubid,
-				   LOCKMODE lockmode);
+							 LOCKMODE lockmode);
 
 /* Describe a locktag for error messages */
 extern void DescribeLockTag(StringInfo buf, const LOCKTAG *tag);

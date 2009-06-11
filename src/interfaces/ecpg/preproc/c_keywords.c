@@ -22,8 +22,11 @@
  */
 static const ScanKeyword ScanCKeywords[] = {
 	/* name, value, category */
-	/* category is not needed in ecpg, it is only here so we can share
-         * the data structure with the backend */
+
+	/*
+	 * category is not needed in ecpg, it is only here so we can share the
+	 * data structure with the backend
+	 */
 	{"VARCHAR", VARCHAR, 0},
 	{"auto", S_AUTO, 0},
 	{"bool", SQL_BOOL, 0},

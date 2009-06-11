@@ -113,7 +113,7 @@ typedef struct FuncCallContext
 	 *
 	 * tuple_desc is for use when returning tuples (i.e. composite data types)
 	 * and is only needed if you are going to build the tuples with
-	 * heap_form_tuple() rather than with BuildTupleFromCStrings().	Note that
+	 * heap_form_tuple() rather than with BuildTupleFromCStrings(). Note that
 	 * the TupleDesc pointer stored here should usually have been run through
 	 * BlessTupleDesc() first.
 	 */

@@ -281,7 +281,7 @@ extern void copydir(char *fromdir, char *todir, bool recurse);
 
 extern bool rmtree(const char *path, bool rmtopdir);
 
-/* 
+/*
  * stat() is not guaranteed to set the st_size field on win32, so we
  * redefine it to our own implementation that is.
  *
@@ -293,7 +293,8 @@ extern bool rmtree(const char *path, bool rmtopdir);
  */
 #if defined(WIN32) && !defined(__CYGWIN__) && !defined(UNSAFE_STAT_OK)
 #include <sys/stat.h>
-extern int	pgwin32_safestat(const char *path, struct stat *buf);
+extern int	pgwin32_safestat(const char *path, struct stat * buf);
+
 #define stat(a,b) pgwin32_safestat(a,b)
 #endif
 

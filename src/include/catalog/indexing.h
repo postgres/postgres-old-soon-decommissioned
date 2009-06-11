@@ -256,7 +256,7 @@ DECLARE_UNIQUE_INDEX(pg_foreign_data_wrapper_name_index, 548, on pg_foreign_data
 #define ForeignDataWrapperNameIndexId	548
 
 DECLARE_UNIQUE_INDEX(pg_foreign_server_oid_index, 113, on pg_foreign_server using btree(oid oid_ops));
-#define ForeignServerOidIndexId	113
+#define ForeignServerOidIndexId 113
 
 DECLARE_UNIQUE_INDEX(pg_foreign_server_name_index, 549, on pg_foreign_server using btree(srvname name_ops));
 #define ForeignServerNameIndexId	549

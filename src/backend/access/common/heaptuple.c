@@ -388,7 +388,7 @@ nocachegetattr(HeapTuple tuple,
 		 * Now check to see if any preceding bits are null...
 		 */
 		{
-			int			byte = attnum >> 3;
+			int byte = attnum >> 3;
 			int			finalbit = attnum & 0x07;
 
 			/* check for nulls "before" final bit of last byte */
@@ -1183,7 +1183,7 @@ slot_getattr(TupleTableSlot *slot, int attnum, bool *isnull)
 	{
 		if (tuple == NULL)		/* internal error */
 			elog(ERROR, "cannot extract system attribute from virtual tuple");
-		if (tuple == &(slot->tts_minhdr))	/* internal error */
+		if (tuple == &(slot->tts_minhdr))		/* internal error */
 			elog(ERROR, "cannot extract system attribute from minimal tuple");
 		return heap_getsysattr(tuple, attnum, tupleDesc, isnull);
 	}
@@ -1369,7 +1369,7 @@ slot_attisnull(TupleTableSlot *slot, int attnum)
 	{
 		if (tuple == NULL)		/* internal error */
 			elog(ERROR, "cannot extract system attribute from virtual tuple");
-		if (tuple == &(slot->tts_minhdr))	/* internal error */
+		if (tuple == &(slot->tts_minhdr))		/* internal error */
 			elog(ERROR, "cannot extract system attribute from minimal tuple");
 		return heap_attisnull(tuple, attnum);
 	}

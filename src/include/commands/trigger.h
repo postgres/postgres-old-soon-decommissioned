@@ -39,7 +39,7 @@ typedef struct TriggerData
 } TriggerData;
 
 /*
- * TriggerEvent bit flags 
+ * TriggerEvent bit flags
  *
  * Note that we assume different event types (INSERT/DELETE/UPDATE/TRUNCATE)
  * can't be OR'd together in a single TriggerEvent.  This is unlike the
@@ -93,7 +93,7 @@ typedef struct TriggerData
 #define SESSION_REPLICATION_ROLE_ORIGIN		0
 #define SESSION_REPLICATION_ROLE_REPLICA	1
 #define SESSION_REPLICATION_ROLE_LOCAL		2
-extern PGDLLIMPORT int	SessionReplicationRole;
+extern PGDLLIMPORT int SessionReplicationRole;
 
 /*
  * States at which a trigger can be fired. These are the
@@ -104,8 +104,8 @@ extern PGDLLIMPORT int	SessionReplicationRole;
 #define TRIGGER_FIRES_ON_REPLICA			'R'
 #define TRIGGER_DISABLED					'D'
 
-extern Oid	CreateTrigger(CreateTrigStmt *stmt, Oid constraintOid,
-						  bool checkPermissions);
+extern Oid CreateTrigger(CreateTrigStmt *stmt, Oid constraintOid,
+			  bool checkPermissions);
 
 extern void DropTrigger(Oid relid, const char *trigname,
 			DropBehavior behavior, bool missing_ok);
@@ -155,9 +155,9 @@ extern void ExecARUpdateTriggers(EState *estate,
 					 ItemPointer tupleid,
 					 HeapTuple newtuple);
 extern void ExecBSTruncateTriggers(EState *estate,
-					 ResultRelInfo *relinfo);
+					   ResultRelInfo *relinfo);
 extern void ExecASTruncateTriggers(EState *estate,
-					 ResultRelInfo *relinfo);
+					   ResultRelInfo *relinfo);
 
 extern void AfterTriggerBeginXact(void);
 extern void AfterTriggerBeginQuery(void);

@@ -533,8 +533,8 @@ ginVacuumEntryPage(GinVacuumState *gvs, Buffer buffer, BlockNumber *roots, uint3
 
 			if (GinGetNPosting(itup) != newN)
 			{
-				Datum			value;
-				OffsetNumber	attnum;
+				Datum		value;
+				OffsetNumber attnum;
 
 				/*
 				 * Some ItemPointers was deleted, so we should remake our
@@ -724,9 +724,9 @@ ginvacuumcleanup(PG_FUNCTION_ARGS)
 		PG_RETURN_POINTER(stats);
 	}
 
-	/* 
-	 * Set up all-zero stats and cleanup pending inserts
-	 * if ginbulkdelete wasn't called
+	/*
+	 * Set up all-zero stats and cleanup pending inserts if ginbulkdelete
+	 * wasn't called
 	 */
 	if (stats == NULL)
 	{
@@ -758,7 +758,7 @@ ginvacuumcleanup(PG_FUNCTION_ARGS)
 	if (needLock)
 		UnlockRelationForExtension(index, ExclusiveLock);
 
-	totFreePages =  0;
+	totFreePages = 0;
 
 	for (blkno = GIN_ROOT_BLKNO + 1; blkno < npages; blkno++)
 	{

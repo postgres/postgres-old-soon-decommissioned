@@ -63,10 +63,10 @@ ExecMaterial(MaterialState *node)
 		if (node->eflags & EXEC_FLAG_MARK)
 		{
 			/*
-			 * Allocate a second read pointer to serve as the mark.
-			 * We know it must have index 1, so needn't store that.
+			 * Allocate a second read pointer to serve as the mark. We know it
+			 * must have index 1, so needn't store that.
 			 */
-			int		ptrno;
+			int			ptrno;
 
 			ptrno = tuplestore_alloc_read_pointer(tuplestorestate,
 												  node->eflags);
@@ -185,7 +185,7 @@ ExecInitMaterial(Material *node, EState *estate, int eflags)
 	/*
 	 * Tuplestore's interpretation of the flag bits is subtly different from
 	 * the general executor meaning: it doesn't think BACKWARD necessarily
-	 * means "backwards all the way to start".  If told to support BACKWARD we
+	 * means "backwards all the way to start".	If told to support BACKWARD we
 	 * must include REWIND in the tuplestore eflags, else tuplestore_trim
 	 * might throw away too much.
 	 */

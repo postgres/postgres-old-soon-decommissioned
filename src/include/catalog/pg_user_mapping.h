@@ -28,8 +28,9 @@
 
 CATALOG(pg_user_mapping,1418)
 {
-	Oid			umuser;			/* Id of the user, InvalidOid if PUBLIC is wanted */
-	Oid			umserver;	   	/* server of this mapping */
+	Oid			umuser;			/* Id of the user, InvalidOid if PUBLIC is
+								 * wanted */
+	Oid			umserver;		/* server of this mapping */
 
 	/*
 	 * VARIABLE LENGTH FIELDS start here.  These fields may be NULL, too.

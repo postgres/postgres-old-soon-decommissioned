@@ -81,8 +81,8 @@ typedef enum
 	XMLBINARY_HEX
 } XmlBinaryType;
 
-extern int xmlbinary; /* XmlBinaryType, but int for guc enum */
+extern int	xmlbinary;			/* XmlBinaryType, but int for guc enum */
 
-extern int xmloption; /* XmlOptionType, but int for guc enum */
+extern int	xmloption;			/* XmlOptionType, but int for guc enum */
 
 #endif   /* XML_H */

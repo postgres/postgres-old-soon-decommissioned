@@ -67,8 +67,8 @@ extern void heap_truncate_check_FKs(List *relations, bool tempTables);
 extern List *heap_truncate_find_FKs(List *relationIds);
 
 extern void InsertPgAttributeTuple(Relation pg_attribute_rel,
-						Form_pg_attribute new_attribute,
-						CatalogIndexState indstate);
+					   Form_pg_attribute new_attribute,
+					   CatalogIndexState indstate);
 
 extern void InsertPgClassTuple(Relation pg_class_desc,
 				   Relation new_rel_desc,

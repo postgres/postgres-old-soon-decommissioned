@@ -77,7 +77,7 @@ raw_parser(const char *str)
 char *
 pg_parse_string_token(const char *token)
 {
-	int		ctoken;
+	int			ctoken;
 
 	scanner_init(token);
 

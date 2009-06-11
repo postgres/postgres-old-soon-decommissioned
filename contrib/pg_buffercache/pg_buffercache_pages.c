@@ -37,7 +37,7 @@ typedef struct
 	bool		isvalid;
 	bool		isdirty;
 	uint16		usagecount;
-}	BufferCachePagesRec;
+} BufferCachePagesRec;
 
 
 /*
@@ -47,7 +47,7 @@ typedef struct
 {
 	TupleDesc	tupdesc;
 	BufferCachePagesRec *record;
-}	BufferCachePagesContext;
+} BufferCachePagesContext;
 
 
 /*

@@ -136,8 +136,8 @@ main(int argc, char *argv[])
 
 	/*
 	 * This slightly-chintzy coding will work as long as the control file
-	 * timestamps are within the range of time_t; that should be the case
-	 * in all foreseeable circumstances, so we don't bother importing the
+	 * timestamps are within the range of time_t; that should be the case in
+	 * all foreseeable circumstances, so we don't bother importing the
 	 * backend's timezone library into pg_controldata.
 	 *
 	 * Use variable for format to suppress overly-anal-retentive gcc warning

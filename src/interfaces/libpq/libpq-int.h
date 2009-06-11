@@ -69,7 +69,7 @@ typedef struct
 {
 	void	   *value;
 	int			length;
-}	gss_buffer_desc;
+} gss_buffer_desc;
 #endif
 #endif   /* ENABLE_SSPI */
 
@@ -155,11 +155,11 @@ typedef struct
 
 typedef struct PGEvent
 {
-	PGEventProc	proc;			/* the function to call on events */
+	PGEventProc proc;			/* the function to call on events */
 	char	   *name;			/* used only for error messages */
 	void	   *passThrough;	/* pointer supplied at registration time */
 	void	   *data;			/* optional state (instance) data */
-	bool		resultInitialized;	/* T if RESULTCREATE/COPY succeeded */
+	bool		resultInitialized;		/* T if RESULTCREATE/COPY succeeded */
 } PGEvent;
 
 struct pg_result
@@ -182,7 +182,7 @@ struct pg_result
 	 * on the PGresult don't have to reference the PGconn.
 	 */
 	PGNoticeHooks noticeHooks;
-	PGEvent	   *events;
+	PGEvent    *events;
 	int			nEvents;
 	int			client_encoding;	/* encoding id */
 
@@ -310,9 +310,9 @@ struct pg_conn
 	PGNoticeHooks noticeHooks;
 
 	/* Event procs registered via PQregisterEventProc */
-	PGEvent	   *events;			/* expandable array of event data */
+	PGEvent    *events;			/* expandable array of event data */
 	int			nEvents;		/* number of active events */
-	int			eventArraySize;	/* allocated array size */
+	int			eventArraySize; /* allocated array size */
 
 	/* Status indicators */
 	ConnStatusType status;

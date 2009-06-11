@@ -47,7 +47,7 @@ MergeItemPointers(ItemPointerData *dst,
 
 	while (aptr - a < na && bptr - b < nb)
 	{
-		int		cmp = compareItemPointers(aptr, bptr);
+		int			cmp = compareItemPointers(aptr, bptr);
 
 		if (cmp > 0)
 			*dptr++ = *bptr++;

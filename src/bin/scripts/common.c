@@ -226,7 +226,7 @@ executeMaintenanceCommand(PGconn *conn, const char *query, bool echo)
 }
 
 /*
- * "Safe" wrapper around strdup().  Pulled from psql/common.c
+ * "Safe" wrapper around strdup().	Pulled from psql/common.c
  */
 char *
 pg_strdup(const char *string)

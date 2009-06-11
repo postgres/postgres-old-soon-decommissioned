@@ -21,7 +21,7 @@
  *		index_markpos	- mark a scan position
  *		index_restrpos	- restore a scan position
  *		index_getnext	- get the next tuple from a scan
- *		index_getbitmap	- get all tuples from a scan
+ *		index_getbitmap - get all tuples from a scan
  *		index_bulk_delete	- bulk deletion of index tuples
  *		index_vacuum_cleanup	- post-deletion cleanup of an index
  *		index_getprocid - get a support procedure OID
@@ -461,9 +461,9 @@ index_getnext(IndexScanDesc scan, ScanDirection direction)
 
 			/*
 			 * The AM's gettuple proc finds the next index entry matching the
-			 * scan keys, and puts the TID in xs_ctup.t_self (ie, *tid).
-			 * It should also set scan->xs_recheck, though we pay no
-			 * attention to that here.
+			 * scan keys, and puts the TID in xs_ctup.t_self (ie, *tid). It
+			 * should also set scan->xs_recheck, though we pay no attention to
+			 * that here.
 			 */
 			found = DatumGetBool(FunctionCall2(procedure,
 											   PointerGetDatum(scan),

@@ -188,7 +188,7 @@ NAME(PG_FUNCTION_ARGS) {						\
 	PG_FREE_IF_COPY(b,1);						\
 												\
 	PG_RETURN_BOOL( CONDITION );				\
-}												\
+}	\
 /* keep compiler quiet - no extra ; */			\
 extern int no_such_variable
 

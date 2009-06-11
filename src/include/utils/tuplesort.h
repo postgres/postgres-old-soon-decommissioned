@@ -59,8 +59,8 @@ extern Tuplesortstate *tuplesort_begin_index_btree(Relation indexRel,
 							bool enforceUnique,
 							int workMem, bool randomAccess);
 extern Tuplesortstate *tuplesort_begin_index_hash(Relation indexRel,
-							uint32 hash_mask,
-							int workMem, bool randomAccess);
+						   uint32 hash_mask,
+						   int workMem, bool randomAccess);
 extern Tuplesortstate *tuplesort_begin_datum(Oid datumType,
 					  Oid sortOperator, bool nullsFirstFlag,
 					  int workMem, bool randomAccess);

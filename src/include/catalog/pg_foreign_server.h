@@ -24,7 +24,7 @@
  *		typedef struct FormData_pg_foreign_server
  * ----------------
  */
-#define ForeignServerRelationId	1417
+#define ForeignServerRelationId 1417
 
 CATALOG(pg_foreign_server,1417)
 {

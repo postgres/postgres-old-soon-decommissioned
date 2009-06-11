@@ -1,5 +1,5 @@
 /*
- * $PostgreSQL:$ 
+ * $PostgreSQL$
  *
  ******************************************************************************
   This file contains routines that can be bound to a Postgres backend and

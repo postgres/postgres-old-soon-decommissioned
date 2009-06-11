@@ -774,8 +774,8 @@ ExecMergeJoin(MergeJoinState *node)
 					}
 
 					/*
-					 * In a semijoin, we'll consider returning the first match,
-					 * but after that we're done with this outer tuple.
+					 * In a semijoin, we'll consider returning the first
+					 * match, but after that we're done with this outer tuple.
 					 */
 					if (node->js.jointype == JOIN_SEMI)
 						node->mj_JoinState = EXEC_MJ_NEXTOUTER;

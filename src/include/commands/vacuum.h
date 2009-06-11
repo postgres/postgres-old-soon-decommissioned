@@ -94,9 +94,9 @@ typedef struct VacAttrStats
 	Datum	   *stavalues[STATISTIC_NUM_SLOTS];
 
 	/*
-	 * These fields describe the stavalues[n] element types. They will
-	 * be initialized to be the same as the column's that's underlying the
-	 * slot, but a custom typanalyze function might want to store an array of
+	 * These fields describe the stavalues[n] element types. They will be
+	 * initialized to be the same as the column's that's underlying the slot,
+	 * but a custom typanalyze function might want to store an array of
 	 * something other than the analyzed column's elements. It should then
 	 * overwrite these fields.
 	 */

@@ -25,7 +25,7 @@
 #include "utils/lsyscache.h"
 
 static void LockTableRecurse(Oid reloid, RangeVar *rv,
-							 LOCKMODE lockmode, bool nowait, bool recurse);
+				 LOCKMODE lockmode, bool nowait, bool recurse);
 
 
 /*
@@ -67,9 +67,9 @@ LockTableRecurse(Oid reloid, RangeVar *rv,
 	AclResult	aclresult;
 
 	/*
-	 * Acquire the lock.  We must do this first to protect against
-	 * concurrent drops.  Note that a lock against an already-dropped
-	 * relation's OID won't fail.
+	 * Acquire the lock.  We must do this first to protect against concurrent
+	 * drops.  Note that a lock against an already-dropped relation's OID
+	 * won't fail.
 	 */
 	if (nowait)
 	{
@@ -148,8 +148,8 @@ LockTableRecurse(Oid reloid, RangeVar *rv,
 	 */
 	if (recurse)
 	{
-		List   *children = find_inheritance_children(reloid, NoLock);
-		ListCell *lc;
+		List	   *children = find_inheritance_children(reloid, NoLock);
+		ListCell   *lc;
 
 		foreach(lc, children)
 		{

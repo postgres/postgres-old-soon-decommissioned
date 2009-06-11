@@ -44,12 +44,12 @@ typedef void (*shmem_startup_hook_type) (void);
  * Note: the macro arguments are multiply evaluated, so avoid side-effects.
  *----------
  */
-#define PG_ENSURE_ERROR_CLEANUP(cleanup_function, arg)  \
+#define PG_ENSURE_ERROR_CLEANUP(cleanup_function, arg)	\
 	do { \
 		on_shmem_exit(cleanup_function, arg); \
 		PG_TRY()
 
-#define PG_END_ENSURE_ERROR_CLEANUP(cleanup_function, arg)  \
+#define PG_END_ENSURE_ERROR_CLEANUP(cleanup_function, arg)	\
 		cancel_shmem_exit(cleanup_function, arg); \
 		PG_CATCH(); \
 		{ \

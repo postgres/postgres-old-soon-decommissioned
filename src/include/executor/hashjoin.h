@@ -98,7 +98,7 @@ typedef struct HashSkewBucket
 } HashSkewBucket;
 
 #define SKEW_BUCKET_OVERHEAD  MAXALIGN(sizeof(HashSkewBucket))
-#define INVALID_SKEW_BUCKET_NO  (-1)
+#define INVALID_SKEW_BUCKET_NO	(-1)
 #define SKEW_WORK_MEM_PERCENT  2
 #define SKEW_MIN_OUTER_FRACTION  0.01
 
@@ -116,7 +116,7 @@ typedef struct HashJoinTableData
 	HashSkewBucket **skewBucket;	/* hashtable of skew buckets */
 	int			skewBucketLen;	/* size of skewBucket array (a power of 2!) */
 	int			nSkewBuckets;	/* number of active skew buckets */
-	int		   *skewBucketNums;	/* array indexes of active skew buckets */
+	int		   *skewBucketNums; /* array indexes of active skew buckets */
 
 	int			nbatch;			/* number of batches */
 	int			curbatch;		/* current batch #; 0 during 1st pass */
@@ -150,7 +150,7 @@ typedef struct HashJoinTableData
 	Size		spaceUsed;		/* memory space currently used by tuples */
 	Size		spaceAllowed;	/* upper limit for space used */
 	Size		spaceUsedSkew;	/* skew hash table's current space usage */
-	Size		spaceAllowedSkew;	/* upper limit for skew hashtable */
+	Size		spaceAllowedSkew;		/* upper limit for skew hashtable */
 
 	MemoryContext hashCxt;		/* context for whole-hash-join storage */
 	MemoryContext batchCxt;		/* context for this-batch-only storage */

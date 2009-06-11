@@ -1,5 +1,5 @@
 /*
- * $PostgreSQL:$ 
+ * $PostgreSQL$
  */
 #define NOFIXADE
 #define NEED_STRDUP

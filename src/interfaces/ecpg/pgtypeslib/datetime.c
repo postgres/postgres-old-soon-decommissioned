@@ -347,7 +347,7 @@ PGTYPESdate_defmt_asc(date * d, char *fmt, char *str)
 	char	   *fmt_ystart,
 			   *fmt_mstart,
 			   *fmt_dstart;
-	unsigned int	i;
+	unsigned int i;
 	int			reading_digit;
 	int			token_count;
 	char	   *str_copy;

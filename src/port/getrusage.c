@@ -47,7 +47,7 @@ getrusage(int who, struct rusage * rusage)
 		errno = EINVAL;
 		return -1;
 	}
-	
+
 	if (rusage == (struct rusage *) NULL)
 	{
 		errno = EFAULT;

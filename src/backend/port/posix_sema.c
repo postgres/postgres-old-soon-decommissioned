@@ -241,10 +241,10 @@ PGSemaphoreLock(PGSemaphore sema, bool interruptOK)
 	int			errStatus;
 
 	/*
-	 * See notes in sysv_sema.c's implementation of PGSemaphoreLock.
-	 * Just as that code does for semop(), we handle both the case where
-	 * sem_wait() returns errno == EINTR after a signal, and the case
-	 * where it just keeps waiting.
+	 * See notes in sysv_sema.c's implementation of PGSemaphoreLock. Just as
+	 * that code does for semop(), we handle both the case where sem_wait()
+	 * returns errno == EINTR after a signal, and the case where it just keeps
+	 * waiting.
 	 */
 	do
 	{

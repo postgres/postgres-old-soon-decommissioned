@@ -64,8 +64,8 @@ init_MultiFuncCall(PG_FUNCTION_ARGS)
 		/*
 		 * First call
 		 */
-		ReturnSetInfo  *rsi = (ReturnSetInfo *) fcinfo->resultinfo;
-		MemoryContext	multi_call_ctx;
+		ReturnSetInfo *rsi = (ReturnSetInfo *) fcinfo->resultinfo;
+		MemoryContext multi_call_ctx;
 
 		/*
 		 * Create a suitably long-lived context to hold cross-call data

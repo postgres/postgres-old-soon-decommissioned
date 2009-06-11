@@ -1022,14 +1022,14 @@ select_mergejoin_clauses(PlannerInfo *root,
 		 * Note: it would be bad if this condition failed for an otherwise
 		 * mergejoinable FULL JOIN clause, since that would result in
 		 * undesirable planner failure.  I believe that is not possible
-		 * however; a variable involved in a full join could only appear
-		 * in below_outer_join eclasses, which aren't considered redundant.
+		 * however; a variable involved in a full join could only appear in
+		 * below_outer_join eclasses, which aren't considered redundant.
 		 *
-		 * This case *can* happen for left/right join clauses: the
-		 * outer-side variable could be equated to a constant.  Because we
-		 * will propagate that constant across the join clause, the loss of
-		 * ability to do a mergejoin is not really all that big a deal, and
-		 * so it's not clear that improving this is important.
+		 * This case *can* happen for left/right join clauses: the outer-side
+		 * variable could be equated to a constant.  Because we will propagate
+		 * that constant across the join clause, the loss of ability to do a
+		 * mergejoin is not really all that big a deal, and so it's not clear
+		 * that improving this is important.
 		 */
 		cache_mergeclause_eclasses(root, restrictinfo);
 

@@ -28,7 +28,7 @@ typedef struct SnapshotData *Snapshot;
  * function.
  */
 typedef bool (*SnapshotSatisfiesFunc) (HeapTupleHeader tuple,
-									   Snapshot snapshot, Buffer buffer);
+										   Snapshot snapshot, Buffer buffer);
 
 typedef struct SnapshotData
 {
@@ -75,4 +75,4 @@ typedef enum
 	HeapTupleBeingUpdated
 } HTSU_Result;
 
-#endif /* SNAPSHOT_H */
+#endif   /* SNAPSHOT_H */

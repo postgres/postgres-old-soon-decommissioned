@@ -8,7 +8,7 @@
  * must be delivered to all already-running backends before it can be
  * forgotten.  (If we run out of space, we instead deliver a "RESET"
  * message to backends that have fallen too far behind.)
- * 
+ *
  * The struct type SharedInvalidationMessage, defining the contents of
  * a single message, is defined in sinval.h.
  *
@@ -33,7 +33,7 @@ extern void SharedInvalBackendInit(void);
 extern bool BackendIdIsActive(int backendID);
 
 extern void SIInsertDataEntries(const SharedInvalidationMessage *data, int n);
-extern int SIGetDataEntries(SharedInvalidationMessage *data, int datasize);
+extern int	SIGetDataEntries(SharedInvalidationMessage *data, int datasize);
 extern void SICleanupQueue(bool callerHasWriteLock, int minFree);
 
 extern LocalTransactionId GetNextLocalTransactionId(void);

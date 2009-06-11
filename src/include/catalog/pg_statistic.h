@@ -240,7 +240,7 @@ typedef FormData_pg_statistic *Form_pg_statistic;
 /*
  * A "most common elements" slot is similar to a "most common values" slot,
  * except that it stores the most common non-null *elements* of the column
- * values.  This is useful when the column datatype is an array or some other
+ * values.	This is useful when the column datatype is an array or some other
  * type with identifiable elements (for instance, tsvector).  staop contains
  * the equality operator appropriate to the element type.  stavalues contains
  * the most common element values, and stanumbers their frequencies.  Unlike

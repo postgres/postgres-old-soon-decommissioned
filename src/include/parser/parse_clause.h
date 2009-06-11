@@ -33,13 +33,13 @@ extern List *transformSortClause(ParseState *pstate, List *orderlist,
 					List **targetlist, bool resolveUnknown);
 
 extern List *transformWindowDefinitions(ParseState *pstate,
-										List *windowdefs,
-										List **targetlist);
+						   List *windowdefs,
+						   List **targetlist);
 
 extern List *transformDistinctClause(ParseState *pstate,
 						List **targetlist, List *sortClause);
 extern List *transformDistinctOnClause(ParseState *pstate, List *distinctlist,
-						List **targetlist, List *sortClause);
+						  List **targetlist, List *sortClause);
 
 extern Index assignSortGroupRef(TargetEntry *tle, List *tlist);
 extern bool targetIsInSortList(TargetEntry *tle, Oid sortop, List *sortList);

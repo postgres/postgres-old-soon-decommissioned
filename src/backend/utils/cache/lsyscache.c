@@ -239,6 +239,7 @@ get_compare_function_for_ordering_op(Oid opno, Oid *cmpfunc, bool *reverse)
 									 opcintype,
 									 opcintype,
 									 BTORDER_PROC);
+
 		if (!OidIsValid(*cmpfunc))		/* should not happen */
 			elog(ERROR, "missing support function %d(%u,%u) in opfamily %u",
 				 BTORDER_PROC, opcintype, opcintype, opfamily);
@@ -248,6 +249,7 @@ get_compare_function_for_ordering_op(Oid opno, Oid *cmpfunc, bool *reverse)
 
 	/* ensure outputs are set on failure */
 	*cmpfunc = InvalidOid;
+
 	*reverse = false;
 	return false;
 }

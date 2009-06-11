@@ -80,7 +80,7 @@ static MemoryContext fscxt = NULL;
 
 static int	newLOfd(LargeObjectDesc *lobjCookie);
 static void deleteLOfd(int fd);
-static Oid lo_import_internal(text *filename, Oid lobjOid);
+static Oid	lo_import_internal(text *filename, Oid lobjOid);
 
 
 /*****************************************************************************
@@ -334,7 +334,7 @@ Datum
 lo_import_with_oid(PG_FUNCTION_ARGS)
 {
 	text	   *filename = PG_GETARG_TEXT_PP(0);
-	Oid		   oid = PG_GETARG_OID(1);
+	Oid			oid = PG_GETARG_OID(1);
 
 	PG_RETURN_OID(lo_import_internal(filename, oid));
 }
@@ -348,8 +348,8 @@ lo_import_internal(text *filename, Oid lobjOid)
 	char		buf[BUFSIZE];
 	char		fnamebuf[MAXPGPATH];
 	LargeObjectDesc *lobj;
-	Oid	oid;
-	
+	Oid			oid;
+
 #ifndef ALLOW_DANGEROUS_LO_FUNCTIONS
 	if (!superuser())
 		ereport(ERROR,

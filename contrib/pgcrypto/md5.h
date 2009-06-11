@@ -59,7 +59,7 @@ typedef struct
 
 	unsigned int md5_i;
 	uint8		md5_buf[MD5_BUFLEN];
-}	md5_ctxt;
+} md5_ctxt;
 
 extern void md5_init(md5_ctxt *);
 extern void md5_loop(md5_ctxt *, const uint8 *, unsigned int);

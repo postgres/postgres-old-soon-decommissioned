@@ -78,8 +78,7 @@ pg_getaddrinfo_all(const char *hostname, const char *servname,
 	/* NULL has special meaning to getaddrinfo(). */
 	rc = getaddrinfo((!hostname || hostname[0] == '\0') ? NULL : hostname,
 					 servname, hintp, result);
-
-#else /* _AIX */
+#else							/* _AIX */
 
 	/*
 	 * Various versions of AIX have various bugs in getaddrinfo()'s handling
@@ -113,7 +112,7 @@ pg_getaddrinfo_all(const char *hostname, const char *servname,
 			}
 		}
 	}
-#endif /* _AIX */
+#endif   /* _AIX */
 
 	return rc;
 }

@@ -352,8 +352,8 @@ PersistHoldablePortal(Portal portal)
 		ExecutorRewind(queryDesc);
 
 		/*
-		 * Change the destination to output to the tuplestore.  Note we
-		 * tell the tuplestore receiver to detoast all data passed through it.
+		 * Change the destination to output to the tuplestore.	Note we tell
+		 * the tuplestore receiver to detoast all data passed through it.
 		 */
 		queryDesc->dest = CreateDestReceiver(DestTuplestore);
 		SetTuplestoreDestReceiverParams(queryDesc->dest,

@@ -151,7 +151,7 @@ static char *
 ecpg_strndup(const char *str, size_t len)
 {
 	int			real_len = strlen(str);
-	int			use_len = (real_len > len) ? (int)len : real_len;
+	int			use_len = (real_len > len) ? (int) len : real_len;
 
 	char	   *new = malloc(use_len + 1);
 

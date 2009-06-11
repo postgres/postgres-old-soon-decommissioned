@@ -86,7 +86,7 @@ pad_eme_pkcs1_v15(uint8 *data, int data_len, int res_len, uint8 **res_p)
 }
 
 static int
-create_secmsg(PGP_Context * ctx, PGP_MPI ** msg_p, int full_bytes)
+create_secmsg(PGP_Context *ctx, PGP_MPI **msg_p, int full_bytes)
 {
 	uint8	   *secmsg;
 	int			res,
@@ -136,7 +136,7 @@ create_secmsg(PGP_Context * ctx, PGP_MPI ** msg_p, int full_bytes)
 }
 
 static int
-encrypt_and_write_elgamal(PGP_Context * ctx, PGP_PubKey * pk, PushFilter * pkt)
+encrypt_and_write_elgamal(PGP_Context *ctx, PGP_PubKey *pk, PushFilter *pkt)
 {
 	int			res;
 	PGP_MPI    *m = NULL,
@@ -167,7 +167,7 @@ err:
 }
 
 static int
-encrypt_and_write_rsa(PGP_Context * ctx, PGP_PubKey * pk, PushFilter * pkt)
+encrypt_and_write_rsa(PGP_Context *ctx, PGP_PubKey *pk, PushFilter *pkt)
 {
 	int			res;
 	PGP_MPI    *m = NULL,
@@ -193,7 +193,7 @@ err:
 }
 
 int
-pgp_write_pubenc_sesskey(PGP_Context * ctx, PushFilter * dst)
+pgp_write_pubenc_sesskey(PGP_Context *ctx, PushFilter *dst)
 {
 	int			res;
 	PGP_PubKey *pk = ctx->pub_key;

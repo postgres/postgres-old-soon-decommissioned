@@ -1,5 +1,5 @@
 /*
- * $PostgreSQL$ 
+ * $PostgreSQL$
  */
 #include "postgres.h"
 

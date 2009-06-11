@@ -214,47 +214,47 @@ lexnest(struct vars * v,
 /*
  * string constants to interpolate as expansions of things like \d
  */
-static const chr backd[] = {			/* \d */
+static const chr backd[] = {	/* \d */
 	CHR('['), CHR('['), CHR(':'),
 	CHR('d'), CHR('i'), CHR('g'), CHR('i'), CHR('t'),
 	CHR(':'), CHR(']'), CHR(']')
 };
-static const chr backD[] = {			/* \D */
+static const chr backD[] = {	/* \D */
 	CHR('['), CHR('^'), CHR('['), CHR(':'),
 	CHR('d'), CHR('i'), CHR('g'), CHR('i'), CHR('t'),
 	CHR(':'), CHR(']'), CHR(']')
 };
-static const chr brbackd[] = {			/* \d within brackets */
+static const chr brbackd[] = {	/* \d within brackets */
 	CHR('['), CHR(':'),
 	CHR('d'), CHR('i'), CHR('g'), CHR('i'), CHR('t'),
 	CHR(':'), CHR(']')
 };
-static const chr backs[] = {			/* \s */
+static const chr backs[] = {	/* \s */
 	CHR('['), CHR('['), CHR(':'),
 	CHR('s'), CHR('p'), CHR('a'), CHR('c'), CHR('e'),
 	CHR(':'), CHR(']'), CHR(']')
 };
-static const chr backS[] = {			/* \S */
+static const chr backS[] = {	/* \S */
 	CHR('['), CHR('^'), CHR('['), CHR(':'),
 	CHR('s'), CHR('p'), CHR('a'), CHR('c'), CHR('e'),
 	CHR(':'), CHR(']'), CHR(']')
 };
-static const chr brbacks[] = {			/* \s within brackets */
+static const chr brbacks[] = {	/* \s within brackets */
 	CHR('['), CHR(':'),
 	CHR('s'), CHR('p'), CHR('a'), CHR('c'), CHR('e'),
 	CHR(':'), CHR(']')
 };
-static const chr backw[] = {			/* \w */
+static const chr backw[] = {	/* \w */
 	CHR('['), CHR('['), CHR(':'),
 	CHR('a'), CHR('l'), CHR('n'), CHR('u'), CHR('m'),
 	CHR(':'), CHR(']'), CHR('_'), CHR(']')
 };
-static const chr backW[] = {			/* \W */
+static const chr backW[] = {	/* \W */
 	CHR('['), CHR('^'), CHR('['), CHR(':'),
 	CHR('a'), CHR('l'), CHR('n'), CHR('u'), CHR('m'),
 	CHR(':'), CHR(']'), CHR('_'), CHR(']')
 };
-static const chr brbackw[] = {			/* \w within brackets */
+static const chr brbackw[] = {	/* \w within brackets */
 	CHR('['), CHR(':'),
 	CHR('a'), CHR('l'), CHR('n'), CHR('u'), CHR('m'),
 	CHR(':'), CHR(']'), CHR('_')

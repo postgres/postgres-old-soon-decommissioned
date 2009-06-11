@@ -233,7 +233,7 @@ MarkAsPreparing(TransactionId xid, const char *gid,
 		ereport(ERROR,
 				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
 				 errmsg("prepared transactions are disabled"),
-				 errhint("Set max_prepared_transactions to a nonzero value.")));
+			  errhint("Set max_prepared_transactions to a nonzero value.")));
 
 	LWLockAcquire(TwoPhaseStateLock, LW_EXCLUSIVE);
 

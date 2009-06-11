@@ -29,7 +29,7 @@ extern void ATExecChangeOwner(Oid relationOid, Oid newOwnerId, bool recursing);
 extern void AlterTableInternal(Oid relid, List *cmds, bool recurse);
 
 extern void AlterTableNamespace(RangeVar *relation, const char *newschema,
-								ObjectType stmttype);
+					ObjectType stmttype);
 
 extern void AlterRelationNamespaceInternal(Relation classRel, Oid relOid,
 							   Oid oldNspOid, Oid newNspOid,
@@ -46,12 +46,12 @@ extern void renameatt(Oid myrelid,
 		  bool recursing);
 
 extern void RenameRelation(Oid myrelid,
-		  const char *newrelname,
-		  ObjectType reltype);
+			   const char *newrelname,
+			   ObjectType reltype);
 
 extern void RenameRelationInternal(Oid myrelid,
-		  const char *newrelname,
-		  Oid namespaceId);
+					   const char *newrelname,
+					   Oid namespaceId);
 
 extern void find_composite_type_dependencies(Oid typeOid,
 								 const char *origTblName,

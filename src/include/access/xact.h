@@ -91,7 +91,7 @@ typedef struct xl_xact_commit
 	int			nrels;			/* number of RelFileNodes */
 	int			nsubxacts;		/* number of subtransaction XIDs */
 	/* Array of RelFileNode(s) to drop at commit */
-	RelFileNode	xnodes[1];		/* VARIABLE LENGTH ARRAY */
+	RelFileNode xnodes[1];		/* VARIABLE LENGTH ARRAY */
 	/* ARRAY OF COMMITTED SUBTRANSACTION XIDs FOLLOWS */
 } xl_xact_commit;
 
@@ -103,7 +103,7 @@ typedef struct xl_xact_abort
 	int			nrels;			/* number of RelFileNodes */
 	int			nsubxacts;		/* number of subtransaction XIDs */
 	/* Array of RelFileNode(s) to drop at abort */
-	RelFileNode	xnodes[1];		/* VARIABLE LENGTH ARRAY */
+	RelFileNode xnodes[1];		/* VARIABLE LENGTH ARRAY */
 	/* ARRAY OF ABORTED SUBTRANSACTION XIDs FOLLOWS */
 } xl_xact_abort;
 

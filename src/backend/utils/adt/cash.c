@@ -320,9 +320,8 @@ cash_out(PG_FUNCTION_ARGS)
 	count -= strlen(csymbol) - 1;
 
 	/*
-	 *	If points == 0 and the number of digits % mon_group == 0,
-	 *	the code above adds a trailing ssymbol on the far right,
-	 *	so remove it.
+	 * If points == 0 and the number of digits % mon_group == 0, the code
+	 * above adds a trailing ssymbol on the far right, so remove it.
 	 */
 	if (buf[LAST_DIGIT] == ssymbol)
 		buf[LAST_DIGIT] = '\0';
@@ -792,13 +791,13 @@ cash_words(PG_FUNCTION_ARGS)
 	/* Now treat as unsigned, to avoid trouble at INT_MIN */
 	val = (uint64) value;
 
-	m0 = val % INT64CONST(100);							/* cents */
-	m1 = (val / INT64CONST(100)) % 1000;				/* hundreds */
-	m2 = (val / INT64CONST(100000)) % 1000;				/* thousands */
-	m3 = (val / INT64CONST(100000000)) % 1000;			/* millions */
+	m0 = val % INT64CONST(100); /* cents */
+	m1 = (val / INT64CONST(100)) % 1000;		/* hundreds */
+	m2 = (val / INT64CONST(100000)) % 1000;		/* thousands */
+	m3 = (val / INT64CONST(100000000)) % 1000;	/* millions */
 	m4 = (val / INT64CONST(100000000000)) % 1000;		/* billions */
 	m5 = (val / INT64CONST(100000000000000)) % 1000;	/* trillions */
-	m6 = (val / INT64CONST(100000000000000000)) % 1000;	/* quadrillions */
+	m6 = (val / INT64CONST(100000000000000000)) % 1000; /* quadrillions */
 
 	if (m6)
 	{

@@ -18,7 +18,7 @@
 #include "parser/keywords.h"
 
 /*
- * We don't need the token number, so leave it out to avoid requiring other 
+ * We don't need the token number, so leave it out to avoid requiring other
  * backend headers.
  */
 #define PG_KEYWORD(a,b,c) {a,0,c},

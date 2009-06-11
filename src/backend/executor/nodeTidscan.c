@@ -63,10 +63,10 @@ TidListCreate(TidScanState *tidstate)
 	ListCell   *l;
 
 	/*
-	 * We silently discard any TIDs that are out of range at the time of
-	 * scan start.  (Since we hold at least AccessShareLock on the table,
-	 * it won't be possible for someone to truncate away the blocks we
-	 * intend to visit.)
+	 * We silently discard any TIDs that are out of range at the time of scan
+	 * start.  (Since we hold at least AccessShareLock on the table, it won't
+	 * be possible for someone to truncate away the blocks we intend to
+	 * visit.)
 	 */
 	nblocks = RelationGetNumberOfBlocks(tidstate->ss.ss_currentRelation);
 

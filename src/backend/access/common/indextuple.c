@@ -86,7 +86,7 @@ index_form_tuple(TupleDesc tupleDescriptor,
 		 * try to compress it in-line.
 		 */
 		if (!VARATT_IS_EXTENDED(DatumGetPointer(untoasted_values[i])) &&
-			VARSIZE(DatumGetPointer(untoasted_values[i])) > TOAST_INDEX_TARGET &&
+		VARSIZE(DatumGetPointer(untoasted_values[i])) > TOAST_INDEX_TARGET &&
 			(att->attstorage == 'x' || att->attstorage == 'm'))
 		{
 			Datum		cvalue = toast_compress_datum(untoasted_values[i]);
@@ -270,7 +270,7 @@ nocache_index_getattr(IndexTuple tup,
 		 * Now check to see if any preceding bits are null...
 		 */
 		{
-			int			byte = attnum >> 3;
+			int byte = attnum >> 3;
 			int			finalbit = attnum & 0x07;
 
 			/* check for nulls "before" final bit of last byte */

@@ -219,6 +219,7 @@ extern List *list_union_int(List *list1, List *list2);
 extern List *list_union_oid(List *list1, List *list2);
 
 extern List *list_intersection(List *list1, List *list2);
+
 /* currently, there's no need for list_intersection_int etc */
 
 extern List *list_difference(List *list1, List *list2);

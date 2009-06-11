@@ -110,7 +110,7 @@ parse_bool_with_len(const char *value, size_t len, bool *result)
 	}
 
 	if (result)
-		*result = false;	/* suppress compiler warning */
+		*result = false;		/* suppress compiler warning */
 	return false;
 }
 

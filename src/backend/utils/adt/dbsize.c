@@ -294,7 +294,7 @@ pg_relation_size(PG_FUNCTION_ARGS)
 	rel = relation_open(relOid, AccessShareLock);
 
 	size = calculate_relation_size(&(rel->rd_node),
-							   forkname_to_number(text_to_cstring(forkName)));
+							  forkname_to_number(text_to_cstring(forkName)));
 
 	relation_close(rel, AccessShareLock);
 

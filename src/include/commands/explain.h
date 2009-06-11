@@ -39,11 +39,11 @@ extern void ExplainOneUtility(Node *utilityStmt, ExplainStmt *stmt,
 				  TupOutputState *tstate);
 
 extern void ExplainOnePlan(PlannedStmt *plannedstmt, ExplainStmt *stmt,
-						   const char *queryString,
-						   ParamListInfo params,
-						   TupOutputState *tstate);
+			   const char *queryString,
+			   ParamListInfo params,
+			   TupOutputState *tstate);
 
 extern void ExplainPrintPlan(StringInfo str, QueryDesc *queryDesc,
-							 bool analyze, bool verbose);
+				 bool analyze, bool verbose);
 
 #endif   /* EXPLAIN_H */

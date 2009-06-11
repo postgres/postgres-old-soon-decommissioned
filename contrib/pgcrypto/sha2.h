@@ -70,13 +70,13 @@ typedef struct _SHA256_CTX
 	uint32		state[8];
 	uint64		bitcount;
 	uint8		buffer[SHA256_BLOCK_LENGTH];
-}	SHA256_CTX;
+} SHA256_CTX;
 typedef struct _SHA512_CTX
 {
 	uint64		state[8];
 	uint64		bitcount[2];
 	uint8		buffer[SHA512_BLOCK_LENGTH];
-}	SHA512_CTX;
+} SHA512_CTX;
 
 typedef SHA256_CTX SHA224_CTX;
 typedef SHA512_CTX SHA384_CTX;

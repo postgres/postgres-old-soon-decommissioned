@@ -2509,8 +2509,8 @@ quickdie(SIGNAL_ARGS)
 	 * system reset cycle if some idiot DBA sends a manual SIGQUIT to a random
 	 * backend.  This is necessary precisely because we don't clean up our
 	 * shared memory state.  (The "dead man switch" mechanism in pmsignal.c
-	 * should ensure the postmaster sees this as a crash, too, but no harm
-	 * in being doubly sure.)
+	 * should ensure the postmaster sees this as a crash, too, but no harm in
+	 * being doubly sure.)
 	 */
 	exit(2);
 }

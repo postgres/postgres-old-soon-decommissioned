@@ -16,7 +16,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#ifndef GENBKI_H 
+#ifndef GENBKI_H
 #define GENBKI_H
 
 /* Introduces a catalog's structure definition */

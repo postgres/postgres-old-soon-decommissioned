@@ -145,8 +145,8 @@ create_toast_table(Relation rel, Oid toastOid, Oid toastIndexOid,
 	/*
 	 * Check to see whether the table actually needs a TOAST table.
 	 *
-	 * Caller can optionally override this check.  (Note: at present
-	 * no callers in core Postgres do so, but this option is needed by
+	 * Caller can optionally override this check.  (Note: at present no
+	 * callers in core Postgres do so, but this option is needed by
 	 * pg_migrator.)
 	 */
 	if (!force && !needs_toast_table(rel))

@@ -57,7 +57,7 @@ typedef struct
 	Relation	rel;
 	HeapScanDesc scan;
 	int			ncolumns;
-}	MyData;
+} MyData;
 
 Datum
 pgrowlocks(PG_FUNCTION_ARGS)

@@ -84,7 +84,7 @@ typedef union
 
 
 extern void SendSharedInvalidMessages(const SharedInvalidationMessage *msgs,
-									  int n);
+						  int n);
 extern void ReceiveSharedInvalidMessages(
 					  void (*invalFunction) (SharedInvalidationMessage *msg),
 							 void (*resetFunction) (void));

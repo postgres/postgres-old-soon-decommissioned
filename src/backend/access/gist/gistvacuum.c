@@ -510,7 +510,7 @@ gistvacuumcleanup(PG_FUNCTION_ARGS)
 	Relation	rel = info->index;
 	BlockNumber npages,
 				blkno;
-	BlockNumber	totFreePages;
+	BlockNumber totFreePages;
 	BlockNumber lastBlock = GIST_ROOT_BLKNO,
 				lastFilledBlock = GIST_ROOT_BLKNO;
 	bool		needLock;

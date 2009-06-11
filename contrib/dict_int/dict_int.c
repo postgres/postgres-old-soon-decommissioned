@@ -23,7 +23,7 @@ typedef struct
 {
 	int			maxlen;
 	bool		rejectlong;
-}	DictInt;
+} DictInt;
 
 
 PG_FUNCTION_INFO_V1(dintdict_init);

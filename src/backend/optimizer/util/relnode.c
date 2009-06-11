@@ -430,8 +430,8 @@ build_joinrel_tlist(PlannerInfo *root, RelOptInfo *joinrel,
 		int			ndx;
 
 		/*
-		 * Ignore PlaceHolderVars in the input tlists; we'll make our
-		 * own decisions about whether to copy them.
+		 * Ignore PlaceHolderVars in the input tlists; we'll make our own
+		 * decisions about whether to copy them.
 		 */
 		if (IsA(origvar, PlaceHolderVar))
 			continue;

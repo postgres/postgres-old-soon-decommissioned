@@ -222,7 +222,7 @@ extern void recordSharedDependencyOn(ObjectAddress *depender,
 						 SharedDependencyType deptype);
 
 extern void deleteSharedDependencyRecordsFor(Oid classId, Oid objectId,
-											 int32 objectSubId);
+								 int32 objectSubId);
 
 extern void recordDependencyOnOwner(Oid classId, Oid objectId, Oid owner);
 
@@ -235,7 +235,7 @@ extern void updateAclDependencies(Oid classId, Oid objectId, int32 objectSubId,
 					  int nnewmembers, Oid *newmembers);
 
 extern bool checkSharedDependencies(Oid classId, Oid objectId,
-									char **detail_msg, char **detail_log_msg);
+						char **detail_msg, char **detail_log_msg);
 
 extern void copyTemplateDependencies(Oid templateDbId, Oid newDbId);
 

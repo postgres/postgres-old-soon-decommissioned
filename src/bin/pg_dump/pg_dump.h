@@ -221,7 +221,7 @@ typedef struct _tableInfo
 	char		relkind;
 	char	   *reltablespace;	/* relation tablespace */
 	char	   *reloptions;		/* options specified by WITH (...) */
-	char	   *toast_reloptions; /* ditto, for the TOAST table */
+	char	   *toast_reloptions;		/* ditto, for the TOAST table */
 	bool		hasindex;		/* does it have any indexes? */
 	bool		hasrules;		/* does it have any rules? */
 	bool		hastriggers;	/* does it have any triggers? */
@@ -267,7 +267,7 @@ typedef struct _tableInfo
 	 */
 	int			numParents;		/* number of (immediate) parent tables */
 	struct _tableInfo **parents;	/* TableInfos of immediate parents */
-	struct _tableDataInfo *dataObj;	/* TableDataInfo, if dumping its data */
+	struct _tableDataInfo *dataObj;		/* TableDataInfo, if dumping its data */
 } TableInfo;
 
 typedef struct _attrDefInfo

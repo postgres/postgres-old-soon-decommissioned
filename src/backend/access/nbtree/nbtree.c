@@ -290,7 +290,7 @@ Datum
 btgetbitmap(PG_FUNCTION_ARGS)
 {
 	IndexScanDesc scan = (IndexScanDesc) PG_GETARG_POINTER(0);
-	TIDBitmap *tbm = (TIDBitmap *) PG_GETARG_POINTER(1);
+	TIDBitmap  *tbm = (TIDBitmap *) PG_GETARG_POINTER(1);
 	BTScanOpaque so = (BTScanOpaque) scan->opaque;
 	int64		ntids = 0;
 	ItemPointer heapTid;
@@ -579,9 +579,8 @@ btvacuumcleanup(PG_FUNCTION_ARGS)
 	/*
 	 * During a non-FULL vacuum it's quite possible for us to be fooled by
 	 * concurrent page splits into double-counting some index tuples, so
-	 * disbelieve any total that exceeds the underlying heap's count ...
-	 * if we know that accurately.  Otherwise this might just make matters
-	 * worse.
+	 * disbelieve any total that exceeds the underlying heap's count ... if we
+	 * know that accurately.  Otherwise this might just make matters worse.
 	 */
 	if (!info->vacuum_full && !info->estimated_count)
 	{

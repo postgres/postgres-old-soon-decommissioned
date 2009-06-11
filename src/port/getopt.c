@@ -49,14 +49,12 @@ int			opterr = 1,			/* if error message should be printed */
 			optind = 1,			/* index into parent argv vector */
 			optopt;				/* character checked for validity */
 char	   *optarg;				/* argument associated with option */
-
 #else
 
 extern int	opterr;
 extern int	optind;
 extern int	optopt;
 extern char *optarg;
-
 #endif
 
 #ifndef HAVE_INT_OPTRESET

@@ -37,7 +37,7 @@ ginbeginscan(PG_FUNCTION_ARGS)
 
 static void
 fillScanKey(GinState *ginstate, GinScanKey key, OffsetNumber attnum, Datum query,
-			Datum *entryValues, bool *partial_matches, uint32 nEntryValues, 
+			Datum *entryValues, bool *partial_matches, uint32 nEntryValues,
 			StrategyNumber strategy, Pointer *extra_data)
 {
 	uint32		i,
@@ -68,8 +68,8 @@ fillScanKey(GinState *ginstate, GinScanKey key, OffsetNumber attnum, Datum query
 		key->scanEntry[i].strategy = strategy;
 		key->scanEntry[i].list = NULL;
 		key->scanEntry[i].nlist = 0;
-		key->scanEntry[i].isPartialMatch = ( ginstate->canPartialMatch[attnum - 1] && partial_matches ) 
-												? partial_matches[i] : false;
+		key->scanEntry[i].isPartialMatch = (ginstate->canPartialMatch[attnum - 1] && partial_matches)
+			? partial_matches[i] : false;
 
 		/* link to the equals entry in current scan key */
 		key->scanEntry[i].master = NULL;
@@ -172,12 +172,12 @@ newScanKey(IndexScanDesc scan)
 		ScanKey		skey = &scankey[i];
 		Datum	   *entryValues;
 		int32		nEntryValues = 0;
-		bool		*partial_matches = NULL;
-		Pointer		*extra_data = NULL;
+		bool	   *partial_matches = NULL;
+		Pointer    *extra_data = NULL;
 
 		/*
-		 * Assume, that GIN-indexable operators are strict, so 
-		 * nothing could be found
+		 * Assume, that GIN-indexable operators are strict, so nothing could
+		 * be found
 		 */
 		if (skey->sk_flags & SK_ISNULL)
 		{
@@ -196,8 +196,8 @@ newScanKey(IndexScanDesc scan)
 		if (nEntryValues < 0)
 		{
 			/*
-			 * extractQueryFn signals that nothing can match, so we can
-			 * just set isVoidRes flag.  No need to examine any more keys.
+			 * extractQueryFn signals that nothing can match, so we can just
+			 * set isVoidRes flag.	No need to examine any more keys.
 			 */
 			so->isVoidRes = true;
 			break;
@@ -206,10 +206,10 @@ newScanKey(IndexScanDesc scan)
 		if (entryValues == NULL || nEntryValues == 0)
 		{
 			/*
-			 * extractQueryFn signals that everything matches.  This would
-			 * require a full scan, which we can't do, but perhaps there
-			 * is another scankey that provides a restriction to use.  So
-			 * we keep going and check only at the end.
+			 * extractQueryFn signals that everything matches.	This would
+			 * require a full scan, which we can't do, but perhaps there is
+			 * another scankey that provides a restriction to use.	So we keep
+			 * going and check only at the end.
 			 */
 			continue;
 		}

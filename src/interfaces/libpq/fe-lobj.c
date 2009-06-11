@@ -42,7 +42,7 @@
 static int	lo_initialize(PGconn *conn);
 
 static Oid
-lo_import_internal(PGconn *conn, const char *filename, const Oid oid);
+			lo_import_internal(PGconn *conn, const char *filename, const Oid oid);
 
 /*
  * lo_open

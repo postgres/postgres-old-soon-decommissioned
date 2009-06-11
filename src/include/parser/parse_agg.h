@@ -17,7 +17,7 @@
 
 extern void transformAggregateCall(ParseState *pstate, Aggref *agg);
 extern void transformWindowFuncCall(ParseState *pstate, WindowFunc *wfunc,
-									WindowDef *windef);
+						WindowDef *windef);
 
 extern void parseCheckAggregates(ParseState *pstate, Query *qry);
 extern void parseCheckWindowFuncs(ParseState *pstate, Query *qry);

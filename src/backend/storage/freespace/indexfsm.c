@@ -13,10 +13,10 @@
  *
  * NOTES:
  *
- *  This is similar to the FSM used for heap, in freespace.c, but instead
- *  of tracking the amount of free space on pages, we only track whether
- *  pages are completely free or in-use. We use the same FSM implementation
- *  as for heaps, using BLCKSZ - 1 to denote used pages, and 0 for unused.
+ *	This is similar to the FSM used for heap, in freespace.c, but instead
+ *	of tracking the amount of free space on pages, we only track whether
+ *	pages are completely free or in-use. We use the same FSM implementation
+ *	as for heaps, using BLCKSZ - 1 to denote used pages, and 0 for unused.
  *
  *-------------------------------------------------------------------------
  */
@@ -38,7 +38,7 @@
 BlockNumber
 GetFreeIndexPage(Relation rel)
 {
-	BlockNumber blkno = GetPageWithFreeSpace(rel, BLCKSZ/2);
+	BlockNumber blkno = GetPageWithFreeSpace(rel, BLCKSZ / 2);
 
 	if (blkno != InvalidBlockNumber)
 		RecordUsedIndexPage(rel, blkno);

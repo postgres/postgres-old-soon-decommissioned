@@ -72,7 +72,7 @@ typedef struct heap_page_items_state
 	TupleDesc	tupd;
 	Page		page;
 	uint16		offset;
-}	heap_page_items_state;
+} heap_page_items_state;
 
 Datum
 heap_page_items(PG_FUNCTION_ARGS)
@@ -189,7 +189,7 @@ heap_page_items(PG_FUNCTION_ARGS)
 						(((char *) tuphdr->t_bits) -((char *) tuphdr));
 
 					values[11] = CStringGetTextDatum(
-						bits_to_text(tuphdr->t_bits, bits_len * 8));
+								 bits_to_text(tuphdr->t_bits, bits_len * 8));
 				}
 				else
 					nulls[11] = true;

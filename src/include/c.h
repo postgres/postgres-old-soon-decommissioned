@@ -103,7 +103,7 @@
 
 /*
  *	Use this to mark string constants as needing translation at some later
- *	time, rather than immediately.  This is useful for cases where you need
+ *	time, rather than immediately.	This is useful for cases where you need
  *	access to the original string and translated string, and for cases where
  *	immediate translation is not possible, like when initializing global
  *	variables.
@@ -737,9 +737,9 @@ typedef NameData *Name;
 #define CppAsString2(x) CppAsString(x)
 
 #ifdef SO_MAJOR_VERSION
-# define PG_TEXTDOMAIN(domain) (domain CppAsString2(SO_MAJOR_VERSION) "-" PG_MAJORVERSION)
+#define PG_TEXTDOMAIN(domain) (domain CppAsString2(SO_MAJOR_VERSION) "-" PG_MAJORVERSION)
 #else
-# define PG_TEXTDOMAIN(domain) (domain "-" PG_MAJORVERSION)
+#define PG_TEXTDOMAIN(domain) (domain "-" PG_MAJORVERSION)
 #endif
 
 
@@ -842,7 +842,7 @@ extern int	fdatasync(int fildes);
 #if defined(HAVE_WCSTOMBS) && defined(HAVE_TOWLOWER)
 #define USE_WIDE_UPPER_LOWER
 #endif
-   
+
 /* EXEC_BACKEND defines */
 #ifdef EXEC_BACKEND
 #define NON_EXEC_STATIC

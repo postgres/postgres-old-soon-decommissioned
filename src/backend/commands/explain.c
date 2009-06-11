@@ -61,7 +61,7 @@ static void explain_outNode(StringInfo str,
 				Plan *outer_plan,
 				int indent, ExplainState *es);
 static void show_plan_tlist(Plan *plan,
-							StringInfo str, int indent, ExplainState *es);
+				StringInfo str, int indent, ExplainState *es);
 static void show_scan_qual(List *qual, const char *qlabel,
 			   int scanrelid, Plan *scan_plan, Plan *outer_plan,
 			   StringInfo str, int indent, ExplainState *es);
@@ -342,7 +342,7 @@ void
 ExplainPrintPlan(StringInfo str, QueryDesc *queryDesc,
 				 bool analyze, bool verbose)
 {
-	ExplainState	es;
+	ExplainState es;
 
 	Assert(queryDesc->plannedstmt != NULL);
 

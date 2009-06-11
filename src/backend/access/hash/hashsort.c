@@ -8,7 +8,7 @@
  * thrashing.  We use tuplesort.c to sort the given index tuples into order.
  *
  * Note: if the number of rows in the table has been underestimated,
- * bucket splits may occur during the index build.  In that case we'd
+ * bucket splits may occur during the index build.	In that case we'd
  * be inserting into two or more buckets for each possible masked-off
  * hash code value.  That's no big problem though, since we'll still have
  * plenty of locality of access.
@@ -52,13 +52,13 @@ _h_spoolinit(Relation index, uint32 num_buckets)
 	hspool->index = index;
 
 	/*
-	 * Determine the bitmask for hash code values.  Since there are currently
+	 * Determine the bitmask for hash code values.	Since there are currently
 	 * num_buckets buckets in the index, the appropriate mask can be computed
 	 * as follows.
 	 *
-	 * Note: at present, the passed-in num_buckets is always a power of 2,
-	 * so we could just compute num_buckets - 1.  We prefer not to assume
-	 * that here, though.
+	 * Note: at present, the passed-in num_buckets is always a power of 2, so
+	 * we could just compute num_buckets - 1.  We prefer not to assume that
+	 * here, though.
 	 */
 	hash_mask = (((uint32) 1) << _hash_log2(num_buckets)) - 1;
 

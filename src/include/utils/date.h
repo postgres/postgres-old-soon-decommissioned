@@ -64,8 +64,7 @@ typedef struct
 #define DateADTGetDatum(X)	  Int32GetDatum(X)
 #define TimeADTGetDatum(X)	  Int64GetDatum(X)
 #define TimeTzADTPGetDatum(X) PointerGetDatum(X)
-
-#else  /* !HAVE_INT64_TIMESTAMP */
+#else							/* !HAVE_INT64_TIMESTAMP */
 
 #define MAX_TIME_PRECISION 10
 
@@ -80,7 +79,6 @@ typedef struct
 #define DateADTGetDatum(X)	  Int32GetDatum(X)
 #define TimeADTGetDatum(X)	  Float8GetDatum(X)
 #define TimeTzADTPGetDatum(X) PointerGetDatum(X)
-
 #endif   /* HAVE_INT64_TIMESTAMP */
 
 #define PG_GETARG_DATEADT(n)	 DatumGetDateADT(PG_GETARG_DATUM(n))

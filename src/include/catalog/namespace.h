@@ -55,8 +55,8 @@ extern Oid	TypenameGetTypid(const char *typname);
 extern bool TypeIsVisible(Oid typid);
 
 extern FuncCandidateList FuncnameGetCandidates(List *names, int nargs,
-											   bool expand_variadic,
-											   bool expand_defaults);
+					  bool expand_variadic,
+					  bool expand_defaults);
 extern bool FunctionIsVisible(Oid funcid);
 
 extern Oid	OpernameGetOprid(List *names, Oid oprleft, Oid oprright);

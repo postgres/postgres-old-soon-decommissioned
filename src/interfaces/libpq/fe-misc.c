@@ -769,10 +769,11 @@ pqSendSome(PGconn *conn, int len)
 #ifndef WIN32
 		sent = pqsecure_write(conn, ptr, len);
 #else
+
 		/*
-		 * Windows can fail on large sends, per KB article Q201213. The failure-point
-		 * appears to be different in different versions of Windows, but 64k should
-		 * always be safe.
+		 * Windows can fail on large sends, per KB article Q201213. The
+		 * failure-point appears to be different in different versions of
+		 * Windows, but 64k should always be safe.
 		 */
 		sent = pqsecure_write(conn, ptr, Min(len, 65536));
 #endif
@@ -1073,10 +1074,11 @@ pqSocketPoll(int sock, int forRead, int forWrite, time_t end_time)
 	FD_ZERO(&output_mask);
 	FD_ZERO(&except_mask);
 	if (forRead)
-		FD_SET(sock, &input_mask);
+		FD_SET		(sock, &input_mask);
+
 	if (forWrite)
-		FD_SET(sock, &output_mask);
-	FD_SET(sock, &except_mask);
+		FD_SET		(sock, &output_mask);
+	FD_SET		(sock, &except_mask);
 
 	/* Compute appropriate timeout interval */
 	if (end_time == ((time_t) -1))

@@ -40,6 +40,7 @@
 
 #ifndef HAVE_INT_OPTRESET
 int			optreset;
+
 /* else the "extern" was provided by getopt_long.h */
 #endif
 

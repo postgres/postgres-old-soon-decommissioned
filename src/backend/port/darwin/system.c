@@ -1,5 +1,5 @@
 /*
- * $PostgreSQL:$ 
+ * $PostgreSQL$
  *
  * only needed in OS X 10.1 and possibly early 10.2 releases */
 #include <AvailabilityMacros.h>

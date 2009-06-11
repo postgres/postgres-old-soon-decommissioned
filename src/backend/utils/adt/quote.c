@@ -86,8 +86,8 @@ quote_literal(PG_FUNCTION_ARGS)
 
 /*
  * quote_nullable -
- *    Returns a properly quoted literal, with null values returned
- *    as the text string 'NULL'.
+ *	  Returns a properly quoted literal, with null values returned
+ *	  as the text string 'NULL'.
  */
 Datum
 quote_nullable(PG_FUNCTION_ARGS)

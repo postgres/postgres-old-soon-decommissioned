@@ -312,15 +312,15 @@ _hash_step(IndexScanDesc scan, Buffer *bufP, ScanDirection dir)
 				for (;;)
 				{
 					/*
-					 * check if we're still in the range of items with
-					 * the target hash key
+					 * check if we're still in the range of items with the
+					 * target hash key
 					 */
 					if (offnum <= maxoff)
 					{
 						Assert(offnum >= FirstOffsetNumber);
 						itup = (IndexTuple) PageGetItem(page, PageGetItemId(page, offnum));
 						if (so->hashso_sk_hash == _hash_get_indextuple_hashkey(itup))
-							break;				/* yes, so exit for-loop */
+							break;		/* yes, so exit for-loop */
 					}
 
 					/*
@@ -353,15 +353,15 @@ _hash_step(IndexScanDesc scan, Buffer *bufP, ScanDirection dir)
 				for (;;)
 				{
 					/*
-					 * check if we're still in the range of items with
-					 * the target hash key
+					 * check if we're still in the range of items with the
+					 * target hash key
 					 */
 					if (offnum >= FirstOffsetNumber)
 					{
 						Assert(offnum <= maxoff);
 						itup = (IndexTuple) PageGetItem(page, PageGetItemId(page, offnum));
 						if (so->hashso_sk_hash == _hash_get_indextuple_hashkey(itup))
-							break;				/* yes, so exit for-loop */
+							break;		/* yes, so exit for-loop */
 					}
 
 					/*

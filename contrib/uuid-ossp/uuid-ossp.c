@@ -67,7 +67,7 @@ PG_FUNCTION_INFO_V1(uuid_generate_v5);
 static void
 pguuid_complain(uuid_rc_t rc)
 {
-	char	*err = uuid_error(rc);
+	char	   *err = uuid_error(rc);
 
 	if (err != NULL)
 		ereport(ERROR,
@@ -80,7 +80,7 @@ pguuid_complain(uuid_rc_t rc)
 }
 
 static char *
-uuid_to_string(const uuid_t * uuid)
+uuid_to_string(const uuid_t *uuid)
 {
 	char	   *buf = palloc(UUID_LEN_STR + 1);
 	void	   *ptr = buf;
@@ -96,7 +96,7 @@ uuid_to_string(const uuid_t * uuid)
 
 
 static void
-string_to_uuid(const char *str, uuid_t * uuid)
+string_to_uuid(const char *str, uuid_t *uuid)
 {
 	uuid_rc_t	rc;
 
@@ -164,7 +164,7 @@ uuid_ns_x500(PG_FUNCTION_ARGS)
 
 
 static Datum
-uuid_generate_internal(int mode, const uuid_t * ns, const char *name)
+uuid_generate_internal(int mode, const uuid_t *ns, const char *name)
 {
 	uuid_t	   *uuid;
 	char	   *str;

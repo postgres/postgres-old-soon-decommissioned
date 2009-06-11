@@ -4,7 +4,7 @@
  *	  Routines to handle unique'ing of queries where appropriate
  *
  * Unique is a very simple node type that just filters out duplicate
- * tuples from a stream of sorted tuples from its subplan.  It's essentially
+ * tuples from a stream of sorted tuples from its subplan.	It's essentially
  * a dumbed-down form of Group: the duplicate-removal functionality is
  * identical.  However, Unique doesn't do projection nor qual checking,
  * so it's marginally more efficient for cases where neither is needed.
@@ -58,8 +58,8 @@ ExecUnique(UniqueState *node)
 
 	/*
 	 * now loop, returning only non-duplicate tuples. We assume that the
-	 * tuples arrive in sorted order so we can detect duplicates easily.
-	 * The first tuple of each group is returned.
+	 * tuples arrive in sorted order so we can detect duplicates easily. The
+	 * first tuple of each group is returned.
 	 */
 	for (;;)
 	{

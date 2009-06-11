@@ -27,7 +27,7 @@ typedef struct
 	char	   *buffer;			/* text to parse */
 	int			len;			/* length of the text in buffer */
 	int			pos;			/* position of the parser */
-}	ParserState;
+} ParserState;
 
 /* copy-paste from wparser.h of tsearch2 */
 typedef struct

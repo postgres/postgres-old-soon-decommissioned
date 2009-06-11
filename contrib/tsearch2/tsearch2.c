@@ -367,7 +367,7 @@ tsa_tsearch2(PG_FUNCTION_ARGS)
 {
 	TriggerData *trigdata;
 	Trigger    *trigger;
-	char	  **tgargs, 
+	char	  **tgargs,
 			  **tgargs_old;
 	int			i;
 	Datum		res;

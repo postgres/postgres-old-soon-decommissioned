@@ -73,10 +73,10 @@ TupleTableSlot *
 ExecWorkTableScan(WorkTableScanState *node)
 {
 	/*
-	 * On the first call, find the ancestor RecursiveUnion's state
-	 * via the Param slot reserved for it.  (We can't do this during node
-	 * init because there are corner cases where we'll get the init call
-	 * before the RecursiveUnion does.)
+	 * On the first call, find the ancestor RecursiveUnion's state via the
+	 * Param slot reserved for it.	(We can't do this during node init because
+	 * there are corner cases where we'll get the init call before the
+	 * RecursiveUnion does.)
 	 */
 	if (node->rustate == NULL)
 	{
@@ -100,8 +100,8 @@ ExecWorkTableScan(WorkTableScanState *node)
 						   ExecGetResultType(&node->rustate->ps));
 
 		/*
-		 * Now we can initialize the projection info.  This must be
-		 * completed before we can call ExecScan().
+		 * Now we can initialize the projection info.  This must be completed
+		 * before we can call ExecScan().
 		 */
 		ExecAssignScanProjectionInfo(&node->ss);
 	}

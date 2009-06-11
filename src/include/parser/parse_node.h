@@ -59,7 +59,7 @@
  * to make an RTE before you can access a CTE.
  *
  * p_future_ctes: list of CommonTableExprs (WITH items) that are not yet
- * visible due to scope rules.  This is used to help improve error messages.
+ * visible due to scope rules.	This is used to help improve error messages.
  *
  * p_windowdefs: list of WindowDefs representing WINDOW and OVER clauses.
  * We collect these while transforming expressions and then transform them
@@ -122,7 +122,7 @@ extern void setup_parser_errposition_callback(ParseCallbackState *pcbstate,
 extern void cancel_parser_errposition_callback(ParseCallbackState *pcbstate);
 
 extern Var *make_var(ParseState *pstate, RangeTblEntry *rte, int attrno,
-					 int location);
+		 int location);
 extern Oid	transformArrayType(Oid arrayType);
 extern ArrayRef *transformArraySubscripts(ParseState *pstate,
 						 Node *arrayBase,

@@ -122,7 +122,7 @@ parser_errposition(ParseState *pstate, int location)
  * Sometimes the parser calls functions that aren't part of the parser
  * subsystem and can't reasonably be passed a ParseState; yet we would
  * like any errors thrown in those functions to be tagged with a parse
- * error location.  Use this function to set up an error context stack
+ * error location.	Use this function to set up an error context stack
  * entry that will accomplish that.  Usage pattern:
  *
  *		declare a local variable "ParseCallbackState pcbstate"
@@ -311,7 +311,7 @@ transformArraySubscripts(ParseState *pstate,
 					ereport(ERROR,
 							(errcode(ERRCODE_DATATYPE_MISMATCH),
 							 errmsg("array subscript must have type integer"),
-							 parser_errposition(pstate, exprLocation(ai->lidx))));
+						parser_errposition(pstate, exprLocation(ai->lidx))));
 			}
 			else
 			{
@@ -364,7 +364,7 @@ transformArraySubscripts(ParseState *pstate,
 							" but expression is of type %s",
 							format_type_be(typeneeded),
 							format_type_be(typesource)),
-			   errhint("You will need to rewrite or cast the expression."),
+				 errhint("You will need to rewrite or cast the expression."),
 					 parser_errposition(pstate, exprLocation(assignFrom))));
 		assignFrom = newFrom;
 	}
@@ -447,7 +447,7 @@ make_const(ParseState *pstate, Value *value, int location)
 
 					typeid = INT8OID;
 					typelen = sizeof(int64);
-					typebyval = FLOAT8PASSBYVAL;	/* int8 and float8 alike */
+					typebyval = FLOAT8PASSBYVAL;		/* int8 and float8 alike */
 				}
 			}
 			else
