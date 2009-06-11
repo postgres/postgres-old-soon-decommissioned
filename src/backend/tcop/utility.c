@@ -447,6 +447,7 @@ ProcessUtility(Node *parsetree,
 											   true);
 
 						AlterTableCreateToastTable(relOid,
+												   InvalidOid,
 												   toast_options,
 												   false);
 					}
