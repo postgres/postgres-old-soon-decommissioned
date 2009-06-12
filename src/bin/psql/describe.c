@@ -2073,7 +2073,7 @@ describeRoles(const char *pattern, bool verbose)
 	return true;
 }
 
-void
+static void
 add_role_attribute(PQExpBuffer buf, const char *const str)
 {
 	if (buf->len > 0)

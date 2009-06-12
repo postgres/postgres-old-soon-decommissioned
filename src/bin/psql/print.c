@@ -2170,7 +2170,7 @@ printTableCleanup(printTableContent *const content)
  *
  * Setup pager if required
  */
-void
+static void
 IsPagerNeeded(const printTableContent *cont, const int extra_lines, FILE **fout,
 			  bool *is_pager)
 {
