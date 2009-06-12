@@ -45,7 +45,7 @@ do	# if objdump -W is recognized, only one line of error should appear
 		# the typedef references, not the definitions, so I think it might
 		# be fine
 		objdump -W "$DIR"/* |
-		egrep -A3 'DW_TAG_typedef' |
+		egrep -A3 '\(DW_TAG_typedef\)' |
 		awk ' $2 == "DW_AT_name" {print $NF}'
 	elif [ `readelf -w 2>&1 | wc -l` -gt 1 ]
 	then	# FreeBSD, similar output to Linux
