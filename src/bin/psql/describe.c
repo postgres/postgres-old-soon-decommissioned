@@ -1572,13 +1572,9 @@ describeOneTableDetails(const char *schemaname,
 				printTableAddFooter(&cont, _("Referenced by:"));
 				for (i = 0; i < tuples; i++)
 				{
-					/*
-					 * translator: the first %s is a FK name, the following
-					 * are a table name and the FK definition
-					 */
-					printfPQExpBuffer(&buf, _("  \"%s\" IN %s %s"),
-									  PQgetvalue(result, i, 0),
+					printfPQExpBuffer(&buf, "    TABLE \"%s\" CONSTRAINT \"%s\" %s",
 									  PQgetvalue(result, i, 1),
+									  PQgetvalue(result, i, 0),
 									  PQgetvalue(result, i, 2));
 
 					printTableAddFooter(&cont, buf.data);
