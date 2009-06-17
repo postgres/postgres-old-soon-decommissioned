@@ -3975,7 +3975,7 @@ exec_eval_datum(PLpgSQL_execstate *estate,
 				if (expectedtypeid != InvalidOid && expectedtypeid != *typeid)
 					ereport(ERROR,
 							(errcode(ERRCODE_DATATYPE_MISMATCH),
-							 errmsg("type of tgargv[%d] does not match that when preparing the plan",
+							 errmsg("type of tg_argv[%d] does not match that when preparing the plan",
 									tgargno)));
 				break;
 			}
