@@ -134,7 +134,7 @@
     The first few chapters are written so they can be understood
     without prerequisite knowledge, so new users who need to set
     up their own server can begin their exploration with this part.
-    The rest of this part is about tuning and management; the material
+    The rest of this part is about tuning and management; that material
     assumes that the reader is familiar with the general use of
     the <productname>PostgreSQL</> database system.  Readers are
     encouraged to look at <xref linkend="tutorial"> and <xref

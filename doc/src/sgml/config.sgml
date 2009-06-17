@@ -1252,8 +1252,8 @@ SET ENABLE_SEQSCAN TO OFF;
          Asynchronous I/O depends on an effective <function>posix_fadvise</>
          function, which some operating systems lack.  If the function is not
          present then setting this parameter to anything but zero will result
-         in an error.  On some operating systems the function is present but
-         does not actually do anything (e.g., Solaris).
+         in an error.  On some operating systems (e.g., Solaris), the function
+         is present but does not actually do anything.
         </para>
        </listitem>
       </varlistentry>
