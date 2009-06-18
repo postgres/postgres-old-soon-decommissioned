@@ -2931,8 +2931,8 @@ PostgresMain(int argc, char *argv[], const char *username)
 	 *	If the databasename is omitted it is taken to be the user name.
 	 *
 	 *	When started from the postmaster, the format is
-	 *		postgres [secure switches] -p databasename [insecure switches]
-	 *	Switches appearing after -p came from the client (via "options"
+	 *		postgres [secure switches] -y databasename [insecure switches]
+	 *	Switches appearing after -y came from the client (via "options"
 	 *	field of connection request).  For security reasons we restrict
 	 *	what these switches can do.
 	 * ----------------
@@ -2945,7 +2945,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 		argc--;
 	}
 
-	/* all options are allowed until '-p' */
+	/* all options are allowed until '-y' */
 	secure = true;
 	ctx = PGC_POSTMASTER;
 	gucsource = PGC_S_ARGV;		/* initial switches came from command line */
