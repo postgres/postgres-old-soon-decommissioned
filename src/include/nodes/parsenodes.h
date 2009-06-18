@@ -1551,7 +1551,8 @@ typedef struct CreateTrigStmt
 	List	   *args;			/* list of (T_String) Values or NIL */
 	bool		before;			/* BEFORE/AFTER */
 	bool		row;			/* ROW/STATEMENT */
-	char		actions[4];		/* 1 to 3 of 'i', 'u', 'd', + trailing \0 */
+	/* events uses the TRIGGER_TYPE bits defined in catalog/pg_trigger.h */
+	int16		events;			/* INSERT/UPDATE/DELETE/TRUNCATE */
 
 	/* The following are used for referential */
 	/* integrity constraint triggers */
