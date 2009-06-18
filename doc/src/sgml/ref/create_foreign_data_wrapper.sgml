@@ -103,7 +103,9 @@ CREATE FOREIGN DATA WRAPPER <replaceable class="parameter">name</replaceable>
    rudimentary.  The purpose of foreign-data wrappers, foreign
    servers, and user mappings is to store this information in a
    standard way so that it can be queried by interested applications.
-   The functionality to actually query external data does not exist
+   One such application is <application>dblink</application>;
+   see <xref linkend="dblink">.  The functionality to actually query
+   external data through a foreign-data wrapper library does not exist
    yet.
   </para>
 
