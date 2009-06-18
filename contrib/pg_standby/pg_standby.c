@@ -448,7 +448,7 @@ CheckForExternalTrigger(void)
 		/*
 		 * Turn it into a "smart" trigger by truncating the file. Otherwise if
 		 * the server asks us again to restore a segment that was restored
-		 * restored already, we would return "not found" and upset the server.
+		 * already, we would return "not found" and upset the server.
 		 */
 		if (ftruncate(fd, 0) < 0)
 		{

@@ -98,8 +98,8 @@
 
 /*
  * Size of the bitmap on each visibility map page, in bytes. There's no
- * extra headers, so the whole page minus except for the standard page header
- * is used for the bitmap.
+ * extra headers, so the whole page minus the standard page header is
+ * used for the bitmap.
  */
 #define MAPSIZE (BLCKSZ - MAXALIGN(SizeOfPageHeaderData))
 
