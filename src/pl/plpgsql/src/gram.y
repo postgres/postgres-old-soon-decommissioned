@@ -1585,7 +1585,7 @@ stmt_open		: K_OPEN lno cursor_variable
 										(errcode(ERRCODE_SYNTAX_ERROR),
 										 errmsg("syntax error at \"%s\"",
 												yytext),
-										 errdetail("Expected \"FOR\", to open a reference cursor.")));
+										 errdetail("Expected \"FOR\", to open a cursor for an unbound cursor variable.")));
 							}
 
 							tok = yylex();

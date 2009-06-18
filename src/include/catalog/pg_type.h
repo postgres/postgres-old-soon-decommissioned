@@ -520,7 +520,7 @@ DESCR("numeric(precision, decimal), arbitrary precision number");
 #define NUMERICOID		1700
 
 DATA(insert OID = 1790 ( refcursor	   PGNSP PGUID -1 f b U f t \054 0	0 2201 textin textout textrecv textsend - - - i x f 0 -1 0 _null_ _null_ ));
-DESCR("reference cursor (portal name)");
+DESCR("reference to cursor (portal name)");
 #define REFCURSOROID	1790
 
 /* OIDS 2200 - 2299 */
