@@ -43,6 +43,10 @@ sqlmansect = 7
 endif
 sqlmansectnum = $(shell expr X'$(sqlmansect)' : X'\([0-9]\)')
 
+fix_sqlmansectnum = sed -e '/^\.TH/s/"7"/"$(sqlmansect)"/' \
+			-e 's/\\fR(7)/\\fR($(sqlmansectnum))/g' \
+			-e '1s/^\.so man7/.so man$(sqlmansectnum)/g;1s/^\(\.so.*\)\.7$$/\1.$(sqlmansect)/g'
+
 all: man1/.timestamp man$(sqlmansectnum)/.timestamp
 
 man1/.timestamp: man7/.timestamp
@@ -53,7 +57,7 @@ man7/.timestamp: man.tar.gz
 ifneq ($(sqlmansectnum),7)
 	for file in man1/*.1; do \
 	  mv $$file $$file.bak && \
-	  sed -e 's/\\fR(7)/\\fR($(sqlmansectnum))/g' $$file.bak >$$file && \
+	  $(fix_sqlmansectnum) $$file.bak >$$file && \
 	  rm -f $$file.bak || exit; \
 	done
 endif
@@ -63,9 +67,7 @@ ifneq ($(sqlmansectnum),7)
 man$(sqlmansectnum)/.timestamp: man7/.timestamp
 	$(mkinstalldirs) man$(sqlmansectnum)
 	for file in man7/*.7; do \
-	  sed -e '/^\.TH/s/"7"/"$(sqlmansect)"/'   \
-              -e 's/\\fR(7)/\\fR($(sqlmansectnum))/g' \
-	      $$file >man$(sqlmansectnum)/`basename $$file | sed 's/.7$$/.$(sqlmansect)/'` || exit; \
+	  $(fix_sqlmansectnum) $$file >man$(sqlmansectnum)/`basename $$file | sed 's/.7$$/.$(sqlmansect)/'` || exit; \
 	done
 	@echo timestamp >$@
 endif
