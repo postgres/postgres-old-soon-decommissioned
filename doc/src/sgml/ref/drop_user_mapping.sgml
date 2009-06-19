@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-DROPUSERMAPPING">
  <refmeta>
   <refentrytitle id="sql-dropusermapping-title">DROP USER MAPPING</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

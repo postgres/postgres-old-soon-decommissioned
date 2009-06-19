@@ -6,6 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-ALTERFOREIGNDATAWRAPPER">
  <refmeta>
   <refentrytitle id="sql-alterforeigndatawrapper-title">ALTER FOREIGN DATA WRAPPER</refentrytitle>
+  <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 
