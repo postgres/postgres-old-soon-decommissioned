@@ -537,10 +537,13 @@ array_agg_finalfn(PG_FUNCTION_ARGS)
 	dims[0] = state->nelems;
 	lbs[0] = 1;
 
-	/* Release working state if regular aggregate, but not if window agg */
+	/*
+	 * Make the result.  We cannot release the ArrayBuildState because
+	 * sometimes aggregate final functions are re-executed.
+	 */
 	result = makeMdArrayResult(state, 1, dims, lbs,
 							   CurrentMemoryContext,
-							   IsA(fcinfo->context, AggState));
+							   false);
 
 	PG_RETURN_DATUM(result);
 }

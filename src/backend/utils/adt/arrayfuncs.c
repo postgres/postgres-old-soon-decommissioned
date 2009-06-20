@@ -4179,9 +4179,21 @@ accumArrayResult(ArrayBuildState *astate,
 		}
 	}
 
-	/* Use datumCopy to ensure pass-by-ref stuff is copied into mcontext */
+	/*
+	 * Ensure pass-by-ref stuff is copied into mcontext; and detoast it too
+	 * if it's varlena.  (You might think that detoasting is not needed here
+	 * because construct_md_array can detoast the array elements later.
+	 * However, we must not let construct_md_array modify the ArrayBuildState
+	 * because that would mean array_agg_finalfn damages its input, which
+	 * is verboten.  Also, this way frequently saves one copying step.)
+	 */
 	if (!disnull && !astate->typbyval)
-		dvalue = datumCopy(dvalue, astate->typbyval, astate->typlen);
+	{
+		if (astate->typlen == -1)
+			dvalue = PointerGetDatum(PG_DETOAST_DATUM_COPY(dvalue));
+		else
+			dvalue = datumCopy(dvalue, astate->typbyval, astate->typlen);
+	}
 
 	astate->dvalues[astate->nelems] = dvalue;
 	astate->dnulls[astate->nelems] = disnull;

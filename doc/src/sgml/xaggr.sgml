@@ -175,10 +175,14 @@ SELECT attrelid::regclass, array_accum(atttypid::regtype)
             (IsA(fcinfo-&gt;context, AggState) ||
              IsA(fcinfo-&gt;context, WindowAggState)))
 </programlisting>
-   One reason for checking this is that when it is true, the first input
+   One reason for checking this is that when it is true for a transition
+   function, the first input
    must be a temporary transition value and can therefore safely be modified
    in-place rather than allocating a new copy.  (This is the <emphasis>only</>
-   case where it is safe for a function to modify a pass-by-reference input.)
+   case where it is safe for a function to modify a pass-by-reference input.
+   In particular, aggregate final functions should not modify their inputs in
+   any case, because in some cases they will be re-executed on the same
+   final transition value.)
    See <literal>int8inc()</> for an example.
   </para>
 
