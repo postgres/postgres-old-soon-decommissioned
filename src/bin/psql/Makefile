@@ -40,13 +40,8 @@ dumputils.c keywords.c: % : $(top_srcdir)/src/bin/pg_dump/%
 kwlookup.c: % : $(top_srcdir)/src/backend/parser/%
 	rm -f $@ && $(LN_S) $< .
 
-ifdef PERL
 $(srcdir)/sql_help.h: create_help.pl $(wildcard $(REFDOCDIR)/*.sgml)
 	$(PERL) $< $(REFDOCDIR) $@
-else
-$(srcdir)/sql_help.h:
-	@echo "*** Perl is needed to build psql help."
-endif
 
 $(srcdir)/psqlscan.c: psqlscan.l
 ifdef FLEX

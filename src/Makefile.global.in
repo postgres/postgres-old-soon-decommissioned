@@ -248,8 +248,12 @@ X = @EXEEXT@
 
 # Perl 
 
-# quoted for pathname with spaces
-PERL			= "@PERL@"
+ifneq (@PERL@,)
+    # quoted to protect pathname with spaces
+    PERL		= "@PERL@"
+else
+    PERL		= $(missing) perl
+endif
 perl_archlibexp		= @perl_archlibexp@
 perl_privlibexp		= @perl_privlibexp@
 perl_useshrplib		= @perl_useshrplib@

@@ -171,6 +171,7 @@ cvs update
    pull requires reasonably up-to-date versions of <application>bison</>
    and <application>flex</>, which are not needed to build from a distribution
    tarball because the files made with them are pre-built in a tarball.
+   You will need Perl as well.
    Otherwise the tool requirements are the same as building from source.
   </para>
  </sect1>
