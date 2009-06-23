@@ -134,7 +134,9 @@ INSERT INTO products (product_no, name, price) VALUES
   </para>
 
   <para>
-   To perform an update, you need three pieces of information:
+   To update existing rows, use the <xref linkend="sql-update"
+   endterm="sql-update-title"> command.  This requires
+   three pieces of information:
    <orderedlist spacing="compact">
     <listitem>
      <para>The name of the table and column to update</para>
