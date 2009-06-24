@@ -1261,7 +1261,7 @@ omicron       bryanh            guest1
     </para>
    </note>
     <synopsis>
-ldapserver=ldap.example.net prefix="cn=" suffix="dc=example, dc=net"
+ldapserver=ldap.example.net ldapprefix="cn=" ldapsuffix=", dc=example, dc=net"
     </synopsis>
 
   </sect2>
