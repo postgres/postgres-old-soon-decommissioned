@@ -614,8 +614,10 @@ main(int argc, char **argv)
 				 * Link feature disabled, possibly permanently. Linking
 				 * causes a problem after recovery ends that is not currently
 				 * resolved by PostgreSQL. 25 Jun 2009
-					restoreCommandType = RESTORE_COMMAND_LINK;
-				*/
+				 */
+#ifdef NOT_USED
+				restoreCommandType = RESTORE_COMMAND_LINK;
+#endif
 				break;
 			case 'r':			/* Retries */
 				maxretries = atoi(optarg);
