@@ -1241,10 +1241,7 @@ FinishPreparedTransaction(const char *gid, bool isCommit)
 		for (fork = 0; fork <= MAX_FORKNUM; fork++)
 		{
 			if (smgrexists(srel, fork))
-			{
-				XLogDropRelation(delrels[i], fork);
-				smgrdounlink(srel, fork, false, true);
-			}
+				smgrdounlink(srel, fork, false, false);
 		}
 		smgrclose(srel);
 	}
