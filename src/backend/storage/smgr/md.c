@@ -204,6 +204,21 @@ mdinit(void)
 }
 
 /*
+ * In archive recovery, we rely on bgwriter to do fsyncs(), but we don't
+ * know that we do archive recovery at process startup when pendingOpsTable
+ * has already been created. Calling this function drops pendingOpsTable
+ * and causes any subsequent requests to be forwarded to bgwriter.
+ */
+void
+SetForwardFsyncRequests(void)
+{
+	/* Perform any pending ops we may have queued up */
+	if (pendingOpsTable)
+		mdsync();
+	pendingOpsTable = NULL;
+}
+
+/*
  *	mdexists() -- Does the physical file exist?
  *
  * Note: this will return true for lingering files, with pending deletions

@@ -166,6 +166,8 @@ extern bool XLOG_DEBUG;
 /* These indicate the cause of a checkpoint request */
 #define CHECKPOINT_CAUSE_XLOG	0x0010	/* XLOG consumption */
 #define CHECKPOINT_CAUSE_TIME	0x0020	/* Elapsed time */
+#define CHECKPOINT_END_OF_RECOVERY	0x0040	/* Like shutdown checkpoint, but
+											 * issued at end of WAL recovery */
 
 /* Checkpoint statistics */
 typedef struct CheckpointStatsData
