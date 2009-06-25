@@ -2066,6 +2066,13 @@ CheckLDAPAuth(Port *port)
 	if (passwd == NULL)
 		return STATUS_EOF;		/* client wouldn't send password */
 
+	if (strlen(passwd) == 0)
+	{
+		ereport(LOG,
+				(errmsg("empty password returned by client")));
+		return STATUS_ERROR;
+	}
+
 	ldap = ldap_init(port->hba->ldapserver, port->hba->ldapport);
 	if (!ldap)
 	{
