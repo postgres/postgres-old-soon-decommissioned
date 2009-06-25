@@ -75,6 +75,11 @@
 #undef _
 #define _(x) err_gettext(x)
 
+static const char *err_gettext(const char *str)
+/* This extension allows gcc to check the format string for consistency with
+   the supplied arguments. */
+__attribute__((format_arg(1)));
+
 /* Global variables */
 ErrorContextCallback *error_context_stack = NULL;
 
