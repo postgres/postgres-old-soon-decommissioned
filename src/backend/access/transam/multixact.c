@@ -1543,7 +1543,7 @@ CheckPointMultiXact(void)
 	 * SimpleLruTruncate would get confused.  It seems best not to risk
 	 * removing any data during recovery anyway, so don't truncate.
 	 */
-	if (!InRecovery)
+	if (!RecoveryInProgress())
 		TruncateMultiXact();
 
 	TRACE_POSTGRESQL_MULTIXACT_CHECKPOINT_DONE(true);

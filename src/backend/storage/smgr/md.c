@@ -204,10 +204,10 @@ mdinit(void)
 }
 
 /*
- * In archive recovery, we rely on bgwriter to do fsyncs(), but we don't
- * know that we do archive recovery at process startup when pendingOpsTable
- * has already been created. Calling this function drops pendingOpsTable
- * and causes any subsequent requests to be forwarded to bgwriter.
+ * In archive recovery, we rely on bgwriter to do fsyncs, but we will have
+ * already created the pendingOpsTable during initialization of the startup
+ * process.  Calling this function drops the local pendingOpsTable so that
+ * subsequent requests will be forwarded to bgwriter.
  */
 void
 SetForwardFsyncRequests(void)
