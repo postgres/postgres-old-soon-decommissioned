@@ -1,5 +1,5 @@
 # $PostgreSQL$
 CATALOG_NAME	:= pg_ctl
-AVAIL_LANGUAGES	:= cs de es fr ja ko pt_BR ro ru sk sl sv ta tr zh_CN zh_TW
+AVAIL_LANGUAGES	:= de es fr ja ko pt_BR ru sv ta tr
 GETTEXT_FILES	:= pg_ctl.c ../../port/exec.c
 GETTEXT_TRIGGERS:= _ simple_prompt
