@@ -53,7 +53,7 @@ man1/.timestamp: man7/.timestamp
 	@echo timestamp >$@
 
 man7/.timestamp: man.tar.gz
-	gzip -d -c $< | $(TAR) xf -
+	gzip -d -c $< | $(TAR) xof -
 ifneq ($(sqlmansectnum),7)
 	for file in man1/*.1; do \
 	  mv $$file $$file.bak && \
@@ -76,7 +76,7 @@ endif # found_man
 
 install: all installdirs
 ifdef found_html
-	gzip -d -c $(srcdir)/postgres.tar.gz | ( cd $(DESTDIR)$(htmldir)/html && $(TAR) xf - )
+	gzip -d -c $(srcdir)/postgres.tar.gz | ( cd $(DESTDIR)$(htmldir)/html && $(TAR) xof - )
 endif
 ifdef found_man
 	for file in man1/*.1 man$(sqlmansectnum)/*.$(sqlmansect) ; do \
