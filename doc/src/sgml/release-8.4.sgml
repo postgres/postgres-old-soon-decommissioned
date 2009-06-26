@@ -6,7 +6,7 @@
 
   <note>
    <title>Release date</title>
-   <simpara>2009-??-??, ITEMS CURRENT AS OF 2009-06-11</simpara>
+   <simpara>2009-07-01</simpara>
   </note>
 
   <sect2>
@@ -3389,6 +3389,13 @@
        <literal>recovery_end_command</> option in <filename>recovery.conf</>
        to clean up the trigger file after failover. <application>pg_standby</>
        will no longer remove the trigger file itself.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+       <filename>contrib/pg_standby</>'s <option>-l</> option is now a no-op,
+       because it is unsafe to use a symlink (Simon)
       </para>
      </listitem>
 
