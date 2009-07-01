@@ -3030,12 +3030,11 @@
   <table>
    <title><structname>pg_listener</> Columns</title>
 
-   <tgroup cols="4">
+   <tgroup cols="3">
     <thead>
      <row>
       <entry>Name</entry>
       <entry>Type</entry>
-      <entry>References</entry>
       <entry>Description</entry>
      </row>
     </thead>
