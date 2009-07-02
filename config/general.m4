@@ -33,7 +33,6 @@ m4_define([pgac_arg_to_variable],
 
 AC_DEFUN([PGAC_ARG],
 [
-pgac_args="$pgac_args pgac_arg_to_variable([$1],[$2])"
 m4_case([$1],
 
 enable, [
@@ -74,22 +73,6 @@ AC_ARG_WITH([$2], [AS_HELP_STRING([--]m4_if($3, -, without, with)[-$2]m4_if($3, 
 )
 ])# PGAC_ARG
 
-# PGAC_ARG_CHECK()
-# ----------------
-# Checks if the user passed any --with/without/enable/disable
-# arguments that were not defined. Just prints out a warning message,
-# so this should be called near the end, so the user will see it.
-
-AC_DEFUN([PGAC_ARG_CHECK],
-[for pgac_var in `set | sed 's/=.*//' | $EGREP 'with_|enable_'`; do
-  for pgac_arg in $pgac_args with_gnu_ld; do
-    if test "$pgac_var" = "$pgac_arg"; then
-      continue 2
-    fi
-  done
-  pgac_txt=`echo $pgac_var | sed 's/_/-/g'`
-  AC_MSG_WARN([option ignored: --$pgac_txt])
-done])# PGAC_ARG_CHECK
 
 # PGAC_ARG_BOOL(TYPE, NAME, DEFAULT, HELP-STRING-RHS,
 #               [ACTION-IF-YES], [ACTION-IF-NO])
