@@ -3044,6 +3044,11 @@ local0.*    /var/log/postgresql
              <entry>yes</entry>
             </row>
             <row>
+             <entry><literal>%e</literal></entry>
+             <entry>SQL state</entry>
+             <entry>no</entry>
+            </row>
+            <row>
              <entry><literal>%c</literal></entry>
              <entry>Session ID: see below</entry>
              <entry>no</entry>
