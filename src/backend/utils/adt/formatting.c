@@ -1801,7 +1801,7 @@ dch_time(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 						tm->tm_hour == 0 ? 12 :
 					  tm->tm_hour < 13 ? tm->tm_hour : tm->tm_hour - 12);
 				if (S_THth(suf))
-					str_numth(p_inout, inout, 0);
+					str_numth(p_inout, inout, S_TH_TYPE(suf));
 				if (S_FM(suf) || S_THth(suf))
 					return strlen(p_inout) - 1;
 				else
