@@ -3338,13 +3338,13 @@ timestamp_trunc(PG_FUNCTION_ARGS)
 #ifdef HAVE_INT64_TIMESTAMP
 				fsec = (fsec / 1000) * 1000;
 #else
-				fsec = rint(fsec * 1000) / 1000;
+				fsec = floor(fsec * 1000) / 1000;
 #endif
 				break;
 
 			case DTK_MICROSEC:
 #ifndef HAVE_INT64_TIMESTAMP
-				fsec = rint(fsec * 1000000) / 1000000;
+				fsec = floor(fsec * 1000000) / 1000000;
 #endif
 				break;
 
@@ -3494,12 +3494,12 @@ timestamptz_trunc(PG_FUNCTION_ARGS)
 #ifdef HAVE_INT64_TIMESTAMP
 				fsec = (fsec / 1000) * 1000;
 #else
-				fsec = rint(fsec * 1000) / 1000;
+				fsec = floor(fsec * 1000) / 1000;
 #endif
 				break;
 			case DTK_MICROSEC:
 #ifndef HAVE_INT64_TIMESTAMP
-				fsec = rint(fsec * 1000000) / 1000000;
+				fsec = floor(fsec * 1000000) / 1000000;
 #endif
 				break;
 
@@ -3591,12 +3591,12 @@ interval_trunc(PG_FUNCTION_ARGS)
 #ifdef HAVE_INT64_TIMESTAMP
 					fsec = (fsec / 1000) * 1000;
 #else
-					fsec = rint(fsec * 1000) / 1000;
+					fsec = floor(fsec * 1000) / 1000;
 #endif
 					break;
 				case DTK_MICROSEC:
 #ifndef HAVE_INT64_TIMESTAMP
-					fsec = rint(fsec * 1000000) / 1000000;
+					fsec = floor(fsec * 1000000) / 1000000;
 #endif
 					break;
 
