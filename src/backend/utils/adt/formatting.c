@@ -1809,7 +1809,7 @@ dch_time(int arg, char *inout, int suf, bool is_to_char, bool is_interval,
 						tm->tm_hour % (HOURS_PER_DAY / 2) == 0 ? 12 :
 					    tm->tm_hour % (HOURS_PER_DAY / 2));
 				if (S_THth(suf))
-					str_numth(p_inout, inout, 0);
+					str_numth(p_inout, inout, S_TH_TYPE(suf));
 				return strlen(p_inout);
 			}
 			else
