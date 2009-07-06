@@ -2094,7 +2094,7 @@ DCH_to_char(FormatNode *node, bool is_interval, TmToChar *in, char *out)
 						tm->tm_hour % (HOURS_PER_DAY / 2) == 0 ? 12 :
 						tm->tm_hour % (HOURS_PER_DAY / 2));
 				if (S_THth(n->suffix))
-					str_numth(s, s, 0);
+					str_numth(s, s, S_TH_TYPE(n->suffix));
 				s += strlen(s);
 				break;
 			case DCH_HH24:
