@@ -6879,7 +6879,7 @@ select_no_parens:
 										NULL);
 					$$ = $1;
 				}
-			| with_clause simple_select
+			| with_clause select_clause
 				{
 					insertSelectOptions((SelectStmt *) $2, NULL, NIL,
 										NULL, NULL,
