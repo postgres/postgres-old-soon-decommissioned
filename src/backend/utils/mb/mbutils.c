@@ -482,6 +482,17 @@ length_in_encoding(PG_FUNCTION_ARGS)
 
 }
 
+Datum
+pg_encoding_max_length_sql(PG_FUNCTION_ARGS)
+{
+	int encoding = PG_GETARG_INT32(0);
+
+	if (PG_VALID_ENCODING(encoding))
+		return pg_wchar_table[encoding].maxmblen;
+	else
+		PG_RETURN_NULL();
+}
+
 /*
  * convert client encoding to server encoding.
  */
