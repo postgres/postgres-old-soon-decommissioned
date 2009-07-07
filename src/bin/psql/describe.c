@@ -1821,7 +1821,7 @@ describeOneTableDetails(const char *schemaname,
 		PQclear(result);
 
 		/* print child tables */
-		printfPQExpBuffer(&buf, "SELECT c.oid::pg_catalog.regclass FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i WHERE c.oid=i.inhrelid AND i.inhparent = '%s' ORDER BY c.oid::pg_catalog.regclass;", oid);
+		printfPQExpBuffer(&buf, "SELECT c.oid::pg_catalog.regclass FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i WHERE c.oid=i.inhrelid AND i.inhparent = '%s' ORDER BY c.oid::pg_catalog.regclass::text;", oid);
 
 		result = PSQLexec(buf.data, false);
 		if (!result)
