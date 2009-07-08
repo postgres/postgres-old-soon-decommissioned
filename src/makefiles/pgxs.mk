@@ -266,6 +266,7 @@ installcheck: submake
 check:
 	@echo "'make check' is not supported."
 	@echo "Do 'make install', then 'make installcheck' instead."
+	@exit 1
 endif # REGRESS
 
 
