@@ -2997,8 +2997,16 @@ set_rel_width(PlannerInfo *root, RelOptInfo *rel)
 		}
 		else
 		{
-			/* For now, punt on whole-row child Vars */
-			tuple_width += 32;	/* arbitrary */
+			/*
+			 * We could be looking at an expression pulled up from a subquery,
+			 * or a ROW() representing a whole-row child Var, etc.  Do what
+			 * we can using the expression type information.
+			 */
+			int32		item_width;
+
+			item_width = get_typavgwidth(exprType(node), exprTypmod(node));
+			Assert(item_width > 0);
+			tuple_width += item_width;
 		}
 	}
 	Assert(tuple_width >= 0);
