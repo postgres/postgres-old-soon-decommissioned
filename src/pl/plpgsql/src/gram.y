@@ -510,7 +510,7 @@ decl_cursor_arg : decl_varname decl_datatype
 				;
 
 decl_is_for		:	K_IS |		/* Oracle */
-					K_FOR;		/* ANSI */
+					K_FOR;		/* SQL standard */
 
 decl_aliasitem	: any_identifier
 					{
