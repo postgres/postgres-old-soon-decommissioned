@@ -15,10 +15,8 @@
  */
 #include "postgres.h"
 
-#include "nodes/nodes.h"
-#include "nodes/parsenodes.h"
+#include "parser/gramparse.h"
 #include "parser/keywords.h"
-#include "parser/gram.h"
 
 #define PG_KEYWORD(a,b,c) {a,b,c},
 
