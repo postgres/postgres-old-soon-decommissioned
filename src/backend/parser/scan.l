@@ -1211,13 +1211,13 @@ check_escape_warning(base_yyscan_t yyscanner)
  */
 
 void *
-base_yyalloc(size_t bytes, base_yyscan_t yyscanner)
+base_yyalloc(yy_size_t bytes, base_yyscan_t yyscanner)
 {
 	return palloc(bytes);
 }
 
 void *
-base_yyrealloc(void *ptr, size_t bytes, base_yyscan_t yyscanner)
+base_yyrealloc(void *ptr, yy_size_t bytes, base_yyscan_t yyscanner)
 {
 	if (ptr)
 		return repalloc(ptr, bytes);
