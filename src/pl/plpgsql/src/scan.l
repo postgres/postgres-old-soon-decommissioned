@@ -43,8 +43,6 @@ static int	cur_line_num;
 static int		xcdepth = 0;	/* depth of nesting in slash-star comments */
 static char    *dolqstart;      /* current $foo$ quote start string */
 
-extern PGDLLIMPORT bool standard_conforming_strings;
-
 bool plpgsql_SpaceScanned = false;
 %}
 
