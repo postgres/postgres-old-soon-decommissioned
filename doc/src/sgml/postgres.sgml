@@ -262,6 +262,6 @@
  </part>
 
  &biblio;
- &bookindex;
+ <![%include-index;[&bookindex;]]>
 
 </book>

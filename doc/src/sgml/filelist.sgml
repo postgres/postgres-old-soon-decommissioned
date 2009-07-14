@@ -165,3 +165,9 @@
  -->
 <!entity % standalone-ignore  "INCLUDE">
 <!entity % standalone-include "IGNORE">
+
+<!--
+ By default, no index is included.  Use -i include-index on the command line
+ to include it.
+ -->
+<!entity % include-index "IGNORE">
