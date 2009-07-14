@@ -101,7 +101,6 @@ extern void remove_variables(int);
 extern struct variable *new_variable(const char *, struct ECPGtype *, int);
 extern const ScanKeyword *ScanCKeywordLookup(const char *);
 extern const ScanKeyword *ScanECPGKeywordLookup(const char *text);
-extern const ScanKeyword *DoLookup(const char *, const ScanKeyword *, const ScanKeyword *);
 extern void scanner_init(const char *);
 extern void parser_init(void);
 extern void scanner_finish(void);

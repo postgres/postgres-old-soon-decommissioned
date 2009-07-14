@@ -20,6 +20,7 @@
 #define GRAMPARSE_H
 
 #include "nodes/parsenodes.h"
+#include "parser/keywords.h"
 
 /*
  * We track token locations in terms of byte offsets from the start of the
@@ -48,6 +49,12 @@ typedef struct base_yy_extra_type
 	 */
 	char	   *scanbuf;
 	Size		scanbuflen;
+
+	/*
+	 * The keyword list to use.
+	 */
+	const ScanKeyword *keywords;
+	int			num_keywords;
 
 	/*
 	 * literalbuf is used to accumulate literal values when multiple rules
@@ -106,7 +113,10 @@ extern int	filtered_base_yylex(YYSTYPE *lvalp, YYLTYPE *llocp,
 								base_yyscan_t yyscanner);
 
 /* from scan.l */
-extern base_yyscan_t scanner_init(const char *str, base_yy_extra_type *yyext);
+extern base_yyscan_t scanner_init(const char *str,
+								  base_yy_extra_type *yyext,
+								  const ScanKeyword *keywords,
+								  int num_keywords);
 extern void scanner_finish(base_yyscan_t yyscanner);
 extern int	base_yylex(YYSTYPE *lvalp, YYLTYPE *llocp,
 					   base_yyscan_t yyscanner);

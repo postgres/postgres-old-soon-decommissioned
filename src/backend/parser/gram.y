@@ -421,10 +421,23 @@ static TypeName *TableFuncTypeName(List *columns);
 
 
 /*
- * If you make any token changes, update the keyword table in
- * src/include/parser/kwlist.h and add new keywords to the appropriate one of
- * the reserved-or-not-so-reserved keyword lists, below; search
- * this file for "Name classification hierarchy".
+ * Non-keyword token types.  These are hard-wired into the "flex" lexer.
+ * They must be listed first so that their numeric codes do not depend on
+ * the set of keywords.  PL/pgsql depends on this so that it can share the
+ * same lexer.  If you add/change tokens here, fix PL/pgsql to match!
+ *
+ * DOT_DOT and COLON_EQUALS are unused in the core SQL grammar, and so will
+ * always provoke parse errors.  They are needed by PL/pgsql.
+ */
+%token <str>	IDENT FCONST SCONST BCONST XCONST Op
+%token <ival>	ICONST PARAM
+%token			TYPECAST DOT_DOT COLON_EQUALS
+
+/*
+ * If you want to make any keyword changes, update the keyword table in
+ * src/include/parser/kwlist.h and add new keywords to the appropriate one
+ * of the reserved-or-not-so-reserved keyword lists, below; search
+ * this file for "Keyword category lists".
  */
 
 /* ordinary key words in alphabetical order */
@@ -515,17 +528,15 @@ static TypeName *TableFuncTypeName(List *columns);
 
 	ZONE
 
-/* The grammar thinks these are keywords, but they are not in the kwlist.h
+/*
+ * The grammar thinks these are keywords, but they are not in the kwlist.h
  * list and so can never be entered directly.  The filter in parser.c
  * creates these tokens when required.
  */
 %token			NULLS_FIRST NULLS_LAST WITH_TIME
 
-/* Special token types, not actually keywords - see the "lex" file */
-%token <str>	IDENT FCONST SCONST BCONST XCONST Op
-%token <ival>	ICONST PARAM
 
-/* precedence: lowest to highest */
+/* Precedence: lowest to highest */
 %nonassoc	SET				/* see relation_expr_opt_alias */
 %left		UNION EXCEPT
 %left		INTERSECT

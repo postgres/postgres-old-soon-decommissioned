@@ -39,7 +39,7 @@ raw_parser(const char *str)
 	int			yyresult;
 
 	/* initialize the flex scanner */
-	yyscanner = scanner_init(str, &yyextra);
+	yyscanner = scanner_init(str, &yyextra, ScanKeywords, NumScanKeywords);
 
 	/* filtered_base_yylex() only needs this much initialization */
 	yyextra.have_lookahead = false;
@@ -79,7 +79,7 @@ pg_parse_string_token(const char *token)
 	YYSTYPE		yylval;
 	YYLTYPE		yylloc;
 
-	yyscanner = scanner_init(token, &yyextra);
+	yyscanner = scanner_init(token, &yyextra, ScanKeywords, NumScanKeywords);
 
 	ctoken = base_yylex(&yylval, &yylloc, yyscanner);
 

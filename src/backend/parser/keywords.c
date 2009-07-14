@@ -16,7 +16,6 @@
 #include "postgres.h"
 
 #include "parser/gramparse.h"
-#include "parser/keywords.h"
 
 #define PG_KEYWORD(a,b,c) {a,b,c},
 
@@ -25,5 +24,4 @@ const ScanKeyword ScanKeywords[] = {
 #include "parser/kwlist.h"
 };
 
-/* End of ScanKeywords, for use in kwlookup.c and elsewhere */
-const ScanKeyword *LastScanKeyword = endof(ScanKeywords);
+const int	NumScanKeywords = lengthof(ScanKeywords);

@@ -29,8 +29,10 @@ typedef struct ScanKeyword
 } ScanKeyword;
 
 extern const ScanKeyword ScanKeywords[];
-extern const ScanKeyword *LastScanKeyword;
+extern const int	NumScanKeywords;
 
-extern const ScanKeyword *ScanKeywordLookup(const char *text);
+extern const ScanKeyword *ScanKeywordLookup(const char *text,
+											const ScanKeyword *keywords,
+											int num_keywords);
 
 #endif   /* KEYWORDS_H */

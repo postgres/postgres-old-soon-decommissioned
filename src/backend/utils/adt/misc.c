@@ -334,7 +334,7 @@ pg_get_keywords(PG_FUNCTION_ARGS)
 
 	funcctx = SRF_PERCALL_SETUP();
 
-	if (&ScanKeywords[funcctx->call_cntr] < LastScanKeyword)
+	if (funcctx->call_cntr < NumScanKeywords)
 	{
 		char	   *values[3];
 		HeapTuple	tuple;
