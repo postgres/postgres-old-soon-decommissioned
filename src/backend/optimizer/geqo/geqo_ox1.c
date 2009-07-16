@@ -43,7 +43,8 @@
  *	 position crossover
  */
 void
-ox1(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene, City *city_table)
+ox1(PlannerInfo *root, Gene *tour1, Gene *tour2, Gene *offspring, int num_gene,
+	City *city_table)
 {
 	int			left,
 				right,
@@ -56,8 +57,8 @@ ox1(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene, City *city_table)
 		city_table[k].used = 0;
 
 	/* select portion to copy from tour1 */
-	left = geqo_randint(num_gene - 1, 0);
-	right = geqo_randint(num_gene - 1, 0);
+	left = geqo_randint(root, num_gene - 1, 0);
+	right = geqo_randint(root, num_gene - 1, 0);
 
 	if (left > right)
 	{

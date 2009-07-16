@@ -43,7 +43,7 @@
  *	 position crossover
  */
 void
-ox2(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene, City *city_table)
+ox2(PlannerInfo *root, Gene *tour1, Gene *tour2, Gene *offspring, int num_gene, City *city_table)
 {
 	int			k,
 				j,
@@ -60,12 +60,12 @@ ox2(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene, City *city_table)
 	}
 
 	/* determine the number of positions to be inherited from tour1  */
-	num_positions = geqo_randint(2 * num_gene / 3, num_gene / 3);
+	num_positions = geqo_randint(root, 2 * num_gene / 3, num_gene / 3);
 
 	/* make a list of selected cities */
 	for (k = 0; k < num_positions; k++)
 	{
-		pos = geqo_randint(num_gene - 1, 0);
+		pos = geqo_randint(root, num_gene - 1, 0);
 		city_table[pos].select_list = (int) tour1[pos];
 		city_table[(int) tour1[pos]].used = 1;	/* mark used */
 	}

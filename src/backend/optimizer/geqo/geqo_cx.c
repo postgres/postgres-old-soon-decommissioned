@@ -44,7 +44,8 @@
  *	 cycle crossover
  */
 int
-cx(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene, City *city_table)
+cx(PlannerInfo *root, Gene *tour1, Gene *tour2, Gene *offspring,
+   int num_gene, City *city_table)
 {
 
 	int			i,
@@ -62,7 +63,7 @@ cx(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene, City *city_table)
 	}
 
 	/* choose random cycle starting position */
-	start_pos = geqo_randint(num_gene - 1, 0);
+	start_pos = geqo_randint(root, num_gene - 1, 0);
 
 	/* child inherits first city  */
 	offspring[start_pos] = tour1[start_pos];

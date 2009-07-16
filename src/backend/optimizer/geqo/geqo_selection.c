@@ -42,7 +42,7 @@
 #include "optimizer/geqo_random.h"
 #include "optimizer/geqo_selection.h"
 
-static int	linear(int max, double bias);
+static int	linear(PlannerInfo *root, int max, double bias);
 
 
 /*
@@ -51,22 +51,23 @@ static int	linear(int max, double bias);
  *	 first and second genes are selected from the pool
  */
 void
-geqo_selection(Chromosome *momma, Chromosome *daddy, Pool *pool, double bias)
+geqo_selection(PlannerInfo *root, Chromosome *momma, Chromosome *daddy,
+			   Pool *pool, double bias)
 {
 	int			first,
 				second;
 
-	first = linear(pool->size, bias);
-	second = linear(pool->size, bias);
+	first = linear(root, pool->size, bias);
+	second = linear(root, pool->size, bias);
 
 	if (pool->size > 1)
 	{
 		while (first == second)
-			second = linear(pool->size, bias);
+			second = linear(root, pool->size, bias);
 	}
 
-	geqo_copy(momma, &pool->data[first], pool->string_length);
-	geqo_copy(daddy, &pool->data[second], pool->string_length);
+	geqo_copy(root, momma, &pool->data[first], pool->string_length);
+	geqo_copy(root, daddy, &pool->data[second], pool->string_length);
 }
 
 /*
@@ -74,12 +75,13 @@ geqo_selection(Chromosome *momma, Chromosome *daddy, Pool *pool, double bias)
  *	  generates random integer between 0 and input max number
  *	  using input linear bias
  *
+ *	  bias is y-intercept of linear distribution
+ *
  *	  probability distribution function is: f(x) = bias - 2(bias - 1)x
  *			 bias = (prob of first rule) / (prob of middle rule)
  */
 static int
-linear(int pool_size, double bias)		/* bias is y-intercept of linear
-										 * distribution */
+linear(PlannerInfo *root, int pool_size, double bias)
 {
 	double		index;			/* index between 0 and pop_size */
 	double		max = (double) pool_size;
@@ -95,7 +97,7 @@ linear(int pool_size, double bias)		/* bias is y-intercept of linear
 	{
 		double		sqrtval;
 
-		sqrtval = (bias * bias) - 4.0 * (bias - 1.0) * geqo_rand();
+		sqrtval = (bias * bias) - 4.0 * (bias - 1.0) * geqo_rand(root);
 		if (sqrtval > 0.0)
 			sqrtval = sqrt(sqrtval);
 		index = max * (bias - sqrtval) / 2.0 / (bias - 1.0);

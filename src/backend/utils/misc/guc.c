@@ -2026,6 +2026,14 @@ static struct config_real ConfigureNamesReal[] =
 		DEFAULT_GEQO_SELECTION_BIAS, MIN_GEQO_SELECTION_BIAS,
 		MAX_GEQO_SELECTION_BIAS, NULL, NULL
 	},
+	{
+		{"geqo_seed", PGC_USERSET, QUERY_TUNING_GEQO,
+			gettext_noop("GEQO: seed for random path selection."),
+			NULL
+		},
+		&Geqo_seed,
+		0.0, 0.0, 1.0, NULL, NULL
+	},
 
 	{
 		{"bgwriter_lru_multiplier", PGC_SIGHUP, RESOURCES,

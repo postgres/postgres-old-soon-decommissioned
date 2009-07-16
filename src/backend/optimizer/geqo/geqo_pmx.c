@@ -43,7 +43,7 @@
  *	 partially matched crossover
  */
 void
-pmx(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene)
+pmx(PlannerInfo *root, Gene *tour1, Gene *tour2, Gene *offspring, int num_gene)
 {
 	int		   *failed = (int *) palloc((num_gene + 1) * sizeof(int));
 	int		   *from = (int *) palloc((num_gene + 1) * sizeof(int));
@@ -71,8 +71,8 @@ pmx(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene)
 	}
 
 /* locate crossover points */
-	left = geqo_randint(num_gene - 1, 0);
-	right = geqo_randint(num_gene - 1, 0);
+	left = geqo_randint(root, num_gene - 1, 0);
+	right = geqo_randint(root, num_gene - 1, 0);
 
 	if (left > right)
 	{

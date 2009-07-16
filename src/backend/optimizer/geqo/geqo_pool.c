@@ -39,7 +39,7 @@ static int	compare(const void *arg1, const void *arg2);
  *		allocates memory for GA pool
  */
 Pool *
-alloc_pool(int pool_size, int string_length)
+alloc_pool(PlannerInfo *root, int pool_size, int string_length)
 {
 	Pool	   *new_pool;
 	Chromosome *chromo;
@@ -66,7 +66,7 @@ alloc_pool(int pool_size, int string_length)
  *		deallocates memory for GA pool
  */
 void
-free_pool(Pool *pool)
+free_pool(PlannerInfo *root, Pool *pool)
 {
 	Chromosome *chromo;
 	int			i;
@@ -88,7 +88,7 @@ free_pool(Pool *pool)
  *		initialize genetic pool
  */
 void
-random_init_pool(Pool *pool, GeqoEvalData *evaldata)
+random_init_pool(PlannerInfo *root, Pool *pool)
 {
 	Chromosome *chromo = (Chromosome *) pool->data;
 	int			i;
@@ -105,10 +105,9 @@ random_init_pool(Pool *pool, GeqoEvalData *evaldata)
 	i = 0;
 	while (i < pool->size)
 	{
-		init_tour(chromo[i].string, pool->string_length);
-		pool->data[i].worth = geqo_eval(chromo[i].string,
-										pool->string_length,
-										evaldata);
+		init_tour(root, chromo[i].string, pool->string_length);
+		pool->data[i].worth = geqo_eval(root, chromo[i].string,
+										pool->string_length);
 		if (pool->data[i].worth < DBL_MAX)
 			i++;
 		else
@@ -133,7 +132,7 @@ random_init_pool(Pool *pool, GeqoEvalData *evaldata)
  *	 maybe you have to change compare() for different ordering ...
  */
 void
-sort_pool(Pool *pool)
+sort_pool(PlannerInfo *root, Pool *pool)
 {
 	qsort(pool->data, pool->size, sizeof(Chromosome), compare);
 }
@@ -160,7 +159,7 @@ compare(const void *arg1, const void *arg2)
  *	  allocates a chromosome and string space
  */
 Chromosome *
-alloc_chromo(int string_length)
+alloc_chromo(PlannerInfo *root, int string_length)
 {
 	Chromosome *chromo;
 
@@ -174,7 +173,7 @@ alloc_chromo(int string_length)
  *	  deallocates a chromosome and string space
  */
 void
-free_chromo(Chromosome *chromo)
+free_chromo(PlannerInfo *root, Chromosome *chromo)
 {
 	pfree(chromo->string);
 	pfree(chromo);
@@ -185,7 +184,7 @@ free_chromo(Chromosome *chromo)
  *	 assumes best->worst = smallest->largest
  */
 void
-spread_chromo(Chromosome *chromo, Pool *pool)
+spread_chromo(PlannerInfo *root, Chromosome *chromo, Pool *pool)
 {
 	int			top,
 				mid,
@@ -247,7 +246,7 @@ spread_chromo(Chromosome *chromo, Pool *pool)
 	 * copy new gene into pool storage; always replace worst gene in pool
 	 */
 
-	geqo_copy(&pool->data[pool->size - 1], chromo, pool->string_length);
+	geqo_copy(root, &pool->data[pool->size - 1], chromo, pool->string_length);
 
 	swap_chromo.string = pool->data[pool->size - 1].string;
 	swap_chromo.worth = pool->data[pool->size - 1].worth;
