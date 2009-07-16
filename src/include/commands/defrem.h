@@ -41,7 +41,7 @@ extern void ReindexDatabase(const char *databaseName,
 extern char *makeObjectName(const char *name1, const char *name2,
 			   const char *label);
 extern char *ChooseRelationName(const char *name1, const char *name2,
-				   const char *label, Oid namespace);
+				   const char *label, Oid namespaceid);
 extern Oid	GetDefaultOpClass(Oid type_id, Oid am_id);
 
 /* commands/functioncmds.c */

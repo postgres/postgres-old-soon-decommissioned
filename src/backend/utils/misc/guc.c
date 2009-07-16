@@ -5331,7 +5331,7 @@ flatten_set_variable_args(const char *name, List *args)
 	{
 		Node	   *arg = (Node *) lfirst(l);
 		char	   *val;
-		TypeName   *typename = NULL;
+		TypeName   *typeName = NULL;
 		A_Const    *con;
 
 		if (l != list_head(args))
@@ -5342,7 +5342,7 @@ flatten_set_variable_args(const char *name, List *args)
 			TypeCast   *tc = (TypeCast *) arg;
 
 			arg = tc->arg;
-			typename = tc->typename;
+			typeName = tc->typeName;
 		}
 
 		if (!IsA(arg, A_Const))
@@ -5360,7 +5360,7 @@ flatten_set_variable_args(const char *name, List *args)
 				break;
 			case T_String:
 				val = strVal(&con->val);
-				if (typename != NULL)
+				if (typeName != NULL)
 				{
 					/*
 					 * Must be a ConstInterval argument for TIME ZONE. Coerce
@@ -5372,7 +5372,7 @@ flatten_set_variable_args(const char *name, List *args)
 					Datum		interval;
 					char	   *intervalout;
 
-					typoid = typenameTypeId(NULL, typename, &typmod);
+					typoid = typenameTypeId(NULL, typeName, &typmod);
 					Assert(typoid == INTERVALOID);
 
 					interval =

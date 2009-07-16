@@ -111,7 +111,7 @@ typedef struct
 	bool		isend;			/* in: marks for lexize_info about text end is
 								 * reached */
 	bool		getnext;		/* out: dict wants next lexeme */
-	void	   *private;		/* internal dict state between calls with
+	void	   *private_state;	/* internal dict state between calls with
 								 * getnext == true */
 } DictSubState;
 

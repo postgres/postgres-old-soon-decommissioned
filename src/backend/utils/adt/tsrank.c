@@ -358,7 +358,7 @@ calc_rank(float *w, TSVector t, TSQuery q, int4 method)
 		return 0.0;
 
 	/* XXX: What about NOT? */
-	res = (item->type == QI_OPR && item->operator.oper == OP_AND) ?
+	res = (item->type == QI_OPR && item->qoperator.oper == OP_AND) ?
 		calc_rank_and(w, t, q) : calc_rank_or(w, t, q);
 
 	if (res < 0)
@@ -641,7 +641,7 @@ get_docrep(TSVector txt, QueryRepresentation *qr, int *doclen)
 		if (item[i].type != QI_VAL)
 			continue;
 
-		curoperand = &item[i].operand;
+		curoperand = &item[i].qoperand;
 
 		if (QR_GET_OPERAND_EXISTS(qr, &item[i]))
 			continue;
@@ -680,8 +680,8 @@ get_docrep(TSVector txt, QueryRepresentation *qr, int *doclen)
 
 					for (k = 0; k < qr->query->size; k++)
 					{
-						QueryOperand *kptr = &item[k].operand;
-						QueryOperand *iptr = &item[i].operand;
+						QueryOperand *kptr = &item[k].qoperand;
+						QueryOperand *iptr = &item[i].qoperand;
 
 						if (k == i ||
 							(item[k].type == QI_VAL &&

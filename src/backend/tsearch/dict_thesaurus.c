@@ -800,7 +800,7 @@ thesaurus_lexize(PG_FUNCTION_ARGS)
 
 	if (dstate->isend)
 		PG_RETURN_POINTER(NULL);
-	stored = (LexemeInfo *) dstate->private;
+	stored = (LexemeInfo *) dstate->private_state;
 
 	if (stored)
 		curpos = stored->posinsubst + 1;
@@ -859,7 +859,7 @@ thesaurus_lexize(PG_FUNCTION_ARGS)
 		info = NULL;			/* word isn't recognized */
 	}
 
-	dstate->private = (void *) info;
+	dstate->private_state = (void *) info;
 
 	if (!info)
 	{

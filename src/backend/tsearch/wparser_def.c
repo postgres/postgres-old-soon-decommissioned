@@ -1950,7 +1950,7 @@ hlCover(HeadlineParsedText *prs, TSQuery query, int *p, int *q)
 		}
 		for (i = pos; i < prs->curwords; i++)
 		{
-			if (prs->words[i].item == &item->operand)
+			if (prs->words[i].item == &item->qoperand)
 			{
 				if (i > *q)
 					*q = i;
@@ -1973,7 +1973,7 @@ hlCover(HeadlineParsedText *prs, TSQuery query, int *p, int *q)
 		}
 		for (i = *q; i >= pos; i--)
 		{
-			if (prs->words[i].item == &item->operand)
+			if (prs->words[i].item == &item->qoperand)
 			{
 				if (i < *p)
 					*p = i;

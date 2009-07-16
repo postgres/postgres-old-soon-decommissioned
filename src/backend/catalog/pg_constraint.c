@@ -419,7 +419,7 @@ ConstraintNameIsUsed(ConstraintCategory conCat, Oid objId,
  */
 char *
 ChooseConstraintName(const char *name1, const char *name2,
-					 const char *label, Oid namespace,
+					 const char *label, Oid namespaceid,
 					 List *others)
 {
 	int			pass = 0;
@@ -461,7 +461,7 @@ ChooseConstraintName(const char *name1, const char *name2,
 			ScanKeyInit(&skey[1],
 						Anum_pg_constraint_connamespace,
 						BTEqualStrategyNumber, F_OIDEQ,
-						ObjectIdGetDatum(namespace));
+						ObjectIdGetDatum(namespaceid));
 
 			conscan = systable_beginscan(conDesc, ConstraintNameNspIndexId, true,
 										 SnapshotNow, 2, skey);

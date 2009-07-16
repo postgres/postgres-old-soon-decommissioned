@@ -218,8 +218,8 @@ typedef struct
 typedef union
 {
 	QueryItemType type;
-	QueryOperator operator;
-	QueryOperand operand;
+	QueryOperator qoperator;
+	QueryOperand qoperand;
 } QueryItem;
 
 /*

@@ -307,7 +307,7 @@ tsquery_opr_selec(QueryItem *item, char *operand,
 	}
 
 	/* Current TSQuery node is an operator */
-	switch (item->operator.oper)
+	switch (item->qoperator.oper)
 	{
 		case OP_NOT:
 			selec = 1.0 - tsquery_opr_selec(item + 1, operand,
@@ -317,7 +317,7 @@ tsquery_opr_selec(QueryItem *item, char *operand,
 		case OP_AND:
 			s1 = tsquery_opr_selec(item + 1, operand,
 								   lookup, length, minfreq);
-			s2 = tsquery_opr_selec(item + item->operator.left, operand,
+			s2 = tsquery_opr_selec(item + item->qoperator.left, operand,
 								   lookup, length, minfreq);
 			selec = s1 * s2;
 			break;
@@ -325,13 +325,13 @@ tsquery_opr_selec(QueryItem *item, char *operand,
 		case OP_OR:
 			s1 = tsquery_opr_selec(item + 1, operand,
 								   lookup, length, minfreq);
-			s2 = tsquery_opr_selec(item + item->operator.left, operand,
+			s2 = tsquery_opr_selec(item + item->qoperator.left, operand,
 								   lookup, length, minfreq);
 			selec = s1 + s2 - s1 * s2;
 			break;
 
 		default:
-			elog(ERROR, "unrecognized operator: %d", item->operator.oper);
+			elog(ERROR, "unrecognized operator: %d", item->qoperator.oper);
 			selec = 0;			/* keep compiler quiet */
 			break;
 	}

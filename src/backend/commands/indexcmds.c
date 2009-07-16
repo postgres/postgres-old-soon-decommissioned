@@ -1237,7 +1237,7 @@ makeObjectName(const char *name1, const char *name2, const char *label)
  */
 char *
 ChooseRelationName(const char *name1, const char *name2,
-				   const char *label, Oid namespace)
+				   const char *label, Oid namespaceid)
 {
 	int			pass = 0;
 	char	   *relname = NULL;
@@ -1250,7 +1250,7 @@ ChooseRelationName(const char *name1, const char *name2,
 	{
 		relname = makeObjectName(name1, name2, modlabel);
 
-		if (!OidIsValid(get_relname_relid(relname, namespace)))
+		if (!OidIsValid(get_relname_relid(relname, namespaceid)))
 			break;
 
 		/* found a conflict, so try a new name component */

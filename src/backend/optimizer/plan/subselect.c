@@ -1089,7 +1089,7 @@ convert_ANY_sublink_to_join(PlannerInfo *root, SubLink *sublink,
 	result->isNatural = false;
 	result->larg = NULL;		/* caller must fill this in */
 	result->rarg = (Node *) rtr;
-	result->using = NIL;
+	result->usingClause = NIL;
 	result->quals = quals;
 	result->alias = NULL;
 	result->rtindex = 0;		/* we don't need an RTE for it */
@@ -1233,7 +1233,7 @@ convert_EXISTS_sublink_to_join(PlannerInfo *root, SubLink *sublink,
 		result->rarg = (Node *) linitial(subselect->jointree->fromlist);
 	else
 		result->rarg = (Node *) subselect->jointree;
-	result->using = NIL;
+	result->usingClause = NIL;
 	result->quals = whereClause;
 	result->alias = NULL;
 	result->rtindex = 0;		/* we don't need an RTE for it */

@@ -783,11 +783,11 @@ build_physical_tlist(PlannerInfo *root, RelOptInfo *rel)
  */
 Selectivity
 restriction_selectivity(PlannerInfo *root,
-						Oid operator,
+						Oid operatorid,
 						List *args,
 						int varRelid)
 {
-	RegProcedure oprrest = get_oprrest(operator);
+	RegProcedure oprrest = get_oprrest(operatorid);
 	float8		result;
 
 	/*
@@ -799,7 +799,7 @@ restriction_selectivity(PlannerInfo *root,
 
 	result = DatumGetFloat8(OidFunctionCall4(oprrest,
 											 PointerGetDatum(root),
-											 ObjectIdGetDatum(operator),
+											 ObjectIdGetDatum(operatorid),
 											 PointerGetDatum(args),
 											 Int32GetDatum(varRelid)));
 
@@ -818,12 +818,12 @@ restriction_selectivity(PlannerInfo *root,
  */
 Selectivity
 join_selectivity(PlannerInfo *root,
-				 Oid operator,
+				 Oid operatorid,
 				 List *args,
 				 JoinType jointype,
 				 SpecialJoinInfo *sjinfo)
 {
-	RegProcedure oprjoin = get_oprjoin(operator);
+	RegProcedure oprjoin = get_oprjoin(operatorid);
 	float8		result;
 
 	/*
@@ -835,7 +835,7 @@ join_selectivity(PlannerInfo *root,
 
 	result = DatumGetFloat8(OidFunctionCall5(oprjoin,
 											 PointerGetDatum(root),
-											 ObjectIdGetDatum(operator),
+											 ObjectIdGetDatum(operatorid),
 											 PointerGetDatum(args),
 											 Int16GetDatum(jointype),
 											 PointerGetDatum(sjinfo)));

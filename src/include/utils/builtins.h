@@ -593,7 +593,7 @@ extern List *deparse_context_for(const char *aliasname, Oid relid);
 extern List *deparse_context_for_plan(Node *plan, Node *outer_plan,
 						 List *rtable, List *subplans);
 extern const char *quote_identifier(const char *ident);
-extern char *quote_qualified_identifier(const char *namespace,
+extern char *quote_qualified_identifier(const char *qualifier,
 						   const char *ident);
 
 /* tid.c */

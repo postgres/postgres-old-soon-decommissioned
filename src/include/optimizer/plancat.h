@@ -39,12 +39,12 @@ extern List *build_physical_tlist(PlannerInfo *root, RelOptInfo *rel);
 extern bool has_unique_index(RelOptInfo *rel, AttrNumber attno);
 
 extern Selectivity restriction_selectivity(PlannerInfo *root,
-						Oid operator,
+						Oid operatorid,
 						List *args,
 						int varRelid);
 
 extern Selectivity join_selectivity(PlannerInfo *root,
-				 Oid operator,
+				 Oid operatorid,
 				 List *args,
 				 JoinType jointype,
 				 SpecialJoinInfo *sjinfo);

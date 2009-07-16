@@ -204,7 +204,7 @@ LexizeExec(LexizeData *ld, ParsedLex **correspondLexem)
 				dict = lookup_ts_dictionary_cache(map->dictIds[i]);
 
 				ld->dictState.isend = ld->dictState.getnext = false;
-				ld->dictState.private = NULL;
+				ld->dictState.private_state = NULL;
 				res = (TSLexeme *) DatumGetPointer(FunctionCall4(
 															 &(dict->lexize),
 											 PointerGetDatum(dict->dictData),
@@ -464,18 +464,18 @@ hlfinditem(HeadlineParsedText *prs, TSQuery query, char *buf, int buflen)
 	for (i = 0; i < query->size; i++)
 	{
 		if (item->type == QI_VAL &&
-			tsCompareString(GETOPERAND(query) + item->operand.distance, item->operand.length,
-							buf, buflen, item->operand.prefix) == 0)
+			tsCompareString(GETOPERAND(query) + item->qoperand.distance, item->qoperand.length,
+							buf, buflen, item->qoperand.prefix) == 0)
 		{
 			if (word->item)
 			{
 				memcpy(&(prs->words[prs->curwords]), word, sizeof(HeadlineWordEntry));
-				prs->words[prs->curwords].item = &item->operand;
+				prs->words[prs->curwords].item = &item->qoperand;
 				prs->words[prs->curwords].repeated = 1;
 				prs->curwords++;
 			}
 			else
-				word->item = &item->operand;
+				word->item = &item->qoperand;
 		}
 		item++;
 	}

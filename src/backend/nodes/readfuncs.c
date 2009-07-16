@@ -1070,7 +1070,7 @@ _readJoinExpr(void)
 	READ_BOOL_FIELD(isNatural);
 	READ_NODE_FIELD(larg);
 	READ_NODE_FIELD(rarg);
-	READ_NODE_FIELD(using);
+	READ_NODE_FIELD(usingClause);
 	READ_NODE_FIELD(quals);
 	READ_NODE_FIELD(alias);
 	READ_INT_FIELD(rtindex);

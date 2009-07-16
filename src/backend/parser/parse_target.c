@@ -1373,9 +1373,9 @@ FigureColnameInternal(Node *node, char **name)
 											 name);
 			if (strength <= 1)
 			{
-				if (((TypeCast *) node)->typename != NULL)
+				if (((TypeCast *) node)->typeName != NULL)
 				{
-					*name = strVal(llast(((TypeCast *) node)->typename->names));
+					*name = strVal(llast(((TypeCast *) node)->typeName->names));
 					return 1;
 				}
 			}

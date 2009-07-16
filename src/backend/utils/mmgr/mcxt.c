@@ -193,7 +193,7 @@ MemoryContextDelete(MemoryContext context)
 			}
 		}
 	}
-	(*context->methods->delete) (context);
+	(*context->methods->delete_context) (context);
 	pfree(context);
 }
 

@@ -889,7 +889,7 @@ exprLocation(Node *expr)
 				 * any of the components might be leftmost.
 				 */
 				loc = exprLocation(tc->arg);
-				loc = leftmostLoc(loc, tc->typename->location);
+				loc = leftmostLoc(loc, tc->typeName->location);
 				loc = leftmostLoc(loc, tc->location);
 			}
 			break;
@@ -2417,7 +2417,7 @@ bool
 
 				if (walker(tc->arg, context))
 					return true;
-				if (walker(tc->typename, context))
+				if (walker(tc->typeName, context))
 					return true;
 			}
 			break;
@@ -2468,7 +2468,7 @@ bool
 			{
 				ColumnDef  *coldef = (ColumnDef *) node;
 
-				if (walker(coldef->typename, context))
+				if (walker(coldef->typeName, context))
 					return true;
 				if (walker(coldef->raw_default, context))
 					return true;
@@ -2483,7 +2483,7 @@ bool
 
 				if (walker(xs->expr, context))
 					return true;
-				if (walker(xs->typename, context))
+				if (walker(xs->typeName, context))
 					return true;
 			}
 			break;

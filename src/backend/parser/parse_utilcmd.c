@@ -266,24 +266,24 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 
 	/* Check for SERIAL pseudo-types */
 	is_serial = false;
-	if (list_length(column->typename->names) == 1 &&
-		!column->typename->pct_type)
+	if (list_length(column->typeName->names) == 1 &&
+		!column->typeName->pct_type)
 	{
-		char	   *typname = strVal(linitial(column->typename->names));
+		char	   *typname = strVal(linitial(column->typeName->names));
 
 		if (strcmp(typname, "serial") == 0 ||
 			strcmp(typname, "serial4") == 0)
 		{
 			is_serial = true;
-			column->typename->names = NIL;
-			column->typename->typeid = INT4OID;
+			column->typeName->names = NIL;
+			column->typeName->typeOid = INT4OID;
 		}
 		else if (strcmp(typname, "bigserial") == 0 ||
 				 strcmp(typname, "serial8") == 0)
 		{
 			is_serial = true;
-			column->typename->names = NIL;
-			column->typename->typeid = INT8OID;
+			column->typeName->names = NIL;
+			column->typeName->typeOid = INT8OID;
 		}
 
 		/*
@@ -291,7 +291,7 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 		 * typeid, LookupTypeName won't notice arrayBounds.  We don't need any
 		 * special coding for serial(typmod) though.
 		 */
-		if (is_serial && column->typename->arrayBounds != NIL)
+		if (is_serial && column->typeName->arrayBounds != NIL)
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 					 errmsg("array of serial is not implemented")));
@@ -382,7 +382,7 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 		snamenode->val.val.str = qstring;
 		snamenode->location = -1;
 		castnode = makeNode(TypeCast);
-		castnode->typename = SystemTypeName("regclass");
+		castnode->typeName = SystemTypeName("regclass");
 		castnode->arg = (Node *) snamenode;
 		castnode->location = -1;
 		funccallnode = makeNode(FuncCall);
@@ -623,7 +623,7 @@ transformInhRelation(ParseState *pstate, CreateStmtContext *cxt,
 		 */
 		def = makeNode(ColumnDef);
 		def->colname = pstrdup(attributeName);
-		def->typename = makeTypeNameFromOid(attribute->atttypid,
+		def->typeName = makeTypeNameFromOid(attribute->atttypid,
 											attribute->atttypmod);
 		def->inhcount = 0;
 		def->is_local = true;
@@ -1969,7 +1969,7 @@ transformColumnType(ParseState *pstate, ColumnDef *column)
 	/*
 	 * All we really need to do here is verify that the type is valid.
 	 */
-	Type		ctype = typenameType(pstate, column->typename, NULL);
+	Type		ctype = typenameType(pstate, column->typeName, NULL);
 
 	ReleaseSysCache(ctype);
 }

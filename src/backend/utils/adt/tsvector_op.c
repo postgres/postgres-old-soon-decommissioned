@@ -668,7 +668,7 @@ TS_execute(QueryItem *curitem, void *checkval, bool calcnot,
 	if (curitem->type == QI_VAL)
 		return chkcond(checkval, (QueryOperand *) curitem);
 
-	switch (curitem->operator.oper)
+	switch (curitem->qoperator.oper)
 	{
 		case OP_NOT:
 			if (calcnot)
@@ -676,19 +676,19 @@ TS_execute(QueryItem *curitem, void *checkval, bool calcnot,
 			else
 				return true;
 		case OP_AND:
-			if (TS_execute(curitem + curitem->operator.left, checkval, calcnot, chkcond))
+			if (TS_execute(curitem + curitem->qoperator.left, checkval, calcnot, chkcond))
 				return TS_execute(curitem + 1, checkval, calcnot, chkcond);
 			else
 				return false;
 
 		case OP_OR:
-			if (TS_execute(curitem + curitem->operator.left, checkval, calcnot, chkcond))
+			if (TS_execute(curitem + curitem->qoperator.left, checkval, calcnot, chkcond))
 				return true;
 			else
 				return TS_execute(curitem + 1, checkval, calcnot, chkcond);
 
 		default:
-			elog(ERROR, "unrecognized operator: %d", curitem->operator.oper);
+			elog(ERROR, "unrecognized operator: %d", curitem->qoperator.oper);
 	}
 
 	/* not reachable, but keep compiler quiet */

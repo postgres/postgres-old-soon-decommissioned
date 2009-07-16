@@ -38,7 +38,7 @@ join_tsqueries(TSQuery a, TSQuery b, int8 operator)
 
 	res->valnode = (QueryItem *) palloc0(sizeof(QueryItem));
 	res->valnode->type = QI_OPR;
-	res->valnode->operator.oper = operator;
+	res->valnode->qoperator.oper = operator;
 
 	res->child = (QTNode **) palloc0(sizeof(QTNode *) * 2);
 	res->child[0] = QT2QTN(GETQUERY(b), GETOPERAND(b));
@@ -124,7 +124,7 @@ tsquery_not(PG_FUNCTION_ARGS)
 
 	res->valnode = (QueryItem *) palloc0(sizeof(QueryItem));
 	res->valnode->type = QI_OPR;
-	res->valnode->operator.oper = OP_NOT;
+	res->valnode->qoperator.oper = OP_NOT;
 
 	res->child = (QTNode **) palloc0(sizeof(QTNode *));
 	res->child[0] = QT2QTN(GETQUERY(a), GETOPERAND(a));
@@ -209,7 +209,7 @@ makeTSQuerySign(TSQuery a)
 	for (i = 0; i < a->size; i++)
 	{
 		if (ptr->type == QI_VAL)
-			sign |= ((TSQuerySign) 1) << (ptr->operand.valcrc % TSQS_SIGLEN);
+			sign |= ((TSQuerySign) 1) << (ptr->qoperand.valcrc % TSQS_SIGLEN);
 		ptr++;
 	}
 
@@ -255,7 +255,7 @@ tsq_mcontains(PG_FUNCTION_ARGS)
 		if (ie[i].type != QI_VAL)
 			continue;
 		for (j = 0; j < query->size; j++)
-			if (iq[j].type == QI_VAL && ie[i].operand.valcrc == iq[j].operand.valcrc)
+			if (iq[j].type == QI_VAL && ie[i].qoperand.valcrc == iq[j].qoperand.valcrc)
 			{
 				j = query->size + 1;
 				break;

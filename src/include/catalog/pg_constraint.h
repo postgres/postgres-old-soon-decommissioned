@@ -210,7 +210,7 @@ extern void RenameConstraintById(Oid conId, const char *newname);
 extern bool ConstraintNameIsUsed(ConstraintCategory conCat, Oid objId,
 					 Oid objNamespace, const char *conname);
 extern char *ChooseConstraintName(const char *name1, const char *name2,
-					 const char *label, Oid namespace,
+					 const char *label, Oid namespaceid,
 					 List *others);
 
 extern void AlterConstraintNamespaces(Oid ownerId, Oid oldNspId,

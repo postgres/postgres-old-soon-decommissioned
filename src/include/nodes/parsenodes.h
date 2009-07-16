@@ -161,7 +161,7 @@ typedef struct Query
  *
  * For TypeName structures generated internally, it is often easier to
  * specify the type by OID than by name.  If "names" is NIL then the
- * actual type OID is given by typeid, otherwise typeid is unused.
+ * actual type OID is given by typeOid, otherwise typeOid is unused.
  * Similarly, if "typmods" is NIL then the actual typmod is expected to
  * be prespecified in typemod, otherwise typemod is unused.
  *
@@ -173,7 +173,7 @@ typedef struct TypeName
 {
 	NodeTag		type;
 	List	   *names;			/* qualified name (list of Value strings) */
-	Oid			typeid;			/* type identified by OID */
+	Oid			typeOid;		/* type identified by OID */
 	bool		setof;			/* is a set? */
 	bool		pct_type;		/* %TYPE specified? */
 	List	   *typmods;		/* type modifier expression(s) */
@@ -256,7 +256,7 @@ typedef struct TypeCast
 {
 	NodeTag		type;
 	Node	   *arg;			/* the expression being casted */
-	TypeName   *typename;		/* the target type */
+	TypeName   *typeName;		/* the target type */
 	int			location;		/* token location, or -1 if unknown */
 } TypeCast;
 
@@ -457,7 +457,7 @@ typedef struct ColumnDef
 {
 	NodeTag		type;
 	char	   *colname;		/* name of column */
-	TypeName   *typename;		/* type of column */
+	TypeName   *typeName;		/* type of column */
 	int			inhcount;		/* number of times column is inherited */
 	bool		is_local;		/* column has local (non-inherited) def'n */
 	bool		is_not_null;	/* NOT NULL constraint specified? */
@@ -554,7 +554,7 @@ typedef struct XmlSerialize
 	NodeTag		type;
 	XmlOptionType xmloption;	/* DOCUMENT or CONTENT */
 	Node	   *expr;
-	TypeName   *typename;
+	TypeName   *typeName;
 	int			location;		/* token location, or -1 if unknown */
 } XmlSerialize;
 
@@ -1166,7 +1166,7 @@ typedef struct AlterDomainStmt
 								 *	X = drop constraint
 								 *------------
 								 */
-	List	   *typename;		/* domain to work on */
+	List	   *typeName;		/* domain to work on */
 	char	   *name;			/* column or constraint name to act on */
 	Node	   *def;			/* definition of default or constraint */
 	DropBehavior behavior;		/* RESTRICT or CASCADE for DROP cases */
@@ -1670,7 +1670,7 @@ typedef struct CreateDomainStmt
 {
 	NodeTag		type;
 	List	   *domainname;		/* qualified name (list of Value strings) */
-	TypeName   *typename;		/* the base type */
+	TypeName   *typeName;		/* the base type */
 	List	   *constraints;	/* constraints (list of Constraint nodes) */
 } CreateDomainStmt;
 
@@ -2084,7 +2084,7 @@ typedef struct CompositeTypeStmt
 typedef struct CreateEnumStmt
 {
 	NodeTag		type;
-	List	   *typename;		/* qualified name (list of Value strings) */
+	List	   *typeName;		/* qualified name (list of Value strings) */
 	List	   *vals;			/* enum values (list of Value strings) */
 } CreateEnumStmt;
 
