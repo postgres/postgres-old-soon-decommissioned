@@ -255,7 +255,7 @@ extern EState *CreateExecutorState(void);
 extern void FreeExecutorState(EState *estate);
 extern ExprContext *CreateExprContext(EState *estate);
 extern ExprContext *CreateStandaloneExprContext(void);
-extern void FreeExprContext(ExprContext *econtext);
+extern void FreeExprContext(ExprContext *econtext, bool isCommit);
 extern void ReScanExprContext(ExprContext *econtext);
 
 #define ResetExprContext(econtext) \

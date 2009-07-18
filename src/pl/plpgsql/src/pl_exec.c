@@ -5237,7 +5237,7 @@ plpgsql_destroy_econtext(PLpgSQL_execstate *estate)
 	pfree(simple_econtext_stack);
 	simple_econtext_stack = next;
 
-	FreeExprContext(estate->eval_econtext);
+	FreeExprContext(estate->eval_econtext, true);
 	estate->eval_econtext = NULL;
 }
 
@@ -5292,7 +5292,8 @@ plpgsql_subxact_cb(SubXactEvent event, SubTransactionId mySubid,
 	{
 		SimpleEcontextStackEntry *next;
 
-		FreeExprContext(simple_econtext_stack->stack_econtext);
+		FreeExprContext(simple_econtext_stack->stack_econtext,
+						(event == SUBXACT_EVENT_COMMIT_SUB));
 		next = simple_econtext_stack->next;
 		pfree(simple_econtext_stack);
 		simple_econtext_stack = next;
