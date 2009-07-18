@@ -182,7 +182,7 @@ ExecEndBitmapIndexScan(BitmapIndexScanState *node)
 	 */
 #ifdef NOT_USED
 	if (node->biss_RuntimeContext)
-		FreeExprContext(node->biss_RuntimeContext);
+		FreeExprContext(node->biss_RuntimeContext, true);
 #endif
 
 	/*

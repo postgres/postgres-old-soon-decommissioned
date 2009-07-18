@@ -423,7 +423,7 @@ ExecEndIndexScan(IndexScanState *node)
 #ifdef NOT_USED
 	ExecFreeExprContext(&node->ss.ps);
 	if (node->iss_RuntimeContext)
-		FreeExprContext(node->iss_RuntimeContext);
+		FreeExprContext(node->iss_RuntimeContext, true);
 #endif
 
 	/*
