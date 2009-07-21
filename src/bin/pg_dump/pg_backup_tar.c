@@ -729,7 +729,7 @@ _LoadBlobs(ArchiveHandle *AH, RestoreOptions *ropt)
 			{
 				ahlog(AH, 1, "restoring large object OID %u\n", oid);
 
-				StartRestoreBlob(AH, oid);
+				StartRestoreBlob(AH, oid, ropt->dropSchema);
 
 				while ((cnt = tarRead(buf, 4095, th)) > 0)
 				{

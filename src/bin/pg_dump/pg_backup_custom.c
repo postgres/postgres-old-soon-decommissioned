@@ -54,7 +54,7 @@ static void _StartBlobs(ArchiveHandle *AH, TocEntry *te);
 static void _StartBlob(ArchiveHandle *AH, TocEntry *te, Oid oid);
 static void _EndBlob(ArchiveHandle *AH, TocEntry *te, Oid oid);
 static void _EndBlobs(ArchiveHandle *AH, TocEntry *te);
-static void _LoadBlobs(ArchiveHandle *AH);
+static void _LoadBlobs(ArchiveHandle *AH, bool drop);
 static void _Clone(ArchiveHandle *AH);
 static void _DeClone(ArchiveHandle *AH);
 
@@ -501,7 +501,7 @@ _PrintTocData(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt)
 			break;
 
 		case BLK_BLOBS:
-			_LoadBlobs(AH);
+			_LoadBlobs(AH, ropt->dropSchema);
 			break;
 
 		default:				/* Always have a default */
@@ -622,7 +622,7 @@ _PrintData(ArchiveHandle *AH)
 }
 
 static void
-_LoadBlobs(ArchiveHandle *AH)
+_LoadBlobs(ArchiveHandle *AH, bool drop)
 {
 	Oid			oid;
 
@@ -631,7 +631,7 @@ _LoadBlobs(ArchiveHandle *AH)
 	oid = ReadInt(AH);
 	while (oid != 0)
 	{
-		StartRestoreBlob(AH, oid);
+		StartRestoreBlob(AH, oid, drop);
 		_PrintData(AH);
 		EndRestoreBlob(AH, oid);
 		oid = ReadInt(AH);

@@ -382,7 +382,7 @@ _LoadBlobs(ArchiveHandle *AH, RestoreOptions *ropt)
 
 	while (oid != 0)
 	{
-		StartRestoreBlob(AH, oid);
+		StartRestoreBlob(AH, oid, ropt->dropSchema);
 		_PrintFileData(AH, fname, ropt);
 		EndRestoreBlob(AH, oid);
 		_getBlobTocEntry(AH, &oid, fname);
