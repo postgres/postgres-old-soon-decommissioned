@@ -148,14 +148,6 @@ enum
 
 
 typedef struct
-{								/* Dynamic string control structure */
-	int			alloc;
-	int			used;			/* Including NUL terminator */
-	char	   *value;
-} PLpgSQL_dstring;
-
-
-typedef struct
 {								/* Postgres data type */
 	char	   *typname;		/* (simple) name of the type */
 	Oid			typoid;			/* OID of the data type */
@@ -850,16 +842,6 @@ extern HeapTuple plpgsql_exec_trigger(PLpgSQL_function *func,
 extern void plpgsql_xact_cb(XactEvent event, void *arg);
 extern void plpgsql_subxact_cb(SubXactEvent event, SubTransactionId mySubid,
 				   SubTransactionId parentSubid, void *arg);
-
-/* ----------
- * Functions for the dynamic string handling in pl_funcs.c
- * ----------
- */
-extern void plpgsql_dstring_init(PLpgSQL_dstring *ds);
-extern void plpgsql_dstring_free(PLpgSQL_dstring *ds);
-extern void plpgsql_dstring_append(PLpgSQL_dstring *ds, const char *str);
-extern void plpgsql_dstring_append_char(PLpgSQL_dstring *ds, char c);
-extern char *plpgsql_dstring_get(PLpgSQL_dstring *ds);
 
 /* ----------
  * Functions for namestack handling in pl_funcs.c
