@@ -463,7 +463,7 @@ AddStmtToCache(int lineno,		/* line # of statement		*/
 
 /* handle cache and preparation of statments in auto-prepare mode */
 bool
-ecpg_auto_prepare(int lineno, const char *connection_name, int compat, char **name, const char *query)
+ecpg_auto_prepare(int lineno, const char *connection_name, const int compat, char **name, const char *query)
 {
 	int			entNo;
 
