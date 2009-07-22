@@ -796,8 +796,12 @@ toast_insert_or_update(Relation rel, HeapTuple newtup, HeapTuple oldtup,
 	}
 
 	/*
-	 * Finally we store attributes of type 'm' external, if possible.
+	 * Finally we store attributes of type 'm' externally.  At this point
+	 * we increase the target tuple size, so that 'm' attributes aren't
+	 * stored externally unless really necessary.
 	 */
+	maxDataLen = TOAST_TUPLE_TARGET_MAIN - hoff;
+
 	while (heap_compute_data_size(tupleDesc,
 								  toast_values, toast_isnull) > maxDataLen &&
 		   rel->rd_rel->reltoastrelid != InvalidOid)
