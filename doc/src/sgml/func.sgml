@@ -9193,8 +9193,9 @@ SELECT NULLIF(value, '(none)') ...
 </programlisting>
   </para>
   <para>
-   If <replaceable>value1</replaceable> is <literal>(none)</>, return a null,
-   otherwise return <replaceable>value1</replaceable>.
+   In this example, if <literal>value</literal> is <literal>(none)</>,
+   null is returned, otherwise the value of <literal>value</literal>
+   is returned.
   </para>
 
   </sect2>
