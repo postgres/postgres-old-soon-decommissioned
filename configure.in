@@ -1289,6 +1289,11 @@ if test "$PORTNAME" = "solaris"; then
   AC_LIBOBJ(getopt)
 fi
 
+# Cygwin's erand48 sometimes hangs, so force use of ours
+if test "$PORTNAME" = "cygwin"; then
+  AC_LIBOBJ(erand48)
+fi
+
 # Win32 support
 if test "$PORTNAME" = "win32"; then
 AC_REPLACE_FUNCS(gettimeofday)
