@@ -42,7 +42,7 @@
 #include "optimizer/geqo_random.h"
 #include "optimizer/geqo_selection.h"
 
-static int	linear(PlannerInfo *root, int max, double bias);
+static int	linear_rand(PlannerInfo *root, int max, double bias);
 
 
 /*
@@ -57,13 +57,21 @@ geqo_selection(PlannerInfo *root, Chromosome *momma, Chromosome *daddy,
 	int			first,
 				second;
 
-	first = linear(root, pool->size, bias);
-	second = linear(root, pool->size, bias);
+	first = linear_rand(root, pool->size, bias);
+	second = linear_rand(root, pool->size, bias);
 
+	/*
+	 * Ensure we have selected different genes, except if pool size is only
+	 * one, when we can't.
+	 *
+	 * This code has been observed to hang up in an infinite loop when the
+	 * platform's implementation of erand48() is broken.  We consider that a
+	 * feature: it lets you know you'd better fix the random-number generator.
+	 */
 	if (pool->size > 1)
 	{
 		while (first == second)
-			second = linear(root, pool->size, bias);
+			second = linear_rand(root, pool->size, bias);
 	}
 
 	geqo_copy(root, momma, &pool->data[first], pool->string_length);
@@ -71,7 +79,7 @@ geqo_selection(PlannerInfo *root, Chromosome *momma, Chromosome *daddy,
 }
 
 /*
- * linear
+ * linear_rand
  *	  generates random integer between 0 and input max number
  *	  using input linear bias
  *
@@ -81,7 +89,7 @@ geqo_selection(PlannerInfo *root, Chromosome *momma, Chromosome *daddy,
  *			 bias = (prob of first rule) / (prob of middle rule)
  */
 static int
-linear(PlannerInfo *root, int pool_size, double bias)
+linear_rand(PlannerInfo *root, int pool_size, double bias)
 {
 	double		index;			/* index between 0 and pop_size */
 	double		max = (double) pool_size;

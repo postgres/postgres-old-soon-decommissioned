@@ -1289,7 +1289,8 @@ if test "$PORTNAME" = "solaris"; then
   AC_LIBOBJ(getopt)
 fi
 
-# Cygwin's erand48 sometimes hangs, so force use of ours
+# Cygwin's erand48() is broken (always returns zero) in some releases,
+# so force use of ours.
 if test "$PORTNAME" = "cygwin"; then
   AC_LIBOBJ(erand48)
 fi
