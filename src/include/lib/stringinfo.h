@@ -132,6 +132,12 @@ extern void appendStringInfoChar(StringInfo str, char ch);
 	 (void)((str)->data[(str)->len] = (ch), (str)->data[++(str)->len] = '\0'))
 
 /*------------------------
+ * appendStringInfoSpaces
+ * Append a given number of spaces to str.
+ */
+extern void appendStringInfoSpaces(StringInfo str, int count);
+
+/*------------------------
  * appendBinaryStringInfo
  * Append arbitrary binary data to a StringInfo, allocating more space
  * if necessary.
