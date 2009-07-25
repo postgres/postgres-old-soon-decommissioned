@@ -774,7 +774,7 @@ testdb=&gt;
               [ header ]
               [ quote [ as ] '<replaceable class="parameter">character</replaceable>' ]
               [ escape [ as ] '<replaceable class="parameter">character</replaceable>' ]
-              [ force quote <replaceable class="parameter">column_list</replaceable> ]
+              [ force quote <replaceable class="parameter">column_list</replaceable> | * ]
               [ force not null <replaceable class="parameter">column_list</replaceable> ] ]</literal>
         </term>
 

@@ -35,12 +35,12 @@
  *	\copy tablename [(columnlist)] from|to filename
  *	  [ with ] [ binary ] [ oids ] [ delimiter [as] char ] [ null [as] string ]
  *	  [ csv  [ header ] [ quote [ AS ] string ]  escape [as] string
- *		[ force not null column [, ...] | force quote column [, ...] ] ]
+ *		[ force not null column [, ...] | force quote column [, ...] | * ] ]
  *
  *	\copy ( select stmt ) to filename
  *	  [ with ] [ binary ] [ delimiter [as] char ] [ null [as] string ]
  *	  [ csv  [ header ] [ quote [ AS ] string ]  escape [as] string
- *		[ force quote column [, ...] ] ]
+ *		[ force quote column [, ...] | * ] ]
  *
  * Force quote only applies for copy to; force not null only applies for
  * copy from.
