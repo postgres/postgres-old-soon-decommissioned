@@ -2028,6 +2028,10 @@ copy_opt_item:
 				{
 					$$ = makeDefElem("force_quote", (Node *)$3);
 				}
+			| FORCE QUOTE '*'
+				{
+					$$ = makeDefElem("force_quote", (Node *)makeNode(A_Star));
+				}
 			| FORCE NOT NULL_P columnList
 				{
 					$$ = makeDefElem("force_notnull", (Node *)$4);
