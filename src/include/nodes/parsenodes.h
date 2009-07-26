@@ -2193,8 +2193,7 @@ typedef struct ExplainStmt
 {
 	NodeTag		type;
 	Node	   *query;			/* the query (as a raw parse tree) */
-	bool		verbose;		/* print plan info */
-	bool		analyze;		/* get statistics by executing plan */
+	List	   *options;		/* list of DefElem nodes */
 } ExplainStmt;
 
 /* ----------------------

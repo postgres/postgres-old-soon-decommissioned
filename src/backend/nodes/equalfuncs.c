@@ -1467,8 +1467,7 @@ static bool
 _equalExplainStmt(ExplainStmt *a, ExplainStmt *b)
 {
 	COMPARE_NODE_FIELD(query);
-	COMPARE_SCALAR_FIELD(verbose);
-	COMPARE_SCALAR_FIELD(analyze);
+	COMPARE_NODE_FIELD(options);
 
 	return true;
 }
