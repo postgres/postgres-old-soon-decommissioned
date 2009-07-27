@@ -332,7 +332,7 @@ pgss_shmem_startup(void)
 	 * Note: we don't bother with locks here, because there should be no other
 	 * processes running when this is called.
 	 */
-	if (!pgss_save)
+	if (found || !pgss_save)
 		return;
 
 	file = AllocateFile(PGSS_DUMP_FILE, PG_BINARY_R);
