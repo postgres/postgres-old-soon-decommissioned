@@ -568,6 +568,36 @@ typedef int slock_t;
 #endif /* __m32r__ */
 
 
+#if defined(__sh__)				/* Renesas' SuperH */
+#define HAS_TEST_AND_SET
+
+typedef unsigned char slock_t;
+
+#define TAS(lock) tas(lock)
+
+static __inline__ int
+tas(volatile slock_t *lock)
+{
+	register int _res;
+
+	/*
+	 * This asm is coded as if %0 could be any register, but actually SuperH
+	 * restricts the target of xor-immediate to be R0.  That's handled by
+	 * the "z" constraint on _res.
+	 */
+	__asm__ __volatile__(
+		"	tas.b @%2    \n"
+		"	movt  %0     \n"
+		"	xor   #1,%0  \n"
+:		"=z"(_res), "+m"(*lock)
+:		"r"(lock)
+:		"memory", "t");
+	return _res;
+}
+
+#endif	 /* __sh__ */
+
+
 /* These live in s_lock.c, but only for gcc */
 
 
