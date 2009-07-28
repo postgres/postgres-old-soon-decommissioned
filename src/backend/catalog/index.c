@@ -732,6 +732,7 @@ index_create(Oid heapRelationId,
 										   indexInfo->ii_KeyAttrNumbers,
 										   indexInfo->ii_NumIndexAttrs,
 										   InvalidOid,	/* no domain */
+										   indexRelationId,	/* index OID */
 										   InvalidOid,	/* no foreign key */
 										   NULL,
 										   NULL,
@@ -741,7 +742,6 @@ index_create(Oid heapRelationId,
 										   ' ',
 										   ' ',
 										   ' ',
-										   InvalidOid,	/* no associated index */
 										   NULL,		/* no check constraint */
 										   NULL,
 										   NULL,

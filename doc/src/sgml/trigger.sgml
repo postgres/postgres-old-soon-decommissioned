@@ -486,6 +486,7 @@ typedef struct Trigger
     bool        tgenabled;
     bool        tgisconstraint;
     Oid         tgconstrrelid;
+    Oid         tgconstrindid;
     Oid         tgconstraint;
     bool        tgdeferrable;
     bool        tginitdeferred;
@@ -497,7 +498,7 @@ typedef struct Trigger
 </programlisting>
 
        where <structfield>tgname</> is the trigger's name,
-       <structfield>tgnargs</> is number of arguments in
+       <structfield>tgnargs</> is the number of arguments in
        <structfield>tgargs</>, and <structfield>tgargs</> is an array of
        pointers to the arguments specified in the <command>CREATE
        TRIGGER</command> statement. The other members are for internal use

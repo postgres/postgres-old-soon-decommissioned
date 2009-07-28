@@ -1659,6 +1659,7 @@ StoreRelCheck(Relation rel, char *ccname, Node *expr,
 						  attNos,		/* attrs in the constraint */
 						  keycount,		/* # attrs in the constraint */
 						  InvalidOid,	/* not a domain constraint */
+						  InvalidOid,	/* no associated index */
 						  InvalidOid,	/* Foreign key fields */
 						  NULL,
 						  NULL,
@@ -1668,7 +1669,6 @@ StoreRelCheck(Relation rel, char *ccname, Node *expr,
 						  ' ',
 						  ' ',
 						  ' ',
-						  InvalidOid,	/* no associated index */
 						  expr, /* Tree form check constraint */
 						  ccbin,	/* Binary form check constraint */
 						  ccsrc,	/* Source form check constraint */

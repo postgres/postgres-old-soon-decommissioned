@@ -928,7 +928,8 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_CreateTrigStmt:
-			CreateTrigger((CreateTrigStmt *) parsetree, InvalidOid, true);
+			CreateTrigger((CreateTrigStmt *) parsetree,
+						  InvalidOid, InvalidOid, true);
 			break;
 
 		case T_DropPropertyStmt:

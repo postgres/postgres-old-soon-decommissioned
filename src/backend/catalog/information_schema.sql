@@ -44,17 +44,6 @@ CREATE FUNCTION _pg_keysequal(smallint[], smallint[]) RETURNS boolean
     LANGUAGE sql IMMUTABLE  -- intentionally not STRICT, to allow inlining
     AS 'select $1 <@ $2 and $2 <@ $1';
 
-/* Get the OID of the unique index that an FK constraint depends on */
-CREATE FUNCTION _pg_underlying_index(oid) RETURNS oid
-    LANGUAGE sql STRICT STABLE
-    AS $$
-SELECT refobjid FROM pg_catalog.pg_depend
-  WHERE classid = 'pg_catalog.pg_constraint'::pg_catalog.regclass AND
-        objid = $1 AND
-        refclassid = 'pg_catalog.pg_class'::pg_catalog.regclass AND
-        refobjsubid = 0 AND deptype = 'n'
-$$;
-
 /* Given an index's OID and an underlying-table column number, return the
  * column's position in the index (NULL if not there) */
 CREATE FUNCTION _pg_index_position(oid, smallint) RETURNS int
@@ -957,15 +946,15 @@ CREATE VIEW key_column_usage AS
            CAST(a.attname AS sql_identifier) AS column_name,
            CAST((ss.x).n AS cardinal_number) AS ordinal_position,
            CAST(CASE WHEN contype = 'f' THEN
-                  _pg_index_position(_pg_underlying_index(ss.coid),
-                                     ss.confkey[(ss.x).n])
+                       _pg_index_position(ss.conindid, ss.confkey[(ss.x).n])
                      ELSE NULL
                 END AS cardinal_number)
              AS position_in_unique_constraint
     FROM pg_attribute a,
          (SELECT r.oid AS roid, r.relname, r.relowner,
                  nc.nspname AS nc_nspname, nr.nspname AS nr_nspname,
-                 c.oid AS coid, c.conname, c.contype, c.confkey, c.confrelid,
+                 c.oid AS coid, c.conname, c.contype, c.conindid,
+                 c.confkey, c.confrelid,
                  _pg_expandarray(c.conkey) AS x
           FROM pg_namespace nr, pg_class r, pg_namespace nc,
                pg_constraint c
