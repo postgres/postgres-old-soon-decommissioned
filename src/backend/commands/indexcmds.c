@@ -87,6 +87,8 @@ static bool relationHasPrimaryKey(Relation rel);
  * 'primary': mark the index as a primary key in the catalogs.
  * 'isconstraint': index is for a PRIMARY KEY or UNIQUE constraint,
  *		so build a pg_constraint entry for it.
+ * 'deferrable': constraint is DEFERRABLE.
+ * 'initdeferred': constraint is INITIALLY DEFERRED.
  * 'is_alter_table': this is due to an ALTER rather than a CREATE operation.
  * 'check_rights': check for CREATE rights in the namespace.  (This should
  *		be true except when ALTER is deleting/recreating an index.)
@@ -107,6 +109,8 @@ DefineIndex(RangeVar *heapRelation,
 			bool unique,
 			bool primary,
 			bool isconstraint,
+			bool deferrable,
+			bool initdeferred,
 			bool is_alter_table,
 			bool check_rights,
 			bool skip_build,
@@ -447,7 +451,8 @@ DefineIndex(RangeVar *heapRelation,
 		indexRelationId =
 			index_create(relationId, indexRelationName, indexRelationId,
 					  indexInfo, accessMethodId, tablespaceId, classObjectId,
-						 coloptions, reloptions, primary, isconstraint,
+						 coloptions, reloptions, primary,
+						 isconstraint, deferrable, initdeferred,
 						 allowSystemTableMods, skip_build, concurrent);
 
 		return;					/* We're done, in the standard case */
@@ -465,7 +470,8 @@ DefineIndex(RangeVar *heapRelation,
 	indexRelationId =
 		index_create(relationId, indexRelationName, indexRelationId,
 					 indexInfo, accessMethodId, tablespaceId, classObjectId,
-					 coloptions, reloptions, primary, isconstraint,
+					 coloptions, reloptions, primary,
+					 isconstraint, deferrable, initdeferred,
 					 allowSystemTableMods, true, concurrent);
 
 	/*

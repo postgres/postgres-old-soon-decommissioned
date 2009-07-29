@@ -39,6 +39,8 @@ extern Oid index_create(Oid heapRelationId,
 			 Datum reloptions,
 			 bool isprimary,
 			 bool isconstraint,
+			 bool deferrable,
+			 bool initdeferred,
 			 bool allow_system_table_mods,
 			 bool skip_build,
 			 bool concurrent);

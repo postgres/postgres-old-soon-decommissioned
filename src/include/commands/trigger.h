@@ -105,7 +105,7 @@ extern PGDLLIMPORT int SessionReplicationRole;
 #define TRIGGER_DISABLED					'D'
 
 extern Oid CreateTrigger(CreateTrigStmt *stmt,
-			  Oid constraintOid, Oid indexOid,
+			  Oid constraintOid, Oid indexOid, const char *prefix,
 			  bool checkPermissions);
 
 extern void DropTrigger(Oid relid, const char *trigname,
@@ -132,7 +132,8 @@ extern HeapTuple ExecBRInsertTriggers(EState *estate,
 					 HeapTuple trigtuple);
 extern void ExecARInsertTriggers(EState *estate,
 					 ResultRelInfo *relinfo,
-					 HeapTuple trigtuple);
+					 HeapTuple trigtuple,
+					 List *recheckIndexes);
 extern void ExecBSDeleteTriggers(EState *estate,
 					 ResultRelInfo *relinfo);
 extern void ExecASDeleteTriggers(EState *estate,
@@ -154,7 +155,8 @@ extern HeapTuple ExecBRUpdateTriggers(EState *estate,
 extern void ExecARUpdateTriggers(EState *estate,
 					 ResultRelInfo *relinfo,
 					 ItemPointer tupleid,
-					 HeapTuple newtuple);
+					 HeapTuple newtuple,
+					 List *recheckIndexes);
 extern void ExecBSTruncateTriggers(EState *estate,
 					   ResultRelInfo *relinfo);
 extern void ExecASTruncateTriggers(EState *estate,

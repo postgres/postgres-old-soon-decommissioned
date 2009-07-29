@@ -1229,7 +1229,9 @@ toast_save_datum(Relation rel, Datum value, int options)
 		 */
 		index_insert(toastidx, t_values, t_isnull,
 					 &(toasttup->t_self),
-					 toastrel, toastidx->rd_index->indisunique);
+					 toastrel,
+					 toastidx->rd_index->indisunique ?
+					 UNIQUE_CHECK_YES : UNIQUE_CHECK_NO);
 
 		/*
 		 * Free memory

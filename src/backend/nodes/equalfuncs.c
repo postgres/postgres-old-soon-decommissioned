@@ -1160,6 +1160,8 @@ _equalIndexStmt(IndexStmt *a, IndexStmt *b)
 	COMPARE_SCALAR_FIELD(unique);
 	COMPARE_SCALAR_FIELD(primary);
 	COMPARE_SCALAR_FIELD(isconstraint);
+	COMPARE_SCALAR_FIELD(deferrable);
+	COMPARE_SCALAR_FIELD(initdeferred);
 	COMPARE_SCALAR_FIELD(concurrent);
 
 	return true;
@@ -2068,6 +2070,8 @@ _equalConstraint(Constraint *a, Constraint *b)
 	COMPARE_NODE_FIELD(keys);
 	COMPARE_NODE_FIELD(options);
 	COMPARE_STRING_FIELD(indexspace);
+	COMPARE_SCALAR_FIELD(deferrable);
+	COMPARE_SCALAR_FIELD(initdeferred);
 
 	return true;
 }

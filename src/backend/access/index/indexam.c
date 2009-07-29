@@ -185,7 +185,7 @@ index_insert(Relation indexRelation,
 			 bool *isnull,
 			 ItemPointer heap_t_ctid,
 			 Relation heapRelation,
-			 bool check_uniqueness)
+			 IndexUniqueCheck checkUnique)
 {
 	FmgrInfo   *procedure;
 
@@ -201,7 +201,7 @@ index_insert(Relation indexRelation,
 									  PointerGetDatum(isnull),
 									  PointerGetDatum(heap_t_ctid),
 									  PointerGetDatum(heapRelation),
-									  BoolGetDatum(check_uniqueness)));
+									  Int32GetDatum((int32) checkUnique)));
 }
 
 /*

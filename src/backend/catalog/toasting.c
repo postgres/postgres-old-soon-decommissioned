@@ -253,7 +253,8 @@ create_toast_table(Relation rel, Oid toastOid, Oid toastIndexOid,
 							   BTREE_AM_OID,
 							   rel->rd_rel->reltablespace,
 							   classObjectId, coloptions, (Datum) 0,
-							   true, false, true, false, false);
+							   true, false, false, false,
+							   true, false, false);
 
 	/*
 	 * Store the toast table's OID in the parent relation's pg_class row

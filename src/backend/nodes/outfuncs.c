@@ -1734,6 +1734,8 @@ _outIndexStmt(StringInfo str, IndexStmt *node)
 	WRITE_BOOL_FIELD(unique);
 	WRITE_BOOL_FIELD(primary);
 	WRITE_BOOL_FIELD(isconstraint);
+	WRITE_BOOL_FIELD(deferrable);
+	WRITE_BOOL_FIELD(initdeferred);
 	WRITE_BOOL_FIELD(concurrent);
 }
 
@@ -2285,6 +2287,8 @@ _outConstraint(StringInfo str, Constraint *node)
 			WRITE_NODE_FIELD(keys);
 			WRITE_NODE_FIELD(options);
 			WRITE_STRING_FIELD(indexspace);
+			WRITE_BOOL_FIELD(deferrable);
+			WRITE_BOOL_FIELD(initdeferred);
 			break;
 
 		case CONSTR_UNIQUE:
@@ -2292,6 +2296,8 @@ _outConstraint(StringInfo str, Constraint *node)
 			WRITE_NODE_FIELD(keys);
 			WRITE_NODE_FIELD(options);
 			WRITE_STRING_FIELD(indexspace);
+			WRITE_BOOL_FIELD(deferrable);
+			WRITE_BOOL_FIELD(initdeferred);
 			break;
 
 		case CONSTR_CHECK:

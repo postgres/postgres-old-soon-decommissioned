@@ -2091,6 +2091,8 @@ _copyConstraint(Constraint *from)
 	COPY_NODE_FIELD(keys);
 	COPY_NODE_FIELD(options);
 	COPY_STRING_FIELD(indexspace);
+	COPY_SCALAR_FIELD(deferrable);
+	COPY_SCALAR_FIELD(initdeferred);
 
 	return newnode;
 }
@@ -2510,6 +2512,8 @@ _copyIndexStmt(IndexStmt *from)
 	COPY_SCALAR_FIELD(unique);
 	COPY_SCALAR_FIELD(primary);
 	COPY_SCALAR_FIELD(isconstraint);
+	COPY_SCALAR_FIELD(deferrable);
+	COPY_SCALAR_FIELD(initdeferred);
 	COPY_SCALAR_FIELD(concurrent);
 
 	return newnode;

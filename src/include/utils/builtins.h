@@ -1029,6 +1029,9 @@ extern Datum window_nth_value(PG_FUNCTION_ARGS);
 /* access/transam/twophase.c */
 extern Datum pg_prepared_xact(PG_FUNCTION_ARGS);
 
+/* commands/constraint.c */
+extern Datum unique_key_recheck(PG_FUNCTION_ARGS);
+
 /* commands/prepare.c */
 extern Datum pg_prepared_statement(PG_FUNCTION_ARGS);
 

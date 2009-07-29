@@ -517,8 +517,8 @@ extern Datum btoptions(PG_FUNCTION_ARGS);
 /*
  * prototypes for functions in nbtinsert.c
  */
-extern void _bt_doinsert(Relation rel, IndexTuple itup,
-			 bool index_is_unique, Relation heapRel);
+extern bool _bt_doinsert(Relation rel, IndexTuple itup,
+			 IndexUniqueCheck checkUnique, Relation heapRel);
 extern Buffer _bt_getstackbuf(Relation rel, BTStack stack, int access);
 extern void _bt_insert_parent(Relation rel, Buffer buf, Buffer rbuf,
 				  BTStack stack, bool is_root, bool is_only);

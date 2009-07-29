@@ -2676,6 +2676,14 @@
      </row>
 
      <row>
+      <entry><structfield>indimmediate</structfield></entry>
+      <entry><type>bool</type></entry>
+      <entry></entry>
+      <entry>If true, the uniqueness check is enforced immediately on insertion
+      (<structfield>indisunique</> should always be true when this is true)</entry>
+     </row>
+
+     <row>
       <entry><structfield>indisclustered</structfield></entry>
       <entry><type>bool</type></entry>
       <entry></entry>

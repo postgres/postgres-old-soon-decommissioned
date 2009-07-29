@@ -795,6 +795,8 @@ ProcessUtility(Node *parsetree,
 							stmt->unique,
 							stmt->primary,
 							stmt->isconstraint,
+							stmt->deferrable,
+							stmt->initdeferred,
 							false,		/* is_alter_table */
 							true,		/* check_rights */
 							false,		/* skip_build */
@@ -929,7 +931,7 @@ ProcessUtility(Node *parsetree,
 
 		case T_CreateTrigStmt:
 			CreateTrigger((CreateTrigStmt *) parsetree,
-						  InvalidOid, InvalidOid, true);
+						  InvalidOid, InvalidOid, NULL, true);
 			break;
 
 		case T_DropPropertyStmt:

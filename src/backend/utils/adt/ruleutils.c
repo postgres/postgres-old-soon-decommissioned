@@ -1044,11 +1044,6 @@ pg_get_constraintdef_worker(Oid constraintId, bool fullCommand,
 				if (string)
 					appendStringInfo(&buf, " ON DELETE %s", string);
 
-				if (conForm->condeferrable)
-					appendStringInfo(&buf, " DEFERRABLE");
-				if (conForm->condeferred)
-					appendStringInfo(&buf, " INITIALLY DEFERRED");
-
 				break;
 			}
 		case CONSTRAINT_PRIMARY:
@@ -1149,6 +1144,11 @@ pg_get_constraintdef_worker(Oid constraintId, bool fullCommand,
 			elog(ERROR, "invalid constraint type \"%c\"", conForm->contype);
 			break;
 	}
+
+	if (conForm->condeferrable)
+		appendStringInfo(&buf, " DEFERRABLE");
+	if (conForm->condeferred)
+		appendStringInfo(&buf, " INITIALLY DEFERRED");
 
 	/* Cleanup */
 	ReleaseSysCache(tup);
