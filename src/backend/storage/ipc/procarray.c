@@ -1137,7 +1137,7 @@ CountActiveBackends(void)
 		 * free list and are recycled. Its contents are nonsense in that case,
 		 * but that's acceptable for this function.
 		 */
-		if (proc != NULL)
+		if (proc == NULL)
 			continue;
 
 		if (proc == MyProc)
