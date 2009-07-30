@@ -17,6 +17,11 @@
  * suitability of this software for any purpose.  It is provided "as
  * is" without express or implied warranty.
  */
+
+#ifdef WIN32
+#define FD_SETSIZE 1024		/* set before winsock2.h is included */
+#endif   /* ! WIN32 */
+
 #include "postgres_fe.h"
 
 #include "libpq-fe.h"
@@ -24,8 +29,6 @@
 #include <ctype.h>
 
 #ifdef WIN32
-#undef FD_SETSIZE
-#define FD_SETSIZE 1024
 #include <win32.h>
 #else
 #include <sys/time.h>
