@@ -364,7 +364,6 @@ typedef enum NodeTag
 	T_RangeTblEntry,
 	T_SortGroupClause,
 	T_WindowClause,
-	T_FkConstraint,
 	T_PrivGrantee,
 	T_FuncWithArgs,
 	T_AccessPriv,

@@ -607,12 +607,14 @@ ConvertTriggerToFK(CreateTrigStmt *stmt, Oid funcoid)
 		/* OK, we have a set, so make the FK constraint ALTER TABLE cmd */
 		AlterTableStmt *atstmt = makeNode(AlterTableStmt);
 		AlterTableCmd *atcmd = makeNode(AlterTableCmd);
-		FkConstraint *fkcon = makeNode(FkConstraint);
+		Constraint *fkcon = makeNode(Constraint);
 
 		ereport(NOTICE,
 				(errmsg("converting trigger group into constraint \"%s\" %s",
 						constr_name, buf.data),
 				 errdetail("%s", _(funcdescr[funcnum]))));
+		fkcon->contype = CONSTR_FOREIGN;
+		fkcon->location = -1;
 		if (funcnum == 2)
 		{
 			/* This trigger is on the FK table */
@@ -642,9 +644,9 @@ ConvertTriggerToFK(CreateTrigStmt *stmt, Oid funcoid)
 		atcmd->subtype = AT_AddConstraint;
 		atcmd->def = (Node *) fkcon;
 		if (strcmp(constr_name, "<unnamed>") == 0)
-			fkcon->constr_name = NULL;
+			fkcon->conname = NULL;
 		else
-			fkcon->constr_name = constr_name;
+			fkcon->conname = constr_name;
 		fkcon->fk_attrs = fk_attrs;
 		fkcon->pk_attrs = pk_attrs;
 		fkcon->fk_matchtype = fk_matchtype;

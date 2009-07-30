@@ -903,6 +903,9 @@ exprLocation(Node *expr)
 		case T_TypeName:
 			loc = ((TypeName *) expr)->location;
 			break;
+		case T_Constraint:
+			loc = ((Constraint *) expr)->location;
+			break;
 		case T_XmlSerialize:
 			/* XMLSERIALIZE keyword should always be the first thing */
 			loc = ((XmlSerialize *) expr)->location;
