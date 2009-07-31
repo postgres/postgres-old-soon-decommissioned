@@ -39,6 +39,7 @@
 #include "storage/lmgr.h"
 #include "storage/proc.h"
 #include "storage/procarray.h"
+#include "storage/procsignal.h"
 #include "storage/sinvaladt.h"
 #include "storage/smgr.h"
 #include "utils/acl.h"
@@ -450,6 +451,9 @@ InitPostgres(const char *in_dbname, Oid dboid, const char *username,
 
 	if (MyBackendId > MaxBackends || MyBackendId <= 0)
 		elog(FATAL, "bad backend id: %d", MyBackendId);
+
+	/* Now that we have a BackendId, we can participate in ProcSignal */
+	ProcSignalInit(MyBackendId);
 
 	/*
 	 * bufmgr needs another initialization call too

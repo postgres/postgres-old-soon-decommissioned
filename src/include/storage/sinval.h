@@ -89,8 +89,8 @@ extern void ReceiveSharedInvalidMessages(
 					  void (*invalFunction) (SharedInvalidationMessage *msg),
 							 void (*resetFunction) (void));
 
-/* signal handler for catchup events (SIGUSR1) */
-extern void CatchupInterruptHandler(SIGNAL_ARGS);
+/* signal handler for catchup events (PROCSIG_CATCHUP_INTERRUPT) */
+extern void HandleCatchupInterrupt(void);
 
 /*
  * enable/disable processing of catchup events directly from signal handler.

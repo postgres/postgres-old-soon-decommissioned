@@ -70,7 +70,9 @@ typedef enum
 	BootstrapProcess,
 	StartupProcess,
 	BgWriterProcess,
-	WalWriterProcess
+	WalWriterProcess,
+
+	NUM_AUXPROCTYPES			/* Must be last! */
 } AuxProcType;
 
 #endif   /* BOOTSTRAP_H */

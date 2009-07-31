@@ -113,7 +113,7 @@ WalWriterMain(void)
 	pqsignal(SIGQUIT, wal_quickdie);	/* hard crash time */
 	pqsignal(SIGALRM, SIG_IGN);
 	pqsignal(SIGPIPE, SIG_IGN);
-	pqsignal(SIGUSR1, SIG_IGN); /* reserve for sinval */
+	pqsignal(SIGUSR1, SIG_IGN); /* reserve for ProcSignal */
 	pqsignal(SIGUSR2, SIG_IGN); /* not used */
 
 	/*

@@ -29,8 +29,8 @@ extern void AtSubCommit_Notify(void);
 extern void AtSubAbort_Notify(void);
 extern void AtPrepare_Notify(void);
 
-/* signal handler for inbound notifies (SIGUSR2) */
-extern void NotifyInterruptHandler(SIGNAL_ARGS);
+/* signal handler for inbound notifies (PROCSIG_NOTIFY_INTERRUPT) */
+extern void HandleNotifyInterrupt(void);
 
 /*
  * enable/disable processing of inbound notifies directly from signal handler.
