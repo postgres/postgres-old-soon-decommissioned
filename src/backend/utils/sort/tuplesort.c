@@ -2801,11 +2801,19 @@ comparetup_index_btree(const SortTuple *a, const SortTuple *b,
 	 * error in that case.
 	 */
 	if (state->enforceUnique && !equal_hasnull && tuple1 != tuple2)
+	{
+		Datum	values[INDEX_MAX_KEYS];
+		bool	isnull[INDEX_MAX_KEYS];
+
+		index_deform_tuple(tuple1, tupDes, values, isnull);
 		ereport(ERROR,
 				(errcode(ERRCODE_UNIQUE_VIOLATION),
 				 errmsg("could not create unique index \"%s\"",
 						RelationGetRelationName(state->indexRel)),
-				 errdetail("Table contains duplicated values.")));
+				 errdetail("Key %s is duplicated.",
+						   BuildIndexValueDescription(state->indexRel,
+													  values, isnull))));
+	}
 
 	/*
 	 * If key values are equal, we sort on ItemPointer.  This does not affect

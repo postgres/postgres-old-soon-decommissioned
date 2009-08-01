@@ -164,8 +164,8 @@ extern FmgrInfo *index_getprocinfo(Relation irel, AttrNumber attnum,
 extern IndexScanDesc RelationGetIndexScan(Relation indexRelation,
 					 int nkeys, ScanKey key);
 extern void IndexScanEnd(IndexScanDesc scan);
-extern void ReportUniqueViolation(Relation indexRelation,
-								  Datum *values, bool *isnull);
+extern char *BuildIndexValueDescription(Relation indexRelation,
+						   Datum *values, bool *isnull);
 
 /*
  * heap-or-index access to system catalogs (in genam.c)
