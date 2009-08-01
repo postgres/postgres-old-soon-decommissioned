@@ -362,12 +362,25 @@ _bt_check_unique(Relation rel, IndexTuple itup, Relation heapRel,
 					}
 
 					/*
-					 * This is a definite conflict.
+					 * This is a definite conflict.  Break the tuple down
+					 * into datums and report the error.  But first, make
+					 * sure we release the buffer locks we're holding ---
+					 * the error reporting code could make catalog accesses,
+					 * which in the worst case might touch this same index
+					 * and cause deadlocks.
 					 */
-					ereport(ERROR,
-							(errcode(ERRCODE_UNIQUE_VIOLATION),
-							 errmsg("duplicate key value violates unique constraint \"%s\"",
-									RelationGetRelationName(rel))));
+					if (nbuf != InvalidBuffer)
+						_bt_relbuf(rel, nbuf);
+					_bt_relbuf(rel, buf);
+
+					{
+						Datum	values[INDEX_MAX_KEYS];
+						bool	isnull[INDEX_MAX_KEYS];
+
+						index_deform_tuple(itup, RelationGetDescr(rel),
+										   values, isnull);
+						ReportUniqueViolation(rel, values, isnull);
+					}
 				}
 				else if (all_dead)
 				{

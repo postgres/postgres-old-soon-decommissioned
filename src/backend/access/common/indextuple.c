@@ -433,6 +433,27 @@ nocache_index_getattr(IndexTuple tup,
 }
 
 /*
+ * Convert an index tuple into Datum/isnull arrays.
+ *
+ * The caller must allocate sufficient storage for the output arrays.
+ * (INDEX_MAX_KEYS entries should be enough.)
+ */
+void
+index_deform_tuple(IndexTuple tup, TupleDesc tupleDescriptor,
+				   Datum *values, bool *isnull)
+{
+	int			i;
+
+	/* Assert to protect callers who allocate fixed-size arrays */
+	Assert(tupleDescriptor->natts <= INDEX_MAX_KEYS);
+
+	for (i = 0; i < tupleDescriptor->natts; i++)
+	{
+		values[i] = index_getattr(tup, i + 1, tupleDescriptor, &isnull[i]);
+	}
+}
+
+/*
  * Create a palloc'd copy of an index tuple.
  */
 IndexTuple
