@@ -338,6 +338,8 @@ equalTupleDescs(TupleDesc tupdesc1, TupleDesc tupdesc2)
 			return false;
 		if (attr1->attstattarget != attr2->attstattarget)
 			return false;
+		if (attr1->attdistinct != attr2->attdistinct)
+			return false;
 		if (attr1->attlen != attr2->attlen)
 			return false;
 		if (attr1->attndims != attr2->attndims)
@@ -465,6 +467,7 @@ TupleDescInitEntry(TupleDesc desc,
 		MemSet(NameStr(att->attname), 0, NAMEDATALEN);
 
 	att->attstattarget = -1;
+	att->attdistinct = 0;
 	att->attcacheoff = -1;
 	att->atttypmod = typmod;
 

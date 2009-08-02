@@ -1098,8 +1098,9 @@ typedef enum AlterTableType
 	AT_ColumnDefault,			/* alter column default */
 	AT_DropNotNull,				/* alter column drop not null */
 	AT_SetNotNull,				/* alter column set not null */
-	AT_SetStatistics,			/* alter column statistics */
-	AT_SetStorage,				/* alter column storage */
+	AT_SetStatistics,			/* alter column set statistics */
+	AT_SetDistinct,				/* alter column set statistics distinct */
+	AT_SetStorage,				/* alter column set storage */
 	AT_DropColumn,				/* drop column */
 	AT_DropColumnRecurse,		/* internal to commands/tablecmds.c */
 	AT_AddIndex,				/* add index */

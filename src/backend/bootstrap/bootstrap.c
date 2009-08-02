@@ -757,6 +757,7 @@ DefineAttr(char *name, char *type, int attnum)
 	}
 
 	attrtypes[attnum]->attstattarget = -1;
+	attrtypes[attnum]->attdistinct = 0;
 	attrtypes[attnum]->attcacheoff = -1;
 	attrtypes[attnum]->atttypmod = -1;
 	attrtypes[attnum]->attislocal = true;

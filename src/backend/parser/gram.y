@@ -1605,6 +1605,15 @@ alter_table_cmd:
 					n->def = (Node *) makeInteger($6);
 					$$ = (Node *)n;
 				}
+			/* ALTER TABLE <name> ALTER [COLUMN] <colname> SET STATISTICS DISTINCT <NumericOnly> */
+			| ALTER opt_column ColId SET STATISTICS DISTINCT NumericOnly
+				{
+					AlterTableCmd *n = makeNode(AlterTableCmd);
+					n->subtype = AT_SetDistinct;
+					n->name = $3;
+					n->def = (Node *) $7;
+					$$ = (Node *)n;
+				}
 			/* ALTER TABLE <name> ALTER [COLUMN] <colname> SET STORAGE <storagemode> */
 			| ALTER opt_column ColId SET STORAGE ColId
 				{

@@ -243,6 +243,7 @@ typedef struct _tableInfo
 	char	  **atttypnames;	/* attribute type names */
 	int		   *atttypmod;		/* type-specific type modifiers */
 	int		   *attstattarget;	/* attribute statistics targets */
+	float4	   *attdistinct;	/* override ndistinct calculation */
 	char	   *attstorage;		/* attribute storage scheme */
 	char	   *typstorage;		/* type storage scheme */
 	bool	   *attisdropped;	/* true if attr is dropped; don't dump it */

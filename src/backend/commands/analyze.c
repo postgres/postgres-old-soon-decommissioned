@@ -425,6 +425,11 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt,
 									 std_fetch_func,
 									 numrows,
 									 totalrows);
+
+			/* If attdistinct is set, override with that value */
+			if (stats->attr->attdistinct != 0)
+				stats->stadistinct = stats->attr->attdistinct;
+
 			MemoryContextResetAndDeleteChildren(col_context);
 		}
 
@@ -679,6 +684,9 @@ compute_index_stats(Relation onerel, double totalrows,
 										 ind_fetch_func,
 										 numindexrows,
 										 totalindexrows);
+				/* If attdistinct is set, override with that value */
+				if (stats->attr->attdistinct != 0)
+					stats->stadistinct = stats->attr->attdistinct;
 				MemoryContextResetAndDeleteChildren(col_context);
 			}
 		}
