@@ -172,6 +172,14 @@ pgbench <optional> <replaceable>options</> </optional> <replaceable>dbname</>
       </entry>
      </row>
      <row>
+      <entry><literal>-j</literal> <replaceable>threads</></entry>
+      <entry>
+       Number of worker threads. Clients are equally-divided into those
+       threads and executed in it. The number of clients must be a multiple
+       number of threads. Default is 1.
+      </entry>
+     </row>
+     <row>
       <entry><literal>-t</literal> <replaceable>transactions</></entry>
       <entry>
        Number of transactions each client runs.  Default is 10.
