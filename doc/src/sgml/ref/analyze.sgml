@@ -94,7 +94,7 @@ ANALYZE [ VERBOSE ] [ <replaceable class="PARAMETER">table</replaceable> [ ( <re
 
   <para>
    In the default <productname>PostgreSQL</productname> configuration,
-   <xref linkend="autovacuum" endterm="autovacuum-title">
+   the autovacuum daemon (see <xref linkend="autovacuum">)
    takes care of automatic analyzing of tables when they are first loaded
    with data, and as they change throughout regular operation.
    When autovacuum is disabled,

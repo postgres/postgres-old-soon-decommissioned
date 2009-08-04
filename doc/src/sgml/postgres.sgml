@@ -16,6 +16,8 @@
 
  <bookinfo>
   <corpauthor>The PostgreSQL Global Development Group</corpauthor>
+  <productname>PostgreSQL</productname>
+  <productnumber>&version;</productnumber>
   &legal;
  </bookinfo>
 

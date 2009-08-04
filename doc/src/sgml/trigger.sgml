@@ -541,7 +541,7 @@ typedef struct Trigger
   </sect1>
 
   <sect1 id="trigger-example">
-   <title>A Complete Example</title>
+   <title>A Complete Trigger Example</title>
 
    <para>
     Here is a very simple example of a trigger function written in C.
