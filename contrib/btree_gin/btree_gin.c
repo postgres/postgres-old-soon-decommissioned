@@ -8,6 +8,7 @@
 #include "fmgr.h"
 #include "access/skey.h"
 #include "utils/builtins.h"
+#include "utils/bytea.h"
 #include "utils/cash.h"
 #include "utils/date.h"
 #include "utils/inet.h"
