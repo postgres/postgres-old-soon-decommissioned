@@ -59,7 +59,7 @@ CATALOG(pg_proc,1255) BKI_BOOTSTRAP
 	text		proargdefaults; /* list of expression trees for argument
 								 * defaults (NULL if none) */
 	text		prosrc;			/* procedure source text */
-	bytea		probin;			/* secondary procedure info (can be NULL) */
+	text		probin;			/* secondary procedure info (can be NULL) */
 	text		proconfig[1];	/* procedure-local GUC settings */
 	aclitem		proacl[1];		/* access permissions */
 } FormData_pg_proc;

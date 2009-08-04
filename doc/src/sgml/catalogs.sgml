@@ -3841,7 +3841,7 @@
 
      <row>
       <entry><structfield>probin</structfield></entry>
-      <entry><type>bytea</type></entry>
+      <entry><type>text</type></entry>
       <entry></entry>
       <entry>
        Additional information about how to invoke the function.
