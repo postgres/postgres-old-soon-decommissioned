@@ -4060,6 +4060,23 @@ COPY postgres_log FROM '/full/path/to/logfile.csv' WITH csv;
       </listitem>
      </varlistentry>
 
+     <varlistentry id="guc-bytea-output" xreflabel="bytea_output">
+      <term><varname>bytea_output</varname> (<type>enum</type>)</term>
+      <indexterm>
+       <primary><varname>bytea_output</> configuration parameter</primary>
+      </indexterm>
+      <listitem>
+       <para>
+        Sets the output format for values of type <type>bytea</type>.
+        Valid values are <literal>hex</literal> (the default)
+        and <literal>escape</literal> (the traditional PostgreSQL
+        format).  See <xref linkend="datatype-binary"> for more
+        information.  The <type>bytea</type> type always
+        accepts both formats on input, regardless of this setting.
+       </para>
+      </listitem>
+     </varlistentry>
+
      <varlistentry id="guc-xmlbinary" xreflabel="xmlbinary">
       <term><varname>xmlbinary</varname> (<type>enum</type>)</term>
       <indexterm>
