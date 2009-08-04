@@ -23,6 +23,7 @@
 #include "executor/spi_priv.h"
 #include "funcapi.h"
 #include "lib/stringinfo.h"
+#include "miscadmin.h"
 #include "nodes/nodeFuncs.h"
 #include "parser/scansup.h"
 #include "storage/proc.h"

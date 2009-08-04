@@ -20,7 +20,6 @@
 
 #include "access/xact.h"
 #include "fmgr.h"
-#include "miscadmin.h"
 #include "commands/trigger.h"
 #include "executor/spi.h"
 #include "utils/tuplestore.h"
