@@ -11111,7 +11111,8 @@ dumpTrigger(Archive *fout, TriggerInfo *tginfo)
 		appendPQExpBuffer(query, "EXECUTE PROCEDURE %s(",
 						  fmtId(tginfo->tgfname));
 
-	tgargs = (char *) PQunescapeBytea(tginfo->tgargs, &lentgargs);
+	tgargs = (char *) PQunescapeBytea((unsigned char *) tginfo->tgargs,
+									  &lentgargs);
 	p = tgargs;
 	for (findx = 0; findx < tginfo->tgnargs; findx++)
 	{
