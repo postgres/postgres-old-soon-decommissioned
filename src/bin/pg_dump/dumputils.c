@@ -326,6 +326,55 @@ appendStringLiteralDQ(PQExpBuffer buf, const char *str, const char *dqprefix)
 
 
 /*
+ * Convert a bytea value (presented as raw bytes) to an SQL string literal
+ * and append it to the given buffer.  We assume the specified
+ * standard_conforming_strings setting.
+ *
+ * This is needed in situations where we do not have a PGconn available.
+ * Where we do, PQescapeByteaConn is a better choice.
+ */
+void
+appendByteaLiteral(PQExpBuffer buf, const unsigned char *str, size_t length,
+				   bool std_strings)
+{
+	const unsigned char *source = str;
+	char	   *target;
+
+	static const char hextbl[] = "0123456789abcdef";
+
+	/*
+	 * This implementation is hard-wired to produce hex-format output.
+	 * We do not know the server version the output will be loaded into,
+	 * so making an intelligent format choice is impossible.  It might be
+	 * better to always use the old escaped format.
+	 */
+	if (!enlargePQExpBuffer(buf, 2 * length + 5))
+		return;
+
+	target = buf->data + buf->len;
+	*target++ = '\'';
+	if (!std_strings)
+		*target++ = '\\';
+	*target++ = '\\';
+	*target++ = 'x';
+
+	while (length-- > 0)
+	{
+		unsigned char c = *source++;
+
+		*target++ = hextbl[(c >> 4) & 0xF];
+		*target++ = hextbl[c & 0xF];
+	}
+
+	/* Write the terminating quote and NUL character. */
+	*target++ = '\'';
+	*target = '\0';
+
+	buf->len = target - buf->data;
+}
+
+
+/*
  * Convert backend's version string into a number.
  */
 int
