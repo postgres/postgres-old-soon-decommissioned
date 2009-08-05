@@ -74,7 +74,7 @@ man: man-stamp
 
 man-stamp: stylesheet-man.xsl postgres.xml
 	$(XSLTPROC) $(XSLTPROCFLAGS) $^
-	rm man1/SPI* man1/dblink*
+	rm man1/dblink*
 	touch $@
 
 
@@ -269,7 +269,7 @@ clean distclean maintainer-clean:
 # HTML
 	rm -f *.html html-stamp
 # man
-	rm -rf man1 man7 man-stamp
+	rm -rf man1 man3 man7 man-stamp
 # print
 	rm -f *.rtf *.tex-ps *.tex-pdf *.dvi *.aux *.log *.ps *.pdf *.out *.fot
 # index

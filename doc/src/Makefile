@@ -15,4 +15,4 @@ postgres.tar:
 
 man.tar:
 	$(MAKE) -C sgml man
-	$(TAR) -cf $@ -C sgml man1 man7
+	$(TAR) -cf $@ -C sgml man1 man3 man7
