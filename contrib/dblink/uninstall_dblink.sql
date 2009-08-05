@@ -76,3 +76,7 @@ DROP FUNCTION dblink_get_result(text, boolean);
 DROP FUNCTION dblink_is_busy(text);
 
 DROP FUNCTION dblink_send_query(text, text);
+
+DROP FUNCTION dblink_get_notify();
+
+DROP FUNCTION dblink_get_notify(text);
