@@ -1319,6 +1319,20 @@ FileTruncate(File file, off_t offset)
 	return returnCode;
 }
 
+/*
+ * Return the pathname associated with an open file.
+ *
+ * The returned string points to an internal buffer, which is valid until
+ * the file is closed.
+ */
+char *
+FilePathName(File file)
+{
+	Assert(FileIsValid(file));
+
+	return VfdCache[file].fileName;
+}
+
 
 /*
  * Routines that want to use stdio (ie, FILE*) should use AllocateFile
