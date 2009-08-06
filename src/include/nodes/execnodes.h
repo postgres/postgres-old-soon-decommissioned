@@ -750,11 +750,9 @@ typedef struct ConvertRowtypeExprState
 	ExprState  *arg;			/* input tuple value */
 	TupleDesc	indesc;			/* tupdesc for source rowtype */
 	TupleDesc	outdesc;		/* tupdesc for result rowtype */
-	AttrNumber *attrMap;		/* indexes of input fields, or 0 for null */
-	Datum	   *invalues;		/* workspace for deconstructing source */
-	bool	   *inisnull;
-	Datum	   *outvalues;		/* workspace for constructing result */
-	bool	   *outisnull;
+	/* use "struct" so we needn't include tupconvert.h here */
+	struct TupleConversionMap *map;
+	bool		initialized;
 } ConvertRowtypeExprState;
 
 /* ----------------
