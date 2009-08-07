@@ -577,6 +577,9 @@ do_copy(const char *args)
 		success = false;
 		psql_error("\\copy: unexpected response (%d)\n",
 				   PQresultStatus(result));
+		/* if still in COPY IN state, try to get out of it */
+		if (PQresultStatus(result) == PGRES_COPY_IN)
+			PQputCopyEnd(pset.db, gettext("trying to exit copy mode"));
 		PQclear(result);
 	}
 
