@@ -2094,6 +2094,7 @@ pmdie(SIGNAL_ARGS)
 			}
 			if (pmState == PM_RUN ||
 				pmState == PM_WAIT_BACKUP ||
+				pmState == PM_WAIT_BACKENDS ||
 				pmState == PM_RECOVERY_CONSISTENT)
 			{
 				ereport(LOG,
