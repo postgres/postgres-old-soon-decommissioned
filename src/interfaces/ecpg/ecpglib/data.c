@@ -396,8 +396,6 @@ ecpg_get_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 						char	*str = (char *) ((long) var + offset * act_tuple);
 						if (varcharsize == 0 || varcharsize > size)
 						{
-							char *last;
-
 							strncpy(str, pval, size + 1);
 							/* do the rtrim() */
 							if (type == ECPGt_string)
