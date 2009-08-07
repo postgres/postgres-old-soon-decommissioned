@@ -314,7 +314,8 @@ typedef struct _tocEntry
 	void	   *formatData;		/* TOC Entry data specific to file format */
 
 	/* working state (needed only for parallel restore) */
-	bool		restored;		/* item is in progress or done */
+	struct _tocEntry *par_prev;	/* list links for pending/ready items; */
+	struct _tocEntry *par_next;	/* these are NULL if not in either list */
 	bool		created;		/* set for DATA member if TABLE was created */
 	int			depCount;		/* number of dependencies not yet restored */
 	DumpId	   *lockDeps;		/* dumpIds of objects this one needs lock on */
