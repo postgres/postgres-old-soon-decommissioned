@@ -295,6 +295,7 @@ ECPGset_noind_null(enum ECPGttype type, void *ptr)
 	{
 		case ECPGt_char:
 		case ECPGt_unsigned_char:
+		case ECPGt_string:
 			*((char *) ptr) = '\0';
 			break;
 		case ECPGt_short:
@@ -361,6 +362,7 @@ ECPGis_noind_null(enum ECPGttype type, void *ptr)
 	{
 		case ECPGt_char:
 		case ECPGt_unsigned_char:
+		case ECPGt_string:
 			if (*((char *) ptr) == '\0')
 				return true;
 			break;

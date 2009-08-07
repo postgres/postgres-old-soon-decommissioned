@@ -200,6 +200,7 @@ get_char_item(int lineno, void *var, enum ECPGttype vartype, char *value, int va
 	{
 		case ECPGt_char:
 		case ECPGt_unsigned_char:
+		case ECPGt_string:
 			strncpy((char *) var, value, varcharsize);
 			break;
 		case ECPGt_varchar:

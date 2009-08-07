@@ -200,6 +200,9 @@ get_type(enum ECPGttype type)
 		case ECPGt_timestamp:
 			return ("ECPGt_timestamp");
 			break;
+		case ECPGt_string:
+			return ("ECPGt_string");
+			break;
 		default:
 			mmerror(PARSE_ERROR, ET_ERROR, "unrecognized variable type code %d", type);
 	}
@@ -366,6 +369,7 @@ ECPGdump_a_simple(FILE *o, const char *name, enum ECPGttype type,
 			case ECPGt_char:
 			case ECPGt_unsigned_char:
 			case ECPGt_char_variable:
+			case ECPGt_string:
 
 				/*
 				 * we have to use the pointer except for arrays with given

@@ -138,6 +138,7 @@ ecpg_get_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 			case ECPGt_char:
 			case ECPGt_unsigned_char:
 			case ECPGt_varchar:
+			case ECPGt_string:
 				break;
 
 			default:
@@ -389,13 +390,29 @@ ecpg_get_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 
 				case ECPGt_char:
 				case ECPGt_unsigned_char:
+				case ECPGt_string:
 					if (pval)
 					{
+						char	*str = (char *) ((long) var + offset * act_tuple);
 						if (varcharsize == 0 || varcharsize > size)
-							strncpy((char *) ((long) var + offset * act_tuple), pval, size + 1);
+						{
+							char *last;
+
+							strncpy(str, pval, size + 1);
+							/* do the rtrim() */
+							if (type == ECPGt_string)
+							{
+								char	*last = str + size;
+								while (last > str && (*last == ' ' || *last == '\0'))
+								{
+									*last = '\0';
+									last--;
+								}
+							}
+						}
 						else
 						{
-							strncpy((char *) ((long) var + offset * act_tuple), pval, varcharsize);
+							strncpy(str, pval, varcharsize);
 
 							if (varcharsize < size)
 							{
