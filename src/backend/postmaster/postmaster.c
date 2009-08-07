@@ -1994,7 +1994,8 @@ pmdie(SIGNAL_ARGS)
 
 			if (StartupPID != 0)
 				signal_child(StartupPID, SIGTERM);
-			if (pmState == PM_RUN)
+			if (pmState == PM_RUN ||
+				pmState == PM_WAIT_BACKENDS)
 			{
 				ereport(LOG,
 						(errmsg("aborting any active transactions")));
