@@ -463,6 +463,7 @@ static void readRecoveryCommandFile(void);
 static void exitArchiveRecovery(TimeLineID endTLI,
 					uint32 endLogId, uint32 endLogSeg);
 static bool recoveryStopsHere(XLogRecord *record, bool *includeThis);
+static void LocalSetXLogInsertAllowed(void);
 static void CheckPointGuts(XLogRecPtr checkPointRedo, int flags);
 
 static bool XLogCheckBuffer(XLogRecData *rdata, bool doPageWrites,
@@ -5759,6 +5760,13 @@ StartupXLOG(void)
 		int			rmid;
 
 		/*
+		 * Resource managers might need to write WAL records, eg, to record
+		 * index cleanup actions.  So temporarily enable XLogInsertAllowed in
+		 * this process only.
+		 */
+		LocalSetXLogInsertAllowed();
+
+		/*
 		 * Allow resource managers to do any required cleanup.
 		 */
 		for (rmid = 0; rmid <= RM_MAX_ID; rmid++)
@@ -5766,6 +5774,9 @@ StartupXLOG(void)
 			if (RmgrTable[rmid].rm_cleanup != NULL)
 				RmgrTable[rmid].rm_cleanup();
 		}
+
+		/* Disallow XLogInsert again */
+		LocalXLogInsertAllowed = -1;
 
 		/*
 		 * Check to see if the XLOG sequence contained any unresolved
