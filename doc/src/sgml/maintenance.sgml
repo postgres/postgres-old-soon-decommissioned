@@ -253,7 +253,7 @@
   </sect2>
 
   <sect2 id="vacuum-for-statistics">
-   <title>Updating Planner Statistics</title>
+   <title id="vacuum-for-statistics-title">Updating Planner Statistics</title>
 
    <indexterm zone="vacuum-for-statistics">
     <primary>statistics</primary>
