@@ -20,7 +20,7 @@ install:
 	$(MAKE) -C config $@
 	@echo "PostgreSQL installation complete."
 
-installdirs uninstall:
+installdirs uninstall coverage:
 	$(MAKE) -C doc $@
 	$(MAKE) -C src $@
 	$(MAKE) -C config $@
@@ -59,25 +59,6 @@ check installcheck installcheck-parallel:
 
 GNUmakefile: GNUmakefile.in $(top_builddir)/config.status
 	./config.status $@
-
-
-##########################################################################
-
-coverage:
-	$(MAKE) -C src/backend $@
-
-.PHONY: coverage-html
-coverage-html: coverage
-	rm -rf coverage
-	mkdir coverage
-	$(GENHTML) --show-details --legend --output-directory=coverage --title=PostgreSQL --num-spaces=4 --prefix=$(abs_top_srcdir)/src `find src/backend -name lcov.info -print`
-
-ifeq ($(enable_coverage),yes)
-clean distclean maintainer-clean: clean-coverage-local
-.PHONY: clean-coverage-local
-clean-coverage-local:
-	rm -rf coverage
-endif
 
 
 ##########################################################################

@@ -13,11 +13,11 @@ subdir = src/bin
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
-DIRS = initdb pg_ctl pg_dump \
+SUBDIRS = initdb pg_ctl pg_dump \
 	psql scripts pg_config pg_controldata pg_resetxlog
 ifeq ($(PORTNAME), win32)
-DIRS+=pgevent
+SUBDIRS+=pgevent
 endif
 
 all install installdirs uninstall distprep clean distclean maintainer-clean:
-	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
+	@for dir in $(SUBDIRS); do $(MAKE) -C $$dir $@ || exit; done

@@ -46,9 +46,3 @@ ifdef SUBDIRS
 	for dir in $(SUBDIRS); do $(MAKE) -C $$dir clean || exit; done
 endif
 	rm -f $(subsysfilename) $(OBJS)
-
-
-coverage: $(gcda_files:.gcda=.c.gcov) lcov.info
-ifdef SUBDIRS
-	for dir in $(SUBDIRS); do $(MAKE) -C $$dir coverage || exit; done
-endif

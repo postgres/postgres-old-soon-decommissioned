@@ -476,6 +476,7 @@ gmake coverage-html
 </screen>
     Then point your HTML browser
     to <filename>coverage/index.html</filename>.
+    The <command>gmake</command> commands also work in subdirectories.
    </para>
 
    <para>

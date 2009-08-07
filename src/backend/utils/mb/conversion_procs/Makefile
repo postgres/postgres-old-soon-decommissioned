@@ -17,7 +17,7 @@ SQLSCRIPT = conversion_create.sql
 # This file can be placed as src/test/regress/conversion.sql
 REGRESSION_SCRIPT = conversion.sql
 
-DIRS = \
+SUBDIRS = \
 	ascii_and_mic cyrillic_and_mic euc_cn_and_mic euc_jp_and_sjis \
 	euc_kr_and_mic euc_tw_and_big5 latin2_and_win1250 latin_and_mic \
 	utf8_and_ascii utf8_and_big5 utf8_and_cyrillic utf8_and_euc_cn \
@@ -162,7 +162,7 @@ CONVERSIONS = \
 		shift_jis_2004_to_euc_jis_2004 SHIFT_JIS_2004 EUC_JIS_2004 shift_jis_2004_to_euc_jis_2004 euc_jis_2004_and_shift_jis_2004
 
 all: $(SQLSCRIPT)
-	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
+	@for dir in $(SUBDIRS); do $(MAKE) -C $$dir $@ || exit; done
 
 $(SQLSCRIPT): Makefile
 ifeq ($(enable_shared), yes)
@@ -205,16 +205,16 @@ $(REGRESSION_SCRIPT): Makefile
 
 install: $(SQLSCRIPT) installdirs
 	$(INSTALL_DATA) $(SQLSCRIPT) '$(DESTDIR)$(datadir)'
-	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
+	@for dir in $(SUBDIRS); do $(MAKE) -C $$dir $@ || exit; done
 
 installdirs:
 	$(mkinstalldirs) '$(DESTDIR)$(datadir)' '$(DESTDIR)$(pkglibdir)'
 
 uninstall:
 	rm -f '$(DESTDIR)$(datadir)/$(SQLSCRIPT)'
-	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
+	@for dir in $(SUBDIRS); do $(MAKE) -C $$dir $@ || exit; done
 
 clean distclean maintainer-clean:
 	rm -f $(SQLSCRIPT)
-	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
+	@for dir in $(SUBDIRS); do $(MAKE) -C $$dir $@ || exit; done
 
