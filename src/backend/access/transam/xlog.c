@@ -5951,6 +5951,9 @@ XLogInsertAllowed(void)
 
 /*
  * Make XLogInsertAllowed() return true in the current process only.
+ *
+ * Note: it is allowed to switch LocalXLogInsertAllowed back to -1 later,
+ * and even call LocalSetXLogInsertAllowed() again after that.
  */
 static void
 LocalSetXLogInsertAllowed(void)
