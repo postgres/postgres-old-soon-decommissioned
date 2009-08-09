@@ -18,7 +18,7 @@
 #
 # Meta configuration
 
-.PHONY: all install install-strip installdirs uninstall clean distclean maintainer-clean distprep check installcheck maintainer-check coverage
+.PHONY: all install install-strip installdirs uninstall clean distclean maintainer-clean distprep check installcheck maintainer-check coverage html man
 .SILENT: installdirs
 
 # make `all' the default target

@@ -179,6 +179,9 @@
 (define %gentext-nav-use-ff%    #t)
 (define %body-attr%             '())
 (define ($generate-book-lot-list$) '())
+(define use-output-dir          #t)
+(define %output-dir%            "html")
+(define html-index-filename     "../HTML.index")
 
 
 ;; Only build HTML.index or the actual HTML output, not both.  Saves a

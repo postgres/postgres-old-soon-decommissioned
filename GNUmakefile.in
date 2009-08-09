@@ -14,6 +14,9 @@ all:
 	$(MAKE) -C config all
 	@echo "All of PostgreSQL successfully made. Ready to install."
 
+html man:
+	$(MAKE) -C doc $@
+
 install:
 	$(MAKE) -C doc $@
 	$(MAKE) -C src $@
