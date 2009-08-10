@@ -84,7 +84,10 @@ extern bool tuplesort_getdatum(Tuplesortstate *state, bool forward,
 
 extern void tuplesort_end(Tuplesortstate *state);
 
-extern char *tuplesort_explain(Tuplesortstate *state);
+extern void tuplesort_get_stats(Tuplesortstate *state,
+								const char **sortMethod,
+								const char **spaceType,
+								long *spaceUsed);
 
 extern int	tuplesort_merge_order(long allowedMem);
 

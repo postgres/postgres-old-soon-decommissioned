@@ -104,6 +104,24 @@ LOAD 'auto_explain';
 
    <varlistentry>
     <term>
+     <varname>auto_explain.log_format</varname> (<type>enum</type>)
+    </term>
+    <indexterm>
+     <primary><varname>auto_explain.log_format</> configuration parameter</primary>
+    </indexterm>
+    <listitem>
+     <para>
+      <varname>auto_explain.log_format</varname> selects the
+      <command>EXPLAIN</> output format to be used.
+      The allowed values are <literal>text</literal>, <literal>xml</literal>,
+      and <literal>json</literal>.  The default is text.
+      Only superusers can change this setting.
+     </para>
+    </listitem>
+   </varlistentry>
+
+   <varlistentry>
+    <term>
      <varname>auto_explain.log_nested_statements</varname> (<type>boolean</type>)
     </term>
     <indexterm>

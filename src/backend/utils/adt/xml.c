@@ -1593,8 +1593,6 @@ map_xml_name_to_sql_identifier(char *name)
 char *
 map_sql_value_to_xml_value(Datum value, Oid type, bool xml_escape_strings)
 {
-	StringInfoData buf;
-
 	if (type_is_array(type))
 	{
 		ArrayType  *array;
@@ -1605,6 +1603,7 @@ map_sql_value_to_xml_value(Datum value, Oid type, bool xml_escape_strings)
 		int			num_elems;
 		Datum	   *elem_values;
 		bool	   *elem_nulls;
+		StringInfoData buf;
 		int			i;
 
 		array = DatumGetArrayTypeP(value);
@@ -1638,8 +1637,7 @@ map_sql_value_to_xml_value(Datum value, Oid type, bool xml_escape_strings)
 	{
 		Oid			typeOut;
 		bool		isvarlena;
-		char	   *p,
-				   *str;
+		char	   *str;
 
 		/*
 		 * Special XSD formatting for some data types
@@ -1788,32 +1786,47 @@ map_sql_value_to_xml_value(Datum value, Oid type, bool xml_escape_strings)
 			return str;
 
 		/* otherwise, translate special characters as needed */
-		initStringInfo(&buf);
-
-		for (p = str; *p; p++)
-		{
-			switch (*p)
-			{
-				case '&':
-					appendStringInfoString(&buf, "&amp;");
-					break;
-				case '<':
-					appendStringInfoString(&buf, "&lt;");
-					break;
-				case '>':
-					appendStringInfoString(&buf, "&gt;");
-					break;
-				case '\r':
-					appendStringInfoString(&buf, "&#x0d;");
-					break;
-				default:
-					appendStringInfoCharMacro(&buf, *p);
-					break;
-			}
-		}
-
-		return buf.data;
+		return escape_xml(str);
 	}
+}
+
+
+/*
+ * Escape characters in text that have special meanings in XML.
+ *
+ * Returns a palloc'd string.
+ *
+ * NB: this is intentionally not dependent on libxml.
+ */
+char *
+escape_xml(const char *str)
+{
+	StringInfoData buf;
+	const char *p;
+
+	initStringInfo(&buf);
+	for (p = str; *p; p++)
+	{
+		switch (*p)
+		{
+			case '&':
+				appendStringInfoString(&buf, "&amp;");
+				break;
+			case '<':
+				appendStringInfoString(&buf, "&lt;");
+				break;
+			case '>':
+				appendStringInfoString(&buf, "&gt;");
+				break;
+			case '\r':
+				appendStringInfoString(&buf, "&#x0d;");
+				break;
+			default:
+				appendStringInfoCharMacro(&buf, *p);
+				break;
+		}
+	}
+	return buf.data;
 }
 
 
