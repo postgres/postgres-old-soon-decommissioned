@@ -221,6 +221,17 @@ PostgreSQL documentation
       </listitem>
     </varlistentry>
 
+	<varlistentry>
+      <term><option>-n</></term>
+      <term><option>--no-readline</></term>
+      <listitem>
+      <para>
+       Do not use readline for line editing and do not use the history.
+       This can be useful to turn off tab expansion when cutting and pasting.
+      </para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry>
       <term><option>-o <replaceable class="parameter">filename</replaceable></></term>
       <term><option>--output <replaceable class="parameter">filename</replaceable></></term>
