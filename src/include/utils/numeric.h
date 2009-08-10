@@ -84,4 +84,9 @@ typedef NumericData *Numeric;
 #define PG_GETARG_NUMERIC_COPY(n) DatumGetNumericCopy(PG_GETARG_DATUM(n))
 #define PG_RETURN_NUMERIC(x)	  return NumericGetDatum(x)
 
+/*
+ * Utility functions in numeric.c
+ */
+extern char *numeric_out_sci(Numeric num, int scale);
+
 #endif   /* _PG_NUMERIC_H_ */
