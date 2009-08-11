@@ -146,17 +146,13 @@ $(srcdir)/features-unsupported.sgml: $(top_srcdir)/src/backend/catalog/sql_featu
 
 JADE.tex.call = $(JADE) $(JADEFLAGS) $(SGMLINCLUDE) $(CATALOG) -d $(srcdir)/stylesheet.dsl -t tex -V tex-backend -i output-print -i include-index
 
-%-A4.tex-ps: %.sgml $(ALLSGML) html
-	$(JADE.tex.call) -V texdvi-output -V '%paper-type%'=A4 -o $@ $<
+%-A4.tex-ps %-US.tex-ps : JADE_OUTPUT=texdvi-output
+%-A4.tex-pdf %-US.tex-pdf : JADE_OUTPUT=texpdf-output
+%-A4.tex-ps %-A4.tex-pdf : JADE_PAPER=A4
+%-US.tex-ps %-US.tex-pdf : JADE_PAPER=USletter
 
-%-US.tex-ps: %.sgml $(ALLSGML) html
-	$(JADE.tex.call) -V texdvi-output -V '%paper-type%'=USletter -o $@ $<
-
-%-A4.tex-pdf: %.sgml $(ALLSGML) html
-	$(JADE.tex.call) -V texpdf-output -V '%paper-type%'=A4 -o $@ $<
-
-%-US.tex-pdf: %.sgml $(ALLSGML) html
-	$(JADE.tex.call) -V texpdf-output -V '%paper-type%'=USletter -o $@ $<
+%-A4.tex-ps %-US.tex-ps %-A4.tex-pdf %-US.tex-pdf: %.sgml $(ALLSGML) html
+	$(JADE.tex.call) -V $(JADE_OUTPUT) -V '%paper-type%'=$(JADE_PAPER) -o $@ $<
 
 %.dvi: %.tex-ps
 	@rm -f $*.aux $*.log
