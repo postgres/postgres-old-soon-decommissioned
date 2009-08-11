@@ -286,6 +286,9 @@ extern int	pgwin32_is_admin(void);
 extern int	pgwin32_is_service(void);
 #endif
 
+/* in backend/port/win32_shmem.c */
+extern int	pgwin32_ReserveSharedMemoryRegion(HANDLE);
+
 /* in port/win32error.c */
 extern void _dosmaperr(unsigned long);
 
