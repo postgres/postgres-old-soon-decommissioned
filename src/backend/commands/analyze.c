@@ -518,14 +518,6 @@ cleanup:
 	/* Done with indexes */
 	vac_close_indexes(nindexes, Irel, NoLock);
 
-	/*
-	 * Close source relation now, but keep lock so that no one deletes it
-	 * before we commit.  (If someone did, they'd fail to clean up the entries
-	 * we made in pg_statistic.  Also, releasing the lock before commit would
-	 * expose us to concurrent-update failures in update_attstats.)
-	 */
-	relation_close(onerel, NoLock);
-
 	/* Log the action if appropriate */
 	if (IsAutoVacuumWorkerProcess() && Log_autovacuum_min_duration >= 0)
 	{
@@ -539,6 +531,14 @@ cleanup:
 							RelationGetRelationName(onerel),
 							pg_rusage_show(&ru0))));
 	}
+
+	/*
+	 * Close source relation now, but keep lock so that no one deletes it
+	 * before we commit.  (If someone did, they'd fail to clean up the entries
+	 * we made in pg_statistic.  Also, releasing the lock before commit would
+	 * expose us to concurrent-update failures in update_attstats.)
+	 */
+	relation_close(onerel, NoLock);
 
 	/*
 	 * Reset my PGPROC flag.  Note: we need this here, and not in vacuum_rel,
