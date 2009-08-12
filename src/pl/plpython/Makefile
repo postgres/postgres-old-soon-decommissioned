@@ -57,7 +57,22 @@ endif
 SHLIB_LINK = $(python_libspec) $(python_additional_libs) $(filter -lintl,$(LIBS))
 
 REGRESS_OPTS = --dbname=$(PL_TESTDB) --load-language=plpythonu
-REGRESS = plpython_schema plpython_populate plpython_function plpython_test plpython_error plpython_drop
+REGRESS = \
+	plpython_schema \
+	plpython_populate \
+	plpython_test \
+	plpython_global \
+	plpython_import \
+	plpython_spi \
+	plpython_newline \
+	plpython_void \
+	plpython_params \
+	plpython_setof \
+	plpython_record \
+	plpython_trigger \
+	plpython_error \
+	plpython_unicode \
+	plpython_drop
 # where to find psql for running the tests
 PSQLDIR = $(bindir)
 
