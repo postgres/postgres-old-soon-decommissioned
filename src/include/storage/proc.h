@@ -84,7 +84,9 @@ struct PGPROC
 								 * vacuum must not remove tuples deleted by
 								 * xid >= xmin ! */
 
-	int			pid;			/* This backend's process id, or 0 */
+	int			pid;			/* Backend's process ID; 0 if prepared xact */
+
+	/* These fields are zero while a backend is still starting up: */
 	BackendId	backendId;		/* This backend's backend ID (if assigned) */
 	Oid			databaseId;		/* OID of database this backend is using */
 	Oid			roleId;			/* OID of role using this backend */

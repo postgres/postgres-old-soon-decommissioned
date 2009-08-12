@@ -333,13 +333,9 @@ DESCR("array of oids, used in system tables");
 /* hand-built rowtype entries for bootstrapped catalogs: */
 
 DATA(insert OID = 71 (	pg_type			PGNSP PGUID -1 f c C f t \054 1247 0 0 record_in record_out record_recv record_send - - - d x f 0 -1 0 _null_ _null_ ));
-#define PG_TYPE_RELTYPE_OID 71
 DATA(insert OID = 75 (	pg_attribute	PGNSP PGUID -1 f c C f t \054 1249 0 0 record_in record_out record_recv record_send - - - d x f 0 -1 0 _null_ _null_ ));
-#define PG_ATTRIBUTE_RELTYPE_OID 75
 DATA(insert OID = 81 (	pg_proc			PGNSP PGUID -1 f c C f t \054 1255 0 0 record_in record_out record_recv record_send - - - d x f 0 -1 0 _null_ _null_ ));
-#define PG_PROC_RELTYPE_OID 81
 DATA(insert OID = 83 (	pg_class		PGNSP PGUID -1 f c C f t \054 1259 0 0 record_in record_out record_recv record_send - - - d x f 0 -1 0 _null_ _null_ ));
-#define PG_CLASS_RELTYPE_OID 83
 
 /* OIDS 100 - 199 */
 DATA(insert OID = 142 ( xml		   PGNSP PGUID -1 f b U f t \054 0 0 143 xml_in xml_out xml_recv xml_send - - - i x f 0 -1 0 _null_ _null_ ));
@@ -473,10 +469,10 @@ DESCR("varchar(length), non-blank-padded string, variable storage length");
 #define VARCHAROID		1043
 
 DATA(insert OID = 1082 ( date		 PGNSP PGUID	4 t b D f t \054 0	0 1182 date_in date_out date_recv date_send - - - i p f 0 -1 0 _null_ _null_ ));
-DESCR("ANSI SQL date");
+DESCR("date");
 #define DATEOID			1082
 DATA(insert OID = 1083 ( time		 PGNSP PGUID	8 FLOAT8PASSBYVAL b D f t \054 0	0 1183 time_in time_out time_recv time_send timetypmodin timetypmodout - d p f 0 -1 0 _null_ _null_ ));
-DESCR("hh:mm:ss, ANSI SQL time");
+DESCR("time of day");
 #define TIMEOID			1083
 
 /* OIDS 1100 - 1199 */
@@ -498,7 +494,7 @@ DATA(insert OID = 1187 ( _interval	 PGNSP PGUID	-1 f b A f t \054 0 1186 0 array
 /* OIDS 1200 - 1299 */
 DATA(insert OID = 1231 (  _numeric	 PGNSP PGUID -1 f b A f t \054 0	1700 0 array_in array_out array_recv array_send numerictypmodin numerictypmodout - i x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 1266 ( timetz		 PGNSP PGUID 12 f b D f t \054 0	0 1270 timetz_in timetz_out timetz_recv timetz_send timetztypmodin timetztypmodout - d p f 0 -1 0 _null_ _null_ ));
-DESCR("hh:mm:ss, ANSI SQL time");
+DESCR("time of day with time zone");
 #define TIMETZOID		1266
 DATA(insert OID = 1270 ( _timetz	 PGNSP PGUID -1 f b A f t \054 0	1266 0 array_in array_out array_recv array_send timetztypmodin timetztypmodout - d x f 0 -1 0 _null_ _null_ ));
 

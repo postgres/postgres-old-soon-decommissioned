@@ -54,6 +54,7 @@ extern void RelationInitIndexAccessInfo(Relation relation);
  */
 extern void RelationCacheInitialize(void);
 extern void RelationCacheInitializePhase2(void);
+extern void RelationCacheInitializePhase3(void);
 
 /*
  * Routine to create a relcache entry for an about-to-be-created relation
@@ -81,13 +82,15 @@ extern void AtEOSubXact_RelationCache(bool isCommit, SubTransactionId mySubid,
 extern void RelationCacheMarkNewRelfilenode(Relation rel);
 
 /*
- * Routines to help manage rebuilding of relcache init file
+ * Routines to help manage rebuilding of relcache init files
  */
 extern bool RelationIdIsInInitFile(Oid relationId);
 extern void RelationCacheInitFileInvalidate(bool beforeSend);
-extern void RelationCacheInitFileRemove(const char *dbPath);
+extern void RelationCacheInitFileRemove(void);
 
 /* should be used only by relcache.c and catcache.c */
 extern bool criticalRelcachesBuilt;
+/* should be used only by relcache.c and postinit.c */
+extern bool criticalSharedRelcachesBuilt;
 
 #endif   /* RELCACHE_H */

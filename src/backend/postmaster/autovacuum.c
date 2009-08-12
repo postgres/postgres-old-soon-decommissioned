@@ -1602,7 +1602,7 @@ AutoVacWorkerMain(int argc, char *argv[])
 
 	if (OidIsValid(dbid))
 	{
-		char	   *dbname;
+		char		dbname[NAMEDATALEN];
 
 		/*
 		 * Report autovac startup to the stats collector.  We deliberately do
@@ -1620,7 +1620,7 @@ AutoVacWorkerMain(int argc, char *argv[])
 		 * Note: if we have selected a just-deleted database (due to using
 		 * stale stats info), we'll fail and exit here.
 		 */
-		InitPostgres(NULL, dbid, NULL, &dbname);
+		InitPostgres(NULL, dbid, NULL, dbname);
 		SetProcessingMode(NormalProcessing);
 		set_ps_display(dbname, false);
 		ereport(DEBUG1,

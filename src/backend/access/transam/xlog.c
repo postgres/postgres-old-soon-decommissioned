@@ -5250,6 +5250,16 @@ StartupXLOG(void)
 	ValidateXLOGDirectoryStructure();
 
 	/*
+	 * Clear out any old relcache cache files.  This is *necessary* if we
+	 * do any WAL replay, since that would probably result in the cache files
+	 * being out of sync with database reality.  In theory we could leave
+	 * them in place if the database had been cleanly shut down, but it
+	 * seems safest to just remove them always and let them be rebuilt
+	 * during the first backend startup.
+	 */
+	RelationCacheInitFileRemove();
+
+	/*
 	 * Initialize on the assumption we want to recover to the same timeline
 	 * that's active according to pg_control.
 	 */
