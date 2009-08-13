@@ -538,7 +538,7 @@ PLy_modify_tuple(PLyProcedure *proc, PyObject *pltd, TriggerData *tdata,
 			platt = PyList_GetItem(plkeys, i);
 			if (!PyString_Check(platt))
 				ereport(ERROR,
-						(errmsg("name of TD[\"new\"] attribute at ordinal position %d is not a string", i)));
+						(errmsg("TD[\"new\"] dictionary key at ordinal position %d is not a string", i)));
 			attn = SPI_fnumber(tupdesc, PyString_AsString(platt));
 			if (attn == SPI_ERROR_NOATTRIBUTE)
 				ereport(ERROR,
