@@ -1641,7 +1641,7 @@ PLy_input_datum_func2(PLyDatumToOb *arg, Oid typeOid, HeapTuple typeTup)
 	arg->typbyval = typeStruct->typbyval;
 
 	/* Determine which kind of Python object we will convert to */
-	switch (typeOid)
+	switch (getBaseType(typeOid))
 	{
 		case BOOLOID:
 			arg->func = PLyBool_FromString;
