@@ -99,6 +99,9 @@ postgresql-opt-$(VERSION).tar: distdir
 postgresql-test-$(VERSION).tar: distdir
 	$(TAR) cf $@ $(distdir)/src/test
 
+distdir-location:
+	@echo $(distdir)
+
 distdir:
 	rm -rf $(distdir)* $(dummy)
 	for x in `cd $(top_srcdir) && find . \( -name CVS -prune \) -o \( -name .git -prune \) -o -print`; do \
