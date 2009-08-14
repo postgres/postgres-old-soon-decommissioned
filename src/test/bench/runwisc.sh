@@ -11,7 +11,7 @@ if [ -d ./obj ]; then
 fi
 
 echo =============== vacuuming benchmark database... ================= >&2
-echo "vacuum" | postgres -D"$1" bench > /dev/null
+echo "vacuum" | postgres --single -D"$1" bench > /dev/null
 
 echo =============== running benchmark... ================= >&2
-time postgres -D"$1" -texecutor -tplanner -c log_min_messages=log -c log_destination=stderr -c start_log_collector=off bench < bench.sql 2>&1
+time postgres --single -D"$1" -texecutor -tplanner -c log_min_messages=log -c log_destination=stderr -c logging_collector=off bench < bench.sql 2>&1

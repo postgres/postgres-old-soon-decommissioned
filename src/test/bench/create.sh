@@ -10,16 +10,16 @@ if [ -d ./obj ]; then
 fi
 
 echo =============== destroying old bench database... =================
-echo "drop database bench" | postgres -D"$1" postgres > /dev/null
+echo "drop database bench" | postgres --single -D"$1" postgres > /dev/null
 
 echo =============== creating new bench database... =================
-echo "create database bench" | postgres -D"$1" postgres > /dev/null
+echo "create database bench" | postgres --single -D"$1" postgres > /dev/null
 if [ $? -ne 0 ]; then
 	echo createdb failed
 	exit 1
 fi
 
-postgres -D${1} bench < create.sql > /dev/null
+postgres --single -D${1} bench < create.sql > /dev/null
 if [ $? -ne 0 ]; then
 	echo initial database load failed
 	exit 1
