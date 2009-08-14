@@ -70,6 +70,7 @@ REGRESS = \
 	plpython_setof \
 	plpython_record \
 	plpython_trigger \
+	plpython_types \
 	plpython_error \
 	plpython_unicode \
 	plpython_drop
