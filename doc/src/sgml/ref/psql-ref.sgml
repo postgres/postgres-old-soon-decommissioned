@@ -234,7 +234,7 @@ PostgreSQL documentation
       </listitem>
     </varlistentry>
 
-	<varlistentry>
+    <varlistentry>
       <term><option>-n</></term>
       <term><option>--no-readline</></term>
       <listitem>
