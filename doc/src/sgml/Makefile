@@ -118,7 +118,12 @@ $(srcdir)/HTML.index: postgres.sgml $(ALMOSTALLSGML) stylesheet.dsl
 $(srcdir)/bookindex.sgml: HTML.index
 	LC_ALL=C $(PERL) $(COLLATEINDEX) -f -g -i 'bookindex' -o $@ $<
 
-$(srcdir)/version.sgml: $(top_builddir)/src/Makefile.global
+# Technically, this should depend on Makefile.global, but then
+# version.sgml would need to be rebuilt after every configure run,
+# even in distribution tarballs.  So this is cheating a bit, but it
+# will achieve the goal of updating the version number when it
+# changes.
+$(srcdir)/version.sgml: $(top_srcdir)/configure
 	{ \
 	  echo "<!entity version \"$(VERSION)\">"; \
 	  echo "<!entity majorversion \"$(MAJORVERSION)\">"; \
