@@ -39,6 +39,8 @@
  * TimeOffset and fsec_t are convenience typedefs for temporary variables
  * that are of different types in the two cases.  Do not use fsec_t in values
  * stored on-disk, since it is not the same size in both implementations.
+ * Also, fsec_t is only meant for *fractional* seconds; beware of overflow
+ * if the value you need to store could be many seconds.
  */
 
 #ifdef HAVE_INT64_TIMESTAMP
