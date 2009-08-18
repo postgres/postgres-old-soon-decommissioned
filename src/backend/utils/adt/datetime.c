@@ -3135,6 +3135,9 @@ DecodeInterval(char **field, int *ftype, int nf, int *dtype, struct pg_tm * tm, 
 						break;
 
 					case DTK_MILLISEC:
+						/* avoid overflowing the fsec field */
+						tm->tm_sec += val / 1000;
+						val -= (val / 1000) * 1000;
 #ifdef HAVE_INT64_TIMESTAMP
 						*fsec += (val + fval) * 1000;
 #else
