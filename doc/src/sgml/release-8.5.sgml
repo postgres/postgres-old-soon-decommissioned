@@ -148,15 +148,6 @@
             flag to send().
           </para>
         </listitem>
-        <listitem>
-          <para>
-            Reserve the shared memory region during backend startup on Windows,
-            so that memory allocated by starting third party DLLs doesn't end
-            up conflicting with it. Hopefully this solves the long-time issue
-            with &quot;could not reattach to shared memory&quot; errors on
-            Win32.
-          </para>
-        </listitem>
       </itemizedlist>
     </sect3>
     <sect3>
@@ -334,6 +325,25 @@
       </itemizedlist>
     </sect3>
     <sect3>
+      <title>Ports</title>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Reserve the shared memory region during backend startup on Windows,
+            so that memory allocated by starting third party DLLs doesn't end
+            up conflicting with it. Hopefully this solves the long-time issue
+            with &quot;could not reattach to shared memory&quot; errors on
+            Win32.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Add s_lock support for SuperH architecture (not well tested).
+          </para>
+        </listitem>
+      </itemizedlist>
+    </sect3>
+    <sect3>
       <title>Source code, build options</title>
       <itemizedlist>
         <listitem>
@@ -369,15 +379,6 @@
         </listitem>
         <listitem>
           <para>
-            Reserve the shared memory region during backend startup on Windows,
-            so that memory allocated by starting third party DLLs doesn't end
-            up conflicting with it. Hopefully this solves the long-time issue
-            with &quot;could not reattach to shared memory&quot; errors on
-            Win32.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
             Make the core scanner re-entrant, along with additional fixes that
             will let it be used directly by PL/pgSQL.
           </para>
@@ -387,11 +388,6 @@
             Fix backend startup to not depend on the flat-file copy of
             pg_database. This is a first step towards eliminating the flat
             files altogether.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Add s_lock support for SuperH architecture (not well tested).
           </para>
         </listitem>
       </itemizedlist>
