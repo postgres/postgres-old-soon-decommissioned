@@ -113,6 +113,7 @@ psql -d dbname -f <replaceable>SHAREDIR</>/contrib/<replaceable>module</>.sql
  &tablefunc;
  &test-parser;
  &tsearch2;
+ &unaccent;
  &uuid-ossp;
  &vacuumlo;
  &xml2;

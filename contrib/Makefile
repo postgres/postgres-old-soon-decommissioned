@@ -39,6 +39,7 @@ SUBDIRS = \
 		tablefunc	\
 		test_parser	\
 		tsearch2	\
+		unaccent	\
 		vacuumlo
 
 ifeq ($(with_openssl),yes)

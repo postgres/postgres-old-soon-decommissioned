@@ -126,6 +126,7 @@
 <!entity tablefunc       SYSTEM "tablefunc.sgml">
 <!entity test-parser     SYSTEM "test-parser.sgml">
 <!entity tsearch2        SYSTEM "tsearch2.sgml">
+<!entity unaccent      SYSTEM "unaccent.sgml">
 <!entity uuid-ossp       SYSTEM "uuid-ossp.sgml">
 <!entity vacuumlo        SYSTEM "vacuumlo.sgml">
 <!entity xml2            SYSTEM "xml2.sgml"> 
