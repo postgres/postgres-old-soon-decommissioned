@@ -1767,9 +1767,11 @@ create_database(const char *dbname)
 	 */
 	header(_("creating database \"%s\""), dbname);
 	if (encoding)
-		psql_command("postgres", "CREATE DATABASE \"%s\" TEMPLATE=template0 ENCODING='%s'", dbname, encoding);
+		psql_command("postgres", "CREATE DATABASE \"%s\" TEMPLATE=template0 ENCODING='%s'%s", dbname, encoding,
+					 (nolocale) ? " LC_COLLATE='C' LC_CTYPE='C'" : "");
 	else
-		psql_command("postgres", "CREATE DATABASE \"%s\" TEMPLATE=template0", dbname);
+		psql_command("postgres", "CREATE DATABASE \"%s\" TEMPLATE=template0%s", dbname,
+					 (nolocale) ? " LC_COLLATE='C' LC_CTYPE='C'" : "");
 	psql_command(dbname,
 				 "ALTER DATABASE \"%s\" SET lc_messages TO 'C';"
 				 "ALTER DATABASE \"%s\" SET lc_monetary TO 'C';"
