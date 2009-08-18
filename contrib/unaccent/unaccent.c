@@ -78,10 +78,10 @@ placeChar(SuffixChar *node, unsigned char *str, int lenstr, char *replaceTo, int
 static SuffixChar*
 initSuffixTree(char *filename) 
 {
-	SuffixChar *rootSuffixTree = NULL;
+	SuffixChar * volatile rootSuffixTree = NULL;
 	MemoryContext ccxt = CurrentMemoryContext;
 	tsearch_readline_state	trst;
-	bool			skip;
+	volatile bool	skip;
 
 	filename = get_tsearch_config_filename(filename, "rules");
 	if (!tsearch_readline_begin(&trst, filename))
