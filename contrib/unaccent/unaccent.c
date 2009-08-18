@@ -174,7 +174,7 @@ Datum
 unaccent_init(PG_FUNCTION_ARGS)
 {
 	List       *dictoptions = (List *) PG_GETARG_POINTER(0);
-	SuffixChar *rootSuffixTree;
+	SuffixChar *rootSuffixTree = NULL;
 	bool        fileloaded = false;
 	ListCell   *l;
 
@@ -218,7 +218,7 @@ unaccent_lexize(PG_FUNCTION_ARGS)
 	SuffixChar *rootSuffixTree = (SuffixChar*)PG_GETARG_POINTER(0);
 	char       *srcchar = (char *) PG_GETARG_POINTER(1);
 	int32		len = PG_GETARG_INT32(2);
-	char	   *srcstart, *trgchar;
+	char	   *srcstart, *trgchar = NULL;
 	int			charlen;
 	TSLexeme   *res = NULL;
 	SuffixChar *node;
