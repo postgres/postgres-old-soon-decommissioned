@@ -17,7 +17,7 @@
 # Usage: cd to top of source tree and issue
 #	src/tools/version_stamp.pl MINORVERSION
 # where MINORVERSION can be a minor release number (0, 1, etc), or
-# "devel", "betaN", "rcN".
+# "devel", "alphaN", "betaN", "rcN".
 #
 
 # Major version is hard-wired into the script.  We update it when we branch
@@ -35,6 +35,9 @@ if ($minor =~ m/^\d+$/) {
 } elsif ($minor eq "devel") {
     $dotneeded = 0;
     $numericminor = 0;
+} elsif ($minor =~ m/^alpha\d+$/) {
+    $dotneeded = 0;
+    $numericminor = 0;
 } elsif ($minor =~ m/^beta\d+$/) {
     $dotneeded = 0;
     $numericminor = 0;
@@ -42,7 +45,7 @@ if ($minor =~ m/^\d+$/) {
     $dotneeded = 0;
     $numericminor = 0;
 } else {
-    die "$0: minor-version must be N, devel, betaN, or rcN\n";
+    die "$0: minor-version must be N, devel, alphaN, betaN, or rcN\n";
 }
 
 # Create various required forms of the version number
