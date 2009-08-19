@@ -260,9 +260,8 @@
       <itemizedlist>
         <listitem>
           <para>
-            PL/pgSQL functions using RETURNS QUERY or RECORD types no longer
-            always need to be rebuilt after adding or dropping a column for the
-            related tables.
+            PL/pgSQL functions can now better cope with row types
+            containing dropped columns.
           </para>
         </listitem>
         <listitem>
