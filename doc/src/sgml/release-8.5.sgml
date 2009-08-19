@@ -300,6 +300,11 @@
             contrib/dict_xsyn.
           </para>
         </listitem>
+        <listitem>
+          <para>
+            Added contrib/unaccent.
+          </para>
+        </listitem>
       </itemizedlist>
     </sect3>
     <sect3>
