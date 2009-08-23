@@ -1084,6 +1084,7 @@ typedef struct
 {
 	ScanKey		scan_key;		/* scankey to put value into */
 	ExprState  *key_expr;		/* expr to evaluate to get value */
+	bool		key_toastable;	/* is expr's result a toastable datatype? */
 } IndexRuntimeKeyInfo;
 
 typedef struct
