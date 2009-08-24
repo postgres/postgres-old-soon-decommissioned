@@ -734,7 +734,7 @@ static struct config_bool ConfigureNamesBool[] =
 		true, NULL, NULL
 	},
 	{
-		{"silent_mode", PGC_POSTMASTER, LOGGING_WHEN,
+		{"silent_mode", PGC_POSTMASTER, LOGGING_WHERE,
 			gettext_noop("Runs the server silently."),
 			gettext_noop("If this parameter is set, the server will automatically run in the "
 				 "background and any controlling terminals are dissociated.")
