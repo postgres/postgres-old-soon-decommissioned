@@ -441,7 +441,6 @@ _PrintTocData(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt)
 	int			id;
 	lclTocEntry *tctx = (lclTocEntry *) te->formatData;
 	int			blkType;
-	int			found = 0;
 
 	if (tctx->dataState == K_OFFSET_NO_DATA)
 		return;
@@ -449,8 +448,6 @@ _PrintTocData(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt)
 	if (!ctx->hasSeek || tctx->dataState == K_OFFSET_POS_NOT_SET)
 	{
 		/* Skip over unnecessary blocks until we get the one we want. */
-
-		found = 0;
 
 		_readBlockHeader(AH, &blkType, &id);
 
