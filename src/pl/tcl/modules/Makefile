@@ -19,7 +19,7 @@ install: all installdirs
 	$(INSTALL_DATA) $(srcdir)/unknown.pltcl '$(DESTDIR)$(datadir)/unknown.pltcl'
 
 installdirs:
-	$(mkinstalldirs) '$(DESTDIR)$(bindir)' '$(DESTDIR)$(datadir)'
+	$(MKDIR_P) '$(DESTDIR)$(bindir)' '$(DESTDIR)$(datadir)'
 
 uninstall:
 	rm -f '$(DESTDIR)$(bindir)/pltcl_loadmod' '$(DESTDIR)$(bindir)/pltcl_delmod' '$(DESTDIR)$(bindir)/pltcl_listmod' '$(DESTDIR)$(datadir)/unknown.pltcl'

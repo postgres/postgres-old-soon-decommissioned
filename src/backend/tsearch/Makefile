@@ -30,7 +30,7 @@ install-data: $(DICTFILES) installdirs
 	done
 
 installdirs:
-	$(mkinstalldirs) '$(DESTDIR)$(datadir)' '$(DESTDIR)$(datadir)/$(DICTDIR)'
+	$(MKDIR_P) '$(DESTDIR)$(datadir)' '$(DESTDIR)$(datadir)/$(DICTDIR)'
 
 .PHONY: uninstall-data
 uninstall-data:

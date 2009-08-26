@@ -137,21 +137,21 @@ endif # MODULE_big
 
 installdirs:
 ifneq (,$(DATA)$(DATA_built))
-	$(mkinstalldirs) '$(DESTDIR)$(datadir)/contrib'
+	$(MKDIR_P) '$(DESTDIR)$(datadir)/contrib'
 endif
 ifneq (,$(DATA_TSEARCH))
-	$(mkinstalldirs) '$(DESTDIR)$(datadir)/tsearch_data'
+	$(MKDIR_P) '$(DESTDIR)$(datadir)/tsearch_data'
 endif
 ifneq (,$(MODULES))
-	$(mkinstalldirs) '$(DESTDIR)$(pkglibdir)'
+	$(MKDIR_P) '$(DESTDIR)$(pkglibdir)'
 endif
 ifdef DOCS
 ifdef docdir
-	$(mkinstalldirs) '$(DESTDIR)$(docdir)/contrib'
+	$(MKDIR_P) '$(DESTDIR)$(docdir)/contrib'
 endif # docdir
 endif # DOCS
 ifneq (,$(PROGRAM)$(SCRIPTS)$(SCRIPTS_built))
-	$(mkinstalldirs) '$(DESTDIR)$(bindir)'
+	$(MKDIR_P) '$(DESTDIR)$(bindir)'
 endif
 
 ifdef MODULE_big

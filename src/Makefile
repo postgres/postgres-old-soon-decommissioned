@@ -37,7 +37,7 @@ install-local: installdirs-local
 installdirs: installdirs-local
 
 installdirs-local:
-	$(mkinstalldirs) '$(DESTDIR)$(pgxsdir)/$(subdir)'
+	$(MKDIR_P) '$(DESTDIR)$(pgxsdir)/$(subdir)'
 
 uninstall: uninstall-local
 

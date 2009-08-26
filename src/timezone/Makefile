@@ -56,7 +56,7 @@ endif
 	$(MAKE) -C tznames $@
 
 installdirs:
-	$(mkinstalldirs) '$(DESTDIR)$(datadir)'
+	$(MKDIR_P) '$(DESTDIR)$(datadir)'
 
 uninstall:
 ifeq (,$(with_system_tzdata))
