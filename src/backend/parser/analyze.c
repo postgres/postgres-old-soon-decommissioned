@@ -825,13 +825,14 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 	qry->sortClause = transformSortClause(pstate,
 										  stmt->sortClause,
 										  &qry->targetList,
-										  true /* fix unknowns */ );
+										  true /* fix unknowns */,
+										  false /* not window function */);
 
 	qry->groupClause = transformGroupClause(pstate,
 											stmt->groupClause,
 											&qry->targetList,
 											qry->sortClause,
-											false);
+											false /* not window function */);
 
 	if (stmt->distinctClause == NIL)
 	{
@@ -1039,7 +1040,8 @@ transformValuesClause(ParseState *pstate, SelectStmt *stmt)
 	qry->sortClause = transformSortClause(pstate,
 										  stmt->sortClause,
 										  &qry->targetList,
-										  true /* fix unknowns */ );
+										  true /* fix unknowns */,
+										  false /* not window function */);
 
 	qry->limitOffset = transformLimitClause(pstate, stmt->limitOffset,
 											"OFFSET");
@@ -1291,7 +1293,8 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 	qry->sortClause = transformSortClause(pstate,
 										  sortClause,
 										  &qry->targetList,
-										  false /* no unknowns expected */ );
+										  false /* no unknowns expected */,
+										  false /* not window function */);
 
 	pstate->p_rtable = list_truncate(pstate->p_rtable, sv_rtable_length);
 	pstate->p_relnamespace = sv_relnamespace;
