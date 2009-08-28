@@ -3075,6 +3075,13 @@ PostgresMain(int argc, char *argv[], const char *username)
 				}
 
 			case 'v':
+				/*
+				 * -v is no longer used in normal operation, since
+				 * FrontendProtocol is already set before we get here.
+				 * We keep the switch only for possible use in standalone
+				 * operation, in case we ever support using normal FE/BE
+				 * protocol with a standalone backend.
+				 */
 				if (secure)
 					FrontendProtocol = (ProtocolVersion) atoi(optarg);
 				break;
