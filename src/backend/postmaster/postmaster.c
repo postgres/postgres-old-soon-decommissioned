@@ -4488,7 +4488,7 @@ extern PMSignalData *PMSignalState;
 extern int	pgStatSock;
 
 #ifndef WIN32
-#define write_inheritable_socket(dest, src, childpid) (*(dest) = (src))
+#define write_inheritable_socket(dest, src, childpid) ((*(dest) = (src)), true)
 #define read_inheritable_socket(dest, src) (*(dest) = *(src))
 #else
 static bool write_duplicated_handle(HANDLE *dest, HANDLE src, HANDLE child);
