@@ -24,23 +24,23 @@ endif
 
 
 # cubescan is compiled as part of cubeparse
-cubeparse.o: $(srcdir)/cubescan.c
+cubeparse.o: cubescan.c
 
-$(srcdir)/cubeparse.c: cubeparse.y
+cubeparse.c: cubeparse.y
 ifdef BISON
 	$(BISON) $(BISONFLAGS) -o $@ $<
 else
 	@$(missing) bison $< $@
 endif
 
-$(srcdir)/cubescan.c: cubescan.l
+cubescan.c: cubescan.l
 ifdef FLEX
 	$(FLEX) $(FLEXFLAGS) -o'$@' $<
 else
 	@$(missing) flex $< $@
 endif
 
-distprep: $(srcdir)/cubeparse.c $(srcdir)/cubescan.c
+distprep: cubeparse.c cubescan.c
 
 maintainer-clean:
-	rm -f $(srcdir)/cubeparse.c $(srcdir)/cubescan.c
+	rm -f cubeparse.c cubescan.c

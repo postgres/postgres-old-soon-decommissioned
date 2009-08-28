@@ -90,9 +90,9 @@ encnames.c wchar.c : % : $(backend_src)/utils/mb/%
 	rm -f $@ && $(LN_S) $< .
 
 
-distprep: $(srcdir)/libpq-dist.rc
+distprep: libpq-dist.rc
 
-libpq.rc $(srcdir)/libpq-dist.rc: libpq.rc.in
+libpq.rc libpq-dist.rc: libpq.rc.in
 	sed -e 's/\(VERSION.*\),0 *$$/\1,'`date '+%y%j' | sed 's/^0*//'`'/' $< >$@
 
 # Depend on Makefile.global to force rebuild on re-run of configure.
@@ -128,4 +128,4 @@ clean distclean: clean-lib
 	rm -f pg_config_paths.h
 
 maintainer-clean: distclean maintainer-clean-lib
-	rm -f $(srcdir)/libpq-dist.rc
+	rm -f libpq-dist.rc

@@ -71,11 +71,7 @@ LANGUAGES=  \
 SQLSCRIPT= snowball_create.sql
 DICTDIR=tsearch_data
 
-ifdef VPATH
-override VPATH := $(srcdir)/libstemmer:$(VPATH)
-else
-VPATH = $(srcdir)/libstemmer
-endif
+VPATH += $(srcdir)/libstemmer
 
 NAME := dict_snowball
 rpath =

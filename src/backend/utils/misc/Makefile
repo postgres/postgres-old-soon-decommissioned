@@ -12,7 +12,7 @@ subdir = src/backend/utils/misc
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
+override CPPFLAGS := -I. -I$(srcdir) $(CPPFLAGS)
 
 OBJS = guc.o help_config.o pg_rusage.o ps_status.o superuser.o tzparser.o
 
@@ -25,9 +25,9 @@ endif
 include $(top_srcdir)/src/backend/common.mk
 
 # guc-file is compiled as part of guc
-guc.o: $(srcdir)/guc-file.c
+guc.o: guc-file.c
 
-$(srcdir)/guc-file.c: guc-file.l
+guc-file.c: guc-file.l
 ifdef FLEX
 	$(FLEX) $(FLEXFLAGS) -o'$@' $<
 else

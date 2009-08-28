@@ -21,23 +21,23 @@ endif
 
 
 # segscan is compiled as part of segparse
-segparse.o: $(srcdir)/segscan.c
+segparse.o: segscan.c
 
-$(srcdir)/segparse.c: segparse.y
+segparse.c: segparse.y
 ifdef BISON
 	$(BISON) $(BISONFLAGS) -o $@ $<
 else
 	@$(missing) bison $< $@
 endif
 
-$(srcdir)/segscan.c: segscan.l
+segscan.c: segscan.l
 ifdef FLEX
 	$(FLEX) $(FLEXFLAGS) -o'$@' $<
 else
 	@$(missing) flex $< $@
 endif
 
-distprep: $(srcdir)/segparse.c $(srcdir)/segscan.c
+distprep: segparse.c segscan.c
 
 maintainer-clean:
-	rm -f $(srcdir)/segparse.c $(srcdir)/segscan.c
+	rm -f segparse.c segscan.c
