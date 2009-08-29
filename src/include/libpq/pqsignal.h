@@ -23,13 +23,13 @@
 #ifdef HAVE_SIGPROCMASK
 extern sigset_t UnBlockSig,
 			BlockSig,
-			AuthBlockSig;
+			StartupBlockSig;
 
 #define PG_SETMASK(mask)	sigprocmask(SIG_SETMASK, mask, NULL)
 #else
 extern int	UnBlockSig,
 			BlockSig,
-			AuthBlockSig;
+			StartupBlockSig;
 
 #ifndef WIN32
 #define PG_SETMASK(mask)	sigsetmask(*((int*)(mask)))
