@@ -29,15 +29,6 @@
 #
 # To find branch time, look for "branches:" tag in CVS commit logs
 # e.g. "branches:  1.398.4;" matches "REL8_0_STABLE: 1.398.0.4".
-#
-# Remove these from the log file before processing to reduce the number
-# of unneeded log entries:
-#
-#	/cvsroot/pgsql/doc/TODO
-#	/cvsroot/pgsql/doc/FAQ
-#	/cvsroot/pgsql/doc/src/FAQ/TODO.html
-#	/cvsroot/pgsql/doc/src/FAQ/FAQ.html
-#
 
 HTML="N"
 DEL="N"
@@ -79,12 +70,6 @@ fi |
 awk '	BEGIN	{html="'"$HTML"'"; lineno = 0;}
 	# store working directory
 	$0 ~ /^Working file:/	{workingfile = "/" $3}
-
-	# no need to show TODO or FAQ changes in the output
-	$0 !~ /^====*$/ &&
-	(workingfile == "/doc/TODO" || workingfile == "/doc/src/FAQ/TODO.html" ||
-	 workingfile == "/doc/FAQ" || workingfile == "/doc/src/FAQ/FAQ.html") \
-		{next}
 
 	($0 ~ /^====*$/ || $0 ~ /^----*$/) \
 	{
