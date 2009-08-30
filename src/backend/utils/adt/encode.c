@@ -159,7 +159,7 @@ hex_decode(const char *src, unsigned len, char *dst)
 			   *srcend;
 	char		v1,
 				v2,
-			   *p = dst;
+			   *p;
 
 	srcend = src + len;
 	s = src;

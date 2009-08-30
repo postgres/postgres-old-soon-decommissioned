@@ -102,7 +102,6 @@ LexizeAddLemm(LexizeData *ld, int type, char *lemm, int lenlemm)
 {
 	ParsedLex  *newpl = (ParsedLex *) palloc(sizeof(ParsedLex));
 
-	newpl = (ParsedLex *) palloc(sizeof(ParsedLex));
 	newpl->type = type;
 	newpl->lemm = lemm;
 	newpl->lenlemm = lenlemm;

@@ -182,7 +182,7 @@ RS_free(Regis *r)
 static bool
 mb_strchr(char *str, char *c)
 {
-	int			clen = pg_mblen(c),
+	int			clen,
 				plen,
 				i;
 	char	   *ptr = str;
