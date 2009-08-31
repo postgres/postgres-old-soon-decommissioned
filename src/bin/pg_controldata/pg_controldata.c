@@ -192,6 +192,10 @@ main(int argc, char *argv[])
 		   ControlFile.checkPointCopy.nextMulti);
 	printf(_("Latest checkpoint's NextMultiOffset:  %u\n"),
 		   ControlFile.checkPointCopy.nextMultiOffset);
+	printf(_("Latest checkpoint's oldestXID:        %u\n"),
+		   ControlFile.checkPointCopy.oldestXid);
+	printf(_("Latest checkpoint's oldestXID's DB:   %u\n"),
+		   ControlFile.checkPointCopy.oldestXidDB);
 	printf(_("Time of latest checkpoint:            %s\n"),
 		   ckpttime_str);
 	printf(_("Minimum recovery ending location:     %X/%X\n"),

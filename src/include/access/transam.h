@@ -90,7 +90,7 @@
  * just one struct with different fields that are protected by different
  * LWLocks.
  *
- * Note: xidWrapLimit and limit_datname are not "active" values, but are
+ * Note: xidWrapLimit and oldestXidDB are not "active" values, but are
  * used just to generate useful messages when xidWarnLimit or xidStopLimit
  * are exceeded.
  */
@@ -112,7 +112,7 @@ typedef struct VariableCacheData
 	TransactionId xidWarnLimit; /* start complaining here */
 	TransactionId xidStopLimit; /* refuse to advance nextXid beyond here */
 	TransactionId xidWrapLimit; /* where the world ends */
-	NameData	limit_datname;	/* database that needs vacuumed first */
+	Oid			oldestXidDB;	/* database with minimum datfrozenxid */
 
 	/*
 	 * These fields are protected by ProcArrayLock.
@@ -155,7 +155,8 @@ extern XLogRecPtr TransactionIdGetCommitLSN(TransactionId xid);
 extern TransactionId GetNewTransactionId(bool isSubXact);
 extern TransactionId ReadNewTransactionId(void);
 extern void SetTransactionIdLimit(TransactionId oldest_datfrozenxid,
-					  Name oldest_datname);
+					  Oid oldest_datoid);
+extern bool TransactionIdLimitIsValid(void);
 extern Oid	GetNewObjectId(void);
 
 #endif   /* TRAMSAM_H */

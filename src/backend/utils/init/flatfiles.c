@@ -166,9 +166,6 @@ name_okay(const char *str)
 
 /*
  * write_database_file: update the flat database file
- *
- * A side effect is to determine the oldest database's datfrozenxid
- * so we can set or update the XID wrap limit.
  */
 static void
 write_database_file(Relation drel)
@@ -180,8 +177,6 @@ write_database_file(Relation drel)
 	mode_t		oumask;
 	HeapScanDesc scan;
 	HeapTuple	tuple;
-	NameData	oldest_datname;
-	TransactionId oldest_datfrozenxid = InvalidTransactionId;
 
 	/*
 	 * Create a temporary filename to be renamed later.  This prevents the
@@ -220,20 +215,6 @@ write_database_file(Relation drel)
 		datfrozenxid = dbform->datfrozenxid;
 
 		/*
-		 * Identify the oldest datfrozenxid.  This must match the logic in
-		 * vac_truncate_clog() in vacuum.c.
-		 */
-		if (TransactionIdIsNormal(datfrozenxid))
-		{
-			if (oldest_datfrozenxid == InvalidTransactionId ||
-				TransactionIdPrecedes(datfrozenxid, oldest_datfrozenxid))
-			{
-				oldest_datfrozenxid = datfrozenxid;
-				namestrcpy(&oldest_datname, datname);
-			}
-		}
-
-		/*
 		 * Check for illegal characters in the database name.
 		 */
 		if (!name_okay(datname))
@@ -270,12 +251,6 @@ write_database_file(Relation drel)
 				(errcode_for_file_access(),
 				 errmsg("could not rename file \"%s\" to \"%s\": %m",
 						tempname, filename)));
-
-	/*
-	 * Set the transaction ID wrap limit using the oldest datfrozenxid
-	 */
-	if (oldest_datfrozenxid != InvalidTransactionId)
-		SetTransactionIdLimit(oldest_datfrozenxid, &oldest_datname);
 }
 
 
