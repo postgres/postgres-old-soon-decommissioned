@@ -2182,9 +2182,6 @@ DESCR("matches LIKE expression, case-insensitive");
 DATA(insert OID = 1661 (  bpcharicnlike		PGNSP PGUID 12 1 0 0 f f f t f i 2 0 16 "1042 25" _null_ _null_ _null_ _null_ texticnlike _null_ _null_ _null_ ));
 DESCR("does not match LIKE expression, case-insensitive");
 
-DATA(insert OID = 1689 (  flatfile_update_trigger  PGNSP PGUID 12 1 0 0 f f f t f v 0 0 2279 "" _null_ _null_ _null_ _null_ flatfile_update_trigger _null_ _null_ _null_ ));
-DESCR("update flat-file copy of a shared catalog");
-
 /* Oracle Compatibility Related Functions - By Edmund Mergl <E.Mergl@bawue.de> */
 DATA(insert OID =  868 (  strpos	   PGNSP PGUID 12 1 0 0 f f f t f i 2 0 23 "25 25" _null_ _null_ _null_ _null_ textpos _null_ _null_ _null_ ));
 DESCR("find position of substring");

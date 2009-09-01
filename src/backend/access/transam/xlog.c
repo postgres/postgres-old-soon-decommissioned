@@ -49,7 +49,6 @@
 #include "storage/smgr.h"
 #include "storage/spin.h"
 #include "utils/builtins.h"
-#include "utils/flatfiles.h"
 #include "utils/guc.h"
 #include "utils/ps_status.h"
 #include "pg_trace.h"
@@ -8076,8 +8075,6 @@ StartupProcessMain(void)
 	PG_SETMASK(&UnBlockSig);
 
 	StartupXLOG();
-
-	BuildFlatFiles(false);
 
 	/*
 	 * Exit normally. Exit code 0 tells postmaster that we completed recovery

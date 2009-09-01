@@ -46,7 +46,6 @@
 #include "storage/procarray.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
-#include "utils/flatfiles.h"
 #include "utils/fmgroids.h"
 #include "utils/inval.h"
 #include "utils/lsyscache.h"
@@ -893,15 +892,11 @@ vac_update_datfrozenxid(void)
 	heap_close(relation, RowExclusiveLock);
 
 	/*
-	 * If we were able to advance datfrozenxid, mark the flat-file copy of
-	 * pg_database for update at commit, and see if we can truncate pg_clog.
-	 * Also force update if the shared XID-wrap-limit info is stale.
+	 * If we were able to advance datfrozenxid, see if we can truncate pg_clog.
+	 * Also do it if the shared XID-wrap-limit info is stale.
 	 */
 	if (dirty || !TransactionIdLimitIsValid())
-	{
-		database_file_update_needed();
 		vac_truncate_clog(newFrozenXid);
-	}
 }
 
 
