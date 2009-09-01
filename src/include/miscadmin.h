@@ -324,7 +324,7 @@ extern ProcessingMode Mode;
 
 /* in utils/init/postinit.c */
 extern void pg_split_opts(char **argv, int *argcp, char *optstr);
-extern bool InitPostgres(const char *in_dbname, Oid dboid, const char *username,
+extern void InitPostgres(const char *in_dbname, Oid dboid, const char *username,
 			 char *out_dbname);
 extern void BaseInit(void);
 
