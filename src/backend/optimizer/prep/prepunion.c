@@ -1477,8 +1477,8 @@ translate_col_privs(const Bitmapset *parent_privs,
  * Note: this is only applied after conversion of sublinks to subplans,
  * so we don't need to cope with recursion into sub-queries.
  *
- * Note: this is not hugely different from what ResolveNew() does; maybe
- * we should try to fold the two routines together.
+ * Note: this is not hugely different from what pullup_replace_vars() does;
+ * maybe we should try to fold the two routines together.
  */
 Node *
 adjust_appendrel_attrs(Node *node, AppendRelInfo *appinfo)
