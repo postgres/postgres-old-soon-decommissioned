@@ -57,7 +57,7 @@ preproc.y: ../../../backend/parser/gram.y parse.pl ecpg.addons ecpg.header ecpg.
 
 ecpg_keywords.o c_keywords.o keywords.o preproc.o parser.o: preproc.h
 
-kwlookup.c: % : ../../../backend/parser/%
+kwlookup.c: % : $(top_srcdir)/src/backend/parser/%
 	rm -f $@ && $(LN_S) $< .
 
 distprep: preproc.y preproc.c preproc.h pgc.c
