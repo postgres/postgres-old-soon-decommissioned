@@ -140,6 +140,8 @@ struct config_generic
 #define GUC_UNIT_MIN			0x4000	/* value is in minutes */
 #define GUC_UNIT_TIME			0x7000	/* mask for MS, S, MIN */
 
+#define GUC_NOT_WHILE_SEC_DEF	0x8000	/* can't change inside sec-def func */
+
 /* bit values in status field */
 #define GUC_HAVE_TENTATIVE	0x0001		/* tentative value is defined */
 #define GUC_HAVE_LOCAL		0x0002		/* a SET LOCAL has been executed */
