@@ -99,6 +99,8 @@ struct config_generic
 #define GUC_DISALLOW_IN_FILE	0x0040	/* can't set in postgresql.conf */
 #define GUC_IS_NAME				0x0080	/* limit string to NAMEDATALEN-1 */
 
+#define GUC_NOT_WHILE_SEC_DEF	0x8000	/* can't change inside sec-def func */
+
 /* bit values in status field */
 #define GUC_HAVE_TENTATIVE	0x0001		/* tentative value is defined */
 #define GUC_HAVE_LOCAL		0x0002		/* a SET LOCAL has been executed */
