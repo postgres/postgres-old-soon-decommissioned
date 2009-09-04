@@ -253,6 +253,11 @@ timestamp_recv(PG_FUNCTION_ARGS)
 	timestamp = (Timestamp) pq_getmsgint64(buf);
 #else
 	timestamp = (Timestamp) pq_getmsgfloat8(buf);
+
+	if (isnan(timestamp))
+		ereport(ERROR,
+				(errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
+				 errmsg("timestamp cannot be NaN")));
 #endif
 
 	/* rangecheck: see if timestamp_out would like it */

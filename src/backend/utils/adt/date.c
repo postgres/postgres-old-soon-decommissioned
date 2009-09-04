@@ -203,8 +203,17 @@ Datum
 date_recv(PG_FUNCTION_ARGS)
 {
 	StringInfo	buf = (StringInfo) PG_GETARG_POINTER(0);
+	DateADT result;
 
-	PG_RETURN_DATEADT((DateADT) pq_getmsgint(buf, sizeof(DateADT)));
+	result = (DateADT) pq_getmsgint(buf, sizeof(DateADT));
+
+	/* Limit to the same range that date_in() accepts. */
+	if (result < 0 || result > JULIAN_MAX)
+		ereport(ERROR,
+				(errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
+				 errmsg("date out of range")));
+
+	PG_RETURN_DATEADT(result);
 }
 
 /*

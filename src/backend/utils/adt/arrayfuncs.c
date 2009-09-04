@@ -1207,8 +1207,17 @@ array_recv(PG_FUNCTION_ARGS)
 
 	for (i = 0; i < ndim; i++)
 	{
+		int ub;
+
 		dim[i] = pq_getmsgint(buf, 4);
 		lBound[i] = pq_getmsgint(buf, 4);
+
+		ub = lBound[i] + dim[i] - 1;
+		/* overflow? */
+		if (lBound[i] > ub)
+			ereport(ERROR,
+					(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
+					 errmsg("integer out of range")));
 	}
 
 	/* This checks for overflow of array dimensions */
