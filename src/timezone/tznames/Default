@@ -283,6 +283,7 @@ ICT     25200    # Indochina Time
                  #     (Asia/Phnom_Penh)
                  #     (Asia/Saigon)
                  #     (Asia/Vientiane)
+IDT     10800 D  # Israel Daylight Time
 IRKST   32400 D  # Irkutsk Summer Time
                  #     (Asia/Irkutsk)
 IRKT    28800    # Irkutsk Time
@@ -334,6 +335,8 @@ PETT    43200    # Petropavlovsk-Kamchatski Time
                  #     (Asia/Kamchatka)
 PHT     28800    # Phillipine Time (not in zic)
 PKT     18000    # Pakistan Time (not in zic)
+SGT     28800    # Singapore Time
+                 #     (Asia/Singapore)
 TJT     18000    # Tajikistan Time
                  #     (Asia/Dushanbe)
 TMT     18000    # Turkmenistan Time
