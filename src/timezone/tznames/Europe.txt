@@ -191,6 +191,7 @@ SAMST   18000 D  # Samara Summer Time
 SAMT    14400    # Samara Time
                  #     (Europe/Samara)
 WEST     3600 D  # Western Europe Summer Time
+                 #     (Africa/Casablanca)
                  #     (Atlantic/Canary)
                  #     (Atlantic/Faeroe)
                  #     (Atlantic/Madeira)
