@@ -283,6 +283,7 @@ ICT     25200    # Indochina Time
                  #     (Asia/Phnom_Penh)
                  #     (Asia/Saigon)
                  #     (Asia/Vientiane)
+IDT     10800 D  # Israel Daylight Time
 IRKST   32400 D  # Irkutsk Summer Time
                  #     (Asia/Irkutsk)
 IRKT    28800    # Irkutsk Time
