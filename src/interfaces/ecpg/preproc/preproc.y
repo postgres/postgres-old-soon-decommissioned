@@ -162,11 +162,7 @@ make3_str(char *str1, char *str2, char *str3)
 static char *
 make_name(void)
 {
-	char * name = (char *)mm_alloc(yyleng + 1);
-
-	strncpy(name, yytext, yyleng);
-	name[yyleng] = '\0';
-	return(name);
+	return mm_strdup(yytext);
 }
 
 static char *
