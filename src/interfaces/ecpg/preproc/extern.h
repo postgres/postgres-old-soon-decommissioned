@@ -38,8 +38,7 @@ extern char *yytext,
 #ifdef YYDEBUG
 extern int	yydebug;
 #endif
-extern int	yylineno,
-			yyleng;
+extern int	yylineno;
 extern FILE *yyin,
 		   *yyout;
 extern char *output_filename;
