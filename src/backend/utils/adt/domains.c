@@ -302,3 +302,40 @@ domain_recv(PG_FUNCTION_ARGS)
 	else
 		PG_RETURN_DATUM(value);
 }
+
+/*
+ * domain_check - check that a datum satisfies the constraints of a
+ * domain.  extra and mcxt can be passed if they are available from,
+ * say, a FmgrInfo structure, or they can be NULL, in which case the
+ * setup is repeated for each call.
+ */
+void
+domain_check(Datum value, bool isnull, Oid domainType, void **extra, MemoryContext mcxt)
+{
+	DomainIOData *my_extra = NULL;
+
+	if (mcxt == NULL)
+		mcxt = CurrentMemoryContext;
+
+	/*
+	 * We arrange to look up the needed info just once per series of calls,
+	 * assuming the domain type doesn't change underneath us.
+	 */
+	if (extra)
+		my_extra = (DomainIOData *) *extra;
+	if (my_extra == NULL)
+	{
+		my_extra = (DomainIOData *) MemoryContextAlloc(mcxt,
+													   sizeof(DomainIOData));
+		domain_state_setup(my_extra, domainType, true, mcxt);
+		if (extra)
+			*extra = (void *) my_extra;
+	}
+	else if (my_extra->domain_type != domainType)
+		domain_state_setup(my_extra, domainType, true, mcxt);
+
+	/*
+	 * Do the necessary checks to ensure it's a valid domain value.
+	 */
+	domain_check_input(value, isnull, my_extra);
+}
