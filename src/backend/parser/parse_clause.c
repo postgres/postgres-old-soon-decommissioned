@@ -479,7 +479,7 @@ transformRangeSubselect(ParseState *pstate, RangeSubselect *r)
 	/*
 	 * Analyze and transform the subquery.
 	 */
-	query = parse_sub_analyze(r->subquery, pstate);
+	query = parse_sub_analyze(r->subquery, pstate, NULL);
 
 	/*
 	 * Check that we got something reasonable.	Many of these conditions are
