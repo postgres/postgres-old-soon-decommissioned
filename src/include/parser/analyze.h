@@ -22,7 +22,8 @@ extern Query *parse_analyze(Node *parseTree, const char *sourceText,
 extern Query *parse_analyze_varparams(Node *parseTree, const char *sourceText,
 						Oid **paramTypes, int *numParams);
 
-extern Query *parse_sub_analyze(Node *parseTree, ParseState *parentParseState);
+extern Query *parse_sub_analyze(Node *parseTree, ParseState *parentParseState,
+								CommonTableExpr *parentCTE);
 extern Query *transformStmt(ParseState *pstate, Node *parseTree);
 
 extern bool analyze_requires_snapshot(Node *parseTree);

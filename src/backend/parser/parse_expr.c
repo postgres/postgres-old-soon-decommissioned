@@ -1251,7 +1251,7 @@ transformSubLink(ParseState *pstate, SubLink *sublink)
 		return result;
 
 	pstate->p_hasSubLinks = true;
-	qtree = parse_sub_analyze(sublink->subselect, pstate);
+	qtree = parse_sub_analyze(sublink->subselect, pstate, NULL);
 
 	/*
 	 * Check that we got something reasonable.	Many of these conditions are
