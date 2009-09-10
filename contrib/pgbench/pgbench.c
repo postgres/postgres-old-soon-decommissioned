@@ -132,7 +132,7 @@ int			fillfactor = 100;
  * end of configurable parameters
  *********************************************************************/
 
-#define nbranches	1
+#define nbranches	1  /* Makes little sense to change this.  Change -s instead */
 #define ntellers	10
 #define naccounts	100000
 
@@ -232,9 +232,9 @@ static int			debug = 0;				/* debug flag */
 
 /* default scenario */
 static char *tpc_b = {
-	"\\set nbranches :scale\n"
-	"\\set ntellers 10 * :scale\n"
-	"\\set naccounts 100000 * :scale\n"
+	"\\set nbranches " CppAsString2(nbranches) " * :scale\n"
+	"\\set ntellers " CppAsString2(ntellers) " * :scale\n"
+	"\\set naccounts " CppAsString2(naccounts) " * :scale\n"
 	"\\setrandom aid 1 :naccounts\n"
 	"\\setrandom bid 1 :nbranches\n"
 	"\\setrandom tid 1 :ntellers\n"
@@ -250,9 +250,9 @@ static char *tpc_b = {
 
 /* -N case */
 static char *simple_update = {
-	"\\set nbranches :scale\n"
-	"\\set ntellers 10 * :scale\n"
-	"\\set naccounts 100000 * :scale\n"
+	"\\set nbranches " CppAsString2(nbranches) " * :scale\n"
+	"\\set ntellers " CppAsString2(ntellers) " * :scale\n"
+	"\\set naccounts " CppAsString2(naccounts) " * :scale\n"
 	"\\setrandom aid 1 :naccounts\n"
 	"\\setrandom bid 1 :nbranches\n"
 	"\\setrandom tid 1 :ntellers\n"
@@ -266,7 +266,7 @@ static char *simple_update = {
 
 /* -S case */
 static char *select_only = {
-	"\\set naccounts 100000 * :scale\n"
+	"\\set naccounts " CppAsString2(naccounts) " * :scale\n"
 	"\\setrandom aid 1 :naccounts\n"
 	"SELECT abalance FROM pgbench_accounts WHERE aid = :aid;\n"
 };
