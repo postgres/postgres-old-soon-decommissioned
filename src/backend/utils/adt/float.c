@@ -334,7 +334,7 @@ float4out(PG_FUNCTION_ARGS)
 				if (ndig < 1)
 					ndig = 1;
 
-				sprintf(ascii, "%.*g", ndig, num);
+				snprintf(ascii, MAXFLOATWIDTH + 1, "%.*g", ndig, num);
 			}
 	}
 
@@ -523,7 +523,7 @@ float8out(PG_FUNCTION_ARGS)
 				if (ndig < 1)
 					ndig = 1;
 
-				sprintf(ascii, "%.*g", ndig, num);
+				snprintf(ascii, MAXDOUBLEWIDTH + 1, "%.*g", ndig, num);
 			}
 	}
 
