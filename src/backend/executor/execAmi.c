@@ -496,3 +496,30 @@ IndexSupportsBackwardScan(Oid indexid)
 
 	return result;
 }
+
+/*
+ * ExecMaterializesOutput - does a plan type materialize its output?
+ *
+ * Returns true if the plan node type is one that automatically materializes
+ * its output (typically by keeping it in a tuplestore).  For such plans,
+ * a rescan without any parameter change will have zero startup cost and
+ * very low per-tuple cost.
+ */
+bool
+ExecMaterializesOutput(NodeTag plantype)
+{
+	switch (plantype)
+	{
+		case T_Material:
+		case T_FunctionScan:
+		case T_CteScan:
+		case T_WorkTableScan:
+		case T_Sort:
+			return true;
+
+		default:
+			break;
+	}
+
+	return false;
+}

@@ -3266,6 +3266,7 @@ materialize_finished_plan(Plan *subplan)
 
 	/* Set cost data */
 	cost_material(&matpath,
+				  subplan->startup_cost,
 				  subplan->total_cost,
 				  subplan->plan_rows,
 				  subplan->plan_width);

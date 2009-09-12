@@ -83,6 +83,7 @@ extern void ExecMarkPos(PlanState *node);
 extern void ExecRestrPos(PlanState *node);
 extern bool ExecSupportsMarkRestore(NodeTag plantype);
 extern bool ExecSupportsBackwardScan(Plan *node);
+extern bool ExecMaterializesOutput(NodeTag plantype);
 
 /*
  * prototypes from functions in execCurrent.c
