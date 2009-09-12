@@ -635,6 +635,15 @@ convert_subquery_pathkeys(PlannerInfo *root, RelOptInfo *rel,
 							exprType((Node *) tle->expr),
 							exprTypmod((Node *) tle->expr),
 							0);
+
+				/*
+				 * Note: it might look funny to be setting sortref = 0 for
+				 * a reference to a volatile sub_eclass.  However, the
+				 * expression is *not* volatile in the outer query: it's
+				 * just a Var referencing whatever the subquery emitted.
+				 * (IOW, the outer query isn't going to re-execute the
+				 * volatile expression itself.)  So this is okay.
+				 */
 				outer_ec =
 					get_eclass_for_sort_expr(root,
 											 outer_expr,
