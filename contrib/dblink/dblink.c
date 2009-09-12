@@ -855,9 +855,9 @@ dblink_record_internal(FunctionCallInfo fcinfo, bool is_async)
 			(PQresultStatus(res) != PGRES_COMMAND_OK &&
 			 PQresultStatus(res) != PGRES_TUPLES_OK))
 		{
-			dblink_res_error(conname, res, "could not execute query", fail);
 			if (freeconn)
 				PQfinish(conn);
+			dblink_res_error(conname, res, "could not execute query", fail);
 			MemoryContextSwitchTo(oldcontext);
 			SRF_RETURN_DONE(funcctx);
 		}
