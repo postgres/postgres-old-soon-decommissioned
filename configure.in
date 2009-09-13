@@ -1316,7 +1316,7 @@ fi
 if test "$with_readline" = yes; then
   PGAC_VAR_RL_COMPLETION_APPEND_CHARACTER
   AC_CHECK_FUNCS([rl_completion_matches rl_filename_completion_function])
-  AC_CHECK_FUNCS([replace_history_entry])
+  AC_CHECK_FUNCS([append_history history_truncate_file])
 fi
 
 
