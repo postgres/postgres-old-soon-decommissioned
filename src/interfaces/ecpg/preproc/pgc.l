@@ -987,7 +987,7 @@ cppline			{space}*#(.*\\{space})*.*{newline}
 							BEGIN(xskip);
 					}
 				}
-<C,xskip>{informix_special}{else}{space}*	{
+<C,xskip>{informix_special}{else}{space}*";"	{
 					/* are we simulating Informix? */
 					if (INFORMIX_MODE)
 					{
