@@ -211,6 +211,7 @@ typedef enum NodeTag
 	T_ResultPath,
 	T_MaterialPath,
 	T_UniquePath,
+	T_NoOpPath,
 	T_EquivalenceClass,
 	T_EquivalenceMember,
 	T_PathKey,

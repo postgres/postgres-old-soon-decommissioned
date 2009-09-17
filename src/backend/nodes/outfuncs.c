@@ -1422,6 +1422,16 @@ _outUniquePath(StringInfo str, UniquePath *node)
 }
 
 static void
+_outNoOpPath(StringInfo str, NoOpPath *node)
+{
+	WRITE_NODE_TYPE("NOOPPATH");
+
+	_outPathInfo(str, (Path *) node);
+
+	WRITE_NODE_FIELD(subpath);
+}
+
+static void
 _outNestPath(StringInfo str, NestPath *node)
 {
 	WRITE_NODE_TYPE("NESTPATH");
@@ -2633,6 +2643,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_UniquePath:
 				_outUniquePath(str, obj);
+				break;
+			case T_NoOpPath:
+				_outNoOpPath(str, obj);
 				break;
 			case T_NestPath:
 				_outNestPath(str, obj);

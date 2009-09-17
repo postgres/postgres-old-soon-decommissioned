@@ -57,6 +57,8 @@ extern List *generate_bitmap_or_paths(PlannerInfo *root, RelOptInfo *rel,
 extern void best_inner_indexscan(PlannerInfo *root, RelOptInfo *rel,
 					 RelOptInfo *outer_rel, JoinType jointype,
 					 Path **cheapest_startup, Path **cheapest_total);
+extern bool relation_has_unique_index_for(PlannerInfo *root, RelOptInfo *rel,
+							  List *restrictlist);
 extern List *group_clauses_by_indexkey(IndexOptInfo *index,
 						  List *clauses, List *outer_clauses,
 						  Relids outer_relids,

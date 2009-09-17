@@ -784,6 +784,22 @@ typedef struct UniquePath
 } UniquePath;
 
 /*
+ * NoOpPath represents exactly the same plan as its subpath.  This is used
+ * when we have determined that a join can be eliminated.  The difference
+ * between the NoOpPath and its subpath is just that the NoOpPath's parent
+ * is the whole join relation while the subpath is for one of the joined
+ * relations (and the other one isn't needed).
+ *
+ * Note: path.pathtype is always T_Join, but this won't actually give rise
+ * to a Join plan node.
+ */
+typedef struct NoOpPath
+{
+	Path		path;
+	Path	   *subpath;
+} NoOpPath;
+
+/*
  * All join-type paths share these fields.
  */
 

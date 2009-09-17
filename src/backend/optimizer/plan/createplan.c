@@ -164,6 +164,11 @@ create_plan(PlannerInfo *root, Path *best_path)
 		case T_WorkTableScan:
 			plan = create_scan_plan(root, best_path);
 			break;
+		case T_Join:
+			/* this is only used for no-op joins */
+			Assert(IsA(best_path, NoOpPath));
+			plan = create_plan(root, ((NoOpPath *) best_path)->subpath);
+			break;
 		case T_HashJoin:
 		case T_MergeJoin:
 		case T_NestLoop:
