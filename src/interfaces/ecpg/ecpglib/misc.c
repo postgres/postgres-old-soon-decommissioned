@@ -170,6 +170,21 @@ ECPGstatus(int lineno, const char *connection_name)
 	return (true);
 }
 
+PGTransactionStatusType
+ECPGtransactionStatus(const char *connection_name)
+{
+	const struct connection *con;
+
+	con = ecpg_get_connection(connection_name);
+	if (con == NULL) {
+		/* transaction status is unknown */
+		return PQTRANS_UNKNOWN;
+	}
+
+	return PQtransactionStatus(con->connection);
+
+}
+
 bool
 ECPGtrans(int lineno, const char *connection_name, const char *transaction)
 {

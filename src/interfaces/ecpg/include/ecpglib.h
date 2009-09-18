@@ -59,7 +59,7 @@ bool		ECPGdeallocate(int, int, const char *, const char *);
 bool		ECPGdeallocate_all(int, int, const char *);
 char	   *ECPGprepared_statement(const char *, const char *, int);
 PGconn	   *ECPGget_PGconn(const char *);
-
+PGTransactionStatusType ECPGtransactionStatus(const char *);
 
 char	   *ECPGerrmsg(void);
 
