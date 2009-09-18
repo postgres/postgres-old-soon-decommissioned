@@ -20,7 +20,7 @@
 SET TRANSACTION <replaceable class="parameter">transaction_mode</replaceable> [, ...]
 SET SESSION CHARACTERISTICS AS TRANSACTION <replaceable class="parameter">transaction_mode</replaceable> [, ...]
 
-where <replaceable class="parameter">transaction_mode</replaceable> is one of:
+<phrase>where <replaceable class="parameter">transaction_mode</replaceable> is one of:</phrase>
 
     ISOLATION LEVEL { SERIALIZABLE | REPEATABLE READ | READ COMMITTED | READ UNCOMMITTED }
     READ WRITE | READ ONLY

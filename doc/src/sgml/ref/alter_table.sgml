@@ -30,7 +30,7 @@ ALTER TABLE <replaceable class="PARAMETER">name</replaceable>
 ALTER TABLE <replaceable class="PARAMETER">name</replaceable>
     SET SCHEMA <replaceable class="PARAMETER">new_schema</replaceable>
 
-where <replaceable class="PARAMETER">action</replaceable> is one of:
+<phrase>where <replaceable class="PARAMETER">action</replaceable> is one of:</phrase>
 
     ADD [ COLUMN ] <replaceable class="PARAMETER">column</replaceable> <replaceable class="PARAMETER">type</replaceable> [ <replaceable class="PARAMETER">column_constraint</replaceable> [ ... ] ]
     DROP [ COLUMN ] [ IF EXISTS ] <replaceable class="PARAMETER">column</replaceable> [ RESTRICT | CASCADE ]

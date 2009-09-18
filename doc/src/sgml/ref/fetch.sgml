@@ -28,7 +28,7 @@ PostgreSQL documentation
 <synopsis>
 FETCH [ <replaceable class="PARAMETER">direction</replaceable> { FROM | IN } ] <replaceable class="PARAMETER">cursorname</replaceable>
 
-where <replaceable class="PARAMETER">direction</replaceable> can be empty or one of:
+<phrase>where <replaceable class="PARAMETER">direction</replaceable> can be empty or one of:</phrase>
 
     NEXT
     PRIOR

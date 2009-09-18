@@ -23,7 +23,7 @@ PostgreSQL documentation
 <synopsis>
 CREATE USER <replaceable class="PARAMETER">name</replaceable> [ [ WITH ] <replaceable class="PARAMETER">option</replaceable> [ ... ] ]
 
-where <replaceable class="PARAMETER">option</replaceable> can be:
+<phrase>where <replaceable class="PARAMETER">option</replaceable> can be:</phrase>
     
       SUPERUSER | NOSUPERUSER
     | CREATEDB | NOCREATEDB
