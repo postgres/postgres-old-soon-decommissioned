@@ -17,7 +17,7 @@
 
  <refsynopsisdiv>
 <synopsis>
-SET [ SESSION | LOCAL ] SESSION AUTHORIZATION <replaceable class="parameter">username</replaceable>
+SET [ SESSION | LOCAL ] SESSION AUTHORIZATION <replaceable class="parameter">user_name</replaceable>
 SET [ SESSION | LOCAL ] SESSION AUTHORIZATION DEFAULT
 RESET SESSION AUTHORIZATION
 </synopsis>
@@ -29,7 +29,7 @@ RESET SESSION AUTHORIZATION
   <para>
    This command sets the session user identifier and the current user
    identifier of the current SQL session to be <replaceable
-   class="parameter">username</replaceable>.  The user name can be
+   class="parameter">user_name</replaceable>.  The user name can be
    written as either an identifier or a string literal.  Using this
    command, it is possible, for example, to temporarily become an
    unprivileged user and later switch back to being a superuser.
@@ -99,7 +99,7 @@ SELECT SESSION_USER, CURRENT_USER;
 
   <para>
    The SQL standard allows some other expressions to appear in place
-   of the literal <replaceable>username</replaceable>, but these options
+   of the literal <replaceable>user_name</replaceable>, but these options
    are not important in practice.  <productname>PostgreSQL</productname>
    allows identifier syntax (<literal>"username"</literal>), which SQL
    does not.  SQL does not allow this command during a transaction;

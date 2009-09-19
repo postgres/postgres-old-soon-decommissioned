@@ -35,7 +35,7 @@ ALTER USER <replaceable class="PARAMETER">name</replaceable> [ [ WITH ] <replace
     | [ ENCRYPTED | UNENCRYPTED ] PASSWORD '<replaceable class="PARAMETER">password</replaceable>'
     | VALID UNTIL '<replaceable class="PARAMETER">timestamp</replaceable>' 
 
-ALTER USER <replaceable class="PARAMETER">name</replaceable> RENAME TO <replaceable>newname</replaceable>
+ALTER USER <replaceable class="PARAMETER">name</replaceable> RENAME TO <replaceable>new_name</replaceable>
 
 ALTER USER <replaceable class="PARAMETER">name</replaceable> SET <replaceable>configuration_parameter</replaceable> { TO | = } { <replaceable>value</replaceable> | DEFAULT }
 ALTER USER <replaceable class="PARAMETER">name</replaceable> SET <replaceable>configuration_parameter</replaceable> FROM CURRENT

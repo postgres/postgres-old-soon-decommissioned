@@ -21,8 +21,8 @@ PostgreSQL documentation
 
  <refsynopsisdiv>
 <synopsis>
-CREATE USER MAPPING FOR { <replaceable class="parameter">username</replaceable> | USER | CURRENT_USER | PUBLIC }
-    SERVER <replaceable class="parameter">servername</replaceable>
+CREATE USER MAPPING FOR { <replaceable class="parameter">user_name</replaceable> | USER | CURRENT_USER | PUBLIC }
+    SERVER <replaceable class="parameter">server_name</replaceable>
     [ OPTIONS ( <replaceable class="PARAMETER">option</replaceable> '<replaceable class="PARAMETER">value</replaceable>' [ , ... ] ) ]
 </synopsis>
  </refsynopsisdiv>
@@ -51,7 +51,7 @@ CREATE USER MAPPING FOR { <replaceable class="parameter">username</replaceable> 
 
   <variablelist>
    <varlistentry>
-    <term><replaceable class="parameter">username</replaceable></term>
+    <term><replaceable class="parameter">user_name</replaceable></term>
     <listitem>
      <para>
       The name of an existing user that is mapped to foreign server.
@@ -64,7 +64,7 @@ CREATE USER MAPPING FOR { <replaceable class="parameter">username</replaceable> 
    </varlistentry>
 
    <varlistentry>
-    <term><replaceable class="parameter">servername</replaceable></term>
+    <term><replaceable class="parameter">server_name</replaceable></term>
     <listitem>
      <para>
       The name of an existing server for which the user mapping is

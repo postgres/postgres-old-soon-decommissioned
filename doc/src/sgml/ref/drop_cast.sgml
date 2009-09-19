@@ -18,7 +18,7 @@
 
  <refsynopsisdiv>
 <synopsis>
-DROP CAST [ IF EXISTS ] (<replaceable>sourcetype</replaceable> AS <replaceable>targettype</replaceable>) [ CASCADE | RESTRICT ]
+DROP CAST [ IF EXISTS ] (<replaceable>source_type</replaceable> AS <replaceable>target_type</replaceable>) [ CASCADE | RESTRICT ]
 </synopsis>
  </refsynopsisdiv>
   
@@ -52,7 +52,7 @@ DROP CAST [ IF EXISTS ] (<replaceable>sourcetype</replaceable> AS <replaceable>t
    </varlistentry>
 
     <varlistentry>
-     <term><replaceable>sourcetype</replaceable></term>
+     <term><replaceable>source_type</replaceable></term>
 
      <listitem>
       <para>
@@ -62,7 +62,7 @@ DROP CAST [ IF EXISTS ] (<replaceable>sourcetype</replaceable> AS <replaceable>t
     </varlistentry>
 
     <varlistentry>
-     <term><replaceable>targettype</replaceable></term>
+     <term><replaceable>target_type</replaceable></term>
 
      <listitem>
       <para>
