@@ -235,7 +235,7 @@ s{PG_VERSION_STR "[^"]+"}{__STRINGIFY(x) #x\n#define __STRINGIFY2(z) __STRINGIFY
     {
         print "Generating sql_help.h...\n";
         chdir('src\bin\psql');
-        system("perl create_help.pl ../../../doc/src/sgml/ref sql_help.h");
+        system("perl create_help.pl ../../../doc/src/sgml/ref sql_help");
         chdir('..\..\..');
     }
 
