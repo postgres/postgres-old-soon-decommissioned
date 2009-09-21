@@ -88,6 +88,8 @@ defGetString(DefElem *def)
 			return TypeNameToString((TypeName *) def->arg);
 		case T_List:
 			return NameListToString((List *) def->arg);
+		case T_A_Star:
+			return pstrdup("*");
 		default:
 			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(def->arg));
 	}
