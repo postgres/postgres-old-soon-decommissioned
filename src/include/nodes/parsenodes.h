@@ -1570,6 +1570,7 @@ typedef struct CreatePLangStmt
 	NodeTag		type;
 	char	   *plname;			/* PL name */
 	List	   *plhandler;		/* PL call handler function (qual. name) */
+	List	   *plinline;		/* optional inline function (qual. name) */
 	List	   *plvalidator;	/* optional validator function (qual. name) */
 	bool		pltrusted;		/* PL is trusted */
 } CreatePLangStmt;
@@ -1921,6 +1922,25 @@ typedef struct RemoveFuncStmt
 	DropBehavior behavior;		/* RESTRICT or CASCADE behavior */
 	bool		missing_ok;		/* skip error if missing? */
 } RemoveFuncStmt;
+
+/* ----------------------
+ *		DO Statement
+ *
+ * DoStmt is the raw parser output, InlineCodeBlock is the execution-time API
+ * ----------------------
+ */
+typedef struct DoStmt
+{
+	NodeTag		type;
+	List	   *args;			/* List of DefElem nodes */
+} DoStmt;
+
+typedef struct InlineCodeBlock
+{
+	NodeTag		type;
+	char	   *source_text;	/* source text of anonymous code block */
+	Oid			langOid;		/* OID of selected language */
+} InlineCodeBlock;
 
 /* ----------------------
  *		Drop Operator Class Statement

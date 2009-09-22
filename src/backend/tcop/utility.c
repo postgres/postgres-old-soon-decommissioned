@@ -840,6 +840,10 @@ ProcessUtility(Node *parsetree,
 			}
 			break;
 
+		case T_DoStmt:
+			ExecuteDoStmt((DoStmt *) parsetree);
+			break;
+
 		case T_CreatedbStmt:
 			PreventTransactionChain(isTopLevel, "CREATE DATABASE");
 			createdb((CreatedbStmt *) parsetree);
@@ -1761,6 +1765,10 @@ CreateCommandTag(Node *parsetree)
 			}
 			break;
 
+		case T_DoStmt:
+			tag = "DO";
+			break;
+
 		case T_CreatedbStmt:
 			tag = "CREATE DATABASE";
 			break;
@@ -2274,6 +2282,10 @@ GetCommandLogLevel(Node *parsetree)
 
 		case T_RemoveFuncStmt:
 			lev = LOGSTMT_DDL;
+			break;
+
+		case T_DoStmt:
+			lev = LOGSTMT_ALL;
 			break;
 
 		case T_CreatedbStmt:

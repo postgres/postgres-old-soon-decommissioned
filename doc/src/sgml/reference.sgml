@@ -105,6 +105,7 @@
    &declare;
    &delete;
    &discard;
+   &do;
    &dropAggregate;
    &dropCast;
    &dropConversion;

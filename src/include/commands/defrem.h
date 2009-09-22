@@ -61,6 +61,7 @@ extern void DropCast(DropCastStmt *stmt);
 extern void DropCastById(Oid castOid);
 extern void AlterFunctionNamespace(List *name, List *argtypes, bool isagg,
 					   const char *newschema);
+extern void ExecuteDoStmt(DoStmt *stmt);
 
 /* commands/operatorcmds.c */
 extern void DefineOperator(List *names, List *parameters);

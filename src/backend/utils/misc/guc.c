@@ -385,6 +385,8 @@ char	   *external_pid_file;
 
 char	   *pgstat_temp_directory;
 
+char	   *default_do_language;
+
 int			tcp_keepalives_idle;
 int			tcp_keepalives_interval;
 int			tcp_keepalives_count;
@@ -2538,6 +2540,15 @@ static struct config_string ConfigureNamesString[] =
 		"ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH", NULL, NULL
 	},
 #endif   /* USE_SSL */
+
+	{
+		{"default_do_language", PGC_USERSET, CLIENT_CONN_STATEMENT,
+			gettext_noop("Sets the language used in DO statement if LANGUAGE is not specified."),
+			NULL
+		},
+		&default_do_language,
+		"plpgsql", NULL, NULL
+	},
 
 	/* End-of-list marker */
 	{

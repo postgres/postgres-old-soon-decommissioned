@@ -115,6 +115,57 @@ plpgsql_call_handler(PG_FUNCTION_ARGS)
 }
 
 /* ----------
+ * plpgsql_inline_handler
+ *
+ * Called by PostgreSQL to execute an anonymous code block
+ * ----------
+ */
+PG_FUNCTION_INFO_V1(plpgsql_inline_handler);
+
+Datum
+plpgsql_inline_handler(PG_FUNCTION_ARGS)
+{
+	InlineCodeBlock *codeblock = (InlineCodeBlock *) DatumGetPointer(PG_GETARG_DATUM(0));
+	PLpgSQL_function *func;
+	FunctionCallInfoData fake_fcinfo;
+	FmgrInfo	flinfo;
+	Datum		retval;
+	int			rc;
+
+	Assert(IsA(codeblock, InlineCodeBlock));
+
+	/*
+	 * Connect to SPI manager
+	 */
+	if ((rc = SPI_connect()) != SPI_OK_CONNECT)
+		elog(ERROR, "SPI_connect failed: %s", SPI_result_code_string(rc));
+
+	/* Compile the anonymous code block */
+	func = plpgsql_compile_inline(codeblock->source_text);
+
+	/*
+	 * Set up a fake fcinfo with just enough info to satisfy
+	 * plpgsql_exec_function().  In particular note that this sets things up
+	 * with no arguments passed.
+	 */
+	MemSet(&fake_fcinfo, 0, sizeof(fake_fcinfo));
+	MemSet(&flinfo, 0, sizeof(flinfo));
+	fake_fcinfo.flinfo = &flinfo;
+	flinfo.fn_oid = InvalidOid;
+	flinfo.fn_mcxt = CurrentMemoryContext;
+
+	retval = plpgsql_exec_function(func, &fake_fcinfo);
+
+	/*
+	 * Disconnect from SPI manager
+	 */
+	if ((rc = SPI_finish()) != SPI_OK_FINISH)
+		elog(ERROR, "SPI_finish failed: %s", SPI_result_code_string(rc));
+
+	return retval;
+}
+
+/* ----------
  * plpgsql_validator
  *
  * This function attempts to validate a PL/pgSQL function at
