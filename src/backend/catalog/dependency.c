@@ -559,7 +559,8 @@ findDependentObjects(const ObjectAddress *object,
 				{
 					char	   *otherObjDesc;
 
-					if (object_address_present(&otherObject, pendingObjects))
+					if (pendingObjects &&
+						object_address_present(&otherObject, pendingObjects))
 					{
 						systable_endscan(scan);
 						/* need to release caller's lock; see notes below */
