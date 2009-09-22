@@ -71,6 +71,9 @@ typedef struct base_yy_extra_type
 	int			xcdepth;		/* depth of nesting in slash-star comments */
 	char	   *dolqstart;		/* current $foo$ quote start string */
 
+	/* first part of UTF16 surrogate pair for Unicode escapes */
+	int32		utf16_first_part;
+
 	/* state variables for literal-lexing warnings */
 	bool		warn_on_first_escape;
 	bool		saw_non_ascii;
