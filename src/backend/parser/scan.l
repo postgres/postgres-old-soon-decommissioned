@@ -1223,6 +1223,9 @@ litbuf_udeescape(unsigned char escape, base_yyscan_t yyscanner)
 						yyerror("invalid Unicode surrogate pair");
 					}
 				}
+				else if (is_utf16_surrogate_second(unicode))
+					yyerror("invalid Unicode surrogate pair");
+
 				if (is_utf16_surrogate_first(unicode))
 					pair_first = unicode;
 				else
@@ -1253,6 +1256,9 @@ litbuf_udeescape(unsigned char escape, base_yyscan_t yyscanner)
 						yyerror("invalid Unicode surrogate pair");
 					}
 				}
+				else if (is_utf16_surrogate_second(unicode))
+					yyerror("invalid Unicode surrogate pair");
+
 				if (is_utf16_surrogate_first(unicode))
 					pair_first = unicode;
 				else
