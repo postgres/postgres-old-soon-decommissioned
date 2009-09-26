@@ -178,6 +178,7 @@ BEGIN {
 	bootstrap = "";
 	shared_relation = "";
 	without_oids = "";
+	rowtype_oid = "";
 	nc = 0;
 	reln_open = 0;
 	comment_level = 0;
@@ -319,13 +320,16 @@ comment_level > 0 { next; }
 	oid = substr(catalogandoid, pos+1, length(catalogandoid)-pos);
 
 	if ($0 ~ /BKI_BOOTSTRAP/) {
-		bootstrap = "bootstrap ";
+		bootstrap = " bootstrap";
 	}
 	if ($0 ~ /BKI_SHARED_RELATION/) {
-		shared_relation = "shared_relation ";
+		shared_relation = " shared_relation";
 	}
 	if ($0 ~ /BKI_WITHOUT_OIDS/) {
-		without_oids = "without_oids ";
+		without_oids = " without_oids";
+	}
+	if ($0 ~ /BKI_ROWTYPE_OID\([0-9]*\)/) {
+		rowtype_oid = gensub(/^.*BKI_ROWTYPE_OID\(([0-9]*)\).*$/, " rowtype_oid \\1", 1);
 	}
 
         i = 1;
@@ -351,7 +355,7 @@ inside == 1 {
 #  if this is the last line, then output the bki catalog stuff.
 # ----
 	if ($1 ~ /}/) {
-		print "create " bootstrap shared_relation without_oids catalog " " oid;
+		print "create " catalog " " oid bootstrap shared_relation without_oids rowtype_oid;
 		print "\t(";
 
 		for (j=1; j<i-1; j++) {
@@ -370,6 +374,7 @@ inside == 1 {
 		bootstrap = "";
 		shared_relation = "";
 		without_oids = "";
+		rowtype_oid = "";
 		next;
 	}
 

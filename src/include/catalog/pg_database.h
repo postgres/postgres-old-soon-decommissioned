@@ -27,8 +27,9 @@
  * ----------------
  */
 #define DatabaseRelationId	1262
+#define DatabaseRelation_Rowtype_Id  1248
 
-CATALOG(pg_database,1262) BKI_SHARED_RELATION
+CATALOG(pg_database,1262) BKI_SHARED_RELATION BKI_ROWTYPE_OID(1248)
 {
 	NameData	datname;		/* database name */
 	Oid			datdba;			/* owner of database */

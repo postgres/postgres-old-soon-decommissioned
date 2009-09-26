@@ -510,6 +510,7 @@ DefineRelation(CreateStmt *stmt, char relkind)
 										  namespaceId,
 										  tablespaceId,
 										  InvalidOid,
+										  InvalidOid,
 										  GetUserId(),
 										  descriptor,
 										  list_concat(cookedDefaults,

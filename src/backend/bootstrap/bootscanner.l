@@ -77,6 +77,7 @@ OID				{ return(OBJ_ID); }
 bootstrap		{ return(XBOOTSTRAP); }
 "shared_relation"	{ return(XSHARED_RELATION); }
 "without_oids"	{ return(XWITHOUT_OIDS); }
+"rowtype_oid"	{ return(XROWTYPE_OID); }
 _null_			{ return(NULLVAL); }
 
 insert			{ return(INSERT_TUPLE); }

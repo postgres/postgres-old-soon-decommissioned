@@ -703,6 +703,7 @@ make_new_heap(Oid OIDOldHeap, const char *NewName, Oid NewTableSpace)
 										  RelationGetNamespace(OldHeap),
 										  NewTableSpace,
 										  InvalidOid,
+										  InvalidOid,
 										  OldHeap->rd_rel->relowner,
 										  tupdesc,
 										  NIL,

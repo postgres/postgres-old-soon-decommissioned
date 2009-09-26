@@ -27,8 +27,9 @@
  * ----------------
  */
 #define RelationRelationId	1259
+#define RelationRelation_Rowtype_Id  83
 
-CATALOG(pg_class,1259) BKI_BOOTSTRAP
+CATALOG(pg_class,1259) BKI_BOOTSTRAP BKI_ROWTYPE_OID(83)
 {
 	NameData	relname;		/* class name */
 	Oid			relnamespace;	/* OID of namespace containing this class */

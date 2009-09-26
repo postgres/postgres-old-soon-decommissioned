@@ -2925,6 +2925,7 @@ OpenIntoRel(QueryDesc *queryDesc)
 											  namespaceId,
 											  tablespaceId,
 											  InvalidOid,
+											  InvalidOid,
 											  GetUserId(),
 											  tupdesc,
 											  NIL,

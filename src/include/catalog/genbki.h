@@ -26,6 +26,7 @@
 #define BKI_BOOTSTRAP
 #define BKI_SHARED_RELATION
 #define BKI_WITHOUT_OIDS
+#define BKI_ROWTYPE_OID(oid)
 
 /* Declarations that provide the initial content of a catalog */
 /* In C, these need to expand into some harmless, repeatable declaration */

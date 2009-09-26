@@ -35,8 +35,9 @@
  * ----------------
  */
 #define AttributeRelationId  1249
+#define AttributeRelation_Rowtype_Id  75
 
-CATALOG(pg_attribute,1249) BKI_BOOTSTRAP BKI_WITHOUT_OIDS
+CATALOG(pg_attribute,1249) BKI_BOOTSTRAP BKI_WITHOUT_OIDS BKI_ROWTYPE_OID(75)
 {
 	Oid			attrelid;		/* OID of relation containing this attribute */
 	NameData	attname;		/* name of attribute */
