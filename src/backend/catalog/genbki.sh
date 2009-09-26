@@ -329,7 +329,10 @@ comment_level > 0 { next; }
 		without_oids = " without_oids";
 	}
 	if ($0 ~ /BKI_ROWTYPE_OID\([0-9]*\)/) {
-		rowtype_oid = gensub(/^.*BKI_ROWTYPE_OID\(([0-9]*)\).*$/, " rowtype_oid \\1", 1);
+		tmp = $0;
+		sub(/^.*BKI_ROWTYPE_OID\(/, "", tmp);
+		sub(/\).*$/, "", tmp);
+		rowtype_oid = " rowtype_oid " tmp;
 	}
 
         i = 1;
