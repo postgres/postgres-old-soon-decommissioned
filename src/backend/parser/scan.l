@@ -571,18 +571,16 @@ other			.
 
 					BEGIN(xe);
 				}
-<xeu>.			|
-<xeu>\n			|
+<xeu>.			{ yyerror("invalid Unicode surrogate pair"); }
+<xeu>\n			{ yyerror("invalid Unicode surrogate pair"); }
 <xeu><<EOF>>	{ yyerror("invalid Unicode surrogate pair"); }
-
 <xe,xeu>{xeunicodefail}	{
 						ereport(ERROR,
 								(errcode(ERRCODE_INVALID_ESCAPE_SEQUENCE),
 								 errmsg("invalid Unicode escape"),
 								 errhint("Unicode escapes must be \\uXXXX or \\UXXXXXXXX."),
 								 lexer_errposition()));
-					}
-
+				}
 <xe>{xeescape}  {
 					if (yytext[1] == '\'')
 					{
