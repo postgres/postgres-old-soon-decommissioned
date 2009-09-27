@@ -104,21 +104,16 @@ insert			{ return(INSERT_TUPLE); }
 "toast"			{ return(XTOAST); }
 
 {arrayid}		{
-					yylval.ival = EnterString(MapArrayTypeName((char*)yytext));
+					yylval.str = pstrdup(MapArrayTypeName(yytext));
 					return(ID);
 				}
 {id}			{
-					char   *newid = scanstr((char*)yytext);
-					yylval.ival = EnterString(newid);
-					pfree(newid);
+					yylval.str = scanstr(yytext);
 					return(ID);
 				}
 {sid}			{
-					char   *newid;
 					yytext[strlen(yytext)-1] = '\0'; /* strip off quotes */
-					newid = scanstr((char*)yytext+1);
-					yylval.ival = EnterString(newid);
-					pfree(newid);
+					yylval.str = scanstr(yytext+1);
 					yytext[strlen(yytext)] = '"'; /* restore quotes */
 					return(ID);
 				}
@@ -126,7 +121,7 @@ insert			{ return(INSERT_TUPLE); }
 (-)?{D}+"."{D}*({Exp})? |
 (-)?{D}*"."{D}+({Exp})? |
 (-)?{D}+{Exp}			{
-							yylval.ival = EnterString((char*)yytext);
+							yylval.str = pstrdup(yytext);
 							return(CONST_P);
 						}
 
