@@ -721,7 +721,6 @@ ExecInitSubPlan(SubPlan *subplan, PlanState *parent)
 		int			ncols,
 					i;
 		TupleDesc	tupDesc;
-		TupleTable	tupTable;
 		TupleTableSlot *slot;
 		List	   *oplist,
 				   *lefttlist,
@@ -853,15 +852,6 @@ ExecInitSubPlan(SubPlan *subplan, PlanState *parent)
 		}
 
 		/*
-		 * Create a tupletable to hold these tuples.  (Note: we never bother
-		 * to free the tupletable explicitly; that's okay because it will
-		 * never store raw disk tuples that might have associated buffer pins.
-		 * The only resource involved is memory, which will be cleaned up by
-		 * freeing the query context.)
-		 */
-		tupTable = ExecCreateTupleTable(2);
-
-		/*
 		 * Construct tupdescs, slots and projection nodes for left and right
 		 * sides.  The lefthand expressions will be evaluated in the parent
 		 * plan node's exprcontext, which we don't have access to here.
@@ -870,7 +860,7 @@ ExecInitSubPlan(SubPlan *subplan, PlanState *parent)
 		 * own innerecontext.
 		 */
 		tupDesc = ExecTypeFromTL(leftptlist, false);
-		slot = ExecAllocTableSlot(tupTable);
+		slot = ExecInitExtraTupleSlot(estate);
 		ExecSetSlotDescriptor(slot, tupDesc);
 		sstate->projLeft = ExecBuildProjectionInfo(lefttlist,
 												   NULL,
@@ -878,7 +868,7 @@ ExecInitSubPlan(SubPlan *subplan, PlanState *parent)
 												   NULL);
 
 		tupDesc = ExecTypeFromTL(rightptlist, false);
-		slot = ExecAllocTableSlot(tupTable);
+		slot = ExecInitExtraTupleSlot(estate);
 		ExecSetSlotDescriptor(slot, tupDesc);
 		sstate->projRight = ExecBuildProjectionInfo(righttlist,
 													sstate->innerecontext,

@@ -352,7 +352,7 @@ typedef struct EState
 	/* Other working state: */
 	MemoryContext es_query_cxt; /* per-query context in which EState lives */
 
-	TupleTable	es_tupleTable;	/* Array of TupleTableSlots */
+	List	   *es_tupleTable;	/* List of TupleTableSlots */
 
 	uint32		es_processed;	/* # of tuples processed */
 	Oid			es_lastoid;		/* last oid processed (by INSERT) */
