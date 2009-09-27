@@ -182,8 +182,6 @@ ExecInitSort(Sort *node, EState *estate, int eflags)
 	 * ExecQual or ExecProject.
 	 */
 
-#define SORT_NSLOTS 2
-
 	/*
 	 * tuple table initialization
 	 *
@@ -214,14 +212,6 @@ ExecInitSort(Sort *node, EState *estate, int eflags)
 			   "sort node initialized");
 
 	return sortstate;
-}
-
-int
-ExecCountSlotsSort(Sort *node)
-{
-	return ExecCountSlotsNode(outerPlan((Plan *) node)) +
-		ExecCountSlotsNode(innerPlan((Plan *) node)) +
-		SORT_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

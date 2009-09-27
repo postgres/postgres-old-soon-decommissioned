@@ -523,8 +523,6 @@ ExecInitSetOp(SetOp *node, EState *estate, int eflags)
 								  ALLOCSET_DEFAULT_INITSIZE,
 								  ALLOCSET_DEFAULT_MAXSIZE);
 
-#define SETOP_NSLOTS 1
-
 	/*
 	 * Tuple table initialization
 	 */
@@ -574,14 +572,6 @@ ExecInitSetOp(SetOp *node, EState *estate, int eflags)
 	}
 
 	return setopstate;
-}
-
-int
-ExecCountSlotsSetOp(SetOp *node)
-{
-	return ExecCountSlotsNode(outerPlan(node)) +
-		ExecCountSlotsNode(innerPlan(node)) +
-		SETOP_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

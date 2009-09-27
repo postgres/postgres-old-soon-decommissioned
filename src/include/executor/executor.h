@@ -177,7 +177,6 @@ extern DestReceiver *CreateIntoRelDestReceiver(void);
 extern PlanState *ExecInitNode(Plan *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecProcNode(PlanState *node);
 extern Node *MultiExecProcNode(PlanState *node);
-extern int	ExecCountSlotsNode(Plan *node);
 extern void ExecEndNode(PlanState *node);
 
 /*

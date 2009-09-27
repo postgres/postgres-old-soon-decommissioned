@@ -237,8 +237,6 @@ ExecInitCteScan(CteScan *node, EState *estate, int eflags)
 		ExecInitExpr((Expr *) node->scan.plan.qual,
 					 (PlanState *) scanstate);
 
-#define CTESCAN_NSLOTS 2
-
 	/*
 	 * tuple table initialization
 	 */
@@ -261,14 +259,6 @@ ExecInitCteScan(CteScan *node, EState *estate, int eflags)
 	scanstate->ss.ps.ps_TupFromTlist = false;
 
 	return scanstate;
-}
-
-int
-ExecCountSlotsCteScan(CteScan *node)
-{
-	return ExecCountSlotsNode(outerPlan(node)) +
-		ExecCountSlotsNode(innerPlan(node)) +
-		CTESCAN_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

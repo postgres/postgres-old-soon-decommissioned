@@ -537,8 +537,6 @@ ExecInitIndexScan(IndexScan *node, EState *estate, int eflags)
 		ExecInitExpr((Expr *) node->indexqualorig,
 					 (PlanState *) indexstate);
 
-#define INDEXSCAN_NSLOTS 2
-
 	/*
 	 * tuple table initialization
 	 */
@@ -1073,11 +1071,4 @@ ExecIndexBuildScanKeys(PlanState *planstate, Relation index, Index scanrelid,
 	}
 	else if (n_array_keys != 0)
 		elog(ERROR, "ScalarArrayOpExpr index qual found where not allowed");
-}
-
-int
-ExecCountSlotsIndexScan(IndexScan *node)
-{
-	return ExecCountSlotsNode(outerPlan((Plan *) node)) +
-		ExecCountSlotsNode(innerPlan((Plan *) node)) + INDEXSCAN_NSLOTS;
 }

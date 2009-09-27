@@ -213,8 +213,6 @@ ExecInitGroup(Group *node, EState *estate, int eflags)
 	 */
 	ExecAssignExprContext(estate, &grpstate->ss.ps);
 
-#define GROUP_NSLOTS 2
-
 	/*
 	 * tuple table initialization
 	 */
@@ -257,12 +255,6 @@ ExecInitGroup(Group *node, EState *estate, int eflags)
 							   node->grpOperators);
 
 	return grpstate;
-}
-
-int
-ExecCountSlotsGroup(Group *node)
-{
-	return ExecCountSlotsNode(outerPlan(node)) + GROUP_NSLOTS;
 }
 
 /* ------------------------

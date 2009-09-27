@@ -1107,8 +1107,6 @@ ExecInitWindowAgg(WindowAgg *node, EState *estate, int eflags)
 							  ALLOCSET_DEFAULT_INITSIZE,
 							  ALLOCSET_DEFAULT_MAXSIZE);
 
-#define WINDOWAGG_NSLOTS 6
-
 	/*
 	 * tuple table initialization
 	 */
@@ -1270,18 +1268,6 @@ ExecInitWindowAgg(WindowAgg *node, EState *estate, int eflags)
 	winstate->more_partitions = false;
 
 	return winstate;
-}
-
-/* -----------------
- * ExecCountSlotsWindowAgg
- * -----------------
- */
-int
-ExecCountSlotsWindowAgg(WindowAgg *node)
-{
-	return ExecCountSlotsNode(outerPlan(node)) +
-		ExecCountSlotsNode(innerPlan(node)) +
-		WINDOWAGG_NSLOTS;
 }
 
 /* -----------------

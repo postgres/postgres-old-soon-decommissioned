@@ -16,7 +16,6 @@
 
 #include "nodes/execnodes.h"
 
-extern int	ExecCountSlotsBitmapIndexScan(BitmapIndexScan *node);
 extern BitmapIndexScanState *ExecInitBitmapIndexScan(BitmapIndexScan *node, EState *estate, int eflags);
 extern Node *MultiExecBitmapIndexScan(BitmapIndexScanState *node);
 extern void ExecEndBitmapIndexScan(BitmapIndexScanState *node);

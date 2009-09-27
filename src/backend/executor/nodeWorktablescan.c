@@ -156,8 +156,6 @@ ExecInitWorkTableScan(WorkTableScan *node, EState *estate, int eflags)
 		ExecInitExpr((Expr *) node->scan.plan.qual,
 					 (PlanState *) scanstate);
 
-#define WORKTABLESCAN_NSLOTS 2
-
 	/*
 	 * tuple table initialization
 	 */
@@ -172,14 +170,6 @@ ExecInitWorkTableScan(WorkTableScan *node, EState *estate, int eflags)
 	scanstate->ss.ps.ps_TupFromTlist = false;
 
 	return scanstate;
-}
-
-int
-ExecCountSlotsWorkTableScan(WorkTableScan *node)
-{
-	return ExecCountSlotsNode(outerPlan(node)) +
-		ExecCountSlotsNode(innerPlan(node)) +
-		WORKTABLESCAN_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

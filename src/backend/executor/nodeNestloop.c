@@ -318,8 +318,6 @@ ExecInitNestLoop(NestLoop *node, EState *estate, int eflags)
 	innerPlanState(nlstate) = ExecInitNode(innerPlan(node), estate,
 										   eflags | EXEC_FLAG_REWIND);
 
-#define NESTLOOP_NSLOTS 2
-
 	/*
 	 * tuple table initialization
 	 */
@@ -358,14 +356,6 @@ ExecInitNestLoop(NestLoop *node, EState *estate, int eflags)
 			   "node initialized");
 
 	return nlstate;
-}
-
-int
-ExecCountSlotsNestLoop(NestLoop *node)
-{
-	return ExecCountSlotsNode(outerPlan(node)) +
-		ExecCountSlotsNode(innerPlan(node)) +
-		NESTLOOP_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

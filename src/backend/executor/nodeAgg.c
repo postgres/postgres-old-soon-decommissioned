@@ -1239,8 +1239,6 @@ ExecInitAgg(Agg *node, EState *estate, int eflags)
 							  ALLOCSET_DEFAULT_INITSIZE,
 							  ALLOCSET_DEFAULT_MAXSIZE);
 
-#define AGG_NSLOTS 3
-
 	/*
 	 * tuple table initialization
 	 */
@@ -1602,14 +1600,6 @@ GetAggInitVal(Datum textInitVal, Oid transtype)
 								   typioparam, -1);
 	pfree(strInitVal);
 	return initVal;
-}
-
-int
-ExecCountSlotsAgg(Agg *node)
-{
-	return ExecCountSlotsNode(outerPlan(node)) +
-		ExecCountSlotsNode(innerPlan(node)) +
-		AGG_NSLOTS;
 }
 
 void

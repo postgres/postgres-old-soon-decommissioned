@@ -213,8 +213,6 @@ ExecInitValuesScan(ValuesScan *node, EState *estate, int eflags)
 	scanstate->rowcontext = planstate->ps_ExprContext;
 	ExecAssignExprContext(estate, planstate);
 
-#define VALUESSCAN_NSLOTS 2
-
 	/*
 	 * tuple table initialization
 	 */
@@ -263,14 +261,6 @@ ExecInitValuesScan(ValuesScan *node, EState *estate, int eflags)
 	ExecAssignScanProjectionInfo(&scanstate->ss);
 
 	return scanstate;
-}
-
-int
-ExecCountSlotsValuesScan(ValuesScan *node)
-{
-	return ExecCountSlotsNode(outerPlan(node)) +
-		ExecCountSlotsNode(innerPlan(node)) +
-		VALUESSCAN_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

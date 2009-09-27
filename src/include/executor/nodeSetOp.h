@@ -16,7 +16,6 @@
 
 #include "nodes/execnodes.h"
 
-extern int	ExecCountSlotsSetOp(SetOp *node);
 extern SetOpState *ExecInitSetOp(SetOp *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecSetOp(SetOpState *node);
 extern void ExecEndSetOp(SetOpState *node);

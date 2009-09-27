@@ -230,8 +230,6 @@ ExecInitResult(Result *node, EState *estate, int eflags)
 
 	resstate->ps.ps_TupFromTlist = false;
 
-#define RESULT_NSLOTS 1
-
 	/*
 	 * tuple table initialization
 	 */
@@ -266,12 +264,6 @@ ExecInitResult(Result *node, EState *estate, int eflags)
 	ExecAssignProjectionInfo(&resstate->ps, NULL);
 
 	return resstate;
-}
-
-int
-ExecCountSlotsResult(Result *node)
-{
-	return ExecCountSlotsNode(outerPlan(node)) + RESULT_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

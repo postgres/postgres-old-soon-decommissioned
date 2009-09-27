@@ -129,8 +129,6 @@ ExecInitSubqueryScan(SubqueryScan *node, EState *estate, int eflags)
 		ExecInitExpr((Expr *) node->scan.plan.qual,
 					 (PlanState *) subquerystate);
 
-#define SUBQUERYSCAN_NSLOTS 2
-
 	/*
 	 * tuple table initialization
 	 */
@@ -157,15 +155,6 @@ ExecInitSubqueryScan(SubqueryScan *node, EState *estate, int eflags)
 	ExecAssignScanProjectionInfo(&subquerystate->ss);
 
 	return subquerystate;
-}
-
-int
-ExecCountSlotsSubqueryScan(SubqueryScan *node)
-{
-	Assert(outerPlan(node) == NULL);
-	Assert(innerPlan(node) == NULL);
-	return ExecCountSlotsNode(node->subplan) +
-		SUBQUERYSCAN_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

@@ -367,8 +367,6 @@ ExecInitLimit(Limit *node, EState *estate, int eflags)
 	limitstate->limitCount = ExecInitExpr((Expr *) node->limitCount,
 										  (PlanState *) limitstate);
 
-#define LIMIT_NSLOTS 1
-
 	/*
 	 * Tuple table initialization (XXX not actually used...)
 	 */
@@ -388,14 +386,6 @@ ExecInitLimit(Limit *node, EState *estate, int eflags)
 	limitstate->ps.ps_ProjInfo = NULL;
 
 	return limitstate;
-}
-
-int
-ExecCountSlotsLimit(Limit *node)
-{
-	return ExecCountSlotsNode(outerPlan(node)) +
-		ExecCountSlotsNode(innerPlan(node)) +
-		LIMIT_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

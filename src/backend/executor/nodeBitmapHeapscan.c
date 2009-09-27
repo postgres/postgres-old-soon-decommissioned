@@ -597,8 +597,6 @@ ExecInitBitmapHeapScan(BitmapHeapScan *node, EState *estate, int eflags)
 		ExecInitExpr((Expr *) node->bitmapqualorig,
 					 (PlanState *) scanstate);
 
-#define BITMAPHEAPSCAN_NSLOTS 2
-
 	/*
 	 * tuple table initialization
 	 */
@@ -645,11 +643,4 @@ ExecInitBitmapHeapScan(BitmapHeapScan *node, EState *estate, int eflags)
 	 * all done.
 	 */
 	return scanstate;
-}
-
-int
-ExecCountSlotsBitmapHeapScan(BitmapHeapScan *node)
-{
-	return ExecCountSlotsNode(outerPlan((Plan *) node)) +
-		ExecCountSlotsNode(innerPlan((Plan *) node)) + BITMAPHEAPSCAN_NSLOTS;
 }

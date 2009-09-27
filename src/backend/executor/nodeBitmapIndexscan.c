@@ -235,8 +235,6 @@ ExecInitBitmapIndexScan(BitmapIndexScan *node, EState *estate, int eflags)
 	 * sub-parts corresponding to runtime keys (see below).
 	 */
 
-#define BITMAPINDEXSCAN_NSLOTS 0
-
 	/*
 	 * We do not open or lock the base relation here.  We assume that an
 	 * ancestor BitmapHeapScan node is holding AccessShareLock (or better) on
@@ -317,11 +315,4 @@ ExecInitBitmapIndexScan(BitmapIndexScan *node, EState *estate, int eflags)
 	 * all done.
 	 */
 	return indexstate;
-}
-
-int
-ExecCountSlotsBitmapIndexScan(BitmapIndexScan *node)
-{
-	return ExecCountSlotsNode(outerPlan((Plan *) node)) +
-		ExecCountSlotsNode(innerPlan((Plan *) node)) + BITMAPINDEXSCAN_NSLOTS;
 }

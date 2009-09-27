@@ -203,8 +203,6 @@ ExecInitSeqScan(SeqScan *node, EState *estate, int eflags)
 		ExecInitExpr((Expr *) node->plan.qual,
 					 (PlanState *) scanstate);
 
-#define SEQSCAN_NSLOTS 2
-
 	/*
 	 * tuple table initialization
 	 */
@@ -225,14 +223,6 @@ ExecInitSeqScan(SeqScan *node, EState *estate, int eflags)
 	ExecAssignScanProjectionInfo(scanstate);
 
 	return scanstate;
-}
-
-int
-ExecCountSlotsSeqScan(SeqScan *node)
-{
-	return ExecCountSlotsNode(outerPlan(node)) +
-		ExecCountSlotsNode(innerPlan(node)) +
-		SEQSCAN_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

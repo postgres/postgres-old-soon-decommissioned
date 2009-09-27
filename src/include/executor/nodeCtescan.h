@@ -16,7 +16,6 @@
 
 #include "nodes/execnodes.h"
 
-extern int	ExecCountSlotsCteScan(CteScan *node);
 extern CteScanState *ExecInitCteScan(CteScan *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecCteScan(CteScanState *node);
 extern void ExecEndCteScan(CteScanState *node);

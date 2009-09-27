@@ -16,7 +16,6 @@
 
 #include "nodes/execnodes.h"
 
-extern int	ExecCountSlotsUnique(Unique *node);
 extern UniqueState *ExecInitUnique(Unique *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecUnique(UniqueState *node);
 extern void ExecEndUnique(UniqueState *node);

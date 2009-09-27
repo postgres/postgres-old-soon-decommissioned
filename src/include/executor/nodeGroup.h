@@ -16,7 +16,6 @@
 
 #include "nodes/execnodes.h"
 
-extern int	ExecCountSlotsGroup(Group *node);
 extern GroupState *ExecInitGroup(Group *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecGroup(GroupState *node);
 extern void ExecEndGroup(GroupState *node);

@@ -16,7 +16,6 @@
 
 #include "nodes/execnodes.h"
 
-extern int	ExecCountSlotsNestLoop(NestLoop *node);
 extern NestLoopState *ExecInitNestLoop(NestLoop *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecNestLoop(NestLoopState *node);
 extern void ExecEndNestLoop(NestLoopState *node);

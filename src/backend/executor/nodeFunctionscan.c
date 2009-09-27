@@ -134,8 +134,6 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate, int eflags)
 	 */
 	ExecAssignExprContext(estate, &scanstate->ss.ps);
 
-#define FUNCTIONSCAN_NSLOTS 2
-
 	/*
 	 * tuple table initialization
 	 */
@@ -218,14 +216,6 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate, int eflags)
 	ExecAssignScanProjectionInfo(&scanstate->ss);
 
 	return scanstate;
-}
-
-int
-ExecCountSlotsFunctionScan(FunctionScan *node)
-{
-	return ExecCountSlotsNode(outerPlan(node)) +
-		ExecCountSlotsNode(innerPlan(node)) +
-		FUNCTIONSCAN_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

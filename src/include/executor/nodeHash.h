@@ -16,7 +16,6 @@
 
 #include "nodes/execnodes.h"
 
-extern int	ExecCountSlotsHash(Hash *node);
 extern HashState *ExecInitHash(Hash *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecHash(HashState *node);
 extern Node *MultiExecHash(HashState *node);

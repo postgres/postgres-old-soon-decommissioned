@@ -202,8 +202,6 @@ ExecInitMaterial(Material *node, EState *estate, int eflags)
 	 * ExecQual or ExecProject.
 	 */
 
-#define MATERIAL_NSLOTS 2
-
 	/*
 	 * tuple table initialization
 	 *
@@ -232,14 +230,6 @@ ExecInitMaterial(Material *node, EState *estate, int eflags)
 	matstate->ss.ps.ps_ProjInfo = NULL;
 
 	return matstate;
-}
-
-int
-ExecCountSlotsMaterial(Material *node)
-{
-	return ExecCountSlotsNode(outerPlan((Plan *) node)) +
-		ExecCountSlotsNode(innerPlan((Plan *) node)) +
-		MATERIAL_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

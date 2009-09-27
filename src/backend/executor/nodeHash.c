@@ -170,8 +170,6 @@ ExecInitHash(Hash *node, EState *estate, int eflags)
 	 */
 	ExecAssignExprContext(estate, &hashstate->ps);
 
-#define HASH_NSLOTS 1
-
 	/*
 	 * initialize our result slot
 	 */
@@ -200,14 +198,6 @@ ExecInitHash(Hash *node, EState *estate, int eflags)
 	hashstate->ps.ps_ProjInfo = NULL;
 
 	return hashstate;
-}
-
-int
-ExecCountSlotsHash(Hash *node)
-{
-	return ExecCountSlotsNode(outerPlan(node)) +
-		ExecCountSlotsNode(innerPlan(node)) +
-		HASH_NSLOTS;
 }
 
 /* ---------------------------------------------------------------

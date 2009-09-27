@@ -1466,8 +1466,6 @@ ExecInitMergeJoin(MergeJoin *node, EState *estate, int eflags)
 	else
 		mergestate->mj_ExtraMarks = false;
 
-#define MERGEJOIN_NSLOTS 4
-
 	/*
 	 * tuple table initialization
 	 */
@@ -1564,14 +1562,6 @@ ExecInitMergeJoin(MergeJoin *node, EState *estate, int eflags)
 			   "node initialized");
 
 	return mergestate;
-}
-
-int
-ExecCountSlotsMergeJoin(MergeJoin *node)
-{
-	return ExecCountSlotsNode(outerPlan((Plan *) node)) +
-		ExecCountSlotsNode(innerPlan((Plan *) node)) +
-		MERGEJOIN_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

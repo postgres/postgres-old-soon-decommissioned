@@ -137,8 +137,6 @@ ExecInitUnique(Unique *node, EState *estate, int eflags)
 							  ALLOCSET_DEFAULT_INITSIZE,
 							  ALLOCSET_DEFAULT_MAXSIZE);
 
-#define UNIQUE_NSLOTS 1
-
 	/*
 	 * Tuple table initialization
 	 */
@@ -164,14 +162,6 @@ ExecInitUnique(Unique *node, EState *estate, int eflags)
 							   node->uniqOperators);
 
 	return uniquestate;
-}
-
-int
-ExecCountSlotsUnique(Unique *node)
-{
-	return ExecCountSlotsNode(outerPlan(node)) +
-		ExecCountSlotsNode(innerPlan(node)) +
-		UNIQUE_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

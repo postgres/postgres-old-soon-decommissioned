@@ -548,8 +548,6 @@ ExecInitTidScan(TidScan *node, EState *estate, int eflags)
 		ExecInitExpr((Expr *) node->tidquals,
 					 (PlanState *) tidstate);
 
-#define TIDSCAN_NSLOTS 2
-
 	/*
 	 * tuple table initialization
 	 */
@@ -586,11 +584,4 @@ ExecInitTidScan(TidScan *node, EState *estate, int eflags)
 	 * all done.
 	 */
 	return tidstate;
-}
-
-int
-ExecCountSlotsTidScan(TidScan *node)
-{
-	return ExecCountSlotsNode(outerPlan((Plan *) node)) +
-		ExecCountSlotsNode(innerPlan((Plan *) node)) + TIDSCAN_NSLOTS;
 }
