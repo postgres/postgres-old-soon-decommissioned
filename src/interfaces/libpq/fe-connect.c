@@ -817,7 +817,16 @@ connectDBStart(PGconn *conn)
 
 	/* Set up port number as a string */
 	if (conn->pgport != NULL && conn->pgport[0] != '\0')
+	{
 		portnum = atoi(conn->pgport);
+		if (portnum < 1 || portnum > 65535)
+		{
+			appendPQExpBuffer(&conn->errorMessage,
+							  libpq_gettext("invalid port number: \"%s\"\n"),
+							  conn->pgport);
+			goto connect_errReturn;
+		}
+	}
 	else
 		portnum = DEF_PGPORT;
 	snprintf(portstr, sizeof(portstr), "%d", portnum);
