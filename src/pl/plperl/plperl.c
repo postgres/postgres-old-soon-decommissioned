@@ -1972,7 +1972,15 @@ plperl_return_next(SV *sv)
 
 		if (SvOK(sv))
 		{
-			char	   *val = SvPV(sv, PL_na);
+			char	   *val;
+
+			if (prodesc->fn_retisarray && SvROK(sv) &&
+				SvTYPE(SvRV(sv)) == SVt_PVAV)
+			{
+				sv = plperl_convert_to_pg_array(sv);
+			}
+
+			val = SvPV(sv, PL_na);
 
 			ret = InputFunctionCall(&prodesc->result_in_func, val,
 									prodesc->result_typioparam, -1);
