@@ -854,7 +854,7 @@ dump_cursor_direction(PLpgSQL_stmt_fetch *stmt)
 		printf("\n");
 	}
 	else
-		printf("%d\n", stmt->how_many);
+		printf("%ld\n", stmt->how_many);
 
 	dump_indent -= 2;
 }

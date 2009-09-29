@@ -147,6 +147,7 @@ param			\${digit}+
 =				{ return K_ASSIGN;			}
 \.\.			{ return K_DOTDOT;			}
 alias			{ return K_ALIAS;			}
+all				{ return K_ALL;				}
 begin			{ return K_BEGIN;			}
 by				{ return K_BY;   			}
 case			{ return K_CASE;			}
