@@ -1236,8 +1236,10 @@ hstore_hash(PG_FUNCTION_ARGS)
 	 * but we make it explicit here.
 	 */
 	Assert(VARSIZE(hs) ==
-		   CALCDATASIZE(HS_COUNT(hs),
-						HSE_ENDPOS(ARRPTR(hs)[2*HS_COUNT(hs) - 1])));
+		   (HS_COUNT(hs) != 0 ?
+			CALCDATASIZE(HS_COUNT(hs),
+						 HSE_ENDPOS(ARRPTR(hs)[2*HS_COUNT(hs) - 1])) :
+			HSHRDSIZE));
 
 	PG_FREE_IF_COPY(hs,0);
 	PG_RETURN_DATUM(hval);
