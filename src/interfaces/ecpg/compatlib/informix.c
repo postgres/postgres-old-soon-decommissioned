@@ -232,7 +232,7 @@ deccvasc(char *cp, int len, decimal *np)
 		{
 			int			i = PGTYPESnumeric_to_decimal(result, np);
 
-			free(result);
+			PGTYPESnumeric_free(result);
 			if (i != 0)
 				ret = ECPG_INFORMIX_NUM_OVERFLOW;
 		}

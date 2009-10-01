@@ -554,7 +554,7 @@ ecpg_get_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 					else
 						PGTYPESnumeric_to_decimal(nres, (decimal *) (var + offset * act_tuple));
 
-					free(nres);
+					PGTYPESnumeric_free(nres);
 					break;
 
 				case ECPGt_interval:
