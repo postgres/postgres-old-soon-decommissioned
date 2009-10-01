@@ -226,6 +226,13 @@ hostnossl  <replaceable>database</replaceable>  <replaceable>user</replaceable> 
       </para>
 
       <para>
+       Instead of a <replaceable>CIDR-address</replaceable>, you can write
+       <literal>samehost</literal> to match any of the server's own IP
+       addresses, or <literal>samenet</literal> to match any address in any
+       subnet that the server is directly connected to.
+      </para>
+
+      <para>
        Typical examples of a <replaceable>CIDR-address</replaceable> are
        <literal>172.20.143.89/32</literal> for a single host, or
        <literal>172.20.143.0/24</literal> for a small network, or
