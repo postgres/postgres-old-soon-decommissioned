@@ -26,6 +26,7 @@ extern TransactionId RecentGlobalXmin;
 extern Snapshot GetTransactionSnapshot(void);
 extern Snapshot GetLatestSnapshot(void);
 extern void SnapshotSetCommandId(CommandId curcid);
+extern Snapshot CopySnapshot(Snapshot snapshot);
 
 extern void PushActiveSnapshot(Snapshot snapshot);
 extern void PushUpdatedSnapshot(Snapshot snapshot);

@@ -104,7 +104,6 @@ bool		FirstSnapshotSet = false;
 static bool registered_serializable = false;
 
 
-static Snapshot CopySnapshot(Snapshot snapshot);
 static void FreeSnapshot(Snapshot snapshot);
 static void SnapshotResetXmin(void);
 
@@ -192,7 +191,7 @@ SnapshotSetCommandId(CommandId curcid)
  * The copy is palloc'd in TopTransactionContext and has initial refcounts set
  * to 0.  The returned snapshot has the copied flag set.
  */
-static Snapshot
+Snapshot
 CopySnapshot(Snapshot snapshot)
 {
 	Snapshot	newsnap;

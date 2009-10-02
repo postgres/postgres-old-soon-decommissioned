@@ -1211,10 +1211,7 @@ SPI_cursor_open_internal(const char *name, SPIPlanPtr plan,
 		}
 	}
 
-	/*
-	 * Set up the snapshot to use.	(PortalStart will do PushActiveSnapshot,
-	 * so we skip that here.)
-	 */
+	/* Set up the snapshot to use. */
 	if (read_only)
 		snapshot = GetActiveSnapshot();
 	else
