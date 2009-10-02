@@ -564,7 +564,8 @@ ginVacuumEntryPage(GinVacuumState *gvs, Buffer buffer, BlockNumber *roots, uint3
 
 				value = gin_index_getattr(&gvs->ginstate, itup);
 				attnum = gintuple_get_attrnum(&gvs->ginstate, itup);
-				itup = GinFormTuple(&gvs->ginstate, attnum, value, GinGetPosting(itup), newN);
+				itup = GinFormTuple(gvs->index, &gvs->ginstate, attnum, value,
+									GinGetPosting(itup), newN, true);
 				PageIndexTupleDelete(tmppage, i);
 
 				if (PageAddItem(tmppage, (Item) itup, IndexTupleSize(itup), i, false, false) != i)

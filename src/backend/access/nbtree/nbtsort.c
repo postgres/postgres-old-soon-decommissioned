@@ -480,9 +480,10 @@ _bt_buildadd(BTWriteState *wstate, BTPageState *state, IndexTuple itup)
 	if (itupsz > BTMaxItemSize(npage))
 		ereport(ERROR,
 				(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
-				 errmsg("index row size %lu exceeds btree maximum, %lu",
+				 errmsg("index row size %lu exceeds maximum %lu for index \"%s\"",
 						(unsigned long) itupsz,
-						(unsigned long) BTMaxItemSize(npage)),
+						(unsigned long) BTMaxItemSize(npage),
+						RelationGetRelationName(wstate->index)),
 		errhint("Values larger than 1/3 of a buffer page cannot be indexed.\n"
 				"Consider a function index of an MD5 hash of the value, "
 				"or use full text indexing.")));

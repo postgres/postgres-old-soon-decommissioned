@@ -165,8 +165,8 @@ typedef struct
 #define GinGetPosting(itup)			( (ItemPointer)(( ((char*)(itup)) + SHORTALIGN(GinGetOrigSizePosting(itup)) )) )
 
 #define GinMaxItemSize \
-	((BLCKSZ - SizeOfPageHeaderData - \
-		MAXALIGN(sizeof(GinPageOpaqueData))) / 3 - sizeof(ItemIdData))
+	MAXALIGN_DOWN(((BLCKSZ - SizeOfPageHeaderData - \
+		MAXALIGN(sizeof(GinPageOpaqueData))) / 3 - sizeof(ItemIdData)))
 
 
 /*
@@ -434,8 +434,9 @@ extern void ginInsertValue(GinBtree btree, GinBtreeStack *stack);
 extern void findParents(GinBtree btree, GinBtreeStack *stack, BlockNumber rootBlkno);
 
 /* ginentrypage.c */
-extern IndexTuple GinFormTuple(GinState *ginstate, OffsetNumber attnum, Datum key,
-			 ItemPointerData *ipd, uint32 nipd);
+extern IndexTuple GinFormTuple(Relation index, GinState *ginstate,
+			 OffsetNumber attnum, Datum key,
+			 ItemPointerData *ipd, uint32 nipd, bool errorTooBig);
 extern void GinShortenTuple(IndexTuple itup, uint32 nipd);
 extern void prepareEntryScan(GinBtree btree, Relation index, OffsetNumber attnum,
 				 Datum value, GinState *ginstate);
