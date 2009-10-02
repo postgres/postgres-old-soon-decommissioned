@@ -150,6 +150,14 @@ CREATE VIEW vista AS SELECT text 'Hello World' AS hello;
     used by the view.
    </para>
 
+   <para>
+    When <command>CREATE OR REPLACE VIEW</> is used on an
+    existing view, only the view's defining SELECT rule is changed.
+    Other view properties, including ownership, permissions, and non-SELECT
+    rules, remain unchanged.  You must own the view
+    to replace it (this includes being a member of the owning role).
+   </para>
+
  </refsect1>
 
  <refsect1>
