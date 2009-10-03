@@ -1366,7 +1366,7 @@ pg_timezone_initialize(void)
 	pg_tz	   *def_tz = NULL;
 
 	/* Do we need to try to figure the session timezone? */
-	if (pg_strcasecmp(GetConfigOption("timezone"), "UNKNOWN") == 0)
+	if (pg_strcasecmp(GetConfigOption("timezone", false), "UNKNOWN") == 0)
 	{
 		/* Select setting */
 		def_tz = select_default_timezone();
@@ -1377,7 +1377,7 @@ pg_timezone_initialize(void)
 	}
 
 	/* What about the log timezone? */
-	if (pg_strcasecmp(GetConfigOption("log_timezone"), "UNKNOWN") == 0)
+	if (pg_strcasecmp(GetConfigOption("log_timezone", false), "UNKNOWN") == 0)
 	{
 		/* Select setting, but don't duplicate work */
 		if (!def_tz)

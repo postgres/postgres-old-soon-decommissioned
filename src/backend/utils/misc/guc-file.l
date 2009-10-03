@@ -312,21 +312,26 @@ ProcessConfigFile(GucContext context)
 	/* If we got here all the options checked out okay, so apply them. */
 	for (item = head; item; item = item->next)
 	{
-		char *pre_value = NULL;
+		char   *pre_value = NULL;
 
-		if (context == PGC_SIGHUP)
-			pre_value = pstrdup(GetConfigOption(item->name));
+		/* In SIGHUP cases in the postmaster, report changes */
+		if (context == PGC_SIGHUP && !IsUnderPostmaster)
+			pre_value = pstrdup(GetConfigOption(item->name, false));
 
 		if (set_config_option(item->name, item->value, context,
 			   					 PGC_S_FILE, GUC_ACTION_SET, true))
 		{
-			if (pre_value && strcmp(pre_value, GetConfigOption(item->name)) != 0)
+			set_config_sourcefile(item->name, item->filename,
+								  item->sourceline);
+			if (pre_value &&
+				strcmp(pre_value, GetConfigOption(item->name, false)) != 0)
 				ereport(elevel,
 						(errmsg("parameter \"%s\" changed to \"%s\"",
 								item->name, item->value)));
-			set_config_sourcefile(item->name, item->filename,
-								  item->sourceline);
 		}
+
+		if (pre_value)
+			pfree(pre_value);
 	}
 
 	/* Remember when we last successfully loaded the config file. */
