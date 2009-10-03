@@ -329,8 +329,14 @@ SET ENABLE_SEQSCAN TO OFF;
          at all, in which case only Unix-domain sockets can be used to connect
          to it.
          The default value is <systemitem class="systemname">localhost</>,
-         which allows only local <quote>loopback</> connections to be made.
-         This parameter can only be set at server start.
+         which allows only local <quote>loopback</> connections to be
+         made.  While client authentication (<xref
+         linkend="client-authentication">) allows fine-grained control
+         over who can access the server, <varname>listen_addresses</varname>
+         controls which interfaces accept connection attempts, which
+         can help prevent repeated malicious connection requests on
+         insecure network interfaces.  This parameter can only be set
+         at server start.
        </para>
       </listitem>
      </varlistentry>
