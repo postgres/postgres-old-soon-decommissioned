@@ -371,7 +371,4 @@ distclean: clean
 	rm -f $(addprefix $(srcdir)/,*.texixml *.texi *.info db2texi.refs)
 
 maintainer-clean: distclean
-# HTML
-	rm -rf $(addprefix $(srcdir)/,html/ html-stamp)
-# man
-	rm -rf $(addprefix $(srcdir)/,man1/ man3/ man7/ man-stamp)
+	rm -rf html-stamp man-stamp
