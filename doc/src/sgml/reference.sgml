@@ -37,6 +37,7 @@
    &alterAggregate;
    &alterConversion;
    &alterDatabase;
+   &alterDefaultPrivileges;
    &alterDomain;
    &alterForeignDataWrapper;
    &alterFunction;

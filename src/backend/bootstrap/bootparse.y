@@ -226,6 +226,7 @@ Boot_CreateStmt:
 													  0,
 													  ONCOMMIT_NOOP,
 													  (Datum) 0,
+													  false,
 													  true);
 						elog(DEBUG4, "relation created with oid %u", id);
 					}

@@ -2345,6 +2345,17 @@ _copyGrantRoleStmt(GrantRoleStmt *from)
 	return newnode;
 }
 
+static AlterDefaultPrivilegesStmt *
+_copyAlterDefaultPrivilegesStmt(AlterDefaultPrivilegesStmt *from)
+{
+	AlterDefaultPrivilegesStmt *newnode = makeNode(AlterDefaultPrivilegesStmt);
+
+	COPY_NODE_FIELD(options);
+	COPY_NODE_FIELD(action);
+
+	return newnode;
+}
+
 static DeclareCursorStmt *
 _copyDeclareCursorStmt(DeclareCursorStmt *from)
 {
@@ -3759,6 +3770,9 @@ copyObject(void *from)
 			break;
 		case T_GrantRoleStmt:
 			retval = _copyGrantRoleStmt(from);
+			break;
+		case T_AlterDefaultPrivilegesStmt:
+			retval = _copyAlterDefaultPrivilegesStmt(from);
 			break;
 		case T_DeclareCursorStmt:
 			retval = _copyDeclareCursorStmt(from);

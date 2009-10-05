@@ -664,6 +664,7 @@ index_create(Oid heapRelationId,
 	 */
 	InsertPgClassTuple(pg_class, indexRelation,
 					   RelationGetRelid(indexRelation),
+					   (Datum) 0,
 					   reloptions);
 
 	/* done with pg_class */

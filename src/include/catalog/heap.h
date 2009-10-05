@@ -57,6 +57,7 @@ extern Oid heap_create_with_catalog(const char *relname,
 						 int oidinhcount,
 						 OnCommitAction oncommit,
 						 Datum reloptions,
+						 bool use_user_acl,
 						 bool allow_system_table_mods);
 
 extern void heap_drop_with_catalog(Oid relid);
@@ -76,6 +77,7 @@ extern void InsertPgAttributeTuple(Relation pg_attribute_rel,
 extern void InsertPgClassTuple(Relation pg_class_desc,
 				   Relation new_rel_desc,
 				   Oid new_rel_oid,
+				   Datum relacl,
 				   Datum reloptions);
 
 extern List *AddRelationNewConstraints(Relation rel,

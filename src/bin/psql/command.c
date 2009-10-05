@@ -361,7 +361,10 @@ exec_command(const char *cmd,
 				success = listCasts(pattern);
 				break;
 			case 'd':
-				success = objectDescription(pattern, show_system);
+				if (strcmp(cmd, "ddp") == 0)
+					success = listDefaultACLs(pattern);
+				else
+					success = objectDescription(pattern, show_system);
 				break;
 			case 'D':
 				success = listDomains(pattern, show_system);

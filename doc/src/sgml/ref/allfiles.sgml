@@ -9,6 +9,7 @@ Complete list of usable sgml source files in this directory.
 <!entity alterAggregate     system "alter_aggregate.sgml">
 <!entity alterConversion    system "alter_conversion.sgml">
 <!entity alterDatabase      system "alter_database.sgml">
+<!entity alterDefaultPrivileges system "alter_default_privileges.sgml">
 <!entity alterDomain        system "alter_domain.sgml">
 <!entity alterForeignDataWrapper system "alter_foreign_data_wrapper.sgml">
 <!entity alterFunction      system "alter_function.sgml">

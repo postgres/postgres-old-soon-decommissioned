@@ -1260,6 +1260,17 @@ typedef struct GrantRoleStmt
 } GrantRoleStmt;
 
 /* ----------------------
+ *	Alter Default Privileges Statement
+ * ----------------------
+ */
+typedef struct AlterDefaultPrivilegesStmt
+{
+	NodeTag		type;
+	List	   *options;		/* list of DefElem */
+	GrantStmt  *action;			/* GRANT/REVOKE action (with objects=NIL) */
+} AlterDefaultPrivilegesStmt;
+
+/* ----------------------
  *		Copy Statement
  *
  * We support "COPY relation FROM file", "COPY relation TO file", and

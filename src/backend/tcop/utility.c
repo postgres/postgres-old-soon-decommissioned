@@ -199,6 +199,7 @@ check_xact_readonly(Node *parsetree)
 		case T_DropPropertyStmt:
 		case T_GrantStmt:
 		case T_GrantRoleStmt:
+		case T_AlterDefaultPrivilegesStmt:
 		case T_TruncateStmt:
 		case T_DropOwnedStmt:
 		case T_ReassignOwnedStmt:
@@ -699,6 +700,10 @@ ProcessUtility(Node *parsetree,
 
 		case T_GrantRoleStmt:
 			GrantRole((GrantRoleStmt *) parsetree);
+			break;
+
+		case T_AlterDefaultPrivilegesStmt:
+			ExecAlterDefaultPrivilegesStmt((AlterDefaultPrivilegesStmt *) parsetree);
 			break;
 
 			/*
@@ -1687,6 +1692,10 @@ CreateCommandTag(Node *parsetree)
 			}
 			break;
 
+		case T_AlterDefaultPrivilegesStmt:
+			tag = "ALTER DEFAULT PRIVILEGES";
+			break;
+
 		case T_DefineStmt:
 			switch (((DefineStmt *) parsetree)->kind)
 			{
@@ -2237,6 +2246,10 @@ GetCommandLogLevel(Node *parsetree)
 			break;
 
 		case T_GrantRoleStmt:
+			lev = LOGSTMT_DDL;
+			break;
+
+		case T_AlterDefaultPrivilegesStmt:
 			lev = LOGSTMT_DDL;
 			break;
 

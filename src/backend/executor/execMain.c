@@ -2909,6 +2909,7 @@ OpenIntoRel(QueryDesc *queryDesc)
 											  0,
 											  into->onCommit,
 											  reloptions,
+											  true,
 											  allowSystemTableMods);
 
 	FreeTupleDesc(tupdesc);

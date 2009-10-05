@@ -34,8 +34,12 @@ extern int	parse_version(const char *versionString);
 extern bool parsePGArray(const char *atext, char ***itemarray, int *nitems);
 extern bool buildACLCommands(const char *name, const char *subname,
 				 const char *type, const char *acls, const char *owner,
-				 int remoteVersion,
+				 const char *prefix, int remoteVersion,
 				 PQExpBuffer sql);
+extern bool buildDefaultACLCommands(const char *type, const char *nspname,
+						const char *acls, const char *owner,
+						int remoteVersion,
+						PQExpBuffer sql);
 extern void processSQLNamePattern(PGconn *conn, PQExpBuffer buf,
 					  const char *pattern,
 					  bool have_where, bool force_escape,

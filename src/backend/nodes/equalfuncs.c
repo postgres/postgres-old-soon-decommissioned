@@ -1029,6 +1029,15 @@ _equalGrantRoleStmt(GrantRoleStmt *a, GrantRoleStmt *b)
 }
 
 static bool
+_equalAlterDefaultPrivilegesStmt(AlterDefaultPrivilegesStmt *a, AlterDefaultPrivilegesStmt *b)
+{
+	COMPARE_NODE_FIELD(options);
+	COMPARE_NODE_FIELD(action);
+
+	return true;
+}
+
+static bool
 _equalDeclareCursorStmt(DeclareCursorStmt *a, DeclareCursorStmt *b)
 {
 	COMPARE_STRING_FIELD(portalname);
@@ -2536,6 +2545,9 @@ equal(void *a, void *b)
 			break;
 		case T_GrantRoleStmt:
 			retval = _equalGrantRoleStmt(a, b);
+			break;
+		case T_AlterDefaultPrivilegesStmt:
+			retval = _equalAlterDefaultPrivilegesStmt(a, b);
 			break;
 		case T_DeclareCursorStmt:
 			retval = _equalDeclareCursorStmt(a, b);
