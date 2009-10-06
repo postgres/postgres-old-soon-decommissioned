@@ -2052,7 +2052,7 @@ _equalColumnDef(ColumnDef *a, ColumnDef *b)
 	COMPARE_SCALAR_FIELD(is_local);
 	COMPARE_SCALAR_FIELD(is_not_null);
 	COMPARE_NODE_FIELD(raw_default);
-	COMPARE_STRING_FIELD(cooked_default);
+	COMPARE_NODE_FIELD(cooked_default);
 	COMPARE_NODE_FIELD(constraints);
 
 	return true;
