@@ -40,7 +40,7 @@ extern bool buildDefaultACLCommands(const char *type, const char *nspname,
 						const char *acls, const char *owner,
 						int remoteVersion,
 						PQExpBuffer sql);
-extern void processSQLNamePattern(PGconn *conn, PQExpBuffer buf,
+extern bool processSQLNamePattern(PGconn *conn, PQExpBuffer buf,
 					  const char *pattern,
 					  bool have_where, bool force_escape,
 					  const char *schemavar, const char *namevar,

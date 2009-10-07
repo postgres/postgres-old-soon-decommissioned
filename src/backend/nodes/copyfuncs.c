@@ -3174,6 +3174,7 @@ _copyAlterRoleSetStmt(AlterRoleSetStmt *from)
 	AlterRoleSetStmt *newnode = makeNode(AlterRoleSetStmt);
 
 	COPY_STRING_FIELD(role);
+	COPY_STRING_FIELD(database);
 	COPY_NODE_FIELD(setstmt);
 
 	return newnode;

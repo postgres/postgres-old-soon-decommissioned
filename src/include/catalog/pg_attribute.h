@@ -486,8 +486,7 @@ DATA(insert ( 1259 tableoid			26 0 0  4  -7 0 -1 -1 t p i t f f t 0 _null_));
 { 1262, {"datlastsysoid"},	  26, -1, 0,	4, 9, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0, { 0 } }, \
 { 1262, {"datfrozenxid"},	  28, -1, 0,	4, 10, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0, { 0 } }, \
 { 1262, {"dattablespace"},	  26, -1, 0,	4, 11, 0, -1, -1, true, 'p', 'i', true, false, false, true, 0, { 0 } }, \
-{ 1262, {"datconfig"},		1009, -1, 0,   -1, 12, 1, -1, -1, false, 'x', 'i', false, false, false, true, 0, { 0 } }, \
-{ 1262, {"datacl"},			1034, -1, 0,   -1, 13, 1, -1, -1, false, 'x', 'i', false, false, false, true, 0, { 0 } }
+{ 1262, {"datacl"},			1034, -1, 0,   -1, 12, 1, -1, -1, false, 'x', 'i', false, false, false, true, 0, { 0 } }
 
 /* ----------------
  *		pg_index

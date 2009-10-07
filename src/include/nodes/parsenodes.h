@@ -1629,6 +1629,7 @@ typedef struct AlterRoleSetStmt
 {
 	NodeTag		type;
 	char	   *role;			/* role name */
+	char	   *database;		/* database name, or NULL */
 	VariableSetStmt *setstmt;	/* SET or RESET subcommand */
 } AlterRoleSetStmt;
 

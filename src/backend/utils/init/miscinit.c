@@ -392,8 +392,6 @@ InitializeSessionUserId(const char *rolename)
 {
 	HeapTuple	roleTup;
 	Form_pg_authid rform;
-	Datum		datum;
-	bool		isnull;
 	Oid			roleid;
 
 	/*
@@ -469,24 +467,6 @@ InitializeSessionUserId(const char *rolename)
 	SetConfigOption("is_superuser",
 					AuthenticatedUserIsSuperuser ? "on" : "off",
 					PGC_INTERNAL, PGC_S_OVERRIDE);
-
-	/*
-	 * Set up user-specific configuration variables.  This is a good place to
-	 * do it so we don't have to read pg_authid twice during session startup.
-	 */
-	datum = SysCacheGetAttr(AUTHNAME, roleTup,
-							Anum_pg_authid_rolconfig, &isnull);
-	if (!isnull)
-	{
-		ArrayType  *a = DatumGetArrayTypeP(datum);
-
-		/*
-		 * We process all the options at SUSET level.  We assume that the
-		 * right to insert an option into pg_authid was checked when it was
-		 * inserted.
-		 */
-		ProcessGUCArray(a, PGC_SUSET, PGC_S_USER, GUC_ACTION_SET);
-	}
 
 	ReleaseSysCache(roleTup);
 }

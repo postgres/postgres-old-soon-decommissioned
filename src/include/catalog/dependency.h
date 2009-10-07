@@ -238,6 +238,8 @@ extern void updateAclDependencies(Oid classId, Oid objectId, int32 objectSubId,
 extern bool checkSharedDependencies(Oid classId, Oid objectId,
 						char **detail_msg, char **detail_log_msg);
 
+extern void shdepLockAndCheckObject(Oid classId, Oid objectId);
+
 extern void copyTemplateDependencies(Oid templateDbId, Oid newDbId);
 
 extern void dropDatabaseDependencies(Oid databaseId);

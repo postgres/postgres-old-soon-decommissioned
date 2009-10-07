@@ -1725,6 +1725,7 @@ static bool
 _equalAlterRoleSetStmt(AlterRoleSetStmt *a, AlterRoleSetStmt *b)
 {
 	COMPARE_STRING_FIELD(role);
+	COMPARE_STRING_FIELD(database);
 	COMPARE_NODE_FIELD(setstmt);
 
 	return true;
