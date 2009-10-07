@@ -47,7 +47,6 @@ PerformCursorOpen(PlannedStmt *stmt, ParamListInfo params,
 	DeclareCursorStmt *cstmt = (DeclareCursorStmt *) stmt->utilityStmt;
 	Portal		portal;
 	MemoryContext oldContext;
-	Snapshot	snapshot;
 
 	if (cstmt == NULL || !IsA(cstmt, DeclareCursorStmt))
 		elog(ERROR, "PerformCursorOpen called for non-cursor query");
@@ -120,17 +119,9 @@ PerformCursorOpen(PlannedStmt *stmt, ParamListInfo params,
 	}
 
 	/*
-	 * Set up snapshot for portal.  Note that we need a fresh, independent copy
-	 * of the snapshot because we don't want it to be modified by future
-	 * CommandCounterIncrement calls.  We do not register it, because
-	 * portalmem.c will take care of that internally.
-	 */
-	snapshot = CopySnapshot(GetActiveSnapshot());
-
-	/*
 	 * Start execution, inserting parameters if any.
 	 */
-	PortalStart(portal, params, snapshot);
+	PortalStart(portal, params, GetActiveSnapshot());
 
 	Assert(portal->strategy == PORTAL_ONE_SELECT);
 
