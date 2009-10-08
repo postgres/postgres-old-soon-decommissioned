@@ -819,8 +819,6 @@ _bt_checkkeys(IndexScanDesc scan,
 
 	tuple = (IndexTuple) PageGetItem(page, iid);
 
-	IncrIndexProcessed();
-
 	tupdesc = RelationGetDescr(scan->indexRelation);
 	so = (BTScanOpaque) scan->opaque;
 	keysz = so->numberOfKeys;

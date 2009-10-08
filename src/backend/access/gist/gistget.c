@@ -388,8 +388,6 @@ gistindex_keytest(IndexTuple tuple,
 	giststate = so->giststate;
 	p = BufferGetPage(so->curbuf);
 
-	IncrIndexProcessed();
-
 	scan->xs_recheck = false;
 
 	/*

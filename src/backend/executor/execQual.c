@@ -4814,8 +4814,6 @@ ExecQual(List *qual, ExprContext *econtext, bool resultForNull)
 	EV_nodeDisplay(qual);
 	EV_printf("\n");
 
-	IncrProcessed();
-
 	/*
 	 * Run in short-lived per-tuple context while computing expressions.
 	 */

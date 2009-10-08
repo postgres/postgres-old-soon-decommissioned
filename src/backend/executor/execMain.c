@@ -1704,7 +1704,6 @@ ExecSelect(TupleTableSlot *slot,
 		   EState *estate)
 {
 	(*dest->receiveSlot) (slot, dest);
-	IncrRetrieved();
 	(estate->es_processed)++;
 }
 
@@ -1800,7 +1799,6 @@ ExecInsert(TupleTableSlot *slot,
 	newId = heap_insert(resultRelationDesc, tuple,
 						estate->es_output_cid, 0, NULL);
 
-	IncrAppended();
 	(estate->es_processed)++;
 	estate->es_lastoid = newId;
 	setLastTid(&(tuple->t_self));
@@ -1908,7 +1906,6 @@ ldelete:;
 			return;
 	}
 
-	IncrDeleted();
 	(estate->es_processed)++;
 
 	/*
@@ -2089,7 +2086,6 @@ lreplace:;
 			return;
 	}
 
-	IncrReplaced();
 	(estate->es_processed)++;
 
 	/*
@@ -3042,8 +3038,6 @@ intorel_receive(TupleTableSlot *slot, DestReceiver *self)
 				myState->bistate);
 
 	/* We know this is a newly created relation, so there are no indexes */
-
-	IncrAppended();
 }
 
 /*
