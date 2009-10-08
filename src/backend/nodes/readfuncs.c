@@ -526,6 +526,22 @@ _readFuncExpr(void)
 }
 
 /*
+ * _readNamedArgExpr
+ */
+static NamedArgExpr *
+_readNamedArgExpr(void)
+{
+	READ_LOCALS(NamedArgExpr);
+
+	READ_NODE_FIELD(arg);
+	READ_STRING_FIELD(name);
+	READ_INT_FIELD(argnumber);
+	READ_LOCATION_FIELD(location);
+
+	READ_DONE();
+}
+
+/*
  * _readOpExpr
  */
 static OpExpr *
@@ -1207,6 +1223,8 @@ parseNodeString(void)
 		return_value = _readArrayRef();
 	else if (MATCH("FUNCEXPR", 8))
 		return_value = _readFuncExpr();
+	else if (MATCH("NAMEDARGEXPR", 12))
+		return_value = _readNamedArgExpr();
 	else if (MATCH("OPEXPR", 6))
 		return_value = _readOpExpr();
 	else if (MATCH("DISTINCTEXPR", 12))

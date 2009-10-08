@@ -69,6 +69,9 @@ exprType(Node *expr)
 		case T_FuncExpr:
 			type = ((FuncExpr *) expr)->funcresulttype;
 			break;
+		case T_NamedArgExpr:
+			type = exprType((Node *) ((NamedArgExpr *) expr)->arg);
+			break;
 		case T_OpExpr:
 			type = ((OpExpr *) expr)->opresulttype;
 			break;
@@ -259,6 +262,8 @@ exprTypmod(Node *expr)
 					return coercedTypmod;
 			}
 			break;
+		case T_NamedArgExpr:
+			return exprTypmod((Node *) ((NamedArgExpr *) expr)->arg);
 		case T_SubLink:
 			{
 				SubLink    *sublink = (SubLink *) expr;
@@ -674,6 +679,15 @@ exprLocation(Node *expr)
 				/* consider both function name and leftmost arg */
 				loc = leftmostLoc(fexpr->location,
 								  exprLocation((Node *) fexpr->args));
+			}
+			break;
+		case T_NamedArgExpr:
+			{
+				NamedArgExpr *na = (NamedArgExpr *) expr;
+
+				/* consider both argument name and value */
+				loc = leftmostLoc(na->location,
+								  exprLocation((Node *) na->arg));
 			}
 			break;
 		case T_OpExpr:
@@ -1117,6 +1131,8 @@ expression_tree_walker(Node *node,
 					return true;
 			}
 			break;
+		case T_NamedArgExpr:
+			return walker(((NamedArgExpr *) node)->arg, context);
 		case T_OpExpr:
 			{
 				OpExpr	   *expr = (OpExpr *) node;
@@ -1620,6 +1636,16 @@ expression_tree_mutator(Node *node,
 
 				FLATCOPY(newnode, expr, FuncExpr);
 				MUTATE(newnode->args, expr->args, List *);
+				return (Node *) newnode;
+			}
+			break;
+		case T_NamedArgExpr:
+			{
+				NamedArgExpr *nexpr = (NamedArgExpr *) node;
+				NamedArgExpr *newnode;
+
+				FLATCOPY(newnode, nexpr, NamedArgExpr);
+				MUTATE(newnode->arg, nexpr->arg, Expr *);
 				return (Node *) newnode;
 			}
 			break;
@@ -2382,6 +2408,8 @@ bool
 				/* function name is deemed uninteresting */
 			}
 			break;
+		case T_NamedArgExpr:
+			return walker(((NamedArgExpr *) node)->arg, context);
 		case T_A_Indices:
 			{
 				A_Indices  *indices = (A_Indices *) node;

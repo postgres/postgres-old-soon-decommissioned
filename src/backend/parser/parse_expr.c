@@ -228,6 +228,15 @@ transformExpr(ParseState *pstate, Node *expr)
 			result = transformFuncCall(pstate, (FuncCall *) expr);
 			break;
 
+		case T_NamedArgExpr:
+			{
+				NamedArgExpr *na = (NamedArgExpr *) expr;
+
+				na->arg = (Expr *) transformExpr(pstate, (Node *) na->arg);
+				result = expr;
+				break;
+			}
+
 		case T_SubLink:
 			result = transformSubLink(pstate, (SubLink *) expr);
 			break;
