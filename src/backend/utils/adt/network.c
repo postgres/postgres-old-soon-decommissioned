@@ -874,7 +874,7 @@ bitncmp(void *l, void *r, int n)
 
 	b = n / 8;
 	x = memcmp(l, r, b);
-	if (x)
+	if (x || (n % 8) == 0)
 		return (x);
 
 	lb = ((const u_char *) l)[b];
