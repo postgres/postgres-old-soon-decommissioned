@@ -12370,6 +12370,11 @@ SELECT pg_type_is_visible('myschema.widget'::regtype);
        <entry>get <command>CREATE [ CONSTRAINT ] TRIGGER</> command for trigger</entry>
       </row>
       <row>
+       <entry><function>pg_get_triggerdef</function>(<parameter>trigger_oid</parameter>, <parameter>pretty_bool</>)</entry>
+       <entry><type>text</type></entry>
+       <entry>get <command>CREATE [ CONSTRAINT ] TRIGGER</> command for trigger</entry>
+      </row>
+      <row>
        <entry><literal><function>pg_get_userbyid</function>(<parameter>role_oid</parameter>)</literal></entry>
        <entry><type>name</type></entry>
        <entry>get role name with given OID</entry>

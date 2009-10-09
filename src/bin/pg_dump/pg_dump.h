@@ -328,6 +328,7 @@ typedef struct _triggerInfo
 	char		tgenabled;
 	bool		tgdeferrable;
 	bool		tginitdeferred;
+	char	   *tgdef;
 } TriggerInfo;
 
 /*
