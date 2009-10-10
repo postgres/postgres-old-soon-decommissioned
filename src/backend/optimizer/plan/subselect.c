@@ -1937,6 +1937,23 @@ finalize_plan(PlannerInfo *root, Plan *plan, Bitmapset *valid_params)
 							   ((WorkTableScan *) plan)->wtParam);
 			break;
 
+		case T_ModifyTable:
+			{
+				ListCell   *l;
+
+				finalize_primnode((Node *) ((ModifyTable *) plan)->returningLists,
+								  &context);
+				foreach(l, ((ModifyTable *) plan)->plans)
+				{
+					context.paramids =
+						bms_add_members(context.paramids,
+										finalize_plan(root,
+													  (Plan *) lfirst(l),
+													  valid_params));
+				}
+			}
+			break;
+
 		case T_Append:
 			{
 				ListCell   *l;

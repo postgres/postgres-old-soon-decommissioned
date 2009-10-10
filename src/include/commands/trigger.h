@@ -139,6 +139,7 @@ extern void ExecBSDeleteTriggers(EState *estate,
 extern void ExecASDeleteTriggers(EState *estate,
 					 ResultRelInfo *relinfo);
 extern bool ExecBRDeleteTriggers(EState *estate,
+					 PlanState *subplanstate,
 					 ResultRelInfo *relinfo,
 					 ItemPointer tupleid);
 extern void ExecARDeleteTriggers(EState *estate,
@@ -149,6 +150,7 @@ extern void ExecBSUpdateTriggers(EState *estate,
 extern void ExecASUpdateTriggers(EState *estate,
 					 ResultRelInfo *relinfo);
 extern HeapTuple ExecBRUpdateTriggers(EState *estate,
+					 PlanState *subplanstate,
 					 ResultRelInfo *relinfo,
 					 ItemPointer tupleid,
 					 HeapTuple newtuple);

@@ -338,7 +338,7 @@ ChoosePortalStrategy(List *stmts)
 			{
 				if (++nSetTag > 1)
 					return PORTAL_MULTI_QUERY;	/* no need to look further */
-				if (pstmt->returningLists == NIL)
+				if (!pstmt->hasReturning)
 					return PORTAL_MULTI_QUERY;	/* no need to look further */
 			}
 		}
@@ -414,8 +414,8 @@ FetchStatementTargetList(Node *stmt)
 			pstmt->utilityStmt == NULL &&
 			pstmt->intoClause == NULL)
 			return pstmt->planTree->targetlist;
-		if (pstmt->returningLists)
-			return (List *) linitial(pstmt->returningLists);
+		if (pstmt->hasReturning)
+			return pstmt->planTree->targetlist;
 		return NIL;
 	}
 	if (IsA(stmt, FetchStmt))
@@ -570,9 +570,9 @@ PortalStart(Portal portal, ParamListInfo params, Snapshot snapshot)
 
 					pstmt = (PlannedStmt *) PortalGetPrimaryStmt(portal);
 					Assert(IsA(pstmt, PlannedStmt));
-					Assert(pstmt->returningLists);
+					Assert(pstmt->hasReturning);
 					portal->tupDesc =
-						ExecCleanTypeFromTL((List *) linitial(pstmt->returningLists),
+						ExecCleanTypeFromTL(pstmt->planTree->targetlist,
 											false);
 				}
 

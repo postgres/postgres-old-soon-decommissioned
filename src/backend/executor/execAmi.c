@@ -30,6 +30,7 @@
 #include "executor/nodeLimit.h"
 #include "executor/nodeMaterial.h"
 #include "executor/nodeMergejoin.h"
+#include "executor/nodeModifyTable.h"
 #include "executor/nodeNestloop.h"
 #include "executor/nodeRecursiveunion.h"
 #include "executor/nodeResult.h"
@@ -125,6 +126,10 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 	{
 		case T_ResultState:
 			ExecReScanResult((ResultState *) node, exprCtxt);
+			break;
+
+		case T_ModifyTableState:
+			ExecReScanModifyTable((ModifyTableState *) node, exprCtxt);
 			break;
 
 		case T_AppendState:

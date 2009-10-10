@@ -167,6 +167,7 @@ extern bool ExecContextForcesOids(PlanState *planstate, bool *hasoids);
 extern void ExecConstraints(ResultRelInfo *resultRelInfo,
 				TupleTableSlot *slot, EState *estate);
 extern TupleTableSlot *EvalPlanQual(EState *estate, Index rti,
+			 PlanState *subplanstate,
 			 ItemPointer tid, TransactionId priorXmax);
 extern PlanState *ExecGetActivePlanTree(QueryDesc *queryDesc);
 extern DestReceiver *CreateIntoRelDestReceiver(void);

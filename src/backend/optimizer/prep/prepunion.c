@@ -448,7 +448,7 @@ generate_union_plan(SetOperationStmt *op, PlannerInfo *root,
 	/*
 	 * Append the child results together.
 	 */
-	plan = (Plan *) make_append(planlist, false, tlist);
+	plan = (Plan *) make_append(planlist, tlist);
 
 	/*
 	 * For UNION ALL, we just need the Append plan.  For UNION, need to add
@@ -539,7 +539,7 @@ generate_nonunion_plan(SetOperationStmt *op, PlannerInfo *root,
 	/*
 	 * Append the child results together.
 	 */
-	plan = (Plan *) make_append(planlist, false, tlist);
+	plan = (Plan *) make_append(planlist, tlist);
 
 	/* Identify the grouping semantics */
 	groupList = generate_setop_grouplist(op, tlist);

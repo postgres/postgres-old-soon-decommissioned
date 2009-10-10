@@ -18,6 +18,7 @@ OBJS = execAmi.o execCurrent.o execGrouping.o execJunk.o execMain.o \
        nodeBitmapAnd.o nodeBitmapOr.o \
        nodeBitmapHeapscan.o nodeBitmapIndexscan.o nodeHash.o \
        nodeHashjoin.o nodeIndexscan.o nodeMaterial.o nodeMergejoin.o \
+       nodeModifyTable.o \
        nodeNestloop.o nodeFunctionscan.o nodeRecursiveunion.o nodeResult.o \
        nodeSeqscan.o nodeSetOp.o nodeSort.o nodeUnique.o \
        nodeValuesscan.o nodeCtescan.o nodeWorktablescan.o \

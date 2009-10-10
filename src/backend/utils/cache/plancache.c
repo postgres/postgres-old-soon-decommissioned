@@ -880,8 +880,8 @@ PlanCacheComputeResultDesc(List *stmt_list)
 			if (IsA(node, PlannedStmt))
 			{
 				pstmt = (PlannedStmt *) node;
-				Assert(pstmt->returningLists);
-				return ExecCleanTypeFromTL((List *) linitial(pstmt->returningLists), false);
+				Assert(pstmt->hasReturning);
+				return ExecCleanTypeFromTL(pstmt->planTree->targetlist, false);
 			}
 			/* other cases shouldn't happen, but return NULL */
 			break;

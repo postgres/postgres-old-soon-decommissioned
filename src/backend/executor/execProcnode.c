@@ -93,6 +93,7 @@
 #include "executor/nodeLimit.h"
 #include "executor/nodeMaterial.h"
 #include "executor/nodeMergejoin.h"
+#include "executor/nodeModifyTable.h"
 #include "executor/nodeNestloop.h"
 #include "executor/nodeRecursiveunion.h"
 #include "executor/nodeResult.h"
@@ -144,6 +145,11 @@ ExecInitNode(Plan *node, EState *estate, int eflags)
 		case T_Result:
 			result = (PlanState *) ExecInitResult((Result *) node,
 												  estate, eflags);
+			break;
+
+		case T_ModifyTable:
+			result = (PlanState *) ExecInitModifyTable((ModifyTable *) node,
+													   estate, eflags);
 			break;
 
 		case T_Append:
@@ -343,6 +349,10 @@ ExecProcNode(PlanState *node)
 			result = ExecResult((ResultState *) node);
 			break;
 
+		case T_ModifyTableState:
+			result = ExecModifyTable((ModifyTableState *) node);
+			break;
+
 		case T_AppendState:
 			result = ExecAppend((AppendState *) node);
 			break;
@@ -524,7 +534,7 @@ MultiExecProcNode(PlanState *node)
  *		Recursively cleans up all the nodes in the plan rooted
  *		at 'node'.
  *
- *		After this operation, the query plan will not be able to
+ *		After this operation, the query plan will not be able to be
  *		processed any further.	This should be called only after
  *		the query plan has been fully executed.
  * ----------------------------------------------------------------
@@ -551,6 +561,10 @@ ExecEndNode(PlanState *node)
 			 */
 		case T_ResultState:
 			ExecEndResult((ResultState *) node);
+			break;
+
+		case T_ModifyTableState:
+			ExecEndModifyTable((ModifyTableState *) node);
 			break;
 
 		case T_AppendState:

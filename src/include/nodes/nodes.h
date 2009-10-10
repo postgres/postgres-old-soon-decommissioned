@@ -43,6 +43,7 @@ typedef enum NodeTag
 	 */
 	T_Plan = 100,
 	T_Result,
+	T_ModifyTable,
 	T_Append,
 	T_RecursiveUnion,
 	T_BitmapAnd,
@@ -81,6 +82,7 @@ typedef enum NodeTag
 	 */
 	T_PlanState = 200,
 	T_ResultState,
+	T_ModifyTableState,
 	T_AppendState,
 	T_RecursiveUnionState,
 	T_BitmapAndState,

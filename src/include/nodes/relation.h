@@ -140,8 +140,6 @@ typedef struct PlannerInfo
 
 	List	   *resultRelations;	/* integer list of RT indexes, or NIL */
 
-	List	   *returningLists; /* list of lists of TargetEntry, or NIL */
-
 	List	   *init_plans;		/* init SubPlans for query */
 
 	List	   *cte_plan_ids;	/* per-CTE-item list of subplan IDs */
