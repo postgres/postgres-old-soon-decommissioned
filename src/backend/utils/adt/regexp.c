@@ -639,7 +639,7 @@ textregexreplace(PG_FUNCTION_ARGS)
 
 /*
  * similar_escape()
- * Convert a SQL99 regexp pattern to POSIX style, so it can be used by
+ * Convert a SQL:2008 regexp pattern to POSIX style, so it can be used by
  * our regexp engine.
  */
 Datum
@@ -740,8 +740,8 @@ similar_escape(PG_FUNCTION_ARGS)
 		}
 		else if (pchar == '_')
 			*r++ = '.';
-		else if (pchar == '\\' || pchar == '.' || pchar == '?' ||
-				 pchar == '{')
+		else if (pchar == '\\' || pchar == '.' ||
+				 pchar == '^' || pchar == '$')
 		{
 			*r++ = '\\';
 			*r++ = pchar;
