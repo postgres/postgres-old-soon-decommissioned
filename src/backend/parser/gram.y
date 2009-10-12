@@ -4676,8 +4676,8 @@ DefACLOption:
 		;
 
 /*
- * This should match GRANT/REVOKE, except that target objects are missing
- * and we only allow a subset of object types.
+ * This should match GRANT/REVOKE, except that individual target objects
+ * are not mentioned and we only allow a subset of object types.
  */
 DefACLAction:
 			GRANT privileges ON defacl_privilege_target TO grantee_list
@@ -4724,9 +4724,9 @@ DefACLAction:
 		;
 
 defacl_privilege_target:
-			TABLE			{ $$ = ACL_OBJECT_RELATION; }
-			| FUNCTION		{ $$ = ACL_OBJECT_FUNCTION; }
-			| SEQUENCE		{ $$ = ACL_OBJECT_SEQUENCE; }
+			TABLES			{ $$ = ACL_OBJECT_RELATION; }
+			| FUNCTIONS		{ $$ = ACL_OBJECT_FUNCTION; }
+			| SEQUENCES		{ $$ = ACL_OBJECT_SEQUENCE; }
 		;
 
 

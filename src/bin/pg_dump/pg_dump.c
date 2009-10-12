@@ -9944,13 +9944,13 @@ dumpDefaultACL(Archive *fout, DefaultACLInfo *daclinfo)
 	switch (daclinfo->defaclobjtype)
 	{
 		case DEFACLOBJ_RELATION:
-			type = "TABLE";
+			type = "TABLES";
 			break;
 		case DEFACLOBJ_SEQUENCE:
-			type = "SEQUENCE";
+			type = "SEQUENCES";
 			break;
 		case DEFACLOBJ_FUNCTION:
-			type = "FUNCTION";
+			type = "FUNCTIONS";
 			break;
 		default:
 			/* shouldn't get here */
@@ -9960,7 +9960,7 @@ dumpDefaultACL(Archive *fout, DefaultACLInfo *daclinfo)
 			type = "";			/* keep compiler quiet */
 	}
 
-	appendPQExpBuffer(tag, "DEFAULT %s PRIVILEGES", type);
+	appendPQExpBuffer(tag, "DEFAULT PRIVILEGES FOR %s", type);
 
 	/* build the actual command(s) for this tuple */
 	if (!buildDefaultACLCommands(type,

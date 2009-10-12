@@ -689,7 +689,7 @@ buildACLCommands(const char *name, const char *subname,
 /*
  * Build ALTER DEFAULT PRIVILEGES command(s) for single pg_default_acl entry.
  *
- *	type: the object type (as seen in GRANT command)
+ *	type: the object type (TABLES, FUNCTIONS, etc)
  *	nspname: schema name, or NULL for global default privileges
  *	acls: the ACL string fetched from the database
  *	owner: username of privileges owner (will be passed through fmtId)
@@ -803,11 +803,13 @@ do { \
 	resetPQExpBuffer(privs);
 	resetPQExpBuffer(privswgo);
 
-	if (strcmp(type, "TABLE") == 0 || strcmp(type, "SEQUENCE") == 0)
+	if (strcmp(type, "TABLE") == 0 || strcmp(type, "SEQUENCE") == 0 ||
+		strcmp(type, "TABLES") == 0 || strcmp(type, "SEQUENCES") == 0)
 	{
 		CONVERT_PRIV('r', "SELECT");
 
-		if (strcmp(type, "SEQUENCE") == 0)
+		if (strcmp(type, "SEQUENCE") == 0 ||
+			strcmp(type, "SEQUENCES") == 0)
 			/* sequence only */
 			CONVERT_PRIV('U', "USAGE");
 		else
@@ -830,13 +832,16 @@ do { \
 		}
 
 		/* UPDATE */
-		if (remoteVersion >= 70200 || strcmp(type, "SEQUENCE") == 0)
+		if (remoteVersion >= 70200 ||
+			strcmp(type, "SEQUENCE") == 0 ||
+			strcmp(type, "SEQUENCES") == 0)
 			CONVERT_PRIV('w', "UPDATE");
 		else
 			/* 7.0 and 7.1 have a simpler worldview */
 			CONVERT_PRIV('w', "UPDATE,DELETE");
 	}
-	else if (strcmp(type, "FUNCTION") == 0)
+	else if (strcmp(type, "FUNCTION") == 0 ||
+			 strcmp(type, "FUNCTIONS") == 0)
 		CONVERT_PRIV('X', "EXECUTE");
 	else if (strcmp(type, "LANGUAGE") == 0)
 		CONVERT_PRIV('U', "USAGE");
