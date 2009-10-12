@@ -407,8 +407,7 @@ static TypeName *TableFuncTypeName(List *columns);
 %type <keyword> col_name_keyword reserved_keyword
 
 %type <node>	TableConstraint TableLikeClause
-%type <list>	TableLikeOptionList
-%type <ival>	TableLikeOption
+%type <ival>	TableLikeOptionList TableLikeOption
 %type <list>	ColQualList
 %type <node>	ColConstraint ColConstraintElem ConstraintAttr
 %type <ival>	key_actions key_delete key_match key_update key_action
@@ -466,7 +465,7 @@ static TypeName *TableFuncTypeName(List *columns);
 
 	CACHE CALLED CASCADE CASCADED CASE CAST CATALOG_P CHAIN CHAR_P
 	CHARACTER CHARACTERISTICS CHECK CHECKPOINT CLASS CLOSE
-	CLUSTER COALESCE COLLATE COLUMN COMMENT COMMIT
+	CLUSTER COALESCE COLLATE COLUMN COMMENT COMMENTS COMMIT
 	COMMITTED CONCURRENTLY CONFIGURATION CONNECTION CONSTRAINT CONSTRAINTS
 	CONTENT_P CONTINUE_P CONVERSION_P COPY COST CREATE CREATEDB
 	CREATEROLE CREATEUSER CROSS CSV CURRENT_P
@@ -2417,17 +2416,18 @@ TableLikeClause:
 		;
 
 TableLikeOptionList:
-				TableLikeOptionList TableLikeOption	{ $$ = lappend_int($1, $2); }
-				| /* EMPTY */						{ $$ = NIL; }
+				TableLikeOptionList INCLUDING TableLikeOption	{ $$ = $1 | $3; }
+				| TableLikeOptionList EXCLUDING TableLikeOption	{ $$ = $1 & ~$3; }
+				| /* EMPTY */						{ $$ = 0; }
 		;
 
 TableLikeOption:
-				INCLUDING DEFAULTS					{ $$ = 	CREATE_TABLE_LIKE_INCLUDING_DEFAULTS; }
-				| EXCLUDING DEFAULTS				{ $$ = 	CREATE_TABLE_LIKE_EXCLUDING_DEFAULTS; }
-				| INCLUDING CONSTRAINTS				{ $$ = 	CREATE_TABLE_LIKE_INCLUDING_CONSTRAINTS; }
-				| EXCLUDING CONSTRAINTS				{ $$ = 	CREATE_TABLE_LIKE_EXCLUDING_CONSTRAINTS; }
-				| INCLUDING INDEXES					{ $$ = 	CREATE_TABLE_LIKE_INCLUDING_INDEXES; }
-				| EXCLUDING INDEXES					{ $$ = 	CREATE_TABLE_LIKE_EXCLUDING_INDEXES; }
+				DEFAULTS			{ $$ = CREATE_TABLE_LIKE_DEFAULTS; }
+				| CONSTRAINTS		{ $$ = CREATE_TABLE_LIKE_CONSTRAINTS; }
+				| INDEXES			{ $$ = CREATE_TABLE_LIKE_INDEXES; }
+				| STORAGE			{ $$ = CREATE_TABLE_LIKE_STORAGE; }
+				| COMMENTS			{ $$ = CREATE_TABLE_LIKE_COMMENTS; }
+				| ALL				{ $$ = CREATE_TABLE_LIKE_ALL; }
 		;
 
 
@@ -10481,6 +10481,7 @@ unreserved_keyword:
 			| CLOSE
 			| CLUSTER
 			| COMMENT
+			| COMMENTS
 			| COMMIT
 			| COMMITTED
 			| CONCURRENTLY

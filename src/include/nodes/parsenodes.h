@@ -460,6 +460,7 @@ typedef struct ColumnDef
 	int			inhcount;		/* number of times column is inherited */
 	bool		is_local;		/* column has local (non-inherited) def'n */
 	bool		is_not_null;	/* NOT NULL constraint specified? */
+	char		storage;		/* storage parameter of column */
 	Node	   *raw_default;	/* default value (untransformed parse tree) */
 	Node	   *cooked_default; /* default value (transformed expr tree) */
 	List	   *constraints;	/* other constraints on column */
@@ -472,17 +473,17 @@ typedef struct InhRelation
 {
 	NodeTag		type;
 	RangeVar   *relation;
-	List	   *options;		/* integer List of CreateStmtLikeOption */
+	bits32		options;		/* bitmap of CreateStmtLikeOption */
 } InhRelation;
 
 typedef enum CreateStmtLikeOption
 {
-	CREATE_TABLE_LIKE_INCLUDING_DEFAULTS,
-	CREATE_TABLE_LIKE_EXCLUDING_DEFAULTS,
-	CREATE_TABLE_LIKE_INCLUDING_CONSTRAINTS,
-	CREATE_TABLE_LIKE_EXCLUDING_CONSTRAINTS,
-	CREATE_TABLE_LIKE_INCLUDING_INDEXES,
-	CREATE_TABLE_LIKE_EXCLUDING_INDEXES
+	CREATE_TABLE_LIKE_DEFAULTS		= 1 << 0,
+	CREATE_TABLE_LIKE_CONSTRAINTS	= 1 << 1,
+	CREATE_TABLE_LIKE_INDEXES		= 1 << 2,
+	CREATE_TABLE_LIKE_STORAGE		= 1 << 3,
+	CREATE_TABLE_LIKE_COMMENTS		= 1 << 4,
+	CREATE_TABLE_LIKE_ALL			= 0xFFFFFFFF
 } CreateStmtLikeOption;
 
 /*

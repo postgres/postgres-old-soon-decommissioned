@@ -1107,7 +1107,7 @@ static bool
 _equalInhRelation(InhRelation *a, InhRelation *b)
 {
 	COMPARE_NODE_FIELD(relation);
-	COMPARE_NODE_FIELD(options);
+	COMPARE_SCALAR_FIELD(options);
 
 	return true;
 }
