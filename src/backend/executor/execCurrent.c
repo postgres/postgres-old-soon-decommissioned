@@ -155,8 +155,7 @@ execCurrentOf(CurrentOfExpr *cexpr,
 		 * scan node.  Fail if it's not there or buried underneath
 		 * aggregation.
 		 */
-		scanstate = search_plan_tree(ExecGetActivePlanTree(queryDesc),
-									 table_oid);
+		scanstate = search_plan_tree(queryDesc->planstate, table_oid);
 		if (!scanstate)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_CURSOR_STATE),

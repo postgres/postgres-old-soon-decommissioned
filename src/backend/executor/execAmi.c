@@ -28,6 +28,7 @@
 #include "executor/nodeHashjoin.h"
 #include "executor/nodeIndexscan.h"
 #include "executor/nodeLimit.h"
+#include "executor/nodeLockRows.h"
 #include "executor/nodeMaterial.h"
 #include "executor/nodeMergejoin.h"
 #include "executor/nodeModifyTable.h"
@@ -230,6 +231,10 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 
 		case T_SetOpState:
 			ExecReScanSetOp((SetOpState *) node, exprCtxt);
+			break;
+
+		case T_LockRowsState:
+			ExecReScanLockRows((LockRowsState *) node, exprCtxt);
 			break;
 
 		case T_LimitState:
@@ -444,8 +449,9 @@ ExecSupportsBackwardScan(Plan *node)
 			/* these don't evaluate tlist */
 			return true;
 
+		case T_LockRows:
 		case T_Limit:
-			/* doesn't evaluate tlist */
+			/* these don't evaluate tlist */
 			return ExecSupportsBackwardScan(outerPlan(node));
 
 		default:

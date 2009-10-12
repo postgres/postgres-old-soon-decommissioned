@@ -1388,7 +1388,7 @@ transformSetOperationTree(ParseState *pstate, SelectStmt *stmt,
 				 errmsg("SELECT FOR UPDATE/SHARE is not allowed with UNION/INTERSECT/EXCEPT")));
 
 	/*
-	 * If an internal node of a set-op tree has ORDER BY, UPDATE, or LIMIT
+	 * If an internal node of a set-op tree has ORDER BY, LIMIT, or FOR UPDATE
 	 * clauses attached, we need to treat it like a leaf node to generate an
 	 * independent sub-Query tree.	Otherwise, it can be represented by a
 	 * SetOperationStmt node underneath the parent Query.
@@ -2251,6 +2251,7 @@ applyLockingClause(Query *qry, Index rtindex, bool forUpdate, bool noWait)
 	rc = makeNode(RowMarkClause);
 	rc->rti = rtindex;
 	rc->prti = rtindex;
+	rc->rowmarkId = 0;			/* not used until plan time */
 	rc->forUpdate = forUpdate;
 	rc->noWait = noWait;
 	rc->isParent = false;

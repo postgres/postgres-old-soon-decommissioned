@@ -84,6 +84,7 @@ build_simple_rel(PlannerInfo *root, int relid, RelOptKind reloptkind)
 	rel->tuples = 0;
 	rel->subplan = NULL;
 	rel->subrtable = NIL;
+	rel->subrowmark = NIL;
 	rel->baserestrictinfo = NIL;
 	rel->baserestrictcost.startup = 0;
 	rel->baserestrictcost.per_tuple = 0;
@@ -337,6 +338,7 @@ build_join_rel(PlannerInfo *root,
 	joinrel->tuples = 0;
 	joinrel->subplan = NULL;
 	joinrel->subrtable = NIL;
+	joinrel->subrowmark = NIL;
 	joinrel->baserestrictinfo = NIL;
 	joinrel->baserestrictcost.startup = 0;
 	joinrel->baserestrictcost.per_tuple = 0;

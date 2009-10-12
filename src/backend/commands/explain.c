@@ -718,6 +718,9 @@ ExplainNode(Plan *plan, PlanState *planstate,
 					break;
 			}
 			break;
+		case T_LockRows:
+			pname = sname = "LockRows";
+			break;
 		case T_Limit:
 			pname = sname = "Limit";
 			break;

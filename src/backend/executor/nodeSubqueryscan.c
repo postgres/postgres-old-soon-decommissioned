@@ -99,11 +99,12 @@ ExecInitSubqueryScan(SubqueryScan *node, EState *estate, int eflags)
 
 	/*
 	 * SubqueryScan should not have any "normal" children.	Also, if planner
-	 * left anything in subrtable, it's fishy.
+	 * left anything in subrtable/subrowmark, it's fishy.
 	 */
 	Assert(outerPlan(node) == NULL);
 	Assert(innerPlan(node) == NULL);
 	Assert(node->subrtable == NIL);
+	Assert(node->subrowmark == NIL);
 
 	/*
 	 * create state structure

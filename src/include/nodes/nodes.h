@@ -71,6 +71,7 @@ typedef enum NodeTag
 	T_Unique,
 	T_Hash,
 	T_SetOp,
+	T_LockRows,
 	T_Limit,
 	/* this one isn't a subclass of Plan: */
 	T_PlanInvalItem,
@@ -110,6 +111,7 @@ typedef enum NodeTag
 	T_UniqueState,
 	T_HashState,
 	T_SetOpState,
+	T_LockRowsState,
 	T_LimitState,
 
 	/*

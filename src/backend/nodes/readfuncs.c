@@ -294,6 +294,7 @@ _readRowMarkClause(void)
 
 	READ_UINT_FIELD(rti);
 	READ_UINT_FIELD(prti);
+	READ_UINT_FIELD(rowmarkId);
 	READ_BOOL_FIELD(forUpdate);
 	READ_BOOL_FIELD(noWait);
 	READ_BOOL_FIELD(isParent);
