@@ -9,8 +9,8 @@ struct lineptr
 	int			width;
 };
 
+extern int	pg_get_utf8_id(void);
 extern unsigned char *mbvalidate(unsigned char *pwcs, int encoding);
-
 extern int	pg_wcswidth(const unsigned char *pwcs, size_t len, int encoding);
 extern void pg_wcsformat(unsigned char *pwcs, size_t len, int encoding, struct lineptr * lines, int count);
 extern void pg_wcssize(unsigned char *pwcs, size_t len, int encoding,

@@ -23,10 +23,37 @@ enum printFormat
 	/* add your favourite output format here ... */
 };
 
+typedef struct printTextLineFormat
+{
+	/* Line drawing characters to be used in various contexts */
+	const char *hrule;			/* horizontal line character */
+	const char *leftvrule;		/* left vertical line (+horizontal) */
+	const char *midvrule;		/* intra-column vertical line (+horizontal) */
+	const char *rightvrule;		/* right vertical line (+horizontal) */
+} printTextLineFormat;
+
+typedef enum printTextRule
+{
+	/* Additional context for selecting line drawing characters */
+	PRINT_RULE_TOP,				/* top horizontal line */
+	PRINT_RULE_MIDDLE,			/* intra-data horizontal line */
+	PRINT_RULE_BOTTOM,			/* bottom horizontal line */
+	PRINT_RULE_DATA				/* data line (hrule is unused here) */
+} printTextRule;
+
+typedef struct printTextFormat
+{
+	/* A complete line style */
+	const char *name;				/* for display purposes */
+	printTextLineFormat lrule[4];	/* indexed by enum printTextRule */
+	const char *midvrule_cont;	/* vertical line for continue after newline */
+	const char *midvrule_wrap;	/* vertical line for wrapped data */
+	const char *midvrule_blank;	/* vertical line for blank data */
+} printTextFormat;
 
 typedef struct printTableOpt
 {
-	enum printFormat format;	/* one of the above */
+	enum printFormat format;	/* see enum above */
 	bool		expanded;		/* expanded/vertical output (if supported by
 								 * output format) */
 	unsigned short int border;	/* Print a border around the table. 0=none,
@@ -37,6 +64,7 @@ typedef struct printTableOpt
 	bool		start_table;	/* print start decoration, eg <table> */
 	bool		stop_table;		/* print stop decoration, eg </table> */
 	unsigned long prior_records;	/* start offset for record counters */
+	const printTextFormat *line_style;	/* line style (NULL for default) */
 	char	   *fieldSep;		/* field separator for unaligned text mode */
 	char	   *recordSep;		/* record separator for unaligned text mode */
 	bool		numericLocale;	/* locale-aware numeric units separator and
@@ -96,6 +124,10 @@ typedef struct printQueryOpt
 } printQueryOpt;
 
 
+extern const printTextFormat pg_asciiformat;
+extern const printTextFormat pg_utf8format;
+
+
 extern FILE *PageOutput(int lines, unsigned short int pager);
 extern void ClosePager(FILE *pagerpipe);
 
@@ -118,6 +150,7 @@ extern void printQuery(const PGresult *result, const printQueryOpt *opt,
 		   FILE *fout, FILE *flog);
 
 extern void setDecimalLocale(void);
+extern const printTextFormat *get_line_style(const printTableOpt *opt);
 
 #ifndef __CYGWIN__
 #define DEFAULT_PAGER "more"

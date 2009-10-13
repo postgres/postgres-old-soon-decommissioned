@@ -1788,6 +1788,26 @@ do_pset(const char *param, const char *value, printQueryOpt *popt, bool quiet)
 			printf(_("Output format is %s.\n"), _align2string(popt->topt.format));
 	}
 
+	/* set table line style */
+	else if (strcmp(param, "linestyle") == 0)
+	{
+		if (!value)
+			;
+		else if (pg_strncasecmp("ascii", value, vallen) == 0)
+			popt->topt.line_style = &pg_asciiformat;
+		else if (pg_strncasecmp("unicode", value, vallen) == 0)
+			popt->topt.line_style = &pg_utf8format;
+		else
+		{
+			psql_error("\\pset: allowed line styles are ascii, unicode\n");
+			return false;
+		}
+
+		if (!quiet)
+			printf(_("Line style is %s.\n"),
+				   get_line_style(&popt->topt)->name);
+	}
+
 	/* set border style/width */
 	else if (strcmp(param, "border") == 0)
 	{

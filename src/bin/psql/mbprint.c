@@ -30,8 +30,8 @@
 
 typedef unsigned int pg_wchar;
 
-static int
-get_utf8_id(void)
+int
+pg_get_utf8_id(void)
 {
 	static int	utf8_id = -1;
 
@@ -40,7 +40,7 @@ get_utf8_id(void)
 	return utf8_id;
 }
 
-#define PG_UTF8		get_utf8_id()
+#define PG_UTF8		pg_get_utf8_id()
 
 
 static pg_wchar

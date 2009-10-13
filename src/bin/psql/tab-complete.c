@@ -2264,8 +2264,8 @@ psql_completion(char *text, int start, int end)
 	{
 		static const char *const my_list[] =
 		{"format", "border", "expanded",
-			"null", "fieldsep", "tuples_only", "title", "tableattr", "pager",
-		"recordsep", NULL};
+		 "null", "fieldsep", "tuples_only", "title", "tableattr",
+		 "linestyle", "pager", "recordsep", NULL};
 
 		COMPLETE_WITH_LIST(my_list);
 	}
