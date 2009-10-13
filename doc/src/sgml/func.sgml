@@ -3230,7 +3230,7 @@ cast(-44 as bit(12))           <lineannotation>111111010100</lineannotation>
    </para>
 
    <para>
-    Some examples, with <literal>#"</> delimiting the return string:
+    Some examples, with <literal>#&quot;</> delimiting the return string:
 <programlisting>
 substring('foobar' from '%#"o_b#"%' for '#')   <lineannotation>oob</lineannotation>
 substring('foobar' from '#"o_b#"%' for '#')    <lineannotation>NULL</lineannotation>
