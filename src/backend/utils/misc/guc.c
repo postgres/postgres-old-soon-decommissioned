@@ -460,6 +460,7 @@ const char *const GucSource_Names[] =
 	 /* PGC_S_ARGV */ "command line",
 	 /* PGC_S_DATABASE */ "database",
 	 /* PGC_S_USER */ "user",
+	 /* PGC_S_DATABASE_USER */ "database user",
 	 /* PGC_S_CLIENT */ "client",
 	 /* PGC_S_OVERRIDE */ "override",
 	 /* PGC_S_INTERACTIVE */ "interactive",
@@ -4556,7 +4557,8 @@ set_config_option(const char *name, const char *value,
 		 */
 		elevel = IsUnderPostmaster ? DEBUG3 : LOG;
 	}
-	else if (source == PGC_S_DATABASE || source == PGC_S_USER)
+	else if (source == PGC_S_DATABASE || source == PGC_S_USER ||
+			 source == PGC_S_DATABASE_USER)
 		elevel = WARNING;
 	else
 		elevel = ERROR;
@@ -5762,6 +5764,7 @@ define_custom_variable(struct config_generic * variable)
 			break;
 		case PGC_S_DATABASE:
 		case PGC_S_USER:
+		case PGC_S_DATABASE_USER:
 		case PGC_S_CLIENT:
 		case PGC_S_SESSION:
 		default:

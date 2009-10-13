@@ -77,6 +77,8 @@ typedef enum
  * as the actual source of any value).	This is an interactive case, but
  * it needs its own source value because some assign hooks need to make
  * different validity checks in this case.
+ *
+ * NB: see GucSource_Names in guc.c if you change this.
  */
 typedef enum
 {
