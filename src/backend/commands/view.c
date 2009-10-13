@@ -124,6 +124,7 @@ DefineVirtualRelation(const RangeVar *relation, List *tlist, bool replace)
 			def->inhcount = 0;
 			def->is_local = true;
 			def->is_not_null = false;
+			def->storage = 0;
 			def->raw_default = NULL;
 			def->cooked_default = NULL;
 			def->constraints = NIL;

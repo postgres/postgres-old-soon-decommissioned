@@ -460,20 +460,20 @@ typedef struct ColumnDef
 	int			inhcount;		/* number of times column is inherited */
 	bool		is_local;		/* column has local (non-inherited) def'n */
 	bool		is_not_null;	/* NOT NULL constraint specified? */
-	char		storage;		/* storage parameter of column */
+	char		storage;		/* attstorage setting, or 0 for default */
 	Node	   *raw_default;	/* default value (untransformed parse tree) */
 	Node	   *cooked_default; /* default value (transformed expr tree) */
 	List	   *constraints;	/* other constraints on column */
 } ColumnDef;
 
 /*
- * inhRelation - Relations a CREATE TABLE is to inherit attributes of
+ * inhRelation - Relation a CREATE TABLE is to inherit attributes of
  */
 typedef struct InhRelation
 {
 	NodeTag		type;
 	RangeVar   *relation;
-	bits32		options;		/* bitmap of CreateStmtLikeOption */
+	bits32		options;		/* OR of CreateStmtLikeOption flags */
 } InhRelation;
 
 typedef enum CreateStmtLikeOption

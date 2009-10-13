@@ -553,13 +553,15 @@ BuildDescForRelation(List *schema)
 		TupleDescInitEntry(desc, attnum, attname,
 						   atttypid, atttypmod, attdim);
 
+		/* Override TupleDescInitEntry's settings as requested */
+		if (entry->storage)
+			desc->attrs[attnum - 1]->attstorage = entry->storage;
+
 		/* Fill in additional stuff not handled by TupleDescInitEntry */
 		desc->attrs[attnum - 1]->attnotnull = entry->is_not_null;
 		has_not_null |= entry->is_not_null;
 		desc->attrs[attnum - 1]->attislocal = entry->is_local;
 		desc->attrs[attnum - 1]->attinhcount = entry->inhcount;
-		if (entry->storage)
-			desc->attrs[attnum - 1]->attstorage = entry->storage;
 	}
 
 	if (has_not_null)

@@ -132,6 +132,7 @@ DefineSequence(CreateSeqStmt *seq)
 		coldef->inhcount = 0;
 		coldef->is_local = true;
 		coldef->is_not_null = true;
+		coldef->storage = 0;
 		coldef->raw_default = NULL;
 		coldef->cooked_default = NULL;
 		coldef->constraints = NIL;

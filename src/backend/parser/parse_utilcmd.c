@@ -642,6 +642,8 @@ transformInhRelation(ParseState *pstate, CreateStmtContext *cxt,
 		/* Likewise, copy storage if requested */
 		if (inhRelation->options & CREATE_TABLE_LIKE_STORAGE)
 			def->storage = attribute->attstorage;
+		else
+			def->storage = 0;
 
 		/* Likewise, copy comment if requested */
 		if ((inhRelation->options & CREATE_TABLE_LIKE_COMMENTS) &&
