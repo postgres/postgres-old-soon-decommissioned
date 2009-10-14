@@ -52,8 +52,8 @@ CATALOG(pg_trigger,2620)
 	bool		tginitdeferred; /* constraint trigger is deferred initially */
 	int2		tgnargs;		/* # of extra arguments in tgargs */
 
-	/* VARIABLE LENGTH FIELDS: */
-	int2vector	tgattr;			/* reserved for column-specific triggers */
+	/* VARIABLE LENGTH FIELDS (note: these are not supposed to be null) */
+	int2vector	tgattr;			/* column numbers, if trigger is on columns */
 	bytea		tgargs;			/* first\000second\000tgnargs\000 */
 } FormData_pg_trigger;
 

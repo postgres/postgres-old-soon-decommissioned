@@ -792,6 +792,7 @@ index_create(Oid heapRelationId,
 				trigger->before = false;
 				trigger->row = true;
 				trigger->events = TRIGGER_TYPE_INSERT | TRIGGER_TYPE_UPDATE;
+				trigger->columns = NIL;
 				trigger->isconstraint = true;
 				trigger->deferrable = true;
 				trigger->initdeferred = initdeferred;

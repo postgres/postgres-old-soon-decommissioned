@@ -1560,10 +1560,9 @@ typedef struct DropUserMappingStmt
 } DropUserMappingStmt;
 
 /* ----------------------
- *		Create/Drop TRIGGER Statements
+ *		Create TRIGGER Statement
  * ----------------------
  */
-
 typedef struct CreateTrigStmt
 {
 	NodeTag		type;
@@ -1575,6 +1574,7 @@ typedef struct CreateTrigStmt
 	bool		row;			/* ROW/STATEMENT */
 	/* events uses the TRIGGER_TYPE bits defined in catalog/pg_trigger.h */
 	int16		events;			/* INSERT/UPDATE/DELETE/TRUNCATE */
+	List	   *columns;		/* column names, or NIL for all columns */
 
 	/* The following are used for constraint triggers (RI and unique checks) */
 	bool		isconstraint;	/* This is a constraint trigger */
@@ -1584,7 +1584,7 @@ typedef struct CreateTrigStmt
 } CreateTrigStmt;
 
 /* ----------------------
- *		Create/Drop PROCEDURAL LANGUAGE Statement
+ *		Create/Drop PROCEDURAL LANGUAGE Statements
  * ----------------------
  */
 typedef struct CreatePLangStmt

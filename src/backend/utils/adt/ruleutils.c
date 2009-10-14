@@ -543,6 +543,23 @@ pg_get_triggerdef_worker(Oid trigid, bool pretty)
 			appendStringInfo(&buf, " OR UPDATE");
 		else
 			appendStringInfo(&buf, " UPDATE");
+		/* tgattr is first var-width field, so OK to access directly */
+		if (trigrec->tgattr.dim1 > 0)
+		{
+			int		i;
+
+			appendStringInfoString(&buf, " OF ");
+			for (i = 0; i < trigrec->tgattr.dim1; i++)
+			{
+				char   *attname;
+
+				if (i > 0)
+					appendStringInfoString(&buf, ", ");
+				attname = get_relid_attribute_name(trigrec->tgrelid,
+												   trigrec->tgattr.values[i]);
+				appendStringInfoString(&buf, quote_identifier(attname));
+			}
+		}
 	}
 	if (TRIGGER_FOR_TRUNCATE(trigrec->tgtype))
 	{

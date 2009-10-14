@@ -4419,6 +4419,18 @@ getTriggers(TableInfo tblinfo[], int numTables)
 			if (i_tgdef >= 0)
 			{
 				tginfo[j].tgdef = strdup(PQgetvalue(res, j, i_tgdef));
+
+				/* remaining fields are not valid if we have tgdef */
+				tginfo[j].tgfname = NULL;
+				tginfo[j].tgtype = 0;
+				tginfo[j].tgnargs = 0;
+				tginfo[j].tgargs = NULL;
+				tginfo[j].tgisconstraint = false;
+				tginfo[j].tgdeferrable = false;
+				tginfo[j].tginitdeferred = false;
+				tginfo[j].tgconstrname = NULL;
+				tginfo[j].tgconstrrelid = InvalidOid;
+				tginfo[j].tgconstrrelname = NULL;
 			}
 			else
 			{
