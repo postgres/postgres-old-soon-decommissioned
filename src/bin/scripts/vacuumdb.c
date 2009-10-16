@@ -195,10 +195,10 @@ vacuum_one_database(const char *dbname, bool full, bool verbose, bool analyze,
 	appendPQExpBuffer(&sql, "VACUUM");
 	if (full)
 		appendPQExpBuffer(&sql, " FULL");
-	if (verbose)
-		appendPQExpBuffer(&sql, " VERBOSE");
 	if (freeze)
 		appendPQExpBuffer(&sql, " FREEZE");
+	if (verbose)
+		appendPQExpBuffer(&sql, " VERBOSE");
 	if (analyze)
 		appendPQExpBuffer(&sql, " ANALYZE");
 	if (table)
