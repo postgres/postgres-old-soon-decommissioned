@@ -1037,7 +1037,7 @@ pgwin32_toUTF16(const char *str, int len, int *utf16len)
 	}
 
 	if (utf16len)
-		*utf16len = len;
+		*utf16len = dstlen;
 	return utf16;
 }
 
