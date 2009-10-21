@@ -927,9 +927,8 @@ ExpandColumnRefStar(ParseState *pstate, ColumnRef *cref,
 		rte = refnameRangeTblEntry(pstate, schemaname, relname, cref->location,
 								   &sublevels_up);
 		if (rte == NULL)
-			rte = addImplicitRTE(pstate,
-								 makeRangeVar(schemaname, relname,
-											  cref->location));
+			errorMissingRTE(pstate,
+							makeRangeVar(schemaname, relname, cref->location));
 
 		rtindex = RTERangeTablePosn(pstate, rte, &sublevels_up);
 
@@ -973,8 +972,7 @@ ExpandColumnRefStar(ParseState *pstate, ColumnRef *cref,
  *
  * tlist entries are generated for each relation appearing in the query's
  * varnamespace.  We do not consider relnamespace because that would include
- * input tables of aliasless JOINs, NEW/OLD pseudo-entries, implicit RTEs,
- * etc.
+ * input tables of aliasless JOINs, NEW/OLD pseudo-entries, etc.
  *
  * The referenced relations/columns are marked as requiring SELECT access.
  */

@@ -50,9 +50,8 @@
  * This is different from p_relnamespace because a JOIN without an alias does
  * not hide the contained tables (so they must still be in p_relnamespace)
  * but it does hide their columns (unqualified references to the columns must
- * refer to the JOIN, not the member tables).  Also, we put POSTQUEL-style
- * implicit RTEs into p_relnamespace but not p_varnamespace, so that they
- * do not affect the set of columns available for unqualified references.
+ * refer to the JOIN, not the member tables).  Other special RTEs such as
+ * NEW/OLD for rules may also appear in just one of these lists.
  *
  * p_ctenamespace: list of CommonTableExprs (WITH items) that are visible
  * at the moment.  This is different from p_relnamespace because you have
