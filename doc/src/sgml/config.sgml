@@ -4772,24 +4772,6 @@ dynamic_library_path = 'C:\tools\postgresql;H:\my_project\lib;$libdir'
       </listitem>
      </varlistentry>
 
-     <varlistentry id="guc-regex-flavor" xreflabel="regex_flavor">
-      <term><varname>regex_flavor</varname> (<type>enum</type>)</term>
-      <indexterm><primary>regular expressions</></>
-      <indexterm>
-       <primary><varname>regex_flavor</> configuration parameter</primary>
-      </indexterm>
-      <listitem>
-       <para>
-        The regular expression <quote>flavor</> can be set to
-        <literal>advanced</>, <literal>extended</>, or <literal>basic</>.
-        The default is <literal>advanced</>.  The <literal>extended</>
-        setting might be useful for exact backwards compatibility with
-        pre-7.4 releases of <productname>PostgreSQL</>.  See
-        <xref linkend="posix-syntax-details"> for details.
-       </para>
-      </listitem>
-     </varlistentry>
-
      <varlistentry id="guc-sql-inheritance" xreflabel="sql_inheritance">
       <term><varname>sql_inheritance</varname> (<type>boolean</type>)</term>
       <indexterm>
