@@ -2007,7 +2007,11 @@ transformExplainStmt(ParseState *pstate, ExplainStmt *stmt)
 }
 
 
-/* exported so planner can check again after rewriting, query pullup, etc */
+/*
+ * Check for features that are not supported together with FOR UPDATE/SHARE.
+ *
+ * exported so planner can check again after rewriting, query pullup, etc
+ */
 void
 CheckSelectLocking(Query *qry)
 {
@@ -2035,6 +2039,10 @@ CheckSelectLocking(Query *qry)
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 				 errmsg("SELECT FOR UPDATE/SHARE is not allowed with window functions")));
+	if (expression_returns_set((Node *) qry->targetList))
+		ereport(ERROR,
+				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+				 errmsg("SELECT FOR UPDATE/SHARE is not allowed with set-returning functions in the target list")));
 }
 
 /*
@@ -2229,7 +2237,7 @@ applyLockingClause(Query *qry, Index rtindex, bool forUpdate, bool noWait)
 	RowMarkClause *rc;
 
 	/* Check for pre-existing entry for same rtindex */
-	if ((rc = get_rowmark(qry, rtindex)) != NULL)
+	if ((rc = get_parse_rowmark(qry, rtindex)) != NULL)
 	{
 		/*
 		 * If the same RTE is specified both FOR UPDATE and FOR SHARE, treat
@@ -2250,11 +2258,8 @@ applyLockingClause(Query *qry, Index rtindex, bool forUpdate, bool noWait)
 	/* Make a new RowMarkClause */
 	rc = makeNode(RowMarkClause);
 	rc->rti = rtindex;
-	rc->prti = rtindex;
-	rc->rowmarkId = 0;			/* not used until plan time */
 	rc->forUpdate = forUpdate;
 	rc->noWait = noWait;
-	rc->isParent = false;
 	qry->rowMarks = lappend(qry->rowMarks, rc);
 }
 

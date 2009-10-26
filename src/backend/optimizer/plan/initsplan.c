@@ -559,6 +559,9 @@ make_outerjoininfo(PlannerInfo *root,
 	 * parser.	It's because the parser hasn't got enough info --- consider
 	 * FOR UPDATE applied to a view.  Only after rewriting and flattening do
 	 * we know whether the view contains an outer join.
+	 *
+	 * We use the original RowMarkClause list here; the PlanRowMark list
+	 * would list everything.
 	 */
 	foreach(l, root->parse->rowMarks)
 	{

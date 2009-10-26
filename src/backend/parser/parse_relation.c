@@ -2254,7 +2254,7 @@ get_tle_by_resno(List *tlist, AttrNumber resno)
  * Returns NULL if relation is not selected FOR UPDATE/SHARE
  */
 RowMarkClause *
-get_rowmark(Query *qry, Index rtindex)
+get_parse_rowmark(Query *qry, Index rtindex)
 {
 	ListCell   *l;
 

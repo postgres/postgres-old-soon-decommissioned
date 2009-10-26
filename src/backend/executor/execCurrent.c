@@ -102,6 +102,9 @@ execCurrentOf(CurrentOfExpr *cexpr,
 		{
 			ExecRowMark *thiserm = (ExecRowMark *) lfirst(lc);
 
+			if (!RowMarkRequiresRowShareLock(thiserm->markType))
+				continue;		/* ignore non-FOR UPDATE/SHARE items */
+
 			if (RelationGetRelid(thiserm->relation) == table_oid)
 			{
 				if (erm)

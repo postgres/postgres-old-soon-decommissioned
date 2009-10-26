@@ -632,7 +632,7 @@ set_subquery_pathlist(PlannerInfo *root, RelOptInfo *rel,
 									false, tuple_fraction,
 									&subroot);
 	rel->subrtable = subroot->parse->rtable;
-	rel->subrowmark = subroot->parse->rowMarks;
+	rel->subrowmark = subroot->rowMarks;
 
 	/* Copy number of output rows from subplan */
 	rel->tuples = rel->subplan->plan_rows;

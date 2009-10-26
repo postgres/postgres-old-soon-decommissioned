@@ -102,7 +102,7 @@ typedef VacPageListData *VacPageList;
  * Note: because t_ctid links can be stale (this would only occur if a prior
  * VACUUM crashed partway through), it is possible that new_tid points to an
  * empty slot or unrelated tuple.  We have to check the linkage as we follow
- * it, just as is done in EvalPlanQual.
+ * it, just as is done in EvalPlanQualFetch.
  */
 typedef struct VTupleLinkData
 {

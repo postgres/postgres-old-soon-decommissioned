@@ -129,7 +129,7 @@ AcquireRewriteLocks(Query *parsetree)
 				 */
 				if (rt_index == parsetree->resultRelation)
 					lockmode = RowExclusiveLock;
-				else if (get_rowmark(parsetree, rt_index))
+				else if (get_parse_rowmark(parsetree, rt_index) != NULL)
 					lockmode = RowShareLock;
 				else
 					lockmode = AccessShareLock;
@@ -1191,7 +1191,7 @@ ApplyRetrieveRule(Query *parsetree,
 	/*
 	 * FOR UPDATE/SHARE of view?
 	 */
-	if ((rc = get_rowmark(parsetree, rt_index)) != NULL)
+	if ((rc = get_parse_rowmark(parsetree, rt_index)) != NULL)
 	{
 		/*
 		 * Remove the view from the list of rels that will actually be marked

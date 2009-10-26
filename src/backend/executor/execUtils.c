@@ -105,6 +105,7 @@ CreateExecutorState(void)
 	estate->es_snapshot = SnapshotNow;
 	estate->es_crosscheck_snapshot = InvalidSnapshot;	/* no crosscheck */
 	estate->es_range_table = NIL;
+	estate->es_plannedstmt = NULL;
 
 	estate->es_junkFilter = NULL;
 
@@ -139,10 +140,9 @@ CreateExecutorState(void)
 
 	estate->es_per_tuple_exprcontext = NULL;
 
-	estate->es_plannedstmt = NULL;
-	estate->es_evalPlanQual = NULL;
-	estate->es_evTupleNull = NULL;
-	estate->es_evTuple = NULL;
+	estate->es_epqTuple = NULL;
+	estate->es_epqTupleSet = NULL;
+	estate->es_epqScanDone = NULL;
 
 	/*
 	 * Return the executor state structure

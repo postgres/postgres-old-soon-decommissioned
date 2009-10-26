@@ -2012,7 +2012,8 @@ CreateCommandTag(Node *parsetree)
 							tag = "SELECT INTO";
 						else if (stmt->rowMarks != NIL)
 						{
-							if (((RowMarkClause *) linitial(stmt->rowMarks))->forUpdate)
+							/* not 100% but probably close enough */
+							if (((PlanRowMark *) linitial(stmt->rowMarks))->markType == ROW_MARK_EXCLUSIVE)
 								tag = "SELECT FOR UPDATE";
 							else
 								tag = "SELECT FOR SHARE";
@@ -2061,6 +2062,7 @@ CreateCommandTag(Node *parsetree)
 							tag = "SELECT INTO";
 						else if (stmt->rowMarks != NIL)
 						{
+							/* not 100% but probably close enough */
 							if (((RowMarkClause *) linitial(stmt->rowMarks))->forUpdate)
 								tag = "SELECT FOR UPDATE";
 							else

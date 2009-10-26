@@ -660,7 +660,7 @@ ExecEvalVar(ExprState *exprstate, ExprContext *econtext,
 			exprstate->evalfunc = ExecEvalWholeRowVar;
 
 		/* Fetch the value */
-		return ExecEvalWholeRowVar(exprstate, econtext, isNull, isDone);
+		return (*exprstate->evalfunc) (exprstate, econtext, isNull, isDone);
 	}
 }
 

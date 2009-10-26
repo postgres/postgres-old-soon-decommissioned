@@ -68,21 +68,19 @@ typedef struct PlannerGlobal
 
 	List	   *subrtables;		/* Rangetables for SubPlan nodes */
 
-	List	   *subrowmarks;	/* RowMarkClauses for SubPlan nodes */
+	List	   *subrowmarks;	/* PlanRowMarks for SubPlan nodes */
 
 	Bitmapset  *rewindPlanIDs;	/* indices of subplans that require REWIND */
 
 	List	   *finalrtable;	/* "flat" rangetable for executor */
 
-	List	   *finalrowmarks;	/* "flat" list of RowMarkClauses */
+	List	   *finalrowmarks;	/* "flat" list of PlanRowMarks */
 
 	List	   *relationOids;	/* OIDs of relations the plan depends on */
 
 	List	   *invalItems;		/* other dependencies, as PlanInvalItems */
 
 	Index		lastPHId;		/* highest PlaceHolderVar ID assigned */
-
-	Index		lastRowmarkId;	/* highest RowMarkClause ID assigned */
 
 	bool		transientPlan;	/* redo plan when TransactionXmin changes? */
 } PlannerGlobal;
@@ -168,6 +166,8 @@ typedef struct PlannerInfo
 	List	   *join_info_list; /* list of SpecialJoinInfos */
 
 	List	   *append_rel_list;	/* list of AppendRelInfos */
+
+	List	   *rowMarks;		/* list of PlanRowMarks */
 
 	List	   *placeholder_list;		/* list of PlaceHolderInfos */
 

@@ -40,6 +40,8 @@ extern Expr *canonicalize_qual(Expr *qual);
  */
 extern List *preprocess_targetlist(PlannerInfo *root, List *tlist);
 
+extern PlanRowMark *get_plan_rowmark(List *rowmarks, Index rtindex);
+
 /*
  * prototypes for prepunion.c
  */
