@@ -3895,9 +3895,15 @@ AfterTriggerSaveEvent(ResultRelInfo *relinfo, int event, bool row_trigger,
 	int			ntriggers;
 	int		   *tgindx;
 
+	/*
+	 * Check state.  We use normal tests not Asserts because it is possible
+	 * to reach here in the wrong state given misconfigured RI triggers,
+	 * in particular deferring a cascade action trigger.
+	 */
 	if (afterTriggers == NULL)
 		elog(ERROR, "AfterTriggerSaveEvent() called outside of transaction");
-	Assert(afterTriggers->query_depth >= 0);
+	if (afterTriggers->query_depth < 0)
+		elog(ERROR, "AfterTriggerSaveEvent() called outside of query");
 
 	/*
 	 * Validate the event code and collect the associated tuple CTIDs.
