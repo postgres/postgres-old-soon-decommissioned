@@ -229,7 +229,7 @@ analyzeCTE(ParseState *pstate, CommonTableExpr *cte)
 	/* Analysis not done already */
 	Assert(IsA(cte->ctequery, SelectStmt));
 
-	query = parse_sub_analyze(cte->ctequery, pstate, cte);
+	query = parse_sub_analyze(cte->ctequery, pstate, cte, false);
 	cte->ctequery = (Node *) query;
 
 	/*
