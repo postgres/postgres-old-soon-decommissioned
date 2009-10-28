@@ -2549,21 +2549,28 @@ get_select_query_def(Query *query, deparse_context *context,
 	}
 
 	/* Add FOR UPDATE/SHARE clauses if present */
-	foreach(l, query->rowMarks)
+	if (query->hasForUpdate)
 	{
-		RowMarkClause *rc = (RowMarkClause *) lfirst(l);
-		RangeTblEntry *rte = rt_fetch(rc->rti, query->rtable);
+		foreach(l, query->rowMarks)
+		{
+			RowMarkClause *rc = (RowMarkClause *) lfirst(l);
+			RangeTblEntry *rte = rt_fetch(rc->rti, query->rtable);
 
-		if (rc->forUpdate)
-			appendContextKeyword(context, " FOR UPDATE",
-								 -PRETTYINDENT_STD, PRETTYINDENT_STD, 0);
-		else
-			appendContextKeyword(context, " FOR SHARE",
-								 -PRETTYINDENT_STD, PRETTYINDENT_STD, 0);
-		appendStringInfo(buf, " OF %s",
-						 quote_identifier(rte->eref->aliasname));
-		if (rc->noWait)
-			appendStringInfo(buf, " NOWAIT");
+			/* don't print implicit clauses */
+			if (rc->pushedDown)
+				continue;
+
+			if (rc->forUpdate)
+				appendContextKeyword(context, " FOR UPDATE",
+									 -PRETTYINDENT_STD, PRETTYINDENT_STD, 0);
+			else
+				appendContextKeyword(context, " FOR SHARE",
+									 -PRETTYINDENT_STD, PRETTYINDENT_STD, 0);
+			appendStringInfo(buf, " OF %s",
+							 quote_identifier(rte->eref->aliasname));
+			if (rc->noWait)
+				appendStringInfo(buf, " NOWAIT");
+		}
 	}
 
 	context->windowClause = save_windowclause;

@@ -203,6 +203,7 @@ _readQuery(void)
 	READ_BOOL_FIELD(hasSubLinks);
 	READ_BOOL_FIELD(hasDistinctOn);
 	READ_BOOL_FIELD(hasRecursive);
+	READ_BOOL_FIELD(hasForUpdate);
 	READ_NODE_FIELD(cteList);
 	READ_NODE_FIELD(rtable);
 	READ_NODE_FIELD(jointree);
@@ -295,6 +296,7 @@ _readRowMarkClause(void)
 	READ_UINT_FIELD(rti);
 	READ_BOOL_FIELD(forUpdate);
 	READ_BOOL_FIELD(noWait);
+	READ_BOOL_FIELD(pushedDown);
 
 	READ_DONE();
 }

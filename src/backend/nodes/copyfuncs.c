@@ -1859,6 +1859,7 @@ _copyRowMarkClause(RowMarkClause *from)
 	COPY_SCALAR_FIELD(rti);
 	COPY_SCALAR_FIELD(forUpdate);
 	COPY_SCALAR_FIELD(noWait);
+	COPY_SCALAR_FIELD(pushedDown);
 
 	return newnode;
 }
@@ -2223,6 +2224,7 @@ _copyQuery(Query *from)
 	COPY_SCALAR_FIELD(hasSubLinks);
 	COPY_SCALAR_FIELD(hasDistinctOn);
 	COPY_SCALAR_FIELD(hasRecursive);
+	COPY_SCALAR_FIELD(hasForUpdate);
 	COPY_NODE_FIELD(cteList);
 	COPY_NODE_FIELD(rtable);
 	COPY_NODE_FIELD(jointree);
