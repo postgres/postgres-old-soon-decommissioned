@@ -2175,7 +2175,7 @@ make_ruledef(StringInfo buf, HeapTuple ruletup, TupleDesc rulettc,
 		query = getInsertSelectQuery(query, NULL);
 
 		/* Must acquire locks right away; see notes in get_query_def() */
-		AcquireRewriteLocks(query);
+		AcquireRewriteLocks(query, false);
 
 		context.buf = buf;
 		context.namespaces = list_make1(&dpns);
@@ -2320,7 +2320,7 @@ get_query_def(Query *query, StringInfo buf, List *parentnamespace,
 	 * consistent results.	Note we assume it's OK to scribble on the passed
 	 * querytree!
 	 */
-	AcquireRewriteLocks(query);
+	AcquireRewriteLocks(query, false);
 
 	context.buf = buf;
 	context.namespaces = lcons(&dpns, list_copy(parentnamespace));
