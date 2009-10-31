@@ -89,6 +89,7 @@ extern bool TSConfigIsVisible(Oid cfgid);
 extern void DeconstructQualifiedName(List *names,
 						 char **nspname_p,
 						 char **objname_p);
+extern Oid	LookupNamespaceNoError(const char *nspname);
 extern Oid	LookupExplicitNamespace(const char *nspname);
 
 extern Oid	LookupCreationNamespace(const char *nspname);

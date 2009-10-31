@@ -38,11 +38,6 @@ extern Node *scanRTEForColumn(ParseState *pstate, RangeTblEntry *rte,
 				 char *colname, int location);
 extern Node *colNameToVar(ParseState *pstate, char *colname, bool localonly,
 			 int location);
-extern Node *qualifiedNameToVar(ParseState *pstate,
-				   char *schemaname,
-				   char *refname,
-				   char *colname,
-				   int location);
 extern void markVarForSelectPriv(ParseState *pstate, Var *var,
 					 RangeTblEntry *rte);
 extern Relation parserOpenTable(ParseState *pstate, const RangeVar *relation,

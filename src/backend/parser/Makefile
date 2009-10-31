@@ -12,9 +12,10 @@ include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 
-OBJS= analyze.o gram.o keywords.o parser.o parse_agg.o parse_cte.o parse_clause.o \
-      parse_expr.o parse_func.o parse_node.o parse_oper.o parse_relation.o \
-      parse_type.o parse_coerce.o parse_target.o parse_utilcmd.o scansup.o kwlookup.o
+OBJS= analyze.o gram.o keywords.o kwlookup.o parser.o \
+      parse_agg.o parse_clause.o parse_coerce.o parse_cte.o parse_expr.o \
+      parse_func.o parse_node.o parse_oper.o parse_param.o parse_relation.o \
+      parse_target.o parse_type.o parse_utilcmd.o scansup.o
 
 FLEXFLAGS = -CF
 
