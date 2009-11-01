@@ -280,6 +280,8 @@ extern Datum hash_uint32(uint32 k);
 
 /* hashinsert.c */
 extern void _hash_doinsert(Relation rel, IndexTuple itup);
+extern OffsetNumber _hash_pgaddtup(Relation rel, Buffer buf,
+			   Size itemsize, IndexTuple itup);
 
 /* hashovfl.c */
 extern Buffer _hash_addovflpage(Relation rel, Buffer metabuf, Buffer buf);
