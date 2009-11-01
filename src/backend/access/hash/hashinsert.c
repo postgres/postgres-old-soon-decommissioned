@@ -20,10 +20,6 @@
 #include "utils/rel.h"
 
 
-static OffsetNumber _hash_pgaddtup(Relation rel, Buffer buf,
-			   Size itemsize, IndexTuple itup);
-
-
 /*
  *	_hash_doinsert() -- Handle insertion of a single index tuple.
  *
@@ -180,15 +176,16 @@ _hash_doinsert(Relation rel, IndexTuple itup)
 /*
  *	_hash_pgaddtup() -- add a tuple to a particular page in the index.
  *
- *		This routine adds the tuple to the page as requested; it does
- *		not write out the page.  It is an error to call pgaddtup() without
- *		a write lock and pin.
+ * This routine adds the tuple to the page as requested; it does not write out
+ * the page.  It is an error to call pgaddtup() without pin and write lock on
+ * the target buffer.
+ *
+ * Returns the offset number at which the tuple was inserted.  This function
+ * is responsible for preserving the condition that tuples in a hash index
+ * page are sorted by hashkey value.
  */
-static OffsetNumber
-_hash_pgaddtup(Relation rel,
-			   Buffer buf,
-			   Size itemsize,
-			   IndexTuple itup)
+OffsetNumber
+_hash_pgaddtup(Relation rel, Buffer buf, Size itemsize, IndexTuple itup)
 {
 	OffsetNumber itup_off;
 	Page		page;
