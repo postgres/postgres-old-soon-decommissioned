@@ -99,8 +99,11 @@ typedef struct HashScanOpaqueData
 	 */
 	Buffer		hashso_curbuf;
 
-	/* Current position of the scan */
+	/* Current position of the scan, as an index TID */
 	ItemPointerData hashso_curpos;
+
+	/* Current position of the scan, as a heap TID */
+	ItemPointerData hashso_heappos;
 } HashScanOpaqueData;
 
 typedef HashScanOpaqueData *HashScanOpaque;
