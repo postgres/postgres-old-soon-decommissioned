@@ -1306,7 +1306,7 @@ describeOneTableDetails(const char *schemaname,
 		printTableAddHeader(&cont, headers[i], true, 'l');
 
 	/* Check if table is a view */
-	if (tableinfo.relkind == 'v')
+	if (tableinfo.relkind == 'v' && verbose)
 	{
 		PGresult   *result;
 
