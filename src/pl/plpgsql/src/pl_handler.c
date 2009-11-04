@@ -68,6 +68,7 @@ Datum
 plpgsql_call_handler(PG_FUNCTION_ARGS)
 {
 	PLpgSQL_function *func;
+	PLpgSQL_execstate *save_cur_estate;
 	Datum		retval;
 	int			rc;
 
@@ -79,6 +80,9 @@ plpgsql_call_handler(PG_FUNCTION_ARGS)
 
 	/* Find or compile the function */
 	func = plpgsql_compile(fcinfo, false);
+
+	/* Must save and restore prior value of cur_estate */
+	save_cur_estate = func->cur_estate;
 
 	/* Mark the function as busy, so it can't be deleted from under us */
 	func->use_count++;
@@ -97,13 +101,16 @@ plpgsql_call_handler(PG_FUNCTION_ARGS)
 	}
 	PG_CATCH();
 	{
-		/* Decrement use-count and propagate error */
+		/* Decrement use-count, restore cur_estate, and propagate error */
 		func->use_count--;
+		func->cur_estate = save_cur_estate;
 		PG_RE_THROW();
 	}
 	PG_END_TRY();
 
 	func->use_count--;
+
+	func->cur_estate = save_cur_estate;
 
 	/*
 	 * Disconnect from SPI manager

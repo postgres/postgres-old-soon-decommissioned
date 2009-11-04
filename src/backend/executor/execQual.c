@@ -882,9 +882,21 @@ ExecEvalParam(ExprState *exprstate, ExprContext *econtext,
 		{
 			ParamExternData *prm = &paramInfo->params[thisParamId - 1];
 
+			/* give hook a chance in case parameter is dynamic */
+			if (!OidIsValid(prm->ptype) && paramInfo->paramFetch != NULL)
+				(*paramInfo->paramFetch) (paramInfo, thisParamId);
+
 			if (OidIsValid(prm->ptype))
 			{
-				Assert(prm->ptype == expression->paramtype);
+				/* safety check in case hook did something unexpected */
+				if (prm->ptype != expression->paramtype)
+					ereport(ERROR,
+							(errcode(ERRCODE_DATATYPE_MISMATCH),
+							 errmsg("type of parameter %d (%s) does not match that when preparing the plan (%s)",
+									thisParamId,
+									format_type_be(prm->ptype),
+									format_type_be(expression->paramtype))));
+
 				*isNull = prm->isnull;
 				return prm->value;
 			}

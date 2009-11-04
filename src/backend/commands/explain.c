@@ -107,8 +107,6 @@ ExplainQuery(ExplainStmt *stmt, const char *queryString,
 			 ParamListInfo params, DestReceiver *dest)
 {
 	ExplainState es;
-	Oid		   *param_types;
-	int			num_params;
 	TupOutputState *tstate;
 	List	   *rewritten;
 	ListCell   *lc;
@@ -150,9 +148,6 @@ ExplainQuery(ExplainStmt *stmt, const char *queryString,
 							opt->defname)));
 	}
 
-	/* Convert parameter type data to the form parser wants */
-	getParamListTypes(params, &param_types, &num_params);
-
 	/*
 	 * Run parse analysis and rewrite.	Note this also acquires sufficient
 	 * locks on the source table(s).
@@ -163,8 +158,10 @@ ExplainQuery(ExplainStmt *stmt, const char *queryString,
 	 * executed repeatedly.  (See also the same hack in DECLARE CURSOR and
 	 * PREPARE.)  XXX FIXME someday.
 	 */
-	rewritten = pg_analyze_and_rewrite((Node *) copyObject(stmt->query),
-									   queryString, param_types, num_params);
+	rewritten = pg_analyze_and_rewrite_params((Node *) copyObject(stmt->query),
+											  queryString,
+											  (ParserSetupHook) setupParserWithParamList,
+											  params);
 
 	/* emit opening boilerplate */
 	ExplainBeginOutput(&es);
