@@ -183,7 +183,6 @@ open			{ return K_OPEN;			}
 or				{ return K_OR;				}
 perform			{ return K_PERFORM;			}
 raise			{ return K_RAISE;			}
-rename			{ return K_RENAME;			}
 result_oid		{ return K_RESULT_OID;		}
 return			{ return K_RETURN;			}
 reverse			{ return K_REVERSE;			}

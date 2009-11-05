@@ -236,48 +236,6 @@ plpgsql_ns_lookup_label(const char *name)
 
 
 /* ----------
- * plpgsql_ns_rename			Rename a namespace entry
- * ----------
- */
-void
-plpgsql_ns_rename(char *oldname, char *newname)
-{
-	PLpgSQL_ns *ns;
-	PLpgSQL_nsitem *newitem;
-	int			i;
-
-	/*
-	 * Lookup name in the namestack
-	 */
-	for (ns = ns_current; ns != NULL; ns = ns->upper)
-	{
-		for (i = 1; i < ns->items_used; i++)
-		{
-			if (strcmp(ns->items[i]->name, oldname) == 0)
-			{
-				newitem = palloc(sizeof(PLpgSQL_nsitem) + strlen(newname));
-				newitem->itemtype = ns->items[i]->itemtype;
-				newitem->itemno = ns->items[i]->itemno;
-				strcpy(newitem->name, newname);
-
-				pfree(oldname);
-				pfree(newname);
-
-				pfree(ns->items[i]);
-				ns->items[i] = newitem;
-				return;
-			}
-		}
-	}
-
-	ereport(ERROR,
-			(errcode(ERRCODE_UNDEFINED_OBJECT),
-			 errmsg("variable \"%s\" does not exist in the current block",
-					oldname)));
-}
-
-
-/* ----------
  * plpgsql_convert_ident
  *
  * Convert a possibly-qualified identifier to internal form: handle
