@@ -1080,7 +1080,7 @@ logfile_rotate(bool time_based_rotation, int size_rotation_for)
 			if (saveerrno != ENFILE && saveerrno != EMFILE)
 			{
 				ereport(LOG,
-						(errmsg("disabling automatic rotation (use SIGHUP to reenable)")));
+						(errmsg("disabling automatic rotation (use SIGHUP to re-enable)")));
 				Log_RotationAge = 0;
 				Log_RotationSize = 0;
 			}
@@ -1142,7 +1142,7 @@ logfile_rotate(bool time_based_rotation, int size_rotation_for)
 			if (saveerrno != ENFILE && saveerrno != EMFILE)
 			{
 				ereport(LOG,
-						(errmsg("disabling automatic rotation (use SIGHUP to reenable)")));
+						(errmsg("disabling automatic rotation (use SIGHUP to re-enable)")));
 				Log_RotationAge = 0;
 				Log_RotationSize = 0;
 			}
