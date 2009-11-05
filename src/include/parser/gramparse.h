@@ -93,8 +93,6 @@ typedef struct base_yy_extra_type
 	 */
 
 	List	   *parsetree;		/* final parse result is delivered here */
-
-	bool		QueryIsRule;	/* signals we are parsing CREATE RULE */
 } base_yy_extra_type;
 
 /*

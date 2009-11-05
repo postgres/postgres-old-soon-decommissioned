@@ -361,10 +361,10 @@ UpdateRangeTableOfViewParse(Oid viewOid, Query *viewParse)
 	 * OLD first, then NEW....
 	 */
 	rt_entry1 = addRangeTableEntryForRelation(NULL, viewRel,
-											  makeAlias("*OLD*", NIL),
+											  makeAlias("old", NIL),
 											  false, false);
 	rt_entry2 = addRangeTableEntryForRelation(NULL, viewRel,
-											  makeAlias("*NEW*", NIL),
+											  makeAlias("new", NIL),
 											  false, false);
 	/* Must override addRangeTableEntry's default access-check flags */
 	rt_entry1->requiredPerms = 0;

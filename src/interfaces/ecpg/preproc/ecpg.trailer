@@ -28,16 +28,6 @@ CreateAsStmt: CREATE OptTemp TABLE create_as_target AS {FoundInto = 0;} SelectSt
 		}
 	;
 
-RuleStmt: CREATE opt_or_replace RULE name AS
-		{QueryIsRule = 1;}
-		ON event TO qualified_name where_clause
-		DO opt_instead RuleActionList
-		{
-			QueryIsRule=0;
-			$$ = cat_str(12, make_str("create"), $2, make_str("rule"), $4, make_str("as on"), $8, make_str("to"), $10, $11, make_str("do"), $13, $14);
-		}
-	;
-
 at: AT connection_object
                 {
                         connection = $2;

@@ -601,9 +601,9 @@ checkRuleResultList(List *targetList, TupleDesc resultDesc, bool isSelect)
  *		Recursively scan a query or expression tree and set the checkAsUser
  *		field to the given userid in all rtable entries.
  *
- * Note: for a view (ON SELECT rule), the checkAsUser field of the *OLD*
+ * Note: for a view (ON SELECT rule), the checkAsUser field of the OLD
  * RTE entry will be overridden when the view rule is expanded, and the
- * checkAsUser field of the *NEW* entry is irrelevant because that entry's
+ * checkAsUser field of the NEW entry is irrelevant because that entry's
  * requiredPerms bits will always be zero.	However, for other types of rules
  * it's important to set these fields to match the rule owner.  So we just set
  * them always.

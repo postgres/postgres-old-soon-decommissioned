@@ -3572,14 +3572,7 @@ get_variable(Var *var, int levelsup, bool showstar, deparse_context *context)
 		if (schemaname)
 			appendStringInfo(buf, "%s.",
 							 quote_identifier(schemaname));
-
-		if (strcmp(refname, "*NEW*") == 0)
-			appendStringInfoString(buf, "new");
-		else if (strcmp(refname, "*OLD*") == 0)
-			appendStringInfoString(buf, "old");
-		else
-			appendStringInfoString(buf, quote_identifier(refname));
-
+		appendStringInfoString(buf, quote_identifier(refname));
 		if (attname || showstar)
 			appendStringInfoChar(buf, '.');
 	}

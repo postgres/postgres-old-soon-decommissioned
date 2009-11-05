@@ -3089,7 +3089,7 @@
    </row>
    <row>
     <entry><token>NEW</token></entry>
-    <entry>reserved</entry>
+    <entry></entry>
     <entry>reserved</entry>
     <entry>reserved</entry>
     <entry>reserved</entry>
@@ -3393,7 +3393,7 @@
    </row>
    <row>
     <entry><token>OLD</token></entry>
-    <entry>reserved</entry>
+    <entry></entry>
     <entry>reserved</entry>
     <entry>reserved</entry>
     <entry>reserved</entry>

@@ -51,7 +51,6 @@ $replace_types{'stmtblock'} = 'ignore';
 $replace_types{'stmtmulti'} = 'ignore';
 $replace_types{'CreateAsStmt'} = 'ignore';
 $replace_types{'DeallocateStmt'} = 'ignore';
-$replace_types{'RuleStmt'} = 'ignore';
 $replace_types{'ColLabel'} = 'ignore';
 $replace_types{'unreserved_keyword'} = 'ignore';
 $replace_types{'Sconst'} = 'ignore';

@@ -90,7 +90,6 @@
 %type <str> precision
 %type <str> prepared_name
 %type <str> quoted_ident_stringvar
-%type <str> RuleStmt
 %type <str> s_struct_union
 %type <str> server
 %type <str> server_name
