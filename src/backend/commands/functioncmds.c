@@ -2023,6 +2023,7 @@ ExecuteDoStmt(DoStmt *stmt)
 
 	codeblock->langOid = HeapTupleGetOid(languageTuple);
 	languageStruct = (Form_pg_language) GETSTRUCT(languageTuple);
+	codeblock->langIsTrusted = languageStruct->lanpltrusted;
 
 	if (languageStruct->lanpltrusted)
 	{
