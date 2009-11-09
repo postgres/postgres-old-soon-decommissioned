@@ -20,7 +20,7 @@
 #include "utils/portal.h"
 
 
-static char *fetch_param_value(ExprContext *econtext, int paramId);
+static char *fetch_cursor_param_value(ExprContext *econtext, int paramId);
 static ScanState *search_plan_tree(PlanState *node, Oid table_oid);
 
 
@@ -51,7 +51,7 @@ execCurrentOf(CurrentOfExpr *cexpr,
 	if (cexpr->cursor_name)
 		cursor_name = cexpr->cursor_name;
 	else
-		cursor_name = fetch_param_value(econtext, cexpr->cursor_param);
+		cursor_name = fetch_cursor_param_value(econtext, cexpr->cursor_param);
 
 	/* Fetch table name for possible use in error messages */
 	table_name = get_rel_name(table_oid);
@@ -203,12 +203,12 @@ execCurrentOf(CurrentOfExpr *cexpr,
 }
 
 /*
- * fetch_param_value
+ * fetch_cursor_param_value
  *
  * Fetch the string value of a param, verifying it is of type REFCURSOR.
  */
 static char *
-fetch_param_value(ExprContext *econtext, int paramId)
+fetch_cursor_param_value(ExprContext *econtext, int paramId)
 {
 	ParamListInfo paramInfo = econtext->ecxt_param_list_info;
 
