@@ -21,7 +21,7 @@ override CPPFLAGS := -DFRONTEND -I$(libpq_srcdir) $(CPPFLAGS)
 
 OBJS=	command.o common.o help.o input.o stringutils.o mainloop.o copy.o \
 	startup.o prompt.o variables.o large_obj.o print.o describe.o \
-	psqlscan.o tab-complete.o mbprint.o $(WIN32RES)
+	tab-complete.o mbprint.o $(WIN32RES)
 
 FLEXFLAGS = -Cfe
 
@@ -29,7 +29,7 @@ FLEXFLAGS = -Cfe
 all: submake-libpq submake-libpgport psql
 
 psql: $(OBJS) $(libpq_builddir)/libpq.a
-	$(CC) $(CFLAGS) $(OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@$(X)
+	$(CC) $(CFLAGS) $(OBJS) $(libpq_pgport) $(LDFLAGS) $(LIBS) -o $@$(X)
 
 help.o: $(srcdir)/sql_help.h
 
@@ -40,6 +40,9 @@ else
 $(srcdir)/sql_help.h:
 	@echo "*** Perl is needed to build psql help."
 endif
+
+# psqlscan is compiled as part of mainloop
+mainloop.o: psqlscan.c
 
 $(srcdir)/psqlscan.c: psqlscan.l
 ifdef FLEX
