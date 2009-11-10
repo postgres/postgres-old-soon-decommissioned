@@ -1365,9 +1365,9 @@ GET DIAGNOSTICS integer_var = ROW_COUNT;
 
      <literal>FOUND</literal> is a local variable within each
      <application>PL/pgSQL</application> function; any changes to it
-     affect only the current function.  <literal>FOUND</literal> is not
-     affected by <literal>EXECUTE</literal>, while <command>GET
-     DIAGNOSTICS</command> is effected.
+     affect only the current function.   <literal>EXECUTE</literal>
+     changes the output of <command>GET DIAGNOSTICS</command>, but
+     does not change the state of <literal>FOUND</literal>.
     </para>
 
    </sect2>
