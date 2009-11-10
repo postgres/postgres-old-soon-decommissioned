@@ -21,7 +21,7 @@ override CPPFLAGS := -I$(srcdir) -I$(libpq_srcdir) -I$(top_srcdir)/src/bin/pg_du
 
 OBJS=	command.o common.o help.o input.o stringutils.o mainloop.o copy.o \
 	startup.o prompt.o variables.o large_obj.o print.o describe.o \
-	psqlscan.o tab-complete.o mbprint.o dumputils.o $(WIN32RES)
+	tab-complete.o mbprint.o dumputils.o $(WIN32RES)
 
 EXTRA_OBJS = $(top_builddir)/src/backend/parser/keywords.o
 
@@ -45,6 +45,9 @@ else
 $(srcdir)/sql_help.h:
 	@echo "*** Perl is needed to build psql help."
 endif
+
+# psqlscan is compiled as part of mainloop
+mainloop.o: psqlscan.c
 
 $(srcdir)/psqlscan.c: psqlscan.l
 ifdef FLEX
