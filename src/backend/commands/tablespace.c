@@ -612,17 +612,6 @@ remove_tablespace_directories(Oid tablespaceoid, bool redo)
 							subfile)));
 
 		pfree(subfile);
-
-		/*
-		 * OS X 10.6 and 10.6.1 have a bug in readdir() that causes the
-		 * next call to fail after deleting the current element.  Hopefully
-		 * that will be fixed real soon, but for the moment we have this
-		 * ugly kluge to restart the directory scan.
-		 */
-#ifdef __darwin__
-		FreeDir(dirdesc);
-		dirdesc = AllocateDir(location);
-#endif
 	}
 
 	FreeDir(dirdesc);
