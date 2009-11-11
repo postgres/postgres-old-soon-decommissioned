@@ -2238,7 +2238,7 @@ static void
 add_role_attribute(PQExpBuffer buf, const char *const str)
 {
 	if (buf->len > 0)
-		appendPQExpBufferStr(buf, "\n");
+		appendPQExpBufferStr(buf, ", ");
 
 	appendPQExpBufferStr(buf, str);
 }
