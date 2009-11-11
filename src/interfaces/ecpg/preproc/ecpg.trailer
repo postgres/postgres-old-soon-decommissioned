@@ -275,7 +275,7 @@ prepared_name: name             {
  * Declare a prepared cursor. The syntax is different from the standard
  * declare statement, so we create a new rule.
  */
-ECPGCursorStmt:  DECLARE name cursor_options CURSOR opt_hold FOR prepared_name
+ECPGCursorStmt:  DECLARE cursor_name cursor_options CURSOR opt_hold FOR prepared_name
 		{
 			struct cursor *ptr, *this;
 			struct variable *thisquery = (struct variable *)mm_alloc(sizeof(struct variable));
@@ -947,7 +947,7 @@ ECPGFree:	SQL_FREE name	{ $$ = $2; }
 /*
  * open is an open cursor, at the moment this has to be removed
  */
-ECPGOpen: SQL_OPEN name opt_ecpg_using { $$ = $2; };
+ECPGOpen: SQL_OPEN cursor_name opt_ecpg_using { $$ = $2; };
 
 opt_ecpg_using: /*EMPTY*/	{ $$ = EMPTY; }
 		| ecpg_using		{ $$ = $1; }
