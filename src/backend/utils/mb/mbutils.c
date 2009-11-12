@@ -984,7 +984,14 @@ int
 GetPlatformEncoding(void)
 {
 	if (PlatformEncoding == NULL)
-		PlatformEncoding = &pg_enc2name_tbl[pg_get_encoding_from_locale("")];
+	{
+		/* try to determine encoding of server's environment locale */
+		int		encoding = pg_get_encoding_from_locale("");
+
+		if (encoding < 0)
+			encoding = PG_SQL_ASCII;
+		PlatformEncoding = &pg_enc2name_tbl[encoding];
+	}
 	return PlatformEncoding->encoding;
 }
 
