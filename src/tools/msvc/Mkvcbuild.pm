@@ -80,7 +80,7 @@ sub mkvcbuild
     $snowball->AddReference($postgres);
 
     my $plpgsql = $solution->AddProject('plpgsql','dll','PLs','src\pl\plpgsql\src');
-    $plpgsql->AddFiles('src\pl\plpgsql\src','scan.l','gram.y');
+    $plpgsql->AddFiles('src\pl\plpgsql\src', 'gram.y');
     $plpgsql->AddReference($postgres);
 
     if ($solution->{options}->{perl})

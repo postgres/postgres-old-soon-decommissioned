@@ -197,7 +197,6 @@ bool
 scanner_isspace(char ch)
 {
 	/* This must match scan.l's list of {space} characters */
-	/* and plpgsql's scan.l as well */
 	if (ch == ' ' ||
 		ch == '\t' ||
 		ch == '\n' ||

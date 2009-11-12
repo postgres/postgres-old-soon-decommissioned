@@ -398,7 +398,6 @@ EOF
         {
             my $of = $f;
             $of =~ s/\.l$/.c/;
-            $of =~ s{^src\\pl\\plpgsql\\src\\scan.c$}{src\\pl\\plpgsql\\src\\pl_scan.c};
             print F '>'
               . GenerateCustomTool('Running flex on ' . $f, 'src\tools\msvc\pgflex.bat ' . $f,$of)
               . '</File>' . "\n";
