@@ -31,10 +31,8 @@ extern bool escape_string_warning;
 extern PGDLLIMPORT bool standard_conforming_strings;
 
 
-/* Primary entry points for the raw parsing functions */
+/* Primary entry point for the raw parsing functions */
 extern List *raw_parser(const char *str);
-
-extern char *pg_parse_string_token(const char *token);
 
 /* Utility functions exported by gram.y (perhaps these should be elsewhere) */
 extern List *SystemFuncName(char *name);
