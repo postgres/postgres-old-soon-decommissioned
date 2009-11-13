@@ -26,6 +26,17 @@
 
 PG_MODULE_MAGIC;
 
+/* Custom GUC variable */
+static const struct config_enum_entry variable_conflict_options[] = {
+	{"error", PLPGSQL_RESOLVE_ERROR, false},
+	{"use_variable", PLPGSQL_RESOLVE_VARIABLE, false},
+	{"use_column", PLPGSQL_RESOLVE_COLUMN, false},
+	{NULL, 0, false}
+};
+
+int		plpgsql_variable_conflict = PLPGSQL_RESOLVE_ERROR;
+
+/* Hook for plugins */
 PLpgSQL_plugin **plugin_ptr = NULL;
 
 
@@ -44,6 +55,17 @@ _PG_init(void)
 		return;
 
 	pg_bindtextdomain(TEXTDOMAIN);
+
+	DefineCustomEnumVariable("plpgsql.variable_conflict",
+							 gettext_noop("Sets handling of conflicts between PL/pgSQL variable names and table column names."),
+							 NULL,
+							 &plpgsql_variable_conflict,
+							 PLPGSQL_RESOLVE_ERROR,
+							 variable_conflict_options,
+							 PGC_SUSET, 0,
+							 NULL, NULL);
+
+	EmitWarningsOnPlaceholders("plpgsql");
 
 	plpgsql_HashTableInit();
 	RegisterXactCallback(plpgsql_xact_cb, NULL);

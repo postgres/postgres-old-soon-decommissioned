@@ -5162,8 +5162,8 @@ dynamic_library_path = 'C:\tools\postgresql;H:\my_project\lib;$libdir'
      when using custom variables:
 
 <programlisting>
-custom_variable_classes = 'plr,plperl'
-plr.path = '/usr/lib/R'
+custom_variable_classes = 'plpgsql,plperl'
+plpgsql.variable_conflict = use_variable
 plperl.use_strict = true
 plruby.use_strict = true        # generates error: unknown class name
 </programlisting>
