@@ -169,6 +169,20 @@ transformExpr(ParseState *pstate, Node *expr)
 													targetType,
 													elementType,
 													targetTypmod);
+
+						/*
+						 * If the target array type is a domain, we still need
+						 * to check the domain constraint. (coerce_to_domain
+						 * is a no-op if targetType is not a domain)
+						 */
+						result = coerce_to_domain(result,
+												  InvalidOid,
+												  -1,
+												  targetType,
+												  COERCE_IMPLICIT_CAST,
+												  tc->location,
+												  false,
+												  true);
 						break;
 					}
 
