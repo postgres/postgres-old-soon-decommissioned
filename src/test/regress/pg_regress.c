@@ -1021,6 +1021,10 @@ spawn_process(const char *cmdline)
 	cmdline2 = malloc(strlen(cmdline) + 8);
 	sprintf(cmdline2, "cmd /c %s", cmdline);
 
+#ifndef __CYGWIN__
+	AddUserToTokenDacl(restrictedToken);
+#endif
+
 	if (!CreateProcessAsUser(restrictedToken,
 							 NULL,
 							 cmdline2,
@@ -1037,10 +1041,6 @@ spawn_process(const char *cmdline)
 				cmdline2, GetLastError());
 		exit_nicely(2);
 	}
-
-#ifndef __CYGWIN__
-	AddUserToDacl(pi.hProcess);
-#endif
 
 	free(cmdline2);
 
