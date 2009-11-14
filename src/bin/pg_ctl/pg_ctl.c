@@ -1396,6 +1396,10 @@ CreateRestrictedProcess(char *cmd, PROCESS_INFORMATION * processInfo, bool as_se
 		return 0;
 	}
 
+#ifndef __CYGWIN__
+    AddUserToTokenDacl(restrictedToken);
+#endif
+
 	r = CreateProcessAsUser(restrictedToken, NULL, cmd, NULL, NULL, TRUE, CREATE_SUSPENDED, NULL, NULL, &si, processInfo);
 
 	Kernel32Handle = LoadLibrary("KERNEL32.DLL");
@@ -1492,10 +1496,6 @@ CreateRestrictedProcess(char *cmd, PROCESS_INFORMATION * processInfo, bool as_se
 		}
 	}
 
-#ifndef __CYGWIN__
-    AddUserToDacl(processInfo->hProcess);
-#endif
-    
 	CloseHandle(restrictedToken);
 
 	ResumeThread(processInfo->hThread);
