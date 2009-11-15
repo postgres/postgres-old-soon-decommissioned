@@ -936,6 +936,7 @@ static const TParserStateActionItem actionTPS_InTag[] = {
 	{p_isdigit, 0, A_NEXT, TPS_Null, 0, NULL},
 	{p_iseqC, '=', A_NEXT, TPS_Null, 0, NULL},
 	{p_iseqC, '-', A_NEXT, TPS_Null, 0, NULL},
+	{p_iseqC, '_', A_NEXT, TPS_Null, 0, NULL},
 	{p_iseqC, '#', A_NEXT, TPS_Null, 0, NULL},
 	{p_iseqC, '/', A_NEXT, TPS_Null, 0, NULL},
 	{p_iseqC, ':', A_NEXT, TPS_Null, 0, NULL},
