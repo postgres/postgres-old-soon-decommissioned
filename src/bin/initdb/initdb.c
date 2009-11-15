@@ -2336,6 +2336,10 @@ CreateRestrictedProcess(char *cmd, PROCESS_INFORMATION * processInfo)
 		return 0;
 	}
 
+#ifndef __CYGWIN__
+    AddUserToTokenDacl(restrictedToken);
+#endif
+
 	if (!CreateProcessAsUser(restrictedToken,
 						NULL,
 						cmd,
@@ -2352,10 +2356,6 @@ CreateRestrictedProcess(char *cmd, PROCESS_INFORMATION * processInfo)
 		fprintf(stderr, "CreateProcessAsUser failed: %lu\n", GetLastError());
 		return 0;
 	}
-
-#ifndef __CYGWIN__
-	AddUserToDacl(processInfo->hProcess);
-#endif
 
 	return ResumeThread(processInfo->hThread);
 }
