@@ -835,6 +835,14 @@ typedef JoinPath NestPath;
 /*
  * A mergejoin path has these fields.
  *
+ * Unlike other path types, a MergePath node doesn't represent just a single
+ * run-time plan node: it can represent up to four.  Aside from the MergeJoin
+ * node itself, there can be a Sort node for the outer input, a Sort node
+ * for the inner input, and/or a Material node for the inner input.  We could
+ * represent these nodes by separate path nodes, but considering how many
+ * different merge paths are investigated during a complex join problem,
+ * it seems better to avoid unnecessary palloc overhead.
+ *
  * path_mergeclauses lists the clauses (in the form of RestrictInfos)
  * that will be used in the merge.
  *
@@ -846,15 +854,19 @@ typedef JoinPath NestPath;
  * outersortkeys (resp. innersortkeys) is NIL if the outer path
  * (resp. inner path) is already ordered appropriately for the
  * mergejoin.  If it is not NIL then it is a PathKeys list describing
- * the ordering that must be created by an explicit sort step.
+ * the ordering that must be created by an explicit Sort node.
+ *
+ * materialize_inner is TRUE if a Material node should be placed atop the
+ * inner input.  This may appear with or without an inner Sort step.
  */
 
 typedef struct MergePath
 {
 	JoinPath	jpath;
 	List	   *path_mergeclauses;		/* join clauses to be used for merge */
-	List	   *outersortkeys;	/* keys for explicit sort, if any */
-	List	   *innersortkeys;	/* keys for explicit sort, if any */
+	List	   *outersortkeys;			/* keys for explicit sort, if any */
+	List	   *innersortkeys;			/* keys for explicit sort, if any */
+	bool		materialize_inner;		/* add Materialize to inner? */
 } MergePath;
 
 /*

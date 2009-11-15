@@ -1443,13 +1443,12 @@ print_path(PlannerInfo *root, Path *path, int indent)
 		{
 			MergePath  *mp = (MergePath *) path;
 
-			if (mp->outersortkeys || mp->innersortkeys)
-			{
-				for (i = 0; i < indent; i++)
-					printf("\t");
-				printf("  sortouter=%d sortinner=%d\n",
-					   ((mp->outersortkeys) ? 1 : 0),
-					   ((mp->innersortkeys) ? 1 : 0));
+			for (i = 0; i < indent; i++)
+				printf("\t");
+			printf("  sortouter=%d sortinner=%d materializeinner=%d\n",
+				   ((mp->outersortkeys) ? 1 : 0),
+				   ((mp->innersortkeys) ? 1 : 0),
+				   ((mp->materialize_inner) ? 1 : 0));
 			}
 		}
 
