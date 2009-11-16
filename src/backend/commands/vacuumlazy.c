@@ -164,7 +164,7 @@ lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt,
 	if (IsAutoVacuumWorkerProcess() && Log_autovacuum_min_duration > 0)
 		starttime = GetCurrentTimestamp();
 
-	if (vacstmt->verbose)
+	if (vacstmt->options & VACOPT_VERBOSE)
 		elevel = INFO;
 	else
 		elevel = DEBUG2;
@@ -236,7 +236,8 @@ lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt,
 	pgstat_report_vacuum(RelationGetRelid(onerel),
 						 onerel->rd_rel->relisshared,
 						 vacrelstats->scanned_all,
-						 vacstmt->analyze, vacrelstats->rel_tuples);
+						 (vacstmt->options & VACOPT_ANALYZE) != 0,
+						 vacrelstats->rel_tuples);
 
 	/* and log the action if appropriate */
 	if (IsAutoVacuumWorkerProcess() && Log_autovacuum_min_duration >= 0)

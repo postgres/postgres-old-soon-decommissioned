@@ -1483,10 +1483,7 @@ _equalDropdbStmt(DropdbStmt *a, DropdbStmt *b)
 static bool
 _equalVacuumStmt(VacuumStmt *a, VacuumStmt *b)
 {
-	COMPARE_SCALAR_FIELD(vacuum);
-	COMPARE_SCALAR_FIELD(full);
-	COMPARE_SCALAR_FIELD(analyze);
-	COMPARE_SCALAR_FIELD(verbose);
+	COMPARE_SCALAR_FIELD(options);
 	COMPARE_SCALAR_FIELD(freeze_min_age);
 	COMPARE_SCALAR_FIELD(freeze_table_age);
 	COMPARE_NODE_FIELD(relation);

@@ -1815,7 +1815,7 @@ CreateCommandTag(Node *parsetree)
 			break;
 
 		case T_VacuumStmt:
-			if (((VacuumStmt *) parsetree)->vacuum)
+			if (((VacuumStmt *) parsetree)->options & VACOPT_VACUUM)
 				tag = "VACUUM";
 			else
 				tag = "ANALYZE";

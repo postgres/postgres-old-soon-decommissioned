@@ -2957,10 +2957,7 @@ _copyVacuumStmt(VacuumStmt *from)
 {
 	VacuumStmt *newnode = makeNode(VacuumStmt);
 
-	COPY_SCALAR_FIELD(vacuum);
-	COPY_SCALAR_FIELD(full);
-	COPY_SCALAR_FIELD(analyze);
-	COPY_SCALAR_FIELD(verbose);
+	COPY_SCALAR_FIELD(options);
 	COPY_SCALAR_FIELD(freeze_min_age);
 	COPY_SCALAR_FIELD(freeze_table_age);
 	COPY_NODE_FIELD(relation);
