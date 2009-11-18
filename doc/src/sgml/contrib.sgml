@@ -98,6 +98,7 @@ psql -d dbname -f <replaceable>SHAREDIR</>/contrib/<replaceable>module</>.sql
  &ltree;
  &oid2name;
  &pageinspect;
+ &passwordcheck;
  &pgbench;
  &pgbuffercache;
  &pgcrypto;
