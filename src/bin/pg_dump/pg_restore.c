@@ -430,7 +430,7 @@ usage(const char *progname)
 	printf(_("  --no-data-for-failed-tables\n"
 			 "                           do not restore data of tables that could not be\n"
 			 "                           created\n"));
-	printf(_("  --no-tablespaces         do not dump tablespace assignments\n"));
+	printf(_("  --no-tablespaces         do not restore tablespace assignments\n"));
 	printf(_("  --role=ROLENAME          do SET ROLE before restore\n"));
 	printf(_("  --use-set-session-authorization\n"
 			 "                           use SET SESSION AUTHORIZATION commands instead of\n"
