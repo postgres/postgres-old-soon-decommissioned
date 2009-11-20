@@ -66,6 +66,7 @@ typedef struct Trigger
 	int16		tgnattr;
 	int16	   *tgattr;
 	char	  **tgargs;
+	char	   *tgqual;
 } Trigger;
 
 typedef struct TriggerDesc

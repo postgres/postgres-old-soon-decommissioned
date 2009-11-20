@@ -104,7 +104,7 @@ extern PGDLLIMPORT int SessionReplicationRole;
 #define TRIGGER_FIRES_ON_REPLICA			'R'
 #define TRIGGER_DISABLED					'D'
 
-extern Oid CreateTrigger(CreateTrigStmt *stmt,
+extern Oid CreateTrigger(CreateTrigStmt *stmt, const char *queryString,
 			  Oid constraintOid, Oid indexOid, const char *prefix,
 			  bool checkPermissions);
 

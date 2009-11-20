@@ -1571,6 +1571,7 @@ typedef struct CreateTrigStmt
 	/* events uses the TRIGGER_TYPE bits defined in catalog/pg_trigger.h */
 	int16		events;			/* INSERT/UPDATE/DELETE/TRUNCATE */
 	List	   *columns;		/* column names, or NIL for all columns */
+	Node	   *whenClause;		/* qual expression, or NULL if none */
 
 	/* The following are used for constraint triggers (RI and unique checks) */
 	bool		isconstraint;	/* This is a constraint trigger */

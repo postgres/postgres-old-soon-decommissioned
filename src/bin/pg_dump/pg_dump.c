@@ -4305,10 +4305,15 @@ getTriggers(TableInfo tblinfo[], int numTables)
 		resetPQExpBuffer(query);
 		if (g_fout->remoteVersion >= 80500)
 		{
+			/*
+			 * NB: think not to use pretty=true in pg_get_triggerdef.  It
+			 * could result in non-forward-compatible dumps of WHEN clauses
+			 * due to under-parenthesization.
+			 */
 			appendPQExpBuffer(query,
 							  "SELECT tgname, "
 							  "tgfoid::pg_catalog.regproc AS tgfname, "
-						  "pg_catalog.pg_get_triggerdef(oid, true) AS tgdef, "
+							  "pg_catalog.pg_get_triggerdef(oid, false) AS tgdef, "
 							  "tgenabled, tableoid, oid "
 							  "FROM pg_catalog.pg_trigger t "
 							  "WHERE tgrelid = '%u'::pg_catalog.oid "
@@ -11323,6 +11328,7 @@ dumpTrigger(Archive *fout, TriggerInfo *tginfo)
 				appendPQExpBuffer(query, " OR UPDATE");
 			else
 				appendPQExpBuffer(query, " UPDATE");
+			findx++;
 		}
 		if (TRIGGER_FOR_TRUNCATE(tginfo->tgtype))
 		{
@@ -11330,6 +11336,7 @@ dumpTrigger(Archive *fout, TriggerInfo *tginfo)
 				appendPQExpBuffer(query, " OR TRUNCATE");
 			else
 				appendPQExpBuffer(query, " TRUNCATE");
+			findx++;
 		}
 		appendPQExpBuffer(query, " ON %s\n",
 						  fmtId(tbinfo->dobj.name));

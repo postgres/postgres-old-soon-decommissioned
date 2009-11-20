@@ -249,6 +249,7 @@ static TypeName *TableFuncTypeName(List *columns);
 
 %type <list>	TriggerEvents TriggerOneEvent
 %type <value>	TriggerFuncArg
+%type <node>	TriggerWhen
 
 %type <str>		copy_file_name
 				database_name access_method_clause access_method attr_name
@@ -3227,18 +3228,19 @@ AlterUserMappingStmt: ALTER USER MAPPING FOR auth_ident SERVER name alter_generi
 
 CreateTrigStmt:
 			CREATE TRIGGER name TriggerActionTime TriggerEvents ON
-			qualified_name TriggerForSpec EXECUTE PROCEDURE
-			func_name '(' TriggerFuncArgs ')'
+			qualified_name TriggerForSpec TriggerWhen
+			EXECUTE PROCEDURE func_name '(' TriggerFuncArgs ')'
 				{
 					CreateTrigStmt *n = makeNode(CreateTrigStmt);
 					n->trigname = $3;
 					n->relation = $7;
-					n->funcname = $11;
-					n->args = $13;
+					n->funcname = $12;
+					n->args = $14;
 					n->before = $4;
 					n->row = $8;
 					n->events = intVal(linitial($5));
 					n->columns = (List *) lsecond($5);
+					n->whenClause = $9;
 					n->isconstraint  = FALSE;
 					n->deferrable	 = FALSE;
 					n->initdeferred  = FALSE;
@@ -3246,20 +3248,20 @@ CreateTrigStmt:
 					$$ = (Node *)n;
 				}
 			| CREATE CONSTRAINT TRIGGER name AFTER TriggerEvents ON
-			qualified_name OptConstrFromTable
-			ConstraintAttributeSpec
-			FOR EACH ROW EXECUTE PROCEDURE
-			func_name '(' TriggerFuncArgs ')'
+			qualified_name OptConstrFromTable ConstraintAttributeSpec
+			FOR EACH ROW TriggerWhen
+			EXECUTE PROCEDURE func_name '(' TriggerFuncArgs ')'
 				{
 					CreateTrigStmt *n = makeNode(CreateTrigStmt);
 					n->trigname = $4;
 					n->relation = $8;
-					n->funcname = $16;
-					n->args = $18;
+					n->funcname = $17;
+					n->args = $19;
 					n->before = FALSE;
 					n->row = TRUE;
 					n->events = intVal(linitial($6));
 					n->columns = (List *) lsecond($6);
+					n->whenClause = $14;
 					n->isconstraint  = TRUE;
 					n->deferrable = ($10 & 1) != 0;
 					n->initdeferred = ($10 & 2) != 0;
@@ -3333,6 +3335,11 @@ TriggerForOpt:
 TriggerForType:
 			ROW										{ $$ = TRUE; }
 			| STATEMENT								{ $$ = FALSE; }
+		;
+
+TriggerWhen:
+			WHEN '(' a_expr ')'						{ $$ = $3; }
+			| /*EMPTY*/								{ $$ = NULL; }
 		;
 
 TriggerFuncArgs:

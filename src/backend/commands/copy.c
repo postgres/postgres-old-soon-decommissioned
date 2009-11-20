@@ -1799,8 +1799,12 @@ CopyFrom(CopyState cstate)
 	resultRelInfo->ri_RelationDesc = cstate->rel;
 	resultRelInfo->ri_TrigDesc = CopyTriggerDesc(cstate->rel->trigdesc);
 	if (resultRelInfo->ri_TrigDesc)
+	{
 		resultRelInfo->ri_TrigFunctions = (FmgrInfo *)
 			palloc0(resultRelInfo->ri_TrigDesc->numtriggers * sizeof(FmgrInfo));
+		resultRelInfo->ri_TrigWhenExprs = (List **)
+			palloc0(resultRelInfo->ri_TrigDesc->numtriggers * sizeof(List *));
+	}
 	resultRelInfo->ri_TrigInstrument = NULL;
 
 	ExecOpenIndices(resultRelInfo);
@@ -1810,7 +1814,8 @@ CopyFrom(CopyState cstate)
 	estate->es_result_relation_info = resultRelInfo;
 
 	/* Set up a tuple slot too */
-	slot = MakeSingleTupleTableSlot(tupDesc);
+	slot = ExecInitExtraTupleSlot(estate);
+	ExecSetSlotDescriptor(slot, tupDesc);
 
 	econtext = GetPerTupleExprContext(estate);
 
@@ -2198,7 +2203,7 @@ CopyFrom(CopyState cstate)
 	pfree(defmap);
 	pfree(defexprs);
 
-	ExecDropSingleTupleTableSlot(slot);
+	ExecResetTupleTable(estate->es_tupleTable, false);
 
 	ExecCloseIndices(resultRelInfo);
 

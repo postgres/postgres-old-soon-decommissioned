@@ -3180,6 +3180,7 @@ _copyCreateTrigStmt(CreateTrigStmt *from)
 	COPY_SCALAR_FIELD(row);
 	COPY_SCALAR_FIELD(events);
 	COPY_NODE_FIELD(columns);
+	COPY_NODE_FIELD(whenClause);
 	COPY_SCALAR_FIELD(isconstraint);
 	COPY_SCALAR_FIELD(deferrable);
 	COPY_SCALAR_FIELD(initdeferred);
