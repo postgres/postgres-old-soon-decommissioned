@@ -10885,6 +10885,7 @@ dumpTrigger(Archive *fout, TriggerInfo *tginfo)
 			appendPQExpBuffer(query, " OR UPDATE");
 		else
 			appendPQExpBuffer(query, " UPDATE");
+		findx++;
 	}
 	if (TRIGGER_FOR_TRUNCATE(tginfo->tgtype))
 	{
@@ -10892,6 +10893,7 @@ dumpTrigger(Archive *fout, TriggerInfo *tginfo)
 			appendPQExpBuffer(query, " OR TRUNCATE");
 		else
 			appendPQExpBuffer(query, " TRUNCATE");
+		findx++;
 	}
 	appendPQExpBuffer(query, " ON %s\n",
 					  fmtId(tbinfo->dobj.name));
