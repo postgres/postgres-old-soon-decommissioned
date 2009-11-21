@@ -51,18 +51,31 @@ $replace_types{'stmtblock'} = 'ignore';
 $replace_types{'stmtmulti'} = 'ignore';
 $replace_types{'CreateAsStmt'} = 'ignore';
 $replace_types{'DeallocateStmt'} = 'ignore';
+$replace_types{'ColId'} = 'ignore';
+$replace_types{'type_function_name'} = 'ignore';
 $replace_types{'ColLabel'} = 'ignore';
-$replace_types{'unreserved_keyword'} = 'ignore';
 $replace_types{'Sconst'} = 'ignore';
 
-# some production rules have to be ignored or replaced
-$replace_line{'fetch_direction'} = 'ignore';
-$replace_line{"opt_array_boundsopt_array_bounds'['Iconst']'"} = 'ignore';
+# these replace_line commands excise certain keywords from the core keyword
+# lists.  Be sure to account for these in ColLabel and related productions.
+$replace_line{'unreserved_keywordCONNECTION'} = 'ignore';
+$replace_line{'unreserved_keywordCURRENT_P'} = 'ignore';
+$replace_line{'unreserved_keywordDAY_P'} = 'ignore';
+$replace_line{'unreserved_keywordHOUR_P'} = 'ignore';
+$replace_line{'unreserved_keywordINPUT_P'} = 'ignore';
+$replace_line{'unreserved_keywordMINUTE_P'} = 'ignore';
+$replace_line{'unreserved_keywordMONTH_P'} = 'ignore';
+$replace_line{'unreserved_keywordSECOND_P'} = 'ignore';
+$replace_line{'unreserved_keywordYEAR_P'} = 'ignore';
 $replace_line{'col_name_keywordCHAR_P'} = 'ignore';
 $replace_line{'col_name_keywordINT_P'} = 'ignore';
 $replace_line{'col_name_keywordVALUES'} = 'ignore';
 $replace_line{'reserved_keywordTO'} = 'ignore';
 $replace_line{'reserved_keywordUNION'} = 'ignore';
+
+# some other production rules have to be ignored or replaced
+$replace_line{'fetch_direction'} = 'ignore';
+$replace_line{"opt_array_boundsopt_array_bounds'['Iconst']'"} = 'ignore';
 $replace_line{'VariableShowStmtSHOWvar_name'} = 'SHOW var_name ecpg_into';
 $replace_line{'VariableShowStmtSHOWTIMEZONE'} = 'SHOW TIME ZONE ecpg_into';
 $replace_line{'VariableShowStmtSHOWTRANSACTIONISOLATIONLEVEL'} = 'SHOW TRANSACTION ISOLATION LEVEL ecpg_into';
