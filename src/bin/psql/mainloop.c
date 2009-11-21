@@ -14,6 +14,8 @@
 #include "input.h"
 #include "settings.h"
 
+#include "mb/pg_wchar.h"
+
 
 /*
  * Main processing loop for reading lines of input
@@ -166,6 +168,10 @@ MainLoop(FILE *source)
 		count_eof = 0;
 
 		pset.lineno++;
+
+		/* ignore UTF-8 Unicode byte-order mark */
+		if (pset.lineno == 1 && pset.encoding == PG_UTF8 && strncmp(line, "\xef\xbb\xbf", 3) == 0)
+			memmove(line, line + 3, strlen(line + 3) + 1);
 
 		/* nothing left on line? then ignore */
 		if (line[0] == '\0' && !psql_scan_in_quote(scan_state))
