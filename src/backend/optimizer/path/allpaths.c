@@ -1449,7 +1449,6 @@ print_path(PlannerInfo *root, Path *path, int indent)
 				   ((mp->outersortkeys) ? 1 : 0),
 				   ((mp->innersortkeys) ? 1 : 0),
 				   ((mp->materialize_inner) ? 1 : 0));
-			}
 		}
 
 		print_path(root, jp->outerjoinpath, indent + 1);
