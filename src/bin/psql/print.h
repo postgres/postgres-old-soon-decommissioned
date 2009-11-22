@@ -41,14 +41,30 @@ typedef enum printTextRule
 	PRINT_RULE_DATA				/* data line (hrule is unused here) */
 } printTextRule;
 
+typedef enum printTextLineWrap
+{
+	/* Line wrapping conditions */
+	PRINT_LINE_WRAP_NONE,		/* No wrapping */
+	PRINT_LINE_WRAP_WRAP,		/* Wraparound due to overlength line */
+	PRINT_LINE_WRAP_NEWLINE		/* Newline in data */
+} printTextLineWrap;
+
 typedef struct printTextFormat
 {
 	/* A complete line style */
 	const char *name;				/* for display purposes */
 	printTextLineFormat lrule[4];	/* indexed by enum printTextRule */
-	const char *midvrule_cont;	/* vertical line for continue after newline */
+	const char *midvrule_nl;	/* vertical line for continue after newline */
 	const char *midvrule_wrap;	/* vertical line for wrapped data */
 	const char *midvrule_blank;	/* vertical line for blank data */
+	const char *header_nl_left;	/* left mark after newline */
+	const char *header_nl_right; /* right mark for newline */
+	const char *nl_left;		/* left mark after newline */
+	const char *nl_right;		/* right mark for newline */
+	const char *wrap_left;		/* left mark after wrapped data */
+	const char *wrap_right;		/* right mark for wrapped data */
+	bool		wrap_right_border;	/* use right-hand border for wrap marks
+									 * when border=0? */
 } printTextFormat;
 
 typedef struct printTableOpt
@@ -125,6 +141,7 @@ typedef struct printQueryOpt
 
 
 extern const printTextFormat pg_asciiformat;
+extern const printTextFormat pg_asciiformat_old;
 extern const printTextFormat pg_utf8format;
 
 

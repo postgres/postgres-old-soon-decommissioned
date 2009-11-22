@@ -1795,11 +1795,13 @@ do_pset(const char *param, const char *value, printQueryOpt *popt, bool quiet)
 			;
 		else if (pg_strncasecmp("ascii", value, vallen) == 0)
 			popt->topt.line_style = &pg_asciiformat;
+		else if (pg_strncasecmp("old-ascii", value, vallen) == 0)
+			popt->topt.line_style = &pg_asciiformat_old;
 		else if (pg_strncasecmp("unicode", value, vallen) == 0)
 			popt->topt.line_style = &pg_utf8format;
 		else
 		{
-			psql_error("\\pset: allowed line styles are ascii, unicode\n");
+			psql_error("\\pset: allowed line styles are ascii, old-ascii, unicode\n");
 			return false;
 		}
 
