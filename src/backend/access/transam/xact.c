@@ -1864,6 +1864,7 @@ PrepareTransaction(void)
 	AtPrepare_Inval();
 	AtPrepare_Locks();
 	AtPrepare_PgStat();
+	AtPrepare_MultiXact();
 
 	/*
 	 * Here is where we really truly prepare.
@@ -1917,7 +1918,7 @@ PrepareTransaction(void)
 
 	PostPrepare_smgr();
 
-	AtEOXact_MultiXact();
+	PostPrepare_MultiXact(xid);
 
 	PostPrepare_Locks(xid);
 
