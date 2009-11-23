@@ -14,6 +14,7 @@
  */
 #include "postgres.h"
 
+#include "access/multixact.h"
 #include "access/twophase_rmgr.h"
 #include "commands/async.h"
 #include "pgstat.h"
@@ -29,7 +30,8 @@ const TwoPhaseCallback twophase_recover_callbacks[TWOPHASE_RM_MAX_ID + 1] =
 	NULL,						/* Inval */
 	NULL,						/* flat file update */
 	NULL,						/* notify/listen */
-	NULL						/* pgstat */
+	NULL,						/* pgstat */
+	multixact_twophase_recover	/* MultiXact */
 };
 
 const TwoPhaseCallback twophase_postcommit_callbacks[TWOPHASE_RM_MAX_ID + 1] =
@@ -39,7 +41,8 @@ const TwoPhaseCallback twophase_postcommit_callbacks[TWOPHASE_RM_MAX_ID + 1] =
 	inval_twophase_postcommit,	/* Inval */
 	flatfile_twophase_postcommit,		/* flat file update */
 	notify_twophase_postcommit, /* notify/listen */
-	pgstat_twophase_postcommit	/* pgstat */
+	pgstat_twophase_postcommit,	/* pgstat */
+	multixact_twophase_postcommit /* MultiXact */
 };
 
 const TwoPhaseCallback twophase_postabort_callbacks[TWOPHASE_RM_MAX_ID + 1] =
@@ -49,5 +52,6 @@ const TwoPhaseCallback twophase_postabort_callbacks[TWOPHASE_RM_MAX_ID + 1] =
 	NULL,						/* Inval */
 	NULL,						/* flat file update */
 	NULL,						/* notify/listen */
-	pgstat_twophase_postabort	/* pgstat */
+	pgstat_twophase_postabort,	/* pgstat */
+	multixact_twophase_postabort /* MultiXact */
 };
