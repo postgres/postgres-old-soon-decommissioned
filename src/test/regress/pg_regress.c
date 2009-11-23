@@ -65,9 +65,18 @@ static char *makeprog = MAKEPROG;
 static char *shellprog = SHELLPROG;
 #endif
 
-/* currently we can use the same diff switches on all platforms */
+/*
+ * On Windows we use -w in diff switches to avoid problems with inconsistent
+ * newline representation.  The actual result files will generally have
+ * Windows-style newlines, but the comparison files might or might not.
+ */
+#ifndef WIN32
 const char *basic_diff_opts = "";
 const char *pretty_diff_opts = "-C3";
+#else
+const char *basic_diff_opts = "-w";
+const char *pretty_diff_opts = "-w -C3";
+#endif
 
 /* options settable from command line */
 _stringlist *dblist = NULL;
