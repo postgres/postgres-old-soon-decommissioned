@@ -596,6 +596,10 @@ CREATE TABLE ttest (
 #include "executor/spi.h"       /* this is what you need to work with SPI */
 #include "commands/trigger.h"   /* ... and triggers */
 
+#ifdef PG_MODULE_MAGIC
+PG_MODULE_MAGIC;
+#endif
+
 extern Datum trigf(PG_FUNCTION_ARGS);
 
 PG_FUNCTION_INFO_V1(trigf);
