@@ -364,10 +364,11 @@ ECPGset_noind_null(enum ECPGttype type, void *ptr)
 static bool
 _check(unsigned char *ptr, int length)
 {
-	for (; length > 0 && ptr[--length] == 0xff;);
-	if (length <= 0)
-		return true;
-	return false;
+	for (length--; length >= 0; length--)
+		if (ptr[length] != 0xff)
+			return false;
+
+	return true;
 }
 
 bool
