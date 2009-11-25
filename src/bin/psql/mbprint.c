@@ -30,7 +30,7 @@
 
 typedef unsigned int pg_wchar;
 
-int
+static int
 pg_get_utf8_id(void)
 {
 	static int	utf8_id = -1;

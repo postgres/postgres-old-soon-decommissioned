@@ -2550,10 +2550,13 @@ setDecimalLocale(void)
 const printTextFormat *
 get_line_style(const printTableOpt *opt)
 {
+	/*
+	 * Note: this function mainly exists to preserve the convention that
+	 * a printTableOpt struct can be initialized to zeroes to get default
+	 * behavior.
+	 */
 	if (opt->line_style != NULL)
 		return opt->line_style;
-	else if (opt->encoding == pg_get_utf8_id())
-		return &pg_utf8format;
 	else
 		return &pg_asciiformat;
 }

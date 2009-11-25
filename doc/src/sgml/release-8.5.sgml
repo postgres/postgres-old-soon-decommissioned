@@ -410,8 +410,7 @@
          <emphasis>Add &quot;pset linestyle ascii/unicode&quot; option to psql,
          allowing our traditional ASCII-art style of table output to
          be upgraded to use Unicode box drawing characters if
-         desired. By default, psql will use the Unicode characters
-         whenever client_encoding is UTF8.</>
+         desired.
         </para>
        </listitem>
         <listitem>

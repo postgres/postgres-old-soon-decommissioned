@@ -59,7 +59,7 @@ psql_start_test(const char *testname,
 	add_stringlist_item(expectfiles, expectfile);
 
 	snprintf(psql_cmd, sizeof(psql_cmd),
-			 SYSTEMQUOTE "\"%s%spsql\" -X -a -q -P linestyle=ascii -d \"%s\" < \"%s\" > \"%s\" 2>&1" SYSTEMQUOTE,
+			 SYSTEMQUOTE "\"%s%spsql\" -X -a -q -d \"%s\" < \"%s\" > \"%s\" 2>&1" SYSTEMQUOTE,
 			 psqldir ? psqldir : "",
 			 psqldir ? "/" : "",
 			 dblist->str,
