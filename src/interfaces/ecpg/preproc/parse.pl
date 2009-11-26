@@ -74,7 +74,8 @@ $replace_line{'reserved_keywordTO'} = 'ignore';
 $replace_line{'reserved_keywordUNION'} = 'ignore';
 
 # some other production rules have to be ignored or replaced
-$replace_line{'fetch_direction'} = 'ignore';
+$replace_line{'fetch_argsFORWARDopt_from_incursor_name'} = 'ignore';
+$replace_line{'fetch_argsBACKWARDopt_from_incursor_name'} = 'ignore';
 $replace_line{"opt_array_boundsopt_array_bounds'['Iconst']'"} = 'ignore';
 $replace_line{'VariableShowStmtSHOWvar_name'} = 'SHOW var_name ecpg_into';
 $replace_line{'VariableShowStmtSHOWTIMEZONE'} = 'SHOW TIME ZONE ecpg_into';
