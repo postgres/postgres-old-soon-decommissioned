@@ -68,6 +68,7 @@
 #include "storage/ipc.h"
 #include "storage/proc.h"
 #include "tcop/tcopprot.h"
+#include "utils/guc.h"
 #include "utils/memutils.h"
 #include "utils/ps_status.h"
 
@@ -1798,6 +1799,16 @@ log_line_prefix(StringInfo buf, ErrorData *edata)
 		/* process the option */
 		switch (Log_line_prefix[i])
 		{
+			case 'a':
+				if (MyProcPort)
+				{
+					const char *appname = application_name;
+
+					if (appname == NULL || *appname == '\0')
+						appname = _("[unknown]");
+					appendStringInfo(buf, "%s", appname);
+				}
+				break;
 			case 'u':
 				if (MyProcPort)
 				{
@@ -2103,6 +2114,11 @@ write_csvlog(ErrorData *edata)
 		appendCSVLiteral(&buf, msgbuf.data);
 		pfree(msgbuf.data);
 	}
+	appendStringInfoCharMacro(&buf, ',');
+
+	/* application name */
+	if (application_name)
+		appendCSVLiteral(&buf, application_name);
 
 	appendStringInfoChar(&buf, '\n');
 

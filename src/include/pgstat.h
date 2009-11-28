@@ -564,6 +564,9 @@ typedef struct PgBackendStatus
 	/* Is backend currently waiting on an lmgr lock? */
 	bool		st_waiting;
 
+	/* application name; MUST be null-terminated */
+	char       *st_appname;
+
 	/* current command string; MUST be null-terminated */
 	char	   *st_activity;
 } PgBackendStatus;
@@ -641,7 +644,8 @@ extern void pgstat_report_analyze(Relation rel,
 extern void pgstat_initialize(void);
 extern void pgstat_bestart(void);
 
-extern void pgstat_report_activity(const char *what);
+extern void pgstat_report_activity(const char *cmd_str);
+extern void pgstat_report_appname(const char *appname);
 extern void pgstat_report_xact_timestamp(TimestampTz tstamp);
 extern void pgstat_report_waiting(bool waiting);
 extern const char *pgstat_get_backend_current_activity(int pid, bool checkUser);
