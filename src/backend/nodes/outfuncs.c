@@ -1544,6 +1544,7 @@ _outPlannerInfo(StringInfo str, PlannerInfo *node)
 	WRITE_NODE_FIELD(glob);
 	WRITE_UINT_FIELD(query_level);
 	WRITE_NODE_FIELD(join_rel_list);
+	WRITE_INT_FIELD(join_cur_level);
 	WRITE_NODE_FIELD(resultRelations);
 	WRITE_NODE_FIELD(init_plans);
 	WRITE_NODE_FIELD(cte_plan_ids);

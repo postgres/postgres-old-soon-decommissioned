@@ -88,9 +88,12 @@ geqo_eval(PlannerInfo *root, Gene *tour, int num_gene)
 	 * is one.	We can do this by just temporarily setting the link to NULL.
 	 * (If we are dealing with enough join rels, which we very likely are, a
 	 * new hash table will get built and used locally.)
+	 *
+	 * join_rel_level[] shouldn't be in use, so just Assert it isn't.
 	 */
 	savelength = list_length(root->join_rel_list);
 	savehash = root->join_rel_hash;
+	Assert(root->join_rel_level == NULL);
 
 	root->join_rel_hash = NULL;
 

@@ -142,6 +142,8 @@ query_planner(PlannerInfo *root, List *tlist,
 		palloc0(root->simple_rel_array_size * sizeof(RelOptInfo *));
 	root->join_rel_list = NIL;
 	root->join_rel_hash = NULL;
+	root->join_rel_level = NULL;
+	root->join_cur_level = 0;
 	root->canon_pathkeys = NIL;
 	root->left_join_clauses = NIL;
 	root->right_join_clauses = NIL;
