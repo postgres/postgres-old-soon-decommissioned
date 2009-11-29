@@ -1528,11 +1528,13 @@ compile_plperl_function(Oid fn_oid, bool is_trigger)
 
 		if (!uptodate)
 		{
+			hash_search(plperl_proc_hash, internal_proname,
+						HASH_REMOVE, NULL);
+			if (prodesc->reference)
+				SvREFCNT_dec(prodesc->reference);
 			free(prodesc->proname);
 			free(prodesc);
 			prodesc = NULL;
-			hash_search(plperl_proc_hash, internal_proname,
-						HASH_REMOVE, NULL);
 		}
 	}
 
