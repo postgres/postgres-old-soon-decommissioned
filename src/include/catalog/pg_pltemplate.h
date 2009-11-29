@@ -70,8 +70,8 @@ typedef FormData_pg_pltemplate *Form_pg_pltemplate;
 DATA(insert ( "plpgsql"		t t "plpgsql_call_handler" "plpgsql_inline_handler" "plpgsql_validator" "$libdir/plpgsql" _null_ ));
 DATA(insert ( "pltcl"		t t "pltcl_call_handler" _null_ _null_ "$libdir/pltcl" _null_ ));
 DATA(insert ( "pltclu"		f f "pltclu_call_handler" _null_ _null_ "$libdir/pltcl" _null_ ));
-DATA(insert ( "plperl"		t t "plperl_call_handler" _null_ "plperl_validator" "$libdir/plperl" _null_ ));
-DATA(insert ( "plperlu"		f f "plperl_call_handler" _null_ "plperl_validator" "$libdir/plperl" _null_ ));
+DATA(insert ( "plperl"		t t "plperl_call_handler" "plperl_inline_handler" "plperl_validator" "$libdir/plperl" _null_ ));
+DATA(insert ( "plperlu"		f f "plperl_call_handler" "plperl_inline_handler" "plperl_validator" "$libdir/plperl" _null_ ));
 DATA(insert ( "plpythonu"	f f "plpython_call_handler" _null_ _null_ "$libdir/plpython" _null_ ));
 
 #endif   /* PG_PLTEMPLATE_H */
