@@ -3223,6 +3223,13 @@ parseServiceInfo(PQconninfoOption *options, PQExpBuffer errorMessage)
 		}
 
 		fclose(f);
+
+		if (!group_found)
+		{
+			printfPQExpBuffer(errorMessage,
+							  libpq_gettext("definition of service \"%s\" not found\n"), service);
+			return 3;
+		}
 	}
 
 	return 0;
