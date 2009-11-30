@@ -3034,11 +3034,12 @@ my_set_returning_function(PG_FUNCTION_ARGS)
 {
     FuncCallContext  *funcctx;
     Datum             result;
-    MemoryContext     oldcontext;
     <replaceable>further declarations as needed</replaceable>
 
     if (SRF_IS_FIRSTCALL())
     {
+        MemoryContext oldcontext;
+
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx-&gt;multi_call_memory_ctx);
         /* One-time setup code appears here: */
@@ -3088,9 +3089,9 @@ retcomposite(PG_FUNCTION_ARGS)
     TupleDesc            tupdesc;
     AttInMetadata       *attinmeta;
 
-     /* stuff done only on the first call of the function */
-     if (SRF_IS_FIRSTCALL())
-     {
+    /* stuff done only on the first call of the function */
+    if (SRF_IS_FIRSTCALL())
+    {
         MemoryContext   oldcontext;
 
         /* create a function context for cross-call persistence */
