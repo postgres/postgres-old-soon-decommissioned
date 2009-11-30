@@ -1407,12 +1407,6 @@ PostgreSQL does not support platforms that require a special compiler
 for thread safety.])
 fi
 
-if test "$THREAD_SUPPORT" = no; then
-AC_MSG_ERROR([cannot enable threads on this platform
-This platform is known to not support thread-safe programs.  For details,
-compile and run src/bin/pg_thread_test.])
-fi
-
 # Check for *_r functions
 _CFLAGS="$CFLAGS"
 _LIBS="$LIBS"
