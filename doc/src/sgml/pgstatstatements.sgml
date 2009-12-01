@@ -176,23 +176,6 @@
 
    <varlistentry>
     <term>
-     <varname>pg_stat_statements.track_ddl</varname> (<type>boolean</type>)
-    </term>
-
-    <listitem>
-     <para>
-      <varname>pg_stat_statements.track_ddl</varname> controls whether DDL
-      commands are counted by the module.
-      Specify <literal>on</> to track DDL commands, which excludes <command>SELECT</>,
-      <command>INSERT</>, <command>UPDATE</> and <command>DELETE</> statements.
-      The default value is <literal>on</>.
-      Only superusers can change this setting.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term>
      <varname>pg_stat_statements.save</varname> (<type>boolean</type>)
     </term>
 
