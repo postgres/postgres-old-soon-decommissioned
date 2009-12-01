@@ -225,7 +225,7 @@ main(int argc, char *argv[])
 	/*
 	 * process file given by -f
 	 */
-	if (options.action == ACT_FILE && strcmp(options.action_string, "-") != 0)
+	if (options.action == ACT_FILE)
 	{
 		if (!options.no_psqlrc)
 			process_psqlrc(argv[0]);

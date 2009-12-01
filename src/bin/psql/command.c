@@ -1691,8 +1691,13 @@ process_file(char *filename, bool single_txn)
 	if (!filename)
 		return EXIT_FAILURE;
 
-	canonicalize_path(filename);
-	fd = fopen(filename, PG_BINARY_R);
+	if (strcmp(filename, "-") != 0)
+	{
+		canonicalize_path(filename);
+		fd = fopen(filename, PG_BINARY_R);
+	}
+	else
+		fd = stdin;
 
 	if (!fd)
 	{
