@@ -244,14 +244,6 @@ typedef enum
 	SETENV_STATE_IDLE
 } PGSetenvStatusType;
 
-/* PGAppnameStatusType defines the state of the PQAppname state machine */
-typedef enum
-{
-	APPNAME_STATE_CMD_SEND,		/* About to send the appname */
-	APPNAME_STATE_CMD_WAIT,		/* Waiting for above send to complete */
-	APPNAME_STATE_IDLE
-} PGAppnameStatusType;
-
 /* Typedef for the EnvironmentOptions[] array */
 typedef struct PQEnvironmentOption
 {
@@ -359,8 +351,8 @@ struct pg_conn
 	struct addrinfo *addr_cur;	/* the one currently being tried */
 	int			addrlist_family;	/* needed to know how to free addrlist */
 	PGSetenvStatusType setenv_state;	/* for 2.0 protocol only */
-	PGAppnameStatusType appname_state;
 	const PQEnvironmentOption *next_eo;
+	bool		send_appname;	/* okay to send application_name? */
 
 	/* Miscellaneous stuff */
 	int			be_pid;			/* PID of backend --- needed for cancels */
