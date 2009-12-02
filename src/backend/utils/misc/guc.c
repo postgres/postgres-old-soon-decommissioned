@@ -2541,7 +2541,7 @@ static struct config_string ConfigureNamesString[] =
 		{"application_name", PGC_USERSET, LOGGING,
 		 gettext_noop("Sets the application name to be reported in statistics and logs."),
 		 NULL,
-		 GUC_IS_NAME | GUC_NOT_IN_SAMPLE
+		 GUC_IS_NAME | GUC_REPORT | GUC_NOT_IN_SAMPLE
 		},
 		&application_name,
 		"", assign_application_name, NULL
