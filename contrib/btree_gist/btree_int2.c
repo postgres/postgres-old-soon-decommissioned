@@ -56,13 +56,18 @@ gbt_int2lt(const void *a, const void *b)
 static int
 gbt_int2key_cmp(const void *a, const void *b)
 {
+    int16KEY    *ia = (int16KEY*)(((Nsrt *) a)->t);
+	int16KEY    *ib = (int16KEY*)(((Nsrt *) b)->t);
 
-	if (*(int16 *) (&((Nsrt *) a)->t[0]) > *(int16 *) &(((Nsrt *) b)->t[0]))
-		return 1;
-	else if (*(int16 *) &(((Nsrt *) a)->t[0]) < *(int16 *) &(((Nsrt *) b)->t[0]))
-		return -1;
-	return 0;
+	if (ia->lower == ib->lower)
+	{
+		if (ia->upper == ib->upper)
+			return 0;
 
+		return (ia->upper > ib->upper) ? 1 : -1;
+	}
+
+	return (ia->lower > ib->lower) ? 1 : -1;
 }
 
 

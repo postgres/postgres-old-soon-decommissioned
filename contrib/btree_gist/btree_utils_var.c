@@ -444,8 +444,13 @@ gbt_vsrt_cmp(const void *a, const void *b, void *arg)
 	GBT_VARKEY_R ar = gbt_var_key_readable(((const Vsrt *) a)->t);
 	GBT_VARKEY_R br = gbt_var_key_readable(((const Vsrt *) b)->t);
 	const gbtree_vinfo *tinfo = (const gbtree_vinfo *) arg;
+	int res;
 
-	return (*tinfo->f_cmp) (ar.lower, br.lower);
+	res = (*tinfo->f_cmp) (ar.lower, br.lower);
+	if (res == 0)
+		return (*tinfo->f_cmp) (ar.upper, br.upper);
+
+	return res;
 }
 
 GIST_SPLITVEC *

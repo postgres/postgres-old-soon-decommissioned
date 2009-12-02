@@ -73,11 +73,15 @@ gbt_datelt(const void *a, const void *b)
 static int
 gbt_datekey_cmp(const void *a, const void *b)
 {
-	if (gbt_dategt((void *) &(((Nsrt *) a)->t[0]), (void *) &(((Nsrt *) b)->t[0])))
-		return 1;
-	else if (gbt_datelt((void *) &(((Nsrt *) a)->t[0]), (void *) &(((Nsrt *) b)->t[0])))
-		return -1;
-	return 0;
+	dateKEY *ia = (dateKEY*)(((Nsrt *) a)->t);	
+	dateKEY *ib = (dateKEY*)(((Nsrt *) b)->t);
+	int res;
+
+	res = DatumGetInt32(DirectFunctionCall2(date_cmp, DateADTGetDatum(ia->lower), DateADTGetDatum(ib->lower)));
+	if (res == 0)
+		return DatumGetInt32(DirectFunctionCall2(date_cmp, DateADTGetDatum(ia->upper), DateADTGetDatum(ib->upper)));
+
+	return res;
 }
 
 

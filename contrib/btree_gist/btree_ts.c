@@ -99,11 +99,15 @@ gbt_tslt(const void *a, const void *b)
 static int
 gbt_tskey_cmp(const void *a, const void *b)
 {
-	if (gbt_tsgt((void *) &(((Nsrt *) a)->t[0]), (void *) &(((Nsrt *) b)->t[0])))
-		return 1;
-	else if (gbt_tslt((void *) &(((Nsrt *) a)->t[0]), (void *) &(((Nsrt *) b)->t[0])))
-		return -1;
-	return 0;
+    tsKEY *ia = (tsKEY*)(((Nsrt *) a)->t);
+	tsKEY *ib = (tsKEY*)(((Nsrt *) b)->t);
+	int res;
+
+	res = DatumGetInt32(DirectFunctionCall2(timestamp_cmp, TimestampGetDatumFast(ia->lower), TimestampGetDatumFast(ib->lower)));
+	if (res == 0)
+		return DatumGetInt32(DirectFunctionCall2(timestamp_cmp, TimestampGetDatumFast(ia->upper), TimestampGetDatumFast(ib->upper)));
+
+	return res;
 }
 
 

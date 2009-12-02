@@ -63,13 +63,15 @@ gbt_macadlt(const void *a, const void *b)
 static int
 gbt_macadkey_cmp(const void *a, const void *b)
 {
-	return DatumGetInt32(
-						 DirectFunctionCall2(
-											 macaddr_cmp,
-										PointerGetDatum(&((Nsrt *) a)->t[0]),
-										 PointerGetDatum(&((Nsrt *) b)->t[0])
-											 )
-		);
+	macKEY *ia = (macKEY*)(((Nsrt *) a)->t);
+	macKEY *ib = (macKEY*)(((Nsrt *) b)->t);
+	int res;
+
+	res = DatumGetInt32(DirectFunctionCall2(macaddr_cmp, MacaddrPGetDatum(&ia->lower), MacaddrPGetDatum(&ib->lower)));
+	if (res == 0)
+		return DatumGetInt32(DirectFunctionCall2(macaddr_cmp, MacaddrPGetDatum(&ia->upper), MacaddrPGetDatum(&ib->upper)));
+
+	return res;
 }
 
 

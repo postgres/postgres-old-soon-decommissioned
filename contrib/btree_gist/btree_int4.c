@@ -57,13 +57,18 @@ gbt_int4lt(const void *a, const void *b)
 static int
 gbt_int4key_cmp(const void *a, const void *b)
 {
+	int32KEY	*ia = (int32KEY*)(((Nsrt *) a)->t);
+	int32KEY	*ib = (int32KEY*)(((Nsrt *) b)->t);
 
-	if (*(int32 *) &(((Nsrt *) a)->t[0]) > *(int32 *) &(((Nsrt *) b)->t[0]))
-		return 1;
-	else if (*(int32 *) &(((Nsrt *) a)->t[0]) < *(int32 *) &(((Nsrt *) b)->t[0]))
-		return -1;
-	return 0;
+	if (ia->lower == ib->lower)
+	{
+		if (ia->upper == ib->upper)
+			return 0;
 
+		return (ia->upper > ib->upper) ? 1 : -1;
+	}
+
+	return (ia->lower > ib->lower) ? 1 : -1;
 }
 
 
