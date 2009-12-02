@@ -4709,10 +4709,9 @@ ECPG = ecpg
   </para>
 
   <para>
-   The <application>ecpg</application> library is thread-safe if it is built
-   using the <option>--enable-thread-safety</> command-line option to
-   <filename>configure</filename>.  (You might need to use other threading
-   command-line options to compile your client code.)
+   The <application>ecpg</application> library is thread-safe by
+   default.  However, you might need to use some threading
+   command-line options to compile your client code.
   </para>
  </sect1>
 
