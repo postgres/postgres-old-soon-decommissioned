@@ -20,6 +20,7 @@
 #define RESOWNER_H
 
 #include "storage/buf.h"
+#include "storage/fd.h"
 #include "utils/catcache.h"
 #include "utils/rel.h"
 
@@ -106,5 +107,12 @@ extern void ResourceOwnerRememberRelationRef(ResourceOwner owner,
 								 Relation rel);
 extern void ResourceOwnerForgetRelationRef(ResourceOwner owner,
 							   Relation rel);
+
+/* support for temporary file management */
+extern void ResourceOwnerEnlargeFiles(ResourceOwner owner);
+extern void ResourceOwnerRememberFile(ResourceOwner owner,
+						  File file);
+extern void ResourceOwnerForgetFile(ResourceOwner owner,
+						File file);
 
 #endif   /* RESOWNER_H */
