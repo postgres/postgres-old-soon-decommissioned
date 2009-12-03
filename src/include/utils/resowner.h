@@ -20,6 +20,7 @@
 #define RESOWNER_H
 
 #include "storage/buf.h"
+#include "storage/fd.h"
 #include "utils/catcache.h"
 #include "utils/plancache.h"
 
@@ -120,5 +121,12 @@ extern void ResourceOwnerRememberTupleDesc(ResourceOwner owner,
 							   TupleDesc tupdesc);
 extern void ResourceOwnerForgetTupleDesc(ResourceOwner owner,
 							 TupleDesc tupdesc);
+
+/* support for temporary file management */
+extern void ResourceOwnerEnlargeFiles(ResourceOwner owner);
+extern void ResourceOwnerRememberFile(ResourceOwner owner,
+						  File file);
+extern void ResourceOwnerForgetFile(ResourceOwner owner,
+						File file);
 
 #endif   /* RESOWNER_H */
