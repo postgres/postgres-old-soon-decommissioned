@@ -238,6 +238,7 @@ extern Datum aclcontains(PG_FUNCTION_ARGS);
 extern Datum makeaclitem(PG_FUNCTION_ARGS);
 extern Datum aclitem_eq(PG_FUNCTION_ARGS);
 extern Datum hash_aclitem(PG_FUNCTION_ARGS);
+extern Datum aclexplode(PG_FUNCTION_ARGS);
 
 /*
  * prototypes for functions in aclchk.c
