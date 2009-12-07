@@ -354,6 +354,11 @@ su - postgres
    Change into that directory for the rest
    of the installation procedure.
   </para>
+
+  <para>
+   You can also get the source directly from the version control repository, see
+   <xref linkend="cvs">.
+  </para>
  </sect1>
 ]]>
 
