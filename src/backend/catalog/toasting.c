@@ -239,6 +239,9 @@ create_toast_table(Relation rel, Oid toastOid, Oid toastIndexOid,
 	indexInfo->ii_ExpressionsState = NIL;
 	indexInfo->ii_Predicate = NIL;
 	indexInfo->ii_PredicateState = NIL;
+	indexInfo->ii_ExclusionOps = NULL;
+	indexInfo->ii_ExclusionProcs = NULL;
+	indexInfo->ii_ExclusionStrats = NULL;
 	indexInfo->ii_Unique = true;
 	indexInfo->ii_ReadyForInserts = true;
 	indexInfo->ii_Concurrent = false;

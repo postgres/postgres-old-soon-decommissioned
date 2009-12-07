@@ -321,6 +321,12 @@ extern void ExecOpenIndices(ResultRelInfo *resultRelInfo);
 extern void ExecCloseIndices(ResultRelInfo *resultRelInfo);
 extern List *ExecInsertIndexTuples(TupleTableSlot *slot, ItemPointer tupleid,
 					  EState *estate, bool is_vacuum_full);
+extern bool check_exclusion_constraint(Relation heap, Relation index,
+									   IndexInfo *indexInfo,
+									   ItemPointer tupleid,
+									   Datum *values, bool *isnull,
+									   EState *estate,
+									   bool newIndex, bool errorOK);
 
 extern void RegisterExprContextCallback(ExprContext *econtext,
 							ExprContextCallbackFunction function,

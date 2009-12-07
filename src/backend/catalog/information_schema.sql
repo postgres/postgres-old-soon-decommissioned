@@ -1666,6 +1666,7 @@ CREATE VIEW table_constraints AS
 
     WHERE nc.oid = c.connamespace AND nr.oid = r.relnamespace
           AND c.conrelid = r.oid
+          AND c.contype <> 'x'  -- ignore nonstandard exclusion constraints
           AND r.relkind = 'r'
           AND (NOT pg_is_other_temp_schema(nr.oid))
           AND (pg_has_role(r.relowner, 'USAGE')

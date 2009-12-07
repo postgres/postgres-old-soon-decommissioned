@@ -120,6 +120,12 @@ CATALOG(pg_constraint,2606)
 	Oid			conffeqop[1];
 
 	/*
+	 * If an exclusion constraint, the OIDs of the exclusion operators for
+	 * each column of the constraint
+	 */
+	Oid			conexclop[1];
+
+	/*
 	 * If a check constraint, nodeToString representation of expression
 	 */
 	text		conbin;
@@ -141,7 +147,7 @@ typedef FormData_pg_constraint *Form_pg_constraint;
  *		compiler constants for pg_constraint
  * ----------------
  */
-#define Natts_pg_constraint					21
+#define Natts_pg_constraint					22
 #define Anum_pg_constraint_conname			1
 #define Anum_pg_constraint_connamespace		2
 #define Anum_pg_constraint_contype			3
@@ -161,8 +167,9 @@ typedef FormData_pg_constraint *Form_pg_constraint;
 #define Anum_pg_constraint_conpfeqop		17
 #define Anum_pg_constraint_conppeqop		18
 #define Anum_pg_constraint_conffeqop		19
-#define Anum_pg_constraint_conbin			20
-#define Anum_pg_constraint_consrc			21
+#define Anum_pg_constraint_conexclop		20
+#define Anum_pg_constraint_conbin			21
+#define Anum_pg_constraint_consrc			22
 
 
 /* Valid values for contype */
@@ -170,6 +177,7 @@ typedef FormData_pg_constraint *Form_pg_constraint;
 #define CONSTRAINT_FOREIGN			'f'
 #define CONSTRAINT_PRIMARY			'p'
 #define CONSTRAINT_UNIQUE			'u'
+#define CONSTRAINT_EXCLUSION		'x'
 
 /*
  * Valid values for confupdtype and confdeltype are the FKCONSTR_ACTION_xxx
@@ -209,6 +217,7 @@ extern Oid CreateConstraintEntry(const char *constraintName,
 					  char foreignUpdateType,
 					  char foreignDeleteType,
 					  char foreignMatchType,
+					  const Oid *exclOp,
 					  Node *conExpr,
 					  const char *conBin,
 					  const char *conSrc,

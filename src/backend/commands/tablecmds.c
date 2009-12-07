@@ -4603,6 +4603,7 @@ ATExecAddIndex(AlteredTableInfo *tab, Relation rel,
 				stmt->indexParams,		/* parameters */
 				(Expr *) stmt->whereClause,
 				stmt->options,
+				stmt->excludeOpNames,
 				stmt->unique,
 				stmt->primary,
 				stmt->isconstraint,
@@ -5035,6 +5036,7 @@ ATAddForeignKeyConstraint(AlteredTableInfo *tab, Relation rel,
 									  fkconstraint->fk_upd_action,
 									  fkconstraint->fk_del_action,
 									  fkconstraint->fk_matchtype,
+									  NULL,		/* no exclusion constraint */
 									  NULL,		/* no check constraint */
 									  NULL,
 									  NULL,

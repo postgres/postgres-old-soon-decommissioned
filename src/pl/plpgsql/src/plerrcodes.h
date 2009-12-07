@@ -304,6 +304,10 @@
 },
 
 {
+	"exclusion_violation", ERRCODE_EXCLUSION_VIOLATION
+},
+
+{
 	"invalid_cursor_state", ERRCODE_INVALID_CURSOR_STATE
 },
 

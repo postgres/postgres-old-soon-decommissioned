@@ -1100,6 +1100,10 @@ index_register(Oid heap,
 	newind->il_info->ii_Predicate = (List *)
 		copyObject(indexInfo->ii_Predicate);
 	newind->il_info->ii_PredicateState = NIL;
+	/* no exclusion constraints at bootstrap time, so no need to copy */
+	Assert(indexInfo->ii_ExclusionOps == NULL);
+	Assert(indexInfo->ii_ExclusionProcs == NULL);
+	Assert(indexInfo->ii_ExclusionStrats == NULL);
 
 	newind->il_next = ILHead;
 	ILHead = newind;

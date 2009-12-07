@@ -43,6 +43,10 @@ extern Oid	RelationGetOidIndex(Relation relation);
 extern List *RelationGetIndexExpressions(Relation relation);
 extern List *RelationGetIndexPredicate(Relation relation);
 extern Bitmapset *RelationGetIndexAttrBitmap(Relation relation);
+extern void RelationGetExclusionInfo(Relation indexRelation,
+									 Oid **operators,
+									 Oid **procs,
+									 uint16 **strategies);
 
 extern void RelationSetIndexList(Relation relation,
 					 List *indexIds, Oid oidIndex);

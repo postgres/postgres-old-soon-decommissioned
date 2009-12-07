@@ -640,6 +640,12 @@
 <entry>check_violation</entry>
 </row>
 
+<row>
+<entry><literal>23P01</literal></entry>
+<entry>EXCLUSION VIOLATION</entry>
+<entry>exclusion_violation</entry>
+</row>
+
 
 <row>
 <entry spanname="span13"><emphasis role="bold">Class 24 &mdash; Invalid Cursor State</></entry>
