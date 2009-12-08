@@ -2730,8 +2730,8 @@ cc-1020 cc: ERROR File = pqcomm.c, Line = 427
      example, gzip, gunzip, GNU Make, Flex, and Bison are all
      included.  For UnixWare 7.1, this CD is now labeled "Open License
      Software Supplement".  If you do not have this CD, the software
-     on it is available via anonymous FTP
-     from <ulink url="ftp://ftp.sco.com/skunkware"></ulink>.
+     on it is available
+     from <ulink url="http://www.sco.com/skunkware/"></ulink>.
     </para>
 
     <para>
