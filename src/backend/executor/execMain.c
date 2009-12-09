@@ -782,6 +782,17 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 		TupleDesc	tupdesc;
 
 		/*
+		 * Security check: disallow creating temp tables from
+		 * security-restricted code.  This is needed because calling code
+		 * might not expect untrusted tables to appear in pg_temp at the front
+		 * of its search path.
+		 */
+		if (parseTree->into->istemp && InSecurityRestrictedOperation())
+			ereport(ERROR,
+					(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
+					 errmsg("cannot create temporary table within security-restricted operation")));
+
+		/*
 		 * find namespace to create in, check permissions
 		 */
 		intoName = parseTree->into->relname;
