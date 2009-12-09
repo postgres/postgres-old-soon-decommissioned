@@ -189,7 +189,9 @@ extern void ProcessConfigFile(GucContext context);
 extern void InitializeGUCOptions(void);
 extern bool SelectConfigFiles(const char *userDoption, const char *progname);
 extern void ResetAllOptions(void);
-extern void AtEOXact_GUC(bool isCommit, bool isSubXact);
+extern void AtStart_GUC(void);
+extern int	NewGUCNestLevel(void);
+extern void AtEOXact_GUC(bool isCommit, int nestLevel);
 extern void BeginReportingGUCOptions(void);
 extern void ParseLongOption(const char *string, char **name, char **value);
 extern bool set_config_option(const char *name, const char *value,
