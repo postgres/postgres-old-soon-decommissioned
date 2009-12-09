@@ -223,6 +223,10 @@ extern void check_stack_depth(void);
  *			POSTGRES directory path definitions.							 *
  *****************************************************************************/
 
+/* flags to be OR'd to form sec_context */
+#define SECURITY_LOCAL_USERID_CHANGE	0x0001
+#define SECURITY_RESTRICTED_OPERATION	0x0002
+
 extern char *DatabasePath;
 
 /* in utils/misc/database.c */
@@ -234,9 +238,12 @@ extern void SetDatabasePath(const char *path);
 extern char *GetUserNameFromId(AclId userid);
 extern AclId GetUserId(void);
 extern AclId GetSessionUserId(void);
+extern void GetUserIdAndSecContext(AclId *userid, int *sec_context);
+extern void SetUserIdAndSecContext(AclId userid, int sec_context);
+extern bool InLocalUserIdChange(void);
+extern bool InSecurityRestrictedOperation(void);
 extern void GetUserIdAndContext(AclId *userid, bool *sec_def_context);
 extern void SetUserIdAndContext(AclId userid, bool sec_def_context);
-extern bool InSecurityDefinerContext(void);
 extern void InitializeSessionUserId(const char *username);
 extern void InitializeSessionUserIdStandalone(void);
 extern void SetSessionAuthorization(AclId userid, bool is_superuser);

@@ -149,6 +149,8 @@ extern void DefineCustomIntVariable(
 						const char *short_desc,
 						const char *long_desc,
 						int *valueAddr,
+						int minValue,
+						int maxValue,
 						GucContext context,
 						GucIntAssignHook assign_hook,
 						GucShowHook show_hook);
@@ -158,6 +160,8 @@ extern void DefineCustomRealVariable(
 						 const char *short_desc,
 						 const char *long_desc,
 						 double *valueAddr,
+						 double minValue,
+						 double maxValue,
 						 GucContext context,
 						 GucRealAssignHook assign_hook,
 						 GucShowHook show_hook);
@@ -180,7 +184,9 @@ extern void ProcessConfigFile(GucContext context);
 extern void InitializeGUCOptions(void);
 extern bool SelectConfigFiles(const char *userDoption, const char *progname);
 extern void ResetAllOptions(void);
-extern void AtEOXact_GUC(bool isCommit, bool isSubXact);
+extern void AtStart_GUC(void);
+extern int	NewGUCNestLevel(void);
+extern void AtEOXact_GUC(bool isCommit, int nestLevel);
 extern void BeginReportingGUCOptions(void);
 extern void ParseLongOption(const char *string, char **name, char **value);
 extern bool set_config_option(const char *name, const char *value,
