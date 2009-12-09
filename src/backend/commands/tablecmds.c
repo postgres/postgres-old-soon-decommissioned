@@ -379,6 +379,16 @@ DefineRelation(CreateStmt *stmt, char relkind)
 				 errmsg("ON COMMIT can only be used on temporary tables")));
 
 	/*
+	 * Security check: disallow creating temp tables from security-restricted
+	 * code.  This is needed because calling code might not expect untrusted
+	 * tables to appear in pg_temp at the front of its search path.
+	 */
+	if (stmt->relation->istemp && InSecurityRestrictedOperation())
+		ereport(ERROR,
+				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
+				 errmsg("cannot create temporary table within security-restricted operation")));
+
+	/*
 	 * Look up the namespace in which we are supposed to create the relation.
 	 * Check we have permission to create there. Skip check if bootstrapping,
 	 * since permissions machinery may not be working yet.
