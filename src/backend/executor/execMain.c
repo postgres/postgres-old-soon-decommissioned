@@ -2659,12 +2659,27 @@ OpenIntoRel(QueryDesc *queryDesc)
 	Assert(into);
 
 	/*
+	 * XXX This code needs to be kept in sync with DefineRelation().
+	 * Maybe we should try to use that function instead.
+	 */
+
+	/*
 	 * Check consistency of arguments
 	 */
 	if (into->onCommit != ONCOMMIT_NOOP && !into->rel->istemp)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_TABLE_DEFINITION),
 				 errmsg("ON COMMIT can only be used on temporary tables")));
+
+	/*
+	 * Security check: disallow creating temp tables from security-restricted
+	 * code.  This is needed because calling code might not expect untrusted
+	 * tables to appear in pg_temp at the front of its search path.
+	 */
+	if (into->rel->istemp && InSecurityRestrictedOperation())
+		ereport(ERROR,
+				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
+				 errmsg("cannot create temporary table within security-restricted operation")));
 
 	/*
 	 * Find namespace to create in, check its permissions
