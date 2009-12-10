@@ -135,6 +135,43 @@ $$ LANGUAGE plpythonu;
   </para>
 
   <para>
+   SQL array values are passed into PL/Python as a Python list.  To
+   return an SQL array value out of a PL/Python function, return a
+   Python sequence, for example a list or tuple:
+
+<programlisting>
+CREATE FUNCTION return_arr()
+  RETURNS int[]
+AS $$
+return (1, 2, 3, 4, 5)
+$$ LANGUAGE plpythonu;
+
+SELECT return_arr();
+ return_arr  
+-------------
+ {1,2,3,4,5}
+(1 row)
+</programlisting>
+
+   Note that in Python, strings are sequences, which can have
+   undesirable effects that might be familiar to Python programmers:
+
+<programlisting>
+CREATE FUNCTION return_str_arr()
+  RETURNS varchar[]
+AS $$
+return "hello"
+$$ LANGUAGE plpythonu;
+
+SELECT return_str_arr();
+ return_str_arr
+----------------
+ {h,e,l,l,o}
+(1 row)
+</programlisting>
+  </para>
+
+  <para>
    Composite-type arguments are passed to the function as Python mappings. The
    element names of the mapping are the attribute names of the composite type.
    If an attribute in the passed row has the null value, it has the value
