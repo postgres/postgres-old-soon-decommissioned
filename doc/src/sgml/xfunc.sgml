@@ -1353,7 +1353,8 @@ CREATE FUNCTION test(int, int) RETURNS int
 
    <para>
     Normally, all internal functions present in the
-    server are declared during the initialization of the database cluster (<command>initdb</command>),
+    server are declared during the initialization of the database cluster
+    (see <xref linkend="creating-cluster">),
     but a user could use <command>CREATE FUNCTION</command>
     to create additional alias names for an internal function.
     Internal functions are declared in <command>CREATE FUNCTION</command>

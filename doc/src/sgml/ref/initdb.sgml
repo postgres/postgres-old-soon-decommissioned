@@ -310,9 +310,19 @@ PostgreSQL documentation
  </refsect1>
 
  <refsect1>
+  <title>Notes</title>
+
+  <para>
+   <command>initdb</command> can also be invoked via
+   <command>pg_ctl initdb</command>.
+  </para>
+ </refsect1>
+
+ <refsect1>
   <title>See Also</title>
 
   <simplelist type="inline">
+   <member><xref linkend="app-pg-ctl"></member>
    <member><xref linkend="app-postgres"></member>
   </simplelist>
  </refsect1>
