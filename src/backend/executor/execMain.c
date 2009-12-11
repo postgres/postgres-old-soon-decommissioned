@@ -1408,6 +1408,16 @@ EvalPlanQual(EState *estate, EPQState *epqstate,
 	slot = EvalPlanQualNext(epqstate);
 
 	/*
+	 * If we got a tuple, force the slot to materialize the tuple so that
+	 * it is not dependent on any local state in the EPQ query (in particular,
+	 * it's highly likely that the slot contains references to any pass-by-ref
+	 * datums that may be present in copyTuple).  As with the next step,
+	 * this is to guard against early re-use of the EPQ query.
+	 */
+	if (!TupIsNull(slot))
+		(void) ExecMaterializeSlot(slot);
+
+	/*
 	 * Clear out the test tuple.  This is needed in case the EPQ query
 	 * is re-used to test a tuple for a different relation.  (Not clear
 	 * that can really happen, but let's be safe.)
