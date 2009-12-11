@@ -29,6 +29,7 @@ static const struct config_enum_entry format_options[] = {
         {"text", EXPLAIN_FORMAT_TEXT, false},
         {"xml", EXPLAIN_FORMAT_XML, false},
         {"json", EXPLAIN_FORMAT_JSON, false},
+        {"yaml", EXPLAIN_FORMAT_YAML, false},
         {NULL, 0, false}
 };
 

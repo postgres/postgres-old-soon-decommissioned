@@ -176,7 +176,7 @@
        </listitem>
         <listitem>
           <para>
-            EXPLAIN allows output of plans in XML or JSON format for automated
+            EXPLAIN allows output of plans in XML, JSON, or YAML format for automated
             processing of explain plans by analysis or visualization tools.
           </para>
         </listitem>
