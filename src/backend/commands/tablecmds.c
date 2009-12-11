@@ -6186,6 +6186,7 @@ ATExecAlterColumnType(AlteredTableInfo *tab, Relation rel,
 			case OCLASS_CAST:
 			case OCLASS_CONVERSION:
 			case OCLASS_LANGUAGE:
+			case OCLASS_LARGEOBJECT:
 			case OCLASS_OPERATOR:
 			case OCLASS_OPCLASS:
 			case OCLASS_OPFAMILY:

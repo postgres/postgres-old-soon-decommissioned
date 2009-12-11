@@ -128,6 +128,7 @@ typedef enum ObjectClass
 	OCLASS_CONVERSION,			/* pg_conversion */
 	OCLASS_DEFAULT,				/* pg_attrdef */
 	OCLASS_LANGUAGE,			/* pg_language */
+	OCLASS_LARGEOBJECT,			/* pg_largeobject */
 	OCLASS_OPERATOR,			/* pg_operator */
 	OCLASS_OPCLASS,				/* pg_opclass */
 	OCLASS_OPFAMILY,			/* pg_opfamily */

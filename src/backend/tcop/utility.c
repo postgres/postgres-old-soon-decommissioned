@@ -1638,6 +1638,9 @@ CreateCommandTag(Node *parsetree)
 				case OBJECT_LANGUAGE:
 					tag = "ALTER LANGUAGE";
 					break;
+				case OBJECT_LARGEOBJECT:
+					tag = "ALTER LARGEOBJECT";
+					break;
 				case OBJECT_OPERATOR:
 					tag = "ALTER OPERATOR";
 					break;

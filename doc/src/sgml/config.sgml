@@ -4816,6 +4816,35 @@ dynamic_library_path = 'C:\tools\postgresql;H:\my_project\lib;$libdir'
       </listitem>
      </varlistentry>
 
+     <varlistentry id="guc-lo-compat-privileges" xreflabel="lo_compat_privileges">
+      <term><varname>lo_compat_privileges</varname> (<type>boolean</type>)</term>
+      <indexterm>
+       <primary>
+        <varname>lo_compat_privileges</varname> configuration parameter
+       </primary>
+      </indexterm>
+      <listitem>
+       <para>
+        This allows us to tuen on/off database privilege checks on large
+        objects. In the 8.4.x series and earlier release do not have
+        privilege checks on large object in most cases.
+
+        So, turning the <varname>lo_compat_privileges</varname> off means
+        the large object feature performs in compatible mode.
+       </para>
+       <para>
+        Please note that it is not equivalent to disable all the security
+        checks corresponding to large objects.
+        For example, the <literal>lo_import()</literal> and
+        <literal>lo_export()</literal> need superuser privileges independent
+        from this setting as prior versions were doing.
+       </para>
+       <para>
+        It is <literal>off</literal> by default.
+       </para>
+      </listitem>
+     </varlistentry>
+
      <varlistentry id="guc-sql-inheritance" xreflabel="sql_inheritance">
       <term><varname>sql_inheritance</varname> (<type>boolean</type>)</term>
       <indexterm>

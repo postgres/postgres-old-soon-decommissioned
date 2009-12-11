@@ -862,6 +862,11 @@ do { \
 		CONVERT_PRIV('U', "USAGE");
 	else if (strcmp(type, "SERVER") == 0)
 		CONVERT_PRIV('U', "USAGE");
+	else if (strcmp(type, "LARGE OBJECT") == 0)
+	{
+		CONVERT_PRIV('r', "SELECT");
+		CONVERT_PRIV('w', "UPDATE");
+	}
 	else
 		abort();
 

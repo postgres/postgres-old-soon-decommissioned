@@ -691,7 +691,7 @@ psql_completion(char *text, int start, int end)
 	{
 		static const char *const list_ALTER[] =
 		{"AGGREGATE", "CONVERSION", "DATABASE", "DOMAIN", "FOREIGN DATA WRAPPER", "FUNCTION",
-			"GROUP", "INDEX", "LANGUAGE", "OPERATOR", "ROLE", "SCHEMA", "SERVER", "SEQUENCE", "TABLE",
+			"GROUP", "INDEX", "LANGUAGE", "LARGE OBJECT", "OPERATOR", "ROLE", "SCHEMA", "SERVER", "SEQUENCE", "TABLE",
 		"TABLESPACE", "TEXT SEARCH", "TRIGGER", "TYPE", "USER", "USER MAPPING FOR", "VIEW", NULL};
 
 		COMPLETE_WITH_LIST(list_ALTER);
@@ -758,6 +758,17 @@ psql_completion(char *text, int start, int end)
 		{"OWNER TO", "RENAME TO", NULL};
 
 		COMPLETE_WITH_LIST(list_ALTERLANGUAGE);
+	}
+
+	/* ALTER LARGE OBJECT <oid> */
+	else if (pg_strcasecmp(prev4_wd, "ALTER") == 0 &&
+			 pg_strcasecmp(prev3_wd, "LARGE") == 0 &&
+			 pg_strcasecmp(prev2_wd, "OBJECT") == 0)
+	{
+		static const char *const list_ALTERLARGEOBJECT[] =
+		{"OWNER TO", NULL};
+
+		COMPLETE_WITH_LIST(list_ALTERLARGEOBJECT);
 	}
 
 	/* ALTER USER,ROLE <name> */
@@ -1732,6 +1743,7 @@ psql_completion(char *text, int start, int end)
 								   " UNION SELECT 'FOREIGN SERVER'"
 								   " UNION SELECT 'FUNCTION'"
 								   " UNION SELECT 'LANGUAGE'"
+								   " UNION SELECT 'LARGE OBJECT'"
 								   " UNION SELECT 'SCHEMA'"
 								   " UNION SELECT 'TABLESPACE'");
 

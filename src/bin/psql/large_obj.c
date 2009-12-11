@@ -278,13 +278,28 @@ do_lo_list(void)
 	char		buf[1024];
 	printQueryOpt myopt = pset.popt;
 
-	snprintf(buf, sizeof(buf),
-			 "SELECT loid as \"%s\",\n"
-		   "  pg_catalog.obj_description(loid, 'pg_largeobject') as \"%s\"\n"
-			 "FROM (SELECT DISTINCT loid FROM pg_catalog.pg_largeobject) x\n"
-			 "ORDER BY 1",
-			 gettext_noop("ID"),
-			 gettext_noop("Description"));
+	if (pset.sversion >= 80500)
+	{
+		snprintf(buf, sizeof(buf),
+				 "SELECT oid as \"%s\",\n"
+				 "  pg_catalog.pg_get_userbyid(lomowner) as \"%s\",\n"
+				 "  pg_catalog.obj_description(oid, 'pg_largeobject') as \"%s\"\n"
+				 "  FROM pg_catalog.pg_largeobject_metadata "
+				 "  ORDER BY oid",
+				 gettext_noop("ID"),
+				 gettext_noop("Owner"),
+				 gettext_noop("Description"));
+	}
+	else
+	{
+		snprintf(buf, sizeof(buf),
+				 "SELECT loid as \"%s\",\n"
+				 "  pg_catalog.obj_description(loid, 'pg_largeobject') as \"%s\"\n"
+				 "FROM (SELECT DISTINCT loid FROM pg_catalog.pg_largeobject) x\n"
+				 "ORDER BY 1",
+				 gettext_noop("ID"),
+				 gettext_noop("Description"));
+	}
 
 	res = PSQLexec(buf, false);
 	if (!res)
