@@ -61,6 +61,10 @@ typedef struct
 	bool		ldaptls;
 	char	   *ldapserver;
 	int			ldapport;
+	char	   *ldapbinddn;
+	char	   *ldapbindpasswd;
+	char	   *ldapsearchattribute;
+	char	   *ldapbasedn;
 	char	   *ldapprefix;
 	char	   *ldapsuffix;
 	bool		clientcert;
