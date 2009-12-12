@@ -223,7 +223,9 @@ explain_ExecutorEnd(QueryDesc *queryDesc)
 			es.verbose = auto_explain_log_verbose;
 			es.format = auto_explain_log_format;
 
+			ExplainBeginOutput(&es);
 			ExplainPrintPlan(&es, queryDesc);
+			ExplainEndOutput(&es);
 
 			/* Remove last line break */
 			if (es.str->len > 0 && es.str->data[es.str->len - 1] == '\n')
