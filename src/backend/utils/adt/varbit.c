@@ -1261,7 +1261,12 @@ bitfromint4(PG_FUNCTION_ARGS)
 	/* store first fractional byte */
 	if (destbitsleft > srcbitsleft)
 	{
-		*r++ = (bits8) ((a >> (srcbitsleft - 8)) & BITMASK);
+		int		val = (int) (a >> (destbitsleft - 8));
+
+		/* Force sign-fill in case the compiler implements >> as zero-fill */
+		if (a < 0)
+			val |= (-1) << (srcbitsleft + 8 - destbitsleft);
+		*r++ = (bits8) (val & BITMASK);
 		destbitsleft -= 8;
 	}
 	/* Now srcbitsleft and destbitsleft are the same, need not track both */
@@ -1340,7 +1345,12 @@ bitfromint8(PG_FUNCTION_ARGS)
 	/* store first fractional byte */
 	if (destbitsleft > srcbitsleft)
 	{
-		*r++ = (bits8) ((a >> (srcbitsleft - 8)) & BITMASK);
+		int		val = (int) (a >> (destbitsleft - 8));
+
+		/* Force sign-fill in case the compiler implements >> as zero-fill */
+		if (a < 0)
+			val |= (-1) << (srcbitsleft + 8 - destbitsleft);
+		*r++ = (bits8) (val & BITMASK);
 		destbitsleft -= 8;
 	}
 	/* Now srcbitsleft and destbitsleft are the same, need not track both */
