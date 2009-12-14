@@ -12,7 +12,7 @@ SET search_path = public;
 --
 
 -- Check what is in pg_largeobject
-SELECT count(DISTINCT loid) FROM pg_largeobject;
+SELECT count(oid) FROM pg_largeobject_metadata;
 
 -- ignore any errors here - simply drop the table if it already exists
 DROP TABLE a;
@@ -74,6 +74,6 @@ DELETE FROM a;
 DROP TABLE a;
 
 -- Check what is in pg_largeobject ... if different from original, trouble
-SELECT count(DISTINCT loid) FROM pg_largeobject;
+SELECT count(oid) FROM pg_largeobject_metadata;
 
 -- end of tests

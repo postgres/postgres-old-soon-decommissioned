@@ -151,8 +151,7 @@ _StartBlob(ArchiveHandle *AH, TocEntry *te, Oid oid)
 		die_horribly(AH, NULL, "invalid OID for large object\n");
 
 	if (AH->ropt->dropSchema)
-		ahprintf(AH, "SELECT CASE WHEN EXISTS(SELECT 1 FROM pg_catalog.pg_largeobject WHERE loid = '%u') THEN pg_catalog.lo_unlink('%u') END;\n",
-				 oid, oid);
+		DropBlobIfExists(AH, oid);
 
 	ahprintf(AH, "SELECT pg_catalog.lo_open(pg_catalog.lo_create('%u'), %d);\n",
 			 oid, INV_WRITE);

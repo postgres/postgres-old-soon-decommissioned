@@ -914,8 +914,7 @@ StartRestoreBlob(ArchiveHandle *AH, Oid oid, bool drop)
 	ahlog(AH, 2, "restoring large object with OID %u\n", oid);
 
 	if (drop)
-		ahprintf(AH, "SELECT CASE WHEN EXISTS(SELECT 1 FROM pg_catalog.pg_largeobject WHERE loid = '%u') THEN pg_catalog.lo_unlink('%u') END;\n",
-				 oid, oid);
+		DropBlobIfExists(AH, oid);
 
 	if (AH->connection)
 	{
