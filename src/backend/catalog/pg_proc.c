@@ -810,7 +810,7 @@ fmgr_sql_validator(PG_FUNCTION_ARGS)
 												  proc->pronargs);
 			(void) check_sql_fn_retval(funcoid, proc->prorettype,
 									   querytree_list,
-									   false, NULL);
+									   NULL, NULL);
 		}
 		else
 			querytree_list = pg_parse_query(prosrc);
