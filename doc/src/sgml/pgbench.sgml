@@ -466,6 +466,56 @@ pgbench <optional> <replaceable>options</> </optional> <replaceable>dbname</>
    </varlistentry>
   </variablelist>
 
+   <varlistentry>
+    <term>
+     <literal>\setshell <replaceable>varname</> <replaceable>command</> [ <replaceable>argument</> ... ]</literal>
+    </term>
+
+    <listitem>
+     <para>
+      Sets variable <replaceable>varname</> to the result of the shell command
+      <replaceable>command</>. The command must return an integer value
+      through its standard output.
+     </para>
+
+     <para>
+      <replaceable>argument</> can be either a text constant or a
+      <literal>:</><replaceable>variablename</> reference to a variable of
+      any types. If you want to use <replaceable>argument</> starting with
+      colons, you need to add an additional colon at the beginning of
+      <replaceable>argument</>.
+     </para>
+
+     <para>
+      Example:
+      <programlisting>
+\setshell variable_to_be_assigned command literal_argument :variable ::literal_starting_with_colon
+      </programlisting>
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+
+   <varlistentry>
+    <term>
+     <literal>\shell <replaceable>command</> [ <replaceable>argument</> ... ]</literal>
+    </term>
+
+    <listitem>
+     <para>
+      Same as <literal>\setshell</literal>, but the result is ignored.
+     </para>
+
+     <para>
+      Example:
+      <programlisting>
+\shell command literal_argument :variable ::literal_starting_with_colon
+      </programlisting>
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+
   <para>
    As an example, the full definition of the built-in TPC-B-like
    transaction is:
