@@ -464,7 +464,6 @@ pgbench <optional> <replaceable>options</> </optional> <replaceable>dbname</>
      </para>
     </listitem>
    </varlistentry>
-  </variablelist>
 
    <varlistentry>
     <term>
@@ -494,7 +493,6 @@ pgbench <optional> <replaceable>options</> </optional> <replaceable>dbname</>
      </para>
     </listitem>
    </varlistentry>
-  </variablelist>
 
    <varlistentry>
     <term>
