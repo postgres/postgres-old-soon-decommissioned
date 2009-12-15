@@ -1023,9 +1023,10 @@ _copyAggref(Aggref *from)
 	COPY_SCALAR_FIELD(aggfnoid);
 	COPY_SCALAR_FIELD(aggtype);
 	COPY_NODE_FIELD(args);
-	COPY_SCALAR_FIELD(agglevelsup);
+	COPY_NODE_FIELD(aggorder);
+	COPY_NODE_FIELD(aggdistinct);
 	COPY_SCALAR_FIELD(aggstar);
-	COPY_SCALAR_FIELD(aggdistinct);
+	COPY_SCALAR_FIELD(agglevelsup);
 	COPY_LOCATION_FIELD(location);
 
 	return newnode;
@@ -1968,6 +1969,7 @@ _copyFuncCall(FuncCall *from)
 
 	COPY_NODE_FIELD(funcname);
 	COPY_NODE_FIELD(args);
+	COPY_NODE_FIELD(agg_order);
 	COPY_SCALAR_FIELD(agg_star);
 	COPY_SCALAR_FIELD(agg_distinct);
 	COPY_SCALAR_FIELD(func_variadic);

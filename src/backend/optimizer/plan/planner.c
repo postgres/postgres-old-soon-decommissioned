@@ -1096,11 +1096,12 @@ grouping_planner(PlannerInfo *root, double tuple_fraction)
 			bool		can_sort;
 
 			/*
-			 * Executor doesn't support hashed aggregation with DISTINCT
-			 * aggregates.	(Doing so would imply storing *all* the input
-			 * values in the hash table, which seems like a certain loser.)
+			 * Executor doesn't support hashed aggregation with DISTINCT or
+			 * ORDER BY aggregates.  (Doing so would imply storing *all* the
+			 * input values in the hash table, and/or running many sorts in
+			 * parallel, either of which seems like a certain loser.)
 			 */
-			can_hash = (agg_counts.numDistinctAggs == 0 &&
+			can_hash = (agg_counts.numOrderedAggs == 0 &&
 						grouping_is_hashable(parse->groupClause));
 			can_sort = grouping_is_sortable(parse->groupClause);
 			if (can_hash && can_sort)

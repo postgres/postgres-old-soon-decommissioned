@@ -828,13 +828,13 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 										  stmt->sortClause,
 										  &qry->targetList,
 										  true /* fix unknowns */,
-										  false /* not window function */);
+										  false /* allow SQL92 rules */);
 
 	qry->groupClause = transformGroupClause(pstate,
 											stmt->groupClause,
 											&qry->targetList,
 											qry->sortClause,
-											false /* not window function */);
+											false /* allow SQL92 rules */);
 
 	if (stmt->distinctClause == NIL)
 	{
@@ -846,7 +846,8 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 		/* We had SELECT DISTINCT */
 		qry->distinctClause = transformDistinctClause(pstate,
 													  &qry->targetList,
-													  qry->sortClause);
+													  qry->sortClause,
+													  false);
 		qry->hasDistinctOn = false;
 	}
 	else
@@ -1044,7 +1045,7 @@ transformValuesClause(ParseState *pstate, SelectStmt *stmt)
 										  stmt->sortClause,
 										  &qry->targetList,
 										  true /* fix unknowns */,
-										  false /* not window function */);
+										  false /* allow SQL92 rules */);
 
 	qry->limitOffset = transformLimitClause(pstate, stmt->limitOffset,
 											"OFFSET");
@@ -1298,7 +1299,7 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 										  sortClause,
 										  &qry->targetList,
 										  false /* no unknowns expected */,
-										  false /* not window function */);
+										  false /* allow SQL92 rules */);
 
 	pstate->p_rtable = list_truncate(pstate->p_rtable, sv_rtable_length);
 	pstate->p_relnamespace = sv_relnamespace;

@@ -23,7 +23,7 @@
 typedef struct
 {
 	int			numAggs;		/* total number of aggregate calls */
-	int			numDistinctAggs;	/* number that use DISTINCT */
+	int			numOrderedAggs; 	/* number that use DISTINCT or ORDER BY */
 	Size		transitionSpace;	/* for pass-by-ref transition data */
 } AggClauseCounts;
 

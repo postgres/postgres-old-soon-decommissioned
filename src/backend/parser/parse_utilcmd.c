@@ -388,6 +388,7 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 		funccallnode = makeNode(FuncCall);
 		funccallnode->funcname = SystemFuncName("nextval");
 		funccallnode->args = list_make1(castnode);
+		funccallnode->agg_order = NIL;
 		funccallnode->agg_star = false;
 		funccallnode->agg_distinct = false;
 		funccallnode->func_variadic = false;

@@ -471,21 +471,22 @@ count_agg_clauses_walker(Node *node, AggClauseCounts *counts)
 		HeapTuple	aggTuple;
 		Form_pg_aggregate aggform;
 		Oid			aggtranstype;
-		int			i;
 		ListCell   *l;
 
 		Assert(aggref->agglevelsup == 0);
 		counts->numAggs++;
-		if (aggref->aggdistinct)
-			counts->numDistinctAggs++;
+		if (aggref->aggorder != NIL || aggref->aggdistinct != NIL)
+			counts->numOrderedAggs++;
 
-		/* extract argument types */
-		numArguments = list_length(aggref->args);
-		inputTypes = (Oid *) palloc(sizeof(Oid) * numArguments);
-		i = 0;
+		/* extract argument types (ignoring any ORDER BY expressions) */
+		inputTypes = (Oid *) palloc(sizeof(Oid) * list_length(aggref->args));
+		numArguments = 0;
 		foreach(l, aggref->args)
 		{
-			inputTypes[i++] = exprType((Node *) lfirst(l));
+			TargetEntry *tle = (TargetEntry *) lfirst(l);
+
+			if (!tle->resjunk)
+				inputTypes[numArguments++] = exprType((Node *) tle->expr);
 		}
 
 		/* fetch aggregate transition datatype from pg_aggregate */
