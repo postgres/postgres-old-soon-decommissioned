@@ -30,6 +30,7 @@ typedef struct ExplainState
 	bool		verbose;		/* be verbose */
 	bool		analyze;		/* print actual times */
 	bool		costs;			/* print costs */
+	bool		buffers;		/* print buffer usage */
 	ExplainFormat format;		/* output format */
 	/* other states */
 	PlannedStmt *pstmt;			/* top of plan */

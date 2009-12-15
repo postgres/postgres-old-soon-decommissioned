@@ -370,7 +370,7 @@ typedef struct EState
 	uint32		es_processed;	/* # of tuples processed */
 	Oid			es_lastoid;		/* last oid processed (by INSERT) */
 
-	bool		es_instrument;	/* true requests runtime instrumentation */
+	int			es_instrument;	/* OR of InstrumentOption flags */
 	bool		es_select_into; /* true if doing SELECT INTO */
 	bool		es_into_oids;	/* true to generate OIDs in SELECT INTO */
 

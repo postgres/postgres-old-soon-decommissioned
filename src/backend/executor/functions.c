@@ -414,7 +414,7 @@ postquel_start(execution_state *es, SQLFunctionCachePtr fcache)
 								 fcache->src,
 								 snapshot, InvalidSnapshot,
 								 dest,
-								 fcache->paramLI, false);
+								 fcache->paramLI, 0);
 	else
 		es->qd = CreateUtilityQueryDesc(es->stmt,
 										fcache->src,

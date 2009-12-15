@@ -1094,7 +1094,7 @@ DoCopy(const CopyStmt *stmt, const char *queryString)
 		cstate->queryDesc = CreateQueryDesc(plan, queryString,
 											GetActiveSnapshot(),
 											InvalidSnapshot,
-											dest, NULL, false);
+											dest, NULL, 0);
 
 		/*
 		 * Call ExecutorStart to prepare the plan for execution.

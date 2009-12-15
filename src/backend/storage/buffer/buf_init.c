@@ -22,16 +22,6 @@ BufferDesc *BufferDescriptors;
 char	   *BufferBlocks;
 int32	   *PrivateRefCount;
 
-/* statistics counters */
-long int	ReadBufferCount;
-long int	ReadLocalBufferCount;
-long int	BufferHitCount;
-long int	LocalBufferHitCount;
-long int	BufferFlushCount;
-long int	LocalBufferFlushCount;
-long int	BufFileReadCount;
-long int	BufFileWriteCount;
-
 
 /*
  * Data Structures:

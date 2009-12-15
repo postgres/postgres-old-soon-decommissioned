@@ -34,6 +34,7 @@
 
 #include "postgres.h"
 
+#include "executor/instrument.h"
 #include "storage/fd.h"
 #include "storage/buffile.h"
 #include "storage/buf_internals.h"
@@ -240,7 +241,7 @@ BufFileLoadBuffer(BufFile *file)
 	file->offsets[file->curFile] += file->nbytes;
 	/* we choose not to advance curOffset here */
 
-	BufFileReadCount++;
+	pgBufferUsage.temp_blks_read++;
 }
 
 /*
@@ -304,7 +305,7 @@ BufFileDumpBuffer(BufFile *file)
 		file->curOffset += bytestowrite;
 		wpos += bytestowrite;
 
-		BufFileWriteCount++;
+		pgBufferUsage.temp_blks_written++;
 	}
 	file->dirty = false;
 

@@ -173,16 +173,6 @@ extern PGDLLIMPORT BufferDesc *BufferDescriptors;
 /* in localbuf.c */
 extern BufferDesc *LocalBufferDescriptors;
 
-/* event counters in buf_init.c */
-extern long int ReadBufferCount;
-extern long int ReadLocalBufferCount;
-extern long int BufferHitCount;
-extern long int LocalBufferHitCount;
-extern long int BufferFlushCount;
-extern long int LocalBufferFlushCount;
-extern long int BufFileReadCount;
-extern long int BufFileWriteCount;
-
 
 /*
  * Internal routines: only called by bufmgr

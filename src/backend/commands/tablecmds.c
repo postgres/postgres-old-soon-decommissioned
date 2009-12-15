@@ -936,7 +936,7 @@ ExecuteTruncate(TruncateStmt *stmt)
 						  rel,
 						  0,	/* dummy rangetable index */
 						  CMD_DELETE,	/* don't need any index info */
-						  false);
+						  0);
 		resultRelInfo++;
 	}
 	estate->es_result_relations = resultRelInfos;
