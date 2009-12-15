@@ -176,6 +176,23 @@
 
    <varlistentry>
     <term>
+     <varname>pg_stat_statements.track_utility</varname> (<type>boolean</type>)
+    </term>
+
+    <listitem>
+     <para>
+      <varname>pg_stat_statements.track_utility</varname> controls whether
+      utility commands are tracked by the module.  Utility commands are
+      all those other than <command>SELECT</>, <command>INSERT</>,
+      <command>UPDATE</> and <command>DELETE</>.
+      The default value is <literal>on</>.
+      Only superusers can change this setting.
+     </para>
+    </listitem>
+   </varlistentry>
+
+   <varlistentry>
+    <term>
      <varname>pg_stat_statements.save</varname> (<type>boolean</type>)
     </term>
 

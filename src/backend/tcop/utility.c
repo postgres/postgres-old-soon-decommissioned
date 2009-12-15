@@ -58,6 +58,10 @@
 #include "utils/syscache.h"
 
 
+/* Hook for plugins to get control in ProcessUtility() */
+ProcessUtility_hook_type ProcessUtility_hook = NULL;
+
+
 /*
  * Verify user has ownership of specified relation, else ereport.
  *
@@ -274,6 +278,27 @@ ProcessUtility(Node *parsetree,
 {
 	Assert(queryString != NULL);	/* required as of 8.4 */
 
+	/*
+	 * We provide a function hook variable that lets loadable plugins
+	 * get control when ProcessUtility is called.  Such a plugin would
+	 * normally call standard_ProcessUtility().
+	 */
+	if (ProcessUtility_hook)
+		(*ProcessUtility_hook) (parsetree, queryString, params,
+								isTopLevel, dest, completionTag);
+	else
+		standard_ProcessUtility(parsetree, queryString, params,
+								isTopLevel, dest, completionTag);
+}
+
+void
+standard_ProcessUtility(Node *parsetree,
+						const char *queryString,
+						ParamListInfo params,
+						bool isTopLevel,
+						DestReceiver *dest,
+						char *completionTag)
+{
 	check_xact_readonly(parsetree);
 
 	if (completionTag)
