@@ -656,6 +656,9 @@ do_init(void)
 	if (exec_path == NULL)
 		exec_path = find_other_exec_or_die(argv0, "initdb", "initdb (PostgreSQL) " PG_VERSION "\n");
 
+	if (pgdata_opt == NULL)
+		pgdata_opt = "";
+
 	if (post_opts == NULL)
 		post_opts = "";
 
