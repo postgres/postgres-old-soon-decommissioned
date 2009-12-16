@@ -278,7 +278,7 @@
       <entry>get <type>hstore</>'s keys as a set</entry>
       <entry><literal>skeys('a=&gt;1,b=&gt;2')</literal></entry>
       <entry>
-22<programlisting>
+<programlisting>
 a
 b
 </programlisting></entry>
