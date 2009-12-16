@@ -26,7 +26,7 @@ extern sigset_t UnBlockSig,
 			StartupBlockSig;
 
 #define PG_SETMASK(mask)	sigprocmask(SIG_SETMASK, mask, NULL)
-#else
+#else /* not HAVE_SIGPROCMASK */
 extern int	UnBlockSig,
 			BlockSig,
 			StartupBlockSig;
@@ -37,7 +37,9 @@ extern int	UnBlockSig,
 #define PG_SETMASK(mask)		pqsigsetmask(*((int*)(mask)))
 int			pqsigsetmask(int mask);
 #endif
-#endif
+
+#define sigdelset(set, signum)	(*(set) &= ~(sigmask(signum)))
+#endif /* not HAVE_SIGPROCMASK */
 
 typedef void (*pqsigfunc) (int);
 
