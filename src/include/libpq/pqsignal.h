@@ -38,6 +38,7 @@ extern int	UnBlockSig,
 int			pqsigsetmask(int mask);
 #endif
 
+#define sigaddset(set, signum)	(*(set) |= (sigmask(signum)))
 #define sigdelset(set, signum)	(*(set) &= ~(sigmask(signum)))
 #endif /* not HAVE_SIGPROCMASK */
 

@@ -2538,6 +2538,7 @@ drop_unnamed_stmt(void)
 void
 quickdie(SIGNAL_ARGS)
 {
+	sigaddset(&BlockSig, SIGQUIT); /* prevent nested calls */
 	PG_SETMASK(&BlockSig);
 
 	/*
