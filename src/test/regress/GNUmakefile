@@ -138,7 +138,7 @@ tablespace-setup:
 ## Run tests
 ##
 
-pg_regress_call = ./pg_regress --inputdir=$(srcdir) --dlpath=. --multibyte=$(MULTIBYTE) --load-language=plpgsql $(NOLOCALE)
+pg_regress_call = ./pg_regress --inputdir=$(srcdir) --dlpath=. --multibyte=$(MULTIBYTE) $(NOLOCALE)
 
 check: all
 	$(pg_regress_call) --temp-install=./tmp_check --top-builddir=$(top_builddir) --schedule=$(srcdir)/parallel_schedule $(MAXCONNOPT) $(TEMP_CONF)
