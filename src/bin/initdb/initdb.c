@@ -2712,6 +2712,14 @@ main(int argc, char *argv[])
 	sprintf(pgdenv, "PGDATA=%s", pg_data);
 	putenv(pgdenv);
 
+	/*
+	 * Also ensure that TZ is set, so that we don't waste time identifying the
+	 * system timezone each of the many times we start a standalone backend.
+	 * It's okay to use a hard-wired value here because nothing done during
+	 * initdb cares about the timezone setting.
+	 */
+	putenv("TZ=GMT");
+
 	if ((ret = find_other_exec(argv[0], "postgres", PG_BACKEND_VERSIONSTR,
 							   backend_exec)) < 0)
 	{
