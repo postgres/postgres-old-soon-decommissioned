@@ -58,6 +58,13 @@
     them to define operators or use them in index expressions.
    </para>
 
+   <para>
+    In <productname>PostgreSQL</> 8.5 and later,
+    <application>PL/pgSQL</application> is installed by default.
+    However it is still a loadable module, so especially security-conscious
+    administrators could choose to remove it.
+   </para>
+
   <sect2 id="plpgsql-advantages">
    <title>Advantages of Using <application>PL/pgSQL</application></title>
 

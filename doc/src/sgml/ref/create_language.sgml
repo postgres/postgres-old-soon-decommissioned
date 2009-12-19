@@ -266,7 +266,7 @@ CREATE [ TRUSTED ] [ PROCEDURAL ] LANGUAGE <replaceable class="parameter">name</
    The preferred way of creating any of the standard procedural languages
    is just:
 <programlisting>
-CREATE LANGUAGE plpgsql;
+CREATE LANGUAGE plperl;
 </programlisting>
   </para>
 

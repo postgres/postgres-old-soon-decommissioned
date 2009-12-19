@@ -184,7 +184,7 @@ createdb -O <replaceable>rolename</> <replaceable>dbname</>
    will be copied into subsequently created user databases.  This
    behavior allows site-local modifications to the standard set of
    objects in databases.  For example, if you install the procedural
-   language <application>PL/pgSQL</> in <literal>template1</>, it will
+   language <application>PL/Perl</> in <literal>template1</>, it will
    automatically be available in user databases without any extra
    action being taken when those databases are made.
   </para>
