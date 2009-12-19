@@ -13139,7 +13139,7 @@ postgres=# SELECT * FROM pg_xlogfile_name_offset(pg_stop_backup());
    <para>
     The functions shown in <xref
     linkend="functions-recovery-info-table"> provide information
-	about the current status of Hot Standby.
+    about the current status of Hot Standby.
     These functions may be executed during both recovery and in normal running.
    </para>
 
@@ -13158,7 +13158,7 @@ postgres=# SELECT * FROM pg_xlogfile_name_offset(pg_stop_backup());
         </entry>
        <entry><type>bool</type></entry>
        <entry>True if recovery is still in progress.
-	   </entry>
+       </entry>
       </row>
      </tbody>
     </tgroup>
