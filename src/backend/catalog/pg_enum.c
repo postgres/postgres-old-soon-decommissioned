@@ -67,6 +67,10 @@ EnumValuesCreate(Oid enumTypeOid, List *vals)
 	oids = (Oid *) palloc(n * sizeof(Oid));
 	for (i = 0; i < n; i++)
 	{
+		/*
+		 *	The pg_enum.oid is stored in user tables.  This oid must be
+		 *	preserved by binary upgrades.
+		 */
 		oids[i] = GetNewOid(pg_enum);
 	}
 
