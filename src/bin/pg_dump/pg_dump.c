@@ -4613,7 +4613,7 @@ getProcLangs(int *numProcLangs)
 						  "lanvalidator,  lanacl, "
 						  "(%s lanowner) AS lanowner "
 						  "FROM pg_language "
-						  "WHERE lanispl%s"
+						  "WHERE lanispl%s "
 						  "ORDER BY oid",
 						  username_subquery,
 						  binary_upgrade ? "\nAND lanname != 'plpgsql'" : "");
