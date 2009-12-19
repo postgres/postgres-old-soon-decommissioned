@@ -667,7 +667,7 @@
           instead of the former behavior that would replace any textual match
           including table names and column aliases (leading to syntax errors
           later on). PL/pgSQL variable names that match fully-reserved words
-          will now need to be quoted. An the other hand, a number of
+          will now need to be quoted. On the other hand, a number of
           PL/pgSQL-specific words were de-reserved.</emphasis>
         </para>
         <para>
@@ -824,7 +824,7 @@
         <para>
          <emphasis>Refactor ECPG grammar so that it uses the core grammar's
           unreserved_keyword list, minus a few specific words that have to be
-          treated specially. This de-reserves a number of works in ECPG.</emphasis>
+          treated specially. This de-reserves a number of words in ECPG.</emphasis>
         </para>
        </listitem>
        <listitem>
