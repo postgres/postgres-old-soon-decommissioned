@@ -458,6 +458,9 @@ nextval_internal(Oid relid)
 				rescnt = 0;
 	bool		logit = false;
 
+	/* nextval() writes to database and must be prevented during recovery */
+	PreventCommandDuringRecovery();
+
 	/* open and AccessShareLock sequence */
 	init_sequence(relid, &elm, &seqrel);
 

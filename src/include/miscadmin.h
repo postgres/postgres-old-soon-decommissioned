@@ -236,6 +236,12 @@ extern bool VacuumCostActive;
 /* in tcop/postgres.c */
 extern void check_stack_depth(void);
 
+/* in tcop/utility.c */
+extern void PreventCommandDuringRecovery(void);
+
+/* in utils/misc/guc.c */
+extern int trace_recovery_messages;
+int trace_recovery(int trace_level);
 
 /*****************************************************************************
  *	  pdir.h --																 *

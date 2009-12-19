@@ -481,7 +481,7 @@ InitPostgres(const char *in_dbname, Oid dboid, const char *username,
 	 */
 	MyBackendId = InvalidBackendId;
 
-	SharedInvalBackendInit();
+	SharedInvalBackendInit(false);
 
 	if (MyBackendId > MaxBackends || MyBackendId <= 0)
 		elog(FATAL, "bad backend id: %d", MyBackendId);
@@ -495,11 +495,11 @@ InitPostgres(const char *in_dbname, Oid dboid, const char *username,
 	InitBufferPoolBackend();
 
 	/*
-	 * Initialize local process's access to XLOG.  In bootstrap case we may
-	 * skip this since StartupXLOG() was run instead.
+	 * Initialize local process's access to XLOG, if appropriate.  In bootstrap
+	 * case we skip this since StartupXLOG() was run instead.
 	 */
 	if (!bootstrap)
-		InitXLOGAccess();
+		(void) RecoveryInProgress();
 
 	/*
 	 * Initialize the relation cache and the system catalog caches.  Note that

@@ -224,8 +224,14 @@ CopySnapshot(Snapshot snapshot)
 	else
 		newsnap->xip = NULL;
 
-	/* setup subXID array */
-	if (snapshot->subxcnt > 0)
+	/*
+	 * Setup subXID array. Don't bother to copy it if it had overflowed,
+	 * though, because it's not used anywhere in that case. Except if it's
+	 * a snapshot taken during recovery; all the top-level XIDs are in subxip
+	 * as well in that case, so we mustn't lose them.
+	 */
+	if (snapshot->subxcnt > 0 &&
+		(!snapshot->suboverflowed || snapshot->takenDuringRecovery))
 	{
 		newsnap->subxip = (TransactionId *) ((char *) newsnap + subxipoff);
 		memcpy(newsnap->subxip, snapshot->subxip,

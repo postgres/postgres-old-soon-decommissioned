@@ -2025,7 +2025,7 @@ _bt_vacuum_one_page(Relation rel, Buffer buffer)
 	}
 
 	if (ndeletable > 0)
-		_bt_delitems(rel, buffer, deletable, ndeletable);
+		_bt_delitems(rel, buffer, deletable, ndeletable, false, 0);
 
 	/*
 	 * Note: if we didn't find any LP_DEAD items, then the page's

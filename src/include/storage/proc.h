@@ -95,6 +95,13 @@ struct PGPROC
 
 	uint8		vacuumFlags;	/* vacuum-related flags, see above */
 
+	/*
+	 * While in hot standby mode, setting recoveryConflictMode instructs
+	 * the backend to commit suicide. Possible values are the same as those
+	 * passed to ResolveRecoveryConflictWithVirtualXIDs().
+	 */
+	int			recoveryConflictMode;
+
 	/* Info about LWLock the process is currently waiting for, if any. */
 	bool		lwWaiting;		/* true if waiting for an LW lock */
 	bool		lwExclusive;	/* true if waiting for exclusive access */
@@ -135,6 +142,9 @@ typedef struct PROC_HDR
 	PGPROC	   *autovacFreeProcs;
 	/* Current shared estimate of appropriate spins_per_delay value */
 	int			spins_per_delay;
+	/* The proc of the Startup process, since not in ProcArray */
+	PGPROC	   *startupProc;
+	int			startupProcPid;
 } PROC_HDR;
 
 /*
@@ -165,6 +175,9 @@ extern void InitProcGlobal(void);
 extern void InitProcess(void);
 extern void InitProcessPhase2(void);
 extern void InitAuxiliaryProcess(void);
+
+extern void PublishStartupProcessInformation(void);
+
 extern bool HaveNFreeProcs(int n);
 extern void ProcReleaseLocks(bool isCommit);
 

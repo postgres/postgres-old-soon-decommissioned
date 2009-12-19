@@ -196,6 +196,8 @@ main(int argc, char *argv[])
 		   ControlFile.checkPointCopy.oldestXid);
 	printf(_("Latest checkpoint's oldestXID's DB:   %u\n"),
 		   ControlFile.checkPointCopy.oldestXidDB);
+	printf(_("Latest checkpoint's oldestActiveXID:   %u\n"),
+		   ControlFile.checkPointCopy.oldestActiveXid);
 	printf(_("Time of latest checkpoint:            %s\n"),
 		   ckpttime_str);
 	printf(_("Minimum recovery ending location:     %X/%X\n"),

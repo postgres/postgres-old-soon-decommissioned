@@ -574,7 +574,7 @@ ExtendCLOG(TransactionId newestXact)
 	LWLockAcquire(CLogControlLock, LW_EXCLUSIVE);
 
 	/* Zero the page and make an XLOG entry about it */
-	ZeroCLOGPage(pageno, true);
+	ZeroCLOGPage(pageno, !InRecovery);
 
 	LWLockRelease(CLogControlLock);
 }

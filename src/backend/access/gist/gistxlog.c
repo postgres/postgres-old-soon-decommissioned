@@ -396,6 +396,12 @@ gist_redo(XLogRecPtr lsn, XLogRecord *record)
 	uint8		info = record->xl_info & ~XLR_INFO_MASK;
 	MemoryContext oldCxt;
 
+	/*
+	 * GIST indexes do not require any conflict processing. NB: If we ever
+	 * implement a similar optimization we have in b-tree, and remove killed
+	 * tuples outside VACUUM, we'll need to handle that here.
+	 */
+
 	RestoreBkpBlocks(lsn, record, false);
 
 	oldCxt = MemoryContextSwitchTo(opCtx);

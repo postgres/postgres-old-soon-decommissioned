@@ -149,6 +149,8 @@ installcheck: all
 installcheck-parallel: all
 	$(pg_regress_call) --psqldir=$(PSQLDIR) --schedule=$(srcdir)/parallel_schedule $(MAXCONNOPT)
 
+standbycheck: all
+	$(pg_regress_call) --psqldir=$(PSQLDIR) --schedule=$(srcdir)/standby_schedule --use-existing
 
 # old interfaces follow...
 

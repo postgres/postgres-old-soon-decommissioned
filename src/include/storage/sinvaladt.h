@@ -29,7 +29,7 @@
  */
 extern Size SInvalShmemSize(void);
 extern void CreateSharedInvalidationState(void);
-extern void SharedInvalBackendInit(void);
+extern void SharedInvalBackendInit(bool sendOnly);
 extern bool BackendIdIsActive(int backendID);
 
 extern void SIInsertDataEntries(const SharedInvalidationMessage *data, int n);

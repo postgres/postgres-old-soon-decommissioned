@@ -68,14 +68,18 @@ static bool SubTransPagePrecedes(int page1, int page2);
 
 /*
  * Record the parent of a subtransaction in the subtrans log.
+ *
+ * In some cases we may need to overwrite an existing value.
  */
 void
-SubTransSetParent(TransactionId xid, TransactionId parent)
+SubTransSetParent(TransactionId xid, TransactionId parent, bool overwriteOK)
 {
 	int			pageno = TransactionIdToPage(xid);
 	int			entryno = TransactionIdToEntry(xid);
 	int			slotno;
 	TransactionId *ptr;
+
+	Assert(TransactionIdIsValid(parent));
 
 	LWLockAcquire(SubtransControlLock, LW_EXCLUSIVE);
 
@@ -84,7 +88,8 @@ SubTransSetParent(TransactionId xid, TransactionId parent)
 	ptr += entryno;
 
 	/* Current state should be 0 */
-	Assert(*ptr == InvalidTransactionId);
+	Assert(*ptr == InvalidTransactionId ||
+			(*ptr == parent && overwriteOK));
 
 	*ptr = parent;
 

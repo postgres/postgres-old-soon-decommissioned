@@ -43,6 +43,11 @@ CHECKPOINT
   </para>
 
   <para>
+   If executed during recovery, the <command>CHECKPOINT</command> command
+   will force a restartpoint rather than writing a new checkpoint.
+  </para>
+
+  <para>
    Only superusers can call <command>CHECKPOINT</command>.  The command is
    not intended for use during normal operation.
   </para>

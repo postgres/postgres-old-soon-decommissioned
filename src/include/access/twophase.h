@@ -40,8 +40,10 @@ extern GlobalTransaction MarkAsPreparing(TransactionId xid, const char *gid,
 
 extern void StartPrepare(GlobalTransaction gxact);
 extern void EndPrepare(GlobalTransaction gxact);
+extern bool StandbyTransactionIdIsPrepared(TransactionId xid);
 
-extern TransactionId PrescanPreparedTransactions(void);
+extern TransactionId PrescanPreparedTransactions(TransactionId **xids_p,
+							int *nxids_p);
 extern void RecoverPreparedTransactions(void);
 
 extern void RecreateTwoPhaseFile(TransactionId xid, void *content, int len);

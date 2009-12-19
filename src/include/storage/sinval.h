@@ -100,4 +100,7 @@ extern void HandleCatchupInterrupt(void);
 extern void EnableCatchupInterrupt(void);
 extern bool DisableCatchupInterrupt(void);
 
+extern int xactGetCommittedInvalidationMessages(SharedInvalidationMessage **msgs,
+										bool *RelcacheInitFileInval);
+
 #endif   /* SINVAL_H */
