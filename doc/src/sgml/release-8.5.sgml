@@ -306,6 +306,13 @@
       <itemizedlist>
        <listitem>
         <para>
+         <emphasis>Allow read-only connections during recovery, also
+         known as Hot Standby.  This provides a built-in master-slave
+         replication solution.</emphasis>
+        </para>
+       </listitem>
+       <listitem>
+        <para>
          <emphasis>Provide a parenthesized-options syntax for VACUUM, analogous to
           that recently adopted for EXPLAIN. This will allow additional
           options to be implemented in future without having to make them
