@@ -214,6 +214,42 @@ def __plpython_procedure_pymax_23456():
   </para>
 
   <para>
+   The arguments are set as global variables.  Because of the scoping
+   rules of Python, this has the subtle consequence that an argument
+   variable cannot be reassigned inside the function to the value of
+   an expression that involves the variable name itself, unless the
+   variable is redeclared as global in the block.  For example, the
+   following won't work:
+<programlisting>
+CREATE FUNCTION pystrip(x text)
+  RETURNS text
+AS $$
+  x = x.strip()  # error
+  return x
+$$ LANGUAGE plpythonu;
+</programlisting>
+   because assigning to <varname>x</varname>
+   makes <varname>x</varname> a local variable for the entire block,
+   and so the <varname>x</varname> on the right-hand side of the
+   assignment refers to a not-yet-assigned local
+   variable <varname>x</varname>, not the PL/Python function
+   parameter.  Using the <literal>global</literal> statement, this can
+   be made to work:
+<programlisting>
+CREATE FUNCTION pystrip(x text)
+  RETURNS text
+AS $$
+  global x
+  x = x.strip()  # ok now
+  return x
+$$ LANGUAGE plpythonu;
+</programlisting>
+   But it is advisable not to rely on this implementation detail of
+   PL/Python.  It is better to treat the function parameters as
+   read-only.
+  </para>
+
+  <para>
    If an SQL null value<indexterm><primary>null value</primary><secondary
    sortas="PL/Python">PL/Python</secondary></indexterm> is passed to a
    function, the argument value will appear as <symbol>None</symbol> in
