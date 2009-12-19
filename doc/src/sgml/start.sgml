@@ -384,8 +384,8 @@ mydb=#
    <para>
     The <command>psql</command> program has a number of internal
     commands that are not SQL commands.  They begin with the backslash
-    character, <quote><literal>\</literal></quote>.  Some of these
-    commands were listed in the welcome message.  For example,
+    character, <quote><literal>\</literal></quote>.
+    For example,
     you can get help on the syntax of various
     <productname>PostgreSQL</productname> <acronym>SQL</acronym>
     commands by typing:
