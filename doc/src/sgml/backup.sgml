@@ -2018,7 +2018,7 @@ if (!triggered)
     <itemizedlist>
      <listitem>
       <para>
-       Data Definition Language (DML) - INSERT, UPDATE, DELETE, COPY FROM, TRUNCATE.
+       Data Manipulation Language (DML) - INSERT, UPDATE, DELETE, COPY FROM, TRUNCATE.
        Note that there are no allowed actions that result in a trigger
        being executed during recovery.
       </para>
@@ -2164,7 +2164,7 @@ if (!triggered)
        <listitem>
         <para>
          Dropping tablespaces on the primary while standby queries are using
-         those tablespace for temporary work files (work_mem overflow)
+         those tablespaces for temporary work files (work_mem overflow)
         </para>
        </listitem>
        <listitem>
