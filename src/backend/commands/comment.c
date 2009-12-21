@@ -1449,7 +1449,7 @@ CommentLargeObject(List *qualname, char *comment)
 	 *
 	 * See the comment in the inv_create() which describes
 	 * the reason why LargeObjectRelationId is used instead
-	 * of the LargeObjectMetadataRelationId.
+	 * of LargeObjectMetadataRelationId.
 	 */
 	CreateComments(loid, LargeObjectRelationId, 0, comment);
 }

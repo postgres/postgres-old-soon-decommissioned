@@ -4261,9 +4261,8 @@ pg_language_ownercheck(Oid lan_oid, Oid roleid)
 /*
  * Ownership check for a largeobject (specified by OID)
  *
- * Note that we have no candidate to call this routine with a certain
- * snapshot except for SnapshotNow, so we don't provide an interface
- * with _snapshot() version now.
+ * This is only used for operations like ALTER LARGE OBJECT that are always
+ * relative to SnapshotNow.
  */
 bool
 pg_largeobject_ownercheck(Oid lobj_oid, Oid roleid)
