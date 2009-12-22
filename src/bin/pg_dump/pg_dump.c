@@ -11254,15 +11254,15 @@ dumpSequence(Archive *fout, TableInfo *tbinfo)
 
 		appendPQExpBuffer(query, "    INCREMENT BY %s\n", incby);
 
-		if (maxv)
-			appendPQExpBuffer(query, "    MAXVALUE %s\n", maxv);
-		else
-			appendPQExpBuffer(query, "    NO MAXVALUE\n");
-
 		if (minv)
 			appendPQExpBuffer(query, "    MINVALUE %s\n", minv);
 		else
 			appendPQExpBuffer(query, "    NO MINVALUE\n");
+
+		if (maxv)
+			appendPQExpBuffer(query, "    MAXVALUE %s\n", maxv);
+		else
+			appendPQExpBuffer(query, "    NO MAXVALUE\n");
 
 		appendPQExpBuffer(query,
 						  "    CACHE %s%s",
