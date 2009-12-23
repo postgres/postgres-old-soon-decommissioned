@@ -921,7 +921,7 @@
    </row>
    <row>
     <entry><token>CONCURRENTLY</token></entry>
-    <entry>non-reserved</entry>
+    <entry>reserved (can be function or type)</entry>
     <entry></entry>
     <entry></entry>
     <entry></entry>
