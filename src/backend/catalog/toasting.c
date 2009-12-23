@@ -255,6 +255,7 @@ create_toast_table(Relation rel, Oid toastOid, Oid toastIndexOid,
 
 	toast_idxid = index_create(toast_relid, toast_idxname, toastIndexOid,
 							   indexInfo,
+							   list_make2("chunk_id", "chunk_seq"),
 							   BTREE_AM_OID,
 							   rel->rd_rel->reltablespace,
 							   classObjectId, coloptions, (Datum) 0,

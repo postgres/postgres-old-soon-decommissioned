@@ -2121,6 +2121,7 @@ _copyIndexElem(IndexElem *from)
 
 	COPY_STRING_FIELD(name);
 	COPY_NODE_FIELD(expr);
+	COPY_STRING_FIELD(indexcolname);
 	COPY_NODE_FIELD(opclass);
 	COPY_SCALAR_FIELD(ordering);
 	COPY_SCALAR_FIELD(nulls_ordering);

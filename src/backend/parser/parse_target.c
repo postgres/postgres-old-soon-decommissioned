@@ -1410,13 +1410,40 @@ FigureColname(Node *node)
 {
 	char	   *name = NULL;
 
-	FigureColnameInternal(node, &name);
+	(void) FigureColnameInternal(node, &name);
 	if (name != NULL)
 		return name;
 	/* default result if we can't guess anything */
 	return "?column?";
 }
 
+/*
+ * FigureIndexColname -
+ *	  choose the name for an expression column in an index
+ *
+ * This is actually just like FigureColname, except we return NULL if
+ * we can't pick a good name.
+ */
+char *
+FigureIndexColname(Node *node)
+{
+	char	   *name = NULL;
+
+	(void) FigureColnameInternal(node, &name);
+	return name;
+}
+
+/*
+ * FigureColnameInternal -
+ *	  internal workhorse for FigureColname
+ *
+ * Return value indicates strength of confidence in result:
+ *		0 - no information
+ *		1 - second-best name choice
+ *		2 - good name choice
+ * The return value is actually only used internally.
+ * If the result isn't zero, *name is set to the chosen name.
+ */
 static int
 FigureColnameInternal(Node *node, char **name)
 {

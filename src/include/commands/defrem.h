@@ -45,6 +45,10 @@ extern char *makeObjectName(const char *name1, const char *name2,
 			   const char *label);
 extern char *ChooseRelationName(const char *name1, const char *name2,
 				   const char *label, Oid namespaceid);
+extern char *ChooseIndexName(const char *tabname, Oid namespaceId,
+							 List *colnames, List *exclusionOpNames,
+							 bool primary, bool isconstraint);
+extern List *ChooseIndexColumnNames(List *indexElems);
 extern Oid	GetDefaultOpClass(Oid type_id, Oid am_id);
 
 /* commands/functioncmds.c */
