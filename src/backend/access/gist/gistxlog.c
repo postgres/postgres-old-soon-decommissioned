@@ -649,6 +649,7 @@ gistContinueInsert(gistIncompleteInsert *insert)
 			int			j,
 						k,
 						pituplen = 0;
+			uint8		xlinfo;
 			XLogRecData *rdata;
 			XLogRecPtr	recptr;
 			Buffer		tempbuffer = InvalidBuffer;
@@ -737,6 +738,7 @@ gistContinueInsert(gistIncompleteInsert *insert)
 				for (j = 0; j < ntodelete; j++)
 					PageIndexTupleDelete(pages[0], todelete[j]);
 
+				xlinfo = XLOG_GIST_PAGE_SPLIT;
 				rdata = formSplitRdata(index->rd_node, insert->path[i],
 									   false, &(insert->key),
 									 gistMakePageLayout(buffers, numbuffer));
@@ -750,6 +752,7 @@ gistContinueInsert(gistIncompleteInsert *insert)
 					PageIndexTupleDelete(pages[0], todelete[j]);
 				gistfillbuffer(index, pages[0], itup, lenitup, InvalidOffsetNumber);
 
+				xlinfo = XLOG_GIST_PAGE_UPDATE;
 				rdata = formUpdateRdata(index->rd_node, buffers[0],
 										todelete, ntodelete,
 										itup, lenitup, &(insert->key));
@@ -766,7 +769,7 @@ gistContinueInsert(gistIncompleteInsert *insert)
 				GistPageGetOpaque(pages[j])->rightlink = InvalidBlockNumber;
 				MarkBufferDirty(buffers[j]);
 			}
-			recptr = XLogInsert(RM_GIST_ID, XLOG_GIST_PAGE_UPDATE, rdata);
+			recptr = XLogInsert(RM_GIST_ID, xlinfo, rdata);
 			for (j = 0; j < numbuffer; j++)
 			{
 				PageSetLSN(pages[j], recptr);
