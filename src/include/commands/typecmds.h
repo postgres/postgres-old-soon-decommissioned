@@ -25,6 +25,7 @@ extern void RemoveTypeById(Oid typeOid);
 extern void DefineDomain(CreateDomainStmt *stmt);
 extern void DefineEnum(CreateEnumStmt *stmt);
 extern Oid	DefineCompositeType(const RangeVar *typevar, List *coldeflist);
+extern Oid	AssignTypeArrayOid(void);
 
 extern void AlterDomainDefault(List *names, Node *defaultRaw);
 extern void AlterDomainNotNull(List *names, bool notNull);
