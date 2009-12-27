@@ -40,15 +40,20 @@ pgwin32_putenv(const char *envval)
 	if (putenvFunc == NULL)
 	{
 		hmodule = GetModuleHandle("msvcrt");
-		if (hmodule == NULL)
-			return 1;
-		putenvFunc = (PUTENVPROC) GetProcAddress(hmodule, "_putenv");
-		if (putenvFunc == NULL)
-			return 1;
+		if (hmodule != NULL)
+		{
+			/*
+			 * If the module is found, attempt to find the function. If not, that just
+			 * means we're not linked with msvcrt, so fall through and make our other
+			 * modifications anyway.
+			 * Ignore any errors and update whatever we can, since callers don't
+			 * check the return value anyway.
+			 */
+			putenvFunc = (PUTENVPROC) GetProcAddress(hmodule, "_putenv");
+			if (putenvFunc != NULL)
+				putenvFunc(envval);
+		}
 	}
-	ret = putenvFunc(envval);
-	if (ret != 0)
-		return ret;
 #endif   /* _MSC_VER >= 1300 */
 
 
