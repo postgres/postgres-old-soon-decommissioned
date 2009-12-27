@@ -1033,7 +1033,8 @@ pgstat_vacuum_stat(void)
  *
  *	Collect the OIDs of all objects listed in the specified system catalog
  *	into a temporary hash table.  Caller should hash_destroy the result
- *	when done with it.
+ *	when done with it.  (However, we make the table in CurrentMemoryContext
+ *	so that it will be freed properly in event of an error.)
  * ----------
  */
 static HTAB *
@@ -1049,10 +1050,11 @@ pgstat_collect_oids(Oid catalogid)
 	hash_ctl.keysize = sizeof(Oid);
 	hash_ctl.entrysize = sizeof(Oid);
 	hash_ctl.hash = oid_hash;
+	hash_ctl.hcxt = CurrentMemoryContext;
 	htab = hash_create("Temporary table of OIDs",
 					   PGSTAT_TAB_HASH_SIZE,
 					   &hash_ctl,
-					   HASH_ELEM | HASH_FUNCTION);
+					   HASH_ELEM | HASH_FUNCTION | HASH_CONTEXT);
 
 	rel = heap_open(catalogid, AccessShareLock);
 	scan = heap_beginscan(rel, SnapshotNow, 0, NULL);
