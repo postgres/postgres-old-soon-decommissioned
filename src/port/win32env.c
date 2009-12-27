@@ -35,7 +35,6 @@ pgwin32_putenv(const char *envval)
 	typedef int (_cdecl * PUTENVPROC) (const char *);
 	HMODULE		hmodule;
 	static PUTENVPROC putenvFunc = NULL;
-	int			ret;
 
 	if (putenvFunc == NULL)
 	{
