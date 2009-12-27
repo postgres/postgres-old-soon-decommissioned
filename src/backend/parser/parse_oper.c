@@ -1098,9 +1098,6 @@ find_oper_cache_entry(OprCacheKey *key)
 		/* First time through: initialize the hash table */
 		HASHCTL		ctl;
 
-		if (!CacheMemoryContext)
-			CreateCacheMemoryContext();
-
 		MemSet(&ctl, 0, sizeof(ctl));
 		ctl.keysize = sizeof(OprCacheKey);
 		ctl.entrysize = sizeof(OprCacheEntry);

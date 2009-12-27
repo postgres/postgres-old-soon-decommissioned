@@ -1532,9 +1532,6 @@ get_btree_test_op(Oid pred_op, Oid clause_op, bool refute_it)
 		/* First time through: initialize the hash table */
 		HASHCTL		ctl;
 
-		if (!CacheMemoryContext)
-			CreateCacheMemoryContext();
-
 		MemSet(&ctl, 0, sizeof(ctl));
 		ctl.keysize = sizeof(OprProofCacheKey);
 		ctl.entrysize = sizeof(OprProofCacheEntry);
