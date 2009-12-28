@@ -42,7 +42,7 @@ LoadKernel32()
 
 /*
  * Replacement for RegisterWaitForSingleObject(), which lives in
- * kernel32.dll·
+ * kernel32.dll
  */
 typedef
 BOOL		(WINAPI * __RegisterWaitForSingleObject)
