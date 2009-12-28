@@ -31,7 +31,7 @@
 #include "utils/builtins.h"
 #include "utils/syscache.h"
 
-PGDLLIMPORT Oid binary_upgrade_next_pg_type_toast_oid = InvalidOid;
+Oid binary_upgrade_next_pg_type_toast_oid = InvalidOid;
 
 static bool create_toast_table(Relation rel, Oid toastOid, Oid toastIndexOid,
 				   Datum reloptions, bool force);
