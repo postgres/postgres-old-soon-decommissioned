@@ -74,7 +74,7 @@ typedef struct
 	/* atts[] is of allocated length RelationGetNumberOfAttributes(rel) */
 } RelToCheck;
 
-Oid binary_upgrade_next_pg_type_array_oid = InvalidOid;
+PGDLLIMPORT Oid binary_upgrade_next_pg_type_array_oid = InvalidOid;
 
 static Oid	findTypeInputFunction(List *procname, Oid typeOid);
 static Oid	findTypeOutputFunction(List *procname, Oid typeOid);

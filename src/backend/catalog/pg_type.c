@@ -32,7 +32,7 @@
 #include "utils/rel.h"
 #include "utils/syscache.h"
 
-Oid binary_upgrade_next_pg_type_oid = InvalidOid;
+PGDLLIMPORT Oid binary_upgrade_next_pg_type_oid = InvalidOid;
 
 /* ----------------------------------------------------------------
  *		TypeShellMake
