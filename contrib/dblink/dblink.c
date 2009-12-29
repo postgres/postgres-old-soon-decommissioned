@@ -1703,10 +1703,7 @@ dblink_get_notify(PG_FUNCTION_ARGS)
 		else
 			nulls[2] = true;
 
-		/* switch to appropriate context while storing the tuple */
-		MemoryContextSwitchTo(per_query_ctx);
 		tuplestore_putvalues(tupstore, tupdesc, values, nulls);
-		MemoryContextSwitchTo(oldcontext);
 
 		PQfreemem(notify);
 		PQconsumeInput(conn);

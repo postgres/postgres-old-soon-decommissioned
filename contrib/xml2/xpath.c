@@ -821,9 +821,7 @@ xpath_table(PG_FUNCTION_ARGS)
 		{
 			/* not well-formed, so output all-NULL tuple */
 			ret_tuple = BuildTupleFromCStrings(attinmeta, values);
-			oldcontext = MemoryContextSwitchTo(per_query_ctx);
 			tuplestore_puttuple(tupstore, ret_tuple);
-			MemoryContextSwitchTo(oldcontext);
 			heap_freetuple(ret_tuple);
 		}
 		else
@@ -897,9 +895,7 @@ xpath_table(PG_FUNCTION_ARGS)
 				if (had_values)
 				{
 					ret_tuple = BuildTupleFromCStrings(attinmeta, values);
-					oldcontext = MemoryContextSwitchTo(per_query_ctx);
 					tuplestore_puttuple(tupstore, ret_tuple);
-					MemoryContextSwitchTo(oldcontext);
 					heap_freetuple(ret_tuple);
 				}
 

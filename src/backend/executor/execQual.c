@@ -2038,15 +2038,10 @@ ExecMakeTableFunctionResult(ExprState *funcexpr,
 				tmptup.t_len = HeapTupleHeaderGetDatumLength(td);
 				tmptup.t_data = td;
 
-				oldcontext = MemoryContextSwitchTo(econtext->ecxt_per_query_memory);
 				tuplestore_puttuple(tupstore, &tmptup);
 			}
 			else
-			{
-				oldcontext = MemoryContextSwitchTo(econtext->ecxt_per_query_memory);
 				tuplestore_putvalues(tupstore, tupdesc, &result, &fcinfo.isnull);
-			}
-			MemoryContextSwitchTo(oldcontext);
 
 			/*
 			 * Are we done?

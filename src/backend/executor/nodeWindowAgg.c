@@ -723,7 +723,7 @@ spool_tuples(WindowAggState *winstate, int64 pos)
 
 	outerPlan = outerPlanState(winstate);
 
-	/* Must be in query context to call outerplan or touch tuplestore */
+	/* Must be in query context to call outerplan */
 	oldcontext = MemoryContextSwitchTo(winstate->ss.ps.ps_ExprContext->ecxt_per_query_memory);
 
 	while (winstate->spooled_rows <= pos || pos == -1)
