@@ -1522,9 +1522,7 @@ ExecMakeTableFunctionResult(ExprState *funcexpr,
 				tuple = heap_form_tuple(tupdesc, &result, &fcinfo.isnull);
 			}
 
-			oldcontext = MemoryContextSwitchTo(econtext->ecxt_per_query_memory);
 			tuplestore_puttuple(tupstore, tuple);
-			MemoryContextSwitchTo(oldcontext);
 
 			/*
 			 * Are we done?
@@ -1576,6 +1574,7 @@ no_function_result:
 			memset(nullflags, true, natts * sizeof(bool));
 			tuple = heap_form_tuple(expectedDesc, nulldatums, nullflags);
 			MemoryContextSwitchTo(econtext->ecxt_per_query_memory);
+
 			tuplestore_puttuple(tupstore, tuple);
 		}
 	}
