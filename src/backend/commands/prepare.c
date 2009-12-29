@@ -781,6 +781,9 @@ pg_prepared_statement(PG_FUNCTION_ARGS)
 		tuplestore_begin_heap(rsinfo->allowedModes & SFRM_Materialize_Random,
 							  false, work_mem);
 
+	/* generate junk in short-term context */
+	MemoryContextSwitchTo(oldcontext);
+
 	/* hash table might be uninitialized */
 	if (prepared_queries)
 	{
@@ -793,9 +796,6 @@ pg_prepared_statement(PG_FUNCTION_ARGS)
 			Datum		values[5];
 			bool		nulls[5];
 
-			/* generate junk in short-term context */
-			MemoryContextSwitchTo(oldcontext);
-
 			MemSet(nulls, 0, sizeof(nulls));
 
 			values[0] = CStringGetTextDatum(prep_stmt->stmt_name);
@@ -805,16 +805,12 @@ pg_prepared_statement(PG_FUNCTION_ARGS)
 										  prep_stmt->plansource->num_params);
 			values[4] = BoolGetDatum(prep_stmt->from_sql);
 
-			/* switch to appropriate context while storing the tuple */
-			MemoryContextSwitchTo(per_query_ctx);
 			tuplestore_putvalues(tupstore, tupdesc, values, nulls);
 		}
 	}
 
 	/* clean up and return the tuplestore */
 	tuplestore_donestoring(tupstore);
-
-	MemoryContextSwitchTo(oldcontext);
 
 	rsinfo->returnMode = SFRM_Materialize;
 	rsinfo->setResult = tupstore;

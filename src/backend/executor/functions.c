@@ -1400,15 +1400,12 @@ static void
 sqlfunction_receive(TupleTableSlot *slot, DestReceiver *self)
 {
 	DR_sqlfunction *myState = (DR_sqlfunction *) self;
-	MemoryContext oldcxt;
 
 	/* Filter tuple as needed */
 	slot = ExecFilterJunk(myState->filter, slot);
 
 	/* Store the filtered tuple into the tuplestore */
-	oldcxt = MemoryContextSwitchTo(myState->cxt);
 	tuplestore_puttupleslot(myState->tstore, slot);
-	MemoryContextSwitchTo(oldcxt);
 }
 
 /*

@@ -705,6 +705,7 @@ typedef struct
 
 	Tuplestorestate *tuple_store;		/* SRFs accumulate results here */
 	MemoryContext tuple_store_cxt;
+	ResourceOwner tuple_store_owner;
 	ReturnSetInfo *rsi;
 
 	int			trig_nargs;
