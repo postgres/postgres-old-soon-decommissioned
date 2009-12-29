@@ -109,6 +109,7 @@ CREATE VIEW pg_stats AS
         nspname AS schemaname, 
         relname AS tablename, 
         attname AS attname, 
+        stainherit AS inherited, 
         stanullfrac AS null_frac, 
         stawidth AS avg_width, 
         stadistinct AS n_distinct, 

@@ -763,6 +763,7 @@ _copyHash(Hash *from)
 	 */
 	COPY_SCALAR_FIELD(skewTable);
 	COPY_SCALAR_FIELD(skewColumn);
+	COPY_SCALAR_FIELD(skewInherit);
 	COPY_SCALAR_FIELD(skewColType);
 	COPY_SCALAR_FIELD(skewColTypmod);
 

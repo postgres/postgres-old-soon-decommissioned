@@ -2524,6 +2524,9 @@ get_typmodout(Oid typid)
  *	  Given the table and attribute number of a column, get the average
  *	  width of entries in the column.  Return zero if no data available.
  *
+ * Currently this is only consulted for individual tables, not for inheritance
+ * trees, so we don't need an "inh" parameter.
+ *
  * Calling a hook at this point looks somewhat strange, but is required
  * because the optimizer calls this function without any other way for
  * plug-ins to control the result.
@@ -2540,10 +2543,11 @@ get_attavgwidth(Oid relid, AttrNumber attnum)
 		if (stawidth > 0)
 			return stawidth;
 	}
-	tp = SearchSysCache(STATRELATT,
+	tp = SearchSysCache(STATRELATTINH,
 						ObjectIdGetDatum(relid),
 						Int16GetDatum(attnum),
-						0, 0);
+						BoolGetDatum(false),
+						0);
 	if (HeapTupleIsValid(tp))
 	{
 		stawidth = ((Form_pg_statistic) GETSTRUCT(tp))->stawidth;
@@ -2609,7 +2613,7 @@ get_attstatsslot(HeapTuple statstuple,
 
 	if (values)
 	{
-		val = SysCacheGetAttr(STATRELATT, statstuple,
+		val = SysCacheGetAttr(STATRELATTINH, statstuple,
 							  Anum_pg_statistic_stavalues1 + i,
 							  &isnull);
 		if (isnull)
@@ -2658,7 +2662,7 @@ get_attstatsslot(HeapTuple statstuple,
 
 	if (numbers)
 	{
-		val = SysCacheGetAttr(STATRELATT, statstuple,
+		val = SysCacheGetAttr(STATRELATTINH, statstuple,
 							  Anum_pg_statistic_stanumbers1 + i,
 							  &isnull);
 		if (isnull)
