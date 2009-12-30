@@ -256,6 +256,7 @@ pqsecure_read(PGconn *conn, void *ptr, size_t len)
 		int			err;
 
 rloop:
+		SOCK_ERRNO_SET(0);
 		n = SSL_read(conn->ssl, ptr, len);
 		err = SSL_get_error(conn->ssl, n);
 		switch (err)
@@ -347,6 +348,7 @@ pqsecure_write(PGconn *conn, const void *ptr, size_t len)
 	{
 		int			err;
 
+		SOCK_ERRNO_SET(0);
 		n = SSL_write(conn->ssl, ptr, len);
 		err = SSL_get_error(conn->ssl, n);
 		switch (err)
@@ -944,9 +946,28 @@ open_client_SSL(PGconn *conn)
 					  conn->peer_dn, sizeof(conn->peer_dn));
 	conn->peer_dn[sizeof(conn->peer_dn) - 1] = '\0';
 
-	X509_NAME_get_text_by_NID(X509_get_subject_name(conn->peer),
+	r = X509_NAME_get_text_by_NID(X509_get_subject_name(conn->peer),
 							  NID_commonName, conn->peer_cn, SM_USER);
-	conn->peer_cn[SM_USER] = '\0';
+	conn->peer_cn[SM_USER] = '\0'; /* buffer is SM_USER+1 chars! */
+	if (r == -1)
+	{
+		/* Unable to get the CN, set it to blank so it can't be used */
+		conn->peer_cn[0] = '\0';
+	}
+	else
+	{
+		/*
+		 * Reject embedded NULLs in certificate common name to prevent attacks like
+		 * CVE-2009-4034.
+		 */
+		if (r != strlen(conn->peer_cn))
+		{
+			printfPQExpBuffer(&conn->errorMessage,
+							  libpq_gettext("SSL certificate's common name contains embedded null\n"));
+			close_SSL(conn);
+			return PGRES_POLLING_FAILED;
+		}
+	}
 
 	/* verify that the common name resolves to peer */
 

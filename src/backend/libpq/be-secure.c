@@ -263,6 +263,7 @@ secure_read(Port *port, void *ptr, size_t len)
 		int			err;
 
 rloop:
+		errno = 0;
 		n = SSL_read(port->ssl, ptr, len);
 		err = SSL_get_error(port->ssl, n);
 		switch (err)
@@ -357,6 +358,7 @@ secure_write(Port *port, void *ptr, size_t len)
 		}
 
 wloop:
+		errno = 0;
 		n = SSL_write(port->ssl, ptr, len);
 		err = SSL_get_error(port->ssl, n);
 		switch (err)
@@ -929,9 +931,29 @@ aloop:
 		X509_NAME_oneline(X509_get_subject_name(port->peer),
 						  port->peer_dn, sizeof(port->peer_dn));
 		port->peer_dn[sizeof(port->peer_dn) - 1] = '\0';
-		X509_NAME_get_text_by_NID(X509_get_subject_name(port->peer),
+		r = X509_NAME_get_text_by_NID(X509_get_subject_name(port->peer),
 					   NID_commonName, port->peer_cn, sizeof(port->peer_cn));
 		port->peer_cn[sizeof(port->peer_cn) - 1] = '\0';
+		if (r == -1)
+		{
+			/* Unable to get the CN, set it to blank so it can't be used */
+			port->peer_cn[0] = '\0';
+		}
+		else
+		{
+			/*
+			 * Reject embedded NULLs in certificate common name to prevent attacks like
+			 * CVE-2009-4034.
+			 */
+			if (r != strlen(port->peer_cn))
+			{
+				ereport(COMMERROR,
+						(errcode(ERRCODE_PROTOCOL_VIOLATION),
+						 errmsg("SSL certificate's common name contains embedded null")));
+				close_SSL(port);
+				return -1;
+			}
+		}
 	}
 	ereport(DEBUG2,
 			(errmsg("SSL connection from \"%s\"", port->peer_cn)));
