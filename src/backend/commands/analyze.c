@@ -535,16 +535,13 @@ do_analyze_rel(Relation onerel, VacuumStmt *vacstmt,
 	}
 
 	/*
-	 * Update pages/tuples stats in pg_class.
+	 * Update pages/tuples stats in pg_class, but not if we're inside a
+	 * VACUUM that got a more precise number.
 	 */
 	if (update_reltuples)
-	{
 		vac_update_relstats(onerel,
 							RelationGetNumberOfBlocks(onerel),
 							totalrows, hasindex, InvalidTransactionId);
-		/* report results to the stats collector, too */
-		pgstat_report_analyze(onerel, totalrows, totaldeadrows);
-	}
 
 	/*
 	 * Same for indexes. Vacuum always scans all indexes, so if we're part of
@@ -564,6 +561,13 @@ do_analyze_rel(Relation onerel, VacuumStmt *vacstmt,
 								totalindexrows, false, InvalidTransactionId);
 		}
 	}
+
+	/*
+	 * Report ANALYZE to the stats collector, too; likewise, tell it to
+	 * adopt these numbers only if we're not inside a VACUUM that got a
+	 * better number.
+	 */
+	pgstat_report_analyze(onerel, update_reltuples, totalrows, totaldeadrows);
 
 	/* We skip to here if there were no analyzable columns */
 cleanup:

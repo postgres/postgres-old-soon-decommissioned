@@ -1332,7 +1332,6 @@ full_vacuum_rel(Relation onerel, VacuumStmt *vacstmt)
 	pgstat_report_vacuum(RelationGetRelid(onerel),
 						 onerel->rd_rel->relisshared,
 						 true,
-						 (vacstmt->options & VACOPT_ANALYZE) != 0,
 						 vacrelstats->rel_tuples);
 
 	return heldoff;
