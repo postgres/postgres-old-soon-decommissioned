@@ -146,10 +146,11 @@ int2vectorin(PG_FUNCTION_ARGS)
 
 	for (n = 0; *intString && n < FUNC_MAX_ARGS; n++)
 	{
-		if (sscanf(intString, "%hd", &result->values[n]) != 1)
-			break;
 		while (*intString && isspace((unsigned char) *intString))
 			intString++;
+		if (*intString == '\0')
+			break;		
+		result->values[n] = pg_atoi(intString, sizeof(int16), ' ');
 		while (*intString && !isspace((unsigned char) *intString))
 			intString++;
 	}
