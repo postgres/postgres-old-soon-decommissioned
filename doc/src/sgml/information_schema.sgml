@@ -4875,7 +4875,11 @@ ORDER BY c.ordinal_position;
      <row>
       <entry><literal>action_condition</literal></entry>
       <entry><type>character_data</type></entry>
-      <entry>Applies to a feature not available in <productname>PostgreSQL</></entry>
+      <entry>
+       <literal>WHEN</literal> condition of the trigger, null if none
+       (also null if the table is not owned by a currently enabled
+       role)
+      </entry>
      </row>
 
      <row>
