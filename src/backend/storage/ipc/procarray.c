@@ -2471,7 +2471,7 @@ KnownAssignedXidsRemoveMany(TransactionId xid, bool keepPreparedXacts)
  *
  * Must be called while holding ProcArrayLock (in shared mode)
  */
-void
+static void
 KnownAssignedXidsDisplay(int trace_level)
 {
 	HASH_SEQ_STATUS status;
