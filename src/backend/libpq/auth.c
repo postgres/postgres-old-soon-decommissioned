@@ -2305,8 +2305,9 @@ CheckLDAPAuth(Port *port)
 								filter, port->hba->ldapserver)));
 			else
 				ereport(LOG,
-						(errmsg("LDAP search failed for filter \"%s\" on server \"%s\": user is not unique (%d matches)",
-								filter, port->hba->ldapserver, ldap_count_entries(ldap, search_message))));
+						(errmsg("LDAP search failed for filter \"%s\" on server \"%s\": user is not unique (%ld matches)",
+								filter, port->hba->ldapserver,
+								(long) ldap_count_entries(ldap, search_message))));
 
 			pfree(filter);
 			ldap_msgfree(search_message);
