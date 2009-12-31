@@ -95,7 +95,7 @@ typedef struct plperl_call_data
  **********************************************************************/
 typedef struct plperl_query_desc
 {
-	char		qname[sizeof(long) * 2 + 1];
+	char		qname[20];
 	void	   *plan;
 	int			nargs;
 	Oid		   *argtypes;
@@ -2337,7 +2337,7 @@ plperl_spi_prepare(char *query, int argc, SV **argv)
 	 ************************************************************/
 	qdesc = (plperl_query_desc *) malloc(sizeof(plperl_query_desc));
 	MemSet(qdesc, 0, sizeof(plperl_query_desc));
-	snprintf(qdesc->qname, sizeof(qdesc->qname), "%lx", (long) qdesc);
+	snprintf(qdesc->qname, sizeof(qdesc->qname), "%p", qdesc);
 	qdesc->nargs = argc;
 	qdesc->argtypes = (Oid *) malloc(argc * sizeof(Oid));
 	qdesc->arginfuncs = (FmgrInfo *) malloc(argc * sizeof(FmgrInfo));

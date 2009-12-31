@@ -192,7 +192,7 @@ heap_fill_tuple(TupleDesc tupleDesc,
 		if (att[i]->attbyval)
 		{
 			/* pass-by-value */
-			data = (char *) att_align_nominal((long) data, att[i]->attalign);
+			data = (char *) att_align_nominal(data, att[i]->attalign);
 			store_att_byval(data, values[i], att[i]->attlen);
 			data_length = att[i]->attlen;
 		}
@@ -226,7 +226,7 @@ heap_fill_tuple(TupleDesc tupleDesc,
 			else
 			{
 				/* full 4-byte header varlena */
-				data = (char *) att_align_nominal((long) data,
+				data = (char *) att_align_nominal(data,
 												  att[i]->attalign);
 				data_length = VARSIZE(val);
 				memcpy(data, val, data_length);
@@ -243,7 +243,7 @@ heap_fill_tuple(TupleDesc tupleDesc,
 		else
 		{
 			/* fixed-length pass-by-reference */
-			data = (char *) att_align_nominal((long) data, att[i]->attalign);
+			data = (char *) att_align_nominal(data, att[i]->attalign);
 			Assert(att[i]->attlen > 0);
 			data_length = att[i]->attlen;
 			memcpy(data, DatumGetPointer(values[i]), data_length);

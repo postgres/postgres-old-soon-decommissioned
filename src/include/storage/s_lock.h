@@ -683,7 +683,7 @@ typedef struct
 	int			sema[4];
 } slock_t;
 
-#define TAS_ACTIVE_WORD(lock)	((volatile int *) (((long) (lock) + 15) & ~15))
+#define TAS_ACTIVE_WORD(lock)	((volatile int *) (((uintptr_t) (lock) + 15) & ~15))
 
 #if defined(__GNUC__)
 
