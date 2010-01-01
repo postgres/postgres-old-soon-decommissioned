@@ -5,8 +5,10 @@ my @def;
 # $PostgreSQL$
 #
 
-die "Usage: gendef.pl <modulepath>\n" unless ($ARGV[0] =~ /\\([^\\]+$)/);
+die "Usage: gendef.pl <modulepath> <platform>\n" unless
+   (($ARGV[0] =~ /\\([^\\]+$)/) && ($ARGV[1] == 'Win32' || $ARGV[1] == 'x64'));
 my $defname = uc $1;
+my $platform = $ARGV[1];
 
 if (-f "$ARGV[0]/$defname.def")
 {
@@ -14,7 +16,7 @@ if (-f "$ARGV[0]/$defname.def")
     exit(0);
 }
 
-print "Generating $defname.DEF from directory $ARGV[0]\n";
+print "Generating $defname.DEF from directory $ARGV[0], platform $platform\n";
 
 while (<$ARGV[0]/*.obj>)
 {
@@ -55,7 +57,7 @@ foreach my $f (sort @def)
 {
     next if ($f eq $last);
     $last = $f;
-    $f =~ s/^_//;
+    $f =~ s/^_// unless ($platform eq "x64"); # win64 has new format of exports
     $i++;
 
     #   print DEF "  $f \@ $i\n";  # ordinaled exports?
