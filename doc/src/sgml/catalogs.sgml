@@ -466,7 +466,7 @@
       <entry><structfield>amsearchnulls</structfield></entry>
       <entry><type>bool</type></entry>
       <entry></entry>
-      <entry>Does the access method support IS NULL searches?</entry>
+      <entry>Does the access method support IS NULL/NOT NULL searches?</entry>
      </row>
 
      <row>

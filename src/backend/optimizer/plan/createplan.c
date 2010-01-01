@@ -73,7 +73,6 @@ static MergeJoin *create_mergejoin_plan(PlannerInfo *root, MergePath *best_path,
 static HashJoin *create_hashjoin_plan(PlannerInfo *root, HashPath *best_path,
 					 Plan *outer_plan, Plan *inner_plan);
 static List *fix_indexqual_references(List *indexquals, IndexPath *index_path);
-static Node *fix_indexqual_operand(Node *node, IndexOptInfo *index);
 static List *get_switched_clauses(List *clauses, Relids outerrelids);
 static List *order_qual_clauses(PlannerInfo *root, List *clauses);
 static void copy_path_costsize(Plan *dest, Path *src);
@@ -2117,7 +2116,6 @@ fix_indexqual_references(List *indexquals, IndexPath *index_path)
 		{
 			NullTest   *nt = (NullTest *) clause;
 
-			Assert(nt->nulltesttype == IS_NULL);
 			nt->arg = (Expr *) fix_indexqual_operand((Node *) nt->arg,
 													 index);
 		}
@@ -2131,7 +2129,13 @@ fix_indexqual_references(List *indexquals, IndexPath *index_path)
 	return fixed_indexquals;
 }
 
-static Node *
+/*
+ * fix_indexqual_operand
+ *	  Convert an indexqual expression to a Var referencing the index column.
+ *
+ * This is exported because planagg.c needs it.
+ */
+Node *
 fix_indexqual_operand(Node *node, IndexOptInfo *index)
 {
 	/*

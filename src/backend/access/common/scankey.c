@@ -21,7 +21,7 @@
  * ScanKeyEntryInitialize
  *		Initializes a scan key entry given all the field values.
  *		The target procedure is specified by OID (but can be invalid
- *		if SK_SEARCHNULL is set).
+ *		if SK_SEARCHNULL or SK_SEARCHNOTNULL is set).
  *
  * Note: CurrentMemoryContext at call should be as long-lived as the ScanKey
  * itself, because that's what will be used for any subsidiary info attached
@@ -45,7 +45,7 @@ ScanKeyEntryInitialize(ScanKey entry,
 		fmgr_info(procedure, &entry->sk_func);
 	else
 	{
-		Assert(flags & SK_SEARCHNULL);
+		Assert(flags & (SK_SEARCHNULL | SK_SEARCHNOTNULL));
 		MemSet(&entry->sk_func, 0, sizeof(entry->sk_func));
 	}
 }

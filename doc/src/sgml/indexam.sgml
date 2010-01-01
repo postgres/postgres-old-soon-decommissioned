@@ -134,7 +134,8 @@
    null values.  An index access method that sets
    <structfield>amindexnulls</structfield> may also set
    <structfield>amsearchnulls</structfield>, indicating that it supports
-   <literal>IS NULL</> clauses as search conditions.
+   <literal>IS NULL</> and <literal>IS NOT NULL</> clauses as search
+   conditions.
   </para>
 
  </sect1>
