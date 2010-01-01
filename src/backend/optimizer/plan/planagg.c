@@ -308,6 +308,9 @@ build_minmax_path(PlannerInfo *root, RelOptInfo *rel, MinMaxAggInfo *info)
 	ntest = makeNode(NullTest);
 	ntest->nulltesttype = IS_NOT_NULL;
 	ntest->arg = copyObject(info->target);
+	ntest->argisrow = type_is_rowtype(exprType((Node *) ntest->arg));
+	if (ntest->argisrow)
+		return false;			/* punt on composites */
 	info->notnulltest = ntest;
 
 	/*

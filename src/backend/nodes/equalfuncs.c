@@ -623,6 +623,7 @@ _equalNullTest(NullTest *a, NullTest *b)
 {
 	COMPARE_NODE_FIELD(arg);
 	COMPARE_SCALAR_FIELD(nulltesttype);
+	COMPARE_SCALAR_FIELD(argisrow);
 
 	return true;
 }

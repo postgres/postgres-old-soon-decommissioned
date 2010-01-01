@@ -3475,7 +3475,7 @@ ExecEvalNullTest(NullTestState *nstate,
 	if (isDone && *isDone == ExprEndResult)
 		return result;			/* nothing to check */
 
-	if (nstate->argisrow && !(*isNull))
+	if (ntest->argisrow && !(*isNull))
 	{
 		HeapTupleHeader tuple;
 		Oid			tupType;
@@ -4704,7 +4704,6 @@ ExecInitExpr(Expr *node, PlanState *parent)
 
 				nstate->xprstate.evalfunc = (ExprStateEvalFunc) ExecEvalNullTest;
 				nstate->arg = ExecInitExpr(ntest->arg, parent);
-				nstate->argisrow = type_is_rowtype(exprType((Node *) ntest->arg));
 				nstate->argdesc = NULL;
 				state = (ExprState *) nstate;
 			}

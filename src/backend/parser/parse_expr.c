@@ -276,6 +276,7 @@ transformExpr(ParseState *pstate, Node *expr)
 
 				n->arg = (Expr *) transformExpr(pstate, (Node *) n->arg);
 				/* the argument can be any type, so don't coerce it */
+				n->argisrow = type_is_rowtype(exprType((Node *) n->arg));
 				result = expr;
 				break;
 			}

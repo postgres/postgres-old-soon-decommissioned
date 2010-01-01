@@ -1256,7 +1256,8 @@ match_clause_to_indexcol(IndexOptInfo *index,
 	{
 		NullTest   *nt = (NullTest *) clause;
 
-		if (match_index_to_operand((Node *) nt->arg, indexcol, index))
+		if (!nt->argisrow &&
+			match_index_to_operand((Node *) nt->arg, indexcol, index))
 			return true;
 		return false;
 	}

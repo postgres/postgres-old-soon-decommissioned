@@ -1506,6 +1506,7 @@ _copyNullTest(NullTest *from)
 
 	COPY_NODE_FIELD(arg);
 	COPY_SCALAR_FIELD(nulltesttype);
+	COPY_SCALAR_FIELD(argisrow);
 
 	return newnode;
 }

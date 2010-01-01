@@ -541,6 +541,7 @@ get_relation_constraints(PlannerInfo *root,
 												  att->atttypmod,
 												  0);
 					ntest->nulltesttype = IS_NOT_NULL;
+					ntest->argisrow = type_is_rowtype(att->atttypid);
 					result = lappend(result, ntest);
 				}
 			}

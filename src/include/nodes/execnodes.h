@@ -886,8 +886,7 @@ typedef struct NullTestState
 {
 	ExprState	xprstate;
 	ExprState  *arg;			/* input expression */
-	bool		argisrow;		/* T if input is of a composite type */
-	/* used only if argisrow: */
+	/* used only if input is of composite type: */
 	TupleDesc	argdesc;		/* tupdesc for most recent input */
 } NullTestState;
 

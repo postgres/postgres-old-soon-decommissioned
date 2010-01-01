@@ -963,6 +963,7 @@ _readNullTest(void)
 
 	READ_NODE_FIELD(arg);
 	READ_ENUM_FIELD(nulltesttype, NullTestType);
+	READ_BOOL_FIELD(argisrow);
 
 	READ_DONE();
 }
