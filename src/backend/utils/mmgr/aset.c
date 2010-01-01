@@ -698,11 +698,11 @@ AllocSetAlloc(MemoryContext context, Size size)
 				 * freelist than the one we need to put this chunk on.	The
 				 * exception is when availchunk is exactly a power of 2.
 				 */
-				if (availchunk != (1 << (a_fidx + ALLOC_MINBITS)))
+				if (availchunk != ((Size) 1 << (a_fidx + ALLOC_MINBITS)))
 				{
 					a_fidx--;
 					Assert(a_fidx >= 0);
-					availchunk = (1 << (a_fidx + ALLOC_MINBITS));
+					availchunk = ((Size) 1 << (a_fidx + ALLOC_MINBITS));
 				}
 
 				chunk = (AllocChunk) (block->freeptr);
