@@ -11,6 +11,7 @@ if exist debug rd /s /q debug
 if exist release rd /s /q release
 for %%f in (*.vcproj) do del %%f
 if exist pgsql.sln del /q pgsql.sln
+if exist pgsql.sln.cache del /q pgsql.sln.cache
 del /s /q src\bin\win32ver.rc 2> NUL
 del /s /q src\interfaces\win32ver.rc 2> NUL
 if exist src\backend\win32ver.rc del /q src\backend\win32ver.rc
