@@ -31,7 +31,7 @@ sub new
         prefixincludes  => '',
         defines         => ';',
         solution        => $solution,
-        disablewarnings => '4018;4244;4273;4102;4090',
+        disablewarnings => '4018;4244;4273;4102;4090;4267',
         disablelinkerwarnings => '',
         vcver           => $solution->{vcver},
         platform        => $solution->{platform},
