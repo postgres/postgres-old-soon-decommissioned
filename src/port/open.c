@@ -124,7 +124,7 @@ pgwin32_open(const char *fileName, int fileFlags,...)
 	}
 
 	/* _open_osfhandle will, on error, set errno accordingly */
-	if ((fd = _open_osfhandle((long) h, fileFlags & O_APPEND)) < 0)
+	if ((fd = _open_osfhandle((intptr_t) h, fileFlags & O_APPEND)) < 0)
 		CloseHandle(h);			/* will not affect errno */
 	else if (fileFlags & (O_TEXT | O_BINARY) &&
 			 _setmode(fd, fileFlags & (O_TEXT | O_BINARY)) < 0)
