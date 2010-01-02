@@ -573,7 +573,7 @@ SysLogger_Start(void)
 				 * chunking protocol.
 				 */
 				fflush(stderr);
-				fd = _open_osfhandle((long) syslogPipe[1],
+				fd = _open_osfhandle((intptr_t) syslogPipe[1],
 									 _O_APPEND | _O_BINARY);
 				if (dup2(fd, _fileno(stderr)) < 0)
 					ereport(FATAL,

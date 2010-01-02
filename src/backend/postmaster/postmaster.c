@@ -403,7 +403,11 @@ typedef struct
 	int			ListenSocket[MAXLISTEN];
 	long		MyCancelKey;
 	int			MyPMChildSlot;
+#ifndef WIN32
 	unsigned long UsedShmemSegID;
+#else
+	 HANDLE		UsedShmemSegID;
+#endif
 	void	   *UsedShmemSegAddr;
 	slock_t    *ShmemLock;
 	VariableCache ShmemVariableCache;
