@@ -303,7 +303,11 @@ extern void pgwin32_unsetenv(const char *);
 
 /* Things that exist in MingW headers, but need to be added to MSVC & BCC */
 #ifdef WIN32_ONLY_COMPILER
+#ifndef _WIN64
 typedef long ssize_t;
+#else
+typedef __int64 ssize_t;
+#endif
 
 #ifndef __BORLANDC__
 typedef unsigned short mode_t;
