@@ -196,13 +196,16 @@ main(int argc, char *argv[])
 		   ControlFile.checkPointCopy.oldestXid);
 	printf(_("Latest checkpoint's oldestXID's DB:   %u\n"),
 		   ControlFile.checkPointCopy.oldestXidDB);
-	printf(_("Latest checkpoint's oldestActiveXID:   %u\n"),
+	printf(_("Latest checkpoint's oldestActiveXID:  %u\n"),
 		   ControlFile.checkPointCopy.oldestActiveXid);
 	printf(_("Time of latest checkpoint:            %s\n"),
 		   ckpttime_str);
 	printf(_("Minimum recovery ending location:     %X/%X\n"),
 		   ControlFile.minRecoveryPoint.xlogid,
 		   ControlFile.minRecoveryPoint.xrecoff);
+	printf(_("Backup start location:                %X/%X\n"),
+		   ControlFile.backupStartPoint.xlogid,
+		   ControlFile.backupStartPoint.xrecoff);
 	printf(_("Maximum data alignment:               %u\n"),
 		   ControlFile.maxAlign);
 	/* we don't print floatFormat since can't say much useful about it */

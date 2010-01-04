@@ -625,6 +625,8 @@ RewriteControlFile(void)
 	ControlFile.prevCheckPoint.xrecoff = 0;
 	ControlFile.minRecoveryPoint.xlogid = 0;
 	ControlFile.minRecoveryPoint.xrecoff = 0;
+	ControlFile.backupStartPoint.xlogid = 0;
+	ControlFile.backupStartPoint.xrecoff = 0;
 
 	/* Now we can force the recorded xlog seg size to the right thing. */
 	ControlFile.xlog_seg_size = XLogSegSize;

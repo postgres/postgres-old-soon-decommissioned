@@ -21,7 +21,7 @@
 
 
 /* Version identifier for this pg_control format */
-#define PG_CONTROL_VERSION	852
+#define PG_CONTROL_VERSION	853
 
 /*
  * Body of CheckPoint XLOG records.  This is declared here because we keep
@@ -62,6 +62,7 @@ typedef struct CheckPoint
 #define XLOG_NOOP						0x20
 #define XLOG_NEXTOID					0x30
 #define XLOG_SWITCH						0x40
+#define XLOG_BACKUP_END					0x50
 
 
 /* System status indicator */
@@ -117,7 +118,27 @@ typedef struct ControlFileData
 
 	CheckPoint	checkPointCopy; /* copy of last check point record */
 
-	XLogRecPtr	minRecoveryPoint;		/* must replay xlog to here */
+	/*
+	 * These two values determine the minimum point we must recover up to
+	 * before starting up:
+	 *
+	 * minRecoveryPoint is updated to the latest replayed LSN whenever we
+	 * flush a data change during archive recovery. That guards against
+	 * starting archive recovery, aborting it, and restarting with an earlier
+	 * stop location. If we've already flushed data changes from WAL record X
+	 * to disk, we mustn't start up until we reach X again. Zero when not
+	 * doing archive recovery.
+	 *
+	 * backupStartPoint is the redo pointer of the backup start checkpoint, if
+	 * we are recovering from an online backup and haven't reached the end of
+	 * backup yet. It is reset to zero when the end of backup is reached, and
+	 * we mustn't start up before that. A boolean would suffice otherwise, but
+	 * we use the redo pointer as a cross-check when we see an end-of-backup
+	 * record, to make sure the end-of-backup record corresponds the base
+	 * backup we're recovering from.
+	 */
+	XLogRecPtr	minRecoveryPoint;
+	XLogRecPtr	backupStartPoint;
 
 	/*
 	 * This data is used to check for hardware-architecture compatibility of
