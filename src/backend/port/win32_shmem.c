@@ -350,7 +350,7 @@ pgwin32_ReserveSharedMemoryRegion(HANDLE hChild)
 								MEM_RESERVE, PAGE_READWRITE);
 	if (address == NULL) {
 		/* Don't use FATAL since we're running in the postmaster */
-		elog(LOG, "could not reserve shared memory region (addr=%p) for child %lu: %lu",
+		elog(LOG, "could not reserve shared memory region (addr=%p) for child %p: %lu",
 			 UsedShmemSegAddr, hChild, GetLastError());
 		return false;
 	}
