@@ -129,6 +129,7 @@ extern int32 get_attavgwidth(Oid relid, AttrNumber attnum);
 extern bool get_attstatsslot(HeapTuple statstuple,
 				 Oid atttype, int32 atttypmod,
 				 int reqkind, Oid reqop,
+				 Oid *actualop,
 				 Datum **values, int *nvalues,
 				 float4 **numbers, int *nnumbers);
 extern void free_attstatsslot(Oid atttype,

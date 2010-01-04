@@ -170,6 +170,7 @@ tsquerysel(VariableStatData *vardata, Datum constval)
 		if (get_attstatsslot(vardata->statsTuple,
 							 TEXTOID, -1,
 							 STATISTIC_KIND_MCELEM, InvalidOid,
+							 NULL,
 							 &values, &nvalues,
 							 &numbers, &nnumbers))
 		{
