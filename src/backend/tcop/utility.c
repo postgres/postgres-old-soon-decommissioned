@@ -218,6 +218,7 @@ check_xact_readonly(Node *parsetree)
 		case T_CreateUserMappingStmt:
 		case T_AlterUserMappingStmt:
 		case T_DropUserMappingStmt:
+		case T_AlterTableSpaceOptionsStmt:
 			ereport(ERROR,
 					(errcode(ERRCODE_READ_ONLY_SQL_TRANSACTION),
 					 errmsg("transaction is read-only")));
@@ -526,6 +527,10 @@ standard_ProcessUtility(Node *parsetree,
 		case T_DropTableSpaceStmt:
 			PreventTransactionChain(isTopLevel, "DROP TABLESPACE");
 			DropTableSpace((DropTableSpaceStmt *) parsetree);
+			break;
+
+		case T_AlterTableSpaceOptionsStmt:
+			AlterTableSpaceOptions((AlterTableSpaceOptionsStmt *) parsetree);
 			break;
 
 		case T_CreateFdwStmt:
@@ -1456,6 +1461,10 @@ CreateCommandTag(Node *parsetree)
 			tag = "DROP TABLESPACE";
 			break;
 
+		case T_AlterTableSpaceOptionsStmt:
+			tag = "ALTER TABLESPACE";
+			break;
+
 		case T_CreateFdwStmt:
 			tag = "CREATE FOREIGN DATA WRAPPER";
 			break;
@@ -2235,6 +2244,10 @@ GetCommandLogLevel(Node *parsetree)
 			break;
 
 		case T_DropTableSpaceStmt:
+			lev = LOGSTMT_DDL;
+			break;
+
+		case T_AlterTableSpaceOptionsStmt:
 			lev = LOGSTMT_DDL;
 			break;
 

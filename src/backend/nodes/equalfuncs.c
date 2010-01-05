@@ -1569,6 +1569,17 @@ _equalDropTableSpaceStmt(DropTableSpaceStmt *a, DropTableSpaceStmt *b)
 }
 
 static bool
+_equalAlterTableSpaceOptionsStmt(AlterTableSpaceOptionsStmt *a,
+											 AlterTableSpaceOptionsStmt *b)
+{
+	COMPARE_STRING_FIELD(tablespacename);
+	COMPARE_NODE_FIELD(options);
+	COMPARE_SCALAR_FIELD(isReset);
+
+	return true;
+}
+
+static bool
 _equalCreateFdwStmt(CreateFdwStmt *a, CreateFdwStmt *b)
 {
 	COMPARE_STRING_FIELD(fdwname);
@@ -2719,6 +2730,9 @@ equal(void *a, void *b)
 			break;
 		case T_DropTableSpaceStmt:
 			retval = _equalDropTableSpaceStmt(a, b);
+			break;
+		case T_AlterTableSpaceOptionsStmt:
+			retval = _equalAlterTableSpaceOptionsStmt(a, b);
 			break;
 		case T_CreateFdwStmt:
 			retval = _equalCreateFdwStmt(a, b);

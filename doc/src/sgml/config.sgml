@@ -2000,6 +2000,9 @@ archive_command = 'copy "%p" "C:\\server\\archivedir\\%f"'  # Windows
        <para>
         Sets the planner's estimate of the cost of a disk page fetch
         that is part of a series of sequential fetches.  The default is 1.0.
+        This value can be overriden for a particular tablespace by setting
+        the tablespace parameter of the same name
+        (see <xref linkend="sql-altertablespace">).
        </para>
       </listitem>
      </varlistentry>
@@ -2013,6 +2016,12 @@ archive_command = 'copy "%p" "C:\\server\\archivedir\\%f"'  # Windows
        <para>
         Sets the planner's estimate of the cost of a
         non-sequentially-fetched disk page.  The default is 4.0.
+        This value can be overriden for a particular tablespace by setting
+        the tablespace parameter of the same name
+        (see <xref linkend="sql-altertablespace">).
+       </para>
+
+	   <para>
         Reducing this value relative to <varname>seq_page_cost</>
         will cause the system to prefer index scans; raising it will
         make index scans look relatively more expensive.  You can raise

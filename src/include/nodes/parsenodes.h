@@ -1477,6 +1477,14 @@ typedef struct DropTableSpaceStmt
 	bool		missing_ok;		/* skip error if missing? */
 } DropTableSpaceStmt;
 
+typedef struct AlterTableSpaceOptionsStmt
+{
+	NodeTag		type;
+	char	   *tablespacename;
+	List	   *options;
+	bool		isReset;
+} AlterTableSpaceOptionsStmt;
+
 /* ----------------------
  *		Create/Drop FOREIGN DATA WRAPPER Statements
  * ----------------------

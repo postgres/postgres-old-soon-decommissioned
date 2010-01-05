@@ -32,11 +32,17 @@ typedef struct xl_tblspc_drop_rec
 	Oid			ts_id;
 } xl_tblspc_drop_rec;
 
+typedef struct TableSpaceOpts
+{
+	float8		random_page_cost;
+	float8		seq_page_cost;
+} TableSpaceOpts;
 
 extern void CreateTableSpace(CreateTableSpaceStmt *stmt);
 extern void DropTableSpace(DropTableSpaceStmt *stmt);
 extern void RenameTableSpace(const char *oldname, const char *newname);
 extern void AlterTableSpaceOwner(const char *name, Oid newOwnerId);
+extern void AlterTableSpaceOptions(AlterTableSpaceOptionsStmt *stmt);
 
 extern void TablespaceCreateDbspace(Oid spcNode, Oid dbNode, bool isRedo);
 

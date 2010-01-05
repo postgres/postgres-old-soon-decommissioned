@@ -3064,6 +3064,18 @@ _copyDropTableSpaceStmt(DropTableSpaceStmt *from)
 	return newnode;
 }
 
+static AlterTableSpaceOptionsStmt *
+_copyAlterTableSpaceOptionsStmt(AlterTableSpaceOptionsStmt *from)
+{
+	AlterTableSpaceOptionsStmt *newnode = makeNode(AlterTableSpaceOptionsStmt);
+
+	COPY_STRING_FIELD(tablespacename);
+	COPY_NODE_FIELD(options);
+	COPY_SCALAR_FIELD(isReset);
+
+	return newnode;
+}
+
 static CreateFdwStmt *
 _copyCreateFdwStmt(CreateFdwStmt *from)
 {
@@ -4027,6 +4039,9 @@ copyObject(void *from)
 			break;
 		case T_DropTableSpaceStmt:
 			retval = _copyDropTableSpaceStmt(from);
+			break;
+		case T_AlterTableSpaceOptionsStmt:
+			retval = _copyAlterTableSpaceOptionsStmt(from);
 			break;
 		case T_CreateFdwStmt:
 			retval = _copyCreateFdwStmt(from);
