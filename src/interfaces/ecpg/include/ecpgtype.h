@@ -62,7 +62,8 @@ enum ECPGttype
 	ECPGt_EOIT,					/* End of insert types. */
 	ECPGt_EORT,					/* End of result types. */
 	ECPGt_NO_INDICATOR,			/* no indicator */
-	ECPGt_string                            /* trimmed (char *) type */
+	ECPGt_string,				/* trimmed (char *) type */
+	ECPGt_sqlda				/* C struct descriptor */
 };
 
  /* descriptor items */

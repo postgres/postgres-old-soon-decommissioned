@@ -24,7 +24,7 @@ override CFLAGS += $(PTHREAD_CFLAGS)
 # Need to recompile any libpgport object files
 LIBS := $(filter-out -lpgport, $(LIBS))
 
-OBJS= execute.o typename.o descriptor.o data.o error.o prepare.o memory.o \
+OBJS= execute.o typename.o descriptor.o sqlda.o data.o error.o prepare.o memory.o \
 	connect.o misc.o path.o pgstrcasecmp.o \
 	$(filter snprintf.o strlcpy.o, $(LIBOBJS))
 
