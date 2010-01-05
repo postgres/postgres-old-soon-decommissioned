@@ -1,6 +1,3 @@
-/*
- * $PostgreSQL$
- */
 #ifndef ECPG_SQLTYPES_H
 #define ECPG_SQLTYPES_H
 
