@@ -48,8 +48,6 @@ typedef struct sqlda_struct	sqlda_t;
 
 
 #line 1 "pgtypes_numeric.h"
-/* $PostgreSQL$ */
-
 #ifndef PGTYPES_NUMERIC
 #define PGTYPES_NUMERIC
 

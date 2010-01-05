@@ -49,9 +49,6 @@ typedef struct sqlda_struct	sqlda_t;
 
 
 #line 1 "sqltypes.h"
-/*
- * $PostgreSQL$
- */
 #ifndef ECPG_SQLTYPES_H
 #define ECPG_SQLTYPES_H
 
