@@ -170,11 +170,14 @@ sub Catalogs
 }
 
 # Rename temporary files to final names.
-# Call this function with the final file name --- we append .tmp automatically
+# Call this function with the final file name and the .tmp extension
+# Note: recommended extension is ".tmp$$", so that parallel make steps
+# can't use the same temp files
 sub RenameTempFile
 {
     my $final_name = shift;
-    my $temp_name = $final_name . '.tmp';
+    my $extension = shift;
+    my $temp_name = $final_name . $extension;
     print "Writing $final_name\n";
     rename($temp_name, $final_name) || die "rename: $temp_name: $!";
 }
