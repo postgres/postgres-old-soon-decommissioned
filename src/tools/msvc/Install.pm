@@ -38,7 +38,8 @@ sub Install
 
     my $target = shift;
     our $config;
-    require 'config.pl';
+    require "config_default.pl";
+    require "config.pl" if (-f "config.pl");
 
     chdir("../../..") if (-f "../../../configure");
     chdir("../../../..") if (-f "../../../../configure");

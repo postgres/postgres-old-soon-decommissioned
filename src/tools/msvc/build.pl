@@ -32,7 +32,8 @@ elsif (-e "./buildenv.pl" )
 
 # set up the project
 our $config;
-require "config.pl";
+require "config_default.pl";
+require "config.pl" if (-f "src/tools/msvc/config.pl");
 
 Mkvcbuild::mkvcbuild($config);
 
