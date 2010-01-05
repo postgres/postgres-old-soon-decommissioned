@@ -1396,6 +1396,7 @@ typedef struct NestLoopState
  *		Clauses			   info for each mergejoinable clause
  *		JoinState		   current "state" of join.  see execdefs.h
  *		ExtraMarks		   true to issue extra Mark operations on inner scan
+ *		ConstFalseJoin	   true if we have a constant-false joinqual
  *		FillOuter		   true if should emit unjoined outer tuples anyway
  *		FillInner		   true if should emit unjoined inner tuples anyway
  *		MatchedOuter	   true if found a join match for current outer tuple
@@ -1419,6 +1420,7 @@ typedef struct MergeJoinState
 	MergeJoinClause mj_Clauses; /* array of length mj_NumClauses */
 	int			mj_JoinState;
 	bool		mj_ExtraMarks;
+	bool		mj_ConstFalseJoin;
 	bool		mj_FillOuter;
 	bool		mj_FillInner;
 	bool		mj_MatchedOuter;
