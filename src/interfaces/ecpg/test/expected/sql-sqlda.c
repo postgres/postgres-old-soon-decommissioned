@@ -25,10 +25,6 @@
 
 
 #line 1 "sqlda.h"
-/*
- * $PostgreSQL$
- */
-
 #ifndef ECPG_SQLDA_H
 #define ECPG_SQLDA_H
 
