@@ -22,6 +22,7 @@
 
 #include "catalog/pg_type.h"
 #include "funcapi.h"
+#include "mb/pg_wchar.h"
 #include "miscadmin.h"
 #include "postmaster/syslogger.h"
 #include "storage/fd.h"
@@ -130,6 +131,9 @@ pg_read_file(PG_FUNCTION_ARGS)
 		ereport(ERROR,
 				(errcode_for_file_access(),
 				 errmsg("could not read file \"%s\": %m", filename)));
+
+	/* Make sure the input is valid */
+	pg_verifymbstr(VARDATA(buf), nbytes, false);
 
 	SET_VARSIZE(buf, nbytes + VARHDRSZ);
 
