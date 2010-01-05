@@ -287,7 +287,7 @@ close DESCR;
 close SHDESCR;
 close SCHEMAPG;
 
-# Rename temp files on top of final files, if they have changed
+# Finally, rename the completed files into place.
 Catalog::RenameTempFile($output_path . 'postgres.bki');
 Catalog::RenameTempFile($output_path . 'postgres.description');
 Catalog::RenameTempFile($output_path . 'postgres.shdescription');

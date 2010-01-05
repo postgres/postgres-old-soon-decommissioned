@@ -169,31 +169,12 @@ sub Catalogs
     return \%catalogs;
 }
 
-# Rename temporary files to final names, if anything has changed.
+# Rename temporary files to final names.
 # Call this function with the final file name --- we append .tmp automatically
 sub RenameTempFile
 {
     my $final_name = shift;
     my $temp_name = $final_name . '.tmp';
-    if (-e $final_name && -s $temp_name == -s $final_name)
-    {
-        open TN, '<', "$temp_name" || die "$temp_name: $!";
-        if (open FN, '<', $final_name)
-        {
-            local $/ = undef;
-            my $tn = <TN>;
-            my $fn = <FN>;
-            close FN;
-            if ($tn eq $fn)
-            {
-                print "$final_name unchanged, not replacing\n";
-                close TN;
-                unlink($temp_name) || die "unlink: $temp_name: $!";
-                return;
-            }
-        }
-        close TN;
-    }
     print "Writing $final_name\n";
     rename($temp_name, $final_name) || die "rename: $temp_name: $!";
 }
