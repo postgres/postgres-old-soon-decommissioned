@@ -119,6 +119,8 @@ submake-schemapg:
 
 .PHONY: submake-schemapg
 
+catalog/schemapg.h: submake-schemapg
+
 
 # The postgres.o target is needed by the rule in Makefile.global that
 # creates the exports file when MAKE_EXPORTS = true.
