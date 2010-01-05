@@ -18,7 +18,7 @@
  * $PostgreSQL$
  *
  * NOTES
- *		the genbki.sh script reads this file and generates .bki
+ *		the genbki.pl script reads this file and generates .bki
  *		information from the DATA() statements.
  *
  *		XXX do NOT break up DATA() statements into multiple lines!
@@ -69,7 +69,7 @@ typedef FormData_pg_shdescription *Form_pg_shdescription;
 /*
  *	Because the contents of this table are taken from the other *.h files,
  *	there is no initialization here.  The initial contents are extracted
- *	by genbki.sh and loaded during initdb.
+ *	by genbki.pl and loaded during initdb.
  */
 
 #endif   /* PG_SHDESCRIPTION_H */

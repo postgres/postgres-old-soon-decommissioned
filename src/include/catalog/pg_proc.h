@@ -10,8 +10,8 @@
  * $PostgreSQL$
  *
  * NOTES
- *	  The script catalog/genbki.sh reads this file and generates .bki
- *	  information from the DATA() statements.  utils/Gen_fmgrtab.sh
+ *	  The script catalog/genbki.pl reads this file and generates .bki
+ *	  information from the DATA() statements.  utils/Gen_fmgrtab.pl
  *	  generates fmgroids.h and fmgrtab.c the same way.
  *
  *	  XXX do NOT break up DATA() statements into multiple lines!
@@ -33,7 +33,7 @@
 #define ProcedureRelationId  1255
 #define ProcedureRelation_Rowtype_Id  81
 
-CATALOG(pg_proc,1255) BKI_BOOTSTRAP BKI_ROWTYPE_OID(81)
+CATALOG(pg_proc,1255) BKI_BOOTSTRAP BKI_ROWTYPE_OID(81) BKI_SCHEMA_MACRO
 {
 	NameData	proname;		/* procedure name */
 	Oid			pronamespace;	/* OID of namespace containing this proc */

@@ -25,13 +25,13 @@ extern void BootstrapToastTable(char *relName,
 
 /*
  * This macro is just to keep the C compiler from spitting up on the
- * upcoming commands for genbki.sh.
+ * upcoming commands for genbki.pl.
  */
 #define DECLARE_TOAST(name,toastoid,indexoid) extern int no_such_variable
 
 
 /*
- * What follows are lines processed by genbki.sh to create the statements
+ * What follows are lines processed by genbki.pl to create the statements
  * the bootstrap parser will turn into BootstrapToastTable commands.
  * Each line specifies the system catalog that needs a toast table,
  * the OID to assign to the toast table, and the OID to assign to the

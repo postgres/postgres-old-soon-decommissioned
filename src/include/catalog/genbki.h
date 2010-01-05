@@ -5,7 +5,7 @@
  *
  * genbki.h defines CATALOG(), DATA(), BKI_BOOTSTRAP and related macros
  * so that the catalog header files can be read by the C compiler.
- * (These same words are recognized by genbki.sh to build the BKI
+ * (These same words are recognized by genbki.pl to build the BKI
  * bootstrap file from these header files.)
  *
  *
@@ -27,6 +27,7 @@
 #define BKI_SHARED_RELATION
 #define BKI_WITHOUT_OIDS
 #define BKI_ROWTYPE_OID(oid)
+#define BKI_SCHEMA_MACRO
 
 /* Declarations that provide the initial content of a catalog */
 /* In C, these need to expand into some harmless, repeatable declaration */

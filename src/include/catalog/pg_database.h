@@ -11,7 +11,7 @@
  * $PostgreSQL$
  *
  * NOTES
- *	  the genbki.sh script reads this file and generates .bki
+ *	  the genbki.pl script reads this file and generates .bki
  *	  information from the DATA() statements.
  *
  *-------------------------------------------------------------------------
@@ -29,7 +29,7 @@
 #define DatabaseRelationId	1262
 #define DatabaseRelation_Rowtype_Id  1248
 
-CATALOG(pg_database,1262) BKI_SHARED_RELATION BKI_ROWTYPE_OID(1248)
+CATALOG(pg_database,1262) BKI_SHARED_RELATION BKI_ROWTYPE_OID(1248) BKI_SCHEMA_MACRO
 {
 	NameData	datname;		/* database name */
 	Oid			datdba;			/* owner of database */
