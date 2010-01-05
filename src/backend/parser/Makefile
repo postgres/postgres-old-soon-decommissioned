@@ -10,7 +10,7 @@ subdir = src/backend/parser
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
+override CPPFLAGS := -I. -I$(srcdir) $(CPPFLAGS)
 
 OBJS= analyze.o gram.o keywords.o kwlookup.o parser.o \
       parse_agg.o parse_clause.o parse_coerce.o parse_cte.o parse_expr.o \
