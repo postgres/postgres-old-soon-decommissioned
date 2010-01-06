@@ -34,15 +34,12 @@
 #include "postgres_fe.h"
 
 #include "libpq-fe.h"
-#include "pqsignal.h"
+#include "libpq/pqsignal.h"
 #include "portability/instr_time.h"
 
 #include <ctype.h>
 
-#ifdef WIN32
-#include <win32.h>
-#else
-#include <signal.h>
+#ifndef WIN32
 #include <sys/time.h>
 #include <unistd.h>
 #endif   /* ! WIN32 */
