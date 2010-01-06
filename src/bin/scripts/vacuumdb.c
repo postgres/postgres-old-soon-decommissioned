@@ -169,7 +169,7 @@ main(int argc, char *argv[])
 					progname);
 			exit(1);
 		}
-		/* ignore 'and_analyze' */
+		/* allow 'and_analyze' with 'only_analyze' */
 	}
 
 	setup_cancel_handler();
