@@ -849,10 +849,16 @@ copy_heap_data(Oid OIDNewHeap, Oid OIDOldHeap, Oid OIDOldIndex,
 	 * the visibility test.
 	 */
 	if (OldIndex != NULL)
+	{
+		heapScan = NULL;
 		indexScan = index_beginscan(OldHeap, OldIndex,
 						   SnapshotAny, 0, (ScanKey) NULL);
+	}
 	else
+	{
 		heapScan = heap_beginscan(OldHeap, SnapshotAny, 0, (ScanKey) NULL);
+		indexScan = NULL;
+	}
 
 	for (;;)
 	{
