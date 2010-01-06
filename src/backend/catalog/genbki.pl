@@ -40,9 +40,11 @@ while (@ARGV)
     {
         push @include_path, length($arg) > 2 ? substr($arg, 2) : shift @ARGV;
     }
-    elsif ($arg =~ /^--set-version=(\d+\.\d+)$/)
+    elsif ($arg =~ /^--set-version=(.*)$/)
     {
         $major_version = $1;
+	die "Version must be in format nn.nn.\n"
+	    if !($major_version =~ /^\d+\.\d+$/);
     }
     else
     {
@@ -53,7 +55,7 @@ while (@ARGV)
 # Sanity check arguments.
 die "No input files.\n" if !@input_files;
 die "No include path; you must specify -I at least once.\n" if !@include_path;
-die "Version not specified or wrong format.\n" if !defined $major_version;
+die "--set-version must be specified.\n" if !defined $major_version;
 
 # Make sure output_path ends in a slash.
 if ($output_path ne '' && substr($output_path, -1) ne '/')
