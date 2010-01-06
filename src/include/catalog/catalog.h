@@ -18,6 +18,7 @@
 #include "storage/relfilenode.h"
 #include "utils/relcache.h"
 
+#define OIDCHARS		10		/* max chars printed by %u */
 
 extern const char *forkNames[];
 extern ForkNumber forkname_to_number(char *forkName);

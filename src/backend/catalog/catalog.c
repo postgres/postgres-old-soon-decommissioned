@@ -43,7 +43,6 @@
 #include "utils/tqual.h"
 
 
-#define OIDCHARS		10		/* max chars printed by %u */
 #define FORKNAMECHARS	4		/* max chars for a fork name */
 
 /*
