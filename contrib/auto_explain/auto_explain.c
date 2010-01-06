@@ -151,7 +151,7 @@ _PG_fini(void)
 /*
  * ExecutorStart hook: start up logging if needed
  */
-void
+static void
 explain_ExecutorStart(QueryDesc *queryDesc, int eflags)
 {
 	if (auto_explain_enabled())
@@ -191,7 +191,7 @@ explain_ExecutorStart(QueryDesc *queryDesc, int eflags)
 /*
  * ExecutorRun hook: all we need do is track nesting depth
  */
-void
+static void
 explain_ExecutorRun(QueryDesc *queryDesc, ScanDirection direction, long count)
 {
 	nesting_level++;
@@ -214,7 +214,7 @@ explain_ExecutorRun(QueryDesc *queryDesc, ScanDirection direction, long count)
 /*
  * ExecutorEnd hook: log results if needed
  */
-void
+static void
 explain_ExecutorEnd(QueryDesc *queryDesc)
 {
 	if (queryDesc->totaltime && auto_explain_enabled())
