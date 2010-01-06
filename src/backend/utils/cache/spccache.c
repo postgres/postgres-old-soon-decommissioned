@@ -54,11 +54,13 @@ InvalidateTableSpaceCacheCallback(Datum arg, int cacheid, ItemPointer tuplePtr)
 	hash_seq_init(&status, TableSpaceCacheHash);
 	while ((spc = (TableSpace *) hash_seq_search(&status)) != NULL)
 	{
-		if (hash_search(TableSpaceCacheHash, (void *) &spc->oid, HASH_REMOVE,
-						NULL) == NULL)
-			elog(ERROR, "hash table corrupted");
 		if (spc->opts)
 			pfree(spc->opts);
+		if (hash_search(TableSpaceCacheHash,
+						(void *) &spc->oid,
+						HASH_REMOVE,
+						NULL) == NULL)
+			elog(ERROR, "hash table corrupted");
 	}
 }
 
