@@ -77,7 +77,6 @@ man: man-stamp
 
 man-stamp: stylesheet-man.xsl postgres.xml
 	$(XSLTPROC) $(XSLTPROCFLAGS) $(XSLTPROC_MAN_FLAGS) $^
-	rm man1/dblink*
 	touch $@
 
 
