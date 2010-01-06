@@ -40,7 +40,7 @@ while (@ARGV)
     {
         push @include_path, length($arg) > 2 ? substr($arg, 2) : shift @ARGV;
     }
-    elsif ($arg =~ /^--set-version=(\d+\.\d+).*$/)
+    elsif ($arg =~ /^--set-version=(\d+\.\d+)$/)
     {
         $major_version = $1;
     }
