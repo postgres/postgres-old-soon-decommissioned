@@ -492,14 +492,10 @@ standard_ProcessUtility(Node *parsetree,
 															"toast",
 															validnsps,
 															true, false);
-						(void) heap_reloptions(RELKIND_TOASTVALUE,
-											   toast_options,
+						(void) heap_reloptions(RELKIND_TOASTVALUE, toast_options,
 											   true);
 
-						AlterTableCreateToastTable(relOid,
-												   InvalidOid,
-												   toast_options,
-												   false);
+						AlterTableCreateToastTable(relOid, toast_options);
 					}
 					else
 					{

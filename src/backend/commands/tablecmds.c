@@ -2614,8 +2614,7 @@ ATRewriteCatalogs(List **wqueue)
 			(tab->subcmds[AT_PASS_ADD_COL] ||
 			 tab->subcmds[AT_PASS_ALTER_TYPE] ||
 			 tab->subcmds[AT_PASS_COL_ATTRS]))
-			AlterTableCreateToastTable(tab->relid, InvalidOid,
-									   (Datum) 0, false);
+			AlterTableCreateToastTable(tab->relid, (Datum) 0);
 	}
 }
 

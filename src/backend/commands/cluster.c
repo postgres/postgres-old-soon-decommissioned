@@ -743,7 +743,7 @@ make_new_heap(Oid OIDOldHeap, const char *NewName, Oid NewTableSpace)
 		if (isNull)
 			reloptions = (Datum) 0;
 	}
-	AlterTableCreateToastTable(OIDNewHeap, InvalidOid, reloptions, false);
+	AlterTableCreateToastTable(OIDNewHeap, reloptions);
 
 	if (OidIsValid(toastid))
 		ReleaseSysCache(tuple);
