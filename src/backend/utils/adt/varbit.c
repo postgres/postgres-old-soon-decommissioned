@@ -23,6 +23,9 @@
 
 #define HEXDIG(z)	 ((z)<10 ? ((z)+'0') : ((z)-10+'A'))
 
+static VarBit *bitsubstring(VarBit *arg, int32 s, int32 l,
+							bool length_not_specified);
+
 
 /* common code for bittypmodin and varbittypmodin */
 static int32
@@ -927,9 +930,23 @@ bitcat(PG_FUNCTION_ARGS)
 Datum
 bitsubstr(PG_FUNCTION_ARGS)
 {
-	VarBit	   *arg = PG_GETARG_VARBIT_P(0);
-	int32		s = PG_GETARG_INT32(1);
-	int32		l = PG_GETARG_INT32(2);
+	PG_RETURN_VARBIT_P(bitsubstring(PG_GETARG_VARBIT_P(0),
+									PG_GETARG_INT32(1),
+									PG_GETARG_INT32(2),
+									false));
+}
+
+Datum
+bitsubstr_no_len(PG_FUNCTION_ARGS)
+{
+	PG_RETURN_VARBIT_P(bitsubstring(PG_GETARG_VARBIT_P(0),
+									PG_GETARG_INT32(1),
+									-1, true));
+}
+
+static VarBit *
+bitsubstring(VarBit *arg, int32 s, int32 l, bool length_not_specified)
+{
 	VarBit	   *result;
 	int			bitlen,
 				rbitlen,
@@ -947,14 +964,17 @@ bitsubstr(PG_FUNCTION_ARGS)
 	bitlen = VARBITLEN(arg);
 	s1 = Max(s, 1);
 	/* If we do not have an upper bound, use end of string */
-	if (l < 0)
+	if (length_not_specified)
 	{
 		e1 = bitlen + 1;
 	}
 	else
 	{
 		e = s + l;
-		/* guard against overflow, even though we don't allow L<0 here */
+		/*
+		 * A negative value for L is the only way for the end position
+		 * to be before the start. SQL99 says to throw an error.
+		 */
 		if (e < s)
 			ereport(ERROR,
 					(errcode(ERRCODE_SUBSTRING_ERROR),
@@ -1011,7 +1031,7 @@ bitsubstr(PG_FUNCTION_ARGS)
 		}
 	}
 
-	PG_RETURN_VARBIT_P(result);
+	return result;
 }
 
 /* bitlength, bitoctetlength

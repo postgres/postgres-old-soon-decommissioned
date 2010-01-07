@@ -88,6 +88,7 @@ extern Datum bitshiftleft(PG_FUNCTION_ARGS);
 extern Datum bitshiftright(PG_FUNCTION_ARGS);
 extern Datum bitcat(PG_FUNCTION_ARGS);
 extern Datum bitsubstr(PG_FUNCTION_ARGS);
+extern Datum bitsubstr_no_len(PG_FUNCTION_ARGS);
 extern Datum bitlength(PG_FUNCTION_ARGS);
 extern Datum bitoctetlength(PG_FUNCTION_ARGS);
 extern Datum bitfromint4(PG_FUNCTION_ARGS);
