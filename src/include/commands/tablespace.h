@@ -34,6 +34,7 @@ typedef struct xl_tblspc_drop_rec
 
 typedef struct TableSpaceOpts
 {
+	int32		vl_len_;		/* varlena header (do not touch directly!) */
 	float8		random_page_cost;
 	float8		seq_page_cost;
 } TableSpaceOpts;

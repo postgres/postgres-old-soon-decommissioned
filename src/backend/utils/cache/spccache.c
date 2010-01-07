@@ -142,7 +142,6 @@ get_tablespace(Oid spcid)
 	{
 		Datum	datum;
 		bool	isNull;
-		MemoryContext octx;
 
 		datum = SysCacheGetAttr(TABLESPACEOID,
 								tp,
@@ -152,10 +151,9 @@ get_tablespace(Oid spcid)
 			opts = NULL;
 		else
 		{
-			/* XXX should NOT do the parsing work in CacheMemoryContext */
-			octx = MemoryContextSwitchTo(CacheMemoryContext);
-			opts = (TableSpaceOpts *) tablespace_reloptions(datum, false);
-			MemoryContextSwitchTo(octx);
+			bytea *bytea_opts = tablespace_reloptions(datum, false);
+			opts = MemoryContextAlloc(CacheMemoryContext, VARSIZE(bytea_opts));
+			memcpy(opts, bytea_opts, VARSIZE(bytea_opts));
 		}
 		ReleaseSysCache(tp);
 	}
