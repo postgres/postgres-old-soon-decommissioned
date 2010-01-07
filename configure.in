@@ -825,6 +825,9 @@ PGAC_PATH_FLEX
 
 PGAC_PATH_PERL
 if test "$with_perl" = yes; then
+  if test -z "$PERL"; then
+    AC_MSG_ERROR([Perl not found])
+  fi
   PGAC_CHECK_PERL_CONFIGS([archlibexp,privlibexp,useshrplib])
   PGAC_CHECK_PERL_EMBED_LDFLAGS
 fi
