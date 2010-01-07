@@ -28,7 +28,7 @@ PostgreSQL documentation
    <group><arg>--freeze</arg><arg>-F</arg></group>
    <group><arg>--verbose</arg><arg>-v</arg></group>
    <group><arg>--analyze</arg><arg>-z</arg></group>
-   <group><arg>--analyze-only</arg><arg>-o</arg></group>
+   <group><arg>--analyze-only</arg><arg>-Z</arg></group>
    <arg>--table | -t <replaceable>table</replaceable>
     <arg>( <replaceable class="parameter">column</replaceable> [,...] )</arg>
    </arg>
@@ -42,7 +42,7 @@ PostgreSQL documentation
    <group><arg>--freeze</arg><arg>-F</arg></group>
    <group><arg>--verbose</arg><arg>-v</arg></group>
    <group><arg>--analyze</arg><arg>-z</arg></group>
-   <group><arg>--analyze-only</arg><arg>-o</arg></group>
+   <group><arg>--analyze-only</arg><arg>-Z</arg></group>
   </cmdsynopsis>
  </refsynopsisdiv>
  
@@ -142,7 +142,7 @@ PostgreSQL documentation
      </varlistentry>
 
      <varlistentry>
-      <term><option>-o</option></term>
+      <term><option>-Z</option></term>
       <term><option>--analyze-only</option></term>
       <listitem>
        <para>

@@ -41,7 +41,7 @@ main(int argc, char *argv[])
 		{"quiet", no_argument, NULL, 'q'},
 		{"dbname", required_argument, NULL, 'd'},
 		{"analyze", no_argument, NULL, 'z'},
-		{"analyze-only", no_argument, NULL, 'o'},
+		{"analyze-only", no_argument, NULL, 'Z'},
 		{"freeze", no_argument, NULL, 'F'},
 		{"all", no_argument, NULL, 'a'},
 		{"table", required_argument, NULL, 't'},
@@ -107,7 +107,7 @@ main(int argc, char *argv[])
 			case 'z':
 				and_analyze = true;
 				break;
-			case 'o':
+			case 'Z':
 				analyze_only = true;
 				break;
 			case 'F':
@@ -351,11 +351,11 @@ help(const char *progname)
 	printf(_("  -f, --full                      do full vacuuming\n"));
 	printf(_("  -F, --freeze                    freeze row transaction information\n"));
 	printf(_("  -i, --inplace                   do full inplace vacuuming\n"));
-	printf(_("  -o, --analyze-only              only update optimizer hints\n"));
 	printf(_("  -q, --quiet                     don't write any messages\n"));
 	printf(_("  -t, --table='TABLE[(COLUMNS)]'  vacuum specific table only\n"));
 	printf(_("  -v, --verbose                   write a lot of output\n"));
 	printf(_("  -z, --analyze                   update optimizer hints\n"));
+	printf(_("  -Z, --analyze-only              only update optimizer hints\n"));
 	printf(_("  --help                          show this help, then exit\n"));
 	printf(_("  --version                       output version information, then exit\n"));
 	printf(_("\nConnection options:\n"));
