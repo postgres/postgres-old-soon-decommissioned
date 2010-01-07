@@ -214,8 +214,7 @@ static Datum
 leftmostvalue_int8(void)
 {
 	/*
-	 * Use sequence's definition to keep compatibility. Another way may make a
-	 * problem with INT64_IS_BUSTED
+	 * Use sequence's definition to keep compatibility.
 	 */
 	return Int64GetDatum(SEQ_MINVALUE);
 }
@@ -245,8 +244,7 @@ static Datum
 leftmostvalue_money(void)
 {
 	/*
-	 * Use sequence's definition to keep compatibility. Another way may make a
-	 * problem with INT64_IS_BUSTED
+	 * Use sequence's definition to keep compatibility.
 	 */
 	return Int64GetDatum(SEQ_MINVALUE);
 }

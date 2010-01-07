@@ -4240,10 +4240,6 @@ parse_int(const char *value, int *result, int flags, const char **hintmsg)
 		/*
 		 * Note: the multiple-switch coding technique here is a bit tedious,
 		 * but seems necessary to avoid intermediate-value overflows.
-		 *
-		 * If INT64_IS_BUSTED (ie, it's really int32) we will fail to detect
-		 * overflow due to units conversion, but there are few enough such
-		 * machines that it does not seem worth trying to be smarter.
 		 */
 		if (flags & GUC_UNIT_MEMORY)
 		{
@@ -6627,10 +6623,7 @@ _ShowOption(struct config_generic * record, bool use_units)
 				{
 					/*
 					 * Use int64 arithmetic to avoid overflows in units
-					 * conversion.	If INT64_IS_BUSTED we might overflow
-					 * anyway and print bogus answers, but there are few
-					 * enough such machines that it doesn't seem worth trying
-					 * harder.
+					 * conversion.
 					 */
 					int64		result = *conf->variable;
 					const char *unit;

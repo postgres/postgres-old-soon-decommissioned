@@ -1414,11 +1414,7 @@ bitfromint8(PG_FUNCTION_ARGS)
 
 	r = VARBITS(result);
 	destbitsleft = typmod;
-#ifndef INT64_IS_BUSTED
 	srcbitsleft = 64;
-#else
-	srcbitsleft = 32;			/* don't try to shift more than 32 */
-#endif
 	/* drop any input bits that don't fit */
 	srcbitsleft = Min(srcbitsleft, destbitsleft);
 	/* sign-fill any excess bytes in output */

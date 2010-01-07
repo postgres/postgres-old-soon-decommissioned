@@ -60,15 +60,14 @@ extern CRCDLLIMPORT const uint32 pg_crc32_table[];
 #ifdef PROVIDE_64BIT_CRC
 
 /*
- * If we have a 64-bit integer type, then a 64-bit CRC looks just like the
- * usual sort of implementation.  If we have no working 64-bit type, then
- * fake it with two 32-bit registers.  (Note: experience has shown that the
- * two-32-bit-registers code is as fast as, or even much faster than, the
- * 64-bit code on all but true 64-bit machines.  INT64_IS_BUSTED is therefore
- * probably the wrong control symbol to use to select the implementation.)
+ * If we use a 64-bit integer type, then a 64-bit CRC looks just like the
+ * usual sort of implementation.  However, we can also fake it with two
+ * 32-bit registers.  Experience has shown that the two-32-bit-registers code
+ * is as fast as, or even much faster than, the 64-bit code on all but true
+ * 64-bit machines.  We use SIZEOF_VOID_P to check the native word width.
  */
 
-#ifdef INT64_IS_BUSTED
+#if SIZEOF_VOID_P < 8
 
 /*
  * crc0 represents the LSBs of the 64-bit value, crc1 the MSBs.  Note that
@@ -114,7 +113,8 @@ do { \
 /* Constant table for CRC calculation */
 extern CRCDLLIMPORT const uint32 pg_crc64_table0[];
 extern CRCDLLIMPORT const uint32 pg_crc64_table1[];
-#else							/* int64 works */
+
+#else							/* use int64 implementation */
 
 typedef struct pg_crc64
 {
@@ -147,7 +147,7 @@ do { \
 
 /* Constant table for CRC calculation */
 extern CRCDLLIMPORT const uint64 pg_crc64_table[];
-#endif   /* INT64_IS_BUSTED */
+#endif   /* SIZEOF_VOID_P < 8 */
 #endif   /* PROVIDE_64BIT_CRC */
 
 #endif   /* PG_CRC_H */

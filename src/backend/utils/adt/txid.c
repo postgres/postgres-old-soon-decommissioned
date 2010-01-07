@@ -30,13 +30,8 @@
 #include "utils/snapmgr.h"
 
 
-#ifndef INT64_IS_BUSTED
 /* txid will be signed int8 in database, so must limit to 63 bits */
 #define MAX_TXID   UINT64CONST(0x7FFFFFFFFFFFFFFF)
-#else
-/* we only really have 32 bits to work with :-( */
-#define MAX_TXID   UINT64CONST(0x7FFFFFFF)
-#endif
 
 /* Use unsigned variant internally */
 typedef uint64 txid;
@@ -97,7 +92,6 @@ load_xid_epoch(TxidEpoch *state)
 static txid
 convert_xid(TransactionId xid, const TxidEpoch *state)
 {
-#ifndef INT64_IS_BUSTED
 	uint64		epoch;
 
 	/* return special xid's as-is */
@@ -114,10 +108,6 @@ convert_xid(TransactionId xid, const TxidEpoch *state)
 		epoch++;
 
 	return (epoch << 32) | xid;
-#else							/* INT64_IS_BUSTED */
-	/* we can't do anything with the epoch, so ignore it */
-	return (txid) xid & MAX_TXID;
-#endif   /* INT64_IS_BUSTED */
 }
 
 /*
