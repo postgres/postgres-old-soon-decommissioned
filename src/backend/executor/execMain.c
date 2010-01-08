@@ -1546,6 +1546,8 @@ EvalPlanQualFetch(EState *estate, Relation relation, int lockmode,
 					{
 						/* it was updated, so look at the updated version */
 						tuple.t_self = update_ctid;
+						/* updated row should have xmin matching this xmax */
+						priorXmax = update_xmax;
 						continue;
 					}
 					/* tuple was deleted, so give up */
