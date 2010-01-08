@@ -53,7 +53,7 @@ typedef struct Instrumentation
 	BufferUsage	bufusage;		/* Total buffer usage */
 } Instrumentation;
 
-extern BufferUsage		pgBufferUsage;
+extern PGDLLIMPORT BufferUsage		pgBufferUsage;
 
 extern Instrumentation *InstrAlloc(int n, int instrument_options);
 extern void InstrStartNode(Instrumentation *instr);
