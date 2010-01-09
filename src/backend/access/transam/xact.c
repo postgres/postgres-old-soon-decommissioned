@@ -4404,20 +4404,8 @@ xact_redo_commit(xl_xact_commit *xlrec, TransactionId xid, XLogRecPtr lsn)
 		 * maintain the same order of invalidation then release locks
 		 * as occurs in 	.
 		 */
-		if (xlrec->nmsgs > 0)
-		{
-			/*
-			 * Relcache init file invalidation requires processing both
-			 * before and after we send the SI messages. See AtEOXact_Inval()
-			 */
-			if (XactCompletionRelcacheInitFileInval(xlrec))
-				RelationCacheInitFileInvalidate(true);
-
-			SendSharedInvalidMessages(inval_msgs, xlrec->nmsgs);
-
-			if (XactCompletionRelcacheInitFileInval(xlrec))
-				RelationCacheInitFileInvalidate(false);
-		}
+		ProcessCommittedInvalidationMessages(inval_msgs, xlrec->nmsgs,
+									XactCompletionRelcacheInitFileInval(xlrec));
 
 		/*
 		 * Release locks, if any. We do this for both two phase and normal
