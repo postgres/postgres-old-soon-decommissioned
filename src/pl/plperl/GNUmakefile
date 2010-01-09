@@ -45,6 +45,11 @@ PSQLDIR = $(bindir)
 
 include $(top_srcdir)/src/Makefile.shlib
 
+plperl.o: perlchunks.h
+
+perlchunks.h: plc_*.pl
+	$(PERL) text2macro.pl --strip='^(\#.*|\s*)$$' plc_*.pl > perlchunks.htmp
+	mv perlchunks.htmp perlchunks.h
 
 all: all-lib
 
@@ -65,7 +70,7 @@ submake:
 	$(MAKE) -C $(top_builddir)/src/test/regress pg_regress$(X)
 
 clean distclean maintainer-clean: clean-lib
-	rm -f SPI.c $(OBJS)
+	rm -f SPI.c $(OBJS) perlchunks.htmp perlchunks.h
 	rm -rf results
 	rm -f regression.diffs regression.out
 
