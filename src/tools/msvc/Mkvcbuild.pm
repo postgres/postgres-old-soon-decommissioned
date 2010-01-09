@@ -11,6 +11,8 @@ use strict;
 use warnings;
 use Project;
 use Solution;
+use Cwd;
+use File::Copy;
 
 use Exporter;
 our (@ISA, @EXPORT_OK);
@@ -102,6 +104,31 @@ sub mkvcbuild
                 unlink('src\pl\plperl\SPI.c'); # if zero size
                 die 'Failed to create SPI.c' . "\n";
             }
+        }
+        if (  Solution::IsNewer('src\pl\plperl\perlchunks.h','src\pl\plperl\plc_perlboot.pl')
+            ||Solution::IsNewer('src\pl\plperl\perlchunks.h','src\pl\plperl\plc_safe_bad.pl')
+            ||Solution::IsNewer('src\pl\plperl\perlchunks.h','src\pl\plperl\plc_safe_ok.pl'))
+        {
+            print 'Building src\pl\plperl\perlchunks.h ...' . "\n";
+            my $basedir = getcwd;
+            chdir 'src\pl\plperl';
+            system( $solution->{options}->{perl}
+                  . '/bin/perl '
+                  . 'text2macro.pl '
+                  . '--strip="^(\#.*|\s*)$$" '
+                  . 'plc_perlboot.pl plc_safe_bad.pl plc_safe_ok.pl '
+                  .	'>perlchunks.htmp');
+            chdir $basedir;
+            if ((!(-f 'src\pl\plperl\perlchunks.htmp')) || -z 'src\pl\plperl\perlchunks.htmp')
+            {
+                unlink('src\pl\plperl\perlchunks.htmp'); # if zero size
+                die 'Failed to create perlchunks.h' . "\n";
+            }
+            else
+            {
+                move('src\pl\plperl\perlchunks.htmp','src\pl\plperl\perlchunks.h');
+            }
+
         }
         $plperl->AddReference($postgres);
 		my @perl_libs = grep {/perl\d+.lib$/ }
