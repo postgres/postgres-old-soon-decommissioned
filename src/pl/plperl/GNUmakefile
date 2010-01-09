@@ -27,7 +27,7 @@ override CPPFLAGS += -DPLPERL_HAVE_UID_GID
 override CFLAGS += -Wno-comment
 endif
 
-override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -I$(perl_archlibexp)/CORE
+override CPPFLAGS := -I. -I$(srcdir) $(CPPFLAGS) -I$(perl_archlibexp)/CORE
 
 rpathdir = $(perl_archlibexp)/CORE
 
@@ -35,6 +35,8 @@ rpathdir = $(perl_archlibexp)/CORE
 NAME = plperl
 
 OBJS = plperl.o spi_internal.o SPI.o
+
+PERLCHUNKS = plc_perlboot.pl plc_safe_bad.pl plc_safe_ok.pl
 
 SHLIB_LINK = $(perl_embed_ldflags)
 
@@ -47,8 +49,8 @@ include $(top_srcdir)/src/Makefile.shlib
 
 plperl.o: perlchunks.h
 
-perlchunks.h: plc_*.pl
-	$(PERL) text2macro.pl --strip='^(\#.*|\s*)$$' plc_*.pl > perlchunks.htmp
+perlchunks.h: $(PERLCHUNKS)
+	$(PERL) $(srcdir)/text2macro.pl --strip='^(\#.*|\s*)$$' $^ > perlchunks.htmp
 	mv perlchunks.htmp perlchunks.h
 
 all: all-lib
