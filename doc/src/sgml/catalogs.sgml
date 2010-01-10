@@ -4741,6 +4741,15 @@
        for details
       </entry>
      </row>
+
+     <row>
+      <entry><structfield>spcoptions</structfield></entry>
+      <entry><type>text[]</type></entry>
+      <entry></entry>
+      <entry>
+       Tablespace-level options, as <quote>keyword=value</> strings
+      </entry>
+     </row>
     </tbody>
    </tgroup>
   </table>
