@@ -1497,7 +1497,7 @@ ident_inet(const SockAddr remote_addr,
 		   const SockAddr local_addr,
 		   char *ident_user)
 {
-	int			sock_fd,		/* File descriptor for socket on which we talk
+	pgsocket	sock_fd,		/* File descriptor for socket on which we talk
 								 * to Ident */
 				rc;				/* Return code from a locally called function */
 	bool		ident_return;

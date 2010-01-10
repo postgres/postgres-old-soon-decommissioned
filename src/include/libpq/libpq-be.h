@@ -103,7 +103,7 @@ typedef struct
 
 typedef struct Port
 {
-	int			sock;			/* File descriptor */
+	pgsocket	sock;			/* File descriptor */
 	ProtocolVersion proto;		/* FE/BE protocol version */
 	SockAddr	laddr;			/* local addr (postmaster) */
 	SockAddr	raddr;			/* remote addr (client) */

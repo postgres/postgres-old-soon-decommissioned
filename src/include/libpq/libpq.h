@@ -45,10 +45,10 @@ typedef struct
  * prototypes for functions in pqcomm.c
  */
 extern int StreamServerPort(int family, char *hostName,
-		 unsigned short portNumber, char *unixSocketName, int ListenSocket[],
+		 unsigned short portNumber, char *unixSocketName, pgsocket ListenSocket[],
 				 int MaxListen);
-extern int	StreamConnection(int server_fd, Port *port);
-extern void StreamClose(int sock);
+extern int	StreamConnection(pgsocket server_fd, Port *port);
+extern void StreamClose(pgsocket sock);
 extern void TouchSocketFile(void);
 extern void pq_init(void);
 extern void pq_comm_reset(void);
