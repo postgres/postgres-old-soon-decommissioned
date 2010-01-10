@@ -1827,6 +1827,32 @@ CountDBBackends(Oid databaseid)
 }
 
 /*
+ * CancelDBBackends --- cancel backends that are using specified database
+ */
+void
+CancelDBBackends(Oid databaseid)
+{
+	ProcArrayStruct *arrayP = procArray;
+	int			index;
+
+	/* tell all backends to die */
+	LWLockAcquire(ProcArrayLock, LW_EXCLUSIVE);
+
+	for (index = 0; index < arrayP->numProcs; index++)
+	{
+		volatile PGPROC *proc = arrayP->procs[index];
+
+		if (proc->databaseId == databaseid)
+		{
+			proc->recoveryConflictMode = CONFLICT_MODE_FATAL;
+			kill(proc->pid, SIGINT);
+		}
+	}
+
+	LWLockRelease(ProcArrayLock);
+}
+
+/*
  * CountUserBackends --- count backends that are used by specified user
  */
 int

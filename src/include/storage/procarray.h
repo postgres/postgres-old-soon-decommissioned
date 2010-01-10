@@ -63,6 +63,7 @@ extern pid_t CancelVirtualTransaction(VirtualTransactionId vxid,
 
 extern int	CountActiveBackends(void);
 extern int	CountDBBackends(Oid databaseid);
+extern void	CancelDBBackends(Oid databaseid);
 extern int	CountUserBackends(Oid roleid);
 extern bool CountOtherDBBackends(Oid databaseId,
 					 int *nbackends, int *nprepared);
