@@ -2544,7 +2544,7 @@ LOG:  database system is ready to accept read only connections
     or <command>ALTER DATABASE ... RENAME</> on primary will generate a log message
     that will cause all users connected to that database on the standby to be
     forcibly disconnected. This action occurs immediately, whatever the setting of
-	<varname>max_standby_delay</>.
+    <varname>max_standby_delay</>.
    </para>
 
    <para>
