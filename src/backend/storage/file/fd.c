@@ -51,6 +51,7 @@
 
 #include "miscadmin.h"
 #include "access/xact.h"
+#include "catalog/catalog.h"
 #include "catalog/pg_tablespace.h"
 #include "storage/fd.h"
 #include "storage/ipc.h"
@@ -963,8 +964,8 @@ OpenTemporaryFileInTablespace(Oid tblspcOid, bool rejectError)
 	else
 	{
 		/* All other tablespaces are accessed via symlinks */
-		snprintf(tempdirpath, sizeof(tempdirpath), "pg_tblspc/%u/%s",
-				 tblspcOid, PG_TEMP_FILES_DIR);
+		snprintf(tempdirpath, sizeof(tempdirpath), "pg_tblspc/%u/%s/%s",
+				 tblspcOid, TABLESPACE_VERSION_DIRECTORY, PG_TEMP_FILES_DIR);
 	}
 
 	/*
@@ -1841,8 +1842,8 @@ RemovePgTempFiles(void)
 			strcmp(spc_de->d_name, "..") == 0)
 			continue;
 
-		snprintf(temp_path, sizeof(temp_path), "pg_tblspc/%s/%s",
-				 spc_de->d_name, PG_TEMP_FILES_DIR);
+		snprintf(temp_path, sizeof(temp_path), "pg_tblspc/%s/%s/%s",
+				 spc_de->d_name, TABLESPACE_VERSION_DIRECTORY, PG_TEMP_FILES_DIR);
 		RemovePgTempFilesInDir(temp_path);
 	}
 

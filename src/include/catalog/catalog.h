@@ -14,11 +14,14 @@
 #ifndef CATALOG_H
 #define CATALOG_H
 
+#include "catalog/catversion.h"
 #include "catalog/pg_class.h"
 #include "storage/relfilenode.h"
 #include "utils/relcache.h"
 
 #define OIDCHARS		10		/* max chars printed by %u */
+#define TABLESPACE_VERSION_DIRECTORY	"PG_" PG_MAJORVERSION "_" \
+									CppAsString2(CATALOG_VERSION_NO)
 
 extern const char *forkNames[];
 extern ForkNumber forkname_to_number(char *forkName);
