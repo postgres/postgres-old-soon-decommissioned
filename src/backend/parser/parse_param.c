@@ -100,8 +100,9 @@ fixed_paramref_hook(ParseState *pstate, ParamRef *pref)
 	int			paramno = pref->number;
 	Param	   *param;
 
-	/* Check parameter number is in range */
-	if (paramno <= 0 || paramno > parstate->numParams)
+	/* Check parameter number is valid */
+	if (paramno <= 0 || paramno > parstate->numParams ||
+		!OidIsValid(parstate->paramTypes[paramno - 1]))
 		ereport(ERROR,
 				(errcode(ERRCODE_UNDEFINED_PARAMETER),
 				 errmsg("there is no parameter $%d", paramno),
