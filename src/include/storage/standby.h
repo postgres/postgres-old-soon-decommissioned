@@ -24,8 +24,9 @@ extern int	vacuum_defer_cleanup_age;
 #define CONFLICT_MODE_ERROR			1	/* Conflict can be resolved by canceling query */
 #define CONFLICT_MODE_FATAL			2	/* Conflict can only be resolved by disconnecting session */
 
-extern void ResolveRecoveryConflictWithVirtualXIDs(VirtualTransactionId *waitlist,
-									   char *reason, int cancel_mode);
+extern void ResolveRecoveryConflictWithSnapshot(TransactionId latestRemovedXid);
+extern void ResolveRecoveryConflictWithTablespace(Oid tsid);
+extern void ResolveRecoveryConflictWithDatabase(Oid dbid);
 
 extern void InitRecoveryTransactionEnvironment(void);
 extern void ShutdownRecoveryTransactionEnvironment(void);
