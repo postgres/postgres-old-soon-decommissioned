@@ -197,6 +197,13 @@ DATA(insert (	3702   3615 3615 4 3696 ));
 DATA(insert (	3702   3615 3615 5 3700 ));
 DATA(insert (	3702   3615 3615 6 3697 ));
 DATA(insert (	3702   3615 3615 7 3699 ));
+DATA(insert (	1029   600 600 1 2179 ));
+DATA(insert (	1029   600 600 2 2583 ));
+DATA(insert (	1029   600 600 3 1030 ));
+DATA(insert (	1029   600 600 4 2580 ));
+DATA(insert (	1029   600 600 5 2581 ));
+DATA(insert (	1029   600 600 6 2582 ));
+DATA(insert (	1029   600 600 7 2584 ));
 
 
 /* gin */

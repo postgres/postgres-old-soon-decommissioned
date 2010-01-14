@@ -127,6 +127,7 @@ DATA(insert OID = 2235 (	405		aclitem_ops		PGNSP PGUID ));
 DATA(insert OID = 2593 (	783		box_ops			PGNSP PGUID ));
 DATA(insert OID = 2594 (	783		poly_ops		PGNSP PGUID ));
 DATA(insert OID = 2595 (	783		circle_ops		PGNSP PGUID ));
+DATA(insert OID = 1029 (	783		point_ops		PGNSP PGUID ));
 DATA(insert OID = 2745 (	2742	array_ops		PGNSP PGUID ));
 DATA(insert OID = 2968 (	403		uuid_ops		PGNSP PGUID ));
 DATA(insert OID = 2969 (	405		uuid_ops		PGNSP PGUID ));

@@ -290,6 +290,7 @@ extern Datum box_above(PG_FUNCTION_ARGS);
 extern Datum box_overabove(PG_FUNCTION_ARGS);
 extern Datum box_contained(PG_FUNCTION_ARGS);
 extern Datum box_contain(PG_FUNCTION_ARGS);
+extern Datum box_contain_pt(PG_FUNCTION_ARGS);
 extern Datum box_below_eq(PG_FUNCTION_ARGS);
 extern Datum box_above_eq(PG_FUNCTION_ARGS);
 extern Datum box_lt(PG_FUNCTION_ARGS);
@@ -420,6 +421,8 @@ extern Datum gist_poly_compress(PG_FUNCTION_ARGS);
 extern Datum gist_poly_consistent(PG_FUNCTION_ARGS);
 extern Datum gist_circle_compress(PG_FUNCTION_ARGS);
 extern Datum gist_circle_consistent(PG_FUNCTION_ARGS);
+extern Datum gist_point_compress(PG_FUNCTION_ARGS);
+extern Datum gist_point_consistent(PG_FUNCTION_ARGS);
 
 /* geo_selfuncs.c */
 extern Datum areasel(PG_FUNCTION_ARGS);

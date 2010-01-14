@@ -170,6 +170,7 @@ DATA(insert (	403		reltime_ops			PGNSP PGUID 2233  703 t 0 ));
 DATA(insert (	403		tinterval_ops		PGNSP PGUID 2234  704 t 0 ));
 DATA(insert (	405		aclitem_ops			PGNSP PGUID 2235 1033 t 0 ));
 DATA(insert (	783		box_ops				PGNSP PGUID 2593  603 t 0 ));
+DATA(insert (	783		point_ops			PGNSP PGUID 1029  600 t 603 ));
 DATA(insert (	783		poly_ops			PGNSP PGUID 2594  604 t 603 ));
 DATA(insert (	783		circle_ops			PGNSP PGUID 2595  718 t 603 ));
 DATA(insert (	2742	_int4_ops			PGNSP PGUID 2745  1007 t 23 ));
