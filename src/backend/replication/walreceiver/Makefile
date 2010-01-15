@@ -15,8 +15,10 @@ include $(top_builddir)/src/Makefile.global
 override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
 
 OBJS = walreceiver.o
-SHLIB_LINK = $(libpq)
-NAME = walreceiver
+
+SHLIB_LINK = $(libpq) $(BE_DLLLIBS)
+
+NAME := walreceiver
 
 all: submake-libpq all-shared-lib
 
