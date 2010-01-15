@@ -2438,6 +2438,7 @@ GetCommandLogLevel(Node *parsetree)
 
 					if (strcmp(opt->defname, "analyze") == 0)
 						analyze = defGetBoolean(opt);
+					/* don't "break", as explain.c will use the last value */
 				}
 				if (analyze)
 					return GetCommandLogLevel(stmt->query);

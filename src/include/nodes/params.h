@@ -103,7 +103,4 @@ typedef struct ParamExecData
 /* Functions found in src/backend/nodes/params.c */
 extern ParamListInfo copyParamList(ParamListInfo from);
 
-extern void setupParserWithParamList(struct ParseState *pstate,
-									 ParamListInfo params);
-
 #endif   /* PARAMS_H */

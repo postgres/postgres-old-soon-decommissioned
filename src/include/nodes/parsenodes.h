@@ -2260,12 +2260,16 @@ typedef struct VacuumStmt
 
 /* ----------------------
  *		Explain Statement
+ *
+ * The "query" field is either a raw parse tree (SelectStmt, InsertStmt, etc)
+ * or a Query node if parse analysis has been done.  Note that rewriting and
+ * planning of the query are always postponed until execution of EXPLAIN.
  * ----------------------
  */
 typedef struct ExplainStmt
 {
 	NodeTag		type;
-	Node	   *query;			/* the query (as a raw parse tree) */
+	Node	   *query;			/* the query (see comments above) */
 	List	   *options;		/* list of DefElem nodes */
 } ExplainStmt;
 
