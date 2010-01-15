@@ -7044,10 +7044,10 @@ copy_relation_data(SMgrRelation src, SMgrRelation dst,
 	Page		page = (Page) buf;
 
 	/*
-	 * We need to log the copied data in WAL iff WAL archiving is enabled AND
-	 * it's not a temp rel.
+	 * We need to log the copied data in WAL iff WAL archiving/streaming is
+	 * enabled AND it's not a temp rel.
 	 */
-	use_wal = XLogArchivingActive() && !istemp;
+	use_wal = XLogIsNeeded() && !istemp;
 
 	nblocks = smgrnblocks(src, forkNum);
 

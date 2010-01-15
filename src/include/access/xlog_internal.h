@@ -151,6 +151,19 @@ typedef XLogLongPageHeaderData *XLogLongPageHeader;
 		} \
 	} while (0)
 
+/* Align a record pointer to next page */
+#define NextLogPage(recptr)	\
+	do {	\
+		if (recptr.xrecoff % XLOG_BLCKSZ != 0)	\
+			recptr.xrecoff +=	\
+				(XLOG_BLCKSZ - recptr.xrecoff % XLOG_BLCKSZ);	\
+		if (recptr.xrecoff >= XLogFileSize)	\
+		{	\
+			(recptr.xlogid)++;	\
+			recptr.xrecoff = 0;	\
+		}	\
+	} while (0)
+
 /*
  * Compute ID and segment from an XLogRecPtr.
  *
@@ -253,6 +266,8 @@ extern Datum pg_stop_backup(PG_FUNCTION_ARGS);
 extern Datum pg_switch_xlog(PG_FUNCTION_ARGS);
 extern Datum pg_current_xlog_location(PG_FUNCTION_ARGS);
 extern Datum pg_current_xlog_insert_location(PG_FUNCTION_ARGS);
+extern Datum pg_last_xlog_receive_location(PG_FUNCTION_ARGS);
+extern Datum pg_last_xlog_replay_location(PG_FUNCTION_ARGS);
 extern Datum pg_xlogfile_name_offset(PG_FUNCTION_ARGS);
 extern Datum pg_xlogfile_name(PG_FUNCTION_ARGS);
 extern Datum pg_is_in_recovery(PG_FUNCTION_ARGS);

@@ -23,6 +23,7 @@ typedef enum
 	StartupProcess,
 	BgWriterProcess,
 	WalWriterProcess,
+	WalReceiverProcess,
 
 	NUM_AUXPROCTYPES			/* Must be last! */
 } AuxProcType;

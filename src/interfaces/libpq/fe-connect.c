@@ -227,6 +227,9 @@ static const PQconninfoOption PQconninfoOptions[] = {
 	"GSS-library", "", 7},		/* sizeof("gssapi") = 7 */
 #endif
 
+	{"replication", NULL, NULL, NULL,
+	 "Replication", "D", 5},
+
 	/* Terminating entry --- MUST BE LAST */
 	{NULL, NULL, NULL, NULL,
 	NULL, NULL, 0}
@@ -472,6 +475,8 @@ connectOptions1(PGconn *conn, const char *conninfo)
 	tmp = conninfo_getval(connOptions, "gsslib");
 	conn->gsslib = tmp ? strdup(tmp) : NULL;
 #endif
+	tmp = conninfo_getval(connOptions, "replication");
+	conn->replication = tmp ? strdup(tmp) : NULL;
 
 	/*
 	 * Free the option info - all is in conn now
@@ -2136,6 +2141,8 @@ freePGconn(PGconn *conn)
 		free(conn->fbappname);
 	if (conn->dbName)
 		free(conn->dbName);
+	if (conn->replication)
+		free(conn->replication);
 	if (conn->pguser)
 		free(conn->pguser);
 	if (conn->pgpass)

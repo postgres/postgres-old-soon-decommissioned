@@ -152,10 +152,10 @@ typedef struct PROC_HDR
  * ie things that aren't full-fledged backends but need shmem access.
  *
  * Background writer and WAL writer run during normal operation. Startup
- * process also consumes one slot, but WAL writer is launched only after
- * startup has exited, so we only need 2 slots.
+ * process and WAL receiver also consume 2 slots, but WAL writer is
+ * launched only after startup has exited, so we only need 3 slots.
  */
-#define NUM_AUXILIARY_PROCS		2
+#define NUM_AUXILIARY_PROCS		3
 
 
 /* configurable options */

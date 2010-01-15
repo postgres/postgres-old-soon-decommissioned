@@ -57,6 +57,22 @@ typedef struct XLogRecPtr
 
 
 /*
+ * Macro for advancing a record pointer by the specified number of bytes.
+ */
+#define XLByteAdvance(recptr, nbytes)						\
+	do {													\
+		if (recptr.xrecoff + nbytes >= XLogFileSize)		\
+		{													\
+			recptr.xlogid += 1;								\
+			recptr.xrecoff									\
+				= recptr.xrecoff + nbytes - XLogFileSize;	\
+		}													\
+		else												\
+			recptr.xrecoff += nbytes;						\
+	} while (0)
+
+
+/*
  * TimeLineID (TLI) - identifies different database histories to prevent
  * confusion after restoring a prior state of a database installation.
  * TLI does not change in a normal stop/restart of the database (including

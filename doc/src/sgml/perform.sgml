@@ -836,8 +836,9 @@ SELECT * FROM x, y, a, b, c WHERE something AND somethingelse;
     needs to be written, because in case of an error, the files
     containing the newly loaded data will be removed anyway.
     However, this consideration does not apply when
-    <xref linkend="guc-archive-mode"> is on, as all commands
-    must write WAL in that case.
+    <xref linkend="guc-archive-mode"> is on or streaming replication
+    is allowed (i.e., <xref linkend="guc-max-wal-senders"> is more
+    than or equal to one), as all commands must write WAL in that case.
    </para>
 
   </sect2>

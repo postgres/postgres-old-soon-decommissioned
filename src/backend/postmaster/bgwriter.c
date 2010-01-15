@@ -354,6 +354,12 @@ BackgroundWriterMain(void)
 	PG_SETMASK(&UnBlockSig);
 
 	/*
+	 * Use the recovery target timeline ID during recovery
+	 */
+	if (RecoveryInProgress())
+		ThisTimeLineID = GetRecoveryTargetTLI();
+
+	/*
 	 * Loop forever
 	 */
 	for (;;)
