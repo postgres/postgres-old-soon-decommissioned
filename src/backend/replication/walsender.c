@@ -452,14 +452,13 @@ static void
 InitWalSnd(void)
 {
 	/* use volatile pointer to prevent code rearrangement */
-	volatile WalSndCtlData *walsndctl = WalSndCtl;
 	int		i;
 
 	/*
 	 * WalSndCtl should be set up already (we inherit this by fork() or
 	 * EXEC_BACKEND mechanism from the postmaster).
 	 */
-	Assert(walsndctl != NULL);
+	Assert(WalSndCtl != NULL);
 	Assert(MyWalSnd == NULL);
 
 	/*
