@@ -16,7 +16,7 @@ override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
 
 OBJS = walreceiver.o
 
-SHLIB_LINK = $(libpq) $(BE_DLLLIBS)
+SHLIB_LINK = $(libpq)
 
 NAME := walreceiver
 
