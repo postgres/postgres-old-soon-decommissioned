@@ -8,11 +8,11 @@
 #
 #-------------------------------------------------------------------------
 
-subdir = src/backend/postmaster/walreceiver
+subdir = src/backend/replication/walreceiver
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-override CPPFLAGS := -I$(srcdir) -I$(libpq_srcdir) $(CPPFLAGS)
+override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
 
 OBJS = walreceiver.o
 SHLIB_LINK = $(libpq)
