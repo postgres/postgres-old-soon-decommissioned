@@ -60,6 +60,15 @@ struct statement
 	struct variable *outlist;
 };
 
+/* structure to store prepared statements for a connection */
+struct prepared_statement
+{
+	char	   *name;
+	bool		prepared;
+	struct statement *stmt;
+	struct prepared_statement *next;
+};
+
 /* structure to store connections */
 struct connection
 {
@@ -138,6 +147,9 @@ void		ecpg_clear_auto_mem(void);
 struct descriptor *ecpggetdescp(int, char *);
 
 struct descriptor *ecpg_find_desc(int line, const char *name);
+
+struct prepared_statement *ecpg_find_prepared_statement(const char *,
+				  struct connection *, struct prepared_statement **);
 
 bool ecpg_store_result(const PGresult *results, int act_field,
 				  const struct statement * stmt, struct variable * var);

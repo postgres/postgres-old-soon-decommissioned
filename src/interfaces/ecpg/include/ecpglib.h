@@ -83,7 +83,7 @@ bool		ECPGset_desc(int, const char *, int,...);
 
 void		ECPGset_noind_null(enum ECPGttype, void *);
 bool		ECPGis_noind_null(enum ECPGttype, void *);
-bool		ECPGdescribe(int, bool, const char *,...);
+bool		ECPGdescribe(int, int, bool, const char *, const char *, ...);
 
 /* dynamic result allocation */
 void		ECPGfree_auto_mem(void);

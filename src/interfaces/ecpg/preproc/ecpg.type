@@ -72,6 +72,7 @@
 %type <str> execute_rest
 %type <str> indicator
 %type <str> into_descriptor
+%type <str> into_sqlda
 %type <str> Iresult
 %type <str> on_off
 %type <str> opt_bit_field

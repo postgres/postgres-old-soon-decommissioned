@@ -84,7 +84,7 @@ ECPG: stmtViewStmt rule
 	}
 	| ECPGDescribe
 	{
-		fprintf(yyout, "{ ECPGdescribe(__LINE__, %s,", $1);
+		fprintf(yyout, "{ ECPGdescribe(__LINE__, %d, %s,", compat, $1);
 		dump_variables(argsresult, 1);
 		fputs("ECPGt_EORT);", yyout);
 		fprintf(yyout, "}");
