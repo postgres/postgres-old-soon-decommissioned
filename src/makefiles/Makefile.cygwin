@@ -23,7 +23,9 @@ CFLAGS_SL =
 ifneq (,$(findstring backend,$(subdir)))
 ifeq (,$(findstring conversion_procs,$(subdir)))
 ifeq (,$(findstring snowball,$(subdir)))
+ifeq (,$(findstring walreceiver,$(subdir)))
 override CPPFLAGS+= -DBUILDING_DLL
+endif
 endif
 endif
 endif
