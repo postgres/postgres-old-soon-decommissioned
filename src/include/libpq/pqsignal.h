@@ -27,7 +27,7 @@ extern sigset_t UnBlockSig,
 
 #define PG_SETMASK(mask)	sigprocmask(SIG_SETMASK, mask, NULL)
 #else /* not HAVE_SIGPROCMASK */
-extern int	UnBlockSig,
+extern PGDLLIMPORT int	UnBlockSig,
 			BlockSig,
 			StartupBlockSig;
 

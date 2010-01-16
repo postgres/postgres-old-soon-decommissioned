@@ -132,7 +132,7 @@ typedef struct XLogRecData
 	struct XLogRecData *next;	/* next struct in chain, or NULL */
 } XLogRecData;
 
-extern TimeLineID ThisTimeLineID;		/* current TLI */
+extern PGDLLIMPORT TimeLineID ThisTimeLineID;		/* current TLI */
 
 /*
  * Prior to 8.4, all activity during recovery was carried out by Startup

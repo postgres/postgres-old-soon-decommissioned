@@ -58,7 +58,7 @@ typedef struct
 	slock_t	mutex;		/* locks shared variables shown above */
 } WalRcvData;
 
-extern WalRcvData *WalRcv;
+extern PGDLLIMPORT WalRcvData *WalRcv;
 
 extern Size WalRcvShmemSize(void);
 extern void WalRcvShmemInit(void);
