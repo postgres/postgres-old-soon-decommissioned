@@ -2413,7 +2413,7 @@ createlang: language installation failed: ERROR:  could not load library "/opt/d
    <title>Cygwin</title>
 
    <indexterm zone="installation-notes-cygwin">
-    <primary>Cyginw</primary>
+    <primary>Cygwin</primary>
     <secondary>installation on</secondary>
    </indexterm>
 
