@@ -21,6 +21,7 @@
 
 #include "executor/execdesc.h"
 #include "nodes/parsenodes.h"
+#include "storage/procsignal.h"
 #include "utils/guc.h"
 
 
@@ -64,6 +65,7 @@ extern void die(SIGNAL_ARGS);
 extern void quickdie(SIGNAL_ARGS);
 extern void StatementCancelHandler(SIGNAL_ARGS);
 extern void FloatExceptionHandler(SIGNAL_ARGS);
+extern void RecoveryConflictInterrupt(ProcSignalReason reason); /* called from SIGUSR1 handler */
 extern void prepare_for_client_read(void);
 extern void client_read_ended(void);
 extern const char *process_postgres_switches(int argc, char *argv[],

@@ -96,11 +96,11 @@ struct PGPROC
 	uint8		vacuumFlags;	/* vacuum-related flags, see above */
 
 	/*
-	 * While in hot standby mode, setting recoveryConflictMode instructs
-	 * the backend to commit suicide. Possible values are the same as those
-	 * passed to ResolveRecoveryConflictWithVirtualXIDs().
+	 * While in hot standby mode, shows that a conflict signal has been sent
+	 * for the current transaction. Set/cleared while holding ProcArrayLock,
+	 * though not required. Accessed without lock, if needed.
 	 */
-	int			recoveryConflictMode;
+	bool		recoveryConflictPending;
 
 	/* Info about LWLock the process is currently waiting for, if any. */
 	bool		lwWaiting;		/* true if waiting for an LW lock */

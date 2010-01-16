@@ -324,7 +324,7 @@ InitProcess(void)
 	MyProc->waitProcLock = NULL;
 	for (i = 0; i < NUM_LOCK_PARTITIONS; i++)
 		SHMQueueInit(&(MyProc->myProcLocks[i]));
-	MyProc->recoveryConflictMode = 0;
+	MyProc->recoveryConflictPending = false;
 
 	/*
 	 * We might be reusing a semaphore that belonged to a failed process. So

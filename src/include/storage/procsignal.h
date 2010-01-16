@@ -32,6 +32,12 @@ typedef enum
 	PROCSIG_CATCHUP_INTERRUPT,	/* sinval catchup interrupt */
 	PROCSIG_NOTIFY_INTERRUPT,	/* listen/notify interrupt */
 
+	/* Recovery conflict reasons */
+	PROCSIG_RECOVERY_CONFLICT_DATABASE,
+	PROCSIG_RECOVERY_CONFLICT_TABLESPACE,
+	PROCSIG_RECOVERY_CONFLICT_LOCK,
+	PROCSIG_RECOVERY_CONFLICT_SNAPSHOT,
+
 	NUM_PROCSIGNALS				/* Must be last! */
 } ProcSignalReason;
 
