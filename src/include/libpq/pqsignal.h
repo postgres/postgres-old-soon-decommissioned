@@ -21,7 +21,7 @@
 #include <signal.h>
 
 #ifdef HAVE_SIGPROCMASK
-extern sigset_t UnBlockSig,
+extern PGDLLIMPORT sigset_t UnBlockSig,
 			BlockSig,
 			StartupBlockSig;
 
