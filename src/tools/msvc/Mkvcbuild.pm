@@ -175,6 +175,10 @@ sub mkvcbuild
     $libpq->ReplaceFile('src\interfaces\libpq\libpqrc.c','src\interfaces\libpq\libpq.rc');
     $libpq->AddReference($libpgport);
 
+    my $walreceiver = $solution->AddProject('walreceiver', 'dll', '', 'src\backend\replication\walreceiver');
+    $walreceiver->AddIncludeDir('src\interfaces\libpq');
+    $walreceiver->AddReference($postgres,$libpq);
+
     my $pgtypes =
       $solution->AddProject('libpgtypes','dll','interfaces','src\interfaces\ecpg\pgtypeslib');
     $pgtypes->AddDefine('FRONTEND');
