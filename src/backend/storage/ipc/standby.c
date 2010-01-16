@@ -191,7 +191,7 @@ ResolveRecoveryConflictWithVirtualXIDs(VirtualTransactionId *waitlist,
 
 				oldactivitymsg = get_ps_display(&len);
 				snprintf(waitactivitymsg, sizeof(waitactivitymsg),
-						 "waiting for max_standby_delay (%u ms)",
+						 "waiting for max_standby_delay (%u s)",
 						 MaxStandbyDelay);
 				set_ps_display(waitactivitymsg, false);
 				if (len > 100)
