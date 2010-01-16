@@ -35,6 +35,7 @@
 #include "postgres.h"
 
 #include <unistd.h>
+#include <sys/time.h>
 
 #include "access/xlog_internal.h"
 #include "libpq-fe.h"
