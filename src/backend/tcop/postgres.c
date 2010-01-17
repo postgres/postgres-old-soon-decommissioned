@@ -2867,22 +2867,14 @@ ProcessInterrupts(void)
 			ImmediateInterruptOK = false;	/* not idle anymore */
 			DisableNotifyInterrupt();
 			DisableCatchupInterrupt();
-
 			if (DoingCommandRead)
-			{
-				ProcDiePending = false;
-				QueryCancelPending = false;
 				ereport(FATAL,
 						(errcode(ERRCODE_ADMIN_SHUTDOWN),
 						 errmsg("terminating connection due to conflict with recovery")));
-			}
 			else
-			{
-				QueryCancelPending = false;
 				ereport(ERROR,
 						(errcode(ERRCODE_QUERY_CANCELED),
 						 errmsg("canceling statement due to conflict with recovery")));
-			}
 		}
 
 		/*
