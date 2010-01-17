@@ -1666,7 +1666,7 @@ CREATE VIEW table_constraints AS
 
     WHERE nc.oid = c.connamespace AND nr.oid = r.relnamespace
           AND c.conrelid = r.oid
-          AND c.contype <> 'x'  -- ignore nonstandard exclusion constraints
+          AND c.contype NOT IN ('t', 'x')  -- ignore nonstandard constraints
           AND r.relkind = 'r'
           AND (NOT pg_is_other_temp_schema(nr.oid))
           AND (pg_has_role(r.relowner, 'USAGE')
@@ -1868,7 +1868,7 @@ CREATE VIEW triggered_update_columns AS
           AND c.oid = t.tgrelid
           AND t.oid = ta.tgoid
           AND (a.attrelid, a.attnum) = (t.tgrelid, ta.tgattnum)
-          AND NOT t.tgisconstraint
+          AND NOT t.tgisinternal
           AND (NOT pg_is_other_temp_schema(n.oid))
           AND (pg_has_role(c.relowner, 'USAGE')
                -- SELECT privilege omitted, per SQL standard
@@ -1953,7 +1953,7 @@ CREATE VIEW triggers AS
     WHERE n.oid = c.relnamespace
           AND c.oid = t.tgrelid
           AND t.tgtype & em.num <> 0
-          AND NOT t.tgisconstraint
+          AND NOT t.tgisinternal
           AND (NOT pg_is_other_temp_schema(n.oid))
           AND (pg_has_role(c.relowner, 'USAGE')
                -- SELECT privilege omitted, per SQL standard

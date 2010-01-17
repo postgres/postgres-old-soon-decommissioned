@@ -1001,8 +1001,8 @@ standard_ProcessUtility(Node *parsetree,
 			break;
 
 		case T_CreateTrigStmt:
-			CreateTrigger((CreateTrigStmt *) parsetree, queryString,
-						  InvalidOid, InvalidOid, NULL, true);
+			(void) CreateTrigger((CreateTrigStmt *) parsetree, queryString,
+								 InvalidOid, InvalidOid, false);
 			break;
 
 		case T_DropPropertyStmt:

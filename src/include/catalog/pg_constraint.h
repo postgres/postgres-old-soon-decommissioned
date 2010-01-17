@@ -38,7 +38,7 @@ CATALOG(pg_constraint,2606)
 	 * Postgres practice, and partly because we don't want to have to obtain a
 	 * global lock to generate a globally unique name for a nameless
 	 * constraint.	We associate a namespace with constraint names only for
-	 * SQL92 compatibility.
+	 * SQL-spec compatibility.
 	 */
 	NameData	conname;		/* name of this constraint */
 	Oid			connamespace;	/* OID of namespace containing constraint */
@@ -92,7 +92,8 @@ CATALOG(pg_constraint,2606)
 	 */
 
 	/*
-	 * Columns of conrelid that the constraint applies to
+	 * Columns of conrelid that the constraint applies to, if known
+	 * (this is NULL for trigger constraints)
 	 */
 	int2		conkey[1];
 
@@ -177,6 +178,7 @@ typedef FormData_pg_constraint *Form_pg_constraint;
 #define CONSTRAINT_FOREIGN			'f'
 #define CONSTRAINT_PRIMARY			'p'
 #define CONSTRAINT_UNIQUE			'u'
+#define CONSTRAINT_TRIGGER			't'
 #define CONSTRAINT_EXCLUSION		'x'
 
 /*

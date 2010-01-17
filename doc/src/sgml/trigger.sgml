@@ -506,7 +506,7 @@ typedef struct Trigger
     Oid         tgfoid;
     int16       tgtype;
     bool        tgenabled;
-    bool        tgisconstraint;
+    bool        tgisinternal;
     Oid         tgconstrrelid;
     Oid         tgconstrindid;
     Oid         tgconstraint;

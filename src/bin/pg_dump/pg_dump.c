@@ -4584,7 +4584,7 @@ getTriggers(TableInfo tblinfo[], int numTables)
 							  "tgenabled, tableoid, oid "
 							  "FROM pg_catalog.pg_trigger t "
 							  "WHERE tgrelid = '%u'::pg_catalog.oid "
-							  "AND tgconstraint = 0",
+							  "AND NOT tgisinternal",
 							  tbinfo->dobj.catId.oid);
 		}
 		else if (g_fout->remoteVersion >= 80300)
