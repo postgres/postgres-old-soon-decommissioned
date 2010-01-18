@@ -324,6 +324,13 @@ PortalReleaseCachedPlan(Portal portal)
 	{
 		ReleaseCachedPlan(portal->cplan, false);
 		portal->cplan = NULL;
+
+		/*
+		 * We must also clear portal->stmts which is now a dangling
+		 * reference to the cached plan's plan list.  This protects any
+		 * code that might try to examine the Portal later.
+		 */
+		portal->stmts = NIL;
 	}
 }
 
@@ -385,8 +392,7 @@ PortalDrop(Portal portal, bool isTopCommit)
 		(*portal->cleanup) (portal);
 
 	/* drop cached plan reference, if any */
-	if (portal->cplan)
-		PortalReleaseCachedPlan(portal);
+	PortalReleaseCachedPlan(portal);
 
 	/*
 	 * Release any resources still attached to the portal.	There are several
@@ -519,8 +525,7 @@ CommitHoldablePortals(void)
 			PersistHoldablePortal(portal);
 
 			/* drop cached plan reference, if any */
-			if (portal->cplan)
-				PortalReleaseCachedPlan(portal);
+			PortalReleaseCachedPlan(portal);
 
 			/*
 			 * Any resources belonging to the portal will be released in the
@@ -670,8 +675,7 @@ AtAbort_Portals(void)
 		}
 
 		/* drop cached plan reference, if any */
-		if (portal->cplan)
-			PortalReleaseCachedPlan(portal);
+		PortalReleaseCachedPlan(portal);
 
 		/*
 		 * Any resources belonging to the portal will be released in the
@@ -813,8 +817,7 @@ AtSubAbort_Portals(SubTransactionId mySubid,
 			}
 
 			/* drop cached plan reference, if any */
-			if (portal->cplan)
-				PortalReleaseCachedPlan(portal);
+			PortalReleaseCachedPlan(portal);
 
 			/*
 			 * Any resources belonging to the portal will be released in the
