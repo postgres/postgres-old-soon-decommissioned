@@ -1115,6 +1115,17 @@ convert_EXISTS_sublink_to_join(PlannerInfo *root, SubLink *sublink,
 	Assert(sublink->subLinkType == EXISTS_SUBLINK);
 
 	/*
+	 * Can't flatten if it contains WITH.  (We could arrange to pull up the
+	 * WITH into the parent query's cteList, but that risks changing the
+	 * semantics, since a WITH ought to be executed once per associated query
+	 * call.)  Note that convert_ANY_sublink_to_join doesn't have to reject
+	 * this case, since it just produces a subquery RTE that doesn't have to
+	 * get flattened into the parent query.
+	 */
+	if (subselect->cteList)
+		return NULL;
+
+	/*
 	 * Copy the subquery so we can modify it safely (see comments in
 	 * make_subplan).
 	 */
