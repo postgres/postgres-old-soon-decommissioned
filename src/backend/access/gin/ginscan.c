@@ -74,7 +74,9 @@ fillScanKey(GinState *ginstate, GinScanKey key, OffsetNumber attnum, Datum query
 		/* link to the equals entry in current scan key */
 		key->scanEntry[i].master = NULL;
 		for (j = 0; j < i; j++)
-			if (compareEntries(ginstate, attnum, entryValues[i], entryValues[j]) == 0)
+			if (compareEntries(ginstate, attnum, entryValues[i], entryValues[j]) == 0 &&
+				key->scanEntry[i].isPartialMatch == key->scanEntry[j].isPartialMatch &&
+				key->scanEntry[i].strategy == key->scanEntry[j].strategy)
 			{
 				key->scanEntry[i].master = key->scanEntry + j;
 				break;
