@@ -289,7 +289,7 @@ nodeRead(char *token, int tok_len)
 
 	type = nodeTokenType(token, tok_len);
 
-	switch (type)
+	switch ((int) type)
 	{
 		case LEFT_BRACE:
 			result = parseNodeString();
