@@ -918,6 +918,17 @@ postgres: <replaceable>user</> <replaceable>database</> <replaceable>host</> <re
        (requires superuser privileges)
       </entry>
      </row>
+
+     <row>
+      <entry><literal><function>pg_stat_reset_shared</function>(text)</literal></entry>
+      <entry><type>void</type></entry>
+      <entry>
+       Reset some of the shared statistics counters for the database cluster to
+       zero (requires superuser privileges).  Calling
+       <literal>pg_stat_reset_shared('bgwriter')</> will zero all the values shown by
+       <structname>pg_stat_bgwriter</>.
+      </entry>
+     </row>
     </tbody>
    </tgroup>
   </table>
