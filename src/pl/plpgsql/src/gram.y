@@ -1704,7 +1704,27 @@ stmt_open		: K_OPEN cursor_variable
 							tok = yylex();
 							if (tok == K_EXECUTE)
 							{
-								new->dynquery = read_sql_stmt("SELECT ");
+								int		endtoken;
+
+								new->dynquery =
+									read_sql_expression2(K_USING, ';',
+														 "USING or ;",
+														 &endtoken);
+
+								/* If we found "USING", collect argument(s) */
+								if (endtoken == K_USING)
+								{
+									PLpgSQL_expr *expr;
+									
+									do
+									{
+										expr = read_sql_expression2(',', ';',
+																	", or ;",
+																	&endtoken);
+										new->params = lappend(new->params,
+															  expr);
+									} while (endtoken == ',');
+								}
 							}
 							else
 							{

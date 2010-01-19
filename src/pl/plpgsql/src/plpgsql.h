@@ -503,6 +503,7 @@ typedef struct
 	PLpgSQL_expr *argquery;
 	PLpgSQL_expr *query;
 	PLpgSQL_expr *dynquery;
+	List	   *params;			/* USING expressions */
 } PLpgSQL_stmt_open;
 
 
