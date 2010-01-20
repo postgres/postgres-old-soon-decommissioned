@@ -62,7 +62,8 @@ void
 _PG_init(void)
 {
 	/* Tell walreceiver how to reach us */
-	if (walrcv_connect != NULL || walrcv_receive != NULL || walrcv_disconnect)
+	if (walrcv_connect != NULL || walrcv_receive != NULL ||
+		walrcv_disconnect != NULL)
 		elog(ERROR, "libpqwalreceiver already loaded");
 	walrcv_connect = libpqrcv_connect;
 	walrcv_receive = libpqrcv_receive;
