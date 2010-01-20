@@ -104,7 +104,7 @@ sub mkvcbuild
 						. $solution->{options}->{perl}
 						. '/lib/ExtUtils/typemap ' 
 						. "$plperlsrc$xs " 
-						. ">plperlsrc$xsc");
+						. ">$plperlsrc$xsc");
 				if ((!(-f "$plperlsrc$xsc")) || -z "$plperlsrc$xsc")
 				{
 					unlink("$plperlsrc$xsc"); # if zero size
