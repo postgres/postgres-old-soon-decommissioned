@@ -215,6 +215,18 @@ _bt_leafbuild(BTSpool *btspool, BTSpool *btspool2)
 	 */
 	wstate.btws_use_wal = XLogIsNeeded() && !wstate.index->rd_istemp;
 
+	/*
+	 * Write an XLOG UNLOGGED record if WAL-logging was skipped because
+	 * WAL archiving is not enabled.
+	 */
+	if (!wstate.btws_use_wal && !wstate.index->rd_istemp)
+	{
+		char reason[NAMEDATALEN + 20];
+		snprintf(reason, sizeof(reason), "b-tree build on \"%s\"",
+				 RelationGetRelationName(wstate.index));
+		XLogReportUnloggedStatement(reason);
+	}
+
 	/* reserve the metapage */
 	wstate.btws_pages_alloced = BTREE_METAPAGE + 1;
 	wstate.btws_pages_written = 0;
