@@ -59,7 +59,7 @@ typedef struct
 	slock_t	mutex;		/* locks shared variables shown above */
 } WalRcvData;
 
-extern PGDLLIMPORT WalRcvData *WalRcv;
+extern WalRcvData *WalRcv;
 
 /* libpqwalreceiver hooks */
 typedef bool (*walrcv_connect_type) (char *conninfo, XLogRecPtr startpoint);
