@@ -1,3 +1,6 @@
+
+#  $PostgreSQL:$
+
 use vars qw($PLContainer);
 
 $PLContainer = new Safe('PLPerl');

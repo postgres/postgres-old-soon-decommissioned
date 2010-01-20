@@ -30,28 +30,19 @@
 #include "EXTERN.h"
 #include "perl.h"
 #include "XSUB.h"
-#include "ppport.h"
 
-/* just in case these symbols aren't provided */
-#ifndef pTHX_
-#define pTHX_
-#define pTHX void
-#endif
+/* perl version and platform portability */
+#define NEED_eval_pv
+#define NEED_newRV_noinc
+#define NEED_sv_2pv_flags
+#include "ppport.h"
 
 /* perl may have a different width of "bool", don't buy it */
 #ifdef bool
 #undef bool
 #endif
 
-/* routines from spi_internal.c */
-int			spi_DEBUG(void);
-int			spi_LOG(void);
-int			spi_INFO(void);
-int			spi_NOTICE(void);
-int			spi_WARNING(void);
-int			spi_ERROR(void);
-
-/* routines from plperl.c */
+/* declare routines from plperl.c for access by .xs files */
 HV		   *plperl_spi_exec(char *, int);
 void		plperl_return_next(SV *);
 SV		   *plperl_spi_query(char *);

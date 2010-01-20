@@ -1,3 +1,6 @@
+
+# $PostgreSQL:$
+
 =head1 NAME
 
 text2macro.pl - convert text files into C string-literal macro definitions
