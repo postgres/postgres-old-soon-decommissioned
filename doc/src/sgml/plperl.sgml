@@ -320,6 +320,7 @@ BEGIN { strict->import(); }
   <para>
    Access to the database itself from your Perl function can be done
    via the following functions:
+  </para>
 
    <variablelist>
     <varlistentry>
@@ -678,7 +679,6 @@ SELECT done();
     </varlistentry>
 
    </variablelist>
-  </para>
  </sect2>
  </sect1>
 
