@@ -12,6 +12,7 @@
 #ifndef _WALRECEIVER_H
 #define _WALRECEIVER_H
 
+#include "access/xlogdefs.h"
 #include "storage/spin.h"
 
 /*
@@ -60,6 +61,17 @@ typedef struct
 
 extern PGDLLIMPORT WalRcvData *WalRcv;
 
+/* libpqwalreceiver hooks */
+typedef bool (*walrcv_connect_type) (char *conninfo, XLogRecPtr startpoint);
+extern PGDLLIMPORT walrcv_connect_type walrcv_connect;
+
+typedef bool (*walrcv_receive_type) (int timeout, XLogRecPtr *recptr, char **buffer, int *len);
+extern PGDLLIMPORT walrcv_receive_type walrcv_receive;
+
+typedef void (*walrcv_disconnect_type) (void);
+extern PGDLLIMPORT walrcv_disconnect_type walrcv_disconnect;
+
+extern void WalReceiverMain(void);
 extern Size WalRcvShmemSize(void);
 extern void WalRcvShmemInit(void);
 extern bool WalRcvInProgress(void);

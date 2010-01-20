@@ -21,7 +21,7 @@ all install installdirs uninstall distprep:
 	$(MAKE) -C backend/snowball $@
 	$(MAKE) -C include $@
 	$(MAKE) -C interfaces $@
-	$(MAKE) -C backend/replication/walreceiver $@
+	$(MAKE) -C backend/replication/libpqwalreceiver $@
 	$(MAKE) -C bin $@
 	$(MAKE) -C pl $@
 	$(MAKE) -C makefiles $@
@@ -52,7 +52,7 @@ clean:
 	$(MAKE) -C backend/snowball $@
 	$(MAKE) -C include $@
 	$(MAKE) -C interfaces $@
-	$(MAKE) -C backend/replication/walreceiver $@
+	$(MAKE) -C backend/replication/libpqwalreceiver $@
 	$(MAKE) -C bin $@
 	$(MAKE) -C pl $@
 	$(MAKE) -C makefiles $@
@@ -67,7 +67,7 @@ distclean maintainer-clean:
 	$(MAKE) -C backend/snowball $@
 	$(MAKE) -C include $@
 	$(MAKE) -C interfaces $@
-	$(MAKE) -C backend/replication/walreceiver $@
+	$(MAKE) -C backend/replication/libpqwalreceiver $@
 	$(MAKE) -C bin $@
 	$(MAKE) -C pl $@
 	$(MAKE) -C makefiles $@
@@ -82,7 +82,7 @@ coverage:
 	$(MAKE) -C backend/utils/mb/conversion_procs $@
 	$(MAKE) -C backend/snowball $@
 	$(MAKE) -C interfaces $@
-	$(MAKE) -C backend/replication/walreceiver $@
+	$(MAKE) -C backend/replication/libpqwalreceiver $@
 	$(MAKE) -C bin $@
 	$(MAKE) -C pl $@
 
