@@ -8,7 +8,7 @@
 #
 #-------------------------------------------------------------------------
 
-subdir = src/backend/postmaster/libpqwalreceiver
+subdir = src/backend/replication/libpqwalreceiver
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
