@@ -1854,10 +1854,11 @@ describeOneTableDetails(const char *schemaname,
 		{
 			printfPQExpBuffer(&buf,
 							  "SELECT t.tgname, "
-							  "pg_catalog.pg_get_triggerdef(t.oid), "
+							  "pg_catalog.pg_get_triggerdef(t.oid%s), "
 							  "t.tgenabled\n"
 							  "FROM pg_catalog.pg_trigger t\n"
 							  "WHERE t.tgrelid = '%s' AND ",
+							  (pset.sversion >= 80500 ? ", true" : ""),
 							  oid);
 			if (pset.sversion >= 80500)
 				appendPQExpBuffer(&buf, "NOT t.tgisinternal");
