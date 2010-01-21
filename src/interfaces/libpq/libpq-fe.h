@@ -471,6 +471,8 @@ extern int	PQsetvalue(PGresult *res, int tup_num, int field_num, char *value, in
 extern size_t PQescapeStringConn(PGconn *conn,
 				   char *to, const char *from, size_t length,
 				   int *error);
+extern char *PQescapeLiteral(PGconn *conn, const char *str, size_t len);
+extern char *PQescapeIdentifier(PGconn *conn, const char *str, size_t len);
 extern unsigned char *PQescapeByteaConn(PGconn *conn,
 				  const unsigned char *from, size_t from_length,
 				  size_t *to_length);

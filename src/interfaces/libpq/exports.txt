@@ -153,3 +153,5 @@ PQresultSetInstanceData   150
 PQfireResultCreateEvents  151
 PQconninfoParse           152
 PQinitOpenSSL             153
+PQescapeLiteral           154
+PQescapeIdentifier        155
