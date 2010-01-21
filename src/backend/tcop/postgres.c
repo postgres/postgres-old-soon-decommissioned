@@ -2865,6 +2865,7 @@ ProcessInterrupts(void)
 		if (RecoveryConflictPending)
 		{
 			ImmediateInterruptOK = false;	/* not idle anymore */
+			RecoveryConflictPending = false;
 			DisableNotifyInterrupt();
 			DisableCatchupInterrupt();
 			if (DoingCommandRead)
