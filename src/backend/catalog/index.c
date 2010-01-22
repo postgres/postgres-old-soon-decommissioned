@@ -203,7 +203,6 @@ ConstructTupleDescriptor(Relation heapRelation,
 			to->attnum = i + 1;
 
 			to->attstattarget = -1;
-			to->attdistinct = 0;
 			to->attcacheoff = -1;
 			to->attnotnull = false;
 			to->atthasdef = false;

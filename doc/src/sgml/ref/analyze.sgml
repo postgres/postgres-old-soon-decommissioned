@@ -173,7 +173,7 @@ ANALYZE [ VERBOSE ] [ <replaceable class="PARAMETER">table</replaceable> [ ( <re
    with the largest possible statistics target.  If this inaccuracy leads to
    bad query plans, a more accurate value can be determined manually and then
    installed with
-   <command>ALTER TABLE ... ALTER COLUMN ... SET STATISTICS DISTINCT</>
+   <command>ALTER TABLE ... ALTER COLUMN ... SET (n_distinct = ...)</>
    (see <xref linkend="sql-altertable" endterm="sql-altertable-title">).
   </para>
  </refsect1>

@@ -902,19 +902,6 @@
      </row>
 
      <row>
-      <entry><structfield>attdistinct</structfield></entry>
-      <entry><type>float4</type></entry>
-      <entry></entry>
-      <entry>
-       <structfield>attdistinct</structfield>, if nonzero, is a user-specified
-       number-of-distinct-values figure to be used instead of estimating the
-       number of distinct values during <command>ANALYZE</>.  Nonzero values
-       have the same meanings as for
-       <link linkend="catalog-pg-statistic"><structname>pg_statistic</></link>.<structfield>stadistinct</>
-      </entry>
-     </row>
-
-     <row>
       <entry><structfield>attlen</structfield></entry>
       <entry><type>int2</type></entry>
       <entry></entry>
@@ -1058,6 +1045,15 @@
       <entry>
        Column-level access privileges, if any have been granted specifically
        on this column
+      </entry>
+     </row>
+
+     <row>
+      <entry><structfield>attoptions</structfield></entry>
+      <entry><type>text[]</type></entry>
+      <entry></entry>
+      <entry>
+       Attribute-level options, as <quote>keyword=value</> strings
       </entry>
      </row>
 

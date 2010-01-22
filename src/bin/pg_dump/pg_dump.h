@@ -244,13 +244,13 @@ typedef struct _tableInfo
 	char	  **atttypnames;	/* attribute type names */
 	int		   *atttypmod;		/* type-specific type modifiers */
 	int		   *attstattarget;	/* attribute statistics targets */
-	float4	   *attdistinct;	/* override ndistinct calculation */
 	char	   *attstorage;		/* attribute storage scheme */
 	char	   *typstorage;		/* type storage scheme */
 	bool	   *attisdropped;	/* true if attr is dropped; don't dump it */
 	int		   *attlen;			/* attribute length, used by binary_upgrade */
 	char	   *attalign;		/* attribute align, used by binary_upgrade */
 	bool	   *attislocal;		/* true if attr has local definition */
+	char	  **attoptions;		/* per-attribute options */
 
 	/*
 	 * Note: we need to store per-attribute notnull, default, and constraint

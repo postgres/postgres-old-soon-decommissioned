@@ -40,7 +40,8 @@ typedef enum relopt_kind
 	RELOPT_KIND_HASH = (1 << 3),
 	RELOPT_KIND_GIN = (1 << 4),
 	RELOPT_KIND_GIST = (1 << 5),
-	RELOPT_KIND_TABLESPACE = (1 << 6),
+	RELOPT_KIND_ATTRIBUTE = (1 << 6),
+	RELOPT_KIND_TABLESPACE = (1 << 7),
 	/* if you add a new kind, make sure you update "last_default" too */
 	RELOPT_KIND_LAST_DEFAULT = RELOPT_KIND_TABLESPACE,
 	/* some compilers treat enums as signed ints, so we can't use 1 << 31 */
@@ -266,6 +267,7 @@ extern bytea *default_reloptions(Datum reloptions, bool validate,
 extern bytea *heap_reloptions(char relkind, Datum reloptions, bool validate);
 extern bytea *index_reloptions(RegProcedure amoptions, Datum reloptions,
 				 bool validate);
+extern bytea *attribute_reloptions(Datum reloptions, bool validate);
 extern bytea *tablespace_reloptions(Datum reloptions, bool validate);
 
 #endif   /* RELOPTIONS_H */

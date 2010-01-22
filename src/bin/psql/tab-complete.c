@@ -992,17 +992,6 @@ psql_completion(char *text, int start, int end)
 
 		COMPLETE_WITH_LIST(list_COLUMNSET);
 	}
-	else if (((pg_strcasecmp(prev5_wd, "ALTER") == 0 &&
-			   pg_strcasecmp(prev4_wd, "COLUMN") == 0) ||
-			  pg_strcasecmp(prev4_wd, "ALTER") == 0) &&
-			 pg_strcasecmp(prev2_wd, "SET") == 0 &&
-			 pg_strcasecmp(prev_wd, "STATISTICS") == 0)
-	{
-		static const char *const list_COLUMNSETSTATS[] =
-		{"DISTINCT", NULL};
-
-		COMPLETE_WITH_LIST(list_COLUMNSETSTATS);
-	}
 	else if (((pg_strcasecmp(prev4_wd, "ALTER") == 0 &&
 			   pg_strcasecmp(prev3_wd, "COLUMN") == 0) ||
 			  (pg_strcasecmp(prev5_wd, "TABLE") == 0 &&
