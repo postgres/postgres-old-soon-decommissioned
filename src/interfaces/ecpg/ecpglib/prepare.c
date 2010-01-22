@@ -414,7 +414,7 @@ ecpg_freeStmtCacheEntry(int lineno, int compat, int entNo)		/* entry # to free *
  */
 static int
 AddStmtToCache(int lineno,		/* line # of statement		*/
-			   char *stmtID,	/* statement ID				*/
+			   const char *stmtID,	/* statement ID				*/
 			   const char *connection,	/* connection				*/
 			   int compat,		/* compatibility level */
 			   const char *ecpgQuery)	/* query					*/
