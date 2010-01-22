@@ -79,7 +79,7 @@ su - postgres
 <screen>
 <userinput>gmake --version</userinput>
 </screen>
-      It is recommended to use version 3.76.1 or later.
+      It is recommended to use version 3.79.1 or later.
      </para>
     </listitem>
 
