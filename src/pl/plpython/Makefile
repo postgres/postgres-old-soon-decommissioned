@@ -66,6 +66,7 @@ REGRESS = \
 	plpython_schema \
 	plpython_populate \
 	plpython_test \
+	plpython_do \
 	plpython_global \
 	plpython_import \
 	plpython_spi \

@@ -551,6 +551,24 @@ $$ LANGUAGE plpythonu;
   </para>
  </sect1>
 
+ <sect1 id="plpython-do">
+  <title>Anonymous Code Blocks</title>
+
+  <para>
+   PL/Python also supports anonymous code blocks called with the
+   <xref linkend="sql-do"> statement:
+
+<programlisting>
+DO $$
+    # PL/Python code
+$$ LANGUAGE plpythonu;
+</programlisting>
+
+   An anonymous code block receives no arguments, and whatever value it
+   might return is discarded.  Otherwise it behaves just like a function.
+  </para>
+ </sect1>
+
  <sect1 id="plpython-trigger">
   <title>Trigger Functions</title>
 
