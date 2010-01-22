@@ -1753,7 +1753,10 @@ ECPGdo(const int lineno, const int compat, const int force_indicator, const char
 			stmt->command = ecpg_strdup(command, lineno);
 		}
 		else
+		{
 			ecpg_raise(lineno, ECPG_INVALID_STMT, ECPG_SQLSTATE_INVALID_SQL_STATEMENT_NAME, stmt->command);
+			return (false);
+		}
 	}
 
 	stmt->connection = con;
