@@ -8803,9 +8803,12 @@ StartupProcessMain(void)
 	 */
 	pqsignal(SIGHUP, StartupProcSigHupHandler); /* reload config file */
 	pqsignal(SIGINT, SIG_IGN);	/* ignore query cancel */
-	pqsignal(SIGTERM, StartupProcShutdownHandler);		/* request shutdown */
-	pqsignal(SIGQUIT, startupproc_quickdie);	/* hard crash time */
-	pqsignal(SIGALRM, SIG_IGN);
+	pqsignal(SIGTERM, StartupProcShutdownHandler);	/* request shutdown */
+	pqsignal(SIGQUIT, startupproc_quickdie);		/* hard crash time */
+	if (XLogRequestRecoveryConnections)
+		pqsignal(SIGALRM, handle_standby_sig_alarm); /* ignored unless InHotStandby */
+	else
+		pqsignal(SIGALRM, SIG_IGN);
 	pqsignal(SIGPIPE, SIG_IGN);
 	pqsignal(SIGUSR1, SIG_IGN);
 	pqsignal(SIGUSR2, SIG_IGN);

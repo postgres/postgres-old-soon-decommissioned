@@ -57,13 +57,12 @@ extern bool IsBackendPid(int pid);
 extern VirtualTransactionId *GetCurrentVirtualXIDs(TransactionId limitXmin,
 					  bool excludeXmin0, bool allDbs, int excludeVacuum,
 					  int *nvxids);
-extern VirtualTransactionId *GetConflictingVirtualXIDs(TransactionId limitXmin,
-					Oid dbOid, bool skipExistingConflicts);
+extern VirtualTransactionId *GetConflictingVirtualXIDs(TransactionId limitXmin, Oid dbOid);
 extern pid_t CancelVirtualTransaction(VirtualTransactionId vxid, ProcSignalReason sigmode);
 
 extern int	CountActiveBackends(void);
 extern int	CountDBBackends(Oid databaseid);
-extern void	CancelDBBackends(Oid databaseid);
+extern void CancelDBBackends(Oid databaseid, ProcSignalReason sigmode, bool conflictPending);
 extern int	CountUserBackends(Oid roleid);
 extern bool CountOtherDBBackends(Oid databaseId,
 					 int *nbackends, int *nprepared);

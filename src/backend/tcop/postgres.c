@@ -2718,6 +2718,18 @@ RecoveryConflictInterrupt(ProcSignalReason reason)
 	{
 		switch (reason)
 		{
+			case PROCSIG_RECOVERY_CONFLICT_BUFFERPIN:
+					/*
+					 * If we aren't blocking the Startup process there is
+					 * nothing more to do.
+					 */
+					if (!HoldingBufferPinThatDelaysRecovery())
+						return;
+
+					MyProc->recoveryConflictPending = true;
+
+					/* Intentional drop through to error handling */
+
 			case PROCSIG_RECOVERY_CONFLICT_LOCK:
 			case PROCSIG_RECOVERY_CONFLICT_TABLESPACE:
 			case PROCSIG_RECOVERY_CONFLICT_SNAPSHOT:

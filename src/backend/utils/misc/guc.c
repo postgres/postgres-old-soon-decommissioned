@@ -1383,7 +1383,7 @@ static struct config_int ConfigureNamesInt[] =
 			NULL
 		},
 		&MaxStandbyDelay,
-		30, -1, INT_MAX, NULL, NULL
+		30, 0, INT_MAX, NULL, NULL
 	},
 
 	{

@@ -19,12 +19,15 @@
 
 extern int	vacuum_defer_cleanup_age;
 
+extern void InitRecoveryTransactionEnvironment(void);
+extern void ShutdownRecoveryTransactionEnvironment(void);
+
 extern void ResolveRecoveryConflictWithSnapshot(TransactionId latestRemovedXid);
 extern void ResolveRecoveryConflictWithTablespace(Oid tsid);
 extern void ResolveRecoveryConflictWithDatabase(Oid dbid);
 
-extern void InitRecoveryTransactionEnvironment(void);
-extern void ShutdownRecoveryTransactionEnvironment(void);
+extern void ResolveRecoveryConflictWithBufferPin(void);
+extern void SendRecoveryConflictWithBufferPin(void);
 
 /*
  * Standby Rmgr (RM_STANDBY_ID)
