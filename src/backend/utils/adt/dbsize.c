@@ -46,6 +46,8 @@ db_dir_size(const char *path)
 	{
 		struct stat fst;
 
+		CHECK_FOR_INTERRUPTS();
+
 		if (strcmp(direntry->d_name, ".") == 0 ||
 			strcmp(direntry->d_name, "..") == 0)
 			continue;
@@ -104,6 +106,8 @@ calculate_database_size(Oid dbOid)
 
 	while ((direntry = ReadDir(dirdesc, dirpath)) != NULL)
 	{
+		CHECK_FOR_INTERRUPTS();
+
 		if (strcmp(direntry->d_name, ".") == 0 ||
 			strcmp(direntry->d_name, "..") == 0)
 			continue;
@@ -193,6 +197,8 @@ calculate_tablespace_size(Oid tblspcOid)
 	{
 		struct stat fst;
 
+		CHECK_FOR_INTERRUPTS();
+
 		if (strcmp(direntry->d_name, ".") == 0 ||
 			strcmp(direntry->d_name, "..") == 0)
 			continue;
@@ -260,6 +266,8 @@ calculate_relation_size(RelFileNode *rfn, ForkNumber forknum)
 	for (segcount = 0;; segcount++)
 	{
 		struct stat fst;
+
+		CHECK_FOR_INTERRUPTS();
 
 		if (segcount == 0)
 			snprintf(pathname, MAXPGPATH, "%s",
