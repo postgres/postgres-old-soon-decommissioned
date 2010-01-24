@@ -3786,7 +3786,14 @@ AtEOXact_GUC(bool isCommit, int nestLevel)
 	bool		still_dirty;
 	int			i;
 
-	Assert(nestLevel > 0 && nestLevel <= GUCNestLevel);
+	/*
+	 * Note: it's possible to get here with GUCNestLevel == nestLevel-1 during
+	 * abort, if there is a failure during transaction start before
+	 * AtStart_GUC is called.
+	 */
+	Assert(nestLevel > 0 &&
+		   (nestLevel <= GUCNestLevel ||
+			(nestLevel == GUCNestLevel + 1 && !isCommit)));
 
 	/* Quick exit if nothing's changed in this transaction */
 	if (!guc_dirty)
