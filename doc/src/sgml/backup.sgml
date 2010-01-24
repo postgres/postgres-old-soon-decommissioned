@@ -2627,6 +2627,7 @@ LOG:  database system is ready to accept read only connections
     very aggressive setting. If the standby server is tasked as an additional
     server for decision support queries then it may be acceptable to set this
     to a value of many hours (in seconds).
+   </para>
 
    <para>
     Transaction status "hint bits" written on primary are not WAL-logged,
