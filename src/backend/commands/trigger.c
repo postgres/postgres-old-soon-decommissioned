@@ -3060,10 +3060,9 @@ AfterTriggerEndSubXact(bool isCommit)
 	/*
 	 * Pop the prior state if needed.
 	 */
-	Assert(my_level < afterTriggers->maxtransdepth);
-
 	if (isCommit)
 	{
+		Assert(my_level < afterTriggers->maxtransdepth);
 		/* If we saved a prior state, we don't need it anymore */
 		state = afterTriggers->state_stack[my_level];
 		if (state != NULL)
@@ -3095,7 +3094,15 @@ AfterTriggerEndSubXact(bool isCommit)
 	else
 	{
 		/*
-		 * Aborting.  We don't really need to release the subxact's event_cxt,
+		 * Aborting.  It is possible subxact start failed before calling
+		 * AfterTriggerBeginSubXact, in which case we mustn't risk touching
+		 * stack levels that aren't there.
+		 */
+		if (my_level >= afterTriggers->maxtransdepth)
+			return;
+
+		/*
+		 * We don't really need to release the subxact's event_cxt,
 		 * since it will go away anyway when CurTransactionContext gets reset,
 		 * but doing so early in subxact abort helps free space we might need.
 		 *
