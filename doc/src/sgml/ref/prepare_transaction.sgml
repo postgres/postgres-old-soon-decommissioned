@@ -83,6 +83,15 @@ PREPARE TRANSACTION <replaceable class="PARAMETER">transaction_id</replaceable>
   <title>Notes</title>
 
   <para>
+   <command>PREPARE TRANSACTION</> is not intended for use in applications
+   or interactive sessions. It's purpose is to allow an external
+   transaction manager to perform atomic global transactions across multiple
+   databases or other transactional resources. Unless you're writing a
+   transaction manager, you probably shouldn't be using <command>PREPARE
+   TRANSACTION</>.
+  </para>
+
+  <para>
    This command must be used inside a transaction block. Use <xref
    linkend="sql-begin" endterm="sql-begin-title"> to start one.
   </para>
