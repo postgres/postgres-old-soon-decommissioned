@@ -304,9 +304,12 @@ _PG_init(void)
 	 ************************************************************/
 	if ((pltcl_hold_interp = Tcl_CreateInterp()) == NULL)
 		elog(ERROR, "could not create \"hold\" interpreter");
+	if (Tcl_Init(pltcl_hold_interp) == TCL_ERROR)
+		elog(ERROR, "could not initialize \"hold\" interpreter");
 
 	/************************************************************
-	 * Create the two interpreters
+	 * Create the two slave interpreters.  Note: Tcl automatically does
+	 * Tcl_Init on the normal slave, and it's not wanted for the safe slave.
 	 ************************************************************/
 	if ((pltcl_norm_interp =
 		 Tcl_CreateSlave(pltcl_hold_interp, "norm", 0)) == NULL)
