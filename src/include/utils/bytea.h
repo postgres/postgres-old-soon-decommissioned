@@ -46,5 +46,7 @@ extern Datum byteacat(PG_FUNCTION_ARGS);
 extern Datum byteapos(PG_FUNCTION_ARGS);
 extern Datum bytea_substr(PG_FUNCTION_ARGS);
 extern Datum bytea_substr_no_len(PG_FUNCTION_ARGS);
+extern Datum byteaoverlay(PG_FUNCTION_ARGS);
+extern Datum byteaoverlay_no_len(PG_FUNCTION_ARGS);
 
 #endif   /* BYTEA_H */
