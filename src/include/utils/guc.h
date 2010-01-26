@@ -181,8 +181,6 @@ extern char *HbaFileName;
 extern char *IdentFileName;
 extern char *external_pid_file;
 
-extern char *default_do_language;
-
 extern char *application_name;
 
 extern int	tcp_keepalives_idle;

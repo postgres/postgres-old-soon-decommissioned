@@ -4132,21 +4132,6 @@ COPY postgres_log FROM '/full/path/to/logfile.csv' WITH csv;
       </listitem>
      </varlistentry>
 
-     <varlistentry id="guc-default-do-language" xreflabel="default_do_language">
-      <term><varname>default_do_language</varname> (<type>string</type>)</term>
-      <indexterm>
-       <primary><varname>default_do_language</> configuration parameter</primary>
-      </indexterm>
-      <listitem>
-       <para>
-        This parameter specifies the language to use when the
-        <literal>LANGUAGE</> option is omitted in a
-        <xref linkend="sql-do" endterm="sql-do-title"> statement.
-        The default is <literal>plpgsql</literal>.
-       </para>
-      </listitem>
-     </varlistentry>
-
      <varlistentry id="guc-default-transaction-isolation" xreflabel="default_transaction_isolation">
       <indexterm>
        <primary>transaction isolation level</primary>
