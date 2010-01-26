@@ -26,9 +26,10 @@ extern int	braces_open,
 			questionmarks,
 			ret_value,
 			struct_level,
-			ecpg_informix_var,
+			ecpg_internal_var,
 			regression_mode,
 			auto_prepare;
+extern char *current_function;
 extern char *descriptor_index;
 extern char *descriptor_name;
 extern char *connection;

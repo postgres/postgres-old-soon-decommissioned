@@ -26,4 +26,6 @@ ECPGstatus                       23
 ECPGtrans                        24
 sqlprint                         25
 ECPGget_PGconn			 26
-ECPGtransactionStatus      27
+ECPGtransactionStatus		 27
+ECPGset_var			 28
+ECPGget_var			 29

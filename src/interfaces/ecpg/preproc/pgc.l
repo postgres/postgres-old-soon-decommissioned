@@ -41,6 +41,9 @@ static char    *literalbuf = NULL;		/* expandable buffer */
 static int		literallen;				/* actual current length */
 static int		literalalloc;			/* current allocated buffer size */
 
+/* Used for detecting global state together with braces_open */
+static int		parenths_open;
+
 #define startlit()	(literalbuf[0] = '\0', literallen = 0)
 static void addlit(char *ytext, int yleng);
 static void addlitchar (unsigned char);
@@ -788,7 +791,17 @@ cppline			{space}*#(.*\\{space})*.*{newline}
 					}
 <C>{identifier} 	{
 						const ScanKeyword		*keyword;
-							
+
+						/*
+						 * Try to detect a function name:
+						 * look for identifiers at the global scope
+						 * keep the last identifier before the first '(' and '{' */
+						if (braces_open == 0 && parenths_open == 0)
+						{
+							if (current_function)
+								free(current_function);
+							current_function = mm_strdup(yytext);
+						}
 						/* Informix uses SQL defines only in SQL space */
 						/* however, some defines have to be taken care of for compatibility */
 						if ((!INFORMIX_MODE || !isinformixdefine()) && !isdefine())
@@ -811,8 +824,8 @@ cppline			{space}*#(.*\\{space})*.*{newline}
 <C>"/"				{ return('/'); }
 <C>"+"				{ return('+'); }
 <C>"-"				{ return('-'); }
-<C>"("				{ return('('); }
-<C>")"				{ return(')'); }
+<C>"("				{ parenths_open++; return('('); }
+<C>")"				{ parenths_open--; return(')'); }
 <C,xskip>{space}		{ ECHO; }
 <C>\{				{ return('{'); }
 <C>\}				{ return('}'); }
@@ -1178,6 +1191,8 @@ void
 lex_init(void)
 {
 	braces_open = 0;
+	parenths_open = 0;
+	current_function = NULL;
 
 	preproc_tos = 0;
 	yylineno = 1;
