@@ -4142,6 +4142,10 @@ readTimeLineHistory(TimeLineID targetTLI)
 	char		fline[MAXPGPATH];
 	FILE	   *fd;
 
+	/* Timeline 1 does not have a history file, so no need to check */
+	if (targetTLI == 1)
+		return list_make1_int((int) targetTLI);
+
 	if (InArchiveRecovery)
 	{
 		TLHistoryFileName(histfname, targetTLI);
@@ -4226,6 +4230,10 @@ existsTimeLineHistory(TimeLineID probeTLI)
 	char		path[MAXPGPATH];
 	char		histfname[MAXFNAMELEN];
 	FILE	   *fd;
+
+	/* Timeline 1 does not have a history file, so no need to check */
+	if (probeTLI == 1)
+		return false;
 
 	if (InArchiveRecovery)
 	{
