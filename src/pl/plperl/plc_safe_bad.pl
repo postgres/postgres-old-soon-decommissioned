@@ -1,18 +1,16 @@
 
-#  $PostgreSQL:$
+#  $PostgreSQL$
 
-use vars qw($PLContainer);
+# Minimal version of plc_safe_ok.pl
+# that's used if Safe is too old or doesn't load for any reason
 
-$PLContainer = new Safe('PLPerl');
-$PLContainer->permit_only(':default');
-$PLContainer->share(qw[&elog &ERROR]);
+my $msg = 'trusted Perl functions disabled - please upgrade Perl Safe module';
 
-my $msg = 'trusted Perl functions disabled - please upgrade Perl Safe module to version 2.09 or later';
-sub ::mksafefunc {
-  return $PLContainer->reval(qq[sub { elog(ERROR,'$msg') }]);
+sub mksafefunc {
+	my ($name, $pragma, $prolog, $src) = @_;
+	# replace $src with code to generate an error
+	$src = qq{ ::elog(::ERROR,"$msg\n") };
+	my $ret = eval(::mkfuncsrc($name, $pragma, '', $src));
+	$@ =~ s/\(eval \d+\) //g if $@;
+	return $ret;
 }
-
-sub ::mk_strict_safefunc {
-  return $PLContainer->reval(qq[sub { elog(ERROR,'$msg') }]);
-}
-
