@@ -1215,14 +1215,14 @@ setup_config(void)
 		if (err != 0 ||
 			getaddrinfo("::1", NULL, &hints, &gai_result) != 0)
 			conflines = replace_token(conflines,
-									  "host    all         all         ::1",
-									  "#host    all         all         ::1");
+									  "host    all             all             ::1",
+									  "#host    all             all             ::1");
 	}
 #else							/* !HAVE_IPV6 */
 	/* If we didn't compile IPV6 support at all, always comment it out */
 	conflines = replace_token(conflines,
-							  "host    all         all         ::1",
-							  "#host    all         all         ::1");
+							  "host    all             all             ::1",
+							  "#host    all             all             ::1");
 #endif   /* HAVE_IPV6 */
 
 	/* Replace default authentication methods */
