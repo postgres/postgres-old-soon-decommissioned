@@ -298,6 +298,12 @@ pg_md5_hash(const void *buff, size_t len, char *hexsum)
 	return true;
 }
 
+bool pg_md5_binary(const void *buff, size_t len, void *outbuf)
+{
+	if (!calculateDigestFromBuffer((uint8 *) buff, len, outbuf))
+		return false;
+	return true;
+}
 
 
 /*
