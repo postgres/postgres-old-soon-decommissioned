@@ -3574,6 +3574,12 @@ ReadRecord(XLogRecPtr *RecPtr, int emode_arg, bool fetching_ckpt)
 			NextLogPage(tmpRecPtr);
 			/* We will account for page header size below */
 		}
+
+		if (tmpRecPtr.xrecoff >= XLogFileSize)
+		{
+			(tmpRecPtr.xlogid)++;
+			tmpRecPtr.xrecoff = 0;
+		}
 	}
 	else
 	{
