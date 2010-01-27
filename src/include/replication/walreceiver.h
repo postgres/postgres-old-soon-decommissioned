@@ -27,10 +27,10 @@
  */
 typedef enum
 {
-	WALRCV_NOT_STARTED,
-	WALRCV_RUNNING,		/* walreceiver has been started */
-	WALRCV_STOPPING,	/* requested to stop, but still running */
-	WALRCV_STOPPED		/* stopped and mustn't start up again */
+	WALRCV_STOPPED,		/* stopped and mustn't start up again */
+	WALRCV_STARTING,	/* launched, but the process hasn't initialized yet */
+	WALRCV_RUNNING,		/* walreceiver is running */
+	WALRCV_STOPPING		/* requested to stop, but still running */
 } WalRcvState;
 
 /* Shared memory area for management of walreceiver process */
@@ -47,6 +47,7 @@ typedef struct
 	 */
 	pid_t	pid;
 	WalRcvState walRcvState;
+	pg_time_t startTime;
 
 	/*
 	 * receivedUpto-1 is the last byte position that has been already
@@ -74,6 +75,7 @@ extern PGDLLIMPORT walrcv_disconnect_type walrcv_disconnect;
 extern void WalReceiverMain(void);
 extern Size WalRcvShmemSize(void);
 extern void WalRcvShmemInit(void);
+extern void ShutdownWalRcv(void);
 extern bool WalRcvInProgress(void);
 extern XLogRecPtr WaitNextXLogAvailable(XLogRecPtr recptr, bool *finished);
 extern void RequestXLogStreaming(XLogRecPtr recptr, const char *conninfo);
