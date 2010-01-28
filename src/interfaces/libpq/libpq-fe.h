@@ -226,10 +226,12 @@ typedef struct pgresAttDesc
 /* make a new client connection to the backend */
 /* Asynchronous (non-blocking) */
 extern PGconn *PQconnectStart(const char *conninfo);
+extern PGconn *PQconnectStartParams(const char **keywords, const char **values);
 extern PostgresPollingStatusType PQconnectPoll(PGconn *conn);
 
 /* Synchronous (blocking) */
 extern PGconn *PQconnectdb(const char *conninfo);
+extern PGconn *PQconnectdbParams(const char **keywords, const char **values);
 extern PGconn *PQsetdbLogin(const char *pghost, const char *pgport,
 			 const char *pgoptions, const char *pgtty,
 			 const char *dbName,
