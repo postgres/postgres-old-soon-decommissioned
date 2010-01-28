@@ -929,6 +929,24 @@ postgres: <replaceable>user</> <replaceable>database</> <replaceable>host</> <re
        <structname>pg_stat_bgwriter</>.
       </entry>
      </row>
+
+     <row>
+      <entry><literal><function>pg_stat_reset_single_table_counters</function>(oid)</literal></entry>
+      <entry><type>void</type></entry>
+      <entry>
+       Reset statistics for a single table or index in the current database to
+       zero (requires superuser privileges)
+      </entry>
+     </row>
+
+     <row>
+      <entry><literal><function>pg_stat_reset_single_function_counters</function>(oid)</literal></entry>
+      <entry><type>void</type></entry>
+      <entry>
+       Reset statistics for a single function in the current database to
+       zero (requires superuser privileges)
+      </entry>
+     </row>
     </tbody>
    </tgroup>
   </table>
