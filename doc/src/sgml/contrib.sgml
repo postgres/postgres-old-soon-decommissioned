@@ -16,7 +16,9 @@
 
  <para>
   When building from the source distribution, these modules are not built
-  automatically.  You can build and install all of them by running:
+  automatically, unless you build the "world" target 
+  (see <xref linkend="build">).
+  You can build and install all of them by running:
 <screen>
 <userinput>gmake</userinput>
 <userinput>gmake install</userinput>
