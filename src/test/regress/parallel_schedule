@@ -52,7 +52,7 @@ test: copy copyselect
 # ----------
 # Another group of parallel tests
 # ----------
-test: constraints triggers create_misc create_aggregate create_operator inherit vacuum drop_if_exists create_cast
+test: constraints triggers create_misc create_aggregate create_operator inherit typed_table vacuum drop_if_exists create_cast
 
 # Depends on the above
 test: create_index create_view

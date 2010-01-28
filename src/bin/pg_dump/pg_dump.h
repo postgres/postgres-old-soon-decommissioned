@@ -229,6 +229,7 @@ typedef struct _tableInfo
 	bool		hasoids;		/* does it have OIDs? */
 	uint32		frozenxid;		/* for restore frozen xid */
 	int			ncheck;			/* # of CHECK expressions */
+	char	   *reloftype;		/* underlying type for typed table */
 	/* these two are set only if table is a sequence owned by a column: */
 	Oid			owning_tab;		/* OID of table owning sequence */
 	int			owning_col;		/* attr # of column owning sequence */

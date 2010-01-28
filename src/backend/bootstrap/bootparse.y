@@ -217,6 +217,7 @@ Boot_CreateStmt:
 													  $5 ? GLOBALTABLESPACE_OID : 0,
 													  $3,
 													  $7,
+													  InvalidOid,
 													  BOOTSTRAP_SUPERUSERID,
 													  tupdesc,
 													  NIL,

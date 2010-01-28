@@ -203,6 +203,7 @@ create_toast_table(Relation rel, Oid toastOid, Oid toastIndexOid, Datum reloptio
 										   rel->rd_rel->reltablespace,
 										   toastOid,
 										   toast_typid,
+										   InvalidOid,
 										   rel->rd_rel->relowner,
 										   tupdesc,
 										   NIL,
