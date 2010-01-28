@@ -288,7 +288,7 @@ vacuum_log_cleanup_info(Relation rel, LVRelStats *vacrelstats)
 	 * No need to log changes for temp tables, they do not contain
 	 * data visible on the standby server.
 	 */
-	if (rel->rd_istemp || !XLogArchivingActive())
+	if (rel->rd_istemp || !XLogIsNeeded())
 		return;
 
 	(void) log_heap_cleanup_info(rel->rd_node, vacrelstats->latestRemovedXid);

@@ -2998,7 +2998,8 @@ ATRewriteTable(AlteredTableInfo *tab, Oid OIDNewHeap)
 	 * Prepare a BulkInsertState and options for heap_insert. Because
 	 * we're building a new heap, we can skip WAL-logging and fsync it
 	 * to disk at the end instead (unless WAL-logging is required for
-	 * archiving). The FSM is empty too, so don't bother using it.
+	 * archiving or streaming replication). The FSM is empty too,
+	 * so don't bother using it.
 	 */
 	if (newrel)
 	{
@@ -3006,7 +3007,7 @@ ATRewriteTable(AlteredTableInfo *tab, Oid OIDNewHeap)
 		bistate = GetBulkInsertState();
 
 		hi_options = HEAP_INSERT_SKIP_FSM;
-		if (!XLogArchivingActive())
+		if (!XLogIsNeeded())
 			hi_options |= HEAP_INSERT_SKIP_WAL;
 	}
 	else
