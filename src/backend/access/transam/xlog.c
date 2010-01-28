@@ -2760,7 +2760,7 @@ RestoreArchivedFile(char *path, const char *xlogfname,
 	uint32		restartSeg;
 
 	/* In standby mode, restore_command might not be supplied */
-	if (StandbyMode && recoveryRestoreCommand == NULL)
+	if (recoveryRestoreCommand == NULL)
 		goto not_available;
 
 	/*
