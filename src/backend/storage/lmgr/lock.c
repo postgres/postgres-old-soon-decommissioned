@@ -1790,7 +1790,7 @@ LockReassignCurrentOwner(void)
 VirtualTransactionId *
 GetLockConflicts(const LOCKTAG *locktag, LOCKMODE lockmode)
 {
-	VirtualTransactionId *vxids;
+	static VirtualTransactionId *vxids = NULL;
 	LOCKMETHODID lockmethodid = locktag->locktag_lockmethodid;
 	LockMethod	lockMethodTable;
 	LOCK	   *lock;
@@ -1812,8 +1812,22 @@ GetLockConflicts(const LOCKTAG *locktag, LOCKMODE lockmode)
 	 * need enough space for MaxBackends + a terminator, since prepared xacts
 	 * don't count.
 	 */
-	vxids = (VirtualTransactionId *)
-		palloc0(sizeof(VirtualTransactionId) * (MaxBackends + 1));
+	if (!InHotStandby)
+		vxids = (VirtualTransactionId *)
+			palloc0(sizeof(VirtualTransactionId) * (MaxBackends + 1));
+	else
+	{
+		if (vxids == NULL)
+		{
+			vxids = (VirtualTransactionId *)
+				malloc(sizeof(VirtualTransactionId) * (MaxBackends + 1));
+			if (vxids == NULL)
+				ereport(ERROR,
+					(errcode(ERRCODE_OUT_OF_MEMORY),
+					 errmsg("out of memory")));
+
+		}
+	}
 
 	/*
 	 * Look up the lock object matching the tag.
