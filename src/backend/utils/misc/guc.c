@@ -1223,6 +1223,17 @@ static struct config_bool ConfigureNamesBool[] =
 	},
 
 	{
+		{"minimize_standby_conflicts", PGC_POSTMASTER, WAL_SETTINGS,
+			gettext_noop("Additional information is added to WAL records to"
+						 " minimize the number of false positive cancelations"
+						 " caused by recovery conflicts on WAL standby nodes."),
+			NULL
+		},
+		&MinimizeStandbyConflicts,
+		false, NULL, NULL
+	},
+
+	{
 		{"allow_system_table_mods", PGC_POSTMASTER, DEVELOPER_OPTIONS,
 			gettext_noop("Allows modifications of the structure of system tables."),
 			NULL,

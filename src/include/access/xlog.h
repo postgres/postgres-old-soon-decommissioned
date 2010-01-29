@@ -183,6 +183,7 @@ extern int	XLogArchiveTimeout;
 extern bool log_checkpoints;
 extern bool XLogRequestRecoveryConnections;
 extern int MaxStandbyDelay;
+extern bool MinimizeStandbyConflicts;
 
 #define XLogArchivingActive()	(XLogArchiveMode)
 #define XLogArchiveCommandSet() (XLogArchiveCommand[0] != '\0')
