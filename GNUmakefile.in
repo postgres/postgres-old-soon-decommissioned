@@ -77,7 +77,7 @@ check installcheck installcheck-parallel:
 installcheck-world:
 	$(MAKE) -C src/test installcheck
 	$(MAKE) -C src/pl installcheck
-	$(MAKE) -C interfaces/ecpg installcheck
+	$(MAKE) -C src/interfaces/ecpg installcheck
 	$(MAKE) -C contrib installcheck
 
 GNUmakefile: GNUmakefile.in $(top_builddir)/config.status
