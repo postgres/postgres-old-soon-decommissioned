@@ -833,7 +833,7 @@ btree_redo(XLogRecPtr lsn, XLogRecord *record)
 		 * here is worth some thought and possibly some effort to
 		 * improve.
 		 */
-		ResolveRecoveryConflictWithSnapshot(xlrec->latestRemovedXid);
+		ResolveRecoveryConflictWithSnapshot(xlrec->latestRemovedXid, xlrec->node);
 	}
 
 	/*

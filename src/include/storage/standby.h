@@ -16,13 +16,16 @@
 
 #include "access/xlog.h"
 #include "storage/lock.h"
+#include "storage/relfilenode.h"
 
 extern int	vacuum_defer_cleanup_age;
 
 extern void InitRecoveryTransactionEnvironment(void);
 extern void ShutdownRecoveryTransactionEnvironment(void);
 
-extern void ResolveRecoveryConflictWithSnapshot(TransactionId latestRemovedXid);
+extern void ResolveRecoveryConflictWithSnapshot(TransactionId latestRemovedXid,
+												RelFileNode node);
+extern void ResolveRecoveryConflictWithRemovedTransactionId(void);
 extern void ResolveRecoveryConflictWithTablespace(Oid tsid);
 extern void ResolveRecoveryConflictWithDatabase(Oid dbid);
 

@@ -232,12 +232,12 @@ ResolveRecoveryConflictWithVirtualXIDs(VirtualTransactionId *waitlist,
 }
 
 void
-ResolveRecoveryConflictWithSnapshot(TransactionId latestRemovedXid)
+ResolveRecoveryConflictWithSnapshot(TransactionId latestRemovedXid, RelFileNode node)
 {
 	VirtualTransactionId *backends;
 
 	backends = GetConflictingVirtualXIDs(latestRemovedXid,
-										 InvalidOid);
+										 node.dbNode);
 
 	ResolveRecoveryConflictWithVirtualXIDs(backends,
 										   PROCSIG_RECOVERY_CONFLICT_SNAPSHOT);
