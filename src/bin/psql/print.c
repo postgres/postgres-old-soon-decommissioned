@@ -923,6 +923,11 @@ print_aligned_text(const printTableContent *cont, FILE *fout)
 	}
 
 	/* clean up */
+	for (i = 0; i < col_count; i++)
+	{
+		free(col_lineptrs[i]);
+		free(format_buf[i]);
+	}
 	free(width_header);
 	free(width_average);
 	free(max_width);
@@ -931,11 +936,9 @@ print_aligned_text(const printTableContent *cont, FILE *fout)
 	free(curr_nl_line);
 	free(col_lineptrs);
 	free(max_bytes);
+	free(format_buf);
 	free(header_done);
 	free(bytes_output);
-	for (i = 0; i < col_count; i++)
-		free(format_buf[i]);
-	free(format_buf);
 
 	if (is_pager)
 		ClosePager(fout);
