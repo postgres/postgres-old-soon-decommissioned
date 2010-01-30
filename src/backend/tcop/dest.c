@@ -142,7 +142,11 @@ EndCommand(const char *commandTag, CommandDest dest)
 	{
 		case DestRemote:
 		case DestRemoteExecute:
-			pq_puttextmessage('C', commandTag);
+			/*
+			 * We assume the commandTag is plain ASCII and therefore
+			 * requires no encoding conversion.
+			 */
+			pq_putmessage('C', commandTag, strlen(commandTag) + 1);
 			break;
 
 		case DestNone:
@@ -183,7 +187,7 @@ NullCommand(CommandDest dest)
 			if (PG_PROTOCOL_MAJOR(FrontendProtocol) >= 3)
 				pq_putemptymessage('I');
 			else
-				pq_puttextmessage('I', "");
+				pq_putmessage('I', "", 1);
 			break;
 
 		case DestNone:
