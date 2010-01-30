@@ -2,7 +2,6 @@
 #  $PostgreSQL$
 
 PostgreSQL::InServer::Util::bootstrap();
-PostgreSQL::InServer::SPI::bootstrap();
 
 use strict;
 use warnings;
