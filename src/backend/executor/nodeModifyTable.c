@@ -254,6 +254,8 @@ ExecInsert(TupleTableSlot *slot,
 	/* AFTER ROW INSERT Triggers */
 	ExecARInsertTriggers(estate, resultRelInfo, tuple, recheckIndexes);
 
+	list_free(recheckIndexes);
+
 	/* Process RETURNING if present */
 	if (resultRelInfo->ri_projectReturning)
 		return ExecProcessReturning(resultRelInfo->ri_projectReturning,
@@ -569,6 +571,8 @@ lreplace:;
 	/* AFTER ROW UPDATE Triggers */
 	ExecARUpdateTriggers(estate, resultRelInfo, tupleid, tuple,
 						 recheckIndexes);
+
+	list_free(recheckIndexes);
 
 	/* Process RETURNING if present */
 	if (resultRelInfo->ri_projectReturning)

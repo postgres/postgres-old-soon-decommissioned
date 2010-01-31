@@ -2172,6 +2172,8 @@ CopyFrom(CopyState cstate)
 			ExecARInsertTriggers(estate, resultRelInfo, tuple,
 								 recheckIndexes);
 
+			list_free(recheckIndexes);
+
 			/*
 			 * We count only tuples not suppressed by a BEFORE INSERT trigger;
 			 * this is the same definition used by execMain.c for counting
