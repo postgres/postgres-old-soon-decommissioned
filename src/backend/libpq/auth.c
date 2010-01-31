@@ -2523,7 +2523,7 @@ CheckRADIUSAuth(Port *port)
 	pgsocket			sock;
 	struct sockaddr_in	localaddr;
 	struct sockaddr_in	remoteaddr;
-	socklen_t			addrsize;
+	ACCEPT_TYPE_ARG3	addrsize;
 	fd_set				fdset;
 	struct timeval		timeout;
 	int					i,r;
