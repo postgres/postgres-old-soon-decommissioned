@@ -149,6 +149,7 @@ typedef struct HashJoinTableData
 
 	Size		spaceUsed;		/* memory space currently used by tuples */
 	Size		spaceAllowed;	/* upper limit for space used */
+	Size		spacePeak;		/* peak space used */
 	Size		spaceUsedSkew;	/* skew hash table's current space usage */
 	Size		spaceAllowedSkew;		/* upper limit for skew hashtable */
 
