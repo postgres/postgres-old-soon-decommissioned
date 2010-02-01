@@ -1840,22 +1840,6 @@ archive_command = 'copy "%p" "C:\\server\\archivedir\\%f"'  # Windows
       </listitem>
      </varlistentry>
 
-     <varlistentry id="minimize-standby-conflicts" xreflabel="minimize_standby_conflicts">
-      <term><varname>minimize_standby_conflicts</varname> (<type>boolean</type>)</term>
-      <indexterm>
-       <primary><varname>minimize_standby_conflicts</> configuration parameter</primary>
-      </indexterm>
-      <listitem>
-       <para>
-        Generates additional information to the transaction log (WAL) to minimize
-        the number of false positive cancelations caused by recovery conflicts on
-        a standby server that consumes WAL data from this server.
-        There is additional performance cost to enabling this parameter.
-        Parameter has no effect during recovery, only in normal running.
-       </para>
-      </listitem>
-     </varlistentry>
-
      </variablelist>
     </sect2>
    </sect1>

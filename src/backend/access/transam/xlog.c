@@ -71,7 +71,6 @@ bool		XLogArchiveMode = false;
 char	   *XLogArchiveCommand = NULL;
 bool 		XLogRequestRecoveryConnections = true;
 int			MaxStandbyDelay = 30;
-bool		MinimizeStandbyConflicts = false;
 bool		fullPageWrites = true;
 bool		log_checkpoints = false;
 int			sync_method = DEFAULT_SYNC_METHOD;
