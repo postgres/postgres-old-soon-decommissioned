@@ -1180,7 +1180,7 @@ expand_inherited_rtentry(PlannerInfo *root, RangeTblEntry *rte, Index rti)
 		lockmode = AccessShareLock;
 
 	/* Scan for all members of inheritance set, acquire needed locks */
-	inhOIDs = find_all_inheritors(parentOID, lockmode);
+	inhOIDs = find_all_inheritors(parentOID, lockmode, NULL);
 
 	/*
 	 * Check that there's at least one descendant, else treat as no-child

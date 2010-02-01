@@ -43,7 +43,7 @@ extern void renameatt(Oid myrelid,
 		  const char *oldattname,
 		  const char *newattname,
 		  bool recurse,
-		  bool recursing);
+		  int expected_parents);
 
 extern void RenameRelation(Oid myrelid,
 			   const char *newrelname,
