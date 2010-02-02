@@ -173,6 +173,25 @@ set_var_from_str(char *str, char **ptr, numeric *dest)
 		(*ptr)++;
 	}
 
+	if (pg_strncasecmp(*ptr, "NaN", 3) == 0)
+	{
+		*ptr += 3;
+		dest->sign = NUMERIC_NAN;
+
+		/* Should be nothing left but spaces */
+		while (*(*ptr))
+		{
+			if (!isspace((unsigned char) *(*ptr)))
+			{
+				errno = PGTYPES_NUM_BAD_NUMERIC;
+				return -1;
+			}
+			(*ptr)++;
+		}
+
+		return 0;
+	}
+
 	if (alloc_var(dest, strlen((*ptr))) < 0)
 		return -1;
 	dest->weight = -1;
@@ -295,6 +314,15 @@ get_str_from_var(numeric *var, int dscale)
 	char	   *cp;
 	int			i;
 	int			d;
+
+	if (var->sign == NUMERIC_NAN)
+	{
+		str = (char *) pgtypes_alloc(4);
+		if (str == NULL)
+			return NULL;
+		sprintf(str, "NaN");
+		return str;
+	}
 
 	/*
 	 * Check if we must round up before printing the value and do so.
