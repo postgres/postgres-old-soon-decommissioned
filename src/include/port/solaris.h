@@ -36,11 +36,3 @@
  * still use our own fix for the buggy version.
  */
 #define HAVE_BUGGY_SOLARIS_STRTOD
-
-/*
- * Many versions of Solaris are missing the definition of INADDR_NONE
- */
-#ifndef INADDR_NONE
-#define INADDR_NONE ((in_addr_t)(-1))
-#endif
-

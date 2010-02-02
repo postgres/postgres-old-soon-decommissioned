@@ -1375,8 +1375,8 @@ ldapserver=ldap.example.net ldapprefix="cn=" ldapsuffix=", dc=example, dc=net"
        <term><literal>radiusserver</literal></term>
        <listitem>
         <para>
-         The IP address of the RADIUS server to connect to. This must
-         be an IPV4 address and not a hostname. This parameter is required.
+         The name or IP address of the RADIUS server to connect to.
+         This parameter is required.
         </para>
        </listitem>
       </varlistentry>
