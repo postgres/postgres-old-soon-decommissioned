@@ -4,8 +4,6 @@
 --    Tutorial on the basics (table creation and data manipulation)
 --
 --
--- Copyright (c) 1994, Andrew Yu, University of California
---
 -- $PostgreSQL$
 --
 ---------------------------------------------------------------------------
