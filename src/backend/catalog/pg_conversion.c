@@ -209,38 +209,3 @@ FindDefaultConversion(Oid name_space, int32 for_encoding, int32 to_encoding)
 	ReleaseSysCacheList(catlist);
 	return proc;
 }
-
-/*
- * FindConversion
- *
- * Find conversion by namespace and conversion name.
- * Returns conversion OID.
- */
-Oid
-FindConversion(const char *conname, Oid connamespace)
-{
-	HeapTuple	tuple;
-	Oid			procoid;
-	Oid			conoid;
-	AclResult	aclresult;
-
-	/* search pg_conversion by connamespace and conversion name */
-	tuple = SearchSysCache(CONNAMENSP,
-						   PointerGetDatum(conname),
-						   ObjectIdGetDatum(connamespace),
-						   0, 0);
-	if (!HeapTupleIsValid(tuple))
-		return InvalidOid;
-
-	procoid = ((Form_pg_conversion) GETSTRUCT(tuple))->conproc;
-	conoid = HeapTupleGetOid(tuple);
-
-	ReleaseSysCache(tuple);
-
-	/* Check we have execute rights for the function */
-	aclresult = pg_proc_aclcheck(procoid, GetUserId(), ACL_EXECUTE);
-	if (aclresult != ACLCHECK_OK)
-		return InvalidOid;
-
-	return conoid;
-}

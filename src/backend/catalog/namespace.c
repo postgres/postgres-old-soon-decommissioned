@@ -2836,7 +2836,10 @@ FindConversionByName(List *name)
 	{
 		/* use exact schema given */
 		namespaceId = LookupExplicitNamespace(schemaname);
-		return FindConversion(conversion_name, namespaceId);
+		return GetSysCacheOid(CONNAMENSP,
+							  PointerGetDatum(conversion_name),
+							  ObjectIdGetDatum(namespaceId),
+							  0, 0);
 	}
 	else
 	{
@@ -2850,7 +2853,10 @@ FindConversionByName(List *name)
 			if (namespaceId == myTempNamespace)
 				continue;		/* do not look in temp namespace */
 
-			conoid = FindConversion(conversion_name, namespaceId);
+			conoid = GetSysCacheOid(CONNAMENSP,
+									PointerGetDatum(conversion_name),
+									ObjectIdGetDatum(namespaceId),
+									0, 0);
 			if (OidIsValid(conoid))
 				return conoid;
 		}
