@@ -659,6 +659,7 @@ XLogSend(StringInfo outMsg)
 		 * have the same byte order. If they have different byte order, we
 		 * don't reach here.
 		 */
+		pq_sendbyte(outMsg, 'w');
 		pq_sendbytes(outMsg, (char *) &startptr, sizeof(startptr));
 
 		if (endptr.xlogid != startptr.xlogid)

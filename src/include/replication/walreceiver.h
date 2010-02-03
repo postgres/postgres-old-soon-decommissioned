@@ -66,7 +66,8 @@ extern WalRcvData *WalRcv;
 typedef bool (*walrcv_connect_type) (char *conninfo, XLogRecPtr startpoint);
 extern PGDLLIMPORT walrcv_connect_type walrcv_connect;
 
-typedef bool (*walrcv_receive_type) (int timeout, XLogRecPtr *recptr, char **buffer, int *len);
+typedef bool (*walrcv_receive_type) (int timeout, unsigned char *type,
+									 char **buffer, int *len);
 extern PGDLLIMPORT walrcv_receive_type walrcv_receive;
 
 typedef void (*walrcv_disconnect_type) (void);
