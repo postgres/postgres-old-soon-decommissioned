@@ -278,6 +278,15 @@ end_heap_rewrite(RewriteState state)
 				   (char *) state->rs_buffer, true);
 	}
 
+	/* Write an XLOG UNLOGGED record if WAL-logging was skipped */
+	if (!state->rs_use_wal && !state->rs_new_rel->rd_istemp)
+	{
+		char reason[NAMEDATALEN + 30];
+		snprintf(reason, sizeof(reason), "heap rewrite on \"%s\"",
+				 RelationGetRelationName(state->rs_new_rel));
+		XLogReportUnloggedStatement(reason);
+	}
+
 	/*
 	 * If the rel isn't temp, must fsync before commit.  We use heap_sync to
 	 * ensure that the toast table gets fsync'd too.

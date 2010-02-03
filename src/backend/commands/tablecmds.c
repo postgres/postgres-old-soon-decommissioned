@@ -3297,7 +3297,13 @@ ATRewriteTable(AlteredTableInfo *tab, Oid OIDNewHeap)
 
 		/* If we skipped writing WAL, then we need to sync the heap. */
 		if (hi_options & HEAP_INSERT_SKIP_WAL)
+		{
+			char reason[NAMEDATALEN + 30];
+			snprintf(reason, sizeof(reason), "table rewrite on \"%s\"",
+					 RelationGetRelationName(newrel));
+			XLogReportUnloggedStatement(reason);
 			heap_sync(newrel);
+		}
 
 		heap_close(newrel, NoLock);
 	}
