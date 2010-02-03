@@ -15,6 +15,7 @@
 #define INVAL_H
 
 #include "access/htup.h"
+#include "storage/relfilenode.h"
 #include "utils/relcache.h"
 
 
@@ -49,6 +50,8 @@ extern void CacheInvalidateRelcache(Relation relation);
 extern void CacheInvalidateRelcacheByTuple(HeapTuple classTuple);
 
 extern void CacheInvalidateRelcacheByRelid(Oid relid);
+
+extern void CacheInvalidateSmgr(RelFileNode rnode);
 
 extern void CacheRegisterSyscacheCallback(int cacheid,
 							  SyscacheCallbackFunction func,

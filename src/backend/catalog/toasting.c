@@ -31,8 +31,10 @@
 #include "utils/builtins.h"
 #include "utils/syscache.h"
 
-Oid binary_upgrade_next_pg_type_toast_oid = InvalidOid;
+/* Kluges for upgrade-in-place support */
 extern Oid binary_upgrade_next_toast_relfilenode;
+
+Oid binary_upgrade_next_pg_type_toast_oid = InvalidOid;
 
 static bool create_toast_table(Relation rel, Oid toastOid, Oid toastIndexOid,
 				   Datum reloptions);
@@ -145,7 +147,9 @@ create_toast_table(Relation rel, Oid toastOid, Oid toastIndexOid, Datum reloptio
 
 	/*
 	 * Check to see whether the table actually needs a TOAST table.
-	 * If the relfilenode is specified, force toast file creation.
+	 *
+	 * If an update-in-place relfilenode is specified, force toast file
+	 * creation even if it seems not to need one.
 	 */
 	if (!needs_toast_table(rel) &&
 		!OidIsValid(binary_upgrade_next_toast_relfilenode))
