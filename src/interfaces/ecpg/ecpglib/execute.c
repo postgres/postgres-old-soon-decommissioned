@@ -17,6 +17,7 @@
 #include "postgres_fe.h"
 
 #include <locale.h>
+#include <float.h>
 #include <math.h>
 
 #include "pg_type.h"
