@@ -5569,7 +5569,9 @@
        inserted before a datum of this type so that it begins on the
        specified boundary.  The alignment reference is the beginning
        of the first datum in the sequence.
-      </para><para>
+      </para>
+
+      <para>
        Possible values are:
        <itemizedlist>
         <listitem>
