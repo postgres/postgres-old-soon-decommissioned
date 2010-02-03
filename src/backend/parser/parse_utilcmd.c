@@ -822,10 +822,10 @@ transformOfType(ParseState *pstate, CreateStmtContext *cxt, TypeName *ofTypename
 	tupdesc = lookup_rowtype_tupdesc(ofTypeId, -1);
 	for (i = 0; i < tupdesc->natts; i++)
 	{
-		ColumnDef *n = makeNode(ColumnDef);
 		Form_pg_attribute attr = tupdesc->attrs[i];
+		ColumnDef *n = makeNode(ColumnDef);
 
-		n->colname = NameStr(attr->attname);
+		n->colname = pstrdup(NameStr(attr->attname));
 		n->typeName = makeTypeNameFromOid(attr->atttypid, attr->atttypmod);
 		n->constraints = NULL;
 		n->is_local = true;
