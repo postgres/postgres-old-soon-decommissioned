@@ -27,6 +27,8 @@ enum ARRAY_TYPE
 	ECPG_ARRAY_ERROR, ECPG_ARRAY_NOT_SET, ECPG_ARRAY_ARRAY, ECPG_ARRAY_VECTOR, ECPG_ARRAY_NONE
 };
 
+#define ECPG_IS_ARRAY(X) ((X) == ECPG_ARRAY_ARRAY || (X) == ECPG_ARRAY_VECTOR)
+
 /* A generic varchar type. */
 struct ECPGgeneric_varchar
 {
