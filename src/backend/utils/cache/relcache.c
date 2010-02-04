@@ -1925,13 +1925,13 @@ RelationClearRelation(Relation relation, bool rebuild)
 		 * new entry, and this shouldn't happen often enough for that to be
 		 * a big problem.
 		 *
-		 * When rebuilding an open relcache entry, we must preserve ref count
-		 * and rd_createSubid/rd_newRelfilenodeSubid state.  Also attempt to
-		 * preserve the pg_class entry (rd_rel), tupledesc, and rewrite-rule
-		 * substructures in place, because various places assume that these
-		 * structures won't move while they are working with an open relcache
-		 * entry.  (Note: the refcount mechanism for tupledescs might someday
-		 * allow us to remove this hack for the tupledesc.)
+		 * When rebuilding an open relcache entry, we must preserve ref count,
+		 * rd_createSubid/rd_newRelfilenodeSubid, and rd_toastoid state.  Also
+		 * attempt to preserve the pg_class entry (rd_rel), tupledesc, and
+		 * rewrite-rule substructures in place, because various places assume
+		 * that these structures won't move while they are working with an
+		 * open relcache entry.  (Note: the refcount mechanism for tupledescs
+		 * might someday allow us to remove this hack for the tupledesc.)
 		 *
 		 * Note that this process does not touch CurrentResourceOwner; which
 		 * is good because whatever ref counts the entry may have do not
@@ -2005,6 +2005,8 @@ RelationClearRelation(Relation relation, bool rebuild)
 			SWAPFIELD(RuleLock *, rd_rules);
 			SWAPFIELD(MemoryContext, rd_rulescxt);
 		}
+		/* toast OID override must be preserved */
+		SWAPFIELD(Oid, rd_toastoid);
 		/* pgstat_info must be preserved */
 		SWAPFIELD(struct PgStat_TableStatus *, pgstat_info);
 

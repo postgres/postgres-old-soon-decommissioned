@@ -1185,10 +1185,25 @@ toast_save_datum(Relation rel, Datum value, int options)
 		toast_pointer.va_extsize = data_todo;
 	}
 
+	/*
+	 * Insert the correct table OID into the result TOAST pointer.
+	 *
+	 * Normally this is the actual OID of the target toast table, but during
+	 * table-rewriting operations such as CLUSTER, we have to insert the OID
+	 * of the table's real permanent toast table instead.  rd_toastoid is
+	 * set if we have to substitute such an OID.
+	 */
+	if (OidIsValid(rel->rd_toastoid))
+		toast_pointer.va_toastrelid = rel->rd_toastoid;
+	else
+		toast_pointer.va_toastrelid = RelationGetRelid(toastrel);
+
+	/*
+	 * Choose an unused OID within the toast table for this toast value.
+	 */
 	toast_pointer.va_valueid = GetNewOidWithIndex(toastrel,
 												  RelationGetRelid(toastidx),
 												  (AttrNumber) 1);
-	toast_pointer.va_toastrelid = rel->rd_rel->reltoastrelid;
 
 	/*
 	 * Initialize constant parts of the tuple data
