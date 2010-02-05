@@ -199,6 +199,15 @@ pg_standby <optional> <replaceable>option</> ... </optional> <replaceable>archiv
     </tbody>
    </tgroup>
   </table>
+  <caution>
+    <para>
+      It is critical the trigger file be created with permissions allowing
+      the postgres process to remove the file. Generally this is best done
+      by creating the file from the postgres user account. Failure to do so
+      will prevent completion of WAL file recovery and the server from
+      coming back online successfully.
+    </para>
+  </caution>
   <note>
    <para>
     <literal>--help</literal> is not supported since
