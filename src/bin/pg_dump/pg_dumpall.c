@@ -1618,8 +1618,36 @@ connectDatabase(const char *dbname, const char *pghost, const char *pgport,
 	 */
 	do
 	{
+#define PARAMS_ARRAY_SIZE	7
+		const char **keywords = malloc(PARAMS_ARRAY_SIZE * sizeof(*keywords));
+		const char **values = malloc(PARAMS_ARRAY_SIZE * sizeof(*values));
+
+		if (!keywords || !values)
+		{
+			fprintf(stderr, _("%s: out of memory\n"), progname);
+			exit(1);
+		}
+
+		keywords[0]	= "host";
+		values[0]	= pghost;
+		keywords[1]	= "port";
+		values[1]	= pgport;
+		keywords[2]	= "user";
+		values[2]	= pguser;
+		keywords[3]	= "password";
+		values[3]	= password;
+		keywords[4]	= "dbname";
+		values[4]	= dbname;
+		keywords[5]	= "fallback_application_name";
+		values[5]	= progname;
+		keywords[6]	= NULL;
+		values[6]	= NULL;
+
 		new_pass = false;
-		conn = PQsetdbLogin(pghost, pgport, NULL, NULL, dbname, pguser, password);
+		conn = PQconnectdbParams(keywords, values, true);
+
+		free(keywords);
+		free(values);
 
 		if (!conn)
 		{
