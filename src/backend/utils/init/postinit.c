@@ -855,6 +855,7 @@ process_settings(Oid databaseid, Oid roleid)
 
 	relsetting = heap_open(DbRoleSettingRelationId, AccessShareLock);
 
+	/* Later settings are ignored if set earlier. */
 	ApplySetting(databaseid, roleid, relsetting, PGC_S_DATABASE_USER);
 	ApplySetting(InvalidOid, roleid, relsetting, PGC_S_USER);
 	ApplySetting(databaseid, InvalidOid, relsetting, PGC_S_DATABASE);
