@@ -345,6 +345,7 @@ clean-man:
 
 endif # sqlmansectnum != 7
 
+# tabs are harmless, but it is best to avoid them in SGML files
 check-tabs:
 	@( ! grep '	' $(wildcard $(srcdir)/*.sgml $(srcdir)/ref/*.sgml) ) || (echo "Tabs appear in SGML files";  exit 1)
 
