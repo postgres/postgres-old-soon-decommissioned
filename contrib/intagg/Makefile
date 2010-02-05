@@ -1,7 +1,3 @@
-#############################################
-# Makefile for integer aggregator
-# Copyright (C) 2001 Digital Music Network.
-# by Mark L. Woodward
 # $PostgreSQL$
 
 DATA = int_aggregate.sql uninstall_int_aggregate.sql
