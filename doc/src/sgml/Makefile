@@ -345,6 +345,8 @@ clean-man:
 
 endif # sqlmansectnum != 7
 
+check-tabs:
+	( ! grep '	' $(wildcard $(srcdir)/*.sgml $(srcdir)/ref/*.sgml) ) || (echo "Tabs appear in SGML files";  exit 1)
 
 ##
 ## Clean
