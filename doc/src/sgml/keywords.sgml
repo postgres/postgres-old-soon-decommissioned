@@ -3521,7 +3521,7 @@
    </row>
    <row>
     <entry><token>OVER</token></entry>
-    <entry></entry>
+    <entry>reserved (can be function or type)</entry>
     <entry>reserved</entry>
     <entry>reserved</entry>
     <entry></entry>
@@ -5561,7 +5561,7 @@
    </row>
    <row>
     <entry><token>WINDOW</token></entry>
-    <entry></entry>
+    <entry>reserved</entry>
     <entry>reserved</entry>
     <entry>reserved</entry>
     <entry></entry>
