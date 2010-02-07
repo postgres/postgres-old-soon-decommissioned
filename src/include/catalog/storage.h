@@ -22,6 +22,7 @@
 
 extern void RelationCreateStorage(RelFileNode rnode, bool istemp);
 extern void RelationDropStorage(Relation rel);
+extern void RelationPreserveStorage(RelFileNode rnode);
 extern void RelationTruncate(Relation rel, BlockNumber nblocks);
 
 /*

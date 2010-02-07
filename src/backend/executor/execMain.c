@@ -2168,6 +2168,7 @@ OpenIntoRel(QueryDesc *queryDesc)
 											  NIL,
 											  RELKIND_RELATION,
 											  false,
+											  false,
 											  true,
 											  0,
 											  into->onCommit,

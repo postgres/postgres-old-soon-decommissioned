@@ -41,6 +41,7 @@ extern Relation heap_create(const char *relname,
 			TupleDesc tupDesc,
 			char relkind,
 			bool shared_relation,
+			bool mapped_relation,
 			bool allow_system_table_mods);
 
 extern Oid heap_create_with_catalog(const char *relname,
@@ -54,6 +55,7 @@ extern Oid heap_create_with_catalog(const char *relname,
 						 List *cooked_constraints,
 						 char relkind,
 						 bool shared_relation,
+						 bool mapped_relation,
 						 bool oidislocal,
 						 int oidinhcount,
 						 OnCommitAction oncommit,
@@ -109,8 +111,10 @@ extern Form_pg_attribute SystemAttributeDefinition(AttrNumber attno,
 extern Form_pg_attribute SystemAttributeByName(const char *attname,
 					  bool relhasoids);
 
-extern void CheckAttributeNamesTypes(TupleDesc tupdesc, char relkind);
+extern void CheckAttributeNamesTypes(TupleDesc tupdesc, char relkind,
+									 bool allow_system_table_mods);
 
-extern void CheckAttributeType(const char *attname, Oid atttypid);
+extern void CheckAttributeType(const char *attname, Oid atttypid,
+							   bool allow_system_table_mods);
 
 #endif   /* HEAP_H */

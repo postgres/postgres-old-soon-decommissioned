@@ -53,6 +53,7 @@
 #include "utils/builtins.h"
 #include "utils/guc.h"
 #include "utils/ps_status.h"
+#include "utils/relmapper.h"
 #include "pg_trace.h"
 
 
@@ -7123,6 +7124,7 @@ CheckPointGuts(XLogRecPtr checkPointRedo, int flags)
 	CheckPointCLOG();
 	CheckPointSUBTRANS();
 	CheckPointMultiXact();
+	CheckPointRelationMap();
 	CheckPointBuffers(flags);	/* performs all required fsyncs */
 	/* We deliberately delay 2PC checkpointing as long as possible */
 	CheckPointTwoPhase(checkPointRedo);

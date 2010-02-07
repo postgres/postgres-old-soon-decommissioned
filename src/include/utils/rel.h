@@ -340,6 +340,16 @@ typedef struct StdRdOptions
 	((relation)->rd_rel->relnamespace)
 
 /*
+ * RelationIsMapped
+ *		True if the relation uses the relfilenode map.
+ *
+ * NB: this is only meaningful for relkinds that have storage, else it
+ * will misleadingly say "true".
+ */
+#define RelationIsMapped(relation) \
+	((relation)->rd_rel->relfilenode == InvalidOid)
+
+/*
  * RelationOpenSmgr
  *		Open the relation at the smgr level, if not already done.
  */

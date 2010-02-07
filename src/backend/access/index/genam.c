@@ -21,6 +21,7 @@
 
 #include "access/relscan.h"
 #include "access/transam.h"
+#include "catalog/index.h"
 #include "miscadmin.h"
 #include "pgstat.h"
 #include "storage/bufmgr.h"
@@ -419,7 +420,7 @@ systable_beginscan_ordered(Relation heapRelation,
 
 	/* REINDEX can probably be a hard error here ... */
 	if (ReindexIsProcessingIndex(RelationGetRelid(indexRelation)))
-		elog(ERROR, "cannot do ordered scan on index \"%s\", because it is the current REINDEX target",
+		elog(ERROR, "cannot do ordered scan on index \"%s\", because it is being reindexed",
 			 RelationGetRelationName(indexRelation));
 	/* ... but we only throw a warning about violating IgnoreSystemIndexes */
 	if (IgnoreSystemIndexes)

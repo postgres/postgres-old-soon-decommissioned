@@ -64,62 +64,6 @@ static char socketLockFile[MAXPGPATH];
 
 bool		IgnoreSystemIndexes = false;
 
-/* ----------------------------------------------------------------
- *		system index reindexing support
- *
- * When we are busy reindexing a system index, this code provides support
- * for preventing catalog lookups from using that index.
- * ----------------------------------------------------------------
- */
-
-static Oid	currentlyReindexedHeap = InvalidOid;
-static Oid	currentlyReindexedIndex = InvalidOid;
-
-/*
- * ReindexIsProcessingHeap
- *		True if heap specified by OID is currently being reindexed.
- */
-bool
-ReindexIsProcessingHeap(Oid heapOid)
-{
-	return heapOid == currentlyReindexedHeap;
-}
-
-/*
- * ReindexIsProcessingIndex
- *		True if index specified by OID is currently being reindexed.
- */
-bool
-ReindexIsProcessingIndex(Oid indexOid)
-{
-	return indexOid == currentlyReindexedIndex;
-}
-
-/*
- * SetReindexProcessing
- *		Set flag that specified heap/index are being reindexed.
- */
-void
-SetReindexProcessing(Oid heapOid, Oid indexOid)
-{
-	Assert(OidIsValid(heapOid) && OidIsValid(indexOid));
-	/* Reindexing is not re-entrant. */
-	if (OidIsValid(currentlyReindexedIndex))
-		elog(ERROR, "cannot reindex while reindexing");
-	currentlyReindexedHeap = heapOid;
-	currentlyReindexedIndex = indexOid;
-}
-
-/*
- * ResetReindexProcessing
- *		Unset reindexing status.
- */
-void
-ResetReindexProcessing(void)
-{
-	currentlyReindexedHeap = InvalidOid;
-	currentlyReindexedIndex = InvalidOid;
-}
 
 /* ----------------------------------------------------------------
  *				database path / name support stuff

@@ -347,10 +347,6 @@ extern PGDLLIMPORT bool process_shared_preload_libraries_in_progress;
 extern char *shared_preload_libraries_string;
 extern char *local_preload_libraries_string;
 
-extern void SetReindexProcessing(Oid heapOid, Oid indexOid);
-extern void ResetReindexProcessing(void);
-extern bool ReindexIsProcessingHeap(Oid heapOid);
-extern bool ReindexIsProcessingIndex(Oid indexOid);
 extern void CreateDataDirLockFile(bool amPostmaster);
 extern void CreateSocketLockFile(const char *socketfile, bool amPostmaster);
 extern void TouchSocketLockFile(void);

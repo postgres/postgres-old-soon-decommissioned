@@ -45,6 +45,8 @@ extern void EndNonTransactionalInvalidation(void);
 
 extern void CacheInvalidateHeapTuple(Relation relation, HeapTuple tuple);
 
+extern void CacheInvalidateCatalog(Oid catalogId);
+
 extern void CacheInvalidateRelcache(Relation relation);
 
 extern void CacheInvalidateRelcacheByTuple(HeapTuple classTuple);
@@ -53,12 +55,16 @@ extern void CacheInvalidateRelcacheByRelid(Oid relid);
 
 extern void CacheInvalidateSmgr(RelFileNode rnode);
 
+extern void CacheInvalidateRelmap(Oid databaseId);
+
 extern void CacheRegisterSyscacheCallback(int cacheid,
 							  SyscacheCallbackFunction func,
 							  Datum arg);
 
 extern void CacheRegisterRelcacheCallback(RelcacheCallbackFunction func,
 							  Datum arg);
+
+extern void CallSyscacheCallbacks(int cacheid, ItemPointer tuplePtr);
 
 extern void inval_twophase_postcommit(TransactionId xid, uint16 info,
 						  void *recdata, uint32 len);

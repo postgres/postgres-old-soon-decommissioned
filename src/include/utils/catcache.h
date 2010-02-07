@@ -180,6 +180,7 @@ extern void ReleaseCatCacheList(CatCList *list);
 
 extern void ResetCatalogCaches(void);
 extern void CatalogCacheFlushRelation(Oid relId);
+extern void CatalogCacheFlushCatalog(Oid catId);
 extern void CatalogCacheIdInvalidate(int cacheId, uint32 hashValue,
 						 ItemPointer pointer);
 extern void PrepareToInvalidateCacheTuple(Relation relation,

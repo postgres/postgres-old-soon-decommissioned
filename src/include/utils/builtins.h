@@ -435,6 +435,8 @@ extern Datum pg_total_relation_size(PG_FUNCTION_ARGS);
 extern Datum pg_size_pretty(PG_FUNCTION_ARGS);
 extern Datum pg_table_size(PG_FUNCTION_ARGS);
 extern Datum pg_indexes_size(PG_FUNCTION_ARGS);
+extern Datum pg_relation_filenode(PG_FUNCTION_ARGS);
+extern Datum pg_relation_filepath(PG_FUNCTION_ARGS);
 
 /* genfile.c */
 extern Datum pg_stat_file(PG_FUNCTION_ARGS);

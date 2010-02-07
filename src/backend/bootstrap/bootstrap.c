@@ -42,6 +42,7 @@
 #include "utils/fmgroids.h"
 #include "utils/memutils.h"
 #include "utils/ps_status.h"
+#include "utils/relmapper.h"
 #include "utils/tqual.h"
 
 extern int	optind;
@@ -490,6 +491,12 @@ BootstrapModeMain(void)
 	 * Process bootstrap input.
 	 */
 	boot_yyparse();
+
+	/*
+	 * We should now know about all mapped relations, so it's okay to
+	 * write out the initial relation mapping files.
+	 */
+	RelationMapFinishBootstrap();
 
 	/* Perform a checkpoint to ensure everything's down to disk */
 	SetProcessingMode(NormalProcessing);
