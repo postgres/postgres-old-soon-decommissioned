@@ -1588,7 +1588,7 @@ ReindexIndex(RangeVar *indexRelation)
 
 	ReleaseSysCache(tuple);
 
-	reindex_index(indOid);
+	reindex_index(indOid, false);
 }
 
 /*

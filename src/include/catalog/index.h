@@ -70,7 +70,7 @@ extern double IndexBuildHeapScan(Relation heapRelation,
 
 extern void validate_index(Oid heapId, Oid indexId, Snapshot snapshot);
 
-extern void reindex_index(Oid indexId);
+extern void reindex_index(Oid indexId, bool skip_constraint_checks);
 extern bool reindex_relation(Oid relid, bool toast_too, bool heap_rebuilt);
 
 extern bool ReindexIsProcessingHeap(Oid heapOid);
