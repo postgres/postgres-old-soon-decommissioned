@@ -617,8 +617,7 @@ LockWaitCancel(void)
  *			at main transaction commit or abort
  *
  * At main transaction commit, we release all locks except session locks.
- * At main transaction abort, we release all locks including session locks;
- * this lets us clean up after a VACUUM FULL failure.
+ * At main transaction abort, we release all locks including session locks.
  *
  * At subtransaction commit, we don't release any locks (so this func is not
  * needed at all); we will defer the releasing to the parent transaction.

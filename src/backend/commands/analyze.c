@@ -595,7 +595,6 @@ cleanup:
 			IndexVacuumInfo ivinfo;
 
 			ivinfo.index = Irel[ind];
-			ivinfo.vacuum_full = false;
 			ivinfo.analyze_only = true;
 			ivinfo.estimated_count = true;
 			ivinfo.message_level = elevel;

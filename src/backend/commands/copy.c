@@ -2166,7 +2166,7 @@ CopyFrom(CopyState cstate)
 
 			if (resultRelInfo->ri_NumIndices > 0)
 				recheckIndexes = ExecInsertIndexTuples(slot, &(tuple->t_self),
-													   estate, false);
+													   estate);
 
 			/* AFTER ROW INSERT Triggers */
 			ExecARInsertTriggers(estate, resultRelInfo, tuple,

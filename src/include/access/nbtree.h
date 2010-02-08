@@ -577,8 +577,7 @@ extern bool _bt_page_recyclable(Page page);
 extern void _bt_delitems(Relation rel, Buffer buf,
 			 OffsetNumber *itemnos, int nitems, bool isVacuum,
 			 BlockNumber lastBlockVacuumed);
-extern int _bt_pagedel(Relation rel, Buffer buf,
-			BTStack stack, bool vacuum_full);
+extern int _bt_pagedel(Relation rel, Buffer buf, BTStack stack);
 
 /*
  * prototypes for functions in nbtsearch.c

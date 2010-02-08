@@ -249,7 +249,7 @@ ExecInsert(TupleTableSlot *slot,
 	 */
 	if (resultRelInfo->ri_NumIndices > 0)
 		recheckIndexes = ExecInsertIndexTuples(slot, &(tuple->t_self),
-											   estate, false);
+											   estate);
 
 	/* AFTER ROW INSERT Triggers */
 	ExecARInsertTriggers(estate, resultRelInfo, tuple, recheckIndexes);
@@ -566,7 +566,7 @@ lreplace:;
 	 */
 	if (resultRelInfo->ri_NumIndices > 0 && !HeapTupleIsHeapOnly(tuple))
 		recheckIndexes = ExecInsertIndexTuples(slot, &(tuple->t_self),
-											   estate, false);
+											   estate);
 
 	/* AFTER ROW UPDATE Triggers */
 	ExecARUpdateTriggers(estate, resultRelInfo, tupleid, tuple,

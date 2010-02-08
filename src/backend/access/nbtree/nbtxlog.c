@@ -1079,8 +1079,8 @@ btree_xlog_cleanup(void)
 				Relation	reln;
 
 				reln = CreateFakeRelcacheEntry(action->node);
-				if (_bt_pagedel(reln, buf, NULL, true) == 0)
-					elog(PANIC, "btree_xlog_cleanup: _bt_pagdel failed");
+				if (_bt_pagedel(reln, buf, NULL) == 0)
+					elog(PANIC, "btree_xlog_cleanup: _bt_pagedel failed");
 				FreeFakeRelcacheEntry(reln);
 			}
 		}

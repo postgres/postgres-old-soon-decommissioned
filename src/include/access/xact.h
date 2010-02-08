@@ -119,12 +119,10 @@ typedef struct xl_xact_commit
  * transaction completion.
  */
 #define XACT_COMPLETION_UPDATE_RELCACHE_FILE	0x01
-#define XACT_COMPLETION_VACUUM_FULL				0x02
 #define XACT_COMPLETION_FORCE_SYNC_COMMIT		0x04
 
 /* Access macros for above flags */
 #define XactCompletionRelcacheInitFileInval(xlrec)	((xlrec)->xinfo & XACT_COMPLETION_UPDATE_RELCACHE_FILE)
-#define XactCompletionVacuumFull(xlrec)				((xlrec)->xinfo & XACT_COMPLETION_VACUUM_FULL)
 #define XactCompletionForceSyncCommit(xlrec)		((xlrec)->xinfo & XACT_COMPLETION_FORCE_SYNC_COMMIT)
 
 typedef struct xl_xact_abort
@@ -211,8 +209,6 @@ extern void RegisterXactCallback(XactCallback callback, void *arg);
 extern void UnregisterXactCallback(XactCallback callback, void *arg);
 extern void RegisterSubXactCallback(SubXactCallback callback, void *arg);
 extern void UnregisterSubXactCallback(SubXactCallback callback, void *arg);
-
-extern TransactionId RecordTransactionCommit(bool isVacuumFull);
 
 extern int	xactGetCommittedChildren(TransactionId **ptr);
 

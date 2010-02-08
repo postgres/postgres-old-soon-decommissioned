@@ -2107,32 +2107,6 @@ XLogBackgroundFlush(void)
 }
 
 /*
- * Flush any previous asynchronously-committed transactions' commit records.
- *
- * NOTE: it is unwise to assume that this provides any strong guarantees.
- * In particular, because of the inexact LSN bookkeeping used by clog.c,
- * we cannot assume that hint bits will be settable for these transactions.
- */
-void
-XLogAsyncCommitFlush(void)
-{
-	XLogRecPtr	WriteRqstPtr;
-
-	/* use volatile pointer to prevent code rearrangement */
-	volatile XLogCtlData *xlogctl = XLogCtl;
-
-	/* There's no asynchronously committed transactions during recovery */
-	if (RecoveryInProgress())
-		return;
-
-	SpinLockAcquire(&xlogctl->info_lck);
-	WriteRqstPtr = xlogctl->asyncCommitLSN;
-	SpinLockRelease(&xlogctl->info_lck);
-
-	XLogFlush(WriteRqstPtr);
-}
-
-/*
  * Test whether XLOG data has been flushed up to (at least) the given position.
  *
  * Returns true if a flush is still needed.  (It may be that someone else

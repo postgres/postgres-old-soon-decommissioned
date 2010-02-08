@@ -320,7 +320,7 @@ extern void ExecCloseScanRelation(Relation scanrel);
 extern void ExecOpenIndices(ResultRelInfo *resultRelInfo);
 extern void ExecCloseIndices(ResultRelInfo *resultRelInfo);
 extern List *ExecInsertIndexTuples(TupleTableSlot *slot, ItemPointer tupleid,
-					  EState *estate, bool is_vacuum_full);
+					  EState *estate);
 extern bool check_exclusion_constraint(Relation heap, Relation index,
 									   IndexInfo *indexInfo,
 									   ItemPointer tupleid,

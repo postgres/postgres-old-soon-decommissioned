@@ -249,7 +249,6 @@ extern char *TriggerFile;
 extern XLogRecPtr XLogInsert(RmgrId rmid, uint8 info, XLogRecData *rdata);
 extern void XLogFlush(XLogRecPtr RecPtr);
 extern void XLogBackgroundFlush(void);
-extern void XLogAsyncCommitFlush(void);
 extern bool XLogNeedsFlush(XLogRecPtr RecPtr);
 extern int	XLogFileInit(uint32 log, uint32 seg,
 						 bool *use_existent, bool use_lock);
