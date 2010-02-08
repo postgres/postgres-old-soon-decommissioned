@@ -422,15 +422,8 @@ tsa_rewrite_accum(PG_FUNCTION_ARGS)
 	MemoryContext aggcontext;
 	MemoryContext oldcontext;
 
-	if (fcinfo->context && IsA(fcinfo->context, AggState))
-		aggcontext = ((AggState *) fcinfo->context)->aggcontext;
-	else if (fcinfo->context && IsA(fcinfo->context, WindowAggState))
-		aggcontext = ((WindowAggState *) fcinfo->context)->wincontext;
-	else
-	{
+	if (!AggCheckCallContext(fcinfo, &aggcontext))
 		elog(ERROR, "tsa_rewrite_accum called in non-aggregate context");
-		aggcontext = NULL;		/* keep compiler quiet */
-	}
 
 	if (PG_ARGISNULL(0) || PG_GETARG_POINTER(0) == NULL)
 	{
