@@ -5656,11 +5656,6 @@ StartupXLOG(void)
 			if (XLByteLT(ControlFile->minRecoveryPoint, checkPoint.redo))
 				ControlFile->minRecoveryPoint = checkPoint.redo;
 		}
-		else
-		{
-			XLogRecPtr	InvalidXLogRecPtr = {0, 0};
-			ControlFile->minRecoveryPoint = InvalidXLogRecPtr;
-		}
 		/*
 		 * set backupStartupPoint if we're starting archive recovery from a
 		 * base backup
