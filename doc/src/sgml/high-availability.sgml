@@ -283,7 +283,7 @@ protocol to make nodes agree on a serializable transactional order.
      <entry>Feature</entry>
      <entry>Shared Disk Failover</entry>
      <entry>File System Replication</entry>
-     <entry>Warm Standby Using PITR</entry>
+     <entry>Hot/Warm Standby Using PITR</entry>
      <entry>Trigger-Based Master-Slave Replication</entry>
      <entry>Statement-Based Replication Middleware</entry>
      <entry>Asynchronous Multimaster Replication</entry>
@@ -374,7 +374,7 @@ protocol to make nodes agree on a serializable transactional order.
      <entry>Slaves accept read-only queries</entry>
      <entry align="center"></entry>
      <entry align="center"></entry>
-     <entry align="center"></entry>
+     <entry align="center">Hot only</entry>
      <entry align="center">&bull;</entry>
      <entry align="center">&bull;</entry>
      <entry align="center">&bull;</entry>
