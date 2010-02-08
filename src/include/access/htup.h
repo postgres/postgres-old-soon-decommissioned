@@ -176,9 +176,11 @@ typedef HeapTupleHeaderData *HeapTupleHeader;
 #define HEAP_XMAX_IS_MULTI		0x1000	/* t_xmax is a MultiXactId */
 #define HEAP_UPDATED			0x2000	/* this is UPDATEd version of row */
 #define HEAP_MOVED_OFF			0x4000	/* moved to another place by
-										 * old-style VACUUM FULL */
+										 * pre-9.0 VACUUM FULL; kept
+										 * for binary upgrade support */
 #define HEAP_MOVED_IN			0x8000	/* moved from another place by
-										 * old-style VACUUM FULL */
+										 * pre-9.0 VACUUM FULL; kept
+										 * for binary upgrade support */
 #define HEAP_MOVED (HEAP_MOVED_OFF | HEAP_MOVED_IN)
 
 #define HEAP_XACT_MASK			0xFFE0	/* visibility-related bits */
