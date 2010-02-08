@@ -170,7 +170,7 @@ RelationDropStorage(Relation rel)
  *		Physically truncate a relation to the specified number of blocks.
  *
  * This includes getting rid of any buffers for the blocks that are to be
- * dropped. If 'fsm' is true, the FSM of the relation is truncated as well.
+ * dropped.
  */
 void
 RelationTruncate(Relation rel, BlockNumber nblocks)
