@@ -749,6 +749,8 @@ fsm_vacuum_page(Relation rel, FSMAddress addr, bool *eof_p)
 		{
 			int			child_avail;
 
+			CHECK_FOR_INTERRUPTS();
+
 			/* After we hit end-of-file, just clear the rest of the slots */
 			if (!eof)
 				child_avail = fsm_vacuum_page(rel, fsm_get_child(addr, slot), &eof);
