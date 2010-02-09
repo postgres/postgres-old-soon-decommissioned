@@ -773,8 +773,6 @@ ginContinueSplit(ginIncompleteSplit *split)
 									   GinPageGetOpaque(page)->maxoff))->key;
 	}
 
-	FreeFakeRelcacheEntry(reln);
-
 	btree.rightblkno = split->rightBlkno;
 
 	stack.blkno = split->leftBlkno;
@@ -784,6 +782,8 @@ ginContinueSplit(ginIncompleteSplit *split)
 
 	findParents(&btree, &stack, split->rootBlkno);
 	ginInsertValue(&btree, stack.parent);
+
+	FreeFakeRelcacheEntry(reln);
 
 	UnlockReleaseBuffer(buffer);
 }
