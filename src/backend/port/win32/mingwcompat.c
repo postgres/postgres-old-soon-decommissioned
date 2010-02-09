@@ -16,7 +16,7 @@
 #ifndef WIN32_ONLY_COMPILER
 /*
  * MingW defines an extern to this struct, but the actual struct isn't present
- * in any library. It's trivial enough that we can safely defined it
+ * in any library. It's trivial enough that we can safely define it
  * ourselves.
  */
 const struct in6_addr in6addr_any = {{{0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0}}};
