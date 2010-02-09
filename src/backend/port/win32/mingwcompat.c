@@ -13,13 +13,20 @@
 
 #include "postgres.h"
 
+#ifndef WIN32_ONLY_COMPILER
+/*
+ * MingW defines an extern to this struct, but the actual struct isn't present
+ * in any library. It's trivial enough that we can safely defined it
+ * ourselves.
+ */
+const struct in6_addr in6addr_any = {{{0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0}}};
+
+
 /*
  * This file contains loaders for functions that are missing in the MinGW
  * import libraries. It's only for actual Win32 API functions, so they are
  * all present in proper Win32 compilers.
  */
-#ifndef WIN32_ONLY_COMPILER
-
 static HMODULE kernel32 = NULL;
 
 /*
