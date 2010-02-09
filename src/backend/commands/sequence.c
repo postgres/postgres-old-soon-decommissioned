@@ -29,6 +29,7 @@
 #include "storage/bufmgr.h"
 #include "storage/lmgr.h"
 #include "storage/proc.h"
+#include "storage/smgr.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
 #include "utils/lsyscache.h"
@@ -220,7 +221,7 @@ DefineSequence(CreateSeqStmt *seq)
 	sm->magic = SEQ_MAGIC;
 
 	/* hack: ensure heap_insert will insert on the just-created page */
-	rel->rd_targblock = 0;
+	RelationSetTargetBlock(rel, 0);
 
 	/* Now form & insert sequence tuple */
 	tuple = heap_form_tuple(tupDesc, value, null);

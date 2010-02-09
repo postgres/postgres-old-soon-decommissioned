@@ -145,7 +145,7 @@ extern void vac_update_datfrozenxid(void);
 extern void vacuum_delay_point(void);
 
 /* in commands/vacuumlazy.c */
-extern bool lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt,
+extern void lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt,
 				BufferAccessStrategy bstrategy, bool *scanned_all);
 
 /* in commands/analyze.c */
