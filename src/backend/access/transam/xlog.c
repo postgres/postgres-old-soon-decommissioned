@@ -5085,16 +5085,14 @@ exitArchiveRecovery(TimeLineID endTLI, uint32 endLogId, uint32 endLogSeg)
 	UpdateMinRecoveryPoint(InvalidXLogRecPtr, true);
 
 	/*
-	 * We should have the ending log segment currently open.  Verify, and then
-	 * close it (to avoid problems on Windows with trying to rename or delete
-	 * an open file).
+	 * If the ending log segment is still open, close it (to avoid
+	 * problems on Windows with trying to rename or delete an open file).
 	 */
-	Assert(readFile >= 0);
-	Assert(readId == endLogId);
-	Assert(readSeg == endLogSeg);
-
-	close(readFile);
-	readFile = -1;
+	if (readFile >= 0)
+	{
+		close(readFile);
+		readFile = -1;
+	}
 
 	/*
 	 * If the segment was fetched from archival storage, we want to replace
