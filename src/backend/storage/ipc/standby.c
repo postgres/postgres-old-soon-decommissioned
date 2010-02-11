@@ -290,7 +290,7 @@ ResolveRecoveryConflictWithDatabase(Oid dbid)
 	 */
 	while (CountDBBackends(dbid) > 0)
 	{
-		CancelDBBackends(dbid, PROCSIG_RECOVERY_CONFLICT_TABLESPACE, true);
+		CancelDBBackends(dbid, PROCSIG_RECOVERY_CONFLICT_DATABASE, true);
 
 		/*
 		 * Wait awhile for them to die so that we avoid flooding an
