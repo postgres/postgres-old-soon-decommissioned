@@ -765,8 +765,7 @@ ginInsertCleanup(Relation index, GinState *ginstate,
 		 */
 		if (GinPageGetOpaque(page)->rightlink == InvalidBlockNumber ||
 			(GinPageHasFullRow(page) &&
-			 (accum.allocatedMemory >= maintenance_work_mem * 1024L ||
-			  accum.maxdepth > GIN_MAX_TREE_DEPTH)))
+			 (accum.allocatedMemory >= maintenance_work_mem * 1024L)))
 		{
 			ItemPointerData *list;
 			uint32		nlist;
