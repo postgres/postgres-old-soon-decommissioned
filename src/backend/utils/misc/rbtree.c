@@ -320,6 +320,7 @@ rb_insert(RBTree *rb, void *data)
 	/* find where node belongs */
 	current = rb->root;
 	parent = NULL;
+	cmp = 0;
 	while (current != RBNIL)
 	{
 		cmp = rb->comparator(data, current->data, rb->arg);
