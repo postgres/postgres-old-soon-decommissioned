@@ -552,6 +552,8 @@ typedef struct WindowAgg
 	AttrNumber *ordColIdx;		/* their indexes in the target list */
 	Oid		   *ordOperators;	/* equality operators for ordering columns */
 	int			frameOptions;	/* frame_clause options, see WindowDef */
+	Node	   *startOffset;	/* expression for starting bound, if any */
+	Node	   *endOffset;		/* expression for ending bound, if any */
 } WindowAgg;
 
 /* ----------------

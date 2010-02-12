@@ -1298,6 +1298,10 @@ expression_tree_walker(Node *node,
 					return true;
 				if (walker(wc->orderClause, context))
 					return true;
+				if (walker(wc->startOffset, context))
+					return true;
+				if (walker(wc->endOffset, context))
+					return true;
 			}
 			break;
 		case T_CommonTableExpr:
@@ -1950,6 +1954,8 @@ expression_tree_mutator(Node *node,
 				FLATCOPY(newnode, wc, WindowClause);
 				MUTATE(newnode->partitionClause, wc->partitionClause, List *);
 				MUTATE(newnode->orderClause, wc->orderClause, List *);
+				MUTATE(newnode->startOffset, wc->startOffset, Node *);
+				MUTATE(newnode->endOffset, wc->endOffset, Node *);
 				return (Node *) newnode;
 			}
 			break;
@@ -2474,6 +2480,10 @@ bool
 				if (walker(wd->partitionClause, context))
 					return true;
 				if (walker(wd->orderClause, context))
+					return true;
+				if (walker(wd->startOffset, context))
+					return true;
+				if (walker(wd->endOffset, context))
 					return true;
 			}
 			break;

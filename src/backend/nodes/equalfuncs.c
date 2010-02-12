@@ -2056,6 +2056,8 @@ _equalWindowDef(WindowDef *a, WindowDef *b)
 	COMPARE_NODE_FIELD(partitionClause);
 	COMPARE_NODE_FIELD(orderClause);
 	COMPARE_SCALAR_FIELD(frameOptions);
+	COMPARE_NODE_FIELD(startOffset);
+	COMPARE_NODE_FIELD(endOffset);
 	COMPARE_LOCATION_FIELD(location);
 
 	return true;
@@ -2205,6 +2207,8 @@ _equalWindowClause(WindowClause *a, WindowClause *b)
 	COMPARE_NODE_FIELD(partitionClause);
 	COMPARE_NODE_FIELD(orderClause);
 	COMPARE_SCALAR_FIELD(frameOptions);
+	COMPARE_NODE_FIELD(startOffset);
+	COMPARE_NODE_FIELD(endOffset);
 	COMPARE_SCALAR_FIELD(winref);
 	COMPARE_SCALAR_FIELD(copiedOrder);
 

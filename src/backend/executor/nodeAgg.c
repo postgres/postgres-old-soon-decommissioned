@@ -1999,7 +1999,7 @@ AggCheckCallContext(FunctionCallInfo fcinfo, MemoryContext *aggcontext)
 	if (fcinfo->context && IsA(fcinfo->context, WindowAggState))
 	{
 		if (aggcontext)
-			*aggcontext = ((WindowAggState *) fcinfo->context)->wincontext;
+			*aggcontext = ((WindowAggState *) fcinfo->context)->aggcontext;
 		return AGG_CONTEXT_WINDOW;
 	}
 

@@ -258,7 +258,9 @@ transformWindowFuncCall(ParseState *pstate, WindowFunc *wfunc,
 				continue;
 			if (equal(refwin->partitionClause, windef->partitionClause) &&
 				equal(refwin->orderClause, windef->orderClause) &&
-				refwin->frameOptions == windef->frameOptions)
+				refwin->frameOptions == windef->frameOptions &&
+				equal(refwin->startOffset, windef->startOffset) &&
+				equal(refwin->endOffset, windef->endOffset))
 			{
 				/* found a duplicate window specification */
 				wfunc->winref = winref;
@@ -505,6 +507,7 @@ parseCheckWindowFuncs(ParseState *pstate, Query *qry)
 						 parser_errposition(pstate,
 											locate_windowfunc(expr))));
 		}
+		/* startOffset and limitOffset were checked in transformFrameOffset */
 	}
 }
 

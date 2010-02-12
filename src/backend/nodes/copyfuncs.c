@@ -718,6 +718,8 @@ _copyWindowAgg(WindowAgg *from)
 		COPY_POINTER_FIELD(ordOperators, from->ordNumCols * sizeof(Oid));
 	}
 	COPY_SCALAR_FIELD(frameOptions);
+	COPY_NODE_FIELD(startOffset);
+	COPY_NODE_FIELD(endOffset);
 
 	return newnode;
 }
@@ -1848,6 +1850,8 @@ _copyWindowClause(WindowClause *from)
 	COPY_NODE_FIELD(partitionClause);
 	COPY_NODE_FIELD(orderClause);
 	COPY_SCALAR_FIELD(frameOptions);
+	COPY_NODE_FIELD(startOffset);
+	COPY_NODE_FIELD(endOffset);
 	COPY_SCALAR_FIELD(winref);
 	COPY_SCALAR_FIELD(copiedOrder);
 
@@ -2076,6 +2080,8 @@ _copyWindowDef(WindowDef *from)
 	COPY_NODE_FIELD(partitionClause);
 	COPY_NODE_FIELD(orderClause);
 	COPY_SCALAR_FIELD(frameOptions);
+	COPY_NODE_FIELD(startOffset);
+	COPY_NODE_FIELD(endOffset);
 	COPY_LOCATION_FIELD(location);
 
 	return newnode;

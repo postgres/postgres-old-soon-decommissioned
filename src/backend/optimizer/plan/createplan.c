@@ -3364,7 +3364,8 @@ make_windowagg(PlannerInfo *root, List *tlist,
 			   int numWindowFuncs, Index winref,
 			   int partNumCols, AttrNumber *partColIdx, Oid *partOperators,
 			   int ordNumCols, AttrNumber *ordColIdx, Oid *ordOperators,
-			   int frameOptions, Plan *lefttree)
+			   int frameOptions, Node *startOffset, Node *endOffset,
+			   Plan *lefttree)
 {
 	WindowAgg  *node = makeNode(WindowAgg);
 	Plan	   *plan = &node->plan;
@@ -3379,6 +3380,8 @@ make_windowagg(PlannerInfo *root, List *tlist,
 	node->ordColIdx = ordColIdx;
 	node->ordOperators = ordOperators;
 	node->frameOptions = frameOptions;
+	node->startOffset = startOffset;
+	node->endOffset = endOffset;
 
 	copy_plan_costsize(plan, lefttree); /* only care about copying size */
 	cost_windowagg(&windowagg_path, root,

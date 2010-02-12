@@ -2098,9 +2098,15 @@ finalize_plan(PlannerInfo *root, Plan *plan, Bitmapset *valid_params,
 										 locally_added_param);
 			break;
 
+		case T_WindowAgg:
+			finalize_primnode(((WindowAgg *) plan)->startOffset,
+							  &context);
+			finalize_primnode(((WindowAgg *) plan)->endOffset,
+							  &context);
+			break;
+
 		case T_Hash:
 		case T_Agg:
-		case T_WindowAgg:
 		case T_Material:
 		case T_Sort:
 		case T_Unique:
