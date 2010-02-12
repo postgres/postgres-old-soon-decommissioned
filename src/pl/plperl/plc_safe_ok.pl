@@ -31,6 +31,7 @@ $PLContainer->permit(qw[caller]);
 }) or die $@;
 $PLContainer->deny(qw[caller]);
 
+# called directly for plperl.on_plperl_init
 sub ::safe_eval {
 	my $ret = $PLContainer->reval(shift);
 	$@ =~ s/\(eval \d+\) //g if $@;
