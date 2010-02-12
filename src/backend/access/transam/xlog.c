@@ -8796,8 +8796,9 @@ XLogPageRead(XLogRecPtr *RecPtr, int emode, bool fetching_ckpt,
 					 * that when we later jump backwards to start redo at
 					 * RedoStartLSN, we will have the logs streamed already.
 					 */
-					RequestXLogStreaming(fetching_ckpt ? RedoStartLSN : *RecPtr,
-										 PrimaryConnInfo);
+					if (PrimaryConnInfo)
+						RequestXLogStreaming(fetching_ckpt ? RedoStartLSN : *RecPtr,
+											 PrimaryConnInfo);
 				}
 
 				/*
