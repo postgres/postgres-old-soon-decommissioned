@@ -1762,8 +1762,11 @@ compile_plperl_function(Oid fn_oid, bool is_trigger)
 		{
 			hash_search(plperl_proc_hash, internal_proname,
 						HASH_REMOVE, NULL);
-			if (prodesc->reference)
+			if (prodesc->reference) {
+				select_perl_context(prodesc->lanpltrusted);
 				SvREFCNT_dec(prodesc->reference);
+				restore_context(oldcontext);
+			}
 			free(prodesc->proname);
 			free(prodesc);
 			prodesc = NULL;
