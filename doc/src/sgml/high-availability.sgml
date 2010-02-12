@@ -1488,7 +1488,7 @@ primary_conninfo = 'host=192.168.1.50 port=5432 user=foo password=foopass'
     in the server logs
 
 <programlisting>
-LOG:  initializing recovery connections
+LOG:  entering standby mode
 
 ... then some time later ...
 
