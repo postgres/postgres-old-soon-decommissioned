@@ -1318,9 +1318,14 @@ PortalRunMulti(Portal portal, bool isTopLevel,
 	 * If a command completion tag was supplied, use it.  Otherwise use the
 	 * portal's commandTag as the default completion tag.
 	 *
-	 * Exception: clients will expect INSERT/UPDATE/DELETE tags to have
-	 * counts, so fake something up if necessary.  (This could happen if the
-	 * original query was replaced by a DO INSTEAD rule.)
+	 * Exception: Clients expect INSERT/UPDATE/DELETE tags to have
+	 * counts, so fake them with zeros.  This can happen with DO INSTEAD
+	 * rules if there is no replacement query of the same type as the
+	 * original.  We print "0 0" here because technically there is no
+	 * query of the matching tag type, and printing a non-zero count for
+	 * a different query type seems wrong, e.g.  an INSERT that does
+	 * an UPDATE instead should not print "0 1" if one row
+	 * was updated.  See QueryRewrite(), step 3, for details.
 	 */
 	if (completionTag && completionTag[0] == '\0')
 	{
