@@ -45,6 +45,7 @@
 #include "storage/pmsignal.h"
 #include "storage/proc.h"
 #include "storage/procarray.h"
+#include "storage/procsignal.h"
 #include "storage/spin.h"
 
 
@@ -554,6 +555,15 @@ HaveNFreeProcs(int n)
 	SpinLockRelease(ProcStructLock);
 
 	return (n <= 0);
+}
+
+bool
+IsWaitingForLock(void)
+{
+	if (lockAwaited == NULL)
+		return false;
+
+	return true;
 }
 
 /*
@@ -1670,7 +1680,7 @@ CheckStandbyTimeout(void)
 	now = GetCurrentTimestamp();
 
 	if (now >= statement_fin_time)
-		SendRecoveryConflictWithBufferPin();
+		SendRecoveryConflictWithBufferPin(PROCSIG_RECOVERY_CONFLICT_BUFFERPIN);
 	else
 	{
 		/* Not time yet, so (re)schedule the interrupt */

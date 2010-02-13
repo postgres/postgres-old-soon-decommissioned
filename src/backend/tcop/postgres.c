@@ -2278,6 +2278,9 @@ errdetail_recovery_conflict(void)
 		case PROCSIG_RECOVERY_CONFLICT_SNAPSHOT:
 				errdetail("User query might have needed to see row versions that must be removed.");
 				break;
+		case PROCSIG_RECOVERY_CONFLICT_STARTUP_DEADLOCK:
+				errdetail("User transaction caused buffer deadlock with recovery.");
+				break;
 		case PROCSIG_RECOVERY_CONFLICT_DATABASE:
 				errdetail("User was connected to a database that must be dropped.");
 				break;
@@ -2754,6 +2757,15 @@ RecoveryConflictInterrupt(ProcSignalReason reason)
 		RecoveryConflictReason = reason;
 		switch (reason)
 		{
+			case PROCSIG_RECOVERY_CONFLICT_STARTUP_DEADLOCK:
+					/*
+					 * If we aren't waiting for a lock we can never deadlock.
+					 */
+					if (!IsWaitingForLock())
+						return;
+
+					/* Intentional drop through to check wait for pin */
+
 			case PROCSIG_RECOVERY_CONFLICT_BUFFERPIN:
 					/*
 					 * If we aren't blocking the Startup process there is
@@ -2818,6 +2830,8 @@ RecoveryConflictInterrupt(ProcSignalReason reason)
 			default:
 					elog(FATAL, "Unknown conflict mode");
 		}
+
+		Assert(RecoveryConflictPending && (QueryCancelPending || ProcDiePending));
 
 		/*
 		 * If it's safe to interrupt, and we're waiting for input or a lock,
