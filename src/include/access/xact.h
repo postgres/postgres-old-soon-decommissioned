@@ -102,6 +102,8 @@ typedef struct xl_xact_commit
 	int			nrels;			/* number of RelFileNodes */
 	int			nsubxacts;		/* number of subtransaction XIDs */
 	int			nmsgs;			/* number of shared inval msgs */
+	Oid			dbId;			/* MyDatabaseId */
+	Oid			tsId;			/* MyDatabaseTableSpace */
 	/* Array of RelFileNode(s) to drop at commit */
 	RelFileNode xnodes[1];		/* VARIABLE LENGTH ARRAY */
 	/* ARRAY OF COMMITTED SUBTRANSACTION XIDs FOLLOWS */
@@ -119,7 +121,7 @@ typedef struct xl_xact_commit
  * transaction completion.
  */
 #define XACT_COMPLETION_UPDATE_RELCACHE_FILE	0x01
-#define XACT_COMPLETION_FORCE_SYNC_COMMIT		0x04
+#define XACT_COMPLETION_FORCE_SYNC_COMMIT		0x02
 
 /* Access macros for above flags */
 #define XactCompletionRelcacheInitFileInval(xlrec)	((xlrec)->xinfo & XACT_COMPLETION_UPDATE_RELCACHE_FILE)

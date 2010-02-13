@@ -951,6 +951,9 @@ RecordTransactionCommit(void)
 		if (forceSyncCommit)
 			xlrec.xinfo |= XACT_COMPLETION_FORCE_SYNC_COMMIT;
 
+		xlrec.dbId = MyDatabaseId;
+		xlrec.tsId = MyDatabaseTableSpace;
+
 		/*
 		 * Mark ourselves as within our "commit critical section".	This
 		 * forces any concurrent checkpoint to wait until we've updated
@@ -4412,7 +4415,8 @@ xact_redo_commit(xl_xact_commit *xlrec, TransactionId xid, XLogRecPtr lsn)
 		 * as occurs in 	.
 		 */
 		ProcessCommittedInvalidationMessages(inval_msgs, xlrec->nmsgs,
-									XactCompletionRelcacheInitFileInval(xlrec));
+									XactCompletionRelcacheInitFileInval(xlrec),
+									xlrec->dbId, xlrec->tsId);
 
 		/*
 		 * Release locks, if any. We do this for both two phase and normal
@@ -4596,15 +4600,11 @@ xact_desc_commit(StringInfo buf, xl_xact_commit *xlrec)
 {
 	int			i;
 	TransactionId *xacts;
-	SharedInvalidationMessage *msgs;
 
 	xacts = (TransactionId *) &xlrec->xnodes[xlrec->nrels];
-	msgs = (SharedInvalidationMessage *) &xacts[xlrec->nsubxacts];
-
-	if (XactCompletionRelcacheInitFileInval(xlrec))
-		appendStringInfo(buf, "; relcache init file inval");
 
 	appendStringInfoString(buf, timestamptz_to_str(xlrec->xact_time));
+
 	if (xlrec->nrels > 0)
 	{
 		appendStringInfo(buf, "; rels:");
@@ -4624,6 +4624,14 @@ xact_desc_commit(StringInfo buf, xl_xact_commit *xlrec)
 	}
 	if (xlrec->nmsgs > 0)
 	{
+		SharedInvalidationMessage *msgs;
+
+		msgs = (SharedInvalidationMessage *) &xacts[xlrec->nsubxacts];
+
+		if (XactCompletionRelcacheInitFileInval(xlrec))
+			appendStringInfo(buf, "; relcache init file inval dbid %u tsid %u", 
+										xlrec->dbId, xlrec->tsId);
+
 		appendStringInfo(buf, "; inval msgs:");
 		for (i = 0; i < xlrec->nmsgs; i++)
 		{
