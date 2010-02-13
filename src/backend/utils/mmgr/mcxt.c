@@ -628,11 +628,10 @@ repalloc(void *pointer, Size size)
  * MemoryContextSwitchTo
  *		Returns the current context; installs the given context.
  *
- * This is inlined when using GCC.
- *
- * TODO: investigate supporting inlining for some non-GCC compilers.
+ * palloc.h defines an inline version of this function if allowed by the
+ * compiler; in which case the definition below is skipped.
  */
-#ifndef __GNUC__
+#ifndef USE_INLINE
 
 MemoryContext
 MemoryContextSwitchTo(MemoryContext context)
@@ -645,7 +644,7 @@ MemoryContextSwitchTo(MemoryContext context)
 	CurrentMemoryContext = context;
 	return old;
 }
-#endif   /* ! __GNUC__ */
+#endif   /* ! USE_INLINE */
 
 /*
  * MemoryContextStrdup

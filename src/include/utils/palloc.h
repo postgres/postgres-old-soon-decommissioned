@@ -72,11 +72,11 @@ extern void *repalloc(void *pointer, Size size);
 
 /*
  * MemoryContextSwitchTo can't be a macro in standard C compilers.
- * But we can make it an inline function when using GCC.
+ * But we can make it an inline function if the compiler supports it.
  */
-#ifdef __GNUC__
+#ifdef USE_INLINE
 
-static __inline__ MemoryContext
+static inline MemoryContext
 MemoryContextSwitchTo(MemoryContext context)
 {
 	MemoryContext old = CurrentMemoryContext;
@@ -87,7 +87,7 @@ MemoryContextSwitchTo(MemoryContext context)
 #else
 
 extern MemoryContext MemoryContextSwitchTo(MemoryContext context);
-#endif   /* __GNUC__ */
+#endif   /* USE_INLINE */
 
 /*
  * These are like standard strdup() except the copied string is

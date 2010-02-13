@@ -313,15 +313,6 @@ typedef __int64 ssize_t;
 typedef unsigned short mode_t;
 #endif
 
-/*
- *	Certain "standard edition" versions of MSVC throw a warning
- *	that later generates an error for "inline" statements, but
- *	__inline seems to work.  e.g.  Microsoft Visual C++ .NET
- *	Version 7.1.3088
- */
-#define inline __inline
-#define __inline__ __inline
-
 #ifndef __BORLANDC__
 #define _S_IRWXU	(_S_IREAD | _S_IWRITE | _S_IEXEC)
 #define _S_IXUSR	_S_IEXEC
