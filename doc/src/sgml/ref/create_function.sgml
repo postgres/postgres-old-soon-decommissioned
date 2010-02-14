@@ -585,6 +585,13 @@ CREATE FUNCTION foo(int, int default 42) ...
     existing calls of the function do not stop working when it is replaced.
    </para>
 
+   <para>
+    If a function is declared <literal>STRICT</> with a <literal>VARIADIC</>
+    argument, the strictness check tests that the variadic array <emphasis>as
+    a whole</> is non-null.  The function will still be called if the
+    array has non-null elements.
+   </para>
+
  </refsect1>
 
  <refsect1 id="sql-createfunction-examples">
