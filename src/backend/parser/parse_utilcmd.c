@@ -889,9 +889,7 @@ generateClonedIndexStmt(CreateStmtContext *cxt, Relation source_idx,
 	 * Fetch pg_class tuple of source index.  We can't use the copy in the
 	 * relcache entry because it doesn't include optional fields.
 	 */
-	ht_idxrel = SearchSysCache(RELOID,
-							   ObjectIdGetDatum(source_relid),
-							   0, 0, 0);
+	ht_idxrel = SearchSysCache1(RELOID, ObjectIdGetDatum(source_relid));
 	if (!HeapTupleIsValid(ht_idxrel))
 		elog(ERROR, "cache lookup failed for relation %u", source_relid);
 	idxrelrec = (Form_pg_class) GETSTRUCT(ht_idxrel);
@@ -943,9 +941,8 @@ generateClonedIndexStmt(CreateStmtContext *cxt, Relation source_idx,
 			HeapTuple	ht_constr;
 			Form_pg_constraint conrec;
 
-			ht_constr = SearchSysCache(CONSTROID,
-									   ObjectIdGetDatum(constraintId),
-									   0, 0, 0);
+			ht_constr = SearchSysCache1(CONSTROID,
+									    ObjectIdGetDatum(constraintId));
 			if (!HeapTupleIsValid(ht_constr))
 				elog(ERROR, "cache lookup failed for constraint %u",
 					 constraintId);
@@ -984,9 +981,8 @@ generateClonedIndexStmt(CreateStmtContext *cxt, Relation source_idx,
 					char	   *nspname;
 					List	   *namelist;
 
-					opertup = SearchSysCache(OPEROID,
-											 ObjectIdGetDatum(operid),
-											 0, 0, 0);
+					opertup = SearchSysCache1(OPEROID,
+											  ObjectIdGetDatum(operid));
 					if (!HeapTupleIsValid(opertup))
 						elog(ERROR, "cache lookup failed for operator %u",
 							 operid);
@@ -1138,9 +1134,7 @@ get_opclass(Oid opclass, Oid actual_datatype)
 	Form_pg_opclass opc_rec;
 	List	   *result = NIL;
 
-	ht_opc = SearchSysCache(CLAOID,
-							ObjectIdGetDatum(opclass),
-							0, 0, 0);
+	ht_opc = SearchSysCache1(CLAOID, ObjectIdGetDatum(opclass));
 	if (!HeapTupleIsValid(ht_opc))
 		elog(ERROR, "cache lookup failed for opclass %u", opclass);
 	opc_rec = (Form_pg_opclass) GETSTRUCT(ht_opc);

@@ -406,9 +406,7 @@ InitializeSessionUserId(const char *rolename)
 	/* call only once */
 	AssertState(!OidIsValid(AuthenticatedUserId));
 
-	roleTup = SearchSysCache(AUTHNAME,
-							 PointerGetDatum(rolename),
-							 0, 0, 0);
+	roleTup = SearchSysCache1(AUTHNAME, PointerGetDatum(rolename));
 	if (!HeapTupleIsValid(roleTup))
 		ereport(FATAL,
 				(errcode(ERRCODE_INVALID_AUTHORIZATION_SPECIFICATION),
@@ -593,9 +591,7 @@ GetUserNameFromId(Oid roleid)
 	HeapTuple	tuple;
 	char	   *result;
 
-	tuple = SearchSysCache(AUTHOID,
-						   ObjectIdGetDatum(roleid),
-						   0, 0, 0);
+	tuple = SearchSysCache1(AUTHOID, ObjectIdGetDatum(roleid));
 	if (!HeapTupleIsValid(tuple))
 		ereport(ERROR,
 				(errcode(ERRCODE_UNDEFINED_OBJECT),

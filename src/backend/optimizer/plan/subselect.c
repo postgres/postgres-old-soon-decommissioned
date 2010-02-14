@@ -832,9 +832,7 @@ hash_ok_operator(OpExpr *expr)
 	if (list_length(expr->args) != 2)
 		return false;
 	/* else must look up the operator properties */
-	tup = SearchSysCache(OPEROID,
-						 ObjectIdGetDatum(opid),
-						 0, 0, 0);
+	tup = SearchSysCache1(OPEROID, ObjectIdGetDatum(opid));
 	if (!HeapTupleIsValid(tup))
 		elog(ERROR, "cache lookup failed for operator %u", opid);
 	optup = (Form_pg_operator) GETSTRUCT(tup);

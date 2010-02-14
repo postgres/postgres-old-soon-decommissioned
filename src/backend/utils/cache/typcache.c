@@ -135,9 +135,7 @@ lookup_type_cache(Oid type_id, int flags)
 		HeapTuple	tp;
 		Form_pg_type typtup;
 
-		tp = SearchSysCache(TYPEOID,
-							ObjectIdGetDatum(type_id),
-							0, 0, 0);
+		tp = SearchSysCache1(TYPEOID, ObjectIdGetDatum(type_id));
 		if (!HeapTupleIsValid(tp))
 			elog(ERROR, "cache lookup failed for type %u", type_id);
 		typtup = (Form_pg_type) GETSTRUCT(tp);

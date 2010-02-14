@@ -208,9 +208,7 @@ transformArrayType(Oid arrayType)
 	Form_pg_type type_struct_array;
 
 	/* Get the type tuple for the array */
-	type_tuple_array = SearchSysCache(TYPEOID,
-									  ObjectIdGetDatum(arrayType),
-									  0, 0, 0);
+	type_tuple_array = SearchSysCache1(TYPEOID, ObjectIdGetDatum(arrayType));
 	if (!HeapTupleIsValid(type_tuple_array))
 		elog(ERROR, "cache lookup failed for type %u", arrayType);
 	type_struct_array = (Form_pg_type) GETSTRUCT(type_tuple_array);

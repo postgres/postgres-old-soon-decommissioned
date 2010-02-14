@@ -1597,9 +1597,8 @@ ExecInitAgg(Agg *node, EState *estate, int eflags)
 		}
 		peraggstate->numArguments = numArguments;
 
-		aggTuple = SearchSysCache(AGGFNOID,
-								  ObjectIdGetDatum(aggref->aggfnoid),
-								  0, 0, 0);
+		aggTuple = SearchSysCache1(AGGFNOID,
+								   ObjectIdGetDatum(aggref->aggfnoid));
 		if (!HeapTupleIsValid(aggTuple))
 			elog(ERROR, "cache lookup failed for aggregate %u",
 				 aggref->aggfnoid);
@@ -1620,9 +1619,8 @@ ExecInitAgg(Agg *node, EState *estate, int eflags)
 			HeapTuple	procTuple;
 			Oid			aggOwner;
 
-			procTuple = SearchSysCache(PROCOID,
-									   ObjectIdGetDatum(aggref->aggfnoid),
-									   0, 0, 0);
+			procTuple = SearchSysCache1(PROCOID,
+										ObjectIdGetDatum(aggref->aggfnoid));
 			if (!HeapTupleIsValid(procTuple))
 				elog(ERROR, "cache lookup failed for function %u",
 					 aggref->aggfnoid);

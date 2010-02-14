@@ -308,9 +308,7 @@ RemoveOperator(RemoveFuncStmt *stmt)
 		return;
 	}
 
-	tup = SearchSysCache(OPEROID,
-						 ObjectIdGetDatum(operOid),
-						 0, 0, 0);
+	tup = SearchSysCache1(OPEROID, ObjectIdGetDatum(operOid));
 	if (!HeapTupleIsValid(tup)) /* should not happen */
 		elog(ERROR, "cache lookup failed for operator %u", operOid);
 
@@ -344,9 +342,7 @@ RemoveOperatorById(Oid operOid)
 
 	relation = heap_open(OperatorRelationId, RowExclusiveLock);
 
-	tup = SearchSysCache(OPEROID,
-						 ObjectIdGetDatum(operOid),
-						 0, 0, 0);
+	tup = SearchSysCache1(OPEROID, ObjectIdGetDatum(operOid));
 	if (!HeapTupleIsValid(tup)) /* should not happen */
 		elog(ERROR, "cache lookup failed for operator %u", operOid);
 
@@ -399,9 +395,7 @@ AlterOperatorOwner_internal(Relation rel, Oid operOid, Oid newOwnerId)
 
 	Assert(RelationGetRelid(rel) == OperatorRelationId);
 
-	tup = SearchSysCacheCopy(OPEROID,
-							 ObjectIdGetDatum(operOid),
-							 0, 0, 0);
+	tup = SearchSysCacheCopy1(OPEROID, ObjectIdGetDatum(operOid));
 	if (!HeapTupleIsValid(tup)) /* should not happen */
 		elog(ERROR, "cache lookup failed for operator %u", operOid);
 

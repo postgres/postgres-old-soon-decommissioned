@@ -75,9 +75,7 @@ CheckRelationOwnership(RangeVar *rel, bool noCatalogs)
 	HeapTuple	tuple;
 
 	relOid = RangeVarGetRelid(rel, false);
-	tuple = SearchSysCache(RELOID,
-						   ObjectIdGetDatum(relOid),
-						   0, 0, 0);
+	tuple = SearchSysCache1(RELOID, ObjectIdGetDatum(relOid));
 	if (!HeapTupleIsValid(tuple))		/* should not happen */
 		elog(ERROR, "cache lookup failed for relation %u", relOid);
 

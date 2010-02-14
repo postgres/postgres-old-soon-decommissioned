@@ -1135,9 +1135,7 @@ CacheInvalidateRelcacheByRelid(Oid relid)
 {
 	HeapTuple	tup;
 
-	tup = SearchSysCache(RELOID,
-						 ObjectIdGetDatum(relid),
-						 0, 0, 0);
+	tup = SearchSysCache1(RELOID, ObjectIdGetDatum(relid));
 	if (!HeapTupleIsValid(tup))
 		elog(ERROR, "cache lookup failed for relation %u", relid);
 	CacheInvalidateRelcacheByTuple(tup);

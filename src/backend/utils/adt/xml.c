@@ -2612,9 +2612,7 @@ map_sql_table_to_xmlschema(TupleDesc tupdesc, Oid relid, bool nulls,
 		HeapTuple	tuple;
 		Form_pg_class reltuple;
 
-		tuple = SearchSysCache(RELOID,
-							   ObjectIdGetDatum(relid),
-							   0, 0, 0);
+		tuple = SearchSysCache1(RELOID, ObjectIdGetDatum(relid));
 		if (!HeapTupleIsValid(tuple))
 			elog(ERROR, "cache lookup failed for relation %u", relid);
 		reltuple = (Form_pg_class) GETSTRUCT(tuple);
@@ -2912,9 +2910,7 @@ map_sql_type_to_xml_name(Oid typeoid, int typmod)
 				HeapTuple	tuple;
 				Form_pg_type typtuple;
 
-				tuple = SearchSysCache(TYPEOID,
-									   ObjectIdGetDatum(typeoid),
-									   0, 0, 0);
+				tuple = SearchSysCache1(TYPEOID, ObjectIdGetDatum(typeoid));
 				if (!HeapTupleIsValid(tuple))
 					elog(ERROR, "cache lookup failed for type %u", typeoid);
 				typtuple = (Form_pg_type) GETSTRUCT(tuple);

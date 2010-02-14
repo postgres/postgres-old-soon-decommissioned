@@ -1898,9 +1898,7 @@ record_plan_function_dependency(PlannerGlobal *glob, Oid funcid)
 		HeapTuple	func_tuple;
 		PlanInvalItem *inval_item;
 
-		func_tuple = SearchSysCache(PROCOID,
-									ObjectIdGetDatum(funcid),
-									0, 0, 0);
+		func_tuple = SearchSysCache1(PROCOID, ObjectIdGetDatum(funcid));
 		if (!HeapTupleIsValid(func_tuple))
 			elog(ERROR, "cache lookup failed for function %u", funcid);
 

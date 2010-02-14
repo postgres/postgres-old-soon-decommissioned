@@ -2180,9 +2180,7 @@ generate_relation_name(Oid relid)
 	char	   *nspname;
 	char	   *result;
 
-	tp = SearchSysCache(RELOID,
-						ObjectIdGetDatum(relid),
-						0, 0, 0);
+	tp = SearchSysCache1(RELOID, ObjectIdGetDatum(relid));
 	if (!HeapTupleIsValid(tp))
 		elog(ERROR, "cache lookup failed for relation %u", relid);
 

@@ -218,9 +218,7 @@ plpgsql_validator(PG_FUNCTION_ARGS)
 	int			i;
 
 	/* Get the new function's pg_proc entry */
-	tuple = SearchSysCache(PROCOID,
-						   ObjectIdGetDatum(funcoid),
-						   0, 0, 0);
+	tuple = SearchSysCache1(PROCOID, ObjectIdGetDatum(funcoid));
 	if (!HeapTupleIsValid(tuple))
 		elog(ERROR, "cache lookup failed for function %u", funcoid);
 	proc = (Form_pg_proc) GETSTRUCT(tuple);

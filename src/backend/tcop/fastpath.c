@@ -214,9 +214,7 @@ fetch_fp_info(Oid func_id, struct fp_info * fip)
 
 	fmgr_info(func_id, &fip->flinfo);
 
-	func_htp = SearchSysCache(PROCOID,
-							  ObjectIdGetDatum(func_id),
-							  0, 0, 0);
+	func_htp = SearchSysCache1(PROCOID, ObjectIdGetDatum(func_id));
 	if (!HeapTupleIsValid(func_htp))
 		ereport(ERROR,
 				(errcode(ERRCODE_UNDEFINED_FUNCTION),

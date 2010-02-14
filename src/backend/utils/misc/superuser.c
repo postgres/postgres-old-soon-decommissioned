@@ -67,9 +67,7 @@ superuser_arg(Oid roleid)
 		return true;
 
 	/* OK, look up the information in pg_authid */
-	rtup = SearchSysCache(AUTHOID,
-						  ObjectIdGetDatum(roleid),
-						  0, 0, 0);
+	rtup = SearchSysCache1(AUTHOID, ObjectIdGetDatum(roleid));
 	if (HeapTupleIsValid(rtup))
 	{
 		result = ((Form_pg_authid) GETSTRUCT(rtup))->rolsuper;

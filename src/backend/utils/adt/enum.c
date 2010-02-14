@@ -45,10 +45,9 @@ enum_in(PG_FUNCTION_ARGS)
 						format_type_be(enumtypoid),
 						name)));
 
-	tup = SearchSysCache(ENUMTYPOIDNAME,
-						 ObjectIdGetDatum(enumtypoid),
-						 CStringGetDatum(name),
-						 0, 0);
+	tup = SearchSysCache2(ENUMTYPOIDNAME,
+						  ObjectIdGetDatum(enumtypoid),
+						  CStringGetDatum(name));
 	if (!HeapTupleIsValid(tup))
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
@@ -75,9 +74,7 @@ enum_out(PG_FUNCTION_ARGS)
 	HeapTuple	tup;
 	Form_pg_enum en;
 
-	tup = SearchSysCache(ENUMOID,
-						 ObjectIdGetDatum(enumval),
-						 0, 0, 0);
+	tup = SearchSysCache1(ENUMOID, ObjectIdGetDatum(enumval));
 	if (!HeapTupleIsValid(tup))
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_BINARY_REPRESENTATION),
@@ -113,10 +110,9 @@ enum_recv(PG_FUNCTION_ARGS)
 						format_type_be(enumtypoid),
 						name)));
 
-	tup = SearchSysCache(ENUMTYPOIDNAME,
-						 ObjectIdGetDatum(enumtypoid),
-						 CStringGetDatum(name),
-						 0, 0);
+	tup = SearchSysCache2(ENUMTYPOIDNAME,
+						  ObjectIdGetDatum(enumtypoid),
+						  CStringGetDatum(name));
 	if (!HeapTupleIsValid(tup))
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
@@ -141,9 +137,7 @@ enum_send(PG_FUNCTION_ARGS)
 	HeapTuple	tup;
 	Form_pg_enum en;
 
-	tup = SearchSysCache(ENUMOID,
-						 ObjectIdGetDatum(enumval),
-						 0, 0, 0);
+	tup = SearchSysCache1(ENUMOID, ObjectIdGetDatum(enumval));
 	if (!HeapTupleIsValid(tup))
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_BINARY_REPRESENTATION),
@@ -269,9 +263,7 @@ enum_first(PG_FUNCTION_ARGS)
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 				 errmsg("could not determine actual enum type")));
 
-	list = SearchSysCacheList(ENUMTYPOIDNAME, 1,
-							  ObjectIdGetDatum(enumtypoid),
-							  0, 0, 0);
+	list = SearchSysCacheList1(ENUMTYPOIDNAME, ObjectIdGetDatum(enumtypoid));
 	num = list->n_members;
 	for (i = 0; i < num; i++)
 	{
@@ -310,9 +302,7 @@ enum_last(PG_FUNCTION_ARGS)
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 				 errmsg("could not determine actual enum type")));
 
-	list = SearchSysCacheList(ENUMTYPOIDNAME, 1,
-							  ObjectIdGetDatum(enumtypoid),
-							  0, 0, 0);
+	list = SearchSysCacheList1(ENUMTYPOIDNAME, ObjectIdGetDatum(enumtypoid));
 	num = list->n_members;
 	for (i = 0; i < num; i++)
 	{
@@ -393,9 +383,7 @@ enum_range_internal(Oid enumtypoid, Oid lower, Oid upper)
 				j;
 	Datum	   *elems;
 
-	list = SearchSysCacheList(ENUMTYPOIDNAME, 1,
-							  ObjectIdGetDatum(enumtypoid),
-							  0, 0, 0);
+	list = SearchSysCacheList1(ENUMTYPOIDNAME, ObjectIdGetDatum(enumtypoid));
 	total = list->n_members;
 
 	elems = (Datum *) palloc(total * sizeof(Datum));

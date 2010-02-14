@@ -909,10 +909,9 @@ SearchSysCacheAttName(Oid relid, const char *attname)
 {
 	HeapTuple	tuple;
 
-	tuple = SearchSysCache(ATTNAME,
-						   ObjectIdGetDatum(relid),
-						   CStringGetDatum(attname),
-						   0, 0);
+	tuple = SearchSysCache2(ATTNAME,
+							ObjectIdGetDatum(relid),
+							CStringGetDatum(attname));
 	if (!HeapTupleIsValid(tuple))
 		return NULL;
 	if (((Form_pg_attribute) GETSTRUCT(tuple))->attisdropped)

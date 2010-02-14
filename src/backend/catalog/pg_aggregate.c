@@ -125,9 +125,7 @@ AggregateCreate(const char *aggName,
 						NameListToString(aggtransfnName),
 						format_type_be(aggTransType))));
 
-	tup = SearchSysCache(PROCOID,
-						 ObjectIdGetDatum(transfn),
-						 0, 0, 0);
+	tup = SearchSysCache1(PROCOID, ObjectIdGetDatum(transfn));
 	if (!HeapTupleIsValid(tup))
 		elog(ERROR, "cache lookup failed for function %u", transfn);
 	proc = (Form_pg_proc) GETSTRUCT(tup);

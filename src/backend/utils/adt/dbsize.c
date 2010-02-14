@@ -531,9 +531,7 @@ pg_relation_filenode(PG_FUNCTION_ARGS)
 	HeapTuple	tuple;
 	Form_pg_class relform;
 
-	tuple = SearchSysCache(RELOID,
-						   ObjectIdGetDatum(relid),
-						   0, 0, 0);
+	tuple = SearchSysCache1(RELOID, ObjectIdGetDatum(relid));
 	if (!HeapTupleIsValid(tuple))
 		PG_RETURN_NULL();
 	relform = (Form_pg_class) GETSTRUCT(tuple);
@@ -580,9 +578,7 @@ pg_relation_filepath(PG_FUNCTION_ARGS)
 	RelFileNode rnode;
 	char	   *path;
 
-	tuple = SearchSysCache(RELOID,
-						   ObjectIdGetDatum(relid),
-						   0, 0, 0);
+	tuple = SearchSysCache1(RELOID, ObjectIdGetDatum(relid));
 	if (!HeapTupleIsValid(tuple))
 		PG_RETURN_NULL();
 	relform = (Form_pg_class) GETSTRUCT(tuple);

@@ -276,9 +276,7 @@ create_toast_table(Relation rel, Oid toastOid, Oid toastIndexOid, Datum reloptio
 	 */
 	class_rel = heap_open(RelationRelationId, RowExclusiveLock);
 
-	reltup = SearchSysCacheCopy(RELOID,
-								ObjectIdGetDatum(relOid),
-								0, 0, 0);
+	reltup = SearchSysCacheCopy1(RELOID, ObjectIdGetDatum(relOid));
 	if (!HeapTupleIsValid(reltup))
 		elog(ERROR, "cache lookup failed for relation %u", relOid);
 

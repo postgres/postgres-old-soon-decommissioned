@@ -727,9 +727,7 @@ assign_session_authorization(const char *value, bool doit, GucSource source)
 			return NULL;
 		}
 
-		roleTup = SearchSysCache(AUTHNAME,
-								 PointerGetDatum(value),
-								 0, 0, 0);
+		roleTup = SearchSysCache1(AUTHNAME, PointerGetDatum(value));
 		if (!HeapTupleIsValid(roleTup))
 		{
 			ereport(GUC_complaint_elevel(source),
@@ -839,9 +837,7 @@ assign_role(const char *value, bool doit, GucSource source)
 			return NULL;
 		}
 
-		roleTup = SearchSysCache(AUTHNAME,
-								 PointerGetDatum(value),
-								 0, 0, 0);
+		roleTup = SearchSysCache1(AUTHNAME, PointerGetDatum(value));
 		if (!HeapTupleIsValid(roleTup))
 		{
 			ereport(GUC_complaint_elevel(source),

@@ -226,7 +226,7 @@ CatalogCacheComputeHashValue(CatCache *cache, int nkeys, ScanKey cur_skey)
 static uint32
 CatalogCacheComputeTupleHashValue(CatCache *cache, HeapTuple tuple)
 {
-	ScanKeyData cur_skey[4];
+	ScanKeyData cur_skey[CATCACHE_MAXKEYS];
 	bool		isNull = false;
 
 	/* Copy pre-initialized overhead data for scankey */
@@ -1038,7 +1038,7 @@ SearchCatCache(CatCache *cache,
 			   Datum v3,
 			   Datum v4)
 {
-	ScanKeyData cur_skey[4];
+	ScanKeyData cur_skey[CATCACHE_MAXKEYS];
 	uint32		hashValue;
 	Index		hashIndex;
 	Dlelem	   *elt;
@@ -1279,7 +1279,7 @@ SearchCatCacheList(CatCache *cache,
 				   Datum v3,
 				   Datum v4)
 {
-	ScanKeyData cur_skey[4];
+	ScanKeyData cur_skey[CATCACHE_MAXKEYS];
 	uint32		lHashValue;
 	Dlelem	   *elt;
 	CatCList   *cl;

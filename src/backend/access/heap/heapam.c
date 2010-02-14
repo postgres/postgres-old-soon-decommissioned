@@ -935,9 +935,7 @@ try_relation_open(Oid relationId, LOCKMODE lockmode)
 	 * Now that we have the lock, probe to see if the relation really exists
 	 * or not.
 	 */
-	if (!SearchSysCacheExists(RELOID,
-							  ObjectIdGetDatum(relationId),
-							  0, 0, 0))
+	if (!SearchSysCacheExists1(RELOID, ObjectIdGetDatum(relationId)))
 	{
 		/* Release useless lock */
 		if (lockmode != NoLock)

@@ -478,9 +478,7 @@ TupleDescInitEntry(TupleDesc desc,
 	att->attinhcount = 0;
 	/* attacl and attoptions are not present in tupledescs */
 
-	tuple = SearchSysCache(TYPEOID,
-						   ObjectIdGetDatum(oidtypeid),
-						   0, 0, 0);
+	tuple = SearchSysCache1(TYPEOID, ObjectIdGetDatum(oidtypeid));
 	if (!HeapTupleIsValid(tuple))
 		elog(ERROR, "cache lookup failed for type %u", oidtypeid);
 	typeForm = (Form_pg_type) GETSTRUCT(tuple);

@@ -48,9 +48,7 @@ md5_crypt_verify(const Port *port, const char *role, char *client_pass)
 	ImmediateInterruptOK = false;
 
 	/* Get role info from pg_authid */
-	roleTup = SearchSysCache(AUTHNAME,
-							 PointerGetDatum(role),
-							 0, 0, 0);
+	roleTup = SearchSysCache1(AUTHNAME, PointerGetDatum(role));
 	if (!HeapTupleIsValid(roleTup))
 		return STATUS_ERROR;					/* no such user */
 

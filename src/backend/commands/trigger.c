@@ -574,9 +574,8 @@ CreateTrigger(CreateTrigStmt *stmt, const char *queryString,
 	 * entries.
 	 */
 	pgrel = heap_open(RelationRelationId, RowExclusiveLock);
-	tuple = SearchSysCacheCopy(RELOID,
-							   ObjectIdGetDatum(RelationGetRelid(rel)),
-							   0, 0, 0);
+	tuple = SearchSysCacheCopy1(RELOID,
+								ObjectIdGetDatum(RelationGetRelid(rel)));
 	if (!HeapTupleIsValid(tuple))
 		elog(ERROR, "cache lookup failed for relation %u",
 			 RelationGetRelid(rel));

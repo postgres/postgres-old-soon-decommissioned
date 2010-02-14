@@ -692,9 +692,7 @@ lastval(PG_FUNCTION_ARGS)
 				 errmsg("lastval is not yet defined in this session")));
 
 	/* Someone may have dropped the sequence since the last nextval() */
-	if (!SearchSysCacheExists(RELOID,
-							  ObjectIdGetDatum(last_used_seq->relid),
-							  0, 0, 0))
+	if (!SearchSysCacheExists1(RELOID, ObjectIdGetDatum(last_used_seq->relid)))
 		ereport(ERROR,
 				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
 				 errmsg("lastval is not yet defined in this session")));

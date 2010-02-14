@@ -47,10 +47,9 @@ RemoveRewriteRule(Oid owningRel, const char *ruleName, DropBehavior behavior,
 	/*
 	 * Find the tuple for the target rule.
 	 */
-	tuple = SearchSysCache(RULERELNAME,
-						   ObjectIdGetDatum(owningRel),
-						   PointerGetDatum(ruleName),
-						   0, 0);
+	tuple = SearchSysCache2(RULERELNAME,
+							ObjectIdGetDatum(owningRel),
+							PointerGetDatum(ruleName));
 
 	/*
 	 * complain if no rule with such name exists

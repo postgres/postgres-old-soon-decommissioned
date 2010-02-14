@@ -402,9 +402,7 @@ ForceTransactionIdLimitUpdate(void)
 	if (TransactionIdFollowsOrEquals(nextXid, xidVacLimit) &&
 		TransactionIdIsValid(xidVacLimit))
 		return true;			/* past VacLimit, don't delay updating */
-	if (!SearchSysCacheExists(DATABASEOID,
-							  ObjectIdGetDatum(oldestXidDB),
-							  0, 0, 0))
+	if (!SearchSysCacheExists1(DATABASEOID, ObjectIdGetDatum(oldestXidDB)))
 		return true;			/* could happen, per comments above */
 	return false;
 }

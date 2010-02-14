@@ -123,9 +123,7 @@ format_type_internal(Oid type_oid, int32 typemod,
 	if (type_oid == InvalidOid && allow_invalid)
 		return pstrdup("-");
 
-	tuple = SearchSysCache(TYPEOID,
-						   ObjectIdGetDatum(type_oid),
-						   0, 0, 0);
+	tuple = SearchSysCache1(TYPEOID, ObjectIdGetDatum(type_oid));
 	if (!HeapTupleIsValid(tuple))
 	{
 		if (allow_invalid)
@@ -151,9 +149,7 @@ format_type_internal(Oid type_oid, int32 typemod,
 	{
 		/* Switch our attention to the array element type */
 		ReleaseSysCache(tuple);
-		tuple = SearchSysCache(TYPEOID,
-							   ObjectIdGetDatum(array_base_type),
-							   0, 0, 0);
+		tuple = SearchSysCache1(TYPEOID, ObjectIdGetDatum(array_base_type));
 		if (!HeapTupleIsValid(tuple))
 		{
 			if (allow_invalid)
