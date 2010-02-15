@@ -618,7 +618,7 @@ psql_completion(char *text, int start, int end)
 	static const char *const sql_commands[] = {
 		"ABORT", "ALTER", "ANALYZE", "BEGIN", "CHECKPOINT", "CLOSE", "CLUSTER",
 		"COMMENT", "COMMIT", "COPY", "CREATE", "DEALLOCATE", "DECLARE",
-		"DELETE FROM", "DISCARD", "DROP", "END", "EXECUTE", "EXPLAIN", "FETCH",
+		"DELETE FROM", "DISCARD", "DO", "DROP", "END", "EXECUTE", "EXPLAIN", "FETCH",
 		"GRANT", "INSERT", "LISTEN", "LOAD", "LOCK", "MOVE", "NOTIFY", "PREPARE",
 		"REASSIGN", "REINDEX", "RELEASE", "RESET", "REVOKE", "ROLLBACK",
 		"SAVEPOINT", "SELECT", "SET", "SHOW", "START", "TABLE", "TRUNCATE", "UNLISTEN",
@@ -1530,6 +1530,18 @@ psql_completion(char *text, int start, int end)
 		{"ALL", "PLANS", "TEMP", NULL};
 
 		COMPLETE_WITH_LIST(list_DISCARD);
+	}
+
+/* DO */
+	/*
+	 * Complete DO with LANGUAGE.
+	 */
+	else if (pg_strcasecmp(prev_wd, "DO") == 0)
+	{
+		static const char *const list_DO[] =
+		{"LANGUAGE", NULL};
+
+		COMPLETE_WITH_LIST(list_DO);
 	}
 
 /* DROP (when not the previous word) */
