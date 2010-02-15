@@ -51,7 +51,6 @@ copydir(char *fromdir, char *todir, bool recurse)
 {
 	DIR		   *xldir;
 	struct dirent *xlde;
-	int         dirfd;
 	char		fromfile[MAXPGPATH];
 	char		tofile[MAXPGPATH];
 
