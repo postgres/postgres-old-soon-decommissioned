@@ -148,7 +148,7 @@ sub mkvcbuild
     if ($solution->{options}->{python})
     {
         # Attempt to get python version and location. Assume python.exe in specified dir.
-        open(P, $solution->{options}->{python} . "\\python -c \"import sys;print(sys.prefix);print(str(sys.version_info[0])+str(sys.version_info[1]))\" |") || die "Could not query for python versoin!\n";
+        open(P, $solution->{options}->{python} . "\\python -c \"import sys;print(sys.prefix);print(str(sys.version_info[0])+str(sys.version_info[1]))\" |") || die "Could not query for python version!\n";
         my $pyprefix = <P>;chomp($pyprefix);
         my $pyver = <P>;chomp($pyver);
         close(P);
