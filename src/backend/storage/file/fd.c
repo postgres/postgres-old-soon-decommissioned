@@ -320,6 +320,22 @@ pg_fdatasync(int fd)
 }
 
 /*
+ * pg_flush_data --- advise OS that the data described won't be needed soon
+ *
+ * Not all platforms have posix_fadvise; treat as noop if not available.
+ */
+int
+pg_flush_data(int fd, off_t offset, off_t amount)
+{
+#if defined(USE_POSIX_FADVISE) && defined(POSIX_FADV_DONTNEED)
+	return posix_fadvise(fd, offset, amount, POSIX_FADV_DONTNEED);
+#else
+	return 0;
+#endif
+}
+
+
+/*
  * InitFileAccess --- initialize this module during backend startup
  *
  * This is called during either normal or standalone backend start.
