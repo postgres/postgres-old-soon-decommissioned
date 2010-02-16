@@ -240,6 +240,7 @@ explain_ExecutorEnd(QueryDesc *queryDesc)
 			es.format = auto_explain_log_format;
 
 			ExplainBeginOutput(&es);
+			ExplainQueryText(&es, queryDesc);
 			ExplainPrintPlan(&es, queryDesc);
 			ExplainEndOutput(&es);
 
@@ -255,7 +256,8 @@ explain_ExecutorEnd(QueryDesc *queryDesc)
 			 */
 			ereport(LOG,
 					(errmsg("duration: %.3f ms  plan:\n%s",
-							msec, es.str->data)));
+							msec, es.str->data),
+						errhidestmt(true)));
 
 			pfree(es.str->data);
 		}

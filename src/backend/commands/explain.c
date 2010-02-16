@@ -488,6 +488,21 @@ ExplainPrintPlan(ExplainState *es, QueryDesc *queryDesc)
 }
 
 /*
+ * ExplainQueryText -
+ *    add a "Query Text" node that contains the actual text of the query
+ * 
+ * The caller should have set up the options fields of *es, as well as
+ * initializing the output buffer es->str. 
+ *
+ */
+void
+ExplainQueryText(ExplainState *es, QueryDesc *queryDesc)
+{
+	if (queryDesc->sourceText)
+		ExplainPropertyText("Query Text", queryDesc->sourceText, es);
+}
+
+/*
  * report_triggers -
  *		report execution stats for a single relation's triggers
  */

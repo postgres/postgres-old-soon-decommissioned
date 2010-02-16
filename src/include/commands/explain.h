@@ -66,6 +66,8 @@ extern void ExplainOnePlan(PlannedStmt *plannedstmt, ExplainState *es,
 
 extern void ExplainPrintPlan(ExplainState *es, QueryDesc *queryDesc);
 
+extern void ExplainQueryText(ExplainState *es, QueryDesc *queryDesc);
+
 extern void ExplainBeginOutput(ExplainState *es);
 extern void ExplainEndOutput(ExplainState *es);
 extern void ExplainSeparatePlans(ExplainState *es);
