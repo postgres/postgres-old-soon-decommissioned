@@ -34,7 +34,7 @@ extern bool do_pset(const char *param,
 		printQueryOpt *popt,
 		bool quiet);
 
-extern void connection_warnings(void);
+extern void connection_warnings(bool in_startup);
 
 extern void SyncVariables(void);
 

@@ -294,7 +294,7 @@ main(int argc, char *argv[])
 		if (!options.no_psqlrc)
 			process_psqlrc(argv[0]);
 
-		connection_warnings();
+		connection_warnings(true);
 		if (!pset.quiet && !pset.notty)
 			printf(_("Type \"help\" for help.\n\n"));
 		if (!pset.notty)

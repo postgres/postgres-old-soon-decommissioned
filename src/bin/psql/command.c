@@ -1331,7 +1331,7 @@ do_connect(char *dbname, char *user, char *host, char *port)
 	PQsetNoticeProcessor(n_conn, NoticeProcessor, NULL);
 	pset.db = n_conn;
 	SyncVariables();
-	connection_warnings();		/* Must be after SyncVariables */
+	connection_warnings(false);		/* Must be after SyncVariables */
 
 	/* Tell the user about the new connection */
 	if (!pset.quiet)
@@ -1357,7 +1357,7 @@ do_connect(char *dbname, char *user, char *host, char *port)
 
 
 void
-connection_warnings(void)
+connection_warnings(bool in_startup)
 {
 	if (!pset.quiet && !pset.notty)
 	{
@@ -1383,7 +1383,8 @@ connection_warnings(void)
 			printf(_("%s (%s, server %s)\n"),
 				   pset.progname, PG_VERSION, server_version);
 		}
-		else
+		/* For version match, only print psql banner on startup. */
+		else if (in_startup)
 			printf("%s (%s)\n", pset.progname, PG_VERSION);
 
 		if (pset.sversion / 100 != client_ver / 100)
