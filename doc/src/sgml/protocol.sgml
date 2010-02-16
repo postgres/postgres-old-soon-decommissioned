@@ -2222,6 +2222,12 @@ CommandComplete (B)
        </para>
 
        <para>
+        For a <command>SELECT</command> or <command>CREATE TABLE AS</command>
+        command, the tag is <literal>SELECT <replaceable>rows</replaceable></literal>
+        where <replaceable>rows</replaceable> is the number of rows retrieved.
+       </para>
+
+       <para>
         For a <command>MOVE</command> command, the tag is
         <literal>MOVE <replaceable>rows</replaceable></literal> where
         <replaceable>rows</replaceable> is the number of rows the
