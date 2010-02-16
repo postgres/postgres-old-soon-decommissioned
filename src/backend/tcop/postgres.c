@@ -3779,7 +3779,8 @@ PostgresMain(int argc, char *argv[], const char *username)
 		 * collector, and to update the PS stats display.  We avoid doing
 		 * those every time through the message loop because it'd slow down
 		 * processing of batched messages, and because we don't want to report
-		 * uncommitted updates (that confuses autovacuum).
+		 * uncommitted updates (that confuses autovacuum).  The notification
+		 * processor wants a call too, if we are not in a transaction block.
 		 */
 		if (send_ready_for_query)
 		{
@@ -3795,6 +3796,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 			}
 			else
 			{
+				ProcessCompletedNotifies();
 				pgstat_report_stat(false);
 
 				set_ps_display("idle", false);

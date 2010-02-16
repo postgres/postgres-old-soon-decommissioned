@@ -555,8 +555,13 @@ PrintNotifications(void)
 
 	while ((notify = PQnotifies(pset.db)))
 	{
-		fprintf(pset.queryFout, _("Asynchronous notification \"%s\" received from server process with PID %d.\n"),
-				notify->relname, notify->be_pid);
+		/* for backward compatibility, only show payload if nonempty */
+		if (notify->extra[0])
+			fprintf(pset.queryFout, _("Asynchronous notification \"%s\" with payload \"%s\" received from server process with PID %d.\n"),
+					notify->relname, notify->extra, notify->be_pid);
+		else
+			fprintf(pset.queryFout, _("Asynchronous notification \"%s\" received from server process with PID %d.\n"),
+					notify->relname, notify->be_pid);
 		fflush(pset.queryFout);
 		PQfreemem(notify);
 	}

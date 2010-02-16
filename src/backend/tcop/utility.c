@@ -926,17 +926,17 @@ standard_ProcessUtility(Node *parsetree,
 		case T_NotifyStmt:
 			{
 				NotifyStmt *stmt = (NotifyStmt *) parsetree;
-				PreventCommandDuringRecovery();
 
-				Async_Notify(stmt->conditionname);
+				PreventCommandDuringRecovery();
+				Async_Notify(stmt->conditionname, stmt->payload);
 			}
 			break;
 
 		case T_ListenStmt:
 			{
 				ListenStmt *stmt = (ListenStmt *) parsetree;
-				PreventCommandDuringRecovery();
 
+				PreventCommandDuringRecovery();
 				CheckRestrictedOperation("LISTEN");
 				Async_Listen(stmt->conditionname);
 			}
@@ -945,8 +945,8 @@ standard_ProcessUtility(Node *parsetree,
 		case T_UnlistenStmt:
 			{
 				UnlistenStmt *stmt = (UnlistenStmt *) parsetree;
-				PreventCommandDuringRecovery();
 
+				PreventCommandDuringRecovery();
 				CheckRestrictedOperation("UNLISTEN");
 				if (stmt->conditionname)
 					Async_Unlisten(stmt->conditionname);
@@ -1105,8 +1105,8 @@ standard_ProcessUtility(Node *parsetree,
 		case T_ReindexStmt:
 			{
 				ReindexStmt *stmt = (ReindexStmt *) parsetree;
-				PreventCommandDuringRecovery();
 
+				PreventCommandDuringRecovery();
 				switch (stmt->kind)
 				{
 					case OBJECT_INDEX:

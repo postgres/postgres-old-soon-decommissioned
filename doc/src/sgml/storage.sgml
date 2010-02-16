@@ -78,6 +78,11 @@ Item
 </row>
 
 <row>
+ <entry><filename>pg_notify</></entry>
+ <entry>Subdirectory containing LISTEN/NOTIFY status data</entry>
+</row>
+
+<row>
  <entry><filename>pg_stat_tmp</></entry>
  <entry>Subdirectory containing temporary files for the statistics
   subsystem</entry>

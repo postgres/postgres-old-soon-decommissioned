@@ -2777,6 +2777,7 @@ _copyNotifyStmt(NotifyStmt *from)
 	NotifyStmt *newnode = makeNode(NotifyStmt);
 
 	COPY_STRING_FIELD(conditionname);
+	COPY_STRING_FIELD(payload);
 
 	return newnode;
 }

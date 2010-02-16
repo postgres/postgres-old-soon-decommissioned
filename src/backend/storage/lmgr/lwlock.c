@@ -24,6 +24,7 @@
 #include "access/clog.h"
 #include "access/multixact.h"
 #include "access/subtrans.h"
+#include "commands/async.h"
 #include "miscadmin.h"
 #include "pg_trace.h"
 #include "storage/ipc.h"
@@ -173,6 +174,9 @@ NumLWLocks(void)
 
 	/* multixact.c needs two SLRU areas */
 	numLocks += NUM_MXACTOFFSET_BUFFERS + NUM_MXACTMEMBER_BUFFERS;
+
+	/* async.c needs one per Async buffer */
+	numLocks += NUM_ASYNC_BUFFERS;
 
 	/*
 	 * Add any requested by loadable modules; for backwards-compatibility

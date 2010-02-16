@@ -3465,6 +3465,11 @@ get_utility_query_def(Query *query, deparse_context *context)
 							 0, PRETTYINDENT_STD, 1);
 		appendStringInfo(buf, "NOTIFY %s",
 						 quote_identifier(stmt->conditionname));
+		if (stmt->payload)
+		{
+			appendStringInfoString(buf, ", ");
+			simple_quote_literal(buf, stmt->payload);
+		}
 	}
 	else
 	{

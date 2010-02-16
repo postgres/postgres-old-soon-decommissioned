@@ -1820,6 +1820,7 @@ _outNotifyStmt(StringInfo str, NotifyStmt *node)
 	WRITE_NODE_TYPE("NOTIFY");
 
 	WRITE_STRING_FIELD(conditionname);
+	WRITE_STRING_FIELD(payload);
 }
 
 static void

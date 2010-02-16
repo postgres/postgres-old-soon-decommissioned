@@ -2458,6 +2458,7 @@ main(int argc, char *argv[])
 		"pg_xlog",
 		"pg_xlog/archive_status",
 		"pg_clog",
+		"pg_notify",
 		"pg_subtrans",
 		"pg_twophase",
 		"pg_multixact/members",
