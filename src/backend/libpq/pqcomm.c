@@ -837,9 +837,13 @@ pq_getbyte_if_available(unsigned char *c)
 	}
 
 	/* Temporarily put the socket into non-blocking mode */
+#ifdef WIN32
+	pgwin32_noblock = 1;
+#else
 	if (!pg_set_noblock(MyProcPort->sock))
 		ereport(ERROR,
 				(errmsg("couldn't put socket to non-blocking mode: %m")));
+#endif
 	MyProcPort->noblock = true;
 	PG_TRY();
 	{
@@ -851,16 +855,24 @@ pq_getbyte_if_available(unsigned char *c)
 		 * The rest of the backend code assumes the socket is in blocking
 		 * mode, so treat failure as FATAL.
 		 */
+#ifdef WIN32
+		pgwin32_noblock = 0;
+#else
 		if (!pg_set_block(MyProcPort->sock))
 			ereport(FATAL,
 					(errmsg("couldn't put socket to blocking mode: %m")));
+#endif
 		MyProcPort->noblock = false;
 		PG_RE_THROW();
 	}
 	PG_END_TRY();
+#ifdef WIN32
+	pgwin32_noblock = 0;
+#else
 	if (!pg_set_block(MyProcPort->sock))
 		ereport(FATAL,
 				(errmsg("couldn't put socket to blocking mode: %m")));
+#endif
 	MyProcPort->noblock = false;
 
 	return r;
