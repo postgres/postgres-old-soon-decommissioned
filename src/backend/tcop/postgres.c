@@ -1469,7 +1469,7 @@ exec_bind_message(StringInfo input_message)
 	}
 	else
 	{
-		/* special-case the unnamed statement */
+		/* Unnamed statements are re-prepared for every bind */
 		psrc = unnamed_stmt_psrc;
 		if (!psrc)
 			ereport(ERROR,
