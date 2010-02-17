@@ -139,8 +139,8 @@ NOTIFY <replaceable class="PARAMETER">channel</replaceable> [ , <replaceable cla
     <listitem>
      <para>
       The <quote>payload</> string to be communicated along with the
-      notification. This string must be shorter than 8000 bytes, and
-      is treated as text.
+      notification.  This must be specified as a simple string literal.
+      In the default configuration it must be shorter than 8000 bytes.
       (If binary data or large amounts of information need to be communicated,
       it's best to put it in a database table and send the key of the record.)
      </para>
