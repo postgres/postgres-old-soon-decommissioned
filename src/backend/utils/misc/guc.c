@@ -2679,7 +2679,7 @@ static struct config_enum ConfigureNamesEnum[] =
 	},
 
 	{
-		{"log_error_verbosity", PGC_SUSET, LOGGING_WHEN,
+		{"log_error_verbosity", PGC_SUSET, LOGGING_WHAT,
 			gettext_noop("Sets the verbosity of logged messages."),
 			NULL
 		},
