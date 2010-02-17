@@ -327,7 +327,7 @@ pgwin32_recv(SOCKET s, char *buf, int len, int f)
 	{
 		/*
 		 * No data received, and we are in "emulated non-blocking mode", so return
-		 * indicating thta we'd block if we were to continue.
+		 * indicating that we'd block if we were to continue.
 		 */
 		errno = EWOULDBLOCK;
 		return -1;
