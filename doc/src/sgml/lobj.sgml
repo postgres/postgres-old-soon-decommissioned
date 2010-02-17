@@ -61,7 +61,7 @@
    </para>
 
    <para>
-    As of <productname>PostgreSQL</> 8.5, large objects have an owner
+    As of <productname>PostgreSQL</> 9.0, large objects have an owner
     and a set of access permissions, which can be managed using
     <xref linkend="sql-grant" endterm="sql-grant-title"> and
     <xref linkend="sql-revoke" endterm="sql-revoke-title">.  

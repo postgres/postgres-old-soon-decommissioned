@@ -542,7 +542,7 @@ SELECT key, count(*) FROM
   </para>
 
   <para>
-   As of PostgreSQL 8.5, <type>hstore</> uses a different internal
+   As of PostgreSQL 9.0, <type>hstore</> uses a different internal
    representation than previous versions. This presents no obstacle for
    dump/restore upgrades since the text representation (used in the dump) is
    unchanged.

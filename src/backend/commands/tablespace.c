@@ -19,7 +19,7 @@
  * Thus the full path to an arbitrary file is
  *			$PGDATA/pg_tblspc/spcoid/PG_MAJORVER_CATVER/dboid/relfilenode
  * e.g.
- *			$PGDATA/pg_tblspc/20981/PG_8.5_201001061/719849/83292814
+ *			$PGDATA/pg_tblspc/20981/PG_9.0_201002161/719849/83292814
  *
  * There are two tablespaces created at initdb time: pg_global (for shared
  * tables) and pg_default (for everything else).  For backwards compatibility

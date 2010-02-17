@@ -2439,7 +2439,7 @@ EXEC SQL DESCRIBE stmt1 INTO SQL DESCRIPTOR mydesc;
    </para>
 
    <para>
-    Before PostgreSQL 8.5, the <literal>SQL</literal> keyword was optional,
+    Before PostgreSQL 9.0, the <literal>SQL</literal> keyword was optional,
     so using <literal>DESCRIPTOR</literal> and <literal>SQL DESCRIPTOR</literal>
     produced named SQL Descriptor Areas. Now it is mandatory, omitting
     the <literal>SQL</literal> keyword produces SQLDA Descriptor Areas,

@@ -7958,7 +7958,7 @@ pg_start_backup_callback(int code, Datum arg)
  * created by pg_start_backup, creating a backup history file in pg_xlog
  * instead (whence it will immediately be archived). The backup history file
  * contains the same info found in the label file, plus the backup-end time
- * and WAL location. Before 8.5, the backup-end time was read from the backup
+ * and WAL location. Before 9.0, the backup-end time was read from the backup
  * history file at the beginning of archive recovery, but we now use the WAL
  * record for that and the file is for informational and debug purposes only.
  *

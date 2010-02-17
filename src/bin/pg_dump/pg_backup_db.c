@@ -704,7 +704,7 @@ void
 DropBlobIfExists(ArchiveHandle *AH, Oid oid)
 {
 	/* Call lo_unlink only if exists to avoid not-found error. */
-	if (PQserverVersion(AH->connection) >= 80500)
+	if (PQserverVersion(AH->connection) >= 90000)
 	{
 		ahprintf(AH, "SELECT pg_catalog.lo_unlink(oid) "
 					 "FROM pg_catalog.pg_largeobject_metadata "

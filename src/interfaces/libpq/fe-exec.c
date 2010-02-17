@@ -3345,7 +3345,7 @@ PQescapeByteaConn(PGconn *conn,
 		return NULL;
 	return PQescapeByteaInternal(conn, from, from_length, to_length,
 								 conn->std_strings,
-								 (conn->sversion >= 80500));
+								 (conn->sversion >= 90000));
 }
 
 unsigned char *

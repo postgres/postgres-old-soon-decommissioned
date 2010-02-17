@@ -211,7 +211,7 @@ typedef struct Param
  * Aggref
  *
  * The aggregate's args list is a targetlist, ie, a list of TargetEntry nodes
- * (before Postgres 8.5 it was just bare expressions).  The non-resjunk TLEs
+ * (before Postgres 9.0 it was just bare expressions).  The non-resjunk TLEs
  * represent the aggregate's regular arguments (if any) and resjunk TLEs can
  * be added at the end to represent ORDER BY expressions that are not also
  * arguments.  As in a top-level Query, the TLEs can be marked with

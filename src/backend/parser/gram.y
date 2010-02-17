@@ -1997,7 +1997,7 @@ ClosePortalStmt:
  *				COPY ( SELECT ... ) TO file [WITH] [(options)]
  *
  *				In the preferred syntax the options are comma-separated
- *				and use generic identifiers instead of keywords.  The pre-8.5
+ *				and use generic identifiers instead of keywords.  The pre-9.0
  *				syntax had a hard-wired, space-separated set of options.
  *
  *				Really old syntax, from versions 7.2 and prior:

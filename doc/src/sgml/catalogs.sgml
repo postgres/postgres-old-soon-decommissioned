@@ -3134,7 +3134,7 @@
   </para>
 
   <para>
-   Prior to <productname>PostgreSQL</> 8.5, there was no permission structure
+   Prior to <productname>PostgreSQL</> 9.0, there was no permission structure
    associated with large objects.  As a result,
    <structname>pg_largeobject</structname> was publicly readable and could be
    used to obtain the OIDs (and contents) of all large objects in the system.

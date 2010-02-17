@@ -94,7 +94,7 @@ ROLLBACK;
   <para>
    Only the <literal>ANALYZE</literal> and <literal>VERBOSE</literal> options
    can be specified, and only in that order, without surrounding the option
-   list in parentheses.  Prior to <productname>PostgreSQL</productname> 8.5,
+   list in parentheses.  Prior to <productname>PostgreSQL</productname> 9.0,
    the unparenthesized syntax was the only one supported.  It is expected that
    all new options will be supported only in the parenthesized syntax.
   </para>

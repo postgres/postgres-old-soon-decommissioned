@@ -70,7 +70,7 @@ can be created without links to the main documentation.
   The reason for splitting the release notes this way is so that appropriate
   subsets can easily be copied into back branches.
 -->
-&release-8.5;
+&release-9.0;
 &release-8.4;
 &release-8.3;
 &release-8.2;

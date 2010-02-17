@@ -227,7 +227,7 @@ vacuum_one_database(const char *dbname, bool full, bool verbose, bool and_analyz
 	else
 	{
 		appendPQExpBuffer(&sql, "VACUUM");
-		if (PQserverVersion(conn) >= 80500)
+		if (PQserverVersion(conn) >= 90000)
 		{
 			const char *paren = " (";
 			const char *comma = ", ";

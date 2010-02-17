@@ -4344,7 +4344,7 @@ xactGetCommittedChildren(TransactionId **ptr)
  */
 
 /*
- * Before 8.5 this was a fairly short function, but now it performs many
+ * Before 9.0 this was a fairly short function, but now it performs many
  * actions for which the order of execution is critical.
  */
 static void

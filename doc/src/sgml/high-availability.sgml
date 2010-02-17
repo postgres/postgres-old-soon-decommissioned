@@ -747,7 +747,7 @@ if (!triggered)
    </para>
 
    <para>
-    Starting with <productname>PostgreSQL</> version 8.5, you can use
+    Starting with <productname>PostgreSQL</> version 9.0, you can use
     streaming replication (see <xref linkend="streaming-replication">) to
     achieve the same with less effort.
    </para>
