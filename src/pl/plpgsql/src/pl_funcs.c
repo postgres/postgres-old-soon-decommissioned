@@ -543,10 +543,13 @@ dump_fori(PLpgSQL_stmt_fori *stmt)
 	printf("    upper = ");
 	dump_expr(stmt->upper);
 	printf("\n");
-	dump_ind();
-	printf("    step = ");
-	dump_expr(stmt->step);
-	printf("\n");
+	if (stmt->step)
+	{
+		dump_ind();
+		printf("    step = ");
+		dump_expr(stmt->step);
+		printf("\n");
+	}
 	dump_indent -= 2;
 
 	dump_stmts(stmt->body);
