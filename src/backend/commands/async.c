@@ -137,9 +137,12 @@
 /*
  * Maximum size of a NOTIFY payload, including terminating NULL.  This
  * must be kept small enough so that a notification message fits on one
- * SLRU page.
+ * SLRU page.  The magic fudge factor here is noncritical as long as it's
+ * more than AsyncQueueEntryEmptySize --- we make it significantly bigger
+ * than that, so changes in that data structure won't affect user-visible
+ * restrictions.
  */
-#define NOTIFY_PAYLOAD_MAX_LENGTH	8000
+#define NOTIFY_PAYLOAD_MAX_LENGTH	(BLCKSZ - NAMEDATALEN - 128)
 
 /*
  * Struct representing an entry in the global notify queue
