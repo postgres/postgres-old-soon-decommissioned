@@ -256,7 +256,11 @@ rloop:
 			case SSL_ERROR_WANT_READ:
 			case SSL_ERROR_WANT_WRITE:
 				if (port->noblock)
-					return 0;
+				{
+					errno = EWOULDBLOCK;
+					n = -1;
+					break;
+				}
 #ifdef WIN32
 				pgwin32_waitforsinglesocket(SSL_get_fd(port->ssl),
 											(err == SSL_ERROR_WANT_READ) ?
