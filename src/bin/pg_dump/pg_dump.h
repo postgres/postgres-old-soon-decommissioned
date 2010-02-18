@@ -115,8 +115,8 @@ typedef enum
 	DO_FDW,
 	DO_FOREIGN_SERVER,
 	DO_DEFAULT_ACL,
-	DO_BLOBS,
-	DO_BLOB_COMMENTS
+	DO_BLOB,
+	DO_BLOB_DATA
 } DumpableObjectType;
 
 typedef struct _dumpableObject
@@ -442,6 +442,13 @@ typedef struct _defaultACLInfo
 	char	    defaclobjtype;
 	char	   *defaclacl;
 } DefaultACLInfo;
+
+typedef struct _blobInfo
+{
+	DumpableObject	dobj;
+	char	   *rolname;
+	char	   *blobacl;
+} BlobInfo;
 
 /* global decls */
 extern bool force_quotes;		/* double-quotes for identifiers flag */
