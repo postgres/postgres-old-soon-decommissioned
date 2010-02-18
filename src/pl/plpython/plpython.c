@@ -1853,7 +1853,7 @@ PLy_spi_prepare(PyObject * self, PyObject * args)
 	PyObject   *volatile optr = NULL;
 	char	   *query;
 	void	   *tmpplan;
-	MemoryContext oldcontext;
+	volatile MemoryContext oldcontext;
 
 	/* Can't execute more if we have an unhandled error */
 	if (PLy_error_in_progress)
@@ -2007,7 +2007,7 @@ PLy_spi_execute_plan(PyObject * ob, PyObject * list, int limit)
 	int			i,
 				rv;
 	PLyPlanObject *plan;
-	MemoryContext oldcontext;
+	volatile MemoryContext oldcontext;
 
 	if (list != NULL)
 	{
@@ -2151,7 +2151,7 @@ static PyObject *
 PLy_spi_execute_query(char *query, int limit)
 {
 	int			rv;
-	MemoryContext oldcontext;
+	volatile MemoryContext oldcontext;
 
 	oldcontext = CurrentMemoryContext;
 	PG_TRY();
@@ -2188,7 +2188,7 @@ static PyObject *
 PLy_spi_execute_fetch_result(SPITupleTable *tuptable, int rows, int status)
 {
 	PLyResultObject *result;
-	MemoryContext oldcontext;
+	volatile MemoryContext oldcontext;
 
 	result = (PLyResultObject *) PLy_result_new();
 	Py_DECREF(result->status);
