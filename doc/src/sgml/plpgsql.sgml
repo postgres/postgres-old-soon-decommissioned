@@ -4044,19 +4044,6 @@ a_output := a_output || $$ if v_$$ || referrer_keys.kind || $$ like '$$
     <itemizedlist>
      <listitem>
       <para>
-       There are no default values for parameters in <productname>PostgreSQL</>.
-      </para>
-     </listitem>
-
-     <listitem>
-      <para>
-       You can overload function names in <productname>PostgreSQL</>. This is
-       often used to work around the lack of default parameters.
-      </para>
-     </listitem>
-
-     <listitem>
-      <para>
        If a name used in a SQL command could be either a column name of a
        table or a reference to a variable of the function,
        <application>PL/SQL</> treats it as a column name, while
