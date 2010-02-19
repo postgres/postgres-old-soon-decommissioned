@@ -5757,7 +5757,7 @@ pg_stop_backup(PG_FUNCTION_ARGS)
 	INSERT_RECPTR(stoppoint, Insert, Insert->curridx);
 	LWLockRelease(WALInsertLock);
 
-	XLByteToSeg(stoppoint, _logId, _logSeg);
+	XLByteToPrevSeg(stoppoint, _logId, _logSeg);
 	XLogFileName(stopxlogfilename, ThisTimeLineID, _logId, _logSeg);
 
 	/*
