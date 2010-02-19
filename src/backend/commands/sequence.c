@@ -736,6 +736,9 @@ do_setval(Oid relid, int64 next, bool iscalled)
 	Buffer		buf;
 	Form_pg_sequence seq;
 
+	/* setval() writes to database and must be prevented during recovery */
+	PreventCommandDuringRecovery();
+
 	/* open and AccessShareLock sequence */
 	init_sequence(relid, &elm, &seqrel);
 
