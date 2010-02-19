@@ -403,6 +403,16 @@
      </varlistentry>
 
      <varlistentry>
+       <term><option>-V</></term>
+       <term><option>--version</></term>
+       <listitem>
+       <para>
+       Print the <application>pg_restore</application> version and exit.
+       </para>
+       </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term><option>-x</option></term>
       <term><option>--no-privileges</option></term>
       <term><option>--no-acl</option></term>
@@ -482,6 +492,17 @@
         <option>--exit-on-error</>.
        </para>
       </listitem>
+     </varlistentry>
+
+     <varlistentry>
+       <term><option>-?</></term>
+       <term><option>--help</></term>
+       <listitem>
+       <para>
+       Show help about <application>pg_restore</application> command line
+       arguments, and exit.
+       </para>
+       </listitem>
      </varlistentry>
 
     </variablelist>

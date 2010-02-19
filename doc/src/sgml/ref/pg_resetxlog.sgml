@@ -178,6 +178,14 @@ PostgreSQL documentation
    This is mainly a debugging tool, but can be useful as a sanity check
    before allowing <command>pg_resetxlog</command> to proceed for real.
   </para>
+
+  <para>
+   The <literal>-V</> and <literal>--version</> options print 
+   the <application>pg_resetxlog</application> version and exit.  The
+   options <literal>-?</> and <literal>--help</> show supported arguments,
+   and exit.
+  </para>
+
  </refsect1>
 
  <refsect1>

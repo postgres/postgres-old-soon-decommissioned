@@ -176,6 +176,16 @@ PostgreSQL documentation
      </varlistentry>
 
      <varlistentry>
+       <term><option>-V</></term>
+       <term><option>--version</></term>
+       <listitem>
+       <para>
+       Print the <application>vacuumdb</application> version and exit.
+       </para>
+       </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term><option>-z</option></term>
       <term><option>--analyze</option></term>
       <listitem>
@@ -183,6 +193,17 @@ PostgreSQL documentation
         Also calculate statistics for use by the optimizer.
        </para>
       </listitem>
+     </varlistentry>
+
+     <varlistentry>
+       <term><option>-?</></term>
+       <term><option>--help</></term>
+       <listitem>
+       <para>
+       Show help about <application>vacuumdb</application> command line
+       arguments, and exit.
+       </para>
+       </listitem>
      </varlistentry>
 
     </variablelist>
