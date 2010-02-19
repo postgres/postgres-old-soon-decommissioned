@@ -126,7 +126,7 @@ psql <replaceable class="parameter">dbname</replaceable> &lt; <replaceable class
     execute after an SQL error is encountered. You might wish to run
     <application>psql</application> with
     the <literal>ON_ERROR_STOP</> variable set to alter that
-    behaviour and have <application>psql</application> exit with an
+    behavior and have <application>psql</application> exit with an
     exit status of 3 if an SQL error occurs:
 <programlisting>
 psql --set ON_ERROR_STOP=on dbname &lt; infile
