@@ -15,6 +15,8 @@
 #include "access/xlogdefs.h"
 #include "storage/spin.h"
 
+extern bool am_walreceiver;
+
 /*
  * MAXCONNINFO: maximum size of a connection string.
  *
