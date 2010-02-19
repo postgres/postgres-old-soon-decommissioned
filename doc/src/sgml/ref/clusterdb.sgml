@@ -29,8 +29,8 @@ PostgreSQL documentation
    <sbr>
    <command>clusterdb</command>
    <arg rep="repeat"><replaceable>connection-option</replaceable></arg>
-   <group><arg>--all</arg><arg>-a</arg></group>
    <group><arg>--verbose</arg><arg>-v</arg></group>
+   <group><arg>--all</arg><arg>-a</arg></group>
   </cmdsynopsis>
  </refsynopsisdiv>
  
