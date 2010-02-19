@@ -748,7 +748,9 @@ do_start(void)
 
 		if (test_postmaster_connection(false) == false)
 		{
-			printf(_("could not start server\n"));
+			write_stderr(_("%s: could not start server\n"
+						   "Examine the log output.\n"),
+						 progname);
 			exit(1);
 		}
 		else
@@ -828,7 +830,7 @@ do_stop(void)
 		}
 		print_msg(_(" done\n"));
 
-		printf(_("server stopped\n"));
+		print_msg(_("server stopped\n"));
 	}
 }
 
@@ -907,7 +909,7 @@ do_restart(void)
 		}
 
 		print_msg(_(" done\n"));
-		printf(_("server stopped\n"));
+		print_msg(_("server stopped\n"));
 	}
 	else
 	{
