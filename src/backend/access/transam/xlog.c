@@ -6675,7 +6675,7 @@ pg_stop_backup(PG_FUNCTION_ARGS)
 	 */
 	stoppoint = RequestXLogSwitch();
 
-	XLByteToSeg(stoppoint, _logId, _logSeg);
+	XLByteToPrevSeg(stoppoint, _logId, _logSeg);
 	XLogFileName(stopxlogfilename, ThisTimeLineID, _logId, _logSeg);
 
 	/* Use the log timezone here, not the session timezone */
