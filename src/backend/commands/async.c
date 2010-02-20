@@ -534,6 +534,9 @@ pg_notify(PG_FUNCTION_ARGS)
 	else
 		payload = text_to_cstring(PG_GETARG_TEXT_PP(1));
 
+	/* For NOTIFY as a statement, this is checked in ProcessUtility */
+	PreventCommandDuringRecovery("NOTIFY");
+
 	Async_Notify(channel, payload);
 
 	PG_RETURN_VOID();

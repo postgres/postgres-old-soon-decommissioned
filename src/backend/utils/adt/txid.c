@@ -336,7 +336,7 @@ txid_current(PG_FUNCTION_ARGS)
 	 * return a valid current xid, so we should not change
 	 * this to return NULL or similar invalid xid.
 	 */
-	PreventCommandDuringRecovery();
+	PreventCommandDuringRecovery("txid_current()");
 
 	load_xid_epoch(&state);
 

@@ -55,7 +55,7 @@ LockTableCommand(LockStmt *lockstmt)
 		 * This test must match the restrictions defined in LockAcquire()
 		 */
 		if (lockstmt->mode > RowExclusiveLock)
-			PreventCommandDuringRecovery();
+			PreventCommandDuringRecovery("LOCK TABLE");
 
 		LockTableRecurse(reloid, relation,
 						 lockstmt->mode, lockstmt->nowait, recurse);

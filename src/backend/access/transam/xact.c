@@ -402,9 +402,6 @@ AssignTransactionId(TransactionState s)
 	bool		isSubXact = (s->parent != NULL);
 	ResourceOwner currentOwner;
 
-	if (RecoveryInProgress())
-		elog(ERROR, "cannot assign TransactionIds during recovery");
-
 	/* Assert that caller didn't screw up */
 	Assert(!TransactionIdIsValid(s->transactionId));
 	Assert(s->state == TRANS_INPROGRESS);

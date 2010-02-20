@@ -58,6 +58,10 @@ GetNewTransactionId(bool isSubXact)
 		return BootstrapTransactionId;
 	}
 
+	/* safety check, we should never get this far in a HS slave */
+	if (RecoveryInProgress())
+		elog(ERROR, "cannot assign TransactionIds during recovery");
+
 	LWLockAcquire(XidGenLock, LW_EXCLUSIVE);
 
 	xid = ShmemVariableCache->nextXid;
@@ -419,6 +423,10 @@ Oid
 GetNewObjectId(void)
 {
 	Oid			result;
+
+	/* safety check, we should never get this far in a HS slave */
+	if (RecoveryInProgress())
+		elog(ERROR, "cannot assign OIDs during recovery");
 
 	LWLockAcquire(OidGenLock, LW_EXCLUSIVE);
 

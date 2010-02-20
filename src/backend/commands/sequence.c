@@ -459,9 +459,6 @@ nextval_internal(Oid relid)
 				rescnt = 0;
 	bool		logit = false;
 
-	/* nextval() writes to database and must be prevented during recovery */
-	PreventCommandDuringRecovery();
-
 	/* open and AccessShareLock sequence */
 	init_sequence(relid, &elm, &seqrel);
 
@@ -471,6 +468,10 @@ nextval_internal(Oid relid)
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
 				 errmsg("permission denied for sequence %s",
 						RelationGetRelationName(seqrel))));
+
+	/* read-only transactions may only modify temp sequences */
+	if (!seqrel->rd_islocaltemp)
+		PreventCommandIfReadOnly("nextval()");
 
 	if (elm->last != elm->cached)		/* some numbers were cached */
 	{
@@ -736,9 +737,6 @@ do_setval(Oid relid, int64 next, bool iscalled)
 	Buffer		buf;
 	Form_pg_sequence seq;
 
-	/* setval() writes to database and must be prevented during recovery */
-	PreventCommandDuringRecovery();
-
 	/* open and AccessShareLock sequence */
 	init_sequence(relid, &elm, &seqrel);
 
@@ -747,6 +745,10 @@ do_setval(Oid relid, int64 next, bool iscalled)
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
 				 errmsg("permission denied for sequence %s",
 						RelationGetRelationName(seqrel))));
+
+	/* read-only transactions may only modify temp sequences */
+	if (!seqrel->rd_islocaltemp)
+		PreventCommandIfReadOnly("setval()");
 
 	/* lock page' buffer and read tuple */
 	seq = read_info(elm, seqrel, &buf);
