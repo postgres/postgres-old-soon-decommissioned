@@ -155,6 +155,7 @@
   &maintenance;
   &backup;
   &high-availability;
+  &recovery-config;
   &monitoring;
   &diskusage;
   &wal;
