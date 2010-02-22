@@ -28,12 +28,6 @@
   if it is able.
  </para>
 
- <para>
-  Higher level features built on this protocol (for example, how
-  <application>libpq</application> passes certain environment
-  variables when the connection is established) are covered elsewhere.
- </para>
-
   <para>
    In order to serve multiple clients efficiently, the server launches
    a new <quote>backend</> process for each client.
