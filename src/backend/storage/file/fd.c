@@ -292,6 +292,7 @@ pg_fsync_writethrough(int fd)
 #elif defined(F_FULLFSYNC)
 		return (fcntl(fd, F_FULLFSYNC, 0) == -1) ? -1 : 0;
 #else
+		errno = ENOSYS;
 		return -1;
 #endif
 	}
