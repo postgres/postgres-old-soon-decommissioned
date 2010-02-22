@@ -579,7 +579,7 @@ PostgreSQL documentation
 
     <listitem>
      <para>
-      Default port (preferably set in the configuration file)
+      Default port number (preferably set in the configuration file)
      </para>
     </listitem>
    </varlistentry>

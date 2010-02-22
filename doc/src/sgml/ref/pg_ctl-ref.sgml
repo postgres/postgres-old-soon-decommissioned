@@ -393,14 +393,26 @@ PostgreSQL documentation
    </varlistentry>
 
    <varlistentry>
+    <term><envar>PGHOST</envar></term>
+
+    <listitem>
+     <para>
+      Default hostname or Unix-domain socket location for <xref
+      linkend="app-psql"> (used by the -w option).
+     </para>
+    </listitem>
+   </varlistentry>
+
+   <varlistentry>
     <term><envar>PGPORT</envar></term>
 
     <listitem>
      <para>
-      Default port for <xref linkend="app-psql"> (used by the -w option).
+      Default port number for <xref linkend="app-psql"> (used by the -w option).
      </para>
     </listitem>
    </varlistentry>
+
   </variablelist>
 
   <para>
