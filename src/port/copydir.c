@@ -90,10 +90,12 @@ copydir(char *fromdir, char *todir, bool recurse)
 		else if (S_ISREG(fst.st_mode))
 			copy_file(fromfile, tofile);
 	}
+	Free(xldir);
 
 	/*
 	 * Be paranoid here and fsync all files to ensure we catch problems.
 	 */
+	AllocateDir(fromdir);
 	if (xldir == NULL)
 		ereport(ERROR,
 				(errcode_for_file_access(),
