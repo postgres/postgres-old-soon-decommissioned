@@ -26,7 +26,7 @@ You can get $1 from a GNU mirror site.
 ***
 ERROR: \`$1' is missing on your system. It is needed to create the
 file \`$output'. You can either get $1 from a GNU mirror site
-or download an bundled distribution of PostgreSQL, which contains
+or download an official distribution of PostgreSQL, which contains
 pre-packaged $1 output.
 ***" >&2
             exit 1
@@ -38,7 +38,7 @@ pre-packaged $1 output.
         echo "\
 ***
 ERROR: Perl is missing on your system. It is needed unless you are building
-from an unmodified bundled distribution of PostgreSQL.
+from an unmodified official distribution of PostgreSQL.
 ***" >&2
         exit 1
         ;;
