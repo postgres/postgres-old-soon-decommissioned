@@ -36,7 +36,14 @@ DAEMON="$prefix/bin/postmaster"
 PGCTL="$prefix/bin/pg_ctl"
 
 # Only start if we can find the postmaster.
-test -x "$DAEMON" || exit 0
+test -x $DAEMON ||
+{
+	echo "$DAEMON not found"
+	if [ "$1" = "stop" ]
+	then exit 0
+	else exit 5
+	fi
+}
 
 case $1 in
     start)
