@@ -39,10 +39,7 @@ PGCTL="$prefix/bin/pg_ctl"
 test -x $DAEMON ||
 {
 	echo "$DAEMON not found"
-	if [ "$1" = "stop" ]
-	then exit 0
-	else exit 5
-	fi
+	exit 0
 }
 
 case $1 in
