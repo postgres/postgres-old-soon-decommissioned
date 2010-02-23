@@ -318,6 +318,14 @@
      SET STATISTICS</>, or change the database-wide default using the <xref
      linkend="guc-default-statistics-target"> configuration parameter.
     </para>
+
+    <para>
+     Also, by default there is limited information available about
+     the selectivity of functions.  However, if you create an expression
+     index that uses a function call, useful statistics will be
+     gathered about the function, which can greatly improve query
+     plans that use the expression index.
+    </para>
    </tip>
   </sect2>
 
