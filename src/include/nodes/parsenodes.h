@@ -1623,6 +1623,7 @@ typedef struct CreateTrigStmt
 typedef struct CreatePLangStmt
 {
 	NodeTag		type;
+	bool		replace;		/* T => replace if already exists */
 	char	   *plname;			/* PL name */
 	List	   *plhandler;		/* PL call handler function (qual. name) */
 	List	   *plinline;		/* optional inline function (qual. name) */

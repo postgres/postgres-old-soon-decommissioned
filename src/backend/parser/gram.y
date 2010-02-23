@@ -2882,16 +2882,17 @@ NumericOnly:
 /*****************************************************************************
  *
  *		QUERIES :
- *				CREATE PROCEDURAL LANGUAGE ...
- *				DROP PROCEDURAL LANGUAGE ...
+ *				CREATE [OR REPLACE] [TRUSTED] [PROCEDURAL] LANGUAGE ...
+ *				DROP [PROCEDURAL] LANGUAGE ...
  *
  *****************************************************************************/
 
 CreatePLangStmt:
-			CREATE opt_trusted opt_procedural LANGUAGE ColId_or_Sconst
+			CREATE opt_or_replace opt_trusted opt_procedural LANGUAGE ColId_or_Sconst
 			{
 				CreatePLangStmt *n = makeNode(CreatePLangStmt);
-				n->plname = $5;
+				n->replace = $2;
+				n->plname = $6;
 				/* parameters are all to be supplied by system */
 				n->plhandler = NIL;
 				n->plinline = NIL;
@@ -2899,15 +2900,16 @@ CreatePLangStmt:
 				n->pltrusted = false;
 				$$ = (Node *)n;
 			}
-			| CREATE opt_trusted opt_procedural LANGUAGE ColId_or_Sconst
+			| CREATE opt_or_replace opt_trusted opt_procedural LANGUAGE ColId_or_Sconst
 			  HANDLER handler_name opt_inline_handler opt_validator
 			{
 				CreatePLangStmt *n = makeNode(CreatePLangStmt);
-				n->plname = $5;
-				n->plhandler = $7;
-				n->plinline = $8;
-				n->plvalidator = $9;
-				n->pltrusted = $2;
+				n->replace = $2;
+				n->plname = $6;
+				n->plhandler = $8;
+				n->plinline = $9;
+				n->plvalidator = $10;
+				n->pltrusted = $3;
 				$$ = (Node *)n;
 			}
 		;

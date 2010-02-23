@@ -1710,6 +1710,7 @@ _equalDropPropertyStmt(DropPropertyStmt *a, DropPropertyStmt *b)
 static bool
 _equalCreatePLangStmt(CreatePLangStmt *a, CreatePLangStmt *b)
 {
+	COMPARE_SCALAR_FIELD(replace);
 	COMPARE_STRING_FIELD(plname);
 	COMPARE_NODE_FIELD(plhandler);
 	COMPARE_NODE_FIELD(plinline);
