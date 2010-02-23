@@ -367,10 +367,10 @@ COPY <replaceable class="parameter">count</replaceable>
    </para>
 
    <para>
-    <command>COPY</command> always processes data according to the
-    current client encoding, even if the data does not pass through
-    the client but is read from or written to a file directly by the
-    server.
+    Input data is interpreted according to the current client encoding,
+    and output data is encoded in the the current client encoding, even
+    if the data does not pass through the client but is read from or
+    written to a file directly by the server.
    </para>
 
    <para>
