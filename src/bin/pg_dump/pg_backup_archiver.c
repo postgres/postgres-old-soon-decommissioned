@@ -303,6 +303,15 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 	ahprintf(AH, "--\n-- PostgreSQL database dump\n--\n\n");
 
 	if (AH->public.verbose)
+	{
+		ahprintf(AH, "--\n-- pg_dump version: %s\n", PG_VERSION);
+		ahprintf(AH, "--\n-- remote database version: %s (%d)\n"
+			,AHX->remoteVersionStr
+			,AHX->remoteVersion) ;
+		ahprintf(AH, "--\n\n");
+	}
+
+	if (AH->public.verbose)
 		dumpTimestamp(AH, "Started on", AH->createDate);
 
 	if (ropt->single_txn)
