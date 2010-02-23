@@ -221,15 +221,13 @@ static void
 fsync_fname(char *fname)
 {
 	int	fd = BasicOpenFile(fname, 
-						   O_RDONLY | PG_BINARY,
+						   O_RDWR | PG_BINARY,
 						   S_IRUSR | S_IWUSR);
 
 	if (fd < 0)
 		ereport(ERROR,
 				(errcode_for_file_access(),
 				 errmsg("could not open file \"%s\": %m", fname)));
-
-	errno = 0;
 
 	if (pg_fsync(fd) != 0)
 		ereport(ERROR,
