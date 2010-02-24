@@ -1203,6 +1203,14 @@ PQconninfoOption *PQconninfoParse(const char *conninfo, char **errmsg);
        has been sent to the server and not yet completed.
       </para>
 
+      <caution>
+       <para>
+        <function>PQtransactionStatus</> will give incorrect results when using
+        a <productname>PostgreSQL</> 7.3 server that has the parameter <literal>autocommit</>
+        set to off.  The server-side autocommit feature has been
+        deprecated and does not exist in later server versions.
+       </para>
+      </caution>
      </listitem>
     </varlistentry>
 

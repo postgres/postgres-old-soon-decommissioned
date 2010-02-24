@@ -895,6 +895,16 @@ ALTER OPERATOR FAMILY integer_ops USING btree ADD
    try to use these SQL features with the data type.
   </para>
 
+   <note>
+    <para>
+     In <productname>PostgreSQL</productname> versions before 7.4,
+     sorting and grouping operations would implicitly use operators named
+     <literal>=</>, <literal>&lt;</>, and <literal>&gt;</>.  The new
+     behavior of relying on default operator classes avoids having to make
+     any assumption about the behavior of operators with particular names.
+    </para>
+   </note>
+
   <para>
    Another important point is that an operator that
    appears in a hash operator family is a candidate for hash joins,
