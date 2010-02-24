@@ -344,7 +344,7 @@ lt_q_regex(PG_FUNCTION_ARGS)
 	bool		res = false;
 	int			num = ArrayGetNItems(ARR_NDIM(_query), ARR_DIMS(_query));
 
-	if (ARR_NDIM(_query) != 1)
+	if (ARR_NDIM(_query) > 1)
 		ereport(ERROR,
 				(errcode(ERRCODE_ARRAY_SUBSCRIPT_ERROR),
 				 errmsg("array must be one-dimensional")));
