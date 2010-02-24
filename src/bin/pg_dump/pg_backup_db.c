@@ -64,6 +64,8 @@ _check_database_version(ArchiveHandle *AH)
 
 	AH->public.remoteVersionStr = strdup(remoteversion_str);
 	AH->public.remoteVersion = remoteversion;
+	if (!AH->archiveRemoteVersion)
+		AH->archiveRemoteVersion = AH->public.remoteVersionStr;
 
 	if (myversion != remoteversion
 		&& (remoteversion < AH->public.minRemoteVersion ||
