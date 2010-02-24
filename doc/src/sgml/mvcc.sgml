@@ -1080,7 +1080,7 @@ SELECT pg_advisory_lock(id) FROM foo WHERE id = 12345; -- ok
 SELECT pg_advisory_lock(id) FROM foo WHERE id &gt; 12345 LIMIT 100; -- danger!
 SELECT pg_advisory_lock(q.id) FROM
 (
-  SELECT id FROM foo WHERE id &gt; 12345 LIMIT 100;
+  SELECT id FROM foo WHERE id &gt; 12345 LIMIT 100
 ) q; -- ok
 </screen>
      In the above queries, the second form is dangerous because the
