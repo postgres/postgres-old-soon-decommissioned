@@ -1791,12 +1791,13 @@ create_database(const char *dbname)
 				 dbname, dbname, dbname, dbname, dbname);
 
 	/*
-	 * Install any requested procedural languages
+	 * Install any requested procedural languages.  We use CREATE OR REPLACE
+	 * so that this will work whether or not the language is preinstalled.
 	 */
 	for (sl = loadlanguage; sl != NULL; sl = sl->next)
 	{
 		header(_("installing %s"), sl->str);
-		psql_command(dbname, "CREATE LANGUAGE \"%s\"", sl->str);
+		psql_command(dbname, "CREATE OR REPLACE LANGUAGE \"%s\"", sl->str);
 	}
 }
 
