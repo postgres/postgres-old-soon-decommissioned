@@ -84,8 +84,6 @@ libpqrcv_connect(char *conninfo, XLogRecPtr startpoint)
 	PGresult   *res;
 	char		cmd[64];
 
-	Assert(startpoint.xlogid != 0 || startpoint.xrecoff != 0);
-
 	/* Connect */
 	snprintf(conninfo_repl, sizeof(conninfo_repl), "%s replication=true", conninfo);
 

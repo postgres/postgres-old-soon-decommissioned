@@ -573,15 +573,6 @@ XLogSend(StringInfo outMsg)
 	/* use volatile pointer to prevent code rearrangement */
 	volatile WalSnd *walsnd = MyWalSnd;
 
-	/*
-	 * Invalid position means that we have not yet received the initial
-	 * CopyData message from the slave that indicates where to start the
-	 * streaming.
-	 */
-	if (sentPtr.xlogid == 0 &&
-		sentPtr.xrecoff == 0)
-		return true;
-
 	/* Attempt to send all records flushed to the disk already */
 	SendRqstPtr = GetWriteRecPtr();
 
