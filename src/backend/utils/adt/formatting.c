@@ -3097,6 +3097,9 @@ to_date(PG_FUNCTION_ARGS)
  *
  * The TmFromChar is then analysed and converted into the final results in
  * struct 'tm' and 'fsec'.
+ *
+ * This function does very little error checking, e.g.
+ * to_timestamp('20096040','YYYYMMDD') works
  */
 static void
 do_to_timestamp(text *date_txt, text *fmt,
