@@ -769,7 +769,7 @@ if (!triggered)
    </para>
 
    <para>
-    Streaming replication is asynchronous, so there is stilll a small delay
+    Streaming replication is asynchronous, so there is still a small delay
     between committing a transaction in the primary and for the changes to
     become visible in the standby. The delay is however much smaller than with
     file-based log shipping, typically under one second assuming the standby
