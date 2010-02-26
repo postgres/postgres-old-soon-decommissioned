@@ -6,13 +6,15 @@ pgindent
 This can format all PostgreSQL *.c and *.h files, but excludes *.y, and
 *.l files. 
 
-1) Change directory to the top of the CVS tree.
+1) Change directory to the top of the build tree.
 
 1) Download the typedef file from the builfarm:
 
 	wget -O src/tools/pgindent/typedefs.list http://www.pgbuildfarm.org/cgi-bin/typedefs.pl
 
-2) Download a fresh CVS checkout.
+2) Download a fresh CVS checkout.  This will guarantee you do not have any
+   derived bison or flex C files.  (pgindent has trouble with one of the
+   flex macros.)
 
 3) Run pgindent:
 
