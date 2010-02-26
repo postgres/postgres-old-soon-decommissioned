@@ -1524,7 +1524,7 @@ SELECT E'\\xDEADBEEF';
    <note>
     <para>
      The SQL standard requires that writing just <type>timestamp</type>
-     be equivalent to <type>timestamp <emphasis>without</> time
+     be equivalent to <type>timestamp without time
      zone</type>, and <productname>PostgreSQL</productname> honors that
      behavior.  (Releases prior to 7.3 treated it as <type>timestamp
      with time zone</type>.)
