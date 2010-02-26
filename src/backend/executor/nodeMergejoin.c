@@ -507,7 +507,7 @@ check_constant_qual(List *qual, bool *is_const_false)
 
 	foreach(lc, qual)
 	{
-		Const  *con = (Const *) lfirst(lc);
+		Const	   *con = (Const *) lfirst(lc);
 
 		if (!con || !IsA(con, Const))
 			return false;

@@ -1210,7 +1210,7 @@ bytea *
 attribute_reloptions(Datum reloptions, bool validate)
 {
 	relopt_value *options;
-	AttributeOpts  *aopts;
+	AttributeOpts *aopts;
 	int			numoptions;
 	static const relopt_parse_elt tab[] = {
 		{"n_distinct", RELOPT_TYPE_REAL, offsetof(AttributeOpts, n_distinct)},
@@ -1241,7 +1241,7 @@ bytea *
 tablespace_reloptions(Datum reloptions, bool validate)
 {
 	relopt_value *options;
-	TableSpaceOpts	*tsopts;
+	TableSpaceOpts *tsopts;
 	int			numoptions;
 	static const relopt_parse_elt tab[] = {
 		{"random_page_cost", RELOPT_TYPE_REAL, offsetof(TableSpaceOpts, random_page_cost)},

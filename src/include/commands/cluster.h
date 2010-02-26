@@ -19,15 +19,15 @@
 
 extern void cluster(ClusterStmt *stmt, bool isTopLevel);
 extern void cluster_rel(Oid tableOid, Oid indexOid, bool recheck,
-					bool verbose, int freeze_min_age, int freeze_table_age);
+			bool verbose, int freeze_min_age, int freeze_table_age);
 extern void check_index_is_clusterable(Relation OldHeap, Oid indexOid,
 						   bool recheck);
 extern void mark_index_clustered(Relation rel, Oid indexOid);
 
 extern Oid	make_new_heap(Oid OIDOldHeap, Oid NewTableSpace);
 extern void finish_heap_swap(Oid OIDOldHeap, Oid OIDNewHeap,
-							 bool is_system_catalog,
-							 bool swap_toast_by_content,
-							 TransactionId frozenXid);
+				 bool is_system_catalog,
+				 bool swap_toast_by_content,
+				 TransactionId frozenXid);
 
 #endif   /* CLUSTER_H */

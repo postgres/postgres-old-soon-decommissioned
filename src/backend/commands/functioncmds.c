@@ -314,8 +314,8 @@ examine_parameter_list(List *parameters, Oid languageOid,
 					strcmp(prevfp->name, fp->name) == 0)
 					ereport(ERROR,
 							(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
-							 errmsg("parameter name \"%s\" used more than once",
-									fp->name)));
+						  errmsg("parameter name \"%s\" used more than once",
+								 fp->name)));
 			}
 
 			paramNames[i] = CStringGetTextDatum(fp->name);
@@ -2019,8 +2019,8 @@ ExecuteDoStmt(DoStmt *stmt)
 	if (!OidIsValid(laninline))
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("language \"%s\" does not support inline code execution",
-						NameStr(languageStruct->lanname))));
+			 errmsg("language \"%s\" does not support inline code execution",
+					NameStr(languageStruct->lanname))));
 
 	ReleaseSysCache(languageTuple);
 

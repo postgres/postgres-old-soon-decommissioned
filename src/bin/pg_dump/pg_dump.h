@@ -338,7 +338,7 @@ typedef struct _triggerInfo
  * to sort them the way we want.
  *
  * Note: condeferrable and condeferred are currently only valid for
- * unique/primary-key constraints.  Otherwise that info is in condef.
+ * unique/primary-key constraints.	Otherwise that info is in condef.
  */
 typedef struct _constraintInfo
 {
@@ -439,13 +439,13 @@ typedef struct _defaultACLInfo
 {
 	DumpableObject dobj;
 	char	   *defaclrole;
-	char	    defaclobjtype;
+	char		defaclobjtype;
 	char	   *defaclacl;
 } DefaultACLInfo;
 
 typedef struct _blobInfo
 {
-	DumpableObject	dobj;
+	DumpableObject dobj;
 	char	   *rolname;
 	char	   *blobacl;
 } BlobInfo;

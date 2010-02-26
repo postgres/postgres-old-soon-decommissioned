@@ -69,7 +69,7 @@ typedef struct _SPI_plan
 	int			nargs;			/* number of plan arguments */
 	Oid		   *argtypes;		/* Argument types (NULL if nargs is 0) */
 	ParserSetupHook parserSetup;	/* alternative parameter spec method */
-	void	   *parserSetupArg;	
+	void	   *parserSetupArg;
 } _SPI_plan;
 
 #endif   /* SPI_PRIV_H */

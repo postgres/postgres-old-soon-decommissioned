@@ -4,7 +4,7 @@
  *	  Routines dealing with TupleTableSlots.  These are used for resource
  *	  management associated with tuples (eg, releasing buffer pins for
  *	  tuples in disk buffers, or freeing the memory occupied by transient
- *	  tuples).  Slots also provide access abstraction that lets us implement
+ *	  tuples).	Slots also provide access abstraction that lets us implement
  *	  "virtual" tuples to reduce data-copying overhead.
  *
  *	  Routines dealing with the type information for tuples. Currently,
@@ -1178,7 +1178,7 @@ void
 do_text_output_multiline(TupOutputState *tstate, char *text)
 {
 	Datum		values[1];
-	bool		isnull[1] = { false };
+	bool		isnull[1] = {false};
 
 	while (*text)
 	{
@@ -1189,6 +1189,7 @@ do_text_output_multiline(TupOutputState *tstate, char *text)
 		if (eol)
 		{
 			len = eol - text;
+
 			eol++;
 		}
 		else

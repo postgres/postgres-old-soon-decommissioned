@@ -258,7 +258,7 @@ typedef struct pg_enc2name
 	char	   *name;
 	pg_enc		encoding;
 #ifdef WIN32
-	unsigned	codepage;	/* codepage for WIN32 */
+	unsigned	codepage;		/* codepage for WIN32 */
 #endif
 } pg_enc2name;
 

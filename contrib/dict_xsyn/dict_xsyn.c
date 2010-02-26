@@ -147,7 +147,7 @@ dxsyn_init(PG_FUNCTION_ARGS)
 	List	   *dictoptions = (List *) PG_GETARG_POINTER(0);
 	DictSyn    *d;
 	ListCell   *l;
-	char       *filename = NULL;
+	char	   *filename = NULL;
 
 	d = (DictSyn *) palloc0(sizeof(DictSyn));
 	d->len = 0;

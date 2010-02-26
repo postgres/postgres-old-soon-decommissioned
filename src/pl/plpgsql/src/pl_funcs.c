@@ -23,7 +23,7 @@
  * list or "chain" (from the youngest item to the root) is accessible from
  * any one plpgsql statement.  During initial parsing of a function, ns_top
  * points to the youngest item accessible from the block currently being
- * parsed.  We store the entire tree, however, since at runtime we will need
+ * parsed.	We store the entire tree, however, since at runtime we will need
  * to access the chain that's relevant to any one statement.
  *
  * Block boundaries in the namespace chain are marked by PLPGSQL_NSTYPE_LABEL

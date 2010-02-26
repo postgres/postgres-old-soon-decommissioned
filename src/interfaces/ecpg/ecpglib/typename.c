@@ -136,7 +136,7 @@ sqlda_dynamic_type(Oid type, enum COMPAT_MODE compat)
 #ifdef HAVE_LONG_INT_64
 			return ECPGt_long;
 #endif
-		/* Unhandled types always return a string */
+			/* Unhandled types always return a string */
 		default:
 			return ECPGt_char;
 	}

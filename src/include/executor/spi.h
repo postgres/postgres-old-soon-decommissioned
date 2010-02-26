@@ -74,8 +74,8 @@ extern int	SPI_execute(const char *src, bool read_only, long tcount);
 extern int SPI_execute_plan(SPIPlanPtr plan, Datum *Values, const char *Nulls,
 				 bool read_only, long tcount);
 extern int SPI_execute_plan_with_paramlist(SPIPlanPtr plan,
-										   ParamListInfo params,
-										   bool read_only, long tcount);
+								ParamListInfo params,
+								bool read_only, long tcount);
 extern int	SPI_exec(const char *src, long tcount);
 extern int SPI_execp(SPIPlanPtr plan, Datum *Values, const char *Nulls,
 		  long tcount);
@@ -92,9 +92,9 @@ extern SPIPlanPtr SPI_prepare(const char *src, int nargs, Oid *argtypes);
 extern SPIPlanPtr SPI_prepare_cursor(const char *src, int nargs, Oid *argtypes,
 				   int cursorOptions);
 extern SPIPlanPtr SPI_prepare_params(const char *src,
-									 ParserSetupHook parserSetup,
-									 void *parserSetupArg,
-									 int cursorOptions);
+				   ParserSetupHook parserSetup,
+				   void *parserSetupArg,
+				   int cursorOptions);
 extern SPIPlanPtr SPI_saveplan(SPIPlanPtr plan);
 extern int	SPI_freeplan(SPIPlanPtr plan);
 

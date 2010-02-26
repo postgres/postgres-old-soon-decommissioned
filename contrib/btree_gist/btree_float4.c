@@ -56,8 +56,8 @@ gbt_float4lt(const void *a, const void *b)
 static int
 gbt_float4key_cmp(const void *a, const void *b)
 {
-    float4KEY    *ia = (float4KEY*)(((Nsrt *) a)->t);
-	float4KEY    *ib = (float4KEY*)(((Nsrt *) b)->t);
+	float4KEY  *ia = (float4KEY *) (((Nsrt *) a)->t);
+	float4KEY  *ib = (float4KEY *) (((Nsrt *) b)->t);
 
 	if (ia->lower == ib->lower)
 	{

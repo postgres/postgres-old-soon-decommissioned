@@ -135,8 +135,8 @@ pgrename(const char *from, const char *to)
 		_dosmaperr(err);
 
 		/*
-		 * Modern NT-based Windows versions return ERROR_SHARING_VIOLATION
-		 * if another process has the file open without FILE_SHARE_DELETE.
+		 * Modern NT-based Windows versions return ERROR_SHARING_VIOLATION if
+		 * another process has the file open without FILE_SHARE_DELETE.
 		 * ERROR_LOCK_VIOLATION has also been seen with some anti-virus
 		 * software. This used to check for just ERROR_ACCESS_DENIED, so
 		 * presumably you can get that too with some OS versions. We don't

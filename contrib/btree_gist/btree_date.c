@@ -73,9 +73,9 @@ gbt_datelt(const void *a, const void *b)
 static int
 gbt_datekey_cmp(const void *a, const void *b)
 {
-	dateKEY *ia = (dateKEY*)(((Nsrt *) a)->t);	
-	dateKEY *ib = (dateKEY*)(((Nsrt *) b)->t);
-	int res;
+	dateKEY    *ia = (dateKEY *) (((Nsrt *) a)->t);
+	dateKEY    *ib = (dateKEY *) (((Nsrt *) b)->t);
+	int			res;
 
 	res = DatumGetInt32(DirectFunctionCall2(date_cmp, DateADTGetDatum(ia->lower), DateADTGetDatum(ib->lower)));
 	if (res == 0)

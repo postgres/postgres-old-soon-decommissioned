@@ -51,9 +51,9 @@ extern List *pg_parse_query(const char *query_string);
 extern List *pg_analyze_and_rewrite(Node *parsetree, const char *query_string,
 					   Oid *paramTypes, int numParams);
 extern List *pg_analyze_and_rewrite_params(Node *parsetree,
-										   const char *query_string,
-										   ParserSetupHook parserSetup,
-										   void *parserSetupArg);
+							  const char *query_string,
+							  ParserSetupHook parserSetup,
+							  void *parserSetupArg);
 extern PlannedStmt *pg_plan_query(Query *querytree, int cursorOptions,
 			  ParamListInfo boundParams);
 extern List *pg_plan_queries(List *querytrees, int cursorOptions,
@@ -65,11 +65,12 @@ extern void die(SIGNAL_ARGS);
 extern void quickdie(SIGNAL_ARGS);
 extern void StatementCancelHandler(SIGNAL_ARGS);
 extern void FloatExceptionHandler(SIGNAL_ARGS);
-extern void RecoveryConflictInterrupt(ProcSignalReason reason); /* called from SIGUSR1 handler */
+extern void RecoveryConflictInterrupt(ProcSignalReason reason); /* called from SIGUSR1
+																 * handler */
 extern void prepare_for_client_read(void);
 extern void client_read_ended(void);
 extern const char *process_postgres_switches(int argc, char *argv[],
-											 GucContext ctx);
+						  GucContext ctx);
 extern int	PostgresMain(int argc, char *argv[], const char *username);
 extern long get_stack_depth_rlimit(void);
 extern void ResetUsage(void);

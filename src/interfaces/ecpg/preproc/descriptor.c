@@ -344,4 +344,3 @@ sqlda_variable(const char *name)
 
 	return p;
 }
-

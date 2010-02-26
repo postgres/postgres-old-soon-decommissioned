@@ -418,7 +418,7 @@ exec_command(const char *cmd,
 
 					if (pattern)
 						pattern2 = psql_scan_slash_option(scan_state,
-														  OT_NORMAL, NULL, true);
+													  OT_NORMAL, NULL, true);
 					success = listDbRoleSettings(pattern, pattern2);
 				}
 				else
@@ -1259,20 +1259,20 @@ do_connect(char *dbname, char *user, char *host, char *port)
 		const char **keywords = pg_malloc(PARAMS_ARRAY_SIZE * sizeof(*keywords));
 		const char **values = pg_malloc(PARAMS_ARRAY_SIZE * sizeof(*values));
 
-		keywords[0]	= "host";
-		values[0]	= host;
-		keywords[1]	= "port";
-		values[1]	= port;
-		keywords[2]	= "user";
-		values[2]	= user;
-		keywords[3]	= "password";
-		values[3]	= password;
-		keywords[4]	= "dbname";
-		values[4]	= dbname;
-		keywords[5]	= "fallback_application_name";
-		values[5]	= pset.progname;
-		keywords[6]	= NULL;
-		values[6]	= NULL;
+		keywords[0] = "host";
+		values[0] = host;
+		keywords[1] = "port";
+		values[1] = port;
+		keywords[2] = "user";
+		values[2] = user;
+		keywords[3] = "password";
+		values[3] = password;
+		keywords[4] = "dbname";
+		values[4] = dbname;
+		keywords[5] = "fallback_application_name";
+		values[5] = pset.progname;
+		keywords[6] = NULL;
+		values[6] = NULL;
 
 		n_conn = PQconnectdbParams(keywords, values, true);
 
@@ -1331,7 +1331,7 @@ do_connect(char *dbname, char *user, char *host, char *port)
 	PQsetNoticeProcessor(n_conn, NoticeProcessor, NULL);
 	pset.db = n_conn;
 	SyncVariables();
-	connection_warnings(false);		/* Must be after SyncVariables */
+	connection_warnings(false); /* Must be after SyncVariables */
 
 	/* Tell the user about the new connection */
 	if (!pset.quiet)

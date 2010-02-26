@@ -2780,11 +2780,11 @@ interval_mi(PG_FUNCTION_ARGS)
 }
 
 /*
- *  There is no interval_abs():  it is unclear what value to return:
- *    http://archives.postgresql.org/pgsql-general/2009-10/msg01031.php
- *    http://archives.postgresql.org/pgsql-general/2009-11/msg00041.php
+ *	There is no interval_abs():  it is unclear what value to return:
+ *	  http://archives.postgresql.org/pgsql-general/2009-10/msg01031.php
+ *	  http://archives.postgresql.org/pgsql-general/2009-11/msg00041.php
  */
- 
+
 Datum
 interval_mul(PG_FUNCTION_ARGS)
 {

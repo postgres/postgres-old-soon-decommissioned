@@ -98,7 +98,7 @@ static const char *SSLerrmessage(void);
  *	(total in both directions) before we require renegotiation.
  *	Set to 0 to disable renegotiation completely.
  */
-int ssl_renegotiation_limit;
+int			ssl_renegotiation_limit;
 
 #ifdef USE_SSL
 static SSL_CTX *SSL_context = NULL;
@@ -973,8 +973,8 @@ aloop:
 		else
 		{
 			/*
-			 * Reject embedded NULLs in certificate common name to prevent attacks like
-			 * CVE-2009-4034.
+			 * Reject embedded NULLs in certificate common name to prevent
+			 * attacks like CVE-2009-4034.
 			 */
 			if (r != strlen(port->peer_cn))
 			{

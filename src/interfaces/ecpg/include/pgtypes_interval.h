@@ -23,7 +23,6 @@ typedef long long int int64;
 #ifdef USE_INTEGER_DATETIMES
 #define HAVE_INT64_TIMESTAMP
 #endif
-
 #endif   /* C_H */
 
 typedef struct

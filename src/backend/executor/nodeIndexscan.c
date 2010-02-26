@@ -240,9 +240,9 @@ ExecIndexEvalRuntimeKeys(ExprContext *econtext,
 		 * necessary.
 		 *
 		 * It's also entirely possible that the result of the eval is a
-		 * toasted value.  In this case we should forcibly detoast it,
-		 * to avoid repeat detoastings each time the value is examined
-		 * by an index support function.
+		 * toasted value.  In this case we should forcibly detoast it, to
+		 * avoid repeat detoastings each time the value is examined by an
+		 * index support function.
 		 */
 		scanvalue = ExecEvalExpr(key_expr,
 								 econtext,

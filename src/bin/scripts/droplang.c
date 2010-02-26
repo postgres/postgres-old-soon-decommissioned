@@ -190,8 +190,8 @@ main(int argc, char *argv[])
 	executeCommand(conn, "SET search_path = pg_catalog;", progname, echo);
 
 	/*
-	 * Make sure the language is installed and find the OIDs of the
-	 * language support functions
+	 * Make sure the language is installed and find the OIDs of the language
+	 * support functions
 	 */
 	printfPQExpBuffer(&sql, "SELECT lanplcallfoid, laninline, lanvalidator "
 					  "FROM pg_language WHERE lanname = '%s' AND lanispl;",
@@ -277,7 +277,7 @@ main(int argc, char *argv[])
 		PQclear(result);
 	}
 	else
-		keepinline = true;	/* don't try to delete it */
+		keepinline = true;		/* don't try to delete it */
 
 	/*
 	 * Find the inline handler name

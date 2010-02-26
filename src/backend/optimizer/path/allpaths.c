@@ -347,11 +347,11 @@ set_append_rel_pathlist(PlannerInfo *root, RelOptInfo *rel,
 		 * can disregard this child.
 		 *
 		 * As of 8.4, the child rel's targetlist might contain non-Var
-		 * expressions, which means that substitution into the quals
-		 * could produce opportunities for const-simplification, and perhaps
-		 * even pseudoconstant quals.  To deal with this, we strip the
-		 * RestrictInfo nodes, do the substitution, do const-simplification,
-		 * and then reconstitute the RestrictInfo layer.
+		 * expressions, which means that substitution into the quals could
+		 * produce opportunities for const-simplification, and perhaps even
+		 * pseudoconstant quals.  To deal with this, we strip the RestrictInfo
+		 * nodes, do the substitution, do const-simplification, and then
+		 * reconstitute the RestrictInfo layer.
 		 */
 		childquals = get_all_actual_clauses(rel->baserestrictinfo);
 		childquals = (List *) adjust_appendrel_attrs((Node *) childquals,

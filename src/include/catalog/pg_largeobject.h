@@ -51,7 +51,7 @@ typedef FormData_pg_largeobject *Form_pg_largeobject;
 #define Anum_pg_largeobject_pageno		2
 #define Anum_pg_largeobject_data		3
 
-extern Oid  LargeObjectCreate(Oid loid);
+extern Oid	LargeObjectCreate(Oid loid);
 extern void LargeObjectDrop(Oid loid);
 extern void LargeObjectAlterOwner(Oid loid, Oid newOwnerId);
 extern bool LargeObjectExists(Oid loid);

@@ -118,20 +118,20 @@ connectDatabase(const char *dbname, const char *pghost, const char *pgport,
 			exit(1);
 		}
 
-		keywords[0]	= "host";
-		values[0]	= pghost;
-		keywords[1]	= "port";
-		values[1]	= pgport;
-		keywords[2]	= "user";
-		values[2]	= pguser;
-		keywords[3]	= "password";
-		values[3]	= password;
-		keywords[4]	= "dbname";
-		values[4]	= dbname;
-		keywords[5]	= "fallback_application_name";
-		values[5]	= progname;
-		keywords[6]	= NULL;
-		values[6]	= NULL;
+		keywords[0] = "host";
+		values[0] = pghost;
+		keywords[1] = "port";
+		values[1] = pgport;
+		keywords[2] = "user";
+		values[2] = pguser;
+		keywords[3] = "password";
+		values[3] = password;
+		keywords[4] = "dbname";
+		values[4] = dbname;
+		keywords[5] = "fallback_application_name";
+		values[5] = progname;
+		keywords[6] = NULL;
+		values[6] = NULL;
 
 		new_pass = false;
 		conn = PQconnectdbParams(keywords, values, true);

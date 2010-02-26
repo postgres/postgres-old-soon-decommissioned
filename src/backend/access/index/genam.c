@@ -94,13 +94,13 @@ RelationGetIndexScan(Relation indexRelation,
 
 	/*
 	 * During recovery we ignore killed tuples and don't bother to kill them
-	 * either. We do this because the xmin on the primary node could easily
-	 * be later than the xmin on the standby node, so that what the primary
+	 * either. We do this because the xmin on the primary node could easily be
+	 * later than the xmin on the standby node, so that what the primary
 	 * thinks is killed is supposed to be visible on standby. So for correct
 	 * MVCC for queries during recovery we must ignore these hints and check
-	 * all tuples. Do *not* set ignore_killed_tuples to true when running
-	 * in a transaction that was started during recovery.
-	 * xactStartedInRecovery should not be altered by index AMs.
+	 * all tuples. Do *not* set ignore_killed_tuples to true when running in a
+	 * transaction that was started during recovery. xactStartedInRecovery
+	 * should not be altered by index AMs.
 	 */
 	scan->kill_prior_tuple = false;
 	scan->xactStartedInRecovery = TransactionStartedDuringRecovery();
@@ -170,24 +170,24 @@ BuildIndexValueDescription(Relation indexRelation,
 
 	for (i = 0; i < natts; i++)
 	{
-		char   *val;
+		char	   *val;
 
 		if (isnull[i])
 			val = "null";
 		else
 		{
-			Oid		foutoid;
-			bool	typisvarlena;
+			Oid			foutoid;
+			bool		typisvarlena;
 
 			/*
-			 * The provided data is not necessarily of the type stored in
-			 * the index; rather it is of the index opclass's input type.
-			 * So look at rd_opcintype not the index tupdesc.
+			 * The provided data is not necessarily of the type stored in the
+			 * index; rather it is of the index opclass's input type. So look
+			 * at rd_opcintype not the index tupdesc.
 			 *
 			 * Note: this is a bit shaky for opclasses that have pseudotype
-			 * input types such as ANYARRAY or RECORD.  Currently, the
-			 * typoutput functions associated with the pseudotypes will
-			 * work okay, but we might have to try harder in future.
+			 * input types such as ANYARRAY or RECORD.	Currently, the
+			 * typoutput functions associated with the pseudotypes will work
+			 * okay, but we might have to try harder in future.
 			 */
 			getTypeOutputInfo(indexRelation->rd_opcintype[i],
 							  &foutoid, &typisvarlena);

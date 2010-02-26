@@ -444,7 +444,7 @@ gbt_vsrt_cmp(const void *a, const void *b, void *arg)
 	GBT_VARKEY_R ar = gbt_var_key_readable(((const Vsrt *) a)->t);
 	GBT_VARKEY_R br = gbt_var_key_readable(((const Vsrt *) b)->t);
 	const gbtree_vinfo *tinfo = (const gbtree_vinfo *) arg;
-	int res;
+	int			res;
 
 	res = (*tinfo->f_cmp) (ar.lower, br.lower);
 	if (res == 0)

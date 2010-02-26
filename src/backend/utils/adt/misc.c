@@ -187,7 +187,7 @@ pg_tablespace_databases(PG_FUNCTION_ARGS)
 		 * size = tablespace dirname length + dir sep char + oid + terminator
 		 */
 		fctx->location = (char *) palloc(9 + 1 + OIDCHARS + 1 +
-						 strlen(TABLESPACE_VERSION_DIRECTORY) + 1);
+								   strlen(TABLESPACE_VERSION_DIRECTORY) + 1);
 		if (tablespaceOid == GLOBALTABLESPACE_OID)
 		{
 			fctx->dirdesc = NULL;

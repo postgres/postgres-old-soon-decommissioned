@@ -1,12 +1,12 @@
 /*-------------------------------------------------------------------------
  *
  * rbtree.h
- *    interface for PostgreSQL generic Red-Black binary tree package
+ *	  interface for PostgreSQL generic Red-Black binary tree package
  *
  * Copyright (c) 1996-2009, PostgreSQL Global Development Group
  *
  * IDENTIFICATION
- * 		$PostgreSQL$
+ *		$PostgreSQL$
  *
  *-------------------------------------------------------------------------
  */
@@ -18,13 +18,13 @@ typedef struct RBTree RBTree;
 typedef struct RBTreeIterator RBTreeIterator;
 
 typedef int (*rb_comparator) (const void *a, const void *b, void *arg);
-typedef void* (*rb_appendator) (void *current, void *new, void *arg);
+typedef void *(*rb_appendator) (void *current, void *new, void *arg);
 typedef void (*rb_freefunc) (void *a);
 
 extern RBTree *rb_create(rb_comparator comparator,
-							rb_appendator appendator,
-							rb_freefunc freefunc,
-							void *arg);
+		  rb_appendator appendator,
+		  rb_freefunc freefunc,
+		  void *arg);
 
 extern void *rb_find(RBTree *rb, void *data);
 extern void *rb_insert(RBTree *rb, void *data);
@@ -39,7 +39,7 @@ typedef enum RBOrderControl
 	InvertedWalk
 } RBOrderControl;
 
-extern RBTreeIterator* rb_begin_iterate(RBTree *rb, RBOrderControl ctrl);
+extern RBTreeIterator *rb_begin_iterate(RBTree *rb, RBOrderControl ctrl);
 extern void *rb_iterate(RBTreeIterator *iterator);
 extern void rb_free_iterator(RBTreeIterator *iterator);
 

@@ -42,10 +42,10 @@ typedef struct CheckPoint
 	pg_time_t	time;			/* time stamp of checkpoint */
 
 	/* Important parameter settings at time of shutdown checkpoints */
-	int		MaxConnections;
-	int		max_prepared_xacts;
-	int		max_locks_per_xact;
-	bool	XLogStandbyInfoMode;
+	int			MaxConnections;
+	int			max_prepared_xacts;
+	int			max_locks_per_xact;
+	bool		XLogStandbyInfoMode;
 
 	/*
 	 * Oldest XID still running. This is only needed to initialize hot standby
@@ -53,7 +53,7 @@ typedef struct CheckPoint
 	 * online checkpoints and only when archiving is enabled. Otherwise it's
 	 * set to InvalidTransactionId.
 	 */
-	TransactionId   oldestActiveXid;
+	TransactionId oldestActiveXid;
 } CheckPoint;
 
 /* XLOG info values for XLOG rmgr */

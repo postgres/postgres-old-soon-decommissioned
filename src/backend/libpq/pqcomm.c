@@ -55,7 +55,7 @@
  *		pq_peekbyte		- peek at next byte from connection
  *		pq_putbytes		- send bytes to connection (not flushed until pq_flush)
  *		pq_flush		- flush pending output
- *		pq_getbyte_if_available	- get a byte if available without blocking
+ *		pq_getbyte_if_available - get a byte if available without blocking
  *
  * message-level I/O (and old-style-COPY-OUT cruft):
  *		pq_putmessage	- send a normal message (suppressed in COPY OUT mode)
@@ -200,7 +200,8 @@ pq_close(int code, Datum arg)
 		 * transport layer reports connection closure, and you can be sure the
 		 * backend has exited.
 		 *
-		 * We do set sock to PGINVALID_SOCKET to prevent any further I/O, though.
+		 * We do set sock to PGINVALID_SOCKET to prevent any further I/O,
+		 * though.
 		 */
 		MyProcPort->sock = PGINVALID_SOCKET;
 	}
@@ -818,7 +819,7 @@ pq_peekbyte(void)
 
 
 /* --------------------------------
- *		pq_getbyte_if_available	- get a single byte from connection,
+ *		pq_getbyte_if_available - get a single byte from connection,
  *			if available
  *
  * The received byte is stored in *c. Returns 1 if a byte was read,
@@ -828,7 +829,7 @@ pq_peekbyte(void)
 int
 pq_getbyte_if_available(unsigned char *c)
 {
-	int r;
+	int			r;
 
 	if (PqRecvPointer < PqRecvLength)
 	{
@@ -851,18 +852,19 @@ pq_getbyte_if_available(unsigned char *c)
 		if (r < 0)
 		{
 			/*
-			 * Ok if no data available without blocking or interrupted
-			 * (though EINTR really shouldn't happen with a non-blocking
-			 * socket). Report other errors.
+			 * Ok if no data available without blocking or interrupted (though
+			 * EINTR really shouldn't happen with a non-blocking socket).
+			 * Report other errors.
 			 */
 			if (errno == EAGAIN || errno == EWOULDBLOCK || errno == EINTR)
 				r = 0;
 			else
 			{
 				/*
-				 * Careful: an ereport() that tries to write to the client would
-				 * cause recursion to here, leading to stack overflow and core
-				 * dump!  This message must go *only* to the postmaster log.
+				 * Careful: an ereport() that tries to write to the client
+				 * would cause recursion to here, leading to stack overflow
+				 * and core dump!  This message must go *only* to the
+				 * postmaster log.
 				 */
 				ereport(COMMERROR,
 						(errcode_for_socket_access(),

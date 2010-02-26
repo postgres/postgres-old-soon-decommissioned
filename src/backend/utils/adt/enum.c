@@ -56,8 +56,8 @@ enum_in(PG_FUNCTION_ARGS)
 						name)));
 
 	/*
-	 *	This comes from pg_enum.oid and stores system oids in user tables.
-	 *	This oid must be preserved by binary upgrades.
+	 * This comes from pg_enum.oid and stores system oids in user tables. This
+	 * oid must be preserved by binary upgrades.
 	 */
 	enumoid = HeapTupleGetOid(tup);
 

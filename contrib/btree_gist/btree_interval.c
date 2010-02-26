@@ -65,9 +65,9 @@ gbt_intvlt(const void *a, const void *b)
 static int
 gbt_intvkey_cmp(const void *a, const void *b)
 {
-    intvKEY *ia = (intvKEY*)(((Nsrt *) a)->t);
-	intvKEY *ib = (intvKEY*)(((Nsrt *) b)->t);
-	int res;
+	intvKEY    *ia = (intvKEY *) (((Nsrt *) a)->t);
+	intvKEY    *ib = (intvKEY *) (((Nsrt *) b)->t);
+	int			res;
 
 	res = DatumGetInt32(DirectFunctionCall2(interval_cmp, IntervalPGetDatum(&ia->lower), IntervalPGetDatum(&ib->lower)));
 	if (res == 0)

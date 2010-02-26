@@ -233,7 +233,7 @@ hashgettuple(PG_FUNCTION_ARGS)
 		/*
 		 * An insertion into the current index page could have happened while
 		 * we didn't have read lock on it.  Re-find our position by looking
-		 * for the TID we previously returned.  (Because we hold share lock on
+		 * for the TID we previously returned.	(Because we hold share lock on
 		 * the bucket, no deletions or splits could have occurred; therefore
 		 * we can expect that the TID still exists in the current index page,
 		 * at an offset >= where we were.)

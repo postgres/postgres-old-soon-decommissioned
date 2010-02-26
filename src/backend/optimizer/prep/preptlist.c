@@ -109,11 +109,10 @@ preprocess_targetlist(PlannerInfo *root, List *tlist)
 	}
 
 	/*
-	 * Add necessary junk columns for rowmarked rels.  These values are
-	 * needed for locking of rels selected FOR UPDATE/SHARE, and to do
-	 * EvalPlanQual rechecking.  While we are at it, store these junk attnos
-	 * in the PlanRowMark list so that we don't have to redetermine them
-	 * at runtime.
+	 * Add necessary junk columns for rowmarked rels.  These values are needed
+	 * for locking of rels selected FOR UPDATE/SHARE, and to do EvalPlanQual
+	 * rechecking.	While we are at it, store these junk attnos in the
+	 * PlanRowMark list so that we don't have to redetermine them at runtime.
 	 */
 	foreach(lc, root->rowMarks)
 	{

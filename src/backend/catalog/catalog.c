@@ -163,7 +163,7 @@ GetDatabasePath(Oid dbNode, Oid spcNode)
 	{
 		/* All other tablespaces are accessed via symlinks */
 		pathlen = 9 + 1 + OIDCHARS + 1 + strlen(TABLESPACE_VERSION_DIRECTORY) +
-				  1 + OIDCHARS + 1;
+			1 + OIDCHARS + 1;
 		path = (char *) palloc(pathlen);
 		snprintf(path, pathlen, "pg_tblspc/%u/%s/%u",
 				 spcNode, TABLESPACE_VERSION_DIRECTORY, dbNode);

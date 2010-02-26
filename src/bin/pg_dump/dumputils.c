@@ -343,10 +343,10 @@ appendByteaLiteral(PQExpBuffer buf, const unsigned char *str, size_t length,
 	static const char hextbl[] = "0123456789abcdef";
 
 	/*
-	 * This implementation is hard-wired to produce hex-format output.
-	 * We do not know the server version the output will be loaded into,
-	 * so making an intelligent format choice is impossible.  It might be
-	 * better to always use the old escaped format.
+	 * This implementation is hard-wired to produce hex-format output. We do
+	 * not know the server version the output will be loaded into, so making
+	 * an intelligent format choice is impossible.	It might be better to
+	 * always use the old escaped format.
 	 */
 	if (!enlargePQExpBuffer(buf, 2 * length + 5))
 		return;
@@ -611,7 +611,7 @@ buildACLCommands(const char *name, const char *subname,
 										  fmtId(grantee->data));
 					if (privswgo->len > 0)
 						appendPQExpBuffer(firstsql,
-							  "%sGRANT %s ON %s %s TO %s WITH GRANT OPTION;\n",
+							"%sGRANT %s ON %s %s TO %s WITH GRANT OPTION;\n",
 										  prefix, privswgo->data, type, name,
 										  fmtId(grantee->data));
 				}
@@ -712,9 +712,9 @@ buildDefaultACLCommands(const char *type, const char *nspname,
 
 	/*
 	 * We incorporate the target role directly into the command, rather than
-	 * playing around with SET ROLE or anything like that.  This is so that
-	 * a permissions error leads to nothing happening, rather than
-	 * changing default privileges for the wrong user.
+	 * playing around with SET ROLE or anything like that.	This is so that a
+	 * permissions error leads to nothing happening, rather than changing
+	 * default privileges for the wrong user.
 	 */
 	appendPQExpBuffer(prefix, "ALTER DEFAULT PRIVILEGES FOR ROLE %s ",
 					  fmtId(owner));

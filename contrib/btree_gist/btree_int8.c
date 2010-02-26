@@ -57,8 +57,8 @@ gbt_int8lt(const void *a, const void *b)
 static int
 gbt_int8key_cmp(const void *a, const void *b)
 {
-    int64KEY    *ia = (int64KEY*)(((Nsrt *) a)->t);
-	int64KEY    *ib = (int64KEY*)(((Nsrt *) b)->t);
+	int64KEY   *ia = (int64KEY *) (((Nsrt *) a)->t);
+	int64KEY   *ib = (int64KEY *) (((Nsrt *) b)->t);
 
 	if (ia->lower == ib->lower)
 	{

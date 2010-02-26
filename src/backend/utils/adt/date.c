@@ -203,7 +203,7 @@ Datum
 date_recv(PG_FUNCTION_ARGS)
 {
 	StringInfo	buf = (StringInfo) PG_GETARG_POINTER(0);
-	DateADT result;
+	DateADT		result;
 
 	result = (DateADT) pq_getmsgint(buf, sizeof(DateADT));
 

@@ -1028,8 +1028,8 @@ parseqatom(struct vars * v,
 	/*----------
 	 * Prepare a general-purpose state skeleton.
 	 *
-	 *    ---> [s] ---prefix---> [begin] ---atom---> [end] ----rest---> [rp]
-	 *   /                                            /
+	 *	  ---> [s] ---prefix---> [begin] ---atom---> [end] ----rest---> [rp]
+	 *	 /											  /
 	 * [lp] ----> [s2] ----bypass---------------------
 	 *
 	 * where bypass is an empty, and prefix is some repetitions of atom

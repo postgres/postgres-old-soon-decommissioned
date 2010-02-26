@@ -45,6 +45,6 @@ extern bool IsSharedRelation(Oid relationId);
 extern Oid	GetNewOid(Relation relation);
 extern Oid GetNewOidWithIndex(Relation relation, Oid indexId,
 				   AttrNumber oidcolumn);
-extern Oid GetNewRelFileNode(Oid reltablespace, Relation pg_class);
+extern Oid	GetNewRelFileNode(Oid reltablespace, Relation pg_class);
 
 #endif   /* CATALOG_H */

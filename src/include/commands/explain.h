@@ -36,14 +36,14 @@ typedef struct ExplainState
 	PlannedStmt *pstmt;			/* top of plan */
 	List	   *rtable;			/* range table */
 	int			indent;			/* current indentation level */
-	List	   *grouping_stack;	/* format-specific grouping state */
+	List	   *grouping_stack; /* format-specific grouping state */
 } ExplainState;
 
 /* Hook for plugins to get control in ExplainOneQuery() */
 typedef void (*ExplainOneQuery_hook_type) (Query *query,
-										   ExplainState *es,
-										   const char *queryString,
-										   ParamListInfo params);
+													   ExplainState *es,
+													 const char *queryString,
+													   ParamListInfo params);
 extern PGDLLIMPORT ExplainOneQuery_hook_type ExplainOneQuery_hook;
 
 /* Hook for plugins to get control in explain_get_index_name() */

@@ -156,8 +156,8 @@ defGetBoolean(DefElem *def)
 				char	   *sval = defGetString(def);
 
 				/*
-				 * The set of strings accepted here should match up with
-				 * the grammar's opt_boolean production.
+				 * The set of strings accepted here should match up with the
+				 * grammar's opt_boolean production.
 				 */
 				if (pg_strcasecmp(sval, "true") == 0)
 					return true;

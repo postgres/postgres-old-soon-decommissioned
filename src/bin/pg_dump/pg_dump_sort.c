@@ -164,10 +164,10 @@ DOTypeNameCompare(const void *p1, const void *p2)
 		return cmpval;
 
 	/* To have a stable sort order, break ties for some object types */
-    if (obj1->objType == DO_FUNC || obj1->objType == DO_AGG)
+	if (obj1->objType == DO_FUNC || obj1->objType == DO_AGG)
 	{
-		FuncInfo *fobj1 = *(FuncInfo **) p1;
-		FuncInfo *fobj2 = *(FuncInfo **) p2;
+		FuncInfo   *fobj1 = *(FuncInfo **) p1;
+		FuncInfo   *fobj2 = *(FuncInfo **) p2;
 
 		cmpval = fobj1->nargs - fobj2->nargs;
 		if (cmpval != 0)

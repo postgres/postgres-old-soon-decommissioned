@@ -22,21 +22,18 @@
 #if defined(HAVE_READLINE_HISTORY_H)
 #include <readline/history.h>
 #endif
-
 #elif defined(HAVE_EDITLINE_READLINE_H)
 #include <editline/readline.h>
 #if defined(HAVE_EDITLINE_HISTORY_H)
 #include <editline/history.h>
 #endif
-
 #elif defined(HAVE_READLINE_H)
 #include <readline.h>
 #if defined(HAVE_HISTORY_H)
 #include <history.h>
 #endif
-
-#endif /* HAVE_READLINE_READLINE_H, etc */
-#endif /* HAVE_LIBREADLINE */
+#endif   /* HAVE_READLINE_READLINE_H, etc */
+#endif   /* HAVE_LIBREADLINE */
 
 #include "pqexpbuffer.h"
 

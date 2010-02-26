@@ -404,8 +404,9 @@ add_variable_to_tail(struct arguments ** list, struct variable * var, struct var
 void
 remove_variable_from_list(struct arguments ** list, struct variable * var)
 {
-	struct arguments *p, *prev = NULL;
-	bool found = false;
+	struct arguments *p,
+			   *prev = NULL;
+	bool		found = false;
 
 	for (p = *list; p; p = p->next)
 	{

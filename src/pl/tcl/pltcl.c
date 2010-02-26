@@ -959,7 +959,7 @@ pltcl_trigger_handler(PG_FUNCTION_ARGS)
 			 * for the input function
 			 ************************************************************/
 			typeTup = SearchSysCache1(TYPEOID,
-					  ObjectIdGetDatum(tupdesc->attrs[attnum - 1]->atttypid));
+					 ObjectIdGetDatum(tupdesc->attrs[attnum - 1]->atttypid));
 			if (!HeapTupleIsValid(typeTup))
 				elog(ERROR, "cache lookup failed for type %u",
 					 tupdesc->attrs[attnum - 1]->atttypid);
@@ -1165,7 +1165,7 @@ compile_pltcl_function(Oid fn_oid, Oid tgreloid)
 		{
 			typeTup =
 				SearchSysCache1(TYPEOID,
-							    ObjectIdGetDatum(procStruct->prorettype));
+								ObjectIdGetDatum(procStruct->prorettype));
 			if (!HeapTupleIsValid(typeTup))
 			{
 				free(prodesc->user_proname);
@@ -1229,7 +1229,7 @@ compile_pltcl_function(Oid fn_oid, Oid tgreloid)
 			for (i = 0; i < prodesc->nargs; i++)
 			{
 				typeTup = SearchSysCache1(TYPEOID,
-						 ObjectIdGetDatum(procStruct->proargtypes.values[i]));
+						ObjectIdGetDatum(procStruct->proargtypes.values[i]));
 				if (!HeapTupleIsValid(typeTup))
 				{
 					free(prodesc->user_proname);
@@ -2333,7 +2333,7 @@ pltcl_set_tuple_values(Tcl_Interp *interp, CONST84 char *arrayname,
 		 * for the output function
 		 ************************************************************/
 		typeTup = SearchSysCache1(TYPEOID,
-							   ObjectIdGetDatum(tupdesc->attrs[i]->atttypid));
+							  ObjectIdGetDatum(tupdesc->attrs[i]->atttypid));
 		if (!HeapTupleIsValid(typeTup))
 			elog(ERROR, "cache lookup failed for type %u",
 				 tupdesc->attrs[i]->atttypid);
@@ -2401,7 +2401,7 @@ pltcl_build_tuple_argument(HeapTuple tuple, TupleDesc tupdesc,
 		 * for the output function
 		 ************************************************************/
 		typeTup = SearchSysCache1(TYPEOID,
-							   ObjectIdGetDatum(tupdesc->attrs[i]->atttypid));
+							  ObjectIdGetDatum(tupdesc->attrs[i]->atttypid));
 		if (!HeapTupleIsValid(typeTup))
 			elog(ERROR, "cache lookup failed for type %u",
 				 tupdesc->attrs[i]->atttypid);

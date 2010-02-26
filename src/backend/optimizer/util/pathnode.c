@@ -1224,7 +1224,7 @@ create_noop_path(PlannerInfo *root, RelOptInfo *rel, Path *subpath)
 {
 	NoOpPath   *pathnode = makeNode(NoOpPath);
 
-	pathnode->path.pathtype = T_Join;			/* by convention */
+	pathnode->path.pathtype = T_Join;	/* by convention */
 	pathnode->path.parent = rel;
 	pathnode->path.startup_cost = subpath->startup_cost;
 	pathnode->path.total_cost = subpath->total_cost;

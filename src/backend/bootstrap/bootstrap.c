@@ -370,7 +370,7 @@ AuxiliaryProcessMain(int argc, char *argv[])
 #endif
 
 		/*
-		 * Assign the ProcSignalSlot for an auxiliary process.  Since it
+		 * Assign the ProcSignalSlot for an auxiliary process.	Since it
 		 * doesn't have a BackendId, the slot is statically allocated based on
 		 * the auxiliary process type (auxType).  Backends use slots indexed
 		 * in the range from 1 to MaxBackends (inclusive), so we use
@@ -493,8 +493,8 @@ BootstrapModeMain(void)
 	boot_yyparse();
 
 	/*
-	 * We should now know about all mapped relations, so it's okay to
-	 * write out the initial relation mapping files.
+	 * We should now know about all mapped relations, so it's okay to write
+	 * out the initial relation mapping files.
 	 */
 	RelationMapFinishBootstrap();
 

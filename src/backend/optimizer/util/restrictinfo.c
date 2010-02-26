@@ -292,15 +292,15 @@ make_restrictinfos_from_actual_clauses(PlannerInfo *root,
 
 	foreach(l, clause_list)
 	{
-		Expr   *clause = (Expr *) lfirst(l);
-		bool	pseudoconstant;
+		Expr	   *clause = (Expr *) lfirst(l);
+		bool		pseudoconstant;
 		RestrictInfo *rinfo;
 
 		/*
 		 * It's pseudoconstant if it contains no Vars and no volatile
 		 * functions.  We probably can't see any sublinks here, so
-		 * contain_var_clause() would likely be enough, but for safety
-		 * use contain_vars_of_level() instead.
+		 * contain_var_clause() would likely be enough, but for safety use
+		 * contain_vars_of_level() instead.
 		 */
 		pseudoconstant =
 			!contain_vars_of_level((Node *) clause, 0) &&

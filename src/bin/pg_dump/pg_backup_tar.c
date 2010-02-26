@@ -350,8 +350,8 @@ tarOpen(ArchiveHandle *AH, const char *filename, char mode)
 			if (filename)
 			{
 				/*
-				 * Couldn't find the requested file. Future:
-				 * do SEEK(0) and retry.
+				 * Couldn't find the requested file. Future: do SEEK(0) and
+				 * retry.
 				 */
 				die_horribly(AH, modulename, "could not find file \"%s\" in archive\n", filename);
 			}
@@ -1178,7 +1178,7 @@ _tarPositionTo(ArchiveHandle *AH, const char *filename)
 		id = atoi(th->targetFile);
 		if ((TocIDRequired(AH, id, AH->ropt) & REQ_DATA) != 0)
 			die_horribly(AH, modulename, "restoring data out of order is not supported in this archive format: "
-				"\"%s\" is required, but comes before \"%s\" in the archive file.\n",
+						 "\"%s\" is required, but comes before \"%s\" in the archive file.\n",
 						 th->targetFile, filename);
 
 		/* Header doesn't match, so read to next header */

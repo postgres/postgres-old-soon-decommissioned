@@ -63,9 +63,9 @@ gbt_macadlt(const void *a, const void *b)
 static int
 gbt_macadkey_cmp(const void *a, const void *b)
 {
-	macKEY *ia = (macKEY*)(((Nsrt *) a)->t);
-	macKEY *ib = (macKEY*)(((Nsrt *) b)->t);
-	int res;
+	macKEY	   *ia = (macKEY *) (((Nsrt *) a)->t);
+	macKEY	   *ib = (macKEY *) (((Nsrt *) b)->t);
+	int			res;
 
 	res = DatumGetInt32(DirectFunctionCall2(macaddr_cmp, MacaddrPGetDatum(&ia->lower), MacaddrPGetDatum(&ib->lower)));
 	if (res == 0)

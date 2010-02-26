@@ -1572,7 +1572,7 @@ _equalDropTableSpaceStmt(DropTableSpaceStmt *a, DropTableSpaceStmt *b)
 
 static bool
 _equalAlterTableSpaceOptionsStmt(AlterTableSpaceOptionsStmt *a,
-											 AlterTableSpaceOptionsStmt *b)
+								 AlterTableSpaceOptionsStmt *b)
 {
 	COMPARE_STRING_FIELD(tablespacename);
 	COMPARE_NODE_FIELD(options);

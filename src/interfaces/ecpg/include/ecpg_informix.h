@@ -34,7 +34,7 @@ extern		"C"
 #endif
 
 extern int	rdatestr(date, char *);
-extern void 	rtoday(date *);
+extern void rtoday(date *);
 extern int	rjulmdy(date, short *);
 extern int	rdefmtdate(date *, char *, char *);
 extern int	rfmtdate(date, char *, char *);
@@ -49,7 +49,7 @@ extern int	rsetnull(int, char *);
 extern int	rtypalign(int, int);
 extern int	rtypmsize(int, int);
 extern int	rtypwidth(int, int);
-extern void 	rupshift(char *);
+extern void rupshift(char *);
 
 extern int	byleng(char *, int);
 extern void ldchar(char *, int, char *);

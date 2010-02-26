@@ -2443,12 +2443,12 @@ LockBufferForCleanup(Buffer buffer)
 bool
 HoldingBufferPinThatDelaysRecovery(void)
 {
-	int		bufid = GetStartupBufferPinWaitBufId();
+	int			bufid = GetStartupBufferPinWaitBufId();
 
 	/*
-	 * If we get woken slowly then it's possible that the Startup process
-	 * was already woken by other backends before we got here. Also possible
-	 * that we get here by multiple interrupts or interrupts at inappropriate
+	 * If we get woken slowly then it's possible that the Startup process was
+	 * already woken by other backends before we got here. Also possible that
+	 * we get here by multiple interrupts or interrupts at inappropriate
 	 * times, so make sure we do nothing if the bufid is not set.
 	 */
 	if (bufid < 0)

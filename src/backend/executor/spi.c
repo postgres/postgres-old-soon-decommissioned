@@ -1268,10 +1268,9 @@ SPI_cursor_open_internal(const char *name, SPIPlanPtr plan,
 	}
 
 	/*
-	 * If the plan has parameters, copy them into the portal.  Note that
-	 * this must be done after revalidating the plan, because in dynamic
-	 * parameter cases the set of parameters could have changed during
-	 * re-parsing.
+	 * If the plan has parameters, copy them into the portal.  Note that this
+	 * must be done after revalidating the plan, because in dynamic parameter
+	 * cases the set of parameters could have changed during re-parsing.
 	 */
 	if (paramLI)
 	{

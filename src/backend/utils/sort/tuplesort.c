@@ -2797,8 +2797,8 @@ comparetup_index_btree(const SortTuple *a, const SortTuple *b,
 	 */
 	if (state->enforceUnique && !equal_hasnull && tuple1 != tuple2)
 	{
-		Datum	values[INDEX_MAX_KEYS];
-		bool	isnull[INDEX_MAX_KEYS];
+		Datum		values[INDEX_MAX_KEYS];
+		bool		isnull[INDEX_MAX_KEYS];
 
 		index_deform_tuple(tuple1, tupDes, values, isnull);
 		ereport(ERROR,

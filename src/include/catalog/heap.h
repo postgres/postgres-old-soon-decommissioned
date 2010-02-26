@@ -112,9 +112,9 @@ extern Form_pg_attribute SystemAttributeByName(const char *attname,
 					  bool relhasoids);
 
 extern void CheckAttributeNamesTypes(TupleDesc tupdesc, char relkind,
-									 bool allow_system_table_mods);
+						 bool allow_system_table_mods);
 
 extern void CheckAttributeType(const char *attname, Oid atttypid,
-							   bool allow_system_table_mods);
+				   bool allow_system_table_mods);
 
 #endif   /* HEAP_H */

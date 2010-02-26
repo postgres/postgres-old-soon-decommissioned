@@ -24,7 +24,7 @@
  * This flag changes the behaviour *globally* for all socket operations,
  * so it should only be set for very short periods of time.
  */
-int	pgwin32_noblock = 0;
+int			pgwin32_noblock = 0;
 
 #undef socket
 #undef accept
@@ -326,8 +326,8 @@ pgwin32_recv(SOCKET s, char *buf, int len, int f)
 	if (pgwin32_noblock)
 	{
 		/*
-		 * No data received, and we are in "emulated non-blocking mode", so return
-		 * indicating that we'd block if we were to continue.
+		 * No data received, and we are in "emulated non-blocking mode", so
+		 * return indicating that we'd block if we were to continue.
 		 */
 		errno = EWOULDBLOCK;
 		return -1;

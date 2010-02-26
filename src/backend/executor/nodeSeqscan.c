@@ -92,9 +92,8 @@ static bool
 SeqRecheck(SeqScanState *node, TupleTableSlot *slot)
 {
 	/*
-	 * Note that unlike IndexScan, SeqScan never use keys in
-	 * heap_beginscan (and this is very bad) - so, here we do not check
-	 * are keys ok or not.
+	 * Note that unlike IndexScan, SeqScan never use keys in heap_beginscan
+	 * (and this is very bad) - so, here we do not check are keys ok or not.
 	 */
 	return true;
 }

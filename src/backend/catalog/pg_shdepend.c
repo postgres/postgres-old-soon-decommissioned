@@ -1015,7 +1015,7 @@ shdepLockAndCheckObject(Oid classId, Oid objectId)
 				pfree(database);
 				break;
 			}
-		
+
 
 		default:
 			elog(ERROR, "unrecognized shared classId: %u", classId);
@@ -1351,9 +1351,10 @@ shdepReassignOwned(List *roleids, Oid newrole)
 					break;
 
 				case DefaultAclRelationId:
+
 					/*
-					 * Ignore default ACLs; they should be handled by
-					 * DROP OWNED, not REASSIGN OWNED.
+					 * Ignore default ACLs; they should be handled by DROP
+					 * OWNED, not REASSIGN OWNED.
 					 */
 					break;
 

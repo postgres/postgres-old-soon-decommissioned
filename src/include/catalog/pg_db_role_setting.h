@@ -27,11 +27,11 @@
 #include "utils/relcache.h"
 
 /* ----------------
- *		pg_db_role_setting definition.  cpp turns this into
+ *		pg_db_role_setting definition.	cpp turns this into
  *		typedef struct FormData_pg_db_role_setting
  * ----------------
  */
-#define DbRoleSettingRelationId	2964
+#define DbRoleSettingRelationId 2964
 
 CATALOG(pg_db_role_setting,2964) BKI_SHARED_RELATION BKI_WITHOUT_OIDS
 {

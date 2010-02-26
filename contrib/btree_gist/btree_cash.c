@@ -57,8 +57,8 @@ gbt_cashlt(const void *a, const void *b)
 static int
 gbt_cashkey_cmp(const void *a, const void *b)
 {
-    cashKEY    *ia = (cashKEY*)(((Nsrt *) a)->t);
-	cashKEY    *ib = (cashKEY*)(((Nsrt *) b)->t);
+	cashKEY    *ia = (cashKEY *) (((Nsrt *) a)->t);
+	cashKEY    *ib = (cashKEY *) (((Nsrt *) b)->t);
 
 	if (ia->lower == ib->lower)
 	{

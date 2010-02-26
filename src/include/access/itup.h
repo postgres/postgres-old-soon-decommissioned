@@ -144,7 +144,7 @@ extern IndexTuple index_form_tuple(TupleDesc tupleDescriptor,
 extern Datum nocache_index_getattr(IndexTuple tup, int attnum,
 					  TupleDesc tupleDesc);
 extern void index_deform_tuple(IndexTuple tup, TupleDesc tupleDescriptor,
-				 Datum *values, bool *isnull);
+				   Datum *values, bool *isnull);
 extern IndexTuple CopyIndexTuple(IndexTuple source);
 
 #endif   /* ITUP_H */

@@ -132,9 +132,9 @@ extern void EnableCatchupInterrupt(void);
 extern bool DisableCatchupInterrupt(void);
 
 extern int xactGetCommittedInvalidationMessages(SharedInvalidationMessage **msgs,
-										bool *RelcacheInitFileInval);
+									 bool *RelcacheInitFileInval);
 extern void ProcessCommittedInvalidationMessages(SharedInvalidationMessage *msgs,
-										int nmsgs, bool RelcacheInitFileInval,
-										Oid dbid, Oid tsid);
+									 int nmsgs, bool RelcacheInitFileInval,
+									 Oid dbid, Oid tsid);
 
 #endif   /* SINVAL_H */

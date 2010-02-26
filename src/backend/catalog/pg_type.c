@@ -32,7 +32,7 @@
 #include "utils/rel.h"
 #include "utils/syscache.h"
 
-Oid binary_upgrade_next_pg_type_oid = InvalidOid;
+Oid			binary_upgrade_next_pg_type_oid = InvalidOid;
 
 /* ----------------------------------------------------------------
  *		TypeShellMake
@@ -424,7 +424,7 @@ TypeCreate(Oid newTypeOid,
 			binary_upgrade_next_pg_type_oid = InvalidOid;
 		}
 		/* else allow system to assign oid */
-		
+
 		typeObjectId = simple_heap_insert(pg_type_desc, tup);
 	}
 

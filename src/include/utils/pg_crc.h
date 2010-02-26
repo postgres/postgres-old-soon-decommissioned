@@ -113,7 +113,6 @@ do { \
 /* Constant table for CRC calculation */
 extern CRCDLLIMPORT const uint32 pg_crc64_table0[];
 extern CRCDLLIMPORT const uint32 pg_crc64_table1[];
-
 #else							/* use int64 implementation */
 
 typedef struct pg_crc64

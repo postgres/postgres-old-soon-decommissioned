@@ -229,11 +229,12 @@ get_sort_group_operators(Oid argtype,
 				lt_opr = gt_opr = InvalidOid;
 			}
 #else
+
 			/*
 			 * ... but for the moment we have to do this.  This is because
 			 * anyarray has sorting but not hashing support.  So, if the
-			 * element type is only hashable, there is nothing we can do
-			 * with the array type.
+			 * element type is only hashable, there is nothing we can do with
+			 * the array type.
 			 */
 			if (!OidIsValid(typentry->lt_opr) ||
 				!OidIsValid(typentry->eq_opr) ||

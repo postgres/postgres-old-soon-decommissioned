@@ -799,8 +799,8 @@ _hash_splitbucket(Relation rel,
 	/*
 	 * Partition the tuples in the old bucket between the old bucket and the
 	 * new bucket, advancing along the old bucket's overflow bucket chain and
-	 * adding overflow pages to the new bucket as needed.  Outer loop
-	 * iterates once per page in old bucket.
+	 * adding overflow pages to the new bucket as needed.  Outer loop iterates
+	 * once per page in old bucket.
 	 */
 	for (;;)
 	{

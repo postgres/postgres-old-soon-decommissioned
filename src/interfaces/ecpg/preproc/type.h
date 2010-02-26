@@ -17,7 +17,8 @@ struct ECPGstruct_member
 struct ECPGtype
 {
 	enum ECPGttype type;
-	char	   *type_name;			/* For struct and union types it is the struct name */
+	char	   *type_name;		/* For struct and union types it is the struct
+								 * name */
 	char	   *size;			/* For array it is the number of elements. For
 								 * varchar it is the maxsize of the area. */
 	char	   *struct_sizeof;	/* For a struct this is the sizeof() type as

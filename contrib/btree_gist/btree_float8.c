@@ -57,8 +57,8 @@ gbt_float8lt(const void *a, const void *b)
 static int
 gbt_float8key_cmp(const void *a, const void *b)
 {
-    float8KEY    *ia = (float8KEY*)(((Nsrt *) a)->t);
-	float8KEY    *ib = (float8KEY*)(((Nsrt *) b)->t);
+	float8KEY  *ia = (float8KEY *) (((Nsrt *) a)->t);
+	float8KEY  *ib = (float8KEY *) (((Nsrt *) b)->t);
 
 	if (ia->lower == ib->lower)
 	{

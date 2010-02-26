@@ -767,7 +767,7 @@ rfmtlong(long lng_val, char *fmt, char *outbuf)
 	size_t		fmt_len = strlen(fmt);
 	size_t		temp_len;
 	int			i,
-				j, /* position in temp */
+				j,				/* position in temp */
 				k,
 				dotpos;
 	int			leftalign = 0,

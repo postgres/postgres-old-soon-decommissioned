@@ -531,9 +531,9 @@ array_agg_finalfn(PG_FUNCTION_ARGS)
 
 	/*
 	 * Make the result.  We cannot release the ArrayBuildState because
-	 * sometimes aggregate final functions are re-executed.  Rather, it
-	 * is nodeAgg.c's responsibility to reset the aggcontext when it's
-	 * safe to do so.
+	 * sometimes aggregate final functions are re-executed.  Rather, it is
+	 * nodeAgg.c's responsibility to reset the aggcontext when it's safe to do
+	 * so.
 	 */
 	result = makeMdArrayResult(state, 1, dims, lbs,
 							   CurrentMemoryContext,

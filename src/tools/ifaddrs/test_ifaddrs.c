@@ -16,10 +16,11 @@
 
 
 static void
-print_addr(struct sockaddr *addr)
+print_addr(struct sockaddr * addr)
 {
-	char buffer[256];
-	int ret, len;
+	char		buffer[256];
+	int			ret,
+				len;
 
 	switch (addr->sa_family)
 	{
@@ -45,7 +46,7 @@ print_addr(struct sockaddr *addr)
 }
 
 static void
-callback(struct sockaddr *addr, struct sockaddr *mask, void *unused)
+callback(struct sockaddr * addr, struct sockaddr * mask, void *unused)
 {
 	printf("addr: ");
 	print_addr(addr);
@@ -58,7 +59,7 @@ int
 main(int argc, char *argv[])
 {
 #ifdef WIN32
-	WSADATA wsaData;
+	WSADATA		wsaData;
 
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
 	{

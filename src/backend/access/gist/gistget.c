@@ -414,7 +414,8 @@ gistindex_keytest(IndexTuple tuple,
 			/*
 			 * On non-leaf page we can't conclude that child hasn't NULL
 			 * values because of assumption in GiST: union (VAL, NULL) is VAL.
-			 * But if on non-leaf page key IS NULL, then all children are NULL.
+			 * But if on non-leaf page key IS NULL, then all children are
+			 * NULL.
 			 */
 			if (key->sk_flags & SK_SEARCHNULL)
 			{

@@ -126,7 +126,7 @@ ExecRenameStmt(RenameStmt *stmt)
 								  stmt->subname,		/* old att name */
 								  stmt->newname,		/* new att name */
 								  interpretInhOption(stmt->relation->inhOpt),	/* recursive? */
-								  0);			/* expected inhcount */
+								  0);	/* expected inhcount */
 						break;
 					case OBJECT_TRIGGER:
 						renametrig(relid,

@@ -622,7 +622,7 @@ get_op_btree_interpretation(Oid opno, List **opfamilies, List **opstrats)
 		{
 			op_negated = true;
 			ReleaseSysCacheList(catlist);
-			catlist = SearchSysCacheList1(AMOPOPID, 
+			catlist = SearchSysCacheList1(AMOPOPID,
 										  ObjectIdGetDatum(op_negator));
 		}
 	}

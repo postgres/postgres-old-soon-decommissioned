@@ -795,8 +795,8 @@ get_func_input_arg_names(Datum proargnames, Datum proargmodes,
 
 	/*
 	 * We expect the arrays to be 1-D arrays of the right types; verify that.
-	 * For proargmodes, we don't need to use deconstruct_array()
-	 * since the array data is just going to look like a C array of values.
+	 * For proargmodes, we don't need to use deconstruct_array() since the
+	 * array data is just going to look like a C array of values.
 	 */
 	arr = DatumGetArrayTypeP(proargnames);		/* ensure not toasted */
 	if (ARR_NDIM(arr) != 1 ||

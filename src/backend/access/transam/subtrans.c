@@ -89,7 +89,7 @@ SubTransSetParent(TransactionId xid, TransactionId parent, bool overwriteOK)
 
 	/* Current state should be 0 */
 	Assert(*ptr == InvalidTransactionId ||
-			(*ptr == parent && overwriteOK));
+		   (*ptr == parent && overwriteOK));
 
 	*ptr = parent;
 

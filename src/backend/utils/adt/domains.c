@@ -305,7 +305,7 @@ domain_recv(PG_FUNCTION_ARGS)
 
 /*
  * domain_check - check that a datum satisfies the constraints of a
- * domain.  extra and mcxt can be passed if they are available from,
+ * domain.	extra and mcxt can be passed if they are available from,
  * say, a FmgrInfo structure, or they can be NULL, in which case the
  * setup is repeated for each call.
  */

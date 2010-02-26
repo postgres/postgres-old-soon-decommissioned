@@ -32,9 +32,9 @@
 #include "utils/syscache.h"
 
 /* Kluges for upgrade-in-place support */
-extern Oid binary_upgrade_next_toast_relfilenode;
+extern Oid	binary_upgrade_next_toast_relfilenode;
 
-Oid binary_upgrade_next_pg_type_toast_oid = InvalidOid;
+Oid			binary_upgrade_next_pg_type_toast_oid = InvalidOid;
 
 static bool create_toast_table(Relation rel, Oid toastOid, Oid toastIndexOid,
 				   Datum reloptions);

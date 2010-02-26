@@ -586,7 +586,7 @@ tuplestore_putvalues(Tuplestorestate *state, TupleDesc tdesc,
 
 	tuplestore_puttuple_common(state, (void *) tuple);
 
-	MemoryContextSwitchTo(oldcxt);	
+	MemoryContextSwitchTo(oldcxt);
 }
 
 static void

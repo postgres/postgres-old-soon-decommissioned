@@ -281,7 +281,8 @@ end_heap_rewrite(RewriteState state)
 	/* Write an XLOG UNLOGGED record if WAL-logging was skipped */
 	if (!state->rs_use_wal && !state->rs_new_rel->rd_istemp)
 	{
-		char reason[NAMEDATALEN + 30];
+		char		reason[NAMEDATALEN + 30];
+
 		snprintf(reason, sizeof(reason), "heap rewrite on \"%s\"",
 				 RelationGetRelationName(state->rs_new_rel));
 		XLogReportUnloggedStatement(reason);

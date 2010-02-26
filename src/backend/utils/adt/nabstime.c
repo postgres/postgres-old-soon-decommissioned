@@ -786,7 +786,7 @@ tintervalrecv(PG_FUNCTION_ARGS)
 {
 	StringInfo	buf = (StringInfo) PG_GETARG_POINTER(0);
 	TimeInterval tinterval;
-	int32 status;
+	int32		status;
 
 	tinterval = (TimeInterval) palloc(sizeof(TimeIntervalData));
 
@@ -796,7 +796,7 @@ tintervalrecv(PG_FUNCTION_ARGS)
 
 	if (tinterval->data[0] == INVALID_ABSTIME ||
 		tinterval->data[1] == INVALID_ABSTIME)
-		status = T_INTERVAL_INVAL;	/* undefined  */
+		status = T_INTERVAL_INVAL;		/* undefined  */
 	else
 		status = T_INTERVAL_VALID;
 

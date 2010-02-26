@@ -47,8 +47,9 @@ typedef struct catcache
 	int			cc_nbuckets;	/* # of hash buckets in this cache */
 	int			cc_nkeys;		/* # of keys (1..CATCACHE_MAXKEYS) */
 	int			cc_key[CATCACHE_MAXKEYS];		/* AttrNumber of each key */
-	PGFunction	cc_hashfunc[CATCACHE_MAXKEYS]; /* hash function for each key */
-	ScanKeyData cc_skey[CATCACHE_MAXKEYS];		/* precomputed key info for heap scans */
+	PGFunction	cc_hashfunc[CATCACHE_MAXKEYS];	/* hash function for each key */
+	ScanKeyData cc_skey[CATCACHE_MAXKEYS];		/* precomputed key info for
+												 * heap scans */
 	bool		cc_isname[CATCACHE_MAXKEYS];	/* flag "name" key columns */
 	Dllist		cc_lists;		/* list of CatCList structs */
 #ifdef CATCACHE_STATS

@@ -57,8 +57,8 @@ gbt_oidlt(const void *a, const void *b)
 static int
 gbt_oidkey_cmp(const void *a, const void *b)
 {
-    oidKEY    *ia = (oidKEY*)(((Nsrt *) a)->t);
-	oidKEY    *ib = (oidKEY*)(((Nsrt *) b)->t);
+	oidKEY	   *ia = (oidKEY *) (((Nsrt *) a)->t);
+	oidKEY	   *ib = (oidKEY *) (((Nsrt *) b)->t);
 
 	if (ia->lower == ib->lower)
 	{

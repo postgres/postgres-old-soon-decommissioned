@@ -145,12 +145,12 @@ typedef struct PlannerInfo
 	/*
 	 * When doing a dynamic-programming-style join search, join_rel_level[k]
 	 * is a list of all join-relation RelOptInfos of level k, and
-	 * join_cur_level is the current level.  New join-relation RelOptInfos
-	 * are automatically added to the join_rel_level[join_cur_level] list.
+	 * join_cur_level is the current level.  New join-relation RelOptInfos are
+	 * automatically added to the join_rel_level[join_cur_level] list.
 	 * join_rel_level is NULL if not in use.
 	 */
-	List	  **join_rel_level;	/* lists of join-relation RelOptInfos */
-	int			join_cur_level;	/* index of list being extended */
+	List	  **join_rel_level; /* lists of join-relation RelOptInfos */
+	int			join_cur_level; /* index of list being extended */
 
 	List	   *resultRelations;	/* integer list of RT indexes, or NIL */
 
@@ -876,8 +876,8 @@ typedef struct MergePath
 {
 	JoinPath	jpath;
 	List	   *path_mergeclauses;		/* join clauses to be used for merge */
-	List	   *outersortkeys;			/* keys for explicit sort, if any */
-	List	   *innersortkeys;			/* keys for explicit sort, if any */
+	List	   *outersortkeys;	/* keys for explicit sort, if any */
+	List	   *innersortkeys;	/* keys for explicit sort, if any */
 	bool		materialize_inner;		/* add Materialize to inner? */
 } MergePath;
 

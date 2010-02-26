@@ -576,8 +576,8 @@ typedef struct
 	GinState   *ginstate;
 	long		allocatedMemory;
 	uint32		length;
-	EntryAccumulator   *entryallocator;
-	ItemPointerData	   *tmpList;
+	EntryAccumulator *entryallocator;
+	ItemPointerData *tmpList;
 	RBTree	   *tree;
 	RBTreeIterator *iterator;
 } BuildAccumulator;

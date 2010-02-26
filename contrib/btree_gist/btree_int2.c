@@ -56,8 +56,8 @@ gbt_int2lt(const void *a, const void *b)
 static int
 gbt_int2key_cmp(const void *a, const void *b)
 {
-    int16KEY    *ia = (int16KEY*)(((Nsrt *) a)->t);
-	int16KEY    *ib = (int16KEY*)(((Nsrt *) b)->t);
+	int16KEY   *ia = (int16KEY *) (((Nsrt *) a)->t);
+	int16KEY   *ib = (int16KEY *) (((Nsrt *) b)->t);
 
 	if (ia->lower == ib->lower)
 	{

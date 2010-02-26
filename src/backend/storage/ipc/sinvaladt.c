@@ -145,9 +145,10 @@ typedef struct ProcState
 	bool		signaled;		/* backend has been sent catchup signal */
 
 	/*
-	 * Backend only sends invalidations, never receives them. This only makes sense
-	 * for Startup process during recovery because it doesn't maintain a relcache,
-	 * yet it fires inval messages to allow query backends to see schema changes.
+	 * Backend only sends invalidations, never receives them. This only makes
+	 * sense for Startup process during recovery because it doesn't maintain a
+	 * relcache, yet it fires inval messages to allow query backends to see
+	 * schema changes.
 	 */
 	bool		sendOnly;		/* backend only sends, never receives */
 
@@ -587,7 +588,7 @@ SICleanupQueue(bool callerHasWriteLock, int minFree)
 	/*
 	 * Recompute minMsgNum = minimum of all backends' nextMsgNum, identify the
 	 * furthest-back backend that needs signaling (if any), and reset any
-	 * backends that are too far back.  Note that because we ignore sendOnly
+	 * backends that are too far back.	Note that because we ignore sendOnly
 	 * backends here it is possible for them to keep sending messages without
 	 * a problem even when they are the only active backend.
 	 */

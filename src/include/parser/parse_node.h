@@ -23,12 +23,12 @@
  */
 typedef struct ParseState ParseState;
 
-typedef Node * (*PreParseColumnRefHook) (ParseState *pstate, ColumnRef *cref);
-typedef Node * (*PostParseColumnRefHook) (ParseState *pstate, ColumnRef *cref, Node *var);
-typedef Node * (*ParseParamRefHook) (ParseState *pstate, ParamRef *pref);
-typedef Node * (*CoerceParamHook) (ParseState *pstate, Param *param,
-								   Oid targetTypeId, int32 targetTypeMod,
-								   int location);
+typedef Node *(*PreParseColumnRefHook) (ParseState *pstate, ColumnRef *cref);
+typedef Node *(*PostParseColumnRefHook) (ParseState *pstate, ColumnRef *cref, Node *var);
+typedef Node *(*ParseParamRefHook) (ParseState *pstate, ParamRef *pref);
+typedef Node *(*CoerceParamHook) (ParseState *pstate, Param *param,
+									   Oid targetTypeId, int32 targetTypeMod,
+											  int location);
 
 
 /*
@@ -117,7 +117,7 @@ struct ParseState
 	PostParseColumnRefHook p_post_columnref_hook;
 	ParseParamRefHook p_paramref_hook;
 	CoerceParamHook p_coerce_param_hook;
-	void	   *p_ref_hook_state;	/* common passthrough link for above */
+	void	   *p_ref_hook_state;		/* common passthrough link for above */
 };
 
 /* Support for parser_errposition_callback function */

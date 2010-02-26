@@ -211,14 +211,14 @@ typedef struct Param
  * Aggref
  *
  * The aggregate's args list is a targetlist, ie, a list of TargetEntry nodes
- * (before Postgres 9.0 it was just bare expressions).  The non-resjunk TLEs
+ * (before Postgres 9.0 it was just bare expressions).	The non-resjunk TLEs
  * represent the aggregate's regular arguments (if any) and resjunk TLEs can
  * be added at the end to represent ORDER BY expressions that are not also
  * arguments.  As in a top-level Query, the TLEs can be marked with
  * ressortgroupref indexes to let them be referenced by SortGroupClause
  * entries in the aggorder and/or aggdistinct lists.  This represents ORDER BY
  * and DISTINCT operations to be applied to the aggregate input rows before
- * they are passed to the transition function.  The grammar only allows a
+ * they are passed to the transition function.	The grammar only allows a
  * simple "DISTINCT" specifier for the arguments, but we use the full
  * query-level representation to allow more code sharing.
  */

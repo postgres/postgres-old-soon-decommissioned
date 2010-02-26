@@ -83,7 +83,7 @@ bool		ECPGset_desc(int, const char *, int,...);
 
 void		ECPGset_noind_null(enum ECPGttype, void *);
 bool		ECPGis_noind_null(enum ECPGttype, void *);
-bool		ECPGdescribe(int, int, bool, const char *, const char *, ...);
+bool		ECPGdescribe(int, int, bool, const char *, const char *,...);
 
 void		ECPGset_var(int, void *, int);
 void	   *ECPGget_var(int number);

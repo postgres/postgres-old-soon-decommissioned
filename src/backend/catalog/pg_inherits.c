@@ -158,7 +158,8 @@ find_inheritance_children(Oid parentrelId, LOCKMODE lockmode)
 List *
 find_all_inheritors(Oid parentrelId, LOCKMODE lockmode, List **numparents)
 {
-	List	   *rels_list, *rel_numparents;
+	List	   *rels_list,
+			   *rel_numparents;
 	ListCell   *l;
 
 	/*
@@ -189,8 +190,8 @@ find_all_inheritors(Oid parentrelId, LOCKMODE lockmode, List **numparents)
 		 */
 		foreach(lc, currentchildren)
 		{
-			Oid		child_oid = lfirst_oid(lc);
-			bool	found = false;
+			Oid			child_oid = lfirst_oid(lc);
+			bool		found = false;
 			ListCell   *lo;
 			ListCell   *li;
 

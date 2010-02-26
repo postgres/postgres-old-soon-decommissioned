@@ -30,12 +30,12 @@ typedef struct TupleConversionMap
 
 
 extern TupleConversionMap *convert_tuples_by_position(TupleDesc indesc,
-													  TupleDesc outdesc,
-													  const char *msg);
+						   TupleDesc outdesc,
+						   const char *msg);
 
 extern TupleConversionMap *convert_tuples_by_name(TupleDesc indesc,
-												  TupleDesc outdesc,
-												  const char *msg);
+					   TupleDesc outdesc,
+					   const char *msg);
 
 extern HeapTuple do_convert_tuple(HeapTuple tuple, TupleConversionMap *map);
 

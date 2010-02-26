@@ -796,9 +796,9 @@ toast_insert_or_update(Relation rel, HeapTuple newtup, HeapTuple oldtup,
 	}
 
 	/*
-	 * Finally we store attributes of type 'm' externally.  At this point
-	 * we increase the target tuple size, so that 'm' attributes aren't
-	 * stored externally unless really necessary.
+	 * Finally we store attributes of type 'm' externally.	At this point we
+	 * increase the target tuple size, so that 'm' attributes aren't stored
+	 * externally unless really necessary.
 	 */
 	maxDataLen = TOAST_TUPLE_TARGET_MAIN - hoff;
 
@@ -1190,8 +1190,8 @@ toast_save_datum(Relation rel, Datum value, int options)
 	 *
 	 * Normally this is the actual OID of the target toast table, but during
 	 * table-rewriting operations such as CLUSTER, we have to insert the OID
-	 * of the table's real permanent toast table instead.  rd_toastoid is
-	 * set if we have to substitute such an OID.
+	 * of the table's real permanent toast table instead.  rd_toastoid is set
+	 * if we have to substitute such an OID.
 	 */
 	if (OidIsValid(rel->rd_toastoid))
 		toast_pointer.va_toastrelid = rel->rd_toastoid;

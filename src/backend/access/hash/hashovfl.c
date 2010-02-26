@@ -717,8 +717,8 @@ _hash_squeezebucket(Relation rel,
 
 		/*
 		 * If we reach here, there are no live tuples on the "read" page ---
-		 * it was empty when we got to it, or we moved them all.  So we
-		 * can just free the page without bothering with deleting tuples
+		 * it was empty when we got to it, or we moved them all.  So we can
+		 * just free the page without bothering with deleting tuples
 		 * individually.  Then advance to the previous "read" page.
 		 *
 		 * Tricky point here: if our read and write pages are adjacent in the

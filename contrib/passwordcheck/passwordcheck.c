@@ -66,12 +66,12 @@ check_password(const char *username,
 	switch (password_type)
 	{
 		case PASSWORD_TYPE_MD5:
+
 			/*
-			 * Unfortunately we cannot perform exhaustive checks on
-			 * encrypted passwords - we are restricted to guessing.
-			 * (Alternatively, we could insist on the password being
-			 * presented non-encrypted, but that has its own security
-			 * disadvantages.)
+			 * Unfortunately we cannot perform exhaustive checks on encrypted
+			 * passwords - we are restricted to guessing. (Alternatively, we
+			 * could insist on the password being presented non-encrypted, but
+			 * that has its own security disadvantages.)
 			 *
 			 * We only check for username = password.
 			 */
@@ -84,6 +84,7 @@ check_password(const char *username,
 			break;
 
 		case PASSWORD_TYPE_PLAINTEXT:
+
 			/*
 			 * For unencrypted passwords we can perform better checks
 			 */
@@ -106,8 +107,8 @@ check_password(const char *username,
 			for (i = 0; i < pwdlen; i++)
 			{
 				/*
-				 * isalpha() does not work for multibyte encodings
-				 * but let's consider non-ASCII characters non-letters
+				 * isalpha() does not work for multibyte encodings but let's
+				 * consider non-ASCII characters non-letters
 				 */
 				if (isalpha((unsigned char) password[i]))
 					pwd_has_letter = true;
@@ -117,7 +118,7 @@ check_password(const char *username,
 			if (!pwd_has_letter || !pwd_has_nonletter)
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-						 errmsg("password must contain both letters and nonletters")));
+				errmsg("password must contain both letters and nonletters")));
 
 #ifdef USE_CRACKLIB
 			/* call cracklib to check password */

@@ -19,16 +19,16 @@
 
 typedef struct replace_rte_variables_context replace_rte_variables_context;
 
-typedef Node * (*replace_rte_variables_callback) (Var *var,
-									replace_rte_variables_context *context);
+typedef Node *(*replace_rte_variables_callback) (Var *var,
+									 replace_rte_variables_context *context);
 
 struct replace_rte_variables_context
 {
 	replace_rte_variables_callback callback;	/* callback function */
-	void	   *callback_arg;		/* context data for callback function */
-	int			target_varno;		/* RTE index to search for */
-	int			sublevels_up;		/* (current) nesting depth */
-	bool		inserted_sublink;	/* have we inserted a SubLink? */
+	void	   *callback_arg;	/* context data for callback function */
+	int			target_varno;	/* RTE index to search for */
+	int			sublevels_up;	/* (current) nesting depth */
+	bool		inserted_sublink;		/* have we inserted a SubLink? */
 };
 
 

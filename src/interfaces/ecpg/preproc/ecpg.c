@@ -419,7 +419,10 @@ main(int argc, char *const argv[])
 				/* and structure member lists */
 				memset(struct_member_list, 0, sizeof(struct_member_list));
 
-				/* and our variable counter for out of scope cursors' variables */
+				/*
+				 * and our variable counter for out of scope cursors'
+				 * variables
+				 */
 				ecpg_internal_var = 0;
 
 				/* finally the actual connection */

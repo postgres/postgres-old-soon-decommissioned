@@ -360,8 +360,8 @@ lookup_agg_function(List *fnName,
 			ereport(ERROR,
 					(errcode(ERRCODE_DATATYPE_MISMATCH),
 					 errmsg("function %s requires run-time type coercion",
-					 func_signature_string(fnName, nargs,
-										   NIL, true_oid_array))));
+							func_signature_string(fnName, nargs,
+												  NIL, true_oid_array))));
 	}
 
 	/* Check aggregate creator has permission to call the function */

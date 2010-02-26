@@ -68,8 +68,8 @@ typedef enum LWLockId
 	AutovacuumScheduleLock,
 	SyncScanLock,
 	RelationMappingLock,
- 	AsyncCtlLock,
- 	AsyncQueueLock,
+	AsyncCtlLock,
+	AsyncQueueLock,
 	/* Individual lock IDs end here */
 	FirstBufMappingLock,
 	FirstLockMgrLock = FirstBufMappingLock + NUM_BUFFER_PARTITIONS,

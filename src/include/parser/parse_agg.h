@@ -16,7 +16,7 @@
 #include "parser/parse_node.h"
 
 extern void transformAggregateCall(ParseState *pstate, Aggref *agg,
-								   bool agg_distinct);
+					   bool agg_distinct);
 extern void transformWindowFuncCall(ParseState *pstate, WindowFunc *wfunc,
 						WindowDef *windef);
 

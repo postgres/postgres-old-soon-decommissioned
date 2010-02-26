@@ -404,9 +404,9 @@ build_join_rel(PlannerInfo *root,
 
 	/*
 	 * Also, if dynamic-programming join search is active, add the new joinrel
-	 * to the appropriate sublist.  Note: you might think the Assert on
-	 * number of members should be for equality, but some of the level 1
-	 * rels might have been joinrels already, so we can only assert <=.
+	 * to the appropriate sublist.	Note: you might think the Assert on number
+	 * of members should be for equality, but some of the level 1 rels might
+	 * have been joinrels already, so we can only assert <=.
 	 */
 	if (root->join_rel_level)
 	{

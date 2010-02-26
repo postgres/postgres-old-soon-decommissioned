@@ -175,22 +175,22 @@ main(int argc, char *argv[])
 		const char **keywords = pg_malloc(PARAMS_ARRAY_SIZE * sizeof(*keywords));
 		const char **values = pg_malloc(PARAMS_ARRAY_SIZE * sizeof(*values));
 
-		keywords[0]	= "host";
-		values[0]	= options.host;
-		keywords[1]	= "port";
-		values[1]	= options.port;
-		keywords[2]	= "user";
-		values[2]	= options.username;
-		keywords[3]	= "password";
-		values[3]	= password;
-		keywords[4]	= "dbname";
-		values[4]	= (options.action == ACT_LIST_DB &&
-						options.dbname == NULL) ?
-						"postgres" : options.dbname;
-		keywords[5]	= "fallback_application_name";
-		values[5]	= pset.progname;
-		keywords[6]	= NULL;
-		values[6]	= NULL;
+		keywords[0] = "host";
+		values[0] = options.host;
+		keywords[1] = "port";
+		values[1] = options.port;
+		keywords[2] = "user";
+		values[2] = options.username;
+		keywords[3] = "password";
+		values[3] = password;
+		keywords[4] = "dbname";
+		values[4] = (options.action == ACT_LIST_DB &&
+					 options.dbname == NULL) ?
+			"postgres" : options.dbname;
+		keywords[5] = "fallback_application_name";
+		values[5] = pset.progname;
+		keywords[6] = NULL;
+		values[6] = NULL;
 
 		new_pass = false;
 		pset.db = PQconnectdbParams(keywords, values, true);

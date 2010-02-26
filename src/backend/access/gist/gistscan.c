@@ -92,8 +92,8 @@ gistrescan(PG_FUNCTION_ARGS)
 		 * field.
 		 *
 		 * Next, if any of keys is a NULL and that key is not marked with
-		 * SK_SEARCHNULL/SK_SEARCHNOTNULL then nothing can be found (ie,
-		 * we assume all indexable operators are strict).
+		 * SK_SEARCHNULL/SK_SEARCHNOTNULL then nothing can be found (ie, we
+		 * assume all indexable operators are strict).
 		 */
 		for (i = 0; i < scan->numberOfKeys; i++)
 		{

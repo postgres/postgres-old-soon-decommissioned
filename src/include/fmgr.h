@@ -538,11 +538,11 @@ extern void **find_rendezvous_variable(const char *varName);
  */
 
 /* AggCheckCallContext can return one of the following codes, or 0: */
-#define AGG_CONTEXT_AGGREGATE	1			/* regular aggregate */
-#define AGG_CONTEXT_WINDOW		2			/* window function */
+#define AGG_CONTEXT_AGGREGATE	1		/* regular aggregate */
+#define AGG_CONTEXT_WINDOW		2		/* window function */
 
-extern int	AggCheckCallContext(FunctionCallInfo fcinfo,
-								MemoryContext *aggcontext);
+extern int AggCheckCallContext(FunctionCallInfo fcinfo,
+					MemoryContext *aggcontext);
 
 
 /*

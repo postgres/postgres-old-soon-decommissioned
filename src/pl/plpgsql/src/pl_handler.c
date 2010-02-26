@@ -34,7 +34,7 @@ static const struct config_enum_entry variable_conflict_options[] = {
 	{NULL, 0, false}
 };
 
-int		plpgsql_variable_conflict = PLPGSQL_RESOLVE_ERROR;
+int			plpgsql_variable_conflict = PLPGSQL_RESOLVE_ERROR;
 
 /* Hook for plugins */
 PLpgSQL_plugin **plugin_ptr = NULL;

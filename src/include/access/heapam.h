@@ -127,7 +127,7 @@ extern void heap2_redo(XLogRecPtr lsn, XLogRecord *rptr);
 extern void heap2_desc(StringInfo buf, uint8 xl_info, char *rec);
 
 extern XLogRecPtr log_heap_cleanup_info(RelFileNode rnode,
-				TransactionId latestRemovedXid);
+					  TransactionId latestRemovedXid);
 extern XLogRecPtr log_heap_clean(Relation reln, Buffer buffer,
 			   OffsetNumber *redirected, int nredirected,
 			   OffsetNumber *nowdead, int ndead,

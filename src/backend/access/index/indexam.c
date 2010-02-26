@@ -455,9 +455,9 @@ index_getnext(IndexScanDesc scan, ScanDirection direction)
 
 			/*
 			 * If we scanned a whole HOT chain and found only dead tuples,
-			 * tell index AM to kill its entry for that TID. We do not do
-			 * this when in recovery because it may violate MVCC to do so.
-			 * see comments in RelationGetIndexScan().
+			 * tell index AM to kill its entry for that TID. We do not do this
+			 * when in recovery because it may violate MVCC to do so. see
+			 * comments in RelationGetIndexScan().
 			 */
 			if (!scan->xactStartedInRecovery)
 				scan->kill_prior_tuple = scan->xs_hot_dead;

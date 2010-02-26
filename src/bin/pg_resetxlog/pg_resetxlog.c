@@ -312,10 +312,10 @@ main(int argc, char *argv[])
 
 		/*
 		 * For the moment, just set oldestXid to a value that will force
-		 * immediate autovacuum-for-wraparound.  It's not clear whether
-		 * adding user control of this is useful, so let's just do something
-		 * that's reasonably safe.  The magic constant here corresponds to
-		 * the maximum allowed value of autovacuum_freeze_max_age.
+		 * immediate autovacuum-for-wraparound.  It's not clear whether adding
+		 * user control of this is useful, so let's just do something that's
+		 * reasonably safe.  The magic constant here corresponds to the
+		 * maximum allowed value of autovacuum_freeze_max_age.
 		 */
 		ControlFile.checkPointCopy.oldestXid = set_xid - 2000000000;
 		if (ControlFile.checkPointCopy.oldestXid < FirstNormalTransactionId)

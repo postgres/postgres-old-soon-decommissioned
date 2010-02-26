@@ -227,13 +227,13 @@ typedef struct pgresAttDesc
 /* Asynchronous (non-blocking) */
 extern PGconn *PQconnectStart(const char *conninfo);
 extern PGconn *PQconnectStartParams(const char **keywords,
-			 const char **values, int expand_dbname);
+					 const char **values, int expand_dbname);
 extern PostgresPollingStatusType PQconnectPoll(PGconn *conn);
 
 /* Synchronous (blocking) */
 extern PGconn *PQconnectdb(const char *conninfo);
 extern PGconn *PQconnectdbParams(const char **keywords,
-			 const char **values, int expand_dbname);
+				  const char **values, int expand_dbname);
 extern PGconn *PQsetdbLogin(const char *pghost, const char *pgport,
 			 const char *pgoptions, const char *pgtty,
 			 const char *dbName,

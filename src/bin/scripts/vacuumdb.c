@@ -313,7 +313,7 @@ vacuum_all_databases(bool full, bool verbose, bool and_analyze, bool analyze_onl
 		}
 
 		vacuum_one_database(dbname, full, verbose, and_analyze, analyze_only,
-							freeze, NULL, host, port, username, prompt_password,
+						 freeze, NULL, host, port, username, prompt_password,
 							progname, echo);
 	}
 

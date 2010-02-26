@@ -25,11 +25,11 @@
 
 typedef struct pendingPosition
 {
-	Buffer				pendingBuffer;
-	OffsetNumber 		firstOffset;
-	OffsetNumber 		lastOffset;
-	ItemPointerData 	item;
-	bool			   *hasMatchKey;
+	Buffer		pendingBuffer;
+	OffsetNumber firstOffset;
+	OffsetNumber lastOffset;
+	ItemPointerData item;
+	bool	   *hasMatchKey;
 } pendingPosition;
 
 
@@ -877,7 +877,7 @@ matchPartialInPendingList(GinState *ginstate, Page page,
 static bool
 hasAllMatchingKeys(GinScanOpaque so, pendingPosition *pos)
 {
-	int		i;
+	int			i;
 
 	for (i = 0; i < so->nkeys; i++)
 		if (pos->hasMatchKey[i] == false)
@@ -912,7 +912,7 @@ collectDatumForItem(IndexScanDesc scan, pendingPosition *pos)
 
 		memset(key->entryRes, FALSE, key->nentries);
 	}
-	memset(pos->hasMatchKey, FALSE, so->nkeys); 
+	memset(pos->hasMatchKey, FALSE, so->nkeys);
 
 	for (;;)
 	{

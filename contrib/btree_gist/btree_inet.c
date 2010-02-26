@@ -60,8 +60,8 @@ gbt_inetlt(const void *a, const void *b)
 static int
 gbt_inetkey_cmp(const void *a, const void *b)
 {
-	inetKEY    *ia = (inetKEY*)(((Nsrt *) a)->t);
-	inetKEY    *ib = (inetKEY*)(((Nsrt *) b)->t);
+	inetKEY    *ia = (inetKEY *) (((Nsrt *) a)->t);
+	inetKEY    *ib = (inetKEY *) (((Nsrt *) b)->t);
 
 	if (ia->lower == ib->lower)
 	{

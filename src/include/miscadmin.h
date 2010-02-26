@@ -241,8 +241,8 @@ extern void PreventCommandIfReadOnly(const char *cmdname);
 extern void PreventCommandDuringRecovery(const char *cmdname);
 
 /* in utils/misc/guc.c */
-extern int trace_recovery_messages;
-int trace_recovery(int trace_level);
+extern int	trace_recovery_messages;
+int			trace_recovery(int trace_level);
 
 /*****************************************************************************
  *	  pdir.h --																 *

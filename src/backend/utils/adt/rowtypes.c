@@ -97,10 +97,11 @@ record_in(PG_FUNCTION_ARGS)
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 		   errmsg("input of anonymous composite types is not implemented")));
 	tupTypmod = -1;				/* for all non-anonymous types */
+
 	/*
-	 *	This comes from the composite type's pg_type.oid and
-	 *	stores system oids in user tables, specifically DatumTupleFields.
-	 *	This oid must be preserved by binary upgrades.
+	 * This comes from the composite type's pg_type.oid and stores system oids
+	 * in user tables, specifically DatumTupleFields. This oid must be
+	 * preserved by binary upgrades.
 	 */
 	tupdesc = lookup_rowtype_tupdesc(tupType, tupTypmod);
 	ncolumns = tupdesc->natts;

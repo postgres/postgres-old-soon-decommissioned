@@ -188,7 +188,7 @@ LexizeExec(LexizeData *ld, ParsedLex **correspondLexem)
 		{
 			ParsedLex  *curVal = ld->towork.head;
 			char	   *curValLemm = curVal->lemm;
-			int	   		curValLenLemm = curVal->lenlemm;
+			int			curValLenLemm = curVal->lenlemm;
 
 			map = ld->cfg->map + curVal->type;
 
@@ -208,8 +208,8 @@ LexizeExec(LexizeData *ld, ParsedLex **correspondLexem)
 				res = (TSLexeme *) DatumGetPointer(FunctionCall4(
 															 &(dict->lexize),
 											 PointerGetDatum(dict->dictData),
-											     PointerGetDatum(curValLemm),
-											    Int32GetDatum(curValLenLemm),
+												 PointerGetDatum(curValLemm),
+												Int32GetDatum(curValLenLemm),
 											  PointerGetDatum(&ld->dictState)
 																 ));
 
@@ -231,7 +231,7 @@ LexizeExec(LexizeData *ld, ParsedLex **correspondLexem)
 				if (!res)		/* dictionary doesn't know this lexeme */
 					continue;
 
-				if ( res->flags & TSL_FILTER )
+				if (res->flags & TSL_FILTER)
 				{
 					curValLemm = res->lexeme;
 					curValLenLemm = strlen(res->lexeme);
