@@ -401,7 +401,7 @@ b
 
   <para>
    <type>hstore</> has GiST and GIN index support for the <literal>@&gt;</>,
-   <literal>?</>, <literal>?&</> and <literal>?|</> operators. For example:
+   <literal>?</>, <literal>?&amp;</> and <literal>?|</> operators. For example:
   </para>
   <programlisting>
 CREATE INDEX hidx ON testhstore USING GIST (h);
