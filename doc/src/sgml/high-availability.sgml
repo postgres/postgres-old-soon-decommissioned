@@ -1521,7 +1521,10 @@ LOG:  database system is ready to accept read only connections
     <varname>max_standby_delay</> or even set it to zero, though that is a
     very aggressive setting. If the standby server is tasked as an additional
     server for decision support queries then it might be acceptable to set this
-    to a value of many hours (in seconds).
+    to a value of many hours (in seconds).  It is also possible to set
+    <varname>max_standby_delay</> to -1 which means wait forever for queries
+    to complete, if there are conflicts; this will be useful when performing
+    an archive recovery from a backup.
    </para>
 
    <para>
