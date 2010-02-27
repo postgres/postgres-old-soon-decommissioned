@@ -7010,7 +7010,7 @@ testlibpq.o(.text+0xa4): undefined reference to `PQerrorMessage'
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include "libpq-fe.h"
+#include <libpq-fe.h>
 
 static void
 exit_nicely(PGconn *conn)
@@ -7158,7 +7158,7 @@ main(int argc, char **argv)
 #include <string.h>
 #include <errno.h>
 #include <sys/time.h>
-#include "libpq-fe.h"
+#include <libpq-fe.h>
 
 static void
 exit_nicely(PGconn *conn)
@@ -7296,7 +7296,7 @@ main(int argc, char **argv)
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
-#include "libpq-fe.h"
+#include <libpq-fe.h>
 
 /* for ntohl/htonl */
 #include <netinet/in.h>
