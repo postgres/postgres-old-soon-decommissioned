@@ -130,7 +130,8 @@ get_float4_infinity(void)
 double
 get_float8_nan(void)
 {
-#ifdef NAN
+	/* (double) NAN doesn't work on some NetBSD/MIPS releases */
+#if defined(NAN) && !(defined(__NetBSD__) && defined(__mips__))
 	/* C99 standard way */
 	return (double) NAN;
 #else

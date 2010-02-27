@@ -5,6 +5,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <float.h>
 #include <math.h>
 
 #include "ecpgtype.h"
@@ -85,7 +86,8 @@ get_float8_infinity(void)
 static double
 get_float8_nan(void)
 {
-#ifdef NAN
+	/* (double) NAN doesn't work on some NetBSD/MIPS releases */
+#if defined(NAN) && !(defined(__NetBSD__) && defined(__mips__))
 	return (double) NAN;
 #else
 	return (double) (0.0 / 0.0);
