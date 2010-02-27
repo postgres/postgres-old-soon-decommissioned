@@ -5725,7 +5725,7 @@ plruby.use_strict = true        # generates error: unknown class name
      </varlistentry>
 
      <varlistentry id="guc-trace-recovery-messages" xreflabel="trace_recovery_messages">
-      <term><varname>trace_recovery_messages</varname> (<type>string</type>)</term>
+      <term><varname>trace_recovery_messages</varname> (<type>enum</type>)</term>
       <indexterm>
        <primary><varname>trace_recovery_messages</> configuration parameter</primary>
       </indexterm>
