@@ -234,8 +234,10 @@ fsync_fname(char *fname, bool isdir)
 						   O_RDONLY | PG_BINARY,
 						   S_IRUSR | S_IWUSR);
 
-	/* Some OSs don't allow us to open directories at all */
-	if (fd < 0 && isdir && errno == EISDIR)
+	/* Some OSs don't allow us to open directories at all 
+	 * (Windows returns EPERM) 
+	 */
+	if (fd < 0 && isdir && (errno == EISDIR || errno == EPERM))
 		return;
 
 	else if (fd < 0)
