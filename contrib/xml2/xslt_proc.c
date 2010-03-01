@@ -13,6 +13,8 @@
 #include "miscadmin.h"
 #include "utils/builtins.h"
 
+#ifdef USE_LIBXSLT
+
 /* libxml includes */
 
 #include <libxml/xpath.h>
@@ -26,10 +28,14 @@
 #include <libxslt/transform.h>
 #include <libxslt/xsltutils.h>
 
+#endif /* USE_LIBXSLT */
+
 
 /* externally accessible functions */
 
 Datum		xslt_process(PG_FUNCTION_ARGS);
+
+#ifdef USE_LIBXSLT
 
 /* declarations to come from xpath.c */
 extern void elog_error(const char *explain, bool force);
@@ -40,12 +46,16 @@ static void parse_params(const char **params, text *paramstr);
 
 #define MAXPARAMS 20			/* must be even, see parse_params() */
 
+#endif /* USE_LIBXSLT */
+
 
 PG_FUNCTION_INFO_V1(xslt_process);
 
 Datum
 xslt_process(PG_FUNCTION_ARGS)
 {
+#ifdef USE_LIBXSLT
+
 	text	   *doct = PG_GETARG_TEXT_P(0);
 	text	   *ssheet = PG_GETARG_TEXT_P(1);
 	text	   *paramstr;
@@ -123,8 +133,18 @@ xslt_process(PG_FUNCTION_ARGS)
 		PG_RETURN_NULL();
 
 	PG_RETURN_TEXT_P(cstring_to_text_with_len((char *) resstr, reslen));
+
+#else /* !USE_LIBXSLT */
+
+	ereport(ERROR,
+			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+			 errmsg("xslt_process() is not available without libxslt")));
+	PG_RETURN_NULL();
+
+#endif /* USE_LIBXSLT */
 }
 
+#ifdef USE_LIBXSLT
 
 static void
 parse_params(const char **params, text *paramstr)
@@ -173,3 +193,5 @@ parse_params(const char **params, text *paramstr)
 
 	params[i] = NULL;
 }
+
+#endif /* USE_LIBXSLT */
