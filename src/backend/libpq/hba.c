@@ -1011,8 +1011,6 @@ parse_hba_line(List *line, int line_num, HbaLine *parsedline)
 		{
 			/*
 			 * Got something that's not a name=value pair.
-			 *
-			 * XXX: attempt to do some backwards compatible parsing here?
 			 */
 			ereport(LOG,
 					(errcode(ERRCODE_CONFIG_FILE_ERROR),
