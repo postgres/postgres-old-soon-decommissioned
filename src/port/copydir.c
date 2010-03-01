@@ -221,8 +221,9 @@ fsync_fname(char *fname, bool isdir)
 	int			fd;
 	int 		returncode;
 
-	/* Some OSs require directories to be opened read-only whereas
-	 * other systems don't allow us to fsync files opened read-only so
+	/*
+	 * Some OSs require directories to be opened read-only whereas
+	 * other systems don't allow us to fsync files opened read-only; so
 	 * we need both cases here 
 	 */
 	if (!isdir)
@@ -234,10 +235,11 @@ fsync_fname(char *fname, bool isdir)
 						   O_RDONLY | PG_BINARY,
 						   S_IRUSR | S_IWUSR);
 
-	/* Some OSs don't allow us to open directories at all 
-	 * (Windows returns EPERM) 
+	/*
+	 * Some OSs don't allow us to open directories at all 
+	 * (Windows returns EACCES) 
 	 */
-	if (fd < 0 && isdir && (errno == EISDIR || errno == EPERM))
+	if (fd < 0 && isdir && (errno == EISDIR || errno == EACCES))
 		return;
 
 	else if (fd < 0)
