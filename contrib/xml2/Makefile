@@ -2,7 +2,7 @@
 
 MODULE_big = pgxml
 
-OBJS = $(if $(filter -lxslt, $(LIBS)), xpath.o xslt_proc.o, xpath.o)
+OBJS = xpath.o xslt_proc.o
 
 SHLIB_LINK += $(filter -lxslt, $(LIBS)) $(filter -lxml2, $(LIBS))
 
