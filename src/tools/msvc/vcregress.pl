@@ -14,6 +14,8 @@ my $startdir = getcwd();
 
 chdir "../../.." if (-d "../../../src/tools/msvc");
 
+require 'src/tools/msvc/config.pl';
+
 # buildenv.pl is for specifying the build environment settings
 # it should contian lines like:
 # $ENV{PATH} = "c:/path/to/bison/bin;$ENV{PATH}";
@@ -190,6 +192,7 @@ sub contribcheck
     my $mstat = 0;
     foreach my $module (glob("*"))
     {
+		next if ($module eq 'xml2' && ! $config->{xml});
         next unless -d "$module/sql" && 
 			-d "$module/expected" && 
 			(-f "$module/GNUmakefile" || -f "$module/Makefile");
