@@ -419,6 +419,11 @@ sub AddProject
         $proj->AddIncludeDir($self->{options}->{iconv} . '\include');
         $proj->AddLibrary($self->{options}->{xml} . '\lib\libxml2.lib');
     }
+    if ($self->{options}->{xslt})
+    {
+        $proj->AddIncludeDir($self->{options}->{xslt} . '\include');
+        $proj->AddLibrary($self->{options}->{xslt} . '\lib\libxslt.lib');
+    }
     return $proj;
 }
 
