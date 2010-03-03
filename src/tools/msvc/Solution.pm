@@ -413,10 +413,14 @@ sub AddProject
         $proj->AddLibrary($self->{options}->{krb5} . '\lib\i386\comerr32.lib');
         $proj->AddLibrary($self->{options}->{krb5} . '\lib\i386\gssapi32.lib');
     }
+    if ($self->{options}->{iconv})
+    {
+        $proj->AddIncludeDir($self->{options}->{iconv} . '\include');
+        $proj->AddLibrary($self->{options}->{iconv} . '\lib\iconv.lib');
+	}
     if ($self->{options}->{xml})
     {
         $proj->AddIncludeDir($self->{options}->{xml} . '\include');
-        $proj->AddIncludeDir($self->{options}->{iconv} . '\include');
         $proj->AddLibrary($self->{options}->{xml} . '\lib\libxml2.lib');
     }
     if ($self->{options}->{xslt})
