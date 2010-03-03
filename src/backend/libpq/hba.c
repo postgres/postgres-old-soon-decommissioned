@@ -317,7 +317,7 @@ tokenize_file(FILE *file)
 	int			line_number = 1;
 	char	   *buf;
 
-	while (!feof(file))
+	while (!feof(file) && !ferror(file))
 	{
 		buf = next_token_expand(file);
 
