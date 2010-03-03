@@ -3755,7 +3755,7 @@ PasswordFromFile(char *hostname, char *port, char *dbname, char *username)
 	if (fp == NULL)
 		return NULL;
 
-	while (!feof(fp))
+	while (!feof(fp) && !ferror(fp))
 	{
 		char	   *t = buf,
 				   *ret;

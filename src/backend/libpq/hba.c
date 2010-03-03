@@ -412,7 +412,7 @@ tokenize_file(const char *filename, FILE *file,
 
 	*lines = *line_nums = NIL;
 
-	while (!feof(file))
+	while (!feof(file) && !ferror(file))
 	{
 		buf = next_token_expand(filename, file);
 
