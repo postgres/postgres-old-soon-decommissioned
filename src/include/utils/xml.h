@@ -63,6 +63,8 @@ typedef enum
 	XML_STANDALONE_OMITTED
 } XmlStandaloneType;
 
+extern void pg_xml_init(void);
+extern void xml_ereport(int level, int sqlcode, const char *msg);
 extern xmltype *xmlconcat(List *args);
 extern xmltype *xmlelement(XmlExprState *xmlExpr, ExprContext *econtext);
 extern xmltype *xmlparse(text *data, XmlOptionType xmloption, bool preserve_whitespace);
