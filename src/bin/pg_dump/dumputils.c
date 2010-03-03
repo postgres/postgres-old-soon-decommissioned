@@ -756,7 +756,7 @@ do { \
 		CONVERT_PRIV('C', "CREATE");
 	else if (strcmp(type, "FOREIGN DATA WRAPPER") == 0)
 		CONVERT_PRIV('U', "USAGE");
-	else if (strcmp(type, "SERVER") == 0)
+	else if (strcmp(type, "FOREIGN SERVER") == 0)
 		CONVERT_PRIV('U', "USAGE");
 	else
 		abort();

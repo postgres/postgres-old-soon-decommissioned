@@ -9494,7 +9494,7 @@ dumpForeignServer(Archive *fout, ForeignServerInfo *srvinfo)
 	/* Handle the ACL */
 	namecopy = strdup(fmtId(srvinfo->dobj.name));
 	dumpACL(fout, srvinfo->dobj.catId, srvinfo->dobj.dumpId,
-			"SERVER",
+			"FOREIGN SERVER",
 			namecopy, NULL, srvinfo->dobj.name,
 			NULL, srvinfo->rolname,
 			srvinfo->srvacl);
