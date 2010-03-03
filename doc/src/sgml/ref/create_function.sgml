@@ -50,8 +50,6 @@ CREATE [ OR REPLACE ] FUNCTION
    <literal>USAGE</literal> privilege on the language.
   </para>
 
-  </para>
-
   <para>
    If a schema name is included, then the function is created in the
    specified schema.  Otherwise it is created in the current schema.
@@ -518,12 +516,12 @@ CREATE [ OR REPLACE ] FUNCTION
 
    </variablelist>
 
- </refsect1>
+   <para>
+    Refer to <xref linkend="xfunc"> for further information on writing
+    functions.
+   </para>
 
- <para>
-  Refer to <xref linkend="xfunc"> for further information on writing
-  functions.
- </para>
+ </refsect1>
 
  <refsect1 id="sql-createfunction-overloading">
   <title>Overloading</title>
