@@ -393,7 +393,7 @@ CopyGetData(void *databuf, int datasize)
 	{
 		case COPY_FILE:
 			fread(databuf, datasize, 1, copy_file);
-			if (feof(copy_file))
+			if (feof(copy_file) || ferror(copy_file))
 				fe_eof = true;
 			break;
 		case COPY_OLD_FE:
