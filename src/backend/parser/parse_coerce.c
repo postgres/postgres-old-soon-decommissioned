@@ -1792,7 +1792,7 @@ IsBinaryCoercible(Oid srctype, Oid targettype)
 		return false;			/* no cast */
 	castForm = (Form_pg_cast) GETSTRUCT(tuple);
 
-	result = (castForm->castfunc == InvalidOid &&
+	result = (castForm->castmethod == COERCION_METHOD_BINARY &&
 			  castForm->castcontext == COERCION_CODE_IMPLICIT);
 
 	ReleaseSysCache(tuple);
