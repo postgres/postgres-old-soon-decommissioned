@@ -45,7 +45,6 @@ typedef struct Port hbaPort;
 
 #define MAX_TOKEN	256
 
-extern void next_token(FILE *fp, char *buf, const int bufsz);
 extern List **get_user_line(const char *user);
 extern void load_hba(void);
 extern void load_ident(void);
