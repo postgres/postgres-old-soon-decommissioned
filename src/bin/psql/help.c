@@ -99,6 +99,7 @@ usage(void)
 	printf(_("  -v, --set=, --variable=NAME=VALUE\n"
 			 "                           set psql variable NAME to VALUE\n"));
 	printf(_("  -X, --no-psqlrc          do not read startup file (~/.psqlrc)\n"));
+	printf(_("  --psqlrc=FILENAME        read startup commands from file (instead of ~/.psqlrc)\n"));
 	printf(_("  -1 (\"one\"), --single-transaction\n"
 			 "                           execute command file as a single transaction\n"));
 	printf(_("  --help                   show this help, then exit\n"));
