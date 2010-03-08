@@ -426,6 +426,12 @@ pg_GSS_startup(PGconn *conn)
 	int			maxlen;
 	gss_buffer_desc temp_gbuf;
 
+	if (!conn->pghost)
+	{
+		printfPQExpBuffer(&conn->errorMessage, libpq_gettext("host name must be specified\n"));
+		return STATUS_ERROR;
+	}
+
 	if (conn->gctx)
 	{
 		printfPQExpBuffer(&conn->errorMessage,
