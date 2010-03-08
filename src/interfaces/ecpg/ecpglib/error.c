@@ -306,6 +306,17 @@ ecpg_raise_backend(int line, PGresult *result, PGconn *conn, int compat)
 		message = PQerrorMessage(conn);
 	}
 
+	if (strcmp(sqlstate, ECPG_SQLSTATE_ECPG_INTERNAL_ERROR) == 0)
+	{
+		/* we might get here if the connection breaks down, so let's
+		 * check for this instead of giving just the generic internal error */
+		if (PQstatus(conn) == CONNECTION_BAD)
+		{
+			sqlstate = "57P02";
+			message = ecpg_gettext("the connection to the server was lost");
+		}
+	}
+
 	/* copy error message */
 	snprintf(sqlca->sqlerrm.sqlerrmc, sizeof(sqlca->sqlerrm.sqlerrmc), "%s on line %d", message, line);
 	sqlca->sqlerrm.sqlerrml = strlen(sqlca->sqlerrm.sqlerrmc);
