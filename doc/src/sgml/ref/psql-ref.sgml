@@ -657,7 +657,7 @@ testdb=>
 
 	<tip>
 	 <para>
-	  To print your current working directory, use <literal>\!pwd</literal>.
+	  To print your current working directory, use <literal>\! pwd</literal>.
 	 </para>
 	</tip>
        </listitem>
