@@ -306,7 +306,7 @@ ecpg_raise_backend(int line, PGresult *result, PGconn *conn, int compat)
 		message = PQerrorMessage(conn);
 	}
 
-	if (sqlstate == ECPG_SQLSTATE_ECPG_INTERNAL_ERROR)
+	if (strcmp(sqlstate, ECPG_SQLSTATE_ECPG_INTERNAL_ERROR) == 0)
 	{
 		/* we might get here if the connection breaks down, so let's
 		 * check for this instead of giving just the generic internal error */
