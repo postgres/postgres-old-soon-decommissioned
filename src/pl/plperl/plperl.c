@@ -793,7 +793,7 @@ plperl_modify_tuple(HV *hvTD, TriggerData *tdata, HeapTuple otup)
 		ereport(ERROR,
 				(errcode(ERRCODE_UNDEFINED_COLUMN),
 				 errmsg("$_TD->{new} does not exist")));
-	if (!SvOK(*svp) || SvTYPE(*svp) != SVt_RV || SvTYPE(SvRV(*svp)) != SVt_PVHV)
+	if (!SvOK(*svp) || !SvROK(*svp) || SvTYPE(SvRV(*svp)) != SVt_PVHV)
 		ereport(ERROR,
 				(errcode(ERRCODE_DATATYPE_MISMATCH),
 				 errmsg("$_TD->{new} is not a hash reference")));
@@ -1284,7 +1284,7 @@ plperl_func_handler(PG_FUNCTION_ARGS)
 		 * value is an error, except undef which means return an empty set.
 		 */
 		if (SvOK(perlret) &&
-			SvTYPE(perlret) == SVt_RV &&
+			SvROK(perlret) &&
 			SvTYPE(SvRV(perlret)) == SVt_PVAV)
 		{
 			int			i = 0;
@@ -1329,7 +1329,7 @@ plperl_func_handler(PG_FUNCTION_ARGS)
 		AttInMetadata *attinmeta;
 		HeapTuple	tup;
 
-		if (!SvOK(perlret) || SvTYPE(perlret) != SVt_RV ||
+		if (!SvOK(perlret) || !SvROK(perlret) ||
 			SvTYPE(SvRV(perlret)) != SVt_PVHV)
 		{
 			ereport(ERROR,
@@ -1919,7 +1919,7 @@ plperl_return_next(SV *sv)
 				 errmsg("cannot use return_next in a non-SETOF function")));
 
 	if (prodesc->fn_retistuple &&
-		!(SvOK(sv) && SvTYPE(sv) == SVt_RV && SvTYPE(SvRV(sv)) == SVt_PVHV))
+		!(SvOK(sv) && SvROK(sv) && SvTYPE(SvRV(sv)) == SVt_PVHV))
 		ereport(ERROR,
 				(errcode(ERRCODE_DATATYPE_MISMATCH),
 				 errmsg("SETOF-composite-returning PL/Perl function "
