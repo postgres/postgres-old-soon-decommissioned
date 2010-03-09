@@ -1688,10 +1688,28 @@ process_file(char *filename, bool single_txn)
 	pset.inputfile = filename;
 
 	if (single_txn)
-		res = PSQLexec("BEGIN", false);
+	{
+		if ((res = PSQLexec("BEGIN", false)) == NULL)
+		{
+			if (pset.on_error_stop)
+				return EXIT_USER;
+		}
+		else
+			PQclear(res);
+	}
+
 	result = MainLoop(fd);
+
 	if (single_txn)
-		res = PSQLexec("COMMIT", false);
+	{
+		if ((res = PSQLexec("COMMIT", false)) == NULL)
+		{
+			if (pset.on_error_stop)
+				return EXIT_USER;
+		}
+		else
+			PQclear(res);
+	}
 
 	fclose(fd);
 	pset.inputfile = oldfilename;
