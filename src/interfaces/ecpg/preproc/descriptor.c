@@ -338,7 +338,7 @@ sqlda_variable(const char *name)
 	p->type->size = NULL;
 	p->type->struct_sizeof = NULL;
 	p->type->u.element = NULL;
-	p->type->lineno = 0;
+	p->type->counter = 0;
 	p->brace_level = 0;
 	p->next = NULL;
 

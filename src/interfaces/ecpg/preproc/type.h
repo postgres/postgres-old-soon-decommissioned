@@ -30,7 +30,7 @@ struct ECPGtype
 		struct ECPGstruct_member *members;		/* A pointer to a list of
 												 * members. */
 	}			u;
-	int			lineno;
+	int			counter;
 };
 
 /* Everything is malloced. */
