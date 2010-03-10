@@ -1956,10 +1956,7 @@ renameatt(Oid myrelid,
 				 errmsg("cannot rename column of typed table")));
 
 	/*
-	 * permissions checking.  this would normally be done in utility.c, but
-	 * this particular routine is recursive.
-	 *
-	 * normally, only the owner of a class can change its schema.
+	 * permissions checking.  only the owner of a class can change its schema.
 	 */
 	if (!pg_class_ownercheck(myrelid, GetUserId()))
 		aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_CLASS,
