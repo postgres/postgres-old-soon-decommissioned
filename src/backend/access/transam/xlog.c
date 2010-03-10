@@ -7897,7 +7897,7 @@ pg_start_backup(PG_FUNCTION_ARGS)
 		 * REDO pointer.  The oldest point in WAL that would be needed to
 		 * restore starting from the checkpoint is precisely the REDO pointer.
 		 */
-		LWLockAcquire(ControlFileLock, LW_EXCLUSIVE);
+		LWLockAcquire(ControlFileLock, LW_SHARED);
 		checkpointloc = ControlFile->checkPoint;
 		startpoint = ControlFile->checkPointCopy.redo;
 		LWLockRelease(ControlFileLock);
