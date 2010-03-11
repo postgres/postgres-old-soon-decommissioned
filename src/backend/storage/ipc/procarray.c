@@ -448,6 +448,7 @@ ProcArrayApplyRecoveryInfo(RunningTransactions running)
 	/*
 	 * Remove stale transactions, if any.
 	 */
+	Assert(TransactionIdIsValid(running->oldestRunningXid));
 	ExpireOldKnownAssignedTransactionIds(running->oldestRunningXid);
 	StandbyReleaseOldLocks(running->oldestRunningXid);
 
@@ -2518,7 +2519,7 @@ KnownAssignedXidsRemoveMany(TransactionId xid, bool keepPreparedXacts)
 
 		if (!TransactionIdIsValid(xid) || TransactionIdPrecedes(removeXid, xid))
 		{
-			if (keepPreparedXacts && StandbyTransactionIdIsPrepared(xid))
+			if (keepPreparedXacts && StandbyTransactionIdIsPrepared(removeXid))
 				continue;
 			else
 			{
