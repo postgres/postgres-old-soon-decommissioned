@@ -7,7 +7,7 @@ This is a PostgreSQL adapted version of the timezone library from:
 
 	ftp://elsie.nci.nih.gov/pub/tzcode*.tar.gz
 
-The code is currently synced with release 2007k.  There are many cosmetic
+The code is currently synced with release 2010c.  There are many cosmetic
 (and not so cosmetic) differences from the original tzcode library, but
 diffs in the upstream version should usually be propagated to our version.
 
