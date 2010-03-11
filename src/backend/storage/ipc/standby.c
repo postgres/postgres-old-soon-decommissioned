@@ -629,9 +629,11 @@ StandbyReleaseLockTree(TransactionId xid, int nsubxids, TransactionId *subxids)
 }
 
 /*
- * StandbyReleaseOldLocks
+ * StandbyReleaseLocksMany
  *		Release standby locks held by XIDs < removeXid
- *		In some cases, keep prepared transactions.
+ *
+ * If keepPreparedXacts is true, keep prepared transactions even if
+ * they're older than removeXid
  */
 static void
 StandbyReleaseLocksMany(TransactionId removeXid, bool keepPreparedXacts)
