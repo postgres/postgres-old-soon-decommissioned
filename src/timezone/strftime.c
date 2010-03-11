@@ -169,7 +169,7 @@ _fmt(const char *format, const struct pg_tm * t, char *pt, const char *ptlim,
 					{
 						int			warn2 = IN_SOME;
 
-						pt = _fmt(Locale->c_fmt, t, pt, ptlim, warnp);
+						pt = _fmt(Locale->c_fmt, t, pt, ptlim, &warn2);
 						if (warn2 == IN_ALL)
 							warn2 = IN_THIS;
 						if (warn2 > *warnp)
