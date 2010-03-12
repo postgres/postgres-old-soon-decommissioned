@@ -974,9 +974,13 @@ static const struct
 		"W. Australia Standard Time", "W. Australia Daylight Time",
 		"Australia/Perth"
 	},							/* (GMT+08:00) Perth */
-/*	{"W. Central Africa Standard Time", "W. Central Africa Daylight Time",
-	 *	 *	 *	 *	 *	 *	 *	 *	 *	""}, Could not find a match for this one. Excluded for now. *//* (
-	 * G MT+01:00) West Central Africa */
+#ifdef NOT_USED
+	/* Could not find a match for this one. Excluded for now. */
+	{
+		"W. Central Africa Standard Time", "W. Central Africa Daylight Time",
+		""
+	},							/* (GMT+01:00) West Central Africa */
+#endif
 	{
 		"W. Europe Standard Time", "W. Europe Daylight Time",
 		"CET"
