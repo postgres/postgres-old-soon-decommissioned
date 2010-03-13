@@ -194,6 +194,7 @@
 
 /* Class 28 - Invalid Authorization Specification */
 #define ERRCODE_INVALID_AUTHORIZATION_SPECIFICATION MAKE_SQLSTATE('2','8', '0','0','0')
+#define ERRCODE_INVALID_PASSWORD MAKE_SQLSTATE('2','8', 'P','0','1')
 
 /* Class 2B - Dependent Privilege Descriptors Still Exist */
 #define ERRCODE_DEPENDENT_PRIVILEGE_DESCRIPTORS_STILL_EXIST		MAKE_SQLSTATE('2','B', '0','0','0')

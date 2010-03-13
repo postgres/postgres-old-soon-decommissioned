@@ -761,6 +761,12 @@
 <entry>invalid_authorization_specification</entry>
 </row>
 
+<row>
+<entry><literal>28P01</literal></entry>
+<entry>INVALID PASSWORD</entry>
+<entry>invalid_password</entry>
+</row>
+
 
 <row>
 <entry spanname="span13"><emphasis role="bold">Class 2B &mdash; Dependent Privilege Descriptors Still Exist</></entry>

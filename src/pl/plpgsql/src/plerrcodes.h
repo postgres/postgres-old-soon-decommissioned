@@ -368,6 +368,10 @@
 },
 
 {
+	"invalid_password", ERRCODE_INVALID_PASSWORD
+},
+
+{
 	"dependent_privilege_descriptors_still_exist", ERRCODE_DEPENDENT_PRIVILEGE_DESCRIPTORS_STILL_EXIST
 },
 
