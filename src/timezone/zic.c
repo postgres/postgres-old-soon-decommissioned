@@ -566,7 +566,7 @@ main(int argc, char *argv[])
 				break;
 		}
 	if (optind == argc - 1 && strcmp(argv[optind], "=") == 0)
-		usage(stderr, EXIT_FAILURE);			/* usage message by request */
+		usage(stderr, EXIT_FAILURE);	/* usage message by request */
 	if (directory == NULL)
 		directory = "data";
 	if (yitcommand == NULL)
