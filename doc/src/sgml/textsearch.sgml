@@ -1943,6 +1943,13 @@ LIMIT 10;
     languages, token types <literal>word</> and <literal>asciiword</>
     should be treated alike.
    </para>
+
+   <para>
+    <literal>email</> does not support all valid email characters as
+    defined by RFC 5322.  Specifically, the only non-alphanumeric
+    characters supported for email user names are period, dash, and
+    underscore.
+   </para>
   </note>
 
   <para>
