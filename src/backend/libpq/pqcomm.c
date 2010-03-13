@@ -1418,10 +1418,10 @@ pq_getkeepalivesinterval(Port *port)
 int
 pq_setkeepalivesinterval(int interval, Port *port)
 {
+#ifdef TCP_KEEPINTVL
 	if (port == NULL || IS_AF_UNIX(port->laddr.addr.ss_family))
 		return STATUS_OK;
 
-#ifdef TCP_KEEPINTVL
 	if (interval == port->keepalives_interval)
 		return STATUS_OK;
 
