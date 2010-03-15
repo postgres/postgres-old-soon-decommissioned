@@ -910,7 +910,11 @@
    Finally, <xref linkend="functions-math-trig-table"> shows the
    available trigonometric functions.  All trigonometric functions
    take arguments and return values of type <type>double
-   precision</type>.
+   precision</type>. Trigonometric functions arguments are expressed
+   in radians. Inverse functions return values are expressed in
+   radians.  See unit transformation functions
+   <literal><function>radians</function>()</literal> and
+   <literal><function>degrees</function>()</literal> above.
   </para>
 
    <indexterm>
@@ -941,7 +945,7 @@
    <table id="functions-math-trig-table">
     <title>Trigonometric Functions</title>
 
-    <tgroup cols="2">
+    <tgroup cols="3">
      <thead>
       <row>
        <entry>Function</entry>
