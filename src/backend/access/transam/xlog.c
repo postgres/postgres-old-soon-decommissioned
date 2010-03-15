@@ -6483,9 +6483,6 @@ GetInsertRecPtr(void)
 
 /*
  * GetWriteRecPtr -- Returns the current write position.
- *
- * NOTE: The value returned lags behind the real write position. But,
- * an approximation is enough for the current usage of this function.
  */
 XLogRecPtr
 GetWriteRecPtr(void)
