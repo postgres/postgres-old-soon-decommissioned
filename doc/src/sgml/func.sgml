@@ -945,7 +945,7 @@
    <table id="functions-math-trig-table">
     <title>Trigonometric Functions</title>
 
-    <tgroup cols="3">
+    <tgroup cols="2">
      <thead>
       <row>
        <entry>Function</entry>
