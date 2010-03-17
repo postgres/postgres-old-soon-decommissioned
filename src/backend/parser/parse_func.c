@@ -381,10 +381,7 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 
 		aggref->aggfnoid = funcid;
 		aggref->aggtype = rettype;
-		/* args and aggorder will be modified by transformAggregateCall */
-		aggref->args = fargs;
-		aggref->aggorder = agg_order;
-		/* aggdistinct will be set by transformAggregateCall */
+		/* args, aggorder, aggdistinct will be set by transformAggregateCall */
 		aggref->aggstar = agg_star;
 		/* agglevelsup will be set by transformAggregateCall */
 		aggref->location = location;
@@ -419,7 +416,7 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 					 parser_errposition(pstate, location)));
 
 		/* parse_agg.c does additional aggregate-specific processing */
-		transformAggregateCall(pstate, aggref, agg_distinct);
+		transformAggregateCall(pstate, aggref, fargs, agg_order, agg_distinct);
 
 		retval = (Node *) aggref;
 	}
