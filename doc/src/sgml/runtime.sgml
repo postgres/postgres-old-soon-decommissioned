@@ -756,7 +756,7 @@ SET ENABLE_SEQSCAN TO OFF;
      </varlistentry>
 
      <varlistentry>
-      <term><varname>ssl_renegotiation_limit</varname> (<type>int</type>)</term>
+      <term><varname>ssl_renegotiation_limit</varname> (<type>integer</type>)</term>
       <indexterm>
        <primary><varname>ssl_renegotiation_limit</> configuration parameter</primary>
       </indexterm>
