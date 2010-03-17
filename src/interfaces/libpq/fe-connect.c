@@ -4463,10 +4463,9 @@ dot_pg_pass_warning(PGconn *conn)
 
 		if (!getPgPassFilename(pgpassfile))
 			return;
-		appendPQExpBufferStr(&conn->errorMessage,
-			libpq_gettext("password retrieved from "));
-		appendPQExpBufferStr(&conn->errorMessage, pgpassfile);
-		appendPQExpBufferChar(&conn->errorMessage, '\n');
+		appendPQExpBuffer(&conn->errorMessage,
+						  libpq_gettext("password retrieved from file \"%s\"\n"),
+						  pgpassfile);
 	}
 }
 
