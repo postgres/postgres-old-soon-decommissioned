@@ -539,7 +539,7 @@ SET ENABLE_SEQSCAN TO OFF;
      </varlistentry>
 
      <varlistentry id="guc-ssl-renegotiation-limit" xreflabel="ssl_renegotiation_limit">
-      <term><varname>ssl_renegotiation_limit</varname> (<type>int</type>)</term>
+      <term><varname>ssl_renegotiation_limit</varname> (<type>integer</type>)</term>
       <indexterm>
        <primary><varname>ssl_renegotiation_limit</> configuration parameter</primary>
       </indexterm>
