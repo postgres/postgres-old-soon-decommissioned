@@ -68,7 +68,7 @@
    to <literal>Write cache</>; <command>hdparm -W</> to turn off
    write caching.  On <productname>FreeBSD</> use
    <application>atacontrol</>.  (For SCSI disks use <ulink
-   url="http://sg.torque.net/sg/sdparm.html"><application>sdparm</></ulink>
+   url="http://sg.danny.cz/sg/sdparm.html"><application>sdparm</></ulink>
    to turn off <literal>WCE</>.)  On <productname>Solaris</> the disk
    write cache is controlled by <ulink
    url="http://www.sun.com/bigadmin/content/submitted/format_utility.jsp"><literal>format

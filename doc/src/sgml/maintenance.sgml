@@ -46,9 +46,9 @@
 
   <para>
    <ulink
-   url="http://bucardo.org/check_postgres/"><application>check_postgres.pl</></ulink>
+   url="http://bucardo.org/wiki/Check_postgres"><application>check_postgres</></ulink>
    is available for monitoring database health and reporting unusual
-   conditions.  <application>check_postgres.pl</> integrates with
+   conditions.  <application>check_postgres</> integrates with
    Nagios and MRTG, but can be run standalone too.
   </para>
 

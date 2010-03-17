@@ -61,7 +61,7 @@
    about presentation details.  A document style defines how that
    content is rendered into one of several final forms.  DocBook is
    maintained by the <ulink url="http://www.oasis-open.org">
-   OASIS group</ulink>.  The <ulink url="http://www.oasis-open.org/docbook">
+   OASIS group</ulink>.  The <ulink url="http://www.oasis-open.org/docbook/">
    official DocBook site</ulink> has good introductory and reference documentation and
    a complete O'Reilly book for your online reading pleasure.  The
    <ulink url="http://newbiedoc.sourceforge.net/metadoc/docbook-guide.html">

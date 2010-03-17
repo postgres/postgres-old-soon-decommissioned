@@ -1231,13 +1231,13 @@ RESET client_encoding;
       </varlistentry>
 
       <varlistentry>
-       <term><ulink url="ftp://ftp.ora.com/pub/examples/nutshell/ujip/doc/cjk.inf"></ulink></term>
+       <term><citetitle>CJKV Information Processing: Chinese, Japanese, Korean &amp; Vietnamese Computing</citetitle></term>
 
        <listitem>
         <para>
-         Detailed explanations of <literal>EUC_JP</literal>,
+         Contains detailed explanations of <literal>EUC_JP</literal>,
          <literal>EUC_CN</literal>, <literal>EUC_KR</literal>,
-         <literal>EUC_TW</literal> appear in section 3.2.
+         <literal>EUC_TW</literal>.
         </para>
        </listitem>
       </varlistentry>

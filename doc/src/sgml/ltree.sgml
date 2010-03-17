@@ -672,7 +672,7 @@ ltreetest=# select ins_label(path,2,'Space') from test where path &lt;@ 'Top.Sci
   <para>
    All work was done by Teodor Sigaev (<email>teodor@stack.net</email>) and
    Oleg Bartunov (<email>oleg@sai.msu.su</email>). See
-   <ulink url="http://www.sai.msu.su/~megera/postgres/gist"></ulink> for
+   <ulink url="http://www.sai.msu.su/~megera/postgres/gist/"></ulink> for
    additional information. Authors would like to thank Eugeny Rodichev for
    helpful discussions. Comments and bug reports are welcome.
   </para>

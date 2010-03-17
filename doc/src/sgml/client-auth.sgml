@@ -953,7 +953,7 @@ omicron         bryanh                  guest1
     network. A description of the <productname>Kerberos</productname> system
     is beyond the scope of this document; in full generality it can be
     quite complex (yet powerful). The
-    <ulink url="http://www.nrl.navy.mil/CCS/people/kenh/kerberos-faq.html">
+    <ulink url="http://www.cmf.nrl.navy.mil/CCS/people/kenh/kerberos-faq.html">
     Kerberos <acronym>FAQ</></ulink> or
     <ulink url="http://web.mit.edu/kerberos/www/">MIT Kerberos page</ulink>
     can be good starting points for exploration.
