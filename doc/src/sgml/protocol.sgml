@@ -4155,7 +4155,7 @@ The commands accepted in walsender mode are:
     <term>IDENTIFY_SYSTEM</term>
     <listitem>
      <para>
-      Requests the server to idenfity itself. Server replies with a result
+      Requests the server to identify itself. Server replies with a result
       set of a single row, and two fields:
 
       systemid: The unique system identifier identifying the cluster. This
