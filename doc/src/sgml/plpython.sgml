@@ -340,6 +340,17 @@ $$ LANGUAGE plpythonu;
        builtin <literal>str</literal>, and the result is passed to the
        input function of the PostgreSQL data type.
       </para>
+
+      <para>
+       Strings in Python 2 are required to be in the PostgreSQL server
+       encoding when they are passed to PostgreSQL.  Strings that are
+       not valid in the current server encoding will raise an error,
+       but not all encoding mismatches can be detected, so garbage
+       data can still result when this is not done correctly.  Unicode
+       strings are converted to the correct encoding automatically, so
+       it can be safer and more convenient to use those.  In Python 3,
+       all strings are Unicode strings.
+      </para>
      </listitem>
 
      <listitem>
