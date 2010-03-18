@@ -2117,7 +2117,7 @@ dumpBlobs(Archive *AH, void *arg)
 			loFd = lo_open(g_conn, blobOid, INV_READ);
 			if (loFd == -1)
 			{
-				write_msg(NULL, "dumpBlobs(): could not open large object %u: %s",
+				write_msg(NULL, "could not open large object %u: %s",
 						  blobOid, PQerrorMessage(g_conn));
 				exit_nicely();
 			}
@@ -2130,7 +2130,7 @@ dumpBlobs(Archive *AH, void *arg)
 				cnt = lo_read(g_conn, loFd, buf, LOBBUFSIZE);
 				if (cnt < 0)
 				{
-					write_msg(NULL, "dumpBlobs(): error reading large object %u: %s",
+					write_msg(NULL, "error reading large object %u: %s",
 							  blobOid, PQerrorMessage(g_conn));
 					exit_nicely();
 				}

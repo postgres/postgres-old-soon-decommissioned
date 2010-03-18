@@ -935,13 +935,13 @@ StartRestoreBlob(ArchiveHandle *AH, Oid oid, bool drop)
 		{
 			loOid = lo_create(AH->connection, oid);
 			if (loOid == 0 || loOid != oid)
-				die_horribly(AH, modulename, "could not create large object %u\n",
-							 oid);
+				die_horribly(AH, modulename, "could not create large object %u: %s",
+							 oid, PQerrorMessage(AH->connection));
 		}
 		AH->loFd = lo_open(AH->connection, oid, INV_WRITE);
 		if (AH->loFd == -1)
-			die_horribly(AH, modulename, "could not open large object %u\n",
-						 oid);
+			die_horribly(AH, modulename, "could not open large object %u: %s",
+						 oid, PQerrorMessage(AH->connection));
 	}
 	else
 	{
