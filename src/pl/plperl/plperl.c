@@ -1306,7 +1306,7 @@ plperl_create_sub(plperl_proc_desc *prodesc, char *s, Oid fn_oid)
 
 	if (!subref)
 		ereport(ERROR,
-				(errmsg("didn't get a GLOB from compiling %s via %s",
+				(errmsg("did not get a GLOB from compiling function \"%s\" via %s",
 						prodesc->proname, compile_sub)));
 
 	prodesc->reference = newSVsv(subref);
