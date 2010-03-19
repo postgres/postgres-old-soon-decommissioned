@@ -729,7 +729,7 @@ btree_xlog_delete_page(uint8 info, XLogRecPtr lsn, XLogRecord *record)
 
 	pageop->btpo_prev = leftsib;
 	pageop->btpo_next = rightsib;
-	pageop->btpo.xact = FrozenTransactionId;
+	pageop->btpo.xact = xlrec->btpo_xact;
 	pageop->btpo_flags = BTP_DELETED;
 	pageop->btpo_cycleid = 0;
 

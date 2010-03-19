@@ -1301,6 +1301,7 @@ _bt_pagedel(Relation rel, Buffer buf, BTStack stack)
 		xlrec.deadblk = target;
 		xlrec.leftblk = leftsib;
 		xlrec.rightblk = rightsib;
+		xlrec.btpo_xact = opaque->btpo.xact;
 
 		rdata[0].data = (char *) &xlrec;
 		rdata[0].len = SizeOfBtreeDeletePage;
