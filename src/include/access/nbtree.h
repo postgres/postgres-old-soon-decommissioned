@@ -387,7 +387,7 @@ typedef struct xl_btree_delete_page
 	/* xl_btree_metadata FOLLOWS IF XLOG_BTREE_DELETE_PAGE_META */
 } xl_btree_delete_page;
 
-#define SizeOfBtreeDeletePage	(offsetof(xl_btree_delete_page, rightblk) + sizeof(BlockNumber))
+#define SizeOfBtreeDeletePage	(offsetof(xl_btree_delete_page, btpo_xact) + sizeof(TransactionId))
 
 /*
  * New root log record.  There are zero tuples if this is to establish an
