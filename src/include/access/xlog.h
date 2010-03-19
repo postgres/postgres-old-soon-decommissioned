@@ -172,6 +172,17 @@ extern HotStandbyState standbyState;
 
 #define InHotStandby (standbyState >= STANDBY_SNAPSHOT_PENDING)
 
+/*
+ * Recovery target type.
+ * Only set during a Point in Time recovery, not when standby_mode = on
+ */
+typedef enum
+{
+	RECOVERY_TARGET_UNSET,
+	RECOVERY_TARGET_XID,
+	RECOVERY_TARGET_TIME
+} RecoveryTargetType;
+
 extern XLogRecPtr XactLastRecEnd;
 
 /* these variables are GUC parameters related to XLOG */
