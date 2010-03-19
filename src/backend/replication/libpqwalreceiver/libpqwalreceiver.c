@@ -157,6 +157,8 @@ libpqrcv_connect(char *conninfo, XLogRecPtr startpoint)
 	PQclear(res);
 
 	justconnected = true;
+	ereport(LOG,
+			(errmsg("streaming replication successfully connected to primary")));
 
 	return true;
 }
