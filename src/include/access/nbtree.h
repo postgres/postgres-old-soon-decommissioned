@@ -317,7 +317,6 @@ typedef struct xl_btree_delete
 	RelFileNode node;
 	BlockNumber block;
 	TransactionId latestRemovedXid;
-	int			numItems;		/* number of items in the offset array */
 
 	/* TARGET OFFSET NUMBERS FOLLOW AT THE END */
 } xl_btree_delete;
@@ -363,7 +362,6 @@ typedef struct xl_btree_vacuum
 	RelFileNode node;
 	BlockNumber block;
 	BlockNumber lastBlockVacuumed;
-	int			numItems;		/* number of items in the offset array */
 
 	/* TARGET OFFSET NUMBERS FOLLOW */
 } xl_btree_vacuum;
