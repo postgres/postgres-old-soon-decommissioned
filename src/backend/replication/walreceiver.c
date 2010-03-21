@@ -283,7 +283,7 @@ WalReceiverMain(void)
 		 */
 		if (!RecoveryInProgress())
 			ereport(FATAL,
-					(errmsg("cannot continue XLOG streaming, recovery has already ended")));
+					(errmsg("cannot continue WAL streaming, recovery has already ended")));
 
 		/* Process any requests or signals received recently */
 		ProcessWalRcvInterrupts();

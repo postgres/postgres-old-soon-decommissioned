@@ -516,7 +516,7 @@ LockAcquireExtended(const LOCKTAG *locktag,
 		lockmode > RowExclusiveLock)
 		ereport(ERROR,
 				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
-				 errmsg("cannot acquire lockmode %s on database objects while recovery is in progress",
+				 errmsg("cannot acquire lock mode %s on database objects while recovery is in progress",
 						lockMethodTable->lockModeNames[lockmode]),
 				 errhint("Only RowExclusiveLock or less can be acquired on database objects during recovery.")));
 

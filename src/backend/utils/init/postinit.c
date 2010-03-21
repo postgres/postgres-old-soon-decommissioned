@@ -222,8 +222,8 @@ PerformAuthentication(Port *port)
 	 */
 	if (am_walsender)
 		ereport(LOG,
-				(errmsg("connection authorized: user=%s database=replication",
-						port->user_name)));
+				(errmsg("connection authorized: user=%s database=%s",
+						port->user_name, "replication")));
 	else if (Log_connections)
 		ereport(LOG,
 				(errmsg("connection authorized: user=%s database=%s",

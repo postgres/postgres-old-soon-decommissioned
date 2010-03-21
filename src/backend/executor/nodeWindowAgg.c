@@ -1230,7 +1230,7 @@ ExecWindowAgg(WindowAggState *winstate)
 			if (isnull)
 				ereport(ERROR,
 						(errcode(ERRCODE_NULL_VALUE_NOT_ALLOWED),
-						 errmsg("frame starting offset must not be NULL")));
+						 errmsg("frame starting offset must not be null")));
 			/* copy value into query-lifespan context */
 			get_typlenbyval(exprType((Node *) winstate->startOffset->expr),
 							&len, &byval);
@@ -1256,7 +1256,7 @@ ExecWindowAgg(WindowAggState *winstate)
 			if (isnull)
 				ereport(ERROR,
 						(errcode(ERRCODE_NULL_VALUE_NOT_ALLOWED),
-						 errmsg("frame ending offset must not be NULL")));
+						 errmsg("frame ending offset must not be null")));
 			/* copy value into query-lifespan context */
 			get_typlenbyval(exprType((Node *) winstate->endOffset->expr),
 							&len, &byval);

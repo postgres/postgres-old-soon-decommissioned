@@ -2273,7 +2273,7 @@ errdetail_recovery_conflict(void)
 			errdetail("User was holding a relation lock for too long.");
 			break;
 		case PROCSIG_RECOVERY_CONFLICT_TABLESPACE:
-			errdetail("User was or may have been using tablespace that must be dropped.");
+			errdetail("User was or might have been using tablespace that must be dropped.");
 			break;
 		case PROCSIG_RECOVERY_CONFLICT_SNAPSHOT:
 			errdetail("User query might have needed to see row versions that must be removed.");

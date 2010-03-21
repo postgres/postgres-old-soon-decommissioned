@@ -1246,7 +1246,7 @@ static struct config_bool ConfigureNamesBool[] =
 
 	{
 		{"lo_compat_privileges", PGC_SUSET, COMPAT_OPTIONS_PREVIOUS,
-			gettext_noop("Enables backward compatibility mode for privilege checks on large objects"),
+			gettext_noop("Enables backward compatibility mode for privilege checks on large objects."),
 			gettext_noop("Skips privilege checks when reading or modifying large objects, "
 				  "for compatibility with PostgreSQL releases prior to 9.0.")
 		},
@@ -1378,7 +1378,7 @@ static struct config_int ConfigureNamesInt[] =
 
 	{
 		{"max_standby_delay", PGC_SIGHUP, WAL_SETTINGS,
-			gettext_noop("Sets the maximum delay to avoid conflict processing on Hot Standby servers."),
+			gettext_noop("Sets the maximum delay to avoid conflict processing on hot standby servers."),
 			NULL
 		},
 		&MaxStandbyDelay,
