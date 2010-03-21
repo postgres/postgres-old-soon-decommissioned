@@ -84,7 +84,7 @@ CREATE TYPE <replaceable class="parameter">name</replaceable>
   </para>
   </refsect2>
 
-  <refsect2>
+  <refsect2 id="SQL-CREATETYPE-enum">
    <title>Enumerated Types</title>
 
    <para>

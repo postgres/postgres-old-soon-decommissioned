@@ -397,7 +397,7 @@ $$ LANGUAGE plpythonu;
   </para>
   </sect2>
 
-  <sect2>
+  <sect2 id="plpython-arrays">
    <title>Arrays, Lists</title>
   <para>
    SQL array values are passed into PL/Python as a Python list.  To
