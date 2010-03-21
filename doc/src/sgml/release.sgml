@@ -30,7 +30,7 @@ wrap long lines
 
 For new features, add links to the documentation sections.  Use </link>
 not just </> so that generate_history.pl can remove it, so HISTORY.html
-can be created without links to the main documentation.
+can be created without links to the main documentation.  Don't use <xref>.
 
 -->
 
