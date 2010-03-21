@@ -627,7 +627,7 @@ testdb=&gt;
     </para>
   </refsect2>
 
-  <refsect2>
+  <refsect2 id="APP-PSQL-meta-commands">
     <title>Meta-Commands</title>
 
     <para>

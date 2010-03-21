@@ -1221,7 +1221,7 @@ default:\
    </para>
   </sect2>
 
-  <sect2>
+  <sect2 id="linux-memory-overcommit">
    <title>Linux Memory Overcommit</title>
 
    <para>
