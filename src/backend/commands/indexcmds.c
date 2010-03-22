@@ -1391,7 +1391,7 @@ ChooseIndexName(const char *tabname, Oid namespaceId,
 	{
 		indexname = ChooseRelationName(tabname,
 									   ChooseIndexNameAddition(colnames),
-									   "exclusion",
+									   "excl",
 									   namespaceId);
 	}
 	else if (isconstraint)
