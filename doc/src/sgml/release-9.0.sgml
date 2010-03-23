@@ -814,7 +814,7 @@
               linkend="SQL-CREATETABLE-description"><command>CREATE
               TABLE CONSTRAINT ...  EXCLUDE</></link> clause.  While
               uniqueness checks could be specified using this syntax,
-              the real value of this features is in using complex
+              the real value of this feature is in using complex
               operators that do not have built-in constraints.
             </para>
           </listitem>
