@@ -1715,13 +1715,13 @@ ident_syntax:
 /*
  *	Scan the (pre-parsed) ident usermap file line by line, looking for a match
  *
- *	See if the user with ident username "ident_user" is allowed to act
- *	as Postgres user "pgrole" according to usermap "usermap_name".
+ *	See if the user with ident username "auth_user" is allowed to act
+ *	as Postgres user "pg_role" according to usermap "usermap_name".
  *
  *	Special case: Usermap NULL, equivalent to what was previously called
- *	"sameuser" or "samerole", means don't look in the usermap
- *	file.  That's an implied map where "pgrole" must be identical to
- *	"ident_user" in order to be authorized.
+ *	"sameuser" or "samerole", means don't look in the usermap file.
+ *	That's an implied map wherein "pg_role" must be identical to
+ *	"auth_user" in order to be authorized.
  *
  *	Iff authorized, return STATUS_OK, otherwise return STATUS_ERROR.
  */
@@ -1748,7 +1748,7 @@ check_usermap(const char *usermap_name,
 		}
 		ereport(LOG,
 				(errmsg("provided user name (%s) and authenticated user name (%s) do not match",
-						auth_user, pg_role)));
+						pg_role, auth_user)));
 		return STATUS_ERROR;
 	}
 	else
