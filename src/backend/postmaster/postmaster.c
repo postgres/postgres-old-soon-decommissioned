@@ -3340,10 +3340,17 @@ BackendInitialize(Port *port)
 			 remote_host, remote_port);
 
 	if (Log_connections)
-		ereport(LOG,
-				(errmsg("connection received: host=%s%s%s",
-						remote_host, remote_port[0] ? " port=" : "",
-						remote_port)));
+	{
+		if (remote_port[0])
+			ereport(LOG,
+				(errmsg("connection received: host=%s port=%s",
+					remote_host,
+					remote_port)));
+		else
+			ereport(LOG,
+				(errmsg("connection received: host=%s",
+					remote_host)));
+	}
 
 	/*
 	 * save remote_host and remote_port in port structure
