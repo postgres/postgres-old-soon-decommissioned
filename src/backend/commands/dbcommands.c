@@ -982,9 +982,30 @@ AlterDatabaseSet(AlterDatabaseSetStmt *stmt)
 
 	if (stmt->setstmt->kind == VAR_RESET_ALL)
 	{
-		/* RESET ALL, so just set datconfig to null */
-		repl_null[Anum_pg_database_datconfig - 1] = 'n';
-		repl_val[Anum_pg_database_datconfig - 1] = (Datum) 0;
+		ArrayType  *new = NULL;
+		Datum		datum;
+		bool		isnull;
+
+		/*
+		 * in RESET ALL, request GUC to reset the settings array; if none
+		 * left, we can set datconfig to null; otherwise use the returned
+		 * array
+		 */
+		datum = heap_getattr(tuple, Anum_pg_database_datconfig,
+							 RelationGetDescr(rel), &isnull);
+		if (!isnull)
+			new = GUCArrayReset(DatumGetArrayTypeP(datum));
+		if (new)
+		{
+			repl_val[Anum_pg_database_datconfig - 1] = PointerGetDatum(new);
+			repl_repl[Anum_pg_database_datconfig - 1] = 'r';
+			repl_null[Anum_pg_database_datconfig - 1] = ' ';
+		}
+		else
+		{
+			repl_null[Anum_pg_database_datconfig - 1] = 'n';
+			repl_val[Anum_pg_database_datconfig - 1] = (Datum) 0;
+		}
 	}
 	else
 	{
