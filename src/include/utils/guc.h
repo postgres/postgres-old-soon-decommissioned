@@ -187,7 +187,9 @@ extern void ProcessConfigFile(GucContext context);
 extern void InitializeGUCOptions(void);
 extern bool SelectConfigFiles(const char *userDoption, const char *progname);
 extern void ResetAllOptions(void);
-extern void AtEOXact_GUC(bool isCommit, bool isSubXact);
+extern void AtStart_GUC(void);
+extern int	NewGUCNestLevel(void);
+extern void AtEOXact_GUC(bool isCommit, int nestLevel);
 extern void BeginReportingGUCOptions(void);
 extern void ParseLongOption(const char *string, char **name, char **value);
 extern bool set_config_option(const char *name, const char *value,
@@ -207,6 +209,7 @@ extern char *flatten_set_variable_args(const char *name, List *args);
 extern void ProcessGUCArray(ArrayType *array, GucSource source);
 extern ArrayType *GUCArrayAdd(ArrayType *array, const char *name, const char *value);
 extern ArrayType *GUCArrayDelete(ArrayType *array, const char *name);
+extern ArrayType *GUCArrayReset(ArrayType *array);
 
 extern void pg_timezone_abbrev_initialize(void);
 
