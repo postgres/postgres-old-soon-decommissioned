@@ -263,6 +263,7 @@ WalSndHandshake(void)
 						pq_sendbyte(&buf, 0);
 						pq_sendint(&buf, 0, 2);
 						pq_endmessage(&buf);
+						pq_flush();
 
 						/*
 						 * Initialize position to the received one, then the
