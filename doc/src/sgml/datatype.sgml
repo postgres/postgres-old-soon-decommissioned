@@ -3947,6 +3947,8 @@ xml '<foo>bar</foo>'
     against a document type declaration
     (DTD),<indexterm><primary>DTD</primary></indexterm>
     even when the input value specifies a DTD.
+    There is also currently no built-in support for validating against
+    other XML schema languages such as XML Schema.
    </para>
 
    <para>
