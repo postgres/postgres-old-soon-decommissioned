@@ -578,7 +578,7 @@ btree_xlog_delete_get_latestRemovedXid(XLogRecord *record)
 	TransactionId	latestRemovedXid = InvalidTransactionId;
 	TransactionId	htupxid = InvalidTransactionId;
 	int i;
-	int num_unused, num_redirect, num_dead;
+	int num_unused = 0, num_redirect, num_dead;
 
 	xl_btree_delete *xlrec = (xl_btree_delete *) XLogRecGetData(record);
 
