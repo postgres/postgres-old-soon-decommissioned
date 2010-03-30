@@ -2805,7 +2805,7 @@ CheckRADIUSAuth(Port *port)
 					   encryptedpassword))
 	{
 		ereport(LOG,
-			(errmsg("could not perform md5 encryption of received packet")));
+			(errmsg("could not perform MD5 encryption of received packet")));
 		pfree(cryptvector);
 		return STATUS_ERROR;
 	}
