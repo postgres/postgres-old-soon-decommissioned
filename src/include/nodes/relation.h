@@ -192,6 +192,11 @@ typedef struct PlannerInfo
 	/* These fields are used only when hasRecursion is true: */
 	int			wt_param_id;	/* PARAM_EXEC ID for the work table */
 	struct Plan *non_recursive_plan;	/* plan for non-recursive term */
+
+	/* Added at end to minimize ABI breakage in 8.4 branch: */
+
+	bool		hasInheritedTarget;	/* true if parse->resultRelation is an
+									 * inheritance child rel */
 } PlannerInfo;
 
 

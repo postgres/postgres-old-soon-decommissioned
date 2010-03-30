@@ -287,6 +287,7 @@ subquery_planner(PlannerGlobal *glob, Query *parse,
 	root->cte_plan_ids = NIL;
 	root->eq_classes = NIL;
 	root->append_rel_list = NIL;
+	root->hasInheritedTarget = false;
 
 	root->hasRecursion = hasRecursion;
 	if (hasRecursion)
@@ -663,6 +664,7 @@ inheritance_planner(PlannerInfo *root)
 								   appinfo);
 		subroot.returningLists = NIL;
 		subroot.init_plans = NIL;
+		subroot.hasInheritedTarget = true;
 		/* We needn't modify the child's append_rel_list */
 		/* There shouldn't be any OJ info to translate, as yet */
 		Assert(subroot.join_info_list == NIL);
