@@ -748,7 +748,11 @@ typedef NameData *Name;
 #include <unistd.h>
 #endif
 
-/* These are for things that are one way on Unix and another on NT */
+/*
+ * This only works on Unix, not on Windows! This isn't used in PostgreSQL
+ * anymore, use the platform-aware DEVNULL instead. This is kept here just
+ * in case a 3rd party module uses it.
+ */
 #define NULL_DEV		"/dev/null"
 
 /*
