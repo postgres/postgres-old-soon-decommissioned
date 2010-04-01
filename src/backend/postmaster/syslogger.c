@@ -194,9 +194,12 @@ SysLoggerMain(int argc, char *argv[])
 		 */
 		close(fileno(stdout));
 		close(fileno(stderr));
-		dup2(fd, fileno(stdout));
-		dup2(fd, fileno(stderr));
-		close(fd);
+		if (fd != -1)
+		{
+			dup2(fd, fileno(stdout));
+			dup2(fd, fileno(stderr));
+			close(fd);
+		}
 	}
 
 	/*
