@@ -22,7 +22,7 @@ new_variable(const char *name, struct ECPGtype * type, int brace_level)
 }
 
 static struct variable *
-find_struct_member(char *name, char *str, struct ECPGstruct_member * members, int brace_level)
+find_struct_member(const char *name, char *str, struct ECPGstruct_member * members, int brace_level)
 {
 	char	   *next = strpbrk(++str, ".-["),
 			   *end,
@@ -446,7 +446,8 @@ dump_variables(struct arguments * list, int mode)
 	/* Then the current element and its indicator */
 	ECPGdump_a_type(yyout, list->variable->name, list->variable->type,
 					list->indicator->name, list->indicator->type,
-					NULL, NULL, make_str("0"), NULL, NULL);
+					NULL, NULL, make_str("0"), NULL, NULL,
+					list->variable->brace_level, list->indicator->brace_level);
 
 	/* Then release the list element. */
 	if (mode != 0)

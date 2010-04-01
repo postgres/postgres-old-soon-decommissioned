@@ -57,7 +57,8 @@ void		ECPGfree_type(struct ECPGtype *);
  */
 void ECPGdump_a_type(FILE *, const char *, struct ECPGtype *,
 				const char *, struct ECPGtype *, const char *,
-				const char *, char *, const char *, const char *);
+				const char *, char *, const char *, const char *,
+				const int, const int);
 
 /* A simple struct to keep a variable and its type. */
 struct ECPGtemp_type
