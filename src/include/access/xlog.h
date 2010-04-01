@@ -202,13 +202,13 @@ extern int	MaxStandbyDelay;
  * This is in walsender.c, but declared here so that we don't need to include
  * walsender.h in all files that check XLogIsNeeded()
  */
-extern int	MaxWalSenders;
+extern int	max_wal_senders;
 
 /*
  * Is WAL-logging necessary? We need to log an XLOG record iff either
  * WAL archiving is enabled or XLOG streaming is allowed.
  */
-#define XLogIsNeeded() (XLogArchivingActive() || (MaxWalSenders > 0))
+#define XLogIsNeeded() (XLogArchivingActive() || (max_wal_senders > 0))
 
 /* Do we need to WAL-log information required only for Hot Standby? */
 #define XLogStandbyInfoActive() (XLogRequestRecoveryConnections && XLogIsNeeded())

@@ -7092,7 +7092,7 @@ CreateCheckPoint(int flags)
 	 * disconnected (e.g because of network problems), but at least it avoids
 	 * an open replication connection from failing because of that.
 	 */
-	if ((_logId || _logSeg) && MaxWalSenders > 0)
+	if ((_logId || _logSeg) && max_wal_senders > 0)
 	{
 		XLogRecPtr	oldest;
 		uint32		log;

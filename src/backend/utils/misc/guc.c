@@ -1705,7 +1705,7 @@ static struct config_int ConfigureNamesInt[] =
 			gettext_noop("Sets the maximum number of simultaneously running WAL sender processes."),
 			NULL
 		},
-		&MaxWalSenders,
+		&max_wal_senders,
 		0, 0, INT_MAX / 4, NULL, NULL
 	},
 
