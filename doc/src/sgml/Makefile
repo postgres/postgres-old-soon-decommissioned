@@ -313,31 +313,21 @@ fix_sqlmansectnum = sed -e '/^\.TH/s/"7"/"$(sqlmansect)"/' \
 			-e 's/\\fR(7)/\\fR($(sqlmansectnum))/g' \
 			-e '1s/^\.so man7/.so man$(sqlmansectnum)/g;1s/^\(\.so.*\)\.7$$/\1.$(sqlmansect)/g'
 
-nonsql_manpage_files := $(wildcard $(srcdir)/man1/*.1 $(srcdir)/man3/*.3)
-sql_manpage_files := $(wildcard $(srcdir)/man7/*.7)
+man: fixed-man-stamp
 
-fixed_nonsql_manpage_files = $(patsubst $(srcdir)/%,fixedman/%,$(nonsql_manpage_files))
-fixed_sql_manpage_files = $(patsubst $(srcdir)/man7/%.7,fixedman/man$(sqlmansectnum)/%.$(sqlmansect),$(sql_manpage_files))
+fixed-man-stamp: man-stamp
+	@$(MKDIR_P) $(addprefix fixedman/,man1 man3 man$(sqlmansectnum))
+	for file in $(call vpathsearch,man1)/*.1; do $(fix_sqlmansectnum) $$file >fixedman/man1/`basename $$file` || exit; done
+	for file in $(call vpathsearch,man3)/*.3; do $(fix_sqlmansectnum) $$file >fixedman/man3/`basename $$file` || exit; done
+	for file in $(call vpathsearch,man7)/*.7; do $(fix_sqlmansectnum) $$file >fixedman/man$(sqlmansectnum)/`basename $$file | sed s/\.7$$/.$(sqlmansect)/` || exit; done
 
-fixed_manpage_files = $(fixed_nonsql_manpage_files) $(fixed_sql_manpage_files)
-
-man: $(fixed_manpage_files)
-
-$(fixed_nonsql_manpage_files): fixedman/%: %
-	@$(MKDIR_P) $(dir $@)
-	$(fix_sqlmansectnum) $< >$@
-
-$(fixed_sql_manpage_files): fixedman/man$(sqlmansectnum)/%.$(sqlmansect): man7/%.7
-	@$(MKDIR_P) $(dir $@)
-	$(fix_sqlmansectnum) $< >$@
-
-install-man: man
-	cp -R $(sort $(dir $(fixed_manpage_files))) '$(DESTDIR)$(mandir)'
+install-man:
+	cp -R $(foreach dir,man1 man3 man$(sqlmansectnum),fixedman/$(dir)) '$(DESTDIR)$(mandir)'
 
 clean: clean-man
 .PHONY: clean-man
 clean-man:
-	rm -rf fixedman/
+	rm -rf fixedman/ fixed-man-stamp
 
 endif # sqlmansectnum != 7
 
