@@ -92,6 +92,10 @@ DROP OWNED BY <replaceable class="PARAMETER">name</replaceable> [, ...] [ CASCAD
    reassigns the ownership of all the database objects owned by one or
    more roles.
   </para>
+
+  <para>
+   Databases owned by the role(s) will not be removed.
+  </para>
  </refsect1>
 
  <refsect1>
