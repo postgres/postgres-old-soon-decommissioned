@@ -29,6 +29,7 @@
 #include "access/heapam.h"
 #include "access/transam.h"
 #include "catalog/namespace.h"
+#include "miscadmin.h"
 #include "utils/builtins.h"
 
 
@@ -149,6 +150,8 @@ pgstattuple_real(Relation rel)
 	{
 		uint16		sv_infomask;
 
+		CHECK_FOR_INTERRUPTS();
+
 		sv_infomask = tuple->t_data->t_infomask;
 		if (HeapTupleSatisfiesNow(tuple->t_data))
 		{
@@ -173,6 +176,8 @@ pgstattuple_real(Relation rel)
 
 		while (block <= tupblock)
 		{
+			CHECK_FOR_INTERRUPTS();
+
 			buffer = ReadBuffer(rel, block);
 			free_space += PageGetFreeSpace((Page) BufferGetPage(buffer));
 			ReleaseBuffer(buffer);
@@ -183,6 +188,8 @@ pgstattuple_real(Relation rel)
 
 	while (block < nblocks)
 	{
+		CHECK_FOR_INTERRUPTS();
+
 		buffer = ReadBuffer(rel, block);
 		free_space += PageGetFreeSpace((Page) BufferGetPage(buffer));
 		ReleaseBuffer(buffer);
