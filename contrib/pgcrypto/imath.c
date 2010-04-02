@@ -2,7 +2,7 @@
 /*
   Name:		imath.c
   Purpose:	Arbitrary precision integer arithmetic routines.
-  Author:	M. J. Fromberger <http://www.dartmouth.edu/~sting/>
+  Author:	M. J. Fromberger <http://spinning-yarns.org/michael/sw/>
   Info:		Id: imath.c 21 2006-04-02 18:58:36Z sting
 
   Copyright (C) 2002 Michael J. Fromberger, All Rights Reserved.

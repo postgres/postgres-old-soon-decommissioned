@@ -37,7 +37,7 @@ typedef struct
 
 /*
  * Names of FF_ are correlated with Hunspell options in affix file
- * http://sourceforge.net/docman/display_doc.php?docid=29374&group_id=143754
+ * http://hunspell.sourceforge.net/
  */
 #define FF_COMPOUNDONLY		0x01
 #define FF_COMPOUNDBEGIN	0x02

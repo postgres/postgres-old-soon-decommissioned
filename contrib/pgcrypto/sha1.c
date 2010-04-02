@@ -32,7 +32,7 @@
  */
 /*
  * FIPS pub 180-1: Secure Hash Algorithm (SHA-1)
- * based on: http://csrc.nist.gov/fips/fip180-1.txt
+ * based on: http://www.itl.nist.gov/fipspubs/fip180-1.htm
  * implemented by Jun-ichiro itojun Itoh <itojun@itojun.org>
  */
 

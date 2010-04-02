@@ -220,7 +220,7 @@ typedef struct
 /*
  *	pgsymlink - uses Win32 junction points
  *
- *	For reference:	http://www.codeproject.com/w2k/junctionpoints.asp
+ *	For reference:	http://www.codeproject.com/KB/winsdk/junctionpoints.aspx
  */
 int
 pgsymlink(const char *oldpath, const char *newpath)
