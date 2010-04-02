@@ -5557,6 +5557,24 @@ StartupXLOG(void)
 			restartPointCommand ? restartPointCommand : "",
 			sizeof(XLogCtl->restartPointCommand));
 
+	if (InArchiveRecovery)
+	{
+		if (StandbyMode)
+			ereport(LOG,
+					(errmsg("entering standby mode")));
+		else if (recoveryTarget == RECOVERY_TARGET_XID)
+			ereport(LOG,
+					 (errmsg("starting point-in-time recovery to XID %u",
+						 recoveryTargetXid)));
+		else if (recoveryTarget == RECOVERY_TARGET_TIME)
+			ereport(LOG,
+					(errmsg("starting point-in-time recovery to %s",
+							timestamptz_to_str(recoveryTargetTime))));
+		else
+			ereport(LOG,
+					(errmsg("starting archive recovery")));
+	}
+
 	if (read_backup_label(&checkPointLoc))
 	{
 		/*
@@ -5694,23 +5712,7 @@ StartupXLOG(void)
 		 * backup history file.
 		 */
 		if (InArchiveRecovery)
-		{
-			if (StandbyMode)
-				ereport(LOG,
-						(errmsg("entering standby mode")));
-			else if (recoveryTarget == RECOVERY_TARGET_XID)
-				ereport(LOG,
-					 (errmsg("starting point-in-time recovery to XID %u",
-							 recoveryTargetXid)));
-			else if (recoveryTarget == RECOVERY_TARGET_TIME)
-				ereport(LOG,
-						(errmsg("starting point-in-time recovery to %s",
-								timestamptz_to_str(recoveryTargetTime))));
-			else
-				ereport(LOG,
-						(errmsg("starting archive recovery")));
 			ControlFile->state = DB_IN_ARCHIVE_RECOVERY;
-		}
 		else
 		{
 			ereport(LOG,
