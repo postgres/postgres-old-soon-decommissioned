@@ -29,6 +29,7 @@
 #include "access/heapam.h"
 #include "access/transam.h"
 #include "catalog/namespace.h"
+#include "miscadmin.h"
 #include "utils/builtins.h"
 
 
@@ -145,6 +146,8 @@ pgstattuple_real(Relation rel, FunctionCallInfo fcinfo)
 	/* scan the relation */
 	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{
+		CHECK_FOR_INTERRUPTS();
+
 		/* must hold a buffer lock to call HeapTupleSatisfiesNow */
 		LockBuffer(scan->rs_cbuf, BUFFER_LOCK_SHARE);
 
@@ -171,6 +174,8 @@ pgstattuple_real(Relation rel, FunctionCallInfo fcinfo)
 
 		while (block <= tupblock)
 		{
+			CHECK_FOR_INTERRUPTS();
+
 			buffer = ReadBuffer(rel, block);
 			LockBuffer(buffer, BUFFER_LOCK_SHARE);
 			free_space += PageGetFreeSpace((Page) BufferGetPage(buffer));
@@ -183,6 +188,8 @@ pgstattuple_real(Relation rel, FunctionCallInfo fcinfo)
 
 	while (block < nblocks)
 	{
+		CHECK_FOR_INTERRUPTS();
+
 		buffer = ReadBuffer(rel, block);
 		free_space += PageGetFreeSpace((Page) BufferGetPage(buffer));
 		ReleaseBuffer(buffer);
