@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-DROPTRIGGER">
  <refmeta>
-  <refentrytitle id="SQL-DROPTRIGGER-TITLE">DROP TRIGGER</refentrytitle>
+  <refentrytitle>DROP TRIGGER</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -119,7 +119,7 @@ DROP TRIGGER if_dist_exists ON films;
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createtrigger" endterm="sql-createtrigger-title"></member>
+   <member><xref linkend="sql-createtrigger"></member>
   </simplelist>
  </refsect1>
 

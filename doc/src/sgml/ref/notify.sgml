@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-NOTIFY">
  <refmeta>
-  <refentrytitle id="sql-notify-title">NOTIFY</refentrytitle>
+  <refentrytitle>NOTIFY</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -216,8 +216,8 @@ Asynchronous notification "foo" with payload "payload" received from server proc
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-listen" endterm="sql-listen-title"></member>
-   <member><xref linkend="sql-unlisten" endterm="sql-unlisten-title"></member>
+   <member><xref linkend="sql-listen"></member>
+   <member><xref linkend="sql-unlisten"></member>
   </simplelist>
  </refsect1>
 </refentry>

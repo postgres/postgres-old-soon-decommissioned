@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-CREATETYPE">
  <refmeta>
-  <refentrytitle id="sql-createtype-title">CREATE TYPE</refentrytitle>
+  <refentrytitle>CREATE TYPE</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -779,10 +779,10 @@ CREATE TABLE big_objs (
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createfunction" endterm="sql-createfunction-title"></member>
-   <member><xref linkend="sql-droptype" endterm="sql-droptype-title"></member>
-   <member><xref linkend="sql-altertype" endterm="sql-altertype-title"></member>
-   <member><xref linkend="sql-createdomain" endterm="sql-createdomain-title"></member>
+   <member><xref linkend="sql-createfunction"></member>
+   <member><xref linkend="sql-droptype"></member>
+   <member><xref linkend="sql-altertype"></member>
+   <member><xref linkend="sql-createdomain"></member>
   </simplelist>
  </refsect1>
 

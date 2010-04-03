@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-TRUNCATE">
  <refmeta>
-  <refentrytitle id="SQL-TRUNCATE-TITLE">TRUNCATE</refentrytitle>
+  <refentrytitle>TRUNCATE</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>

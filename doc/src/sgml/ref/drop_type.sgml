@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-DROPTYPE">
  <refmeta>
-  <refentrytitle id="SQL-DROPTYPE-TITLE">DROP TYPE</refentrytitle>
+  <refentrytitle>DROP TYPE</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -107,8 +107,8 @@ DROP TYPE box;
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createtype" endterm="sql-createtype-title"></member>
-   <member><xref linkend="sql-altertype" endterm="sql-altertype-title"></member>
+   <member><xref linkend="sql-createtype"></member>
+   <member><xref linkend="sql-altertype"></member>
   </simplelist>
  </refsect1>
 

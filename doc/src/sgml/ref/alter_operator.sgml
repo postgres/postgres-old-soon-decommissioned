@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-ALTEROPERATOR">
  <refmeta>
-  <refentrytitle id="SQL-ALTEROPERATOR-TITLE">ALTER OPERATOR</refentrytitle>
+  <refentrytitle>ALTER OPERATOR</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -112,8 +112,8 @@ ALTER OPERATOR @@ (text, text) OWNER TO joe;
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createoperator" endterm="sql-createoperator-title"></member>
-   <member><xref linkend="sql-dropoperator" endterm="sql-dropoperator-title"></member>
+   <member><xref linkend="sql-createoperator"></member>
+   <member><xref linkend="sql-dropoperator"></member>
   </simplelist>
  </refsect1>
 </refentry>

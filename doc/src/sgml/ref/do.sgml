@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-DO">
  <refmeta>
-  <refentrytitle id="sql-do-title">DO</refentrytitle>
+  <refentrytitle>DO</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -122,7 +122,7 @@ END$$;
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createlanguage" endterm="sql-createlanguage-title"></member>
+   <member><xref linkend="sql-createlanguage"></member>
   </simplelist>
  </refsect1>
 </refentry>

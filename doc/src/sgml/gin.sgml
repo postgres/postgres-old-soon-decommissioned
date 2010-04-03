@@ -241,8 +241,8 @@
    If consistent response time is more important than update speed,
    use of pending entries can be disabled by turning off the
    <literal>FASTUPDATE</literal> storage parameter for a
-   <acronym>GIN</acronym> index.  See <xref linkend="sql-createindex"
-   endterm="sql-createindex-title"> for details.
+   <acronym>GIN</acronym> index.  See <xref linkend="sql-createindex">
+   for details.
   </para>
  </sect2>
 

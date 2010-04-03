@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-CREATESEQUENCE">
  <refmeta>
-  <refentrytitle id="sql-createsequence-title">CREATE SEQUENCE</refentrytitle>
+  <refentrytitle>CREATE SEQUENCE</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -356,8 +356,8 @@ END;
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-altersequence" endterm="sql-altersequence-title"></member>
-   <member><xref linkend="sql-dropsequence" endterm="sql-dropsequence-title"></member>
+   <member><xref linkend="sql-altersequence"></member>
+   <member><xref linkend="sql-dropsequence"></member>
   </simplelist>
  </refsect1>
 

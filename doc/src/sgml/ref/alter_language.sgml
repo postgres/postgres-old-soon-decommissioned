@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-ALTERLANGUAGE">
  <refmeta>
-  <refentrytitle id="SQL-ALTERLANGUAGE-title">ALTER LANGUAGE</refentrytitle>
+  <refentrytitle>ALTER LANGUAGE</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -83,8 +83,8 @@ ALTER [ PROCEDURAL ] LANGUAGE <replaceable>name</replaceable> OWNER TO <replacea
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createlanguage" endterm="sql-createlanguage-title"></member>
-   <member><xref linkend="sql-droplanguage" endterm="sql-droplanguage-title"></member>
+   <member><xref linkend="sql-createlanguage"></member>
+   <member><xref linkend="sql-droplanguage"></member>
   </simplelist>
  </refsect1>
 

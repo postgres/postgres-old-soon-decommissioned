@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-COMMENT">
  <refmeta>
-  <refentrytitle id="SQL-COMMENT-TITLE">COMMENT</refentrytitle>
+  <refentrytitle>COMMENT</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>

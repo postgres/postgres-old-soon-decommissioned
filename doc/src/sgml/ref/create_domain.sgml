@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-CREATEDOMAIN">
  <refmeta>
-  <refentrytitle id="sql-createdomain-title">CREATE DOMAIN</refentrytitle>
+  <refentrytitle>CREATE DOMAIN</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -201,8 +201,8 @@ CREATE TABLE us_snail_addy (
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-alterdomain" endterm="sql-alterdomain-title"></member>
-   <member><xref linkend="sql-dropdomain" endterm="sql-dropdomain-title"></member>
+   <member><xref linkend="sql-alterdomain"></member>
+   <member><xref linkend="sql-dropdomain"></member>
   </simplelist>
  </refsect1>
 

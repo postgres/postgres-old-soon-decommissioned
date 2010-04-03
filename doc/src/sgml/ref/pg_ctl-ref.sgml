@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="app-pg-ctl">
  <refmeta>
-  <refentrytitle id="app-pg-ctl-title"><application>pg_ctl</application></refentrytitle>
+  <refentrytitle><application>pg_ctl</application></refentrytitle>
   <manvolnum>1</manvolnum>
   <refmiscinfo>Application</refmiscinfo>
  </refmeta>

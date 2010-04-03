@@ -2,7 +2,7 @@
 
 <refentry id="app-pgconfig">
  <refmeta>
-  <refentrytitle id="app-pgconfig-title">pg_config</refentrytitle>
+  <refentrytitle>pg_config</refentrytitle>
   <manvolnum>1</manvolnum>
   <refmiscinfo>Application</refmiscinfo>
  </refmeta>

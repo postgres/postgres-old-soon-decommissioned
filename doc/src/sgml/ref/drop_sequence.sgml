@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-DROPSEQUENCE">
  <refmeta>
-  <refentrytitle id="SQL-DROPSEQUENCE-TITLE">DROP SEQUENCE</refentrytitle>
+  <refentrytitle>DROP SEQUENCE</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -106,8 +106,8 @@ DROP SEQUENCE serial;
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createsequence" endterm="sql-createsequence-title"></member>
-   <member><xref linkend="sql-altersequence" endterm="sql-altersequence-title"></member>
+   <member><xref linkend="sql-createsequence"></member>
+   <member><xref linkend="sql-altersequence"></member>
   </simplelist>
  </refsect1>
 

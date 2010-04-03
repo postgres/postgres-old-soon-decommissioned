@@ -2,7 +2,7 @@
 
 <refentry id="SQL-DROPCONVERSION">
  <refmeta>
-  <refentrytitle id="SQL-DROPCONVERSION-TITLE">DROP CONVERSION</refentrytitle>
+  <refentrytitle>DROP CONVERSION</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -94,8 +94,8 @@ DROP CONVERSION myname;
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-alterconversion" endterm="sql-alterconversion-title"></member>
-   <member><xref linkend="sql-createconversion" endterm="sql-createconversion-title"></member>
+   <member><xref linkend="sql-alterconversion"></member>
+   <member><xref linkend="sql-createconversion"></member>
   </simplelist>
  </refsect1>
 

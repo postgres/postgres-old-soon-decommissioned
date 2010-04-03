@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="APP-INITDB">
  <refmeta>
-  <refentrytitle id="APP-INITDB-TITLE">initdb</refentrytitle>
+  <refentrytitle>initdb</refentrytitle>
   <manvolnum>1</manvolnum>
   <refmiscinfo>Application</refmiscinfo>
  </refmeta>

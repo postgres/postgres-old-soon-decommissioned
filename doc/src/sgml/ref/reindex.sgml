@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-REINDEX">
  <refmeta>
-  <refentrytitle id="SQL-REINDEX-TITLE">REINDEX</refentrytitle>
+  <refentrytitle>REINDEX</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>

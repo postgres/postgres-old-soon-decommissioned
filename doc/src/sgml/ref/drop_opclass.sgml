@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-DROPOPCLASS">
  <refmeta>
-  <refentrytitle id="SQL-DROPOPCLASS-TITLE">DROP OPERATOR CLASS</refentrytitle>
+  <refentrytitle>DROP OPERATOR CLASS</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -138,9 +138,9 @@ DROP OPERATOR CLASS widget_ops USING btree;
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-alteropclass" endterm="sql-alteropclass-title"></member>
-   <member><xref linkend="sql-createopclass" endterm="sql-createopclass-title"></member>
-   <member><xref linkend="sql-dropopfamily" endterm="sql-dropopfamily-title"></member>
+   <member><xref linkend="sql-alteropclass"></member>
+   <member><xref linkend="sql-createopclass"></member>
+   <member><xref linkend="sql-dropopfamily"></member>
   </simplelist>
  </refsect1>
 

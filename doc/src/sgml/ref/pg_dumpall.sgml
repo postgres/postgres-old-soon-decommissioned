@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="APP-PG-DUMPALL">
  <refmeta>
-  <refentrytitle id="APP-PG-DUMPALL-TITLE"><application>pg_dumpall</application></refentrytitle>
+  <refentrytitle><application>pg_dumpall</application></refentrytitle>
   <manvolnum>1</manvolnum>
   <refmiscinfo>Application</refmiscinfo>
  </refmeta>

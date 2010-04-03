@@ -51,9 +51,9 @@
     the corresponding foreign-data wrapper.  See the example below, as
     well as the following:
     <simplelist type="inline">
-     <member><xref linkend="sql-createforeigndatawrapper" endterm="sql-createforeigndatawrapper-title"></member>
-     <member><xref linkend="sql-createserver" endterm="sql-createserver-title"></member>
-     <member><xref linkend="sql-createusermapping" endterm="sql-createusermapping-title"></member>
+     <member><xref linkend="sql-createforeigndatawrapper"></member>
+     <member><xref linkend="sql-createserver"></member>
+     <member><xref linkend="sql-createusermapping"></member>
     </simplelist>
    </para>
 

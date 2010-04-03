@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-DROPOPERATOR">
  <refmeta>
-  <refentrytitle id="SQL-DROPOPERATOR-TITLE">DROP OPERATOR</refentrytitle>
+  <refentrytitle>DROP OPERATOR</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -139,8 +139,8 @@ DROP OPERATOR ! (bigint, none);
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createoperator" endterm="sql-createoperator-title"></member>
-   <member><xref linkend="sql-alteroperator" endterm="sql-alteroperator-title"></member>
+   <member><xref linkend="sql-createoperator"></member>
+   <member><xref linkend="sql-alteroperator"></member>
   </simplelist>
  </refsect1>
 

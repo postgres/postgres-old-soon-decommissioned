@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-ALTERAGGREGATE">
  <refmeta>
-  <refentrytitle id="SQL-ALTERAGGREGATE-TITLE">ALTER AGGREGATE</refentrytitle>
+  <refentrytitle>ALTER AGGREGATE</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -142,8 +142,8 @@ ALTER AGGREGATE myavg(integer) SET SCHEMA myschema;
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createaggregate" endterm="sql-createaggregate-title"></member>
-   <member><xref linkend="sql-dropaggregate" endterm="sql-dropaggregate-title"></member>
+   <member><xref linkend="sql-createaggregate"></member>
+   <member><xref linkend="sql-dropaggregate"></member>
   </simplelist>
  </refsect1>
 </refentry>

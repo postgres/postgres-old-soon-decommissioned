@@ -4,7 +4,7 @@ $PostgreSQL$
 
 <refentry id="SQL-LOAD">
  <refmeta>
-  <refentrytitle id="SQL-LOAD-TITLE">LOAD</refentrytitle>
+  <refentrytitle>LOAD</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -39,7 +39,7 @@ LOAD '<replaceable class="PARAMETER">filename</replaceable>'
 
   <para>
    The file name is specified in the same way as for shared library
-   names in <xref linkend="sql-createfunction" endterm="sql-createfunction-title">; in particular, one
+   names in <xref linkend="sql-createfunction">; in particular, one
    can rely on a search path and automatic addition of the system's standard
    shared library file name extension.  See <xref linkend="xfunc-c"> for
    more information on this topic.
@@ -73,7 +73,7 @@ LOAD '<replaceable class="PARAMETER">filename</replaceable>'
   <title>See Also</title>
 
   <para>
-   <xref linkend="sql-createfunction" endterm="sql-createfunction-title">
+   <xref linkend="sql-createfunction">
   </para>
  </refsect1>
 </refentry>

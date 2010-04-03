@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-EXPLAIN">
  <refmeta>
-  <refentrytitle id="SQL-EXPLAIN-TITLE">EXPLAIN</refentrytitle>
+  <refentrytitle>EXPLAIN</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -209,7 +209,7 @@ ROLLBACK;
   <para>
    In order to allow the <productname>PostgreSQL</productname> query
    planner to make reasonably informed decisions when optimizing
-   queries, the <xref linkend="sql-analyze" endterm="sql-analyze-title">
+   queries, the <xref linkend="sql-analyze">
    statement should be run to record statistics about the distribution
    of data within the table. If you have not done this (or if the
    statistical distribution of the data in the table has changed
@@ -339,7 +339,7 @@ EXPLAIN ANALYZE EXECUTE query(100, 200);
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-analyze" endterm="sql-analyze-title"></member>
+   <member><xref linkend="sql-analyze"></member>
   </simplelist>
  </refsect1>
 </refentry>

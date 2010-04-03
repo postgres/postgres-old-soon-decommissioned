@@ -57,7 +57,7 @@
    <para>
     Once a suitable trigger function has been created, the trigger is
     established with
-    <xref linkend="sql-createtrigger" endterm="sql-createtrigger-title">.
+    <xref linkend="sql-createtrigger">.
     The same trigger function can be used for multiple triggers.
    </para>
 

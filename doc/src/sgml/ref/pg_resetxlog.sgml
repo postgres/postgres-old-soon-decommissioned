@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="APP-PGRESETXLOG">
  <refmeta>
-  <refentrytitle id="APP-PGRESETXLOG-TITLE"><application>pg_resetxlog</application></refentrytitle>
+  <refentrytitle><application>pg_resetxlog</application></refentrytitle>
   <manvolnum>1</manvolnum>
   <refmiscinfo>Application</refmiscinfo>
  </refmeta>

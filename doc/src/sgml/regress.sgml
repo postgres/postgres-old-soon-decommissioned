@@ -1,7 +1,7 @@
 <!-- $PostgreSQL$ -->
 
  <chapter id="regress">
-  <title id="regress-title">Regression Tests</title>
+  <title>Regression Tests</title>
 
   <indexterm zone="regress">
    <primary>regression tests</primary>

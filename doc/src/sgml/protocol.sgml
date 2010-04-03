@@ -2419,7 +2419,7 @@ CopyInResponse (B)
                 characters, etc).
                 1 indicates the overall copy format is binary (similar
                 to DataRow format).
-                See <xref linkend="sql-copy" endterm="sql-copy-title">
+                See <xref linkend="sql-copy">
                 for more information.
 </para>
 </listitem>
@@ -2493,8 +2493,7 @@ CopyOutResponse (B)
                 is textual (rows separated by newlines, columns
                 separated by separator characters, etc). 1 indicates
                 the overall copy format is binary (similar to DataRow
-                format). See <xref linkend="sql-copy"
-                endterm="sql-copy-title"> for more information.
+                format). See <xref linkend="sql-copy"> for more information.
 </para>
 </listitem>
 </varlistentry>

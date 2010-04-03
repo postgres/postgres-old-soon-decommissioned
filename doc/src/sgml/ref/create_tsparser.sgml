@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-CREATETSPARSER">
  <refmeta>
-  <refentrytitle id="sql-createtsparser-title">CREATE TEXT SEARCH PARSER</refentrytitle>
+  <refentrytitle>CREATE TEXT SEARCH PARSER</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -146,8 +146,8 @@ CREATE TEXT SEARCH PARSER <replaceable class="parameter">name</replaceable> (
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-altertsparser" endterm="sql-altertsparser-title"></member>
-   <member><xref linkend="sql-droptsparser" endterm="sql-droptsparser-title"></member>
+   <member><xref linkend="sql-altertsparser"></member>
+   <member><xref linkend="sql-droptsparser"></member>
   </simplelist>
  </refsect1>
 </refentry>

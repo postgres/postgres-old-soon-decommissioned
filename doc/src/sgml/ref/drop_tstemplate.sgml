@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-DROPTSTEMPLATE">
  <refmeta>
-  <refentrytitle id="SQL-DROPTSTEMPLATE-TITLE">DROP TEXT SEARCH TEMPLATE</refentrytitle>
+  <refentrytitle>DROP TEXT SEARCH TEMPLATE</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -109,8 +109,8 @@ DROP TEXT SEARCH TEMPLATE thesaurus;
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-altertstemplate" endterm="sql-altertstemplate-title"></member>
-   <member><xref linkend="sql-createtstemplate" endterm="sql-createtstemplate-title"></member>
+   <member><xref linkend="sql-altertstemplate"></member>
+   <member><xref linkend="sql-createtstemplate"></member>
   </simplelist>
  </refsect1>
 

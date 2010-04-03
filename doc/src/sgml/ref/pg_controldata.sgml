@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="APP-PGCONTROLDATA">
  <refmeta>
-  <refentrytitle id="APP-PGCONTROLDATA-TITLE"><application>pg_controldata</application></refentrytitle>
+  <refentrytitle><application>pg_controldata</application></refentrytitle>
   <manvolnum>1</manvolnum>
   <refmiscinfo>Application</refmiscinfo>
  </refmeta>

@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-ALTERTSDICTIONARY">
  <refmeta>
-  <refentrytitle id="SQL-ALTERTSDICTIONARY-TITLE">ALTER TEXT SEARCH DICTIONARY</refentrytitle>
+  <refentrytitle>ALTER TEXT SEARCH DICTIONARY</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -153,8 +153,8 @@ ALTER TEXT SEARCH DICTIONARY my_dict ( dummy );
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createtsdictionary" endterm="sql-createtsdictionary-title"></member>
-   <member><xref linkend="sql-droptsdictionary" endterm="sql-droptsdictionary-title"></member>
+   <member><xref linkend="sql-createtsdictionary"></member>
+   <member><xref linkend="sql-droptsdictionary"></member>
   </simplelist>
  </refsect1>
 </refentry>

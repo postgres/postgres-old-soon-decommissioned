@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-DROPAGGREGATE">
  <refmeta>
-  <refentrytitle id="SQL-DROPAGGREGATE-TITLE">DROP AGGREGATE</refentrytitle>
+  <refentrytitle>DROP AGGREGATE</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -116,8 +116,8 @@ DROP AGGREGATE myavg(integer);
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-alteraggregate" endterm="sql-alteraggregate-title"></member>
-   <member><xref linkend="sql-createaggregate" endterm="sql-createaggregate-title"></member>
+   <member><xref linkend="sql-alteraggregate"></member>
+   <member><xref linkend="sql-createaggregate"></member>
   </simplelist>
  </refsect1>
 

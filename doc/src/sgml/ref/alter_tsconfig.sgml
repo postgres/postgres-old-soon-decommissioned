@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-ALTERTSCONFIG">
  <refmeta>
-  <refentrytitle id="SQL-ALTERTSCONFIG-TITLE">ALTER TEXT SEARCH CONFIGURATION</refentrytitle>
+  <refentrytitle>ALTER TEXT SEARCH CONFIGURATION</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -172,8 +172,8 @@ ALTER TEXT SEARCH CONFIGURATION my_config
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createtsconfig" endterm="sql-createtsconfig-title"></member>
-   <member><xref linkend="sql-droptsconfig" endterm="sql-droptsconfig-title"></member>
+   <member><xref linkend="sql-createtsconfig"></member>
+   <member><xref linkend="sql-droptsconfig"></member>
   </simplelist>
  </refsect1>
 </refentry>

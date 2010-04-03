@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-ALTERSERVER">
  <refmeta>
-  <refentrytitle id="sql-alterserver-title">ALTER SERVER</refentrytitle>
+  <refentrytitle>ALTER SERVER</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -116,8 +116,8 @@ ALTER SERVER foo VERSION '8.4' OPTIONS (SET host 'baz');
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createserver" endterm="sql-createserver-title"></member>
-   <member><xref linkend="sql-dropserver" endterm="sql-dropserver-title"></member>
+   <member><xref linkend="sql-createserver"></member>
+   <member><xref linkend="sql-dropserver"></member>
   </simplelist>
  </refsect1>
 

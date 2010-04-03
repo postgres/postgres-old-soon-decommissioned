@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-COMMIT-PREPARED">
  <refmeta>
-  <refentrytitle id="sql-commit-prepared-title">COMMIT PREPARED</refentrytitle>
+  <refentrytitle>COMMIT PREPARED</refentrytitle>
   <manvolnum>7</manvolnum>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
@@ -88,8 +88,8 @@ COMMIT PREPARED 'foobar';
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-prepare-transaction" endterm="sql-prepare-transaction-title"></member>
-   <member><xref linkend="sql-rollback-prepared" endterm="sql-rollback-prepared-title"></member>
+   <member><xref linkend="sql-prepare-transaction"></member>
+   <member><xref linkend="sql-rollback-prepared"></member>
   </simplelist>
  </refsect1>
 
