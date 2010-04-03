@@ -469,6 +469,14 @@ main(int argc, char *const argv[])
 					fclose(yyin);
 				if (out_option == 0 && yyout != stdout)
 					fclose(yyout);
+				/*
+				 * If there was an error, delete the output file.
+				 */
+				if (ret_value != 0)
+				{
+					if (strcmp(output_filename, "-") != 0 && unlink(output_filename) != 0)
+						fprintf(stderr, _("could not remove output file \"%s\"\n"), output_filename);
+				}
 			}
 
 			if (output_filename && out_option == 0)
