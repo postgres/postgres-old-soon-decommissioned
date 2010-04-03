@@ -361,7 +361,7 @@ exec_command(const char *cmd,
 				success = listCasts(pattern);
 				break;
 			case 'd':
-				if (strcmp(cmd, "ddp") == 0)
+				if (strncmp(cmd, "ddp", 3) == 0)
 					success = listDefaultACLs(pattern);
 				else
 					success = objectDescription(pattern, show_system);
