@@ -1421,12 +1421,12 @@ asyncQueueFillWarning(void)
 		}
 
 		ereport(WARNING,
-				(errmsg("pg_notify queue is %.0f%% full", fillDegree * 100),
+				(errmsg("NOTIFY queue is %.0f%% full", fillDegree * 100),
 				 (minPid != InvalidPid ?
-				  errdetail("PID %d is among the slowest backends.", minPid)
+				  errdetail("The server process with PID %d is among those with the oldest transactions.", minPid)
 				  : 0),
 				 (minPid != InvalidPid ?
-				  errhint("Cleanup can only proceed if this backend ends its current transaction.")
+				  errhint("The NOTIFY queue cannot be emptied until that process ends its current transaction.")
 				  : 0)));
 
 		asyncQueueControl->lastQueueFillWarn = t;
