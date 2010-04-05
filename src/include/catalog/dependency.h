@@ -232,7 +232,7 @@ extern void changeDependencyOnOwner(Oid classId, Oid objectId,
 						Oid newOwnerId);
 
 extern void updateAclDependencies(Oid classId, Oid objectId, int32 objectSubId,
-					  Oid ownerId, bool isGrant,
+					  Oid ownerId,
 					  int noldmembers, Oid *oldmembers,
 					  int nnewmembers, Oid *newmembers);
 

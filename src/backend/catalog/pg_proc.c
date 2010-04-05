@@ -609,7 +609,7 @@ ProcedureCreate(const char *procedureName,
 
 		nnewmembers = aclmembers(proacl, &newmembers);
 		updateAclDependencies(ProcedureRelationId, retval, 0,
-							  proowner, true,
+							  proowner,
 							  0, NULL,
 							  nnewmembers, newmembers);
 	}

@@ -1160,7 +1160,7 @@ heap_create_with_catalog(const char *relname,
 
 			nnewmembers = aclmembers(relacl, &newmembers);
 			updateAclDependencies(RelationRelationId, relid, 0,
-								  ownerid, true,
+								  ownerid,
 								  0, NULL,
 								  nnewmembers, newmembers);
 		}
