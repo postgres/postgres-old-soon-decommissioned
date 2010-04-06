@@ -861,7 +861,8 @@ CREATE TABLE order_items (
    <para>
     Exclusion constraints ensure that if any two rows are compared on
     the specified columns or expressions using the specified operators,
-    at least one of these operator comparisons will be false. The syntax is:
+    at least one of these operator comparisons will return false or null.
+    The syntax is:
 <programlisting>
 CREATE TABLE circles (
     c circle,
