@@ -1087,7 +1087,8 @@ identify_system_timezone(void)
 		if ((r = RegQueryValueEx(key, "Std", NULL, NULL, zonename, &namesize)) != ERROR_SUCCESS)
 		{
 			ereport(WARNING,
-					(errmsg_internal("could not query value for 'std' to identify Windows timezone: %i", (int) r)));
+					(errmsg_internal("could not query value for 'std' to identify Windows timezone \"%s\": %i",
+									 keyname, (int) r)));
 			RegCloseKey(key);
 			break;
 		}
@@ -1103,7 +1104,8 @@ identify_system_timezone(void)
 		if ((r = RegQueryValueEx(key, "Dlt", NULL, NULL, zonename, &namesize)) != ERROR_SUCCESS)
 		{
 			ereport(WARNING,
-					(errmsg_internal("could not query value for 'dlt' to identify Windows timezone: %i", (int) r)));
+					(errmsg_internal("could not query value for 'dlt' to identify Windows timezone \"%s\": %i",
+									 keyname, (int) r)));
 			RegCloseKey(key);
 			break;
 		}
