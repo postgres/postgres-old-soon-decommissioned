@@ -857,19 +857,19 @@ LogCurrentRunningXacts(RunningTransactions CurrRunningXacts)
 	recptr = XLogInsert(RM_STANDBY_ID, XLOG_RUNNING_XACTS, rdata);
 
 	if (CurrRunningXacts->subxid_overflow)
-		ereport(trace_recovery(DEBUG2),
-				(errmsg("snapshot of %u running transactions overflowed (lsn %X/%X oldest xid %u next xid %u)",
+		elog(trace_recovery(DEBUG2),
+						"snapshot of %u running transactions overflowed (lsn %X/%X oldest xid %u next xid %u)",
 						CurrRunningXacts->xcnt,
 						recptr.xlogid, recptr.xrecoff,
 						CurrRunningXacts->oldestRunningXid,
-						CurrRunningXacts->nextXid)));
+						CurrRunningXacts->nextXid);
 	else
-		ereport(trace_recovery(DEBUG2),
-				(errmsg("snapshot of %u running transaction ids (lsn %X/%X oldest xid %u next xid %u)",
+		elog(trace_recovery(DEBUG2),
+						"snapshot of %u running transaction ids (lsn %X/%X oldest xid %u next xid %u)",
 						CurrRunningXacts->xcnt,
 						recptr.xlogid, recptr.xrecoff,
 						CurrRunningXacts->oldestRunningXid,
-						CurrRunningXacts->nextXid)));
+						CurrRunningXacts->nextXid);
 
 }
 
