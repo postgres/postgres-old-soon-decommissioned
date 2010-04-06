@@ -5092,15 +5092,16 @@ readRecoveryCommandFile(void)
 	if (StandbyMode)
 	{
 		if (PrimaryConnInfo == NULL && recoveryRestoreCommand == NULL)
-			ereport(FATAL,
+			ereport(WARNING,
 					(errmsg("recovery command file \"%s\" specified neither primary_conninfo nor restore_command",
-							RECOVERY_COMMAND_FILE)));
+							RECOVERY_COMMAND_FILE),
+					 errhint("The database server will regularly poll the pg_xlog subdirectory to check for files placed there.")));
 	}
 	else
 	{
 		if (recoveryRestoreCommand == NULL)
 			ereport(FATAL,
-					(errmsg("recovery command file \"%s\" did not specify restore_command nor standby_mode",
+					(errmsg("recovery command file \"%s\" must specify restore_command when standby mode is not enabled",
 							RECOVERY_COMMAND_FILE)));
 	}
 
