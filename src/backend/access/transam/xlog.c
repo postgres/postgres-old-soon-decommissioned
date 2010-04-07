@@ -8410,6 +8410,12 @@ pg_xlogfile_name_offset(PG_FUNCTION_ARGS)
 	HeapTuple	resultHeapTuple;
 	Datum		result;
 
+	if (RecoveryInProgress())
+		ereport(ERROR,
+				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
+				 errmsg("recovery is in progress"),
+				 errhint("pg_xlogfile_name_offset() cannot be executed during recovery.")));
+
 	/*
 	 * Read input and parse
 	 */
@@ -8478,6 +8484,12 @@ pg_xlogfile_name(PG_FUNCTION_ARGS)
 	uint32		xlogseg;
 	XLogRecPtr	locationpoint;
 	char		xlogfilename[MAXFNAMELEN];
+
+	if (RecoveryInProgress())
+		ereport(ERROR,
+				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
+				 errmsg("recovery is in progress"),
+				 errhint("pg_xlogfile_name() cannot be executed during recovery.")));
 
 	locationstr = text_to_cstring(location);
 
