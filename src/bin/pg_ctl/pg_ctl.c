@@ -1080,7 +1080,11 @@ pgwin32_CommandLine(bool registration)
 
 #ifdef __CYGWIN__
 	/* need to convert to windows path */
+#if CYGWIN_VERSION_DLL_MAJOR >= 1007
 	cygwin_conv_path(CCP_POSIX_TO_WIN_A, cmdLine, buf, sizeof(buf));
+#else
+	cygwin_conv_to_full_win32_path(cmdLine, buf);
+#endif
 	strcpy(cmdLine, buf);
 #endif
 
