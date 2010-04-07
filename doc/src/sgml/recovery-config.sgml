@@ -18,6 +18,14 @@
       be changed once recovery has begun.
    </para>
 
+   <para>
+     Settings in <filename>recovery.conf</> are specified in the format
+     <literal>name = 'value'</>. One parameter is specified per line.
+     Hash marks (<literal>#</literal>) designate the rest of the
+     line as a comment.  To embed a single quote in a parameter
+     value, write two quotes (<literal>''</>).
+   </para>
+
   <sect1 id="archive-recovery-settings">
 
     <title>Archive recovery settings</title>
