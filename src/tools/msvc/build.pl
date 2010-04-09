@@ -5,9 +5,9 @@
 
 BEGIN
 {
-	
-	chdir("../../..") if  (-d "../msvc" && -d "../../../src");
-	
+
+    chdir("../../..") if  (-d "../msvc" && -d "../../../src");
+
 }
 
 use lib "src/tools/msvc";
@@ -28,7 +28,6 @@ elsif (-e "./buildenv.pl" )
 {
     require "./buildenv.pl";
 }
-
 
 # set up the project
 our $config;

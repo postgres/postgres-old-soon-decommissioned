@@ -1,12 +1,13 @@
 my @def;
+
 #
 # Script that generates a .DEF file for all objects in a directory
-# 
+#
 # $PostgreSQL$
 #
 
-die "Usage: gendef.pl <modulepath> <platform>\n" unless
-   (($ARGV[0] =~ /\\([^\\]+$)/) && ($ARGV[1] == 'Win32' || $ARGV[1] == 'x64'));
+die "Usage: gendef.pl <modulepath> <platform>\n"
+  unless(($ARGV[0] =~ /\\([^\\]+$)/) && ($ARGV[1] == 'Win32' || $ARGV[1] == 'x64'));
 my $defname = uc $1;
 my $platform = $ARGV[1];
 
