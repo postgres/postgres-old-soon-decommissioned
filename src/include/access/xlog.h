@@ -187,6 +187,7 @@ extern XLogRecPtr XactLastRecEnd;
 
 /* these variables are GUC parameters related to XLOG */
 extern int	CheckPointSegments;
+extern int	StandbySegments;
 extern int	XLOGbuffers;
 extern bool XLogArchiveMode;
 extern char *XLogArchiveCommand;
@@ -267,6 +268,7 @@ extern int XLogFileInit(uint32 log, uint32 seg,
 extern int	XLogFileOpen(uint32 log, uint32 seg);
 
 
+extern void XLogGetLastRemoved(uint32 *log, uint32 *seg);
 extern void XLogSetAsyncCommitLSN(XLogRecPtr record);
 
 extern void RestoreBkpBlocks(XLogRecPtr lsn, XLogRecord *record, bool cleanup);
