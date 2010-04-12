@@ -216,6 +216,9 @@ typedef XLogLongPageHeaderData *XLogLongPageHeader;
 #define XLogFileName(fname, tli, log, seg)	\
 	snprintf(fname, MAXFNAMELEN, "%08X%08X%08X", tli, log, seg)
 
+#define XLogFromFileName(fname, tli, log, seg)	\
+	sscanf(fname, "%08X%08X%08X", tli, log, seg)
+
 #define XLogFilePath(path, tli, log, seg)	\
 	snprintf(path, MAXPGPATH, XLOGDIR "/%08X%08X%08X", tli, log, seg)
 
