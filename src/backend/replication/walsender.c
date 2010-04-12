@@ -506,8 +506,8 @@ WalSndKill(int code, Datum arg)
 void
 XLogRead(char *buf, XLogRecPtr recptr, Size nbytes)
 {
+	XLogRecPtr	startRecPtr = recptr;
 	char		path[MAXPGPATH];
-	uint32		startoff;
 	uint32		lastRemovedLog;
 	uint32		lastRemovedSeg;
 	uint32		log;
@@ -515,6 +515,7 @@ XLogRead(char *buf, XLogRecPtr recptr, Size nbytes)
 
 	while (nbytes > 0)
 	{
+		uint32		startoff;
 		int			segbytes;
 		int			readbytes;
 
@@ -596,7 +597,7 @@ XLogRead(char *buf, XLogRecPtr recptr, Size nbytes)
 	 * already have been overwritten with new WAL records.
 	 */
 	XLogGetLastRemoved(&lastRemovedLog, &lastRemovedSeg);
-	XLByteToPrevSeg(recptr, log, seg);
+	XLByteToSeg(startRecPtr, log, seg);
 	if (log < lastRemovedLog ||
 		(log == lastRemovedLog && seg <= lastRemovedSeg))
 	{
