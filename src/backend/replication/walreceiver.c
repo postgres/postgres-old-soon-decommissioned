@@ -330,7 +330,8 @@ WalRcvDie(int code, Datum arg)
 	SpinLockRelease(&walrcv->mutex);
 
 	/* Terminate the connection gracefully. */
-	walrcv_disconnect();
+	if (walrcv_disconnect != NULL)
+		walrcv_disconnect();
 }
 
 /* SIGHUP: set flag to re-read config file at next convenient time */
