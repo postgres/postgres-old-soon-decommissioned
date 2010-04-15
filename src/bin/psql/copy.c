@@ -146,7 +146,7 @@ parse_slash_copy(const char *args)
 
 		while (parens > 0)
 		{
-			token = strtokx(NULL, whitespace, ".,()", "\"'",
+			token = strtokx(NULL, whitespace, "()", "\"'",
 							nonstd_backslash, true, false, pset.encoding);
 			if (!token)
 				goto error;
