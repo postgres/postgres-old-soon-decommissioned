@@ -1828,7 +1828,7 @@ SET ENABLE_SEQSCAN TO OFF;
        <para>
         Specifies the number of log file segments kept in <filename>pg_xlog</>
         directory, in case a standby server needs to fetch them via streaming
-        replciation. Each segment is normally 16 megabytes. If a standby
+        replication. Each segment is normally 16 megabytes. If a standby
         server connected to the primary falls behind more than
         <varname>standby_keep_segments</> segments, the primary might remove
         a WAL segment still needed by the standby and the replication
