@@ -5990,7 +5990,7 @@ StartupXLOG(void)
 		 * launch bgwriter to perform restartpoints.  We don't bother
 		 * during crash recovery as restartpoints can only be performed
 		 * during archive recovery.  And we'd like to keep crash recovery
-		 * simple, to avoid introducing bugs that could effect you when
+		 * simple, to avoid introducing bugs that could affect you when
 		 * recovering after crash.
 		 *
 		 * After this point, we can no longer assume that we're the only
