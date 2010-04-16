@@ -643,6 +643,12 @@ analyze threshold = analyze base threshold + analyze scale factor * number of tu
    </para>
 
    <para>
+    Temporary tables cannot be accessed by autovacuum.  Therefore,
+    appropriate vacuum and analyze operations should be performed via
+    session SQL commands.
+   </para>
+
+   <para>
     The default thresholds and scale factors are taken from
     <filename>postgresql.conf</filename>, but it is possible to override them
     on a table-by-table basis; see

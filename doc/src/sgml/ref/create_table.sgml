@@ -145,6 +145,15 @@ CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } ] TABLE <replaceable class="PAR
      </para>
 
      <para>
+      The <link linkend="autovacuum">autovacuum daemon</link> cannot
+      access and therefore cannot vacuum or analyze temporary tables.
+      For this reason, appropriate vacuum and analyze operations should be
+      performed via session SQL commands.  For example, if a temporary
+      table is going to be used in complex queries, it is wise to run
+      <command>ANALYZE</> on the temporary table after it is populated.
+     </para>
+      
+     <para>
       Optionally, <literal>GLOBAL</literal> or <literal>LOCAL</literal>
       can be written before <literal>TEMPORARY</> or <literal>TEMP</>.
       This makes no difference in <productname>PostgreSQL</>, but see
