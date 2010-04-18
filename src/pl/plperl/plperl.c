@@ -1153,18 +1153,19 @@ plperl_inline_handler(PG_FUNCTION_ARGS)
 	}
 	PG_CATCH();
 	{
-		current_call_data = save_call_data;
-		restore_context(oldcontext);
 		if (desc.reference)
 			SvREFCNT_dec(desc.reference);
+		current_call_data = save_call_data;
+		restore_context(oldcontext);
 		PG_RE_THROW();
 	}
 	PG_END_TRY();
 
-	current_call_data = save_call_data;
-	restore_context(oldcontext);
 	if (desc.reference)
 		SvREFCNT_dec(desc.reference);
+
+	current_call_data = save_call_data;
+	restore_context(oldcontext);
 
 	error_context_stack = pl_error_context.previous;
 
