@@ -6454,12 +6454,6 @@ CheckRecoveryConsistency(void)
 	}
 }
 
-bool
-XLogConsistentState(void)
-{
-	return reachedMinRecoveryPoint;
-}
-
 /*
  * Is the system still in recovery?
  *
