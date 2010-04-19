@@ -578,9 +578,11 @@ build_subplan(PlannerInfo *root, Plan *plan, List *rtable, List *rowmarks,
 		 * is pointless for a direct-correlated subplan, since we'd have to
 		 * recompute its results each time anyway.	For uncorrelated/undirect
 		 * correlated subplans, we add Material unless the subplan's top plan
-		 * node would materialize its output anyway.
+		 * node would materialize its output anyway.  Also, if enable_material
+		 * is false, then the user does not want us to materialize anything
+		 * unnecessarily, so we don't.
 		 */
-		else if (splan->parParam == NIL &&
+		else if (splan->parParam == NIL && enable_material &&
 				 !ExecMaterializesOutput(nodeTag(plan)))
 			plan = materialize_finished_plan(plan);
 

@@ -2020,6 +2020,22 @@ SET ENABLE_SEQSCAN TO OFF;
       </listitem>
      </varlistentry>
 
+     <varlistentry id="guc-enable-material" xreflabel="enable_material">
+      <term><varname>enable_material</varname> (<type>boolean</type>)</term>
+      <indexterm>
+       <primary><varname>enable_material</> configuration parameter</primary>
+      </indexterm>
+      <listitem>
+       <para>
+        Enables or disables the query planner's use of materialization.
+        It is impossible to suppress materialization entirely,
+        but turning this variable off prevents the planner from inserting
+        materialize nodes except in cases where it is required for correctness.
+        The default is <literal>on</>.
+       </para>
+      </listitem>
+     </varlistentry>
+
      <varlistentry id="guc-enable-mergejoin" xreflabel="enable_mergejoin">
       <term><varname>enable_mergejoin</varname> (<type>boolean</type>)</term>
       <indexterm>

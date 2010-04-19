@@ -57,6 +57,7 @@ extern bool enable_tidscan;
 extern bool enable_sort;
 extern bool enable_hashagg;
 extern bool enable_nestloop;
+extern bool enable_material;
 extern bool enable_mergejoin;
 extern bool enable_hashjoin;
 extern int	constraint_exclusion;
