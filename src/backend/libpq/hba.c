@@ -1389,9 +1389,9 @@ check_hba(hbaPort *port)
 		return true;
 	}
 
-	/* If no matching entry was found, synthesize 'reject' entry. */
+	/* If no matching entry was found, then implicitly reject. */
 	hba = palloc0(sizeof(HbaLine));
-	hba->auth_method = uaReject;
+	hba->auth_method = uaImplicitReject;
 	port->hba = hba;
 	return true;
 

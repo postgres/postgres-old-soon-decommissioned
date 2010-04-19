@@ -18,6 +18,7 @@
 typedef enum UserAuth
 {
 	uaReject,
+	uaImplicitReject,
 	uaKrb5,
 	uaTrust,
 	uaIdent,
