@@ -66,7 +66,7 @@
 
 /* User-settable parameters */
 int			CheckPointSegments = 3;
-int			StandbySegments = 0;
+int			wal_keep_segments = 0;
 int			XLOGbuffers = 8;
 int			XLogArchiveTimeout = 0;
 bool		XLogArchiveMode = false;
@@ -7285,10 +7285,10 @@ CreateCheckPoint(int flags)
 	{
 		/*
 		 * Calculate the last segment that we need to retain because of
-		 * standby_keep_segments, by subtracting StandbySegments from the
+		 * wal_keep_segments, by subtracting wal_keep_segments from the
 		 * new checkpoint location.
 		 */
-		if (StandbySegments > 0)
+		if (wal_keep_segments > 0)
 		{
 			uint32		log;
 			uint32		seg;
@@ -7297,8 +7297,8 @@ CreateCheckPoint(int flags)
 
 			XLByteToSeg(recptr, log, seg);
 
-			d_seg = StandbySegments % XLogSegsPerFile;
-			d_log = StandbySegments / XLogSegsPerFile;
+			d_seg = wal_keep_segments % XLogSegsPerFile;
+			d_log = wal_keep_segments / XLogSegsPerFile;
 			if (seg < d_seg)
 			{
 				d_log += 1;

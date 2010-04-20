@@ -1656,11 +1656,11 @@ static struct config_int ConfigureNamesInt[] =
 	},
 
 	{
-		{"standby_keep_segments", PGC_SIGHUP, WAL_CHECKPOINTS,
+		{"wal_keep_segments", PGC_SIGHUP, WAL_CHECKPOINTS,
 			gettext_noop("Sets the number of WAL files held for standby servers"),
 			NULL
 		},
-		&StandbySegments,
+		&wal_keep_segments,
 		0, 0, INT_MAX, NULL, NULL
 	},
 

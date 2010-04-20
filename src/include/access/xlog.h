@@ -187,7 +187,7 @@ extern XLogRecPtr XactLastRecEnd;
 
 /* these variables are GUC parameters related to XLOG */
 extern int	CheckPointSegments;
-extern int	StandbySegments;
+extern int	wal_keep_segments;
 extern int	XLOGbuffers;
 extern bool XLogArchiveMode;
 extern char *XLogArchiveCommand;
