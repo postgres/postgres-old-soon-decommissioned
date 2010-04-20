@@ -49,9 +49,6 @@ DECLARE_TOAST(pg_statistic, 2840, 2841);
 DECLARE_TOAST(pg_trigger, 2336, 2337);
 
 /* shared catalogs */
-DECLARE_TOAST(pg_authid, 2842, 2843);
-#define PgAuthidToastTable 2842
-#define PgAuthidToastIndex 2843
 DECLARE_TOAST(pg_database, 2844, 2845);
 #define PgDatabaseToastTable 2844
 #define PgDatabaseToastIndex 2845
