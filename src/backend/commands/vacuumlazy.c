@@ -274,9 +274,12 @@ vacuum_log_cleanup_info(Relation rel, LVRelStats *vacrelstats)
 	if (rel->rd_istemp || !XLogIsNeeded())
 		return;
 
-	Assert(TransactionIdIsValid(vacrelstats->latestRemovedXid));
+	if (vacrelstats->tuples_deleted > 0)
+	{
+		Assert(TransactionIdIsValid(vacrelstats->latestRemovedXid));
 
-	(void) log_heap_cleanup_info(rel->rd_node, vacrelstats->latestRemovedXid);
+		(void) log_heap_cleanup_info(rel->rd_node, vacrelstats->latestRemovedXid);
+	}
 }
 
 /*
