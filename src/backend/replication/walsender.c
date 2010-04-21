@@ -47,12 +47,12 @@
 #include "replication/walsender.h"
 #include "storage/fd.h"
 #include "storage/ipc.h"
-#include "storage/lock.h"
 #include "storage/pmsignal.h"
 #include "tcop/tcopprot.h"
 #include "utils/guc.h"
 #include "utils/memutils.h"
 #include "utils/ps_status.h"
+
 
 /* Array of WalSnds in shared memory */
 WalSndCtlData *WalSndCtl = NULL;
@@ -113,11 +113,6 @@ int
 WalSenderMain(void)
 {
 	MemoryContext walsnd_context;
-
-	if (!superuser())
-		ereport(FATAL,
-				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-				 errmsg("must be superuser to start walsender")));
 
 	if (RecoveryInProgress())
 		ereport(FATAL,

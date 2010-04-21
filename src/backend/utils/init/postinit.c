@@ -624,6 +624,11 @@ InitPostgres(const char *in_dbname, Oid dboid, const char *username,
 	if (am_walsender)
 	{
 		Assert(!bootstrap);
+		/* must have authenticated as a superuser */
+		if (!am_superuser)
+			ereport(FATAL,
+					(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
+					 errmsg("must be superuser to start walsender")));
 		/* report this backend in the PgBackendStatus array */
 		pgstat_bestart();
 		/* close the transaction we started above */
