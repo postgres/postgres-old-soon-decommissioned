@@ -91,7 +91,7 @@ libpqrcv_connect(char *conninfo, XLogRecPtr startpoint)
 	streamConn = PQconnectdb(conninfo_repl);
 	if (PQstatus(streamConn) != CONNECTION_OK)
 		ereport(ERROR,
-				(errmsg("could not connect to the primary server : %s",
+				(errmsg("could not connect to the primary server: %s",
 						PQerrorMessage(streamConn))));
 
 	/*
