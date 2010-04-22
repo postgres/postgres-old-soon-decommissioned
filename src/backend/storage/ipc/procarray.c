@@ -1839,7 +1839,8 @@ CountDBBackends(Oid databaseid)
 
 		if (proc->pid == 0)
 			continue;			/* do not count prepared xacts */
-		if (proc->databaseId == databaseid)
+		if (!OidIsValid(databaseid) ||
+			proc->databaseId == databaseid)
 			count++;
 	}
 

@@ -248,7 +248,7 @@ ResolveRecoveryConflictWithSnapshot(TransactionId latestRemovedXid, RelFileNode 
 
 	/*
 	 * If we get passed InvalidTransactionId then we are a little surprised,
-	 * but it is theoretically possible, so spit out a LOG message, but not
+	 * but it is theoretically possible, so spit out a DEBUG1 message, but not
 	 * one that needs translating.
 	 *
 	 * We grab latestCompletedXid instead because this is the very latest
@@ -256,7 +256,7 @@ ResolveRecoveryConflictWithSnapshot(TransactionId latestRemovedXid, RelFileNode 
 	 */
 	if (!TransactionIdIsValid(latestRemovedXid))
 	{
-		elog(LOG, "Invalid latestRemovedXid reported, using latestCompletedXid instead");
+		elog(DEBUG1, "Invalid latestremovexXid reported, using latestcompletedxid instead");
 
 		LWLockAcquire(ProcArrayLock, LW_SHARED);
 		latestRemovedXid = ShmemVariableCache->latestCompletedXid;
