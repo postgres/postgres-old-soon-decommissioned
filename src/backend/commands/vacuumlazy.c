@@ -274,12 +274,11 @@ vacuum_log_cleanup_info(Relation rel, LVRelStats *vacrelstats)
 	if (rel->rd_istemp || !XLogIsNeeded())
 		return;
 
-	if (vacrelstats->tuples_deleted > 0)
-	{
-		Assert(TransactionIdIsValid(vacrelstats->latestRemovedXid));
-
+	/*
+	 * No need to write the record at all unless it contains a valid value
+	 */
+	if (TransactionIdIsValid(vacrelstats->latestRemovedXid))
 		(void) log_heap_cleanup_info(rel->rd_node, vacrelstats->latestRemovedXid);
-	}
 }
 
 /*
@@ -687,7 +686,6 @@ lazy_scan_heap(Relation onerel, LVRelStats *vacrelstats,
 			 * Forget the now-vacuumed tuples, and press on, but be careful
 			 * not to reset latestRemovedXid since we want that value to be valid.
 			 */
-			Assert(TransactionIdIsValid(vacrelstats->latestRemovedXid));
 			vacrelstats->num_dead_tuples = 0;
 			vacuumed_pages++;
 		}
