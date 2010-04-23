@@ -173,7 +173,7 @@ visibilitymap_clear(Relation rel, BlockNumber heapBlk)
  * On entry, *buf should be InvalidBuffer or a valid buffer returned by
  * an earlier call to visibilitymap_pin or visibilitymap_test on the same
  * relation. On return, *buf is a valid buffer with the map page containing
- * the the bit for heapBlk.
+ * the bit for heapBlk.
  *
  * If the page doesn't exist in the map file yet, it is extended.
  */
@@ -247,7 +247,7 @@ visibilitymap_set(Relation rel, BlockNumber heapBlk, XLogRecPtr recptr,
  * On entry, *buf should be InvalidBuffer or a valid buffer returned by an
  * earlier call to visibilitymap_pin or visibilitymap_test on the same
  * relation. On return, *buf is a valid buffer with the map page containing
- * the the bit for heapBlk, or InvalidBuffer. The caller is responsible for
+ * the bit for heapBlk, or InvalidBuffer. The caller is responsible for
  * releasing *buf after it's done testing and setting bits.
  */
 bool

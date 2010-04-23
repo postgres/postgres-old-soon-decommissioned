@@ -126,7 +126,7 @@ extern BOOL AddUserToTokenDacl(HANDLE hToken);
  *	 - exactly two quote characters
  *	 - no special characters between the two quote characters, where special
  *	   is one of: &<>()@^|
- *	 - there are one or more whitespace characters between the the two quote
+ *	 - there are one or more whitespace characters between the two quote
  *	   characters
  *	 - the string between the two quote characters is the name of an
  *	   executable file.

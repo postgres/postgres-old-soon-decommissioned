@@ -46,7 +46,7 @@
 
     <listitem>
      <para>
-      Displays the the amount of free space on each page of the relation,
+      Displays the amount of free space on each page of the relation,
       according to the FSM. A set of <literal>(blkno bigint, avail int2)</>
       tuples is returned, one tuple for each page in the relation.
      </para>

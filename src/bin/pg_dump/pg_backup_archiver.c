@@ -2545,7 +2545,7 @@ _becomeUser(ArchiveHandle *AH, const char *user)
 }
 
 /*
- * Become the owner of the the given TOC entry object.	If
+ * Become the owner of the given TOC entry object.	If
  * changes in ownership are not allowed, this doesn't do anything.
  */
 static void
