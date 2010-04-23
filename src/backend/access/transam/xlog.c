@@ -5568,12 +5568,7 @@ CheckRequiredParameterValues(CheckPoint checkPoint)
 	RecoveryRequiresIntParameter("max_locks_per_xact",
 						  max_locks_per_xact, checkPoint.max_locks_per_xact);
 
-	/*
-	 * Hot Standby currently only depends upon the presence of WAL
-	 * records as indicated by XLOG_MODE_HOT_STANDBY. There is no current
-	 * dependency on whether archiving or streaming are enabled, if either.
-	 */
-	if (!(checkPoint.XLogModeFlags & XLOG_MODE_HOT_STANDBY))
+	if (!checkPoint.XLogStandbyInfoMode)
 		ereport(ERROR,
 				(errmsg("recovery connections cannot start because the recovery_connections "
 						"parameter is disabled on the WAL source server")));
@@ -7007,13 +7002,7 @@ CreateCheckPoint(int flags)
 	checkPoint.MaxConnections = MaxConnections;
 	checkPoint.max_prepared_xacts = max_prepared_xacts;
 	checkPoint.max_locks_per_xact = max_locks_per_xact;
-
-	if (XLogArchivingActive())
-		checkPoint.XLogModeFlags |= XLOG_MODE_ARCHIVING;
-	if (max_wal_senders > 0)
-		checkPoint.XLogModeFlags |= XLOG_MODE_STREAMING;
-	if (XLogRequestRecoveryConnections)
-		checkPoint.XLogModeFlags |= XLOG_MODE_HOT_STANDBY;
+	checkPoint.XLogStandbyInfoMode = XLogStandbyInfoActive();
 
 	/*
 	 * We must hold WALInsertLock while examining insert state to determine

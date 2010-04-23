@@ -45,7 +45,7 @@ typedef struct CheckPoint
 	int			MaxConnections;
 	int			max_prepared_xacts;
 	int			max_locks_per_xact;
-	int			XLogModeFlags;
+	bool		XLogStandbyInfoMode;
 
 	/*
 	 * Oldest XID still running. This is only needed to initialize hot standby
@@ -65,10 +65,6 @@ typedef struct CheckPoint
 #define XLOG_BACKUP_END					0x50
 #define XLOG_UNLOGGED					0x60
 
-/* XLogModeFlags */
-#define XLOG_MODE_ARCHIVING				(1 << 0)
-#define XLOG_MODE_STREAMING				(1 << 1)
-#define XLOG_MODE_HOT_STANDBY			(1 << 2)
 
 /* System status indicator */
 typedef enum DBState
