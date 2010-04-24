@@ -30,12 +30,6 @@ typedef enum IOFuncSelector
 typedef int32 (*get_attavgwidth_hook_type) (Oid relid, AttrNumber attnum);
 extern PGDLLIMPORT get_attavgwidth_hook_type get_attavgwidth_hook;
 
-/* Hook for plugins to get control in get_func_cost and get_func_rows */
-typedef float4 (*get_func_cost_hook_type) (Oid funcid);
-extern PGDLLIMPORT get_func_cost_hook_type get_func_cost_hook;
-typedef float4 (*get_func_rows_hook_type) (Oid funcid);
-extern PGDLLIMPORT get_func_rows_hook_type get_func_rows_hook;
-
 extern bool op_in_opfamily(Oid opno, Oid opfamily);
 extern int	get_op_opfamily_strategy(Oid opno, Oid opfamily);
 extern void get_op_opfamily_properties(Oid opno, Oid opfamily,
