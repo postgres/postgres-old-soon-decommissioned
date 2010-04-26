@@ -627,7 +627,15 @@ cache_locale_time(void)
 		save_lc_time = pstrdup(save_lc_time);
 
 #ifdef WIN32
-	/* See the WIN32 comment near the top of PGLC_localeconv() */
+	/*
+	 * On WIN32, there is no way to get locale-specific time values in a
+	 * specified locale, like we do for monetary/numeric.  We can only get
+	 * CP_ACP (see strftime_win32) or UTF16.  Therefore, we get UTF16 and
+	 * convert it to the database locale.  However, wcsftime() internally
+	 * uses LC_CTYPE, so we set it here.  See the WIN32 comment near the
+	 * top of PGLC_localeconv().
+	 */
+
 	/* save user's value of ctype locale */
 	save_lc_ctype = setlocale(LC_CTYPE, NULL);
 	if (save_lc_ctype)
