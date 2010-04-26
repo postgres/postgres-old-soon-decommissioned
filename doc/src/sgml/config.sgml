@@ -401,7 +401,8 @@ SET ENABLE_SEQSCAN TO OFF;
         number of active concurrent connections is at least
         <varname>max_connections</> minus
         <varname>superuser_reserved_connections</varname>, new
-        connections will be accepted only for superusers.
+        connections will be accepted only for superusers, and no
+        new replication connections will be accepted.
        </para>
 
        <para>
