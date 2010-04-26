@@ -387,7 +387,7 @@ TParserClose(TParser *prs)
 #endif
 
 #ifdef WPARSER_TRACE
-	fprintf(stderr, "closing parser");
+	fprintf(stderr, "closing parser\n");
 #endif
 	pfree(prs);
 }
@@ -407,7 +407,7 @@ TParserCopyClose(TParser *prs)
 	}
 
 #ifdef WPARSER_TRACE
-	fprintf(stderr, "closing parser copy");
+	fprintf(stderr, "closing parser copy\n");
 #endif
 	pfree(prs);
 }
