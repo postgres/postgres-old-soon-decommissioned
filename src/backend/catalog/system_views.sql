@@ -335,13 +335,13 @@ CREATE VIEW pg_stat_activity AS
             S.usesysid,
             U.rolname AS usename,
             S.application_name,
-            S.current_query,
-            S.waiting,
+            S.client_addr,
+            S.client_port,
+            S.backend_start,
             S.xact_start,
             S.query_start,
-            S.backend_start,
-            S.client_addr,
-            S.client_port
+            S.waiting,
+            S.current_query
     FROM pg_database D, pg_stat_get_activity(NULL) AS S, pg_authid U
     WHERE S.datid = D.oid AND 
             S.usesysid = U.oid;
