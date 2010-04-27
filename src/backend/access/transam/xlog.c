@@ -7714,6 +7714,16 @@ xlog_redo(XLogRecPtr lsn, XLogRecord *record)
 			CheckRequiredParameterValues(checkPoint);
 
 		/*
+		 * If we see a shutdown checkpoint while waiting for an
+		 * end-of-backup record, the backup was cancelled and the
+		 * end-of-backup record will never arrive.
+		 */
+		if (InArchiveRecovery &&
+			!XLogRecPtrIsInvalid(ControlFile->backupStartPoint))
+			ereport(ERROR,
+					(errmsg("online backup was cancelled, recovery cannot continue")));
+
+		/*
 		 * If we see a shutdown checkpoint, we know that nothing was
 		 * running on the master at this point. So fake-up an empty
 		 * running-xacts record and use that here and now. Recover
