@@ -95,7 +95,7 @@ refnameRangeTblEntry(ParseState *pstate,
 		 * match a schema name the user hasn't got access to.
 		 */
 		namespaceId = LookupNamespaceNoError(schemaname);
-		if (!OidIsValid(relId))
+		if (!OidIsValid(namespaceId))
 			return NULL;
 		relId = get_relname_relid(refname, namespaceId);
 		if (!OidIsValid(relId))
