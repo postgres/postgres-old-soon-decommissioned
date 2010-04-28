@@ -58,17 +58,13 @@ WalRcvShmemInit(void)
 	WalRcv = (WalRcvData *)
 		ShmemInitStruct("Wal Receiver Ctl", WalRcvShmemSize(), &found);
 
-	if (WalRcv == NULL)
-		ereport(FATAL,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("not enough shared memory for walreceiver")));
-	if (found)
-		return;					/* already initialized */
-
-	/* Initialize the data structures */
-	MemSet(WalRcv, 0, WalRcvShmemSize());
-	WalRcv->walRcvState = WALRCV_STOPPED;
-	SpinLockInit(&WalRcv->mutex);
+	if (!found)
+	{
+		/* First time through, so initialize */
+		MemSet(WalRcv, 0, WalRcvShmemSize());
+		WalRcv->walRcvState = WALRCV_STOPPED;
+		SpinLockInit(&WalRcv->mutex);
+	}
 }
 
 /* Is walreceiver in progress (or starting up)? */

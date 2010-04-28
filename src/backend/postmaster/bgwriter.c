@@ -890,16 +890,14 @@ BgWriterShmemInit(void)
 		ShmemInitStruct("Background Writer Data",
 						BgWriterShmemSize(),
 						&found);
-	if (BgWriterShmem == NULL)
-		ereport(FATAL,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("not enough shared memory for background writer")));
-	if (found)
-		return;					/* already initialized */
 
-	MemSet(BgWriterShmem, 0, sizeof(BgWriterShmemStruct));
-	SpinLockInit(&BgWriterShmem->ckpt_lck);
-	BgWriterShmem->max_requests = NBuffers;
+	if (!found)
+	{
+		/* First time through, so initialize */
+		MemSet(BgWriterShmem, 0, sizeof(BgWriterShmemStruct));
+		SpinLockInit(&BgWriterShmem->ckpt_lck);
+		BgWriterShmem->max_requests = NBuffers;
+	}
 }
 
 /*

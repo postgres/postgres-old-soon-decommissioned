@@ -2771,10 +2771,6 @@ AutoVacuumShmemInit(void)
 		ShmemInitStruct("AutoVacuum Data",
 						AutoVacuumShmemSize(),
 						&found);
-	if (AutoVacuumShmem == NULL)
-		ereport(FATAL,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("not enough shared memory for autovacuum")));
 
 	if (!IsUnderPostmaster)
 	{

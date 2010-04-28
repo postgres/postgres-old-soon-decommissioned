@@ -3350,8 +3350,6 @@ void RequestAddinLWLocks(int n)
 
                 LWLockAcquire(AddinShmemInitLock, LW_EXCLUSIVE);
                 ptr = ShmemInitStruct("my struct name", size, &amp;found);
-                if (!ptr)
-                        elog(ERROR, "out of shared memory");
                 if (!found)
                 {
                         initialize contents of shmem area;

@@ -164,8 +164,6 @@ SimpleLruInit(SlruCtl ctl, const char *name, int nslots, int nlsns,
 	shared = (SlruShared) ShmemInitStruct(name,
 										  SimpleLruShmemSize(nslots, nlsns),
 										  &found);
-	if (!shared)
-		elog(ERROR, "out of shared memory");
 
 	if (!IsUnderPostmaster)
 	{

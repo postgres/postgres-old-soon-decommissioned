@@ -306,8 +306,6 @@ InitLocks(void)
 									   max_table_size,
 									   &info,
 									   hash_flags);
-	if (!LockMethodLockHash)
-		elog(FATAL, "could not initialize lock hash table");
 
 	/* Assume an average of 2 holders per lock */
 	max_table_size *= 2;
@@ -328,8 +326,6 @@ InitLocks(void)
 										   max_table_size,
 										   &info,
 										   hash_flags);
-	if (!LockMethodProcLockHash)
-		elog(FATAL, "could not initialize proclock hash table");
 
 	/*
 	 * Allocate non-shared hash table for LOCALLOCK structs.  This stores lock

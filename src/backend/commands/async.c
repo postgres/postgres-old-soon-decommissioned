@@ -464,9 +464,6 @@ AsyncShmemInit(void)
 	asyncQueueControl = (AsyncQueueControl *)
 		ShmemInitStruct("Async Queue Control", size, &found);
 
-	if (!asyncQueueControl)
-		elog(ERROR, "out of shared memory");
-
 	if (!found)
 	{
 		/* First time through, so initialize it */

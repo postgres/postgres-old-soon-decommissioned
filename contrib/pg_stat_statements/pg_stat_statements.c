@@ -321,8 +321,6 @@ pgss_shmem_startup(void)
 	pgss = ShmemInitStruct("pg_stat_statements",
 						   sizeof(pgssSharedState),
 						   &found);
-	if (!pgss)
-		elog(ERROR, "out of shared memory");
 
 	if (!found)
 	{
@@ -343,8 +341,6 @@ pgss_shmem_startup(void)
 							  pgss_max, pgss_max,
 							  &info,
 							  HASH_ELEM | HASH_FUNCTION | HASH_COMPARE);
-	if (!pgss_hash)
-		elog(ERROR, "out of shared memory");
 
 	LWLockRelease(AddinShmemInitLock);
 

@@ -66,9 +66,6 @@ InitBufTable(int size)
 								  size, size,
 								  &info,
 								  HASH_ELEM | HASH_FUNCTION | HASH_PARTITION);
-
-	if (!SharedBufHash)
-		elog(FATAL, "could not initialize shared buffer hash table");
 }
 
 /*
