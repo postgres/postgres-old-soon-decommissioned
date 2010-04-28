@@ -230,13 +230,13 @@ main(int argc, char *argv[])
 	printf(_("Backup start location:                %X/%X\n"),
 		   ControlFile.backupStartPoint.xlogid,
 		   ControlFile.backupStartPoint.xrecoff);
-	printf(_("Last wal_level setting:               %s\n"),
+	printf(_("Current wal_level setting:            %s\n"),
 		   wal_level_str(ControlFile.wal_level));
-	printf(_("Last max_connections setting:         %d\n"),
+	printf(_("Current max_connections setting:      %d\n"),
 		   ControlFile.MaxConnections);
-	printf(_("Last max_prepared_xacts setting:      %d\n"),
+	printf(_("Current max_prepared_xacts setting:   %d\n"),
 		   ControlFile.max_prepared_xacts);
-	printf(_("Last max_locks_per_xact setting:      %d\n"),
+	printf(_("Current max_locks_per_xact setting:   %d\n"),
 		   ControlFile.max_locks_per_xact);
 	printf(_("Maximum data alignment:               %u\n"),
 		   ControlFile.maxAlign);
