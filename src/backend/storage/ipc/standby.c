@@ -256,7 +256,7 @@ ResolveRecoveryConflictWithSnapshot(TransactionId latestRemovedXid, RelFileNode 
 	 */
 	if (!TransactionIdIsValid(latestRemovedXid))
 	{
-		elog(DEBUG1, "Invalid latestremovexXid reported, using latestcompletedxid instead");
+		elog(DEBUG1, "invalid latestremovexXid reported, using latestcompletedxid instead");
 
 		LWLockAcquire(ProcArrayLock, LW_SHARED);
 		latestRemovedXid = ShmemVariableCache->latestCompletedXid;

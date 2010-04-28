@@ -3272,14 +3272,7 @@ ATRewriteTable(AlteredTableInfo *tab, Oid OIDNewHeap)
 
 		/* If we skipped writing WAL, then we need to sync the heap. */
 		if (hi_options & HEAP_INSERT_SKIP_WAL)
-		{
-			char		reason[NAMEDATALEN + 30];
-
-			snprintf(reason, sizeof(reason), "table rewrite on \"%s\"",
-					 RelationGetRelationName(newrel));
-			XLogReportUnloggedStatement(reason);
 			heap_sync(newrel);
-		}
 
 		heap_close(newrel, NoLock);
 	}
@@ -7021,20 +7014,6 @@ ATExecSetTableSpace(Oid tableOid, Oid newTableSpace)
 
 	heap_close(pg_class, RowExclusiveLock);
 
-	/*
-	 * Write an XLOG UNLOGGED record if WAL-logging was skipped because WAL
-	 * archiving is not enabled.
-	 */
-	if (!XLogIsNeeded() && !rel->rd_istemp)
-	{
-		char		reason[NAMEDATALEN + 40];
-
-		snprintf(reason, sizeof(reason), "ALTER TABLE SET TABLESPACE on \"%s\"",
-				 RelationGetRelationName(rel));
-
-		XLogReportUnloggedStatement(reason);
-	}
-
 	relation_close(rel, NoLock);
 
 	/* Make sure the reltablespace change is visible */
@@ -7063,10 +7042,6 @@ copy_relation_data(SMgrRelation src, SMgrRelation dst,
 	/*
 	 * We need to log the copied data in WAL iff WAL archiving/streaming is
 	 * enabled AND it's not a temp rel.
-	 *
-	 * Note: If you change the conditions here, update the conditions in
-	 * ATExecSetTableSpace() for when an XLOG UNLOGGED record is written to
-	 * match.
 	 */
 	use_wal = XLogIsNeeded() && !istemp;
 

@@ -39,6 +39,7 @@ extern bool am_walsender;
 
 /* user-settable parameters */
 extern int	WalSndDelay;
+extern int	max_wal_senders;
 
 extern int	WalSenderMain(void);
 extern void WalSndSignals(void);

@@ -628,6 +628,15 @@ RewriteControlFile(void)
 	ControlFile.backupStartPoint.xlogid = 0;
 	ControlFile.backupStartPoint.xrecoff = 0;
 
+	/*
+	 * Use the defaults for max_* settings. The values don't matter
+	 * as long as wal_level='minimal'.
+	 */
+	ControlFile.MaxConnections = 100;
+	ControlFile.max_prepared_xacts = 0;
+	ControlFile.max_locks_per_xact = 64;
+	ControlFile.wal_level = WAL_LEVEL_MINIMAL;
+
 	/* Now we can force the recorded xlog seg size to the right thing. */
 	ControlFile.xlog_seg_size = XLogSegSize;
 

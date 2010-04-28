@@ -253,6 +253,24 @@ WalSndHandshake(void)
 					{
 						StringInfoData buf;
 
+						/*
+						 * Check that we're logging enough information in the
+						 * WAL for log-shipping.
+						 *
+						 * NOTE: This only checks the current value of
+						 * wal_level. Even if the current setting is not
+						 * 'minimal', there can be old WAL in the pg_xlog
+						 * directory that was created with 'minimal'.
+						 * So this is not bulletproof, the purpose is
+						 * just to give a user-friendly error message that
+						 * hints how to configure the system correctly.
+						 */
+						if (wal_level == WAL_LEVEL_MINIMAL)
+							ereport(FATAL,
+									(errcode(ERRCODE_CANNOT_CONNECT_NOW),
+									 errmsg("standby connections not allowed because wal_level='minimal'")));
+
+
 						/* Send a CopyOutResponse message, and start streaming */
 						pq_beginmessage(&buf, 'H');
 						pq_sendbyte(&buf, 0);

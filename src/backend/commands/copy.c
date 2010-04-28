@@ -2223,14 +2223,7 @@ CopyFrom(CopyState cstate)
 	 * indexes since those use WAL anyway)
 	 */
 	if (hi_options & HEAP_INSERT_SKIP_WAL)
-	{
-		char		reason[NAMEDATALEN + 30];
-
-		snprintf(reason, sizeof(reason), "COPY FROM on \"%s\"",
-				 RelationGetRelationName(cstate->rel));
-		XLogReportUnloggedStatement(reason);
 		heap_sync(cstate->rel);
-	}
 }
 
 
