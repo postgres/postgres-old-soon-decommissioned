@@ -189,12 +189,13 @@ extern XLogRecPtr XactLastRecEnd;
 extern int	CheckPointSegments;
 extern int	wal_keep_segments;
 extern int	XLOGbuffers;
+extern int	XLogArchiveTimeout;
 extern bool XLogArchiveMode;
 extern char *XLogArchiveCommand;
-extern int	XLogArchiveTimeout;
-extern bool log_checkpoints;
-extern bool XLogRequestRecoveryConnections;
+extern bool EnableHotStandby;
 extern int	MaxStandbyDelay;
+extern bool log_checkpoints;
+
 /* WAL levels */
 typedef enum WalLevel
 {

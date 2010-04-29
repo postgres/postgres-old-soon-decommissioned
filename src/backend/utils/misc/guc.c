@@ -1222,14 +1222,12 @@ static struct config_bool ConfigureNamesBool[] =
 	},
 
 	{
-		{"recovery_connections", PGC_POSTMASTER, WAL_SETTINGS,
-			gettext_noop("During recovery, allows connections and queries. "
-			   " During normal running, causes additional info to be written"
-				 " to WAL to enable hot standby mode on WAL standby nodes."),
+		{"hot_standby", PGC_POSTMASTER, WAL_SETTINGS,
+			gettext_noop("Allows connections and queries during recovery."),
 			NULL
 		},
-		&XLogRequestRecoveryConnections,
-		true, NULL, NULL
+		&EnableHotStandby,
+		false, NULL, NULL
 	},
 
 	{
