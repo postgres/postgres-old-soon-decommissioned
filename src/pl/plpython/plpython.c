@@ -3147,9 +3147,6 @@ PLy_spi_execute_fetch_result(SPITupleTable *tuptable, int rows, int status)
 
 					PyList_SetItem(result->rows, i, row);
 				}
-				PLy_typeinfo_dealloc(&args);
-
-				SPI_freetuptable(tuptable);
 			}
 		}
 		PG_CATCH();
@@ -3160,11 +3157,15 @@ PLy_spi_execute_fetch_result(SPITupleTable *tuptable, int rows, int status)
 			if (!PyErr_Occurred())
 				PLy_exception_set(PLy_exc_error,
 					   "unrecognized error in PLy_spi_execute_fetch_result");
-			Py_DECREF(result);
 			PLy_typeinfo_dealloc(&args);
+			SPI_freetuptable(tuptable);
+			Py_DECREF(result);
 			return NULL;
 		}
 		PG_END_TRY();
+
+		PLy_typeinfo_dealloc(&args);
+		SPI_freetuptable(tuptable);
 	}
 
 	return (PyObject *) result;
