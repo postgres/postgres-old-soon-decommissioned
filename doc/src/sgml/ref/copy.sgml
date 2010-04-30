@@ -309,6 +309,16 @@ COPY <replaceable class="parameter">count</replaceable>
    </para>
 
    <para>
+    <command>COPY</command> only deals with the specific table named;
+    it does not copy data to or from child tables.  Thus for example
+    <literal>COPY <replaceable class="parameter">table</> TO</literal>
+    shows the same data as <literal>SELECT * FROM ONLY <replaceable
+    class="parameter">table</></literal>.  But <literal>COPY
+    (SELECT * FROM <replaceable class="parameter">table</>) TO ...</literal>
+    can be used to dump all of the data in an inheritance hierarchy.
+   </para>
+
+   <para>
     You must have select privilege on the table
     whose values are read by <command>COPY TO</command>, and
     insert privilege on the table into which values
