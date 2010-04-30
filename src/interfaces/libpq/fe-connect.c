@@ -4400,7 +4400,8 @@ PasswordFromFile(char *hostname, char *port, char *dbname, char *username)
 				   *ret;
 		int			len;
 
-		fgets(buf, sizeof(buf), fp);
+		if (fgets(buf, sizeof(buf), fp) == NULL)
+			break;
 
 		len = strlen(buf);
 		if (len == 0)
