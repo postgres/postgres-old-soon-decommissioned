@@ -223,10 +223,11 @@ regress_README.html: regress.sgml
 ##
 
 postgres.xml: postgres.sgml $(ALMOSTALLSGML)
-	$(OSX) -D. -x lower $< | \
-	  $(PERL) -p -e 's/\[(amp|copy|egrave|gt|lt|mdash|nbsp|ouml|pi|quot|uuml) *\]/\&\1;/g;' \
-	             -e '$$_ .= qq{<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">\n} if $$. == 1;' \
-	  >$@
+	$(OSX) -D. -x lower $< >postgres.xmltmp
+	$(PERL) -p -e 's/\[(amp|copy|egrave|gt|lt|mdash|nbsp|ouml|pi|quot|uuml) *\]/\&\1;/g;' \
+	           -e '$$_ .= qq{<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">\n} if $$. == 1;' \
+	  <postgres.xmltmp >$@
+	rm postgres.xmltmp
 # ' hello Emacs
 
 xslthtml: stylesheet.xsl postgres.xml
@@ -354,7 +355,7 @@ clean:
 # index
 	rm -f HTML.index $(GENERATED_SGML)
 # XSLT
-	rm -f postgres.xml htmlhelp.hhp toc.hhc index.hhk *.fo
+	rm -f postgres.xml postgres.xmltmp htmlhelp.hhp toc.hhc index.hhk *.fo
 # Texinfo
 	rm -f *.texixml *.texi *.info db2texi.refs
 
