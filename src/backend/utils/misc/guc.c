@@ -1386,10 +1386,11 @@ static struct config_int ConfigureNamesInt[] =
 	{
 		{"max_standby_delay", PGC_SIGHUP, WAL_SETTINGS,
 			gettext_noop("Sets the maximum delay to avoid conflict processing on hot standby servers."),
-			NULL
+			NULL,
+			GUC_UNIT_MS
 		},
 		&MaxStandbyDelay,
-		30, -1, INT_MAX, NULL, NULL
+		30 * 1000, -1, INT_MAX / 1000, NULL, NULL
 	},
 
 	{
