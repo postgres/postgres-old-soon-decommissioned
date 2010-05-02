@@ -4897,9 +4897,10 @@ heap_desc(StringInfo buf, uint8 xl_info, char *rec)
 	{
 		xl_heap_newpage *xlrec = (xl_heap_newpage *) rec;
 
-		appendStringInfo(buf, "newpage: rel %u/%u/%u; blk %u",
+		appendStringInfo(buf, "newpage: rel %u/%u/%u; fork %u, blk %u",
 						 xlrec->node.spcNode, xlrec->node.dbNode,
-						 xlrec->node.relNode, xlrec->blkno);
+						 xlrec->node.relNode, xlrec->forknum,
+						 xlrec->blkno);
 	}
 	else if (info == XLOG_HEAP_LOCK)
 	{
