@@ -475,7 +475,7 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 			 host ? host : "<DEFAULT>",
 			 port ? (ecpg_internal_regression_mode ? "<REGRESSION_PORT>" : port) : "<DEFAULT>",
 			 options ? "with options " : "", options ? options : "",
-			 user ? "for user " : "", user ? user : "");
+			 (user && strlen(user) > 0) ? "for user " : "", user ? user : "");
 
 	connect_string = ecpg_alloc(strlen_or_null(host)
 								+ strlen_or_null(port)
@@ -494,8 +494,8 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 			realname ? "dbname=" : "", realname ? realname : "",
 			host ? "host=" : "", host ? host : "",
 			port ? "port=" : "", port ? port : "",
-			user ? "user=" : "", user ? user : "",
-			passwd ? "password=" : "", passwd ? passwd : "",
+			(user && strlen(user) > 0) ? "user=" : "", user ? user : "",
+			(passwd && strlen(passwd) > 0) ? "password=" : "", passwd ? passwd : "",
 			options ? options : "");
 
 	/*
