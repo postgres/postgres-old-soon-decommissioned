@@ -252,6 +252,20 @@ format_numeric_locale(const char *my_str)
 }
 
 
+/*
+ * fputnbytes: print exactly N bytes to a file
+ *
+ * Think not to use fprintf with a %.*s format for this.  Some machines
+ * believe %s's precision is measured in characters, others in bytes.
+ */
+static void
+fputnbytes(FILE *f, const char *str, size_t n)
+{
+	while (n-- > 0)
+		fputc(*str++, f);
+}
+
+
 /*************************/
 /* Unaligned text		 */
 /*************************/
@@ -913,14 +927,16 @@ print_aligned_text(const printTableContent *cont, FILE *fout)
 					{
 						/* spaces first */
 						fprintf(fout, "%*s", width_wrap[j] - chars_to_output, "");
-						fprintf(fout, "%.*s", bytes_to_output,
-								this_line->ptr + bytes_output[j]);
+						fputnbytes(fout,
+								   this_line->ptr + bytes_output[j],
+								   bytes_to_output);
 					}
 					else	/* Left aligned cell */
 					{
 						/* spaces second */
-						fprintf(fout, "%.*s", bytes_to_output,
-								this_line->ptr + bytes_output[j]);
+						fputnbytes(fout,
+								   this_line->ptr + bytes_output[j],
+								   bytes_to_output);
 					}
 
 					bytes_output[j] += bytes_to_output;

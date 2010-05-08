@@ -1871,7 +1871,7 @@ log_line_prefix(StringInfo buf, ErrorData *edata)
 					int			displen;
 
 					psdisp = get_ps_display(&displen);
-					appendStringInfo(buf, "%.*s", displen, psdisp);
+					appendBinaryStringInfo(buf, psdisp, displen);
 				}
 				break;
 			case 'r':
@@ -2029,7 +2029,7 @@ write_csvlog(ErrorData *edata)
 		initStringInfo(&msgbuf);
 
 		psdisp = get_ps_display(&displen);
-		appendStringInfo(&msgbuf, "%.*s", displen, psdisp);
+		appendBinaryStringInfo(&msgbuf, psdisp, displen);
 		appendCSVLiteral(&buf, msgbuf.data);
 
 		pfree(msgbuf.data);

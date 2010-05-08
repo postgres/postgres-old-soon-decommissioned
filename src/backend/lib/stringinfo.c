@@ -226,7 +226,8 @@ appendBinaryStringInfo(StringInfo str, const char *data, int datalen)
 
 	/*
 	 * Keep a trailing null in place, even though it's probably useless for
-	 * binary data...
+	 * binary data.  (Some callers are dealing with text but call this
+	 * because their input isn't null-terminated.)
 	 */
 	str->data[str->len] = '\0';
 }

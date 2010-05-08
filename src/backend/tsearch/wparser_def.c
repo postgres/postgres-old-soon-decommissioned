@@ -322,6 +322,12 @@ TParserInit(char *str, int len)
 	prs->state->state = TPS_Base;
 
 #ifdef WPARSER_TRACE
+	/*
+	 * Use of %.*s here is not portable when the string contains multibyte
+	 * characters: some machines interpret the length in characters, others
+	 * in bytes.  Since it's only a debugging aid, we haven't bothered to
+	 * fix this.
+	 */
 	fprintf(stderr, "parsing \"%.*s\"\n", len, str);
 #endif
 
@@ -361,6 +367,7 @@ TParserCopyInit(const TParser *orig)
 	prs->state->state = TPS_Base;
 
 #ifdef WPARSER_TRACE
+	/* See note above about %.*s */
 	fprintf(stderr, "parsing copy of \"%.*s\"\n", prs->lenstr, prs->str);
 #endif
 

@@ -284,6 +284,7 @@ slashUsage(unsigned short int pager)
 /*
  * helpSQL -- help with SQL commands
  *
+ * Note: we assume caller removed any trailing spaces in "topic".
  */
 void
 helpSQL(const char *topic, unsigned short int pager)
@@ -352,17 +353,16 @@ helpSQL(const char *topic, unsigned short int pager)
 					wordlen;
 		int			nl_count = 0;
 
-		/* User gets two chances: exact match, then the first word */
-
-		/* First pass : strip trailing spaces and semicolons */
+		/*
+		 * We first try exact match, then first + second words, then first
+		 * word only.
+		 */
 		len = strlen(topic);
-		while (topic[len - 1] == ' ' || topic[len - 1] == ';')
-			len--;
 
-		for (x = 1; x <= 3; x++)	/* Three chances to guess that word... */
+		for (x = 1; x <= 3; x++)
 		{
 			if (x > 1)			/* Nothing on first pass - try the opening
-								 * words */
+								 * word(s) */
 			{
 				wordlen = j = 1;
 				while (topic[j] != ' ' && j++ < len)
@@ -423,7 +423,7 @@ helpSQL(const char *topic, unsigned short int pager)
 		}
 
 		if (!help_found)
-			fprintf(output, _("No help available for \"%-.*s\".\nTry \\h with no arguments to see available help.\n"), (int) len, topic);
+			fprintf(output, _("No help available for \"%s\".\nTry \\h with no arguments to see available help.\n"), topic);
 
 		/* Only close if we used the pager */
 		if (output != stdout)
