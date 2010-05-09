@@ -2256,7 +2256,7 @@ void PGTYPESdecimal_free(decimal *var);
      </varlistentry>
 
      <varlistentry>
-      <term><literal>PGTYPES_NUM_OVERFLOW</literal></term>
+      <term><literal>PGTYPES_NUM_UNDERFLOW</literal></term>
       <listitem>
        <para>
         An underflow occurred. Since the numeric type can deal with almost
