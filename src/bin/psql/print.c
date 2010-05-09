@@ -828,14 +828,14 @@ print_aligned_text(const printTableContent *cont, FILE *fout)
 						/* spaces first */
 						fprintf(fout, "%*s", width_wrap[j] - chars_to_output, "");
 						fputnbytes(fout,
-								   this_line->ptr + bytes_output[j],
+								   (char *) (this_line->ptr + bytes_output[j]),
 								   bytes_to_output);
 					}
 					else	/* Left aligned cell */
 					{
 						/* spaces second */
 						fputnbytes(fout,
-								   this_line->ptr + bytes_output[j],
+								   (char *) (this_line->ptr + bytes_output[j]),
 								   bytes_to_output);
 						if (finalspaces)
 							fprintf(fout, "%*s", width_wrap[j] - chars_to_output, "");
