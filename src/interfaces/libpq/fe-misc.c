@@ -70,8 +70,8 @@ static int	pqSocketPoll(int sock, int forRead, int forWrite, time_t end_time);
 /*
  * fputnbytes: print exactly N bytes to a file
  *
- * Think not to use fprintf with a %.*s format for this.  Some machines
- * believe %s's precision is measured in characters, others in bytes.
+ * We avoid using %.*s here because it can misbehave if the data
+ * is not valid in what libc thinks is the prevailing encoding.
  */
 static void
 fputnbytes(FILE *f, const char *str, size_t n)

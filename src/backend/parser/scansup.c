@@ -178,8 +178,8 @@ truncate_identifier(char *ident, int len, bool warn)
 		if (warn)
 		{
 			/*
-			 * Cannot use %.*s here because some machines interpret %s's
-			 * precision in characters, others in bytes.
+			 * We avoid using %.*s here because it can misbehave if the data
+			 * is not valid in what libc thinks is the prevailing encoding.
 			 */
 			char	buf[NAMEDATALEN];
 

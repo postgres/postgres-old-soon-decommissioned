@@ -856,11 +856,9 @@ EncodeDateTime(struct tm * tm, fsec_t fsec, int *tzp, char **tzn, int style, cha
 				sprintf(str + strlen(str), " BC");
 
 			/*
-			 * Note: the uses of %.*s in this function would be unportable
-			 * if the timezone names ever contain non-ASCII characters,
-			 * since some platforms think the string length is measured
-			 * in characters not bytes.  However, all TZ abbreviations in
-			 * the Olson database are plain ASCII.
+			 * Note: the uses of %.*s in this function would be risky if the
+			 * timezone names ever contain non-ASCII characters.  However, all
+			 * TZ abbreviations in the Olson database are plain ASCII.
 			 */
 
 			if (tzp != NULL && tm->tm_isdst >= 0)
