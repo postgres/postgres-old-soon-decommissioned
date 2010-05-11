@@ -18,7 +18,7 @@ typedef struct RBTree RBTree;
 typedef struct RBTreeIterator RBTreeIterator;
 
 typedef int (*rb_comparator) (const void *a, const void *b, void *arg);
-typedef void *(*rb_appendator) (void *current, void *new, void *arg);
+typedef void *(*rb_appendator) (void *currentdata, void *newval, void *arg);
 typedef void (*rb_freefunc) (void *a);
 
 extern RBTree *rb_create(rb_comparator comparator,
