@@ -201,7 +201,10 @@ PETST   46800 D  # Petropavlovsk-Kamchatski Summer Time
 PETT    43200    # Petropavlovsk-Kamchatski Time
                  #     (Asia/Kamchatka)
 PHT     28800    # Phillipine Time (not in zic)
-PKT     18000    # Pakistan Time (not in zic)
+PKT     18000    # Pakistan Time
+                 #     (Asia/Karachi)
+PKST    21600 D  # Pakistan Summer Time
+                 #     (Asia/Karachi)
 QYZT    21600    # Kizilorda Time
                  #     (Asia/Qyzylorda)
 SAKST   39600 D  # Sakhalin Summer Time
