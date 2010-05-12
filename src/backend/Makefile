@@ -10,7 +10,7 @@
 #-------------------------------------------------------------------------
 
 PGFILEDESC = "PostgreSQL Server"
-# it is unclear that this should be labeled as an executable
+# This is a daemon process, which is why it is not labeled as an executable
 #PGAPPICON=win32
 
 subdir = src/backend
