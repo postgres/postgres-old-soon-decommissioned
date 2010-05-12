@@ -10,7 +10,8 @@
 #-------------------------------------------------------------------------
 
 PGFILEDESC = "PostgreSQL Server"
-PGAPPICON=win32
+# it is unclear that this should be labeled as an executable
+#PGAPPICON=win32
 
 subdir = src/backend
 top_builddir = ../..
