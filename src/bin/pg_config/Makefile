@@ -9,6 +9,8 @@
 #-------------------------------------------------------------------------
 
 PGFILEDESC = "pg_config - report configuration information"
+PGAPPICON=win32
+
 subdir = src/bin/pg_config
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global

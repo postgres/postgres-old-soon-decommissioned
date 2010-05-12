@@ -10,6 +10,8 @@
 #-------------------------------------------------------------------------
 
 PGFILEDESC = "pg_ctl - starts/stops/restarts the PostgreSQL server"
+PGAPPICON=win32
+
 subdir = src/bin/pg_ctl
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global

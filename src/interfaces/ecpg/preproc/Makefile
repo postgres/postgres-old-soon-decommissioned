@@ -9,6 +9,8 @@
 #-------------------------------------------------------------------------
 
 PGFILEDESC = "ecpg - embedded SQL precompiler for C"
+PGAPPICON=win32
+
 subdir = src/interfaces/ecpg/preproc
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global

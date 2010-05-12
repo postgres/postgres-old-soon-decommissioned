@@ -1,5 +1,8 @@
 # $PostgreSQL$
 
+PGFILEDESC = "pgbench - a simple program for running benchmark tests"
+PGAPPICON=win32
+
 PROGRAM = pgbench
 OBJS	= pgbench.o
 

@@ -10,6 +10,8 @@
 #-------------------------------------------------------------------------
 
 PGFILEDESC = "PostgreSQL Server"
+PGAPPICON=win32
+
 subdir = src/backend
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global

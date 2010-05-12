@@ -9,6 +9,8 @@
 #-------------------------------------------------------------------------
 
 PGFILEDESC = "pg_resetxlog - reset PostgreSQL WAL log"
+PGAPPICON=win32
+
 subdir = src/bin/pg_resetxlog
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global

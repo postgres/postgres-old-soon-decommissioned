@@ -10,6 +10,8 @@
 #-------------------------------------------------------------------------
 
 PGFILEDESC = "initdb - initialize a new database cluster"
+PGAPPICON=win32
+
 subdir = src/bin/initdb
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global

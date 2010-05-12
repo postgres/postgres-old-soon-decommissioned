@@ -1,5 +1,8 @@
 # $PostgreSQL$
 
+PGFILEDESC = "vacuumlo - removes orphaned large objects"
+PGAPPICON=win32
+
 PROGRAM = vacuumlo
 OBJS	= vacuumlo.o
 

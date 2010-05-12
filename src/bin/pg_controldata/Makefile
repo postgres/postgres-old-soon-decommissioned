@@ -9,6 +9,8 @@
 #-------------------------------------------------------------------------
 
 PGFILEDESC = "pg_controldata - reads the data from pg_control"
+PGAPPICON=win32
+
 subdir = src/bin/pg_controldata
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
