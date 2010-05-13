@@ -5995,6 +5995,7 @@ StartupXLOG(void)
 			if (wasShutdown)
 			{
 				RunningTransactionsData running;
+				TransactionId latestCompletedXid;
 
 				/*
 				 * Construct a RunningTransactions snapshot representing a shut
@@ -6006,6 +6007,9 @@ StartupXLOG(void)
 				running.subxid_overflow = false;
 				running.nextXid = checkPoint.nextXid;
 				running.oldestRunningXid = oldestActiveXID;
+				latestCompletedXid = checkPoint.nextXid;
+				TransactionIdRetreat(latestCompletedXid);
+				running.latestCompletedXid = latestCompletedXid;
 				running.xids = xids;
 
 				ProcArrayApplyRecoveryInfo(&running);
@@ -6154,8 +6158,9 @@ StartupXLOG(void)
 				xlogctl->recoveryLastXTime = recoveryLastXTime;
 				SpinLockRelease(&xlogctl->info_lck);
 
-				/* In Hot Standby mode, keep track of XIDs we've seen */
-				if (InHotStandby && TransactionIdIsValid(record->xl_xid))
+				/* If we are attempting to enter Hot Standby mode, process XIDs we see */
+				if (standbyState >= STANDBY_INITIALIZED &&
+					TransactionIdIsValid(record->xl_xid))
 					RecordKnownAssignedTransactionIds(record->xl_xid);
 
 				RmgrTable[record->xl_rmid].rm_redo(EndRecPtr, record);
@@ -7803,6 +7808,7 @@ xlog_redo(XLogRecPtr lsn, XLogRecord *record)
 			TransactionId *xids;
 			int			nxids;
 			TransactionId oldestActiveXID;
+			TransactionId latestCompletedXid;
 			RunningTransactionsData running;
 
 			oldestActiveXID = PrescanPreparedTransactions(&xids, &nxids);
@@ -7817,6 +7823,9 @@ xlog_redo(XLogRecPtr lsn, XLogRecord *record)
 			running.subxid_overflow = false;
 			running.nextXid = checkPoint.nextXid;
 			running.oldestRunningXid = oldestActiveXID;
+			latestCompletedXid = checkPoint.nextXid;
+			TransactionIdRetreat(latestCompletedXid);
+			running.latestCompletedXid = latestCompletedXid;
 			running.xids = xids;
 
 			ProcArrayApplyRecoveryInfo(&running);

@@ -68,6 +68,7 @@ typedef struct xl_running_xacts
 	bool		subxid_overflow;	/* snapshot overflowed, subxids missing */
 	TransactionId nextXid;		/* copy of ShmemVariableCache->nextXid */
 	TransactionId oldestRunningXid;		/* *not* oldestXmin */
+	TransactionId latestCompletedXid;	/* so we can set xmax */
 
 	TransactionId xids[1];		/* VARIABLE LENGTH ARRAY */
 } xl_running_xacts;
@@ -97,6 +98,7 @@ typedef struct RunningTransactionsData
 	bool		subxid_overflow;	/* snapshot overflowed, subxids missing */
 	TransactionId nextXid;		/* copy of ShmemVariableCache->nextXid */
 	TransactionId oldestRunningXid;		/* *not* oldestXmin */
+	TransactionId latestCompletedXid;	/* so we can set xmax */
 
 	TransactionId *xids;		/* array of (sub)xids still running */
 } RunningTransactionsData;
