@@ -59,9 +59,9 @@ postgres.bki: genbki.pl Catalog.pm $(POSTGRES_BKI_SRCS)
 
 .PHONY: install-data
 install-data: $(BKIFILES) installdirs
-	$(INSTALL_DATA) postgres.bki         '$(DESTDIR)$(datadir)/postgres.bki'
-	$(INSTALL_DATA) postgres.description '$(DESTDIR)$(datadir)/postgres.description'
-	$(INSTALL_DATA) postgres.shdescription '$(DESTDIR)$(datadir)/postgres.shdescription'
+	$(INSTALL_DATA) $(call vpathsearch,postgres.bki) '$(DESTDIR)$(datadir)/postgres.bki'
+	$(INSTALL_DATA) $(call vpathsearch,postgres.description) '$(DESTDIR)$(datadir)/postgres.description'
+	$(INSTALL_DATA) $(call vpathsearch,postgres.shdescription) '$(DESTDIR)$(datadir)/postgres.shdescription'
 	$(INSTALL_DATA) $(srcdir)/system_views.sql '$(DESTDIR)$(datadir)/system_views.sql'
 	$(INSTALL_DATA) $(srcdir)/information_schema.sql '$(DESTDIR)$(datadir)/information_schema.sql'
 	$(INSTALL_DATA) $(srcdir)/sql_features.txt '$(DESTDIR)$(datadir)/sql_features.txt'

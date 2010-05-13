@@ -277,8 +277,6 @@ check: postgres.sgml $(ALMOSTALLSGML) check-tabs
 ## Install
 ##
 
-vpathsearch = `for f in $(addsuffix /$(1),$(subst :, ,. $(VPATH))); do test -r $$f && echo $$f && break; done`
-
 install: install-html
 
 ifneq ($(PORTNAME), sco)
