@@ -36,7 +36,7 @@ NAME = plperl
 
 OBJS = plperl.o SPI.o Util.o
 
-PERLCHUNKS = plc_perlboot.pl plc_safe_bad.pl plc_safe_ok.pl
+PERLCHUNKS = plc_perlboot.pl plc_trusted.pl
 
 SHLIB_LINK = $(perl_embed_ldflags)
 
@@ -54,9 +54,12 @@ PSQLDIR = $(bindir)
 
 include $(top_srcdir)/src/Makefile.shlib
 
-plperl.o: perlchunks.h
+plperl.o: perlchunks.h plperl_opmask.h
 
-perlchunks.h: $(PERLCHUNKS)
+plperl_opmask.h: plperl_opmask.pl
+	$(PERL) $< $@
+
+perlchunks.h: $(PERLCHUNKS) 
 	$(PERL) $(srcdir)/text2macro.pl --strip='^(\#.*|\s*)$$' $^ > $@
 
 all: all-lib
@@ -81,7 +84,7 @@ submake:
 	$(MAKE) -C $(top_builddir)/src/test/regress pg_regress$(X)
 
 clean distclean maintainer-clean: clean-lib
-	rm -f SPI.c Util.c $(OBJS) perlchunks.h
+	rm -f SPI.c Util.c $(OBJS) perlchunks.h plperl_opmask.h
 	rm -rf results
 	rm -f regression.diffs regression.out
 

@@ -33,15 +33,12 @@ sub mkfuncsrc {
 	} sort keys %$imports;
 	$BEGIN &&= "BEGIN { $BEGIN }";
 
-	$name =~ s/\\/\\\\/g;
-	$name =~ s/::|'/_/g; # avoid package delimiters
-
-	return qq[ package main; undef *{'$name'}; *{'$name'} = sub { $BEGIN $prolog $src } ];
+	return qq[ package main; sub { $BEGIN $prolog $src } ];
 }
 
-# see also mksafefunc() in plc_safe_ok.pl
-sub mkunsafefunc {
-	no strict; # default to no strict for the eval
+sub mkfunc {
+	no strict;   # default to no strict for the eval
+	no warnings; # default to no warnings for the eval
 	my $ret = eval(mkfuncsrc(@_));
 	$@ =~ s/\(eval \d+\) //g if $@;
 	return $ret;
