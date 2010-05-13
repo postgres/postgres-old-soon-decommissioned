@@ -515,7 +515,8 @@ sub AddContrib
     elsif ($mf =~ /^PROGRAM\s*=\s*(.*)$/mg)
     {
         my $proj = $solution->AddProject($1, 'exe', 'contrib');
-        $mf =~ /^OBJS\s*=\s*(.*)$/gm || croak "Could not find objects in MODULE_big for $n\n";
+        $mf =~ s{\\\s*[\r\n]+}{}mg;
+        $mf =~ /^OBJS\s*=\s*(.*)$/gm || croak "Could not find objects in PROGRAM for $n\n";
         my $objs = $1;
         while ($objs =~ /\b([\w-]+\.o)\b/g)
         {
