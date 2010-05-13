@@ -18,7 +18,7 @@ ifeq ($(GCC),yes)
 override CFLAGS := $(filter-out -Wall -Wmissing-declarations -Wmissing-prototypes, $(CFLAGS))
 endif
 
-override CPPFLAGS := -I$(srcdir) -I$(perl_archlibexp)/CORE $(CPPFLAGS)
+override CPPFLAGS := -I. -I$(srcdir) -I$(perl_archlibexp)/CORE $(CPPFLAGS)
 
 
 NAME = plperl
@@ -32,6 +32,13 @@ include $(top_srcdir)/src/Makefile.shlib
 
 
 all: all-lib
+
+plperl.o: plperl_opmask.h
+
+plperl_opmask.h: plperl_opmask.pl
+	$(PERL) $< $@
+
+
 
 SPI.c: SPI.xs
 	$(PERL) $(perl_privlibexp)/ExtUtils/xsubpp -typemap $(perl_privlibexp)/ExtUtils/typemap $< >$@
@@ -52,7 +59,7 @@ uninstall:
 	rm -f $(DESTDIR)$(pkglibdir)/plperl$(DLSUFFIX)
 
 clean distclean maintainer-clean: clean-lib
-	rm -f SPI.c $(OBJS)
+	rm -f SPI.c $(OBJS) plperl_opmask.h
 
 else # can't build
 
