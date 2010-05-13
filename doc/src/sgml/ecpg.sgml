@@ -2391,7 +2391,7 @@ void PGTYPESdecimal_free(decimal *var);
 </programlisting>
   </para>
   <para>
-   There are two compatiblity modes: INFORMIX, INFORMIX_SE
+   There are two compatibility modes: INFORMIX, INFORMIX_SE
   </para>
   <para>
    When linking programs that use this compatibility mode, remember to link
