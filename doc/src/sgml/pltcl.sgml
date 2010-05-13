@@ -102,7 +102,7 @@ $$ LANGUAGE pltcl;
 
 <programlisting>
 CREATE FUNCTION tcl_max(integer, integer) RETURNS integer AS $$
-    if {$1 > $2} {return $1}
+    if {$1 &gt; $2} {return $1}
     return $2
 $$ LANGUAGE pltcl STRICT;
 </programlisting>
@@ -129,7 +129,7 @@ CREATE FUNCTION tcl_max(integer, integer) RETURNS integer AS $$
         return $2
     }
     if {[argisnull 2]} { return $1 }
-    if {$1 > $2} {return $1}
+    if {$1 &gt; $2} {return $1}
     return $2
 $$ LANGUAGE pltcl;
 </programlisting>
@@ -156,10 +156,10 @@ CREATE TABLE employee (
 );
 
 CREATE FUNCTION overpaid(employee) RETURNS boolean AS $$
-    if {200000.0 < $1(salary)} {
+    if {200000.0 &lt; $1(salary)} {
         return "t"
     }
-    if {$1(age) < 30 && 100000.0 < $1(salary)} {
+    if {$1(age) &lt; 30 && 100000.0 &lt; $1(salary)} {
         return "t"
     }
     return "f"
@@ -664,8 +664,10 @@ CREATE TRIGGER trig_mytab_modcount BEFORE INSERT OR UPDATE ON mytab
         It recognizes a special table, <literal>pltcl_modules</>, which
         is presumed to contain modules of Tcl code.  If this table
         exists, the module <literal>unknown</> is fetched from the table
-        and loaded into the Tcl interpreter immediately after creating
-        the interpreter.
+        and loaded into the Tcl interpreter immediately before the first
+        execution of a PL/Tcl function in a database session.  (This
+        happens separately for PL/Tcl and PL/TclU, if both are used,
+        because separate interpreters are used for the two languages.)
        </para>
        <para>
         While the <literal>unknown</> module could actually contain any
@@ -692,7 +694,11 @@ CREATE TRIGGER trig_mytab_modcount BEFORE INSERT OR UPDATE ON mytab
        <para>
         The tables <literal>pltcl_modules</> and <literal>pltcl_modfuncs</>
         must be readable by all, but it is wise to make them owned and
-        writable only by the database administrator.
+        writable only by the database administrator.  As a security
+        precaution, PL/Tcl will ignore <literal>pltcl_modules</> (and thus,
+        not attempt to load the <literal>unknown</> module) unless it is
+        owned by a superuser.  But update privileges on this table can be
+        granted to other users, if you trust them sufficiently.
        </para>
    </sect1>
 
