@@ -22,8 +22,12 @@
   <para>
    pg_upgrade supports upgrades from 8.3.X and later to the current
    major release of Postgres, including snapshot and alpha releases.
+
+<!--
    pg_upgrade also supports upgrades from EnterpriseDB's Postgres Plus
    Advanced Server.
+-->
+
   </para>
 
  </sect2>
@@ -116,6 +120,7 @@ gmake prefix=/usr/local/pgsql.new install
      start the new cluster.
     </para>
  
+<!--
     <para>
      If migrating EnterpriseDB's Postgres Plus Advanced Server, you must:
      <itemizedlist>
@@ -132,6 +137,8 @@ gmake prefix=/usr/local/pgsql.new install
       </listitem>
      </itemizedlist>
     </para>
+-->
+
    </listitem>
  
    <listitem>
