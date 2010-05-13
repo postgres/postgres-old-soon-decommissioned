@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PostgreSQL 8.4\n"
 "Report-Msgid-Bugs-To: pgsql-bugs@postgresql.org\n"
-"POT-Creation-Date: 2010-02-15 19:20+0000\n"
-"PO-Revision-Date: 2010-02-15 21:27+0100\n"
+"POT-Creation-Date: 2010-03-06 17:15+0000\n"
+"PO-Revision-Date: 2010-03-06 19:10+0100\n"
 "Last-Translator: Guillaume Lelarge <guillaume@lelarge.info>\n"
 "Language-Team: PostgreSQLfr <pgsql-fr-generale@postgresql.org>\n"
 "MIME-Version: 1.0\n"
@@ -852,14 +852,14 @@ msgstr "  -v, --verbose                   mode verbeux\n"
 
 #: vacuumdb.c:339
 #, c-format
-msgid "  -z, --analyze                   update optimizer hints\n"
-msgstr "  -z, --analyze                   met à jour les conseils de l'optimiseur\n"
+msgid "  -z, --analyze                   update optimizer statistics\n"
+msgstr "  -z, --analyze                 met à jour les statistiques de l'optimiseur\n"
 
 #: vacuumdb.c:340
 #, c-format
-msgid "  -Z, --analyze-only              only update optimizer hints\n"
+msgid "  -Z, --analyze-only              only update optimizer statistics\n"
 msgstr ""
-"  -Z, --analyze-only            met seulement à jour les conseils de\n"
+"  -Z, --analyze-only            met seulement à jour les statistiques de\n"
 "                                l'optimiseur\n"
 
 #: vacuumdb.c:341
