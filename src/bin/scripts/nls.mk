@@ -1,6 +1,6 @@
 # $PostgreSQL$
 CATALOG_NAME    := pgscripts
-AVAIL_LANGUAGES := cs de es fr it ja ko pt_BR ro sv ta tr
+AVAIL_LANGUAGES := cs de es fr it ja ko pt_BR ro sv ta tr zh_CN
 GETTEXT_FILES   := createdb.c createlang.c createuser.c \
                    dropdb.c droplang.c dropuser.c \
                    clusterdb.c vacuumdb.c reindexdb.c \
