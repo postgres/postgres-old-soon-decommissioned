@@ -470,11 +470,13 @@ ProcArrayApplyRecoveryInfo(RunningTransactions running)
 	int i;
 
 	Assert(standbyState >= STANDBY_INITIALIZED);
+	Assert(TransactionIdIsValid(running->nextXid));
+	Assert(TransactionIdIsValid(running->oldestRunningXid));
+	Assert(TransactionIdIsNormal(running->latestCompletedXid));
 
 	/*
 	 * Remove stale transactions, if any.
 	 */
-	Assert(TransactionIdIsValid(running->oldestRunningXid));
 	ExpireOldKnownAssignedTransactionIds(running->oldestRunningXid);
 	StandbyReleaseOldLocks(running->oldestRunningXid);
 
@@ -678,6 +680,9 @@ ProcArrayApplyRecoveryInfo(RunningTransactions running)
 	TransactionIdAdvance(nextXid);
 	if (TransactionIdFollows(nextXid, ShmemVariableCache->nextXid))
 		ShmemVariableCache->nextXid = nextXid;
+
+	Assert(TransactionIdIsNormal(ShmemVariableCache->latestCompletedXid));
+	Assert(TransactionIdIsValid(ShmemVariableCache->nextXid));
 
 	LWLockRelease(ProcArrayLock);
 
@@ -1502,6 +1507,10 @@ GetRunningTransactionData(void)
 	LWLockRelease(XidGenLock);
 	LWLockRelease(ProcArrayLock);
 
+	Assert(TransactionIdIsValid(CurrentRunningXacts->nextXid));
+	Assert(TransactionIdIsValid(CurrentRunningXacts->oldestRunningXid));
+	Assert(TransactionIdIsNormal(CurrentRunningXacts->latestCompletedXid));
+
 	return CurrentRunningXacts;
 }
 
@@ -2317,6 +2326,8 @@ void
 RecordKnownAssignedTransactionIds(TransactionId xid)
 {
 	Assert(standbyState >= STANDBY_INITIALIZED);
+	Assert(TransactionIdIsValid(latestObservedXid));
+	Assert(TransactionIdIsValid(xid));
 
 	elog(trace_recovery(DEBUG4), "record known xact %u latestObservedXid %u",
 					xid, latestObservedXid);

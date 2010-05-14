@@ -6009,6 +6009,7 @@ StartupXLOG(void)
 				running.oldestRunningXid = oldestActiveXID;
 				latestCompletedXid = checkPoint.nextXid;
 				TransactionIdRetreat(latestCompletedXid);
+				Assert(TransactionIdIsNormal(latestCompletedXid));
 				running.latestCompletedXid = latestCompletedXid;
 				running.xids = xids;
 
@@ -7825,6 +7826,7 @@ xlog_redo(XLogRecPtr lsn, XLogRecord *record)
 			running.oldestRunningXid = oldestActiveXID;
 			latestCompletedXid = checkPoint.nextXid;
 			TransactionIdRetreat(latestCompletedXid);
+			Assert(TransactionIdIsNormal(latestCompletedXid));
 			running.latestCompletedXid = latestCompletedXid;
 			running.xids = xids;
 
