@@ -243,7 +243,7 @@ main(int argc, char **argv)
 	int			compressLevel = -1;
 	int			plainText = 0;
 	int			outputClean = 0;
-	int			outputCreate = 0;
+	int			outputCreateDB = 0;
 	bool		outputBlobs = false;
 	int			outputNoOwner = 0;
 	char	   *outputSuperuser = NULL;
@@ -352,7 +352,7 @@ main(int argc, char **argv)
 				break;
 
 			case 'C':			/* Create DB */
-				outputCreate = 1;
+				outputCreateDB = 1;
 				break;
 
 			case 'E':			/* Dump encoding */
@@ -766,7 +766,7 @@ main(int argc, char **argv)
 		ropt->dropSchema = outputClean;
 		ropt->aclsSkip = aclsSkip;
 		ropt->superuser = outputSuperuser;
-		ropt->create = outputCreate;
+		ropt->createDB = outputCreateDB;
 		ropt->noOwner = outputNoOwner;
 		ropt->noTablespace = outputNoTablespaces;
 		ropt->disable_triggers = disable_triggers;

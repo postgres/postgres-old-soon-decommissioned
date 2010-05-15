@@ -154,7 +154,7 @@ main(int argc, char **argv)
 				opts->dropSchema = 1;
 				break;
 			case 'C':
-				opts->create = 1;
+				opts->createDB = 1;
 				break;
 			case 'd':
 				opts->dbname = strdup(optarg);
