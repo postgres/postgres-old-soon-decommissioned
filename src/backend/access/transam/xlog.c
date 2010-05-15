@@ -5450,7 +5450,7 @@ recoveryStopsHere(XLogRecord *record, bool *includeThis)
 			CheckPoint	checkPoint;
 
 			memcpy(&checkPoint, XLogRecGetData(record), sizeof(CheckPoint));
-			recoveryLastXTime = checkPoint.time;
+			recoveryLastXTime = time_t_to_timestamptz(checkPoint.time);
 		}
 
 		/*
