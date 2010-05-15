@@ -6514,7 +6514,7 @@ CheckRecoveryConsistency(void)
 		IsUnderPostmaster)
 	{
 		backendsAllowed = true;
-		SendPostmasterSignal(PMSIGNAL_RECOVERY_CONSISTENT);
+		SendPostmasterSignal(PMSIGNAL_BEGIN_HOT_STANDBY);
 	}
 }
 
