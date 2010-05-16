@@ -859,7 +859,8 @@ SELECT * FROM getfoo(1) AS t1;
      output parameters, like this:
 
 <programlisting>
-CREATE FUNCTION sum_n_product_with_tab (x int, OUT sum int, OUT product int) RETURNS SETOF record AS $$
+CREATE FUNCTION sum_n_product_with_tab (x int, OUT sum int, OUT product int)
+RETURNS SETOF record AS $$
     SELECT $1 + tab.y, $1 * tab.y FROM tab;
 $$ LANGUAGE SQL;
 </programlisting>
@@ -957,7 +958,8 @@ SELECT name, listchildren(name) FROM nodes;
      done this way:
 
 <programlisting>
-CREATE FUNCTION sum_n_product_with_tab (x int) RETURNS TABLE(sum int, product int) AS $$
+CREATE FUNCTION sum_n_product_with_tab (x int)
+RETURNS TABLE(sum int, product int) AS $$
     SELECT $1 + tab.y, $1 * tab.y FROM tab;
 $$ LANGUAGE SQL;
 </programlisting>
