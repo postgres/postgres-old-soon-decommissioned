@@ -1739,19 +1739,13 @@ recovery_connections -> hot_standby
 
      <listitem>
       <para>
-       PL/Perl subroutines are now given names (Tim Bunce)
+       PL/Perl subroutines are now given perl-visible names (Tim Bunce)
       </para>
 
       <para>
-       This is for the use of profiling and code coverage tools. DIDN'T
-       THEY HAVE NAMES BEFORE?
-      </para>
-     </listitem>
-
-     <listitem>
-      <para>
-       PL/Perl no longer allows <application>Safe</> version 2.20 because
-       it is unsafe (Tim Bunce)
+       PL/Perl subroutines are anonymous subrefs; this change adds entries 
+       to the Perl symbol table for them, making profiling and code coverage 
+       tools much more usable.
       </para>
      </listitem>
 
