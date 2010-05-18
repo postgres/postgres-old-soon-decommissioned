@@ -243,7 +243,7 @@ SET ENABLE_SEQSCAN TO OFF;
       <listitem>
        <para>
          Specifies the configuration file for
-         <application>ident</> authentication
+         <xref linkend="auth-username-maps"> username mapping
          (customarily called <filename>pg_ident.conf</>).
          This parameter can only be set at server start.
        </para>
