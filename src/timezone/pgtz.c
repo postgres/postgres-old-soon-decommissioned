@@ -892,8 +892,8 @@ static const struct
 	},							/* (GMT+06:30) Rangoon */
 	{
 		"N. Central Asia Standard Time", "N. Central Asia Daylight Time",
-		"Asia/Almaty"
-	},							/* (GMT+06:00) Almaty, Novosibirsk */
+		"Asia/Novosibirsk"
+	},							/* (GMT+06:00) Novosibirsk */
 	{
 		"Namibia Standard Time", "Namibia Daylight Time",
 		"Africa/Windhoek"
