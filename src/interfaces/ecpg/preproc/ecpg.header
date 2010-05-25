@@ -5,12 +5,8 @@
 #include "postgres_fe.h"
 
 #include "extern.h"
+#include "ecpg_config.h"
 #include <unistd.h>
-
-/* Do we know the C99 datatype "long long"? */
-#if defined(LLONG_MIN) || defined(LONGLONG_MIN) || defined(HAVE_LONG_LONG_INT_64)
-#define HAVE_LONG_LONG 1
-#endif
 
 /* Location tracking support --- simpler than bison's default */
 #define YYLLOC_DEFAULT(Current, Rhs, N) \

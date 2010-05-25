@@ -13,11 +13,6 @@
 #include <limits.h>
 #endif
 
-/* Do we know the C99 data type "long long"? */
-#if defined(LLONG_MIN) || defined(LONGLONG_MIN) || defined(HAVE_LONG_LONG_INT_64)
-#define HAVE_LONG_LONG 1
-#endif
-
 enum COMPAT_MODE
 {
 	ECPG_COMPAT_PGSQL = 0, ECPG_COMPAT_INFORMIX, ECPG_COMPAT_INFORMIX_SE
