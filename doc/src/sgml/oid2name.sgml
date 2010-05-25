@@ -36,7 +36,7 @@
  </sect2>
 
  <sect2>
-  <title><application>oid2name</> options</title>
+  <title><application>oid2name</> Options</title>
 
   <para>
    <application>oid2name</application> accepts the following command-line arguments:
