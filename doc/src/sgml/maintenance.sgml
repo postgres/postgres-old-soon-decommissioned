@@ -821,5 +821,14 @@ pg_ctl start | rotatelogs /var/log/pgsql_log 86400
    is to configure the rotation program so that old log files are overwritten
    cyclically.
   </para>
+
+  <para>
+   <ulink url="http://pgfouine.projects.postgresql.org/">pgFouine</ulink>
+   is an external project that does sophisticated log file analysis.
+   <ulink
+   href="http://bucardo.org/wiki/Check_postgres">check_postgres</ulink>
+   provides Nagios alerts when important messages appear in the log
+   files, as well as detection of many other extraordinary conditions.
+  </para>
  </sect1>
 </chapter>
