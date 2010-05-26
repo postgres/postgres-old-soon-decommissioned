@@ -1623,7 +1623,7 @@ keep_going:						/* We will come back to here until there is
 					if (SSLok == 'S')
 					{
 						/* Set up global SSL state if required */
-						if (pqsecure_initialize(conn) == -1)
+						if (pqsecure_initialize(conn) != 0)
 							goto error_return;
 					}
 					else if (SSLok == 'N')
