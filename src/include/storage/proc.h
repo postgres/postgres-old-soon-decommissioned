@@ -199,7 +199,8 @@ extern bool enable_sig_alarm(int delayms, bool is_statement_timeout);
 extern bool disable_sig_alarm(bool is_statement_timeout);
 extern void handle_sig_alarm(SIGNAL_ARGS);
 
-extern bool enable_standby_sig_alarm(long delay_s, int delay_us, TimestampTz fin_time);
+extern bool enable_standby_sig_alarm(TimestampTz now,
+									 TimestampTz fin_time, bool deadlock_only);
 extern bool disable_standby_sig_alarm(void);
 extern void handle_standby_sig_alarm(SIGNAL_ARGS);
 
