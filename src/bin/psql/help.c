@@ -196,7 +196,7 @@ slashUsage(unsigned short int pager)
 	fprintf(output, _("  (options: S = show system objects, + = additional detail)\n"));
 	fprintf(output, _("  \\d[S+]                 list tables, views, and sequences\n"));
 	fprintf(output, _("  \\d[S+]  NAME           describe table, view, sequence, or index\n"));
-	fprintf(output, _("  \\da[+]  [PATTERN]      list aggregates\n"));
+	fprintf(output, _("  \\da[S]  [PATTERN]      list aggregates\n"));
 	fprintf(output, _("  \\db[+]  [PATTERN]      list tablespaces\n"));
 	fprintf(output, _("  \\dc[S]  [PATTERN]      list conversions\n"));
 	fprintf(output, _("  \\dC     [PATTERN]      list casts\n"));
