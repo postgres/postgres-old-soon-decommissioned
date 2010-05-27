@@ -4217,7 +4217,9 @@ sigusr1_handler(SIGNAL_ARGS)
 	}
 
 	if (CheckPostmasterSignal(PMSIGNAL_START_WALRECEIVER) &&
-		WalReceiverPID == 0)
+		WalReceiverPID == 0 &&
+		(pmState == PM_STARTUP || pmState == PM_RECOVERY ||
+		 pmState == PM_HOT_STANDBY || pmState == PM_WAIT_READONLY))
 	{
 		/* Startup Process wants us to start the walreceiver process. */
 		WalReceiverPID = StartWalReceiver();
