@@ -7531,7 +7531,7 @@ CreateRestartPoint(int flags)
 	 * restartpoint, we can't perform a new restart point. We still update
 	 * minRecoveryPoint in that case, so that if this is a shutdown restart
 	 * point, we won't start up earlier than before. That's not strictly
-	 * necessary, but when we get hot standby capability, it would be rather
+	 * necessary, but when hot standby is enabled, it would be rather
 	 * weird if the database opened up for read-only connections at a
 	 * point-in-time before the last shutdown. Such time travel is still
 	 * possible in case of immediate shutdown, though.
