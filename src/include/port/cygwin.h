@@ -17,5 +17,6 @@
 #define PGDLLIMPORT __declspec (dllexport)
 #else
 #define PGDLLIMPORT __declspec (dllimport)
-
 #endif
+
+#define PGDLLEXPORT __declspec (dllexport)

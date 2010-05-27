@@ -328,7 +328,7 @@ typedef const Pg_finfo_record *(*PGFInfoFunction) (void);
  *	doesn't hurt to add PGDLLIMPORT in case they don't.
  */
 #define PG_FUNCTION_INFO_V1(funcname) \
-extern PGDLLIMPORT const Pg_finfo_record * CppConcat(pg_finfo_,funcname)(void); \
+extern PGDLLEXPORT const Pg_finfo_record * CppConcat(pg_finfo_,funcname)(void); \
 const Pg_finfo_record * \
 CppConcat(pg_finfo_,funcname) (void) \
 { \
@@ -397,7 +397,7 @@ typedef const Pg_magic_struct *(*PGModuleMagicFunction) (void);
 #define PG_MAGIC_FUNCTION_NAME_STRING "Pg_magic_func"
 
 #define PG_MODULE_MAGIC \
-extern PGDLLIMPORT const Pg_magic_struct *PG_MAGIC_FUNCTION_NAME(void); \
+extern PGDLLEXPORT const Pg_magic_struct *PG_MAGIC_FUNCTION_NAME(void); \
 const Pg_magic_struct * \
 PG_MAGIC_FUNCTION_NAME(void) \
 { \
