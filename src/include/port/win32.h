@@ -58,7 +58,11 @@
 #define PGDLLIMPORT __declspec (dllimport)
 #endif
 
+#ifdef _MSC_VER
 #define PGDLLEXPORT __declspec (dllexport)
+#else
+#define PGDLLEXPORT __declspec (dllimport)
+#endif
 
 #else							/* not CYGWIN, not MSVC, not MingW */
 #define PGDLLIMPORT
