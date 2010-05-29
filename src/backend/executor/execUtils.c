@@ -1310,7 +1310,8 @@ retry:
 
 	/*
 	 * We should have found our tuple in the index, unless we exited the loop
-	 * early because of conflict.  Complain if not.
+	 * early because of conflict.  Complain if not.  If we ever implement
+     * '<>' index opclasses, this check will fail and will have to be removed.
 	 */
 	if (!found_self && !conflict)
 		ereport(ERROR,
