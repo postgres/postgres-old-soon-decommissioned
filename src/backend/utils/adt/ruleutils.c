@@ -4537,8 +4537,8 @@ get_rule_expr(Node *node, deparse_context *context,
 			{
 				NamedArgExpr *na = (NamedArgExpr *) node;
 
+				appendStringInfo(buf, "%s := ", quote_identifier(na->name));
 				get_rule_expr((Node *) na->arg, context, showimplicit);
-				appendStringInfo(buf, " AS %s", quote_identifier(na->name));
 			}
 			break;
 

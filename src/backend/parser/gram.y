@@ -444,8 +444,8 @@ static TypeName *TableFuncTypeName(List *columns);
  * the set of keywords.  PL/pgsql depends on this so that it can share the
  * same lexer.  If you add/change tokens here, fix PL/pgsql to match!
  *
- * DOT_DOT and COLON_EQUALS are unused in the core SQL grammar, and so will
- * always provoke parse errors.  They are needed by PL/pgsql.
+ * DOT_DOT is unused in the core SQL grammar, and so will always provoke
+ * parse errors.  It is needed by PL/pgsql.
  */
 %token <str>	IDENT FCONST SCONST BCONST XCONST Op
 %token <ival>	ICONST PARAM
@@ -10212,13 +10212,13 @@ func_arg_expr:  a_expr
 				{
 					$$ = $1;
 				}
-			| a_expr AS param_name
+			| param_name COLON_EQUALS a_expr
 				{
 					NamedArgExpr *na = makeNode(NamedArgExpr);
-					na->arg = (Expr *) $1;
-					na->name = $3;
+					na->name = $1;
+					na->arg = (Expr *) $3;
 					na->argnumber = -1;		/* until determined */
-					na->location = @3;
+					na->location = @1;
 					$$ = (Node *) na;
 				}
 		;
@@ -10698,7 +10698,7 @@ AexprConst: Iconst
 						if (IsA(arg, NamedArgExpr))
 							ereport(ERROR,
 								    (errcode(ERRCODE_SYNTAX_ERROR),
-								     errmsg("type modifier cannot have AS name"),
+								     errmsg("type modifier cannot have parameter name"),
 								     parser_errposition(arg->location)));
 					}
 					t->typmods = $3;

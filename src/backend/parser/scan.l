@@ -317,8 +317,6 @@ ident_cont		[A-Za-z\200-\377_0-9\$]
 identifier		{ident_start}{ident_cont}*
 
 typecast		"::"
-
-/* these two token types are used by PL/pgsql, though not in core SQL */
 dot_dot			\.\.
 colon_equals	":="
 
