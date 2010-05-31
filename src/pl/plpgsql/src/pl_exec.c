@@ -3033,7 +3033,8 @@ exec_stmt_dynexecute(PLpgSQL_execstate *estate,
 				if (*ptr == 'S' || *ptr == 's')
 					ereport(ERROR,
 							(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					errmsg("EXECUTE of SELECT ... INTO is not implemented")));
+					errmsg("EXECUTE of SELECT ... INTO is not implemented"),
+					errhint("You might want to use EXECUTE ... INTO instead.")));
 				break;
 			}
 
