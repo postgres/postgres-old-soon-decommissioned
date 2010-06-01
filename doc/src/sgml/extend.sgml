@@ -273,6 +273,8 @@
   &xoper;
   &xindex;
 
+<!-- Use this someday when C++ is easier to use. bjm 2010-05-31
+
   <sect1 id="extend-Cpp">
    <title>Using C++ for Extensibility</title>
 
@@ -318,5 +320,6 @@
    </para>
 
   </sect1>
+-->
 
  </chapter>
