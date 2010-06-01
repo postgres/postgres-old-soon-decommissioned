@@ -2528,7 +2528,7 @@ recovery_connections -> hot_standby
        <productname>C++</> usage difficult in backend code, there are
        still other complexities when using <productname>C++</> for backend
        functions. <literal>extern "C" { }</> is still necessary in
-       some cases.
+       appropriate places.
       </para>
      </listitem>
 
