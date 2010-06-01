@@ -273,7 +273,7 @@
   &xoper;
   &xindex;
 
-  <sect1 id="extend-how">
+  <sect1 id="extend-Cpp">
    <title>Using C++ for Extensibility</title>
 
    <indexterm zone="extend-Cpp">
