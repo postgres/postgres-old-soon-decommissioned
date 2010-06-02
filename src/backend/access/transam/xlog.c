@@ -2609,8 +2609,8 @@ XLogFileOpen(uint32 log, uint32 seg)
 /*
  * Open a logfile segment for reading (during recovery).
  *
- * If fromArchive is true, the segment is retrieved from archive, otherwise
- * it's read from pg_xlog.
+ * If source = XLOG_FROM_ARCHIVE, the segment is retrieved from archive.
+ * If source = XLOG_FROM_PG_XLOG, it's read from pg_xlog.
  */
 static int
 XLogFileRead(uint32 log, uint32 seg, int emode, TimeLineID tli,
@@ -2673,8 +2673,6 @@ XLogFileRead(uint32 log, uint32 seg, int emode, TimeLineID tli,
  * Open a logfile segment for reading (during recovery).
  *
  * This version searches for the segment with any TLI listed in expectedTLIs.
- * If not in StandbyMode and fromArchive is true, the segment is also
- * searched in pg_xlog if not found in archive.
  */
 static int
 XLogFileReadAnyTLI(uint32 log, uint32 seg, int emode, int sources)
