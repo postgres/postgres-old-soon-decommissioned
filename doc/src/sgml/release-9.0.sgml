@@ -1548,7 +1548,7 @@ recovery_connections -> hot_standby
 
       <para>
        While a check can be performed inside the trigger, doing it in an
-       external <literal>WHERE</> clause has performance benefits.
+       external <literal>WHEN</> clause has performance benefits.
       </para>
      </listitem>
 
