@@ -5594,8 +5594,8 @@ CheckRequiredParameterValues(void)
 	if (InArchiveRecovery && ControlFile->wal_level == WAL_LEVEL_MINIMAL)
 	{
 		ereport(WARNING,
-				(errmsg("WAL was generated with wal_level=\"minimal\", data may be missing"),
-				 errhint("This happens if you temporarily set wal_level=\"minimal\" without taking a new base backup.")));
+				(errmsg("WAL was generated with wal_level=minimal, data may be missing"),
+				 errhint("This happens if you temporarily set wal_level=minimal without taking a new base backup.")));
 	}
 
 	/*
@@ -7731,9 +7731,9 @@ XLogReportParameters(void)
 		/*
 		 * The change in number of backend slots doesn't need to be
 		 * WAL-logged if archiving is not enabled, as you can't start
-		 * archive recovery with wal_level='minimal' anyway. We don't
+		 * archive recovery with wal_level=minimal anyway. We don't
 		 * really care about the values in pg_control either if
-		 * wal_level='minimal', but seems better to keep them up-to-date
+		 * wal_level=minimal, but seems better to keep them up-to-date
 		 * to avoid confusion.
 		 */
 		if (wal_level != ControlFile->wal_level || XLogIsNeeded())

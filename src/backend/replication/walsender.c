@@ -274,7 +274,7 @@ WalSndHandshake(void)
 						if (wal_level == WAL_LEVEL_MINIMAL)
 							ereport(FATAL,
 									(errcode(ERRCODE_CANNOT_CONNECT_NOW),
-									 errmsg("standby connections not allowed because wal_level=\"minimal\"")));
+									 errmsg("standby connections not allowed because wal_level=minimal")));
 
 						/* Send a CopyOutResponse message, and start streaming */
 						pq_beginmessage(&buf, 'H');
