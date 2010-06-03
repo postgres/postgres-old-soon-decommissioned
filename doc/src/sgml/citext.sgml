@@ -205,6 +205,15 @@
       will need two indexes if you want both types of searches to be fast.
     </para>
     </listitem>
+
+    <listitem>
+     <para>
+      The schema containing the <type>citext</> operators must be
+      in the current <varname>search_path</> (typically <literal>public</>);
+      if it is not, a normal case-sensitive <type>text</> comparison
+      is performed.
+    </para>
+    </listitem>
    </itemizedlist>
  </sect2>
 
