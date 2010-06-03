@@ -180,7 +180,7 @@ sub plcheck
 			use Config;
 			if ($Config{usemultiplicity} eq 'define')
 			{
-				push(@tests,'plperl_plperlu');
+				push(@tests,'plperlu_plperl');
 			}
 		}
 		print "============================================================\n";
