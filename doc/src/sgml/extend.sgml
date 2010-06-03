@@ -302,6 +302,7 @@
        most backend memory is allocated using <function>palloc()</>, so use
        <function>pfree()</> to free it, i.e. using C++
        <function>delete()</> in such cases will fail.
+      </para>
      </listitem>
      <listitem>
       <para>
