@@ -7134,7 +7134,7 @@ CREATE TYPE rainbow AS ENUM ('red', 'orange', 'yellow', 'green', 'blue', 'purple
        </row>
        <row>
         <entry> <literal>&amp;&amp;</literal> </entry>
-        <entry>Overlaps?</entry>
+        <entry>Overlaps?  (One point in common makes this true.)</entry>
         <entry><literal>box '((0,0),(1,1))' &amp;&amp; box '((0,0),(2,2))'</literal></entry>
        </row>
        <row>
