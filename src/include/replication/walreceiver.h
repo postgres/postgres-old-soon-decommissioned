@@ -14,6 +14,7 @@
 
 #include "access/xlogdefs.h"
 #include "storage/spin.h"
+#include "pgtime.h"
 
 extern bool am_walreceiver;
 
