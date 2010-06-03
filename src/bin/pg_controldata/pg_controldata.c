@@ -57,6 +57,8 @@ dbState(DBState state)
 			return _("starting up");
 		case DB_SHUTDOWNED:
 			return _("shut down");
+		case DB_SHUTDOWNED_IN_RECOVERY:
+			return _("shut down in recovery");
 		case DB_SHUTDOWNING:
 			return _("shutting down");
 		case DB_IN_CRASH_RECOVERY:
