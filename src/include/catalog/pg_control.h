@@ -21,7 +21,7 @@
 
 
 /* Version identifier for this pg_control format */
-#define PG_CONTROL_VERSION	902
+#define PG_CONTROL_VERSION	903
 
 /*
  * Body of CheckPoint XLOG records.  This is declared here because we keep
