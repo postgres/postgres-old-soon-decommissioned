@@ -26,6 +26,7 @@
 /*
  * Body of CheckPoint XLOG records.  This is declared here because we keep
  * a copy of the latest one in pg_control for possible disaster recovery.
+ * Changing this struct requires a PG_CONTROL_VERSION bump.
  */
 typedef struct CheckPoint
 {
@@ -60,7 +61,10 @@ typedef struct CheckPoint
 #define XLOG_PARAMETER_CHANGE			0x60
 
 
-/* System status indicator */
+/*
+ * System status indicator.  Note this is stored in pg_control; if you change
+ * it, you must bump PG_CONTROL_VERSION
+ */
 typedef enum DBState
 {
 	DB_STARTUP = 0,
