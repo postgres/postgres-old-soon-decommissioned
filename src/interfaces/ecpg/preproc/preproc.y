@@ -3401,7 +3401,7 @@ insert_column_item:  ColId opt_indirection
 			{ $$ = cat2_str($1, $2); }
 		;
 
-returning_clause:  RETURNING target_list	{ $$ = cat2_str(make_str("returning"), $2); }
+returning_clause:  RETURNING target_list ecpg_into	{ $$ = cat2_str(make_str("returning"), $2); }
 		| /* EMPTY */			{ $$ = EMPTY; }
 		;
 
