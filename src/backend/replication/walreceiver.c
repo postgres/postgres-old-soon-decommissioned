@@ -524,7 +524,6 @@ XLogWalRcvFlush(void)
 	{
 		/* use volatile pointer to prevent code rearrangement */
 		volatile WalRcvData *walrcv = WalRcv;
-		char		activitymsg[50];
 
 		issue_xlog_fsync(recvFile, recvId, recvSeg);
 
@@ -536,8 +535,14 @@ XLogWalRcvFlush(void)
 		SpinLockRelease(&walrcv->mutex);
 
 		/* Report XLOG streaming progress in PS display */
-		snprintf(activitymsg, sizeof(activitymsg), "streaming %X/%X",
-				 LogstreamResult.Write.xlogid, LogstreamResult.Write.xrecoff);
-		set_ps_display(activitymsg, false);
+		if (update_process_title)
+		{
+			char		activitymsg[50];
+
+			snprintf(activitymsg, sizeof(activitymsg), "streaming %X/%X",
+					 LogstreamResult.Write.xlogid,
+					 LogstreamResult.Write.xrecoff);
+			set_ps_display(activitymsg, false);
+		}
 	}
 }
