@@ -1172,8 +1172,6 @@ psql_completion(char *text, int start, int end)
 			"autovacuum_vacuum_scale_factor",
 			"autovacuum_vacuum_threshold",
 			"fillfactor",
-			"toast.autovacuum_analyze_scale_factor",
-			"toast.autovacuum_analyze_threshold",
 			"toast.autovacuum_enabled",
 			"toast.autovacuum_freeze_max_age",
 			"toast.autovacuum_freeze_min_age",

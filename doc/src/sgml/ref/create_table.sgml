@@ -880,7 +880,7 @@ CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } ] TABLE <replaceable class="PAR
    </varlistentry>
 
    <varlistentry>
-    <term><literal>autovacuum_analyze_threshold</>, <literal>toast.autovacuum_analyze_threshold</literal> (<type>integer</>)</term>
+    <term><literal>autovacuum_analyze_threshold</> (<type>integer</>)</term>
     <listitem>
      <para>
      Minimum number of inserted, updated, or deleted tuples before initiate an
@@ -890,7 +890,7 @@ CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } ] TABLE <replaceable class="PAR
    </varlistentry>
 
    <varlistentry>
-    <term><literal>autovacuum_analyze_scale_factor</>, <literal>toast.autovacuum_analyze_scale_factor</literal> (<type>float4</>)</term>
+    <term><literal>autovacuum_analyze_scale_factor</> (<type>float4</>)</term>
     <listitem>
      <para>
      Multiplier for <structfield>reltuples</> to add to
