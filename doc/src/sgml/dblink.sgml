@@ -623,7 +623,7 @@ SELECT *
    <title>Example</title>
 
    <programlisting>
- select dblink_connect('dbname=dblink_test_slave');
+ select dblink_connect('dbname=dblink_test_standby');
   dblink_connect
  ----------------
   OK

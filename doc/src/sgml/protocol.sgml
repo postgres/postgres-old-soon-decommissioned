@@ -1315,7 +1315,7 @@ The commands accepted in walsender mode are:
       <para>
        The unique system identifier identifying the cluster. This
        can be used to check that the base backup used to initialize the
-       slave came from the same cluster.
+       standby came from the same cluster.
       </para>
       </listitem>
       </varlistentry>
@@ -1326,7 +1326,7 @@ The commands accepted in walsender mode are:
       </term>
       <listitem>
       <para>
-       Current TimelineID. Also useful to check that the slave is
+       Current TimelineID. Also useful to check that the standby is
        consistent with the master.
       </para>
       </listitem>
