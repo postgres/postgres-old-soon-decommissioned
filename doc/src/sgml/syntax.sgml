@@ -1778,6 +1778,10 @@ UNBOUNDED FOLLOWING
     <primary>type cast</primary>
    </indexterm>
 
+   <indexterm>
+    <primary>::</primary>
+   </indexterm>
+
    <para>
     A type cast specifies a conversion from one data type to another.
     <productname>PostgreSQL</productname> accepts two equivalent syntaxes
