@@ -2399,7 +2399,7 @@ get_connect_string(const char *servername)
 
 	/* first gather the server connstr options */
 	srvname = pstrdup(servername);
-	truncate_identifier(srvname, strlen(srvname), true);
+	truncate_identifier(srvname, strlen(srvname), false);
 	foreign_server = GetForeignServerByName(srvname, true);
 
 	if (foreign_server)
