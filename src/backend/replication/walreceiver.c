@@ -506,13 +506,6 @@ XLogWalRcvWrite(char *buf, Size nbytes, XLogRecPtr recptr)
 		buf += byteswritten;
 
 		LogstreamResult.Write = recptr;
-
-		/*
-		 * XXX: Should we signal bgwriter to start a restartpoint if we've
-		 * consumed too much xlog since the last one, like in normal
-		 * processing? But this is not worth doing unless a restartpoint can
-		 * be created independently from a checkpoint record.
-		 */
 	}
 }
 
