@@ -247,7 +247,7 @@ LargeObjectAlterOwner(Oid loid, Oid newOwnerId)
 /*
  * LargeObjectExists
  *
- * We don't use the system cache to for large object metadata, for fear of
+ * We don't use the system cache for large object metadata, for fear of
  * using too much local memory.
  *
  * This function always scans the system catalog using SnapshotNow, so it
