@@ -190,7 +190,7 @@ static TimestampTz recoveryLastXTime = 0;
 /* options taken from recovery.conf for XLOG streaming */
 static bool StandbyMode = false;
 static char *PrimaryConnInfo = NULL;
-char	   *TriggerFile = NULL;
+static char *TriggerFile = NULL;
 
 /* if recoveryStopsHere returns true, it saves actual stop xid/time here */
 static TransactionId recoveryStopXid;

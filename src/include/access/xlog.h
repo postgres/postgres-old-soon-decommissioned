@@ -258,10 +258,6 @@ typedef struct CheckpointStatsData
 
 extern CheckpointStatsData CheckpointStats;
 
-/* Read from recovery.conf, in startup process */
-extern char *TriggerFile;
-
-
 extern XLogRecPtr XLogInsert(RmgrId rmid, uint8 info, XLogRecData *rdata);
 extern void XLogFlush(XLogRecPtr RecPtr);
 extern void XLogBackgroundFlush(void);
