@@ -818,8 +818,10 @@ host    replication     foo             192.168.1.100/32        md5
     </para>
     <para>
      The host name and port number of the primary, connection user name,
-     and password are specified in the <filename>recovery.conf</> file or
-     the corresponding environment variable on the standby.
+     and password are specified in the <filename>recovery.conf</> file.
+     The password can also be set in the <filename>~/.pgpass</> file on the
+     standby (specify <literal>replication</> in the <replaceable>database</>
+     field).
      For example, if the primary is running on host IP <literal>192.168.1.50</>,
      port <literal>5432</literal>, the superuser's name for replication is
      <literal>foo</>, and the password is <literal>foopass</>, the administrator
