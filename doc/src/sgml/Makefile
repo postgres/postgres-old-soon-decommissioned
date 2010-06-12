@@ -359,8 +359,8 @@ clean:
 # text --- these are shipped, but not in this directory
 	rm -f INSTALL HISTORY regress_README
 	rm -f INSTALL.html HISTORY.html regress_README.html
-# other HTML
-	rm -f postgres.html
+# single-page output
+	rm -f postgres.html postgres.txt
 # print
 	rm -f *.rtf *.tex-ps *.tex-pdf *.dvi *.aux *.log *.ps *.pdf *.out *.fot
 # index
