@@ -1870,6 +1870,7 @@ help(void)
 	printf(_("                            (can be used multiple times to concatenate)\n"));
 	printf(_("  --dlpath=DIR              look for dynamic libraries in DIR\n"));
 	printf(_("  --temp-install=DIR        create a temporary installation in DIR\n"));
+	printf(_("  --use-existing            use an existing installation\n"));
 	printf(_("\n"));
 	printf(_("Options for \"temp-install\" mode:\n"));
 	printf(_("  --no-locale               use C locale\n"));
