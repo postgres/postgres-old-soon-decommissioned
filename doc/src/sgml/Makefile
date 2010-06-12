@@ -110,7 +110,7 @@ postgres.html: postgres.sgml $(ALLSGML) stylesheet.dsl
 
 # single-page text
 postgres.txt: postgres.html
-	$(LYNX) -force_html -dump -nolist -stdin $< > $@
+	$(LYNX) -force_html -dump -nolist $< > $@
 
 HTML.index: postgres.sgml $(ALMOSTALLSGML) stylesheet.dsl
 	@$(MKDIR_P) html
