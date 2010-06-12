@@ -7756,7 +7756,7 @@ XLogReportParameters(void)
 	if (wal_level != ControlFile->wal_level ||
 		MaxConnections != ControlFile->MaxConnections ||
 		max_prepared_xacts != ControlFile->max_prepared_xacts ||
-		max_locks_per_xact != max_locks_per_xact)
+		max_locks_per_xact != ControlFile->max_locks_per_xact)
 	{
 		/*
 		 * The change in number of backend slots doesn't need to be
