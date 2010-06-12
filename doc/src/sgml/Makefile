@@ -108,6 +108,10 @@ html-stamp: postgres.sgml $(ALLSGML) stylesheet.dsl
 postgres.html: postgres.sgml $(ALLSGML) stylesheet.dsl
 	$(JADE.html.call) -V nochunks -V rootchunk -V '(define %root-filename% #f)' -V '(define use-output-dir #f)' -i include-index $<
 
+# single-page text
+postgres.txt: postgres.html
+	$(LYNX) -force_html -dump -nolist -stdin $< > $@
+
 HTML.index: postgres.sgml $(ALMOSTALLSGML) stylesheet.dsl
 	@$(MKDIR_P) html
 	$(JADE.html.call) -V html-index $<
