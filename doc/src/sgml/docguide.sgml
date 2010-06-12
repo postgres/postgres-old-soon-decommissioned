@@ -566,6 +566,13 @@ checking for osx... osx
 <prompt>doc/src/sgml$ </prompt><userinput>gmake draft</userinput>
 </screen>
    </para>
+
+   <para>
+    To build the documentation as a single HTML page, use:
+<screen>
+<prompt>doc/src/sgml$ </prompt><userinput>gmake postgres.html</userinput>
+</screen>
+   </para>
  </sect2>
 
  <sect2>
