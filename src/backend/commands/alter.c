@@ -31,6 +31,7 @@
 #include "parser/parse_clause.h"
 #include "tcop/utility.h"
 #include "utils/acl.h"
+#include "utils/builtins.h"
 #include "utils/lsyscache.h"
 
 
@@ -235,7 +236,7 @@ ExecAlterOwnerStmt(AlterOwnerStmt *stmt)
 			break;
 
 		case OBJECT_LARGEOBJECT:
-			LargeObjectAlterOwner(intVal(linitial(stmt->object)), newowner);
+			LargeObjectAlterOwner(oidparse(linitial(stmt->object)), newowner);
 			break;
 
 		case OBJECT_OPERATOR:

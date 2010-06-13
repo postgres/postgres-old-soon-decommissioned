@@ -303,6 +303,28 @@ oidvectorsend(PG_FUNCTION_ARGS)
 	return array_send(fcinfo);
 }
 
+/*
+ *		oidparse				- get OID from IConst/FConst node
+ */
+Oid
+oidparse(Node *node)
+{
+	switch (nodeTag(node))
+	{
+		case T_Integer:
+			return intVal(node);
+		case T_Float:
+			/*
+			 * Values too large for int4 will be represented as Float constants
+			 * by the lexer.  Accept these if they are valid OID strings.
+			 */
+			return oidin_subr(strVal(node), NULL);
+		default:
+			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(node));
+	}
+	return InvalidOid;		/* keep compiler quiet */
+}
+
 
 /*****************************************************************************
  *	 PUBLIC ROUTINES														 *

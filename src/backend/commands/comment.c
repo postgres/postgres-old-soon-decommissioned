@@ -1404,32 +1404,9 @@ static void
 CommentLargeObject(List *qualname, char *comment)
 {
 	Oid			loid;
-	Node	   *node;
 
 	Assert(list_length(qualname) == 1);
-	node = (Node *) linitial(qualname);
-
-	switch (nodeTag(node))
-	{
-		case T_Integer:
-			loid = intVal(node);
-			break;
-		case T_Float:
-
-			/*
-			 * Values too large for int4 will be represented as Float
-			 * constants by the lexer.	Accept these if they are valid OID
-			 * strings.
-			 */
-			loid = DatumGetObjectId(DirectFunctionCall1(oidin,
-											 CStringGetDatum(strVal(node))));
-			break;
-		default:
-			elog(ERROR, "unrecognized node type: %d",
-				 (int) nodeTag(node));
-			/* keep compiler quiet */
-			loid = InvalidOid;
-	}
+	loid = oidparse((Node *) linitial(qualname));
 
 	/* check that the large object exists */
 	if (!LargeObjectExists(loid))

@@ -47,6 +47,7 @@
 #include "miscadmin.h"
 #include "parser/parse_func.h"
 #include "utils/acl.h"
+#include "utils/builtins.h"
 #include "utils/fmgroids.h"
 #include "utils/lsyscache.h"
 #include "utils/rel.h"
@@ -647,7 +648,7 @@ objectNamesToOids(GrantObjectType objtype, List *objnames)
 		case ACL_OBJECT_LARGEOBJECT:
 			foreach(cell, objnames)
 			{
-				Oid			lobjOid = intVal(lfirst(cell));
+				Oid			lobjOid = oidparse(lfirst(cell));
 
 				if (!LargeObjectExists(lobjOid))
 					ereport(ERROR,
