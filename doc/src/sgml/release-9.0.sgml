@@ -842,8 +842,8 @@
 
     <listitem>
      <para>
-      Allow <link linkend="SQL-COMMENT">comments</link> only on
-      columns of tables, views, and composite types, not other
+      Allow <link linkend="SQL-COMMENT">comments</link> on
+      columns only of tables, views, and composite types, not other
       objects like indexes and <acronym>TOAST</> tables (Tom Lane)
      </para>
     </listitem>
