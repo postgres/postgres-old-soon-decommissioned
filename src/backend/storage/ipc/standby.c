@@ -184,11 +184,9 @@ ResolveRecoveryConflictWithVirtualXIDs(VirtualTransactionId *waitlist,
 				int			len;
 
 				old_status = get_ps_display(&len);
-				new_status = (char *) palloc(len + 50);
+				new_status = (char *) palloc(len + 8 + 1);
 				memcpy(new_status, old_status, len);
-				snprintf(new_status + len, 50,
-						 " waiting for max_standby_delay (%d ms)",
-						 MaxStandbyDelay);
+				strcpy(new_status + len, " waiting");
 				set_ps_display(new_status, false);
 				new_status[len] = '\0'; /* truncate off " waiting" */
 			}
