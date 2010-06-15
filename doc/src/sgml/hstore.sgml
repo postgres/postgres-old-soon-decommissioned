@@ -121,13 +121,6 @@
      </row>
 
      <row>
-      <entry><type>text[]</> <literal>=&gt;</> <type>text[]</></entry>
-      <entry>construct an <type>hstore</> from separate key and value arrays</entry>
-      <entry><literal>ARRAY['a','b'] =&gt; ARRAY['1','2']</literal></entry>
-      <entry><literal>"a"=&gt;"1","b"=&gt;"2"</literal></entry>
-     </row>
-
-     <row>
       <entry><type>hstore</> <literal>=&gt;</> <type>text[]</></entry>
       <entry>extract a subset of an <type>hstore</></entry>
       <entry><literal>'a=&gt;1,b=&gt;2,c=&gt;3'::hstore =&gt; ARRAY['b','c','x']</literal></entry>
@@ -262,6 +255,14 @@
        a key/value array, or a two-dimensional array</entry>
       <entry><literal>hstore(ARRAY['a','1','b','2']) || hstore(ARRAY[['c','3'],['d','4']])</literal></entry>
       <entry><literal>a=&gt;1, b=&gt;2, c=&gt;3, d=&gt;4</literal></entry>
+     </row>
+
+     <row>
+      <entry><function>hstore(text[], text[])</function></entry>
+      <entry><type>hstore</type></entry>
+      <entry>construct an <type>hstore</> from separate key and value arrays</entry>
+      <entry><literal>hstore(ARRAY['a','b'], ARRAY['1','2'])</literal></entry>
+      <entry><literal>"a"=&gt;"1","b"=&gt;"2"</literal></entry>
      </row>
 
      <row>

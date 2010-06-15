@@ -238,12 +238,6 @@ RETURNS hstore
 AS 'MODULE_PATHNAME', 'hstore_from_arrays'
 LANGUAGE C IMMUTABLE; -- not STRICT; allows (keys,null)
 
-CREATE OPERATOR => (
-	LEFTARG = text[],
-	RIGHTARG = text[],
-	PROCEDURE = hstore
-);
-
 CREATE FUNCTION hstore(text[])
 RETURNS hstore
 AS 'MODULE_PATHNAME', 'hstore_from_array'
