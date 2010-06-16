@@ -820,9 +820,9 @@
      </para>
 
      <para>
-      For drivers which support this feature, this saves an entire 
-      round-trip to the client, allowing result counts and pagination
-      to be calculated without a second <command>COUNT</command> query.
+      This allows operations that do not return a result, like
+      <command>SELECT INTO</>, to return a count of the number of rows
+      processed.
      </para>
 
      <para>
