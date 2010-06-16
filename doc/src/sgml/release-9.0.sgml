@@ -1759,18 +1759,6 @@
       </para>
      </listitem>
 
-     <listitem>
-      <para>
-       PL/Perl subroutines are now given perl-visible names (Tim Bunce)
-      </para>
-
-      <para>
-       PL/Perl subroutines are anonymous subrefs; this change adds entries 
-       to the Perl symbol table for them, making profiling and code coverage 
-       tools much more usable.
-      </para>
-     </listitem>
-
     </itemizedlist>
 
    </sect4>

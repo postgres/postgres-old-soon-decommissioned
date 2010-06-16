@@ -1319,10 +1319,6 @@ plperl_create_sub(plperl_proc_desc *prodesc, char *s, Oid fn_oid)
 				(errmsg("didn't get a CODE ref from compiling %s",
 						prodesc->proname)));
 	
-	/* give the subroutine a proper name in the main:: symbol table */
-	CvGV(SvRV(subref)) = (GV *) newSV(0);
-	gv_init(CvGV(SvRV(subref)), PL_defstash, subname, strlen(subname), TRUE);
-	
 	prodesc->reference = subref;
 	
 	return;
