@@ -815,7 +815,10 @@ EncodeDateTime(struct tm * tm, fsec_t fsec, int *tzp, char **tzn, int style, cha
 			{
 				hour = -(*tzp / SECS_PER_HOUR);
 				min = (abs(*tzp) / MINS_PER_HOUR) % MINS_PER_HOUR;
-				sprintf(str + strlen(str), (min != 0) ? "%+03d:%02d" : "%+03d", hour, min);
+				if (min != 0)
+					sprintf(str + strlen(str), "%+03d:%02d", hour, min);
+				else
+					sprintf(str + strlen(str), "%+03d", hour);
 			}
 			break;
 
@@ -869,7 +872,10 @@ EncodeDateTime(struct tm * tm, fsec_t fsec, int *tzp, char **tzn, int style, cha
 				{
 					hour = -(*tzp / SECS_PER_HOUR);
 					min = (abs(*tzp) / MINS_PER_HOUR) % MINS_PER_HOUR;
-					sprintf(str + strlen(str), (min != 0) ? "%+03d:%02d" : "%+03d", hour, min);
+					if (min != 0)
+						sprintf(str + strlen(str), "%+03d:%02d", hour, min);
+					else
+						sprintf(str + strlen(str), "%+03d", hour);
 				}
 			}
 			break;
@@ -915,7 +921,10 @@ EncodeDateTime(struct tm * tm, fsec_t fsec, int *tzp, char **tzn, int style, cha
 				{
 					hour = -(*tzp / SECS_PER_HOUR);
 					min = (abs(*tzp) / MINS_PER_HOUR) % MINS_PER_HOUR;
-					sprintf(str + strlen(str), (min != 0) ? "%+03d:%02d" : "%+03d", hour, min);
+					if (min != 0)
+						sprintf(str + strlen(str), "%+03d:%02d", hour, min);
+					else
+						sprintf(str + strlen(str), "%+03d", hour);
 				}
 			}
 			break;
@@ -977,7 +986,10 @@ EncodeDateTime(struct tm * tm, fsec_t fsec, int *tzp, char **tzn, int style, cha
 					 */
 					hour = -(*tzp / SECS_PER_HOUR);
 					min = (abs(*tzp) / MINS_PER_HOUR) % MINS_PER_HOUR;
-					sprintf(str + strlen(str), (min != 0) ? " %+03d:%02d" : " %+03d", hour, min);
+					if (min != 0)
+						sprintf(str + strlen(str), " %+03d:%02d", hour, min);
+					else
+						sprintf(str + strlen(str), " %+03d", hour);
 				}
 			}
 			break;
