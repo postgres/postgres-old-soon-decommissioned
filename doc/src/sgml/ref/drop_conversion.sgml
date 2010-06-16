@@ -86,7 +86,10 @@ DROP CONVERSION myname;
 
   <para>
    There is no <command>DROP CONVERSION</command> statement in the SQL
-   standard.
+   standard, but a <command>DROP TRANSLATION</command> statement that
+   goes along with the <command>CREATE TRANSLATION</command> statement
+   that is similar to the <command>CREATE CONVERSION</command>
+   statement in PostgreSQL.
   </para>
  </refsect1>
 
