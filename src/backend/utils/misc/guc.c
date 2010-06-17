@@ -119,8 +119,6 @@ extern bool fullPageWrites;
 extern int	vacuum_defer_cleanup_age;
 extern int	ssl_renegotiation_limit;
 
-int			trace_recovery_messages = LOG;
-
 #ifdef TRACE_SORT
 extern bool trace_sort;
 #endif
@@ -375,6 +373,7 @@ int			log_min_messages = WARNING;
 int			client_min_messages = NOTICE;
 int			log_min_duration_statement = -1;
 int			log_temp_files = -1;
+int			trace_recovery_messages = LOG;
 
 int			num_temp_buffers = 1000;
 
