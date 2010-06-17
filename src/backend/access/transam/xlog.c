@@ -6803,17 +6803,18 @@ GetInsertRecPtr(void)
 }
 
 /*
- * GetWriteRecPtr -- Returns the current write position.
+ * GetFlushRecPtr -- Returns the current flush position, ie, the last WAL
+ * position known to be fsync'd to disk.
  */
 XLogRecPtr
-GetWriteRecPtr(void)
+GetFlushRecPtr(void)
 {
 	/* use volatile pointer to prevent code rearrangement */
 	volatile XLogCtlData *xlogctl = XLogCtl;
 	XLogRecPtr	recptr;
 
 	SpinLockAcquire(&xlogctl->info_lck);
-	recptr = xlogctl->LogwrtResult.Write;
+	recptr = xlogctl->LogwrtResult.Flush;
 	SpinLockRelease(&xlogctl->info_lck);
 
 	return recptr;
