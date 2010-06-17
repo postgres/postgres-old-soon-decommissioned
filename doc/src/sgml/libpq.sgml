@@ -6470,7 +6470,7 @@ myEventProc(PGEventId evtId, void *evtInfo, void *passThrough)
       <para>
        Allows applications to select which security libraries to initialize.
        <synopsis>
-        void PQinitOpenSSL(int do_ssl, init do_crypto);
+        void PQinitOpenSSL(int do_ssl, int do_crypto);
        </synopsis>
       </para>
 
