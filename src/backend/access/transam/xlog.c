@@ -3253,7 +3253,8 @@ RemoveOldXlogFiles(uint32 log, uint32 seg, XLogRecPtr endptr)
 #endif
 	struct stat statbuf;
 
-	elog(DEBUG2, "removing WAL segments older than %X/%X", log, seg);
+	elog(DEBUG2, "removing WAL segments older than log file %u, segment %u",
+		 log, seg);
 
 	/*
 	 * Initialize info about where to try to recycle to.  We allow recycling
