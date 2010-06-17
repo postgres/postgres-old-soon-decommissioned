@@ -45,6 +45,5 @@ extern int	WalSenderMain(void);
 extern void WalSndSignals(void);
 extern Size WalSndShmemSize(void);
 extern void WalSndShmemInit(void);
-extern XLogRecPtr GetOldestWALSendPointer(void);
 
 #endif   /* _WALSENDER_H */
