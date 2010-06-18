@@ -66,7 +66,7 @@ RETURNS hstore
 AS 'MODULE_PATHNAME','hstore_slice_to_hstore'
 LANGUAGE C STRICT IMMUTABLE;
 
-CREATE OPERATOR => (
+CREATE OPERATOR % (
 	LEFTARG = hstore,
 	RIGHTARG = text[],
 	PROCEDURE = slice_hstore

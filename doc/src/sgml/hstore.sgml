@@ -121,9 +121,9 @@
      </row>
 
      <row>
-      <entry><type>hstore</> <literal>=&gt;</> <type>text[]</></entry>
+      <entry><type>hstore</> <literal>%</> <type>text[]</></entry>
       <entry>extract a subset of an <type>hstore</></entry>
-      <entry><literal>'a=&gt;1,b=&gt;2,c=&gt;3'::hstore =&gt; ARRAY['b','c','x']</literal></entry>
+      <entry><literal>'a=&gt;1,b=&gt;2,c=&gt;3'::hstore % ARRAY['b','c','x']</literal></entry>
       <entry><literal>"b"=&gt;"2", "c"=&gt;"3"</literal></entry>
      </row>
 
