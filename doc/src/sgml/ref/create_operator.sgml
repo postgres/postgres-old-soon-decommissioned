@@ -71,6 +71,12 @@ CREATE OPERATOR <replaceable>name</replaceable> (
      parse SQL-compliant commands without requiring spaces between tokens.
      </para>
     </listitem>
+    <listitem>
+     <para>
+     The use of <literal>=&gt;</> as an operator name is deprecated.  It may
+     be disallowed altogether in a future release.
+     </para>
+    </listitem>
    </itemizedlist>
   </para>
 
