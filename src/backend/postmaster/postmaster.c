@@ -2224,11 +2224,11 @@ pmdie(SIGNAL_ARGS)
 				/* only bgwriter is active in this state */
 				pmState = PM_WAIT_BACKENDS;
 			}
-			if (pmState == PM_RUN ||
-				pmState == PM_WAIT_BACKUP ||
-				pmState == PM_WAIT_READONLY ||
-				pmState == PM_WAIT_BACKENDS ||
-				pmState == PM_HOT_STANDBY)
+			else if (pmState == PM_RUN ||
+					 pmState == PM_WAIT_BACKUP ||
+					 pmState == PM_WAIT_READONLY ||
+					 pmState == PM_WAIT_BACKENDS ||
+					 pmState == PM_HOT_STANDBY)
 			{
 				ereport(LOG,
 						(errmsg("aborting any active transactions")));
