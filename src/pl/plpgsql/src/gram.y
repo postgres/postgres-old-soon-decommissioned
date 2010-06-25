@@ -2080,8 +2080,8 @@ tok_is_keyword(int token, union YYSTYPE *lval,
 		 * match composite names (hence an unreserved word followed by "."
 		 * will not be recognized).
 		 */
-		if (!lval->word.quoted && lval->word.ident != NULL &&
-			strcmp(lval->word.ident, kw_str) == 0)
+		if (!lval->wdatum.quoted && lval->wdatum.ident != NULL &&
+			strcmp(lval->wdatum.ident, kw_str) == 0)
 			return true;
 	}
 	return false;				/* not the keyword */
