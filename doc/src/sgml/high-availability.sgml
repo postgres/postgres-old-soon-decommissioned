@@ -1488,7 +1488,7 @@ if (!triggered)
         </para>
 
         <para>
-		 Cancelled queries may be retried immediately (after beginning a new
+         Cancelled queries may be retried immediately (after beginning a new
          transaction, of course).  Since query cancellation depends on
          the nature of the WAL records being replayed, a query that was
          cancelled may succeed if it is executed again.
