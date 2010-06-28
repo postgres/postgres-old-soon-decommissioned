@@ -445,6 +445,12 @@ Hint:       the addendum
    </para>
 
    <para>
+    Error context strings: Do not capitalize the first letter and do
+    not end the string with a period.  Context strings should normally
+    not be complete sentences.
+   </para>
+
+   <para>
     Rationale: Avoiding punctuation makes it easier for client applications to
     embed the message into a variety of grammatical contexts.  Often, primary
     messages are not grammatically complete sentences anyway.  (And if they're
