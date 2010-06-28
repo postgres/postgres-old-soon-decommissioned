@@ -1113,7 +1113,7 @@ SELECT * FROM x, y, a, b, c WHERE something AND somethingelse;
 
    <para>
     Durability is a database feature that guarantees the recording of
-    committed transactions even if if the server crashes or loses
+    committed transactions even if the server crashes or loses
     power.  However, durability adds significant database overhead,
     so if your site does not require such a guarantee,
     <productname>PostgreSQL</productname> can be configured to run

@@ -1464,7 +1464,7 @@ SET ENABLE_SEQSCAN TO OFF;
         delay is three times <xref linkend="guc-wal-writer-delay">.)  Unlike
         <xref linkend="guc-fsync">, setting this parameter to <literal>off</>
         does not create any risk of database inconsistency: an operating
-        system or database crash crash might
+        system or database crash might
         result in some recent allegedly-committed transactions being lost, but
         the database state will be just the same as if those transactions had
         been aborted cleanly.  So, turning <varname>synchronous_commit</> off
