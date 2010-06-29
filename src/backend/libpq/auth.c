@@ -2506,7 +2506,7 @@ CheckCertAuth(Port *port)
 		strlen(port->peer_cn) <= 0)
 	{
 		ereport(LOG,
-				(errmsg("certificate authentication failed for user \"%s\": client certificate contains no username",
+				(errmsg("certificate authentication failed for user \"%s\": client certificate contains no user name",
 						port->user_name)));
 		return STATUS_ERROR;
 	}
