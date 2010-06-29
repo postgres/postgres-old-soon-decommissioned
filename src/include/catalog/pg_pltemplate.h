@@ -74,6 +74,6 @@ DATA(insert ( "plperl"		t t "plperl_call_handler" "plperl_inline_handler" "plper
 DATA(insert ( "plperlu"		f f "plperl_call_handler" "plperl_inline_handler" "plperl_validator" "$libdir/plperl" _null_ ));
 DATA(insert ( "plpythonu"	f f "plpython_call_handler" "plpython_inline_handler" _null_ "$libdir/plpython" _null_ ));
 DATA(insert ( "plpython2u"	f f "plpython_call_handler" "plpython_inline_handler" _null_ "$libdir/plpython2" _null_ ));
-DATA(insert ( "plpython3u"	f f "plpython_call_handler" "plpython_inline_handler" _null_ "$libdir/plpython3" _null_ ));
+DATA(insert ( "plpython3u"	f f "plpython3_call_handler" "plpython3_inline_handler" _null_ "$libdir/plpython3" _null_ ));
 
 #endif   /* PG_PLTEMPLATE_H */

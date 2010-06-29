@@ -244,6 +244,12 @@ typedef struct PLyResultObject
 
 /* function declarations */
 
+#if PY_MAJOR_VERSION >= 3
+/* Use separate names to avoid clash in pg_pltemplate */
+#define plpython_call_handler plpython3_call_handler
+#define plpython_inline_handler plpython3_inline_handler
+#endif
+
 /* exported functions */
 Datum		plpython_call_handler(PG_FUNCTION_ARGS);
 Datum		plpython_inline_handler(PG_FUNCTION_ARGS);
