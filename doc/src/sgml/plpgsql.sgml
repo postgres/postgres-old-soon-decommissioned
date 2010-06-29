@@ -219,7 +219,7 @@ END <optional> <replaceable>label</replaceable> </optional>;
 
     <para>
      All key words are case-insensitive.
-     Identifiers are implicitly converted to lowercase
+     Identifiers are implicitly converted to lower case
      unless double-quoted, just as they are in ordinary SQL commands.
     </para>
 

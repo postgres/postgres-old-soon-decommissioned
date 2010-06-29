@@ -912,7 +912,7 @@ su - postgres
          by GSSAPI).
          <literal>postgres</literal> is the default. There's usually no
          reason to change this unless you have a Windows environment,
-         in which case it must be set to uppercase
+         in which case it must be set to upper case
          <literal>POSTGRES</literal>.
         </para>
        </listitem>

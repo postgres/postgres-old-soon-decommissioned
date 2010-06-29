@@ -994,7 +994,7 @@ omicron         bryanh                  guest1
     on the same host.
     Some Kerberos implementations might also require a different service name,
     such as Microsoft Active Directory which requires the service name
-    to be in uppercase (<literal>POSTGRES</literal>).
+    to be in upper case (<literal>POSTGRES</literal>).
    </para>
 
    <para>

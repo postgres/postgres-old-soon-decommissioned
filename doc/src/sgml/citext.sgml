@@ -58,8 +58,8 @@
     The <type>citext</> data type allows you to eliminate calls
     to <function>lower</> in SQL queries, and allows a primary key to
     be case-insensitive. <type>citext</> is locale-aware, just
-    like <type>text</>, which means that the comparison of uppercase and
-    lowercase characters is dependent on the rules of
+    like <type>text</>, which means that the comparison of upper case and
+    lower case characters is dependent on the rules of
     the <literal>LC_CTYPE</> locale setting. Again, this behavior is
     identical to the use of <function>lower</> in queries. But because it's
     done transparently by the datatype, you don't have to remember to do

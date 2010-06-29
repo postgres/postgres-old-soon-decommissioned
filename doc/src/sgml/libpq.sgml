@@ -3157,7 +3157,7 @@ typedef struct {
       This is useful when a user-supplied identifier might contain
       special characters that would otherwise not be interpreted as part
       of the identifier by the SQL parser, or when the identifier might
-      contain uppercase characters whose case should be preserved.
+      contain upper case characters whose case should be preserved.
      </para>
 
      <para>
