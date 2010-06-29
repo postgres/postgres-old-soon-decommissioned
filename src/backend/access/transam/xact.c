@@ -1028,7 +1028,7 @@ RecordTransactionCommit(void)
 	if (XactSyncCommit || forceSyncCommit || haveNonTemp)
 	{
 		/*
-		 * Synchronous commit case.
+		 * Synchronous commit case:
 		 *
 		 * Sleep before flush! So we can flush more than one commit records
 		 * per single fsync.  (The idea is some other backend may do the
@@ -1054,7 +1054,12 @@ RecordTransactionCommit(void)
 	else
 	{
 		/*
-		 * Asynchronous commit case.
+		 * Asynchronous commit case:
+		 *
+		 * This enables possible committed transaction loss in the case of a
+		 * postmaster crash because WAL buffers are left unwritten.
+		 * Ideally we could issue the WAL write without the fsync, but
+		 * some wal_sync_methods do not allow separate write/fsync.
 		 *
 		 * Report the latest async commit LSN, so that the WAL writer knows to
 		 * flush this commit.
