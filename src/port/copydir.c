@@ -23,6 +23,7 @@
 #include <sys/stat.h>
 
 #include "storage/fd.h"
+#include "miscadmin.h"
 
 /*
  *	On Windows, call non-macro versions of palloc; we can't reference
@@ -68,6 +69,9 @@ copydir(char *fromdir, char *todir, bool recurse)
 	while ((xlde = ReadDir(xldir, fromdir)) != NULL)
 	{
 		struct stat fst;
+
+        /* If we got a cancel signal during the copy of the directory, quit */
+        CHECK_FOR_INTERRUPTS();
 
 		if (strcmp(xlde->d_name, ".") == 0 ||
 			strcmp(xlde->d_name, "..") == 0)
@@ -172,6 +176,9 @@ copy_file(char *fromfile, char *tofile)
 	 */
 	for (offset = 0;; offset += nbytes)
 	{
+        /* If we got a cancel signal during the copy of the file, quit */
+        CHECK_FOR_INTERRUPTS();
+
 		nbytes = read(srcfd, buffer, COPY_BUF_SIZE);
 		if (nbytes < 0)
 			ereport(ERROR,
