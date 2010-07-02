@@ -61,16 +61,10 @@ CREATE OPERATOR -> (
 	PROCEDURE = slice_array
 );
 
-CREATE OR REPLACE FUNCTION slice_hstore(hstore,text[])
+CREATE OR REPLACE FUNCTION slice(hstore,text[])
 RETURNS hstore
 AS 'MODULE_PATHNAME','hstore_slice_to_hstore'
 LANGUAGE C STRICT IMMUTABLE;
-
-CREATE OPERATOR % (
-	LEFTARG = hstore,
-	RIGHTARG = text[],
-	PROCEDURE = slice_hstore
-);
 
 CREATE OR REPLACE FUNCTION isexists(hstore,text)
 RETURNS bool

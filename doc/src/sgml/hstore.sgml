@@ -121,13 +121,6 @@
      </row>
 
      <row>
-      <entry><type>hstore</> <literal>%</> <type>text[]</></entry>
-      <entry>extract a subset of an <type>hstore</></entry>
-      <entry><literal>'a=&gt;1,b=&gt;2,c=&gt;3'::hstore % ARRAY['b','c','x']</literal></entry>
-      <entry><literal>"b"=&gt;"2", "c"=&gt;"3"</literal></entry>
-     </row>
-
-     <row>
       <entry><type>hstore</> <literal>||</> <type>hstore</></entry>
       <entry>concatenate <type>hstore</>s</entry>
       <entry><literal>'a=&gt;b, c=&gt;d'::hstore || 'c=&gt;x, d=&gt;q'::hstore</literal></entry>
@@ -336,6 +329,14 @@ b
       <entry>get <type>hstore</>'s keys and values as a two-dimensional array</entry>
       <entry><literal>hstore_to_matrix('a=&gt;1,b=&gt;2')</literal></entry>
       <entry><literal>{{a,1},{b,2}}</literal></entry>
+     </row>
+
+     <row>
+      <entry><function>slice(hstore, text[])</function></entry>
+      <entry><type>hstore</type></entry>
+      <entry>extract a subset of an <type>hstore</></entry>
+      <entry><literal>slice('a=&gt;1,b=&gt;2,c=&gt;3'::hstore, ARRAY['b','c','x'])</literal></entry>
+      <entry><literal>"b"=&gt;"2", "c"=&gt;"3"</literal></entry>
      </row>
 
      <row>
