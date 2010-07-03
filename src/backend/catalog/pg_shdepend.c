@@ -26,6 +26,8 @@
 #include "catalog/pg_language.h"
 #include "catalog/pg_namespace.h"
 #include "catalog/pg_operator.h"
+#include "catalog/pg_opclass.h"
+#include "catalog/pg_opfamily.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_shdepend.h"
 #include "catalog/pg_tablespace.h"
@@ -1345,6 +1347,14 @@ shdepReassignOwned(List *roleids, Oid newrole)
 
 				case LanguageRelationId:
 					AlterLanguageOwner_oid(sdepForm->objid, newrole);
+					break;
+
+				case OperatorClassRelationId:
+					AlterOpClassOwner_oid(sdepForm->objid, newrole);
+					break;
+
+				case OperatorFamilyRelationId:
+					AlterOpFamilyOwner_oid(sdepForm->objid, newrole);
 					break;
 
 				default:
