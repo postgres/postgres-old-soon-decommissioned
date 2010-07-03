@@ -979,7 +979,8 @@ SELECT product_id, p.name, (sum(s.units) * (p.price - p.cost)) AS profit
 
    <para>
     If the query contains any window functions (see
-    <xref linkend="tutorial-window"> and
+    <xref linkend="tutorial-window">,
+    <xref linkend="functions-window"> and
     <xref linkend="syntax-window-functions">), these functions are evaluated
     after any grouping, aggregation, and <literal>HAVING</> filtering is
     performed.  That is, if the query uses any aggregates, <literal>GROUP
