@@ -88,7 +88,9 @@ extern void RemoveAmProcEntryById(Oid entryOid);
 extern void RenameOpClass(List *name, const char *access_method, const char *newname);
 extern void RenameOpFamily(List *name, const char *access_method, const char *newname);
 extern void AlterOpClassOwner(List *name, const char *access_method, Oid newOwnerId);
+extern void AlterOpClassOwner_oid(Oid opclassOid, Oid newOwnerId);
 extern void AlterOpFamilyOwner(List *name, const char *access_method, Oid newOwnerId);
+extern void AlterOpFamilyOwner_oid(Oid opfamilyOid, Oid newOwnerId);
 
 /* commands/tsearchcmds.c */
 extern void DefineTSParser(List *names, List *parameters);

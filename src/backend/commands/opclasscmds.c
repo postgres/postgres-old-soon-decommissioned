@@ -1994,6 +1994,27 @@ AlterOpClassOwner(List *name, const char *access_method, Oid newOwnerId)
 }
 
 /*
+ * Change operator class owner, specified by OID
+ */
+void
+AlterOpClassOwner_oid(Oid opclassOid, Oid newOwnerId)
+{
+	HeapTuple       tup;
+	Relation        rel;
+
+	rel = heap_open(OperatorClassRelationId, RowExclusiveLock);
+
+	tup = SearchSysCacheCopy(CLAOID, ObjectIdGetDatum(opclassOid), 0, 0, 0);
+	if (!HeapTupleIsValid(tup))
+		elog(ERROR, "cache lookup failed for opclass %u", opclassOid);
+
+	AlterOpClassOwner_internal(rel, tup, newOwnerId);
+
+	heap_freetuple(tup);
+	heap_close(rel, NoLock);
+}
+
+/*
  * The first parameter is pg_opclass, opened and suitably locked.  The second
  * parameter is a copy of the tuple from pg_opclass we want to modify.
  */
@@ -2113,6 +2134,28 @@ AlterOpFamilyOwner(List *name, const char *access_method, Oid newOwnerId)
 		if (!HeapTupleIsValid(tup))		/* should not happen */
 			elog(ERROR, "cache lookup failed for opfamily %u", opfOid);
 	}
+
+	AlterOpFamilyOwner_internal(rel, tup, newOwnerId);
+
+	heap_freetuple(tup);
+	heap_close(rel, NoLock);
+}
+
+/*
+ * Change operator family owner, specified by OID
+ */
+void
+AlterOpFamilyOwner_oid(Oid opfamilyOid, Oid newOwnerId)
+{
+	HeapTuple       tup;
+	Relation        rel;
+
+	rel = heap_open(OperatorFamilyRelationId, RowExclusiveLock);
+
+	tup = SearchSysCacheCopy(OPFAMILYOID, ObjectIdGetDatum(opfamilyOid),
+							 0, 0, 0);
+	if (!HeapTupleIsValid(tup))
+		elog(ERROR, "cache lookup failed for opfamily %u", opfamilyOid);
 
 	AlterOpFamilyOwner_internal(rel, tup, newOwnerId);
 
