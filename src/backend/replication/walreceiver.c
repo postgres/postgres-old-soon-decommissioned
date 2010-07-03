@@ -524,6 +524,7 @@ XLogWalRcvFlush(void)
 
 		/* Update shared-memory status */
 		SpinLockAcquire(&walrcv->mutex);
+		walrcv->latestChunkStart = walrcv->receivedUpto;
 		walrcv->receivedUpto = LogstreamResult.Flush;
 		SpinLockRelease(&walrcv->mutex);
 

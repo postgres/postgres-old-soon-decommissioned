@@ -19,7 +19,10 @@
 #include "storage/procsignal.h"
 #include "storage/relfilenode.h"
 
+/* User-settable GUC parameters */
 extern int	vacuum_defer_cleanup_age;
+extern int	max_standby_archive_delay;
+extern int	max_standby_streaming_delay;
 
 extern void InitRecoveryTransactionEnvironment(void);
 extern void ShutdownRecoveryTransactionEnvironment(void);
@@ -83,7 +86,7 @@ extern void standby_desc(StringInfo buf, uint8 xl_info, char *rec);
 /*
  * Declarations for GetRunningTransactionData(). Similar to Snapshots, but
  * not quite. This has nothing at all to do with visibility on this server,
- * so this is completely separate from snapmgr.c and snapmgr.h
+ * so this is completely separate from snapmgr.c and snapmgr.h.
  * This data is important for creating the initial snapshot state on a
  * standby server. We need lots more information than a normal snapshot,
  * hence we use a specific data structure for our needs. This data

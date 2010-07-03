@@ -57,6 +57,7 @@
 #include "postmaster/walwriter.h"
 #include "replication/walsender.h"
 #include "storage/bufmgr.h"
+#include "storage/standby.h"
 #include "storage/fd.h"
 #include "tcop/tcopprot.h"
 #include "tsearch/ts_cache.h"
@@ -116,7 +117,6 @@ extern char *default_tablespace;
 extern char *temp_tablespaces;
 extern bool synchronize_seqscans;
 extern bool fullPageWrites;
-extern int	vacuum_defer_cleanup_age;
 extern int	ssl_renegotiation_limit;
 
 #ifdef TRACE_SORT
@@ -1373,6 +1373,26 @@ static struct config_int ConfigureNamesInt[] =
 		1000, 1, INT_MAX / 1000, NULL, NULL
 	},
 
+	{
+		{"max_standby_archive_delay", PGC_SIGHUP, WAL_STANDBY_SERVERS,
+			gettext_noop("Sets the maximum delay before canceling queries when a hot standby server is processing archived WAL data."),
+			NULL,
+			GUC_UNIT_MS
+		},
+		&max_standby_archive_delay,
+		30 * 1000, -1, INT_MAX / 1000, NULL, NULL
+	},
+
+	{
+		{"max_standby_streaming_delay", PGC_SIGHUP, WAL_STANDBY_SERVERS,
+			gettext_noop("Sets the maximum delay before canceling queries when a hot standby server is processing streamed WAL data."),
+			NULL,
+			GUC_UNIT_MS
+		},
+		&max_standby_streaming_delay,
+		30 * 1000, -1, INT_MAX / 1000, NULL, NULL
+	},
+
 	/*
 	 * Note: MaxBackends is limited to INT_MAX/4 because some places compute
 	 * 4*MaxBackends without any overflow check.  This check is made in
@@ -1390,16 +1410,6 @@ static struct config_int ConfigureNamesInt[] =
 		},
 		&MaxConnections,
 		100, 1, INT_MAX / 4, assign_maxconnections, NULL
-	},
-
-	{
-		{"max_standby_delay", PGC_SIGHUP, WAL_STANDBY_SERVERS,
-			gettext_noop("Sets the maximum delay to avoid conflict processing on hot standby servers."),
-			NULL,
-			GUC_UNIT_MS
-		},
-		&MaxStandbyDelay,
-		30 * 1000, -1, INT_MAX / 1000, NULL, NULL
 	},
 
 	{
