@@ -1631,8 +1631,8 @@ static struct config_int ConfigureNamesInt[] =
 	},
 
 	{
-		{"vacuum_defer_cleanup_age", PGC_USERSET, WAL_STANDBY_SERVERS,
-			gettext_noop("Age by which VACUUM and HOT cleanup should be deferred, if any."),
+		{"vacuum_defer_cleanup_age", PGC_SIGHUP, WAL_REPLICATION,
+			gettext_noop("Number of transactions by which VACUUM and HOT cleanup should be deferred, if any."),
 			NULL
 		},
 		&vacuum_defer_cleanup_age,
@@ -1675,7 +1675,7 @@ static struct config_int ConfigureNamesInt[] =
 	},
 
 	{
-		{"wal_keep_segments", PGC_SIGHUP, WAL_CHECKPOINTS,
+		{"wal_keep_segments", PGC_SIGHUP, WAL_REPLICATION,
 			gettext_noop("Sets the number of WAL files held for standby servers."),
 			NULL
 		},
