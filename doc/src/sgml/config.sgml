@@ -1927,7 +1927,7 @@ SET ENABLE_SEQSCAN TO OFF;
         default is zero transactions, meaning that dead row versions can be
         removed as soon as possible, that is, as soon as they are no longer
         visible to any open transaction.  You may wish to set this to a
-	non-zero value on a primary server that is supporting hot standby
+        non-zero value on a primary server that is supporting hot standby
         servers, as described in <xref linkend="hot-standby">.  This allows
         more time for queries on the standby to complete without incurring
         conflicts due to early cleanup of rows.  However, since the value
