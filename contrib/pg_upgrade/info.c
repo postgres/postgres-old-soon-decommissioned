@@ -2,6 +2,8 @@
  *	info.c
  *
  *	information support functions
+ *
+ *	$PostgreSQL$
  */
 
 #include "pg_upgrade.h"

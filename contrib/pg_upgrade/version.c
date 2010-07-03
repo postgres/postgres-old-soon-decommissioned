@@ -2,6 +2,8 @@
  *	version.c
  *
  *	Postgres-version-specific routines
+ *
+ *	$PostgreSQL$
  */
 
 #include "pg_upgrade.h"

@@ -1,6 +1,7 @@
 #
 # Makefile for pg_upgrade
 #
+# $PostgreSQL$
 
 PGFILEDESC = "pg_upgrade - an in-place binary upgrade utility"
 PGAPPICON = win32

@@ -2,6 +2,8 @@
  *	dump.c
  *
  *	dump functions
+ *
+ *	$PostgreSQL$
  */
 
 #include "pg_upgrade.h"

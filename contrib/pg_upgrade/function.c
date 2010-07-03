@@ -2,6 +2,8 @@
  *	function.c
  *
  *	server-side function support
+ *
+ *	$PostgreSQL$
  */
 
 #include "pg_upgrade.h"

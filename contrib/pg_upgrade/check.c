@@ -2,6 +2,8 @@
  *	check.c
  *
  *	server checks and output routines
+ *
+ *	$PostgreSQL$
  */
 
 #include "pg_upgrade.h"

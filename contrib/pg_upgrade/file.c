@@ -2,6 +2,8 @@
  *	file.c
  *
  *	file system operations
+ *
+ *	$PostgreSQL$
  */
 
 #include "pg_upgrade.h"

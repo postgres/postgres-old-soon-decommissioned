@@ -2,6 +2,8 @@
  *	tablespace.c
  *
  *	tablespace functions
+ *
+ *	$PostgreSQL$
  */
 
 #include "pg_upgrade.h"

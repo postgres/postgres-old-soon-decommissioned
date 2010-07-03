@@ -1,5 +1,7 @@
 /*
  *	pg_upgrade.h
+ *
+ *	$PostgreSQL$
  */
 
 #include "postgres.h"

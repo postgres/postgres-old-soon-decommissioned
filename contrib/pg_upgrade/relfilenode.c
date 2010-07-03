@@ -2,6 +2,8 @@
  *	relfilenode.c
  *
  *	relfilenode functions
+ *
+ *	$PostgreSQL$
  */
 
 #include "pg_upgrade.h"

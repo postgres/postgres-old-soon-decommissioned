@@ -2,6 +2,8 @@
  *	util.c
  *
  *	utility functions
+ *
+ *	$PostgreSQL$
  */
 
 #include "pg_upgrade.h"

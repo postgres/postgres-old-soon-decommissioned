@@ -2,6 +2,8 @@
  *	controldata.c
  *
  *	controldata functions
+ *
+ *	$PostgreSQL$
  */
 
 #include "pg_upgrade.h"

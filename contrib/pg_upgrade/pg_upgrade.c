@@ -2,6 +2,8 @@
  *	pg_upgrade.c
  *
  *	main source file
+ *
+ *	$PostgreSQL$
  */
 
 #include "pg_upgrade.h"

@@ -2,6 +2,8 @@
  *	server.c
  *
  *	database server functions
+ *
+ *	$PostgreSQL$
  */
 
 #include "pg_upgrade.h"

@@ -3,6 +3,8 @@
  *
  *	server-side functions to set backend global variables
  *	to control oid and relfilenode assignment
+ *
+ *	$PostgreSQL$
  */
 
 #include "postgres.h"

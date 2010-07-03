@@ -2,6 +2,8 @@
  *	page.c
  *
  *	per-page conversion operations
+ *
+ *	$PostgreSQL$
  */
 
 #include "pg_upgrade.h"
