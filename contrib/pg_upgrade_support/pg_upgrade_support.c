@@ -4,7 +4,7 @@
  *	server-side functions to set backend global variables
  *	to control oid and relfilenode assignment
  *
- *	Copyright (c) 2010-2010, PostgreSQL Global Development Group
+ *	Copyright (c) 2010, PostgreSQL Global Development Group
  *	$PostgreSQL$
  */
 

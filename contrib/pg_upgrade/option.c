@@ -3,7 +3,7 @@
  *
  *	options functions
  *
- *	Copyright (c) 2010-2010, PostgreSQL Global Development Group
+ *	Copyright (c) 2010, PostgreSQL Global Development Group
  *	$PostgreSQL$
  */
 
