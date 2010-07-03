@@ -3,6 +3,7 @@
  *
  *	server checks and output routines
  *
+ *	Copyright (c) 2010-2010, PostgreSQL Global Development Group
  *	$PostgreSQL$
  */
 
