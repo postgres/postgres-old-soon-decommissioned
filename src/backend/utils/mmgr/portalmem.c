@@ -296,6 +296,28 @@ PortalCreateHoldStore(Portal portal)
 }
 
 /*
+ * PinPortal
+ *		Protect a portal from dropping.
+ */
+void
+PinPortal(Portal portal)
+{
+	if (portal->portalPinned)
+		elog(ERROR, "portal already pinned");
+
+	portal->portalPinned = true;
+}
+
+void
+UnpinPortal(Portal portal)
+{
+	if (!portal->portalPinned)
+		elog(ERROR, "portal not pinned");
+
+	portal->portalPinned = false;
+}
+
+/*
  * PortalDrop
  *		Destroy the portal.
  */
@@ -304,9 +326,16 @@ PortalDrop(Portal portal, bool isTopCommit)
 {
 	AssertArg(PortalIsValid(portal));
 
-	/* Not sure if this case can validly happen or not... */
-	if (portal->status == PORTAL_ACTIVE)
-		elog(ERROR, "cannot drop active portal");
+	/*
+	 * Don't allow dropping a pinned portal, it's still needed by whoever
+	 * pinned it. Not sure if the PORTAL_ACTIVE case can validly happen or
+	 * not...
+	 */
+	if (portal->portalPinned ||
+		portal->status == PORTAL_ACTIVE)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_CURSOR_STATE),
+				 errmsg("cannot drop active portal \"%s\"", portal->name)));
 
 	/*
 	 * Remove portal from hash table.  Because we do this first, we will
@@ -416,7 +445,64 @@ DropDependentPortals(MemoryContext queryContext)
  *
  * Any holdable cursors created in this transaction need to be converted to
  * materialized form, since we are going to close down the executor and
- * release locks.  Remove all other portals created in this transaction.
+ * release locks.  Other portals are not touched yet.
+ *
+ * Returns TRUE if any holdable cursors were processed, FALSE if not.
+ */
+bool
+CommitHoldablePortals(void)
+{
+	bool result = false;
+	HASH_SEQ_STATUS status;
+	PortalHashEnt *hentry;
+
+	hash_seq_init(&status, PortalHashTable);
+
+	while ((hentry = (PortalHashEnt *) hash_seq_search(&status)) != NULL)
+	{
+		Portal		portal = hentry->portal;
+
+		/* Is it a holdable portal created in the current xact? */
+		if ((portal->cursorOptions & CURSOR_OPT_HOLD) &&
+			portal->createSubid != InvalidSubTransactionId &&
+			portal->status == PORTAL_READY)
+		{
+			/*
+			 * We are exiting the transaction that created a holdable
+			 * cursor.	Instead of dropping the portal, prepare it for
+			 * access by later transactions.
+			 *
+			 * Note that PersistHoldablePortal() must release all resources
+			 * used by the portal that are local to the creating
+			 * transaction.
+			 */
+			PortalCreateHoldStore(portal);
+			PersistHoldablePortal(portal);
+
+			/*
+			 * Any resources belonging to the portal will be released in
+			 * the upcoming transaction-wide cleanup; the portal will no
+			 * longer have its own resources.
+			 */
+			portal->resowner = NULL;
+
+			/*
+			 * Having successfully exported the holdable cursor, mark it
+			 * as not belonging to this transaction.
+			 */
+			portal->createSubid = InvalidSubTransactionId;
+
+			result = true;
+		}
+	}
+
+	return result;
+}
+
+/*
+ * Pre-commit processing for portals.
+ *
+ * Remove all non-holdable portals created in this transaction.
  * Portals remaining from prior transactions should be left untouched.
  *
  * XXX This assumes that portals can be deleted in a random order, ie,
@@ -451,45 +537,21 @@ AtCommit_Portals(void)
 		}
 
 		/*
-		 * Do nothing else to cursors held over from a previous
-		 * transaction.
+		 * There should be no pinned portals anymore. Complain if someone
+		 * leaked one.
+		 */
+		if (portal->portalPinned)
+			elog(ERROR, "cannot commit while a portal is pinned");
+
+		/*
+		 * Do nothing to cursors held over from a previous transaction
+		 * (including holdable ones just frozen by CommitHoldablePortals).
 		 */
 		if (portal->createSubid == InvalidSubTransactionId)
 			continue;
 
-		if ((portal->cursorOptions & CURSOR_OPT_HOLD) &&
-			portal->status == PORTAL_READY)
-		{
-			/*
-			 * We are exiting the transaction that created a holdable
-			 * cursor.	Instead of dropping the portal, prepare it for
-			 * access by later transactions.
-			 *
-			 * Note that PersistHoldablePortal() must release all resources
-			 * used by the portal that are local to the creating
-			 * transaction.
-			 */
-			PortalCreateHoldStore(portal);
-			PersistHoldablePortal(portal);
-
-			/*
-			 * Any resources belonging to the portal will be released in
-			 * the upcoming transaction-wide cleanup; the portal will no
-			 * longer have its own resources.
-			 */
-			portal->resowner = NULL;
-
-			/*
-			 * Having successfully exported the holdable cursor, mark it
-			 * as not belonging to this transaction.
-			 */
-			portal->createSubid = InvalidSubTransactionId;
-		}
-		else
-		{
-			/* Zap all non-holdable portals */
-			PortalDrop(portal, true);
-		}
+		/* Zap all non-holdable portals */
+		PortalDrop(portal, true);
 	}
 }
 
@@ -564,7 +626,15 @@ AtCleanup_Portals(void)
 			continue;
 		}
 
-		/* Else zap it. */
+		/*
+		 * If a portal is still pinned, forcibly unpin it. PortalDrop will
+		 * not let us drop the portal otherwise. Whoever pinned the portal
+		 * was interrupted by the abort too and won't try to use it anymore.
+		 */
+		if (portal->portalPinned)
+			portal->portalPinned = false;
+
+		/* Zap it. */
 		PortalDrop(portal, false);
 	}
 }
@@ -601,9 +671,11 @@ AtSubCommit_Portals(SubTransactionId mySubid,
 /*
  * Subtransaction abort handling for portals.
  *
- * Deactivate failed portals created during the failed subtransaction.
+ * Deactivate portals created during the failed subtransaction.
  * Note that per AtSubCommit_Portals, this will catch portals created
  * in descendants of the subtransaction too.
+ *
+ * We don't destroy any portals here; that's done in AtSubCleanup_Portals.
  */
 void
 AtSubAbort_Portals(SubTransactionId mySubid,
@@ -628,6 +700,8 @@ AtSubAbort_Portals(SubTransactionId mySubid,
 		 * will go FAILED if the underlying cursor fails.  (Note we do NOT
 		 * want to do this to upper-level portals, since they may be able
 		 * to continue.)
+		 *
+		 * This is only needed to dodge the sanity check in PortalDrop.
 		 */
 		if (portal->status == PORTAL_ACTIVE)
 			portal->status = PORTAL_FAILED;
@@ -635,7 +709,14 @@ AtSubAbort_Portals(SubTransactionId mySubid,
 		/*
 		 * If the portal is READY then allow it to survive into the parent
 		 * transaction; otherwise shut it down.
+		 *
+		 * Currently, we can't actually support that because the portal's
+		 * query might refer to objects created or changed in the failed
+		 * subtransaction, leading to crashes if execution is resumed.
+		 * So, even READY portals are deleted.  It would be nice to detect
+		 * whether the query actually depends on any such object, instead.
 		 */
+#ifdef NOT_USED
 		if (portal->status == PORTAL_READY)
 		{
 			portal->createSubid = parentSubid;
@@ -643,6 +724,7 @@ AtSubAbort_Portals(SubTransactionId mySubid,
 				ResourceOwnerNewParent(portal->resowner, parentXactOwner);
 		}
 		else
+#endif
 		{
 			/* let portalcmds.c clean up the state it knows about */
 			if (PointerIsValid(portal->cleanup))

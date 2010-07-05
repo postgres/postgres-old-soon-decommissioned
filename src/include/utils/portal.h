@@ -135,6 +135,7 @@ typedef struct PortalData
 	/* Status data */
 	PortalStatus status;		/* see above */
 	bool		portalUtilReady;	/* PortalRunUtility complete? */
+	bool		portalPinned;	/* a pinned portal can't be dropped */
 
 	/* If not NULL, Executor is active; call ExecutorEnd eventually: */
 	QueryDesc  *queryDesc;		/* info needed for executor invocation */
@@ -182,6 +183,7 @@ typedef struct PortalData
 
 /* Prototypes for functions in utils/mmgr/portalmem.c */
 extern void EnablePortalManager(void);
+extern bool CommitHoldablePortals(void);
 extern void AtCommit_Portals(void);
 extern void AtAbort_Portals(void);
 extern void AtCleanup_Portals(void);
@@ -194,6 +196,8 @@ extern void AtSubAbort_Portals(SubTransactionId mySubid,
 extern void AtSubCleanup_Portals(SubTransactionId mySubid);
 extern Portal CreatePortal(const char *name, bool allowDup, bool dupSilent);
 extern Portal CreateNewPortal(void);
+extern void PinPortal(Portal portal);
+extern void UnpinPortal(Portal portal);
 extern void PortalDrop(Portal portal, bool isTopCommit);
 extern void DropDependentPortals(MemoryContext queryContext);
 extern Portal GetPortalByName(const char *name);
