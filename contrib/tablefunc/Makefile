@@ -5,7 +5,7 @@ DATA_built = tablefunc.sql
 DATA = uninstall_tablefunc.sql
 REGRESS = tablefunc
 
-SHLIB_LINK += $(filter -lm, $(LIBS))
+LDFLAGS_SL += $(filter -lm, $(LIBS))
 
 ifdef USE_PGXS
 PG_CONFIG = pg_config

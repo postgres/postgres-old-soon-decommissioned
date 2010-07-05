@@ -8,6 +8,8 @@ DOCS = $(addsuffix .example, $(MODULES))
 # comment out if you want a quieter refint package for other uses
 PG_CPPFLAGS = -DREFINT_VERBOSE
 
+LDFLAGS_SL += -L$(top_builddir)/src/port -lpgport
+
 ifdef USE_PGXS
 PG_CONFIG = pg_config
 PGXS := $(shell $(PG_CONFIG) --pgxs)
@@ -18,5 +20,3 @@ top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 include $(top_srcdir)/contrib/contrib-global.mk
 endif
-
-SHLIB_LINK += -L$(top_builddir)/src/port -lpgport

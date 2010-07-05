@@ -5,7 +5,7 @@ DATA_built = earthdistance.sql
 DATA = uninstall_earthdistance.sql
 REGRESS = earthdistance
 
-SHLIB_LINK += $(filter -lm, $(LIBS))
+LDFLAGS_SL += $(filter -lm, $(LIBS))
 
 ifdef USE_PGXS
 PG_CONFIG = pg_config
