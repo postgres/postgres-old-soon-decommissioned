@@ -1468,7 +1468,16 @@ su - postgres
        <term><envar>LDFLAGS</envar></term>
        <listitem>
         <para>
-         options to pass to the link editor
+         options to use when linking either executables or shared libraries
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
+       <term><envar>LDFLAGS_EX</envar></term>
+       <listitem>
+        <para>
+         additional options for linking executables only
         </para>
        </listitem>
       </varlistentry>
@@ -1477,7 +1486,7 @@ su - postgres
        <term><envar>LDFLAGS_SL</envar></term>
        <listitem>
         <para>
-         linker options for shared library linking
+         additional options for linking shared libraries only
         </para>
        </listitem>
       </varlistentry>

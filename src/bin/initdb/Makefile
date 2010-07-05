@@ -23,7 +23,7 @@ OBJS=	initdb.o encnames.o pqsignal.o $(WIN32RES)
 all: submake-libpgport initdb
 
 initdb: $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) -o $@$(X)
+	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LDFLAGS_EX) $(LIBS) -o $@$(X)
 
 # We used to pull in all of libpq to get encnames and pqsignal, but that
 # exposes us to risks of version skew if we link to a shared library.

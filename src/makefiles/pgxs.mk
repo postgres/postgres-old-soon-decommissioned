@@ -68,7 +68,6 @@ override CPPFLAGS := -I. -I$(srcdir) $(CPPFLAGS)
 
 ifdef MODULES
 override CFLAGS += $(CFLAGS_SL)
-SHLIB_LINK += $(BE_DLLLIBS)
 endif
 
 ifdef MODULEDIR
@@ -287,5 +286,5 @@ endif
 
 ifdef PROGRAM
 $(PROGRAM): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(PG_LIBS) $(LDFLAGS) $(LIBS) -o $@
+	$(CC) $(CFLAGS) $(OBJS) $(PG_LIBS) $(LIBS) $(LDFLAGS) $(LDFLAGS_EX) -o $@
 endif

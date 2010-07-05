@@ -20,7 +20,7 @@ OBJS= pg_controldata.o pg_crc.o $(WIN32RES)
 all: submake-libpgport pg_controldata
 
 pg_controldata: $(OBJS)
-	$(CC) $(CFLAGS) $^ $(LDFLAGS) $(LIBS) -o $@$(X)
+	$(CC) $(CFLAGS) $^ $(LDFLAGS) $(LDFLAGS_EX) $(LIBS) -o $@$(X)
 
 pg_crc.c: $(top_srcdir)/src/backend/utils/hash/pg_crc.c
 	rm -f $@ && $(LN_S) $< .

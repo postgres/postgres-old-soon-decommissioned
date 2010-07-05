@@ -32,7 +32,7 @@ FLEXFLAGS = -Cfe
 all: submake-libpq submake-libpgport psql
 
 psql: $(OBJS) $(libpq_builddir)/libpq.a
-	$(CC) $(CFLAGS) $(OBJS) $(libpq_pgport) $(LDFLAGS) $(LIBS) -o $@$(X)
+	$(CC) $(CFLAGS) $(OBJS) $(libpq_pgport) $(LDFLAGS) $(LDFLAGS_EX) $(LIBS) -o $@$(X)
 
 help.o: sql_help.h
 

@@ -19,7 +19,7 @@ OBJS= findoidjoins.o
 all: submake-libpq submake-libpgport findoidjoins
 
 findoidjoins: findoidjoins.o $(libpq_builddir)/libpq.a
-	$(CC) $(CFLAGS) findoidjoins.o $(libpq_pgport) $(LDFLAGS) $(LIBS) -o $@$(X)
+	$(CC) $(CFLAGS) findoidjoins.o $(libpq_pgport) $(LDFLAGS) $(LDFLAGS_EX) $(LIBS) -o $@$(X)
 
 clean distclean maintainer-clean:
 	rm -f findoidjoins$(X) $(OBJS)

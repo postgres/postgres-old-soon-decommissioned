@@ -33,7 +33,7 @@ OBJS=	preproc.o type.o ecpg.o output.o parser.o \
 all: submake-libpgport ecpg
 
 ecpg: $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) $(PTHREAD_LIBS) -o $@$(X)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDFLAGS_EX) $^ $(LIBS) $(PTHREAD_LIBS) -o $@$(X)
 
 # pgc is compiled as part of preproc
 preproc.o: pgc.c

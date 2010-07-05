@@ -53,7 +53,7 @@ EXTRADEFS = '-DHOST_TUPLE="$(host_tuple)"' \
 all: submake-libpgport pg_regress$(X)
 
 pg_regress$(X): pg_regress.o pg_regress_main.o
-	$(CC) $(CFLAGS) $^ $(LDFLAGS) $(LIBS) -o $@
+	$(CC) $(CFLAGS) $^ $(LDFLAGS) $(LDFLAGS_EX) $(LIBS) -o $@
 
 # dependencies ensure that path changes propagate
 pg_regress.o: pg_regress.c $(top_builddir)/src/port/pg_config_paths.h

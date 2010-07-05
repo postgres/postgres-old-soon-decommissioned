@@ -44,7 +44,7 @@ endif
 
 # IPC test program
 ipc_test: ipc_test.o pg_sema.o pg_shmem.o
-	$(CC) $(CFLAGS) $(LDFLAGS) $(export_dynamic) $^ $(LIBS) -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDFLAGS_EX) $(export_dynamic) $^ $(LIBS) -o $@
 
 distclean clean:
 	rm -f ipc_test ipc_test.o tas_cpp.s
