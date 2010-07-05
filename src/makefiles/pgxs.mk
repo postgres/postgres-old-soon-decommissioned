@@ -286,5 +286,5 @@ endif
 
 ifdef PROGRAM
 $(PROGRAM): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LDFLAGS_EX) $(PG_LIBS) $(LIBS) -o $@
+	$(CC) $(CFLAGS) $(OBJS) $(PG_LIBS) $(LDFLAGS) $(LDFLAGS_EX) $(LIBS) -o $@
 endif
