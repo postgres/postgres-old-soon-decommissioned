@@ -1008,6 +1008,20 @@ setKeepalivesIdle(PGconn *conn)
 						  SOCK_STRERROR(SOCK_ERRNO, sebuf, sizeof(sebuf)));
 		return 0;
 	}
+#else
+#ifdef TCP_KEEPALIVE
+	/* Darwin uses TCP_KEEPALIVE rather than TCP_KEEPIDLE */
+	if (setsockopt(conn->sock, IPPROTO_TCP, TCP_KEEPALIVE,
+				   (char *) &idle, sizeof(idle)) < 0)
+	{
+		char	sebuf[256];
+
+		appendPQExpBuffer(&conn->errorMessage,
+						  libpq_gettext("setsockopt(TCP_KEEPALIVE) failed: %s\n"),
+						  SOCK_STRERROR(SOCK_ERRNO, sebuf, sizeof(sebuf)));
+		return 0;
+	}
+#endif
 #endif
 
 	return 1;

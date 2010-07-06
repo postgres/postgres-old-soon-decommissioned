@@ -298,10 +298,10 @@
           <para>
            Controls the number of seconds of inactivity after which TCP should
            send a keepalive message to the server.  A value of zero uses the
-           system default.  This parameter is ignored if the
-           <symbol>TCP_KEEPIDLE</> socket option is not supported, for
-           connections made via a Unix-domain socket, or if keepalives are
-           disabled.
+           system default.  This parameter is ignored if the neither the
+           <symbol>TCP_KEEPIDLE</> nor the <symbol>TCP_KEEPALIVE</> socket
+           options are supported, for connections made via a Unix-domain
+           socket, or if keepalives are disabled.
           </para>
          </listitem>
         </varlistentry>
