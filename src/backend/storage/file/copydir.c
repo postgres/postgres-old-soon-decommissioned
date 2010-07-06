@@ -70,8 +70,8 @@ copydir(char *fromdir, char *todir, bool recurse)
 	{
 		struct stat fst;
 
-        /* If we got a cancel signal during the copy of the directory, quit */
-        CHECK_FOR_INTERRUPTS();
+		/* If we got a cancel signal during the copy of the directory, quit */
+		CHECK_FOR_INTERRUPTS();
 
 		if (strcmp(xlde->d_name, ".") == 0 ||
 			strcmp(xlde->d_name, "..") == 0)
@@ -176,8 +176,8 @@ copy_file(char *fromfile, char *tofile)
 	 */
 	for (offset = 0;; offset += nbytes)
 	{
-        /* If we got a cancel signal during the copy of the file, quit */
-        CHECK_FOR_INTERRUPTS();
+		/* If we got a cancel signal during the copy of the file, quit */
+		CHECK_FOR_INTERRUPTS();
 
 		nbytes = read(srcfd, buffer, COPY_BUF_SIZE);
 		if (nbytes < 0)
@@ -226,12 +226,12 @@ static void
 fsync_fname(char *fname, bool isdir)
 {
 	int			fd;
-	int 		returncode;
+	int			returncode;
 
 	/*
-	 * Some OSs require directories to be opened read-only whereas
-	 * other systems don't allow us to fsync files opened read-only; so
-	 * we need both cases here 
+	 * Some OSs require directories to be opened read-only whereas other
+	 * systems don't allow us to fsync files opened read-only; so we need both
+	 * cases here
 	 */
 	if (!isdir)
 		fd = BasicOpenFile(fname,
@@ -243,8 +243,8 @@ fsync_fname(char *fname, bool isdir)
 						   S_IRUSR | S_IWUSR);
 
 	/*
-	 * Some OSs don't allow us to open directories at all 
-	 * (Windows returns EACCES) 
+	 * Some OSs don't allow us to open directories at all (Windows returns
+	 * EACCES)
 	 */
 	if (fd < 0 && isdir && (errno == EISDIR || errno == EACCES))
 		return;
@@ -255,7 +255,7 @@ fsync_fname(char *fname, bool isdir)
 				 errmsg("could not open file \"%s\": %m", fname)));
 
 	returncode = pg_fsync(fd);
-	
+
 	/* Some OSs don't allow us to fsync directories at all */
 	if (returncode != 0 && isdir && errno == EBADF)
 	{

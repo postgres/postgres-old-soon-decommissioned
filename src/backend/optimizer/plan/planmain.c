@@ -224,7 +224,7 @@ query_planner(PlannerInfo *root, List *tlist,
 	fix_placeholder_eval_levels(root);
 
 	/*
-	 * Remove any useless outer joins.  Ideally this would be done during
+	 * Remove any useless outer joins.	Ideally this would be done during
 	 * jointree preprocessing, but the necessary information isn't available
 	 * until we've built baserel data structures and classified qual clauses.
 	 */

@@ -3013,7 +3013,7 @@ PLy_spi_execute_plan(PyObject *ob, PyObject *list, long limit)
 				PG_TRY();
 				{
 					plan->values[j] =
-					    plan->args[j].out.d.func(NULL, &(plan->args[j].out.d), elem);
+						plan->args[j].out.d.func(NULL, &(plan->args[j].out.d), elem);
 				}
 				PG_CATCH();
 				{

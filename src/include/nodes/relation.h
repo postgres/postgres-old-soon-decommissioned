@@ -197,8 +197,8 @@ typedef struct PlannerInfo
 
 	double		tuple_fraction; /* tuple_fraction passed to query_planner */
 
-	bool		hasInheritedTarget;	/* true if parse->resultRelation is an
-									 * inheritance child rel */
+	bool		hasInheritedTarget;		/* true if parse->resultRelation is an
+										 * inheritance child rel */
 	bool		hasJoinRTEs;	/* true if any RTEs are RTE_JOIN kind */
 	bool		hasHavingQual;	/* true if havingQual was non-null */
 	bool		hasPseudoConstantQuals; /* true if any RestrictInfo has

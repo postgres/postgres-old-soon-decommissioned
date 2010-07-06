@@ -629,7 +629,7 @@ ProcedureCreate(const char *procedureName,
 
 		/* Set per-function configuration parameters */
 		set_items = (ArrayType *) DatumGetPointer(proconfig);
-		if (set_items)		/* Need a new GUC nesting level */
+		if (set_items)			/* Need a new GUC nesting level */
 		{
 			save_nestlevel = NewGUCNestLevel();
 			ProcessGUCArray(set_items,
@@ -638,7 +638,7 @@ ProcedureCreate(const char *procedureName,
 							GUC_ACTION_SAVE);
 		}
 		else
-			save_nestlevel = 0;		/* keep compiler quiet */
+			save_nestlevel = 0; /* keep compiler quiet */
 
 		OidFunctionCall1(languageValidator, ObjectIdGetDatum(retval));
 

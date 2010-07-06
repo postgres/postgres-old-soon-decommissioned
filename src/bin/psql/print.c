@@ -928,14 +928,14 @@ print_aligned_text(const printTableContent *cont, FILE *fout)
 						/* spaces first */
 						fprintf(fout, "%*s", width_wrap[j] - chars_to_output, "");
 						fputnbytes(fout,
-								   (char *) (this_line->ptr + bytes_output[j]),
+								 (char *) (this_line->ptr + bytes_output[j]),
 								   bytes_to_output);
 					}
 					else	/* Left aligned cell */
 					{
 						/* spaces second */
 						fputnbytes(fout,
-								   (char *) (this_line->ptr + bytes_output[j]),
+								 (char *) (this_line->ptr + bytes_output[j]),
 								   bytes_to_output);
 					}
 
@@ -2152,7 +2152,7 @@ printTableAddCell(printTableContent *const content, const char *cell,
 	{
 		if (content->cellmustfree == NULL)
 			content->cellmustfree = pg_local_calloc(
-				content->ncolumns * content->nrows + 1, sizeof(bool));
+					   content->ncolumns * content->nrows + 1, sizeof(bool));
 
 		content->cellmustfree[content->cellsadded] = true;
 	}
@@ -2220,7 +2220,8 @@ printTableCleanup(printTableContent *const content)
 {
 	if (content->cellmustfree)
 	{
-		int i;
+		int			i;
+
 		for (i = 0; i < content->nrows * content->ncolumns; i++)
 		{
 			if (content->cellmustfree[i])

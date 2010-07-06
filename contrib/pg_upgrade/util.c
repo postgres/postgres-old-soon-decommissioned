@@ -156,8 +156,8 @@ quote_identifier(migratorContext *ctx, const char *s)
 int
 get_user_info(migratorContext *ctx, char **user_name)
 {
-	int	user_id;
-	
+	int			user_id;
+
 #ifndef WIN32
 	struct passwd *pw = getpwuid(geteuid());
 

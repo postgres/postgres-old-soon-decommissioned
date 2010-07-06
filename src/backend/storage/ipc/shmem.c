@@ -303,7 +303,7 @@ ShmemInitHash(const char *name, /* table string name for shmem index */
  *		already in the shmem index (hence, already initialized).
  *
  *	Note: before Postgres 9.0, this function returned NULL for some failure
- *	cases.  Now, it always throws error instead, so callers need not check
+ *	cases.	Now, it always throws error instead, so callers need not check
  *	for NULL.
  */
 void *
@@ -362,8 +362,8 @@ ShmemInitStruct(const char *name, Size size, bool *foundPtr)
 		LWLockRelease(ShmemIndexLock);
 		ereport(ERROR,
 				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("could not create ShmemIndex entry for data structure \"%s\"",
-						name)));
+		errmsg("could not create ShmemIndex entry for data structure \"%s\"",
+			   name)));
 	}
 
 	if (*foundPtr)
@@ -377,11 +377,11 @@ ShmemInitStruct(const char *name, Size size, bool *foundPtr)
 		{
 			LWLockRelease(ShmemIndexLock);
 			ereport(ERROR,
-					(errmsg("ShmemIndex entry size is wrong for data structure"
-							" \"%s\": expected %lu, actual %lu",
-							name,
-							(unsigned long) size,
-							(unsigned long) result->size)));
+				  (errmsg("ShmemIndex entry size is wrong for data structure"
+						  " \"%s\": expected %lu, actual %lu",
+						  name,
+						  (unsigned long) size,
+						  (unsigned long) result->size)));
 		}
 		structPtr = result->location;
 	}

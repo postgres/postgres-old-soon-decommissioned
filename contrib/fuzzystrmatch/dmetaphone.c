@@ -461,7 +461,7 @@ DoubleMetaphone(char *str, char **codes)
 					current += 1;
 				break;
 
-			case '\xc7': /* C with cedilla */
+			case '\xc7':		/* C with cedilla */
 				MetaphAdd(primary, "S");
 				MetaphAdd(secondary, "S");
 				current += 1;
@@ -1037,7 +1037,7 @@ DoubleMetaphone(char *str, char **codes)
 				MetaphAdd(secondary, "N");
 				break;
 
-			case '\xd1': /* N with tilde */
+			case '\xd1':		/* N with tilde */
 				current += 1;
 				MetaphAdd(primary, "N");
 				MetaphAdd(secondary, "N");

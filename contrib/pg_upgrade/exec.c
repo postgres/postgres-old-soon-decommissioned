@@ -14,7 +14,7 @@
 
 
 static void checkBinDir(migratorContext *ctx, ClusterInfo *cluster);
-static int check_exec(migratorContext *ctx, const char *dir, const char *cmdName);
+static int	check_exec(migratorContext *ctx, const char *dir, const char *cmdName);
 static const char *validate_exec(const char *path);
 static int	check_data_dir(migratorContext *ctx, const char *pg_data);
 
@@ -311,5 +311,3 @@ check_data_dir(migratorContext *ctx, const char *pg_data)
 
 	return (fail) ? -1 : 0;
 }
-
-

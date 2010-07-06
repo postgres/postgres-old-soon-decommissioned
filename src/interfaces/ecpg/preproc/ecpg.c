@@ -469,6 +469,7 @@ main(int argc, char *const argv[])
 					fclose(yyin);
 				if (out_option == 0 && yyout != stdout)
 					fclose(yyout);
+
 				/*
 				 * If there was an error, delete the output file.
 				 */

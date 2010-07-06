@@ -462,7 +462,7 @@ pltcl_init_load_unknown(Tcl_Interp *interp)
 	buflen = strlen(pmrelname) + 100;
 	buf = (char *) palloc(buflen);
 	snprintf(buf, buflen,
-			 "select modsrc from %s where modname = 'unknown' order by modseq",
+		   "select modsrc from %s where modname = 'unknown' order by modseq",
 			 pmrelname);
 
 	spi_rc = SPI_execute(buf, false, 0);

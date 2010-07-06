@@ -93,6 +93,7 @@ get_control_data(migratorContext *ctx, ClusterInfo *cluster, bool live_check)
 			fputs(bufin, ctx->debug_fd);
 
 #ifdef WIN32
+
 		/*
 		 * Due to an installer bug, LANG=C doesn't work for PG 8.3.3, but does
 		 * work 8.2.6 and 8.3.7, so check for non-ASCII output and suggest a

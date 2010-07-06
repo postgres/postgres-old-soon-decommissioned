@@ -36,11 +36,11 @@ typedef struct
 	XLogRecPtr	walEnd;
 
 	/* Sender's system clock at the time of transmission */
-	TimestampTz	sendTime;
+	TimestampTz sendTime;
 } WalDataMessageHeader;
 
 /*
- * Maximum data payload in a WAL data message.  Must be >= XLOG_BLCKSZ.
+ * Maximum data payload in a WAL data message.	Must be >= XLOG_BLCKSZ.
  *
  * We don't have a good idea of what a good value would be; there's some
  * overhead per message in both walsender and walreceiver, but on the other

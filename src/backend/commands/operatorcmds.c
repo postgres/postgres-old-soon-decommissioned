@@ -89,9 +89,9 @@ DefineOperator(List *names, List *parameters)
 	oprNamespace = QualifiedNameGetCreationNamespace(names, &oprName);
 
 	/*
-	 * The SQL standard committee has decided that => should be used for
-	 * named parameters; therefore, a future release of PostgreSQL may
-	 * disallow it as the name of a user-defined operator.
+	 * The SQL standard committee has decided that => should be used for named
+	 * parameters; therefore, a future release of PostgreSQL may disallow it
+	 * as the name of a user-defined operator.
 	 */
 	if (strcmp(oprName, "=>") == 0)
 		ereport(WARNING,

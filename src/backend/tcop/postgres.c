@@ -2840,8 +2840,8 @@ RecoveryConflictInterrupt(ProcSignalReason reason)
 		/*
 		 * All conflicts apart from database cause dynamic errors where the
 		 * command or transaction can be retried at a later point with some
-		 * potential for success. No need to reset this, since
-		 * non-retryable conflict errors are currently FATAL.
+		 * potential for success. No need to reset this, since non-retryable
+		 * conflict errors are currently FATAL.
 		 */
 		if (reason == PROCSIG_RECOVERY_CONFLICT_DATABASE)
 			RecoveryConflictRetryable = false;

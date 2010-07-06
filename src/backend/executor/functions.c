@@ -939,9 +939,9 @@ sql_exec_error_callback(void *arg)
 	else
 	{
 		/*
-		 * Assume we failed during init_sql_fcache().  (It's possible that
-		 * the function actually has an empty body, but in that case we may
-		 * as well report all errors as being "during startup".)
+		 * Assume we failed during init_sql_fcache().  (It's possible that the
+		 * function actually has an empty body, but in that case we may as
+		 * well report all errors as being "during startup".)
 		 */
 		errcontext("SQL function \"%s\" during startup", fcache->fname);
 	}

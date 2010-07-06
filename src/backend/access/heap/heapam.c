@@ -4126,10 +4126,10 @@ heap_xlog_clean(XLogRecPtr lsn, XLogRecord *record)
 	/*
 	 * We're about to remove tuples. In Hot Standby mode, ensure that there's
 	 * no queries running for which the removed tuples are still visible.
-	 * 
-	 * Not all HEAP2_CLEAN records remove tuples with xids, so we only want
-	 * to conflict on the records that cause MVCC failures for user queries.
-	 * If latestRemovedXid is invalid, skip conflict processing.
+	 *
+	 * Not all HEAP2_CLEAN records remove tuples with xids, so we only want to
+	 * conflict on the records that cause MVCC failures for user queries. If
+	 * latestRemovedXid is invalid, skip conflict processing.
 	 */
 	if (InHotStandby && TransactionIdIsValid(xlrec->latestRemovedXid))
 		ResolveRecoveryConflictWithSnapshot(xlrec->latestRemovedXid,

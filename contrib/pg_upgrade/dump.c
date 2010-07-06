@@ -24,7 +24,7 @@ generate_old_dump(migratorContext *ctx)
 	exec_prog(ctx, true,
 			  SYSTEMQUOTE "\"%s/pg_dumpall\" --port %d --username \"%s\" "
 			  "--schema-only --binary-upgrade > \"%s/" ALL_DUMP_FILE "\""
-			  SYSTEMQUOTE, ctx->new.bindir, ctx->old.port, ctx->user, ctx->cwd);
+		   SYSTEMQUOTE, ctx->new.bindir, ctx->old.port, ctx->user, ctx->cwd);
 	check_ok(ctx);
 }
 

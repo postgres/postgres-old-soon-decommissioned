@@ -631,8 +631,8 @@ xpath_table(PG_FUNCTION_ARGS)
 	}
 
 	/*
-	 * Setup the parser.  This should happen after we are done evaluating
-	 * the query, in case it calls functions that set up libxml differently.
+	 * Setup the parser.  This should happen after we are done evaluating the
+	 * query, in case it calls functions that set up libxml differently.
 	 */
 	pgxml_parser_init();
 

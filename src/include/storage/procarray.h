@@ -35,8 +35,8 @@ extern void ProcArrayApplyXidAssignment(TransactionId topxid,
 
 extern void RecordKnownAssignedTransactionIds(TransactionId xid);
 extern void ExpireTreeKnownAssignedTransactionIds(TransactionId xid,
-							int nsubxids, TransactionId *subxids,
-							TransactionId max_xid);
+									  int nsubxids, TransactionId *subxids,
+									  TransactionId max_xid);
 extern void ExpireAllKnownAssignedTransactionIds(void);
 extern void ExpireOldKnownAssignedTransactionIds(TransactionId xid);
 

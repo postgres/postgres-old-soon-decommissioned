@@ -775,9 +775,9 @@ AtCleanup_Portals(void)
 		}
 
 		/*
-		 * If a portal is still pinned, forcibly unpin it. PortalDrop will
-		 * not let us drop the portal otherwise. Whoever pinned the portal
-		 * was interrupted by the abort too and won't try to use it anymore.
+		 * If a portal is still pinned, forcibly unpin it. PortalDrop will not
+		 * let us drop the portal otherwise. Whoever pinned the portal was
+		 * interrupted by the abort too and won't try to use it anymore.
 		 */
 		if (portal->portalPinned)
 			portal->portalPinned = false;

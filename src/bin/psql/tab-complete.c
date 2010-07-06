@@ -710,7 +710,7 @@ psql_completion(char *text, int start, int end)
 	else if (pg_strcasecmp(prev3_wd, "ALTER") == 0 &&
 			 (pg_strcasecmp(prev2_wd, "AGGREGATE") == 0 ||
 			  pg_strcasecmp(prev2_wd, "FUNCTION") == 0))
-			COMPLETE_WITH_CONST("(");
+		COMPLETE_WITH_CONST("(");
 	/* ALTER AGGREGATE,FUNCTION <name> (...) */
 	else if (pg_strcasecmp(prev4_wd, "ALTER") == 0 &&
 			 (pg_strcasecmp(prev3_wd, "AGGREGATE") == 0 ||

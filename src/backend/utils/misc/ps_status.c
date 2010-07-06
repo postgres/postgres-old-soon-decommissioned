@@ -94,7 +94,7 @@ static size_t ps_buffer_size;	/* space determined at run time */
 static size_t last_status_len;	/* use to minimize length of clobber */
 #endif   /* PS_USE_CLOBBER_ARGV */
 
-static size_t ps_buffer_cur_len;		/* nominal strlen(ps_buffer) */
+static size_t ps_buffer_cur_len;	/* nominal strlen(ps_buffer) */
 
 static size_t ps_buffer_fixed_size;		/* size of the constant prefix */
 

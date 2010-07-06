@@ -1108,18 +1108,18 @@ ExecQueryUsingCursor(const char *query, double *elapsed_msec)
 
 		/*
 		 * Make sure to flush the output stream, so intermediate results are
-		 * visible to the client immediately.  We check the results because
-		 * if the pager dies/exits/etc, there's no sense throwing more data
-		 * at it.
+		 * visible to the client immediately.  We check the results because if
+		 * the pager dies/exits/etc, there's no sense throwing more data at
+		 * it.
 		 */
 		flush_error = fflush(pset.queryFout);
 
 		/*
-		 * Check if we are at the end, if a cancel was pressed, or if
-		 * there were any errors either trying to flush out the results,
-		 * or more generally on the output stream at all.  If we hit any
-		 * errors writing things to the stream, we presume $PAGER has
-		 * disappeared and stop bothering to pull down more data.
+		 * Check if we are at the end, if a cancel was pressed, or if there
+		 * were any errors either trying to flush out the results, or more
+		 * generally on the output stream at all.  If we hit any errors
+		 * writing things to the stream, we presume $PAGER has disappeared and
+		 * stop bothering to pull down more data.
 		 */
 		if (ntuples < pset.fetch_count || cancel_pressed || flush_error ||
 			ferror(pset.queryFout))

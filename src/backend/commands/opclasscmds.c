@@ -1954,8 +1954,8 @@ AlterOpClassOwner(List *name, const char *access_method, Oid newOwnerId)
 void
 AlterOpClassOwner_oid(Oid opclassOid, Oid newOwnerId)
 {
-	HeapTuple       tup;
-	Relation        rel;
+	HeapTuple	tup;
+	Relation	rel;
 
 	rel = heap_open(OperatorClassRelationId, RowExclusiveLock);
 
@@ -2097,8 +2097,8 @@ AlterOpFamilyOwner(List *name, const char *access_method, Oid newOwnerId)
 void
 AlterOpFamilyOwner_oid(Oid opfamilyOid, Oid newOwnerId)
 {
-	HeapTuple       tup;
-	Relation        rel;
+	HeapTuple	tup;
+	Relation	rel;
 
 	rel = heap_open(OperatorFamilyRelationId, RowExclusiveLock);
 

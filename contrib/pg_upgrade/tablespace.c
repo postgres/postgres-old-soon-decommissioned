@@ -11,7 +11,7 @@
 
 static void get_tablespace_paths(migratorContext *ctx);
 static void set_tablespace_directory_suffix(migratorContext *ctx,
-							Cluster whichCluster);
+								Cluster whichCluster);
 
 
 void
@@ -52,7 +52,7 @@ get_tablespace_paths(migratorContext *ctx)
 
 	if ((ctx->num_tablespaces = PQntuples(res)) != 0)
 		ctx->tablespaces = (char **) pg_malloc(ctx,
-									ctx->num_tablespaces * sizeof(char *));
+									  ctx->num_tablespaces * sizeof(char *));
 	else
 		ctx->tablespaces = NULL;
 

@@ -165,13 +165,13 @@ proc_exit_prepare(int code)
 	CritSectionCount = 0;
 
 	/*
-	 * Also clear the error context stack, to prevent error callbacks
-	 * from being invoked by any elog/ereport calls made during proc_exit.
-	 * Whatever context they might want to offer is probably not relevant,
-	 * and in any case they are likely to fail outright after we've done
-	 * things like aborting any open transaction.  (In normal exit scenarios
-	 * the context stack should be empty anyway, but it might not be in the
-	 * case of elog(FATAL) for example.)
+	 * Also clear the error context stack, to prevent error callbacks from
+	 * being invoked by any elog/ereport calls made during proc_exit. Whatever
+	 * context they might want to offer is probably not relevant, and in any
+	 * case they are likely to fail outright after we've done things like
+	 * aborting any open transaction.  (In normal exit scenarios the context
+	 * stack should be empty anyway, but it might not be in the case of
+	 * elog(FATAL) for example.)
 	 */
 	error_context_stack = NULL;
 	/* For the same reason, reset debug_query_string before it's clobbered */

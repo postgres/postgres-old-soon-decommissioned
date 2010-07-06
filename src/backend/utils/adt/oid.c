@@ -314,15 +314,17 @@ oidparse(Node *node)
 		case T_Integer:
 			return intVal(node);
 		case T_Float:
+
 			/*
-			 * Values too large for int4 will be represented as Float constants
-			 * by the lexer.  Accept these if they are valid OID strings.
+			 * Values too large for int4 will be represented as Float
+			 * constants by the lexer.	Accept these if they are valid OID
+			 * strings.
 			 */
 			return oidin_subr(strVal(node), NULL);
 		default:
 			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(node));
 	}
-	return InvalidOid;		/* keep compiler quiet */
+	return InvalidOid;			/* keep compiler quiet */
 }
 
 

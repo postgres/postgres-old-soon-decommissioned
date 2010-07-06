@@ -302,8 +302,10 @@ struct pg_conn
 	char	   *pgpass;
 	char	   *keepalives;		/* use TCP keepalives? */
 	char	   *keepalives_idle;	/* time between TCP keepalives */
-	char	   *keepalives_interval;	/* time between TCP keepalive retransmits */
-	char	   *keepalives_count;	/* maximum number of TCP keepalive retransmits */
+	char	   *keepalives_interval;	/* time between TCP keepalive
+										 * retransmits */
+	char	   *keepalives_count;		/* maximum number of TCP keepalive
+										 * retransmits */
 	char	   *sslmode;		/* SSL mode (require,prefer,allow,disable) */
 	char	   *sslkey;			/* client key filename */
 	char	   *sslcert;		/* client certificate filename */

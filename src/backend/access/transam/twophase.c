@@ -1201,7 +1201,7 @@ StandbyTransactionIdIsPrepared(TransactionId xid)
 	Assert(TransactionIdIsValid(xid));
 
 	if (max_prepared_xacts <= 0)
-		return false;					/* nothing to do */
+		return false;			/* nothing to do */
 
 	/* Read and validate file */
 	buf = ReadTwoPhaseFile(xid, false);

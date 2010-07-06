@@ -23,9 +23,9 @@
 #define LONG_LONG_MIN LLONG_MIN
 #else
 #define LONG_LONG_MIN LONGLONG_MIN
-#endif /* LLONG_MIN */
-#endif /* LONG_LONG_MIN */
-#endif /* HAVE_LONG_LONG_INT */
+#endif   /* LLONG_MIN */
+#endif   /* LONG_LONG_MIN */
+#endif   /* HAVE_LONG_LONG_INT */
 
 bool		ecpg_internal_regression_mode = false;
 

@@ -654,8 +654,8 @@ attach_notnull_index_qual(MinMaxAggInfo *info, IndexScan *iplan)
 			RowCompareExpr *rc = (RowCompareExpr *) qual;
 
 			/*
-			 * Examine just the first column of the rowcompare, which is
-			 * what determines its placement in the overall qual list.
+			 * Examine just the first column of the rowcompare, which is what
+			 * determines its placement in the overall qual list.
 			 */
 			leftop = (Expr *) linitial(rc->largs);
 

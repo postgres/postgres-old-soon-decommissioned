@@ -1268,8 +1268,8 @@ expand_inherited_rtentry(PlannerInfo *root, RangeTblEntry *rte, Index rti)
 		 * if this is the parent table, leave copyObject's result alone.
 		 *
 		 * Note: we need to do this even though the executor won't run any
-		 * permissions checks on the child RTE.  The modifiedCols bitmap
-		 * may be examined for trigger-firing purposes.
+		 * permissions checks on the child RTE.  The modifiedCols bitmap may
+		 * be examined for trigger-firing purposes.
 		 */
 		if (childOID != parentOID)
 		{

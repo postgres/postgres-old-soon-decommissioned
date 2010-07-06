@@ -3957,8 +3957,8 @@ getIndexes(TableInfo tblinfo[], int numTables)
 		 * find one, create a CONSTRAINT entry linked to the INDEX entry.  We
 		 * assume an index won't have more than one internal dependency.
 		 *
-		 * As of 9.0 we don't need to look at pg_depend but can check for
-		 * a match to pg_constraint.conindid.  The check on conrelid is
+		 * As of 9.0 we don't need to look at pg_depend but can check for a
+		 * match to pg_constraint.conindid.  The check on conrelid is
 		 * redundant but useful because that column is indexed while conindid
 		 * is not.
 		 */

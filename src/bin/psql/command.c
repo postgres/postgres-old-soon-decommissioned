@@ -659,7 +659,7 @@ exec_command(const char *cmd,
 			len = strlen(opt);
 			while (len > 0 &&
 				   (isspace((unsigned char) opt[len - 1])
-						|| opt[len - 1] == ';'))
+					|| opt[len - 1] == ';'))
 				opt[--len] = '\0';
 		}
 

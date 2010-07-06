@@ -1797,7 +1797,7 @@ get_sql_delete(Relation rel, int *pkattnums, int pknumatts, char **tgt_pkattvals
 			appendStringInfo(&buf, " AND ");
 
 		appendStringInfoString(&buf,
-		   quote_ident_cstr(NameStr(tupdesc->attrs[pkattnum]->attname)));
+			   quote_ident_cstr(NameStr(tupdesc->attrs[pkattnum]->attname)));
 
 		if (tgt_pkattvals[i] != NULL)
 			appendStringInfo(&buf, " = %s",
@@ -1880,7 +1880,7 @@ get_sql_update(Relation rel, int *pkattnums, int pknumatts, char **src_pkattvals
 			appendStringInfo(&buf, " AND ");
 
 		appendStringInfo(&buf, "%s",
-		   quote_ident_cstr(NameStr(tupdesc->attrs[pkattnum]->attname)));
+			   quote_ident_cstr(NameStr(tupdesc->attrs[pkattnum]->attname)));
 
 		val = tgt_pkattvals[i];
 
@@ -1976,8 +1976,8 @@ get_tuple_of_interest(Relation rel, int *pkattnums, int pknumatts, char **src_pk
 	 * Build sql statement to look up tuple of interest, ie, the one matching
 	 * src_pkattvals.  We used to use "SELECT *" here, but it's simpler to
 	 * generate a result tuple that matches the table's physical structure,
-	 * with NULLs for any dropped columns.  Otherwise we have to deal with
-	 * two different tupdescs and everything's very confusing.
+	 * with NULLs for any dropped columns.	Otherwise we have to deal with two
+	 * different tupdescs and everything's very confusing.
 	 */
 	appendStringInfoString(&buf, "SELECT ");
 
@@ -1990,7 +1990,7 @@ get_tuple_of_interest(Relation rel, int *pkattnums, int pknumatts, char **src_pk
 			appendStringInfoString(&buf, "NULL");
 		else
 			appendStringInfoString(&buf,
-								   quote_ident_cstr(NameStr(tupdesc->attrs[i]->attname)));
+					  quote_ident_cstr(NameStr(tupdesc->attrs[i]->attname)));
 	}
 
 	appendStringInfo(&buf, " FROM %s WHERE ", relname);
@@ -2003,7 +2003,7 @@ get_tuple_of_interest(Relation rel, int *pkattnums, int pknumatts, char **src_pk
 			appendStringInfo(&buf, " AND ");
 
 		appendStringInfoString(&buf,
-		   quote_ident_cstr(NameStr(tupdesc->attrs[pkattnum]->attname)));
+			   quote_ident_cstr(NameStr(tupdesc->attrs[pkattnum]->attname)));
 
 		if (src_pkattvals[i] != NULL)
 			appendStringInfo(&buf, " = %s",
@@ -2381,11 +2381,13 @@ escape_param_str(const char *str)
  * Validate the PK-attnums argument for dblink_build_sql_insert() and related
  * functions, and translate to the internal representation.
  *
- * The user supplies an int2vector of 1-based physical attnums, plus a count
+ * The user supplies an int2vector of 1-based logical attnums, plus a count
  * argument (the need for the separate count argument is historical, but we
  * still check it).  We check that each attnum corresponds to a valid,
  * non-dropped attribute of the rel.  We do *not* prevent attnums from being
  * listed twice, though the actual use-case for such things is dubious.
+ * Note that before Postgres 9.0, the user's attnums were interpreted as
+ * physical not logical column numbers; this was changed for future-proofing.
  *
  * The internal representation is a palloc'd int array of 0-based physical
  * attnums.
@@ -2415,13 +2417,33 @@ validate_pkattnums(Relation rel,
 	/* Validate attnums and convert to internal form */
 	for (i = 0; i < pknumatts_arg; i++)
 	{
-		int		pkattnum = pkattnums_arg->values[i];
+		int			pkattnum = pkattnums_arg->values[i];
+		int			lnum;
+		int			j;
 
-		if (pkattnum <= 0 || pkattnum > natts ||
-			tupdesc->attrs[pkattnum - 1]->attisdropped)
+		/* Can throw error immediately if out of range */
+		if (pkattnum <= 0 || pkattnum > natts)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 					 errmsg("invalid attribute number %d", pkattnum)));
-		(*pkattnums)[i] = pkattnum - 1;
+
+		/* Identify which physical column has this logical number */
+		lnum = 0;
+		for (j = 0; j < natts; j++)
+		{
+			/* dropped columns don't count */
+			if (tupdesc->attrs[j]->attisdropped)
+				continue;
+
+			if (++lnum == pkattnum)
+				break;
+		}
+
+		if (j < natts)
+			(*pkattnums)[i] = j;
+		else
+			ereport(ERROR,
+					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+					 errmsg("invalid attribute number %d", pkattnum)));
 	}
 }
