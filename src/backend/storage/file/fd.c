@@ -1062,7 +1062,7 @@ FileClose(File file)
 		{
 			if (stat(vfdP->fileName, &filestats) == 0)
 			{
-				if (filestats.st_size >= log_temp_files)
+				if ((filestats.st_size / 1024) >= log_temp_files)
 					ereport(LOG,
 							(errmsg("temporary file: path \"%s\", size %lu",
 									vfdP->fileName,
