@@ -152,6 +152,15 @@
    New In Python 3.0</ulink> for more information about porting to
    Python 3.
   </para>
+
+  <para>
+   On most (possibly all) platforms, it is not possible to use
+   PL/Python based on Python 2 and PL/Python based on Python 3 in the
+   same session, because the symbols in the dynamic modules will
+   clash, which will result in crashes of the PostgreSQL server
+   process.  It is possible, however, to use both PL/Python variants
+   in the same database, from separate sessions.
+  </para>
  </sect1>
 
  <sect1 id="plpython-funcs">
