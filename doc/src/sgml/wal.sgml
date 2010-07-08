@@ -98,7 +98,7 @@
    command forces all data from the BBU to the disks, eliminating much
    of the benefit of the BBU.  You can run the utility
    <filename>src/tools/fsync</> in the PostgreSQL source tree to see
-   if you are effected.  If you are effected, the performance benefits
+   if you are affected.  If you are affected, the performance benefits
    of the BBU cache can be regained by turning off write barriers in
    the file system or reconfiguring the disk controller, if that is
    an option.  If write barriers are turned off, make sure the battery
