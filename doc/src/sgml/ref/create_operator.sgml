@@ -227,6 +227,12 @@ COMMUTATOR = OPERATOR(myschema.===) ,
   </para>
 
   <para>
+   It is not possible to specify an operator's lexical precedence in
+   <command>CREATE OPERATOR</>, because the parser's precedence behavior
+   is hard-wired.  See <xref linkend="sql-precedence"> for precedence details.
+  </para>
+
+  <para>
    The obsolete options <literal>SORT1</>, <literal>SORT2</>,
    <literal>LTCMP</>, and <literal>GTCMP</> were formerly used to
    specify the names of sort operators associated with a merge-joinable
