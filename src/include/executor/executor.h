@@ -74,6 +74,10 @@ extern PGDLLIMPORT ExecutorRun_hook_type ExecutorRun_hook;
 typedef void (*ExecutorEnd_hook_type) (QueryDesc *queryDesc);
 extern PGDLLIMPORT ExecutorEnd_hook_type ExecutorEnd_hook;
 
+/* Hook for plugins to get control in ExecCheckRTPerms() */
+typedef void (*ExecutorCheckPerms_hook_type) (List *);
+extern PGDLLIMPORT ExecutorCheckPerms_hook_type ExecutorCheckPerms_hook;
+
 
 /*
  * prototypes from functions in execAmi.c
