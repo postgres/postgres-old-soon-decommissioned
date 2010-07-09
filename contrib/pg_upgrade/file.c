@@ -170,6 +170,8 @@ copy_file(const char *srcfile, const char *dstfile, bool force)
 
 		if (nbytes < 0)
 		{
+			int save_errno = errno;
+			
 			if (buffer != NULL)
 				free(buffer);
 
@@ -179,6 +181,7 @@ copy_file(const char *srcfile, const char *dstfile, bool force)
 			if (dest_fd != 0)
 				close(dest_fd);
 
+			errno = save_errno;
 			return -1;
 		}
 
@@ -190,8 +193,7 @@ copy_file(const char *srcfile, const char *dstfile, bool force)
 		if (write(dest_fd, buffer, nbytes) != nbytes)
 		{
 			/* if write didn't set errno, assume problem is no disk space */
-			if (errno == 0)
-				errno = ENOSPC;
+			int save_errno = errno ? errno : ENOSPC;
 
 			if (buffer != NULL)
 				free(buffer);
@@ -202,6 +204,7 @@ copy_file(const char *srcfile, const char *dstfile, bool force)
 			if (dest_fd != 0)
 				close(dest_fd);
 
+			errno = save_errno;
 			return -1;
 		}
 	}
