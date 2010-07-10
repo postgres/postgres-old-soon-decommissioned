@@ -19,6 +19,13 @@
    </para>
 
    <para>
+    Limit line lengths so that the code is readable in an 80-column window.
+    (This doesn't mean that you must never go past 80 columns.  For instance,
+    breaking a long error message string in arbitrary places just to keep the
+    code within 80 columns is probably not a net gain in readability.)
+   </para>
+
+   <para>
     Do not use C++ style comments (<literal>//</> comments).  Strict ANSI C
     compilers do not accept them.  For the same reason, do not use C++
     extensions such as declaring new variables mid-block.
@@ -50,6 +57,8 @@
     rules, it's a good idea to do so.  Your code will get run through
     <application>pgindent</> before the next release, so there's no point in
     making it look nice under some other set of formatting conventions.
+    A good rule of thumb for patches is <quote>make the new code look like
+    the existing code around it</>.
    </para>
 
    <para>
