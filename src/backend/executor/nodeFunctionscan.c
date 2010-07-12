@@ -18,7 +18,7 @@
  *		ExecFunctionNext		retrieve next tuple in sequential order.
  *		ExecInitFunctionScan	creates and initializes a functionscan node.
  *		ExecEndFunctionScan		releases any storage allocated.
- *		ExecFunctionReScan		rescans the function
+ *		ExecReScanFunctionScan	rescans the function
  */
 #include "postgres.h"
 
@@ -255,13 +255,13 @@ ExecEndFunctionScan(FunctionScanState *node)
 }
 
 /* ----------------------------------------------------------------
- *		ExecFunctionReScan
+ *		ExecReScanFunctionScan
  *
  *		Rescans the relation.
  * ----------------------------------------------------------------
  */
 void
-ExecFunctionReScan(FunctionScanState *node, ExprContext *exprCtxt)
+ExecReScanFunctionScan(FunctionScanState *node)
 {
 	ExecClearTuple(node->ss.ps.ps_ResultTupleSlot);
 

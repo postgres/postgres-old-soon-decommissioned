@@ -404,7 +404,7 @@ ExecEndLimit(LimitState *node)
 
 
 void
-ExecReScanLimit(LimitState *node, ExprContext *exprCtxt)
+ExecReScanLimit(LimitState *node)
 {
 	/*
 	 * Recompute limit/offset in case parameters changed, and reset the state
@@ -417,6 +417,6 @@ ExecReScanLimit(LimitState *node, ExprContext *exprCtxt)
 	 * if chgParam of subnode is not null then plan will be re-scanned by
 	 * first ExecProcNode.
 	 */
-	if (((PlanState *) node)->lefttree->chgParam == NULL)
-		ExecReScan(((PlanState *) node)->lefttree, exprCtxt);
+	if (node->ps.lefttree->chgParam == NULL)
+		ExecReScan(node->ps.lefttree);
 }

@@ -298,13 +298,13 @@ ExecEndCteScan(CteScanState *node)
 }
 
 /* ----------------------------------------------------------------
- *		ExecCteScanReScan
+ *		ExecReScanCteScan
  *
  *		Rescans the relation.
  * ----------------------------------------------------------------
  */
 void
-ExecCteScanReScan(CteScanState *node, ExprContext *exprCtxt)
+ExecReScanCteScan(CteScanState *node)
 {
 	Tuplestorestate *tuplestorestate = node->leader->cte_table;
 

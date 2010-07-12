@@ -175,7 +175,8 @@ typedef struct Const
  *				Such parameters are numbered from 1 to n.
  *
  *		PARAM_EXEC:  The parameter is an internal executor parameter, used
- *				for passing values into and out of sub-queries.
+ *				for passing values into and out of sub-queries or from
+ *				nestloop joins to their inner scans.
  *				For historical reasons, such parameters are numbered from 0.
  *				These numbers are independent of PARAM_EXTERN numbers.
  *

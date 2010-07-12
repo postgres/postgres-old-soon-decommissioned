@@ -19,6 +19,6 @@
 extern GroupState *ExecInitGroup(Group *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecGroup(GroupState *node);
 extern void ExecEndGroup(GroupState *node);
-extern void ExecReScanGroup(GroupState *node, ExprContext *exprCtxt);
+extern void ExecReScanGroup(GroupState *node);
 
 #endif   /* NODEGROUP_H */

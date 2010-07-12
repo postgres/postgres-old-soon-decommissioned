@@ -184,7 +184,7 @@ ExecEndUnique(UniqueState *node)
 
 
 void
-ExecReScanUnique(UniqueState *node, ExprContext *exprCtxt)
+ExecReScanUnique(UniqueState *node)
 {
 	/* must clear result tuple so first input tuple is returned */
 	ExecClearTuple(node->ps.ps_ResultTupleSlot);
@@ -193,6 +193,6 @@ ExecReScanUnique(UniqueState *node, ExprContext *exprCtxt)
 	 * if chgParam of subnode is not null then plan will be re-scanned by
 	 * first ExecProcNode.
 	 */
-	if (((PlanState *) node)->lefttree->chgParam == NULL)
-		ExecReScan(((PlanState *) node)->lefttree, exprCtxt);
+	if (node->ps.lefttree->chgParam == NULL)
+		ExecReScan(node->ps.lefttree);
 }

@@ -17,7 +17,7 @@
  *
  *		ExecTidScan			scans a relation using tids
  *		ExecInitTidScan		creates and initializes state info.
- *		ExecTidReScan		rescans the tid relation.
+ *		ExecReScanTidScan	rescans the tid relation.
  *		ExecEndTidScan		releases all storage.
  *		ExecTidMarkPos		marks scan position.
  *		ExecTidRestrPos		restores scan position.
@@ -398,17 +398,12 @@ ExecTidScan(TidScanState *node)
 }
 
 /* ----------------------------------------------------------------
- *		ExecTidReScan(node)
+ *		ExecReScanTidScan(node)
  * ----------------------------------------------------------------
  */
 void
-ExecTidReScan(TidScanState *node, ExprContext *exprCtxt)
+ExecReScanTidScan(TidScanState *node)
 {
-	/* If we are being passed an outer tuple, save it for runtime key calc */
-	if (exprCtxt != NULL)
-		node->ss.ps.ps_ExprContext->ecxt_outertuple =
-			exprCtxt->ecxt_outertuple;
-
 	if (node->tss_TidList)
 		pfree(node->tss_TidList);
 	node->tss_TidList = NULL;

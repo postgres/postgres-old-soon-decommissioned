@@ -1680,7 +1680,7 @@ ExecEndMergeJoin(MergeJoinState *node)
 }
 
 void
-ExecReScanMergeJoin(MergeJoinState *node, ExprContext *exprCtxt)
+ExecReScanMergeJoin(MergeJoinState *node)
 {
 	ExecClearTuple(node->mj_MarkedTupleSlot);
 
@@ -1695,9 +1695,9 @@ ExecReScanMergeJoin(MergeJoinState *node, ExprContext *exprCtxt)
 	 * if chgParam of subnodes is not null then plans will be re-scanned by
 	 * first ExecProcNode.
 	 */
-	if (((PlanState *) node)->lefttree->chgParam == NULL)
-		ExecReScan(((PlanState *) node)->lefttree, exprCtxt);
-	if (((PlanState *) node)->righttree->chgParam == NULL)
-		ExecReScan(((PlanState *) node)->righttree, exprCtxt);
+	if (node->js.ps.lefttree->chgParam == NULL)
+		ExecReScan(node->js.ps.lefttree);
+	if (node->js.ps.righttree->chgParam == NULL)
+		ExecReScan(node->js.ps.righttree);
 
 }

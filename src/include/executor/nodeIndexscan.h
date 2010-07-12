@@ -21,7 +21,7 @@ extern TupleTableSlot *ExecIndexScan(IndexScanState *node);
 extern void ExecEndIndexScan(IndexScanState *node);
 extern void ExecIndexMarkPos(IndexScanState *node);
 extern void ExecIndexRestrPos(IndexScanState *node);
-extern void ExecIndexReScan(IndexScanState *node, ExprContext *exprCtxt);
+extern void ExecReScanIndexScan(IndexScanState *node);
 
 /* routines exported to share code with nodeBitmapIndexscan.c */
 extern void ExecIndexBuildScanKeys(PlanState *planstate, Relation index,

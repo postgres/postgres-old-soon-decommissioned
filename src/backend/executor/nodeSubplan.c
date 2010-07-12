@@ -256,7 +256,7 @@ ExecScanSubPlan(SubPlanState *node,
 	/*
 	 * Now that we've set up its parameters, we can reset the subplan.
 	 */
-	ExecReScan(planstate, NULL);
+	ExecReScan(planstate);
 
 	/*
 	 * For all sublink types except EXPR_SUBLINK and ARRAY_SUBLINK, the result
@@ -508,7 +508,7 @@ buildSubPlanHash(SubPlanState *node, ExprContext *econtext)
 	/*
 	 * Reset subplan to start.
 	 */
-	ExecReScan(planstate, NULL);
+	ExecReScan(planstate);
 
 	/*
 	 * Scan the subplan and load the hash table(s).  Note that when there are
@@ -884,7 +884,7 @@ ExecInitSubPlan(SubPlan *subplan, PlanState *parent)
  *
  *		Executes an InitPlan subplan and sets its output parameters.
  *
- * This is called from ExecEvalParam() when the value of a PARAM_EXEC
+ * This is called from ExecEvalParamExec() when the value of a PARAM_EXEC
  * parameter is requested and the param's execPlan field is set (indicating
  * that the param has not yet been evaluated).	This allows lazy evaluation
  * of initplans: we don't run the subplan until/unless we need its output.

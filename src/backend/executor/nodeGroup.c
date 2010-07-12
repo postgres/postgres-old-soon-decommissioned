@@ -277,14 +277,18 @@ ExecEndGroup(GroupState *node)
 }
 
 void
-ExecReScanGroup(GroupState *node, ExprContext *exprCtxt)
+ExecReScanGroup(GroupState *node)
 {
 	node->grp_done = FALSE;
 	node->ss.ps.ps_TupFromTlist = false;
 	/* must clear first tuple */
 	ExecClearTuple(node->ss.ss_ScanTupleSlot);
 
-	if (((PlanState *) node)->lefttree &&
-		((PlanState *) node)->lefttree->chgParam == NULL)
-		ExecReScan(((PlanState *) node)->lefttree, exprCtxt);
+	/*
+	 * if chgParam of subnode is not null then plan will be re-scanned by
+	 * first ExecProcNode.
+	 */
+	if (node->ss.ps.lefttree &&
+		node->ss.ps.lefttree->chgParam == NULL)
+		ExecReScan(node->ss.ps.lefttree);
 }

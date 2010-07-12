@@ -432,12 +432,25 @@ typedef struct Join
 
 /* ----------------
  *		nest loop join node
+ *
+ * The nestParams list identifies any executor Params that must be passed
+ * into execution of the inner subplan carrying values from the current row
+ * of the outer subplan.  Currently we restrict these values to be simple
+ * Vars, but perhaps someday that'd be worth relaxing.
  * ----------------
  */
 typedef struct NestLoop
 {
 	Join		join;
+	List	   *nestParams;		/* list of NestLoopParam nodes */
 } NestLoop;
+
+typedef struct NestLoopParam
+{
+	NodeTag		type;
+	int			paramno;		/* number of the PARAM_EXEC Param to set */
+	Var		   *paramval;		/* outer-relation Var to assign to Param */
+} NestLoopParam;
 
 /* ----------------
  *		merge join node

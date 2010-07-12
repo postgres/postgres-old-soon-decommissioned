@@ -842,7 +842,7 @@ ExecHashJoinGetSavedTuple(HashJoinState *hjstate,
 
 
 void
-ExecReScanHashJoin(HashJoinState *node, ExprContext *exprCtxt)
+ExecReScanHashJoin(HashJoinState *node)
 {
 	/*
 	 * In a multi-batch join, we currently have to do rescans the hard way,
@@ -854,7 +854,7 @@ ExecReScanHashJoin(HashJoinState *node, ExprContext *exprCtxt)
 	if (node->hj_HashTable != NULL)
 	{
 		if (node->hj_HashTable->nbatch == 1 &&
-			((PlanState *) node)->righttree->chgParam == NULL)
+			node->js.ps.righttree->chgParam == NULL)
 		{
 			/*
 			 * okay to reuse the hash table; needn't rescan inner, either.
@@ -880,8 +880,8 @@ ExecReScanHashJoin(HashJoinState *node, ExprContext *exprCtxt)
 			 * if chgParam of subnode is not null then plan will be re-scanned
 			 * by first ExecProcNode.
 			 */
-			if (((PlanState *) node)->righttree->chgParam == NULL)
-				ExecReScan(((PlanState *) node)->righttree, exprCtxt);
+			if (node->js.ps.righttree->chgParam == NULL)
+				ExecReScan(node->js.ps.righttree);
 		}
 	}
 
@@ -900,6 +900,6 @@ ExecReScanHashJoin(HashJoinState *node, ExprContext *exprCtxt)
 	 * if chgParam of subnode is not null then plan will be re-scanned by
 	 * first ExecProcNode.
 	 */
-	if (((PlanState *) node)->lefttree->chgParam == NULL)
-		ExecReScan(((PlanState *) node)->lefttree, exprCtxt);
+	if (node->js.ps.lefttree->chgParam == NULL)
+		ExecReScan(node->js.ps.lefttree);
 }

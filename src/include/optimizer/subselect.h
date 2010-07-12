@@ -29,6 +29,7 @@ extern void SS_finalize_plan(PlannerInfo *root, Plan *plan,
 				 bool attach_initplans);
 extern Param *SS_make_initplan_from_plan(PlannerInfo *root, Plan *plan,
 						   Oid resulttype, int32 resulttypmod);
+extern Param *assign_nestloop_param(PlannerInfo *root, Var *var);
 extern int	SS_assign_special_param(PlannerInfo *root);
 
 #endif   /* SUBSELECT_H */

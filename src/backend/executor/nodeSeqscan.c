@@ -18,7 +18,7 @@
  *		ExecSeqNext				retrieve next tuple in sequential order.
  *		ExecInitSeqScan			creates and initializes a seqscan node.
  *		ExecEndSeqScan			releases any storage allocated.
- *		ExecSeqReScan			rescans the relation
+ *		ExecReScanSeqScan		rescans the relation
  *		ExecSeqMarkPos			marks scan position
  *		ExecSeqRestrPos			restores scan position
  */
@@ -255,13 +255,13 @@ ExecEndSeqScan(SeqScanState *node)
  */
 
 /* ----------------------------------------------------------------
- *		ExecSeqReScan
+ *		ExecReScanSeqScan
  *
  *		Rescans the relation.
  * ----------------------------------------------------------------
  */
 void
-ExecSeqReScan(SeqScanState *node, ExprContext *exprCtxt)
+ExecReScanSeqScan(SeqScanState *node)
 {
 	HeapScanDesc scan;
 

@@ -1045,7 +1045,7 @@ ExecEndModifyTable(ModifyTableState *node)
 }
 
 void
-ExecReScanModifyTable(ModifyTableState *node, ExprContext *exprCtxt)
+ExecReScanModifyTable(ModifyTableState *node)
 {
 	/*
 	 * Currently, we don't need to support rescan on ModifyTable nodes. The

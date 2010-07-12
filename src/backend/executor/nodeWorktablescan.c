@@ -203,13 +203,13 @@ ExecEndWorkTableScan(WorkTableScanState *node)
 }
 
 /* ----------------------------------------------------------------
- *		ExecWorkTableScanReScan
+ *		ExecReScanWorkTableScan
  *
  *		Rescans the relation.
  * ----------------------------------------------------------------
  */
 void
-ExecWorkTableScanReScan(WorkTableScanState *node, ExprContext *exprCtxt)
+ExecReScanWorkTableScan(WorkTableScanState *node)
 {
 	ExecClearTuple(node->ss.ps.ps_ResultTupleSlot);
 

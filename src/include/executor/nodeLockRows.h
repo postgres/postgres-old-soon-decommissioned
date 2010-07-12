@@ -19,6 +19,6 @@
 extern LockRowsState *ExecInitLockRows(LockRows *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecLockRows(LockRowsState *node);
 extern void ExecEndLockRows(LockRowsState *node);
-extern void ExecReScanLockRows(LockRowsState *node, ExprContext *exprCtxt);
+extern void ExecReScanLockRows(LockRowsState *node);
 
 #endif   /* NODELOCKROWS_H */

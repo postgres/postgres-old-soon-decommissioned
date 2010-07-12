@@ -19,6 +19,6 @@
 extern LimitState *ExecInitLimit(Limit *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecLimit(LimitState *node);
 extern void ExecEndLimit(LimitState *node);
-extern void ExecReScanLimit(LimitState *node, ExprContext *exprCtxt);
+extern void ExecReScanLimit(LimitState *node);
 
 #endif   /* NODELIMIT_H */

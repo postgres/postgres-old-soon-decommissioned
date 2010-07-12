@@ -299,13 +299,13 @@ ExecEndRecursiveUnion(RecursiveUnionState *node)
 }
 
 /* ----------------------------------------------------------------
- *		ExecRecursiveUnionReScan
+ *		ExecReScanRecursiveUnion
  *
  *		Rescans the relation.
  * ----------------------------------------------------------------
  */
 void
-ExecRecursiveUnionReScan(RecursiveUnionState *node, ExprContext *exprCtxt)
+ExecReScanRecursiveUnion(RecursiveUnionState *node)
 {
 	PlanState  *outerPlan = outerPlanState(node);
 	PlanState  *innerPlan = innerPlanState(node);
@@ -323,7 +323,7 @@ ExecRecursiveUnionReScan(RecursiveUnionState *node, ExprContext *exprCtxt)
 	 * non-recursive term.
 	 */
 	if (outerPlan->chgParam == NULL)
-		ExecReScan(outerPlan, exprCtxt);
+		ExecReScan(outerPlan);
 
 	/* Release any hashtable storage */
 	if (node->tableContext)

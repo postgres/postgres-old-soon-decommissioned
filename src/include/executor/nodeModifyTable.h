@@ -18,6 +18,6 @@
 extern ModifyTableState *ExecInitModifyTable(ModifyTable *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecModifyTable(ModifyTableState *node);
 extern void ExecEndModifyTable(ModifyTableState *node);
-extern void ExecReScanModifyTable(ModifyTableState *node, ExprContext *exprCtxt);
+extern void ExecReScanModifyTable(ModifyTableState *node);
 
 #endif   /* NODEMODIFYTABLE_H */

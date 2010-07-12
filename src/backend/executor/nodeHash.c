@@ -961,14 +961,14 @@ ExecHashTableReset(HashJoinTable hashtable)
 }
 
 void
-ExecReScanHash(HashState *node, ExprContext *exprCtxt)
+ExecReScanHash(HashState *node)
 {
 	/*
 	 * if chgParam of subnode is not null then plan will be re-scanned by
 	 * first ExecProcNode.
 	 */
-	if (((PlanState *) node)->lefttree->chgParam == NULL)
-		ExecReScan(((PlanState *) node)->lefttree, exprCtxt);
+	if (node->ps.lefttree->chgParam == NULL)
+		ExecReScan(node->ps.lefttree);
 }
 
 

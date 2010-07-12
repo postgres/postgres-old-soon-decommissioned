@@ -20,7 +20,7 @@ extern HashState *ExecInitHash(Hash *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecHash(HashState *node);
 extern Node *MultiExecHash(HashState *node);
 extern void ExecEndHash(HashState *node);
-extern void ExecReScanHash(HashState *node, ExprContext *exprCtxt);
+extern void ExecReScanHash(HashState *node);
 
 extern HashJoinTable ExecHashTableCreate(Hash *node, List *hashOperators);
 extern void ExecHashTableDestroy(HashJoinTable hashtable);

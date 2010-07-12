@@ -19,7 +19,7 @@
 extern AggState *ExecInitAgg(Agg *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecAgg(AggState *node);
 extern void ExecEndAgg(AggState *node);
-extern void ExecReScanAgg(AggState *node, ExprContext *exprCtxt);
+extern void ExecReScanAgg(AggState *node);
 
 extern Size hash_agg_entry_size(int numAggs);
 

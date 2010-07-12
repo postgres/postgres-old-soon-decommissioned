@@ -19,6 +19,6 @@
 extern AppendState *ExecInitAppend(Append *node, EState *estate, int eflags);
 extern TupleTableSlot *ExecAppend(AppendState *node);
 extern void ExecEndAppend(AppendState *node);
-extern void ExecReScanAppend(AppendState *node, ExprContext *exprCtxt);
+extern void ExecReScanAppend(AppendState *node);
 
 #endif   /* NODEAPPEND_H */

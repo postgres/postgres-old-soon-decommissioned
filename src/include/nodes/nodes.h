@@ -74,6 +74,7 @@ typedef enum NodeTag
 	T_LockRows,
 	T_Limit,
 	/* these aren't subclasses of Plan: */
+	T_NestLoopParam,
 	T_PlanRowMark,
 	T_PlanInvalItem,
 

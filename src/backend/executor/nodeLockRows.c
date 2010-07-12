@@ -339,12 +339,12 @@ ExecEndLockRows(LockRowsState *node)
 
 
 void
-ExecReScanLockRows(LockRowsState *node, ExprContext *exprCtxt)
+ExecReScanLockRows(LockRowsState *node)
 {
 	/*
 	 * if chgParam of subnode is not null then plan will be re-scanned by
 	 * first ExecProcNode.
 	 */
-	if (((PlanState *) node)->lefttree->chgParam == NULL)
-		ExecReScan(((PlanState *) node)->lefttree, exprCtxt);
+	if (node->ps.lefttree->chgParam == NULL)
+		ExecReScan(node->ps.lefttree);
 }

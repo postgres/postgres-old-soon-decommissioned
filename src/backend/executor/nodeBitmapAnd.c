@@ -185,7 +185,7 @@ ExecEndBitmapAnd(BitmapAndState *node)
 }
 
 void
-ExecReScanBitmapAnd(BitmapAndState *node, ExprContext *exprCtxt)
+ExecReScanBitmapAnd(BitmapAndState *node)
 {
 	int			i;
 
@@ -201,9 +201,10 @@ ExecReScanBitmapAnd(BitmapAndState *node, ExprContext *exprCtxt)
 			UpdateChangedParamSet(subnode, node->ps.chgParam);
 
 		/*
-		 * Always rescan the inputs immediately, to ensure we can pass down
-		 * any outer tuple that might be used in index quals.
+		 * If chgParam of subnode is not null then plan will be re-scanned by
+		 * first ExecProcNode.
 		 */
-		ExecReScan(subnode, exprCtxt);
+		if (subnode->chgParam == NULL)
+			ExecReScan(subnode);
 	}
 }

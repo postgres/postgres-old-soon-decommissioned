@@ -400,7 +400,7 @@ ExecutorRewind(QueryDesc *queryDesc)
 	/*
 	 * rescan plan
 	 */
-	ExecReScan(queryDesc->planstate, NULL);
+	ExecReScan(queryDesc->planstate);
 
 	MemoryContextSwitchTo(oldcontext);
 }

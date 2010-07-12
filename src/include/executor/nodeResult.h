@@ -21,6 +21,6 @@ extern TupleTableSlot *ExecResult(ResultState *node);
 extern void ExecEndResult(ResultState *node);
 extern void ExecResultMarkPos(ResultState *node);
 extern void ExecResultRestrPos(ResultState *node);
-extern void ExecReScanResult(ResultState *node, ExprContext *exprCtxt);
+extern void ExecReScanResult(ResultState *node);
 
 #endif   /* NODERESULT_H */

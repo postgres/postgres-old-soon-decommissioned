@@ -21,6 +21,6 @@ extern TupleTableSlot *ExecTidScan(TidScanState *node);
 extern void ExecEndTidScan(TidScanState *node);
 extern void ExecTidMarkPos(TidScanState *node);
 extern void ExecTidRestrPos(TidScanState *node);
-extern void ExecTidReScan(TidScanState *node, ExprContext *exprCtxt);
+extern void ExecReScanTidScan(TidScanState *node);
 
 #endif   /* NODETIDSCAN_H */

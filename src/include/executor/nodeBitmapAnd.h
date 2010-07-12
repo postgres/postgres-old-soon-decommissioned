@@ -19,6 +19,6 @@
 extern BitmapAndState *ExecInitBitmapAnd(BitmapAnd *node, EState *estate, int eflags);
 extern Node *MultiExecBitmapAnd(BitmapAndState *node);
 extern void ExecEndBitmapAnd(BitmapAndState *node);
-extern void ExecReScanBitmapAnd(BitmapAndState *node, ExprContext *exprCtxt);
+extern void ExecReScanBitmapAnd(BitmapAndState *node);
 
 #endif   /* NODEBITMAPAND_H */
