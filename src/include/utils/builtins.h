@@ -609,8 +609,8 @@ extern Datum pg_get_function_result(PG_FUNCTION_ARGS);
 extern char *deparse_expression(Node *expr, List *dpcontext,
 				   bool forceprefix, bool showimplicit);
 extern List *deparse_context_for(const char *aliasname, Oid relid);
-extern List *deparse_context_for_plan(Node *plan, Node *outer_plan,
-						 List *rtable, List *subplans);
+extern List *deparse_context_for_planstate(Node *planstate, List *ancestors,
+							  List *rtable);
 extern const char *quote_identifier(const char *ident);
 extern char *quote_qualified_identifier(const char *qualifier,
 						   const char *ident);
