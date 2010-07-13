@@ -294,6 +294,9 @@ PortalCreateHoldStore(Portal portal)
 /*
  * PinPortal
  *		Protect a portal from dropping.
+ *
+ * A pinned portal is still unpinned and dropped at transaction or
+ * subtransaction abort.
  */
 void
 PinPortal(Portal portal)
@@ -797,6 +800,14 @@ AtSubCleanup_Portals(SubTransactionId mySubid)
 
 		if (portal->createSubid != mySubid)
 			continue;
+
+		/*
+		 * If a portal is still pinned, forcibly unpin it. PortalDrop will not
+		 * let us drop the portal otherwise. Whoever pinned the portal was
+		 * interrupted by the abort too and won't try to use it anymore.
+		 */
+		if (portal->portalPinned)
+			portal->portalPinned = false;
 
 		/* Zap it. */
 		PortalDrop(portal, false);
