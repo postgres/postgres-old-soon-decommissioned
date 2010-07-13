@@ -259,10 +259,6 @@ or\n"), ctx->old.port, ctx->new.port, ctx->user);
   C:\\> set NEWBINDIR=newCluster/bin\n\
   C:\\> pg_upgrade\n"));
 #endif
-	printf(_("\n\
-You may find it useful to save the preceding 5 commands in a shell script\n\
-\n\
-Report bugs to <pg-migrator-general@lists.pgfoundry.org>\n"));
 }
 
 
