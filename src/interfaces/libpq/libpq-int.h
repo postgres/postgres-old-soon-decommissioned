@@ -283,10 +283,9 @@ struct pg_conn
 {
 	/* Saved values of connection options */
 	char	   *pghost;			/* the machine on which the server is running */
-	char	   *pghostaddr;		/* the IPv4 address of the machine on which
-								 * the server is running, in IPv4
-								 * numbers-and-dots notation. Takes precedence
-								 * over above. */
+	char	   *pghostaddr;		/* the numeric IP address of the machine on
+								 * which the server is running.  Takes
+								 * precedence over above. */
 	char	   *pgport;			/* the server's communication port */
 	char	   *pgunixsocket;	/* the Unix-domain socket that the server is
 								 * listening on; if NULL, uses a default

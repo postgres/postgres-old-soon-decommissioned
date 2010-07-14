@@ -206,10 +206,10 @@ pg_krb5_sendauth(PGconn *conn)
 
 	info.pg_krb5_initialised = 0;
 
-	if (!conn->pghost)
+	if (!(conn->pghost && conn->pghost[0] != '\0'))
 	{
 		printfPQExpBuffer(&conn->errorMessage,
-						  "pg_krb5_sendauth: hostname must be specified for Kerberos authentication\n");
+						  libpq_gettext("host name must be specified\n"));
 		return STATUS_ERROR;
 	}
 
@@ -426,9 +426,10 @@ pg_GSS_startup(PGconn *conn)
 	int			maxlen;
 	gss_buffer_desc temp_gbuf;
 
-	if (!conn->pghost)
+	if (!(conn->pghost && conn->pghost[0] != '\0'))
 	{
-		printfPQExpBuffer(&conn->errorMessage, libpq_gettext("host name must be specified\n"));
+		printfPQExpBuffer(&conn->errorMessage,
+						  libpq_gettext("host name must be specified\n"));
 		return STATUS_ERROR;
 	}
 
@@ -652,9 +653,10 @@ pg_SSPI_startup(PGconn *conn, int use_negotiate)
 	 * but not more complex. We can skip the @REALM part, because Windows will
 	 * fill that in for us automatically.
 	 */
-	if (conn->pghost == NULL)
+	if (!(conn->pghost && conn->pghost[0] != '\0'))
 	{
-		printfPQExpBuffer(&conn->errorMessage, libpq_gettext("host name must be specified\n"));
+		printfPQExpBuffer(&conn->errorMessage,
+						  libpq_gettext("host name must be specified\n"));
 		return STATUS_ERROR;
 	}
 	conn->sspitarget = malloc(strlen(conn->krbsrvname) + strlen(conn->pghost) + 2);
