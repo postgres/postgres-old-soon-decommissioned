@@ -589,7 +589,7 @@ protocol to make nodes agree on a serializable transactional order.
    <para>
     In standby mode, the server continuously applies WAL received from the
     master server. The standby server can read WAL from a WAL archive
-    (see <varname>restore_command</>) or directly from the master
+    (see <xref linkend="restore-command">) or directly from the master
     over a TCP connection (streaming replication). The standby server will
     also attempt to restore any WAL found in the standby cluster's
     <filename>pg_xlog</> directory. That typically happens after a server
