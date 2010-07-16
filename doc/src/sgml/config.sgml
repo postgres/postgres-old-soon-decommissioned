@@ -2844,6 +2844,39 @@ local0.*    /var/log/postgresql
       </listitem>
      </varlistentry>
 
+     <varlistentry id="guc-log-file-mode" xreflabel="log_file_mode">
+      <term><varname>log_file_mode</varname> (<type>integer</type>)</term>
+      <indexterm>
+       <primary><varname>log_file_mode</> configuration parameter</primary>
+      </indexterm>
+      <listitem>
+       <para>
+        On Unix systems this parameter sets the permissions for log files
+        when <varname>logging_collector</varname> is enabled. (On Microsoft
+        Windows this parameter is ignored.)
+        The parameter value is expected to be a numeric mode
+        specified in the format accepted by the
+        <function>chmod</function> and <function>umask</function>
+        system calls.  (To use the customary octal format the number
+        must start with a <literal>0</literal> (zero).)
+       </para>
+       <para>
+        The default permissions are <literal>0600</>, meaning only the
+        server owner can read or write the log files.  The other commonly
+        useful setting is <literal>0640</>, allowing members of the owner's
+        group to read the files.  Note however that to make use of such a
+        setting, you'll need to alter <xref linkend="guc-log-directory"> to
+        store the files somewhere outside the cluster data directory.  In
+        any case, it's unwise to make the log files world-readable, since
+        they might contain sensitive data.
+       </para>
+       <para>
+        This parameter can only be set in the <filename>postgresql.conf</>
+        file or on the server command line.
+       </para>
+      </listitem>
+     </varlistentry>
+
      <varlistentry id="guc-log-rotation-age" xreflabel="log_rotation_age">
       <term><varname>log_rotation_age</varname> (<type>integer</type>)</term>
       <indexterm>
