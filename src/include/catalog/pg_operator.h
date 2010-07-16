@@ -415,6 +415,7 @@ DATA(insert OID = 915 (  "/"	   PGNSP PGUID b f f	790  21		790   0   0 cash_div_
 DATA(insert OID = 916 (  "*"	   PGNSP PGUID b f f	701  790	790 908   0 flt8_mul_cash - - ));
 DATA(insert OID = 917 (  "*"	   PGNSP PGUID b f f	23	790		790 912   0 int4_mul_cash - - ));
 DATA(insert OID = 918 (  "*"	   PGNSP PGUID b f f	21	790		790 914   0 int2_mul_cash - - ));
+DATA(insert OID = 3825 ( "/"	   PGNSP PGUID b f f	790	790		701   0   0 cash_div_cash - - ));
 
 DATA(insert OID = 965 (  "^"	   PGNSP PGUID b f f	701  701	701 0 0 dpow - - ));
 DATA(insert OID = 966 (  "+"	   PGNSP PGUID b f f 1034 1033 1034 0 0 aclinsert - - ));
