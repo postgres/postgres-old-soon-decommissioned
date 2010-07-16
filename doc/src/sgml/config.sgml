@@ -1926,7 +1926,8 @@ SET ENABLE_SEQSCAN TO OFF;
         doesn't keep any extra segments for standby purposes, and the number
         of old WAL segments available to standby servers is a function of
         the location of the previous checkpoint and status of WAL
-        archiving.  This parameter can only be set in the
+        archiving.  This parameter has no effect on restartpoints.
+        This parameter can only be set in the
         <filename>postgresql.conf</> file or on the server command line.
        </para>
        </listitem>
