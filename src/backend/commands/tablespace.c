@@ -553,8 +553,8 @@ create_tablespace_directories(const char *location, const Oid tablespaceoid)
 			ereport(ERROR,
 					(errcode(ERRCODE_UNDEFINED_FILE),
 					 errmsg("directory \"%s\" does not exist", location),
-					 InRecovery ? errhint("Create directory \"%s\" for this tablespace before "
-								   "restarting the server.", location) : 0));
+					 InRecovery ? errhint("Create this directory for the tablespace before "
+								   "restarting the server."): 0));
 		else
 			ereport(ERROR,
 					(errcode_for_file_access(),
