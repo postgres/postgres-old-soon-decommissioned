@@ -509,6 +509,28 @@
          </listitem>
         </varlistentry>
 
+        <varlistentry id="libpq-connect-requirepeer" xreflabel="requirepeer">
+         <term><literal>requirepeer</literal></term>
+         <listitem>
+          <para>
+           For Unix-domain socket connections, if this parameter is
+           set, the client checks at the beginning of the connection
+           that the server process runs under the specified user name,
+           otherwise the connection is aborted with an error.  This
+           parameter can be used to achieve the kind of server
+           authentication that SSL certificates achieve on TCP/IP
+           connections.  (Note that if the Unix-domain socket is
+           in <filename>/tmp</filename> or another publically writable
+           location, any user could start a server there.  Use this
+           parameter to ensure that you are connected to a server run
+           by a trusted user,
+           e.g., <literal>requirepeer=postgres</literal>.)  This
+           option is only supported on some platforms, currently
+           Linux, FreeBSD, NetBSD, OpenBSD, and Solaris.
+          </para>
+         </listitem>
+        </varlistentry>
+
         <varlistentry id="libpq-connect-krbsrvname" xreflabel="krbsrvname">
          <term><literal>krbsrvname</literal></term>
          <listitem>
@@ -6136,6 +6158,16 @@ myEventProc(PGEventId evtId, void *evtInfo, void *passThrough)
       </indexterm>
       <envar>PGSSLCRL</envar>  behaves the same as the <xref
       linkend="libpq-connect-sslcrl"> connection parameter.
+     </para>
+    </listitem>
+
+    <listitem>
+     <para>
+      <indexterm>
+       <primary><envar>PGREQUIREPEER</envar></primary>
+      </indexterm>
+      <envar>PGREQUIREPEER</envar> behaves the same as the <xref
+      linkend="libpq-connect-requirepeer"> connection parameter.
      </para>
     </listitem>
 
