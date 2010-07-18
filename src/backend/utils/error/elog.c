@@ -2348,15 +2348,13 @@ send_message_to_server_log(ErrorData *edata)
 		}
 		else
 		{
-			const char *msg = _("Not safe to send CSV data\n");
-
-			write_console(msg, strlen(msg));
+			/*
+			 * syslogger not up (yet), so just dump the message to stderr,
+			 * unless we already did so above.
+			 */
 			if (!(Log_destination & LOG_DESTINATION_STDERR) &&
 				whereToSendOutput != DestDebug)
-			{
-				/* write message to stderr unless we just sent it above */
 				write_console(buf.data, buf.len);
-			}
 			pfree(buf.data);
 		}
 	}
