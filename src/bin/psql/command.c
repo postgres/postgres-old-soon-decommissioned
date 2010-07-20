@@ -306,8 +306,8 @@ exec_command(const char *cmd,
 			printf("You are connected to database \"%s\" on host \"%s\" at port \"%s\" as user \"%s\".\n",
 				   db, host, PQport(pset.db), PQuser(pset.db));
 		else
-			printf("You are connected to database \"%s\" via local socket as user \"%s\".\n",
-				   db, PQuser(pset.db));
+			printf("You are connected to database \"%s\" via local socket at port \"%s\" as user \"%s\".\n",
+				   db, PQport(pset.db), PQuser(pset.db));
 	}
 
 	/* \copy */
