@@ -781,6 +781,16 @@ testdb=&gt;
       </varlistentry>
 
       <varlistentry>
+        <term><literal>\conninfo</literal></term>
+        <listitem>
+        <para>
+        Outputs connection information about the current database
+        connection.
+        </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term><literal>\copy { <replaceable class="parameter">table</replaceable> [ ( <replaceable class="parameter">column_list</replaceable> ) ] | ( <replaceable class="parameter">query</replaceable> ) }
         { <literal>from</literal> | <literal>to</literal> }
         { <replaceable class="parameter">filename</replaceable> | stdin | stdout | pstdin | pstdout }

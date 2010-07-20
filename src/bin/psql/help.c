@@ -162,7 +162,7 @@ slashUsage(unsigned short int pager)
 {
 	FILE	   *output;
 
-	output = PageOutput(86, pager);
+	output = PageOutput(87, pager);
 
 	/* if you add/remove a line here, change the row count above */
 
@@ -249,6 +249,7 @@ slashUsage(unsigned short int pager)
 			PQdb(pset.db));
 	fprintf(output, _("  \\encoding [ENCODING]   show or set client encoding\n"));
 	fprintf(output, _("  \\password [USERNAME]   securely change the password for a user\n"));
+	fprintf(output, _("  \\conninfo              display information about current connection\n"));
 	fprintf(output, "\n");
 
 	fprintf(output, _("Operating System\n"));

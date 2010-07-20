@@ -294,6 +294,22 @@ exec_command(const char *cmd,
 			free(opt);
 	}
 
+	/* \conninfo -- display information about the current connection	*/
+	else if (strcmp(cmd, "conninfo") == 0)
+	{
+		char	   *db = PQdb(pset.db);
+		char	   *host = PQhost(pset.db);
+
+		if (!db)
+			printf("You are not connected.\n");
+		else if (host)
+			printf("You are connected to database \"%s\" on host \"%s\" at port \"%s\" as user \"%s\".\n",
+				   db, host, PQport(pset.db), PQuser(pset.db));
+		else
+			printf("You are connected to database \"%s\" via local socket as user \"%s\".\n",
+				   db, PQuser(pset.db));
+	}
+
 	/* \copy */
 	else if (pg_strcasecmp(cmd, "copy") == 0)
 	{
