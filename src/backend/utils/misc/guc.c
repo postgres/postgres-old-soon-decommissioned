@@ -1211,7 +1211,7 @@ static struct config_bool ConfigureNamesBool[] =
 			GUC_REPORT
 		},
 		&standard_conforming_strings,
-		false, NULL, NULL
+		true, NULL, NULL
 	},
 
 	{
