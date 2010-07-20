@@ -1908,6 +1908,7 @@ dbase_redo(XLogRecPtr lsn, XLogRecord *record)
 		if (stat(dst_path, &st) == 0 && S_ISDIR(st.st_mode))
 		{
 			if (!rmtree(dst_path, true))
+				/* If this failed, copydir() below is going to error. */
 				ereport(WARNING,
 						(errmsg("some useless files may be left behind in old database directory \"%s\"",
 								dst_path)));
