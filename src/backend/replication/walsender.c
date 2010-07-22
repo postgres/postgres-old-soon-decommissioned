@@ -93,6 +93,7 @@ static volatile sig_atomic_t ready_to_stop = false;
 static void WalSndSigHupHandler(SIGNAL_ARGS);
 static void WalSndShutdownHandler(SIGNAL_ARGS);
 static void WalSndQuickDieHandler(SIGNAL_ARGS);
+static void WalSndLastCycleHandler(SIGNAL_ARGS);
 
 /* Prototypes for private functions */
 static int	WalSndLoop(void);
