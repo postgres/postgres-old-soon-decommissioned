@@ -5209,6 +5209,23 @@ dynamic_library_path = 'C:\tools\postgresql;H:\my_project\lib;$libdir'
       </listitem>
      </varlistentry>
 
+    <varlistentry id="guc-quote-all-identifiers" xreflabel="quote-all-identifiers">
+      <term><varname>quote_all_identifiers</varname> (<type>boolean</type>)</term>
+      <indexterm>
+       <primary><varname>quote_all_identifiers</> configuration parameter</primary>
+      </indexterm>
+      <listitem>
+       <para>
+        When the database generates SQL, force all identifiers to be quoted,
+        even if they are not (currently) keywords.  This will affect the
+        output of <command>EXPLAIN</> as well as the results of functions
+        like <function>pg_get_viewdef</>.  See also the
+	    <option>--quote-all-identifiers</option> to
+        <xref linkend="app-pgdump"> and <xref linkend="app-pg-dumpall">.
+       </para>
+      </listitem>
+     </varlistentry>
+
      <varlistentry id="guc-sql-inheritance" xreflabel="sql_inheritance">
       <term><varname>sql_inheritance</varname> (<type>boolean</type>)</term>
       <indexterm>

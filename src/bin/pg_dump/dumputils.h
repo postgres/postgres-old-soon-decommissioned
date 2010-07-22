@@ -46,4 +46,6 @@ extern bool processSQLNamePattern(PGconn *conn, PQExpBuffer buf,
 					  const char *schemavar, const char *namevar,
 					  const char *altnamevar, const char *visibilityrule);
 
+extern int quote_all_identifiers;
+
 #endif   /* DUMPUTILS_H */
