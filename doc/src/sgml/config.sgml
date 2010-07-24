@@ -5220,7 +5220,7 @@ dynamic_library_path = 'C:\tools\postgresql;H:\my_project\lib;$libdir'
         even if they are not (currently) keywords.  This will affect the
         output of <command>EXPLAIN</> as well as the results of functions
         like <function>pg_get_viewdef</>.  See also the
-	    <option>--quote-all-identifiers</option> to
+        <option>--quote-all-identifiers</option> to
         <xref linkend="app-pgdump"> and <xref linkend="app-pg-dumpall">.
        </para>
       </listitem>
