@@ -2773,7 +2773,7 @@ P <optional> <replaceable>years</>-<replaceable>months</>-<replaceable>days</> <
       <row>
        <entry><type>boolean</type></entry>
        <entry>1 byte</entry>
-       <entry>state of true of false</entry>
+       <entry>state of true or false</entry>
       </row>
      </tbody>
     </tgroup>
