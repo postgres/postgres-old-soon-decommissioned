@@ -293,6 +293,8 @@ CREATE TABLE emp (
     cubicle     point
 );
 
+INSERT INTO emp VALUES ('Bill', 4200, 45, '(2,1)');
+
 CREATE FUNCTION double_salary(emp) RETURNS numeric AS $$
     SELECT $1.salary * 2 AS salary;
 $$ LANGUAGE SQL;
