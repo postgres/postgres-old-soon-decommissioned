@@ -2190,7 +2190,9 @@ OpenIntoRel(QueryDesc *queryDesc)
 											  into->onCommit,
 											  reloptions,
 											  true,
-											  allowSystemTableMods);
+											  allowSystemTableMods,
+											  false);
+	Assert(intoRelationId != InvalidOid);
 
 	FreeTupleDesc(tupdesc);
 

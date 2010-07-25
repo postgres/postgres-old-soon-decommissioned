@@ -687,7 +687,9 @@ make_new_heap(Oid OIDOldHeap, Oid NewTableSpace)
 										  ONCOMMIT_NOOP,
 										  reloptions,
 										  false,
-										  true);
+										  true,
+										  false);
+	Assert(OIDNewHeap != InvalidOid);
 
 	ReleaseSysCache(tuple);
 

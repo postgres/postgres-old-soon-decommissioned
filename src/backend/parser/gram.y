@@ -2212,6 +2212,23 @@ CreateStmt:	CREATE OptTemp TABLE qualified_name '(' OptTableElementList ')'
 					n->options = $9;
 					n->oncommit = $10;
 					n->tablespacename = $11;
+					n->if_not_exists = false;
+					$$ = (Node *)n;
+				}
+		| CREATE OptTemp TABLE IF_P NOT EXISTS qualified_name '('
+			OptTableElementList ')' OptInherit OptWith OnCommitOption
+			OptTableSpace
+				{
+					CreateStmt *n = makeNode(CreateStmt);
+					$7->istemp = $2;
+					n->relation = $7;
+					n->tableElts = $9;
+					n->inhRelations = $11;
+					n->constraints = NIL;
+					n->options = $12;
+					n->oncommit = $13;
+					n->tablespacename = $14;
+					n->if_not_exists = true;
 					$$ = (Node *)n;
 				}
 		| CREATE OptTemp TABLE qualified_name OF any_name
@@ -2227,6 +2244,22 @@ CreateStmt:	CREATE OptTemp TABLE qualified_name '(' OptTableElementList ')'
 					n->options = $8;
 					n->oncommit = $9;
 					n->tablespacename = $10;
+					n->if_not_exists = false;
+					$$ = (Node *)n;
+				}
+		| CREATE OptTemp TABLE IF_P NOT EXISTS qualified_name OF any_name
+			OptTypedTableElementList OptWith OnCommitOption OptTableSpace
+				{
+					CreateStmt *n = makeNode(CreateStmt);
+					n->relation = $7;
+					n->tableElts = $10;
+					n->ofTypename = makeTypeNameFromNameList($9);
+					n->ofTypename->location = @9;
+					n->constraints = NIL;
+					n->options = $11;
+					n->oncommit = $12;
+					n->tablespacename = $13;
+					n->if_not_exists = true;
 					$$ = (Node *)n;
 				}
 		;

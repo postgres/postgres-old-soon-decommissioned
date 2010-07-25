@@ -223,7 +223,9 @@ create_toast_table(Relation rel, Oid toastOid, Oid toastIndexOid, Datum reloptio
 										   ONCOMMIT_NOOP,
 										   reloptions,
 										   false,
-										   true);
+										   true,
+										   false);
+	Assert(toast_relid != InvalidOid);
 
 	/* make the toast relation visible, else index creation will fail */
 	CommandCounterIncrement();

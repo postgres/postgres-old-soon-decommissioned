@@ -2537,6 +2537,7 @@ _copyCreateStmt(CreateStmt *from)
 	COPY_NODE_FIELD(options);
 	COPY_SCALAR_FIELD(oncommit);
 	COPY_STRING_FIELD(tablespacename);
+	COPY_SCALAR_FIELD(if_not_exists);
 
 	return newnode;
 }

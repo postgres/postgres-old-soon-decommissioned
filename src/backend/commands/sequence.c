@@ -203,8 +203,10 @@ DefineSequence(CreateSeqStmt *seq)
 	stmt->options = list_make1(defWithOids(false));
 	stmt->oncommit = ONCOMMIT_NOOP;
 	stmt->tablespacename = NULL;
+	stmt->if_not_exists = false;
 
 	seqoid = DefineRelation(stmt, RELKIND_SEQUENCE);
+	Assert(seqoid != InvalidOid);
 
 	rel = heap_open(seqoid, AccessExclusiveLock);
 	tupDesc = RelationGetDescr(rel);

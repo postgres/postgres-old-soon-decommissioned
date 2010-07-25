@@ -222,6 +222,8 @@ DefineVirtualRelation(const RangeVar *relation, List *tlist, bool replace)
 	}
 	else
 	{
+		Oid		relid;
+
 		/*
 		 * now set the parameters for keys/inheritance etc. All of these are
 		 * uninteresting for views...
@@ -233,13 +235,16 @@ DefineVirtualRelation(const RangeVar *relation, List *tlist, bool replace)
 		createStmt->options = list_make1(defWithOids(false));
 		createStmt->oncommit = ONCOMMIT_NOOP;
 		createStmt->tablespacename = NULL;
+		createStmt->if_not_exists = false;
 
 		/*
 		 * finally create the relation (this will error out if there's an
 		 * existing view, so we don't need more code to complain if "replace"
 		 * is false).
 		 */
-		return DefineRelation(createStmt, RELKIND_VIEW);
+		relid = DefineRelation(createStmt, RELKIND_VIEW);
+		Assert(relid != InvalidOid);
+		return relid;
 	}
 }
 

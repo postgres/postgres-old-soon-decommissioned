@@ -513,6 +513,13 @@ standard_ProcessUtility(Node *parsetree,
 												RELKIND_RELATION);
 
 						/*
+						 * If "IF NOT EXISTS" was specified and the relation
+						 * already exists, do nothing further.
+						 */
+						if (relOid == InvalidOid)
+							continue;
+
+						/*
 						 * Let AlterTableCreateToastTable decide if this one
 						 * needs a secondary relation too.
 						 */
