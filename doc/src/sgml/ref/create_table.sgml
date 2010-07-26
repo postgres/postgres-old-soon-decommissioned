@@ -168,9 +168,9 @@ CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } ] TABLE [ IF NOT EXISTS ] <repl
     <listitem>
      <para>
       Do not throw an error if a relation with the same name already exists.
-	  A notice is issued in this case.  Note that there is no guarantee that
-	  the existing relation is anything like the one that would have been
-	  created.
+      A notice is issued in this case.  Note that there is no guarantee that
+      the existing relation is anything like the one that would have been
+      created.
      </para>
     </listitem>
    </varlistentry>
