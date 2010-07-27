@@ -2,6 +2,7 @@
 #  $PostgreSQL$
 
 use 5.008001;
+use vars qw(%_SHARED);
 
 PostgreSQL::InServer::Util::bootstrap();
 
@@ -9,7 +10,6 @@ package PostgreSQL::InServer;
 
 use strict;
 use warnings;
-use vars qw(%_SHARED);
 
 sub plperl_warn {
 	(my $msg = shift) =~ s/\(eval \d+\) //g;
