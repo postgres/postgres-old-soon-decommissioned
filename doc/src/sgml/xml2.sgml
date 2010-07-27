@@ -385,7 +385,7 @@ WHERE t.author_id = p.person_id;
    </synopsis>
 
    <para>
-    This function appplies the XSL stylesheet to the document and returns
+    This function applies the XSL stylesheet to the document and returns
     the transformed result. The paramlist is a list of parameter
     assignments to be used in the transformation, specified in the form
     <literal>a=1,b=2</>. Note that the
