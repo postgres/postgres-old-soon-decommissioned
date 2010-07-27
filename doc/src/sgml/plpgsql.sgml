@@ -4243,7 +4243,7 @@ show errors;
 <programlisting>
 CREATE OR REPLACE FUNCTION cs_update_referrer_type_proc() RETURNS void AS $func$
 DECLARE
-    CURSOR referrer_keys IS
+    referrer_keys CURSOR IS
         SELECT * FROM cs_referrer_keys
         ORDER BY try_order;
     func_body text;
