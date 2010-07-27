@@ -1572,7 +1572,7 @@ PGresult *PQexecParams(PGconn *conn,
             to be text strings.
            </para>
            <para>
-            Values passed in binary format require knowlege of
+            Values passed in binary format require knowledge of
             the internal representation expected by the backend.
             For example, integers must be passed in network byte
             order.  Passing <type>numeric</> values requires
