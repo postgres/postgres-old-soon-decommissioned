@@ -195,6 +195,13 @@ lnext:
 			HeapTupleData tuple;
 			Buffer		buffer;
 
+			/* ignore non-active child tables */
+			if (!ItemPointerIsValid(&(erm->curCtid)))
+			{
+				Assert(erm->rti != erm->prti);	/* check it's child table */
+				continue;
+			}
+
 			if (EvalPlanQualGetTuple(&node->lr_epqstate, erm->rti) != NULL)
 				continue;		/* it was updated and fetched above */
 
