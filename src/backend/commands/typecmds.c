@@ -2638,7 +2638,7 @@ AlterTypeOwner(List *names, Oid newOwnerId)
 		 * AlterTypeOwnerInternal to take care of the pg_type entry(s).
 		 */
 		if (typTup->typtype == TYPTYPE_COMPOSITE)
-			ATExecChangeOwner(typTup->typrelid, newOwnerId, true);
+			ATExecChangeOwner(typTup->typrelid, newOwnerId, true, AccessExclusiveLock);
 		else
 		{
 			/*
