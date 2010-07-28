@@ -589,8 +589,9 @@ typedef struct SubPlanState
 	TupleHashTable hashnulls;	/* hash table for rows with null(s) */
 	bool		havehashrows;	/* TRUE if hashtable is not empty */
 	bool		havenullrows;	/* TRUE if hashnulls is not empty */
-	MemoryContext tablecxt;		/* memory context containing tables */
-	ExprContext *innerecontext; /* working context for comparisons */
+	MemoryContext hashtablecxt;	/* memory context containing hash tables */
+	MemoryContext hashtempcxt;	/* temp memory context for hash tables */
+	ExprContext *innerecontext; /* econtext for computing inner tuples */
 	AttrNumber *keyColIdx;		/* control data for hash tables */
 	FmgrInfo   *eqfunctions;	/* comparison functions for hash tables */
 	FmgrInfo   *hashfunctions;	/* lookup data for hash functions */
