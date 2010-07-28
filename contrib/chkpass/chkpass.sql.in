@@ -19,7 +19,6 @@ CREATE OR REPLACE FUNCTION chkpass_out(chkpass)
 
 CREATE TYPE chkpass (
 	internallength = 16,
-	externallength = 13,
 	input = chkpass_in,
 	output = chkpass_out
 );
