@@ -6151,8 +6151,15 @@ copy_relation_data(Relation rel, SMgrRelation dst)
 
 			recptr = XLogInsert(RM_HEAP_ID, XLOG_HEAP_NEWPAGE, rdata);
 
-			PageSetLSN(page, recptr);
-			PageSetTLI(page, ThisTimeLineID);
+			/*
+			 * The page may be uninitialized. If so, we can't set the LSN
+			 * and TLI because that would corrupt the page.
+			 */
+			if (!PageIsNew(page))
+			{
+				PageSetLSN(page, recptr);
+				PageSetTLI(page, ThisTimeLineID);
+			}
 
 			END_CRIT_SECTION();
 		}
