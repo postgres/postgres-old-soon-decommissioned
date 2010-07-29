@@ -64,9 +64,9 @@
     <para>
      Each line represents a group of synonyms for a single word, which is
      given first on the line. Synonyms are separated by whitespace, thus:
-    <programlisting>
+<programlisting>
 word syn1 syn2 syn3
-    </programlisting>
+</programlisting>
     </para>
    </listitem>
    <listitem>

@@ -123,7 +123,7 @@ ssl_client_dn_field(fieldname text) returns text
      converted into ASN1 object identifiers using the OpenSSL object
      database.  The following values are acceptable:
     </para>
-    <programlisting>
+<literallayout class="monospaced">
 commonName (alias CN)
 surname (alias SN)
 name
@@ -145,7 +145,7 @@ x500UniqueIdentifier
 pseudonym
 role
 emailAddress
-    </programlisting>
+</literallayout>
     <para>
      All of these fields are optional, except <structfield>commonName</>.
      It depends
