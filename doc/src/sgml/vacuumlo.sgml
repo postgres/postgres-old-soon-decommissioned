@@ -25,9 +25,9 @@
  <sect2>
   <title>Usage</title>
 
-  <synopsis>
+<synopsis>
 vacuumlo [options] database [database2 ... databaseN]
-  </synopsis>
+</synopsis>
 
   <para>
    All databases named on the command line are processed.  Available options

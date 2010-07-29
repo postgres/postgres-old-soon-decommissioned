@@ -3359,22 +3359,22 @@ void RequestAddinLWLocks(int n)
      <function>AddinShmemInitLock</> when connecting to and initializing
      its allocation of shared memory, as shown here:
 <programlisting>
-        static mystruct *ptr = NULL;
+static mystruct *ptr = NULL;
 
-        if (!ptr)
+if (!ptr)
+{
+        bool    found;
+
+        LWLockAcquire(AddinShmemInitLock, LW_EXCLUSIVE);
+        ptr = ShmemInitStruct("my struct name", size, &amp;found);
+        if (!found)
         {
-                bool    found;
-
-                LWLockAcquire(AddinShmemInitLock, LW_EXCLUSIVE);
-                ptr = ShmemInitStruct("my struct name", size, &amp;found);
-                if (!found)
-                {
-                        initialize contents of shmem area;
-                        acquire any requested LWLocks using:
-                        ptr->mylockid = LWLockAssign();
-                }
-                LWLockRelease(AddinShmemInitLock);
+                initialize contents of shmem area;
+                acquire any requested LWLocks using:
+                ptr->mylockid = LWLockAssign();
         }
+        LWLockRelease(AddinShmemInitLock);
+}
 </programlisting>
     </para>
    </sect2>

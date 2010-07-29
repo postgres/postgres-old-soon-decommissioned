@@ -85,7 +85,7 @@ DIV.EXAMPLE {
 
 /* miscellaneous */
 
-.SCREEN, .SYNOPSIS, .PROGRAMLISTING {
+PRE.LITERALLAYOUT, .SCREEN, .SYNOPSIS, .PROGRAMLISTING {
 	margin-left: 4ex;
 }
 
