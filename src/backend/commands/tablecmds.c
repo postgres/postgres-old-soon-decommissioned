@@ -6822,11 +6822,20 @@ static void
 copy_relation_data(SMgrRelation src, SMgrRelation dst,
 				   ForkNumber forkNum, bool istemp)
 {
+	char	   *buf;
+	Page		page;
 	bool		use_wal;
 	BlockNumber nblocks;
 	BlockNumber blkno;
-	char		buf[BLCKSZ];
-	Page		page = (Page) buf;
+
+	/*
+	 * palloc the buffer so that it's MAXALIGN'd.  If it were just a local
+	 * char[] array, the compiler might align it on any byte boundary, which
+	 * can seriously hurt transfer speed to and from the kernel; not to
+	 * mention possibly making log_newpage's accesses to the page header fail.
+	 */
+	buf = (char *) palloc(BLCKSZ);
+	page = (Page) buf;
 
 	/*
 	 * We need to log the copied data in WAL iff WAL archiving is enabled AND
@@ -6854,6 +6863,8 @@ copy_relation_data(SMgrRelation src, SMgrRelation dst,
 		 */
 		smgrextend(dst, forkNum, blkno, buf, true);
 	}
+
+	pfree(buf);
 
 	/*
 	 * If the rel isn't temp, we must fsync it down to disk before it's safe
