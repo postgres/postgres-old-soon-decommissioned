@@ -185,9 +185,9 @@ gbt_numeric_penalty(PG_FUNCTION_ARGS)
 											 NumericGetDatum(os)
 											 ));
 
-	if (NUMERIC_IS_NAN(us))
+	if (numeric_is_nan(us))
 	{
-		if (NUMERIC_IS_NAN(os))
+		if (numeric_is_nan(os))
 			*result = 0.0;
 		else
 			*result = 1.0;

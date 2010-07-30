@@ -387,15 +387,7 @@ type_maximum_size(Oid type_oid, int32 typemod)
 				+ VARHDRSZ;
 
 		case NUMERICOID:
-			/* precision (ie, max # of digits) is in upper bits of typmod */
-			if (typemod > VARHDRSZ)
-			{
-				int			precision = ((typemod - VARHDRSZ) >> 16) & 0xffff;
-
-				/* Numeric stores 2 decimal digits/byte, plus header */
-				return (precision + 1) / 2 + NUMERIC_HDRSZ;
-			}
-			break;
+			return numeric_maximum_size(typemod);
 
 		case VARBITOID:
 		case BITOID:
