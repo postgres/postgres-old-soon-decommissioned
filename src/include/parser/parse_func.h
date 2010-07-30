@@ -78,4 +78,6 @@ extern Oid LookupFuncName(List *funcname, int nargs, const Oid *argtypes,
 extern Oid LookupFuncNameTypeNames(List *funcname, List *argtypes,
 						bool noError);
 
+extern void check_pg_get_expr_args(ParseState *pstate, Oid fnoid, List *args);
+
 #endif   /* PARSE_FUNC_H */
