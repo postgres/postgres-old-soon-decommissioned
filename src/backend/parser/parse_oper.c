@@ -880,6 +880,9 @@ make_op(ParseState *pstate, List *opname, Node *ltree, Node *rtree,
 
 	ReleaseSysCache(tup);
 
+	/* Hack to protect pg_get_expr() against misuse */
+	check_pg_get_expr_args(pstate, result->opfuncid, args);
+
 	return (Expr *) result;
 }
 
@@ -1007,6 +1010,9 @@ make_scalar_array_op(ParseState *pstate, List *opname,
 	result->location = location;
 
 	ReleaseSysCache(tup);
+
+	/* Hack to protect pg_get_expr() against misuse */
+	check_pg_get_expr_args(pstate, result->opfuncid, args);
 
 	return (Expr *) result;
 }
