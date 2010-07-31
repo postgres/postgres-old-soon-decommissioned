@@ -520,6 +520,8 @@ typedef struct GinScanKeyData
 	OffsetNumber attnum;
 
 	ItemPointerData curItem;
+	bool		recheckCurItem;
+
 	bool		firstCall;
 	bool		isFinished;
 } GinScanKeyData;
