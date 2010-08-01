@@ -786,6 +786,7 @@ ginInsertCleanup(Relation index, GinState *ginstate,
 			 * significant amount of time - so, run it without locking pending
 			 * list.
 			 */
+			ginBeginBAScan(&accum);
 			while ((list = ginGetEntry(&accum, &attnum, &entry, &nlist)) != NULL)
 			{
 				ginEntryInsert(index, ginstate, attnum, entry, list, nlist, FALSE);
@@ -820,6 +821,7 @@ ginInsertCleanup(Relation index, GinState *ginstate,
 				ginInitBA(&accum);
 				processPendingPage(&accum, &datums, page, maxoff + 1);
 
+				ginBeginBAScan(&accum);
 				while ((list = ginGetEntry(&accum, &attnum, &entry, &nlist)) != NULL)
 					ginEntryInsert(index, ginstate, attnum, entry, list, nlist, FALSE);
 			}
