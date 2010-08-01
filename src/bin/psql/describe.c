@@ -1592,7 +1592,12 @@ describeOneTableDetails(const char *schemaname,
 						if (strcmp(PQgetvalue(result, i, 1), "t") == 0)
 							appendPQExpBuffer(&buf, " PRIMARY KEY,");
 						else if (strcmp(PQgetvalue(result, i, 2), "t") == 0)
-							appendPQExpBuffer(&buf, " UNIQUE,");
+						{
+							if (strcmp(PQgetvalue(result, i, 7), "u") == 0)
+								appendPQExpBuffer(&buf, " UNIQUE CONSTRAINT,");
+							else
+								appendPQExpBuffer(&buf, " UNIQUE,");
+						}
 
 						/* Everything after "USING" is echoed verbatim */
 						indexdef = PQgetvalue(result, i, 5);
