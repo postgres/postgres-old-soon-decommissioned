@@ -1086,7 +1086,7 @@ RecordTransactionCommit(void)
 		 * Report the latest async commit LSN, so that the WAL writer knows to
 		 * flush this commit.
 		 */
-		XLogSetAsyncCommitLSN(XactLastRecEnd);
+		XLogSetAsyncXactLSN(XactLastRecEnd);
 
 		/*
 		 * We must not immediately update the CLOG, since we didn't flush the
@@ -1384,7 +1384,7 @@ RecordTransactionAbort(bool isSubXact)
 	 * problems occur at that point.
 	 */
 	if (!isSubXact)
-		XLogSetAsyncCommitLSN(XactLastRecEnd);
+		XLogSetAsyncXactLSN(XactLastRecEnd);
 
 	/*
 	 * Mark the transaction aborted in clog.  This is not absolutely necessary
