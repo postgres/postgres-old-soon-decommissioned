@@ -232,13 +232,13 @@ struct vars
 #define EAT(t)	(SEE(t) && next(v))		/* if next is this, swallow it */
 #define VISERR(vv)	((vv)->err != 0)	/* have we seen an error yet? */
 #define ISERR() VISERR(v)
-#define VERR(vv,e)	((vv)->nexttype = EOS, ((vv)->err) ? (vv)->err :\
-							((vv)->err = (e)))
+#define VERR(vv,e)	((vv)->nexttype = EOS, \
+					 (vv)->err = ((vv)->err ? (vv)->err : (e)))
 #define ERR(e)	VERR(v, e)		/* record an error */
 #define NOERR() {if (ISERR()) return;}	/* if error seen, return */
 #define NOERRN()	{if (ISERR()) return NULL;} /* NOERR with retval */
 #define NOERRZ()	{if (ISERR()) return 0;}	/* NOERR with retval */
-#define INSIST(c, e)	((c) ? 0 : ERR(e))		/* if condition false, error */
+#define INSIST(c, e) do { if (!(c)) ERR(e); } while (0)	/* error if c false */
 #define NOTE(b) (v->re->re_info |= (b)) /* note visible condition */
 #define EMPTYARC(x, y)	newarc(v->nfa, EMPTY, 0, x, y)
 

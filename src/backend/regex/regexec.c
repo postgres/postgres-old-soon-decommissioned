@@ -119,7 +119,7 @@ struct vars
 
 #define VISERR(vv)	((vv)->err != 0)	/* have we seen an error yet? */
 #define ISERR() VISERR(v)
-#define VERR(vv,e)	(((vv)->err) ? (vv)->err : ((vv)->err = (e)))
+#define VERR(vv,e)	((vv)->err = ((vv)->err ? (vv)->err : (e)))
 #define ERR(e)	VERR(v, e)		/* record an error */
 #define NOERR() {if (ISERR()) return v->err;}	/* if error seen, return it */
 #define OFF(p)	((p) - v->start)
