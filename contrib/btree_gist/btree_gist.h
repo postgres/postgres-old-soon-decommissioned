@@ -9,6 +9,8 @@
 #include "access/itup.h"
 #include "access/nbtree.h"
 
+#define BtreeGistNotEqualStrategyNumber 6
+
 /* indexed types */
 
 enum gbtree_type

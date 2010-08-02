@@ -225,6 +225,10 @@ gbt_num_consistent(
 		case BTGreaterEqualStrategyNumber:
 			retval = (*tinfo->f_le) (query, key->upper);
 			break;
+		case BtreeGistNotEqualStrategyNumber:
+			retval = ! ((*tinfo->f_eq) (query, key->lower) &&
+				(*tinfo->f_eq) (query, key->upper));
+			break;
 		default:
 			retval = FALSE;
 	}
