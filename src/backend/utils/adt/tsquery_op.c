@@ -149,7 +149,7 @@ CompareTSQ(TSQuery a, TSQuery b)
 	{
 		return (VARSIZE(a) < VARSIZE(b)) ? -1 : 1;
 	}
-	else
+	else if (a->size != 0)
 	{
 		QTNode	   *an = QT2QTN(GETQUERY(a), GETOPERAND(a));
 		QTNode	   *bn = QT2QTN(GETQUERY(b), GETOPERAND(b));

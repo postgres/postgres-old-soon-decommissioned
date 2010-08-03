@@ -113,12 +113,10 @@ QTNodeCompare(QTNode *an, QTNode *bn)
 		}
 		return 0;
 	}
-	else
+	else if (an->valnode->type == QI_VAL)
 	{
 		QueryOperand *ao = &an->valnode->operand;
 		QueryOperand *bo = &bn->valnode->operand;
-
-		Assert(an->valnode->type == QI_VAL);
 
 		if (ao->valcrc != bo->valcrc)
 		{
@@ -129,6 +127,11 @@ QTNodeCompare(QTNode *an, QTNode *bn)
 			return strncmp(an->word, bn->word, ao->length);
 		else
 			return (ao->length > bo->length) ? -1 : 1;
+	}
+	else
+	{
+		elog(ERROR, "unrecognized QueryItem type: %d", an->valnode->type);
+		return 0;				/* keep compiler quiet */
 	}
 }
 
