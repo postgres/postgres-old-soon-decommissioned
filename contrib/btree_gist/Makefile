@@ -11,7 +11,7 @@ DATA_built  = btree_gist.sql
 DATA        = uninstall_btree_gist.sql
 
 REGRESS     = init int2 int4 int8 float4 float8 cash oid timestamp timestamptz time timetz \
-              date interval macaddr inet cidr text varchar char bytea bit varbit numeric
+              date interval macaddr inet cidr text varchar char bytea bit varbit numeric not_equal
 
 ifdef USE_PGXS
 PG_CONFIG = pg_config
