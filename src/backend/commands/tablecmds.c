@@ -4525,6 +4525,15 @@ ATAddCheckConstraint(List **wqueue, AlteredTableInfo *tab, Relation rel,
 	CommandCounterIncrement();
 
 	/*
+	 * If the constraint got merged with an existing constraint, we're done.
+	 * We mustn't recurse to child tables in this case, because they've already
+	 * got the constraint, and visiting them again would lead to an incorrect
+	 * value for coninhcount.
+	 */
+	if (newcons == NIL)
+		return;
+
+	/*
 	 * Propagate to children as appropriate.  Unlike most other ALTER
 	 * routines, we have to do this one level of recursion at a time; we can't
 	 * use find_all_inheritors to do it in one pass.
