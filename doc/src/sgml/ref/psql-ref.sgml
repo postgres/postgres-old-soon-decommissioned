@@ -784,8 +784,7 @@ testdb=&gt;
         <term><literal>\conninfo</literal></term>
         <listitem>
         <para>
-        Outputs connection information about the current database
-        connection.
+        Outputs information about the current database connection.
         </para>
         </listitem>
       </varlistentry>
