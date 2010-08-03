@@ -21,6 +21,9 @@
 #include "parser/keywords.h"
 
 
+int		quote_all_identifiers = 0;
+
+
 #define supports_grant_options(version) ((version) >= 70400)
 
 static bool parseAclItem(const char *item, const char *type,
@@ -35,8 +38,6 @@ static void AddAcl(PQExpBuffer aclbuf, const char *keyword,
 static bool parallel_init_done = false;
 static DWORD tls_index;
 #endif
-
-int quote_all_identifiers;
 
 void
 init_parallel_dump_utils(void)
