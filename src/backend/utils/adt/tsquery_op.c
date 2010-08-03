@@ -209,7 +209,7 @@ makeTSQuerySign(TSQuery a)
 	for (i = 0; i < a->size; i++)
 	{
 		if (ptr->type == QI_VAL)
-			sign |= ((TSQuerySign) 1) << (ptr->qoperand.valcrc % TSQS_SIGLEN);
+			sign |= ((TSQuerySign) 1) << (((unsigned int) ptr->qoperand.valcrc) % TSQS_SIGLEN);
 		ptr++;
 	}
 

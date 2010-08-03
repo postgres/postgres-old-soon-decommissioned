@@ -45,7 +45,7 @@ QT2QTN(QueryItem *in, char *operand)
 	else if (operand)
 	{
 		node->word = operand + in->qoperand.distance;
-		node->sign = 1 << (in->qoperand.valcrc % 32);
+		node->sign = ((uint32) 1) << (((unsigned int) in->qoperand.valcrc) % 32);
 	}
 
 	return node;
