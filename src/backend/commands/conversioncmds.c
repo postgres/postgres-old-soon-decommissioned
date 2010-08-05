@@ -142,23 +142,13 @@ DropConversionsCommand(DropStmt *drop)
 		Form_pg_conversion con;
 		ObjectAddress object;
 
-		conversionOid = FindConversionByName(name);
+		conversionOid = get_conversion_oid(name, drop->missing_ok);
 
 		if (!OidIsValid(conversionOid))
 		{
-			if (!drop->missing_ok)
-			{
-				ereport(ERROR,
-						(errcode(ERRCODE_UNDEFINED_OBJECT),
-						 errmsg("conversion \"%s\" does not exist",
-								NameListToString(name))));
-			}
-			else
-			{
-				ereport(NOTICE,
-						(errmsg("conversion \"%s\" does not exist, skipping",
-								NameListToString(name))));
-			}
+			ereport(NOTICE,
+					(errmsg("conversion \"%s\" does not exist, skipping",
+							NameListToString(name))));
 			continue;
 		}
 
@@ -202,12 +192,7 @@ RenameConversion(List *name, const char *newname)
 
 	rel = heap_open(ConversionRelationId, RowExclusiveLock);
 
-	conversionOid = FindConversionByName(name);
-	if (!OidIsValid(conversionOid))
-		ereport(ERROR,
-				(errcode(ERRCODE_UNDEFINED_OBJECT),
-				 errmsg("conversion \"%s\" does not exist",
-						NameListToString(name))));
+	conversionOid = get_conversion_oid(name, false);
 
 	tup = SearchSysCacheCopy1(CONVOID, ObjectIdGetDatum(conversionOid));
 	if (!HeapTupleIsValid(tup)) /* should not happen */
@@ -255,12 +240,7 @@ AlterConversionOwner(List *name, Oid newOwnerId)
 
 	rel = heap_open(ConversionRelationId, RowExclusiveLock);
 
-	conversionOid = FindConversionByName(name);
-	if (!OidIsValid(conversionOid))
-		ereport(ERROR,
-				(errcode(ERRCODE_UNDEFINED_OBJECT),
-				 errmsg("conversion \"%s\" does not exist",
-						NameListToString(name))));
+	conversionOid = get_conversion_oid(name, false);
 
 	AlterConversionOwner_internal(rel, conversionOid, newOwnerId);
 

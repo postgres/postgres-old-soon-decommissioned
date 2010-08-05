@@ -134,7 +134,7 @@ ts_token_type_byname(PG_FUNCTION_ARGS)
 		Oid			prsId;
 
 		funcctx = SRF_FIRSTCALL_INIT();
-		prsId = TSParserGetPrsid(textToQualifiedNameList(prsname), false);
+		prsId = get_ts_parser_oid(textToQualifiedNameList(prsname), false);
 		tt_setup_firstcall(funcctx, prsId);
 	}
 
@@ -282,7 +282,7 @@ ts_parse_byname(PG_FUNCTION_ARGS)
 		Oid			prsId;
 
 		funcctx = SRF_FIRSTCALL_INIT();
-		prsId = TSParserGetPrsid(textToQualifiedNameList(prsname), false);
+		prsId = get_ts_parser_oid(textToQualifiedNameList(prsname), false);
 		prs_setup_firstcall(funcctx, prsId, txt);
 	}
 

@@ -1326,7 +1326,7 @@ tsvector_update_trigger(PG_FUNCTION_ARGS, bool config_column)
 					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 					 errmsg("text search configuration name \"%s\" must be schema-qualified",
 							trigger->tgargs[1])));
-		cfgId = TSConfigGetCfgid(names, false);
+		cfgId = get_ts_config_oid(names, false);
 	}
 
 	/* initialize parse state */

@@ -581,7 +581,7 @@ getTSCurrentConfig(bool emitError)
 
 	/* Look up the config */
 	TSCurrentConfigCache =
-		TSConfigGetCfgid(stringToQualifiedNameList(TSCurrentConfig),
+		get_ts_config_oid(stringToQualifiedNameList(TSCurrentConfig),
 						 !emitError);
 
 	return TSCurrentConfigCache;
@@ -601,7 +601,7 @@ assignTSCurrentConfig(const char *newval, bool doit, GucSource source)
 		Form_pg_ts_config cfg;
 		char	   *buf;
 
-		cfgId = TSConfigGetCfgid(stringToQualifiedNameList(newval), true);
+		cfgId = get_ts_config_oid(stringToQualifiedNameList(newval), true);
 
 		if (!OidIsValid(cfgId))
 			return NULL;

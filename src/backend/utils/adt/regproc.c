@@ -1096,7 +1096,7 @@ regconfigin(PG_FUNCTION_ARGS)
 	 */
 	names = stringToQualifiedNameList(cfg_name_or_oid);
 
-	result = TSConfigGetCfgid(names, false);
+	result = get_ts_config_oid(names, false);
 
 	PG_RETURN_OID(result);
 }
@@ -1206,7 +1206,7 @@ regdictionaryin(PG_FUNCTION_ARGS)
 	 */
 	names = stringToQualifiedNameList(dict_name_or_oid);
 
-	result = TSDictionaryGetDictid(names, false);
+	result = get_ts_dict_oid(names, false);
 
 	PG_RETURN_OID(result);
 }

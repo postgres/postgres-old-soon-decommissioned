@@ -279,7 +279,7 @@ unaccent_dict(PG_FUNCTION_ARGS)
 
 	if (PG_NARGS() == 1)
 	{
-		dictOid = TSDictionaryGetDictid(stringToQualifiedNameList("unaccent"), false);
+		dictOid = get_ts_dict_oid(stringToQualifiedNameList("unaccent"), false);
 		strArg = 0;
 	}
 	else

@@ -713,8 +713,8 @@ transformInhRelation(ParseState *pstate, CreateStmtContext *cxt,
 
 			/* Copy comment on constraint */
 			if ((inhRelation->options & CREATE_TABLE_LIKE_COMMENTS) &&
-				(comment = GetComment(GetConstraintByName(RelationGetRelid(relation),
-														  n->conname),
+				(comment = GetComment(get_constraint_oid(RelationGetRelid(relation),
+														  n->conname, false),
 									  ConstraintRelationId,
 									  0)) != NULL)
 			{
