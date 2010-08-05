@@ -4391,6 +4391,9 @@ DESCR("evaluate XPath expression, with namespaces support");
 DATA(insert OID = 2932 (  xpath		 PGNSP PGUID 14 1 0 0 f f f t f i 2 0 143 "25 142" _null_ _null_ _null_ _null_ "select pg_catalog.xpath($1, $2, ''{}''::pg_catalog.text[])" _null_ _null_ _null_ ));
 DESCR("evaluate XPath expression");
 
+DATA(insert OID = 2614 (  xmlexists	 PGNSP PGUID 12 1 0 0 f f f t f i 2 0 16 "25 142" _null_ _null_ _null_ _null_ xmlexists _null_ _null_ _null_ ));
+DESCR("test XML value against XPath expression");
+
 /* uuid */
 DATA(insert OID = 2952 (  uuid_in		   PGNSP PGUID 12 1 0 0 f f f t f i 1 0 2950 "2275" _null_ _null_ _null_ _null_ uuid_in _null_ _null_ _null_ ));
 DESCR("I/O");
