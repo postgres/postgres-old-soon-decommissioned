@@ -459,7 +459,7 @@ is_member(Oid userid, const char *role)
 	if (!OidIsValid(userid))
 		return false;			/* if user not exist, say "no" */
 
-	roleid = get_roleid(role);
+	roleid = get_role_oid(role, true);
 
 	if (!OidIsValid(roleid))
 		return false;			/* if target role not exist, say "no" */
@@ -1328,7 +1328,7 @@ check_hba(hbaPort *port)
 	HbaLine    *hba;
 
 	/* Get the target role's OID.  Note we do not error out for bad role. */
-	roleid = get_roleid(port->user_name);
+	roleid = get_role_oid(port->user_name, true);
 
 	foreach(line, parsed_hba_lines)
 	{

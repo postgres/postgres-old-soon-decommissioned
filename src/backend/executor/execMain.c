@@ -2134,12 +2134,7 @@ OpenIntoRel(QueryDesc *queryDesc)
 	 */
 	if (into->tableSpaceName)
 	{
-		tablespaceId = get_tablespace_oid(into->tableSpaceName);
-		if (!OidIsValid(tablespaceId))
-			ereport(ERROR,
-					(errcode(ERRCODE_UNDEFINED_OBJECT),
-					 errmsg("tablespace \"%s\" does not exist",
-							into->tableSpaceName)));
+		tablespaceId = get_tablespace_oid(into->tableSpaceName, false);
 	}
 	else
 	{

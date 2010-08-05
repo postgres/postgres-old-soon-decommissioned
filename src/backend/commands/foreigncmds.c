@@ -184,7 +184,7 @@ GetUserOidFromMapping(const char *username, bool missing_ok)
 		return GetUserId();
 
 	/* map to provided user */
-	return missing_ok ? get_roleid(username) : get_roleid_checked(username);
+	return get_role_oid(username, missing_ok);
 }
 
 

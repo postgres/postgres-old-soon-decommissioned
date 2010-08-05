@@ -2638,34 +2638,3 @@ get_namespace_name(Oid nspid)
 	else
 		return NULL;
 }
-
-/*				---------- PG_AUTHID CACHE ----------					 */
-
-/*
- * get_roleid
- *	  Given a role name, look up the role's OID.
- *	  Returns InvalidOid if no such role.
- */
-Oid
-get_roleid(const char *rolname)
-{
-	return GetSysCacheOid1(AUTHNAME, PointerGetDatum(rolname));
-}
-
-/*
- * get_roleid_checked
- *	  Given a role name, look up the role's OID.
- *	  ereports if no such role.
- */
-Oid
-get_roleid_checked(const char *rolname)
-{
-	Oid			roleid;
-
-	roleid = get_roleid(rolname);
-	if (!OidIsValid(roleid))
-		ereport(ERROR,
-				(errcode(ERRCODE_UNDEFINED_OBJECT),
-				 errmsg("role \"%s\" does not exist", rolname)));
-	return roleid;
-}

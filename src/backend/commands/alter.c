@@ -211,7 +211,7 @@ ExecAlterObjectSchemaStmt(AlterObjectSchemaStmt *stmt)
 void
 ExecAlterOwnerStmt(AlterOwnerStmt *stmt)
 {
-	Oid			newowner = get_roleid_checked(stmt->newowner);
+	Oid			newowner = get_role_oid(stmt->newowner, false);
 
 	switch (stmt->objectType)
 	{

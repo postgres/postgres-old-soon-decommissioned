@@ -514,7 +514,7 @@ void
 DropProceduralLanguage(DropPLangStmt *stmt)
 {
 	char	   *languageName;
-	HeapTuple	langTup;
+	Oid			oid;
 	ObjectAddress object;
 
 	/*
@@ -522,33 +522,25 @@ DropProceduralLanguage(DropPLangStmt *stmt)
 	 */
 	languageName = case_translate_language_name(stmt->plname);
 
-	langTup = SearchSysCache1(LANGNAME, CStringGetDatum(languageName));
-	if (!HeapTupleIsValid(langTup))
+	oid = get_language_oid(languageName, stmt->missing_ok);
+	if (!OidIsValid(oid))
 	{
-		if (!stmt->missing_ok)
-			ereport(ERROR,
-					(errcode(ERRCODE_UNDEFINED_OBJECT),
-					 errmsg("language \"%s\" does not exist", languageName)));
-		else
-			ereport(NOTICE,
-					(errmsg("language \"%s\" does not exist, skipping",
-							languageName)));
-
+		ereport(NOTICE,
+				(errmsg("language \"%s\" does not exist, skipping",
+						languageName)));
 		return;
 	}
 
 	/*
 	 * Check permission
 	 */
-	if (!pg_language_ownercheck(HeapTupleGetOid(langTup), GetUserId()))
+	if (!pg_language_ownercheck(oid, GetUserId()))
 		aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_LANGUAGE,
 					   languageName);
 
 	object.classId = LanguageRelationId;
-	object.objectId = HeapTupleGetOid(langTup);
+	object.objectId = oid;
 	object.objectSubId = 0;
-
-	ReleaseSysCache(langTup);
 
 	/*
 	 * Do the deletion
@@ -734,4 +726,23 @@ AlterLanguageOwner_internal(HeapTuple tup, Relation rel, Oid newOwnerId)
 		changeDependencyOnOwner(LanguageRelationId, HeapTupleGetOid(tup),
 								newOwnerId);
 	}
+}
+
+/*
+ * get_language_oid - given a language name, look up the OID
+ *
+ * If missing_ok is false, throw an error if language name not found.  If
+ * true, just return InvalidOid.
+ */
+Oid
+get_language_oid(const char *langname, bool missing_ok)
+{
+	Oid			oid;
+
+	oid = GetSysCacheOid1(LANGNAME, CStringGetDatum(langname));
+	if (!OidIsValid(oid) && !missing_ok)
+		ereport(ERROR,
+				(errcode(ERRCODE_UNDEFINED_OBJECT),
+				 errmsg("language \"%s\" does not exist", langname)));
+	return oid;
 }
