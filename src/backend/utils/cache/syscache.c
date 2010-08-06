@@ -14,7 +14,7 @@
  *	  These routines allow the parser/planner/executor to perform
  *	  rapid lookups on the contents of the system catalogs.
  *
- *	  see catalog/syscache.h for a list of the cache id's
+ *	  see utils/syscache.h for a list of the cache id's
  *
  *-------------------------------------------------------------------------
  */
