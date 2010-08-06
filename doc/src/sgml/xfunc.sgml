@@ -3230,7 +3230,7 @@ CREATE FUNCTION make_array(anyelement) RETURNS anyarray
      Add-ins can reserve LWLocks and an allocation of shared memory on server
      startup.  The add-in's shared library must be preloaded by specifying
      it in
-     <xref linkend="guc-shared-preload-libraries"><indexterm><primary>shared-preload-libraries</></>.
+     <xref linkend="guc-shared-preload-libraries"><indexterm><primary>shared_preload_libraries</></>.
      Shared memory is reserved by calling:
 <programlisting>
 void RequestAddinShmemSpace(int size)
