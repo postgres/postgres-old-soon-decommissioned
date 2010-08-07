@@ -141,7 +141,7 @@
     <listitem>
      <para>
       As part of our decade-long effort to eliminate the pain of VACUUM,
-      <command>VACUUM FULL</> is not substantially faster by
+      <command>VACUUM FULL</> is now substantially faster by
       rewriting the entire table and
       indexes, rather than moving around single rows to compact space.
      </para>
