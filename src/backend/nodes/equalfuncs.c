@@ -877,6 +877,7 @@ _equalQuery(Query *a, Query *b)
 	COMPARE_NODE_FIELD(limitCount);
 	COMPARE_NODE_FIELD(rowMarks);
 	COMPARE_NODE_FIELD(setOperations);
+	COMPARE_NODE_FIELD(constraintDeps);
 
 	return true;
 }

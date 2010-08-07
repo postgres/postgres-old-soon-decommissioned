@@ -146,6 +146,9 @@ typedef struct Query
 
 	Node	   *setOperations;	/* set-operation tree if this is top level of
 								 * a UNION/INTERSECT/EXCEPT query */
+
+	List	   *constraintDeps;	/* a list of pg_constraint OIDs that the query
+								 * depends on to be semantically valid */
 } Query;
 
 

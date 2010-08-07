@@ -239,4 +239,9 @@ extern void AlterConstraintNamespaces(Oid ownerId, Oid oldNspId,
 						  Oid newNspId, bool isType);
 extern Oid	get_constraint_oid(Oid relid, const char *conname, bool missing_ok);
 
+extern bool check_functional_grouping(Oid relid,
+									  Index varno, Index varlevelsup,
+									  List *grouping_columns,
+									  List **constraintDeps);
+
 #endif   /* PG_CONSTRAINT_H */
