@@ -4415,6 +4415,11 @@ DESCR("evaluate XPath expression");
 DATA(insert OID = 2614 (  xmlexists	 PGNSP PGUID 12 1 0 0 f f f t f i 2 0 16 "25 142" _null_ _null_ _null_ _null_ xmlexists _null_ _null_ _null_ ));
 DESCR("test XML value against XPath expression");
 
+DATA(insert OID = 3049 (  xpath_exists	 PGNSP PGUID 12 1 0 0 f f f t f i 3 0 16 "25 142 1009" _null_ _null_ _null_ _null_ xpath_exists _null_ _null_ _null_ ));
+DESCR("test XML value against XPath expression, with namespace support");
+DATA(insert OID = 3050 (  xpath_exists	 PGNSP PGUID 14 1 0 0 f f f t f i 2 0 16 "25 142" _null_ _null_ _null_ _null_ "select pg_catalog.xpath_exists($1, $2, ''{}''::pg_catalog.text[])" _null_ _null_ _null_ ));
+DESCR("test XML value against XPath expression");
+
 /* uuid */
 DATA(insert OID = 2952 (  uuid_in		   PGNSP PGUID 12 1 0 0 f f f t f i 1 0 2950 "2275" _null_ _null_ _null_ _null_ uuid_in _null_ _null_ _null_ ));
 DESCR("I/O");

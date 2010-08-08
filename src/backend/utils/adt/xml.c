@@ -3541,3 +3541,27 @@ Datum xmlexists(PG_FUNCTION_ARGS)
 	return 0;
 #endif
 }
+
+/*
+ * Determines if the node specified by the supplied XPath exists
+ * in a given XML document, returning a boolean. Differs from
+ * xmlexists as it supports namespaces and is not defined in SQL/XML.
+ */
+Datum
+xpath_exists(PG_FUNCTION_ARGS)
+{
+#ifdef USE_LIBXML
+	text	   *xpath_expr_text = PG_GETARG_TEXT_P(0);
+	xmltype    *data = PG_GETARG_XML_P(1);
+	ArrayType  *namespaces = PG_GETARG_ARRAYTYPE_P(2);
+	int			res_nitems;
+
+	xpath_internal(xpath_expr_text, data, namespaces,
+				   &res_nitems, NULL);
+
+	PG_RETURN_BOOL(res_nitems > 0);
+#else
+	NO_XML_SUPPORT();
+	return 0;
+#endif
+}
