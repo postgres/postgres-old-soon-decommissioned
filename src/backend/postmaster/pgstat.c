@@ -1403,6 +1403,23 @@ pgstat_init_function_usage(FunctionCallInfoData *fcinfo,
 }
 
 /*
+ * find_funcstat_entry - find any existing PgStat_BackendFunctionEntry entry
+ *		for specified function
+ *
+ * If no entry, return NULL, don't create a new one
+ */
+PgStat_BackendFunctionEntry *
+find_funcstat_entry(Oid func_id)
+{
+	if (pgStatFunctions == NULL)
+		return NULL;
+
+	return (PgStat_BackendFunctionEntry *) hash_search(pgStatFunctions,
+													   (void *) &func_id,
+													   HASH_FIND, NULL);
+}
+
+/*
  * Calculate function call usage and update stat counters.
  * Called by the executor after invoking a function.
  *
@@ -1558,6 +1575,32 @@ get_tabstat_entry(Oid rel_id, bool isshared)
 	entry->t_id = rel_id;
 	entry->t_shared = isshared;
 	return entry;
+}
+
+/*
+ * find_tabstat_entry - find any existing PgStat_TableStatus entry for rel
+ *
+ * If no entry, return NULL, don't create a new one
+ */
+PgStat_TableStatus *
+find_tabstat_entry(Oid rel_id)
+{
+	PgStat_TableStatus *entry;
+	TabStatusArray *tsa;
+	int			i;
+
+	for (tsa = pgStatTabList; tsa != NULL; tsa = tsa->tsa_next)
+	{
+		for (i = 0; i < tsa->tsa_used; i++)
+		{
+			entry = &tsa->tsa_entries[i];
+			if (entry->t_id == rel_id)
+				return entry;
+		}
+	}
+
+	/* Not present */
+	return NULL;
 }
 
 /*
