@@ -115,8 +115,7 @@ enum
 	PLPGSQL_RC_OK,
 	PLPGSQL_RC_EXIT,
 	PLPGSQL_RC_RETURN,
-	PLPGSQL_RC_CONTINUE,
-	PLPGSQL_RC_RERAISE
+	PLPGSQL_RC_CONTINUE
 };
 
 /* ----------
@@ -699,6 +698,7 @@ typedef struct PLpgSQL_execstate
 	TupleDesc	rettupdesc;
 	char	   *exitlabel;		/* the "target" label of the current EXIT or
 								 * CONTINUE stmt, if any */
+	ErrorData  *cur_error;		/* current exception handler's error */
 
 	Tuplestorestate *tuple_store;		/* SRFs accumulate results here */
 	MemoryContext tuple_store_cxt;
