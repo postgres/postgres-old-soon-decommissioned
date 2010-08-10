@@ -115,7 +115,12 @@ hmac(data bytea, key text, type text) returns bytea
    </listitem>
   </orderedlist>
 
-  <table>
+  <para>
+   <xref linkend="pgcrypto-crypt-algorithms"> lists the algorithms
+   supported by the <function>crypt()</function> function.
+  </para>
+
+  <table id="pgcrypto-crypt-algorithms">
    <title>Supported algorithms for <function>crypt()</></title>
    <tgroup cols="5">
     <thead>
