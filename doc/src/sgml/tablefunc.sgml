@@ -17,7 +17,12 @@
  <sect2>
   <title>Functions Provided</title>
 
-  <table>
+  <para>
+   <xref linkend="tablefunc-functions"> shows the functions provided
+   by the <filename>tablefunc</filename> module.
+  </para>
+
+  <table id="tablefunc-functions">
    <title><filename>tablefunc</> functions</title>
    <tgroup cols="3">
     <thead>
@@ -609,7 +614,12 @@ connectby(text relname, text keyid_fld, text parent_keyid_fld
     sub-tree descending from any row.
    </para>
 
-   <table>
+   <para>
+    <xref linkend="tablefunc-connectby-parameters"> explains the
+    parameters.
+   </para>
+
+   <table id="tablefunc-connectby-parameters">
     <title><function>connectby</function> parameters</title>
     <tgroup cols="2">
      <thead>

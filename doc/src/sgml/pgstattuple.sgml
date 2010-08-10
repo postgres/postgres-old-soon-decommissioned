@@ -159,10 +159,8 @@ leaf_fragmentation | 0
 
     <para>
      The output columns are:
-    </para>
 
-    <table>
-     <title><function>pgstatindex</function> output columns</title>
+    <informaltable>
      <tgroup cols="3">
       <thead>
        <row>
@@ -235,7 +233,8 @@ leaf_fragmentation | 0
 
       </tbody>
      </tgroup>
-    </table>
+    </informaltable>
+    </para>
 
     <para>
      As with <function>pgstattuple</>, the results are accumulated

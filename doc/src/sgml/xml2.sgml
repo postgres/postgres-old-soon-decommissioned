@@ -160,11 +160,12 @@ xpath_table(text key, text document, text relation, text xpaths, text criteria) 
    queries on each of a set of documents and returns the results as a
    table. The primary key field from the original document table is returned
    as the first column of the result so that the result set
-   can readily be used in joins.
+   can readily be used in joins.  The parameters are described in
+   <xref linkend="xml2-xpath-table-parameters">.
   </para>
 
-  <table>
-   <title>Parameters</title>
+  <table id="xml2-xpath-table-parameters">
+   <title><function>xpath_table</function> Parameters</title>
    <tgroup cols="2">
     <tbody>
      <row>
