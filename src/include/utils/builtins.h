@@ -716,6 +716,8 @@ extern text *replace_text_regexp(text *src_text, void *regexp,
 extern Datum split_text(PG_FUNCTION_ARGS);
 extern Datum text_to_array(PG_FUNCTION_ARGS);
 extern Datum array_to_text(PG_FUNCTION_ARGS);
+extern Datum text_to_array_null(PG_FUNCTION_ARGS);
+extern Datum array_to_text_null(PG_FUNCTION_ARGS);
 extern Datum to_hex32(PG_FUNCTION_ARGS);
 extern Datum to_hex64(PG_FUNCTION_ARGS);
 extern Datum md5_text(PG_FUNCTION_ARGS);

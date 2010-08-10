@@ -274,6 +274,7 @@ extern Datum array_cat(PG_FUNCTION_ARGS);
 extern ArrayType *create_singleton_array(FunctionCallInfo fcinfo,
 					   Oid element_type,
 					   Datum element,
+					   bool isNull,
 					   int ndims);
 
 extern Datum array_agg_transfn(PG_FUNCTION_ARGS);
