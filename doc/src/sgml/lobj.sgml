@@ -84,7 +84,7 @@
     <application>libpq</application> library.
    </para>
 
-   <sect2 id='lo-create'>
+   <sect2 id="lo-create">
     <title>Creating a Large Object</title>
 
     <para>
