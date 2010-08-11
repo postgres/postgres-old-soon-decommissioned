@@ -4298,7 +4298,7 @@ struct
     </varlistentry>
 
     <varlistentry>
-     <term>-207 (<symbol>ECPG_CONVERT_BOOL</symbol>)</term>
+     <term>-211 (<symbol>ECPG_CONVERT_BOOL</symbol>)</term>
      <listitem>
       <para>
        This means the host variable is of type <type>bool</type> and
