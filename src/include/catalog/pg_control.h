@@ -45,7 +45,7 @@ typedef struct CheckPoint
 	/*
 	 * Oldest XID still running. This is only needed to initialize hot standby
 	 * mode from an online checkpoint, so we only bother calculating this for
-	 * online checkpoints and only when archiving is enabled. Otherwise it's
+	 * online checkpoints and only when wal_level is hot_standby. Otherwise it's
 	 * set to InvalidTransactionId.
 	 */
 	TransactionId oldestActiveXid;
