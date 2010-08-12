@@ -162,7 +162,7 @@ slashUsage(unsigned short int pager)
 {
 	FILE	   *output;
 
-	output = PageOutput(87, pager);
+	output = PageOutput(89, pager);
 
 	/* if you add/remove a line here, change the row count above */
 
@@ -174,8 +174,8 @@ slashUsage(unsigned short int pager)
 	fprintf(output, "\n");
 
 	fprintf(output, _("Query Buffer\n"));
-	fprintf(output, _("  \\e [FILE]              edit the query buffer (or file) with external editor\n"));
-	fprintf(output, _("  \\ef [FUNCNAME]         edit function definition with external editor\n"));
+	fprintf(output, _("  \\e [FILE] [LINE]       edit the query buffer (or file) with external editor\n"));
+	fprintf(output, _("  \\ef [FUNCNAME [LINE]]  edit function definition with external editor\n"));
 	fprintf(output, _("  \\p                     show the contents of the query buffer\n"));
 	fprintf(output, _("  \\r                     reset (clear) the query buffer\n"));
 #ifdef USE_READLINE
