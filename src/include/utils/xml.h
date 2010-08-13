@@ -39,6 +39,9 @@ extern Datum xmlvalidate(PG_FUNCTION_ARGS);
 extern Datum xpath(PG_FUNCTION_ARGS);
 extern Datum xpath_exists(PG_FUNCTION_ARGS);
 extern Datum xmlexists(PG_FUNCTION_ARGS);
+extern Datum xml_is_well_formed(PG_FUNCTION_ARGS);
+extern Datum xml_is_well_formed_document(PG_FUNCTION_ARGS);
+extern Datum xml_is_well_formed_content(PG_FUNCTION_ARGS);
 
 extern Datum table_to_xml(PG_FUNCTION_ARGS);
 extern Datum query_to_xml(PG_FUNCTION_ARGS);

@@ -29,5 +29,3 @@ DROP FUNCTION xml_encode_special_chars(text);
 
 -- deprecated old name for xml_is_well_formed
 DROP FUNCTION xml_valid(text);
-
-DROP FUNCTION xml_is_well_formed(text);

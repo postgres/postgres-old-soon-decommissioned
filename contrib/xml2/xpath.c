@@ -71,7 +71,14 @@ pgxml_parser_init(void)
 }
 
 
-/* Returns true if document is well-formed */
+/*
+ * Returns true if document is well-formed
+ *
+ * Note: this has been superseded by a core function.  We still have to
+ * have it in the contrib module so that existing SQL-level references
+ * to the function won't fail; but in normal usage with up-to-date SQL
+ * definitions for the contrib module, this won't be called.
+ */
 
 PG_FUNCTION_INFO_V1(xml_is_well_formed);
 
