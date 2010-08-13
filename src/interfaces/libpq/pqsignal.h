@@ -18,8 +18,6 @@
 #ifndef PQSIGNAL_H
 #define PQSIGNAL_H
 
-#include "postgres_fe.h"
-
 typedef void (*pqsigfunc) (int);
 
 extern pqsigfunc pqsignal(int signo, pqsigfunc func);

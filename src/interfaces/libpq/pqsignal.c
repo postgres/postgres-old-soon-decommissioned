@@ -17,9 +17,12 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "pqsignal.h"
+#include "postgres_fe.h"
 
 #include <signal.h>
+
+#include "pqsignal.h"
+
 
 pqsigfunc
 pqsignal(int signo, pqsigfunc func)
