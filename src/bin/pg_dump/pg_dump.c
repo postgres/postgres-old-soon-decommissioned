@@ -480,18 +480,19 @@ main(int argc, char **argv)
 		}
 	}
 
-	if (optind < (argc - 1))
+	/* Get database name from command line */
+	if (optind < argc)
+		dbname = argv[optind++];
+
+	/* Complain if any arguments remain */
+	if (optind < argc)
 	{
 		fprintf(stderr, _("%s: too many command-line arguments (first is \"%s\")\n"),
-				progname, argv[optind + 1]);
+				progname, argv[optind]);
 		fprintf(stderr, _("Try \"%s --help\" for more information.\n"),
 				progname);
 		exit(1);
 	}
-
-	/* Get database name from command line */
-	if (optind < argc)
-		dbname = argv[optind];
 
 	/* --column-inserts implies --inserts */
 	if (column_inserts)
