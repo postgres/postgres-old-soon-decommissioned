@@ -2666,6 +2666,17 @@ GetOverrideSearchPath(MemoryContext context)
  *
  * We allow nested overrides, hence the push/pop terminology.  The GUC
  * search_path variable is ignored while an override is active.
+ *
+ * It's possible that newpath->useTemp is set but there is no longer any
+ * active temp namespace, if the path was saved during a transaction that
+ * created a temp namespace and was later rolled back.  In that case we just
+ * ignore useTemp.  A plausible alternative would be to create a new temp
+ * namespace, but for existing callers that's not necessary because an empty
+ * temp namespace wouldn't affect their results anyway.
+ *
+ * It's also worth noting that other schemas listed in newpath might not
+ * exist anymore either.  We don't worry about this because OIDs that match
+ * no existing namespace will simply not produce any hits during searches.
  */
 void
 PushOverrideSearchPath(OverrideSearchPath *newpath)
@@ -2699,11 +2710,8 @@ PushOverrideSearchPath(OverrideSearchPath *newpath)
 	if (newpath->addCatalog)
 		oidlist = lcons_oid(PG_CATALOG_NAMESPACE, oidlist);
 
-	if (newpath->addTemp)
-	{
-		Assert(OidIsValid(myTempNamespace));
+	if (newpath->addTemp && OidIsValid(myTempNamespace))
 		oidlist = lcons_oid(myTempNamespace, oidlist);
-	}
 
 	/*
 	 * Build the new stack entry, then insert it at the head of the list.
