@@ -1019,7 +1019,7 @@ DoCopy(const CopyStmt *stmt, const char *queryString)
 		ExecCheckRTPerms(list_make1(rte), true);
 
 		/* check read-only transaction */
-		if (XactReadOnly && is_from && !cstate->rel->rd_islocaltemp)
+		if (XactReadOnly && is_from && cstate->rel->rd_backend != MyBackendId)
 			PreventCommandIfReadOnly("COPY FROM");
 
 		/* Don't allow COPY w/ OIDs to or from a table without them */

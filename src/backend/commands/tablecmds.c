@@ -7165,13 +7165,13 @@ ATExecSetTableSpace(Oid tableOid, Oid newTableSpace, LOCKMODE lockmode)
 	 * Relfilenodes are not unique across tablespaces, so we need to allocate
 	 * a new one in the new tablespace.
 	 */
-	newrelfilenode = GetNewRelFileNode(newTableSpace, NULL);
+	newrelfilenode = GetNewRelFileNode(newTableSpace, NULL, rel->rd_backend);
 
 	/* Open old and new relation */
 	newrnode = rel->rd_node;
 	newrnode.relNode = newrelfilenode;
 	newrnode.spcNode = newTableSpace;
-	dstrel = smgropen(newrnode);
+	dstrel = smgropen(newrnode, rel->rd_backend);
 
 	RelationOpenSmgr(rel);
 
@@ -7262,7 +7262,7 @@ copy_relation_data(SMgrRelation src, SMgrRelation dst,
 
 		/* XLOG stuff */
 		if (use_wal)
-			log_newpage(&dst->smgr_rnode, forkNum, blkno, page);
+			log_newpage(&dst->smgr_rnode.node, forkNum, blkno, page);
 
 		/*
 		 * Now write the page.	We say isTemp = true even if it's not a temp

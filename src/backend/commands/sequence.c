@@ -472,7 +472,7 @@ nextval_internal(Oid relid)
 						RelationGetRelationName(seqrel))));
 
 	/* read-only transactions may only modify temp sequences */
-	if (!seqrel->rd_islocaltemp)
+	if (seqrel->rd_backend != MyBackendId)
 		PreventCommandIfReadOnly("nextval()");
 
 	if (elm->last != elm->cached)		/* some numbers were cached */
@@ -749,7 +749,7 @@ do_setval(Oid relid, int64 next, bool iscalled)
 						RelationGetRelationName(seqrel))));
 
 	/* read-only transactions may only modify temp sequences */
-	if (!seqrel->rd_islocaltemp)
+	if (seqrel->rd_backend != MyBackendId)
 		PreventCommandIfReadOnly("setval()");
 
 	/* lock page' buffer and read tuple */

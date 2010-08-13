@@ -645,7 +645,12 @@ index_create(Oid heapRelationId,
 			binary_upgrade_next_index_relfilenode = InvalidOid;
 		}
 		else
-			indexRelationId = GetNewRelFileNode(tableSpaceId, pg_class);
+		{
+			indexRelationId =
+				GetNewRelFileNode(tableSpaceId, pg_class,
+								  heapRelation->rd_istemp ?
+									MyBackendId : InvalidBackendId);
+		}
 	}
 
 	/*

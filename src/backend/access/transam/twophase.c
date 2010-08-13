@@ -865,8 +865,8 @@ StartPrepare(GlobalTransaction gxact)
 	hdr.prepared_at = gxact->prepared_at;
 	hdr.owner = gxact->owner;
 	hdr.nsubxacts = xactGetCommittedChildren(&children);
-	hdr.ncommitrels = smgrGetPendingDeletes(true, &commitrels, NULL);
-	hdr.nabortrels = smgrGetPendingDeletes(false, &abortrels, NULL);
+	hdr.ncommitrels = smgrGetPendingDeletes(true, &commitrels);
+	hdr.nabortrels = smgrGetPendingDeletes(false, &abortrels);
 	hdr.ninvalmsgs = xactGetCommittedInvalidationMessages(&invalmsgs,
 														  &hdr.initfileinval);
 	StrNCpy(hdr.gid, gxact->gid, GIDSIZE);
@@ -1320,13 +1320,13 @@ FinishPreparedTransaction(const char *gid, bool isCommit)
 	}
 	for (i = 0; i < ndelrels; i++)
 	{
-		SMgrRelation srel = smgropen(delrels[i]);
+		SMgrRelation srel = smgropen(delrels[i], InvalidBackendId);
 		ForkNumber	fork;
 
 		for (fork = 0; fork <= MAX_FORKNUM; fork++)
 		{
 			if (smgrexists(srel, fork))
-				smgrdounlink(srel, fork, false, false);
+				smgrdounlink(srel, fork, false);
 		}
 		smgrclose(srel);
 	}

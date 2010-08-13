@@ -133,16 +133,20 @@ there.
 </para>
 
 <para>
-Each table and index is stored in a separate file, named after the table
-or index's <firstterm>filenode</> number, which can be found in
-<structname>pg_class</>.<structfield>relfilenode</>. In addition to the
-main file (a/k/a main fork), each table and index has a <firstterm>free space
-map</> (see <xref linkend="storage-fsm">), which stores information about free
-space available in the relation.  The free space map is stored in a file named
-with the filenode number plus the suffix <literal>_fsm</>.  Tables also have a
-<firstterm>visibility map</>, stored in a fork with the suffix
-<literal>_vm</>, to track which pages are known to have no dead tuples.
-The visibility map is described further in <xref linkend="storage-vm">.
+Each table and index is stored in a separate file.  For ordinary relations,
+these files are named after the table or index's <firstterm>filenode</> number,
+which can be found in <structname>pg_class</>.<structfield>relfilenode</>. But
+for temporary relations, the file name is of the form
+<literal>t<replaceable>BBB</>_<replaceable>FFF</></>, where <replaceable>BBB</>
+is the backend ID of the backend which created the file, and <replaceable>FFF</>
+is the filenode number.  In either case, in addition to the main file (a/k/a
+main fork), each table and index has a <firstterm>free space map</> (see <xref
+linkend="storage-fsm">), which stores information about free space available in
+the relation.  The free space map is stored in a file named with the filenode
+number plus the suffix <literal>_fsm</>.  Tables also have a
+<firstterm>visibility map</>, stored in a fork with the suffix <literal>_vm</>,
+to track which pages are known to have no dead tuples.  The visibility map is
+described further in <xref linkend="storage-vm">.
 </para>
 
 <caution>

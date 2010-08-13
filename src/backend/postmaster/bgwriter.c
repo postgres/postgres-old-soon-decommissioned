@@ -113,7 +113,7 @@
  */
 typedef struct
 {
-	RelFileNode rnode;
+	RelFileNodeBackend rnode;
 	ForkNumber	forknum;
 	BlockNumber segno;			/* see md.c for special values */
 	/* might add a real request-type field later; not needed yet */
@@ -1071,7 +1071,8 @@ RequestCheckpoint(int flags)
  * than we have to here.
  */
 bool
-ForwardFsyncRequest(RelFileNode rnode, ForkNumber forknum, BlockNumber segno)
+ForwardFsyncRequest(RelFileNodeBackend rnode, ForkNumber forknum,
+					BlockNumber segno)
 {
 	BgWriterRequest *request;
 
