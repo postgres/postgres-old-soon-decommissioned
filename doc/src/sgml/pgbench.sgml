@@ -40,7 +40,7 @@ tps = 85.296346 (excluding connections establishing)
   and number of transactions per client); these will be equal unless the run
   failed before completion.  (In <literal>-T</> mode, only the actual
   number of transactions is printed.)
-  The last two lines report the TPS rate,
+  The last two lines report the number of transactions per second,
   figured with and without counting the time to start database sessions.
  </para>
 
