@@ -721,6 +721,7 @@ CreateLockFile(const char *filename, bool amPostmaster,
 				(errcode_for_file_access(),
 			  errmsg("could not write lock file \"%s\": %m", filename)));
 	}
+	pg_fsync(fd);
 	close(fd);
 
 	/*
@@ -875,6 +876,7 @@ RecordSharedMemoryInLockFile(unsigned long id1, unsigned long id2)
 		close(fd);
 		return;
 	}
+	pg_fsync(fd);
 	close(fd);
 }
 
