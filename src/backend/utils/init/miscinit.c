@@ -899,6 +899,9 @@ CreateLockFile(const char *filename, bool amPostmaster,
 		 * admin) but has left orphan backends behind.	Check for this by
 		 * looking to see if there is an associated shmem segment that is
 		 * still in use.
+		 *
+		 * Note: because postmaster.pid is written in two steps, we might not
+		 * find the shmem ID values in it; we can't treat that as an error.
 		 */
 		if (isDDLock)
 		{
@@ -963,7 +966,18 @@ CreateLockFile(const char *filename, bool amPostmaster,
 				(errcode_for_file_access(),
 				 errmsg("could not write lock file \"%s\": %m", filename)));
 	}
-	if (close(fd))
+	if (pg_fsync(fd) != 0)
+	{
+		int			save_errno = errno;
+
+		close(fd);
+		unlink(filename);
+		errno = save_errno;
+		ereport(FATAL,
+				(errcode_for_file_access(),
+				 errmsg("could not write lock file \"%s\": %m", filename)));
+	}
+	if (close(fd) != 0)
 	{
 		int			save_errno = errno;
 
@@ -1124,7 +1138,14 @@ RecordSharedMemoryInLockFile(unsigned long id1, unsigned long id2)
 		close(fd);
 		return;
 	}
-	if (close(fd))
+	if (pg_fsync(fd) != 0)
+	{
+		ereport(LOG,
+				(errcode_for_file_access(),
+				 errmsg("could not write to file \"%s\": %m",
+						DIRECTORY_LOCK_FILE)));
+	}
+	if (close(fd) != 0)
 	{
 		ereport(LOG,
 				(errcode_for_file_access(),
