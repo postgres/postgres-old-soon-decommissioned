@@ -52,7 +52,7 @@ vacuumlo [options] database [database2 ... databaseN]
    <varlistentry>
     <term><option>-U</option> <replaceable>username</></term>
     <listitem>
-     <para>Username to connect as.</para>
+     <para>User name to connect as.</para>
     </listitem>
    </varlistentry>
 

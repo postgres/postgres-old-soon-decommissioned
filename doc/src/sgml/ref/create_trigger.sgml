@@ -74,7 +74,7 @@ CREATE TRIGGER <replaceable class="PARAMETER">name</replaceable> { BEFORE | AFTE
   </para>
 
   <para>
-   Also, a trigger definition can specify a boolean <literal>WHEN</>
+   Also, a trigger definition can specify a Boolean <literal>WHEN</>
    condition, which will be tested to see whether the trigger should
    be fired.  In row-level triggers the <literal>WHEN</> condition can
    examine the old and/or new values of columns of the row.  Statement-level

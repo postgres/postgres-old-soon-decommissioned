@@ -3792,7 +3792,7 @@ SELECT to_tsvector('english', 'The Fat Rats');
 
     <para>
      A <type>tsquery</type> value stores lexemes that are to be
-     searched for, and combines them honoring the boolean operators
+     searched for, and combines them honoring the Boolean operators
      <literal>&amp;</literal> (AND), <literal>|</literal> (OR), and
      <literal>!</> (NOT).  Parentheses can be used to enforce grouping
      of the operators:
