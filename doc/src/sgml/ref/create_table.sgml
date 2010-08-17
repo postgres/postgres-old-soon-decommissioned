@@ -500,7 +500,7 @@ CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } ] TABLE <replaceable class="PAR
       The access method must support <literal>amgettuple</> (see <xref
       linkend="indexam">); at present this means <acronym>GIN</>
       cannot be used.  Although it's allowed, there is little point in using
-      btree or hash indexes with an exclusion constraint, because this
+      B-tree or hash indexes with an exclusion constraint, because this
       does nothing that an ordinary unique constraint doesn't do better.
       So in practice the access method will always be <acronym>GiST</>.
      </para>

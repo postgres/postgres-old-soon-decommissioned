@@ -1842,7 +1842,7 @@ END CASE;
 
       <para>
        The searched form of <command>CASE</> provides conditional execution
-       based on truth of boolean expressions.  Each <literal>WHEN</> clause's
+       based on truth of Boolean expressions.  Each <literal>WHEN</> clause's
        <replaceable>boolean-expression</replaceable> is evaluated in turn,
        until one is found that yields <literal>true</>.  Then the
        corresponding <replaceable>statements</replaceable> are executed, and

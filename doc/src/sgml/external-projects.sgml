@@ -45,7 +45,7 @@
 
     <listitem>
      <para>
-      <link linkend="ecpg">ecpg</link> is included because it depends on the
+      <link linkend="ecpg">ECPG</link> is included because it depends on the
       server-side SQL grammar, and is therefore sensitive to changes in
       <productname>PostgreSQL</productname> itself.
      </para>

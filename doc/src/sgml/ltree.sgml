@@ -42,7 +42,7 @@
   </para>
 
   <para>
-   The <filename>ltree</> module provides several datatypes:
+   The <filename>ltree</> module provides several data types:
   </para>
 
   <itemizedlist>
