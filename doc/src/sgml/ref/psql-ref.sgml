@@ -1002,7 +1002,7 @@ testdb=&gt;
         If <replaceable class="parameter">pattern</replaceable> is
         specified, only those servers whose name matches the pattern
         are listed.  If the form <literal>\des+</literal> is used, a
-        full desription of each server is shown, including the
+        full description of each server is shown, including the
         server's ACL, type, version, and options.
         </para>
         </listitem>
