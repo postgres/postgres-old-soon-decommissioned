@@ -38,7 +38,7 @@
    The radius of the Earth is obtained from the <function>earth()</>
    function. It is given in meters. But by changing this one function you can
    change the module to use some other units, or to use a different value of
-   the radius that you feel is more appropiate.
+   the radius that you feel is more appropriate.
   </para>
 
   <para>

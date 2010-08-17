@@ -227,7 +227,7 @@
    <para>
     It's possible that the ports do not update the main catalog file
     in <filename>/usr/local/share/sgml/catalog.ports</filename> or order 
-    isn't proper .  Be sure to have the following lines in begining of file:
+    isn't proper .  Be sure to have the following lines in beginning of file:
 <programlisting>
 CATALOG "openjade/catalog"
 CATALOG "iso8879/catalog"
