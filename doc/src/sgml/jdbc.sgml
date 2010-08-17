@@ -2436,7 +2436,7 @@ library.It allows you to have random access to the large object.
 library.It allows you to have random access to the large object.
 
         Parameters:
-                pos - position within object from begining
+                pos - position within object from beginning
 
         Throws: SQLException
                 if a database-access error occurs.
