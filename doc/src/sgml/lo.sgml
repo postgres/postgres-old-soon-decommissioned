@@ -19,7 +19,7 @@
   <para>
    One of the problems with the JDBC driver (and this affects the ODBC driver
    also), is that the specification assumes that references to BLOBs (Binary
-   Large Objects) are stored within a table, and if that entry is changed, the
+   Large OBjects) are stored within a table, and if that entry is changed, the
    associated BLOB is deleted from the database.
   </para>
 
