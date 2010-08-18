@@ -412,6 +412,7 @@ extern int	pg_valid_client_encoding(const char *name);
 extern int	pg_valid_server_encoding(const char *name);
 
 extern unsigned char *unicode_to_utf8(pg_wchar c, unsigned char *utf8string);
+extern pg_wchar utf8_to_unicode(const unsigned char *c);
 extern int	pg_utf_mblen(const unsigned char *);
 extern unsigned char *pg_do_encoding_conversion(unsigned char *src, int len,
 						  int src_encoding,
