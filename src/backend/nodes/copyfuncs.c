@@ -78,6 +78,7 @@ _copyPlannedStmt(PlannedStmt *from)
 
 	COPY_SCALAR_FIELD(commandType);
 	COPY_SCALAR_FIELD(canSetTag);
+	COPY_SCALAR_FIELD(transientPlan);
 	COPY_NODE_FIELD(planTree);
 	COPY_NODE_FIELD(rtable);
 	COPY_NODE_FIELD(resultRelations);

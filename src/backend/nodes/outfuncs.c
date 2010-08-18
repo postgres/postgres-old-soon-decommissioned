@@ -243,6 +243,7 @@ _outPlannedStmt(StringInfo str, PlannedStmt *node)
 
 	WRITE_ENUM_FIELD(commandType, CmdType);
 	WRITE_BOOL_FIELD(canSetTag);
+	WRITE_BOOL_FIELD(transientPlan);
 	WRITE_NODE_FIELD(planTree);
 	WRITE_NODE_FIELD(rtable);
 	WRITE_NODE_FIELD(resultRelations);
