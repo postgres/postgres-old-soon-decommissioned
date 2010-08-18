@@ -682,6 +682,14 @@ ExecModifyTable(ModifyTableState *node)
 	 */
 	for (;;)
 	{
+		/*
+		 * Reset the per-output-tuple exprcontext.  This is needed because
+		 * triggers expect to use that context as workspace.  It's a bit ugly
+		 * to do this below the top level of the plan, however.  We might need
+		 * to rethink this later.
+		 */
+		ResetPerTupleExprContext(estate);
+
 		planSlot = ExecProcNode(subplanstate);
 
 		if (TupIsNull(planSlot))
