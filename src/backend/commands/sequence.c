@@ -204,7 +204,7 @@ DefineSequence(CreateSeqStmt *seq)
 	stmt->oncommit = ONCOMMIT_NOOP;
 	stmt->tablespacename = NULL;
 
-	seqoid = DefineRelation(stmt, RELKIND_SEQUENCE);
+	seqoid = DefineRelation(stmt, RELKIND_SEQUENCE, seq->ownerId);
 
 	rel = heap_open(seqoid, AccessExclusiveLock);
 	tupDesc = RelationGetDescr(rel);

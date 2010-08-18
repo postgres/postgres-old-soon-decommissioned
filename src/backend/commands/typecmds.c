@@ -1546,7 +1546,7 @@ DefineCompositeType(const RangeVar *typevar, List *coldeflist)
 	/*
 	 * Finally create the relation.  This also creates the type.
 	 */
-	return DefineRelation(createStmt, RELKIND_COMPOSITE_TYPE);
+	return DefineRelation(createStmt, RELKIND_COMPOSITE_TYPE, InvalidOid);
 }
 
 /*

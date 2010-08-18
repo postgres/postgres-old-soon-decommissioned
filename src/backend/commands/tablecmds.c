@@ -340,11 +340,21 @@ static const char *storage_name(char c);
  *		DefineRelation
  *				Creates a new relation.
  *
+ * stmt carries parsetree information from an ordinary CREATE TABLE statement.
+ * The other arguments are used to extend the behavior for other cases:
+ * relkind: relkind to assign to the new relation
+ * ownerId: if not InvalidOid, use this as the new relation's owner.
+ *
+ * Note that permissions checks are done against current user regardless of
+ * ownerId.  A nonzero ownerId is used when someone is creating a relation
+ * "on behalf of" someone else, so we still want to see that the current user
+ * has permissions to do it.
+ *
  * If successful, returns the OID of the new relation.
  * ----------------------------------------------------------------
  */
 Oid
-DefineRelation(CreateStmt *stmt, char relkind)
+DefineRelation(CreateStmt *stmt, char relkind, Oid ownerId)
 {
 	char		relname[NAMEDATALEN];
 	Oid			namespaceId;
@@ -444,6 +454,10 @@ DefineRelation(CreateStmt *stmt, char relkind)
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 				 errmsg("only shared relations can be placed in pg_global tablespace")));
 
+	/* Identify user ID that will own the table */
+	if (!OidIsValid(ownerId))
+		ownerId = GetUserId();
+
 	/*
 	 * Parse and validate reloptions, if any.
 	 */
@@ -536,7 +550,7 @@ DefineRelation(CreateStmt *stmt, char relkind)
 										  InvalidOid,
 										  InvalidOid,
 										  ofTypeId,
-										  GetUserId(),
+										  ownerId,
 										  descriptor,
 										  list_concat(cookedDefaults,
 													  old_constraints),

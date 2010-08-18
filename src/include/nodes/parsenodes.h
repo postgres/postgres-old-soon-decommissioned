@@ -1696,6 +1696,7 @@ typedef struct CreateSeqStmt
 	NodeTag		type;
 	RangeVar   *sequence;		/* the sequence to create */
 	List	   *options;
+	Oid			ownerId;		/* ID of owner, or InvalidOid for default */
 } CreateSeqStmt;
 
 typedef struct AlterSeqStmt

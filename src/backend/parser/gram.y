@@ -2793,6 +2793,7 @@ CreateSeqStmt:
 					$4->istemp = $2;
 					n->sequence = $4;
 					n->options = $5;
+					n->ownerId = InvalidOid;
 					$$ = (Node *)n;
 				}
 		;

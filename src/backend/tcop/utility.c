@@ -510,7 +510,8 @@ standard_ProcessUtility(Node *parsetree,
 
 						/* Create the table itself */
 						relOid = DefineRelation((CreateStmt *) stmt,
-												RELKIND_RELATION);
+												RELKIND_RELATION,
+												InvalidOid);
 
 						/*
 						 * Let AlterTableCreateToastTable decide if this one

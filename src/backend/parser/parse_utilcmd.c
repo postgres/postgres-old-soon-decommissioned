@@ -360,6 +360,18 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 		seqstmt->sequence = makeRangeVar(snamespace, sname, -1);
 		seqstmt->options = NIL;
 
+		/*
+		 * If this is ALTER ADD COLUMN, make sure the sequence will be owned
+		 * by the table's owner.  The current user might be someone else
+		 * (perhaps a superuser, or someone who's only a member of the owning
+		 * role), but the SEQUENCE OWNED BY mechanisms will bleat unless
+		 * table and sequence have exactly the same owning role.
+		 */
+		if (cxt->rel)
+			seqstmt->ownerId = cxt->rel->rd_rel->relowner;
+		else
+			seqstmt->ownerId = InvalidOid;
+
 		cxt->blist = lappend(cxt->blist, seqstmt);
 
 		/*

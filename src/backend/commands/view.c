@@ -239,7 +239,7 @@ DefineVirtualRelation(const RangeVar *relation, List *tlist, bool replace)
 		 * existing view, so we don't need more code to complain if "replace"
 		 * is false).
 		 */
-		return DefineRelation(createStmt, RELKIND_VIEW);
+		return DefineRelation(createStmt, RELKIND_VIEW, InvalidOid);
 	}
 }
 
