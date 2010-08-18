@@ -1513,6 +1513,7 @@ _equalCreateSeqStmt(CreateSeqStmt *a, CreateSeqStmt *b)
 {
 	COMPARE_NODE_FIELD(sequence);
 	COMPARE_NODE_FIELD(options);
+	COMPARE_SCALAR_FIELD(ownerId);
 
 	return true;
 }

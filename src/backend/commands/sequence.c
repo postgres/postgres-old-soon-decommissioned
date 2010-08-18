@@ -205,7 +205,7 @@ DefineSequence(CreateSeqStmt *seq)
 	stmt->tablespacename = NULL;
 	stmt->if_not_exists = false;
 
-	seqoid = DefineRelation(stmt, RELKIND_SEQUENCE);
+	seqoid = DefineRelation(stmt, RELKIND_SEQUENCE, seq->ownerId);
 	Assert(seqoid != InvalidOid);
 
 	rel = heap_open(seqoid, AccessExclusiveLock);
