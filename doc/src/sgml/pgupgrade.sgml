@@ -537,4 +537,3 @@ psql --username postgres --file script.sql postgres
  </sect2>
  
 </sect1>
- 

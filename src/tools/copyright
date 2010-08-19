@@ -12,4 +12,3 @@ do
 done
 
 echo "Manually update doc/src/sgml/legal.sgml and src/interfaces/libpq/libpq.rc.in too" 1>&2
-

@@ -1,5 +1,4 @@
-
-# $PostgreSQL:$
+# $PostgreSQL$
 
 =head1 NAME
 

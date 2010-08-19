@@ -133,4 +133,3 @@ sub generate_block {
     $s = "\\|", $block =~ s/$s//g;
     return $block;
 }
-

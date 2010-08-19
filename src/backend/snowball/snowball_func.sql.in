@@ -15,4 +15,3 @@ CREATE TEXT SEARCH TEMPLATE snowball
 	LEXIZE = dsnowball_lexize);
 
 COMMENT ON TEXT SEARCH TEMPLATE snowball IS 'snowball stemmer';
-

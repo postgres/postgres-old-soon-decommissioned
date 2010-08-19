@@ -2572,4 +2572,3 @@ prsd_headline(PG_FUNCTION_ARGS)
 
 	PG_RETURN_POINTER(prs);
 }
-

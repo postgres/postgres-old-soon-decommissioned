@@ -143,4 +143,3 @@
 %type  <type>   var_type
 
 %type  <action> action
-

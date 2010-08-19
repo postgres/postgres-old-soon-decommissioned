@@ -217,4 +217,3 @@ uninstall:
 clean distclean maintainer-clean:
 	rm -f $(SQLSCRIPT)
 	@for dir in $(SUBDIRS); do $(MAKE) -C $$dir $@ || exit; done
-

@@ -155,4 +155,3 @@ AC_RUN_IFELSE([AC_LANG_PROGRAM([extern void $2 (); void (*fptr) () = $2;],[])],
               [LDFLAGS="$pgac_save_LDFLAGS"
                AC_MSG_RESULT(assuming no)])
 ])# PGAC_PROG_CC_LDFLAGS_OPT
-

@@ -47,4 +47,3 @@ find . \( \( -name 'libstemmer' -o -name 'expected' -o -name 'ppport.h' \
   xargs -l sed -i -e '1i/*\n * \x24PostgreSQL:$ \n */'
 
 rm -f dummy
-

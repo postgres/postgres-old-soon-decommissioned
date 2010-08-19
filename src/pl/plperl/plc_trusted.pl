@@ -1,5 +1,3 @@
-
-
 #  $PostgreSQL$
 
 package PostgreSQL::InServer::safe;

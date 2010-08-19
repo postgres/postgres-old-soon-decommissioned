@@ -1,4 +1,3 @@
-
 # $PostgreSQL$
 #
 # Transactions are unsupported by MySQL - so for insertion of
@@ -27,4 +26,3 @@ if ( $TestDBMS =~ /^mysql/ && $XACTBLOCK eq '' )
 
 # Ok - run queries
 `time $FrontEnd < .sqlf`;
-

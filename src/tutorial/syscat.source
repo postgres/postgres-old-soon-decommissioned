@@ -182,4 +182,3 @@ SELECT am.amname, n.nspname, opf.opfname, opr.oprname
 -- Reset the search path
 --
 RESET SEARCH_PATH;
-

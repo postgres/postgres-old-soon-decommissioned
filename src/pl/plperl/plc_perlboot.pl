@@ -1,4 +1,3 @@
-
 #  $PostgreSQL$
 
 use 5.008001;
@@ -76,4 +75,3 @@ sub ::encode_array_constructor {
 	} @$arg;
 	return "ARRAY[$res]";
 }
-

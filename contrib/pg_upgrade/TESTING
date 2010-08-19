@@ -62,7 +62,3 @@ steps:
 
 7)  Diff the regression database dump file with the regression dump
     file loaded into the old server.
-
-
-
-

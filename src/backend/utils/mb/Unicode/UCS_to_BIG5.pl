@@ -174,4 +174,3 @@ for $index ( sort {$a <=> $b} keys( %array ) ){
 
 print FILE "};\n";
 close(FILE);
-

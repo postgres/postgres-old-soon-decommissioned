@@ -43,4 +43,3 @@ DROP FUNCTION pgp_pub_decrypt_bytea(bytea, bytea, text, text);
 DROP FUNCTION pgp_key_id(bytea);
 DROP FUNCTION armor(bytea);
 DROP FUNCTION dearmor(text);
-

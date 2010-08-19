@@ -52,4 +52,3 @@ to test your system however, you can do so as follows:
     Your system uses gethostbyname which is thread-safe.
 
     Your platform is thread-safe.
-

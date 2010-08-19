@@ -49,4 +49,3 @@ echo "
 	where	scope = 'T' and func != 'main'
         order by file, func;
 " |psql debug
-
