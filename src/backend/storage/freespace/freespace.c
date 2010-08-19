@@ -588,7 +588,7 @@ fsm_extend(Relation rel, BlockNumber fsm_nblocks)
 	while (fsm_nblocks_now < fsm_nblocks)
 	{
 		smgrextend(rel->rd_smgr, FSM_FORKNUM, fsm_nblocks_now,
-				   (char *) pg, rel->rd_istemp);
+				   (char *) pg, false);
 		fsm_nblocks_now++;
 	}
 

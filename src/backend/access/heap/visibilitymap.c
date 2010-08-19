@@ -477,7 +477,7 @@ vm_extend(Relation rel, BlockNumber vm_nblocks)
 	while (vm_nblocks_now < vm_nblocks)
 	{
 		smgrextend(rel->rd_smgr, VISIBILITYMAP_FORKNUM, vm_nblocks_now,
-				   (char *) pg, rel->rd_istemp);
+				   (char *) pg, false);
 		vm_nblocks_now++;
 	}
 
