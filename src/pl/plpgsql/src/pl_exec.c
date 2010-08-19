@@ -5272,6 +5272,8 @@ exec_simple_check_plan(PLpgSQL_expr *expr)
 	 */
 	if (!IsA(stmt, PlannedStmt))
 		return;
+	if (stmt->commandType != CMD_SELECT || stmt->intoClause)
+		return;
 	plan = stmt->planTree;
 	if (!IsA(plan, Result))
 		return;
