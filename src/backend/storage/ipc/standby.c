@@ -591,7 +591,7 @@ StandbyReleaseLocks(TransactionId xid)
 				 lock->xid, lock->dbOid, lock->relOid);
 			SET_LOCKTAG_RELATION(locktag, lock->dbOid, lock->relOid);
 			if (!LockRelease(&locktag, AccessExclusiveLock, true))
-				elog(trace_recovery(LOG),
+				elog(LOG,
 					 "RecoveryLockList contains entry for lock no longer recorded by lock manager: xid %u database %u relation %u",
 					 lock->xid, lock->dbOid, lock->relOid);
 
@@ -655,7 +655,7 @@ StandbyReleaseLocksMany(TransactionId removeXid, bool keepPreparedXacts)
 				 lock->xid, lock->dbOid, lock->relOid);
 			SET_LOCKTAG_RELATION(locktag, lock->dbOid, lock->relOid);
 			if (!LockRelease(&locktag, AccessExclusiveLock, true))
-				elog(trace_recovery(LOG),
+				elog(LOG,
 					 "RecoveryLockList contains entry for lock no longer recorded by lock manager: xid %u database %u relation %u",
 					 lock->xid, lock->dbOid, lock->relOid);
 			RecoveryLockList = list_delete_cell(RecoveryLockList, cell, prev);
