@@ -2252,6 +2252,7 @@ CreateStmt:	CREATE OptTemp TABLE qualified_name '(' OptTableElementList ')'
 			OptTypedTableElementList OptWith OnCommitOption OptTableSpace
 				{
 					CreateStmt *n = makeNode(CreateStmt);
+					$7->istemp = $2;
 					n->relation = $7;
 					n->tableElts = $10;
 					n->ofTypename = makeTypeNameFromNameList($9);
