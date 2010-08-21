@@ -3192,6 +3192,10 @@ pgstat_get_tab_entry(PgStat_StatDBEntry *dbentry, Oid tableoid, bool create)
 		result->autovac_vacuum_timestamp = 0;
 		result->analyze_timestamp = 0;
 		result->autovac_analyze_timestamp = 0;
+		result->vacuum_count = 0;
+		result->autovac_vacuum_count = 0;
+		result->analyze_count = 0;
+		result->autovac_analyze_count = 0;
 	}
 
 	return result;
@@ -4114,9 +4118,15 @@ pgstat_recv_vacuum(PgStat_MsgVacuum *msg, int len)
 	tabentry->n_dead_tuples = 0;
 
 	if (msg->m_autovacuum)
+	{
 		tabentry->autovac_vacuum_timestamp = msg->m_vacuumtime;
+		tabentry->autovac_vacuum_count++;
+	}
 	else
+	{
 		tabentry->vacuum_timestamp = msg->m_vacuumtime;
+		tabentry->vacuum_count++;
+	}
 }
 
 /* ----------
@@ -4151,9 +4161,15 @@ pgstat_recv_analyze(PgStat_MsgAnalyze *msg, int len)
 	tabentry->changes_since_analyze = 0;
 
 	if (msg->m_autovacuum)
+	{
 		tabentry->autovac_analyze_timestamp = msg->m_analyzetime;
+		tabentry->autovac_analyze_count++;
+	}
 	else
+	{
 		tabentry->analyze_timestamp = msg->m_analyzetime;
+		tabentry->analyze_count++;
+	}
 }
 
 

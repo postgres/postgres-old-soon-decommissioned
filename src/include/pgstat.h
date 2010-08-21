@@ -525,9 +525,13 @@ typedef struct PgStat_StatTabEntry
 	PgStat_Counter blocks_hit;
 
 	TimestampTz vacuum_timestamp;		/* user initiated vacuum */
+	PgStat_Counter vacuum_count;
 	TimestampTz autovac_vacuum_timestamp;		/* autovacuum initiated */
+	PgStat_Counter autovac_vacuum_count;
 	TimestampTz analyze_timestamp;		/* user initiated */
+	PgStat_Counter analyze_count;
 	TimestampTz autovac_analyze_timestamp;		/* autovacuum initiated */
+	PgStat_Counter autovac_analyze_count;
 } PgStat_StatTabEntry;
 
 

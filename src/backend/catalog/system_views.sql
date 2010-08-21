@@ -201,7 +201,11 @@ CREATE VIEW pg_stat_all_tables AS
             pg_stat_get_last_vacuum_time(C.oid) as last_vacuum,
             pg_stat_get_last_autovacuum_time(C.oid) as last_autovacuum,
             pg_stat_get_last_analyze_time(C.oid) as last_analyze,
-            pg_stat_get_last_autoanalyze_time(C.oid) as last_autoanalyze
+            pg_stat_get_last_autoanalyze_time(C.oid) as last_autoanalyze,
+            pg_stat_get_vacuum_count(C.oid) AS vacuum_count,
+            pg_stat_get_autovacuum_count(C.oid) AS autovacuum_count,
+            pg_stat_get_analyze_count(C.oid) AS analyze_count,
+            pg_stat_get_autoanalyze_count(C.oid) AS autoanalyze_count
     FROM pg_class C LEFT JOIN 
          pg_index I ON C.oid = I.indrelid 
          LEFT JOIN pg_namespace N ON (N.oid = C.relnamespace) 
