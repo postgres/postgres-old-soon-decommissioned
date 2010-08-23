@@ -39,7 +39,6 @@
 #include "access/xact.h"
 #include "miscadmin.h"
 #include "postmaster/autovacuum.h"
-#include "replication/walsender.h"
 #include "storage/ipc.h"
 #include "storage/lmgr.h"
 #include "storage/pmsignal.h"
@@ -297,12 +296,7 @@ InitProcess(void)
 	 * this; it probably should.)
 	 */
 	if (IsUnderPostmaster && !IsAutoVacuumLauncherProcess())
-	{
-		if (am_walsender)
-			MarkPostmasterChildWalSender();
-		else
-			MarkPostmasterChildActive();
-	}
+		MarkPostmasterChildActive();
 
 	/*
 	 * Initialize all fields of MyProc, except for the semaphore which was

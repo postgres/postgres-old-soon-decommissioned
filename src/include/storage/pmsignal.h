@@ -47,7 +47,6 @@ extern int	AssignPostmasterChildSlot(void);
 extern bool ReleasePostmasterChildSlot(int slot);
 extern bool IsPostmasterChildWalSender(int slot);
 extern void MarkPostmasterChildActive(void);
-extern void MarkPostmasterChildWalSender(void);
 extern void MarkPostmasterChildInactive(void);
 extern bool PostmasterIsAlive(bool amDirectChild);
 
