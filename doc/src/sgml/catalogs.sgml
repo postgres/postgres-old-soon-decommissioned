@@ -1445,6 +1445,16 @@
      </row>
 
      <row>
+      <entry><structfield>reloftype</structfield></entry>
+      <entry><type>oid</type></entry>
+      <entry><literal><link linkend="catalog-pg-type"><structname>pg_type</structname></link>.oid</literal></entry>
+      <entry>
+       For typed tables, the OID of the underlying composite type,
+       zero for all other relations
+      </entry>
+     </row>
+
+     <row>
       <entry><structfield>relowner</structfield></entry>
       <entry><type>oid</type></entry>
       <entry><literal><link linkend="catalog-pg-authid"><structname>pg_authid</structname></link>.oid</literal></entry>
