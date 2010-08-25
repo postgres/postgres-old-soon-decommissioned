@@ -2452,20 +2452,21 @@ strip_lineno_from_funcdesc(char *func)
 	 */
 
 	/* skip trailing whitespace */
-	while (c > func && isascii(*c) && isspace(*c))
+	while (c > func && isascii((unsigned char) *c) && isspace((unsigned char) *c))
 		c--;
 
 	/* must have a digit as last non-space char */
-	if (c == func || !isascii(*c) || !isdigit(*c))
+	if (c == func || !isascii((unsigned char) *c) || !isdigit((unsigned char) *c))
 		return -1;
 
 	/* find start of digit string */
-	while (c > func && isascii(*c) && isdigit(*c))
+	while (c > func && isascii((unsigned char) *c) && isdigit((unsigned char) *c))
 		c--;
 
 	/* digits must be separated from func name by space or closing paren */
 	/* notice also that we are not allowing an empty func name ... */
-	if (c == func || !isascii(*c) || !(isspace(*c) || *c == ')'))
+	if (c == func || !isascii((unsigned char) *c) ||
+		!(isspace((unsigned char) *c) || *c == ')'))
 		return -1;
 
 	/* parse digit string */
