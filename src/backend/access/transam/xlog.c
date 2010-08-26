@@ -5231,7 +5231,7 @@ readRecoveryCommandFile(void)
 			if (!parse_bool(tok2, &recoveryTargetInclusive))
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-						 errmsg("parameter \"recovery_target_inclusive\" requires a Boolean value")));
+						 errmsg("parameter \"%s\" requires a Boolean value", "recovery_target_inclusive")));
 			ereport(DEBUG2,
 					(errmsg("recovery_target_inclusive = %s", tok2)));
 		}
@@ -5240,7 +5240,7 @@ readRecoveryCommandFile(void)
 			if (!parse_bool(tok2, &StandbyMode))
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-						 errmsg("parameter \"standby_mode\" requires a Boolean value")));
+						 errmsg("parameter \"%s\" requires a Boolean value", "standby_mode")));
 			ereport(DEBUG2,
 					(errmsg("standby_mode = '%s'", tok2)));
 		}
