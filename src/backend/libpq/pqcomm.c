@@ -484,6 +484,11 @@ Lock_AF_UNIX(unsigned short portNumber, char *unixSocketName)
 
 	/*
 	 * Grab an interlock file associated with the socket file.
+	 *
+	 * Note: there are two reasons for using a socket lock file, rather than
+	 * trying to interlock directly on the socket itself.  First, it's a lot
+	 * more portable, and second, it lets us remove any pre-existing socket
+	 * file without race conditions.
 	 */
 	CreateSocketLockFile(sock_path, true);
 
