@@ -1633,6 +1633,16 @@ ExecMakeTableFunctionResult(ExprState *funcexpr,
 				td = DatumGetHeapTupleHeader(result);
 
 				/*
+				 * Verify all returned rows have same subtype; necessary in
+				 * case the type is RECORD.
+				 */
+				if (HeapTupleHeaderGetTypeId(td) != tupdesc->tdtypeid ||
+					HeapTupleHeaderGetTypMod(td) != tupdesc->tdtypmod)
+					ereport(ERROR,
+							(errcode(ERRCODE_DATATYPE_MISMATCH),
+							 errmsg("rows returned by function are not all of the same row type")));
+
+				/*
 				 * tuplestore_puttuple needs a HeapTuple not a bare
 				 * HeapTupleHeader, but it doesn't need all the fields.
 				 */
