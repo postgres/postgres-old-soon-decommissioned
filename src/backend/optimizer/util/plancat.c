@@ -727,11 +727,7 @@ build_physical_tlist(PlannerInfo *root, RelOptInfo *rel)
 				 * A resjunk column of the subquery can be reflected as
 				 * resjunk in the physical tlist; we need not punt.
 				 */
-				var = makeVar(varno,
-							  tle->resno,
-							  exprType((Node *) tle->expr),
-							  exprTypmod((Node *) tle->expr),
-							  0);
+				var = makeVarFromTargetEntry(varno, tle);
 
 				tlist = lappend(tlist,
 								makeTargetEntry((Expr *) var,

@@ -991,11 +991,7 @@ make_setop_translation_list(Query *query, Index newvarno,
 		if (tle->resjunk)
 			continue;
 
-		vars = lappend(vars, makeVar(newvarno,
-									 tle->resno,
-									 exprType((Node *) tle->expr),
-									 exprTypmod((Node *) tle->expr),
-									 0));
+		vars = lappend(vars, makeVarFromTargetEntry(newvarno, tle));
 	}
 
 	*translated_vars = vars;

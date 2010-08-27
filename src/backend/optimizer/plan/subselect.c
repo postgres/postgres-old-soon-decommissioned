@@ -737,11 +737,7 @@ generate_subquery_vars(PlannerInfo *root, List *tlist, Index varno)
 		if (tent->resjunk)
 			continue;
 
-		var = makeVar(varno,
-					  tent->resno,
-					  exprType((Node *) tent->expr),
-					  exprTypmod((Node *) tent->expr),
-					  0);
+		var = makeVarFromTargetEntry(varno, tent);
 		result = lappend(result, var);
 	}
 

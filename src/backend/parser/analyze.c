@@ -484,11 +484,7 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
 				expr = tle->expr;
 			else
 			{
-				Var		   *var = makeVar(rtr->rtindex,
-										  tle->resno,
-										  exprType((Node *) tle->expr),
-										  exprTypmod((Node *) tle->expr),
-										  0);
+				Var		   *var = makeVarFromTargetEntry(rtr->rtindex, tle);
 
 				var->location = exprLocation((Node *) tle->expr);
 				expr = (Expr *) var;

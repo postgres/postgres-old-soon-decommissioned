@@ -29,6 +29,9 @@ extern Var *makeVar(Index varno,
 		int32 vartypmod,
 		Index varlevelsup);
 
+extern Var *makeVarFromTargetEntry(Index varno,
+								   TargetEntry *tle);
+
 extern TargetEntry *makeTargetEntry(Expr *expr,
 				AttrNumber resno,
 				char *resname,
