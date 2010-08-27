@@ -15,6 +15,7 @@
 #define DEPENDENCY_H
 
 #include "nodes/parsenodes.h"	/* for DropBehavior */
+#include "catalog/objectaddress.h"
 
 
 /*
@@ -99,17 +100,6 @@ typedef enum SharedDependencyType
 	SHARED_DEPENDENCY_ACL = 'a',
 	SHARED_DEPENDENCY_INVALID = 0
 } SharedDependencyType;
-
-
-/*
- * The two objects related by a dependency are identified by ObjectAddresses.
- */
-typedef struct ObjectAddress
-{
-	Oid			classId;		/* Class Id from pg_class */
-	Oid			objectId;		/* OID of the object */
-	int32		objectSubId;	/* Subitem within object (eg column), or 0 */
-} ObjectAddress;
 
 /* expansible list of ObjectAddresses (private in dependency.c) */
 typedef struct ObjectAddresses ObjectAddresses;
