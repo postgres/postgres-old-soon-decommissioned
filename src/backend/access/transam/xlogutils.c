@@ -377,6 +377,8 @@ CreateFakeRelcacheEntry(RelFileNode rnode)
 
 	rel->rd_rel = &fakeentry->pgc;
 	rel->rd_node = rnode;
+	/* We will never be working with temp rels during recovery */
+	rel->rd_backend = InvalidBackendId;
 
 	/* We don't know the name of the relation; use relfilenode instead */
 	sprintf(RelationGetRelationName(rel), "%u", rnode.relNode);
