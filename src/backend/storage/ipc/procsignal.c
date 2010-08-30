@@ -66,7 +66,7 @@ static bool CheckProcSignal(ProcSignalReason reason);
 static void CleanupProcSignalState(int status, Datum arg);
 
 /*
- * ProcSignalShmemInit
+ * ProcSignalShmemSize
  *		Compute space needed for procsignal's shared memory
  */
 Size
