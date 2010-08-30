@@ -9,6 +9,14 @@
 #define __i386__
 #endif
 
+#if defined(__amd64) && !defined(__amd64__)
+#define __amd64__
+#endif
+
+#if defined(__x86_64) && !defined(__x86_64__)
+#define __x86_64__
+#endif
+
 #if defined(__sparc) && !defined(__sparc__)
 #define __sparc__
 #endif
@@ -32,6 +40,9 @@
 #define		  BYTE_ORDER	  BIG_ENDIAN
 #endif
 #ifdef __i386__
+#define		 BYTE_ORDER		 LITTLE_ENDIAN
+#endif
+#if defined(__amd64___) || defined(__x86_64__)
 #define		 BYTE_ORDER		 LITTLE_ENDIAN
 #endif
 #endif
