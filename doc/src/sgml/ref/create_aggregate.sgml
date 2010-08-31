@@ -29,7 +29,7 @@ CREATE AGGREGATE <replaceable class="PARAMETER">name</replaceable> ( <replaceabl
     [ , SORTOP = <replaceable class="PARAMETER">sort_operator</replaceable> ]
 )
 
-or the old syntax
+<phrase>or the old syntax</phrase>
 
 CREATE AGGREGATE <replaceable class="PARAMETER">name</replaceable> (
     BASETYPE = <replaceable class="PARAMETER">base_type</replaceable>,
