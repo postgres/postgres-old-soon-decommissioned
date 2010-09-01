@@ -9760,7 +9760,7 @@ SELECT NULLIF(value, '(none)') ...
       <entry>
        array of the argument type
       </entry>
-      <entry>input values concatenated into an array</entry>
+      <entry>input values, including nulls, concatenated into an array</entry>
      </row>
 
      <row>
