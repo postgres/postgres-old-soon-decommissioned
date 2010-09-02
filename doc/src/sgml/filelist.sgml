@@ -145,6 +145,7 @@
 <!entity keywords   SYSTEM "keywords.sgml">
 
 <!entity release    SYSTEM "release.sgml">
+<!entity release-9.1    SYSTEM "release-9.1.sgml">
 <!entity release-9.0    SYSTEM "release-9.0.sgml">
 <!entity release-8.4    SYSTEM "release-8.4.sgml">
 <!entity release-8.3    SYSTEM "release-8.3.sgml">
