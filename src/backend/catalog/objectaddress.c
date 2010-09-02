@@ -215,7 +215,7 @@ get_object_address(ObjectType objtype, List *objname, List *objargs,
 			break;
 		default:
 			elog(ERROR, "unrecognized objtype: %d", (int) objtype);
-			/* placate compiler, in case it things elog might return */
+			/* placate compiler, in case it thinks elog might return */
 			address.classId = InvalidOid;
 			address.objectId = InvalidOid;
 			address.objectSubId = 0;
