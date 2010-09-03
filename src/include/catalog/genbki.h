@@ -35,7 +35,8 @@
 #define DESCR(x)  extern int no_such_variable
 #define SHDESCR(x) extern int no_such_variable
 
-/* PHONY type definition for use in catalog structure definitions only */
+/* PHONY type definitions for use in catalog structure definitions only */
 typedef int aclitem;
+typedef int pg_node_tree;
 
 #endif   /* GENBKI_H */

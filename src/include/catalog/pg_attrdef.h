@@ -30,10 +30,10 @@
 
 CATALOG(pg_attrdef,2604)
 {
-	Oid			adrelid;
-	int2		adnum;
-	text		adbin;
-	text		adsrc;
+	Oid			adrelid;		/* OID of table containing attribute */
+	int2		adnum;			/* attnum of attribute */
+	pg_node_tree adbin;			/* nodeToString representation of default */
+	text		adsrc;			/* human-readable representation of default */
 } FormData_pg_attrdef;
 
 /* ----------------

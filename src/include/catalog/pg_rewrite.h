@@ -41,8 +41,8 @@ CATALOG(pg_rewrite,2618)
 	bool		is_instead;
 
 	/* NB: remaining fields must be accessed via heap_getattr */
-	text		ev_qual;
-	text		ev_action;
+	pg_node_tree ev_qual;
+	pg_node_tree ev_action;
 } FormData_pg_rewrite;
 
 /* ----------------

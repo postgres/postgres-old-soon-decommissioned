@@ -129,7 +129,7 @@ CATALOG(pg_constraint,2606)
 	/*
 	 * If a check constraint, nodeToString representation of expression
 	 */
-	text		conbin;
+	pg_node_tree conbin;
 
 	/*
 	 * If a check constraint, source-text representation of expression

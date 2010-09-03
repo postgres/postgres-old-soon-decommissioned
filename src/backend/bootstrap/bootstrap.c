@@ -72,7 +72,8 @@ int			numattr;			/* number of attributes for cur. rel */
 
 /*
  * Basic information associated with each type.  This is used before
- * pg_type is created.
+ * pg_type is filled, so it has to cover the datatypes used as column types
+ * in the core "bootstrapped" catalogs.
  *
  *		XXX several of these input/output functions do catalog scans
  *			(e.g., F_REGPROCIN scans pg_proc).	this obviously creates some
@@ -122,6 +123,8 @@ static const struct typinfo TypInfo[] = {
 	F_XIDIN, F_XIDOUT},
 	{"cid", CIDOID, 0, 4, true, 'i', 'p',
 	F_CIDIN, F_CIDOUT},
+	{"pg_node_tree", PGNODETREEOID, 0, -1, false, 'i', 'x',
+	F_PG_NODE_TREE_IN, F_PG_NODE_TREE_OUT},
 	{"int2vector", INT2VECTOROID, INT2OID, -1, false, 'i', 'p',
 	F_INT2VECTORIN, F_INT2VECTOROUT},
 	{"oidvector", OIDVECTOROID, OIDOID, -1, false, 'i', 'p',

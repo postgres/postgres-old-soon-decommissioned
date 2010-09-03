@@ -53,7 +53,7 @@ CATALOG(pg_trigger,2620)
 	/* VARIABLE LENGTH FIELDS (note: tgattr and tgargs must not be null) */
 	int2vector	tgattr;			/* column numbers, if trigger is on columns */
 	bytea		tgargs;			/* first\000second\000tgnargs\000 */
-	text		tgqual;			/* WHEN expression, or NULL if none */
+	pg_node_tree tgqual;		/* WHEN expression, or NULL if none */
 } FormData_pg_trigger;
 
 /* ----------------

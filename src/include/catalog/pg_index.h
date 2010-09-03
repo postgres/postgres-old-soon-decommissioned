@@ -45,10 +45,10 @@ CATALOG(pg_index,2610) BKI_WITHOUT_OIDS BKI_SCHEMA_MACRO
 	int2vector	indkey;			/* column numbers of indexed cols, or 0 */
 	oidvector	indclass;		/* opclass identifiers */
 	int2vector	indoption;		/* per-column flags (AM-specific meanings) */
-	text		indexprs;		/* expression trees for index attributes that
+	pg_node_tree indexprs;		/* expression trees for index attributes that
 								 * are not simple column references; one for
 								 * each zero entry in indkey[] */
-	text		indpred;		/* expression tree for predicate, if a partial
+	pg_node_tree indpred;		/* expression tree for predicate, if a partial
 								 * index; else NULL */
 } FormData_pg_index;
 
