@@ -76,7 +76,7 @@ bool		update_process_title = true;
 
 
 /* Different systems want the buffer padded differently */
-#if defined(_AIX) || defined(__linux__) || defined(__svr4__)
+#if defined(_AIX) || defined(__linux__) || defined(__svr4__) || defined(__darwin__)
 #define PS_PADDING '\0'
 #else
 #define PS_PADDING ' '
