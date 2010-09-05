@@ -836,6 +836,9 @@ check_functional_grouping(Oid relid,
 		/* Only PK constraints are of interest for now, see comment above */
 		if (con->contype != CONSTRAINT_PRIMARY)
 			continue;
+		/* Constraint must be non-deferrable */
+		if (con->condeferrable)
+			continue;
 
 		/* Extract the conkey array, ie, attnums of PK's columns */
 		adatum = heap_getattr(tuple, Anum_pg_constraint_conkey,
