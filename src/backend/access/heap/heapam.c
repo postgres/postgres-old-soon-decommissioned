@@ -2173,7 +2173,7 @@ l1:
 
 	if (crosscheck != InvalidSnapshot && result == HeapTupleMayBeUpdated)
 	{
-		/* Perform additional check for serializable RI updates */
+		/* Perform additional check for transaction-snapshot mode RI updates */
 		if (!HeapTupleSatisfiesVisibility(&tp, crosscheck, buffer))
 			result = HeapTupleUpdated;
 	}
@@ -2525,7 +2525,7 @@ l2:
 
 	if (crosscheck != InvalidSnapshot && result == HeapTupleMayBeUpdated)
 	{
-		/* Perform additional check for serializable RI updates */
+		/* Perform additional check for transaction-snapshot mode RI updates */
 		if (!HeapTupleSatisfiesVisibility(&oldtup, crosscheck, buffer))
 			result = HeapTupleUpdated;
 	}

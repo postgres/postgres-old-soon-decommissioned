@@ -2802,7 +2802,7 @@ RecoveryConflictInterrupt(ProcSignalReason reason)
 				 *
 				 * PROCSIG_RECOVERY_CONFLICT_SNAPSHOT if no snapshots are held
 				 * by parent transactions and the transaction is not
-				 * serializable
+				 * transaction-snapshot mode
 				 *
 				 * PROCSIG_RECOVERY_CONFLICT_TABLESPACE if no temp files or
 				 * cursors open in parent transactions

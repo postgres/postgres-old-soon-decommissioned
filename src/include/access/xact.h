@@ -35,7 +35,7 @@ extern int	XactIsoLevel;
  * We only implement two isolation levels internally.  This macro should
  * be used to check which one is selected.
  */
-#define IsXactIsoLevelSerializable (XactIsoLevel >= XACT_REPEATABLE_READ)
+#define IsolationUsesXactSnapshot() (XactIsoLevel >= XACT_REPEATABLE_READ)
 
 /* Xact read-only state */
 extern bool DefaultXactReadOnly;

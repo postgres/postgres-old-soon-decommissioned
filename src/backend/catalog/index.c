@@ -2049,7 +2049,7 @@ IndexCheckExclusion(Relation heapRelation,
  *
  * After completing validate_index(), we wait until all transactions that
  * were alive at the time of the reference snapshot are gone; this is
- * necessary to be sure there are none left with a serializable snapshot
+ * necessary to be sure there are none left with a transaction snapshot
  * older than the reference (and hence possibly able to see tuples we did
  * not index).	Then we mark the index "indisvalid" and commit.  Subsequent
  * transactions will be able to use it for queries.
