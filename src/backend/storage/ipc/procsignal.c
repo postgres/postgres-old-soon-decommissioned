@@ -21,6 +21,7 @@
 #include "commands/async.h"
 #include "miscadmin.h"
 #include "storage/ipc.h"
+#include "storage/latch.h"
 #include "storage/procsignal.h"
 #include "storage/shmem.h"
 #include "storage/sinval.h"
@@ -277,6 +278,8 @@ procsignal_sigusr1_handler(SIGNAL_ARGS)
 
 	if (CheckProcSignal(PROCSIG_RECOVERY_CONFLICT_BUFFERPIN))
 		RecoveryConflictInterrupt(PROCSIG_RECOVERY_CONFLICT_BUFFERPIN);
+
+	latch_sigusr1_handler();
 
 	errno = save_errno;
 }

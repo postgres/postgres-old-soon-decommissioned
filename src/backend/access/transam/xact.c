@@ -36,6 +36,7 @@
 #include "libpq/be-fsstubs.h"
 #include "miscadmin.h"
 #include "pgstat.h"
+#include "replication/walsender.h"
 #include "storage/bufmgr.h"
 #include "storage/fd.h"
 #include "storage/lmgr.h"
@@ -1066,6 +1067,13 @@ RecordTransactionCommit(void)
 			pg_usleep(CommitDelay);
 
 		XLogFlush(XactLastRecEnd);
+
+		/*
+		 * Wake up all walsenders to send WAL up to the COMMIT record
+		 * immediately if replication is enabled
+		 */
+		if (max_wal_senders > 0)
+			WalSndWakeup();
 
 		/*
 		 * Now we may update the CLOG, if we wrote a COMMIT record above

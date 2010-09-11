@@ -55,6 +55,7 @@
 #include "miscadmin.h"
 #include "pg_trace.h"
 #include "pgstat.h"
+#include "replication/walsender.h"
 #include "storage/fd.h"
 #include "storage/procarray.h"
 #include "storage/sinvaladt.h"
@@ -1024,6 +1025,13 @@ EndPrepare(GlobalTransaction gxact)
 	XLogFlush(gxact->prepare_lsn);
 
 	/* If we crash now, we have prepared: WAL replay will fix things */
+
+	/*
+	 * Wake up all walsenders to send WAL up to the PREPARE record
+	 * immediately if replication is enabled
+	 */
+	if (max_wal_senders > 0)
+		WalSndWakeup();
 
 	/* write correct CRC and close file */
 	if ((write(fd, &statefile_crc, sizeof(pg_crc32))) != sizeof(pg_crc32))
@@ -2005,6 +2013,13 @@ RecordTransactionCommitPrepared(TransactionId xid,
 	/* Flush XLOG to disk */
 	XLogFlush(recptr);
 
+	/*
+	 * Wake up all walsenders to send WAL up to the COMMIT PREPARED record
+	 * immediately if replication is enabled
+	 */
+	if (max_wal_senders > 0)
+		WalSndWakeup();
+
 	/* Mark the transaction committed in pg_clog */
 	TransactionIdCommitTree(xid, nchildren, children);
 
@@ -2076,6 +2091,13 @@ RecordTransactionAbortPrepared(TransactionId xid,
 
 	/* Always flush, since we're about to remove the 2PC state file */
 	XLogFlush(recptr);
+
+	/*
+	 * Wake up all walsenders to send WAL up to the ABORT PREPARED record
+	 * immediately if replication is enabled
+	 */
+	if (max_wal_senders > 0)
+		WalSndWakeup();
 
 	/*
 	 * Mark the transaction aborted in clog.  This is not absolutely necessary
