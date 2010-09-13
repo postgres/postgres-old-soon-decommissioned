@@ -156,6 +156,7 @@ OwnLatch(volatile Latch *latch)
 	if (selfpipe_readfd == -1)
 		initSelfPipe();
 
+	/* sanity check */
 	if (latch->owner_pid != 0)
 		elog(ERROR, "latch already owned");
 	latch->owner_pid = MyProcPid;
