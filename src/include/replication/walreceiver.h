@@ -87,12 +87,14 @@ extern PGDLLIMPORT walrcv_receive_type walrcv_receive;
 typedef void (*walrcv_disconnect_type) (void);
 extern PGDLLIMPORT walrcv_disconnect_type walrcv_disconnect;
 
+/* prototypes for functions in walreceiver.c */
 extern void WalReceiverMain(void);
+
+/* prototypes for functions in walreceiverfuncs.c */
 extern Size WalRcvShmemSize(void);
 extern void WalRcvShmemInit(void);
 extern void ShutdownWalRcv(void);
 extern bool WalRcvInProgress(void);
-extern XLogRecPtr WaitNextXLogAvailable(XLogRecPtr recptr, bool *finished);
 extern void RequestXLogStreaming(XLogRecPtr recptr, const char *conninfo);
 extern XLogRecPtr GetWalRcvWriteRecPtr(XLogRecPtr *latestChunkStart);
 
