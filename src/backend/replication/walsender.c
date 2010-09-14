@@ -452,7 +452,7 @@ WalSndLoop(void)
 
 				/* Sleep */
 				WaitLatchOrSocket(&MyWalSnd->latch, MyProcPort->sock,
-								  WalSndDelay);
+								  WalSndDelay * 1000L);
 			}
 
 			/* Check if the connection was closed */
