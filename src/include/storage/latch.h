@@ -25,9 +25,8 @@ typedef struct
 {
 	sig_atomic_t	is_set;
 	bool			is_shared;
-#ifndef WIN32
 	int				owner_pid;
-#else
+#ifdef WIN32
 	HANDLE			event;
 #endif
 } Latch;
@@ -45,9 +44,6 @@ extern int	WaitLatchOrSocket(volatile Latch *latch, pgsocket sock,
 extern void SetLatch(volatile Latch *latch);
 extern void ResetLatch(volatile Latch *latch);
 #define TestLatch(latch) (((volatile Latch *) latch)->is_set)
-
-extern Size LatchShmemSize(void);
-extern void LatchShmemInit(void);
 
 /*
  * Unix implementation uses SIGUSR1 for inter-process signaling, Win32 doesn't

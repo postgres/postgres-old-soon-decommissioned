@@ -129,8 +129,10 @@ InitLatch(volatile Latch *latch)
  * is initially owned by no-one, use OwnLatch to associate it with the
  * current process.
  *
- * NB: When you introduce a new shared latch, you must increase the shared
- * latch count in NumSharedLatches in win32_latch.c!
+ * InitSharedLatch needs to be called in postmaster before forking child
+ * processes, usually right after allocating the shared memory block
+ * containing the latch with ShmemInitStruct. The Unix implementation
+ * doesn't actually require that, but the Windows one does.
  */
 void
 InitSharedLatch(volatile Latch *latch)
@@ -320,29 +322,6 @@ ResetLatch(volatile Latch *latch)
 	Assert(latch->owner_pid == MyProcPid);
 
 	latch->is_set = false;
-}
-
-/*
- * LatchShmemSize
- *		Compute space needed for latch's shared memory
- *
- * Not needed for Unix implementation.
- */
-Size
-LatchShmemSize(void)
-{
-	return 0;
-}
-
-/*
- * LatchShmemInit
- *		Allocate and initialize shared memory needed for latches
- *
- * Not needed for Unix implementation.
- */
-void
-LatchShmemInit(void)
-{
 }
 
 /*
