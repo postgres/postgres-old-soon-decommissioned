@@ -529,6 +529,9 @@ XLogWalRcvFlush(void)
 		walrcv->receivedUpto = LogstreamResult.Flush;
 		SpinLockRelease(&walrcv->mutex);
 
+		/* Signal the startup process that new WAL has arrived */
+		WakeupRecovery();
+
 		/* Report XLOG streaming progress in PS display */
 		if (update_process_title)
 		{

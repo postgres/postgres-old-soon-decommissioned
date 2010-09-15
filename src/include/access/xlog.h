@@ -303,5 +303,6 @@ extern TimeLineID GetRecoveryTargetTLI(void);
 
 extern void HandleStartupProcInterrupts(void);
 extern void StartupProcessMain(void);
+extern void WakeupRecovery(void);
 
 #endif   /* XLOG_H */
