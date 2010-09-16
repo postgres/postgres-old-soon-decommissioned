@@ -180,7 +180,8 @@ hstoreValidOldFormat(HStore *hs)
 	if (hs->size_ & HS_FLAG_NEWVERSION)
 		return 0;
 
-	Assert(sizeof(HOldEntry) == sizeof(HEntry));
+	/* New format uses an HEntry for key and another for value */
+	Assert(sizeof(HOldEntry) == (2 * sizeof(HEntry)));
 
 	if (count == 0)
 		return 2;
