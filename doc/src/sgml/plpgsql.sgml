@@ -1351,7 +1351,7 @@ GET DIAGNOSTICS integer_var = ROW_COUNT;
           </listitem>
           <listitem>
            <para>
-            A <command>RETURN QUERY</command> and <command>RETURN QUERY
+            <command>RETURN QUERY</command> and <command>RETURN QUERY
             EXECUTE</command> statements set <literal>FOUND</literal>
             true if the query returns at least one row, false if no row
             is returned.
