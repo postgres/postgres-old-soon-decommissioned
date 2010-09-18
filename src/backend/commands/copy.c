@@ -2058,9 +2058,34 @@ CopyFrom(CopyState cstate)
 			int16		fld_count;
 			ListCell   *cur;
 
-			if (!CopyGetInt16(cstate, &fld_count) ||
-				fld_count == -1)
+			if (!CopyGetInt16(cstate, &fld_count))
 			{
+				/* EOF detected (end of file, or protocol-level EOF) */
+				done = true;
+				break;
+			}
+			
+			if (fld_count == -1)
+			{
+				/*
+				 * Received EOF marker.  In a V3-protocol copy, wait for
+				 * the protocol-level EOF, and complain if it doesn't come
+				 * immediately.  This ensures that we correctly handle
+				 * CopyFail, if client chooses to send that now.
+				 *
+				 * Note that we MUST NOT try to read more data in an
+				 * old-protocol copy, since there is no protocol-level EOF
+				 * marker then.  We could go either way for copy from file,
+				 * but choose to throw error if there's data after the EOF
+				 * marker, for consistency with the new-protocol case.
+				 */
+				char	dummy;
+
+				if (cstate->copy_dest != COPY_OLD_FE &&
+					CopyGetData(cstate, &dummy, 1, 1) > 0)
+					ereport(ERROR,
+							(errcode(ERRCODE_BAD_COPY_FILE_FORMAT),
+							 errmsg("received copy data after EOF marker")));
 				done = true;
 				break;
 			}
