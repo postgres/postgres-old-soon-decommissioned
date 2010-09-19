@@ -2,7 +2,7 @@
 #
 # Copyright (c) 2007-2010, PostgreSQL Global Development Group
 #
-# $Id$
+# $PostgreSQL$
 #
 # Generate UTF-8 <--> GB18030 code conversion tables from
 # "ISO10646-GB18030.TXT"
