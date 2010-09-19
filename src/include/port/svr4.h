@@ -1,3 +1,3 @@
-/* $PostgreSQL */
+/* $PostgreSQL$ */
 
 /* nothing needed */

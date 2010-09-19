@@ -1,4 +1,4 @@
-# $PostgreSQL $
+# $PostgreSQL$
 CATALOG_NAME	 = ecpg
 AVAIL_LANGUAGES	 = de es fr it ja pt_BR tr zh_CN
 GETTEXT_FILES	 = descriptor.c ecpg.c pgc.c preproc.c type.c variable.c
